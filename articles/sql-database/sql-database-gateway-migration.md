@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 2e578c6bfdfb25eaba3d0c692ff33aa5b0572669
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a2064e0012abea237c1b4c0c6f7e35119c1aeff5
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306000"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686806"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>将 Azure SQL 数据库流量迁移到更新的网关
 
@@ -52,7 +52,7 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供�
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>如果受到影响，应如何操作
 
-建议为 TCP 端口1433上区域中的所有[AZURE SQL 数据库网关 ip 地址](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses)提供出站流量，并为防火墙设备中的端口范围11000-11999 允许这些 ip 地址的出站流量。 有关端口范围的详细信息，请参阅[连接策略](sql-database-connectivity-architecture.md#connection-policy)。
+对于 TCP 端口1433和端口范围11000-11999 上区域中的所有[AZURE SQL 数据库网关 ip 地址](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses)，建议你允许到 ip 地址的出站流量。 此建议适用于从本地连接的客户端，以及通过服务终结点连接的客户端。 有关端口范围的详细信息，请参阅[连接策略](sql-database-connectivity-architecture.md#connection-policy)。
 
 使用低于版本4.0 的 Microsoft JDBC 驱动程序从应用程序进行的连接可能无法通过证书验证。 较低版本的 Microsoft JDBC 依赖证书的 "使用者" 字段中的公用名（CN）。 缓解措施是确保将 hostNameInCertificate 属性设置为 *. database.windows.net。 有关如何设置 hostNameInCertificate 属性的详细信息，请参阅[与 SSL 加密连接](/sql/connect/jdbc/connecting-with-ssl-encryption)。
 

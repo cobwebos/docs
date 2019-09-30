@@ -1,5 +1,5 @@
 ---
-title: MSAL 应用程序中的日志记录 |Microsoft 标识平台
+title: Microsoft 身份验证库（MSAL）应用程序中的日志记录 |Microsoft
 description: 了解如何在 Microsoft 身份验证库 (MSAL) 应用程序中进行日志记录。
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
+ms.date: 09/05/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dad8a276cd40b1ff04bbced833b5d70cec4fc87
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: d3235037d2b60322ab3e5c393c0a19b1a42bdc6c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268586"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678035"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL 应用程序中的日志记录
 
@@ -44,14 +44,14 @@ MSAL 提供了多个级别的日志记录详细信息：
 ## <a name="logging-in-msalnet"></a>在 MSAL.NET 中进行日志记录
 
  > [!NOTE]
- > 有关 MSAL.NET 的详细信息，请查看 [MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)。 获取 MSAL.NET 日志记录的示例等内容。
- 
+ > 有关 MSAL.NET 日志记录的示例，请参阅[MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) ，等等。
+
 在 MSAL 3.x 中，日志记录是在创建应用时使用 `.WithLogging` 生成器修饰符按应用程序设置的。 该方法采用以下可选参数：
 
-- *Level*：用于确定你需要哪种级别的日志记录。 将其设置为“Errors”时，就只会获得错误
-- *PiiLoggingEnabled* 在设置为 true 的情况下可以记录个人和组织数据。 默认情况下，此值设置为 "false"，因此应用程序不记录个人数据。
-- *LogCallback* 设置为一个执行日志记录的委托。 如果 *PiiLoggingEnabled* 为 true，则此方法会接收消息两次：第一次时 *containsPii* 参数为 false，消息没有个人数据；第二次时 *containsPii* 参数为 true，消息可能包含个人数据。 在某些情况下（当消息不包含个人数据时），消息将相同。
-- *DefaultLoggingEnabled* 为平台启用默认日志记录。 默认为 false。 如果将它设置为 true，它会在桌面/UWP 应用程序中使用事件跟踪，在 iOS 上使用 NSLog，在 Android 上使用 logcat。
+- `Level` 使你可以确定所需的日志记录级别。 将其设置为“Errors”时，就只会获得错误
+- 如果设置为 true，则 `PiiLoggingEnabled` 使你可以记录个人和组织数据。 默认情况下，此项设置为 false，不允许应用程序记录个人数据。
+- `LogCallback` 设置为执行日志记录的委托。 如果 @no__t 为 true，则此方法将接收两次消息：一次是使用 `containsPii` 参数等于 false，不包含个人数据，第二次使用 `containsPii` 参数等于 true，消息可能包含个人数据。 在某些情况下（消息不含个人数据），消息是相同的。
+- @no__t 为平台启用默认日志记录。 默认为 false。 如果将它设置为 true，它会在桌面/UWP 应用程序中使用事件跟踪，在 iOS 上使用 NSLog，在 Android 上使用 logcat。
 
 ```csharp
 class Program
@@ -80,16 +80,54 @@ class Program
  }
  ```
 
- ## <a name="logging-in-msaljs"></a>MSAL.js 中的日志记录
+## <a name="logging-in-msal-for-android-using-java"></a>使用 Java 登录 MSAL for Android
 
- 可以在 MSAL.js 中启用日志记录，方法是在配置过程中传递一个记录器对象，以便创建 `UserAgentApplication` 实例。 此记录器对象具有以下属性：
+通过创建日志记录回拨，在创建应用程序时启用日志记录。 回调采用以下参数：
+
+- `tag` 是由库传递到回调的字符串。 它与日志条目相关联，并且可用于对日志记录消息进行排序。
+- `logLevel` 使你可以确定所需的日志记录级别。 支持的日志级别为： `Error`、`Warning`、`Info` 和 @no__t 为3。
+- @no__t 为日志条目的内容。
+- @no__t 指定是否记录包含个人数据或组织数据的消息。 默认情况下，此设置为 "false"，以便您的应用程序不记录个人数据。 如果 `containsPII` @no__t 为-1，则此方法将接收两次消息：一次：将 `containsPII` 参数设置为 `false` 和不包含个人数据的 `message` 参数，第二次将 @no__t 参数设置为 `true`，消息可能包含个人数据。 在某些情况下（消息不含个人数据），消息是相同的。
+
+```java
+private StringBuilder mLogs;
+
+mLogs = new StringBuilder();
+Logger.getInstance().setExternalLogger(new ILoggerCallback()
+{
+   @Override
+   public void log(String tag, Logger.LogLevel logLevel, String message, boolean containsPII)
+   {
+      mLogs.append(message).append('\n');
+   }
+});
+```
+
+默认情况下，MSAL 记录器将不会捕获任何个人身份信息或组织身份信息。
+启用个人身份信息或组织身份信息的日志记录：
+
+```java
+Logger.getInstance().setEnablePII(true);
+```
+
+禁用日志记录个人数据和组织数据：
+
+```java
+Logger.getInstance().setEnablePII(false);
+```
+
+默认情况下，将禁用日志记录到 logcat。 若要启用： 
+```java
+Logger.getInstance().setEnableLogcatLog(true);
+```
+
+## <a name="logging-in-msaljs"></a>MSAL.js 中的日志记录
+
+ 在配置期间通过传递记录器对象来启用 MSAL 中的日志记录，以创建 @no__t 的实例。 此记录器对象具有以下属性：
 
 - `localCallback`：一个回调实例，开发人员可以提供该实例以通过自定义方式使用和发布日志。 根据所需要的重定向日志的方式，实现 localCallback 方法。
-
-- `level`（可选）：可配置的日志级别。 支持的日志级别为：错误、警告、信息、详细。 默认值为“信息”。
-
-- `piiLoggingEnabled`（可选）：如果设置为 true，则允许您记录个人和组织数据。 默认情况下，此值设置为 "false"，以便您的应用程序不记录个人数据。 个人数据日志不会写入到默认的输出（例如控制台、Logcat 或 NSLog）中。 默认设置为 false。
-
+- `level`（可选）：可配置的日志级别。 支持的日志级别为： `Error`、`Warning`、`Info` 和 @no__t 为3。 默认值为 `Info`。
+- `piiLoggingEnabled` （可选）：如果设置为 true，则记录个人和组织数据。 默认情况下，此值为 false，以便您的应用程序不记录个人数据。 个人数据日志不会写入到默认的输出（例如控制台、Logcat 或 NSLog）中。
 - `correlationId`（可选）：一个唯一标识符，用于将请求映射到用于调试目的的响应。 默认为 RFC4122 版本 4 guid（128 位）。
 
 ```javascript
@@ -99,7 +137,7 @@ function loggerCallback(logLevel, message, containsPii) {
 
 var msalConfig = {
     auth: {
-        clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”,
+        clientId: “<Enter your client id>”,
     },
      system: {
              logger: new Msal.Logger(

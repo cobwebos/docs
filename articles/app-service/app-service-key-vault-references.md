@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 9c7f920c6b66995d53ef742a9faf574286a51d69
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: cf4eade598de24e323a8c8647a64921f8797e3a2
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390445"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686737"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>使用应用服务和 Azure Functions 的 Key Vault 引用（预览版）
 
@@ -188,7 +188,7 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 
 ## <a name="troubleshooting-key-vault-references"></a>Key Vault 引用疑难解答
 
-如果引用未正确解析，则将改用引用值。 这意味着，对于应用程序设置，将创建值具有`@Microsoft.KeyVault(...)`语法的环境变量。 这可能导致应用程序引发错误，因为它需要特定结构的机密。
+如果引用未正确解析，则将改用引用值。 这意味着，对于应用程序设置，将创建值具有 @no__t 的语法的环境变量。 这可能导致应用程序引发错误，因为它需要特定结构的机密。
 
 最常见的原因是， [Key Vault 访问策略](#granting-your-app-access-to-key-vault)的配置错误。 但是，这也可能是由于机密已不再存在，或者引用本身中存在语法错误。
 
@@ -197,7 +197,7 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 ### <a name="using-the-detector-for-app-service"></a>使用应用程序服务的检测程序
 
 1. 在门户中，导航到你的应用。
-2. 选择 "**诊断并解决 prolems**"。
+2. 选择 "**诊断并解决问题**"。
 3. 选择 "**可用性和性能**"，然后选择 " **Web 应用"。**
 4. 查找**Key Vault 应用程序设置诊断**，并单击 "**详细信息**"。
 
@@ -206,6 +206,6 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 
 1. 在门户中，导航到你的应用。
 2. 导航到 "**平台功能"。**
-3. 选择 "**诊断并解决 prolems**"。
+3. 选择 "**诊断并解决问题**"。
 4. 选择 "**可用性和性能**"，然后选择 "**函数应用关闭" 或 "报告错误"。**
 5. 单击 " **Key Vault 应用程序设置**" "诊断"。

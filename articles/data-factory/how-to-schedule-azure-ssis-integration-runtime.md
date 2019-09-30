@@ -13,19 +13,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d7a4a54f979cd4b14e12c5a57792241f1b2388d2
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: b1f963eb804adc0f40749957e9052f2deba08ef6
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734706"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687108"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure-SSIS Integration Runtime
 本文介绍如何使用 Azure 数据工厂 (ADF) 计划 Azure-SSIS Integration Runtime (IR) 的启动和停止。 Azure-SSIS IR 是专用于执行 SQL Server Integration Services (SSIS) 包的 ADF 计算资源。 运行 Azure-SSIS IR 会产生相关成本。 因此，通常只有在需要在 Azure 中运行 SSIS 包时才运行 IR，而不再需要该包时则停止 IR。 可以使用 ADF 用户界面 (UI)/应用或 Azure PowerShell [手动启动或停止 IR](manage-azure-ssis-integration-runtime.md)。
 
 或者，可以在 ADF 管道中创建 Web 活动，以按计划启动/停止 IR，例如，在早上执行每日 ETL 工作负载之前启动 IR，并在下午完成后将其停止。  还可以在启动和停止 IR 的两个 Web 活动之间链接一个执行 SSIS 包活动，这样 IR 就会按需在包执行之前/之后及时启动/停止。 有关执行 SSIS 包活动的详细信息，请参阅[在 ADF 管道中使用执行 SSIS 包活动运行 SSIS 包](how-to-invoke-ssis-package-ssis-activity.md)一文。
 
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 如果尚未配置 Azure-SSIS IR，请按照[教程](tutorial-create-azure-ssis-runtime-portal.md)中的说明进行配置。 
@@ -241,15 +241,15 @@ ms.locfileid: "68734706"
 
 ### <a name="import-adf-modules"></a>导入 ADF 模块
 
-1. 在“共享资源”部分的左侧菜单中选择“模块”，确认模块列表中是否包含“AzureRM.Profile” + “AzureRM.DataFactoryV2”。
+1. 在左侧菜单上的 "**共享资源**" 部分中选择 "**模块**"，并验证模块**列表中是否**有**az. DataFactory**@no__t。
 
    ![验证所需的模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  如果没有“AzureRM.DataFactoryV2”，请转到 [AzureRM.DataFactoryV2 模块](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/)的“PowerShell 库”，选择“部署到 Azure 自动化”，选择 Azure 自动化帐户，然后选择“确定”。 返回查看左侧菜单“共享资源”部分中的“模块”并等待，直到看到 AzureRM.DataFactoryV2 模块的“状态”更改为“可用”。
+2.  如果没有**DataFactory**，请参阅[DataFactory 模块](https://www.powershellgallery.com/packages/Az.DataFactory/)的 PowerShell 库，选择 "**部署到 Azure 自动化**"，选择 Azure 自动化帐户，然后选择 **"确定"** 。 返回到左侧菜单上的 "**共享资源**" 部分中的 "查看**模块**"，并等待，直到看到**Az. DataFactory**模块的**状态**更改为 "**可用**"。
 
     ![验证数据工厂模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  如果没有“AzureRM.Profile”，请转到 [AzureRM.Profile 模块](https://www.powershellgallery.com/packages/AzureRM.profile/)的 PowerShell 库，选择“部署到 Azure 自动化”，选择你的 Azure 自动化帐户，然后选择“确定”。 返回查看左侧菜单“共享资源”部分中的“模块”并等待，直到看到 AzureRM.Profile 模块的“状态”更改为“可用”。
+3.  如果你没有**az. profile**，请前往[az. profile 模块](https://www.powershellgallery.com/packages/Az.profile/)的 PowerShell 库，选择 "**部署到 azure 自动化**"，选择你的 Azure 自动化帐户，然后选择 **"确定"** 。 返回到左侧菜单上的 "**共享资源**" 部分中的 "查看**模块**"，并等待，直到看到**Az. Profile**模块的**状态**更改为 "**可用**"。
 
     ![验证配置文件模块](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
@@ -330,7 +330,7 @@ ms.locfileid: "68734706"
 
    ![“启动 Runbook”按钮](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png)
     
-5. 在 "**启动 Runbook** " 窗格中, 执行以下操作: 
+5. 在 "**启动 Runbook** " 窗格中，执行以下操作： 
 
     1. 对“资源组名称”，请输入具有 Azure-SSIS IR 的 ADF 的资源组的名称。 
     2. 对于“数据工厂名称”，请使用 Azure-SSIS IR 输入 ADF 的名称。 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69924674fba44595e4f5a9702607579d8c7a8bc8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 8cb5c82e551ed6299f754f518ebeebca0be4964d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064472"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679303"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
 
@@ -53,11 +53,7 @@ ms.locfileid: "71064472"
 
 ## <a name="register-an-application"></a>注册应用程序
 
-1. 在 B2C 设置中，选择“应用程序”，然后选择“添加”。
-2. 输入应用程序名称，例如 *ROPC_Auth_app*。
-3. 对“Web 应用/Web API”选择“否”，然后对“本机客户端”选择“是”。
-4. 保留所有其他值不变，然后选择“创建”。
-5. 选择新应用程序，并记下应用程序 ID 供以后使用。
+[!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
 ## <a name="test-the-user-flow"></a>测试用户流
 

@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3a0761fad32b2cfb0387cca79b6c1c0dc83c8e98
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345421"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675087"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的资源、属性或变量迭代
 
@@ -57,7 +57,7 @@ count 不能为负数。 如果部署 Azure PowerShell 2.6 或更高版本的模
 
 ## <a name="resource-iteration"></a>资源迭代
 
-在部署期间必须决定创建一个还是多个资源实例时，请将 `copy` 元素添加到资源类型。 在 copy 元素中，为此循环指定迭代次数和名称。
+如果要在部署中创建资源的多个实例，请将 `copy` 元素添加到资源类型。 在 copy 元素中，为此循环指定迭代次数和名称。
 
 要多次创建的资源采用以下格式：
 

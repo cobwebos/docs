@@ -1,25 +1,25 @@
 ---
 title: 使用 Azure Monitor 创建、查看和管理日志警报 |Microsoft Docs
 description: 使用 Azure Monitor 创作、查看和管理 Azure 中的日志警报规则。
-author: msvijayn
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f4d3a4d9a5785ae350874c400384477da1a6c22e
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: d540912d280302d2ae2166b75fb2d163458d7a61
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774718"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677833"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报
 
 ## <a name="overview"></a>概述
 本文展示了如何使用 Azure 门户中的警报界面设置日志警报。 警报规则的定义分为三个部分：
-- 目标:要监视的特定 Azure 资源
+- 目标：要监视的特定 Azure 资源
 - 条件：特定的条件或逻辑，出现在“信号”中时，应触发操作
 - 操作：发送到通知接收方 - 电子邮件、短信、Webhook 等的特定调用。
 
@@ -322,7 +322,7 @@ Azure Monitor - [计划查询规则 API](https://docs.microsoft.com/rest/api/mon
 > [!NOTE]
 > ScheduledQueryRules PowerShell cmdlet 只能管理使用 cmdlet 本身或 Azure Monitor - [计划查询规则 API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) 创建的规则。 仅当用户[切换 Log Analytics 警报的 API 首选项](alerts-log-api-switch.md)后，使用旧版 [Log Analytics 警报 API](api-alerts.md) 和 [Log Analytics 保存的搜索和警报](../insights/solutions-resources-searches-alerts.md)的旧版模板创建的日志警报规则才能使用 ScheduledQueryRules PowerShell cmdlet 进行管理。
 
-下面是使用 scheduledQueryRules PowerShell cmdlet 创建示例日志警报规则的步骤。
+下面演示了使用 scheduledQueryRules PowerShell cmdlet 创建示例日志警报规则的步骤。
 ```powershell
 $source = New-AzScheduledQueryRuleSource -Query 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m), _ResourceId' -DataSourceId "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews"
 

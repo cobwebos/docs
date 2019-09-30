@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 253e01b6bfa6609b4ec41d69a3c4b1bbe405ba5a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 253fc940cfb42aa9bf7e93dd631d2ca596f7db6f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240286"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677869"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
 可以使用 Azure 自动化中的更新管理解决方案来管理 Azure、本地环境或其他云提供程序中的 Windows 和 Linux 计算机的操作系统更新。 可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。
 
-可以直接通过 Azure 自动化帐户为虚拟机启用更新管理。 若要了解如何通过自动化帐户为虚拟机启用更新管理，请参阅[管理多个虚拟机的更新](manage-update-multi.md)。 还可以通过 Azure 门户中的虚拟机页面为虚拟机启用更新管理。 此方案适用于 [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) 和 [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) 虚拟机。
+可以直接通过 Azure 自动化帐户为虚拟机启用更新管理。 若要了解如何通过自动化帐户为虚拟机启用更新管理，请参阅[管理多个虚拟机的更新](manage-update-multi.md)。 还可以通过 Azure 门户中的虚拟机页面为虚拟机启用更新管理。 此方案适用于 [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) 和 [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) 虚拟机。
 
 > [!NOTE]
 > 更新管理解决方案需要将 Log Analytics 工作区链接到自动化帐户。 有关受支持区域的权威列表，请参阅[Azure 工作区映射](./how-to/region-mappings.md)。 区域映射不会影响在不同于自动化帐户的区域中管理虚拟机的功能。
@@ -222,7 +222,7 @@ Heartbeat
 
 ## <a name="install-updates"></a>安装更新
 
-对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”安装必需的更新。 若要创建更新部署, 你必须拥有对自动化帐户的写入权限, 并对部署中的任何 Azure Vm 具有写入访问权限。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要详细了解计算机组, 请参阅[Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)。
+对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”安装必需的更新。 若要创建更新部署，你必须拥有对自动化帐户的写入权限，并对部署中的任何 Azure Vm 具有写入访问权限。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要详细了解计算机组, 请参阅[Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)。
 
 在更新部署中包括计算机组时，只会在创建计划时对组成员身份评估一次。 不会反映对组所做的后续更改。 若要绕过此类[动态组](#using-dynamic-groups), 请在部署时解析这些组, 并使用 Azure vm 的查询或非 Azure vm 的已保存搜索来定义这些组。
 

@@ -1,5 +1,5 @@
 ---
-title: 所有预生成的实体-LUIS
+title: 所有预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中包括的预构建实体的列表。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 0d77622e22c297cc29c93a5421da5043e396b929
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 66cdedb402392340d38ab9a72f6f19012c359664
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933564"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677626"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUIS 模型中每个区域性的实体
 
@@ -31,7 +31,7 @@ ms.locfileid: "68933564"
 |德语|[de-DE](#german-entity-support)||
 |意大利语|[it-IT](#italian-entity-support)||
 |日语|[ja-JP](#japanese-entity-support)||
-|韩语|[ko-KR](#korean-entity-support)||
+|朝鲜语|[ko-KR](#korean-entity-support)||
 |葡萄牙语|[pt-BR（巴西）](#portuguese-brazil-entity-support)||
 |西班牙语|[es-ES（西班牙）](#spanish-spain-entity-support)、[es-MX（墨西哥）](#spanish-mexico-entity-support)||
 |土耳其语|[土耳其](#turkish-entity-support)|土耳其语不支持预生成实体|
@@ -42,9 +42,9 @@ ms.locfileid: "68933564"
 
 |预生成实体|```zh-CN``` |
 ------|:------:|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>天   |    ✔   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月<br>周<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>时间<br>时间范围   |    ✔   | 
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    ✔   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -64,7 +64,7 @@ ms.locfileid: "68933564"
 
 |预生成实体|```nl-NL``` |
 ------|:------:|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>天   |    ✔   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月<br>周<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
 [型](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
@@ -86,9 +86,9 @@ ms.locfileid: "68933564"
 
 |预生成实体|```en-US``` |
 ------|:------:|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>天   |    ✔   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月<br>周<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>时间<br>时间范围   |    ✔   | 
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    ✔   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    ✔   | 
@@ -108,9 +108,9 @@ ms.locfileid: "68933564"
 
 |预生成实体|```fr-FR``` |
 ------|:------:|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>天   |    ✔   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月<br>周<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>时间<br>时间范围   |    ✔   | 
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    ✔   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -130,9 +130,9 @@ ms.locfileid: "68933564"
 
 |预生成实体|```fr-CA``` |
 ------|:------:|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>天   |    ✔   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月<br>周<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>时间<br>时间范围   |    ✔   | 
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    ✔   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -152,9 +152,9 @@ ms.locfileid: "68933564"
 
 |预生成实体|```de-DE``` |
 ------|:------:|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>天   |    ✔   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月<br>周<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>时间<br>时间范围   |    ✔   | 
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    ✔   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -174,7 +174,7 @@ ms.locfileid: "68933564"
 
 |预生成实体|```it-IT``` |
 ------|:------:|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>天   |    ✔   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月<br>周<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
 [型](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
@@ -196,7 +196,7 @@ ms.locfileid: "68933564"
 
 |预生成实体|```ja-JP``` |
 ------|:------:|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>天   |    ✔   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月<br>周<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
 [型](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
@@ -218,7 +218,7 @@ ms.locfileid: "68933564"
 
 |预生成实体|```ko-KR``` |
 ------|:------:|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>天   |    -   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月<br>周<br>day   |    -   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    -   |
 [型](luis-reference-prebuilt-deprecated.md)   |    -   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    -   | 
@@ -240,9 +240,9 @@ ms.locfileid: "68933564"
 
 |预生成实体|```pt-BR``` |
 ------|:------:|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>天   |    ✔   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月<br>周<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>时间<br>时间范围   |    ✔   | 
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    ✔   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -262,9 +262,9 @@ ms.locfileid: "68933564"
 
 |预生成实体|```es-ES``` |
 ------|:------:|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>天   |    ✔   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月<br>周<br>day   |    ✔   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>时间<br>时间范围   |    ✔   | 
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    ✔   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    ✔   | 
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -284,9 +284,9 @@ ms.locfileid: "68933564"
 
 |预生成实体|```es-MX``` |
 ------|:------:|
-[存在时长](luis-reference-prebuilt-age.md)：<br>年<br>月<br>周<br>天   |    -   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月<br>周<br>day   |    -   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    -   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>时间<br>时间范围   |    -   | 
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    -   | 
 [维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    -   | 
 [电子邮件](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 

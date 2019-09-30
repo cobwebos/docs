@@ -4,20 +4,20 @@ description: 使用声明性 JSON 语法描述 Azure 资源管理器模板的结
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4a5c1a99911c31f539d4f55adefb2c5f06243dd0
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6b027acc5a8a8b7660d5640ff4af335e51fd2dbf
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984099"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676880"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 
 本文介绍 Azure 资源管理器模板的结构。 演示了模板的不同部分，以及可在相应部分使用的属性。
 
-本文面向对资源管理器模板有一定了解的用户， 它提供有关模板结构的详细信息。 若要了解如何创建模板，请参阅[Azure 资源管理器模板](template-deployment-overview.md)。
+本文面向对资源管理器模板有一定了解的用户， 其中提供了有关模板结构的详细信息。 有关创建模板的简介，请参阅 [Azure 资源管理器模板](template-deployment-overview.md)。
 
 ## <a name="template-format"></a>模板格式
 
@@ -51,7 +51,7 @@ ms.locfileid: "70984099"
 
 ## <a name="parameters"></a>Parameters
 
-在模板的 parameters 节中，可以指定在部署资源时能够输入的值。 一个模板中最多可以有 256 个参数。 您可以使用包含多个属性的对象来减少参数的数量。
+在模板的 parameters 节中，可以指定在部署资源时能够输入的值。 一个模板中最多可以有 256 个参数。 可以通过使用包含多个属性的对象来减少参数的数目。
 
 参数的可用属性为：
 
@@ -74,8 +74,8 @@ ms.locfileid: "70984099"
 
 | 元素名称 | 必填 | 描述 |
 |:--- |:--- |:--- |
-| 参数-名称 |是 |参数的名称。 必须是有效的 JavaScript 标识符。 |
-| type |是 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 |
+| parameter-name |是 |参数的名称。 必须是有效的 JavaScript 标识符。 |
+| type |是 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 请参阅[数据类型](#data-types)。 |
 | defaultValue |否 |参数的默认值，如果没有为参数提供任何值。 |
 | allowedValues |否 |用来确保提供正确值的参数的允许值数组。 |
 | minValue |否 |int 类型参数的最小值，此值是包容性的。 |
@@ -84,7 +84,19 @@ ms.locfileid: "70984099"
 | maxLength |否 |string、secure string 和 array 类型参数的最大长度，此值是包容性的。 |
 | description |否 |通过门户向用户显示的参数的说明。 有关详细信息，请参阅[模板中的注释](#comments)。 |
 
-有关如何使用参数的示例，请参阅[Azure 资源管理器模板中的参数](template-parameters.md)。
+有关如何使用参数的示例，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
+
+### <a name="data-types"></a>数据类型
+
+整数类型的范围为-2147483648 到2147483647。 但是，资源类型可能对整数属性应用下限。
+
+在模板中指定布尔值和整数值时，不要将值括在引号中。 用双引号开始和结束字符串值。
+
+对象以左大括号开头，以右大括号结束。 数组以左方括号开头，并以右方括号结束。
+
+在部署资源后，无法读取安全字符串和安全对象。
+
+有关设置数据类型格式的示例，请参阅[参数类型格式](resource-manager-parameter-files.md#parameter-type-formats)。
 
 ## <a name="variables"></a>变量
 
@@ -119,11 +131,11 @@ ms.locfileid: "70984099"
 
 有关使用 `copy` 为变量创建多个值的信息，请参阅[变量迭代](resource-group-create-multiple.md#variable-iteration)。
 
-有关如何使用变量的示例，请参阅[Azure 资源管理器模板中的变量](template-variables.md)。
+有关如何使用变量的示例，请参阅 [Azure 资源管理器模板中的变量](template-variables.md)。
 
-## <a name="functions"></a>函数
+## <a name="functions"></a>Functions
 
-在模板中，可以创建自己的函数。 这些函数可在模板中使用。 通常，定义不想要在整个模板中重复执行的复杂表达式。 从模板中支持的表达式和[函数](resource-group-template-functions.md)创建用户定义函数。
+在模板中，可以创建自己的函数。 这些函数可在模板中使用。 通常，您可以定义不希望在整个模板中重复的复杂表达式。 从模板中支持的表达式和[函数](resource-group-template-functions.md)创建用户定义函数。
 
 定义用户函数时，存在一些限制：
 
@@ -157,14 +169,14 @@ ms.locfileid: "70984099"
 
 | 元素名称 | 必填 | 描述 |
 |:--- |:--- |:--- |
-| 命名空间 |是 |自定义函数的命名空间。 使用可避免与模板函数发生命名冲突。 |
-| 函数名称 |是 |自定义函数的名称。 调用函数时，将函数名称与命名空间组合在一起。 例如，若要在命名空间 contoso 中调用名为 uniqueName 的函数`"[contoso.uniqueName()]"`，请使用。 |
-| 参数-名称 |否 |要在自定义函数中使用的参数的名称。 |
-| 参数-值 |否 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 |
-| 输出类型 |是 |输出值的类型。 输出值支持的类型与函数输入参数相同。 |
-| output-值 |是 |计算并从函数返回的模板语言表达式。 |
+| 命名空间 |是 |自定义函数的命名空间。 用于避免与模板函数的命名冲突。 |
+| function-name |是 |自定义函数的名称。 调用函数时，将函数名称与命名空间组合在一起。 例如，若要在命名空间 contoso 中调用名为 uniqueName 的函数，请使用 `"[contoso.uniqueName()]"`。 |
+| parameter-name |否 |要在自定义函数中使用的参数的名称。 |
+| parameter-value |否 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 |
+| output-type |是 |输出值的类型。 输出值支持的类型与函数输入参数相同。 |
+| output-value |是 |由函数计算并返回的模板语言表达式。 |
 
-有关如何使用自定义函数的示例，请参阅[Azure 资源管理器模板中的用户定义函数](template-user-defined-functions.md)。
+有关如何使用自定义函数的示例，请参阅 [Azure 资源管理器模板中的用户定义函数](template-user-defined-functions.md)。
 
 ## <a name="resources"></a>资源
 
@@ -231,7 +243,7 @@ ms.locfileid: "70984099"
 | 条件 | 否 | 布尔值，该值指示在此部署期间是否将预配资源。 为 `true` 时，在部署期间创建资源。 为 `false` 时，此部署将跳过资源。 请参阅[条件](conditional-resource-deployment.md)。 |
 | apiVersion |是 |用于创建资源的 REST API 版本。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
 | type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型（例如 **Microsoft.Storage/storageAccounts**）的组合。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 对于子资源，类型的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
-| name |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 向外部方公开资源名称的 Azure 服务将验证名称，以确保它不会尝试欺骗其他标识。 对于子资源，名称的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
+| name |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 向外部各方公开资源名称的 Azure 服务会验证名称，以确保它不是试图窃取另一标识。 对于子资源，名称的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
 | location |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常最好选取一个接近用户的位置。 通常，在同一区域放置彼此交互的资源也很有用。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 请参阅[设置资源位置](resource-location.md)。 |
 | 标记 |否 |与资源关联的标记。 应用标签以跨订阅按逻辑对资源进行组织。 |
 | 注释 |否 |用于描述模板中资源的注释。 有关详细信息，请参阅[模板中的注释](resource-group-authoring-templates.md#comments)。 |
@@ -239,7 +251,7 @@ ms.locfileid: "70984099"
 | dependsOn |否 |必须在部署此资源前部署的资源。 Resource Manager 评估资源之间的依赖关系，并根据正确顺序进行部署。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 仅列出在此模板中部署的资源。 未在此模板中定义的资源必须是已存在的资源。 避免添加不必要的依赖项，因为这些依赖项可能会降低部署速度并创建循环依赖项。 有关设置依赖项的指导，请参阅[在 Azure 资源管理器模板中定义依赖项](resource-group-define-dependencies.md)。 |
 | properties |否 |特定于资源的配置设置。 properties 的值与创建资源时，在 REST API 操作（PUT 方法）的请求正文中提供的值相同。 还可以指定副本数组，为一个属性创建多个实例。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
 | sku | 否 | 某些资源接受定义了要部署的 SKU 的值。 例如，可以为存储帐户指定冗余类型。 |
-| kind | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
+| 种类 | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
 | 计划 | 否 | 某些资源接受定义了要部署的计划的值。 例如，可以为虚拟机指定市场映像。 | 
 | 资源 |否 |依赖于所定义的资源的子资源。 只能提供父资源的架构允许的资源类型。 不隐式表示对父资源的依赖。 必须显式定义该依赖关系。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
 
@@ -261,12 +273,12 @@ ms.locfileid: "70984099"
 
 | 元素名称 | 必填 | 描述 |
 |:--- |:--- |:--- |
-| 输出-名称 |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
+| output-name |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
 | condition |否 | 指示此输出值是否返回的布尔值。 如果为 `true`，则该值包含在部署的输出中。 如果为 `false`，则此部署将跳过输出值。 如果未指定，则默认值为 `true`。 |
 | type |是 |输出值的类型。 输出值支持的类型与模板输入参数相同。 如果指定 **securestring** 作为输出类型，则值不会显示在部署历史记录中，并且无法从另一个模板检索。 若要在多个模板中使用机密值，请在 Key Vault 中存储该机密，并在参数文件中引用该机密。 有关详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](resource-manager-keyvault-parameter.md)。 |
 | value |是 |评估并作为输出值返回的模板语言表达式。 |
 
-有关如何使用输出的示例，请参阅[Azure 资源管理器模板中的输出](template-outputs.md)。
+有关如何使用输出的示例，请参阅 [Azure 资源管理器模板中的输出](template-outputs.md)。
 
 <a id="comments" />
 

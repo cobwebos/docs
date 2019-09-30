@@ -1,28 +1,28 @@
 ---
 title: 从旧 Log Analytics 警报 API 切换到新 Azure 警报 API
-description: 基于旧的基于 savedSearch Log Analytics 警报 API 和处理将警报规则切换到新 ScheduledQueryRules API 的过程的概述, 并提供了解决常见客户问题的详细信息。
-author: msvijayn
+description: 概述基于 savedSearch 的旧 Log Analytics 警报 API 以及将警报规则切换到新的 ScheduledQueryRules API 的过程，其中详细说明了常见的客户问题。
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8f23d19b06152b633df6688489753498c86aee27
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7b3a09c9227110d6dba205987903a2c97dccf1b8
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034785"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677793"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>切换日志警报的 API 首选项
 
 > [!NOTE]
-> 所述内容适用于仅适用于 azure 公有云的用户,**不适**用于 azure 政府版或 azure 中国云。  
+> 所述内容仅适用于 Azure 公有云用户，**不**适用于 Azure 政府或 Azure 中国云用户。  
 
 直到最近都是在 Microsoft Operations Management Suite 门户中管理警报规则。 新警报体验与 Microsoft Azure 中的各种服务集成（包括 Log Analytics），我们要求[将警报规则从 OMS 门户扩展到 Azure](alerts-extend.md)。 但是为了确保针对客户尽量减少中断，该过程未更改供其使用的编程接口（基于 SavedSearch 的 [Log Analytics 警报 API](api-alerts.md)）。
 
-但是现在宣布面向 Log Analytics 警报用户推出了真正的 Azure 编程替代方式，即 [Azure Monitor - ScheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)，这也在 [Azure 计费 - 用于日志警报](alerts-unified-log.md#pricing-and-billing-of-log-alerts)中得到了反映。 若要详细了解如何使用 API 管理日志警报, 请参阅使用[Azure 资源模板管理日志警报](alerts-log.md#managing-log-alerts-using-azure-resource-template)和[使用 PowerShell 管理日志警报](alerts-log.md#managing-log-alerts-using-powershell)。
+但是现在宣布面向 Log Analytics 警报用户推出了真正的 Azure 编程替代方式，即 [Azure Monitor - ScheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)，这也在 [Azure 计费 - 用于日志警报](alerts-unified-log.md#pricing-and-billing-of-log-alerts)中得到了反映。 若要详细了解如何使用该 API 管理日志警报，请参阅[使用 Azure 资源模板管理日志警报](alerts-log.md#managing-log-alerts-using-azure-resource-template)和[使用 PowerShell 管理日志警报](alerts-log.md#managing-log-alerts-using-powershell)。
 
 ## <a name="benefits-of-switching-to-new-azure-api"></a>切换到新 Azure API 的好处
 

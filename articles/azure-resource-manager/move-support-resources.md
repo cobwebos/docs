@@ -4,14 +4,14 @@ description: 列出了可移动到新资源组或订阅的 Azure 资源类型。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 09/06/2019
+ms.date: 09/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9dc86fe7876a050fe67ec73a665be6141a4b98da
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: b34c244708c52ec7324c766286aff8ee9340db0b
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801359"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687117"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出了 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
@@ -72,7 +72,6 @@ ms.locfileid: "70801359"
 > - [Microsoft.Devices](#microsoftdevices)
 > - [Microsoft.DevSpaces](#microsoftdevspaces)
 > - [Microsoft.DevTestLab](#microsoftdevtestlab)
-> - [microsoft.dns](#microsoftdns)
 > - [Microsoft.DocumentDB](#microsoftdocumentdb)
 > - [Microsoft.DomainRegistration](#microsoftdomainregistration)
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
@@ -119,7 +118,7 @@ ms.locfileid: "70801359"
 > - [Microsoft.ProjectOxford](#microsoftprojectoxford)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
-> - [ResourceGraph](#microsoftresourcegraph)
+> - [Microsoft.ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft.SaaS](#microsoftsaas)
 > - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
@@ -220,8 +219,8 @@ ms.locfileid: "70801359"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | automationaccounts | 是 | 是 |
-> | automationaccounts/配置 | 是 | 是 |
-> | automationaccounts/runbook | 是 | 是 |
+> | automationaccounts/configurations | 是 | 是 |
+> | automationaccounts/runbooks | 是 | 是 |
 
 > [!IMPORTANT]
 > Runbook 必须与自动化帐户存在于同一资源组中。
@@ -315,7 +314,7 @@ ms.locfileid: "70801359"
 > | redis | 是 | 是 |
 
 > [!IMPORTANT]
-> 如果为 Redis 实例的 Azure Cache 配置了虚拟网络，则无法将该实例移到不同的订阅。 请参阅[网络移动限制](./move-limitations/networking-move-limitations.md)。
+> 如果 Azure Redis 缓存实例配置了虚拟网络，则无法将该实例移到其他订阅。 请参阅[网络移动限制](./move-limitations/networking-move-limitations.md)。
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
@@ -324,7 +323,7 @@ ms.locfileid: "70801359"
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallpolicies | 否 | 否 |
 > | profiles | 是 | 是 |
-> | 配置文件/终结点 | 是 | 是 |
+> | profiles/endpoints | 是 | 是 |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
@@ -385,15 +384,15 @@ ms.locfileid: "70801359"
 > | diskencryptionsets | 否 | 否 |
 > | 磁盘 | 是 | 是 |
 > | galleries | 否 | 否 |
-> | 库/图像 | 否 | 否 |
-> | 库/图像/版本 | 否 | 否 |
+> | galleries/images | 否 | 否 |
+> | galleries/images/versions | 否 | 否 |
 > | hostgroups | 否 | 否 |
-> | hostgroups/主机 | 否 | 否 |
+> | hostgroups/hosts | 否 | 否 |
 > | 映像 | 是 | 是 |
 > | proximityplacementgroups | 否 | 否 |
 > | restorepointcollections | 否 | 否 |
 > | sharedvmimages | 否 | 否 |
-> | sharedvmimages/版本 | 否 | 否 |
+> | sharedvmimages/versions | 否 | 否 |
 > | 快照 | 是 | 是 |
 > | virtualmachines | 是 | 是 |
 > | virtualmachines/extensions | 是 | 是 |
@@ -422,10 +421,10 @@ ms.locfileid: "70801359"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | registries | 是 | 是 |
-> | 注册表/buildtasks | 是 | 是 |
-> | 注册表/复制 | 是 | 是 |
-> | 注册表/任务 | 是 | 是 |
-> | 注册表/webhook | 是 | 是 |
+> | registries/buildtasks | 是 | 是 |
+> | registries/replications | 是 | 是 |
+> | registries/tasks | 是 | 是 |
+> | registries/webhooks | 是 | 是 |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
@@ -462,7 +461,7 @@ ms.locfileid: "70801359"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | hubs | 是 | 是 |
+> | 中心 | 是 | 是 |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
@@ -542,8 +541,8 @@ ms.locfileid: "70801359"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | services | 否 | 否 |
-> | 服务/项目 | 否 | 否 |
+> | 服务 | 否 | 否 |
+> | services/projects | 否 | 否 |
 > | slots | 否 | 否 |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
@@ -587,7 +586,7 @@ ms.locfileid: "70801359"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | elasticpools | 否 | 否 |
-> | elasticpools / iothubtenants | 否 | 否 |
+> | elasticpools/iothubtenants | 否 | 否 |
 > | iothubs | 是 | 是 |
 > | provisioningservices | 是 | 是 |
 
@@ -610,21 +609,6 @@ ms.locfileid: "70801359"
 > | 实验室/virtualmachines | 是 | 否 |
 > | schedules | 是 | 是 |
 
-## <a name="microsoftdns"></a>microsoft.dns
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 资源组 | 订阅 |
-> | ------------- | ----------- | ---------- |
-> | dnszones | 否 | 否 |
-> | dnszones/a | 否 | 否 |
-> | dnszones/aaaa | 否 | 否 |
-> | dnszones/cname | 否 | 否 |
-> | dnszones/mx | 否 | 否 |
-> | dnszones/ptr | 否 | 否 |
-> | dnszones/srv | 否 | 否 |
-> | dnszones/txt | 否 | 否 |
-> | trafficmanagerprofiles | 否 | 否 |
-
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
@@ -644,7 +628,7 @@ ms.locfileid: "70801359"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | services | 是 | 是 |
+> | 服务 | 是 | 是 |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
@@ -694,7 +678,7 @@ ms.locfileid: "70801359"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | services | 是 | 是 |
+> | 服务 | 是 | 是 |
 
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
@@ -734,7 +718,7 @@ ms.locfileid: "70801359"
 > | notificationrules | 否 | 否 |
 > | scheduledqueryrules | 是 | 是 |
 > | webtests | 是 | 是 |
-> | workbooks | 是 | 是 |
+> | 工作簿 | 是 | 是 |
 
 > [!IMPORTANT]
 > 确保移到新订阅时，不会超出[订阅配额](../azure-subscription-service-limits.md#azure-monitor-limits)。
@@ -752,7 +736,7 @@ ms.locfileid: "70801359"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | 是 | 是 |
-> | 图形 | 是 | 是 |
+> | graph | 是 | 是 |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -880,8 +864,8 @@ ms.locfileid: "70801359"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | mediaservices | 是 | 是 |
-> | windowsazure.mediaservices/liveevents | 是 | 是 |
-> | windowsazure.mediaservices/streamingendpoint | 是 | 是 |
+> | mediaservices/liveevents | 是 | 是 |
+> | mediaservices/streamingendpoints | 是 | 是 |
 
 ## <a name="microsoftmicroservices4spring"></a>Microservices4Spring
 
@@ -938,12 +922,12 @@ ms.locfileid: "70801359"
 > | networkprofiles | 否 | 否 |
 > | networksecuritygroups | 是 | 是 |
 > | networkwatchers | 是 | 是 |
-> | networkwatchers / connectionmonitors | 是 | 是 |
-> | networkwatchers/重用功能区 | 是 | 是 |
-> | networkwatchers / pingmeshes | 是 | 是 |
+> | networkwatchers/connectionmonitors | 是 | 是 |
+> | networkwatchers/lenses | 是 | 是 |
+> | networkwatchers/pingmeshes | 是 | 是 |
 > | p2svpngateways | 否 | 否 |
 > | privatednszones | 是 | 是 |
-> | privatednszones / virtualnetworklinks | 是 | 是 |
+> | privatednszones/virtualnetworklinks | 是 | 是 |
 > | privateendpoints | 否 | 否 |
 > | privatelinkservices | 否 | 否 |
 > | publicipaddresses | 是 - 基本 SKU<br>否 - 标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
@@ -958,8 +942,8 @@ ms.locfileid: "70801359"
 > | virtualnetworks | 是 | 是 |
 > | virtualnetworktaps | 否 | 否 |
 > | virtualwans | 否 | 否 |
-> | vpngateways （虚拟 WAN） | 否 | 否 |
-> | vpnsites （虚拟 WAN） | 否 | 否 |
+> | vpngateways（虚拟 WAN） | 否 | 否 |
+> | vpnsites（虚拟 WAN） | 否 | 否 |
 > | webapplicationfirewallpolicies | 是 | 是 |
 
 > [!IMPORTANT]
@@ -971,7 +955,7 @@ ms.locfileid: "70801359"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | 命名空间 | 是 | 是 |
-> | 命名空间/notificationhubs | 是 | 是 |
+> | namespaces/notificationhubs | 是 | 是 |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
@@ -1113,7 +1097,7 @@ ms.locfileid: "70801359"
 > | ------------- | ----------- | ---------- |
 > | 应用程序 | 否 | 否 |
 > | clusters | 是 | 是 |
-> | 群集/应用程序 | 否 | 否 |
+> | clusters/applications | 否 | 否 |
 > | containergroups | 否 | 否 |
 > | containergroupsets | 否 | 否 |
 > | edgeclusters | 否 | 否 |
@@ -1168,10 +1152,10 @@ ms.locfileid: "70801359"
 > | ------------- | ----------- | ---------- |
 > | instancepools | 否 | 否 |
 > | managedinstances | 否 | 否 |
-> | managedinstances/数据库 | 否 | 否 |
+> | managedinstances/databases | 否 | 否 |
 > | 服务器 | 是 | 是 |
-> | 服务器/数据库 | 是 | 是 |
-> | 服务器/elasticpools | 是 | 是 |
+> | servers/databases | 是 | 是 |
+> | servers/elasticpools | 是 | 是 |
 > | virtualclusters | 是 | 是 |
 
 > [!IMPORTANT]
@@ -1250,7 +1234,7 @@ ms.locfileid: "70801359"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | environments | 否 | 否 |
-> | 环境/eventsources | 否 | 否 |
+> | environments/eventsources | 否 | 否 |
 > | 实例 | 否 | 否 |
 > | 实例/环境 | 否 | 否 |
 > | 实例/环境/eventsources | 否 | 否 |
@@ -1269,8 +1253,8 @@ ms.locfileid: "70801359"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | environments | 是 | 是 |
-> | 环境/eventsources | 是 | 是 |
-> | 环境/referencedatasets | 是 | 是 |
+> | environments/eventsources | 是 | 是 |
+> | environments/referencedatasets | 是 | 是 |
 
 ## <a name="microsofttoken"></a>Microsoft.Token
 
@@ -1296,7 +1280,7 @@ ms.locfileid: "70801359"
 > | 帐户/项目 | 是 | 是 |
 
 > [!IMPORTANT]
-> 若要更改 Azure DevOps 的订阅，请参阅[更改用于计费的 Azure 订阅](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。
+> 若要更改 Azure DevOps 的订阅, 请参阅[更改用于计费的 Azure 订阅](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 
@@ -1320,7 +1304,7 @@ ms.locfileid: "70801359"
 > | serverfarms | 是 | 是 |
 > | 站点 | 是 | 是 |
 > | sites/premieraddons | 是 | 是 |
-> | 站点/槽 | 是 | 是 |
+> | sites/slots | 是 | 是 |
 
 > [!IMPORTANT]
 > 请参阅[应用服务移动指南](./move-limitations/app-service-move-limitations.md)。

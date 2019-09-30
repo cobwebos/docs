@@ -1,5 +1,5 @@
 ---
-title: 从 web 浏览器连接到 Windows 虚拟桌面预览-Azure
+title: 从 web 浏览器连接到 Windows 虚拟桌面-Azure
 description: 如何使用 web 客户端连接到 Windows 虚拟桌面。
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 961eb98bed712e3dde1b1e7ed2ec997e8992e600
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: e7fa1d2b21bfde6495a63676bc2aa1faa07e6bc5
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338674"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676752"
 ---
 # <a name="connect-with-the-web-client"></a>使用 Web 客户端进行连接
 

@@ -227,7 +227,7 @@ SAP ASCS/SCS 实例具有以下组件：
   * 文件结构:S:\usr\sap\\SID&lt;\SYS&gt;\...
   * sapmnt 文件共享，可通过使用以下 UNC 路径实现对这些全局 S:\usr\sap\\&lt;SID&gt;\SYS\... 文件的访问：
 
-    \\\\< ASCS/SCS 虚拟主机名\>\sapmnt\\&lt;SID&gt;\SYS\.。
+    \\\\< ASCS/SCS 虚拟主机名\>\sapmnt\\&lt;SID&gt;\SYS\...
 
 
 ![图 2：SAP ASCS/SCS 实例的进程、文件结构和全局主机 sapmnt 文件共享][sap-ha-guide-figure-8001]

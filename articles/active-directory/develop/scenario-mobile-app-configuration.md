@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b731c9936ab85b19428687330044a46c563c49
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 168fbb275f70acd229dfd8f2e3f0d4c325db0f94
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268369"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678019"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的移动应用 - 代码配置
 
@@ -155,9 +155,13 @@ var pca = PublicClientApplicationBuilder
 - 设备标识。 通过访问将设备加入工作区时在设备上创建的设备证书，来启用 Azure AD 设备相关的条件访问策略。
 - 应用程序标识验证。 当应用程序调用中介时，它会传递其重定向 URL，而中介会验证该 URL。
 
-### <a name="enable-the-brokers-on-xamarin"></a>在 Xamarin 上启用中介
+### <a name="enable-the-broker-on-xamarin"></a>启用 Xamarin 上的代理
 
 若要启用这些功能之一，请在调用 `PublicClientApplicationBuilder.CreateApplication` 方法时使用 `WithBroker()` 参数。 `.WithBroker()` 默认设置为 true。 对于[Xamarin](#brokered-authentication-for-xamarinios)，请遵循以下步骤。
+
+### <a name="enable-the-broker-for-msal-for-android"></a>为适用于 Android 的 MSAL 启用代理
+
+有关在 Android 上启用代理的信息，请参阅[android 中的中转身份验证](brokered-auth.md)。 
 
 ### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>为 iOS 和 macOS 启用 MSAL 代理
 

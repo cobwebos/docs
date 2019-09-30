@@ -1,5 +1,5 @@
 ---
-title: 温度预建实体-LUIS
+title: 温度预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中的温度预构建实体信息。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: ecdaec6dcade033bf99842dd384be095dd363a05
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0c16a60b0ddcde733cfbc7b9c90e07b697526015
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933402"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677394"
 ---
 # <a name="temperature-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的温度预生成实体
 “温度”提取了各种温度类型。 此实体已定型，因此不需要将包含温度的陈述示例添加到应用程序中。 [许多语言区域](luis-reference-prebuilt-entities.md)都支持存在温度实体。 
@@ -26,7 +26,7 @@ ms.locfileid: "68933402"
 
 ## <a name="resolution-for-prebuilt-temperature-entity"></a>预构建温度实体的解析
 
-### <a name="api-version-2x"></a>API 版本 2.x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
 
 以下示例显示了 **builtin.temperature** 实体的解析。
 
@@ -58,7 +58,7 @@ ms.locfileid: "68933402"
 }
 ```
 
-### <a name="preview-api-version-3x"></a>预览版 API 版本 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
 
 以下 JSON 的 `verbose` 参数设置为 `false`：
 
@@ -122,6 +122,10 @@ ms.locfileid: "68933402"
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>后续步骤
+
+了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
 
 了解[百分比](luis-reference-prebuilt-percentage.md)、[数字](luis-reference-prebuilt-number.md)和[存在时间](luis-reference-prebuilt-age.md)实体。 

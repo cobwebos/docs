@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: dalek
-ms.openlocfilehash: 62f2ea36468e30b20ef08bde21bfde961faae8f9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 448469d4c1ff15ed2ba814dfaa653c4d3c7e3452
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067019"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677820"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -30,7 +30,7 @@ ms.locfileid: "71067019"
 
 ## <a name="pricing-model"></a>定价模型
 
-[Azure Application Insights][start] 的定价基于所引入的数据量。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。
+[Azure 应用程序 Insights][start]的定价基于数据量引入，并可选择用于更长的数据保留。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。
 
 ### <a name="data-volume-details"></a>数据量详细信息
 
@@ -47,7 +47,7 @@ ms.locfileid: "71067019"
 
 单页“ping 测试”不单独计费。 进行 ping 测试和多步测试时发送的遥测数据与应用发送的其他遥测数据计费方式相同。
 
-## <a name="review-usage-and-estimate-costs"></a>查看使用情况和估计成本
+## <a name="understand-your-usage-and-estimate-costs"></a>了解你的使用情况和估计成本
 
 通过 Application Insights 可以根据最近的使用模式轻松估算成本。 若要开始使用，请在 Azure 门户中，转到 Application Insights 资源的“使用情况和估算成本”页：
 
@@ -110,11 +110,17 @@ systemEvents
 * 在单独的检测密钥之间拆分遥测。 
 * 预先聚合指标。 如果将对 TrackMetric 的调用放在应用中，则可通过使用重载降低流量，这种重载接受对一批度量值的平均偏差和标准偏差的计算结果。 也可使用[预先聚合包](https://www.myget.org/gallery/applicationinsights-sdk-labs)。
 
-## <a name="manage-the-maximum-daily-data-volume"></a>管理每日最大数据量
+## <a name="manage-your-maximum-daily-data-volume"></a>管理每日最大数据量
 
 可以使用每日容量上限，限制所收集的数据。 但是，如果达到上限，会丢失当天剩余时间从应用程序发送的所有遥测数据。 不建议使应用程序达到每日上限。 达到每日上限后，无法跟踪应用程序的运行状况和性能。
 
 不使用每日容量上限，而是使用[采样](../../azure-monitor/app/sampling.md)，将数据量调整到所需级别。 然后，仅在应用程序意外开始发送远高于预期的遥测量时，才使用每日上限作为“最后的手段”。
+
+### <a name="identify-what-daily-data-limit-to-define"></a>确定要定义的每日数据限制
+
+查看 Application Insights 使用情况和估计成本，了解数据引入趋势以及要定义的每日容量上限。 应该慎重考虑上限，因为在达到限制后，将无法监视资源。 
+
+### <a name="set-the-daily-cap"></a>设置每日上限
 
 若要更改每日上限，请在“使用情况和预估成本”页中 Application Insights 资源的“配置”部分中，选择“每日上限”。
 
@@ -160,6 +166,10 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 ![调整每日遥测数据量上限](./media/pricing/pricing-005.png)
 
 当为延长保留期启用了计费时，保留时间超过 90 天的数据将按照当前针对 Azure Log Analytics 数据保留的计费费率进行计费。 请访问[“Azure Monitor 定价”页](https://azure.microsoft.com/pricing/details/monitor/)了解更多信息。 通过[投票支持此建议](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)，随时了解可变保留进度的最新情况。 
+
+## <a name="data-transfer-charges-using-application-insights"></a>使用 Application Insights 的数据传输费用
+
+向 Application Insights 发送数据可能会导致数据带宽费用。 如[Azure 带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)中所述，位于两个区域的 azure 服务之间的数据传输以正常费率作为出站数据传输收费。 入站数据传输是免费的。 但是，这种收费非常小（几%）与 Application Insights 日志数据引入的成本比较。 因此，控制 Log Analytics 的成本需要专注于引入数据量，我们提供了有助于[了解这一点的指南。](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume)   
 
 ## <a name="limits-summary"></a>限制摘要
 

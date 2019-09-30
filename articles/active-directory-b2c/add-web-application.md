@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 50a4ead58cc70524ec464e52ce546b36f9685df5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3114f082a402fd005797b270cfdcd7527784dbe1
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064534"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679226"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>向 Azure Active Directory B2C 租户添加 Web API 应用程序
 
- 在租户中注册 Web API 资源，以便他们可以接受并响应呈现访问令牌的客户端应用程序的请求。 本文介绍如何在 Azure Active Directory B2C （Azure AD B2C）中注册应用程序。
+ 在租户中注册 web API 资源，以便客户端应用程序能够接受并响应提供访问令牌的客户端应用程序的请求。 本文介绍如何在 Azure Active Directory B2C （Azure AD B2C）中注册应用程序。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含你的租户的目录。
@@ -36,22 +36,16 @@ ms.locfileid: "71064534"
 
 可通过范围控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让 Web API 用户拥有读取和写入访问权限，或者只拥有读取访问权限。 在本教程中，请使用作用域为 Web API 定义读取和写入权限。
 
-1. 选择“应用程序”，然后选择“webapi1”。
-2. 选择“已发布的范围”。
-3. 在“范围”中输入 `Read`，在“说明”中输入 `Read access to the application`。
-4. 在“范围”中输入 `Write`，在“说明”中输入 `Write access to the application`。
-5. 单击“保存”。
-
-可以使用已发布的范围向客户端应用程序授予访问 Web API 的权限。
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
 ## <a name="grant-permissions"></a>授予权限
 
 若要从应用程序调用受保护的 Web API，需授予应用程序访问该 API 的权限。 例如，在[教程：在 Azure Active Directory B2C 中注册应用程序](tutorial-register-applications.md)中，在 Azure AD B2C 中创建了名为 *webapp1* 的 Web 应用程序。 可使用此应用程序调用 Web API。
 
 1. 选择“应用程序”，然后选择你的 Web 应用程序。
-2. 选择“API 访问”，然后选择“添加”。
-3. 在“选择 API”下拉列表中，选择“webapi1”。
-4. 在“选择范围”下拉列表中，选择之前定义的“读取”和“写入”范围。
-5. 单击 **“确定”** 。
+1. 选择“API 访问”，然后选择“添加”。
+1. 在“选择 API”下拉列表中，选择“webapi1”。
+1. 在 "**选择范围**" 下拉列表中，选择前面定义的范围。 例如，" *demo* " 和 " *demo*"。
+1. 选择“确定”。
 
 注册应用程序以调用受保护的 Web API。 用户通过 Azure AD B2C 进行身份验证，以便使用该应用程序。 应用程序从 Azure AD B2C 获取授权，以访问受保护的 Web API。

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: de849701365438b21244d1e46ae657495d16c307
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b6a78fbf2fcb12962b42537965deea6c7912315d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816402"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676534"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>诊断远程桌面中的图形性能问题
 
@@ -101,6 +101,6 @@ ms.locfileid: "68816402"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要创建 GPU 优化的 Azure 虚拟机, 请参阅[配置 Windows 虚拟桌面预览环境的图形处理单元 (GPU) 加速](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)。
+- 若要创建 GPU 优化的 Azure 虚拟机，请参阅[配置 Windows 虚拟桌面环境的图形处理单元（GPU）加速](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)。
 - 有关疑难解答和升级跟踪的概述, 请参阅[故障排除概述、反馈和支持](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview)。
-- 若要了解有关预览服务的详细信息, 请参阅[Windows 桌面预览环境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)。
+- 若要了解有关该服务的详细信息，请参阅[Windows 桌面环境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)。

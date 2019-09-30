@@ -1,5 +1,5 @@
 ---
-title: DatetimeV2 预生成实体-LUIS
+title: DatetimeV2 预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含语言理解 (LUIS) 中的 datetimeV2 预生成实体信息。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: c4e83ed15c2b15ccb3339ff775b08c8d2dab4c32
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4f46efaeddb0bfe789ef752abdd133c14da514da
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932521"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677692"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 DatetimeV2 预生成实体
 
@@ -185,6 +185,8 @@ ms.locfileid: "68932521"
 
 以下示例演示 LUIS 如何使用 **datetimeV2** 来解析包含时间范围的陈述。
 
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+
 ```json
   "entities": [
     {
@@ -206,7 +208,7 @@ ms.locfileid: "68932521"
   ]
 ```
 
-## <a name="preview-api-version-3x"></a>预览版 API 版本 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
 
 DatetimeV2 JSON 响应在 API V3 中已更改。 
 
@@ -289,6 +291,9 @@ DatetimeV2 JSON 响应在 API V3 中已更改。
 }
 ```
 
+
+* * * 
+
 ## <a name="deprecated-prebuilt-datetime"></a>已弃用的预生成日期时间
 
 `datetime` 预生成实体已弃用，已由 datetimeV2 取代。 
@@ -301,6 +306,8 @@ DatetimeV2 JSON 响应在 API V3 中已更改。
 4. 选择“datetimeV2”并单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
+
+了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
 
 了解[维度](luis-reference-prebuilt-dimension.md)、[电子邮件](luis-reference-prebuilt-email.md)实体和[数字](luis-reference-prebuilt-number.md)。 
 

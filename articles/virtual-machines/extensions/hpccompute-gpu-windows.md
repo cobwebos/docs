@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
-ms.openlocfilehash: 4526456b608f0920c73ae28446a822661995acab
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 13a7189d9758fd6d1e7daac38e948e1b482a019b
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173983"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686773"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>适用于 Windows 的 NVIDIA GPU 驱动程序扩展
 
@@ -39,7 +39,7 @@ ms.locfileid: "71173983"
 |---|---|
 | Windows 10 | Core |
 | Windows Server 2016 | Core |
-| Windows Server 2012R2 | Core |
+| Windows Server 2012 R2 | Core |
 
 ### <a name="internet-connectivity"></a>Internet 连接
 

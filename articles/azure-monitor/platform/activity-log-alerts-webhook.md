@@ -1,19 +1,19 @@
 ---
 title: 了解活动日志警报中使用的 Webhook 架构
 description: 了解有关活动日志警报激活时发布到 webhook URL 的 JSON 架构。
-author: johnkemnetz
+author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/31/2017
-ms.author: johnkem
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: c91c1badaa4b1bc055859d700857cfd4d062babd
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: b9ba809baa8fc4adddfad1344d6f36375cb361c4
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491500"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675225"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -23,7 +23,7 @@ ms.locfileid: "67491500"
 有关操作组的信息，请参阅如何[创建操作组](../../azure-monitor/platform/action-groups.md)。
 
 > [!NOTE]
-> 此外可以使用[常见警报架构](https://aka.ms/commonAlertSchemaDocs)，它提供一个可扩展的优势和 Azure Monitor 中服务的 webhook 集成的跨所有警报的统一警报有效负载。 [了解常见的警报的架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
+> 还可以使用[常见警报架构](https://aka.ms/commonAlertSchemaDocs)，它的优点是可以跨 Azure Monitor 中的所有警报服务提供单个可扩展且统一的警报有效负载，用于 Webhook 集成。 [了解常见的警报架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
 
 
 ## <a name="authenticate-the-webhook"></a>对 webhook 进行身份验证
@@ -89,7 +89,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 }
 ```
 
-### <a name="security"></a>安全
+### <a name="security"></a>安全性
 
 ```json
 {
@@ -260,19 +260,19 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 
 | 元素名称 | 描述 |
 | --- | --- |
-| status |用于度量值警报。 对于活动日志警报，始终设置为“已激活”。 |
+| 状态 |用于度量值警报。 对于活动日志警报，始终设置为“已激活”。 |
 | context |事件的上下文。 |
 | resourceProviderName |受影响资源的资源提供程序。 |
 | conditionType |始终为“事件”。 |
 | name |警报规则的名称。 |
-| id |警报的资源 ID。 |
+| ID |警报的资源 ID。 |
 | description |创建警报时设置警报说明。 |
 | subscriptionId |Azure 订阅 ID。 |
 | timestamp |处理请求的 Azure 服务生成事件的时间。 |
 | resourceId |受影响资源的资源 ID。 |
 | resourceGroupName |受影响资源的资源组的名称。 |
 | properties |一组包含事件详细信息的 `<Key, Value>` 对（即 `Dictionary<String, String>`）。 |
-| event |包含有关事件的元数据的元素。 |
+| 事件 |包含有关事件的元数据的元素。 |
 | authorization |事件的基于角色的访问控制属性。 这些属性通常包括“action”、“role”和“scope”。 |
 | category |事件的类别。 支持的值包括“Administrative”、“Alert”、“Security”、“ServiceHealth”和“Recommendation”。 |
 | caller |执行操作的用户的电子邮件地址（基于可用性的 UPN 声明或 SPN 声明）。 对于某些系统调用可以为 null。 |
@@ -281,11 +281,11 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 | eventDataId |事件的唯一标识符。 |
 | eventSource |生成事件的 Azure 服务或基础结构的名称。 |
 | httpRequest |请求通常包括“clientRequestId”、“clientIpAddress”和“HTTP method”（例如 PUT）。 |
-| level |以下值之一：Critical、Error、Warning 和 Informational。 |
+| 级别 |以下值之一：Critical、Error、Warning 和 Informational。 |
 | operationId |通常是在与单个操作对应的事件之间共享的 GUID。 |
 | operationName |操作的名称。 |
 | properties |事件的属性。 |
-| status |字符串。 操作的状态。 常见值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
+| 状态 |字符串。 操作的状态。 常见值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
 | subStatus |通常包含对应 REST 调用的 HTTP 状态代码。 它还可能包含描述子状态的其他字符串。 常见子状态值包括“正常(HTTP 状态代码: 200)”、“已创建(HTTP 状态代码: 201)、已接受(HTTP 状态代码:202)、没有任何内容(HTTP 状态代码:204)、错误的请求(HTTP 状态代码:400)、找不到(HTTP 状态代码:404)、冲突(HTTP 状态代码:409)、内部服务器错误(HTTP 状态代码:500)”、“服务不可用(HTTP 状态代码: 503)”和“网关超时(HTTP 状态代码: 504)。 |
 
 有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../../azure-monitor/platform/activity-logs-overview.md)。

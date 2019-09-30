@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: e4379c38d90f444102a9bbddbae64a8018defcf8
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e8a186fbcb04dc29fcf57a2353adcf89ce46b119
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844571"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677936"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 
@@ -31,7 +31,7 @@ ms.locfileid: "70844571"
 
 还没有 DevKit？ 请尝试 [DevKit 模拟器](https://azure-samples.github.io/iot-devkit-web-simulator/)或[购买 DevKit](https://aka.ms/iot-devkit-purchase)。
 
-可以在 [IoTDevEnvExamples](https://github.com/IoTDevEnvExamples) 存储库中找到所有 DevKit 教程的源代码。
+可以从[代码示例库](https://docs.microsoft.com/samples/browse/?term=mxchip)中找到所有 DevKit 教程的源代码。
 
 ## <a name="what-you-need"></a>所需条件
 
@@ -179,7 +179,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
 
 5. 为 VS Code 配置 Arduino 设置。
 
-    在 Visual Studio Code 中，单击 "**文件" > 首选项 > 设置**（在 macOS 上，**代码 > 首选项 > 设置**）。 然后单击 "*设置*" 页右上角的 "**打开设置（JSON）** " 图标。
+    在 Visual Studio Code 中，单击“文件”>“首选项”>“设置”（在 MacOS 上，单击“代码”>“首选项”>“设置”）。 然后单击“设置”页右上角的“打开设置(JSON)”图标。
 
     ![安装 Azure IoT Tools](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1349a81bc4f0f3eed4093bbe91abea68264b4021
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: fa0fa6220fd090bf7fcbe14e85556b6010651e0e
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350659"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675005"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 
@@ -127,7 +127,7 @@ ms.locfileid: "71350659"
     ```python
     import os
     import urllib.request
-    from azureml.core import Model
+    from azureml.core.model import Model
     # Download model
     onnx_model_url = "https://www.cntk.ai/OnnxModels/mnist/opset_7/mnist.tar.gz"
     urllib.request.urlretrieve(onnx_model_url, filename="mnist.tar.gz")
@@ -467,9 +467,7 @@ def run(request):
 
 推理配置介绍了如何配置模型以便进行预测。 此配置不是你的输入脚本的一部分。 它引用您的条目脚本，并用于查找部署所需的所有资源。 稍后在部署模型时使用。
 
-推理配置可以使用 Azure 机器学习环境来定义部署所需的软件依赖项。 利用环境，你可以创建、管理和重复使用培训和部署所需的软件依赖项。 使用环境时，模型文件和提供的源目录会直接装载到正在运行的容器上，它们不会复制到容器映像或容器注册表中。
-
-下面的示例演示如何从工作区加载环境，并将其用于推理配置：
+推理配置可以使用 Azure 机器学习环境来定义部署所需的软件依赖项。 利用环境，你可以创建、管理和重复使用培训和部署所需的软件依赖项。 下面的示例演示如何从工作区加载环境，并将其用于推理配置：
 
 ```python
 from azureml.core import Environment

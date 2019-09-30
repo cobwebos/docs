@@ -1,5 +1,5 @@
 ---
-title: 电话号码预建实体-LUIS
+title: 电话号码预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含语言理解 (LUIS) 中的电话号码预构建实体信息。
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: bf2fd053cabeaf85b177e284f86ba378e0e4389e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9e237b09bd2b0ecc3e91e10697f6c025f73057da
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933426"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677442"
 ---
-# <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的电话号码预构建实体
+# <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的电话号码预生成实体
 `phonenumber` 实体提取各种包括国家/地区代码在内的电话号码。 此实体已定型，因此不需要将陈述示例添加到应用程序。 仅在 `en-us` 区域性中支持 `phonenumber` 实体。 
 
 ## <a name="types-of-a-phone-number"></a>电话号码的类型
@@ -26,7 +26,7 @@ ms.locfileid: "68933426"
 
 ## <a name="resolution-for-this-prebuilt-entity"></a>针对此预生成实体的解决方法
 
-### <a name="api-version-2x"></a>API 版本 2.x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
 
 以下示例演示了 builtin.phonenumber 实体解析。
 
@@ -58,7 +58,7 @@ ms.locfileid: "68933426"
 }
 ```
 
-### <a name="preview-api-version-3x"></a>预览版 API 版本 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
 
 以下 JSON 的 `verbose` 参数设置为 `false`：
 
@@ -117,6 +117,10 @@ ms.locfileid: "68933426"
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>后续步骤
+
+了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
 
 了解有关[百分比](luis-reference-prebuilt-percentage.md)、[数字](luis-reference-prebuilt-number.md)和[温度](luis-reference-prebuilt-temperature.md)实体。 

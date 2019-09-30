@@ -1,5 +1,5 @@
 ---
-title: 地域 V2 预构建实体-LUIS
+title: Geography V2 预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中的 geographyV2 预构建实体信息。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: e28b541c1b5aa8f733c9f4ed44fd2ea5296b34d8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 04bc3019a55920351b0e91c87e63b8309d94e34c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933542"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677613"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 GeographyV2 预生成实体
 预构建的 geographyV2 可以检测地点。 由于此实体已经过训练，因此不需要将包含 GeographyV2 的陈述示例添加到应用程序意向中。 GeographyV2 实体支持英语[区域性](luis-reference-prebuilt-entities.md)。
@@ -35,7 +35,7 @@ ms.locfileid: "68933542"
 
 ## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 实体的解析
 
-### <a name="api-version-2x"></a>API 版本 2.x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
 
 以下示例显示了 builtin.geographyV2 实体的解析。
 
@@ -93,7 +93,7 @@ ms.locfileid: "68933542"
 } 
 ```
 
-### <a name="preview-api-version-3x"></a>预览版 API 版本 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
 
 以下 JSON 的 `verbose` 参数设置为 `false`：
 
@@ -191,6 +191,10 @@ ms.locfileid: "68933542"
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>后续步骤
+
+了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
 
 了解[电子邮件](luis-reference-prebuilt-email.md)、[数字](luis-reference-prebuilt-number.md)和[序号](luis-reference-prebuilt-ordinal.md)实体。 
