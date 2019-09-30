@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: hrasheed
-ms.openlocfilehash: 32e47f688150333ac78091589d8a252641d4c7d6
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: bcf1b967cf8eeab7aae4b720683785309689858e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076997"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204225"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Spark 结构化流式处理与 Apache Kafka on HDInsight 配合使用
 
@@ -186,12 +186,15 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 4. 加载供 Notebook 使用的包，方法是在 Notebook 单元格中输入以下信息。 使用 **CTRL + ENTER** 运行该命令。
 
+Spark 流式处理具有微型批处理，这意味着数据是成批传入的，而执行程序则对这批数据运行。 如果执行程序的空闲超时少于处理批处理所需的时间，则将不断添加和删除执行程序。 如果执行程序的空闲超时大于批处理持续时间，则不会删除执行程序。 因此，**我们建议你在运行流式处理应用程序时通过将 spark.dynamicAllocation.enabled 设置为 false 来禁用动态分配。**
+
     ```
     %%configure -f
     {
         "conf": {
             "spark.jars.packages": "org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0",
-            "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11"
+            "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11",
+            "spark.dynamicAllocation.enabled": false
         }
     }
     ```

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Apptio 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 Apptio 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Apptio 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0ac86dcdb698c554c40325d6a20d6d27de908f8
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: a421afc736399472a513dfc145321ba33ef6fdca
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104386"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129727"
 ---
-# <a name="tutorial-integrate-apptio-with-azure-active-directory"></a>教程：将 Apptio 与 Azure Active Directory 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apptio"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Apptio 集成
 
 在本教程中，你将了解如何将 Apptio 与 Azure Active Directory (Azure AD) 进行集成。 将 Apptio 与 Azure AD 集成后，可以：
 
@@ -46,6 +46,9 @@ ms.locfileid: "71104386"
 
 * Apptio 支持 **IDP** 发起的 SSO
 
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
+
 ## <a name="adding-apptio-from-the-gallery"></a>从库中添加 Apptio
 
 若要配置 Apptio 与 Azure AD 的集成，需要将 Apptio 从库中添加到托管 SaaS 应用列表。
@@ -57,7 +60,6 @@ ms.locfileid: "71104386"
 1. 在“从库中添加”部分的搜索框中，键入“Apptio”   。
 1. 从结果面板中选择“Apptio”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-apptio"></a>为 Apptio 配置和测试 Azure AD 单一登录
 
 使用名为 **B.Simon** 的测试用户配置和测试 Apptio 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Apptio 相关用户之间建立链接关系。
@@ -67,56 +69,31 @@ ms.locfileid: "71104386"
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-2. **[配置 Apptio SSO](#configure-apptio-sso)** - 在应用程序端配置单一登录设置。
+1. **[配置 Apptio SSO](#configure-apptio-sso)** - 在应用程序端配置单一登录设置。
     1. **[创建 Apptio 测试用户](#create-apptio-test-user)** - 在 Apptio 中创建与 B.Simon 对应的用户，并将其链接到用户的 Azure AD 表示形式。
-3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Apptio”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Apptio”应用程序集成页上，找到“管理”部分并选择“单一登录”    。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
-    在“标识符”文本框中键入值：`urn:federation:apptio` 
+    在“标识符”  文本框中，键入一个 URL：`urn:federation:apptio`
 
-5. Apptio 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框  。
+1. 角色声明已预先配置，因此不需配置它，但仍需按照此[文章](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)的说明在 Azure AD 中创建它。
 
-    ![image](common/edit-attribute.png)
-
-    > [!NOTE]
-    > 若要了解如何在 Azure AD 中配置**角色**，请单击[此处](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)
-
-6. 除上述属性以外，Apptio 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以添加 SAML 令牌属性，如下表中所示： 
-
-    | Name |  源属性|
-    | -------------- | -------------------- |
-    | fullname       | user.displayname |
-    | mail           | user.mail |
-    | role           | user.assignedrole |
-
-    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
-
-    b. 在“名称”文本框中，键入为该行显示的属性名称。 
-
-    c. 将“命名空间”留空  。
-
-    d. 选择“源”作为“属性”  。
-
-    e. 在“源属性”  列表中，键入为该行显示的属性值。
-
-    f. 单击“ **保存**”。
-
-4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Apptio”部分中，根据要求复制相应 URL  。
+1. 在“设置 Apptio”部分中，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -127,10 +104,10 @@ ms.locfileid: "71104386"
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
-    1. 在“名称”  字段中，输入 `B.Simon`。  
-    1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-    1. 单击“创建”。 
+   1. 在“名称”  字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+   1. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -140,7 +117,7 @@ ms.locfileid: "71104386"
 1. 在应用程序列表中，选择“Apptio”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 
-    ![“用户和组”链接](common/users-groups-blade.png)
+   ![“用户和组”链接](common/users-groups-blade.png)
 
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
@@ -156,7 +133,7 @@ ms.locfileid: "71104386"
 
 ### <a name="create-apptio-test-user"></a>创建 Apptio 测试用户
 
-在本部分中，将在 Apptio 中创建名为 B.Simon 的用户。 请与 [Apptio 支持团队](https://www.apptio.com/about/contact)协作，将用户添加到 Apptio 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Apptio 中创建名为 B.Simon 的用户。 请与  [Apptio 支持团队](https://www.apptio.com/about/contact)协作，在 Apptio 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -172,3 +149,4 @@ ms.locfileid: "71104386"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [通过 Azure AD 试用 Apptio](https://aad.portal.azure.com/)

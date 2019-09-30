@@ -8,19 +8,19 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 06f1c0123d6bdf56b5182605016d2feb80adf18b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: c4e4a984adc0ec6af99667ff36c009ca730acf48
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172970"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172835"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>教程：使用 Jenkins 持续集成和部署从 GitHub 部署到 Azure 应用服务
 
 本教程通过设置 Jenkins 中的持续集成 (CI) 和持续部署 (CD)，将 GitHub 中的一个示例 Java Web 应用部署到 [Linux 上的 Azure 应用服务](/azure/app-service/containers/app-service-linux-intro)。 当你通过将提交内容推送到 GitHub 来更新应用时，Jenkins 会自动生成该应用并将其重新发布到 Azure 应用服务。 本教程中的示例应用是使用 [Spring Boot](https://projects.spring.io/spring-boot/) 框架开发的。 
 
-![概述](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
+![GitHub 到 Azure 应用服务部署概述](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
 
 在本教程中，你将完成以下任务：
 
@@ -97,19 +97,19 @@ ms.locfileid: "70172970"
 
 1. 在“管理 Jenkins”页中，选择“配置系统”   。 
 
-   ![配置系统](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
+   ![在 Jenkins 中配置系统](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
 
 1. 在“GitHub”部分，提供 GitHub 服务器的详细信息。  在“添加 GitHub 服务器”列表中，选择“GitHub 服务器”。   
 
-   ![添加 GitHub 服务器](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
+   ![在 Jenkins 中添加 GitHub 服务器](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
 1. 如果未选择“管理挂钩”属性，请选择此属性。  选择“高级”，以便可以指定其他设置。  
 
-   ![选择“高级”以指定其他设置](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
+   ![为 GitHub 服务器指定高级 Jenkins 设置](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
 1. 在“管理其他 GitHub 操作”列表中，选择“将登录名和密码转换为令牌”。  
 
-   ![选择“管理其他 GitHub 操作”](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
+   ![将登录名和密码转换为 GitHub 的令牌](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
 
 1. 选择“使用登录名和密码”，以便可以输入 GitHub 用户名和密码。  完成后，选择“创建令牌凭据”，以创建 [GitHub 个人访问令牌 (PAT)](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)。    
 
@@ -181,11 +181,11 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
 1. 返回到 Jenkins 主页，选择“新建项”。  
 
-   ![选择“新建项”](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
+   ![创建 Jenkins 管道](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
 1. 为管道作业提供一个名称（例如“My-Java-Web-App”），然后选择“管道”。  在底部选择“确定”  。  
 
-   ![选择“管道”](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
+   ![命名 Jenkins 管道作业](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
 1. 使用服务主体设置 Jenkins，使 Jenkins 能够部署到 Azure，且无需使用你自己的凭据。
 
@@ -199,7 +199,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
       WEB_APP=yourWebAppName
       ```
 
-      ![选择“准备运行的环境”并设置环境变量](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
+      ![准备运行的环境并设置环境变量](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-jenkins-run.png)
 
 1. 完成后，选择“保存”  。
 
@@ -254,7 +254,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
 1. 在 Jenkins 中，选择前面创建的管道作业。 
 
-   ![选择 Web 应用的管道作业](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
+   ![为 Web 应用选择 Jenkins 管道作业](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
 
 1. 在左侧菜单中，选择“配置”  。
 
@@ -272,7 +272,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
    完成后，管道定义如以下示例所示： 
 
-   ![将管道指向脚本](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
+   ![将 Jenkins 管道指向脚本](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
 1. 完成后，选择“保存”  。
 

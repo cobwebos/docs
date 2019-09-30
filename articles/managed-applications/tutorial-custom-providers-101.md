@@ -1,54 +1,50 @@
 ---
 title: 在 Azure 中创建自定义操作和资源
-description: 本教程将介绍如何在 Azure 资源管理器中创建自定义操作和资源，以及如何将其集成到用于 Azure 资源管理器模板、Azure CLI、Azure Policy 和活动日志的自定义工作流中。
+description: 本教程介绍如何在 Azure 资源管理器中创建自定义操作和资源。 它还展示了自定义工作流如何与 Azure 资源管理器模板、Azure CLI、Azure 策略和 Azure 活动日志互操作。
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 4bbfcf070611e3df5c0fe47070f2ab6961111e07
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: dc1601e344c371a5f0feaadd272a2c6ff40af031
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799186"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172940"
 ---
 # <a name="create-custom-actions-and-resources-in-azure"></a>在 Azure 中创建自定义操作和资源
 
-使用自定义提供程序，可以在 Azure 上自定义工作流。 自定义提供程序是 Azure 与 `endpoint` 之间的协定。 它允许将新的自定义 API 添加到 Azure 资源管理器，以启用新的部署和管理功能。 本教程将介绍如何向 Azure 中添加新的操作和资源以及如何将其集成的简单示例。
+自定义提供程序是 Azure 与终结点之间的协定。 使用自定义提供程序，可以通过将新 API 添加到 Azure 资源管理器来更改 Azure 中的工作流。 通过这些自定义 API，资源管理器可以使用新的部署和管理功能。
 
-本教程分为以下步骤：
+本教程介绍如何向 Azure 中添加新的操作和资源以及如何将其集成的简单示例。
 
-- 设置用于 Azure 自定义提供程序的 Azure Functions
-- 创建用于自定义提供程序的 RESTful 终结点
-- 创建和利用自定义提供程序
+## <a name="set-up-azure-functions-for-azure-custom-providers"></a>设置用于 Azure 自定义提供程序的 Azure Functions
 
-## <a name="setup-azure-functions-for-azure-custom-providers"></a>设置用于 Azure 自定义提供程序的 Azure Functions
-
-本教程的此部分将详细介绍如何设置 Azure Function 以使用自定义提供程序。 自定义提供程序可以使用任何公共 URL。
+本教程的第一部分介绍如何设置 Azure 函数应用以使用自定义提供程序：
 
 - [设置用于 Azure 自定义提供程序的 Azure Functions](./tutorial-custom-providers-function-setup.md)
 
-## <a name="authoring-a-restful-endpoint-for-custom-providers"></a>创建用于自定义提供程序的 RESTful 终结点
+自定义提供程序可以使用任何公共 URL。
 
-本教程的此部分将详细介绍如何创建用于自定义提供程序的 RESTful 终结点。
+## <a name="author-a-restful-endpoint-for-custom-providers"></a>创作自定义提供程序的 RESTful 终结点
+
+本教程的第二部分介绍如何为自定义提供程序创作 RESTful 终结点：
 
 - [创建用于自定义提供程序的 RESTful 终结点](./tutorial-custom-providers-function-authoring.md)
 
-## <a name="creating-and-utilizing-the-custom-provider"></a>创建和利用自定义提供程序
+## <a name="create-and-use-a-custom-provider"></a>创建并使用自定义提供程序
 
-本教程的此部分将详细介绍如何创建自定义提供程序并使用其自定义操作和资源。
+本教程的第三部分介绍如何创建自定义提供程序并使用其自定义操作和资源：
 
-- [创建和利用 Azure 自定义提供程序](./tutorial-custom-providers-create.md)
+- [创建并使用自定义提供程序](./tutorial-custom-providers-create.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们已了解了自定义提供程序以及如何构建自定义提供程序。 若要继续了解本教程的下一步，请参考以下内容：
-
-- [教程：设置用于 Azure 自定义提供程序的 Azure Functions](./tutorial-custom-providers-function-setup.md)
+在本教程中，我们已了解了自定义提供程序以及如何构建自定义提供程序。 若要继续学习下一个教程，请参阅[教程：设置用于 Azure 自定义提供程序的 Azure Functions](./tutorial-custom-providers-function-setup.md)。
 
 如果你正在寻找参考资料或快速入门，下面是一些有用的链接：
 
-- [快速入门：创建 Azure 自定义提供程序和部署自定义资源](./create-custom-provider.md)
+- [快速入门：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
 - [如何：将自定义操作添加到 Azure REST API](./custom-providers-action-endpoint-how-to.md)
 - [如何：将自定义资源添加到 Azure REST API](./custom-providers-resources-endpoint-how-to.md)

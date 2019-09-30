@@ -3,9 +3,9 @@ title: 向特定设备（通用 Windows 平台）发送通知 | Microsoft Docs
 description: 将 Azure 通知中心与注册中的标记配合使用，将突发新闻发送到通用 Windows 平台应用。
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 994d2eed-f62e-433c-bf65-4afebf1c0561
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: 9cfe5f490ef4063e02d9407f23130c1a216961ed
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: efe668e42e04942cc0d9fc99670057ab5bdd302a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402450"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212123"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>教程：向运行通用 Windows 平台应用程序的特定 Windows 设备推送通知
 
@@ -79,7 +81,7 @@ ms.locfileid: "58402450"
     </Grid>
     ```
 
-2. 在“解决方案资源管理器”中，右键单击项目，然后添加新类：**Notifications**。 向类定义添加 **public** 修饰符，然后将以下 `using` 语句添加到新的代码文件：
+2. 在“解决方案资源管理器”中，右键单击项目，然后添加新类：  **Notifications**。 向类定义添加 **public** 修饰符，然后将以下 `using` 语句添加到新的代码文件：
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -150,7 +152,7 @@ ms.locfileid: "58402450"
     在代码中，将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心的名称和之前获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
 
    > [!NOTE]
-   > 使用客户端应用分发的凭据通常不安全，因此请使用客户端应用仅分发具有侦听访问权限的密钥。 拥有侦听访问权限后，应用可注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
+   > 使用客户端应用分发的凭据通常不安全，因此请使用客户端应用仅分发具有侦听访问权限的密钥  。 拥有侦听访问权限后，应用可注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
 
 5. 在 `MainPage.xaml.cs` 文件中添加以下行：
 
@@ -201,7 +203,7 @@ ms.locfileid: "58402450"
     var result = await notifications.SubscribeToCategories();
     ```
 
-    此过程可确保应用启动时会从本地存储区检索类别并请求注册这些类别。 你已在[通知中心入门][get-started]教程中创建 `InitNotificationsAsync` 方法。
+    此过程可确保应用启动时会从本地存储区检索类别并请求注册这些类别。 你已在学习[通知中心入门][get-started]教程的过程中创建了 `InitNotificationsAsync` 方法。
 2. 在 `MainPage.xaml.cs` 项目文件的 `OnNavigatedTo` 方法中添加以下代码：
 
     ```csharp
@@ -223,11 +225,11 @@ ms.locfileid: "58402450"
 应用现已完成。 它可以在设备的本地存储中存储一组类别，当用户更改类别选择时，使用它向通知中心注册。 下一部分将定义一个后端，该后端可将类别通知发送到此应用。
 
 ## <a name="run-the-uwp-app"></a>运行 UWP 应用 
-1. 在 Visual Studio 中，选择 F5 编译并启动应用。 应用 UI 提供了一组开关，可以使用它们选择要订阅的类别。
+1. 在 Visual Studio 中，选择 F5 编译并启动应用  。 应用 UI 提供了一组开关，可以使用它们选择要订阅的类别。
 
     ![突发新闻应用](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png)
 
-2. 启用一个或多个类别切换，然后单击“订阅”。
+2. 启用一个或多个类别切换，然后单击“订阅”  。
 
     应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。 返回注册的类别并显示在对话框中。
 

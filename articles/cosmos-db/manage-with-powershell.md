@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: e8f943ebaa5dfc06e0bfb04dc1097d6794ec6d05
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 5b041fecfaa5a84ed5a04a3a8c53de10b9efd65b
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616830"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155369"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB SQL API 资源
 
@@ -43,6 +43,7 @@ ms.locfileid: "69616830"
 * [重新生成 Azure Cosmos 帐户密钥](#regenerate-keys)
 * [列出 Azure Cosmos 帐户的连接字符串](#list-connection-strings)
 * [修改 Azure Cosmos 帐户的故障转移优先级](#modify-failover-priority)
+* [触发 Azure Cosmos 帐户的手动故障转移](#trigger-manual-failover)
 
 ### <a id="create-account"></a> 创建 Azure Cosmos 帐户
 
@@ -121,7 +122,9 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 * 启用多主数据库
 
 > [!NOTE]
-> 此命令可添加和删除区域，但不可使用 `failoverPriority=0` 修改故障转移优先级或更改区域。 若要修改故障转移优先级，请参阅[修改 Azure Cosmos 帐户的故障转移优先级](#modify-failover-priority)。
+> 不能同时添加或删除区域 `locations` 并更改 Azure Cosmos 帐户的其他属性。 修改区域的操作必须作为单独的操作与任何其他对帐户资源的更改操作分开执行。
+> [!NOTE]
+> 此命令可添加和删除区域，但不可修改故障转移优先级或触发手动故障转移。 请参阅[修改故障转移优先级](#modify-failover-priority)和[触发手动故障转移](#trigger-manual-failover)。
 
 ```azurepowershell-interactive
 # Get an Azure Cosmos Account (assume it has two regions currently West US 2 and East US 2) and add a third region
@@ -238,23 +241,55 @@ Select-Object $keys
 
 ### <a id="modify-failover-priority"></a> 修改故障转移优先级
 
-对于多区域数据库帐户，可以更改在主写入副本上发生区域性故障转移的情况下，Cosmos 提升辅助只读副本权限的顺序。 修改 `failoverPriority=0` 还可用于启动灾难恢复演练，以测试灾难恢复规划。
+对于配置了自动故障转移的帐户，可以更改在主要副本不可用时 Cosmos 将次要副本提升为主要副本的顺序。
 
-在下面的示例中，假设帐户的当前故障转移优先级为 `West US 2 = 0` 和 `East US 2 = 1`，然后将区域互换。
+对于以下示例，假定当前的故障转移优先级为 `West US 2 = 0`、`East US 2 = 1`、`South Central US = 2`。
 
 > [!CAUTION]
 > 在 `failoverPriority=0` 的情况下更改 `locationName` 会触发 Azure Cosmos 帐户的手动故障转移。 任何其他的优先级更改不会触发故障转移。
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
-# Assume existing priority is "West US 2" = 0 and "East US 2" = 1
+# Assume existing priority is "West US 2" = 0, "East US 2" = 1, "South Central US" = 2
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 
 $failoverRegions = @(
-    @{ "locationName"="East US 2"; "failoverPriority"=0 },
-    @{ "locationName"="West US 2"; "failoverPriority"=1 }
+    @{ "locationName"="West US 2"; "failoverPriority"=0 },
+    @{ "locationName"="South Central US"; "failoverPriority"=1 },
+    @{ "locationName"="East US 2"; "failoverPriority"=2 }
+)
+
+$failoverPolicies = @{
+    "failoverPolicies"= $failoverRegions
+}
+
+Invoke-AzResourceAction -Action failoverPriorityChange `
+    -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `
+    -ResourceGroupName $resourceGroupName -Name $accountName -Parameters $failoverPolicies
+```
+
+### <a id="trigger-manual-failover"></a> 触发手动故障转移
+
+对于配置了手动故障转移的帐户，可以通过修改为 `failoverPriority=0` 来进行故障转移并将所有次要副本提升为主要副本。 此操作可用于启动灾难恢复演练以测试灾难恢复规划。
+
+在下面的示例中，假设帐户的当前故障转移优先级为 `West US 2 = 0` 和 `East US 2 = 1`，然后将区域互换。
+
+> [!CAUTION]
+> 在 `failoverPriority=0` 的情况下更改 `locationName` 会触发 Azure Cosmos 帐户的手动故障转移。 任何其他优先级更改都不会触发故障转移。
+
+```azurepowershell-interactive
+# Change the failover priority for an Azure Cosmos Account
+# Assume existing priority is "West US 2" = 0, "East US 2" = 1, "South Central US" = 2
+
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+
+$failoverRegions = @(
+    @{ "locationName"="South Central US"; "failoverPriority"=0 },
+    @{ "locationName"="East US 2"; "failoverPriority"=1 },
+    @{ "locationName"="West US 2"; "failoverPriority"=2 }
 )
 
 $failoverPolicies = @{

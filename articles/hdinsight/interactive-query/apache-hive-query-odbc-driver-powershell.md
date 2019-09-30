@@ -3,17 +3,17 @@ title: 使用 ODBC 驱动程序和 PowerShell 查询 Apache Hive - Azure HDInsig
 description: 使用 Microsoft Hive ODBC 驱动程序和 PowerShell 查询 Azure HDInsight 上的 Apache Hive 群集。
 keywords: hive, hive odbc, powershell
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: b02c865e953861b5ac396538fdd0f0623b0e5428
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 04771ddc633c210ce8c7b3c42a9e46cb2f1ed349
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486060"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122175"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>教程：使用 ODBC 和 PowerShell 查询 Apache Hive
 
@@ -70,7 +70,7 @@ ms.locfileid: "67486060"
    |  每块提取的行数 |提取大量记录时，可能需要调整此参数以确保最佳性能。 |
    |  默认字符串列长度、二进制列长度、十进制列小数位数 |数据类型长度和精度可能会影响返回数据的方式。 由于精度损失和截断，这些语句可能会导致返回不正确的信息。 |
 
-    ![高级选项](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "高级 DSN 配置选项")
+    ![高级 DSN 配置选项](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "高级 DSN 配置选项")
 
 1. 选择“测试”以测试数据源  。 如果数据源配置正确，测试结果会显示“成功”  。  
 

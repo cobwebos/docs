@@ -3,15 +3,16 @@ title: Azure PowerShell 脚本 - Azure Cosmos DB 创建 SQL (Core) API 数据库
 description: Azure PowerShell 脚本 - Azure Cosmos DB 创建 SQL (Core) API 数据库和容器
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: b8b8b30f178ba068bc800103f16adde43cf5dcb1
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: eee1e31808412dc5e4308dee92f3685507e771f3
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602218"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178808"
 ---
 # <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>创建 Azure Cosmos DB 的数据库和容器 - SQL (Core) API
 
@@ -21,7 +22,9 @@ ms.locfileid: "67602218"
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create a database and container for SQL (Core) API")]
+此脚本在两个具有会话级一致性的区域、具有共享吞吐量的数据库和具有分区键、自定义索引策略、唯一键策略、TTL、专用吞吐量和“以最后一次写入为准”冲突解决策略的容器中使用在 `multipleWriteLocations=true` 时将使用的自定义冲突解决路径为 SQL (Core) API 创建 Cosmos 帐户。
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-create.ps1 "Create an account, database, and container for SQL (Core) API")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c7396baa745196e054c6cb49d349bf7684cd899
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8f3277d76709fe14a5eaa28cc0f562d95c1e4004
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001660"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128949"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>教程：使用 Azure 机器学习通过 MNIST 数据和 scikit-learn 训练映像分类模型
 
@@ -143,11 +143,11 @@ else:
 
 ## <a name="explore-data"></a>浏览数据
 
-对模型进行定型之前，需要了解用于定型的数据。 此外，还需要将数据复制到云中。 然后，云培训环境可以对其进行访问。 在本部分中，了解如何执行以下操作：
+对模型进行定型之前，需要了解用于定型的数据。 还需要将数据上传到云，以便云训练环境可以访问这些数据。 在本部分中，了解如何执行以下操作：
 
 * 下载 MNIST 数据集。
 * 显示一些示例图像。
-* 将数据上传到云。
+* 将数据上传到云中的工作区。
 
 ### <a name="download-the-mnist-dataset"></a>下载 MNIST 数据集
 
@@ -209,18 +209,29 @@ plt.show()
 
 现在你已了解这些图像的外观和预期预测结果。
 
-### <a name="upload-data-to-the-cloud"></a>将数据上传到云
+### <a name="create-a-filedataset"></a>创建 FileDataset
 
-在运行 Notebook 的计算机上下载并使用了训练数据。  在下一部分中，你将针对远程 Azure 机器学习计算训练模型。  远程计算资源还需要访问数据。 若要提供访问权限，请将数据上传到与你的工作区关联的集中式数据存储。 在云中使用远程计算目标时，此数据存储提供对数据的快速访问，就像在 Azure 数据中心中一样。
-
-将 MNIST 文件上传到数据存储根目录下名为 `mnist` 的目录中。 有关详细信息，请参阅[访问数据存储中的数据](how-to-access-data.md)。
+`FileDataset` 对象引用工作区数据存储或公共 URL 中的一个或多个文件。 文件可以是任何格式，该类提供将文件下载或装载到计算机的功能。 通过创建 `FileDataset`，可以创建对数据源位置的引用。 如果将任何转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。 有关详细信息，请参阅 `Dataset` 包中的[操作](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-register-datasets)指南。
 
 ```python
-ds = ws.get_default_datastore()
-print(ds.datastore_type, ds.account_name, ds.container_name)
+from azureml.core.dataset import Dataset
 
-ds.upload(src_dir=data_folder, target_path='mnist',
-          overwrite=True, show_progress=True)
+web_paths = [
+            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
+            ]
+dataset = Dataset.File.from_files(path=web_paths)
+```
+
+使用 `register()` 方法将数据集注册到工作区，以便将其与其他人共享，在各种试验中重复使用，以及在训练脚本中按名称引用。
+
+```python
+dataset = dataset.register(workspace=ws,
+                           name='mnist dataset',
+                           description='training and test dataset',
+                           create_new_version=True)
 ```
 
 现在你已经拥有开始定型模型所需的一切条件。
@@ -253,6 +264,7 @@ os.makedirs(script_folder, exist_ok=True)
 import argparse
 import os
 import numpy as np
+import glob
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.externals import joblib
@@ -260,7 +272,7 @@ from sklearn.externals import joblib
 from azureml.core import Run
 from utils import load_data
 
-# let user feed in 2 parameters, the location of the data files (from datastore), and the regularization rate of the logistic regression model
+# let user feed in 2 parameters, the dataset to mount or download, and the regularization rate of the logistic regression model
 parser = argparse.ArgumentParser()
 parser.add_argument('--data-folder', type=str, dest='data_folder', help='data folder mounting point')
 parser.add_argument('--regularization', type=float, dest='reg', default=0.01, help='regularization rate')
@@ -271,10 +283,10 @@ print('Data folder:', data_folder)
 
 # load train and test set into numpy arrays
 # note we scale the pixel intensity values to 0-1 (by dividing it with 255.0) so the model can converge faster.
-X_train = load_data(os.path.join(data_folder, 'train-images.gz'), False) / 255.0
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_train = load_data(os.path.join(data_folder, 'train-labels.gz'), True).reshape(-1)
-y_test = load_data(os.path.join(data_folder, 'test-labels.gz'), True).reshape(-1)
+X_train = load_data(glob.glob(os.path.join(data_folder, '**/train-images-idx3-ubyte.gz'), recursive=True)[0], False) / 255.0
+X_test = load_data(glob.glob(os.path.join(data_folder, '**/t10k-images-idx3-ubyte.gz'), recursive=True)[0], False) / 255.0
+y_train = load_data(glob.glob(os.path.join(data_folder, '**/train-labels-idx1-ubyte.gz'), recursive=True)[0], True).reshape(-1)
+y_test = load_data(glob.glob(os.path.join(data_folder, '**/t10k-labels-idx1-ubyte.gz'), recursive=True)[0], True).reshape(-1)
 print(X_train.shape, y_train.shape, X_test.shape, y_test.shape, sep = '\n')
 
 # get hold of the current run
@@ -322,19 +334,31 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 * 定型脚本名称，train.py  。
 * 定型脚本所需的参数。
 
-在本教程中，此目标是 AmlCompute。 此脚本文件夹中的所有文件都上传到群集节点来运行。 data_folder 设置为使用数据存储 (`ds.path('mnist').as_mount()`)  ：
+在本教程中，此目标是 AmlCompute。 此脚本文件夹中的所有文件都上传到群集节点来运行。 设置 **data_folder** 以使用数据集。 首先，创建一个指定训练所需依赖项的环境对象。 
+
+```python
+from azureml.core.environment import Environment
+from azureml.core.conda_dependencies import CondaDependencies
+
+env = Environment('my_env')
+cd = CondaDependencies.create(pip_packages=['azureml-sdk','scikit-learn','azureml-dataprep[pandas,fuse]>=1.1.14'])
+env.python.conda_dependencies = cd
+```
+
+然后使用以下代码创建估算器。
 
 ```python
 from azureml.train.sklearn import SKLearn
 
 script_params = {
-    '--data-folder': ds.path('mnist').as_mount(),
+    '--data-folder': dataset.as_named_input('mnist').as_mount(),
     '--regularization': 0.5
 }
 
 est = SKLearn(source_directory=script_folder,
               script_params=script_params,
               compute_target=compute_target,
+              environment_definition=env, 
               entry_script='train.py')
 ```
 

@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 9392cfc9c789a757c3ad533a3dbd4719f5292be5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931568"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172178"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建自动化的基于计划的重复工作流
 
@@ -235,7 +235,7 @@ ms.locfileid: "70931568"
 
 1. 在上一个操作下，选择“新建步骤”。 
 
-1. 在“选择操作”下选择“内置”，然后搜索“条件”并选择“条件”操作。   
+1. 在“选择操作”下，选择“内置”。   在搜索框中，输入“条件”作为筛选器。 从操作列表中选择“条件”操作。 
 
    ![选择“条件”操作](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
@@ -245,17 +245,17 @@ ms.locfileid: "70931568"
 
    1. 在条件中，单击条件左侧的“选择值”框。 
 
-   1. 显示动态内容列表后，在“变量”下选择“travelTime”属性。  
+   1. 从显示的动态内容列表中的“变量”  下，选择 **travelTime** 属性。
 
       ![生成条件的左部分](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
-   1. 在比较框中选择此运算符：**大于**
+   1. 在中间的比较框中，选择“大于”  运算符。
 
    1. 在条件右侧的“选择值”框中输入以下限制：`15` 
 
       完成后，条件如以下示例所示：
 
-      ![构建条件](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![已完成的条件](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. 保存逻辑应用。
 

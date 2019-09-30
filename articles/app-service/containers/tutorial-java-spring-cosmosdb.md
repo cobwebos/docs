@@ -8,19 +8,19 @@ ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 27b30bae80e2959698d71279efbfa2531498d8de
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 582ed374e7895d0b99f25ac033d0d4b1ec99104c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171210"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171494"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>教程：使用 Linux 上的 Azure 应用服务和 Azure Cosmos DB 生成 Java Spring Boot Web 应用
 
 本教程将指导你完成在 Azure 上生成、配置、部署和缩放 Java Web 应用的过程。 完成本教程后，你将获得一个 [Spring Boot](https://projects.spring.io/spring-boot/) 应用程序，该应用程序可在 [Linux 上运行的 Azure 应用服务](/azure/app-service/containers)运行的 [Azure Cosmos DB](/azure/cosmos-db) 中存储数据。
 
-![在 Azure appservice 中运行的 Java 应用](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+![在 Azure Cosmos DB 中存储数据的 Spring Boot 应用程序](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 本教程介绍如何执行下列操作：
 
@@ -169,7 +169,7 @@ bash-3.2$ mvn package spring-boot:run
 
 启动应用后，可在本地使用以下链接访问 Spring TODO 应用：[http://localhost:8080/](http://localhost:8080/)。
 
- ![在 Azure appservice 中运行的 Java 应用](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![本地访问 Spring TODO 应用](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 如果看到了异常而不是“已启动 TodoApplication”消息，请检查上一步骤所述的 `bash` 脚本是否正确导出了环境变量，并且是否为创建的 Azure Cosmos DB 数据库提供了正确的值。
 
@@ -263,7 +263,7 @@ open https://spring-todo-app.azurewebsites.net
 
 在地址栏中，应会看到正在使用远程 URL 运行的应用：
 
- ![在 Azure appservice 中运行的 Java 应用](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![使用远程 URL 运行的 Spring Boot 应用程序](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>流式传输诊断日志
 

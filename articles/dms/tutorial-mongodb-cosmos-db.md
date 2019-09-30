@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 07/04/2019
-ms.openlocfilehash: baf3c372d0c84d4daf439fdc92fa6eeac5d12d0b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.date: 09/25/2019
+ms.openlocfilehash: 96540a8ea40efcc3a2d115980999c8d470b85180
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501023"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265951"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教程：使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 
@@ -116,6 +116,9 @@ ms.locfileid: "68501023"
 ## <a name="specify-source-details"></a>指定源详细信息
 
 1. 在“源详细信息”  屏幕上，指定源 MongoDB 服务器的连接详细信息。
+
+   > [!IMPORTANT]
+   > Azure 数据库迁移服务不支持将 Azure Cosmos DB 作为源。
 
     可通过三种模式连接到源：
    * **标准模式**：接受完全限定的域名或 IP 地址、端口号和连接凭据。

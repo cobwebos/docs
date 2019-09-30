@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/28/2019
-ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/20/2019
+ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138344"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173485"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>使用 Terraform 通过 Packer 自定义映像创建 Azure 虚拟机规模集
 
@@ -42,9 +42,9 @@ ms.locfileid: "70138344"
 
 在空目录中使用以下名称创建 3 个新文件：
 
-- ```variables.tf``` 此文件保存模板中所用的变量值。
-- ```output.tf``` 此文件说明部署后显示的设置。
-- ```vmss.tf``` 此文件包含要部署的基础结构的代码。
+- `variables.tf`：此文件保存模板中所用的变量值。
+- `output.tf`：此文件说明部署后显示的设置。
+- `vmss.tf`：此文件包含要部署的基础结构的代码。
 
 ##  <a name="create-the-variables"></a>创建变量 
 
@@ -52,7 +52,7 @@ ms.locfileid: "70138344"
 
 编辑 `variables.tf` 文件，复制下列代码，然后保存更改。
 
-```tf 
+```hcl
 variable "location" {
   description = "The location where resources are created"
   default     = "East US"
@@ -70,7 +70,7 @@ variable "resource_group_name" {
 
 保存文件。
 
-部署 Terraform 模板时，需要获得用于访问应用程序的完全限定域名。 使用 Terraform 的 ```output``` 资源类型并获取资源的 ```fqdn``` 属性。 
+部署 Terraform 模板时，需要获得用于访问应用程序的完全限定域名。 使用 Terraform 的 `output` 资源类型并获取资源的 `fqdn` 属性。 
 
 编辑 `output.tf` 文件并复制下列代码，公开虚拟机的完全限定域名。 
 
@@ -89,9 +89,9 @@ output "vmss_public_ip" {
 
 还需要在其中创建所有资源的资源组。 
 
-在 ```vmss.tf``` 文件中编辑并复制下列代码： 
+在 `vmss.tf` 文件中编辑并复制下列代码： 
 
-```tf 
+```hcl
 
 resource "azurerm_resource_group" "vmss" {
   name     = "${var.resource_group_name}"
@@ -145,7 +145,7 @@ resource "azurerm_public_ip" "vmss" {
 terraform init 
 ```
  
-提供程序插件从 Terraform 注册表将内容下载到运行命令所在目录的 ```.terraform``` 文件夹中。
+提供程序插件从 Terraform 注册表将内容下载到运行命令所在目录的 `.terraform` 文件夹中。
 
 运行以下命令以在 Azure 中部署基础结构。
 
@@ -185,8 +185,7 @@ terraform apply
 
 在 `vmss.tf` 文件的末尾添加以下代码。
 
-```tf
-
+```hcl
 
 resource "azurerm_lb" "vmss" {
   name                = "vmss-lb"
@@ -303,7 +302,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
 通过将以下代码添加 `variables.tf` 自定义部署：
 
-```tf 
+```hcl
 variable "application_port" {
     description = "The port that you want to expose to the external load balancer"
     default     = 80

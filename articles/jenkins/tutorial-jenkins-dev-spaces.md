@@ -7,12 +7,12 @@ ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/31/2019
-ms.openlocfilehash: 10ff8f4645ee1e7023c96174236243a3b85de938
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3d5e8ba8a29481a6f37ffd10f577d354fc5fbf0a
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679124"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161493"
 ---
 <!-- GMinchAQ, 06/18/19 -->
 
@@ -53,7 +53,7 @@ ms.locfileid: "68679124"
 
 在此部分，需要创建 Azure 资源：
 
-* 在本教程中，包含所有 Auzre 资源的资源组。
+* 包含本教程的所有 Azure 资源的资源组。
 * [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/) (AKS) 群集。
 * [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/) (ACR)，用于生成（使用 ACR 任务）和存储 Docker 映像。
 

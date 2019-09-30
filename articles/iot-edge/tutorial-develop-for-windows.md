@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 03b279e6193c55141b80a5fadc9d39c7c1681006
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 6cde60ee31b1654d79affd6e9050f426365ba29f
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915140"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240972"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>教程：开发适用于 Windows 设备的 IoT Edge 模块
 
@@ -57,6 +57,7 @@ ms.locfileid: "70915140"
 
 * 具有 1809 更新或更高版本更新的 Windows 10。
 * 可以使用自己的计算机或虚拟机，具体取决于开发首选项。
+  * 请确保开发计算机支持嵌套虚拟化。 此功能对于运行容器引擎是必需的，你将在下一部分中安装。
 * 安装 [Git](https://git-scm.com/)。 
 
 Windows 上的 Azure IoT Edge 设备：
@@ -299,7 +300,7 @@ IotEdgeModule1 代码通过其输入队列接收消息，并通过其输出队�
 
 3. 观察 Visual Studio 中的“输出”部分，以查看到达 IoT 中心的消息  。 
 
-   启动两个模块可能需要数分钟时间。 IoT Edge 运行时需要接收其新的部署清单，从容器运行时下拉模块映像，然后启动每个新模块。 如果你 
+   启动两个模块可能需要数分钟时间。 IoT Edge 运行时需要接收其新的部署清单，从容器运行时下拉模块映像，然后启动每个新模块。 
 
    ![查看传入的设备到云消息](./media/tutorial-develop-for-windows/view-d2c-messages.png)
 

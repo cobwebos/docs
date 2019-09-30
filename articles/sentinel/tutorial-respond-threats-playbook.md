@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Sentinel 预览版中运行 playbook | Microsoft Docs
+title: 在 Azure Sentinel 中运行 playbook | Microsoft Docs
 description: 本文介绍了如何在 Azure Sentinel 中运行 playbook。
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/21/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 08c88df2f8ccc69f213687209d1d003f3bb1c7b8
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7ab4c4ba4553e7e5f15e563c67c845758a53766f
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018800"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229510"
 ---
-# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>教程：在 Azure Sentinel 预览版中设置自动威胁响应
+# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>教程：在 Azure Sentinel 中设置自动威胁响应
 
-> [!IMPORTANT]
-> Azure Sentinel 当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 本教程可帮助你在 Azure Sentinel 中使用安全性 playbook 来对 Azure Sentinel 检测到的安全相关问题设置自动威胁响应。
 
@@ -78,7 +76,9 @@ ms.locfileid: "70018800"
 
 6. 你将转到逻辑应用设计器，可在此处构建新的模板或编辑模板。 详细了解如何使用[逻辑应用](../logic-apps/logic-apps-create-logic-apps-from-templates.md)创建 playbook。
 
-7. 若要创建空白 playbook，请在“搜索所有连接器和触发器”字段中，键入 Azure Sentinel，再选择“当触发对 Azure Sentinel 警报的响应时”    。 <br>创建后，新的 playbook 显示在“Playbook”列表中  。 如果未显示，请单击“刷新”  。 
+7. 若要创建空白 playbook，请在“搜索所有连接器和触发器”字段中，键入 Azure Sentinel，再选择“当触发对 Azure Sentinel 警报的响应时”    。 <br>创建后，新的 playbook 显示在“Playbook”列表中  。 如果未显示，请单击“刷新”  。
+
+1. 使用**获取实体**函数，使你能够从**实体**列表中获取相关实体，例如帐户、IP 地址和主机。 这使你可以对特定实体运行操作。
 
 7. 现在可以定义触发攻略时的响应。 可添加操作、逻辑条件、switch case 条件或循环。
 

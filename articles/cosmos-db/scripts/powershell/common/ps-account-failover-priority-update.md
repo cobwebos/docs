@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell 脚本 - 更改 Azure Cosmos 帐户的故障转移优先级
-description: Azure PowerShell 脚本示例 - 更改 Azure Cosmos 帐户的故障转移优先级
+title: Azure PowerShell 脚本 - 更改 Azure Cosmos 帐户的故障转移优先级或触发故障转移
+description: Azure PowerShell 脚本示例 - 更改 Azure Cosmos 帐户的故障转移优先级或触发故障转移
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0aea4e8e01b5f65be0d0ca4bb08082e058cba311
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e4406124a7ea4eac213d830d0e5960e76fb6d364
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603966"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155406"
 ---
-# <a name="change-failover-priority-for-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 更改 Azure Cosmos 帐户的故障转移优先级
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 更改 Azure Cosmos 帐户的故障转移优先级或触发故障转移
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,12 @@ ms.locfileid: "67603966"
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account")]
+> [!NOTE]
+> 对 `failoverPriority=0` 的区域进行的任何更改都会触发手动故障转移，并且只能对配置为手动故障转移的帐户进行更改。 对其他所有区域进行的更改只是更改了 Cosmos 帐户的故障转移优先级。
+> [!NOTE]
+> 此示例演示如何使用 SQL (Core) API 帐户。 若要将此示例用于其他 API，请复制相关属性，并将其应用于 API 特定的脚本
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account or trigger a manual failover")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 

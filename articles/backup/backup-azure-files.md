@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: d5702576b3353bbc779601c7a5fe91417d73c7a1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 44a2b0feab19d042de58359a7ea13814415e6c9e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624355"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129549"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>备份和还原 Azure 文件共享
 本文介绍如何使用 Azure 门户备份和还原 [Azure 文件共享](../storage/files/storage-files-introduction.md)。
@@ -86,13 +86,15 @@ Azure 文件共享备份为预览版。 常规用途 v1 和常规用途 v2 存�
 
    ![单击“备份”以将 Azure 文件共享与保管库相关联](./media/backup-file-shares/list-of-azure-files-backup-items.png)
 
-3. 从 Azure 文件共享的列表中，选择所需的文件共享。 此时会打开所选文件共享的“备份项”菜单。
+3. 从 Azure 文件共享的列表中，选择所需的文件共享。 此时将显示**备份项**详细信息。 在“备份项”菜单中单击“立即备份”   。 由于这是按需备份作业，因此没有与恢复点关联的保留策略。
 
    ![单击“备份”以将 Azure 文件共享与保管库相关联](./media/backup-file-shares/backup-item-menu.png)
 
-4. 在“备份项”菜单中单击“立即备份”  。 由于这是按需备份作业，因此没有与恢复点关联的保留策略。 此时会打开“立即备份”对话框。  指定要保留恢复点的最后一天。
+4. 此时会打开“立即备份”对话框。  指定要保留恢复点的最后一天。
 
    ![单击“备份”以将 Azure 文件共享与保管库相关联](./media/backup-file-shares/backup-now-menu.png)
+
+5. 单击“确定”  以确认按需备份作业。
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>从 Azure 文件共享的备份还原
 如需从某个还原点还原整个文件共享或单个文件或文件夹，请转到上一部分详细介绍的“备份项”。 选择“还原共享”，从所需的时间点还原整个文件共享。  从显示的还原点列表中，选择一个能够覆盖当前文件共享或者能够将该共享还原到同一区域中的备用文件共享的还原点。

@@ -4,14 +4,14 @@ description: Azure PowerShell 脚本示例 - Azure Cosmos 帐户的帐户密钥�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/20/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 55f28ef6c6ff82f0b82b10ac1dd7931ac46aa2fc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1eb9cc4c35584b94d3d16654b1bec253e21a91ff
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602506"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154749"
 ---
 # <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 的 Azure Cosmos 帐户的连接字符串和帐户密钥操作
 
@@ -21,7 +21,8 @@ ms.locfileid: "67602506"
 
 ## <a name="sample-script"></a>示例脚本
 
-此示例需要资源组和帐户存在。 首先使用现有的 PowerShell 创建示例预配帐户。
+> [!NOTE]
+> 此示例演示如何使用 SQL (Core) API 帐户。 若要将此示例用于其他 API，请复制相关属性，并将其应用于 API 特定的脚本
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-keys-connection-strings.ps1 "Connection strings and account keys for Azure Cosmos account")]
 

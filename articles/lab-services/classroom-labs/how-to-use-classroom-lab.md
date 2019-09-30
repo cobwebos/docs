@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/19/2019
+ms.date: 09/19/2019
 ms.author: spelluru
-ms.openlocfilehash: a7d1249d68ddd4a161d1c0476e5f56e80c4d32f9
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 10813600621293e9f559129230193f81ea0c505a
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032016"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161519"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>如何访问 Azure 实验室服务中的课堂实验室
 本文介绍如何注册到课堂实验室、查看可以访问的所有实验室、在实验室中启动/停止 VM 以及连接到 VM。 
@@ -28,8 +28,11 @@ ms.locfileid: "70032016"
 
 1. 导航到从教授/教师处收到的注册 URL  。 完成注册后，不需使用注册 URL。 请改用 URL：[https://labs.azure.com](https://labs.azure.com)。 目前尚不支持 Internet Explorer 11。 
 1. 使用学校帐户登录服务以完成注册。 
-2. 注册后，请确认可看到你有权访问的实验室的虚拟机。 
-3. 等到虚拟机准备就绪。 在“VM”磁贴上，请注意以下字段：
+
+    > [!NOTE]
+    > 使用 Azure 实验室服务需要 Microsoft 帐户。 如果尝试使用非 Microsoft 帐户（例如 Yahoo 或 Google 帐户）登录到门户，请按照说明创建将链接到非 Microsoft 帐户的 Microsoft 帐户。 然后，按照步骤完成注册过程。 
+1. 注册后，请确认可看到你有权访问的实验室的虚拟机。 
+1. 等到虚拟机准备就绪。 在“VM”磁贴上，请注意以下字段：
     1. 在磁贴的顶部，可以看到**实验室的名称**。
     1. 在其右侧，可以看到代表 VM 的**操作系统 (OS)** 的图标。 在此示例中，它是 Windows OS。 
     1. 可以在磁贴底部看到用于启动/停止 VM 以及连接到 VM 的图标/按钮。 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 8c346b75b30737645721d8b39a655a85ed446fae
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172056"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229529"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教程：创建和配置 Azure Active Directory 域服务实例
 
@@ -64,6 +64,15 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 * **内置域名：** 默认将使用目录的内置域名（带 *.onmicrosoft.com* 后缀）。 若要启用通过 Internet 对托管域进行安全 LDAP 访问，则不能创建数字证书来保护与此默认域建立的连接。 Microsoft 拥有 *.onmicrosoft.com* 域，因此，证书颁发机构 (CA) 不会颁发证书。
 * **自定义域名：** 最常见的方法是指定自定义域名，通常是你已拥有且可路由的域名。 使用可路由的自定义域时，流量可根据需要正确传送，以支持你的应用程序。
 * **不可路由的域后缀：** 一般情况下，我们建议避免使用不可路由的域名后缀，例如 *contoso.local*。 *.local* 后缀不可路由，并可能导致 DNS 解析出现问题。
+
+> [!TIP]
+> 如果创建自定义域名，请注意现有的 DNS 命名空间。 建议为域名添加唯一的前缀。 例如，如果 DNS 根名称为 contoso.com  ，则使用自定义域名 corp.contoso.com  或 ds.contoso.com  创建 Azure AD DS 托管域。 在具有本地 AD DS 环境的混合环境中，这些前缀可能已在使用中。 对 Azure AD DS 使用唯一的前缀。
+>
+> 可以将根 DNS 名称用于 Azure AD DS 托管域，但是可能需要为环境中的其他服务创建一些其他 DNS 记录。 例如，如果运行使用根 DNS 名称托管站点的 Web 服务器，则可能存在命名冲突，从而需要其他 DNS 条目。
+>
+> 在这些教程和操作指南文章中，使用自定义域 contoso.com  作为简短示例。 在所有命令中，指定你自己的域名，其中可以包含唯一的前缀。
+>
+> 有关详细信息，请参阅[为域选择命名前缀][naming-prefix]。
 
 还存在以下 DNS 名称限制：
 
@@ -228,3 +237,6 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+
+<!-- EXTERNAL LINKS -->
+[naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix
