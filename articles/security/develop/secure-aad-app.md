@@ -443,7 +443,7 @@ Azure 服务广泛记录系统和用户活动以及系统运行状况：
 1.  向后导航到 Azure 门户。 在左侧导航窗格中，选择 "Azure Active Directory" 服务，然后选择 "应用注册"。
 2.  在生成的屏幕中，选择 WebApp-OpenIDConnect-DotNet 应用程序。
 3.  在 "重定向 Uri" 部分的 "身份验证" 选项卡中，在组合框中选择 "Web"，并添加以下重定向 Uri。
-    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.nethttps://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o 在 "高级设置" 部分中，将 "注销 URL" 设置为 https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc
+    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o 在 "高级设置" 部分中，将 "注销 URL" 设置为 https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc
 4.  例如 https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net ，在 "品牌" 选项卡中，将主页 URL 更新为应用服务的地址。
         o 保存配置。
 5.  如果应用程序调用 web api，请确保对项目 appsettings 应用必要的更改，使其调用已发布的 API URL 而不是 localhost。
