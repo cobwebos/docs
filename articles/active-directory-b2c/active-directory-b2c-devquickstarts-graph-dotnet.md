@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 903492d790cdde93dfe84763de139fe85e26b234
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 02765538ce8a351db539438837b6426c0896d2d4
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218287"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701896"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD 图形 API
 
@@ -43,32 +43,25 @@ Azure AD B2C 租户后，需要使用[Azure 门户](https://portal.azure.com)注
 
 ### <a name="register-application-in-azure-active-directory"></a>在 Azure Active Directory 中注册应用程序
 
-若要将 Azure AD 图形 API 用于 B2C 租户，需要使用 Azure Active Directory**应用注册**工作流注册应用程序。
+若要将 Azure AD 图形 API 用于 B2C 租户，需要使用 Azure Active Directory 应用程序注册工作流来注册应用程序。
 
-1. 登录到[Azure 门户](https://portal.azure.com)并切换到包含 Azure AD B2C 租户的目录。
-1. 在左侧菜单中选择 " **Azure Active Directory** （*不*Azure AD B2C）"。 或者，选择 "**所有服务**"，然后搜索并选择**Azure Active Directory**。
-1. 在左侧菜单中的 "**管理**" 下，选择 "**应用注册（旧）** "。
-1. 选择**新的应用程序注册**
-1. 输入应用程序的名称。 例如，*管理应用*。
-1. 在 "**登录 url**" 中输入任何有效的 url。 例如， *https://localhost* 。 此终结点不必是可访问的，但必须是有效的 URL。
-1. 选择“创建”。
-1. 记录在 "**已注册的应用**概述" 页上显示的**应用程序 ID** 。 稍后的步骤中将使用此值进行配置。
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
 
 ### <a name="assign-api-access-permissions"></a>分配 API 访问权限
 
-1. 在 "**已注册的应用**概述" 页上，选择 "**设置**"。
-1. 在 " **API 访问**" 下，选择 "**所需权限**"。
+1. 在“已注册的应用”概述页上，选择“设置”。
+1. 在“API 访问”下，选择“所需的权限”。
 1. 选择“Windows Azure Active Directory”。
 1. 在 "**应用程序权限**" 下，选择 "**读取和写入目录数据**"。
 1. 选择“保存”。
 1. 选择“授予权限”，然后选择“是”。 权限完全传播可能需要几分钟的时间。
 
-### <a name="create-client-secret"></a>创建客户端密码
+### <a name="create-client-secret"></a>创建客户端机密
 
-1. 在 " **API 访问**" 下，选择 "**密钥**"。
-1. 在 "**密钥说明**" 框中输入密钥的说明。 例如，*管理密钥*。
+1. 在“API 访问”下，选择“密钥”。
+1. 在“密钥说明”框中输入密钥的说明。 例如，*管理密钥*。
 1. 选择 **"有效期"，然后选择**"**保存**"。
-1. 记录密钥的**值**。 稍后的步骤中将使用此值进行配置。
+1. 记下密钥的“值”。 稍后的步骤中将使用此值进行配置。
 
 现在，你有一个应用程序，该应用程序有权在 Azure AD B2C 租户中*创建*、*读取*和*更新*用户。 转到下一节，添加用户*删除*和*密码更新*权限。
 
@@ -78,12 +71,12 @@ Azure AD B2C 租户后，需要使用[Azure 门户](https://portal.azure.com)注
 
 如果要使应用程序能够删除用户或更新密码，则需要向其授予 "*用户管理员*" 角色。
 
-1. 登录到[Azure 门户](https://portal.azure.com)并切换到包含 Azure AD B2C 租户的目录。
+1. 登录到 [Azure 门户](https://portal.azure.com)，并切换到包含你的 Azure AD B2C 租户的目录。
 1. 在左侧菜单中选择 " **Azure AD B2C** "。 或者，选择 "**所有服务**"，然后搜索并选择**Azure AD B2C**。
 1. 在 "**管理**" 下，选择 "**角色和管理员**"。
 1. 选择 "**用户管理员**" 角色。
 1. 选择 "**添加分配**"。
-1. 在 "**选择**" 文本框中，输入前面注册的应用程序的名称，例如 "*管理应用*程序"。 当应用程序出现在搜索结果中时，请选择它。
+1. 在 "**选择**" 文本框中，输入前面注册的应用程序的名称，例如*managementapp1*。 当应用程序出现在搜索结果中时，请选择它。
 1. 选择 **添加** 。 权限完全传播可能需要几分钟的时间。
 
 现在，Azure AD B2C 应用程序具有删除用户或更新 B2C 租户中的密码所需的其他权限。

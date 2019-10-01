@@ -1,22 +1,22 @@
 ---
-title: 使用 Vm 和 nsg 部署在 Azure 堡垒 |Microsoft Docs
-description: 本文介绍如何结合使用 Azure 堡垒 NSG 访问
+title: 使用 Azure 堡垒中的 Vm 和 Nsg |Microsoft Docs
+description: 本文介绍如何使用 Azure 堡垒合并 NSG 访问
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/30/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5312ad2593e732f4c84eb67ed263bc9e4666a67a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4f99b24435998fc4d0c7ab724c66a318586a80d4
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594198"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694943"
 ---
-# <a name="working-with-nsg-access-and-azure-bastion-preview"></a>使用 NSG 的访问和 Azure 堡垒 （预览版）
+# <a name="working-with-nsg-access-and-azure-bastion-preview"></a>使用 NSG 访问和 Azure 堡垒（预览版）
 
-在使用 Azure 堡垒，可以使用网络安全组 (Nsg)。 有关详细信息，请参阅[安全组](../virtual-network/security-overview.md)。 
+使用 Azure 堡垒时，可以使用网络安全组（Nsg）。 有关详细信息，请参阅[安全组](../virtual-network/security-overview.md)。 
 
 > [!IMPORTANT]
 > 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -34,20 +34,20 @@ ms.locfileid: "67594198"
 
 ## <a name="nsg"></a>网络安全组
 
-* **AzureBastionSubnet:** 在特定 AzureBastionSubnet 中部署 azure 堡垒。  
-    * **从公共 internet 的入站流量：** Azure 堡垒将创建需要端口 443 上的传入流量的公共 IP 启用的公共 IP。 端口 3389/22 不需要在 AzureBastionSubnet 上打开。
-    * **到目标 Vm 的出口流量：** Azure 堡垒将到达目标 Vm 通过专用 IP。 Nsg 需要允许到其他目标 VM 子网的传出流量。
-* **目标 VM 子网：** 这是包含目标虚拟机的 RDP/ssh 连接到所需的子网。
-    * **从 Azure 堡垒入口流量：** Azure 堡垒将到达到目标 VM 通过专用 IP。 通过 RDP/SSH 端口 (端口 3389 和 22，分别) 需要在目标端 VM 上打开通过专用 IP。
+* **AzureBastionSubnet:** Azure 堡垒部署在特定 AzureBastionSubnet 中。  
+    * **从公共 internet 传输流量：** Azure 堡垒会创建一个公共 IP，要求在公共 IP 上为入口通信启用端口443。 不需要在 AzureBastionSubnet 上打开端口3389/22。
+    * **流向目标 Vm 的出口流量：** Azure 堡垒将通过专用 IP 到达目标 Vm。 Nsg 需要允许传出流量流向其他目标 VM 子网。
+* **目标 VM 子网：** 这是包含要 RDP/SSH 连接到的目标虚拟机的子网。
+    * **传入来自 Azure 堡垒的流量：** Azure 堡垒将通过专用 IP 进入目标 VM。 RDP/SSH 端口（分别为端口3389和22）需要通过专用 IP 在目标 VM 端打开。
 
-## <a name="apply"></a>将 Nsg 应用到 AzureBastionSubnet
+## <a name="apply"></a>将 Nsg 应用于 AzureBastionSubnet
 
-如果将应用到 Nsg **AzureBastionSubnet**，允许以下 Azure 控制平面和基础结构的两个服务标记：
+如果将 Nsg 应用于**AzureBastionSubnet**，则允许 Azure 控制平面和基础结构使用以下两个服务标记：
 
-* **（仅限资源管理器） GatewayManager**:此标记表示 Azure 网关管理器服务的地址前缀。 如果为值指定 GatewayManager，是允许还是拒绝到 GatewayManager 流量。  如果要在 AzureBastionSubnet 创建 Nsg，启用入站流量的 GatewayManager 标记。
+* **GatewayManager （仅资源管理器）** ：此标记表示 Azure 网关管理器服务的地址前缀。 如果为值指定 GatewayManager，则允许或拒绝流量发送到 GatewayManager。  如果要在 AzureBastionSubnet 上创建 Nsg，请为入站流量启用 GatewayManager 标记。
 
-* **AzureCloud （仅限资源管理器）** :此标记表示 azure 包括所有数据中心的公共 IP 地址的 IP 地址空间。 值指定 AzureCloud，是允许还是拒绝流量到 Azure 公共 IP 地址。 如果你想要只允许访问特定区域中的 AzureCloud，可以指定该区域。 例如，如果你想要只允许访问 Azure AzureCloud 美国东部区域中，您可以指定 AzureCloud.EastUS 作为服务标记。 如果要在 AzureBastionSubnet 创建 Nsg，启用出站流量的 AzureCloud 标记。
+* **AzureCloud （仅资源管理器）** ：此标记表示 Azure 的 IP 地址空间，包括所有数据中心公共 IP 地址。 如果为值指定 AzureCloud，则允许或拒绝对 Azure 公共 IP 地址的流量。 如果要仅允许访问特定区域中的 AzureCloud，可以指定区域。 例如，如果你想要只允许访问美国东部区域中的 Azure AzureCloud，则可以指定 AzureCloud 作为服务标记。 如果要在 AzureBastionSubnet 上创建 Nsg，请为出站流量启用 AzureCloud 标记。 如果为入站连接到 Internet 打开端口443，则不需要为入站流量启用 AzureCloud 标记。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 堡垒详细信息，请参阅[常见问题](bastion-faq.md)
+有关 Azure 堡垒的详细信息，请参阅[常见问题解答](bastion-faq.md)

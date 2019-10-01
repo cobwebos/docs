@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: efe0aaf7c7d5516401f8c72721121a5dff247b95
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 196565e84ec493352ca9765d5502c9ad8ac7edd3
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350367"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703492"
 ---
 # <a name="live-events-and-live-outputs"></a>直播活动和实时输出
 
@@ -86,6 +86,9 @@ ms.locfileid: "71350367"
 * 名称应遵循以下[regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)模式： `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`。
 
 另请参阅[流式处理终结点命名约定](streaming-endpoint-concept.md#naming-convention)。
+
+> [!TIP]
+> 为了保证实时事件名称的唯一性，可以生成 GUID，并删除所有连字符和大括号（如果有）。 该字符串在所有实时事件中都是唯一的，并且其长度保证为32。
 
 ## <a name="live-event-ingest-urls"></a>直播活动引入 URL
 

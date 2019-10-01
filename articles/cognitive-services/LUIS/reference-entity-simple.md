@@ -1,27 +1,27 @@
 ---
-title: 简单实体类型-LUIS
+title: 简单实体类型 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 简单实体是描述单个概念的泛型实体，通过机器学习的上下文习得。 因为简单实体通常是名称 (如公司名称、产品名称或其他类别名称), 所以, 在使用简单实体时添加短语列表, 以提高所使用的名称的信号。
+description: 简单实体是描述单个概念的泛型实体，通过机器学习的上下文习得。 由于简单实体通常是名称，例如公司名称、产品名称或其他类别的名称，因此，在使用简单实体时，请添加一个短语列表，以提升所用名称的信号。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/24/2019
+ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: c1514b6cd512924a162a524d11e888055fa06514
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2eb3ff847f9bfc162adfb281d2ac1fad6f8c5093
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563212"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695136"
 ---
 # <a name="simple-entity"></a>简单实体 
 
 简单实体是描述单个概念的泛型实体，通过机器学习的上下文习得。 由于简单实体采用概括性的名称，例如公司名称、产品名称或其他类别的名称，因此，在使用简单实体时，请添加一个[短语列表](luis-concept-feature.md)，以提升所用名称的信号。 
 
-**实体适用于以下情况:**
+**在以下情况下，非常适合使用此实体：**
 
 * 数据格式不一致，但指示相同的事物。 
 
@@ -35,6 +35,8 @@ ms.locfileid: "68563212"
 
 从终结点返回的数据包括实体名称、从陈述中发现的文本、所发现文本的位置，以及评分：
 
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+
 ```JSON
 "entities": [
   {
@@ -47,10 +49,49 @@ ms.locfileid: "68563212"
 ]
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+
+如果在查询字符串中设置了 `verbose=false`，则这是 JSON：
+
+```json
+"entities": {
+    "Customer": [
+        "Bob Jones"
+    ]
+}```
+
+This is the JSON if `verbose=true` is set in the query string:
+
+```json
+"entities": {
+    "Customer": [
+        "Bob Jones"
+    ],
+    "$instance": {
+        "Customer": [
+            {
+                "type": "Customer",
+                "text": "Bob Jones",
+                "startIndex": 0,
+                "length": 9,
+                "score": 0.9339134,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+* * * 
+
 |数据对象|实体名称|ReplTest1|
 |--|--|--|
 |简单实体|`Customer`|`bob jones`|
 
 ## <a name="next-steps"></a>后续步骤
 
-在本[教程](luis-quickstart-primary-and-secondary-data.md)中, 使用**简单实体**从查询文本中提取员工作业名称的机器学习数据。 若要增加提取准确性, 请添加特定于简单实体的条款的[短语列表](luis-concept-feature.md)。
+在本[教程](luis-quickstart-primary-and-secondary-data.md)中，请使用**简单实体**从话语中提取雇佣工作名称的机器学习数据。 若要提高提取的准确性，请添加一个[短语列表](luis-concept-feature.md)，其中包含特定于简单实体的术语。

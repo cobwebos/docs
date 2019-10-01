@@ -4,14 +4,14 @@ description: 如何定义存储目标，以便 Azure HPC 缓存可以将本地 N
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 7df0727a58f3d70289c5060175572dac1bbb4abb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: 302d727ede9604d11972eaa8f46a3e27f204858f
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300026"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710039"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -21,17 +21,9 @@ ms.locfileid: "71300026"
 
 请记住，必须可以从缓存的虚拟网络中访问存储导出。 对于本地硬件存储，你可能需要设置一个 DNS 服务器，该服务器可以解析用于 NFS 存储访问的主机名。 在[DNS 访问](hpc-cache-prereqs.md#dns-access)中了解详细信息。
 
-你可以在创建缓存时或之后添加存储目标。 此过程略有不同，具体取决于是否要添加 Azure Blob 存储或 NFS 导出。 下面是每种情况的详细信息。
+创建缓存后，添加存储目标。 此过程略有不同，具体取决于是否要添加 Azure Blob 存储或 NFS 导出。 下面是每种情况的详细信息。
 
-## <a name="add-storage-targets-while-creating-the-cache"></a>创建缓存时添加存储目标
-
-使用 Azure HPC 缓存创建向导的 "**存储目标**" 选项卡来定义创建缓存实例时的存储。
-
-![存储目标页面的屏幕截图](media/hpc-cache-storage-targets-pop.png)
-
-单击 "**添加存储目标**" 链接以添加存储。
-
-## <a name="add-storage-targets-from-the-cache"></a>从缓存添加存储目标
+## <a name="open-the-storage-targets-page"></a>打开 "存储目标" 页
 
 在 Azure 门户中，打开缓存实例，并单击左侧边栏中的 "**存储目标**"。 "存储目标" 页将列出所有现有目标，并提供一个用于添加新目标的链接。
 
@@ -107,7 +99,7 @@ NFS 存储目标可以有多个虚拟路径，只要每个路径代表同一个�
 创建一个存储目标的所有路径。
 <!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
 
-对于每个命名空间路径，请填写以下值： 
+对于每个命名空间路径，请填写以下值：
 
 * **虚拟命名空间路径**-为此存储目标设置面向客户端的文件路径。 阅读[配置聚合命名空间](hpc-cache-namespace.md)，了解有关虚拟命名空间功能的详细信息。
 
@@ -115,7 +107,7 @@ NFS 存储目标可以有多个虚拟路径，只要每个路径代表同一个�
 
 * **Nfs 导出路径**-输入 NFS 导出的路径。
 
-* **子目录路径**-如果要装入导出的特定子目录，请在此处输入。 否则，请将此字段留空。 
+* **子目录路径**-如果要装入导出的特定子目录，请在此处输入。 否则，请将此字段留空。
 
 完成后，单击 **"确定"** 以添加存储目标。
 
@@ -124,7 +116,7 @@ NFS 存储目标可以有多个虚拟路径，只要每个路径代表同一个�
 
 创建指向 NFS 存储系统的存储目标时，需要为该目标选择*使用模型*。 此模型确定如何缓存数据。
 
-* Read 繁重-如果你经常使用缓存来提高数据读取权限，请选择此选项。 
+* Read 繁重-如果你经常使用缓存来提高数据读取权限，请选择此选项。
 
 * 读/写-如果客户端使用缓存进行读取和写入，请选择此选项。
 

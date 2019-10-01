@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory B2C 中的审核日志示例和定义
-description: 有关访问 Azure AD B2C 审核日志的指南和示例。
+description: 有关访问 Azure AD B2C 审核日志的指导和示例。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,21 +11,21 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a8e35254a79ac43b35f45d1a20f3d1f6815f32be
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033829"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702807"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
-Azure Active Directory B2C （Azure AD B2C）会发出审核日志，其中包含有关 B2C 资源、颁发的令牌以及管理员访问的活动信息。 本文简要概述了审核日志中提供的信息，以及如何访问 Azure AD B2C 租户的此数据的说明。
+Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有关 B2C 资源、颁发的令牌和管理员访问权限的活动信息。 本文简要概述了审核日志中提供的信息，并介绍了如何访问 Azure AD B2C 租户的此数据。
 
-审核日志事件只保留**7 天**。 如果需要保留更长时间，请使用下面所示的方法计划下载并存储日志。
+审核日志事件仅保留**七天**。 如果需要保留更长时间，请使用下面所示的方法计划下载并存储日志。
 
 > [!NOTE]
-> 在 Azure 门户的 " **Azure Active Directory** " 或 " **Azure AD B2C** " 页下的 "**用户**" 部分下，不能看到用户登录的单个 Azure AD B2C 应用程序。 登录事件显示用户活动，但不能将其与用户登录到的 B2C 应用程序相关联。 必须使用其审核日志，这一点会在本文中进一步阐述。
+> 无法在 Azure 门户中“Azure Active Directory”或“Azure AD B2C”页的“用户”部分查看各个 Azure AD B2C 应用程序的用户登录。 该处的登录事件会显示用户活动，但不能回过头来将其与用户登录到的 B2C 应用程序相关联。 必须使用其审核日志，这一点会在本文中进一步阐述。
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>审核日志的 B2C 类别中提供的活动的概述
 
@@ -33,12 +33,12 @@ Azure Active Directory B2C （Azure AD B2C）会发出审核日志，其中包�
 
 |活动类型 |描述  |
 |---------|---------|
-|Authorization |与访问 B2C 资源的用户授权有关的活动（例如，管理员访问 B2C 策略列表）。         |
-|目录 |当管理员使用 Azure 门户登录时，与检索到的目录属性相关的活动。 |
-|应用程序 | 在 B2C 应用程序上创建、读取、更新和删除（CRUD）操作。 |
-|Key |对 B2C 密钥容器中存储的密钥进行 CRUD 操作。 |
-|Resource |B2C 资源上的 CRUD 操作。 例如，策略和标识提供者。
-|身份验证 |验证用户凭据和令牌颁发。|
+|Authorization |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动。         |
+|目录 |与管理员使用 Azure 门户登录时检索到的目录属性相关的活动。 |
+|应用程序 | 与 B2C 应用程序相关的创建、读取、更新和删除 (CRUD) 操作。 |
+|Key |与 B2C 密钥容器中存储的密钥相关的 CRUD 操作。 |
+|Resource |与 B2C 资源相关的 CRUD 操作。 例如，策略和标识提供者。
+|身份验证 |用户凭据和令牌颁发的验证。|
 
 有关用户对象 CRUD 活动，请参阅“核心目录”类别。
 
@@ -52,78 +52,76 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 |节|字段|描述|
 |-------|-----|-----------|
-| activities | 姓名 | 发生了哪项活动。 例如，*向应用程序发出 id_token*，这将结束实际用户登录。 |
-| 发起者（参与者） | ObjectId | 用户登录到的 B2C 应用程序的**对象 ID** 。 此标识符在 Azure 门户中不可见，但可通过 Microsoft Graph API 访问。 |
+| activities | 姓名 | 发生了哪项活动。 例如，“向应用程序颁发 id_token”（这将结束实际的用户登录）。 |
+| 发起者（参与者） | ObjectId | 用户登录的 B2C 应用程序的**对象 ID**。 此标识符在 Azure 门户中不可见，但可以通过 Microsoft Graph API 访问它。 |
 | 发起者（参与者） | SPN | 用户登录的 B2C 应用程序的**应用程序 ID**。 |
 | 目标 | ObjectId | 正在登录的用户的**对象 ID**。 |
 | 更多详细信息 | TenantId | Azure AD B2C 租户的**租户 ID**。 |
 | 更多详细信息 | PolicyId | 用于登录用户的用户流（策略）的**策略 ID**。 |
 | 更多详细信息 | ApplicationId | 用户登录的 B2C 应用程序的**应用程序 ID**。 |
 
-## <a name="view-audit-logs-in-the-azure-portal"></a>查看 Azure 门户中的审核日志
+## <a name="view-audit-logs-in-the-azure-portal"></a>在 Azure 门户中查看审核日志
 
-Azure 门户提供对 Azure AD B2C 租户中的审核日志事件的访问。
+在 Azure 门户中可以访问 Azure AD B2C 租户中的审核日志事件。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 切换到包含 Azure AD B2C 租户的目录，然后浏览到**Azure AD B2C**。
-1. 在左侧菜单中的 "**活动**" 下，选择 "**审核日志**"。
+1. 切换到包含你的 Azure AD B2C 租户的目录，然后浏览到“Azure AD B2C”。
+1. 在左侧菜单中的“活动”下，选择“审核日志”。
 
-将显示过去七天内记录的活动事件的列表。
+此时会显示过去七天内记录的活动事件列表。
 
-![示例筛选器，其中包含两个活动事件 Azure 门户](media/active-directory-b2c-reference-audit-logs/audit-logs-example-filter.png)
+![在 Azure 门户中使用筛选器后显示的两个活动事件示例](media/active-directory-b2c-reference-audit-logs/audit-logs-example-filter.png)
 
-提供了几个筛选选项，其中包括：
+可以使用多个筛选选项，包括：
 
-* **活动资源类型**-按活动 "[可用的概述](#overview-of-activities-available-in-the-b2c-category-of-audit-logs)" 部分中的表中显示的活动类型进行筛选。
-* **日期**-筛选显示的活动的日期范围。
+* **活动资源类型** - 根据[可用活动概述](#overview-of-activities-available-in-the-b2c-category-of-audit-logs)部分的表格中所示的活动类型进行筛选。
+* **日期** - 筛选显示的活动的日期范围。
 
-如果在列表中选择某一行，则将显示该事件的活动详细信息。
+如果在列表中选择某一行，将显示该事件的活动详细信息。
 
-若要在逗号分隔值（CSV）文件中下载活动事件列表，请选择 "**下载**"。
+若要以逗号分隔值 (CSV) 文件格式下载活动事件列表，请选择“下载”。
 
-## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>获取具有 Azure AD 报告 API 的审核日志
+## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>使用 Azure AD 报告 API 获取审核日志
 
 审核日志将发布到与 Azure Active Directory 其他活动相同的管道，因此可通过 [Azure Active Directory 报告 API](https://docs.microsoft.com/graph/api/directoryaudit-list)进行访问。 有关详细信息，请参阅[Azure Active Directory 报告 API 入门](../active-directory/reports-monitoring/concept-reporting-api.md)。
 
-### <a name="enable-reporting-api-access"></a>启用报表 API 访问
+### <a name="enable-reporting-api-access"></a>启用报告 API 访问
 
 若要允许对 Azure AD 报告 API 进行基于脚本或应用程序的访问，需要使用以下 API 权限在 Azure AD B2C 租户中注册 Azure Active Directory 应用程序：
 
 * Microsoft Graph
-  * 程序读取所有审核日志数据
+  * 应用程序：读取所有审核日志数据
 
-你可以在 B2C 租户内的现有 Azure Active Directory 应用程序注册中启用这些权限，或者创建专用于审核日志自动化的新权限。
+可对 B2C 租户中的现有 Azure Active Directory 应用程序注册中启用这些权限，或者创建专用于审核日志自动化的新权限。
 
-若要创建新的应用程序、分配所需的 API 权限并创建客户端密钥，请执行以下步骤：
+按照以下步骤注册应用程序，向其授予所需的 Microsoft Graph API 权限，然后创建客户端机密。
 
-1. 在 Azure Active Directory 中注册应用程序
-    1. 登录到[Azure 门户](https://portal.azure.com)并切换到包含 Azure AD B2C 租户的目录。
-    1. 从左侧菜单中选择 " **Azure Active Directory** （*不*Azure AD B2C）"。 或者选择 "**所有服务**"，搜索并选择 " **Azure Active Directory**"。
-    1. 在左侧菜单中的 "**管理**" 下，选择 "**应用注册（旧）** "。
-    1. 选择**新的应用程序注册**
-    1. 输入应用程序的名称。 例如，"*审核日志" 应用*。
-    1. 在 "**登录 url**" 中输入任何有效的 url。 例如， *https://localhost* 。 此终结点不必是可访问的，但必须是有效的 URL。
-    1. 选择“创建”。
-    1. 记录在 "**已注册应用**" 页上显示的**应用程序 ID** 。 在自动化脚本中，需要使用此值进行身份验证，如稍后部分中所示的示例 PowerShell 脚本。
-1. 分配 API 访问权限
-    1. 在 "**已注册的应用**概述" 页上，选择 "**设置**"。
-    1. 在 " **API 访问**" 下，选择 "**所需权限**"。
-    1. 选择 "**添加**"，然后**选择一个 API**。
-    1. 选择 " **Microsoft Graph**"，然后**选择**""。
-    1. 在 "**应用程序权限**" 下，选择 "**读取所有审核日志数据**"。
-    1. 选择 "**选择**" 按钮，然后选择 "**完成**"。
-    1. 选择“授予权限”，然后选择“是”。
-1. 创建客户端密码
-    1. 在 " **API 访问**" 下，选择 "**密钥**"。
-    1. 在 "**密钥说明**" 框中输入密钥的说明。 例如，*审核日志项*。
-    1. 选择 **"有效期**"，然后选择 "**保存**"。
-    1. 记录密钥的**值**。 在自动化脚本中，需要使用此值进行身份验证，如稍后部分中所示的示例 PowerShell 脚本。
+### <a name="register-application-in-azure-active-directory"></a>在 Azure Active Directory 中注册应用程序
 
-你现在已有一个应用程序，其中包含所需的 API 访问权限、一个应用程序 ID 和一个可在自动化脚本中使用的密钥。 有关如何使用脚本获取活动事件的示例，请参阅本文后面的 "PowerShell 脚本" 一节。
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+
+### <a name="assign-api-access-permissions"></a>分配 API 访问权限
+
+1. 在“已注册的应用”概述页上，选择“设置”。
+1. 在“API 访问”下，选择“所需的权限”。
+1. 依次选择“添加”、“选择 API”。
+1. 依次选择“Microsoft Graph”、“选择”。
+1. 在“应用程序权限”下，选择“读取所有审核日志数据”。
+1. 依次选择“选择”按钮、“完成”。
+1. 选择“授予权限”，然后选择“是”。
+
+### <a name="create-client-secret"></a>创建客户端机密
+
+1. 在“API 访问”下，选择“密钥”。
+1. 在“密钥说明”框中输入密钥的说明。 例如“审核日志密钥”。
+1. 选择一个**有效期**，然后选择“保存”。
+1. 记下密钥的“值”。 在自动化脚本（例如，后续部分所示的示例 PowerShell 脚本）中，需要使用此值进行身份验证。
+
+现已获取一个具有所需 API 访问权限的应用程序、一个应用程序 ID，以及一个可在自动化脚本中使用的密钥。 有关如何使用脚本获取活动事件的示例，请参阅本文稍后的“PowerShell 脚本”部分。
 
 ### <a name="access-the-api"></a>访问 API
 
-若要通过 API 下载 Azure AD B2C 审核日志事件，请筛选该`B2C`类别上的日志。 若要按类别进行筛选， `filter`请在调用 Azure AD 报告 API 终结点时使用查询字符串参数。
+若要通过 API 下载 Azure AD B2C 审核日志事件，请按 `B2C` 类别筛选日志。 若要按类别筛选，请在调用 Azure AD 报告 API 终结点时使用 `filter` 查询字符串参数。
 
 ```HTTP
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
@@ -131,9 +129,9 @@ https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByServi
 
 ### <a name="powershell-script"></a>PowerShell 脚本
 
-下面的 PowerShell 脚本演示了如何查询 Azure AD 报告 API 的示例。 查询 API 后，它会将记录的事件打印到标准输出，然后将 JSON 输出写入文件。
+以下 PowerShell 脚本通过一个示例演示如何查询 Azure AD 报告 API。 查询 API 后，该脚本将以标准输出的形式列显记录的事件，然后将 JSON 输出写入到某个文件。
 
-可以在[Azure Cloud Shell](../cloud-shell/overview.md)中尝试此脚本。 请确保将其更新为你的应用程序 ID、密钥和 Azure AD B2C 租户的名称。
+可以在[Azure Cloud Shell](../cloud-shell/overview.md)中尝试此脚本。 请务必使用自己的应用程序 ID、密钥和 Azure AD B2C 租户名称更新此脚本。
 
 ```powershell
 # This script requires the registration of a Web Application in Azure Active Directory:
@@ -178,7 +176,7 @@ if ($oauth.access_token -ne $null) {
 }
 ```
 
-下面是本文前面部分中所示的示例活动事件的 JSON 表示形式：
+下面是本文前面所示的示例活动事件的 JSON 表示形式：
 
 ```JSON
 {
@@ -245,4 +243,4 @@ if ($oauth.access_token -ne $null) {
 
 ## <a name="next-steps"></a>后续步骤
 
-可以自动执行其他管理任务，例如，[用 .net 管理用户](active-directory-b2c-devquickstarts-graph-dotnet.md)。
+可以自动化其他管理任务，例如，[使用 .NET 管理用户](active-directory-b2c-devquickstarts-graph-dotnet.md)。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: cd8c5b174d92edcf69801edaeabd0c0730985654
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 5b7c612d349c3f596487db4af025e5e599b6589c
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326927"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694781"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>使用 Azure PowerShell 将 vhd 上传到 Azure
 
@@ -31,7 +31,7 @@ ms.locfileid: "71326927"
 
 ## <a name="create-an-empty-managed-disk"></a>创建一个空托管磁盘
 
-若要将 vhd 上传到 Azure，需要创建一个为此上传过程专门配置的空托管磁盘。 创建前，还应了解有关这些磁盘的一些其他信息。
+若要将 vhd 上传到 Azure，需要创建一个为此上传过程配置的空托管磁盘。 创建前，还应了解有关这些磁盘的一些其他信息。
 
 这种托管磁盘具有两种独特的状态：
 

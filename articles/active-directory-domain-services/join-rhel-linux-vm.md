@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 9c9b4cdfb77f1605a6730d0735541eeb78dcd323
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: b90650fa2cd343c81b7bbb2fcea24c3a95f537b6
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075534"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702040"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>将 Red Hat Enterprise Linux 虚拟机加入 Azure AD 域服务托管域
 
@@ -78,14 +78,24 @@ sudo vi /etc/hosts
 
 VM 需要其他一些包才能将 VM 加入到 Azure AD DS 托管域。 若要安装和配置这些包，请使用`yum`以下工具更新并安装域加入工具：
 
+ **RHEL 7** 
+
 ```console
 sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
+```
+
+ **RHEL 6** 
+
+```console
+sudo yum install adcli sssd authconfig krb5-workstation
 ```
 
 ## <a name="join-vm-to-the-managed-domain"></a>将 VM 加入托管域
 
 现在，所需的包已安装到 VM 上，请将 VM 加入到 Azure AD DS 托管域。
-
+ 
+  **RHEL 7**
+     
 1. `realm discover`使用命令发现 Azure AD DS 托管域。 以下示例发现领域*CONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
 
     ```console
@@ -93,7 +103,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
     ```
 
    `realm discover`如果命令找不到 Azure AD DS 托管域，请查看以下故障排除步骤：
-
+   
     * 请确保可从 VM 访问域。 尝试`ping contoso.com`查看是否返回了正答复。
     * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，Azure AD DS 托管域在该网络中可用。
     * 确认已将虚拟网络的 DNS 服务器设置更新为指向 Azure AD DS 托管域的域控制器。
@@ -101,10 +111,10 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
 1. 现在使用`kinit`命令初始化 Kerberos。 指定属于*AAD DC 管理员*组的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
     同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名`contosoadmin@contoso.com`为的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是*AAD DC Administrators*组的成员：
-
+    
     ```console
     kinit contosoadmin@CONTOSO.COM
-    ```
+    ``` 
 
 1. 最后，使用`realm join`命令将计算机加入到 Azure AD DS 托管域。 使用同一个用户帐户，该帐户是你在前面`kinit`的`contosoadmin@CONTOSO.COM`命令中指定的*AAD DC Administrators*组的成员，例如：
 
@@ -118,7 +128,108 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
 Successfully enrolled machine in realm
 ```
 
+  **RHEL 6** 
+
+1. `adcli info`使用命令发现 Azure AD DS 托管域。 以下示例发现领域*CONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
+
+    ```console
+    sudo adcli info contoso.com
+    ```
+    
+   `adcli info`如果命令找不到 Azure AD DS 托管域，请查看以下故障排除步骤：
+   
+    * 请确保可从 VM 访问域。 尝试`ping contoso.com`查看是否返回了正答复。
+    * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，Azure AD DS 托管域在该网络中可用。
+    * 确认已将虚拟网络的 DNS 服务器设置更新为指向 Azure AD DS 托管域的域控制器。
+
+1. 首先，使用 `adcli join` 命令联接域，此命令还会创建 keytab 以对计算机进行身份验证。 使用属于 " *AAD DC 管理员*" 组成员的用户帐户。 
+
+    ```console
+    sudo adcli join contoso.com -U contosoadmin
+    ```
+
+1. 现在配置 @no__t 0，并创建 @no__t 的文件以使用 @no__t Active Directory 域。 
+   请确保将 `CONTOSO.COM` 替换为你自己的域名：
+
+    使用编辑器打开 `/ect/krb5.conf` 文件：
+
+    ```console
+    sudo vi /etc/krb5.conf
+    ```
+
+    更新 `krb5.conf` 文件，使其与以下示例匹配：
+
+    ```console
+    [logging]
+     default = FILE:/var/log/krb5libs.log
+     kdc = FILE:/var/log/krb5kdc.log
+     admin_server = FILE:/var/log/kadmind.log
+    
+    [libdefaults]
+     default_realm = CONTOSO.COM
+     dns_lookup_realm = true
+     dns_lookup_kdc = true
+     ticket_lifetime = 24h
+     renew_lifetime = 7d
+     forwardable = true
+    
+    [realms]
+     CONTOSO.COM = {
+     kdc = CONTOSO.COM
+     admin_server = CONTOSO.COM
+     }
+    
+    [domain_realm]
+     .CONTOSO.COM = CONTOSO.COM
+     CONTOSO.COM = CONTOSO.COM
+    ```
+    
+   创建 `/etc/sssd/sssd.conf` 文件：
+    
+    ```console
+    sudo vi /etc/sssd/sssd.conf
+    ```
+
+    更新 `sssd.conf` 文件，使其与以下示例匹配：
+
+    ```console
+    [sssd]
+     services = nss, pam, ssh, autofs
+     config_file_version = 2
+     domains = CONTOSO.COM
+    
+    [domain/CONTOSO.COM]
+    
+     id_provider = ad
+    ```
+
+1. 请确保 `/etc/sssd/sssd.conf` 权限为600，并且由 root 用户拥有：
+
+    ```console
+    sudo chmod 600 /etc/sssd/sssd.conf
+    sudo chown root:root /etc/sssd/sssd.conf
+    ```
+
+1. 使用 `authconfig` 来指示 VM 有关 AD Linux 集成：
+
+    ```console
+    sudo authconfig --enablesssd --enablesssdauth --update
+    ```
+    
+1. 启动并启用 sssd 服务：
+
+    ```console
+    sudo service sssd start
+    sudo chkconfig sssd on
+    ```
+
 如果 VM 无法成功完成域加入过程，请确保 VM 的网络安全组允许 TCP + UDP 端口464上的出站 Kerberos 流量到 Azure AD DS 托管域的虚拟网络子网。
+
+现在，请检查是否可以使用 @no__t 查询用户广告信息
+
+```console
+sudo getent passwd contosoadmin
+```
 
 ## <a name="allow-password-authentication-for-ssh"></a>允许对 SSH 进行密码身份验证
 
@@ -136,12 +247,20 @@ Successfully enrolled machine in realm
     PasswordAuthentication yes
     ```
 
-    完成后，使用`:wq`编辑器的命令保存并退出*sshd_conf*文件。
+    完成后，使用编辑器的 `:wq` 命令保存并退出*sshd_conf*文件。
 
 1. 若要应用更改并让用户使用密码进行登录，请重新启动 SSH 服务：
 
+   **RHEL 7** 
+    
     ```console
     sudo systemctl restart sshd
+    ```
+
+   **RHEL 6** 
+    
+    ```console
+    sudo service sshd restart
     ```
 
 ## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>为“AAD DC 管理员”组授予 sudo 特权

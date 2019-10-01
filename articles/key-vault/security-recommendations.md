@@ -6,15 +6,15 @@ author: barclayn
 manager: rkarlin
 ms.service: key-vault
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 09/30/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 90965618b1d2cb126d56453d46a5bebc85319c0f
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: deefbf049d5f8daa004db942f60ff5e31bda0fe8
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219644"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695414"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault 的安全性建议
 
@@ -25,16 +25,31 @@ Azure 安全中心会自动监视本文中包含的一些建议。 Azure 安全�
 - 有关 Azure 安全中心建议的详细信息，请参阅[Azure 安全中心中的安全建议](../security-center/security-center-recommendations.md)。
 - 有关 Azure 安全中心的信息，请参阅[什么是 Azure 安全中心？](../security-center/security-center-intro.md)
 
-## <a name="recommendations"></a>建议
+## <a name="data-protection"></a>数据保护
 
-| 类别 | 建议 | 注释 | 安全中心 |
-|-|-|----|--|
-| 数据保护 |启用软删除 | [软删除](key-vault-ovw-soft-delete.md)使你可以恢复已删除的保管库和保管库对象 |  - |
-| 数据保护 | 限制对保管库数据的访问  | 遵循最低权限原则，并限制组织的哪些成员有权访问保管库数据 |  - |
-| 标识和访问管理 | 限制具有参与者访问权限的用户数 | 如果用户具有对密钥保管库管理平面的参与者权限，则该用户可以通过设置 Key Vault 访问策略来授予自己对数据平面的访问权限。 你应严格控制谁有权访问你的密钥保管库的角色。 请确保只有那些需要访问授权人员才能访问和管理保管库的人员。 你可以读取[对密钥保管库的安全访问](key-vault-secure-your-key-vault.md) | - |
-| 监视 | 应启用 Key Vault 中的诊断日志 | 启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。 | [是](../security-center/security-center-identity-access.md) |
-| 监视 | 限制可以访问 Azure 密钥保管库日志的人员 | [Key Vault 日志](key-vault-logging.md)保存有关在保管库中执行的活动的信息，例如创建或删除保管库、密钥、机密，并可在调查过程中使用 |  - |
-| 网络 |限制网络曝光 | 网络访问应限制为需要保管库访问的解决方案所使用的虚拟网络。 查看有关[Azure Key Vault 的虚拟网络服务终结点的](key-vault-overview-vnet-service-endpoints.md)信息 | - |
+| 建议 | 注释 | 安全中心 |
+|-|----|--|
+|启用软删除 | [软删除](key-vault-ovw-soft-delete.md)使你可以恢复已删除的保管库和保管库对象 |  - |
+| 限制对保管库数据的访问  | 遵循最低权限原则，并限制组织的哪些成员有权访问保管库数据 |  - |
+
+## <a name="identity-and-access-management"></a>标识和访问管理
+
+| 建议 | 注释 | 安全中心 |
+|-|----|--|
+| 限制具有参与者访问权限的用户数 | 如果用户具有对密钥保管库管理平面的参与者权限，则该用户可以通过设置 Key Vault 访问策略来授予自己对数据平面的访问权限。 你应严格控制谁有权访问你的密钥保管库的角色。 请确保只有那些需要访问授权人员才能访问和管理保管库的人员。 你可以读取[对密钥保管库的安全访问](key-vault-secure-your-key-vault.md) | - |
+
+## <a name="monitoring"></a>监视
+
+| 建议 | 注释 | 安全中心 |
+|-|----|--|
+ 应启用 Key Vault 中的诊断日志 | 启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。 | [是](../security-center/security-center-identity-access.md) |
+| 限制可以访问 Azure 密钥保管库日志的人员 | [Key Vault 日志](key-vault-logging.md)保存有关在保管库中执行的活动的信息，例如创建或删除保管库、密钥、机密，并可在调查过程中使用 |  - |
+
+## <a name="networking"></a>网络
+
+| 建议 | 注释 | 安全中心 |
+|-|----|--|
+|限制网络曝光 | 网络访问应限制为需要保管库访问的解决方案所使用的虚拟网络。 查看有关[Azure Key Vault 的虚拟网络服务终结点的](key-vault-overview-vnet-service-endpoints.md)信息 | - |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b05ba7e4d38b596bdf76655fad0736425f8ce89
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 707c6d99d4c5f4335ff771bdd916b2ee37092604
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002535"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710065"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>构建 scikit-learn-通过 Azure 机器学习的规模了解模型
 
@@ -31,7 +31,7 @@ ms.locfileid: "71002535"
  - Azure 机器学习笔记本 VM-无需下载或安装
 
     - 在开始本教程之前完成[教程：设置环境和工作](tutorial-1st-experiment-sdk-setup.md)区，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
-    - 在笔记本服务器上的 "示例训练" 文件夹中，通过导航到以下目录查找已完成且扩展的笔记本：操作**说明 > 培训 > 超参数-spark-sklearn**文件夹。
+    - 在笔记本服务器上的 "示例训练" 文件夹中，通过导航到以下目录查找已完成且扩展的笔记本： **scikit-learn >->-了解 > 培训 > 超参数--spark-sklearn**文件夹。
 
  - 你自己的 Jupyter 笔记本服务器
 
@@ -40,7 +40,7 @@ ms.locfileid: "71002535"
     - 下载数据集和示例脚本文件 
         - [iris 数据集](https://archive.ics.uci.edu/ml/datasets/iris)
         - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn)
-    - 你还可以在 GitHub 示例页上找到本指南的已完成[Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)。 笔记本包含一个扩展部分，涵盖智能超参数优化，并按主要指标检索最佳模型。
+    - 你还可以在 GitHub 示例页上找到本指南的已完成[Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)。 笔记本包含一个扩展部分，涵盖智能超参数优化，并按主要指标检索最佳模型。
 
 ## <a name="set-up-the-experiment"></a>设置试验
 
@@ -84,28 +84,20 @@ os.makedirs(project_folder, exist_ok=True)
 exp = Experiment(workspace=ws, name='sklearn-iris')
 ```
 
-### <a name="upload-dataset-and-scripts"></a>上传数据集和脚本
+### <a name="prepare-training-script"></a>准备训练脚本
 
-数据[存储](how-to-access-data.md)是可通过装载数据或将数据复制到计算目标来存储和访问数据的位置。 每个工作区都提供默认数据存储。 将数据和培训脚本上传到数据存储，以便在训练期间轻松访问这些脚本。
+在本教程中，已为你提供训练脚本**train_iris。** 在实践中，您应该能够按原样获取任何自定义训练脚本，并使用 Azure ML 运行它，而无需修改您的代码。
 
-1. 为数据创建目录。
+若要使用 Azure ML 的跟踪和指标功能，请在训练脚本中添加少量的 Azure ML 代码。  训练脚本**train_iris。 py**演示如何使用脚本中的 `Run` 对象将一些指标记录到 Azure ML 运行中。
 
-    ```Python
-    os.makedirs('./data/iris', exist_ok=True)
-    ```
+提供的训练脚本使用 `iris = datasets.load_iris()` 函数中的示例数据。  对于您自己的数据，您可能需要使用 "[上传数据集" 和 "脚本](how-to-train-keras.md#data-upload)" 等步骤，使数据在训练过程中可用。
 
-1. 将 iris 数据集上传到默认数据存储。
+将训练脚本**train_iris**复制到项目目录中。
 
-    ```Python
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data/iris', target_path='iris', overwrite=True, show_progress=True)
-    ```
-
-1. 上传 scikit-learn 培训脚本`train_iris.py`。
-
-    ```Python
-    shutil.copy('./train_iris.py', project_folder)
-    ```
+```
+import shutil
+shutil.copy('./train_iris.py', project_folder)
+```
 
 ## <a name="create-or-get-a-compute-target"></a>创建或获取计算目标
 

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 79c0cadc1b266a6d160cd36fc21dcaf36637a2b1
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 70d6bd9507670a8846b2a79509b6b6e571f17e37
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076408"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710088"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>大规模定型并注册 Chainer 模型 Azure 机器学习
 
@@ -25,7 +25,7 @@ ms.locfileid: "71076408"
 
 了解有关[深度学习与机器学习](concept-deep-learning-vs-machine-learning.md)的详细信息。
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,14 +34,14 @@ ms.locfileid: "71076408"
 - Azure 机器学习笔记本 VM-无需下载或安装
 
     - 在开始本教程之前完成[教程：设置环境和工作](tutorial-1st-experiment-sdk-setup.md)区，创建随 SDK 和示例存储库预先加载的专用笔记本服务器。
-    - 在笔记本服务器上的示例深度学习文件夹中，在 "操作**方法"/"使用深度学习/超参数-chainer** " 文件夹中查找已完成的笔记本和文件。  此笔记本包含扩展的部分，涵盖智能超参数优化、模型部署和笔记本小组件。
+    - 在笔记本服务器上的示例深度学习文件夹中，在 "操作**方法" > ml-框架 > chainer > 部署 > chainer**文件夹中查找已完成的笔记本和文件。  此笔记本包含扩展的部分，涵盖智能超参数优化、模型部署和笔记本小组件。
 
 - 你自己的 Jupyter 笔记本服务器
 
     - [安装 AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
     - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
     - 下载示例脚本文件[chainer_mnist. py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py)。
-     - 你还可以在 GitHub 示例页上找到本指南的完整[Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)。 此笔记本包含扩展的部分，涵盖智能超参数优化、模型部署和笔记本小组件。
+     - 你还可以在 GitHub 示例页上找到本指南的完整[Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)。 此笔记本包含扩展的部分，涵盖智能超参数优化、模型部署和笔记本小组件。
 
 ## <a name="set-up-the-experiment"></a>设置试验
 
@@ -82,9 +82,9 @@ os.makedirs(project_folder, exist_ok=True)
 
 在本教程中，已为你提供训练脚本**chainer_mnist。** 在实践中，您应该能够按原样获取任何自定义训练脚本，并使用 Azure ML 运行它，而无需修改您的代码。
 
-若要使用 Azure ML 的跟踪和指标功能，请在训练脚本中添加少量的 Azure ML 代码。  训练脚本**chainer_mnist。 py**演示如何使用脚本中的`Run`对象将一些指标记录到 Azure ML 运行中。
+若要使用 Azure ML 的跟踪和指标功能，请在训练脚本中添加少量的 Azure ML 代码。  训练脚本**chainer_mnist。 py**演示如何使用脚本中的 `Run` 对象将一些指标记录到 Azure ML 运行中。
 
-提供的训练脚本使用 chainer `datasets.mnist.get_mnist`函数中的示例数据。  对于您自己的数据，您可能需要使用 "[上传数据集" 和 "脚本](how-to-train-keras.md)" 等步骤，使数据在训练过程中可用。
+提供的训练脚本使用 chainer `datasets.mnist.get_mnist`函数中的示例数据。  对于您自己的数据，您可能需要使用 "[上传数据集" 和 "脚本](how-to-train-keras.md#data-upload)" 等步骤，使数据在训练过程中可用。
 
 将训练脚本**chainer_mnist**复制到项目目录中。
 

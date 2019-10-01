@@ -4,14 +4,14 @@ description: 使用 Azure HPC 缓存的先决条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299918"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709958"
 ---
 # <a name="prerequisites-for-azure-hpc-cache-preview"></a>Azure HPC 缓存的先决条件（预览版）
 
@@ -57,15 +57,14 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 请先检查与权限相关的先决条件，然后再开始创建缓存。
 
 * 缓存实例需要能够创建虚拟网络接口（Nic）。 创建缓存的用户必须在订阅中具有足够的权限才能创建 Nic。
-<!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
 * 如果使用 Blob 存储，Azure HPC 缓存需要授权才能访问存储帐户。 你可以使用基于角色的访问控制（RBAC）来授予缓存对 Blob 存储的访问权限。 需要两个角色：存储帐户参与者和存储 Blob 数据参与者。 按照[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的说明添加角色。
 
 ## <a name="storage-infrastructure"></a>存储基础结构
 
-缓存支持 Azure Blob 容器或 NFS 硬件存储导出。 你可以在创建缓存时定义存储目标，但也可以在以后添加存储。
+缓存支持 Azure Blob 容器或 NFS 硬件存储导出。 创建缓存后，添加存储目标。
 
-每个存储类型都具有特定的先决条件。 
+每个存储类型都具有特定的先决条件。
 
 ### <a name="nfs-storage-requirements"></a>NFS 存储要求
 

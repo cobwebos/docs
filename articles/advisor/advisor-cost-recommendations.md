@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 144b63131be68c9209835a1b8b3a01062245cfdd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 78429001b855e3347e72fbb0f0d4d3171731a8e2
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326580"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703038"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
@@ -21,7 +21,7 @@ ms.locfileid: "71326580"
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>通过调整或关闭未充分利用的实例来优化虚拟机花费 
 
-虽然某些应用程序方案有意使虚拟机利用率较低，但通过管理虚拟机大小和数量通常可降低成本。 顾问可监视虚拟机 7 天的使用情况，并识别出利用率较低的虚拟机。  如果虚拟机的 CPU 利用率为 5% 或更低，并且其网络利用率小于 2%，并且具有阈值内存压力号，或者当前工作负荷可由较小的虚拟机大小容纳，则会将虚拟机视为低利用率。
+虽然某些应用程序方案有意使虚拟机利用率较低，但通过管理虚拟机大小和数量通常可降低成本。 当最大 CPU 使用率的最大值为 3% 且网络使用率低于7天的 2% 时，顾问高级评估模型会将虚拟机 P95th。 如果可以在较小的 SKU （位于同一 SKU 系列中）或更小的实例数中容纳当前负载，使虚拟机可用于适当大小，以便在非用户工作负荷下当前负载不超过 80% 的利用率面向用户的工作负荷时，超过 40%。 此处的工作负荷类型通过分析工作负荷的 CPU 利用率特征来确定。
 
 建议的操作为 "关闭" 或 "大小调整"，特定于建议使用的资源。 顾问会针对建议的操作（重设大小或关机）显示估计的成本节约。 而且，若要调整大小建议的操作，顾问提供当前和目标 SKU 信息。 
 

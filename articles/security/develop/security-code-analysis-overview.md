@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7ab908673f60a651db48ae0485592a362741b6d
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: c3e22b34dbb770af2b4a719f8b4eaf040b724c47
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242318"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695425"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>关于 Microsoft 安全代码分析
 
@@ -73,7 +73,7 @@ BinSkim 是一种可移植可执行（PE）的轻型扫描程序，用于验证�
 
 ### <a name="microsoft-security-risk-detection"></a>Microsoft 安全风险检测
 
-Microsoft 安全风险检测（MSRD）是一项基于云的服务，用于模糊测试。 它识别软件中可利用的安全错误。 此服务需要单独的载入过程。 有关详细信息，请参阅[MSRD 开发人员中心](https://docs.microsoft.com/security-risk-detection/)。
+Microsoft 安全风险检测（MSRD）是一项基于云的服务，用于模糊测试。 它识别软件中可利用的安全错误。 此服务需要单独的订阅和激活。 有关详细信息，请参阅[MSRD 开发人员中心](https://docs.microsoft.com/security-risk-detection/)。
 
 ### <a name="roslyn-analyzers"></a>Roslyn 分析器
 

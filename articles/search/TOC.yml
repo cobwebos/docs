@@ -244,7 +244,7 @@
             - name: 在 Azure 门户中创建知识库
               href: knowledge-store-create-portal.md
             - name: 使用 REST 和 Postman 创建
-              href: knowledge-store-howto.md
+              href: knowledge-store-create-rest.md
             - name: 使用存储资源管理器进行查看
               href: knowledge-store-view-storage-explorer.md
             - name: 使用 Power BI 进行连接

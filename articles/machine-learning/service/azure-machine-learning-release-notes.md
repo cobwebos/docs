@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5191f8b565762e9377f3718cc147c96e491f5a0d
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 61a42a8c1176cdd347fd2956a07c295ecf49321e
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067735"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695541"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -23,6 +23,58 @@ ms.locfileid: "71067735"
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
+## <a name="2019-09-30"></a>2019-09-30
+
+### <a name="azure-machine-learning-sdk-for-python-v1065"></a>用于 Python 的 Azure 机器学习 SDK 1.0.65
+
+  + **新功能**
+    + 添加了特选环境。 这些环境已预先配置用于常见机器学习任务的库，并已预先生成并缓存为 Docker 映像，以加快执行速度。 默认情况下，它们显示在工作区的环境列表中，前缀为 "AzureML"。
+  
+  + **azureml-train-automl**
+    + 添加了对 ADB 和 HDI 的 ONNX 转换支持
+
++ **预览功能**  
+  + **azureml-train-automl**
+    + 支持特征化器的经理 BERT 和 BiLSTM （仅限预览版）
+    + 支持列用途和转换器参数的特征化自定义（仅限预览版）
+    + 当用户在训练期间启用模型说明时支持的原始说明（仅限预览版）
+    + 添加了 Prophet 以用于 timeseries 预测（仅限预览版）
+  
+  + **contrib-datadrift**
+    + 将包从 contrib-datadrift 重定位到 azureml-datadrift;未来版本中将删除 contrib 包 
+
++ **Bug 修复和改进**
+  + **automl-核心**
+    + 引入了 FeaturizationConfig 到 AutoMLConfig 和 AutoMLBaseSettings
+      + 用给定列和功能类型替代特征化的列用途
+      + 重写变压器参数
+    + 添加了 explain_model （）和 retrieve_model_explanations （）的弃用消息
+    + 已将 Prophet 添加为可训练管道（仅限预览版）
+    + 添加了对目标滞后、滚动窗口大小和最大水平的自动检测的支持。 如果将 target_lags、target_rolling_window_size 或 max_horizon 之一设置为 "auto"，则将应用试探法来估算基于定型数据的相应参数的值。
+    + 固定预测在数据集包含一个粒度列时，此粒度为数值类型，定型和测试集之间存在间隙
+    + 修复了有关在预测任务中远程运行的重复索引的错误消息
+    + 添加了 guardrail 以检查数据集是否为不均衡。 如果是，则将 guardrail 消息写入控制台。
+  + **azureml-core**
+    + 添加了通过模型对象在存储中检索模型的 SAS URL 的功能。 Ex： model. get _sas_url （）
+    + 引入 `run.get_details()['datasets']` 获取与提交的运行关联的数据集
+    + 添加 API `Dataset.Tabular.from_json_lines_files` 可从 JSON 行文件创建 TabularDataset。 若要了解 TabularDataset 上 JSON 行文件中的此表格数据，请访问文档 https://aka.ms/azureml-data 。
+    + 向 supported_vmsizes （）函数添加了更多 VM 大小字段（OS 磁盘、Gpu 数）
+    + 将其他字段添加到 list_nodes （）函数，以显示运行、专用 IP 和公共 IP、端口等。
+    + 在群集预配过程中指定新字段的功能--remotelogin_port_public_access 可以设置为 "已启用" 或 "已禁用"，具体取决于是否要在创建群集时将 SSH 端口设置为打开或关闭。 如果不指定它，则服务将智能打开或关闭端口，具体取决于是否在 VNet 中部署群集。
+  + **azureml-explain-model**
+    + 改进了分类方案中说明输出的文档。
+    + 添加了上传预测的 y 值的功能。 解锁更有用的可视化效果。
+    + 已将说明属性添加到 MimicWrapper，以允许获取基础 MimicExplainer。
+  + **azureml-pipeline-core**
+    + 添加了用于描述 Module、ModuleVersion 和 ModuleStep 的笔记本
+  + **azureml-pipeline-steps**
+    + 添加了 RScriptStep 以支持通过 AML 管道运行 R 脚本
+    + 修复了在 AzureBatchStep 中分析导致错误消息 "未指定参数 SubscriptionId 的分配" 的元数据参数
+  + **azureml-train-automl**
+    + 支持的 training_data、validation_data、label_column_name、weight_column_name 作为数据输入格式
+    + 添加了 explain_model （）和 retrieve_model_explanations （）的弃用消息
+
+  
 ## <a name="2019-09-16"></a>2019-09-16
 
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>用于 Python 的 Azure 机器学习 SDK 1.0.62
@@ -118,7 +170,7 @@ ms.locfileid: "71067735"
     + AutoML 模型现在返回 AutoMLExceptions
     + 此版本提高了自动机器学习本地运行的执行性能。
   + **azureml-core**
-    + 引入数据集。获取 "所有" （工作区），该`TabularDataset`方法`FileDataset`返回由其注册名称键控的和对象的字典。 
+    + 引入数据集。获取 "所有" （工作区），它将返回 @no__t 0 的字典 @no__t，并按其注册名称进行键控。 
     
     ```py 
     workspace = Workspace.from_config() 
@@ -266,7 +318,7 @@ ms.locfileid: "71067735"
     + 添加了对在将模型部署到 Webservice 时使用环境对象的支持。 现在，环境对象可以作为 InferenceConfig 对象的一部分提供。
     + 为新区域添加 appinsifht 映射-centralus-westus-northcentralus
     + 为所有数据存储类中的所有属性添加了文档。
-    + 已将 blob_cache_timeout 参数`Datastore.register_azure_blob_container`添加到。
+    + 已将 blob_cache_timeout 参数添加到 `Datastore.register_azure_blob_container`。
     + 将 save_to_directory 和 load_from_directory 方法添加到 azureml。
     + 向 CLI 添加了 "az ml 环境下载" 和 "az ml 环境 register" 命令。
     + 添加了环境。添加 _private_pip_wheel 方法。
@@ -320,7 +372,7 @@ ms.locfileid: "71067735"
     + 删除旧的异常类。
     + 在预测任务中， `target_lags`参数现在接受单个整数值或整数列表。 如果提供了整数，则只会创建一个 lag。 如果提供了列表，则会采用滞后时间的唯一值。 target_lags = [1，2，2，4] 将创建1、2和4个周期的滞后时间。
     + 修复有关转换后丢失列类型的 bug （链接错误）;
-    + 在`model.forecast(X, y_query)`中，允许 y_query 为在开头（#459519）不包含任何内容的对象类型。
+    + 在 `model.forecast(X, y_query)` 中，允许 y_query 为在开头（#459519）不包含任何内容的对象类型。
     + 向 automl 输出添加预期值
   + **contrib-datadrift**
     +  示例笔记本的改进，包括切换到 azureml-opendatasets 而不是 contrib-opendatasets 和丰富数据时的性能改进

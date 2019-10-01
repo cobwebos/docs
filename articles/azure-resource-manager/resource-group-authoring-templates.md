@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6b027acc5a8a8b7660d5640ff4af335e51fd2dbf
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: b6d479935bc9e4bd731b93d3e027644b9ca4dbe0
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676880"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694979"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 
@@ -88,7 +88,7 @@ ms.locfileid: "71676880"
 
 ### <a name="data-types"></a>数据类型
 
-整数类型的范围为-2147483648 到2147483647。 但是，资源类型可能对整数属性应用下限。
+对于作为内联参数传递的整数，值的范围可能受用于部署的 SDK 或命令行工具的限制。 例如，使用 PowerShell 部署模板时，整数类型的范围可以是从-2147483648 到2147483647的范围。 若要避免这种限制，请在[参数文件](resource-manager-parameter-files.md)中指定较大的整数值。 资源类型对整数属性应用自己的限制。
 
 在模板中指定布尔值和整数值时，不要将值括在引号中。 用双引号开始和结束字符串值。
 

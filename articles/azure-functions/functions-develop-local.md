@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: c50615b9cbe5c3ca926d893858bb39eeb5720067
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 7c2e727ecb080d1db212e8b45a2c48bac81a3949
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129591"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709316"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 
@@ -38,7 +38,7 @@ ms.locfileid: "71129591"
 ## <a name="next-steps"></a>后续步骤
 
 + 若要详细了解如何使用 Visual Studio 2019 在本地开发编译的 C# 函数，请参阅[使用 Visual Studio 开发 Azure Functions](functions-develop-vs.md)。
-+ 若要详细了解如何在 Mac、Linux 或 Windows 计算机上使用 VS Code 本地开发函数，请参阅 [Azure Functions 的 VS Code 文档](https://code.visualstudio.com/tutorials/functions-extension/getting-started)。
++ 若要详细了解如何在 Mac、Linux 或 Windows 计算机上使用 VS Code 来对函数进行本地开发，请参阅[从 VS Code 部署 Azure Functions](/azure/javascript/tutorial-vscode-serverless-node-01)。
 + 若要详细了解如何通过命令提示符或终端开发函数，请参阅[使用 Azure Functions Core Tools](functions-run-local.md)。
 
 <!-- LINKS -->

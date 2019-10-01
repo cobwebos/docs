@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/17/2019
+ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 576a44663518343a9132af468a0f1c1fb8e4de50
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 66f3a9ae1f29d863170dcb4bc43e38b648602eed
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575393"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695029"
 ---
-# <a name="collect-log-data-with-the-log-analytics-agent"></a>用 Log Analytics agent 收集日志数据
+# <a name="collect-log-data-with-the-log-analytics-agent"></a>使用 Log Analytics 代理收集日志数据
 
-Azure Log Analytics 代理，前称为 Microsoft Monitoring Agent (MMA) 或 OMS Linux 代理，是为了对本地计算机、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) 监视的计算机和任何云中的虚拟机进行全面管理而开发的。 Windows 和 Linux 代理附加到 Azure Monitor, 并将收集的日志数据存储在 Log Analytics 工作区中的不同源中, 以及监视解决方案中定义的任何唯一日志或指标。 
+Azure Log Analytics 代理，前称为 Microsoft Monitoring Agent (MMA) 或 OMS Linux 代理，是为了对本地计算机、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) 监视的计算机和任何云中的虚拟机进行全面管理而开发的。 Windows 和 Linux 代理附加到 Azure Monitor，并将收集的日志数据存储在 Log Analytics 工作区中的不同源中，以及监视解决方案中定义的任何唯一日志或指标。 
 
 本文提供该代理的详细概述、系统和网络要求以及不同的部署方法。
 
@@ -34,18 +34,19 @@ Azure Log Analytics 代理，前称为 Microsoft Monitoring Agent (MMA) 或 OMS 
 
 适用于 Linux 和 Windows 的代理通过 TCP 端口 443 与 Azure Monitor 服务进行出站通信；如果计算机通过防火墙或代理服务器连接以通过 Internet 进行通信，请查看以下要求来了解所需的网络配置。 如果 IT 安全策略不允许网络上的计算机连接到 Internet，则可以设置 [Log Analytics 网关](gateway.md)并将代理配置为通过该网关连接到 Azure Monitor 日志。 然后，代理可以接收配置信息，并发送根据已在工作区中启用的数据收集规则和监视解决方案收集的数据。 
 
-当使用 Log Analytics 代理收集数据时, 需要了解以下各项, 以便规划代理部署:
+使用 Log Analytics 代理收集数据时，需要了解以下各项以规划代理部署：
 
-* 若要从 Windows 代理收集数据, 你可以[将每个代理配置为向一个或多个工作区报告](agent-windows.md), 即使它向 System Center Operations Manager 管理组报告。 Windows 代理最多可报告四个工作区。
-* Linux 代理不支持多宿主, 只能向单个工作区进行报告。
+* 若要从 Windows 代理收集数据，可[将每个代理配置为向一个或多个工作区报告](agent-windows.md)，即使它目前正在向 System Center Operations Manager 管理组报告。 Windows 代理最多可向四个工作区报告。
+* Linux 代理不支持多宿主，只能向一个工作区报告。
+* Windows 代理支持[FIPS 140 标准](https://docs.microsoft.com/windows/security/threat-protection/fips-140-validation)，而 Linux 代理不支持。  
 
-如果使用 System Center Operations Manager 2012 R2 或更高版本:
+如果使用 System Center Operations Manager 2012 R2 或更高版本：
 
 * 每个 Operations Manager 管理组只能[连接到一个工作区](om-agents.md)。
-* 向管理组报告的 Linux 计算机必须配置为直接报告到 Log Analytics 工作区。 如果 Linux 计算机已直接向工作区报告并想要使用 Operations Manager 进行监视, 请按照以下步骤向[Operations Manager 管理组报告](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)。
-* 你可以在 Windows 计算机上安装 Log Analytics Windows 代理, 并将其报告为与工作区集成的 Operations Manager 和其他工作区。
+* 向管理组报告的 Linux 计算机必须配置为直接向 Log Analytics 工作区报告。 如果 Linux 计算机已直接向工作区报告，而你想要使用 Operations Manager 来监视这些计算机，请遵循[向 Operations Manager 管理组报告](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)的步骤。
+* 可以在 Windows 计算机上安装 Log Analytics Windows 代理，并使其向与某个工作区集成的 Operations Manager 以及另一个工作区报告。
 
-适用于 Linux 和 Windows 的代理不仅适用于连接到 Azure Monitor, 还支持 Azure 自动化以托管混合 Runbook 辅助角色和其他服务, 如[更改跟踪](../../automation/change-tracking.md)、[更新管理](../../automation/automation-update-management.md)和[Azure 安全中心](../../security-center/security-center-intro.md). 有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)。  
+适用于 Linux 和 Windows 的代理不仅适用于连接到 Azure Monitor，还支持 Azure 自动化以托管混合 Runbook 辅助角色和其他服务，如[更改跟踪](../../automation/change-tracking.md)、[更新管理](../../automation/automation-update-management.md)和[Azure 安全中心](../../security-center/security-center-intro.md). 有关混合 Runbook 辅助角色的详细信息，请参阅 [Azure 自动化混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)。  
 
 ## <a name="supported-windows-operating-systems"></a>支持的 Windows 操作系统
 
@@ -53,10 +54,10 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 * Windows Server 2019
 * Windows Server 2008 R2、2012、2012 R2、2016、版本 1709 和 版本 1803
-* Windows 7 SP1、Windows 8 企业版和专业版以及 Windows 10 企业版和专业版
+* Windows 7 SP1、Windows 8 企业版和专业版，以及 Windows 10 企业版和专业版
 
 >[!NOTE]
->虽然适用于 Windows 的 Log Analytics 代理旨在支持服务器监视方案, 但我们意识到你可以运行 Windows 客户端来支持为服务器操作系统配置和优化的工作负荷。 代理不支持 Windows 客户端, 但是, 除非明确说明, 否则我们的监视解决方案不会专注于客户端监视方案。
+>虽然 Windows 的 Log Analytics 代理旨在支持服务器监视方案，但我们认识到，你可能会运行 Windows 客户端来支持为服务器操作系统配置和优化的工作负荷。 此代理确实支持 Windows 客户端，但是，我们的监视解决方案并不专注于客户端监视方案，除非明确指出。
 
 ## <a name="supported-linux-operating-systems"></a>受支持的 Linux 操作系统
 
@@ -107,7 +108,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 ## <a name="network-firewall-requirements"></a>网络防火墙要求
 
-下面的信息列出了 Linux 和 Windows 代理与 Azure Monitor 日志通信所需的代理和防火墙配置信息。  
+下面的信息列出了实现 Linux 和 Windows 代理与 Azure Monitor 日志通信所必需的代理和防火墙配置信息。  
 
 |代理资源|端口 |Direction |绕过 HTTPS 检查|
 |------|---------|--------|--------|   
@@ -148,10 +149,10 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 
 |Source | 方法 | 描述|
 |-------|-------------|-------------|
-|Azure VM| - 使用 Azure CLI 或 Azure 资源管理器模板通过适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 或 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 扩展进行安装<br>- [手动从 Azure 门户](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>- [Azure 安全中心自动预配](../../security-center/security-center-enable-data-collection.md)| -扩展在 Azure 虚拟机上安装 Log Analytics 代理, 并将其注册到现有 Azure Monitor 工作区。<br>-Azure 安全中心可在所有受支持的 Azure Vm 和创建的任何新的 Azure Vm 上预配 Log Analytics 代理, 以使其监视安全漏洞和威胁。 如果启用, 则将预配未安装代理的任何新的或现有的虚拟机。|
+|Azure VM| - 使用 Azure CLI 或 Azure 资源管理器模板通过适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 或 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 扩展进行安装<br>[从 Azure 门户手动](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)@no__t 0<br>@no__t 0[Azure 安全中心自动预配](../../security-center/security-center-enable-data-collection.md)| -扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将其注册到现有 Azure Monitor 工作区。<br>-Azure 安全中心可在所有受支持的 Azure Vm 和创建的任何新的 Azure Vm 上预配 Log Analytics 代理，以使其监视安全漏洞和威胁。 如果启用，则将预配未安装代理的任何新的或现有的虚拟机。|
 | 混合 Windows 计算机|- [手动安装](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [具有 Azure Stack 的资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |可从命令行或使用自动化方法（如 Azure Automation DSC、[System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications)）安装 Microsoft Monitoring Agent，或者，如果已在数据中心部署 Microsoft Azure Stack，则可使用 Azure 资源管理器进行安装。| 
 | 混合 Linux 计算机| [手动安装](../../azure-monitor/learn/quick-collect-linux-computer.md)|调用 GitHub 上托管的包装器脚本安装 Linux 代理。 | 
-| System Center Operations Manager|[将 Operations Manager 与 Log Analytics 集成](../../azure-monitor/platform/om-agents.md) | 配置 Operations Manager 和 Azure Monitor 日志之间的集成, 以便将从 Windows 计算机报告收集的数据转发到管理组。|  
+| System Center Operations Manager|[将 Operations Manager 与 Log Analytics 集成](../../azure-monitor/platform/om-agents.md) | 配置 Operations Manager 和 Azure Monitor 日志之间的集成，以便将从 Windows 计算机报告收集的数据转发到管理组。|  
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/31/2019
+ms.date: 09/30/2019
 ms.author: genli
-ms.openlocfilehash: 0a32f9a9fde0983a5b97f7342a111d40ef01c686
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: cfa95f2aab5ba270aea0a36b037ae293b36c7b28
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104815"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695525"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -84,7 +84,7 @@ ms.locfileid: "71104815"
    | Windows 10 版本 1709 | 2018 年 3 月 22 日 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. 设置注册表项值。 在注册表中`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload`创建或设置 REG_DWORD 键为1。
+2. 设置注册表项值。 在注册表中创建或设置 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` REG_DWORD 键设置为1。
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN 客户端错误：接收到的消息异常，或格式不正确
 
@@ -250,32 +250,6 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 ## <a name="too-many-vpn-clients-connected-at-once"></a>一次性连接的 VPN 客户端过多
 
 已达到允许的最大连接数。 可以在 Azure 门户中查看连接的客户端总数。
-
-## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>点到站点 VPN 将 10.0.0.0/8 路由错误添加到路由表
-
-### <a name="symptom"></a>症状
-
-在点到站点客户端上进行 VPN 拨号连接时，VPN 客户端应该将一个路由添加到 Azure 虚拟网络。 IP 帮助程序服务应添加 VPN 客户端子网的路由。 
-
-VPN 客户端范围属于 10.0.0.0/8 的较小子网（如 10.0.12.0/24）。 添加了具有更高优先级的 10.0.0.0/8 的路由，而不是 10.0.12.0/24 的路由。 
-
-这种错误的路由会断开与可能属于 10.0.0.0/8 范围内另一子网（如未定义特定路由的 10.50.0.0/24）的其他本地网络的连接。 
-
-### <a name="cause"></a>原因
-
-此行为专为 Windows 客户端设计。 客户端使用 PPP IPCP 协议时，会从服务器（在本例中为 VPN 网关）中获取隧道接口的 IP 地址。 不过，由于协议有限制，因此客户端没有子网掩码。 因为无法通过其他方式获取子网掩码，所以客户端会尝试根据隧道接口 IP 地址的种类来猜测子网掩码。 
-
-因此，路由的添加依据为以下静态映射： 
-
-如果地址属于 A 类 --> 应用 /8
-
-如果地址属于 B 类 --> 应用 /16
-
-如果地址属于 C 类 --> 应用 /24
-
-### <a name="solution"></a>解决方案
-
-将其他网络的路由注入具有最长前缀匹配或指标低于点到站点（因此具有更高优先级）的路由表中。 
 
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>VPN 客户端无法访问网络文件共享
 

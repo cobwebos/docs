@@ -3,22 +3,22 @@ title: 在合作伙伴中心创建商业 Marketplace 帐户
 description: 了解如何在合作伙伴中心创建商业 Marketplace 帐户。
 author: ChJenk
 manager: evansma
-ms.author: parthp
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: guide
-ms.date: 09/10/2019
-ms.openlocfilehash: 9d19b31ccce8feeb2d5ce12353d9b79841b40724
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.date: 09/26/2019
+ms.openlocfilehash: beaca02807f3ee33022854f17150d8eeff1568ac
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219444"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695592"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业 Marketplace 帐户
 
 若要将产品/服务发布到[Azure Marketplace](https://azuremarketplace.microsoft.com/)或[AppSource](https://appsource.microsoft.com/), 需要在合作伙伴中心的 "商用 Marketplace" 计划中创建一个帐户。 本文介绍如何创建合作伙伴中心帐户，以及如何将新发布者添加到商业市场计划。
 
->[!Important]
+>[!IMPORTANT]
 >如果在[云合作伙伴门户 (CPP)](https://cloudpartner.azure.com)中有一个已移动到合作伙伴中心的帐户, 则无需创建新帐户。 有关详细信息, 请参阅[从 CPP 移动发布服务器](#publishers-moving-from-cpp)。
 
 ## <a name="before-you-begin"></a>开始之前
@@ -33,7 +33,7 @@ ms.locfileid: "71219444"
 可以通过两种方法创建帐户：
 
 - 如果你不熟悉合作伙伴中心，也没有 Microsoft 网络帐户，请使用["合作伙伴中心注册" 页上的 "创建帐户](#create-an-account-using-the-partner-center-enrollment-page)" 创建帐户。
-- 如果已在 Microsoft 合作伙伴网络中注册，请使用 "[使用 Microsoft 合作伙伴网络注册创建帐户](#create-an-account-using-your-microsoft-partner-network-enrollment)" 直接从 "合作伙伴中心" 创建帐户。
+- 如果已在 Microsoft 合作伙伴网络中注册，请使用 "[使用现有 Microsoft 合作伙伴中心注册创建帐户](#create-an-account-using-existing-microsoft-partner-center-enrollments)" 直接从 "合作伙伴中心" 创建帐户。
 
 ## <a name="create-an-account-using-the-partner-center-enrollment-page"></a>使用合作伙伴中心注册页面创建帐户
 
@@ -44,7 +44,7 @@ ms.locfileid: "71219444"
 - [同意条款和条件](#agree-to-terms-and-conditions)
 - [提供发布者配置文件](#provide-your-publisher-profile)
 
->[!Important]
+>[!IMPORTANT]
 >如果在[云合作伙伴门户 (CPP)](https://cloudpartner.azure.com)中有一个已移动到合作伙伴中心的帐户, 则无需创建新帐户。 有关详细信息, 请参阅[从 CPP 移动发布服务器](#publishers-moving-from-cpp)。
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>在合作伙伴中心注册页面上注册
@@ -55,7 +55,7 @@ ms.locfileid: "71219444"
 
 使用工作帐户登录，以便可以将公司的工作电子邮件帐户域链接到新的合作伙伴中心帐户。 通过关联这些帐户, 公司员工可以使用其工作帐户的用户名和密码登录到合作伙伴中心。
 
->[!Note]
+>[!NOTE]
 >若要检查你的公司是否已拥有工作帐户、如何创建新的工作帐户, 或者如何设置多个工作帐户以与合作伙伴中心一起使用, 请访问[你的公司工作帐户和合作伙伴中心](./company-work-accounts.md)。
 
 ### <a name="agree-to-terms-and-conditions"></a>同意条款和条件
@@ -70,42 +70,78 @@ ms.locfileid: "71219444"
 
 确认你的发布者个人资料信息后, 同意条款和条件, 并通过选择 "**接受并继续**" 创建合作伙伴中心帐户。
 
->[!Important]
+>[!IMPORTANT]
 >*您必须有权代表您的公司进行操作, 才能接受这些条款。*
 
-感谢你在合作伙伴中心创建帐户! 现在, 你将转到 "[商业市场概述](./commercial-marketplace-overview.md)" 页。
+注册后，你将转到 "商业市场概述" 页。 **商业应用商店**显示在左侧导航栏中。 如果选择 "**设置** > " "**合作伙伴设置** > " "**计划**"，则会看到 "商用 Marketplace" 列出为 "已注册"。
 
-## <a name="create-an-account-using-your-microsoft-partner-network-enrollment"></a>使用 Microsoft 合作伙伴网络注册创建帐户
+感谢你在合作伙伴中心创建商业 Marketplace 帐户！ 有关帮助，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布服务器的帮助，请参阅[将新发布服务器添加到商业市场计划](#add-new-publishers-to-the-commercial-marketplace-program)。
 
-如果已在 Microsoft 合作伙伴网络中注册，请使用此部分通过以下步骤直接从合作伙伴中心创建帐户：
+## <a name="create-an-account-using-existing-microsoft-partner-center-enrollments"></a>使用现有的 Microsoft 合作伙伴中心注册创建帐户
 
-- [使用工作帐户登录到合作伙伴中心](#sign-into-partner-center-with-your-work-account)
-- [输入发布者配置文件](#enter-your-publisher-profile)
+如果在 Microsoft 合作伙伴中心已有注册，请使用此部分创建商业 Marketplace 帐户。
 
-请确保使用 Microsoft 合作伙伴网络帐户信息。
+你可以使用两种类型的现有注册来设置你的商业应用商店帐户。 选择适用于你的应用程序：
 
->[!Important]
->如果在[云合作伙伴门户 (CPP)](https://cloudpartner.azure.com)中有一个已移动到合作伙伴中心的帐户, 则无需创建新帐户。 有关详细信息, 请参阅[从 CPP 移动发布服务器](#publishers-moving-from-cpp)。
+- 如果现有 Microsoft 合作伙伴网络注册，请[在 Microsoft 合作伙伴网络中使用注册](#enrolled-in-the-microsoft-partner-network)创建帐户。
+- 如果你有现有的开发人员计划注册，请使用[在开发人员计划中注册](#enrolled-in-a-developer-program)的来创建帐户。
 
-### <a name="sign-into-partner-center-with-your-work-account"></a>使用工作帐户登录到合作伙伴中心
+对于这两种方法，你将使用以下步骤：
+
+- 使用现有凭据登录到合作伙伴中心
+- 输入发布配置文件信息
+
+请确保使用你的帐户信息。
+
+>[!IMPORTANT]
+>如果在[云合作伙伴门户 (CPP)](https://cloudpartner.azure.com/)中有一个已移动到合作伙伴中心的帐户, 则无需创建新帐户。 有关详细信息, 请参阅[从 CPP 移动发布服务器](#publishers-moving-from-cpp)。
+
+### <a name="enrolled-in-the-microsoft-partner-network"></a>已在 Microsoft 合作伙伴网络中注册
+
+如果你已在 Microsoft 合作伙伴网络中注册，请使用此部分直接从合作伙伴中心创建你的帐户。
 
 使用 Microsoft 合作伙伴网络帐户登录到[合作伙伴中心](https://partner.microsoft.com/)，以便将公司的工作电子邮件帐户域链接到新的合作伙伴中心帐户。 通过关联这些帐户，公司员工可以使用其工作帐户用户名和密码登录到合作伙伴中心。
 
->[!Note]
+>[!NOTE]
 >若要检查你的公司是否已具有合作伙伴中心工作帐户、如何创建新的工作帐户，或如何设置用于合作伙伴中心的多个工作帐户，请访问[你的公司工作帐户和合作伙伴中心](./company-work-accounts.md)。
 
-### <a name="enter-your-publisher-profile"></a>输入发布者配置文件
-
-登录后，请使用此部分中的步骤完成帐户设置。
+登录后，请使用以下步骤完成帐户的设置。
 
 >[!NOTE]
-> 你必须具有帐户管理员或全局管理员角色才能登录到 Microsoft 合作伙伴网络。
+> 你必须具有**帐户管理员**或**全局管理员**角色才能登录到 Microsoft 合作伙伴网络。
 
-1. 从 "合作伙伴中心"，选择 "**设置** > " "**合作伙伴设置** > " "**程序** > " "**入门**"
+1. 从 "[合作伙伴中心](https://partner.microsoft.com/)"，选择 "**设置**"  > **合作伙伴设置** >  个**程序** > **入门**。
 2. Microsoft 合作伙伴网络检测订阅，并显示发布者配置文件页，以输入公司名称和 MPN ID。
 3. 阅读[Microsoft 市场发布者协议](https://go.microsoft.com/fwlink/?LinkID=699560)中的条款和条件，然后选择 "**接受并继续**" 完成注册。
 
+    >[!IMPORTANT]
+    >*您必须有权代表您的公司进行操作, 才能接受这些条款。*
+
 注册后，你将转到 "商业市场概述" 页。 **商业应用商店**显示在左侧导航栏中。 如果选择 "**设置** > " "**合作伙伴设置** > " "**计划**"，则会看到 "商用 Marketplace" 列出为 "已注册"。
+
+感谢你在合作伙伴中心创建帐户! 有关帮助，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布服务器的帮助，请参阅[将新发布服务器添加到商业市场计划](#add-new-publishers-to-the-commercial-marketplace-program)。
+
+### <a name="enrolled-in-a-developer-program"></a>注册开发人员计划
+
+如果你已在合作伙伴中心开发人员计划中注册，请使用此部分直接从合作伙伴中心创建你的帐户。
+
+>[!NOTE]
+>若要使用登录所用的帐户注册商业市场，需要使用公司帐户在合作伙伴中心进行注册。 如果你使用个人帐户进行注册，则商业市场注册将显示在新帐户下。
+>
+>单个帐户适用于单个开发人员。 公司帐户适用于组织和企业。 公司帐户允许你使用其他功能提交应用。 注册后，我们需要对公司帐户进行更多验证，以确认是否有权为公司设置帐户。 此验证可能需要几天到几周的时间，并且通常包含公司电话呼叫。 这两种类型的帐户都允许您提交应用程序、外接程序和服务。 有关详细信息，请参阅 [帐户类型、位置和费用](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)。
+
+通过你的 Microsoft 合作伙伴中心帐户登录到[合作伙伴中心](https://partner.microsoft.com/)，以便在同一帐户下注册到商业市场计划。 通过使用同一帐户注册商业市场，你可以在合作伙伴中心的左侧导航菜单中看到你的现有程序注册和商业市场。
+
+登录后，请使用以下步骤完成帐户设置：
+
+1. 从 "合作伙伴中心"，选择 "**设置**"  >  "**开发人员设置**" @no__t 3 个**程序**， >  "**入门**"，然后输入你的工作电子邮件地址。
+2. 完成发布者配置文件页上的详细信息。
+3. 阅读[Microsoft 市场发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)中的条款和条件，然后选择 "**接受并继续**" 完成注册。
+
+    >[!Important]
+    >*您必须有权代表您的公司进行操作, 才能接受这些条款。*
+
+注册后，你将转到 "商业市场概述" 页。 **商业应用商店**显示在左侧导航栏中。 如果选择 "**设置**"  >  "**开发人员设置**"  > **程序**，你会看到 "商业市场" 列出为 "已注册"。
 
 感谢你在合作伙伴中心创建帐户! 有关帮助，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布服务器的帮助，请参阅[将新发布服务器添加到商业市场计划](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -123,7 +159,7 @@ ms.locfileid: "71219444"
 
 组织可以有多个发布者与一个商业 Marketplace 帐户关联。 通过选择 "**帐户设置** > " "**发布** > 者" "**添加发布者**"，现有用户可以添加更多的发布者。
 
->[!Note]
+>[!NOTE]
 >在添加新发布服务器之前，请先登录到 "合作伙伴中心"，然后选择 "**帐户设置** > " "**发行者**" 以查看现有发布者列表，然后再查看现有发布者。
 
 同一 Azure Active Directory 租户中的其他用户可以通过执行以下步骤添加新的发布服务器:

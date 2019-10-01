@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 5a6c87da7ae62af54990e0a1a2c62065717a201a
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 70e58077fa40ce685324cd24b447886ec3411034
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256957"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703186"
 ---
 # <a name="authoring-and-runtime-keys"></a>创作和运行时密钥
 
@@ -29,7 +29,7 @@ LUIS 使用两种类型的 Azure 资源，每种类型都有密钥：
 * [创作](#programmatic-key)来创建意向、实体和标签最谈话、定型和发布。 准备好发布 LUIS 应用时，需要为分配到应用的[运行时提供一个预测终结点键](luis-how-to-azure-subscription.md)。
 * [运行时的预测终结点键](#prediction-endpoint-runtime-key)。 客户端应用程序（如聊天机器人）需要通过此密钥访问运行时的**查询预测终结点**。 
 
-|Key|用途|认知服务`kind`|认知服务`type`|
+|Key|用途|认知服务 `kind`|认知服务 `type`|
 |--|--|--|--|
 |[创作密钥](#programmatic-key)|创作、培训、发布和测试。|`LUIS.Authoring`|`Cognitive Services`|
 |[预测终结点运行时密钥](#prediction-endpoint-runtime-key)| 使用用户查询文本查询预测终结点运行时，以确定意向和实体。|`LUIS`|`Cognitive Services`|
@@ -83,12 +83,30 @@ LUIS 还提供具有每月1000事务的[starter 密钥](luis-how-to-azure-subscr
 ### <a name="use-runtime-key-in-query"></a>在查询中使用运行时键
 LUIS 运行时终结点接受两种查询样式，两者都使用预测终结点运行时键，但在不同的位置。
 
-用于访问运行时的终结点使用资源所在区域独有的子域， `{region}`如下表所示。 
+用于访问运行时的终结点使用资源所在区域独有的子域，用下表中的 `{region}` 表示。 
+
+
+#### <a name="v2-prediction-endpointtabv2"></a>[V2 预测终结点](#tab/V2)
 
 |Verb|示例 URL 和密钥位置|
 |--|--|
-|[GET](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`<br><br>`runtime-key` 的查询字符串值<br><br>将 `runtime-key` 的终结点查询值从创作（初学者）密钥更改为新的终结点密钥，以便使用 LUIS 终结点密钥配额率。 如果创建并分配了该密钥，但是没有更改 `runtime-key` 的终结点查询值，则不会使用终结点密钥配额。|
-|[POST](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`<br><br> `Ocp-Apim-Subscription-Key` 的标头值<br>如果创建运行时键，并分配运行时键，但不更改的终结点查询值`Ocp-Apim-Subscription-Key`，则不会使用运行时键。|
+|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`|
+|[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`|
+
+#### <a name="v3-prediction-endpointtabv3"></a>[V3 预测终结点](#tab/V3)
+
+|Verb|示例 URL 和密钥位置|
+|--|--|
+|[GET](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a91e54c9db63d589f433)|`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?runtime-key=your-endpoint-key-here&query=turn%20on%20the%20lights`|
+|[POST](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a5830f741b27cd03a061)| `https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict`| 
+
+了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
+
+* * * 
+
+**GET**：将 `runtime-key` 的终结点查询值从创作（初学者）密钥更改为新的终结点密钥，以便使用 LUIS 终结点密钥配额率。 如果创建并分配了该密钥，但是没有更改 `runtime-key` 的终结点查询值，则不会使用终结点密钥配额。
+
+**POST**：更改 @no__t 的标头值<br>如果创建运行时键，并分配运行时键，但不更改 @no__t 的终结点查询值，则不会使用运行时键。
 
 在以前的 URL 中使用的应用 ID `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 是用于[互动演示](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)的公共 IoT 应用。 
 
@@ -187,7 +205,7 @@ LUIS 运行时终结点接受两种查询样式，两者都使用预测终结点
 
 ## <a name="transfer-of-ownership"></a>转让所有权
 
-**用于[创作资源迁移](luis-migration-authoring.md)的应用**： 
+**用于[创作资源迁移](luis-migration-authoring.md)的应用**：作为资源的所有者，可以添加 `contributor`。
 
 **对于尚未迁移的应用**：将应用导出为 JSON 文件。 其他 LUIS 用户可以导入应用程序，从而成为应用所有者。 新应用程序将具有不同的应用程序 ID。  
 

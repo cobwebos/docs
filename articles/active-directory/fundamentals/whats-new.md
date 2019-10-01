@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea6e654037e545a1b969aa2a9b41245fb2892bff
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 2598ce01c749574833d53133ed3aced184e71737
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273824"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694601"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -36,6 +36,132 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 - 更改计划
 
 本页面每月更新，请不时回来查看。 如果要查找超过 6 个月的项目，可以在 [Azure Active Directory 新增功能存档](whats-new-archive.md)中找到它们。
+
+---
+
+## <a name="september-2019"></a>2019 年 9 月
+
+### <a name="my-profile-is-re-naming-and-integrating-with-the-microsoft-office-account-page"></a>我的配置文件正在重新命名并与 Microsoft Office 帐户页面集成
+
+**类型：** 更改计划  
+**服务类别：** 我的配置文件/帐户  
+**产品功能：** 协作
+
+从10月开始，"我的个人资料经验" 将成为我的帐户。 作为此更改的一部分，当前说， **"我的配置文件**" 将更改为 **"** 我的帐户"。 在命名更改和某些设计改进的基础上，更新的体验将提供与 Microsoft Office 帐户页面的其他集成。 具体而言，你将能够从 "**概述帐户**" 页访问 office 安装和订阅，还可以从 "**隐私**" 页访问与 Office 相关的联系人首选项。
+
+有关 "我的个人资料（预览版）" 体验的详细信息，请参阅[我的个人资料（预览版）门户概述](https://docs.microsoft.com/azure/active-directory/user-help/myprofile-portal-overview)。
+
+---
+
+### <a name="bulk-manage-groups-and-members-using-csv-files-in-the-azure-ad-portal-public-preview"></a>在 Azure AD 门户中使用 CSV 文件批量管理组和成员（公共预览版）
+
+**类型：** 新功能  
+**服务类别：** 组管理  
+**产品功能：** 协作
+
+我们非常高兴地宣布 Azure AD 门户中的批量组管理体验的公开预览版。 你现在可以使用 CSV 文件和 Azure AD 门户来管理组和成员列表，其中包括：
+
+- 添加或删除组中的成员。
+
+- 正在从目录下载组列表。
+
+- 正在下载特定组的组成员的列表。
+
+有关详细信息，请参阅[批量添加成员](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-import-members)、[批量删除成员](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-remove-members)、[批量下载成员列表](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-download-members)和[批量下载组列表](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-download)。
+
+---
+
+### <a name="dynamic-consent-is-now-supported-through-a-new-admin-consent-endpoint"></a>现在，通过新的管理员许可终结点支持动态许可
+
+**类型：** 新功能  
+**服务类别：** 身份验证（登录）  
+**产品功能：** 用户身份验证
+
+我们已经创建了一个新的管理员许可终结点来支持动态同意，这对于想要在 Microsoft 标识平台上使用动态同意模式的应用很有用。
+
+有关如何使用此新终结点的详细信息，请参阅[使用管理员许可终结点](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)。
+
+---
+
+### <a name="new-azure-ad-global-reader-role"></a>新 Azure AD 全局读者角色
+
+**类型：** 新功能  
+**服务类别：** RBAC  
+**产品功能：** 访问控制
+
+从2019年9月24日开始，我们将开始推出称为全局读取器的新 Azure Active Directory （AD）角色。 此推出将从生产和全球云客户（GCC）开始，在10月的全球范围内完成。
+
+全局读者角色是全局管理员的只读对应角色。 此角色中的用户可以跨 Microsoft 365 服务读取设置和管理信息，但不能执行管理操作。 我们已经创建了全局读者角色，以帮助减少组织中全局管理员的数量。 由于全局管理员帐户功能强大并且容易受到攻击，因此我们建议你的全局管理员少于五台。 建议使用全局读者角色进行计划、审核或调查。 我们还建议将全局读者角色与其他有限的管理员角色（如 Exchange 管理员）结合使用，以帮助完成工作而不需要全局管理员角色。
+
+全局读者角色适用于新的 Microsoft 365 管理中心、Exchange 管理中心、团队管理中心、安全中心、合规性中心、Azure AD 管理中心和设备管理管理中心。
+
+>[!NOTE]
+> 公共预览版开始时，全局读者角色将无法使用：SharePoint，Privileged Access Management，客户密码箱，敏感性标签，团队生命周期，团队报表 & 呼叫分析、团队 IP 电话设备管理和团队应用程序目录。 所有这些服务都适用于将来的角色。
+
+有关详细信息，请参阅[Azure Active Directory 中的管理员角色权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)。
+
+---
+
+### <a name="access-an-on-premises-report-server-from-your-power-bi-mobile-app-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理从 Power BI 移动版应用访问本地报表服务器
+
+**类型：** 新功能  
+**服务类别：** 应用代理  
+**产品功能：** 访问控制
+
+通过 Power BI 移动应用与 Azure AD 应用程序代理之间的新集成，你可以安全地登录到 Power BI 移动应用，并查看本地 Power BI 报表服务器上托管的任何组织的报表。
+
+有关 Power BI 移动版应用的信息，包括下载应用的位置，请参阅[Power BI 站点](https://powerbi.microsoft.com/mobile/)。 有关如何使用 Azure AD 应用程序代理设置 Power BI 移动应用的详细信息，请参阅[使用 Azure AD 应用程序代理启用对 Power BI 移动版的远程访问](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-integrate-with-power-bi)。
+
+---
+
+### <a name="new-version-of-the-azureadpreview-powershell-module-is-available"></a>新版本的 AzureADPreview PowerShell 模块可用
+
+**类型：** 已更改的功能  
+**服务类别：** 其他  
+**产品功能：** 目录
+
+新的 cmdlet 已添加到 AzureADPreview 模块中，可帮助定义和分配 Azure AD 中的自定义角色，其中包括：
+
+- `Add-AzureADMSFeatureRolloutPolicyDirectoryObject`
+- `Get-AzureADMSFeatureRolloutPolicy`
+- `New-AzureADMSFeatureRolloutPolicy`
+- `Remove-AzureADMSFeatureRolloutPolicy`
+- `Remove-AzureADMSFeatureRolloutPolicyDirectoryObject`
+- `Set-AzureADMSFeatureRolloutPolicy`
+
+---
+
+### <a name="new-version-of-azure-ad-connect"></a>Azure AD Connect 的新版本
+
+**类型：** 已更改的功能  
+**服务类别：** 其他  
+**产品功能：** 目录
+
+我们发布了自动升级客户的更新版本 Azure AD Connect。 此新版本包括几项新功能、改进和 bug 修复。 有关此新版本的详细信息，请参阅 [Azure AD Connect：版本发布历史记录](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#14x0)。
+
+---
+
+### <a name="azure-multi-factor-authentication-mfa-server-version-802-is-now-available"></a>现在可以使用 Azure 多重身份验证（MFA）服务器版本8.0。2
+
+**类型：** 已修复  
+**服务类别：** MFA  
+**产品功能：** 标识安全性和保护
+
+如果你是在2019年7月1日之前激活了 MFA 服务器的现有客户，则现在可以下载最新版本的 MFA 服务器（8.0.2 版）。 在这个新版本中，我们：
+
+- 修复了这样的问题：当 Azure AD 同步将用户从禁用更改为启用时，会向用户发送电子邮件。
+
+- 修复了一个问题，使客户能够成功升级，同时继续使用标记功能。
+
+- 添加了科索沃（+ 383）国家/地区代码。
+
+- 向 Multifactorauthsvc.log 添加了一次性跳过审核日志记录。
+
+- 提高了 Web 服务 SDK 的性能。
+
+- 修复了其他次要错误。
+
+从2019年7月1日开始，Microsoft 停止为新部署提供 MFA 服务器。 需要多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 有关详细信息，请参阅[规划基于云的 Azure 多重身份验证部署](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)。
 
 ---
 
@@ -932,165 +1058,5 @@ Azure AD Connect 正在转换电子邮件警报系统，可能会向某些客户
 我们已增强了对 Microsoft Edge 的 Azure AD 支持，包括提供对 Azure AD 单一登录和条件访问的全新支持。 如果以前使用过 Microsoft Intune Managed Browser，现在可以改为使用 Microsoft Edge。
 
 有关使用条件性访问设置和管理设备和应用的详细信息，请参阅要求使用条件性访问的[云应用访问托管设备](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)，并[需要使用条件性访问的批准的客户端应用进行云应用访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 若要详细了解如何使用 Microsoft Intune 策略来管理使用 Microsoft Edge 的访问权限，请参阅[使用 Microsoft Intune 策略保护的浏览器管理 Internet 访问](https://docs.microsoft.com/intune/app-configuration-managed-browser)。
-
----
-
-## <a name="march-2019"></a>2019 年 3 月
-
-### <a name="identity-experience-framework-and-custom-policy-support-in-azure-active-directory-b2c-is-now-available-ga"></a>Azure Active Directory B2C 中的标识体验框架和自定义策略支持现已推出（GA）
-
-**类型：** 新功能  
-**服务类别：** B2C - 使用者标识管理  
-**产品功能：** B2B/B2C
-
-你现在可以在 Azure AD B2C 中创建自定义策略，其中包括以下任务，这些任务是按比例支持的，并且在我们的 Azure SLA 下提供：
-
-- 使用自定义策略创建并上传自定义身份验证用户旅程。
-
-- 将用户旅程逐步描述为声明提供程序之间的交换。
-
-- 在用户旅程中定义条件分支。
-
-- 转换和映射要在实时决策和通信中使用的声明。
-
-- 在自定义身份验证用户旅程中使用启用 REST API 的服务。 例如，通过电子邮件提供商、Crm 和专有授权系统。
-
-- 与兼容 OpenIDConnect 协议的标识提供者联合。 例如，通过多租户 Azure AD、社交帐户提供程序或双因素验证提供程序。
-
-有关创建自定义策略的详细信息，请参阅[Azure Active Directory B2C 中自定义策略的开发人员说明](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-developer-notes-custom)，并阅读[Alex Simon 的博客文章，包括案例研究](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-B2C-custom-policies-to-build-your-own-identity-journeys/ba-p/382791)。
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---march-2019"></a>Azure AD 应用库中提供了新的联合应用-2019 年3月
-
-**类型：** 新功能  
-**服务类别：** 企业应用  
-**产品功能：** 第三方集成
-
-2019年3月向应用程序库添加了这14个新应用和联合支持：
-
-[ISEC7 移动 Exchange 委托](https://www.isec7.com/english/)， [MediusFlow](https://office365.cloudapp.mediusflow.com/)， [ePlatform](https://docs.microsoft.com/azure/active-directory/saas-apps/eplatform-tutorial)， [Fulcrum](https://docs.microsoft.com/azure/active-directory/saas-apps/fulcrum-tutorial)， [ExcelityGlobal](https://docs.microsoft.com/azure/active-directory/saas-apps/excelityglobal-tutorial)，[基于解释的审核系统](https://docs.microsoft.com/azure/active-directory/saas-apps/explanation-based-auditing-system-tutorial)，[精益](https://docs.microsoft.com/azure/active-directory/saas-apps/lean-tutorial)， [Powerschool 性能问题](https://docs.microsoft.com/azure/active-directory/saas-apps/powerschool-performance-matters-tutorial)， [Cinode](https://cinode.com/)， [Iris Intranet](https://docs.microsoft.com/azure/active-directory/saas-apps/iris-intranet-tutorial)， [Empactis](https://docs.microsoft.com/azure/active-directory/saas-apps/empactis-tutorial)， [SmartDraw](https://docs.microsoft.com/azure/active-directory/saas-apps/smartdraw-tutorial)， [Confirmit 视野](https://docs.microsoft.com/azure/active-directory/saas-apps/confirmit-horizons-tutorial)， [TAS](https://docs.microsoft.com/azure/active-directory/saas-apps/tas-tutorial)
-
-有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://aka.ms/azureadapprequest)。
-
----
-
-### <a name="new-zscaler-and-atlassian-provisioning-connectors-in-the-azure-ad-gallery---march-2019"></a>Azure AD 库中的新的 Zscaler 和 Atlassian 预配连接器-2019 年3月
-
-**类型：** 新功能  
-**服务类别：** 应用预配  
-**产品功能：** 第三方集成
-
-自动创建、更新和删除以下应用的用户帐户：
-
-[Zscaler](https://aka.ms/ZscalerProvisioning)， [Zscaler Beta](https://aka.ms/ZscalerBetaProvisioning)， [Zscaler One](https://aka.ms/ZscalerOneProvisioning)， [Zscaler 2](https://aka.ms/ZscalerTwoProvisioning)， [Zscaler 3](https://aka.ms/ZscalerThreeProvisioning)， [Zscaler ZSCloud](https://aka.ms/ZscalerZSCloudProvisioning)， [Atlassian Cloud](https://aka.ms/atlassianCloudProvisioning)
-
-有关如何通过自动用户帐户预配更好地保护组织的详细信息，请参阅[使用 Azure AD 自动完成 SaaS 应用程序的用户预配](https://aka.ms/ProvisioningDocumentation)。
-
----
-
-### <a name="restore-and-manage-your-deleted-office-365-groups-in-the-azure-ad-portal"></a>在 Azure AD 门户中还原和管理已删除的 Office 365 组
-
-**类型：** 新功能  
-**服务类别：** 组管理  
-**产品功能：** 协作
-
-你现在可以从 Azure AD 门户查看和管理已删除的 Office 365 组。 此更改可帮助你查看可还原哪些组，并允许你永久删除你的组织不需要的任何组。
-
-有关详细信息，请参阅[还原过期或删除的组](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-restore-deleted#view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore)。
-
----
-
-### <a name="single-sign-on-is-now-available-for-azure-ad-saml-secured-on-premises-apps-through-application-proxy-public-preview"></a>单一登录现在可用于通过应用程序代理 Azure AD SAML 保护的本地应用（公共预览版）
-
-**类型：** 新功能  
-**服务类别：** 应用代理  
-**产品功能：** 访问控制
-
-你现在可以为本地的、通过身份验证的应用提供单一登录（SSO）体验，还可以通过应用程序代理对这些应用进行远程访问。 有关如何为本地应用设置 SAML SSO 的详细信息，请参阅[具有应用程序代理（预览版）的本地应用程序的 saml 单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-on-premises-apps)。
-
----
-
-### <a name="client-apps-in-request-loops-will-be-interrupted-to-improve-reliability-and-user-experience"></a>将中断请求循环中的客户端应用，以提高可靠性和用户体验
-
-**类型：** 新功能  
-**服务类别：** 身份验证（登录）  
-**产品功能：** 用户身份验证
-
-客户端应用程序可能会在短时间内错误地发出数百个相同的登录请求。 这些请求（无论是否成功）都对 IDP 的用户体验和提升的工作负荷产生了影响，增加了所有用户的延迟，降低了 IDP 的可用性。
-
-此更新向客户`invalid_grant`端应用`AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`发送错误：在短时间内多次发出重复请求，超出正常操作范围。 遇到此问题的客户端应用应显示交互式提示，要求用户重新登录。 有关此更改以及在遇到此错误时如何修复应用的详细信息，请参阅[身份验证的新增功能？](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#looping-clients-will-be-interrupted)。
-
----
-
-### <a name="new-audit-logs-user-experience-now-available"></a>现已推出新的审核日志用户体验
-
-**类型：** 已更改的功能  
-**服务类别：** 报告  
-**产品功能：** 监视和报告
-
-我们创建了一个新的 Azure AD**审核日志**"页，以帮助提高可读性和搜索信息的方式。 若要查看新的 "**审核日志**" 页，请在 Azure AD 的 "**活动**" 部分中选择 "**审核日志**"。
-
-![新的 "审核日志" 页，包含示例信息](media/whats-new/audit-logs-page.png)
-
-有关新的 "**审核日志**" 页的详细信息，请参阅[Azure Active Directory 门户中的审核活动报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs#audit-logs)。
-
----
-
-### <a name="new-warnings-and-guidance-to-help-prevent-accidental-administrator-lockout-from-misconfigured-conditional-access-policies"></a>新的警告和指南，可帮助防止意外管理员从错误配置的条件访问策略中锁定
-
-**类型：** 已更改的功能  
-**服务类别：** 条件访问  
-**产品功能：** 标识安全性和保护
-
-为了帮助防止管理员因配置错误的条件性访问策略而意外地锁定自己的租户，我们在 Azure 门户中创建了新的警告和更新指南。 有关新指南的详细信息，请参阅[什么是服务依赖关系 Azure Active Directory 条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies)。
-
----
-
-### <a name="improved-end-user-terms-of-use-experiences-on-mobile-devices"></a>改善了移动设备上最终用户的使用体验
-
-**类型：** 已更改的功能  
-**服务类别：** 使用条款  
-**产品功能：** 调控
-
-我们更新了现有的使用条款，以帮助改进你查看和同意移动设备上使用条款的方式。 现在可以放大和缩小，返回，下载信息，并选择 "超链接"。 有关更新的使用条款的详细信息，请参阅[Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#what-terms-of-use-looks-like-for-users)。
-
----
-
-### <a name="new-azure-ad-activity-logs-download-experience-available"></a>新 Azure AD 活动日志下载体验可用
-
-**类型：** 已更改的功能  
-**服务类别：** 报告  
-**产品功能：** 监视和报告
-
-你现在可以直接从 Azure 门户下载大量活动日志。 此更新可让你：
-
-- 下载最多250000行。
-
-- 下载完成后获取通知。
-
-- 自定义文件名。
-
-- 确定输出格式，可以是 JSON 或 CSV。
-
-有关此功能的详细信息，请[参阅快速入门：使用 Azure 门户下载审核报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-download-audit-report)
-
----
-
-### <a name="breaking-change-updates-to-condition-evaluation-by-exchange-activesync-eas"></a>重大更改：通过 Exchange ActiveSync （EAS）对条件评估进行的更新
-
-**类型：** 更改计划  
-**服务类别：** 条件访问  
-**产品功能：** 访问控制
-
-我们正在更新 Exchange ActiveSync （EAS）如何评估下列条件：
-
-- 用户位置，基于国家/地区、区域或 IP 地址
-
-- 登录风险
-
-- 设备平台
-
-如果以前在条件性访问策略中使用这些条件，请注意条件行为可能会发生更改。 例如，如果你以前在策略中使用了用户位置条件，你可能会发现现在会根据用户的位置跳过策略。
 
 ---

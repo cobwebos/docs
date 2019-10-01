@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 7de529c9478b78ff9dd042df90a061f0a96f5427
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: a718a2335ed4928c6cd40ad4dc832eaf82bc6a2b
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316396"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695295"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
@@ -325,7 +325,6 @@ LUIS 容器使用 Azure 帐户中的认知服务资源向 Azure 发送账单信�
 
 在 2019 //Build 上发布的最新容器将支持：
 
-* 必应拼写检查：使用 `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` 查询字符串参数向查询预测终结点发出的请求。 若要了解详细信息，请参阅[必应拼写检查 v7 教程](luis-tutorial-bing-spellcheck.md)。 如果使用此功能，则容器会将话语发送到必应拼写检查 V7 资源。
 * [新的预生成的域](luis-reference-prebuilt-domains.md)：这些聚焦于企业的域包括实体、示例话语以及模式。 扩展这些供自己使用的域。 
 
 <a name="unsupported-dependencies"></a>
@@ -343,6 +342,7 @@ LUIS 容器使用 Azure 帐户中的认知服务资源向 Azure 发送账单信�
 |英语 (EN-US) 区域性不支持的实体|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) 预生成实体|
 |语音启动|容器中不支持外部依赖项。|
 |情绪分析|容器中不支持外部依赖项。|
+|必应拼写检查|容器中不支持外部依赖项。|
 
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]

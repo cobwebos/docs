@@ -10,46 +10,46 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: ad5e78638f920401a83dd431c33a68b6d80144d7
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e08999798c72545f9fa1d1b5d362e23450ce16f5
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988633"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695329"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时
 
 使用 Azure IoT Edge 运行时可将设备转变为 IoT Edge 设备。 该运行时可以部署在像 Raspberry Pi 一样小的设备上，也可以部署在像工业服务器一样大的设备上。 使用 IoT Edge 运行时配置设备后，即可开始从云中部署业务逻辑。 若要了解详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
-本文列出了在 X64、ARM32 或 ARM64 Linux 设备上安装 Azure IoT Edge 运行时的步骤。 为 Ubuntu Server 16.04、Ubuntu Server 18.04 和 Raspbian Stretch 提供安装包。 有关受支持的 Linux 操作系统和体系结构的列表, 请参阅[Azure IoT Edge 支持的系统](support.md#operating-systems)。
+本文列出了在 X64、ARM32 或 ARM64 Linux 设备上安装 Azure IoT Edge 运行时的步骤。 为 Ubuntu Server 16.04、Ubuntu Server 18.04 和 Raspbian Stretch 提供了安装包。 有关支持的 Linux 操作系统和体系结构的列表，请参阅 [Azure IoT Edge 支持的系统](support.md#operating-systems)。
 
 >[!NOTE]
->ARM64 设备支持[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>对 ARM64 设备的支持为[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 > [!NOTE]
 > Linux 软件存储库中的包受到每个包中的许可条款限制 (/usr/share/doc/*package-name*)。 使用程序包之前请阅读许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用程序包。
 
 ## <a name="install-the-latest-runtime-version"></a>安装最新的运行时版本
 
-使用以下部分将 Azure IoT Edge 运行时的最新版本安装到你的设备上。 
+根据以下部分的说明，将最新版 Azure IoT Edge 运行时安装到设备上。 
 
 ### <a name="register-microsoft-key-and-software-repository-feed"></a>注册 Microsoft 密钥和软件存储库源
 
 准备设备，以便安装 IoT Edge 运行时。
 
-安装存储库配置。 选择与设备操作系统匹配的**16.04**或**18.04**命令:
+安装存储库配置。 选择与设备操作系统匹配的 **16.04** 或 **18.04** 命令：
 
-* **Ubuntu Server 16.04**:
+* **Ubuntu Server 16.04**：
    ```bash
    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
-* **Ubuntu Server 18.04**:
+* **Ubuntu Server 18.04**：
    ```bash
    curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
-* **Raspbian Stretch**:
+* **Raspbian Stretch**：
    ```bash
    curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
    ```
@@ -89,7 +89,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
    sudo apt-get install moby-cli
    ```
 
-如果在安装小鲸鱼容器运行时遇到错误, 请按照本文后面所述的步骤[验证 Linux 内核的小鲸鱼兼容性](#verify-your-linux-kernel-for-moby-compatibility)。 
+如果在安装 Moby 容器运行时时遇到错误，请按本文后面提供的步骤[验证 Linux 内核的 Moby 兼容性](#verify-your-linux-kernel-for-moby-compatibility)。 
 
 ### <a name="install-the-azure-iot-edge-security-daemon"></a>安装 Azure IoT Edge 安全守护程序
 
@@ -113,13 +113,13 @@ IoT Edge 成功安装以后，输出会提示你更新配置文件。 执行[配
 
 ## <a name="install-a-specific-runtime-version"></a>安装特定的运行时版本
 
-如果要安装特定版本的 Azure IoT Edge 运行时, 可以直接从 IoT Edge GitHub 存储库定位组件文件。 使用以下步骤将所有 IoT Edge 组件安装到设备上：首先是 Moby 引擎和 CLI，然后是 libiothsm，最后是 IoT Edge 安全守护程序。
+若要安装特定版本的 Azure IoT Edge 运行时，可以直接将 IoT Edge GitHub 存储库中的组件文件作为目标。 使用以下步骤将所有 IoT Edge 组件安装到设备上：首先是 Moby 引擎和 CLI，然后是 libiothsm，最后是 IoT Edge 安全守护程序。
 
 1. 导航到 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)，找到需要将其作为目标的发行版。 
 
 2. 展开该版本的“资产”部分。
 
-3. 任何给定版本中的 Moby 引擎不一定有更新。 如果看到以 **moby-engine** 和 **moby-cli** 开头的文件，请使用以下命令更新这些组件。 如果看不到任何小鲸鱼文件, 请返回到旧版本的资产, 直到找到最新版本。 
+3. 任何给定版本中的 Moby 引擎不一定有更新。 如果看到以 **moby-engine** 和 **moby-cli** 开头的文件，请使用以下命令更新这些组件。 如果没有看到任何 Moby 文件，则请回到较低版资产，直至找到最新版本。 
 
    1. 找到与 IoT Edge 设备的体系结构匹配的 **moby-engine** 文件。 右键单击文件链接并复制链接地址。
 
@@ -192,6 +192,7 @@ sudo nano /etc/iotedge/config.yaml
    #     method: "tpm"
    #     registration_id: "{registration_id}"
 ```
+若要将剪贴板内容粘贴到 Nano `Shift+Right Click` 或按 `Shift+Insert`。
 
 保存并关闭该文件。
 
@@ -231,6 +232,8 @@ sudo nano /etc/iotedge/config.yaml
        registration_id: "{registration_id}"
    ```
 
+若要将剪贴板内容粘贴到 Nano `Shift+Right Click` 或按 `Shift+Insert`。
+
 保存并关闭该文件。
 
    `CTRL + X`, `Y`, `Enter`
@@ -263,7 +266,7 @@ journalctl -u iotedge --no-pager --no-full
 sudo iotedge list
 ```
 
-在设备上安装 IoT Edge 后, 你应该看到运行的唯一模块是**edgeAgent**。 创建第一个部署后, 另一个系统模块 **$edgeHub**也会在设备上启动。 有关详细信息, 请参阅[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)。
+在设备上安装 IoT Edge 后，可以看到其正在运行的唯一模块应该是 **edgeAgent**。 创建第一个部署以后，另一个系统模块 ( **$edgeHub**) 也会在设备上启动。 有关详细信息，请参阅[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)。
 
 ## <a name="tips-and-troubleshooting"></a>提示和故障排除
 
@@ -275,7 +278,7 @@ sudo iotedge list
 
 ### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>验证 Linux 内核的 Moby 兼容性
 
-许多嵌入式设备制造商提供了包含自定义 Linux 内核的设备映像, 但没有容器运行时兼容性所需的功能。 如果在安装建议的小鲸鱼容器运行时遇到问题, 可以使用官方[小鲸鱼 GitHub 存储库](https://github.com/moby/moby)中的[检查-Config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh)脚本对 Linux 内核配置进行故障排除。 在设备上运行以下命令以检查内核配置:
+许多嵌入式设备制造商寄送的设备映像包含的自定义 Linux 内核没有确保容器运行时兼容所需的功能。 如果在安装建议的 Moby 容器运行时时遇到问题，则可使用官方 [Moby Github 存储库](https://github.com/moby/moby)中的 [check-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) 脚本排查 Linux 内核配置问题。 在设备上运行以下命令，检查内核配置：
 
    ```bash
    curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
@@ -283,7 +286,7 @@ sudo iotedge list
    ./check-config.sh
    ```
 
-这会提供详细的输出, 其中包含小鲸鱼运行时使用的内核功能的状态。 需确保启用 `Generally Necessary` 和 `Network Drivers` 下的所有项，这样才能确保内核完全兼容 Moby 运行时。  如果已确定任何缺少的功能, 请通过从源重建内核并选择要包含在适当的内核中的关联模块来启用它们。同样, 如果使用的是 defconfig 或 menuconfig 等内核配置生成器, 请查找并启用相应的功能, 并相应地重建内核。  部署新修改的内核后, 再次运行检查-config 脚本, 验证是否已成功启用所有必需的功能。
+这样就会提供一个详细的输出，其中包含 Moby 运行时使用的内核功能的状态。 需确保启用 `Generally Necessary` 和 `Network Drivers` 下的所有项，这样才能确保内核完全兼容 Moby 运行时。  如果确定有缺失的功能，请启用它们，方法是：通过源重新构建内核，然后选择关联的模块，将其包括在相应的内核 .config 中。同样，如果使用内核配置生成器（例如 defconfig 或 menuconfig），请找到并启用相应的功能，然后以相应方式重新构建内核。  部署新修改的内核以后，请再次运行 check-config 脚本，验证是否已成功启用所有必需功能。
 
 
 ## <a name="uninstall-iot-edge"></a>卸载 IoT Edge

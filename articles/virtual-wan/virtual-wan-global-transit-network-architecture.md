@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 2376c77ecc328788c842e045aafb618cbad39b0e
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 0a5059382c26afd6120dc14a1ab2c7e5d281e7a1
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421422"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695272"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全局传输网络体系结构和虚拟 WAN
 
@@ -44,11 +44,11 @@ ms.locfileid: "68421422"
 
 图 2：**中心辐射型**
 
-图 2 显示了全局网络的逻辑视图，其中的地理分散式用户、物理站点和 VNet 通过云中托管的网络中心互连。 此体系结构可在网络终结点之间实现逻辑单跃点传输连接。 辐射通过各种 Azure 网络服务（例如，用于连接物理分支的 ExpressRoute 或站点到站点 VPN、用于连接 VNet 的 VNet 对等互连，以及用于连接远程用户的点到站点 VPN）连接到中心。
+图 2 显示了全局网络的逻辑视图，其中的地理分散式用户、物理站点和 VNet 通过云中托管的网络中心互连。 此体系结构可在网络终结点之间实现逻辑单跃点传输连接。 轮辐通过各种 Azure 网络服务（如 ExpressRoute 或站点到站点 VPN）连接到中心，用于物理分支、VNet 连接 Vnet 和远程用户的点到站点 VPN。
 
 ## <a name="crossregion"></a>跨区域连接
 
-对于企业而言，云足迹通常类似于物理足迹。 大多数企业会从最靠近其物理站点和用户的区域访问云。 全局网络体系结构的重要原则之一是在网络实体与终结点之间实现跨区域连接。 云足迹可以跨越多个区域。 这意味着, 来自连接到一个区域中的云的分支中的流量可以使用集线器到集线器连接访问另一区域中的另一个分支或 VNet, 这当前位于我们的路线图上。
+对于企业而言，云足迹通常类似于物理足迹。 大多数企业会从最靠近其物理站点和用户的区域访问云。 全局网络体系结构的重要原则之一是在网络实体与终结点之间实现跨区域连接。 云足迹可以跨越多个区域。 这意味着，来自连接到一个区域中的云的分支中的流量可以使用集线器到集线器连接访问另一区域中的另一个分支或 VNet，这当前位于我们的路线图上。
 
 ## <a name="any"></a>任何连接
 
@@ -71,7 +71,7 @@ Azure 虚拟 WAN 支持以下全局传输连接路径。 括号中的字母对�
 
 ### <a name="branchvnet"></a>分支到 VNet
 
-分支到 VNet 是 Azure 虚拟 WAN 支持的主要路径。 使用此路径可将分支连接到 Azure VNet 中部署的 Azure IAAS 企业工作负荷。 分支可以通过 ExpressRoute 或站点到站点 VPN 连接到虚拟 WAN。 流量通过 VNet 连接传输到与虚拟 WAN 中心相连接的 VNet。
+分支到 VNet 是 Azure 虚拟 WAN 支持的主要路径。 使用此路径可将分支连接到 Azure VNet 中部署的 Azure IAAS 企业工作负荷。 分支可以通过 ExpressRoute 或站点到站点 VPN 连接到虚拟 WAN。 流量上流动到通过 VNet 连接连接到虚拟 WAN 集线器的 Vnet。虚拟 WAN 不需要[网关传输](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity)，因为虚拟 wan 会自动启用到分支站点的网关传输。
 
 ### <a name="branchbranch"></a>分支到分支
 
@@ -89,13 +89,13 @@ Azure 虚拟 WAN 支持以下全局传输连接路径。 括号中的字母对�
 
 ### <a name="vnetvnet"></a>使用 VNet 对等互连的 VNet 到 VNet 传输
 
-若要将 VNet 相互连接以支持跨多个 VNet 实现的多层应用程序，请使用 VNet 对等互连。 目前不支持通过 Azure 虚拟 WAN 实现 VNet 到 VNet 传输方案，但此方案已纳入 Azure 路线图。 对于需要相互连接的 VNet，通过 VNet 对等互连连接 VNet 是建议的解决方案。 虚拟 WAN 不需要[网关传输](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity)（在 VNet 对等互连环境中），因为虚拟 WAN 会自动启用网关传输。
+若要将 VNet 相互连接以支持跨多个 VNet 实现的多层应用程序，请使用 VNet 对等互连。 目前不支持通过 Azure 虚拟 WAN 实现 VNet 到 VNet 传输方案，但此方案已纳入 Azure 路线图。 对于需要相互连接的 VNet，通过 VNet 对等互连连接 VNet 是建议的解决方案。 
 
 ### <a name="globalreach"></a>ExpressRoute Global Reach
 
-ExpressRoute 是将本地网络连接到 Microsoft 云的一种私有且灵活的方式。 ExpressRoute Global Reach 是适用于 ExpressRoute 的附加功能。 使用 Global Reach, 你可以将 ExpressRoute 线路链接在一起, 以便在本地网络之间建立专用网络。 使用 ExpressRoute 连接到 Azure 虚拟 WAN 的分支要求 ExpressRoute Global Reach 彼此通信。
+ExpressRoute 是将本地网络连接到 Microsoft 云的一种私有且灵活的方式。 ExpressRoute Global Reach 是适用于 ExpressRoute 的附加功能。 使用 Global Reach，你可以将 ExpressRoute 线路链接在一起，以便在本地网络之间建立专用网络。 使用 ExpressRoute 连接到 Azure 虚拟 WAN 的分支要求 ExpressRoute Global Reach 彼此通信。
 
-在此模型中, 使用 ExpressRoute 连接到虚拟 WAN 集线器的每个分支都可以使用分支到 VNet 路径连接到 Vnet。 分支到分支流量不会传输中心, 因为 ExpressRoute Global Reach 通过 Azure WAN 实现更最优的路径。
+在此模型中，使用 ExpressRoute 连接到虚拟 WAN 集线器的每个分支都可以使用分支到 VNet 路径连接到 Vnet。 分支到分支流量不会传输中心，因为 ExpressRoute Global Reach 通过 Azure WAN 实现更最优的路径。
 
 ## <a name="security"></a>安全和策略控制
 

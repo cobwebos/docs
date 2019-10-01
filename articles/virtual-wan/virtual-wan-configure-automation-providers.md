@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/30/2019
 ms.author: cherylmc
-ms.openlocfilehash: f286c02e0eb6e801f62d4f2e16f1197a1e9d44ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72493f084b89d41c1e0d6ff60c35afa3491b0eda
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304549"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703462"
 ---
 # <a name="virtual-wan-partners"></a>虚拟 WAN 合作伙伴
 
@@ -27,7 +27,7 @@ ms.locfileid: "66304549"
 * 测试 Azure 虚拟 WAN 的门户体验。
 * 然后，确定连接步骤中的哪部分需要自动化。 建议至少自动化以下部分：
 
-  * Access Control
+  * 访问控制
   * 将分支设备信息上传到 Azure 虚拟 WAN
   * 下载 Azure 配置，并设置从分支设备到 Azure 虚拟 WAN 的连接
 
@@ -36,9 +36,10 @@ ms.locfileid: "66304549"
   1. 通常情况下，虚拟 WAN 用户一开始会创建虚拟 WAN 资源。
   2. 该用户会为本地系统（分支控制器或 VPN 设备预配软件）设置基于服务主体的资源组访问权限，以便将分支信息写入到 Azure 虚拟 WAN 中。
   3. 用户可能会在此时决定登录 UI 并设备服务主体凭据。 该操作完成以后，控制器应该就能够使用你将要提供的自动化设置来上传分支信息。 此操作在 Azure 端的手动等效项是“创建站点”。
-  4. 站点（分支设备）信息在 Azure 中可用以后，用户需将站点关联到中心。 虚拟中心是 Microsoft 托管的虚拟网络。 中心包含不同的服务终结点，可从本地网络 (vpnsite) 建立连接。 中心是区域中网络的核心。 每个 Azure 区域只能有一个中心，其中的 VPN 终结点 (vpngateway) 在此过程中创建。 VPN 网关是一个可扩展的网关，可根据带宽和连接需求进行适当调整。 可以在分支设备控制器仪表板中选择自动创建虚拟中心和 vpngateway。
+  4. 一旦 Azure 中提供了站点（分支设备）信息，用户就会将该站点连接到中心。 虚拟中心是 Microsoft 托管的虚拟网络。 中心包含不同的服务终结点，可从本地网络 (vpnsite) 建立连接。 中心是区域中网络的核心。 每个 Azure 区域只能有一个中心，其中的 VPN 终结点 (vpngateway) 在此过程中创建。 VPN 网关是一个可扩展的网关，可根据带宽和连接需求进行适当调整。 可以在分支设备控制器仪表板中选择自动创建虚拟中心和 vpngateway。
   5. 将虚拟中心关联到站点以后，将会生成一个配置文件，供用户手动下载。 可以在其中放置自动化设置，实现无缝的用户体验。 可以在 UI 中设置自动化并提供尽量减少点击的体验，这样就不需用户手动下载和配置分支设备，减少典型的连接问题，例如共享密钥不匹配问题、IPSec 参数不匹配问题、配置文件可读性问题，等等。
   6. 解决方案中的此步骤结束时，用户就可以在分支设备和虚拟中心之间进行无缝的站点到站点连接。 也可设置跨其他中心的其他连接。 每个连接都是主动-主动隧道。 客户可以选择针对隧道的每个链路使用不同的 ISP。
+  7. 请考虑在 CPE 管理界面中提供故障排除和监视功能。 典型方案包括 "客户无法访问 Azure 资源，因为出现了 CPE 问题"、"在 CPE 端显示 IPsec 参数" 等。
 
 ## <a name ="understand"></a>了解自动化详细信息
 
@@ -64,7 +65,7 @@ ms.locfileid: "66304549"
 **配置说明**
 
   * 如果 Azure VNet 附加到虚拟中心，它们将显示为 ConnectedSubnets。
-  * VPN 连接使用基于路由的配置和 IKEv2/IKEv1。
+  * VPN 连接使用基于路由的配置，同时支持 IKEv1 和 IKEv2 协议。
 
 #### <a name="understanding-the-device-configuration-file"></a>了解设备配置文件
 
@@ -73,23 +74,23 @@ ms.locfileid: "66304549"
 * **vpnSiteConfiguration** - 此部分表示当站点连接到虚拟 WAN 时设置的设备详细信息。 它包含分支设备的名称和公共 IP 地址。
 * **vpnSiteConnections** - 此部分提供以下信息：
 
-    * 虚拟中心 VNet 的地址空间  。<br>示例：
+    * 虚拟中心 VNet 的地址空间。<br>例如：
  
         ```
         "AddressSpace":"10.1.0.0/24"
         ```
-    * 已连接到中心的 VNet 的地址空间  。<br>示例：
+    * 已连接到中心的 VNet 的地址空间。<br>例如：
 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * 虚拟中心 vpngateway 的 IP 地址  。 由于 vpngateway 的每个连接由采用主动-主动配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，可以看到为每个站点指定了“Instance0”和“Instance1”。<br>示例：
+    * 虚拟中心 vpngateway 的 IP 地址。 由于 vpngateway 的每个连接由采用主动-主动配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，可以看到为每个站点指定了“Instance0”和“Instance1”。<br>例如：
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * Vpngateway 连接配置详细信息，例如 BGP、预共享密钥等  。PSK 是自动生成的预共享密钥。 始终可以在“概述”页中为自定义 PSK 编辑连接。
+    * Vpngateway 连接配置详细信息，例如 BGP、预共享密钥等。PSK 是自动生成的预共享密钥。 始终可以在“概述”页中为自定义 PSK 编辑连接。
   
 #### <a name="example-device-configuration-file"></a>示例设备配置文件
 

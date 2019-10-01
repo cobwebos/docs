@@ -9,19 +9,16 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 968ae62344f99edf8eb46eb62a4cf13f300c868f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 2c43dd7c0700efdd2fbf2f16c57c9c9dc69d3c6b
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815643"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703353"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>在 Azure 数字孪生中创建和管理角色分配
 
 Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-based-access-control.md)) 来管理对资源的访问权限。
-
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="role-assignments-overview"></a>角色分配概述
 
@@ -39,13 +36,13 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 
 下表描述了每个属性：
 
-| 特性 | 名称 | 必填 | 类型 | 描述 |
+| 特性 | 姓名 | 必填 | type | 描述 |
 | --- | --- | --- | --- | --- |
-| roleId | 角色定义标识符 | 是 | String | 所需角色分配的唯一 ID。 通过查询系统 API 或查看下表查找角色定义及其标识符。 |
-| objectId | 对象标识符 | 是 | String | Azure Active Directory ID、服务主体对象 ID 或域名。 该角色分配要分配到哪个对象。 必须根据其关联类型设置角色分配的格式。 对于 `DomainName` objectIdType，objectId 必须以 `“@”` 字符开头。 |
-| objectIdType | 对象标识符类型 | 是 | String | 使用的对象标识符类型。 请参阅下面的**支持的 ObjectIdType**。 |
-| path | 空间路径 | 是 | String | `Space` 对象的完整访问路径。 例如 `/{Guid}/{Guid}`。 如果标识符需要整个图形的角色分配，请指定 `"/"`。 此字符指定根目录，但不建议使用。 请始终遵循最低权限原则。 |
-| tenantId | 租户标识符 | 多种多样 | String | 在大多数情况下，为 Azure Active Directory 租户 ID。 不能用于 `DeviceId` 和 `TenantId` ObjectIdType。 对于 `UserId` 和 `ServicePrincipalId` ObjectIdType 必需。 对于 DomainName ObjectIdType 可选。 |
+| roleId | 角色定义标识符 | 是 | 字符串 | 所需角色分配的唯一 ID。 通过查询系统 API 或查看下表查找角色定义及其标识符。 |
+| objectId | 对象标识符 | 是 | 字符串 | Azure Active Directory ID、服务主体对象 ID 或域名。 该角色分配要分配到哪个对象。 必须根据其关联类型设置角色分配的格式。 对于 `DomainName` objectIdType，objectId 必须以 `“@”` 字符开头。 |
+| objectIdType | 对象标识符类型 | 是 | 字符串 | 使用的对象标识符类型。 请参阅下面的**支持的 ObjectIdType**。 |
+| path | 空间路径 | 是 | 字符串 | `Space` 对象的完整访问路径。 例如 `/{Guid}/{Guid}`。 如果标识符需要整个图形的角色分配，请指定 `"/"`。 此字符指定根目录，但不建议使用。 请始终遵循最低权限原则。 |
+| tenantId | 租户标识符 | 多种多样 | 字符串 | 在大多数情况下，为 Azure Active Directory 租户 ID。 不能用于 `DeviceId` 和 `TenantId` ObjectIdType。 对于 `UserId` 和 `ServicePrincipalId` ObjectIdType 必需。 对于 DomainName ObjectIdType 可选。 |
 
 ### <a name="supported-role-definition-identifiers"></a>支持的角色定义标识符
 
@@ -63,7 +60,7 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 
 Azure 数字孪生支持对角色分配执行完整的 *CREATE*、*READ* 和 *DELETE* 操作。 *UPDATE* 操作的处理方式是添加角色分配、删除角色分配，或者修改角色分配授权访问的[空间智能图形](./concepts-objectmodel-spatialgraph.md)节点。
 
-![角色分配终结点][1]
+[@no__t 1Role 分配终结点](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
 
 提供的 Swagger 参考文档包含了有关所有可用 API 终结点、请求操作和定义的更多信息。
 
@@ -71,23 +68,28 @@ Azure 数字孪生支持对角色分配执行完整的 *CREATE*、*READ* 和 *DE
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-<div id="grant"></div>
-
 ### <a name="grant-permissions-to-your-service-principal"></a>向服务主体授予权限
 
 向服务主体授予权限通常是使用 Azure 数字孪生时要执行的第一个步骤。 此操作需要：
 
-1. 通过 PowerShell 登录到 Azure 实例。
+1. 通过[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)或[PowerShell](https://docs.microsoft.com/powershell/azure/)登录到 Azure 实例。
 1. 获取服务主体信息。
 1. 将所需的角色分配给服务主体。
 
 应用程序 ID 在 Azure Active Directory 中提供。 若要详细了解如何在 Active Directory 中配置和预配 Azure 数字孪生，请阅读[快速入门](./quickstart-view-occupancy-dotnet.md)。
 
-获取应用程序 ID 后，执行以下 PowerShell 命令：
+获得应用程序 ID 后，执行以下命令之一。 在 Azure CLI 中：
 
-```shell
+```azurecli
+az login
+az ad sp show --id <ApplicationId>
+```
+
+在 Powershell 中：
+
+```powershell
 Login-AzAccount
-Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
+Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 ```
 
 然后，具有“管理员”角色的用户可以通过向以下 URL 发出经过身份验证的 HTTP POST 请求，将“空间管理员”角色分配给用户：
@@ -108,11 +110,9 @@ YOUR_MANAGEMENT_API_URL/roleassignments
 }
 ```
 
-<div id="all"></div>
-
 ### <a name="retrieve-all-roles"></a>检索所有角色
 
-![系统角色][2]
+[@no__t 1System 角色](media/security-roles/system.png)](media/security-roles/system.png#lightbox)
 
 若要列出所有可用的角色（角色定义），请向以下对象发出经过身份验证的 HTTP GET 请求：
 
@@ -153,8 +153,6 @@ YOUR_MANAGEMENT_API_URL/system/roles
 ]
 ```
 
-<div id="check"></div>
-
 ### <a name="check-a-specific-role-assignment"></a>检查特定的角色分配
 
 若要检查特定的角色分配，请向以下对象发出经过身份验证的 HTTP GET 请求：
@@ -165,10 +163,10 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **参数值** | **必需** |  类型 |  **说明** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | String |   UserId objectIdType 的 objectId。 |
-| YOUR_PATH | True | String |   要检查访问权限的所选路径。 |
-| YOUR_ACCESS_TYPE |  True | String |   要检查的访问类型。 |
-| YOUR_RESOURCE_TYPE | True | String |  要检查的资源。 |
+| YOUR_USER_ID |  真 | 字符串 |   UserId objectIdType 的 objectId。 |
+| YOUR_PATH | 真 | 字符串 |   要检查访问权限的所选路径。 |
+| YOUR_ACCESS_TYPE |  真 | 字符串 |   要检查的访问类型。 |
+| YOUR_RESOURCE_TYPE | 真 | 字符串 |  要检查的资源。 |
 
 成功的请求将返回布尔值 `true` 或 `false`，指示是否已将该访问类型分配到给定路径和资源的用户。
 
@@ -180,7 +178,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| 值 | 替换为 |
+| ReplTest1 | 替换为 |
 | --- | --- |
 | YOUR_PATH | 空间的完整路径 |
 
@@ -210,7 +208,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 | --- | --- |
 | *YOUR_ROLE_ASSIGNMENT_ID* | 要删除的角色分配的 **ID** |
 
-成功的 DELETE 请求将返回 204 响应状态。 通过[检查](#check)角色分配是否仍然存在来验证是否删除了该角色分配。
+成功的 DELETE 请求将返回 204 响应状态。 通过[检查](#check-a-specific-role-assignment)角色分配是否仍然存在来验证是否删除了该角色分配。
 
 ### <a name="create-a-role-assignment"></a>创建角色分配
 
@@ -282,7 +280,3 @@ YOUR_MANAGEMENT_API_URL/roleassignments
 - 若要查看 Azure 数字孪生的基于角色的访问控制，请参阅[基于角色的访问控制](./security-authenticating-apis.md)。
 
 - 若要了解 Azure 数字孪生 API 身份验证，请参阅 [API 身份验证](./security-authenticating-apis.md)。
-
-<!-- Images -->
-[1]: media/security-roles/roleassignments.png
-[2]: media/security-roles/system.png

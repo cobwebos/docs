@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: fd56fffe6b11d1c32d7abfe28140127d01933def
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146600"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695044"
 ---
 # <a name="troubleshooting"></a>疑难解答
 
@@ -44,7 +44,7 @@ ms.locfileid: "71146600"
 |    |正在通过（负载均衡器、异地流量管理器、Azure Express Route）重新路由某些 IP 地址。 
 |    |如果使用的是 Azure ExpressRoute，则在[发生非对称路由](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing)时，存在着数据包可能被丢弃的情况。|
 
-## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>间歇性测试失败，出现违反协议错误
+## <a name="test-failure-with-a-protocol-violation-error"></a>测试失败，出现协议冲突错误
 
 |症状/错误消息| 可能的原因| 可能的解决方法 |
 |----|---------|-----|

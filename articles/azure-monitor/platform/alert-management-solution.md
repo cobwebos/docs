@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: e2f195f648f08c31fbfe44543ee763aeed7459f0
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741265"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702970"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警报管理解决方案
 
 ![警报管理图标](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor 现在支持[大规模管理警报](https://aka.ms/azure-alerts-overview)的增强功能，包括由[监视工具（如 SCOM、Zabbix 或 Nagios）](https://aka.ms/managing-alerts-other-monitoring-services)生成的警报。
+>  Azure Monitor 现在支持用于[大规模管理警报](https://aka.ms/azure-alerts-overview)的增强功能，包括[监视工具（如 System Center Operations Manager、Zabbix 或 Nagios](https://aka.ms/managing-alerts-other-monitoring-services)）所生成的警报。
 >  
 
 
@@ -70,11 +70,11 @@ ms.locfileid: "68741265"
 
 单击“警报管理”磁贴打开“警报管理”仪表板。  仪表板包含下表中的列。  每列按计数列出了指定范围和时间范围内符合该列条件的前十个警报。  可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“查看全部”或单击列标题。
 
-| 柱形图 | 描述 |
+| 列 | 描述 |
 |:--- |:--- |
 | 严重警报 |按警报名称分组并且严重级别为“严重”的所有警报。  单击某个警报名称，以运行会返回该警报所有记录的日志搜索。 |
 | 警告警报 |按警报名称分组并且严重级别为“警告”的所有警报。  单击某个警报名称，以运行会返回该警报所有记录的日志搜索。 |
-| 活动 SCOM 警报 |按生成警报的源分组并且状态为非“已关闭”的从 Operations Manager 收集的所有警报。 |
+| 活动 System Center Operations Manager 警报 |按生成警报的源分组并且状态为非“已关闭”的从 Operations Manager 收集的所有警报。 |
 | 所有活动警报 |按警报名称分组并且具有任意严重级别的所有警报。 仅包括状态为非“已关闭”的 Operations Manager 警报。 |
 
 向右滚动时，仪表板会列出几个常见查询，可以单击这些查询执行[日志搜索](../../azure-monitor/log-query/log-query-overview.md)以获取警报数据。
@@ -120,8 +120,8 @@ ms.locfileid: "68741265"
 | Alert &#124; where SourceSystem == "OpsManager" and AlertState != "Closed" and TimeRaised > ago(24h) &#124; summarize Count = count() by SourceDisplayName |过去 24 小时引发的活动警报的源 |
 | Alert &#124; where SourceSystem == "OpsManager" and AlertSeverity == "error" and TimeRaised > ago(24h) and AlertState != "Closed" |过去 24 小时引发的严重警报（这些警报仍处于活动状态） |
 | Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(24h) and AlertState == "Closed" |过去 24 小时引发的警报（这些警报现已解决） |
-| Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(1d) &#124; summarize Count = count() by AlertSeverity |过去 1 天中引发的按严重性分组的警报 |
-| Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(1d) &#124; sort by RepeatCount desc |过去 1 天中引发的按重复次数值排序的警报 |
+| Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(1d) &#124; summarize Count = count() by AlertSeverity |过去 1 天引发的警报（这些警报按其严重程度分组） |
+| Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(1d) &#124; sort by RepeatCount desc |过去 1 天引发的警报（这些警报按其重复计数值排序） |
 
 
 

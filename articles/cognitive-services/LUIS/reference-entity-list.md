@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/27/2019
+ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2a9e3d16f745e8f51d1d375a774d7c687e987efe
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 1757faf8ab2be0b62956b6939ee068929f9275a4
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350803"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695242"
 ---
 # <a name="list-entity"></a>列表实体 
 
@@ -45,49 +45,72 @@ ms.locfileid: "71350803"
 
 在之前的陈述中，单词 `paris` 映射至属于 `Cities` 列表实体一部分的“巴黎”项。 列表实体同时匹配项的规范化名称及其同义词。
 
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+
 ```JSON
-"entities": [
-  {
-    "entity": "paris",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 22,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
+  "entities": [
+    {
+      "entity": "paris",
+      "type": "Cities",
+      "startIndex": 18,
+      "endIndex": 22,
+      "resolution": {
+        "values": [
+          "Paris"
+        ]
+      }
     }
-  }
-]
+  ]
 ```
+
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+
+
+如果在查询字符串中设置了 `verbose=false`，则这是 JSON：
+
+```json
+"entities": {
+    "Cities": [
+        [
+            "Paris"
+        ]
+    ]
+}
+```
+
+如果在查询字符串中设置了 `verbose=true`，则这是 JSON：
+
+```json
+"entities": {
+    "Cities": [
+        [
+            "Paris"
+        ]
+    ],
+    "$instance": {
+        "Cities": [
+            {
+                "type": "Cities",
+                "text": "paris",
+                "startIndex": 18,
+                "length": 5,
+                "modelTypeId": 5,
+                "modelType": "List Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+* * * 
 
 |数据对象|实体名称|ReplTest1|
 |--|--|--|
 |列出实体|`Cities`|`paris`|
 
-另一个使用巴黎的同义词的示例陈述：
-
-`book 2 tickets to roissy`
-
-```JSON
-"entities": [
-  {
-    "entity": "roissy",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 23,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
-
-|数据对象|实体名称|ReplTest1|
-|--|--|--|
-|列出实体|`Cities`|`roissy`|
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,17 +9,17 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 6b80cbd16ac78f7f347bef9ab8e22c4d67d31058
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 73aa641fc4bb01ef3d06820ecd18b61197ab81e7
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71301032"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695501"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>将 Azure 计划程序作业迁移到 Azure 逻辑应用
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请按照本文中的介绍尽快迁移到 Azure 逻辑应用。
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请按照本文中的介绍尽快迁移到 Azure 逻辑应用。 
 
 本文介绍如何通过使用 Azure 逻辑应用而非 Azure 计划程序来创建自动化工作流，从而安排一次性作业和重复作业。 使用逻辑应用创建计划的作业时，将获得以下好处：
 
@@ -38,6 +38,10 @@ ms.locfileid: "71301032"
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 若要通过发送 HTTP 请求来触发逻辑应用，请使用 [Postman 桌面应用](https://www.getpostman.com/apps)等工具。
+
+## <a name="migrate-by-using-a-script"></a>使用脚本迁移
+
+每个计划程序作业都是唯一的，因此不能将计划程序作业迁移到 Azure 逻辑应用。 但是，您可以[编辑此脚本](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration)来满足您的需求。
 
 ## <a name="schedule-one-time-jobs"></a>安排一次性作业
 
@@ -203,7 +207,7 @@ ms.locfileid: "71301032"
 **答**：最佳做法是始终备份你的工作。 在删除或禁用计划程序作业之前，请检查你创建的逻辑应用是否按预期运行。 
 
 **问**：是否有可以帮助我将作业从计划程序迁移到逻辑应用的工具？ <br>
-**答**：每个计划程序作业都是唯一的，因此不存在一个通用的工具。 但是，可以使用各种脚本来根据需要进行修改。 对于脚本可用性，请以后再回来查看。
+**答**：每个计划程序作业都是唯一的，因此不存在一个通用的工具。 但是，可以根据需要[编辑此脚本，将 Azure 计划程序作业迁移到 Azure 逻辑应用](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration)。
 
 **问**：迁移计划程序作业时，可从何处获得支持？ <br>
 **答**：以下是获得支持的一些方法： 

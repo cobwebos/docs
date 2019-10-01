@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: efa9b8f4f5cba36bfb2557b7be33ec9519b1d804
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e0143a6075ef7b88cc0b365a544a5e69c92362ff
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999370"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710124"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>使用 Azure 机器学习培训和注册 Keras 分类模型
 
@@ -55,13 +55,9 @@ Keras 是一种高级神经网络 API，能够运行其他流行的 DNN 框架�
 
 ```Python
 import os
-import urllib
-import shutil
 import azureml
-
 from azureml.core import Experiment
 from azureml.core import Workspace, Run
-
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
 ```
@@ -78,43 +74,37 @@ ws = Workspace.from_config()
 
 ### <a name="create-an-experiment"></a>创建试验
 
-创建试验和文件夹来保存训练脚本。 在此示例中，创建一个名为 "keras-mnist" 的试验。
+在工作区中创建一个名为 "keras-mnist" 的试验。
 
 ```Python
-script_folder = './keras-mnist'
-os.makedirs(script_folder, exist_ok=True)
-
 exp = Experiment(workspace=ws, name='keras-mnist')
 ```
 
-### <a name="upload-dataset-and-scripts"></a>上传数据集和脚本
+<a name="data-upload"></a>
+### <a name="create-a-file-dataset"></a>创建文件数据集
 
-数据[存储](how-to-access-data.md)是可通过装载数据或将数据复制到计算目标来存储和访问数据的位置。 每个工作区都提供默认数据存储。 将数据和培训脚本上传到数据存储，以便在训练期间轻松访问这些脚本。
+`FileDataset` 对象引用工作区数据存储或公共 URL 中的一个或多个文件。 文件可以是任何格式，该类提供将文件下载或装载到计算机的功能。 通过创建 `FileDataset`，可以创建对数据源位置的引用。 如果将任何转换应用于数据集，则它们也会存储在数据集中。 数据会保留在其现有位置，因此不会产生额外的存储成本。 有关详细信息，请参阅 `Dataset` 包中的[操作](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets)指南。
 
-1. 在本地下载 MNIST 数据集。
+```python
+from azureml.core.dataset import Dataset
 
-    ```Python
-    os.makedirs('./data/mnist', exist_ok=True)
+web_paths = [
+            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
+            ]
+dataset = Dataset.File.from_files(path=web_paths)
+```
 
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', filename = './data/mnist/train-images.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz', filename = './data/mnist/train-labels.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename = './data/mnist/test-images.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename = './data/mnist/test-labels.gz')
-    ```
+`register()`使用方法将数据集注册到你的工作区，以便可以与其他人共享数据集、在各种试验中重复使用这些数据集，并在训练脚本中按名称引用这些数据集。
 
-1. 将 MNIST 数据集上传到默认数据存储。
-
-    ```Python
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data/mnist', target_path='mnist', overwrite=True, show_progress=True)
-    ```
-
-1. 将 Keras 训练脚本、 `keras_mnist.py`和帮助程序`utils.py`文件上传。
-
-    ```Python
-    shutil.copy('./keras_mnist.py', script_folder)
-    shutil.copy('./utils.py', script_folder)
-    ```
+```python
+dataset = dataset.register(workspace=ws,
+                           name='mnist dataset',
+                           description='training and test dataset',
+                           create_new_version=True)
+```
 
 ## <a name="create-a-compute-target"></a>创建计算目标
 
@@ -142,11 +132,22 @@ except ComputeTargetException:
 
 [TensorFlow 估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)提供了一种简单的方法来启动计算目标上的 TensorFlow 培训作业。 由于 Keras 在 TensorFlow 上运行，因此可以使用 TensorFlow 估计器并使用`pip_packages`参数导入 Keras 库。
 
+首先，使用`Dataset`类从工作区数据存储获取数据。
+
+```python
+dataset = Dataset.get_by_name(ws, 'mnist dataset')
+
+# list the files referenced by mnist dataset
+dataset.to_path()
+```
+
 TensorFlow 估计器是通过泛型[`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)类实现的，它可用于支持任何框架。 此外，创建包含 DNN `script_params`超参数设置的字典。 有关使用泛型估计器定型模型的详细信息，请参阅[使用估计器 Azure 机器学习训练模型](how-to-train-ml-models.md)
 
-```Python
+```python
+from azureml.train.dnn import TensorFlow
+
 script_params = {
-    '--data-folder': ds.path('mnist').as_mount(),
+    '--data-folder': dataset.as_named_input('mnist').as_mount(),
     '--batch-size': 50,
     '--first-layer-neurons': 300,
     '--second-layer-neurons': 100,

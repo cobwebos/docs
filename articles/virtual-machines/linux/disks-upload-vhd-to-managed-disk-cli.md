@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: bc8932a9904a3e4e671edc3e624ff15e7253e1ed
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 938f1696c95f8feb9aeebd28139870e3ce020613
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326823"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695446"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>使用 Azure CLI 将 vhd 上传到 Azure
 
@@ -32,7 +32,7 @@ ms.locfileid: "71326823"
 
 ## <a name="create-an-empty-managed-disk"></a>创建一个空托管磁盘
 
-若要将 vhd 上传到 Azure，需要创建一个为此上传过程专门配置的空托管磁盘。 创建前，还应了解有关这些磁盘的一些其他信息。
+若要将 vhd 上传到 Azure，需要创建一个为此上传过程配置的空托管磁盘。 创建前，还应了解有关这些磁盘的一些其他信息。
 
 这种托管磁盘具有两种独特的状态：
 
@@ -43,7 +43,7 @@ ms.locfileid: "71326823"
 
 在创建用于上传的空标准 HDD 之前，需要上载要上传的 vhd 的文件大小（以字节为单位）。 为此，可以使用 `wc -c <yourFileName>.vhd` 或 `ls -al <yourFileName>.vhd`。 此值在指定 **--上传大小-字节**参数时使用。
 
-通过在[disk create](/cli/azure/disk#az-disk-create) cmdlet 中指定 **--for 上传**参数和 **--上传大小-字节**参数，创建一个空的标准 HDD 进行上传：
+通过在[disk create](/cli/azure/disk#az-disk-create) cmdlet 中指定 **--for 上传**参数和 **--上传大小-字节**参数，创建一个空的标准 HDD 以进行上传：
 
 ```azurecli-interactive
 az disk create -n mydiskname -g resourcegroupname -l westus2 --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
