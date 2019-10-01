@@ -1,113 +1,109 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 文本翻译文档
+summary: 文本翻译是一种基于云的机器翻译服务，可用于通过简单的 REST API 调用几乎实时地翻译文本。 该 API 使用先进的神经机器翻译技术并提供统计机器翻译技术。 “自定义翻译器”是文本翻译 API 的扩展，用于构建神经翻译系统。 可以将自定义的翻译系统与文本翻译 API 或 Microsoft 语音服务配合使用来翻译文本。
 metadata:
-  title: 文本翻译 API 文档 - 快速入门、教程和 API 参考 - Azure 认知服务 | Microsoft Docs
-  description: 了解如何使用文本翻译来翻译多个语言的文本。
+  title: 文本翻译文档 - 快速入门、教程和 API 参考
+  titleSuffix: Azure Cognitive Services
+  description: 文本翻译是一种基于云的机器翻译服务，可用于通过简单的 REST API 调用几乎实时地翻译文本。 该 API 使用先进的神经机器翻译技术并提供统计机器翻译技术。 “自定义翻译器”是文本翻译 API 的扩展，用于构建神经翻译系统。 可以将自定义的翻译系统与文本翻译 API 或 Microsoft 语音服务配合使用来翻译文本。
   services: cognitive-services
-  author: swmachan
+  author: erhopf
   manager: nitinme
+  layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: translator-text
   ms.topic: landing-page
-  ms.date: 06/04/2019
-  ms.author: swmachan
-abstract:
-  description: '文本翻译是一种基于云的机器翻译服务，可用于通过简单的 REST API 调用几乎实时地翻译文本。 该 API 使用先进的神经机器翻译技术并提供统计机器翻译技术。 “自定义翻译”是文本翻译 API 的扩展，用于构建神经翻译系统。 可以将自定义的翻译系统与文本翻译 API 或 <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/">Microsoft 语音服务</a>配合使用来翻译文本。 有关神经机器翻译和统计机器翻译支持的语言的列表，请参阅<a href="languages.md">支持的语言</a>。'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/translator/translator-info-overview
-            html: <p>了解文本翻译 API</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什么是文本翻译 API？
-          - href: /azure/cognitive-services/translator/custom-translator/overview
-            html: <p>了解自定义翻译</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什么是自定义翻译？
-          - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
-            html: <p>了解如何开始使用自定义翻译</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: 自定义翻译快速入门
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 开始使用文本翻译 API：
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo_csharp.svg
-            title: 'C#'
-          - image:
-              src: media/index/logo_java.svg
-            title: Java
-          - image:
-              src: media/index/logo_nodejs.svg
-            title: Node.js
-          - image:
-              src: media/index/logo_python.svg
-            title: Python
-          - image:
-              src: media/index/logo_go.svg
-            title: Go
-        rows:
-          - title: 翻译文本
-            values:
-              - href: quickstart-translate?pivots=programming-language-csharp
-              - href: quickstart-translate?pivots=programming-language-java
-              - href: quickstart-translate?pivots=programming-language-nodejs
-              - href: quickstart-translate?pivots=programming-language-python
-              - href: quickstart-translate?pivots=programming-language-go
-          - title: 将一个脚本中的文本转换到另一个脚本
-            values:
-              - href: quickstart-transliterate?pivots=programming-language-csharp
-              - href: quickstart-transliterate?pivots=programming-language-java
-              - href: quickstart-transliterate?pivots=programming-language-nodejs
-              - href: quickstart-transliterate?pivots=programming-language-python
-              - href: quickstart-transliterate?pivots=programming-language-go
-          - title: 检测文本语言
-            values:
-              - href: quickstart-detect?pivots=programming-language-csharp
-              - href: quickstart-detect?pivots=programming-language-java
-              - href: quickstart-detect?pivots=programming-language-nodejs
-              - href: quickstart-detect?pivots=programming-language-python
-              - href: quickstart-detect?pivots=programming-language-go
-          - title: 获取备用翻译和使用情况
-            values:
-              - href: quickstart-dictionary?pivots=programming-language-csharp
-              - href: quickstart-dictionary?pivots=programming-language-java
-              - href: quickstart-dictionary?pivots=programming-language-nodejs
-              - href: quickstart-dictionary?pivots=programming-language-python
-              - href: quickstart-dictionary?pivots=programming-language-go
-          - title: 确定句子长度
-            values:
-              - href: quickstart-sentences?pivots=programming-language-csharp
-              - href: quickstart-sentences?pivots=programming-language-java
-              - href: quickstart-sentences?pivots=programming-language-nodejs
-              - href: quickstart-sentences?pivots=programming-language-python
-              - href: quickstart-sentences?pivots=programming-language-go
-          - title: 获取受支持语言的完整列表
-            values:
-              - href: quickstart-languages?pivots=programming-language-csharp
-              - href: quickstart-languages?pivots=programming-language-java
-              - href: quickstart-languages?pivots=programming-language-nodejs
-              - href: quickstart-languages?pivots=programming-language-python
-              - href: quickstart-languages?pivots=programming-language-go
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用文本翻译 API 开发应用程序：
-      - type: paragraph
-        text: '<li><a href="tutorial-wpf-translation-csharp.md">使用 C# 创建 WPF 应用以进行文本翻译</a></li><li><a href="tutorial-build-flask-app-translation-synthesis.md">使用 Python 创建 Flask 翻译应用</a></li>'
-  - title: 引用
-    items:
-      - type: paragraph
-        text: <p><a href="reference/v3-0-reference.md">API 参考</a></p>
+  ms.date: 09/05/2019
+  ms.author: erhopf
+  ms.openlocfilehash: 7bbe487ff6ed545f40cccc5abb041f54ea5f319d
+  ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/29/2019
+  ms.locfileid: "71672561"
+landingContent:
+- title: Translator
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 文本翻译 API
+      url: translator-info-overview.md
+    - text: 自定义翻译
+      url: translator-info-overview.md
+    - text: 定价
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
+    - text: 合规性
+      url: https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/
+    - text: 创建订阅
+      url: translator-text-how-to-signup.md
+    - text: 常见问题解答
+      url: https://www.microsoft.com/translator/faq.aspx
+- title: 文本翻译 API
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 翻译文本
+      url: quickstart-translate.md
+    - text: 直译文本
+      url: quickstart-transliterate.md
+    - text: 语言检测
+      url: quickstart-detect.md
+    - text: 字典查找
+      url: quickstart-dictionary.md
+    - text: 确定句子长度
+      url: quickstart-sentences.md
+    - text: 列出支持的语言
+      url: quickstart-languages.md
+  - linkListType: tutorial
+    links:
+    - text: 创建 WPF 翻译应用 - C#
+      url: tutorial-wpf-translation-csharp.md
+    - text: 创建 Flask 翻译应用 - REST
+      url: tutorial-build-flask-app-translation-synthesis.md
+  - linkListType: reference
+    links:
+    - text: 文本翻译 API 参考 (v3)
+      url: reference/v3-0-reference.md
+    - text: 请求限制
+      url: request-limits.md
+    - text: 语言和区域支持
+      url: language-support.md
+- title: 自定义翻译
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 生成和部署自定义模型
+      url: custom-translator/quickstart-build-deploy-custom-model.md
+  - linkListType: get-started
+    links:
+    - text: 创建一个项目
+      url: custom-translator/how-to-create-project.md
+    - text: 管理项目
+      url: custom-translator/how-to-search-edit-delete-projects.md
+    - text: 上传文档
+      url: custom-translator/how-to-upload-document.md
+    - text: 训练模型
+      url: custom-translator/how-to-train-model.md
+  - linkListType: learn
+    links:
+    - text: 工作区和项目
+      url: custom-translator/workspace-and-project.md
+    - text: 并行文档
+      url: custom-translator/what-are-parallel-documents.md
+    - text: 字典
+      url: custom-translator/what-is-dictionary.md
+    - text: 支持的文档格式
+      url: custom-translator/document-formats-naming-convention.md
+  - linkListType: reference
+    links:
+    - text: 语言支持
+      url: language-support.md
+    - text: 术语表
+      url: custom-translator/glossary.md
+- title: 资源
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: GitHub 上的示例
+      url: https://aka.ms/TranslatorGitHub
+    - text: 堆栈溢出
+      url: https://stackoverflow.com/questions/tagged/microsoft-translator

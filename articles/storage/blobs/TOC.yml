@@ -440,6 +440,8 @@
           items:
             - name: Blob、队列和文件（版本 12.x - 预览版）
               href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
+            - name: Blob、队列和文件（版本 8）
+              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
             - name: 存储资源提供程序
               href: /java/api/overview/azure/storage/management
         - name: Node.js
@@ -537,6 +539,8 @@
               href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
             - name: Azure 存储数据移动库
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+            - name: 存储资源提供程序库
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
         - name: 源代码
           items:
             - name: .NET
@@ -550,7 +554,7 @@
                 - name: 数据移动库
                   href: 'https://github.com/Azure/azure-storage-net-data-movement'
                 - name: 存储资源提供程序库
-                  href: /dotnet/api/overview/azure/storage/management
+                  href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
             - name: Java
               items:
                 - name: Azure 存储客户端库版本 12.x（预览版）

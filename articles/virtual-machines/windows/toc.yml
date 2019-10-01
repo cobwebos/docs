@@ -36,13 +36,15 @@
     - name: 10 - 控制 VM
       href: tutorial-govern-resources.md
       displayName: scope policy RBAC lock tag
-    - name: 11 - 监视和更新 VM
-      href: tutorial-monitoring.md
-    - name: 12 - 管理 VM 安全性
+    - name: 11 - 跟踪和更新 VM
+      href: tutorial-config-management.md
+    - name: 12 - 监视 VM
+      href: tutorial-monitor.md
+    - name: 13 - 管理 VM 安全性
       href: tutorial-azure-security.md
-    - name: 13 - 安装 SQL\IIS\.NET 堆栈
+    - name: 14 - 安装 SQL\IIS\.NET 堆栈
       href: tutorial-iis-sql.md
-    - name: 14 - 使用 SSL 保护 Web 服务器
+    - name: 15 - 使用 SSL 保护 Web 服务器
       href: tutorial-secure-web-server.md
 - name: 示例
   items:

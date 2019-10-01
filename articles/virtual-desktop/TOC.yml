@@ -38,6 +38,8 @@
       href: create-host-pools-arm-template.md
     - name: 使用 PowerShell 创建主机池
       href: create-host-pools-powershell.md
+    - name: 在 Windows 虚拟桌面上部署 Windows 7 虚拟机
+      href: deploy-windows-7-virtual-machine.md
     - name: 将 Windows 许可证应用于 Windows 虚拟桌面会话主机
       href: apply-windows-license.md
     - name: 使用文件共享为主机池创建配置文件容器
@@ -86,6 +88,8 @@
       href: troubleshoot-set-up-issues.md
     - name: 会话主机虚拟机配置
       href: troubleshoot-vm-configuration.md
+    - name: 排查 Windows 虚拟桌面中的 Windows 7 虚拟机问题
+      href: troubleshoot-windows-7-vm.md
     - name: 远程桌面客户端连接
       href: troubleshoot-client-connection.md
     - name: Windows 虚拟桌面 PowerShell
