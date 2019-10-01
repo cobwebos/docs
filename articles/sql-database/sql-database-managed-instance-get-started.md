@@ -7,16 +7,16 @@ ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: jovanpop-msft
-ms.author: jovanpop
+author: danimir
+ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 0344fc834cb1ef29c91bc52239d1df2706d1ca81
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 9eae757642c2a833b60c0c22a8984e83909e772c
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101678"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300816"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>快速入门：创建 Azure SQL 数据库托管实例
 
@@ -33,88 +33,133 @@ ms.locfileid: "71101678"
 
 ## <a name="create-a-managed-instance"></a>创建托管实例
 
-下列步骤展示了如何创建托管实例。
+以下步骤展示了如何创建托管实例：
 
-1. 在 Azure 门户的左侧菜单中选择“Azure SQL”  。 如果 Azure SQL 不在列表中，请选择“所有服务”  ，然后在搜索框中键入“Azure SQL”  。
+1. 在 Azure 门户的左侧菜单上选择“Azure SQL”  。 如果 **Azure SQL** 不在列表中，请选择“所有服务”  ，然后在搜索框中输入“Azure SQL”  。
 2. 选择“+添加”  以打开“选择 SQL 部署选项”  页。 通过在“托管实例”  磁贴上选择“显示详细信息”  ，可以查看有关 Azure SQL 数据库托管实例的其他信息。
-3. 选择“创建”  ：
+3. 选择“创建”  。
 
    ![创建托管实例](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
-4. 根据下表中的信息，在“SQL 托管实例”窗体中填充要求的信息  。
+4. 使用“创建 Azure SQL 数据库托管实例”预配窗体上的选项卡添加必需信息和可选信息。  以下部分介绍这些选项卡。
 
-   | 设置| 建议的值 | Description |
-   | ------ | --------------- | ----------- |
-   | **订阅** | 你的订阅。 | 你有权在其中创建新资源的订阅。 |
-   |**托管实例名称**|任何有效的名称。|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
-   |**托管实例管理员登录名**|任何有效的用户名。|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。 不要使用“serveradmin”，因为这是保留的服务器级角色。|
-   |**密码**|任何有效的密码。|密码必须至少 16 个字符，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
-   |**时区**|托管实例要观察的时区。|有关详细信息，请参阅[时区](sql-database-managed-instance-timezone.md)。|
-   |**排序规则**|要为托管实例使用的排序规则。|如果从 SQL Server 迁移数据库，请使用 `SELECT SERVERPROPERTY(N'Collation')` 检查源排序规则并使用该值。 有关排序规则的信息，请参阅[设置或更改服务器排序规则](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)。|
-   |**位置**|要在其中创建托管实例的位置。|有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。|
-   |**虚拟网络**|选择“创建新的虚拟网络”或有效的虚拟网络和子网  。| 如果网络或子网不可用，则必须先[对其进行修改以满足网络要求](sql-database-managed-instance-configure-vnet-subnet.md)，然后再选择它作为新托管实例的目标。 有关为托管实例配置网络环境所要满足的要求的信息，请参阅[为托管实例配置虚拟网络](sql-database-managed-instance-connectivity-architecture.md)。 |
-   |**启用公共终结点**   |选中此选项可启用公共终结点   |若要通过公共数据终结点访问托管实例，需要选中“启用公共终结点”。 | 
-   |**允许的访问来源**   |选择一个选项： <ul> <li>**Azure 服务**</li> <li>**Internet**</li> <li>**不允许访问**</li></ul>   |在门户体验中可以使用公共终结点配置安全组。 </br> </br> 根据具体的方案选择以下选项之一： </br> <ul> <li>Azure 服务 - 从 Power BI 或其他多租户服务连接时，建议使用此选项。 </li> <li> Internet - 用于测试，可让你快速运转托管实例。 不建议在生产环境中使用。 </li> <li> 不允许访问 - 此选项会创建一个“拒绝”安全规则。 需要修改此规则才能通过公共终结点访问托管实例。 </li> </ul> </br> 有关公共终结点安全性的详细信息，请参阅[通过公共终结点安全使用 Azure SQL 数据库托管实例](sql-database-managed-instance-public-endpoint-securely.md)。|
-   |**连接类型**|选择“代理”或“重定向”连接类型。|有关连接类型的详细信息，请参阅 [Azure SQL 数据库连接策略](sql-database-connectivity-architecture.md#connection-policy)。|
-   |**资源组**|新的或现有的资源组。|如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。|
+### <a name="basics"></a>基础
 
-   ![托管实例窗体](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
+根据下表在“基本信息”选项卡上填充必需信息。  这是预配托管实例所需的最小的一组信息。
 
-5. 若要将托管实例用作实例故障转移组辅助实例，请选择“签出”并指定 DnsAzurePartner 托管实例。 
-6. 选择“定价层”，以设置计算和存储资源的大小并查看定价层选项。  默认值是具有 32 GB 内存和 16 个 vCore 的“常规用途”定价层。
-7. 使用滑块或文本框指定存储量和虚拟核心数。
-8. 完成后，选择“应用”以保存所做的选择。  
-9. 选择“创建”，部署托管实例  。
-10. 选择“通知”图标以查看部署状态。 
+![用于创建托管实例的“基本信息”选项卡](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-basics.png)
 
-    ![托管实例部署进度](./media/sql-database-managed-instance-get-started/deployment-progress.png)
+| 设置| 建议的值 | Description |
+| ------ | --------------- | ----------- |
+| **订阅** | 你的订阅。 | 你有权在其中创建新资源的订阅。 |
+| **资源组** | 新的或现有的资源组。|如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。|
+| **托管实例名称** | 任何有效的名称。|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
+| **区域** |要在其中创建托管实例的区域。|有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。|
+| **托管实例管理员登录名** | 任何有效的用户名。 | 请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。 不要使用“serveradmin”，因为这是保留的服务器级角色。|
+| **密码** | 任何有效的密码。| 密码必须至少 16 个字符，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
 
-11. 选择“正在进行的部署”以打开“托管实例”窗口，进一步监视部署进度  。 
+选择“配置托管实例”，以设置计算和存储资源的大小并查看定价层。  使用滑块或文本框指定存储量和虚拟核心数。 完成后，选择“应用”以保存所做的选择。  
+
+![托管实例窗体](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-configure-performance.png)
+
+若要在创建托管实例之前查看所做的选择，可选择“查看 + 创建”。  也可配置网络选项，方法是选择“下一步:  网络”。
+
+### <a name="networking"></a>网络
+
+根据下表在“网络”选项卡上填充可选信息。  如果省略此信息，门户会应用默认设置。
+
+![用于创建托管实例的“网络”选项卡](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-networking.png)
+
+| 设置| 建议的值 | 说明 |
+| ------ | --------------- | ----------- |
+| **虚拟网络** | 选择“创建新的虚拟网络”或有效的虚拟网络和子网  。| 如果网络或子网不可用，则必须先[对其进行修改以满足网络要求](sql-database-managed-instance-configure-vnet-subnet.md)，然后再选择它作为新托管实例的目标。 有关为托管实例配置网络环境所要满足的要求的信息，请参阅[为托管实例配置虚拟网络](sql-database-managed-instance-connectivity-architecture.md)。 |
+| **连接类型** | 选择“代理”或“重定向”连接类型。|有关连接类型的详细信息，请参阅 [Azure SQL 数据库连接策略](sql-database-connectivity-architecture.md#connection-policy)。|
+| **公共终结点**  | 选择“启用”  。 | 若要通过公共数据终结点访问托管实例，需启用此选项。 | 
+| **允许的访问来源**（如果启用了“公共终结点”  ） | 选择一个选项。   |在门户体验中可以使用公共终结点配置安全组。 </br> </br> 根据具体的方案选择以下选项之一： </br> <ul> <li>**Azure 服务**：从 Power BI 或另一多租户服务进行连接时，建议使用此选项。 </li> <li> **Internet**：用于测试，可让你快速运转托管实例。 建议不要将它用于生产环境。 </li> <li> **不允许访问**：此选项创建一个“拒绝”安全规则。  修改此规则才能通过公共终结点访问托管实例。 </li> </ul> </br> 有关公共终结点安全性的详细信息，请参阅[通过公共终结点安全地使用 Azure SQL 数据库托管实例](sql-database-managed-instance-public-endpoint-securely.md)。|
+
+选择“查看 + 创建”，在创建托管实例之前查看所做的选择。  也可配置更多自定义设置，方法是选择“下一步:  其他设置”。
+
+### <a name="additional-settings"></a>其他设置
+
+根据下表在“其他设置”选项卡上填充可选信息。  如果省略此信息，门户会应用默认设置。
+
+![用于创建托管实例的“其他设置”选项卡](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-additional-settings.png)
+
+| 设置| 建议的值 | 说明 |
+| ------ | --------------- | ----------- |
+| **排序规则** | 选择需要用于托管实例的排序规则。 如果从 SQL Server 迁移数据库，请使用 `SELECT SERVERPROPERTY(N'Collation')` 检查源排序规则并使用该值。| 有关排序规则的信息，请参阅[设置或更改服务器排序规则](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)。|   
+| **时区** | 选择要求托管实例遵循的时区。|有关详细信息，请参阅[时区](sql-database-managed-instance-timezone.md)。|
+| **用作故障转移辅助托管实例** | 请选择“是”。  | 启用此选项即可将托管实例用作故障转移组辅助托管实例。|
+| **主托管实例**（如果“用作故障转移辅助托管实例”设置为“是”）   | 选择一个现有的主托管实例，该实例会加入你要创建的托管实例所在的 DNS 区域。 | 此步骤会启用对故障转移组进行创建后配置的功能。 有关详细信息，请参阅[教程：将 SQL 数据库托管实例添加到故障转移组](sql-database-managed-instance-failover-group-tutorial.md)。|
+
+### <a name="review--create"></a>查看 + 创建
+
+1. 选择“查看 + 创建”选项卡，在创建托管实例之前查看所做的选择。 
+
+   ![用于查看和创建托管实例的选项卡](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-review-create.png)
+
+1. 选择“创建”  ，开始预配托管实例。
 
 > [!IMPORTANT]
-> 子网中第一个实例的部署时间通常远超后续实例的部署时间。 请勿因持续时间超出预期而取消部署操作。
+> 部署托管实例是一项运行时间很长的操作。 通常情况下，子网中第一个实例的部署时间比子网中已经有托管实例时实例的部署时间要长得多。 若要了解平均预配时间，请参阅[托管实例管理操作](sql-database-managed-instance.md#managed-instance-management-operations)。
 
-## <a name="review-resources-and-retrieve-your-fully-qualified-server-name"></a>查看资源并检索你的完全限定的服务器名称
+### <a name="monitor-deployment-progress"></a>监视部署进度
 
-部署成功完成后，请查看创建的资源，并检索完全限定的服务器名称以在后续快速入门中使用。
+1. 选择“通知”图标以查看部署状态。 
 
-1. 打开托管实例的资源组。 查看在[创建托管实例](#create-a-managed-instance)快速入门中为该资源组创建的资源。
+    ![进行托管实例部署时的部署进度](./media/sql-database-managed-instance-get-started/in-progress/mi-create-deployment-in-progress.png)
+
+1. 在通知中选择“正在进行的部署”以打开托管实例窗口，进一步监视部署进度  。 
+
+> [!TIP]
+> 如果关闭了 Web 浏览器或离开了部署进度屏幕，请按以下步骤找到该屏幕：
+> 1. 在 Azure 门户中，打开要向其部署托管实例的资源组（位于“基本信息”选项卡上）。 
+> 2. 选择“部署”。 
+> 3. 选择正在进行的托管实例部署操作。
+
+## <a name="review-resources-and-retrieve-your-host-name"></a>查看资源并检索主机名
+
+在部署成功后，请执行以下操作：
+
+1. 打开托管实例的资源组。 在[创建托管实例](#create-a-managed-instance)快速入门中查看其资源（为你创建）。
 
    ![托管实例资源](./media/sql-database-managed-instance-get-started/resources.png)
 
-2. 选择路由表以查看创建的用户定义的路由 (UDR) 表。
+2. 选择路由表，查看为你创建的用户定义的路由 (UDR)。
 
    ![路由表](./media/sql-database-managed-instance-get-started/route-table.png)
 
-3. 在路由表中，查看用于从托管实例虚拟网络或在其中路由流量的条目。 若要手动创建或配置路由表，必须确保在路由表中创建这些条目。
+3. 在路由表中，查看用于通过托管实例的虚拟网络路由流量的条目。 若要手动创建或配置路由表，请务必在路由表中创建这些条目。
 
    ![本地托管实例子网的条目](./media/sql-database-managed-instance-get-started/udr.png)
 
-4. 返回资源组并选择网络安全组，查看安全规则。
+4. 返回到资源组并选择网络安全组。
 
    ![网络安全组](./media/sql-database-managed-instance-get-started/network-security-group.png)
 
-5. 查看入站和出站安全规则。 如果已经为托管实例配置了公共终结点，请参阅[配置公共终结点](sql-database-managed-instance-public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group)一文了解详细信息。
+5. 查看入站和出站安全规则。 如果已经为托管实例配置了公共终结点，请参阅[配置公共终结点](sql-database-managed-instance-public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group)一文以了解详细信息。
 
    ![安全规则](./media/sql-database-managed-instance-get-started/security-rules.png)
 
-6. 返回资源组并选择你的托管实例。
+6. 返回资源组并选择托管实例。
 
-   ![托管实例](./media/sql-database-managed-instance-get-started/managed-instance.png)
+   ![资源组中的托管实例](./media/sql-database-managed-instance-get-started/managed-instance.png)
 
-7. 在“概述”选项卡上，找到“主机”属性。   复制托管实例的完全限定主机地址，以在下一个快速入门中使用。
+7. 在“概述”选项卡上，找到“主机”属性。   复制托管实例的主机名，该名称可在下一个快速入门中使用。
 
    ![主机名](./media/sql-database-managed-instance-get-started/host-name.png)
 
-   名称类似于 **your_machine_name.a1b2c3d4e5f6.database.windows.net**。
+   主机名也称完全限定的域名 (FQDN)。 它类似于 *your_machine_name.a1b2c3d4e5f6.database.windows.net*。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何连接到托管实例：
-  - 有关应用程序的连接选项概述，请参阅[将应用程序连接到托管实例](sql-database-managed-instance-connect-app.md)。
-  - 有关介绍如何从 Azure 虚拟机连接到托管实例的快速入门，请参阅[配置 Azure 虚拟机连接](sql-database-managed-instance-configure-vm.md)。
-  - 有关介绍如何使用点到站点连接从本地客户端计算机连接到托管实例的快速入门，请参阅[配置点到站点连接](sql-database-managed-instance-configure-p2s.md)。
-- 若要将现有 SQL Server 数据库从本地还原到托管实例： 
-    - 使用 [Azure 数据库迁移服务 (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) 从数据库备份文件还原。 
-    - 使用 [T-SQL RESTORE 命令](sql-database-managed-instance-get-started-restore.md) 从数据库备份文件还原。
-- 有关使用内置故障排除智能对托管实例数据库性能进行的高级监视，请参阅[使用 Azure SQL Analytics 监视 Azure SQL 数据库](../azure-monitor/insights/azure-sql.md)。
+若要了解如何连接到托管实例：
+- 有关应用程序的连接选项概述，请参阅[将应用程序连接到托管实例](sql-database-managed-instance-connect-app.md)。
+- 有关介绍如何从 Azure 虚拟机连接到托管实例的快速入门，请参阅[配置 Azure 虚拟机连接](sql-database-managed-instance-configure-vm.md)。
+- 有关介绍如何使用点到站点连接从本地客户端计算机连接到托管实例的快速入门，请参阅[配置点到站点连接](sql-database-managed-instance-configure-p2s.md)。
+
+若要将现有 SQL Server 数据库从本地还原到托管实例： 
+- 使用[用于迁移的 Azure 数据库迁移服务](../dms/tutorial-sql-server-to-managed-instance.md)从数据库备份文件还原。 
+- 使用 [T-SQL RESTORE 命令](sql-database-managed-instance-get-started-restore.md) 从数据库备份文件还原。
+
+有关使用内置故障排除智能对托管实例数据库性能进行的高级监视，请参阅[使用 Azure SQL Analytics 监视 Azure SQL 数据库](../azure-monitor/insights/azure-sql.md)。
