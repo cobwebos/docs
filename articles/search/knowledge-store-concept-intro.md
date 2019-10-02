@@ -5,16 +5,15 @@ manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: f4308cf0309725fc0ba3b5feb047d04af2ebbe66
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ec0bf6002d8e90b41c2eed3c21f53e38f0fbbe8f
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638186"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265224"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>什么是 Azure 搜索中的知识存储？
 
@@ -26,13 +25,13 @@ ms.locfileid: "69638186"
 
 如果过去使用过认知搜索，你已知道技能集用于通过一系列扩充来迁移文档。 结果可以是 Azure 搜索索引，也可以是知识存储中的投影（此预览版中新增的）。 搜索索引和知识存储这两个输出在物理上彼此不同。 它们共享相同的内容，但以非常不同的方式存储和使用。
 
-物理上，知识存储在 Azure 存储帐户中创建，可以是 Azure 表存储或 Blob 存储，具体取决于配置管道的方式。 任何可以连接到 Azure 存储的工具或进程都可以使用知识存储的内容。
+在物理上，知识存储是一个 Azure 存储帐户，可以作为 Azure 表存储，也可以作为 Blob 存储，或者两者兼而有之，这取决于如何配置管道。 任何可以连接到 Azure 存储的工具或进程都可以使用知识存储的内容。
 
 投影是用于在知识存储中构造数据的机制。 例如，通过投影，可以选择是将输出保存为单个 blob 还是相关表的集合。 查看知识存储内容的一种简单方法是通过 Azure 存储的内置[存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)。
 
 ![“管道中的知识存储”示意图](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "“管道中的知识存储”示意图")
 
-若要使用知识存储，请将 `knowledgeStore` 元素添加到在索引管道中定义步进式操作的技能集。 在执行期间，Azure 搜索在 Azure 存储帐户中创建空间，并使用管道创建的定义和内容来填充空间。
+若要使用知识存储，请将 `knowledgeStore` 元素添加到在索引管道中定义步进式操作的技能集。 在执行期间，Azure 搜索会在 Azure 存储帐户中创建空间，并使用在管道中创建的定义来投影扩充文档。
 
 ## <a name="benefits-of-knowledge-store"></a>知识存储的优势
 
@@ -105,6 +104,13 @@ ms.locfileid: "69638186"
 
             ], 
             "objects": [ 
+               
+            ]      
+        },
+        { 
+            "tables": [ 
+            ], 
+            "objects": [ 
                 { 
                 "storageContainer": "Reviews", 
                 "format": "json", 
@@ -112,7 +118,7 @@ ms.locfileid: "69638186"
                 "key": "/document/Review/Id" 
                 } 
             ]      
-        }    
+        }        
     ]     
     } 
 }
@@ -132,7 +138,7 @@ ms.locfileid: "69638186"
 
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
 
-[Azure 表存储](search-howto-indexing-azure-tables.md)可用于知识存储中的出站数据，但无法用作传输到基于 AI 的索引管道的入站数据的资源。
+* [Azure 表存储](search-howto-indexing-azure-tables.md)
 
 ### <a name="2---azure-search-service"></a>2 - Azure 搜索服务
 
@@ -143,17 +149,17 @@ Azure 搜索提供了索引器功能，索引器用于端到端驱动整个过�
 | Object | REST API | 说明 |
 |--------|----------|-------------|
 | 数据源 | [创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | 标识外部 Azure 数据源的资源，数据源提供用于创建扩充文档的源数据。  |
-| 技能集 | [创建技能集 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 在编制索引期间协调扩充管道中所用[内置技能](cognitive-search-predefined-skills.md)和[自定义认知技能](cognitive-search-custom-skill-interface.md)的资源。 |
+| 技能集 | [创建技能组 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 在编制索引期间协调扩充管道中所用[内置技能](cognitive-search-predefined-skills.md)和[自定义认知技能](cognitive-search-custom-skill-interface.md)的资源。 |
 | index | [创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)  | 表示 Azure 搜索索引的架构。 索引中的字段映射到源数据中的字段，或扩充阶段生成的字段（例如，实体识别创建的组织名称的字段）。 |
 | 索引器 | [创建索引器 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 定义索引编制期间使用的组件（包括数据源、技能、从源和中间数据结构到目标索引的字段关联，以及索引本身）的资源。 运行索引器会触发数据引入和扩充。 输出是基于索引架构的搜索索引，其中填充有源数据，并通过技能集进行了扩充。  |
 
 ### <a name="3---cognitive-services"></a>3 - 认知服务
 
-技能集中指定的扩充基于认知服务中的计算机视觉和语言功能。 在编制索引期间，通过技能集利用认知服务功能。 技能集是各种技能的组合，技能限于特定计算机视觉和语言功能范围内。 若要集成认知服务，请[将认知服务资源附加](cognitive-search-attach-cognitive-services.md)到技能集。
+技能组中指定的扩充可以是自定义的，也可以基于认知服务中的计算机视觉和语言功能。 在编制索引期间，通过技能集利用认知服务功能。 技能集是各种技能的组合，技能限于特定计算机视觉和语言功能范围内。 若要集成认知服务，请[将认知服务资源附加](cognitive-search-attach-cognitive-services.md)到技能集。
 
 ### <a name="4---storage-account"></a>4 - 存储帐户
 
-在 Azure 存储帐户下，Azure 搜索创建 Blob 容器或表，具体视你如何配置技能集而定。 如果数据源自 Azure Blob 存储或表存储，可能已经完成创建存储帐户。 否则，需要创建 Azure 存储帐户。 Azure 存储中的表和对象包含基于 AI 的索引管道创建的扩充文档。
+在 Azure 存储帐户下，Azure 搜索会创建 Blob 容器和/或表，具体取决于在技能组中配置投影的方式。 如果数据来自 Azure Blob 或表存储，则你已经设置好并且可以重复使用存储帐户。 否则，需要创建 Azure 存储帐户。 Azure 存储中的表和对象包含基于 AI 的索引管道创建的扩充文档。
 
 存储帐户是在技能集中进行指定。 在 `api-version=2019-05-06-Preview` 中，技能集定义包括知识存储定义，这样你就能提供帐户信息了。
 
@@ -179,15 +185,13 @@ Azure 搜索提供了索引器功能，索引器用于端到端驱动整个过�
 
 + Blob 存储为每个文档都创建一个全包型 JSON 表示形式。 可以在一个技能集中同时使用两个存储选项，从而获取一整套表达式。
 
-+ Azure 搜索将内容暂留在索引中。 如果方案与搜索无关（例如，如果目标是在另一个工具中分析），可以删除管道创建的索引。 不过，也可以保留索引，并将内置工具（如[搜索资源管理器](search-explorer.md)）用作与内容交互的第三个媒体（位于存储资源管理器和分析应用后面）。
-
-除了包含文档内容外，扩充文档还包含生成扩充的技能集版本的元数据。  
++ Azure 搜索将内容暂留在索引中。 如果方案与搜索无关（例如，如果目标是在另一个工具中分析），可以删除管道创建的索引。 不过，也可以保留索引，并将内置工具（如[搜索资源管理器](search-explorer.md)）用作与内容交互的第三个媒体（位于存储资源管理器和分析应用后面）。  
 
 ## <a name="inside-a-knowledge-store"></a>知识存储内部
 
-知识存储由注释缓存和投影组成。 服务在内部使用缓存  来缓存技能和跟踪更改结果。 投影  定义与预期用途匹配的扩充的架构和结构。 每个知识存储只能有一个缓存，但可以有多个投影。 
+ 投影  定义与预期用途匹配的扩充的架构和结构。 如果你的应用程序使用不同格式和形状的数据，则可以定义多个投影。 
 
-缓存始终是 Blob 容器，但投影可以表达为表或对象：
+投影可以表述为对象或表：
 
 + 作为对象，投影映射到 Blob 存储，在存储内投影保存到容器中，其中包含数据科学管道等方案的对象或分层表示形式（采用 JSON 格式）。
 

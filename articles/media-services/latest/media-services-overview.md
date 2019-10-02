@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/13/2019
+ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: b07675e25c0380921e24059ff0107fcfe1bb3873
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: a752d7759386828e916f68e5903115220812f3e0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602098"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123044"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure 媒体服务 v3 概述
 
@@ -69,6 +69,10 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 * [分析视频 - .NET](analyze-videos-tutorial-with-api.md)
 * [AES-128 动态加密 - .NET](protect-with-aes128.md)
     
+### <a name="samples"></a>示例
+
+使用[此示例浏览器](https://docs.microsoft.com/samples/browse/?products=azure-media-services)浏览 Azure 媒体服务代码示例。
+
 ### <a name="how-to-guides"></a>操作指南
 
 文章中包含的示例演示如何完成某项任务。 在此部分可以找到许多示例，下面只是其中的一些示例：

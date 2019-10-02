@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b0a5b110951d7b13110fab935d5ca1333f7f8c1e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bdcf8a0d63b880075cd22c73305afa8cf09a2e3b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564216"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261972"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>教程：识别照片中的 Azure 服务徽标
 
@@ -57,7 +57,7 @@ ms.locfileid: "68564216"
 
 应用配置为使用特定标记字符串。 你会在 Source\VisualProvision\Services\Recognition\RecognitionService.cs  文件中找到定义：
 
-[!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?range=18-33)]
+[!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?name=snippet_constants)]
 
 标记图像之后，转到右侧以标记下一个图像。 完成后，关闭标记窗口。
 
@@ -73,19 +73,19 @@ ms.locfileid: "68564216"
 
 ![自定义视觉网站，显示了“预测 API”窗口，其中显示 URL 地址和 API 密钥](media/azure-logo-tutorial/cusvis-endpoint.png)
 
-将图像文件 URL 和 Prediction-Key  值复制到 Source\VisualProvision\AppSettings.cs  文件中的相应字段：
+将终结点 URL 和 Prediction-Key  值复制到 Source\VisualProvision\AppSettings.cs  文件中的相应字段：
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=22-26)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_cusvis_keys)]
 
 ## <a name="examine-custom-vision-usage"></a>了解自定义视觉的用法
 
 打开 Source/VisualProvision/Services/Recognition/CustomVisionService.cs  文件，以查看应用如何使用自定义视觉密钥和终结点 URL。 **PredictImageContentsAsync** 方法采用图像文件的字节流以及取消标记（用于异步任务管理），调用自定义视觉预测 API，然后返回预测结果。 
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?range=12-28)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?name=snippet_prediction)]
 
 此结果采用 **PredictionResult** 实例的格式，该实例本身包含**预测**实例的列表。 **预测**包含检测到的标记及其边框在图像中的位置。
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?range=3-12)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?name=snippet_prediction_class)]
 
 若要了解有关应用如何处理此数据的详细信息，请从 GetResourcesAsync  方法开始。 此方法在 Source/VisualProvision/Services/Recognition/RecognitionService.cs  文件中定义。  
 
@@ -99,7 +99,7 @@ ms.locfileid: "68564216"
 
 接下来，打开 Source\VisualProvision\AppSettings.cs  文件，并使用正确的值填充 `ComputerVisionEndpoint` 和 `ComputerVisionKey` 变量。
 
-[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
+[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
@@ -133,7 +133,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
 记下 `clientId` 和 `tenantId` 值。 将其添加到 *Source\VisualProvision\AppSettings.cs* 文件中的相应字段。
 
-[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
+[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
 ## <a name="run-the-app"></a>运行应用
 

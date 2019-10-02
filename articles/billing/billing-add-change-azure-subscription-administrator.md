@@ -1,47 +1,52 @@
 ---
-title: 添加或更改 Azure 订阅管理员 | Microsoft Docs
+title: 添加或更改 Azure 订阅管理员
 description: 介绍了如何使用基于角色的访问控制 (RBAC) 来添加或更改 Azure 订阅管理员。
-services: ''
-documentationcenter: ''
 author: genlin
-manager: adpick
-editor: ''
+manager: dcscontentpm
 tags: billing
-ms.assetid: 13a72d76-e043-4212-bcac-a35f4a27ee26
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 09/24/2019
 ms.author: banders
-ms.openlocfilehash: 000315a2d751a05d3e401ee1bb9f593c6e321194
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 2054fbb7d0a9f450ad487fc0f03d0af920c6cc4b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "64922901"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260920"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>添加或更改 Azure 订阅管理员
 
-若要管理对 Azure 资源的访问权限，必须具有相应的管理员角色。 Azure 有一个称为基于角色的访问控制 (RBAC) 的授权系统，其中包含了你可以选择的多个内置角色。 可以在不同的作用域（例如，管理组、订阅或资源组）分配这些角色。
 
-Microsoft 建议你使用 RBAC 来管理对资源的访问权限。 但是，如果仍使用经典部署模型，并使用 [Azure 服务管理 PowerShell 模块](https://docs.microsoft.com/powershell/module/servicemanagement/azure)管理经典资源，则需要使用经典管理员。 
+若要管理对 Azure 资源的访问权限，必须具有相应的管理员角色。 Azure 有一个称为[基于角色的访问控制](../role-based-access-control/overview.md) (RBAC) 的授权系统，其中包含了你可以从中选择的多个内置角色。 可以在不同的作用域（例如，管理组、订阅或资源组）分配这些角色。 默认情况下，创建新的 Azure 订阅的人员可以向其他用户分配对订阅的管理访问权限。
+
+本文介绍了如何在订阅作用域使用 RBAC 为用户添加或更改管理员角色。
+
+Microsoft 建议你使用 RBAC 来管理对资源的访问权限。 但是，如果仍使用经典部署模型，并使用 [Azure 服务管理 PowerShell 模块](https://docs.microsoft.com/powershell/module/servicemanagement/azure)管理经典资源，则需要使用经典管理员。
 
 > [!TIP]
 > 如果只使用 Azure 门户管理经典资源，则无需使用经典管理员。
 
 有关详细信息，请参阅 [Azure 资源管理器与经典部署和](../azure-resource-manager/resource-manager-deployment-model.md)和 [Azure 经典订阅管理员](../role-based-access-control/classic-administrators.md)。
 
-本文介绍了如何在订阅作用域使用 RBAC 为用户添加或更改管理员角色。
-
 <a name="add-an-admin-for-a-subscription"></a>
 
-## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>将用户分配为订阅的管理员
+## <a name="assign-a-subscription-administrator"></a>分配订阅管理员
 
-要使用户成为 Azure 订阅的管理员，请在订阅作用域为其分配[所有者](../role-based-access-control/built-in-roles.md#owner)角色（一个 RBAC 角色）。 “所有者”角色会为该用户提供订阅中所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。 这些步骤与任何其他角色分配相同。
+要使用户成为 Azure 订阅的管理员，现有管理员应在订阅范围内为其分配[所有者](../role-based-access-control/built-in-roles.md#owner)角色（一个 RBAC 角色）。 “所有者”角色会为该用户提供订阅中所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。 这些步骤与任何其他角色分配相同。
 
-1. 在 Azure 门户中，打开 [订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
+如果不确定谁是订阅的帐户管理员，可使用以下步骤查明。
+
+1. 打开 [Azure 门户中的“订阅”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
+1. 选择要检查的订阅，并关注“设置”  下的信息。
+1. 选择“属性”。  订阅的帐户管理员会显示在“帐户管理员”框中。 
+
+### <a name="to-assign-a-user-as-an-administrator"></a>以管理员身份分配用户
+
+1. 以订阅所有者身份登录到 Azure 门户，然后打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
 
 1. 单击要授予访问权限的订阅。
 

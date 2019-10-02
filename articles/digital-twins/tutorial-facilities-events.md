@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: 30d43831b73edc52b461512faecac369f6bf00b0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: fe2eb357ef89d70512e85db24d22f95cac1bd0ac
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827815"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300077"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>教程：使用逻辑应用从 Azure 数字孪生空间接收通知
 
@@ -39,6 +39,9 @@ ms.locfileid: "68827815"
 - 在用于运行示例的开发计算机上安装的 [.NET Core SDK 2.1.403 或更高版本](https://www.microsoft.com/net/download)。 请运行 `dotnet --version` 以验证是否安装了正确的版本。
 - 用于发送通知电子邮件的 Office 365 帐户。
 
+> [!TIP]
+> 如果要预配新实例，请使用唯一的数字孪生实例名称。
+
 ## <a name="integrate-events-with-event-grid"></a>将事件与事件网格集成
 
 在此部分，请设置一个[事件网格](../event-grid/overview.md)，以便从 Azure 数字孪生实例收集事件，然后将事件重定向到[事件处理程序](../event-grid/event-handlers.md)，例如逻辑应用。
@@ -55,13 +58,13 @@ ms.locfileid: "68827815"
 
 1. 为事件网格主题输入一个“名称”，然后选择“订阅”。   选择用于数字孪生实例的或者为其创建的“资源组”  ，然后选择“位置”。  选择“创建”  。 
 
-    ![创建事件网格主题](./media/tutorial-facilities-events/create-event-grid-topic.png)
+    [![创建事件网格主题](./media/tutorial-facilities-events/create-event-grid-topic.png)](./media/tutorial-facilities-events/create-event-grid-topic.png#lightbox)
 
 1. 从资源组浏览到事件网格主题，选择“概览”，将“主题终结点”的值复制到某个临时文件。   下一部分将需要此 URL。 
 
 1. 选择“访问密钥”，  将 **YOUR_KEY_1** 和 **YOUR_KEY_2** 复制到某个临时文件。 在下一部分，将需要这些值来创建终结点。
 
-    ![事件网格密钥](./media/tutorial-facilities-events/event-grid-keys.png)
+    [![事件网格密钥](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
 ### <a name="create-an-endpoint-for-the-event-grid-topic"></a>为事件网格主题创建终结点
 
@@ -98,7 +101,7 @@ ms.locfileid: "68827815"
 
    此命令为事件网格创建终结点。 
 
-   ![事件网格的终结点](./media/tutorial-facilities-events/dotnet-create-endpoints.png)
+   [![事件网格的终结点](./media/tutorial-facilities-events/dotnet-create-endpoints.png)](./media/tutorial-facilities-events/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="notify-events-with-logic-apps"></a>使用逻辑应用发出事件通知
 
@@ -110,7 +113,7 @@ ms.locfileid: "68827815"
 
 1. 为逻辑应用资源输入一个**名称**，然后选择你的**订阅**、**资源组**和**位置**。 选择“创建”  。
 
-    ![创建逻辑应用资源](./media/tutorial-facilities-events/create-logic-app.png)
+    [![创建逻辑应用资源](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
 
 1. 在逻辑应用资源部署后将其打开，然后打开“逻辑应用设计器”窗格。  
 
@@ -124,7 +127,7 @@ ms.locfileid: "68827815"
 
    c. 从**资源名称**对应的下拉框中选择事件网格资源。
 
-   ![“逻辑应用设计器”窗格](./media/tutorial-facilities-events/logic-app-resource-event.png)
+   [![“逻辑应用设计器”窗格](./media/tutorial-facilities-events/logic-app-resource-event.png)](./media/tutorial-facilities-events/logic-app-resource-event.png#lightbox)
 
 1. 选择“新步骤”  按钮。
 
@@ -156,7 +159,7 @@ ms.locfileid: "68827815"
 
     此有效负载包含虚构值。 逻辑应用使用此示例有效负载生成一个*架构*。
 
-    ![适用于事件网格的逻辑应用“分析 JSON”窗口](./media/tutorial-facilities-events/logic-app-parse-json.png)
+    [![适用于事件网格的逻辑应用“分析 JSON”窗口](./media/tutorial-facilities-events/logic-app-parse-json.png)](./media/tutorial-facilities-events/logic-app-parse-json.png#lightbox)
 
 1. 选择“新步骤”  按钮。
 
@@ -168,7 +171,7 @@ ms.locfileid: "68827815"
 
    c. 在第二个“选择值”文本框中输入“`UdfCustom`”。 
 
-   ![所选条件](./media/tutorial-facilities-events/logic-app-condition.png)
+   [![所选条件](./media/tutorial-facilities-events/logic-app-condition.png)](./media/tutorial-facilities-events/logic-app-condition.png#lightbox)
 
 1. 在 **If true** 窗口中，执行以下操作：
 
@@ -180,7 +183,7 @@ ms.locfileid: "68827815"
 
    d. 在同一窗口中的“正文”  下，输入与此类似的文本：**检测到房间内空气质量差，需要调整温度**。 请根据需要使用“动态内容”列表中的元素进行详细阐述。 
 
-   ![逻辑应用的“发送电子邮件”选项](./media/tutorial-facilities-events/logic-app-send-email.png)
+   [![逻辑应用的“发送电子邮件”选项](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
 
 1. 选择“逻辑应用设计器”窗格顶部的“保存”按钮   。
 
@@ -188,7 +191,7 @@ ms.locfileid: "68827815"
 
 数分钟后，就会开始从此逻辑应用资源中获取电子邮件通知。 
 
-   ![电子邮件通知](./media/tutorial-facilities-events/logic-app-notification.png)
+   [![电子邮件通知](./media/tutorial-facilities-events/logic-app-notification.png)](./media/tutorial-facilities-events/logic-app-notification.png#lightbox)
 
 若要停止接收这些电子邮件，请转到门户中的逻辑应用资源，然后选择“概览”窗格。  选择“禁用”。 
 

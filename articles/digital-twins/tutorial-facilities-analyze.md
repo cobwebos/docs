@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: 0244d6ac51b7cad6b74139c39914223928e2b627
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: db62d2209207a807570e971ef4af5f9b10b06cb8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827834"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300066"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>教程：使用时序见解直观显示和分析 Azure 数字孪生空间中的事件
 
@@ -38,6 +38,9 @@ ms.locfileid: "68827834"
 - 在工作计算机上下载并解压缩的[数字孪生 C# 示例](https://github.com/Azure-Samples/digital-twins-samples-csharp)。
 - 在用于运行示例的开发计算机上安装的 [.NET Core SDK 2.1.403 或更高版本](https://www.microsoft.com/net/download)。 请运行 `dotnet --version` 以验证是否安装了正确的版本。
 
+> [!TIP]
+> 如果要预配新实例，请使用唯一的数字孪生实例名称。
+
 ## <a name="stream-data-by-using-event-hubs"></a>使用事件中心对数据进行流式传输
 
 可以使用[事件中心](../event-hubs/event-hubs-about.md)服务创建流式传输数据所需的管道。 本部分介绍如何将事件中心创建为 Azure 数字孪生和时序见解实例之间的连接器。
@@ -54,10 +57,10 @@ ms.locfileid: "68827834"
 
 1. 在事件中心命名空间部署中，选择“概述”  窗格，然后选择“转到资源”  。
 
-    ![部署后的事件中心命名空间](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
+    [![部署后的事件中心命名空间](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
 
 1. 在事件中心命名空间的“概览”窗格中，选择顶部的“事件中心”按钮   。
-    ![“事件中心”按钮](./media/tutorial-facilities-analyze/create-event-hub.png)
+    [![“事件中心”按钮](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
 
 1. 为事件中心输入一个“名称”，然后选择“创建”   。
 
@@ -65,13 +68,13 @@ ms.locfileid: "68827834"
 
 1. 选择顶部的“使用者组”按钮，为使用者组输入一个名称，例如 **tsievents**。  选择“创建”  。
 
-    ![事件中心使用者组](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)
+    [![事件中心使用者组](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
    使用者组在创建以后，会显示在事件中心的“概览”窗格底部的列表中。 
 
 1. 打开事件中心的“共享访问策略”窗格，然后选择“添加”按钮。   输入 **ManageSend** 作为策略名称，确保所有复选框都已选中，然后选择“创建”。 
 
-    ![事件中心连接字符串](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)
+    [![事件中心连接字符串](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
 1. 打开已创建的 ManageSend 策略，将“连接字符串--主键”和“连接字符串--辅助键”的值复制到一个临时文件中。   在下一部分，将需要这些值来创建事件中心的终结点。
 
@@ -124,21 +127,21 @@ ms.locfileid: "68827834"
 
    它为事件中心创建两个终结点。
 
-   ![事件中心的终结点](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)
+   [![事件中心的终结点](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>使用时序见解进行分析
 
 1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“创建资源”  。 
 
-1. 搜索并选择新的“时序见解”资源。  选择“创建”  。
+1. 搜索并选择**时序见解**正式版 (GA) 资源。 选择“创建”  。
 
 1. 为时序见解实例输入一个**名称**，然后选择你的**订阅**。 选择用于数字孪生实例的“资源组”  ，然后选择“位置”。  在完成时选择“下一步:  事件源”按钮或“事件源”  选项卡。
 
-    ![用于创建时序见解实例的选择](./media/tutorial-facilities-analyze/create-tsi.png)
+    [![用于创建时序见解实例的选择](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
 1. 在“事件源”  选项卡中，输入**名称**，选择“事件中心”  作为**源类型**，并确保正确选择其他值。 选择 **ManageSend** 作为“事件中心访问策略名称”，  ，然后选择在上一部分创建的使用者组，作为“事件中心使用者组”。  选择“查看 + 创建”  。
 
-    ![用于创建事件源的选择](./media/tutorial-facilities-analyze/tsi-event-source.png)
+    [![用于创建事件源的选择](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
 1. 在“查看 + 创建”  窗格中，查看所输入的信息，然后选择“创建”  。
 
@@ -150,13 +153,13 @@ ms.locfileid: "68827834"
 
 1. 生成一些模拟的事件以后，请返回到时序见解资源管理器，选择顶部的刷新按钮。 此时会看到系统针对模拟的传感器数据生成分析图表。 
 
-    ![时序见解资源管理器中的图表](./media/tutorial-facilities-analyze/tsi-explorer.png)
+    [![时序见解资源管理器中的图表](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
 1. 然后，可以在时序见解资源管理器中针对来自房间、传感器和其他资源的不同事件和数据生成图表和热度地图。 在左侧使用“度量值”和“拆分方式”下拉框创建自己的可视化效果。   
 
    例如，选择“事件”作为“度量值”，选择“DigitalTwins-SensorHardwareId”作为“拆分方式”，以便为每个传感器生成热度地图。     热度地图将类似于下图：
 
-   ![时序见解资源管理器中的热度地图](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)
+   [![时序见解资源管理器中的热度地图](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
 ## <a name="clean-up-resources"></a>清理资源
 

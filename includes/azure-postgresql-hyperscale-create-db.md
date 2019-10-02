@@ -5,15 +5,15 @@ author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: include
-ms.date: 05/14/2019
+ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: c07e352288d7dc1d0bf198fd74c8baaded3a2d23
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fadbcf04f1cd474cf2d23963e88016d240272263
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173193"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71279881"
 ---
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -38,27 +38,20 @@ ms.locfileid: "67173193"
    > 登录到服务器及其数据库时需要使用在此处指定的服务器管理员密码。 请牢记或记录此信息，以后会使用到它。
 
 5. 单击“配置服务器组”  。 保留该部分的设置不变，单击“保存”  。
-6. 单击“查看 + 创建”，然后单击“创建”，预配服务器   。 预配需要数分钟。
-7. 页面会重定向，以监视部署。 当实时状态从“部署正在进行”变为“部署已完成”时，单击页面左侧的“输出”菜单项    。
-8. 输出页将包含协调器主机名，主机名旁边有一个按钮，用于将值复制到剪贴板。 记录此信息以供将来使用。
+6. 单击屏幕底部的“下一步:  网络 >”。
 
-## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则
-
-Azure Database for PostgreSQL – Hyperscale (Citus)（预览版）服务在服务器级别使用防火墙。 默认情况下，防火墙会阻止所有外部应用程序和工具连接到内部的协调器节点和任何数据库。 我们必须添加一个规则，针对特定的 IP 地址范围打开防火墙。
-
-1. 从你之前复制协调器节点主机名的“输出”部分，单击“概述”菜单项   。
-
-2. 找到你的部署的服务器组的名称并单击它。 （服务器组名称将没有  后缀。 例如，名称以“-c”、“-w0”或“-w1”结尾的项不是服务器组。）
-
-3. 在左侧菜单中的“安全性”下方单击“防火墙”   。
-
-4. 单击“+ 针对当前客户端 IP 地址添加防火墙规则”  链接。
-
-5. 最后，单击“保存”按钮  。
+7. 在“网络”  选项卡中，单击“公共终结点”  单选按钮。
+   ![已选择公共终结点](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
+8. 单击链接“+ 添加当前客户端 IP 地址”  。
+   ![已添加客户端 IP](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
 
    > [!NOTE]
    > Azure PostgreSQL 服务器通过端口 5432 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 5432 的出站流量。 若是如此，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门启用了端口 5432。
    >
+
+9. 单击“查看 + 创建”，然后单击“创建”，预配服务器   。 预配需要数分钟。
+10. 页面会重定向，以监视部署。 当实时状态从“部署正在进行”变为“部署已完成”时，单击页面左侧的“输出”菜单项    。
+11. 输出页将包含协调器主机名，主机名旁边有一个按钮，用于将值复制到剪贴板。 记录此信息以供将来使用。
 
 ## <a name="connect-to-the-database-using-psql"></a>使用 psql 连接到数据库
 

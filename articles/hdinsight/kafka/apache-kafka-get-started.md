@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 门户设置 Apache Kafka on HDInsight - 快速入门
 description: 在此快速入门中，了解如何在 Azure HDInsight 上使用 Azure 门户创建 Apache Kafka 群集。 还可以了解 Kafka 主题、订阅服务器和使用者。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b66306de6b2afa1e39a91ba3b3981aec4b440e1a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960264"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123584"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Kafka 群集
 
@@ -38,8 +38,8 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 在左侧菜单中，导航到“+ 创建资源” > “Analytics” > “HDInsight”    。
-   
-    ![创建 HDInsight 群集](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+
+    ![Azure 门户创建资源 HDInsight](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. 在“基本信息”中，输入或选择以下信息  ：
 
@@ -47,9 +47,9 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
     | --- | --- |
     | 群集名称 | HDInsight Spark 群集的唯一名称。 |
     | 订阅 | 选择订阅。 |
-    
+
    选择“群集类型”，以显示“群集配置”   。
-   
+
    ![基于 HDInsight 基本配置的 Apache Kafka 群集](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. 从“群集配置”中选择以下值  ：
@@ -61,7 +61,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
     选择“选择”以保存群集类型设置，然后返回到“基本信息”   。
 
-    ![选择群集类型](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
+    ![HDInsight apache kafka 群集类型](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. 在“基本信息”中，输入或选择以下信息  ：
 
@@ -77,7 +77,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
     为实现数据的高可用性，请选择包含三个容错域的区域（位置）  。 有关区域中容错域数的信息，请参阅 [Linux 虚拟机的可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文档。
 
-   ![选择订阅](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
+   ![Azure 门户创建群集基本信息](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
 
     选择“下一步”，完成基本配置。 
 
@@ -105,7 +105,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 11. 在“摘要”  中，查看群集的配置。 使用“编辑”  链接更改不正确的设置。 最后，选择“创建”  以创建群集。
 
-    ![群集配置摘要](./media/apache-kafka-get-started/kafka-configuration-summary.png)
+    ![kafka 群集配置摘要](./media/apache-kafka-get-started/kafka-configuration-summary.png)
 
     创建群集可能需要 20 分钟。
 

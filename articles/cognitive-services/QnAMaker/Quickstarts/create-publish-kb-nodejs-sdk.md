@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/07/2019
+ms.date: 09/21/2019
 ms.author: diberry
-ms.openlocfilehash: dcbbaa2f4c6ebe709c879909f873b212f238ff2a
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 6759b8fdf6e68d4f0030fc4eda5eee5d1ce608b1
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375859"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203222"
 ---
 # <a name="quickstart-qna-maker-client-library-for-nodejs"></a>快速入门：适用于 Node.js 的 QnA Maker 客户端库
 
@@ -122,12 +122,15 @@ QnA Maker 客户端是 [QnAMakerClient](https://docs.microsoft.com/javascript/ap
 
 [!code-javascript[Create a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=createkb&highlight=15)]
 
+请确保包括上述代码中引用的 [`wait_for_operation`](#get-status-of-an-operation) 函数，以便成功创建知识库。 
 
 ## <a name="update-a-knowledge-base"></a>更新知识库
 
 可以更新知识库，方法是：将知识库 ID 和包含 [add](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#add)、[update](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#update) 和 [delete](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#deleteproperty) DTO 对象的 [UpdateKbOperationDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest) 传递给 [update](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#update-string--updatekboperationdto--msrest-requestoptionsbase-) 方法。 使用 [Operation.getDetail](#get-status-of-an-operation) 方法来确定更新是否成功。
 
 [!code-javascript[Update a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=updatekb&highlight=19)]
+
+请确保包括上述代码中引用的 [`wait_for_operation`](#get-status-of-an-operation) 函数，以便成功更新知识库。 
 
 ## <a name="publish-a-knowledge-base"></a>发布知识库
 
@@ -153,6 +156,9 @@ QnA Maker 客户端是 [QnAMakerClient](https://docs.microsoft.com/javascript/ap
 
 从应用程序目录使用 `node index.js` 命令运行应用程序。
 
+
+本文中的所有代码片段均[可用](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)，并且可以作为单个文件运行。
+
 ```console
 node index.js
 ```
@@ -172,4 +178,3 @@ node index.js
 * [什么是 QnA Maker API？](../Overview/overview.md)
 * [编辑知识库](../how-to/edit-knowledge-base.md)
 * [获取使用情况分析](../how-to/get-analytics-knowledge-base.md)
-* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js) 上找到此示例的源代码。

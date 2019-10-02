@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 4a1adf1be8798f4bb21b89ff0654287a2958146e
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 4781126bc4fcfb6391db42a75553a13e0e4cc4f9
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105265"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155151"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
@@ -24,6 +24,8 @@ ms.locfileid: "71105265"
 > 如果不想将产品/服务发布到 Azure 市场，可使用 Azure 资源管理器模板手动载入客户。 有关详细信息，请参阅[将客户载入到 Azure 委派资源管理](onboard-customer.md)。
 
 与将其他任何类型的产品/服务发布到 Azure 市场相比，发布托管服务产品的过程很类似。 要了解此过程，请参阅 [Azure 市场和 AppSource 发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)和[管理 Azure 和 AppSource 市场产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers)。 还应查看[商业市场认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies)，特别是[托管服务](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)部分。
+
+客户添加你的产品/服务后，他们将能够委托一个或多个特定订阅或资源组，然后将[加入这些订阅或资源组以进行 Azure 委托资源管理](#the-customer-onboarding-process)。 请注意，在加入订阅（或订阅中的资源组）之前，必须通过手动注册 **Microsoft.ManagedServices** 资源提供程序来对订阅进行加入授权。
 
 > [!IMPORTANT]
 > 托管服务产品中的每个计划都有一个“清单详细信息”部分，你在此处定义租户中将有权访问委派资源组和/或购买该计划的客户的订阅的 Azure Active Directory (Azure AD) 实体  。 请注意，此处包括的任何组（或用户/服务主体）将对购买此计划的每位客户具有相同的权限。 要分配不同的组来应对每位客户，需要发布单独的专门针对每位用户的计划。

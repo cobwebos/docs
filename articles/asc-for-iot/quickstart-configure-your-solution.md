@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 15c8aabbcb19d009bb202d111dc7f80da4cebff1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a546d153c6fe4f14ccc8c21308bd4a33385870c3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597027"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299686"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>快速入门：配置 IoT 解决方案
 
@@ -34,9 +34,9 @@ ms.locfileid: "68597027"
 
 在 IoT 中心启用后，适用于 IoT 的 Azure 安全中心会自动识别也连接到 IoT 中心并与 IoT 解决方案相关的其他 Azure 服务。
 
-除了自动关系检测以外，还可以选择要将其他哪些 Azure 资源组标记为 IoT 解决方案的一部分。
+除了自动关系检测以外，还可以选择要将其他哪些 Azure 资源组标记为 IoT 解决方案的一部分。 
 
-做出选择后，可以添加整个订阅、资源组或单个资源。
+做出选择后，可以添加整个订阅、资源组或单个资源。 
 
 定义所有资源关系后，适用于 IoT 的 Azure 安全中心将利用 Azure 安全中心来提供安全建议，并针对这些资源发出警报。
 
@@ -45,9 +45,9 @@ ms.locfileid: "68597027"
 若要将新资源添加到 IoT 解决方案，请执行以下操作： 
 
 1. 在 Azure 门户中打开你的 **IoT 中心**。 
-2. 在左侧菜单中，选择并打开“安全性”下的“资源”。   
-3. 选择“编辑”  并选择属于 IoT 解决方案的资源组。
-5. 单击“添加”  。 
+1. 从左侧菜单的“安全性”  下选择并打开“资源”  。 
+1. 选择“编辑”  并选择属于 IoT 解决方案的资源组。
+1. 单击“添加”  。 
 
 祝贺你！ 现已将新资源组添加到 IoT 解决方案。
 

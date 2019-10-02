@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装, 人体, 跟踪
-ms.openlocfilehash: e08141a2c2717dcea95b0869ee0f48b75a8069be
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 1308f7e4d4be9c57b8ed47a88294da9fe60a2e3c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233054"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172621"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>下载 Azure Kinect 人体跟踪 SDK
 
-本文档提供各版本 Azure Kinect 正文跟踪 SDK 的安装链接。 
+本文档提供各版本 Azure Kinect 正文跟踪 SDK 的安装链接。
 
 ## <a name="azure-kinect-body-tracking-sdk-contents"></a>Azure Kinect 人体跟踪 SDK 的内容
 
@@ -28,6 +28,7 @@ ms.locfileid: "70233054"
 
 版本       | 下载
 --------------|----------
+0.9.3 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100307) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.3)
 0.9.2 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100128) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.2)
 0.9.1 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=100063) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.1)
 0.9.0 | [msi](https://www.microsoft.com/en-us/download/details.aspx?id=58402) [nuget](https://www.nuget.org/packages/Microsoft.Azure.Kinect.BodyTracking/0.9.0)
@@ -51,6 +52,13 @@ ms.locfileid: "70233054"
 > 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect Body Tracking SDK 0.9.2”。 你将要在此路径中查找文章中参考的示例。
 
 ## <a name="change-log"></a>更改日志
+
+### <a name="v093"></a>v0.9.3
+* [功能] 发布新的 DNN 模型 dnn_model_2_0.onnx，该模型大大提高了人体跟踪的可靠性。
+* [功能] 默认情况下禁用时间平滑。 跟踪的关节会响应更迅速。
+* [功能] 提高了人体索引映射的准确性。
+* [Bug 修复] 修复了传感器方向设置无效的 bug。
+* [Bug 修复] 将 body_index_map 类型从 K4A_IMAGE_FORMAT_CUSTOM 更改为 K4A_IMAGE_FORMAT_CUSTOM8。
 
 ### <a name="v092"></a>v0.9.2
 * [中断性变更] 更新为依赖最新的 Azure Kinect 传感器 SDK 1.2.0。

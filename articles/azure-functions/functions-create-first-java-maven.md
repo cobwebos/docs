@@ -13,12 +13,12 @@ ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 381298abcfa4fa707af6b382565b4bfb990e96e6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 5447fdcfa86c35b7c5cf079ae8446c30785e893f
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899497"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299400"
 ---
 # <a name="quickstart-use-java-to-create-and-publish-a-function-to-azure-functions"></a>快速入门：使用 Java 创建函数并将其发布到 Azure Functions
 
@@ -231,3 +231,6 @@ Hi, AzureFunctionsTest
 - 使用 `azure-functions:add` Maven 目标将具有不同触发器的其他函数添加到你的项目。
 - 使用 [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md) 和 [Eclipse](functions-create-maven-eclipse.md) 在本地编写并调试函数。 
 - 使用 Visual Studio Code 调试在 Azure 中部署的函数。 有关说明，请参阅 Visual Studio Code [无服务器 Java 应用程序](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)文档。
+
+> [!NOTE] 
+> 也可以改用 azure-functions-kotlin-archetype 创建一个基于 Kotlin 的 Azure Functions 项目。 有关详细信息，请访问 [GitHub 存储库](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype)。

@@ -1,21 +1,21 @@
 ---
-title: Azure HPC 缓存概述
+title: Azure HPC 缓存预览版概述
 description: 介绍 Azure HPC 缓存，它是一种用于高性能计算的文件访问加速器解决方案
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 77eca3ef58733a616705fdaac1d2880b5a990e8a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 093116a8def69e3f63af9aeb963abc60841cbe85
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036888"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257018"
 ---
-# <a name="what-is-azure-hpc-cache"></a>什么是 Azure HPC 缓存？
+# <a name="what-is-azure-hpc-cache-preview"></a>什么是 Azure HPC 缓存？ （预览版）
 
-Azure HPC 缓存可为高性能计算 (HPC) 任务加快对数据的访问。 通过在 Azure 中缓存文件，可实现云计算的可伸缩性，这甚至适用于数据跨 WAN 链路（例如本地数据中心网络附加存储 (NAS) 环境）存储的工作流。
+Azure HPC 缓存可为高性能计算 (HPC) 任务加快对数据的访问。 通过在 Azure 中缓存文件，Azure HPC 缓存将云计算的可伸缩性带到现有工作流中。 此服务甚至可用于跨 WAN 链路（例如在本地数据中心网络附加存储 (NAS) 环境中）存储数据的工作流。
 
 Azure HPC 缓存易于从 Azure 门户启动和监视。 现有的 NFS 存储或新的 Blob 容器可以成为其聚合命名空间的一部分，这使得客户端访问更简单，即使你更改后端存储目标也是如此。
 
@@ -37,13 +37,13 @@ Azure HPC 缓存可添加到多个行业的各种工作流中。 大量计算机
 
 许多生命科学工作流都可以从横向扩展文件缓存中获益。
 
-想要将其基因组分析工作流移植到 Azure 中的研究所可以使用 Azure HPC 缓存轻松地对其进行转移。 由于缓存提供 POSIX 文件访问，因此它们可以在云中运行其现有的客户端工作流，而无需进行任何更改。
+想要将其基因组分析工作流移植到 Azure 中的研究所可以使用 Azure HPC 缓存轻松地对其进行转移。 由于缓存提供了 POSIX 文件访问，因此无需更改客户端即可在云中运行其现有的客户端工作流。
 
 还可以利用 Azure HPC 缓存来改善辅助分析、药理仿真或 AI 驱动的图像分析等任务的效率。
 
 ### <a name="financial-services-analytics"></a>金融服务分析
 
-Azure HPC 缓存可帮助加快定量分析计算、风险分析工作负荷和 Monte Carlo 仿真，使金融服务公司可以更好地了解如何做出战略决策。
+Azure HPC 缓存部署可帮助加快定量分析计算、风险分析工作负荷和蒙特卡罗模拟，从而为金融服务公司提供更好的见解，以制定战略决策。
 
 ## <a name="region-availability"></a>上市区域
 
@@ -57,6 +57,10 @@ Azure HPC 缓存在以下 Azure 区域中提供：
 * 美国西部 2
 
 有关最新可用性信息，请查看 [Azure HPC 缓存产品页](https://azure.microsoft.com/services/hpc-cache)。
+
+## <a name="preview-availability"></a>预览版可用性
+
+Azure HPC 缓存公共预览版受到限制，以确保服务质量。 通过填写[此表单](https://aka.ms/onboard-hpc-cache)来请求访问权限。 将订阅添加到访问列表后，可以创建测试缓存。
 
 ## <a name="next-steps"></a>后续步骤
 

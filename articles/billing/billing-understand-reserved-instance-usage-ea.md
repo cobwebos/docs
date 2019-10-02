@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f2f5b2ecf096d7dc8babb79a38d00158a2120688
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68598102"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218078"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>获取企业协议预留成本和使用情况
 
@@ -25,8 +25,8 @@ ms.locfileid: "68598102"
 - 获取预留项购买数据
 - 了解哪个订阅、资源组或资源使用了预留项
 - 预留项的使用费分摊
-- 计算预留项节省额
-- 获取预留项的不充分利用数据
+- 计算预留节省额
+- 获取预留未充分利用的数据
 - 摊销预留成本
 
 市场费用将整合成使用情况数据。 可以从单个数据源查看第一方使用情况、市场使用情况和购买项目。
@@ -57,18 +57,20 @@ Azure 使用情况数据中提供的其他信息已更改：
 - Term - 12 个月或 36 个月。
 - RINormalizationRatio - 在 AdditionalInfo 下提供。 这是预留项应用到使用记录的比率。 如果为预留项启用了实例大小灵活性，则它可应用到其他大小。 该值显示预留项应用到使用记录的比率。
 
+[请参阅字段定义](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>使用 API 获取 Azure 消耗量和预留项使用情况数据
 
 可以使用 API 获取数据，也可以从 Azure 门户下载数据。
 
-调用 API 版本为 &quot;2019-04-01-preview&quot; 的[使用情况详细信息 API](/rest/api/consumption/usagedetails/list) 获取新数据。 有关术语的详细信息，请参阅[使用情况中的术语](billing-understand-your-usage.md)。 调用方应是企业协议的企业管理员，并使用 [EA 门户](https://ea.azure.com)。 只读企业管理员也可以获取数据。
+调用[使用情况详细信息 API](/rest/api/consumption/usagedetails/list) 以获取新数据。 有关术语的详细信息，请参阅[使用情况中的术语](billing-understand-your-usage.md)。 调用方应是企业协议的企业管理员，并使用 [EA 门户](https://ea.azure.com)。 只读企业管理员也可以获取数据。
 
 该数据不会在[面向企业客户的报告 API - 使用情况详细信息](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)中提供。
 
 下面是调用 API 的示例：
 
 ```
-https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
 有关 {enrollmentId} 和 {billingPeriodId} 的详细信息，请参阅[使用情况详细信息 - 列出](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API 文章。

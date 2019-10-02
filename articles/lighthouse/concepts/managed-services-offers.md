@@ -4,15 +4,15 @@ description: 服务提供商可借助托管服务产品向 Azure 市场中的客
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a6fcf5f1d0ac194d60f834fb8d26db019c538410
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 0a6371a1020182650d83d5e7ec9bb2378b44b557
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810871"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155256"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Azure 市场中的托管服务产品
 
@@ -20,9 +20,9 @@ ms.locfileid: "67810871"
 
 ## <a name="understand-managed-services-offers"></a>了解托管服务产品
 
-托管服务产品简化了 Azure 委托资源管理的客户的管理过程。 客户在 Azure 市场中购买产品/服务后，他们将能够指定应载入的订阅和/或资源组，以便组织中的指定用户可以从组织的租户中为客户执行管理任务。
+托管服务产品简化了 Azure 委托资源管理的客户的管理过程。 客户在 Azure 市场中购买产品/服务时，他们将能够指定应加入哪些订阅和/或资源组。 请注意，必须先通过手动注册 **Microsoft.ManagedServices** 资源提供程序来对订阅进行加入授权。
 
-之后，客户或服务提供商无需执行任何其他操作即可让客户载入。 这是因为在[云合作伙伴门户](https://cloudpartner.azure.com/)中定义产品/服务时，会创建一个清单，指定可使用 Azure 委托资源访问客户资源的 Azure AD 用户、组和服务原则层。 以及定义其访问级别的角色。 通过向 Azure AD 组而不是单个用户或应用程序帐户分配权限，可以在访问要求发生更改时添加或删除单个用户。
+之后，你组织中的用户将能够根据你在[云合作伙伴门户](https://cloudpartner.azure.com/)中创建产品/服务时定义的访问权限，从你组织的租户中对这些资源执行管理任务。 这通过清单来完成，该清单指定将使用 Azure 委托资源管理访问客户资源的 Azure AD 用户、组和服务主体，以及定义其访问级别的角色。 通过向 Azure AD 组而不是单个用户或应用程序帐户分配权限，可以在访问要求发生更改时添加或删除单个用户。
 
 ## <a name="public-and-private-offers"></a>公共和专用产品/服务
 

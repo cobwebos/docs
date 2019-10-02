@@ -1,21 +1,18 @@
 ---
-title: 快速入门：设置地理人工智能
-titleSuffix: Azure Data Science Virtual Machine
-description: 了解如何创建和配置地理 AI Data Science Virtual Machine。 地理 AI Data Science Virtual Machine 提供使用地理数据创建 AI 和 ML 解决方案的工具。
-keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析
-services: machine-learning
+title: 快速入门：创建地理 AI DSVM
+description: 在 Azure 上配置和创建地理 AI 数据科学虚拟机，用于进行地理空间分析和机器学习。
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: quickstart
-ms.date: 03/05/2018
-ms.openlocfilehash: 7afeec3f71cd1af30093801fedabf3f0357ae3d0
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/13/2019
+ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208059"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170723"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>快速入门：在 Azure 上设置地理人工智能虚拟机 
 

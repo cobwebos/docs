@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 8689cb74e35d5b87c300f5fce239993691652ee2
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 1b37475cfa8df38a00ea6017d47e90677ed457d2
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172528"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212641"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-table-api"></a>快速入门：使用 Java SDK 和Azure Cosmos DB 表 API 构建图形数据库
 
@@ -110,7 +110,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
     复制 URI 值的第一部分。
 
-    ![在 Azure 门户的“密钥”页中，查看并复制访问密钥](./media/create-graph-java/keys.png)
+    ![在 Azure 门户的“密钥”页中，查看并复制访问密钥](./media/create-graph-java/copy-access-key-azure-portal.png)
 2. 打开 src/remote.yaml 文件，并覆盖 `hosts: [$name$.graphs.azure.com]` 中的 `$name$` 粘贴唯一 ID 值。
 
     remote.yaml 的第 1 行现应如下所示 
@@ -219,15 +219,15 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后选择右下侧“目标”旁边的“更改图中某个顶点的目标”。   ![](./media/create-graph-java/edit-pencil-button.png)  可能需要扩大窗口才能看到该按钮。
 
-    ![更改图形中某个顶点的目标。](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    ![更改图形中某个顶点的目标 - Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. 在“目标”框中输入“rakesh”，   在“Edge 标签”框中输入“认识”，然后选中复选框。  
 
-    ![通过数据资源管理器在 ashley 和 rakesh 之间添加连接](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    ![在数据资源管理器中添加连接 - Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
 14. 现在，从结果列表中选择“rakesh”即可看到  ashley 和 rakesh 已连接。 
 
-    ![在数据资源管理器中连接的两个顶点](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    ![在数据资源管理器中连接的两个顶点 - Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
     这就完成了本教程的资源创建部分。 可以继续向图形添加顶点、修改现有顶点，也可以更改查询。 现在，回顾一下 Azure Cosmos DB 提供的指标，然后清理资源。 
 

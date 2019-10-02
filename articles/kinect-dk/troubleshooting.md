@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: 故障排除, 更新, bug, kinect, 反馈, 恢复, 日志记录, 提示
-ms.openlocfilehash: 355ae1c591603171e8c8fe3f1599ebae5054a6bd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9209b3ad3b3978294d54272cadb3ab8bcc260078
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703905"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172690"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect 已知问题和故障排除
 
@@ -51,6 +51,31 @@ ms.locfileid: "67703905"
 *    all else  - log all messages to stdout
 *
 * K4A_LOG_LEVEL =
+*    'c'  - log all messages of level 'critical' criticality
+*    'e'  - log all messages of level 'error' or higher criticality
+*    'w'  - log all messages of level 'warning' or higher criticality
+*    'i'  - log all messages of level 'info' or higher criticality
+*    't'  - log all messages of level 'trace' or higher criticality
+*    DEFAULT - log all message of level 'error' or higher criticality
+*/
+```
+
+人体跟踪 SDK K4ABT.dll 的日志记录类似，不同之处在于用户应修改一组不同的环境变量名称：
+
+```console
+/**
+* environment variables
+* K4ABT_ENABLE_LOG_TO_A_FILE =
+*    0    - completely disable logging to a file
+*    log\custom.log - log all messages to the path and file specified - must end in '.log' to
+*                     be considered a valid entry
+*    ** When enabled this takes precedence over the value of K4A_ENABLE_LOG_TO_STDOUT
+*
+* K4ABT_ENABLE_LOG_TO_STDOUT =
+*    0    - disable logging to stdout
+*    all else  - log all messages to stdout
+*
+* K4ABT_LOG_LEVEL =
 *    'c'  - log all messages of level 'critical' criticality
 *    'e'  - log all messages of level 'error' or higher criticality
 *    'w'  - log all messages of level 'warning' or higher criticality

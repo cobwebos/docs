@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/09/2019
+ms.date: 09/21/2019
 ms.author: diberry
-ms.openlocfilehash: 57407846ba2b1a71ceb91678c3ec4587d99814ad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 90712012f904f7b098af01433fee4a97ee8f2160
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947295"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203771"
 ---
 # <a name="quickstart-qna-maker-client-library-for-python"></a>快速入门：适用于 Python 的 QnA Maker 客户端库
 
@@ -108,12 +108,15 @@ pip install azure-cognitiveservices-knowledge-qnamaker
 
 [!code-python[Create a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=createkb&highlight=15)]
 
+请确保包括上述代码中引用的 [`_monitor_operation`](#get-status-of-an-operation) 函数，以便成功创建知识库。 
 
 ## <a name="update-a-knowledge-base"></a>更新知识库
 
 可以更新知识库，方法是：将知识库 ID 和包含 [add](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtoadd?view=azure-python)、[update](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtoupdate?view=azure-python) 和 [delete](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtodelete?view=azure-python) DTO 对象的 [UpdateKbOperationDTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdto?view=azure-python) 传递给 [update](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#update-kb-id--update-kb--custom-headers-none--raw-false----operation-config-) 方法。 使用 [Operation.getDetail](#get-status-of-an-operation) 方法来确定更新是否成功。
 
 [!code-python[Update a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=updatekb&highlight=2)]
+
+请确保包括上述代码中引用的 [`_monitor_operation`](#get-status-of-an-operation) 函数，以便成功更新知识库。 
 
 ## <a name="publish-a-knowledge-base"></a>发布知识库
 
@@ -145,6 +148,8 @@ pip install azure-cognitiveservices-knowledge-qnamaker
 
 从应用程序目录使用 `python knowledgebase_quickstart.py` 命令运行应用程序。
 
+本文中的所有代码片段均[可用](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)，并且可以作为单个文件运行。 
+
 ```console
 python knowledgebase_quickstart.py
 ```
@@ -164,4 +169,3 @@ python knowledgebase_quickstart.py
 * [什么是 QnA Maker API？](../Overview/overview.md)
 * [编辑知识库](../how-to/edit-knowledge-base.md)
 * [获取使用情况分析](../how-to/get-analytics-knowledge-base.md)
-* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py) 上找到此示例的源代码。

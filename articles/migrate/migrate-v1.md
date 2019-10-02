@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142079"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162455"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用以前版本的 Azure Migrate
 
@@ -78,7 +78,7 @@ ms.locfileid: "70142079"
 
 **就绪情况** | **State** | **详细信息**
 --- | --- | ---
-已做好 Azure 迁移准备 | 无兼容性问题。 计算机可按原样迁移到 Azure，并且它将在 Azure 中启动，Azure 可提供完全支持。 | 对于准备就绪的 VM，Azure Migrate 会推荐一个适合 Azure 的 VM 大小。
+已做好 Azure 迁移准备 | 无兼容性问题。 计算机可按原样迁移到 Azure，它将在 Azure 中启动，并完全支持 Azure。 | 对于准备就绪的 VM，Azure Migrate 会推荐一个适合 Azure 的 VM 大小。
 已做好特定条件下的 Azure 迁移准备 | 计算机可能在 Azure 中启动，但 Azure 可能不提供完全支持。 例如，Azure 中不支持具有旧版 Windows Server 的计算机。 | Azure Migrate 说明了就绪情况问题，并提供更正步骤。
 尚未做好 Azure 迁移准备 |  VM 不会在 Azure 中启动。 例如，如果 VM 所具有的磁盘大于 4 TB，则不能在 Azure 上托管。 | Azure Migrate 说明了就绪情况问题，并提供更正步骤。
 就绪性未知 | Azure Migrate 无法标识 Azure 迁移就绪性，通常是因为数据不可用。
@@ -91,7 +91,7 @@ ms.locfileid: "70142079"
 **属性** | **详细信息** | **就绪情况**
 --- | --- | ---
 **启动类型** | 支持 BIOS。 不支持 UEFI。 | 如果启动类型为 UEFI，则状态为有条件的就绪。
-**核心数** | 计算机核心数 <= Azure VM 支持的最大核心数 (128)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的核心数。<br/>如果 <br/>在评估设置中指定了舒适因子，则将已利用的核心数乘以此舒适因子。<br/><br/> 如果没有任何性能历史记录，Azure Migrate 将使用已分配的内核数，而不应用舒适因子。 | 如果小于或等于限制，则状态为就绪。
+**核心数** | 计算机核心数 <= Azure VM 支持的最大核心数 (128)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的核心数。<br/>如果在评估设置中指定了舒适因子，则将已利用的内核数乘以此舒适因子。<br/><br/> 如果没有任何性能历史记录，Azure Migrate 将使用已分配的内核数，而不应用舒适因子。 | 如果小于或等于限制，则状态为就绪。
 **内存** | 计算机内存大小 <= Azure VM 支持的最大内存（Azure M 系列 Standard_M128m&nbsp;<sup>2</sup> 上为 3892 GB）。 [了解详细信息](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存。<br/><br/>如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果在限制范围内，则状态为就绪。
 **存储磁盘** | 分配的磁盘大小必须为 4 TB (4096 GB) 或更小。<br/><br/> 连接到计算机的磁盘（包括操作系统磁盘）数必须为 65 个或更少。 | 如果在限制范围内，则状态为就绪。
 **网络** | 连接到计算机的 NIC 数必须为 32 个或更少。 | 如果在限制范围内，则状态为就绪。

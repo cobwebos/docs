@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 06/19/2019
+ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c4f670f3bb14610e7f29a9201b357e73dacf09b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 596da9cfe0e914183bd3b2603ffa1047f1d9352b
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293220"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310007"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -68,28 +68,29 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>系统分配托管标识如何与 Azure VM 协同工作
 
 1. Azure 资源管理器收到请求，要求在 VM 上启用系统分配托管标识。
+
 2. Azure 资源管理器在 Azure AD 中创建与 VM 标识相对应的服务主体。 服务主体在此订阅信任的 Azure AD 租户中创建。
-3. Azure 资源管理器在 VM 上配置标识：
-    1. 使用服务主体客户端 ID 和证书更新 Azure 实例元数据服务标识终结点。
-    1. 预配 VM 扩展（计划于 2019 年 1 月弃用）并添加服务主体客户端 ID 和证书。 （根据计划，此步骤将弃用。）
+
+3. Azure 资源管理器通过使用服务主体客户端 ID 和证书更新 Azure 实例元数据服务标识终结点来配置 VM 上的标识。
+
 4. VM 有了标识以后，请根据服务主体信息向 VM 授予对 Azure 资源的访问权限。 若要调用 Azure 资源管理器，请在 Azure AD 中使用基于角色的访问控制 (RBAC) 向 VM 服务主体分配相应的角色。 若要调用 Key Vault，请授予代码对 Key Vault 中特定机密或密钥的访问权限。
+
 5. 在 VM 上运行的代码可以从只能从 VM 中访问的 Azure 实例元数据服务终结点请求令牌：`http://169.254.169.254/metadata/identity/oauth2/token`
     - resource 参数指定了要向其发送令牌的服务。 若要向 Azure 资源管理器进行身份验证，请使用 `resource=https://management.azure.com/`。
     - API 版本参数指定 IMDS 版本，请使用 api-version=2018-02-01 或更高版本。
 
-> [!NOTE]
-> 代码还可以从 VM 扩展终结点请求令牌，但此功能计划即将弃用。 有关 VM 扩展的详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 以进行身份验证](howto-migrate-vm-extension.md)。
-
 6. 调用了 Azure AD，以便使用在步骤 3 中配置的客户端 ID 和证书请求访问令牌（在步骤 5 中指定）。 Azure AD 返回 JSON Web 令牌 (JWT) 访问令牌。
+
 7. 代码在调用支持 Azure AD 身份验证的服务时发送访问令牌。
 
 ### <a name="how-a-user-assigned-managed-identity-works-with-an-azure-vm"></a>用户分配托管标识如何与 Azure VM 协同工作
 
 1. Azure 资源管理器收到请求，要求创建用户分配托管标识。
+
 2. Azure 资源管理器在 Azure AD 中创建与用户分配托管标识相对应的服务主体。 服务主体在此订阅信任的 Azure AD 租户中创建。
-3. Azure 资源管理器收到请求，要求在 VM 上配置用户分配托管标识：
-    1. 使用用户分配托管标识服务主体客户端 ID 和证书更新 Azure 实例元数据服务标识终结点。
-    1. 预配 VM 扩展并添加用户分配托管标识服务主体客户端 ID 和证书。 （根据计划，此步骤将弃用。）
+
+3. Azure 资源管理器收到在 VM 上配置用户分配的托管标识的请求，并使用用户分配的托管标识服务主体客户端 ID 和证书更新 Azure 实例元数据服务标识终结点。
+
 4. 创建用户分配托管标识以后，请根据服务主体信息向标识授予对 Azure 资源的访问权限。 若要调用 Azure 资源管理器，请在 Azure AD 中使用 RBAC 向用户分配标识的服务主体分配相应的角色。 若要调用 Key Vault，请授予代码对 Key Vault 中特定机密或密钥的访问权限。
 
    > [!Note]
@@ -99,9 +100,6 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
     - resource 参数指定了要向其发送令牌的服务。 若要向 Azure 资源管理器进行身份验证，请使用 `resource=https://management.azure.com/`。
     - 客户端 ID 参数指定为其请求令牌的标识。 当单台 VM 上有多个用户分配的标识时，此值是消除歧义所必需的。
     - API 版本参数指定 Azure 实例元数据服务版本。 请使用 `api-version=2018-02-01` 或指定更高的版本。
-
-> [!NOTE]
-> 代码还可以从 VM 扩展终结点请求令牌，但此功能计划即将弃用。 有关 VM 扩展的详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 以进行身份验证](howto-migrate-vm-extension.md)。
 
 6. 调用了 Azure AD，以便使用在步骤 3 中配置的客户端 ID 和证书请求访问令牌（在步骤 5 中指定）。 Azure AD 返回 JSON Web 令牌 (JWT) 访问令牌。
 7. 代码在调用支持 Azure AD 身份验证的服务时发送访问令牌。

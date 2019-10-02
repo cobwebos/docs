@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b7665caad60a5135da5780da242772af3c0a05a4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984887"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260290"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建和管理 Azure 文件共享 
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以在 Windows、Linux 和 macOS 中装载 Azure 文件共享。 本指南介绍通过 [Azure 门户](https://portal.azure.com/)来使用 Azure 文件共享的基本知识。
@@ -29,7 +29,7 @@ ms.locfileid: "70984887"
 2. 在存储帐户页的“服务”部分，选择“文件”。  
     ![存储帐户的服务部分的屏幕截图；选择“文件”服务](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. 在“文件服务”页面顶部的菜单中，单击“+ 文件共享”   。 “新建文件共享”页此时会向下拉开。 
+3. 在“文件服务”页顶部的菜单中，单击“文件共享”   。 “新建文件共享”页此时会向下拉开。 
 4. 在“名称”中，  键入 *myshare*。
 5. 单击“确定”以创建 Azure 文件共享  。
 

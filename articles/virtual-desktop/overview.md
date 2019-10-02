@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 8827aa660d348ef9e42c617067c2837b8697ba6e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 440ebfffec9378e0dad1fd04e0880c90571bb0f1
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876781"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300995"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>什么是 Windows 虚拟桌面预览版？ 
 
@@ -76,6 +76,8 @@ Windows 虚拟桌面现已推出公共预览版，它是一个在云中运行的
 * 一个与 Azure Active Directory 同步的 Windows Server Active Directory。 可通过以下方式满足此要求：
   * Azure AD Connect
   * Azure AD 域服务
+  >[!NOTE]
+  >Windows 虚拟桌面仅支持源自 Azure Active Directory 的 Azure AD 域服务用户。 目前不支持源自 Windows Server AD 的用户。
 * 一个包含虚拟网络的 Azure 订阅，该虚拟网络包含或已连接到 Windows Server Active Directory
   
 为 Windows 虚拟桌面创建的 Azure 虚拟机必须：

@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4d03e5ee5faf39425e1bf927a3c0557b0ad01b82
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e629cbdce55f236e095f606f56adec453b0b17c7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840105"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299865"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教程：创建并部署自定义 IoT Edge 模块
 
@@ -27,7 +27,7 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
 我们希望 IoT Edge 设备代为完成四项操作：
 
 * 从叶设备接收数据
-* 预测发送此数据的设备的 RUL
+* 预测发送此数据的设备的剩余使用寿命 (RUL)
 * 在仅使用设备 RUL 的情况下将消息发送到 IoT 中心（可修改此函数，指示如果 RUL 低于某级别，则仅发送数据）
 * 将叶设备数据保存到 IoT Edge 设备上的本地文件中。 此数据文件会通过文件上传定期上传到 IoT 中心，以优化机器学习模型的训练。 与定期消息流式传输相比，使用文件上传更具成本效益。
 
@@ -56,7 +56,7 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
 
 ## <a name="create-a-new-iot-edge-solution"></a>创建新的 IoT Edge 解决方案
 
-在执行第二个 Azure Notebook（共 2 个）的过程中，我们创建并发布了一个包含 RUL 模型的容器映像。 Azure 机器学习在映像创建过程中构建到组件中，使该映像可部署为 Azure IoT Edge 模块。 在此步骤中，我们将使用“Azure 机器学习”模块创建一个 Azure IoT Edge 解决方案，并将该模块指向我们使用 Azure Notebook 发布的映像。
+在执行第二个 Azure Notebook（共 2 个）的过程中，我们创建并发布了一个包含 RUL 模型的容器映像。 Azure 机器学习在映像创建过程中打包了该模型，以便该映像可部署为 Azure IoT Edge 模块。 在此步骤中，我们将使用“Azure 机器学习”模块创建一个 Azure IoT Edge 解决方案，并将该模块指向我们使用 Azure Notebook 发布的映像。
 
 1. 打开到开发计算机的远程桌面会话。
 

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: cdbbe9006f57c8b29e19fda85eefc0795da95a00
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0269b4e611432093ea677e2ea7e429c84ce9db87
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595506"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257670"
 ---
 # <a name="what-is-custom-translator"></a>什么是自定义翻译？
 
@@ -40,7 +40,7 @@ ms.locfileid: "68595506"
 
 Microsoft Translator 在 2016 年发布了[神经机器翻译 (NMT)](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)。 NMT 的翻译质量相对于行业标准的[统计机器翻译 (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation) 技术有很大的进步。 由于 NMT 在翻译之前能够更好地理解完整句子的上下文，因此其提供的翻译质量更高、更类似于人类且更流畅。 [自定义翻译](https://portal.customtranslator.azure.ai)为自定义模型提供 NMT，因此翻译质量更好。
 
-可以使用以前翻译的文档生成一个翻译系统。 这些文档包括特定于领域的术语和样式，比通用翻译系统更好。 用户可以上传 ALIGN、PDF、LCL、HTML、HTM、XLF、TMX、XLIFF、TXT、DOCX 和 XLSX 文档。
+可以使用以前翻译的文档生成一个翻译系统。 这些文档包括特定于领域的术语和样式，比标准翻译系统更好。 用户可以上传 ALIGN、PDF、LCL、HTML、HTM、XLF、TMX、XLIFF、TXT、DOCX 和 XLSX 文档。
 
 自定义翻译也接受在文档级别并行的数据，使数据收集和准备更有效。 如果用户可以访问相同内容的多种语言版（但每种语言的内容都位于单独的文档中），自定义翻译将能够跨文档自动匹配句子。
 

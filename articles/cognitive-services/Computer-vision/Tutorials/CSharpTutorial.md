@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3da22d11dce1e535763476d906ac45f3da22bc8d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141289"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170051"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>示例：使用 C# 探索图像处理应用
 
@@ -80,7 +80,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
    ![订阅密钥管理页面](../Images/Vision_UI_Subscription.PNG)  
 1. 在“订阅密钥”中输入订阅密钥  。
 1. 在“终结点”  中输入终结点 URL。  
-   例如，如果你使用的是计算机视觉免费试用版中的订阅密钥，请输入以下终结点 URL：`https://westcentralus.api.cognitive.microsoft.com`
+   例如，如果你使用的是计算机视觉免费试用版中的订阅密钥，请输入以下终结点 URL：`https://westcentralus.api.cognitive.microsoft.com`  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. 如果不想在下次运行该示例应用时输入订阅密钥和终结点 URL，请选择“保存设置”以将订阅密钥和终结点 URL 保存到计算机  。 如果要删除以前保存的订阅密钥和终结点 URL，请选择“删除设置”  。
 

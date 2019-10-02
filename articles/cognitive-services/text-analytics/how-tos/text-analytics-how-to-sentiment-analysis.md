@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 07/30/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 60ae2136c3fa934c178de95f51d490e570f45faa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: ea145239d38a4030423a4517fe02c62b8eefa08a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845340"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211765"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>示例：使用文本分析检测情绪
 
@@ -139,7 +139,7 @@ ms.locfileid: "70845340"
 > [!NOTE]
 > * 情绪分析 v3 的请求格式和[数据限制](../overview.md#data-limits)与上一版本相同。
 > * 目前，情绪分析 v3：
->    * 当前支持英语、简体中文和日语。
+>    * 当前支持英语、法语、意大利语、日语、简体中文和繁体中文。
 >    * 可供以下区域使用：`Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe` 和 `West US 2`。
 
 |Feature |说明  |
