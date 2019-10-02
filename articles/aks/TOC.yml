@@ -21,17 +21,17 @@
       items:
         - name: 使用 Draft
           href: kubernetes-draft.md
-        - name: 使用 Java（VS Code 和 CLI）
-          href: ../dev-spaces/quickstart-java.md
-          maintainContext: true
-        - name: 使用 .NET Core（VS Code 和 CLI）
+        - name: 使用 Visual Studio Code 和 Azure Dev Spaces
           href: ../dev-spaces/quickstart-netcore.md
           maintainContext: true
-        - name: 使用 .NET Core (Visual Studio 2017)
+        - name: 使用 Visual Studio 和 Azure Dev Spaces
           href: ../dev-spaces/quickstart-netcore-visualstudio.md
           maintainContext: true
-        - name: 使用 Node.js（VS Code 和 CLI）
-          href: ../dev-spaces/quickstart-nodejs.md
+        - name: 使用 CLI 和 Azure Dev Spaces
+          href: ../dev-spaces/quickstart-cli.md
+          maintainContext: true
+        - name: 使用 Azure Dev Spaces 进行团队开发
+          href: ../dev-spaces/quickstart-team-development.md
           maintainContext: true
 - name: 教程
   items:

@@ -70,6 +70,14 @@
               href: devtest-lab-use-claim-capabilities.md
 - name: 操作指南
   items:
+    - name: 教室实验室 - 课程类型
+      items:
+        - name: 课程类型
+          href: classroom-labs/class-types.md
+        - name: 自然处理中的深度学习
+          href: classroom-labs/class-type-deep-learning-natural-processing.md
+        - name: Linux 上的 Shell 脚本
+          href: classroom-labs/class-type-shell-scripting-linux.md
     - name: 教室实验室
       items:
         - name: 创建和配置实验室帐户（实验室帐户所有者）

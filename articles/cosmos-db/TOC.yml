@@ -102,6 +102,8 @@
           href: global-dist-under-the-hood.md
         - name: 区域性存在
           href: regional-presence.md
+        - name: 事务性和分析存储
+          href: globally-distributed-transactional-analytical-storage.md
     - name: 分区
       items:
         - name: 概述
@@ -453,9 +455,10 @@
         - name: 触发 Azure Functions
           displayName: change feed
           href: change-feed-functions.md
-    - name: 将内置分析功能与 Apache Spark 配合使用
+    - name: 全球分布式分析和 AI
       items:
         - name: 介绍
+          displayName: 'Apache Spark, spark'
           href: spark-api-introduction.md
         - name: 分析用例
           href: analytics-usecases.md
