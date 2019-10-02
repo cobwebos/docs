@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 09/30/2019
 ms.author: v-adgera
-ms.openlocfilehash: a39663adedfdb9c00c4429f65ec1bd27286cb136
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: f33e5be2408d2ebacd215c5f0601d712197254a7
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904300"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803427"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>如何为 Azure 数字孪生配置 Postman
 
@@ -35,21 +35,42 @@ ms.locfileid: "69904300"
 
 配置 Azure Active Directory 应用以使用 OAuth 2.0 隐式授权流。
 
-1. 按照[快速入门](./quickstart-view-occupancy-dotnet.md)中的步骤创建 Azure AD 应用程序。 或[使用旧 AAD 边栏选项卡创建本机应用](./how-to-use-legacy-aad.md)。
+1. 打开用于应用注册的“API 权限”窗格。 选择“添加权限”按钮。 在“请求 API 权限”窗格中，选择“我的组织使用的 API”选项卡，然后搜索：
+    
+    1. `Azure Digital Twins`。 选择 **Azure 数字孪生** API。
 
-1. 在 " **API 权限**" 下, 选择 "**添加权限**"。 然后, **Azure 数字孪生**在**我的组织使用的 api**下。 如果搜索没有找到该 API，请改为搜索“Azure 智能空间”。 然后, 选择 **"委托的权限**"、"**读取** > "、"**写入**" 和 "**添加权限**"。
+        [![搜索“API”或“Azure 数字孪生”](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
-    [![Azure Active Directory 应用注册添加 api](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+    1. 或者，搜索 `Azure Smart Spaces Service`。 选择“Azure 智能空间服务”API。
+
+        [![搜索 Azure 智能空间的 API](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
+
+    > [!IMPORTANT]
+    > 将显示的 Azure AD API 名称和 ID 取决于你的租户：
+    > * 测试租户和客户帐户应搜索 `Azure Digital Twins`。
+    > * 其他 Microsoft 帐户应搜索 `Azure Smart Spaces Service`。
+
+1. 所选的 API 在同一个“请求 API 权限”窗格中显示为“Azure 数字孪生”。 选择“读取 (1)”下拉列表，然后选中“Read.Write”复选框。 选择“添加权限”按钮。
+
+    [![添加 API 权限](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+
+1. 根据组织的设置，可能需要执行其他步骤才能授予对此 API 的管理员访问权限。 请联系管理员以了解详细信息。 在该管理员访问权限得到批准后，API 的“API 权限”窗格中的“需要管理员同意”列将如下所示：
+
+    [![添加 API 权限](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+
 
 1. 选择 "**清单**" 打开应用程序的应用程序清单。 将“oauth2AllowImplicitFlow”设置为 `true`。
 
-    [![Azure Active Directory 隐式流](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
+    [@no__t Active Directory 隐式流](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
 
 1. 将“回复 URL”配置为 `https://www.getpostman.com/oauth2/callback`。
 
     [![Azure Active Directory 回复 URL](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
 
 1. 复制并保留 Azure Active Directory 应用的“应用程序 ID”。 它在后续步骤中会用到。
+
+   [![Azure Active Directory 应用程序 ID](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
+
 
 ## <a name="obtain-an-oauth-20-token"></a>获取 OAuth 2.0 令牌
 
@@ -74,7 +95,7 @@ ms.locfileid: "69904300"
     |---------|---------|
     | 授权类型 | `Implicit` |
     | 回调 URL | `https://www.getpostman.com/oauth2/callback` |
-    | 身份验证 URL | 使用上面步骤 2 中的“授权 URL” |
+    | 身份验证 URL | 使用**步骤 2**中的**授权 URL** |
     | 客户端 ID | 使用在上一节中创建或重新使用的 Azure Active Directory 应用的**应用程序 ID** |
     | 范围 | 留空 |
     | 状态 | 留空 |
@@ -82,7 +103,7 @@ ms.locfileid: "69904300"
 
 1. 此时，客户端应如下所示：
 
-    [![Postman 客户端示例](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
+    [@no__t 1Postman 客户端示例](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. 选择“请求令牌”。
 
@@ -92,28 +113,26 @@ ms.locfileid: "69904300"
   
 1. 向下滚动并选择“使用令牌”。
 
-<div id="multi"></div>
-
 ## <a name="make-a-multipart-post-request"></a>发出多部分 POST 请求
 
 完成上述步骤后，请将 Postman 配置为发出已经过身份验证的 HTTP 多部分 POST 请求：
 
 1. 在“标头”选项卡下，添加值为 `multipart/mixed` 的 HTTP 请求标头键 Content-Type。
 
-   [![内容类型多部分/混合](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
+   [@no__t 1Content type 多部分/混合](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. 将非文本数据序列化为文件。 JSON 数据将另存为 JSON 文件。
 1. 在“正文”选项卡下，添加每个文件，方法是分配“键”名称（选择 `file` 或 `text`）。
 1. 然后，通过“选择文件”按钮选择每个文件。
 
-   [![Postman 客户端示例](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
+   [@no__t 1Postman 客户端示例](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
 
    >[!NOTE]
    > * Postman 客户端不要求多部分区块有手动分配的 **Content-Type** 或 **Content-Disposition**。
    > * 对于每个部分，不需要指定这些标头。
    > * 对于整个请求，必须选择 `multipart/mixed` 或其他相应的 **Content-Type**。
 
-1. 最后, 选择 "**发送**" 以提交多部分 HTTP POST 请求。
+1. 最后，选择 "**发送**" 以提交多部分 HTTP POST 请求。
 
 ## <a name="next-steps"></a>后续步骤
 

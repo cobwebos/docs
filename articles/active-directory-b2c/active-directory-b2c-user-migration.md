@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 20c8fbd1626adaf67b790d500d8bfdeff6f27841
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 8ec61a04d6bb7289f12becf8baebae5e47150897
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702173"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802097"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C：用户迁移
 
@@ -59,22 +59,13 @@ ms.locfileid: "71702173"
 
 接下来，向应用程序授予 Azure AD 写入目录所需图形 API 权限。
 
-1. 在 "**设置**" 菜单中，选择 "**所需权限**"。
-1. 选择“Windows Azure Active Directory”。
-1. 在“启用访问权限”窗格中的“应用程序权限”下面，选择“读取和写入目录数据”权限，再选择“保存”。
-1. 在 "**所需权限**" 窗格中，选择 "**授予权限**"，然后选择 **"是"** 。
-
-   ![已突出显示 "读取/写入目录" 复选框、"保存" 和 "授予权限"](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="step-13-create-the-application-secret"></a>步骤 1.3：创建应用程序机密
 
 创建用于稍后步骤中配置的用户迁移应用程序的客户端机密（密钥）。
 
-1. 在 "**已注册应用**" 页中，选择 "**设置**"。
-1. 选择“密钥”。
-1. 在 "**密码**" 下，添加名为*MyClientSecret*的新密钥（也称为客户端密码）或所选的另一个名称，选择 "过期时间" 窗口，选择 "**保存**"，然后复制密钥值供以后使用。
-
-    ![Azure 门户中突出显示的 "应用程序 ID 值和密钥" 菜单项](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 现在，你的应用程序具有在 Azure AD B2C 租户中创建、读取和更新用户的权限。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: 677a52572658f80d9cde4de28dd02d6e957407d2
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: de215502f1ecb55bc331f29057a4f7c3f30b0132
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269214"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720160"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -66,9 +66,6 @@ ms.locfileid: "71269214"
 + 查看机器学习项目，如试验、管道、模型和部署。
 + 跟踪和监视模型。
 
-
-
-
 ## <a name="workspace-management"></a>工作区管理
 
 你还可以执行以下工作区管理任务：
@@ -80,7 +77,7 @@ ms.locfileid: "71269214"
 | 管理工作区访问    | **&check;**   | |  **&check;**    |
 | 创建笔记本 VM | **&check;**   | |     |
 
-### <a name='create-workspace'></a>创建工作区
+## <a name='create-workspace'></a>创建工作区
 
 有多种方法可以创建工作区。
 

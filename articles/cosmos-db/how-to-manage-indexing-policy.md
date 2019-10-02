@@ -4,18 +4,18 @@ description: 了解如何管理 Azure Cosmos DB 中的索引策略
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/28/2019
 ms.author: thweiss
-ms.openlocfilehash: b80a4b8697544a0f7fe7cee99b666a513f53a0d6
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f7d364eb5db5c6d6304944d490468edf8b5ebe2e
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104852"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811666"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 
-在 Azure Cosmos DB 中，数据是按照为每个容器定义的[索引策略](index-policy.md)编制索引的。 新创建的容器的默认索引策略强制实施任何字符串或数字的范围索引。 可以用自己的自定义索引策略覆盖此策略。
+在 Azure Cosmos DB 中，数据是按照为每个容器定义的[索引策略](index-policy.md)编制索引的。 新建容器的默认索引策略会对任何字符串或数字强制使用范围索引。 可以使用你自己的自定义索引策略覆盖此策略。
 
 ## <a name="indexing-policy-examples"></a>索引策略示例
 
@@ -42,7 +42,7 @@ ms.locfileid: "71104852"
     }
 ```
 
-此索引策略等效于以下项：将、 ```kind``` ```dataType```和```precision```手动设置为其默认值。 这些属性不再需要显式设置，你可以完全从索引策略中省略它们（如上面的示例所示）。
+此索引策略等同于下面的手动将 ```kind```、```dataType``` 和 ```precision``` 设置为默认值的策略。 这些属性不再需要显式设置，可以从索引策略中完全省略它们（如上例所示）。
 
 ```json
     {
@@ -96,7 +96,7 @@ ms.locfileid: "71104852"
     }
 ```
 
-此索引策略等效于以下项：将、 ```kind``` ```dataType```和```precision```手动设置为其默认值。 这些属性不再需要显式设置，你可以完全从索引策略中省略它们（如上面的示例所示）。
+此索引策略等同于下面的手动将 ```kind```、```dataType``` 和 ```precision``` 设置为默认值的策略。 这些属性不再需要显式设置，可以从索引策略中完全省略它们（如上例所示）。
 
 ```json
     {
@@ -172,7 +172,7 @@ ms.locfileid: "71104852"
 
 ## <a name="composite-indexing-policy-examples"></a>组合索引策略示例
 
-除了包含或排除各属性的路径，还可以指定一个组合索引。 如果要执行具有针对多个属性的 `ORDER BY` 子句的查询，需要使用这些属性上的[组合索引](index-policy.md#composite-indexes)。 此外，对于具有筛选器并在不同属性上具有 ORDER BY 子句的查询，复合索引将具有性能优势。
+除了包含或排除各属性的路径，还可以指定一个组合索引。 如果要执行具有针对多个属性的 `ORDER BY` 子句的查询，需要使用这些属性上的[组合索引](index-policy.md#composite-indexes)。 此外，对于具有筛选器且对不同属性使用 ORDER BY 子句的查询，组合索引将具有性能优势。
 
 ### <a name="composite-index-defined-for-name-asc-age-desc"></a>针对（name asc、age desc）定义的组合索引：
 
@@ -201,7 +201,7 @@ ms.locfileid: "71104852"
     }
 ```
 
-Query #1 和 Query #2 需要以上组合索引：
+查询 #1 和查询 #2 需要上述对 name 和 age 的组合索引：
 
 查询 #1：
 
@@ -219,7 +219,7 @@ Query #1 和 Query #2 需要以上组合索引：
     ORDER BY c.name DESC, c.age ASC
 ```
 
-此复合索引将 #3 和查询 #4 并优化筛选器，从而提高查询的优点：
+此组合索引将使查询 #3 和查询 #4 受益，并优化筛选器：
 
 查询 #3：
 
@@ -238,7 +238,7 @@ FROM c
 WHERE c.name = "Tim" AND c.age > 18
 ```
 
-### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>为（name ASC，age ASC）和（name ASC，age DESC）定义的复合索引：
+### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>为 (name ASC, age ASC) 和 (name ASC, age DESC) 定义的组合索引：
 
 可以在同一个索引策略中定义多个不同的组合索引。
 
@@ -277,7 +277,7 @@ WHERE c.name = "Tim" AND c.age > 18
     }
 ```
 
-### <a name="composite-index-defined-for-name-asc-age-asc"></a>为定义的复合索引（name ASC，age ASC）：
+### <a name="composite-index-defined-for-name-asc-age-asc"></a>为 (name ASC, age ASC) 定义的组合索引：
 
 可以选择指定顺序。 如果未指定，顺序为升序。
 
@@ -320,7 +320,7 @@ WHERE c.name = "Tim" AND c.age > 18
 
 ### <a name="no-indexing"></a>无索引
 
-此策略将关闭索引。 如果`indexingMode`设置为`none`，则不能在容器上设置 TTL。
+此策略将关闭索引。 如果 `indexingMode` 设置为 `none`，则无法在容器上设置 TTL。
 
 ```json
     {
@@ -328,18 +328,19 @@ WHERE c.name = "Tim" AND c.age > 18
     }
 ```
 
-## <a name="updating-indexing-policy"></a>正在更新索引策略
+## <a name="updating-indexing-policy"></a>更新索引策略
 
 在 Azure Cosmos DB 中，可以使用以下任一方法更新索引策略：
 
 - 从 Azure 门户
 - 使用 Azure CLI
+- 使用 PowerShell
 - 使用某个 SDK
 
 [索引策略更新](index-policy.md#modifying-the-indexing-policy)会触发索引转换。 还可以通过 SDK 跟踪此转换的进度。
 
 > [!NOTE]
-> 更新索引策略时，Azure Cosmos DB 的写入将不会中断。 在重新编制索引期间，查询可能会在更新索引时返回部分结果。
+> 更新索引策略时，对 Azure Cosmos DB 的写入不会中断。 在重新编制索引期间，查询可能会在更新索引时返回部分结果。
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
@@ -361,21 +362,15 @@ Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-可以通过 Azure CLI 中的 [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) 命令替换容器的索引策略的 JSON 定义：
+若要创建具有自定义索引策略的容器，请参阅[使用 CLI 创建具有自定义索引策略的容器](manage-with-cli.md#create-a-container-with-a-custom-index-policy)
 
-```azurecli-interactive
-az cosmosdb collection update \
-    --resource-group-name $resourceGroupName \
-    --name $accountName \
-    --db-name $databaseName \
-    --collection-name $containerName \
-    --indexing-policy "{\"indexingMode\": \"consistent\", \"includedPaths\": [{ \"path\": \"/*\", \"indexes\": [{ \"dataType\": \"String\", \"kind\": \"Range\" }] }], \"excludedPaths\": [{ \"path\": \"/headquarters/employees/?\" } ]}"
-```
+## <a name="use-powershell"></a>使用 PowerShell
+
+若要创建具有自定义索引策略的容器，请参阅[使用 Powershell 创建具有自定义索引策略的容器](manage-with-powershell.md#create-container-custom-index)
 
 ## <a name="use-the-net-sdk-v2"></a>使用 .NET SDK V2
 
 `DocumentCollection` [.Net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)中的对象公开一个`IndexingPolicy`属性，可通过该属性更改`IndexingMode`和添加或删除`IncludedPaths`和`ExcludedPaths`。
-
 
 ```csharp
 // Retrieve the container's details
@@ -406,7 +401,6 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 ## <a name="use-the-net-sdk-v3"></a>使用 .NET SDK V3
 
 `ContainerProperties` [.Net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)中的对象（有关其用法，请参阅[此快速入门](create-sql-api-dotnet.md)） `IndexingPolicy`公开一个属性，可通过`IndexingMode`该属性更改和`IncludedPaths`添加`ExcludedPaths`或删除和。
-
 
 ```csharp
 // Retrieve the container's details
@@ -474,7 +468,7 @@ DocumentCollection container = result.getResource();
 IndexingPolicy indexingPolicy = container.getIndexingPolicy();
 ```
 
-将索引模式设置为一致
+将索引模式设置为“一致”
 
 ```java
 indexingPolicy.setIndexingMode(IndexingMode.Consistent);
@@ -508,7 +502,7 @@ Collection<SpatialType> collectionOfSpatialTypes = new ArrayList<SpatialType>();
 
 SpatialSpec spec = new SpatialSpec();
 spec.setPath("/locations/*");
-collectionOfSpatialTypes.add(SpatialType.Point);          
+collectionOfSpatialTypes.add(SpatialType.Point);
 spec.setSpatialTypes(collectionOfSpatialTypes);
 spatialIndexes.add(spec);
 
@@ -516,7 +510,7 @@ indexingPolicy.setSpatialIndexes(spatialIndexes);
 
 ```
 
-添加复合索引
+添加组合索引
 
 ```java
 Collection<ArrayList<CompositePath>> compositeIndexes = new ArrayList<>();
@@ -537,7 +531,7 @@ compositeIndexes.add(compositePaths);
 indexingPolicy.setCompositeIndexes(compositeIndexes);
 ```
 
-更新包含更改的容器
+使用更改更新容器
 
 ```java
  client.replaceCollection(container, null);
@@ -567,7 +561,7 @@ containerResponse.subscribe(result -> {
 const containerResponse = await client.database('database').container('container').read();
 ```
 
-将索引模式设置为一致
+将索引模式设置为“一致”
 
 ```javascript
 containerResponse.body.indexingPolicy.indexingMode = "consistent";
@@ -610,7 +604,7 @@ containerResponse.body.indexingPolicy.includedPaths.push({
 containerResponse.body.indexingPolicy.excludedPaths.push({ path: '/name/*' });
 ```
 
-更新包含更改的容器
+使用更改更新容器
 
 ```javascript
 const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
@@ -638,7 +632,7 @@ containerPath = 'dbs/database/colls/collection'
 container = client.ReadContainer(containerPath)
 ```
 
-将索引模式设置为一致
+将索引模式设置为“一致”
 
 ```python
 container['indexingPolicy']['indexingMode'] = 'consistent'
@@ -668,7 +662,7 @@ container["indexingPolicy"] = {
 }
 ```
 
-添加复合索引
+添加组合索引
 
 ```python
 container['indexingPolicy']['compositeIndexes'] = [
@@ -685,7 +679,7 @@ container['indexingPolicy']['compositeIndexes'] = [
                 ]
 ```
 
-更新包含更改的容器
+使用更改更新容器
 
 ```python
 response = client.ReplaceContainer(containerPath, container)

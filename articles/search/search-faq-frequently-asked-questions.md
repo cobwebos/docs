@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d4aae2f2ef9ccbc645647125682d999c11c99ab6
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 600c619134cae18e69b5a200cb03fbebd82dee0f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649837"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719887"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure 搜索 - 常见问题解答 (FAQ)
 
@@ -30,7 +30,7 @@ Azure 搜索支持多个数据源、[针对多种语言的语言分析](https://
 
 比较搜索技术时，客户经常询问 Azure 搜索 与 Elasticsearch 的具体对比信息。 如果客户为搜索应用程序项目选择 Azure 搜索而非 Elasticsearch，通常是因为我们让关键任务变得更加简单，或他们需要与其他 Microsoft 技术的内部集成：
 
-+ Azure 搜索是完全托管的云服务，提供充足冗余时（2 份副本用于读取访问，3 份副本用于读写访问），拥有 99.9% 的服务级别协议 (SLA)。
++ Azure 搜索是一项完全托管的云服务，在预配有足够的冗余（2个副本进行读取访问，三个副本用于读写）时，服务级别协议（SLA）为 99.9%。
 + Microsoft 的[自然语言处理器](https://docs.microsoft.com/rest/api/searchservice/language-support)提供领先的语言分析。  
 + [Azure 搜索索引器](search-indexer-overview.md)可为初始和增量索引抓取多种 Azure 数据源。
 + 如果需要对查询或索引卷的波动快速响应，可使用 Azure 门户中的[滑块控制](search-manage.md#scale-up-or-down)，或运行 [PowerShell 脚本](search-manage-powershell.md)直接绕过分片管理。  
@@ -42,17 +42,27 @@ Azure 搜索支持多个数据源、[针对多种语言的语言分析](https://
 
 ## <a name="indexing-operations"></a>索引操作
 
-### <a name="backup-and-restore-or-download-and-move-indexes-or-index-snapshots"></a>备份和还原 （或下载和移动）索引或索引快照？
+### <a name="move-backup-and-restore-indexes-or-index-snapshots"></a>移动、备份和还原索引或索引快照？
 
-尽管可随时[获取索引定义](https://docs.microsoft.com/rest/api/searchservice/get-index)，但并无索引提取、快照或备份-还原功能用于将云中运行的“已填充”索引下载到本地系统，或将它移动到另一个 Azure 搜索服务。
+在开发阶段，你可能想要在搜索服务之间移动索引。 例如，你可以使用 "基本" 或 "免费" 定价层来开发索引，然后将其移动到标准或更高的层以供生产使用。 
 
-索引由写入的代码创建和填充，仅在云中的 Azure 搜索上运行。 通常，如果客户希望将一个索引移动到另一个服务，会通过编辑代码以使用新的终结点，然后重新运行索引。 如果希望能够拍摄快照或备份索引，请在 [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index) 上投票。
+或者，你可能想要将索引快照备份到稍后可用于还原它的文件。 
+
+可以通过此[Azure 搜索 .net 示例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存储库中的**索引备份-还原**示例代码来执行所有这些操作。 
+
+还可以使用 Azure Search REST API 随时[获取索引定义](https://docs.microsoft.com/rest/api/searchservice/get-index)。
+
+Azure 门户中目前没有内置索引提取、快照或备份-还原功能。 但是，我们正在考虑在未来的版本中添加备份和还原功能。 如果希望为此功能提供支持，请对[用户语音](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index)投票。
 
 ### <a name="can-i-restore-my-index-or-service-once-it-is-deleted"></a>删除后能否还原索引或服务？
 
-否，不能还原索引或服务。 如果删除 Azure 搜索索引，则该操作是最终的，无法恢复索引。 当删除 Azure 搜索服务时，会永久删除该服务中的所有索引。 此外，如果删除包含一项或多项 Azure 搜索服务的 Azure 资源组，则会永久删除所有服务。  
+不可以。如果删除 Azure 搜索索引或服务，则无法将其恢复。 当删除 Azure 搜索服务时，会永久删除该服务中的所有索引。 如果删除包含一个或多个 Azure 搜索服务的 Azure 资源组，则所有服务都将被永久删除。  
 
-还原索引、索引器、数据源和技能集等资源需要通过代码重新创建它们。 对于索引，必须对来自外部源的数据重新编制索引。 因此，强烈建议在其他数据存储（如 Azure SQL 数据库或 Cosmos DB）保留原始数据的主控副本或备份。
+重新创建索引、索引器、数据源和技能集等资源需要从代码重新创建它们。 
+
+若要重新创建索引，必须对外部源中的数据重新编制索引。 出于此原因，建议你在另一个数据存储（如 Azure SQL 数据库或 Cosmos DB）中保留原始数据的主副本或备份。
+
+作为替代方法，你可以使用此[Azure 搜索 .net 示例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存储库中的**索引备份-还原**示例代码，将索引定义和索引快照备份到一系列 JSON 文件。 稍后，如果需要，可以使用工具和文件还原索引。  
 
 ### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>能否从 SQL 数据库副本（适用于 [Azure SQL 数据库索引器](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers)）进行索引？
 
@@ -70,9 +80,9 @@ Azure 搜索支持多个数据源、[针对多种语言的语言分析](https://
 
 ### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>为什么确定有效的术语没有匹配项？
 
-最常见的情况是不了解每种查询类型支持不同的搜索行为和语言分析级别。 全文搜索是主要的工作负荷，包括将术语分解成词根形式的语言分析阶段。 查询分析的这种特性拓宽了可能的匹配范围，因为标记化的术语能够匹配更多变体。
+最常见的情况是不了解每种查询类型支持不同的搜索行为和语言分析级别。 全文搜索是最主要的工作负载，它包括将字词分解为根窗体的语言分析阶段。 查询分析的这种特性拓宽了可能的匹配范围，因为标记化的术语能够匹配更多变体。
 
-但是，通配符查询、模糊查询和正则表达式查询的分析方法与常规词或短语查询不同，并且当查询与单词在搜索索引中的分析形式不匹配时可能会导致再次调用性能不佳。 有关查询解析和分析的详细信息，请参阅[查询体系结构](https://docs.microsoft.com/azure/search/search-lucene-query-architecture)。
+但是，通配符查询、模糊查询和正则表达式查询的分析方法与常规词或短语查询不同，并且当查询与单词在搜索索引中的分析形式不匹配时可能会导致再次调用性能不佳。 有关查询分析和分析的详细信息，请参阅[查询体系结构](https://docs.microsoft.com/azure/search/search-lucene-query-architecture)。
 
 ### <a name="my-wildcard-searches-are-slow"></a>通配符搜索速度较慢。
 

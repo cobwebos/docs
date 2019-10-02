@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 737bad504519a2ec7eee9764593245e0fee28cc3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 4523d7bf8f6c0ffc0ebfbc57d20a19baec08c91b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673071"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720354"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>使用地理区域冗余存储（GZRS）构建高度可用的 Azure 存储应用程序（预览版）
 
@@ -21,7 +21,7 @@ ms.locfileid: "71673071"
 
 使用 GZRS 存储帐户，可以在可用性区域变得不可用或无法恢复时继续读取和写入数据。 此外，在发生整个区域中断或发生主要区域无法恢复的灾难时，数据也是持久的。 GZRS 设计为在给定的一年内提供至少 99.99999999999999% （16个9）的对象持久性。 GZRS 还提供与 LRS、ZRS、GRS 或 RA-GRS 相同的 [可伸缩性目标](storage-scalability-targets.md)。 如果你的应用程序需要能够在主要区域发生灾难时读取数据，则可以选择启用对辅助区域中的数据的读取访问（使用读取访问权限异地冗余存储（GZRS））。
 
-Microsoft 建议对需要一致性、持续性、高可用性、优秀性能和灾难恢复能力的应用程序使用 GZRS。 对于发生区域性灾难时对辅助区域的 "读取" 访问权限的其他安全，请为你的存储帐户启用 GZRS。
+Microsoft 建议为需要一致性、持续性、高可用性、优秀性能和恢复能力的应用程序使用 GZRS。 对于发生区域性灾难时对辅助区域的 "读取" 访问权限的其他安全，请为你的存储帐户启用 GZRS。
 
 ## <a name="about-the-preview"></a>关于此预览版
 

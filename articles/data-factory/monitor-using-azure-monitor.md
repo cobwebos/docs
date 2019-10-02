@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: c8d78473a1128dd4f96f2cfa0c14d2d3b1b2c1e9
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 2a707eda6a7e32a95666dd70e196c8da3c3b7834
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300558"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815950"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>使用 Azure Monitor 警报和监视数据工厂
 
@@ -377,7 +377,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```
 
-| 属性 | type | 描述 | 示例 |
+| 属性 | 类型 | 描述 | 示例 |
 | --- | --- | --- | --- |
 | **级别** |字符串 | 诊断日志的级别。 对于 "活动-运行日志"，将属性值设置为4。 | `4` |
 | **correlationId** |字符串 | 用于跟踪特定请求的唯一 ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -401,7 +401,7 @@ Log Analytics 从监视器中继承架构，但有以下例外：
 * 没有 "级别" 列。
 * 动态 "properties" 列保留为以下动态 JSON blob 类型。
 
-    | Azure Monitor 列 | Log Analytics 列 | 类型 |
+    | Azure Monitor 列 | Log Analytics 列 | type |
     | --- | --- | --- |
     | $. 属性。UserProperties | UserProperties | 动态 |
     | $. 属性。批注 | 批注 | 动态 |
@@ -468,6 +468,9 @@ Azure 数据工厂版本2发出以下度量值。
 
 几分钟后，新设置将出现在此数据工厂的设置列表中。 一旦生成新的事件数据，就会将诊断日志流式传输到该工作区。 发出事件时，可能需要长达15分钟的时间，在 Log Analytics 中显示事件。
 
+* 在_特定于资源_的模式下，从 Azure 数据工厂流到_ADFPipelineRun_、 _ADFTriggerRun_和_ADFActivityRun_表的诊断日志
+* 在_Azure 诊断_模式下，诊断日志流入_AzureDiagnostics_表
+
 > [!NOTE]
 > 由于 Azure 日志表的列数不能超过500，因此强烈建议选择 "特定于资源的模式"。 有关详细信息, 请参阅[Log Analytics 已知限制](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics)。
 
@@ -508,6 +511,9 @@ Azure 数据工厂版本2发出以下度量值。
 您可以可视化前面的指标，查看这些指标后面的查询，编辑查询，创建警报，以及执行其他操作。
 
 ![管道按数据工厂运行的图形表示形式](media/data-factory-monitor-oms/monitor-oms-image8.png)
+
+> [!NOTE]
+> Azure 数据工厂分析（预览版）将诊断日志发送到_特定于资源的_目标表。 可以针对以下表编写查询：_ADFPipelineRun_、 _ADFTriggerRun_和_ADFActivityRun_。
 
 ## <a name="alerts"></a>警报
 

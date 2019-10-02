@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 41fbebcf4b85f6e48babba30c2d05fedb3e7a5c7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 74a1a2218020718a05c9d01de96ddf4fccb35eb4
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985293"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802568"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>具有有序聚集列存储索引的性能优化  
 
@@ -29,7 +29,7 @@ ms.locfileid: "70985293"
 若要检查列的段范围，请使用表名称和列名称运行此命令：
 
 ```sql
-SELECT o.name, pnp.index_id, pnp.rows, pnp.data_compression_desc, pnp.pdw_node_id, 
+SELECT o.name, pnp.index_id, cls.row_count, pnp.data_compression_desc, pnp.pdw_node_id, 
 pnp.distribution_id, cls.segment_id, cls.column_id, cls.min_data_id, cls.max_data_id, cls.max_data_id-cls.min_data_id as difference
 FROM sys.pdw_nodes_partitions AS pnp
    JOIN sys.pdw_nodes_tables AS Ntables ON pnp.object_id = NTables.object_id AND pnp.pdw_node_id = NTables.pdw_node_id
@@ -37,8 +37,9 @@ FROM sys.pdw_nodes_partitions AS pnp
    JOIN sys.objects AS o ON TMap.object_id = o.object_id
    JOIN sys.pdw_nodes_column_store_segments AS cls ON pnp.partition_id = cls.partition_id AND pnp.distribution_id  = cls.distribution_id
    JOIN sys.columns as cols ON o.object_id = cols.object_id AND cls.column_id = cols.column_id
-WHERE o.name = '<table_name>' and c.name = '<column_name>'
+WHERE o.name = '<Table_Name>' and cols.name = '<Column_Name>' 
 ORDER BY o.name, pnp.distribution_id, cls.min_data_id
+
 ```
 
 ## <a name="data-loading-performance"></a>数据加载性能
@@ -47,7 +48,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 由于数据排序，将数据加载到有序的 CCI 表可能需要更多的时间，而不是将数据加载到无序的 CCI 表中。  
 
 下面是将数据加载到具有不同架构的表中的性能比较示例。
-![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+![Performance_comparison_data_loading @ no__t-1
  
 ## <a name="reduce-segment-overlapping"></a>减少分段重叠
 下面是通过 CTAS 或使用数据的现有表在新表中创建有序的 CCI 时，进一步减少分段重叠的选项：

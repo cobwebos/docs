@@ -11,19 +11,19 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 09/16/2019
-ms.openlocfilehash: 85ab8a61e0aebadf212217bc88e07e0066eca02b
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 5eaade975adac86b6842d1d8f9f9b8f522d15bca
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146805"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71816080"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL 数据库托管实例资源限制概述
 
-本文概述了 Azure SQL 数据库托管实例的技术特性和资源限制，并提供了有关如何请求增加这些限制的信息。
+本文概述了 Azure SQL 数据库托管实例的技术特征和资源限制，并提供了有关如何请求提高这些限制的信息。
 
 > [!NOTE]
-> 有关支持的功能和 T-SQL 语句的差异，请参阅[功能差异](sql-database-features.md)和 [T-SQL 语句支持](sql-database-managed-instance-transact-sql-information.md)。 有关单一数据库和托管实例中的服务层之间的常规 differencess，请参阅[服务层比较](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison)。
+> 有关支持的功能和 T-SQL 语句的差异，请参阅[功能差异](sql-database-features.md)和 [T-SQL 语句支持](sql-database-managed-instance-transact-sql-information.md)。 有关单一数据库和托管实例中服务层级之间的一般差异，请参阅[服务层级比较](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison)。
 
 ## <a name="instance-level-resource-limits"></a>实例级别的资源限制
 
@@ -38,16 +38,31 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 | 硬件 | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器、快速 NVMe SSD、vCore=1 LP（超线程） |
 | vCore 数目 | 8、16、24 个 vCore | 4、8、16、24、32、40、64、80 个 vCore |
 | 最大内存（内存/核心比） | 每个 vCore 7 GB<br/>添加更多 vCore 以获得更多内存。 | 每个 vCore 5.1 GB<br/>添加更多 vCore 以获得更多内存。 |
-| 最大内存中 OLTP 内存 | 实例限制：每个 vCore 3 GB<br/>数据库限制：<br/> - 8 核：每个数据库 8 GB<br/> - 16 核：每个数据库 20 GB<br/> - 24 核：每个数据库 36 GB | 实例限制：每个 vCore 2.5 GB<br/>数据库限制：<br/> - 8 核：每个数据库 13 GB<br/> - 16 核：每个数据库 32 GB |
+| 最大内存中 OLTP 内存 | 实例限制：1-每 vCore 1.5 GB| 实例限制：每 vCore 0.8-1.65 GB |
 | 最大实例预留存储 |  常规用途：8 TB<br/>业务关键：1TB | 常规用途：8 TB<br/> 业务关键型 1 TB、2 TB 或 4 TB，具体取决于核心数 |
 
 > [!IMPORTANT]
 > - Gen4 硬件正在逐步推出。建议在 Gen5 硬件上部署新的托管实例。
 > - 目前，Gen4 硬件仅在以下区域提供：北欧、西欧、美国东部、美国中南部、美国中北部、美国西部2、美国中部、加拿大中部、印度南部和韩国中部。
 
+#### <a name="in-memory-oltp-available-space"></a>内存中 OLTP 可用空间 
+
+内存中 OLTP 空间量取决于 Vcore 和硬件生成的数量。 下表列出了可用于内存中 OLTP 对象的内存限制。
+
+| 每个 vCore 的内存中 OLTP 空间    | **Gen5** | **Gen4** |
+| --- | --- | --- |
+| 4 | 3.14 GB | |   
+| 8 | 6.28 GB | 8 GB |
+| 16    | 15.77 GB | 20 GB |
+| 24    | 25.25 GB | 36 GB |
+| 32    | 37.94 GB | |
+| 40    | 52.23 GB | |
+| 64    | 99.9 GB   | |
+| 80    | 131.68 GB| |
+
 ### <a name="service-tier-characteristics"></a>服务层特征
 
-托管实例有两个服务层级：[常规用途](sql-database-service-tier-general-purpose.md)和[业务关键](sql-database-service-tier-business-critical.md)。 这些层提供了[不同的功能](sql-database-service-tiers-general-purpose-business-critical.md)，如下表中所述：
+托管实例有两个服务层级：[常规用途](sql-database-service-tier-general-purpose.md)和[业务关键](sql-database-service-tier-business-critical.md)。 这些层级提供[不同的功能](sql-database-service-tiers-general-purpose-business-critical.md)，如下表中所述：
 
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
@@ -60,19 +75,19 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 | 每个实例的数据库文件数目上限 | 最大为280，除非已达到实例存储大小或[Azure 高级磁盘存储空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)的限制。 | 每个数据库32767个文件，除非已达到实例存储大小限制。 |
 | 数据文件最大大小 | 仅限当前可用的实例存储大小（最大 2 TB-8 TB）和[Azure 高级磁盘存储分配空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)。 | 仅限当前可用的实例存储大小（最大为 1 TB-4 TB）。 |
 | 最大日志文件大小 | 仅限 2 TB 和当前可用的实例存储大小。 | 仅限 2 TB 和当前可用的实例存储大小。 |
-| 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[增大文件大小以获取更多 IOPS](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5.5 k-110 K （1375/vCore）<br/>添加更多 vCore 以获得更好的 IO 性能。 |
+| 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[增大文件大小以获取更多 IOPS](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5.5 K - 110 K (1375/vCore)<br/>添加更多 vCore 以获得更好的 IO 性能。 |
 | 日志写入吞吐量限制（每个实例） | 3 MB/s（每个 vCore）<br/>最大 22 MB/秒 | 4 MB/秒（每个 vCore）<br/>最大 48 MB/s |
 | 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[增大文件大小以获得更好的 IO 性能](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 不受限制。 |
 | 存储 IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
 | 内存中 OLTP | 不支持 | 可用 |
 | 最大会话数 | 30000 | 30000 |
-| [只读副本](sql-database-read-scale-out.md) | 0 | 1（包含于价格中） |
+| [只读副本](sql-database-read-scale-out.md) | 0 | 1（包含在价格中） |
 
 > [!NOTE]
 > - **当前可用的实例存储大小**是保留实例大小与已用存储空间之间的差异。
 > - 与最大存储大小限制进行比较的实例存储大小同时包括用户和系统数据库中的数据及日志文件大小。 可以使用 <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> 系统视图来确定数据库使用的空间总量。 错误日志不会持久保存，不包括在大小中。 备份不包括在存储大小中。
 > - 吞吐量和 IOPS 还取决于不受托管实例显式限制的页面大小。
-> 你可以使用自动故障转移组在不同的 Azure 区域中创建另一个可读副本。
+> 可以使用自动故障转移组在不同的 Azure 区域中创建另一个只读副本。
 
 > [!NOTE]
 > 有关详细信息，请查看[本文中托管实例池中的资源限制](sql-database-instance-pools.md#instance-pools-resource-limitations)。

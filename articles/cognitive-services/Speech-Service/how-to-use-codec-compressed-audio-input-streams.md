@@ -1,38 +1,41 @@
 ---
-title: 通过 Speech SDK-语音服务流式处理编解码器压缩音频
+title: 使用语音 SDK 流式传输编解码器压缩的音频 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何通过语音 SDK 将压缩音频流式传输到 Azure 语音服务。 适用于C++Linux C#的、和 Java。
+description: 了解如何使用语音 SDK 将压缩音频流式传输到 Azure 语音服务。 适用于C++适用C#于 Linux 的、和 java、Android 中的 java 和 iOS 中的目标-C。
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: b29b42dea9522526d49c1bda017a522855946def
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8f2896a6289ecaf4046d705da106636258cdadc5
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559558"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802243"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 
-语音 SDK 的**压缩音频输入流**API 提供了使用 PullStream 或 PushStream 将压缩音频流式传输到语音服务的方法。
+语音 SDK 的**压缩音频输入流** API 提供了一种使用 PullStream 或 PushStream 将压缩音频流式传输到语音服务的方法。
 
 > [!IMPORTANT]
-> 仅 Linux (ubuntu 16.04、ubuntu C++18.04 C#、Debian 9) 上的、和 Java 支持流式压缩音频。
-> 需要语音 SDK 版本1.4.0 或更高版本。
+> 目前，Linux （ubuntu 16.04、ubuntu C++18.04 C#、Debian 9）上的、和 Java 支持流式传输的输入音频。 它[在 Android](how-to-use-codec-compressed-audio-input-streams-android.md)和[iOS 平台中](how-to-use-codec-compressed-audio-input-streams-ios.md)的适用于 Java 的 Java 也是支持的。
+> 需要语音 SDK 版本1.7.0 或更高版本。
 
-对于 wav/PCM, 请参阅主线语音文档。  在 wav/PCM 外部, 支持以下编解码器压缩输入格式:
+有关 wav/PCM，请参阅主线语音文档。  在 wav/PCM 之外，支持以下编解码器压缩的输入格式：
 
 - MP3
 - OPUS/OGG
+- FLAC
+- Wav 容器中的 ALAW
+- Wav 容器中的 MULAW
 
-## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>使用编解码器压缩的音频输入的先决条件
+## <a name="prerequisites"></a>先决条件
 
-安装这些附加的依赖项, 以便在适用于 Linux 的语音 SDK 中使用压缩的音频输入:
+处理压缩音频是使用[适用 gstreamer](https://gstreamer.freedesktop.org)实现的。 出于许可原因，适用 gstreamer 不编译二进制文件并将其与语音 SDK 链接。 因此，应用程序开发人员需要在18.04、16.04 和 Debian 9 上安装以下各项，才能使用压缩的输入音频。
 
 ```sh
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
@@ -40,9 +43,9 @@ sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugin
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>使用编解码器压缩的音频输入的示例代码
 
-若要以压缩的音频格式流式传输到语音服务, `PullAudioInputStream`请`PushAudioInputStream`创建或。 然后, `AudioConfig`通过指定流的压缩格式, 从 stream 类的实例创建。
+若要以压缩音频格式流式传输到语音服务，请创建 `PullAudioInputStream` 或 `PushAudioInputStream`。 然后，从流类的实例创建 `AudioConfig`，并指定流的压缩格式。
 
-假设你有一个名`myPushStream`为的输入流类, 并使用 OPUS/OGG。 你的代码可能如下所示:
+让我们假设你有一个名为 `myPushStream` 的输入流类，并且使用 OPUS/OGG。 你的代码可能如下所示：
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;

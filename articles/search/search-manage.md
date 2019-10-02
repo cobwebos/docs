@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2c4b2a03e7e5c818453eaf4ad6881b2caba3b93c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647681"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719868"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure 门户中 Azure 搜索服务管理
 > [!div class="op_single_selector"]
@@ -79,10 +79,9 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 
 ## <a name="backup-and-restore"></a>备份和还原
 
-由于 Azure 搜索不是主数据存储解决方案，因此，我们不提供正式的自助备份和还原机制。 如果误删索引，用于创建和填充索引的应用程序代码是事实上的还原选项。 
+由于 Azure 搜索不是主数据存储解决方案，因此，我们不提供正式的自助备份和还原机制。 但是，可以使用此[Azure 搜索 .net 示例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存储库中的**索引备份-还原**示例代码将索引定义和快照备份到一系列 JSON 文件，然后根据需要使用这些文件还原索引。 此工具还可以在服务层之间移动索引。
 
-要重新生成索引，请删除它（假设其存在），在服务中重新创建该索引，并通过从主数据存储中检索数据来重新加载该索引。
-
+否则，如果错误地删除了索引，则用于创建和填充索引的应用程序代码将是事实上的还原选项。 要重新生成索引，请删除它（假设其存在），在服务中重新创建该索引，并通过从主数据存储中检索数据来重新加载该索引。
 
 <a id="scale"></a>
 

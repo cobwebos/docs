@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: 440a36d00334840688f66d0027152d7581b7158c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 9ff7ba5f04a8c1862f8ef136f8f3f6900f00a431
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309901"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802556"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题
 
@@ -165,7 +165,7 @@ U-SQL 提供针对表的 CREATE STATISTICS 语句。 此语句为查询优化器
 
 组合器模式的属性：
 
-- [SqlUserDefinedCombiner(Mode=CombinerMode.Full)]: Every output row potentially depends on all the input rows from left and right with the same key value.
+- SqlUserDefinedCombiner （Mode = CombinerMode）：每个输出行可能依赖于左侧和右侧具有相同密钥值的所有输入行。
 
 - SqlUserDefinedCombiner （Mode = CombinerMode）：每个输出行依赖于左侧的单个输入行（并且可能具有相同键值的所有行）。
 

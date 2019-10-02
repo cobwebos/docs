@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 10/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b135838558a493cff0e28a8429d31f5a03a69857
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 922e5a2d5c639d7df380f686ddf7843ab59fca59
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033459"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802360"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -59,7 +59,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 **连接到支持 SCIM 的应用程序：**
 
-1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)。 
+1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)。 请注意，你可以通过注册[开发人员计划](https://developer.microsoft.com/office/dev-program)来访问使用 P2 许可证的 Azure Active Directory 免费试用版
 1. 从左窗格中选择 "**企业应用程序**"。 将显示所有已配置应用的列表，包括从库中添加的应用。
 1. 选择 " **+ 新建应用程序** > **所有** > **非库应用程序**"。
 1. 输入应用程序的名称，然后选择 "**添加**" 以创建应用对象。 新应用将添加到企业应用程序列表中，并打开到其应用管理屏幕。
@@ -96,6 +96,9 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 > [!NOTE]
 > 初始周期的执行时间比后续同步长，只要服务正在运行，大约每隔40分钟就会进行一次同步。
 
+**若要将应用程序发布到 Azure AD 应用程序库：**
+
+如果要生成将使用多个租户的应用程序，可以在 Azure AD 应用程序库中使用它。 这样，组织就可以轻松发现应用程序并配置设置。 在 Azure AD 库中发布你的应用程序并使其可供其他人使用非常简单。 在[此处](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)查看步骤。 
 ## <a name="understanding-the-azure-ad-scim-implementation"></a>了解 Azure AD SCIM 实现
 
 如果构建的应用程序支持 SCIM 2.0 用户管理 API，本部分将详细介绍如何实现 Azure AD SCIM 客户端，以及如何对 SCIM 协议请求处理和响应进行建模。 实现 SCIM 终结点后，可以按照上一部分中所述的过程对其进行测试。
@@ -1339,7 +1342,7 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 | Facsimile-TelephoneNumber |phoneNumbers[type eq "fax"].value |
 | givenName |name.givenName |
 | jobTitle |title |
-| 邮件 |emails[type eq "work"].value |
+| mail |emails[type eq "work"].value |
 | mailNickname |externalId |
 | 管理器 |manager |
 | mobile |phoneNumbers[type eq "mobile"].value |
@@ -1357,7 +1360,7 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 | Azure Active Directory 组 | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
 | displayName |externalId |
-| 邮件 |emails[type eq "work"].value |
+| mail |emails[type eq "work"].value |
 | mailNickname |displayName |
 | 成员 |members |
 | objectId |id |

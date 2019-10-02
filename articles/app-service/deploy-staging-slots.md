@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 436ab0a561349185de58c3783f334ea1dce9001d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129709"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720117"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -45,7 +45,7 @@ ms.locfileid: "71129709"
 
 2. 在左窗格中，选择“部署槽” > “添加槽”。
    
-    ![添加新的部署插槽](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![添加新的部署槽](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
    > 如果应用尚未处于 "**标准**"、"**高级**" 或 "**独立**" 层中，你将收到一条消息，指示用于启用过渡发布的支持层。 此时，可选择“升级”，转到应用的“缩放”选项卡，然后继续。
@@ -106,7 +106,7 @@ ms.locfileid: "71129709"
 
 若要将应用设置或连接字符串配置为粘滞到特定的槽（未交换），请转到该槽的“配置”页。 添加或编辑某个设置，然后选择“部署槽设置”。 选中此复选框可让应用服务知道该设置不可交换。 
 
-![插槽设置](./media/web-sites-staged-publishing/SlotSetting.png)
+![槽设置](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
@@ -139,9 +139,6 @@ ms.locfileid: "71129709"
 <a name="Multi-Phase"></a>
 
 ### <a name="swap-with-preview-multi-phase-swap"></a>带预览的交换（多阶段交换）
-
-> [!NOTE]
-> Linux 上的 Web 应用不支持带预览的交换。
 
 在交换到用作目标槽的生产槽之前，请使用交换的设置验证应用的运行。 源槽在交换完成之前也已预热，这对于任务关键型应用程序是可行的。
 
@@ -204,7 +201,8 @@ ms.locfileid: "71129709"
 <a name="Warm-up"></a>
 
 ## <a name="specify-custom-warm-up"></a>指定自定义预热
-使用[自动交换](#Auto-Swap)时，某些应用可能需要在交换前自定义的预热操作。 web.config 中的 `applicationInitialization` 配置元素可用于指定自定义初始化操作。 [交换操作](#AboutConfiguration)在与目标槽交换之前等待此自定义预热操作完成。 以下是 web.config 片段的示例。
+
+某些应用可能需要自定义的预热操作才能进行交换。 web.config 中的 `applicationInitialization` 配置元素可用于指定自定义初始化操作。 [交换操作](#AboutConfiguration)在与目标槽交换之前等待此自定义预热操作完成。 以下是 web.config 片段的示例。
 
     <system.webServer>
         <applicationInitialization>
@@ -317,7 +315,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ```
 
 ---
-### <a name="swap-deployment-slots"></a>交换部署槽
+### <a name="swap-deployment-slots"></a>交换部署槽位
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
@@ -334,7 +332,61 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
----
+## <a name="automate-with-arm-templates"></a>通过 ARM 模板自动执行
+
+[ARM 模板](https://docs.microsoft.com/en-us/azure/azure-resource-manager/template-deployment-overview)是声明性的 JSON 文件，用于自动部署和配置 Azure 资源。 若要使用 ARM 模板交换槽，请在 " *microsoft/站点/槽*" 和 " *microsoft 网站/站点*" 资源上设置两个属性：
+
+- `buildVersion`：这是一个字符串属性，表示槽中部署的应用的当前版本。 例如： "v1"、"1.0.0.1" 或 "20T11：53： 25.2887393-07： 00"。
+- `targetBuildVersion`：这是一个字符串属性，该属性指定槽应具有的 @no__t。 如果 targetBuildVersion 不等于当前 `buildVersion`，则会通过查找具有指定 `buildVersion` 的槽来触发交换操作。
+
+### <a name="example-arm-template"></a>ARM 模板示例
+
+以下 ARM 模板将更新过渡槽的 @no__t 0，并在生产槽上设置 @no__t。 这将交换两个槽。 该模板假设已有使用名为 "过渡" 的槽创建的 webapp。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "my_site_name": {
+            "defaultValue": "SwapAPIDemo",
+            "type": "String"
+        },
+        "sites_buildVersion": {
+            "defaultValue": "v1",
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites/slots",
+            "apiVersion": "2018-02-01",
+            "name": "[concat(parameters('my_site_name'), '/staging')]",
+            "location": "East US",
+            "kind": "app",
+            "properties": {
+                "buildVersion": "[parameters('sites_buildVersion')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('my_site_name')]",
+            "location": "East US",
+            "kind": "app",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites/slots', parameters('my_site_name'), 'staging')]"
+            ],
+            "properties": {
+                "targetBuildVersion": "[parameters('sites_buildVersion')]"
+            }
+        }        
+    ]
+}
+```
+
+此 ARM 模板是幂等的，这意味着它可以重复执行，并生成相同的槽状态。 第一次执行后，`targetBuildVersion` 将与当前 `buildVersion` 匹配，因此将不会触发交换。
+
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>

@@ -17,12 +17,12 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8e7bd33d74d9ecf6ebc35981df7255ecc19253c7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290970"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812600"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
@@ -57,6 +57,9 @@ Azure AD Connect 使用 3 个帐户，将信息从本地或 Windows Server Activ
 > 专用管理林允许组织在安全控制比生产环境更强的环境中托管管理帐户、工作站和组。
 > 若要了解有关专用管理林的详细信息，请参阅[ESAE 管理林设计方法](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
 >>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+
+> [!NOTE]
+> 在初始安装后不需要全局管理员角色，并且唯一需要的帐户将是**目录同步帐户**角色帐户。 这并不 necssarily 意味着只需删除具有全局管理员角色的帐户。 最好将角色更改为不太强大的角色，因为如果需要重新运行向导，则完全删除帐户可能会导致问题。 通过减少角色的权限，你始终可以重新提升权限（如果必须再次使用 Azure AD Connect 向导）。 
 
 ## <a name="installing-azure-ad-connect"></a>正在安装 Azure AD Connect
 Azure AD Connect 安装向导提供提供两种不同的路径：

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 67e95133b9d78823f37ba48f291175ae8e9058d6
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 7b9d4099734af3a04f43d35d89f07f8b005c90f9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703559"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802514"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Service Bus 资源管理器例外
 
@@ -36,7 +36,7 @@ ms.locfileid: "71703559"
 
 | 错误代码 | 错误子代码 | 错误消息 | 描述 | 建议 |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| 错误请求 | 40000 | 子代码 = 40000。 创建队列时无法设置属性 *"属性名称"* ，因为命名空间 *"命名空间名称"* 正在使用 "基本" 层。 此操作仅在 "标准" 层或 "高级" 层中受支持。 | 在 Azure 服务总线基本层上，无法设置或更新以下属性- <ul> <li> Queuedescription.requiresduplicatedetection </li> <li> AutoDeleteOnIdle </li> <li>requiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> Microsoft.servicebus.messaging.queuedescription.enableexpress </li> <li> ForwardTo </li> <li> 主题 </li> </ul> | 请考虑从基本层升级到标准层或高级层，以利用此功能。 |
+| 错误请求 | 40000 | 子代码 = 40000。 创建队列时无法设置属性 *"属性名称"* ，因为命名空间 *"命名空间名称"* 正在使用 "基本" 层。 此操作仅在 "标准" 层或 "高级" 层中受支持。 | 在 Azure 服务总线基本层上，无法设置或更新以下属性- <ul> <li> Queuedescription.requiresduplicatedetection </li> <li> AutoDeleteOnIdle </li> <li>requiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> Microsoft.servicebus.messaging.queuedescription.enableexpress </li> <li> ForwardTo </li> <li> 主题 </li> </ul> | 请考虑从基本层升级到标准层或高级层，以使用此功能。 |
 | 错误请求 | 40000 | 子代码 = 40000。 无法更改现有队列（或主题）的 "Queuedescription.requiresduplicatedetection" 属性的值。 | 创建实体时，必须启用/禁用重复检测。 创建后，不能更改重复检测配置参数。 | 若要对先前创建的队列/主题启用重复检测，可以创建具有重复检测的新队列/主题，然后将原始队列转发到新的队列/主题。 |
 | 错误请求 | 40000 | 子代码 = 40000。 指定的值16384无效。 属性 "MaxSizeInMegabytes" 必须为以下值之一：1024; 2048; 3072; 4096; 5120。 | MaxSizeInMegabytes 值无效。 | 确保 MaxSizeInMegabytes 是1024、2048、3072、4096、5120中的一种。 |
 | 错误请求 | 40000 | 子代码 = 40000。 无法更改队列/主题的分区。 | 无法更改实体的分区。 | 创建新的实体（队列或主题）并启用分区。 | 
@@ -58,4 +58,17 @@ ms.locfileid: "71703559"
 | 429 | 40901 | 子代码 = 40901。 正在进行另一个冲突的操作。 | 正在对同一资源/实体执行其他冲突操作 | 等待当前正在进行的操作完成，然后重试。 |
 | 429 | 40900 | 子代码 = 40900。 合并. 在资源的当前状态下不允许所请求的操作。 | 当多个请求同时对同一实体（队列、主题、订阅或规则）执行操作时，可能会发生这种情况。 | 等待几秒钟，然后重试 |
 | 429 | 无 | 发生资源冲突。 可能正在进行另一个冲突的操作。 如果重试失败的操作，后台清理仍处于挂起状态。 请稍后重试。 | 对于同一实体存在挂起的操作时，可能会命中此条件。 | 等待前一个操作完成，然后重试。 |
+| 429 | 无 | 实体 *"实体名称"* 上的请求与其他请求冲突 | 正在对同一资源/实体执行其他冲突操作 | 等待前一个操作完成，然后重试 |
+| 429 | 无 | 正在为实体 *"实体名称"* 进行另一个更新请求。 | 正在对同一资源/实体执行其他冲突操作 | 等待前一个操作完成，然后重试 |
 
+
+## <a name="error-code-not-found"></a>错误代码：未找到
+
+此类错误表示找不到资源。
+
+| 错误代码 | 错误子代码 | 错误消息 | 描述 | 建议 |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| 找不到 | 无 | 找不到实体 *"实体名称"* 。 | 找不到操作的实体。 | 请检查实体是否存在，并重试该操作。 |
+| 找不到 | 无 | 找不到。 该操作不存在。 | 尝试执行的操作不存在。 | 请检查该操作，然后重试。 |
+| 找不到 | 无 | 传入请求未被识别为命名空间策略 put 请求。 | 传入请求正文为 null，因此无法作为 put 请求来执行。 | 请检查请求正文，确保它不为 null。 | 
+| 找不到 | 无 | 找不到消息实体 *"实体名称"* 。 | 找不到您尝试对其执行操作的实体。 | 请检查实体是否存在，并重试该操作。 |

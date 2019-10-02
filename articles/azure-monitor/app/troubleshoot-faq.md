@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 09/16/2019
 ms.author: mbullwin
-ms.openlocfilehash: 778a95db8ce462d06e2464db56b542f8113a4960
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875381"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802288"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -59,9 +59,9 @@ ms.locfileid: "67875381"
 
 [阅读定价计划](https://azure.microsoft.com/pricing/details/application-insights/)。
 
-## <a name="how-much-is-it-costing"></a>花费是多少？
+## <a name="how-much-does-it-cost"></a>费用是多少？
 
-* 在 Application Insights 资源中打开“使用情况和估算成本”页面。  此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
+* 在 Application Insights 资源中打开“使用情况和估算成本”页面。 此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
 * 打开 [Azure 计费边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)查看所有资源的帐单。
 
 ## <a name="q14"></a>Application Insights 在我的项目中修改哪些内容？
@@ -90,7 +90,7 @@ ms.locfileid: "67875381"
 请参阅[发行说明](release-notes.md)了解对应于应用程序类型的 SDK。
 
 ## <a name="update"></a>如何更改项目向哪个 Azure 资源发送数据？
-在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”  。 可在 Azure 中将数据发送到现有或新资源。 更新向导更改 ApplicationInsights.config 中的检测密钥，该密钥确定服务器 SDK 将数据发送到何处。 除非取消选中“更新全部”，否则它还将在网页中出现密钥的位置更改密钥。
+在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”。 可在 Azure 中将数据发送到现有或新资源。 更新向导更改 ApplicationInsights.config 中的检测密钥，该密钥确定服务器 SDK 将数据发送到何处。 除非取消选中“更新全部”，否则它还将在网页中出现密钥的位置更改密钥。
 
 ## <a name="what-is-status-monitor"></a>什么是状态监视器？
 
@@ -139,6 +139,8 @@ ms.locfileid: "67875381"
 
 * 浏览器遥测：收集发送方的 IP 地址。
 * 服务器遥测：Application Insights 模块收集客户端 IP 地址。 如果设置了 `X-Forwarded-For`，则不会进行收集。
+* 若要详细了解如何在中收集 IP 地址和地理位置数据 Application Insights 参阅此[文](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)。
+
 
 可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
 
@@ -287,7 +289,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 </ApplicationInsights>
 ```
 
-注意，自 v2.6.0 开始具备 ApplicationIdProvider 功能 
+注意，自 v2.6.0 开始具备 ApplicationIdProvider 功能
 
 ### <a name="proxy-passthrough"></a>代理透传
 

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 304091634c9e07f0a34029e83111a537b95bc061
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 329c7191482787f25cfddfd8c4d70074df9a7c1f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338537"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719966"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>从媒体索引器和媒体索引器2迁移到视频索引器
 
-[Azure Media Indexer v1](media-services-index-content.md)媒体处理器将于2020年10月1日停用。 [Azure Media Indexer V2 预览版](media-services-process-content-with-indexer2.md)媒体处理器将于2020年1月1日停用。  [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
+[Azure Media Indexer](media-services-index-content.md)媒体处理器将在2020年10月1日停用。 [Azure Media Indexer 2 预览版](media-services-process-content-with-indexer2.md)媒体处理器将于2020年1月1日停用。  [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
 
 Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 搜索、认知服务（如人脸 API、Microsoft Translator、计算机视觉 API 和自定义语音服务）构建的。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。 若要查看视频索引器可用于哪些方案、它所提供的功能以及如何开始使用，请参阅[视频索引器视频和音频型号](../video-indexer/video-indexer-overview.md)。 
 

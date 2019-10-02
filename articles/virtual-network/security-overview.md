@@ -56,7 +56,7 @@ ms.locfileid: "70886030"
 
 可在[网络安全组规则](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中使用以下服务标记。 末尾带有星号的服务标记 (即 AzureCloud *) 也可在[Azure 防火墙网络规则](https://docs.microsoft.com/azure/firewall/service-tags)中使用。 
 
-* **ApiManagement***（仅限资源管理器）：此标记表示 APIM 专用部署的管理流量地址前缀。 如果指定 ApiManagement 作为值，则会允许或拒绝发往 ApiManagement 的流量。 对于入站/出站安全规则，建议使用此标记。 
+* **ApiManagement**\*（仅限资源管理器）：此标记表示 APIM 专用部署的管理流量地址前缀。 如果指定 ApiManagement 作为值，则会允许或拒绝发往 ApiManagement 的流量。 对于入站/出站安全规则，建议使用此标记。 
 * **AppService**\*（仅限资源管理器）：此标记表示 Azure AppService 服务的地址前缀。 如果指定 AppService 作为值，则会允许或拒绝发往 AppService 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AppService，则可采用以下格式 AppService.[区域名称] 指定该区域。 对于 WebApps 前端的出站安全规则，建议使用此标记。  
 * **AppServiceManagement**\*（仅限资源管理器）：此标记表示应用服务环境专用部署的管理流量地址前缀。 如果指定 AppServiceManagement 作为值，则会允许或拒绝发往 AppServiceManagement 的流量。 对于入站/出站安全规则，建议使用此标记。 
 * **AzureActiveDirectory**\*（仅限资源管理器）：此标记表示 AzureActiveDirectory 服务的地址前缀。 如果指定 AzureActiveDirectory 作为值，则会允许或拒绝发往 AzureActiveDirectory 的流量。 对于出站安全规则，建议使用此标记。
@@ -64,10 +64,10 @@ ms.locfileid: "70886030"
 * **AzureBackup**\*（仅限资源管理器）：此标记表示 AzureBackup 服务的地址前缀。 如果指定 *AzureBackup* 作为值，则会允许或拒绝发往 AzureBackup 的流量。 此标记依赖于**存储**和**AzureActiveDirectory**标记。 对于出站安全规则，建议使用此标记。 
 * **AzureCloud**\* (仅资源管理器):此标记表示 Azure 的 IP 地址空间，包括所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)。 如果指定 AzureCloud 作为值，则会允许或拒绝发往 Azure 公共 IP 地址的流量。 如果只想允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureCloud，可以指定以下格式的区域 AzureCloud。[region name]。 对于出站安全规则，建议使用此标记。 
 * **AzureConnectors**\*（仅限资源管理器）：此标记表示用于探测/后端连接的逻辑应用连接器的地址前缀。 如果指定 AzureConnectors 作为值，则会允许或拒绝发往 AzureConnectors 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AzureConnectors，则可采用以下格式 AzureConnectors.[区域名称] 指定该区域。 对于入站安全规则，建议使用此标记。 
-* **AzureContainerRegistry***（仅限资源管理器）：此标记表示 Azure 容器注册表服务的地址前缀。 如果指定 AzureContainerRegistry 作为值，则会允许或拒绝发往 AzureContainerRegistry 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AzureContainerRegistry，则可采用以下格式 AzureContainerRegistry.[区域名称] 指定该区域。 对于出站安全规则，建议使用此标记。 
-* **AzureCosmosDB***（仅限资源管理器）：此标记表示 Azure Cosmos 数据库服务的地址前缀。 如果指定 *AzureCosmosDB* 作为值，则会允许或拒绝发往 AzureCosmosDB 的流量。 如果仅希望允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureCosmosDB，则可以在以下格式的 AzureCosmosDB.[region name] 中指定区域。 对于出站安全规则，建议使用此标记。 
+* **AzureContainerRegistry**\*（仅限资源管理器）：此标记表示 Azure 容器注册表服务的地址前缀。 如果指定 AzureContainerRegistry 作为值，则会允许或拒绝发往 AzureContainerRegistry 的流量。 如果仅希望允许访问某个特定[区域](https://azure.microsoft.com/regions)中的 AzureContainerRegistry，则可采用以下格式 AzureContainerRegistry.[区域名称] 指定该区域。 对于出站安全规则，建议使用此标记。 
+* **AzureCosmosDB**\*（仅限资源管理器）：此标记表示 Azure Cosmos 数据库服务的地址前缀。 如果指定 *AzureCosmosDB* 作为值，则会允许或拒绝发往 AzureCosmosDB 的流量。 如果仅希望允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureCosmosDB，则可以在以下格式的 AzureCosmosDB.[region name] 中指定区域。 对于出站安全规则，建议使用此标记。 
 * **AzureDataLake**\* (仅资源管理器):此标记表示 Azure Data Lake 服务的地址前缀。 如果指定 AzureDataLake 作为值，则会允许或拒绝发往 AzureDataLake 的流量。 对于出站安全规则，建议使用此标记。 
-* **AzureKeyVault***（仅限资源管理器）：此标记表示 Azure KeyVault 服务的地址前缀。 如果指定 *AzureKeyVault* 作为值，则会允许或拒绝发往 AzureKeyVault 的流量。 如果仅希望允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureKeyVault，则可以在以下格式的 AzureKeyVault.[region name] 中指定区域。 此标记依赖于 **AzureActiveDirectory** 标记。 对于出站安全规则，建议使用此标记。  
+* **AzureKeyVault**\*（仅限资源管理器）：此标记表示 Azure KeyVault 服务的地址前缀。 如果指定 *AzureKeyVault* 作为值，则会允许或拒绝发往 AzureKeyVault 的流量。 如果仅希望允许访问特定[区域](https://azure.microsoft.com/regions)中的 AzureKeyVault，则可以在以下格式的 AzureKeyVault.[region name] 中指定区域。 此标记依赖于 **AzureActiveDirectory** 标记。 对于出站安全规则，建议使用此标记。  
 * **AzureLoadBalancer**（资源管理器）（如果是经典部署模型，则为 **AZURE_LOADBALANCER**）：此标记表示 Azure 的基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](security-overview.md#azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 如果不使用 Azure 负载均衡器，则可替代此规则。
 * **AzureMachineLearning**\* (仅资源管理器):此标记表示 AzureMachineLearning 服务的地址前缀。 如果指定 AzureMachineLearning 作为值，则会允许或拒绝发往 AzureMachineLearning 的流量。 对于出站安全规则，建议使用此标记。 
 * **AzureMonitor**\*（仅限资源管理器）：此标记表示 Log Analytics、App Insights、AzMon 和自定义指标 (g 终结点) 的地址前缀。 如果指定 AzureMonitor 作为值，则会允许或拒绝发往 AzureMonitor 的流量。 对于 Log Analytics，此标记依赖于 **Storage** 标记。 对于出站安全规则，建议使用此标记。

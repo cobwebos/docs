@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a8e35254a79ac43b35f45d1a20f3d1f6815f32be
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702807"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802111"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
@@ -112,10 +112,7 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 ### <a name="create-client-secret"></a>创建客户端机密
 
-1. 在“API 访问”下，选择“密钥”。
-1. 在“密钥说明”框中输入密钥的说明。 例如“审核日志密钥”。
-1. 选择一个**有效期**，然后选择“保存”。
-1. 记下密钥的“值”。 在自动化脚本（例如，后续部分所示的示例 PowerShell 脚本）中，需要使用此值进行身份验证。
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 现已获取一个具有所需 API 访问权限的应用程序、一个应用程序 ID，以及一个可在自动化脚本中使用的密钥。 有关如何使用脚本获取活动事件的示例，请参阅本文稍后的“PowerShell 脚本”部分。
 

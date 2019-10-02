@@ -1,6 +1,6 @@
 ---
-title: 教程：为 Foodee 配置自动用户预配 Azure Active Directory |Microsoft Docs
-description: 了解如何配置 Azure Active Directory 以自动将用户帐户预配到 Foodee 以及取消其预配。
+title: 教程：使用 Azure Active Directory 为自动用户预配配置 Foodee |Microsoft Docs
+description: 了解如何配置 Azure Active Directory 以便自动预配用户帐户并将其取消预配到 Foodee。
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,157 +15,163 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 171a1141670e55814474390c59ae8d514491edbd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: abf2a752eaf0f1d0a9a8b07072dfc0b4c1ae45b7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088092"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812717"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Foodee
 
-本教程的目的是演示要在 Foodee 和 Azure Active Directory （Azure AD）中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到 Foodee 以及取消其预配。
+本文介绍如何在 Foodee 中配置 Azure Active Directory （Azure AD），并将 Azure AD 自动预配或取消预配用户或组到 Foodee。
 
 > [!NOTE]
-> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
+> 本文介绍了在 Azure AD 用户预配服务的基础上构建的连接器。 若要了解此服务的作用及其工作原理，并获得常见问题的答案，请参阅[使用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../manage-apps/user-provisioning.md)。
 >
-> 此连接器目前以公共预览版提供。 有关预览功能的一般 Microsoft Azure 使用条款的详细信息, 请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此连接器目前提供预览版。 有关预览版功能的 Azure 使用条款功能的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程中概述的方案假定你已具有以下先决条件：
+本教程假定你满足以下先决条件：
 
-* Azure AD 租户。
+* Azure AD 租户
 * [Foodee 租户](https://www.food.ee/about/)
-* Foodee 中具有管理员权限的用户帐户。
+* Foodee 中具有管理员权限的用户帐户
 
-## <a name="assigning-users-to-foodee"></a>将用户分配到 Foodee 
+## <a name="assign-users-to-foodee"></a>将用户分配到 Foodee 
 
-Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中, 只同步已分配到 Azure AD 中的应用程序的用户和/或组。
+Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户或组。
 
-在配置和启用自动用户预配之前，应确定 Azure AD 中哪些用户和/或组需要访问 Foodee。 确定后，可按照此处的说明将这些用户和/或组分配到 Foodee：
-* [向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)
+在配置和启用自动用户预配之前，应确定 Azure AD 中的哪些用户或组需要访问 Foodee。 做出此决定后，可以按照[向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)中的说明将这些用户或组分配到 Foodee。
 
 ## <a name="important-tips-for-assigning-users-to-foodee"></a>将用户分配到 Foodee 的重要提示 
 
-* 建议将单个 Azure AD 用户分配到 Foodee 以测试自动用户预配配置。 其他用户和/或组可以稍后分配。
+分配用户时，请记住以下提示：
 
-* 将用户分配到 Foodee 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
+* 建议仅将一个 Azure AD 用户分配到 Foodee 以测试自动用户预配的配置。 稍后可以分配其他用户或组。
 
-## <a name="setup-foodee-for-provisioning"></a>设置 Foodee 以进行预配
+* 将用户分配到 Foodee 时，请在 "**分配**" 窗格中选择任何特定于应用程序的有效角色（如果可用）。 将从设置中排除具有*默认访问*角色的用户。
 
-将 Foodee 配置为使用 Azure AD 进行自动用户预配之前，需要在 Foodee 上启用 SCIM 设置。
+## <a name="set-up-foodee-for-provisioning"></a>设置 Foodee 以进行预配
 
-1. 登录到[Foodee](https://www.food.ee/login/)。 单击你的**租户 ID**
+使用 Azure AD 配置 Foodee 以实现自动用户预配之前，需要在 Foodee 中为跨域标识管理（SCIM）预配启用系统。
+
+1. 登录到[Foodee](https://www.food.ee/login/)，然后选择你的租户 ID。
 
     ![Foodee](media/Foodee-provisioning-tutorial/tenant.png)
 
-2. 在 "企业门户" 下 > 选择 "**单一登录**"。
+1. 在 "**企业门户**" 下，选择 "**单一登录**"。
 
-    ![Foodee](media/Foodee-provisioning-tutorial/scim.png)
+    ![Foodee Enterprise Portal 左窗格菜单](media/Foodee-provisioning-tutorial/scim.png)
 
-3. 复制**API 令牌**。 这些值将在 Azure 门户的 Foodee 应用程序的 "预配" 选项卡的 "**机密令牌**" 字段中输入。
+1. 复制 " **API 令牌**" 框中的值供以后使用。 你将在 Azure 门户的 Foodee 应用程序的 "**预配**" 选项卡的 "**机密令牌**" 框中输入它。
 
     ![Foodee](media/Foodee-provisioning-tutorial/token.png)
 
-
 ## <a name="add-foodee-from-the-gallery"></a>从库中添加 Foodee
 
-若要为 Foodee 配置自动用户预 Azure AD 配，需要将 Azure AD 应用程序库中的 Foodee 添加到托管的 SaaS 应用程序列表。
+若要使用 Azure AD 为自动用户预配配置 Foodee，需要将 Azure AD 应用程序库中的 Foodee 添加到托管 SaaS 应用程序列表。
 
-**若要从 Azure AD 应用程序库中添加 Foodee，请执行以下步骤：**
+若要从 Azure AD 应用程序库中添加 Foodee，请执行以下操作：
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中, 选择 " **Azure Active Directory**"。
+1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”。
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
+    ![Azure Active Directory 命令](common/select-azuread.png)
 
-2. 转到“企业应用程序”，并选择“所有应用程序”。
+1. 选择“企业应用程序” > “所有应用程序”。
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+    ![“企业应用程序”窗格](common/enterprise-applications.png)
 
-3. 若要添加新应用程序, 请选择窗格顶部的 "**新建应用程序**" 按钮。
+1. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**"。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，输入 " **Foodee**"，在结果面板中选择 " **Foodee** "，然后单击 "**添加**" 按钮添加该应用程序。
+1. 在搜索框中，输入 " **Foodee**"，在结果窗格中选择 " **Foodee** "，然后选择 "**添加**" 以添加该应用程序。
 
     ![结果列表中的 Foodee](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-foodee"></a>配置 Foodee 的自动用户预配  
+## <a name="configure-automatic-user-provisioning-to-foodee"></a>配置 Foodee 的自动用户预配 
 
-本部分将指导你完成以下步骤：配置 Azure AD 预配服务，以便基于 Azure AD 中的用户和/或组分配在 Foodee 中创建、更新和禁用用户和/或组。
+在本部分中，将配置 Azure AD 预配服务，以便基于 Azure AD 中的用户或组分配在 Foodee 中创建、更新和禁用用户或组。
 
 > [!TIP]
-> 你还可以选择按照[Foodee 单一登录教程](Foodee-tutorial.md)中提供的说明为 Foodee 启用基于 SAML 的单一登录。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
+> 还可以按照[Foodee 单一登录教程](Foodee-tutorial.md)中的说明，为 Foodee 启用基于 SAML 的单一登录。 你可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
 
-### <a name="to-configure-automatic-user-provisioning-for-foodee-in-azure-ad"></a>若要在 Azure AD 中配置 Foodee 的自动用户预配：
+通过执行以下操作，在 Azure AD 中配置 Foodee 的自动用户预配：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**", 并选择 "**所有应用程序**"。
+1. 在[Azure 门户](https://portal.azure.com)中，选择 "**企业应用程序** > **所有应用程序**"。
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+    ![“企业应用程序”窗格](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Foodee”。
+1. 在**应用程序**列表中，选择 " **Foodee**"。
 
     ![应用程序列表中的 Foodee 链接](common/all-applications.png)
 
-3. 选择“预配”选项卡。
+1. 选择“预配”选项卡。
 
     ![设置选项卡](common/provisioning.png)
 
-4. 将“预配模式”设置为“自动”。
+1. 在 "**预配模式**" 下拉列表中，选择 "**自动**"。
 
     ![设置选项卡](common/provisioning-automatic.png)
 
-5. 在 "管理员凭据" 部分下， ` https://concierge.food.ee/scim/v2`输入之前在 "**租户 URL** " 和 "**机密令牌**" 中检索的和**API 令牌**值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Foodee。 如果连接失败，请确保 Foodee 帐户具有管理员权限，然后重试。
+1. 在 "**管理员凭据**" 下，执行以下操作：
 
-    ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
+   a. 在 "**租户 URL** " 框中，输入之前检索到的 **@no__t**值。
 
-6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”。
+   b. 在 "**机密令牌**" 框中，输入之前检索到的**API 令牌**值。
+   
+   c. 若要确保 Azure AD 可以连接到 Foodee，请选择 "**测试连接**"。 如果连接失败，请确保 Foodee 帐户具有管理员权限，然后重试。
 
-    ![通知电子邮件](common/provisioning-notification-email.png)
+    ![测试连接链接](common/provisioning-testconnection-tenanturltoken.png)
 
-7. 单击“保存”。
+1. 在 "**通知电子邮件**" 框中，输入应接收预配错误通知的人员或组的电子邮件地址，然后选中 "**发生故障时发送电子邮件通知**" 复选框。
 
-8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Foodee**"。
+    !["通知电子邮件" 文本框](common/provisioning-notification-email.png)
+
+1. 选择“保存”。
+
+1. 在 "**映射**" 下，选择 "**将 Azure Active Directory 用户同步到 Foodee**"。
 
     ![Foodee 用户映射](media/Foodee-provisioning-tutorial/usermapping.png)
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Foodee 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Foodee 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+1. 在 "**属性映射**" 下，查看从 Azure AD 同步到 Foodee 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Foodee 中的*用户帐户*以执行更新操作。 
 
-    ![Foodee 用户属性](media/Foodee-provisioning-tutorial/userattribute.png)
+    ![Foodee 用户映射](media/Foodee-provisioning-tutorial/userattribute.png)
 
-10. 在 "**映射**" 部分下，选择 "将 Azure Active Directory 组同步到**Foodee** "。
+1. 若要提交更改，请选择 "**保存**"。
+1. 在 "**映射**" 下，选择 "**将 Azure Active Directory 组同步到 Foodee**"。
 
-    ![Foodee 用户属性](media/Foodee-provisioning-tutorial/groupmapping.png)
+    ![Foodee 用户映射](media/Foodee-provisioning-tutorial/groupmapping.png)
 
-11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Foodee 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Foodee 中的组帐户以执行更新操作。 选择 "**保存**" 按钮以提交任何更改。
+1. 在 "**属性映射**" 下，查看从 Azure AD 同步到 Foodee 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Foodee 中的*组帐户*以执行更新操作。
 
-    ![Foodee 用户属性](media/Foodee-provisioning-tutorial/groupattribute.png)
+    ![Foodee 用户映射](media/Foodee-provisioning-tutorial/groupattribute.png)
 
-12. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+1. 若要提交更改，请选择 "**保存**"。
+1. 配置范围筛选器。 若要了解如何操作，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中的说明。
 
-13. 若要为 Foodee 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
+1. 若要为 Foodee 启用 Azure AD 预配服务，请在 "**设置**" 部分中，将 "**预配状态**" 更改为 **"开**"。
 
-    ![设置状态切换开启](common/provisioning-toggle-on.png)
+    ![预配状态开关](common/provisioning-toggle-on.png)
 
-14. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 Foodee 的用户和/或组。
+1. 在 "**设置**" 下的 "**作用域**" 下拉列表中，定义要预配到 Foodee 的用户或组。
 
-    ![预配范围](common/provisioning-scope.png)
+    !["设置作用域" 下拉列表](common/provisioning-scope.png)
 
-15. 已准备好预配时，单击“保存”。
+1. 准备好进行预配时，请选择 "**保存**"。
 
-    ![正在保存设置配置](common/provisioning-configuration-save.png)
+    ![设置配置保存按钮](common/provisioning-configuration-save.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长。 有关设置用户和/或组所需的时间的详细信息，请参阅[预配用户](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)需要多长时间。
+前面的操作将启动在 "**作用域**" 下拉列表中定义的用户或组的初始同步。 初始同步执行的时间比后续同步长。 有关详细信息，请参阅[预配用户需要多长时间？](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
 
-你可以使用 "**当前状态**" 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Azure AD 预配服务对 Foodee 执行的所有操作。 有关详细信息，请参阅[检查用户预配的状态](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
-
-
+你可以使用 "**当前状态**" 部分监视进度并跟踪指向预配活动报告的链接。 该报告描述了 Azure AD 预配服务对 Foodee 执行的所有操作。 有关详细信息，请参阅[检查用户预配的状态](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 

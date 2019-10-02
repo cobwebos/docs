@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c122a68e9f28772be4e3a17a21e5457aa187ce6
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736099"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718362"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 动机和权益
 
@@ -53,7 +53,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 - **自定义工具或第三方应用程序的可扩展性** - HDInsight 群集可使用已安装的组件进行扩展，也可以通过 Azure 市场中的[一键式](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 部署与其他大数据解决方案进行集成。
 
-- **易于管理、管理和监视**-Azure HDInsight 与 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md) 集成，提供单个界面，可用于监视所有群集。
+- **轻松管理、管理和监视**-Azure HDInsight 与 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md)集成 @no__t 2to 提供单一界面来监视所有群集。
 
 - **与其他 Azure 服务集成** - HDInsight 可轻松地与其他常用 Azure 服务进行集成，例如：
 
@@ -137,10 +137,10 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |数据目标|HDFS、RDBMS、Kafka、MPP ||
 |**主题**：元数据|||
 |Hive 数据库类型|Mysql、Postgres||
-|否。 Hive 元存储|2||
-|否。 Hive 表|100||
-|否。 Ranger 策略|20||
-|否。 Oozie 工作流|100||
+|Hive 元存储的数目|2||
+|Hive 表的数目|100||
+|Ranger 策略数|20||
+|Oozie 工作流数|100||
 |**主题**：**缩放**|||
 |数据量包括复制|100 TB||
 |每日引入量|50 GB||
@@ -152,11 +152,11 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |已使用的磁盘空间|75%||
 |已使用的平均网络百分比|25%
 |**主题**：人员|||
-|否。 管理员|2||
-|否。 开发人员|10||
-|否。 最终用户|100||
+|管理员数|2||
+|开发人员数量|10||
+|最终用户数|100||
 |技能|Hadoop、Spark||
-|否。 可用于迁移工作的资源|2||
+|用于迁移的可用资源数|2||
 |**主题**：**限制**|||
 |当前限制|延迟较高||
 |当前挑战|并发问题||
@@ -180,7 +180,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |专用和受保护的数据管道？|是||
 |已加入域的群集 (ESP)？|     是||
 |本地 AD 同步到云？|     是||
-|否。 AD 用户同步？|          100||
+|要同步的 AD 用户数？|          100||
 |确定将密码同步到云？|    是||
 |仅云用户？|                 是||
 |需要 MFA？|                       否|| 

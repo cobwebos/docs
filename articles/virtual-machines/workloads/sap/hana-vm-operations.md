@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/10/2019
+ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ceefb565a82301d2ddedf70d12c0fc564b801229
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d3c810746218e9761ae4c821dc22fef921e62a60
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101205"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719070"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
 本文档提供有关配置 Azure 基础结构以及操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档还包含有关 M128s VM SKU 的 SAP HANA 横向扩展的配置信息。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
@@ -67,12 +67,12 @@ ms.locfileid: "70101205"
 还可通过 [SAP 云平台](https://cal.sap.com/)在 Azure VM 服务上部署整个已安装的 SAP HANA 平台。 [在 Azure 上部署 SAP S/4HANA 或 BW/4HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) 中介绍了安装过程，也可以使用[此处](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)所述的自动化功能完成安装。
 
 >[!IMPORTANT]
-> 若要使用 M208xx_v2 Vm, 需要小心地从 Azure VM 映像库中选择 SUSE Linux 映像。 若要阅读详细信息, 请参阅[内存优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)一文。 Red Hat 目前尚不支持在 Mv2 家族 Vm 上使用 HANA。 当前计划是在 Q4/CY2019 中为在 Mv2 VM 系列上运行 HANA 的 Red Hat 版本提供支持 
+> 若要使用 M208xx_v2 Vm，需要小心地从 Azure VM 映像库中选择 Linux 映像。 若要阅读详细信息，请参阅[内存优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)一文。 
 > 
 
 
 ### <a name="storage-configuration-for-sap-hana"></a>SAP HANA 的存储配置
-若要将存储配置和存储类型与 Azure 中的 SAP HANA 一起使用, 请阅读文档[SAP HANA azure 虚拟机存储配置](./hana-vm-operations-storage.md)
+若要将存储配置和存储类型与 Azure 中的 SAP HANA 一起使用，请阅读文档[SAP HANA azure 虚拟机存储配置](./hana-vm-operations-storage.md)
 
 
 ### <a name="set-up-azure-virtual-networks"></a>设置 Azure 虚拟网络
@@ -139,10 +139,8 @@ Microsoft 提供一个已通过 SAP HANA 横向扩展配置认证的 M 系列 VM
 >在 Azure VM 横向扩展部署中无法使用备用节点
 >
 
-无法配置备用节点的原因有两个：
+尽管 Azure 具有[Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)的本机 nfs 服务，但 azure 服务（尽管 SAP 应用程序层支持）尚未针对 SAP HANA 进行认证。 因此，NFS 共享仍需要使用第三方功能的帮助进行配置。 
 
-- Azure 目前没有本机 NFS 服务。 因此需要借助第三方功能配置 NFS 共享。
-- 使用 Azure 上部署的解决方案，没有任何第三方 NFS 配置能够满足 SAP HANA 的存储延迟条件。
 
 因此，无法共享 **/hana/data** 和 **/hana/log** 卷。 无法共享单个节点的这些卷会阻止在横向扩展配置中使用 SAP HANA 备用节点。
 
@@ -152,11 +150,15 @@ Microsoft 提供一个已通过 SAP HANA 横向扩展配置认证的 M 系列 VM
 
 SAP HANA 横向扩展的 VM 节点基本配置如下所示：
 
-- 对于 **/hana/shared**，基于 SUSE Linux 12 SP3 构建高可用性 NFS 群集。 此群集承载横向扩展配置和 SAP NetWeaver 或 BW/4HANA 中心服务的 **/Hana/shared** NFS 共享。 [SUSE Linux Enterprise Server 中 Azure VM 上的 NFS 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)一文阐述了如何构建此类配置
+- 对于 **/hana/shared**，需要构建高度可用的 NFS 共享。 到目前为止，存在不同的可能会导致此类高度可用的共享。 它们与 SAP NetWeaver 一起记录：
+    - [SUSE Linux Enterprise Server 上的 Azure Vm 上的 NFS 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
+    - [适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
+    - [Azure Vm 上的 SAP NetWeaver 高可用性, 适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+    - [适用于 sap NetWeaver 的 azure 虚拟机高可用性, 适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 - 其他所有磁盘卷**不会**在不同的节点之间共享，并且**不是**基于 NFS。 此文档进一步提供了有关包含非共享 **/hana/data** 和 **/hana/log** 的横向扩展 HANA 安装的安装配置与步骤。
 
 >[!NOTE]
->图中显示的高可用性 NFS 群集目前仅受 SUSE Linux 的支持。 稍后会建议使用基于 Red Hat 的高可用性 NFS 解决方案。
+>在[SUSE Linux Enterprise Server 上，Azure vm 上的 NFS 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)中记录了图形中显示的高度可用 nfs 群集。 上述列表中介绍了其他可能的情况。
 
 调整节点卷大小的过程与纵向扩展相同，但 **/hana/shared** 除外。 对于 M128s VM SKU，建议的大小和类型如下：
 
@@ -172,7 +174,7 @@ SAP HANA 横向扩展的 VM 节点基本配置如下所示：
 假设我们使用内存大约为 2 TB 且通过 SAP HANA 横向扩展认证的 M128s Azure VM，SAP 建议概括如下：
 
 - 1 个主节点和最多 4 个工作节点，/hana/shared 卷的大小需是 2 TB。 
-- 一个主节点和5到8个工作节点, **/hana/shared**的大小应为 4 TB。 
+- 一个主节点和5到8个工作节点， **/hana/shared**的大小应为 4 TB。 
 - 1 个主节点和 9 到 12 个工作节点， **/hana/shared** 的大小需是 6 TB。 
 - 1 个主节点和 12 到 15 个工作节点，需要提供 8 TB 大小的 **/hana/shared** 卷。
 
@@ -236,7 +238,7 @@ SAP HANA 横向扩展的 VM 节点基本配置如下所示：
 
 ## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>适用于 Azure 虚拟机的 SAP HANA Dynamic Tiering 2.0
 
-除 Azure M 系列 VM 上的 SAP HANA 认证之外，Microsoft Azure 还支持 SAP HANA Dynamic Tiering 2.0（请参阅 SAP HANA Dynamic Tiering 文档链接进行详细了解）。 虽然安装该产品或运行该产品没有任何区别（例如，通过 Azure 虚拟机中的 SAP HANA），但要获得 Azure 上的官方支持，有几点是必不可少的。 这些要点如下所述。 在本文中, 将使用缩写 "DT 2.0", 而不是使用完整名称动态分层2.0。
+除 Azure M 系列 VM 上的 SAP HANA 认证之外，Microsoft Azure 还支持 SAP HANA Dynamic Tiering 2.0（请参阅 SAP HANA Dynamic Tiering 文档链接进行详细了解）。 虽然安装该产品或运行该产品没有任何区别（例如，通过 Azure 虚拟机中的 SAP HANA），但要获得 Azure 上的官方支持，有几点是必不可少的。 这些要点如下所述。 在本文中，将使用缩写 "DT 2.0"，而不是使用完整名称动态分层2.0。
 
 SAP BW 或 S4HANA 不支持 SAP HANA Dynamic Tiering 2.0。 现在的主要用例是本机 HANA 应用程序。
 
@@ -290,7 +292,7 @@ SAP HANA 认证的 M 系列 VM 与受支持的 DT 2.0 VM（M64-32ms 和 E32sv3�
 
 ### <a name="vm-storage-for-sap-hana-dt-20"></a>适用于 SAP HANA DT 2.0 的 VM 存储
 
-根据 DT 2.0 最佳做法指南，每个物理核心的磁盘 IO 吞吐量最低应为 50 MB/秒。 查看两种 Azure VM 类型的规范: 对于 DT 2.0, 支持的 VM 的最大磁盘 IO 吞吐量限制如下所示:
+根据 DT 2.0 最佳做法指南，每个物理核心的磁盘 IO 吞吐量最低应为 50 MB/秒。 查看两种 Azure VM 类型的规范：对于 DT 2.0，支持的 VM 的最大磁盘 IO 吞吐量限制如下所示：
 
 - E32sv3： 768 MB/秒（非缓存）表示每个物理核心的比率为 48 MB /秒
 - M64-32ms：1000 MB/秒（非缓存）表示每个物理核心的比率为 62.5 MB /秒

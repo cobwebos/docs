@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 9c55688674fe16f64bfb27788a6e038059694a77
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087459"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720068"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>管理云合作伙伴门户上的帐户的先决条件 
 
@@ -28,8 +28,7 @@ ms.locfileid: "71087459"
 
 ## <a name="registration-steps"></a>注册步骤
 
-下表列出了完全注册为 Microsoft 云发布者所需的步骤。  有关完整说明，请[参阅成为云 Marketplace 发布](https://docs.microsoft.com/azure/marketplace/become-publisher
-)者。 
+下表列出了完全注册为 Microsoft 云发布者所需的步骤。  有关完整说明，请参阅[成为云 Marketplace 发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)。 
 
 
 |                   步骤                   |  生成的注册或资源                     |

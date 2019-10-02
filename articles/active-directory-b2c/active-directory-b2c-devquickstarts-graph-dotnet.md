@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 02765538ce8a351db539438837b6426c0896d2d4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 2585b47d049047cc191bfc284c4486361917f1ed
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71701896"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802052"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD 图形 API
 
@@ -49,19 +49,11 @@ Azure AD B2C 租户后，需要使用[Azure 门户](https://portal.azure.com)注
 
 ### <a name="assign-api-access-permissions"></a>分配 API 访问权限
 
-1. 在“已注册的应用”概述页上，选择“设置”。
-1. 在“API 访问”下，选择“所需的权限”。
-1. 选择“Windows Azure Active Directory”。
-1. 在 "**应用程序权限**" 下，选择 "**读取和写入目录数据**"。
-1. 选择“保存”。
-1. 选择“授予权限”，然后选择“是”。 权限完全传播可能需要几分钟的时间。
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="create-client-secret"></a>创建客户端机密
 
-1. 在“API 访问”下，选择“密钥”。
-1. 在“密钥说明”框中输入密钥的说明。 例如，*管理密钥*。
-1. 选择 **"有效期"，然后选择**"**保存**"。
-1. 记下密钥的“值”。 稍后的步骤中将使用此值进行配置。
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 现在，你有一个应用程序，该应用程序有权在 Azure AD B2C 租户中*创建*、*读取*和*更新*用户。 转到下一节，添加用户*删除*和*密码更新*权限。
 

@@ -1,5 +1,5 @@
 ---
-title: 使用应用服务应用程序系统分配的托管标识访问 Azure Key Vault
+title: 使用系统分配的托管标识访问 Azure Key Vault
 description: 了解如何为应用服务应用程序创建托管标识，以及如何使用它来访问 Azure Key Vault
 services: key-vault
 author: msmbaldwin
@@ -9,18 +9,19 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8ac6f9be80d31804089ae2589998079dc7df66b3
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 6c7a9fdb5ed60023a82984fd5be5b424c634e679
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004301"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720254"
 ---
-# <a name="use-an-app-service-managed-identity-to-access-azure-key-vault"></a>使用应用服务托管标识访问 Azure Key Vault 
+# <a name="provide-key-vault-authentication-with-a-managed-identity"></a>提供具有托管标识的 Key Vault 身份验证
 
-本文介绍如何为应用服务应用程序创建一个托管标识，并使用该标识来访问 Azure Key Vault。 对于 Azure Vm 中托管的应用程序，请参阅[使用 WINDOWS VM 系统分配的托管标识访问 Azure Key Vault](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md)。 
+通过 Azure Active Directory 中的托管标识，你的应用可以轻松访问其他 Azure AD 保护的资源。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。 
 
-通过 Azure Active Directory 中的托管标识，你的应用可以轻松访问其他 Azure AD 保护的资源。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关 Azure AD 中的托管标识的详细信息，请参阅[Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。 
+本文介绍如何为应用服务应用程序创建一个托管标识，并使用该标识来访问 Azure Key Vault。 对于 Azure Vm 中托管的应用程序，请参阅[使用 WINDOWS VM 系统分配的托管标识访问 Azure Key Vault](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md)。
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -32,7 +33,8 @@ ms.locfileid: "71004301"
    - [使用 Azure CLI 创建密钥保管库](quick-create-cli.md)
    - [使用 Azure PowerShell 创建密钥保管库](quick-create-powershell.md)
    - [使用 Azure 门户创建密钥保管库](quick-create-portal.md)。
-- 要向其授予密钥保管库访问权限的现有应用服务应用程序。 可以按照[应用服务文档](../app-service/overview.md)中的步骤快速创建一个/
+- 要向其授予密钥保管库访问权限的现有应用服务应用程序。 可以按照[应用服务文档](../app-service/overview.md)中的步骤来快速创建一个。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)或[Azure PowerShell](/powershell/azure/overview)。 或者，您可以使用[Azure 门户](http://portal.azure.com)。
 
 
 ## <a name="adding-a-system-assigned-identity"></a>添加系统分配的标识 
@@ -101,7 +103,7 @@ az functionapp identity assign --name myApp --resource-group myResourceGroup
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要向应用程序授予对密钥保管库的访问权限，请使用 Azure CLI [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)命令，并向前面记下的 **principalId*提供**ObjectId**参数。
+若要向应用程序授予对密钥保管库的访问权限，请使用 Azure CLI [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)命令，并在上面记下的**PrincipalId**中提供**ObjectId**参数。
 
 ```azurecli-interactive
 az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-permissions get list 
@@ -109,7 +111,9 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读 [Azure Key Vault 概述](key-vault-overview.md)
-- 参阅 [Azure Key Vault 开发人员指南](key-vault-developers-guide.md)
-- 了解[密钥、机密和证书](about-keys-secrets-and-certificates.md)
+- [Azure Key Vault 安全：标识和访问管理 @ no__t-0
+- [提供访问控制策略 Key Vault 身份验证](key-vault-group-permissions-for-apps.md)
+- [关于键、密钥和证书](about-keys-secrets-and-certificates.md)
+- [保护密钥保管库](key-vault-secure-your-key-vault.md)。
+- [Azure Key Vault 开发人员指南](key-vault-developers-guide.md)
 - 查看 [Azure Key Vault 最佳做法](key-vault-best-practices.md)

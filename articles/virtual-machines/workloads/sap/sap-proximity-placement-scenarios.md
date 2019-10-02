@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c56bfda2b4f74bf31ce847f1fdb42f77f43eb372
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: deffcb81a4f66783fedc89c3e21ea46b15ad1c64
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677982"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719995"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>适用于 SAP 应用程序的最佳网络延迟的 Azure 邻近性放置组
 基于 SAP NetWeaver 或 SAP S/4HANA 体系结构的 SAP 应用程序对于 SAP 应用程序层和 SAP 数据库层之间的网络延迟很敏感。 此敏感度是指在应用程序层中运行的大多数业务逻辑的结果。 因为 SAP 应用程序层运行业务逻辑，所以它将以较高的频率向数据库层发出查询，每秒的速率为上千或数万。 在大多数情况下，这些查询的性质很简单。 它们通常可以在500微秒内或更短的时间内在数据库层上运行。
@@ -34,7 +34,7 @@ ms.locfileid: "71677982"
 ## <a name="what-are-proximity-placement-groups"></a>什么是邻近性放置组？ 
 Azure 邻近度布局组是一种逻辑构造。 定义后，它将绑定到 Azure 区域和 Azure 资源组。 部署 Vm 时，将引用邻近的放置组：
 
-- 数据中心内部署的第一个 Azure VM。 你可以将第一台虚拟机看作是基于 Azure 分配算法部署在数据中心中的 "定位点 VM"，最终与特定可用性区域的用户定义结合使用。
+- 数据中心内部署的第一个 Azure VM。 你可以将第一台虚拟机看作是基于 Azure 分配算法部署在数据中心中的 "作用域 VM"，这些算法最终与特定可用性区域的用户定义组合在一起。
 - 部署了引用邻近位置组的所有后续 Vm，以将所有后续部署的 Azure Vm 放在第一个虚拟机所在的数据中心内。
 
 > [!NOTE]
@@ -44,7 +44,7 @@ Azure 邻近度布局组是一种逻辑构造。 定义后，它将绑定到 Azu
 
 使用邻近位置组时，请记住以下注意事项：
 
-- 当你为 SAP 系统实现最佳性能，并通过使用邻近位置组将其限制为针对系统的单个 Azure 数据中心时，可能无法将所有类型的 VM 系列组合到放置组中。 出现这些限制的原因是，运行特定 VM 类型所需的主机硬件可能不在放置组的定位点 VM 所部署到的数据中心中。
+- 当你为 SAP 系统实现最佳性能，并通过使用邻近位置组将其限制为针对系统的单个 Azure 数据中心时，可能无法将所有类型的 VM 系列组合到放置组中。 出现这些限制的原因是，运行特定 VM 类型所需的主机硬件可能不存在于放置组的 "范围内的 VM" 所部署到的数据中心。
 - 在此类 SAP 系统的生命周期内，你可以强制将系统移到另一个数据中心。 例如，如果您决定横向扩展 HANA DBMS 层（例如，从四个节点移动到16个节点），但没有足够的容量来获取您在数据中心中使用的类型的额外12个 Vm，则可以使用此移动。
 - 由于硬件退役，Microsoft 可能会为你在不同数据中心使用的 VM 类型（而不是你最初使用的数据中心）构建容量。 在这种情况下，可能需要将所有邻近位置组的 Vm 移到另一个数据中心。
 
@@ -55,7 +55,7 @@ Azure 上的大多数 SAP NetWeaver 和 S/4HANA 系统部署不使用[HANA 大�
 
 避免将多个 SAP 生产系统或非生产系统捆绑到单个邻近位置组中。 当少量 SAP 系统或 SAP 系统以及某些应用程序需要较低的延迟网络通信时，可以考虑将这些系统移到一个邻近的放置组。 你应避免系统的捆绑包，因为更多的系统会在邻近的放置组中进行分组，因此机会越大：
 
-- 你需要一个不能在邻近位置组定位到的特定数据中心内运行的 VM 类型。
+- 需要的 VM 类型不能在邻近位置组的作用域内的特定数据中心内运行。
 - 由于在一段时间内将软件添加到邻近的放置组，因此，在需要更多的情况下，可能无法再使用非主流 Vm （如 M 系列 Vm）的资源。
 
 如下所述，理想配置如下所示：

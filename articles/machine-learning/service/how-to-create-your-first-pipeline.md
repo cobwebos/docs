@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1a0db395b86f473d2372a5ca779020e54186e45
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: af20c9e3a50c0c60135b1e447e7e1cba1fc36526
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034843"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815727"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中创建和运行机器学习管道
 
@@ -436,7 +436,7 @@ p.disable()
 
 为了优化和自定义管道的行为，您可以围绕缓存和重新使用来执行一些操作。 例如, 您可以选择:
 + 在[步骤定义](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)期间设置`allow_reuse=False` ,**关闭步骤运行输出的默认重用**。 在协作环境中使用管道时, 重复使用是关键的, 因为消除不必要的运行可提供灵活性。 但是，您可以选择不使用。
-+ 将**哈希扩展到脚本以外**，还可以使用 source_directory 将绝对路径或相对路径添加到其他文件和目录`hash_paths=['<file or directory']` 
++ 将**哈希扩展到脚本以外**，还可以使用 `hash_paths=['<file or directory']` 将绝对路径或相对路径包含到 source_directory 的其他文件和目录。 
 + 对**运行方式中的所有步骤强制执行输出重新生成**`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
 默认情况下`allow_reuse` , 将启用 "步骤" 并只对主脚本文件进行哈希处理。 因此, 如果给定步骤的脚本与相同 (`script_name`、输入和参数) 保持不变, 则会重复使用上一步运行的输出, 该作业不会提交到计算, 而以前运行的结果将立即用于下一步骤.  
@@ -449,11 +449,11 @@ step = PythonScriptStep(name="Hello World",
                         allow_reuse=False,
                         hash_paths=['hello_world.ipynb'])
 ```
- 
 
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 [GitHub 上的这些 Jupyter Notebook](https://aka.ms/aml-pipeline-readme) 以进一步探索机器学习管道。
 - 请参阅适用于[azureml 管道核心](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)包和[azureml 管道-步骤](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)包的 SDK 参考帮助。
+- 有关如何调试和排查管道问题的提示，请参阅操作[方法](how-to-debug-pipelines.md)。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

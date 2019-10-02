@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: lyhughes
-ms.openlocfilehash: ad51fbe7d2f8e8f115adf03d6333c0747765ee43
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 6d8d6f03847fcd22a6d78c445ae039c73e9badfa
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338602"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719172"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>连接到 Api 并向其进行身份验证
 
@@ -34,7 +34,10 @@ Azure AD 支持[五种主要应用程序方案](../active-directory/develop/v2-a
 * Web 应用程序到 web API:Web 应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
 * 后台或服务器应用程序到 web API:不带 web UI 的后台应用程序或服务器应用程序需要从 Azure AD 的 web API 获取资源。
 
-Microsoft Azure 身份验证库提供多种方法，用于获取 Active Directory 令牌。 有关库和代码示例的详细信息，请参阅[ADAL.NET Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki)。
+> [!IMPORTANT]
+> Azure 数字孪生支持以下两种身份验证库：
+> * 最新的[Microsoft 身份验证库（MSAL）](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * [Azure Active Directory 身份验证库（ADAL）](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>从中间层 Web API 调用数字孪生
 

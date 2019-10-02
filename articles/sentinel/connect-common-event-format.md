@@ -14,18 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 25ae54ea8dd75fae74d4578b33146483ade53e4c
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: e74dd54403ed599aa95e8fc8a94c2bd7a3ca41d8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240750"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719110"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用通用事件格式连接外部解决方案
-
-> [!IMPORTANT]
-> Azure Sentinel 当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 可以通过外部解决方案连接 Azure Sentinel，使你能够在 Syslog 中保存日志文件。 如果你的设备可以将日志另存为 Syslog 通用事件格式（CEF），则通过与 Azure Sentinel 集成，你可以轻松地跨数据运行分析和查询。
 
@@ -141,7 +137,7 @@ Azure Sentinel 与 CEF 设备之间的连接分为三个步骤：
 
 7. 若要检查是否存在错误，或日志是否未到达，请查看`tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`。 如果出现日志格式不匹配错误，请访问`/etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`并查看文件`security_events.conf`，确保日志与你在此文件中看到的 regex 格式匹配。
 
-8. 请确保 Syslog 消息默认大小限制为2048字节（2 KB）。 如果日志太长，请使用以下命令更新 security_events：`message_length_limit 4096`
+8. 请确保 Syslog 消息默认大小限制为2048字节（2 KB）。 如果日志太长，请使用以下命令更新 security_events： `message_length_limit 4096`
 
 
 ## <a name="next-steps"></a>后续步骤

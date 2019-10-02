@@ -4,14 +4,14 @@ description: 了解如何在 Azure Cosmos DB 中配置和管理生存时间
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: ddda7b96147892efb38cb0405120db3613e98cf8
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: e36b894ec9c7433bc114145e0de5f519f73486f1
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104876"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815914"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置生存时间
 
@@ -36,10 +36,16 @@ ms.locfileid: "71104876"
 
    ![在 Azure 门户中配置生存时间](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
 
+* 当 DefaultTimeToLive 为 null 时，生存时间为“关”
+* 当 DefaultTimeToLive 为 -1 时，“生存时间”设置为“开”（无默认值）
+* 当 DefaultTimeToLive 具有任何其他整数值（0 除外）时，“生存时间”设置为“开”
 
-- 当 DefaultTimeToLive 为 null 时，生存时间为“关”
-- 当 DefaultTimeToLive 为 -1 时，“生存时间”设置为“开”（无默认值）
-- 当 DefaultTimeToLive 具有任何其他整数值（0 除外）时，“生存时间”设置为“开”
+## <a name="enable-time-to-live-on-a-container-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 在容器上启用生存时间
+
+若要在容器上创建或启用 TTL，请参阅。
+
+* [使用 Azure CLI 创建包含 TTL 的容器](manage-with-cli.md#create-a-container-with-ttl)
+* [使用 Powershell 创建具有 TTL 的容器](manage-with-powershell.md#create-container-unique-key-ttl)
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>使用 SDK 在容器上启用生存时间
 
@@ -185,11 +191,10 @@ SalesOrder salesOrder = new SalesOrder
 const itemDefinition = {
           id: "doc",
           name: "sample Item",
-          key: "value", 
+          key: "value",
           ttl: 2
         };
 ```
-
 
 ## <a name="reset-time-to-live"></a>重置生存时间
 

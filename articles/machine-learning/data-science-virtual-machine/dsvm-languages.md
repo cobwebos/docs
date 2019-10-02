@@ -6,16 +6,16 @@ keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 09/11/2017
-ms.openlocfilehash: 0cedc9ede43d18d0b94b8a516170db53e3a27910
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/27/2019
+ms.openlocfilehash: 586cdd6dc06a7685f17c78fa4c4ea2f2ebf52f3d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885632"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802401"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>数据科学虚拟机支持的语言 
 
@@ -65,18 +65,17 @@ Data Science Virtual Machine （DSVM）附带了几种预生成的语言和开�
 
   DSVM 上的默认 Python 环境是所有用户都可读取的全局环境。 但只有管理员可以编写和安装全局程序包。 若要将程序包安装到全局环境中，请使用以管理员身份使用`activate`命令激活根环境或 python2 环境。 然后，可以使用包管理器（如`conda`或`pip` ）来安装或更新包。
 
-## <a name="python-linux-and-windows-server-2012-edition"></a>Python （Linux 和 Windows Server 2012 edition）
+## <a name="python-linux-edition"></a>Python （Linux 版）
 
 |    |           |
 | ------------- | ------------- |
 | 支持的语言版本 | Python 2.7 和3。5 |
-| 支持的 DSVM 版本      | Linux, Windows Server 2012    |
+| 支持的 DSVM 版本      | Linux   |
 | 如何在 DSVM 上配置/安装它？  | 创建两`conda`个全局环境： <br /> * `root`位于`/anaconda/`的环境是 Python 2.7。 <br/> * `py35`位于`/anaconda/envs/py35`的环境是 Python 3.5。       |
 | 指向示例的链接      | 包含 Python 的示例 Jupyter 笔记本。     |
 | DSVM 上的相关工具      | PySpark、R、Julia      |
 ### <a name="how-to-use-and-run-it"></a>如何使用和运行它    
 
-**Linux**
 * 在终端中运行：
 
   打开终端并根据要运行的 Python 版本执行以下操作之一：
@@ -103,34 +102,6 @@ Data Science Virtual Machine （DSVM）附带了几种预生成的语言和开�
 
   DSVM 上的默认 Python 环境是所有用户均可访问的全局环境。 但只有管理员可以编写和安装全局程序包。 若要将程序包安装到全局环境中，请使用以管理员身份或具有 sudo `source activate`权限的用户身份使用命令激活根环境或 py35 环境。 然后，可以使用包管理器（如`conda`或`pip` ）来安装或更新包。
 
-**Windows 2012**
-* 在命令提示符下运行：
-
-  打开命令提示符，然后根据要运行的 Python 版本执行以下操作之一：
-
-     ```
-    # To run Python 2.7
-    activate 
-    python --version
-    
-    # To run Python 3.5
-    activate py35
-    python --version
-    
-    ```
-* 在 IDE 中使用：
-
-  使用安装在 Visual Studio Community Edition 中的针对 Visual Studio 的 Python 工具 (PTVS)。 在 PTVS 中自动设置的唯一环境是 Python 2.7。
-    > [!NOTE]
-    > 若要将 PTVS 指向 Python 3.5，需要在 PTVS 中创建自定义环境。 若要在 Visual Studio 社区版中设置此环境路径，请单击 "**工具** -> " "**python 工具** -> " "**python 环境**"，然后选择 " **+ 自定义**"。 然后，将位置设置为`c:\anaconda\envs\py35` ，然后选择 "_自动检测_"。
-
-* 在 Jupyter 中使用：
-
-  打开 Jupyter 并选择 "**新建**" 以创建新的笔记本。 可以将 python 2.7 和**python [Conda env： py35]** 的内核类型设置为 Python **[Conda Root]** 以用于 python 3.5。 
-
-* 安装 Python 包：
-
-  DSVM 上的默认 Python 环境是所有用户都可读取的全局环境。 但只有管理员可以编写和安装全局程序包。 若要将程序包安装到全局环境中，请使用以管理员身份使用`activate`命令激活根环境或 py35 环境。 然后，可以使用包管理器（如`conda`或`pip` ）来安装或更新包。
 
 ## <a name="r"></a>R
 
