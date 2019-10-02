@@ -10,7 +10,7 @@ ms.tgt_pltfrm: linux
 ms.subservice: disks
 ms.openlocfilehash: 5b7c612d349c3f596487db4af025e5e599b6589c
 ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/01/2019
 ms.locfileid: "71694781"
