@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/30/2019
 ms.author: diberry
-ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: bad581fbc53292b5a7c25157ef839e07f33e131e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962513"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827882"
 ---
 # <a name="personalizer-settings"></a>个性化体验创建服务设置
 
@@ -87,6 +87,21 @@ ms.locfileid: "70962513"
 
 在“模型和策略”的“资源管理”部分，导入新的学习策略或导出当前学习策略。
 你可以从以前的导出获取学习策略文件，或下载在脱机评估期间发现的优化策略。 对这些文件进行手动更改将影响机器学习性能和脱机评估的准确性，并且 Microsoft 不能保证机器学习和评估的准确性，也不能为手动编辑的策略导致的服务异常。
+
+## <a name="clear-data-for-your-learning-loop"></a>清除学习循环的数据
+
+1. 在 Azure 门户的 Personalizer 资源的 "**模型和策略**" 页上，选择 "**清除数据**"。
+1. 为了清除所有数据，并将学习循环重置为原始状态，请选择 "所有3个复选框"。
+
+    ![在 Azure 门户中，清除 Personalizer 资源中的数据。](./media/settings/clear-data-from-personalizer-resource.png)
+
+    |设置|用途|
+    |--|--|
+    |记录个性化和奖励数据。|此日志记录数据用于脱机评估。 如果要重置资源，请清除数据。|
+    |重置 Personalizer 模型。|此模型将在每次重新训练时进行更改。 此训练频率在 "**设置**" 页上的 "**上载模型频率**" 中指定。 |
+    |将学习策略设置为默认值。|如果在脱机评估过程中更改了学习策略，则会将其重置为原始学习策略。|
+
+1. 选择 "**清除所选数据**" 以开始清除过程。 状态在 Azure 通知的右上方导航中报告。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 21bf96866c14615009a17279ff2fdd04bf4116ad
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 3e379581440019a794388d3e01c4f230c9617a58
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490266"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718584"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>在 Azure 门户中查看 Azure 预留
 
@@ -49,7 +49,7 @@ ms.locfileid: "67490266"
 若要在 Azure 门户中查看预留交易，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”  。
+1. 搜索“成本管理 + 计费”。 
 
     ![显示了 Azure 门户搜索的屏幕截图](./media/billing-view-reservation/portal-cm-billing-search.png)
 

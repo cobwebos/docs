@@ -7,12 +7,12 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 473e16c610e7dee0b2838cb1a54ef7cd98958889
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 225f5cfe36daaafb7f6ab5d64e77c626e52edaac
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232973"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338200"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>快速入门：在门户中定义和分配蓝图
 
@@ -223,7 +223,7 @@ ms.locfileid: "70232973"
 
    1. 从下拉列表中选择可用“产品/服务”  。
 
-   1. 使用省略号选择[管理组](../management-groups/index.md)，订阅将是其子级。
+   1. 使用省略号选择[管理组](../management-groups/overview.md)，订阅将是其子级。
 
    1. 在页面底部选择“创建”  。
 
