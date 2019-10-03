@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a020ef91e52a5d801557399df827d3641bfb974e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934185"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694927"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>使用 Azure Maps 设置地域隔离区
 
@@ -148,10 +148,24 @@ ms.locfileid: "70934185"
    }
    ```
 
-5. 单击“发送”并查看响应标头。 位置标头包含用于访问或下载供将来使用的数据的 URI。 它还包含上传的数据的唯一 `udId`。
+5. 单击“发送”并查看响应标头。 成功请求后，**Location** 标头将包含状态 URI，可在其中检查上传请求的当前状态。 状态 URI 采用以下格式。 
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
+   ```
+
+6. 复制状态 URI 并在其后追加一个 `subscription-key` 参数，其值为 Azure Maps 帐户订阅密钥。 状态 URI 格式应如下所示：
+
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
+
+7. 若要获取 `udId`，请在 Postman 应用中打开一个新选项卡，在生成器选项卡上选择 GET HTTP 方法，并在状态 URI 中发出 GET 请求。 如果数据上传成功，你将在响应正文中收到一个 udId。 请复制该 udId 供稍后使用。
+
+   ```JSON
+   {
+    "udid" : "{udId}"
+   }
    ```
 
 ## <a name="set-up-an-event-handler"></a>设置事件处理程序

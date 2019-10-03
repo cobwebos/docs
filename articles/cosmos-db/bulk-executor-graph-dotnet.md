@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 127c12b6a36f31f91fdce3700c43e2602a5c0194
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 51bd14c536e46291c8720e6c22e2e03a30243ddf
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624542"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827273"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>使用图批量执行程序 .NET 库在 Azure Cosmos DB Gremlin API 中执行批量操作
 
@@ -73,7 +73,7 @@ catch (Exception e)
 }
 ```
 
-有关批量执行程序库的参数的详细信息，请参阅[“将数据批量导入 Azure Cosmos DB”主题](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#bulk-import-data-to-azure-cosmos-db)。
+有关批量执行程序库的参数的详细信息，请参阅[“将数据批量导入 Azure Cosmos DB”主题](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account)。
 
 有效负载需实例化为 `GremlinVertex` 和 `GremlinEdge` 对象。 下面是创建这些对象的方法：
 

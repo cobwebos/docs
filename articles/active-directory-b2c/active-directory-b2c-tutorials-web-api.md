@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 87d46fad1c0a5494910a8218c4e40994fc140386
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fd4bf602cb5ca409b957e9dbd6f963d88428a63f
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103403"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694644"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 授予对 ASP.NET Web API 的访问权限
 
@@ -54,23 +54,13 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 
 可通过范围控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让 Web API 用户拥有读取和写入访问权限，或者只拥有读取访问权限。 在本教程中，请使用作用域为 Web API 定义读取和写入权限。
 
-1. 选择“应用程序”，然后选择“webapi1”   。
-2. 选择“已发布的范围”  。
-3. 在“范围”中输入 `Hello.Read`，在“说明”中输入 `Read access to hello`  。
-4. 在“范围”中输入 `Hello.Write`，在“说明”中输入 `Write access to hello`  。
-5. 单击“ **保存**”。
-
-可以使用已发布的范围向客户端应用程序授予访问 Web API 的权限。
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
 ## <a name="grant-permissions"></a>授予权限
 
 若要从应用程序调用受保护的 Web API，需授予应用程序访问该 API 的权限。 在先决条件教程中，已在 Azure AD B2C 中创建名为 *webapp1* 的 Web 应用程序。 使用此应用程序调用 Web API。
 
-1. 依次选择“应用程序”、“webapp1”   。
-2. 依次选择“API 访问”、“添加”   。
-3. 在“选择 API”下拉列表中，选择“webapi1”   。
-4. 在“选择范围”下拉列表中，选择之前定义的“Hello.Read”和“Hello.Write”范围    。
-5. 单击“确定”。 
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 注册应用程序以调用受保护的 Web API。 用户通过 Azure AD B2C 进行身份验证，以便使用该应用程序。 该应用程序从 Azure AD B2C 获取授权，以访问受保护的 Web API。
 
@@ -79,8 +69,6 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 注册 Web API 并定义范围之后，请将 Web API 配置为使用你的 Azure AD B2C 租户。 在本教程中，可以配置一个示例 Web API。 在先决条件教程中下载的项目中包含了示例 Web API。
 
 示例解决方案中有两个项目：
-
-示例解决方案中包含以下两个项目：
 
 * **TaskWebApp** - 创建和编辑任务列表。 该示例使用**注册或登录**用户流来注册或登录用户。
 * **TaskService** - 支持创建、读取、更新和删除任务列表功能。 该 API 受 Azure AD B2C 的保护，由 TaskWebApp 调用。
@@ -99,8 +87,8 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 
     ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
-    <add key="api:ReadScope" value="Hello.Read" />
-    <add key="api:WriteScope" value="Hello.Write" />
+    <add key="api:ReadScope" value="demo.read" />
+    <add key="api:WriteScope" value="demo.write" />
     ```
 
 ### <a name="configure-the-web-api"></a>配置 Web API
@@ -128,8 +116,8 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 1. 配置作用域设置，使之与门户中创建的设置相匹配。
 
     ```csharp
-    <add key="api:ReadScope" value="Hello.Read" />
-    <add key="api:WriteScope" value="Hello.Write" />
+    <add key="api:ReadScope" value="demo.read" />
+    <add key="api:WriteScope" value="demo.write" />
     ```
 
 ## <a name="run-the-sample"></a>运行示例

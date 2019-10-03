@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: a62a302748cb7e60b6a857c686d1833ad499cc7a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 42e1ede7c762fef1f33436ea4c757b0c0531a8f2
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081656"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828429"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>教程：使用 Jenkins 和 Azure DevOps Services 将应用部署到 Azure 中的 Linux 虚拟机
 
@@ -54,7 +54,7 @@ ms.locfileid: "70081656"
 ## <a name="get-the-sample-app"></a>获取示例应用
 
 你需要一个待部署的应用，并存储在 Git 存储库中。
-对于本教程，我们建议你使用[从 GitHub 获得的此示例应用](https://github.com/azooinmyluggage/fabrikam-node)。 本教程包含用于安装 Node.js 和应用程序的示例脚本。 要使用自己的存储库，请配置一个类似的示例。
+对于本教程，我们建议你使用[从 GitHub 获得的此示例应用](https://github.com/azure-devops/fabrikam-node)。 本教程包含用于安装 Node.js 和应用程序的示例脚本。 要使用自己的存储库，请配置一个类似的示例。
 
 创建此应用的一个分支并记下位置 (URL) 以便在本教程的后续步骤中使用。 有关详细信息，请参阅[分支存储库](https://help.github.com/articles/fork-a-repo/)    
 

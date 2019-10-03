@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: spelluru
-ms.openlocfilehash: fc06d5d36cb6004c79bec79838c8f0d51961d560
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: HT
+ms.openlocfilehash: d1dd059f1a6f9ce96b27d4fe1f214978dfc06a8f
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720159"
+ms.locfileid: "71816002"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>使用 Azure 托管标识在实验室中部署环境 
 作为实验室所有者，你可以使用托管标识在实验室中部署环境。 此功能在以下情况下非常有用：环境包含或引用 Azure 资源，如 key vault、共享映像库以及环境资源组外部的网络。 它允许创建不限于该环境的资源组的沙盒环境。
@@ -54,7 +54,7 @@ ms.locfileid: "71720159"
 1. 创建标识后，请记下此标识的资源 ID。 它应类似于以下示例： 
 
     `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`。
-1. 使用**Fiddler**运行类似于以下示例的 PUT 命令。 对于服务运行程序名称，建议使用标识名称，即使可以指定任何所需的名称。 
+1. 执行 PUT Https 方法，以将新的 `ServiceRunner` 资源添加到实验室，类似于以下示例。 服务运行程序资源是一个代理资源，用于管理和控制开发测试实验室中的托管标识。 服务运行程序名称可以是任何有效的名称，但我们建议你使用托管标识资源的名称。 
  
     ```json
     PUT https://management.azure.com/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Devtestlab/labs/{yourlabname}/serviceRunners/{serviceRunnerName}
