@@ -66,12 +66,12 @@
       items:
         - name: 安全概述
           href: overview-security.md
-        - name: 内置安全控件
-          href: key-vault-security-controls.md
         - name: 安全体系
           href: key-vault-ovw-security-worlds.md
         - name: 保护密钥保管库
           href: key-vault-secure-your-key-vault.md
+        - name: 内置安全控件
+          href: key-vault-security-controls.md
     - name: 软删除
       href: key-vault-ovw-soft-delete.md
     - name: 限制
@@ -98,8 +98,12 @@
       items:
         - name: 建议
           href: security-recommendations.md
-    - name: 使用应用服务托管标识
-      href: managed-identity.md
+    - name: Authentication
+      items:
+        - name: 使用应用服务托管标识
+          href: managed-identity.md
+        - name: 使用访问控制策略
+          href: key-vault-group-permissions-for-apps.md
     - name: Azure Key Vault 日志记录
       href: key-vault-logging.md
     - name: 防火墙背后的访问
@@ -114,8 +118,6 @@
       href: key-vault-soft-delete-cli.md
     - name: 将 Key Vault 软删除与 Azure PowerShell 配合使用
       href: key-vault-soft-delete-powershell.md
-    - name: 使用组授予访问权限
-      href: key-vault-group-permissions-for-apps.md
     - name: 配置防火墙和虚拟网络
       href: key-vault-network-security.md
     - name: Java 开发

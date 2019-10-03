@@ -4,6 +4,8 @@
   items:
     - name: 什么是用于 MariaDB 的 Azure DB？
       href: overview.md
+    - name: 我应选择哪个 MariaDB 选项？
+      href: select-right-deployment-type.md
 - name: 快速入门
   expanded: true
   items:

@@ -261,6 +261,8 @@
       items:
         - name: 使用 Python 创建 ML 管道
           href: how-to-create-your-first-pipeline.md
+        - name: 调试 ML 管道并排查其问题
+          href: how-to-debug-pipelines.md
         - name: 用于 CI/CD 的 Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context

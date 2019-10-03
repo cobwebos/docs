@@ -14,6 +14,14 @@
           href: tutorial-scale-cluster.md
         - name: 3 - 删除 Azure Red Hat OpenShift 群集
           href: tutorial-delete-cluster.md
+- name: 群集管理
+  items:
+    - name: Azure Red Hat OpenShift 群集管理
+      items:
+        - name: 1 - Azure Red Hat OpenShift 群集管理员角色
+          href: cluster-administration-cluster-admin-role.md
+        - name: 2 - 管理安全上下文约束
+          href: cluster-administration-security-context-constraints.md
 - name: 操作指南
   expanded: true
   items:

@@ -830,6 +830,8 @@
                   href: log-query/app-expression.md
                 - name: 工作区表达式
                   href: log-query/workspace-expression.md
+                - name: 资源表达式
+                  href: log-query/resource-expression.md
                 - name: 统一应用程序数据资源
                   href: log-query/unify-app-resource-data.md
             - name: 示例和指南

@@ -11,12 +11,12 @@ metadata:
   author: gvashishtha
   ms.author: gopalv
   ms.date: 09/13/2019
-  ms.openlocfilehash: 3fdd30274796072fcca6a5cfe41651334cf62aee
-  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.openlocfilehash: 894ba48c0bc9d080b7e68ff722afe3a658bef5f7
+  ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71170703"
+  ms.lasthandoff: 10/02/2019
+  ms.locfileid: "71802346"
 landingContent:
 - title: 开始使用 DSVM
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
       url: overview.md
     - text: 什么是 Geo AI DSVM？
       url: geo-ai-dsvm-overview.md
+    - text: DSVM 上包含的工具
+      url: tools-included.md
   - linkListType: get-started
     links:
     - text: 创建 Windows DSVM

@@ -72,7 +72,7 @@
   items:
     - name: 教室实验室 - 课程类型
       items:
-        - name: 课程类型
+        - name: 课程类型概述
           href: classroom-labs/class-types.md
         - name: 自然处理中的深度学习
           href: classroom-labs/class-type-deep-learning-natural-processing.md

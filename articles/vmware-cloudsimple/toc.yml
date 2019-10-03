@@ -10,6 +10,8 @@
     - name: 快速入门
       expanded: true
       items:
+        - name: 网络规划
+          href: cloudsimple-network-checklist.md
         - name: 初始化和预配容量
           href: quickstart-create-cloudsimple-service.md
         - name: 配置私有云环境
@@ -144,6 +146,8 @@
               href: configure-server-vrealize-automation-endpoint.md
             - name: 将工作负荷 VM 迁移到私有云
               href: migrate-workloads.md
+            - name: 使用 Azure Data Box 迁移
+              href: migration-using-azure-data-box.md
             - name: 确保应用程序在 Azure 上的 VMware 中的高可用性
               href: ensuring-high-availability.md
             - name: 选择负载均衡解决方案

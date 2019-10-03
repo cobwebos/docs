@@ -135,12 +135,14 @@
               href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 使用 RA-GRS 设计 HA 应用
               href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: 访问层级
+        - name: 访问层和性能层
           items:
             - name: 访问层级
               href: storage-blob-storage-tiers.md
-            - name: 将存档存储中的数据解除冻结
+            - name: 将存档层中的数据解除冻结
               href: storage-blob-rehydration.md
+            - name: 性能层
+              href: storage-blob-performance-tiers.md
             - name: 管理 Azure Blob 存储生命周期
               href: storage-lifecycle-management-concepts.md
         - name: 性能和缩放

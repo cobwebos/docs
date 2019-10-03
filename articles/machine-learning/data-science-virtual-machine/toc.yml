@@ -4,10 +4,12 @@
 - name: 概述
   expanded: true
   items:
-    - name: 什么是 Data Science Virtual Machine？
+    - name: Data Science Virtual Machine (DSVM) 是什么？
       href: overview.md
     - name: 什么是 Geo AI DSVM？
       href: geo-ai-dsvm-overview.md
+    - name: DSVM 上包含的工具
+      href: tools-included.md
 - name: 快速入门
   expanded: true
   items:

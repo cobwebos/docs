@@ -47,6 +47,8 @@
       href: manage-cli.md
     - name: 使用 PowerShell 管理联盟
       href: manage-consortium-powershell.md
+    - name: 使用逻辑应用
+      href: ethereum-logic-app.md
 - name: 资源
   items:
     - name: 区块链 REST API
