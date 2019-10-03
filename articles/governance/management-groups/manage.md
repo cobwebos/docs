@@ -2,16 +2,16 @@
 title: 如何更改、删除或管理管理组 - Azure 治理
 description: 了解如何查看、维护、更新和删除管理组层次结构。
 author: rthorn17
-ms.service: azure-resource-manager
-ms.date: 04/04/2019
+ms.service: governance
+ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: e47ce094cd690cba4ef398bc5d5d443f7ed647e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 28bfabd5c28fe833050551e7be690c0ea3d1e6a0
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272472"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338942"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -20,8 +20,6 @@ ms.locfileid: "59272472"
 不管使用什么类型的订阅，管理组都能提供大规模的企业级管理。  有关管理组的详细信息，请参阅[使用 Azure 管理组整理资源](overview.md)。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
-
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="change-the-name-of-a-management-group"></a>更改管理组的名称
 
@@ -35,7 +33,7 @@ ms.locfileid: "59272472"
 
 1. 选择要重命名的管理组。
 
-1. 选择**详细信息**。
+1. 选择 "**详细信息**"。
 
 1. 选择页面顶部的“重命名组”选项。
 
@@ -83,7 +81,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 1. 选择要删除的管理组。
 
-1. 选择**详细信息**。
+1. 选择 "**详细信息**"。
 
 1. 选择“删除”
 
@@ -206,10 +204,12 @@ az account management-group show --name 'Contoso' -e -r
 若要移动订阅，则下述所有 RBAC 权限都必须为 true：
 
 - 子订阅中的“所有者”角色。
-- 目标父管理组上的“所有者”、“参与者”或“管理组参与者”角色。*
-- 现有父管理组上的“所有者”、“参与者”或“管理组参与者”角色。*
+- 目标父管理组上的 "所有者"、"参与者" 或 "管理组参与者" 角色。
+- 现有父管理组上的 "所有者"、"参与者" 或 "管理组参与者" 角色。
 
-*：除非目标父管理组或现有父管理组为根管理组。 由于根管理组是所有新管理组和订阅的默认登陆点，因此用户不需其上的权限即可移动项。
+如果目标或现有的父管理组是根管理组，则不会应用权限要求。 由于根管理组是所有新管理组和订阅的默认登陆点，因此不需要在其上移动项目。
+
+如果订阅的所有者角色继承自当前管理组，则移动目标会受到限制。 只能将订阅移动到拥有 "所有者" 角色的另一个管理组。 你不能将其移动到你作为参与者的管理组，因为你将失去订阅的所有权。 如果你直接分配给订阅的所有者角色（不是从管理组继承），则可以将其移动到你作为参与者的任何管理组。
 
 若要在 Azure 门户中查看自己拥有哪些权限，请选择管理组，然后选择“标识和访问管理”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../../role-based-access-control/overview.md)。
 
@@ -281,7 +281,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups-in-the-hierarchy"></a>在层次结构中移动管理组  
 
-移动父管理组时，该组下的层次结构会随之移动。
+移动父管理组时，该组下的层次结构会随之移动。 对于需要移动管理组的访问权限，请参阅[管理组访问](overview.md#management-group-access)。
 
 ### <a name="move-management-groups-in-the-portal"></a>在门户中移动管理组
 
@@ -325,7 +325,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ![将活动日志与管理组配合使用](media/al-mg.png)
 
-如果要在 Azure 门户外针对管理组进行查询，管理组的目标范围将如下所示：**"/providers/Microsoft.Management/managementGroups/{yourMgID}"**。
+如果要在 Azure 门户外针对管理组进行查询，管理组的目标范围将如下所示： **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** 。
 
 ## <a name="referencing-management-groups-from-other-resource-providers"></a>引用其他资源提供程序的管理组
 

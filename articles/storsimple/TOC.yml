@@ -1,434 +1,429 @@
-items:
 - name: StorSimple 文档
   href: index.md
 - name: StorSimple 虚拟阵列
   items:
-  - name: 概述
-    items:
-    - name: 什么是解决方案？
-      href: storsimple-ova-overview.md
-  - name: 入门
-    items:
-    - name: 计划
+    - name: 概述
       items:
-      - name: 审查要求
-        href: storsimple-ova-system-requirements.md
-      - name: 了解限制
-        href: storsimple-ova-limits.md
-      - name: 了解最佳实践
-        href: storsimple-ova-best-practices.md
-    - name: 部署
+        - name: 什么是解决方案？
+          href: storsimple-ova-overview.md
+    - name: 入门
       items:
-      - name: 准备部署
-        href: storsimple-virtual-array-deploy1-portal-prep.md
-        items:
-        - name: 部署 StorSimple Manager 服务
-          href: storsimple-virtual-array-manage-service.md
-        - name: 新的身份验证
-          href: storsimple-virtual-array-aad-registration-key.md
-      - name: 在 Hyper-V 中预配
-        href: storsimple-virtual-array-deploy2-provision-hyperv.md
-      - name: 在 VMware 中预配
-        href: storsimple-virtual-array-deploy2-provision-vmware.md
-      - name: 设置为文件服务器
-        href: storsimple-virtual-array-deploy3-fs-setup.md
-      - name: 设置为 iSCSI 服务器
-        href: storsimple-virtual-array-deploy3-iscsi-setup.md
-  - name: 如何
-    items:
-    - name: 通过 Azure 门户管理
-      href: storsimple-virtual-array-manager-service-administration.md
+        - name: 计划
+          items:
+            - name: 审查要求
+              href: storsimple-ova-system-requirements.md
+            - name: 了解限制
+              href: storsimple-ova-limits.md
+            - name: 了解最佳实践
+              href: storsimple-ova-best-practices.md
+        - name: 部署
+          items:
+            - name: 准备部署
+              href: storsimple-virtual-array-deploy1-portal-prep.md
+              items:
+                - name: 部署 StorSimple Manager 服务
+                  href: storsimple-virtual-array-manage-service.md
+                - name: 新的身份验证
+                  href: storsimple-virtual-array-aad-registration-key.md
+            - name: 在 Hyper-V 中预配
+              href: storsimple-virtual-array-deploy2-provision-hyperv.md
+            - name: 在 VMware 中预配
+              href: storsimple-virtual-array-deploy2-provision-vmware.md
+            - name: 设置为文件服务器
+              href: storsimple-virtual-array-deploy3-fs-setup.md
+            - name: 设置为 iSCSI 服务器
+              href: storsimple-virtual-array-deploy3-iscsi-setup.md
+    - name: 如何
       items:
-      - name: 安装最新更新
-        href: storsimple-virtual-array-install-update-11.md
-        items:
-        - name: 安装 Update 1
-          href: storsimple-virtual-array-install-update-1.md
-        - name: 安装 Update 0.6
-          href: storsimple-virtual-array-install-update-06.md
+        - name: 通过 Azure 门户管理
+          href: storsimple-virtual-array-manager-service-administration.md
+          items:
+            - name: 安装最新更新
+              href: storsimple-virtual-array-install-update-11.md
+              items:
+                - name: 安装 Update 1
+                  href: storsimple-virtual-array-install-update-1.md
+                - name: 安装 Update 0.6
+                  href: storsimple-virtual-array-install-update-06.md
+                - name: 存档
+                  items:
+                    - name: 安装 Update 0.5
+                      href: storsimple-virtual-array-install-update-05.md
+                    - name: 安装 Update 0.4
+                      href: storsimple-virtual-array-install-update-04.md
+                    - name: 安装 Update 0.3
+                      href: storsimple-virtual-array-install-update.md
+            - name: 创建和管理备份
+              href: storsimple-virtual-array-backup.md
+            - name: 从备份克隆
+              href: storsimple-virtual-array-clone.md
+            - name: 故障转移和灾难恢复
+              href: storsimple-virtual-array-failover-dr.md
+            - name: 停用和删除
+              href: storsimple-virtual-array-deactivate-and-delete-device.md
+            - name: 管理共享
+              href: storsimple-virtual-array-manage-shares.md
+            - name: 管理卷
+              href: storsimple-virtual-array-manage-volumes.md
+            - name: 查看服务摘要
+              href: storsimple-virtual-array-service-summary.md
+            - name: 查看设备摘要
+              href: storsimple-virtual-array-device-summary.md
+            - name: 管理存储帐户
+              href: storsimple-virtual-array-manage-storage-accounts.md
+            - name: 管理 ACR
+              href: storsimple-virtual-array-manage-acrs.md
+            - name: 管理作业
+              href: storsimple-virtual-array-manage-jobs.md
+            - name: 更改设备密码
+              href: storsimple-virtual-array-change-device-admin-password.md
+            - name: 使用警报进行监视
+              href: storsimple-virtual-array-manage-alerts.md
+            - name: 诊断和故障排除
+              href: storsimple-virtual-array-diagnose-problems.md
+            - name: 记录支持请求
+              href: storsimple-virtual-array-log-support-ticket.md
+        - name: 通过本地 Web UI 进行配置
+          href: storsimple-ova-web-ui-admin.md
+    - name: 发行说明
+      items:
+        - name: Update 1.2
+          href: storsimple-virtual-array-update-12-release-notes.md
+        - name: Update 1.1
+          href: storsimple-virtual-array-update-11-release-notes.md
+        - name: Update 1
+          href: storsimple-virtual-array-update-1-release-notes.md
         - name: 存档
           items:
-          - name: 安装 Update 0.5
-            href: storsimple-virtual-array-install-update-05.md
-          - name: 安装 Update 0.4
-            href: storsimple-virtual-array-install-update-04.md
-          - name: 安装 Update 0.3
-            href: storsimple-virtual-array-install-update.md
-      - name: 创建和管理备份
-        href: storsimple-virtual-array-backup.md
-      - name: 从备份克隆
-        href: storsimple-virtual-array-clone.md
-      - name: 故障转移和灾难恢复
-        href: storsimple-virtual-array-failover-dr.md
-      - name: 停用和删除
-        href: storsimple-virtual-array-deactivate-and-delete-device.md
-      - name: 管理共享
-        href: storsimple-virtual-array-manage-shares.md
-      - name: 管理卷
-        href: storsimple-virtual-array-manage-volumes.md
-      - name: 查看服务摘要
-        href: storsimple-virtual-array-service-summary.md
-      - name: 查看设备摘要
-        href: storsimple-virtual-array-device-summary.md
-      - name: 管理存储帐户
-        href: storsimple-virtual-array-manage-storage-accounts.md
-      - name: 管理 ACR
-        href: storsimple-virtual-array-manage-acrs.md
-      - name: 管理作业
-        href: storsimple-virtual-array-manage-jobs.md
-      - name: 更改设备密码
-        href: storsimple-virtual-array-change-device-admin-password.md
-      - name: 使用警报进行监视
-        href: storsimple-virtual-array-manage-alerts.md
-      - name: 诊断和故障排除
-        href: storsimple-virtual-array-diagnose-problems.md
-      - name: 记录支持请求
-        href: storsimple-virtual-array-log-support-ticket.md
-    - name: 通过本地 Web UI 进行配置
-      href: storsimple-ova-web-ui-admin.md
-  - name: 发行说明
-    items:
-    - name: Update 1.1 - 最新版
-      href: storsimple-virtual-array-update-11-release-notes.md
-    - name: Update 1
-      href: storsimple-virtual-array-update-1-release-notes.md
-    - name: Update 0.6
-      href: storsimple-virtual-array-update-06-release-notes.md
-    - name: 存档
-      items:
-      - name: Update 0.5
-        href: storsimple-virtual-array-update-05-release-notes.md
-      - name: Update 0.4
-        href: storsimple-virtual-array-update-04-release-notes.md
-      - name: Update 0.3
-        href: storsimple-ova-update-03-release-notes.md
-      - name: Update 0.2 和 0.1
-        href: storsimple-ova-update-01-release-notes.md
-- name: StorSimple 8000 系列（Azure 门户）
+            - name: Update 0.6
+              href: storsimple-virtual-array-update-06-release-notes.md
+            - name: Update 0.5
+              href: storsimple-virtual-array-update-05-release-notes.md
+            - name: Update 0.4
+              href: storsimple-virtual-array-update-04-release-notes.md
+            - name: Update 0.3
+              href: storsimple-ova-update-03-release-notes.md
+            - name: Update 0.2 和 0.1
+              href: storsimple-ova-update-01-release-notes.md
+- name: StorSimple 8000 系列
   items:
-  - name: 概述
-    items:
-    - name: 什么是解决方案？
-      href: storsimple-overview.md
-    - name: 比较数据传输选项
-      href: storsimple-8000-choose-storage-solution.md
-    - name: StorSimple 学习路线图
-      href: https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/
-    - name: 安全注意事项
-      href: storsimple-8000-security.md
-    - name: 上市区域
-      href: storsimple-regions.md
-  - name: 入门
-    items:
-    - name: 计划
+    - name: 概述
       items:
-      - name: 审查要求
-        href: storsimple-8000-system-requirements.md
-      - name: 查看技术规范
-        href: storsimple-8000-technical-specifications-and-compliance.md
-      - name: 了解限制
-        href: storsimple-8000-limits.md
-      - name: 最佳做法
-        href: https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68
-    - name: 安装
+        - name: 什么是解决方案？
+          href: storsimple-overview.md
+        - name: 比较数据传输选项
+          href: storsimple-8000-choose-storage-solution.md
+        - name: StorSimple 学习路线图
+          href: 'https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/'
+        - name: 安全注意事项
+          href: storsimple-8000-security.md
+        - name: 上市区域
+          href: storsimple-regions.md
+    - name: 入门
       items:
-      - name: 审查安全性
-        href: storsimple-8000-safety.md
-      - name: 将 8100 设备取出、装入机架并连接电缆
-        href: storsimple-8100-hardware-installation.md
-      - name: 将 8600 设备取出、装入机架并连接电缆
-        href: storsimple-8600-hardware-installation.md
-      - name: 10 GbE 网络接口支持的硬件
-        href: storsimple-supported-hardware-for-10-gbe-network-interfaces.md
-    - name: 部署
-      items:
-      - name: StorSimple Device Manager 服务
-        href: storsimple-8000-manage-service.md
-      - name: 服务的新身份验证
-        href: storsimple-8000-aad-registration-key.md
-      - name: Azure 中的物理设备
-        href: storsimple-8000-deployment-walkthrough-u2.md
-      - name: 政府门户中的物理设备
-        href: storsimple-8000-deployment-walkthrough-gov-u2.md
-      - name: Azure 中的云设备
-        href: storsimple-8000-cloud-appliance-u2.md
-      - name: StorSimple 快照管理器
-        href: storsimple-snapshot-manager-deployment.md
-      - name: StorSimple Adapter for SharePoint
-        href: storsimple-adapter-for-sharepoint.md
-  - name: 如何
-    items:
-    - name: 管理
-      items:
-      - name: 使用 StorSimple Manager 服务
-        href: storsimple-8000-manager-service-administration.md
-        items:
-        - name: 从备份还原
-          href: storsimple-8000-restore-from-backup-set-u2.md
-        - name: 克隆卷
-          href: storsimple-8000-clone-volume-u2.md
-        - name: 远程连接到设备
-          href: storsimple-8000-remote-connect.md
-        - name: 停用和删除设备
-          href: storsimple-8000-deactivate-and-delete-device.md
-        - name: 将设备故障转移
-          href: storsimple-8000-device-failover-disaster-recovery.md
+        - name: 计划
           items:
-          - name: 故障转移到物理设备
-            href: storsimple-8000-device-failover-physical-device.md
-          - name: 故障转移到云设备
-            href: storsimple-8000-device-failover-cloud-appliance.md
-          - name: 故障转移到同一设备
-            href: storsimple-8000-device-failover-same-device.md
-        - name: 管理备份目录
-          href: storsimple-8000-manage-backup-catalog.md
-        - name: 管理备份策略
-          href: storsimple-8000-manage-backup-policies-u2.md
-        - name: 管理存储帐户
-          href: storsimple-8000-manage-storage-accounts.md
-        - name: 管理卷容器
-          href: storsimple-8000-manage-volume-containers.md
-        - name: 管理卷 - 最新版
-          href: storsimple-8000-manage-volumes-u2.md
+            - name: 审查要求
+              href: storsimple-8000-system-requirements.md
+            - name: 查看技术规范
+              href: storsimple-8000-technical-specifications-and-compliance.md
+            - name: 了解限制
+              href: storsimple-8000-limits.md
+            - name: 最佳做法
+              href: 'https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68'
+        - name: 安装
           items:
-          - name: 常见问题解答：本地固定卷
-            href: storsimple-8000-local-volume-faq.md
-        - name: 基于角色的访问控制
-          href: storsimple-8000-role-based-access-control.md
-        - name: 管理 ACR
-          href: storsimple-8000-manage-acrs.md
-        - name: 管理带宽模板
-          href: storsimple-8000-manage-bandwidth-templates.md
-        - name: 查看和管理作业
-          href: storsimple-8000-manage-jobs-u2.md
-        - name: 更改设备模式
-          href: storsimple-8000-device-modes.md
-        - name: 更改设备密码
-          href: storsimple-8000-change-passwords.md
-        - name: 修改设备配置
-          href: storsimple-8000-modify-device-config.md
-        - name: 打开和关闭
-          href: storsimple-turn-device-on-or-off.md
-        - name: 在 Windows Server 主机上配置 MPIO
-          href: storsimple-8000-configure-mpio-windows-server.md
-        - name: 在 Linux 主机上配置 MPIO
-          href: storsimple-configure-mpio-on-linux.md
-        - name: 配置 CHAP
-          href: storsimple-8000-configure-chap.md
-      - name: 使用用于 StorSimple 的 Windows PowerShell
-        href: storsimple-8000-windows-powershell-administration.md
-        items:
-        - name: 管理设备控制器
-          href: storsimple-8000-manage-device-controller.md
-        - name: 配置 Web 代理
-          href: storsimple-8000-configure-web-proxy.md
-        - name: 修改 DATA 0 设置
-          href: storsimple-8000-modify-data-0.md
-      - name: 使用 StorSimple Snapshot Manager
-        href: storsimple-snapshot-manager-admin.md
-        items:
-        - name: 什么是 StorSimple Snapshot Manager？
-          href: storsimple-what-is-snapshot-manager.md
-        - name: 关于 StorSimple Snapshot Manager 界面
-          href: storsimple-use-snapshot-manager.md
-        - name: 通过 StorSimple Snapshot Manager 管理设备
-          href: storsimple-snapshot-manager-manage-devices.md
-        - name: 通过 StorSimple Snapshot Manager 管理备份策略
-          href: storsimple-snapshot-manager-manage-backup-policies.md
-        - name: 通过 StorSimple Snapshot Manager 管理卷组
-          href: storsimple-snapshot-manager-manage-volume-groups.md
-        - name: 通过 StorSimple Snapshot Manager 管理备份目录
-          href: storsimple-snapshot-manager-manage-backup-catalog.md
-        - name: 通过 StorSimple Snapshot Manager 管理备份作业
-          href: storsimple-snapshot-manager-manage-backup-jobs.md
-        - name: 通过 StorSimple Snapshot Manager 管理卷
-          href: storsimple-snapshot-manager-manage-volumes.md
-        - name: 在 StorSimple Snapshot Manager 中使用 MMC 操作
-          href: storsimple-snapshot-manager-mmc-menu.md
-    - name: 自动化
+            - name: 审查安全性
+              href: storsimple-8000-safety.md
+            - name: 将 8100 设备取出、装入机架并连接电缆
+              href: storsimple-8100-hardware-installation.md
+            - name: 将 8600 设备取出、装入机架并连接电缆
+              href: storsimple-8600-hardware-installation.md
+            - name: 10 GbE 网络接口支持的硬件
+              href: storsimple-supported-hardware-for-10-gbe-network-interfaces.md
+        - name: 部署
+          items:
+            - name: StorSimple Device Manager 服务
+              href: storsimple-8000-manage-service.md
+            - name: 服务的新身份验证
+              href: storsimple-8000-aad-registration-key.md
+            - name: Azure 中的物理设备
+              href: storsimple-8000-deployment-walkthrough-u2.md
+            - name: 政府门户中的物理设备
+              href: storsimple-8000-deployment-walkthrough-gov-u2.md
+            - name: Azure 中的云设备
+              href: storsimple-8000-cloud-appliance-u2.md
+            - name: StorSimple 快照管理器
+              href: storsimple-snapshot-manager-deployment.md
+            - name: StorSimple Adapter for SharePoint
+              href: storsimple-adapter-for-sharepoint.md
+    - name: 如何
       items:
-      - name: 使用 Azure PowerShell 示例脚本
-        href: storsimple-8000-automation-azurerm-scripts.md
-      - name: 使用 Azure 自动化 Runbook
-        href: storsimple-8000-automation-azurerm-runbook.md
-    - name: 构建解决方案
+        - name: 管理
+          items:
+            - name: 使用 StorSimple Manager 服务
+              href: storsimple-8000-manager-service-administration.md
+              items:
+                - name: 从备份还原
+                  href: storsimple-8000-restore-from-backup-set-u2.md
+                - name: 克隆卷
+                  href: storsimple-8000-clone-volume-u2.md
+                - name: 远程连接到设备
+                  href: storsimple-8000-remote-connect.md
+                - name: 停用和删除设备
+                  href: storsimple-8000-deactivate-and-delete-device.md
+                - name: 将设备故障转移
+                  href: storsimple-8000-device-failover-disaster-recovery.md
+                  items:
+                    - name: 故障转移到物理设备
+                      href: storsimple-8000-device-failover-physical-device.md
+                    - name: 故障转移到云设备
+                      href: storsimple-8000-device-failover-cloud-appliance.md
+                    - name: 故障转移到同一设备
+                      href: storsimple-8000-device-failover-same-device.md
+                - name: 管理备份目录
+                  href: storsimple-8000-manage-backup-catalog.md
+                - name: 管理备份策略
+                  href: storsimple-8000-manage-backup-policies-u2.md
+                - name: 管理存储帐户
+                  href: storsimple-8000-manage-storage-accounts.md
+                - name: 管理卷容器
+                  href: storsimple-8000-manage-volume-containers.md
+                - name: 管理卷 - 最新版
+                  href: storsimple-8000-manage-volumes-u2.md
+                  items:
+                    - name: 常见问题解答：本地固定卷
+                      href: storsimple-8000-local-volume-faq.md
+                - name: 基于角色的访问控制
+                  href: storsimple-8000-role-based-access-control.md
+                - name: 管理 ACR
+                  href: storsimple-8000-manage-acrs.md
+                - name: 管理带宽模板
+                  href: storsimple-8000-manage-bandwidth-templates.md
+                - name: 查看和管理作业
+                  href: storsimple-8000-manage-jobs-u2.md
+                - name: 更改设备模式
+                  href: storsimple-8000-device-modes.md
+                - name: 更改设备密码
+                  href: storsimple-8000-change-passwords.md
+                - name: 修改设备配置
+                  href: storsimple-8000-modify-device-config.md
+                - name: 打开和关闭
+                  href: storsimple-turn-device-on-or-off.md
+                - name: 在 Windows Server 主机上配置 MPIO
+                  href: storsimple-8000-configure-mpio-windows-server.md
+                - name: 在 Linux 主机上配置 MPIO
+                  href: storsimple-configure-mpio-on-linux.md
+                - name: 配置 CHAP
+                  href: storsimple-8000-configure-chap.md
+            - name: 使用用于 StorSimple 的 Windows PowerShell
+              href: storsimple-8000-windows-powershell-administration.md
+              items:
+                - name: 管理设备控制器
+                  href: storsimple-8000-manage-device-controller.md
+                - name: 配置 Web 代理
+                  href: storsimple-8000-configure-web-proxy.md
+                - name: 修改 DATA 0 设置
+                  href: storsimple-8000-modify-data-0.md
+            - name: 使用 StorSimple Snapshot Manager
+              href: storsimple-snapshot-manager-admin.md
+              items:
+                - name: 什么是 StorSimple Snapshot Manager？
+                  href: storsimple-what-is-snapshot-manager.md
+                - name: 关于 StorSimple Snapshot Manager 界面
+                  href: storsimple-use-snapshot-manager.md
+                - name: 通过 StorSimple Snapshot Manager 管理设备
+                  href: storsimple-snapshot-manager-manage-devices.md
+                - name: 通过 StorSimple Snapshot Manager 管理备份策略
+                  href: storsimple-snapshot-manager-manage-backup-policies.md
+                - name: 通过 StorSimple Snapshot Manager 管理卷组
+                  href: storsimple-snapshot-manager-manage-volume-groups.md
+                - name: 通过 StorSimple Snapshot Manager 管理备份目录
+                  href: storsimple-snapshot-manager-manage-backup-catalog.md
+                - name: 通过 StorSimple Snapshot Manager 管理备份作业
+                  href: storsimple-snapshot-manager-manage-backup-jobs.md
+                - name: 通过 StorSimple Snapshot Manager 管理卷
+                  href: storsimple-snapshot-manager-manage-volumes.md
+                - name: 在 StorSimple Snapshot Manager 中使用 MMC 操作
+                  href: storsimple-snapshot-manager-mmc-menu.md
+        - name: 自动化
+          items:
+            - name: 使用 Azure PowerShell 示例脚本
+              href: storsimple-8000-automation-azurerm-scripts.md
+            - name: 使用 Azure 自动化 Runbook
+              href: storsimple-8000-automation-azurerm-runbook.md
+        - name: 构建解决方案
+          items:
+            - name: 采用 Veeam 的 StorSimple
+              href: storsimple-configure-backup-target-veeam.md
+            - name: 采用 Veritas Backup Exec 的 StorSimple
+              href: storsimple-configure-backup-target-using-backup-exec.md
+            - name: 采用 Veritas NetBackup 的 StorSimple
+              href: storsimple-configure-backuptarget-netbackup.md
+            - name: 在 Azure 中实现自动化文件服务器灾难恢复
+              href: storsimple-disaster-recovery-using-azure-site-recovery.md
+            - name: 通过 Express Route 使用 StorSimple
+              href: 'https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content'
+            - name: 采用 VMware 的 StorSimple
+              href: 'https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463'
+            - name: 采用 Hyper-V 的 StorSimple
+              href: 'https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6'
+            - name: 分布式全局命名空间
+              href: 'https://www.microsoft.com/download/details.aspx?id=45507'
+        - name: 监视
+          items:
+            - name: 使用服务摘要
+              href: storsimple-8000-service-dashboard.md
+            - name: 使用设备摘要
+              href: storsimple-8000-device-dashboard.md
+            - name: 使用监视图表
+              href: storsimple-8000-monitor-device.md
+            - name: 使用服务警报
+              href: storsimple-8000-manage-alerts.md
+            - name: 使用硬件状态
+              href: storsimple-8000-monitor-hardware-status.md
+            - name: 使用监控 LED
+              href: storsimple-monitoring-indicators.md
+        - name: 故障排除
+          items:
+            - name: 部署问题
+              href: storsimple-8000-troubleshoot-deployment.md
+            - name: 使用诊断工具
+              href: storsimple-8000-diagnostics.md
+            - name: 操作问题
+              href: storsimple-troubleshoot-operational-device.md
+            - name: 硬件更换
+              href: storsimple-8000-hardware-component-replacement.md
+              items:
+                - name: 更换设备控制器
+                  href: storsimple-8000-controller-replacement.md
+                - name: 更换 EBOD 控制器
+                  href: storsimple-8000-ebod-controller-replacement.md
+                - name: 更换 PCM
+                  href: storsimple-8000-power-cooling-module-replacement.md
+                - name: 更换磁盘驱动器
+                  href: storsimple-8000-disk-drive-replacement.md
+                - name: 更换备用电池
+                  href: storsimple-8000-battery-replacement.md
+                - name: 更换机箱
+                  href: storsimple-8000-chassis-replacement.md
+            - name: 联系支持人员
+              href: storsimple-8000-contact-microsoft-support.md
+              items:
+                - name: 创建支持包
+                  href: storsimple-8000-create-manage-support-package.md
+        - name: 迁移
+          items:
+            - name: 订阅和存储帐户
+              href: storsimple-8000-migrate-classic-azure-portal.md
+            - name: 从 5000/7000 系列设备
+              href: storsimple-8000-migration-options.md
+              items:
+                - name: 到 StorSimple 8000 系列设备
+                  href: storsimple-8000-migrate-from-5000-7000.md
+                - name: 到 Azure 文件同步
+                  href: storsimple-5000-7000-afs-migration.md
+            - name: 从其他存储设备
+              href: 'https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf'
+        - name: 更新
+          items:
+            - name: 安装 Update 5 - 最新版
+              href: storsimple-8000-install-update-5.md
+            - name: 安装 Update 4
+              href: storsimple-8000-install-update-4.md
+    - name: 发行说明
       items:
-      - name: 采用 Veeam 的 StorSimple
-        href: storsimple-configure-backup-target-veeam.md
-      - name: 采用 Veritas Backup Exec 的 StorSimple
-        href: storsimple-configure-backup-target-using-backup-exec.md
-      - name: 采用 Veritas NetBackup 的 StorSimple
-        href: storsimple-configure-backuptarget-netbackup.md
-      - name: 在 Azure 中实现自动化文件服务器灾难恢复
-        href: storsimple-disaster-recovery-using-azure-site-recovery.md
-      - name: 通过 Express Route 使用 StorSimple
-        href: https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content
-      - name: 采用 VMware 的 StorSimple
-        href: https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463
-      - name: 采用 Hyper-V 的 StorSimple
-        href: https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6
-      - name: 分布式全局命名空间
-        href: https://www.microsoft.com/download/details.aspx?id=45507
-    - name: 监视
+        - name: Update 5 - 最新版
+          href: storsimple-update5-release-notes.md
+        - name: Update 4
+          href: storsimple-update4-release-notes.md
+        - name: 存档
+          items:
+            - name: Update 3
+              href: storsimple-update3-release-notes.md
+            - name: Update 2.2
+              href: storsimple-update21-release-notes.md
+            - name: Update 2
+              href: storsimple-update2-release-notes.md
+            - name: Update 1
+              href: storsimple-update1-release-notes.md
+            - name: Update 0.3
+              href: storsimple-february-2015-release-notes.md
+            - name: Update 0.2
+              href: storsimple-january-2015-release-notes.md
+            - name: Update 0.1
+              href: storsimple-october-2014-release-notes.md
+            - name: 发行版 - 正式版
+              href: storsimple-july-2014-release-notes.md
+    - name: 引用
       items:
-      - name: 使用服务摘要
-        href: storsimple-8000-service-dashboard.md
-      - name: 使用设备摘要
-        href: storsimple-8000-device-dashboard.md
-      - name: 使用监视图表
-        href: storsimple-8000-monitor-device.md
-      - name: 使用服务警报
-        href: storsimple-8000-manage-alerts.md
-      - name: 使用硬件状态
-        href: storsimple-8000-monitor-hardware-status.md
-      - name: 使用监控 LED
-        href: storsimple-monitoring-indicators.md
-    - name: 故障排除
-      items:
-      - name: 部署问题
-        href: storsimple-8000-troubleshoot-deployment.md
-      - name: 使用诊断工具
-        href: storsimple-8000-diagnostics.md
-      - name: 操作问题
-        href: storsimple-troubleshoot-operational-device.md
-      - name: 硬件更换
-        href: storsimple-8000-hardware-component-replacement.md
-        items:
-        - name: 更换设备控制器
-          href: storsimple-8000-controller-replacement.md
-        - name: 更换 EBOD 控制器
-          href: storsimple-8000-ebod-controller-replacement.md
-        - name: 更换 PCM
-          href: storsimple-8000-power-cooling-module-replacement.md
-        - name: 更换磁盘驱动器
-          href: storsimple-8000-disk-drive-replacement.md
-        - name: 更换备用电池
-          href: storsimple-8000-battery-replacement.md
-        - name: 更换机箱
-          href: storsimple-8000-chassis-replacement.md
-      - name: 联系支持人员
-        href: storsimple-8000-contact-microsoft-support.md
-        items:
-        - name: 创建支持包
-          href: storsimple-8000-create-manage-support-package.md
-    - name: 迁移
-      items:
-      - name: 订阅和存储帐户
-        href: storsimple-8000-migrate-classic-azure-portal.md
-      - name: 从 5000/7000 系列设备
-        href: storsimple-8000-migration-options.md
-        items:
-        - name: 到 StorSimple 8000 系列设备
-          href: storsimple-8000-migrate-from-5000-7000.md
-        - name: 到 Azure 文件同步
-          href: storsimple-5000-7000-afs-migration.md
-      - name: 从其他存储设备
-        href: https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf
-    - name: 更新
-      items:
-      - name: 安装 Update 5 - 最新版
-        href: storsimple-8000-install-update-5.md
-      - name: 安装 Update 4
-        href: storsimple-8000-install-update-4.md
-  - name: 发行说明
-    items:
-    - name: Update 5 - 最新版
-      href: storsimple-update5-release-notes.md
-    - name: Update 4
-      href: storsimple-update4-release-notes.md
-    - name: 存档
-      items:
-      - name: Update 3
-        href: storsimple-update3-release-notes.md
-      - name: Update 2.2
-        href: storsimple-update21-release-notes.md
-      - name: Update 2
-        href: storsimple-update2-release-notes.md
-      - name: Update 1
-        href: storsimple-update1-release-notes.md
-      - name: Update 0.3
-        href: storsimple-february-2015-release-notes.md
-      - name: Update 0.2
-        href: storsimple-january-2015-release-notes.md
-      - name: Update 0.1
-        href: storsimple-october-2014-release-notes.md
-      - name: 发行版 - 正式版
-        href: storsimple-july-2014-release-notes.md
-  - name: 引用
-    items:
-    - name: REST API
-      href: https://docs.microsoft.com/rest/api/storsimple
-    - name: 用于 StorSimple 的 Windows PowerShell cmdlet
-      href: https://technet.microsoft.com/library/dn688168.aspx
-    - name: 资源管理器模板
-      href: /azure/templates/microsoft.storsimple/allversions
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/storsimple'
+        - name: 用于 StorSimple 的 Windows PowerShell cmdlet
+          href: 'https://technet.microsoft.com/library/dn688168.aspx'
+        - name: 资源管理器模板
+          href: /azure/templates/microsoft.storsimple/allversions
 - name: StorSimple 数据管理器
   items:
-  - name: 概述
-    items:
-    - name: 什么是解决方案？
-      href: storsimple-data-manager-overview.md
-  - name: 入门
-    items:
-    - name: 使用 StorSimple 数据管理器
-      href: storsimple-data-manager-ui.md
-  - name: 如何
-    items:
-    - name: 使用 .NET 启动作业
-      href: storsimple-data-manager-dotnet-jobs.md
-    - name: 使用自动化启动作业
-      href: storsimple-data-manager-job-using-automation.md
-    - name: 更改默认 Blob 路径
-      href: storsimple-data-manager-change-default-blob-path.md
+    - name: 概述
+      items:
+        - name: 什么是解决方案？
+          href: storsimple-data-manager-overview.md
+    - name: 入门
+      items:
+        - name: 使用 StorSimple 数据管理器
+          href: storsimple-data-manager-ui.md
+    - name: 如何
+      items:
+        - name: 使用 .NET 启动作业
+          href: storsimple-data-manager-dotnet-jobs.md
+        - name: 使用自动化启动作业
+          href: storsimple-data-manager-job-using-automation.md
+        - name: 更改默认 Blob 路径
+          href: storsimple-data-manager-change-default-blob-path.md
 - name: StorSimple 合作伙伴版
   items:
-  - name: 概述
-    items:
-    - name: 什么是解决方案？
-      href: storsimple-partner-csp-overview.md
-  - name: 入门
-    items:
-    - name: 为 CSP 部署虚拟阵列
-      href: storsimple-partner-csp-deploy.md
-  - name: 发行说明
-    items:
-    - name: StorSimple 发行说明
-      href: https://aka.ms/storsimple-virtual-array-latest-relnote
-    - name: CSP 发行说明
-      href: https://partner.microsoft.com/Support/whats-new
-    - name: StorSimple for CSP：常见问题解答
-      href: storsimple-partner-csp-faq.md
+    - name: 概述
+      items:
+        - name: 什么是解决方案？
+          href: storsimple-partner-csp-overview.md
+    - name: 入门
+      items:
+        - name: 为 CSP 部署虚拟阵列
+          href: storsimple-partner-csp-deploy.md
+    - name: 发行说明
+      items:
+        - name: StorSimple 发行说明
+          href: 'https://aka.ms/storsimple-virtual-array-latest-relnote'
+        - name: CSP 发行说明
+          href: 'https://partner.microsoft.com/Support/whats-new'
+        - name: StorSimple for CSP：常见问题解答
+          href: storsimple-partner-csp-faq.md
 - name: 相关内容
   items:
-  - name: StorSimple 5000-7000 系列
-    href: http://onlinehelp.storsimple.com
+    - name: StorSimple 5000-7000 系列
+      href: 'http://onlinehelp.storsimple.com'
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-  - name: 营销博客
-    href: http://blogs.technet.com/b/cis/
-  - name: Marketing
-    href: https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx
-  - name: StorSimple 支持选项
-    href: storsimple-8000-support-options.md
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/storsimple/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=storsimple
-  - name: 支持博客
-    href: https://blogs.msdn.com/b/storsimple/
-  - name: 第三方声明
-    href: https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=storsimple
-ms.openlocfilehash: 6879dd240dc070483a7d97536a5fa365108af5f1
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341129"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 营销博客
+      href: 'https://blogs.technet.com/b/cis/'
+    - name: Marketing
+      href: 'https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx'
+    - name: StorSimple 支持选项
+      href: storsimple-8000-support-options.md
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/storsimple/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=storsimple'
+    - name: 支持博客
+      href: 'https://blogs.msdn.com/b/storsimple/'
+    - name: 第三方声明
+      href: 'https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storsimple'

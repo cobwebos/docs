@@ -2,23 +2,19 @@
 title: 最佳实践，以使用 Azure Key Vault 的 Key Vault-|Microsoft Docs
 description: 本文档介绍了某些使用密钥保管库的最佳做法
 services: key-vault
-documentationcenter: ''
-author: yvprashanth
+author: msmbaldwin
 manager: barbkess
 tags: azure-key-vault
-ms.assetid: e5b4e083-4a39-4410-8e3a-2832ad6db405
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/07/2019
-ms.author: prashanthyv
-ms.openlocfilehash: ee4418700cec5de1dc404c3669dd5de315aab983
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.author: mbaldwin
+ms.openlocfilehash: eb7150d0b1c3a4a312b0c05ba7612960aaf640f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368604"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65227931"
 ---
 # <a name="best-practices-to-use-key-vault"></a>使用密钥保管库的最佳做法
 

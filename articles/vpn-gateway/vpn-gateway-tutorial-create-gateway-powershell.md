@@ -2,18 +2,18 @@
 title: 使用 PowerShell 创建和管理 Azure VPN 网关 | Microsoft Docs
 description: 教程 - 使用 Azure PowerShell 模块创建和管理 VPN 网关
 services: vpn-gateway
-author: yushwang
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 02/11/2019
-ms.author: yushwang
+ms.date: 07/23/2019
+ms.author: cherylmc
 ms.custom: mvc
-ms.openlocfilehash: 790a8b74f437fe8fd7b8660c2ac9d208328b487f
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: d1c90e61890ee98dc5371faed872d03409aaf31f
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445216"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489550"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教程：使用 PowerShell 创建和管理 VPN 网关
 
@@ -37,6 +37,25 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 
 ## <a name="common-network-parameter-values"></a>通用网络参数值
 
+下面是本教程中使用的参数值。 在示例中，变量转换为以下内容：
+
+```
+#$RG1         = The name of the resource group
+#$VNet1       = The name of the virtual network
+#$Location1   = The location region
+#$FESubnet1   = The name of the first subnet
+#$BESubnet1   = The name of the second subnet
+#$VNet1Prefix = The address range for the virtual network
+#$FEPrefix1   = Addresses for the first subnet
+#$BEPrefix1   = Addresses for the second subnet
+#$GwPrefix1   = Addresses for the GatewaySubnet
+#$VNet1ASN    = ASN for the virtual network
+#$DNS1        = The IP address of the DNS server you want to use for name resolution
+#$Gw1         = The name of the virtual network gateway
+#$GwIP1       = The public IP address for the virtual network gateway
+#$GwIPConf1   = The name of the IP configuration
+```
+
 根据你的环境和网络设置更改以下值，然后复制并粘贴以设置本教程的变量。 如果 Cloud Shell 会话超时，或者需要使用其他 PowerShell 窗口，请将变量复制并粘贴到新会话中，然后继续使用本教程。
 
 ```azurepowershell-interactive
@@ -45,7 +64,6 @@ $VNet1       = "VNet1"
 $Location1   = "East US"
 $FESubnet1   = "FrontEnd"
 $BESubnet1   = "Backend"
-$GwSubnet1   = "GatewaySubnet"
 $VNet1Prefix = "10.1.0.0/16"
 $FEPrefix1   = "10.1.0.0/24"
 $BEPrefix1   = "10.1.1.0/24"
@@ -67,12 +85,12 @@ New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-Azure VPN 网关为虚拟网络提供跨界连接和 P2S VPN 服务器功能。 可以将 VPN 网关添加到现有虚拟网络，也可以创建新的虚拟网络和网关。 此示例创建包含三个子网的全新虚拟网络：Frontend、Backend 和 GatewaySubnet，使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 和 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 进行创建：
+Azure VPN 网关为虚拟网络提供跨界连接和 P2S VPN 服务器功能。 可以将 VPN 网关添加到现有虚拟网络，也可以创建新的虚拟网络和网关。 请注意，该示例特别指定了网关子网的名称。 必须始终将网关子网的名称指定为“GatewaySubnet”，才能使其正常工作。 此示例创建包含三个子网的全新虚拟网络：Frontend、Backend 和 GatewaySubnet，使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 和 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 进行创建：
 
 ```azurepowershell-interactive
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
 $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPrefix1
-$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubnet1 -AddressPrefix $GwPrefix1
+$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -AddressPrefix $GwPrefix1
 $vnet   = New-AzVirtualNetwork `
             -Name $VNet1 `
             -ResourceGroupName $RG1 `
@@ -136,7 +154,7 @@ $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Resize-AzVirtualNetworkGateway -GatewaySku VpnGw2 -VirtualNetworkGateway $gateway
 ```
 
-调整 VPN 网关大小也将花费大约 30 到 45 分钟，但是此操作“不会”中断或删除现有连接和配置。
+调整 VPN 网关大小也将花费大约 30 到 45 分钟，但是此操作“不会”  中断或删除现有连接和配置。
 
 ## <a name="reset-a-gateway"></a>重置网关
 

@@ -9,16 +9,16 @@ ms.date: 11/26/2018
 ms.topic: reference
 ms.service: service-fabric-mesh
 manager: subramar
-ms.openlocfilehash: 08e842f5b91bd0ca5f8e8b2a7866f3f9a689ac28
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 27651d19e276571cf49a0aa1a199ef35c87c3ba4
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998994"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537685"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>适用于 Service Fabric 网格的 Maven 插件
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Java SDK
 - Maven
@@ -38,6 +38,9 @@ ms.locfileid: "52998994"
 
 ### `azure-sfmesh:addgateway`
 - 使用 `appresources` 文件夹中提供的网关名称生成 `gateway` YAML 
+
+#### `azure-sfmesh:addvolume`
+- 将生成`volume`YAML 中提供的卷名称`appresources`文件夹。
 
 ### `azure-sfmesh:addsecret`
 - 使用 `appresources` 文件夹中提供的密钥名称生成 `secret` YAML 
@@ -96,7 +99,7 @@ mvn azure-sfmesh:init -DapplicationName=helloworldserver
 运行以下命令以创建网络资源 yaml。 
 
 ```cmd
-mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.4/22
+mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.0/22
 ```
 
 - 在名为 `network_helloworldservicenetwork` 的文件夹 `servicefabric->appresources` 中创建网络 YAML

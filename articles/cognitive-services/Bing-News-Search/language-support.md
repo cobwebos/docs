@@ -3,19 +3,19 @@ title: 语言支持 - 必应新闻搜索 API
 titleSuffix: Azure Cognitive Services
 description: 必应新闻搜索 API 支持的自然语言、国家/地区和区域列表。
 services: cognitive-services
-author: MikeDodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
-ms.author: v-gedod
-ms.openlocfilehash: f94ebb9b46ade0c03f65fdeb78bc7be96794a3d2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866741"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66384987"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>必应新闻搜索 API 的语言和区域支持
 
@@ -23,7 +23,7 @@ ms.locfileid: "55866741"
 
 可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` HTTP 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言。
 
-或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场。 指定市场的同时指定国家/地区和首选语言。 在这种情况下，`setLang` 查询参数可能设置为一个语言代码，通常这与 `mkt` 所指定的语言相同，除非用户希望以另一种语言查看必应。
+或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场  。 指定市场的同时指定国家/地区和首选语言。 在这种情况下，`setLang` 查询参数可能设置为一个语言代码，通常这与 `mkt` 所指定的语言相同，除非用户希望以另一种语言查看必应。
 
 ## <a name="supported-markets-for-news-search-endpoint"></a>新闻搜索终结点支持的市场
 
@@ -162,4 +162,4 @@ ms.locfileid: "55866741"
 |美国|美国|
 
 ## <a name="next-steps"></a>后续步骤
-有关必应新闻搜索终结点的详细信息，请参阅[新闻搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)。
+有关必应新闻搜索终结点的详细信息，请参阅[新闻搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)。

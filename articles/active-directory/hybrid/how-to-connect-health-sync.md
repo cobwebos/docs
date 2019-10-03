@@ -16,11 +16,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abed56ee64cbca8646c1aa1d24fea292aa4d8de3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201816"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60245436"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 Azure AD Connect 同步
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。  有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅 [在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
@@ -69,7 +69,7 @@ ms.locfileid: "56201816"
 * 该报告涵盖同步客户端（Azure AD Connect 1.1.281.0 或更高版本）记录的错误
 * 其中包含上一次在同步引擎中执行同步操作时发生的错误。 （Azure AD 连接器中的“导出”。）
 * 为了在报告中包含最新的数据，用于同步的 Azure AD Connect Health 代理必须与所需的终结点建立出站连接。
-* 系统会使用用于同步的 Azure AD Connect Health 代理上传的数据每隔 30 分钟更新该报告。该报告提供以下重要功能
+* 系统会使用用于同步的 Azure AD Connect Health 代理上传的数据**每隔 30 分钟更新该报告**。该报告提供以下重要功能
 
   * 错误分类
   * 按类别列出出错的对象
@@ -80,7 +80,7 @@ ms.locfileid: "56201816"
 ### <a name="categorization-of-errors"></a>错误分类
 该报告将现有同步错误划分为以下类别：
 
-| 类别 | 说明 |
+| 类别 | 描述 |
 | --- | --- |
 | 重复属性 |当 Azure AD Connect 在 Azure AD 中尝试创建或更新对象时出错，因为这些对象具有一个或多个属性的重复值，但这些值在 proxyAddresses、UserPrincipalName 等租户中必须唯一。 |
 | 数据不匹配 |当软匹配无法匹配导致同步错误的对象时出错。 |

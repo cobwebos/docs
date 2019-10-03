@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand how to create zone-redundant gateways.
 ms.service: vpn-gateway
-ms.topic: conceptual
-ms.date: 03/13/2019
+ms.topic: article
+ms.date: 04/26/2019
 ms.author: cherylmc
-ms.openlocfilehash: 00c50f95324e18f738740a9bec572ca676ab9165
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 209c4deec2863de21362ab69a7f1d372921ac147
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010613"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64575564"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>在 Azure 可用性区域中创建区域冗余虚拟网络网关
 
@@ -97,7 +97,7 @@ $getvnet | Set-AzVirtualNetwork
 
 ### <a name="ipzoneredundant"></a>对于区域冗余网关
 
-使用标准 PublicIpaddress SKU 请求获取公共 IP 地址，但不指定任何区域。 在这种情况下，创建的标准公共 IP 地址是区域冗余公共 IP。   
+使用标准  PublicIpaddress SKU 请求获取公共 IP 地址，但不指定任何区域。 在这种情况下，创建的标准公共 IP 地址是区域冗余公共 IP。   
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
@@ -105,7 +105,7 @@ $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $Gw
 
 ### <a name="ipzonalgw"></a>对于区块网关
 
-使用标准 PublicIpaddress SKU 请求获取公共 IP 地址。 指定区域（1、2 或 3）。 所有网关实例都会部署在此区域中。
+使用标准  PublicIpaddress SKU 请求获取公共 IP 地址。 指定区域（1、2 或 3）。 所有网关实例都会部署在此区域中。
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
@@ -113,7 +113,7 @@ $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $Gw
 
 ### <a name="ipregionalgw"></a>对于区域网关
 
-使用基本 PublicIpaddress SKU 请求获取公共 IP 地址。 在这种情况下，网关部署为区域网关，并且不会内置有任何区域冗余。 网关实例分别会在任意区域中创建。
+使用基本  PublicIpaddress SKU 请求获取公共 IP 地址。 在这种情况下，网关部署为区域网关，并且不会内置有任何区域冗余。 网关实例分别会在任意区域中创建。
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
@@ -133,13 +133,13 @@ $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subne
 ### <a name="for-expressroute"></a>对于 ExpressRoute 网关
 
 ```azurepowershell-interactive
-New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute
+New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute -GatewaySku ErGw1AZ
 ```
 
 ### <a name="for-vpn-gateway"></a>对于 VPN 网关
 
 ```azurepowershell-interactive
-New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased
+New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1AZ
 ```
 
 ## <a name="faq"></a>常见问题解答
@@ -154,7 +154,7 @@ New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>我可以在哪些区域中使用新 SKU？
 
-请参阅[可用性区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)有关可用区域的最新列表。
+请参阅[可用性区域](../availability-zones/az-overview.md#services-support-by-region)有关可用区域的最新列表。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>我能否将现有虚拟网络网关更改/迁移/升级为区域冗余网关或区域网关？
 

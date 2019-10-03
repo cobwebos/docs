@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 977b59c3344eaf2c4877f51afea176455d22ecc9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 7611af5f4d5b79ddb2abb7546f2e3ea6c0d4c4c5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546681"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308415"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>如何通过 Node.js 使用 Azure 表存储或 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "59546681"
        +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
        +-- xml2js@0.2.7 (sax@0.5.2)
        +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
-3. 可以手动运行 ls 命令，验证是否创建了 node_modules 文件夹。 在该文件夹中将找到 **azure-storage** 包，其中包含访问存储所需的库。
+3. 可以手动运行 ls 命令，验证是否创建了 node_modules 文件夹   。 在该文件夹中将找到 **azure-storage** 包，其中包含访问存储所需的库。
 
 ### <a name="import-the-package"></a>导入包
 将以下代码添加到应用程序中的 **server.js** 文件的顶部：
@@ -61,14 +61,14 @@ var azure = require('azure-storage');
 ```
 
 ## <a name="add-an-azure-storage-connection"></a>添加 Azure 存储连接
-Azure 模块读取环境变量 AZURE_STORAGE_ACCOUNT 和 AZURE_STORAGE_ACCESS_KEY 或 AZURE_STORAGE_CONNECTION_STRING 以获取连接到 Azure 存储器帐户所需的信息。 如果未设置这些环境变量，则必须在调用 **TableService** 时指定帐户信息。 例如，以下代码创建 TableService 对象：
+Azure 模块读取环境变量 AZURE_STORAGE_ACCOUNT 和 AZURE_STORAGE_ACCESS_KEY 或 AZURE_STORAGE_CONNECTION_STRING 以获取连接到 Azure 存储器帐户所需的信息。 如果未设置这些环境变量，则必须在调用 **TableService** 时指定帐户信息。 例如，以下代码创建 TableService 对象： 
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>添加 Azure Cosmos DB 连接
-要添加 Azure Cosmos DB 连接，创建 TableService 对象并指定帐户名称、主键和终结点。 可以从 Cosmos DB 帐户的 Azure 门户中的“设置” > “连接字符串”中复制这些值。 例如：
+要添加 Azure Cosmos DB 连接，创建 TableService 对象并指定帐户名称、主键和终结点  。 可以从 Cosmos DB 帐户的 Azure 门户中的“设置” > “连接字符串”中复制这些值   。 例如：
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
@@ -81,7 +81,7 @@ var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint
 var tableSvc = azure.createTableService();
 ```
 
-调用 createTableIfNotExists 创建具有指定名称的一个新表（如果该表尚不存在）。 下面的示例将创建一个名为“mytable”的新表（如果该表尚不存在）：
+调用 createTableIfNotExists 创建具有指定名称的一个新表（如果该表尚不存在）。  下面的示例将创建一个名为“mytable”的新表（如果该表尚不存在）：
 
 ```javascript
 tableSvc.createTableIfNotExists('mytable', function(error, result, response){
@@ -94,19 +94,19 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 如果创建了新表，`result.created` 为 `true`，如果表已存在，则为 `false`。 `response` 包含有关该请求的信息。
 
 ### <a name="filters"></a>筛选器
-可以向使用 TableService 执行的操作应用可选筛选。 筛选操作可包括日志记录、自动重试等。筛选器是实现具有签名的方法的对象：
+可以向使用 TableService 执行的操作应用可选筛选  。 筛选操作可包括日志记录、自动重试等。筛选器是实现具有签名的方法的对象：
 
 ```javascript
 function handle (requestOptions, next)
 ```
 
-在对请求选项执行预处理后，该方法必须调用 next 并且传递具有以下签名的回调：
+在对请求选项执行预处理后，该方法必须调用 next 并且传递具有以下签名的回调： 
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-在此回调中并且在处理 returnObject（来自对服务器请求的响应）后，回调必须调用 next（如果它已存在）以继续处理其他筛选器或只调用 finalCallback 以便结束服务调用。
+在此回调中并且在处理 returnObject（来自对服务器请求的响应）后，回调必须调用 next（如果它已存在）以继续处理其他筛选器或只调用 finalCallback 以便结束服务调用    。
 
 Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 以下代码将创建使用 **ExponentialRetryPolicyFilter** 的 **TableService** 对象:
 
@@ -135,7 +135,7 @@ var task = {
 ```
 
 > [!NOTE]
-> 每个记录还有一个“时间戳”字段，在插入或更新实体时，Azure 会设置该字段。
+> 每个记录还有一个“时间戳”  字段，在插入或更新实体时，Azure 会设置该字段。
 >
 >
 
@@ -205,9 +205,9 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 >
 >
 
-使用 replaceEntity 和 mergeEntity 时，如果正在更新的实体不存在，则更新操作失败；因此，如果想要存储一个实体，而不管其是否已存在，请使用 insertOrReplaceEntity 或 insertOrMergeEntity。
+使用 replaceEntity 和 mergeEntity 时，如果正在更新的实体不存在，则更新操作失败；因此，如果想要存储一个实体，而不管其是否已存在，请使用 insertOrReplaceEntity 或 insertOrMergeEntity     。
 
-如果更新操作成功，则 `result` 会包含所更新实体的 Etag。
+如果更新操作成功，则 `result` 会包含所更新实体的 Etag  。
 
 ## <a name="work-with-groups-of-entities"></a>使用实体组
 有时，有必要批量同时提交多项操作以确保通过服务器进行原子处理。 使用 **TableBatch** 类来创建一个批处理，并使用 **TableService** 的 **executeBatch** 方法来执行批处理操作。
@@ -282,7 +282,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-由于未使用 select，因此将返回所有字段。 若要对表执行查询，请使用 **queryEntities**。 下面的示例使用此查询来返回“mytable”中的实体。
+由于未使用 select，因此将返回所有字段  。 若要对表执行查询，请使用 **queryEntities**。 下面的示例使用此查询来返回“mytable”中的实体。
 
 ```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
@@ -292,11 +292,11 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 });
 ```
 
-如果成功，`result.entries` 会包含与查询匹配的一组实体。 如果查询无法返回所有实体，`result.continuationToken` 就不会是 NULL，因此可用作 queryEntities 的第三个参数来检索更多结果。 对于初始查询，对第三个参数使用 null。
+如果成功，`result.entries` 会包含与查询匹配的一组实体。 如果查询无法返回所有实体，`result.continuationToken` 就不会是 NULL，因此可用作 queryEntities 的第三个参数来检索更多结果   。 对于初始查询，对第三个参数使用 null  。
 
 ### <a name="query-a-subset-of-entity-properties"></a>查询一部分实体属性
 对表的查询可以只检索实体中的少数几个字段。
-这可以减少带宽并提高查询性能，尤其适用于大型实体。 使用 select 子句并传递要返回的字段的名称。 例如，下面的查询只返回 description 和 dueDate 字段。
+这可以减少带宽并提高查询性能，尤其适用于大型实体。 使用 select 子句并传递要返回的字段的名称  。 例如，下面的查询只返回 description 和 dueDate 字段   。
 
 ```javascript
 var query = new azure.TableQuery()
@@ -306,7 +306,7 @@ var query = new azure.TableQuery()
 ```
 
 ## <a name="delete-an-entity"></a>删除实体
-可以使用实体的分区键和行键删除实体。 在本例中，task1 对象包含要删除的实体的 RowKey 和 PartitionKey 值。 然后，该对象被传递给 **deleteEntity** 方法。
+可以使用实体的分区键和行键删除实体。 在本例中，task1 对象包含要删除的实体的 RowKey 和 PartitionKey 值    。 然后，该对象被传递给 **deleteEntity** 方法。
 
 ```javascript
 var task = {
@@ -342,7 +342,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 ## <a name="use-continuation-tokens"></a>使用继续标记
 在所查询的表有大量的结果时，请查找继续标记。 如果在生成时不能识别何时存在继续标记，可能存在大量未意识到的数据可用于查询。
 
-查询实体在设置 `continuationToken` 属性（如果此类标记存在）期间，返回结果对象。 然后可以在执行查询时使用此对象，继续在分区和表实体之间移动。
+查询实体在设置 `continuationToken` 属性（如果此类标记存在）期间，返回结果对象  。 然后可以在执行查询时使用此对象，继续在分区和表实体之间移动。
 
 在查询时，在查询对象实例和回调函数之间可能会提供 `continuationToken` 参数：
 
@@ -394,7 +394,7 @@ var host = tableSvc.host;
 
 请注意，还必须提供主机信息，因为 SAS 持有者尝试访问表时，必须提供该信息。
 
-然后，客户端应用程序将 SAS 用于 **TableServiceWithSAS**，以便针对表执行操作。 下面的示例连接到该表，并执行一个查询。 请参阅[使用共享访问签名](../storage/common/storage-dotnet-shared-access-signature-part-1.md#examples-of-sas-uris)一文，了解 tableSAS 的格式。 
+然后，客户端应用程序将 SAS 用于 **TableServiceWithSAS**，以便针对表执行操作。 下面的示例连接到该表，并执行一个查询。 有关 tableSAS 的格式，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)一文。 
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
@@ -459,6 +459,6 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 
 * [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
 * GitHub 上的 [Azure Storage SDK for Node.js](https://github.com/Azure/azure-storage-node) 存储库。
-* [面向 Node.js 开发人员的 Azure](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)
+* [面向 Node.js 开发人员的 Azure](https://docs.microsoft.com/azure/javascript/)
 * [在 Azure 中创建 Node.js Web 应用](../app-service/app-service-web-get-started-nodejs.md)
 * [生成 Node.js 应用程序并将其部署到 Azure 云服务](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)（使用 Windows PowerShell）

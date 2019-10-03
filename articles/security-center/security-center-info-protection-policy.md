@@ -3,29 +3,28 @@ title: 在 Azure 安全中心中自定义 SQL 信息保护策略 | Microsoft Doc
 description: 了解如何在 Azure 安全中心中自定义信息保护策略。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2ebf2bc7-232a-45c4-a06a-b3d32aaf2500
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
-ms.author: rkarlin
-ms.openlocfilehash: 9b63fb963408b8f22453c7ea78e36a49402273a7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.date: 04/29/2019
+ms.author: memildin
+ms.openlocfilehash: edd415c330656d4cecc42a39d27598a88a1a8d2c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105716"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202088"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>在 Azure 安全中心（预览版）中自定义 SQL 信息保护策略
  
 可以在 Azure 安全中心为整个 Azure 租户定义和定制 SQL 信息保护策略。
 
-信息保护是一种高级安全功能，用于发现、分类、标记和保护 Azure 数据资源中的敏感数据。 发现最敏感的数据（业务、财务、医疗保健、 PII 等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
+信息保护是一种高级安全功能，用于发现、分类、标记和保护 Azure 数据资源中的敏感数据。 发现和分类最敏感的数据（业务、财务、医疗保健、个人数据等）可以在组织信息保护威望中扮演 pivotal 角色。 它可以作为基础结构，用于：
 - 帮助满足数据隐私标准和法规符合性要求
 - 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报
 - 控制对包含高度敏感数据的数据存储的访问并增强其安全性
@@ -41,18 +40,17 @@ ms.locfileid: "56105716"
 ## <a name="customize-the-information-protection-policy"></a>自定义信息保护策略
 要自定义 Azure 租户的信息保护策略，需要拥有[租户根管理组的管理权限](security-center-management-groups.md)。 
  
-1. 在安全中心主菜单中，选择“安全策略”。
-2. 选择“层次结构视图 (预览)”，然后在“租户根组”下，单击“编辑设置”。
- 
+1. 在安全中心主菜单的 "**资源安全**" 下，单击 "**数据 & 存储**"，然后单击 " **SQL 信息保护**" 按钮。
+
    ![配置信息保护策略](./media/security-center-info-protection-policy/security-policy.png) 
  
-3. 在“策略组件”下，单击“信息保护”。 在“信息保护设置”页中，可以查看当前的标签集。 这些是用于对数据的敏感度级别进行分类的主要分类属性。 此处，可以为租户配置信息保护标签和信息类型。 
+2. 在**SQL 信息保护**页中，可以查看当前的标签集。 这些是用于对数据的敏感度级别进行分类的主要分类属性。 此处，可以为租户配置信息保护标签和信息类型。 
  
 ### <a name="customizing-labels"></a>自定义标签
  
 1. 可以编辑或删除任何现有标签，也可以添加新标签。 要编辑现有标签，请选择该标签，然后单击顶部或右侧上下文菜单中的“配置”。 要添加新标签，请单击顶部菜单栏或标签表底部的“创建标签”。
 2. 在“配置敏感度标签”屏幕中，可以创建或更改标签名称和描述。 还可以通过打开或关闭“已启用”开关来设置标签的状态（活动或禁用）。 最后，可以添加或删除与标签关联的信息类型。 若发现与该信息类型匹配的任何数据，该数据将自动在分类建议中包含关联的敏感度标签。
-3. 单击“确定”。
+3. 单击 **“确定”** 。
  
    ![配置敏感度标签](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  

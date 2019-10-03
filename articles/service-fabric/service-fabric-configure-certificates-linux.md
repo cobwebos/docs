@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/26/2018
-ms.author: v-jamebr
-ms.openlocfilehash: c0580b75544a9613bc8caf2faaac11ba1ba6708e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 09/06/2019
+ms.author: chackdan
+ms.openlocfilehash: 9599d59f7f23de4e54ce323aa4a2ad837d8ed074
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667134"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773256"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux 群集上的证书和安全性
 
@@ -31,7 +30,7 @@ Service Fabric 通常要求在 Linux 群集节点上的 */var/lib/sfcerts* 目�
 
 对于 Linux 群集，Service Fabric 要求以包含证书和私钥的 .pem 文件形式提供证书，或者以包含证书的 .crt 文件和包含私钥的 .key 文件形式提供证书。 所有文件应采用 PEM 格式。 
 
-如果使用[资源管理器模板](./service-fabric-cluster-creation-create-template.md)或 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/?view=latest#service_fabric) 命令从 Azure Key Vault 安装证书，证书将以正确的格式安装在每个节点上的 */var/lib/sfcerts* 目录中。 如果通过其他方法安装证书，必须确保在群集节点上正确安装证书。
+如果使用[资源管理器模板](./service-fabric-cluster-creation-create-template.md)或 [PowerShell](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0) 命令从 Azure Key Vault 安装证书，证书将以正确的格式安装在每个节点上的 */var/lib/sfcerts* 目录中。 如果通过其他方法安装证书，必须确保在群集节点上正确安装证书。
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>应用程序清单中引用的证书
 
@@ -72,7 +71,7 @@ Service Fabric 通常要求在 Linux 群集节点上的 */var/lib/sfcerts* 目�
 </Section>
 ```
 
-### <a name="using-x5092-securitycredentialstype"></a>使用 X509_2 SecurityCredentialsType
+### <a name="using-x509_2-securitycredentialstype"></a>使用 X509_2 SecurityCredentialsType
 
 使用 Java SDK，可为 **SecurityCredentialsType** 指定 **X509_2**。 此值对应于 `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) 类型的 `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2))。 
 

@@ -2,18 +2,18 @@
 title: 对 Azure 存储使用 Azure PowerShell | Microsoft Docs
 description: 了解如何对 Azure 存储使用 Azure PowerShell cmdlet。
 services: storage
-author: roygara
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 08/16/2018
-ms.author: rogarana
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 78eeb986be5380d9e34a42872cbbdeee37654cc0
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ac210a03f8b1a0a5f7fff07cbc68b4cd6bc98632
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316981"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016348"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>对 Azure 存储 使用 Azure PowerShell
 
@@ -42,7 +42,7 @@ Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure �
 
 有关存储帐户的详细信息，请参阅[存储简介](storage-introduction.md)和[关于 Azure 存储帐户](storage-create-storage-account.md)。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录  Azure
 
 运行 `Connect-AzAccount` 命令以登录 Azure 订阅，并按照屏幕上的说明操作。
 
@@ -131,7 +131,7 @@ SKU 名称指示用于存储帐户的复制类型，如 LRS（本地冗余存储
 
 * 分配给存储帐户的标记。 标记通常用于分类资源以进行计费。
 
-* SKU 是存储帐户的复制设置，例如 LRS（对于本地冗余存储）。 例如，可能会从标准\_LRS 更改为标准\_GRS 或标准\_RAGRS。 请注意，无法将 Standard\_ZRS 或 Premium\_LRS 更改为其他 SKU，反之亦然。
+* SKU 是存储帐户的复制设置，例如 LRS（对于本地冗余存储）。 例如，可能会从标准\_LRS 更改为标准\_GRS 或标准\_RAGRS。 请注意, 不能将\_标准的 ZRS\_、standard GZRS\_、standard RAGZRS 或\_Premium LRS 更改为其他 sku, 或将其他 sku 更改为这些 sku。
 
 * Blob 存储帐户的访问层。 将访问层的值设置为“热”或“冷”，并允许用户通过选择符合存储帐户使用方式的访问层来最大限度地降低成本。 有关详细信息，请参阅[热、冷存储层和存档存储层](../blobs/storage-blob-storage-tiers.md)。
 
@@ -199,7 +199,7 @@ Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccou
 > 可以使用 PowerShell 启用分钟分析。 此功能在门户中不可用。
 >
 
-* 若要了解如何启用和查看存储度量值数据使用 PowerShell，请参阅[存储分析度量值](storage-analytics-metrics.md)。
+* 若要了解如何使用 PowerShell 启用和查看存储指标数据，请参阅[存储分析指标](storage-analytics-metrics.md)。
 
 * 若要了解如何使用 PowerShell 启用和检索存储日志记录数据，请参阅[如何使用 PowerShell 启用存储日志记录](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)和[查找存储日志记录的日志数据](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)。
 
@@ -223,7 +223,7 @@ Azure Cosmos DB 表 API 提供了用于表存储的高级功能，如统包全�
 大多数人为其全球 Azure 部署使用了 Azure 公有云。 但出于主权等方面的原因，还存在一些独立的 Microsoft Azure 部署。 这些独立部署称为“环境”。 可用环境如下：
 
 * [Azure 政府云](https://azure.microsoft.com/features/gov/)
-* [由中国 21Vianet 运营的 azure 中国 21Vianet 云](http://www.windowsazure.cn/)
+* [中国世纪互联运营的 Azure 中国世纪互联云](http://www.windowsazure.cn/)
 * [Azure 德国云](../../germany/germany-welcome.md)
 
 有关如何使用 PowerShell 访问这些云及其存储的信息，请参阅[使用 PowerShell 管理 Azure 独立云中的存储](storage-powershell-independent-clouds.md)。

@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92825a9ef84edc30b6b34aa875f8a207c70c8511
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59260929"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60350392"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 AD FS
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 AD FS 基础结构。 有关使用 Azure AD Connect Health 监视 Azure AD Connect（同步）的信息，请参阅 [使用用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md)。此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
@@ -50,7 +50,7 @@ Azure AD Connect Health 使用情况分析可分析联合服务器的身份验�
 
 |分组依据 | 分组意味着什么，它为什么很有用？ |
 | --- | --- |
-| All | 显示所有 AD FS 服务器处理的请求总数的计数。|
+| 全部 | 显示所有 AD FS 服务器处理的请求总数的计数。|
 | 应用程序 | 基于目标信赖方对请求总数分组。 此分组有助于了解具体某个应用程序正在接收多少百分比的总流量。 |
 |  服务器 |基于处理请求的服务器对请求总数分组。 此分组有助于了解总流量的负载分布。
 | 工作区加入 |基于请求是否来自已加入工作区（已知）的设备对请求总数分组。 此分组有助于了解是否使用标识基础结构未知的设备来访问资源。 |
@@ -71,7 +71,7 @@ Azure AD Connect Health 使用情况分析可分析联合服务器的身份验�
 
 |分组依据 | 分组意味着什么，它为什么很有用？ |
 | --- | --- |
-|All |此指标提供所选时间段内使用联合身份验证服务的用户平均数。 不对用户进行分组。 <br>平均值取决于所选的时间段。 |
+|全部 |此指标提供所选时间段内使用联合身份验证服务的用户平均数。 不对用户进行分组。 <br>平均值取决于所选的时间段。 |
 | 应用程序 |基于目标应用程序（信赖方）对用户平均数分组。 这种分组有助于了解使用具体某个应用程序的用户数量。 |
 
 ## <a name="performance-monitoring-for-ad-fs"></a>AD FS 的性能监视

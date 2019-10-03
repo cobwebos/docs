@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 280143d54e516fb626bb2d5afd01653e03d8a82c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: a0704f9e9a77eba2eb0d4f00bc1d880011e767de
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490440"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859214"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>快速入门：使用 REST API 和 PHP 检测图像中的人脸
 
@@ -43,17 +43,15 @@ ms.locfileid: "59490440"
 
 ## <a name="write-the-php-script"></a>编写 PHP 脚本
 
-在该文档的 `body` 元素中添加以下代码。 这将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”按钮、响应窗格和图像显示窗格。
+在该文档的 `body` 元素中添加以下代码。 此代码将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”  按钮、响应窗格和图像显示窗格。
 
 ```php
 <?php
 // Replace <Subscription Key> with a valid subscription key.
 $ocpApimSubscriptionKey = '<Subscription Key>';
 
-// You must use the same location in your REST call as you used to obtain
-// your subscription keys. For example, if you obtained your subscription keys
-// from westus, replace "westcentralus" in the URL below with "westus".
-$uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/';
+// Replace <My Endpoint String> with the string in your endpoint URL.
+$uriBase = 'https:/<My Endpoint String>.com/face/v1.0/';
 
 $imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
@@ -101,7 +99,9 @@ catch (HttpException $ex)
 ?>
 ```
 
-需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的区域标识符（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 `returnFaceAttributes` 字段指定要检索的人脸属性；你可能希望根据自己的预期用途更改此字符串。
+需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的终结点字符串。 `returnFaceAttributes` 字段指定要检索的人脸属性；你可能希望根据自己的预期用途更改此字符串。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>运行脚本
 

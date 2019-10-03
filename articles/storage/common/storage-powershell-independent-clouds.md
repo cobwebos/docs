@@ -2,18 +2,18 @@
 title: 使用 Azure PowerShell 管理 Azure 独立云中的存储 | Microsoft Docs
 description: 使用 Azure PowerShell 管理中国云、政府云和德国云中的存储
 services: storage
-author: roygara
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 10/24/2017
-ms.author: rogarana
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6a3fe8c7235a0cf475f188a3379e372cd777ce8c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 69707eec0ea1f2260ee50a48ce1dcb82dc9ddd8f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477635"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65145869"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
 
@@ -29,7 +29,7 @@ ms.locfileid: "55477635"
 
 若要在某个独立云中使用 Azure 存储，需要连接到该云而不是 Azure 公有云。 若要使用某个独立云而不是 Azure 公有云，需要：
 
-* 指定要连接到的环境。
+* 指定要连接到的环境。 
 * 确定并使用可用的区域。
 * 使用正确的终结点后缀，它不同于 Azure 公有云。
 
@@ -59,7 +59,7 @@ Get-AzLocation | select Location, DisplayName
 
 下表显示了针对德国云返回的位置。
 
-|位置 | DisplayName |
+|Location | DisplayName |
 |----|----|
 | germanycentral | 德国中部|
 | germanynortheast | 德国东北部 | 
@@ -88,7 +88,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于德国云。
+若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称  。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于德国云。
 
 ```powershell
 Get-AzEnvironment -Name AzureGermanCloud 
@@ -96,7 +96,7 @@ Get-AzEnvironment -Name AzureGermanCloud
 
 结果如下所示：
 
-|属性名称|值|
+|属性名|值|
 |----|----|
 | Name | AzureGermanCloud |
 | EnableAdfsAuthentication | False |

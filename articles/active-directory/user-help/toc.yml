@@ -1,11 +1,19 @@
 - name: 使用帮助文档
-  href: index.md
+  href: index.yml
 - name: 双重验证帮助
   items:
     - name: 概述
       href: user-help-two-step-verification-overview.md
-    - name: 设置帐户
-      href: multi-factor-authentication-end-user-first-time.md
+    - name: 设置双重验证方法
+      items:
+        - name: 概述
+          href: multi-factor-authentication-end-user-first-time.md
+        - name: 设置验证器应用
+          href: multi-factor-authentication-setup-auth-app.md
+        - name: 设置移动设备
+          href: multi-factor-authentication-setup-phone-number.md
+        - name: 设置办公电话
+          href: multi-factor-authentication-setup-office-phone.md
     - name: 管理设置
       href: multi-factor-authentication-end-user-manage-settings.md
     - name: 获取帮助
@@ -28,9 +36,10 @@
       href: user-help-auth-app-overview.md
     - name: 下载并安装应用
       href: user-help-auth-app-download-install.md
-    - name: “添加帐户”概述
-      href: user-help-auth-app-add-account-overview.md
+    - name: 添加帐户
       items:
+        - name: 概述
+          href: user-help-auth-app-add-account-overview.md
         - name: 添加工作或学校帐户
           href: user-help-auth-app-add-work-school-account.md
         - name: 添加个人 Microsoft 帐户
@@ -63,15 +72,18 @@
       href: user-help-security-info-overview.md
     - name: 在登录过程中添加安全信息
       href: security-info-setup-signin.md
-    - name: 添加或更新安全信息的方法概述
-      href: security-info-add-update-methods-overview.md
+    - name: 添加或更新安全信息方法
       items:
+        - name: 概述
+          href: security-info-add-update-methods-overview.md
         - name: 设置验证器应用
           href: security-info-setup-auth-app.md
         - name: 设置短信
           href: security-info-setup-text-msg.md
         - name: 设置电话呼叫
           href: security-info-setup-phone-number.md
+        - name: 设置安全密钥
+          href: security-info-setup-security-key.md
         - name: 设置电子邮件
           href: security-info-setup-email.md
         - name: 设置安全问题

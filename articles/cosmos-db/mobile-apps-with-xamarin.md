@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 11/15/2018
 ms.author: sngun
-ms.openlocfilehash: 0580129d8a1e8500a7be1b0728bacc947f4ece5a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4a9c0fe09bee553f53c90c9833922746aad35d14
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043866"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615079"
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>使用 Xamarin 和 Azure Cosmos DB 构建移动应用程序
 
@@ -35,7 +35,7 @@ Azure Cosmos DB 为移动应用开发人员提供以下重要功能：
 
 * 针对无架构数据的丰富查询。 Azure Cosmos DB 将数据以无架构 JSON 文档的形式存储在异构集合中。 它提供[丰富的快速查询](how-to-sql-query.md)，无需担心架构或索引问题。
 * 快速吞吐量。 使用 Azure Cosmos DB 时，只需几毫秒就能读取和写入文档。 开发人员可以指定所需的吞吐量，Azure Cosmos DB 对所有单区域帐户和具有松散一致性的所有多区域帐户采用 99.99% 的可用性 SLA，对所有多区域数据库帐户采用 99.999% 的读取可用性。
-* 无限规模。 Azure Cosmos DB 集合[随着应用的增长而增长](partition-data.md)。 一开始可以处理较小规模的数据和每秒几百个请求的吞吐量。 集合或数据库可以增长到 PB 量级的数据和每秒几亿个请求的任意大的吞吐量。
+* 无限规模。 Azure Cosmos 容器[随着应用的增长而增长](partition-data.md)。 一开始可以处理较小规模的数据和每秒几百个请求的吞吐量。 集合或数据库可以增长到 PB 量级的数据和每秒几亿个请求的任意大的吞吐量。
 * 全球分布。 移动应用的用户特点是经常在全球不同的地点漫游。 Azure Cosmos DB 是[全球分布的数据库](distribute-data-globally.md)。 单击地图即可让用户访问数据。
 * 内置丰富授权。 有了 Azure Cosmos DB，无需使用复杂的自定义授权代码，就能轻松实现常用的模式，例如，[每个用户的数据](https://aka.ms/documentdb-xamarin-todouser)，或者多个用户共享的数据。
 * 地理空间查询。 许多移动应用现在可以提供区分地理环境的体验。 凭借对[地理空间类型](geospatial.md)的一流支持，Azure Cosmos DB 可轻松创建这些体验。
@@ -45,7 +45,7 @@ Azure Cosmos DB 为移动应用开发人员提供以下重要功能：
 以下教程介绍如何使用 Xamarin 和 Azure Cosmos DB 构建移动应用程序。 可在 [GitHub 上的 Xamarin 和 Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) 中找到该教程的完整源代码。
 
 ### <a name="get-started"></a>入门
-入门 Azure Cosmos DB 非常简单。 转到 Azure 门户，并创建新的 Azure Cosmos DB 帐户。 单击“快速入门”选项卡。下载已连接到 Azure Cosmos DB 帐户的 Xamarin Forms 待办事项列表示例。 
+入门 Azure Cosmos DB 非常简单。 转到 Azure 门户，并创建新的 Azure Cosmos DB 帐户。 单击“快速入门”选项卡。  下载已连接到 Azure Cosmos DB 帐户的 Xamarin Forms 待办事项列表示例。 
 
 ![适用于移动应用的 Azure Cosmos DB 快速入门](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
 
@@ -90,7 +90,7 @@ Azure Cosmos DB 为移动应用开发人员提供以下重要功能：
 如果希望两个用户能够访问同一个“待办事项列表”，可将其他权限添加到资源令牌代理中的访问令牌。
 
 ### <a name="scale-on-demand"></a>按需缩放
-Azure Cosmos DB 是托管型数据库即服务。 随着用户群体的扩大，不用担心是否要预配 VM 或增加核心， 只需告诉 Azure Cosmos DB 应用所需的每秒操作次数（吞吐量）是多少。 可以通过“缩放”选项卡，使用一个名为每秒请求单位数 (RU) 的吞吐量度量值来指定吞吐量。 例如，针对 1-KB 文档执行一次读取操作需要 1 个 RU。 还可以针对**吞吐量**指标添加警报，用于监视流量的增长以及在警报触发时以编程方式更改吞吐量。
+Azure Cosmos DB 是托管型数据库即服务。 随着用户群体的扩大，不用担心是否要预配 VM 或增加核心， 只需告诉 Azure Cosmos DB 应用所需的每秒操作次数（吞吐量）是多少。 可以通过“缩放”选项卡，使用一个名为每秒请求单位数 (RU) 的吞吐量度量值来指定吞吐量。  例如，针对 1-KB 文档执行一次读取操作需要 1 个 RU。 还可以针对**吞吐量**指标添加警报，用于监视流量的增长以及在警报触发时以编程方式更改吞吐量。
 
 ![Azure Cosmos DB 按需缩放吞吐量](media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png)
 

@@ -4,20 +4,19 @@ description: 了解如何在 Azure Functions 中使用 Azure 服务总线触发�
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: e1cd7d9e135f5e3196f02237076c5c8069048fb0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7dcc69434e017d6564030d83b14098344bc8ac0d
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501036"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178340"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -35,6 +34,9 @@ ms.locfileid: "59501036"
 
 [Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) NuGet 包 3.x 版中提供了服务总线绑定。 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/) GitHub 存储库中提供了此包的源代码。
 
+> [!NOTE]
+> 版本2.x 不会创建`ServiceBusTrigger`实例中配置的主题或订阅。 版本2.x 基于[Azure](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) ，并且不处理队列管理。
+
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="trigger"></a>触发器
@@ -50,6 +52,7 @@ ms.locfileid: "59501036"
 * [F#](#trigger---f-example)
 * [Java](#trigger---java-example)
 * [JavaScript](#trigger---javascript-example)
+* [Python](#trigger---python-example)
 
 ### <a name="trigger---c-example"></a>触发器 - C# 示例
 
@@ -212,6 +215,57 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
+### <a name="trigger---python-example"></a>触发器 - Python 示例
+
+下面的示例演示如何通过触发器读取 ServiceBus 队列消息。
+
+ServiceBus 绑定在 function.json 中定义，其中 type 设置为 `serviceBusTrigger`。
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "inputqueue",
+      "connection": "AzureServiceBusConnectionString"
+    }
+  ]
+}
+```
+
+_\_init_\_.py 中的代码将参数声明为 `func.ServiceBusMessage`，以允许你在函数中读取队列消息。
+
+```python
+import azure.functions as func
+
+import logging
+import json
+
+def main(msg: func.ServiceBusMessage):
+    logging.info('Python ServiceBus queue trigger processed message.')
+
+    result = json.dumps({
+        'message_id': msg.message_id,
+        'body': msg.get_body().decode('utf-8'),
+        'content_type': msg.content_type,
+        'expiration_time': msg.expiration_time,
+        'label': msg.label,
+        'partition_key': msg.partition_key,
+        'reply_to': msg.reply_to,
+        'reply_to_session_id': msg.reply_to_session_id,
+        'scheduled_enqueue_time': msg.scheduled_enqueue_time,
+        'session_id': msg.session_id,
+        'time_to_live': msg.time_to_live,
+        'to': msg.to,
+        'user_properties': msg.user_properties,
+    })
+
+    logging.info(result)
+```
+
 ## <a name="trigger---attributes"></a>触发器 - 特性
 
 在 [C# 类库](functions-dotnet-class-library.md)中，请使用以下属性来配置服务总线触发器：
@@ -277,9 +331,9 @@ module.exports = function(context, myQueueItem) {
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|类型 | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
+|**type** | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**direction** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|要监视的队列的名称。  仅在监视队列的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |**subscriptionName**|**SubscriptionName**|要监视的订阅的名称。 仅在监视主题的情况下设置，不为队列设置。|
@@ -295,7 +349,7 @@ module.exports = function(context, myQueueItem) {
 * `string` - 如果消息是文本。
 * `byte[]` - 适用于二进制数据。
 * 自定义类型 - 如果消息包含 JSON，Azure Functions 会尝试反序列化 JSON 数据。
-* `BrokeredMessage` - 提供带 [BrokeredMessage.GetBody<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法的反序列化消息。
+* `BrokeredMessage` - 使用 [BrokeredMessage.GetBody\<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法提供反序列化消息。
 
 这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x，请使用 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
 
@@ -315,7 +369,7 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 
 服务总线触发器提供了几个[元数据属性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下是 [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 类的属性。
 
-|属性|Type|描述|
+|属性|类型|描述|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|传递次数。|
 |`DeadLetterSource`|`string`|死信源。|
@@ -330,7 +384,7 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 |`CorrelationId`|`string`|相关 ID。|
 
 > [!NOTE]
-> 目前，触发器仅适用于不使用会话的队列和订阅。 有关此功能的任何进一步更新，请跟踪[此功能项](https://github.com/Azure/azure-functions-host/issues/563)。 
+> 目前，与启用了会话的队列和订阅一起工作的服务总线触发器处于预览状态。 有关此触发器的任何进一步更新，请跟踪[此项](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458)。 
 
 请参阅在本文的前面部分使用这些属性的[代码示例](#trigger---example)。
 
@@ -354,7 +408,7 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 |prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。|
 |maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 使用 Azure 服务总线输出绑定发送队列或主题消息。
 
@@ -367,6 +421,7 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 * [F#](#output---f-example)
 * [Java](#output---java-example)
 * [JavaScript](#output---javascript-example)
+* [Python](#output---python-example)
 
 ### <a name="output---c-example"></a>输出 - C# 示例
 
@@ -557,6 +612,56 @@ module.exports = function (context, myTimer) {
 };
 ```
 
+### <a name="output---python-example"></a>输出 - Python 示例
+
+下面的示例演示如何使用 Python 写出到 ServiceBus 队列。
+
+ServiceBue 绑定在 function.json 中定义，其中 type 设置为 `serviceBus`。
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "AzureServiceBusConnectionString",
+      "name": "msg",
+      "queueName": "outqueue"
+    }
+  ]
+}
+```
+
+在 _\_init_\_.py 中，可以通过将值传递给 `set` 方法将消息写出到队列。
+
+```python
+import azure.functions as func
+
+def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
+
+    input_msg = req.params.get('message')
+
+    msg.set(input_msg)
+
+    return 'OK'
+```
+
 ## <a name="output---attributes"></a>输出 - 特性
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [ServiceBusAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs)。
@@ -593,9 +698,9 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|类型 | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 |
+|**type** | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|队列名称。  仅在发送队列消息的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在发送主题消息的情况下设置，不为队列设置。|
 |**连接**|**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyServiceBus”，函数运行时将会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。|
@@ -612,14 +717,19 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 * `out T paramName` - `T` 可以是任何可 JSON 序列化的类型。 如果函数退出时参数值为 null，Functions 将创建具有 null 对象的消息。
 * `out string` - 如果函数退出时参数值为 null，Functions 不创建消息。
 * `out byte[]` - 如果函数退出时参数值为 null，Functions 不创建消息。
-* `out BrokeredMessage` - 如果函数退出时参数值为 null，Functions 不创建消息。
+* `out BrokeredMessage`-如果函数退出时参数值为 null，则函数不会创建消息（对于函数1.x）
+* `out Message`-如果函数退出时参数值为 null，则函数不会创建消息（对于函数1.x）
 * `ICollector<T>` 或 `IAsyncCollector<T>` - 用于创建多条消息。 调用 `Add` 方法时创建了一条消息。
 
-在异步函数中，请使用返回值或 `IAsyncCollector` 而非 `out` 参数。
+使用C#函数时：
 
-这些参数仅适用于 Azure Functions 版本 1.x；对于 2.x，请使用 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 而非 `BrokeredMessage`。
+* 异步函数需要返回值`IAsyncCollector` ，而不`out`是参数。
 
-在 JavaScript 中通过 `context.bindings.<name from function.json>` 访问队列或主题。 可以向 `context.binding.<name>` 分配一个字符串、字节数组或 Javascript 对象（反序列化为 JSON）。
+* 若要访问会话 ID，请绑定到[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)类型并`sessionId`使用属性。
+
+在 JavaScript 中通过 `context.bindings.<name from function.json>` 访问队列或主题。 可以将字符串、字节数组或 JavaScript 对象（反序列化为 JSON）分配给`context.binding.<name>`。
+
+若要将消息以非C#语言发送到已启用会话的队列，请使用[AZURE 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) ，而不是内置的输出绑定。
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 
@@ -656,7 +766,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |属性  |默认 | 描述 |
 |---------|---------|---------|
 |maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
-|autoComplete|true|触发器应立即标记为已完成（自动完成），还是等待调用完成的处理。|
+|autoComplete|真|触发器应立即标记为已完成（自动完成），还是等待调用完成的处理。|
 |maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 |
 |prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。|
 

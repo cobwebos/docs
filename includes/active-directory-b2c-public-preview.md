@@ -1,15 +1,15 @@
 ---
-author: davidmu1
+author: mmacy
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 03/19/2019
-ms.author: davidmu
-ms.openlocfilehash: 0a913c0e94f2cf00ff9ff4ba6f4a27198c9550b9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.date: 08/08/2019
+ms.author: marsma
+ms.openlocfilehash: adca65cf1cdfff51df2ff04d7c43aebafc119972
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58404048"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622137"
 ---
 > [!NOTE]
 > 此功能目前以公共预览版提供。

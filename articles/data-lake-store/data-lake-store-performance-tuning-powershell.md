@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: stewu
 ms.openlocfilehash: 1c554b0eee844a632e6412b6f8a285c7a2573326
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885309"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60195838"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>将 PowerShell 与 Azure Data Lake Store Gen1 配合使用的性能优化指南
 
@@ -72,7 +72,7 @@ ms.locfileid: "58885309"
 
         96 = 40 * ConcurrentFileCount
 
-    ConcurrentFileCount 为 2.4，舍入为 2。
+    ConcurrentFileCount 为 2.4，舍入为 2    。
 
 ## <a name="further-tuning"></a>进一步调整
 
@@ -80,13 +80,13 @@ ms.locfileid: "58885309"
 
     PerFileThreadCount = 10 + ((5 GB - 2.5 GB) / 256 MB) = 20
 
-所以 ConcurrentFileCount 是 96/20，即 4.8，舍入为 4。
+所以 ConcurrentFileCount 是 96/20，即 4.8，舍入为 4   。
 
-可以根据文件大小的分布，通过调大或调小 PerFileThreadCount 来继续调整这些设置。
+可以根据文件大小的分布，通过调大或调小 PerFileThreadCount 来继续调整这些设置  。
 
 ### <a name="limitation"></a>限制
 
-* **文件数小于 ConcurrentFileCount**：如果要上传的文件数小于计算得出的 **ConcurrentFileCount**，应减小 **ConcurrentFileCount**，使其等于文件数。 可以使用所有剩余线程来增大 PerFileThreadCount。
+* **文件数小于 ConcurrentFileCount**：如果要上传的文件数小于计算得出的 **ConcurrentFileCount**，应减小 **ConcurrentFileCount**，使其等于文件数。 可以使用所有剩余线程来增大 PerFileThreadCount  。
 
 * **线程过多**：如果在不增加群集大小的情况下大幅增加线程计数，会面临性能下降的风险。 在 CPU 上执行上下文切换时，可能会出现资源争用的问题。
 

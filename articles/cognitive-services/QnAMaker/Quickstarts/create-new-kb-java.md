@@ -1,6 +1,6 @@
 ---
 title: 快速入门：创建知识库 - REST、Java - QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 此 Java 基于 REST 的快速入门详细介绍如何以编程方式创建一个示例 QnA Maker 知识库，该知识库会显示在认知服务 API 帐户的 Azure 仪表板中。
 services: cognitive-services
 author: diberry
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/04/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: ddeccd34cbdc72d76d8dd26e36a533f44a9274b8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 06e2a772bfad7b1964f813a6cb6266efe61c6ccf
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866298"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70206852"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：在 QnA Maker 中使用 Java 创建知识库
 
@@ -100,7 +100,7 @@ ms.locfileid: "55866298"
 ```
 
 ## <a name="add-a-main-method"></a>添加 main 方法
-main 方法创建知识库，然后轮询状态。 _create_ **Operation ID** 在 POST 响应标头字段 **Location** 中返回，然后在 GET 请求中用作路由的一部分。 **`while` 循环重试获取状态（如果该操作未完成）。
+main 方法创建知识库，然后轮询状态。 操作 ID 在 POST 响应标头字段 **Location** 中返回，然后在 GET 请求中用作路由的一部分。 `while` 循环重试获取状态（如果该操作未完成）。
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 
@@ -114,7 +114,7 @@ main 方法创建知识库，然后轮询状态。 _create_ **Operation ID** 在
 
 2. 在命令行中输入以下命令以运行程序。 它向 QnA Maker API 发送创建知识库的请求，然后每隔 30 秒轮询一次结果。 每个响应都将输出到控制台窗口中。
 
-    ```base
+    ```bash
     java -cp ",;libs/*" CreateKB
     ```
 
@@ -125,4 +125,4 @@ main 方法创建知识库，然后轮询状态。 _create_ **Operation ID** 在
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)

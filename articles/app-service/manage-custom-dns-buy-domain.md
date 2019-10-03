@@ -10,25 +10,24 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c59e892c8fd5a8bcc74d23e16eaabf1dc1a08f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 188db5e89097542b5a47b43e7bc8bbb2ce30b072
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121530"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073135"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
 
-应用服务域（预览版）是直接在 Azure 中管理的顶级域。 使用这些域可以轻松管理 [Azure 应用服务](overview.md)的自定义域。 本教程介绍如何购买应用服务域并将 DNS 名称分配到 Azure 应用服务。
+应用服务域是直接在 Azure 中管理的顶级域。 使用这些域可以轻松管理 [Azure 应用服务](overview.md)的自定义域。 本教程介绍如何购买应用服务域并将 DNS 名称分配到 Azure 应用服务。
 
 对于 Azure VM 或 Azure 存储，请查看[Assign App Service domain to Azure VM or Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/)（将应用服务分配到 Azure VM 或 Azure 存储）。 对于云服务，请查看[为 Azure 云服务配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成本教程：
 
@@ -80,7 +79,7 @@ ms.locfileid: "58121530"
 ## <a name="buy-the-domain"></a>购买域
 
 ### <a name="pricing-information"></a>定价信息
-有关 Azure 应用服务域的定价信息，请访问[应用服务定价页](https://azure.microsoft.com/pricing/details/app-service/windows/)并向下滚动到应用服务域。
+有关 Azure App Service 域的定价信息, 请访问[应用服务定价页](https://azure.microsoft.com/pricing/details/app-service/windows/)并向下滚动到 "应用服务域"。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 打开 [Azure 门户](https://portal.azure.com/)，然后使用 Azure 帐户登录。
@@ -119,14 +118,14 @@ ms.locfileid: "58121530"
 | 设置 | 建议的值 | 描述 |
 |-|-|-|
 |隐私保护 | 启用 | 选择“隐私保护”，已在采购价免费包含。 某些顶级域由不支持隐私保护的注册机构托管，并在“隐私保护”页上列出。 |
-| 分配默认主机名 | **www** 和 **\@** | 根据需要选择主机名绑定。 完成域购买操作后，即可通过选定的主机名访问自己的应用。 如果应用在 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)的后面，则不会显示用于分配根域 (@) 的选项，因为流量管理器不支持 A 记录。 完成域购买过程后，可以更改主机名分配。 |
+| 分配默认的主机名 | **www** 和 **\@** | 根据需要选择主机名绑定。 完成域购买操作后，即可通过选定的主机名访问自己的应用。 如果应用在 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)的后面，则不会显示用于分配根域 (@) 的选项，因为流量管理器不支持 A 记录。 完成域购买过程后，可以更改主机名分配。 |
 
 ### <a name="accept-terms-and-purchase"></a>接受条款并购买
 
 单击“法律条款”查看条款和费用，再单击“购买”。
 
 > [!NOTE]
-> 应用服务域使用 GoDaddy 域注册和 Azure DNS 来托管域。 除了域注册费以外，还会产生 Azure DNS 的使用费。 有关信息，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
+> 应用服务域使用 GoDaddy 进行域注册，使用 Azure DNS 来托管域。 除了域注册费以外，还会产生 Azure DNS 的使用费。 有关信息，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
 >
 >
 
@@ -138,19 +137,23 @@ ms.locfileid: "58121530"
 
 ### <a name="test-the-hostnames"></a>测试主机名
 
-如果已将默认主机名分配到应用，则每个选定的主机名还会出现对应的成功通知。 
+如果已将默认主机名分配到应用，则每个选定的主机名还会出现对应的成功通知。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-此外，“自定义域”页上的“自定义主机名”部分也会显示选定的主机名。 
+此外，“自定义域”页上的“自定义主机名”部分也会显示选定的主机名。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
-若要测试主机名，请在浏览器中导航到列出的主机名。 在上面的屏幕截图中的示例，请尝试导航到_kontoso.net_并_www\.kontoso.net_。
+> [!NOTE]
+> 自定义域的 "**不安全**" 标签意味着尚未绑定到 SSL 证书, 从浏览器到自定义域的任何 HTTPS 请求都将收到错误或警告, 具体取决于浏览器。 若要配置 SSL 绑定, 请参阅[为 Azure App Service 购买并配置 ssl 证书](web-sites-purchase-ssl-web-site.md)。
+>
+
+若要测试主机名，请在浏览器中导航到列出的主机名。 在上面的屏幕截图的示例中, 请尝试导航到_kontoso.net_和_www\.kontoso.net_。
 
 ## <a name="assign-hostnames-to-app"></a>将主机名分配到应用
 
-如果在购买过程中选择不将一个或多个默认主机名分配到应用，或者需要分配某个未列出的主机名，则随时可以分配主机名。
+如果选择不在购买过程中将一个或多个默认主机名分配到应用, 或者需要分配未列出的主机名, 则可以随时分配主机名。
 
 还可以将应用服务域中的主机名分配到任何其他应用。 执行的步骤取决于应用服务域和应用是否属于同一个订阅。
 
@@ -201,7 +204,9 @@ ms.locfileid: "58121530"
 
 ## <a name="renew-the-domain"></a>续订域
 
-你所购买的应用服务域自购买之日起的一年内有效。 默认情况下，通过收取下一年费用的付款方式将域配置为自动续订。 如果要关闭自动续订，或者手动续订域，请按照以下步骤操作。
+你所购买的应用服务域自购买之日起的一年内有效。 默认情况下，通过收取下一年费用的付款方式将域配置为自动续订。 你可以手动续订你的域名。
+
+如果要关闭自动续订，或者手动续订域，请按照以下步骤操作。
 
 在“应用服务”选项卡中，单击应用的名称，选择“设置”，并选择“自定义域”。
 
@@ -211,11 +216,25 @@ ms.locfileid: "58121530"
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
-从域的左侧导航窗格，选择“域续订”。 若要停止自动续订域，请选择“关闭”，然后“保存”。 
+从域的左侧导航窗格，选择“域续订”。 若要停止自动续订域，请选择“关闭”，然后“保存”。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
-若要手动续订域，选择“续订域”。 但是，此按钮仅在域过期前的 90 天内才会处于活动状态。
+若要手动续订域，选择“续订域”。 但是, 此按钮在[域过期之前90天内](#when-domain-expires)处于非活动状态。
+
+如果域续订成功, 则会在24小时内收到电子邮件通知。
+
+## <a name="when-domain-expires"></a>域过期时间
+
+Azure 会处理过期或过期的应用服务域, 如下所示:
+
+* 如果禁用自动续订:90天, 在域过期之前, 会向你发送续订通知电子邮件, 并在门户中激活 "**续订域**" 按钮。
+* 如果启用自动续订:在你的域到期日期之后的那一日, Azure 将尝试为你的域名续订付费。
+* 如果在自动续订期间出现错误 (例如, 你的卡已过期), 或者如果禁用自动续订, 并且你允许域过期, 则 Azure 会通知你域过期, 并使你的域名过期。 你可以[手动续订](#renew-the-domain)你的域。
+* 在过期后的第4天和第12天, Azure 会向你发送其他通知电子邮件。 你可以[手动续订](#renew-the-domain)你的域。
+* 在过期后的第19天, 你的域仍保持不变, 但会收取兑换费。 你可以致电客户支持人员续订你的域名, 但需遵守任何适用的续订和兑换费用。
+* 在过期后的第25天, Azure 将使用域名行业拍卖服务使你的域与拍卖联系。 你可以致电客户支持人员续订你的域名, 但需遵守任何适用的续订和兑换费用。
+* 过期后的30天后, 你将无法再兑换你的域。
 
 <a name="custom"></a>
 
@@ -278,7 +297,3 @@ ms.locfileid: "58121530"
 ## <a name="direct-default-url-to-a-custom-directory"></a>将默认 URL 定向到自定义目录
 
 默认情况下，应用服务将 Web 请求定向到应用代码的根目录下。 若要将它们定向到一个子目录，例如 `public`，请参阅[将默认 URL 定向到自定义目录](app-service-web-tutorial-custom-domain.md#virtualdir)。
-
-## <a name="more-resources"></a>更多资源
-
-[常见问题解答：应用服务域（预览版）和自定义域](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)

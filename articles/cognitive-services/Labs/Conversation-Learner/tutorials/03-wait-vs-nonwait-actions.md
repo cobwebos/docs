@@ -3,19 +3,20 @@ title: 如何通过对话学习器模型使用等待和非等待操作 - Microso
 titleSuffix: Azure
 description: 了解如何通过对话学习器模型使用等待和非等待操作。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 2869e6c59388adf548e5f239d3a831a5a3f060dd
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d9a67f0b413b624baec369a219547cf18e9dbd2
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214256"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705605"
 ---
 # <a name="wait-and-non-wait-actions"></a>等待和非等待操作
 
@@ -35,7 +36,7 @@ ms.locfileid: "55214256"
 - 等待操作：执行“等待”操作后，系统将停止执行操作并等待用户输入。
 - 非等待操作：执行“非等待”操作后，系统将立即选择另一操作（无需等待用户输入）。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 ### <a name="create-a-new-model"></a>创建新模型
 

@@ -4,7 +4,7 @@ description: 了解如何使用 Azure 经典 CLI 创建和部署网络安全组�
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: 17d98950-5fbb-4653-bef6-d822ab37541e
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 5e81fa709589e5fa4a109cdf7709b87bc446ac3c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: be63cdc3df5752f73b21bb5adc5fffaa364e7f43
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947228"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056705"
 ---
 # <a name="create-a-network-security-group-classic-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 创建网络安全组（经典）
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]

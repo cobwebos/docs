@@ -8,19 +8,18 @@ manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2e2502e35b3720ddbfe5950b89e2388de378f2ba
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: b4fc6f91ee2429205974b9cb7ceb05b7cff53f15
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528112"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034206"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>配置网关资源以路由请求
 
@@ -228,8 +227,8 @@ HTTP 传递规则包括以下属性：
 ```
 
 此网关是为 Linux 应用程序“meshAppLinux”配置的，该应用程序由至少两个服务组成，“helloWorldService”和“counterService”，在端口 80 上侦听。 根据传入请求的 URL 结构，它将请求路由到其中一项服务。 
-* "\<Ip 地址 >: 80/helloWorld/\<请求\>"会导致定向到 helloWorldService"helloWorldListener"的请求。 
-* "\<Ip 地址 >: 80/计数器/\<请求\>"会导致定向到 counterService"counterListener"的请求。 
+* "\<IPAddress >:80/helloWorld/\<request\>" 将导致请求定向到 helloWorldService 中的 "helloWorldListener"。 
+* "\<IPAddress >:80/counter/\<request\>" 将导致请求定向到 counterService 中的 "counterListener"。 
 
 ## <a name="next-steps"></a>后续步骤
 * 部署[入口示例](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress)以查看操作中的网关

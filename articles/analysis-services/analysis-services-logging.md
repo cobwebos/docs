@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2303d385d3d688050a8d82c07e78a68588f41e88
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: b158545390dafa36e7dad285953c78243f891f28
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010916"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259431"
 ---
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
 
-监视服务器性能对于任何 Analysis Services 解决方案都至关重要。 通过 [Azure 资源诊断日志记录](../azure-monitor/platform/diagnostic-logs-overview.md)，可监视日志并将其发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将其流式处理到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到 [Azure Monitor 日志](../azure-monitor/azure-monitor-log-hub.md)。
+监视服务器性能对于任何 Analysis Services 解决方案都至关重要。 通过 [Azure 资源诊断日志记录](../azure-monitor/platform/resource-logs-overview.md)，可监视日志并将其发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将其流式处理到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到 [Azure Monitor 日志](../azure-monitor/azure-monitor-log-hub.md)。
 
 ![存储、事件中心或 Azure Monitor 日志的诊断日志记录](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -29,7 +29,7 @@ ms.locfileid: "57010916"
 
 ### <a name="engine"></a>引擎
 
-选择“引擎”将记录所有 [xEvents](https://docs.microsoft.com/sql/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events)。 不能选择单个事件。 
+选择“引擎”将记录所有 [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events)。 不能选择单个事件。 
 
 |XEvent 类别 |事件名称  |
 |---------|---------|
@@ -43,7 +43,7 @@ ms.locfileid: "57010916"
 |查询     |   查询结束      |
 |命令     |  命令开始       |
 |命令     |  命令结束       |
-|错误和警告     |   错误      |
+|错误和警告     |   Error      |
 |发现     |   发现结束      |
 |通知     |    通知     |
 |会话     |  会话初始化       |
@@ -67,7 +67,7 @@ ms.locfileid: "57010916"
 
 ### <a name="all-metrics"></a>所有指标
 
-“指标”类别会记录“指标”中显示的[服务器指标](analysis-services-monitor.md#server-metrics)。
+"指标" 类别将相同的[服务器指标](analysis-services-monitor.md#server-metrics)记录到 AzureMetrics 表中。 如果使用的是查询[横向扩展](analysis-services-scale-out.md)，并且需要为每个读取副本单独使用度量值，请改用 AzureDiagnostics 表，其中**OperationName**等于**LogMetric**。
 
 ## <a name="setup-diagnostics-logging"></a>设置诊断日志记录
 
@@ -89,7 +89,7 @@ ms.locfileid: "57010916"
     * **服务**。 选择此选项以记录服务级别事件。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
     * **指标** 选择此选项可在[指标](analysis-services-monitor.md#server-metrics)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
 
-3. 单击“ **保存**”。
+3. 单击“保存”。
 
     如果收到错误，指出“无法更新诊断 \<工作区名称> 的诊断。 订阅 \<订阅 ID> 未注册为使用 microsoft.insights”， 请遵照[排查 Azure 诊断问题](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)中的说明注册帐户，然后重试此过程。
 
@@ -141,7 +141,7 @@ ms.locfileid: "57010916"
 
 ### <a name="resource-manager-template"></a>资源管理器模板
 
-了解如何[在创建资源时使用资源管理器模板启用诊断设置](../azure-monitor/platform/diagnostic-logs-stream-template.md)。 
+了解如何[在创建资源时使用资源管理器模板启用诊断设置](../azure-monitor/platform/diagnostic-settings-template.md)。 
 
 ## <a name="manage-your-logs"></a>管理日志
 
@@ -161,36 +161,62 @@ ms.locfileid: "57010916"
 
 在查询生成器中，展开 LogManagement > AzureDiagnostics。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass\_s”或某个事件名称，Log Analytics 工作区将继续构造查询。 请务必保存查询以便稍后重复使用。
 
-### <a name="example-query"></a>示例查询
-此查询对一个模型数据库和服务器的 每个查询结束/刷新结束事件计算并返回 CPU：
+### <a name="example-queries"></a>查询示例
+
+#### <a name="example-1"></a>示例 1
+
+下面的查询为模型数据库和服务器返回每个查询的结束/刷新结束事件的持续时间。 如果向外扩展，结果将被副本中断，因为副本编号包含在 ServerName_s 中。 按 RootActivityId_g 分组可减少从 Azure 诊断 REST API 检索到的行计数，有助于保持在[Log Analytics 速率限制](https://dev.loganalytics.io/documentation/Using-the-API/Limits)中所述的限制范围内。
 
 ```Kusto
-let window =  AzureDiagnostics
-   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and ServerName_s =~"MyServerName" and DatabaseName_s == "Adventure Works Localhost" ;
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName" and DatabaseName_s =~ "MyDatabaseName" ;
 window
 | where OperationName has "QueryEnd" or (OperationName has "CommandEnd" and EventSubclass_s == 38)
 | where extract(@"([^,]*)", 1,Duration_s, typeof(long)) > 0
 | extend DurationMs=extract(@"([^,]*)", 1,Duration_s, typeof(long))
-| extend Engine_CPUTime=extract(@"([^,]*)", 1,CPUTime_s, typeof(long))
-| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g ,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs,Engine_CPUTime
-| join kind=leftouter (
-window
-    | where OperationName == "ProgressReportEnd" or (OperationName == "VertiPaqSEQueryEnd" and EventSubclass_s  != 10) or OperationName == "DiscoverEnd" or (OperationName has "CommandEnd" and EventSubclass_s != 38)
-    | summarize sum_Engine_CPUTime = sum(extract(@"([^,]*)", 1,CPUTime_s, typeof(long))) by RootActivityId_g
-    ) on RootActivityId_g
-| extend totalCPU = sum_Engine_CPUTime + Engine_CPUTime
-
+| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs
+| order by StartTime_t asc
 ```
 
+#### <a name="example-2"></a>示例 2
+
+下面的查询返回服务器的内存和 QPU 消耗。 如果向外扩展，结果将被副本中断，因为副本编号包含在 ServerName_s 中。
+
+```Kusto
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where name_s == "memory_metric" or name_s == "qpu_metric"
+| project ServerName_s, TimeGenerated, name_s, value_s
+| summarize avg(todecimal(value_s)) by ServerName_s, name_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
+
+#### <a name="example-3"></a>示例 3
+
+下面的查询返回服务器读取的行数/秒 Analysis Services 引擎性能计数器。
+
+```Kusto
+let window =  AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where parse_json(tostring(parse_json(perfobject_s).counters))[0].name == "Rows read/sec" 
+| extend Value = tostring(parse_json(tostring(parse_json(perfobject_s).counters))[0].value) 
+| project ServerName_s, TimeGenerated, Value
+| summarize avg(todecimal(Value)) by ServerName_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
 
 有成百上千的查询可以使用。 若要了解有关查询的详细信息，请参阅 [Azure Monitor 日志查询入门](../azure-monitor/log-query/get-started-queries.md)。
 
 
 ## <a name="turn-on-logging-by-using-powershell"></a>使用 PowerShell 启用日志记录
 
-在此快速教程中，你将在 Analysis Services 服务器所在订阅和资源组中创建存储帐户。 然后，使用集 AzDiagnosticSetting 启用诊断日志记录，将输出发送到新的存储帐户。
+在此快速教程中，你将在 Analysis Services 服务器所在订阅和资源组中创建存储帐户。 然后使用 AzDiagnosticSetting 打开诊断日志记录，并将输出发送到新存储帐户。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 要完成本教程，必须备好以下资源：
 
 * 现有 Azure Analysis Services 服务器。 有关创建服务器资源的说明，请参阅[在 Azure 门户中创建服务器](analysis-services-create-server.md)或[使用 PowerShell 创建 Azure Analysis Services 服务器](analysis-services-create-powershell.md)。
@@ -244,7 +270,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 
 ### <a name="enable-logging"></a>启用日志记录
 
-若要启用日志记录，请使用新的存储帐户、 服务器帐户，和的类别集 AzDiagnosticSetting cmdlet 并结合变量。 运行以下命令，将“-Enabled”标志设置为“$true”：
+若要启用日志记录，请将 AzDiagnosticSetting cmdlet 与新存储帐户、服务器帐户和类别的变量一起使用。 运行以下命令，将“-Enabled”标志设置为“$true”：
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
@@ -301,6 +327,6 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>后续步骤
 
-深入了解 [Azure 资源诊断日志记录](../azure-monitor/platform/diagnostic-logs-overview.md)
+深入了解 [Azure 资源诊断日志记录](../azure-monitor/platform/resource-logs-overview.md)
 
-请参阅[集 AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell 帮助中。
+请参阅 PowerShell 帮助中[的 AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) 。

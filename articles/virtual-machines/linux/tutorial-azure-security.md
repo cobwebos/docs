@@ -4,24 +4,23 @@ description: 本教程介绍如何使用 Azure 安全中心功能保护 Azure �
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b4c484f3dd118a19291741b071432b09894e836c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 0ac5c95fa51ca5032f5d3e057af2064f872ea15c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593295"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081715"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>教程：使用 Azure 安全中心监视 Linux 虚拟机
 
@@ -49,11 +48,11 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 
 若要深入了解 VM 安全配置，首先需要设置安全中心数据收集。 这涉及启用数据收集，从而会自动在订阅中的所有 VM 上安装 Microsoft Monitoring Agent。
 
-1. 在安全中心仪表板上单击“安全策略”，并选择你的订阅。 
-2. 对于**数据收集**，请在“自动预配”中选择“启用”。
-3. 对于“默认工作区配置”，请将其保留为“使用安全中心创建的工作区(默认)”。
-4. 在“安全事件”下，保留默认选项“通用”。
-4. 单击页顶部的“保存”。 
+1. 在安全中心仪表板上单击“安全策略”，并选择你的订阅。  
+2. 对于**数据收集**，请在“自动预配”  中选择“启用”  。
+3. 对于“默认工作区配置”  ，请将其保留为“使用安全中心创建的工作区(默认)”  。
+4. 在“安全事件”  下，保留默认选项“通用”  。
+4. 单击页顶部的“保存”。  
 
 然后，会在所有 VM 上安装安全中心数据收集代理并开始收集数据。 
 
@@ -63,23 +62,23 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 
 若要为整个订阅设置安全策略，请执行以下操作：
 
-1. 在安全中心仪表板上选择“安全策略”，并选择订阅。
-2. 在“安全策略”边栏选项卡上，选择“安全策略”。 
-3. 在“安全策略 - 安全策略”边栏选项卡中，打开或关闭要应用到订阅的策略项。
-4. 完成设置选择后，选择边栏选项卡顶部的“保存”。 
+1. 在安全中心仪表板上选择“安全策略”，并选择订阅。 
+2. 在“安全策略”边栏选项卡上，选择“安全策略”。   
+3. 在“安全策略 - 安全策略”  边栏选项卡中，打开或关闭要应用到订阅的策略项。
+4. 完成设置选择后，选择边栏选项卡顶部的“保存”。  
 
 ![唯一策略](./media/tutorial-azure-security/unique-policy.png)
 
 ## <a name="view-vm-configuration-health"></a>查看 VM 配置运行状况
 
-打开数据收集并设置安全策略后，安全中心将开始提供警报和建议。 部署 VM 时，将安装数据收集代理。 然后，安全中心内将填充新 VM 的数据。 有关 VM 配置运行状况的详细信息，请参阅[在安全中心保护 VM](../../security-center/security-center-virtual-machine-recommendations.md)。 
+打开数据收集并设置安全策略后，安全中心将开始提供警报和建议。 部署 VM 时，将安装数据收集代理。 然后，安全中心内将填充新 VM 的数据。 有关 VM 配置运行状况的详细信息，请参阅[在安全中心保护 VM](../../security-center/security-center-virtual-machine-protection.md)。 
 
 收集数据时，每个 VM 和相关 Azure 资源的资源运行状况会聚合。 这些信息会显示在易于阅读的图表中。 
 
 查看资源运行状况：
 
-1.  在安全中心仪表板上的“防护”下面，选择“计算”。 
-2.  在“计算”边栏选项卡上选择“VM 和计算机”。 此视图提供所有 VM 的配置状态摘要。
+1.  在安全中心仪表板上的“防护”下面，选择“计算”。   
+2.  在“计算”边栏选项卡上选择“VM 和计算机”。   此视图提供所有 VM 的配置状态摘要。
 
 ![计算运行状况](./media/tutorial-azure-security/compute-health.png)
 
@@ -91,12 +90,12 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 
 查看所有建议列表： 
 
-1. 在安全中心仪表板上选择“建议”。
+1. 在安全中心仪表板上选择“建议”。 
 2. 选择特定的建议。 将显示该建议适用于的所有资源的列表。
 3. 若要应用某个建议，请选择资源。 
 4. 按照修正步骤的说明进行操作。 
 
-在许多情况下，安全中心会提供可行的步骤来遵照建议解决问题，并且无需退出安全中心。 在以下示例中，安全中心检测到一个具有不受限入站规则的网络安全组。 在建议页上，可以选择“编辑入站规则”按钮。 此时会显示用于修改规则的 UI。 
+在许多情况下，安全中心会提供可行的步骤来遵照建议解决问题，并且无需退出安全中心。 在以下示例中，安全中心检测到一个具有不受限入站规则的网络安全组。 在建议页上，可以选择“编辑入站规则”按钮。  此时会显示用于修改规则的 UI。 
 
 ![建议](./media/tutorial-azure-security/remediation.png)
 
@@ -104,15 +103,15 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 
 ## <a name="view-detected-threats"></a>查看检测到的威胁
 
-除了资源配置建议外，安全中心还显示威胁检测警报。 安全警报功能聚合从每个 VM、Azure 网络日志和连接的合作伙伴解决方案中收集的数据，以便检测针对 Azure 资源的安全威胁。 有关安全中心威胁检测功能的详细信息，请参阅 [Azure 安全中心检测功能](../../security-center/security-center-detection-capabilities.md)。
+除了资源配置建议外，安全中心还显示威胁检测警报。 安全警报功能聚合从每个 VM、Azure 网络日志和连接的合作伙伴解决方案中收集的数据，以便检测针对 Azure 资源的安全威胁。 有关安全中心威胁检测功能的深入信息，请参阅[安全中心如何检测威胁？](../../security-center/security-center-alerts-overview.md#detect-threats)。
 
-安全警报功能要求将安全中心定价层从“免费”提升到“标准”。 迁移到这个更高的定价层后，可以**免费试用**。 
+安全警报功能要求将安全中心定价层从“免费”提升到“标准”。   迁移到这个更高的定价层后，可以**免费试用**。 
 
 更改定价层：  
 
-1. 在安全中心仪表板上单击“安全策略”，并选择你的订阅。
-2. 选择“定价层”。
-3. 选择“标准”，然后单击边栏选项卡顶部的“保存”。
+1. 在安全中心仪表板上单击“安全策略”，并选择你的订阅。 
+2. 选择“定价层”。 
+3. 选择“标准”  ，然后单击边栏选项卡顶部的“保存”  。
 
 
 更改定价层后，安全警报图表会在检测到安全威胁时开始填充。

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 4a8126d658f227d9eed372cd51cf06f8f12c99f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885513"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60194971"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>使用 Azure 导入/导出服务将数据脱机复制到 Azure Data Lake Storage Gen1
 本文介绍如何使用脱机复制方法（例如 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)）将大型数据集 (>200 GB) 复制到 Azure Data Lake Storage Gen1。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
@@ -48,7 +48,7 @@ ms.locfileid: "58885513"
     319GB.tsv-part-ad
 
 ## <a name="get-disks-ready-with-data"></a>准备好数据可使用的磁盘
-遵循[使用 Azure 导入/导出服务](../storage/common/storage-import-export-service.md)中的说明（“准备驱动器”部分下面）准备硬盘。 下面是整个步骤：
+遵循[使用 Azure 导入/导出服务](../storage/common/storage-import-export-service.md)中的说明（“准备驱动器”  部分下面）准备硬盘。 下面是整个步骤：
 
 1. 购买满足用于 Auzre 导入/导出服务要求的硬盘。
 2. 数据发送到 Azure 数据中心后，确认数据要复制到的 Azure 存储帐户。

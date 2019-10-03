@@ -1,21 +1,22 @@
 ---
-title: 将适用于 Azure 的 Ansible 解决方案模板部署到 CentOS
-description: 了解如何在 Azure 上托管的 CentOS 虚拟机中部署 Ansible 解决方案模板，以及配置为在 Azure 中运行的工具。
-ms.service: azure
+title: 快速入门 - 将适用于 Azure 的 Ansible 解决方案模板部署到 CentOS | Microsoft Docs
+description: 在本快速入门中，了解如何在 Azure 上托管的 CentOS 虚拟机中部署 Ansible 解决方案模板，以及配置为在 Azure 中运行的工具。
 keywords: ansible, azure, devops, 解决方案模板, 虚拟机, azure 资源的托管标识, centos, red hat
+ms.topic: quickstart
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 01/28/2019
-ms.openlocfilehash: 78fe5211f135b4a4c7d0fd21c66340025ad2d05d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/30/2019
+ms.openlocfilehash: 58f28d5cf7d31a3fbddc8e1ca18be4dbcf617f61
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104210"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231001"
 ---
-# <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>将适用于 Azure 的 Ansible 解决方案模板部署到 CentOS
+# <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>快速入门：将适用于 Azure 的 Ansible 解决方案模板部署到 CentOS
+
 适用于 Azure 的 Ansible 解决方案模板用于在 CentOS 虚拟机上配置 Ansible 实例，以及 Ansible 和一套配置为在 Azure 中运行的工具。 这些工具包括：
 
 - **适用于 Azure 的 Ansible 模块** - [适用于 Azure 的 Ansible 模块](./ansible-matrix.md)是用于在 Azure 上创建和管理基础结构的一套模块。 默认会部署这些模块的最新版本。 但是，在部署解决方案模板的过程中，可以指定环境适用的版本号。
@@ -23,9 +24,10 @@ ms.locfileid: "58104210"
 - **Azure 资源的托管标识** - [Azure 资源的托管标识](/azure/active-directory/managed-identities-azure-resources/overview)功能可以保护云应用程序凭据的安全。
 
 ## <a name="prerequisites"></a>先决条件
-- **Azure 订阅** - 如果没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-## <a name="deploy-the-ansible-solution-template-from-the-azure-marketplace"></a>部署 Azure 市场中提供的 Ansible 解决方案模板
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+
+## <a name="deploy-the-ansible-solution-template"></a>部署 Ansible 解决方案模板
 
 1. 浏览到 [Azure 市场中的 Ansible 解决方案模板](https://azuremarketplace.microsoft.com/en-%20%20us/marketplace/apps/azure-oss.ansible?tab=Overview)。
 
@@ -46,7 +48,7 @@ ms.locfileid: "58104210"
    - **资源组** - 从下拉列表中选择现有的资源组，或者选择“新建”并指定新资源组的名称。 本文使用了名为 `ansiblerg` 的新资源组进行演示。
    - **位置** - 从下拉列表中选择方案适用的位置。
 
-     ![用于指定 Ansible 基本设置的 Azure 门户选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-1.png)
+     ![用于指定 Ansible 基本设置的 Azure 门户选项卡](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-1.png)
 
 1. 选择“确定”。
 
@@ -60,19 +62,19 @@ ms.locfileid: "58104210"
    - **域名标签** - 输入虚拟机的面向公众的域名。 该名称必须唯一且符合命名要求。 有关为虚拟机指定名称的详细信息，请参阅 [Azure 资源的命名约定](/azure/architecture/best-practices/naming-conventions)。
    - **Ansible 版本** - 指定版本号，或者指定值 `latest` 以部署最新版本。 选择“Ansible 版本”旁边的信息图标可以查看有关可用版本的详细信息。
 
-     ![用于指定 Ansible 其他设置的 Azure 门户选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-2.png)
+     ![用于指定 Ansible 其他设置的 Azure 门户选项卡](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-2.png)
 
 1. 选择“确定”。
 
 1. 在“Ansible 集成设置”选项卡中指定身份验证类型。 有关保护 Azure 资源的详细信息，请参阅[什么是 Azure 资源的托管标识？](/azure/active-directory/managed-identities-azure-resources/overview)。
 
-    ![用于指定 Ansible 集成设置的 Azure 门户选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-3.png)
+    ![用于指定 Ansible 集成设置的 Azure 门户选项卡](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-3.png)
 
 1. 选择“确定”。
 
 1. “摘要”页将显示验证过程，并列出 Ansible 部署的指定条件。 使用该选项卡底部的链接可以**下载模板和参数**，以配合支持的 Azure 语言和平台使用。 
 
-     ![Azure 门户中的 Ansible“摘要”选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-4.png)
+     ![Azure 门户中的 Ansible“摘要”选项卡](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-4.png)
 
 1. 选择“确定”。
 
@@ -80,10 +82,11 @@ ms.locfileid: "58104210"
 
 1. 选择门户页顶部的“通知”图标以跟踪 Ansible 部署。 部署完成后，选择“转到资源组”。 
 
-     ![Azure 门户中的 Ansible“摘要”选项卡](./media/ansible-deploy-solution-template/portal-ansible-setup-complete.png)
+     ![Azure 门户中的 Ansible“摘要”选项卡](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-complete.png)
 
 1. 在资源组页上，获取 Ansible 主机的 IP 地址并登录，以使用 Ansible 管理 Azure 资源。
 
 ## <a name="next-steps"></a>后续步骤
+
 > [!div class="nextstepaction"] 
-> [使用 Ansible 在 Azure 中创建 Linux 虚拟机](/azure/virtual-machines/linux/ansible-create-vm)
+> [快速入门：使用 Ansible 在 Azure 中配置 Linux 虚拟机](/azure/virtual-machines/linux/ansible-create-vm)

@@ -7,17 +7,16 @@ manager: jeconnoc
 editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 662260c3cf37f8f8a675c522f3d3dea41153e485
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.openlocfilehash: cf4eade598de24e323a8c8647a64921f8797e3a2
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663557"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686737"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>使用应用服务和 Azure Functions 的 Key Vault 引用（预览版）
 
@@ -37,14 +36,17 @@ ms.locfileid: "55663557"
    > [!NOTE] 
    > Key Vault 引用目前仅支持系统分配托管标识。 不能使用用户分配标识。
 
-1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `appliationId` 设置，因为这与托管标识不兼容。
+1. 在 Key Vault 中为此前创建的应用程序标识创建一项[访问策略](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)。 在此策略上启用“获取”机密权限。 请勿配置“授权的应用程序”或 `applicationId` 设置，因为这与托管标识不兼容。
+
+    > [!NOTE]
+    > Key Vault 引用目前不能解析密钥保管库中存储的具有[网络限制](../key-vault/key-vault-overview-vnet-service-endpoints.md)的机密。
 
 ## <a name="reference-syntax"></a>引用语法
 
 Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 `{referenceString}` 将替换为下述选项之一：
 
 > [!div class="mx-tdBreakAll"]
-> | 引用字符串                                                            | 说明                                                                                                                                                                                 |
+> | 引用字符串                                                            | 描述                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri=_secretUri_                                                       | **SecretUri** 应该是 Key Vault 中机密的完整数据平面 URI（包括版本），例如 https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** 应该是 Key Vault 资源的名称。 **SecretName** 应该是目标机密的名称。 **SecretVersion** 应该是要使用的机密的版本。 |
@@ -67,7 +69,7 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 
 ## <a name="source-application-settings-from-key-vault"></a>Key Vault 中的源应用程序设置
 
-Key Vault 引用可以用作[应用程序设置](web-sites-configure.md#app-settings)的值，以便将机密保存在 Key Vault 而不是站点配置中。可以对应用程序设置进行安全的静态加密，但如果需要机密管理功能，则应将它们置于 Key Vault 中。
+Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-app-settings)的值，以便将机密保存在 Key Vault 而不是站点配置中。可以对应用程序设置进行安全的静态加密，但如果需要机密管理功能，则应将它们置于 Key Vault 中。
 
 若要将 Key Vault 引用用于应用程序设置，请将引用设为设置的值。 应用可以通过密钥正常引用机密。 不需更改代码。
 
@@ -183,3 +185,27 @@ Key Vault 引用可以用作[应用程序设置](web-sites-configure.md#app-sett
 
 > [!NOTE] 
 > 在此示例中，源代码管理部署取决于应用程序设置。 这通常是不安全的行为，因为应用设置更新是以异步方式表现的。 不过，由于我们已包括 `WEBSITE_ENABLE_SYNC_UPDATE_SITE` 应用程序设置，因此更新是同步的。 这意味着源代码管理部署只有在应用程序设置已完全更新后才会开始。
+
+## <a name="troubleshooting-key-vault-references"></a>Key Vault 引用疑难解答
+
+如果引用未正确解析，则将改用引用值。 这意味着，对于应用程序设置，将创建值具有 @no__t 的语法的环境变量。 这可能导致应用程序引发错误，因为它需要特定结构的机密。
+
+最常见的原因是， [Key Vault 访问策略](#granting-your-app-access-to-key-vault)的配置错误。 但是，这也可能是由于机密已不再存在，或者引用本身中存在语法错误。
+
+如果语法正确，则可以通过使用内置检测程序来检查当前的解决状态，来查看其他错误原因。
+
+### <a name="using-the-detector-for-app-service"></a>使用应用程序服务的检测程序
+
+1. 在门户中，导航到你的应用。
+2. 选择 "**诊断并解决问题**"。
+3. 选择 "**可用性和性能**"，然后选择 " **Web 应用"。**
+4. 查找**Key Vault 应用程序设置诊断**，并单击 "**详细信息**"。
+
+
+### <a name="using-the-detector-for-azure-functions"></a>使用探测器进行 Azure Functions
+
+1. 在门户中，导航到你的应用。
+2. 导航到 "**平台功能"。**
+3. 选择 "**诊断并解决问题**"。
+4. 选择 "**可用性和性能**"，然后选择 "**函数应用关闭" 或 "报告错误"。**
+5. 单击 " **Key Vault 应用程序设置**" "诊断"。

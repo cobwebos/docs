@@ -1,31 +1,26 @@
 ---
 title: 跨区域的安全部署实践 - Azure 部署管理器
 description: 介绍如何使用 Azure 部署管理器在多个区域部署服务。 其中介绍了安全部署实践，可在部署到所有区域前验证部署的稳定性。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/09/2018
+ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: a615ab26e4ea046ced70ce2c154a0c304b741986
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
-ms.translationtype: HT
+ms.openlocfilehash: 6a25444f0207ec5eceb029c5d31d222a31813e22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138341"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066824"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>使用 Azure 部署管理器启用安全部署实践（个人预览版）
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>启用安全部署实践与 Azure 部署管理器 （公共预览版）
 
 要跨多个区域部署服务并确保它在每个区域中按预期运行，可以使用 Azure 部署管理器来协调服务的分阶段推出。 与任何 Azure 部署一样，需在[资源管理器模板](resource-group-authoring-templates.md)中为服务定义资源。 创建模板后，使用部署管理器描述服务的拓扑及其推出方式。
 
-部署管理器是资源管理器的一项功能。 它将在部署过程中为你提供帮助。 如果有需要部署到多个区域的复杂服务，请使用部署管理器。 通过分阶段推出服务，你可以在服务已部署到所有区域之前发现潜在的问题。 如果不需要分阶段推出的额外预防措施，请使用资源管理器的标准[部署选项](resource-group-template-deploy-portal.md)。 部署管理器与支持资源管理器部署的所有现有第三方工具无缝集成，例如持续集成和持续交付 (CI/CD) 产品/服务。 
+部署管理器是资源管理器的一项功能。 它将在部署过程中为你提供帮助。 如果有需要部署到多个区域的复杂服务，请使用部署管理器。 通过分阶段推出服务，你可以在服务已部署到所有区域之前发现潜在的问题。 如果不需要分阶段推出的额外预防措施，请使用资源管理器的标准[部署选项](resource-group-template-deploy-portal.md)。 部署管理器与支持资源管理器部署的所有现有第三方工具无缝集成，例如持续集成和持续交付 (CI/CD) 产品/服务。
 
-Azure 部署管理器现以个人预览版提供。 要使用 Azure 部署管理器，请完成[注册窗体](https://aka.ms/admsignup)。 请提供[反馈](https://aka.ms/admfeedback)，帮助改进功能。
+Azure 部署管理器处于预览状态。 帮助我们改进功能，从而[反馈](https://aka.ms/admfeedback)。
 
 要使用部署管理器，需要创建四个文件：
 
@@ -36,17 +31,18 @@ Azure 部署管理器现以个人预览版提供。 要使用 Azure 部署管理
 
 请在部署推出模板之前部署拓扑模板。
 
-可以在[此处](https://docs.microsoft.com/rest/api/deploymentmanager/)找到 Azure 部署管理器 REST API 参考。
+其他资源：
 
-## <a name="supported-locations"></a>支持的位置
-
-美国中部和美国东部 2 区支持预览版部署管理器资源。 定义拓扑和推出模板（如服务单位、项目源以及本文所述的推出）中的资源时，必须为该位置指定这两个区域中的一个区域。 但是，所有[标准位置](https://azure.microsoft.com/global-infrastructure/services/?products=all)都支持为创建服务而部署的资源，例如虚拟机、存储帐户和 Web 应用。  
+- [Azure 部署管理器 REST API 参考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
+- [教程：将 Azure 部署管理器与资源管理器模板配合使用](./deployment-manager-tutorial.md)。
+- [教程：在 Azure 部署管理器中使用运行状况检查](./deployment-manager-tutorial-health-check.md)。
+- [Azure 部署管理器示例](https://github.com/Azure-Samples/adm-quickstart)。
 
 ## <a name="identity-and-access"></a>标识和访问
 
 利用资源管理器，[用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)可执行部署操作。 请开始部署之前创建此标识。 它必须有权访问要将服务部署到的订阅并具有足够权限来完成部署。 有关通过角色授予的操作的详细信息，请参阅 [Azure 资源的内置角色](../role-based-access-control/built-in-roles.md)。
 
-标识必须位于部署管理器支持的某个位置且必须与推出位于相同的位置。
+标识必须位于与部署相同的位置。
 
 ## <a name="topology-template"></a>拓扑模板
 
@@ -200,7 +196,9 @@ Azure 部署管理器现以个人预览版提供。 要使用 Azure 部署管理
 
 ### <a name="steps"></a>Steps
 
-可以定义在部署操作之前或之后执行的步骤。 目前只有 `wait` 步骤可用。 wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在部署下一个服务单位之前验证服务是否按预期运行。 以下示例显示了 wait 步骤的一般格式。
+可以定义在部署操作之前或之后执行的步骤。 目前，仅`wait`步骤和运行状况检查步骤都可用。
+
+wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在部署下一个服务单位之前验证服务是否按预期运行。 以下示例显示了 wait 步骤的一般格式。
 
 ```json
 {
@@ -218,6 +216,8 @@ Azure 部署管理器现以个人预览版提供。 要使用 Azure 部署管理
 ```
 
 持续时间属性使用 [ISO 8601 标准](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 前面的示例指定了一分钟的等待时间。
+
+有关运行状况检查步骤的详细信息，请参阅[引入到 Azure 部署管理器的运行状况集成推出](./deployment-manager-health-check.md)和[教程：在 Azure 部署管理器中使用运行状况检查](./deployment-manager-tutorial-health-check.md)。
 
 有关详细信息，请参阅[步骤模板引用](/azure/templates/Microsoft.DeploymentManager/steps)。
 
@@ -267,13 +267,13 @@ Azure 部署管理器现以个人预览版提供。 要使用 Azure 部署管理
 
 ## <a name="parameter-file"></a>参数文件
 
-需要创建两个参数文件。 一个参数文件在部署服务拓扑时使用，另一个用于推出部署。 需要确保两个参数文件中的某些值相同。  
+需要创建两个参数文件。 一个参数文件在部署服务拓扑时使用，另一个用于推出部署。 需要确保两个参数文件中的某些值相同。
 
 ## <a name="containerroot-variable"></a>containerRoot 变量
 
 对于已版本控制的部署，项目的路径随每个新版本而发生更改。 首次运行部署时，路径可能为 `https://<base-uri-blob-container>/binaries/1.0.0.0`。 第二次可能为 `https://<base-uri-blob-container>/binaries/1.0.0.1`。 部署管理器使用 `$containerRoot` 变量简化获取当前部署的正确根路径。 此值随每个版本而发生更改，并且在部署前未知。
 
-使用模板参数文件中的 `$containerRoot` 变量部署 Azure 资源。 部署时，此变量将替换为推出的实际值。 
+使用模板参数文件中的 `$containerRoot` 变量部署 Azure 资源。 部署时，此变量将替换为推出的实际值。
 
 例如，在推出期间为二进制项目创建项目源。
 

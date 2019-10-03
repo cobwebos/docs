@@ -1,21 +1,19 @@
 ---
 title: 全文搜索引擎 (Lucene) 体系结构 - Azure 搜索
 description: 解释与 Azure 搜索相关的全文搜索的 Lucene 查询处理和文档检索概念。
-manager: jlembicz
+manager: nitinme
 author: yahnoosh
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: d504635121c5153367cd0b89ce593b093bb3cd39
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d377d6180f3d2d64f183ed574add3e7307e34fc3
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537221"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186540"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 
@@ -54,7 +52,7 @@ ms.locfileid: "57537221"
 以下示例是可以使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 发送到 Azure 搜索的一个搜索请求。  
 
 ~~~~
-POST /indexes/hotels/docs/search?api-version=2017-11-11 
+POST /indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
     "searchFields": "description, title",
@@ -255,7 +253,7 @@ Spacious,||air-condition*+"Ocean view"
 
 | 术语 | 文档列表 |
 |------|---------------|
-| atman | 第 |
+| atman | 1 |
 | beach | 2 |
 | hotel | 1, 3 |
 | ocean | 4  |
@@ -270,28 +268,28 @@ Spacious,||air-condition*+"Ocean view"
 | 术语 | 文档列表 |
 |------|---------------|
 | air | 3
-| and | 4
-| beach | 第
+| 与 | 4
+| beach | 1
 | conditioned | 3
 | comfortable | 3
-| distance | 第
+| distance | 1
 | island | 2
 | kauaʻi | 2
 | located | 2
 | north | 2
 | ocean | 1, 2, 3
 | of | 2
-| on |2
+| 开 |2
 | quiet | 4
 | rooms  | 1, 3
 | secluded | 4
 | shore | 2
-| spacious | 第
+| spacious | 1
 | the | 1, 2
-| to | 第
+| to | 1
 | view | 1, 2, 3
-| walking | 第
-| 替换为 | 3
+| walking | 1
+| 和 | 3
 
 
 **根据编制索引的字词匹配查询词**
@@ -351,7 +349,7 @@ search=Spacious, air-condition* +"Ocean view"
 }
 ~~~~
 
-文档 1 与查询的匹配程度最高，因为其说明字段中同时出现了字词 *spacious* 和所需的短语 *ocean view*。 后面的两个文档仅匹配短语 *ocean view*。 你可能会感到惊讶，尽管文档 2 和 3 都匹配相同的查询短语，但它们的相关性评分却不相同。 这是因为，评分公式除了包含 TF/IDF 以外，还包含其他组成部分。 在本例中，为文档 3 分配的评分略高，因为其说明更短。 请学习 [Lucene 的实际评分公式](https://lucene.apache.org/core/4_0_0/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html)，了解字段长度和其他因素如何影响相关性评分。
+文档 1 与查询的匹配程度最高，因为其说明字段中同时出现了字词 *spacious* 和所需的短语 *ocean view*。 后面的两个文档仅匹配短语 *ocean view*。 你可能会感到惊讶，尽管文档 2 和 3 都匹配相同的查询短语，但它们的相关性评分却不相同。 这是因为，评分公式除了包含 TF/IDF 以外，还包含其他组成部分。 在本例中，为文档 3 分配的评分略高，因为其说明更短。 请学习 [Lucene 的实际评分公式](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html)，了解字段长度和其他因素如何影响相关性评分。
 
 某些查询类型（通配符、前缀、正则表达式）始终会给文档总评分贡献一个常量分数。 这样，便可以在结果中包含通过查询扩展找到的匹配项，但不会影响排名。 
 
@@ -393,9 +391,7 @@ Internet 搜索引擎取得的成功提高了人们对私有数据运行全文�
 
 + [配置自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)，针对特定的字段尽量简化处理或者进行专门处理。
 
-+ 在此演示网站并排[比较标准和英语分析器](https://alice.unearth.ai/)。 
-
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

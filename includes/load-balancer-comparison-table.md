@@ -9,18 +9,18 @@ ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
 ms.openlocfilehash: 1d3ce900f7354b31e999c12b8e1eb0e23d391fcb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56078490"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173371"
 ---
 | | 标准 SKU | 基本 SKU |
 | --- | --- | --- |
 | 后端池大小 | 最多支持 1000 个实例。 | 最多支持 100 个实例。 |
 | 后端池终结点 | 单个虚拟网络中的任何虚拟机，包括虚拟机、可用性集和虚拟机规模集的混合。 | 单个可用性集或虚拟机规模集中的虚拟机。 |
 | [运行状况探测](../articles/load-balancer/load-balancer-custom-probe-overview.md#types) | TCP、HTTP、HTTPS | TCP、HTTP |
-| [运行状况探测停止行为](../articles/load-balancer/load-balancer-custom-probe-overview.md#probedown) | TCP 连接在实例探测停止时以及在所有探测停止时保持活动状态。 | TCP 连接在实例探测停止时保持活动状态。 所有 TCP 连接在所有探测停止时都会终止。 |
+| [运行状况探测停止行为](../articles/load-balancer/load-balancer-custom-probe-overview.md#probedown) |  TCP 连接在实例探测停止时以及在所有探测停止时保持活动状态。 | TCP 连接在实例探测停止时保持活动状态。 所有 TCP 连接在所有探测停止时都会终止。 |
 | 可用性区域 | 在入站和出站的标准 SKU、区域冗余和区域前端中，出站流映射在发生区域故障后仍保留，并且跨区域进行负载均衡。 | 不可用。 |
 | 诊断 | Azure Monitor、多维度指标（包括字节和数据包计数器）、运行状况探测状态、连接尝试 (TCP SYN)、出站连接运行状况（SNAT 成功和失败流）、活动数据平面度量 | 仅用于公共负载均衡器的 Azure Log Analytics、SNAT 耗尽警报、后端池运行状况计数。 |
 | HA 端口 | Internal 负载均衡器（内部负载均衡器） | 不可用。 |

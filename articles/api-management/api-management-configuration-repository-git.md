@@ -9,16 +9,15 @@ editor: mattfarm
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: adf4d8d5cfcef2dde8193ce1b7f2805a44e2d93d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793265"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104966"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
 
@@ -57,7 +56,7 @@ ms.locfileid: "58793265"
 >
 >
 
-有关使用 REST API 启用或禁用 Git 访问的信息，请参阅[使用 REST API 启用或禁用 Git 访问](/rest/api/apimanagement/tenantaccess?EnableGit)。
+有关使用 REST API 启用或禁用 Git 访问的信息，请参阅[使用 REST API 启用或禁用 Git 访问](/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit)。
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>将服务配置保存到 Git 存储库
 
@@ -69,7 +68,7 @@ ms.locfileid: "58793265"
 
 将配置保存到存储库后，可以克隆它。
 
-有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 提交配置快照](/rest/api/apimanagement/tenantaccess?CommitSnapshot)。
+有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 提交配置快照](/rest/api/apimanagement/2019-01-01/tenantaccess?CommitSnapshot)。
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>将存储库克隆到本地计算机
 
@@ -100,7 +99,7 @@ git clone https://username:password@{name}.scm.azure-api.net/
 如果这提供了一个错误，请尝试对命令的密码部分进行 URL 编码。 执行此操作的一个快速方法是打开 Visual Studio，并在“即时窗口”中发出以下命令。 要打开“即使窗口”，请在 Visual Studio 中打开任意解决方案或项目（或创建新的空白控制台应用程序），并从“调试”菜单中依次选择“Windows”、“即时”。
 
 ```
-?System.NetWebUtility.UrlEncode("password from the Azure portal")
+?System.Net.WebUtility.UrlEncode("password from the Azure portal")
 ```
 
 将编码密码与用户名和存储库位置一起用于构造 Git 命令。
@@ -143,13 +142,13 @@ git push
 
 将本地更改提交并推送到服务器存储库后，可将它们部署到 API 管理服务实例。
 
-有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 将 Git 更改部署到配置数据库](https://docs.microsoft.com/rest/api/apimanagement/tenantconfiguration)。
+有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 将 Git 更改部署到配置数据库](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration)。
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>本地 Git 存储库的文件和文件夹结构参考
 
 本地 Git 存储库中的文件和文件夹包含有关服务实例的配置信息。
 
-| Item | 描述 |
+| 项 | 描述 |
 | --- | --- |
 | 根 api-management 文件夹 |包含服务实例的顶级配置 |
 | apis 文件夹 |包含服务实例中的 API 的配置 |
@@ -161,7 +160,7 @@ git push
 
 每个文件夹都可包含一个或多个文件，并且在某些情况下可包含一个或多个文件夹，例如，每个 API、产品或组对应一个文件夹。 每个文件夹内的文件都特定于文件夹名称所述的实体类型。
 
-| 文件类型 | 目的 |
+| 文件类型 | 用途 |
 | --- | --- |
 | json |关于相应实体的配置信息 |
 | html |关于实体的说明，通常显示在开发人员门户中 |
@@ -173,9 +172,9 @@ git push
 > [!NOTE]
 > 以下实体不包含在 Git 存储库中，并且无法使用 Git 进行配置。
 >
-> * [用户](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)
-> * [订阅](https://docs.microsoft.com/en-us/rest/api/apimanagement/subscription)
-> * [命名值](https://docs.microsoft.com/en-us/rest/api/apimanagement/property)
+> * [用户](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)
+> * [订阅](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription)
+> * [命名值](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property)
 > * 样式以外的开发人员门户实体
 >
 
@@ -223,14 +222,14 @@ git push
 ### <a name="apis-folder"></a>apis 文件夹
 `apis` 文件夹针对服务实例中的每个 API 都包含一个文件夹，该文件夹包含以下项目。
 
-* `apis\<api name>\configuration.json` - 这是 API 的配置，包含关于后端服务 URL 和操作的信息。 这是使用 `export=true` 以 `application/json` 格式调用[获取特定 API](https://docs.microsoft.com/rest/api/apimanagement/apis/get) 时会返回的相同信息。
+* `apis\<api name>\configuration.json` - 这是 API 的配置，包含关于后端服务 URL 和操作的信息。 这是使用 `export=true` 以 `application/json` 格式调用[获取特定 API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) 时会返回的相同信息。
 * `apis\<api name>\api.description.html` - 这是 API 的说明，对应于 [API 实体](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property)的 `description` 属性。
 * `apis\<api name>\operations\` - 此文件夹包含映射到 API 中的操作的 `<operation name>.description.html` 文件。 每个文件包含 API 中单个操作的说明，该说明映射到 REST API 中[操作实体](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties)的 `description` 属性。
 
 ### <a name="groups-folder"></a>groups 文件夹
 `groups` 文件夹针对服务实例中定义的每个组都包含一个文件夹。
 
-* `groups\<group name>\configuration.json` - 这是组的配置。 这是调用[获取特定组](https://docs.microsoft.com/rest/api/apimanagement/group/get)操作时会返回的相同信息。
+* `groups\<group name>\configuration.json` - 这是组的配置。 这是调用[获取特定组](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get)操作时会返回的相同信息。
 * `groups\<group name>\description.html` - 这是组的说明，对应于[组实体](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)的 `description` 属性。
 
 ### <a name="policies-folder"></a>policies 文件夹
@@ -250,7 +249,7 @@ git push
 ### <a name="products-folder"></a>products 文件夹
 `products` 文件夹针对服务实例中定义的每个产品都包含一个文件夹。
 
-* `products\<product name>\configuration.json` - 这是产品的配置。 这是调用[获取特定产品](https://docs.microsoft.com/rest/api/apimanagement/product/get)操作时会返回的相同信息。
+* `products\<product name>\configuration.json` - 这是产品的配置。 这是调用[获取特定产品](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get)操作时会返回的相同信息。
 * `products\<product name>\product.description.html` - 这是产品的说明，对应于 REST API 中[产品实体](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity)的 `description` 属性。
 
 ### <a name="templates"></a>模板

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: yegu
-ms.openlocfilehash: 602d77f3d4e8ed10c2c964462bc2dc21240cef5c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: a919ccd2a23acf6e1bd04cda8a5dd18782ff31b0
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235710"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315983"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置 Redis 群集功能
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 本文介绍如何配置高级 Azure Redis 缓存实例中的群集功能。
@@ -61,7 +61,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 > 
 > 
 
-有关使用 StackExchange.Redis 客户端的群集功能的示例代码，请参阅 [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 示例的 [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分。
+有关在 StackExchange.Redis 客户端中使用群集功能的示例代码，请参阅 [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 示例的 [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分。
 
 <a name="cluster-size"></a>
 
@@ -121,7 +121,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 有关在 StackExchange.Redis 客户端中使用群集和查找同一分片中的密钥的示例代码，请参阅 [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 示例的 [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分。
 
 ### <a name="what-is-the-largest-cache-size-i-can-create"></a>我可以创建的最大缓存大小是多大？
-高级缓存的最大大小为 53 GB。 可以创建多达 10 个分片，因此最大大小为 530 GB。 如果需要的大小更大，则可[请求更多](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)。 有关详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。
+最大的高级缓存大小为 120 GB。 最多可以创建10个分片，最大大小为 1.2 TB GB。 如果需要的大小更大，则可[请求更多](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)。 有关详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。
 
 ### <a name="do-all-redis-clients-support-clustering"></a>是否所有 Redis 客户端都支持群集功能？
 目前，并非所有客户端都支持 Redis 群集功能。 StackExchange.Redis 是不支持该功能的客户端。 有关其他客户端的详细信息，请参阅 [Redis cluster tutorial](https://redis.io/topics/cluster-tutorial)（Redis 群集教程）的 [Playing with the cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)（操作群集）部分。 
@@ -133,7 +133,7 @@ Redis 群集协议要求每个客户端直接以群集模式连接到每个分�
 > 
 > 
 
-### <a name="how-do-i-connect-to-my-cache-when-clustering-is-enabled"></a>启用群集功能后，如何连接到我的缓存？
+### <a name="how-do-i-connect-to-my-cache-when-clustering-is-enabled"></a>启用群集功能后，如何连接到缓存？
 连接到缓存时，可以使用的[终结点](cache-configure.md#properties)、[端口](cache-configure.md#properties)和[密钥](cache-configure.md#access-keys)与连接到未启用群集功能的缓存时使用的相同。 Redis 在后端管理群集功能，因此不需要你通过客户端来管理它。
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>我可以直接连接到缓存的各个分片吗？

@@ -10,17 +10,16 @@ ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 198fedbbd1e97dcda15c9124109e50664f58f8e7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 47efcfc4bf2b0268d6720b659786300e751e861d
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487883"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983695"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 克隆 Azure 应用服务应用
 
@@ -28,7 +27,7 @@ ms.locfileid: "58487883"
 
 在 Microsoft 发行的 Azure PowerShell 版本 1.1.0 中，为 `New-AzWebApp` 添加了新选项，可让用户将现有“应用服务”应用克隆到不同区域或相同区域中的新建应用。 使用此选项，客户可跨不同区域快速轻松地部署多个应用。
 
-应用克隆目前仅支持高级层应用服务计划。 新功能使用与应用服务备份功能相同的限制，具体请参阅[在 Azure 应用服务中备份应用](manage-backup.md)。
+标准、高级、高级 V2 和独立应用服务计划支持应用克隆。 新功能使用与应用服务备份功能相同的限制，具体请参阅[在 Azure 应用服务中备份应用](manage-backup.md)。
 
 ## <a name="cloning-an-existing-app"></a>克隆现有应用
 场景：用户想要将位于美国中南部区域的现有应用内容克隆到位于美国中北部区域的新应用。 结合 `-SourceWebApp` 选项使用 Azure 资源管理器版本的 PowerShell cmdlet 来创建新的应用，即可实现此目的。
@@ -42,16 +41,16 @@ $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-
 要创建新的应用服务计划，可按以下示例中所示来使用 `New-AzAppServicePlan` 命令
 
 ```powershell
-New-AzAppServicePlan -Location "South Central US" -ResourceGroupName DestinationAzureResourceGroup -Name NewAppServicePlan -Tier Premium
+New-AzAppServicePlan -Location "North Central US" -ResourceGroupName DestinationAzureResourceGroup -Name DestinationAppServicePlan -Tier Standard
 ```
 
-使用 `New-AzWebApp` 命令，可在美国中北部区域内创建新的应用，并将其绑定到现有高级层应用服务计划。 此外，还可以使用相同的资源组作为源应用，或定义新的资源组，如以下命令所示：
+`New-AzWebApp`使用命令，可在美国中北部区域创建新应用，并将其绑定到现有的应用服务计划。 此外，还可以使用相同的资源组作为源应用，或定义新的资源组，如以下命令所示：
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
 ```
 
-要克隆现有应用（包括所有关联的部署槽位），需要使用 `IncludeSourceWebAppSlots` 参数。 以下 PowerShell 命令演示如何在 `New-AzWebApp` 命令中使用该参数：
+要克隆现有应用（包括所有关联的部署槽位），需要使用 `IncludeSourceWebAppSlots` 参数。  请注意， `IncludeSourceWebAppSlots`只支持使用该参数克隆整个应用，包括其所有槽。 以下 PowerShell 命令演示如何在 `New-AzWebApp` 命令中使用该参数：
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots
@@ -60,7 +59,7 @@ $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name d
 要在同一区域中克隆现有应用，需要在同一区域中创建新资源组和新的应用服务计划，然后使用以下 PowerShell 命令来克隆应用：
 
 ```powershell
-$destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan NewAppServicePlan -SourceWebApp $srcap
+$destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan NewAppServicePlan -SourceWebApp $srcapp
 ```
 
 ## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>将现有应用克隆到应用服务环境
@@ -130,8 +129,9 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * 不会克隆 TiP 规则
 * 不会克隆数据库内容
 * 如果克隆到不同的缩放单元，出站 IP 地址会更改
+* 不适用于 Linux 应用
 
-### <a name="references"></a>参考
+### <a name="references"></a>参考资料
 * [应用服务克隆](app-service-web-app-cloning.md)
 * [在 Azure 应用服务中备份应用](manage-backup.md)
 * [Azure 流量管理器预览版对 Azure 资源管理器的支持](../traffic-manager/traffic-manager-powershell-arm.md)

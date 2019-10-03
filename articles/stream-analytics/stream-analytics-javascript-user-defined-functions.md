@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: ff8e61c53774429087ffe1a9137d40b155eb3f68
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: c7414ee159303465d6698ce9c47d04ba37c0c46e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192269"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329378"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>教程：Azure 流分析 JavaScript 用户定义的函数
  
@@ -53,13 +53,13 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 
 1.  在 Azure 门户中找到流分析作业。
 
-2. 在“作业拓扑”标题下，选择“函数”。 此时会显示一个空白的函数列表。
+2. 在“作业拓扑”标题下，选择“函数”   。 此时会显示一个空白的函数列表。
 
-3.  若要新建用户定义函数，请选择“+添加”。
+3.  若要新建用户定义函数，请选择“+添加”。 
 
-4.  在“新建函数”边栏选项卡中，为“函数类型”选择“JavaScript”。 编辑器中会显示默认函数模板。
+4.  在“新建函数”边栏选项卡中，为“函数类型”选择“JavaScript”。    编辑器中会显示默认函数模板。
 
-5.  为“UDF 别名”输入 **hex2Int**，并按如下所示更改函数实现：
+5.  为“UDF 别名”输入 **hex2Int**，并按如下所示更改函数实现： 
 
     ```javascript
     // Convert Hex value to integer.
@@ -68,12 +68,12 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
     }
     ```
 
-6.  选择“保存”。 该函数随即显示在函数列表中。
+6.  选择“保存”。  该函数随即显示在函数列表中。
 7.  选择新的 **hex2Int** 函数并检查函数定义。 所有函数的函数别名带有 **UDF** 前缀。 在流分析查询中调用该函数时，需要*包含该前缀*。 在本例中，调用的是 **UDF.hex2Int**。
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>在查询中调用 JavaScript 用户定义的函数
 
-1. 在查询编辑器中的“作业拓扑”标题下，选择“查询”。
+1. 在查询编辑器中的“作业拓扑”  标题下，选择“查询”  。
 2.  编辑查询，并调用该用户定义的函数，如下所示：
 
     ```SQL
@@ -87,7 +87,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
     ```
 
 3.  若要上传示例数据文件，请右键单击作业输入。
-4.  若要测试查询，请选择“测试”。
+4.  若要测试查询，请选择“测试”。 
 
 
 ## <a name="supported-javascript-objects"></a>支持的 JavaScript 对象
@@ -99,11 +99,11 @@ Azure 流分析 JavaScript 用户定义的函数支持标准的内置 JavaScript
 
 流分析 | JavaScript
 --- | ---
-bigint | 数字（JavaScript 只能精确呈现最大 2^53 的整数）
-DateTime | 日期（JavaScript 仅支持毫秒）
+bigint | Number（JavaScript 只能精确呈现最大 2^53 的整数）
+DateTime | Date（JavaScript 仅支持毫秒）
 double | Number
-nvarchar(MAX) | String
-记录 | 对象
+nvarchar(MAX) | 字符串
+Record | Object
 Array | Array
 Null | Null
 
@@ -114,15 +114,17 @@ Null | Null
 JavaScript | 流分析
 --- | ---
 Number | 如果数字已舍入并介于 long.MinValue 和 long.MaxValue 之间，则为 Bigint；否则为 double
-日期 | DateTime
-String | nvarchar(MAX)
-对象 | 记录
+Date | DateTime
+字符串 | nvarchar(MAX)
+Object | Record
 Array | Array
 Null、Undefined | Null
 其他任何类型（例如函数或错误） | 不支持（导致运行时错误）
 
+JavaScript 语言区分大小写，JavaScript 代码中对象字段的大小写必须与传入数据中字段的大小写匹配。 请注意，兼容性级别为 1.0 的作业会将 SQL SELECT 语句中的字段转换为小写。 在兼容性级别 1.1 及更高级别下，SELECT 语句中的字段将具有与 SQL 查询中指定的相同的大小写。
+
 ## <a name="troubleshooting"></a>故障排除
-JavaScript 运行时错误被视为严重错误，可通过活动日志查看。 要检索日志，请在 Azure 门户中转到作业，然后选择“活动日志”。
+JavaScript 运行时错误被视为严重错误，可通过活动日志查看。 要检索日志，请在 Azure 门户中转到作业，然后选择“活动日志”。 
 
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>JavaScript 用户定义的函数的其他模式
@@ -155,8 +157,8 @@ FROM
 
 若不再需要资源组、流式处理作业以及所有相关资源，请将其删除。 删除作业可避免对作业使用的流单元进行计费。 如果计划在将来使用该作业，可以先停止该作业，以后在需要时再重启该作业。 如果不打算继续使用该作业，请按照以下步骤删除本快速入门创建的所有资源：
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。  
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，并单击已创建资源的名称。  
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。  
 
 ## <a name="get-help"></a>获取帮助
 如需更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 98f9e0377e560fa0bba2fd470ff01431b2ed21d9
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58431554"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173390"
 ---
-| 端口号。| 入或出 | 端口范围| 需要|   说明 |   |
+| 端口号。| 入或出 | 端口范围| 必选|   说明 |   |
 |--------|-----|-----|-----------|----------|-----------|
 | TCP 80 (HTTP)|出|WAN |否|出站端口用于 Internet 访问以检索更新。 <br>出站 Web 代理可由用户配置。 |
 | TCP 443 (HTTPS)|出|WAN|是|出站端口用于访问云中的数据。<br>出站 Web 代理可由用户配置。|

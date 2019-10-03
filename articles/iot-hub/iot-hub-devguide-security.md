@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: fa1aa8c560f4b9cc48c7a6a761abe4d69d5d0265
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534355"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773178"
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
@@ -37,7 +37,7 @@ ms.locfileid: "57534355"
 
 * **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可使用 [IoT 中心资源 REST API](/rest/api/iothub/iothubresource) 或使用 [az iot 中心策略](/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI 以编程方式在 [Azure 门户](https://portal.azure.com)中定义策略。 新建的 IoT 中心有以下默认策略：
   
-  | 共享访问策略 | 权限 |
+  | 共享的访问策略 | 权限 |
   | -------------------- | ----------- |
   | iothubowner | 所有权限 |
   | 服务 | **ServiceConnect** 权限 |
@@ -57,7 +57,7 @@ ms.locfileid: "57534355"
 > [!NOTE]
 > 有关详细信息，请参阅[权限](#iot-hub-permissions)。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验证令牌，以授予对终结点的访问权限。
 
@@ -134,7 +134,7 @@ IoT 中心还允许设备使用 [X.509 证书](iot-hub-devguide-security.md#supp
 
 以下是预期值：
 
-| 值 | 描述 |
+| ReplTest1 | 描述 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。 |
 | {resourceURI} |此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开始（无协议）。 例如 `myHub.azure-devices.net/devices/device1` |
@@ -156,7 +156,7 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
     var toSign = resourceUri + '\n' + expires;
 
     // Use crypto
-    var hmac = crypto.createHmac('sha256', new Buffer(signingKey, 'base64'));
+    var hmac = crypto.createHmac('sha256', Buffer.from(signingKey, 'base64'));
     hmac.update(toSign);
     var base64UriEncoded = encodeURIComponent(hmac.digest('base64'));
 
@@ -174,14 +174,14 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
 from base64 import b64encode, b64decode
 from hashlib import sha256
 from time import time
-from urllib import quote_plus, urlencode
+from urllib import parse
 from hmac import HMAC
 
 def generate_sas_token(uri, key, policy_name, expiry=3600):
     ttl = time() + expiry
-    sign_key = "%s\n%d" % ((quote_plus(uri)), int(ttl))
+    sign_key = "%s\n%d" % ((parse.quote_plus(uri)), int(ttl))
     print sign_key
-    signature = b64encode(HMAC(b64decode(key), sign_key, sha256).digest())
+    signature = b64encode(HMAC(b64decode(key), sign_key.encode('utf-8'), sha256).digest())
 
     rawtoken = {
         'sr' :  uri,
@@ -192,8 +192,13 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     if policy_name is not None:
         rawtoken['skn'] = policy_name
 
-    return 'SharedAccessSignature ' + urlencode(rawtoken)
+    return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
+
+下面是必备组件的安装说明。
+
+[!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+
 
 C# 中用于生成安全令牌的功能是：
 
@@ -276,7 +281,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 
 ### <a name="use-a-shared-access-policy"></a>使用共享访问策略
 
-使用共享访问策略创建令牌时，将 `skn` 字段设置为策略名称。 此策略必须授予 DeviceConnect 权限。
+使用共享访问策略创建令牌时，将 `skn` 字段设置为策略名称。 此策略必须授予 DeviceConnect权限。
 
 使用共享访问策略访问设备功能的两个主要方案是：
 
@@ -358,7 +363,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>为设备注册 X.509 证书
 
-[用于 C# 的 Azure IoT 服务 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service)（版本 1.0.8+）支持注册使用 X.509 证书进行身份验证的设备。 其他 API（例如设备的导入/导出）也支持 X.509 证书。
+[用于 C# 的 Azure IoT 服务 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service)（版本 1.0.8+）支持注册使用 X.509 证书进行身份验证的设备。 其他 API（例如设备的导入/导出）也支持 X.509 证书。
 
 此外，还可使用 CLI 扩展命令 [az iot hub device-identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) 配置设备的 X.509 证书。
 
@@ -385,7 +390,7 @@ await registryManager.AddDeviceAsync(device);
 
 ### <a name="use-an-x509-certificate-during-run-time-operations"></a>在运行时操作期间使用 X.509 证书
 
-[用于 .NET 的 Azure IoT 设备 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device)（版本 1.0.11+）支持使用 X.509 证书。
+[用于 .NET 的 Azure IoT 设备 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device)（版本 1.0.11+）支持使用 X.509 证书。
 
 ### <a name="c-support"></a>C\# 支持
 

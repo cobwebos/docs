@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 042aedf1a043cd89d74ff099554642d38a3c7dd3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164552"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172697"
 ---
 ## <a name="what-is-table-storage"></a>什么是表存储
 Azure 表存储可存储大量结构化数据。 该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。 Azure 表最适合存储结构化非关系型数据。 表存储的常见用途包括：
@@ -34,7 +34,7 @@ Azure 表存储可存储大量结构化数据。 该服务是一个 NoSQL 数据
 * **帐户：** 对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户容量的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../articles/storage/common/storage-scalability-targets.md) 。 
 
     对 Azure Cosmos DB 进行的所有访问都要通过表 API 帐户完成。 有关创建表 API 帐户的详细信息，请参阅[创建表 API 帐户](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)。
-* **表**：表是实体的集合。 表不对实体强制实施架构，这意味着单个表可以包含具有不同属性集的实体。  
+* **Table**：表是实体的集合。 表不对实体强制实施架构，这意味着单个表可以包含具有不同属性集的实体。  
 * **实体**：与数据库行类似，一个实体就是一组属性。 Azure 存储中的实体大小最大可以为 1MB。 Azure Cosmos DB 中的实体大小最大可以为 2MB。
 * **属性**：属性是名称/值对。 每个实体最多可包含 252 个用于存储数据的属性。 每个实体还具有三个系统属性，分别指定分区键、行键和时间戳。 对具有相同分区键的实体的查询速度将更快，并且可以在原子操作中插入/更新这些实体。 一个实体的行键是它在一个分区内的唯一标识符。
 

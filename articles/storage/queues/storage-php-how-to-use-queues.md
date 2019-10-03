@@ -1,21 +1,19 @@
 ---
-title: 如何通过 PHP 使用队列存储 | Microsoft Docs
+title: 如何通过 PHP 使用队列存储 - Azure 存储
 description: 了解如何使用 Azure 队列存储服务创建和删除队列，以及插入、获取和删除消息。 示例用 PHP 编写。
-services: storage
-author: roygara
-ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: php
-ms.topic: article
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 01/11/2018
-ms.author: rogarana
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 0f9cc11e64e2517ef7aff0cd51705c39bf212b37
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: b175c34f131a7a0f172c7be0dda083fbfda3dc1e
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011430"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721447"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>如何通过 PHP 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -45,14 +43,14 @@ ms.locfileid: "58011430"
       }
     }
     ```
-2. 将 [composer.phar][composer-phar] 下载到项目根目录中。
+2. 将 **[composer.phar][composer-phar]** 下载到项目根目录中。
 3. 打开命令提示符并在项目根目录中执行以下命令
    
     ```
     php composer.phar install
     ```
 
-或者转到 GitHub 上的 [Azure 存储 PHP 客户端库][download]，然后克隆源代码。
+或者转到 GitHub 上的 [Azure 存储 PHP 客户端库][download]，以克隆源代码。
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>配置应用程序以访问队列存储
 若要使用 Azure 队列存储 API，需执行以下操作：
@@ -87,7 +85,7 @@ UseDevelopmentStorage=true
 若要创建 Azure 队列服务客户端，则需要使用 QueueRestProxy 类。 可以使用以下方法之一：
 
 * 将连接字符串直接传递给它。
-* 在 Web 应用中使用环境变量来存储连接字符串。 要配置连接字符串，请参阅 [Azure Web 应用配置设置](../../app-service/web-sites-configure.md)文档。
+* 在 Web 应用中使用环境变量来存储连接字符串。 要配置连接字符串，请参阅 [Azure Web 应用配置设置](../../app-service/configure-common.md)文档。
 在此处列出的示例中，将直接传递连接字符串。
 
 ```php
@@ -419,7 +417,7 @@ catch(ServiceException $e){
 有关详细信息，另请参阅 [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)。
 
 [download]: https://github.com/Azure/azure-storage-php
-[require_once]: http://www.php.net/manual/en/function.require-once.php
+[require_once]: https://www.php.net/manual/en/function.require-once.php
 [Azure Portal]: https://portal.azure.com
 [composer-phar]: https://getcomposer.org/composer.phar
 

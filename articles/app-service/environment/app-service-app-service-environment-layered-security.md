@@ -10,23 +10,22 @@ ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 5e25de1ad2042ac978c3698165b9d9baba20e816
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.openlocfilehash: 2d9eedcdc66dceabdd6506c5b64f0c15c874efee
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274150"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070130"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>使用应用服务环境实现分层的安全体系结构
 ## <a name="overview"></a>概述
 由于应用服务环境提供部署到虚拟网络的隔离运行时环境，因此开发人员能够创建分层的安全体系结构，针对每个物理应用层提供不同级别的网络访问权限。
 
-常见的需求之一是要隐藏对 API 后端的常规 Internet 访问，而只允许由上游 Web 应用调用 API。  可以在包含应用服务环境的子网上使用[网络安全组 (NSG)][NetworkSecurityGroups]，来限制对 API 应用程序的公共访问。
+常见的需求之一是要隐藏对 API 后端的常规 Internet 访问，而只允许由上游 Web 应用调用 API。  可以在包含应用服务环境的子网上使用[网络安全组 (nsg)][NetworkSecurityGroups]来限制对 API 应用程序的公共访问。
 
 下图显示的示例体系结构具有部署在应用服务环境中的基于 WebAPI 的应用。  三个不同的 Web 应用实例部署在三个不同的应用服务环境中，使后端调用相同的 WebAPI 应用。
 
@@ -39,9 +38,9 @@ ms.locfileid: "53274150"
 ## <a name="determining-the-network-behavior"></a>确定网络行为
 要知道需要哪些网络安全规则，需要确定哪些网络客户端能够访问包含 API 应用的应用服务环境，而哪些客户端会被阻止。
 
-由于[网络安全组 (NSG)][NetworkSecurityGroups] 将应用到子网，而应用服务环境部署在子网中，因此 NSG 中包含的规则将应用到**所有**在应用服务环境中运行的应用。  就本文的示例体系结构而言，将网络安全组应用到包含“apiase”的子网后，所有在“apiase”应用服务环境中运行的应用都将受到相同安全规则集的保护。 
+由于[网络安全组 (nsg)][NetworkSecurityGroups]应用于子网, 而应用服务环境部署在子网中, 因此 NSG 中包含的规则适用于在应用服务环境上运行的**所有**应用。  就本文的示例体系结构而言，将网络安全组应用到包含“apiase”的子网后，所有在“apiase”应用服务环境中运行的应用都将受到相同安全规则集的保护。 
 
-* **确定上游调用方的出站 IP 地址：** 上游调用方的 IP 地址是什么？  需要在 NSG 中显式允许访问这些地址。  由于应用服务环境之间的调用被视为“Internet”调用，因此分配到这三个上游应用服务环境的出站 IP 地址在“apiase”子网的 NSG 中需是允许访问的。   有关确定在应用服务环境中运行的应用的出站 IP 地址的详细信息，请参阅[网络体系结构][NetworkArchitecture]概述文章。
+* **确定上游调用方的出站 IP 地址：** 上游调用方的 IP 地址是什么？  需要在 NSG 中显式允许访问这些地址。  由于应用服务环境之间的调用被视为“Internet”调用，因此分配到这三个上游应用服务环境的出站 IP 地址在“apiase”子网的 NSG 中需是允许访问的。   有关确定应用服务环境中运行的应用的出站 IP 地址的详细信息, 请参阅[网络体系结构][NetworkArchitecture]概述一文。
 * **后端 API 应用是否需要调用本身？**  后端应用程序有时候需要调用本身，这是常被忽略且难以察觉的情况。  如果应用服务环境中的后端 API 应用程序需要调用本身，这也被视为“Internet”调用。  在示例体系结构中，这还需要允许从“apiase”应用服务环境的出站 IP 地址进行访问。
 
 ## <a name="setting-up-the-network-security-group"></a>设置网络安全组
@@ -51,7 +50,7 @@ ms.locfileid: "53274150"
 
     New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" -Label "Only allow web frontend and loopback traffic"
 
-首先要为 Azure 管理基础结构添加显式允许规则，如应用服务环境的[入站流量][InboundTraffic]相关文章中所述。
+首先为 Azure 管理基础结构添加显式允许规则, 如应用服务环境的[入站流量][InboundTraffic]一文中所述。
 
     #Open ports for access by Azure management infrastructure
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP

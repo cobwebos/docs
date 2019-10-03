@@ -2,23 +2,19 @@
 title: 身份验证、请求和响应
 description: 对 AD 进行身份验证以使用 Key Vault
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: 4c321939-8a5b-42ca-83c4-2f5f647ca13e
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ca486768cf56059328801b1b4b1036bb8aeece8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2b4f198d596ddcb475e123c355c38ada784d21d3
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081774"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883995"
 ---
 # <a name="authentication-requests-and-responses"></a>身份验证、请求和响应
 
@@ -91,7 +87,7 @@ Azure Key Vault 支持 JSON 格式的请求和响应。 Azure Key Vault 请求�
 
 ```  
 
-## <a name="authentication"></a>Authentication  
+## <a name="authentication"></a>身份验证  
  必须对所有 Azure Key Vault 请求进行身份验证。 Azure Key Vault 支持通过 OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)] 获得的 Azure Active Directory 访问令牌。 
  
  若要详细了解如何注册应用程序和进行身份验证以使用 Azure Key Vault，请参阅[通过 Azure AD 注册客户端应用程序](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad)。
@@ -118,5 +114,5 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   resource：要在授权请求中使用的资源名称。  
 
-## <a name="see-also"></a>另请参阅  
+## <a name="see-also"></a>请参阅  
  [关于键、密钥和证书](about-keys-secrets-and-certificates.md)

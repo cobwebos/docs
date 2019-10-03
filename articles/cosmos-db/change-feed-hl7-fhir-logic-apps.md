@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/08/2017
+ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 765596500e3ac294dc79f0785b12b03370fa652a
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.openlocfilehash: 49ef63969bd603c25d120dc5cb93ed30dda04241
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354478"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66257267"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>使用逻辑应用和 Azure Cosmos DB 通知患者 HL7 FHIR 医疗保健记录的更改
 
@@ -92,7 +92,7 @@ API 应用将连接到 Azure Cosmos DB，并按资源类型查询新的或修改
 
 **输出**
 - 成功：状态代码：200，响应：文档列表（JSON 数组）
-- 失败：状态代码：404，响应：“没有找到‘资源名称’资源类型的文档”
+- 失败：状态代码：404，响应：“没有找到‘资源名称’资源类型的文档” 
 
 <a id="api-app-source"></a>
 

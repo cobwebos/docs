@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
 ms.openlocfilehash: 10acb353e282508c838bee89b131d94dcd3fa7ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877813"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66160408"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>快速入门：使用 Azure CLI 为 MySQL 服务器创建 Azure 数据库
 
@@ -52,11 +52,11 @@ resource-group | myresourcegroup | 提供 Azure 资源组的名称。
 sku-name | GP_Gen5_2 | SKU 的名称。 请遵循简写约定 {pricing tier}\_{compute generation}\_{vCores}。 请参阅下表，详细了解 sku-name 参数。
 backup-retention | 7 | 保留备份的时长。 单位为天。 范围为 7-35。 
 geo-redundant-backup | 已禁用 | 是否应该为此服务启用异地冗余备份。 允许的值：“Enabled”、“Disabled”。
-位置 | westus | 服务器的 Azure 位置。
+location | westus | 服务器的 Azure 位置。
 ssl-enforcement | 已启用 | 是否应该为此服务启用 ssl。 允许的值：“Enabled”、“Disabled”。
 storage-size | 51200 | 服务器的存储容量（单位是兆字节）。 有效的存储大小最小为 5120MB，以 1024MB 为增量。 请参阅[定价层](./concepts-pricing-tiers.md)文档，详细了解存储大小限制。 
 版本 | 5.7 | MySQL 主版本。
-admin-user | myadmin | 用于管理员登录的用户名。 它不能为“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。
+admin-user | myadmin | 用于管理员登录的用户名。 它不能为“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”       。
 admin-password | *安全密码* | 管理员用户的密码。 该密码必须包含 8 到 128 个字符。 密码必须包含以下三个类别的字符：英文大写字母、英文小写字母、数字和非字母数字字符。
 
 
@@ -67,7 +67,7 @@ sku-name 参数值遵循 {定价层}\_{计算层代}\_{vCore 数} 约定，如�
 
 请参阅[定价层](./concepts-pricing-tiers.md)文档来了解适用于每个区域和每个层的有效值。
 
-下面的示例使用服务器管理员登录名 `myadmin` 在资源组 `myresourcegroup` 中创建位于“美国西部”区域的名为 `mydemoserver` 的 MySQL 5.7 服务器。 这是第 4 代常规用途服务器，带有 2 个 vCore。 用自己的值替换 `<server_admin_password>`。
+下面的示例使用服务器管理员登录名 `myadmin` 在资源组 `myresourcegroup` 中创建位于“美国西部”区域的名为 `mydemoserver` 的 MySQL 5.7 服务器。 这是第 4 代常规用途服务器，带有 2 个 vCore    。 用自己的值替换 `<server_admin_password>`。
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
@@ -139,7 +139,7 @@ az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
 ## <a name="connect-to-the-server-using-the-mysqlexe-command-line-tool"></a>使用 mysql.exe 命令行工具连接到服务器
-使用 mysql.exe 命令行工具连接到服务器。 可从[此处](https://dev.mysql.com/downloads/)下载 MySQL 并将其安装在计算机上。 
+使用 mysql.exe  命令行工具连接到服务器。 可从[此处](https://dev.mysql.com/downloads/)下载 MySQL 并将其安装在计算机上。 
 
 键入下一命令： 
 
@@ -200,11 +200,11 @@ mysql>
 ## <a name="connect-to-the-server-using-the-mysql-workbench-gui-tool"></a>使用 MySQL Workbench GUI 工具连接到服务器
 1. 启动客户端计算机上的 MySQL Workbench 应用程序。 可以从[此处](https://dev.mysql.com/downloads/workbench/)下载并安装 MySQL Workbench。
 
-2. 在“设置新连接”对话框的“参数”选项卡上，输入以下信息：
+2. 在“设置新连接”  对话框的“参数”  选项卡上，输入以下信息：
 
    ![设置新连接](./media/quickstart-create-mysql-server-database-using-azure-cli/setup-new-connection.png)
 
-| **设置** | 建议的值 | **说明** |
+| **设置** | 建议的值  | **说明** |
 |---|---|---|
 |   连接名称 | 我的连接 | 指定此连接的标签（这可以是任何内容） |
 | 连接方法 | 选择“标准(TCP/IP)” | 使用 TCP/IP 协议连接到 Azure Database for MySQL |
@@ -213,7 +213,7 @@ mysql>
 | 用户名 | myadmin@mydemoserver | 先前记下的服务器管理员登录名。 |
 | 密码 | **** | 使用之前配置的管理员帐户密码。 |
 
-单击“测试连接”以测试是否所有参数均已正确配置。
+单击“测试连接”  以测试是否所有参数均已正确配置。
 现在，可以单击该连接，成功连接到服务器。
 
 ## <a name="clean-up-resources"></a>清理资源

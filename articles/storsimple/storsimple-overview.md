@@ -13,15 +13,18 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
-ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.author: timlt
+ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326919"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965120"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合云存储解决方案
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>概述
 欢迎使用 Microsoft Azure StorSimple，它是集成的存储解决方案，用于管理本地设备与 Microsoft Azure 云存储之间的存储任务。 StorSimple 是一种经济高效、易于管理的存储区域网络 (SAN) 解决方案，可以消除与企业存储和数据保护相关的很多问题和开支。 它使用专有的 StorSimple 8000 系列设备，与云服务集成，并提供一套管理工具用于无缝查看包括云存储在内的所有企业存储。 （Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 如果使用的是 StorSimple 5000/7000 系列设备，请转到 [StorSimple 帮助](http://onlinehelp.storsimple.com/)。）
 
@@ -36,7 +39,7 @@ StorSimple 使用[存储分层](#automatic-storage-tiering)管理各种存储介
 ## <a name="why-use-storsimple"></a>为什么使用 StorSimple？
 下表介绍了 Microsoft Azure StorSimple 提供的某些主要优势。
 
-| Feature | 优势 |
+| 功能 | 优势 |
 | --- | --- |
 | 透明集成 |使用 iSCSI 协议以不可见的方式链接数据存储设施。 这样可以确保存储在云中、数据中心或远程服务器上的数据看起来好像存储在单个位置。 |
 | 降低存储成本 |分配足够的本地存储或云存储以满足当前需求，仅在必要时才扩展云存储。 它可以通过消除相同数据的冗余版本（删除重复）和使用压缩，进一步降低存储需求和开支。 |
@@ -96,7 +99,7 @@ StorSimple 云设备提供两种型号：8010 设备（以前称为 1100 型）�
 
 有关 StorSimple 云设备的详细信息，请转到[在 Azure 中部署和管理 StorSimple 云设备](storsimple-8000-cloud-appliance-u2.md)。
 
-## <a name="storsimple-device-manager-service"></a>StorSimple Device Manager 服务
+## <a name="storsimple-device-manager-service"></a>StorSimple 设备管理器服务
 Microsoft Azure StorSimple 提供一个基于 Web 的用户界面（StorSimple 设备管理器服务），可用于集中管理数据中心和云存储。 可以使用 StorSimple Device Manager 服务执行以下任务：
 
 * 配置 StorSimple 设备的系统设置。
@@ -205,7 +208,7 @@ Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作负荷摘要
 下表列出了受支持的 StorSimple 工作负荷摘要。
 
-| 场景 | 工作负荷 | 支持 | 限制 | 版本 |
+| 应用场景 | 工作负荷 | 支持 | 限制 | Version |
 | --- | --- | --- | --- | --- |
 | 协作 |文件共享 |是 | |所有版本 |
 | 协作 |分布式文件共享 |是 | |所有版本 |
@@ -232,9 +235,9 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 下面是 StorSimple 支持的基础结构组件列表。
 
-| 场景 | 工作负荷 | 支持 | 限制 | 版本 |
+| 应用场景 | 工作负荷 | 支持 | 限制 | Version |
 | --- | --- | --- | --- | --- |
-| 常规 |Express Route |是 | |所有版本 |
+| 常规 |快速路由 |是 | |所有版本 |
 | 常规 |DataCore FC |是* |受 DataCore SANsymphony 支持 |所有版本 |
 | 常规 |DFSR |是* |仅本地固定卷支持 |所有版本 |
 | 常规 |索引 |是* |对于分层卷，仅支持元数据索引（非数据）。<br>对于本地固定卷，支持完整索引。 |所有版本 |
@@ -244,7 +247,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 下面是可以配合 StorSimple 用来构建解决方案的其他软件的列表。
 
-| 工作负荷类型 | 与 StorSimple 配合使用的软件 | 支持的版本|链接到解决方案指南| 
+| 工作负载类型 | 与 StorSimple 配合使用的软件 | 支持的版本|链接到解决方案指南| 
 | --- | --- | --- | --- |
 | 备份目标 |Veeam |Veeam v9 和更高版本 |[用作备份目标的 StorSimple 与 Veaam 的集成](storsimple-configure-backup-target-veeam.md)|
 | 备份目标 |Veritas Backup Exec |Backup Exec 16 和更高版本 |[用作备份目标的 StorSimple 与 Backup Exec 的集成](storsimple-configure-backup-target-using-backup-exec.md)|
@@ -255,7 +258,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 部署 Microsoft Azure StorSimple 解决方案之前，我们建议查看以下术语和定义。
 
 ### <a name="key-terms-and-definitions"></a>关键术语和定义
-| 术语（首字母缩写词或缩写） | 说明 |
+| 术语（首字母缩写词或缩写） | 描述 |
 | --- | --- |
 | 访问控制记录 (ACR) |与 Microsoft Azure StorSimple 设备上的卷相关联的记录，可决定哪些主机可以连接到它。 此决定基于连接到 StorSimple 设备的主机（包含在 ACR 中）上 iSCSI 限定的名称 (IQN)。 |
 | AES-256 |当数据在云中出入时，用于加密该数据的 256 位高级加密标准 (AES) 算法。 |
@@ -299,7 +302,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 | 固态硬盘 (SSD) |不包含任何移动部件的磁盘；例如，U 盘。 |
 | 存储帐户 |一组访问凭据，该凭据链接到给定云服务提供商的存储帐户。 |
 | StorSimple Adapter for SharePoint |Microsoft Azure StorSimple 组件，用于将 StorSimple 存储和数据保护透明地扩展到 SharePoint 服务器场。 |
-| StorSimple Device Manager 服务 |Azure 门户的扩展，用于管理 Azure StorSimple 本地设备和虚拟设备。 |
+| StorSimple 设备管理器服务 |Azure 门户的扩展，用于管理 Azure StorSimple 本地设备和虚拟设备。 |
 | StorSimple 快照管理器 |Microsoft 管理控制台 (MMC) 管理单元，用于管理 Microsoft Azure StorSimple 中的备份和还原操作。 |
 | 执行备份 |一种允许用户对卷执行交互备份的功能。 它是另一种手动备份卷的方法，而不是通过已定义的策略自动备份。 |
 | 精简预配 |一种优化存储系统使用可用存储空间效率的方法。 在精简预配中，根据每个用户在任何给定时间所需的最小空间，为多个用户分配存储。 另请参阅 FAT 预配。 |

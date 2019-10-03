@@ -8,39 +8,38 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: f7c9bcc51757100cb1fc957dee12213bc8bf2eec
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 54cf0a60c86e82880573dd18dcb80ece8e1e51f2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666760"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035008"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 查询和管理任何服务的分区。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
 | data-loss | 此 API 会造成指定的分区发生数据丢失。 |
 | data-loss-status | 获取使用 StartDataLoss API 启动的分区数据丢失操作的进度。 |
-| health | 获取指定 Service Fabric 分区的运行状况。 |
-| info | 获取有关 Service Fabric 分区的信息。 |
-| list | 获取 Service Fabric 服务的分区列表。 |
-| load | 获取指定的 Service Fabric 分区的负载信息。 |
+| 运行状况 | 获取指定 Service Fabric 分区的运行状况。 |
+| 信息 | 获取有关 Service Fabric 分区的信息。 |
+| 列表 | 获取 Service Fabric 服务的分区列表。 |
+| 负载 | 获取指定的 Service Fabric 分区的负载信息。 |
 | load-reset | 重置 Service Fabric 分区的当前负载。 |
 | quorum-loss | 造成给定的有状态服务分区发生仲裁丢失。 |
 | quorum-loss-status | 获取使用 StartQuorumLoss API 在分区上启动的仲裁丢失操作的进度。 |
 | recover | 向 Service Fabric 群集指出应该尝试恢复当前停滞在仲裁丢失状态的特定分区。 |
 | recover-all | 向 Service Fabric 群集指出应该尝试恢复当前停滞在仲裁丢失状态的所有服务（包括系统服务）。 |
 | report-health | 发送有关 Service Fabric 分区的运行状况报告。 |
-| restart | 此 API 会重启指定分区的部分或所有副本或者实例。 |
+| 重新启动 | 此 API 会重启指定分区的部分或所有副本或者实例。 |
 | restart-status | 获取使用 StartPartitionRestart 启动的 PartitionRestart 操作的进度。 |
 | svc-name | 获取分区的 Service Fabric 服务名称。 |
 

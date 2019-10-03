@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 6635b572d11339307083b8aa2aaaba69dc731101
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5bec627f114a20033ca4364c39c048763df36b67
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885853"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66161470"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.locfileid: "58885853"
 * **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="authentication"></a>Authentication
-本文对 Data Lake Store Gen1 使用一种较为简单的身份验证方法，其中会提示输入 Azure 帐户凭据。 系统会根据登录用户的访问级别约束对 Data Lake Storage Gen1 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Storage Gen1 中进行身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
+本文对 Data Lake Store Gen1 使用一种较为简单的身份验证方法，其中会提示输入 Azure 帐户凭据。 系统会根据登录用户的访问级别约束对 Data Lake Storage Gen1 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Storage Gen1 中进行身份验证，即“最终用户身份验证”或“服务到服务身份验证”   。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>创建 Data Lake Storage Gen1 帐户
 1. 从桌面打开新的 Windows PowerShell 窗口。 输入以下代码片段以登录到 Azure 帐户，设置订阅，并注册 Data Lake Store Gen1 提供程序。 当系统提示登录时，请确保以订阅管理员/所有者身份登录：
@@ -69,7 +69,7 @@ ms.locfileid: "58885853"
 
         Test-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
 
-    cmdlet 的输出应为 True。
+    cmdlet 的输出应为 True  。
 
 ## <a name="create-directory-structures-in-your-data-lake-storage-gen1-account"></a>在 Data Lake Storage Gen1 帐户中创建目录结构
 可以在 Data Lake Store Gen1 帐户下创建目录，用于管理和存储数据。

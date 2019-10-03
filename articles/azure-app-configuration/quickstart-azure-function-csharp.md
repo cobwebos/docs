@@ -14,38 +14,34 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 8167f10391f426c50120a224eea44e6db846fbb1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: a15b4e10938c39ba599ffb1ce7437feb788b1115
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003235"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075947"
 ---
-# <a name="quickstart-create-an-azure-function-with-app-configuration"></a>快速入门：使用应用配置创建 Azure 函数
+# <a name="quickstart-create-an-azure-function-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 Azure 函数
 
-Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码即可在一个位置轻松存储和管理所有应用程序设置。 该快速入门展示了如何将此服务融入 Azure 函数。 
-
-你可使用任意代码编辑器来执行该快速入门中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
-
-![在本地完成该快速入门](./media/quickstarts/dotnet-core-function-launch-local.png)
+在本快速入门中，会将 Azure 应用程序配置服务合并到 Azure 函数中，以集中存储和管理与代码分离的所有应用程序设置。
 
 ## <a name="prerequisites"></a>先决条件
 
-要学习该快速入门，请安装 [Visual Studio 2017](https://visualstudio.microsoft.com/vs)。 确保还安装了 **Azure 开发**工作负荷。 另请安装 [latest Azure Functions 工具](../azure-functions/functions-develop-vs.md#check-your-tools-version)。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- 包含 **Azure 开发**工作负载的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
+- [Azure Functions 工具](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“键/值资源管理器” > “+创建”来添加以下键值对：
+6. 选择“配置资源管理器” > “+创建”来添加以下键值对   ：
 
     | 密钥 | 值 |
     |---|---|
     | TestApp:Settings:Message | Azure 应用配置的数据 |
 
-    暂时将“标签”和“内容类型”保留为空。
+    暂时将“标签”和“内容类型”保留为空   。
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
@@ -53,15 +49,16 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 右键单击项目，然后选择“管理 NuGet 包”。 在“浏览”选项卡中，搜索以下 NuGet 包并将其添加到项目中。 如果无法找到，请选中“包括预发行版”复选框。
+1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索以下 NuGet 包并将其添加到项目中  。 如果无法找到，请选中“包括预发行版”复选框  。
 
     ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 2.0.0-preview-009200001-1437 or later
     ```
 
-2. 打开 Function1.cs，并添加对应用程序配置 .NET Core 配置提供程序的引用。
+2. 打开 *Function1.cs*，并添加对 .NET Core 常规配置提供程序和 .NET Core 应用配置提供程序的引用。
 
     ```csharp
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
@@ -91,7 +88,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
 ## <a name="test-the-function-locally"></a>在本地测试函数
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问键。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问键  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -103,7 +100,7 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. 若要测试函数，请按 F5。 如果系统提示，请按 Visual Studio 的请求下载和安装 Azure Functions Core (CLI) 工具。 你还需要启用防火墙例外，这样工具才能处理 HTTP 请求。
+2. 若要测试函数，请按 F5。 如果系统提示，请按 Visual Studio 的请求下载和安装 Azure Functions Core (CLI) 工具  。 你还需要启用防火墙例外，这样工具才能处理 HTTP 请求。
 
 3. 从 Azure Functions 运行时输出复制函数的 URL。
 

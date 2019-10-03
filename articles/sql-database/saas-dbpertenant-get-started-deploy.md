@@ -10,20 +10,19 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 97570a16c7d87a3c8182909b61c04fde30b3fe9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d5326a3a154ed6f193b5527a0150ad84c843c273
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000204"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570441"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>部署并探究一个多租户 SaaS 应用，该应用通过“每租户一个数据库”模式使用 SQL 数据库
 
 本教程中，你将部署并探究 Wingtip Tickets SaaS“每租户一个数据库”应用程序 (Wingtip)。 该应用使用“每租户一个数据库”模式存储多个租户的数据。 该应用设计用于展示简化了 SaaS 方案的启用方式的 Azure SQL 数据库功能。
 
-选择“部署到 Azure”后，五分钟即生成一个多租户 SaaS 应用程序。 该应用包括一个在云中运行的 SQL 数据库。 该应用部署有三个示例租户，每个租户具有其自己的数据库。 所有数据库都部署到一个 SQL 弹性池中。 该应用会部署到 Azure 订阅。 用户具有完全访问权限，可以浏览并处理该应用的各个组件。 [WingtipTicketsSaaS-DbPerTenant GitHub 存储库][github-wingtip-dpt] 中提供了应用程序 C# 源代码和管理脚本。
+选择“部署到 Azure”后，五分钟即生成一个多租户 SaaS 应用程序。 该应用包括一个在云中运行的 SQL 数据库。 该应用部署有三个示例租户，每个租户具有其自己的数据库。 所有数据库都部署到一个 SQL 弹性池中。 该应用会部署到 Azure 订阅。 用户具有完全访问权限，可以浏览并处理该应用的各个组件。 C# [Wingtipticketssaas-dbpertenant 提供了-wingtipticketssaas-dbpertenant-master GitHub][github-wingtip-dpt]存储库中提供了应用程序源代码和管理脚本。
 
 本教程介绍以下内容：
 
@@ -37,7 +36,7 @@ ms.locfileid: "58000204"
 
 可通过观看[相关教程系列](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)，了解各种 SaaS 设计和管理模式。 除了初始部署相关内容，这些教程还提供其他丰富的内容延展。 使用这些教程时，可以观察所提供的脚本来了解不同的 SaaS 模式是如何实现的。 脚本演示 SQL 数据库的功能如何简化 SaaS 应用程序的开发。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 若要完成本教程，请确保安装 Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
@@ -52,7 +51,7 @@ ms.locfileid: "58000204"
 
 现在请选择自己的名称，并将其写下来。
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 1. 若要在 Azure 门户中打开 Wingtip Tickets SaaS“每租户一个数据库”部署模板，请选择“部署到 Azure”。
 
@@ -84,7 +83,7 @@ ms.locfileid: "58000204"
 > [!IMPORTANT]
 > 从外部源下载 zip 文件并将其解压缩时，可执行内容（脚本和 DLL）可能会被 Windows 阻止。 在提取脚本前，请执行相关步骤来取消阻止 .zip 文件。 取消阻止可确保允许运行这些脚本。
 
-1. 浏览到 [WingtipTicketsSaaS-DbPerTenant GitHub 存储库][github-wingtip-dpt]。
+1. 浏览到[WingtipTicketsSaaS-DbPerTenant GitHub 存储库][github-wingtip-dpt]。
 1. 选择“克隆或下载”。
 1. 选择“下载 ZIP”，然后保存文件。
 1. 右键单击“WingtipTicketsSaaS-DbPerTenant-master.zip”文件，然后选择“属性”。
@@ -115,9 +114,9 @@ ms.locfileid: "58000204"
 
     ![事件中心](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
-2. 在事件中心内选择“Fabrikam Jazz Club”。 **** 
+2. 在事件中心内选择“Fabrikam Jazz Club”。 ****  
 
-    ![活动](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
+    ![事件](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure 流量管理器
 
@@ -130,7 +129,7 @@ Wingtip 应用程序使用  [*Azure 流量管理器*](../traffic-manager/traffi
     | URL 部分        | 描述       |
     | :-------------- | :---------------- |
     | http://events.wingtip-dpt | Wingtip 应用的事件部分。<br /><br /> *-dpt* 部分将 Wingtip Tickets 的“每租户一个数据库”实现与其他实现区分开来。 例如，单个“每租户应用”(-sa) 实现，或多租户数据库 (-mt) 实现。 |
-    | .*&lt;user&gt;* | 在示例中为 *af1*。 |
+    | . *&lt;user&gt;* | 在示例中为 *af1*。 |
     | .trafficmanager.net/ | 流量管理器、基 URL。 |
     | fabrikamjazzclub | 标识名为 Fabrikam Jazz Club 的租户。 |
     | &nbsp; | &nbsp; |
@@ -221,14 +220,14 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载。 以下步骤�
 
 现在，你已针对该组租户运行了加载，下面让我们看看一些已部署的资源。
 
-1. 在  [Azure 门户](https://portal.azure.com)中，浏览到你的 SQL 服务器列表。 然后，打开  **catalog-dpt-&lt;USER&gt;**  服务器。
+1. 在  [Azure 门户](https://portal.azure.com)中，浏览到你的 SQL 服务器列表。 然后，打开  **catalog-dpt-&lt;USER&gt;**   服务器。
     - 目录服务器包含两个数据库：**tenantcatalog** 和 **basetenantdb**（为了创建新租户而复制的模板数据库）。
 
    ![数据库](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. 返回到 SQL 服务器列表。
 
-3. 打开存放着租户数据库的 **tenants1-dpt-&lt;USER&gt;**  服务器。
+3. 打开存放着租户数据库的 **tenants1-dpt-&lt;USER&gt;**   服务器。
 
 4. 查看以下项：
 
@@ -241,7 +240,7 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载。 以下步骤�
 
 LoadGenerator.ps1 运行几分钟后，可提供足够的数据，用于开始查看某些监视功能。 这些功能内置于池和数据库中。
 
-浏览到服务器 **tenants1-dpt-&lt;user&gt;**，然后选择  **Pool1**  来查看池的资源利用率。 在以下图表中，负载生成器已运行一个小时。
+浏览到服务器 **tenants1-dpt-&lt;user&gt;** ，然后选择  **Pool1**  来查看池的资源利用率。 在以下图表中，负载生成器已运行一个小时。
 
    ![监视池](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
@@ -254,7 +253,7 @@ LoadGenerator.ps1 运行几分钟后，可提供足够的数据，用于开始�
 
 - 有关详细信息，请参阅[其他基于 Wingtip Tickets SaaS“每租户一个数据库”应用程序的教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。
 - 若要了解弹性池，请参阅 [什么是 Azure SQL 弹性池？](sql-database-elastic-pool.md)。
-- 若要了解弹性作业，请参阅 [管理横向扩展的云数据库](sql-database-elastic-jobs-overview.md)。
+- 若要了解弹性作业，请参阅 [管理横向扩展的云数据库](elastic-jobs-overview.md)。
 - 若要了解多租户 SaaS 应用程序，请参阅 [多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
 
 ## <a name="next-steps"></a>后续步骤

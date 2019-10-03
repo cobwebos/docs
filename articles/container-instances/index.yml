@@ -1,71 +1,80 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 容器实例文档
+summary: 在托管的无服务器 Azure 环境中按需运行 Docker 容器。 Azure 容器实例是一种解决方案，适用于任何可在独立容器中运行而无需业务流程的方案。 运行事件驱动的应用程序，从容器开发管道快速部署，并运行数据处理和生成作业。
 metadata:
-  title: Azure 容器实例文档 - 教程 | Microsoft Docs
-  description: Azure 容器实例提供了在 Azure 中运行容器的最简捷方式，既无需预配任何虚拟机，也不必采用更高级的服务。
-  services: container-instances
-  author: czeumault
-  manager: carolz
+  title: Azure 容器实例文档 - 按需运行无服务器容器
+  description: 在托管的无服务器 Azure 环境中运行 Docker 容器。
+  services: 
   ms.service: container-instances
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/26/2017
-  ms.author: carolz
-abstract:
-  description: Azure 容器实例提供了在 Azure 中运行容器的最简捷方式，既无需预配任何虚拟机，也不必采用更高级的服务。 使用快速入门、教程和示例，了解如何创建和管理容器实例。<p>如果需要完整的容器协调解决方案，请参阅 <a href="/azure/aks/">Azure Kubernetes 服务 (AKS) 文档</a>。</p>
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何使用 Azure 容器实例部署容器映像。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure CLI
-            href: /azure/container-instances/container-instances-quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure 门户
-            href: /azure/container-instances/container-instances-quickstart-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/container-instances/container-instances-quickstart-powershell
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何将代码打包到容器映像中并在 Azure 容器实例中运行它。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">将应用程序打包到容器映像中</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">创建 Azure 容器注册表并上传容器映像</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">将容器映像部署到 Azure 容器实例</a>
-  - title: 利用 Microsoft Learn 掌握技能
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 将 Docker 容器与 Azure 容器实例一起运行
-            href: /learn/modules/run-docker-with-azure-container-instances/
-            image:
-              src: /learn/achievements/run-docker-with-azure-container-instances.svg
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-container-instances">更多交互式学习...</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/cli/azure/container">Azure CLI</a></p><p><a href="/powershell/module/az.containerinstance">PowerShell</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/containerinstance">.NET</a></p><p><a href="/python/api/overview/azure/containerinstance">Python</a></p><p><a href="/java/api/overview/azure/containerinstance">Java</a></p><p><a href="/javascript/api/overview/azure/containerinstances">Node.js</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/container-instances">REST API 参考</a></p><p><a href="/azure/templates/microsoft.containerinstance/containergroups">资源管理器模板</a></p>
+  ms.collection: collection
+  author: dlepow
+  ms.author: danlep
+  ms.date: 09/25/2019
+  ms.openlocfilehash: a031f70cfaad9369f79a0e18f3527250eb82bfeb
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71326958"
+landingContent:
+- title: 关于 Azure 容器实例
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 容器实例？
+      url: container-instances-overview.md
+    - text: 容器组
+      url: container-instances-container-groups.md
+    - text: 常见问题解答
+      url: container-instances-faq.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 部署容器实例 - CLI
+      url: container-instances-quickstart.md
+    - text: 部署容器实例 - 门户
+      url: container-instances-quickstart-portal.md
+  - linkListType: learn
+    links:
+    - text: 通过 Azure 容器实例运行 Docker 容器
+      url: /learn/modules/run-docker-with-azure-container-instances/
+- title: 创建多容器组
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 部署容器组 - YAML
+      url: container-instances-multi-container-yaml.md
+    - text: 部署容器组 - 模板
+      url: container-instances-multi-container-group.md
+- title: 部署方案
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 连接到虚拟网络
+      url: container-instances-vnet.md
+    - text: 配置重启策略
+      url: container-instances-restart-policy.md
+    - text: 设置环境变量。
+      url: container-instances-environment-variables.md
+- title: 管理容器应用
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 停止和启动容器
+      url: container-instances-stop-start.md
+    - text: 更新正在运行的容器
+      url: container-instances-update.md
+    - text: 在容器之间共享数据
+      url: container-instances-volume-emptydir.md
+- title: 与 Azure 集成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 从 Azure 容器注册表部署映像
+      url: container-instances-using-azure-container-registry.md
+    - text: 使用托管标识
+      url: container-instances-managed-identity.md
+    - text: 装载 Azure 文件共享
+      url: container-instances-volume-azure-files.md

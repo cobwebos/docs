@@ -1,6 +1,6 @@
 ---
-title: 许可组-Azure Active Directory 的 PowerShell 和 Graph 示例 |Microsoft Docs
-description: PowerShell + 关系图的示例和方案 Azure Active Directory 基于组的许可
+title: 许可组的 PowerShell 和 Graph 示例 - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory 基于组的许可的 PowerShell + Graph 示例和方案
 services: active-directory
 keywords: Azure AD 许可
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70e4e56742f45e0f6bfd80455e4d7545523a478b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2e6ac548a4b7599857b116e8059acc51c21fdf4e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265774"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812255"
 ---
-# <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中基于组的许可的 PowerShell 示例
+# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中基于组的许可的 PowerShell 和 Graph 示例
 
-基于组的许可的完整功能可通过 [Azure 门户](https://portal.azure.com)获取，PowerShell 和 Microsoft Graph 支持目前受到限制。 但是，可使用现有的 [MSOnline PowerShell cmdlet](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) 和 Microsoft Graph 执行一些有用的任务。 本文档提供了可执行的任务示例。
+基于组的许可的完整功能可通过 [Azure 门户](https://portal.azure.com)获得，目前 PowerShell 和 Microsoft Graph 支持仅限于只读操作。 但是，可使用现有的 [MSOnline PowerShell cmdlet](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) 和 Microsoft Graph 执行一些有用的任务。 本文档提供了可执行的任务示例。
 
 > [!NOTE]
-> 在开始运行 cmdlet 之前，请确保首先，通过运行连接你的组织`Connect-MsolService`  cmdlet。
+> 开始运行 cmdlet 前，请先运行 `Connect-MsolService` cmdlet，确保连接到组织。
 
 > [!WARNING]
 > 此示例代码用于演示目的。 如果想要在环境中使用，请考虑先进行小规模的测试，或者在单独的测试租户中使用。 可能需要根据具体的环境需求调整该代码。
@@ -50,10 +50,10 @@ EMSPREMIUM
 > [!NOTE]
 > 数据被限制为产品 (SKU) 信息。 无法列出许可证中禁用的服务计划。
 
-使用下面的示例从 Microsoft Graph 获取相同的数据。
+使用以下示例从 Microsoft Graph 获取相同的数据。
 
 ```
-GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses
+GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41?$select=assignedLicenses
 ```
 输出：
 ```
@@ -227,7 +227,7 @@ ObjectId                             DisplayName      License Error
 6d325baf-22b7-46fa-a2fc-a2500613ca15 Catherine Gibson MutuallyExclusiveViolation
 ```
 
-使用以下命令以从 Microsoft Graph 获取相同的数据：
+使用以下示例从 Microsoft Graph 获取相同的数据：
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
@@ -388,7 +388,7 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 240622ac-b9b8-4d50-94e2-dad19a3bf4b5 contoso:EMS             True              True
 ```
 
-图形没有了简单方法以显示结果，但此 API 可以看到它：
+Graph 没有以直观的方式来显示结果，但可以通过此 API 进行查看：
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
@@ -564,10 +564,8 @@ $servicePlansFromGroups = ("EXCHANGE_S_ENTERPRISE", "SHAREPOINTENTERPRISE", "OFF
 
 $expectedDisabledPlans = GetDisabledPlansForSKU $skuId $servicePlansFromGroups
 
-#process all members in the group
-Get-MsolGroupMember -All -GroupObjectId $groupId
-    #get full info about each user in the group
-    Get-MsolUser -ObjectId {$_.ObjectId} | Foreach {
+#process all members in the group and get full info about each user in the group looping through group members. 
+Get-MsolGroupMember -All -GroupObjectId $groupId | Get-MsolUser -ObjectId {$_.ObjectId} | Foreach {
         $user = $_;
         $operationResult = "";
 
@@ -618,6 +616,8 @@ UserId                               OperationResult
 0ddacdd5-0364-477d-9e4b-07eb6cdbc8ea User has extra plans that may be lost - license removal was skipped. Extra plans: SHAREPOINTWAC
 aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
+> [!NOTE]
+> 在运行上述脚本之前，请根据测试环境更新变量 `$skuId` 和 `$groupId` 的值，这些变量用于删除直接许可证。 
 
 ## <a name="next-steps"></a>后续步骤
 

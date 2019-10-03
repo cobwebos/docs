@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 7ca7e653cc42323f4313ef955de40416154b4ecf
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ada794807f980854c203b56874e452713ecef6ea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651662"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568347"
 ---
 # <a name="split-merge-security-configuration"></a>拆分/合并安全配置
 
@@ -421,10 +420,10 @@ ms.locfileid: "58651662"
 1. 运行 mmc.exe。
 2. “文件”->“添加/删除管理单元...”
 3. 选择“证书”。
-4. 单击“添加” 。
+4. 单击“添加”。
 5. 选择证书存储位置。
-6. 单击“完成”。
-7. 单击“确定”。
+6. 单击 **“完成”** 。
+7. 单击 **“确定”** 。
 8. 展开“证书”。
 9. 展开证书存储节点。
 10. 展开证书子节点。
@@ -443,8 +442,8 @@ ms.locfileid: "58651662"
 8. 单击“下一步”。
 9. 在证书的存储位置键入或浏览文件名（使用 .PFX 扩展名）。
 10. 单击“下一步”。
-11. 单击“完成”。
-12. 单击“确定”。
+11. 单击 **“完成”** 。
+12. 单击 **“确定”** 。
 
 ## <a name="import-certificate"></a>导入证书
 在证书导入向导中：
@@ -461,7 +460,7 @@ ms.locfileid: "58651662"
 5. 选择“将证书放入以下存储”
 6. 单击“浏览”。
 7. 选择所需的存储。
-8. 单击“完成”。
+8. 单击 **“完成”** 。
    
    * 如果已选中“受信任的根证书颁发机构”存储，请单击“是”。
 9. 在所有对话框窗口上单击“确定”。

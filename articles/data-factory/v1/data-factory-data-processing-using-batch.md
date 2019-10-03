@@ -3,22 +3,20 @@ title: 使用数据工厂和 Batch 来处理大规模数据集 | Microsoft Docs
 description: 描述如何使用 Azure Batch 的并行处理功能在 Azure 数据工厂管道中处理大量数据。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fe015e2ffa371c0c31f7f5f43c433d44f3ca3c42
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124144"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140042"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -43,7 +41,7 @@ ms.locfileid: "58124144"
 * [Batch 基本信息](../../batch/batch-technical-overview.md)
 * [批处理功能概述](../../batch/batch-api-basics.md)
 
-（可选） 若要了解有关批处理的详细信息，请参阅[Batch 文档](https://docs.microsoft.com/azure/batch/)。
+或者, 若要了解有关批处理的详细信息, 请参阅[批处理文档](https://docs.microsoft.com/azure/batch/)。
 
 ## <a name="why-azure-data-factory"></a>为什么使用 Azure 数据工厂？
 数据工厂是一项基于云的数据集成服务，可对数据移动和转换进行安排并使其实现自动化。 可以使用数据工厂创建将数据从本地和云数据存储移动到集中数据存储的托管数据管道。 Azure Blob 存储是一个示例。 可以使用数据工厂，通过 Azure HDInsight 和 Azure 机器学习等服务来处理/转换数据。 还可以计划数据管道，以便按计划方法（例如每小时、每天和每周）运行。 可以一目了然地监视和管理管道，以便确定问题和采取措施。
@@ -88,7 +86,7 @@ ms.locfileid: "58124144"
 
 **时间：** 如果熟悉 Azure、数据工厂和 Batch 的基础知识，且已完成以下先决条件，则完成此解决方案需要一到两小时。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 #### <a name="azure-subscription"></a>Azure 订阅
 如果没有 Azure 订阅，可以快速创建免费试用帐户。 有关详细信息，请参阅[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -96,7 +94,7 @@ ms.locfileid: "58124144"
 可使用存储帐户存储本教程中的数据。 如果还没有存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)。 示例解决方案使用 Blob 存储。
 
 #### <a name="azure-batch-account"></a>Azure Batch 帐户
-使用 [Azure 门户](https://portal.azure.com/)创建 Batch 存储帐户。 有关详细信息，请参阅[创建和管理 Batch 帐户](../../batch/batch-account-create-portal.md)。 请注意 Batch 帐户名称和帐户密钥。 您还可以使用[新建 AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) cmdlet 创建 Batch 帐户。 有关如何使用此 cmdlet 的说明，请参阅 [Batch PowerShell cmdlet 入门](../../batch/batch-powershell-cmdlets-get-started.md)。
+使用 [Azure 门户](https://portal.azure.com/)创建 Batch 存储帐户。 有关详细信息，请参阅[创建和管理 Batch 帐户](../../batch/batch-account-create-portal.md)。 请注意 Batch 帐户名称和帐户密钥。 还可以使用[AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) Cmdlet 创建 Batch 帐户。 有关如何使用此 cmdlet 的说明，请参阅 [Batch PowerShell cmdlet 入门](../../batch/batch-powershell-cmdlets-get-started.md)。
 
 该示例解决方案使用 Batch（通过数据工厂管道间接使用）以并行方式在计算节点池（托管 VM 集合）上处理数据。
 
@@ -124,7 +122,7 @@ ms.locfileid: "58124144"
    f. 选择“确定”以创建池。
 
 #### <a name="azure-storage-explorer"></a>Azure 存储资源管理器
-可使用 [Azure 存储资源管理器 6](https://azurestorageexplorer.codeplex.com/) 或 [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer)（来自 ClumsyLeaf Software）检查并更改存储项目中的数据。 还可以检查和更改云托管应用程序日志中的数据。
+可使用 [Azure 存储资源管理器 6](https://azurestorageexplorer.codeplex.com/) 或 [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)（来自 ClumsyLeaf Software）检查并更改存储项目中的数据。 还可以检查和更改云托管应用程序日志中的数据。
 
 1. 创建名为 **mycontainer** 的容器，此容器具有专用访问权限（无匿名访问权限）。
 
@@ -409,7 +407,7 @@ public IDictionary<string, string> Execute(
 #### <a name="execute-method"></a>Execute 方法
 本部分提供有关 Excute 方法中代码的更多详细信息。
 
-1. 可在 [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) 命名空间中找到循环访问输入集合的成员。 若要循环访问 blob 集合，需要使用 **BlobContinuationToken** 类。 实际上必须使用将标记作为退出循环机制的 do-while 循环。 有关详细信息，请参阅[通过 .NET 使用 Blob 存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 基本循环如下所示：
+1. 可在 [Microsoft.WindowsAzure.Storage.Blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) 命名空间中找到循环访问输入集合的成员。 若要循环访问 blob 集合，需要使用 **BlobContinuationToken** 类。 实际上必须使用将标记作为退出循环机制的 do-while 循环。 有关详细信息，请参阅[通过 .NET 使用 Blob 存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 基本循环如下所示：
 
     ```csharp
     // Initialize the continuation token.
@@ -432,7 +430,7 @@ public IDictionary<string, string> Execute(
     } while (continuationToken != null);
 
     ```
-   有关详细信息，请参阅 [ListBlobsSegmented](https://msdn.microsoft.com/library/jj717596.aspx) 方法的文档。
+   有关详细信息，请参阅 [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) 方法的文档。
 
 1. 以逻辑方式通过 blob 集工作的代码在 do-while 循环内运行。 在 **Execute** 方法中，do-while 循环将 blob 列表传递给名为 **Calculate** 的方法。 该方法返回名为 **output** 的字符串变量，它是循环访问段中所有 blob 的结果。
 
@@ -669,7 +667,7 @@ test custom activity Microsoft test custom activity Microsoft
 
     | **切片** | **开始时间**          |
     |-----------|-------------------------|
-    | 第         | 2015-11-16T**00**:00:00 |
+    | 1         | 2015-11-16T**00**:00:00 |
     | 2         | 2015-11-16T**01**:00:00 |
     | 3         | 2015-11-16T**02**:00:00 |
     | 4         | 2015-11-16T**03**:00:00 |
@@ -679,7 +677,7 @@ test custom activity Microsoft test custom activity Microsoft
 
     | **切片** | **开始时间**          | **输入文件夹**  |
     |-----------|-------------------------|-------------------|
-    | 第         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
+    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
     | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02** |
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
@@ -726,7 +724,7 @@ test custom activity Microsoft test custom activity Microsoft
 
     | **切片** | **开始时间**          | **输出文件**       |
     |-----------|-------------------------|-----------------------|
-    | 第         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
+    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |
     | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02.txt** |
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
@@ -812,7 +810,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 在 Azure 门户的“数据工厂”边栏选项卡中，选择“图示”。
 
-   ![图表](./media/data-factory-data-processing-using-batch/image10.png)
+   ![关系图](./media/data-factory-data-processing-using-batch/image10.png)
 
 1. 在“图示”视图中，双击输入数据集“InputDataset”。
 
@@ -966,7 +964,7 @@ test custom activity Microsoft test custom activity Microsoft
 * [Power BI 中的数据刷新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure 和 Power BI：基本概述](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>参考
+## <a name="references"></a>参考资料
 * [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [数据工厂服务简介](data-factory-introduction.md)

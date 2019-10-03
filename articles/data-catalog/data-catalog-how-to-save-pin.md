@@ -1,19 +1,17 @@
 ---
 title: 在 Azure 数据目录中保存搜索并固定数据资产
 description: 操作指南文章重点说明 Azure 数据目录中保存数据源和数据资产供以后使用的功能。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 6bd00a81-820d-4b7c-91fa-ab09e575474c
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: df3220ddb80ebc329ed6b0024ca4eefd2bdfb321
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 08/01/2019
+ms.openlocfilehash: a8545939fd027989519e0f7a161f750ec676749a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002011"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976817"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>在 Azure 数据目录中保存搜索并固定数据资产
 ## <a name="introduction"></a>简介
@@ -39,7 +37,7 @@ Azure 数据目录提供数据源发现功能。 可快速搜索并筛选目录�
 ### <a name="manage-saved-searches"></a>管理保存的搜索
 保存一个或多个搜索后，“保存的搜索”选项会显示在“当前搜索”框下。 展开列表时，将显示所有已保存的搜索。
 
- ![已保存的搜索列表](./media/data-catalog-how-to-save-pin/03-list.png)
+ ![数据目录-已保存的搜索列表](./media/data-catalog-how-to-save-pin/03-list.png)
 
 执行以下任一操作：
 
@@ -58,23 +56,23 @@ Azure 数据目录提供数据源发现功能。 可快速搜索并筛选目录�
 ### <a name="organizational-saved-searches"></a>保存的组织搜索
 组织中的所有用户都可以保存搜索供自己使用。 数据目录管理员还可以保存搜索供组织内所有用户使用。 当管理员保存搜索时，会看到“在公司内共享”选项。 选择此选项会与组织中的所有用户共享该保存的搜索。
 
- ![保存的组织搜索](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
+ ![数据目录-组织已保存的搜索](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
 
 ## <a name="pinned-data-assets"></a>固定的数据资产
 使用已保存的搜索，可保存并重用搜索定义。 搜索返回的数据资产可能会随目录内容的更改而发生变化。 固定数据资产时，可显式标识特定数据资产，使其更易于访问而无需使用搜索。
 
 固定数据资产非常简单。 若要将数据资产添加到已固定列表中，只需单击“固定”图标即可。 此图标显示在磁贴视图中资产磁贴的角落，位于 Azure 数据目录门户中列表视图的最左列。
 
-![数据资产固定图标](./media/data-catalog-how-to-save-pin/05-pinning.png)
+![数据目录-数据资产图钉图标](./media/data-catalog-how-to-save-pin/05-pinning.png)
 
 取消固定数据资产同样很简单。 只需单击“取消固定”图标，为所选资产切换设置即可。
 
-![数据资产取消固定图标](./media/data-catalog-how-to-save-pin/06-unpinning.png)
+![数据目录-"数据资产解锁" 图标](./media/data-catalog-how-to-save-pin/06-unpinning.png)
 
 ## <a name="the-my-assets-section"></a>“我的资产”部分
 数据目录门户主页包括“我的资产”部分，显示与当前用户相关的资产。 本部分包括固定的资产和保存的搜索。
 
 ![主页上“我的资产”部分](./media/data-catalog-how-to-save-pin/07-my-assets.png)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 Azure 数据目录提供更易于发现所需数据源的功能，让你和其他组织成员可花更少的时间查找数据，有更多的时间来处理数据。 保存的搜索和固定的数据资产建立在这些核心功能的基础上，让用户可以轻松标识将重复使用的数据源。

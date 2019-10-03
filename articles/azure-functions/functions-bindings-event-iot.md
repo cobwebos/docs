@@ -4,23 +4,22 @@ description: 了解如何在 Azure Functions 中使用 IoT 中心绑定。
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 87a99651d17e9867130024a5f721c5488cd42a8c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d8b749a294da379e99e61072ff7a3415c508d2ac
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426097"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097647"
 ---
 # <a name="azure-iot-hub-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure IoT 中心绑定
 
-本文介绍如何使用 IoT 中心的 Azure Functions 绑定。 IoT 中心支持基于[Azure 事件中心绑定](functions-bindings-event-hubs.md)。
+本文介绍如何使用 IoT 中心的 Azure Functions 绑定。 IoT 中心支持基于 [Azure 事件中心绑定](functions-bindings-event-hubs.md)。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 

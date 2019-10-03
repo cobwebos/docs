@@ -2,20 +2,20 @@
 title: Azure SQL 数据仓库速查表 | Microsoft Docs
 description: 查找链接和最佳做法，以便快速生成 Azure SQL 数据仓库解决方案。
 services: sql-data-warehouse
-author: acomet
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 04/17/2018
-ms.author: acomet
+ms.date: 08/23/2019
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 795facc6148d33592ff8eac5083a273dc3d5cb26
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1bbb0148e6f4be2afc777960afcda9c727328206
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314902"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195056"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库速查表
 此速查表提供有关生成 Azure SQL 数据仓库解决方案的有用提示和最佳做法。 在开始之前，请阅读 [Azure SQL 数据仓库的工作负荷模式和对立模式](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns)中的每个详细步骤，其中解释了 SQL 数据仓库的定义。
@@ -35,7 +35,7 @@ ms.locfileid: "57314902"
 
 ## <a name="data-migration"></a>数据迁移
 
-首先，请将数据载入 [Azure Data Lake Store](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) 或 Azure Blob 存储。 接下来，使用 PolyBase 将数据载入 SQL 数据仓库的临时表中。 使用以下配置：
+首先，请将数据载入 [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) 或 Azure Blob 存储。 接下来，使用 PolyBase 将数据载入 SQL 数据仓库的临时表中。 使用以下配置：
 
 | 设计 | 建议 |
 |:--- |:--- |
@@ -96,9 +96,11 @@ ms.locfileid: "57314902"
 
 ## <a name="incremental-load"></a>增量加载
 
-若要增量加载数据，请先确保分配更大的资源类来加载数据。 建议使用 PolyBase 和 ADF V2 在 SQL 数据仓库中自动执行 ELT 管道。
+若要增量加载数据，请先确保分配更大的资源类来加载数据。  当加载到具有聚集列存储索引的表中时，这一点尤其重要。  有关更多详细信息，请参阅[资源类](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management)。  
 
-对于历史数据中的大批量更新，请先删除相关数据。 然后可以批量插入新数据。 这种双步骤方法更高效。
+建议使用 PolyBase 和 ADF V2 在 SQL 数据仓库中自动执行 ELT 管道。
+
+对于历史数据中的大量更新，请考虑使用 [CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) 将要保留的数据写入表中，而不是使用 INSERT、UPDATE 和 DELETE。
 
 ## <a name="maintain-statistics"></a>维护统计信息
  在自动统计信息功能推出正式版之前，SQL 数据仓库要求手动维护统计信息。 对数据做*重大*更改时务必更新统计信息。 这有助于优化查询计划。 如果发现维护所有统计信息所需时间太长，请更谨慎地选择包含统计信息的列。 
@@ -157,8 +159,8 @@ SQL 数据仓库的一个重要功能是可以[管理计算资源](sql-data-ware
 <!--Other Web references-->
 [typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[数据迁移]:https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
+[数据迁移]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
-[Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
+[Azure Data Lake Storage]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
 [sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

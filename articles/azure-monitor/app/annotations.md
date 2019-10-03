@@ -10,99 +10,103 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 07/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 652591fc4539e6f19c0606c1502609a823327f2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: e3ec202ba6126b150fb78c76591682f163018661
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811012"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604548"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 
-[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)图表上的批注显示将新版本部署到了何处，或者显示其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure DevOps Services 生成系统](https://docs.microsoft.com/azure/devops/pipelines/tasks/)可自动创建批注。 也可以通过 PowerShell 创建批注，用于标记所要处理的任何事件。
+上的批注[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)的图表显示在其中部署新的生成或其他重要事件。 批注可让轻松查看所做的更改是否有任何对您的应用程序性能的影响。 它们可以自动创建由[Azure 管道](https://docs.microsoft.com/azure/devops/pipelines/tasks/)生成系统。 也可以通过 PowerShell 创建批注，用于标记所要处理的任何事件。
 
 > [!NOTE]
-> 本文反映了已弃用的**经典指标体验**。 批注目前仅在经典体验和**[工作簿](../../azure-monitor/app/usage-workbooks.md)** 中可用。 若要详细了解当前指标体验，可查阅[此文](../../azure-monitor/platform/metrics-charts.md)。
+> 本文反映了已弃用的**经典指标体验**。 批注目前仅在经典体验和 **[工作簿](../../azure-monitor/app/usage-workbooks.md)** 中可用。 若要了解有关当前指标体验的详细信息，请参阅[Azure 指标资源管理器的高级功能](../../azure-monitor/platform/metrics-charts.md)。
 
-![显示与服务器响应时间的关联的批注示例](./media/annotations/00.png)
+![批注的示例](./media/annotations/0-example.png)
 
-## <a name="release-annotations-with-azure-devops-services-build"></a>使用 Azure DevOps Services 生成系统创建版本批注
+## <a name="release-annotations-with-azure-pipelines-build"></a>版本与 Azure 管道生成的注释
 
-版本批注是 Azure DevOps Services 的基于云的 Azure Pipelines 服务功能。 
+版本批注是一项功能的基于云的 Azure 管道服务的 Azure DevOps。
 
 ### <a name="install-the-annotations-extension-one-time"></a>安装批注扩展（一次性操作）
-若要创建版本批注，必须安装 Visual Studio Marketplace 中提供的多个 Azure DevOps Services 扩展中的一个。
+为了能够创建版本批注，您将需要安装 Visual Studio Marketplace 中提供的众多 Azure DevOps 扩展之一。
 
-1. 登录到 [Azure DevOps Services](https://visualstudio.microsoft.com/vso/) 项目。
-2. 在 Visual Studio Marketplace 中，[获取“版本批注”扩展](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)，并将其添加到 Azure DevOps Services 组织。
-
-![在 Azure DevOps Services 网页右上角打开“市场”。 选择“Azure DevOps Services”，并在“Azure Pipelines”下面选择“查看更多”。](./media/annotations/10.png)
-
-只需针对 Azure DevOps Services 组织执行此操作一次。 现在，可为组织中的任何项目配置版本批注。 
+1. 登录到您[Azure DevOps](https://azure.microsoft.com/services/devops/)项目。
+   
+1. 在 Visual Studio Marketplace[版本批注扩展](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)页上，选择你的 Azure DevOps 组织，并选择**安装**将扩展添加到你的 Azure DevOps 组织。
+   
+   ![选择 Azure DevOps 的组织，然后选择安装。](./media/annotations/1-install.png)
+   
+只需安装一次为你的 Azure DevOps 组织扩展。 现在可以在组织中配置任何项目的版本的注释。
 
 ### <a name="configure-release-annotations"></a>配置版本批注
 
-需要为每个 Azure DevOps Services 发布模板单独获取一个 API 密钥。
+为每个 Azure 管道版本模板创建单独的 API 密钥。
 
-1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)并打开负责监视应用程序的 Application Insights 资源。 （如果尚未创建此资源，可以[立即创建一个](../../azure-monitor/app/app-insights-overview.md)。）
-2. 打开“API 访问”，并复制“Application Insights ID”。
+1. 登录到[Azure 门户](https://portal.azure.com)并打开监视你的应用程序的 Application Insights 资源。 如果你没有帐户，或者[创建新的 Application Insights 资源](../../azure-monitor/app/app-insights-overview.md)。
    
-    ![在 portal.azure.com 中打开你的 Application Insights 资源，并选择“设置”。 打开“API 访问”。 复制应用程序 ID](./media/annotations/20.png)
+1. 打开“API 访问”  选项卡并复制 **Application Insights ID**。
+   
+   ![在 API 访问权限下将复制应用程序 id。](./media/annotations/2-app-id.png)
 
-4. 在另一个浏览器窗口中，打开（或创建）可从 Azure DevOps Services 管理部署的发布模板。 
+1. 在单独的浏览器窗口中，打开或创建管理 Azure 管道部署的发布模板。
    
-    添加一个任务，并从菜单中选择“Application Insights 版本批注”任务。
+1. 选择**添加任务**，然后选择**Application Insights 版本批注**菜单中的任务。
    
-    粘贴从“API 访问”边栏选项卡复制的**应用程序 ID**。
+   ![选择添加任务，然后选择 Application Insights 版本批注。](./media/annotations/3-add-task.png)
    
-    ![在 Azure DevOps Services 中打开“发布”，选择一个发布管道，并选择“编辑”。 单击“添加任务”，并选择“Application Insights 版本批注”。 粘贴 Application Insights ID。](./media/annotations/30.png)
-4. 将“APIKey”字段设置为变量 `$(ApiKey)`。
+1. 下**应用程序 ID**，粘贴从复制的应用程序见解 ID **API 访问**选项卡。
+   
+   ![粘贴 Application Insights ID](./media/annotations/4-paste-app-id.png)
+   
+1. 返回在 Application Insights **API 访问权限**窗口中，选择**创建 API 密钥**。 
+   
+   ![在 API 访问权限选项卡，选择创建 API 密钥。](./media/annotations/5-create-api-key.png)
+   
+1. 在中**创建 API 密钥**窗口中，键入说明，选择**编写注释**，然后选择**生成密钥**。 复制新密钥。
+   
+   ![在创建 API 密钥窗口中，键入描述，选择写入注释，然后选择生成密钥。](./media/annotations/6-create-api-key.png)
+   
+1. 在版本模板窗口中，在**变量**选项卡上，选择**添加**若要创建新的 API 密钥的变量定义。
 
-5. 返回“Azure”窗口，创建新的 API 密钥并复制它。
+1. 下**名称**，输入`ApiKey`，然后在**值**，粘贴从复制的 API 密钥**API 访问**选项卡。
    
-    ![在“Azure”窗口的“API 访问”边栏选项卡中，单击“创建 API 密钥”。 提供注释，选中“写入批注”，并单击“生成密钥”。 复制新密钥。](./media/annotations/40.png)
-
-6. 打开发布模板的“配置”选项卡。
+   ![Azure DevOps 变量选项卡中，选择添加名称变量 ApiKey，并粘贴 API 密钥值下。](./media/annotations/7-paste-api-key.png)
    
-    创建 `ApiKey` 的变量定义。
-   
-    将 API 密钥粘贴到 ApiKey 变量定义。
-   
-    ![在“Azure DevOps Services”窗口中选择“配置”选项卡，并单击“添加变量”。 设置 ApiKey 的名称并设置“值”，粘贴刚刚生成的密钥，并单击锁状图标。](./media/annotations/50.png)
-7. 最后，**保存**发布管道。
-
+1. 选择**保存**将模板保存在主发布模板窗口中。
 
 ## <a name="view-annotations"></a>查看批注
-现在，每当使用发布模板部署新版本时，就会将批注发送到 Application Insights。 批注会显示在指标资源管理器中的图表上。
+现在，每当使用发布模板部署新版本，批注是发送到 Application Insights。 在图中显示批注**指标资源管理器**。
 
-单击任一批注标记可打开有关该版本的详细信息，包括请求者、源控制分支、发布管道和环境等。
+选择任一批注标记 （浅灰色箭头） 可打开了解此版本，包括请求者、 源控制分支、 发布管道和环境的详细信息。
 
-![单击任一版本批注标记。](./media/annotations/60.png)
+![选择版本批注标记。](./media/annotations/8-release.png)
 
 ## <a name="create-custom-annotations-from-powershell"></a>通过 PowerShell 创建自定义批注
-也可以通过所偏好的任何过程（不使用 Azure DevOps Services）创建批注。 
+可以使用[CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)从 GitHub 创建批注的任何您喜欢，而无需使用 Azure DevOps 过程的 PowerShell 脚本。 
 
+1. 创建的本地副本[CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)。
+   
+1. 使用在前面的过程中的步骤以获取你的应用程序见解 ID 并创建从 Application Insights API 密钥**API 访问**选项卡。
+   
+1. 调用 PowerShell 脚本使用以下代码，尖括号中的占位符替换为你的值。 `-releaseProperties`都是可选的。 
+   
+   ```powershell
+   
+        .\CreateReleaseAnnotation.ps1 `
+         -applicationId "<applicationId>" `
+         -apiKey "<apiKey>" `
+         -releaseName "<releaseName>" `
+         -releaseProperties @{
+             "ReleaseDescription"="<a description>";
+             "TriggerBy"="<Your name>" }
+   ```
 
-1. 为 [GitHub 中的 Powershell 脚本](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)创建一个本地副本。
-
-2. 通过“API 访问”边栏选项卡获取应用程序 ID 并创建 API 密钥。
-
-3. 调用如下所示的脚本：
-
-```PS
-
-     .\CreateReleaseAnnotation.ps1 `
-      -applicationId "<applicationId>" `
-      -apiKey "<apiKey>" `
-      -releaseName "<myReleaseName>" `
-      -releaseProperties @{
-          "ReleaseDescription"="a description";
-          "TriggerBy"="My Name" }
-```
-
-可以轻松修改脚本，例如，为以往的内容创建批注。
+可以修改脚本，例如过去创建批注。
 
 ## <a name="next-steps"></a>后续步骤
 

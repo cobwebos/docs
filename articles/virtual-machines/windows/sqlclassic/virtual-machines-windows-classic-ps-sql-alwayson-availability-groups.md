@@ -9,23 +9,22 @@ editor: ''
 tags: azure-service-management
 ms.assetid: a4e2f175-fe56-4218-86c7-a43fb916cc64
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: a6d8326afa3bcf13234ab072a2cd2909a864738b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 89f731062ce46969c73f745d62b289b3b3483d8c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002846"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100359"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>使用 PowerShell 在 Azure VM 中配置 Always On 可用性组
 > [!div class="op_single_selector"]
-> * [经典：UI](../classic/portal-sql-alwayson-availability-groups.md)
-> * [经典：PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
+> * [传统型UI](../classic/portal-sql-alwayson-availability-groups.md)
+> * [传统型PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 在开始之前，考虑到现在可以在 Azure Resource Manager 模型中完成此任务。 我们建议使用 Azure Resource Manager 模型来进行新的部署。 请参阅 [Azure 虚拟机上的 SQL Server Always On 可用性组](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)。
@@ -239,7 +238,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    上面指定的 GUID 是计算机对象类型的 GUID。 **CORP\Install** 帐户需要“读取所有属性”和“创建计算对象”权限才能为故障转移群集创建 Active Direct 对象。 默认情况下，已经将“读取所有属性”权限授予 CORP\Install，因此无需显式授予该权限。 有关创建故障转移群集所需的权限的详细信息，请参阅[故障转移群集分步指南：在 Active Directory 中配置帐户](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)。
+    上面指定的 GUID 是计算机对象类型的 GUID。 **CORP\Install** 帐户需要“读取所有属性”和“创建计算对象”权限才能为故障转移群集创建 Active Direct 对象。 默认情况下，已经将“读取所有属性”权限授予 CORP\Install，因此无需显式授予该权限。 有关创建故障转移群集所需权限的详细信息，请参阅 [Failover Cluster Step-by-Step Guide:Configuring Accounts in Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)（故障转移群集分步指南：在 Active Directory 中配置帐户）。
 
     现在已完成了 Active Directory 和用户对象的配置，接下来，将创建两个 SQL Server VM 并将其加入到此域中。
 
@@ -380,15 +379,15 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
 ## <a name="initialize-the-failover-cluster-vms"></a>初始化故障转移群集 VM
 在本部分中，需要修改会在故障转移群集和 SQL Server 安装中使用的三个服务器。 具体而言：
 
-* 所有服务器：你需要安装**故障转移群集**功能。
-* 所有服务器：您需要添加**CORP\Install**作为计算机**管理员**。
-* ContosoSQL1 和 ContosoSQL2 仅：您需要添加**CORP\Install**作为**sysadmin**默认数据库中的角色。
-* ContosoSQL1 和 ContosoSQL2 仅：您需要添加**NT AUTHORITY\System**作为登录具有以下权限：
+* 所有服务器：需要安装**故障转移群集**功能。
+* 所有服务器：需要添加 **CORP\Install** 作为计算机**管理员**。
+* 仅限 ContosoSQL1 和 ContosoSQL2：需要将 **CORP\Install** 添加为默认数据库中的 **sysadmin** 角色。
+* 仅限 ContosoSQL1 和 ContosoSQL2：需要将 **NT AUTHORITY\System** 添加为具有以下权限的登录名：
 
   * 更改任何可用性组
   * 连接 SQL
   * 查看服务器状态
-* ContosoSQL1 和 ContosoSQL2 仅：**TCP**协议已启用 SQL Server VM 上。 但是，仍需打开防火墙以便远程访问 SQL Server。
+* 仅限 ContosoSQL1 和 ContosoSQL2：在 SQL Server VM 上已启用了 **TCP** 协议。 但是，仍需打开防火墙以便远程访问 SQL Server。
 
 现已准备就绪，可以执行启动操作。 从 **ContosoQuorum** 开始，执行以下步骤：
 

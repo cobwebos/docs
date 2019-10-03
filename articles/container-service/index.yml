@@ -1,64 +1,56 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 64d2ad6990b41c7c9ff28a667b4fd51729877670
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986925"
 documentType: LandingData
 title: 容器服务文档
 metadata:
-  document_id: 
+  document_id: null
   title: Azure 容器服务文档 - 教程和 API 参考 | Microsoft 文档
-  meta.description: Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.
+  meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
   services: container-service
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-service
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07-21-2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 使用 Azure 容器服务可以快速部署可供投产的 Kubernetes、DC/OS 或 Docker Swarm 群集。 使用这些快速入门、教程和示例，了解如何使用 Azure 容器服务。
 sections:
-- title: 
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+  - title: null
     items:
-    - title: Kubernetes 群集入门
-      href: /azure/container-service/kubernetes
-      image:
-        src: media/index/get-started.svg
-        href: /azure/container-service/kubernetes
-    - title: DC/OS 和 Docker Swarm 群集入门
-      href: /azure/container-service/dcos-swarm
-      image:
-        src: media/index/get-started.svg
-        href: /azure/container-service/dcos-swarm
-- title: 利用 Microsoft Learn 掌握技能
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Kubernetes 群集入门
+            href: /azure/container-service/kubernetes
+            image:
+              src: media/index/get-started.svg
+              href: /azure/container-service/kubernetes
+          - title: DC/OS 和 Docker Swarm 群集入门
+            href: /azure/container-service/dcos-swarm
+            image:
+              src: media/index/get-started.svg
+              href: /azure/container-service/dcos-swarm
+  - title: 利用 Microsoft Learn 掌握技能
     items:
-    - title: Azure 上的容器简介
-      href: /learn/modules/intro-to-containers/
-      image:
-        src: /learn/achievements/intro-to-containers.svg
-        href: /learn/modules/intro-to-containers/
-    - title: 将 Docker 容器与 Azure 容器实例一起运行
-      href: /learn/modules/run-docker-with-azure-container-instances/
-      image:
-        src: /learn/achievements/run-docker-with-azure-container-instances.svg
-        href: /learn/modules/run-docker-with-azure-container-instances/
-    - title: 使用 Azure 容器注册表生成并存储容器映像
-      href: /learn/modules/build-and-store-container-images/
-      image:
-        src: /learn/achievements/build-and-store-container-images.svg
-        href: /learn/modules/build-and-store-container-images/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-container-registry%2Cazure-container-instances">更多交互式学习...</a>
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure 上的容器简介
+            href: /learn/modules/intro-to-containers/
+            image:
+              src: /learn/achievements/intro-to-containers.svg
+              href: /learn/modules/intro-to-containers/
+          - title: 通过 Azure 容器实例运行 Docker 容器
+            href: /learn/modules/run-docker-with-azure-container-instances/
+            image:
+              src: /learn/achievements/run-docker-with-azure-container-instances.svg
+              href: /learn/modules/run-docker-with-azure-container-instances/
+          - title: 使用 Azure 容器注册表生成并存储容器映像
+            href: /learn/modules/build-and-store-container-images/
+            image:
+              src: /learn/achievements/build-and-store-container-images.svg
+              href: /learn/modules/build-and-store-container-images/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-container-registry%2Cazure-container-instances">更多交互式学习...</a>

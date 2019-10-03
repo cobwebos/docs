@@ -10,12 +10,13 @@ ms.subservice: custom-decision-service
 ms.topic: overview
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: f4a0f519fe83162e7e161c3fda2b78a94b1d4bd1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: 073b2bf6df21e05481cde043d8ddcfd49822e94f
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863119"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704243"
 ---
 # <a name="what-is-custom-decision-service"></a>什么是自定义 AI 决策服务？
 
@@ -32,7 +33,7 @@ ms.locfileid: "55863119"
 * 优化广告布局或广告指向的网页
 * 对购物网站上的推荐产品设置优先级。
 
-自定义 AI 决策服务目前提供免费公共预览版。 它可以对网站或应用上的大量文章进行个性化设置。 特征提取功能最适用于英语内容。 目前为其他语言提供[有限的功能](../text-analytics/overview.md)，例如西班牙语、法语、德语、葡萄牙语和日语。 本文档将在新功能可用时进行修订。
+自定义 AI 决策服务目前提供免费公共预览版  。 它可以对网站或应用上的大量文章进行个性化设置。 特征提取功能最适用于英语内容。 目前为其他语言提供[有限的功能](../text-analytics/overview.md)，例如西班牙语、法语、德语、葡萄牙语和日语。 本文档将在新功能可用时进行修订。
 
 自定义 AI 决策服务可用于内容个性化域以外的应用程序。 这些应用程序也许非常适合自定义预览。 若要了解详细信息，请[联系我们](https://azure.microsoft.com/overview/sales-number/)。
 
@@ -44,7 +45,7 @@ ms.locfileid: "55863119"
 
 本文档中频繁出现了几个术语：
 
-* **操作集**：自定义 AI 决策服务对其设置优先级的内容项集。 可将此集指定为 RSS 或 Atom 终结点。
+* **操作集**：自定义 AI 决策服务对其设置优先级的内容项集。 可将此集指定为 RSS 或 Atom 终结点   。
 * **设置优先级**：向自定义 AI 决策服务发送的每个请求都指定一个或多个操作集。 系统通过选取这些操作集中的所有内容选项做出响应，然后按优先级顺序将其返回。
 * **回调函数**：此函数由你指定，可呈现 UI 中的内容。 该内容按自定义 AI 决策服务返回的优先级顺序进行排列。
 * **回馈**：用户对呈现内容的反应情况的度量值。 自定义 AI 决策服务通过点击数来衡量用户的反应情况。 点击数是通过使用插入到应用程序中的自定义代码报告给系统的。

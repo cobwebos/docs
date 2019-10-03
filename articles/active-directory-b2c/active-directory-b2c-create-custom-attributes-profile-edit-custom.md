@@ -2,28 +2,28 @@
 title: 向 Azure Active Directory B2C 的自定义策略添加你自己的属性 | Microsoft Docs
 description: 有关使用扩展属性、自定义属性以及将其包含在用户界面中的演练。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 41c3db1c9a7295d939aa34a36f86c0dfa9fecd91
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 82a796a3252a4de6eacabcad45c61c864e963fe0
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797118"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066173"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C：在自定义配置文件编辑策略中使用自定义属性
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在本文中，可在 Azure Active Directory (Azure AD) B2C 目录中创建自定义属性。 将在配置文件编辑用户旅程中将此新属性用作自定义声明。
+本文介绍如何在 Azure Active Directory B2C （Azure AD B2C）目录中创建自定义属性。 将在配置文件编辑用户旅程中将此新属性用作自定义声明。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 请按照 [Azure Active Directory B2C：自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤进行操作。
 
@@ -43,7 +43,7 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 扩展属性只在租户中已注册的应用程序的上下文中存在。 该应用程序的对象 ID 必须包含在使用它的 TechnicalProfile 中。
 
 >[!NOTE]
->Azure AD B2C 目录通常包含名为 `b2c-extensions-app` 的 Web 应用。 此应用程序主要由通过 Azure 门户创建的自定义声明的 B2C 内置策略使用。 仅建议高级用户使用此应用程序来注册 B2C 自定义策略的扩展。  
+>Azure AD B2C 目录通常包含名为 `b2c-extensions-app` 的 Web 应用。 此应用程序主要由通过 Azure 门户创建的自定义声明的 B2C 内置策略使用。 仅建议高级用户使用此应用程序来注册 B2C 自定义策略的扩展。
 本文的“后续步骤”部分中提供了相关说明。
 
 ## <a name="create-a-new-application-to-store-the-extension-properties"></a>创建用于存储扩展属性的新应用程序
@@ -62,14 +62,14 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 9. 在应用程序权限中输入选中标记：“读取和写入目录数据”。 再选择“保存”。
 10. 选择“授予权限”，然后单击“是”确认。
 11. 将以下标识符复制到剪贴板并保存：
-    * **应用程序 ID**。 示例：`103ee0e6-f92d-4183-b576-8c3739027780`。
-    * **对象 ID**。 示例：`80d8296a-da0a-49ee-b6ab-fd232aa45201`。
+    * **应用程序 ID**。 例如：`103ee0e6-f92d-4183-b576-8c3739027780`。
+    * **对象 ID**。 例如：`80d8296a-da0a-49ee-b6ab-fd232aa45201`。
 
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>修改自定义策略以添加 ApplicationObjectId
 
 当按照 [Azure Active Directory B2C：自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤进行操作时，你已下载并修改了名为“TrustFrameworkBase.xml”、“TrustFrameworkExtensions.xml”、“SignUpOrSignin.xml”、“ProfileEdit.xml”和“PasswordReset.xml”的[示例文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)。 在此步骤中，请对这些文件进行更多修改。
 
-* 打开 **TrustFrameworkBase.xml** 文件，并添加 `Metadata` 节，如以下示例所示。 插入先前为 `ApplicationObjectId` 值记录的对象 ID 以及为 `ClientId` 值记录的应用程序 ID： 
+* 打开 **TrustFrameworkBase.xml** 文件，并添加 `Metadata` 节，如以下示例所示。 插入先前为 `ApplicationObjectId` 值记录的对象 ID 以及为 `ClientId` 值记录的应用程序 ID：
 
     ```xml
     <ClaimsProviders>
@@ -103,7 +103,7 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 
 1. 打开 **ProfileEdit.xml** 文件。
 2. 添加自定义声明 `loyaltyId`。 通过在 `<RelyingParty>` 元素中包含自定义声明，它将包含在应用程序的令牌中。
-    
+
     ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="ProfileEdit" />
@@ -268,10 +268,10 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 
 2. 在内置策略和自定义策略之间使用相同的扩展属性。 通过门户体验添加扩展属性或自定义属性时，使用每个 B2C 租户中都存在的 b2c-extensions-app 注册这些属性。 按照以下步骤在自定义策略中使用扩展属性：
 
-   a. 在 portal.azure.com 的 B2C 租户中，导航到 Azure Active Directory 并选择“应用注册”。  
-   b. 找到 b2c-extensions-app，然后选择它。  
-   c. 在“概要”下，输入“应用程序 ID”和“对象 ID”。  
-   d. 将这些信息包含在 AAD-Common TechnicalProfile 元数据中：  
+   a. 在 portal.azure.com 的 B2C 租户中，导航到 Azure Active Directory 并选择“应用注册”。
+   b. 找到 b2c-extensions-app，然后选择它。
+   c. 在“概要”下，输入“应用程序 ID”和“对象 ID”。
+   d. 将这些信息包含在 AAD-Common TechnicalProfile 元数据中：
 
    ```xml
       <ClaimsProviders>
@@ -299,6 +299,6 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 有关扩展属性的详细信息，请参阅文章[目录架构扩展| 图形 API 概念](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)。
 
 > [!NOTE]
-> * TechnicalProfile 是一种元素类型或函数，用于定义终结点的名称、元数据和协议。 TechnicalProfile 详细说明了“标识体验框架”执行的声明交换。 在业务流程步骤中或者通过另一 TechnicalProfile 调用此函数时，调用方以参数形式提供 InputClaims 和 OutputClaims。  
-> * 图形 API 中的扩展属性使用约定 `extension_ApplicationObjectID_attributename` 来命名。  
+> * TechnicalProfile 是一种元素类型或函数，用于定义终结点的名称、元数据和协议。 TechnicalProfile 详细说明了“标识体验框架”执行的声明交换。 在业务流程步骤中或者通过另一 TechnicalProfile 调用此函数时，调用方以参数形式提供 InputClaims 和 OutputClaims。
+> * 图形 API 中的扩展属性使用约定 `extension_ApplicationObjectID_attributename` 来命名。
 > * 自定义策略将扩展属性称为 extension_attributename。 此引用在 XML 中省略了 ApplicationObjectId。

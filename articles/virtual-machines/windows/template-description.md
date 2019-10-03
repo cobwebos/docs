@@ -4,23 +4,22 @@ description: 详细了解如何在 Azure 资源管理器模板中定义虚拟机
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: d234e7f8a6005722a33a797f2b8ae6a1e1f4b98b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 23519edb61df23c97dfd2162d6cabea6b7fa5d38
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327759"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101775"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure 资源管理器模板中的虚拟机
 
@@ -28,7 +27,7 @@ ms.locfileid: "56327759"
 
 [在库中](https://azure.microsoft.com/documentation/templates/?term=VM)有许多包含 VM 资源的模板。 本文并未介绍可在模板中包含的所有元素。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 本示例演示了模板中用于创建指定数量的 VM 的典型资源节：
 
@@ -375,7 +374,7 @@ ms.locfileid: "56327759"
 ],
 ```
 
-## <a name="extensions"></a>扩展
+## <a name="extensions"></a>Extensions
 
 尽管[扩展](extensions-features.md)是独立的资源，但它们与 VM 密切相关。 可将扩展添加为 VM 的子资源，或添加为独立的资源。 本示例显示要将[诊断扩展](extensions-diagnostics-template.md)添加到 VM：
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 22d5d24eca73962d165fd0de56c2e70da641b15d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571796"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173181"
 ---
 > [!div class="op_single_selector"]
 > * [NET](../articles/service-bus-relay/relay-hybrid-connections-dotnet-get-started.md)

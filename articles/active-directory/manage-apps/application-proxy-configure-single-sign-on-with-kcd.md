@@ -3,25 +3,25 @@ title: 使用应用程序代理进行单一登录 | Microsoft 文档
 description: 介绍如何使用 Azure AD 应用程序代理提供单一登录。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
-ms.author: celested
+ms.date: 08/13/2019
+ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2461240b398a2b23bb2b2aedc524277d6b9771
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ab378fe1e06de49df0fe6481a1aa475d426648dc
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652512"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032567"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序
 
@@ -30,20 +30,20 @@ ms.locfileid: "58652512"
 可以在 Active Directory 中提供应用程序代理连接器权限来模拟用户，以使用集成 Windows 身份验证 (IWA) 实现应用程序的单一登录。 连接器使用此权限来代表用户发送和接收令牌。
 
 ## <a name="how-single-sign-on-with-kcd-works"></a>使用 KCD 的单一登录的工作原理
-当用户尝试访问使用 IWA 的在内部部署应用程序时，此图解释了流。
+此图说明了当用户尝试访问使用 IWA 的本地应用程序时的流程。
 
 ![Microsoft AAD 身份验证流程示意图](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
-1. 用户输入用于通过应用程序代理访问本地应用程序的 URL。
+1. 用户输入 URL 以通过应用程序代理访问本地应用程序。
 2. 应用程序代理将请求重定向到 Azure AD 身份验证服务，以进行预身份验证。 此时，Azure AD 将应用所有适用的身份验证和授权策略，例如多重身份验证。 如果用户通过验证，Azure AD 将创建令牌并将其发送给用户。
 3. 用户将令牌传递给应用程序代理。
-4. 应用程序代理验证令牌，从中检索用户主体名称 (UPN)，然后连接器将拉取 UPN 和服务通过双重身份验证安全通道主体名称 (SPN)。
-5. 连接器执行与本地 AD，模拟用户获取 Kerberos 令牌对应用程序的 Kerberos 约束委派 (KCD) 协商。
+4. 应用程序代理会验证令牌并从中检索用户主体名称 (UPN), 然后连接器通过双重的已验证安全通道提取 UPN 和服务主体名称 (SPN)。
+5. 连接器对本地 AD 执行 Kerberos 约束委派 (KCD) 协商, 模拟用户以获取应用程序的 Kerberos 令牌。
 6. Active Directory 将应用程序的 Kerberos 令牌发送到连接器。
 7. 连接器使用从 AD 收到的 Kerberos 令牌，将原始请求发送到应用程序服务器。
 8. 应用程序将响应发送到连接器，该响应随后返回到应用程序代理服务，最后返回到用户。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 开始为 IWA 应用程序使用 SSO 之前，请确保已在环境中完成以下设置和配置：
 
 * 应用（例如 SharePoint Web 应用）已设置为使用 Windows 集成身份验证。 有关详细信息，请参阅 [Enable Support for Kerberos Authentication](https://technet.microsoft.com/library/dd759186.aspx)（启用对 Kerberos 身份验证的支持）；对于 SharePoint，请参阅 [Plan for Kerberos authentication in SharePoint 2013](https://technet.microsoft.com/library/ee806870.aspx)（在 SharePoint 2013 中规划 Kerberos 身份验证）。
@@ -59,7 +59,8 @@ ms.locfileid: "58652512"
 2. 选择运行连接器的服务器。
 3. 单击右键，并选择“属性” > “委托”。
 4. 选择“仅信任此计算机来委派指定的服务”。 
-5. 在“可以由此帐户提供委托凭据的服务”下面，添加应用程序服务器的 SPN 标识值。 这样，应用程序代理连接器便可以针对列表中定义的应用程序在 AD 中模拟用户。
+5. 选择 "**使用任何身份验证协议**"。
+6. 在“可以由此帐户提供委托凭据的服务”下面，添加应用程序服务器的 SPN 标识值。 这样，应用程序代理连接器便可以针对列表中定义的应用程序在 AD 中模拟用户。
 
    ![“连接器 SVR 属性”窗口屏幕截图](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 
@@ -111,7 +112,7 @@ Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证
 非 Windows 应用通常使用用户名或 SAM 帐户名而非域电子邮件地址。 如果你的应用程序是这种情况，则需要配置委托的登录标识字段来将云标识连接到应用程序标识。 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>使用不同的本地标识和云标识
-应用程序代理假设用户在云中与本地具有完全相同的标识。 如果没有，仍然可以使用 KCD 进行单一登录。 可以为每个应用程序配置委托的登录标识来指定在执行单一登录时要使用的标识。  
+应用程序代理假设用户在云中与本地具有完全相同的标识。 但在某些环境中, 由于公司策略或应用程序依赖关系, 组织可能必须使用备用 Id 登录。 在这种情况下, 你仍可以使用 KCD 进行单一登录。 可以为每个应用程序配置委托的登录标识来指定在执行单一登录时要使用的标识。  
 
 此功能可让许多具有不同本地标识与云标识的组织从云单一登录到本地应用程序，而不需要用户输入不同的用户名与密码。 这包括如下所述的组织：
 

@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB。 此全球分布式多模型数据库是�
 author: rimman
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 09/01/2019
 ms.author: rimman
-ms.openlocfilehash: a965db4334e88d032f767bd7b855dea6f3ff174f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f7396a747852e98b15c8c85e9b0d9a46326e6b25
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280938"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240701"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
@@ -24,6 +24,11 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 > [!div class="nextstepaction"]
 > [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
 
+还可以使用 [Cosmos DB 启动程序](https://azurecosmosdb.github.io/CosmosBootstrap/)在 Azure Cosmos DB 上加速构建或迁移应用程序。 当你注册此程序时，将为你分配 Azure Cosmos DB 工程师以协助你的项目，他们可以帮助你将数据迁移到 Azure Cosmos DB 或在 Azure Cosmos DB 上构建新应用程序。
+
+> [!div class="nextstepaction"]
+> [注册 Cosmos DB 启动程序](https://azurecosmosdb.github.io/CosmosBootstrap/)
+
 ![Azure Cosmos DB 是 Microsoft 的全球分布式数据库服务，可以弹性扩展，已保证低延迟，有五个一致性模型，并提供全面 SLA 的保证](./media/introduction/azure-cosmos-db.png)
 
 ## <a name="key-benefits"></a>主要优势
@@ -32,7 +37,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 凭借 Cosmos DB，你可以在全球范围内生成具有高响应性和高可用性的应用程序。 无论用户身处何处，Cosmos DB 均可以透明方式复制数据，因此用户可以与离他们最近的数据副本进行交互。
 
-凭借 Cosmos DB，还可以随时向 Cosmos 帐户添加或删除任何 Azure 区域，只需单击一个按钮即可。 Cosmos DB 将无缝地将数据复制到与 Cosmos 帐户相关联的所有区域，同时，得益于该服务的多导功能，应用程序将继续保持高可用性。 有关详细信息，请参阅[全局分发](distribute-data-globally.md)一文。
+凭借 Cosmos DB，还可以随时向 Cosmos 帐户添加或删除任何 Azure 区域，只需单击一个按钮即可。 Cosmos DB 将无缝地将数据复制到与 Cosmos 帐户相关联的所有区域，同时，得益于该服务的多导功能，应用程序将继续保持高可用性  。 有关详细信息，请参阅[全局分发](distribute-data-globally.md)一文。
 
 ### <a name="always-on"></a>AlwaysOn
 
@@ -44,11 +49,11 @@ Cosmos DB 采用透明的水平分区和多主数据库复制设计，在全球�
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>保证第 99 个百分位为低延迟（全球范围内）
 
-使用 Cosmos DB，可以生成响应迅速、具全球规模的应用程序。 凭借其新颖的多主数据库复制协议和免闩锁且[优化了写入的数据库引擎](index-policy.md)，Cosmos DB 可保证全球任意位置第 99 个百分位的读取和（已编入索引）写入延迟均低于 10 毫秒。 此功能可以为高响应能力的应用持续引入数据，并提供快速查询。
+使用 Cosmos DB，可以生成响应迅速、具全球规模的应用程序。 凭借其新颖的多主数据库复制协议、免闩锁及[优化了写入的数据库引擎，](index-policy.md)，Cosmos DB 可保证全球任意位置第 99 个百分位的读取（已编入索引）和写入延迟均低于 10 毫秒。 此功能可以为高响应能力的应用持续引入数据，并提供快速查询。
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>精确定义的多个一致性选择
 
-在 Cosmos DB 中构建全球分布式应用程序时，不再需要[在一致性、可用性、延迟和吞吐量之间进行极端的权衡](consistency-levels-tradeoffs.md)。 Cosmos DB 的多主数据库复制协议经过精心设计，为直观的编程模型提供[五个明确定义的一致性选择](consistency-levels.md) -  强、有限过期、会话、一致前缀和最终，该编程模型针对全球分布式应用程序具有低延迟和高可用性。
+在 Cosmos DB 中构建全球分布式应用程序时，不再需要[在一致性、可用性、延迟和吞吐量之间进行极端的权衡](consistency-levels-tradeoffs.md)。 Cosmos DB 的多主数据库复制协议经过精心设计，为直观的编程模型提供[五个明确定义的一致性选择](consistency-levels.md) -  强、有限过期、会话、一致前缀和最终，该编程模型针对全球分布式应用程序具有低延迟和高可用性      。
 
 ### <a name="no-schema-or-index-management"></a>无需架构或索引管理
 
@@ -74,11 +79,11 @@ Cosmos DB 已通过[各种符合性标准](compliance.md)认证。 此外，Cosm
 
 Cosmos DB 是第一个也是唯一一个提供[业界领先复合型 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) 的服务，实现了 99.999% 高可用性、第 99 个百分位的读写延迟、可靠吞吐量和一致性。
 
-### <a name="globally-distributed-operational-analytics-with-spark"></a>使用 Spark 的全球分布式运营分析
+### <a name="globally-distributed-operational-analytics-and-ai-with-natively-built-in-apache-spark"></a>具有本机内置 Apache Spark 的全球分布式运营分析和 AI
 
 可以在 Cosmos DB 中存储的数据上直接运行 [Spark](spark-connector.md)。 凭借该功能，你可以在全球范围内执行低延迟的操作分析，而不会影响直接针对 Cosmos DB 进行操作的事务工作负载。 有关详细信息，请参阅[全球分布式运营分析](lambda-architecture.md)。
 
-### <a name="develop-applications-on-cosmos-db-using-popular-nosql-apis"></a>使用常用的 NoSQL API 在 Cosmos DB 上开发应用程序
+### <a name="develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis"></a>使用常用的开放源代码软件 (OSS) API 在 Cosmos DB 上开发应用程序
 
 Cosmos DB 提供多种 API 来处理存储在 Cosmos 数据库中的数据。 默认情况下，[可以使用 SQL](how-to-sql-query.md)（核心 API）来查询 Cosmos 数据库。 Cosmos DB 还实现用于 [Cassandra](cassandra-introduction.md)、[MongoDB](mongodb-introduction.md)、[Gremlin](graph-introduction.md) 和 [Azure 表存储](table-introduction.md)的 API。 可以将常用 NoSQL（例如，MongoDB、Cassandra、Gremlin）的客户端驱动程序（和工具）直接指向 Cosmos 数据库。 Cosmos DB 支持常用 NoSQL API 的网络协议，因此可用其实现以下目标：
 

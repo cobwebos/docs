@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: fc02e830953f8612a077fb219c7fef4e86bc3827
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e542ad59f6fd64b52aef9438ed0f646e9e36fc4a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263821"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65209626"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 本文分步说明如何使用 Azure 导入/导出服务从 Azure Blob 存储安全地导出大量数据。 该服务要求你将空驱动器寄送到 Azure 数据中心。 该服务将数据从存储帐户导出到驱动器，然后将驱动器寄回。
@@ -37,18 +37,18 @@ ms.locfileid: "59263821"
 
 在 Azure 门户中执行以下步骤来创建导出作业。
 
-1. 登录到 https://portal.azure.com/。
-2. 转到“所有服务”>“存储”>“导入/导出作业”。 
+1. 登录到 https://portal.azure.com/ 。
+2. 转到“所有服务”>“存储”>“导入/导出作业”  。 
 
     ![转到导入/导出作业](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
 
-3. 单击“创建导入/导出作业”。
+3. 单击“创建导入/导出作业”  。
 
     ![单击导入/导出作业](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
 
-4. 在“基本信息”中：
+4. 在“基本信息”  中：
     
-    - 选择“从 Azure 导出”。 
+    - 选择“从 Azure 导出”  。 
     - 为导出作业输入一个描述性名称。 使用所选名称来跟踪作业进度。 
         - 此名称只能包含小写字母、数字、连字符和下划线。
         - 此名称必须以字母开头，并且不得包含空格。 
@@ -57,18 +57,18 @@ ms.locfileid: "59263821"
 
         ![基础](./media/storage-import-export-data-from-blobs/export-from-blob3.png) 
     
-3. 在“作业详细信息”中：
+3. 在“作业详细信息”中  ：
 
     - 选择要导出的数据所在的存储帐户。 使用附近位置的存储帐户。
     - 放置位置会根据选定存储帐户所属的区域自动进行填充。 
     - 指定要从存储帐户导出到空驱动器的 blob 数据。 
-    - 选择“全部导出”以导出存储帐户中的所有 blob 数据。
+    - 选择“全部导出”以导出存储帐户中的所有 blob 数据  。
     
          ![全部导出](./media/storage-import-export-data-from-blobs/export-from-blob4.png) 
 
     - 可以指定要导出的容器和 blob。
-        - **若要指定要导出的 blob**：使用“等于”选择器。 指定 blob 的相对路径，以容器名称开头。 使用 *$root* 指定根容器。
-        - **若要指定以前缀开头的所有 blob**：使用“开头为”选择器。 指定以正斜杠“/”开头的前缀。 该前缀可以是容器名称的前缀、完整容器名称或者后跟 Blob 名称前缀的完整容器名称。 必须以有效格式提供 blob 路径，以免在处理过程中出现错误，如以下屏幕截图所示。 有关详细信息，请参阅[有效 blob 路径示例](#examples-of-valid-blob-paths)。 
+        - **若要指定要导出的 blob**：使用“等于”选择器  。 指定 blob 的相对路径，以容器名称开头。 使用 *$root* 指定根容器。
+        - **若要指定以前缀开头的所有 blob**：使用“开头为”选择器  。 指定以正斜杠“/”开头的前缀。 该前缀可以是容器名称的前缀、完整容器名称或者后跟 Blob 名称前缀的完整容器名称。 必须以有效格式提供 blob 路径，以免在处理过程中出现错误，如以下屏幕截图所示。 有关详细信息，请参阅[有效 blob 路径示例](#examples-of-valid-blob-paths)。 
    
            ![导出所选容器和 blob](./media/storage-import-export-data-from-blobs/export-from-blob5.png) 
 
@@ -80,16 +80,16 @@ ms.locfileid: "59263821"
    > 如果在复制数据时，要导出的 blob 正在使用中，则 Azure 导入/导出服务将生成该 blob 的快照并复制快照。
  
 
-4. 在“回寄信息”中：
+4. 在“回寄信息”中  ：
 
     - 从下拉列表中选择承运商。 如果你想要使用非 FedEx/DHL 快递商，请从下拉列表中选择一个现有的选项。 联系 Azure 数据框操作团队的`adbops@microsoft.com`与你打算使用与运营商相关的信息。
-    - 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 
+    - 输入你已在该承运商那里创建的有效承运商帐户编号。 Microsoft 使用此帐户寄回驱动器导出作业完成后。 
     - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
 
         > [!TIP] 
         > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
    
-5. 在“摘要”中：
+5. 在“摘要”中  ：
 
     - 查看作业详细信息。
     - 记下作业名称以及为将磁盘寄送到 Azure 而提供的 Azure 数据中心寄送地址。 
@@ -97,7 +97,7 @@ ms.locfileid: "59263821"
         > [!NOTE] 
         > 始终将磁盘发送到 Azure 门户中记录的数据中心。 如果磁盘寄送到错误的数据中心，则不会处理该作业。
 
-    - 单击“确定”以完成导出作业的创建。
+    - 单击“确定”以完成导出作业的创建  。
 
 ## <a name="step-2-ship-the-drives"></a>步骤 2：寄送驱动器
 
@@ -113,8 +113,8 @@ ms.locfileid: "59263821"
 ## <a name="step-4-receive-the-disks"></a>步骤 4：接收磁盘
 当仪表板报告作业已完成时，会将磁盘寄送给你，并且门户上会提供货件的跟踪号。
 
-1. 收到包含导出数据的驱动器后，你需要获取 BitLocker 密钥才能解锁驱动器。 转到 Azure 门户中的导出作业。 单击“导入/导出”选项卡。 
-2. 从列表中选择并单击导出作业。 转到“BitLocker 密钥”并复制密钥。
+1. 收到包含导出数据的驱动器后，你需要获取 BitLocker 密钥才能解锁驱动器。 转到 Azure 门户中的导出作业。 单击“导入/导出”选项卡  。 
+2. 从列表中选择并单击导出作业。 转到“BitLocker 密钥”并复制密钥  。
    
    ![查看导出作业的 BitLocker 密钥](./media/storage-import-export-service/export-job-bitlocker-keys.png)
 

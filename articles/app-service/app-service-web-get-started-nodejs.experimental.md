@@ -10,17 +10,16 @@ ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 237f498d1ebe2b402c86f1a4aed66a7ed443ccfa
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 7d81dae25b793144bfe044f8434a6df181dbcd1b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56653651"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067405"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
@@ -45,7 +44,7 @@ ms.locfileid: "56653651"
 ```azurecli-interactive
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 接下来请运行以下命令，将示例应用存储库克隆到快速入门目录。
@@ -149,7 +148,7 @@ Node.js 示例代码在 Azure 应用服务 Web 应用中运行。
 > [!NOTE]
 > 在 Azure 应用服务中，此应用在 IIS 中使用 [iisnode](https://github.com/Azure/iisnode) 运行。 为了让应用能够使用 iisnode 运行，根应用目录包含一个 web.config 文件。 此文件可以由 IIS 读取，与 iisnode 相关的设置记录在 [iisnode GitHub 存储库](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)中。
 
-祝贺你！ 现已将第一个 Node.js 应用部署到应用服务。
+祝贺你！  现已将第一个 Node.js 应用部署到应用服务。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 
@@ -174,7 +173,7 @@ zip -r myUpdatedAppFiles.zip *.*
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src myUpdatedAppFiles.zip
 ```
 
-切换回在“浏览到应用”步骤中打开的浏览器窗口，然后刷新页面。
+切换回在“浏览到应用”  步骤中打开的浏览器窗口，然后刷新页面。
 
 ![已更新的在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
@@ -182,7 +181,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 

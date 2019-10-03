@@ -1,6 +1,6 @@
 ---
 title: 添加、 删除和排序在 Azure 门户中的收藏夹 |Microsoft Docs
-description: 了解如何添加或从收藏夹列表中删除项和排序的项的顺序
+description: 了解如何在收藏夹列表中添加或删除项目并对项目排序
 services: azure-portal
 keywords: 收藏夹
 author: kfollis
@@ -11,49 +11,49 @@ ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.openlocfilehash: ff3549ce77a2b691dcaaa94b6a59e9c011ff6e21
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796097"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60690559"
 ---
 # <a name="add-remove-and-sort-favorites"></a>对收藏夹执行添加、删除和排序操作
 
-添加或删除项从您**收藏夹**列表，以便你可以快速转到最常使用的服务。 我们已添加了一些常见服务添加到您**收藏夹**列表中，但你可能想要其进行自定义。 你是可以查看所做的唯一一个**收藏夹**。
+在**收藏夹**列表中添加或删除项目，以便快速转到最常使用的服务。 我们已经向**收藏夹**列表添加了一些常用服务，但你可能需要自定义它。 只有你才能看到对**收藏夹**所做的更改。
 
-## <a name="add-or-remove-a-favorite"></a>添加或删除收藏夹
+## <a name="add-or-remove-a-favorite"></a>添加或删除收藏
 
-下列出的项**收藏夹**从选定**的所有服务**。 星形图标![黄色星形图标](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-star.png)每项服务旁边指示相应项是否显示在列表上。 选择要添加或删除的一项服务的星型图标**收藏夹**列表。
+列在**收藏夹**中的项目是从“所有服务”中选择的。  每项服务旁边的星形图标 ![黄色星形图标](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-star.png) 表示该项是否显示在列表中。 选择用于在**收藏夹**列表中添加或删除服务的星形图标。
 
-### <a name="add-cost-management--billing-to-favorites"></a>添加到收藏夹的成本的管理 + 账单
+### <a name="add-cost-management--billing-to-favorites"></a>向收藏夹添加“成本管理 + 计费”
 
-1. 选择**所有服务**从侧栏的上半部分。
+1. 从侧栏的顶部选择“所有服务”。 
 
-    ![显示所选的所有服务的屏幕截图](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-all-services.png)
+    ![屏幕截图，显示已选中“所有服务”](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-all-services.png)
 
-1. 在搜索字段中输入"成本"一词。 唯一的服务的具有"cost"标题中或具有"费用"关键字将所示。
+1. 在搜索字段中输入“成本”一词。 只会显示名称中有“成本”字样或使用“成本”作为关键字的服务。
 
-   ![所有服务中的屏幕截图显示搜索](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-search.png)
+   ![屏幕截图，显示在“所有服务”中进行的搜索](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-search.png)
 
 1. 选择星形图标。
 
-   ![显示星型旁边成本管理 + 计费所选的屏幕截图](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-add.png)
+   ![屏幕截图，显示选中了“成本管理 + 计费”旁边的星号](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-add.png)
 
-1. **成本管理 + 计费**现已添加的最后一项为您**收藏夹**列表。
+1. “成本管理 + 计费”现在已作为最后一个项添加到**收藏夹**列表。 
 
-## <a name="sort-favorites"></a>排序收藏夹
+## <a name="sort-favorites"></a>将收藏夹排序
 
-可以更改你最喜爱的服务所列出的顺序。 只需拖放到下的另一个位置删除菜单项**收藏夹**。
+可以更改收藏夹服务的排列顺序。 直接将菜单项拖放到**收藏夹**中的另一位置。
 
-### <a name="move-cost-management--billing-to-the-top-of-favorites"></a>移动到顶部的收藏夹成本管理 + 计费
+### <a name="move-cost-management--billing-to-the-top-of-favorites"></a>将“成本管理 + 计费”移到收藏夹顶部
 
-1. 选择并按住**成本管理 + 计费**上的条目**收藏夹**列表。
+1. 在**收藏夹**列表中选择“成本管理 + 计费”并将其按住。 
 
-   ![屏幕截图显示成本管理 + 计费选择](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-sort.png)
+   ![屏幕截图，显示选中了“成本管理 + 计费”](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-sort.png)
 
-1. 在继续保存，将项拖到顶部**收藏夹**然后松开。
+1. 在继续按住的同时，将项拖至**收藏夹**顶部，然后释放。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要创建面向项目的工作区，请参阅[在 Azure 门户中的创建和共享仪表板](../azure-portal/azure-portal-dashboards.md)
+* 若要创建专注于项目的工作区，请参阅[如何在 Azure 门户中创建和共享仪表板](../azure-portal/azure-portal-dashboards.md)
 * 了解更多如何-的[Azure 门户的操作方法视频系列](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR)

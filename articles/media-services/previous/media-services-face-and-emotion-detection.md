@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: milanga;juliako;
-ms.openlocfilehash: 46e60583da79006c133c8d9fac63e27f28bd699f
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.author: juliako
+ms.reviewer: milanga
+ms.openlocfilehash: 3ae2e49b812e7a9515cef81b328ceb87e1a7f017
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188180"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69015463"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒体分析检测面部和情绪
 ## <a name="overview"></a>概述
@@ -77,7 +78,7 @@ ms.locfileid: "58188180"
 #### <a name="attribute-descriptions"></a>属性说明
 | 属性名称 | 描述 |
 | --- | --- |
-| Mode |快速 - 处理速度快，但准确度较低（默认）。|
+| 模式 |快速 - 处理速度快，但准确度较低（默认）。|
 
 ### <a name="json-output"></a>JSON 输出
 下面是 JSON 输出被截断的示例。
@@ -152,7 +153,7 @@ ms.locfileid: "58188180"
 #### <a name="attribute-descriptions"></a>属性说明
 | 属性名称 | 描述 |
 | --- | --- |
-| Mode |Faces：仅人脸检测。<br/>PerFaceEmotion：独立返回每个人脸检测的情绪。<br/>AggregateEmotion：返回帧中所有面部的平均情绪值。 |
+| 模式 |Faces：仅人脸检测。<br/>PerFaceEmotion：独立返回每个人脸检测的情绪。<br/>AggregateEmotion：返回帧中所有面部的平均情绪值。 |
 | AggregateEmotionWindowMs |在已选择 AggregateEmotion 模式时使用。 指定用于生成每个聚合结果的视频的长度，以毫秒为单位。 |
 | AggregateEmotionIntervalMs |在已选择 AggregateEmotion 模式时使用。 指定生成聚合结果的频率。 |
 
@@ -162,7 +163,7 @@ ms.locfileid: "58188180"
 || 默认值 | 最大值 | 最小值 |
 |--- | --- | --- | --- |
 | AggregateEmotionWindowMs |0.5 |2 |0.25|
-| AggregateEmotionIntervalMs |0.5 |第 |0.25|
+| AggregateEmotionIntervalMs |0.5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON 输出
 聚合情绪的 JSON 输出（已截断）：

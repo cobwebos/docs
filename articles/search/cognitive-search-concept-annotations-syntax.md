@@ -2,21 +2,19 @@
 title: 认知搜索管道中的引用输入和输出 - Azure 搜索
 description: 说明了注释语法，以及如何在 Azure 搜索的认知搜索管道中引用技能集的输入和输出中的注释。
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: bfb8f5ca9b4d204b7a5efdc1b54a0fdd150e5ed6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 40559744f0650c64afb1dc63c38f56efaa0219d7
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749607"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265537"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>如何在认知搜索技能集中引用注释
 
@@ -36,13 +34,13 @@ ms.locfileid: "56749607"
 <a name="example-1"></a>
 ## <a name="example-1-simple-annotation-reference"></a>示例 1：简单注释引用
 
-在 Azure Blob 存储中，假设你有各种文件，其中包含你想要使用命名实体识别提取的人名的引用。 在下面的技能定义中，`"/document/content"` 是整个文档的文本表示，“people”是对标识为 persons 的实体的全名提取。
+在 Azure Blob 存储中，假设你有各种文件，其中包含你想要使用实体识别提取的人名的引用。 在下面的技能定义中，`"/document/content"` 是整个文档的文本表示，“people”是对标识为 persons 的实体的全名提取。
 
 因为默认上下文是 `"/document"`，所以现在可以将人员列表引用为 `"/document/people"`。 在此特定示例中 `"/document/people"` 是一个注释，它现在可以映射到索引中的一个字段，或者用在同一技能集的另一个技能中。
 
 ```json
   {
-    "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+    "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
     "categories": [ "Person"],
     "defaultLanguageCode": "en",
     "inputs": [
@@ -123,7 +121,7 @@ ms.locfileid: "56749607"
 
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 + [如何将自定义技能集成到扩充管道](cognitive-search-custom-skill-interface.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [创建技能集 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

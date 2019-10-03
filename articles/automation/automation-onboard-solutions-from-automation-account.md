@@ -3,56 +3,39 @@ title: 了解如何在 Azure 自动化中载入更新管理、更改跟踪和清
 description: 了解如何载入包含属于 Azure 自动化的一部分的更新管理、更改跟踪和清单解决方案的 Azure 虚拟机
 services: automation
 ms.service: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 41f0607908cde94ca08a4c4dfce0a47032eefbb3
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 3c27c268ed2a1c369c9b42bd1cd5a2365547c52f
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578435"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667460"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
 Azure 自动化提供了解决方案来管理操作系统安全性更新、跟踪更改以及列出计算机上所安装项的清单。 载入计算机的方式有多种，可以[通过虚拟机](automation-onboard-solutions-from-vm.md)、[通过浏览多个计算机](automation-onboard-solutions-from-browse.md)、通过自动化帐户或通过 [runbook](automation-onboard-solutions.md) 载入解决方案。 本文介绍了如何从自动化帐户载入这些解决方案。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录  Azure
 
-登录 Azure (https://portal.azure.com)
+登录 Azure (https://portal.azure.com )
 
 ## <a name="enable-solutions"></a>启用解决方案
 
 导航到你的自动化帐户，在“配置管理”下选择“清单”或“更改跟踪”。
 
-选择 Log Analytics 工作区和自动化帐户，然后单击**启用**以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
+选择 Log Analytics 的工作区和自动化帐户, 然后单击 "**启用**" 以启用该解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
 ![载入清单解决方案](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-在启用解决方案时，只有特定区域支持链接的 Log Analytics 工作区和自动化帐户。
-
-下表显示了受支持的映射：
-
-|**Log Analytics 工作区区域**|**Azure 自动化区域**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|西欧|西欧|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP 和 EastUS 映射到自动化帐户的 Log Analytics 工作区不精确的区域到另一个区域映射，但是正确的映射。
-
-<sup>2</sup>由于容量限制范围区域不可用时创建新的资源。 这包括自动化帐户和 Log Analytics 工作区。 但是，在区域中预先存在链接的资源应继续工作。
+> [!NOTE]
+> 在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
+>
+> 有关支持的映射对的列表, 请参阅[自动化帐户和 Log Analytics 工作区的区域映射](how-to/region-mappings.md)。
 
 更改跟踪和清单解决方案提供针对虚拟机的[跟踪更改](automation-vm-change-tracking.md)和[清单](automation-vm-inventory.md)功能。 在此步骤中，在虚拟机上启用解决方案。
 
@@ -60,7 +43,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 使用更新管理解决方案可以管理 Azure Windows VM 的更新和修补程序。 可评估可用更新的状态、计划所需更新的安装以及查看部署结果，验证更新是否已成功应用到 VM。 此操作已为你的 VM 启用了此解决方案。
 
-在“更新管理”下选择“更新管理”。 所选的 Log Analytics 工作区是在前面步骤中使用的相同工作区。 单击“启用”以载入更新管理解决方案。 启用此解决方案最长需要 15 分钟的时间。
+在“更新管理”下选择“更新管理”。 选择的 Log Analytics 工作区是上一步中使用的同一工作区。 单击“启用”以载入更新管理解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
 ![载入更新解决方案](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
@@ -82,7 +65,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 导航到你的自动化帐户并在“常规”下选择“保存的搜索”。 可以在下表中看到这些解决方案使用的两个已保存搜索：
 
-|名称     |类别  |别名  |
+|姓名     |类别  |别名  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新        | Updates__MicrosoftDefaultComputerGroup         |
@@ -95,7 +78,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 从你的自动化帐户中，在“配置管理”下选择“清单”或“更改跟踪”，或者在“更新管理”下选择“更新管理”。
 
-单击“+ 添加 Azure VM”，从列表中选择一个或多个 VM。 无法启用的虚拟机为灰显，无法选择。 Azure Vm 可以位于任何区域，无论你的自动化帐户的位置。 在“启用更新管理”页上，单击“启用”。 此操作会将选定 VM 添加到计算机组“为此解决方案保存的搜索结果”。
+单击“+ 添加 Azure VM”，从列表中选择一个或多个 VM。 无法启用的虚拟机为灰显，无法选择。 无论自动化帐户的位置如何, Azure Vm 都可以存在于任何区域中。 在“启用更新管理”页上，单击“启用”。 此操作会将选定 VM 添加到计算机组“为此解决方案保存的搜索结果”。
 
 ![启用 Azure VM](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
@@ -121,7 +104,9 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 若要为所有可用的计算机和将来的计算机启用解决方案，请选择“在所有可用的和将来的计算机上启用”。 此选项会从工作区中删除已保存的搜索和作用域配置。 此操作将为向工作区进行报告的所有 Azure 和非 Azure 计算机打开解决方案。 选中此项后，此操作将永久禁用“管理计算机”按钮，因为没有剩余的范围配置。
 
-### <a name="selected-machines"></a>所选计算机
+可以通过将初始保存的搜索添加回来添加作用域配置。 有关详细信息, 请参阅[保存的搜索](#saved-searches)。
+
+### <a name="selected-machines"></a>选定的计算机
 
 若要为一台或多台计算机启用解决方案，请选择“在所选计算机上启用”并单击要添加到解决方案的每台计算机旁边的“添加”。 此任务会将所选计算机名称添加到计算机组为此解决方案保存的搜索查询。
 
@@ -133,7 +118,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 * [更改跟踪](automation-change-tracking.md)
 * [在非工作时间启动/停止 VM](automation-solution-vm-management.md)
 
-如果你决定不再想要将你的自动化帐户与 Log Analytics 工作区相集成，您可以取消链接你直接从 Azure 门户的帐户。  在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
+如果你决定不再想要将自动化帐户与 Log Analytics 工作区集成, 则可以直接从 Azure 门户取消链接你的帐户。  在继续之前，首先需要删除前面所述的解决方案，否则此过程将无法继续。 查看已导入的特定解决方案的主题，了解删除该解决方案所需的步骤。
 
 删除这些解决方案后，可以完成以下步骤取消链接自动化帐户。
 
@@ -161,6 +146,8 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 * 启动和停止 VM Runbook 计划
 * 启动和停止 VM Runbook
 * 变量
+
+此外, 还可以从 "Log Analytics" 工作区中取消工作区与自动化帐户的链接。 在工作区中, 选择 "**相关资源**" 下的 "**自动化帐户**"。 在 "自动化帐户" 页上, 选择 "**取消链接帐户**"。
 
 ## <a name="next-steps"></a>后续步骤
 

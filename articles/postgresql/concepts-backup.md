@@ -1,23 +1,23 @@
 ---
-title: 在 Azure Database for PostgreSQL 中进行备份和还原
-description: 了解如何自动备份和还原 Azure Database for PostgreSQL 服务器。
+title: 在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
+description: 了解如何自动备份和还原 Azure Database for PostgreSQL 服务器 - 单一服务器。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: b4086497375bb651f4c88411e3237b27740dfd07
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.date: 08/21/2019
+ms.openlocfilehash: bf2e289ad12f459c37a93ad3936c30339ecf663d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236747"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907543"
 ---
-# <a name="backup-and-restore-in-azure-database-for-postgresql"></a>在 Azure Database for PostgreSQL 中进行备份和还原
+# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
 
 Azure Database for PostgreSQL 可自动创建服务器备份并将其存储在用户配置的本地冗余或异地冗余存储中。 备份可以用来将服务器还原到某个时间点。 备份和还原是任何业务连续性策略的基本组成部分，因为它们可以保护数据免遭意外损坏或删除。
 
-## <a name="backups"></a>备份
+## <a name="backups"></a>备用
 
 Azure Database for PostgreSQL 可以进行完整备份、差异备份和事务日志备份。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以选择将其配置为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
 
@@ -62,7 +62,7 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 
 ### <a name="geo-restore"></a>异地还原
 
-如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 当服务器因其所在的区域发生事故而不可用时，异地还原是默认的恢复选项。 如果区域中出现的大规模事件导致数据库应用程序不可用，可以根据异地冗余备份将服务器还原到任何其他区域中的服务器。 提取备份后，会延迟一段时间才会将其复制到其他区域中。 此延迟可能长达一小时，因此发生灾难时，会有长达 1 小时的数据丢失风险。
+如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 如果区域中出现的大规模事件导致数据库应用程序不可用，可以根据异地冗余备份将服务器还原到任何其他区域中的服务器。 提取备份后，会延迟一段时间才会将其复制到其他区域中。 此延迟可能长达一小时，因此发生灾难时，会有长达 1 小时的数据丢失风险。
 
 在异地还原过程中，可以更改的服务器配置包括计算的代、vCore、备份保持期和备份冗余选项。 不支持更改定价层（“基本”、“常规用途”或“内存优化”）或存储大小。
 
@@ -77,6 +77,6 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 
 ## <a name="next-steps"></a>后续步骤
 
+- 了解如何使用 [Azure 门户](howto-restore-server-portal.md)进行还原。
+- 了解如何使用 [Azure CLI](howto-restore-server-cli.md)进行还原。
 - 若要详细了解业务连续性，请参阅 [业务连续性概述](concepts-business-continuity.md)。
-- 若要使用 Azure 门户还原到某个时间点，请参阅 [使用 Azure 门户将数据库还原到某个时间点](howto-restore-server-portal.md)。
-- 若要使用 Azure CLI 还原到某个时间点，请参阅 [使用 CLI 将数据库还原到某个时间点](howto-restore-server-cli.md)。

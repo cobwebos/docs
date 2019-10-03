@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: dd73fd8105de2a5fd24ffa8ad5db85da5e52228c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0f3995e8904396dbb0bcbeeea1f993913d68587e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918835"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013122"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 
-Microsoft Azure 服务总线是一种完全托管的企业[集成](https://azure.com/integration)消息中转站。 服务总线最常用于将应用程序与服务彼此解耦，是一种用于异步数据和状态传输的可靠且安全的平台。 数据通过消息在不同的应用程序和服务之间传输。 消息采用二进制格式，可能包含 JSON、XML 或纯文本。 
+Microsoft Azure 服务总线是一种完全托管的企业[集成](https://azure.com/integration)消息中转站。 服务总线最常用于将应用程序与服务彼此解耦，是一种用于异步数据和状态传输的可靠且安全的平台。 数据通过消息在不同的应用程序和服务之间传输。  消息采用二进制格式，可能包含 JSON、XML 或纯文本。 
 
 一些常见的消息传送方案包括：
 
@@ -35,15 +35,15 @@ Microsoft Azure 服务总线是一种完全托管的企业[集成](https://azure
 
 ## <a name="queues"></a>队列
 
-消息可以发送到队列，也可以从其接收。 在能够使用接收应用程序接收并处理消息之前，可以通过队列来存储消息。
+消息可以发送到队列，也可以从其接收。  在能够使用接收应用程序接收并处理消息之前，可以通过队列来存储消息。
 
 ![队列](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-队列中的消息会排队，并在到达时加盖时间戳。 获得接受后，消息会安全地存储在冗余存储中。 消息以拉取模式传送，即按请求传送消息。
+队列中的消息会排队，并在到达时加盖时间戳。 获得接受后，消息会安全地存储在冗余存储中。 消息以拉取模式传送，即按请求传送消息。 
 
 ## <a name="topics"></a>主题
 
-也可通过主题发送和接收消息。 队列通常用于点到点通信，而主题则用于发布/订阅方案。
+也可通过主题发送和接收消息。  队列通常用于点到点通信，而主题则用于发布/订阅方案。
 
 ![主题](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
@@ -97,7 +97,7 @@ Microsoft Azure 服务总线是一种完全托管的企业[集成](https://azure
 
 ### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>适用于 Azure 资源的 SAS、RBAC 和托管标识
 
-服务总线支持多种安全协议，例如[共享访问签名](service-bus-sas.md) (SAS)、[基于角色的访问控制](service-bus-role-based-access-control.md) (RBAC)、[适用于 Azure 资源的托管标识](service-bus-managed-service-identity.md)。
+服务总线支持多种安全协议，例如[共享访问签名](service-bus-sas.md) (SAS)、[基于角色的访问控制](authenticate-application.md) (RBAC)、[适用于 Azure 资源的托管标识](service-bus-managed-service-identity.md)。
 
 ### <a name="geo-disaster-recovery"></a>异地灾难恢复
 
@@ -129,3 +129,4 @@ Microsoft Azure 服务总线是一种完全托管的企业[集成](https://azure
 * 详细了解 Azure 服务总线的[标准和高级](https://azure.microsoft.com/pricing/details/service-bus/)层及其定价
 * [Azure 服务总线高级层的性能和延迟](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)
 * 尝试 [.NET](service-bus-dotnet-get-started-with-queues.md)、[Java](service-bus-java-how-to-use-queues.md) 或 [JMS](service-bus-java-how-to-use-jms-api-amqp.md) 中的快速入门
+* [使用服务总线 Explorer 管理服务总线资源](https://github.com/paolosalvatori/ServiceBusExplorer/releases)

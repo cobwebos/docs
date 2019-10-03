@@ -3,19 +3,19 @@ title: 教程：生成用于翻译、合成与分析文本的 Flask 应用 - 文
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，你将生成一个基于 Flask 的 Web 应用，该应用使用 Azure 认知服务来翻译文本、分析情绪，并将翻译的文本合成为语音。 本教程重点介绍用于实现该应用程序的 Python 代码和 Flask 路由。 本教程不会将过多的时间花费在控制该应用的 Javascript 代码上，而是提供需要检查的所有文件。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 69e6797e91fc645e3bd3e3b300cea6852a662214
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: 8d85db0e9aa9da48713ca0c119a12160cc99dbff
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59007400"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671843"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教程：生成使用 Azure 认知服务的 Flask 应用
 
@@ -151,7 +151,7 @@ Requests 是用于发送 HTTP 1.1 请求的常用模块。 无需手动将查询
    export FLASK_APP=app.py
    ```
 
-   Windows：
+   Windows  ：
    ```
    set FLASK_APP=app.py
    ```
@@ -262,7 +262,8 @@ def about():
    # Don't forget to replace with your Cog Services subscription key!
    # If you prefer to use environment variables, see Extra Credit for more info.
    subscription_key = 'YOUR_TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
-
+   
+   # Don't forget to replace with your Cog Services location!
    # Our Flask route will supply two arguments: text_input and language_output.
    # When the translate text button is pressed in our Flask app, the Ajax request
    # will grab these values from our web app, and use them in the request.
@@ -275,6 +276,7 @@ def about():
 
        headers = {
            'Ocp-Apim-Subscription-Key': subscription_key,
+           'Ocp-Apim-Subscription-Region': 'location',
            'Content-type': 'application/json',
            'X-ClientTraceId': str(uuid.uuid4())
        }
@@ -667,7 +669,7 @@ flask run
 
 ### <a name="call-the-text-to-speech-api"></a>调用文本转语音 API
 
-让我们编写一个函数用于将文本转换为语音。 此函数采用两个参数：`input_text` 和 `voice_font`。 每当用户在该应用中按下“将文本转换为语音”按钮时，就会调用此函数。 `input_text` 是调用“翻译文本”后返回的翻译输出，`voice_font` 是语音字体选择器中的 HTML 值。
+让我们编写一个函数用于将文本转换为语音。 此函数采用两个参数：`input_text` 和 `voice_font`。 每当用户在该应用中按下“将文本转换为语音”按钮时，就会调用此函数。 `input_text`是调用“翻译文本”后返回的翻译输出，`voice_font` 是语音字体选择器中的 HTML 值。
 
 1. 在工作目录的根目录中创建名为 `synthesize.py` 的文件。
 

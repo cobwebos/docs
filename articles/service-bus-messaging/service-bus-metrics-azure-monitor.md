@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor 中的 Azure 服务总线指标（预览版）| Microsoft Docs
-description: 使用 Azure 监视来监视服务总线实体
+title: Azure Monitor 中的 Azure 服务总线指标 |Microsoft Docs
+description: 使用 Azure Monitor 来监视服务总线实体
 services: service-bus-messaging
 documentationcenter: .NET
 author: axisc
@@ -10,14 +10,14 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: aschhab
-ms.openlocfilehash: 175d5d5d4495986c29b75427a325088c14279e17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 6d25bdf6ff8e790466f3a28e3b6043e347d74198
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798500"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261864"
 ---
-# <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 服务总线指标（预览版）
+# <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 服务总线指标
 
 服务总线指标提供 Azure 订阅中的资源状态。 通过一组丰富的指标数据，可在命名空间和实体级别评估服务总线资源的总体运行状况。 这些统计信息非常重要，因为它们能够帮助监视服务总线的状态。 另外，指标也可帮助解决由根本原因造成的问题，而无需联系 Azure 支持。
 
@@ -28,9 +28,9 @@ Azure Monitor 提供了统一的用户界面，可用于监视各种 Azure 服�
 
 ## <a name="access-metrics"></a>访问指标
 
-Azure Monitor 提供多种访问指标的方法。 你可以通过访问指标[Azure 门户](https://portal.azure.com)，或使用 Azure Monitor Api （REST 和.NET） 与分析解决方案，例如 Azure Monitor 日志和事件中心。 有关详细信息，请参阅[Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)。
+Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .Net）与分析解决方案（例如 Azure Monitor 日志和事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 中的指标](../azure-monitor/platform/data-platform-metrics.md)。
 
-默认情况下，已启用指标，并且可访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 此值是在 Azure Monitor 中的[诊断设置](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)中配置的。
+默认情况下，已启用指标，并且可访问最近 30 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 此值是在 Azure Monitor 中的[诊断设置](../azure-monitor/platform/diagnostic-settings.md)中配置的。
 
 ## <a name="access-metrics-in-the-portal"></a>在门户中访问指标
 
@@ -38,15 +38,17 @@ Azure Monitor 提供多种访问指标的方法。 你可以通过访问指标[A
 
 ![][1]
 
-也可以直接通过命名空间来访问指标。 为此，请选择命名空间，然后单击“指标(预览版)”。 若要显示筛选到实体范围的指标，请选择实体，然后单击“指标（预览版）”。
+也可以直接通过命名空间来访问指标。 为此，请选择命名空间，然后单击“指标”。 若要显示筛选到实体范围的指标，请选择该实体，然后单击 "**指标**"。
 
 ![][2]
 
 对于支持维度的指标，必须使用所需的维度值进行筛选。
 
-## <a name="billing"></a>计费
+## <a name="billing"></a>账单
 
-在预览版中，可免费使用 Azure Monitor 中的指标。 但是，如果使用引入指标数据的其他解决方案，可能就需要收费。 例如，如果将指标数据存档到 Azure 存储帐户，则 Azure 存储会收费。 或者，如果将指标数据流式传输到 Azure Monitor 日志进行高级分析，则 Azure Monitor 日志会收费。
+针对 Azure Monitor 的指标和警报按警报收费。 当安装警报并保存警报之前，应在门户上提供这些费用。 
+
+引入指标数据的其他解决方案直接由这些解决方案进行计费。 例如，如果将指标数据存档到 Azure 存储帐户，则 Azure 存储会收费。 如果将指标数据流式传输到 Log Analytics 进行高级分析，则 Log Analytics 也会收费。
 
 以下指标可提供服务运行状况的概述。 
 
@@ -61,11 +63,11 @@ Azure Monitor 提供多种访问指标的方法。 你可以通过访问指标[A
 
 | 指标名称 | 描述 |
 | ------------------- | ----------------- |
-| 传入的请求数（预览版） | 在指定的期间内向服务总线服务发出的请求数。 <br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|成功的请求数（预览版）|在指定的期间内向服务总线服务发出的成功请求数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|服务器错误数（预览版）|由于服务总线服务发生错误，在指定期间内未处理的请求数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|用户错误（预览 - 请参阅小节）|由于存在用户错误，在指定期间内未处理的请求数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|限制的请求数（预览版）|由于使用量超标，而被限制的请求数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+| 传入的请求| 在指定的期间内向服务总线服务发出的请求数。 <br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|Successful Requests|在指定的期间内向服务总线服务发出的成功请求数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|服务器错误|由于服务总线服务发生错误，在指定期间内未处理的请求数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|用户错误（请参阅以下子节）|由于存在用户错误，在指定期间内未处理的请求数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|限制的请求数|由于使用量超标，而被限制的请求数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ### <a name="user-errors"></a>用户错误
 
@@ -79,18 +81,18 @@ Azure Monitor 提供多种访问指标的方法。 你可以通过访问指标[A
 
 | 指标名称 | 描述 |
 | ------------------- | ----------------- |
-|传入的消息数（预览版）|在指定的期间内发送到服务总线的事件或消息数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|传出的消息数（预览版）|在指定的期间内从服务总线收到的事件或消息数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-| 消息数（预览版） | 队列/主题中的消息计数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 维度：EntityName |
-| 活动消息数（预览版） | 队列/主题中的活动消息的计数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 维度：EntityName |
+|传入消息|在指定的期间内发送到服务总线的事件或消息数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|传出消息|在指定的期间内从服务总线收到的事件或消息数。<br/><br/> 单元：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
+| 消息| 队列/主题中的消息计数。 <br/><br/> 单位：Count <br/> 聚合类型：Average <br/> 维度：EntityName |
+| ActiveMessages| 队列/主题中的活动消息的计数。 <br/><br/> 单位：Count <br/> 聚合类型：Average <br/> 维度：EntityName |
+| 死信消息| 队列/主题中的死信消息计数。 <br/><br/> 单位：Count <br/> 聚合类型：Average <br/>维度：EntityName |
+| 已计划的邮件| 队列/主题中计划消息的计数。 <br/><br/> 单位：Count <br/> 聚合类型：Average  <br/> 维度：EntityName |
 
 ## <a name="connection-metrics"></a>连接指标
 
 | 指标名称 | 描述 |
 | ------------------- | ----------------- |
-|ActiveConnections（预览版）|命名空间以及实体上的活动连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|打开的连接数（预览版）|打开的连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|关闭的连接数（预览版）|关闭的连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName |
+|ActiveConnections|命名空间以及实体上的活动连接数。<br/><br/> 单位：Count <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="resource-usage-metrics"></a>资源使用情况指标
 
@@ -99,8 +101,8 @@ Azure Monitor 提供多种访问指标的方法。 你可以通过访问指标[A
 
 | 指标名称 | 描述 |
 | ------------------- | ----------------- |
-|每个命名空间的 CPU 使用率（预览版）|命名空间的 CPU 使用百分比。<br/><br/> 单元：百分比 <br/> 聚合类型：最大值 <br/> 维度：EntityName|
-|每个命名空间的内存使用量（预览版）|命名空间的内存使用百分比。<br/><br/> 单元：百分比 <br/> 聚合类型：最大值 <br/> 维度：EntityName|
+|每个命名空间的 CPU 使用率|命名空间的 CPU 使用百分比。<br/><br/> 单元：Percent <br/> 聚合类型：最大值 <br/> 维度：EntityName|
+|每个命名空间的内存使用量|命名空间的内存使用百分比。<br/><br/> 单元：Percent <br/> 聚合类型：最大值 <br/> 维度：EntityName|
 
 ## <a name="metrics-dimensions"></a>指标维度
 
@@ -115,7 +117,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
 1. 在“服务总线命名空间”页面的“指标”选项卡上，选择“配置警报”。 
 
     ![“指标”页面 - 配置警报菜单](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
-2. 选择“选择目标”，并在“选择资源”页面上执行以下操作： 
+2. 选择“选择目标”选项，并在“选择资源”页面上执行以下操作： 
     1. 对于“按资源类型筛选”字段，选择“服务总线命名空间”。 
     2. 对于“按订阅筛选”字段，选择你的订阅。
     3. 从列表中选择“服务总线命名空间”。 
@@ -124,7 +126,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
         ![选择命名空间](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. 选择“添加条件”，并在“配置信号逻辑”页面上执行以下操作：
     1. 对于“信号类型”，选择“指标”。 
-    2. 选择一个信号。 例如：“服务错误(预览版)”。 
+    2. 选择一个信号。 例如：**服务错误**。 
 
         ![选择“服务器错误”](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
     1. 对于“条件”，选择“大于”。
@@ -160,7 +162,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 [Azure 监视概述](../monitoring-and-diagnostics/monitoring-overview.md)。
+请参阅[Azure Monitor 概述](../monitoring-and-diagnostics/monitoring-overview.md)。
 
 [1]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor1.png
 [2]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor2.png

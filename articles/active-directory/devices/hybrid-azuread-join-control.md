@@ -1,136 +1,105 @@
 ---
-title: 控制设备的混合 Azure AD 联接 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 中控制设备的混合 Azure AD 联接。
+title: 对混合 Azure AD 联接的受控验证-Azure AD
+description: 在整个组织中同时启用混合 Azure AD 联接之前, 如何对其进行控制验证
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/31/2018
+ms.topic: conceptual
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93afc6f748ca9f464261c59e037a603ab6113bf8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518161"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851780"
 ---
-# <a name="control-the-hybrid-azure-ad-join-of-your-devices"></a>控制设备的混合 Azure AD 加入
+# <a name="controlled-validation-of-hybrid-azure-ad-join"></a>以受控方式验证混合 Azure AD 加入
 
-混合 Azure Active Directory (Azure AD) 联接是自动将已加入域的本地设备注册到 Azure AD 的过程。 在某些情况下，你并不希望自动注册所有设备。 例如，在初始部署期间验证一切是否都按预期运行时，这一点就非常必要。
+当所有先决条件都准备就绪后, Windows 设备将自动作为 Azure AD 租户中的设备进行注册。 Azure AD 中这些设备标识的状态称为 "混合 Azure AD 联接"。 有关本文中所述概念的详细信息, 请参阅[Azure Active Directory 中的设备管理简介](overview.md)和[计划混合 Azure Active Directory 加入实现](hybrid-azuread-join-plan.md)。
 
-本文指导如何控制设备的混合 Azure AD 联接。 
+在整个组织中同时启用混合 Azure AD 联接之前, 组织可能需要对其进行控制验证。 本文将介绍如何实现混合 Azure AD 联接的受控验证。
 
-
-## <a name="prerequisites"></a>必备组件
-
-本文假定你熟悉以下内容：
-
--  [Azure Active Directory 中的设备管理简介](../device-management-introduction.md)
- 
--  [计划混合 Azure Active Directory 加入实现](hybrid-azuread-join-plan.md)
-
--  [为托管域配置混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)[为联合域配置混合 Azure Active Directory 联接](hybrid-azuread-join-federated-domains.md)
-
-
-
-## <a name="control-windows-current-devices"></a>控制 Windows 当前设备
+## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-current-devices"></a>Windows 当前设备上的混合 Azure AD 联接的受控验证
 
 对于运行 Windows 桌面操作系统的设备，支持的版本是 Windows 10 周年更新（版本 1607）或更高版本。 最佳做法是升级到最新版本的 Windows 10。
 
-在设备启动或用户登录时，所有 Windows 当前设备将自动向 Azure AD 注册。 可以使用组策略对象 (GPO) 或 System Center Configuration Manager 控制此行为。
+若要在 Windows 当前设备上对混合 Azure AD 联接进行受控验证, 需执行以下操作:
 
-若要控制 Windows 当前设备，需要： 
-
-
-1.  **对于所有设备**：禁用自动设备注册。
-2.  **对于所选的设备**：启用自动设备注册。
-
-在确认一切均按预期工作后，可以对所有设备再次启用自动设备注册功能。
+1. 清除 Active Directory (AD) 中的服务连接点 (SCP) 项 (如果存在)
+1. 使用组策略对象 (GPO) 为已加入域的计算机上的 SCP 配置客户端注册表设置
+1. 如果使用的是 AD FS, 还必须在 AD FS 服务器上使用 GPO 配置 SCP 的客户端注册表设置  
 
 
 
-### <a name="group-policy-object"></a>组策略对象 
+### <a name="clear-the-scp-from-ad"></a>清除 AD 中的 SCP
 
-可以通过部署以下 GPO 来控制设备的设备注册行为：将已加入域的计算机注册为设备。
+使用 Active Directory 服务接口编辑器 (ADSI 编辑器) 来修改 AD 中的 SCP 对象。
 
-设置 GPO：
+1. 以企业管理员身份从和管理工作站或域控制器启动**ADSI 编辑器**桌面应用程序。
+1. 连接到域的**配置命名上下文**。
+1. 浏览到**CN = Configuration, dc = contoso, dc = com** > **CN = Services** > **CN = 设备注册配置**
+1. 右键单击 " **CN = 设备注册配置**" 下的叶对象, 然后选择 "**属性**"
+   1. 从 "**属性编辑器**" 窗口中选择**关键字**, 然后单击 "**编辑**"
+   1. 选择**azureADId**和**azureADName**的值 (一次一个) 并单击 "**删除**"
+1. 关闭**ADSI 编辑器**
 
-1.  打开“服务器管理器”，再依次转到“工具” > “组策略管理”。
 
-2.  转到与要禁用或启用自动注册的域所对应的域节点。
+### <a name="configure-client-side-registry-setting-for-scp"></a>为 SCP 配置客户端注册表设置
 
-3.  右键单击“组策略对象”并选择“新建”。
+使用以下示例创建一个组策略对象 (GPO) 来部署注册表设置, 在设备的注册表中配置 SCP 条目。
 
-4.  输入组策略对象的名称（例如，混合 Azure AD 联接）。 
+1. 打开组策略管理控制台并在你的域中创建新的组策略对象。
+   1. 为新创建的 GPO 提供一个名称 (例如, ClientSideSCP)。
+1. 编辑 GPO 并找到以下路径:**计算机配置** > **首**选项 > **Windows 设置**注册表 > 
+1. 右键单击注册表, 然后选择 "**新建** > **注册表项**"
+   1. 在 "**常规**" 选项卡上, 配置以下各项
+      1. 操作：**更新**
+      1. 义项**HKEY_LOCAL_MACHINE**
+      1. 密钥路径:**SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
+      1. 值名称:**TenantId**
+      1. 值类型:**REG_SZ**
+      1. 值数据:Azure AD 实例的 GUID 或**目录 id** (此值可在**Azure 门户** > **Azure Active Directory** > **属性** > **目录 ID**) 中找到
+   1. 单击 **“确定”**
+1. 右键单击注册表, 然后选择 "**新建** > **注册表项**"
+   1. 在 "**常规**" 选项卡上, 配置以下各项
+      1. 操作：**更新**
+      1. 义项**HKEY_LOCAL_MACHINE**
+      1. 密钥路径:**SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
+      1. 值名称:**TenantName**
+      1. 值类型:**REG_SZ**
+      1. 值数据:如果你使用的是联合环境 (如 AD FS), 则已验证的**域名**。 已验证的**域名**或你的 onmicrosoft.com 域名例如, `contoso.onmicrosoft.com`如果你使用的是托管环境
+   1. 单击 **“确定”**
+1. 关闭新创建的 GPO 的编辑器
+1. 将新创建的 GPO 链接到包含已加入域的计算机的所需 OU, 该 OU 属于你的受控推出群体
 
-5.  选择“确定” 。
+### <a name="configure-ad-fs-settings"></a>配置 AD FS 设置
 
-6.  右键单击新建的 GPO，并选择“编辑”。
+如果使用的是 AD FS, 则首先需要使用上述说明配置客户端 SCP, 但将 GPO 链接到 AD FS 服务器。 SCP 对象定义设备对象的授权来源。 它可以是本地的, 也可以是 Azure AD。 为 AD FS 配置此配置时, 设备对象的源将建立为 Azure AD。
 
-7.  转到“计算机配置” > “策略” > “管理模板” > “Windows 组件” > “设备注册”。 
+> [!NOTE]
+> 如果无法在 AD FS 服务器上配置客户端 SCP, 则设备标识的源将被视为在本地, AD FS 会在规定期限后开始从本地目录中删除设备对象。
 
-8.  右键单击“将已加入域的计算机注册为设备”，然后选择“编辑”。
+## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Windows 下层设备上的混合 Azure AD 联接的受控验证
 
-    > [!NOTE] 
-    > 已从早期版本的组策略管理控制台对该组策略模板进行了重命名。 如果使用早期版本的控制台，请转到**计算机配置** > **策略** > **管理模板** > **Windows 组件** > **设备注册** > **注册域已加入设备的计算机**。 
+若要注册 Windows 下层设备，组织必须安装 Microsoft 下载中心提供的[适用于 Windows 10 计算机的 Microsoft 工作区加入](https://www.microsoft.com/download/details.aspx?id=53554)。
 
-9.  选择以下某一项设置，然后选择“应用”：
-
-    - **已禁用**：防止自动注册设备。
-    - **已启用**：启用自动设备注册功能。
-
-10. 选择“确定” 。
-
-需要将 GPO 链接到所选位置。 例如，若要对组织中所有已加入域的当前设备设置此策略，请将 GPO 链接到域。 若要执行受控部署，请对组织单位或安全组中已加入域的 Windows 当前设备设置此策略。
-
-### <a name="configuration-manager-controlled-deployment"></a>Configuration Manager 控制的部署 
-
-可以通过配置以下客户端设置来控制当前设备的设备注册行为：自动向 Azure Active Directory 注册已加入域的新 Windows 10 设备。
-
-配置客户端设置：
-
-1.  打开**Configuration Manager**，选择**管理**，然后转到**客户端设置**。
-
-2.  打开的属性**默认客户端设置**，然后选择**云服务**。
-
-3.  在“设备设置”下，为“自动向 Azure Active Directory 注册已加入域的新 Windows 10 设备”选择下列某一设置：
-
-    - **否**：防止自动注册设备。
-    - **是**：启用自动设备注册功能。
-
-4.  选择“确定” 。
-
-需要将此客户端设置链接到所选位置。 例如，若要对组织中的所有 Window 当前设备配置此客户端设置，请将客户端设置链接到域。 若要执行受控部署，请对组织单位或安全组中已加入域的 Windows 当前设备配置此客户端设置。
-
-> [!Important]
-> 虽然上述配置负责处理现有的已加入域的 Windows 10 设备，但由于设备上组策略或 Configuration Manager 设置的应用可能会延迟，新加入域的设备可能仍会尝试完成混合 Azure AD 联接。 
->
-> 要避免此问题，我们建议你创建一个新的 Sysprep 映像（用作预配方法的示例）。 从以前从未进行混合 Azure AD 联接并且已应用组策略设置或 Configuration Manager 客户端设置的设备创建该映像。 此外，还必须使用新映像预配加入组织域的新计算机。 
-
-## <a name="control-windows-down-level-devices"></a>控制 Windows 下层设备
-
-若要注册 Windows 下层设备，需要在[适用于非 Windows 10 计算机的 Microsoft 工作区加入](https://www.microsoft.com/download/details.aspx?id=53554)网页中通过下载中心下载并安装 Windows Installer 包 (.msi)。
-
-可以使用 [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) 等软件分发系统部署该包。 此包支持使用标准无提示安装选项（包含 quiet 参数）。 Configuration Manager 的 Current Branch 提供优于早期版本的优势，例如可以跟踪已完成的注册。
+可以使用  [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) 等软件分发系统部署该包。 此包支持使用标准无提示安装选项（包含 quiet 参数）。 Configuration Manager 的 Current Branch 提供优于早期版本的优势，例如可以跟踪已完成的注册。
 
 安装程序会在系统上创建一项计划任务，该任务会在用户的上下文中运行。 当用户登录到 Windows 时触发该任务。 通过 Azure AD 进行身份验证后，该任务以无提示方式使用用户凭据将设备联接到 Azure AD。
 
-若要控制设备注册，应仅对所选的 Windows 下层设备组部署 Windows Installer 包。 如果已确认一切均按预期工作，便可以将包部署到所有下层设备。
+要控制设备注册, 应将 Windows Installer 包部署到所选的 Windows 下层设备组。
 
+> [!NOTE]
+> 如果在 AD 中未配置 SCP, 则应遵循与使用组策略对象 (GPO) 在已加入域的计算机上[配置 scp 的客户端注册表设置](#configure-client-side-registry-setting-for-scp)相同的方法。
+
+
+验证所有内容是否按预期运行后, 可以通过[使用 Azure AD Connect 配置 SCP](hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join), 使用 Azure AD 自动注册 Windows 当前和下层设备的其余部分。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Active Directory 中的设备管理简介](../device-management-introduction.md)
-
-
-
+[计划混合 Azure Active Directory 加入实现](hybrid-azuread-join-plan.md)

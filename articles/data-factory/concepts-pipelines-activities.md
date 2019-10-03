@@ -3,24 +3,23 @@ title: Azure 数据工厂中的管道和活动 | Microsoft Docs
 description: 了解有关 Azure 数据工厂中的管道和活动的信息。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.author: shlo
-ms.openlocfilehash: 845544a2062b43f0d9f883ddecbc2589b3357221
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cb776b28a8c06784a2aa41e42429a3f183254138
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997932"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984226"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-create-pipelines.md)
 > * [当前版本](concepts-pipelines-activities.md)
 
@@ -57,8 +56,10 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [机器学习活动：批处理执行和更新资源](transform-data-using-machine-learning.md) | Azure VM
 [存储过程](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL 数据仓库或 SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
-[自定义代码](transform-data-using-dotnet-custom-activity.md) | Azure 批处理
+[自定义代码](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks
+[Databricks Jar 活动](transform-data-databricks-jar.md) | Azure Databricks
+[Databricks Python 活动](transform-data-databricks-python.md) | Azure Databricks
 
 有关详细信息，请参阅[数据转换活动](transform-data.md)一文。
 
@@ -94,12 +95,12 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 }
 ```
 
-标记 | 描述 | Type | 需要
+标记 | 描述 | 类型 | 必填
 --- | ----------- | ---- | --------
-名称 | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
+name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
 description | 指定描述管道用途的文本。 | String | 否
-活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
-parameters | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
+activities | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | 阵列 | 是
+参数 | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | List | 否
 
 ## <a name="activity-json"></a>活动 JSON
 **activities** 节中可定义有一个或多个活动。 有两种主要类型的活动：执行和控制活动。
@@ -127,9 +128,9 @@ parameters | **参数**部分可在在管道内定义一个或多个参数，使
 
 下表描述了活动 JSON 定义中的属性：
 
-标记 | 描述 | 需要
+标记 | 描述 | 必填
 --- | ----------- | ---------
-名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
+name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-activities)部分。 | 是
 linkedServiceName | 活动使用的链接服务的名称。<br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 | 对 HDInsight 活动、Azure 机器学习批处理评分活动和存储过程活动是必需的。 <br/><br/>对其他活动均非必需
@@ -148,7 +149,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
     "properties": {
       "activities": [
         {
-          "name": "MyCopyBlobtoSqlActivity"
+          "name": "MyCopyBlobtoSqlActivity",
           "type": "Copy",
           "typeProperties": {
             ...
@@ -168,12 +169,12 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 }
 ```
 
-JSON 名称 | 描述 | 允许的值 | 需要
+JSON 名称 | 描述 | 允许值 | 必填
 --------- | ----------- | -------------- | --------
-timeout | 指定活动运行的超时。 | Timespan | 不是。 默认超时为 7 天。
-retry | 最大重试次数 | Integer | 不是。 默认值为 0
-retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 不是。 默认为 20 秒
-secureOutput | 当设置为 true 时，来自活动的输出被视为安全的，不会记录到监视中。 | Boolean | 不是。 默认值为 false。
+超时 | 指定活动运行的超时。 | 时间范围 | 否。 默认超时为 7 天。
+重试 | 最大重试次数 | 整数 | 否。 默认值为 0
+retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | 整数 | 否。 默认为 30 秒
+secureOutput | 当设置为 true 时，来自活动的输出被视为安全的，不会记录到监视中。 | Boolean | 否。 默认值为 false。
 
 ### <a name="control-activity"></a>控制活动
 控制活动具有以下顶级结构：
@@ -192,9 +193,9 @@ secureOutput | 当设置为 true 时，来自活动的输出被视为安全的�
 }
 ```
 
-标记 | 描述 | 需要
+标记 | 描述 | 必填
 --- | ----------- | --------
-名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul>
+name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-activities)部分。 | 是
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
@@ -212,7 +213,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 - 活动 B 对活动 A 具有依赖项条件“完成”：如果活动 A 的最终状态为“成功”或“失败”，则活动 B 运行
 - 活动 B 对活动 A 具有依赖项条件“跳过”：如果活动 A 的最终状态为“跳过”，则活动 B 运行。 在活动 X -> 活动 Y -> 活动 Z 的情况下出现跳过，其中每个活动仅在以前的活动成功后才运行。 如果活动 X 失败，则活动 Y 的状态为“跳过”，因为它从不执行。 类似，活动 Z 的状态也为“跳过”。
 
-#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>示例：活动 2 是否运行取决于活动 1 是否成功运行
+#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>例如：活动 2 是否运行取决于活动 1 是否成功运行
 
 ```json
 {
@@ -347,7 +348,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 - 配置单元脚本文件，**partitionweblogs.hql**，被存储在 Azure 存储帐户中（由 scriptLinkedService 指定，调用 AzureStorageLinkedService），并位于容器 `adfgetstarted` 中的脚本文件夹中。
 - `defines` 部分用于指定以配置单元配置值传递到配置单元脚本的运行时设置（例如，$`{hiveconf:inputtable}`，`${hiveconf:partitionedtable}`）。
 
-每个转换活动的 typeProperties 节都不同。 若要了解有关转换活动所支持的类型属性的详细信息，请单击[数据转换活动](#data-transformation-activities)中的转换活动。
+每个转换活动的 typeProperties节都不同。 若要了解有关转换活动所支持的类型属性的详细信息，请单击[数据转换活动](#data-transformation-activities)中的转换活动。
 
 有关创建此管道的完整演练，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-powershell.md)。
 

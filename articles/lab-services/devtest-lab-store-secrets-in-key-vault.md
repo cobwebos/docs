@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: d87c8a46459a9b4bf80bef895ec97e436d38e699
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
-ms.translationtype: HT
+ms.openlocfilehash: 17469d3602935715d570a496e12b6680269ff465
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186826"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60622882"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的 Key Vault 中存储机密
 使用 Azure 开发测试实验室时可能需要输入复杂的机密：Windows VM 的密码、Linux VM 的公共 SSH 密钥或个人访问令牌，以通过项目克隆 Git 存储库。 机密通常很长并且具有随机字符。 因此，输入它们可能会非常棘手且不方便，尤其是如果多次使用相同的机密。
@@ -29,7 +29,7 @@ ms.locfileid: "39186826"
 ## <a name="save-a-secret-in-azure-key-vault"></a>将机密保存在 Azure Key Vault 中
 若要在 Azure Key Vault 中保存机密，请执行以下步骤：
 
-1. 在左侧菜单中选择“我的机密”。
+1. 在左侧菜单中选择“我的机密”  。
 2. 输入机密的**名称**。 在创建 VM、公式或环境时，你会在下拉列表中看到此名称。 
 3. 输入机密作为**值**。
 
@@ -38,8 +38,8 @@ ms.locfileid: "39186826"
 ## <a name="use-a-secret-from-azure-key-vault"></a>使用 Azure Key Vault 中的机密
 当需要输入机密以创建 VM、公式或环境时，可以手动输入机密或从 Key Vault 中选择已保存的机密。 若要使用存储在 Key Vault 中的机密，请执行以下操作：
 
-1. 选择“使用已保存的机密”。 
-2. 从“选取机密”的下拉列表中选择机密。 
+1. 选择“使用已保存的机密”  。 
+2. 从“选取机密”  的下拉列表中选择机密。 
 
     ![在 VM 中使用机密](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
 

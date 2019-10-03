@@ -8,15 +8,15 @@ services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: a8028fdde93d06f7b25bf9bd8b4ed5a560a35f83
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: a1c4bf55fbb8242293fc0e30bbe16a6884b901cb
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575267"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178623"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>使用 Azure 数据工厂进行迭代开发和调试
 
@@ -51,6 +51,10 @@ Azure 数据工厂允许以迭代方式开发和调试数据工厂管道。
 ![选择查看活动调试运行图标](media/iterative-development-debugging/view-debug-runs-image1.png)
 
 ![活动调试运行的示例列表](media/iterative-development-debugging/view-debug-runs-image2.png)
+
+如果有活动的数据流调试会话，则这些会话将显示在活动调试窗口的底部。 您可以选择一个活动数据流会话并停止各自的群集。
+
+![活动数据流调试运行的示例列表](media/data-flow/dfsessions.png)
 
 ## <a name="monitoring-debug-runs"></a>监视调试运行
 

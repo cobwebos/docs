@@ -1,6 +1,6 @@
 ---
-title: 如何使用批量听录 - 语音服务
-titlesuffix: Azure Cognitive Services
+title: 如何使用批操作-语音服务
+titleSuffix: Azure Cognitive Services
 description: 如果要听录存储（如 Azure Blob）中的大量音频，则批量听录是理想的选择。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
 services: cognitive-services
 author: PanosPeriorellis
@@ -8,28 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: b389d86fe4d23e3f4ee1c66e4270a74351098129
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 101cfacf071292d00556656b0df9c6bf9c15f414
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579353"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515884"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
 如果要听录存储（如 Azure Blob）中的大量音频，则批量听录是理想的选择。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="subscription-key"></a>订阅密钥
 
 与语音服务的其他所有功能一样，需要按照[入门指南](get-started.md)通过 [Azure 门户](https://portal.azure.com)创建订阅密钥。 如果计划从基线模型获取听录，则需要创建一个密钥。
 
 >[!NOTE]
-> 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥 (F0) 不可用。 有关详细信息，请参阅[定价和限制](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/)。
+> 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥 (F0) 不可用。 有关详细信息，请参阅[定价和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 ### <a name="custom-models"></a>自定义模式
 
@@ -56,7 +55,7 @@ Batch 听录 API 支持以下格式：
 | MP3 | PCM | 16 位 | 8 或 16 kHz、单声道、立体声 |
 | OGG | OPUS | 16 位 | 8 或 16 kHz、单声道、立体声 |
 
-对于立体声音频流，Batch 听录 API 将在听录期间分离左右声道。 根据单个通道创建两个带有结果的 JSON 文件。 开发人员可利用每个话语的时间戳创建有序的最终脚本。 此示例请求包括用于不雅内容筛选、标点符号和字级时间戳的属性。 
+对于立体声音频流，Batch 听录 API 将在听录期间分离左右声道。 根据单个通道创建两个带有结果的 JSON 文件。 开发人员可利用每个话语的时间戳创建有序的最终脚本。 此示例请求包括用于不雅内容筛选、标点符号和字级时间戳的属性。
 
 ### <a name="configuration"></a>配置
 
@@ -65,14 +64,15 @@ Batch 听录 API 支持以下格式：
 ```json
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
-  "models": ["<optional acoustic model ID>, <optional language model ID>"],
-  "locale": "<local to us, for example en-US>",
-  "name": "<user define name of the transcription batch>",
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
     "ProfanityFilterMode": "Masked",
     "PunctuationMode": "DictatedAndAutomatic",
-    "AddWordLevelTimestamps" : "True"
+    "AddWordLevelTimestamps" : "True",
+    "AddSentiment" : "True"
   }
 }
 ```
@@ -82,27 +82,111 @@ Batch 听录 API 支持以下格式：
 
 ### <a name="configuration-properties"></a>配置属性
 
-| 参数 | 描述 | 必需/可选 |
-|-----------|-------------|---------------------|
-| `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `none`（禁用不雅内容筛选）、`masked`（将不雅内容替换为星号）、`removed`（从结果中删除所有不雅内容）或 `tags`（添加“不雅内容”标记）。 默认设置是 `masked`。 | 可选 |
-| `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `none`（禁用标点）、`dictated`（表示使用显式标点）、`automatic`（允许解码器处理标点）或 `dictatedandautomatic`（表示使用专用标点符号或自动使用标点）。 | 可选 |
- | `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 | 可选 |
+使用以下可选属性来配置脚本:
+
+| 参数 | 描述 |
+|-----------|-------------|
+| `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `None`（禁用不雅内容筛选）、`masked`（将不雅内容替换为星号）、`removed`（从结果中删除所有不雅内容）或 `tags`（添加“不雅内容”标记）。 默认设置是 `masked`。 |
+| `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `None`（禁用标点）、`dictated`（表示使用显式标点）、`automatic`（允许解码器处理标点）或 `dictatedandautomatic`（表示使用专用标点符号或自动使用标点）。 |
+ | `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 |
+ | `AddSentiment` | 指定应将情绪添加到查询文本中。 接受`true`的值允许每个查询文本的情绪`false`和 (默认值) 禁用。 |
+ | `AddDiarization` | 指定应对输入执行的 diarization 分析应为单声道通道, 该输入应为包含两个声音的 mono 通道。 接受`true`的值使 diarization 和`false` (默认值) 可以禁用它。 还需要`AddWordLevelTimestamps`将设置为 true。|
 
 ### <a name="storage"></a>存储
 
-批处理脚本支持[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)音频和编写转录到存储中读取。
+批处理脚本支持[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview), 用于读取音频并将转录写入存储。
 
-## <a name="webhooks"></a>Webhook 
+## <a name="webhooks"></a>Webhooks
 
-轮询听录状态不能性能最好，或提供最佳用户体验。 若要轮询状态，可以注册将在长时间运行的脚本任务已完成时通知客户端的回调。
+轮询脚本状态可能不是最高性能, 也可能是最佳的用户体验。 若要轮询状态, 可以注册回调, 这会在长时间运行的脚本任务完成时通知客户端。
 
-有关更多详细信息，请参阅[Webhook](webhooks.md)。
+有关更多详细信息, 请参阅[webhook](webhooks.md)。
 
-## <a name="sample-code"></a>代码示例
+## <a name="speaker-separation-diarization"></a>演讲者分离 (Diarization)
 
-完整示例可在 `samples/batch` 子目录的 [GitHub 示例存储库](https://aka.ms/csspeech/samples)中获得。
+Diarization 是将扬声器分离成一片音频的过程。 批处理管道支持 Diarization, 并且能够识别 mono 通道录制上的两个扬声器。
 
-如要使用自定义声学或语言模型，必须使用订阅信息、服务区域、指向要转录的音频文件的 SAS URI 和模型 ID 来自定义示例代码。 
+若要请求为 diarization 处理音频脚本请求, 只需在 HTTP 请求中添加相关参数, 如下所示。
+
+ ```json
+{
+  "recordingsUrl": "<URL to the Azure blob to transcribe>",
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
+  "description": "<optional description of the transcription>",
+  "properties": {
+    "AddWordLevelTimestamps" : "True",
+    "AddDiarization" : "True"
+  }
+}
+```
+
+由于上述请求中的参数指示, Word 级别时间戳还必须 "打开"。
+
+对应的音频将包含由号码标识的扬声器 (当前仅支持两个语音, 因此扬声器将标识为 "演讲者 1" 和 "音箱 2"), 后接脚本输出。
+
+另请注意, Diarization 不能用于立体声录音。 此外, 所有 JSON 输出都将包含发言人标记。 如果未使用 diarization, 则会显示 "演讲者:JSON 输出中的 Null "。
+
+> [!NOTE]
+> Diarization 在所有区域和所有区域设置中都可用!
+
+## <a name="sentiment"></a>情绪
+
+情绪是批处理脚本中的一项新功能, 是呼叫中心域中的一项重要功能。 客户可以使用其`AddSentiment`请求的参数
+
+1.  获取有关客户满意度的见解
+2.  深入了解代理的性能 (执行调用的团队)
+3.  找出调用负方向的确切时间点
+4.  确定在对正调用负
+5.  确定用户喜欢的内容及其对产品或服务不喜欢的内容
+
+情绪按每个音频段评分, 其中音频段定义为查询文本 (偏移) 开始与字节流结束的检测无声之间的时间间隔。 该段内的整个文本用于计算情绪。 我们不会为整个调用或每个通道的整个语音计算任何聚合情绪值。 这些聚合将留给域所有者进一步应用。
+
+情绪应用于词法窗体。
+
+JSON 输出示例如下所示:
+
+```json
+{
+  "AudioFileResults": [
+    {
+      "AudioFileName": "Channel.0.wav",
+      "AudioFileUrl": null,
+      "SegmentResults": [
+        {
+          "RecognitionStatus": "Success",
+          "ChannelNumber": null,
+          "Offset": 400000,
+          "Duration": 13300000,
+          "NBest": [
+            {
+              "Confidence": 0.976174,
+              "Lexical": "what's the weather like",
+              "ITN": "what's the weather like",
+              "MaskedITN": "what's the weather like",
+              "Display": "What's the weather like?",
+              "Words": null,
+              "Sentiment": {
+                "Negative": 0.206194,
+                "Neutral": 0.793785,
+                "Positive": 0.0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+此功能使用的是情绪模型, 该模型当前为 Beta 版本。
+
+## <a name="sample-code"></a>示例代码
+
+`samples/batch`子目录中的[GitHub 示例存储库](https://aka.ms/csspeech/samples)中提供了完整的示例。
+
+如要使用自定义声学或语言模型，必须使用订阅信息、服务区域、指向要转录的音频文件的 SAS URI 和模型 ID 来自定义示例代码。
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 

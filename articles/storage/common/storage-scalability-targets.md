@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/23/2019
+ms.date: 07/18/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: e3e0e9ae4a1939aad9ab2ae42a1b51b1b00e2462
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 046c2308d5cef2df7e12b6185fc24b8df4f821dc
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521710"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326947"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>存储帐户的 Azure 存储可伸缩性和性能目标
 
@@ -43,37 +43,23 @@ ms.locfileid: "59521710"
 
 有关 Azure 文件和 Azure 文件同步的缩放和性能目标的详细信息，请参阅 [Azure 文件可伸缩性和性能目标](../files/storage-files-scale-targets.md)。
 
+> [!IMPORTANT]
+> 存储帐户限制适用于所有共享。 仅当每个存储帐户只有一个共享时, 才可以实现最大存储帐户数。
+>
+> 超过 5 TiB 的标准文件共享处于预览阶段, 具有某些限制。
+> 若要获取限制列表并加入到这些更大文件共享大小的预览中, 请参阅 Azure 文件规划指南的[标准文件共享](../files/storage-files-planning.md#standard-file-shares)部分。
+
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 ### <a name="premium-files-scale-targets"></a>高级文件缩放目标
 
-有三个类别的要考虑的高级文件的限制： 存储帐户、 共享和文件。
+对于高级文件, 有三种类别的限制: 存储帐户、共享和文件。
 
-例如：单个共享可以实现 100,000 IOPS 和单个文件可以扩展最多 5,000 个 IOPS。 因此，例如，如果您有一个共享中的三个文件，就可以从该共享的最大 IOPs 是 15000。
+例如：单个共享可以实现 100000 IOPS, 一个文件最多可以扩展到 5000 IOPS。 例如, 如果一个共享中有三个文件, 则可以从该共享获取的最大 IOPs 为15000。
 
 #### <a name="premium-file-share-limits"></a>高级文件共享限制
 
-> [!IMPORTANT]
-> 存储帐户限制适用于所有共享。 最多缩放的存储帐户的最大值才可实现，如果只有一个共享每个存储帐户。
-
-|区域  |确定目标  |
-|---------|---------|
-|预配的最小大小                        |100 GiB      |
-|最大预配大小                        |100 TiB      |
-|最小大小增大/减少    |1 GiB      |
-|基线 IOPS    |每 GiB 多达 100,000 个 1 IOPS|
-|爆发的 IOPS    |3 个 x IOPS 每 GiB 多达 100,000 个|
-|出口率         |60 MiB/秒 + 0.06 * 预配 GiB        |
-|入口速率| 40 MiB/秒 + 0.04 * 预配 GiB |
-|最大快照数        |200       |
-
-#### <a name="premium-file-limits"></a>高级文件限制
-
-|区域  |确定目标  |
-|---------|---------|
-|大小                  |1 TiB         |
-|每个文件的最大 IOPS     |5,000         |
-|并发句柄    |2,000         |
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Azure 文件同步规模目标
 
@@ -89,7 +75,7 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [存储定价详细信息](https://azure.microsoft.com/pricing/details/storage/)
 - [Azure 订阅和服务限制、配额和约束](../../azure-subscription-service-limits.md)

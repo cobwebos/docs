@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 2a8a0bf1e63f06bbe6b6a073af6b3da8904dcaeb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182891"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61450206"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>将设备连接到远程监视解决方案加速器 (Windows)
 
@@ -37,15 +37,15 @@ ms.locfileid: "58182891"
 
 若要准备项目，请从 GitHub [克隆 Azure IoT C SDK 存储库](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment)。
 
-该示例位于 samples/solutions/remote_monitoring_client 文件夹中。
+该示例位于 samples/solutions/remote_monitoring_client  文件夹中。
 
-在文本编辑器中打开 samples/solutions/remote_monitoring_client 文件夹中的 remote_monitoring.c 文件。
+在文本编辑器中打开  samples/solutions/remote_monitoring_client 文件夹中的  remote_monitoring.c 文件。
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 
-1. 编辑 remote_monitoring.c 文件，使用本操作指南开头在将设备添加到解决方案加速器时记下的设备连接字符串替换 `<connectionstring>`。
+1. 编辑 remote_monitoring.c  文件，使用本操作指南开头在将设备添加到解决方案加速器时记下的设备连接字符串替换 `<connectionstring>`。
 
 1. 按照[在 Windows 中构建 C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#build-the-c-sdk-in-windows) 中的步骤构建 SDK 和远程监视客户端应用程序。
 

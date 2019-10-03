@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
 ms.openlocfilehash: 50e24ce29b5378b3aa930c54824fd444cd823b46
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279884"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60631792"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>发现和使用示例笔记本
 
@@ -26,7 +26,7 @@ Internet 上有很多有趣且有用的 Jupyter Notebook，可以轻松将这些
 
 确定想要浏览的笔记本之后，建议了解以下一些细节：
 
-- 如果笔记本已经在 Azure Notebooks 中，请使用其项目仪表板上的“克隆”按钮，在自己的帐户中复制该项目。
+- 如果笔记本已经在 Azure Notebooks 中，请使用其项目仪表板上的“克隆”按钮，在自己的帐户中复制该项目  。
 - 某些笔记本需要运行特定包。 尽管可使用 `!pip install` (Python) 或 `install.packages` (R) 从笔记本安装包，但也可[在适当环境配置 Azure Notebooks 项目](configure-manage-azure-notebooks-projects.md)。
 
 ## <a name="great-sample-notebooks"></a>很棒的示例笔记本

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: ffb5da8abd9673d4922aeb4854b3dfa80349f284
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 60cd043c34ba2aee365c59feb38cc9dd02d45746
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268324"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089041"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>教程：Azure Active Directory 与 TargetProcess 的集成
 
@@ -46,7 +46,7 @@ ms.locfileid: "59268324"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * TargetProcess 支持 **SP** 启动的 SSO
-* TargetProcess 支持实时预配
+* TargetProcess 支持实时预配 
 
 ## <a name="adding-targetprocess-from-the-gallery"></a>从库中添加 TargetProcess
 
@@ -54,19 +54,19 @@ ms.locfileid: "59268324"
 
 **若要从库中添加 TargetProcess，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“TargetProcess”，在结果面板中选择“TargetProcess”，然后单击“添加”按钮以添加该应用程序。
+4. 在搜索框中，键入“TargetProcess”，在结果面板中选择“TargetProcess”，然后单击“添加”按钮以添加该应用程序    。
 
      ![结果列表中的 TargetProcess](common/search-new-app.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "59268324"
 
 若要配置 TargetProcess 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 **TargetProcess** 应用程序集成页上，单击“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在 **TargetProcess** 应用程序集成页上，单击“单一登录”  。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,26 +98,26 @@ ms.locfileid: "59268324"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![TargetProcess 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.tpondemand.com/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.tpondemand.com/` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.tpondemand.com/`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.tpondemand.com/` 
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [TargetProcess 客户端支持团队](mailto:support@targetprocess.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [TargetProcess 客户端支持团队](mailto:support@targetprocess.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 TargetProcess”部分中，根据要求复制相应的 URL。
+6. 在“设置 TargetProcess”部分中，根据要求复制相应的 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -129,25 +129,25 @@ ms.locfileid: "59268324"
 
 ### <a name="configure-targetprocess-single-sign-on"></a>配置 TargetProcess 单一登录
 
-1. 必须通过单击“安装扩展”来安装“我的应用安全登录浏览器扩展”，才能在 **TargetProcess** 中自动执行配置。
+1. 必须通过单击“安装扩展”来安装“我的应用安全登录浏览器扩展”，才能在 **TargetProcess** 中自动执行配置。  
 
     ![image](./media/target-process-tutorial/install_extension.png)
 
-2. 将扩展添加到浏览器后，单击“安装 TargetProcess”会定向到 TargetProcess 应用程序。 随后，提供管理员凭据，以登录到 TargetProcess。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
+2. 将扩展添加到浏览器后，单击“安装 TargetProcess”  会定向到 TargetProcess 应用程序。 随后，提供管理员凭据，以登录到 TargetProcess。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
 
     **如果要手动配置应用程序，请执行以下步骤：**
 
 3. 以管理员身份登录 TargetProcess 应用程序。
 
-4. 在顶部菜单中，单击“设置”。
+4. 在顶部菜单中，单击“设置”  。
 
     ![设置](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-5. 单击“设置”选项卡。
+5. 单击“设置”  选项卡。
 
     ![设置](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-6. 单击“单一登录”选项卡。
+6. 单击“单一登录”  选项卡。
 
     ![单击“单一登录”](./media/target-process-tutorial/tutorial_target_process_07.png)
 
@@ -155,13 +155,13 @@ ms.locfileid: "59268324"
 
     ![配置单一登录](./media/target-process-tutorial/tutorial_target_process_08.png)
 
-    a. 单击“启用单一登录”。
+    a. 单击“启用单一登录”  。
 
-    b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+    b. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    c. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“证书”文本框中。
+    c. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“证书”文本框中  。
 
-    d. 单击“启用 JIT 预配”。
+    d. 单击“启用 JIT 预配”  。
 
     e. 单击“ **保存**”。
 
@@ -169,11 +169,11 @@ ms.locfileid: "59268324"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -181,40 +181,40 @@ ms.locfileid: "59268324"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 TargetProcess 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“TargetProcess”。
+1. 在 Azure 门户中，依次选择“企业应用程序”  、“所有应用程序”  和“TargetProcess”  。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“TargetProcess”。
+2. 在应用程序列表中，选择“TargetProcess”  。
 
     ![应用程序列表中的 TargetProcess 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-targetprocess-test-user"></a>创建 TargetProcess 测试用户
 

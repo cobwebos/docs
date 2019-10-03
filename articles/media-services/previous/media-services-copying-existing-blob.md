@@ -13,25 +13,27 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 36bfd1787e9f35ac4eaa8b8418df1e592386e8f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a1da207a295b40f8d455635d687083bf69e90fdf
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182024"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068896"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>将现有 Blob 复制到媒体服务资产中
+
+> [!NOTE]
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+
 本文介绍如何使用 [Azure 媒体服务 .NET SDK 扩展](https://github.com/Azure/azure-sdk-for-media-services-extensions/)将 Blob 从存储帐户复制到新的 Azure 媒体服务 (AMS) 资产中。
+
+在不使用媒体服务 API 的情况下，不应该尝试更改媒体服务生成的 BLOB 容器内容。
 
 扩展方法可以处理：
 
 - 常规资产。
 - 实时存档资产（FragBlob 格式）。
 - 属于不同媒体服务帐户的源和目标资产（甚至跨不同数据中心）。 但是，这样做可能会产生费用。 有关定价的详细信息，请参阅[数据传输](https://azure.microsoft.com/pricing/#header-11)。
-
-> [!NOTE]
-> 在不使用媒体服务 API 的情况下，不应该尝试更改媒体服务生成的 BLOB 容器内容。
-> 
 
 本文演示两个代码示例：
 
@@ -309,7 +311,7 @@ namespace CopyExistingBlobsIntoAsset
             // set the .ism file to be the primary file. 
             // If we, for example, copied an .mp4, then the mp4 would be the primary file. 
             var ismAssetFile = asset.AssetFiles.ToList().
-                Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).ToArray().FirstOrDefault();
+                Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
 
             // The following code assigns the first .ism file as the primary file in the asset.
             // An asset should have one .ism file.  

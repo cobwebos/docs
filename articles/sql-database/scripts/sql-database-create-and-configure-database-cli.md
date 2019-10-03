@@ -7,17 +7,16 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
-author: CarlRabeler
-manager: craigg
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-ms.date: 02/08/2019
-ms.openlocfilehash: 9ed1512053c06108178275b0523beede470325a5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/25/2019
+ms.openlocfilehash: f6051c5c83f43f20e453b5f87aabb1a80d7a0487
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361431"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569982"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>使用 CLI 创建单一 Azure SQL 数据库并配置防火墙规则
 
@@ -31,14 +30,14 @@ ms.locfileid: "59361431"
 
 ## <a name="sample-script"></a>示例脚本
 
-[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh?highlight=9-10 "Create SQL Database")]
+[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh "Create SQL Database")]
 
 ## <a name="clean-up-deployment"></a>清理部署
 
 使用以下命令删除资源组及其相关的所有资源。
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name $resourceGroupName
 ```
 
 ## <a name="script-explanation"></a>脚本说明

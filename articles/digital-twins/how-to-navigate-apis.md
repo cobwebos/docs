@@ -1,19 +1,19 @@
 ---
 title: 在 Azure 数字孪生 API 中导航 | Microsoft Docs
 description: 了解 Azure 数字孪生管理 API 的常用查询模式。
-author: dsk-2015
+author: kingdomofends
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
-ms.author: dkshir
-ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.date: 08/29/2019
+ms.author: v-adgera
+ms.openlocfilehash: 8472a86800d13cedd228ca881a7c095ff748350a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200949"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172818"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>如何使用 Azure 数字孪生管理 API
 
@@ -88,6 +88,7 @@ Azure 数字孪生管理 API 为 IoT 应用提供强大的功能。 本文介绍
 
 
 ## <a name="odata-support"></a>OData 支持
+
 返回集合的大多数 API（例如，针对 /spaces 的 GET 调用）都支持泛型 [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) 系统查询选项的以下子集：  
 
 * **$filter**
@@ -95,11 +96,12 @@ Azure 数字孪生管理 API 为 IoT 应用提供强大的功能。 本文介绍
 * **$top**
 * **$skip** - 如果你想要显示整个集合，应在单个调用中以完整集的形式发出此请求，然后在应用程序中执行分页。 
 
-请注意，不支持 $count、$expand、$search 等其他查询选项。
+> [!NOTE]
+> 目前尚不支持某些 OData 选项 (如查询选项 **$count**、 **$expand**和 **$search**)。
 
 ### <a name="examples"></a>示例
 
-以下列表显示了使用 OData 系统查询选项的一些查询示例：
+下面的列表描述了具有有效 OData 语法的几个查询:
 
 - `YOUR_MANAGEMENT_API_URL/devices?$top=3&$orderby=Name desc`
 - `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,’space’)`
@@ -108,9 +110,10 @@ Azure 数字孪生管理 API 为 IoT 应用提供强大的功能。 本文介绍
 - `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,’k’)&$orderby=LastName`
 - `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor’,Name)`
  
-
 ## <a name="next-steps"></a>后续步骤
 
-若要了解一些常用的 API 查询模式，请参阅[如何在常见任务中查询 Azure 数字孪生 API](how-to-query-common-apis.md)。
+若要了解一些常用的 API 查询模式，请参阅[如何在常见任务中查询 Azure 数字孪生 API](./how-to-query-common-apis.md)。
 
+若要了解有关 API 终结点的详细信息, 请参阅[如何使用数字孪生 Swagger](./how-to-use-swagger.md)。
 
+若要查看 OData 语法和可用的比较运算符, 请阅读[Azure 搜索中的 odata 比较运算符](../search/search-query-odata-comparison-operators.md)。

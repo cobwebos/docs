@@ -16,12 +16,12 @@ ms.date: 02/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196123"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900060"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：暂存服务器和灾难恢复
 使用处于暂存模式的服务器，可以在激活服务器之前更改配置和预览更改。 它还允许运行完全导入和完全同步，以便在生产环境中应用所有更改之前验证这些更改是否符合预期。
@@ -42,7 +42,7 @@ ms.locfileid: "57196123"
 
 仍然可以使用 Synchronization Service Manager 强制导出。
 
-处于暂存模式的服务器继续接收来自 Active Directory 和 Azure AD 的更改。 它始终都有最新更改的副本，并且可以非常快速地接管另一服务器的责任。 如果对主要服务器进行配置更改，则需要负责对处于暂存模式的服务器进行相同的更改。
+处于暂存模式的服务器将继续接收来自 Active Directory 和 Azure AD 的更改, 并且在发生故障时可快速接管另一服务器的责任。 如果对主要服务器进行配置更改，则需要负责对处于暂存模式的服务器进行相同的更改。
 
 对于熟悉旧式同步技术的人员而言，暂存模式是不同的，因为服务器有自身的 SQL 数据库。 此体系结构允许将暂存模式服务器放置在不同的数据中心。
 

@@ -14,27 +14,27 @@ ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
 ms.openlocfilehash: 2cb7e15b701b53e74618c21bf219a355d495f985
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076274"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60372905"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>使用 Application Insights 漏斗图了解客户如何使用你的应用程序
 
-了解客户体验对你的业务而言至关重要。 如果你的应用程序涉及多个阶段，那么需要知道是否大多数客户正在完成整个进程，或者他们是否即将在某个时间点结束进程。 Web 应用程序中通过一系列步骤完成的进度被称为“漏斗图”。 Azure Application Insights 漏斗图可用于深入了解你的用户，并监视分步转换率。 
+了解客户体验对你的业务而言至关重要。 如果你的应用程序涉及多个阶段，那么需要知道是否大多数客户正在完成整个进程，或者他们是否即将在某个时间点结束进程。 Web 应用程序中通过一系列步骤完成的进度被称为“漏斗图”。  Azure Application Insights 漏斗图可用于深入了解你的用户，并监视分步转换率。 
 
 ## <a name="create-your-funnel"></a>创建漏斗图
 在创建漏斗图之前，需要决定想要回答的问题。 例如，你可能想要知道多少个用户正在查看主页、查看客户配置文件和创建票证。 在此示例中，Fabrikam Fiber 公司的所有者想要知道成功创建客户票证的客户的百分比。
 
 以下是他们创建漏斗图所执行的步骤。
 
-1. 在 Application Insights 漏斗图工具中，选择“新建”。
-1. 从“时间范围”下拉菜单中，选择“最近 90 天”。 选择“我的漏斗图”或“共享漏斗图”。
-1. 从“步骤 1”下拉列表中选择“索引”。 
-1. 从“步骤 2”列表中选择“客户”。
-1. 从“步骤 3”列表中选择“创建”。
-1. 向漏斗图中添加一个名称，然后选择“保存”。
+1. 在 Application Insights 漏斗图工具中，选择“新建”。 
+1. 从“时间范围”下拉菜单中，选择“最近 90 天”。   选择“我的漏斗图”或“共享漏斗图”。  
+1. 从“步骤 1”  下拉列表中选择“索引”  。 
+1. 从“步骤 2”列表中选择“客户”。  
+1. 从“步骤 3”列表中选择“创建”。  
+1. 向漏斗图中添加一个名称，然后选择“保存”  。
 
 以下屏幕截图显示漏斗图工具生成的数据类型示例。 Fabrikam 所有者从此处可以看到，在过去 90 天内，54.3% 访问了主页的客户创建了客户票证。 他们还可以查看 2,700 个客户从主页进入索引。 这可能表示刷新问题。
 

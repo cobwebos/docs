@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 6362084c11ce7aa9078823758700239694162765
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6bbba3910315be39d9fca81b95083f32ebd60e64
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359150"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567612"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL 数据库托管实例的托管 API 引用
 
@@ -77,7 +76,7 @@ ms.locfileid: "59359150"
 > [!IMPORTANT]
 > 无法使用 Transact-SQL 创建或删除托管实例。
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 |[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|创建新的托管实例数据库。 必须连接到 master 数据库，才能新建数据库。|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |修改 Azure SQL 托管实例数据库。|
@@ -86,7 +85,7 @@ ms.locfileid: "59359150"
 
 要创建并管理托管实例，请使用以下 REST API 请求。
 
-| 命令 | 描述 |
+| Command | 描述 |
 | --- | --- |
 |[托管实例 - 创建或更新](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|创建或更新托管实例。|
 |[托管实例 - 删除](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|删除托管实例。|

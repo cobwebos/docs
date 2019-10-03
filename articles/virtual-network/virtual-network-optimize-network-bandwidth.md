@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
 ms.openlocfilehash: 50d7ca73e5e18f88f5d789e12fc7f26908e8b8f0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025542"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202901"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>优化 Azure 虚拟机网络吞吐量
 
@@ -41,7 +41,7 @@ Azure 虚拟机 (VM) 的默认网络设置可以进一步针对网络吞吐量�
     ```powershell
     Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
     ```
-    前一个命令没有输出。 该命令更改了 NIC 设置，导致暂时连接丢失大约一分钟。 在连接丢失期间显示“重新连接”对话框。 通常在第三次尝试后，连接会还原。
+    前一个命令没有输出。 该命令更改了 NIC 设置，导致暂时连接丢失大约一分钟。 连接断开期间会显示“重新连接”对话框。 通常在第三次尝试后，连接会还原。
 3. 再次输入 `Get-NetAdapterRss` 命令，确认 RSS 在 VM 中已启用。 如果成功，将返回以下示例输出：
 
     ```powershell

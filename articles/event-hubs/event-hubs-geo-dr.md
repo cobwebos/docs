@@ -14,18 +14,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 56077d018c1ae62809d51fc66d7f5aff93fb4c02
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: cf36c233df9f8aaf76333b0add8b1ffce869156b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002691"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773236"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中心 - 异地灾难恢复 
 
 当整个 Azure 区域或数据中心（如果未使用[可用性区域](../availability-zones/az-overview.md)）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 在这种情况下，异地灾难恢复和异地复制对于任何企业而言都是至关重要的功能。 Azure 事件中心支持命名空间级别的异地灾难恢复和异地复制。 
 
-异地灾难恢复功能在全球范围内可用于事件中心标准 SKU。
+> [!NOTE]
+> 异地灾难恢复功能仅适用于[标准和专用 sku](https://azure.microsoft.com/pricing/details/event-hubs/)。  
 
 ## <a name="outages-and-disasters"></a>中断和灾难
 
@@ -37,7 +38,9 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 ## <a name="basic-concepts-and-terms"></a>基本概念和术语
 
-灾难恢复功能可实现元数据灾难恢复，并且依赖于主要和次要灾难恢复命名空间。 请注意，异地灾难恢复功能仅适用于[标准 SKU](https://azure.microsoft.com/pricing/details/event-hubs/)。 不需要对连接字符串进行任何更改，因为连接是通过别名建立的。
+灾难恢复功能可实现元数据灾难恢复，并且依赖于主要和次要灾难恢复命名空间。 
+
+异地灾难恢复功能仅适用于[标准和专用 sku](https://azure.microsoft.com/pricing/details/event-hubs/) 。 不需要对连接字符串进行任何更改，因为连接是通过别名建立的。
 
 本文涉及以下术语：
 
@@ -49,13 +52,26 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 -  *故障转移*：激活辅助命名空间的过程。
 
+## <a name="supported-namespace-pairs"></a>支持的命名空间对
+支持以下主要和辅助命名空间的组合：  
+
+| 主命名空间 | 辅助命名空间 | 支持 | 
+| ----------------- | -------------------- | ---------- |
+| 标准 | 标准 | 是 | 
+| 标准 | 专用 | 是 | 
+| 专用 | 专用 | 是 | 
+| 专用 | 标准 | 否 | 
+
+> [!NOTE]
+> 不能对同一专用群集中的命名空间配对。 你可以将位于不同群集中的命名空间配对。 
+
 ## <a name="setup-and-failover-flow"></a>设置和故障转移流程
 
 以下部分概述了故障转移流程，并说明了如何设置初始故障转移。 
 
 ![1][]
 
-### <a name="setup"></a>设置
+### <a name="setup"></a>安装
 
 首先，创建一个主要命名空间或使用现有的主要命名空间，并创建一个新的次要命名空间，然后将两者配对。 此配对提供可用于连接的别名。 由于使用别名，因此，无需更改连接字符串。 只有新的命名空间可以添加到故障转移配对。 最后，应添加一些监视功能，以检测是否有必要进行故障转移。 在大多数情况下，服务是一个大型生态系统的一部分，因此极少可能会发生自动故障转移，因为通常故障转移必须在与剩余子系统或基础结构保持同步的情况下进行。
 
@@ -84,7 +100,7 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 ## <a name="samples"></a>示例
 
-[GitHub 上的示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)演示如何设置和启动故障转移。 此示例演示以下概念：
+[GitHub 上的示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)演示如何设置和启动故障转移。 此示例演示以下概念：
 
 - 在 Azure Active Directory 中要将 Azure 资源管理器与事件中心配合使用所需的设置。 
 - 执行示例代码所需的步骤。 
@@ -94,13 +110,19 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 此版本需要注意以下事项：
 
-1. 在故障转移规划中，还应考虑时间因素。 例如，如果失去连接的时间超过 15 到 20 分钟，你可能会决定启动故障转移。 
+1. 按照设计，事件中心异地灾难恢复不会复制数据，因此，你无法在辅助事件中心重复使用主事件中心的旧偏移值。 建议通过以下方式之一重启事件接收方：
+
+- *EventPosition. FromStart （）* -如果要读取辅助事件中心上的所有数据。
+- *EventPosition. FromEnd （）* -如果要从连接到次要事件中心时读取所有新数据。
+- *EventPosition. FromEnqueuedTime （日期时间）* -如果想要从给定的日期和时间开始读取辅助事件中心内接收的所有数据。
+
+2. 在故障转移规划中，还应考虑时间因素。 例如，如果失去连接的时间超过 15 到 20 分钟，你可能会决定启动故障转移。 
  
-2. 未复制数据是指未复制当前处于活动状态的会话。 此外，重复检测和计划消息可能无法正常工作。 新的会话、计划消息和新的重复项可以正常工作。 
+3. 未复制数据是指未复制当前处于活动状态的会话。 此外，重复检测和计划消息可能无法正常工作。 新的会话、计划消息和新的重复项可以正常工作。 
 
-3. 故障转移复杂的分布式基础结构应至少[演练](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation)一次。 
+4. 故障转移复杂的分布式基础结构应至少[演练](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)一次。 
 
-4. 同步实体可能需要一些时间，每分钟大约 50-100 个实体。
+5. 同步实体可能需要一些时间，每分钟大约 50-100 个实体。
 
 ## <a name="availability-zones"></a>可用性区域 
 
@@ -115,7 +137,7 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [GitHub 上的示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)演练了一个针对灾难恢复方案创建地理配对并启动故障转移的简单工作流。
+* [GitHub 上的示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)演练了一个针对灾难恢复方案创建地理配对并启动故障转移的简单工作流。
 * [REST API 参考](/rest/api/eventhub/disasterrecoveryconfigs)介绍了用于执行异地灾难恢复配置的 API。
 
 有关事件中心的详细信息，请访问以下链接：

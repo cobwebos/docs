@@ -10,20 +10,20 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4415759530985710c8376709db9955ba98066160
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 00b1b58a39724951f2d5e4e688df8eb178654bbb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527004"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65952836"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Team Data Science Process 中项目主管的任务
 
-本教程概述项目主管预期要在其项目团队中完成的任务。 目标在于创建致力于标准化 [Team Data Science Process](overview.md) (TDSP) 的协作型团队环境。 TDSP 是 Microsoft 开发的一个框架，它提供结构化的活动序列，可高效地执行基于云的预测分析解决方案。 有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅 [Team Data Science Process 角色和任务](roles-tasks.md)。
+本教程概述项目主管的任务应为其项目团队完成。 目标在于创建致力于标准化 [Team Data Science Process](overview.md) (TDSP) 的协作型团队环境。 TDSP 是 Microsoft 开发的一个框架，它提供结构化的活动序列，可高效地执行基于云的预测分析解决方案。 有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅 [Team Data Science Process 角色和任务](roles-tasks.md)。
 
 **项目主管**管理特定数据科学项目各个数据科学家的日常活动。 下图描绘了项目主管设置此环境时所要完成的任务的工作流：
 
-![1](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
+![第](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
 
 本主题目前包括项目主管工作流的任务 1、2 和 6。
 
@@ -142,7 +142,7 @@ ms.locfileid: "59527004"
 
 ![9](./media/project-lead-tasks/project-leads-9-clone-project-repository.png)
 
-如果使用 Azure DevOps 作为代码托管平台，项目存储库的 HTTPS URL 通常为 ***https://\<Azure DevOps Services 名称\>.visualstudio.com/\<项目名称>/_git/<项目存储库名称\>***。 本示例使用 ***https://mysamplegroup.visualstudio.com/MyTeam/_git/DSProject1***。
+如果使用 Azure DevOps 作为代码托管平台，项目存储库的 HTTPS URL 通常为 ***https://\<Azure DevOps Services 名称\>.visualstudio.com/\<项目名称>/_git/<项目存储库名称\>***。 本示例使用 ***https://mysamplegroup.visualstudio.com/MyTeam/_git/DSProject1*** 。
 
 **Linux**
 

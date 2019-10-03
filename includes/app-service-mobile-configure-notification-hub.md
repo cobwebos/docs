@@ -4,17 +4,17 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 0a74079677a084b2d4e8221cf5a74b356126811d
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.openlocfilehash: da3793c428c624ce3a224cbd7606ab26c4a50803
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42816214"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173453"
 ---
 Azure 应用服务的移动应用功能使用 [Azure 通知中心]发送推送内容，因此用户需为移动应用配置通知中心。
 
-1. 在 [Azure 门户]中，转到“应用服务”，并选择应用后端。 在“设置”下，选择“推送”。
-2. 若要将通知中心资源添加到应用中，请选择“连接”。 可以创建一个中心，也可以连接到一个现有的中心。
+1. 在 [Azure 门户]中，转到“应用服务”  ，并选择应用后端。 在“设置”  下，选择“推送”  。
+2. 若要将通知中心资源添加到应用中，请选择“连接”  。 可以创建一个中心，也可以连接到一个现有的中心。
 
     ![配置中心](./media/app-service-mobile-create-notification-hub/configure-hub-flow.png)
 

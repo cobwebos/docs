@@ -9,7 +9,7 @@
     - name: 关于应用服务环境
       href: environment/intro.md
     - name: 比较托管选项
-      href: overview-compare.md
+      href: /azure/architecture/guide/technology-choices/compute-decision-tree
 - name: 快速入门
   expanded: true
   items:
@@ -63,21 +63,30 @@
       href: samples-resource-manager-templates.md
 - name: 概念
   items:
-    - name: 应用服务的工作方式
-      href: app-service-how-works-readme.md
     - name: 应用服务计划
       href: overview-hosting-plans.md
     - name: OS 功能
       href: operating-system-functionality.md
+    - name: 部署最佳做法
+      href: deploy-best-practices.md
     - name: 安全
-      href: overview-security.md
       items:
+        - name: 建议
+          href: security-recommendations.md
         - name: 身份验证和授权
           href: overview-authentication-authorization.md
         - name: OS 和运行时修补
           href: overview-patch-os-runtime.md
+        - name: 内置安全控件
+          href: app-service-security-controls.md
+        - name: 安全概述
+          href: overview-security.md
+    - name: 网络功能
+      href: networking-features.md
     - name: 入站和出站 IP
       href: overview-inbound-outbound-ips.md
+    - name: 虚拟网络集成
+      href: web-sites-integrate-with-vnet.md
     - name: 混合连接
       href: app-service-hybrid-connections.md
     - name: 流量管理器集成
@@ -90,14 +99,16 @@
   items:
     - name: 配置应用
       items:
-        - name: 使用应用设置
-          href: web-sites-configure.md
+        - name: 配置通用设置
+          href: configure-common.md
         - name: 配置 PHP
           href: web-sites-php-configure.md
-        - name: Java 开发人员指南
+        - name: 配置 Java
           href: configure-language-java.md
         - name: 连接到本地资源
           href: web-sites-integrate-with-vnet.md
+        - name: 配置 Azure 存储（容器）
+          href: configure-connect-to-azure-storage.md
     - name: “部署到 Azure”
       items:
         - name: 部署应用
@@ -159,7 +170,7 @@
     - name: 缩放应用
       items:
         - name: 纵向扩展服务器容量
-          href: web-sites-scale.md
+          href: manage-scale-up.md
         - name: 配置 PremiumV2 层
           href: app-service-configure-premium-tier.md
         - name: 横向扩展到多个实例
@@ -208,6 +219,8 @@
       href: /azure/templates/microsoft.web/allversions
 - name: 资源
   items:
+    - name: 应用服务博客
+      href: 'https://aka.ms/appserviceblog'
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/
     - name: Azure 路线图
@@ -218,6 +231,8 @@
       href: '../azure-subscription-service-limits.md#app-service-limits'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: 迁移助手指南
+      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
     - name: 最佳做法
       href: app-service-best-practices.md
     - name: 示例
@@ -227,7 +242,7 @@
     - name: Cookbook
       items:
         - name: 参考体系结构
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/#web-applications'
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
         - name: 部署脚本
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: 故障排除

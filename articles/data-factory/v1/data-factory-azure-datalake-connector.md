@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d8637a2711c0301d9e9f409e169ed04fb3d65783
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57975604"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839545"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>使用数据工厂向/从 Data Lake Storage Gen1 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-azure-datalake-connector.md)
 > * [版本 2（当前版本）](../connector-azure-data-lake-store.md)
 
@@ -54,14 +54,14 @@ Data Lake Store 连接器支持以下身份验证类型：
 
 通过创建管道来复制数据的最简单方法是使用**复制向导**。 有关使用复制向导创建管道的教程，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+还可以使用以下工具来创建管道：**Visual Studio**， **Azure PowerShell**， **Azure Resource Manager 模板**， **.NET API**，并且**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
 1. 创建**数据工厂**。 数据工厂可以包含一个或多个管道。
-2. 创建链接服务可将输入和输出数据存储链接到数据工厂。 例如，如果要将数据从 Azure Blob 存储复制到 Azure Data Lake Store，可创建两个链接服务，将 Azure 存储帐户和 Azure Data Lake Store 链接到数据工厂。 有关特定于 Azure Data Lake Store 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。
-2. 创建数据集以表示复制操作的输入和输出数据。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Data Lake Store 中用于保存从 Blob 存储复制的数据的文件夹和文件路径。 有关特定于 Azure Data Lake Store 的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，AzureDataLakeStoreSink 作为接收器。 同样，如果从 Azure Data Lake Store 复制到 Azure Blob 存储，则在复制活动中使用 AzureDataLakeStoreSource 和 BlobSink。 有关特定于 Azure Data Lake Store 的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。
+2. 创建链接服务可将输入和输出数据存储链接到数据工厂  。 例如，如果要将数据从 Azure Blob 存储复制到 Azure Data Lake Store，可创建两个链接服务，将 Azure 存储帐户和 Azure Data Lake Store 链接到数据工厂。 有关特定于 Azure Data Lake Store 的链接服务属性，请参阅[链接服务属性](#linked-service-properties)部分。
+2. 创建数据集以表示复制操作的输入和输出数据  。 在上一个步骤所述的示例中，创建了一个数据集来指定 Blob 容器和包含输入数据的文件夹。 创建了另一个数据集来指定 Data Lake Store 中用于保存从 Blob 存储复制的数据的文件夹和文件路径。 有关特定于 Azure Data Lake Store 的数据集属性，请参阅[数据集属性](#dataset-properties)部分。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出  。 在前面所述的示例中，在复制活动中使用 BlobSource 作为源，AzureDataLakeStoreSink 作为接收器。 同样，如果从 Azure Data Lake Store 复制到 Azure Blob 存储，则在复制活动中使用 AzureDataLakeStoreSource 和 BlobSink。 有关特定于 Azure Data Lake Store 的复制活动属性，请参阅[复制活动属性](#copy-activity-properties)部分。 有关如何将数据存储用作源或接收器的详细信息，请单击前面章节中的相应数据存储链接。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于向/从 Azure Data Lake Store 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples-for-copying-data-to-and-from-data-lake-store)部分。
 
@@ -70,9 +70,9 @@ Data Lake Store 连接器支持以下身份验证类型：
 ## <a name="linked-service-properties"></a>链接服务属性
 链接服务可将数据存储链接到数据工厂。 创建 **AzureDataLakeStore** 类型的链接服务，以便将 Data Lake Store 数据链接到数据工厂。 下表描述了特定于 Data Lake Store 链接服务的 JSON 元素。 可以选择服务主体身份验证或用户凭据身份验证。
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 **AzureDataLakeStore**。 | 是 |
+| **type** | type 属性必须设置为 **AzureDataLakeStore**。 | 是 |
 | **dataLakeStoreUri** | Azure Data Lake Store 帐户相关信息。 此信息采用以下格式之一：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
 | **subscriptionId** | Data Lake Store 帐户所属的 Azure 订阅 ID。 | 接收器所需 |
 | **resourceGroupName** | Data Lake Store 帐户所属的 Azure 资源组名称。 | 接收器所需 |
@@ -85,9 +85,9 @@ Data Lake Store 连接器支持以下身份验证类型：
 
 > [!IMPORTANT]
 > 请确保在 Azure Data Lake Store 中授予服务主体适当的权限：
->- 若要将 Data Lake Store 用作源，请至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹的内容，或者授予“读取”权限以复制单个文件。 对帐户级别访问控制没有要求。
->- 若要将 Data Lake Store 用作接收器，请至少授予“写入 + 执行”数据访问权限才能在文件夹中创建子项目。 如果使用 Azure IR 来增强复制功能（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果想要避免使用此 IAM 角色，请使用 Data Lake Store 在复制活动中的位置[指定 executionLocation](data-factory-data-movement-activities.md#global)。
->- 如果使用复制向导创作管道，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 此外，至少授予对 Data Lake Store 根目录 ("/") 及其子级的“读取 + 执行”权限。 否则，可能会显示“提供的凭据无效”消息。
+>- 若要将 Data Lake Store 用作源，请至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹的内容，或者授予“读取”权限以复制单个文件    。 对帐户级别访问控制没有要求。
+>- 若要将 Data Lake Store 用作接收器，请至少授予“写入 + 执行”数据访问权限才能在文件夹中创建子项目   。 如果使用 Azure IR 来增强复制功能（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。  如果想要避免使用此 IAM 角色，请使用 Data Lake Store 在复制活动中的位置[指定 executionLocation](data-factory-data-movement-activities.md#global)。
+>- 如果使用复制向导创作管道，请至少授予帐户访问控制 (IAM) 中的“读者”角色   。 此外，至少授予对 Data Lake Store 根目录 ("/") 及其子级的“读取 + 执行”  权限。 否则，可能会显示“提供的凭据无效”消息。
 
 通过指定以下属性使用服务主体身份验证：
 
@@ -118,16 +118,16 @@ Data Lake Store 连接器支持以下身份验证类型：
 ### <a name="user-credential-authentication"></a>用户凭据身份验证
 或者，通过指定以下属性，可使用用户凭据身份验证向/从 Data Lake Store 进行复制：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 |:--- |:--- |:--- |
-| **authorization** | 单击数据工厂编辑器中的“授权”按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
+| **authorization** | 单击数据工厂编辑器中的“授权”  按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
 | **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
 
 > [!IMPORTANT]
 > 请确保在 Azure Data Lake Store 中授予用户适当的权限：
->- 若要将 Data Lake Store 用作源，请至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹的内容，或者授予“读取”权限以复制单个文件。 对帐户级别访问控制没有要求。
->- 若要将 Data Lake Store 用作接收器，请至少授予“写入 + 执行”数据访问权限才能在文件夹中创建子项目。 如果使用 Azure IR 来增强复制功能（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 如果想要避免使用此 IAM 角色，请使用 Data Lake Store 在复制活动中的位置[指定 executionLocation](data-factory-data-movement-activities.md#global)。
->- 如果使用复制向导创作管道，请至少授予帐户访问控制 (IAM) 中的“读者”角色。 此外，至少授予对 Data Lake Store 根目录 ("/") 及其子级的“读取 + 执行”权限。 否则，可能会显示“提供的凭据无效”消息。
+>- 若要将 Data Lake Store 用作源，请至少授予“读取 + 执行”数据访问权限才能列出和复制文件夹的内容，或者授予“读取”权限以复制单个文件    。 对帐户级别访问控制没有要求。
+>- 若要将 Data Lake Store 用作接收器，请至少授予“写入 + 执行”数据访问权限才能在文件夹中创建子项目   。 如果使用 Azure IR 来增强复制功能（源和接收器都在云中），为了让数据工厂检测到 Data Lake Store区域，请至少授予帐户访问控制 (IAM) 中的“读者”角色。  如果想要避免使用此 IAM 角色，请使用 Data Lake Store 在复制活动中的位置[指定 executionLocation](data-factory-data-movement-activities.md#global)。
+>- 如果使用复制向导创作管道，请至少授予帐户访问控制 (IAM) 中的“读者”角色   。 此外，至少授予对 Data Lake Store 根目录 ("/") 及其子级的“读取 + 执行”  权限。 否则，可能会显示“提供的凭据无效”消息。
 
 **示例：用户凭据身份验证**
 ```json
@@ -147,7 +147,7 @@ Data Lake Store 连接器支持以下身份验证类型：
 ```
 
 #### <a name="token-expiration"></a>令牌过期
-使用“授权”按钮生成的授权代码在一段时间后便会过期。 以下消息意味着身份验证令牌已过期：
+使用“授权”  按钮生成的授权代码在一段时间后便会过期。 以下消息意味着身份验证令牌已过期：
 
 凭据操作错误：invalid_grant - AADSTS70002：验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID：d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID：fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳：2015-12-15 21-09-31Z。
 
@@ -160,7 +160,7 @@ Data Lake Store 连接器支持以下身份验证类型：
 
 如果在此令牌过期之前更改密码，则该令牌立即过期。 系统会显示此部分前面提到的错误。
 
-令牌过期后，可以使用“授权”按钮为帐户重新授权，以便重新部署链接服务。 还可使用以下代码以编程方式生成 **sessionId** 和 **authorization** 属性的值：
+令牌过期后，可以使用“授权”  按钮为帐户重新授权，以便重新部署链接服务。 还可使用以下代码以编程方式生成 **sessionId** 和 **authorization** 属性的值：
 
 
 ```csharp
@@ -191,7 +191,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 
-**故障：** 在将数据复制到 Azure Data Lake Store 时，如果复制活动失败，出现以下错误：
+**故障：** 在将数据复制到  Azure Data Lake Store 时，如果复制活动失败，出现以下错误：
 
   ```
   Failed to detect the region for Azure Data Lake account {your account name}. Please make sure that the Resource Group name: {resource group name} and subscription ID: {subscription ID} of this Azure Data Lake Store resource are correct.
@@ -206,14 +206,14 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 1. 请确保你的 data lake 帐户确实属于链接的服务 `typeProperties` 中指定的 `subscriptionId` 和 `resourceGroupName`。
 
-2. 请确保至少向用户或 data lake 帐户上的服务主体授予“读者”的角色。 以下为具体操作：
+2. 请确保至少向用户或 data lake 帐户上的服务主体授予“读者”  的角色。 以下为具体操作：
 
-    1. 请转到 Azure 门户 -> 你的 Data Lake Store 帐户
-    2. 在 Data Lake Store 的边栏选项卡上单击“访问控制(IAM)”
-    3. 单击“添加角色分配”
-    4. 将“角色”设置为“读者”，并选择用于复制的用户或服务主体以授予访问权限
+    1. 转到 Azure 门户-> Data Lake Store 帐户
+    2. 在 Data Lake Store 的边栏选项卡上单击“访问控制(IAM)” 
+    3. 单击“添加角色分配” 
+    4. 将“角色”  设置为“读者”  ，并选择用于复制的用户或服务主体以授予访问权限
 
-3. 如果不想为用户或服务主体授予“读者”角色，可选择在复制活动中使用 Data Lake Store 的位置[显式指定执行位置](data-factory-data-movement-activities.md#global)。 示例：
+3. 如果不想要授予**读取器**向用户或服务主体，备用角色是[显式指定执行位置](data-factory-data-movement-activities.md#global)与 Data Lake Store 的位置的复制活动中。 例如：
 
     ```json
     {
@@ -237,13 +237,13 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 **AzureDataLakeStore** 类型的数据集的 **typeProperties** 节包含以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 |:--- |:--- |:--- |
 | **folderPath** |Data Lake Store 中容器和文件夹的路径。 |是 |
 | **fileName** |Azure Data Lake Store 中文件的名称。 **fileName** 属性可选，并且区分大小写。 <br/><br/>如果指定 **fileName**，则活动（包括复制）将对特定文件起作用。<br/><br/>如果未指定 **fileName**，则复制将包括输入数据集的 **folderPath** 中的所有文件。<br/><br/>当**文件名**未指定为输出数据集和**preserveHierarchy**未指定在活动接收器中生成的文件的名称采用以下格式`Data._Guid_.txt`。 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |否 |
 | **partitionedBy** |**partitionedBy** 属性可选。 它可用于指定时序数据的动态路径和文件名。 例如，**folderPath** 可针对每小时的数据参数化。 有关详细信息和示例，请参阅“partitionedBy 属性”。 |否 |
-| **format** | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅 [Azure 数据工厂支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文中的[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、 [Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[ORC 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)等部分。 <br><br> 如果想要在基于文件的存储之间“按原样”复制文件（二进制副本），可以在输入和输出数据集定义中跳过 `format` 节。 |否 |
-| **compression** | 指定数据的压缩类型和级别。 支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| **format** | 支持以下格式类型：TextFormat  、JsonFormat  、AvroFormat  、OrcFormat  和 ParquetFormat  。 请将 **format** 中的 **type** 属性设置为上述值之一。 有关详细信息，请参阅 [Azure 数据工厂支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文中的[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、 [Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[ORC 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)等部分。 <br><br> 如果想要在基于文件的存储之间“按原样”复制文件（二进制副本），可以在输入和输出数据集定义中跳过 `format` 节。 |否 |
+| **compression** | 指定数据的压缩类型和级别。 支持的类型为 **GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为“最佳”  和“最快”  。 有关详细信息，请参阅 [Azure 数据工厂支持的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 ### <a name="the-partitionedby-property"></a>partitionedBy 属性
 可以使用 **partitionedBy** 属性、数据工厂函数和系统变量指定时序数据的动态 **folderPath** 和 **fileName** 属性。 有关详细信息，请参阅 [Azure 数据工厂 — 函数和系统变量](data-factory-functions-variables.md)一文。
@@ -287,7 +287,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 **AzureDataLakeStoreSink** 支持 **typeProperties** 节中的以下属性：
 
-| 属性 | 说明 | 允许的值 | 需要 |
+| 属性 | 说明 | 允许的值 | 必填 |
 | --- | --- | --- | --- |
 | **copyBehavior** |指定复制行为。 |<b>PreserveHierarchy</b>：将文件层次结构保留到目标文件夹中。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy</b>：源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/><b>MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名或 Blob 名称，则合并文件的名称为指定名称。 否则，会自动生成文件名。 |否 |
 
@@ -307,9 +307,9 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md)一文。
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>向/从 Data Lake Store 复制数据的 JSON 示例
-以下示例提供 JSON 示例定义。 可以使用这些示例定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 以下示例演示如何向/从 Data Lake Store 和 Azure Blob 存储复制数据。 但是，可以从任何源将数据_直接_复制到任何受支持的接收器。 有关详细信息，请参阅[使用复制活动移动数据](data-factory-data-movement-activities.md)一文中的“支持的数据存储和格式”部分。
+以下示例提供 JSON 示例定义。 您可以使用这些示例定义通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 以下示例演示如何向/从 Data Lake Store 和 Azure Blob 存储复制数据。 但是，可以从任何源将数据_直接_复制到任何受支持的接收器。 有关详细信息，请参阅[使用复制活动移动数据](data-factory-data-movement-activities.md)一文中的“支持的数据存储和格式”部分。
 
-### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>示例：将数据从 Azure Blob 存储复制到 Azure Data Lake Store
+### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>例如：将数据从 Azure Blob 存储复制到 Azure Data Lake Store
 本部分中的示例代码演示：
 
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
@@ -493,7 +493,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-### <a name="example-copy-data-from-azure-data-lake-store-to-an-azure-blob"></a>示例：将数据从 Azure Data Lake Store 复制到 Azure blob
+### <a name="example-copy-data-from-azure-data-lake-store-to-an-azure-blob"></a>例如：将数据从 Azure Data Lake Store 复制到 Azure blob
 本部分中的示例代码演示：
 
 * [AzureDataLakeStore](#linked-service-properties) 类型的链接服务。

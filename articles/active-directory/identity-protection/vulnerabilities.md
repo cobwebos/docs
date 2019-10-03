@@ -1,45 +1,43 @@
 ---
-title: Azure Active Directory Identity Protection 检测到的漏洞
-description: Azure Active Directory Identity Protection 检测到的漏洞概述。
+title: “Azure Active Directory 标识保护”检测到的漏洞
+description: “Azure Active Directory 标识保护”检测到的漏洞概述。
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80faf1899da0f16d25b9b7c68cb0edcbc1276632
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 446e2ef33b714afe06f24f3dbfc46bc6a42790b8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59488227"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335151"
 ---
-# <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 检测到的漏洞
+# <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>“Azure Active Directory 标识保护”检测到的漏洞
 
-漏洞是可能由攻击者利用的环境中的弱点。 我们建议管理员解决这些漏洞，以提高其组织的安全状况。
+漏洞是攻击者可被攻击者利用的漏洞。 建议管理员解决这些漏洞, 以提高组织的安全状况。
 
-![Identity Protection 报告漏洞](./media/vulnerabilities/identity-protection-vulnerabilities.png)
+![Identity Protection 报告的漏洞](./media/vulnerabilities/identity-protection-vulnerabilities.png)
 
-以下部分概述了 Identity Protection 报告的漏洞。
+以下部分概述了由“标识保护”报告的漏洞。
 
 ## <a name="multi-factor-authentication-registration-not-configured"></a>未配置多重身份验证注册
 
-此漏洞可帮助评估组织中的部署 Azure 多重身份验证。
+此漏洞可帮助评估组织中 Azure 多重身份验证的部署。
 
-若要查看计数未注册 mfa，用户单击此漏洞，您将重定向到标识安全功能分数中的统计信息。
-
-Azure 多重身份验证提供了第二层到用户身份验证的安全性。 它可帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 Azure 多重身份验证提供了易于使用的验证选项，如：
+Azure 多重身份验证为用户身份验证提供了另一层安全措施。 它可帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 Azure 多重身份验证提供易于使用的验证选项, 如下所示:
 
 * 电话呼叫
 * 短信
 * 移动应用通知
 * OTP 验证码
 
-我们建议将 Azure 多重身份验证用于用户登录。多重身份验证在通过 Identity Protection 提供的基于风险的条件访问策略中起重要作用。
+我们建议将 Azure 多重身份验证用于用户登录。多重身份验证在基于风险的条件访问策略中起着关键作用, 可通过标识保护。
 
 有关详细信息，请参阅[什么是 Azure 多重身份验证？](../authentication/multi-factor-authentication.md)
 
@@ -47,9 +45,9 @@ Azure 多重身份验证提供了第二层到用户身份验证的安全性。 �
 
 此漏洞可帮助你标识组织中的非托管云应用。
 
-IT 人员通常不知道在其组织中的所有云应用程序。 很容易理解为什么管理员对未经授权访问公司数据、可能的数据泄漏和其他安全风险有所顾虑。
+IT 人员通常不知道组织中的所有云应用程序。 很容易理解为什么管理员对未经授权访问公司数据、可能的数据泄漏和其他安全风险有所顾虑。
 
-我们建议部署 Cloud Discovery 发现非托管的云应用程序，以及管理这些应用程序使用 Azure Active Directory。
+建议部署 Cloud Discovery 来发现非托管云应用程序, 并使用 Azure Active Directory 管理这些应用程序。
 
 有关详细信息，请参阅 [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery)。
 
@@ -59,10 +57,10 @@ IT 人员通常不知道在其组织中的所有云应用程序。 很容易理�
 
 为了允许用户执行特权操作，组织需要向用户授予 Azure AD、Azure 或 Office 365 资源或者其他 SaaS 应用的临时或永久访问特权。 其中每个特权用户都会增加组织的攻击面。 此漏洞可帮助你标识具有不必要访问特权的用户，并采取相应操作降低或消除他们带来的风险。
 
-我们建议组织使用 Azure AD Privileged Identity Management 管理、 控制和监视特权的标识 Azure AD 中，以及 Office 365 或 Microsoft Intune 等其他 Microsoft online services。
+我们建议组织使用 Azure AD Privileged Identity Management 来管理、控制和监视 Azure AD 中的特权标识, 以及 Office 365 或 Microsoft Intune 之类的其他 Microsoft 联机服务。
 
 有关详细信息，请参阅 [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-[Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+[Azure Active Directory 标识保护](../active-directory-identityprotection.md)

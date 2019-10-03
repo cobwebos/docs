@@ -10,21 +10,21 @@ ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
 ms.openlocfilehash: fc945a7e9389c8aec48a6a1dba969fbf92002d3a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553293"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67173353"
 ---
 | 资源 | 限制 |
 | --- | --- |
 | 最大缩放单位数 | 每个区域 10 个<sup>1</sup> |
 | 缓存大小 | 每个单位 5 GB<sup>2</sup> |
-| 后端的并发连接<sup>3</sup>每个 HTTP 颁发机构 | 每个单位 2048<sup>4</sup> |
+| 每个 HTTP 机构的并发后端连接数<sup>3</sup> | 每单位 2048<sup>4</sup> |
 | 最大缓存响应大小 | 2 MB |
 | 最大策略文档大小 | 256 KB<sup>5</sup> | 
 | 每个服务实例的最大自定义网关域<sup>6</sup> | 20 |
-| 最大数量的每个服务实例的 CA 证书 | 10 | 
+| 每个服务实例的最大 CA 证书数 | 10 | 
 | 每个订阅的最大服务实例数<sup>7</sup> | 20 | 
 | 每个服务实例的最大订阅数<sup>7</sup> | 500 |
 | 每个服务实例的最大客户端证书数<sup>7</sup> | 50 | 
@@ -36,11 +36,11 @@ ms.locfileid: "57553293"
 
 <sup>1</sup>缩放限制取决于定价层。 若要查看定价层及其缩放限制，请参阅[API 管理定价](https://azure.microsoft.com/pricing/details/api-management/)。<br/>
 <sup>2</sup>每单位缓存大小取决于定价层。 若要查看定价层及其缩放限制，请参阅[API 管理定价](https://azure.microsoft.com/pricing/details/api-management/)。<br/>
-<sup>3</sup>连接建立池连接，除非显式关闭由后端中重复使用。<br/>
-<sup>4</sup>此限制是每个单位的基本、 标准和高级层。 开发人员层被限制为 1,024。 此限制不适用于消耗层。<br/> 
-<sup>5</sup>此限制适用于基本、 标准和高级层。 在消耗层中，策略文档大小被限制为 4 KB。<br/>
-<sup>6</sup>此资源是仅高级层中可用。<br/>
-<sup>7</sup>此资源适用于仅消耗级别。<br/>
+<sup>3</sup>除非后端显式关闭，否则连接会被共用并重复使用。<br/>
+<sup>4</sup>此限制是 "基本"、"标准" 和 "高级" 层的单位。 开发人员层限制为1024。 此限制不适用于消耗层。<br/> 
+<sup>5</sup>此限制适用于 "基本"、"标准" 和 "高级" 层。 在消耗层中，策略文档大小限制为 4 KB。<br/>
+<sup>6</sup>此资源仅在 "高级" 层中可用。<br/>
+<sup>7</sup>此资源仅适用于消耗层。<br/>
 
 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38bc2f138a8e56fc56b48ccdaf0636a93138f95d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: e2f53243e49cc961f50ef09cf43a7ed174a82a9c
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314648"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65997270"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>有哪些方法可用来进行身份验证？
 
@@ -50,6 +50,10 @@ Azure MFA 和 Azure AD 自助服务密码重置允许管理员使用 Azure AD �
 ## <a name="multi-factor-authentication"></a>多重身份验证
 
 Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 使用管理员批准的身份验证方法，Azure MFA 可帮助保护对数据和应用程序的访问，同时满足对简单登录过程的需求。
+
+## <a name="license-requirements"></a>许可要求
+
+[!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

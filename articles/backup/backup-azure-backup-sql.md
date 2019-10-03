@@ -1,24 +1,24 @@
 ---
 title: 使用 DPM 为 SQL 工作负荷配置 Azure 备份
 description: 使用 Azure 备份服务备份 SQL Server 数据库简介
-services: backup
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: kasinh
-ms.openlocfilehash: d7d94c7b238f8d413d8837c3c34468c6cd653fe3
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.author: dacurwin
+ms.openlocfilehash: d564cc16a1261cdf71d783ce9f40e577177ff74c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300687"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954792"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>将 SQL Server 备份到 Azure 作为 DPM 工作负荷
 本文将引导使用 Azure 备份来完成 SQL Server 数据库的备份配置步骤。
 
-要将 SQL Server 数据库备份到 Azure，需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+要将 SQL Server 数据库备份到 Azure，需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 向 Azure 备份以及从 Azure 恢复 SQL Server 数据库的管理工作涉及三个步骤：
 
@@ -46,7 +46,7 @@ ms.locfileid: "55300687"
     ![数据保护方法 - 短期磁盘和在线 Azure](./media/backup-azure-backup-sql/pg-name.png)
 7. 在“**指定短期目标**”屏幕中，提供创建磁盘备份点所需的输入。
 
-    在这里我们可以看到，“**保留期**”设置为“*5 天*”，“**同步频率**”设置为“*每 15 分钟一次*”，这也是进行备份的频率。 “**快速完整备份**”设置为“*晚上 8:00*”。
+    在这里, 我们看到 "**保持期**" 设置为 " *5 天*", "**同步频率**" 设置为每*15 分钟*一次, 这是执行备份的频率。 “**快速完整备份**”设置为“*晚上 8:00*”。
 
     ![短期目标](./media/backup-azure-backup-sql/pg-shortterm.png)
 
@@ -131,7 +131,7 @@ ms.locfileid: "55300687"
 ## <a name="recover-a-sql-server-database-from-azure"></a>从 Azure 恢复 SQL Server 数据库
 若要从 Azure 中恢复受保护的实体（SQL Server 数据库），必须执行以下步骤。
 
-1. 打开 DPM 服务器管理控制台。 导航到“**恢复**”工作区，可以在其中查看通过 DPM 备份的服务器。 浏览所需的数据库（在本示例中为 ReportServer$MSDPM2012）。 选择“**恢复方式**”，例如“**在线**”。
+1. 打开 DPM 服务器管理控制台。 导航到“**恢复**”工作区，可以在其中查看通过 DPM 备份的服务器。 浏览所需的数据库（在本示例中为 ReportServer$MSDPM2012）。 选择以**联机状态**结束的时间的**恢复**。
 
     ![选择恢复点](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 2. 右键单击数据库名称，并单击“**恢复**”。

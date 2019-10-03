@@ -1,19 +1,18 @@
 ---
 title: Azure 快速入门 - 使用 Go 在对象存储中创建 blob | Microsoft Docs
 description: 本快速入门将在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 Go 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
-services: storage
-author: seguler
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 11/14/2018
-ms.author: seguler
-ms.openlocfilehash: 69895fff5e1daaf02caec54a6d38052e36ad8d49
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999060"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726461"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>快速入门：使用 Go 上传、下载和列出 Blob
 
@@ -111,7 +110,7 @@ Press the enter key to delete the sample files, example container, and exit the 
 > [!IMPORTANT]
 > 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
-本部分创建一个新的容器。 容器名为 **quickstartblobs-[随机字符串]**。 
+本部分创建一个新的容器。 容器名为 **quickstartblobs-[随机字符串]** 。 
 
 ```go 
 // From the Azure portal, get your storage account name and key and set environment variables.

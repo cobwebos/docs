@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880570"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60885334"
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure Data Lake Store 入门（使用 Azure CLI）
 
@@ -42,7 +42,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 它可以�
 
 ## <a name="authentication"></a>Authentication
 
-本文对 Data Lake Storage Gen1 使用一种较为简单的身份验证方法，你可以在其中以最终用户的身份登录。 系统会根据登录用户的访问级别约束对 Data Lake Storage Gen1 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Storage Gen1 中进行身份验证，即“最终用户身份验证”或“服务到服务身份验证”。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
+本文对 Data Lake Storage Gen1 使用一种较为简单的身份验证方法，你可以在其中以最终用户的身份登录。 系统会根据登录用户的访问级别约束对 Data Lake Storage Gen1 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Storage Gen1 中进行身份验证，即“最终用户身份验证”或“服务到服务身份验证”   。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>登录到 Azure 订阅
@@ -53,7 +53,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 它可以�
     az login
     ```
 
-    将获得要在下一步骤中使用的代码。 使用 Web 浏览器打开页面 https://aka.ms/devicelogin，然后输入该代码进行身份验证。 系统会提示使用凭据登录。
+    将获得要在下一步骤中使用的代码。 使用 Web 浏览器打开页面 https://aka.ms/devicelogin ，然后输入该代码进行身份验证。 系统会提示使用凭据登录。
 
 2. 登录后，窗口会列出与帐户相关联的所有 Azure 订阅。 通过以下命令来使用特定订阅。
    

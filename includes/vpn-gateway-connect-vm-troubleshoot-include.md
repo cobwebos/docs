@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a22cc1f1bffb0126c4fe23bd9f28b292bfdc48a8
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
-ms.translationtype: HT
+ms.openlocfilehash: b050d0cd5f6a21757685f9bc0991f8ce0a971e3c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30198037"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172772"
 ---
 如果无法通过 VPN 连接连接到虚拟机，请查看以下项目：
 

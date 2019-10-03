@@ -3,20 +3,20 @@ title: 开始使用 JavaScript 中的必应语音识别 API | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: 使用认知服务中的必应语音识别 API 开发将语音音频持续转换为文本的应用程序。
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 17901ad40a48e9ee8d1a8b872b04ad52b75b3a52
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: eef1a4885b77ae94f11d3d5bda5ded9b70ed63a4
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672400"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965816"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>开始使用 JavaScript 中的语音识别 API
 
@@ -24,7 +24,7 @@ ms.locfileid: "56672400"
 
 通过使用语音识别 API，可以开发将语音音频转换为文本的应用程序。 JavaScript 客户端库使用[语音服务 WebSocket 协议](../API-Reference-REST/websocketprotocol.md)，通过它可以同时探讨和接收转录文本。 本文有助于开始使用 JavaScript 中的语音识别 API。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>订阅语音识别 API，并获得免费试用的订阅密钥
 
@@ -33,7 +33,7 @@ ms.locfileid: "56672400"
 > [!IMPORTANT]
 > 获取订阅密钥。 必须拥有[订阅密钥](https://azure.microsoft.com/try/cognitive-services/)才能使用语音客户端库。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 在本节中，我们将逐步介绍加载示例 HTML 页的必要步骤。 示例位于 [GitHub 存储库](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)。 可以从存储库直接打开示例，或从存储库的本地副本打开示例。
 
@@ -42,7 +42,7 @@ ms.locfileid: "56672400"
 
 ### <a name="open-the-sample-directly"></a>直接打开示例
 
-获取订阅密钥，如上所述。 然后打开[示例链接](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html)。 该操作将在默认浏览器中加载页面（使用 [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) 呈现）。
+获取订阅密钥，如上所述。 然后打开[示例链接](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html)。 该操作将在默认浏览器中加载页面（使用 [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) 呈现）。
 
 ### <a name="open-the-sample-from-a-local-copy"></a>从本地副本打开示例
 

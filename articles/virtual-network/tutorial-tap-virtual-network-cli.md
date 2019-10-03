@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
 ms.openlocfilehash: 3d95a9ea555cceda82530eb5c487eeb993c1a678
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188554"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60743184"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>通过 Azure CLI 使用虚拟网络 TAP
 
@@ -28,7 +28,7 @@ ms.locfileid: "58188554"
 
 ## <a name="create-a-virtual-network-tap-resource"></a>创建虚拟网络 TAP 资源
 
-在创建虚拟网络 TAP 资源之前，请先阅读[先决条件](virtual-network-tap-overview.md#prerequisites)。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令，或者在计算机上运行 Azure 命令行接口 (CLI)。 Azure Cloud Shell 是免费的交互式 shell，不需要在计算机上安装 Azure CLI。 必须使用具有相应[权限](virtual-network-tap-overview.md#permissions)的帐户登录 Azure。 本文需要 Azure CLI 2.0.46 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 虚拟网络点击是目前以扩展形式提供。 若要安装的扩展需要运行`az extension add -n virtual-network-tap`。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
+在创建虚拟网络 TAP 资源之前，请先阅读[先决条件](virtual-network-tap-overview.md#prerequisites)。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令，或者在计算机上运行 Azure 命令行接口 (CLI)。 Azure Cloud Shell 是免费的交互式 shell，不需要在计算机上安装 Azure CLI。 必须使用具有相应[权限](virtual-network-tap-overview.md#permissions)的帐户登录 Azure。 本文需要 Azure CLI 2.0.46 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 虚拟网络 TAP 目前以扩展的形式提供。 若要安装此扩展，需要运行 `az extension add -n virtual-network-tap`。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 1. 将订阅 ID 检索到后续步骤中使用的变量中：
 

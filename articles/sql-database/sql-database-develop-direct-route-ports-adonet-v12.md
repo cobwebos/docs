@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
-manager: craigg
 ms.date: 04/03/2019
-ms.openlocfilehash: ddb115370c62371e769ef98e0031f7e0379bafbf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a39cfd1981041c807a91a08c198378d238f0846e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916166"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568915"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>用于 ADO.NET 4.5 的非 1433 端口
 
@@ -81,7 +80,7 @@ ms.locfileid: "58916166"
 
 * 通过重定向连接到 Azure SQL 数据库 V12 https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
-* [TDS 协议版本列表](http://www.freetds.org/userguide/tdshistory.htm)
+* [TDS 协议版本列表](https://www.freetds.org/userguide/tdshistory.htm)
 * [SQL 数据库开发概述](sql-database-develop-overview.md)
 * [Azure SQL 数据库防火墙](sql-database-firewall-configure.md)
 * [如何：在 SQL 数据库上配置防火墙设置](sql-database-configure-firewall-settings.md)

@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 65c89730e7d3d492b91daa8aba50e5606ca700a1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e427a7b80b28f1cc70a02890152f9f2247a8bcd2
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803414"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "68360282"
 ---
 下表列出了适用于 Azure IoT 中心设备预配服务资源的限制。
 
@@ -20,12 +20,15 @@ ms.locfileid: "59803414"
 | 最大注册数 | 1,000,000 |
 | 最大登记组数 | 100 |
 | 最大 CA 数 | 25 |
+| 链接的 IoT 中心的最大数量 | 10 |
+| 消息的最大大小 | 96 KB|
+
 
 > [!NOTE]
-> 若要增加订阅中的实例数目，请联系[Microsoft 支持部门](https://azure.microsoft.com/support/options/)。
+> 若要增加订阅中的实例数，请联系 [Microsoft 支持部门](https://azure.microsoft.com/support/options/)。
 
 > [!NOTE]
-> 若要增加数目注册和预配服务上的注册，请联系[Microsoft 支持部门](https://azure.microsoft.com/support/options/)。
+> 若要增加预配服务上的登记和注册数量，请联系 [Microsoft 支持部门](https://azure.microsoft.com/support/options/)。
 
 超过以下配额时，设备预配服务将限制请求。
 

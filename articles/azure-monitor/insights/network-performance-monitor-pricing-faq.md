@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
-ms.author: ajaycode
-ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: agummadi
+ms.openlocfilehash: 68e84d8ac82d5cdd52bf92df858730315514c17c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59005931"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612853"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 网络性能监视器的定价变化
 
@@ -38,7 +38,7 @@ ms.locfileid: "59005931"
 
 NPM 的计费基于以下两个组件的用量和消耗量：
 * **节点**：所有综合事务都在节点上发起和终结。 节点也称为代理或 Microsoft 管理代理。
-* **Data**：各种网络测试结果存储在 Log Analytics 工作区中。
+* **Data**：各种网络测试的结果存储在 Log Analytics 工作区中。
 
 在旧模型中，帐单是根据节点数和生成的数据量计算的。 
 
@@ -55,7 +55,7 @@ NPM 中的性能监视器功能现在根据以下各项的组合计费：
 
 **我有两个子网（A 和 B），并且每个子网包含多个代理。性能监视器监视从子网 A 中所有代理到子网 B 中所有代理的连接。是否根据子网间的连接数计费？**
 
-不。 计费时，从子网 A 到子网 B 的所有连接将统一合并成一个子网链接。 只会计收一个连接的费用。 性能监视器继续监视每个子网中各个代理之间的连接。
+否。 计费时，从子网 A 到子网 B 的所有连接将统一合并成一个子网链接。 只会计收一个连接的费用。 性能监视器继续监视每个子网中各个代理之间的连接。
 
 **监视子网链接的费用是多少？**
 
@@ -63,7 +63,7 @@ NPM 中的性能监视器功能现在根据以下各项的组合计费：
 
 **如何对性能监视器生成的数据收费？**
 
-引入 （数据上传到 Azure Monitor，处理数据和索引中的 Log Analytics 工作区） 的费用是可在上找到[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)Log analytics，在数据引入部分。 [定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据保留”部分中还提供了针对数据保留（即，在第一个月后，根据客户选项保留数据）收取的费用。
+Log Analytics 的[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据引入”部分中提供了针对引入（将数据上传到 Azure Monitor 的 Log Analytics 工作区，以及数据处理和编制索引）收取的费用。 [定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据保留”部分中还提供了针对数据保留（即，在第一个月后，根据客户选项保留数据）收取的费用。
 
 
 ## <a name="expressroute-monitor"></a>ExpressRoute 监视器
@@ -117,7 +117,7 @@ ExpressRoute 监视器的费用根据监视期间生成的数据量计费。 有
 
 请参阅[连接监视](https://azure.microsoft.com/pricing/details/network-watcher/)部分，了解监视终结点的整月费用。 Log Analytics 的[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据引入”部分中提供了数据费用。
 
-## <a name="references"></a>参考
+## <a name="references"></a>参考资料
 
 [Log Analytics 定价常见问题解答](https://azure.microsoft.com/pricing/details/log-analytics/)：常见问题解答部分提供了有关免费层、每个节点的定价和其他定价详细信息。
 

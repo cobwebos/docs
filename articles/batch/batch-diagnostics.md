@@ -4,28 +4,27 @@ description: 记录并分析 Azure Batch 帐户资源（诸如池和任务）的
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 349896a7114fba83d852b8bc066f4f7eb0a070ba
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aa86d6cf22562fa1fac7d45de20b28aa0eec33aa
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850304"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261672"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
  
-本文介绍如何使用 [Azure Monitor](../azure-monitor/overview.md) 的功能监视 Batch 帐户。 Azure Monitor 收集 Batch 帐户中资源的[指标](../azure-monitor/platform/data-platform-metrics.md)和[诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)。 以各种方法收集和使用此数据可以监视 Batch 帐户及诊断问题。 还可以配置[指标警报](../azure-monitor/platform/alerts-overview.md)，以便在某项指标达到指定值时收到通知。 
+本文介绍如何使用 [Azure Monitor](../azure-monitor/overview.md) 的功能监视 Batch 帐户。 Azure Monitor 收集 Batch 帐户中资源的[指标](../azure-monitor/platform/data-platform-metrics.md)和[诊断日志](../azure-monitor/platform/resource-logs-overview.md)。 以各种方法收集和使用此数据可以监视 Batch 帐户及诊断问题。 还可以配置[指标警报](../azure-monitor/platform/alerts-overview.md)，以便在某项指标达到指定值时收到通知。 
 
 ## <a name="batch-metrics"></a>Batch 指标
 
@@ -48,6 +47,7 @@ ms.locfileid: "58850304"
 1. 在门户中，单击“所有服务” > “Batch 帐户”，然后单击 Batch 帐户的名称。
 2. 在“监视”下，单击“指标”。
 3. 选择一个或多个指标。 如果需要，请使用“订阅”、“资源组”、“资源类型”和“资源”下拉菜单选择其他资源指标。
+    * 对于基于计数的指标（如 "专用核心计数" 或 "低优先级节点计数"），请使用 "平均" 聚合。 对于基于事件的指标（如 "池调整大小完成事件"），请使用 "计数" 聚合。
 
     ![Batch 指标](media/batch-diagnostics/metrics-portal.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "58850304"
 
 * 将 Batch 诊断日志事件流式传输到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)。 数据中心每秒可以接受数百万事件，然后可以使用任何实时分析提供程序转换并存储这些事件。 
 
-* 发送到诊断日志[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)，可以在其中对其进行分析或将其导出以在 Power BI 或 Excel 中分析。
+* 将诊断日志发送到[Azure Monitor 日志](../log-analytics/log-analytics-overview.md), 您可以在其中对这些日志进行分析, 或者将其导出以在 Power BI 或 Excel 中进行分析。
 
 > [!NOTE]
 > 使用 Azure 服务存储或处理诊断日志数据可能会产生额外的费用。 
@@ -101,15 +101,15 @@ ms.locfileid: "58850304"
 
 1. 在门户中，单击“所有服务” > “Batch 帐户”，然后单击 Batch 帐户的名称。
 2. 在“监视”下，单击“诊断日志” > “启用诊断”。
-3. 在中**诊断设置**，输入设置的名称并选择日志目标 （现有存储帐户、 事件中心或 Azure Monitor 日志）。 选择“ServiceLog”和/或“AllMetrics”。
+3. 在“诊断设置”中，输入设置的名称，并选择日志目标（现有存储帐户、事件中心或 Azure Monitor 日志）。 选择“ServiceLog”和/或“AllMetrics”。
 
     选择存储帐户时，请选择性地设置保留策略。 如果未指定保留天数，则数据在存储帐户的生存期内会一直保留。
 
-4. 单击“ **保存**”。
+4. 单击“保存”。
 
     ![Batch 诊断](media/batch-diagnostics/diagnostics-portal.png)
 
-用于启用日志收集的其他选项包括：在门户中使用 Azure Monitor 配置诊断设置、使用[资源管理器模板](../azure-monitor/platform/diagnostic-logs-stream-template.md)，或者使用 Azure PowerShell 或 Azure CLI。 请参阅[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/diagnostic-logs-overview.md#how-to-enable-collection-of-diagnostic-logs)。
+用于启用日志收集的其他选项包括：在门户中使用 Azure Monitor 配置诊断设置、使用[资源管理器模板](../azure-monitor/platform/diagnostic-settings-template.md)，或者使用 Azure PowerShell 或 Azure CLI。 请参阅[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/resource-logs-overview.md)。
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>访问存储中的诊断日志
@@ -119,23 +119,26 @@ ms.locfileid: "58850304"
 ```
 insights-{log category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/
 RESOURCEGROUPS/{resource group name}/PROVIDERS/MICROSOFT.BATCH/
-BATCHACCOUNTS/{batch account name}/y={four-digit numeric year}/
+BATCHACCOUNTS/{Batch account name}/y={four-digit numeric year}/
 m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
-示例：
+例如：
 
 ```
 insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-每个 PT1H.json Blob 文件包含 JSON 格式的事件，这些事件是在 Blob URL 中指定的小时（例如 h=12）内发生的。 在当前的小时内发生的事件将附加到 PT1H.json 文件。 分钟值始终为 00 (m=00)，因为诊断日志事件按小时细分成单个 blob。 （所有时间均是 UTC 时间。）
+每`PT1H.json`个 blob 文件都包含在 blob URL 中指定的小时内发生的 JSON 格式事件（ `h=12`例如）。 在当前的一个小时内，事件发生时`PT1H.json`将追加到该文件中。 分钟值（`m=00`）始终`00`为，因为诊断日志事件每小时分成单独的 blob。 （所有时间均是 UTC 时间。）
 
+下面是`PoolResizeCompleteEvent` `PT1H.json`日志文件中条目的示例。 它包括有关专用和低优先级节点的当前和目标数的信息，以及操作的开始和结束时间：
 
-有关存储帐户中诊断日志的架构的详细信息，请参阅[存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account)。
+```
+{ "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
+```
 
-若要以编程方式访问存储帐户中的日志，请使用存储 API。 
+有关存储帐户中诊断日志的架构的详细信息，请参阅[存档 Azure 诊断日志](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-resource-logs-in-storage-account)。 若要以编程方式访问存储帐户中的日志，请使用存储 API。 
 
 ### <a name="service-log-events"></a>服务日志事件
 Azure Batch 服务日志（如果已收集）包含 Azure Batch 服务在单个 Batch 资源（例如池或任务）的生存期内发出的事件。 Batch 发出的每个事件以 JSON 格式记录。 例如，下面是一个**池创建事件**样本的正文：

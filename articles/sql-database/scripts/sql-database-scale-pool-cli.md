@@ -7,21 +7,20 @@ ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: fd219e9aaf684600f76ed81eb45ed9a5bf78f62c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/25/2019
+ms.openlocfilehash: b378bef296f7cf6546887bcf760a4e14ed66a385
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359995"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569837"
 ---
 # <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>使用 CLI 在 Azure SQL 数据库中缩放弹性池
 
-此 Azure CLI 脚本示例创建弹性池、移动入池数据库，并更改弹性池计算大小。
+此 Azure CLI 脚本示例创建弹性池、移动共用数据库，并更改弹性池计算大小。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -38,7 +37,7 @@ ms.locfileid: "59359995"
 使用以下命令删除资源组及其相关的所有资源。
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name $resourceGroupName
 ```
 
 ## <a name="script-explanation"></a>脚本说明
@@ -50,7 +49,7 @@ az group delete --name myResourceGroup
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
 | [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create) | 创建弹性池。 |
-| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | 创建单一数据库或入池数据库。 |
+| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) | 创建单一数据库或共用数据库。 |
 | [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update) | 更新弹性池，在此示例中更改分配的 eDTU。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 删除资源组，包括所有嵌套的资源。 |
 

@@ -1,25 +1,18 @@
 ---
-title: Azure 市场和 AppSource 发布指南 | Azure
+title: Azure 市场和 AppSource 发布指南
 description: 适用于应用和服务发布者的 Azure 市场和 Microsoft AppSource 概述。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
-manager: nunoc
-editor: ''
-ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5c53545a6a5421bd20622fd132bb5c0b2c0940d9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731134"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962623"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure 市场和 AppSource 发布指南
 
@@ -59,7 +52,7 @@ ms.locfileid: "56731134"
 
 通过市场为你提供的见解和分析，深入了解商品性能。 获取有关市场活动效果、订单和付款以及如何最大化利用解决方案的营销活动的详细信息。
 
-### <a name="marketplace-go-to-market-benefits"></a>市场的市场推广权益 
+### <a name="commercial-marketplace-benefits"></a>商业应用商店权益 
 
 市场中的新上市商品有资格获得一组不同的免费权益，帮助合作伙伴在市场中拓展业务。 这些权益分为以下类别： 
 
@@ -69,9 +62,9 @@ ms.locfileid: "56731134"
 
 *   联合销售：通过市场开始或加速与 Microsoft 的合作销售。 访问程序和支持，促进与 Microsoft 团队之间的联合销售。
 
-在向市场[提交解决方案](https://azuremarketplace.microsoft.com/sell/signup)之后，我们的加入团队会联系你，为你的发布体验提供支持。
+在向市场[提交解决方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)之后，我们的加入团队会联系你，为你的发布体验提供支持。  有关详细信息，请参阅[如何创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
 
-有关 Microsoft 市场推广权益以及如何在市场中扩展业务的详细信息，请参阅 [Microsoft 市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
+详细了解你的[商业应用商店权益](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)。
 
 ## <a name="next-steps"></a>后续步骤
 

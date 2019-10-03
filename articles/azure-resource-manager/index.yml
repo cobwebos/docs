@@ -1,78 +1,127 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 资源管理器文档
+summary: 资源管理器模板是定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。
 metadata:
-  title: Azure 资源管理器文档 - 教程、示例、参考和资源
-  description: 了解如何使用 Resource Manager 以组的形式部署和管理解决方案资源，以便创建一个模板来以一致的、可重复的方式进行资源部署。
+  title: Azure 资源管理器文档
+  description: 了解如何开发 Azure 资源管理器模板并将其用于部署 Azure 资源
   services: azure-resource-manager
   ms.service: azure-resource-manager
-  keywords: '资源管理器, azure, devops, 教程, 示例, 参考, 文档'
-  author: mumian
-  manager: dougeby
-  ms.author: jgao
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 12/10/2018
-abstract:
-  description: 了解如何使用 Resource Manager 以组的形式部署、监视和管理解决方案资源。 教程、API 参考和其他文档介绍了如何设置资源组和创建模板，以进行一致、可重复的部署。
-sections:
-  - title: 快速入门
-    items:
-      - type: paragraph
-        text: 通过各种工具创建部署 Azure 资源所需的 Azure 资源管理器模板。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: 使用 Azure 门户生成模板
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: 使用 Visual Studio Code 创建模板
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: 使用 Visual Studio 创建模板
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy'
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何创建部署 Azure 资源所需的 Azure 资源管理器模板。
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts">利用资源管理器模板参考</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-multiple-instances">创建 Azure 资源的多个实例</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources">设置资源部署顺序</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-conditions">使用条件</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-key-vault">集成 Azure Key Vault</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-linked-templates">创建链接的模板</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions">部署虚拟机扩展</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac">部署 SQL 扩展</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-secure-artifacts">保护模板项目</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/deployment-manager-tutorial">使用安全部署做法</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot">排查模板部署问题</a>。'
-  - title: 示例
-    items:
-      - type: paragraph
-        text: 常见部署任务的示例配置模板。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://azure.microsoft.com/resources/templates/">Azure 快速入门模板</a>'
-          - html: '<a href="https://resources.azure.com/">Azure 资源浏览器（预览版）</a>'
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 模板
-            html: <p><a href="/azure/templates/">模板参考</a></p><p><a href="/azure/resource-group-template-functions">模板函数</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">UI 定义函数</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">UI 定义元素</a></p>
-          - title: 命令行
-            html: <p><a href="/cli/azure/resource">Azure CLI</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
-          - title: 语言
-            html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/api/overview/azure/resources?view=azure-python">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/resources/">REST API</a></p>
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 09/25/2019
+  ms.openlocfilehash: 4981000d942bfa49503a63ce2a82ec994efc3c6e
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71299513"
+landingContent:
+- title: Azure 资源管理器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是资源管理器？
+      url: resource-group-overview.md
+    - text: 什么是资源管理器模板？
+      url: template-deployment-overview.md
+  - linkListType: concept
+    links:
+    - text: 最佳做法
+      url: template-best-practices.md
+    - text: 部署模式
+      url: deployment-modes.md
+    - text: 链接模板
+      url: resource-group-linked-templates.md
+    - text: 订阅级部署
+      url: deploy-to-subscription.md
+    - text: 部署管理器
+      url: deployment-manager-overview.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建模板 - 门户
+      url: resource-manager-quickstart-create-templates-use-the-portal.md
+    - text: 创建模板 - VS Code
+      url: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+    - text: 创建模板 - Visual Studio
+      url: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: 部署多个实例
+      url: resource-manager-tutorial-create-multiple-instances.md
+    - text: 设置部署顺序
+      url: resource-manager-tutorial-create-templates-with-dependent-resources.md
+    - text: 集成密钥保管库
+      url: resource-manager-tutorial-use-key-vault.md
+- title: 开发模板
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 VS Code
+      url: resource-manager-tools-vs-code.md
+    - text: 使用函数
+      url: resource-group-template-functions.md
+    - text: 定义参数
+      url: template-parameters.md
+    - text: 定义变量
+      url: template-variables.md
+    - text: 定义资源
+      url: child-resource-name-type.md
+    - text: 定义输出
+      url: template-outputs.md
+  - linkListType: reference
+    links:
+    - text: Azure 快速入门模板
+      url: /resources/templates/
+- title: 部署模板
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 PowerShell
+      url: resource-group-template-deploy.md
+    - text: 使用 CLI
+      url: resource-group-template-deploy-cli.md
+    - text: 使用门户
+      url: resource-group-template-deploy-portal.md
+    - text: 使用 REST API
+      url: resource-group-template-deploy-rest.md
+- title: 管理模板
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 导出模板
+      url: export-template-portal.md
+    - text: CI/CD
+      url: vs-resource-groups-project-devops-pipelines.md
+- title: 管理资源
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 移动资源
+      url: resource-group-move-resources.md
+    - text: 标记资源
+      url: resource-group-using-tags.md
+    - text: 锁定资源
+      url: resource-group-lock-resources.md
+- title: 监视和故障排除
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 查看活动日志
+      url: resource-group-audit.md
+    - text: 查看部署操作
+      url: resource-manager-deployment-operations.md
+    - text: 排查部署错误
+      url: resource-manager-common-deployment-errors.md
+- title: 浏览参考内容
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 资源提供程序和类型
+      url: resource-manager-supported-services.md
+    - text: 模板参考
+      url: /azure/templates/

@@ -1,19 +1,18 @@
 ---
 title: 管理已向 Azure 文件同步注册的服务器 | Microsoft Docs
 description: 了解如何向 Azure 文件同步存储同步服务注册和注销 Windows Server。
-services: storage
-author: wmgries
+author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0f18467bfefdb27f2cb9c2c3f56942f679673c16
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9bbeda33f25aec15124bacb605513a3c52c3f07e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048430"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699275"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>管理已向 Azure 文件同步注册的服务器
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
@@ -25,7 +24,7 @@ ms.locfileid: "59048430"
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>向存储同步服务注册/注销服务器
 向 Azure 文件同步注册服务器可在 Windows Server 和 Azure 之间建立信任关系。 这种关系随后可用于创建服务器上的服务器终结点，该终结点表示应与 Azure 文件共享（也称为云终结点）同步的特定文件夹。 
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>系统必备
 若要向存储同步服务注册服务器，首先必须确保服务器满足以下先决条件：
 
 * 服务器必须运行支持的 Windows Server 版本。 有关详细信息，请参阅 [Azure 文件同步系统要求和互操作性](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)。
@@ -102,9 +101,7 @@ ms.locfileid: "59048430"
 也可以通过 PowerShell 执行服务器注册。 这是云解决方案提供商 (CSP) 订阅唯一支持的服务器注册方法：
 
 ```powershell
-Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
-Login-AzStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<your-tenant-id>"
-Register-AzStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
+Register-AzStorageSyncServer -ResourceGroupName "<your-resource-group-name>" -StorageSyncServiceName "<your-storage-sync-service-name>"
 ```
 
 ### <a name="unregister-the-server-with-storage-sync-service"></a>向存储同步服务注销服务器
@@ -135,17 +132,15 @@ Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 这还可以通过简单的 PowerShell 脚本来实现：
 
 ```powershell
-Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+Connect-AzAccount
 
-$accountInfo = Connect-AzAccount
-Login-AzStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
+$storageSyncServiceName = "<your-storage-sync-service>"
+$resourceGroup = "<your-resource-group>"
 
-$StorageSyncService = "<your-storage-sync-service>"
-
-Get-AzStorageSyncGroup -StorageSyncServiceName $StorageSyncService | ForEach-Object { 
-    $SyncGroup = $_; 
-    Get-AzStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name | Where-Object { $_.DisplayName -eq $env:ComputerName } | ForEach-Object { 
-        Remove-AzStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name -ServerEndpointName $_.Name 
+Get-AzStorageSyncGroup -ResourceGroupName $resourceGroup -StorageSyncServiceName $storageSyncServiceName | ForEach-Object { 
+    $syncGroup = $_; 
+    Get-AzStorageSyncServerEndpoint -ParentObject $syncGroup | Where-Object { $_.ServerEndpointName -eq $env:ComputerName } | ForEach-Object { 
+        Remove-AzStorageSyncServerEndpoint -InputObject $_ 
     } 
 }
 ```
@@ -192,7 +187,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ### <a name="use-windows-server-storage-qos"></a>使用 Windows Server 存储 QoS 
 如果 Azure 文件同步在 Windows Server 虚拟主机上运行的虚拟机中进行托管，可以使用存储 QoS（存储服务质量）来调整存储 IO 消耗量。 存储 QoS 策略可以设置为最大值（或限制，如上述的 StorageSyncNetwork 限制）或设置为最小值（或预留）。 如果设置为最小值而非最大值，则允许 Azure 文件同步在没有其他工作负载使用的情况下突发使用可用的存储宽带。 有关详细信息，请参阅[存储服务质量](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 - [规划 Azure 文件同步部署](storage-sync-files-planning.md)
 - [部署 Azure 文件同步](storage-sync-files-deployment-guide.md)
 - [监视 Azure 文件同步](storage-sync-files-monitoring.md)

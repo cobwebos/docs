@@ -1,86 +1,91 @@
 ---
-title: 将重定向 URL 设置为 b2clogin.com - Azure Active Directory B2C | Microsoft Docs
+title: 将重定向 Url 设置为 b2clogin.com-Azure Active Directory B2C
 description: 了解在 Azure Active Directory B2C 的重定向 URL 中使用 b2clogin.com。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/28/2019
-ms.author: davidmu
+ms.date: 08/17/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8188e36278bad9c93f709a5d7d9f831d1c19e6b4
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: dbc366daac89f44d4b084081590124f81ff9cc9c
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486841"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533740"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com
 
-在你的 Azure Active Directory (Azure AD) B2C 应用程序中设置用于注册和登录的标识提供者时，需要指定一个重定向URL。 过去使用的是 login.microsoftonline.com，现在应当使用 b2clogin.com。
+在 Azure Active Directory B2C (Azure AD B2C) 应用程序中设置标识提供程序以进行注册和登录时, 需要指定重定向 URL。 你不应再在应用程序和 Api 中引用*login.microsoftonline.com* 。 相反, 请将*b2clogin.com*用于所有新的应用程序, 并将现有应用程序从*login.microsoftonline.com*迁移到*b2clogin.com*。
 
-使用 b2clogin.com 可以提供更多优势，例如：
+## <a name="benefits-of-b2clogincom"></a>B2clogin.com 的优点
 
-- Microsoft 服务在 cookie 标头中使用的空间就会减少。
-- URL 不再包括对 Microsoft 的引用。 例如，`https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`。
+使用*b2clogin.com*作为重定向 URL 时:
 
->[!NOTE]
-> 可以按如下所示使用租户名称和租户 GUID:
-> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (这仍然引用`onmicrosoft.com`)
-> * `https://your-tenant-name.b2clogin.com/your-tenant-guid` （在此情况下没有 Microsoft 引用所有）
->
-> 但是，不能使用_的自定义域_为你的 Azure Active Directory B2C 租户，例如`https://your-tenant-name.b2clogin.com/your-custom-domain-name`会_不_工作。
+* Microsoft 服务在 cookie 标头中使用的空间就会减少。
+* 重定向 Url 不再需要包含对 Microsoft 的引用。
+* 自定义页面中支持 JavaScript 客户端代码 (当前为[预览版](user-flow-javascript-overview.md))。 由于安全限制, 如果你使用*login.microsoftonline.com*, 则将从自定义页中删除 JavaScript 代码和 HTML 窗体元素。
 
-使用 b2clogin.com 时，考虑可能需要更改的这些设置：
+## <a name="overview-of-required-changes"></a>所需更改的概述
 
-- 将标识提供者应用程序中的重定向 URL 设置为使用 b2clogin.com。 
-- 将 Azure AD B2C 应用程序设置为将 b2clogin.com 用于用户流引用和令牌终结点。 
-- 如果使用的是 MSAL，则需要将 **ValidateAuthority** 属性设置为 `false`。
-- 请确保更改[用户界面自定义](active-directory-b2c-ui-customization-custom-dynamic.md)的 CORS 设置中定义的任何“允许的源”。  
+若要将应用程序迁移到*b2clogin.com*, 可能需要进行一些修改:
 
-## <a name="change-redirect-urls"></a>更改重定向 URL
+* 将标识提供程序的应用程序中的重定向 URL 更改为引用*b2clogin.com*。
+* 更新 Azure AD B2C 应用程序, 以便在其用户流和令牌终结点引用中使用*b2clogin.com* 。
+* 更新在 CORS 设置中为[用户界面自定义](active-directory-b2c-ui-customization-custom-dynamic.md)定义的任何**允许的来源**。
 
-若要使用 b2clogin.com，请在标识提供者应用程序的设置中查找可信 URL 的列表，并将其更改为重定向回 Azure AD B2C。  目前，你可能已将其设置为重定向回某个 login.microsoftonline.com 站点。 
+## <a name="change-identity-provider-redirect-urls"></a>更改标识提供程序重定向 Url
 
-你需要更改重定向 URL 以便 `your-tenant-name.b2clogin.com` 经过授权。 请务必将 `your-tenant-name` 替换为你的 Azure AD B2C 租户的名称，并且，如果 URL 中存在 `/te`，请将其删除。 对于每个标识提供者，此 URL 略有不同，因此请检查相应的页面来获取确切的 URL。
+在已创建应用程序的每个标识提供者的网站上, 更改所有受信任的 url `your-tenant-name.b2clogin.com`以重定向到而不是*login.microsoftonline.com*。
 
-可以通过以下文章查找标识提供者的设置信息：
+你可以将两种格式用于 b2clogin.com 重定向 Url。 第一种方法是通过使用租户 ID (GUID) 替代租户域名, 使 "Microsoft" 不会出现在 URL 中的任何位置:
 
-- [Microsoft 帐户](active-directory-b2c-setup-msa-app.md)
-- [Facebook](active-directory-b2c-setup-fb-app.md)
-- [Google](active-directory-b2c-setup-goog-app.md)
-- [Amazon](active-directory-b2c-setup-amzn-app.md)
-- [LinkedIn](active-directory-b2c-setup-li-app.md)
-- [Twitter](active-directory-b2c-setup-twitter-app.md)
-- [GitHub](active-directory-b2c-setup-github-app.md)
-- [微博](active-directory-b2c-setup-weibo-app.md)
-- [QQ](active-directory-b2c-setup-qq-app.md)
-- [微信](active-directory-b2c-setup-wechat-app.md)
-- [Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md)
-- [自定义 OIDC](active-directory-b2c-setup-oidc-idp.md)
-
-## <a name="update-your-application"></a>更新应用程序
-
-Azure AD B2C 应用程序可能在多个地方引用了 `login.microsoftonline.com`，例如用户流引用和令牌终结点。  请确保授权终结点、令牌终结点和证书颁发者都已更新为使用 `your-tenant-name.b2clogin.com`。  
-
-## <a name="set-the-validateauthority-property"></a>设置 ValidateAuthority 属性
-
-如果使用的是 MSAL，请将 **ValidateAuthority** 属性设置为 `false`。 当 **ValidateAuthority** 设置为 `false` 时，允许重定向到 b2clogin.com。 
-
-以下示例展示了如何设置此属性：
-
-在[适用于 .Net 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) 中：
-
-```CSharp
- ConfidentialClientApplication client = new ConfidentialClientApplication(...); // can also be PublicClientApplication
- client.ValidateAuthority = false;
+```
+https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-在[适用于 JavaScript 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js) 中：
+第二个选项以的形式`your-tenant-name.onmicrosoft.com`使用租户域名。 例如：
 
-```Javascript
+```
+https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
+```
+
+对于这两种格式:
+
+* 将 `{your-tenant-name}` 替换为 Azure AD B2C 租户的名称。
+* 如果`/te` URL 中存在此项, 请将其删除。
+
+## <a name="update-your-applications-and-apis"></a>更新应用程序和 Api
+
+支持 Azure AD B2C 的应用程序和 api 中的代码可能`login.microsoftonline.com`在几个地方引用。 例如, 你的代码可能引用了用户流和令牌终结点。 更新以下内容以改为`your-tenant-name.b2clogin.com`引用:
+
+* 授权终结点
+* 令牌终结点
+* 令牌颁发者
+
+例如, Contoso 注册/登录策略的授权终结点现在为:
+
+```
+https://contosob2c.b2clogin.com/00000000-0000-0000-0000-000000000000/B2C_1_signupsignin1
+```
+
+## <a name="microsoft-authentication-library-msal"></a>Microsoft 身份验证库 (MSAL)
+
+### <a name="validateauthority-property"></a>ValidateAuthority 属性
+
+如果使用的是[MSAL.NET][msal-dotnet] v2 或更早版本,请在客户`false`端实例化上将 ValidateAuthority 属性设置为, 以允许重定向到*b2clogin.com*。 此设置对于 MSAL.NET v3 和更高版本不是必需的。
+
+```CSharp
+ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
+client.ValidateAuthority = false; // MSAL.NET v2 and earlier **ONLY**
+```
+
+如果你使用[的是 JavaScript MSAL][msal-js]:
+
+```JavaScript
 this.clientApplication = new UserAgentApplication(
   env.auth.clientId,
   env.auth.loginAuthority,
@@ -90,3 +95,9 @@ this.clientApplication = new UserAgentApplication(
   }
 );
 ```
+
+<!-- LINKS - External -->
+[msal-dotnet]: https://github.com/AzureAD/microsoft-authentication-library-for-dotnet
+[msal-dotnet-b2c]: https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics
+[msal-js]: https://github.com/AzureAD/microsoft-authentication-library-for-js
+[msal-js-b2c]: ../active-directory/develop/msal-b2c-overview.md

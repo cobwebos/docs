@@ -1,25 +1,19 @@
 ---
-title: 管理 Azure Marketplace 和 AppSource 发布者个人资料 |Microsoft Docs
+title: 管理 Azure Marketplace 和 AppSource 发布者个人资料 |Azure Marketplace
 description: 说明如何管理 Azure Marketplace 和 AppSource 发布者配置文件
 services: Azure, Marketplace, AppSource, Cloud Partner Portal
-documentationcenter: ''
 author: v-miclar
 manager: pbutlerm
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.author: pbutlerm
-ms.openlocfilehash: fd3f5750f050db0d57a8747b28798c04f666b077
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: c97bf10daa8f062cc833c7d7c5f7b0ca4835ca6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796505"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66257545"
 ---
 # <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>管理 Azure Marketplace 和 AppSource 发布者个人资料
 
@@ -55,7 +49,7 @@ ms.locfileid: "59796505"
 > [!NOTE]
 > 开发人员中心帐户注册是必需的商店付费 Sku 的发布。
 
-如果没有开发人员中心帐户，你可以创建一个帐户，如中所述[在开发人员中心中注册](../../register-dev-center.md)。  然后在云合作伙伴门户上将注册的电子邮件地址添加为产品/服务的所有者。 所有者仅可从“用户”部分将已注册的电子邮件地址添加到发布个人资料。 然后，使用相同的电子邮件地址登录到门户，并链接开发人员中心帐户。
+如果没有开发人员中心帐户，你可以创建一个帐户，如中所述[在开发人员中心中注册](https://docs.microsoft.com/azure/marketplace/register-dev-center)。  然后在云合作伙伴门户上将注册的电子邮件地址添加为产品/服务的所有者。 所有者仅可从“用户”  部分将已注册的电子邮件地址添加到发布个人资料。 然后，使用相同的电子邮件地址登录到门户，并链接开发人员中心帐户。
 
 ![发布者个人资料详细信息 - 发布者个人资料说明](./media/publisherprofiledescription.png)
 

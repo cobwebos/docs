@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 09/24/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3d76f955f8d8d3d2b269c09387717a6571adf8c3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: HT
+ms.openlocfilehash: 5a734963ced9daefda2b7b6f4a52fd9ef437eddc
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197867"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269283"
 ---
 虚拟网络网关使用称作“网关子网”的特定子网。 网关子网是虚拟网络 IP 地址范围的一部分，该范围是在配置虚拟网络时指定的。 网关子网包含虚拟网络网关资源和服务使用的 IP 地址。 要使 Azure 能够部署网关资源，必须将子网命名为“GatewaySubnet”。 不能指定要将网关资源部署到的其他子网。 如果没有名为“GatewaySubnet”的子网，则无法创建 VPN 网关。
 

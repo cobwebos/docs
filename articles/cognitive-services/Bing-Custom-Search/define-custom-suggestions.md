@@ -1,6 +1,6 @@
 ---
 title: 定义自定义自动建议的建议 - 必应自定义搜索
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 介绍如何为自定义自动建议配置自定义建议
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: bbad72b41a177bdbafd6cf98bfd2025190d98b16
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: b08eb49b0c4f9655326d2ab09ce39210205e28a9
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237631"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405105"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>配置自定义自动建议体验
 

@@ -4,27 +4,53 @@ description: 使用本文了解 Azure IoT Edge 的标准诊断技能，例如检
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 61c75c011ce25c3c7238ec75cf5ed579e677531f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58847543"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091375"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
-如果在你的环境中运行 Azure IoT Edge 时遇到问题，请使用本文作为指南来进行疑难解答并解决问题。 
+如果在你的环境中运行 Azure IoT Edge 时遇到问题，请使用本文作为指南来进行疑难解答并解决问题。
 
-## <a name="standard-diagnostic-steps"></a>标准诊断步骤 
+## <a name="run-the-iotedge-check-command"></a>运行 iotedge 的“check”命令
 
-遇到问题时，请通过查看容器日志和传递到设备以及来自设备的消息来详细了解 IoT Edge 设备的状态。 可以使用本部分中的命令和工具来收集信息。 
+排查 IoT Edge 问题时，第一步应该是使用 `check` 命令，针对常见问题执行一系列配置和连接性测试。 `check` 命令在[版本 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) 及更高版本中提供。
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>检查 IoT Edge 安全管理器的状态及其日志：
+可以运行 `check` 命令（如下所示），也可以包括 `--help` 标志，以便查看选项的完整列表：
+
+* 在 Linux 上：
+
+  ```bash
+  sudo iotedge check
+  ```
+
+* 在 Windows 上：
+
+  ```powershell
+  iotedge check
+  ```
+
+此工具运行的检查类型可以分类为：
+
+* 配置检查：检查妨碍 Edge 设备连接到云的详细情况，包括 *config.yaml* 和容器引擎出现的问题。
+* 连接检查：验证 IoT Edge 运行时能否访问主机设备上的端口，以及所有 IoT Edge 组件能否连接到 IoT 中心。
+* 生产就绪性检查：查找建议的生产最佳做法，例如设备证书颁发机构 (CA) 证书的状态以及模块日志文件配置。
+
+如需诊断检查的完整列表，请参阅[内置的故障排除功能](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)。
+
+## <a name="standard-diagnostic-steps"></a>标准诊断步骤
+
+如果遇到问题，可以通过查看容器日志和传递到设备以及来自设备的消息来详细了解 IoT Edge 设备的状态。 可以使用本部分中的命令和工具来收集信息。
+
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>检查 IoT Edge 安全管理器的状态及其日志
 
 在 Linux 上：
 - 若要查看 IoT Edge 安全管理器的状态，请执行以下命令：
@@ -72,14 +98,7 @@ ms.locfileid: "58847543"
 - 若要查看 IoT Edge 安全管理器的日志，请执行以下命令：
 
    ```powershell
-   # Displays logs from today, newest at the bottom.
- 
-   Get-WinEvent -ea SilentlyContinue `
-   -FilterHashtable @{ProviderName= "iotedged";
-     LogName = "application"; StartTime = [datetime]::Today} |
-   select TimeCreated, Message |
-   sort-object @{Expression="TimeCreated";Descending=$false} |
-   format-table -autosize -wrap
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>如果 IoT Edge 安全管理器未运行，请验证 yaml 配置文件
@@ -193,12 +212,14 @@ edgeAgent 模块将启动并成功运行大约一分钟，然后停止。 日志
 2017-11-28 18:46:49 [INF] - Edge agent attempting to connect to IoT Hub via AMQP over WebSocket... 
 ```
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 主机网络上的某个网络配置阻止 IoT Edge 代理到达该网络。 代理首先会尝试通过 AMQP（端口 5671）进行连接。 如果连接失败，它将尝试 WebSocket（端口 443）。
 
 IoT Edge 运行时会为每个模块设置要在其中进行通信的网络。 在 Linux 上，此网络是一个桥网络。 在 Windows 上，它使用 NAT。 此问题在其中的 Windows 容器使用 NAT 网络的 Windows 设备上更为常见。 
 
-### <a name="resolution"></a>解决方法
+**解决方法**
+
 确保分配给此桥/NAT 网络的 IP 地址具有通向 Internet 的路由。 有时候，主机上的 VPN 配置会替代 IoT Edge 网络。 
 
 ## <a name="iot-edge-hub-fails-to-start"></a>IoT Edge 中心未能启动
@@ -212,19 +233,23 @@ One or more errors occurred.
 Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allocated\"}\n) 
 ```
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 主机上的某个其他进程已绑定了端口 443。 IoT Edge 中心映射端口 5671 和 443 以在网关方案中使用。 如果另一进程已绑定了此端口，则此端口映射会失败。 
 
-### <a name="resolution"></a>解决方法
+**解决方法**
+
 找到并停止正在使用端口 443 的进程。 此进程通常是 Web 服务器。
 
 ## <a name="iot-edge-agent-cant-access-a-modules-image-403"></a>IoT Edge 代理无法访问某个模块的映像 (403)
 某个容器未能运行，并且 edgeAgent 日志显示了 403 错误。 
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 Iot Edge 代理无权访问某个模块的映像。 
 
-### <a name="resolution"></a>解决方法
+**解决方法**
+
 确保在部署清单中正确指定了注册表凭据
 
 ## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>由于主机名无效，IoT Edge 安全守护程序失败
@@ -235,10 +260,12 @@ Iot Edge 代理无权访问某个模块的映像。
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
 ```
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通常不具有长主机名，但此问题在虚拟机上更常见。 特别是为 Azure 中托管的 Windows 虚拟机自动生成的主机名，往往会很长。 
 
-### <a name="resolution"></a>解决方法
+**解决方法**
+
 看到此错误时，可以配置虚拟机的 DNS 名称，然后在设置命令中将 DNS 名称设置为主机名。
 
 1. 在 Azure 门户中，导航到虚拟机的概述页面。 
@@ -265,10 +292,12 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
 ## <a name="stability-issues-on-resource-constrained-devices"></a>有关资源受限设备的稳定性问题 
 你可能会在 Raspberry Pi 等受限设备上遇到稳定性问题，尤其是在这些设备用作网关时。 症状包括 Edge 中心模块出现“内存不足”异常、下游设备无法连接或者设备在几小时后停止发送遥测消息。
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 IoT Edge 中心是 IoT Edge 运行时的一部分，默认情况下已针对性能进行了优化，并尝试分配大块内存。 这种优化对于受限 Edge 设备并不理想，并可能会导致稳定性问题。
 
-### <a name="resolution"></a>解决方法
+**解决方法**
+
 对于 IoT Edge 中心，请将环境变量 **OptimizeForPerformance** 设置为 **false**。 可通过两种方式实现此目的：
 
 在 UI 中： 
@@ -297,10 +326,12 @@ IoT Edge 中心是 IoT Edge 运行时的一部分，默认情况下已针对性�
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>无法在 Windows 上获取 IoT Edge 守护程序日志
 如果在 Windows 上使用 `Get-WinEvent` 时收到 EventLogException，请检查注册表项。
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 `Get-WinEvent` PowerShell 命令依赖于存在的注册表项来按特定 `ProviderName` 查找日志。
 
-### <a name="resolution"></a>解决方法
+**解决方法**
+
 设置 IoT Edge 守护程序的注册表项。 创建包含以下内容的 **iotedge.reg** 文件，再双击该文件或使用 `reg import iotedge.reg` 命令将其导入到 Windows 注册表中：
 
 ```
@@ -320,11 +351,15 @@ Windows Registry Editor Version 5.00
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
 ```
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 出于安全考虑，IoT Edge 守护程序会强制对连接到 edgeHub 的所有模块执行进程识别。 它会验证某个模块发送的所有消息是否来自该模块的主进程 ID。 如果发送消息的模块的进程 ID 不同于最初建立的进程 ID，则守护程序会拒绝该消息并返回 404 错误消息。
 
-### <a name="resolution"></a>解决方法
-确保自定义 IoT Edge 模块始终使用相同的进程 ID 向 Edge 中心发送消息。 例如，请确保`ENTRYPOINT`而不是`CMD`命令在 Docker 文件中，由于`CMD`将会导致一个进程模块的 ID 和 bash 命令运行的主要程序，而另一个进程 ID`ENTRYPOINT`将导致单个进程 id。
+**解决方法**
+
+从版本 1.0.7 开始，所有模块进程都有权进行连接。 如果无法升级到 1.0.7，请完成以下步骤。 有关详细信息，请参阅 [1.0.7 版本更改日志](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1)。
+
+确保自定义 IoT Edge 模块始终使用相同的进程 ID 向 Edge 中心发送消息。 例如，确保在 Docker 文件中指定 `ENTRYPOINT` 而不是 `CMD` 命令，因为 `CMD` 会导致模块使用一个进程 ID、运行主程序的 bash 命令使用另一个进程 ID，而 `ENTRYPOINT` 则导致生成单个进程 ID。
 
 
 ## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>IoT Edge 部署的防火墙和端口配置规则
@@ -332,7 +367,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地服务器来与 Az
 
 IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的模块，但仍依赖于底层计算机和网络配置。 因此，必须确保设置适当的网络和防火墙规则来保护 Edge 与云之间的通信。 为托管 Azure IoT Edge 运行时的底层服务器配置防火墙规则时，可参考下表中的指导：
 
-|协议|端口|传入|传出|指南|
+|Protocol|Port|传入|传出|指南|
 |--|--|--|--|--|
 |MQTT|8883|阻止（默认）|阻止（默认）|<ul> <li>使用 MQTT 作为通信协议时，请将传出（出站）端口配置为“打开”。<li>IoT Edge 不支持将端口 1883 用于 MQTT。 <li>应阻止传入（入站）连接。</ul>|
 |AMQP|5671|阻止（默认）|打开（默认）|<ul> <li>IoT Edge 的默认通信协议。 <li> 如果未为其他支持的协议配置 Azure IoT Edge，或者 AMQP 是所需的通信协议，则必须将此端口配置为“打开”。<li>IoT Edge 不支持将端口 5672 用于 AMQP。<li>当 Azure IoT Edge 使用不同的受 IoT 中心支持的协议时，请阻止此端口。<li>应阻止传入（入站）连接。</ul></ul>|
@@ -342,10 +377,12 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 设备在启动部署中定义的模块时出现问题。 只有 edgeAgent 在运行，但它持续报告“配置文件为空...”。
 
-### <a name="potential-root-cause"></a>潜在的根本原因
+**根本原因**
+
 默认情况下，IoT Edge 在模块自身的隔离容器网络中启动模块。 在此专用网络中，设备可能会遇到 DNS 名称解析方面的问题。
 
-### <a name="resolution"></a>解决方法
+**解决方法**
+
 
 **选项 1：在容器引擎设置中设置 DNS 服务器**
 
@@ -361,10 +398,10 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 将 `daemon.json` 放入平台上的适当位置： 
 
-| 平台 | 位置 |
+| 平台 | Location |
 | --------- | -------- |
 | Linux | `/etc/docker` |
-| 包含 Windows 容器的 Windows 主机 | `C:\ProgramData\iotedge-moby-data\config` |
+| 包含 Windows 容器的 Windows 主机 | `C:\ProgramData\iotedge-moby\config` |
 
 如果该位置已包含 `daemon.json` 文件，请在其中添加 **dns** 密钥，然后保存该文件。
 

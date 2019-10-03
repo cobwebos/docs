@@ -5,28 +5,28 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/10/2019
-ms.author: iainfoulds
-ms.openlocfilehash: 558a3b6dc15293ab9a0895aa4f9f709ba2d0a51f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
-ms.translationtype: HT
+ms.date: 05/31/2019
+ms.author: iainfou
+ms.openlocfilehash: 9cc06df5d2a66ede18af52c13201c731c12e2049
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214617"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614505"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>在 Azure Kubernetes 服务 (AKS) 群集中缩放节点数
 
-如果资源需要更改应用程序，可以手动缩放 AKS 群集以运行不同数量的节点。 节点数减少时，节点会被仔细[封锁和排除][kubernetes-drain]，尽量避免对正在运行的应用程序造成中断。 节点数增加时，`az` 命令将等待，直到 Kubernetes 群集将节点标记为 `Ready`。
+如果资源需要更改应用程序，可以手动缩放 AKS 群集以运行不同数量的节点。 当向下缩放时，节点会被仔细[封锁和排除][kubernetes-drain]以尽量减少到正在运行的应用程序造成中断。 当规模扩大时，AKS 等待，直到节点标`Ready`Kubernetes 群集然后 pod 安排它们。
 
 ## <a name="scale-the-cluster-nodes"></a>缩放群集节点
 
-首先，使用 [az aks show][az-aks-show] 命令获取节点池的名称。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的节点池名称：
+首先，获取*名称*的节点池使用[az aks 显示][az-aks-show]命令。 下面的示例获取名为群集的节点池名称*myAKSCluster*中*myResourceGroup*资源组：
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
 ```
 
-以下示例输出表明名称为 nodepool1：
+以下示例输出表明名称为 nodepool1   ：
 
 ```console
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
@@ -44,13 +44,13 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query agent
 ]
 ```
 
-使用 `az aks scale` 命令缩放群集节点。 以下示例将名为 *myAKSCluster* 的群集缩放为单个节点。 提供前一个命令中自己的 --nodepool-name，如 nodepool1：
+使用[az aks 规模][az-aks-scale]命令缩放群集节点。 以下示例将名为 *myAKSCluster* 的群集缩放为单个节点。 提供前一个命令中自己的 --nodepool-name，如 nodepool1   ：
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
 ```
 
-以下示例输出显示群集已成功缩放为一个节点，如 agentPoolProfiles 部分中所示：
+以下示例输出显示群集已成功缩放为一个节点，如 agentPoolProfiles 部分中所示  ：
 
 ```json
 {
@@ -68,49 +68,13 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1
       "vnetSubnetId": null
     }
   ],
-  "dnsPrefix": "myAKSClust-myResourceGroup-19da35",
-  "enableRbac": true,
-  "fqdn": "myaksclust-myresourcegroup-19da35-0d60b16a.hcp.eastus.azmk8s.io",
-  "id": "/subscriptions/<guid>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.9.11",
-  "linuxProfile": {
-    "adminUsername": "azureuser",
-    "ssh": {
-      "publicKeys": [
-        {
-          "keyData": "[...]"
-        }
-      ]
-    }
-  },
-  "location": "eastus",
-  "name": "myAKSCluster",
-  "networkProfile": {
-    "dnsServiceIp": "10.0.0.10",
-    "dockerBridgeCidr": "172.17.0.1/16",
-    "networkPlugin": "kubenet",
-    "networkPolicy": null,
-    "podCidr": "10.244.0.0/16",
-    "serviceCidr": "10.0.0.0/16"
-  },
-  "nodeResourceGroup": "MC_myResourceGroup_myAKSCluster_eastus",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroup",
-  "servicePrincipalProfile": {
-    "clientId": "[...]",
-    "secret": null
-  },
-  "tags": null,
-  "type": "Microsoft.ContainerService/ManagedClusters"
+  [...]
 }
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-学习 AKS 教程，了解有关部署和管理 AKS 的详细信息。
-
-> [!div class="nextstepaction"]
-> [AKS 教程][aks-tutorial]
+在本文中，你手动缩放 AKS 群集来增加或减少的节点数。 此外可以使用[群集自动缩放程序][cluster-autoscaler]（目前以预览版在 AKS 中） 进行自动缩放你的群集。
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
@@ -118,3 +82,5 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1
 <!-- LINKS - internal -->
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [az-aks-show]: /cli/azure/aks#az-aks-show
+[az-aks-scale]: /cli/azure/aks#az-aks-scale
+[cluster-autoscaler]: cluster-autoscaler.md

@@ -1,28 +1,28 @@
 ---
 title: 迁移到 V3 - 文本翻译 API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何将文本翻译 API 从 V2 迁移到 V3。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: d3ffdcb79a56bf2f9f4a6eb192293bbc6bab7dab
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: swmachan
+ms.openlocfilehash: 9ce9dc330ec1b0c32ce045437fadb5d8c191529e
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916710"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595243"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>将文本翻译 API V2 迁移到 V3
 
 > [!NOTE]
-> V2 已于 2018 年 4 月 30 日弃用，并将在 2019 年 4 月 30 日彻底淘汰。
+> V2 已于2018年4月30日弃用。 请将你的应用程序迁移到 V3, 以便充分利用 V3 中专门提供的新功能。
 > 
-> Microsoft Translator 中心将在 2019 年 4 月 30 日停用。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
+> Microsoft Translator 中心将在 2019 5 月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
 
 Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本包括新的功能、弃用了一些方法，并提供与 Microsoft Translator 服务相互发送和接收数据时所用的新格式。 本文档提供有关将应用程序更改为使用 V3 的信息。 
 
@@ -110,7 +110,7 @@ Microsoft Translator V3 的定价方式与 V2 相同：按字符（包括空格�
 
 > [!NOTE]
 > 
-> Microsoft Translator 中心将在 2019 年 4 月 30 日停用。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。   
+> Microsoft Translator 中心将在 2019 5 月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。   
 
 Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 Microsoft Translator Hub 一起使用。 Translator Hub 仅支持传统的统计机器翻译。 现在，可以使用 Custom Translator 对神经翻译进行自定义。 [详细了解如何自定义神经机器翻译](custom-translator/overview.md)
 
@@ -130,7 +130,6 @@ Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 
 如果正在使用 api.cognitive.microsofttranslator.com 终结点，则使用的是文本翻译 API 版本 3。
 
 **文本翻译 API 版本 2**
-* 已弃用。 它将于 2019 年 4 月 30 日停用。 
 * 不满足所有 ISO 20001、20018 和 SOC 3 认证要求。 
 * 不可用于调用已使用 Translator 自定义功能自定义的神经网络翻译系统。
 * 提供对使用 Microsoft Translator Hub 创建的自定义翻译系统的访问权限。

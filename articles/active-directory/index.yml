@@ -1,0 +1,264 @@
+### YamlMime:Hub
+title: Azure Active Directory 文档
+summary: Azure Active Directory (Azure AD) 是多租户、基于云的标识和访问管理服务。
+brand: azure
+metadata:
+  title: Azure Active Directory 文档
+  description: Azure Active Directory (Azure AD) 是 Microsoft 推出的基于云的多租户目录，也是标识管理服务，可以将核心目录服务、应用程序访问管理和标识保护组合到单个解决方案中。
+  ms.service: active-directory
+  ms.topic: hub-page
+  ms.collection: M365-identity-device-management
+  author: mtillman
+  ms.author: mtillman
+  manager: daveba
+  ms.date: 07/27/2019
+  ms.openlocfilehash: f3e8495671b56eda804e33b78667cf75cc2f8e70
+  ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/29/2019
+  ms.locfileid: "68607627"
+highlightedContent:
+  items:
+  - title: 什么是 Azure AD？
+    itemType: overview
+    url: ./fundamentals/active-directory-whatis.md
+  - title: Azure AD 中的新增功能
+    itemType: whats-new
+    url: ./fundamentals/whats-new.md
+  - title: 向用户分配角色
+    itemType: how-to-guide
+    url: ./fundamentals/active-directory-users-assign-role-azure-portal.md
+  - title: 创建组并添加成员
+    itemType: how-to-guide
+    url: ./fundamentals/add-users-azure-active-directory.md
+  - title: Azure AD 部署清单
+    itemType: concept
+    url: ./fundamentals/active-directory-deployment-checklist-p2.md
+  - title: 将订阅添加到租户
+    itemType: how-to-guide
+    url: ./fundamentals/active-directory-how-subscriptions-associated-directory.md
+conceptualContent:
+  items:
+  - title: 应用程序管理
+    links:
+    - url: ./manage-apps/what-is-single-sign-on.md
+      itemType: concept
+      text: 什么是单一登录 (SSO)？
+    - url: ./manage-apps/user-provisioning.md
+      itemType: tutorial
+      text: 自动用户预配
+    - url: ./manage-apps/application-proxy.md
+      itemType: concept
+      text: 本地应用的应用程序代理
+    footerLink:
+      url: ./manage-apps/index.yml
+      text: 另请参阅
+  - title: Authentication
+    links:
+    - url: ./authentication/concept-mfa-howitworks.md
+      itemType: concept
+      text: 工作原理：Azure MFA
+    - url: ./authentication/concept-sspr-howitworks.md
+      itemType: concept
+      text: Azure AD 自助密码重置
+    - url: ./authentication/concept-password-ban-bad.md
+      itemType: concept
+      text: Azure AD 密码保护
+    footerLink:
+      url: ./authentication/index.yml
+      text: 另请参阅
+  - title: 企业对企业 (B2B)
+    links:
+    - url: ./b2b/what-is-b2b.md
+      itemType: overview
+      text: 什么是 Azure AD B2B？
+    - url: ./b2b/add-users-administrator.md
+      itemType: how-to-guide
+      text: 在门户中添加来宾用户
+    - url: ./b2b/o365-external-user.md
+      itemType: concept
+      text: B2B 和 Office 365 共享
+    footerLink:
+      url: ./b2b/index.yml
+      text: 另请参阅
+  - title: 企业对客户 (B2C)
+    links:
+    - url: ../active-directory-b2c/active-directory-b2c-overview.md
+      itemType: overview
+      text: 什么是 Azure AD B2C？
+    - url: ../active-directory-b2c/tutorial-create-tenant.md
+      itemType: tutorial
+      text: 创建 Azure AD B2C 租户
+    - url: ../active-directory-b2c/active-directory-b2c-get-started-custom.md
+      itemType: how-to-guide
+      text: Azure AD B2C 中的自定义策略
+    footerLink:
+      url: ../active-directory-b2c/index.yml
+      text: 另请参阅
+  - title: 条件性访问
+    links:
+    - url: ./conditional-access/overview.md
+      itemType: overview
+      text: 什么是条件访问？
+    - url: ./conditional-access/app-based-mfa.md
+      itemType: quickstart
+      text: 要求对特定应用执行 MFA
+    - url: ./conditional-access/location-condition.md
+      itemType: concept
+      text: 基于位置的条件
+    footerLink:
+      url: ./conditional-access/index.yml
+      text: 另请参阅
+  - title: 开发人员
+    links:
+    - url: ./develop/about-microsoft-identity-platform.md
+      itemType: overview
+      text: 关于 Microsoft 标识平台
+    - url: ./develop/v2-oauth2-auth-code-flow.md
+      itemType: concept
+      text: OAuth 2.0 代码流授权
+    - url: ./develop/quickstart-register-app.md
+      itemType: quickstart
+      text: 将应用注册到 Microsoft 标识平台
+    footerLink:
+      url: ./develop/index.yml
+      text: 另请参阅
+  - title: 设备管理
+    links:
+    - url: ./devices/overview.md
+      itemType: overview
+      text: 什么是设备管理？
+    - url: ./devices/hybrid-azuread-join-plan.md
+      itemType: how-to-guide
+      text: 计划混合 Azure AD 加入
+    - url: ./devices/azureadjoin-plan.md
+      itemType: how-to-guide
+      text: 计划 Azure AD 加入
+    footerLink:
+      url: ./devices/index.yml
+      text: 另请参阅
+  - title: 域服务
+    links:
+    - url: ../active-directory-domain-services/active-directory-ds-overview.md
+      itemType: overview
+      text: 什么是 Azure AD 域服务？
+    - url: ../active-directory-domain-services/active-directory-ds-getting-started.md
+      itemType: quickstart
+      text: 启用 Azure AD 域服务
+    - url: ../active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy.md
+      itemType: how-to-guide
+      text: 管理组策略
+    footerLink:
+      url: ../active-directory-domain-services/index.yml
+      text: 另请参阅
+  - title: 企业用户
+    links:
+    - url: ./users-groups-roles/groups-create-rule.md
+      itemType: how-to-guide
+      text: 创建动态组
+    - url: ./users-groups-roles/groups-settings-v2-cmdlets.md
+      itemType: how-to-guide
+      text: 使用 PowerShell 管理 Azure AD 组
+    - url: ./users-groups-roles/directory-service-limits-restrictions.md
+      itemType: reference
+      text: Azure AD 服务限制和局限性
+    footerLink:
+      url: ./users-groups-roles/index.yml
+      text: 另请参阅
+  - title: 混合标识
+    links:
+    - url: ./hybrid/whatis-hybrid-identity.md
+      itemType: overview
+      text: 什么是混合标识？
+    - url: ./hybrid/how-to-connect-sso.md
+      itemType: how-to-guide
+      text: 将 Azure AD Connect 用于单一登录
+    - url: ./hybrid/how-to-connect-install-custom.md
+      itemType: how-to-guide
+      text: Azure AD Connect 自定义安装
+    footerLink:
+      url: ./hybrid/index.yml
+      text: 另请参阅
+  - title: 标识治理
+    links:
+    - url: ./governance/create-access-review.md
+      itemType: how-to-guide
+      text: 创建访问评审
+    - url: ./governance/perform-access-review.md
+      itemType: how-to-guide
+      text: 开始访问审阅
+    - url: ./conditional-access/terms-of-use.md
+      itemType: how-to-guide
+      text: 需要使用条款
+    footerLink:
+      url: ./governance/index.yml
+      text: 另请参阅
+  - title: 标识保护
+    links:
+    - url: ./identity-protection/overview.md
+      itemType: overview
+      text: 什么是“标识保护”？
+    - url: ./identity-protection/quickstart-sign-in-risk-policy.md
+      itemType: quickstart
+      text: 检测到会话风险时阻止访问
+    - url: ./identity-protection/howto-unblock-user.md
+      itemType: how-to-guide
+      text: 如何取消阻止用户
+    footerLink:
+      url: ./identity-protection/index.yml
+      text: 另请参阅
+  - title: Azure 资源的托管标识
+    links:
+    - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
+      itemType: tutorial
+      text: 使用 Windows VM 访问 Azure SQL
+    - url: ./managed-identities-azure-resources/how-to-use-vm-token.md
+      itemType: how-to-guide
+      text: 将 Azure VM 用于获取令牌
+    - url: ./managed-identities-azure-resources/services-support-managed-identities.md
+      itemType: concept
+      text: 支持托管标识的服务
+    footerLink:
+      url: ./managed-identities-azure-resources/index.yml
+      text: 另请参阅
+  - title: Privileged Identity Management (PIM)
+    links:
+    - url: ./privileged-identity-management/pim-getting-started.md
+      itemType: how-to-guide
+      text: 开始使用 PIM
+    - url: ./privileged-identity-management/pim-how-to-activate-role.md
+      itemType: how-to-guide
+      text: 激活我的目录角色
+    - url: ./privileged-identity-management/pim-how-to-add-role-to-user.md
+      itemType: how-to-guide
+      text: 分配目录角色
+    footerLink:
+      url: ./privileged-identity-management/index.yml
+      text: 另请参阅
+  - title: 报表和监视
+    links:
+    - url: ./reports-monitoring/concept-audit-logs.md
+      itemType: concept
+      text: 审核日志
+    - url: ./reports-monitoring/concept-sign-ins.md
+      itemType: concept
+      text: 登录日志
+    - url: ./reports-monitoring/reference-sign-ins-error-codes.md
+      itemType: reference
+      text: 登录错误代码参考
+    footerLink:
+      url: ./reports-monitoring/index.yml
+      text: 另请参阅
+additionalContent:
+  sections:
+  - items:
+    - title: Microsoft 365
+      summary: 探索 Microsoft 365，一个包括 Azure AD 的完整解决方案。
+      url: https://docs.microsoft.com/microsoft-365/
+    - title: Azure AD PowerShell
+      summary: 了解如何安装和使用 Azure AD PowerShell 模块。
+      url: https://docs.microsoft.com/powershell/module/azuread/
+    - title: 用于 Azure AD 的 Azure CLI 命令
+      summary: 在 CLI 参考中查找 Azure AD 命令。
+      url: https://docs.microsoft.com/cli/azure/ad

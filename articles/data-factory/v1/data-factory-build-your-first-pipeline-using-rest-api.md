@@ -3,27 +3,24 @@ title: 构建第一个数据工厂 (REST) | Microsoft Docs
 description: 本教程使用数据工厂 REST API 创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 7e0a2465-2d85-4143-a4bb-42e03c273097
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 5dcf31adc5e8bdf810d484f07ebeb6f23acbf452
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 5fe554371e54c6f67ae714084f110319b43fe54c
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487798"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140439"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
-> * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
@@ -55,7 +52,7 @@ ms.locfileid: "58487798"
   1. 在 Azure Active Directory 中创建名为 **ADFGetStartedApp** 的 Web 应用程序。
   2. 获取**客户端 ID** 和**机密密钥**。
   3. 获取 **租户 ID**。
-  4. 将 **ADFGetStartedApp** 应用程序分配到“数据工厂参与者”角色。
+  4. 将 **ADFGetStartedApp** 应用程序分配到“数据工厂参与者”角色。 
 * 安装 [Azure PowerShell](/powershell/azure/overview)。
 * 启动 **PowerShell** 并运行以下命令。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
   1. 运行 **Connect-AzAccount** 并输入用于登录 Azure 门户的用户名和密码。
@@ -125,8 +122,8 @@ ms.locfileid: "58487798"
 
 | 属性 | 说明 |
 |:--- |:--- |
-| ClusterSize |HDInsight 群集的大小。 |
-| TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
+| clusterSize |HDInsight 群集的大小。 |
+| timeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
 | linkedServiceName |指定用于存储 HDInsight 生成的日志的存储帐户 |
 
 请注意以下几点：
@@ -317,13 +314,13 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 请注意以下几点：
 
-* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘FirstDataFactoryREST’ 不可用”，请执行以下步骤：
+* Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘FirstDataFactoryREST’ 不可用”，请执行以下步骤： 
   1. 在 **datafactory.json** 文件中更改名称（例如，yournameFirstDataFactoryREST）。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
   2. 在分配 **$cmd** 变量值的第一个命令中，将 FirstDataFactoryREST 替换为新名称，并运行该命令。
   3. 运行以下两个命令来调用 REST API，创建数据工厂并列显操作结果。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，再尝试重新发布：
+* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”  ，请执行下列操作之一，再尝试重新发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
@@ -465,7 +462,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 >
 >
 
-运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。 当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  创建按需 HDInsight 群集通常需要一段时间。
+运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。   当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  创建按需 HDInsight 群集通常需要一段时间。
 
 ![输出数据](./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png)
 
@@ -474,7 +471,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 >
 >
 
-可以使用 Azure 门户监视切片和排除任何问题。 有关详细信息，请参阅 [Monitor pipelines using Azure portal](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline) （使用 Azure 门户监视管道）。
+可以使用 Azure 门户监视切片和排除任何问题。 有关详细信息，请参阅 [Monitor pipelines using Azure portal](data-factory-monitor-manage-pipelines.md) （使用 Azure 门户监视管道）。
 
 ## <a name="summary"></a>摘要
 本教程通过在 HDInsight hadoop 群集上运行 Hive 脚本，创建了一个 Azure 数据工厂来处理数据。 在 Azure 门户中使用数据工厂编辑器执行了以下步骤：

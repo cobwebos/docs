@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b9f4cd78288d1b9868a823c5e0ccd0b68b324229
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400247"
 documentType: LandingData
-title: Windows 虚拟桌面预览版文档
+title: Windows 虚拟桌面文档
 metadata:
-  title: Windows 虚拟桌面预览版文档 - 教程、快速入门和 API 参考 | Microsoft Docs
-  description: 适用于 Azure 的 Windows 虚拟桌面预览版是在云中虚拟化的多用户 Windows 10 企业版体验。
+  title: Windows 虚拟桌面文档 - 教程、快速入门和 API 参考 | Microsoft Docs
+  description: 适用于 Azure 的 Windows 虚拟桌面是已在云中虚拟化的多用户 Windows 10 企业版体验。
   author: Heidilohr
   manager: daveba
   ms.service: virtual-desktop
@@ -20,28 +14,28 @@ metadata:
 abstract:
   description: 为任何设备提供虚拟桌面体验和远程应用。 将 Microsoft 365 和 Azure 结合在一起，以非凡的规模和更低的 IT 成本为用户提供唯一的多会话 Windows 10 体验。
 sections:
-- title: 概述
-  items:
-  - type: paragraph
-    text: 了解 Windows 虚拟桌面预览版及其使用方法。 教程、操作方法、参考内容等演示了如何设置主机池和租户并将角色分配给 Windows 虚拟桌面环境的用户。
-  - type: list
-    style: unordered
+  - title: 概述
     items:
-    - html: <a href="/azure/virtual-desktop/overview">什么是 Windows 虚拟桌面预览版？</a>
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何安装和配置 Windows 虚拟桌面，以及如何在准备好以后连接到客户端。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 了解 Windows 虚拟桌面及其使用方法。 教程、操作方法、参考内容等演示了如何设置主机池和租户并将角色分配给 Windows 虚拟桌面环境的用户。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/virtual-desktop/overview">什么是 Windows 虚拟桌面？</a>
+  - title: 分步教程
     items:
-    - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">在 Windows 虚拟桌面中创建租户</a>
-    - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">通过 Azure 市场创建主机池</a>
-    - html: <a href="/azure/virtual-desktop/manage-app-groups">管理 Windows 虚拟桌面的应用组</a>
-    - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">使用 PowerShell 创建服务主体和角色分配</a>
-- title: 引用
-  items:
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何安装和配置 Windows 虚拟桌面，以及如何在准备好以后连接到客户端。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">在 Windows 虚拟桌面中创建租户</a>
+          - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">通过 Azure 市场创建主机池</a>
+          - html: <a href="/azure/virtual-desktop/manage-app-groups">管理 Windows 虚拟桌面的应用组</a>
+          - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">使用 PowerShell 创建服务主体和角色分配</a>
+  - title: 引用
     items:
-    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>

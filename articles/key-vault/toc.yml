@@ -17,7 +17,7 @@
       href: quick-create-net.md
     - name: 设置和检索机密 - Node.js
       href: quick-create-node.md
-    - name: 设置和检索机密 - 资源管理器模板
+    - name: 设置和检索机密 - 模板
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: 教程
@@ -42,10 +42,12 @@
               href: tutorial-python-windows-virtual-machine.md
     - name: 存储帐户密钥
       items:
-        - name: 将 Azure CLI 用于托管存储帐户密钥
+        - name: 通过 Azure CLI 管理存储帐户密钥
           href: key-vault-ovw-storage-keys.md
-        - name: 将 PowerShell 用于托管存储帐户密钥
+        - name: 通过 PowerShell 管理存储帐户密钥
           href: key-vault-overview-storage-keys-powershell.md
+        - name: 通过编写代码提取共享访问签名令牌
+          href: storage-keys-sas-tokens-code.md
     - name: Azure 容器
       href: ../container-instances/container-instances-managed-identity.md
     - name: Azure 资源管理器模板
@@ -58,18 +60,18 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
 - name: 概念
   items:
+    - name: 基本概念
+      href: basic-concepts.md
     - name: 安全
       items:
         - name: 安全概述
           href: overview-security.md
-        - name: 常见安全属性
-          href: key-vault-security-attributes.md
         - name: 安全体系
           href: key-vault-ovw-security-worlds.md
         - name: 保护密钥保管库
           href: key-vault-secure-your-key-vault.md
-    - name: 什么是密钥保管库？
-      href: key-vault-whatis.md
+        - name: 内置安全控件
+          href: key-vault-security-controls.md
     - name: 软删除
       href: key-vault-ovw-soft-delete.md
     - name: 限制
@@ -90,10 +92,18 @@
           href: create-certificate.md
         - name: 监视和管理证书创建
           href: create-certificate-scenarios.md
-    - name: Azure 的常见安全属性
-      href: key-vault-security-attributes.md
 - name: 操作指南
   items:
+    - name: 安全
+      items:
+        - name: 建议
+          href: security-recommendations.md
+    - name: Authentication
+      items:
+        - name: 使用应用服务托管标识
+          href: managed-identity.md
+        - name: 使用访问控制策略
+          href: key-vault-group-permissions-for-apps.md
     - name: Azure Key Vault 日志记录
       href: key-vault-logging.md
     - name: 防火墙背后的访问
@@ -108,8 +118,6 @@
       href: key-vault-soft-delete-cli.md
     - name: 将 Key Vault 软删除与 Azure PowerShell 配合使用
       href: key-vault-soft-delete-powershell.md
-    - name: 使用组授予访问权限
-      href: key-vault-group-permissions-for-apps.md
     - name: 配置防火墙和虚拟网络
       href: key-vault-network-security.md
     - name: Java 开发
@@ -164,8 +172,6 @@
       href: common-parameters-and-headers.md
     - name: 客户数据
       href: key-vault-customer-data.md
-    - name: 发行说明
-      href: key-vault-versions.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/key-vault/'
     - name: 上市区域

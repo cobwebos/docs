@@ -10,15 +10,15 @@ ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: eb8ba7f23de99d333693430d806a8d887c55a678
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: a9ba6fcc0c8b74664f5c4b32e54530fb4aaa2881
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608150"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751728"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>快速入门：登录并设置用户 ID
 
@@ -26,20 +26,20 @@ ms.locfileid: "59608150"
 
 ## <a name="sign-in"></a>登录
 
-1. 选择 [notebooks.azure.com](https://notebooks.azure.com/) 右上角的“登录”。
+1. 选择 [notebooks.azure.com](https://notebooks.azure.com/) 右上角的“登录”  。
 
     ![Azure Notebooks 上“登录”命令的位置](media/accounts/sign-in-command.png)
 
-1. 出现提示时，输入 Microsoft 帐户或者工作或学校帐户的电子邮件地址，并选择“下一步”。 [Azure Notebooks 的用户帐户](azure-notebooks-user-account.md)一文介绍了帐户类型。 如果你没有 Microsoft 帐户，或想要创建一个专门用于 Azure Notebooks 的帐户，请选择“创建一个”：
+1. 出现提示时，输入 Microsoft 帐户或者工作或学校帐户的电子邮件地址，并选择“下一步”  。 [Azure Notebooks 的用户帐户](azure-notebooks-user-account.md)一文介绍了帐户类型。 如果你没有 Microsoft 帐户，或想要创建一个专门用于 Azure Notebooks 的帐户，请选择“创建一个”  ：
 
     ![登录提示中的新建 Microsoft 帐户命令](media/accounts/create-new-microsoft-account.png)
 
     > [!Tip]
-    > 如果尝试使用已有与之关联的帐户的电子邮件地址创建新帐户，可能会看到消息"不能在此处注册使用工作或学校电子邮件地址。 使用个人电子邮件，如 Gmail 或 yahoo ！，或获取新的 Outlook 电子邮件。" 在这种情况下，请尝试使用工作电子邮件地址登录而无需创建一个新的帐户。
+    > 如果尝试使用已与某个帐户关联的电子邮件地址创建新帐户，可能会看到消息“你无法使用工作或学校电子邮件地址在此处注册。 请使用个人电子邮件地址(如 Gmail 或 Yahoo! 电子邮件地址)，或创建新的 Outlook 电子邮件地址。” 在这种情况下，请尝试使用工作电子邮件地址登录而不是创建一个新的帐户。
 
 1. 根据提示输入密码。
 
-1. 如果是首次登录，Azure Notebooks 会请求访问你帐户的权限。 选择“是”继续：
+1. 如果是首次登录，Azure Notebooks 会请求访问你帐户的权限。 选择“是”继续  ：
 
     ![帐户权限提示](media/accounts/account-permission-prompt.png)
 
@@ -49,18 +49,18 @@ ms.locfileid: "59608150"
 
     ![输入 Azure Notebooks 用户 ID 的提示](media/accounts/create-user-id.png)
 
-    如果选择“不，谢谢”，Azure Notebooks 会继续在每次登录时提示你输入用户 ID。 还可以在[用户个人资料](azure-notebooks-user-profile.md)中随时设置用户 ID。
+    如果选择“不，谢谢”，Azure Notebooks 会继续在每次登录时提示你输入用户 ID  。 还可以在[用户个人资料](azure-notebooks-user-profile.md)中随时设置用户 ID。
 
-1. 成功登录后，Azure Notebooks 导航到你的公用个人资料页面，你可以在此页上选择“编辑个人资料信息”填写你的其余信息（有关详细信息，请参阅[你的个人资料和用户 ID](azure-notebooks-user-profile.md)）：
+1. 成功登录后，Azure Notebooks 导航到你的公用个人资料页面，你可以在此页上选择“编辑个人资料信息”填写你的其余信息（有关详细信息，请参阅[你的个人资料和用户 ID](azure-notebooks-user-profile.md)）  ：
 
     ![Azure Notebooks 个人资料页的初始视图](media/accounts/profile-page-new.png)
 
 > [!NOTE]
-> 如果看到消息"用户 ID 已在使用中，"请尝试不同的 id。 用户 Id 是唯一的所有 Azure Notebooks 帐户，以及 Azure 笔记本也会保留某些用户 Id，例如 Microsoft 品牌名称。
+> 如果看到消息“用户 ID 已在使用中”，请尝试其他 ID。 用户 ID 在所有 Azure Notebooks 帐户之间唯一，并且 Azure Notebooks 也会保留特定用户 ID，如 Microsoft 品牌名称。
 
 ## <a name="sign-out"></a>注销
 
-若要注销，请选择页面右上方的用户名，然后选择“注销”：
+若要注销，请选择页面右上方的用户名，然后选择“注销”  ：
 
 ![Azure Notebooks 上“注销”命令的位置](media/accounts/sign-out-command.png)
 

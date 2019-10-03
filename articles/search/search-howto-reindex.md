@@ -3,18 +3,18 @@ title: 重新生成 Azure 搜索索引或刷新可搜索内容 - Azure 搜索
 description: 添加新元素、更新现有元素或文档，或删除完整重新生成或部分增量索引中的过时文档，以刷新 Azure 搜索索引。
 services: search
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.service: search
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2595912732389c8a415d1854a84a7b9c182e4dc7
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 863050b2646f6f7b3a3d9ba3487f11729bef22c8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341634"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719845"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>如何重新生成 Azure 搜索索引
 
@@ -26,14 +26,14 @@ ms.locfileid: "56341634"
 
 ## <a name="rebuild-conditions"></a>重新生成条件
 
-| 条件 | 说明 |
+| 条件 | 描述 |
 |-----------|-------------|
 | 更改字段定义 | 修改字段名称、数据类型或特定的[索引属性](https://docs.microsoft.com/rest/api/searchservice/create-index)（可搜索、可筛选、可排序、可查找）需要完全重新生成。 |
 | 向字段分配分析器 | [分析器](search-analyzers.md)是在索引中定义的，然后分配给字段。 随时都可以向索引添加新的分析器定义，但只有在创建字段时才能分配分析器。 对于 **analyzer** 和 **indexAnalyzer** 属性都是如此。 **searchAnalyzer** 属性是一个例外（可以向现有字段分配此属性）。 |
 | 更新或删除索引中的分析器定义 | 无法删除或更改索引中的现有分析器配置（分析器、tokenizer、令牌筛选器或字符筛选器），除非重新生成整个索引。 |
 | 将字段添加到建议器 | 如果某个字段已存在，并且希望将其添加到[建议器](index-add-suggesters.md)构造，则必须重新生成索引。 |
 | 删除字段 | 若要以物理方式删除字段的所有跟踪，必须重新生成索引。 当即时重新生成无法实现时，可以修改应用程序代码来禁止访问“已删除”字段。 实际上，当你应用省略了相关字段的架构时，字段定义和内容会一直保留在索引中，直至下次重新生成。 |
-| 切换层 | 如果需要更多容量，则无法就地升级。 在新的容量点创建新服务，必须在新服务中从头开始生成索引。 |
+| 切换层 | 如果需要更多容量，Azure 门户中没有就地升级。 必须创建新的服务，而且必须在新服务上从头开始构建索引。 若要帮助自动执行此过程，你可以使用此[Azure 搜索 .net 示例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存储库中的**索引备份-还原**示例代码。 此应用将索引备份到一系列 JSON 文件，然后在指定的搜索服务中重新创建该索引。|
 
 可以在不影响现有物理结构的情况下进行任何其他修改。 具体而言，以下更改不需要重新生成索引：
 
@@ -94,7 +94,7 @@ ms.locfileid: "56341634"
 
 在加载第一个文档时就可以开始查询索引。 如果你知道文档的 ID，那么[查找文档 REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 将返回特定的文档。 对于更大型的测试，应该等待索引完全加载，然后使用查询来验证你想看到的上下文。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [索引器概述](search-indexer-overview.md)
 + [大规模编制大数据集索引](search-howto-large-index.md)

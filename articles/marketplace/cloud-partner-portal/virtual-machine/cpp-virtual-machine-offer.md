@@ -1,25 +1,18 @@
 ---
-title: Azure 市场中的虚拟机套餐 | Microsoft Docs
+title: 在 Azure Marketplace 中的虚拟机产品/服务
 description: 在 Azure 市场中发布 VM 套餐的过程概述。
 services: Azure, Marketplace, Cloud Partner Portal
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: pbutlerm
-ms.openlocfilehash: bbe757ccd1d6a37cbcf04f3ecd6dd088ef1ff211
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: fed0f47c963edf40883c432f5476bd7fe5720abb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353004"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64938061"
 ---
 # <a name="virtual-machine-offer"></a>虚拟机套餐
 

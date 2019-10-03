@@ -3,22 +3,20 @@ title: 使用 Azure 门户和 PowerShell 监视和管理管道 | Microsoft 文�
 description: 了解如何使用 Azure 门户和 Azure PowerShell 监视和管理 Azure 数据工厂及已创建的管道。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8e8215d9737087cf1a5632dc8514c12988ff999f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445137"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139655"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>使用 Azure 门户和 PowerShell 监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -117,7 +115,7 @@ ms.locfileid: "57445137"
 </tr>
 <tr>
 <tr>
-<td rowspan="2">InProgress</td><td>正在验证</td><td>正在进行验证。</td>
+<td rowspan="2">正在进行</td><td>正在验证</td><td>正在进行验证。</td>
 </tr>
 <td>-</td>
 <td>正在处理切片。</td>
@@ -140,7 +138,7 @@ ms.locfileid: "57445137"
 <td>已跳过</td><td>无</td><td>未在处理切片。</td>
 </tr>
 <tr>
-<td>无</td><td>-</td><td>切片过去一直以不同状态存在，但已被重置。</td>
+<td>None</td><td>-</td><td>切片过去一直以不同状态存在，但已被重置。</td>
 </tr>
 </table>
 
@@ -175,7 +173,7 @@ ms.locfileid: "57445137"
 > [!NOTE] 
 > 图示视图不可用于暂停和恢复管道。 若想要使用用户界面，请使用监视和管理应用程序。 有关使用此应用的详细信息，请参阅文章[使用“监视和管理”应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。 
 
-你可以暂停/挂起管道通过使用**挂起 AzDataFactoryPipeline** PowerShell cmdlet。 如果问题得以解决之前不准备运行管道，此 cmdlet 非常有用。 
+可以使用**AzDataFactoryPipeline** PowerShell cmdlet 暂停/挂起管道。 如果问题得以解决之前不准备运行管道，此 cmdlet 非常有用。 
 
 ```powershell
 Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
@@ -219,7 +217,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 
 #### <a name="use-powershell-to-debug-an-error"></a>使用 PowerShell 调试错误
 1. 启动 **PowerShell**。
-2. 运行**Get AzDataFactorySlice**命令查看切片及其状态。 应看到“失败”状态的切片。        
+2. 运行**AzDataFactorySlice**命令以查看切片及其状态。 应看到“失败”状态的切片。        
 
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
@@ -231,7 +229,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
     ```
 
    将“StartDateTime”替换为管道的开始时间。 
-3. 现在，运行**Get AzDataFactoryRun**切片运行 cmdlet 来获取活动的详细信息。
+3. 现在, 运行**AzDataFactoryRun** cmdlet 以获取有关切片的活动运行的详细信息。
 
     ```powershell   
     Get-AzDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
@@ -269,7 +267,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
     PipelineName            : EnrichGameLogsPipeline
     Type                    :
     ```
-5. 你可以运行**保存 AzDataFactoryLog** cmdlet 在输出中，请参阅，并使用下载的日志文件的 Id 值与 **-DownloadLogsoption** cmdlet。
+5. 你可以使用从输出中看到的 Id 值运行**AzDataFactoryLog** cmdlet, 并使用 cmdlet 的 **-DownloadLogsoption**下载日志文件。
 
     ```powershell
     Save-AzDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
@@ -290,7 +288,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
 ![修复错误并验证](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>使用 Azure PowerShell
-可以通过重新运行失败**集 AzDataFactorySliceStatus** cmdlet。 请参阅[集 AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus)语法和有关该 cmdlet 的其他详细信息的主题。
+可以通过使用**AzDataFactorySliceStatus** cmdlet 重新运行失败。 有关 cmdlet 的语法和其他详细信息, 请参阅[AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus)主题。
 
 **示例：**
 

@@ -9,30 +9,29 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83319118c778d89749b1eb5d5fd792a5200c19c5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6824eae4d5fed2eceaf85b9a674f980815afb260
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58849856"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101371"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 上的 SAP MaxDB、liveCache 和内容服务器部署
 
-[767598]:https://launchpad.support.sap.com/#/notes/767598
+[767598]: https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
-[826037]:https://launchpad.support.sap.com/#/notes/826037
+[826037]: https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
-[1139904]:https://launchpad.support.sap.com/#/notes/1139904
-[1173395]:https://launchpad.support.sap.com/#/notes/1173395
+[1139904]: https://launchpad.support.sap.com/#/notes/1139904
+[1173395]: https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
 [1409604]:https://launchpad.support.sap.com/#/notes/1409604
 [1558958]:https://launchpad.support.sap.com/#/notes/1558958
@@ -42,7 +41,7 @@ ms.locfileid: "58849856"
 [1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
-[1619726]:https://launchpad.support.sap.com/#/notes/1619726
+[1619726]: https://launchpad.support.sap.com/#/notes/1619726
 [1619967]:https://launchpad.support.sap.com/#/notes/1619967
 [1750510]:https://launchpad.support.sap.com/#/notes/1750510
 [1752266]:https://launchpad.support.sap.com/#/notes/1752266
@@ -55,7 +54,7 @@ ms.locfileid: "58849856"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
@@ -428,7 +427,7 @@ SAP 目前支持：
 
 强烈建议使用最新版的 SAP 内容服务器以及最新版的 Microsoft IIS。 
 
-在 [SAP 产品可用性对照表 (PAM)][sap-pam] 中查看支持的最新 SAP 内容服务器和 Microsoft IIS 版本。
+在[Sap 产品可用性矩阵 (PAM)][sap-pam]中查看 Sap 内容服务器和 Microsoft IIS 的最新支持版本。
 
 ### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>SAP 内容服务器支持的 Microsoft Windows 和 Azure VM 类型
 若要为 Azure 上的 SAP 内容服务器查找受支持的 Windows 版本，请参阅：
@@ -439,7 +438,7 @@ SAP 目前支持：
 强烈建议使用最新版本的 Microsoft Windows Server。
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>在 Azure VM 中安装 SAP 的 SAP 内容服务器配置准则
-#### <a name="storage-configuration-for-content-server-in-azure"></a>在 Azure 中的内容服务器的存储配置
+#### <a name="storage-configuration-for-content-server-in-azure"></a>Azure 中内容服务器的存储配置
 如果将 SAP 内容服务器配置为将文件存储在 SAP MaxDB 数据库中，那么，本文档中针对 SAP MaxDB 提出的所有 Azure 存储最佳做法建议也适用于 SAP 内容服务器方案。 
 
 如果将 SAP 内容服务器配置为将文件存储在文件系统中，则建议使用专用的逻辑驱动器。 如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)所述，通过使用 Windows 存储空间，还可以增加逻辑磁盘的大小和 IOPS 吞吐量。 

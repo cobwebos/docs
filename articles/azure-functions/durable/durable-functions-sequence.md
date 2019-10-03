@@ -6,20 +6,19 @@ author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4657bd136592c66b5dab9a712f5f1d6df898876c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: ee5b18ddc734335ddac2a7d3352de0e4388f445d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043951"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933257"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions 中的函数链 - Hello 序列示例
 
-函数链是指以特定顺序执行一系列函数的模式。 通常需要将一个函数的输出应用于另一函数的输入。 本文介绍在完成 Durable Functions 快速入门（[C#](durable-functions-create-first-csharp.md) 或 [JavaScript](quickstart-js-vscode.md)）时创建的链接序列。 有关 Durable Functions 的详细信息，请参阅 [Durable Functions 模式和技术概念](durable-functions-concepts.md)。
+函数链是指以特定顺序执行一系列函数的模式。 通常需要将一个函数的输出应用于另一函数的输入。 本文介绍在完成 Durable Functions 快速入门（[C#](durable-functions-create-first-csharp.md) 或 [JavaScript](quickstart-js-vscode.md)）时创建的链接序列。 有关 Durable Functions 的详细信息，请参阅 [Durable Functions 概述](durable-functions-overview.md)。
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -35,7 +34,7 @@ ms.locfileid: "54043951"
 > [!NOTE]
 > JavaScript Durable Functions 仅适用于 Functions 2.x 运行时。
 
-## <a name="e1hellosequence"></a>E1_HelloSequence
+## <a name="e1_hellosequence"></a>E1_HelloSequence
 
 ### <a name="functionjson-file"></a>function.json 文件
 
@@ -72,7 +71,7 @@ ms.locfileid: "54043951"
 
 `context` 对象包含一个 `df` 对象，可使用其 `callActivity` 方法调用其他活动函数并传递输入参数。 该代码按顺序采用不同的参数值三次调用 `E1_SayHello`，使用 `yield` 指示执行应当等待异步活动函数调用返回。 每个调用的返回值都会添加到 `outputs` 列表，函数末尾会返回该列表。
 
-## <a name="e1sayhello"></a>E1_SayHello
+## <a name="e1_sayhello"></a>E1_SayHello
 
 ### <a name="functionjson-file"></a>function.json 文件
 
@@ -142,7 +141,7 @@ Content-Type: application/json; charset=utf-8
 > [!NOTE]
 > 启动 orchestrator 函数的 HTTP POST 终结点在示例应用中作为名为“HttpStart”的 HTTP 触发器函数实现。 可对其他触发器类型（如 `queueTrigger`、`eventHubTrigger` 或 `timerTrigger`）实施类似的启动器逻辑。
 
-查看函数执行日志。 由于[概述](durable-functions-concepts.md)中所述的重播行为，`E1_HelloSequence` 函数启动并完成了多次。 另一方面，由于未重播这些函数执行，因此只执行三次 `E1_SayHello`。
+查看函数执行日志。 由于`E1_HelloSequence` [业务流程可靠性](durable-functions-orchestrations.md#reliability)主题中所述的重播行为，该函数已启动并完成了多次。 另一方面，由于未重播这些函数执行，因此只执行三次 `E1_SayHello`。
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio 代码示例
 

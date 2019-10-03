@@ -10,11 +10,11 @@ ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100115"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66148935"
 ---
 # <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>（已弃用）将 ACR 与 DC/OS 群集配合使用，以部署应用程序
 
@@ -97,7 +97,7 @@ FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.f
 ssh azureuser@$FQDN
 ```
 
-运行以下命令登录到 Azure 容器注册表。 将 `--username` 替换为容器注册表名称，将 `--password` 替换为提供的密码之一。 将示例中的最后一个参数 mycontainerregistry.azurecr.io 替换为容器注册表的 loginServer 名称。 
+运行以下命令登录到 Azure 容器注册表。 将 `--username` 替换为容器注册表名称，将 `--password` 替换为提供的密码之一。 将示例中的最后一个参数 mycontainerregistry.azurecr.io 替换为容器注册表的 loginServer 名称  。 
 
 此命令在本地 `~/.docker` 路径下存储身份验证值。
 
@@ -147,7 +147,7 @@ docker push mycontainerregistry30678.azurecr.io/dcos-demo
 
 ## <a name="run-an-image-from-acr"></a>从 ACR 运行映像
 
-若要通过 ACR 注册表使用映像，创建文件名 acrDemo.json 并将以下文本复制到其中。 将映像名称替换为容器注册表 loginServer 名称和映像名称，例如 `loginServer/imageName`。 记下 `uris` 属性。 此属性包含容器注册表身份验证文件的位置，在这种情况下，此位置为在 DC/OS 群集的每个节点上装载的 Azure 文件共享。
+若要通过 ACR 注册表使用映像，创建文件名 acrDemo.json 并将以下文本复制到其中  。 将映像名称替换为容器注册表 loginServer 名称和映像名称，例如 `loginServer/imageName`。 记下 `uris` 属性。 此属性包含容器注册表身份验证文件的位置，在这种情况下，此位置为在 DC/OS 群集的每个节点上装载的 Azure 文件共享。
 
 ```json
 {

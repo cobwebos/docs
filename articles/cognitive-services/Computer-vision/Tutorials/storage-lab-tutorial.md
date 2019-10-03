@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 04/17/2019
+ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: a755a0bada0dbf6797465ea40ddbb30a84e3f289
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7caf4493db32201a8e83ffb3722c80c5e9b41a8f
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005973"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057729"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>教程：使用计算机视觉在 Azure 存储中生成图像元数据
 
@@ -40,21 +40,18 @@ ms.locfileid: "60005973"
 
 ## <a name="create-a-computer-vision-resource"></a>创建计算机视觉资源
 
-需要为 Azure 帐户创建计算机视觉资源；该资源管理你对 Azure 的计算机视觉服务的访问权限。
+需要为 Azure 帐户创建计算机视觉资源；该资源管理你对 Azure 的计算机视觉服务的访问权限。 
 
-1. 登录到 [Azure 门户](https://ms.portal.azure.com)，然后依次单击“创建资源”、“AI + 机器学习”、“计算机视觉”。
+1. 按照[创建 Azure 认知服务资源](../../cognitive-services-apis-create-account.md)中的说明创建计算机视觉资源。
 
-    ![创建新的计算机视觉 API 订阅](../Images/new-vision-api.png)
-
-1. 在对话框窗口的“名称”字段中输入“vision-api-key”，然后选择 **F0** 作为“定价层”。 选择你在设置 Azure 存储帐户时选中的**位置**。 在“资源组”下选择“使用现有”，然后还选择同一资源组。 勾选“我确认”对话框，然后单击“创建”。
-
-    ![订阅计算机视觉 API](../Images/create-vision-api.png)
-
-1. 返回到资源组的菜单，单击刚创建的计算机视觉 API 订阅。 将“终结点”下的 URL 复制到可以随后轻松地进行检索的某个位置。 然后，单击“显示访问密钥”。
+1. 然后，转到你的资源组的菜单，单击刚创建的计算机视觉 API 订阅。 将“终结点”  下的 URL 复制到可以随后轻松地进行检索的某个位置。 然后，单击“显示访问密钥”。 
 
     ![Azure 门户页面，其中列出了终结点 URL 和访问密钥链接](../Images/copy-vision-endpoint.png)
+    
+    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-1. 在下一窗口中，将“密钥 1”的值复制到剪贴板。
+
+1. 在下一窗口中，将“密钥 1”的值复制到剪贴板。 
 
     ![“管理密钥”对话框，其中列出了“复制”按钮](../Images/copy-vision-key.png)
 
@@ -69,7 +66,7 @@ ms.locfileid: "60005973"
 <add key="VisionEndpoint" value="VISION_ENDPOINT" />
 ```
 
-然后，在解决方案资源管理器中右键单击项目，使用“管理 NuGet 包”命令安装 **Microsoft.Azure.CognitiveServices.Vision.ComputerVision** 包。 该包包含调用计算机视觉 API 所需的类型。
+然后，在解决方案资源管理器中右键单击项目，使用“管理 NuGet 包”命令  安装 **Microsoft.Azure.CognitiveServices.Vision.ComputerVision** 包。 该包包含调用计算机视觉 API 所需的类型。
 
 ## <a name="add-metadata-generation-code"></a>添加元数据生成代码
 
@@ -134,7 +131,7 @@ ms.locfileid: "60005973"
 
 ![计算机生成的标题](../Images/thumbnail-with-tooltip.png)
 
-若要查看所有附加的元数据，请使用 Azure 存储资源管理器来查看用于图像的存储容器。 右键单击容器中的任意 Blob，然后选择“属性”。 在对话框中，会看到键值对的列表。 计算机生成的图像说明存储在“Caption”项中，搜索关键字存储在“Tag0”、“Tag1”之类的项中。 完成后，单击**取消**即可关闭对话框。
+若要查看所有附加的元数据，请使用 Azure 存储资源管理器来查看用于图像的存储容器。 右键单击容器中的任意 Blob，然后选择“属性”。  在对话框中，会看到键值对的列表。 计算机生成的图像说明存储在“Caption”项中，搜索关键字存储在“Tag0”、“Tag1”之类的项中。 完成后，单击**取消**即可关闭对话框。
 
 ![“图像属性”对话框窗口，其中列出了元数据标记](../Images/blob-metadata.png)
 
@@ -142,7 +139,7 @@ ms.locfileid: "60005973"
 
 若要继续使用 Web 应用，请参阅 [后续步骤](#next-steps) 部分。 如果不打算继续使用此应用程序，则应删除所有特定于应用的资源。 为此，可以直接删除包含 Azure 存储订阅和计算机视觉资源的资源组。 这样会删除存储帐户、上传到其中的 Blob，以及与 ASP.NET Web 应用进行连接所需的应用服务资源。 
 
-若要删除资源组，请在门户中打开“资源组”边栏选项卡，导航到用于此项目的资源组，然后单击视图顶部的“删除资源组”。 系统会要求你键入资源组的名称来确认你要删除它，因为资源组一旦删除就不能恢复。
+若要删除资源组，请在门户中打开“资源组”边栏选项卡，  导航到用于此项目的资源组，然后单击视图顶部的“删除资源组”。  系统会要求你键入资源组的名称来确认你要删除它，因为资源组一旦删除就不能恢复。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 CORS 托管 RESTful API - Azure 应用服务 | Microsoft Docs
+title: 教程：使用 CORS 托管 RESTful API - Azure 应用服务
 description: 了解如何通过 Azure 应用服务来托管包含 CORS 支持的 RESTful API。
 services: app-service\api
 documentationcenter: dotnet
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b8c1130a45f60b9caaacd365cd1c256f50ed7675
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 137b569820ea7394b6a3beb24129c905a2efd123
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629555"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743864"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API
 
@@ -158,7 +158,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 dotnet run
 ```
 
-导航到浏览器应用 (`http://localhost:5000`)。 在浏览器中打开开发人员工具窗口（在用于 Windows 的 Chrome 中使用 `Ctrl`+`Shift`+`i`），检查“控制台”选项卡。此时会看到错误消息：`No 'Access-Control-Allow-Origin' header is present on the requested resource`。
+导航到浏览器应用 (`http://localhost:5000`)。 在浏览器中打开开发人员工具窗口（在用于 Windows 的 Chrome 中使用 `Ctrl`+`Shift`+`i`），检查“控制台”选项卡。  此时会看到错误消息：`No 'Access-Control-Allow-Origin' header is present on the requested resource`。
 
 ![浏览器客户端中的 CORS 错误](./media/app-service-web-tutorial-rest-api/cors-error.png)
 
@@ -181,7 +181,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 
 ### <a name="test-cors-again"></a>再次测试 CORS
 
-刷新浏览器应用 (`http://localhost:5000`)。 “控制台”窗口中的错误消息现在已消失，可以看到已部署 API 中的数据并与之交互。 远程 API 现在支持对本地运行的浏览器应用使用 CORS。 
+刷新浏览器应用 (`http://localhost:5000`)。 “控制台”窗口中的错误消息现在已消失，  可以看到已部署 API 中的数据并与之交互。 远程 API 现在支持对本地运行的浏览器应用使用 CORS。 
 
 ![CORS 在浏览器客户端中成功](./media/app-service-web-tutorial-rest-api/cors-success.png)
 

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用适用于 Python 的自定义视觉 SDK 创建对象检测项目
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用 Python SDK 创建项目、添加标记、上传图像、训练项目以及检测对象。
 services: cognitive-services
 author: areddish
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 15c7df52dcc2b9ab6977ee9d67d7997ff8b14287
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: e5de456cb4f5779cbef58ffaf0ccb89e9e9134e0
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485962"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946117"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>快速入门：使用自定义视觉 Python SDK 创建对象检测项目
 
@@ -46,7 +46,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 ### <a name="create-the-custom-vision-service-project"></a>创建自定义视觉服务项目
 
-将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。 请注意，创建对象检测和图像分类项目之间的区别是 **create_project** 调用中指定的域。
+将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。 请查看 [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) 方法，以在创建项目时指定其他选项（在[生成检测器](get-started-build-detector.md) Web 门户指南中进行了说明）。  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -85,7 +85,7 @@ scissors_tag = trainer.create_tag(project.id, "scissors")
 
 在对象检测项目中标记图像时，需要使用标准化坐标指定每个标记对象的区域。
 
-若要将图像、标记和区域添加到项目，请在创建标记后插入以下代码。 请注意，对于本教程，区域与代码进行内联硬编码。 区域在标准化坐标中指定边界框，坐标按以下顺序给定：左部、顶部、宽度、高度。
+若要将图像、标记和区域添加到项目，请在创建标记后插入以下代码。 在本教程中，区域使用代码进行内联硬编码。 区域在标准化坐标中指定边界框，坐标按以下顺序给定：左部、顶部、宽度、高度。
 
 ```Python
 fork_image_regions = {
@@ -135,7 +135,7 @@ scissors_image_regions = {
 }
 ```
 
-然后，使用此关联映射上传每个样本图像及其区域坐标。 添加以下代码。
+然后，使用此关联映射上传每个样本图像及其区域坐标（最多可以在单个批次中上传 64 个图像）。 添加以下代码。
 
 ```Python
 # Update this with the path to where you downloaded the images.

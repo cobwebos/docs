@@ -10,18 +10,18 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: eca5e4cc96996c35e7c2181746cdb3de2e5a602c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 561f383327738c9a2ab29f2907f00ace1eec6def
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820056"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010272"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制或粘贴数据
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-documentdb-connector.md)
 > * [当前版本](connector-azure-cosmos-db.md)
 
@@ -31,6 +31,11 @@ ms.locfileid: "55820056"
 >此连接器仅支持向/从 Cosmos DB SQL API 复制数据。 有关 MongoDB API，请参阅[适用于 MongoDB 的 Auzre Cosmos DB API 的连接器](connector-azure-cosmos-db-mongodb-api.md)。 目前不支持其他 API 类型。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 Azure Cosmos DB （SQL API）连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可将数据从 Azure Cosmos DB (SQL API) 复制到任一支持的接收器数据存储，或从任一支持的源数据存储复制到 Azure Cosmos DB (SQL API)。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 
@@ -45,7 +50,7 @@ ms.locfileid: "55820056"
 > [!TIP]
 > [数据迁移视频](https://youtu.be/5-SRNiC_qOU)将指导你完成将数据从 Azure Blob 存储复制到 Azure Cosmos DB 的步骤。 该视频还介绍了在一般情况下将数据引入 Azure Cosmos DB 的性能优化注意事项。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -168,8 +173,8 @@ Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **DocumentDbCollectionSource**。 |是 |
-| query |指定要读取数据的 Azure Cosmos DB 查询。<br/><br/>示例：<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行此 SQL 语句：`select <columns defined in structure> from mycollection` |
-| nestingSeparator |特殊字符，用于指示文档是嵌套的以及如何平展结果集。<br/><br/>例如，如果 Azure Cosmos DB 查询返回嵌套结果 `"Name": {"First": "John"}`，则当 **nestedSeparator** 值为 **.**（点）时，复制活动将以值为“John”的 `Name.First` 标识列名称。 |否<br />（默认值为 **.** （点）） |
+| query |指定要读取数据的 Azure Cosmos DB 查询。<br/><br/>例如：<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行此 SQL 语句：`select <columns defined in structure> from mycollection` |
+| nestingSeparator |特殊字符，用于指示文档是嵌套的以及如何平展结果集。<br/><br/>例如，如果 Azure Cosmos DB 查询返回嵌套结果 `"Name": {"First": "John"}`，则当 **nestedSeparator** 值为 **.** （点）时，复制活动将以值为“John”的 `Name.First` 标识列名称。 |否<br />（默认值为 **.** （点）） |
 
 **示例**
 
@@ -214,7 +219,8 @@ Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 | type | 复制活动接收器的 **type** 属性必须设置为 **DocumentDbCollectionSink**。 |是 |
 | writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中指定 ID，或未通过列映射指定 ID，则数据工厂会自动为文档生成 ID。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
 | writeBatchSize | 数据工厂使用 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)将数据写入 Azure Cosmos DB。 **writeBatchSize** 属性控制 ADF 提供给库的文档的大小。 可尝试增加 writeBatchSize 的值以提高性能，并在文档大小较大时降低该值 - 请参阅下面的提示。 |否<br />（默认值为 **10,000**） |
-| nestingSeparator |**源**列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>例如，当 **nestedSeparator** 为 **.**（点）时，输出数据集结构中的 `Name.First` 在 Azure Cosmos DB 文档中生成以下 JSON 结构： `"Name": {"First": "[value maps to this column from source]"}`  |否<br />（默认值为 **.** （点）） |
+| nestingSeparator |**源**列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>例如，当 **nestedSeparator** 为 **.** （点）时，输出数据集结构中的 `Name.First` 在 Azure Cosmos DB 文档中生成以下 JSON 结构： `"Name": {"First": "[value maps to this column from source]"}`  |否<br />（默认值为 **.** （点）） |
+| disableMetricsCollection | 数据工厂收集指标，例如 Cosmos DB 的 ru，以获取复制性能优化和建议。 如果你担心此行为，请指定`true`将其关闭。 | 否（默认值为 `false`） |
 
 >[!TIP]
 >Cosmos DB 将单个请求的大小限制为 2MB。 公式为请求大小 = 单个文档大小 * 写入批大小。 若出现“请求太大。”错误，请减少复制接收器配置中的 `writeBatchSize` 值。
@@ -250,6 +256,9 @@ Azure Cosmos DB (SQL API) 链接服务支持以下属性：
     }
 ]
 ```
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="import-or-export-json-documents"></a>导入或导出 JSON 文档
 

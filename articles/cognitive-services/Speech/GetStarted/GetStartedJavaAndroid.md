@@ -3,20 +3,20 @@ title: 开始使用 Android 上 Java 中的 Microsoft 语音识别 API | Microso
 titlesuffix: Azure Cognitive Services
 description: 使用 Microsoft 语音 API 开发将语音音频转换为文本的 Android 应用程序。
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 147042e300e629dd7e354d4e9079cc4855a8146c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 77fee2ecee9cfabe3fad9c1df2c41c7803c3367e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547005"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966835"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>快速入门：在 Android 上的 Java 中使用必应语音识别 API
 
@@ -26,7 +26,7 @@ ms.locfileid: "57547005"
 
 本文将使用示例应用程序来演示如何使用适用于 Android 的语音客户端库在 Java 中为 Android 设备开发语音到文本应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="platform-requirements"></a>平台要求
 

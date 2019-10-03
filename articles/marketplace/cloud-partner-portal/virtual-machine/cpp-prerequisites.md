@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure 的虚拟机先决条件 | Microsoft Docs
+title: 适用于 Microsoft Azure 虚拟机先决条件 |Azure Marketplace
 description: 列出了将 VM 产品/服务发布到 Azure 市场需要满足的先决条件。
 services: Azure, Marketplace, Cloud Partner Portal
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 5c26fd3d6c2593217aef8588e2a58377a86412ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: pabutler
+ms.openlocfilehash: 258d21eae5af50b5dc0bed6887618e2999cae45a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010846"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66257386"
 ---
 # <a name="virtual-machine-prerequisites"></a>虚拟机先决条件
 
@@ -43,13 +36,13 @@ ms.locfileid: "58010846"
 <!-- TD: Aren't most of these business requirements common to all AMP offerings?  If yes, then move to higher level, perhaps to the AMP section "Become a Cloud Marketplace Publisher" -->
 <!-- TD: Need references for remaining docs/business reqs!-->
 
-- 你必须是已注册的云市场发布者。  如果未尚未注册，请执行[成为云市场发布者](../../become-publisher.md)一文中的步骤。
+- 你必须是已注册的云市场发布者。  如果未尚未注册，请执行[成为云市场发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)一文中的步骤。
 
     > [!NOTE]
     > 应当使用相同的 Microsoft Developer Center 注册帐户登录到[云合作伙伴门户](https://cloudpartner.azure.com)。
     > 对于 Azure 市场产品/服务，只应具有一个 Microsoft 帐户。 它不应该特定于个体服务或产品。
     
-- 公司（或其子公司）必须位于 Azure 市场支持的销售国家/地区。  有关这些国家/地区的当前列表，请参阅 [Microsoft Azure 市场参与政策](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)。
+- 你的公司 （或其子公司） 必须位于某个销售-从-国家/地区 Azure Marketplace 支持。  这些国家/地区的当前列表，请参阅[Microsoft Azure Marketplace 参与政策](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)。
 - 产品必须以兼容 Azure 市场支持的计费模式的方式获得许可。  有关详细信息，请参阅 [Azure 市场中的计费选项](https://docs.microsoft.com/azure/marketplace/billing-options-azure-marketplace)。 
 - 你需要负责以商业上合理的方式向客户提供技术支持。 支持可以采用免费、付费或社区支持等多种方式。
 - 负责获得自己的软件和任何第三方软件依赖项的许可。

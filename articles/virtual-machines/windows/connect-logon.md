@@ -4,23 +4,22 @@ description: 了解如何使用 Azure 门户和 Resource Manager 部署模型连
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ef62b02e-bf35-468d-b4c3-71b63fe7f409
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 136b9141ccccfedf8d37fa0832b0673495d82417
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1980ee0bdea1316f6117d9deb7d2adb9df941768
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786428"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162615"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>如何连接并登录到运行 Windows 的 Azure 虚拟机
 可以从 Windows 桌面使用 Azure 门户中的“连接”按钮来启动远程桌面 (RDP) 会话。 首先连接到虚拟机，然后登录。
@@ -58,7 +57,7 @@ ms.locfileid: "59786428"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-如果使用的 PowerShell 并已安装 Aure PowerShell 模块也可能会使用连接`Get-AzRemoteDesktopFile`cmdlet，如下所示。
+如果使用 PowerShell 并安装了 Azure PowerShell 模块，则还可以使用`Get-AzRemoteDesktopFile` cmdlet 进行连接，如下所示。
 
 此示例将立即启动 RDP 连接，引导完成与上述类似的提示。
 

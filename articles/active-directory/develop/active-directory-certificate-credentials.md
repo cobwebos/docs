@@ -3,8 +3,8 @@ title: Azure AD 中的证书凭据 |Microsoft 文档
 description: 本文讨论注册和使用证书凭据进行应用程序身份验证
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/24/2018
-ms.author: celested
+ms.topic: conceptual
+ms.date: 05/21/2019
+ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4ee1ce56723e4a2c9ab80c12456bbc1b66f6d5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0aa63a8f06b71455b7f00d2ce5842f0da851789b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162792"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835472"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 允许应用程序使用自己的凭据进行�
 ## <a name="assertion-format"></a>断言格式
 若要计算断言，可使用所选语言中的许多 [JSON Web 令牌](https://jwt.ms/)库之一。 令牌携带的信息如下所示：
 
-### <a name="header"></a>标头
+### <a name="header"></a>Header
 
 | 参数 |  备注 |
 | --- | --- |
@@ -98,11 +98,10 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ### <a name="uploading-the-certificate-file"></a>上传证书文件
 
 在客户端应用程序的 Azure 应用注册中：
-1. 选择“设置”>“密钥”，然后选择“上传公钥”。 
-2. 选择要上传的证书文件。
-3. 选择“保存”。 
-   
-   保存后，将上传证书并显示指纹、开始日期和到期日期值。 
+1. 选择“证书和机密”。 
+2. 单击“上传证书”，然后选择要上传的证书文件。
+3. 单击“添加”。
+  上传证书后，将显示指纹、开始日期和到期日期值。 
 
 ### <a name="updating-the-application-manifest"></a>更新应用程序清单
 
@@ -114,7 +113,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 还需要提供 GUID 来标识应用程序清单中的密钥 (`$keyId`)。
 
 在客户端应用程序的 Azure 应用注册中：
-1. 打开应用程序清单。
+1. 选择“清单”以打开应用程序清单。
 2. 使用以下架构将 *keyCredentials* 属性替换为新的证书信息。
 
    ```

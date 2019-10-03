@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258107"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60345670"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中心操作监视 （已弃用）
 
@@ -42,12 +42,12 @@ IoT 中心监视 6 种类别的事件：
 
     ![访问门户中的操作监视配置](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. 选择要监视的监视类别，并单击“保存”。 可以从“**监视设置**”中所列的与事件中心兼容的终结点读取事件。 IoT 中心终结点称为 `messages/operationsmonitoringevents`。
+3. 选择要监视的监视类别，并单击“保存”  。 可以从“**监视设置**”中所列的与事件中心兼容的终结点读取事件。 IoT 中心终结点称为 `messages/operationsmonitoringevents`。
 
     ![在 IoT 中心配置操作监视](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
 > [!NOTE]
-> 为“连接”类别选择“详细”监视会导致 IoT 中心生成额外的诊断消息。 对于所有其他类别，“详细”设置会更改 IoT 中心在每个错误消息中包含的信息数量。
+> 为“连接”  类别选择“详细”  监视会导致 IoT 中心生成额外的诊断消息。 对于所有其他类别，“详细”  设置会更改 IoT 中心在每个错误消息中包含的信息数量。
 
 ## <a name="event-categories-and-how-to-use-them"></a>事件类别及其用法
 
@@ -196,23 +196,23 @@ IoT 中心上的监视终结点是与事件中心兼容的终结点。 可使用
 
 1. 在门户中，导航到 IoT 中心资源边栏选项卡。
 
-2. 选择“操作监视”，记下“与事件中心兼容的名称”和“与事件中心兼容的终结点”值：
+2. 选择“操作监视”  ，记下“与事件中心兼容的名称”  和“与事件中心兼容的终结点”  值：
 
     ![“与事件中心兼容的终结点”值](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. 选择“共享访问策略”，并选择“服务”。 记下“主密钥”值：
+3. 选择“共享访问策略”  ，并选择“服务”  。 记下“主密钥”  值：
 
     ![服务共享访问策略主密钥](./media/iot-hub-operations-monitoring/service-key.png)
 
 以下 C# 代码示例取自 Visual Studio **Windows 经典桌面** C# 控制台应用。 该项目安装了 **WindowsAzure.ServiceBus** NuGet 包。
 
-* 如以下示例所示，将连接字符串占位符替换为使用之前记下的“与事件中心兼容的终结点”和服务“主密钥”值的连接字符串：
+* 如以下示例所示，将连接字符串占位符替换为使用之前记下的“与事件中心兼容的终结点”  和服务“主密钥”  值的连接字符串：
 
     ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
-* 将监视终结点名称占位符替换为之前记下的“与事件中心兼容的名称”值。
+* 将监视终结点名称占位符替换为之前记下的“与事件中心兼容的名称”  值。
 
 ```csharp
 class Program

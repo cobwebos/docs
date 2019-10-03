@@ -1,6 +1,6 @@
 ---
-title: 监视与 Azure Monitor 日志-Azure 逻辑应用 B2B 消息 |Microsoft Docs
-description: 监视 AS2、 x12 和 EDIFACT 消息的集成帐户和 Azure 逻辑应用和设置与 Azure Monitor 日志的诊断日志记录
+title: 利用 Azure Monitor 日志监视 B2B 消息-Azure 逻辑应用 |Microsoft Docs
+description: 监视集成帐户和 Azure 逻辑应用的 AS2、X12 和 EDIFACT 消息，并设置 Azure Monitor 日志的诊断日志记录
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,27 +9,27 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: 12799a308157c3c0e19de1f82c0fe3df44fad37e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: a4a7f951d34455f2e333f2c11e30d24efdfd22c1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195151"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261210"
 ---
-# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>监视 B2B 消息与 Azure 逻辑应用中的 Azure Monitor 日志
+# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>在 Azure 逻辑应用中用 Azure Monitor 日志监视 B2B 消息
 
-在集成帐户中的贸易合作伙伴之间建立 B2B 通信后，这些合作伙伴可以交换消息。 若要检查，此通信的工作原理按你期望的方式，你可以监视 AS2、 X12、 和 EDIFACT 消息，并设置与集成帐户的诊断日志记录[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)。 此服务可监视云和本地环境，有助于保持其可用性和性能以及收集运行时详细信息和事件以进行更丰富的调试。 此外可以将此数据与其他服务一起使用，例如 Azure 存储和 Azure 事件中心。
+在集成帐户中的贸易合作伙伴之间建立 B2B 通信后，这些合作伙伴可以交换消息。 若要检查此通信是否按预期方式工作，可以监视 AS2、X12 和 EDIFACT 消息，并使用[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)为集成帐户设置诊断日志记录。 此服务可监视云和本地环境，有助于保持其可用性和性能以及收集运行时详细信息和事件以进行更丰富的调试。 此外可以将此数据与其他服务一起使用，例如 Azure 存储和 Azure 事件中心。
 
 > [!NOTE]
 > 此页面可能仍然引用了 Microsoft Operations Management Suite (OMS)，它将[于 2019 年 1 月停用](../azure-monitor/platform/oms-portal-transition.md)，但尽可能使用 Azure Log Analytics 替换这些步骤。 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 已设置诊断日志记录的逻辑应用。 了解[如何创建逻辑应用](quickstart-create-first-logic-app-workflow.md)以及[如何为逻辑应用设置日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
-* 满足上述要求后，您还需要一个 Log Analytics 工作区，用于监视和跟踪通过 Azure Monitor 日志的 B2B 通信。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
+* 满足上述要求后，还需要一个 Log Analytics 工作区，用于通过 Azure Monitor 日志监视和跟踪 B2B 通信。 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
 * 关联到逻辑应用的集成帐户。 了解[如何创建关联到逻辑应用的集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。
 
@@ -75,7 +75,7 @@ ms.locfileid: "57195151"
 
    ![设置 Azure Monitor 日志，以便可以将诊断数据发送到日志](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. 现在[设置对 Azure Monitor 日志中的 B2B 消息的跟踪](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
+1. 现在，[在 Azure Monitor 日志中设置 B2B 消息的跟踪](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
 
 <a name="azure-monitor-service"></a>
 
@@ -117,14 +117,14 @@ ms.locfileid: "57195151"
 
    ![设置 Azure Monitor 日志，以便可以将诊断数据发送到日志](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. 现在[设置对 Azure Monitor 日志中的 B2B 消息的跟踪](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
+1. 现在，[在 Azure Monitor 日志中设置 B2B 消息的跟踪](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
 
 ## <a name="use-diagnostic-data-with-other-services"></a>将诊断数据与其他服务一起使用
 
-Azure Monitor 日志，以及可以扩展如何使用逻辑应用的诊断数据与其他 Azure 服务，例如： 
+结合使用 Azure Monitor 日志后，可以扩展将逻辑应用的诊断数据用于其他 Azure 服务的方式，例如： 
 
 * [在 Azure 存储中存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
+* [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
 然后，可通过使用其他服务（如 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)和 [Power BI](../azure-monitor/platform/powerbi.md)）的遥测数据和分析来进行实时监视。 例如：
 
@@ -146,6 +146,6 @@ Azure 支持这些跟踪架构类型，它们都具有除自定义类型以外�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Monitor 日志中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "Azure Monitor 日志中的跟踪 B2B 消息")
+* [在 Azure Monitor 日志中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "在 Azure Monitor 日志中跟踪 B2B 消息")
 * [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")
 

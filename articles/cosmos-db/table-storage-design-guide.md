@@ -4,16 +4,16 @@ description: Azure 存储表设计指南：在 Azure Cosmos DB 和 Azure 存储�
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 84749332c5b7ab5fec2905c0fc36d89863adc3d2
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0812828f8d7c0be38fb03c06f4a10019e2ed153c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960202"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447299"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure 存储表设计指南：设计可伸缩的高性能表
 
@@ -50,7 +50,7 @@ ms.locfileid: "56960202"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -70,7 +70,7 @@ ms.locfileid: "56960202"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -82,7 +82,7 @@ ms.locfileid: "56960202"
 </tr>
 <tr>
 <td>Marketing</td>
-<td>部门</td>
+<td>系</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
 <table>
@@ -107,7 +107,7 @@ ms.locfileid: "56960202"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -213,7 +213,7 @@ EGT 还引入了潜在的权衡，以便在设计中进行评估：使用的分�
 * 其次是***范围查询***，它使用 **PartitionKey**并筛选一系列 **RowKey** 值，从而返回多个实体。 **PartitionKey** 值确定特定分区，**RowKey** 值确定该分区中的实体子集。 例如：$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'  
 * 然后是***分区扫描***，它使用 **PartitionKey** 并根据另一个非键属性进行筛选，可能会返回多个实体。 **PartitionKey** 值确定特定分区，而属性值将选择该分区中的实体子集。 例如：$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'  
 * ***表扫描***不包括 **PartitionKey** 且效率较低，因为它会依次搜索构成表的所有分区，查找所有匹配的实体。 无论筛选器是否使用 **RowKey**它都将执行表扫描。 例如：$filter=LastName eq 'Jones'  
-* 返回多个实体的 Azure Table Storage 查询将按 PartitionKey 和 RowKey 顺序返回实体。 若要避免对客户端中的实体重新排序，请选择定义最常见排序顺序的 **RowKey**。 Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+* 返回多个实体的 Azure Table Storage 查询将按 PartitionKey 和 RowKey 顺序返回实体   。 若要避免对客户端中的实体重新排序，请选择定义最常见排序顺序的 **RowKey**。 Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
 
 使用“**or**”指定基于 **RowKey** 值的筛选器将导致分区扫描，而不会视为范围查询。 因此，应避免使用筛选器 （如查询：$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')  
 
@@ -247,15 +247,15 @@ EGT 还引入了潜在的权衡，以便在设计中进行评估：使用的分�
 许多设计必须满足要求，才能允许根据多个条件查找实体。 例如，根据电子邮件、员工 ID 或姓氏查找员工实体。 [表设计模式](#table-design-patterns)部分中的下述模式瞒住了这些类型的要求，并介绍了相关方式来处理表服务不提供辅助索引的问题：  
 
 * [内分区的第二索引模式](#intra-partition-secondary-index-pattern) - 利用同一分区中的 **RowKey** 值存储每个实体的多个副本，实现快速、高效的查询，并借助不同的 **RowKey** 值替换排序顺序。  
-* [内分区的第二索引模式](#inter-partition-secondary-index-pattern) - 在单独分区/表格中利用不同 RowKey 值存储每个实体的多个副本，实现快速高效的查找，并借助 RowKey 值替换排序顺序。  
+* [内分区的第二索引模式](#inter-partition-secondary-index-pattern) - 在单独分区/表格中利用不同 RowKey 值存储每个实体的多个副本，实现快速高效的查找，并借助 RowKey 值替换排序顺序   。  
 * [索引实体模式](#index-entities-pattern) - 维护索引实体，实现返回实体列表的高效搜索。  
 
 ### <a name="sorting-data-in-the-table-service"></a>对表服务中的数据进行排序
 
-表服务返回的查询结果按照 PartitionKey 的升序排序，然后按 RowKey 排序。
+表服务返回的查询结果按照 PartitionKey 的升序排序，然后按 RowKey 排序   。
 
 > [!NOTE]
-> Azure DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+> Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
 
 Azure 存储表中的键是字符串值，以确保数字值正确排序，应将值转换为固定长度并使用零进行填充。 例如，如果用作 **RowKey** 的员工 ID 值是个整数值，则应将员工 ID **123** 转换为 **00000123**。 
 
@@ -723,7 +723,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 通过按日期时间倒序方式排序的 **RowKey** 值，检索最近添加到分区中的 *n* 个实体。  
 
 > [!NOTE]
-> Azure DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 因此，此模式适用于 Azure 表存储，而不适用于 Azure Cosmos DB。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+> Azure Cosmos DB 中的 Azure 表 API 返回的查询结果不被按分区键或行键。 因此，此模式适用于 Azure 表存储，而不适用于 Azure Cosmos DB。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
 
 #### <a name="context-and-problem"></a>上下文和问题
 一个常见的需求是能够检索最近创建的实体，例如某个员工提交的最近 10 个费用报销单。 表查询支持 **$top** 查询操作，可返回一个集中的前 n 个实体：没有可返回集中最后 *n* 个实体的等效查询操作。  
@@ -1125,7 +1125,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1145,7 +1145,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1182,7 +1182,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1263,7 +1263,7 @@ foreach (var e in entities)
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>部门</td>
+<td>系</td>
 <td></td>
 <td></td>
 </tr>
@@ -1309,7 +1309,7 @@ foreach (var e in entities)
 #### <a name="retrieving-heterogeneous-entity-types"></a>检索异类实体类型
 如果使用存储客户端库，则有三个选项可处理多个实体类型。  
 
-如果知道使用特定 RowKey 和 PartitionKey 值存储的实体的类型，则在检索实体时可以指定此实体类型，如前面两个检索 EmployeeEntity 类型的实体的示例中所示：[使用存储客户端库执行点查询](#executing-a-point-query-using-the-storage-client-library)和[使用 LINQ 检索多个实体](#retrieving-multiple-entities-using-linq)。  
+如果知道使用特定 RowKey 和 PartitionKey 值存储的实体的类型，则在检索实体时可以指定此实体类型，如前面两个检索 EmployeeEntity 类型的实体的示例中所示    ：[使用存储客户端库执行点查询](#executing-a-point-query-using-the-storage-client-library)和[使用 LINQ 检索多个实体](#retrieving-multiple-entities-using-linq)。  
 
 第二个选项是使用 **DynamicTableEntity** 类型（属性包）而不是具体的 POCO 实体类型，该选项无需序列化实体和将实体反序列化为 .NET 类型，因此还可提升性能。 以下 C# 代码可能会从表中检索多个不同类型的实体，但会将所有实体作 **DynamicTableEntity** 实例返回。 然后，它使用 **EntityType** 属性确定每个实体的类型：  
 

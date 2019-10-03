@@ -4,19 +4,19 @@ description: 如何在 Azure 虚拟机中启用嵌套虚拟化
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.author: cynthn
 ms.date: 10/09/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: f90ca51349eef92bd25095f5a2a10d7d181fdb2c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 843dfa64cdf0af3ad6cfd3a9f83c16f0ce85fcd0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766523"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720211"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -26,7 +26,7 @@ ms.locfileid: "57766523"
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>创建一个支持嵌套的 Azure VM
 
-创建新的 Windows Server 2016 Azure VM。  为方便参考，v3 的所有虚拟机都支持嵌套虚拟化。 有关支持嵌套的虚拟机大小的完整列表，请参阅[Azure 计算单位](acu.md)一文。
+创建新的 Windows Server 2016 Azure VM。  为了快速参考，所有 v3 虚拟机都支持嵌套虚拟化。 有关支持嵌套的虚拟机大小的完整列表，请参阅[Azure 计算单位](acu.md)一文。
 
 请记得选择足以支持来宾虚拟机需求的 VM 大小。 在此示例中，我们将使用 D3_v3 大小的 Azure VM。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "57766523"
 你可以手动配置这些设置，或者使用我们提供的 PowerShell 脚本来自动完成配置。
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>选项 1：使用 PowerShell 脚本配置嵌套虚拟化
-在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ https://aka.ms/AzureNVblog。
+在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ [https://aka.ms/AzureNVblog](https://aka.ms/AzureNVblog )。
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>选项 2：手动配置嵌套虚拟化
 
@@ -80,7 +80,7 @@ ms.locfileid: "57766523"
 2. 创建内部交换机。
 
     ```powershell
-    New-VMSwitch -Name "InternalNATSwitch" -SwitchType Internal
+    New-VMSwitch -Name "InternalNAT" -SwitchType Internal
     ```
 
 3. 查看交换机的属性，并记下新适配器的 ifIndex。
@@ -119,6 +119,10 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 
 ## <a name="create-the-guest-virtual-machine"></a>创建来宾虚拟机
+
+>[!IMPORTANT] 
+>
+>Azure 来宾代理不支持嵌套在 Vm 上，并可能导致上的主机和嵌套的 Vm 问题。 不要在嵌套 Vm 上安装 Azure 代理和不使用映像创建的嵌套的 Vm 已安装了 Azure 来宾代理。
 
 1. 打开 Hyper-V 管理器并创建新的虚拟机。 配置虚拟机以使用你创建的新内部网络。
     

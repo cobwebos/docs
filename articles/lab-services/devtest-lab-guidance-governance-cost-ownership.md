@@ -14,11 +14,11 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 7832691812d8f10342dc7df20a7cfab7265f2d9d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243512"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60775706"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure 开发测试实验室基础设施治理 - 管理成本和所有权
 打算构建开发和测试环境时，成本和所有权是主要的考量。 本部分介绍如何在环境中进行成本优化并落实所有权。
@@ -52,7 +52,7 @@ ms.locfileid: "56243512"
 
 中心 IT 部门只应拥有必需的控制，让项目和应用程序团队拥有必需级别的控制。 通常情况下，这意味着中心 IT 部门拥有订阅并负责核心 IT 功能，例如网络配置。 订阅的**所有者**集应该小。 这些所有者可以在需要时指定其他所有者，或者应用订阅级别的策略，例如“禁止公共 IP”。
 
-部分用户（例如第 1 层或第 2 层支持人员）可能需要在整个订阅中进行访问。 在这种情况下，建议为这些用户提供管理资源所需的“参与者”访问权限，但不提供用户访问权限，也不调整策略。
+部分用户（例如第 1 层或第 2 层支持人员）可能需要在整个订阅中进行访问。 在这种情况下，建议为这些用户提供管理资源所需的“参与者”访问权限，但不提供用户访问权限，也不调整策略。 
 
 开发测试实验室资源应该由那些接近项目/应用程序团队的所有者拥有。 这是因为他们了解团队在计算机和必需软件方面的要求。 在大多数组织中，此开发测试实验室资源的所有者通常是项目/开发主管。 此所有者可以管理实验室环境中的用户和策略，可以管理开发测试实验室环境中的所有 VM。
 

@@ -1,6 +1,6 @@
 ---
 title: 使用必应新闻搜索 API 搜索新闻
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何发送针对一般新闻、热门主题和标题的搜索查询。
 services: cognitive-services
 author: swhite-msft
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 06/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 612a3961d901f53147ab2f3cfeea20f9c11d96b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b70cf50bb33ca7962116586a347c508b15abcd0c
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087850"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423875"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>使用必应新闻搜索 API 搜索新闻
 
@@ -27,7 +27,7 @@ ms.locfileid: "58087850"
 
 如果提供供用户输入搜索词的搜索框，请使用[必应自动推荐 API](../../bing-autosuggest/get-suggested-search-terms.md) 来改进体验。 此 API 根据用户键入的部分搜索词返回建议的查询字符串。
 
-用户输入搜索词以后，URL 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) 查询参数之前会对搜索词进行编码。 例如，如果用户输入 sailing dinghies，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
+用户输入搜索词以后，URL 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) 查询参数之前会对搜索词进行编码。 例如，如果用户输入 sailing dinghies，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`  。
 
 ## <a name="get-general-news"></a>获取一般新闻
 
@@ -51,7 +51,7 @@ Host: api.cognitive.microsoft.com
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-以下展示对上一查询的响应。 作为必应搜索 API 的[使用和显示要求](../useanddisplayrequirements.md)的一部分，你必须按照响应中提供的顺序显示每篇新闻文章。 如果该文章有群集的文章，则应表明存在相关的文章并在用户提出请求时显示它们。
+下面的 JSON 示例显示了对上一查询的响应。 作为必应搜索 API 的[使用和显示要求](../useanddisplayrequirements.md)的一部分，你必须按照响应中提供的顺序显示每篇新闻文章。 如果该文章有群集的文章，则应表明存在相关的文章并在用户提出请求时显示它们。
 
 ```json
 {
@@ -99,15 +99,15 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies
 }
 ```
 
-[news](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#news) 应答列出必应认为与查询相关的新闻文章。 `totalEstimatedMatches` 字段包含一个估计数，是对可以查看的文章数的估计。 若要了解如何按页浏览这些文章，请参阅[翻页新闻](../paging-news.md)。
+[news](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#news) 应答列出必应认为与查询相关的新闻文章。 `totalEstimatedMatches` 字段包含一个估计数，是对可以查看的文章数的估计。 若要了解如何按页浏览这些文章，请参阅[翻页新闻](../paging-news.md)。
 
-该列表中的每篇[新闻](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#newsarticle)包含该文章的名称、说明及其在宿主网站上的 URL。 如果文章包含图像，则该对象包括图像的缩略图。 使用 `name` 和 `url` 可以创建一个超链接，用于将用户转到宿主站点上的新闻。 如果文章包含图像，也请使用 `url` 为图像嵌入可单击的链接。 请务必使用 `provider` 来指定文章的属性。
+该列表中的每篇[新闻](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#newsarticle)包含该文章的名称、说明及其在宿主网站上的 URL。 如果文章包含图像，则该对象包括图像的缩略图。 使用 `name` 和 `url` 可以创建一个超链接，用于将用户转到宿主站点上的新闻。 如果文章包含图像，也请使用 `url` 为图像嵌入可单击的链接。 请务必使用 `provider` 来指定文章的属性。
 
 如果必应可以确定新闻文章的类别，则文章会包含 `category` 字段。
 
 ## <a name="get-todays-top-news"></a>获取当天的头条新闻
 
-若要获取当天的头条新闻文章，进行的请求与获取普通新闻相同，但需取消 `q` 的设置。
+若要获取今天的热门新闻文章，可以像以前一样发送相同的一般新闻请求，同时将 `q` 参数保留为未设置。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-获取头条新闻的响应与获取普通新闻的响应几乎相同。 但是，`news` 应答不包含 `totalEstimatedMatches` 字段，因为结果数已设定。 头条新闻文章的数目可能因新闻圈而异。 请务必使用 `provider` 来指定文章的属性。
+获取头条新闻的响应几乎与获取一般新闻的响应相同。 但是，`news` 应答不包含 `totalEstimatedMatches` 字段，因为结果数已设定。 头条新闻文章的数目可能因新闻圈而异。 请务必使用 `provider` 字段来指定文章的属性。
 
 ## <a name="get-news-by-category"></a>按类别获取新闻
 
@@ -135,7 +135,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-请使用 [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) 查询参数来指定要获取的文章的类别。 如需可以指定的新闻类别的列表，请参阅 [News Categories by Market](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-categories-by-market)（按市场划分的新闻类别）。
+请使用 [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) 查询参数来指定要获取的文章的类别。 如需可以指定的新闻类别的列表，请参阅 [News Categories by Market](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-categories-by-market)（按市场划分的新闻类别）。
 
 按类别获取新闻的响应与获取普通新闻的响应几乎相同。 区别是，文章全都来自指定的类别。
 
@@ -153,11 +153,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-请勿包括 [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) 查询参数。
+请勿包括 [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) 查询参数。
 
 获取标题新闻的响应与获取当天的头条新闻的响应相同。 如果文章为标题文章，其 `headline` 字段会设置为 **true**。
 
-默认情况下，响应包含最多 12 篇标题文章。 若要更改需返回的标题文章的数目，请指定 [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headlinecount) 查询参数。 就每个新闻类别来说，响应还包括最多四篇非标题文章。
+默认情况下，响应包含最多 12 篇标题文章。 若要更改需返回的标题文章的数目，请指定 [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount) 查询参数。 就每个新闻类别来说，响应还包括最多四篇非标题文章。
 
 响应将群集文章计为一篇文章。 由于一个群集可能有多篇文章，因此就每个类别来说，响应可能包含 12 篇以上的标题文章，4 篇以上的非标题文章。
 
@@ -223,7 +223,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-news"></a>获取相关新闻
 
-如果有其他文章与某篇新闻文章相关，则该新闻文章可能包含 [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle-clusteredarticles) 字段。 下面显示的文章包含群集文章。
+如果有其他文章与某篇新闻文章相关，则该新闻文章可能包含 [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle-clusteredarticles) 字段。 下面显示的文章包含群集文章。
 
 ```json
     {

@@ -6,14 +6,14 @@ services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/15/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: e0bef0fc4f4b61add24c243af0dac64933ad5bab
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: 08657163eb170b8d3185ce15bd724f1f55bbe2bd
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466902"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702861"
 ---
 # <a name="smart-groups"></a>智能组
 处理警报时面临的一个常见难题是筛选噪音以找出真正重要的事项 - 智能组旨在解决该问题。  
@@ -29,7 +29,7 @@ ms.locfileid: "54466902"
 
 支持以下智能组状态。
 
-| 状态 | 说明 |
+| 状态 | 描述 |
 |:---|:---|
 | 新建 | 只是检测到了问题，但尚未审查问题。 |
 | 已确认 | 管理员已审查智能组，并已开始进行处理。 |
@@ -49,7 +49,7 @@ ms.locfileid: "54466902"
 
 “智能组详细信息”页包括以下部分。
 
-| 部分 | 说明 |
+| 节 | 描述 |
 |:---|:---|
 | 警报 | 列出智能组中包含的各个警报。 选择某个警报会打开它的“警报详细信息”页。 |
 | 历史记录 | 列出智能组执行的每个操作，以及对智能组进行的任何更改。 目前仅限状态更改和警报成员身份更改。 |

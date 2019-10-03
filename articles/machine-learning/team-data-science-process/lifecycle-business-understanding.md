@@ -12,11 +12,11 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 35d03a52125bd2646f86b96bcffe123d9fab7f64
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545308"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60303547"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期的业务理解阶段
 
@@ -44,7 +44,7 @@ ms.locfileid: "59545308"
    * **标识数据源**：查找相关数据，这些数据有助于解决定义项目目标的问题。
 
 ### <a name="define-objectives"></a>定义目标
-1. 此步骤的主要目标是确定分析需要预测的关键业务变量。 这些变量被称为模型目标，而与之关联的指标则用于确定项目是否成功。 此类目标的两个示例是销售预测或订单涉嫌欺诈的概率。
+1. 此步骤的主要目标是确定分析需要预测的关键业务变量。 这些变量被称为模型目标，而与之关联的指标则用于确定项目是否成功  。 此类目标的两个示例是销售预测或订单涉嫌欺诈的概率。
 
 2. 通过提出和完善相关、特定和明确的“尖锐”问题以定义项目目标。 数据科学是使用名称和数字来回答此类问题的过程。 数据科学或机器学习通常用于回答以下五类问题：
  
@@ -78,7 +78,7 @@ ms.locfileid: "59545308"
 以下是此阶段中的可交付结果：
 
    * [章程文档](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md)：TDSP 项目结构定义中提供的一个标准模板。 章程文档是一个动态文档。 在发现新内容时，业务需求发生变化时，请更新整个项目中的模板。 关键是在发现过程中有进展时，对本文档进行循环访问，以添加更多详细信息。 让客户和其他利益干系人参与到更改中，并清楚地与他们交流更改的原因。  
-   * [数据源](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources)：TDSP 项目“数据报表”文件夹中的“数据定义”报表的“原始数据源”部分包含数据源。 此部分指定原始数据的原始位置和目标位置。 在后续阶段中，需要填写脚本等其他详细信息，以将数据移到分析环境中。  
+   * [数据源](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources)：TDSP 项目“数据报表”文件夹中的“数据定义”报表的“原始数据源”部分包含数据源    。 此部分指定原始数据的原始位置和目标位置。 在后续阶段中，需要填写脚本等其他详细信息，以将数据移到分析环境中。  
    * [数据字典](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries)：本文档包含客户端提供的数据说明。 这些说明介绍了架构（数据类型、验证规则的相关信息（若有））和实体关系图（若有）。
 
 ## <a name="next-steps"></a>后续步骤

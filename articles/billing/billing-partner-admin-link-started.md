@@ -5,22 +5,22 @@ services: billing
 author: dhirajgandhi
 manager: dhgandhi
 ms.author: banders
-ms.date: 03/12/2018
+ms.date: 10/01/2019
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: ecbdf182fe2da7413e6d27ef5775dbaa7ad60806
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 00b44b62e5ce666a8cd6d4b02270e6d9de6897e8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270177"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719837"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
-作为合作伙伴，可以在客户互动中跟踪影响。 可以将合作伙伴 ID 链接到用于管理客户资源的帐户。
+Microsoft 合作伙伴提供的服务可帮助客户使用 Microsoft 产品实现业务和任务目标。 当代表客户管理、配置和支持 Azure 服务时，合作伙伴用户将需要访问客户的环境。 合作伙伴可以使用合作伙伴管理链接将其合作伙伴网络 ID 与用于服务交付的凭据相关联。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -48,38 +48,38 @@ ms.locfileid: "59270177"
 
    ![显示链接到合作伙伴 ID 的屏幕截图](./media/billing-link-partner-id/link-partner-ID.PNG)
 
-4. 若要链接另一个客户的合作伙伴 ID，请切换目录。 在“切换目录”下，选择你的目录。
+4. 若要链接另一个客户的合作伙伴 ID，请切换目录。 在“切换目录”下，选择你的目录  。
 
    ![显示“切换”目录的屏幕截图](./media/billing-link-partner-id/directory-switcher.png)
 
 ### <a name="use-powershell-to-link-to-a-new-partner-id"></a>使用 PowerShell 链接到新合作伙伴 ID
 
-1. 安装 [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) PowerShell 模块。
+1. 安装 [Az.ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/) PowerShell 模块。
 
 2. 使用用户帐户或服务主体登录到客户的租户。 有关详细信息，请参阅[使用 PowerShell 登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
- 
+
    ```azurepowershell-interactive
-    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
+    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
 3. 链接到新合作伙伴 ID。 合作伙伴 ID 是组织的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/) ID。
 
     ```azurepowershell-interactive
-    C:\> new-AzureRmManagementPartner -PartnerId 12345 
+    C:\> new-AzManagementPartner -PartnerId 12345
     ```
 
 #### <a name="get-the-linked-partner-id"></a>获取链接的合作伙伴 ID
 ```azurepowershell-interactive
-C:\> get-AzureRmManagementPartner 
+C:\> get-AzManagementPartner
 ```
 
 #### <a name="update-the-linked-partner-id"></a>更新链接的合作伙伴 ID
 ```azurepowershell-interactive
-C:\> Update-AzureRmManagementPartner -PartnerId 12345 
+C:\> Update-AzManagementPartner -PartnerId 12345
 ```
 #### <a name="delete-the-linked-partner-id"></a>删除链接的合作伙伴 ID
 ```azurepowershell-interactive
-C:\> remove-AzureRmManagementPartner -PartnerId 12345 
+C:\> remove-AzManagementPartner -PartnerId 12345
 ```
 
 ### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>使用 Azure CLI 链接到新合作伙伴 ID
@@ -87,13 +87,13 @@ C:\> remove-AzureRmManagementPartner -PartnerId 12345
 
     ```azurecli-interactive
     C:\ az extension add --name managementpartner
-    ``` 
+    ```
 
 2. 使用用户帐户或服务主体登录到客户的租户。 有关详细信息，请参阅[使用 Azure CLI 登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
-    ``` 
+    ```
 
 3. 链接到新合作伙伴 ID。 合作伙伴 ID 是组织的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/) ID。
 
@@ -104,17 +104,17 @@ C:\> remove-AzureRmManagementPartner -PartnerId 12345
 #### <a name="get-the-linked-partner-id"></a>获取链接的合作伙伴 ID
 ```azurecli-interactive
 C:\ az managementpartner show
-``` 
+```
 
 #### <a name="update-the-linked-partner-id"></a>更新链接的合作伙伴 ID
 ```azurecli-interactive
 C:\ az managementpartner update --partner-id 12345
-``` 
+```
 
 #### <a name="delete-the-linked-partner-id"></a>删除链接的合作伙伴 ID
 ```azurecli-interactive
 C:\ az managementpartner delete --partner-id 12345
-``` 
+```
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -136,26 +136,25 @@ C:\ az managementpartner delete --partner-id 12345
 
 **其他合作伙伴或客户是否可以编辑或删除合作伙伴 ID 的链接？**
 
-该链接在用户帐户级别关联。 只有你可以编辑或删除合作伙伴 ID 的链接。 客户和其他合作伙伴无法更改合作伙伴 ID 的链接。 
+该链接在用户帐户级别关联。 只有你可以编辑或删除合作伙伴 ID 的链接。 客户和其他合作伙伴无法更改合作伙伴 ID 的链接。
 
 
-**如果我的公司有多个应使用哪个 MPN ID？**
+**如果我的公司有多个 MPN ID，我应该使用哪个 MPN ID？**
 
-可以使用任何有效的 MPN ID 除外虚拟 orgnization(v-org) MPN id。 大多数合作伙伴选择地理位置基于客户或服务的交付使用 MPN ID。
+合作伙伴位置帐户和关联的 MPN ID 应该用于链接合作伙伴 ID。  详细了解[合作伙伴帐户](https://docs.microsoft.com/partner-center/account-structure)
 
-**在哪里可以找到受影响的收入报告的链接的合作伙伴 ID？**
+**在哪里可以找到受关联合作伙伴 ID 影响的收入报告？**
 
-您可以找到影响收入的报告[我见解仪表板](https://partner.microsoft.com/membership/reports/myinsights)。 您需要选择合作伙伴管理员链接作为合作伙伴关联类型。
+合作伙伴中心内的合作伙伴可以在[“我的见解”仪表板](https://partner.microsoft.com/membership/reports/myinsights)上找到云产品性能报告。 需要选择“合作伙伴管理链接”作为合作伙伴关联类型。
 
-**为何看不到我在报告中的客户？**
+**为什么我在报告中看不到我的客户？**
 
-您不能看到以下原因造成的报表中的客户
+由于以下原因，无法在报告中看到客户
 
-1. 链接的用户帐户不具备[基于角色的访问](https://docs.microsoft.com/azure/role-based-access-control/overview)上的任何客户的 Azure 订阅或资源。
+1. 链接的用户帐户对任何客户 Azure 订阅或资源都没有[基于角色的访问权限](https://docs.microsoft.com/azure/role-based-access-control/overview)。
 
-2. 用户在其上的 Azure 订阅[基于角色的访问](https://docs.microsoft.com/azure/role-based-access-control/overview)访问没有任何使用情况。
+2. 用户对其具有[基于角色的访问权限](https://docs.microsoft.com/azure/role-based-access-control/overview)的 Azure 订阅没有任何使用情况。
 
-**链接的合作伙伴 ID 适用于 Azure Stack？**
+**链接合作伙伴 ID 是否适用于 Azure Stack？**
 
-是的可以将你的合作伙伴 ID 链接适用于 Azure Stack。
-
+适用，可以为 Azure Stack 链接合作伙伴 ID。

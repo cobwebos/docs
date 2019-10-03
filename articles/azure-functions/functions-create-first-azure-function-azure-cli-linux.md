@@ -11,26 +11,26 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 78c2f599ba7d22e6de070f5867398e111a396d45
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 40a2d3ab4ec358b5b2d0105703cdc25cdb777c29
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849731"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562984"
 ---
-# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>使用 Core Tools 和 Azure CLI（预览版）创建第一个托管在 Linux 上的函数
+# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli"></a>使用 Core Tools 和 Azure CLI 创建第一个在 Linux 上托管的函数
 
-Azure Functions 用于在[无服务器](https://azure.com/serverless) Linux 环境中执行代码，无需先创建 VM 或发布 Web 应用程序。 Linux 托管需要 [Functions 2.0 运行时](functions-versions.md)。 在无服务器的[消耗计划](functions-scale.md#consumption-plan)中支持在 Linux 上运行函数应用，目前处于预览状态。 若要了解详细信息，请参阅[此预览注意事项文章](https://aka.ms/funclinux)。
+Azure Functions 用于在[无服务器](https://azure.com/serverless) Linux 环境中执行代码，无需先创建 VM 或发布 Web 应用程序。 Linux 托管需要 [Functions 2.x 运行时](functions-versions.md)。 无服务器函数在[消耗计划](functions-scale.md#consumption-plan)中运行。
 
 本快速入门文章逐步讲解如何使用 Azure CLI 创建第一个在 Linux 上运行的函数应用。 函数代码在本地创建，然后使用 [Azure Functions Core Tools](functions-run-local.md) 部署到 Azure。
 
-支持在 Mac、Windows 或 Linux 计算机上执行以下步骤。 本文展示了如何使用 JavaScript 或 C# 创建函数。 若要了解如何创建 Python 函数，请参阅[使用 Core Tools 和 Azure CLI（预览版）创建第一个 Python 函数](functions-create-first-function-python.md)。
+支持在 Mac、Windows 或 Linux 计算机上执行以下步骤。 本文展示了如何使用 JavaScript 或 C# 创建函数。 若要了解如何创建 Python 函数，请参阅[使用 Core Tools 和 Azure CLI 创建第一个 Python 函数](functions-create-first-function-python.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 运行此示例之前，必须做好以下准备：
 
-+ 安装 [Azure Core Tools 2.x 版](functions-run-local.md#v2)。
+- 安装 [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.666 或更高版本。
 
 + 安装 [Azure CLI]( /cli/azure/install-azure-cli)。 本文需要 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可确定你拥有的版本。 你也可使用 [Azure Cloud Shell](https://shell.azure.com/bash)。
 
@@ -38,38 +38,13 @@ Azure Functions 用于在[无服务器](https://azure.com/serverless) Linux 环�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-local-function-app-project"></a>创建本地函数应用项目
+[!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
-从命令行运行以下命令，以便在当前本地目录的 `MyFunctionProj` 文件夹中创建一个函数应用项目。 也会在 `MyFunctionProj` 中创建一个 GitHub 存储库。
+## <a name="enable-extension-bundles"></a>启用扩展捆绑包
 
-```bash
-func init MyFunctionProj
-```
-
-当系统提示时，请使用箭头键从下面的语言选项中选择一个辅助角色运行时：
-
-+ `dotnet`：创建一个 .NET 类库项目 (.csproj)。
-+ `node`：创建一个 JavaScript 或 TypeScript 项目。 出现提示时，选择“`JavaScript`”。
-+ `python`：创建 Python 项目。 有关 Python 函数，请参阅 [Python 快速入门](functions-create-first-function-python.md)。
-
-执行命令后，看到的内容如以下输出所示：
-
-```output
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
-```
-
-使用以下命令导航到新的 `MyFunctionProj` 项目文件夹。
-
-```bash
-cd MyFunctionProj
-```
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
 [!INCLUDE [functions-create-function-core-tools](../../includes/functions-create-function-core-tools.md)]
-
-[!INCLUDE [functions-update-function-code](../../includes/functions-update-function-code.md)]
 
 [!INCLUDE [functions-run-function-test-local](../../includes/functions-run-function-test-local.md)]
 

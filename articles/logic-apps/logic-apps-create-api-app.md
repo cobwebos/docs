@@ -10,22 +10,22 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e5dc913d682088296f84fb6bd7595a09d9d3fe7b
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895849"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609866"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
 
-虽然 Azure 逻辑应用提供可用于逻辑应用工作流的 [100 多个内置连接器](../connectors/apis-list.md)，但建议调用不作为连接器提供的 API、系统和服务。 可以创建自己的 API，提供在逻辑应用中使用的操作和触发器。 下面是一些其他理由，解释为何建议创建可从逻辑应用工作流调用的自定义 API：
+虽然 Azure 逻辑应用提供了[数百个](../connectors/apis-list.md)可在逻辑应用工作流中使用的连接器, 但你可能想要调用不可用作连接器的 api、系统和服务。 可以创建自己的 API，提供在逻辑应用中使用的操作和触发器。 下面是一些其他理由，解释为何建议创建可从逻辑应用工作流调用的自定义 API：
 
 * 扩展当前系统集成和数据集成工作流。
 * 帮助客户使用服务来管理专业或个人任务。
 * 扩展服务的市场宣传、可发现性和使用。
 
-连接器本质上是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成连接器，如 .NET、Java 或 Node.js。 此外，还可在 [Azure 应用服务](../app-service/overview.md)上托管API，前者是一款平台即服务 (PaaS) 产品，可为 API 托管提供一种最简单且可缩放性最高的最佳方法。 
+连接器本质上是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为连接器是通过 HTTP 终结点进行通信的 REST Api, 所以可以使用任何语言 (如 .NET、Java、Python 或 node.js) 来构建连接器。 此外，还可在 [Azure 应用服务](../app-service/overview.md)上托管API，前者是一款平台即服务 (PaaS) 产品，可为 API 托管提供一种最简单且可缩放性最高的最佳方法。 
 
 对于要用于逻辑应用的自定义 API，API 可以提供在逻辑应用工作流中执行特定任务的[操作](./logic-apps-overview.md#logic-app-concepts)。 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用工作流。 本主题介绍根据想要 API 提供的行为，在 API 中生成操作和触发器可以遵循的常见模式。
 
@@ -45,7 +45,7 @@ ms.locfileid: "57895849"
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>自定义 API 和自定义连接器有何不同？
 
-本质上来说，自定义 API 和[自定义连接器](../logic-apps/custom-connector-overview.md)都是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为这些 API 和连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成自定义 API 和连接器，如 .NET、Java 或 Node.js。
+本质上来说，自定义 API 和[自定义连接器](../logic-apps/custom-connector-overview.md)都是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 由于这些 Api 和连接器是通过 HTTP 终结点进行通信的 REST Api, 因此可以使用任何语言 (如 .NET、Java、Python 或 node.js) 来构建自定义 Api 和连接器。
 
 自定义 API 允许调用非连接器 API，并提供可使用 HTTP + Swagger、Azure API 管理或应用程序服务调用的终结点。 自定义连接器的工作方式与自定义 API 类似，但它还具有以下属性：
 
@@ -141,7 +141,7 @@ ms.locfileid: "57895849"
 ![Webhook 操作模式](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
 > [!NOTE]
-> 目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 操作](../connectors/connectors-native-webhook.md)并指定 URL、标头以及请求正文。 另请参阅[工作流操作和触发器](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
+> 目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook操作](../connectors/connectors-native-webhook.md)并指定 URL、标头以及请求正文。 另请参阅[工作流操作和触发器](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
 
 > [!TIP]
 > 有关 Webhook 模式的示例，查看 [GitHub 中的 Webhook 触发器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
@@ -167,8 +167,8 @@ ms.locfileid: "57895849"
 
 | 找到新数据或事件？  | API 响应 | 
 | ------------------------- | ------------ |
-| 已找到 | 返回 HTTP `200 OK` 状态与响应有效负载（下一步的输入）。 <br/>此响应创建逻辑应用实例，并启动工作流。 | 
-| 未找到 | 返回 HTTP `202 ACCEPTED` 状态与 `location` 标头和 `retry-after` 标头。 <br/>对于触发器，`location` 标头还应包含 `triggerState` 查询参数，通常是“时间戳”。 API 可以使用此标识符跟踪上次触发逻辑应用的时间。 | 
+| 找到 | 返回 HTTP `200 OK` 状态与响应有效负载（下一步的输入）。 <br/>此响应创建逻辑应用实例，并启动工作流。 | 
+| 找不到 | 返回 HTTP `202 ACCEPTED` 状态与 `location` 标头和 `retry-after` 标头。 <br/>对于触发器，`location` 标头还应包含 `triggerState` 查询参数，通常是“时间戳”。 API 可以使用此标识符跟踪上次触发逻辑应用的时间。 | 
 ||| 
 
 例如，若要定期检查服务的新文件，可生成具有以下行为的轮询触发器：

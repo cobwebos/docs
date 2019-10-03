@@ -4,21 +4,20 @@ description: 了解如何解决由于 VM 启动到安全模式而无法对虚拟
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 8e108d88282894a7b1bf014146083008bedd483d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 38b0266565969d06f3f1128ce5a92c5268c7c7d2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095035"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088566"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>由于 VM 启动到安全模式，因此无法对 VM 进行 RDP
 
@@ -55,7 +54,7 @@ RDP 服务在安全模式下不可用。 VM 启动到安全模式时，只会加
     如果 VM 配置为启动到安全模式，则可在“Windows 启动加载程序”部分下看到一个名为“安全启动”的额外标志。 如果未看到“安全启动”标志，则 VM 未处于安全模式。 本文不适用于这种情况。
 
     “安全启动”标志可能显示有以下值：
-   - 轻微
+   - 最小
    - 网络
 
      在这两种模式下，RDP 都不会启动。 因此，修补程序保持不变。

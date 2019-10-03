@@ -9,11 +9,11 @@ ms.date: 12/16/2016
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 1a878b5a9f0502ff9acd411359895d7431fb76f4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437236"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478638"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>检索导入/导出作业的状态信息
 可以调用[获取作业](/rest/api/storageimportexport/jobs)操作来检索有关导入和导出作业的信息。 返回的信息包括：
@@ -45,7 +45,7 @@ ms.locfileid: "57437236"
 |`Completed`|在将所有驱动器寄回客户后，如果完成作业时未出现错误，该作业将设置为 `Completed` 状态。 作业在保持 `Completed` 状态 90 天后自动删除。|
 |`Closed`|将所有驱动器寄回客户后，如果在处理作业期间出现过错误，该作业将设置为 `Closed` 状态。 作业在保持 `Closed` 状态 90 天后自动删除。|
 
-只能取消处于特定状态的作业。 已取消的作业将跳过数据复制步骤，不过会遵循相同的状态转换为未取消的作业。
+只能取消处于特定状态的作业。 已取消的作业将跳过数据复制步骤，不过会遵循与尚未取消的作业相同的状态转换。
 
 下表描述了每种作业状态下可能会出现的错误，以及出错对作业产生的影响。
 

@@ -1,31 +1,31 @@
 ---
-title: 数据操作示例 - Azure 逻辑应用 | Microsoft Docs
-description: 有关 Azure 逻辑应用中数据操作定义的代码示例
+title: 数据操作示例-Azure 逻辑应用
+description: Azure 逻辑应用中的数据操作操作的代码示例
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: reference
-ms.date: 07/25/2018
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 8de70e8df50b79f27c19c74307d9321ff8cd1eb5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.topic: reference
+ms.date: 09/01/2019
+ms.openlocfilehash: d692d943249c9fc6b46ed6eb1ddff3f07152f5b6
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229957"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179143"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Azure 逻辑应用的数据操作代码示例
 
 下面适用于[执行数据操作](../logic-apps/logic-apps-perform-data-operations.md)一文中数据操作定义的代码示例。 若要体验自己的逻辑应用基础工作流定义、Azure 订阅和 API 连接，可以使用这些示例。 只需将这些操作定义复制并粘贴逻辑应用工作流定义的代码视图编辑器，然后修改特定工作流的定义即可。 
 
-这些操作定义基于 JavaScript 对象表示法 (JSON) 标准，按字母顺序显示。 但是，在逻辑应用设计器中，每个定义会在工作流中按正确的顺序显示，因为每个操作定义的 `runAfter` 属性指定了运行顺序。 
+这些操作定义基于 JavaScript 对象表示法 (JSON) 标准，按字母顺序显示。 但是，在逻辑应用设计器中，每个定义会在工作流中按正确的顺序显示，因为每个操作定义的 `runAfter` 属性指定了运行顺序。
 
 <a name="compose-action-example"></a>
 
-## <a name="compose"></a>撰写
+## <a name="compose"></a>编辑
 
 若要尝试[**撰写**操作示例](../logic-apps/logic-apps-perform-data-operations.md#compose-action)，可使用以下操作定义：
 
@@ -226,7 +226,7 @@ ms.locfileid: "50229957"
 
 <a name="join-action-example"></a>
 
-## <a name="join"></a>Join
+## <a name="join"></a>加入
 
 若要尝试[**联接**操作示例](../logic-apps/logic-apps-perform-data-operations.md#join-action)，可使用以下操作定义：
 
@@ -326,7 +326,7 @@ ms.locfileid: "50229957"
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>Select
+## <a name="select"></a>选择
 
 若要尝试[**选择**操作示例](../logic-apps/logic-apps-perform-data-operations.md#select-action)，可使用以下操作定义：
 
@@ -366,11 +366,6 @@ ms.locfileid: "50229957"
    }
 },
 ```
-
-## <a name="get-support"></a>获取支持
-
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

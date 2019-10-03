@@ -1,19 +1,19 @@
 ---
 title: 快速入门 - 使用 Azure 应用程序网关定向 Web 流量 - Azure PowerShell | Microsoft Docs
-description: 了解如何使用 Azure PowerShell 创建 Azure 应用程序网关，用以将 Web 流量重定向到后端池中的虚拟机。
+description: 了解如何使用 Azure PowerShell 创建 Azure 应用程序网关，以便将 Web 流量重定向到后端池中的虚拟机。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 1/11/2019
+ms.date: 07/17/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d41480def95137e1dc938c845f8cec1d59e26036
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: a55f602833cacd27cd82adafd888c67c544564c2
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521778"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359976"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure PowerShell
 
@@ -23,7 +23,7 @@ ms.locfileid: "59521778"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,9 +34,9 @@ ms.locfileid: "59521778"
 1. 要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 
 2. 若要创建与 Azure 的连接，请运行 `Login-AzAccount`。
 
-### <a name="resource-group"></a>资源组
+### <a name="resource-group"></a>Resource group
 
-在 Azure 中，可将相关的资源分配到资源组。 可以使用现有资源组，也可以创建新组。 在此示例中国，我们将使用 [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) cmdlet 创建新的资源组，如下所示： 
+在 Azure 中，可将相关的资源分配到资源组。 可以使用现有资源组，也可以创建新组。 在此示例中，将使用 [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) cmdlet 创建新的资源组，如下所示： 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -67,7 +67,8 @@ New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myAGPublicIPAddress `
-  -AllocationMethod Dynamic
+  -AllocationMethod Static `
+  -Sku Standard
 ```
 ### <a name="backend-servers"></a>后端服务器
 
@@ -79,7 +80,7 @@ New-AzPublicIpAddress `
 2. 使用 [New-AzVMConfig](/powershell/module/Az.compute/new-Azvmconfig) 创建虚拟机配置。
 3. 使用 [New-AzVM](/powershell/module/Az.compute/new-Azvm) 创建虚拟机。
 
-运行以下代码示例来创建虚拟机时，Azure 会提示你输入凭据。 输入*azureuser* 作为用户名，输入 *Azure123456!*  作为密码：
+运行以下代码示例来创建虚拟机时，Azure 会提示你输入凭据。 输入*azureuser* 作为用户名，输入 *Azure123456!* 作为密码：
     
 ```azurepowershell-interactive
 $vnet   = Get-AzVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
@@ -109,7 +110,7 @@ for ($i=1; $i -le 2; $i++)
   Add-AzVMNetworkInterface `
     -VM $vm `
     -Id $nic.Id
-  Set-AzVMBootDiagnostics `
+  Set-AzVMBootDiagnostic `
     -VM $vm `
     -Disable
   New-AzVM -ResourceGroupName myResourceGroupAG -Location EastUS -VM $vm
@@ -151,7 +152,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 ### <a name="create-the-backend-pool"></a>创建后端池
 
 1. 使用 [New-AzApplicationGatewayBackendAddressPool](/powershell/module/Az.network/new-Azapplicationgatewaybackendaddresspool) 为应用程序网关创建后端池。 
-2. 使用 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/Az.network/new-Azapplicationgatewaybackendhttpsettings) 配置后端池的设置。
+2. 使用 [New-AzApplicationGatewayBackendHttpSetting](/powershell/module/Az.network/new-Azapplicationgatewaybackendhttpsetting) 配置后端池的设置。
 
 ```azurepowershell-interactive
 $address1 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic1
@@ -159,7 +160,7 @@ $address2 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name my
 $backendPool = New-AzApplicationGatewayBackendAddressPool `
   -Name myAGBackendPool `
   -BackendIPAddresses $address1.ipconfigurations[0].privateipaddress, $address2.ipconfigurations[0].privateipaddress
-$poolSettings = New-AzApplicationGatewayBackendHttpSettings `
+$poolSettings = New-AzApplicationGatewayBackendHttpSetting `
   -Name myPoolSettings `
   -Port 80 `
   -Protocol Http `
@@ -197,8 +198,8 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
-  -Name Standard_Medium `
-  -Tier Standard `
+  -Name Standard_v2 `
+  -Tier Standard_v2 `
   -Capacity 2
 New-AzApplicationGateway `
   -Name myAppGateway `
@@ -219,7 +220,7 @@ New-AzApplicationGateway `
 虽然不需 IIS 即可创建应用程序网关，但本快速入门中安装了它，用来验证 Azure 是否已成功创建应用程序网关。 使用 IIS 测试应用程序网关：
 
 1. 运行 [Get-AzPublicIPAddress](/powershell/module/Az.network/get-Azpublicipaddress) 获取应用程序网关的公共 IP 地址。 
-2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 刷新浏览器时，应该会看到虚拟机的名称。 有效响应将验证应用程序网关是否已成功创建，并且是否能够成功连接后端。
+2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 刷新浏览器时，应该会看到虚拟机的名称。 有效响应验证应用程序网关是否已成功创建，以及是否能够成功连接后端。
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

@@ -1,5 +1,5 @@
 ---
-title: 预生成的实体
+title: 为语言理解预生成实体
 titleSuffix: Azure Cognitive Services
 description: LUIS 包括一组预构建实体，用于识别常见类型的信息，如日期、时间、数字、度量和货币。 预构建实体支持因 LUIS 应用的区域性而异。
 services: cognitive-services
@@ -8,15 +8,15 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: 0cfc4ff58cfeb65f80f9ac5ce2dd532defde5ef8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3f36680477b29158ae4a4214dfef6ea36342342c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119082"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932636"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>用于识别常见数据类型的预生成实体
 

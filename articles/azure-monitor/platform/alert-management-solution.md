@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
+ms.openlocfilehash: e2f195f648f08c31fbfe44543ee763aeed7459f0
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382948"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702970"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警报管理解决方案
 
 ![警报管理图标](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor 现在支持[大规模管理警报](https://aka.ms/azure-alerts-overview)的增强功能，包括由[监视工具（如 SCOM、Zabbix 或 Nagios）](https://aka.ms/managing-alerts-other-monitoring-services)生成的警报。
+>  Azure Monitor 现在支持用于[大规模管理警报](https://aka.ms/azure-alerts-overview)的增强功能，包括[监视工具（如 System Center Operations Manager、Zabbix 或 Nagios](https://aka.ms/managing-alerts-other-monitoring-services)）所生成的警报。
 >  
 
 
@@ -52,7 +52,7 @@ ms.locfileid: "54382948"
 ### <a name="agents"></a>代理
 下表介绍了该解决方案支持的连接的源。
 
-| 连接的源 | 支持 | 说明 |
+| 连接的源 | 支持 | 描述 |
 |:--- |:--- |:--- |
 | [Windows 代理](agent-windows.md) | 否 |直接 Windows 代理不会生成警报。  可以通过从 Windows 代理收集的事件和性能数据来创建 Log Analytics 警报。 |
 | [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 |直接 Linux 代理不会生成警报。  可以通过从 Linux 代理收集的事件和性能数据来创建 Log Analytics 警报。  从需要 Linux 代理的服务器中收集 Nagios 和 Zabbix 警报。 |
@@ -70,11 +70,11 @@ ms.locfileid: "54382948"
 
 单击“警报管理”磁贴打开“警报管理”仪表板。  仪表板包含下表中的列。  每列按计数列出了指定范围和时间范围内符合该列条件的前十个警报。  可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“查看全部”或单击列标题。
 
-| 列 | 说明 |
+| 列 | 描述 |
 |:--- |:--- |
 | 严重警报 |按警报名称分组并且严重级别为“严重”的所有警报。  单击某个警报名称，以运行会返回该警报所有记录的日志搜索。 |
 | 警告警报 |按警报名称分组并且严重级别为“警告”的所有警报。  单击某个警报名称，以运行会返回该警报所有记录的日志搜索。 |
-| 活动 SCOM 警报 |按生成警报的源分组并且状态为非“已关闭”的从 Operations Manager 收集的所有警报。 |
+| 活动 System Center Operations Manager 警报 |按生成警报的源分组并且状态为非“已关闭”的从 Operations Manager 收集的所有警报。 |
 | 所有活动警报 |按警报名称分组并且具有任意严重级别的所有警报。 仅包括状态为非“已关闭”的 Operations Manager 警报。 |
 
 向右滚动时，仪表板会列出几个常见查询，可以单击这些查询执行[日志搜索](../../azure-monitor/log-query/log-query-overview.md)以获取警报数据。
@@ -87,33 +87,33 @@ ms.locfileid: "54382948"
 
 解决方案会从 System Center Operations Manager 导入警报，并为类型为 Alert 且 SourceSystem 为 OpsManager 的每个警报创建相应的记录。  这些记录的属性在下表中列出：  
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
-| Type |*Alert* |
-| SourceSystem |*OpsManager* |
-| AlertContext |导致生成警报的数据项的详细信息（XML 格式）。 |
-| AlertDescription |警报的详细说明。 |
-| AlertId |警报的 GUID。 |
-| AlertName |警报的名称。 |
-| AlertPriority |警报的优先级。 |
-| AlertSeverity |警报的严重级别。 |
-| AlertState |警报最新的解决状态。 |
-| LastModifiedBy |上次修改警报的用户的名称。 |
-| ManagementGroupName |生成警报的管理组的名称。 |
-| RepeatCount |针对同一个监视对象生成的相同警报的次数（自该警报解决之后）。 |
-| ResolvedBy |解决警报的用户的名称。 空（如果警报尚未解决）。 |
-| SourceDisplayName |已生成警报的监视对象的显示名称。 |
-| SourceFullName |已生成警报的监视对象的完整名称。 |
-| TicketId |警报的票证 ID（如果 System Center Operations Manager 环境与分配警报票证的过程集成）。  空（如果未分配任何票证 ID）。 |
-| TimeGenerated |警报的创建日期和时间。 |
-| TimeLastModified |上次更改警报的日期和时间。 |
-| TimeRaised |警报的生成日期和时间。 |
-| TimeResolved |警报的解决日期和时间。 空（如果警报尚未解决）。 |
+| `Type` |*Alert* |
+| `SourceSystem` |*OpsManager* |
+| `AlertContext` |导致生成警报的数据项的详细信息（XML 格式）。 |
+| `AlertDescription` |警报的详细说明。 |
+| `AlertId` |警报的 GUID。 |
+| `AlertName` |警报的名称。 |
+| `AlertPriority` |警报的优先级。 |
+| `AlertSeverity` |警报的严重级别。 |
+| `AlertState` |警报最新的解决状态。 |
+| `LastModifiedBy` |上次修改警报的用户的名称。 |
+| `ManagementGroupName` |生成警报的管理组的名称。 |
+| `RepeatCount` |针对同一个监视对象生成的相同警报的次数（自该警报解决之后）。 |
+| `ResolvedBy` |解决警报的用户的名称。 空（如果警报尚未解决）。 |
+| `SourceDisplayName` |已生成警报的监视对象的显示名称。 |
+| `SourceFullName` |已生成警报的监视对象的完整名称。 |
+| `TicketId` |警报的票证 ID（如果 System Center Operations Manager 环境与分配警报票证的过程集成）。  空（如果未分配任何票证 ID）。 |
+| `TimeGenerated` |警报的创建日期和时间。 |
+| `TimeLastModified` |上次更改警报的日期和时间。 |
+| `TimeRaised` |警报的生成日期和时间。 |
+| `TimeResolved` |警报的解决日期和时间。 空（如果警报尚未解决）。 |
 
 ## <a name="sample-log-searches"></a>示例日志搜索
 下表提供了此解决方案收集的警报记录的示例日志搜索： 
 
-| Query | 说明 |
+| 查询 | 描述 |
 |:---|:---|
 | Alert &#124; where SourceSystem == "OpsManager" and AlertSeverity == "error" and TimeRaised > ago(24h) |过去 24 小时引发的严重警报 |
 | Alert &#124; where AlertSeverity == "warning" and TimeRaised > ago(24h) |过去 24 小时引发的警告警报 |

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2018
-ms.author: erikre
-ms.openlocfilehash: 15725989ef786f94421eddf647f101e3e73633fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.date: 10/01/2019
+ms.author: banders
+ms.openlocfilehash: 33fc6e59a0a85275b055524d8ccf5d78935725a8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890757"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718764"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>使用 REST API 查看订阅计费
 
@@ -39,16 +39,16 @@ Authorization: Bearer
 
 `{subscriptionID}` 参数是必需的，用于标识目标订阅。
 
-`{billingPeriod}` 参数是必需的，用于指定当前[计费周期](https://docs.microsoft.com/rest/api/billing/billingperiods/get#billingperiod)。
+`{billingPeriod}` 参数是必需的，用于指定当前[计费周期](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)。
 
 `${startDate}` 和 `${endDate}` 参数对于此示例是必需的，但对于终结点是可选的。 它们以 YYYY-MM-DD 形式将日期范围指定为字符串（例如：`'20180501'` 和 `'20180615'`）。
 
 以下标头是必需的：
 
-|请求标头|描述|
+|请求标头|说明|
 |--------------------|-----------------|
-|Content-Type：|必需。 设置为 `application/json`。|
-|Authorization：|必需。 设置为有效的 `Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
+|Content-Type： |必需。 设置为 `application/json`。|
+|Authorization： |必需。 设置为有效的 `Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
 
 ## <a name="response"></a>响应
 
@@ -81,7 +81,7 @@ Authorization: Bearer
 
 **值**中的每一项均表示有关服务使用的详细信息：
 
-|响应属性|描述|
+|响应属性|说明|
 |----------------|----------|
 |**subscriptionGuid** | 订阅的的全局唯一 ID。 |
 |**startDate** | 使用开始日期。 |

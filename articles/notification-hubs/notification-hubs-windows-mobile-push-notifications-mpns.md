@@ -4,9 +4,9 @@ description: 在本教程中，将了解如何使用 Azure 通知中心将通知
 services: notification-hubs
 documentationcenter: windows
 keywords: 推送通知,push notification,windows phone 推送
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: d872d8dc-4658-4d65-9e71-fa8e34fae96e
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,13 +15,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: df42a0e2fcc8c139c7a2b6ecfa78ce1780fe54ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 7f026dd5953dd233b0183d8ce7978f647fb8c6af
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843554"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213467"
 ---
 # <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Windows Phone 应用推送通知
 
@@ -54,9 +56,9 @@ ms.locfileid: "57843554"
 
 ### <a name="configure-windows-phone-mpns-settings"></a>配置 Windows Phone (MPNS) 设置
 
-1. 在“通知设置”下选择“Windows Phone (MPNS)”。
-2. 选择“启用身份验证推送”。
-3. 在工具栏上选择“保存”。
+1. 在“通知设置”下选择“Windows Phone (MPNS)”。  
+2. 选择“启用身份验证推送”  。
+3. 在工具栏上选择“保存”。 
 
     ![Azure 门户 - 启用未经身份验证的推送通知](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
@@ -76,8 +78,8 @@ ms.locfileid: "57843554"
     在 Visual Studio 2013 Update 2 或更高版本中，必须改为创建 Windows Phone Silverlight 应用程序。
 
     ![Visual Studio - 新建项目 - 空白应用 - Windows Phone Silverlight][11]
-2. 在 Visual Studio 中，右键单击该解决方案，并单击“管理 NuGet 包”。
-3. 搜索 `WindowsAzure.Messaging.Managed`，单击“安装”，并接受使用条款。
+2. 在 Visual Studio 中，右键单击该解决方案，并单击“管理 NuGet 包”。 
+3. 搜索 `WindowsAzure.Messaging.Managed`，单击“安装”，并接受使用条款。 
 
     ![Visual Studio - NuGet 包管理器][20]
 4. 打开文件 App.xaml.cs 并添加以下 `using` 语句：
@@ -120,7 +122,7 @@ ms.locfileid: "57843554"
    > [!NOTE]
    > 本教程会一个 toast 通知发送到设备。 发送磁贴通知时，必须在通道上调用 `BindToShellTile` 方法。 若要同时支持 toast 通知和磁贴通知，请同时调用 `BindToShellTile` 和 `BindToShellToast`。
 
-6. 在解决方案资源管理器中，展开“属性”，打开 `WMAppManifest.xml` 文件，单击“功能”选项卡并确保选中 **ID_CAP_PUSH_NOTIFICATION** 功能。 应用现在可以接收推送通知了。
+6. 在解决方案资源管理器中，展开“属性”，打开 `WMAppManifest.xml` 文件，单击“功能”选项卡并确保选中 **ID_CAP_PUSH_NOTIFICATION** 功能。   应用现在可以接收推送通知了。
 
     ![Visual Studio - Windows Phone 应用功能][14]
 7. 按 `F5` 键以运行应用。 随后应用中会显示注册消息。
@@ -132,14 +134,14 @@ ms.locfileid: "57843554"
 ## <a name="test-send-a-notification"></a>测试性发送通知
 
 1. 在 Azure 门户中切换到“概览”选项卡。
-2. 选择“测试性发送”。
+2. 选择“测试性发送”。 
 
     ![“测试性发送”按钮](./media/notification-hubs-windows-phone-get-started/test-send-button.png)
-3. 在“测试性发送”窗口中执行以下步骤：
+3. 在“测试性发送”窗口中执行以下步骤： 
 
-    1. 对于“平台”，请选择“Windows Phone”。
-    2. 对于“通知类型”，请选择“Toast”。
-    3. 选择“发送”
+    1. 对于“平台”，请选择“Windows Phone”  。 
+    2. 对于“通知类型”，请选择“Toast”。  
+    3. 选择“发送” 
     4. 请在窗口底部的列表中查看**结果**。
 
         ![“测试性发送”窗口](./media/notification-hubs-windows-phone-get-started/test-send-window.png)

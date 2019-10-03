@@ -1,21 +1,21 @@
 ---
 title: 快速入门：使用 Python SDK 调用必应自定义搜索终结点 | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: 使用用于 Python 的必应自定义搜索 SDK 获取自定义搜索结果。
+description: 参考本快速入门开始使用 Python SDK 从必应自定义搜索实例请求搜索结果。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/05/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: c4c5059bc57ea33357145f6b119456dc6c5bdb7b
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 7a9d0d6619878299768e1f17b4da3280ea1ec1fc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571808"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564614"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>快速入门：使用 Python SDK 调用必应自定义搜索终结点 
 
@@ -59,7 +59,7 @@ from msrest.authentication import CognitiveServicesCredentials
     client = CustomSearchClient(CognitiveServicesCredentials(subscription_key))
     ```
 
-3. 发送包含 `client.custom_instance.search()` 的搜索请求。 将搜索词追加​​到 `query` 参数，并将 `custom_config` 设置为自定义配置 ID，以便使用搜索实例。 可以从[必应自定义搜索门户](https://www.customsearch.ai/)获取 ID，只需单击“生产”选项卡即可。
+3. 发送包含 `client.custom_instance.search()` 的搜索请求。 将搜索词追加​​到 `query` 参数，并将 `custom_config` 设置为自定义配置 ID，以便使用搜索实例。 可以从[必应自定义搜索门户](https://www.customsearch.ai/)获取 ID，只需单击“生产”选项卡即可。 
 
     ```python
     web_data = client.custom_instance.search(query="xbox", custom_config="your-configuration-id")

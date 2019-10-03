@@ -1,6 +1,6 @@
 ---
 title: 快速入门：从知识库获取答案 - REST、Go - QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 此基于 Go REST 的快速入门详细介绍如何以编程方式从知识库获取答案。
 services: cognitive-services
 author: diberry
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: a74d67df55d46376017adbd48f5161d337ebaa0d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7fa0a747965f946198c59aa521c6269fa159c702
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879303"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802959"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-go"></a>使用 Go 从知识库获取问题的答案
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-go"></a>快速入门：使用 Go 从知识库获取问题的答案
 
 本快速入门详细介绍如何以编程方式从已发布的 QnA Maker 知识库获取答案。 知识库包含来自[数据源](../Concepts/data-sources-supported.md)的问题和答案，例如常见问题解答。 [问题](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)将发送到 QnA Maker 服务。 [响应](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)包含最常见的预测答案。 
 
@@ -25,8 +25,8 @@ ms.locfileid: "58879303"
 
 * [Go 1.10.1](https://golang.org/dl/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在适用于 QnA Maker 资源的 Azure 仪表板的“资源管理”下选择“密钥”。 
-* “发布”页设置。 如果没有已发布的知识库，请创建一个空的知识库，接着“设置”页上导入一个知识库，然后进行发布。 可以下载并使用[这个基本的知识库](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)。 
+* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在适用于 QnA Maker 资源的 Azure 仪表板的“资源管理”下选择“密钥”。   
+* “发布”页设置。  如果没有已发布的知识库，请创建一个空的知识库，接着“设置”页上导入一个知识库，然后进行发布。  可以下载并使用[这个基本的知识库](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)。 
 
     发布页设置包括 POST 路由值、Host 值和 EndpointKey 值。 
 
@@ -54,7 +54,7 @@ func main() {
 
 ## <a name="add-the-required-constants"></a>添加必需的常量
 
-在 `main` 函数的顶部，添加必需的常量来访问 QnA Maker。 发布知识库后，这些值会出现在“发布”页上。 
+在 `main` 函数的顶部，添加必需的常量来访问 QnA Maker。 发布知识库后，这些值会出现在“发布”页上。  
 
 [!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/get-answer/get-answer.go?range=17-33 "Add the required constants")]
 
@@ -92,4 +92,4 @@ func main() {
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)

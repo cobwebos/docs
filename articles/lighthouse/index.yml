@@ -1,0 +1,101 @@
+### YamlMime:Landing
+title: Azure Lighthouse 文档
+summary: Azure Lighthouse 具有更高的自动化程度、可伸缩性和增强的管理功能，可供服务提供商管理其所有客户的 Azure 资源。
+metadata:
+  title: Azure Lighthouse 文档
+  description: 了解如何管理大规模客户资源
+  ms.service: lighthouse
+  ms.topic: landing-page
+  ms.collection: collection
+  author: JnHs
+  ms.author: jenhayes
+  ms.date: 09/25/2019
+  ms.openlocfilehash: d2003af574961a5729949f60824aa67692be1655
+  ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/25/2019
+  ms.locfileid: "71264572"
+landingContent:
+- title: 关于 Azure Lighthouse
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Lighthouse？
+      url: ./overview.md
+  - linkListType: concept
+    links:
+    - text: Azure 委派资源管理
+      url: ./concepts/azure-delegated-resource-management.md
+    - text: 跨租户管理体验
+      url: ./concepts/cross-tenant-management-experience.md
+- title: 入门
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 将客户载入到 Azure 委派资源管理
+      url: ./how-to/onboard-customer.md
+  - linkListType: concept
+    links:
+    - text: 建议的安全做法
+      url: ./concepts/recommended-security-practices.md
+    - text: 云解决方案提供商计划注意事项
+      url: ./concepts/cloud-solution-provider.md
+    - text: 企业应用场景
+      url: ./concepts/enterprise.md
+- title: 市场套餐
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 市场中的托管服务产品
+      url: ./concepts/managed-services-offers.md
+  - linkListType: how-to-guide
+    links:
+    - text: 发布托管服务产品
+      url: ./how-to/publish-managed-services-offers.md
+- title: 示例和模板
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure Lighthouse 示例存储库 (GitHub)
+      url: https://github.com/Azure/Azure-Lighthouse-samples/
+    - text: Azure Lighthouse 示例的索引
+      url: ./samples/index.md
+- title: 参考 - 下载
+  linkLists:
+  - linkListType: download
+    links:
+    - text: OpenAPI - 2019-06-01
+      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
+    - text: 用于 .NET 的 SDK - NuGet
+      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
+    - text: 用于 Python 的 SDK - PyPi
+      url: https://pypi.org/project/azure-mgmt-managedservices/
+- title: 参考 - SDK
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.managedservices/
+    - text: Azure CLI
+      url: /cli/azure/managedservices
+    - text: REST
+      url: /rest/api/managedservices/
+    - text: .NET
+      url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
+    - text: Python
+      url: /python/api/azure-mgmt-managedservices
+- title: Azure 门户体验
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 查看和管理客户
+      url: ./how-to/view-manage-customers.md
+    - text: 查看和管理服务提供商
+      url: ./how-to/view-manage-service-providers.md
+- title: 参与
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 请求产品功能
+      url: https://feedback.azure.com/forums/922753

@@ -11,14 +11,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 8901855ad68a5edb4710853dcde9311216fa2d61
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d8f12e699c17787d897a7f5ed23eccdbf3659921
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357102"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569133"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 Visual Studio Code 连接和查询 Azure SQL 数据库
 
@@ -75,21 +74,21 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 导航到“SQL 数据库”或“SQL 托管实例”页。
+2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 
-3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标。
+3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称    。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标  。
 
 ## <a name="set-language-mode-to-sql"></a>将语言模式设置为 SQL
 
-在 Visual Studio Code 中，将语言模式设置为 SQL，以便启用 mssql 命令和 T-SQL IntelliSense。
+在 Visual Studio Code 中，将语言模式设置为 SQL，以便启用 mssql 命令和 T-SQL IntelliSense  。
 
 1. 打开新的 Visual Studio Code 窗口。
 
-2. 按 Ctrl+N。 这会打开一个新的纯文本文件。
+2. 按 Ctrl+N   。 这会打开一个新的纯文本文件。
 
-3. 选择状态栏右下角的“纯文本”。
+3. 选择状态栏右下角的“纯文本”  。
 
-4. 在打开的“选择语言模式”下拉菜单中，选择“SQL”。
+4. 在打开的“选择语言模式”下拉菜单中，选择“SQL”   。
 
 ## <a name="connect-to-your-database"></a>连接到数据库
 
@@ -98,23 +97,23 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 > [!IMPORTANT]
 > 在继续之前，请确保服务器和登录信息已准备就绪。 在开始输入连接配置文件信息的情况下，如果在 Visual Studio Code 中更改焦点，则需重新开始创建配置文件。
 
-1. 在 Visual Studio Code 中，按 Ctrl+Shift+P（或 F1）打开命令面板。
+1. 在 Visual Studio Code 中，按 Ctrl+Shift+P（或 F1）打开命令面板   。
 
-2. 选择“MS SQL:Connect”，然后选择“Enter”。
+2. 选择“MS SQL:Connect”，然后选择“Enter”   。
 
-3. 选择“创建连接配置文件”。
+3. 选择“创建连接配置文件”  。
 
-4. 按照提示指定新配置文件的连接属性。 指定每个值后，选择“Enter”继续。
+4. 按照提示指定新配置文件的连接属性。 指定每个值后，选择“Enter”继续  。
 
    | 属性       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **服务器名称** | 完全限定的服务器名称 | 类似于：mynewserver20170313.database.windows.net。 |
+   | **服务器名称** | 完全限定的服务器名称 | 类似于：mynewserver20170313.database.windows.net  。 |
    | **数据库名称** | mySampleDatabase | 要连接到的数据库。 |
    | **身份验证** | SQL 登录名| 本教程使用 SQL 身份验证。 |
    | **用户名** | 用户名 | 用于创建服务器的服务器管理员帐户的用户名。 |
    | **密码(SQL 登录名)** | 密码 | 用于创建服务器的服务器管理员帐户的密码。 |
-   | **保存密码?** | 是或否 | 如果不希望每次都输入密码，则请选择“是”。 |
-   | 输入此配置文件的名称 | 配置文件名称，例如 mySampleProfile | 保存配置文件可以在后续登录时加快连接速度。 |
+   | **保存密码?** | 是或否 | 如果不希望每次都输入密码，则请选择“是”  。 |
+   |  输入此配置文件的名称 | 配置文件名称，例如 mySampleProfile  | 保存配置文件可以在后续登录时加快连接速度。 |
 
    如果成功，会显示通知，指出已创建并连接配置文件。
 
@@ -131,7 +130,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. 按 Ctrl+Shift+E 运行查询并显示来自 `Product` 和 `ProductCategory` 表的结果。
+2. 按 Ctrl+Shift+E 运行查询并显示来自 `Product` 和 `ProductCategory` 表的结果    。
 
     ![从 2 个表中检索数据的查询](./media/sql-database-connect-query-vscode/query.png)
 
@@ -161,7 +160,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
          ,GETDATE() );
    ```
 
-2. 按 Ctrl+Shift+E 在 `Product` 表中插入新行。
+2. 按 Ctrl+Shift+E 在 `Product` 表中插入新行    。
 
 ## <a name="update-data"></a>更新数据
 
@@ -175,7 +174,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
    WHERE Name = 'myNewProduct';
    ```
 
-2. 按 Ctrl+Shift+E 更新 `Product` 表中的指定行。
+2. 按 Ctrl+Shift+E 更新 `Product` 表中的指定行    。
 
 ## <a name="delete-data"></a>删除数据
 
@@ -188,7 +187,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
    WHERE Name = 'myNewProduct';
    ```
 
-2. 按 Ctrl+Shift+E 删除 `Product` 表中的指定行。
+2. 按 Ctrl+Shift+E 删除 `Product` 表中的指定行    。
 
 ## <a name="next-steps"></a>后续步骤
 

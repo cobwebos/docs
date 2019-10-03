@@ -3,9 +3,9 @@ title: 路由和标记表达式
 description: 本主题介绍 Azure 通知中心的路由和标记表达式。
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 0fffb3bb-8ed8-4e0f-89e8-0de24a47f644
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2019
-ms.author: jowargo
-ms.openlocfilehash: 31a22aabc7b0f1d51a673ef8642037103badcc02
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/23/2019
+ms.openlocfilehash: 66388f139b63c63e1f0f8ee8ee063e0ddd0f9da5
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828156"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213039"
 ---
 # <a name="routing-and-tag-expressions"></a>路由和标记表达式
 
@@ -31,11 +33,11 @@ ms.locfileid: "54828156"
 
 定向到特定注册的唯一方法是将这些注册与标记相关联，然后定向到这些标记。 如[注册管理](notification-hubs-push-notification-registration-management.md)中所述，应用要接收推送通知，必须在通知中心内注册设备句柄。 在通知中心内创建注册后，应用程序后端便可向它发送推送通知。 应用程序后端可以通过以下方式选择要将特定通知定向到的注册：
 
-1. **广播**：通知中心内的所有注册均将收到通知。
-2. **标记**：包含指定标记的所有注册将收到通知。
+1. **广播**：通知中心内的所有注册均会收到通知。
+2. **标记**：包含指定标记的所有注册会收到通知。
 3. **标记表达式**：其标记集匹配指定表达式的所有注册将收到通知。
 
-## <a name="tags"></a>标记
+## <a name="tags"></a>Tags
 
 标记可以是任意字符串，最多 120 个字符，可以包含字母数字和以下非字母数字字符：“_”、“@”、“#”、“.”、“:”、“-”。 以下示例显示了一个应用程序，可以从中接收有关特定乐队的 toast 通知。 在此方案中，路由通知的一种简便方法是使用代表不同乐队的标记（如下图所示）为注册添加标签：
 
@@ -45,7 +47,7 @@ ms.locfileid: "54828156"
 
 有关针对标记创建注册的详细信息，请参阅[注册管理](notification-hubs-push-notification-registration-management.md)。
 
-可以使用 [Microsoft Azure 通知中心](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK 中 `Microsoft.Azure.NotificationHubs.NotificationHubClient` 类的发送通知方法将通知发送到标记。 还可以使用 Node.js 或推送通知 REST API。  下面是使用 SDK 的示例。
+可使用 [Microsoft Azure 通知中心](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK 中 `Microsoft.Azure.NotificationHubs.NotificationHubClient` 类的发送通知方法将通知发送到标记。 还可以使用 Node.js 或推送通知 REST API。  下面是使用 SDK 的示例。
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
@@ -86,7 +88,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 存在这样的情况：通知必须定向到一个注册集，该注册集不由单个标记标识，而是由标记上的布尔表达式进行标识。
 
-考虑这样一个体育应用程序，它将向波士顿的所有用户发送有关红袜队和红雀队之间的比赛的提醒。 如果客户端应用注册了有关感兴趣的球队和位置的标记，则通知应定向到波士顿中对红袜队或红雀队感兴趣的所有用户。 此条件可以用以下布尔表达式表示：
+考虑这样一个体育应用程序，它会向波士顿的所有用户发送有关红袜队和红雀队之间的比赛的提醒。 如果客户端应用注册了有关感兴趣的球队和位置的标记，则通知应定向到波士顿中对红袜队或红雀队感兴趣的所有用户。 此条件可以用以下布尔表达式表示：
 
 ```csharp
 (follows_RedSox || follows_Cardinals) && location_Boston

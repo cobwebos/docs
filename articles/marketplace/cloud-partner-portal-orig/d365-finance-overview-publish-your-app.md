@@ -1,54 +1,23 @@
 ---
-title: 将 Microsoft Dynamics 365 Business Central 应用带入 Microsoft AppSource | Microsoft Docs
-description: 概述如何将 Dynamics 365 Business Central 应用发布到 Microsoft AppSource。
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+title: 将 Microsoft Dynamics 365 Business Central 应用带入 Microsoft AppSource
+description: 弃用的文章，提供了指向电脑文章的链接;"是" 将 Dynamics 365 Business Central 应用程序发布到 Microsoft AppSource 的概述。
+services: Azure, Marketplace, Cloud Partner Portal
+author: ChJenk
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 3bbcf5c2b6fb0939c47e24f25c1d5d834eb07dfb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 09/18/2019
+ms.author: pabutler
+ms.openlocfilehash: aad59ab0ebcf545c7b688843bbdb4f8c02040e4a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004271"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105098"
 ---
 # <a name="bring-your-microsoft-dynamics-365-business-central-app-into-microsoft-appsource"></a>将 Microsoft Dynamics 365 Business Central 应用带入 Microsoft AppSource
 
-还有很多有关使用的 Dynamics 365 Business Central 作为平台应用程序构建者的权益：
-
--   使用你的专业知识丰富 Dynamics 365 Business Central，这是一个经过验证的 Microsoft 联机解决方案。
--   利用 Dynamics 365 品牌 - 数百万用户了解并信任的品牌。
--   使用 Microsoft AppSource 为业务应用吸引更多客户。
--   通过提供新型体验和规模的平台实现更多目标。
--   与智能商业应用程序捆绑，如 Microsoft PowerApps、Microsoft Flow、Power BI、Cortana Intelligence 等。
-
-若要将 Business Central 应用带入 Microsoft AppSource，请执行以下操作：
-
-1.  创建帐户。
-2.  与我们分享你的应用创意。
-    - 开发应用的技术方面
-    - 开发应用的营销方面
-4.  *发布应用。*
-
-
-## <a name="application-process-and-timeline"></a>应用程序进程和时间线
-
-下图描述了典型的应用程序进程和时间线： 
-
-![Dynamics 365 Business Central 应用的发布序列](./media/d365-financials/image001.png)
-
+[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持创建和管理 Dynamics 365 Business Central 产品/服务。 相反, 此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[创建新的 Dynamics 365 Business Central 产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关此应用程序类型的详细信息，请参阅[宣布推出 Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central/finance-and-operations-business-edition-to-business-central/)。  此外，如果尚未这样做，请查看[Office 365，Dynamics 365，PowerApps 和 Power BI 产品/服务发布指南](../appsource-offer-publishing-guide.md)
-
-后这些准备，可以创建一个新[Microsoft Dynamics 365 Business Central 产品/服务](./d365-finance-create-new-offer.md)。
+在创建新的 Dynamics 365 业务中心产品/服务之前，应阅读[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然后在选中 "**概述**" 页的情况下打开 "[商业市场" 仪表板](https://partner.microsoft.com/dashboard/directory)。 按照[创建新的 Dynamics 365 Business Central 产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)中的说明创建产品/服务。

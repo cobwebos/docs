@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: ff7ba04271c150018f2c55b62e40542a686608cf
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55904964"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173460"
 ---
 ## <a name="create-client"></a>创建客户端连接
 通过创建 `WindowsAzure.MobileServiceClient` 对象创建客户端连接。  将 `appUrl` 替换为到移动应用的 URL。
@@ -79,7 +79,7 @@ table
     .then(success, failure);
 ```
 
-也可使用筛选对象的函数。  在这种情况下，`this` 变量将分配到正在筛选的当前对象。  以下代码在功能上等效于上述示例：
+也可使用筛选对象的函数。  该情况下， `this` 变量被分配给经过筛选的当前对象。  以下代码在功能上等效于上述示例：
 
 ```javascript
 function filterByUserId(currentUserId) {

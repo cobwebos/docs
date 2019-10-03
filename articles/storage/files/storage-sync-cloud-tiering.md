@@ -1,19 +1,18 @@
 ---
 title: 了解 Azure 文件同步的云分层 | Microsoft Docs
 description: 了解 Azure 文件同步的云分层功能
-services: storage
-author: sikoo
+author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/21/2018
-ms.author: sikoo
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 871eb1663d6cba550f1403215b1d3ce5fe8278d3
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: efaa1ef4c5b82da9b905f75483daf9eb3536b15a
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486098"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219329"
 ---
 # <a name="cloud-tiering-overview"></a>云分层概述
 云分层是 Azure 文件同步的一项可选功能，其中经常访问的文件在服务器本地缓存，而所有其他文件根据策略设置分层到 Azure 文件。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性，这样第三方应用程序便能安全地识别分层文件。
@@ -26,7 +25,7 @@ ms.locfileid: "58486098"
 Azure 文件同步不支持对小于 64 KiB 的文件进行分层，因为分层和召回此类小文件的性能开销超过了节省的空间。
 
  > [!Important]  
- > 若要重新调用文件被分层，网络带宽应至少 1 Mbps。 如果网络带宽是小于 1 Mbps，文件可能无法撤回出现超时错误。
+ > 若要撤回已分层的文件，网络带宽应至少为 1 Mbps。 如果网络带宽小于 1 Mbps，则文件可能无法重新调用，出现超时错误。
 
 ## <a name="cloud-tiering-faq"></a>云分层 FAQ
 
@@ -71,7 +70,7 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
    *  **查看文件上的文件属性。**
      右键单击文件，转到“详细信息”，再向下滚动到“属性”属性。 分层的文件具有以下属性集：     
         
-        | 属性字母 | 属性 | 定义 |
+        | 属性字母 | 特性 | 定义 |
         |:----------------:|-----------|------------|
         | A | 存档 | 指示备份软件应备份此文件。 无论文件被分层还是完全存储在磁盘上，始终都会设置此属性。 |
         | P | 稀疏文件 | 指示该文件为稀疏文件。 稀疏文件是 NTFS 提供的专用化文件类型，用于在占用空间流上的文件几乎为空时提高使用效率。 Azure 文件同步将使用稀疏文件，因为文件会被完全分层或部分召回。 在完全分层文件中，文件流存储在云中。 在部分召回的文件中，文件的一部分已在磁盘上。 如果文件被完全召回到磁盘，Azure 文件同步会将其从稀疏文件转换为常规文件。 |
@@ -89,7 +88,7 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
         fsutil reparsepoint query <your-file-name>
         ```
 
-        如果文件包含重分析点，应能看到“重分析标记值: 0x8000001e”。 该十六进制值是 Azure 文件同步拥有的重分析点值。输出还会包含表示 Azure 文件共享中文件路径的重分析数据。
+        如果文件包含重分析点，应能看到“重分析标记值:0x8000001e”。 该十六进制值是 Azure 文件同步拥有的重分析点值。输出还会包含表示 Azure 文件共享中文件路径的重分析数据。
 
         > [!WARNING]  
         > 同时，`fsutil reparsepoint` 实用程序命令还包含删除重分析点的功能。 除非 Azure 文件同步工程团队要求，否则请不要执行此命令。 运行此命令可能会导致数据丢失。 
@@ -101,10 +100,19 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
 
 此外，你也可以使用 PowerShell 来强制召回文件。 在需要同时召回多个文件（例如，一个文件夹内的所有文件）的情况下，可能更适合使用此选项。 打开已安装 Azure 文件同步的服务器节点的 PowerShell 会话，然后运行以下 PowerShell 命令：
     
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
+```
+
+指定`-Order CloudTieringPolicy`将首先撤回最近修改的文件。
+其他可选参数：
+* `-ThreadCount`确定可并行回调的文件数。
+* `-PerFileRetryCount`确定尝试重新调用当前被阻止的文件的频率。
+* `-PerFileRetryDelaySeconds`确定两次重试回调尝试之间的时间间隔（以秒为单位），并且应始终结合前面的参数使用。
+
+> [!Note]  
+> 如果承载服务器的本地卷没有足够可用空间可用于召回所有分层数据，则 `Invoke-StorageSyncFileRecall` cmdlet 会失败。  
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>使用 Azure 文件同步后，为什么文件的“磁盘占用空间”属性与“大小”属性不一致？ 
@@ -114,10 +122,10 @@ Windows 文件资源管理器公开了两个属性来表示文件的大小：即
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>如何强制对文件或目录进行分层？
 启用云分层功能后，它会根据上次访问和修改时间自动分层文件，以实现云终结点上指定的卷可用空间百分比， 但有时你可能需要手动强制分层文件。 如果你要保存在长时间内计划不再次使用的大型文件，并且想要将卷上现有可用空间用于其他文件和文件夹，则可使用此方法。 可使用以下 PowerShell 命令强制分层：
 
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
+```
 
 ## <a name="next-steps"></a>后续步骤
 * [规划 Azure 文件同步部署](storage-sync-files-planning.md)

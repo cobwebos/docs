@@ -12,14 +12,15 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 720aafac79a67f64b0974dba0dd60c6aa24a8c54
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: ec93574a8da051b5cf77a37af1030d0c22dfc4a9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342065"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382897"
 ---
 # <a name="set-up-security-info-preview-to-use-your-email-address"></a>设置安全信息（预览）以使用电子邮件地址
+
 可以按照以下步骤添加密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息。
 
 设置密码重置方法后，还必须使用[验证器应用](security-info-setup-auth-app.md)[短信](security-info-setup-text-msg.md)或[电话](security-info-setup-phone-number.md)设置双重验证方法。
@@ -27,6 +28,7 @@ ms.locfileid: "57342065"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 ## <a name="set-up-your-email-address-from-the-security-info-page"></a>在安全信息页面设置电子邮件地址
+
 根据组织的设置，可以将电子邮件地址用作安全信息方法之一。
 
 >[!Note]
@@ -60,6 +62,7 @@ ms.locfileid: "57342065"
     已更新安全信息，以便在使用密码重置时通过电子邮件地址验证身份。
 
 ## <a name="delete-your-email-address-from-your-security-info-methods"></a>从安全信息方法中删除电子邮件地址
+
 如果不想再将电子邮件地址用作安全信息方法，可以从“安全信息”页将其删除。
 
 >[!Important]
@@ -74,6 +77,7 @@ ms.locfileid: "57342065"
 2. 从确认框中选择“是”，以删除“电子邮件”帐户。 删除电子邮件帐户后，该帐户将从安全信息中删除，并从“安全信息”页消失。
 
 ## <a name="additional-security-info-methods"></a>其他安全信息方法
+
 基于你想要执行的操作，还可以选择组织如何联系你以验证你的身份的其他选项。 选项包括：
 
 - **Authenticator 应用。** 下载并使用验证器应用，获取双重验证或密码重置的审批通知或随机生成的审核代码。 有关如何设置和使用 Microsoft Authenticator 应用的分步说明，请参阅[设置安全信息以使用验证器应用](security-info-setup-auth-app.md)。
@@ -82,8 +86,10 @@ ms.locfileid: "57342065"
 
 - **移动设备或工作电话。** 输入移动设备号码，获取将用于双重验证或密码重置的电话。 有关如何使用电话号码验证身份的分步说明，请参阅[设置安全信息以使用电话](security-info-setup-phone-number.md)。
 
+- **安全密钥。** 注册与 Microsoft 兼容的安全密钥, 并将其与用于双重验证或密码重置的 PIN 一起使用。 有关如何使用安全密钥验证身份的分步说明, 请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
+
 - **安全性问题。** 回答管理员为组织创建的一些安全性问题。 此选项仅适用于密码重置，不可用于双重验证。 有关如何设置安全问题的分步说明，请参阅[设置安全信息以使用安全性问题](security-info-setup-questions.md)一文。
-    
+
     >[!Note]
     >如果缺少其中某些选项，则很可能是因为组织不允许使用这些方法。 如果是这样，则将需要选择可用的方法，或与管理员联系以获取进一步帮助。
 

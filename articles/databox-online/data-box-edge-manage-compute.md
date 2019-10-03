@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 58c4f42859f735a81a3e3edc801daff5d26194a0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997642"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65953119"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>在 Azure Data Box Edge 中管理计算
 
 本文介绍如何在 Azure Data Box Edge 中管理计算。 可以通过 Azure 门户或本地 Web UI 管理计算。 使用 Azure 门户可以管理模块、触发器和计算配置，使用本地 Web UI 可以管理计算设置。
-
-> [!IMPORTANT]
-> Data Box Edge 以预览版提供。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 
 在本文中，学习如何：
 
@@ -42,15 +38,15 @@ ms.locfileid: "59997642"
 
 在 Azure 门户中执行以下步骤可以创建触发器。
 
-1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“触发器”。 在命令栏上选择“+ 添加触发器”。
+1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“触发器”。  在命令栏上选择“+ 添加触发器”  。
 
     ![选择“添加触发器”](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-2. 在“添加触发器”边栏选项卡中，提供触发器的唯一名称。
+2. 在“添加触发器”边栏选项卡中，提供触发器的唯一名称。 
     
     <!--Trigger names can only contain numbers, lowercase letters, and hyphens. The share name must be between 3 and 63 characters long and begin with a letter or a number. Each hyphen must be preceded and followed by a non-hyphen character.-->
 
-3. 选择触发器的**类型**。 如果该触发器用于响应文件事件，请选择“文件”。 如果希望该触发器在定义的时间启动并按指定的重复间隔运行，请选择“计划”。 根据所做的选择，屏幕上会显示一组不同的选项。
+3. 选择触发器的**类型**。 如果该触发器用于响应文件事件，请选择“文件”。  如果希望该触发器在定义的时间启动并按指定的重复间隔运行，请选择“计划”。  根据所做的选择，屏幕上会显示一组不同的选项。
 
     - **文件触发器** - 从下拉列表中选择一个装载的共享。 当此共享中激发文件事件时，该触发器会调用某个 Azure 函数。
 
@@ -62,7 +58,7 @@ ms.locfileid: "59997642"
 
         ![添加 NFS 共享](media/data-box-edge-manage-compute/add-scheduled-trigger.png)
 
-4. 选择“添加”以创建该触发器。 此时会显示一条通知，指出正在创建触发器。 创建触发器后，边栏选项卡会更新以反映新的触发器。
+4. 选择“添加”  以创建该触发器。 此时会显示一条通知，指出正在创建触发器。 创建触发器后，边栏选项卡会更新以反映新的触发器。
  
     ![更新的触发器列表](media/data-box-edge-manage-compute/add-trigger-2.png)
 
@@ -74,11 +70,11 @@ ms.locfileid: "59997642"
 
     ![选择触发器](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-2. 单击右键并选择“删除”。
+2. 单击右键并选择“删除”  。
 
     ![选择“删除”](media/data-box-edge-manage-compute/add-trigger-1.png)
 
-3. 出现确认提示时，单击“是”。
+3. 出现确认提示时，单击“是”  。
 
     ![确认删除](media/data-box-edge-manage-compute/add-trigger-1.png)
 
@@ -92,7 +88,7 @@ ms.locfileid: "59997642"
 
 在 Azure 门户中执行以下步骤可以查看设备的计算配置。
 
-1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“模块”。 在命令栏上选择“查看计算”。
+1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“模块”。  在命令栏上选择“查看计算”。 
 
     ![选择“查看计算”](media/data-box-edge-manage-compute/view-compute-1.png)
 
@@ -105,11 +101,11 @@ ms.locfileid: "59997642"
 
 在 Azure 门户中执行以下步骤可以删除设备的现有 Edge 计算配置。
 
-1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“开始”。 在命令栏上选择“删除计算”。
+1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“开始”。  在命令栏上选择“删除计算”。 
 
     ![选择“删除计算”](media/data-box-edge-manage-compute/remove-compute-1.png)
 
-2. 删除计算配置后，如果需要再次使用计算，则重新配置设备。 出现确认提示时，选择“是”。
+2. 删除计算配置后，如果需要再次使用计算，则重新配置设备。 出现确认提示时，选择“是”  。
 
     ![选择“删除计算”](media/data-box-edge-manage-compute/remove-compute-2.png)
 
@@ -123,34 +119,16 @@ ms.locfileid: "59997642"
 
 在 Azure 门户中执行以下步骤可以同步设备的访问密钥。
 
-1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“开始”。 在命令栏上选择“刷新配置”。
+1. 在 Azure 门户中转到你的 Data Box Edge 资源，然后转到“Edge 计算”>“开始”。  在命令栏上选择“刷新配置”。 
 
     ![选择“刷新配置”](media/data-box-edge-manage-compute/refresh-configuration-1.png)
 
-2. 出现确认提示时，选择“是”。
+2. 出现确认提示时，选择“是”。 
 
      ![出现提示时选择“是”](media/data-box-edge-manage-compute/refresh-configuration-2.png)
 
 3. 同步完成后，请退出对话框。
 
-## <a name="enable-a-network-interface-for-compute"></a>启用计算网络接口
-
-可能需要访问在 Data Box Edge 设备上运行的模块。 若要从外部访问模块，需为设备上的网络接口分配 IP 地址。 可以从本地 Web UI 管理这些计算设置。
-
-在本地 Web UI 上执行下述步骤，以便配置计算设置。
-
-1. 在本地 Web UI 中，转到“配置”>“计算设置”。  
-
-2. **启用**需用来连接到设备上的计算模块的网络接口。 
-
-    - 如果使用静态 IP 地址，请为网络接口输入一个 IP 地址。
-    - 如果使用 DHCP，则会自动分配 IP 地址。
-
-3. 选择“应用”以应用设置。
-
-    ![启用计算设置](media/data-box-edge-manage-compute/compute-settings-1.png)
-
-
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[通过 Azure 门户管理用户](data-box-edge-manage-users.md)。
+- 了解如何[管理边缘计算通过 Azure 门户的网络](data-box-edge-extend-compute-access-modules.md)。

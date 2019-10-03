@@ -1,7 +1,6 @@
 ---
-title: 将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 动机和权益
+title: 将本地 Apache Hadoop 迁移到 Azure HDInsight-动机和优势
 description: 了解将本地 Hadoop 群集迁移到 Azure HDInsight 的动机和权益。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 73a2f0754cafaa5da09ebd437ecd62813296ffd9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890073"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718362"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 动机和权益
 
@@ -22,7 +21,7 @@ ms.locfileid: "56890073"
 
 ## <a name="why-to-migrate-to-azure-hdinsight"></a>迁移到 Azure HDInsight 的原因
 
-Azure HDInsight 是  [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-center/hdp/) 提供的 Hadoop 组件的云分发版。 可以通过 Azure HDInsight 轻松、快速且经济有效地处理大量数据。 HDInsight 包括最常用的开源框架，例如：
+Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight 轻松、快速且经济有效地处理大量数据。 HDInsight 包括最常用的开源框架，例如：
 
 - Apache Hadoop
 - Apache Spark
@@ -44,7 +43,7 @@ Azure HDInsight 是  [Hortonworks Data Platform (HDP)](https://hortonworks.com/
 
 - **全球可用性** - 提供 HDInsight 的[区域](https://azure.microsoft.com/regions/services/)要多于提供任何其他大数据分析产品/服务的区域。 Azure HDInsight 还在中国和德国的 Azure 政府版中提供，满足关键主权领域的企业需求。
 
-- **安全性和符合性** - HDInsight 允许通过  [Azure 虚拟网络](../hdinsight-extend-hadoop-virtual-network.md)、 [加密](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)以及与  [Azure Active Directory](../domain-joined/apache-domain-joined-introduction.md) 集成来保护企业数据资产。 HDInsight 还满足最常用的行业和政府 [符合性标准](https://azure.microsoft.com/overview/trusted-cloud)。
+- **安全性和符合性** - HDInsight 允许通过  [Azure 虚拟网络](../hdinsight-plan-virtual-network-deployment.md)、 [加密](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)以及与  [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) 集成来保护企业数据资产。 HDInsight 还满足最常用的行业和政府 [符合性标准](https://azure.microsoft.com/overview/trusted-cloud)。
 
 - **简化版本管理** - Azure HDInsight 管理 Hadoop 生态系统组件的版本并使其保持最新。 软件更新在内部部署过程中通常比较复杂。
 
@@ -54,7 +53,7 @@ Azure HDInsight 是  [Hortonworks Data Platform (HDP)](https://hortonworks.com/
 
 - **自定义工具或第三方应用程序的可扩展性** - HDInsight 群集可使用已安装的组件进行扩展，也可以通过 Azure 市场中的[一键式](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 部署与其他大数据解决方案进行集成。
 
-- **轻松管理、 管理和监视**-与 Azure HDInsight 集成 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md) 以提供单一界面可以监视所有群集。
+- **轻松管理、管理和监视**-Azure HDInsight 与 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md)集成 @no__t 2to 提供单一界面来监视所有群集。
 
 - **与其他 Azure 服务集成** - HDInsight 可轻松地与其他常用 Azure 服务进行集成，例如：
 
@@ -91,13 +90,12 @@ Azure HDInsight 是  [Hortonworks Data Platform (HDP)](https://hortonworks.com/
 | **问题** | **示例** | **答案** |
 |---|---|---|
 |**主题**：**环境**|||
-|群集分发类型|Hortonworks、Cloudera、MapR| |
 |群集分发版本|HDP 2.6.5、CDH 5.7|
 |大数据生态系统组件|HDFS、Yarn、Hive、LLAP、Impala、Kudu、HBase、Spark、MapReduce、Kafka、Zookeeper、Solr、Sqoop、Oozie、Ranger、Atlas、Falcon、Zeppelin、R|
 |群集类型|Hadoop、Spark、Confluent Kafka、Storm、Solr|
 |群集数|4|
 |主节点数|2|
-|辅助进程节点数|100|
+|辅助角色节点数|100|
 |边缘节点数| 5|
 |总磁盘空间|100 TB|
 |主节点配置|m/y、cpu、磁盘等。|
@@ -139,10 +137,10 @@ Azure HDInsight 是  [Hortonworks Data Platform (HDP)](https://hortonworks.com/
 |数据目标|HDFS、RDBMS、Kafka、MPP ||
 |**主题**：元数据|||
 |Hive 数据库类型|Mysql、Postgres||
-|不是。 Hive 元存储|2||
-|不是。 Hive 表|100||
-|不是。 Ranger 策略|20||
-|不是。 Oozie 工作流|100||
+|Hive 元存储的数目|2||
+|Hive 表的数目|100||
+|Ranger 策略数|20||
+|Oozie 工作流数|100||
 |**主题**：**缩放**|||
 |数据量包括复制|100 TB||
 |每日引入量|50 GB||
@@ -154,11 +152,11 @@ Azure HDInsight 是  [Hortonworks Data Platform (HDP)](https://hortonworks.com/
 |已使用的磁盘空间|75%||
 |已使用的平均网络百分比|25%
 |**主题**：人员|||
-|不是。 管理员|2||
-|不是。 开发人员|10||
-|不是。 最终用户|100||
+|管理员数|2||
+|开发人员数量|10||
+|最终用户数|100||
 |技能|Hadoop、Spark||
-|不是。 可用于迁移工作的资源|2||
+|用于迁移的可用资源数|2||
 |**主题**：**限制**|||
 |当前限制|延迟较高||
 |当前挑战|并发问题||
@@ -182,7 +180,7 @@ Azure HDInsight 是  [Hortonworks Data Platform (HDP)](https://hortonworks.com/
 |专用和受保护的数据管道？|是||
 |已加入域的群集 (ESP)？|     是||
 |本地 AD 同步到云？|     是||
-|不是。 AD 用户同步？|          100||
+|要同步的 AD 用户数？|          100||
 |确定将密码同步到云？|    是||
 |仅云用户？|                 是||
 |需要 MFA？|                       否|| 
@@ -200,7 +198,6 @@ Azure HDInsight 是  [Hortonworks Data Platform (HDP)](https://hortonworks.com/
 |在不同的群集之间共享元存储？|是||
 |解构工作负载？|使用 Spark 作业替换 Hive 作业||
 |使用 ADF 实现数据业务流程？|否||
-|HDInsight 与 IaaS 上的 Hortonworks 数据平台？|HDInsight||
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: 366cce89e2ee5c446443c4dfc5ed12244bb4938d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 69cdf248e299ce4fdf08540836d44958438a2665
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123736"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699903"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet
 
@@ -40,7 +40,7 @@ ms.locfileid: "58123736"
 * 确认 VPN 设备有一个面向外部的公共 IPv4 地址。
 * 如果不熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ### <a name="running-powershell-locally"></a>在本地运行 PowerShell
 
@@ -123,7 +123,7 @@ New-AzResourceGroup -Name TestRG1 -Location 'East US'
 1. 设置变量。
 
    ```azurepowershell-interactive
-   $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name TestVet1
+   $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
    ```
 2. 创建网关子网。
 

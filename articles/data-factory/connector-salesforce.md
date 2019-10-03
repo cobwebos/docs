@@ -10,23 +10,29 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 6056df9aa9079887bfb06ca20ad564eb52baff38
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 08d1afb4175a61b70d8e04b19db187bcc87dd129
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008692"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010519"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-salesforce-connector.md)
 > * [当前版本](connector-salesforce.md)
 
 本文概述如何使用 Azure 数据工厂中的复制活动从/向 Salesforce 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 Salesforce 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
+
 
 可以将数据从 Salesforce 复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Salesforce。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -35,9 +41,9 @@ ms.locfileid: "60008692"
 - Salesforce 开发人员版、专业版、企业版或不受限制版。
 - 从/向 Salesforce 生产、沙盒和自定义域复制数据。
 
-Salesforce 连接器具有基于 Salesforce REST/大容量 API， [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm)有关的数据复制并[v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm)用于将数据复制到。
+Salesforce 连接器构建于 Salesforce REST/Bulk API 之上，其中 [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) 用于从中复制数据，而 [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) 用于接收复制数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在 Salesforce 中，必须启用 API 权限。 有关详细信息，请参阅[通过权限集启用 Salesforce 中的 API 访问权限](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
 
@@ -155,12 +161,13 @@ Salesforce 链接服务支持以下属性。
     "name": "SalesforceDataset",
     "properties": {
         "type": "SalesforceObject",
+        "typeProperties": {
+            "objectApiName": "MyTable__c"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Salesforce linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "objectApiName": "MyTable__c"
         }
     }
 }
@@ -291,12 +298,12 @@ Salesforce 链接服务支持以下属性。
 
 | 语法 | SOQL 模式 | SQL 模式 |
 |:--- |:--- |:--- |
-| 列选择 | 需要枚举要在查询中，例如复制的字段 `SELECT field1, filed2 FROM objectname` | 除了列选择之外，还支持 `SELECT *`。 |
+| 列选择 | 需要枚举要在查询中复制的字段，例如 `SELECT field1, filed2 FROM objectname` | 除了列选择之外，还支持 `SELECT *`。 |
 | 引号 | 字段/对象名称不能用引号引起来。 | 字段/对象名称可以用引号引起来，例如 `SELECT "id" FROM "Account"` |
 | 日期时间格式 |  请参考[此处的](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm)详细信息和下一部分中的示例。 | 请参考[此处的](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017)详细信息和下一部分中的示例。 |
 | 布尔值 | 表示为 `False` 和 `True`，例如 `SELECT … WHERE IsDeleted=True`。 | 表示为 0 或 1，例如 `SELECT … WHERE IsDeleted=1`。 |
-| 列重命名 | 不支持。 | 支持，例如：`SELECT a AS b FROM …`。 |
-| 关系 | 支持，例如 `Account_vod__r.nvs_Country__c`。 | 不支持。 |
+| 列重命名 | 不受支持。 | 支持，例如：`SELECT a AS b FROM …`。 |
+| 关系 | 支持，例如 `Account_vod__r.nvs_Country__c`。 | 不受支持。 |
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>使用 DateTime 列上的 where 子句检索数据
 
@@ -305,9 +312,9 @@ Salesforce 链接服务支持以下属性。
 * **SOQL 示例**：`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL 示例**：`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformedquerytruncated"></a>错误 MALFORMED_QUERY： 截断
+### <a name="error-of-malformed_querytruncated"></a>MALFORMED_QUERY:Truncated 错误
 
-如果您遇到的错误"MALFORMED_QUERY:截断"，通常是由于在数据中具有 JunctionIdList 类型列和 Salesforce 有上支持此类数据与大量的行的限制。 若要缓解问题，请尝试 JunctionIdList 列中排除或限制要复制的行数 （可以分区到多个复制活动运行）。
+如果遇到“MALFORMED_QUERY:Truncated”错误，通常是因为在数据中存在 JunctionIdList 类型列，而 Salesforce 在支持此类具有大量行的数据方面存在限制。 若要缓解这种情况，请尝试排除 JunctionIdList 列或限制要复制的行数（可以将其划分为多个复制活动运行）。
 
 ## <a name="data-type-mapping-for-salesforce"></a>Salesforce 的数据类型映射
 
@@ -315,25 +322,30 @@ Salesforce 链接服务支持以下属性。
 
 | Salesforce 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| 自动编号 |String |
-| 复选框 |Boolean |
-| 货币 |Decimal |
-| date |DateTime |
-| 日期/时间 |DateTime |
-| 电子邮件 |String |
-| ID |String |
-| 查找关系 |String |
-| 多选择列表 |String |
-| Number |Decimal |
-| 百分比 |Decimal |
-| 电话 |String |
-| 选择列表 |String |
-| Text |String |
-| 文本区域 |String |
-| 文本区域（长型值） |String |
-| 文本区域（丰富） |String |
-| 文本（加密） |String |
-| 代码 |String |
+| Auto Number |String |
+| Checkbox |Boolean |
+| Currency |Decimal |
+| Date |DateTime |
+| Date/Time |DateTime |
+| Email |String |
+| Id |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
+| 数量 |Decimal |
+| Percent |Decimal |
+| Phone |String |
+| Picklist |String |
+| 文本 |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
+| URL |String |
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e705ce17f0f09d341f2c650dfaccbbad60da14c7
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: ca6914967d855123c70bf746a9d68d2e045e76d9
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500186"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908675"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配模拟的 TPM 设备
 
@@ -34,7 +34,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="prerequisites"></a>先决条件
 
-* 已启用[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 Visual Studio 2015 或 [Visual Studio 2017](https://www.visualstudio.com/vs/)。
+* 启用了[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本。
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
 
@@ -111,32 +111,32 @@ Azure IoT 设备预配服务支持两类注册：
 
 1. 启动 Visual Studio 并打开名为 `azure_iot_sdks.sln` 的新解决方案文件。 此解决方案文件位于先前在 azure-iot-sdk-c git 存储库的根目录中创建的 `cmake` 文件夹中。
 
-2. 在 Visual Studio 菜单中，选择“生成” > “生成解决方案”以生成解决方案中的所有项目。
+2. 在 Visual Studio 菜单中，选择“生成” > “生成解决方案”以生成解决方案中的所有项目。  
 
-3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Tools** 文件夹。 右键单击“tpm_device_provision”项目，然后选择“设为启动项目”。 
+3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Tools** 文件夹。  右键单击“tpm_device_provision”项目，  然后选择“设为启动项目”。  
 
-4. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 应用将读取并显示 **_注册 ID_** 和 **_认可密钥_** 。 复制这些值。 在下一部分，这些值将用于设备注册。 
+4. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   应用将读取并显示 **_注册 ID_** 和 **_认可密钥_** 。 复制这些值。 在下一部分，这些值将用于设备注册。 
 
 
 <a id="portalenrollment"></a>
 
 ## <a name="create-a-device-enrollment-entry-in-the-portal"></a>在门户中创建设备注册项
 
-1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务。
+1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务  。
 
-2. 选择“管理注册”选项卡，然后单击顶部的“添加个人注册”按钮。 
+2. 选择“管理注册”选项卡，然后单击顶部的“添加个人注册”按钮。   
 
-3. 在“添加注册”中输入以下信息，然后单击“保存”按钮。
+3. 在“添加注册”中输入以下信息，然后单击“保存”按钮。  
 
-    - **机制：** 选择“TPM”作为标识证明*机制*。
-    - **认可密钥：** 输入通过运行 tpm_device_provision 项目为 TPM 设备生成的“认可密钥”。
-    - **注册 ID：** 输入通过运行 tpm_device_provision 项目为 TPM 设备生成的“注册 ID”。
-    - **IoT Edge 设备：** 选择“禁用”。
-    - **IoT 中心设备 ID：** 输入 test-docs-device 作为设备的 ID。
+    - **机制：** 选择“TPM”  作为标识证明*机制*。
+    - **认可密钥：** 输入通过运行 tpm_device_provision 项目为 TPM 设备生成的“认可密钥”   。
+    - **注册 ID：** 输入通过运行 tpm_device_provision 项目为 TPM 设备生成的“注册 ID”   。
+    - **IoT Edge 设备：** 选择“禁用”。 
+    - **IoT 中心设备 ID：** 输入 test-docs-device 作为设备的 ID  。
 
       ![在门户中输入设备注册信息](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
-      成功注册以后，设备的“注册 ID”会显示在“单个注册”选项卡下的列表中。 
+      成功注册以后，设备的“注册 ID”会显示在“单个注册”选项卡下的列表中。   
 
 
 <a id="firstbootsequence"></a>
@@ -145,11 +145,11 @@ Azure IoT 设备预配服务支持两类注册：
 
 在本部分，我们将示例代码配置为使用[高级消息队列协议 (AMQP)](https://wikipedia.org/wiki/Advanced_Message_Queuing_Protocol) 向设备预配服务实例发送设备的启动序列。 此启动序列使得设备可被识别并分配到与设备预配服务实例链接的 IoT 中心。
 
-1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，并复制“ID 范围”值。
+1. 在 Azure 门户中，选择设备预配服务的“概述”选项卡，并复制“ID 范围”值。     
 
     ![从门户中提取设备预配服务终结点信息](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
 
-2. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。 展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。
+2. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。  展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。 
 
 3. 在该文件的顶部附近，找到每个设备协议的 `#define` 语句，如下所示。 确保仅取消注释 `SAMPLE_AMQP`。
 
@@ -166,7 +166,7 @@ Azure IoT 设备预配服务支持两类注册：
     //#define SAMPLE_HTTP
     ```
 
-4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。 
+4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。  
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -180,9 +180,9 @@ Azure IoT 设备预配服务支持两类注册：
     //hsm_type = SECURE_DEVICE_TYPE_X509;
     ```
 
-6. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。 
+6. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
 
-7. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。 在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。
+7. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   在重新生成项目的提示中单击“是”，以便在运行项目之前重新生成项目。 
 
     以下输出示例显示预配设备客户端示例成功启动，然后连接到设备预配服务实例来获取 IoT 中心信息并注册：
 
@@ -200,7 +200,7 @@ Azure IoT 设备预配服务支持两类注册：
     test-docs-hub.azure-devices.net, deviceId: test-docs-device
     ```
 
-8. 预配服务将模拟设备预配到 IoT 中心后，中心的“IoT 设备”中会显示设备 ID。 
+8. 预配服务将模拟设备预配到 IoT 中心后，中心的“IoT 设备”中会显示设备 ID。  
 
     ![设备注册到 IoT 中心](./media/quick-create-simulated-device/hub-registration.png) 
 
@@ -211,8 +211,8 @@ Azure IoT 设备预配服务支持两类注册：
 
 1. 关闭计算机上的设备客户端示例输出窗口。
 2. 关闭计算机上的 TPM 模拟器窗口。
-3. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择设备预配服务。 打开服务的“管理注册”，然后单击“个人注册”选项卡。选择在本快速入门中注册的设备的“注册 ID”，然后单击顶部的“删除”按钮。 
-4. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心。 打开中心的“IoT 设备”，选择在本快速入门中注册的设备的“设备 ID”，然后单击顶部的“删除”按钮。
+3. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”，然后单击“个人注册”选项卡。   选择在本快速入门中注册的设备的“注册 ID”，然后单击顶部的“删除”按钮。   
+4. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”，选择在本快速入门中注册的设备的“设备 ID”，然后单击顶部的“删除”按钮。   
 
 ## <a name="next-steps"></a>后续步骤
 

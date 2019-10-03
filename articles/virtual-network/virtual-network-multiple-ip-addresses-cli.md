@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: 了解如何使用 Azure 命令行接口 (CLI) 将多个 IP 地址分配给虚拟机。
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
-ms.author: jimdial
-ms.openlocfilehash: b693500e785d41b2ad3339e26dd9fd3505891bc0
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.author: kumud
+ms.openlocfilehash: 3b00bbb5903156da625b7caaca9b1a2cff212421
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648327"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64699351"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>使用 Azure CLI 将多个 IP 地址分配给虚拟机
 
@@ -203,7 +204,7 @@ az vm create \
         --dns-name mypublicdns3
         ```
 
-        若要新建具有静态专用 IP 地址和关联的 myPublicIP3 公共 IP 地址资源的 IP 配置，请输入下面的命令：
+        若要新建具有静态专用 IP 地址和关联的 myPublicIP3  公共 IP 地址资源的 IP 配置，请输入下面的命令：
 
         ```bash
         az network nic ip-config create \

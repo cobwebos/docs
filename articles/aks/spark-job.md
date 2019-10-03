@@ -10,17 +10,17 @@ ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
 ms.openlocfilehash: ddaff590fd493b430a72c30dd35cb1b891b80d84
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414023"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205338"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 
 [Apache Spark][apache-spark] 是用于大规模数据处理的高速引擎。 从 [Spark 2.3.0 版][spark-latest-release]开始，Apache Spark 原生支持与 Kubernetes 群集集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 为了完成本文中的步骤，需要具备以下各项。
 
@@ -313,7 +313,7 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 ```
 
 > [!WARNING]
-> 来自 Spark [文档][spark-docs]：“Kubernetes 计划程序当前处于实验阶段。 将来版本中可能在配置、容器映像和入口点方面有一些方行为更改。”
+> 摘自 Spark [文档][spark-docs]：“Kubernetes 计划程序当前处于实验阶段。 将来版本中可能在配置、容器映像和入口点方面有一些方行为更改。”
 
 ## <a name="next-steps"></a>后续步骤
 

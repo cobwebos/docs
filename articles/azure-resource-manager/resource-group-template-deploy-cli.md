@@ -1,23 +1,17 @@
 ---
 title: 使用 Azure CLI 和模板部署资源 | Microsoft Docs
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: 493b7932-8d1e-4499-912c-26098282ec95
 ms.service: azure-resource-manager
-ms.devlang: azurecli
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/28/2019
+ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 92476f9ac48c168c3bbe85d4da49b6afe034c117
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: bd43e919cc0b2bcf1d130c7e616b7da064abcc65
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648650"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971017"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 模板和 Azure CLI 部署资源
 
@@ -29,21 +23,23 @@ ms.locfileid: "58648650"
 
 ## <a name="deployment-scope"></a>部署范围
 
-你可以面向你部署到 Azure 订阅或在订阅中的资源组。 在大多数情况下，将目标部署到资源组。 使用订阅部署在订阅中应用策略和角色分配。 此外可以使用订阅部署创建资源组和将资源部署到它。 具体取决于部署的范围，您可以使用不同的命令。
+可将部署目标设定为 Azure 订阅或订阅中的资源组。 大多数情况下，我们会将以资源组指定为部署目标。 可以使用订阅部署在整个订阅中应用策略和角色分配。 还可以使用订阅部署创建资源组并向其部署资源。 根据部署范围使用不同的命令。
 
-若要将部署到**资源组**，使用[az 组部署创建](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
+若要部署到**资源组**，请使用 [az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)：
 
 ```azurecli
 az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
 ```
 
-若要将部署到**订阅**，使用[az 部署创建](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create):
+若要部署到**订阅**，请使用 [az deployment create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create)：
 
 ```azurecli
 az deployment create --location <location> --template-file <path-to-template>
 ```
 
-在本文中的示例使用的资源组部署。 有关订阅部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
+目前，仅通过 REST API 支持管理组部署。 请参阅[使用资源管理器模板和资源管理器 REST API 部署资源](resource-group-template-deploy-rest.md)。
+
+本文中的示例使用资源组部署。 有关订阅部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
 
 ## <a name="deploy-local-template"></a>部署本地模板
 
@@ -102,12 +98,12 @@ az group deployment create --resource-group examplegroup \
 
 ## <a name="redeploy-when-deployment-fails"></a>部署失败时，重新部署
 
-此功能是也称为*错误时回滚*。 部署失败时，可以自动重新部署部署历史记录中先前成功的部署。 若要指定重新部署，请在部署命令中使用 `--rollback-on-error` 参数。 如果已为你的基础结构部署了已知的良好状态并需要此选项以将还原为此功能很有用。 有许多需要注意的问题和限制：
+此功能也称为“出错时回滚”。 部署失败时，可以自动重新部署部署历史记录中先前成功的部署。 若要指定重新部署，请在部署命令中使用 `--rollback-on-error` 参数。 如果基础结构部署存在一个已知良好的状态，并且你希望还原到此状态，则此功能非常有用。 有许多需要注意的问题和限制：
 
-- 完全按照以前已运行具有相同的参数运行重新部署。 可以更改参数。
-- 使用运行以前的部署[完整模式](./deployment-modes.md#complete-mode)。 以前的部署中不包含任何资源被删除，并且任何资源配置设置为其以前的状态。 请确保完全了解[部署模式之一下](./deployment-modes.md)。
-- 重新部署只会影响资源，任何数据更改不会受到影响。
-- 在订阅级别部署的资源组部署仅支持此功能。 有关订阅级别部署的详细信息，请参阅[在订阅级别创建资源组和资源](./deploy-to-subscription.md)。
+- 重新部署使用与以前运行它时相同的参数以相同的方式运行。 无法更改参数。
+- 以前的部署是使用[完整模式](./deployment-modes.md#complete-mode)运行的。 以前的部署中未包括的任何资源都将被删除，任何资源配置都将设置为以前的状态。 请确保你完全理解[部署模式](./deployment-modes.md)。
+- 重新部署只会影响资源，而不会影响任何数据更改。
+- 只有资源组部署支持此功能，订阅级部署不支持此功能。 有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](./deploy-to-subscription.md)。
 
 若要使用此选项，部署必须具有唯一的名称，以便可以在历史记录中标识它们。 如果没有唯一名称，则当前失败的部署可能会覆盖历史记录中以前成功的部署。 只能将此选项用于根级别部署。 从嵌套模板进行的部署不可用于重新部署。
 
@@ -135,9 +131,9 @@ az group deployment create \
 
 指定的部署必须已成功。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameters
 
-若要传递参数值，可以使用内联参数或参数文件。 本文中前面的示例显示了内联参数。
+若要传递参数值，可以使用内联参数或参数文件。
 
 ### <a name="inline-parameters"></a>内联参数。
 
@@ -149,6 +145,8 @@ az group deployment create \
   --template-file demotemplate.json \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
+
+如果将 Azure CLI 与 Windows 命令提示符 (CMD) 或 PowerShell 一起使用, 请按以下格式传递此数组`exampleArray="['value1','value2']"`:。
 
 还可以获取文件的内容并将该内容作为内联参数提供。
 
@@ -174,23 +172,7 @@ arrayContent.json 格式为：
 
 与在脚本中以内联值的形式传递参数相比，可能会发现使用包含参数值的 JSON 文件更为容易。 参数文件必须是本地文件。 Azure CLI 不支持外部参数文件。
 
-参数文件必须采用以下格式：
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-     "storageAccountType": {
-         "value": "Standard_GRS"
-     }
-  }
-}
-```
-
-请注意，parameters 部分包含与模板中定义的参数匹配的参数名称 (storageAccountType)。 参数文件针对该参数包含了一个值。 此值在部署期间自动传递给模板。 可以创建多个参数文件，然后为方案传入适当的参数文件。 
-
-复制上面的示例，并将其保存为名为 `storage.parameters.json` 的文件。
+有关参数文件的详细信息, 请参阅[Create 资源管理器 parameter file](resource-manager-parameter-files.md)。
 
 若要传递本地参数文件，请使用 `@` 指定名为 storage.parameters.json 的本地文件。
 
@@ -200,18 +182,6 @@ az group deployment create \
   --resource-group ExampleGroup \
   --template-file storage.json \
   --parameters @storage.parameters.json
-```
-
-### <a name="parameter-precedence"></a>参数优先级
-
-可以在同一部署操作中使用内联参数和本地参数文件。 例如，可以在本地参数文件中指定某些值，并在部署期间添加其他内联值。 如果同时为本地参数文件中的参数和内联参数提供值，则内联值优先。
-
-```azurecli
-az group deployment create \
-  --resource-group testgroup \
-  --template-file demotemplate.json \
-  --parameters @demotemplate.parameters.json \
-  --parameters exampleArray=@arrtest.json
 ```
 
 ## <a name="test-a-template-deployment"></a>测试模板部署

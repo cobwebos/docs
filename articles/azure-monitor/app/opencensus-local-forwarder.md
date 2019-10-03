@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights OpenCensus 分布式跟踪本地转发器 （预览版） |Microsoft docs
+title: Azure 应用程序 Insights OpenCensus 分布式跟踪本地转发器 (预览版) |Microsoft 文档
 description: 将 Python 和 Go 等语言的 OpenCensus 分布式跟踪与范围转发到 Azure Application Insights
 services: application-insights
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: a7efe663a75fa29a31e7157c5eab24c2973a3758
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aa64755b636005f4ed8ea5c074ffaada51fb8dd9
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002819"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348150"
 ---
-# <a name="local-forwarder-preview"></a>本地转发器 （预览版）
+# <a name="local-forwarder-preview"></a>本地转发器（预览版）
 
 本地转发器是从各种框架中收集 Application Insights 或 [OpenCensus](https://opencensus.io/) 遥测数据并将其路由到 Application Insights 的代理。 它能够在 Windows 和 Linux 下运行。 也可以在 macOS 下运行，但目前并不正式支持这种运行方式。
 
@@ -34,8 +34,8 @@ ms.locfileid: "58002819"
 在 Windows 中运行本地转发器的最简单方法就是将其作为 Windows 服务安装。 服务版本随附了一个 Windows 服务可执行文件 (*WindowsServiceHost/Microsoft.LocalForwarder.WindowsServiceHost.exe*)，可轻松将其注册到操作系统中。
 
 > [!NOTE]
-> 本地转发器服务需要 .NET Framework 4.7 或更高版本。 如果未安装 .NET Framework 4.7，则该服务可完成安装，但不会启动。 若要获取最新版本的 .NET framework，**[请访问 .NET Framework 下载页](
-https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)**。
+> 本地转发器服务需要 .NET Framework 4.7 或更高版本。 如果未安装 .NET Framework 4.7，则该服务可完成安装，但不会启动。 若要获取最新版本的 .NET framework， **[请访问 .NET Framework 下载页](
+https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** 。
 
 1. 从 GitHub 上的[本地转发器发布页](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases)下载 LF.WindowsServiceHost.zip 文件。
 
@@ -82,7 +82,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
   ```batchfile
   E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
   ```
-* 适用于 x86 和 x64 平台的独立 .NET Core 二进制文件集。 不需要 .NET Core 运行时即可运行这些二进制文件。 */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*、*/ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*。
+* 适用于 x86 和 x64 平台的独立 .NET Core 二进制文件集。 不需要 .NET Core 运行时即可运行这些二进制文件。 */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*、 */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*。
   ```batchfile
   E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
   E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
@@ -146,7 +146,7 @@ systemctl enable localforwarder
 systemctl start localforwarder
 ```
 
-* 通过检查 /home/SAMPLE_USER/LOCALFORWARDER_DIR 目录中的 **.log* 文件来监视服务。
+* 通过检查 /home/SAMPLE_USER/LOCALFORWARDER_DIR 目录中的 * *.log* 文件来监视服务。
 
 ### <a name="mac"></a>Mac
 本地转发器可在 macOS 中工作，但目前不受正式支持。
@@ -154,7 +154,7 @@ systemctl start localforwarder
 ### <a name="self-hosting"></a>自托管
 本地转发器还作为 .NET Standard NuGet 包分发，可将它托管在你自己的 .NET 应用程序中。
 
-```C#
+```csharp
 using Library;
 ...
 Host host = new Host();
@@ -177,7 +177,7 @@ host.Stop();
 
 ## <a name="monitoring-local-forwarder"></a>监视本地转发器
 
-跟踪将写出到文件系统中运行本地转发器的可执行文件的旁边（查看 **.log* 文件）。 可在该可执行文件的旁边添加一个名为 *NLog.config* 的文件，以提供自己的配置来取代默认配置。 有关格式说明，请参阅[文档](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format)。
+跟踪将写出到文件系统中运行本地转发器的可执行文件的旁边（查看 * *.log* 文件）。 可在该可执行文件的旁边添加一个名为 *NLog.config* 的文件，以提供自己的配置来取代默认配置。 有关格式说明，请参阅[文档](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format)。
 
 如果未提供配置文件（默认设置），则本地转发器将使用位于[此处](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/Common/NLog.config)的默认配置。
 

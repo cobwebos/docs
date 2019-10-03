@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/04/2018
+ms.date: 01/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 58eaec32fee149c845dc77a83763f2fcd8133a06
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.openlocfilehash: d4a4196aa601fc8da79da3962faec026eff5ec87
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120778"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625065"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)是用于处理[从 Application Insights 导出](export-telemetry.md)的数据的理想工具。 流分析可以从各种源提取数据。 它可以转换和筛选数据，然后将其路由到各种接收器。
@@ -67,7 +67,7 @@ ms.locfileid: "54120778"
 1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中会显示统计图表，[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
-2. 检查导出的数据 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C# /云/获取用于 .NET 的 Microsoft Azure SDK。）
+2. 检查导出的数据 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。  （如果没有此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，打开 Visual C# /云/获取用于 .NET 的 Microsoft Azure SDK。）
    
     ![](./media/export-stream-analytics/04-data.png)
    
@@ -82,7 +82,7 @@ ms.locfileid: "54120778"
 
 ![](./media/export-stream-analytics/SA002.png)
 
-创建新作业后，选择“转到资源”。
+创建新作业后，选择“转到资源”  。
 
 ![](./media/export-stream-analytics/SA003.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "54120778"
 > 
 
 ## <a name="add-new-output"></a>添加新输出
-现在选择作业 >“输出” > “添加”。
+现在选择作业 >“输出”   > “添加”  。
 
 ![](./media/export-stream-analytics/SA006.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "54120778"
 
 * export-input 是为流输入指定的别名
 * pbi-output 是定义的输出别名
-* 之所以使用 [OUTER APPLY GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx)，是因为事件名称在嵌套的 JSON 数组中。 然后，使用“选择”来选择事件名称，以及在相应时间段内使用该名称的实例计数。 [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx) 子句将元素分组成以 1 分钟为单位的时间段。
+* 之所以使用 [OUTER APPLY GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics)，是因为事件名称在嵌套的 JSON 数组中。 然后，使用“选择”来选择事件名称，以及在相应时间段内使用该名称的实例计数。 [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) 子句将元素分组成以 1 分钟为单位的时间段。
 
 ### <a name="query-to-display-metric-values"></a>用于显示指标值的查询
 ```SQL

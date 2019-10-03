@@ -1,22 +1,21 @@
 ---
 title: HDInsight 中的 Apache Phoenix - Azure HDInsight
-description: ''
-services: hdinsight
+description: Apache Phoenix 概述
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.author: ashishth
-ms.openlocfilehash: 833f240572b10e9d07da0ded27f5848822a70f46
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: HT
+ms.date: 09/05/2019
+ms.openlocfilehash: becb4e4787c21e18455144108274f585ba25cb72
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744322"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105383"
 ---
-# <a name="apache-phoenix-in-hdinsight"></a>HDInsight 中的 Apache Phoenix
+# <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Phoenix
 
 [Apache Phoenix](https://phoenix.apache.org/) 是构建在 [Apache HBase](hbase/apache-hbase-overview.md) 基础之上的开源大规模并行关系数据库层。 Phoenix 允许通过 HBase 使用类似于 SQL 的查询。 Phoenix 在幕后使用 JDBC 驱动程序，可让用户创建、删除和更改 SQL 表、索引、视图与序列，以及单独或批量更新插入行。 Phoenix 使用 noSQL 本机编译而不是 MapReduce 来编译查询，可让用户在 HBase 的顶层创建低延迟的应用程序。 Phoenix 添加了协处理器，支持在服务器的地址空间中运行客户端提供的代码，执行与数据共置的代码。 此方法可将客户端/服务器数据传输延迟降到最低。
 
@@ -41,7 +40,7 @@ CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) IN
 
 与执行单一索引查询相比，此方法可以大幅提升性能。 这种类型的辅助索引是**涵盖索引**，包含查询中包括的所有列。 因此，不需要执行表查找，索引能够满足整个查询的需求。
 
-### <a name="views"></a>视图
+### <a name="views"></a>Views
 
 Phoenix 视图可以克服一项 HBase 限制：创建 100 个以上的物理表时，性能开始下降。 Phoenix 视图可让多个虚拟表共享一个 HBase 基础物理表。
 
@@ -130,12 +129,12 @@ HDInsight HBase 群集提供 [Ambari UI](hdinsight-hadoop-manage-ambari.md) 用�
 
 2. 在左侧菜单中的服务列表内选择“HBase”，然后选择“配置”选项卡。
 
-    ![Ambari HBase 配置](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
+    ![Apache Ambari HBase 配置](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 
 3. 找到“Phoenix SQL”配置部分，启用或禁用 Phoenix，并设置查询超时。
 
-    ![Ambari“Phoenix SQL”配置部分](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
+    ![Ambari“Phoenix SQL”配置部分](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [将 Apache Phoenix 与 HDInsight 中基于 Linux 的 HBase 群集配合使用](hbase/apache-hbase-phoenix-squirrel-linux.md)

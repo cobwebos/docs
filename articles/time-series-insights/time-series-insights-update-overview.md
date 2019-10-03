@@ -4,33 +4,38 @@ description: Azure 时序见解预览版概述。
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
-ms.reviewer: anshan
+ms.reviewer: dpalled
 ms.workload: big-data
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7f8731f48b96ccbe0e77970af1ccefa1d7a7155f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ffa4424dd3173cf6493ec219fe92925c970ad08c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438765"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258328"
 ---
-# <a name="azure-time-series-insights-preview-overview"></a>Azure 时序见解预览版概述
+# <a name="what-is-azure-time-series-insights-preview"></a>什么是 Azure 时序见解预览版？
 
-Azure 时序见解预览版是一种端到端的平台即服务产品/服务。 它用于引入、处理、存储和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是唯一可扩展且自定义的服务产品/服务，满足行业 IoT 部署的广泛需求。
+Azure 时序见解预览版是一种端到端的平台即服务 (PaaS) 产品/服务。 它用于收集、处理、分析和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是唯一可扩展且自定义的服务产品/服务，满足行业 IoT 部署的广泛需求。
+
+> [!TIP]
+> 有关正式版 (GA) 中的功能，请阅读 [Azure 时序见解 GA 概述](time-series-insights-overview.md)。
 
 ## <a name="video"></a>视频
 
-在本视频中，我们概述了 Azure 时序见解预览版（一种基于云的 IoT 分析平台）。
+### <a name="learn-more-about-azure-time-series-insights-preview-br"></a>了解 Azure 时序见解预览版的详细信息。 </br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics/player]
 
 ## <a name="define-iot-data"></a>定义 IoT 数据
 
-IoT 数据是在资产密集型组织中提供的“行业”数据。 IoT 数据通常是高度非结构化的，因为它发送自记录相当具有干扰性的度量值的资产。 这些度量值包括温度、运动和湿度。 这些数据流通常带有下述特征：显著性差异、损坏的消息和错误读数。 在开始分析之前，必须对这些流中的数据进行清理。 IoT 数据通常仅在第一方数据源（如 CRM 或 ERP）提供的其他数据输入的上下文中有意义。 输入也可来自第三方数据源，例如天气或位置。
+IoT 数据是在资产密集型组织中提供的行业数据。 IoT 数据通常是高度非结构化的，因为它发送自记录相当具有干扰性的度量值的资产。 这些度量值包括温度、运动和湿度。 这些数据流通常带有下述特征：显著性差异、损坏的消息和错误读数。 在开始分析之前，必须对这些流中的数据进行清理。
+
+IoT 数据通常仅在第一方数据源（如 CRM 或 ERP）提供的其他数据输入的上下文中有意义。 输入也可来自第三方数据源，例如天气或位置。
 
 因此，只有一小部分的此类数据用于运营和业务目的。 此类数据提供一致、广泛、最新且正确的信息，适用于业务报告和分析。 将收集的 IoT 数据转换为可操作的见解需要：
 
@@ -46,11 +51,11 @@ IoT 数据是在资产密集型组织中提供的“行业”数据。 IoT 数�
 
 当前的 IoT 环境很多样。 客户遍及制造业、汽车业、能源业、公用事业、智能建筑和咨询行业。 方案包括即席数据浏览，其中数据的形状未知。 方案还包括通过架构化或显式建模的数据进行运营分析，以提高运营效率。 这些方案通常并行存在，并且支持不同的用例。 对于工业 IoT 企业及其数字革命的成功至关重要的平台功能包括：
 
-- 多层存储，包括冷热存储。 
-- 能够存储数十年的时序数据。 
+- 多层存储，包括冷热存储。
+- 能够存储数十年的时序数据。
 - 能够显式建模和优化基于资产的运营智能的查询。
 
-时序见解是全面的端到端平台即服务产品/服务，用于探索 IoT 数据和获取运营见解。 时序见解提供完全托管的云服务，适用于分析 IoT 规模的时序数据。
+时序见解是全面的端到端 PaaS 产品/服务，用于探索 IoT 数据和获取运营见解。 时序见解提供完全托管的云服务，适用于分析 IoT 规模的时序数据。
 
 可以将原始数据存储在无架构的内存存储中。 然后，可以通过分布式查询引擎和 API 执行交互式即席查询。 利用丰富的用户体验，在几秒钟内可视化数十亿个事件。 详细了解[数据探索功能](./time-series-insights-overview.md)。
 
@@ -71,12 +76,12 @@ IoT 数据是在资产密集型组织中提供的“行业”数据。 IoT 数�
 
 | | |
 | ---| ---|
-| **适用于 IoT 规模的时序数据的多层存储** | 通过引入数据的通用数据处理管道，可以将数据存储在暖存储中以进行交互式查询。 此外可以将数据存储在冷存储中以存储大量的数据。 利用高性能的基于资产的[查询](./time-series-insights-update-tsq.md)。 |
-| **用于情景化原始遥测数据和派生基于资产的见解的时序模型** | 使用描述性的[时序模型](./time-series-insights-update-tsm.md)情景化原始遥测数据。 通过高性能和成本优化的基于设备的查询，派生丰富的运营智能。 |
-| **与其他数据解决方案顺利持续集成** |  时序见解中的数据[存储](./time-series-insights-update-storage-ingress.md)在开源的 Apache Parquet 文件中。 无论是第一方还是第三方，这种与其他数据解决方案的集成对于端到端方案都很容易。 这些方案包括商业智能、高级机器学习和预测分析。 |
-| **近实时数据浏览** | [Azure 时序见解预览版资源管理器](./time-series-insights-update-explorer.md)用户体验提供的可视化功能适用于通过引入管道流式传输的所有数据。 连接事件源后不久，便可查看、浏览和查询事件数据。 通过这种方式，可以验证设备是否按预期方式发出数据。 此外可以监视 IoT 资产的运行状况、生产效率和整体成效。 |
-| **根本原因分析和异常情况检测** | [Azure 时序见解预览版资源管理器](./time-series-insights-update-explorer.md)支持的模式和透视视图可以执行和保存多步骤根本原因分析。 你可以将 Azure 流分析与时序见解配合使用，以便通过近实时方式检测警报和异常。 |
-| **在时序见解平台上生成的自定义应用程序** | 时序见解支持 [JavaScript SDK](./tutorial-explore-js-client-lib.md)。 SDK 提供了丰富的控件并且简化了对查询的访问。 使用 SDK 基于时序见解生成自定义 IoT 应用程序，以满足特定业务需求。 还可以直接使用时序见解[查询 API](./time-series-insights-update-tsq.md) 将数据推送到自定义 IoT 应用程序中。 |
+| 适用于 IoT 规模的时序数据的多层存储 | 通过引入数据的通用数据处理管道，可以将数据存储在暖存储中以进行交互式查询。 此外可以将数据存储在冷存储中以存储大量的数据。 利用高性能的基于资产的[查询](./time-series-insights-update-tsq.md)。 |
+| 用于情景化原始遥测数据和派生基于资产的见解的时序模型 | 使用描述性的[时序模型](./time-series-insights-update-tsm.md)情景化原始遥测数据。 通过高性能和成本优化的基于设备的查询，派生丰富的运营智能。 |
+| 与其他数据解决方案顺利持续集成 | 时序见解中的数据[存储](./time-series-insights-update-storage-ingress.md)在开源的 Apache Parquet 文件中。 无论是第一方还是第三方，这种与其他数据解决方案的集成对于端到端方案都很容易。 这些方案包括商业智能、高级机器学习和预测分析。 |
+| 近实时数据浏览 | [Azure 时序见解预览版资源管理器](./time-series-insights-update-explorer.md)用户体验提供的可视化功能适用于通过引入管道流式传输的所有数据。 连接事件源后不久，便可查看、浏览和查询事件数据。 通过这种方式，可以验证设备是否按预期方式发出数据。 此外可以监视 IoT 资产的运行状况、生产效率和整体成效。 |
+| 根本原因分析和异常情况检测 | [Azure 时序见解预览版资源管理器](./time-series-insights-update-explorer.md)支持的模式和透视视图可以执行和保存多步骤根本原因分析。 你可以将 Azure 流分析与时序见解配合使用，以便通过近实时方式检测警报和异常。 |
+| 在时序见解平台上生成的自定义应用程序 | 时序见解支持 [JavaScript SDK](./tutorial-explore-js-client-lib.md)。 SDK 提供了丰富的控件并且简化了对查询的访问。 使用 SDK 基于时序见解生成自定义 IoT 应用程序，以满足特定业务需求。 还可以直接使用时序见解[查询 API](./time-series-insights-update-tsq.md) 将数据推送到自定义 IoT 应用程序中。 |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -91,5 +96,5 @@ IoT 数据是在资产密集型组织中提供的“行业”数据。 IoT 数�
 > [Azure 时序见解预览版用例](./time-series-insights-update-use-cases.md)
 
 <!-- Images -->
-[1]: media/v2-update-overview/overview_one.png
-[2]: media/v2-update-overview/overview_two.png
+[1]: media/v2-update-overview/overview-one.png
+[2]: media/v2-update-overview/overview-two.png

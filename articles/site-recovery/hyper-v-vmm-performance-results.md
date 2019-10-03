@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a7413b2dcb24a42092eb2af9816b1d29a8306e19
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482794"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68377225"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>从 Hyper-V 复制到辅助站点的测试结果
 
@@ -108,7 +108,7 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 | 服务器 | RAM | 型号 | 处理器 | 处理器数目 | NIC | 软件 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 在群集中的 Hyper-V 服务器： <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 有 256 个 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20 GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
+| 在群集中的 Hyper-V 服务器： <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-128ESTLAB-HOST25 包含256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20 GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | VMM 服务器 |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>辅助站点
@@ -133,11 +133,11 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 | 工作负载 | I/O 大小 (KB) | 访问百分比 | 读取百分比 | 未完成的 I/O | I/O 模式 |
 | --- | --- | --- | --- | --- | --- |
-| 文件服务器 |48163264 |60%20%5%5%10% |80%80%80%80%80% |88888 |全部 100% 随机 |
-| SQL Server（卷 1）SQL Server（卷 2） |864 |100%100% |70%0% |88 |100% 随机 100% 连续 |
+| 文件服务器 |4<br />8<br />16<br />32<br />64 |60%<br />20%<br />5%<br />5%<br />10% |80%<br />80%<br />80%<br />80%<br />80% |8<br />8<br />8<br />8<br />8 |全部 100% 随机 |
+| SQL Server (卷 1)<br />SQL Server (volume 2) |8<br />64 |100%<br />100% |70%<br />0% |8<br />8 |100% 随机<br />100% 的顺序 |
 | Exchange |32 |100% |67% |8 |100% 随机 |
-| 工作站/VDI |464 |66%34% |70%95% |11 |两者都 100% 随机 |
-| Web 文件服务器 |4864 |33%34%33% |95%95%95% |888 |全部 75% 随机 |
+| 工作站/VDI |4<br />64 |66%<br />34% |70%<br />95% |1<br />1 |两者都 100% 随机 |
+| Web 文件服务器 |4<br />8<br />64 |33%<br />34%<br />33% |95%<br />95%<br />95% |8<br />8<br />8 |全部 75% 随机 |
 
 ### <a name="vm-configuration"></a>VM 配置
 
@@ -147,11 +147,11 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 | 工作负荷 | # VM | 最小 RAM (GB) | 最大 RAM (GB) | 每个 VM 的逻辑磁盘大小 (GB) | 最大 IOPS |
 | --- | --- | --- | --- | --- | --- |
-| SQL Server |51 |第 |4 |167 |10 |
-| Exchange Server |71 |第 |4 |552 |10 |
-| 文件服务器 |50 |第 |2 |552 |22 |
-| VDI |149 |0.5 |第 |80 |6 |
-| Web 服务器 |149 |0.5 |第 |80 |6 |
+| SQL Server |51 |1 |4 |167 |10 |
+| Exchange Server |71 |1 |4 |552 |10 |
+| 文件服务器 |50 |1 |2 |552 |22 |
+| VDI |149 |0\.5 |1 |80 |6 |
+| Web 服务器 |149 |0\.5 |1 |80 |6 |
 | 总计 |470 | | |96.83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>Site Recovery 设置
@@ -162,9 +162,9 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 | 主 VMM 云 | 受保护的 VM | 复制频率 | 额外的恢复点 |
 | --- | --- | --- | --- |
 | PrimaryCloudRpo15m |142 |15 分钟 |无 |
-| PrimaryCloudRpo30s |47 |30 秒 |无 |
-| PrimaryCloudRpo30sArp1 |47 |30 秒 |第 |
-| PrimaryCloudRpo5m |235 |5 分钟 |无 |
+| PrimaryCloudRpo30s |47 |30 秒 |None |
+| PrimaryCloudRpo30sArp1 |47 |30 秒 |1 |
+| PrimaryCloudRpo5m |235 |5 分钟 |None |
 
 ### <a name="performance-metrics"></a>性能指标
 
@@ -176,7 +176,7 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 | 可用内存 |\Memory\Available MBytes |
 | IOPS |\PhysicalDisk(_Total)\Disk Transfers/sec |
 | VM 读取 (IOPS) 操作数/秒 |\Hyper-V Virtual Storage Device(\<VHD>)\Read Operations/Sec |
-| VM 写入 (IOPS) 操作数/秒 |\Hyper-V Virtual Storage Device(\<VHD>)\Write Operations/S |
+| VM 写入 (IOPS) 操作数/秒 |\Hyper-V 虚拟存储设备 (\<VHD >) \Write Operations/秒 |
 | VM 读取吞吐量 |\Hyper-V Virtual Storage Device(\<VHD>)\Read Bytes/sec |
 | VM 写入吞吐量 |\Hyper-V Virtual Storage Device(\<VHD>)\Write Bytes/sec |
 

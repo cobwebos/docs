@@ -3,9 +3,8 @@ title: 在 Azure 安全中心应用系统更新 | Microsoft 文档
 description: 本文档演示如何实现 Azure 安全中心建议**应用系统更新**和**在系统更新后重启**。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: memildin
+ms.openlocfilehash: 1688e85c6e6ed57892ccdffdf0813c8628127cc5
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098995"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202463"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>在 Azure 安全中心应用系统更新
 Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监控，以找出缺少的操作系统更新。 安全中心从 Windows 更新或 Windows Server Update Services (WSUS) 检索可用的安全更新和关键更新的列表，具体取决于 Windows 计算机上配置的服务。 安全中心还可以在 Linux 系统中检查最新更新。 如果 VM 或计算机缺少系统更新，安全中心将建议应用系统更新。
@@ -63,23 +62,13 @@ Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监
 
    ![缺少的安全更新][3]
 
-4. 选择顶部功能区中的“搜索”图标。  Azure Monitor 日志搜索查询打开，并筛选到缺少更新的计算机。
+4. 选择顶部功能区中的“搜索”图标。  将打开 Azure Monitor 日志搜索查询，筛选为缺少更新的计算机。
 
-   ![Azure 监视器日志搜索][4]
+   ![Azure Monitor 日志搜索][4]
 
 5. 选择列表中的计算机，以了解详细信息。 此时，将会打开另一个搜索结果，其中筛选出了相应计算机的信息。
 
-    ![Azure 监视器日志搜索][5]
-
-## <a name="reboot-after-system-updates"></a>在系统更新后重启
-1. 返回到“建议”边栏选项卡。 应用系统更新后，将生成名为**在系统更新后重启**的新项。 此项提醒需要重启 VM 才能完成应用系统更新的过程。
-
-   ![在系统更新后重启][6]
-2. 选择“在系统更新后重启”。 这会打开“重启处于挂起状态，以完成系统更新”边栏选项卡，显示需要重新启动以完成应用系统更新过程的 VM 列表。
-
-   ![重新启动挂起][7]
-
-从 Azure 重新启动 VM 以完成此过程。
+    ![Azure Monitor 日志搜索][5]
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关安全中心的详细信息，请参阅以下文章：
@@ -98,5 +87,3 @@ Azure 安全中心每天对 Windows、Linux 虚拟机 (VM) 和计算机进行监
 [3]: ./media/security-center-apply-system-updates/detail-on-missing-update.png
 [4]: ./media/security-center-apply-system-updates/log-search.png
 [5]: ./media/security-center-apply-system-updates/search-details.png
-[6]: ./media/security-center-apply-system-updates/reboot-after-system-updates.png
-[7]: ./media/security-center-apply-system-updates/restart-pending.png

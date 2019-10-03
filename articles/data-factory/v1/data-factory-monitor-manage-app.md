@@ -3,22 +3,21 @@ title: 监视和管理数据管道 - Azure | Microsoft 文档
 description: 了解如何使用“监视和管理”应用来监视和管理 Azure 数据工厂和管道。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 5b70edd4f65538b52c70881258bc500a34b04d80
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 052ea99f0489458269adf4dca2c6713535933638
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025413"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139578"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>使用“监视和管理”应用监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -160,7 +159,7 @@ ms.locfileid: "54025413"
 
 <table>
 <tr>
-    <th align="left">状态</th><th align="left">子状态</th><th align="left">说明</th>
+    <th align="left">状态</th><th align="left">子状态</th><th align="left">描述</th>
 </tr>
 <tr>
     <td rowspan="8">等待</td><td>ScheduleTime</td><td>未到运行活动窗口的时间。</td>
@@ -188,7 +187,7 @@ ms.locfileid: "54025413"
 </tr>
 <tr>
 <tr>
-<td rowspan="2">InProgress</td><td>正在验证</td><td>正在进行验证。</td>
+<td rowspan="2">正在进行</td><td>正在验证</td><td>正在进行验证。</td>
 </tr>
 <td>-</td>
 <td>正在处理活动窗口。</td>

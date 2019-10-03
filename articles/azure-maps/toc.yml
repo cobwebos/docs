@@ -5,6 +5,7 @@
     - name: 什么是 Azure Maps？
       href: about-azure-maps.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 创建 Web 应用
       href: quick-demo-map-app.md
@@ -24,6 +25,10 @@
       items:
         - name: 设置地理围栏
           href: tutorial-geofence.md
+        - name: 空间分析
+          href: tutorial-iot-hub-maps.md
+        - name: 使用 Azure Notebooks 进行 EV 路线规划 (Python)
+          href: tutorial-ev-routing.md
 - name: 概念
   items:
     - name: 使用 Azure Maps 进行身份验证
@@ -42,7 +47,9 @@
           href: render-coverage.md
         - name: 路由覆盖区域
           href: routing-coverage.md
-    - name: 支持的语言
+        - name: 出行覆盖区域
+          href: mobility-coverage.md
+    - name: 本地化支持
       href: supported-languages.md
     - name: 支持的地图样式
       href: supported-map-styles.md
@@ -50,6 +57,8 @@
       href: supported-browsers.md
     - name: 缩放级别和磁贴网格
       href: zoom-levels-and-tile-grid.md
+    - name: 出行服务数据结构
+      href: mobility-service-data-structure.md
 - name: 操作指南
   items:
     - name: 管理 Maps 帐户
@@ -70,33 +79,43 @@
           href: how-to-use-best-practices-for-search.md
         - name: 在静态地图上呈现自定义数据
           href: how-to-render-custom-data.md
+        - name: 请求公共交通路线
+          href: how-to-request-transit-data.md
+        - name: 请求实时公共交通数据
+          href: how-to-request-real-time-data.md
     - name: 使用 Web SDK 进行开发
       items:
         - name: 地图控件
           items:
-            - name: 使用地图控件
+            - name: Web 地图控件入门
               href: how-to-use-map-control.md
             - name: 创建地图
               href: map-create.md
-            - name: 选择地图样式
+            - name: 更改地图的样式
               href: choose-map-style.md
             - name: 将控件添加到地图
               href: map-add-controls.md
+            - name: 创建数据源
+              href: create-data-source-web-sdk.md
             - name: 添加符号层
               href: map-add-pin.md
-            - name: 添加弹出项
-              href: map-add-popup.md
             - name: 添加气泡层
               href: map-add-bubble-layer.md
-            - name: 添加形状
+            - name: 添加线条层
+              href: map-add-line-layer.md
+            - name: 添加多边形层
               href: map-add-shape.md
             - name: 添加热度地图层
               href: map-add-heat-map-layer.md
+            - name: 添加弹出项
+              href: map-add-popup.md
             - name: 群集点数据
               href: clustering-point-data-web-sdk.md
             - name: 使用数据驱动样式表达式
               href: data-driven-style-expressions-web-sdk.md
-            - name: 覆盖图像
+            - name: 如何使用图像模板
+              href: how-to-use-image-templates-web-sdk.md
+            - name: 添加图像层
               href: map-add-image-layer.md
             - name: 添加图块层
               href: map-add-tile-layer.md
@@ -108,6 +127,14 @@
               href: map-events.md
             - name: 使应用可供访问
               href: map-accessibility.md
+        - name: 绘图工具
+          items:
+            - name: 添加绘图工具栏
+              href: map-add-drawing-toolbar.md
+            - name: 设置绘图选项
+              href: set-drawing-options.md
+            - name: 获取形状数据
+              href: map-get-shape-data.md
         - name: 服务模块
           items:
             - name: 使用服务模块
@@ -120,8 +147,20 @@
               href: map-route.md
     - name: 使用 Android SDK 进行开发
       items:
-        - name: 如何使用 Android 地图控件
+        - name: Android 地图控件入门
           href: how-to-use-android-map-control-library.md
+        - name: 更改地图的样式
+          href: set-android-map-styles.md
+        - name: 添加符号层
+          href: how-to-add-symbol-to-android-map.md
+        - name: 添加形状
+          href: how-to-add-shapes-to-android-map.md
+        - name: 显示功能信息
+          href: display-feature-information-android.md
+        - name: 添加图块层
+          href: how-to-add-tile-layer-android-map.md
+    - name: 提供数据反馈
+      href: how-to-use-feedback-tool.md
 - name: 引用
   items:
     - name: API 和参数扩展
@@ -140,6 +179,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/data'
         - name: 地理位置服务
           href: 'https://docs.microsoft.com/rest/api/maps/geolocation'
+        - name: 移动服务
+          href: 'https://docs.microsoft.com/rest/api/maps/mobility'
         - name: 呈现服务
           href: 'https://docs.microsoft.com/rest/api/maps/render'
         - name: 路线服务
@@ -158,6 +199,8 @@
       items:
         - name: 地图控件
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+        - name: 绘图工具
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: 服务模块
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
     - name: 资源管理器模板
@@ -165,7 +208,7 @@
 - name: 资源
   items:
     - name: Azure Maps 使用条款
-      href: 'https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31'
+      href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps 定价
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: 定价计算器
@@ -176,6 +219,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps 视频
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Azure Maps 案例研究
+      href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps 术语表
       href: glossary.md
     - name: 服务更新
@@ -200,6 +245,8 @@
       items:
         - name: IoT 中心
           href: /azure/iot-hub
+        - name: IoT 即插即用
+          href: /azure/iot-pnp
         - name: IoT 中心设备预配服务
           href: /azure/iot-dps
         - name: 地图

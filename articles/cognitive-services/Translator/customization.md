@@ -1,21 +1,21 @@
 ---
 title: 翻译自定义 - 文本翻译 API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 通过 Microsoft Translator Hub 使用首选的术语和样式构建自己的机器翻译系统。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918223"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257625"
 ---
 # <a name="customize-your-text-translations"></a>自定义文本翻译
 
@@ -29,7 +29,7 @@ Microsoft 自定义翻译是 Microsoft Translator 服务的一项功能，它允
 
 ### <a name="how-does-it-work"></a>工作原理
 
-使用以前翻译过的文档（传单、网页、文档等）构建一个翻译系统，以反映领域特定的术语和样式，比通用翻译系统更好。 用户可以上传 TMX、XLIFF、TXT、DOCX 和 XLSX 文档。  
+使用之前翻译的文档（leaflets、网页、文档等）构建一个翻译系统，该系统可反映与标准翻译系统更好的特定于域的术语和样式。 用户可以上传 TMX、XLIFF、TXT、DOCX 和 XLSX 文档。  
 
 该系统还接受在文档级别并行但在句子级别尚未对齐的数据。 如果用户可以访问相同内容的多种语言版（但每种语言的内容都位于单独的文档中），自定义翻译将能够跨文档自动匹配句子。  该系统还可以使用一种或两种语言的单语数据来补充并行训练数据以改进翻译。
 
@@ -43,7 +43,7 @@ Microsoft 自定义翻译是 Microsoft Translator 服务的一项功能，它允
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
 > [!NOTE]
-> Microsoft Translator 中心将于 2019 年 4 月 30 日停用旧。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
+> 旧版 Microsoft Translator 中心将在 2019 5 月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
 
 ## <a name="custom-translator-versus-hub"></a>自定义翻译与 Hub
 
@@ -60,8 +60,6 @@ Microsoft 自定义翻译是 Microsoft Translator 服务的一项功能，它允
 
 > [!NOTE]
 > 自 2018 年 2 月 1 日起，AddTranslation() 和 AddTranslationArray() 不再可用于文本翻译 API V2.0。 这些方法将失败，不会写入任何内容。 文本翻译 API V3.0 不支持这些方法。
-> 
-> Translator Hub API 中提供了类似的功能。 请参阅 [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger)。
 
 ## <a name="next-steps"></a>后续步骤
 

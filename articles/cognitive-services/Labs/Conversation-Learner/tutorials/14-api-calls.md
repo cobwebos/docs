@@ -3,19 +3,20 @@ title: 如何通过对话学习器模型使用 API 调用 - Microsoft 认知服�
 titleSuffix: Azure
 description: 了解如何通过对话学习器模型使用 API 调用。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: aba3c2eb925370704ea52364891502a7a09cc9ec
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 261536932cc82a28ad4ee3ffc3575ea41fe9ec5b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212505"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703924"
 ---
 # <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>如何将 API 调用添加到对话学习器模型
 
@@ -58,7 +59,7 @@ API 调用的代码在此文件中定义：`C:\<installedpath>\src\demos\tutoria
 - `ClearEntities` 回调会清除数字实体，以便用户能够输入另一个数字。 
     - 说明 API 调用如何才能操作实体。
 
-### <a name="actions"></a>操作
+### <a name="actions"></a>个操作
 我们已创建了四个操作。 其中三个操作为“非等待”API 操作，第四个操作为“文本”操作，该操作会询问用户一个问题，而该问题类似于我们在其他教程中看到过的问题。 若要了解每个操作是如何创建的，请执行以下操作：
 1. 在左面板中单击“操作”，然后单击在网格中列出的四个操作中的一个。
 2. 注意弹出的窗体中每个字段的值。
@@ -84,7 +85,7 @@ API 调用的代码在此文件中定义：`C:\<installedpath>\src\demos\tutoria
 4. 选择 `RandomGreeting`。 
     - 这将执行随机问候 API 调用。
     - 这不会等待用户响应。
-5. 选择 `What number to do you want to multiply by 12?`
+5. 选择`What number to do you want to multiply by 12?`
 6. 键入一个数字，该数字可以是任意数字，但只能是一个数字。
     - 注意，数字会被自动标记为 `number` 实体。
 7. 单击“`Score Actions`”按钮。

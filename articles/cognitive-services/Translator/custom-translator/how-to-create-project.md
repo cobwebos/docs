@@ -2,19 +2,19 @@
 title: 如何创建项目？ - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 如何在自定义翻译中创建项目？
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2e49a8c40396b03c231fa7fd484331b0e28d4cf6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a62cc6133fe01bf7478166c526e32b3215ceebf1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762698"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595747"
 ---
 # <a name="create-a-project"></a>创建一个项目
 
@@ -32,7 +32,7 @@ ms.locfileid: "57762698"
 
     a.  项目名称（必需）：为项目提供唯一且有意义的名称。 不需要在标题中提到语言。
 
-    b.  说明:有关项目的简短摘要。 此说明对自定义翻译的行为或生成的自定义系统没有影响，但可以帮助区分不同的项目。
+    b.  描述:有关项目的简短摘要。 此说明对自定义翻译的行为或生成的自定义系统没有影响，但可以帮助区分不同的项目。
 
     c.  语言对（必需）：选择翻译的源语言和目标语言。
 
@@ -44,7 +44,7 @@ ms.locfileid: "57762698"
 
     ![“创建项目”对话框](media/how-to/how-to-create-project-dialog.png)
 
-3.  单击“法律条款” 
+3.  单击“法律条款”
 
 ## <a name="view-project-details"></a>查看项目详细信息
 

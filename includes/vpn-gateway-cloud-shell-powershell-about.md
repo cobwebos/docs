@@ -5,25 +5,28 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/13/2019
+ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c8f45e4bb16c05c9f322dd04d2c80f6144744e64
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: fe7e617ae2263f1388feef3754f6cd16130ed436
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884026"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059560"
 ---
-本文使用 PowerShell cmdlet。 若要运行这些 cmdlet，可以使用 Azure Cloud Shell。 Azure Cloud Shell 是免费的交互式 shell 具有常用 Azure 工具的预安装并配置为使用与你的帐户。 只需单击**复制**复制代码，将其粘贴到 Cloud Shell 中，并按 enter 来运行它。 可通过多种方式来启动 Cloud Shell：
+本文使用 PowerShell cmdlet。 若要运行这些 cmdlet，可以使用 Azure Cloud Shell（在 Azure 中托管并通过浏览器使用的交互式 shell 环境）。 Azure Cloud Shell 随预安装的 Azure PowerShell cmdlet 一起提供。
+
+若要在 Azure Cloud Shell 上运行本文中包含的任何代码，请打开 Cloud Shell 会话，对代码块使用“复制”按钮以复制代码，然后使用 __Ctrl + Shift + V__（在 Windows 和 Linux 上）或 __Cmd + Shift + V__（在 macOS 上）将其粘贴到 Cloud Shell 会话中。 粘贴的文本不会自动执行，因此请按 **Enter** 运行代码。
+
+可以通过以下方式启动 Azure Cloud Shell：
 
 |  |   |
 |-----------------------------------------------|---|
-| 单击代码块右上角的“试用”。 | ![本文中的 Cloud Shell](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-powershell-try-it.png) |
-| 在浏览器中打开 Cloud Shell。 | [![https://shell.azure.com/powershell](./media/vpn-gateway-cloud-shell-powershell/launchcloudshell.png)](https://shell.azure.com/powershell) |
-| 单击 Azure 门户右上角菜单上的“Cloud Shell”按钮。 | [![门户中的 Cloud Shell](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-menu.png)](https://portal.azure.com) |
-|  |  |
+| 选择代码块右上角的“试用”。 这__不__会自动将文本复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| 在浏览器中打开 [shell.azure.com](https://shell.azure.com)。 | [![“启动 Azure Cloud Shell”按钮](./media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| 选择 [Azure 门户](https://portal.azure.com)右上角菜单上的“Cloud Shell”按钮。 | ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
-**本地运行 PowerShell**
+**在本地运行 PowerShell**
 
-您还可以安装并在计算机上本地运行 Azure PowerShell cmdlet。 PowerShell cmdlet 经常会更新。 如果你不运行最新版本，可能会失败的说明中指定的值。 若要查找的本地运行的 PowerShell 版本，请使用`Get-Module -ListAvailable Az`cmdlet。 若要安装或更新，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+还可以在计算机本地安装并运行 Azure PowerShell cmdlet。 PowerShell cmdlet 经常更新。 如果未运行最新版本，在说明中指定的值可能无法使用。 若要查找计算机上安装的 Azure PowerShell 的版本，请使用`Get-Module -ListAvailable Az` cmdlet。 若要进行安装或更新，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 125e0c4331eea105ffc201bd1f5f26bdbec1c553
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: a75f3f606129d370457816507537f2cb4491adf8
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549382"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478830"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>使用 Azure Maps 搜索附近兴趣点
 
@@ -38,15 +38,15 @@ ms.locfileid: "59549382"
 
 使用以下步骤创建新的 Maps 帐户：
 
-1. 在 [Azure 门户](https://portal.azure.com)的左上角单击“创建资源”。
-2. 在“在市场中搜索”框中，键入“Maps”。
-3. 从“结果”中，选择“Maps”。 单击地图下面显示的“创建”按钮。
-4. 在“创建 Maps 帐户”页上，输入以下值：
-    * 要用于此帐户的订阅。
-    * 此帐户的资源组名称。 可以选择新建或使用现有的资源组。
-    * 新帐户的名称。
-    * 此帐户的定价层。
-    * 阅读许可证和隐私声明，并选择复选框接受这些条款。
+1. 在 [Azure 门户](https://portal.azure.com)的左上角单击“创建资源”。 
+2. 在“在市场中搜索”框中，键入“Maps”   。
+3. 从“结果”中，选择“Maps”   。 单击地图下面显示的“创建”按钮。 
+4. 在“创建 Maps 帐户”页上，输入以下值  ：
+    * 要用于此帐户的订阅。 
+    * 此帐户的资源组名称。  可以选择新建或使用现有的资源组。  
+    * 新帐户的名称。 
+    * 此帐户的定价层  。
+    * 阅读许可证和隐私声明，并选择复选框接受这些条款   。
     * 单击“创建”  按钮。
 
 ![在门户中创建 Maps 帐户](./media/tutorial-search-location/create-account.png)
@@ -58,8 +58,8 @@ ms.locfileid: "59549382"
 成功创建 Maps 帐户后，检索查询 Maps API 的密钥。
 
 1. 在门户中打开 Maps 帐户。
-2. 在设置部分中，选择“身份验证”。
-3. 将“主密钥”复制到剪贴板。 本地保存它以便稍后在本教程中使用。
+2. 在设置部分中，选择“身份验证”  。
+3. 将“主密钥”复制到剪贴板。  本地保存它以便稍后在本教程中使用。
 
 ![在门户中获取主密钥](./media/tutorial-search-location/get-key.png)
 
@@ -85,7 +85,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
 
         <script>
         function GetMap(){
@@ -167,7 +167,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 
 ## <a name="add-search-capabilities"></a>添加搜索功能
 
-本部分演示如何使用 Maps [Search API](https://docs.microsoft.com/rest/api/maps/search) 在地图上查找兴趣点。 这是一个 RESTful API，可让开发人员搜索地址、兴趣点和其他地理信息。 搜索服务会将纬度和经度信息分配到指定的地址。 下面介绍的“服务模块”可以用来通过地图搜索 API 搜索位置。
+本部分演示如何使用 Maps [Search API](https://docs.microsoft.com/rest/api/maps/search) 在地图上查找兴趣点。 这是一个 RESTful API，可让开发人员搜索地址、兴趣点和其他地理信息。 搜索服务会将纬度和经度信息分配到指定的地址。 下面介绍的“服务模块”可以用来通过地图搜索 API 搜索位置。 
 
 ### <a name="service-module"></a>服务模块
 
@@ -184,7 +184,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   `SubscriptionKeyCredential` 创建 `SubscriptionKeyCredentialPolicy` 以使用订阅密钥验证对 Azure Maps 的 HTTP 请求。 `atlas.service.MapsURL.newPipeline()` 接受 `SubscriptionKeyCredential` 策略并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)实例。 `searchURL` 表示 Azure Maps [搜索](https://docs.microsoft.com/rest/api/maps/search)操作的 URL。
+   `SubscriptionKeyCredential` 创建 `SubscriptionKeyCredentialPolicy` 以使用订阅密钥验证对 Azure Maps 的 HTTP 请求。 `atlas.service.MapsURL.newPipeline()` 接受 `SubscriptionKeyCredential` 策略并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)实例。 `searchURL` 表示 Azure Maps [搜索](https://docs.microsoft.com/rest/api/maps/search)操作的 URL。
 
 2. 接下来添加以下脚本块，以便生成搜索查询。 它使用模糊搜索服务，这是搜索服务的基本搜索 API。 模糊搜索服务可处理最模糊的输入，例如地址、位置和兴趣点 (POI)。 此代码在提供的经纬度的指定半径内搜索邻近的加油站。 然后使用 `geojson.getFeatures()` 方法提取响应中的 GeoJSON 特征集合，并将其添加到数据源，这将自动通过符号层在地图上呈现数据。 脚本的最后一部分使用地图的 [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 属性通过结果的边框设置地图相机视图。
 
@@ -213,7 +213,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     });
     ```
 
-3. 保存“MapSearch.html”文件并刷新浏览器。 现在应看到地图以西雅图为中心，蓝色的圆形图钉标记了该区域中加油站的位置。
+3. 保存“MapSearch.html”文件并刷新浏览器  。 现在应看到地图以西雅图为中心，蓝色的圆形图钉标记了该区域中加油站的位置。
 
    ![查看包含搜索结果的地图](./media/tutorial-search-location/pins-map.png)
 
@@ -239,9 +239,9 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    API `sup` 提供一个固定在地图上所需位置的信息窗口。 
+    API `*atlas.Popup` 提供一个固定在地图上所需位置的信息窗口。 
 
-2. 在 script 标记中的 `GetMap` 函数后面添加以下代码，以便在弹出窗口中显示鼠标悬停结果信息。
+2. 在 `GetMap` 函数中添加以下代码，以便在弹出窗口中显示鼠标悬停结果信息。
 
     ```JavaScript
     function showPopup(e) {

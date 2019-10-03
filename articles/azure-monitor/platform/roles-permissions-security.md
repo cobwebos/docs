@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: bac57b18ec5474cfe3c27ad1079c5af7e1d2c451
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756807"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260618"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor 的角色、权限和安全入门
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-很多团队需要严格控制对监视数据和设置的访问。 例如，如果你的团队成员专门负责监视 （支持工程师、 DevOps 工程师），或如果使用托管的服务提供商，你可能想要向他们授予访问同时限制其能够创建仅监视数据，修改，或删除资源。 本文介绍如何快速地将内置监视 RBAC 角色应用到 Azure 中的用户，或者为需要有限的监视权限的用户构建自己的自定义角色。 然后讨论与 Azure Monitor 相关资源的安全注意事项，以及如何限制对它们所含数据的访问。
+很多团队需要严格控制对监视数据和设置的访问。 例如，如果有专门负责监视的团队成员（支持工程师、DevOps 工程师），或者使用托管服务提供程序，则可能希望向他们授予仅访问监视数据的权限，同时限制其创建、修改或删除资源的能力。 本文介绍如何快速地将内置监视 RBAC 角色应用到 Azure 中的用户，或者为需要有限的监视权限的用户构建自己的自定义角色。 然后讨论与 Azure Monitor 相关资源的安全注意事项，以及如何限制对它们所含数据的访问。
 
 ## <a name="built-in-monitoring-roles"></a>内置监视角色
 Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，同时使负责监视基础结构的用户能够获取并配置他们需要的数据。 Azure Monitor 提供了两个现成的角色：监视查阅者和监视参与者。
@@ -28,20 +28,20 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 分配了监视查阅者角色的人员可以查看订阅中的所有监视数据，但不能修改任何资源或编辑与监视资源相关的任何设置。 此角色适用于组织中的用户，如支持人员或操作工程师，他们需要能够：
 
 * 在门户中查看监视仪表板和创建自己专用的监视仪表板。
-* 查看 [Azure 警报](../../azure-monitor/platform/alerts-overview.md)中定义的预警规则
-* 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](../../azure-monitor/platform/powershell-quickstart-samples.md) 或 [跨平台 CLI](../../azure-monitor/platform/cli-samples.md) 查询指标。
+* 查看 [Azure 警报](alerts-overview.md)中定义的预警规则
+* 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](powershell-quickstart-samples.md) 或 [跨平台 CLI](cli-samples.md) 查询指标。
 * 使用门户、Azure Monitor REST API、PowerShell cmdlet 或跨平台 CLI 查询活动日志。
-* 查看资源的[诊断设置](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)。
-* 查看订阅的[日志配置文件](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)。
+* 查看资源的[诊断设置](diagnostic-settings.md)。
+* 查看订阅的[日志配置文件](activity-log-export.md)。
 * 查看自动调整规模设置。
 * 查看警报活动和设置。
 * 访问 Application Insights 数据和在 AI Analytics 中查看数据。
 * 搜索 Log Analytics 工作区数据（包括工作区的使用情况数据）。
 * 查看 Log Analytics 管理组。
-* 检索 Log Analytics 工作区中的搜索架构。
+* 在 Log Analytics 工作区中检索搜索架构。
 * 列出 Log Analytics 工作区中的监视包。
 * 检索并执行 Log Analytics 工作区中保存的搜索。
-* 检索 Log Analytics 工作区中存储配置。
+* 检索 Log Analytics 工作区存储配置。
 
 > [!NOTE]
 > 此角色不授予已传输到事件中心或存储在存储帐户的日志数据的读取访问权限。 有关配置这些资源的访问权限的信息，请[参阅下面章节](#security-considerations-for-monitoring-data)。
@@ -52,16 +52,16 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 分配了监视参与者角色的人员可以查看订阅中的所有监视数据和创建或修改监视设置，但不能修改任何其他资源。 此角色是监视查阅者角色的一个超集，适用于组织的监视团队成员或托管服务提供商，除了上述权限外，他们还需要能够：
 
 * 将监视仪表板发布为共享仪表板。
-* 设置[诊断设置](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)的资源。\*
-* 设置[日志配置文件](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)订阅。\*
-* 通过 [Azure 警报](../../azure-monitor/platform/alerts-overview.md)设置预警规则活动和设置。
+* 设置资源的[诊断设置](diagnostic-settings.md)。\*
+* 设置订阅的[日志配置文件](activity-log-export.md)。\*
+* 通过 [Azure 警报](alerts-overview.md)设置预警规则活动和设置。
 * 创建 Application Insights Web 测试和组件。
 * 列出 Log Analytics 工作区的共享密钥。
 * 启用或禁用 Log Analytics 工作区中的监视包。
-* 创建和删除以及在 Log Analytics 工作区中执行已保存的搜索。
-* 创建和删除 Log Analytics 工作区中存储配置。
+* 创建、删除和执行 Log Analytics 工作区中保存的搜索。
+* 创建和删除 Log Analytics 工作区存储配置。
 
-\*用户必须还单独授予目标资源 （存储帐户或事件中心命名空间） 的 ListKeys 权限，才能设置日志配置文件或诊断设置。
+\*用户还必须分别被授予目标资源（存储帐户或事件中心命名空间）的 ListKeys 权限，才能设置日志配置文件或诊断设置。
 
 > [!NOTE]
 > 此角色不授予已传输到事件中心或存储在存储帐户的日志数据的读取访问权限。 有关配置这些资源的访问权限的信息，请[参阅下面章节](#security-considerations-for-monitoring-data)。
@@ -71,7 +71,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>监视权限和自定义 RBAC 角色
 如果上述的内置角色不能满足团队的确切需求，则可以[创建具有更加细化的权限的自定义 RBAC 角色](../../role-based-access-control/custom-roles.md)。 以下是常见的 Azure Monitor RBAC 操作及其说明。
 
-| Operation | 描述 |
+| 操作 | 描述 |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |读取/写入/删除操作组。 |
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |读取/写入/删除活动日志警报。 |
@@ -160,7 +160,7 @@ New-AzRoleDefinition -Role $role
 事件中心可以遵循类似的模式，但首先需要创建专用的侦听授权规则。 如果想要将访问权限授予只需侦听与监视相关的事件中心的应用程序，请执行以下操作：
 
 1. 为事件中心创建共享访问策略，该事件中心是为传输仅包含侦听声明的监视数据而创建的。 可以在门户中完成此操作。 例如，可以称它为“monitoringReadOnly”。 如果可以，会希望将密钥直接提供给用户，并跳过下一步。
-2. 如果使用者需要能够临时获取密钥，向用户授予该事件中心的 ListKeys 操作。 这对于需要能够设置传输到事件中心的诊断设置或日志配置文件的用户来说也是必需的。 例如，可以创建 RBAC 规则：
+2. 如果使用者必须能够临时获取密钥，请向用户授予对该事件中心执行 ListKeys 操作的权限。 这对于需要能够设置传输到事件中心的诊断设置或日志配置文件的用户来说也是必需的。 例如，可以创建 RBAC 规则：
    
    ```powershell
    $role = Get-AzRoleDefinition "Reader"

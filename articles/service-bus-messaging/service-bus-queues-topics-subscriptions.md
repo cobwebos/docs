@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: aschhab
 ms.openlocfilehash: 7cacabf4f171189810e943043b5513e20113d962
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847025"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62125808"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
 
@@ -41,17 +41,17 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 ### <a name="receive-modes"></a>接收模式
 
-可以指定服务总线接收消息所用的两种不同模式：ReceiveAndDelete 或 PeekLock。 使用 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式时，接收操作是一个单一快照。即，当服务总线收到请求时，会将该消息标记为“已使用”并将其返回给应用程序。 **ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许在出现故障时不处理消息的方案。 为了理解此方案，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
+可以指定服务总线接收消息所用的两种不同模式：ReceiveAndDelete  或 PeekLock  。 使用 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式时，接收操作是一个单一快照。即，当服务总线收到请求时，会将该消息标记为“已使用”并将其返回给应用程序。 **ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许在出现故障时不处理消息的方案。 为了理解此方案，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线会将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
 
 使用 [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式时，接收操作分成了两步，从而有可能支持无法容忍遗漏消息的应用程序。 当服务总线收到请求时，它会找到要使用的下一个消息，将其锁定以防其他使用方接收它，然后将该消息返回给应用程序。 应用程序完成消息处理（或可靠地存储消息以供将来处理）后，它将通过对收到的消息调用 [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 完成接收过程的第二个阶段。 服务总线发现 **CompleteAsync** 调用时会将消息标记为“正在使用”。
 
 如果应用程序出于某种原因无法处理消息，则它可对收到的消息调用 [AbandonAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) 方法（而不是 [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 方法）。 此方法可使服务总线解锁消息并使其能够重新被同一个使用方或其他竞争使用方接收。 此外，还存在与锁定关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线将解锁该消息并使其可再次被接收（实质上是默认执行一个 [AbandonAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.abandonasync) 操作）。
 
-如果应用程序在处理消息之后，但在发出 **CompleteAsync** 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此过程通常称作“至少处理一次”，即每条消息将至少被处理一次。 但是，在某些情况下，同一消息可能会被重新传送。 如果方案不容许重复处理，则应用程序中需要用于检测重复的其他逻辑，此重复可基于消息的 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 属性实现，无论传送次数多少，均保持不变。 此功能称为“仅一次”处理。
+如果应用程序在处理消息之后，但在发出 **CompleteAsync** 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。 此过程通常称作“至少处理一次”  ，即每条消息将至少被处理一次。 但是，在某些情况下，同一消息可能会被重新传送。 如果方案不容许重复处理，则应用程序中需要用于检测重复的其他逻辑，此重复可基于消息的 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 属性实现，无论传送次数多少，均保持不变。 此功能称为“仅一次”  处理。
 
 ## <a name="topics-and-subscriptions"></a>主题和订阅
 
-与每条消息都由单个使用方处理的队列相比，主题和订阅通过发布/订阅模式提供“一对多”通信方式。 这对于扩展到大量接收方而言十分有用，每个发布的消息对向该主题注册的每个订阅均可用。 取决于可在每个订阅时设置的筛选器规则，消息会发送到一个主题和传送到一个或多个关联订阅。 订阅可使用其他筛选器限制其要接收的消息。 消息发送到主题的方式和发送到队列的方式相同，但不会直接从主题被接收。 相反，会从订阅接收。 主题订阅类似于接收发送至该主题的消息副本的虚拟队列。 从订阅接收消息的方式与从队列接收的方式相同。
+与每条消息都由单个使用方处理的队列相比，主题  和订阅  通过发布/订阅  模式提供“一对多”通信方式。 这对于扩展到大量接收方而言十分有用，每个发布的消息对向该主题注册的每个订阅均可用。 取决于可在每个订阅时设置的筛选器规则，消息会发送到一个主题和传送到一个或多个关联订阅。 订阅可使用其他筛选器限制其要接收的消息。 消息发送到主题的方式和发送到队列的方式相同，但不会直接从主题被接收。 相反，会从订阅接收。 主题订阅类似于接收发送至该主题的消息副本的虚拟队列。 从订阅接收消息的方式与从队列接收的方式相同。
 
 通过比较，队列的消息发送功能直接映射到主题，其消息接收功能会映射到订阅。 此外，此功能意味着订阅支持本部分中前面有关队列所述的相同模式：竞争使用者、临时分离、负荷量和负载均衡。
 
@@ -63,7 +63,7 @@ Microsoft Azure 服务总线支持一组基于云的、面向消息的中间件�
 
 ### <a name="rules-and-actions"></a>规则和操作
 
-在许多情况下，必须以不同方式处理具有特定特征的消息。 若要启用此处理，可配置订阅以找到具有所需属性的消息，并对这些属性执行某些修改。 虽然服务总线订阅可看到发送到主题的所有消息，但你可仅将这些消息的一个子集复制到虚拟订阅队列。 可使用订阅筛选器完成此筛选。 此类修改称为筛选器操作。 创建订阅后，可提供一个对消息属性进行操作的筛选器表达式，其中属性包括系统属性（例如 **Label**）和自定义应用程序属性（例如 **StoreName**）这种情况下，SQL 筛选器表达式为可选项；如没有 SQL 筛选器表达式，订阅上定义的任何筛选器会对该订阅的所有消息执行。
+在许多情况下，必须以不同方式处理具有特定特征的消息。 若要启用此处理，可配置订阅以找到具有所需属性的消息，并对这些属性执行某些修改。 虽然服务总线订阅可看到发送到主题的所有消息，但你可仅将这些消息的一个子集复制到虚拟订阅队列。 可使用订阅筛选器完成此筛选。 此类修改称为筛选器操作  。 创建订阅后，可提供一个对消息属性进行操作的筛选器表达式，其中属性包括系统属性（例如 **Label**）和自定义应用程序属性（例如 **StoreName**）这种情况下，SQL 筛选器表达式为可选项；如没有 SQL 筛选器表达式，订阅上定义的任何筛选器会对该订阅的所有消息执行。
 
 有关完整的工作示例，请参阅GitHub上的 [TopicSubscriptionWithRuleOperationsSample 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample)。
 

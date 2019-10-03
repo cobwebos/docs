@@ -3,7 +3,7 @@ title: 运行并行工作负荷 - Azure Batch .NET
 description: 教程 - 在 Azure Batch 中使用 Batch .NET 客户端库通过 ffmpeg 并行转码媒体文件
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a6fe5b0452771cd2e618d1a08cb2f4af52e3cc0d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 103d09da3fedf9c31d4e5255456e63cab34bc0ee
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538675"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258587"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教程：使用 .NET API 通过 Azure Batch 运行并行工作负荷
 
@@ -37,7 +37,7 @@ ms.locfileid: "57538675"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017](https://www.visualstudio.com/vs) 或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。
+* 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。
 
 * Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
 
@@ -51,9 +51,9 @@ ms.locfileid: "57538675"
 
 使用 Azure 门户，将 ffmpeg 作为[应用程序包](batch-application-packages.md)添加到 Batch 帐户。 应用程序包有助于管理任务应用程序及其到池中计算节点的部署。 
 
-1. 在 Azure 门户中，单击“更多服务” > “Batch 帐户”，然后单击 Batch 帐户的名称。
-3. 单击“应用程序” > “添加”。
-4. 对于“应用程序 ID”，请输入 *ffmpeg* 和包版本 *3.4*。 选择此前下载的 ffmpeg zip 文件，然后单击“确定”。 ffmpeg 应用程序包添加到 Batch 帐户。
+1. 在 Azure 门户中，单击“更多服务”   >   “Batch 帐户”，然后单击 Batch 帐户的名称。
+3. 单击“应用程序”   >   “添加”。
+4. 对于“应用程序 ID”  ，请输入 *ffmpeg* 和包版本 *3.4*。 选择此前下载的 ffmpeg zip 文件，然后单击“确定”。  ffmpeg 应用程序包添加到 Batch 帐户。
 
 ![添加应用程序包](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -97,7 +97,7 @@ const string appPackageVersion = "3.4";
 
 在 Visual Studio 中构建并运行应用程序，或在命令行中使用 `dotnet build` 和 `dotnet run` 命令。 运行应用程序后，请查看代码，了解应用程序的每个部分的作用。 例如，在 Visual Studio 中：
 
-* 右键单击解决方案资源管理器中的解决方案，然后单击“生成解决方案”。 
+* 右键单击解决方案资源管理器中的解决方案，然后单击“生成解决方案”  。 
 
 * 出现提示时，请确认还原任何 NuGet 包。 如果需要下载缺少的包，请确保 [NuGet 包管理器](https://docs.nuget.org/consume/installing-nuget)已安装。
 
@@ -124,7 +124,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-转到 Azure 门户中的 Batch 帐户，监视池、计算节点、作业和任务。 例如，若要查看池中计算节点的热度地图，请单击“池” > “WinFFmpegPool”。
+转到 Azure 门户中的 Batch 帐户，监视池、计算节点、作业和任务。 例如，若要查看池中计算节点的热度地图，请单击“池”   >   “WinFFmpegPool”。
 
 任务正在运行时，热度地图如下所示：
 
@@ -140,7 +140,7 @@ Elapsed time: 00:09:14.3418742
 
 ### <a name="authenticate-blob-and-batch-clients"></a>对 Blob 和 Batch 客户端进行身份验证
 
-为了与关联的存储帐户交互，应用使用用于 .NET 的 Azure 存储客户端库。 它使用 [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) 创建对帐户的引用，使用共享密钥身份验证进行身份验证， 然后创建 [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient)。
+为了与关联的存储帐户交互，应用使用用于 .NET 的 Azure 存储客户端库。 它使用 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) 创建对帐户的引用，使用共享密钥身份验证进行身份验证， 然后创建 [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)。
 
 ```csharp
 // Construct the Storage account connection string
@@ -167,7 +167,7 @@ using (BatchClient batchClient = BatchClient.Open(sharedKeyCredentials))
 应用将 `blobClient` 对象传递至 `CreateContainerIfNotExistAsync` 方法，以便为输入文件（MP4 格式）创建一个存储容器，并为任务输出创建一个容器。
 
 ```csharp
-CreateContainerIfNotExistAsync(blobClient, inputContainerName;
+CreateContainerIfNotExistAsync(blobClient, inputContainerName);
 CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 
@@ -175,7 +175,7 @@ CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 
 上传文件时，涉及到 `Program.cs` 中的两个方法：
 
-* `UploadResourceFilesToContainerAsync`：返回 ResourceFile 对象的集合，并在内部调用 `UploadResourceFileToContainerAsync` 以上传在 `inputFilePaths` 参数中传递的每个文件。
+* `UploadFilesToContainerAsync`：返回 ResourceFile 对象的集合，并在内部调用 `UploadResourceFileToContainerAsync` 以上传在 `inputFilePaths` 参数中传递的每个文件。
 * `UploadResourceFileToContainerAsync`：将每个文件作为 Blob 上传到输入容器。 上传文件后，它会获取该 Blob 的共享访问签名 (SAS) 并返回代表它的 ResourceFile 对象。
 
 ```csharp
@@ -184,7 +184,7 @@ string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
 List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(inputPath, "*.mp4",
     SearchOption.TopDirectoryOnly));
 
-List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
+List<ResourceFile> inputFiles = await UploadFilesToContainerAsync(
   blobClient,
   inputContainerName,
   inputFilePaths);
@@ -316,7 +316,7 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 运行任务之后，应用自动删除所创建的输入存储容器，并允许你选择是否删除 Batch 池和作业。 BatchClient 的 [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) 和 [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) 类都有相应的删除方法（在确认删除时调用）。 虽然作业和任务本身不收费，但计算节点收费。 因此，建议只在需要的时候分配池。 删除池时会删除节点上的所有任务输出。 但是，输出文件保留在存储帐户中。
 
-若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。
+若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤
 

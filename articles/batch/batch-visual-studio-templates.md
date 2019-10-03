@@ -4,23 +4,22 @@ description: 了解 Visual Studio 项目模板如何帮助在 Azure Batch 上实
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 60662e723a55c969fdd4b70e732303c90bbf9e8b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538117"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094337"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 项目模板快速启动 Batch 解决方案
 
@@ -56,9 +55,9 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 若要使用 Batch 模板，需要满足以下条件：
 
 * 安装有 Visual Studio 2015 的一台计算机。 Batch 模板当前仅支持 Visual Studio 2015。
-* Batch 模板，可从 [Visual Studio 库][vs_gallery]以 Visual Studio 扩展的形式获取。 有两种方式可获取模板：
+* Batch 模板, 可从[Visual Studio 库][vs_gallery]以 visual studio 扩展的形式提供。 有两种方式可获取模板：
   
-  * 使用 Visual Studio 中的“扩展和更新”对话框安装模板（有关详细信息，请参阅[查找和使用 Visual Studio 扩展][vs_find_use_ext]）。 在“扩展和更新”对话框中，搜索并下载以下两个扩展：
+  * 使用 Visual Studio 中的 "**扩展和更新**" 对话框安装模板 (有关详细信息, 请参阅[查找和使用 visual studio 扩展][vs_find_use_ext])。 在“扩展和更新”对话框中，搜索并下载以下两个扩展：
     
     * 随附作业拆分器的 Azure Batch 作业管理器
     * Azure Batch 任务处理器
@@ -157,7 +156,7 @@ public IEnumerable<CloudTask> Split()
 ```
 
 > [!NOTE]
-> 在 `Split()` 方法中，批注部分是作业管理器模板代码中唯一可修改的部分，方法是添加用于将作业拆分成不同任务的逻辑。 如果想要修改模板的其他部分，请确保熟悉 Batch 的工作原理，并先在几个 [Batch 代码示例][github_samples]中试试看。
+> 在 `Split()` 方法中，批注部分是作业管理器模板代码中唯一可修改的部分，方法是添加用于将作业拆分成不同任务的逻辑。 如果要修改模板的其他部分, 请确保熟悉批处理的工作方式, 并尝试使用几个[批处理代码示例][github_samples]。
 > 
 > 
 
@@ -191,7 +190,7 @@ Split() 实现具有以下项的访问权限：
 
 使用作业管理器模板实现的作业管理器任务返回三个可能的退出代码：
 
-| 代码 | Description |
+| 代码 | 描述 |
 | --- | --- |
 | 0 |作业管理器成功完成。 作业拆分器代码已运行完成，并且所有任务都已添加到作业中。 |
 | 1 |作业管理器任务失败，程序的“预期”部分有异常。 异常已转换成 JobManagerException 与诊断信息，如有可能，还提供可解决失败的建议。 |
@@ -369,9 +368,9 @@ Run() 实现具有以下项的访问权限：
 
 使用任务处理器模板实现的任务处理器任务返回三个可能的退出代码：
 
-| 代码 | Description |
+| 代码 | 描述 |
 | --- | --- |
-| [Process.ExitCode][process_exitcode] |任务处理器已运行完成。 请注意，这并不表示调用的程序已成功，只表示任务处理器已成功调用程序并运行任何后处理，而没有异常。 退出代码的含义取决于所调用的程序，一般而言，退出代码 0 表示程序已成功，任何其他退出代码表示程序失败。 |
+| [ExitCode][process_exitcode] |任务处理器已运行完成。 请注意，这并不表示调用的程序已成功，只表示任务处理器已成功调用程序并运行任何后处理，而没有异常。 退出代码的含义取决于所调用的程序，一般而言，退出代码 0 表示程序已成功，任何其他退出代码表示程序失败。 |
 | 1 |任务处理器任务失败，程序的“预期”部分有异常。 异常已转换成 `TaskProcessorException` 与诊断信息，如有可能，还提供可解决失败的建议。 |
 | 2 |任务处理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但任务处理器无法添加任何额外的诊断或补救信息。 |
 
@@ -410,7 +409,7 @@ job.CommonEnvironmentSettings = new [] {
 * Batch 帐户 URL
 * Batch 帐户密钥
 
-Batch 服务提供一个简单的机制，用于在 [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask] 中使用 `EnvironmentSettings` 属性将环境设置传递到作业管理器任务。
+Batch 服务提供一个简单的机制, 用于通过使用`EnvironmentSettings` [microsoft.azure.batch.jobmanagertask][net_jobmanagertask]中的属性将环境设置传递到作业管理器任务。
 
 例如，若要获取 Batch 帐户的 `BatchClient` 实例，可以环境变量的形式从客户端代码传递 Batch 帐户的 URL 和共享密钥凭据。 同样，若要访问链接到 Batch 帐户的存储帐户，可使用环境变量的形式传递存储帐户名和存储帐户密钥。
 
@@ -437,7 +436,7 @@ parameters.json 的资源文件，如果找到，则将它加载为参数字典�
 
 ## <a name="next-steps"></a>后续步骤
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>将作业和任务输出保存到 Azure 存储
-在开发 Batch 解决方案时的另一个有用工具是 [Azure Batch 文件约定][nuget_package]。 在 Batch .NET 应用程序中使用此 .NET 类库（目前以预览版提供）可在 Azure 存储中轻松存储和检索任务输出。 [保存 Azure Batch 作业和任务输出](batch-task-output.md)包含该库及其用法的完整介绍。
+批处理解决方案开发中的另一个有用工具是[Azure Batch 文件约定][nuget_package]。 在 Batch .NET 应用程序中使用此 .NET 类库（目前以预览版提供）可在 Azure 存储中轻松存储和检索任务输出。 [保存 Azure Batch 作业和任务输出](batch-task-output.md)包含该库及其用法的完整介绍。
 
 
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx

@@ -10,11 +10,11 @@ ms.date: 12/06/2018
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: 70e7c689acac094890545ac1e65374e9377a0be0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084203"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60370387"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
 > [!div class="op_single_selector"]
@@ -211,7 +211,7 @@ ms.locfileid: "53084203"
           <Subnet name="GatewaySubnet">
             <AddressPrefix>10.17.159.224/27</AddressPrefix>
           </Subnet>
-5. 如果以前的网关是站点到站点 VPN，则还必须将连接类型更改为 **“专用”**。
+5. 如果以前的网关是站点到站点 VPN，则还必须将连接类型更改为 “专用”  。
    
                  <Gateway>
                   <ConnectionsToLocalNetwork>

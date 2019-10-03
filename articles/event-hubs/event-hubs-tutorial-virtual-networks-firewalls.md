@@ -7,14 +7,14 @@ manager: darosa
 ms.author: aschhab
 ms.date: 11/28/2018
 ms.topic: tutorial
-ms.service: event-hubs-messaging
+ms.service: event-hubs
 ms.custom: mvc
-ms.openlocfilehash: 9eea40a8ad2f08099b2662a0e7539c326d4d143e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0f7c7e348c154aab1deb10273346a5395599b745
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779039"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605858"
 ---
 # <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>教程：在事件中心命名空间中启用虚拟网络集成和防火墙
 
@@ -43,7 +43,7 @@ ms.locfileid: "57779039"
 
 
 > [!IMPORTANT]
-> 事件中心的标准和专用层支持虚拟网络。 基本层不支持它。
+> 事件中心的标准  和专用  层支持虚拟网络。 基本层不支持它。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][]。
 
@@ -61,17 +61,17 @@ ms.locfileid: "57779039"
 
 ## <a name="navigate-to-firewalls-and-virtual-networks-experience"></a>导航到“防火墙和虚拟网络”体验
 
-使用门户左窗格中的导航菜单选择“防火墙和虚拟网络”选项。
+使用门户左窗格中的导航菜单选择“防火墙和虚拟网络”选项。 
 
   ![导航到菜单](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-landing-page.png)
 
-  首次访问此页时，必须选中“所有网络”单选按钮。 这意味着，事件中心命名空间允许所有传入的连接。
+  首次访问此页时，必须选中“所有网络”单选按钮。  这意味着，事件中心命名空间允许所有传入的连接。
 
 ## <a name="add-virtual-network-service-endpoint"></a>添加虚拟网络服务终结点
 
 若要限制访问，需要集成此事件中心命名空间的虚拟网络服务终结点。
 
-1. 单击页面顶部的“所选网络”单选按钮，以启用页面剩余部分的菜单选项。
+1. 单击页面顶部的“所选网络”单选按钮，以启用页面剩余部分的菜单选项。 
   ![所选网络](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-selecting-selected-networks.png)
 2. 在页面的“虚拟网络”部分，选择“+ 添加现有虚拟网络”选项。 此时会滑入一个窗格，让你选择已创建的虚拟网络。
   ![添加现有虚拟网络](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane.png)
@@ -85,24 +85,24 @@ ms.locfileid: "57779039"
 5. 在所选子网中启用服务终结点之后，可以继续将其添加到允许的虚拟网络列表。
   ![启用终结点后添加子网](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-vnet-from-portal-slide-in-pane-after-adding.png)
 
-6. 在顶部功能区中点击“保存”，以便在服务中保存虚拟网络配置。 请等待几分钟，直到门户通知中显示确认消息。
+6. 在顶部功能区中点击“保存”，以便在服务中保存虚拟网络配置。  请等待几分钟，直到门户通知中显示确认消息。
 
 ## <a name="add-firewall-for-specified-ip"></a>为指定的 IP 添加防火墙
 
 可以使用防火墙规则，将事件中心命名空间的访问权限限制给有限的 IP 地址范围或特定的 IP 地址。
 
-1. 单击页面顶部的“所选网络”单选按钮，以启用页面剩余部分的菜单选项。
+1. 单击页面顶部的“所选网络”单选按钮，以启用页面剩余部分的菜单选项。 
   ![所选网络](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-selecting-selected-networks.png)
-2. 在“防火墙”部分的“地址范围”网格下，可以添加一个或多个特定 IP 地址或 IP 地址范围。
+2. 在“防火墙”部分的“地址范围”网格下，可以添加一个或多个特定 IP 地址或 IP 地址范围。  
   ![添加 IP 地址](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-firewall.png)
-3. 添加多个 IP 地址（或 IP 地址范围）后，在顶部功能区中点击“保存”，以确保在服务端保存配置。 请等待几分钟，直到门户通知中显示确认消息。
+3. 添加多个 IP 地址（或 IP 地址范围）后，在顶部功能区中点击“保存”，以确保在服务端保存配置。  请等待几分钟，直到门户通知中显示确认消息。
   ![添加 IP 地址并点击“保存”](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-firewall-hitting-save.png)
 
 ## <a name="adding-your-current-ip-address-to-the-firewall-rules"></a>将当前 IP 地址添加到防火墙规则
 
 1. 还可以通过选中紧靠在“地址范围”网格上方的“添加客户端 IP 地址(当前 IP 地址)”复选框，快速添加当前的 IP 地址。
   ![添加当前 IP 地址](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-current-ip-hitting-save.png)
-2. 将当前 IP 地址添加到防火墙规则后，在顶部功能区中点击“保存”，以确保在服务端保存配置。 请等待几分钟，直到门户通知中显示确认消息。
+2. 将当前 IP 地址添加到防火墙规则后，在顶部功能区中点击“保存”，以确保在服务端保存配置。  请等待几分钟，直到门户通知中显示确认消息。
   ![添加当前 IP 地址并点击“保存”](./media/event-hubs-tutorial-vnet-and-firewalls/vnet-firewall-adding-current-ip-hitting-save-after-saving.png)
 
 ## <a name="conclusion"></a>结束语

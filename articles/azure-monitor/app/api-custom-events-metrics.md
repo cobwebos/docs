@@ -12,19 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6e2803590740d84bc99327ce78886f41f3c600df
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: a56040f5938cc5d1edd452a81935591372cff0d6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630449"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326645"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
 在应用程序中插入几行代码，即可了解用户在该应用程序中执行的操作或帮助诊断问题。 可以从设备和桌面应用、Web 客户端和 Web 服务器发送遥测数据。 使用 [Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) 核心遥测 API 发送自定义事件和指标，以及自己的标准遥测版本。 此 API 与标准 Application Insights 数据收集器使用的 API 相同。
-
-> [!NOTE]
-> `TrackMetric()` 不再是用于为基于 .NET 的应用程序发送自定义指标的首选方法。 Application Insights .NET SDK 的[版本 2.60-beta 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) 中引入了一个新方法：[`TelemetryClient.GetMetric()`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet)。 从 Application Insights .NET SDK [版本 2.72](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) 开始，此功能现在是稳定版本的一部分。
 
 ## <a name="api-summary"></a>API 摘要
 
@@ -50,6 +47,7 @@ ms.locfileid: "58630449"
 * 将 Application Insights SDK 添加到项目：
 
   * [ASP.NET 项目](../../azure-monitor/app/asp-net.md)
+  * [ASP.NET Core 项目](../../azure-monitor/app/asp-net-core.md)
   * [Java 项目](../../azure-monitor/app/java-get-started.md)
   * [Node.js 项目](../../azure-monitor/app/nodejs.md)
   * [每个网页中的 JavaScript](../../azure-monitor/app/javascript.md) 
@@ -61,11 +59,13 @@ ms.locfileid: "58630449"
 
     *Java：* `import com.microsoft.applicationinsights.TelemetryClient;`
 
-    *Node.js：*`var applicationInsights = require("applicationinsights");`
+    *Node.js：* `var applicationInsights = require("applicationinsights");`
 
 ## <a name="get-a-telemetryclient-instance"></a>获取 TelemetryClient 实例
 
 获取 `TelemetryClient` 的实例（网页中的 JavaScript 除外）：
+
+对于适用于 .NET/.NET Core 应用的[ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected)应用和[非 HTTP/辅助角色](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected)，建议从依赖关系注入容器中获取 @no__t 2 的实例，如各自的文档中所述。
 
 *C#*
 
@@ -73,7 +73,7 @@ ms.locfileid: "58630449"
 private TelemetryClient telemetry = new TelemetryClient();
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 Private Dim telemetry As New TelemetryClient
@@ -93,7 +93,7 @@ var telemetry = applicationInsights.defaultClient;
 
 TelemetryClient 是线程安全的。
 
-对于 ASP.NET 和 Java 项目，可自动捕获传入的 HTTP 请求。 可能需要为应用的其他模块创建 TelemetryClient 的其他实例。 例如，可以在中间件类中使用一个 TelemetryClient 实例报告业务逻辑事件。 可以设置属性（如 UserId 和 DeviceId）来标识计算机。 此信息将附加到实例发送的所有事件中。 
+对于 ASP.NET 和 Java 项目，可自动捕获传入的 HTTP 请求。 可能需要为应用的其他模块创建 TelemetryClient 的其他实例。 例如，可以在中间件类中使用一个 TelemetryClient 实例报告业务逻辑事件。 可以设置属性（如 UserId 和 DeviceId）来标识计算机。 此信息将附加到实例发送的所有事件中。
 
 *C#*
 
@@ -131,7 +131,7 @@ appInsights.trackEvent("WinGame");
 telemetry.TrackEvent("WinGame");
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 telemetry.TrackEvent("WinGame")
@@ -162,8 +162,6 @@ telemetry.trackEvent({name: "WinGame"});
 *C#*
 
 ```csharp
-#pragma warning disable CA1716  // Namespace naming
-
 namespace User.Namespace.Example01
 {
     using System;
@@ -249,7 +247,7 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric 在 .NET SDK 中已弃用。 在发送之前，应当始终对一段时间内的指标进行预聚合。 使用 GetMetric(..) 重载之一获取用于访问 SDK 预聚合功能的指标对象。 如果实现你自己的预聚合逻辑，则可以使用 Track(ITelemetry metricTelemetry) 方法来发送生成的聚合。 如果应用程序需要在每种场合下发送单独的遥测项而不需要在整个时间段上进行聚合，那么你可能就有了一个事件遥测用例；请参阅 TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry)。
+> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric 不是发送指标的首选方法。 在发送之前，应当始终对一段时间内的指标进行预聚合。 使用 GetMetric(..) 重载之一获取用于访问 SDK 预聚合功能的指标对象。 如果要实现自己的预聚合逻辑，则可以使用 TrackMetric() 方法发送生成的聚合。 如果应用程序需要在每种场合下发送单独的遥测项而不需要在整个时间段上进行聚合，那么你可能就有了一个事件遥测用例；请参阅 TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry)。
 
 Application Insights 可绘制未附加到特定事件的指标。 例如，可以定期监视队列长度。 对指标而言，变化和趋势比单个度量值更具价值，因此统计图表非常实用。
 
@@ -319,7 +317,7 @@ appInsights.trackPageView("tab1");
 telemetry.TrackPageView("GameReviewPage");
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 telemetry.TrackPageView("GameReviewPage")
@@ -343,7 +341,7 @@ appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 
 可以：
 
-* 在 [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) 调用中设置显式持续时间：`appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`。
+* 在 [trackPageView](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview) 调用中设置显式持续时间：`appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`。
 * 使用页面视图计时调用 `startTrackPage` 和 `stopTrackPage`。
 
 *JavaScript*
@@ -432,7 +430,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 在搜索中，操作上下文可用于创建“相关项”列表：
 
-![相关项](./media/api-custom-events-metrics/21.png)
+![相关项目](./media/api-custom-events-metrics/21.png)
 
 有关自定义操作跟踪的详细信息，请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](../../azure-monitor/app/custom-operations-tracking.md)。
 
@@ -585,7 +583,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: AI.S
 ---|---
 `message` | 诊断数据。 可以比名称长很多。
 `properties` | 字符串到字符串的映射：用于在门户中[筛选异常](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)的其他数据。 默认为空。
-`severityLevel` | 支持的值：[SeverityLevel.ts](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/JavaScript/JavaScriptSDK.Interfaces/Contracts/Generated/SeverityLevel.ts)
+`severityLevel` | 支持的值：[SeverityLevel.ts](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/shared/AppInsightsCommon/src/Interfaces/Contracts/Generated/SeverityLevel.ts)
 
 可以搜索消息内容，但是（不同于属性值）无法在其中进行筛选。
 
@@ -633,12 +631,16 @@ try
 {
     success = dependency.Call();
 }
+catch(Exception ex) 
+{
+    success = false;
+    telemetry.TrackException(ex);
+    throw new Exception("Operation went wrong", ex);
+}
 finally
 {
     timer.Stop();
-    telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
-     // The call above has been made obsolete in the latest SDK. The updated call follows this format:
-     // TrackDependency (string dependencyTypeName, string dependencyName, string data, DateTimeOffset startTime, TimeSpan duration, bool success);
+    telemetry.TrackDependency("DependencyType", "myDependency", "myCall", startTime, timer.Elapsed, success);
 }
 ```
 
@@ -708,7 +710,7 @@ dependencies
 
 ## <a name="flushing-data"></a>刷新数据
 
-通常，SDK 在选定的时间发送数据，以便最大程度地降低对用户的影响。 但是，在某些情况下，可能需要刷新缓冲区，例如，在关闭的应用程序中使用 SDK 时。
+通常，SDK 以固定的间隔（通常为 30 秒）或每当缓冲区已满（通常为 500 项）时发送数据。 但是，在某些情况下，可能需要刷新缓冲区，例如，在关闭的应用程序中使用 SDK 时。
 
 *C#*
 
@@ -736,7 +738,7 @@ telemetry.flush();
 
 理想情况下，应在应用程序的关闭活动中使用 flush() 方法。
 
-## <a name="authenticated-users"></a>经过身份验证的用户
+## <a name="authenticated-users"></a>已通过身份验证的用户
 
 在 Web 应用中，默认按 Cookie 标识用户。 如果用户从不同的计算机或浏览器访问应用或删除 Cookie，则可能会多次统计它们。
 
@@ -840,7 +842,7 @@ var metrics = {"Score": currentGame.Score, "Opponents": currentGame.OpponentCoun
 telemetry.trackEvent({name: "WinGame", properties: properties, measurements: metrics});
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 ' Set up some properties:
@@ -946,7 +948,7 @@ long startTime = System.currentTimeMillis();
 
 long endTime = System.currentTimeMillis();
 Map<String, Double> metrics = new HashMap<>();
-metrics.put("ProcessingTime", endTime-startTime);
+metrics.put("ProcessingTime", (double)endTime-startTime);
 
 // Setup some properties
 Map<String, String> properties = new HashMap<>();
@@ -966,16 +968,16 @@ telemetry.trackEvent("SignalProcessed", properties, metrics);
 using Microsoft.ApplicationInsights.DataContracts;
 
 var gameTelemetry = new TelemetryClient();
-gameTelemetry.Context.Properties["Game"] = currentGame.Name;
+gameTelemetry.Context.GlobalProperties["Game"] = currentGame.Name;
 // Now all telemetry will automatically be sent with the context property:
 gameTelemetry.TrackEvent("WinGame");
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 Dim gameTelemetry = New TelemetryClient()
-gameTelemetry.Context.Properties("Game") = currentGame.Name
+gameTelemetry.Context.GlobalProperties("Game") = currentGame.Name
 ' Now all telemetry will automatically be sent with the context property:
 gameTelemetry.TrackEvent("WinGame")
 ```
@@ -1072,7 +1074,7 @@ applicationInsights.setup()
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
@@ -1080,7 +1082,7 @@ TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 *Node.js*
 
-适用于 Node.js，你可以通过启用通过内部日志记录启用开发人员模式下`setInternalLogging`和设置`maxBatchSize`为 0，这将导致遥测数据收集时，就立即发送。
+对于 Node.js，可以启用开发人员模式，方法是通过 `setInternalLogging` 启用内部日志记录，并将 `maxBatchSize` 设置为 0，从而在收集到遥测数据后立即发送。
 
 ```js
 applicationInsights.setup("ikey")
@@ -1181,21 +1183,20 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 ## <a name="reference-docs"></a>参考文档
 
-* [ASP.NET 参考](https://msdn.microsoft.com/library/dn817570.aspx)
-* [Java 参考](http://dl.windowsazure.com/applicationinsights/javadoc/)
+* [ASP.NET 参考](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/insights?view=azure-dotnet)
+* [Java 参考](https://docs.microsoft.com/en-us/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript 参考](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-* [Android SDK](https://github.com/Microsoft/ApplicationInsights-Android)
-* [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
+
 
 ## <a name="sdk-code"></a>SDK 代码
 
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
-* [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Windows Server 包](https://github.com/Microsoft/applicationInsights-dotnet-server)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
-* [所有平台](https://github.com/Microsoft?utf8=%E2%9C%93&query=applicationInsights)
+
 
 ## <a name="questions"></a>问题
 

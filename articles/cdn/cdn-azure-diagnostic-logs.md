@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881123"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594206"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -176,7 +176,7 @@ ms.locfileid: "57881123"
 2.  找到存储帐户
 3.  展开该存储帐户下的“Blob 容器”节点。
 4.  选择名为 *insights-logs-coreanalytics* 的容器。
-5.  结果显示在右窗格中，从第一级开始，类似于 *resourceId=*。 继续选择每个级别，直至找到 *PT1H.json* 文件。 有关路径的说明，请参阅 [Blob 路径格式](cdn-azure-diagnostic-logs.md#blob-path-format)。
+5.  结果显示在右窗格中，从第一级开始，类似于 *resourceId=* 。 继续选择每个级别，直至找到 *PT1H.json* 文件。 有关路径的说明，请参阅 [Blob 路径格式](cdn-azure-diagnostic-logs.md#blob-path-format)。
 6.  每个 Blob *PT1H.json* 文件表示特定 CDN 终结点或其自定义域一小时内的分析日志。
 7.  有关此 JSON 文件的内容架构，请参阅核心分析日志的“架构”部分。
 
@@ -189,7 +189,7 @@ ms.locfileid: "57881123"
 
 字段说明：
 
-|值|描述|
+|ReplTest1|描述|
 |-------|---------|
 |订阅 ID    |Azure 订阅的 ID，采用 GUID 格式。|
 |资源组名称 |CDN 资源所属资源组的名称。|
@@ -197,7 +197,7 @@ ms.locfileid: "57881123"
 |终结点名称 |CDN 终结点的名称|
 |年龄|  年份的四位数表示形式，例如 2017|
 |月份| 月份的两位数表示形式。 01 = 1 月...12 = 12 月|
-|日期|   月份中日的两位数表示形式|
+|Day|   月份中日的两位数表示形式|
 |PT1H.json| 实际存储分析数据的 JSON 文件|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>将核心分析数据导出到 CSV 文件
@@ -292,9 +292,9 @@ Azure Monitor 是一项 Azure 服务，用于监视你的云并在本地环境�
 
      ![查看全部](./media/cdn-diagnostics-log/26_Further-detail.png)
 
-### <a name="offers-and-pricing-tiers"></a>产品和定价层
+### <a name="offers-and-pricing-tiers"></a>套餐和定价层
 
-可在[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)查看管理解决方案的产品/服务和定价层。
+可在[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)查看管理解决方案的套餐和定价层。
 
 ### <a name="customizing-views"></a>自定义视图
 
@@ -353,7 +353,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 | EgressCacheUncacheable | 针对因资产的 Cache-Control 和/或 Expires 标头而无法缓存的资产的出站数据传输量。 指示该资产不应在 POP 上缓存或不应由 HTTP 客户端缓存。 | 是 | 是 | 否 |
 | EgressCacheOthers | 其他缓存方案的出站数据传输量。 | 否 | 是 | 否 |
 
-* 出站数据传输量是指从 CDN POP 服务器传递到客户端的流量。
+\* 出站数据传输量是指从 CDN POP 服务器传递到客户端的流量。
 
 
 ### <a name="schema-of-the-core-analytics-logs"></a>核心分析日志的架构 

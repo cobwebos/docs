@@ -4,23 +4,22 @@ description: 了解如何在 Windows 计算机上生成和使用 SSH 密钥连�
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2cacda3b-7949-4036-bd5d-837e8b09a9c8
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ac62a99f5735647f67917d441645e30444b3818
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e8e63f2c916153b5d43267869d7bc5be8fa646c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005677"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081981"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
 
@@ -48,7 +47,7 @@ Windows 计算机并不总是装有类似的 SSH 命令。 最新版本的 Windo
 * 通过安装 [Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)，从 Visual Studio Code 内访问作为终端的 Cloud Shell。
 
 ## <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
-以下各部分介绍了在 Windows 上创建 SSH 密钥对的两种选项。 可以使用 shell 命令 (`ssh-keygen`) 或 GUI 工具 (PuTTYgen)。
+以下各部分介绍了在 Windows 上创建 SSH 密钥对的两种选项。 可以使用 shell 命令 (`ssh-keygen`) 或 GUI 工具 (PuTTYgen)。 另请注意, 在使用 Powershell 创建密钥时, 请将公钥上传为 ssh (SECSH) 格式。 使用 CLI 时, 在上传之前, 将密钥转换为 OpenSSH 格式。 
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>使用 ssh-keygen 创建 SSH 密钥
 

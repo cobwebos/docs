@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: v-erkell
 ms.openlocfilehash: 7ded66c29f12b8f68746726ca6c126bffbc51f0d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257308"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60410209"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
 
-此过程详述如何使用 Azure 市场提供的部署向导。 此向导自动使用 Azure 资源管理器模板来部署群集。 在窗体中输入参数并单击“创建”后，Azure 会自动完成以下步骤：
+此过程详述如何使用 Azure 市场提供的部署向导。 此向导自动使用 Azure 资源管理器模板来部署群集。 在窗体中输入参数并单击“创建”后，  Azure 会自动完成以下步骤：
 
 * 创建群集控制器，这是基本的 VM，其中包含部署和管理群集所需的软件。
 * 设置资源组和虚拟网络基础结构，包括创建新元素。
@@ -74,7 +74,7 @@ ms.locfileid: "59257308"
 
 * **位置** - 选择群集和资源的 Azure 位置。
 
-完成后，单击“确定”。 
+完成后，单击“确定”。  
 
 > [!NOTE]
 > 如果希望群集控制器有一个面向公众的 IP 地址，请为群集创建一个新的虚拟网络，而不是选择一个现有的网络。 此设置在第二页上。
@@ -121,7 +121,7 @@ ms.locfileid: "59257308"
 
 ## <a name="validation-and-purchase"></a>验证和购买
 
-第三页汇总了配置和验证参数。 验证成功后，请单击“确定”按钮继续。 
+第三页汇总了配置和验证参数。 验证成功后，请单击“确定”按钮继续。  
 
 ![部署模板的第三页 - 验证](media/avere-vfxt-deploy-3.png)
 
@@ -142,11 +142,11 @@ Avere vFXT 模板在创建完群集以后，会输出有关新群集的某些重
 
 1. 转到群集控制器的资源组。
 
-1. 在左侧单击“部署”，然后单击“microsoft-avere.vfxt-template”。
+1. 在左侧单击“部署”，然后单击“microsoft-avere.vfxt-template”   。
 
    ![资源组门户页面，其左侧选中“部署”，“部署名称”下的表中显示 microsoft-avere.vfxt-template](media/avere-vfxt-outputs-deployments.png)
 
-1. 在左侧，单击“输出”。 复制每个字段中的值。 
+1. 在左侧，单击“输出”  。 复制每个字段中的值。 
 
    ![输出页面，在标签右侧的字段中显示 SSHSTRING、RESOURCE_GROUP、LOCATION、NETWORK_RESOURCE_GROUP、NETWORK、SUBNET、SUBNET_ID、VSERVER_IPs 和 MGMT_IP 的值](media/avere-vfxt-outputs-values.png)
 

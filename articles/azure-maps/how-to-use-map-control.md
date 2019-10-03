@@ -1,21 +1,21 @@
 ---
-title: 如何使用 Azure Maps Map Control | Microsoft Docs
-description: 了解如何使用 Azure Maps Map Control 客户端 Javascript 库。
-author: dsk-2015
-ms.author: dkshir
+title: Azure Maps 中的 web 地图控件入门 |Microsoft Docs
+description: 了解如何使用 Azure Maps map control 客户端 Javascript 库。
+author: walsehgal
+ms.author: v-musehg
 ms.date: 10/08/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9e3a442a3d6c420c548979327c193628efbee5aa
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: fa6a3af7893830eba2f4a5c43184991bff68d8a8
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549212"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898209"
 ---
-# <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps Map Control
+# <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps map 控件
 
 可通过 Map Control 客户端 Javascript 库呈现地图，并将 Azure Maps 功能嵌入到 Web 或移动应用中。
 
@@ -68,7 +68,7 @@ ms.locfileid: "59549212"
     </body>
     ```
 
-5. 要初始化地图控件，请在 html 正文中定义新部分并创建脚本。 通过[身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)使用你自己的 Azure Maps 帐户密钥或 Azure Active Directory (AAD) 凭据对地图进行身份验证。 如果需要创建帐户或查找密钥，请参阅[如何管理 Azure Maps 帐户和密钥](how-to-manage-account-keys.md)。 **language** 选项指定用于地图标签和控件的语言。 有关受支持语言的详细信息，请参阅[支持的语言](supported-languages.md)。 如果使用订阅密钥进行身份验证：
+5. 要初始化地图控件，请在 html 正文中定义新部分并创建脚本。 `Map` `document.getElementById('myMap')` `<div>`在创建类的实例时, 传入`HTMLElement`映射的或 (例如) 作为第一个参数。 `id` 通过[身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)使用你自己的 Azure Maps 帐户密钥或 Azure Active Directory (AAD) 凭据对地图进行身份验证。 如果需要创建帐户或查找密钥，请参阅[如何管理 Azure Maps 帐户和密钥](how-to-manage-account-keys.md)。 **language** 选项指定用于地图标签和控件的语言。 有关受支持语言的详细信息，请参阅[支持的语言](supported-languages.md)。 如果使用订阅密钥进行身份验证：
 
     ```HTML
     <script type="text/javascript">
@@ -96,13 +96,13 @@ ms.locfileid: "59549212"
                 authType: 'aad',
                 clientId: '<Your AAD Client Id>',
                 aadAppId: '<Your AAD App Id>',
-                aadTenant: 'msft.ccsctp.net'
+                aadTenant: '<Your AAD Tenant Id>'
             }
         });
     </script>
     ```
 
-    有关详细信息，请参阅[身份验证与 Azure Maps](azure-maps-authentication.md)的更多详细信息。
+    有关详细信息, 请参阅[Azure Maps 的身份验证](azure-maps-authentication.md)文档。
 
 6. （可选）在页面的头部添加以下元标记元素，你会发现这比较有用：
 
@@ -114,7 +114,7 @@ ms.locfileid: "59549212"
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 
-7. 将它放在一起 HTML 文件应类似于以下代码：
+7. 将 HTML 文件放在一起应类似于以下代码:
 
     ```HTML
     <!DOCTYPE html>
@@ -164,10 +164,44 @@ ms.locfileid: "59549212"
     </html>
     ```
 
-8. 在 Web 浏览器中打开该文件并查看呈现的地图。 它应如以下代码所示：
+8. 在 Web 浏览器中打开该文件并查看呈现的地图。 它应类似于以下代码:
 
-    <iframe height="700" style="width: 100%;" scrolling="no" title="如何使用地图控件" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">请参阅笔<a href='https://codepen.io/azuremaps/pen/yZpEYL/'>如何使用 map control</a>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+    <iframe height="700" style="width: 100%;" scrolling="no" title="如何使用地图控件" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">请参阅 CodePen 上的<a href='https://codepen.io'></a>(<a href='https://codepen.io/azuremaps'>@azuremaps</a>), 了解<a href='https://codepen.io/azuremaps/pen/yZpEYL/'>如何使用地图 Azure Maps 控件</a>。
     </iframe>
+
+## <a name="localizing-the-map"></a>本地化地图
+
+Azure Maps 提供了两种不同的方法来设置地图的语言和区域视图。 第一种方法是将此信息添加到全局`atlas`命名空间, 这会导致应用中的所有地图控件实例默认设置为这些设置。 下面将语言设置为法语 ("fr"), 并将区域视图设置为 "auto":
+
+```javascript
+atlas.setLanguage('fr-FR');
+atlas.setView('auto');
+```
+
+第二种方法是在加载映射时将此信息传递到映射选项, 如下所示:
+
+```javascript
+map = new atlas.Map('myMap', {
+    language: 'fr-FR',
+    view: 'auto',
+
+    authOptions: {
+        authType: 'aad',
+        clientId: '<Your AAD Client Id>',
+        aadAppId: '<Your AAD App Id>',
+        aadTenant: '<Your AAD Tenant Id>'
+    }
+});
+```
+
+> [!Note]
+> 利用 Web SDK, 可以在具有不同语言和区域设置的同一页上加载多个映射实例。 此外, 在使用`setStyle`映射的函数加载映射后, 可以更新这些设置。 
+
+下面是将语言设置为 "fr" 并将区域视图设置为 "自动" 的 Azure Maps 的示例。
+
+![以法语显示标签的地图图像](./media/how-to-use-map-control/websdk-localization.png)
+
+[此处](supported-languages.md)介绍了支持的语言和区域视图的完整列表。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -180,3 +214,11 @@ ms.locfileid: "59549212"
 
 > [!div class="nextstepaction"]
 > [选择地图样式](choose-map-style.md)
+
+将更多数据添加到地图:
+
+> [!div class="nextstepaction"]
+> [创建地图](map-create.md)
+
+> [!div class="nextstepaction"]
+> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)

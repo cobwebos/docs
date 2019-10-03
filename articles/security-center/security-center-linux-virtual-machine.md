@@ -3,9 +3,8 @@ title: Azure 安全中心与 Azure Linux 虚拟机 | Microsoft 文档
 description: 本文档可帮助理解 Azure 安全中心如何能够保护 Azure 虚拟机。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 5fe5a12c-5d25-430c-9d47-df9438b1d7c5
 ms.service: security-center
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 9ff111bb70716e4ca218dce81dd1754181cdd93b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 0c7ca6236adc5a476fbcf2bfbd54f4cc283bd607
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113322"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201965"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Azure 安全中心与 Azure Linux 虚拟机
 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -65,14 +64,14 @@ ms.locfileid: "56113322"
 
 设置安全策略之后，安全中心将分析资源的安全状态，以识别潜在的漏洞。 建议以表格形式显示，其中每一行都表示一个特定的建议。 下表提供了运行 Linux 操作系统的 Azure VM 的一些建议示例，以及每个示例在应用时会执行的操作。 选择建议时，系统将提供信息，演示如何在安全中心内实现该建议。
 
-| 建议 | 说明 |
+| 建议 | 描述 |
 | --- | --- |
-| [为订阅启用数据收集](security-center-enable-data-collection.md) |建议为每个订阅和订阅中的所有虚拟机 (VM) 开启安全策略中的数据收集。 |
-| [修正 OS 漏洞](security-center-remediate-os-vulnerabilities.md) |建议 OS 配置匹配推荐的配置规则，例如不允许保存密码。 |
-| [应用系统更新](security-center-apply-system-updates.md) |建议在 VM 上部署缺少的系统安全和重要更新。 |
-| [在系统更新后重启](security-center-apply-system-updates.md#reboot-after-system-updates) |建议重启 VM 以完成应用系统更新的过程。 |
-| [启用 VM 代理](security-center-enable-vm-agent.md) |使你能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意程序，则必须在 VM 上安装 VM 代理。 对于从 Azure 市场部署的 VM，默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
-| [应用磁盘加密](security-center-apply-disk-encryption.md) |建议使用 Azure 磁盘加密（Windows 和 Linux VM）对 VM 磁盘进行加密。 对于 VM 上的 OS 和数据卷，建议使用加密。 |
+| 为订阅启用数据收集功能|建议为每个订阅和订阅中的所有虚拟机 (VM) 开启安全策略中的数据收集。 |
+| 修正 OS 漏洞|建议 OS 配置匹配推荐的配置规则，例如不允许保存密码。 |
+| 更新系统|建议在 VM 上部署缺少的系统安全和重要更新。 |
+| 在系统更新后重启|建议重启 VM 以完成应用系统更新的过程。 |
+| 启用 VM 代理|使你能够查看需要 VM 代理的 VM。 若要设置修补程序扫描、基线扫描以及反恶意程序，则必须在 VM 上安装 VM 代理。 对于从 Azure 市场部署的 VM，默认安装 VM 代理。 文章 [VM 代理和扩展 - 第 2 部分](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)提供有关如何安装 VM 代理的信息。 |
+| 加密磁盘 |建议使用 Azure 磁盘加密（Windows 和 Linux VM）对 VM 磁盘进行加密。 对于 VM 上的 OS 和数据卷，建议使用加密。 |
 
 
 > [!NOTE]
@@ -85,11 +84,11 @@ ms.locfileid: "56113322"
 ![安全运行状况](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
 ## <a name="manage-and-respond-to-security-alerts"></a>管理和响应安全警报
-安全中心将从 Azure 资源、网络和已连接的合作伙伴解决方案（例如防火墙和终结点保护解决方案）自动收集、分析并整合日志数据，以检测真正的威胁并减少误报。 利用[检测功能](security-center-detection-capabilities.md)的各种聚合，安全中心能够生成按优先级排列的安全警报，帮助用户快速调查问题并提供有关如何减少潜在攻击的建议。
+安全中心将从 Azure 资源、网络和已连接的合作伙伴解决方案（例如防火墙和终结点保护解决方案）自动收集、分析并整合日志数据，以检测真正的威胁并减少误报。 利用[检测功能](security-center-alerts-overview.md#detect-threats)的各种聚合，安全中心能够生成按优先级排列的安全警报，帮助用户快速调查问题并提供有关如何减少潜在攻击的建议。
 
 ![安全警报](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
 
-选择某个安全警报，了解触发该警报的事件详细信息以及修复攻击所需的步骤（如有）。 安全警报按[类型](security-center-alerts-type.md)和日期分组。
+选择某个安全警报，了解触发该警报的事件详细信息以及修复攻击所需的步骤（如有）。 安全警报按类型和日期进行分组。
 
 ## <a name="monitor-security-health"></a>监视安全运行状况
 用户为订阅的资源启用[安全策略](tutorial-security-policy.md)以后，安全中心将分析相关资源的安全性，确定可能的漏洞。  在“资源安全运行状况”边栏选项卡中，可以查看资源的安全状态以及任何问题。 在“资源安全运行状况”磁贴中单击“虚拟机”，“虚拟机”边栏选项卡随即打开，其中包含针对 VM 的建议。 
@@ -101,7 +100,7 @@ ms.locfileid: "56113322"
 ![安全运行状况 2](./media/security-center-linux-virtual-machine/security-center-linux-virtual-machine-fig5.png)
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。

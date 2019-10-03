@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017610"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60486458"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
 > [!NOTE]
@@ -103,7 +103,7 @@ ms.locfileid: "54017610"
 *  支持使用网关配置管理器设置网管的 HTTP 代理。 配置后，可通过 HTTP 代理访问 Azure Blob、Azure 表、Azure Data Lake 和 Document DB。
 *  在从/向 Azure Blob、Azure Data Lake Store、本地文件系统和本地 HDFS 复制数据时，支持对 TextFormat 进行标头处理。
 *  支持从追加 Blob、页 Blob 以及现已支持的块 Blob 复制数据。
-*  引入了一种新的网关状态“在线(受限)”，其指示网关主要功能正常工作，但对复制向导的交互操作支持例外。
+*  引入了一种新的网关状态“在线(受限)”  ，其指示网关主要功能正常工作，但对复制向导的交互操作支持例外。
 *  增强了使用注册密钥注册网关的可靠性。
 
 ## <a name="216040"></a>2.1.6040.

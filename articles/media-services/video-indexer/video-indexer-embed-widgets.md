@@ -1,121 +1,135 @@
 ---
-title: 将视频索引器小组件嵌入应用程序
+title: 在应用程序中嵌入视频索引器小组件
 titlesuffix: Azure Media Services
-description: 了解如何将视频索引器小组件嵌入应用程序。
+description: 了解如何在应用程序中嵌入视频索引器小组件。
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: fe3466dcccf6381f26c823ce3deb2126c9534548
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006482"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036623"
 ---
-# <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
+# <a name="embed-video-indexer-widgets-in-your-applications"></a>在应用程序中嵌入视频索引器小组件
 
-本文介绍如何将视频索引器小组件嵌入应用程序。 视频索引器支持将两类小组件嵌入应用程序：**认知见解**和**播放器**。 
+本文介绍如何在应用程序中嵌入视频索引器小组件。 视频索引器支持在应用程序中嵌入三种类型的小组件：*认知见解*、*播放器*和*编辑器*。 
 
-从版本 2 开始，小组件的基 URL 将包含帐户所属的区域。 例如，美国西部区域中的帐户将生成：`https://wus2.videoindexer.ai/embed/insights/...`。
+从版本2开始，小组件基 URL 包含指定帐户的区域。 例如，美国西部区域中的帐户将生成：`https://wus2.videoindexer.ai/embed/insights/...`。
 
 ## <a name="widget-types"></a>小组件类型
 
 ### <a name="cognitive-insights-widget"></a>认知见解小组件
 
-**认知见解**小组件包括从视频索引过程中提取的所有视觉见解。 见解小组件支持以下可选的 URL 参数：
+认知见解小组件包括从视频索引过程中提取的所有视觉对象。 认知见解小组件支持以下可选 URL 参数。
 
-|Name|定义|描述|
+|姓名|定义|描述|
 |---|---|---|
-|widgets|用逗号分隔的字符串|用于控制要呈现的见解。 <br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 只呈现人物和品牌 UI 的见解<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>使用版本 2 时不支持在 URL 中提供<br/><br/>**注意：** 在版本 2 中不支持小组件 URL 参数。 |
+|`widgets`|用逗号分隔的字符串|允许您控制要呈现的见解。 <br/> 示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`仅呈现人员和品牌 UI 见解。<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>请注意， `widgets`在版本2中不支持 URL 参数。<br/>|
+|`locale`|短语言代码|控制 insights 语言。 默认值为 `en`。 <br/> 例如：`locale=de`。|
+|`tab`|默认选定的选项卡|控制默认呈现的 "**见解**" 选项卡。 <br/> 示例： `tab=timeline`在选择 "**时间线**" 选项卡的情况上呈现见解。|
 
 ### <a name="player-widget"></a>播放器小组件
 
-**播放器**小组件用于通过自适应比特率来流式传输视频。 播放器小组件支持以下可选的 URL 参数：
+可使用播放机小组件通过自适应比特率流式传输视频。 播放机小组件支持以下可选 URL 参数。
 
-|Name|定义|描述|
+|姓名|定义|描述|
 |---|---|---|
-|t|距离开始的秒数|让播放器从给定时间点开始播放。<br/>示例：t=60|
-|captions|语言代码|在小组件加载过程中提取给定语言的字幕，使之在字幕菜单中可用。<br/>示例：captions=en-US|
-|showCaptions|布尔值|使播放器与已启用的字幕一起加载。<br/>示例：showCaptions=true|
-|type||激活音频播放器外观（视频部件已删除）。<br/>示例：type=audio|
-|autoplay|布尔值|确定播放器是否会在加载后开始播放视频（默认值为 true）。<br/>示例：autoplay=false|
-|语言|语言代码|控制播放器语言（默认值为 en-US）<br/>示例：language=de-DE|
+|`t`|开始时间（秒）|使播放机从指定的时间点开始播放。<br/> 例如：`t=60`。|
+|`captions`|语言代码|在加载小组件时提取指定语言的标题，在 "**标题**" 菜单中可用。<br/> 例如：`captions=en-US`。|
+|`showCaptions`|布尔值|使播放器与已启用的字幕一起加载。<br/> 例如：`showCaptions=true`。|
+|`type`||激活音频播放器外观（视频部分被删除）。<br/> 例如：`type=audio`。|
+|`autoplay`|布尔值|指示播放机是否应在加载时开始播放视频。 默认值为 `true`。<br/> 例如：`autoplay=false`。|
+|`language`|语言代码|控制播放器语言。 默认值为 `en-US`。<br/>例如：`language=de-DE`。|
+
+### <a name="editor-widget"></a>编辑器小组件
+
+您可以使用编辑器小组件来创建新项目并管理视频见解。 编辑器小组件支持以下可选 URL 参数。
+
+|姓名|定义|描述|
+|---|---|---|
+|`accessToken`<sup>*</sup>|String|提供对仅用于嵌入小组件的帐户的视频的访问。<br> 编辑器小组件要求`accessToken`参数。|
+|`language`|语言代码|控制播放器语言。 默认值为 `en-US`。<br/>例如：`language=de-DE`。|
+|`locale`|短语言代码|控制 insights 语言。 默认值为 `en`。<br/>例如：`language=de`。|
+
+<sup>*</sup>所有者应小心提供`accessToken` 。
 
 ## <a name="embedding-public-content"></a>嵌入公共内容
 
-1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
-2. 单击要使用的视频。
-3. 单击显示在视频下面的“嵌入”按钮。
+1. 登录到[视频索引器](https://www.videoindexer.ai/)网站。
+2. 选择要使用的视频。
+3. 选择视频下显示的 "**嵌入**" 按钮。
 
     ![小组件](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
-    单击按钮以后，一个嵌入模式会显示在屏幕上，你可以在其中选择要嵌入到应用程序中的具体小组件。
-    选择一个小组件（**播放器**或**认知见解**），生成可以粘贴在应用程序中的嵌入式代码。
+    选择 "**嵌入**" 按钮后，可以选择要在应用程序中嵌入的小组件。 
+4. 选择所需的小组件类型（**认知见解**、**播放器**或**编辑**）。
  
-4. 选择所需小组件的类型（**认知见解**或**播放器**）。
-5. 复制嵌入代码并将其添加到应用程序。 
+5. 复制嵌入代码，然后将其添加到你的应用程序。 
 
     ![小组件](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
+> [!NOTE]
+> 如果在共享视频 url 时遇到问题，请将`location`参数添加到链接中。 应将参数设置为[视频索引器所在的 Azure 区域](regions.md)。 例如：`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`。
+
 ## <a name="embedding-private-content"></a>嵌入专用内容
 
-可以从嵌入弹出窗口（如上一部分所示）获取嵌入代码，但仅限**公用**视频。 
-
-若要嵌入**专用**视频，需在 **iframe** 的 **src** 属性中传入访问令牌：
+若要嵌入专用视频，必须在 iframe 的**src**属性中传递访问令牌：
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
-使用[**获取见解小组件**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API 获取认知见解小组件内容，或者使用[**获取视频访问令牌**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)并将其作为查询参数添加到 URL，如上所示。 将此 URL 指定为 **iframe** 的 **src** 值。
+若要获取认知见解小组件内容，请使用以下项之一：<br/>
+- [获取 Insights 小组件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)API。<br/>
+- [获取视频访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)。 将其作为查询参数添加到 URL。 指定此 URL 作为 iframe 的**src**值，如前面所示。
 
-若要在嵌入式小组件中提供编辑见解功能（就像我们在 Web 应用程序中拥有的功能一样），需传递具有编辑权限的访问令牌。 请使用[**获取见解小组件**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)或[**获取视频访问令牌**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)并设置 **&allowEdit=true**。 
+若要在嵌入的小组件中提供编辑见解功能，必须传递包含编辑权限的访问令牌。 使用 "[获取 Insights 小组件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)" 或 " `&allowEdit=true`[获取视频访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)"。 
 
 ## <a name="widgets-interaction"></a>小组件交互
 
-**认知见解**小组件可以与应用程序的视频交互。 本部分说明如何实现此交互。
+认知见解小组件可以与应用程序上的视频交互。 本部分说明如何实现此交互。
 
 ![小组件](./media/video-indexer-embed-widgets/video-indexer-widget03.png)
 
 ### <a name="cross-origin-communications"></a>跨域通信
 
-为了让视频索引器小组件与其他组件通信，视频索引器服务会执行以下操作：
+若要获取视频索引器小组件来与其他组件通信，视频索引器服务如下：
 
-- 使用跨域通信 HTML5 方法 **postMessage**； 
+- 使用跨域通信 HTML5 方法**postMessage**。 
 - 跨 VideoIndexer.ai 域验证消息。 
 
-如果选择实施你自己的播放器代码并完成与**认知见解**小组件的集成，则你有责任验证来自 VideoIndexer.ai 的消息的域。
+如果实现自己的播放器代码，并将其与认知见解小组件集成，则需负责验证来自 VideoIndexer.ai 的消息源。
 
-### <a name="embed-both-types-of-widgets-in-your-application--blog-recommended"></a>在应用程序/博客中嵌入两种类型的小组件（推荐） 
+### <a name="embed-widgets-in-your-application-or-blog-recommended"></a>在应用程序或博客中嵌入小组件（推荐） 
 
-本部分介绍如何在两个视频索引器小组件之间实现交互，这样当某个用户单击应用程序中的见解控件时，播放器就会跳到相关的时刻。
+本部分介绍如何实现两个视频索引器小组件之间的交互，以便当用户在应用程序上选择见解控件时，播放机会跳到相关时刻。
 
+1. 复制播放机小组件嵌入代码。
+2. 复制认知见解嵌入代码。
+3. 添加[转存进程文件](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js)以处理两个小组件之间的通信：<br/> 
 `<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
-1. 复制**播放器**小组件嵌入代码。
-2. 复制**认知见解**嵌入代码。
-3. 添加[**转存进程文件**](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js)，以便处理两个小组件之间的通信：
+现在，当用户在应用程序上选择见解控件时，播放机会跳到相关时刻。
 
-`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
-
-现在，当某个用户单击应用程序中的见解控件时，播放器就会跳到相关的时刻。
-
-有关详细信息，请参阅[此演示](https://codepen.io/videoindexer/pen/NzJeOb)。
+有关详细信息，请参阅[视频索引器-嵌入这两个小组件演示](https://codepen.io/videoindexer/pen/NzJeOb)。
 
 ### <a name="embed-the-cognitive-insights-widget-and-use-azure-media-player-to-play-the-content"></a>嵌入认知见解小组件并使用 Azure Media Player 来播放内容
 
-本部分介绍如何使用 [AMP 插件](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js)来实现**认知见解**小组件与 Azure Media Player 实例之间的交互。
+本部分演示如何使用[AMP 插件](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js)实现认知见解小组件与 Azure Media Player 实例之间的交互。
  
-1. 为 AMP 播放器添加视频索引器插件。<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
-2. 使用视频索引器插件实例化 Azure Media Player。
+1. 为 AMP 播放器添加视频索引器插件：<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
+2. 用视频索引器插件实例化 Azure Media Player。
 
-        // Init Source
+        // Init the source.
         function initSource() {
             var tracks = [{
             kind: 'captions',
-            // Here is how to load vtt from VI, you can replace it with your vtt url.
+            // To load vtt from VI, replace it with your vtt URL.
             src: this.getSubtitlesUrl("c4c1ad4c9a", "English"),
             srclang: 'en',
             label: 'English'
@@ -129,7 +143,7 @@ ms.locfileid: "60006482"
             ], tracks);
         }
 
-        // Init your AMP instance
+        // Init your AMP instance.
         var myPlayer = amp('vid1', { /* Options */
             "nativeControlsForTouch": false,
             autoplay: true,
@@ -141,30 +155,30 @@ ms.locfileid: "60006482"
             videobreakedown: {}
             }
         }, function () {
-            // Activate the plugin
+            // Activate the plug-in.
             this.videobreakdown({
             videoId: "c4c1ad4c9a",
             syncTranscript: true,
             syncLanguage: true
             });
 
-            // Set the source dynamically
+            // Set the source dynamically.
             initSource.call(this);
         });
 
-3. 复制**认知见解**嵌入代码。
+3. 复制认知见解嵌入代码。
 
-现在应该可以与 Azure Media Player 通信了。
+你现在应该能够与 Azure Media Player 通信。
 
-有关详细信息，请参阅[此演示](https://codepen.io/videoindexer/pen/rYONrO)。
+有关详细信息，请参阅[Azure Media Player + VI Insights 演示](https://codepen.io/videoindexer/pen/rYONrO)。
 
-### <a name="embed-video-indexer-cognitive-insights-widget-and-use-your-own-player-could-be-any-player"></a>嵌入视频索引器认知见解小组件并使用你自己的播放器（可以是任何播放器）
+### <a name="embed-the-video-indexer-cognitive-insights-widget-and-use-a-different-video-player"></a>嵌入视频索引器认知见解小组件并使用不同的视频播放器
 
-如果使用自己的播放器，则需自行负责播放器的操作以实现通信。 
+如果使用 Azure Media Player 以外的视频播放器，则必须手动操作视频播放器才能实现通信。 
 
 1. 插入视频播放器。
 
-    例如，标准 HTML5 播放器
+    例如，标准 HTML5 播放器：
 
         <video id="vid1" width="640" height="360" controls autoplay preload>
            <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
@@ -177,51 +191,51 @@ ms.locfileid: "60006482"
         <script>
     
             (function(){
-            // Reference your player instance
+            // Reference your player instance.
             var playerInstance = document.getElementById('vid1');
         
             function jumpTo(evt) {
               var origin = evt.origin || evt.originalEvent.origin;
         
-              // Validate that event comes from the videobreakdown domain.
+              // Validate that the event comes from the videobreakdown domain.
               if ((origin === "https://www.videobreakdown.com") && evt.data.time !== undefined){
                 
-                // Here you need to call your player "jumpTo" implementation
+                // Call your player's "jumpTo" implementation.
                 playerInstance.currentTime = evt.data.time;
                
-                // Confirm arrival to us
+                // Confirm the arrival to us.
                 if ('postMessage' in window) {
                   evt.source.postMessage({confirm: true, time: evt.data.time}, origin);
                 }
               }
             }
         
-            // Listen to message event
+            // Listen to the message event.
             window.addEventListener("message", jumpTo, false);
           
             }())    
         
         </script>
 
-有关详细信息，请参阅[此演示](https://codepen.io/videoindexer/pen/YEyPLd)。
+有关详细信息，请参阅[Azure Media Player + VI Insights 演示](https://codepen.io/videoindexer/pen/YEyPLd)。
 
 ## <a name="adding-subtitles"></a>添加字幕
 
-如果将视频索引器见解嵌入到你自己的 AMP 播放器中，则可使用 **GetVttUrl** 方法获取隐藏式字幕。 也可从视频索引器 AMP 插件 **getSubtitlesUrl**（如前所示）调用 javascript 方法。 
+如果使用自己的[Azure Media Player](https://aka.ms/azuremediaplayer)嵌入视频索引器见解，则可以使用**GetVttUrl**方法来获取隐藏式字幕（副标题）。 还可以从视频索引器 AMP 插件**getSubtitlesUrl**调用 JavaScript 方法（如前文所述）。 
 
 ## <a name="customizing-embeddable-widgets"></a>自定义可嵌入式小组件
 
 ### <a name="cognitive-insights-widget"></a>认知见解小组件
 
-可以选择所需见解的类型，方法是将其指定为以下 URL 参数的值，此参数已添加到从 API 或 Web 应用程序获取的嵌入代码：`&widgets=<list of wanted widgets>`。
+您可以选择所需的见解类型。 为此，请将它们指定为以下 URL 参数的值，该参数将添加到从 API 或 web 应用程序中获取的嵌入代码： `&widgets=<list of wanted widgets>`。
 
-可用值：people、keywords、sentiments、transcript、search。
+可能的值包括：**人员**、**关键字**、**情绪**、**脚本**和**搜索**。
 
-例如，如果需要嵌入的小组件仅包含人物和搜索见解，则 iframe 嵌入 URL 将如下所示：
+例如，如果你想嵌入只包含人员和搜索见解的小组件，则 iframe 嵌入 URL 将如下所示：
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
 
-iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<YourTitle>` 即可。 （它会自定义 html \<title> 值）。
+iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<YourTitle>` 即可。 （它自定义 HTML \<标题 > 值）。
     
 例如，如果需要为 iframe 窗口提供标题“MyInsights”，则 URL 将如下所示：
 
@@ -237,21 +251,21 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
-默认情况下，视频索引器播放器会根据从视频提取的视频脚本以及在视频上传时选定的源语言来自动生成隐藏式字幕。
+默认情况下，视频索引器播放器具有自动生成的隐藏式字幕，它们基于视频记录。 此脚本是从视频中提取的，其中包含上传视频时选择的源语言。
 
-若要在嵌入时使用其他语言，则可向嵌入播放器 URL 添加 `&captions=< Language | ”all” | “false” >`；或者，若要使用所有可用的语言字幕，则可使用“all”作为值。
-如果需要默认显示字幕，则可传递 `&showCaptions=true`。
+如果要使用其他语言嵌入，可以将添加`&captions=< Language | ”all” | “false” >`到嵌入播放机 URL。 如果需要所有可用语言标题中的标题，请使用值`all`。 如果需要默认显示字幕，则可传递 `&showCaptions=true`。
 
 然后，嵌入 URL 将如下所示： 
 
 `https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
 
-若要禁用字幕，可传递“false”作为 captions 参数的值。
+如果要禁用标题，可以将`captions`参数值作为`false`传递。
 
-自动播放 - 播放器会按照默认设置开始播放视频。 可以选择不自动播放，只需向上述嵌入 URL 传递 &autoplay=false 即可。
+#### <a name="autoplay"></a>功能
+默认情况下，播放机将开始播放视频。 您可以选择不传递`&autoplay=false`到前面的嵌入 URL。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何查看和编辑视频索引器见解，请参阅[此](video-indexer-view-edit.md)文。
+有关如何查看和编辑视频索引器的信息，请参阅[查看和编辑视频索引器见解](video-indexer-view-edit.md)。
 
 此外，请查看[视频索引器 CodePen](https://codepen.io/videoindexer/pen/eGxebZ)。

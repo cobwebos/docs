@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: joseidz
 ms.author: craigg
 ms.reviewer: ''
-manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: e1cd0d8462c31c8b843f7962f923accc6b63ae00
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8711d8f7ebc00b2d0fa51ff9f420293e96766d1c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103394"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569354"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库中的单一数据库并创建报表
 
@@ -37,9 +36,9 @@ ms.locfileid: "58103394"
    ![选择数据源：将 Excel 连接到 SQL 数据库。](./media/sql-database-connect-excel/excel_data_source.png)
 
    此时会打开“数据连接”向导。
-3. 在“连接到数据库服务器”对话框中，以 <服务器名称>**.database.windows.net** 的格式键入要连接到的 SQL 数据库**服务器名称**。 例如“msftestserver.database.windows.net”。 输入数据库名称（可选）。 选择“确定”以打开凭据窗口。 
+3. 在“连接到数据库服务器”对话框中，以 <服务器名称> **.database.windows.net** 的格式键入要连接到的 SQL 数据库**服务器名称**。 例如“msftestserver.database.windows.net”。 输入数据库名称（可选）。 选择“确定”以打开凭据窗口。 
 
-   ![server-name.png](media/sql-database-connect-excel/server-name.png)
+   !["连接到数据库服务器" 对话框](media/sql-database-connect-excel/server-name.png)
 
 4. 在“SQL Server 数据库”对话框中，选择左侧的“数据库”，然后输入要连接到的 SQL 数据库服务器的用户名和密码。 选择“连接”以打开“导航器”。 
 
@@ -68,7 +67,7 @@ ms.locfileid: "58103394"
 
 > [!TIP]
 > 如果想将其他 Excel 工作簿和工作表与数据库连接，请选择“数据”选项卡，然后选择“最近使用的源”以启动“最近使用的源”对话框。 从该对话框中的列表中选择之前创建的连接，然后单击“打开”。
-> ![最近的连接](media/sql-database-connect-excel/recent-connections.png)
+> !["最近使用的源" 对话框](media/sql-database-connect-excel/recent-connections.png)
 
 ## <a name="create-a-permanent-connection-using-odc-file"></a>使用 .odc 文件创建永久连接
 
@@ -78,7 +77,7 @@ ms.locfileid: "58103394"
    1. 选择“浏览更多”以打开“选择数据源”对话框。   
    2. 选择“+NewSqlServerConnection.odc”文件并选择“打开”以打开“数据连接向导”。
 
-      ![新建连接](media/sql-database-connect-excel/new-connection.png)
+      !["新建连接" 对话框](media/sql-database-connect-excel/new-connection.png)
 
 2. 在“数据连接向导”中键入服务器名称和 SQL 数据库凭据。 选择“**下一步**”。 
    1. 从下拉列表中选择包含数据的数据库。 

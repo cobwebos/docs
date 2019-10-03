@@ -1,19 +1,19 @@
 ---
 title: 使用 PowerShell 将 Windows Server 备份到 Azure
 description: 了解如何使用 PowerShell 部署和管理 Azure 备份
-services: backup
-author: pvrk
-manager: shivamg
+ms.reviewer: shivamg
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 5/24/2018
-ms.author: pvrk
-ms.openlocfilehash: 6280ca55023fc604e70b62cabdc30cca6409d9e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 08/20/2019
+ms.author: dacurwin
+ms.openlocfilehash: d65da05ea2b24e3820d9a6fde31b3d4a5c72dbd1
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698481"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656735"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -22,7 +22,7 @@ ms.locfileid: "59698481"
 ## <a name="install-azure-powershell"></a>安装 Azure PowerShell
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-若要开始，[安装最新的 PowerShell 版本](/powershell/azure/install-az-ps)。
+若要开始操作，请[安装最新的 PowerShell 版本](/powershell/azure/install-az-ps)。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -40,7 +40,7 @@ ms.locfileid: "59698481"
     New-AzResourceGroup –Name "test-rg" –Location "WestUS"
     ```
 
-3. 使用**新建 AzRecoveryServicesVault** cmdlet 创建新的保管库。 确保为保管库指定的位置与用于资源组的位置是相同的。
+3. 使用 **New-AzRecoveryServicesVault** cmdlet 创建新的保管库。 确保为保管库指定的位置与用于资源组的位置是相同的。
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
@@ -60,9 +60,9 @@ ms.locfileid: "59698481"
 
 ## <a name="view-the-vaults-in-a-subscription"></a>在订阅中查看保管库
 
-使用**Get AzRecoveryServicesVault**查看当前订阅中所有保管库的列表。 可以使用此命令来查看是否创建了新的保管库，或者查看订阅中的可用保管库。
+使用 **Get-AzRecoveryServicesVault** 查看当前订阅中所有保管库的列表。 可以使用此命令来查看是否创建了新的保管库，或者查看订阅中的可用保管库。
 
-运行命令， **Get AzRecoveryServicesVault**，列出订阅中的所有保管库。
+运行 **Get-AzRecoveryServicesVault** 命令即可列出订阅中的所有保管库。
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -86,7 +86,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 在安装 Azure 备份代理之前，必须先将安装程序下载到 Windows Server 上。 可以从 [Microsoft 下载中心](https://aka.ms/azurebackup_agent)或恢复服务保管库的“仪表板”页获取最新版本的安装程序。 将安装程序保存到方便访问的位置，例如 *C:\Downloads\*。
 
 或者，使用 PowerShell 获取下载程序：
- 
+
  ```powershell
  $MarsAURL = 'https://aka.ms/Azurebackup_Agent'
  $WC = New-Object System.Net.WebClient
@@ -138,8 +138,20 @@ $CredsPath = "C:\downloads"
 $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 -Path $CredsPath
 ```
 
+### <a name="registering-using-the-ps-az-module"></a>使用 PS Az module 注册
+
+由于基本平台限制, 在 Powershell 的最新 Az 模块中, 下载保管库凭据需要自签名证书。 下面的示例演示如何提供自签名证书并下载保管库凭据。
+
+```powershell
+$Vault = Get-AzRecoveryServicesVault -ResourceGroupName $rgName -Name $VaultName
+$cert = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname xxxxxxxxxxxxx
+$certificate =[System.Convert]::ToBase64String($cert.RawData)
+$CredsPath = "C:\downloads"
+$CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Certificate $certificate -Vault $vault -Backup -Path $CredsPath
+```
+
 在 Windows Server 或 Windows 客户端计算机上，运行 [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) cmdlet 以将计算机注册到保管库。
-这和用于备份的其他 cmdlet 都来自 Mars AgentInstaller 作为安装过程一部分添加的 MSONLINE 模块。 
+这和用于备份的其他 cmdlet 都来自 Mars AgentInstaller 作为安装过程一部分添加的 MSONLINE 模块。
 
 代理安装程序不会更新 $Env:PSModulePath 变量。 这意味着模块自动加载失败。 若要解决此问题，请尝试执行以下操作：
 
@@ -200,7 +212,7 @@ Server properties updated successfully.
 
 发送到 Azure 备份的备份数据会加密，以保护数据的机密性。 加密通行短语是在还原时用于解密数据的“密码”。
 
-必须通过选择生成安全 pin **Generate**下**设置** > **属性** > **的安全PIN**中**恢复服务保管库**Azure 门户的一部分。 然后，使用此信息作为`generatedPIN`命令中：
+必须在 Azure 门户的“恢复服务保管库”部分的“设置” > “属性” > “安全 PIN”下选择“生成”来生成一个安全 PIN。 然后，将其用作命令中的 `generatedPIN`：
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force
@@ -391,6 +403,32 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
+## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>在 MABS 代理中备份 Windows Server 系统状态
+
+本部分介绍用于在 MABS 代理中设置系统状态的 PowerShell 命令
+
+### <a name="schedule"></a>计划
+```powershell
+$sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
+```
+
+### <a name="retention"></a>保留
+
+```powershell
+$rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
+```
+
+### <a name="configuring-schedule-and-retention"></a>配置计划和保留期
+
+```powershell
+New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
+ ```
+
+### <a name="verifying-the-policy"></a>验证策略
+
+```powershell
+Get-OBSystemStatePolicy
+ ```
 
 ### <a name="applying-the-policy"></a>应用策略
 

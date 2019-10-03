@@ -3,19 +3,20 @@ title: 如何通过对话学习器使用备用输入 - Microsoft 认知服务 | 
 titleSuffix: Azure
 description: 了解如何通过对话学习器使用备用输入。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 10335f9c74b9033b303c960a77af136cc80d75bb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7416939db8d6552f79fba700b8432de2ad228846
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094358"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704214"
 ---
 # <a name="how-to-use-alternative-inputs"></a>如何使用备用输入
 
@@ -33,7 +34,7 @@ ms.locfileid: "58094358"
 ## <a name="details"></a>详细信息
 “备用输入”是用户可以在训练对话中的特定点说出的备用的、语义上相同的用户话语。 这些备用输入允许你更简洁地指定话语的变体，而不必在单独的训练对话中说出每个变体。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 ### <a name="create-the-model"></a>创建模型
 

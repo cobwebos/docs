@@ -1,25 +1,18 @@
 ---
-title: 检索产品/服务 API | Microsoft Docs
+title: 检索提供 API |Azure Marketplace
 description: API 检索发布者命名空间下的产品/服务汇总列表。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: de9261548ec79e206b0db87caabc1fa4c9ad6771
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.author: pabutler
+ms.openlocfilehash: 67109c3605ea96123ff41cb88d5ac328a09991e6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591544"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935333"
 ---
 <a name="retrieve-offers"></a>检索产品/服务
 ===============
@@ -35,14 +28,14 @@ ms.locfileid: "56591544"
 | **名称**         |  **说明**                         |  **数据类型** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | 发布者标识符，例如 `contoso` |   String    |
-|  api-version     | API 的最新版本                    |    日期        |
+|  api-version     | API 的最新版本                    |    Date        |
 |  |  |
 
 
-<a name="header"></a>标头
+<a name="header"></a>Header
 ------
 
-|  **名称**        |         **值**       |
+|  **名称**        |         **ReplTest1**       |
 |  --------------- |       ----------------  |
 |  Content-Type    | `application/json`      |
 |  授权   | `Bearer YOUR_TOKEN`     |
@@ -79,7 +72,7 @@ ms.locfileid: "56591544"
 |  publisherId    | 唯一标识发布者的标识符                                                                      |
 |  status         | 产品/服务的状态。 有关可能值的列表，请参阅下面的[产品/服务状态](#offer-status)。                         |
 |  id             | 唯一标识发布者命名空间中的产品/服务的 GUID。                                                    |
-|  版本        | 该产品/服务的当前版本。 客户端无法修改版本属性。 它在每次发布后都会递增。 |
+|  version        | 该产品/服务的当前版本。 客户端无法修改版本属性。 它在每次发布后都会递增。 |
 |  定义     | 包含工作负载实际定义的摘要视图。 若要获取详细定义，请使用[检索特定产品/服务](./cloud-partner-portal-api-retrieve-specific-offer.md) API。 |
 |  changedTime    | 上次修改该产品/服务时的 UTC 时间                                                                              |
 |  |  |

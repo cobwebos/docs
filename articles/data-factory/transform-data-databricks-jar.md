@@ -12,12 +12,12 @@ ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d299a785d50657ef40c0c49cb2dce33b8939fd02
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 924367c6bb85b64bafbcb8feb546eeb490e07a34
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575862"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812792"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Jar 活动转换数据
 
@@ -56,15 +56,18 @@ ms.locfileid: "57575862"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|属性|说明|需要|
+|属性|说明|必填|
 |:--|---|:-:|
-|名称|管道中活动的名称。|是|
+|name|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|
 |type|对于 Databricks Jar 活动，活动类型是 DatabricksSparkJar。|是|
 |linkedServiceName|Databricks 链接服务的名称，Jar 活动在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|是|
 |mainClassName|类的全名，包含要执行的主要方法。 此类必须包含在作为库提供的 JAR 中。|是|
-|parameters|将传递到主要方法的参数。  这是一个字符串数组。|否|
+|参数|将传递到主要方法的参数。  这是一个字符串数组。|否|
 |库|要安装在将执行作业的群集上的库列表。 它可以是 <string, object> 数组|是（至少有一个包含 mainClassName 方法）|
+
+> [!NOTE]
+> **已知问题**-使用相同的[交互式群集](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks)运行并发 Databricks Jar 活动（无需群集重新启动）时，Databricks 中存在一个已知问题，其中，第一个活动的参数将由以下活动使用也是如此。 因此，将错误传递给后续作业的参数。 若要缓解这种情况，请改用[作业群集](compute-linked-services.md#example---using-new-job-cluster-in-databricks)。 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>databricks 活动支持的库
 

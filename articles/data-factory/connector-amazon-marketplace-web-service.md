@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 45208b5c6538ea523a7b87d6dbdeb99e792783ff
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 6396aa727abcb253f3fd728e924a066f1c22f16f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021044"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092157"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Amazon Marketplace Web 服务复制数据
 
@@ -27,6 +27,11 @@ ms.locfileid: "54021044"
 > 此连接器目前提供预览版。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 Amazon Marketplace Web 服务连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 Amazon Marketplace Web 服务复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -47,7 +52,7 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 | type | type 属性必须设置为：AmazonMWS | 是 |
 | endpoint | Amazon MWS 服务器的终结点（即，mws.amazonservices.com）  | 是 |
 | marketplaceID | 要从中检索数据的 Amazon Marketplace ID。 要从多个市场 ID 检索数据，请将其用逗号 (`,`) 分隔。 （即，A2EUQ1WTGCTBG2）  | 是 |
-| sellerID | Amazon 卖方 ID。  | 是 |
+| sellerID | Amazon Marketplace ID。  | 是 |
 | mwsAuthToken | Amazon MWS 身份验证令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | accessKeyId | 用于访问数据的访问密钥 ID。  | 是 |
 | secretKey | 用于访问数据的密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -98,11 +103,12 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
     "name": "AmazonMWSDataset",
     "properties": {
         "type": "AmazonMWSObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<AmazonMWS linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 
@@ -152,6 +158,10 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 05/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116820"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66399203"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>为开发测试实验室虚拟机创建自定义项目
 
@@ -89,15 +89,40 @@ ms.locfileid: "58116820"
 * bool（任何有效的 JSON 布尔值）
 * 数组（任何有效的 JSON 数组）
 
+## <a name="secrets-as-secure-strings"></a>作为安全字符串的机密
+声明为安全字符串的机密。 下面是用于声明中的一个安全字符串参数语法`parameters`一部分**artifactfile.json**文件：
+
+```json
+
+    "securestringParam": {
+      "type": "securestring",
+      "displayName": "Secure String Parameter",
+      "description": "Any text string is allowed, including spaces, and will be presented in UI as masked characters.",
+      "allowEmpty": false
+    },
+```
+
+为项目安装命令，运行 PowerShell 脚本会使用 Convertto-securestring 命令创建的安全字符串。 
+
+```json
+  "runCommand": {
+    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./artifact.ps1 -StringParam ''', parameters('stringParam'), ''' -SecureStringParam (ConvertTo-SecureString ''', parameters('securestringParam'), ''' -AsPlainText -Force) -IntParam ', parameters('intParam'), ' -BoolParam:$', parameters('boolParam'), ' -FileContentsParam ''', parameters('fileContentsParam'), ''' -ExtraLogLines ', parameters('extraLogLines'), ' -ForceFail:$', parameters('forceFail'), '\"')]"
+  }
+```
+
+有关完整示例 artifactfile.json 和 artifact.ps1 （PowerShell 脚本），请参阅[GitHub 上的此示例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
+
+另一个要注意的重要一点是不记录到控制台输出捕获的用户调试的机密。 
+
 ## <a name="artifact-expressions-and-functions"></a>项目表达式和函数
 可以使用表达式和函数构建项目安装命令。
 表达式用方括号（[和]）括起来，并在安装项目时求值。 表达式可以出现在 JSON 字符串值的任何位置。 表达式始终返回另一个 JSON 值。 如果需要使用以方括号 ([) 开头的文本字符串，则必须使用两个方括号 ([[)。
-通常情况下，使用具有函数的表达式来构造值。 与在 JavaScript 中一样，函数调用的格式为 **functionName(arg1, arg2, arg3)**。
+通常情况下，使用具有函数的表达式来构造值。 与在 JavaScript 中一样，函数调用的格式为 **functionName(arg1, arg2, arg3)** 。
 
 以下列表显示常见函数：
 
-* **parameters(parameterName)**：返回运行项目命令时提供的参数值。
-* **concat(arg1, arg2, arg3,….. )**：合并多个字符串值。 此函数可结合使用各种类型的参数。
+* **parameters(parameterName)** ：返回运行项目命令时提供的参数值。
+* **concat(arg1, arg2, arg3,….. )** ：合并多个字符串值。 此函数可结合使用各种类型的参数。
 
 以下示例显示如何使用表达式和函数构造值：
 

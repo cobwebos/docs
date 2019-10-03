@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 685d982835042aa4a697d19a650e8dcb1476b400
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58631992"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172648"
 ---
 ## <a name="provide-feedback-to-the-user"></a>向用户提供反馈
 

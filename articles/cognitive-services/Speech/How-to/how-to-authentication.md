@@ -3,20 +3,20 @@ title: 向必应语音进行身份验证 | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: 请求身份验证，才能使用必应语音 API
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 11d6256fb63452b849a80abab181876d14b3b6a6
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: d1e708ff29293b87935d0d191ba44ad4a11917a0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674831"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965656"
 ---
 # <a name="authenticate-to-the-speech-api"></a>对语音 API 进行身份验证
 
@@ -35,7 +35,7 @@ ms.locfileid: "56674831"
 
 若要使用语音 REST API，需要传递请求标头 `Ocp-Apim-Subscription-Key` 字段中的订阅密钥。
 
-名称| 格式| 描述
+姓名| 格式| 描述
 ----|-------|------------
 Ocp-Apim-Subscription-Key | ASCII | YOUR_SUBSCRIPTION_KEY
 

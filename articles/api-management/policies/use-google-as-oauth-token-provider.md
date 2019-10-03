@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 430f9e57df163ad345f0740e5bd5beca6e892a4c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 7acc9071008937cd85c628878b385f1f53707e53
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869291"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071913"
 ---
 # <a name="authorize-access-using-google-oauth-token"></a>使用 Google OAuth 令牌授予访问权限
 

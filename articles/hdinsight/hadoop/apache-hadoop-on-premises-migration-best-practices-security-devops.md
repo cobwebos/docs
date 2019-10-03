@@ -1,7 +1,6 @@
 ---
-title: 将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 安全性和 DevOps 最佳做法
+title: 将本地 Apache Hadoop 群集迁移到 Azure HDInsight-安全性
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的安全性和 DevOps 最佳做法。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7cfb327a3eb6cbf2ae90c9d258a470797732acaa
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: c1523ccb3952bce904deac375d11de692ac235ef
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437497"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736141"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 安全性和 DevOps 最佳做法
 
@@ -53,7 +52,7 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 
 有关详细信息，请参阅以下文章：
 
-- [已加入域的 HDInsight 群集的 Apache Hadoop 安全性简介](../domain-joined/apache-domain-joined-introduction.md)
+- [已加入域的 HDInsight 群集的 Apache Hadoop 安全性简介](../domain-joined/hdinsight-security-overview.md)
 
 - [在 HDInsight 中计划 Azure 已加入域的 Apache Hadoop 群集](../domain-joined/apache-domain-joined-architecture.md)
 - [使用 Azure Active Directory 域服务配置已加入域的 HDInsight 群集](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)

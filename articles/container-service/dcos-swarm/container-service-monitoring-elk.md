@@ -10,11 +10,11 @@ ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 342cf23db2df7d7c79a2b56df96d1a78d6ba215e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998127"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61467655"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>（已弃用）通过 ELK 监视 Azure 容器服务群集
 
@@ -22,7 +22,7 @@ ms.locfileid: "52998127"
 
 在本文中，我们将演示如何在 Azure 容器服务中的 DC/OS 群集上部署 ELK（Elasticsearch、Logstash、Kibana）堆栈。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 [部署](container-service-deployment.md)和[连接](../container-service-connect.md)由 Azure 容器服务配置的 DC/OS 群集。 在[此处](container-service-mesos-marathon-ui.md)浏览 DC/OS 仪表板和 Marathon 服务。 此外，安装 [Marathon 负载均衡器](container-service-load-balancing.md)。
 
 
@@ -30,18 +30,18 @@ ms.locfileid: "52998127"
 ELK 堆栈是 Elasticsearch、Logstash 和 Kibana 的组合，提供可用于监视和分析群集中的日志的端到端堆栈。
 
 ## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>在 DC/OS 群集上配置 ELK 堆栈
-通过 [http://localhost:80/](http://localhost:80/) 访问 DC/OS UI，然后从此处导航到“Universe”。 从 DC/OS Universe 以该特定顺序搜索并安装 Elasticsearch、Logstash 和 Kibana。 如果转到“高级安装”链接，可以了解有关配置的详细信息。
+通过 [http://localhost:80/](http://localhost:80/) 访问 DC/OS UI，然后从此处导航到“Universe”  。 从 DC/OS Universe 以该特定顺序搜索并安装 Elasticsearch、Logstash 和 Kibana。 如果转到“高级安装”  链接，可以了解有关配置的详细信息。
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 
-在 ELK 容器启动并正在运行后，需要使 Kibana 能够通过 Marathon-LB 进行访问。 导航到“服务” > “kibana”，并单击“编辑”，如下所示。
+在 ELK 容器启动并正在运行后，需要使 Kibana 能够通过 Marathon-LB 进行访问。 导航到“服务”   > “kibana”  ，并单击“编辑”  ，如下所示。
 
 ![ELK4](./media/container-service-monitoring-elk/elk4.PNG)
 
 
-切换到“JSON 模式”，并向下滚动到标签部分。
+切换到“JSON 模式”  ，并向下滚动到标签部分。
 需要在此处添加 `"HAPROXY_GROUP": "external"` 条目，如下所示。
-单击“部署更改”后，容器将重新启动。
+单击“部署更改”  后，容器将重新启动。
 
 ![ELK5](./media/container-service-monitoring-elk/elk5.PNG)
 

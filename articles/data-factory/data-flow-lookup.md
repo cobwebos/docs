@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: ef473ea5f88b9108894787785fe1e9083fab1b0a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 197f5ba9d6921f4a9921b7074b9e05162d3e37b8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787997"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64868127"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure 数据工厂映射数据流查找转换
 
@@ -25,6 +25,10 @@ ms.locfileid: "59787997"
 选择要在传入流字段和参考源字段之间匹配的关键字段。 必须先在数据流设计画布上创建一个新源，以在右侧用于查找。
 
 找到匹配项后，参考源中生成的行和列将添加到数据流中。 可以在数据流的末尾选择要包含在接收器中的感兴趣的字段。
+
+## <a name="match--no-match"></a>匹配 / 没有匹配项
+
+之后在查找转换，可用于后续转换使用表达式函数检查每个匹配行的结果`isMatch()`根据是否在查找导致行匹配或不在逻辑中进一步进行选择。
 
 ## <a name="optimizations"></a>优化
 

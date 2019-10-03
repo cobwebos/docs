@@ -1,5 +1,5 @@
 ---
-title: 教程：使用密码哈希同步 (PHS) 将单个 AD 林集成到 Azure | Microsoft Docs
+title: 教程：使用 PHS 将单个 AD 林集成到 Azure
 description: 演示如何使用密码哈希同步设置混合标识环境。
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/17/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45379f8f955c50e2598ebcebd34e971c29b2c81c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b17300fa69b61c7713c860e2a35e63fcb6584bc4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103224"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474019"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>教程：使用密码哈希同步 (PHS) 集成单个 AD 林
 
@@ -78,12 +78,12 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 1. Hyper-V 管理器，双击虚拟机
 2. 单击“开始”按钮。
 3. 系统将提示你“按任意键以从 CD 或 DVD 启动”。 继续执行此操作。
-4. 在“Windows Server 启动”屏幕上，选择语言，然后单击“下一步”。
-5. 单击“立即安装”。
-6. 输入许可证密钥并单击“下一步”。
-7. 勾选“我接受许可条款”，然后单击“下一步”。
-8. 选择“自定义: 仅安装 Windows (高级)”
-9. 点击“下一步”
+4. 在“Windows Server 启动”屏幕上，选择语言，然后单击“下一步”  。
+5. 单击“立即安装”  。
+6. 输入许可证密钥并单击“下一步”  。
+7. 勾选“我接受许可条款”，然后单击“下一步”  。
+8. 选择“自定义:  仅安装 Windows (高级)”
+9. 点击“下一步” 
 10. 安装完成后，重新启动虚拟机，登录并运行 Windows 更新，以确保 VM 是最新的。  安装最新更新。
 
 ## <a name="install-active-directory-prerequisites"></a>安装 Active Directory 的先决条件
@@ -181,20 +181,20 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 现在，我们需要创建 Azure AD 租户，以便我们可以将用户同步到云。  要创建新的 Azure AD 租户，请执行以下操作。
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)，使用具有 Azure 订阅的帐户登录。
-2. 选择加号图标 (+) 并搜索“Azure Active Directory”。
-3. 在搜索结果中选择“Azure Active Directory”。
-4. 选择“创建”。</br>
+2. 选择加号图标 (+) 并搜索“Azure Active Directory”   。
+3. 在搜索结果中选择“Azure Active Directory”  。
+4. 选择“创建”  。</br>
 ![创建](media/tutorial-password-hash-sync/create1.png)</br>
-5. 为组织提供名称以及初始域名。 然后选择“创建”。 随即创建目录。
-6. 完成此操作后，单击此处链接以管理目录。
+5. 为组织提供名称以及初始域名   。 然后选择“创建”  。 随即创建目录。
+6. 完成此操作后，单击此处链接以管理目录  。
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>在 Azure AD 中创建全局管理员
 现在我们有了 Azure AD 租户，我们将创建全局管理员帐户。  此帐户用于在 Azure AD Connect 安装期间创建 Azure AD 连接器帐户。  Azure AD 连接器帐户用于将信息写入 Azure AD。   要创建全局管理员帐户，请执行以下操作。
 
-1.  在“管理”下，选择“用户”。</br>
+1.  在“管理”下，选择“用户”   。</br>
 ![创建](media/tutorial-password-hash-sync/gadmin1.png)</br>
-2.  选择“所有用户”，然后选择“+ 新建用户”。
-3.  为此用户提供名称和用户名。 这将是租户的全局管理员。 还需要将“目录角色”更改为“全局管理员”。 还可以显示临时密码。 完成后，选择“创建”。</br>
+2.  选择“所有用户”，然后选择“+ 新建用户”   。
+3.  为此用户提供名称和用户名。 这将是租户的全局管理员。 还需要将“目录角色”更改为“全局管理员”   。 还可以显示临时密码。 完成后，选择“创建”  。</br>
 ![创建](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. 完成此操作后，使用新的全局管理员帐户和临时密码打开新的 Web 浏览器并登录 myapps.microsoft.com。
 5. 将全局管理员的密码更改为你可以记住的密码。
@@ -204,13 +204,13 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 
 1. 下载 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
 2. 导航到 **AzureADConnect.msi**并双击它。
-3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，并单击“继续”。  
-4. 在“快速设置”屏幕上，单击“使用快速设置”。</br>  
+3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，并单击“继续”。   
+4. 在“快速设置”屏幕上，单击“使用快速设置”。 </br>  
 ![创建](media/tutorial-password-hash-sync/express1.png)</br>
-5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的全局管理员用户名和密码。 单击“下一步”。  
-6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。 单击“下一步”。  
-7. 在“准备好配置”屏幕上，单击“安装”。
-8. 安装完成后，单击“退出” 。
+5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的全局管理员用户名和密码。 单击“下一步”。   
+6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。 单击“下一步”。   
+7. 在“准备好配置”屏幕上，单击“安装”。 
+8. 安装完成后，单击“退出”  。
 9. 安装完成后，请注销并再次登录，即可使用 Synchronization Service Manager 或同步规则编辑器。
 
 
@@ -219,8 +219,8 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)，使用具有 Azure 订阅的帐户登录。
-2. 在左侧选择“Azure Active Directory”
-3. 在“管理”下，选择“用户”。
+2. 在左侧选择“Azure Active Directory” 
+3. 在“管理”下，选择“用户”   。
 4. 验证租户中是否显示了新用户</br>
 ![同步](media/tutorial-password-hash-sync/synch1.png)</br>
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 04/03/2019
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: be4c5d6187e6367ba04ce7debcc0701937e87ae9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 12abb7fb6d5e93e226ae539f8161566e3c30bd65
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59012346"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803330"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 C++ 识别语音
 
@@ -30,8 +30,6 @@ ms.locfileid: "59012346"
 ## <a name="install-speech-sdk"></a>安装语音 SDK
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
-
-认知服务语音 SDK 的当前版本是 `1.4.0`。
 
 适用于 macOS 的语音 SDK 可以作为压缩框架包从 https://aka.ms/csspeech/macosbinary 下载。
 
@@ -77,12 +75,12 @@ ms.locfileid: "59012346"
 ## <a name="build-the-app"></a>生成应用
 
 > [!NOTE]
-> 请确保将以下命令输入在单个命令行上。 执行该操作的最简单方法是使用每个命令旁边的“复制按钮”来复制命令，然后将其粘贴到 shell 提示符下。
+> 请确保将以下命令输入在单个命令行上。  执行该操作的最简单方法是使用每个命令旁边的“复制按钮”来复制命令，然后将其粘贴到 shell 提示符下。 
 
 * 运行以下命令以生成应用程序。
 
   ```sh
-  g++ helloworld.cpp -o helloworld --std=c++11 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech
+  g++ helloworld.cpp -o helloworld --std=c++14 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech
   ```
 
 ## <a name="run-the-app"></a>运行应用
@@ -115,4 +113,3 @@ ms.locfileid: "59012346"
 
 - [自定义声学模型](how-to-customize-acoustic-models.md)
 - [自定义语言模型](how-to-customize-language-model.md)
-

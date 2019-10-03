@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: ebe112103bc3eb30239e80095db9bb91a33bebf3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889718"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173145"
 ---
 ## <a name="troubleshooting-update-failures"></a>排查更新失败
 **出现升级前检查失败的通知时该怎么办？**
 
-如果预先检查失败，请务必查看页面底部的详细通知栏。 其中提供了有关哪项预先检查失败的指导。 例如，你收到一个通知，指出控制器运行状况检查和硬件组件运行状况检查失败。 转到“监视器”>“硬件运行状况”。 需要确保两个控制器状况良好且已联机。 此外，需要确保 StorSimple 设备中的所有硬件组件在此边栏选项卡中都显示为状况良好。 然后即可尝试安装更新。 如果无法修复硬件组件问题，请联系 Microsoft 支持人员了解后续步骤。
+如果预先检查失败，请务必查看页面底部的详细通知栏。 其中提供了有关哪项预先检查失败的指导。 例如，你收到一个通知，指出控制器运行状况检查和硬件组件运行状况检查失败。 转到“监视器”>“硬件运行状况”  。 需要确保两个控制器状况良好且已联机。 此外，需要确保 StorSimple 设备中的所有硬件组件在此边栏选项卡中都显示为状况良好。 然后即可尝试安装更新。 如果无法修复硬件组件问题，请联系 Microsoft 支持人员了解后续步骤。
 
 **如果出现“无法安装更新”错误消息，并且系统建议参考更新故障排除指南确定失败原因，该怎么办？**
 

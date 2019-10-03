@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/06/2019
 ms.author: aschhab
 ms.openlocfilehash: 699581c7ccd3f36da0cd0c1def623607b7c0a13b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57891114"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60589674"
 ---
 # <a name="partitioned-queues-and-topics"></a>分区队列和主题
 
@@ -27,9 +27,9 @@ Azure 服务总线使用多个消息中转站来处理消息，并用多个消�
 
 ## <a name="how-it-works"></a>工作原理
 
-每个分区的队列或主题包含多个分区。 每个分区是存储在不同的消息传送存储中并由不同的消息中转站进行处理。 一条消息发送到分区的队列或主题，服务总线将消息分配给其中一个分区。 选择是通过服务总线或发送方可以指定的分区键随机完成的。
+每个分区队列或主题由多个分区构成。 每个分区存储在不同的消息传送存储中并由不同的消息中转站进行处理。 当向分区的队列或主题发送消息时，服务总线会将该消息分配到其中一个分区。 选择是通过服务总线或发送方可以指定的分区键随机完成的。
 
-当客户端想要收到一条消息从分区队列或从分区主题，服务总线查询订阅的消息的所有分区时，然后返回到接收方自任何消息存储获取的第一个消息。 服务总线缓存其他消息并在收到其他接收请求时将它们返回。 接收客户端无法识别分区；分区队列或主题的面向客户端的行为（例如，读取、完成、延迟、死信、预提取）与常规实体行为相同。
+客户端要从分区队列或从分区主题的订阅接收消息时，服务总线将查询所有分区以获取消息，并将从任何消息存储获取的第一条消息返回到接收方。 服务总线缓存其他消息并在收到其他接收请求时将它们返回。 接收客户端无法识别分区；分区队列或主题的面向客户端的行为（例如，读取、完成、延迟、死信、预提取）与常规实体行为相同。
 
 向分区队列或主题发送一条消息，或从分区队列或主题接收消息时无需额外付费。
 
@@ -39,11 +39,11 @@ Azure 服务总线使用多个消息中转站来处理消息，并用多个消�
 
 ### <a name="standard"></a>标准
 
-在标准消息传送层中，可以创建 1、2、3、4 或 5 GB 大小的服务总线队列和主题（默认值为 1 GB）。 已启用分区，服务总线创建 16 个副本 （16 个分区） 的实体，每个指定的相同大小。 因此，如果创建了一个大小为 5 GB 的队列，共有 16 个分区，最大队列大小为 (5 \* 16) = 80 GB。 可通过在 [Azure 门户][Azure portal]中分区队列或主题的“概述”边栏选项卡中查看该实体的条目来了解该队列或主题的最大大小。
+在标准消息传送层中，可以创建 1、2、3、4 或 5 GB 大小的服务总线队列和主题（默认值为 1 GB）。 已启用分区，服务总线创建 16 个副本 （16 个分区） 的实体，每个指定的相同大小。 因此，如果创建了一个大小为 5 GB 的队列，共有 16 个分区，最大队列大小为 (5 \* 16) = 80 GB。 可通过在 [Azure 门户][Azure portal]中分区队列或主题的“概述”  边栏选项卡中查看该实体的条目来了解该队列或主题的最大大小。
 
 ### <a name="premium"></a>高级
 
-在高级层命名空间中不支持分区的实体。 但是，仍然可以创建 1、2、3、4、5、10、20、40 或 80 GB 大小的服务总线队列和主题（默认值为 1 GB）。 可通过在 [Azure 门户][Azure portal]中队列或主题的“概述”边栏选项卡中查看该实体的条目来了解该队列或主题的大小。
+在高级层命名空间中，不支持分区实体。 但是，仍然可以创建 1、2、3、4、5、10、20、40 或 80 GB 大小的服务总线队列和主题（默认值为 1 GB）。 可通过在 [Azure 门户][Azure portal]中队列或主题的“概述”  边栏选项卡中查看该实体的条目来了解该队列或主题的大小。
 
 ### <a name="create-a-partitioned-entity"></a>创建分区实体
 
@@ -57,33 +57,33 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-或者，可以在 [Azure 门户][Azure portal]中创建分区队列或主题。 在门户中创建队列或主题时，队列或主题的“创建”对话框中的“启用分区”选项是默认选中的。 只能在标准层实体中禁用此选项；在高级层分区中，分区不受支持，该复选框无效。 
+或者，可以在 [Azure 门户][Azure portal]中创建分区队列或主题。 在门户中创建队列或主题时，队列或主题的“创建”  对话框中的“启用分区”  选项是默认选中的。 只能在标准层实体中禁用此选项；在高级层分区中，分区不受支持，该复选框无效。 
 
 ## <a name="use-of-partition-keys"></a>使用分区键
 
-一条消息在分区队列或主题中排队时，服务总线检查是否存在分区键。 如果找到，它将选择分区基于该密钥。 如果找不到分区键，它将选择基于内部算法的分区。
+一条消息在分区队列或主题中排队时，服务总线检查是否存在分区键。 如果找到，它会选择基于该键的分区。 如果找不到分区键，它会选择基于内部算法的分区。
 
 ### <a name="using-a-partition-key"></a>使用分区键
 
-某些情况下，例如会话或事务，要求消息存储在特定分区中。 所有这些应用场景都需要使用分区键。 使用相同的分区键的所有消息都分配到同一个分区。 如果分区是暂时不可用，服务总线会返回错误。
+某些应用场景（例如会话或事务）要求将消息存储在特定的分区中。 所有这些应用场景都需要使用分区键。 使用相同的分区键的所有消息都分配到同一分区中。 如果该分区暂时不可用，服务总线返回一个错误。
 
 根据应用场景，将不同的消息属性用作分区键：
 
-**SessionId**：如果消息已设置 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 属性，则服务总线会将 SessionID 用作分区键。 这样一来，属于同一会话的所有消息都由同一消息中转站处理。 会话使服务总线得以保证消息顺序以及会话状态的一致性。
+**SessionId**：如果消息已设置 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 属性，则服务总线会将 SessionID 用作分区键  。 这样一来，属于同一会话的所有消息都由同一消息中转站处理。 会话使服务总线得以保证消息顺序以及会话状态的一致性。
 
 **PartitionKey**：如果消息已设置 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性但未设置 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 属性，则服务总线将 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性值用作分区键。 如果消息同时具有 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 和 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性集，这两个属性必须相同。 如果 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性设置为与 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 属性不同的值，则服务总线返回无效操作异常。 如果发送方发送非会话感知事务消息，应使用 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性。 分区键可确保事务中所发送的所有消息都由同一个消息传递中转站处理。
 
-**MessageId**：如果队列或主题将 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 属性设置为“true”且未设置 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 或 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性，则 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 属性值将充当分区键。 （如果发送应用程序不这样做，Microsoft .NET 和 AMQP 库会自动分配消息 ID。）在这种情况下，同一消息的所有副本都由同一消息中转站处理。 此 ID 使服务总线能够检测并消除重复的消息。 如果 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 属性未设置为“true”，服务总线不考虑将 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 属性用作分区键。
+**MessageId**：如果队列或主题将 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 属性设置为“true”且未设置 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 或 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性，则 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 属性值将充当分区键  。 （如果发送应用程序不这样做，Microsoft .NET 和 AMQP 库会自动分配消息 ID。）在这种情况下，同一消息的所有副本都由同一消息中转站处理。 此 ID 使服务总线能够检测并消除重复的消息。 如果 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 属性未设置为“true”  ，服务总线不考虑将 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 属性用作分区键。
 
 ### <a name="not-using-a-partition-key"></a>不使用分区键
 
-如果没有分区键，服务总线将以轮循机制方式对所有分区的分区的队列或主题消息分发。 如果所选的分区不可用，服务总线会将消息分配给不同的分区。 这样一来，尽管消息存储暂时不可用，发送操作仍可成功。 但是，无法实现分区键提供的保证排序。
+如果没有分区键，服务总线以轮循机制形式将消息分发到分区队列或主题的所有分区。 如果所选的分区不可用，服务总线会将消息分配给不同的分区。 这样一来，尽管消息存储暂时不可用，发送操作仍可成功。 但是，无法实现分区键提供的保证排序。
 
 有关可用性（没有分区键）和一致性（使用分区键）之间的权衡的更深入讨论，请参阅[此文](../event-hubs/event-hubs-availability-and-consistency.md)。 此信息同样适用于已分区服务总线实体。
 
-若要给服务总线足够的时间将消息加入队列消息到不同的分区， [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout)指定客户端发送该消息必须大于 15 秒的值。 建议将 [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) 属性设置为 60 秒的默认值。
+要给服务总线足够的时间将消息排入不同分区的队列中，客户端指定的发送消息的 [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) 值必须大于 15 秒。 建议将 [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) 属性设置为 60 秒的默认值。
 
-分区键"将消息"固定到特定的分区。 如果保存此分区的消息存储不可用，服务总线会返回错误。 如果没有分区键，服务总线可以选择一个不同的分区且操作将成功。 因此，建议除非必需，否则不要提供分区键。
+分区键会将消息“固定”到特定分区。 如果保存此分区的消息存储不可用，则服务总线会返回一个错误。 如果没有分区键，服务总线可以选择其他分区且操作会成功。 因此，建议除非必需，否则不要提供分区键。
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>高级主题：将事务用于分区实体
 
@@ -101,7 +101,7 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 committableTransaction.Commit();
 ```
 
-如果设置了任何作为分区键的属性，服务总线消息固定到特定分区。 无论是否使用事务，该行为都会发生。 建议如非必须不要指定分区键。
+如果设置了任何作为分区键的属性，服务总线会将消息固定到特定分区。 无论是否使用事务，该行为都会发生。 建议如非必须不要指定分区键。
 
 ## <a name="using-sessions-with-partitioned-entities"></a>会话用于分区实体
 
@@ -126,9 +126,9 @@ committableTransaction.Commit();
 服务总线支持从分区实体、向分区实体或在分区实体之间进行消息自动转发。 若要启用消息自动转发，请在源队列或订阅上设置 [QueueDescription.ForwardTo][QueueDescription.ForwardTo] 属性。 如果该消息指定分区键（[SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 或 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)），则该分区键用于目标实体。
 
 ## <a name="considerations-and-guidelines"></a>注意事项和指南
-* **高度一致性功能**：如果实体使用功能，如会话、 重复检测或显式控制分区键，然后消息传送操作始终路由至特定分区。 如果任何分区遇到较高的流量，或基础存储处于不正常，这些操作失败，并且可用性会降低。 整体来说，一致性仍然远高于非分区实体；只有一部分流量会遇到问题，而不是所有流量。 有关详细信息，请参阅此处[对可用性和一致性的讨论](../event-hubs/event-hubs-availability-and-consistency.md)。
-* **管理**：创建、 更新和删除等操作必须在实体的所有分区上执行。 如果任何分区不正常，它可能导致这些操作失败。 Get 操作，例如消息计数必须被聚合信息来自所有分区。 如果任何分区不正常，则实体可用性状态报告为受限制。
-* **少量消息的情况**：对于这类情况，尤其是使用 HTTP 协议时，可能必须执行多次接收操作，才能获取所有消息。 对于接收请求，前端的所有分区上执行接收并缓存所有收到的响应。 相同连接上的后续接收请求将受益于此缓存，而且接收延迟会缩短。 不过，如果有多个连接或使用 HTTP，则会针对每个请求建立新的连接。 因此，不保证抵达相同的节点。 如果现有的所有消息均被锁定，而且在另一个前端中缓存，则接收操作返回 **null**。 消息最后会到期，可以再次接收它们。 建议使用 HTTP 保持连接。
+* **高度一致性功能**：如果实体使用会话、重复检测或显式控制分区键等功能，则消息传送操作一定会路由至特定的分区。 如果任何分区遇到过高的流量，或基础存储处于不正常状态，这些操作将失败，可用性会降低。 整体来说，一致性仍然远高于非分区实体；只有一部分流量会遇到问题，而不是所有流量。 有关详细信息，请参阅此处[对可用性和一致性的讨论](../event-hubs/event-hubs-availability-and-consistency.md)。
+* **管理**：必须对实体的所有分区执行创建、更新及删除等操作。 如果任何分区处于不正常状态，可能会导致这些操作失败。 以“获取”操作来说，必须汇总来自所有分区的信息，例如消息计数。 如果任何分区处于不正常状态，则实体可用性状态会报告为受限制。
+* **少量消息的情况**：对于这类情况，尤其是使用 HTTP 协议时，可能必须执行多次接收操作，才能获取所有消息。 对于接收请求，前端会在所有分区上执行接收，并缓存所有收到的响应。 相同连接上的后续接收请求将受益于此缓存，而且接收延迟会缩短。 不过，如果有多个连接或使用 HTTP，则会针对每个请求建立新的连接。 因此，不保证抵达相同的节点。 如果现有的所有消息均被锁定，而且在另一个前端中缓存，则接收操作返回 **null**。 消息最后会到期，可以再次接收它们。 建议使用 HTTP 保持连接。
 * **浏览/扫视消息**：仅在较旧的 [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 库中可用。 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) 不一定返回 [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) 属性中指定的消息数目。 此行为有两个常见的原因。 其中一个原因是消息集合的汇总大小超过设置的 256 KB 上限。 另一个原因是，如果队列或主题的 [EnablePartitioning 属性](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning)设为 **true**，则分区可能没有足够的消息来完成所请求的消息数目。 一般情况下，如果应用程序要接收特定数目的消息，则应该重复调用 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch)，直到获得该数目的消息，或者已没有更多消息可速览为止。 有关详细信息，包括代码示例，请参阅 [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) 或 [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) API 文档。
 
 ## <a name="latest-added-features"></a>最新添加的功能

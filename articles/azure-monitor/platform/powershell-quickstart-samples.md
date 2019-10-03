@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 59cb14c86963d956b0bd63f65b10776dff4aa97f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 886eb8578e004eba3b6fabc1deb42db0fb7fac70
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698070"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350241"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 监视器 PowerShell 快速入门示例
 本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。
@@ -42,6 +42,11 @@ Connect-AzAccount
 Get-AzSubscription
 ```
 
+若要查看工作上下文（运行命令所针对的订阅），请使用以下命令：
+
+```powershell
+Get-AzContext
+```
 若要将工作环境更改为另一订阅，请使用以下命令：
 
 ```powershell
@@ -50,18 +55,23 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log-for-a-subscription"></a>检索订阅的活动日志
-使用 `Get-AzLog` cmdlet。  下面是一些常见示例。
+使用 [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) cmdlet。  下面是一些常见示例。 活动日志保留过去 90 天的操作。 使用此时间之前的日期会生成错误消息。  
+
+查看当前日期/时间，以确认要在以下命令中使用的时间：
+```powershell
+Get-Date
+```
 
 从此时间/日期中获取要显示的日志条目︰
 
 ```powershell
-Get-AzLog -StartTime 2016-03-01T10:30
+Get-AzLog -StartTime 2019-03-01T10:30
 ```
 
 在一个时间/日期范围中获取日志条目︰
 
 ```powershell
-Get-AzLog -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
+Get-AzLog -StartTime 2019-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
 从特定资源组中获取日志条目︰
@@ -85,13 +95,13 @@ Get-AzLog -Caller 'myname@company.com'
 以下命令可从活动日志中检索最后 1000 个事件：
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 10
 ```
 
 `Get-AzLog` 支持许多其他参数。 有关更多信息，请参阅 `Get-AzLog` 参考。
 
 > [!NOTE]
-> `Get-AzLog` 仅提供 15 天的历史记录。 使用 **-MaxEvents** 参数可查询 15 天之外的最后 N 个事件。 要访问超过 15 天的事件，请使用 REST API 或 SDK （使用 SDK 的 C# 示例）。 如果不包括 **StartTime**，则默认值为 **EndTime** 减去一小时。 如果不包括 **EndTime**，则默认值为当前时间。 所有时间均是 UTC 时间。
+> `Get-AzLog` 仅提供 15 天的历史记录。 使用 **-MaxRecords** 参数可查询 15 天之外的最后 N 个事件。 要访问超过 15 天的事件，请使用 REST API 或 SDK （使用 SDK 的 C# 示例）。 如果不包括 **StartTime**，则默认值为 **EndTime** 减去一小时。 如果不包括 **EndTime**，则默认值为当前时间。 所有时间均是 UTC 时间。
 > 
 > 
 
@@ -142,15 +152,15 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 
 | 参数 | value |
 | --- | --- |
-| 名称 |simpletestdiskwrite |
-| 此警报规则的位置 |美国东部 |
+| 姓名 |simpletestdiskwrite |
+| 此警报规则的位置 |East US |
 | resourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。有关如何检索精确指标名称的信息，请参阅 `Get-MetricDefinitions` cmdlet |
-| operator |GreaterThan |
+| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
+| 运算符 |GreaterThan |
 | 阈值（此指标的计数/秒） |1 |
 | WindowSize（hh:mm:ss 格式） |00:05:00 |
-| 聚合（在这种情况下使用平均计数的指标的统计信息） |平均值 |
+| 聚合（在这种情况下使用平均计数的指标的统计信息） |Average |
 | 自定义电子邮件（字符串数组） |'foo@example.com','bar@example.com' |
 | 向所有者、参与者和读者发送电子邮件 |-SendToServiceOwners |
 
@@ -307,7 +317,7 @@ Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 
 ### <a name="add-a-log-profile-without-data-retention"></a>添加没有数据保留期的日志配置文件
 ```powershell
-Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia
+Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Location global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia
 ```
 
 ### <a name="remove-a-log-profile"></a>删除日志配置文件
@@ -319,14 +329,14 @@ Remove-AzLogProfile -name my_log_profile_s1
 可以用天数将 **-RetentionInDays** 属性指定为一个正整数，将保留其中的数据。
 
 ```powershell
-Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
+Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Location global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
 ### <a name="add-log-profile-with-retention-and-eventhub"></a>添加具有保留期和 EventHub 的日志配置文件
 除了将数据路由到存储帐户，还可以流式传输到事件中心。 在此预览版本中，存储帐户配置是必需的，但事件中心配置是可选的。
 
 ```powershell
-Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
+Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
 ```
 
 ## <a name="configure-diagnostics-logs"></a>配置诊断日志

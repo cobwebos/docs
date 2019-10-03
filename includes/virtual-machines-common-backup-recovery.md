@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3dfc72ff0347a93c6c6dce0e7ec763dd8241c55b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: HT
+ms.openlocfilehash: be71b269e618d13a126e4005754b307e9c6517d7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958803"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172944"
 ---
 ## <a name="azure-backup"></a>Azure 备份
 

@@ -1,32 +1,30 @@
 ---
 title: 使用 Apache Spark 分析 Azure Data Lake Storage Gen1 中的数据
-description: 运行 Spark 作业分析 Azure Data Lake Storage Gen1 中存储的数据
-services: hdinsight
+description: 运行 Apache Spark 作业来分析存储在 Azure Data Lake Storage Gen1 中的数据
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.openlocfilehash: 97a9d688eaa607df9677b6e1e2e3759cbe53bd5c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/13/2019
+ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122531"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002491"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>使用 HDInsight Spark 群集分析 Data Lake Storage Gen1 中的数据
 
-本教程使用适用于 HDInsight Spark 群集的 [Jupyter Notebook](https://jupyter.org/) 运行作业，以便从 Data Lake Storage 帐户中读取数据。
+本文介绍如何使用 HDInsight Spark 群集可用[Jupyter Notebook](https://jupyter.org/)来运行从 Data Lake Storage 帐户读取数据的作业。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure Data Lake Storage Gen1 帐户。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-get-started-portal.md) 中的说明进行操作。
 
 * 包含 Data Lake Storage Gen1 作为存储的 Azure HDInsight Spark 群集。 遵循[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
 
-    
 ## <a name="prepare-the-data"></a>准备数据
 
 > [!NOTE]  
@@ -58,7 +56,7 @@ ms.locfileid: "58122531"
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>使用包含 Data Lake Store Gen1 的 HDInsight Spark 群集
 
-1. 在 [Azure 门户](https://portal.azure.com/)上的启动板中，单击 Apache Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。
+1. 在[Azure 门户](https://portal.azure.com/)的启动板中，单击 Apache Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。
 
 2. 在 Spark 群集边栏选项卡中单击“快速链接”，并在“群集仪表板”边栏选项卡中单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
 
@@ -121,7 +119,7 @@ ms.locfileid: "58122531"
 
      也可以在其他视觉效果中查看结果。 例如，同一输出的分区图看起来如下所示。
 
-     ![查询结果分区图](./media/apache-spark-use-with-data-lake-store/jupyter-area-output.png "查询结果分区图")
+     ![查询结果分区图](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "查询结果分区图")
 
 8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这会关闭笔记本。
 

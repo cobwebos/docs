@@ -1,10 +1,10 @@
 ---
-title: 完成的组或应用程序-Azure Active Directory 访问评审 |Microsoft Docs
-description: 了解如何完成访问评审的组成员或在 Azure Active Directory 访问评审中的应用程序访问。
+title: 完成对组或应用程序的访问评审-Azure Active Directory |Microsoft Docs
+description: 了解如何在 Azure Active Directory 访问评审中完成组成员或应用程序访问的访问评审。
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,55 +12,83 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/02/2018
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4265a7e08eab079e55ce91b27142ec3e55b3f3e9
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 97c405032368ffd06f5808bc4518302d2f6d66b9
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579591"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489145"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>完成访问评审的组或 Azure AD 中的应用程序访问评审
+# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中完成对组或应用程序的访问评审
 
-管理员可以使用 Azure Active Directory (Azure AD) 对已分配到应用程序的组成员或用户[创建访问评审](create-access-review.md)。 Azure AD 会自动向评审者发送一封电子邮件，提示他们评审访问权限。 如果用户未收到一封电子邮件，您可以向他们发送说明[评审为组或应用程序的访问权限](perform-access-review.md)。 （注意，被指定为评审者但尚未接受邀请的来宾不会收到来自访问评审的电子邮件，因为他们在评审前必须先接受邀请。）访问评审期限结束后，或者管理员停止了访问评审后，请遵循本文中的步骤查看并应用结果。
+作为管理员, 你可以[创建组、应用程序和审阅者的访问评审](create-access-review.md), 以[执行访问评审](perform-access-review.md)。 本文介绍如何查看访问评审的结果并应用结果。
 
-## <a name="view-an-access-review-in-the-azure-portal"></a>在 Azure 门户中查看访问评审
+[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-1. 转到[访问评审页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)，选择“计划”，然后选择包含访问评审控制措施的计划。
+## <a name="prerequisites"></a>先决条件
 
-2. 选择“管理”并选择访问评审控制措施。 如果计划中有许多控制措施，可以按特定类型筛选控制措施，并按状态进行排序。 还可以按访问评审控制措施的名称或创建此措施的所有者的显示名称进行搜索。 
+- Azure AD Premium P2
+- 全局管理员、用户管理员、安全管理员或安全读者
 
-## <a name="stop-a-review-that-hasnt-finished"></a>停止尚未完成的评审
+有关详细信息, 请参阅[哪些用户必须拥有许可证？](access-reviews-overview.md#which-users-must-have-licenses)。
 
-如果评审尚未到达计划结束日期，管理员可以选择“停止”提前结束评审。 停止评审后，将无法继续评审用户。 停止后将无法重新开始评审。
+## <a name="view-an-access-review"></a>查看访问评审
 
-## <a name="apply-the-changes"></a>应用更改 
+您可以在评审者完成评审后跟踪进度。
 
-如果访问评审因为已到达结束日期或者因为管理员已手动将其停止而已完成，并且没有为评审配置自动应用，则可以选择“应用”来手动应用更改。 更新组或应用程序即可执行评审结果。 如果在评审中拒绝了某个用户的访问权限，当管理员选择此选项时，Azure AD 会删除该用户的成员资格或应用程序分配。 
+1. 登录到 Azure 门户并打开 "[标识管理" 页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
 
-如果访问评审已完成并且配置了自动应用，则评审状态将从“已完成”更改为各种中间状态，并且最终将更改为“已应用”状态。 在几分钟后，应当会看到被拒绝的用户（如果有）被从资源组成员身份或应用分配中删除。
+1. 在左侧菜单中, 单击 "**访问评审**"。
+
+1. 在列表中, 单击 "访问评审"。
+
+    若要查看一系列访问评审, 请导航到 "访问评审", 并在计划的评审中找到即将发生的情况。
+
+    在 "**概述**" 页上, 可以查看进度。 在评审完成之前, 不会更改目录中的访问权限。
+
+    ![访问评审进度](./media/complete-access-review/overview-progress.png)
+
+1. 如果要在访问评审结束之前停止访问评审, 请单击 "**停止**" 按钮。
+
+    当停止审阅时, 审阅者将无法再给出响应。 停止后将无法重新开始评审。
+
+1. 如果你不再想要访问评审, 可以通过单击 "**删除**" 按钮将其删除。
+
+## <a name="apply-the-changes"></a>应用更改
+
+如果已启用 "**自动将结果应用于资源**" 并基于您在**完成设置**中所做的选择, 则将在评审结束日期之后或在您手动停止审阅时执行自动应用。
+
+如果未为审核启用 "**自动应用结果**", 请单击 "**应用**" 以手动应用更改。 如果在评审中拒绝了某个用户的访问权限, 则当你单击 "**应用**" 时, Azure AD 会删除其成员身份或应用程序分配。
+
+![应用访问评审更改](./media/complete-access-review/apply-changes.png)
+
+该评审的状态将从 "**已完成**" 更改为 "已完成", 如 "应用 **" 和 "** 最终 **"。** 几分钟后，应会看到被拒绝的用户（如果有）已从组成员身份或应用程序分配中删除。
 
 为评审配置自动应用或者选择“应用”不会影响源自本地目录的组，也不会影响动态组。 若要更改源自本地的组，请下载结果，并将这些更改应用到该目录中组的表示形式。
 
-## <a name="download-the-results-of-the-review"></a>下载评审结果
+## <a name="retrieve-the-results"></a>检索结果
 
-若要检索评审结果，请选择“审批”，然后选择“下载”。 可以在 Excel 中或在可打开 UTF-8 编码 CSV 文件的其他程序中查看生成的 CSV 文件。
+若要查看一次性访问评审的结果, 请单击 "**结果**" 页。 若要只查看用户的访问权限, 请在 "搜索" 框中, 键入查看其访问权限的用户的显示名称或用户主体名称。
 
-## <a name="optional-delete-a-review"></a>可选：删除评审
-如果不再需要关注评审，则可以将其删除。 选择“删除”即可从 Azure AD 中删除评审。
+![检索访问评审的结果](./media/complete-access-review/retrieve-results.png)
 
-> [!IMPORTANT]
-> 删除之前不会出现任何警告，因此请确定想要删除该评审。
-> 
-> 
+若要查看定期活动访问评审的进度, 请单击 "**结果**" 页。
+
+若要查看定期访问评审的已完成实例的结果, 请单击 "**查看历史记录**", 然后根据实例的开始日期和结束日期从已完成的访问评审实例列表中选择特定实例。 可以从 "**结果**" 页获取此实例的结果。
+
+若要检索访问评审的所有结果, 请单击 "**下载**" 按钮。 可以在 Excel 中或在可打开 UTF-8 编码 CSV 文件的其他程序中查看生成的 CSV 文件。
+
+## <a name="remove-users-from-an-access-review"></a>从访问评审中删除用户
+
+ 默认情况下，删除的用户将在 Azure AD 中保持删除状态 30 天，在此期间，管理员可以根据需要还原这些用户。  30 天后，该用户将被永久删除。  此外，使用 Azure Active Directory 门户，全局管理员可以在达到该时间段之前，显式地[永久删除最近删除的用户](../fundamentals/active-directory-users-restore.md)。  某个用户被永久删除后，随后有关该用户的数据将从活动访问评审中删除。  有关已删除用户的审核信息仍保留在审核日志中。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure AD 访问评审管理用户访问权限](manage-user-access-with-access-reviews.md)
 - [使用 Azure AD 访问评审管理来宾访问权限](manage-guest-access-with-access-reviews.md)
-- [管理 Azure AD 访问评审的计划和控制措施](manage-programs-controls.md)
 - [创建组或应用程序的访问评审](create-access-review.md)
 - [针对充当 Azure AD 管理角色的用户创建访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)

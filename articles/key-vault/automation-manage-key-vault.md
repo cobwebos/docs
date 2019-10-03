@@ -2,23 +2,19 @@
 title: 使用 Azure 自动化管理 Azure 密钥保管库 - Azure 密钥保管库 | Microsoft Docs
 description: 了解如何使用 Azure 自动化服务来管理 Azure 密钥保管库。
 services: Key-Vault, automation
-documentationcenter: ''
 author: mgoedtel
 manager: jwhit
 editor: ''
-ms.assetid: 4e780762-19b6-4ca6-b894-ebb44c538f35
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: magoedte
-ms.openlocfilehash: ace32968808dfa919e6ca5d5777818d2672249fe
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 87fdb565f47e7d88342c82bd5940c1ddb9c137e6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224867"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64712117"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>使用 Azure 自动化管理 Azure 密钥保管库
 

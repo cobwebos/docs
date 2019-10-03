@@ -6,13 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: anzaman;cherylmc
-ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.author: cherylmc
+ms.reviewer: anzaman
+ms.openlocfilehash: e42190814b9365c7db054eb2b5f1842581b64009
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524882"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657074"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>使用 CLI 创建和修改 ExpressRoute 线路
 
@@ -23,9 +24,10 @@ ms.locfileid: "59524882"
 > * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager 模板](expressroute-howto-circuit-resource-manager-template.md)
 > * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
-> 
+>
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -127,8 +129,8 @@ az network express-route list-service-providers
 
 > [!IMPORTANT]
 > 从发布服务密钥的那一刻起，将对 ExpressRoute 线路进行计费。 在连接服务提供商准备好预配线路后，请执行此操作。
-> 
-> 
+>
+>
 
 如果尚未有资源组，则在创建 ExpressRoute 线路之前，必须先创建一个资源组。 可以运行以下命令来创建资源组：
 
@@ -136,7 +138,7 @@ az network express-route list-service-providers
 az group create -n ExpressRouteResourceGroup -l "West US"
 ```
 
-以下示例演示如何通过硅谷中的 Equinix 创建 200-Mbps 的 ExpressRoute 线路。 如果使用的是其他提供商和其他设置，请在发出请求时替换该信息。 
+以下示例演示如何通过硅谷中的 Equinix 创建 200-Mbps 的 ExpressRoute 线路。 如果使用的是其他提供商和其他设置，请在发出请求时替换该信息。
 
 请确保指定合适的 SKU 层和 SKU 系列：
 
@@ -160,7 +162,7 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 az network express-route list
 ```
 
-服务密钥会在响应的 ServiceKey 字段中列出。
+服务密钥会在响应的 ServiceKey 字段中列出  。
 
 ```azurecli
 "allowClassicOperations": false,
@@ -267,8 +269,8 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 
 > [!IMPORTANT]
 > 这些说明仅适用于由提供第 2 层连接服务的服务提供商创建的线路。 如果服务提供商提供第 3 层托管服务（通常是 IP VPN，如 MPLS），则连接服务提供商会配置和管理路由。
-> 
-> 
+>
+>
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8.将虚拟网络链接到 ExpressRoute 线路
 
@@ -279,9 +281,9 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。 可以在不停机的情况下进行以下更改：
 
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。
-* 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 但不支持对线路的带宽进行降级。 
+* 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 但不支持对线路的带宽进行降级。
 * 将计量套餐从数据流量套餐更改为无限制流量套餐。 但不支持将计量套餐从无限制流量套餐更改为数据流量套餐。
-* 可以启用和禁用允许经典操作。
+* 可以启用和禁用允许经典操作  。
 
 有关限制和局限性的详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
 
@@ -299,8 +301,8 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 > [!IMPORTANT]
 > 如果使用的资源超出了标准线路允许的范围，此操作可能会失败。
-> 
-> 
+>
+>
 
 在禁用 ExpressRoute 高级版外接程序之前，请了解以下条件：
 
@@ -349,8 +351,8 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 若要取消预配并删除 ExpressRoute 线路，请确保已了解以下条件：
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接。 如果此操作失败，请查看是否有虚拟网络链接到了该线路。
-* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们那一端取消预配线路。 在服务提供商取消对线路的预配并通知我们之前，我们会继续保留资源并收费。
-* 如果服务提供商已取消预配线路，则可以删除此线路。 取消预配线路后，服务提供商预配状态将被设置为“未预配”。 这样就会停止对线路的计费。
+* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们那一端取消预配线路   。 在服务提供商取消对线路的预配并通知我们之前，我们会继续保留资源并收费。
+* 如果服务提供商已取消预配线路，则可以删除此线路。 取消预配线路后，服务提供商预配状态将被设置为“未预配”  。 这样就会停止对线路的计费。
 
 可以通过运行以下命令来删除 ExpressRoute 线路：
 

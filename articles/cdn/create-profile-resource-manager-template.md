@@ -7,7 +7,7 @@ author: senthuransivananthan
 manager: danielgi
 editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 5c393916bc977f4e0bc51913bdb2dfbbd6677c97
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: cbde4c7fd568e6d9ff9a0d90332da96926e08077
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727567"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593130"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>快速入门：使用资源管理器模板创建 Azure CDN 配置文件和终结点
 
@@ -51,7 +51,7 @@ az group create --name cdn --location eastus
 
 此步骤创建一个用于部署资源的模板文件。
 
-尽管本示例演练的是“常规网站加速”方案，但也可以配置其他许多设置。 Azure 资源管理器模板参考文档中介绍了这些设置。 请参阅有关 [CDN 配置文件](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles)和 [CDN 配置文件终结点](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)的参考文档。
+尽管本示例演练的是“常规网站加速”方案，但也可以配置其他许多设置。 Azure 资源管理器模板参考文档中介绍了这些设置。 请参阅有关 [CDN 配置文件](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)和 [CDN 配置文件终结点](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)的参考文档。
 
 请注意，Microsoft CDN 不支持修改内容类型列表。
 
@@ -210,7 +210,7 @@ az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o t
 
 ![查看 CDN 终结点](./media/create-profile-resource-manager-template/cdn-view-endpoint.png)
 
-使用 HostName 查看内容。 例如，使用浏览器访问 https://cdndemo-azurewebsites-net.azureedge.net。
+使用 HostName 查看内容。 例如，使用浏览器访问 https://cdndemo-azurewebsites-net.azureedge.net 。
 
 ## <a name="clean-up"></a>清理
 
@@ -224,8 +224,8 @@ az group delete --name cdn
 
 ## <a name="references"></a>参考
 
-* CDN 配置文件 - [Azure 资源管理器模板参考](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles)
-* CDN 终结点 - [Azure 资源管理器模板参考文档](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+* CDN 配置文件 - [Azure 资源管理器模板参考](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
+* CDN 终结点 - [Azure 资源管理器模板参考文档](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
 ## <a name="next-steps"></a>后续步骤
 

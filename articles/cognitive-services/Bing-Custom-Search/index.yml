@@ -2,18 +2,18 @@
 documentType: LandingData
 title: 必应自定义搜索文档
 metadata:
-  title: 必应自定义搜索 API 文档 - 教程、快速入门和 API 参考 - Microsoft 认知服务 | Microsoft Docs
+  title: 必应自定义搜索 API 文档 - 教程、快速入门和 API 参考
+  titleSuffix: Azure Cognitive Services
   description: 了解如何使用必应自定义搜索门户和 API 来创建自定义搜索体验
   services: cognitive-services
-  author: v-deken
-  manager: cgronlun
+  author: aahill
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: bing-custom-search
   ms.topic: landing-page
-  ms.date: 01/16/2019
-  ms.author: v-deken
+  ms.date: 07/25/2019
+  ms.author: aahill
 abstract:
   description: 使用必应自定义搜索 API 针对所关注的主题创建搜索实例。 指定要搜索的域和网页并调整搜索排名以完全自定义搜索体验。
 sections:
@@ -74,9 +74,9 @@ sections:
         className: cardsD
         items:
           - title: API
-            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference">自定义搜索 API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference">自定义自动建议 API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference">自定义图像搜索 API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference">自定义视频搜索 API v7</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference">自定义搜索 API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference">自定义自动建议 API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference">自定义图像搜索 API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference">自定义视频搜索 API v7</a></p>'
           - title: SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customsearch?view=azure-java-stable">Java - 自定义搜索</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customimagesearch?view=azure-java-stable">Java - 自定义图像搜索</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-customsearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch">Go - 自定义搜索</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch">Go - 自定义图像搜索</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable">Java - 自定义搜索</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomimagesearch?view=azure-java-stable">Java - 自定义图像搜索</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-customsearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch">Go - 自定义搜索</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch">Go - 自定义图像搜索</a></p>'
           - title: PowerShell
             html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
           - title: CLI

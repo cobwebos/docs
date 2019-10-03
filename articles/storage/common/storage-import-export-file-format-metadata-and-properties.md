@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 2066d4a2ed6db97285d92d15e14dbd21629dbdfa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456997"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478549"
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure 导入/导出服务元数据和属性文件格式
 可将一个或多个 Blob 的元数据和属性指定为导入作业或导出作业的一部分。 要设置将创建为导入作业一部分的 Blob 的元数据或属性，应在包含所要导入数据的硬盘驱动器上提供一个元数据或属性文件。 对于导出作业，元数据和属性将写入到在返回的硬盘驱动器上包含的元数据或属性文件。  
@@ -30,7 +30,7 @@ ms.locfileid: "55456997"
 </Metadata>  
 ```
   
-|XML 元素|Type|说明|  
+|XML 元素|Type|描述|  
 |-----------------|----------|-----------------|  
 |`Metadata`|Root 元素|元数据文件的根元素。|  
 |`metadata-name`|String|可选。 XML 元素指定 Blob 的元数据名称，其值指定元数据设置值。|  
@@ -52,7 +52,7 @@ ms.locfileid: "55456997"
 </Properties>  
 ```
   
-|XML 元素|Type|说明|  
+|XML 元素|Type|描述|  
 |-----------------|----------|-----------------|  
 |`Properties`|Root 元素|属性文件的根元素。|  
 |`Last-Modified`|String|可选。 Blob 的上次修改时间。 仅适用于导出作业。|  

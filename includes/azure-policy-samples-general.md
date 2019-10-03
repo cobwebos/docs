@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: ac351cecddc7f6df9534cb440ddd92daab27c0e7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ae41ed674917c889ef4e3226a88d299bc2dde15e
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47003583"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173082"
 ---
 ## <a name="general"></a>常规
 

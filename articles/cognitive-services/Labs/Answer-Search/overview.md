@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: ac1717a8e8a08fcfedc3bc21bb0f03b3e3ca2511
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 676b7f63b82a0e7c06264cb6dcbead8c1344a076
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548075"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707112"
 ---
 # <a name="what-is-project-answer-search"></a>什么是项目答案搜索？
 项目答案搜索 API 使用 Bing v7 终结点获取疑问式询问的答案。 “地球的周长是多少？”此类问题 返回带有事实信息的答案。  对人员、地点或事物的查询则返回与查询识别的实体相关的信息。 这些方案在对话机器人、消息应用、读取器等应用程序中十分有用。  
@@ -23,7 +24,7 @@ ms.locfileid: "57548075"
 查询返回取决于查询方案的响应：始终返回网页，同时如果相关，则返回[事实](fact-queries.md)和/或[实体](entity-queries.md)。
 
 ## <a name="endpoint"></a>终结点
-要获取问题答案或人员、地点或事物相关信息，请向答案搜索 API 终结点发送请求。 使用标头和 URL 参数获取各类规范。  借助有效令牌包括“Ocp-Apim-Subscription-Key”标头。  市场参数是必需的。 当前仅支持 `en-us` 市场。
+要获取问题答案或人员、地点或事物相关信息，请向答案搜索 API 终结点发送请求。 使用标头和 URL 参数获取各类规范。  借助有效令牌包括“Ocp-Apim-Subscription-Key”  标头。  市场参数是必需的。 当前仅支持 `en-us` 市场。
 
 以下查询可获取此问题的答案：“地球的周长是多少？”
 
@@ -313,7 +314,7 @@ JSON Response:
   
 ![许可证属性](./media/licenseattribution.png)  
   
-你显示的许可证通知必须包括指向包含许可证相关信息的网站的超链接。 通常会将许可证名称作为超链接。 例如，如果通知是“Text under CC-BY-SA”许可证，其中 CC-BY-SA 是许可证名称，则使 CC-BY-SA 成为超链接。  
+你显示的许可证通知必须包括指向包含许可证相关信息的网站的超链接。 通常会将许可证名称作为超链接。 例如，如果通知是“Text under CC-BY-SA”许可证  ，其中 CC-BY-SA 是许可证名称，则使 CC-BY-SA 成为超链接。  
   
 ### <a name="link-and-text-attribution"></a>链接和文本属性  
 

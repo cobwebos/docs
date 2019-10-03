@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 12/13/2018
-ms.author: akjosh; cynthn
+ms.date: 05/06/2019
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: a750992cade95f9a2719d89c7ff587daf6bfe34d
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: ceb1aa9ae29b42d1ac4782499fd3157b103a492e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191048"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621101"
 ---
 # <a name="shared-image-galleries-overview"></a>共享映像库概述
 

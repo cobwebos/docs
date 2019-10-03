@@ -1,23 +1,23 @@
 ---
 title: 文本翻译 API 语言方法
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用文本翻译 API 语言方法。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: swmachan
+ms.openlocfilehash: 3dd875fbf9a8da464abe1b6312cec84c030dc624
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915758"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934018"
 ---
-# <a name="translator-text-api-30-languages"></a>文本翻译 API 3.0：Languages
+# <a name="translator-text-api-30-languages"></a>文本翻译 API 3.0：语言
 
 获取文本翻译 API 的其他操作当前支持的语言集。 
 
@@ -40,7 +40,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
     <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
   </tr>
   <tr>
-    <td>作用域</td>
+    <td>范围</td>
     <td>可选参数。<br/>逗号分隔的名称列表，用于定义要返回的语言组。 允许的组名称为：`translation`、`transliteration` 和 `dictionary`。 如果未指定范围，则返回所有组，这相当于传递了 `scope=translation,transliteration,dictionary`。 若要确定哪个支持的语言集适合你的场景，请参阅[响应对象](#response-body)的说明。</td>
   </tr>
 </table> 
@@ -226,7 +226,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 支持的语言列表不会频繁变化。 若要节省网络带宽并提高响应能力，客户端应用程序应考虑缓存语言资源和相应的实体标记 (`ETag`)。 然后，客户端应用程序可以定期（例如，每隔 24 小时）查询服务，以提取最新的受支持语言集。 在 `If-None-Match` 标头字段中传递当前的 `ETag` 值可让服务优化响应。 如果未修改资源，则服务将返回状态代码 304 和空响应正文。
 
-## <a name="response-headers"></a>响应标头
+## <a name="response-headers"></a>响应头
 
 <table width="100%">
   <th width="20%">标头</th>
@@ -263,11 +263,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>调用方发送的请求过多。</td>
+    <td>由于客户端已超出请求限制，服务器拒绝了请求。</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>发生意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
@@ -281,10 +281,6 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 以下示例演示如何检索文本翻译支持的语言。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"
 ```
-
----

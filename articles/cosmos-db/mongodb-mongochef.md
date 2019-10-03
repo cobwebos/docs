@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 9b0a6393d2372c831fdc964dee18acbccfd39a77
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 46cac6720bbef133d6b3f7a269cf97a81cddd0c5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449370"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70062116"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>使用 Studio 3T 连接到 Cosmos 帐户
 
@@ -22,6 +22,9 @@ ms.locfileid: "57449370"
 
 * 下载并安装 [Studio 3T](https://studio3t.com/)
 * 获得 Cosmos DB [连接字符串](connect-mongodb-account.md)信息
+
+> [!NOTE]
+> 目前, Cosmos DB 的适用于 MongoDB 的 API 支持 Robo 3T 和更低版本。 
 
 ## <a name="create-the-connection-in-studio-3t"></a>在 Studio 3T 中创建连接
 要将 Cosmos 帐户添加到 Studio 3T 连接管理器，请执行以下步骤：
@@ -43,7 +46,7 @@ ms.locfileid: "57449370"
     ![Studio 3T 连接管理器 SSL 选项卡的屏幕截图](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
 6. 单击“测试连接”按钮以验证连接信息，单击“确定”以返回到“新建连接”窗口，并单击“保存”。
 
-    ![Studio 3T 的屏幕截图测试连接窗口](./media/mongodb-mongochef/TestConnectionResults.png)
+    ![Studio 3T 测试连接窗口的屏幕截图](./media/mongodb-mongochef/TestConnectionResults.png)
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>使用 Studio 3T 创建数据库、集合和文档
 若要使用 Studio 3T 创建数据库、集合和文档，请执行以下步骤：
@@ -53,13 +56,13 @@ ms.locfileid: "57449370"
     ![Studio 3T 连接管理器的屏幕截图](./media/mongodb-mongochef/ConnectToAccount.png)
 2. 右键单击主机，并选择“添加数据库”。  提供数据库名称，并单击“确定”。
 
-    ![Studio 3T 添加数据库选项的屏幕截图](./media/mongodb-mongochef/AddDatabase1.png)
+    ![Studio 3T“添加数据库”选项的屏幕截图](./media/mongodb-mongochef/AddDatabase1.png)
 3. 右键单击数据库，并选择“添加集合”。  提供集合名称，并单击“创建”。
 
-    ![Studio 3T 添加集合选项的屏幕截图](./media/mongodb-mongochef/AddCollection.png)
+    ![Studio 3T“添加集合”选项的屏幕截图](./media/mongodb-mongochef/AddCollection.png)
 4. 单击“集合”菜单项，并单击“添加文档”。
 
-    ![Studio 3T 添加文档菜单项的屏幕截图](./media/mongodb-mongochef/AddDocument1.png)
+    ![Studio 3T“添加文档”菜单项的屏幕截图](./media/mongodb-mongochef/AddDocument1.png)
 5. 在“添加文档”对话框中粘贴以下内容，并单击“添加文档”。
 
         {
@@ -107,7 +110,7 @@ ms.locfileid: "57449370"
         }
 7. 执行示例查询。 例如，搜索姓氏为“Andersen”的家庭，并返回父母和州/省字段。
 
-    ![屏幕截图的 Mongo Chef 查询结果](./media/mongodb-mongochef/QueryDocument1.png)
+    ![Mongo Chef 查询结果的屏幕截图](./media/mongodb-mongochef/QueryDocument1.png)
 
 ## <a name="next-steps"></a>后续步骤
 

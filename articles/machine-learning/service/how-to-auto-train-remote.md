@@ -1,7 +1,7 @@
 ---
 title: 自动 ML 远程计算目标
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure 机器学习服务在 Data Science Virtual machine (DSVM) 远程目标上使用自动机器学习构建模型
+titleSuffix: Azure Machine Learning
+description: 了解如何使用 Azure 机器学习的 Azure 机器学习远程计算目标上的自动机器学习生成模型
 services: machine-learning
 author: nacharya1
 ms.author: nilesha
@@ -10,28 +10,27 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/04/2018
-ms.custom: seodec18
-ms.openlocfilehash: 6f2d71abeacee531b21a8276f621367dd39a39d9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 7/12/2019
+ms.openlocfilehash: 9eab21fe6b5269229de186a7553e11a147c1033e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58891661"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034988"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
 
-在 Azure 机器学习中，我们在所管理的不同类型的计算资源上训练模型。 计算目标可以是本地计算机，也可以是云中的计算机。
+在 Azure 机器学习中，我们在所管理的不同类型的计算资源上训练模型。 计算目标可以是本地计算机, 也可以是云中的资源。
 
-可以通过添加附加计算目标，轻松地纵向扩展或横向扩展机器学习试验。 计算目标选项包括基于 Ubuntu 的 Data Science Virtual Machine (DSVM) 或 Azure 机器学习计算。 DSVM 是在 Microsoft Azure 云上专为研究数据科学而生成的自定义 VM 映像。 它预先安装和预配置了许多热门的数据科学和其他工具。  
+可以通过添加更多计算目标 (例如 Azure 机器学习计算 (AmlCompute)) 来轻松增加或减少机器学习试验。 AmlCompute 是一种托管计算基础结构, 可让你轻松创建单个或多节点计算。
 
-在本文中，你将了解如何在 DSVM 上使用自动化机器学习来构建模型。
+本文介绍如何通过 AmlCompute 使用自动 ML 构建模型。
 
 ## <a name="how-does-remote-differ-from-local"></a>远程与本地有何区别？
 
-教程“[使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)”讲授了如何使用本地计算机通过自动化机器学习来训练模型。  本地培训的工作流同样适用于远程目标。 但是，使用远程计算，能够以异步方式执行自动化机器学习试验迭代。 此功能允许你取消特定迭代，观察执行状态，或继续在 Jupyter 笔记本的其他单元格上处理。 若要进行远程训练，首先要创建一个远程计算目标，例如 Azure DSVM。  然后，配置远程资源，并在那里提交代码。
+本教程 "使用[自动机器学习训练分类模型](tutorial-auto-train-models.md)" 教程介绍了如何使用本地计算机通过自动 ML 训练模型。 本地培训的工作流同样适用于远程目标。 但是，使用远程计算，能够以异步方式执行自动化机器学习试验迭代。 此功能允许你取消特定迭代，观察执行状态，或继续在 Jupyter 笔记本的其他单元格上处理。 若要进行远程训练, 请先创建一个远程计算目标, 如 AmlCompute。 然后，配置远程资源，并在那里提交代码。
 
-本文展示了在远程 DSVM 上运行自动化机器学习试验所需的额外步骤。  本教程中的工作区对象 `ws` 将会在此处的整个代码中使用。
+本文介绍了在远程 AmlCompute 目标上运行自动 ML 实验所需的额外步骤。 本教程中的工作区对象 `ws` 将会在此处的整个代码中使用。
 
 ```python
 ws = Workspace.from_config()
@@ -39,108 +38,89 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>创建资源
 
-如果尚无 DSVM，请在工作区 (`ws`) 中创建 DSVM。 如果先前已创建 DSVM，则此代码将跳过创建过程，并将现有资源详情加载到 `dsvm_compute` 对象。  
+如果工作区中不存在 AmlCompute 目标`ws`, 请在工作区中创建它。
 
-**时间估计**：创建 VM 需要大约 5 分钟。
-
-```python
-from azureml.core.compute import DsvmCompute
-
-dsvm_name = 'mydsvm' #Name your DSVM
-try:
-    dsvm_compute = DsvmCompute(ws, dsvm_name)
-    print('found existing dsvm.')
-except:
-    print('creating new dsvm.')
-    # Below is using a VM of SKU Standard_D2_v2 which is 2 core machine. You can check Azure virtual machines documentation for additional SKUs of VMs.
-    dsvm_config = DsvmCompute.provisioning_configuration(vm_size = "Standard_D2_v2")
-    dsvm_compute = DsvmCompute.create(ws, name = dsvm_name, provisioning_configuration = dsvm_config)
-    dsvm_compute.wait_for_completion(show_output = True)
-```
-
-现在，可以使用 `dsvm_compute` 对象作为远程计算目标。
-
-DSVM 名称限制包括：
-+ 必须小于 64 个字符。  
-+ 不得包含以下任何字符：`\` ~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \\\\ | ; : \' \\" , < > / ?.`
-
->[!Warning]
->如果创建失败，并收到有关商城购买资格的消息：
->    1. 转到 [Azure 门户](https://portal.azure.com)
->    1. 开始创建 DSVM 
->    1. 选择“希望以编程方式创建”来启用以编程方式创建
->    1. 在没有实际创建 VM 的情况下退出
->    1. 重新运行创建代码
-
-此代码没有为预配的 DSVM 创建用户名或密码。 如果希望直接连接到 VM，请转到 [Azure 门户](https://portal.azure.com)来创建凭据。  
-
-### <a name="attach-existing-linux-dsvm"></a>附加现有的 Linux DSVM
-
-也可附加现有的 Linux DSVM 作为计算目标。 此示例利用现有的 DSVM，但不创建新的资源。
-
-> [!NOTE]
->
-> 下面的代码使用[RemoteCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remote.remotecompute?view=azure-ml-py)目标类要附加现有的 VM 作为计算目标。
-> [DsvmCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.dsvmcompute?view=azure-ml-py)类将在为支持这种设计模式的未来版本中弃用。
-
-运行以下代码，根据预先存在的 Linux DSVM 创建计算目标。
+**时间估计**：AmlCompute 目标的创建时间大约为5分钟。
 
 ```python
-from azureml.core.compute import ComputeTarget, RemoteCompute 
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
 
-attach_config = RemoteCompute.attach_configuration(username='<username>',
-                                                   address='<ip_address_or_fqdn>',
-                                                   ssh_port=22,
-                                                   private_key_file='./.ssh/id_rsa')
-compute_target = ComputeTarget.attach(workspace=ws,
-                                      name='attached-vm',
-                                      attach_configuration=attach_config)
+amlcompute_cluster_name = "automlcl"  # Name your cluster
+provisioning_config = AmlCompute.provisioning_configuration(vm_size="STANDARD_D2_V2",
+                                                            # for GPU, use "STANDARD_NC6"
+                                                            # vm_priority = 'lowpriority', # optional
+                                                            max_nodes=6)
+compute_target = ComputeTarget.create(
+    ws, amlcompute_cluster_name, provisioning_config)
 
-compute_target.wait_for_completion(show_output=True)
+# Can poll for a minimum number of nodes and for a specific timeout.
+# If no min_node_count is provided, it will use the scale settings for the cluster.
+compute_target.wait_for_completion(
+    show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
 现在，可以使用 `compute_target` 对象作为远程计算目标。
 
-## <a name="access-data-using-getdata-file"></a>使用 get_data 文件访问数据
+群集名称限制包括:
++ 必须小于 64 个字符。
++ 不得包含以下任何字符：`\` ~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \\\\ | ; : \' \\" , < > / ?.`
 
-提供对定型数据的远程资源访问权限。 对于在远程计算上运行的自动化机器学习实验，需要使用 `get_data()` 函数来提取数据。  
+## <a name="access-data-using-tabulardataset-function"></a>使用 TabularDataset 函数访问数据
 
-若要提供访问权限，必须：
-+ 创建一个包含 `get_data()` 函数的 get_data.py 文件 
-+ 将该文件置于可以作为绝对路径访问的目录中 
+将 X 和 y 定义`TabularDataset`为，它们会传递到 AutoMLConfig 中的自动 ML。 `from_delimited_files`默认情况下， `infer_column_types`将设置为 true，这将自动推断列类型。 
 
-你可以封装代码，以从 blob 存储或 get_data.py 文件中的本地磁盘读取数据。 在下面的代码示例中，数据来自 sklearn 包。
-
->[!Warning]
->如果使用的是远程计算，则必须使用 `get_data()`，其中将执行数据转换。 如果需要为 get_data() 中的数据转换安装额外的库，则应当接着执行额外的步骤。 有关详细信息，请参阅 [auto-ml-dataprep sample notebook](https://aka.ms/aml-auto-ml-data-prep )。
-
+如果要手动设置列类型，可以将`set_column_types`参数设置为手动设置每个列的类型。 在下面的代码示例中，数据来自 sklearn 包。
 
 ```python
 # Create a project_folder if it doesn't exist
+if not os.path.isdir('data'):
+    os.mkdir('data')
+    
 if not os.path.exists(project_folder):
     os.makedirs(project_folder)
 
-#Write the get_data file.
-%%writefile $project_folder/get_data.py
-
 from sklearn import datasets
+from azureml.core.dataset import Dataset
 from scipy import sparse
 import numpy as np
+import pandas as pd
 
-def get_data():
-    
-    digits = datasets.load_digits()
-    X_digits = digits.data[10:,:]
-    y_digits = digits.target[10:]
+data_train = datasets.load_digits()
 
-    return { "X" : X_digits, "y" : y_digits }
+pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
+pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
+
+ds = ws.get_default_datastore()
+ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
+
+X = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/X_train.csv'))
+y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
+
 ```
 
+## <a name="create-run-configuration"></a>创建运行配置
+
+若要使依赖项可用于 get_data. py 脚本，请`RunConfiguration`定义具有定义`CondaDependencies`的对象。 对中`run_configuration` `AutoMLConfig`的参数使用此对象。
+
+```python
+from azureml.core.runconfig import RunConfiguration
+from azureml.core.conda_dependencies import CondaDependencies
+
+run_config = RunConfiguration(framework="python")
+run_config.target = compute_target
+run_config.environment.docker.enabled = True
+run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
+
+dependencies = CondaDependencies.create(
+    pip_packages=["scikit-learn", "scipy", "numpy"])
+run_config.environment.python.conda_dependencies = dependencies
+```
+
+有关此设计模式的其他示例, 请参阅此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb)。
+
 ## <a name="configure-experiment"></a>配置试验
-
 为 `AutoMLConfig` 指定设置。  （请参阅[完整参数列表](how-to-configure-auto-train.md#configure-experiment)及其可能值。）
-
-在设置中，`run_configuration` 设置为 `run_config` 对象，其中包含 DSVM 的设置和配置。  
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -161,10 +141,12 @@ automl_settings = {
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = dsvm_compute,
-                             data_script=project_folder + "/get_data.py",
+                             compute_target=compute_target,
+                             run_configuration=run_config,
+                             X = X,
+                             y = y,
                              **automl_settings,
-                            )
+                             )
 ```
 
 ### <a name="enable-model-explanations"></a>启用模型说明
@@ -175,12 +157,14 @@ automl_config = AutoMLConfig(task='classification',
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = dsvm_compute,
-                             data_script=project_folder + "/get_data.py",
+                             compute_target=compute_target,
+                             run_configuration=run_config,
+                             X = X,
+                             y = y,
                              **automl_settings,
                              model_explainability=True,
-                             X_valid = X_test
-                            )
+                             X_valid=X_test
+                             )
 ```
 
 ## <a name="submit-training-experiment"></a>提交训练试验
@@ -189,7 +173,7 @@ automl_config = AutoMLConfig(task='classification',
 
 ```python
 from azureml.core.experiment import Experiment
-experiment=Experiment(ws, 'automl_remote')
+experiment = Experiment(ws, 'automl_remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
@@ -203,7 +187,7 @@ remote_run = experiment.submit(automl_config, show_output=True)
     METRIC: The result of computing score on the fitted pipeline.
     BEST: The best observed score thus far.
     ***********************************************************************************************
-    
+
      ITERATION     PIPELINE                               DURATION                METRIC      BEST
              2      Standardize SGD classifier            0:02:36                  0.954     0.954
              7      Normalizer DT                         0:02:22                  0.161     0.954
@@ -229,33 +213,42 @@ remote_run = experiment.submit(automl_config, show_output=True)
 
 ## <a name="explore-results"></a>浏览结果
 
-可以使用与[培训教程](tutorial-auto-train-models.md#explore-the-results)中相同的 Jupyter 小组件来查看图表和结果表格。
+您可以使用[培训教程](tutorial-auto-train-models.md#explore-the-results)中所示的相同[Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)来查看结果图和表。
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
+
 下面是小组件的静态图像。  在笔记本中，可以单击表格中的任意一行，查看运行属性和该运行的输出日志。   此外，还可以使用图表上方的下拉列表来查看每个迭代的每个可用指标的图表。
 
 ![小组件表](./media/how-to-auto-train-remote/table.png)
 ![小组件绘图](./media/how-to-auto-train-remote/plot.png)
 
-小组件将显示可用于查看和浏览单个运行详细信息的 URL。
- 
+小组件将显示可用于查看和浏览单个运行详细信息的 URL。  
+
+如果你不在 Jupyter 笔记本中，可以从运行本身显示 URL：
+
+```
+remote_run.get_portal_url()
+```
+
+你的工作区中提供了相同的信息。  若要了解有关这些结果的详细信息，请参阅[了解自动化机器学习结果](how-to-understand-automated-ml.md)。
+
 ### <a name="view-logs"></a>查看日志
 
 在 `/tmp/azureml_run/{iterationid}/azureml-logs` 下的 DSVM 上查找日志。
 
-## <a name="best-model-explanation"></a>最佳模型说明
+## <a name="explain"></a>最佳模型说明
 
 检索模型说明数据可以详细了解这些模型，更好地了解在后端运行的内容。 在此示例中，我们仅为最佳拟合模型运行模型说明。 如果为管道中的所有模型运行该说明，则会导致运行时间显著增加。 模型说明信息包括：
 
-* shap_values：shap lib 生成的说明信息
+* shap_values：Shap lib 生成的解释信息。
 * expected_values：适用于 X_train 数据集的模型的预期值。
-* overall_summary：模型级别功能重要性值，按降序排列
-* overall_imp：功能名称，排序方式与 overall_summary 相同
-* per_class_summary：类级别功能重要性值，按降序排列。 仅适用于分类案例
-* per_class_imp：功能名称，排序方式与 per_class_summary 相同。 仅适用于分类案例
+* overall_summary：模型级别特征重要性值以降序排序。
+* overall_imp：功能名称的排序顺序与 overall_summary 中的顺序相同。
+* per_class_summary：类级别功能重要性值，按降序排列。 仅适用于分类案例。
+* per_class_imp：功能名称，排序方式与 per_class_summary 相同。 仅适用于分类案例。
 
 使用以下代码，从迭代中选择最佳管道。 `get_output` 方法针对上次拟合调用返回最佳运行和拟合的模型。
 
@@ -285,13 +278,13 @@ print(per_class_imp)
 
 ![模型可说明性控制台输出](./media/how-to-auto-train-remote/expl-print.png)
 
-也可通过工作区的 Azure 门户中的小组件 UI 和 Web UI 将功能重要性可视化。
+还可以通过小组件 UI、Azure 门户上的 web UI 或[工作区登陆页面（预览）](https://ml.azure.com)来可视化功能重要性。 
 
 ![模型可说明性 UI](./media/how-to-auto-train-remote/model-exp.png)
 
 ## <a name="example"></a>示例
 
-[how-to-use-azureml/automated-machine-learning/remote-execution/auto-ml-remote-execution.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-execution/auto-ml-remote-execution.ipynb) 笔记本演示了本文中的概念。 
+[How-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb)笔记本演示了本文中的概念。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

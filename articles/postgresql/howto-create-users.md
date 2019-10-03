@@ -1,20 +1,22 @@
 ---
-title: 在 Azure Database for PostgreSQL 服务器中创建用户
-description: 本文介绍了如何创建新的用户帐户，用以与 Azure Database for PostgreSQL 服务器进行交互。
+title: 在 Azure Database for PostgreSQL - 单一服务器中创建用户
+description: 本文介绍了如何创建新的用户帐户，用以与 Azure Database for PostgreSQL - 单一服务器进行交互。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/16/2018
-ms.openlocfilehash: 33c107c46b314136fa3d43f8e7881e096afa374c
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 09/22/2019
+ms.openlocfilehash: 91ba485347aeb19ce9b173bd4cec944a655a56dc
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351076"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203497"
 ---
-# <a name="create-users-in-azure-database-for-postgresql-server"></a>在 Azure Database for PostgreSQL 服务器中创建用户 
-本文介绍了如何在 Azure Database for PostgreSQL 服务器中创建用户。
+# <a name="create-users-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中创建用户
+本文介绍如何在 Azure Database for PostgreSQL 服务器中创建用户。 
+
+如果你想要了解如何创建和管理 Azure 订阅用户及其权限，你可以访问[azure 基于角色的访问控制（RBAC）一文](../role-based-access-control/built-in-roles.md)或查看[如何自定义角色](../role-based-access-control/custom-roles.md)。
 
 ## <a name="the-server-admin-account"></a>服务器管理员帐户
 首次创建 Azure Database for PostgreSQL 时，需要提供服务器管理员登录用户名和密码。 有关详细信息，可以参考[快速入门](quickstart-create-server-database-portal.md)来查看分步方法。 由于服务器管理员用户名是自定义名称，因此可以从 Azure 门户中找到所选的服务器管理员用户名。

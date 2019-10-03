@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: aa1bb62e762925dcb5a0ee37b71602094e768137
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 05f2f52da90f499f7ac16de179d9967b97579997
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905692"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849187"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights 连接器管理解决方案（已弃用）
 
@@ -56,7 +56,7 @@ ms.locfileid: "58905692"
 | [SCOM 管理组](../../azure-monitor/platform/om-agents.md) | 否 | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
 | [Azure 存储帐户](collect-azure-metrics-logs.md) | 否 | 该解决方案不会从 Azure 存储收集信息。 |
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 - 若要访问 Application Insights 连接器信息，必须拥有 Azure 订阅
 - 必须至少配置了一个 Application Insights 资源。
@@ -67,7 +67,7 @@ ms.locfileid: "58905692"
 1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
 2. 浏览到 [Azure 门户](https://portal.azure.com)。 选择“所有服务”以打开 Application Insights。 然后，搜索 Application Insights。 
 3. 在“订阅”下，选择包含 Application Insights 资源的订阅，然后在“名称”下选择一个或多个应用程序。
-4. 单击“ **保存**”。
+4. 单击“保存”。
 
 大约 30 分钟后，数据将会可用，Application Insights 磁贴中会更新数据，如下图所示：
 
@@ -128,7 +128,7 @@ ms.locfileid: "58905692"
 
 ![Application Insights 中的“异常”边栏选项卡](./media/app-insights-connector/exceptions-blade-drill-search.png)
 
-不管是否在“Application Insights 连接器”仪表板中单击了某项，在“搜索”页面本身中，返回 Application Insights 数据的任何查询都会显示 Application Insights 透视图。 例如，查看 Application Insights 数据时，**&#42;** 查询也会显示如下图所示的透视图选项卡：
+不管是否在“Application Insights 连接器”仪表板中单击了某项，在“搜索”页面本身中，返回 Application Insights 数据的任何查询都会显示 Application Insights 透视图。 例如，查看 Application Insights 数据时， **&#42;** 查询也会显示如下图所示的透视图选项卡：
 
 ![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "58905692"
 
 “Application Insights 连接器”边栏选项卡用来在你使用 Azure 门户时切换到选定的 Application Insights 应用。 可以使用该解决方案作为高级监视平台来帮助排查应用问题。 在任何连接的应用程序中发现潜在问题时，可以在 Log Analytics 搜索中深入到该问题，或者直接透视 Application Insights 应用。
 
-若要透视，请单击每行末尾显示的省略号 (**...**)，然后选择“在 Application Insights 中打开”。
+若要透视，请单击每行末尾显示的省略号 ( **...** )，然后选择“在 Application Insights 中打开”。
 
 >[!NOTE]
 >Azure 门户中未提供“在 Application Insights 中打开”。
@@ -151,7 +151,7 @@ ms.locfileid: "58905692"
 
 ### <a name="sample-corrected-data"></a>采样更正数据
 
-Application Insights 提供*[采样更正](../../azure-monitor/app/sampling.md)* 来帮助减少遥测流量。 在 Application Insights 应用中启用采样时，可以减少 Application Insights 和 Log Analytics 中存储的条目数量。 尽管“Application Insights 连接器”页面和透视图中会保持数据一致性，但对于自定义查询，应手动更正采样的数据。
+Application Insights 提供 *[采样更正](../../azure-monitor/app/sampling.md)* 来帮助减少遥测流量。 在 Application Insights 应用中启用采样时，可以减少 Application Insights 和 Log Analytics 中存储的条目数量。 尽管“Application Insights 连接器”页面和透视图中会保持数据一致性，但对于自定义查询，应手动更正采样的数据。
 
 下面日志搜索查询中的采样更正示例：
 
@@ -168,8 +168,8 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 解决方案从连接的 Application Insights 应用接收以下遥测类型的数据：
 
 - 可用性
-- 例外
-- Requests
+- Exceptions
+- 请求
 - 页面视图 - 要使工作区接收页面视图，必须将应用配置为收集该信息。 有关详细信息，请参阅 [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views)。
 - 自定义事件 - 要使工作区接收自定义事件，必须将应用配置为收集该信息。 有关详细信息，请参阅 [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)。
 
@@ -183,7 +183,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 | 属性 | 说明 |
 | --- | --- |
-| Type | ApplicationInsights |
+| 类型 | ApplicationInsights |
 | ClientIP |   |
 | TimeGenerated | 记录的时间 |
 | ApplicationId | Application Insights 应用的检测密钥 |
@@ -192,13 +192,13 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | DeviceType | 客户端设备 |
 | ScreenResolution |   |
 | Continent | 请求的来源大洲 |
-| 国家/地区 | 请求的来源国家/地区 |
-| Province | 请求的来源省、州或区域 |
-| 城市 | 请求的来源市或镇 |
-| isSynthetic | 指示请求是由用户还是自动化方法创建的。 True = 由用户生成，false = 由自动化方法生成 |
+| Country | 请求的来源国家/地区 |
+| 省/直辖市/自治区 | 请求的来源省、州或区域 |
+| City | 请求的来源市或镇 |
+| isSynthetic | 指示请求是由用户还是自动化方法创建的。 True = 自动方法或 false = 用户生成 |
 | SamplingRate | SDK 生成的、发送到门户的遥测百分比。 范围为 0.0-100.0。 |
 | SampledCount | 100/(SamplingRate)。 例如，4 =&gt; 25% |
-| IsAuthenticated | True 或 False |
+| IsAuthenticated | 真或假 |
 | OperationID | 具有相同操作 ID 的项在门户中显示为相关项。 通常为请求 ID |
 | ParentOperationID | 父操作的 ID |
 | OperationName |   |
@@ -232,7 +232,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="exception-specific-fields"></a>异常特定的字段
 
-| Type | ApplicationInsights |
+| type | ApplicationInsights |
 | --- | --- |
 | TelemetryType | 异常 |
 | ExceptionType | 异常的类型 |
@@ -251,14 +251,14 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 | 属性 | 说明 |
 | --- | --- |
-| Type | ApplicationInsights |
+| 类型 | ApplicationInsights |
 | TelemetryType | 请求 |
 | ResponseCode | 发送到客户端的 HTTP 响应 |
 | RequestSuccess | 指示成功或失败。 True 或 False。 |
 | RequestID | 用于唯一标识请求的 ID |
 | RequestName | GET/POST + URL 基 |
 | RequestDuration | 请求持续时间（秒） |
-| 代码 | 请求的 URL，不包括主机 |
+| URL | 请求的 URL，不包括主机 |
 | 主机 | Web 服务器主机 |
 | URLBase | 请求的完整 URL |
 | ApplicationProtocol | 应用程序使用的协议类型 |

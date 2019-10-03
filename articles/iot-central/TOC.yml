@@ -35,8 +35,6 @@
   items:
     - name: 连接设备
       items:
-        - name: 生成设备连接字符串
-          href: howto-generate-connection-string.md
         - name: 准备和连接 Node.js（一般）应用程序
           href: howto-connect-nodejs.md
         - name: 准备和连接 MXChip IoT DevKit
@@ -47,6 +45,8 @@
           href: howto-connect-raspberry-pi-csharp.md
         - name: 准备和连接 Windows IoT Core 设备
           href: howto-connect-windowsiotcore.md
+        - name: 准备和连接 SensorTile.box 设备
+          href: howto-connect-sensortile.md
         - name: 使用命令行监视设备连接
           href: howto-use-iotc-explorer.md
     - name: 管理设备
@@ -60,7 +60,7 @@
         - name: 使用设备集
           href: howto-use-device-sets.md
         - name: 对设备模板进行版本控制
-          href: howto-version-devicetemplate.md
+          href: howto-version-device-template.md
     - name: 监视和分析
       items:
         - name: 创建遥测规则
@@ -87,6 +87,10 @@
               href: howto-export-data-event-hubs-service-bus.md
             - name: 导出到 Blob 存储
               href: howto-export-data-blob-storage.md
+        - name: 创建自定义规则
+          href: howto-create-custom-rules.md
+        - name: 创建自定义分析
+          href: howto-create-custom-analytics.md
         - name: 在 Power BI 中直观显示数据
           href: howto-connect-powerbi.md
         - name: 连接其他 IoT 云
@@ -95,8 +99,20 @@
       items:
         - name: 管理应用程序
           href: howto-administer.md
+        - name: 管理用户和角色
+          href: howto-manage-users-roles.md
+        - name: 查看帐单
+          href: howto-view-bill.md
+        - name: 自定义应用程序 UI
+          href: howto-customize-ui.md
         - name: 准备和上传图像
           href: howto-prepare-images.md
+        - name: 配置应用程序仪表板
+          href: howto-configure-homepage.md
+        - name: 使用仪表板磁贴
+          href: howto-use-tiles.md
+        - name: 使用应用程序模板
+          href: howto-use-app-templates.md
         - name: 从 Azure 门户进行管理
           href: howto-manage-iot-central-from-portal.md
         - name: 从 Azure CLI 进行管理
@@ -104,38 +120,40 @@
         - name: 从 Azure PowerShell 进行管理
           href: howto-manage-iot-central-from-powershell.md
         - name: 以 CSP 身份创建和管理应用程序
-          href: howto-create-and-manage-applications-as-CSP.md
-        - name: 配置应用程序仪表板
-          href: howto-configure-homepage.md
+          href: howto-create-and-manage-applications-csp.md
     - name: 个性化
       items:
         - name: 创建个人仪表板
           href: howto-personalize-dashboard.md
         - name: 管理首选项
           href: howto-manage-preferences.md
+        - name: 切换实时聊天
+          href: howto-show-hide-chat.md
 - name: 相关内容
   items:
     - name: 解决方案
       items:
-        - name: IoT 解决方案加速器
-          href: /azure/iot-suite
         - name: IoT Central
-          href: /microsoft-iot-central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT 解决方案加速器
+          href: /azure/iot-accelerators
     - name: 平台服务
       items:
         - name: IoT 中心
           href: /azure/iot-hub
+        - name: IoT 即插即用
+          href: /azure/iot-pnp
         - name: IoT 中心设备预配服务
           href: /azure/iot-dps
-        - name: Location Based Services
-          href: /azure/location-based-services
-        - name: 服务 SDK
+        - name: IoT 服务 SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: 地图
+          href: /azure/azure-maps
         - name: 时序见解
           href: /azure/time-series-insights
-    - name: Microsoft Edge
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: IoT 设备 SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

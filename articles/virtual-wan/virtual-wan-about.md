@@ -5,21 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 03/20/2019
+ms.date: 07/22/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6dae42dcc8b74b682c7226916482228058db6154
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: f1576e963f9c25821b5e3f57907662e3d86df4e0
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336246"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406348"
 ---
 # <a name="what-is-azure-virtual-wan"></a>什么是 Azure 虚拟 WAN？
 
-Azure Virtual WAN 是一种网络服务，提供到 Azure 并穿过该服务的经优化的自动分支连接。 Azure 区域充当可以选择将分支连接到的中心。 连接分支后，可以利用 Azure 主干网建立分支到 VNet 和分支到分支的连接。 有关支持虚拟 WAN VPN 的合作伙伴和位置的列表，请参阅[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)一文。
+Azure Virtual WAN 是一种网络服务，提供到 Azure 并穿过该服务的经优化的自动分支连接。 Azure 区域充当可以选择将分支连接到的中心。 还可以利用 Azure 主干连接分支，享用分支到 VNet 的连接。 我们有一个支持使用 Azure 虚拟 WAN VPN 实现连接自动化的合作伙伴列表。 有关详细信息，请参阅[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)一文。
 
-Azure 虚拟 WAN 将许多 Azure 云连接服务汇集到一个操作界面中，例如站点到站点 VPN（正式发布版）、ExpressRoute（预览版）、点到站点用户 VPN（预览版）。 通过使用虚拟网络连接建立与 Azure VNet 的连接。
+Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN 和 ExpressRoute）汇集到一个操作界面中。 通过使用虚拟网络连接建立与 Azure VNet 的连接。
+
+用于虚拟 WAN 的 ExpressRoute 当前处于预览状态。
 
 ![虚拟 WAN 示意图](./media/virtual-wan-about/virtualwan1.png)
 
@@ -45,11 +47,11 @@ Azure 虚拟 WAN 将许多 Azure 云连接服务汇集到一个操作界面中�
 
 **其他虚拟 WAN 资源**
 
-  * **站点：** 此资源仅用于站点到站点连接。 站点资源为 vpnsite。 它表示本地 VPN 设备及其设置。 可以通过与虚拟 WAN 合作伙伴合作，使用一个内置的解决方案自动将此信息导出到 Azure。
+  * **站点：** 此资源仅用于站点到站点连接。 站点资源为 vpnsite  。 它表示本地 VPN 设备及其设置。 可以通过与虚拟 WAN 合作伙伴合作，使用一个内置的解决方案自动将此信息导出到 Azure。
 
 ## <a name="connectivity"></a>连接
 
-虚拟 WAN 允许三种类型的连接：站点到站点、点到站点（预览版）和 ExpressRoute（预览版）。
+虚拟 WAN 允许两种类型的连接：站点到站点和 ExpressRoute（预览版）。
 
 ### <a name="s2s"></a>站点到站点 VPN 连接
 
@@ -69,11 +71,6 @@ Azure 虚拟 WAN 将许多 Azure 云连接服务汇集到一个操作界面中�
 
 有关可用的合作伙伴和位置的列表，请参阅[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)一文。
 
-### <a name="p2s"></a>点到站点 VPN 连接（预览版）
-
-点到站点 (P2S) 连接用于创建从单个客户端计算机到虚拟中心的安全连接。 可通过从客户端计算机启动连接来建立 P2S 连接。 对于要从远程位置（例如从家里或会议室）连接的远程工作者，此解决方案很有用。 如果只有一些客户端需要连接，则还可以使用 P2S VPN 这一解决方案来代替 S2S VPN。
-
-要创建连接，请参阅[使用虚拟 WAN 创建点到站点连接](virtual-wan-point-to-site-portal.md)。
 
 ### <a name="er"></a>ExpressRoute 连接（预览版）
 

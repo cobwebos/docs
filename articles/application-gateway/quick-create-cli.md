@@ -1,23 +1,23 @@
 ---
 title: 快速入门 - 使用 Azure 应用程序网关定向 Web 流量 - Azure CLI | Microsoft Docs
-description: 了解如何使用 Azure CLI 创建 Azure 应用程序网关，用以将 Web 流量重定向到后端池中的虚拟机。
+description: 了解如何使用 Azure CLI 创建 Azure 应用程序网关，用以将 Web 流量定向到后端池中的虚拟机。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 1/8/2019
+ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a4f6cc2af7b9e044e5a72767898f876932fbf973
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: dd68f4a565c28f1dbac7e94442a8f8231af01328
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528283"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314895"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure CLI
 
-本快速入门介绍如何使用 Azure CLI 创建应用程序网关。  创建应用程序网关后，请测试该网关以确保其正常运行。 使用 Azure 应用程序网关，可以为端口分配侦听器、创建规则以及向后端池添加资源，以便将应用程序 Web 流量定向到特定资源。 为简单起见，本文使用了带有公共前端 IP 的简单设置、在此应用程序网关上托管单个站点的基本侦听器、用于后端池的两台虚拟机以及基本请求传递规则。
+本快速入门介绍如何使用 Azure CLI 创建应用程序网关。  创建应用程序网关后，请测试该网关以确保其正常运行。 使用 Azure 应用程序网关，可以为端口分配侦听器、创建规则以及向后端池添加资源，以便将应用程序 Web 流量定向到特定资源。 本文使用一个简单的设置，其中包含一个公共前端 IP、一个在应用程序网关上托管单个站点的基本侦听器、两个用于后端池的虚拟机，以及一个基本请求传递规则。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -29,11 +29,11 @@ ms.locfileid: "59528283"
 
 如果选择在本地安装并使用 CLI，请运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 **az --version**。 有关安装或升级的信息，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
-### <a name="resource-group"></a>资源组
+### <a name="resource-group"></a>Resource group
 
 在 Azure 中，可将相关的资源分配到资源组。 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组   。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -60,12 +60,14 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ### <a name="backend-servers"></a>后端服务器
 
-后端可以包含 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 在此示例中，将创建两个虚拟机，供 Azure 用作应用程序网关的后端服务器。 还可以在虚拟机上安装 IIS，以验证 Azure 是否已成功创建应用程序网关。
+后端可以具有 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 在此示例中，你将创建用作应用程序网关的后端服务器的两个虚拟机。 还会在虚拟机上安装 IIS 以测试应用程序网关。
 
 #### <a name="create-two-virtual-machines"></a>创建两个虚拟机
 
@@ -147,7 +149,7 @@ az network application-gateway create \
   --location eastus \
   --resource-group myResourceGroupAG \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Enabled \
   --public-ip-address myAGPublicIPAddress \
   --vnet-name myVNet \
@@ -155,13 +157,13 @@ az network application-gateway create \
   --servers "$address1" "$address2"
 ```
 
-Azure 可能需要长达 30 分钟的时间来创建应用程序网关。 创建该网关以后，即可在“应用程序网关”页的“设置”部分查看以下设置：
+Azure 可能需要长达 30 分钟的时间来创建应用程序网关。 创建该网关以后，即可在“应用程序网关”页的“设置”部分查看以下设置：  
 
-- **appGatewayBackendPool**：位于“后端池”页。 它指定所需的后端池。
-- **appGatewayBackendHttpSettings**：位于“HTTP设置”页。 它指定应用程序网关使用端口 80 和 HTTP 协议进行通信。
-- **appGatewayHttpListener**：位于“侦听器”页。 它指定与 **appGatewayBackendPool** 关联的默认侦听器。
-- **appGatewayFrontendIP**：位于“前端 IP 配置”页。 它将 *myAGPublicIPAddress* 分配到 **appGatewayHttpListener**。
-- **rule1**：位于“规则”页。 它指定与 **appGatewayHttpListener** 关联的默认路由规则。
+- **appGatewayBackendPool**：位于“后端池”页。  它指定所需的后端池。
+- **appGatewayBackendHttpSettings**：位于“HTTP设置”页。  它指定应用程序网关使用端口 80 和 HTTP 协议进行通信。
+- **appGatewayHttpListener**：位于“侦听器”页。  它指定与 **appGatewayBackendPool** 关联的默认侦听器。
+- **appGatewayFrontendIP**：位于“前端 IP 配置”页。  它将 *myAGPublicIPAddress* 分配到 **appGatewayHttpListener**。
+- **rule1**：位于“规则”页。  它指定与 **appGatewayHttpListener** 关联的默认路由规则。
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
@@ -179,7 +181,7 @@ az network public-ip show \
     
 ![测试应用程序网关](./media/quick-create-cli/application-gateway-nginxtest.png)
 
-刷新浏览器时，会看到另一 VM 的名称。 有效响应将验证应用程序网关是否已成功创建，并且是否能够成功连接后端。
+刷新浏览器时，会看到另一 VM 的名称。 这表示应用程序网关创建成功，可以与后端连接。
 
 ## <a name="clean-up-resources"></a>清理资源
 

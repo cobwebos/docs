@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/18/2016
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: fd6836451a73551487b8f97903594154a2efc894
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 4586255e96647267bc913f2bc054610163e16bd3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50228749"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050881"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Outlook.com 中的电子邮件、日历和联系人
 
@@ -32,7 +32,7 @@ ms.locfileid: "50228749"
 
 * 一个 [Outlook.com 帐户](https://outlook.live.com/owa/)
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * 你要在其中访问 Outlook.com 帐户的逻辑应用。 若要通过 Outlook 触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 
 

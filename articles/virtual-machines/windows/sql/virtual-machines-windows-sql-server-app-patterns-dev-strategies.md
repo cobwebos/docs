@@ -3,24 +3,23 @@ title: VM 上的 SQL Server 应用程序模式 | Microsoft Docs
 description: 本文介绍 Azure VM 上的 SQL Server 的应用程序模式。 这些模式可帮助解决方案架构师和开发者奠定良好的应用程序体系结构和设计基础。
 services: virtual-machines-windows
 documentationcenter: na
-author: ninarn
-manager: craigg
+author: MashaMSFT
+manager: jroth
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 41863c8d-f3a3-4584-ad86-b95094365e05
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
-ms.author: ninarn
-ms.openlocfilehash: 988acec8d7044afe87523637e46c9a4deb92b55e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.author: mathoma
+ms.openlocfilehash: cbc2bfbb68910c3eb12352bebb575c4548885a24
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719704"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124029"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
@@ -36,7 +35,7 @@ ms.locfileid: "53719704"
 
 **技术审校：** Corey Sanders、Drew McDaniel、Narayan Annamalai、Nir Mashkowski、Sanjay Mishra、Silvano Coriani、Stefan Schackow、Tim Hickey、Tim Wieman、Xin Jin
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 可以通过将不同应用程序层级的组件放入不同计算机以及不同的组件中，开发多种类型的 n 层应用程序。 例如，可将客户端应用程序和业务规则组件放置在一台计算机中，而将前端 Web 层和数据访问层组件放置在另一台计算机中，再将后端数据库层放置在另一台计算机中。 这种类型的结构有助于将每个层相互隔离。 如果更改了数据来源，则无需更改客户端或 Web 应用，而只需更改数据访问层组件。
 
 典型的 n 层应用程序包括呈现层、业务层和数据层：
@@ -58,7 +57,7 @@ ms.locfileid: "53719704"
 * 需要与本地 SQL Server 完全兼容，并希望将现有应用程序按现状迁移至 Azure。
 * 希望充分利用 Azure 环境的功能，但 Azure SQL 数据库不支持应用程序需要的全部功能。 这可能包括以下方面：
   
-  * **数据库大小**：在更新这篇文章时，SQL 数据库支持最多包含 1 TB 数据的数据库。 如果应用程序需要 1 TB 以上的数据，但用户不希望实现自定义分片解决方案，则建议在 Azure 虚拟机中使用 SQL Server。 有关最新信息，请参阅[扩展 Azure SQL 数据库](https://msdn.microsoft.com/library/azure/dn495641.aspx)、[基于 DTU 的购买模型](../../../sql-database/sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](../../../sql-database/sql-database-service-tiers-vcore.md)（预览版）。
+  * **数据库大小**：在更新这篇文章时，SQL 数据库支持最多包含 1 TB 数据的数据库。 如果应用程序需要 1 TB 以上的数据，但用户不希望实现自定义分片解决方案，则建议在 Azure 虚拟机中使用 SQL Server。 有关最新信息，请参阅[横向扩展 Azure SQL 数据库](https://msdn.microsoft.com/library/azure/dn495641.aspx)、[基于 DTU 的购买模型](../../../sql-database/sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](../../../sql-database/sql-database-service-tiers-vcore.md)（预览版）。
   * **HIPAA 符合性**：医疗保健客户和独立软件供应商 (ISV) 可能选择 [Azure 虚拟机中的 SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) 而不选择 [Azure SQL 数据库](../../../sql-database/sql-database-technical-overview.md)，原因是 Azure 虚拟机中的 SQL Server 已纳入 HIPAA 商业伙伴协议 (BAA)。 有关符合性的信息，请参阅 [Microsoft Azure 信任中心：符合性](https://azure.microsoft.com/support/trust-center/compliance/)。
   * **实例级功能**：目前，SQL 数据库不支持数据库外部的功能（如链接服务器、代理作业，FileStream、Service Broker 等）。 有关详细信息，请参阅 [Azure SQL 数据库指导原则和限制](https://msdn.microsoft.com/library/azure/ff394102.aspx)。
 
@@ -269,9 +268,9 @@ ms.locfileid: "53719704"
 | **管理和设置** |用户负责应用程序、数据、防火墙规则、虚拟网络和操作系统的管理任务。 |用户负责应用程序、数据、防火墙规则和虚拟网络的管理任务。 |用户只负责应用程序和数据的管理任务。 |
 | **高可用性和灾难恢复 (HADR)** |建议将虚拟机置于同一可用性集和同一云服务中。 将 VM 保留在同一可用性集中，可以让 Azure 将高可用性节点放置在单独的容错域和升级域中。 同样，将 VM 保留在同一云服务中可以实现负载均衡，VM 能够通过 Azure 数据中心内的本地网络直接相互通信。<br/><br/>用户负责为 Azure 虚拟机中的 SQL Server 实现高可用性和灾难恢复解决方案，避免任何停机。 有关受支持的 HADR 技术，请参阅 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md)。<br/><br/>用户负责备份自己的数据和应用程序。<br/><br/>如果由于硬件问题，数据中心的主机发生故障，Azure 可以移动虚拟机。 此外，在出于安全目的对主机进行更新或进行一般的软件更新时，VM 可能会有计划地进行停机。 因此，我们建议在每个应用程序层保持至少两个 VM，以确保持续可用性。 Azure 不提供针对单个虚拟机的 SLA。 |Azure 可管理底层硬件或操作系统软件导致的故障。 我们建议实现 Web 角色或辅助角色的多个实例，以确保应用程序的高可用性。 有关详细信息，请参阅[云服务、虚拟机和虚拟网络服务级别协议](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。<br/><br/>用户负责备份自己的数据和应用程序。<br/><br/>对于 Azure VM 的 SQL Server 数据库中驻留的数据库，用户需负责实现高可用性和灾难恢复解决方案，避免任何停机。 有关受支持的 HDAR 技术，请参阅“Azure 虚拟机中 SQL Server 的高可用性和灾难恢复”。<br/><br/>**SQL Server 数据库镜像**：与 Azure 云服务（Web/辅助角色）配合使用。 SQL Server VM 和云服务项目可以位于同一 Azure 虚拟网络中。 如果 SQL Server VM 不在同一虚拟网络中，需要创建一个 SQL Server 别名以将通信路由到 SQL Server 实例。 此外，该别名必须与 SQL Server 名称匹配。 |高可用性是从 Azure 辅助角色、Azure Blob 存储和 Azure SQL 数据库继承的。 例如，Azure 存储保存所有 Blob、表和队列数据的 3 个副本。 在任何时候，Azure SQL 数据库都始终会运行数据的三个副本 — 一个主要副本和两个次要副本。 有关详细信息，请参阅 [Azure 存储](https://azure.microsoft.com/documentation/services/storage/)和 [Azure SQL 数据库](../../../sql-database/sql-database-technical-overview.md)。<br/><br/>使用 Azure VM 中的 SQL Server 作为 Azure Web 应用的数据源时，Azure Web 应用不支持 Azure 虚拟网络。 换言之，Azure 中所有从 Azure Web 应用到 SQL Server VM 的连接都必须经过虚拟机的公共终结点。 这可能会导致一些对高可用性和灾难恢复方案的限制。 例如，如果 Azure Web 应用连接到带有数据库镜像功能的 SQL Server VM，那么这些客户端应用程序将无法连接到新的主服务器，因为数据库镜像需要你设置 Azure 中 SQL Server 宿主 VM 之间的 Azure 虚拟网络。 因此，当前不支持将 SQL Server 数据库镜像用于 Azure Web 应用。<br/><br/>**SQL Server AlwaysOn 可用性组**：在 Azure 中将 Azure Web 应用与 SQL Server VM 配合使用时，可以设置 AlwaysOn 可用性组。 但是，用户需对 AlwaysOn 可用性组侦听器进行配置，通过公共负载均衡终结点将通信路由到主要副本。 |
 | **跨界连接** |可以使用 Azure 虚拟网络连接到本地。 |可以使用 Azure 虚拟网络连接到本地。 |支持 Azure 虚拟网络。 有关详细信息，请参阅 [Web 应用虚拟网络集成](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)。 |
-| **伸缩性** |增加虚拟机大小或添加更多磁盘即可纵向扩展。 有关虚拟机大小的详细信息，请参见[适用于 Azure 的虚拟机大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。<br/><br/>**对于数据库服务器**：通过数据库分区技术或 SQL Server AlwaysOn 可用性组即可横向扩展。<br/><br/>对于很高的读取工作负荷，可在多个辅助节点上使用 [AlwaysOn 可用性组](https://msdn.microsoft.com/library/hh510230.aspx)，还可使用 SQL Server 复制。<br/><br/>对于很高的写入工作负荷，可在多个物理服务器上实施水平分区数据，以便进行应用程序横向扩展。<br/><br/>此外，还可以使用[具有数据相关的路由的 SQL Server](https://technet.microsoft.com/library/cc966448.aspx) 实现横向扩展。 使用数据相关的路由 (DDR) 时，需要在客户端应用程序中实施分区机制（通常是在业务层中），将数据库请求路由到多个 SQL Server 节点。 业务层包含有关如何对数据进行分区和哪些节点包含数据的映射。<br/><br/>可以缩放运行虚拟机的应用程序。 有关详细信息，请参阅[如何缩放应用程序](../../../cloud-services/cloud-services-how-to-scale-portal.md)。<br/><br/>**重要说明**：Azure 中的“自动缩放”功能可以自动增加或减少应用程序使用的虚拟机。 此功能可以保证在高峰期间不会对最终用户体验产生负面影响，并且在需求较低时可以关闭 VM。 如果云服务包括 SQL Server VM，建议不要为其设置“自动缩放”选项。 原因是自动缩放功能允许 Azure 在该 VM 中的 CPU 使用率高于某个阈值时打开一个虚拟机，并且在 CPU 使用率低于该阈值时关闭一个虚拟机。 自动缩放功能对于无状态应用程序（例如 Web 服务器）非常有用，在这种应用程序中，VM 可以在不参考以前状态的情况下管理工作负荷。 不过，自动缩放功能对于有状态应用程序（例如 SQL Server）没有用处，在这种应用程序中，只有一个实例允许写入到数据库。 |可以使用多个 Web 角色和辅助角色进行纵向扩展。 有关 Web 角色和辅助角色的虚拟机大小的详细信息，请参阅[配置云服务大小](../../../cloud-services/cloud-services-sizes-specs.md)。<br/><br/>使用云服务时，可以定义多个角色，以便分配处理并实现应用程序的弹性缩放。 每个云服务包括一个或多个 Web 角色和/或辅助角色，每个角色具有自身的应用程序文件和配置。 可以通过增加为角色部署的角色实例（虚拟机）的数量，纵向扩展云服务，或者通过减少角色实例的数量，横向扩展云服务。 有关详细信息，请参阅 [Azure 执行模型](../../../cloud-services/cloud-services-choose-me.md)。<br/><br/>通过[云服务、虚拟机以及虚拟网络服务级别协议](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)和负载均衡器经内置的 Azure 高可用性支持即可横向扩展。<br/><br/>对于多层应用程序，建议通过 Azure 虚拟网络，将 Web 角色/辅助角色应用程序连接到数据库服务器 VM。 此外，Azure 为同一云服务中的 VM 提供负载均衡，将用户请求分散到这些 VM。 以这种方式连接的虚拟机可以通过 Azure 数据中心内的本地网络直接相互通信。<br/><br/>可在 Azure 门户上设置自动缩放，还可设置计划时间。 有关详细信息，请参阅[如何在门户中为云服务配置自动缩放](../../../cloud-services/cloud-services-how-to-scale-portal.md)。 |**纵向扩展和缩减**：可以增大/减少为网站保留的实例 (VM) 的大小。<br/><br/>横向扩展：可为网站添加更多预留实例 (VM)。<br/><br/>可在门户上设置自动缩放，还可设置计划时间。 有关详细信息，请参阅[如何缩放 Web 应用](../../../app-service/web-sites-scale.md)。 |
+| **伸缩性** |增加虚拟机大小或添加更多磁盘即可纵向扩展。 有关虚拟机大小的详细信息，请参见[适用于 Azure 的虚拟机大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。<br/><br/>**对于数据库服务器**：通过数据库分区技术或 SQL Server AlwaysOn 可用性组即可横向扩展。<br/><br/>对于很高的读取工作负荷，可在多个辅助节点上使用 [AlwaysOn 可用性组](https://msdn.microsoft.com/library/hh510230.aspx)，还可使用 SQL Server 复制。<br/><br/>对于很高的写入工作负荷，可在多个物理服务器上实施水平分区数据，以便进行应用程序横向扩展。<br/><br/>此外，还可以使用[具有数据相关的路由的 SQL Server](https://technet.microsoft.com/library/cc966448.aspx) 实现横向扩展。 使用数据相关的路由 (DDR) 时，需要在客户端应用程序中实施分区机制（通常是在业务层中），将数据库请求路由到多个 SQL Server 节点。 业务层包含有关如何对数据进行分区和哪些节点包含数据的映射。<br/><br/>可以缩放运行虚拟机的应用程序。 有关详细信息，请参阅[如何缩放应用程序](../../../cloud-services/cloud-services-how-to-scale-portal.md)。<br/><br/>**重要说明**：Azure 中的“自动缩放”功能可以自动增加或减少应用程序使用的虚拟机。 此功能可以保证在高峰期间不会对最终用户体验产生负面影响，并且在需求较低时可以关闭 VM。 如果云服务包括 SQL Server VM，建议不要为其设置“自动缩放”选项。 原因是自动缩放功能允许 Azure 在该 VM 中的 CPU 使用率高于某个阈值时打开一个虚拟机，并且在 CPU 使用率低于该阈值时关闭一个虚拟机。 自动缩放功能对于无状态应用程序（例如 Web 服务器）非常有用，在这种应用程序中，VM 可以在不参考以前状态的情况下管理工作负荷。 不过，自动缩放功能对于有状态应用程序（例如 SQL Server）没有用处，在这种应用程序中，只有一个实例允许写入到数据库。 |可以使用多个 Web 角色和辅助角色进行纵向扩展。 有关 Web 角色和辅助角色的虚拟机大小的详细信息，请参阅[配置云服务大小](../../../cloud-services/cloud-services-sizes-specs.md)。<br/><br/>使用云服务时，可以定义多个角色，以便分配处理并实现应用程序的弹性缩放。 每个云服务包括一个或多个 Web 角色和/或辅助角色，每个角色具有自身的应用程序文件和配置。 可以通过增加为角色部署的角色实例（虚拟机）的数量，纵向扩展云服务，或者通过减少角色实例的数量，横向扩展云服务。 有关详细信息，请参阅 [Azure 执行模型](../../../cloud-services/cloud-services-choose-me.md)。<br/><br/>通过[云服务、虚拟机以及虚拟网络服务级别协议](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)和负载均衡器经内置的 Azure 高可用性支持即可横向扩展。<br/><br/>对于多层应用程序，建议通过 Azure 虚拟网络，将 Web 角色/辅助角色应用程序连接到数据库服务器 VM。 此外，Azure 为同一云服务中的 VM 提供负载均衡，将用户请求分散到这些 VM。 以这种方式连接的虚拟机可以通过 Azure 数据中心内的本地网络直接相互通信。<br/><br/>可在 Azure 门户上设置自动缩放，还可设置计划时间。 有关详细信息，请参阅[如何在门户中为云服务配置自动缩放](../../../cloud-services/cloud-services-how-to-scale-portal.md)。 |**纵向扩展和缩减**：可以增大/减少为网站保留的实例 (VM) 的大小。<br/><br/>横向扩展：可为网站添加更多预留实例 (VM)。<br/><br/>可在门户上设置自动缩放，还可设置计划时间。 有关详细信息，请参阅[如何缩放 Web 应用](../../../app-service/manage-scale-up.md)。 |
 
-有关如何在这些编辑方法之间进行选择的详细信息，请参阅 [Azure Web 应用、云服务和 VM：何时使用何种产品](../../../app-service/overview-compare.md)。
+有关如何在这些编辑方法之间进行选择的详细信息，请参阅 [Azure Web 应用、云服务和 VM：何时使用何种产品](/azure/architecture/guide/technology-choices/compute-decision-tree)。
 
 ## <a name="next-steps"></a>后续步骤
 有关在 Azure 虚拟机中运行 SQL Server 的详细信息，请参阅 [Azure 虚拟机中的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)。

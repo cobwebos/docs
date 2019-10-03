@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 815aeb9ae6036f08fc87e41980a623e2be8414e5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 7343692e8484e50a02963b4528889a35cc1fcaa6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371088"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66239077"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
 ## <a name="video-3-data-science-for-beginners-series"></a>视频 3：适合初学者的数据科学系列
@@ -28,13 +28,13 @@ ms.locfileid: "58371088"
 >
 
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
-“适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
+“适合初学者的数据科学”  对数据科学进行简要介绍，共五个短视频。
 
-* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
-* 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒）
+* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒） 
+* 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒） 
 * 视频 3：提出数据方面的可解答问题
-* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒）
-* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒）
+* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒） 
+* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒） 
 
 ## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>脚本：提出数据方面的可解答问题
 欢迎观看“适合初学者的数据科学”系列中的第二个视频。  
@@ -44,11 +44,11 @@ ms.locfileid: "58371088"
 如果先前观看了本系列以下两个视频，再观看本视频可能会更有收获：“数据科学可解答的 5 个问题”和“数据是否可用于数据科学？”
 
 ## <a name="ask-a-sharp-question"></a>提出尖锐问题
-我们已经探讨过数据科学如何使用名称（也称为类别或标签）和数字预测某个问题的答案的过程。 但这个问题并不指代任何问题；它必须是一个清晰具体的问题。
+我们已经探讨过数据科学如何使用名称（也称为类别或标签）和数字预测某个问题的答案的过程。 但这个问题并不指代任何问题；它必须是一个清晰具体的问题。 
 
 模糊问题不必用名称或数字来回答。 必须是清晰具体的问题。
 
-想象一下，发现了一盏神灯，里面的精灵会如实地回答你问的任何问题。 但是这个精灵非常淘气，它会试图给出模糊混淆的回答，以免受错误的惩罚。 需要提出一个无懈可击的问题，阻止它的上述行为，迫使它只能告诉你想要知道的答案。
+想象一下，发现了一盏神灯，里面的精灵会如实地回答你问的任何问题。 但它是一淘气盏神灯，将尝试使他们的答案尽可能含糊不清和令人困惑，因为它们可以侥幸应付。 你想要固定它们，它们不能帮助但告诉你想要知道，因此醒目的问题。
 
 如果问它一个模糊的问题，比如“我的股票接下来如何？”，精灵可能会回答，“价格会改变”。 这是一个真实的答案，但不是非常有帮助。
 
@@ -70,9 +70,9 @@ ms.locfileid: "58371088"
 ## <a name="reformulate-your-question"></a>重新制定问题
 有时可以改写问题，获得更有用的答案。
 
-问题“此数据指向 A 还是 B？” 预测事物类别（或名称/标签）。 若要回答此问题，请使用分类算法。
+问题“此数据指向 A 还是 B？” 预测事物类别（或名称/标签）。 若要回答此问题，请使用分类算法  。
 
-问题“多少？” 或“数量？” 可对量进行预测。 若要回答此问题，请使用回归算法。
+问题“多少？” 或“数量？” 可对量进行预测。 若要回答此问题，请使用回归算法  。
 
 若要了解如何转换这些问题，让我们来看看这个问题：“读者最感兴趣的是哪个新闻故事？” 这要求从多种可能性中预测某个单一选择 - 换句话说，“这是 A 还是 B 或 C 或 D？” - 这将使用分类算法。
 

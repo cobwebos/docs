@@ -10,12 +10,13 @@ ms.subservice: url-preview
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 8078fe17ae3b282887f4bceb1bb10b34d6a007f4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 38707a0914a48b6a13f519d5e076457319363a92
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861470"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707035"
 ---
 # <a name="project-url-preview-use-and-display-requirements"></a>项目 URL 预览的使用和显示要求
 

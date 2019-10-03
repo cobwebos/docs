@@ -3,8 +3,8 @@ title: Azure Active Directory 中断性变更引用 |Microsoft Docs
 description: 了解对可能会影响应用程序的 Azure AD 协议所做的更改。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 68517c83-1279-4cc7-a7c1-c7ccc3dbe146
 ms.service: active-directory
@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/02/2018
-ms.author: celested
+ms.topic: conceptual
+ms.date: 08/28/2019
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcc400f952cc89f5fb4bf6e8d6f0f331483868e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 6dd50aa00368469a9c5b42c41826da28566268d4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401298"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125421"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能 
 
@@ -41,27 +41,83 @@ ms.locfileid: "58401298"
 
 ## <a name="upcoming-changes"></a>即将推出的更改
 
-目前没有计划。 
+2019年9月:根据 URL 分析规则附加了 POST 语义, 重复的参数将触发错误并忽略[BOM](https://www.w3.org/International/questions/qa-byte-order-mark) 。
 
-## <a name="march-2019"></a>2019 年 3 月
+## <a name="august-2019"></a>2019 年 8 月
 
-### <a name="looping-clients-will-be-interrupted"></a>将中断循环的客户端
+### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>将强制执行 POST 窗体语义, 将忽略更严格的空格和引号
 
-**生效日期**：2019 年 3 月 25日日
+**生效日期**：2019年9月2日
+
+**受影响的终结点**：v1.0 和 v2.0
+
+**受影响的协议**：使用任何地方 POST ([客户端凭据](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)、[授权代码兑换](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)、 [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)、 [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)和[刷新令牌兑换](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token))
+
+从9/2 开始, 使用 POST 方法的身份验证请求将使用更严格的 HTTP 标准进行验证。  具体而言, 将不再从请求窗体值中删除空格和双引号 ("")。 这些更改不会中断任何现有的客户端, 并且将确保发送到 Azure AD 的请求可以每次可靠地处理。 将来 (请参阅上文) 我们计划再次拒绝重复参数, 并忽略请求中的 BOM。 
+
+例如：
+
+目前, `?e=    "f"&g=h`的分析方式与`?e=f&g=h` `e`  == 相同。`f`  通过此更改, 现在可以对其进行分析, `e`这样 ==  `    "f"`就不太可能是有效的参数, 请求现在会失败。 
+
+
+## <a name="july-2019"></a>2019 年 7 月
+
+### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>仅当资源租户中存在客户端应用时, 才会发出单租户应用程序的仅限应用的令牌
+
+**生效日期**：2019年7月26日
+
+**受影响的终结点**：[1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)版和 v2.0[版](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+
+**受影响的协议**：[客户端凭据 (仅限应用的令牌)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+
+安全更改在7月26日生效, 更改了应用程序令牌 (通过客户端凭据授予) 的颁发方式。 以前, 允许应用程序获取令牌, 以调用任何其他应用, 无论该应用程序的租户或角色是否存在。  此行为已更新, 使得资源 (有时称为 Web Api) 设置为单租户 (默认值) 时, 客户端应用程序必须存在于资源租户中。  请注意, 客户端与 API 之间的现有同意仍不是必需的, 并且应用程序仍应执行其自己的授权检查, `roles`以确保声明存在并且包含 API 所需的值。
+
+此方案的错误消息当前指出: 
+
+`The service principal named <appName> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.`
+
+若要解决此问题, 请使用管理员同意体验在租户中创建客户端应用程序服务主体, 或手动创建。  此要求确保租户已提供应用程序在租户内操作的权限。  
+
+#### <a name="example-request"></a>示例请求
+
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`在此示例中, 资源租户 (颁发机构) 为 contoso.com, 资源应用是为 contoso 租户调用`gateway.contoso.com/api`的单租户应用程序, 而客户端应用程序为。 `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`  如果客户端应用在 Contoso.com 中有服务主体, 此请求可以继续。  但如果不是这样, 则请求将失败, 并出现上面的错误。  
+
+但是, 如果 Contoso 网关应用是多租户应用程序, 则无论客户端应用在 Contoso.com 中有服务主体, 请求都将继续。  
+
+### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>重定向 Uri 现在可以包含查询字符串参数
+
+**生效日期**：2019 年 7 月 22 日
 
 **受影响的终结点**：v1.0 和 v2.0
 
 **受影响的协议**：所有流
 
-客户端应用程序可以有时错误行为，通过短时间内发出数百个相同的登录请求。  这些请求可能会或可能不会成功，但它们都会影响用户体验不佳和更高的工作负荷的 IDP，增加的所有用户的延迟时间并减少，IDP 的可用性。  这些应用程序正常使用的边界之外运行，并且应更新为正常运行。  
+按照[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2), Azure AD 应用程序现在可以注册并使用具有静态查询参数 ( https://contoso.com/oauth2?idp=microsoft) 例如 OAuth 2.0 请求) 的重定向 (回复) uri。  动态重定向 uri 仍处于禁用状态, 因为它们表示安全风险, 这不能用于在身份验证请求中保留状态信息-对于这种情况`state` , 请使用参数。
 
-发出多个时间的重复请求的客户端将发送`invalid_grant`错误： `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`。 
+与重定向 URI 的任何其他部分一样, 静态查询参数会服从重定向 uri 的字符串匹配-如果没有注册与 URI 解码的 redirect_uri 匹配的字符串, 则会拒绝该请求。  如果在应用程序注册中找到了 URI, 则将使用整个字符串来重定向用户, 包括静态查询参数。 
 
-大多数客户端将不需要更改行为，以避免此错误。  只有配置错误的客户端 （不带令牌缓存或那些已暴露提示循环） 将受此错误。  客户端根据每个实例本地 （通过 cookie) 跟踪于以下因素：
+请注意, 在此时间 (2019 年7月结束), 应用注册 UX Azure 门户仍会阻止查询参数。  不过, 您可以手动编辑应用程序清单, 以添加查询参数并在应用程序中对其进行测试。  
 
-* 用户提示，如果有
 
-* 作用域或所请求资源
+## <a name="march-2019"></a>2019 年 3 月
+
+### <a name="looping-clients-will-be-interrupted"></a>循环客户端将会中断
+
+**生效日期**：2019 年 3 月 25 日
+
+**受影响的终结点**：v1.0 和 v2.0
+
+**受影响的协议**：所有流
+
+客户端应用程序有时可能会出现行为异常，在短时间内发出数百个相同的登录请求。  这些请求不一定会成功，但会导致用户体验变得糟糕，增大 IDP 的工作负荷，增大所有用户的延迟，并降低 IDP 的可用性。  这些应用程序的工作范围超过了正常的使用边界，应予以更新才能让其保持正常的行为。  
+
+将为多次发出重复请求的客户端设置 `invalid_grant` 错误：`AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`。 
+
+大多数客户端无需改变行为即可避免此错误。  此错误只会影响配置不当的客户端（没有令牌缓存的客户端，或已经出现提示循环的客户端）。  根据以下因素，在本地按实例跟踪客户端（通过 Cookie）：
+
+* 用户提示（如果有）
+
+* 请求的范围或资源
 
 * 客户端 ID
 
@@ -69,9 +125,9 @@ ms.locfileid: "58401298"
 
 * 响应类型和模式
 
-在短时间的时间 （5 分钟） 发出多个请求 （15 +） 的应用将收到`invalid_grant`错误，它们将循环。  正在请求具有足够长的生存期 （10 分钟最小值，默认为 60 分钟），因此重复请求此时间段内的令牌是不必要的。  
+在短时间（5 分钟）内发出多个请求（15 个以上）的应用将会收到 `invalid_grant` 错误，指出它们正在循环。  所请求的令牌具有足够长的生存期（最短 10 分钟，默认为 60 分钟），因此，在此时间段内发出的重复请求都是没有必要的。  
 
-所有应用程序应处理`invalid_grant`通过显示交互式提示，而不是以无提示方式请求令牌。  若要避免此错误，客户端应确保它们正确缓存他们收到的令牌。
+所有应用应该通过显示交互式提示来处理 `invalid_grant`，而不是以静默方式请求令牌。  若要避免此错误，客户端应确保正确缓存它们收到的令牌。
 
 
 ## <a name="october-2018"></a>2018 年 10 月

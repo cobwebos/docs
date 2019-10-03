@@ -7,14 +7,14 @@ ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: jasontang501
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c45061db77c21b82744f69f00265870d5e1a8d00
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 427cc34cc5a2801a2da98259f932678cdcf71ef7
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883835"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870834"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>在 Microsoft Azure 存储中管理并发
 ## <a name="overview"></a>概述
@@ -22,7 +22,7 @@ ms.locfileid: "56883835"
 
 1. 乐观并发 – 执行更新的应用程序在更新过程中要验证数据是否自该应用程序上次读取该数据起已发生更改。 例如，如果两名查看 wiki 页的用户对同一页进行更新，则 wiki 平台必须确保第二次更新不会覆盖第一次更新，并且两名用户都了解他们的更新成功与否。 此策略最常用于 Web 应用程序中。
 2. 悲观并发 – 要执行更新的应用程序将对对象获取一个锁，以防其他用户在该锁释放前更新数据。 例如，在主/从数据复制情况下，如果只有主对象要执行更新，则该对象通常会在长时间内对数据持有一个独占锁，以确保其他任何用户都不能更新该数据。
-3. 上次编写者赢 – 一种方法，即允许任何更新操作继续进行，而不需要验证其他任何应用程序是否自应用程序首次读取数据起已更新该数据。 此策略（或缺乏正式策略）通常用于以下情况：以多名用户不可能访问相同数据的方式对数据进行分区。 该策略可能还适用于正在处理短期数据流的情况。  
+3. 最后写入者胜出 – 一种方法，即允许任何更新操作继续进行，而不需要验证其他任何应用程序是否自应用程序首次读取数据起已更新该数据。 此策略（或缺乏正式策略）通常用于以下情况：以多名用户不可能访问相同数据的方式对数据进行分区。 该策略可能还适用于正在处理短期数据流的情况。  
 
 本文概述 Azure 存储平台如何通过为所有这三个并发策略提供一类支持来简化开发。  
 
@@ -84,7 +84,7 @@ catch (StorageException ex)
 
 下表概述接受条件标头（例如请求中的 **If-Match**）的容器操作，以及在响应中返回 ETag 值的容器操作。  
 
-| Operation | 返回容器的 ETag 值 | 接受条件标头 |
+| 操作 | 返回容器的 ETag 值 | 接受条件标头 |
 |:--- |:--- |:--- |
 | 创建容器 |是 |否 |
 | 获取容器属性 |是 |否 |
@@ -100,7 +100,7 @@ catch (StorageException ex)
 
 下表概述接受条件标头（例如请求中的 **If-Match**）的 Blob 操作，以及在响应中返回 ETag 值的 Blob 操作。
 
-| Operation | 返回 ETag 值 | 接受条件标头 |
+| 操作 | 返回 ETag 值 | 接受条件标头 |
 |:--- |:--- |:--- |
 | 放置 Blob |是 |是 |
 | 获取 Blob |是 |是 |
@@ -193,7 +193,7 @@ catch (StorageException ex)
 
 * [Specifying Conditional Headers for Blob Service Operations](https://msdn.microsoft.com/library/azure/dd179371.aspx)（为 Blob 服务操作指定条件标头）
 * [Lease Container](https://msdn.microsoft.com/library/azure/jj159103.aspx)（租赁容器）
-* [租赁 Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [租用 Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>在表服务中管理并发
 在处理实体时，表服务使用乐观并发检查作为默认行为，而 Blob 服务不同，必须明确选择执行乐观并发检查。 表服务与 Blob 服务之间的另一个区别在于，使用表服务，只能管理实体的并发行为，而使用 Blob 服务，既可以管理容器的并发，又可以管理 Blob 的并发。  
@@ -235,7 +235,7 @@ customer.ETag = "*";
 
 下表概述表实体操作是如何使用 ETag 值的：
 
-| Operation | 返回 ETag 值 | 需要 If-match 请求标头 |
+| 操作 | 返回 ETag 值 | 需要 If-match 请求标头 |
 |:--- |:--- |:--- |
 | 查询实体 |是 |否 |
 | 插入实体 |是 |否 |

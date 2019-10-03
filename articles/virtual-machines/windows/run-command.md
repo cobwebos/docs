@@ -3,23 +3,23 @@ title: 在 Azure 中的 Windows VM 中运行 PowerShell 脚本
 description: 本主题介绍了如何使用“运行命令”在 Azure Windows 虚拟机中运行 PowerShell 脚本。
 services: automation
 ms.service: automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 10/25/2018
+author: bobbytreed
+ms.author: robreed
+ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ecf19da59e91edd08953296d96ca68ca62f008e1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: de45f2fe6230e48c3cffc999e2c84d6ee0a60edc
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195347"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476776"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
 
 “运行命令”使用 VM 代理在 Azure Windows VM 中运行 PowerShell 脚本。 这些脚本可以用于常规的计算机或应用程序管理，并且可以用来快速诊断和修正 VM 访问和网络问题并使 VM 恢复正常运行状态。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="benefits"></a>优点
 
@@ -45,16 +45,16 @@ ms.locfileid: "57195347"
 
 ## <a name="run-a-command"></a>运行命令
 
-导航到 [Azure](https://portal.azure.com) 中的某个 VM，然后在“操作”下选择“运行命令”。 将会显示可以在 VM 上运行的可用命令的列表。
+导航到 [Azure](https://portal.azure.com) 中的某个 VM，然后在“操作”下选择“运行命令”。   将会显示可以在 VM 上运行的可用命令的列表。
 
 ![运行命令列表](./media/run-command/run-command-list.png)
 
-选择要运行的命令。 某些命令可能有可选或必需的输入参数。 对于这些命令，参数将呈现为文本字段，你可以在其中提供输入值。 对于每个命令，可以通过展开“查看脚本”来查看所运行的脚本。 **RunPowerShellScript** 不同于其他命令，因为它允许你提供自己的自定义脚本。
+选择要运行的命令。 某些命令可能有可选或必需的输入参数。 对于这些命令，参数将呈现为文本字段，你可以在其中提供输入值。 对于每个命令，可以通过展开“查看脚本”来查看所运行的脚本。  **RunPowerShellScript** 不同于其他命令，因为它允许你提供自己的自定义脚本。
 
 > [!NOTE]
 > 内置命令不可编辑。
 
-选择命令后，单击“运行”来运行脚本。 脚本将运行，完成时，将在输出窗口中返回输出和任何错误。 下面的屏幕截图显示了运行 **RDPSettings** 命令时的示例输出。
+选择命令后，单击“运行”  来运行脚本。 脚本将运行，完成时，将在输出窗口中返回输出和任何错误。 下面的屏幕截图显示了运行 **RDPSettings** 命令时的示例输出。
 
 ![运行命令脚本输出](./media/run-command/run-command-script-output.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "57195347"
 
 下表显示了可用于 Windows VM 的命令的列表。 **RunPowerShellScript** 命令可用来运行你需要的任何自定义脚本。
 
-|**名称**|**说明**|
+|**Name**|**说明**|
 |---|---|
 |**RunPowerShellScript**|执行 PowerShell 脚本|
 |**EnableRemotePS**|配置计算机以启用远程 PowerShell。|
@@ -83,9 +83,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>限制对“运行命令”的访问
 
-列出“运行命令”或显示某个命令的详细信息需要 `Microsoft.Compute/locations/runCommands/read` 权限，内置的[读者](../../role-based-access-control/built-in-roles.md#reader)角色或更高角色具有此权限。
+列出“运行命令”或显示某个命令的详细信息需要订阅级别的 `Microsoft.Compute/locations/runCommands/read` 权限，内置的[读者](../../role-based-access-control/built-in-roles.md#reader)角色或更高角色具有此权限。
 
-运行命令需要`Microsoft.Compute/virtualMachines/runCommand/action`权限，其中[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和具有更高版本。
+运行某个命令需要订阅级别的 `Microsoft.Compute/virtualMachines/runCommand/action` 权限，[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和更高角色具有此权限。
 
 若要使用“运行命令”，可以使用[内置](../../role-based-access-control/built-in-roles.md)角色之一，也可以创建一个[自定义](../../role-based-access-control/custom-roles.md)角色。
 

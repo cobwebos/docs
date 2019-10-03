@@ -1,20 +1,19 @@
 ---
 title: Azure 数据工厂映射数据流“优化”选项卡
-description: 使用“优化”选项卡分区设置优化 Azure 数据工厂映射数据流
+description: 优化 Azure 数据工厂映射数据流分区设置中使用优化选项卡
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 3802a8475d8a39a2f275dbc7fcf21ce69892a117
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 40023931b2a0b3788a583a5b5240e7916b187e34
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728771"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190648"
 ---
-# <a name="mapping-data-flow-transformation-optimize-tab"></a>映射数据流转换“优化”选项卡
+# <a name="mapping-data-flow-transformation-optimize-tab"></a>将数据映射到数据流转换优化选项卡
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -46,8 +45,13 @@ Azure 数据工厂将生成列的哈希来生成统一的分区，使包含类�
 
 ### <a name="fixed-range"></a>固定范围
 
-必须生成一个表达式用于在分区的数据列中提供值的固定范围。 使用此选项之前，应该充分了解你的数据，以避免分区偏斜。 为表达式输入的值将用作分区函数的一部分。 可以设置物理分区数目。
+必须生成一个表达式用于在分区的数据列中提供值的固定范围。 使用此选项之前，应该充分了解你的数据，以避免分区偏斜。 输入表达式的值将用作分区函数的一部分。 可以设置物理分区数目。
 
 ### <a name="key"></a>密钥
 
 如果你已充分了解数据的基数，则键分区可能是不错的分区策略。 键分区将为列中的每个唯一值创建分区。 无法设置分区数目，因为该数目基于数据中的唯一值。
+
+## <a name="next-steps"></a>后续步骤
+
+[映射到数据流的性能指南](concepts-data-flow-performance.md)
+[数据流监视](concepts-data-flow-monitoring.md)

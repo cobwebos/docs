@@ -3,17 +3,16 @@ title: 了解蓝图的生命周期
 description: 了解蓝图的整个生命周期及每个阶段的详细信息。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 07/30/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: a57085fa37efd56a46b740d8cbc4278dc53cf39f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 6112f6f2834f02cec970af886360844c5314150d
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795417"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678994"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 蓝图的生命周期
 
@@ -34,7 +33,7 @@ ms.locfileid: "59795417"
 
 创建蓝图时，请向其添加项目、将其保存到管理组或订阅，并提供唯一名称和唯一版本。 目前，蓝图处于“草稿”模式，尚不可分配。 但在“草稿”模式下，仍可继续更新和更改此蓝图。
 
-如果“草稿”模式下的某个蓝图从未发布过，则它在“蓝图定义”页面上显示的图标将与已发布的蓝图所显示的不同。 **最新版本**显示为**草稿**这些永远不会发布蓝图。
+如果“草稿”模式下的某个蓝图从未发布过，则它在“蓝图定义”页面上显示的图标将与已发布的蓝图所显示的不同。 对于这些从未发布蓝图,**最新版本**显示为**草稿**。
 
 使用 [Azure 门户](../create-blueprint-portal.md#create-a-blueprint)或 [REST API](../create-blueprint-rest-api.md#create-a-blueprint) 创建和编辑蓝图。
 
@@ -69,11 +68,11 @@ ms.locfileid: "59795417"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 选择**蓝图定义**的页面上的左侧和使用筛选器的选项，可以找到你想要删除的版本的蓝图。 单击它以打开“编辑”页面。
+1. 从左侧页面中选择 "**蓝图定义**", 并使用筛选器选项查找要删除其版本的蓝图。 单击它以打开“编辑”页面。
 
 1. 单击“已发布的版本”选项卡，找到要删除的版本。
 
-1. 右键单击要删除和选择的版本**删除此版本**。
+1. 右键单击要删除的版本, 然后选择 "**删除此版本**"。
 
 ## <a name="deleting-the-blueprint"></a>删除蓝图
 
@@ -84,7 +83,7 @@ ms.locfileid: "59795417"
 
 使用 [Azure 门户](../create-blueprint-portal.md#delete-a-blueprint)或 [REST API](../create-blueprint-rest-api.md#delete-a-blueprint) 删除蓝图。
 
-## <a name="assignments"></a>分配
+## <a name="assignments"></a>作业
 
 可在蓝图生命周期的多个时间点向订阅分配此蓝图。 当蓝图版本处于“已发布”模式时，可向订阅分配此版本。 在开发较新的版本期间，此生命周期使蓝图版本可供使用和主动分配。
 
@@ -99,6 +98,17 @@ ms.locfileid: "59795417"
 - 将分配升级到新发布的蓝图版本
 
 要了解操作方式，请参阅[更新现有分配](../how-to/update-existing-assignments.md)。
+
+### <a name="unassigning-assignments"></a>取消分配赋值
+
+如果不再需要该蓝图, 则可以将其从管理组或订阅中取消分配。 在蓝图取消分配期间, 会发生以下情况:
+
+- 删除[蓝图资源锁定](resource-locking.md)
+- 删除蓝图分配对象
+- 增值税如果使用**系统分配的托管标识**, 还会将其删除
+
+> [!NOTE]
+> 蓝图分配部署的所有资源都将保留原样, 但不再受 Azure 蓝图的保护。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,19 +3,19 @@ title: 什么是工作区和项目？ - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 工作区是用于编写和构建自定义翻译系统的工作区域。 工作区可以包含多个项目、模型和文档。 项目是模型、文档和测试的包装器。 每个项目自动包含所有上传到该工作区的、具有正确语言对的文档。
 services: cognitive-services
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: dc45847f3dc2e11af9b7cf566fdd6780ec2b9dac
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 23db27ba7b51b0f5a312498dbcb1d0f2741245bb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762154"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595342"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>什么是自定义翻译工作区？
 

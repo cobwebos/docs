@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: b590dabbe4b2c6526f2c602aeed64667348eefa9
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 095c7c4bf2a0fb08c0a7fe7e0a8118e76732c9c7
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525161"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961597"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -109,45 +109,37 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
    ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. 在“本地 ID”字段中，指定证书的名称（见步骤 6）。 在本示例中，该名称为“ikev2Client.com”。 然后单击“应用”按钮保存所做的更改。
 
-   ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+   ![应用](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. 在“网络”对话框中，单击“应用”保存所有更改。 然后单击“连接”，启动与 Azure VNet 的 P2S 连接。
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)
 
-### <a name="extract-the-key-and-certificate"></a>提取密钥和证书
+### <a name="installstrongswan"></a>安装 strongSwan
 
-对于 strongSwan，需要从客户端证书（.pfx 文件）提取密钥和证书，并将其保存为单独的 .pem 文件。
-请遵循以下步骤进行配置：
+[!INCLUDE [install strongSwan](../../includes/vpn-gateway-strongswan-install-include.md)]
 
-1. 从 [OpenSSL](https://www.openssl.org/source/) 下载并安装 OpenSSL。
-2. 打开命令行窗口并切换到 OpenSSL 的安装目录，例如 'c:\OpenSLL-Win64\bin\'。
-3. 运行以下命令，从客户端证书提取私钥，并将其保存到名为“privatekey.pem”的新文件：
+### <a name="genlinuxcerts"></a>生成证书
 
-   ```
-   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nocerts -out privatekey.pem -nodes
-   ```
-4. 现在，运行以下命令提取公共证书，并将其保存到新文件：
+如果尚未生成证书，请执行以下步骤：
 
-   ```
-   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nokeys -out publiccert.pem -nodes
-   ```
+[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
 
 ### <a name="install"></a>安装和配置
 
-以下说明是通过 Ubuntu 17.0.4 上的 strongSwan 5.5.1 创建的。 Ubuntu 16.0.10 不支持 strongSwan GUI。 如果想要使用 Ubuntu 16.0.10，则必须使用[命令行](#linuxinstallcli)。 以下示例可能与你看到的屏幕不同，具体取决于所用的 Linux 和 strongSwan 版本。
+以下说明是在 Ubuntu 18.0.4 上创建的。 Ubuntu 16.0.10 不支持 strongSwan GUI。 如果想要使用 Ubuntu 16.0.10，则必须使用[命令行](#linuxinstallcli)。 以下示例可能与你看到的屏幕不同，具体取决于所用的 Linux 和 strongSwan 版本。
 
-1. 打开**终端**并运行示例中的命令，安装 **strongSwan** 及其网络管理器。 如果收到与 *libcharon-extra-plugins* 相关的错误，请将此参数替换为“strongswan-plugin-eap-mschapv2”。
+1. 打开**终端**并运行示例中的命令，安装 **strongSwan** 及其网络管理器。
 
    ```
-   sudo apt-get install strongswan libcharon-extra-plugins moreutils iptables-persistent network-manager-strongswan
+   sudo apt install network-manager-strongswan
    ```
-2. 选择“网络管理器”图标（向上箭头/向下箭头），然后选择“编辑连接”。
+2. 选择 "**设置**"，然后选择 "**网络**"。
 
    ![编辑连接](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
-3. 单击“添加”按钮创建新连接。
+3. **+** 单击按钮以创建新连接。
 
    ![添加连接](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
-4. 从下拉菜单中选择“IPsec/IKEv2 (strongswan)”，单击“创建”。 可以在此步骤中重命名连接。
+4. 从菜单中选择 " **IPsec/IKEv2 （strongSwan）** "，然后双击。 可在此步骤中命名连接。
 
    ![选择连接类型](./media/point-to-site-vpn-client-configuration-azure-cert/choosetype.png)
 5. 打开下载的客户端配置文件包含的 **Generic** 文件夹中的 **VpnSettings.xml** 文件。 找到名为 **VpnServer** 的标记，并复制以“azuregateway”开头、以“.cloudapp.net”结尾的名称。
@@ -156,17 +148,20 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 6. 在“网关”部分中，将此名称粘贴到新 VPN 连接的“地址”字段中。 接下来，选择“证书”字段末尾的文件夹图标，浏览到 **Generic** 文件夹，并选择 **VpnServerRoot** 文件。
 7. 在连接的“客户端”部分，为“身份验证”选择“证书/私钥”。 对于“证书”和“私钥”，请选择前面创建的证书和私钥。 在“选项”中，选择“请求内部 IP 地址”。 然后，单击“添加”。
 
-   ![请求内部 IP 地址](./media/point-to-site-vpn-client-configuration-azure-cert/inneripreq.png)
-8. 单击“网络管理器”图标（向上/向下箭头），并将鼠标悬停在“VPN 连接”上。 将会看到已创建的 VPN 连接。 单击以启动连接。
+   ![请求内部 IP 地址](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
+8. **打开连接。**
 
 ## <a name="linuxinstallcli"></a>Linux (strongSwan CLI)
 
 ### <a name="install-strongswan"></a>安装 strongSwan
 
-可以使用以下 CLI 命令或使用 [GUI](#install) 中的 strongSwan 步骤来安装 strongSwan。
+[!INCLUDE [install strongSwan](../../includes/vpn-gateway-strongswan-install-include.md)]
 
-1. `apt-get install strongswan-ikev2 strongswan-plugin-eap-tls`
-2. `apt-get install libstrongswan-standard-plugins`
+### <a name="generate-certificates"></a>生成证书
+
+如果尚未生成证书，请执行以下步骤：
+
+[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
 
 ### <a name="install-and-configure"></a>安装和配置
 

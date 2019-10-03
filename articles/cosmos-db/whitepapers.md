@@ -5,14 +5,14 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: b9fb1f38343db109c602c2b6fde6d2ab73ddf8c3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
-ms.translationtype: HT
+ms.openlocfilehash: 69e75af8481b21929b8d36a14a2ce72ec3f9f5f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135434"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66257166"
 ---
 # <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB 白皮书 
 

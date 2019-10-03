@@ -1,6 +1,6 @@
 ---
-title: API HTTP 响应代码
-titleSuffix: Azure
+title: API HTTP 响应代码-LUIS
+titleSuffix: Azure Cognitive Services
 description: 了解从 LUIS 创作和终结点 API 返回的 HTTP 响应代码
 services: cognitive-services
 author: diberry
@@ -8,22 +8,22 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 18ec59200d3cf820794ac353e38106ad26aca697
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 43fbca732bbd281ad980ae86e4a89f446fdb69bc
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337238"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945862"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>常见的 API 响应代码及其含义
 
-[创作](https://aka.ms/luis-authoring-apis)和[终结点](https://aka.ms/luis-endpoint-apis) API 返回 HTTP 响应代码。 响应消息包含特定于某个请求的信息，而 HTTP 响应状态代码是通用的。 
+[创作](https://go.microsoft.com/fwlink/?linkid=2092087)和[终结点](https://go.microsoft.com/fwlink/?linkid=2092356) API 返回 HTTP 响应代码。 响应消息包含特定于某个请求的信息，而 HTTP 响应状态代码是通用的。 
 
 ## <a name="common-status-codes"></a>常见状态代码
-下表列出了[创作](https://aka.ms/luis-authoring-apis)和[终结点](https://aka.ms/luis-endpoint-apis) API 最常见的一些 HTTP 响应状态代码：
+下表列出了[创作](https://go.microsoft.com/fwlink/?linkid=2092087)和[终结点](https://go.microsoft.com/fwlink/?linkid=2092356) API 最常见的一些 HTTP 响应状态代码：
 
 |代码|API|说明|
 |:--|--|--|

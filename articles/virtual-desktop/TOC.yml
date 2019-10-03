@@ -8,47 +8,109 @@
   items:
     - name: 1. 在 Windows 虚拟桌面中创建租户
       href: tenant-setup-azure-active-directory.md
-    - name: 2. 通过 Azure 市场创建主机池
-      href: create-host-pools-azure-marketplace.md
-    - name: 3. 管理应用组
-      href: manage-app-groups.md
-    - name: 4. 使用 PowerShell 创建服务主体和角色分配
+    - name: 2. 通过使用 PowerShell 创建服务主体和角色分配
       href: create-service-principal-role-powershell.md
+    - name: 3. 通过使用 Azure 市场创建主机池
+      href: create-host-pools-azure-marketplace.md
+    - name: 4. 管理应用组
+      href: manage-app-groups.md
+    - name: 5. 创建主机池以验证服务更新
+      href: create-validation-host-pool.md
+    - name: 6. 部署管理工具
+      href: manage-resources-using-ui.md
+    - name: 7. 设置服务警报
+      href: set-up-service-alerts.md
 - name: 操作说明
   items:
     - name: 连接到 Windows 虚拟桌面资源
       items:
-        - name: 使用 Windows 7 和 Windows 10 进行连接
+        - name: 使用 Windows 桌面客户端进行连接
           href: connect-windows-7-and-10.md
         - name: 使用 Web 客户端进行连接
           href: connect-web.md
+        - name: 使用 Android 客户端进行连接
+          href: connect-android.md
+        - name: 使用 macOS 客户端进行连接
+          href: connect-macos.md
+        - name: 使用 iOS 客户端进行连接
+          href: connect-ios.md
     - name: 使用 Azure 资源管理器模板创建主机池
       href: create-host-pools-arm-template.md
     - name: 使用 PowerShell 创建主机池
       href: create-host-pools-powershell.md
-    - name: 为主机池设置用户配置文件共享
+    - name: 在 Windows 虚拟桌面上部署 Windows 7 虚拟机
+      href: deploy-windows-7-virtual-machine.md
+    - name: 将 Windows 许可证应用于 Windows 虚拟桌面会话主机
+      href: apply-windows-license.md
+    - name: 使用文件共享为主机池创建配置文件容器
       href: create-host-pools-user-profile.md
+    - name: 使用 Azure NetApp 文件为主机池创建配置文件容器
+      href: create-fslogix-profile-container.md
     - name: 配置 Windows 虚拟桌面负载均衡方法
       href: configure-host-pool-load-balancing.md
-    - name: 确定诊断功能的问题
-      href: diagnostics-role-service.md
     - name: 准备和自定义主 VHD 映像
       href: set-up-customize-master-image.md
+    - name: 在主 VHD 映像中安装 Office
+      href: install-office-on-wvd-master-image.md
+    - name: 为 Windows 虚拟桌面配置 GPU
+      href: configure-vm-gpu.md
     - name: 自动缩放会话主机
       href: set-up-scaling-script.md
+    - name: 为 Windows 虚拟桌面用户自定义源
+      href: customize-feed-for-virtual-desktop-users.md
+    - name: 自定义 RDP 属性
+      href: customize-rdp-properties.md
+    - name: 部署诊断工具
+      href: deploy-diagnostics.md
 - name: 概念
   items:
     - name: Windows 虚拟桌面环境
       href: environment-setup.md
+    - name: 远程会话的带宽建议
+      href: bandwidth-recommendations.md
     - name: Windows 虚拟桌面中的委托访问
       href: delegated-access-virtual-desktop.md
     - name: 主机池负载均衡方法
       href: host-pool-load-balancing.md
+    - name: FSLogix 配置文件容器和 Azure 文件
+      href: fslogix-containers-azure-files.md
+    - name: 合作伙伴集成
+      href: partners.md
+    - name: Windows 10 Enterprise 多会话常见问题解答
+      href: windows-10-multisession-faq.md
+    - name: 数据位置
+      href: data-locations.md
+- name: 故障排除
+  items:
+    - name: 故障排除概述、反馈和支持
+      href: troubleshoot-set-up-overview.md
+    - name: 确定诊断功能的问题
+      href: diagnostics-role-service.md
+    - name: 创建租户和主机池
+      href: troubleshoot-set-up-issues.md
+    - name: 会话主机虚拟机配置
+      href: troubleshoot-vm-configuration.md
+    - name: 排查 Windows 虚拟桌面中的 Windows 7 虚拟机问题
+      href: troubleshoot-windows-7-vm.md
+    - name: 远程桌面客户端连接
+      href: troubleshoot-client-connection.md
+    - name: Windows 虚拟桌面 PowerShell
+      href: troubleshoot-powershell.md
+    - name: 诊断图形性能问题
+      href: remotefx-graphics-performance-counters.md
 - name: 引用
   items:
     - name: PowerShell
       href: /powershell/windows-virtual-desktop/overview
+    - name: REST API
+      href: /rest/api/virtual-desktop/
 - name: 资源
   items:
+    - name: 体验评估器
+      href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 技术社区支持组
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
+    - name: UserVoice 论坛
+      href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'

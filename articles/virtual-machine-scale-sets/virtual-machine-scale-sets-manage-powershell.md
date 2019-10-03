@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: c4684dd27aeed4fab4335a93ea5a458b4a9f5d80
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a6474320fd8b1545d61320cd43e155ab077ba310
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821177"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64683531"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>使用 Azure PowerShell 管理虚拟机规模集
 
@@ -28,10 +28,10 @@ ms.locfileid: "56821177"
 
 如果需要创建虚拟机规模集，可以[使用 Azure PowerShell 创建规模集](quick-create-powershell.md)。
 
-[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 ## <a name="view-information-about-a-scale-set"></a>查看有关规模集的信息
-若要查看有关规模集的全部信息，请使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss)。 以下示例将获取有关 myResourceGroup 资源组中 myScaleSet 规模集的信息。 按如下所示输入自己的名称：
+若要查看有关规模集的全部信息，请使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss)。 以下示例将获取有关 myResourceGroup 资源组中 myScaleSet 规模集的信息   。 按如下所示输入自己的名称：
 
 ```powershell
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
@@ -39,13 +39,13 @@ Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 
 
 ## <a name="view-vms-in-a-scale-set"></a>查看规模集中的 VM
-要在规模集中查看 VM 实例的列表，请使用 [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)。 以下示例列出名为 myScaleSet 的规模集和 myResourceGroup 资源组中的所有 VM 实例。 为这些名称提供自己的值：
+要在规模集中查看 VM 实例的列表，请使用 [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)。 以下示例列出名为 myScaleSet  的规模集和 myResourceGroup  资源组中的所有 VM 实例。 为这些名称提供自己的值：
 
 ```powershell
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
-要查看与特定 VM 实例有关的其他信息，请将 `-InstanceId` 参数添加到 [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)，并指定要查看的实例。 以下示例将查看与 myScaleSet 规模集和 myResourceGroup 资源组中 VM 实例“0”有关的信息。 按如下所示输入自己的名称：
+要查看与特定 VM 实例有关的其他信息，请将 `-InstanceId` 参数添加到 [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)，并指定要查看的实例。 以下示例将查看与 myScaleSet 规模集和 myResourceGroup 资源组中 VM 实例“0”有关的信息    。 按如下所示输入自己的名称：
 
 ```powershell
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
@@ -55,7 +55,7 @@ Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -
 ## <a name="change-the-capacity-of-a-scale-set"></a>更改规模集的容量
 以上命令显示了与规模集和 VM 实例相关的信息。 要增加或减少规模集中的实例数，可以更改其容量。 规模集会自动创建或删除所需数量的 VM，然后配置 VM 以接收应用程序流量。
 
-首先，使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) 创建的规模集对象，然后为 `sku.capacity` 指定新的值。 若要应用容量更改，请使用 [Update-AzVmss](/powershell/module/az.compute/update-azvmss)。 以下示例更新 myResourceGroup 资源组中的 myScaleSet，将其容量更新为能容纳 5 个实例。 请按照如下所示，提供值：
+首先，使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) 创建的规模集对象，然后为 `sku.capacity` 指定新的值。 若要应用容量更改，请使用 [Update-AzVmss](/powershell/module/az.compute/update-azvmss)。 以下示例更新 myResourceGroup 资源组中的 myScaleSet，将其容量更新为能容纳 5 个实例    。 请按照如下所示，提供值：
 
 ```powershell
 # Get current scale set
@@ -72,7 +72,7 @@ Update-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -VirtualMa
 ## <a name="stop-and-start-vms-in-a-scale-set"></a>停止和启动规模集中的 VM
 若要停止规模集中的一个或多个 VM，请使用 [Stop-AzVmss](/powershell/module/az.compute/stop-azvmss)。 通过 `-InstanceId` 参数，可指定要停止的一个或多个 VM。 若不指定实例 ID，则停止规模集中的所有 VM。 要停止多个 VM，请用逗号分隔每个实例 ID。
 
-以下示例将停止 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”。 请按照如下所示，提供值：
+以下示例将停止 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”    。 请按照如下所示，提供值：
 
 ```powershell
 Stop-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
@@ -84,7 +84,7 @@ Stop-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -I
 ### <a name="start-vms-in-a-scale-set"></a>启动规模集中的 VM
 若要启动规模集中的一个或多个 VM，请使用 [Start-AzVmss](/powershell/module/az.compute/start-azvmss)。 通过 `-InstanceId` 参数，可指定要启动的一个或多个 VM。 若不指定实例 ID，则启动规模集中的所有 VM。 要启动多个 VM，请用逗号分隔每个实例 ID。
 
-以下示例将启动 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”。 请按照如下所示，提供值：
+以下示例将启动 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”    。 请按照如下所示，提供值：
 
 ```powershell
 Start-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
@@ -92,9 +92,9 @@ Start-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -
 
 
 ## <a name="restart-vms-in-a-scale-set"></a>重启规模集中的 VM
-若要重启规模集中的一个或多个 Vm，请使用[重启 AzVmss](/powershell/module/az.compute/restart-azvmss)。 通过 `-InstanceId` 参数，可指定要重启的一个或多个 VM。 若不指定实例 ID，则重启规模集中的所有 VM。 要重启多个 VM，请用逗号分隔每个实例 ID。
+若要重启规模集中的一个或多个 VM，请使用 [Restart-AzVmss](/powershell/module/az.compute/restart-azvmss)。 通过 `-InstanceId` 参数，可指定要重启的一个或多个 VM。 若不指定实例 ID，则重启规模集中的所有 VM。 要重启多个 VM，请用逗号分隔每个实例 ID。
 
-以下示例将重启 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”。 请按照如下所示，提供值：
+以下示例将重启 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”    。 请按照如下所示，提供值：
 
 ```powershell
 Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
@@ -104,7 +104,7 @@ Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ## <a name="remove-vms-from-a-scale-set"></a>删除规模集中的 VM
 若要删除规模集中的一个或多个 VM，请使用 [Remove-AzVmss](/powershell/module/az.compute/remove-azvmss)。 通过 `-InstanceId` 参数，可指定要删除的一个或多个 VM。 若不指定实例 ID，规模集中所有 VM 都将删除。 要删除多个 VM，请用逗号分隔每个实例 ID。
 
-以下示例将删除 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”。 请按照如下所示，提供值：
+以下示例将删除 myScaleSet 规模集和 myResourceGroup 资源组中的实例“0”    。 请按照如下所示，提供值：
 
 ```powershell
 Remove-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"

@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 07/13/2018
-ms.author: v-jaswel
-ms.openlocfilehash: b90fc42aa56bfc813ec464670336dea75cff0f0e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: c964c62c34f952a547d077e93e7bb4d0eb7b192d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117432"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703676"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>如何将对话学习器与其他机器人构建技术结合使用
 
@@ -67,7 +68,7 @@ ms.locfileid: "58117432"
 
 现在，让我们来看一下这些操作。
 
-## <a name="actions"></a>操作
+## <a name="actions"></a>个操作
 
 注意该模型有四个操作。
 

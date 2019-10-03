@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/26/2019
+ms.date: 07/25/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 4b44eec5557d2083c38fe2714d93800f79b21b0f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: e9be7ef5c4f37c66f7cbf2c6226936438b367108
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338439"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515167"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
-本教程介绍如何使用虚拟 WAN 通过 IPsec/IKE（IKEv1 和 IKEv2）VPN 连接来与 Azure 中的资源建立连接。 此类型的连接要求位于本地的 VPN 设备分配有一个面向外部的公共 IP 地址。 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 概述](virtual-wan-about.md)
+本教程介绍如何使用虚拟 WAN 通过 IPsec/IKE（IKEv1 和 IKEv2）VPN 连接来与 Azure 中的资源建立连接。 此类型的连接要求位于本地的 VPN 设备分配有一个面向外部的公共 IP 地址。 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 概述](virtual-wan-about.md)。
 
 > [!NOTE]
 > 如果你有多个站点，则通常会使用[虚拟 WAN 合作伙伴](https://aka.ms/virtualwan)来创建此配置。 但是，如果你熟悉网络技术并能够熟练配置自己的 VPN 设备，则可以自行创建此配置。
@@ -32,6 +32,7 @@ ms.locfileid: "58338439"
 > * 创建站点
 > * 创建中心
 > * 将中心连接到站点
+> * 创建兼容的 VNet（如果还没有的话）
 > * 将 VNet 连接到中心
 > * 下载并应用 VPN 设备配置
 > * 查看虚拟 WAN
@@ -40,72 +41,77 @@ ms.locfileid: "58338439"
 
 ## <a name="before-you-begin"></a>开始之前
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
-## <a name="vnet"></a>1.创建虚拟网络
-
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
-
-## <a name="openvwan"></a>2.创建虚拟 WAN
+## <a name="openvwan"></a>1.创建虚拟 WAN
 
 从浏览器导航到 [Azure 门户](https://aka.ms/azurevirtualwanpreviewfeatures)并使用 Azure 帐户登录。
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="site"></a>3.创建站点
+## <a name="site"></a>2.创建站点
 
 创建任意数目的与物理位置对应的站点。 例如，如果你在纽约、伦敦和洛杉矶各有一个分支机构，请创建三个独立的站点。 这些站点包含本地 VPN 设备终结点。 目前，只能为站点指定一个专用地址空间。
 
-1. 单击已创建的 WAN。 在 WAN 页上的“WAN 体系结构”下，单击“VPN 站点”打开“VPN 站点”页。
-2. 在“VPN 站点”页上，单击“+创建站点”。
-3. 在“创建站点”页上填写以下字段：
+1. 单击已创建的 WAN。 在 WAN 页上的“WAN 体系结构”  下，单击“VPN 站点”  打开“VPN 站点”页。
+2. 在“VPN 站点”  页上，单击“+创建站点”  。
+3. 在“创建站点”页上填写以下字段： 
 
    * **名称** - 本地站点的名称。
    * **公开 IP 地址** - 驻留在本地站点中的 VPN 设备的公共 IP 地址。
    * **专用地址空间** - 位于本地站点的 IP 地址空间。 发往此地址空间的流量将路由到本地站点。
    * **订阅** - 验证订阅。
    * **资源组** - 要使用的资源组。
-   * **位置**。
-4. 单击“显示高级”查看其他设置。 可以选择“BGP”以启用 BGP，这会在 Azure 中为此站点创建的所有连接上启用此功能。 还可以输入**设备信息**（可选字段）。 这有助于 Azure 团队更好地了解你的环境，以便将来添加更多的可用优化选项，或帮助你进行故障排除。
-5. 单击“确认”。
-6. 单击“确认”后，在“VPN 站点”页上查看状态。 该站点将从“正在预配”转为“已预配”。
+   * **位置**
+4. 单击“显示高级”查看其他设置。  
 
-## <a name="hub"></a>4.创建中心
+   可以选择“BGP”  以启用 BGP，这会在 Azure 中为此站点创建的所有连接上启用 BGP 功能。 在虚拟 WAN 上配置 BGP 就等同于在 Azure VPN 网关上配置 BGP。 本地 BGP 对等节点地址不能  与 VPN 到设备的公共 IP 地址或 VPN 站点的 VNet 地址空间相同。 在 VPN 设备上对 BGP 对等节点 IP 使用不同的 IP 地址。 它可以是分配给该设备上环回接口的地址。 但是，该地址不能  是 APIPA (169.254.*x*.*x*) 地址。 在表示该位置的相应本地网关中指定此地址。 有关 BGP 先决条件，请参阅[关于 Azure VPN 网关的 BGP](../vpn-gateway/vpn-gateway-bgp-overview.md)。
+
+   还可以输入**设备信息**（可选字段）。 这有助于 Azure 团队更好地了解你的环境，以便将来添加更多的可用优化选项，或帮助你进行故障排除。
+   
+5. 单击“确认”  。
+6. 单击“确认”后  ，在“VPN 站点”页上查看状态。 该站点将从“正在预配”  转为“已预配”  。
+
+## <a name="hub"></a>3.创建中心
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="associate"></a>5.将站点与中心相关联
+## <a name="associate"></a>4.将站点与中心相关联
 
 中心通常应将关联到 VNet 所在的同一区域中的站点。
 
-1. 在“VPN 站点”页上，选择要与中心关联的一个或多个站点，然后单击“+新建中心关联”。
-2. 在“将站点与一个或多个中心关联”页上，从下拉列表中选择中心。 可以通过单击“+添加关联”将站点与其他中心关联。
+1. 在“VPN 站点”  页上，选择要与中心关联的一个或多个站点，然后单击“+新建中心关联”  。
+2. 在“将站点与一个或多个中心关联”  页上，从下拉列表中选择中心。 可以通过单击“+添加关联”  将站点与其他中心关联。
 3. 还可以在此处添加特定的 **PSK**，或使用默认值。
-4. 单击“确认”。
-5. 可在“VPN 站点”页上查看连接状态。
+4. 单击“确认”  。
+5. 可在“VPN 站点”  页上查看连接状态。
+
+## <a name="vnet"></a>5.创建虚拟网络
+
+如果没有 VNet，可以使用 PowerShell 或 Azure 门户快速创建一个。 如果已有一个 VNet，请确认它符合所需的条件，并且不包含虚拟网络网关。
+
+[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
 
 ## <a name="vnet"></a>6.将 VNet 连接到中心
 
 此步骤在中心与 VNet 之间创建对等互连。 针对要连接的每个 VNet 重复这些步骤。
 
-1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。
-2. 在虚拟网络连接页上，单击“+添加连接”。
-3. 在“添加连接”页上填写以下字段：
+1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。 
+2. 在虚拟网络连接页上，单击“+添加连接”。 
+3. 在“添加连接”页上填写以下字段  ：
 
     * **连接名称** - 为连接命名。
     * **中心** - 选择要与此连接关联的中心。
     * **订阅** - 验证订阅。
     * **虚拟网络** - 选择要连接到此中心的虚拟网络。 此虚拟网络不能包含现有的虚拟网络网关。
-4. 单击“确定”以创建对等互连连接。
+4. 单击“确定”以创建对等互连连接。 
 
 ## <a name="device"></a>7.下载 VPN 配置
 
 使用 VPN 设备配置来配置本地 VPN 设备。
 
-1. 在虚拟 WAN 的页面上，单击“概述”。
-2. 在“概述”页的顶部，单击“下载 VPN 配置”。 Azure 会在资源组“microsoft-network-[location]”中创建一个存储帐户，其中，location 是 WAN 的位置。 将配置应用到 VPN 设备后，可以删除此存储帐户。
+1. 在虚拟 WAN 的页面上，单击“概述”。 
+2. 在“概述”页的顶部，单击“下载 VPN 配置”。  Azure 会在资源组“microsoft-network-[location]”中创建一个存储帐户，其中，location 是 WAN 的位置。 将配置应用到 VPN 设备后，可以删除此存储帐户。
 3. 完成创建文件后，可以单击相应的链接下载该文件。
 4. 将配置应用到 VPN 设备。
 
@@ -114,7 +120,7 @@ ms.locfileid: "58338439"
 设备配置文件包含配置本地 VPN 设备时要使用的设置。 查看此文件时，请留意以下信息：
 
 * **vpnSiteConfiguration** - 此部分表示当站点连接到虚拟 WAN 时设置的设备详细信息。 它包含分支设备的名称和公共 IP 地址。
-* **vpnSiteConnections** - 此节提供以下信息：
+* **vpnSiteConnections** - 此部分提供以下设置的信息：
 
     * 虚拟中心 VNet 的**地址空间**<br>示例：
  
@@ -126,13 +132,13 @@ ms.locfileid: "58338439"
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * 虚拟中心 vpngateway 的 IP 地址。 由于 vpngateway 的每个连接由采用主动-主动配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，可以看到为每个站点指定了“Instance0”和“Instance1”。<br>示例：
+    * 虚拟中心 vpngateway 的 IP 地址  。 由于 vpngateway 的每个连接由采用主动 - 主动配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，可以看到为每个站点指定了“Instance0”和“Instance1”。<br>示例：
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * Vpngateway 连接配置详细信息，例如 BGP、预共享密钥等。PSK 是自动生成的预共享密钥。 始终可以在“概述”页中为自定义 PSK 编辑连接。
+    * Vpngateway 连接配置详细信息，例如 BGP、预共享密钥等  。PSK 是自动生成的预共享密钥。 始终可以在“概述”页中为自定义 PSK 编辑连接。
   
 ### <a name="example-device-configuration-file"></a>示例设备配置文件
 
@@ -261,7 +267,7 @@ ms.locfileid: "58338439"
 ## <a name="viewhealth"></a>9.查看资源运行状况
 
 1. 导航到 WAN。
-2. 在“WAN”页上的“支持 + 故障排除”部分，单击“运行状况”并查看资源。
+2. 在“WAN”页上的“支持 + 故障排除”部分，单击“运行状况”并查看资源。  
 
 ## <a name="connectmon"></a>10.监视连接
 

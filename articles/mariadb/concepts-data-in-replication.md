@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 0a1ead1580f6764fec7d1d18daa38bf093f242f2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.date: 09/13/2019
+ms.openlocfilehash: 3ceb8b4f3c2c50ac0ac3bd12831b5497f9a05afb
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547593"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993031"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>将数据复制到 Azure Database for MariaDB
 
@@ -34,10 +34,13 @@ ms.locfileid: "53547593"
 - 每个表都必须有主键。
 - 主服务器应使用 InnoDB 引擎。
 - 用户必须具有权限才能在主服务器上配置二进制日志记录和创建新用户。
+- 如果主服务器已启用 ssl，请确保在`mariadb.az_replication_change_master`存储过程中包含为域提供的 ssl CA 证书。 请参阅下面的[示例](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication)和`master_ssl_ca`参数。
+- 确保主服务器的 IP 地址已添加到 Azure Database for MariaDB 副本服务器的防火墙规则中。 使用 [Azure 门户](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal)或 [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) 更新防火墙规则。
+- 确保托管主服务器的计算机在端口 3306 上允许入站和出站流量。
+- 请确保主服务器具有**公共 IP 地址**、DNS 可公开访问，或者具有完全限定的域名（FQDN）。
 
 ### <a name="other"></a>其他
 - 仅可在常规用途和优化内存定价层中使用数据传入复制功能。
-- 不支持全局事务标识符 (GTID)。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[设置数据传入复制](howto-data-in-replication.md)。

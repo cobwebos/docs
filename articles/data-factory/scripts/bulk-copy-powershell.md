@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
 ms.openlocfilehash: d2db5bced78a00c8acabc150752fe65e9515dff1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849357"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60480632"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂批量复制多个表
 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/26/2019
+ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: abeca204296bcb3933013f2b7434b8c558f62e50
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: c3a80cbdd166f77681665ee3675c1a71ce3a9bd6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496581"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967091"
 ---
-# <a name="brand-detection"></a>品牌检测
+# <a name="detect-popular-brands-in-images"></a>检测图像中的常用品牌
 
 品牌检测是[对象检测](concept-object-detection.md)的一种专用模式，使用包含全球数千个徽标的数据库来标识图像或视频中的商业品牌。 可以使用此功能来执行特定的操作，例如，发现哪些品牌在社交媒体上最受欢迎，或者哪些品牌在社交产品排名上最靠前。
 
@@ -29,70 +29,52 @@ ms.locfileid: "58496581"
 
 以下 JSON 响应表明计算机视觉在示例图像中检测品牌时所返回的内容。
 
-![上面有 Microsoft 标签和徽标的灰色运动衫](./Images/gray-shirt-logo.jpg)
-
-```json
-{
-   "brands":[
-      {
-         "name":"Microsoft",
-         "confidence":0.706,
-         "rectangle":{
-            "x":470,
-            "y":862,
-            "w":338,
-            "h":327
-         }
-      }
-   ],
-   "requestId":"5fda6b40-3f60-4584-bf23-911a0042aa13",
-   "metadata":{
-      "width":2286,
-      "height":1715,
-      "format":"Jpeg"
-   }
-}
-```
-在某些情况下，品牌检测程序会挑选徽标图像和风格化品牌名称作为两个单独徽标。
-
 ![上面有 Microsoft 标签的徽标的红色衬衫](./Images/red-shirt-logo.jpg)
 
 ```json
-{
-   "brands":[
-      {
-         "name":"Microsoft",
-         "confidence":0.657,
-         "rectangle":{
-            "x":436,
-            "y":473,
-            "w":568,
-            "h":267
-         }
-      },
-      {
-         "name":"Microsoft",
-         "confidence":0.85,
-         "rectangle":{
-            "x":101,
-            "y":561,
-            "w":273,
-            "h":263
-         }
+"brands":[  
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":20,
+         "y":97,
+         "w":62,
+         "h":52
       }
-   ],
-   "requestId":"10dcd2d6-0cf6-4a5e-9733-dc2e4b08ac8d",
-   "metadata":{
-      "width":1286,
-      "height":1715,
-      "format":"Jpeg"
    }
-}
+]
+```
+
+在某些情况下，品牌检测程序会挑选徽标图像和风格化品牌名称作为两个单独徽标。
+
+![上面有 Microsoft 标签和徽标的灰色运动衫](./Images/gray-shirt-logo.jpg)
+
+```json
+"brands":[  
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":58,
+         "y":106,
+         "w":55,
+         "h":46
+      }
+   },
+   {  
+      "name":"Microsoft",
+      "rectangle":{  
+         "x":58,
+         "y":86,
+         "w":202,
+         "h":63
+      }
+   }
+]
 ```
 
 ## <a name="use-the-api"></a>使用 API
 
-品牌检测功能属于[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API。 可以通过本机 SDK 或 REST 调用来调用此 API。 包括`Brands`中**visualFeatures**查询参数。 然后，当您获得完整的 JSON 响应，只需分析字符串内容的`"brands"`部分。
+品牌检测功能属于[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Brands` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"brands"` 部分内容的字符串。
 
-* [快速入门：分析图像 (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [快速入门：计算机视觉 .NET SDK](./quickstarts-sdk/csharp-sdk.md)
 * [快速入门：分析图像 (REST API)](./quickstarts/csharp-analyze.md)

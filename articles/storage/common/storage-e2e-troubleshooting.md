@@ -1,20 +1,19 @@
 ---
 title: 使用诊断和消息分析器对 Azure 存储进行故障排除 | Microsoft Docs
 description: 本教程演示如何使用 Azure 存储分析、AzCopy 和 Microsoft Message Analyzer 进行点对点故障排除
-services: storage
-author: tamram
+author: normesta
 ms.service: storage
-ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2017
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f88a560d4fa819a055534530ddc0862e4aa330fe
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 2ca81280bed52508c606a5a693fe0162837ac117
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351875"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854630"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>使用 Azure 存储指标和日志记录、AzCopy 及 Message Analyzer 进行端到端故障排除
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -79,7 +78,7 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 * **HTTP 网络跟踪日志**，它收集有关 HTTP/HTTPS 请求的数据和响应数据，包括针对 Azure 存储的操作的数据。 在本教程中，我们将通过 Message Analyzer 生成网络跟踪。
 
 ### <a name="configure-server-side-logging-and-metrics"></a>配置服务器端日志记录和度量值
-首先，我们将需要配置 Azure 存储日志记录和度量值，它使我们能够从服务端，若要分析的数据。 可通过不同的方式配置日志记录和指标：通过 [Azure 门户](https://portal.azure.com)、使用 PowerShell 或以编程方式。 请参阅[启用指标](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal)并[启用日志记录](storage-analytics-logging.md#enable-storage-logging)有关配置日志记录和指标的详细信息。
+首先，我们需要配置 Azure 存储日志记录和度量值，以便可以从服务端获取要分析的数据。 可通过不同的方式配置日志记录和指标：通过 [Azure 门户](https://portal.azure.com)、使用 PowerShell 或以编程方式。 请参阅[启用指标](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal)和[启用日志记录](storage-analytics-logging.md#enable-storage-logging)，详细了解如何配置日志记录和指标。
 
 ### <a name="configure-net-client-side-logging"></a>配置 .NET 客户端日志记录
 若要为 .NET 应用程序配置客户端日志记录，请在应用程序的配置文件（web.config 或 app.config）中启用 .NET 诊断。 有关详细信息，请参阅 MSDN 上的 [Client-side Logging with the .NET Storage Client Library](https://msdn.microsoft.com/library/azure/dn782839.aspx)（使用 .NET 存储客户端库进行的客户端日志记录）和 [Client-side Logging with the Microsoft Azure Storage SDK for Java](https://msdn.microsoft.com/library/azure/dn782844.aspx)（通过用于 Java 的 Microsoft Azure 存储 SDK 进行的客户端日志记录）。
@@ -244,7 +243,7 @@ Message Analyzer 的存储空间资产包括 Azure 存储视图布局，这是�
 应用此筛选器后，可看到已从客户端日志中排除的行，因为客户端日志不包含 **StatusCode** 列。 首先，将检查服务器和网络跟踪日志，以找到 404 错误，然后会返回到客户端日志以检查导致它们的客户端操作。
 
 > [!NOTE]
-> 可以根据 **StatusCode** 列筛选，并仍显示所有三个日志（包括客户端日志）中的数据，前提是将表达式添加到包括日志条目的筛选器（状态代码为 null）。 若要构造此筛选器表达式，请使用：
+> 可根据 **StatusCode** 列进行筛选；如果将表达式添加到包含状态代码为 null 的日志条目的筛选器，则仍可显示所有 3 个日志（包括客户端日志）中的数据。 若要构造此筛选器表达式，请使用：
 >
 > <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code>
 >
@@ -299,17 +298,17 @@ Message Analyzer 将查找并选择搜索条件匹配客户端请求 ID 的第�
 
 | 若要调查... | 使用筛选器表达式… | 将表达式应用到日志（客户端、服务器、网络、全部） |
 | --- | --- | --- |
-| 队列上的消息传递出现意外的延迟 |AzureStorageClientDotNetV4.Description   包含“正在重试失败的操作。” |Client |
+| 队列上的消息传递出现意外的延迟 |AzureStorageClientDotNetV4.Description   包含“正在重试失败的操作。” |客户端 |
 | PercentThrottlingError 的 HTTP 提升 |HTTP.Response.StatusCode == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |网络 |
 | PercentTimeoutError 提升 |HTTP.Response.StatusCode == 500 |网络 |
-| PercentTimeoutError 提升（全部） |*StatusCode == 500 |All |
-| PercentNetworkError 提升 |AzureStorageClientDotNetV4.EventLogEntry.Level < 2 |Client |
+| PercentTimeoutError 提升（全部） |*StatusCode == 500 |全部 |
+| PercentNetworkError 提升 |AzureStorageClientDotNetV4.EventLogEntry.Level < 2 |客户端 |
 | HTTP 403（禁止）消息 |HTTP.Response.StatusCode == 403 |网络 |
 | HTTP 404（未找到）消息 |HTTP.Response.StatusCode == 404 |网络 |
-| 404（全部） |*StatusCode == 404 |All |
+| 404（全部） |*StatusCode == 404 |全部 |
 | 共享访问签名 (SAS) 授权问题 |AzureStorageLog.RequestStatus == "SASAuthorizationError" |网络 |
 | HTTP 409（冲突）消息 |HTTP.Response.StatusCode == 409 |网络 |
-| 409（全部） |*StatusCode == 409 |All |
+| 409（全部） |*StatusCode == 409 |全部 |
 | 低 PercentSuccess 或分析日志项包含事务状态为 ClientOtherErrors 的操作 |AzureStorageLog.RequestStatus == "ClientOtherError" |服务器 |
 | Nagle 警告 |((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) 和 (AzureStorageLog.RequestPacketSize <1460) 和 (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) |服务器 |
 | 服务器日志和网络日志中的时间范围 |#Timestamp   >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 |服务器、网络 |

@@ -3,7 +3,7 @@ title: 将现有可执行文件部署到 Azure Service Fabric | Microsoft 文档
 description: 了解如何将现有应用程序打包为来宾可执行文件，以便部署到 Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
-ms.author: aljo
-ms.openlocfilehash: bfac14c598b405a398cad916787aa3312589bfd1
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: atsenthi
+ms.openlocfilehash: 575303cc2ec3e880187bac64da06d05721df14e6
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669939"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599665"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>打包现有可执行文件并将其部署到 Service Fabric
 将现有可执行文件打包为[来宾可执行文件](service-fabric-guest-executables-introduction.md)时，可以选择是使用 Visual Studio 项目模板，还是[手动创建应用程序包](#manually)。 使用 Visual Studio 时，新的项目模板会创建应用程序包结构和清单文件。
@@ -73,7 +73,7 @@ Yeoman 创建应用程序包，其中包含相应的应用程序和清单文件�
 -->
 
 ### <a name="create-the-package-directory-structure"></a>创建包目录结构
-您可以首先创建的目录结构，如中所述[打包 Azure Service Fabric 应用](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)。
+可以首先创建目录结构，如[打包 Azure Service Fabric 应用](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)中所述。
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>添加应用程序的代码和配置文件
 创建了目录结构之后，可以在 code 和 config 目录下添加应用程序的代码和配置文件。 还可以在 code 或 config 目录下创建其他目录或子目录。
@@ -170,7 +170,7 @@ SetupEntryPoint 元素用于指定在启动服务代码之前应执行的任何�
 
 服务清单文件中的 `EntryPoint` 元素用于指定如何启动该服务。
 
-`ExeHost` 元素指定应用于启动该服务的可执行文件（和参数）。 可以选择将 `IsExternalExecutable="true"` 属性添加到 `ExeHost`，以指示该程序是代码包外部的外部可执行文件。 例如，`<ExeHost IsExternalExecutable="true">`。
+`ExeHost` 元素指定应用于启动该服务的可执行文件（和参数）。 可以选择将 `IsExternalExecutable="true"` 属性添加到 `ExeHost`，以指示该程序是代码包外部的外部可执行文件。 例如， `<ExeHost IsExternalExecutable="true">` 。
 
 * `Program` 指定应启动服务的可执行文件的名称。
 * `Arguments` 指定应传递给可执行文件的参数。 它可以是带有实参的形参的列表。

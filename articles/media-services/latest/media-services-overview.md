@@ -13,22 +13,22 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/29/2019
+ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c65c797612e179a9f3c02696d827131f5c830b3c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a752d7759386828e916f68e5903115220812f3e0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755906"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123044"
 ---
-# <a name="what-is-azure-media-services-v3"></a>什么是 Azure 媒体服务 v3？
+# <a name="azure-media-services-v3-overview"></a>Azure 媒体服务 v3 概述
 
 Azure 媒体服务是一个基于云的平台，用于生成解决方案，以便实现广播质量的视频流、增强可访问性和分发、分析内容，等等。 无论你是应用程序开发者、呼叫中心、政府机构还是娱乐公司，媒体服务都能帮助你创建应用程序，通过当今最热门的移动设备和浏览器向广大受众提供品质卓越的媒体体验。 
 
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或支持的 [SDK](developers-guide.md) 之一。
+> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
 
 ## <a name="what-can-i-do-with-media-services"></a>媒体服务的功能是什么？
 
@@ -48,7 +48,8 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 
 了解如何使用媒体服务 v3 来编码和打包内容、进行视频点播流式处理、实时广播和视频分析。 教程、API 参考和其他文档介绍了如何安全地向数百万用户传送可缩放的点播和直播视频或音频流。
 
-在开始开发之前，请查看[基本概念](concepts-overview.md)<br/>
+> [!TIP]
+> 在开始开发之前，请查看：<br/>* [基本概念](concepts-overview.md)（包括重要概念：打包、编码、保护，等等）<br/>* [使用媒体服务 v3 API 进行开发](media-services-apis-overview.md)（包括有关访问 API、命名约定等的信息）
 
 ### <a name="quickstarts"></a>快速入门  
 
@@ -68,23 +69,26 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 * [分析视频 - .NET](analyze-videos-tutorial-with-api.md)
 * [AES-128 动态加密 - .NET](protect-with-aes128.md)
     
+### <a name="samples"></a>示例
+
+使用[此示例浏览器](https://docs.microsoft.com/samples/browse/?products=azure-media-services)浏览 Azure 媒体服务代码示例。
+
 ### <a name="how-to-guides"></a>操作指南
 
 文章中包含的示例演示如何完成某项任务。 在此部分可以找到许多示例，下面只是其中的一些示例：
 
 * [创建帐户 - CLI](create-account-cli-how-to.md)
 * [访问 API - CLI](access-api-cli-how-to.md)
-* [开始使用 SDK 进行开发](developers-guide.md)
 * [在将 HTTPS 作为作业输入的情况下进行编码 - .NET](job-input-from-http-how-to.md)  
 * [监视事件 - 门户](monitor-events-portal-how-to.md)
 * [通过多重 DRM 进行动态加密 - .NET](protect-with-drm.md) 
 * [如何对自定义转换进行编码 - CLI](custom-preset-cli-howto.md)
 
+## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
+
+查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
+
 ## <a name="next-steps"></a>后续步骤
 
-如何开始使用 v3？ 
-
-> [!div class="nextstepaction"]
-> [了解基本概念](concepts-overview.md)<br/>
-> [通过 SDK 使用媒体服务 v3 API 进行开发](developers-guide.md) 
+[了解基本概念](concepts-overview.md)
 

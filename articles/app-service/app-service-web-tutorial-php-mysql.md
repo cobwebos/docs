@@ -16,11 +16,11 @@ ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: eddccc9897380e3ff47de49771a617bf6cacc407
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680496"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66138436"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>教程：在 Azure 中构建 PHP 和 MySQL 应用
 
@@ -109,7 +109,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>配置 MySQL 连接
 
-在存储库根路径中，创建名为 *.env* 的文本文件。 复制下列变量到 .env 文件。 请将 &lt;root_password> 占位符替换为 MySQL 根用户的密码。
+在存储库根路径中，创建名为 *.env* 的文本文件。 复制下列变量到 .env 文件  。 请将 &lt;root_password> 占位符替换为 MySQL 根用户的密码  。
 
 ```
 APP_ENV=local
@@ -123,11 +123,11 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-有关 Laravel 如何使用 .env 文件的信息，请参阅 [Laravel 环境配置](https://laravel.com/docs/5.4/configuration#environment-configuration)。
+有关 Laravel 如何使用 .env 文件的信息，请参阅 [Laravel 环境配置](https://laravel.com/docs/5.4/configuration#environment-configuration)  。
 
 ### <a name="run-the-sample-locally"></a>在本地运行示例
 
-运行 [Laravel 数据库迁移](https://laravel.com/docs/5.4/migrations)，创建应用程序所需的表。 若要查看迁移中创建了哪些表，请查看 Git 存储库中的 database/migrations 目录。
+运行 [Laravel 数据库迁移](https://laravel.com/docs/5.4/migrations)，创建应用程序所需的表。 若要查看迁移中创建了哪些表，请查看 Git 存储库中的 database/migrations  目录。
 
 ```bash
 php artisan migrate
@@ -217,7 +217,7 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql_ser
 
 ### <a name="connect-to-production-mysql-server-locally"></a>在本地连接到生产 MySQL 服务器
 
-在本地终端窗口中，连接到 Azure 中的 MySQL 服务器。 使用前面为 &lt;mysql_server_name> 指定的值。 出现输入密码的提示时，请使用在 Azure 中创建数据库时指定的密码。
+在本地终端窗口中，连接到 Azure 中的 MySQL 服务器。 使用前面为 &lt;mysql_server_name> 指定的值  。 出现输入密码的提示时，请使用在 Azure 中创建数据库时指定的密码。
 
 ```bash
 mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
@@ -233,7 +233,7 @@ CREATE DATABASE sampledb;
 
 ### <a name="create-a-user-with-permissions"></a>创建具有权限的用户
 
-创建一个名为 phpappuser 的数据库用户并向其授予 `sampledb` 数据库中的所有特权。 同样，为方便学习教程，请使用 _MySQLAzure2017_ 作为密码。
+创建一个名为 phpappuser 的数据库用户并向其授予 `sampledb` 数据库中的所有特权  。 同样，为方便学习教程，请使用 _MySQLAzure2017_ 作为密码。
 
 ```sql
 CREATE USER 'phpappuser' IDENTIFIED BY 'MySQLAzure2017'; 
@@ -254,7 +254,7 @@ quit
 
 ### <a name="configure-the-database-connection"></a>配置数据库连接
 
-在存储库根路径中创建一个 .env.production 文件，并在其中复制以下变量。 替换 *DB_HOST* 和 *DB_USERNAME* 中的占位符 _&lt;mysql_server_name>_。
+在存储库根路径中创建一个 .env.production 文件，并在其中复制以下变量  。 替换 *DB_HOST* 和 *DB_USERNAME* 中的占位符 _&lt;mysql_server_name>_ 。
 
 ```
 APP_ENV=production
@@ -272,7 +272,7 @@ MYSQL_SSL=true
 保存更改。
 
 > [!TIP]
-> 若要保护 MySQL 连接信息，此文件已从 Git 存储库（请参阅存储库根路径中的 .gitignore排除。 以后介绍如何将应用服务中的环境变量配置为连接到 Azure Database for MySQL 中的数据库。 有了环境变量，便不需要应用服务中的 .env 文件。
+> 若要保护 MySQL 连接信息，此文件已从 Git 存储库（请参阅存储库根路径中的 .gitignore  排除。 以后介绍如何将应用服务中的环境变量配置为连接到 Azure Database for MySQL 中的数据库。 有了环境变量，便不需要应用服务中的 .env  文件。
 >
 
 ### <a name="configure-ssl-certificate"></a>配置 SSL 证书
@@ -295,7 +295,7 @@ MYSQL_SSL=true
 
 ### <a name="test-the-application-locally"></a>在本地测试应用程序
 
-使用 _.env.production_ 作为环境文件运行 Laravel 数据库迁移，在 Azure Database for MySQL 中的 MySQL 数据库内创建表。 请记住，在 Azure 中 .env.production 具有的 MySQL 数据库的连接信息。
+使用 _.env.production_ 作为环境文件运行 Laravel 数据库迁移，在 Azure Database for MySQL 中的 MySQL 数据库内创建表。 请记住，在 Azure 中 .env.production 具有的 MySQL 数据库的连接信息  。
 
 ```bash
 php artisan migrate --env=production --force
@@ -353,9 +353,9 @@ git commit -m "database.php updates"
 
 如前所述，可以使用应用服务中的环境变量连接到 Azure MySQL 数据库。
 
-在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置。
+在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置  。
 
-使用以下命令可以配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 &lt;appname> 和 &lt;mysql_server_name>。
+使用以下命令可以配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 &lt;appname>  和 &lt;mysql_server_name>  。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
@@ -384,7 +384,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 php artisan key:generate --show
 ```
 
-在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令在应用服务应用中设置应用程序密钥。 替换占位符 _&lt;appname>_ 和 _&lt;outputofphpartisankey:generate>_。
+在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令在应用服务应用中设置应用程序密钥。 替换占位符 _&lt;appname>_ 和 _&lt;outputofphpartisankey:generate>_ 。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -394,7 +394,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 ### <a name="set-the-virtual-application-path"></a>设置虚拟应用程序路径
 
-设置应用的虚拟应用程序路径。 需要执行此步骤的原因是 [Laravel 应用程序生命周期](https://laravel.com/docs/5.4/lifecycle)在 public 目录中开始，而不是在应用程序的根目录中开始。 无需手动配置虚拟应用程序路径，生命周期在根目录中开始的其他 PHP 框架也能正常工作。
+设置应用的虚拟应用程序路径。 需要执行此步骤的原因是 [Laravel 应用程序生命周期](https://laravel.com/docs/5.4/lifecycle)在 public  目录中开始，而不是在应用程序的根目录中开始。 无需手动配置虚拟应用程序路径，生命周期在根目录中开始的其他 PHP 框架也能正常工作。
 
 在 Cloud Shell 中，使用 [`az resource update`](/cli/azure/resource#az-resource-update) 命令设置虚拟应用程序路径。 替换 _&lt;appname>_ 占位符。
 
@@ -402,7 +402,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
-默认情况下，Azure 应用服务将根虚拟应用程序路径 (/) 指向已部署的应用程序的文件的根目录 (sites\wwwroot)。
+默认情况下，Azure 应用服务将根虚拟应用程序路径 (/  ) 指向已部署的应用程序的文件的根目录 (sites\wwwroot  )。
 
 ### <a name="push-to-azure-from-git"></a>从 Git 推送到 Azure
 
@@ -457,7 +457,7 @@ remote: Running deployment command...
 php artisan make:migration add_complete_column --table=tasks
 ```
 
-此命令显示已生成的迁移文件的名称。 在 database/migrations 中找到此文件，并打开它。
+此命令显示已生成的迁移文件的名称。 在 database/migrations 中找到此文件，并打开它  。
 
 将 `up`方法替换为以下代码：
 
@@ -489,11 +489,11 @@ public function down()
 php artisan migrate
 ```
 
-根据 [Laravel 命名约定](https://laravel.com/docs/5.4/eloquent#defining-models)，模型 `Task`（请参阅 app/Task.php）默认映射到 `tasks` 表。
+根据 [Laravel 命名约定](https://laravel.com/docs/5.4/eloquent#defining-models)，模型 `Task`（请参阅 app/Task.php  ）默认映射到 `tasks` 表。
 
 ### <a name="update-application-logic"></a>更新应用程序逻辑
 
-打开 routes/web.php 文件。 应用程序在此处定义其路由和业务逻辑。
+打开 routes/web.php  文件。 应用程序在此处定义其路由和业务逻辑。
 
 在文件末尾，添加包含以下代码的路由：
 
@@ -516,7 +516,7 @@ Route::post('/task/{id}', function ($id) {
 
 ### <a name="update-the-view"></a>更新视图
 
-打开 resources/views/tasks.blade.php 文件。 搜索 `<tr>` 开始标记并将其替换为：
+打开 resources/views/tasks.blade.php  文件。 搜索 `<tr>` 开始标记并将其替换为：
 
 ```html
 <tr class="{{ $task->complete ? 'success' : 'active' }}" >
@@ -608,7 +608,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 转到 [Azure 门户](https://portal.azure.com)管理已创建的应用。
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-php-mysql/access-portal.png)
 

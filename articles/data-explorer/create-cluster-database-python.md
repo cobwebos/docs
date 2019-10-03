@@ -1,18 +1,18 @@
 ---
-title: 快速入门：使用 Python 创建 Azure 数据资源管理器群集和数据库
+title: 使用 Python 创建 Azure 数据资源管理器群集和数据库
 description: 了解如何使用 Python 创建 Azure 数据资源管理器群集和数据库。
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: 408b34db16f0d6d22340f0483b90ce5d72ffa613
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 2fc2b847c18cecbcea3c137312b18bb274398cc6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045195"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326628"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>使用 Python 创建 Azure 数据资源管理器群集和数据库
 
@@ -22,9 +22,9 @@ ms.locfileid: "59045195"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+> * [ARM 模板](create-cluster-database-resource-manager.md)
 
-Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本快速入门中，你将使用 Python 创建群集和数据库。
+Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本文中，将使用 Python 创建群集和数据库。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,6 +36,8 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 ```
 pip install azure-mgmt-kusto
+pip install adal
+pip install msrestazure
 ```
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>创建 Azure 数据资源管理器群集
@@ -45,10 +47,19 @@ pip install azure-mgmt-kusto
     ```Python
     from azure.mgmt.kusto.kusto_management_client import KustoManagementClient
     from azure.mgmt.kusto.models import Cluster, AzureSku
+    from adal import AuthenticationContext
+    from msrestazure.azure_active_directory import AdalAuthentication
 
-    credentials = xxxxxxxxxxxxxxx
-    
-    subscription_id = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx'
+    tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    client_secret = "xxxxxxxxxxxxxx"
+    subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    context = AuthenticationContext('https://login.microsoftonline.com/{}'.format(tenant_id))
+    credentials = AdalAuthentication(context.acquire_token_with_client_credentials,
+                                         resource="https://management.core.windows.net/",
+                                         client_id=client_id,
+                                         client_secret=client_secret)
+
     location = 'Central US'
     sku = 'D13_v2'
     capacity = 5
@@ -71,7 +82,7 @@ pip install azure-mgmt-kusto
 
     可以使用其他可选参数，例如群集的容量。
     
-1. 设置[凭据](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python)
+1. 设置[凭据](/azure/python/python-sdk-azure-authenticate)
 
 1. 运行以下命令，检查群集是否已成功创建：
 
@@ -119,7 +130,7 @@ pip install azure-mgmt-kusto
 
 ## <a name="clean-up-resources"></a>清理资源
 
-* 如果计划学习其他快速入门和教程，请保留创建的资源。
+* 如果计划学习我们的其他文章，请保留已创建的资源。
 * 若要清理资源，请删除群集。 删除群集时，也会删除其中的所有数据库。 使用以下命令删除群集：
 
     ```Python
@@ -128,5 +139,4 @@ pip install azure-mgmt-kusto
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [快速入门：使用 Azure 数据资源管理器 Python 库引入数据](python-ingest-data.md)
+* [使用 Azure 数据资源管理器 Python 库引入数据](python-ingest-data.md)

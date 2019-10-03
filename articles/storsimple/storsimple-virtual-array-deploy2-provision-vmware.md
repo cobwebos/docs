@@ -12,20 +12,23 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/11/2019
+ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c9fe597957057dc61da5c2b1cf6f9216711764a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
-ms.translationtype: HT
+ms.openlocfilehash: ab5ad8acc5d0769a19a4022c55e0461e7ce42762
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247837"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516823"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>部署 StorSimple 虚拟阵列 - 在 VMware 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>概述
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 本教程介绍如何在运行 VMware ESXi 5.0、5.5、6.0 或 6.5 的主机系统上预配和连接 StorSimple 虚拟阵列。 本文适用于在 Azure 门户和 Microsoft Azure 政府云中部署 StorSimple 虚拟阵列的情况。
 
 需要管理员权限才能预配和连接虚拟设备。 完成预配和初始设置可能需要大约 10 分钟。
@@ -99,7 +102,7 @@ ms.locfileid: "54247837"
 7. 此时会显示“数据存储浏览器”窗口。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. 在工具栏中，单击 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) 图标创建新的文件夹。 指定文件夹名称，将其记录下来。 稍后创建虚拟机时需用到此文件夹名称（建议的最佳做法）。 单击“确定”。
+8. 在工具栏中，单击 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) 图标创建新的文件夹。 指定文件夹名称，将其记录下来。 稍后创建虚拟机时需用到此文件夹名称（建议的最佳做法）。 单击 **“确定”** 。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
 9. 新文件夹会显示在“数据存储浏览器”的左窗格中。
@@ -128,7 +131,7 @@ ms.locfileid: "54247837"
 17. 在“存储”页上，选择要用于预配 VM 的数据存储。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image18.png)
-18. 在“虚拟机版本”页上，选择“虚拟机版本: 8”。
+18. 在“虚拟机版本”页上，选择“虚拟机版本:8”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
 19. 在“来宾操作系统”页上，选择“Windows”作为“来宾操作系统”。 从下拉列表中选择“Microsoft Windows Server 2012 (64 位)”作为“版本”。
@@ -173,10 +176,10 @@ ms.locfileid: "54247837"
 32. 在“高级选项”页上，接受默认值。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. 在“准备完成”页上，查看磁盘选项。 单击“完成”。
+33. 在“准备完成”页上，查看磁盘选项。 单击 **“完成”** 。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. 返回到“虚拟机属性”页。 新硬盘已添加到虚拟机。 单击“完成”。
+34. 返回到“虚拟机属性”页。 新硬盘已添加到虚拟机。 单击 **“完成”** 。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
 35. 在右窗格中选中虚拟机以后，导航到“摘要”选项卡。查看虚拟机的设置。

@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
 ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58074431"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60691068"
 ---
 # <a name="set-up-a-capacity-pool"></a>设置容量池
 
@@ -33,11 +33,11 @@ ms.locfileid: "58074431"
 
 ## <a name="steps"></a>Steps 
 
-1. 转到 NetApp 帐户的管理边栏选项卡，从导航窗格中单击“容量池”。  
+1. 转到 NetApp 帐户的管理边栏选项卡，从导航窗格中单击“容量池”。   
     
     ![导航到容量池](../media/azure-netapp-files/azure-netapp-files-navigate-to-capacity-pool.png)
 
-2. 单击“+ 添加池”以创建一个新容量池。   
+2. 单击“+ 添加池”  以创建一个新容量池。   
     此时将显示“新建容量池”窗口。
 
 3. 提供新容量池的以下信息：  
@@ -55,7 +55,7 @@ ms.locfileid: "58074431"
       
      ![新建容量池](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. 单击“确定”。
+4. 单击“确定”。 
 
 ## <a name="next-steps"></a>后续步骤 
 

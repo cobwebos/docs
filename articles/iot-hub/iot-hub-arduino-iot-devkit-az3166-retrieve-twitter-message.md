@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101204"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60779695"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>摇一摇，摇一条推文 - 使用 Azure Functions 检索 Twitter 消息
 
@@ -49,10 +49,10 @@ ms.locfileid: "58101204"
 
 ### <a name="open-the-arduino-examples-folder"></a>打开 Arduino 示例文件夹
 
-展开左侧的“ARDUINO 示例”部分，浏览到 MXCHIP AZ3166 的示例”>“AzureIoT”，然后选择“ShakeShake”。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹。 如果看不到“MXCHIP AZ3166”部分，请确保设备已正确连接，并重启 Visual Studio Code。  
+展开左侧的“ARDUINO 示例”部分，浏览到 MXCHIP AZ3166 的示例”>“AzureIoT”，然后选择“ShakeShake”    。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹。 如果看不到“MXCHIP AZ3166”部分，请确保设备已正确连接，并重启 Visual Studio Code。  
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-也可从命令面板打开示例项目。 单击 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino:Examples”。
+也可从命令面板打开示例项目。 单击 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino:   Examples”。
 
 ## <a name="provision-azure-services"></a>预配 Azure 服务
 
@@ -167,7 +167,7 @@ Arduino 草图将事件发送到 Azure IoT 中心。 此事件触发 Azure Funct
 
 3. 使用[某种实用工具](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/)，通过这两个密钥生成 Twitter 持有者令牌。
 
-4. 在 [Azure 门户](https://portal.azure.com/){:target="_blank"} 中，转到“资源组”并找到“Shake, Shake”项目的 Azure 函数（类型：应用服务）。 名称始终包含“shake...”字符串。
+4. 在 [Azure 门户](https://portal.azure.com/){:target="_blank"} 中，转到“资源组”并找到  “Shake, Shake”项目的 Azure 函数（类型：应用服务）。 名称始终包含“shake...”字符串。
 
    ![azure-function](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
@@ -179,7 +179,7 @@ Arduino 草图将事件发送到 Azure IoT 中心。 此事件触发 Azure Funct
   
    ![twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
-6. 保存文件并单击“运行”。
+6. 保存文件并单击“运行”。 
 
 ## <a name="problems-and-feedback"></a>问题和反馈
 

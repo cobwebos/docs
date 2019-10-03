@@ -5,33 +5,37 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 04/11/2019
 ms.author: mimart
 author: msmimart
-manager: celested
+manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0a4e4a05427b1ed83b017b7a49862596aaf50a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 21117e551642571d5b974e66d0769ed9906b9d50
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799399"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018196"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 
-作为用户获得了任何有限的管理员目录角色，你可以使用 Azure 门户邀请 B2B 协作用户。 可将来宾用户邀请到目录、组或应用程序。 通过上述任一方法邀请用户后，受邀用户的帐户将添加到 Azure Active Directory (Azure AD)，其用户类型为“来宾”。 然后，来宾用户必须兑换其邀请才能访问资源。
+对于分配有任何有限管理员目录角色的用户，你可以使用 Azure 门户来邀请 B2B 协作用户。 可将来宾用户邀请到目录、组或应用程序。 通过上述任一方法邀请用户后，受邀用户的帐户将添加到 Azure Active Directory (Azure AD)，其用户类型为“来宾”。 然后，来宾用户必须兑换其邀请才能访问资源。 用户的邀请不会过期。
 
 将来宾用户添加到目录后，你可以向来宾用户发送指向共享应用程序的直接链接，或者来宾用户可以单击邀请电子邮件中的兑换 URL。 有关兑换过程的详细信息，请参阅 [B2B 协作邀请兑换](redemption-experience.md)。
 
 > [!IMPORTANT]
 > 应按照[如何：在 Azure Active Directory 中添加组织的隐私信息](https://aka.ms/adprivacystatement)中的步骤添加组织的隐私声明的 URL。 作为首次邀请兑换进程的一部分，受邀的用户必须同意你的隐私条款才能继续操作。 
 
+## <a name="before-you-begin"></a>开始之前
+
+确保你的组织的外部协作设置已配置为允许你邀请来宾。 默认情况下，所有用户和管理员都可以邀请来宾。 但可能会将组织的外部协作策略配置为阻止某些类型的用户或管理员邀请来宾。 若要了解如何查看和设置这些策略，请参阅[启用 B2B 外部协作和管理可以邀请来宾的人员](delegate-invitations.md)。
+
 ## <a name="add-guest-users-to-the-directory"></a>将来宾用户添加到目录
 
 若要将 B2B 协作用户添加到目录，请执行以下步骤：
 
-1. 登录到[Azure 门户](https://portal.azure.com)的用户是分配任何有限管理员目录角色。
+1. 以分配有有限管理员目录角色或来宾邀请者角色的用户身份登录到[Azure 门户](https://portal.azure.com)。
 2. 在导航窗格中选择“Azure Active Directory”。
 3. 在“管理”下，选择“用户”。
 4. 选择“新来宾用户”。
@@ -56,7 +60,7 @@ ms.locfileid: "59799399"
 ![显示“来宾”用户类型的 B2B 用户](./media/add-users-administrator/GuestUserType.png)  
 
 ## <a name="add-guest-users-to-a-group"></a>将来宾用户添加到组
-如果需要以 Azure AD 管理员的身份手动将 B2B 协作用户添加到组，请执行以下步骤：
+如果需要手动将 B2B 协作用户添加到组，请执行以下步骤：
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在导航窗格中选择“Azure Active Directory”。
@@ -73,7 +77,7 @@ ms.locfileid: "59799399"
 
 ## <a name="add-guest-users-to-an-application"></a>将来宾用户添加到应用程序
 
-若要以 Azure AD 管理员的身份将 B2B 协作用户添加到应用程序，请执行以下步骤：
+若要将 B2B 协作用户添加到应用程序，请执行以下步骤：
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在导航窗格中选择“Azure Active Directory”。
@@ -83,7 +87,7 @@ ms.locfileid: "59799399"
 
     ![用于打开“用户和组”窗格的“用户总数”按钮](./media/add-users-administrator/AppUsersAndGroups.png)
 
-6. 选择“添加用户”。
+6. 选择**添加用户**。
 7. 在“添加分配”下，选择“用户和组”。
 8. 执行下列操作之一：
    - 如果目录中已存在该来宾用户，请搜索 B2B 用户。 选择用户，单击“选择”，然后单击“分配”将该用户添加到应用。

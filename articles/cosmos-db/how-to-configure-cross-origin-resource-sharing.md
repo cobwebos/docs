@@ -4,14 +4,14 @@ description: 本文介绍如何使用 Azure 门户和 Azure 资源管理器模�
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2018
+ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 689b0bb08e300efc7c5e93dbf346040b82a7c52d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 1269c4c2405e9b906b63c8a29c0de1ac217da1d7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468472"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66241895"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>配置跨源资源共享 (CORS) 
 
@@ -23,9 +23,9 @@ ms.locfileid: "55468472"
 
 使用以下步骤通过 Azure 门户启用跨源资源共享：
 
-1. 导航到 Azure Cosmos DB 帐户。 打开“CORS”边栏选项卡。
+1. 导航到 Azure Cosmos DB 帐户。 打开“CORS”  边栏选项卡。
 
-2. 指定可以对 Azure Cosmos DB 帐户执行跨源调用的源的逗号分隔列表。 例如：`https://www.mydomain.com`、`https://mydomain.com`、`https://api.mydomain.com`。 还可以使用通配符“\*”允许所有源，然后选择“提交”。 
+2. 指定可以对 Azure Cosmos DB 帐户执行跨源调用的源的逗号分隔列表。 例如：`https://www.mydomain.com`、`https://mydomain.com`、`https://api.mydomain.com`。 还可以使用通配符“\*”允许所有源，然后选择“提交”  。 
 
    > [!NOTE]
    > 目前，不能将通配符用作域名的一部分。 例如，尚不支持 `https://*.mydomain.net` 格式。 

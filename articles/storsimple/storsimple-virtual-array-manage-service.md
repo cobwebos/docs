@@ -12,17 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2016
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38688147"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516668"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>为 StorSimple 虚拟阵列部署 StorSimple Device Manager 服务
+
 ## <a name="overview"></a>概述
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 StorSimple 设备。 创建该服务后，可以使用它从浏览器中运行的 Microsoft Azure 门户管理设备。 这使得可以从单个中央位置监视连接到 StorSimple Device Manager 服务的所有设备，因此最大限度地减少了管理负担。
 
@@ -70,7 +73,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 1. 转到“所有资源”。 搜索 StorSimple Device Manager 服务。 选择要删除的服务。
    
     ![选择要删除的服务](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. 转到服务仪表板，确保没有设备连接到该服务。 如果没有设备注册到此服务，则还将看到指示此内容的横幅消息。 单击“删除” 。
+2. 转到服务仪表板，确保没有设备连接到该服务。 如果没有设备注册到此服务，则还将看到指示此内容的横幅消息。 单击“删除”。
    
     ![删除服务](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 

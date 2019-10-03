@@ -1,24 +1,18 @@
 ---
 title: 异步操作的状态 - Azure 资源管理器
 description: 介绍如何在 Azure 中跟踪异步操作。 它显示用于获取长时间运行操作的状态的值。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 1b05ed50f08ddbf2eb5da8e08f5bf623596e1f9b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
-ms.translationtype: HT
+ms.openlocfilehash: 56d55365a243a9e51e96985ee0035c43404f82f0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135451"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206302"
 ---
 # <a name="track-asynchronous-azure-operations"></a>跟踪异步 Azure 操作
 某些 Azure REST 操作以异步方式运行，因为操作无法快速完成。 本文介绍如何通过响应中返回的值跟踪异步操作的状态。  
@@ -85,12 +79,12 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 * 已失败
 * 已取消
 
-所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”。
+所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”  。
 
 ## <a name="example-requests-and-responses"></a>示例请求和响应
 
 ### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>启动虚拟机（Azure-AsyncOperation 标头出现 202 响应）
-此示例演示如何确定虚拟机的“启动”操作的状态。 初始请求采用以下格式：
+此示例演示如何确定虚拟机的“启动”  操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 POST 
@@ -122,7 +116,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>部署资源（Azure-AsyncOperation 标头出现 201 响应）
 
-此示例演示将资源部署到 Azure 时，如何确定“部署”操作的状态。 初始请求采用以下格式：
+此示例演示将资源部署到 Azure 时，如何确定“部署”  操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT
@@ -162,7 +156,7 @@ https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{res
 
 ### <a name="create-storage-account-202-with-location-and-retry-after"></a>创建存储帐户（Location 和 Retry-After 标头出现 202 响应）
 
-此示例演示如何确定存储帐户的“创建”操作的状态。 初始请求采用以下格式：
+此示例演示如何确定存储帐户的“创建”  操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT

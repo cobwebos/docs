@@ -1,11 +1,10 @@
 ---
 title: 连接到 Azure AD 时对 MVC 项目所做的更改
 description: 描述一下，使用 Visual Studio 连接服务连接到 Azure AD 时，MVC 项目会发生什么情况
-services: active-directory
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
-ms.prod: visual-studio-dev15
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd57eadc2c42c17343eee6d813072866e8ea09e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 4c4328ea6145d32616f1784d94976dab29216fbc
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196206"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852012"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况？
 
@@ -34,7 +33,7 @@ ms.locfileid: "56196206"
 
 影响项目文件 *.NET 引用和 `packages.config`（NuGet 引用）。
 
-| Type | 引用 |
+| 类型 | 参考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -49,7 +48,7 @@ ms.locfileid: "56196206"
 
 选择了“读取目录数据”选项时的其他引用：
 
-| Type | 引用 |
+| 类型 | 参考 |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer（仅限 Visual Studio 2015） |
@@ -63,7 +62,7 @@ ms.locfileid: "56196206"
 
 删除了以下引用（仅限 ASP.NET 4 项目，如 Visual Studio 2015 中所示）：
 
-| Type | 引用 |
+| type | 参考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -145,7 +144,7 @@ ms.locfileid: "56196206"
 
 ### <a name="file-backup-visual-studio-2015"></a>文件备份 (Visual Studio 2015)
 
-添加连接服务时，Visual Studio 2015 备份已更改并已删除文件。 所有受影响的文件均保存在文件夹 `Backup/AzureAD` 中。 Visual Studio 2017 不会创建备份。
+添加连接服务时，Visual Studio 2015 备份已更改并已删除文件。 所有受影响的文件均保存在文件夹 `Backup/AzureAD` 中。 Visual Studio 2017 及更高版本不会创建备份。
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`

@@ -1,158 +1,143 @@
 ---
-title: 创建基于事件的工作流或操作 - Azure 逻辑应用 | Microsoft Docs
-description: 使用 Webhook 和 Azure 逻辑应用自动执行基于事件的工作流或操作
+title: 在 Azure 逻辑应用中创建基于事件的任务和工作流
+description: 触发、 暂停和恢复自动化的任务、 流程和基于使用 Azure 逻辑应用终结点处发生的事件的工作流
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
-ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
-ms.topic: article
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 07/05/2019
 tags: connectors
-ms.date: 07/21/2016
-ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c2658df185d4836210c496d2c46a00a3541257a2
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895573"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541363"
 ---
-# <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>使用 Webhook 和 Azure 逻辑应用创建基于事件的工作流或操作
+# <a name="automate-event-based-tasks-and-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP webhook 自动执行基于事件的任务和工作流
 
-借助 Webhook 操作和触发器，可启动、暂停和恢复流以执行以下任务：
+与[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置 HTTP Webhook 连接器，你可以自动执行等待和基于通过构建逻辑应用的 HTTP 或 HTTPS 终结点处发生的特定事件运行的工作流。 例如，可以创建一个逻辑应用，通过触发工作流和运行指定的操作，而不是定期检查之前等待特定事件来监视服务终结点或*轮询*该终结点。
 
-* 收到项目时从 [Azure 事件中心](https://github.com/logicappsio/EventHubAPI)触发
-* 在继续工作流之前等待批准
+下面是一些示例基于事件的工作流：
 
-深入了解[如何创建支持 webhook 的自定义 API](../logic-apps/logic-apps-create-api-app.md)。
+* 等待的项从到达[Azure 事件中心](https://github.com/logicappsio/EventHubAPI)之前触发逻辑应用运行。
+* 等待获得批准才能继续工作流。
 
-## <a name="use-the-webhook-trigger"></a>使用 Webhook 触发器
+## <a name="how-do-webhooks-work"></a>Webhook 是如何工作的？
 
-[触发器](../connectors/apis-list.md)是一个会启动逻辑应用工作流的事件。 Webhook 触发器是基于事件的这不依赖于轮询新项目。 当使用 webhook 触发器保存逻辑应用或逻辑应用从禁用到更改时启用 webhook 触发器*订阅*到指定的服务或通过注册的终结点*回调 URL*与该服务或终结点。 然后，该触发器使用该 URL 来根据需要运行逻辑应用。 像[请求触发器](connectors-native-reqres.md)，立即预期的事件发生时，会触发逻辑应用。 触发器*取消订阅*如果删除的触发器并保存逻辑应用，或者当您更改为已禁用已启用从逻辑应用。
+HTTP webhook 触发器是基于事件的这并不依赖于检查或定期轮询的新项。 保存逻辑应用 webhook 触发器，以开始或者更改逻辑应用从禁用启用 webhook 触发器时*订阅*到特定服务或终结点通过注册*回调 URL*与该服务或终结点。 然后，该触发器等待该服务或终结点为调用的 URL，开始运行逻辑应用。 类似于[请求触发器](connectors-native-reqres.md)，立即在指定的事件发生时，会触发逻辑应用。 触发器*取消订阅*从服务或终结点删除的触发器和保存逻辑应用，如果更改从逻辑应用时启用或为已禁用。
 
-以下示例演示如何在逻辑应用设计器中设置 HTTP 触发器。 这些步骤假设之前已部署或正在访问遵循[逻辑应用中的 webhook 订阅和取消订阅模式](../logic-apps/logic-apps-create-api-app.md#webhook-triggers)的 API。 
-
-**添加 Webhook 触发器**
-
-1. 作为逻辑应用中的第一步，添加 **HTTP Webhook** 触发器。
-2. 为 webhook 订阅和取消订阅调用填写参数。
-
-   此步骤遵循与 [HTTP 操作](connectors-native-http.md)格式相同的模式。
-
-     ![HTTP 触发器](./media/connectors-native-webhook/using-trigger.png)
-
-3. 至少添加一个操作。
-4. 单击“保存”以发布逻辑应用。 此步骤将使用触发此逻辑应用所需的回调 URL 调用订阅终结点。
-5. 每当服务向回调 URL 发送 `HTTP POST` 请求时，逻辑应用都会触发，并包含传递到请求中的任何数据。
-
-## <a name="use-the-webhook-action"></a>使用 Webhook 操作
-
-[*操作*](../connectors/apis-list.md)是一种定义操作和逻辑应用的工作流运行。 逻辑应用的 webhook 操作，该操作的运行时*订阅*到指定的服务或通过注册的终结点*回调 URL*与该服务或终结点。 Webhook 操作然后等待，直到服务调用逻辑应用继续运行之前的 URL。 逻辑应用从服务或终结点在这些情况下取消订阅： 
+HTTP webhook 操作也是基于事件的并*订阅*到特定服务或通过注册的终结点*回调 URL*与该服务或终结点。 Webhook 操作暂停逻辑应用工作流，并将一直等待直到服务或终结点调用逻辑应用继续运行之前的 URL。 操作逻辑应用*取消订阅*从服务或在这些情况下的终结点：
 
 * Webhook 操作成功完成
 * 如果等待响应时取消逻辑应用运行
 * 之前的逻辑应用超时
 
-例如， [**发送审批电子邮件**](connectors-create-api-office365-outlook.md)操作是采用这种模式的 webhook 操作的示例。 可通过 Webhook 操作将此模式扩展到任何服务中。 
+例如，Office 365 Outlook 连接器[**发送审批电子邮件**](connectors-create-api-office365-outlook.md)操作是采用这种模式的 webhook 操作的示例。 使用 webhook 操作，您可以将此模式扩展到任何服务。
 
-以下示例演示如何在逻辑应用设计器中设置 webhook 操作。 这些步骤假设之前已部署或正在访问遵循[逻辑应用中使用的 webhook 订阅和取消订阅模式](../logic-apps/logic-apps-create-api-app.md#webhook-actions)的 API。 
+有关详细信息，请参阅以下主题：
 
-**添加 webhook 操作**
+* [HTTP Webhook 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
+* [Webhook 和订阅](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
+* [创建支持 webhook 的自定义 Api](../logic-apps/logic-apps-create-api-app.md)
 
-1. 选择“新步骤” > “添加操作”。
+## <a name="prerequisites"></a>必备组件
 
-2. 在搜索框中，键入“webhook”，查找 **HTTP Webhook** 操作。
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-    ![选择查询操作](./media/connectors-native-webhook/using-action-1.png)
+* 已部署的终结点的 URL 或 API，支持 webhook 订阅和取消订阅模式[逻辑应用中的 webhook 触发器](../logic-apps/logic-apps-create-api-app.md#webhook-triggers)或[在逻辑应用中的 webhook 操作](../logic-apps/logic-apps-create-api-app.md#webhook-actions)根据
 
-3. 为 Webhook 订阅和取消订阅调用填写参数
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-   此步骤遵循与 [HTTP 操作](connectors-native-http.md)格式相同的模式。
+* 想要等待的时间在目标终结点上的特定事件的逻辑应用。 若要使用 HTTP Webhook 触发器，启动[创建空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 HTTP Webhook 操作，请使用所需的任何触发器启动逻辑应用。 此示例使用 HTTP 触发器的第一步。
 
-     ![完成查询操作](./media/connectors-native-webhook/using-action-2.png)
-   
-   在运行时，逻辑应用在进行到该步骤后调用订阅终结点。
+## <a name="add-an-http-webhook-trigger"></a>添加 HTTP Webhook 触发器
 
-4. 单击“保存”以发布逻辑应用。
+此内置触发器与指定的服务注册回调 URL，并等待该服务将 HTTP POST 请求发送到该 URL。 此事件发生时，触发器触发并立即运行逻辑应用。
 
-## <a name="technical-details"></a>技术详细信息
+1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
 
-以下是有关 webhook 支持的触发器和操作的详细信息。
+1. 在设计器中，搜索框中，作为筛选器中输入"http webhook"。 从**触发器**列表中，选择**HTTP Webhook**触发器。
 
-## <a name="webhook-triggers"></a>Webhook 触发器
+   ![选择 HTTP Webhook 触发器](./media/connectors-native-webhook/select-http-webhook-trigger.png)
 
-| 操作 | 描述 |
-| --- | --- |
-| HTTP Webhook |将回调 URL 订阅到可调用该 URL 的服务以按需触发逻辑应用。 |
+   此示例将"HTTP Webhook 触发器"的触发器，以便具有更具描述性的名称。 此外，示例更高版本将添加 HTTP Webhook 操作，并且这两个名称必须是唯一。
 
-### <a name="trigger-details"></a>触发器详细信息
+1. 提供的值[HTTP Webhook 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)你想要用于订阅和取消订阅调用，例如：
 
-#### <a name="http-webhook"></a>HTTP Webhook
+   ![输入 HTTP Webhook 触发器参数](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-将回调 URL 订阅到可调用该 URL 的服务以按需触发逻辑应用。
-\* 表示必填字段。
+1. 若要添加其他可用参数，请打开**添加新参数**列表，然后选择所需的参数。
 
-| 显示名称 | 属性名称 | 描述 |
-| --- | --- | --- |
-| 订阅方法* |方法 |要用于订阅请求的 HTTP 方法 |
-| 订阅 URI* |uri |要用于订阅请求的 HTTP URI |
-| 取消订阅方法* |方法 |要用于取消订阅请求的 HTTP 方法 |
-| 取消订阅 URI* |uri |要用于取消订阅请求的 HTTP URI |
-| 订阅正文 |body |订阅的 HTTP 请求正文 |
-| 订阅标头 |headers |订阅的 HTTP 请求标头 |
-| 订阅身份验证 |authentication |要用于订阅的 HTTP 身份验证。 有关详细信息，[请参阅 HTTP 连接器](connectors-native-http.md#authentication) |
-| 取消订阅正文 |body |取消订阅的 HTTP 请求正文 |
-| 取消订阅标头 |headers |取消订阅的 HTTP 请求标头 |
-| 取消订阅身份验证 |authentication |要用于取消订阅的 HTTP 身份验证。 有关详细信息，[请参阅 HTTP 连接器](connectors-native-http.md#authentication) |
+   有关可用的身份验证类型为 HTTP Webhook 的详细信息，请参阅[进行身份验证的 HTTP 触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)。
 
-**输出详细信息**
+1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
-Webhook 请求
+1. 完成后，完成后，请记住保存逻辑应用。 在设计器工具栏上，选择**保存**。
 
-| 属性名称 | 数据类型 | 描述 |
-| --- | --- | --- |
-| 标头 |对象 |Webhook 请求标头 |
-| Body |对象 |Webhook 请求对象 |
-| 状态代码 |int |Webhook 请求状态代码 |
+   正在保存逻辑应用调用订阅终结点并注册回调 URL 用于触发此逻辑应用。
 
-## <a name="webhook-actions"></a>Webhook 操作
+1. 现在，只要目标服务发送`HTTP POST`请求到回调 URL，逻辑应用就会激发，并且包括任何传递请求的数据。
 
-| 操作 | 描述 |
-| --- | --- |
-| HTTP Webhook |将回调 URL 订阅到可调用该 URL 的服务以按需恢复工作流步骤。 |
+## <a name="add-an-http-webhook-action"></a>添加 HTTP Webhook 操作
 
-### <a name="action-details"></a>操作详细信息
+此内置操作使用指定的服务注册回调 URL、 暂停逻辑应用的工作流，并等待该服务将 HTTP POST 请求发送到该 URL。 此事件发生时，该操作将继续运行逻辑应用。
 
-#### <a name="http-webhook"></a>HTTP Webhook
+1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
 
-将回调 URL 订阅到可调用该 URL 的服务以按需恢复工作流步骤。
-\* 表示必填字段。
+   此示例的第一步使用 HTTP Webhook 触发器。
 
-| 显示名称 | 属性名称 | 描述 |
-| --- | --- | --- |
-| 订阅方法* |方法 |要用于订阅请求的 HTTP 方法 |
-| 订阅 URI* |uri |要用于订阅请求的 HTTP URI |
-| 取消订阅方法* |方法 |要用于取消订阅请求的 HTTP 方法 |
-| 取消订阅 URI* |uri |要用于取消订阅请求的 HTTP URI |
-| 订阅正文 |body |订阅的 HTTP 请求正文 |
-| 订阅标头 |headers |订阅的 HTTP 请求标头 |
-| 订阅身份验证 |authentication |要用于订阅的 HTTP 身份验证。 有关详细信息，[请参阅 HTTP 连接器](connectors-native-http.md#authentication) |
-| 取消订阅正文 |body |取消订阅的 HTTP 请求正文 |
-| 取消订阅标头 |headers |取消订阅的 HTTP 请求标头 |
-| 取消订阅身份验证 |authentication |要用于取消订阅的 HTTP 身份验证。 有关详细信息，[请参阅 HTTP 连接器](connectors-native-http.md#authentication) |
+1. 在下，你想要添加 HTTP Webhook 操作步骤中，选择**新步骤**。
 
-**输出详细信息**
+   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择加号 ( **+** ) 的出现，并选择**添加操作**。
 
-Webhook 请求
+1. 在设计器中，搜索框中，作为筛选器中输入"http webhook"。 从**操作**列表中，选择**HTTP Webhook**操作。
 
-| 属性名称 | 数据类型 | 描述 |
-| --- | --- | --- |
-| 标头 |对象 |Webhook 请求标头 |
-| Body |对象 |Webhook 请求对象 |
-| 状态代码 |int |Webhook 请求状态代码 |
+   ![选择 HTTP Webhook 操作](./media/connectors-native-webhook/select-http-webhook-action.png)
+
+   此示例中重命名为"HTTP Webhook 操作"的操作，以便具有更具描述性的名称。
+
+1. HTTP Webhook 操作参数，类似于提供的值[HTTP Webhook 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger)你想要用于订阅和取消订阅调用，例如：
+
+   ![输入 HTTP Webhook 操作参数](./media/connectors-native-webhook/http-webhook-action-parameters.png)
+
+   在运行时，逻辑应用调用订阅终结点，运行此操作时。 逻辑应用，然后暂停工作流并等待目标服务以发送`HTTP POST`到回调 URL 的请求。 如果操作成功完成，该操作的取消订阅从终结点，并且恢复逻辑应用运行工作流。
+
+1. 若要添加其他可用参数，请打开**添加新参数**列表，然后选择所需的参数。
+
+   有关可用的身份验证类型为 HTTP Webhook 的详细信息，请参阅[进行身份验证的 HTTP 触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)。
+
+1. 完成后，请记住保存逻辑应用。 在设计器工具栏上，选择**保存**。
+
+## <a name="connector-reference"></a>连接器参考
+
+详细了解触发器和操作的参数，分别彼此相似，请参阅[HTTP Webhook 参数](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger)。
+
+### <a name="output-details"></a>输出详细信息
+
+下面是有关从 HTTP Webhook 触发器或操作，它将返回此信息的输出的详细信息：
+
+| 属性名称 | Type | 描述 |
+|---------------|------|-------------|
+| headers | object | 从请求标头 |
+| body | object | JSON 对象 | 具有从请求的正文内容的对象 |
+| 状态代码 | int | 请求中的状态代码 |
+|||
+
+| 状态代码 | 描述 |
+|-------------|-------------|
+| 200 | OK |
+| 202 | 已接受 |
+| 400 | 错误的请求 |
+| 401 | 未授权 |
+| 403 | 禁止 |
+| 404 | 未找到 |
+| 500 | 内部服务器错误。 发生未知错误。 |
+|||
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [查找其他连接器](apis-list.md)
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

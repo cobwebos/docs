@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: bcb76fcbba02bf53b48cc462e3dad8f264db02ed
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 05626535a2ab2d8da29b8c817ebfe84c257c76aa
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540429"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845059"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>使用转储和还原将 MariaDB 数据库迁移到 Azure Database for MariaDB
 本文介绍了在 Azure Database for MariaDB 中备份和还原数据库的两种常见方式
@@ -78,10 +78,6 @@ $ mysqldump -u root -p testdb table1 table2 > testdb_tables_backup.sql
 若要一次性备份多个数据库，请使用 --database 切换并列出数据库名（用空格隔开）。 
 ```bash
 $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sql 
-```
-若要一次性备份服务器中的所有数据库，应使用 --all-databases 选项。
-```bash
-$ mysqldump -u root -p --all-databases > alldb_backup.sql 
 ```
 
 ## <a name="create-a-database-on-the-target-server"></a>在目标服务器上创建数据库

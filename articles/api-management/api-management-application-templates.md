@@ -10,21 +10,20 @@ ms.assetid: f3122c4d-e10e-4cdf-977b-36e8f4133fc8
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 732fdf3f9210a1484895e0b43e061b4bbc586b43
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: efb668971bc4a8c5a0968836aab71107aa6b88d5
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541258"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072653"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API 管理中的应用程序模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
   
- 本部分中的模板可用于自定义开发人员门户中应用程序页面的内容。  
+ 本部分中的模板可用于自定义开发人员门户中的应用程序页面的内容。  
   
 -   [应用程序列表](#ProductList)  
   
@@ -72,7 +71,7 @@ ms.locfileid: "58541258"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控件  
  `Product list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
@@ -83,7 +82,7 @@ ms.locfileid: "58541258"
 |--------------|----------|-----------------|  
 |`Paging`|[分页](api-management-template-data-model-reference.md#Paging)实体。|应用程序集合的分页信息。|  
 |`Applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|对当前用户可见的应用程序。|  
-|`CategoryName`|字符串|应用程序的类别。|  
+|`CategoryName`|string|应用程序的类别。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -179,7 +178,7 @@ ms.locfileid: "58541258"
   
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控件  
  `Application` 模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  

@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: 92a5f7c058904015cb22a239b7e7c4938ae1fdae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895246"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61044632"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI 元素
 一个允许用户指定要上传的一个或多个文件的控件。

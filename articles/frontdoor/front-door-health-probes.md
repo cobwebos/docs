@@ -11,16 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 256d530590fadc9e2aeb1ea1efb7a52608014978
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 289b05a2c50a2b4af50eb2114515a49bb653cf1a
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988557"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742395"
 ---
 # <a name="health-probes"></a>运行状况探测
 
-为了确定每个后端的运行状况，每个 Front Door 环境将定期向每个配置的后端发送综合 HTTP/HTTPS 请求。 Front Door 然后使用这些探测的响应来确定它应将实际客户端请求路由到的“最佳”后端。
+为了确定每个后端的运行状况，每个 Front Door 环境将定期向每个配置的后端发送综合 HTTP/HTTPS 请求。 Front Door 然后使用这些探测的响应来确定它应将实际客户端请求路由到的“最佳”后端。 请注意, 由于前门在全局上有许多边缘环境, 因此后端的运行状况探测请求量可以高达多个请求, 每秒的请求数取决于配置的运行状况探测频率。 
+
 
 
 ## <a name="supported-protocols"></a>支持的协议
@@ -29,7 +30,7 @@ Front Door 支持通过 HTTP 或 HTTPS 协议发送探测。 这些探测通过�
 
 ## <a name="health-probe-responses"></a>运行状况探测响应
 
-| 响应  | Description | 
+| Responses  | 描述 | 
 | ------------- | ------------- |
 | 确定运行状况  |  200 OK 状态代码指示后端运行状况良好。 所有其他状态均视为失败。 如果出于任何原因（包括网络失败），探测未接收到有效的 HTTP 响应，则探测被视为失败。|
 | 测量延迟  | 延迟是指从我们发送探测请求前的一刻到我们收到响应的最后一个字节的一刻所测得的时钟时间。 我们为每个请求都使用新的 TCP 连接，因此，此测量不会偏向使用现有热连接的后端。  |

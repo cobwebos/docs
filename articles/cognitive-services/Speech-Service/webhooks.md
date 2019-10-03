@@ -1,30 +1,29 @@
 ---
 title: Webhook-语音服务
-titlesuffix: Azure Cognitive Services
-description: Webhook 是 HTTP 回调理想优化你的解决方案时面对的长时间运行的进程，如导入、 自适应、 准确性测试或转录的长时间运行的文件。
+titleSuffix: Azure Cognitive Services
+description: Webhook 是 HTTP 调用, 适用于在处理长时间运行的进程 (如导入、适应、准确性测试或长时间运行的文件的转录) 时优化解决方案。
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 7b47d4fc3aa4a1a50e441e668a856703c67045ae
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 3d07e540bf88c956f61b5d3b2a98702cad616985
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59581003"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558807"
 ---
-# <a name="webhooks-for-speech-services"></a>语音服务的 Webhook
+# <a name="webhooks-for-speech-services"></a>Webhook for Speech Services
 
-Webhook 就像允许应用程序接受语音服务中的数据变为可用时的 HTTP 回调。 使用 webhook，你可以通过无需连续轮询响应优化我们的 REST Api 的使用。 在下一步的几个部分，将了解如何将 webhook 与语音服务。
+Webhook 类似于 HTTP 回调, 使你的应用程序在可用时可以接受来自语音服务的数据。 使用 webhook, 可以通过无需持续轮询响应来优化 REST Api 的使用。 在接下来的几个部分中, 你将了解如何将 webhook 与语音服务配合使用。
 
 ## <a name="supported-operations"></a>支持的操作
 
-语音服务支持 webhook 的长时间运行的所有操作。 下面列出的操作的每个可以触发的 HTTP 回调完成后。 
+语音服务支持所有长时间运行的操作的 webhook。 下面列出的每项操作都可以在完成后触发 HTTP 回调。
 
 * DataImportCompletion
 * ModelAdaptationCompletion
@@ -33,13 +32,15 @@ Webhook 就像允许应用程序接受语音服务中的数据变为可用时的
 * EndpointDeploymentCompletion
 * EndpointDataCollectionCompletion
 
-接下来，让我们创建 webhook。
+接下来, 让我们创建一个 webhook。
 
 ## <a name="create-a-webhook"></a>创建 Webhook
 
-让我们创建脱机的脚本的 webhook。 方案： 用户已是他们想要使用 Batch 脚本 API 以异步方式转录的长时间运行音频文件。 
+让我们创建一个用于脱机脚本的 webhook。 方案: 用户具有长时间运行的音频文件, 这些文件希望使用批处理脚本 API 异步转录。
 
-请求的配置参数以 JSON 形式提供：
+可以通过向 https://\<\>cris.ai/api/speechtotext/v2.1/transcriptions/hooks 发出 POST 请求来创建 webhook。
+
+请求的配置参数作为 JSON 提供:
 
 ```json
 {
@@ -59,17 +60,17 @@ Webhook 就像允许应用程序接受语音服务中的数据变为可用时的
 
 }
 ```
-对批处理脚本 API 的所有 POST 请求都需要`name`。 `description`和`properties`参数是可选的。
+对批处理脚本 API 发出的所有 POST 请求都`name`需要。 `description` 和`properties`参数是可选的。
 
-`Active`属性用于切换调用返回到你的 URL 打开和关闭而无需删除并重新创建 webhook 注册。 如果您只需要调用返回一次后过程已完成，然后删除 webhook 和交换机`Active`属性设置为 false。
+使用`Active`属性, 无需删除并重新创建 webhook 注册, 就可以打开和关闭 URL。 如果在完成该过程后, 只需调用一次, 请删除 webhook 并将该`Active`属性切换为 false。
 
-事件类型`TranscriptionCompletion`提供事件数组中。 它将返回到你的终结点时调用脚本进入终止状态 (`Succeeded`或`Failed`)。 在调用返回的注册 URL，将包含请求`X-MicrosoftSpeechServices-Event`标头包含已注册的事件类型之一。 没有每个已注册的事件类型的一个请求。 
+事件数组中`TranscriptionCompletion`提供了事件类型。 当脚本进入终端状态 (`Succeeded`或`Failed`) 时, 它将回叫终结点。 当回叫注册的 URL 时, 请求将包含`X-MicrosoftSpeechServices-Event`一个标头, 其中包含一个已注册的事件类型。 每个已注册的事件类型都有一个请求。
 
-没有一种不能订阅的事件类型。 它是`Ping`事件类型。 包含此类型的请求发送到在完成后使用 ping URL （见下文） 时创建 webhook 的 URL。  
+有一种无法订阅的事件类型。 它是`Ping`事件类型。 使用 ping URL 完成创建 webhook 时, 会将具有此类型的请求发送到 URL (请参阅下文)。  
 
-在配置中，`url`属性是必需的。 POST 请求发送到此 URL。 `secret`用于使用 HMAC 密钥作为机密创建 SHA256 哈希的负载。 哈希值设置为`X-MicrosoftSpeechServices-Signature`标头时回调到已注册的 URL。 此标头是 Base64 编码。
+在配置中, 属性`url`是必需的。 POST 请求发送到此 URL。 `secret`用于创建负载的 SHA256 哈希, 并将机密作为 HMAC 密钥。 当回叫注册的 URL `X-MicrosoftSpeechServices-Signature`时, 将哈希设置为标头。 此标头是 Base64 编码的。
 
-此示例演示了如何来验证有效负载使用C#:
+此示例演示如何使用C#验证负载:
 
 ```csharp
 
@@ -92,7 +93,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
             var validated = contentHash.SequenceEqual(storedHash);
         }
     }
- 
+
     switch (eventTypeHeader)
     {
         case WebHookEventType.Ping:
@@ -104,35 +105,79 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
         default:
             break;
     }
- 
+
     return this.Ok();
 }
 
 ```
-在此代码片段，`secret`解码并验证。 此外会发现已切换 webhook 事件类型。 目前没有一个事件，每完成脚本。 代码将重试每个事件 （的一秒延迟） 放弃前的五倍。
+在此代码段中, `secret`解码并验证。 你还会注意到, webhook 事件类型已切换。 目前每个已完成的脚本有一个事件。 在放弃之前, 代码将为每个事件重试5次 (每个事件一次, 延迟一次)。
 
 ### <a name="other-webhook-operations"></a>其他 webhook 操作
 
-若要获取所有已注册的 webhook:GET https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
+获取所有已注册的 webhook:GET https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
 
-若要获取一个特定的 webhook:GET https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
+获取一个特定 webhook:GET https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
-若要删除一个特定的 webhook:DELETE https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
+删除一个特定 webhook:DELETE https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
-> [!Note] 
-> 在上面的示例中，区域是 'westus'。 这应替换为已在 Azure 门户中创建您的语音服务资源的区域。
+> [!Note]
+> 在上面的示例中, 区域为 "westus"。 这应该替换为在 Azure 门户中创建语音服务资源的区域。
 
-开机自检 https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping正文： 空
+POST https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping 正文: 空
 
-将 POST 请求发送到已注册的 URL。 该请求包含`X-MicrosoftSpeechServices-Event`标头值 ping。 如果使用密钥注册 webhook，它将包含`X-MicrosoftSpeechServices-Signature`标头与使用 HMAC 密钥作为机密的有效负载的 SHA256 哈希。 哈希值是 Base64 编码。 
+向注册的 URL 发送 POST 请求。 请求包含`X-MicrosoftSpeechServices-Event`一个带有值 ping 的标头。 如果已使用机密注册 webhook, 则会包含一个`X-MicrosoftSpeechServices-Signature`标头, 其中包含负载为的 SHA256 哈希, 密钥为 HMAC 密钥。 哈希是 Base64 编码的。
 
-开机自检 https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test正文： 空
+POST https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test 正文: 空
 
-如果订阅的事件类型 （脚本） 的实体在系统中存在并处于相应状态，请将 POST 请求发送到已注册的 URL。 将会调用 web 挂钩的最后一个实体中生成负载。 如果没有实体存在，将使用 204 响应 POST。 如果可以进行测试请求，它将使用 200 响应。 请求正文是形状的相同，如 web 挂钩已订阅 （例如脚本） 的特定实体的 GET 请求中所示。 此请求将具有`X-MicrosoftSpeechServices-Event`和`X-MicrosoftSpeechServices-Signature`根据前面所述的标头。
+如果系统中存在订阅事件类型 (脚本) 的实体并且处于适当的状态, 则将 POST 请求发送到已注册的 URL。 将从已调用 web 挂钩的最后一个实体生成有效负载。 如果不存在实体, 则 POST 将以204响应。 如果可以发出测试请求, 则将使用200响应。 请求正文与 web 挂钩已订阅的特定实体的 GET 请求中的形状相同 (例如, 脚本)。 此请求将包含`X-MicrosoftSpeechServices-Event`和`X-MicrosoftSpeechServices-Signature`标头 (如之前所述)。
 
 ### <a name="run-a-test"></a>运行测试
 
-可进行快速测试使用网站 https://bin.webhookrelay.com。 在这里，你可以获取调用后将作为参数传递给用于创建文档中前面所述的 webhook HTTP POST 的 Url。
+可以使用网站 https://bin.webhookrelay.com 完成快速测试。 然后, 你可以获取回调 Url, 以将其作为参数传递给 HTTP POST, 以创建之前在文档中描述的 webhook。
+
+单击 "创建 Bucket", 然后按照屏幕上的说明获取挂钩。 然后, 使用此页中提供的信息向语音服务注册挂钩。 中继消息的有效负载–响应脚本的完成, 如下所示:
+
+```json
+{
+    "results": [],
+    "recordingsUrls": [
+        "my recording URL"
+    ],
+    "models": [
+        {
+            "modelKind": "AcousticAndLanguage",
+            "datasets": [],
+            "id": "a09c8c8b-1090-443c-895c-3b1cf442dec4",
+            "createdDateTime": "2019-03-26T12:48:46Z",
+            "lastActionDateTime": "2019-03-26T14:04:47Z",
+            "status": "Succeeded",
+            "locale": "en-US",
+            "name": "v4.13 Unified",
+            "description": "Unified",
+            "properties": {
+                "Purpose": "OnlineTranscription,BatchTranscription,LanguageAdaptation",
+                "ModelClass": "unified-v4"
+            }
+        }
+    ],
+    "statusMessage": "None.",
+    "id": "d41615e1-a60e-444b-b063-129649810b3a",
+    "createdDateTime": "2019-04-16T09:35:51Z",
+    "lastActionDateTime": "2019-04-16T09:38:09Z",
+    "status": "Succeeded",
+    "locale": "en-US",
+    "name": "Simple transcription",
+    "description": "Simple transcription description",
+    "properties": {
+        "PunctuationMode": "DictatedAndAutomatic",
+        "ProfanityFilterMode": "Masked",
+        "AddWordLevelTimestamps": "True",
+        "AddSentiment": "True",
+        "Duration": "00:00:02"
+    }
+}
+```
+该消息包含记录的 URL 和用于转录该记录的模型。
 
 ## <a name="next-steps"></a>后续步骤
 

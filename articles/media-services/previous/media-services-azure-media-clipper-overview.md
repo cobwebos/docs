@@ -10,11 +10,11 @@ ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 35f1f359b44af00000ccd9047673b80ca541d376
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998206"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61243840"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>使用 Azure 媒体剪辑器创建剪辑 
 
@@ -22,7 +22,7 @@ Azure 媒体剪辑器是免费的 JavaScript 库，能让 Web 开发人员为其
 
 Azure 媒体剪辑器能够执行：
 - 从实时存档剪裁前盖板和后盖板 
-- 编辑 AMS 实时事件、实时存档或 fMP4 VOD 文件中的视频重点 
+- 编辑 AMS 直播活动、实时存档或 fMP4 VOD 文件中的视频重点 
 - 将多个源的视频相连 
 - 从 AMS 媒体资产中生成摘要剪辑 
 - 剪辑具有帧准确度的视频 

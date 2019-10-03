@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 05/21/2019
 ms.author: aschhab
-ms.openlocfilehash: 0364304a203e03faf69868174a45cb41850ce112
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: afa2e6e46579d9ce2906e2686cf40adf4b65ab2b
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733308"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516595"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
 
@@ -49,7 +49,7 @@ Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)�
 | !TopicDescription。<br />EnableFilteringMessagesBeforePublishing 和 SubscriptionDescription。<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
 | EnableDeadLetteringOnMessageExpiration |TTLExpiredException |消息过期并已设为死信。 |
 | SubscriptionDescription.RequiresSession |会话ID 为 null。 |启用会话的实体不允许使用会话标识符为 null 的消息。 |
-| !死信队列 |MaxTransferHopCountExceeded |Null |
+| !死信队列 | MaxTransferHopCountExceeded | 在队列之间转发时允许的最大跃点数。 值设置为4。 |
 | 应用程序显式设为死信 |由应用程序指定 |由应用程序指定 |
 
 ## <a name="exceeding-maxdeliverycount"></a>超过 MaxDeliveryCount
@@ -66,7 +66,7 @@ Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)�
 
 ## <a name="errors-while-processing-subscription-rules"></a>处理订阅规则时的错误
 
-为订阅启用了 [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) 属性时，会在 DLQ 中捕获执行订阅的 SQL 筛选器规则时出现的任何错误以及有问题的消息。
+当为订阅启用了 [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) 属性时，会在 DLQ 中捕获执行订阅的 SQL 筛选器规则时出现的任何错误以及有问题的消息。
 
 ## <a name="application-level-dead-lettering"></a>应用程序级死信
 
@@ -84,7 +84,7 @@ Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)�
 
 ## <a name="example"></a>示例
 
-下面的代码片段将创建一个消息接收器。 在主队列的接收循环中，此代码使用 [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) 检索消息，该方法请求代理立即返回随时可用的任何消息或返回空结果。 如果此代码接收到一条消息，则会立即将其放弃，从而使 `DeliveryCount` 递增。 系统将此消息移动到 DLQ 后，[ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) 返回 **null**，主队列为空，且循环退出。
+下面的代码片段会创建一个消息接收器。 在主队列的接收循环中，此代码使用 [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) 检索消息，该方法请求代理立即返回随时可用的任何消息或返回空结果。 如果此代码接收到一条消息，则会立即将其放弃，从而使 `DeliveryCount` 递增。 系统将此消息移动到 DLQ 后，[ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) 返回 **null**，主队列为空，且循环退出。
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);
@@ -103,10 +103,21 @@ while(true)
 }
 ```
 
+## <a name="path-to-the-dead-letter-queue"></a>死信队列的路径
+可以使用以下语法访问死信队列：
+
+```
+<queue path>/$deadletterqueue
+<topic path>/Subscriptions/<subscription path>/$deadletterqueue
+```
+
+如果使用的是 .NET SDK，则可以通过使用 SubscriptionClient.FormatDeadLetterPath() 方法获取死信队列的路径。 此方法使用 **/$DeadLetterQueue** 接受主题名称/订阅名称和后缀。
+
+
 ## <a name="next-steps"></a>后续步骤
 
 有关服务总线队列的详细信息，请参阅以下文章：
 
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
-* [Azure 队列和服务总线队列比较](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+* [比较 Azure 队列和服务总线队列](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 

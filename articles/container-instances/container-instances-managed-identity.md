@@ -3,17 +3,18 @@ title: 将托管标识与 Azure 容器实例结合使用
 description: 了解如何配合 Azure 容器实例中的其他 Azure 服务使用托管标识进行身份验证。
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 773650e5e5e85d4a5fca0b3755f3730921cc5f2e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336518"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325929"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何将托管标识与 Azure 容器实例结合使用
 
@@ -154,7 +155,7 @@ az container exec --resource-group myResourceGroup --name mycontainer --exec-com
 在容器的 bash shell 中运行以下命令。 若要获取访问令牌以使用 Azure Active Directory 对 Key Vault 进行身份验证，请运行以下命令：
 
 ```bash
-curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net%2F' -H Metadata:true -s
+curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true -s
 ```
 
 输出：
@@ -170,7 +171,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-现在使用访问令牌对 Key Vault 进行身份验证并读取机密。 请务必替换 URL 中 Key Vault 的名称 (*https://mykeyvault.vault.azure.net/...*)：
+现在使用访问令牌对 Key Vault 进行身份验证并读取机密。 请务必替换 URL 中 Key Vault 的名称 ( *https://mykeyvault.vault.azure.net/...* )：
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -252,7 +253,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-现在使用访问令牌对 Key Vault 进行身份验证并读取机密。 请务必替换为密钥保管库 URL 中的名称 (*https:\//mykeyvault.vault.azure.net/...*):
+现在使用访问令牌对 Key Vault 进行身份验证并读取机密。 请务必在 URL 中替换密钥保管库的名称 (*https:\//mykeyvault.vault.azure.net/* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

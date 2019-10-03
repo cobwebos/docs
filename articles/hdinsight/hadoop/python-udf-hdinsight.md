@@ -1,7 +1,6 @@
 ---
 title: 通过 Apache Hive 和 Apache Pig 使用 Python UDF - Azure HDInsight
 description: 了解如何在 HDInsight（Azure 上的 Apache Hadoop 技术堆栈）中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: adcfb308bbbc8e3de456c4e7a71c543f988db02a
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: de738461776be7bdfd1abc45dde24dc1202d3a3c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497986"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180750"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)
 
@@ -26,27 +25,27 @@ Python2.7 默认安装在 HDInsight 3.0 和更高版本上。 可以结合此 Py
 
 HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。 Jython 直接在 Java 虚拟机上运行，不使用流式处理。 将 Python 与 Pig 配合使用时，我们建议将 Jython 用作 Python 解释器。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* **HDInsight 上的 Hadoop 群集**。 请参阅[开始使用 Linux 上的 HDInsight](apache-hadoop-linux-tutorial-get-started.md)。
+* **HDInsight 上的 Hadoop 群集**。 请参阅 [Linux 上的 HDInsight 入门](apache-hadoop-linux-tutorial-get-started.md)。
 * **SSH 客户端**。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-* [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)群集主存储。 这将是 wasb: / / 适用于 Azure 存储，abfs: / / 用于 Azure 数据湖存储第 2 代或 adl: / / 用于 Azure 数据湖存储 Gen1。 如果为 Azure 存储或数据湖存储第 2 代启用了安全传输，则 URI 将为 wasbs: / / 或 abfss: / / 分别另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
-* **存储配置可能更改。**  请参阅[存储配置](#storage-configuration)如果使用的存储帐户类型`BlobStorage`。
-* 可选。  如果计划使用 PowerShell，则需要[AZ 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)安装。
+* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 这适用`abfs://`于 Azure 存储，适用于 Azure Data Lake Storage Gen1 的 Azure Data Lake Storage Gen2 或 adl://。 `wasb://` 如果为 Azure 存储启用安全传输，则 URI 将为 wasbs://。  另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
+* **对存储配置所做的可能更改。**  如果使用 `BlobStorage` 类型的存储帐户，请参阅[存储配置](#storage-configuration)。
+* 可选。  如果计划使用 PowerShell，则需要安装 [AZ 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
 
 > [!NOTE]  
-> 在本文中使用的存储帐户已与 Azure 存储[安全传输](../../storage/common/storage-require-secure-transfer.md)已启用，因此`wasbs`本文通篇使用。
+> 本文中使用的存储帐户是启用了[安全传输](../../storage/common/storage-require-secure-transfer.md)的 Azure 存储，因此，本文通篇使用 `wasbs`。
 
 ## <a name="storage-configuration"></a>存储配置
-如果使用的存储帐户的类型，不需要任何操作`Storage (general purpose v1)`或`StorageV2 (general purpose v2)`。  这篇文章中的过程将生成输出到至少`/tezstaging`。  将包含默认 hadoop 配置`/tezstaging`中`fs.azure.page.blob.dir`中的配置变量`core-site.xml`服务`HDFS`。  此配置将导致输出到页 blob 的存储帐户类型不支持将目录`BlobStorage`。  若要使用`BlobStorage`对于本文中，删除`/tezstaging`从`fs.azure.page.blob.dir`配置变量。  可以从访问配置[Ambari UI](../hdinsight-hadoop-manage-ambari.md)。  否则，将收到错误消息： `Page blob is not supported for this account type.`
+如果使用 `Storage (general purpose v1)` 或 `StorageV2 (general purpose v2)` 类型的存储帐户，则不需要执行任何操作。  本文中的过程至少向 `/tezstaging` 生成输出。  默认的 Hadoop 配置将在 `core-site.xml` 中的 `fs.azure.page.blob.dir` 配置变量内包含服务 `HDFS` 的 `/tezstaging`。  此配置会导致将页 Blob 输出到目录，而 `BlobStorage` 类型的存储帐户不支持页 Blob。  若要在本文中使用 `BlobStorage`，请删除 `fs.azure.page.blob.dir` 配置变量中的 `/tezstaging`。  可以通过 [Ambari UI](../hdinsight-hadoop-manage-ambari.md) 访问配置。  否则，会收到错误消息：`Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > 本文档中的步骤基于以下假设：  
 >
 > * 在本地开发环境中创建 Python 脚本。
-> * 将脚本上传到 HDInsight 使用`scp`命令或提供的 PowerShell 脚本。
+> * 使用 `scp` 命令或使用提供的 PowerShell 脚本将脚本上传到 HDInsight。
 >
-> 如果你想要使用[Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview)若要使用 HDInsight，则您必须：
+> 如果要使用[Azure Cloud Shell （bash）](https://docs.microsoft.com/azure/cloud-shell/overview)来使用 HDInsight，则必须：
 >
 > * 在 Cloud Shell 环境内部创建脚本。
 > * 使用 `scp` 将文件从 Cloud Shell 上传到 HDInsight。
@@ -100,13 +99,13 @@ while True:
 1. 从 STDIN 读取一行数据。
 2. 可以使用 `string.strip(line, "\n ")` 删除尾随的换行符。
 3. 执行流式处理时，一个行就包含了所有值，每两个值之间有一个制表符。 因此，`string.split(line, "\t")` 可用于在每个制表符处拆分输入，并只返回字段。
-4. 在处理完成后，必须将输出以单行形式写入到 STDOUT，并在每两个字段之间提供一个制表符。 例如，`print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`。
+4. 在处理完成后，必须将输出以单行形式写入到 STDOUT，并在每两个字段之间提供一个制表符。 例如， `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])` 。
 5. `while` 循环会一直重复到无法读取 `line`。
 
 脚本输出是 `devicemake` 和 `devicemodel` 的输入值的连接，并且是连接值的哈希。
 
 ### <a name="upload-file-shell"></a>上传文件 (shell)
-在下面的命令中，将为`sshuser`与实际用户名不同。  替换为`mycluster`实际群集名称。  请确保你的工作目录是文件的位置。
+在以下命令中，请将 `sshuser` 替换为实际用户名（如果两者不同）。  将 `mycluster` 替换为实际群集名称。  确保工作目录是文件所在的位置。
 
 1. 使用 `scp` 将文件复制到 HDInsight 群集。 编辑并输入以下命令：
 
@@ -120,7 +119,7 @@ while True:
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-3. 从 SSH 会话中，添加以前上传到群集的存储的 python 文件。
+3. 从 SSH 会话将前面上传的 python 文件添加到群集的存储中。
 
     ```bash
     hdfs dfs -put hiveudf.py /hiveudf.py
@@ -128,7 +127,7 @@ while True:
 
 ### <a name="use-hive-udf-shell"></a>使用 Hive UDF (shell)
 
-1. 若要连接到 Hive，请使用从打开的 SSH 会话运行以下命令：
+1. 若要连接到 Hive，请在打开的 SSH 会话中使用以下命令：
 
     ```bash
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
@@ -163,10 +162,7 @@ while True:
 
 ### <a name="upload-file-powershell"></a>上传文件 (PowerShell)
 
-> [!IMPORTANT]  
-> 如果这些 PowerShell 脚本将不起[安全传输](../../storage/common/storage-require-secure-transfer.md)已启用。  使用 shell 命令或禁用安全传输。
-
-也可以使用 PowerShell 远程运行 Hive 查询。 请确保你的工作目录的位置`hiveudf.py`所在。  使用以下 PowerShell 脚本来运行 Hive 查询使用`hiveudf.py`脚本：
+也可以使用 PowerShell 远程运行 Hive 查询。 确保工作目录是 `hiveudf.py` 所在的位置。  使用以下 PowerShell 脚本来运行使用 `hiveudf.py` 脚本的 Hive 查询：
 
 ```PowerShell
 # Login to your Azure subscription
@@ -299,7 +295,7 @@ Get-AzHDInsightJobOutput `
 * **使用 C Python**：`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
-> 使用 Jython 时，pig_jython 文件的路径可以是本地路径或 WASBS: / / 路径。 但是，使用 C Python 时，必须引用用于提交 Pig 作业的节点的本地文件系统上的文件。
+> 使用 Jython 时，pig_jython 文件的路径可以是本地路径或 WASBS:// 路径。 但是，使用 C Python 时，必须引用用于提交 Pig 作业的节点的本地文件系统上的文件。
 
 通过注册后，此示例的 Pig Latin 对于两个脚本是相同的：
 
@@ -326,6 +322,7 @@ DUMP DETAILS;
 ```python
 # Uncomment the following if using C Python
 #from pig_util import outputSchema
+
 
 @outputSchema("log: {(date:chararray, time:chararray, classname:chararray, level:chararray, detail:chararray)}")
 def create_structure(input):
@@ -359,7 +356,7 @@ def create_structure(input):
 
 ### <a name="upload-file-shell"></a>上传文件 (shell)
 
-在下面的命令中，将为`sshuser`与实际用户名不同。  替换为`mycluster`实际群集名称。  请确保你的工作目录是文件的位置。
+在以下命令中，请将 `sshuser` 替换为实际用户名（如果两者不同）。  将 `mycluster` 替换为实际群集名称。  确保工作目录是文件所在的位置。
 
 1. 使用 `scp` 将文件复制到 HDInsight 群集。 编辑并输入以下命令：
 
@@ -373,7 +370,7 @@ def create_structure(input):
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-3. 从 SSH 会话中，添加以前上传到群集的存储的 python 文件。
+3. 从 SSH 会话将前面上传的 python 文件添加到群集的存储中。
 
     ```bash
     hdfs dfs -put pigudf.py /pigudf.py
@@ -382,7 +379,7 @@ def create_structure(input):
 
 ### <a name="use-pig-udf-shell"></a>使用 Pig UDF (shell)
 
-1. 若要连接到 pig，请使用从打开的 SSH 会话运行以下命令：
+1. 若要连接到 Pig，请在打开的 SSH 会话中使用以下命令：
 
     ```bash
     pig
@@ -435,10 +432,7 @@ def create_structure(input):
 
 ### <a name="upload-file-powershell"></a>上传文件 (PowerShell)
 
-> [!IMPORTANT]  
-> 如果这些 PowerShell 脚本将不起[安全传输](../../storage/common/storage-require-secure-transfer.md)已启用。  使用 shell 命令或禁用安全传输。
-
-也可以使用 PowerShell 远程运行 Hive 查询。 请确保你的工作目录的位置`pigudf.py`所在。  使用以下 PowerShell 脚本来运行 Hive 查询使用`pigudf.py`脚本：
+也可以使用 PowerShell 远程运行 Hive 查询。 确保工作目录是 `pigudf.py` 所在的位置。  使用以下 PowerShell 脚本来运行使用 `pigudf.py` 脚本的 Hive 查询：
 
 ```PowerShell
 # Login to your Azure subscription
@@ -481,7 +475,7 @@ Set-AzStorageBlobContent `
 > [!NOTE]  
 > 使用 PowerShell 远程提交作业时，无法使用 C Python 作为解释器。
 
-也可以使用 PowerShell 运行 Pig Latin 作业。 若要运行使用的 Pig Latin 作业`pigudf.py`编写脚本，请使用以下 PowerShell 脚本：
+也可以使用 PowerShell 运行 Pig Latin 作业。 若要运行使用 `pigudf.py` 脚本的 Pig Latin 作业，请使用以下 PowerShell 脚本：
 
 ```PowerShell
 # Script should stop on failures

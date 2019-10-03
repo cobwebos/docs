@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9e822906a072ec8244c7108e98289482adebb5a7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098672"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60244876"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>与 Azure AD 联合的多域支持
 以下文档提供了有关与 Office 365 或 Azure AD 域联合时如何使用多个顶级域和子域的指导。
@@ -82,7 +82,7 @@ ms.locfileid: "58098672"
 >
 
 ## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>如何更新 AD FS 与 Azure AD 之间的信任
-如果未设置 AD FS 与 Azure AD 实例之间的联合信任，可能需要重新创建此信任。  原因是，当进行初始设置时未使用 `-SupportMultipleDomain` 参数时，会将 IssuerUri 设置为默认值。  在下面的屏幕截图中，可以看到 IssuerUri 设置为 https://adfs.bmcontoso.com/adfs/services/trust。
+如果未设置 AD FS 与 Azure AD 实例之间的联合信任，可能需要重新创建此信任。  原因是，当进行初始设置时未使用 `-SupportMultipleDomain` 参数时，会将 IssuerUri 设置为默认值。  在下面的屏幕截图中，可以看到 IssuerUri 设置为 https://adfs.bmcontoso.com/adfs/services/trust 。
 
 如果已成功在 Azure AD 门户中添加了新域，然后尝试使用 `Convert-MsolDomaintoFederated -DomainName <your domain>` 对其进行转换，则会收到以下错误。
 
@@ -100,9 +100,9 @@ ms.locfileid: "58098672"
 
 请使用以下步骤来删除 Microsoft Online 信任，并更新原始域。
 
-1. 在 AD FS 联合服务器上，打开“AD FS 管理”。
-2. 展开左侧的“信任关系”和“信赖方信任”
-3. 删除右侧的“Microsoft Office 365 标识平台”项。
+1. 在 AD FS 联合服务器上，打开“AD FS 管理”  。
+2. 展开左侧的“信任关系”  和“信赖方信任” 
+3. 删除右侧的“Microsoft Office 365 标识平台”  项。
    ![删除 Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
 4. 在已安装[适用于 Windows PowerShell 的 Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx)的计算机上运行以下命令：`$cred=Get-Credential`。  
 5. 输入要联合的 Azure AD 域的全局管理员用户名和密码。
@@ -137,7 +137,7 @@ ms.locfileid: "58098672"
 ## <a name="support-for-subdomains"></a>对子域的支持
 添加子域时，因为 Azure AD 处理域的方式，导致子域继承父项的设置。  因此，IssuerUri 需要与父项匹配。
 
-例如，假设我有 bmcontoso.com，后来又添加了 corp.bmcontoso.com。  corp.bmcontoso.com 中的用户的 IssuerUri 将需要是 **http://bmcontoso.com/adfs/services/trust。**  但是，为 Azure AD 实现的上述标准规则将生成颁发者为 **http://corp.bmcontoso.com/adfs/services/trust 的令牌。** 这与域的所需值不匹配，身份验证会失败。
+例如，假设我有 bmcontoso.com，后来又添加了 corp.bmcontoso.com。  corp.bmcontoso.com 中的用户的 IssuerUri 将需要是 **http://bmcontoso.com/adfs/services/trust 。**  但是，为 Azure AD 实现的上述标准规则将生成颁发者为 **http://corp.bmcontoso.com/adfs/services/trust 的令牌。** 这与域的所需值不匹配，身份验证会失败。
 
 ### <a name="how-to-enable-support-for-subdomains"></a>如何启用对子域的支持
 若要避免此行为，需要更新 Microsoft Online 的 AD FS 信赖方信任。  为此，必须配置自定义声明规则，使其在构造自定义 Issuer 值时能够从用户的 UPN 后缀中删除任何子域。

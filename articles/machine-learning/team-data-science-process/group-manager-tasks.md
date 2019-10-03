@@ -1,323 +1,263 @@
 ---
 title: 团队数据科学流程组管理员任务
-description: 数据科学团队项目组管理员的任务概述。
+description: 用于数据科学团队项目上的组管理器的任务的详细演练。
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fb0482be1670a96befdd69a5356c9e21476d9f9f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: f95bb30f547e863fc7a796e69fffe1e2334e489c
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458136"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326796"
 ---
-# <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>数据科学团队项目的组管理员应执行的任务
+# <a name="team-data-science-process-group-manager-tasks"></a>团队数据科学流程组管理员任务
 
-本主题概述了组管理员应为他/她的数据科学组织完成的任务。 目的在于创建致力于标准化[团队数据科学流程](overview.md) (TDSP) 的团队协作环境。 有关致力于标准化此流程的数据科学团队要处理的人员角色及其相关任务的概述，请参阅[团队数据科学流程角色和任务](roles-tasks.md)。
+本文介绍了*组经理*对数据科学组织完成的任务。 组管理器管理企业中的整个数据科学单元。 数据科学部门可能有多个团队，每个团队都在不同的业务行业中处理多个数据科学项目。 组经理的目标是建立在[团队数据科学过程](overview.md)（TDSP）上实现标准化的协作组环境。 有关 TDSP 上的数据科学团队处理的所有人事角色和相关任务的概述，请参阅[团队数据科学过程角色和任务](roles-tasks.md)。
 
-**组管理员**是企业中整个数据科学部门的经理。 数据科学部门可能有多个团队，每个团队都在不同的业务垂直领域开展多个数据科学项目。 组管理员可以将任务委托给代理，但与角色相关的任务都相同。 如下图所示，有六项主要任务：
+下图显示了六个主要的组管理器设置任务。 组管理员可以将任务委托给代理，但与角色关联的任务不会更改。
 
-![0](./media/group-manager-tasks/tdsp-group-manager.png)
+![组管理器任务](./media/group-manager-tasks/tdsp-group-manager.png)
 
+1. 为组设置**Azure DevOps 组织**。
+2. 在 Azure DevOps 组织中创建默认的**GroupCommon 项目**。
+3. 在 Azure Repos 中创建**GroupProjectTemplate**存储库。
+4. 在 Azure Repos 中创建**GroupUtilities**存储库。
+5. 将 Microsoft TDSP 团队的**ProjectTemplate**和**实用程序**存储库的内容导入到组公用存储库中。
+6. 设置团队成员访问组的**成员资格**和**权限**。
 
-> [!NOTE] 
-> 我们在以下说明中概述了使用 Azure DevOps Services 设置 TDSP 组环境所需的步骤。 本文指定了如何使用 Azure DevOps Services 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果你的组使用了其他代码承载平台，组管理员需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
-
-1. 为组设置 **Azure DevOps Services**。
-2. 在 Azure DevOps Services 上创建**组项目**（适用于 Azure DevOps Services 用户）
-3. 创建 **GroupProjectTemplate** 存储库
-4. 创建 **GroupUtilities** 存储库
-5. 使用 TDSP 存储库中的内容生成 Azure DevOps Services 的 **GroupProjectTemplate** 和 **GroupUtilities** 存储库。
-6. 为团队成员设置**安全控件**使团队成员能够访问 GroupProjectTemplate 和 GroupUtilities 存储库。
-
-上述每个步骤都进行了详细说明。 但首先，我们要熟悉缩写，并讨论使用存储库的先决条件。
-
-### <a name="abbreviations-for-repositories-and-directories"></a>存储库和目录的缩写
-
-本教程使用存储库和目录的缩写名称。 这些定义可便于在存储库和目录之间执行操作。 以下部分将使用此表示法：
-
-- **G1**：Microsoft TDSP 团队开发并管理的项目模板存储库。
-- **G2**：Microsoft TDSP 团队开发并管理的实用程序存储库。
-- **R1**：在 Azure DevOps 组服务器上设置的 Git 上的 GroupProjectTemplate 存储库。
-- **R2**：在 Azure DevOps 组服务器上设置的 Git 上的 GroupUtilities 存储库。
-- **LG1** 和 **LG2**：分别克隆了 G1 和 G2 的计算机上的本地目录。
-- **LR1** 和 **LR2**：分别克隆了 R1 和 R2 的计算机上的本地目录。
-
-### <a name="pre-requisites-for-cloning-repositories-and-checking-code-in-and-out"></a>克隆存储库及签入和签出代码的先决条件
-
-- 计算机上必须安装有 Git。 如果使用的是数据科学虚拟机 (DSVM)，则已预安装 Git，可以继续操作。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。
-- 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后单击“最新安装程序”。 此步骤会将你转到最新安装程序页。 从此处下载 .exe 安装程序并运行它。
-- 如果使用的是 **Linux DSVM**，则在 DSVM 上创建一个 SSH 公钥，然后将它添加到组 Azure DevOps Services。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。
-
-
-## <a name="1-create-account-on-azure-devops-services"></a>1.在 Azure DevOps Services 上创建帐户
-
-Azure DevOps Services 承载以下存储库：
-
-- **组通用存储库**：可供多个数据科学项目组内的多个团队采用的通用存储库。 例如，*GroupProjectTemplate* 和 *GroupUtilities* 存储库。
-- **团队存储库**：适用于组内特定团队的存储库。 这些存储库特定于团队需求，可由该团队执行的多个项目采用，但不足以使数据科学组中的多个团队受用。
-- **项目存储库**：适用于特定项目的存储库。 此类存储库通用程度比较低，可能不足以使一个团队执行的多个项目以及一个数据科学组的多个团队受用。
-
-
-### <a name="setting-up-the-azure-devops-services-sign-into-your-microsoft-account"></a>设置 Azure DevOps Services 并登录到 Microsoft 帐户
-
-转到 [Visual Studio Online](https://www.visualstudio.com/)，单击右上角的“登录”，然后登录到 Microsoft 帐户。
-
-![1](./media/group-manager-tasks/login.PNG)
-
-如果没有 Microsoft 帐户，请单击“立即注册”创建一个 Microsoft 帐户，然后使用此帐户登录。
-
-如果你的组织有 Visual Studio/MSDN 订阅，请单击绿色的“使用你的工作或学校帐户登录”框，并使用与此订阅关联的凭据登录。
-
-![2](./media/group-manager-tasks/signin.PNG)
-
-
-
-登录后，按下图所示单击右上角的“创建新帐户”：
-
-![3](./media/group-manager-tasks/create-account-1.PNG)
-
-在“创建帐户”向导中使用以下值填写想要创建的 Azure DevOps Services 的信息：
-
-- **服务器 URL**：将 *mysamplegroup* 替换为你自己的*服务器名称*。 服务器 URL 应为：*https://\<servername\>.visualstudio.com*。
-- **使用以下方式管理代码:** 选择“Git”。
-- **项目名称:** 输入 *GroupCommon*。
-- **使用以下项组织工作:** 选择“Agile”。
-- **将你的项目托管在:** 选择一个地理位置。 在此示例中，我们选择*美国中南部*。
-
-![4](./media/group-manager-tasks/fill-in-account-information.png)
+以下教程详细介绍了这些步骤。 
 
 > [!NOTE] 
-> 如果在单击“创建新帐户”后看到以下弹出窗口，则需要单击“更改详细信息”以显示逐项列出的所有字段。
-
-![5](./media/group-manager-tasks/create-account-2.png)
-
-
-单击“继续”。
-
-## <a name="2-groupcommon-project"></a>2.GroupCommon 项目
-
-创建 Azure DevOps Services 后，将打开 **GroupCommon** 页 (*https://\<servername\>.visualstudio.com/GroupCommon*)。
-
-![6](./media/group-manager-tasks/server-created-2.PNG)
-
-## <a name="3-create-the-grouputilities-r2-repository"></a>3.创建 GroupUtilities (R2) 存储库
-
-若要在 Azure DevOps Services 下创建 **GroupUtilities** (R2) 存储库，请执行以下操作：
-
-- 若要打开“创建新的存储库”向导，请在项目的“版本控制”选项卡上单击“新建存储库”。
-
-  ![7](./media/group-manager-tasks/create-grouputilities-repo-1.png)
-
-- 选择“Git”作为“类型”，并输入“GroupUtilities”作为“名称”，然后单击“创建”。
-
-  ![8](./media/group-manager-tasks/create-grouputilities-repo-2.png)
-
-现在，在“版本控制”页的左侧列中会看到两个 Git 存储库 **GroupProjectTemplate** 和 **GroupUtilities**：
-
-![9](./media/group-manager-tasks/two-repo-under-groupCommon.PNG)
-
-
-## <a name="4-create-the-groupprojecttemplate-r1-repository"></a>4.创建 GroupProjectTemplate (R1) 存储库
-
-Azure DevOps 组服务器的存储库安装包括两个任务：
-
-- 将默认 **GroupCommon** 存储库重命名为 ***GroupProjectTemplate***。
-- 在项目 **GroupCommon** 下的 Azure DevOps Services 上创建 **GroupUtilities** 存储库。
-
-本部分在命名约定或我们的存储库和目录注解后，对第一个任务进行了说明。 在下一部分的步骤 4 中对第二个任务进行了说明。
-
-### <a name="rename-the-default-groupcommon-repository"></a>重命名默认 GroupCommon 存储库
-
-要将默认 **GroupCommon** 存储库重命名为 *GroupProjectTemplate*（在本教程中称为 **R1**）：
-
-- 单击 **GroupCommon** 项目页上的“协作代码”。 这会将你转到项目 **GroupCommon** 的默认 Git 存储库页。 目前，此 Git 存储库为空。
-
-  ![10](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
-
-- 单击 **GroupCommon** 的 Git 存储库页左上角的“GroupCommon”（在下图中用红色方框突出显示），然后选择“管理存储库”（在下图中用绿色方框突出显示）。 此过程将打开“控制面板”。
-- 选择项目的“版本控制”选项卡。
-
-  ![11](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
-
-- 单击左侧面板上 **GroupCommon** 存储库右侧的“...”，然后选择“重命名存储库”。
-
-  ![12](./media/group-manager-tasks/rename-groupcommon-repo-5.png)
-
-- 在弹出的“重命名 GroupCommon 存储库”向导中，在“存储库名称”框中输入 *GroupProjectTemplate*，然后单击“重命名”。
-
-  ![13](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
-
-
-
-## <a name="5-seed-the-r1--r2-repositories-on-the-azure-devops-services"></a>5.在 Azure DevOps Services 上设定 R1 和 R2 存储库的种子
-
-在这一过程阶段中，设定在之前部分中设置的 *GroupProjectTemplate* (R1) 和 *GroupUtilities* (R2) 存储库的种子。 使用 Microsoft 为团队数据科学进程管理的 ***ProjectTemplate*** (**G1**) 和 ***Utilities*** (**G2**) 存储库设定这些存储库的种子。 种子设定完成后：
-
-- R1 存储库将具有与 G1 相同的目录和文档模板集
-- R2 存储库将包含由 Microsoft 开发的一套数据科学实用程序。
-
-种子设定过程使用本地 DSVM 上的目录作为中间暂存站点。 以下是本部分中的后续步骤：
-
-- G1 和 G2 - 已克隆到 -> LG1 & LG2
-- R1 和 R2 - 已克隆到 -> LR1 & LR2
-- LG1 和 LG2 - 文件已复制到 - > LR1 和 LR2
-- （可选）LR1 和 LR2 的自定义
-- LR1 和 LR2 - 内容添加到 -> R1 和 R2
-
-
-### <a name="clone-g1--g2-repositories-to-your-local-dsvm"></a>将 G1 和 G2 存储库克隆到本地 DSVM
-
-在此步骤中，将团队数据科学进程 (TDSP) ProjectTemplate 存储库 (G1) 和 Utilities (G2) 作为 LG1 和 LG2 从 TDSP GitHub 存储库克隆到本地 DSVM 中的文件夹：
-
-- 创建一个目录作为根目录来承载所有克隆的存储库。
-  -  在 Windows DSVM 中，创建目录 *C:\GitRepos\TDSPCommon*。
-  -  在 Linux DSVM 中，在主目录中创建目录 *GitRepos\TDSPCommon*。
-
-- 从 *GitRepos\TDSPCommon* 目录中运行以下命令集。
-
-  `git clone https://github.com/Azure/Azure-TDSP-ProjectTemplate`<br>
-  `git clone https://github.com/Azure/Azure-TDSP-Utilities`
-
-  ![14](./media/group-manager-tasks/two-folder-cloned-from-TDSP-windows.PNG)
-
-- 使用缩写的存储库名称，这是这些脚本实现的功能：
-    - G1 - 已克隆到 -> LG1
-    - G2 - 已克隆到 -> LG2
-- 克隆完成后，在 **GitRepos\TDSPCommon** 目录下能够看到两个目录 _ProjectTemplate_ 和 _Utilities_。
-
-### <a name="clone-r1--r2-repositories-to-your-local-dsvm"></a>将 R1 和 R2 存储库克隆到本地 DSVM
-
-在此步骤中，将在 DSVM 上 **GitRepos\GroupCommon** 下的本地目录（分别称为 LR1 和 LR2）中克隆 GroupProjectTemplate 存储库 (R1) 和 GroupUtilities 存储库 (R2)。
-
-- 若要获取 R1 和 R2 存储库的 URL，请转至 Azure DevOps Services 上的 **GroupCommon** 主页。 这通常具有 URL *https://\<你的 Azure DevOps Services 名称\>.visualstudio.com/GroupCommon*。
-- 单击“代码”。
-- 选择“GroupProjectTemplate”和“GroupUtilities”存储库。 复制并保存“克隆URL”元素中的每个 URL（Windows 为 HTTPS；Linux 为 SSH），依次用于以下脚本：
-
-  ![15](./media/group-manager-tasks/find_https_ssh_2.PNG)
-
-- 在 Windows 或 Linux DSVM 上更改为 **GitRepos\GroupCommon** 目录，然后运行以下命令集之一以将 R1 和 R2 克隆到该目录。
-
-下面是 Windows 和 Linux 脚本：
-
-    # Windows DSVM
-
-    git clone <the HTTPS URL of the GroupProjectTemplate repository>
-    git clone <the HTTPS URL of the GroupUtilities repository>
-
-![16](./media/group-manager-tasks/clone-two-empty-group-reo-windows-2.PNG)
-
-    # Linux DSVM
-
-    git clone <the SSH URL of the GroupProjectTemplate repository>
-    git clone <the SSH URL of the GroupUtilities repository>
-
-![17](./media/group-manager-tasks/clone-two-empty-group-reo-linux-2.PNG)
-
-> [!NOTE] 
-> 期望收到 LR1 和 LR2 都为空的警告消息。
-
-- 使用缩写的存储库名称，这是这些脚本实现的功能：
-    - R1 - 已克隆到 -> LR1
-    - R2 - 已克隆到 -> LR2   
-
-
-### <a name="seed-your-groupprojecttemplate-lr1-and-grouputilities-lr2"></a>设定 GroupProjectTemplate (LR1) 和 GroupUtilities (LR2) 的种子
-
-接下来，在本地计算机中，将 GitRepos\TDSPCommon 下的 ProjectTemplate 和 Utilities 目录的内容（.git 目录中的元数据除外）复制到 **GitRepos\GroupCommon** 下的 GroupProjectTemplate 和 GroupUtilities 目录。 下面是要在此步骤中完成的两个任务：
-
-- 将 GitRepos\TDSPCommon\ProjectTemplate (**LG1**) 中的文件复制到 GitRepos\GroupCommon\GroupProjectTemplate (**LR1**)
-- 将 GitRepos\TDSPCommon\Utilities (**LG2**) 中的文件复制到 GitRepos\GroupCommon\Utilities (**LR2**)。
-
-要实现这两个任务，请在 PowerShell 控制台 (Windows) 或 Shell 脚本控制台 (Linux) 中运行以下脚本。 系统会提示输入 LG1、LR1、LG2 和 LR2 的完整路径。 已验证输入的路径。 如果输入的目录不存在，系统会要求重新输入。
-
-    # Windows DSVM
-    
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
-    .\tdsp_local_copy_win.ps1 1
-
-![18](./media/group-manager-tasks/copy-two-folder-to-group-folder-windows-2.PNG)
-
-现在，可以看到目录 LG1 和 LG2 中的文件（.git 目录中的文件除外）已分别复制到 LR1 和 LR2。
-
-![19](./media/group-manager-tasks/copy-two-folder-to-group-folder-windows.PNG)
-
-    # Linux DSVM
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
-    bash tdsp_local_copy_linux.sh 1
-
-![20](./media/group-manager-tasks/copy-two-folder-to-group-folder-linux-2.PNG)
-
-现在，可以看到两个文件夹中的文件（.git 目录中的文件除外）已分别复制到 GroupProjectTemplate 和 GroupUtilities。
-
-![21](./media/group-manager-tasks/copy-two-folder-to-group-folder-linux.PNG)
-
-- 使用缩写的存储库名称，这是这些脚本实现的功能：
-    - LG1 - 文件已复制到 -> LR1
-    - LG2 - 文件已复制到 -> LR2
-
-### <a name="option-to-customize-the-contents-of-lr1--lr2"></a>用于自定义 LR1 和 LR2 的内容的选项
-    
-如果想要自定义 LR1 和 LR2 的内容以满足组的特定需求，以下是适当的过程阶段。 可以修改模板文档，更改目录结构并添加你的组已开发或对整个组有用的现有实用程序。
-
-### <a name="add-the-contents-in-lr1--lr2-to-r1--r2-on-group-server"></a>将 LR1 和 LR2 中的内容添加到组服务器上的 R1 和 R2
-
-现在，需要将 LR1 和 LR2 中的内容添加到存储库 R1 和 R2。 下面是可在 Windows PowerShell 或 Linux 中运行的 git bash 命令。
-
-从 GitRepos\GroupCommon\GroupProjectTemplate 目录中运行以下命令：
-
-    git status
-    git add .
-    git commit -m"push from DSVM"
-    git push
-
-使用 -m 选项可为 git 提交设置消息。
-
-![22](./media/group-manager-tasks/push-to-group-server-2.PNG)
-
-可以看到，在组 Azure DevOps Services 的 GroupProjectTemplate 存储库中，文件会立即同步。
-
-![23](./media/group-manager-tasks/push-to-group-server-showed-up-2.PNG)
-
-最后，更改为 **GitRepos\GroupCommon\GroupUtilities** 目录并运行同一 git bash 命令集：
-
-    git status
-    git add .
-    git commit -m"push from DSVM"
-    git push
-
-> [!NOTE] 
-> 如果这是首次提交到 Git 存储库，则需要在运行 `git commit` 命令之前，配置全局参数 *user.name* 和 *user.email*。 运行以下两个命令：
->
->  `git config --global user.name <your name>`  
->  `git config --global user.email <your email address>`
->
-> 如果要提交到多个 Git 存储库，则在提交到每个存储库时请使用相同的姓名和电子邮件地址。 使用相同的姓名和电子邮件地址证明了以后构建 PowerBI 仪表板来跟踪多个存储库上的 Git 活动时会很方便。
-
-
-- 使用缩写的存储库名称，这是这些脚本实现的功能：
-    - LR1 - 内容添加到 -> R1
-    - LR2 - 内容添加到 -> R2
-
-## <a name="6-add-group-members-to-the-group-server"></a>6.将组成员添加到组服务器
-
-在组 Azure DevOps Services 的主页上，单击右上角用户名旁边的**齿轮图标**，然后选择“安全性”选项卡。可以通过各种权限将成员添加到组。
-
-![24](./media/group-manager-tasks/add_member_to_group.PNG)
-
+> 本文使用 Azure DevOps 设置 TDSP 组环境，因为这是如何实现 Microsoft 的 TDSP。 如果你的组使用其他代码宿主或开发平台，则组管理器的任务是相同的，但完成这些任务的方法可能不同。
+
+## <a name="create-an-organization-and-project-in-azure-devops"></a>在 Azure DevOps 中创建组织和项目
+
+1. 请访问[visualstudio.microsoft.com](https://visualstudio.microsoft.com)，选择右上角的 "**登录**"，然后登录到 Microsoft 帐户。 
+   
+   ![登录 Microsoft 帐户](./media/group-manager-tasks/signinvs.png)
+   
+   如果没有 Microsoft 帐户，请选择 "**立即注册**"，创建 Microsoft 帐户，然后使用此帐户登录。 如果你的组织有 Visual Studio 订阅，请使用该订阅的凭据登录。
+   
+1. 登录后，在 "Azure DevOps" 页的右上角，选择 "新建**组织**"。
+   
+   ![创建新组织](./media/group-manager-tasks/create-organization.png)
+   
+1. 如果系统提示你同意服务条款、隐私声明和行为准则，请选择 "**继续**"。
+   
+1. 在注册对话框中，为 Azure DevOps 组织命名并接受主机区域分配，或删除并选择其他区域。 然后选择“继续”。 
+
+1. 在 "**创建要开始的项目**" 下，输入*GroupCommon*，然后选择 "**创建项目**"。 
+   
+   ![创建项目](./media/group-manager-tasks/create-project.png)
+
+此时将打开 " **GroupCommon**项目**摘要**" 页。 页面 URL 是*https： \/ @ no__t-2 @ no__t-3servername >/@no__t >/GroupCommon*。
+
+![项目摘要页](./media/group-manager-tasks/project-summary.png)
+
+## <a name="set-up-the-group-common-repositories"></a>设置组通用存储库
+
+Azure Repos 为你的组托管以下类型的存储库：
+
+- **分组常用存储库**：一个数据科学单位内的多个团队可采用多个数据科学项目的通用存储库。 
+- **团队存储库**：数据科学单元中特定团队的存储库。 这些存储库是特定于团队需求的，可用于该团队内的多个项目，但并不是足够通用，无法在一个数据科学单位内的多个团队中使用。
+- **项目存储库**：特定项目的存储库。 对于一个团队内的多个项目或数据科学单元中的其他团队而言，此类存储库可能不够普遍。
+
+若要在项目中设置公用存储库，请执行以下操作： 
+- 将默认**GroupCommon**存储库重命名为**GroupProjectTemplate**
+- 创建新的**GroupUtilities**存储库
+
+### <a name="rename-the-default-project-repository-to-groupprojecttemplate"></a>将默认的项目存储库重命名为 GroupProjectTemplate
+
+将默认的**GroupCommon**项目存储库重命名为**GroupProjectTemplate**：
+
+1. 在 " **GroupCommon**项目**摘要**" 页上，选择 "**存储库**"。 此操作会将你转到 GroupCommon 项目的默认**GroupCommon**存储库，该存储库当前为空。
+   
+1. 在页面顶部，下拉 " **GroupCommon** " 旁边的箭头，然后选择 "**管理存储库**"。
+   
+   ![管理存储库](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
+   
+1. 在 "**项目设置**" 页上，选择 " **GroupCommon**"**旁边的 "..."** ，然后选择 "**重命名存储库**"。 
+   
+   ![选择 .。。然后选择 "重命名存储库"](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
+   
+1. 在 "**重命名 GroupCommon 存储库**" 弹出窗口中，输入*GroupProjectTemplate*，然后选择 "**重命名**"。 
+   
+   ![重命名存储库](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
+
+### <a name="create-the-grouputilities-repository"></a>创建 GroupUtilities 存储库
+
+创建**GroupUtilities**存储库：
+
+1. 在 " **GroupCommon**项目**摘要**" 页上，选择 "**存储库**"。 
+   
+1. 在页面顶部，下拉 " **GroupProjectTemplate** " 旁边的箭头，然后选择 "**新建存储库**"。
+   
+   ![选择新存储库](./media/group-manager-tasks/create-grouputilities-repo-1.png)
+   
+1. 在 "**创建新存储库**" 对话框中，选择 " **Git** " 作为 "**类型**"，输入*GroupUtilities*作为**存储库名称**，然后选择 "**创建**"。
+   
+   ![创建 GroupUtilities 存储库](./media/group-manager-tasks/create-grouputilities-repo-2.png)
+   
+1. 在 "**项目设置**" 页上，在左侧导航栏中选择 "**存储库**" 下的 "**存储库**" 以查看两个组存储库：**GroupProjectTemplate**和**GroupUtilities**。
+   
+   ![两个组存储库](./media/group-manager-tasks/two-repositories.png)
+
+## <a name="import-the-microsoft-tdsp-team-repositories"></a>导入 Microsoft TDSP 团队存储库
+
+在本教程的此部分中，会将 Microsoft TDSP 团队管理的**ProjectTemplate**和**实用程序**存储库的内容导入到**GroupProjectTemplate**和**GroupUtilities**存储库中。 
+
+导入 TDSP 团队存储库：
+
+1. 从**GroupCommon**项目主页的左侧导航栏中选择 "**存储库**"。 将打开默认的**GroupProjectTemplate**存储库。 
+   
+1. 在 " **GroupProjectTemplate** " 页上，选择 "**导入**"。 
+   
+   ![选择导入](./media/group-manager-tasks/import-repo.png)
+   
+1. 在 "**导入 git 存储库**" 对话框中，选择 " **Git** " 作为**源类型**，然后输入 " *https： \//github .Com/Azure/Azure-TDSP-ProjectTemplate* " 作为**克隆 URL**。 然后选择 "**导入**"。 Microsoft TDSP team ProjectTemplate 存储库的内容将导入到 GroupProjectTemplate 存储库中。 
+   
+   ![导入 Microsoft TDSP 团队存储库](./media/group-manager-tasks/import-repo-2.png)
+   
+1. 在**存储库**页面顶部，选择 "GroupUtilities 存储库"，并选择 " " 存储库。
+   
+1. 重复导入过程，将 Microsoft TDSP 团队**实用工具**存储库的内容（ *https： @no__t/Github .com/Azure/Azure-TDSP-Utilities*）导入**GroupUtilities**存储库。 
+   
+现在，两个组存储库中的每个文件都包含 Microsoft TDSP 团队的相应存储库中的所有文件，这些文件除外 *。* 
+
+## <a name="customize-the-contents-of-the-group-repositories"></a>自定义组存储库的内容
+
+如果要自定义组存储库的内容以满足组的特定需求，可以立即执行此操作。 你可以修改文件、更改目录结构，或添加组已开发或对你的组有用的文件。
+
+### <a name="make-changes-in-azure-repos"></a>在 Azure Repos 中进行更改
+
+自定义存储库内容：
+
+1. 在 " **GroupCommon**项目**摘要**" 页上，选择 "**存储库**"。 
+   
+1. 在页面顶部，选择要自定义的存储库。
+
+1. 在存储库目录结构中，导航到要更改的文件夹或文件。 
+   
+   - 若要创建新文件夹或文件，请选择 "**新建**" 旁边的箭头。 
+     
+     ![创建新文件](./media/group-manager-tasks/new-file.png)
+     
+   - 若要上传文件，请选择 "**上传文件**"。 
+     
+     ![上载文件](./media/group-manager-tasks/upload-files.png)
+     
+   - 若要编辑现有文件，请导航到该文件，然后选择 "**编辑**"。 
+     
+     ![编辑文件](./media/group-manager-tasks/edit-file.png)
+     
+1. 添加或编辑文件后，选择 "**提交**"。
+   
+   ![提交更改](./media/group-manager-tasks/commit.png)
+
+### <a name="make-changes-using-your-local-machine-or-dsvm"></a>使用本地计算机或 DSVM 进行更改
+
+如果要使用本地计算机或 DSVM 进行更改并将更改推送到组存储库，请确保具有使用 Git 和 Dsvm 的先决条件：
+
+- Azure 订阅（如果想要创建 DSVM）。
+- 已在计算机上安装 Git。 如果你使用的是 DSVM，则将预安装 Git。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。
+- 如果要使用 DSVM，请在 Azure 中创建和配置 Windows 或 Linux DSVM。 有关详细信息和说明，请参阅[Data Science Virtual Machine 文档](/azure/machine-learning/data-science-virtual-machine/)。
+- 对于安装在计算机上的 Windows DSVM、 [Git 凭据管理器（GCM）](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) 。 在*README.md*文件中，向下滚动到 "**下载并安装**" 部分，然后选择**最新的安装程序**。 从 "安装程序" 页下载 *.exe*安装程序并运行它。 
+- 对于 Linux DSVM，在 DSVM 上设置 SSH 公钥，并将其添加到 Azure DevOps 中。 有关详细信息和说明，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。 
+
+首先，将存储库复制或*克隆*到本地计算机。 
+   
+1. 在 " **GroupCommon**项目**摘要**" 页上，选择 "**存储库**"，然后在页面顶部选择要克隆的存储库。
+   
+1. 在 "存储库" 页上，选择右上角的 "**克隆**"。
+   
+1. 在 "**克隆存储库**" 对话框中，选择 " **HTTPS**用于 HTTP 连接 **" 或 "ssh"** 作为 Ssh 连接，然后将 "**命令行**" 下的克隆 URL 复制到剪贴板。
+   
+   ![克隆存储库](./media/group-manager-tasks/clone.png)
+   
+1. 在本地计算机上，创建以下目录：
+   
+   - 对于 Windows：**C:\GitRepos\GroupCommon**
+   - 对于 Linux，主目录上的 **$/GitRepos/GroupCommon** 
+   
+1. 更改为你创建的目录。
+   
+1. 在 Git Bash 中运行命令 `git clone <clone URL>.`
+   
+   例如，以下命令之一将**GroupUtilities**存储库克隆到本地计算机上的*GroupCommon*目录。 
+   
+   **HTTPS 连接：**
+   
+   ```bash
+   git clone https://DataScienceUnit@dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupUtilities
+   ```
+   
+   **SSH 连接：**
+   
+   ```bash
+   git clone git@ssh.dev.azure.com:v3/DataScienceUnit/GroupCommon/GroupUtilities
+   ```
+
+在存储库的本地克隆中进行任何所需的更改后，可以将更改推送到共享组公用存储库。 
+
+从本地**GroupProjectTemplate**或**GroupUtilities**目录运行以下 Git Bash 命令。
+
+```bash
+git add .
+git commit -m "push from local"
+git push
+```
+
+> [!NOTE]
+> 如果这是您第一次提交到 Git 存储库，则在运行该`git commit`命令之前，您可能需要配置全局参数*user.name*和*user。* 运行以下两个命令：
+> 
+> `git config --global user.name <your name>`
+> 
+> `git config --global user.email <your email address>`
+> 
+> 如果要提交到多个 Git 存储库，请使用相同的名称和电子邮件地址。 在构建 Power BI 仪表板来跟踪多个存储库中的 Git 活动时，使用相同的名称和电子邮件地址是非常方便的。
+
+## <a name="add-group-members-and-configure-permissions"></a>添加组成员并配置权限
+
+将成员添加到组：
+
+1. 在 Azure DevOps 中，从**GroupCommon**项目主页的左侧导航栏中选择 "**项目设置**"。 
+   
+1. 从**项目设置**左侧导航栏中选择 **"团队**"，然后在 "**团队**" 页上，选择 " **GroupCommon" 团队**。 
+   
+   ![配置团队](./media/group-manager-tasks/teams.png)
+   
+1. 在 "**团队配置文件**" 页上，选择 "**添加**"。
+   
+   ![添加到 GroupCommon 团队](./media/group-manager-tasks/add-to-team.png)
+   
+1. 在 "**添加用户和组**" 对话框中，搜索并选择要添加到组的成员，然后选择 "**保存更改**"。 
+   
+   ![添加用户和组](./media/group-manager-tasks/add-users.png)
+   
+
+为成员配置权限：
+
+1. 从**项目设置**左侧导航窗格中，选择 "**权限**"。 
+   
+1. 在 "**权限**" 页上，选择要向其中添加成员的组。 
+   
+1. 在该组的页上，选择 "**成员**"，然后选择 "**添加**"。 
+   
+1. 在 "**邀请成员**" 弹出窗口中，搜索并选择要添加到组的成员，然后选择 "**保存**"。 
+   
+   ![向成员授予权限](./media/group-manager-tasks/grant-permissions.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-下面是 Team Data Science Process 定义的角色和任务的详细说明链接：
+下面是团队数据科学过程中其他角色和任务的详细说明的链接：
 
-- [数据科学团队的组管理员任务](group-manager-tasks.md)
 - [数据科学团队的团队主管任务](team-lead-tasks.md)
 - [数据科学团队的项目主管任务](project-lead-tasks.md)
-- [数据科学团队的项目单独参与者](project-ic-tasks.md)
+- [为数据科学团队项目单独的参与者任务](project-ic-tasks.md)

@@ -8,27 +8,26 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 1e0955ef2a52a6313f0449b956229e03f0a5b5e8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 6819bb32eecf8477e2c0727b50641858db21c784
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662425"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035912"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
 获取副本详细信息并列出应用程序资源中给定服务的副本。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
-| list | 列出某个服务的所有副本。 |
+| 列表 | 列出某个服务的所有副本。 |
 | show | 获取应用程序服务的给定副本。 |
 
 ## <a name="sfctl-mesh-service-replica-list"></a>sfctl mesh service-replica list

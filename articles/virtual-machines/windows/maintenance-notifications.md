@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: db8fd40b9c573d04d9442c64fb058902a771eca0
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: c27d6d65629fb926442377c03ab688b8819aad20
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418867"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079192"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>处理 Windows 虚拟机的计划内维护通知
 
@@ -27,13 +26,13 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 - 如果维护不需重启，Azure 会在更新主机时使用就地迁移来暂停 VM。 各容错域将逐一应用这些无需重启的维护操作，如果收到任何警告运行状况信号，则进度停止。 
 
-- 如果维护需重启，你会收到一个通知，其中会说明计划维护的时间。 在这些情况下，系统会提供一个时间窗口，方便我们在适当的时间自行启动维护。
+- 如果维护需重启，你会收到一个通知，其中会说明计划维护的时间。 在这些情况下, 系统会提供一个时间窗口, 该窗口通常为35天, 在这种情况下, 你可以自行开始维护。
 
 
 需要重新启动的计划内维护是按批进行计划的。 每个批具有不同的作用域（区域）。
 
 - 一个批从向客户发送通知开始。 默认情况下，向订阅所有者和共同所有者发送通知。 可以使用 Azure [活动日志警报](../../azure-monitor/platform/activity-logs-overview.md)，向通知添加更多收件人和消息传送选项（如电子邮件、短信和 Webhook）。  
-- 在通知时会提供自助时段。 可以在此时段内找到包含在此批中的虚拟机，开始按照自己的计划主动进行维护。
+- 在通知时会提供自助时段。 在此窗口中, 通常为35天, 你可以发现此浪潮中包含哪些虚拟机, 并根据自己的计划需求主动开始维护。
 - 自助时段过后，就会开始计划内维护时段。 在此时段的某个时刻，Azure 会计划所需的维护，并将其应用于虚拟机。 
 
 设置这两个时段的目的是，在了解 Azure 何时将自动启动维护时，提供足够的时间来启动维护和重新启动虚拟机。
@@ -81,7 +80,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
  
 仅当有计划内维护时，才会返回维护信息。 如果未计划任何影响 VM 的维护，该 cmdlet 不返回任何维护信息。 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ```powershell
 Get-AzVM -ResourceGroupName rgName -Name vmName -Status
@@ -89,7 +88,7 @@ Get-AzVM -ResourceGroupName rgName -Name vmName -Status
 
 在 MaintenanceRedeployStatus 下返回以下属性： 
 
-| 值 | 描述   |
+| ReplTest1 | 描述   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指示此时是否可以在 VM 上启动维护 |
 | PreMaintenanceWindowStartTime         | 可以在 VM 上启动维护的自助式维护时段的起点 |
@@ -159,7 +158,7 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 ```
 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 
 **问：为什么需要立即重新启动虚拟机？**
@@ -170,7 +169,7 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 
 **答:** 对于部署在可用性集或虚拟机规模集中的虚拟机，我们有一个概念：更新域 (UD)。 执行维护时，Azure 遵循 UD 约束，不会从不同 UD（在同一可用性集中）重新启动虚拟机。  Azure 还会至少等待 30 分钟，然后才移到下一组虚拟机。 
 
-有关高可用性的详细信息，请参阅 [Azure 中虚拟机的区域和可用性](regions-and-availability.MD)。
+有关高可用性的详细信息，请参阅 [Azure 中虚拟机的可用性](availability.MD)。
 
 **问：如何收到有关计划内维护的通知？**
 
@@ -203,7 +202,7 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 2.  VM 未计划进行维护。 可能是这次维护已结束、已取消或已修改，因此你的 VM 不再受其影响。
 3.  未将“维护”列添加到 VM 列表视图。 虽然我们已向默认视图添加此列，但配置为查看非默认列的客户必须手动将“维护”列添加到其 VM 列表视图。
 
-**问：我的 VM 已计划进行第二次维护，为什么？**
+**问：我的 VM 已计划进行第二次维护，为什么?**
 
 **答:** 多种用例都会看到在完成维护性重新部署后，VM 仍进行计划性维护：
 1.  我们已取消这次维护，并使用不同的有效负载重新启动它。 可能是我们已检测到出错的有效负载，只需部署其他有效负载。

@@ -4,23 +4,22 @@ description: 使用 C# 和 Azure 资源管理器部署虚拟机及其所有支�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: ce05d097aa69aa1aadb8450e40722448bc5a7de0
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
-ms.translationtype: HT
+ms.openlocfilehash: c6d092889deec934f1db1f1c93c06aa0dc217df5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883052"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079592"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>使用 C# 创建和管理 Azure 中的 Windows VM #
 
@@ -80,14 +79,14 @@ ms.locfileid: "54883052"
 4. 在 Windows 中设置名为 AZURE_AUTH_LOCATION 的环境变量，其中包含创建的授权文件的完整路径。 例如，以下 PowerShell 命令可用于：
 
     ```
-    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
+    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
 ### <a name="create-the-management-client"></a>创建管理客户端
 
-1. 为所创建的项目打开 Program.cs 文件，并将这些 using 语句添加到文件顶部的现有语句：
+1. 打开创建的项目的 Program.cs 文件。 然后，将以下 using 语句添加到文件顶部的现有语句中：
 
-    ```
+    ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Fluent;
@@ -97,7 +96,7 @@ ms.locfileid: "54883052"
 
 2. 若要创建管理客户端，请将以下代码添加到 Main 方法：
 
-    ```
+    ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
         .FromFile(Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION"));
 
@@ -116,7 +115,7 @@ ms.locfileid: "54883052"
 
 若要指定应用程序的值并创建资源组，请将以下代码添加到 Main 方法：
 
-```
+```csharp
 var groupName = "myResourceGroup";
 var vmName = "myVM";
 var location = Region.USWest;
@@ -133,7 +132,7 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
 
 若要创建可用性集，请将以下代码添加到 Main 方法：
 
-```
+```csharp
 Console.WriteLine("Creating availability set...");
 var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
     .WithRegion(location)
@@ -148,7 +147,7 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
 
 若要创建虚拟机的公共 IP 地址，请将以下代码添加到 Main 方法：
    
-```
+```csharp
 Console.WriteLine("Creating public IP address...");
 var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
     .WithRegion(location)
@@ -163,7 +162,7 @@ var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
 
 若要创建子网和虚拟网络，请将以下代码添加到 Main 方法：
 
-```
+```csharp
 Console.WriteLine("Creating virtual network...");
 var network = azure.Networks.Define("myVNet")
     .WithRegion(location)
@@ -179,7 +178,7 @@ var network = azure.Networks.Define("myVNet")
 
 若要创建网络接口，请将以下代码添加到 Main 方法：
 
-```
+```csharp
 Console.WriteLine("Creating network interface...");
 var networkInterface = azure.NetworkInterfaces.Define("myNIC")
     .WithRegion(location)
@@ -197,7 +196,7 @@ var networkInterface = azure.NetworkInterfaces.Define("myNIC")
 
 若要创建虚拟机，请将以下代码添加到 Main 方法：
 
-```
+```csharp
 Console.WriteLine("Creating virtual machine...");
 azure.VirtualMachines.Define(vmName)
     .WithRegion(location)
@@ -213,13 +212,13 @@ azure.VirtualMachines.Define(vmName)
 ```
 
 > [!NOTE]
-> 本教程创建运行 Windows Server 操作系统版本的虚拟机。 若要详细了解如何选择其他映像，请参阅 [Navigate and select Azure virtual machine images with Windows PowerShell and the Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像）。
+> 本教程创建运行 Windows Server 操作系统版本的虚拟机。 若要详细了解如何选择其他映像，请参阅[使用 Windows PowerShell 和 Azure CLI 来导航和选择 Azure 虚拟机映像](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 > 
 >
 
 如果要使用现有磁盘而不是市场映像，请使用以下代码：
 
-```
+```csharp
 var managedDisk = azure.Disks.Define("myosdisk")
     .WithRegion(location)
     .WithExistingResourceGroup(groupName)
@@ -244,7 +243,7 @@ azure.VirtualMachines.Define("myVM")
 
 如需对虚拟机执行任何操作，需获取一个虚拟机实例：
 
-```
+```csharp
 var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 ```
 
@@ -252,7 +251,7 @@ var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 
 若要获取有关虚拟机的信息，请将以下代码添加到 Main 方法：
 
-```
+```csharp
 Console.WriteLine("Getting information about the virtual machine...");
 Console.WriteLine("hardwareProfile");
 Console.WriteLine("   vmSize: " + vm.Size);
@@ -324,7 +323,7 @@ Console.ReadLine();
 
 若要停止虚拟机而不解除分配虚拟机，请将以下代码添加到 Main 方法：
 
-```
+```csharp
 Console.WriteLine("Stopping vm...");
 vm.PowerOff();
 Console.WriteLine("Press enter to continue...");
@@ -333,7 +332,7 @@ Console.ReadLine();
 
 如果要解除分配虚拟机，请将 PowerOff 调用更改为以下代码：
 
-```
+```csharp
 vm.Deallocate();
 ```
 
@@ -341,7 +340,7 @@ vm.Deallocate();
 
 若要启动虚拟机，请将以下代码添加到 Main 方法：
 
-```
+```csharp
 Console.WriteLine("Starting vm...");
 vm.Start();
 Console.WriteLine("Press enter to continue...");
@@ -354,7 +353,7 @@ Console.ReadLine();
 
 若要更改虚拟机大小，请将以下代码添加到 Main 方法：
 
-```
+```csharp
 Console.WriteLine("Resizing vm...");
 vm.Update()
     .WithSize(VirtualMachineSizeTypes.StandardDS2) 
@@ -365,9 +364,9 @@ Console.ReadLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>将数据磁盘添加到 VM
 
-若要将数据磁盘添加到虚拟机，请将以下代码添加到 Main 方法，以添加大小为 2 GB 的数据磁盘，以及为 0 的 LUN 和 ReadWrite 缓存类型：
+若要将数据磁盘添加到虚拟机，请将此代码添加到 Main 方法。 此示例添加了一个大小为 2 GB、LUN 为 0、缓存类型为 ReadWrite 的数据磁盘：
 
-```
+```csharp
 Console.WriteLine("Adding data disk to vm...");
 vm.Update()
     .WithNewDataDisk(2, 0, CachingTypes.ReadWrite) 
@@ -382,7 +381,7 @@ Console.ReadLine();
 
 若要删除资源组，请将以下代码添加到 Main 方法：
 
-```
+```csharp
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
@@ -395,6 +394,5 @@ azure.ResourceGroups.DeleteByName(groupName);
 2. 在按 **Enter** 开始删除资源之前，可能需要在 Azure 门户中花几分钟时间来验证资源的创建。 单击部署状态以查看有关部署的信息。
 
 ## <a name="next-steps"></a>后续步骤
-* 参考 [Deploy an Azure Virtual Machine using C# and a Resource Manager template](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（使用 C# 和 Resource Manager 模板部署 Azure 虚拟机）中的信息，利用模板创建虚拟机。
+* 参考[使用 C# 和 Resource Manager 模板部署 Azure 虚拟机](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中的信息，利用模板创建虚拟机。
 * 详细了解如何使用[适用于 .NET 的 Azure 库](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet)。
-

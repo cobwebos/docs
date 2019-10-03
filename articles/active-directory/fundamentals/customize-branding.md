@@ -2,23 +2,23 @@
 title: 将品牌添加到组织的登录页面 - Azure Active Directory | Microsoft Docs
 description: 有关如何将组织的品牌添加到 Azure Active Directory 登录页面的说明。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: kexia
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fb657d2c2cd4eeae0eb96dd37505a1c47278725
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7caf6eff9f5bd497ab6c3a500f3940549b198576
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103054"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959040"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>将品牌添加到组织的 Azure Active Directory 登录页面
 使用组织的徽标和自定义颜色方案，在 Azure Active Directory (Azure AD) 登录页面上提供一致外观和体验。 用户登录到组织的基于 Web 的应用（例如 Office 365，它使用 Azure AD 作为标识提供者时）时，将显示登录页面。
@@ -27,9 +27,9 @@ ms.locfileid: "58103054"
 >添加自定义品牌需要使用 Azure Active Directory Premium 1、Premium 2 或 Basic 版，或拥有 Office 365 许可证。 有关许可和版本的详细信息，请参阅[注册 Azure AD Premium](active-directory-get-started-premium.md)。<br><br>在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure AD 高级和基本版。 中国区 21Vianet 运营的 Azure 服务目前不支持 Azure AD Premium 和 Azure AD Basic 版本。 有关详细信息，请通过 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>自定义 Azure AD 登录页面
-可以自定义 Azure AD 登录页面，这些页面会在用户登录到组织的特定于租户的应用时显示（例如 [*https://outlook.com/contoso.com*](https://outlook.com/contoso.com)），或者在传递域变量时显示（例如 [*https://passwordreset.microsoftonline.com/?whr=contoso.com*](https://passwordreset.microsoftonline.com/?whr=contoso.com)）。
+可以自定义 Azure AD 登录页面，这些页面会在用户登录到组织的特定于租户的应用时显示（例如 [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com)），或者在传递域变量时显示（例如 [ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com)）。
 
-当用户转到如 www 站点时你的自定义品牌不会立即显示\.office.com。 相反，用户必须先登录才会显示自定义品牌。
+用户访问 www\.office.com 等站点时，自定义品牌不会立即显示。 相反，用户必须先登录才会显示自定义品牌。 用户登录后，可能需要15分钟或更长时间才能显示品牌。 
 
 > [!NOTE]
 > 所有品牌元素都是可选的。 例如，如果指定没有背景图像的横幅徽标，则登录页面将显示带有目标网站（例如 Office 365）默认背景图像的徽标。<br><br>此外，登录页面品牌不会带到个人 Microsoft 帐户。 如果用户或企业访客使用个人 Microsoft 帐户登录，则其登录页面不会显示组织的品牌。
@@ -58,7 +58,7 @@ ms.locfileid: "58103054"
 
         - **横幅徽标。** 用户在“我的应用”门户页面上输入用户名后，选择要显示在登录页面上的徽标的 .png 或 .jpg 版本。
             
-            图像不能高于 36 像素或宽于 245 像素。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
+            图像不能高于 60 像素或宽于 280 像素。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
 
         - **用户名提示。** 键入提示文本，如果用户忘记用户名将会显示此提示文本。 此文本必须是 Unicode，不带链接或代码，且不能超过 64 个字符。 如果访客登录到应用，我们建议不添加此提示。
 
@@ -70,7 +70,7 @@ ms.locfileid: "58103054"
 
         - **登录页背景色。** 指定在低带宽连接的情况下替代背景图像显示的十六进制颜色（例如，白色为 #FFFFFF）。 我们建议使用横幅徽标的主颜色或组织的颜色。
 
-        - **方形徽标图像。** 选择要在新 Windows 10 企业版设备的安装过程中向用户显示的组织徽标的 .png（首选）或 .jpg 图像。 此图像仅用于 Windows 身份验证，并且仅显示在使用 [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 进行部署的租户上；或者在其他 Windows 10 体验中用于密码输入页面。
+        - **方形徽标图像。** 选择要在新 Windows 10 企业版设备的安装过程中向用户显示的组织徽标的 .png（首选）或 .jpg 图像。 此图像仅用于 Windows 身份验证，并且仅显示在使用 [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 进行部署的租户上；或者在其他 Windows 10 体验中用于密码输入页面。 在某些情况下，它也可能出现在“同意”对话框中。
         
             图像大小不能超过 240 x 240 像素，并且其中的文件的大小必须小于 10 KB。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
     
@@ -101,7 +101,7 @@ ms.locfileid: "58103054"
 
 3. 在“配置公司品牌”页面上，根据本文的[自定义 Azure AD 登录页面](#customize-your-azure-ad-sign-in-page)部分中的说明添加、删除或更改任何信息。
 
-4. 选择“保存”。
+4. 选择**保存**。
 
    最长可能需要一个小时才能显示用户对登录页的品牌元素所做的任何更改。
 
@@ -118,7 +118,7 @@ ms.locfileid: "58103054"
 
 3. 在“配置公司品牌”页面上，选择语言（例如法语），然后根据本文的[自定义 Azure AD 登录页面](#customize-your-azure-ad-sign-in-page)部分中的说明添加已翻译的信息。
 
-4. 选择“保存”。
+4. 选择**保存**。
 
     “Contoso - 公司品牌”页面更新以显示新的法语配置。
 
@@ -129,10 +129,10 @@ ms.locfileid: "58103054"
 
 **示例：**
 
-**原始 URL：**https://aka.ms/MFASetup<br>
-**自定义 URL：**https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com
+**原始 URL：** https://aka.ms/MFASetup<br>
+**自定义 URL：** https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com
 
-**原始 URL：**https://aka.ms/SSPR<br>
-**自定义 URL：**https://passwordreset.microsoftonline.com/?whr=contoso.com
+**原始 URL：** https://aka.ms/SSPR<br>
+**自定义 URL：** https://passwordreset.microsoftonline.com/?whr=contoso.com
 
  

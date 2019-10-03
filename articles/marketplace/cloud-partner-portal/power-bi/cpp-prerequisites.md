@@ -1,25 +1,18 @@
 ---
-title: Power BI 应用提供系统必备组件的 Azure Marketplace |Microsoft Docs
+title: Power BI 应用提供系统必备组件 |Azure Marketplace
 description: 提供用于将 Power BI 应用发布到 AppSource 的先决条件。
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 5014a9cdf9a8811aa6081476f9ec6c41be0ff906
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: c436522bd5f1a9d52b71d85b7b47ac9a089c0b25
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012946"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66258168"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Power BI 应用提供系统必备组件
 
@@ -36,7 +29,7 @@ ms.locfileid: "58012946"
 
 业务需求包括过程、 合同，和法律义务。  必须：
 
-- 为已注册的云应用商店发布服务器。 如果你要注册，请按照中的步骤[成为云 Marketplace 发布者](../../become-publisher.md)。
+- 为已注册的云应用商店发布服务器。 如果你要注册，请按照中的步骤[成为云 Marketplace 发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)。
 
     > [!NOTE] 
     > 使用相同的 Microsoft 开发人员中心注册帐户登录到[云合作伙伴门户](https://cloudpartner.azure.com)。 对于 AppSource 套餐，只应具有一个 Microsoft 帐户。 帐户不应为特定于各个服务或产品/服务。

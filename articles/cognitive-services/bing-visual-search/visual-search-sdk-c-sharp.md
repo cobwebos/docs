@@ -3,19 +3,19 @@ title: 快速入门：使用适用于 C# 的必应视觉搜索 SDK 获取图像�
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用必应视觉搜索 SDK 上传图像并获取其相关见解。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 05/16/2018
-ms.author: v-gedod
-ms.openlocfilehash: a7fc4686ec31b4c3a23d3e0ff72e5e2a270015b0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 05/15/2019
+ms.author: aahi
+ms.openlocfilehash: 2c98484eca027d20fbbe72ffb333a3e281e6f46b
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532093"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849887"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>快速入门：使用适用于 C# 的必应视觉搜索 SDK 获取图像见解
 
@@ -23,7 +23,7 @@ ms.locfileid: "57532093"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 * NuGet 视觉搜索包。 
     - 在 Visual Studio 中的解决方案资源管理器中，右键单击项目并从菜单中选择 `Manage NuGet Packages`。 安装 `Microsoft.Azure.CognitiveServices.Search.VisualSearch` 包。 安装 NuGet 包还会安装以下程序：

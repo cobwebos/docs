@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 64b28fc0db56be77bce9c22f9332110205a42b1d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d854aef62af1004faacf73c11bb417cf508a727
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437337"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64727144"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps 支持的类型
 
@@ -82,7 +82,7 @@ ms.locfileid: "57437337"
 | MOTORING\_ORGANIZATION\_OFFICE | 机动车协会办公室 |
 | MOUNTAIN\_PASS | 山道 |
 | MUSEUM | 博物馆 |
-| NATIVE\_RESERVATION | 当地保留地、保留地 |
+| NATIVE\_RESERVATION | 当地预留、预留 |
 | NIGHTLIFE | 酒吧、卡拉OK厅、爵士乐俱乐部、私人会所、酒吧、喜剧会所、鸡尾酒吧、舞厅、夜生活 |
 | NON\_GOVERNMENTAL\_ORGANIZATION | 非政府组织 |
 | OPEN\_PARKING\_AREA | 露天停车场、停车场 |
@@ -105,7 +105,7 @@ ms.locfileid: "57437337"
 | REPAIR\_FACILITY | 车身维修厂、轮胎服务、维修店、汽车玻璃替换店、一般汽车维修服务、汽车配件销售安装、摩托车修理、卡车维修服务、维修设施 |
 | RESEARCH\_FACILITY | 研究设施 |
 | RESIDENTIAL\_ACCOMMODATION | 老年人社区、连栋房屋建筑群、公寓综合楼/公寓大楼、住宅小区、居民区 |
-| RESTAURANT | 德国餐、克里奥尔-卡津餐、荷兰餐、宴会厅、小酒馆、以色列餐、斯洛伐克餐、牙买加餐、素食餐、海鲜、越南餐、马耳他餐、川菜、威尔士餐、中餐、日本餐、阿尔及利亚餐、加利福尼亚餐、融合、鲁菜、沙拉餐馆、萨沃伊餐、西班牙餐、埃塞俄比亚餐、台湾餐、面包圈、伊朗餐、加拿大餐、美国餐、挪威餐、法国餐、湘菜、波利尼西亚餐、阿富汗餐、路边摊、东式餐、瑞士餐、情色餐、薄饼餐厅、苏里南餐、埃及餐、匈牙利餐、尼泊尔餐、烧烤、火锅、汉堡、地中海餐、拉美餐、餐前小吃、英国餐、墨西哥餐、广东餐、亚洲（其他）餐、自助餐、寿司、蒙古餐、国际餐、蚌、泰国餐、委内瑞拉餐、罗马尼亚餐、鸡肉、汤、合礼餐、牛排屋、酸奶/果汁吧、意大利餐、韩国餐、塞浦路斯餐、波斯尼亚餐、玻利维亚餐、多米尼加餐、比利时餐、突尼斯餐、苏格兰餐、英格兰餐、巴基斯坦餐、捷克餐、夏威夷餐、马格里布餐、藏菜、阿拉伯餐、中东餐、智利餐、上海餐、波兰餐、菲律宾餐、苏丹餐、亚美尼亚餐、缅甸餐、巴西餐、斯堪餐纳维亚餐、保加利亚餐、黑人餐、哥伦比亚餐、犹太餐、披萨、西西里餐、有机餐、希腊餐、巴斯克餐、乌拉圭餐、自助餐厅、芬兰餐、非洲餐、柯西嘉餐、叙利亚餐、加勒比餐、东北餐、俄罗斯餐、烧烤、外卖、快餐、澳大利亚餐、爱尔兰餐、酒吧食品、干酪火锅、黎巴嫩餐、印度尼西亚餐、丹麦餐、普罗旺斯餐、铁板烧、印第安餐、毛里求斯餐、西餐、秘鲁餐、柬埔寨餐、小吃、瑞典餐、健康餐、冰淇淋店、斯拉夫餐、土耳其餐、阿根廷餐、奥地利餐、异国情调餐、葡萄牙餐、卢森堡餐、摩洛哥餐、三明治、古巴餐、饭店 |
+| RESTAURANT | 德语，克里奥尔语 Cajun、 荷兰语、 宴会聊天室、 bistro、 以色列、 斯洛伐克语、 牙买加、 素食、 seafood，越南语、 马耳他语、 四川，威尔士语、 中文、 日语、 阿尔及利亚、 Californian，熔，Shandong，好的色拉栏中，Savoy an、 西班牙语、 埃塞俄比亚、 闽南语面圈形，伊朗、 加拿大、 美国、 挪威语、 法语、 Hunan、 Polynesian、 afghan、 有用，亚洲、 瑞士、 erotic、 crêperie，Surinamese、 埃及语、 匈牙利语、 尼泊尔、 各、 热 pot、 关于汉堡包，地中海、 拉丁美洲、 tapas，英国，墨西哥、 广东、 亚洲 （其他）、 自助餐，寿司，蒙古语，国际 mussels、 泰语、 委内瑞拉、 Rumanian、 chicken soup，安装得当的过程、 steak 房子、 意大利语、 朝鲜语、 Cypriot、 波斯尼亚语、 玻利维亚、 多米尼加、 比利时、 突尼斯、 苏格兰，yogurt/汁栏英语、 巴基斯坦货币、 捷克语、 夏威夷、 Maghrib、 藏语、 阿拉伯半岛，中间美国东部、 智利、 上海、 波兰语、 菲律宾语、 Sudanese、 亚美尼亚语、 缅甸语、 巴西语、 斯堪的纳维亚、 保加利亚语、 灵魂食物、 哥伦比亚、 犹太、 pizza Sicilian、 有机、 希腊语、 巴斯克，乌拉圭，餐厅，芬兰语、 中非、 科西嘉语、 叙利亚、 加勒比海、 Dongbei、 俄语、 烤制，消失，需要快餐，澳大利亚，爱尔兰，pub 食物，fondue，黎巴嫩、 印度尼西亚语、 丹麦语、 Provençal、 teppanyaki、 印度、 毛里求斯、 西方大陆秘鲁、 柬埔寨、 辅料、 瑞典语、 macrobiotic，ice cream parlor，斯拉夫语、 土耳其语、 阿根廷、 奥地利、 特殊、 葡萄牙语、 卢森堡、 摩洛哥、 三明治，古巴，餐馆 |
 | RESTAURANT\_AREA | 餐厅区域 |
 | REST\_AREA | 服务区、中途停靠站 |
 | SCENIC\_PANORAMIC\_VIEW | 景点/全景图、观测点 |

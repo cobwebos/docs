@@ -1,51 +1,90 @@
-items:
 - name: 异常检测器文档
   href: index.yml
 - name: 概述
-  items:
-  - name: 什么是异常检测器 API？
-    href: overview.md
   expanded: true
+  items:
+    - name: 什么是异常检测器 API？
+      href: overview.md
 - name: 快速入门
-  items:
-  - name: 检测数据中的异常
-    items:
-    - name: 使用 C#
-      href: quickstarts/detect-data-anomalies-csharp.md
-    - name: 使用 Java
-      href: quickstarts/detect-data-anomalies-java.md
-    - name: 使用 Python
-      href: quickstarts/detect-data-anomalies-python.md
   expanded: true
+  items:
+    - name: REST API
+      items:
+        - name: '使用 C#'
+          href: quickstarts/detect-data-anomalies-csharp.md
+        - name: 使用 Java
+          href: quickstarts/detect-data-anomalies-java.md
+        - name: 使用 Python
+          href: quickstarts/detect-data-anomalies-python.md
+    - name: 客户端库
+      items:
+        - name: '使用 C#'
+          href: quickstarts/detect-data-anomalies-csharp-sdk.md
+        - name: 使用 Python
+          href: quickstarts/detect-data-anomalies-python-sdk.md
+        - name: 使用 Node.js
+          href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+- name: 教程
+  items:
+    - name: 使用 Power BI 将异常成批可视化
+      href: tutorials/batch-anomaly-detection-powerbi.md
+    - name: 使用 Azure Databricks 针对流数据进行异常情况检测
+      href: tutorials/anomaly-detection-streaming-databricks.md
 - name: 操作指南
   items:
-  - name: 识别数据中的异常
-    href: how-to/identify-anomalies.md
+    - name: 识别数据中的异常
+      href: how-to/identify-anomalies.md
+    - name: 使用容器
+      items:
+        - name: 安装并运行容器
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+          href: anomaly-detector-container-howto.md
+        - name: 配置容器
+          href: anomaly-detector-container-configuration.md
+          displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
+        - name: 使用容器实例
+          href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: 概念
   items:
-  - name: 异常情况检测 API 最佳做法
-    href: concepts/anomaly-detection-best-practices.md
+    - name: 异常情况检测 API 最佳做法
+      href: concepts/anomaly-detection-best-practices.md
 - name: 引用
   items:
-  - name: REST API 参考
-    href: https://aka.ms/anomaly-detector-rest-api-ref
-  - name: SDK
-    items:
-    - name: .NET
-      href: https://aka.ms/anomaly-detector-dotnet-ref
+    - name: REST API 参考
+      href: 'https://aka.ms/anomaly-detector-rest-api-ref'
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://aka.ms/anomaly-detector-dotnet-ref'
+        - name: Go
+          href: 'https://go.microsoft.com/fwlink/?linkid=2089915'
+        - name: Python
+          href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
+        - name: Node.js
+          href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
+    - name: KDD 2019 中有关 SR-CNN 的白皮书
+      href: 'https://arxiv.org/abs/1906.03821'
 - name: 资源
   items:
-  - name: 定价
-    href: https://aka.ms/anomaly-detector-pricing
-  - name: 区域可用性
-    href: https://aka.ms/anomaly-detector-region
-  - name: 参考解决方案体系结构
-    href: https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-anomaly-detection
-ms.openlocfilehash: 84e9317e3eb20181dcf1003718eb33acddbd84fa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786975"
+    - name: 定价
+      href: 'https://aka.ms/adpricing'
+    - name: 区域可用性
+      href: 'https://aka.ms/adregion'
+    - name: 用户生成的内容
+      href: user-generated-content.md
+    - name: 加入 Microsoft Teams 中的异常检测器顾问组
+      href: 'https://aka.ms/adadvisorsjoin'
+    - name: 参考解决方案体系结构
+      href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
+    - name: 合规性
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+- name: 支持
+  items:
+    - name: 获取支持
+      href: 'https://aka.ms/adsupport'
+    - name: 堆栈溢出
+      href: 'https://aka.ms/adso'
+    - name: MSDN
+      href: 'https://aka.ms/admsdn'
+    - name: 用户之声
+      href: 'https://aka.ms/aduservoice'

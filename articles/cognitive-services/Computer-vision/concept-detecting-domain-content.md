@@ -1,5 +1,5 @@
 ---
-title: 检测特定于域的内容 - 计算机视觉
+title: 特定于域的内容-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 了解如何指定图像分类域以返回有关图像的更多详细信息。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 92859667e1dc53b9c6ca9e46a2db1c6dc335ae37
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339005"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946329"
 ---
 # <a name="detect-domain-specific-content"></a>检测特定于域的内容
 
@@ -30,7 +30,7 @@ ms.locfileid: "57339005"
 
 以下是 **models/celebrities/analyze** API 为给定图像返回的示例 JSON 响应：
 
-![Satya Nadella 的站立图](./images/satya.jpeg)
+![Satya Nadella 的站立微笑图](./images/satya.jpeg)
 
 ```json
 {
@@ -102,8 +102,8 @@ ms.locfileid: "57339005"
 
 | 名称 | 描述 |
 |------|-------------|
-| 名人 | 名人识别，支持属于 `people_` 类别的图像 |
-| 地标 | 地标识别，支持属于 `outdoor_` 或 `building_` 类别的图像 |
+| celebrities | 名人识别，支持属于 `people_` 类别的图像 |
+| landmarks | 地标识别，支持属于 `outdoor_` 或 `building_` 类别的图像 |
 
 调用 [Models](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API 将返回此信息，以及每个模型可应用于的类别：
 

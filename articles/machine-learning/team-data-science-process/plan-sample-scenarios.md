@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6838f4db240a0712eece7a97bc2cfe99efb87215
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 130ab6ee8e59b157d1fbdd8769f14814445dea18
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454935"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202743"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
 本文概述了各种示例数据源和可通过[团队数据科学过程 (TDSP)](overview.md) 处理的目标场景。 TDSP 为团队提供了一个系统性方法，可协作构建智能应用程序。 此处介绍的情景说明了数据处理工作流中的可用选项，具体取决于 Azure 中的数据特征、源位置和目标存储库。
@@ -239,7 +239,7 @@ ms.locfileid: "57454935"
 1. 开始使用上传的数据集对 Azure 机器学习实验流进行采样。
 
 ## <a name="decisiontree"></a>用于方案选择的决策树
-- - -
+---
 下面的图表总结了上述的方案以及让你采用每个详细方案的高级分析流程和技术选择。 请注意，数据处理、浏览、特征工程和采样可能会出现在一个或多个方法/环境中（在源、中间和/或目标环境中），并且可能会根据需要以迭代方式进行。 此图只用于列举某些可能流，并不提供详尽的枚举。
 
 ![示例 DS 流程演练方案][8]

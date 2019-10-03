@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 3b2cfc932c6322df8237ec7cdf820fc4242bfa72
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57887215"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300994"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>使用 Azure 计划程序创建和计划第一个作业 - Azure 门户
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换将即将停用的 Azure 计划程序。 若要计划作业，请[改为试用 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
 
 本教程演示了如何轻松创建和计划作业，然后监视并管理该作业。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "57887215"
    | 属性 | 示例值 | 描述 |
    |----------|---------------|-------------| 
    | **Action** | Http | 要运行的操作类型 | 
-   | **方法** | Get | 要调用的方法 | 
+   | **方法** | **Get** | 要调用的方法 | 
    | **URL** | **https://www.microsoft.com** | 目标 URL | 
    |||| 
    

@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
 ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357407"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61318375"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>将环境集成到你的 Azure DevOps CI/CD 管道
 可以使用 Azure 开发测试实验室任务扩展安装 Azure DevOps 服务 （以前称为 Visual Studio Team Services） 以轻松地集成在持续集成 (CI) / 持续交付 (CD) 生成和发布管道与 Azure开发测试实验室。 这些扩展使其更轻松地快速部署[环境](devtest-lab-test-env.md)为特定测试任务，然后在测试完成时删除它。 
@@ -42,10 +42,10 @@ ms.locfileid: "59357407"
 要创建发布定义，请执行以下操作：
 
 1.  上**版本**选项卡**生成和发布中心**，选择**加号 （+）** 按钮。
-2.  在“创建发布定义”窗口中，选择“空”模板，然后选择“下一步”。
-3.  选择“稍后选择”和“创建”，以新建有一个默认环境且无链接项目的发布定义。
+2.  在“创建发布定义”窗口中，选择“空”模板，然后选择“下一步”。   
+3.  选择“稍后选择”和“创建”，以新建有一个默认环境且无链接项目的发布定义。  
 4.  若要打开快捷菜单中，新的发布定义中，选择**省略号 （...）** 到环境名称下, 一步，然后选择**配置变量**。
-5.  在“配置 - 环境”窗口中，对于在发布定义中使用的变量，输入以下值：
+5.  在“配置 - 环境”  窗口中，对于在发布定义中使用的变量，输入以下值：
 1.  有关**administratorLogin**，输入 SQL 管理员登录名。
 2.  有关**administratorLoginPassword**，输入要使用的 SQL 管理员登录名的密码。 使用“挂锁”图标隐藏和保护密码。
 3.  有关**databaseName**，输入 SQL 数据库名称。
@@ -54,9 +54,9 @@ ms.locfileid: "59357407"
 ## <a name="create-an-environment"></a>创建环境
 下一阶段的部署将创建环境以用于开发或测试用途。
 
-1. 在发布定义中，选择“添加任务”。
+1. 在发布定义中，选择“添加任务”  。
 2. 上**任务**选项卡上，添加 Azure 开发测试实验室创建环境任务。 对任务进行如下配置：
-    1. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](/azure/devops/pipelines/library/service-endpoints)。
+    1. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。   有关详细信息，请参阅 [Azure 资源管理器服务终结点](/azure/devops/pipelines/library/service-endpoints)。
 2. 有关**实验室名称**，选择前面创建的实例的名称 *。
 3. 有关**存储库名称**，选择资源管理器模板 (201) 推送到其中的存储库 *。
 4. 有关**模板名称**，选择已保存到您源代码存储库 * 的环境的名称。 
@@ -71,7 +71,7 @@ ms.locfileid: "59357407"
 在发布定义中，选择**添加任务**，然后在**部署**选项卡上，添加**Azure 开发测试实验室删除环境**任务。 请如下所述对其进行配置：
 
 1. 若要删除 VM，请参阅[Azure 开发测试实验室任务](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks):
-    1. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。 有关详细信息，请参阅 [Azure 资源管理器服务终结点](/azure/devops/pipelines/library/service-endpoints)。
+    1. 对于“Azure RM 订阅”，从“可用 Azure 服务连接”列表中选择连接，或创建到 Azure 订阅的限制更严格的权限连接。   有关详细信息，请参阅 [Azure 资源管理器服务终结点](/azure/devops/pipelines/library/service-endpoints)。
     2. 有关**实验室名称**，选择存在环境的实验室。
     3. 有关**环境名称**，输入要删除的环境的名称。
 2. 输入发布定义名称，然后保存它。

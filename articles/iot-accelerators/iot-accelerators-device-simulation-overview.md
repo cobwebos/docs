@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 173963470a77932186b3c51f17ccb406b32a13f3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452218"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65464872"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>设备模拟解决方案加速器概述
 
@@ -38,7 +38,7 @@ ms.locfileid: "54452218"
 
 部署设备模拟时，会得到一些示例模拟和示例设备。 可以通过这些示例来学习如何使用设备模拟。 若要开始操作，请运行一个[模拟 10 辆卡车的示例模拟](quickstart-device-simulation-deploy.md)。 也可[使用已提供的多个示例设备中的一个来创建自己的模拟](iot-accelerators-device-simulation-create-simulation.md)。
 
-![模拟配置](media/iot-accelerators-device-simulation-overview/SampleSimulation.png)
+![模拟配置](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
 ## <a name="custom-simulated-devices"></a>自定义模拟设备
 

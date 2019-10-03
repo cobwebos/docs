@@ -4,22 +4,21 @@ description: 用于在运行 Linux 的 N 系列计算 VM 上安装 NVIDIA GPU �
 services: virtual-machines-linux
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
-ms.author: roiyz
-ms.openlocfilehash: 9d9f634d494c3c88146ab1f243d17609cf30bbcd
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.author: akjosh
+ms.openlocfilehash: 83646c0b11bf558f667b29271a27d31e5489c157
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620676"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174001"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
@@ -27,15 +26,17 @@ ms.locfileid: "58620676"
 
 此扩展在 Linux N 系列 VM 上安装 NVIDIA GPU 驱动程序。 根据 VM 系列，此扩展安装 CUDA 或 GRID 驱动程序。 使用此扩展安装 NVIDIA 驱动程序时，即表示你接受并同意 [NVIDIA 最终用户许可协议](https://go.microsoft.com/fwlink/?linkid=874330)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
 
+[此处](
+https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)提供了有关手动安装驱动程序和当前支持的版本的说明。
 此扩展也可用于在 [Windows N 系列 VM](hpccompute-gpu-windows.md) 上安装 NVIDIA GPU 驱动程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
 此扩展支持以下 OS 发行版，具体取决于特定 OS 版本对驱动程序的支持。
 
-| 分发 | 版本 |
+| 分发 | Version |
 |---|---|
 | Linux：Ubuntu | 16.04 LTS、18.04 LTS |
 | Linux：Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
@@ -71,22 +72,22 @@ ms.locfileid: "58620676"
 
 ### <a name="properties"></a>属性
 
-| 名称 | 值/示例 | 数据类型 |
+| 姓名 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | 日期 |
-| 发布者 | Microsoft.HpcCompute | 字符串 |
-| type | NvidiaGpuDriverLinux | 字符串 |
+| apiVersion | 2015-06-15 | date |
+| publisher | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>设置
 
 所有设置都是可选的。 默认行为是，如果安装驱动程序时不要求更新内核，则不进行更新，请安装最新的受支持驱动程序和 CUDA 工具包（根据情况）。
 
-| 名称 | 描述 | 默认值 | 有效值 | 数据类型 |
+| 姓名 | 描述 | Default Value | 有效值 | 数据类型 |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | 布尔值 |
-| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | 最新 | GRID：“410.92”、“410.71”、“390.75”、“390.57”、“390.42”<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | 字符串 |
-| installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | true | true、false | 布尔值 |
+| updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | boolean |
+| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | latest | GRID："430.30"、"418.70"、"410.92"、"410.71"、"390.75"、"390.57"、"390.42"<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | string |
+| installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | true | true、false | boolean |
 
 
 ## <a name="deployment"></a>部署
@@ -177,7 +178,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 退出代码 | 含义 | 可能的操作 |
 | :---: | --- | --- |
 | 0 | 操作成功 |
-| 第 | 扩展的用法不正确 | 检查执行输出日志 |
+| 1 | 扩展的用法不正确 | 检查执行输出日志 |
 | 10 | 用于 Hyper-V 和 Azure 的 Linux Integration Services 不可用或未安装 | 检查 lspci 的输出 |
 | 11 | 在此 VM 大小上找不到 NVIDIA GPU | 使用[受支持的 VM 大小和 OS](../linux/n-series-driver-setup.md) |
 | 12 | 不支持的映像产品/服务 |

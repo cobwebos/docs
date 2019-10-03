@@ -4,23 +4,22 @@ description: 了解如何使用 C# 和 Resource Manager 模板部署 Azure VM。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: bfba66e8-c923-4df2-900a-0c2643b81240
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 50d0d78e9dc0c7f51fcd82dd16eab5a180eae073
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 65ce7711786e15a5455d91ce829a3bc0bdf4317d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796014"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103231"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>使用 C# 和 Resource Manager 模板部署 Azure 虚拟机
 
@@ -56,7 +55,7 @@ ms.locfileid: "59796014"
 
 ### <a name="create-the-template-file"></a>创建模板文件
 
-1. 在解决方案资源管理器中，右键单击“myDotnetProject” > ，单击“添加” > “新建项”，然后在“Visual C# 项”中选择“文本文件”。 命名文件 CreateVMTemplate.json，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 CreateVMTemplate.json，然后单击“添加”。
 2. 将此 JSON 代码添加到创建的文件中：
 
     ```json
@@ -166,9 +165,9 @@ ms.locfileid: "59796014"
 
 ### <a name="create-the-parameters-file"></a>创建参数文件
 
-若要为模板中定义的资源参数指定值，请创建包含值的参数文件。
+若要为模板中的资源参数指定值，请创建包含值的参数文件。
 
-1. 在解决方案资源管理器中，右键单击 *“myDotnetProject”* > **，单击** > **“添加”****“新建项”**，然后在 *“Visual C# 项”中选择“文本文件”*。 命名文件 Parameters.json，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 Parameters.json，然后单击“添加”。
 2. 将此 JSON 代码添加到创建的文件中：
 
     ```json
@@ -188,7 +187,7 @@ ms.locfileid: "59796014"
 
 在可部署模板之前，请先确保能够访问 [Active Directory 服务主体](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。 从服务主体中，将获取对 Azure 资源管理器请求进行身份验证的令牌。 还应记录授权文件中所需的应用程序 ID、身份验证秘钥和的租户 ID。
 
-1. 在解决方案资源管理器中，右键单击 *“myDotnetProject”* > **，单击** > **“添加”****“新建项”**，然后在 *“Visual C# 项”中选择“文本文件”*。 命名文件 azureauth.properties，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 azureauth.properties，然后单击“添加”。
 2. 添加这些授权属性：
 
     ```
@@ -205,17 +204,17 @@ ms.locfileid: "59796014"
     将 &lt;subscription-id&gt; 替换为订阅标识符，&lt;application-id&gt; 替换为 Active Directory 应用程序标识符，&lt;authentication-key&gt; 替换为授权密钥，&lt;tenant-id&gt; 替换为租户标识符。
 
 3. 保存 azureauth.properties 文件。
-4. 在 Windows 中设置名为 AZURE_AUTH_LOCATION 的环境变量，其中包含创建的授权文件的完整路径，例如以下 PowerShell 命令可用于：
+4. 在 Windows 中设置名为 AZURE_AUTH_LOCATION 的环境变量，其中包含创建的授权文件的完整路径，例如可以使用以下 PowerShell 命令：
 
     ```powershell
-    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
+    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
     
 
 ## <a name="create-the-management-client"></a>创建管理客户端
 
-1. 为所创建的项目打开 Program.cs 文件，并将这些 using 语句添加到文件顶部的现有语句：
+1. 打开创建的项目的 Program.cs 文件。 然后，将以下 using 语句添加到文件顶部的现有语句中：
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;

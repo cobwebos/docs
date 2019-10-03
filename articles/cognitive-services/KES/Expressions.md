@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: a544cdca1ef4be56fcf368a39040f4ee85076a9e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860127"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60815110"
 ---
 # <a name="structured-query-expression"></a>结构化查询表达式
 
-结构化查询表达式指定了一组要根据数据索引进行评估的操作。  它包含属性查询表达式和更高级别函数。  [evaluate](evaluateMethod.md) 方法可用于计算与表达式匹配的对象。  下面的示例来自学术出版物领域，它返回自 2013 年起由 Jaime Teevan 撰写的出版物。
+结构化查询表达式指定了一组要根据数据索引进行评估的操作。  它包含属性查询表达式和更高级别函数。  [evaluate  ](evaluateMethod.md) 方法可用于计算与表达式匹配的对象。  下面的示例来自学术出版物领域，它返回自 2013 年起由 Jaime Teevan 撰写的出版物。
 
 `And(Composite(Author.Name=='jaime teevan'),Y>=2013)`
 
-可通过 [interpret](interpretMethod.md) 请求获取结构化查询表达式，其中每个解释的语义输出都是结构化查询表达式，用于返回与输入自然语言查询匹配的索引对象。  也可以使用本部分中的语法手动编写。
+可通过 [interpret  ](interpretMethod.md) 请求获取结构化查询表达式，其中每个解释的语义输出都是结构化查询表达式，用于返回与输入自然语言查询匹配的索引对象。  也可以使用本部分中的语法手动编写。
 
 ## <a name="attribute-query-expression"></a>属性查询表达式
 
@@ -36,9 +36,9 @@ ms.locfileid: "55860127"
 | String | starts_with | Title='latent s'... |
 | Int32/Int64/Double | equals | Year=2000 |
 | Int32/Int64/Double | starts_with | Year='20'...（任何以“20”开头的十进制值） |
-| Int32/Int64/Double | is_between | Year&lt;2000 <br/> Year&lt;=2000 <br/> Year&gt;2000 <br/> Year&gt;=2000 <br/> Year=[2010,2012)（仅包括左边界值：2010、2011） <br/> Year=[2000,2012]（包括两个边界值：2010、2011、2012） |
-| 日期 | equals | BirthDate='1984-05-14' |
-| 日期 | is_between | BirthDate&lt;='2008/03/14' <br/> PublishDate=['2000-01-01','2009-12-31'] |
+| Int32/Int64/Double | is_between | Year&lt;2000 <br/> Year&lt;=2000 <br/> Year&gt;2000 <br/> Year&gt;=2000 <br/> Year=[2010,2012)（仅包括左边界值：  2010、2011） <br/> Year=[2000,2012]（包括两个边界值：  2010、2011、2012） |
+| Date | equals | BirthDate='1984-05-14' |
+| Date | is_between | BirthDate&lt;='2008/03/14' <br/> PublishDate=['2000-01-01','2009-12-31'] |
 | Guid | equals | Id='602DD052-CC47-4B23-A16A-26B52D30C05B' |
 
 

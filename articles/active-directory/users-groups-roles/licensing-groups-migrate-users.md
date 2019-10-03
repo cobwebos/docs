@@ -1,6 +1,6 @@
 ---
-title: 将单独许可的用户迁移到基于组的许可的 Azure Active Directory |Microsoft Docs
-description: 如何使用 Azure Active Directory 从单个用户许可证切换到基于组的许可
+title: 将单独获得许可的用户添加到基于组的许可的 Azure Active Directory |Microsoft Docs
+description: 如何将从单个用户许可证迁移到使用 Azure Active Directory 基于组的许可
 services: active-directory
 keywords: Azure AD 许可
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6fd2eb51c7178421b0656e3b1d0e0ea36176c16
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 333f0ae0153073b57740446ecf47e36a1f9ce590
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199966"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65192457"
 ---
-# <a name="how-to-add-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>如何添加迁移各个许可证的用户到组的许可
+# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>如何将各个许可证的用户迁移到组的许可
 
 可能已通过“直接分配”将现有的许可证部署到了组织中的用户；也就是说，使用 PowerShell 脚本或其他工具为单个用户分配了许可证。 在开始使用基于组的许可来管理你的组织中的许可证之前，您可以使用此迁移计划无缝使用基于组的许可替换现有的解决方案。
 
@@ -57,15 +57,15 @@ ms.locfileid: "58199966"
 
 可能的迁移过程如下：
 
-1. 使用 Azure 门户将 EMS 许可证分配到 Azure AD 中的“所有用户”组。 将 E3 许可证分配到包含全部所需用户的“财务部”组。
+1. 使用 Azure 门户将 EMS 许可证分配到 Azure AD 中的“所有用户”组  。 将 E3 许可证分配到包含全部所需用户的“财务部”组。 
 
-2. 确认为每个组的所有用户完成了许可证分配。 转到每个组的边栏选项卡，选择“许可证”，并检查“许可证”边栏选项卡顶部的处理状态。
+2. 确认为每个组的所有用户完成了许可证分配。 转到每个组的边栏选项卡，选择“许可证”，并检查“许可证”边栏选项卡顶部的处理状态。  
 
    - 查看“已向所有用户应用最新的许可证更改”，确认处理已完成。
 
    - 查看顶部的通知，了解可能未成功为其分配许可证的用户。 某些用户的许可证是否已用完？ 某些用户的许可证 SKU 是否有冲突，从而导致他们无法继承组许可证？
 
-3. 定点检查某些用户，确认是否为他们应用了直接许可证和组许可证。 转到用户的边栏选项卡，选择“许可证”，并检查许可证的状态。
+3. 定点检查某些用户，确认是否为他们应用了直接许可证和组许可证。 转到用户的边栏选项卡，选择“许可证”，并检查许可证的状态。 
 
    - 下面是迁移期间预期的用户状态：
 

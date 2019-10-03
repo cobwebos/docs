@@ -2,28 +2,28 @@
 title: 密码复杂性 - Azure Active Directory B2C | Microsoft Docs
 description: 如何配置由 Azure Active Directory B2C 中的使用者提供的密码复杂性要求。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/11/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d7874d7c8d04e3d3565cdfe2e52e49c538b3091
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 642621e2e04d3e96dc6886b1bdb28c161560b28e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795808"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065460"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>配置 Azure Active Directory B2C 中的密码复杂性要求
 
-Azure Active Directory (Azure AD) B2C 支持更改由最终用户在创建帐户时提供的密码复杂性要求。 默认情况下，Azure AD B2C 使用 `Strong` 密码。 此外，Azure AD B2C 还支持用于控制客户可以使用的密码复杂性的配置选项。
+Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建帐户时提供的密码复杂性要求。 默认情况下，Azure AD B2C 使用 `Strong` 密码。 此外，Azure AD B2C 还支持用于控制客户可以使用的密码复杂性的配置选项。
 
 ## <a name="password-rule-enforcement"></a>密码规则强制实施
 
-在注册或密码重置期间，最终用户必须提供符合复杂性规则的密码。 根据用户流要求，需强制实施密码复杂性规则。 很可能有一个用户流要求在注册时另一个用户流需要的八个字符字符串在注册期间使用四位数字 pin。 例如，可以使用针对成人（而非儿童）的不同密码复杂性的用户流。
+在注册或密码重置期间，最终用户必须提供符合复杂性规则的密码。 根据用户流要求，需强制实施密码复杂性规则。 在注册期间，有一个用户流可能需要四位数的 pin，而另一个用户流在注册过程中需要8个字符串。 例如，可以使用针对成人（而非儿童）的不同密码复杂性的用户流。
 
 在登录期间绝不会强制实施密码复杂性。 登录时不会提示用户更改密码，因为它不符合当前的复杂性要求。
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) B2C 支持更改由最终用户在创建帐户
 ## <a name="configure-password-complexity"></a>配置密码复杂性
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 选择“用户流”。
 2. 选择一个用户流，然后单击“属性”。
@@ -45,11 +45,11 @@ Azure Active Directory (Azure AD) B2C 支持更改由最终用户在创建帐户
 
 ### <a name="comparison-chart"></a>比较图表
 
-| 复杂性 | 描述 |
+| 复杂度 | 描述 |
 | --- | --- |
 | 简单 | 为至少 8 到 64 个字符的密码。 |
-| 非常 | 为至少 8 到 64 个字符的密码。 它需要 4 个小写字母、大写字母、数字或符号中的 3 个。 |
-| “自定义” | 此选项提供了对密码复杂性规则的最大控制。  可以配置自定义长度。  还可以接受仅为数字的密码 (pin)。 |
+| 强 | 为至少 8 到 64 个字符的密码。 它需要 4 个小写字母、大写字母、数字或符号中的 3 个。 |
+| 自定义 | 此选项提供了对密码复杂性规则的最大控制。  可以配置自定义长度。  还可以接受仅为数字的密码 (pin)。 |
 
 ## <a name="custom-options"></a>自定义选项
 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) B2C 支持更改由最终用户在创建帐户
 - “仅数字”仅限输入数字 (0-9) 密码。
 - “所有”则允许任何字母、数字或符号。
 
-### <a name="length"></a>Length
+### <a name="length"></a>长度
 
 允许你控制密码的长度要求。
 

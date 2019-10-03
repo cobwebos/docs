@@ -1,26 +1,27 @@
 ---
-title: 什么是必应当地企业搜索 API？ | Microsoft Docs
+title: 什么是必应当地企业搜索 API？
 titleSuffix: Azure Cognitive Services
 description: 必应当地企业搜索 API 是一种 RESTful 服务，该服务使应用程序可以基于搜索查询找到有关当地地点和企业的信息。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh
-ms.openlocfilehash: fb3b375a66ac9b05ad26287b7c39ce8e748ad699
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.subservice: bing-local-business
+ms.topic: overview
+ms.date: 09/13/2019
+ms.author: aahi
+ms.openlocfilehash: bdada613ef46881bbf051144efded541ac3d0974
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780314"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996694"
 ---
 # <a name="what-is-bing-local-business-search"></a>什么是必应当地企业搜索？
 必应当地企业搜索 API 是一种 RESTful 服务，该服务使应用程序可以基于搜索查询找到有关当地企业的信息。 例如，`q=<business-name> in Redmond, Washington` 或 `q=Italian restaurants near me`。 
 
 ## <a name="features"></a>功能
-| Feature | 描述 |  
+| Feature | 说明 |  
 | -- | -- | 
 | [查找当地企业和位置](quickstarts/local-quickstart.md) | 必应当地企业搜索 API 通过查询获取本地化的结果。 结果包括企业网站的 URL 和显示文本、电话号码以及地理位置，包括：GPS 坐标、城市、街道地址 |  
 | [使用地理边界筛选当地结果](specify-geographic-search.md) | 添加坐标作为搜索参数，以将结果限制到由圆形区域或方框指定的特定地理区域。 | 

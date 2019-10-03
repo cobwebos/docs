@@ -4,17 +4,17 @@ description: 通过 HTTP 请求运行非 HTTP 触发的 Azure Functions
 services: functions
 keywords: ''
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 61bece83697a4907a7bf3c881003f4da9b0e8a84
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cfebe5c783018cfab51f384cce578e43383c3905
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466874"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479825"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>手动运行非 HTTP 触发的函数
 
@@ -41,11 +41,11 @@ ms.locfileid: "55466874"
 
 ## <a name="get-the-functions-master-key"></a>获取函数的主密钥
 
-在 Azure 门户中导航到函数，单击“管理”，找到“主机密钥”部分。 单击 *_master* 行中的“复制”按钮，将主密钥复制到剪贴板。
+在 Azure 门户中导航到函数，单击“管理”   ，找到“主机密钥”部分。 单击 *_master* 行中的“复制”按钮，将主密钥复制到剪贴板。 
 
 ![从“函数管理”屏幕复制主密钥](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
-复制主密钥以后，单击函数名称，返回到代码文件窗口。 接下来，单击“日志”选项卡。手动从 Postman 运行已记录函数时，会在此处看到该函数中的消息。
+复制主密钥以后，单击函数名称，返回到代码文件窗口。 接下来，单击“日志”选项卡。  手动从 Postman 运行已记录函数时，会在此处看到该函数中的消息。
 
 > [!CAUTION]  
 > 由于函数应用中提升的权限由主密钥授予，因此不应与第三方共享此密钥或在应用程序中分发此密钥。
@@ -56,24 +56,24 @@ ms.locfileid: "55466874"
 
 1. **在 URL 文本框中输入请求位置**。
 2. 确保 HTTP 方法设置为 **POST**。
-3. **单击**“标头”选项卡。
-4. 输入 **x-functions-key** 作为第一个**密钥**，并将主密钥（从剪贴板）粘贴到“值”框中。
+3. **单击**“标头”选项卡。 
+4. 输入 **x-functions-key** 作为第一个**密钥**，并将主密钥（从剪贴板）粘贴到“值”框中。 
 5. 输入 **Content-Type** 作为第二个**密钥**，然后输入 **application/json** 作为**值**。
 
     ![Postman 标头设置](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
-6. **单击**“正文”选项卡。
+6. **单击**“正文”选项卡。 
 7. 输入 **{ "input": "test" }** 作为请求的正文。
 
     ![Postman 正文设置](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-8. 单击“Send”。
+8. 单击“Send”  。
 
     ![通过 Postman 发送请求](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 
-Postman 然后会报告状态“202 已接受”。
+Postman 然后会报告状态“202 已接受”。 
 
-接下来，返回到 Azure 门户中的函数。 找到“日志”窗口，此时会看到手动调用函数后出来的消息。
+接下来，返回到 Azure 门户中的函数。 找到“日志”窗口，此时会看到手动调用函数后出来的消息。 
 
 ![函数日志源于手动调用](./media/functions-manually-run-non-http/azure-portal-function-log.png)
 

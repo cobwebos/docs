@@ -10,17 +10,17 @@ ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000233"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60713012"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>（已弃用）使用 CoScale 监视 Azure 容器服务 Kubernetes 群集
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-在本文中，我们将介绍如何部署 [CoScale](https://web.archive.org/web/20180317071550/ https://www.coscale.com/) 代理以监视 Azure 容器服务中 Kubernetes 群集中的所有节点和容器。 此配置需要具有 CoScale 的帐户。 
+在本文中，我们将介绍如何部署 [CoScale](https://web.archive.org/web/20180317071550/https://www.coscale.com/) 代理以监视 Azure 容器服务中 Kubernetes 群集中的所有节点和容器。 此配置需要具有 CoScale 的帐户。 
 
 
 ## <a name="about-coscale"></a>关于 CoScale 
@@ -32,9 +32,9 @@ CoScale 是一种监视平台，用于从多个业务流程平台中的所有容
 如本文中所示，可以在 Kubernetes 群集上安装代理以将 CoScale 作为 SaaS 解决方案运行。 如果想要就地保留数据，CoScale 还可用于本地安装。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-首先需要[创建 CoScale 帐户](https://web.archive.org/web/20170507123133/ https://www.coscale.com/free-trial)。
+首先需要[创建 CoScale 帐户](https://web.archive.org/web/20170507123133/https://www.coscale.com/free-trial)。
 
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，
 
@@ -72,7 +72,7 @@ DaemonSet 还特别适合用于运行监视代理，例如 CoScale 代理。
 
 ![启动 CoScale 代理](./media/container-service-kubernetes-coscale/agent_script.png)
 
-就这么简单！ 代理安装完毕并开始运行后，几分钟内即可在控制台中查看数据。 请访问[代理页](https://app.coscale.com/)，以查看群集的摘要、执行其他配置步骤并查看“Kubernetes 群集概述”等仪表板。
+就这么简单！ 代理安装完毕并开始运行后，几分钟内即可在控制台中查看数据。 请访问[代理页](https://app.coscale.com/)，以查看群集的摘要、执行其他配置步骤并查看“Kubernetes 群集概述”  等仪表板。
 
 ![Kubernetes 群集概述](./media/container-service-kubernetes-coscale/dashboard_clusteroverview.png)
 
@@ -81,5 +81,5 @@ CoScale 代理将自动部署在群集中的新计算机上。 发布新版本�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 CoScale 监视解决方案的详细信息，请参阅 [CoScale 文档](https://web.archive.org/web/20180415164304/ http://docs.coscale.com:80/)和[博客](https://web.archive.org/web/20170501021344/ http://www.coscale.com:80/blog)。 
+有关 CoScale 监视解决方案的详细信息，请参阅 [CoScale 文档](https://web.archive.org/web/20180415164304/http://docs.coscale.com:80/)和[博客](https://web.archive.org/web/20170501021344/http://www.coscale.com:80/blog)。 
 

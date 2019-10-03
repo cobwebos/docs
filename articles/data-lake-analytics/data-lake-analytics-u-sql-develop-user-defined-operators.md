@@ -1,5 +1,5 @@
 ---
-title: 为 Azure Data Lake Analytics 开发 U-SQL 用户定义的运算符 (UDO)
+title: 开发 U SQL 用户定义的运算符-Azure Data Lake Analytics
 description: 了解如何开发可在 Azure Data Lake Analytics 作业中使用和重复使用的用户定义的运算符。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 122a4b6af78a22f74d5057da75767077f8d9b978
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b2d1293b06b4d8791138ed666bc3cb4abe3adf40
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496140"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316542"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>开发 U-SQL 用户定义的运算符 (UDO)
 本文介绍如何开发用户定义的运算符以处理 U-SQL 作业中的数据。
@@ -123,6 +123,6 @@ ms.locfileid: "59496140"
 1. 在“服务器资源管理器”中依次展开 “Azure”、“Data Lake Analytics”、Data Lake Analytics 帐户、“存储帐户”，右键单击“默认存储”，并单击“资源管理器”。
 2. 展开示例、展开输出，并双击 “Drivers.csv”。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Extending U-SQL Expressions with User-Code](/u-sql/concepts/extending-u-sql-expressions-with-user-code)（使用用户代码扩展 U-SQL 表达式）
 * [使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 应用程序](data-lake-analytics-data-lake-tools-get-started.md)

@@ -3,9 +3,8 @@ title: 使用安全策略 | Microsoft Docs
 description: 本文介绍如何使用 Azure 安全中心的安全策略。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
@@ -13,14 +12,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/28/2019
-ms.author: monhaber
-ms.openlocfilehash: 1931026869e930caef2ff2f92fb85dade15a9c8c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.date: 07/18/2019
+ms.author: memildin
+ms.openlocfilehash: 488210e4f2c5d3a8a978079d0c7293ce091d998b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578435"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338770"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 
@@ -32,7 +31,7 @@ ms.locfileid: "58578435"
 > 安全中心使用 Azure Policy 开始集成。 现有客户将自动迁移到 Azure Policy 中新的内置计划，而不是安全中心中的旧的安全策略。 除了 Azure Policy 中存在新计划外，此更改不会影响资源或环境。
 
 ## <a name="what-are-security-policies"></a>什么是安全策略？
-安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在 Azure Policy 中，可定义 Azure 订阅策略，并根据工作负载类型或数据机密性进行量身定制。 例如，使用受管制数据（如个人身份信息）的应用程序可能需要比其他工作负载更高级别的安全性。 若要跨订阅或管理组设置策略，请在 [Azure Policy](../governance/policy/overview.md) 中进行设置。
+安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在 Azure Policy 中，可定义 Azure 订阅策略，并根据工作负载类型或数据机密性进行量身定制。 例如, 使用受管制数据 (如个人数据或客户数据) 的应用程序可能需要比其他工作负载更高级别的安全性。 若要跨订阅或管理组设置策略，请在 [Azure Policy](../governance/policy/overview.md) 中进行设置。
 
 安全策略驱动在 Azure 安全中心获得的安全建议。 可以使用它们监视符合性以帮助识别潜在漏洞和缓解威胁。 若要详细了解如何确定适合你的选项，请参阅[内置安全性策略](security-center-policy-definitions.md)列表。
 
@@ -43,7 +42,7 @@ ms.locfileid: "58578435"
 如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 Azure 管理组提供订阅上的作用域级别。 可将订阅组织到名为“管理组”的容器中，并将管理策略应用到管理组。 管理组中的所有订阅都将自动继承应用于管理组的策略。 为每个目录指定了一个称为“根”管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 此根管理组允许在目录级别应用全局策略和 RBAC 分配。 若要设置用于 Azure 安全中心的管理组，请按照[为 Azure 安全中心实现租户级可见性](security-center-management-groups.md)中的说明进行操作。
 
 > [!NOTE]
-> 务必要了解管理组和订阅的层次结构。 请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/index.md#root-management-group-for-each-directory)来了解有关管理组、根管理和管理组访问权限的详细信息。
+> 务必要了解管理组和订阅的层次结构。 请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/overview.md#root-management-group-for-each-directory)来了解有关管理组、根管理和管理组访问权限的详细信息。
 >
 
 ## <a name="how-security-policies-work"></a>安全策略工作原理
@@ -71,15 +70,8 @@ Azure Policy 由以下组件构成：
    在“策略管理”屏幕中，可以看到管理组数、订阅数、工作区数以及管理组结构。
 
    > [!NOTE]
-   > - “安全中心”仪表板在“订阅覆盖范围”下显示的订阅数可能会高于在“策略管理”下显示的订阅数。 订阅覆盖范围显示标准订阅、免费订阅和“未覆盖”订阅的数量。 “未覆盖”订阅未启用“安全中心”，并且不会显示在“策略管理”下。
+   > “安全中心”仪表板在“订阅覆盖范围”下显示的订阅数可能会高于在“策略管理”下显示的订阅数。 订阅覆盖范围显示标准订阅、免费订阅和“未覆盖”订阅的数量。 “未覆盖”订阅未启用“安全中心”，并且不会显示在“策略管理”下。
    >
-
-   表中的列显示了：
-
-   - **策略计划分配** – 分配给订阅或管理组的“安全中心”[内置策略](security-center-policy-definitions.md)和计划。
-   - **覆盖范围** – 标识管理组、订阅或工作区在其上运行的定价层：免费或标准。  若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
-   - **设置** – 订阅有“编辑设置”链接。 选择“编辑设置”，可为每个订阅或管理组更新[安全中心设置](security-center-policies-overview.md)。
-   - **安全分数** - [安全分数](security-center-secure-score.md)可衡量工作负载安全状况的安全程度，并帮助确定改进建议的优先级。
 
 2. 选择想要查看其策略的订阅或管理组。
 
@@ -91,10 +83,10 @@ Azure Policy 由以下组件构成：
    ![策略屏幕](./media/security-center-policies/policy-screen.png)
 
 > [!NOTE]
-> - 查看已分配的策略时，可以看到多个分配并且可以看到每个分配如何自行配置。
+> 查看已分配的策略时，可以看到多个分配并且可以看到每个分配如何自行配置。
 
 ## <a name="edit-security-policies"></a>编辑安全策略
-可以在 [Azure Policy](../governance/policy/tutorials/create-and-manage.md) 中为每个 Azure 订阅和管理组编辑默认的安全策略。 若要修改安全策略，你必须是该订阅或包含型管理组的所有者、参与者或安全管理员。
+可以在 [Azure Policy](../governance/policy/tutorials/create-and-manage.md) 中为每个 Azure 订阅和管理组编辑默认的安全策略。 若要修改安全策略, 你必须是该订阅或包含管理组的所有者或安全管理员。
 
 有关如何在 Azure Policy 中编辑安全策略的说明，请参阅[创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)。
 
@@ -102,25 +94,28 @@ Azure Policy 由以下组件构成：
 
 
 ## <a name="disable-security-policies"></a>禁用安全策略
-如果默认安全策略生成的不是为您的环境相关的建议，则可以通过禁用的策略定义的发送建议将其停止。
-有关建议的进一步信息，请参阅[管理的安全建议](security-center-recommendations.md)。
+如果默认安全策略生成的建议不与你的环境相关，则可以通过禁用发送建议的策略定义将其停止。
+有关建议的详细信息，请参阅[管理安全建议](security-center-recommendations.md)。
 
-1. 在安全中心中，从**策略和符合性**部分中，单击**安全策略**。
+1. 在安全中心的“策略和符合性”部分中，单击“安全策略”。
 
    ![策略管理](./media/tutorial-security-policy/policy-management.png)
 
-2. 单击你想要禁用该建议的订阅或管理组。
+2. 单击要禁用其建议的订阅或管理组。
+
+   > [!Note]
+   > 请记住，管理组将其策略应用于其订阅。 因此，如果禁用订阅的策略，并且订阅属于仍使用相同策略的管理组，则你将继续收到策略建议。 仍将从管理级别应用该策略，且仍将生成建议。
 
 1. 单击分配的策略。
 
    ![禁用策略](./media/tutorial-security-policy/security-policy.png)
 
-1. 在中**参数**部分中，搜索调用你想要禁用，该建议的策略，从下拉列表中，选择**已禁用**
+1. 在“参数”部分中，搜索调用要禁用的建议的策略，然后从下拉列表中选择“禁用”
 
    ![禁用策略](./media/tutorial-security-policy/disable-policy.png)
-1. 单击“ **保存**”。
+1. 单击“保存”。
    > [!Note]
-   > 禁用策略更改可能需要 12 小时才会生效。
+   > 禁用策略更改可能需要长达 12 小时才会生效。
 
 
 ### <a name="configure-a-security-policy-using-the-rest-api"></a>使用 REST API 配置安全策略
@@ -129,13 +124,13 @@ Azure 安全中心与 Azure Policy 实现了本机集成，借助它，可以利
 
 Azure Policy 中的重要概念： 
 
--  **策略定义** 是规则 
+- **策略定义**是一种规则 
 
--  **计划** 是策略定义（规则）的集合 
+- **计划**是策略定义（规则）的集合 
 
--  **分配** 是将计划或策略应用于特定的范围（管理组、订阅等） 
+- **分配**是将计划或策略应用于特定的范围（管理组、订阅等） 
 
-安全中心有一项内置计划，它包括中心内的所有安全策略。 为评估对 Azure 资源的安全中心策略，应对管理组或想访问的订阅创建一个分配。  
+安全中心有一项内置计划，它包括中心内的所有安全策略。 为评估对 Azure 资源的安全中心策略，应对管理组或想访问的订阅创建一个分配。
 
 内置计划默认启用所有安全中心策略。 你可以选择禁用内置计划中的某些策略，例如：可用将“Web 应用程序防火墙”策略的效果参数更改为“禁用”，应用除它以外的所有安全中心策略。 
 
@@ -143,12 +138,13 @@ Azure Policy 中的重要概念：
 
 在下面的示例中，替换以下三个变量：
 
-- **{scope}**，用于输入要应用策略的管理组或订阅的名称。
-- **{policyAssignmentName}**，用于输入[相关策略分配的名称](#policy-names)。
-- **{name}**，用于输入你的名字或批准策略更改的管理员的名字。
+- **{scope}** ，用于输入要应用策略的管理组或订阅的名称。
+- **{policyAssignmentName}** ，用于输入[相关策略分配的名称](#policy-names)。
+- **{name}** ，用于输入你的名字或批准策略更改的管理员的名字。
 
 本示例演示如何对订阅或管理组分配内置的安全中心计划
  
+ ```
     PUT  
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
@@ -173,6 +169,7 @@ Azure Policy 中的重要概念：
     } 
 
     } 
+ ```
 
 本示例演示如何对订阅分配内置的安全中心计划，且禁用以下策略： 
 
@@ -182,18 +179,18 @@ Azure Policy 中的重要概念：
 
 - 终结点保护 ("endpointProtectionMonitoringEffect") 
 
-
+ ```
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
     
-    请求正文 (JSON) 
+    Request Body (JSON) 
     
     { 
     
       "properties":{ 
     
-    "displayName":"启用监视 Azure 安全中心"， 
+    "displayName":"Enable Monitoring in Azure Security Center", 
     
-    "元数据": { 
+    "metadata":{ 
     
     "assignedBy":"{Name}" 
     
@@ -203,23 +200,23 @@ Azure Policy 中的重要概念：
     
     "parameters":{ 
     
-    "systemUpdatesMonitoringEffect": {"value":"已禁用"}， 
+    "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
     
-    "systemConfigurationsMonitoringEffect": {"value":"已禁用"}， 
+    "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
     
-    "endpointProtectionMonitoringEffect": {"value":"已禁用"}， 
+    "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
     
     }, 
     
      } 
     
     } 
-
+ ```
 此示例演示如何删除分配：
-
+ ```
     DELETE   
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
-
+ ```
 
 ### 策略名引用 <a name="policy-names"></a>
 
@@ -230,7 +227,7 @@ Azure Policy 中的重要概念：
 |系统更新 |监视 Azure 安全中心内系统更新的缺失情况 |systemUpdatesMonitoringEffect|
 |存储加密 |审核存储帐户是否缺少 blob 加密 |storageEncryptionMonitoringEffect|
 |JIT 网络访问 |监视 Azure 安全中心内可能的网络即时(JIT)访问 |jitNetworkAccessMonitoringEffect |
-|自适应应用程序控制 |监视 Azure 安全中心内列入允许列表的可能的应用 |adaptiveApplicationControlsMonitoringEffect|
+|自适应应用程序控件 |监视 Azure 安全中心内列入允许列表的可能的应用 |adaptiveApplicationControlsMonitoringEffect|
 |网络安全组 |监视 Azure 安全中心内规则较宽松的网络访问 |networkSecurityGroupsMonitoringEffect| 
 |安全配置 |监视 Azure 安全中心的 OS 漏洞 |systemConfigurationsMonitoringEffect| 
 |终结点保护 |监视 Azure 安全中心 Endpoint Protection 的缺失情况 |endpointProtectionMonitoringEffect |

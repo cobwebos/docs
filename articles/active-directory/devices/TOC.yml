@@ -1,8 +1,8 @@
-- name: 设备管理文档
+- name: 设备标识文档
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Azure AD 中的设备管理？
+    - name: 设备标识是什么？
       href: overview.md
     - name: 什么是企业状态漫游？
       href: enterprise-state-roaming-overview.md
@@ -18,37 +18,55 @@
     - name: 在 Windows 10 首次运行体验期间配置 Azure AD 加入
       href: azuread-joined-devices-frx.md
 - name: 概念
-  expanded: false
-  items:
-    - name: SSO 到本地资源
-      href: azuread-join-sso.md
-- name: 操作指南
   expanded: true
   items:
-    - name: 使用 Azure 门户管理设备
+    - name: Azure AD 注册设备
+      href: concept-azure-ad-register.md
+    - name: Azure AD 加入设备
+      href: concept-azure-ad-join.md
+    - name: 混合 Azure AD 加入设备
+      href: concept-azure-ad-join-hybrid.md
+    - name: SSO 到本地资源
+      href: azuread-join-sso.md
+    - name: 主刷新令牌
+      href: concept-primary-refresh-token.md
+    - name: Azure 托管工作站
+      href: concept-azure-managed-workstation.md
+- name: 操作指南
+  expanded: false
+  items:
+    - name: 计划 Azure AD 加入实现
+      href: azureadjoin-plan.md
+    - name: 将本地管理员分配到加入 Azure AD 的设备
+      href: assign-local-admin.md
+    - name: 计划混合 Azure AD 加入实现
+      href: hybrid-azuread-join-plan.md
+    - name: 以受控方式验证混合 Azure AD 加入
+      href: hybrid-azuread-join-control.md
+    - name: 管理设备标识
       href: device-management-azure-portal.md
     - name: 管理过时设备
       href: manage-stale-devices.md
-    - name: 计划 Azure AD 加入实现
-      href: azureadjoin-plan.md
-    - name: 计划混合 Azure AD 加入实现
-      href: hybrid-azuread-join-plan.md
-    - name: 控制设备的混合 Azure AD 加入
-      href: hybrid-azuread-join-control.md
-    - name: 将本地管理员分配到加入 Azure AD 的设备
-      href: assign-local-admin.md
     - name: 启用企业状态漫游
       href: enterprise-state-roaming-enable.md
-    - name: 排查加入混合 Azure AD 的 Windows 当前设备问题
-      href: troubleshoot-hybrid-join-windows-current.md
-    - name: 排查加入混合 Azure AD 的旧式 Windows 设备问题
-      href: troubleshoot-hybrid-join-windows-legacy.md
-    - name: 排查企业状态漫游问题
-      href: enterprise-state-roaming-troubleshooting.md
-    - name: 常见问题解答
-      href: faq.md
-    - name: 启用企业状态漫游常见问题解答
-      href: enterprise-state-roaming-faqs.md
+    - name: 部署 Azure 托管工作站
+      href: howto-azure-managed-workstation.md
+    - name: 排查设备标识问题
+      items:
+        - name: 排查加入混合 Azure AD 的 Windows 当前设备问题
+          href: troubleshoot-hybrid-join-windows-current.md
+        - name: 使用 dsregcmd 排除故障
+          href: troubleshoot-device-dsregcmd.md
+        - name: 排查加入混合 Azure AD 的下层 Windows 设备问题
+          href: troubleshoot-hybrid-join-windows-legacy.md
+        - name: 排查企业状态漫游问题
+          href: enterprise-state-roaming-troubleshooting.md
+    - name: 常见问题
+      items:
+        - name: 常见问题解答
+          href: faq.md
+        - name: 启用企业状态漫游常见问题解答
+          href: enterprise-state-roaming-faqs.md
 - name: 引用
   items:
     - name: 企业状态漫游 GPO 设置

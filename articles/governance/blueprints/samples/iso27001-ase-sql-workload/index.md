@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b17b07124cf4491a6c58e9be2b10f958e29217ee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cee3867449aea1cb1c59ac5a7c3be57291d1aebc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783805"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000141"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的概述
 
@@ -36,7 +36,7 @@ ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例部署一个�
 - [Azure 策略](../../../policy/overview.md)，用于锁定哪些服务可以部署到该环境，以及拒绝创建任何公共 IP 地址 (PIP) 资源
 - 一个虚拟网络，其中包含单个子网，与预先存在的[共享服务](../iso27001-shared/index.md)环境对等互连，并且强制所有流量经由[共享服务](../iso27001-shared/index.md)防火墙传递。 该虚拟网络托管以下资源：
   - 一个 [Azure 应用服务环境](../../../../app-service/environment/intro.md)，可用于托管一个或多个 Web 应用程序、Web API 或函数
-  - 一个使用 VNet 服务终结点的 [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) 实例，用于存储由工作负荷环境中运行的应用程序使用的机密
+  - 一个使用 VNet 服务终结点的 [Azure Key Vault](../../../../key-vault/key-vault-overview.md) 实例，用于存储由工作负荷环境中运行的应用程序使用的机密
   - 一个使用 VNet 服务终结点的 [Azure SQL 数据库](../../../../sql-database/sql-database-technical-overview.md)服务器实例，用于托管对工作负荷环境中运行的应用程序使用的数据库
 
 ## <a name="next-steps"></a>后续步骤

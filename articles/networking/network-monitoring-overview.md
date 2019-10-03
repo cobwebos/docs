@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: monitoring-and-diagnostics
+ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
-ms.author: ajaycode
-ms.openlocfilehash: 42fb5d69a1f32d669ad5191e342b3f2f880b8c98
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: agummadi
+ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006654"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672181"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
 
@@ -53,7 +53,9 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 * [在 Azure Monitor 日志中配置网络性能监视器解决方案](../azure-monitor/insights/network-performance-monitor.md) 
 * [用例](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
-*  产品更新：[2017 年 2 月](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)， [2017 年 8 月](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+* 产品更新：
+  * [2017 年 2 月](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
+  * [2017 年 8 月](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 
 ## <a name="expressroute-monitor"></a>ExpressRoute 监视器
 

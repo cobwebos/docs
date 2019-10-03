@@ -3,9 +3,9 @@ title: 模板
 description: 本主题介绍 Azure 通知中心的模板。
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 02473eb5649c7d201b6a54fd57faea997c1a21cc
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 54c53fee260062960d6bce9c1822971c935d88d1
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450228"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212987"
 ---
 # <a name="templates"></a>模板
 
@@ -56,7 +58,7 @@ ms.locfileid: "54450228"
 
 此要求将强制应用后端针对每个平台生成不同的负载，并有效地使后端负责应用的表示层部分。 某些考虑因素包括本地化和图形布局（尤其针对 Windows 应用商店应用，其中包含不同磁贴类型的通知）。
 
-使用通知中心模板功能，客户端应用可以创建称为模板注册的特殊注册，其中除了包含标记集外，还包含一个模板。 无论使用安装（首选）还是注册，通知中心模板功能都能使客户端应用将设备与模板相关联。 在前面的负载示例中，唯一的与平台无关的信息就是实际警报消息 (Hello!)。 模板是一组指令，指示通知中心如何针对该特定客户端应用的注册来设置与平台无关的消息的格式。 在前面的示例中，与平台无关的消息是单个属性：`message = Hello!`。
+使用通知中心模板功能，客户端应用可以创建称为模板注册的特殊注册，其中除了包含标记集外，还包含一个模板。 无论你使用安装（首选）还是注册，通知中心模板功能都能使客户端应用将设备与模板相关联。 在前面的负载示例中，唯一的与平台无关的信息就是实际警报消息 (Hello!)。 模板是一组指令，指示通知中心如何针对该特定客户端应用的注册来设置与平台无关的消息的格式。 在前面的示例中，与平台无关的消息是单个属性：`message = Hello!`。
 
 下图演示了该过程：
 
@@ -80,7 +82,7 @@ Windows 应用商店客户端应用的相应模板为：
 </toast>
 ```
 
-请注意，实际消息将替换表达式 $(message)。 每当通知中心向此特定注册发送消息时，此表达式将指示通知中心构建遵循此模板并用常用值替换的消息。
+请注意，实际消息将替换表达式 $ (message)。 每当通知中心向此特定注册发送消息时，此表达式将指示通知中心构建遵循此模板并用常用值替换的消息。
 
 如果使用的是安装模型，则安装“templates”键会保存多个模板的 JSON。 如果使用的是注册模型，则客户端应用程序可以创建多个注册以使用多个模板；例如，例如，用于警报消息的模板和用于磁贴更新的模板。 客户端应用程序还可以混合使用本机注册（不带模板的注册）和模板注册。
 
@@ -131,7 +133,7 @@ Windows 应用商店客户端应用的相应模板为：
 
 下表显示了模板中允许使用的语言：
 
-| 表达式       | 说明 |
+| 表达式       | 描述 |
 | ---------------- | --- |
 | $(prop)          | 对具有给定名称的事件属性的引用。 属性名称不区分大小写。 此表达式将解析为属性的文本值，如果该属性不存在，则解析为空字符串。 |
 | $(prop, n)       | 同上，但会在 n 个字符处对文本进行显式剪切，例如，$(title, 20) 会在 20 个字符处对 title 属性的内容进行剪切。 |
@@ -143,7 +145,7 @@ Windows 应用商店客户端应用的相应模板为：
 
 表达式可以采用上述任一格式。
 
-使用连接时，必须使用 `{}` 括住整个表达式。 例如，`{$(prop) + ‘ - ’ + $(prop2)}`。
+使用连接时，必须使用 `{}` 括住整个表达式。 例如， `{$(prop) + ‘ - ’ + $(prop2)}` 。
 
 例如，以下模板不是有效的 XML 模板：
 

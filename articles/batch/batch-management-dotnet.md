@@ -4,24 +4,23 @@ description: 使用 Batch Management .NET 库创建、删除和修改 Azure Batc
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 16279b23-60ff-4b16-b308-5de000e4c028
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 301a3f9a500c41cf13dfa071d3526d2128b5e131
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: f7554993e2e3d8d2f6bce71db57a746a4392ce1a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813613"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095072"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>通过用于 .NET 的 Batch Management 客户端库管理 Batch 帐户和配额
 
@@ -31,7 +30,7 @@ ms.locfileid: "55813613"
 > 
 > 
 
-可以使用 [Batch Management .NET][api_mgmt_net] 库来自动化批处理帐户的创建、删除、密钥管理和配额发现，从而降低 Azure Batch 应用程序的维护开销。
+可以使用 [Batch 管理 .NET][api_mgmt_net] 库自动执行 Batch 帐户创建、删除、密钥管理和配额发现操作，从而降低 Azure Batch 应用程序的维护开销。
 
 * 在任何区域中**创建和删除 Batch 帐户**。 例如，如果是一家独立软件供应商 (ISV)，现在要为每个分配了不同计费 Batch 帐户的客户提供服务，则可以将帐户创建和删除功能添加到客户门户中。
 * 以编程方式为任何 Batch 帐户**检索和重新生成帐户密钥**。 这可以帮助遵守强制帐户密钥定期滚动更新或到期的安全策略。 当各种不同的 Azure 区域中有多个 Batch 帐户时，将此滚动更新过程自动化会提高解决方案的效率。
@@ -39,7 +38,7 @@ ms.locfileid: "55813613"
 * 通过在同一应用程序中使用 Batch Management .NET、[Azure Active Directory][aad_about] 和 [Azure 资源管理器][resman_overview]，用户可以**结合其他 Azure 服务的功能**获得全功能管理体验。 使用这些功能及其 API 可以提供顺畅的身份验证体验、创建和删除资源组以及上述功能，以获取端到端管理解决方案。
 
 > [!NOTE]
-> 尽管本文着重介绍以编程方式管理批处理帐户、密钥和配额，但也可以使用 [Azure 门户][azure_portal]执行其中的许多活动。 有关详细信息，请参阅[使用 Azure 门户创建 Azure Batch 帐户](batch-account-create-portal.md)以及 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
+> 尽管本文着重介绍如何以编程方式管理 Batch 帐户、密钥和配额，但你可以使用 [Azure 门户][azure_portal]执行其中的许多活动。 有关详细信息，请参阅[使用 Azure 门户创建 Azure Batch 帐户](batch-account-create-portal.md)以及 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
 > 
 > 
 
@@ -64,12 +63,12 @@ await batchManagementClient.Account.DeleteAsync("MyResourceGroup", account.Name)
 ```
 
 > [!NOTE]
-> 使用 Batch Management .NET 库及其 BatchManagementClient 类的应用程序需有**服务管理员**或**共同管理员**访问权限才能使用拥有要管理的 Batch 帐户的订阅。 有关详细信息，请参阅 Azure Active Directory 部分和 [AccountManagement][acct_mgmt_sample] 代码示例。
+> 使用 Batch Management .NET 库及其 BatchManagementClient 类的应用程序需有**服务管理员**或**共同管理员**访问权限才能使用拥有要管理的 Batch 帐户的订阅。 有关详细信息, 请参阅 Azure Active Directory 部分和[AccountManagement][acct_mgmt_sample]代码示例。
 > 
 > 
 
 ## <a name="retrieve-and-regenerate-account-keys"></a>检索和重新生成帐户密钥
-使用 [ListKeysAsync][net_list_keys] 从订阅中的任何批处理帐户获取主要和辅助帐户密钥。 可以使用 [RegenerateKeyAsync][net_regenerate_keys] 重新生成这些密钥。
+使用 [ListKeysAsync][net_list_keys] 从订阅中的任何 Batch 帐户获取主要和辅助帐户密钥。 可以使用 [RegenerateKeyAsync][net_regenerate_keys] 重新生成这些密钥。
 
 ```csharp
 // Get and print the primary and secondary keys
@@ -91,7 +90,7 @@ BatchAccountRegenerateKeyResponse newKeys =
 ```
 
 > [!TIP]
-> 可以为管理应用程序创建简化的连接工作流。 首先，获取想要使用 [ListKeysAsync][net_list_keys] 管理的批处理帐户的帐户密钥。 然后在初始化 Batch .NET 库的 [BatchSharedKeyCredentials][net_sharedkeycred] 类（初始化 [BatchClient][net_batch_client] 时使用）时使用此密钥。
+> 可以为管理应用程序创建简化的连接工作流。 首先，获取想要使用 [ListKeysAsync][net_list_keys] 管理的 Batch 帐户的帐户密钥。 然后在初始化 Batch .NET 库的 [BatchSharedKeyCredentials][net_sharedkeycred] 类（初始化 [BatchClient][net_batch_client] 时使用）时使用此密钥。
 > 
 > 
 
@@ -101,7 +100,7 @@ Azure 订阅和类似于 Batch 的各个 Azure 服务均有默认配额，用于
 ### <a name="check-an-azure-subscription-for-batch-account-quotas"></a>检查 Azure 订阅和 Batch 帐户配额
 在区域中创建 Batch 帐户之前，可以检查 Azure 订阅，看是否能将帐户添加到该区域中。
 
-在以下的代码片段中，我们先使用 [BatchManagementClient.Account.ListAsync][net_mgmt_listaccounts] 来获取订阅中所有批处理帐户的集合。 获取此集合后，可以确定目标区域有多少个帐户。 然后使用 [BatchManagementClient.Subscriptions][net_mgmt_subscriptions] 获取批处理帐户配额，并确定可以在该区域中创建多少个帐户（如果有）。
+在以下的代码片段中，我们先使用 [BatchManagementClient.Account.ListAsync][net_mgmt_listaccounts] 来获取订阅中所有 Batch 帐户的集合。 获取此集合后，可以确定目标区域有多少个帐户。 然后使用 [BatchManagementClient.Subscriptions][net_mgmt_subscriptions] 来获取 Batch 帐户配额，并确定可以在该区域中创建多少个帐户（如果有）。
 
 ```csharp
 // Get a collection of all Batch accounts within the subscription
@@ -149,18 +148,18 @@ Console.WriteLine("Active job and job schedule quota: {0}", account.Properties.A
 
 ## <a name="use-azure-ad-with-batch-management-net"></a>将 Azure AD 和 Batch 管理 .NET 配合使用
 
-Batch 管理 .NET 库是 Azure 资源提供程序客户端，与 [Azure 资源管理器][resman_overview]配合使用以编程方式管理帐户资源。 Azure AD 需要对通过任何 Azure 资源提供程序客户端（包括 Batch 管理 .NET 库）和 [Azure 资源管理器][resman_overview]发出的请求进行身份验证。 有关将 Azure AD 和 Batch 管理 .NET 库配合使用的信息，请参阅[使用 Azure Active Directory 对 Batch 解决方案进行身份验证](batch-aad-auth.md)。 
+Batch 管理 .NET 库是 Azure 资源提供程序客户端，与 [Azure 资源管理器][resman_overview]配合使用，用来以编程方式管理帐户资源。 需要使用 Azure AD 对通过任何 Azure 资源提供程序客户端（包括 Batch 管理 .NET 库）和 [Azure 资源管理器][resman_overview]发出的请求进行身份验证。 有关将 Azure AD 和 Batch 管理 .NET 库配合使用的信息，请参阅[使用 Azure Active Directory 对 Batch 解决方案进行身份验证](batch-aad-auth.md)。 
 
 ## <a name="sample-project-on-github"></a>GitHub 上的示例项目
 
-查看 GitHub 上的 [AccountManagement][acct_mgmt_sample] 示例项目，了解 Batch Management .NET 的操作实践。 AccountManagement 示例应用程序演示了以下操作：
+若要看到 Batch 管理 .NET 起作用，请查看 GitHub 上的 [AccountManagement][acct_mgmt_sample] 示例项目。 AccountManagement 示例应用程序演示了以下操作：
 
 1. 使用 [ADAL][aad_adal] 从 Azure AD 获取安全令牌。 如果用户尚未登录，系统会提示其输入 Azure 凭据。
-2. 使用从 Azure AD 获取的安全令牌创建 [SubscriptionClient][resman_subclient]，以便在 Azure 中查询与帐户关联的订阅列表。 如果列表包含多个订阅，则用户可从中选择一个订阅。
+2. 使用从 Azure AD 获取的安全令牌，创建 [SubscriptionClient][resman_subclient]，以在 Azure 中查询一组与帐户关联的订阅。 如果列表包含多个订阅，则用户可从中选择一个订阅。
 3. 获取与所选订阅关联的凭据。
 4. 使用凭据创建 [ResourceManagementClient][resman_client] 对象。
 5. 使用 [ResourceManagementClient][resman_client] 对象创建资源组。
-6. 使用 [BatchManagementClient][net_mgmt_client] 对象执行多个 Batch 帐户操作：
+6. 使用 [BatchManagementClient][net_mgmt_client] 对象执行多项 Batch 帐户操作：
    * 在新资源组中创建 Batch 帐户。
    * 从 Batch 服务获取新建的帐户。
    * 输出新帐户的帐户密钥。

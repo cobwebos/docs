@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c533f4671411412f223fb1c67f1b310ee19bcf23
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 69781b7c5187bd9166946a96a8b47233d0f77208
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547532"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100678"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 SQL Server Windows 虚拟机
 
@@ -135,9 +134,9 @@ ms.locfileid: "59547532"
    ```powershell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
-   $VMConfig = New-AzVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
-      Set-AzVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate | `
-      Set-AzVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" | `
+   $VMConfig = New-AzVMConfig -VMName $VMName -VMSize Standard_DS13_V2 |
+      Set-AzVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate |
+      Set-AzVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" |
       Add-AzVMNetworkInterface -Id $Interface.Id
    
    # Create the VM
@@ -175,7 +174,7 @@ ms.locfileid: "59547532"
 
 1. 登录到远程桌面会话以后，从开始菜单启动 **SQL Server Management Studio 2017**。
 
-1. 在“连接到服务器”对话框中，保留默认设置。 服务器名称为 VM 名称。 身份验证设置为“Windows 身份验证”。 选择“连接”。
+1. 在“连接到服务器”对话框中，保留默认设置  。 服务器名称为 VM 名称。 身份验证设置为“Windows 身份验证”  。 选择“连接”  。
 
 你现在已通过本地方式连接到 SQL Server。 若要进行远程连接，必须通过门户或手动[配置连接性](virtual-machines-windows-sql-connect.md)。
 

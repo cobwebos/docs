@@ -1,6 +1,6 @@
 ---
-title: 版本控制
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 版本控制-LUIS
+titleSuffix: Azure Cognitive Services
 description: LUIS 中的版本与传统编程中的版本类似。 每个版本都是应用的即时快照。 在对应用进行更改之前，请创建新版本。 可更轻松地返回到确切应用，然后尝试将应用的意向和话语还原到以前的状态。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 9da79e5b744f8ba70c0e265f0d1f0126b37eba49
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c519b030aaee58397766ecb8658e7af08b5986e1
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870646"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256878"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>了解如何以及何时使用 LUIS 版本
 
@@ -48,7 +48,7 @@ LUIS 中的版本与传统编程中的版本类似。 每个版本都是应用�
 
 可以在应用级别导出版本，也可以在版本级别导出版本。 唯一的区别是应用级别导出的版本是当前活动版本，而在版本级别，可以在“[设置](luis-how-to-manage-versions.md)”页上选择任意要导出的版本。 
 
-导出的文件不包含机器学习信息，因为应用在导入后会经过重新训练。 导出的文件不包含协作者，因此在版本导入到新应用后，需要重新添加协作者。
+导出的文件不包含机器学习信息，因为应用在导入后会经过重新训练。 导出的文件不包含参与者信息。
 
 ## <a name="export-each-version-as-app-backup"></a>导出各个版本作为应用备份
 为了备份 LUIS 应用，请在“[设置](luis-how-to-manage-versions.md)”页上导出每个版本。
@@ -59,8 +59,23 @@ LUIS 中的版本与传统编程中的版本类似。 每个版本都是应用�
 ## <a name="version-availability-at-the-endpoint"></a>终结点上的版本可用性
 训练的版本在应用[终结点](luis-glossary.md#endpoint)中不会自动可用。 为使版本在终结点中可用，必须[发布](luis-how-to-publish-app.md)或重新发布版本。 可以发布到“暂存”和“生产”，从而提供最多两个在终结点中可用的应用版本。 如果需要更多版本的应用在终结点上可用，应导出版本并重新导入到新的应用。 新的应用具有不同的应用 ID。
 
-## <a name="collaborators"></a>协作者
-所有者和所有[协作者](luis-how-to-collaborate.md)具有所有应用版本的完全访问权限。
+## <a name="manage-multiple-versions-inside-the-same-app"></a>在同一应用中管理多个版本
+首先，每个创建者基于基础版进行[克隆](luis-how-to-manage-versions.md#clone-a-version)。 
+
+每个创建者对自己的应用版本进行更改。 得到满意的模型后，将新版本导出到 JSON 文件中。  
+
+导出的应用为 JSON 格式的文件，可比较所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本。 将该版本导入原始应用。 
+
+通过此方法可获得一个活动版本、阶段版本和已发布版本的应用。 可以在 "[交互式测试" 窗格](luis-interactive-test.md)中将活动版本的结果与已发布的版本（过渡或生产）进行比较。
+
+## <a name="manage-multiple-versions-as-apps"></a>将各版本作为应用进行管理
+[导出](luis-how-to-manage-versions.md#export-version)基础版本。 各创建者导入该版本。 导入应用的创建者即为该版本的所有者。 修改应用后，导出该版本。 
+
+导出的应用为 JSON 格式的文件，可与导出的基础版进行比较，发现所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本。 将该版本导入原始应用。
+
+## <a name="contributions-from-collaborators"></a>来自协作者的贡献
+
+详细了解如何从[协作](luis-how-to-collaborate.md)者创作贡献。
 
 ## <a name="next-steps"></a>后续步骤
 

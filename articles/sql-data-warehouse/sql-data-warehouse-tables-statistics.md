@@ -2,21 +2,21 @@
 title: 创建、更新统计信息 - Azure SQL 数据仓库 | Microsoft Docs
 description: 用于创建和更新 Azure SQL 数据仓库中表的查询优化统计信息的建议和示例。
 services: sql-data-warehouse
-author: ckarst
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 05/09/2018
-ms.author: kevin
-ms.reviewer: jrasnick
+ms.author: xiaoyul
+ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 62007624bdf2b5f1b9c387bcc51d58c020860913
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 00643e303b3352ce9ce39e5a27fd8b42246aac51
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279765"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479171"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的表统计信息
 
@@ -24,70 +24,70 @@ ms.locfileid: "59279765"
 
 ## <a name="why-use-statistics"></a>为何使用统计信息
 
-Azure SQL 数据仓库对数据了解得越多，其针对数据执行查询的速度就越快。 将数据加载到 SQL 数据仓库，收集有关你的数据统计信息之后可以如何优化查询的最重要事情之一。 SQL 数据仓库查询优化器是基于成本的优化器。 它的各种查询计划，成本进行比较，并选择成本最低的计划。 在大多数情况下，还选择将执行速度最快的计划。 例如，如果优化器估计查询筛选的日期会返回一个行它将选择一个计划。 如果估计的所选的日期会返回 1 百万行，它将返回一个不同的计划。
+Azure SQL 数据仓库对数据了解得越多，其针对数据执行查询的速度就越快。 将数据载入 SQL 数据仓库之后，收集有关数据的统计信息是优化查询时可做的最重要事情之一。 SQL 数据仓库查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，它会选择执行速度最快的计划。 例如，如果优化器估计查询筛选的日期会返回一行数据，则它会选择一个计划。 如果优化器估计选定的日期会返回 1 百万行数据，则它会返回另一个计划。
 
 ## <a name="automatic-creation-of-statistic"></a>自动创建统计信息
 
-当数据库 AUTO_CREATE_STATISTICS 选项时，SQL 数据仓库分析传入的用户查询有关缺少的统计信息。 如果缺少统计信息，查询优化器改进查询计划的基数估计在查询谓词或联接条件中的单独列上创建统计信息。 默认情况下，自动创建统计信息目前处于开启状态。
+启用数据库的 AUTO_CREATE_STATISTICS 选项时，SQL 数据仓库将会分析传入的用户查询中是否缺少统计信息。 如果缺少统计信息，查询优化器将在查询谓词或联接条件中各个列上创建统计信息，以改进查询计划的基数估计。 默认情况下，自动创建统计信息目前处于开启状态。
 
-可以检查您的数据仓库是否有 AUTO_CREATE_STATISTICS 配置通过运行以下命令：
+可以运行以下命令来检查是否为数据仓库配置了 AUTO_CREATE_STATISTICS：
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-如果您的数据仓库不具有 AUTO_CREATE_STATISTICS 配置，我们建议通过运行以下命令启用此属性：
+如果数据仓库未配置 AUTO_CREATE_STATISTICS，我们建议通过运行以下命令来启用此属性：
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
 SET AUTO_CREATE_STATISTICS ON
 ```
 
-这些语句将触发自动创建的统计信息：
+当检测到包含联接或存在某个谓词时，这些语句将触发统计信息的自动创建：
 
-- SELECT
+- 选择
 - INSERT-SELECT
 - CTAS
 - UPDATE
-- 删除
-- 解释包含联接或检测到的谓词的状态显示
+- DELETE
+- EXPLAIN
 
 > [!NOTE]
 > 不在临时或外部表上创建“自动创建统计信息”。
 
-自动创建的统计信息是以同步方式完成，因此如果缺少列统计信息可能会略有降低的查询性能。 若要为单个列创建统计信息的时间取决于表的大小。 若要避免可测量的性能下降，尤其是在性能基准测试，应确保首先通过分析系统前执行基准工作负荷创建统计信息。
+自动创建统计信息的过程是以同步方式完成的，因此，如果列中缺少统计信息，查询性能可能会轻微下降。 为单个列创建统计信息所需的时间取决于表的大小。 为了避免性能大幅下降（尤其是在性能基准检验中），应确保在分析系统之前先通过执行基准检验工作负荷来创建统计信息。
 
 > [!NOTE]
-> 将在中记录的统计信息创建[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest)其他用户上下文。
+> 统计信息的创建将记录在其他用户上下文中的 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) 中。
 
-创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 您可以查看已通过运行创建的统计信息[DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest)命令：
+创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) 命令查看已创建的统计信息：
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
 ```
 
-Table_name 是表的包含要显示的统计信息的名称。 该表不能为外部表。 目标是目标索引、 统计信息或为其显示统计信息列的名称。
+table_name 是包含要显示的统计信息的表的名称。 该表不能为外部表。 目标是要显示统计信息的目标索引、统计信息或列的名称。
 
 ## <a name="updating-statistics"></a>更新统计信息
 
-最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些操作会更改数据分布情况并使统计信息过时。 相反地，有关客户表中的国家/地区列的统计信息可能永远不需要更新，因为值的分布通常不会变化。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。 但是，如果数据仓库只包含一个国家/地区，并且引入了来自新国家/地区的数据，从而导致存储了多个国家/地区的数据，那么，就需要更新有关国家/地区列的统计信息。
+最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些操作会更改数据分布情况并使统计信息过时。 相反地, 客户表中的国家/地区列的统计信息可能永远不需要更新, 因为值的分布通常不会更改。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。 但是，如果数据仓库只包含一个国家/地区，并且引入了来自新国家/地区的数据，从而导致存储了多个国家/地区的数据，那么，就需要更新有关国家/地区列的统计信息。
 
 下面是关于更新统计信息的建议：
 
 |||
 |-|-|
-| **统计信息更新频率**  | 保守：每日 </br> 加载或转换数据之后 |
-| **采样** |  不超过 10 亿行，请使用默认采样 （20%)。 </br> 使用超过 1 亿行，使用 %2%的采样。 |
+| **统计信息更新频率**  | 保守：每天 </br> 加载或转换数据之后 |
+| **采样** |  如果行数少于 10 亿，则使用默认采样率 (20%)。 </br> 如果行数超过 10 亿，则使用 2% 的采样率。 |
 
 在排查查询问题时，首先要询问的问题之一就是 **“统计信息是最新的吗？”**
 
 此问题不可以根据数据期限提供答案。 如果对基础数据未做重大更改，则最新的统计信息对象有可能非常陈旧。 如果行数有明显变化或给定列的值分布有重大变化，则需要更新统计信息。
 
-没有动态管理视图来确定更新的最后一个时间统计信息以来表中的数据是否发生更改。 了解统计信息的保留时间可以为您的图片部分。 可以使用以下查询来确定上次更新每个表的统计信息的时间。
+没有任何动态管理视图可用于确定自上次更新统计信息以来表中的数据是否发生更改。 如果知道统计信息的期限，可以大致猜出更新状态。 可以使用以下查询来确定上次更新每个表的统计信息的时间。
 
 > [!NOTE]
-> 如果没有重大变化的分布列的值，则应更新而不考虑上次更新统计信息。
+> 如果给定列的值分布有重大变化，则应该更新统计信息，不管上次更新时间为何。
 
 ```sql
 SELECT
@@ -134,7 +134,7 @@ WHERE
 
 有关详细信息，请参阅[基数估计](/sql/relational-databases/performance/cardinality-estimation-sql-server)。
 
-## <a name="examples-create-statistics"></a>示例：创建统计信息
+## <a name="examples-create-statistics"></a>示例:创建统计信息
 
 以下示例演示如何使用各种选项来创建统计信息。 用于每个列的选项取决于数据特征以及在查询中使用列的方式。
 
@@ -332,7 +332,7 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-若要使用默认值表中的所有列创建统计信息，请执行存储的过程。
+若要使用默认设置基于表中的所有列创建统计信息，请执行存储过程。
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
@@ -352,7 +352,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 基于所有列创建示例统计信息
 
-## <a name="examples-update-statistics"></a>示例：Update statistics
+## <a name="examples-update-statistics"></a>示例:Update statistics
 
 要更新统计信息，可以：
 
@@ -377,7 +377,7 @@ UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 
 ### <a name="update-all-statistics-on-a-table"></a>更新表中的所有统计信息
 
-更新表中的所有统计信息对象的简单方法是：
+用于更新表中所有统计信息对象的一个简单方法如下：
 
 ```sql
 UPDATE STATISTICS [schema_name].[table_name];
@@ -389,7 +389,7 @@ UPDATE STATISTICS [schema_name].[table_name];
 UPDATE STATISTICS dbo.table1;
 ```
 
-UPDATE STATISTICS 语句是易于使用。 只要记住，这会更新表中的所有统计信息，因此执行的工作可能会超过所需的数量。 如果性能不是一个问题，这是保证统计信息是最新的最简单、 最全面方法。
+UPDATE STATISTICS 语句很容易使用。 只要记住，这会更新表中的所有统计信息，因此执行的工作可能会超过所需的数量。 如果性能不是一个考虑因素，这是保证拥有最新统计信息的最简单、最全面的操作方式。
 
 > [!NOTE]
 > 更新表中的所有统计信息时，SQL 数据仓库将执行扫描，以针对每个统计信息对象进行表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
@@ -469,7 +469,7 @@ AND     st.[user_created] = 1
 
 DBCC SHOW_STATISTICS() 显示统计信息对象中保存的数据。 这些数据包括三个组成部分：
 
-- 标头
+- Header
 - 密度矢量
 - 直方图
 
@@ -509,7 +509,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 - 未阐述的功能不受支持。
 - 不能使用 Stats_stream。
-- 不能联接特定统计信息子集的结果。 例如，STAT_HEADER JOIN DENSITY_VECTOR。
+- 不能联接特定统计信息子集的结果。 例如 STAT_HEADER JOIN DENSITY_VECTOR。
 - 不能针对消息隐藏设置 NO_INFOMSGS。
 - 不能在统计信息名称的前后使用方括号。
 - 不能使用列名来标识统计信息对象。

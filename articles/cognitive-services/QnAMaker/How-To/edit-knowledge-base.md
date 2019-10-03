@@ -3,20 +3,20 @@ title: 编辑知识库 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的内容。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 03/26/2019
-ms.author: tulasim
+ms.topic: conceptual
+ms.date: 05/10/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 22d408204b69e0a564103efd29468c6f0d68d93a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 1450d6b41d9a193f8069509aacd3343ae646c6ac
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577198"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307021"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>在 QnA Maker 中编辑知识库
 
@@ -43,7 +43,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
     |刷新 URL 内容|如果希望知识库抓取现有 URL 的最新内容，请选中“刷新”复选框。 这将使用最新的 URL 内容更新知识库。|
     |添加文件|可以通过选择“管理知识库”并选择“+ 添加文件”将受支持的文件文档添加为知识库的一部分。|
     |导入|还可以通过选择“导入知识库”按钮导入任何现有知识库。 |
-    |更新|知识库的更新取决于在创建与知识库关联的 QnA Maker 服务时使用的**管理定价层**。 如果需要，还可以从 Azure 门户更新管理层。
+    |Update|知识库的更新取决于在创建与知识库关联的 QnA Maker 服务时使用的**管理定价层**。 如果需要，还可以从 Azure 门户更新管理层。
 
 1. 完成对知识库的更改后，选择页面右上角的“保存并训练”以保留更改。    
 
@@ -54,7 +54,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 
 ## <a name="add-a-qna-pair"></a>添加 QnA 对
 
-上**设置**页上，选择**添加 QnA 对**将新行添加到知识库表。
+在 "**编辑**" 页上，选择 "**添加 QnA 对**" 以将新行添加到知识库表。
 
 ![添加 QnA 对](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
@@ -72,8 +72,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
 
 ## <a name="add-metadata"></a>添加元数据
 
-
-选择元数据图标添加元数据对。 元数据对组成一个键和一个值。
+首先选择 "**查看选项**"，然后选择 "**显示元数据**"，添加元数据对。 这会显示元数据列。 接下来，选择 **+** 签名以添加元数据对。 此对包含一个键和一个值。
 
 ![添加元数据](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 

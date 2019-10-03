@@ -12,11 +12,11 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a544ddb6f31481750b1cd46b52d2909d71739707
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897072"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61043336"
 ---
 # <a name="heading"></a>对 Azure 上 SQL Server 中的数据进行采样
 

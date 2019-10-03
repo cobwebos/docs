@@ -5,15 +5,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: reference
-ms.date: 11/20/2017
+ms.date: 11/20/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 257d55fd0c7d843934c4f07a798247c5271d8ed7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: a26e69d756c0f5b8bb26d85d2901e686aba50771
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044291"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66480165"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>用于 Python 的 Azure Cosmos DB 表 API SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 <br/>
 
-| 版本 | 发布日期 | 停用日期 |
+| Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日 |--- |
 | [0.37.1](#0.37.1) |2017 年 10 月 5 日 |--- |

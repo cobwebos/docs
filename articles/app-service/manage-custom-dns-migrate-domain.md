@@ -11,17 +11,16 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6215230a52bcb5c44f54747b447dc5f64e6af650
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 703a151f801f65b968ecf93eaa97640c22a71bd2
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999085"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073094"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
 
@@ -31,7 +30,7 @@ ms.locfileid: "57999085"
 
 如果你不担心 DNS 解析中的停机时间，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](app-service-web-tutorial-custom-domain.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本操作说明：
 
@@ -81,7 +80,7 @@ ms.locfileid: "57999085"
 
 键入已添加 TXT 记录的完全限定的域名，如 `www.contoso.com`。 对于通配符域（如 \*.contoso.com），可以使用与通配符域匹配的任何 DNS 名称。 
 
-选择“验证”。
+选择**验证**。
 
 “添加主机名”按钮会被激活。 
 
@@ -109,7 +108,7 @@ ms.locfileid: "57999085"
 
 若要重新映射 A 记录，需要应用服务应用的外部 IP 地址，此地址显示在“自定义域”页中。
 
-通过选择右上角的 X 关闭“添加主机名”页。 
+通过选择右上角的 X关闭“添加主机名”页。 
 
 在“自定义域”页中，复制应用的 IP 地址。
 
@@ -121,7 +120,7 @@ ms.locfileid: "57999085"
 
 对于 `contoso.com` 根域示例，重新映射 A 或 CNAME 记录，如下表中的示例所示： 
 
-| FQDN 示例 | 记录类型 | 主机 | 值 |
+| FQDN 示例 | 记录类型 | 主机 | ReplTest1 |
 | - | - | - | - |
 | contoso.com（根域） | A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
 | www\.contoso.com (sub) | CNAME | `www` | &lt;appname>.azurewebsites.net |

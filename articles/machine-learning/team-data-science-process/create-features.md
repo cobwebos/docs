@@ -12,11 +12,11 @@ ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8b0973007a78b492cff1c5ffc2ce1e43116a0847
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835078"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60398588"
 ---
 # <a name="feature-engineering-in-data-science"></a>数据科学中的特征工程
 本文章解释特征工程的目的，并提供其在机器学习的数据增强过程中的作用的相关示例。 用于说明此过程的示例来自 Azure 机器学习工作室。 

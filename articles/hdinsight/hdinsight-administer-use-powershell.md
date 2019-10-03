@@ -1,31 +1,30 @@
 ---
 title: 使用 PowerShell 管理 HDInsight 中的 Apache Hadoop 群集 - Azure
 description: 了解如何使用 Azure PowerShell 针对 HDInsight 中的 Apache Hadoop 群集执行管理任务。
-services: hdinsight
-ms.reviewer: tyfox
+ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2019
-ms.author: tylerfox
-ms.openlocfilehash: 6cf05437d5fc181a9fadae110a44efd88d06a2da
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: tyfox
+ms.openlocfilehash: 751f064df271aeb0899a00aea8b1ff09e8b8bdf4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011601"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077043"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 HDInsight 中的 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell 可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 在本文中，您将了解如何管理[Apache Hadoop](https://hadoop.apache.org/)通过使用 Azure PowerShell Az 模块在 Azure HDInsight 群集。 有关 HDInsight PowerShell cmdlet 的列表，请参阅[Az.HDInsight 引用](https://docs.microsoft.com/powershell/module/az.hdinsight)。
+Azure PowerShell 可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 本文介绍了如何使用 Azure PowerShell Az 模块管理 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集。 有关 HDInsight PowerShell cmdlet 的列表，请查看 [Az.HDInsight 参考](https://docs.microsoft.com/powershell/module/az.hdinsight)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
-* PowerShell [Az 模块](https://docs.microsoft.com/powershell/azure/overview)安装。
+* 已安装 PowerShell [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
 ## <a name="create-clusters"></a>创建群集
 请参阅[使用 Azure PowerShell 在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -90,7 +89,7 @@ Remove-AzResourceGroup -Name <Resource Group Name>
 
     HDInsight 群集上提供了 Storm Web UI：
 
-    ![hdinsight storm 缩放重新平衡](./media/hdinsight-administer-use-powershell/hdinsight.portal.scale.cluster.png)
+    ![hdinsight storm 缩放重新平衡](./media/hdinsight-administer-use-powershell/portal-scale-cluster.png)
 
     以下是有关如何使用 CLI 命令重新平衡 Storm 拓扑的示例：
 
@@ -151,10 +150,6 @@ Grant-AzHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $c
 ## <a name="find-the-default-storage-account"></a>查找默认存储帐户
 以下 PowerShell 脚本演示了如何获取群集的默认存储帐户名称和相关信息：
 
-> [!IMPORTANT]  
-> 值`DefaultStorageAccount`，并`DefaultStorageContainer`不会返回从[Get AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster)时[安全传输](../storage/common/storage-require-secure-transfer.md)的存储帐户上启用。
-
-
 ```powershell
 #Connect-AzAccount
 $clusterName = "<HDInsight Cluster Name>"
@@ -199,10 +194,6 @@ $resourceGroupName = $cluster.ResourceGroup
 
 请参阅[使用 PowerShell 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-powershell.md)。
 
-**提交 Apache Pig 作业**
-
-请参阅[使用 PowerShell 运行 Apache Pig 作业](hadoop/apache-hadoop-use-pig-powershell.md)。
-
 **提交 Apache Sqoop 作业**
 
 请参阅[将 Apache Sqoop 与 HDInsight 配合使用](hadoop/hdinsight-use-sqoop.md)。
@@ -215,11 +206,11 @@ $resourceGroupName = $cluster.ResourceGroup
 
 请参阅[将数据上传到 HDInsight](hdinsight-upload-data.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [HDInsight cmdlet 参考文档](https://msdn.microsoft.com/library/azure/dn479228.aspx)
 * [使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)
-* [管理 HDInsight 使用命令行界面](hdinsight-administer-use-command-line.md)
+* [使用命令行接口管理 HDInsight](hdinsight-administer-use-command-line.md)
 * [创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [以编程方式提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)

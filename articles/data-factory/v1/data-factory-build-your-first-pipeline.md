@@ -3,28 +3,24 @@ title: 数据工厂教程：第一个数据管道 | Microsoft Docs
 description: 此 Azure 数据工厂教程介绍如何创建和计划数据工厂，使用 Hadoop 群集上的 Hive 脚本处理数据。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
-ms.assetid: 81f36c76-6e78-4d93-a3f2-0317b413f1d0
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: d9d9e68b7e74ba7725e97162d01e1a35314fdd0f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2dd2edfabff51c749890fe20d47a29c1ec39947c
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544948"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140381"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>教程：使用 Hadoop 群集构建你的第一个管道来转换数据
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
-> * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
@@ -36,7 +32,7 @@ ms.locfileid: "57544948"
 
 在本教程中，将使用数据管道生成第一个 Azure 数据工厂。 管道通过在 Azure HDInsight (Hadoop) 群集上运行 Hive 脚本转换输入数据以生成输出数据。  
 
-本文提供了此教程的概述和先决条件。 完成先决条件之后，可以使用下列工具/SDK 之一完成本教程：Azure 门户、Visual Studio、PowerShell、资源管理器模板、REST API。 在本文开头的下拉列表中选择一个选项，或者选择本文末尾的链接以使用其中一个选项完成此教程。    
+本文提供了此教程的概述和先决条件。 完成先决条件之后，可以使用下列工具/SDK 之一完成本教程：Visual Studio、PowerShell、资源管理器模板 REST API。 在本文开头的下拉列表中选择一个选项，或者选择本文末尾的链接以使用其中一个选项完成此教程。    
 
 ## <a name="tutorial-overview"></a>教程概述
 将在本教程中执行以下步骤：
@@ -80,7 +76,7 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 
 如上所示的示例行中，第行（具有 2016-01-01）会写入 month = 1 文件夹中的 000000_0 文件。 同样，第二行会写入 month = 2 文件夹中的文件，第三行会写入 month = 3 文件夹中的文件。  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 开始本教程之前，必须具有以下先决条件：
 
 1. **Azure 订阅** - 如果没有 Azure 订阅，只需几分钟就能创建一个免费试用帐户。 如需了解如何获取免费试用帐户，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)一文。
@@ -93,13 +89,12 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 
 具备先决条件之后，选择以下工具/SDK 之一完成本教程： 
 
-- [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-Azure 门户和 Visual Studio 提供了生成数据工厂的 GUI 方式。 而 PowerShell、Resource Manager 模板和 REST API 选项提供了生成数据工厂的脚本/编程方式。
+Visual Studio 提供了一种 GUI 方式来构建你的数据工厂。 而 PowerShell、Resource Manager 模板和 REST API 选项提供了生成数据工厂的脚本/编程方式。
 
 > [!NOTE]
 > 本教程中的数据管道可以转换输入数据，以便生成输出数据。 它不是将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。

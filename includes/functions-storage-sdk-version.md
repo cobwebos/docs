@@ -2,19 +2,19 @@
 title: include 文件
 description: include 文件
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 05/17/2018
 ms.author: tdykstra
 ms.custom: include file
-ms.openlocfilehash: 97c56b07833f7d93541bb0b3747889f5a50a8203
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: c2fff707dcaafac69efcad3dbf33446a7b797396
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34675269"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608099"
 ---
 ### <a name="azure-storage-sdk-version-in-functions-1x"></a>Functions 1.x 中的 Azure 存储 SDK 版本
 

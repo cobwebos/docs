@@ -3,27 +3,27 @@ title: Azure Active Directory 身份验证库 | Microsoft 文档
 description: 通过 Azure AD 身份验证库 (ADAL)，客户端应用程序开发人员能够轻松利用云或本地 Active Directory (AD) 对用户进行身份验证，并获取访问令牌，以进行安全的 API 调用。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 2e4fc79a-0285-40be-8c77-65edee408a22
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e90a2fc0bb5e040e0c1a3179df1e4bef758d7ee
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: bb1cd062384bf75e6f83380c172f43244e737db0
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173005"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853483"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory 身份验证库
 
@@ -40,20 +40,20 @@ ms.locfileid: "56173005"
 
 ## <a name="microsoft-supported-client-libraries"></a>Microsoft 支持的客户端库
 
-| 平台 | 库 | 下载 | 源代码 | 示例 | 引用
+| 平台 | 库 | 下载 | 源代码 | 样本 | 参考
 | --- | --- | --- | --- | --- | --- |
 | .NET 客户端、Windows 应用商店、UWP、Xamarin iOS 和 Android |ADAL .NET v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [桌面应用](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-dotnet) |[参考](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet) |
 | .NET 客户端、Windows 应用商店、Windows Phone 8.1 |ADAL .NET v2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.4) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.4) | [桌面应用](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) | |
 | JavaScript |ADAL.js |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[单页应用](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | |
 | iOS、macOS |ADAL |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-objc/releases) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-objc) |[iOS 应用](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-ios) | [参考](http://cocoadocs.org/docsets/ADAL/2.5.1/)|
-| Android |ADAL |[中央存储库](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Android 应用](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](https://javadoc.io/doc/com.microsoft.aad/adal/)|
+| Android |ADAL |[Maven](https://search.maven.org/search?q=g:com.microsoft.aad+AND+a:adal&core=gav) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Android 应用](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](https://javadoc.io/doc/com.microsoft.aad/adal/)|
 | Node.js |ADAL |[npm](https://www.npmjs.com/package/adal-node) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs) | [Node.js Web 应用](https://github.com/Azure-Samples/active-directory-node-webapp-openidconnect)|[参考](https://docs.microsoft.com/javascript/api/adal-node/?view=azure-node-latest) |
 | Java |ADAL4J |[Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3Aadal4j%20g%3Acom.microsoft.azure) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[Java Web 应用](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect) |[参考](https://javadoc.io/doc/com.microsoft.azure/adal4j) |
 | Python |ADAL |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[Python Web 应用](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi) |[参考](https://adal-python.readthedocs.io/) |
 
 ## <a name="microsoft-supported-server-libraries"></a>Microsoft 支持的服务器库
 
-| 平台 | 库 | 下载 | 源代码 | 示例 | 引用
+| 平台 | 库 | 下载 | 源代码 | 样本 | 参考
 | --- | --- | --- | --- | --- | --- |
 | .NET |OWIN for AzureAD|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.ActiveDirectory) |[MVC 应用](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapp-dotnet) | |
 | .NET |OWIN for OpenIDConnect |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.OpenIdConnect) |[Web 应用](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet) | |
@@ -82,7 +82,7 @@ ms.locfileid: "56173005"
 
 在此方案中，开发人员在服务器上有一个正在运行的 Web 应用程序需要访问远程资源（如 Web API）。 该 Web API 不允许匿名调用，因此必须以经过身份验证的用户身份从授权服务中调用它。 该 Web API 已预先配置为信任由特定 Azure AD 租户颁发的访问令牌，而 Azure AD 已预先配置为向具有客户端凭据的服务颁发该资源的访问令牌。 用户在 Web 应用程序中进行身份验证后，应用程序可以从 Azure AD 获取该用户的授权代码。 然后，Web 应用程序可以使用该授权代码以及与应用程序关联的客户端凭据，代表用户通过 ADAL 从 Azure AD 中获取访问令牌和刷新令牌。 Web 应用程序拥有访问令牌后，就可以调用 Web API，直到该令牌过期。 令牌过期后，Web 应用程序可以使用前面收到的刷新令牌，通过 ADAL 获取新的访问令牌。 有关演示此方案的代码示例，请参阅[本机客户端到 Web API 到 Web API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [Azure Active Directory 开发人员指南](v1-overview.md)
 - [Azure Active directory 的身份验证方案](authentication-scenarios.md)

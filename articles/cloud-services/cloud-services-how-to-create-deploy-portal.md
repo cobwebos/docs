@@ -3,31 +3,25 @@ title: 如何创建和部署云服务 | Microsoft Docs
 description: 了解如何使用 Azure 门户创建和部署云服务。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 56ea2f14-34a2-4ed9-857c-82be4c9d0579
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: a6cf2276da463f71f008c4bfb6eee4c232b18308
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: gwallace
+ms.openlocfilehash: 3d5b3f291eb42edc1f7999f33cf6c0879c33bcf4
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551690"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359128"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何创建和部署云服务
-在 Azure 门户提供了两种方法来创建和部署云服务：*快速创建*并*自定义创建*。
+Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和*自定义创建*。
 
 本文介绍如何使用“快速创建”方法创建新的云服务，并使用“**上载**”在 Azure 中上载和部署云服务包。 使用此方法时，Azure 门户在进行操作时会提供方便的链接供你完成所有要求。 如果在创建云服务时还准备部署该云服务，则可以使用“自定义创建”同时执行这两项操作。
 
 > [!NOTE]
-> 如果计划从 Azure DevOps 发布云服务，请使用“快速创建”，然后从“Azure 快速入门”或仪表板设置 Azure DevOps 发布。 有关详细信息，请参阅[使用 Azure DevOps 向 Azure 持续交付][TFSTutorialForCloudService]，或查看“快速入门”页的帮助。
+> 如果计划从 Azure DevOps 发布云服务，请使用“快速创建”，然后从“Azure 快速入门”或仪表板设置 Azure DevOps 发布。 有关详细信息, 请参阅[使用 Azure DevOps 向 Azure 持续交付][TFSTutorialForCloudService], 或查看**快速入门**页面的帮助。
 >
 >
 

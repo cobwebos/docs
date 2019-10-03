@@ -2,22 +2,22 @@
 title: 添加组织的隐私信息 - Azure Active Directory | Microsoft Docs
 description: 有关如何在 Azure Active Directory“属性”区域中添加组织的隐私信息的顺明。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/17/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98b4e3585f25a0b081e30c5524678a0f7bb27942
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 0a2397662112bda6c6789b25691848344a4e611b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187264"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561807"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>使用 Azure Active Directory 添加组织的隐私信息
 本文介绍租户管理员如何通过 Azure 门户将与隐私相关的信息添加到组织的 Azure Active Directory (Azure AD) 租户。
@@ -52,7 +52,7 @@ ms.locfileid: "56187264"
 
         ![带有消息的 B2B 协作审阅权限框](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.  选择“保存”。
+4.  选择**保存**。
 
 ## <a name="next-steps"></a>后续步骤
 - [Azure Active Directory B2B 协作邀请兑换](https://aka.ms/b2bredemption)

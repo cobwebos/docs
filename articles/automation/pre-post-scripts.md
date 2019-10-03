@@ -1,24 +1,24 @@
 ---
-title: 配置更新管理部署在 Azure 中的 pre 和 post 脚本
+title: 在 Azure 中的更新管理部署上配置 pre 和 post 脚本
 description: 本文介绍如何配置和管理更新部署的前脚本和后脚本
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
-ms.date: 04/15/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 84df04a6d3fbd634524d3819657860c6a3448d65
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f13851dd43c80a63ec628e04b98271894c15afc0
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698728"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542858"
 ---
 # <a name="manage-pre-and-post-scripts"></a>管理 pre 和 post 脚本
 
-在执行更新部署之前（前任务）和之后（后任务），可以使用前脚本和后脚本在自动化帐户中运行 PowerShell Runbook。 前脚本和后脚本在 Azure 上下文中运行，而不是在本地运行。 操作前脚本运行更新部署的开始处。 后脚本在部署结束时以及在配置的任何重新启动之后运行。
+在执行更新部署之前（前任务）和之后（后任务），可以使用前脚本和后脚本在自动化帐户中运行 PowerShell Runbook。 前脚本和后脚本在 Azure 上下文中运行，而不是在本地运行。 预脚本在更新部署开始时运行。 后脚本在部署结束时以及在配置的任何重新启动之后运行。
 
 ## <a name="runbook-requirements"></a>Runbook 要求
 
@@ -26,13 +26,11 @@ ms.locfileid: "59698728"
 
 ## <a name="using-a-prepost-script"></a>使用前脚本/后脚本
 
-若要在更新部署中使用前脚本或后脚本，请先创建一个更新部署。 选择**操作前脚本 + 后处理脚本**。 此操作会打开“选择前脚本 + 后脚本”页面。  
+若要在更新部署中使用前脚本或后脚本，请先创建一个更新部署。 选择 "**前脚本 + 后脚本**"。 此操作会打开“选择前脚本 + 后脚本”页面。  
 
 ![选择脚本](./media/pre-post-scripts/select-scripts.png)
 
-选择要使用的脚本，本示例使用了 **UpdateManagement-TurnOnVms** Runbook。 选择 Runbook 时，“配置脚本”页会打开。请提供参数值，然后选择“前脚本”。 完成后单击“确定”。
-
-![配置脚本](./media/pre-post-scripts/configure-script.png)
+选择要使用的脚本，本示例使用了 **UpdateManagement-TurnOnVms** Runbook。 选择 runbook 时, 会打开 "**配置脚本**" 页, 然后选择 "**预处理脚本**"。 完成后单击“确定”。
 
 针对 **UpdateManagement-TurnOffVms** 脚本重复此过程。 但是，在选择“脚本类型”时，请选择“后脚本”。
 
@@ -66,24 +64,8 @@ ms.locfileid: "59698728"
 
 如果需要其他对象类型，可以在 runbook 中使用自己的逻辑将它强制转换为其他类型。
 
-除了标准的 Runbook 参数以外，还提供了一个附加参数。 此参数是 **SoftwareUpdateConfigurationRunContext**。 此参数是一个 JSON 字符串；如果在前脚本或后脚本中定义该参数，更新部署会自动传入该参数。 该参数包含有关更新部署的信息（[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) 返回的信息的子集）。下表显示了变量中提供的属性：
+除了标准的 Runbook 参数以外，还提供了一个附加参数。 此参数是 **SoftwareUpdateConfigurationRunContext**。 此参数是一个 JSON 字符串, 如果您在前脚本或后脚本中定义参数, 则更新部署会自动传入此参数。 该参数包含有关更新部署的信息（[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) 返回的信息的子集）。下表显示了变量中提供的属性：
 
-## <a name="stopping-a-deployment"></a>停止某一部署
-
-如果你想要停止的部署前脚本，您必须基于[引发](automation-runbook-execution.md#throw)异常。 如果不会引发异常，仍将运行的部署和后脚本。 [示例 runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0)在库中显示了如何执行此操作。 下面是该 runbook 的代码段。
-
-```powershell
-#In this case, we want to terminate the patch job if any run fails.
-#This logic might not hold for all cases - you might want to allow success as long as at least 1 run succeeds
-foreach($summary in $finalStatus)
-{
-    if ($summary.Type -eq "Error")
-    {
-        #We must throw in order to fail the patch deployment.  
-        throw $summary.Summary
-    }
-}
-```
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext 属性
 
@@ -134,7 +116,26 @@ foreach($summary in $finalStatus)
 可以在以下位置找到包含所有属性的完整示例：[软件更新配置 - 按名称获取](/rest/api/automation/softwareupdateconfigurations/getbyname#examples)
 
 > [!NOTE]
-> `SoftwareUpdateConfigurationRunContext`对象可包含计算机的重复条目。 这会导致在同一台计算机上运行多次的 Pre 和 Post 脚本。 解决此行为，使用`Sort-Object -Unique`来选择您的脚本中的唯一 VM 名称。
+> `SoftwareUpdateConfigurationRunContext`对象可以包含计算机的重复项。 这可能导致在同一台计算机上多次运行 Pre 和 Post 脚本。 若要解决此行为, `Sort-Object -Unique`请使用仅选择脚本中的唯一 VM 名称。
+
+
+## <a name="stopping-a-deployment"></a>停止部署
+
+如果要基于预先脚本停止部署, 则必须[引发](automation-runbook-execution.md#throw)异常。 如果不引发异常, 部署和后脚本仍将运行。 库中的[示例 runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0)显示了如何执行此操作。 下面是该 runbook 中的代码片段。
+
+```powershell
+#In this case, we want to terminate the patch job if any run fails.
+#This logic might not hold for all cases - you might want to allow success as long as at least 1 run succeeds
+foreach($summary in $finalStatus)
+{
+    if ($summary.Type -eq "Error")
+    {
+        #We must throw in order to fail the patch deployment.  
+        throw $summary.Summary
+    }
+}
+```
+
 
 ## <a name="samples"></a>示例
 
@@ -208,16 +209,16 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="interacting-with-machines"></a>与计算机交互
 
-Pre 和 post 的任务作为 runbook 在自动化帐户中并不是直接在你的部署在计算机上运行。 Pre 和 post 任务还 Azure 上下文中运行，并且不能访问非 Azure 计算机。 以下部分介绍了如何交互，与计算机直接它们是 Azure VM 或非 Azure 计算机：
+Pre 和 post 任务作为 runbook 运行在自动化帐户中, 而不是直接在部署中的计算机上运行。 Pre 和 post 任务也在 Azure 上下文中运行, 并且没有访问非 Azure 计算机的权限。 以下部分介绍了如何直接与计算机进行交互, 无论它们是 Azure VM 还是非 Azure 计算机:
 
-### <a name="interacting-with-azure-machines"></a>与 Azure 机交互
+### <a name="interacting-with-azure-machines"></a>与 Azure 计算机交互
 
-Pre 和 post 的任务是以 runbook 的形式运行，在你的部署中的 Azure Vm 上不以本机方式运行。 若要与 Azure 虚拟机进行交互，必须具有以下各项：
+Pre 和 post 任务作为 runbook 运行, 而不在部署中的 Azure Vm 上本机运行。 要与 Azure Vm 交互, 你必须具有以下各项:
 
 * 一个运行方式帐户
-* 你想要运行 runbook
+* 要运行的 runbook
 
-若要与 Azure 机交互时，应使用[Invoke-azurermvmruncommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) cmdlet 与 Azure 虚拟机进行交互。 有关如何执行此操作的示例，请参阅 runbook 示例[更新管理-具有运行命令运行脚本](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)。
+要与 Azure 计算机交互, 你应使用[AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) Cmdlet 与 azure vm 进行交互。 有关如何执行此操作的示例, 请参阅 runbook 示例[更新管理使用 Run 命令运行脚本](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)。
 
 ### <a name="interacting-with-non-azure-machines"></a>与非 Azure 计算机交互
 
@@ -228,11 +229,11 @@ Pre 和 post 的任务是以 runbook 的形式运行，在你的部署中的 Azu
 * 要在本地运行的 Runbook
 * 父 Runbook
 
-若要与非 Azure 计算机交互，需在 Azure 上下文中运行一个父 Runbook。 此 Runbook 使用 [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) cmdlet 调用子 Runbook。 必须指定 `-RunOn` 参数，并提供运行脚本的混合 Runbook 辅助角色的名称。 有关如何执行此操作的示例，请参阅 runbook 示例[更新管理的本地运行脚本](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)。
+若要与非 Azure 计算机交互，需在 Azure 上下文中运行一个父 Runbook。 此 Runbook 使用 [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) cmdlet 调用子 Runbook。 必须指定 `-RunOn` 参数，并提供运行脚本的混合 Runbook 辅助角色的名称。 有关如何执行此操作的示例, 请参阅 runbook 示例[更新管理在本地运行脚本](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)。
 
 ## <a name="abort-patch-deployment"></a>中止修补程序部署
 
-如果前脚本返回错误，您可能想要中止部署。 若要执行此操作，必须[引发](/powershell/module/microsoft.powershell.core/about/about_throw)中您的脚本的任何逻辑的行为就构成了失败的错误。
+如果你的前脚本返回错误, 你可能想要中止你的部署。 若要执行此操作, 必须在脚本中为导致失败的任何逻辑[引发](/powershell/module/microsoft.powershell.core/about/about_throw)错误。
 
 ```powershell
 if (<My custom error logic>)
@@ -241,9 +242,10 @@ if (<My custom error logic>)
     throw "There was an error, abort deployment"
 }
 ```
+
 ## <a name="known-issues"></a>已知问题
 
-* 使用前脚本和后脚本时，无法将对象或数组传递给参数。 Runbook 将会失败。
+* 使用 pre 和 post 脚本时, 不能向参数传递布尔值、对象或数组。 Runbook 将会失败。 有关支持的类型的完整列表, 请参阅[参数](#passing-parameters)。
 
 ## <a name="next-steps"></a>后续步骤
 

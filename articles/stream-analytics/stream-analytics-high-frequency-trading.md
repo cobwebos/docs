@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 33a7b27d065fc0383e4693053f7bfb6d56e2d33b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: ae82c0e72287ee4c89cb3fb2294bf4bd79aec8c3
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087961"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598641"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>使用流分析进行高频交易模拟
 用户可以在 Azure 流分析中结合使用 SQL 语言和 JavaScript 的用户定义函数 (UDF) 与用户定义聚合 (UDA) 进行高级分析。 高级分析可能包括在线机器学习训练和评分，以及有状态过程模拟。 本文介绍如何在 Azure 流分析作业中执行线性回归操作，该作业在高频交易方案中进行持续的训练和评分。
@@ -65,7 +65,7 @@ socket.On(Socket.EVENT_CONNECT, () =>
 >事件的时间戳为 **lastUpdated**，采用纪元时间。
 
 ### <a name="predictive-model-for-high-frequency-trading"></a>高频交易预测模型
-我们使用 Darryl Shen 在[其文章](http://eprints.maths.ox.ac.uk/1895/1/Darryl%20Shen%20%28for%20archive%29.pdf)中介绍的线性模型进行演示。
+我们使用 Darryl Shen 在[其文章](https://docplayer.net/23038840-Order-imbalance-based-strategy-in-high-frequency-trading.html)中介绍的线性模型进行演示。
 
 大额委托失衡 (VOI) 是基于当前买入/卖出价量和上次买入/卖出价量的一个函数。 该文章明确了 VOI 和未来价格波动的相关性。 它构建了一个线性模型，该模型基于过去 5 个 VOI 值以及接下来 10 次交易的价格变化。 使用前一天的数据对模型进行线性回归训练。 
 
@@ -456,7 +456,7 @@ FROM simulation /* output trade simulation to PBI */
 ![PNL Power BI 图表视觉对象](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 可以在 Azure 流分析中使用中等复杂程度的查询来实现逼真的高频交易模型。 由于缺少内置的线性回归函数，我们必须将模型从五个输入变量简化为两个。 但如果用户有决心，也可以 JavaScript UDA 方式实现更高维且更复杂的算法。 
 
 需要指出的是，除 JavaScript UDA 之外的大部分查询可以在 Visual Studio 中通过[用于 Visual Studio 的 Azure 流分析工具](stream-analytics-tools-for-visual-studio-install.md)进行测试和调试。 在编写初始查询以后，作者在 Visual Studio 中花不到 30 分钟的时间对查询进行了测试和调试。 

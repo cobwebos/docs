@@ -7,21 +7,20 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-manager: craigg
-ms.date: 04/16/2019
-ms.openlocfilehash: add3521a3961f230188e04ff23dda5aac537571a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 08/22/2019
+ms.openlocfilehash: cc12579a4932894b730b04cdc77acc0151168bdb
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680351"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010215"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
-审核 Azure [SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)会跟踪数据库事件，并将这些事件写入 Azure 存储帐户、OMS 工作区或事件中心中的审核日志。 审核还可：
+针对 Azure [SQL 数据库](sql-database-technical-overview.md)和[SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的审核将跟踪数据库事件，并将它们写入 Azure 存储帐户中的审核日志，Log Analytics 工作区或事件中心。 审核还可：
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
@@ -87,14 +86,17 @@ ms.locfileid: "59680351"
 
     ![导航窗格][3]
 
-5. **新建** - 现在有多个选项，可以用来配置写入审核日志的位置。 到 Azure 存储帐户、 Azure Monitor 日志由 Log Analytics 工作区或事件中心以便使用事件中心，可以编写日志。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
+5. **新建** - 现在有多个选项，可以用来配置审核日志将写入到的位置。 你可以将日志写入 Azure 存储帐户、Azure Monitor 日志的 Log Analytics 工作区，或使用事件中心进行消耗的事件中心。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
 
    > [!WARNING]
-   > 启用审核到 Log Analytics 将产生成本基于引入速率。 请特别注意与使用此相关的开销[选项](https://azure.microsoft.com/en-us/pricing/details/monitor/)，或者考虑在 Azure 存储帐户中存储审核日志。
+   > 根据引入速率，启用 Log Analytics 审核会产生成本。 请注意，使用此[选项](https://azure.microsoft.com/pricing/details/monitor/)时的关联成本，或考虑将审核日志存储在 Azure 存储帐户中。
 
     ![存储选项](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
 6. 若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。 依次选择要用于保存日志的 Azure 存储帐户以及保持期。 将删除旧日志。 然后单击“确定”。
+
+   > [!IMPORTANT]
+   > 保持期的默认值为0（无限制保留期）。 在配置存储帐户进行审核时，可以通过移动**存储设置**中的 "**保留期（天）** " 滑块来更改此值。
 
     ![存储帐户](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
@@ -106,29 +108,41 @@ ms.locfileid: "59680351"
 
     ![事件中心](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-9. 单击“ **保存**”。
+9. 单击“保存”。
 10. 若要自定义已审核的事件，可通过 [PowerShell cmdlet](#subheading-7) 或 [REST API](#subheading-9) 执行此操作。
 11. 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](sql-database-threat-detection-get-started.md)。
 
-
 > [!IMPORTANT]
->在 Azure SQL 数据仓库或在具有 Azure SQL 数据仓库的服务器上启用审核将导致数据仓库恢复，即使在以前被暂停的情况下也是如此。 **请确保在启用审核后再次暂停数据仓库**。
+> 不能对已暂停的 Azure SQL 数据仓库启用审核。 若要启用审核，请取消暂停数据仓库。
 
+> [!WARNING]
+> 在具有 Azure SQL 数据仓库的服务器上启用审核**将导致数据仓库重新恢复并重新暂停**，这可能会产生计费费用。
 
 ## <a id="subheading-3"></a>分析审核日志和报告
 
-如果您选择将审核日志写入到 Azure Monitor 日志：
+如果选择将审核日志写入 Azure Monitor 日志：
 
 - 使用 [Azure 门户](https://portal.azure.com)。  打开相关数据库。 在数据库的“审核”页的顶部，单击“查看审核日志”。
 
-    ![查看审核日志](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
+    ![查看审核日志](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
-- 然后单击“审核记录”页面顶部的“在 OMS 中打开”，，此时会在 Log Analytics 中打开“日志”视图，以便在其中自定义时间范围和搜索查询。
+- 然后，可以通过两种方式查看日志：
+    
+    单击 "**审核记录**" 页顶部**Log Analytics**会打开 Log Analytics 工作区中的 "日志" 视图，您可以在其中自定义时间范围和搜索查询。
+    
+    ![在 Log Analytics 工作区中打开](./media/sql-database-auditing-get-started/auditing-log-analytics.png)
 
-    ![在 Log Analytics 中打开](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+    单击 "**审核记录**" 页顶部的 "**查看仪表板**" 将打开一个显示审核日志信息的仪表板，你可以在其中深化到安全见解、对敏感数据的访问权限等。 此仪表板旨在帮助你获取数据的安全见解。
+    还可以自定义时间范围和搜索查询。 
+    ![查看 Log Analytics 仪表板](media/sql-database-auditing-get-started/auditing-view-dashboard.png)
+
+    ![Log Analytics 仪表板](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard.png)
+
+    ![Log Analytics Security Insights](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard-data.png)
+ 
 
 - 也可从 Log Analytics 边栏选项卡访问审核日志。 打开 Log Analytics 工作区，然后在“常规”部分单击“日志”。 一开始可以使用简单的查询（例如：搜索“SQLSecurityAuditEvents”）来查看审核日志。
-    在这里，可以使用[Azure Monitor 日志](../log-analytics/log-analytics-log-search.md)审核日志数据上运行的高级的搜索。 Azure Monitor 日志可以使用集成的搜索和自定义仪表板轻松分析跨所有工作负荷和服务器的记录数以百万计的实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅[Azure Monitor 日志搜索引用](../log-analytics/log-analytics-log-search.md)。
+    在这里，你还可以使用[Azure Monitor 日志](../log-analytics/log-analytics-log-search.md)对审核日志数据运行高级搜索。 有了 Azure Monitor 日志，就可以使用集成的搜索和自定义仪表板来轻松分析所有工作负荷和服务器上的数百万记录，获得实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅 [Azure Monitor 日志搜索参考](../log-analytics/log-analytics-log-search.md)。
 
 如果已选择将审核日志写入到事件中心，请执行以下操作：
 
@@ -137,7 +151,7 @@ ms.locfileid: "59680351"
 
 如果选择将审核日志写入到 Azure 存储帐户，可以使用多种方法来查看日志：
 
-- 审核日志会在安装期间选择的帐户中进行聚合。 可使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具浏览审核日志。 在 Azure 存储中，审核日志以 Blob 文件集合的形式保存在名为 **sqldbauditlogs** 的容器中。 有关存储文件夹层次、命名约定和日志格式的详细信息，请参阅 [Blob 审核日志格式参考](https://go.microsoft.com/fwlink/?linkid=829599)。
+- 审核日志会在安装期间选择的帐户中进行聚合。 可使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具浏览审核日志。 在 Azure 存储中，审核日志以 Blob 文件集合的形式保存在名为 **sqldbauditlogs** 的容器中。 有关存储文件夹的层次结构、命名约定和日志格式的详细信息，请参阅 [SQL 数据库审核日志格式](https://go.microsoft.com/fwlink/?linkid=829599)。
 
 - 使用 [Azure 门户](https://portal.azure.com)。  打开相关数据库。 在数据库的“审核”页的顶部，单击“查看审核日志”。
 
@@ -190,8 +204,6 @@ ms.locfileid: "59680351"
 
     >[!IMPORTANT]
     >在数据库级审核中，辅助数据库的存储设置与主数据库相同，因而会导致生成跨区域流量。 建议仅启用服务器级审核，并对所有数据库禁用数据库级审核。
-    > [!WARNING]
-    > 异地复制的辅助数据库当前不支持在服务器级别的审核日志为目标使用事件中心或 Azure Monitor 日志。
 
 ### <a id="subheading-6">重新生成存储密钥</a>
 
@@ -230,12 +242,14 @@ ms.locfileid: "59680351"
 
 ## <a id="subheading-7"></a>使用 Azure PowerShell 管理 SQL 数据库审核
 
-**PowerShell cmdlet（包括对附加筛选的 WHERE 子句支持）**：
+**PowerShell cmdlet（包括对附加筛选的 WHERE 子句支持）** ：
 
-- [创建或更新数据库审核策略 (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [创建或更新服务器审核策略 (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
-- [获取数据库审核策略 (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [获取服务器审核策略 (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
+- [创建或更新数据库审核策略 (Set-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseaudit)
+- [创建或更新服务器审核策略 (Set-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit)
+- [获取数据库审核策略 (Get-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseaudit)
+- [获取服务器审核策略 (Get-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveraudit)
+- [删除数据库审核策略 (Remove-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseaudit)
+- [删除服务器审核策略 (Remove-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserveraudit)
 
 有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
@@ -255,7 +269,7 @@ ms.locfileid: "59680351"
 - [获取数据库扩展审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [获取服务器扩展审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>使用 ARM 模板管理 SQL 数据库审核
+## <a id="subheading-10"></a>使用 Azure 资源管理器模板管理 SQL 数据库审核
 
 可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)模板管理 Azure SQL 数据库审核，如以下示例所示：
 
@@ -264,7 +278,7 @@ ms.locfileid: "59680351"
 - [部署启用了审核的 Azure SQL Server，以将审核日志写入事件中心](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
 
 > [!NOTE]
-> 链接的示例是在外部公共存储库上，将提供是，不含任何保证，和不受任何 Microsoft 支持程序/服务。
+> 链接的示例位于外部公共存储库中，按 "原样" 提供，不含任何担保，在任何 Microsoft 支持计划/服务下均不受支持。
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

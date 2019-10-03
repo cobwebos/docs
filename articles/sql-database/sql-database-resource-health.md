@@ -10,20 +10,19 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: c3b9fecd3ad404385732e55a9cf3aa65a6e388b8
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1c2720d61c7b4ea918a3d0c1ff7f41984ea42c69
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889369"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566911"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>使用资源运行状况排查 Azure SQL 数据库的连接问题
 
 ## <a name="overview"></a>概述
 
-适用于 SQL 数据库的[资源运行状况](../service-health/resource-health-overview.md#getting-started)可以帮助你在 Azure 问题影响到 SQL 资源时进行诊断和获取支持。 它通知你有关资源的当前和过去运行状况的信息，并帮助你缓解问题。 在需要有关 Azure 服务问题的帮助时，资源运行状况将提供技术支持。
+适用于 SQL 数据库的[资源运行状况](../service-health/resource-health-overview.md#get-started)可以帮助你在 Azure 问题影响到 SQL 资源时进行诊断和获取支持。 它通知你有关资源的当前和过去运行状况的信息，并帮助你缓解问题。 在需要有关 Azure 服务问题的帮助时，资源运行状况将提供技术支持。
 
 ![概述](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
 
@@ -51,11 +50,11 @@ ms.locfileid: "56889369"
 
 ![不可用](./media/sql-database-resource-health/sql-resource-health-unavailable.jpg)
 
-### <a name="unknown"></a>Unknown
+### <a name="unknown"></a>未知
 
 运行状况为“未知”指示资源运行状况未收到此资源的相关信息已超过 10 分钟。 尽管此状态不是资源状态的最终指示，但它是故障排除过程中一个重要的数据点。 如果资源正在按预期方式运行，资源状态会在几分钟后更改为“可用”。 如果资源遇到问题，“未知”运行状态可能暗示平台中的事件正在影响资源。
 
-![Unknown](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
+![未知](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
 
 ## <a name="historical-information"></a>历史信息
 

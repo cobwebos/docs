@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 16c791287cc50b5ac8992a86f6de1e3eeb5e329e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4f2b2ff1c42d18626fb2be27438b2f499ee9368
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59260266"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782632"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>运行 Azure VM 到 Azure 次要区域的灾难恢复演练
 
@@ -31,15 +31,15 @@ ms.locfileid: "59260266"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 在运行测试故障转移前，我们建议先验证 VM 属性以确保一切按预期进行。  访问“复制项”中的 VM 属性。 “概要”边栏选项卡显示有关计算机设置和状态的信息。
+- 在运行测试故障转移前，我们建议先验证 VM 属性以确保一切按预期进行。  访问“复制项”  中的 VM 属性。 “概要”边栏选项卡显示有关计算机设置和状态的信息。 
 - **建议使用单独的 Azure VM 网络进行测试故障转移**，而不是使用启用复制时设置的默认网络。
 
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 
-1. 在“设置” > “复制的项”中，单击“VM”>“+测试故障转移”。
+1. 在“设置” > “复制的项”中，单击“VM”>“+测试故障转移”。   
 
-2. 在“测试故障转移”中，选择要用于故障转移的恢复点：
+2. 在“测试故障转移”  中，选择要用于故障转移的恢复点：
 
    - **最新处理**：将 VM 故障转移到由 Site Recovery 服务处理的最新恢复点。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO（恢复时间目标）会较低
    - **最新的应用一致**：此选项将所有 VM 故障转移到最新的应用一致恢复点。 将显示时间戳。
@@ -47,9 +47,9 @@ ms.locfileid: "59260266"
 
 3. 选择辅助区域中的 Azure VM 在故障转移后要连接到的目标 Azure 虚拟网络。
 
-4. 若要启动故障转移，请单击“确定”。 若要跟踪进度，请单击 VM 以打开其属性。 或者，可以在保管库名称 >“设置” > “作业” > “Site Recovery 作业”中单击“测试故障转移”作业。
-5. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。 请确保 VM 正在运行、大小适当并已连接到相应的网络。
-6. 若要删除在测试故障转移期间创建的 VM，请单击复制项或恢复计划上的“清理测试故障转移”。 在“说明”中，记录并保存与测试性故障转移相关联的任何观测结果。
+4. 若要启动故障转移，请单击“确定”。  若要跟踪进度，请单击 VM 以打开其属性。 或者，可以在保管库名称 >“设置” > “作业” > “Site Recovery 作业”中单击“测试故障转移”作业。    
+5. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。  请确保 VM 正在运行、大小适当并已连接到相应的网络。
+6. 若要删除在测试故障转移期间创建的 VM，请单击复制项或恢复计划上的“清理测试故障转移”。  在“说明”中，记录并保存与测试性故障转移相关联的任何观测结果。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 对图像进行分类 - 计算机视觉
+title: 图像分类-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 了解与计算机视觉 API 的图像分类功能相关的概念。
 services: cognitive-services
@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 07fdaa22532f48cc39b6c524d85fdfe625f8b80c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 2b9b8da550d80b027da919ba0834e43e2c83d4b4
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337117"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945315"
 ---
-# <a name="categorize-images"></a>对图像进行分类
+# <a name="categorize-images-by-subject-matter"></a>按主题对图像进行分类
 
 除了标记和说明以外，计算机视觉还返回图像中检测到的基于分类的类别。 不同于标记，类别是在父/子继承层次结构中组织的，并且数量更少（86 个，与数千个标记截然相反）。 所有类别名称均采用英语。 它可以单独完成分类，也可以与新的标记模型共同完成。
 
 ## <a name="the-86-category-concept"></a>86 类别概念
 
-计算机视觉可以对分类图像广泛或特别是，使用下面的关系图中的 86 种类别的列表。 有关文本格式的完整分类，请参阅[类别分类](category-taxonomy.md)。
+计算机视觉可以使用下图中 86 个类别的列表广泛或具体地对图像进行分类。 有关文本格式的完整分类，请参阅[类别分类](category-taxonomy.md)。
 
 ![类别分类中所有类别的分组列表](./Images/analyze_categories-v2.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "58337117"
 
 下表说明了典型的图像集以及计算机视觉为每个图像返回的类别。
 
-| 映像 | 类别 |
+| 图像 | 类别 |
 |-------|----------|
 | ![四个人一起摆出一家人的姿势](./Images/family_photo.png) | people_group |
 | ![一只小狗坐在草地上](./Images/cute_dog.png) | animal_dog |

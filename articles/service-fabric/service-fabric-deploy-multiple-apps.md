@@ -14,26 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 69df9eff85d96c9cc6ca7fa1d3aabd2c54fae416
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 677a9d02493bf5fac1bfcbe8c40ce9efe2040be9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884714"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537702"
 ---
 # <a name="deploy-multiple-guest-executables"></a>部署多个来宾可执行文件
 本文介绍如何打包多个来宾可执行文件并部署到 Azure Service Fabric。 要生成并部署单个 Service Fabric 包，请参阅如何[将来宾可执行文件部署到 Service Fabric](service-fabric-deploy-existing-app.md)。
 
 虽然本演练演示的是如何部署将 MongoDB 用作数据存储并具有 Node.js 前端的应用程序，但是可以将这些步骤套用于任何与另一个应用程序具有依赖关系的应用程序。   
 
-可以使用 Visual Studio 生成包含多个来宾可执行文件的应用程序包。 请参阅[使用 Visual Studio 打包现有应用程序](service-fabric-deploy-existing-app.md)。 添加第一个来宾可执行文件后，右键单击应用程序项目，并依次选择 **“添加”->“新建 Service Fabric 服务”**，将第二个来宾可执行文件项目添加到解决方案中。 请注意:如果选择在 Visual Studio 项目中链接源，则生成 Visual Studio 解决方案可确保应用程序包能够与源中的更改保持同步。 
+可以使用 Visual Studio 生成包含多个来宾可执行文件的应用程序包。 请参阅[使用 Visual Studio 打包现有应用程序](service-fabric-deploy-existing-app.md)。 添加第一个来宾可执行文件后，右键单击应用程序项目，并依次选择 **“添加”->“新建 Service Fabric 服务”** ，将第二个来宾可执行文件项目添加到解决方案中。 请注意:如果选择在 Visual Studio 项目中链接源，则生成 Visual Studio 解决方案可确保应用程序包能够与源中的更改保持同步。 
 
 ## <a name="samples"></a>示例
 * [打包和部署来宾可执行文件的示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [使用 REST 通过命名服务进行通信的两种来宾可执行文件（C# 和 nodejs）示例](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>手动打包多个来宾可执行文件应用程序
-或者，也可以手动打包来宾可执行文件。 对于手动打包，本文将使用位于 [https://aka.ms/servicefabricpacktool](https://aka.ms/servicefabricpacktool) 的 Service Fabric 打包工具。
+或者，也可以手动打包来宾可执行文件。 有关详细信息，请参阅[手动打包和部署现有可执行文件](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable)。
 
 ### <a name="packaging-the-nodejs-application"></a>打包 Node.js 应用程序
 本文假设 Service Fabric 群集中的节点上未安装 Node.js。 因此，需要在打包之前，先将 Node.exe 添加到节点应用程序的根目录中。 Node.js 应用程序（使用 Express Web 框架和 Jade 模板引擎）的目录结构看起来应该与以下类似：
@@ -207,7 +207,6 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 一旦应用程序已成功发布到本地群集，可以访问我们的 Node.js 应用程序--例如 http 的服务清单中输入的端口上的 Node.js 应用程序：\//localhost:3000。
 
 在本教程中，学习了如何轻松地将两个现有应用程序打包成一个 Service Fabric 应用程序。 还已了解如何将其部署到 Service Fabric，以便它能够从一些 Service Fabric 功能（例如高可用性和运行状况系统集成）中获益。
-
 
 ## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>在 Linux 上使用 Yeoman 将更多来宾可执行文件添加到现有应用程序
 

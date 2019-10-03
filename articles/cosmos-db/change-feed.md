@@ -5,19 +5,19 @@ author: rimman
 ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 85a1dad9feb15550cf27cf032802af5055fdf155
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: f50f1b3e2ee7f98d14d29f1e2205a97d76eaacc8
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525630"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219894"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的更改源 - 概述
 
-Azure Cosmos DB 中更改源支持的工作原理是侦听 Azure Cosmos DB 容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 这些更改将会持久保留且能以异步和增量方式进行处理。可将输出分配到一个或多个使用者供并行处理。 
+Azure Cosmos DB 中更改源支持的工作原理是侦听 Azure Cosmos 容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 这些更改将会持久保留且能以异步和增量方式进行处理。可将输出分配到一个或多个使用者供并行处理。 
 
 Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应用程序。 这些应用程序中的一种常见设计模式是使用数据更改来触发附加的操作。 附加操作的示例包括：
 
@@ -35,14 +35,14 @@ Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应
 
 | **客户端驱动程序** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API**|**表 API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | NA | 是 | 否 | 否 | 是 | 否 |
-|Java|NA|是|否|否|是|否|
-|Python|NA|是|否|否|是|否|
-|Node/JS|NA|是|否|否|是|否|
+| .NET | 不可用 | 是 | 否 | 否 | 是 | 否 |
+|Java|不可用|是|否|否|是|否|
+|Python|不可用|是|否|否|是|否|
+|Node/JS|不可用|是|否|否|是|否|
 
 ## <a name="change-feed-and-different-operations"></a>更改源和不同操作
 
-如今，在更改流中可以看到所有操作。 针对只更新和不插入等特定操作的功能（可控制更改源）尚不可用。 可以在更新项上添加“软标记”，并在更改流中处理项时根据标记进行筛选。 目前更改源不会记录日志删除操作。 与前面的示例类似，可在要删除的项上添加软标记，例如，可在名为“已删除”的项中添加属性并将其设置为“true”，然后在该项上设置 TTL，这样系统就可将其自动删除。 可以阅读历史项的更改流（例如，五年前添加的项）。 如果未删除该项，则可以读取不超过容器原始时间的更改源。
+如今，在更改流中可以看到所有操作。 针对只更新和不插入等特定操作的功能（可控制更改源）尚不可用。 可以在更新项上添加“软标记”，并在更改流中处理项时根据标记进行筛选。 目前更改源不会记录日志删除操作。 与前面的示例类似，可在要删除的项上添加软标记，例如，可在名为“已删除”的项中添加属性并将其设置为“true”，然后在该项上设置 TTL，这样系统就可将其自动删除。 您可以读取历史项的更改源（与该项相对应的最新更改，不包括中间更改），例如，在五年前添加的项。 如果未删除该项，则可以读取不超过容器原始时间的更改源。
 
 ### <a name="sort-order-of-items-in-change-feed"></a>更改源中项的排序顺序
 
@@ -56,9 +56,9 @@ Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应
 
 如果某个项的 TTL（生存时间）属性设置为 -1，则将永久保留更改源。 如果数据未被删除，它将会保留在更改源中。  
 
-### <a name="change-feed-and-etag-lsn-or-ts"></a>更改源和 _etag、_lsn 或 _ts
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>更改源和 _etag、_lsn 或 _ts
 
-_etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _ts 是修改或创建时间戳。 可以使用 _ts 进行时间顺序比较。 _lsn 是更改源; 仅为添加的批处理 ID它表示事务 id。 许多项可能具有相同的 _lsn。 FeedResponse 上的 ETag 不同于项上看到的 _etag。 _etag 是用于并发控制的内部标识符，它告知项的版本，而 ETag 用于将源定序。
+_etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _ts 是修改或创建时间戳。 可以使用 _ts 进行时间顺序比较。 _lsn 是仅为更改源添加的批 ID，它表示事务 ID。 许多项可能具有相同的 _lsn。 FeedResponse 上的 ETag 不同于项上看到的 _etag。 _etag 是用于并发控制的内部标识符，它告知项的版本，而 ETag 用于将源定序。
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>更改源用例和方案
 
@@ -94,7 +94,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 可通过以下选项使用更改源：
 
 * [将更改源与 Azure Functions 配合使用](change-feed-functions.md)
-* [将更改源与更改源处理器库配合使用](change-feed-processor.md) 
+* [将更改源与更改源处理器配合使用](change-feed-processor.md) 
 
 更改源适用于容器中的每个逻辑分区键，它可以分配给一个或多个使用者进行并行处理，如下图所示。
 
@@ -108,7 +108,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 * 更改源包括针对容器中的项所执行的插入和更新操作。 在项（如文档）中的删除位置设置“软删除”标志，可以捕获删除操作。 此外，也可以使用 [TTL 功能](time-to-live.md)为项设置有限的过期时段。 例如，24 小时，可使用该属性的值来捕获删除操作。 使用此解决方案时，处理更改的时间间隔必须比 TTL 过期时段要短。 
 
-* 在更改源中，对项的每个更改都将显示一次，且客户端必须管理其检查点逻辑。 如果想要避免复杂的检查点管理过程，更改源处理器库提供了自动检查点和“至少一次”语义。 请参阅[将更改源与更改源处理器库配合使用](change-feed-processor.md)。
+* 在更改源中，对项的每个更改都将显示一次，且客户端必须管理其检查点逻辑。 如果想要避免管理检查点的复杂性，更改源处理器提供了自动检查点和“至少一次”语义。 请参阅[将更改源与更改源处理器配合使用](change-feed-processor.md)。
 
 * 更改日志中仅包含最近对给定项所做的更改。 而不包含中途的更改。
 
@@ -126,4 +126,4 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 * [读取更改源的选项](read-change-feed.md)
 * [将更改源与 Azure Functions 配合使用](change-feed-functions.md)
-* [使用更改源处理器库](change-feed-processor.md)
+* [使用更改源处理器](change-feed-processor.md)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 7a261d65a7bd3eea150dd764c65b94ddd47466b3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 420d7afe0d825da9149f2cb2ae1540a2805b357c
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100303"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335878"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>排查常见的路由问题
 本文介绍如何排查在使用 Azure Front Door 服务配置时可能会遇到的一些常见路由问题。 
@@ -62,11 +62,11 @@ ms.locfileid: "58100303"
 
 
 3. 检查路由规则设置
-     - 导航到应该从相关前端主机名路由到后端池的路由规则。 确保接受的协议已正确配置，否则，请确保 Front Door 在转发请求时使用的协议已正确配置。 接受的协议确定 Front Door 应该接受哪些请求，“高级”选项卡下的“转发协议”确定 Front Door 应该使用哪个协议将请求转发到后端。
+     - 导航到应该从相关前端主机名路由到后端池的路由规则。 确保接受的协议已正确配置，否则，请确保 Front Door 在转发请求时使用的协议已正确配置。 _接受的协议_确定前门应接受的请求,_转发协议_确定应该使用哪种协议前门将请求转发到后端。
           - 例如，如果后端仅接受 HTTP 请求，则以下配置有效：
                - 接受的协议是 HTTP 和 HTTPS。 转发协议是 HTTP。 匹配请求不起作用，因为 HTTPS 是允许的协议，如果请求作为 HTTPS 传入，则 Front Door 会尝试使用 HTTPS 将其转发。
 
                - 接受的协议是 HTTP。 转发协议是匹配请求或 HTTPS。
 
-   - 单击路由规则配置窗格顶部的“高级”选项卡。 “URL 重写”默认已禁用。仅当你要缩小想要提供的后端托管资源的范围时，才使用此字段。 禁用时，Front Door 会转发它收到的相同请求路径。 有可能此字段配置不当，而 Front Door 从不可用的后端请求资源，因此返回了 HTTP 404 状态代码。
+   - “URL 重写”默认已禁用。仅当你要缩小想要提供的后端托管资源的范围时，才使用此字段。 禁用时，Front Door 会转发它收到的相同请求路径。 有可能此字段配置不当，而 Front Door 从不可用的后端请求资源，因此返回了 HTTP 404 状态代码。
 

@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: f977a48338f784562ec84355aabb212e5a3dade4
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 9662ebd26a263fa006c8fccf877fdc950e9014c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543662"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102962"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric for Visual Studio Code
 
@@ -30,7 +29,7 @@ ms.locfileid: "59543662"
 > [!IMPORTANT]
 > 可在 Windows 计算机上开发 Service Fabric Java 应用程序，但只能将其部署到 Azure Linux 群集。 Windows 不支持调试 Java 应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 必须在所有环境中安装以下必备组件。
 
@@ -59,7 +58,7 @@ ms.locfileid: "59543662"
 * [.NET Core](https://www.microsoft.com/net/learn/get-started)（2.0.0 或更高版本）
 * 调试 C# 服务时所需的 [C# for Visual Studio Code (Powered by OmniSharp) VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 可通过以下方法之一安装该扩展：在 VS Code 中的**活动栏**上单击“扩展”图标并搜索该扩展，或者从 VS Code 市场安装。
 
-## <a name="setup"></a>设置
+## <a name="setup"></a>安装
 
 1. 打开 VS Code。
 2. 在 VS Code 左侧的**活动栏**中单击“扩展”图标。 搜索“Service Fabric”。 单击 Service Fabric Reliable Services 扩展对应的“安装”。
@@ -107,7 +106,7 @@ ms.locfileid: "59543662"
 “Service Fabric:部署应用程序”命令将 Service Fabric 应用程序部署到本地群集。 使用该命令之前，请确保本地群集正在运行。 
 
 1. 选择“Service Fabric:部署应用程序”命令
-2. 查看本地群集使用 Service Fabric Explorer (http:\//localhost:19080 / 资源管理器) 以确认是否已安装应用程序。 此过程可能需要一段时间，请耐心等待。
+2. 使用 Service Fabric Explorer (http:\//localhost:19080/Explorer) 查看本地群集，确认已安装该应用程序。 此过程可能需要一段时间，请耐心等待。
 3. 也可以在未在 Cloud.json 文件中设置任何参数的情况下，使用“Service Fabric:发布应用程序”命令部署到本地群集。
 
 > [!NOTE]
@@ -120,7 +119,7 @@ ms.locfileid: "59543662"
 2.  使用 Service Fabric Explorer 查看该群集，确认已删除该应用程序。 此过程可能需要一段时间，请耐心等待。
 
 ### <a name="service-fabric-build-application"></a>Service Fabric:生成应用程序
-“Service Fabric:**生成应用程序**命令可以生成任一 Java 或C#Service Fabric 应用程序。 
+“Service Fabric:生成应用程序”命令可以生成 Java 或 C# Service Fabric 应用程序。 
 
 1.  执行此命令之前，请确保在应用程序根文件夹中操作。 该命令会识别应用程序的类型（C# 或 Java），并相应地生成应用程序。
 2.  选择“Service Fabric:生成应用程序”命令。

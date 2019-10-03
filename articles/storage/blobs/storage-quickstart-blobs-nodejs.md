@@ -1,21 +1,21 @@
 ---
-title: 如何使用适用于 Node.js v2 的客户端库在 Azure 存储中创建 Blob
+title: 在 Azure 存储中为 Node.js 创建 Blob
 description: 在对象 (Blob) 存储中创建存储帐户和容器。 随后，使用适用于 Node.js v2 的 Azure 存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
-services: storage
-author: tamram
-ms.custom: mvc
-ms.service: storage
-ms.topic: conceptual
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 02/04/2019
-ms.author: tamram
-ms.openlocfilehash: 182315c705360d254c3bf342cd9c64ffafa0c021
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.service: storage
+ms.subservice: blobs
+ms.topic: conceptual
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: 8d0afc5a224e752bdd745ab4df0473a134b4180b
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750068"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671353"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>如何使用适用于 Node.js v2 的客户端库上传、下载和列出 Blob
+# <a name="upload-download-and-list-blobs-using-the-client-library-for-nodejs"></a>使用用于 node.js 的客户端库上传、下载和列出 blob
 
 本操作指南介绍如何使用适用于 Node.js v2 的客户端库通过 Azure Blob 存储来上传、下载和列出 Blob。
 

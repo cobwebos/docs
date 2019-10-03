@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 8707a9cb90afe1bf72f3aef6377f8ada409a1c64
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 82b6e701a5f76aa4c2cea78417ca9bcbeeb10308
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667117"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927694"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述
@@ -27,6 +27,10 @@ ms.locfileid: "58667117"
 
 ## <a name="endpoints"></a>终结点
 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 例如，可以查看本段落后面提供的清单代码段中指定的终结点 *ServiceEndpoint1*。 此外，服务还可以请求在资源中使用特定端口。 在不同群集节点上运行的服务副本可以分配不同的端口号，而运行在同一节点上的服务副本共享同一个端口。 之后服务副本可根据需要将这些端口用于复制和侦听客户端请求。
+
+> [!WARNING] 
+> 设计静态端口不应与 Clustermanifest.xml 中指定的应用程序端口范围重叠。 如果指定静态端口, 请将其分配到应用程序端口范围外, 否则将导致端口冲突。 使用 release 6.5 CU2, 我们将在检测到此类冲突时发出**运行状况警告**, 但允许部署与发货6.5 行为保持同步。 但是, 我们可能会阻止应用程序在下一个主要版本中进行部署。
+>
 
 ```xml
 <Resources>
@@ -198,7 +202,7 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-注意：如果针对 ApplicationParameters 提供的值为空，将返回到 ServiceManifest 中为对应的 EndPointName 提供的默认值。
+注意:如果针对 ApplicationParameters 提供的值为空，将返回到 ServiceManifest 中为对应的 EndPointName 提供的默认值。
 
 例如：
 

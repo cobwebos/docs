@@ -7,19 +7,19 @@ ms.service: app-service
 ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
-ms.author: msangapu-msft
-ms.openlocfilehash: 02ebd0629fed9037054a5c22931f3e99c09073c4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: msangapu
+ms.openlocfilehash: 97c03ad294bba1f8a0285fff4595991ca0acc8b5
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998594"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018279"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>从 Linux 上的应用服务中的 Azure 存储提供内容
 
-本指南展示了如何在 Linux 上的应用服务中使用 [Azure 存储](/azure/storage/common/storage-introduction)提供静态内容。 优势包括内容受保护，内容可移植，可以访问多个应用以及使用多种传输方法。 在本指南中，您将了解如何通过配置自定义存储在 Azure 存储空间提供的内容。
+本指南展示了如何在 Linux 上的应用服务中使用 [Azure 存储](/azure/storage/common/storage-introduction)提供静态内容。 优点包括受保护的内容、内容可移植性、持久存储、对多个应用的访问和多种传输方法。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 现有的 Web 应用（Linux 上的应用服务或用于容器的 Web 应用）。
 - [Azure CLI](/cli/azure/install-azure-cli)（2.0.46 或更高版本）。
@@ -28,6 +28,8 @@ ms.locfileid: "59998594"
 
 > [!NOTE]
 > Azure 存储是非默认存储并且单独计费，不包括在 Web 应用中。
+>
+> 自带存储不支持使用存储防火墙配置，因为存在基础结构限制。
 >
 
 创建一个 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli)。
@@ -67,9 +69,22 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 将存储容器链接到 Web 应用后，可以通过运行以下命令验证此情况：
 
 ```azurecli
-az webapp config storage-account list --resource-group <group_name> --name <app_name>
+az webapp config storage-account list --resource-group <resource_group> --name <app_name>
+```
+
+## <a name="use-custom-storage-in-docker-compose"></a>在 Docker Compose 中使用自定义存储
+
+可以使用自定义 id 在多容器应用中装载 Azure 存储。若要查看自定义 id 名称，请[`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)运行。
+
+在*docker-compose.yml*文件中，将`volumes`选项映射到。 `custom-id` 例如：
+
+```yaml
+wordpress:
+  image: wordpress:latest
+  volumes:
+  - <custom-id>:<path_in_container>
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure 应用服务中配置 Web 应用](https://docs.microsoft.com/azure/app-service/web-sites-configure)。
+- [在 Azure 应用服务中配置 Web 应用](../configure-common.md)。

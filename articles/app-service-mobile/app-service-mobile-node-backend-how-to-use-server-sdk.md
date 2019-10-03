@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6eaaeba8a36bcba8134d605889185fb8827dd05c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997533"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851193"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>如何使用移动应用 Node.js SDK
 
@@ -38,7 +38,7 @@ ms.locfileid: "57997533"
 
 可以在 [在 GitHub 上的示例目录]中找到每种用例的示例。
 
-## <a name="supported-platforms"></a>支持的平台
+## <a name="supported-platforms"></a>受支持的平台
 
 移动应用 Node.js SDK 支持 Node 的当前 LTS 版本及更高版本。 目前，最新 LTS 版本为 Node v4.5.0。 其他 Node 版本可能有效，但不受支持。
 
@@ -133,9 +133,9 @@ Visual Studio 2015 需要使用一个扩展在 IDE 中开发 Node.js 应用程�
     app.use(mobile);
     ```
 
-    保存文件。
+    保存该文件。
 
-1. 可以在本地运行应用程序 (提供 API `http://localhost:3000`) 或发布到 Azure。
+1. 在本地运行应用程序 (API 在上`http://localhost:3000`提供) 或发布到 Azure。
 
 ### <a name="create-node-backend-portal"></a>使用 Azure 门户创建 Node.js 后端
 
@@ -192,7 +192,7 @@ var mobile = azureMobileApps({ homePage: true });
 
 azure-mobile-apps Node.js Server SDK 提供将存储在 Azure SQL 数据库中的表公开为 Web API 的机制。 它提供五个操作：
 
-| Operation | 描述 |
+| 操作 | 描述 |
 | --- | --- |
 | GET /tables/*tablename* |获取表中的所有记录。 |
 | GET /tables/*tablename*/:id |获取表中的特定记录。 |
@@ -302,7 +302,7 @@ module.exports = table;
 
    h. 在树菜单中，选择“SQL Server 服务”。
 
-   i. 右键单击 **SQL Server (SQLEXPRESS)**，并选择“重启”。
+   i. 右键单击 **SQL Server (SQLEXPRESS)** ，并选择“重启”。
 
    j. 关闭 SQL Server 2014 配置管理器。
 
@@ -372,9 +372,9 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
 
 | 应用设置 | azureMobile.js 设置 | 描述 | 有效值 |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |名称 |应用的名称 |字符串 |
+| **MS_MobileAppName** |name |应用的名称 |string |
 | **MS_MobileLoggingLevel** |logging.level |要记录的消息的最小日志级别 |error、warning、info、verbose、debug、silly |
-| **MS_DebugMode** |debug |启用或禁用调试模式 |true、false |
+| **MS_DebugMode** |调试 |启用或禁用调试模式 |true、false |
 | **MS_TableSchema** |data.schema |SQL 表的默认架构名称 |字符串（默认值：dbo） |
 | **MS_DynamicSchema** |data.dynamicSchema |启用或禁用调试模式 |true、false |
 | **MS_DisableVersionHeader** |版本（设置为 undefined） |禁用 X-ZUMO-Server-Version 标头 |true、false |
@@ -389,7 +389,7 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
 1. 滚动到“应用设置”部分。
 1. 如果该应用设置已存在，请选择其值进行编辑。
    如果该应用设置不存在，请在“键”框中输入“应用设置”，在“值”框中输入值。
-1. 选择“保存”。
+1. 选择**保存**。
 
 更改大多数应用设置后都需要重新启动服务。
 
@@ -410,7 +410,7 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
 
    c. 选择适当的服务定价层。 选择“全部查看”以查看其他定价选项，例如“免费”和“共享”。
 
-   d. 单击“选择”按钮。
+   d. 单击**选择**按钮。
 
    e. 返回“应用服务计划”窗格，选择“确定”。
 1. 选择“创建”。
@@ -891,7 +891,7 @@ api.get.access = 'authenticated';
 module.exports = api;
 ```
 
-## <a name="Debugging"></a>调试、简易表和简易 API
+## <a name="Debugging"></a>调试
 
 ### <a name="howto-diagnostic-logs"></a>对移动应用进行调试、诊断和故障排除
 
@@ -903,47 +903,6 @@ Azure 应用服务提供多种适用于 Node.js 应用程序的调试和故障�
 * [在 Visual Studio 中对 Azure 应用服务进行故障排除]
 
 Node.js 应用程序可访问各种诊断日志工具。 在内部，移动应用 Node.js SDK 使用 [Winston] 进行诊断日志记录。 启用调试模式，或者在 [Azure 门户]中将 `MS_DebugMode` 应用设置指定为 true，即可自动启用日志记录。 生成的日志显示在 [Azure 门户]上的诊断日志中。
-
-### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>在 Azure 门户中使用简易表
-
-使用简易表可以直接在门户中创建和使用表。 可以采用 CSV 格式将数据集上传到简易表。 请注意，不能使用与移动应用后端的系统属性名称冲突的属性名称（在 CSV 数据集中）。 系统属性名称包括：
-* createdAt
-* updatedAt
-* deleted
-* 版本
-
-甚至可以使用应用服务编辑器来编辑表操作。 在后端站点设置中选择“简易表”时，可以添加、修改或删除表。 还可以查看表中的数据。
-
-![使用简易表](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-tables.png)
-
-表的命令栏中提供了以下命令：
-
-* **更改权限**：修改在表中读取、插入、更新和删除操作的权限。
- 选项包括允许匿名访问、要求身份验证，或禁用对操作的所有访问。
-* **编辑脚本**：在应用服务编辑器中打开表的脚本文件。
-* **管理架构**：添加或删除列，或者更改表索引。
-* **清除表**：截断现有表可能会删除所有行，但架构保持不变。
-* **删除行**：删除单个数据行。
-* **查看流式处理日志**：连接到站点的流式处理日志服务。
-
-### <a name="work-easy-apis"></a>在 Azure 门户中使用简易 API
-
-使用简易 API 可以直接在门户中创建和使用自定义 API。 可以使用应用服务编辑器编辑 API 脚本。
-
-在后端站点设置中选择“简易 API”时，可以添加、修改或删除自定义 API 终结点。
-
-![使用简易 API](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-apis.png)
-
-在门户中，可以更改 HTTP 操作的访问权限、在应用服务编辑器中编辑 API 脚本文件，或查看流式传输日志。
-
-### <a name="online-editor"></a>在应用服务编辑器中编辑代码
-
-使用 Azure 门户可在应用服务编辑器中编辑 Node.js 后端脚本文件，而无需将项目下载到本地计算机。 若要在在线编辑器中编辑脚本文件，请执行以下操作：
-
-1. 在移动应用后端的窗格中，选择“所有设置”“简易表”或“简易 API”。 选择表或 API，并选择“编辑脚本”。 脚本文件会在应用服务编辑器中打开。
-
-   ![应用服务编辑器](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
-1. 在在线编辑器中更改代码文件。 键入内容时，更改会自动保存。
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png

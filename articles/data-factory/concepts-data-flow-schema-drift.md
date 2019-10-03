@@ -1,76 +1,72 @@
 ---
-title: Azure 数据工厂映射数据流架构偏差
+title: 映射数据流中的架构偏差 |Azure 数据工厂
 description: 使用架构偏差在 Azure 数据工厂中生成可复原的数据流
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.date: 09/12/2019
+ms.openlocfilehash: 68c0da5a7fe2b02c6115a8c1bbc24feb95e12adb
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547138"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003704"
 ---
-# <a name="mapping-data-flow-schema-drift"></a>映射数据流架构偏差
+# <a name="schema-drift-in-mapping-data-flow"></a>映射数据流中的架构偏差
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-“架构偏差”的概念是指源经常更改元数据。 可以动态添加、删除或更改字段、列和类型等。 如果不处理架构偏差，当上游数据源发生更改时，数据流就很容易发生更改。 当传入的列和字段发生更改时，典型的 ETL 模式将会失败，因为它们往往绑定到这些源名称。
+通常情况下，源经常更改元数据。 可以动态添加、删除或更改字段、列和类型。 如果不处理架构偏移，数据流就会受到上游数据源更改的影响。 当传入的列和字段发生更改时，典型的 ETL 模式将失败，因为它们往往绑定到这些源名称。
 
-为了防范架构偏差，必须在数据流工具中提供相应的机制，使数据工程师能够：
+若要防止架构偏移，请务必让 data flow 工具中的工具允许你作为数据工程人员：
 
 * 定义具有可变字段名称、数据类型、值和大小的源
 * 定义可以使用数据模式而不是硬编码字段和值的转换参数
 * 定义可以识别与传入字段相匹配而不是使用命名字段的表达式
 
-## <a name="how-to-implement-schema-drift"></a>如何实现架构偏差
+Azure 数据工厂以本机方式支持灵活的架构，这些架构从执行更改为执行，这样您就无需重新编译数据流即可构建泛型数据转换逻辑。
 
-* 在源转换中选择“允许架构偏差”
+需要在数据流中做出体系结构方面的决策，使整个流接受架构偏差。 这样做可以防范源中发生架构更改。 但是，在整个数据流中，将丢失列和类型的早期绑定。 Azure 数据工厂将架构偏差处理为后期绑定流，因此，在生成转换时，在整个流的架构视图中，偏移列的名称将不可用。
 
-<img src="media/data-flow/schemadrift001.png" width="400">
+## <a name="schema-drift-in-source"></a>源中的架构偏差
 
-* 选择此选项后，每次执行数据流都会从源读取所有传入字段，并通过整个流将其传递到接收器。
+在源转换中，架构偏移定义为读取未定义数据集架构的列。 若要启用架构偏移，请选中 "允许在源转换中使用**架构偏移**"。
 
-* 请务必使用“自动映射”来映射接收器转换中的所有新字段，以选取所有新字段并将其载入目标：
+![架构偏差源](media/data-flow/schemadrift001.png "架构偏差源")
 
-<img src="media/data-flow/automap.png" width="400">
+启用架构偏差后，将在执行过程中从源读取所有传入字段，并将整个流传递到接收器。 默认情况下，所有新检测到的列（称为*偏移列*）将作为字符串数据类型到达。 如果希望数据流自动推断偏移列的数据类型，请选中 "在源设置中**推断偏移列类型**"。
 
-* 使用简单的“源 -> 接收器”（即复制）映射在该方案中引入新字段后，一切都会正常工作。
+## <a name="schema-drift-in-sink"></a>接收器中的架构偏差
 
-* 若要在处理架构偏差的该工作流中添加转换，可以使用模式匹配来按名称、类型和值对列进行匹配。
+在接收器转换中，当你在接收器数据架构中定义的列的顶层编写其他列时，架构偏移就是。 若要启用架构偏移，请选中 "在接收器转换中**允许架构偏移**"。
 
-* 若要创建一个可识别“架构偏差”的转换，请在“派生列”或“聚合”转换中单击“添加列模式”。
+![架构偏移接收器](media/data-flow/schemadrift002.png "架构偏移接收器")
 
-<img src="media/data-flow/columnpattern.png" width="400">
+如果启用了架构偏移，请确保 "映射" 选项卡中的 "**自动映射**" 滑块处于打开状态。 在上打开此滑块时，所有传入列都将写入您的目标。 否则，必须使用基于规则的映射来编写偏移列。
 
-> [!NOTE]
-> 需要在数据流中做出体系结构方面的决策，使整个流接受架构偏差。 这样做可以防范源中发生架构更改。 但是，整个数据流中列和类型的前期绑定将会丢失。 Azure 数据工厂将架构偏差流视为后期绑定流，因此，当你生成转换时，整个流的架构视图中不会显示列名。
+![接收器自动映射](media/data-flow/automap.png "接收器自动映射")
 
-<img src="media/data-flow/taxidrift1.png" width="400">
+## <a name="transforming-drifted-columns"></a>转换偏移列
 
-在出租车演示示例数据流中，包含 TripFare 源的底部数据流中有一个示例架构偏差。 请注意，在“聚合”转换中，我们将对聚合字段使用“列模式”设计。 我们不会命名特定的列或按位置查找列，而是假设每次运行后数据可能会更改并且可能不按相同的顺序显示。
+当数据流包含偏移列时，可以使用以下方法在转换中访问它们：
 
-在此 Azure 数据工厂数据流架构偏差处理示例中，我们已生成一个聚合用于扫描“double”类型的列，并知道数据域包含每段行程的价格。 然后，可以针对源中的所有 double 字段执行聚合数学计算，不管该列在哪个位置载入，也不管该列的命名如何。
+* `byPosition`使用和`byName`表达式按名称或位置号显式引用列。
+* 添加派生列或聚合转换中的列模式，以匹配任何名称、流、位置或类型的组合
+* 在 Select 或 Sink 转换中添加基于规则的映射，以便通过模式将偏移列与列别名匹配
 
-Azure 数据工厂数据流语法使用 $$ 来表示匹配模式中每个匹配的列。 也可以使用复杂字符串搜索和正则表达式函数来按列名进行匹配。 在这种情况下，我们将根据“double”类型的列的每个匹配项创建新的聚合字段名称，并将文本 ```_total``` 追加到每个匹配的名称： 
+有关如何实现列模式的详细信息，请参阅[映射数据流中的列模式](concepts-data-flow-column-pattern.md)。
 
-```concat($$, '_total')```
+### <a name="map-drifted-columns-quick-action"></a>Map 偏移列快速操作
 
-然后，我们将舍入和累加每个匹配列的值：
+若要显式引用偏移列，可以通过数据预览快速操作快速生成这些列的映射。 启用[调试模式](concepts-data-flow-debug-mode.md)后，请进入 "数据预览" 选项卡，然后单击 "**刷新**" 以获取数据预览。 如果数据工厂检测到偏移列存在，则可以单击**Map 偏移**并生成一个派生列，使您可以在下游的架构视图中引用所有偏移列。
 
-```round(sum ($$))```
+![地图偏移](media/data-flow/mapdrifted1.png "地图偏移")
 
-可以使用 Azure 数据工厂数据流示例“出租车演示”对此进行测试。 使用数据流设计图面顶部的“调试”切换开关打开调试会话，以交互方式查看结果：
+在生成的派生列转换中，每个偏移列都映射到其检测到的名称和数据类型。 在上面的数据预览中，将 "movieId" 列检测为一个整数。 单击**Map 偏移**后，movieId 在派生列中定义为`toInteger(byName('movieId'))` ，在下游转换中包含在架构视图中。
 
-<img src="media/data-flow/taxidrift2.png" width="800">
-
-## <a name="access-new-columns-downstream"></a>下游访问新的列
-
-生成新列与列模式时，可以更高版本中使用"byName"表达式函数在数据流转换来访问这些新列。
+![地图偏移](media/data-flow/mapdrifted2.png "地图偏移")
 
 ## <a name="next-steps"></a>后续步骤
-
-在中[数据流表达式语言](data-flow-expression-functions.md)将为您的附加工具用于列模式和包括"byName"和"byPosition"的架构偏差。
+在[数据流表达式语言](data-flow-expression-functions.md)中，你将找到用于列模式和架构偏移的其他功能，包括 "byName" 和 "byPosition"。

@@ -3,8 +3,8 @@ title: 限制对 PaaS 资源的网络访问 - Azure CLI | Microsoft Docs
 description: 本文介绍如何使用 Azure CLI 通过虚拟网络服务终结点限制对 Azure 资源（例如 Azure 存储和 Azure SQL 数据库）的网络访问。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
@@ -15,18 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 4d93cfe78159fdf4ef3c34e8f80732603b701538
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: e52829723b41f9274251ebe7432aa659251c0da4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521674"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64695120"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>使用 Azure CLI 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
-通过虚拟网络服务终结点，可以将某些 Azure 服务资源限制为仅允许某个虚拟网络子网通过网络进行访问。 还可以删除对资源的 Internet 访问。 服务终结点提供从虚拟网络到受支持 Azure 服务的直接连接，使你能够使用虚拟网络的专用地址空间访问 Azure 服务。 通过服务终结点发往 Azure 资源的流量始终保留在 Microsoft Azure 主干网络上。 在本文中，学习如何：
+通过虚拟网络服务终结点，可将某些 Azure 服务资源限制为仅允许某个虚拟网络子网通过网络进行访问。 还可以删除对资源的 Internet 访问。 服务终结点提供从虚拟网络到受支持 Azure 服务的直接连接，使你能够使用虚拟网络的专用地址空间访问 Azure 服务。 通过服务终结点发往 Azure 资源的流量始终保留在 Microsoft Azure 主干网络上。 在本文中，学习如何：
 
 * 创建包含一个子网的虚拟网络
 * 添加子网并启用服务终结点
@@ -120,7 +120,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-每个网络安全组包含多个[默认安全规则](security-overview.md#default-security-rules)。 下面的规则替代允许对所有公共 IP 地址的出站访问的默认安全规则。 `destination-address-prefix "Internet"`选项拒绝对所有公共 IP 地址的出站访问。 上一个规则将替代此规则，因为它的优先级更高，上一个规则允许对 Azure 存储的公用 IP 地址进行访问。
+每个网络安全组包含多个[默认安全规则](security-overview.md#default-security-rules)。 以下规则将替代允许对所有公共 IP 地址进行出站访问的默认安全规则。 `destination-address-prefix "Internet"` 选项拒绝对所有公共 IP 地址进行出站访问。 上一个规则将替代此规则，因为它的优先级更高，上一个规则允许对 Azure 存储的公用 IP 地址进行访问。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -137,7 +137,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-以下规则允许 SSH 流量传入到子网从任何位置。 该规则将替代拒绝来自 Internet 的所有入站流量的默认安全规则。 SSH 被允许子网，以便可以在更高版本的步骤中测试连接。
+以下规则允许 SSH 流量从任何位置入站到子网。 该规则将替代拒绝来自 Internet 的所有入站流量的默认安全规则。 允许通过 SSH 访问子网，以便在稍后的步骤中测试连接。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -272,7 +272,7 @@ az vm create \
 
 ## <a name="confirm-access-to-storage-account"></a>确认对存储帐户的访问
 
-通过 SSH 登录到 *myVmPrivate* VM。 替换 *\<publicIpAddress >* 的公共 IP 地址与你*myVmPrivate* VM。
+通过 SSH 登录到 *myVmPrivate* VM。 将 \<publicIpAddress> 替换为 myVmPrivate VM 的公共 IP 地址。
 
 ```bash 
 ssh <publicIpAddress>

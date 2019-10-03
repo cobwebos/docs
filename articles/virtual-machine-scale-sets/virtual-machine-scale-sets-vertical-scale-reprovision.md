@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: 3846815dabdc9e351f3d8449feb88affb9c6efdb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: d12fde33ec9d55c891c801f1b89143b4db6f8ae7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001184"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035754"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
 
@@ -43,7 +43,7 @@ ms.locfileid: "60001184"
 4. 将警报添加到使用 Webhook 通知的虚拟机规模集。
 
 > [!NOTE]
-> 由于第一个虚拟机的大小有限制，它可以调整到的大小可能会由于当前虚拟机部署到的群集的其他大小而受到限制。 在本文中使用的已发布自动化 Runbook 中，我们将遵循这种限制，只在以下 VM 大小对的范围内进行缩放。 这意味着，Standard_D1v2 虚拟机不会突然间扩展到 Standard_G5，或者突然间缩减到 Basic_A0。 也不支持受约束的虚拟机大小增加/减少。 可以选择在以下大小对之间缩放：
+> 由于第一个虚拟机的大小有限制，它可以调整到的大小可能会由于当前虚拟机部署到的群集的其他大小而受到限制。 在本文中使用的已发布自动化 Runbook 中，我们将遵循这种限制，只在以下 VM 大小对的范围内进行缩放。 这意味着，Standard_D1v2 虚拟机不会突然间扩展到 Standard_G5，或者突然间缩减到 Basic_A0。 还不支持约束的虚拟机大小增加/减少。 可以选择在以下大小对之间缩放：
 > 
 > | VM 大小缩放对 |  |
 > | --- | --- |
@@ -89,7 +89,7 @@ ms.locfileid: "60001184"
 > | Standard_ND6s |Standard_ND24s |
 > | Standard_NV6 |Standard_NV24 |
 > | Standard_NV6s_v2 |Standard_NV24s_v2 |
-> 
+> | Standard_NV12s_v3 |Standard_NV48s_v3 |
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>使用运行时功能创建 Azure 自动化帐户
@@ -162,7 +162,7 @@ Add-AzMetricAlertRule  -Name  $alertName `
 * [Azure Monitor PowerShell 快速入门示例](../azure-monitor/platform/powershell-quickstart-samples.md)
 * [Azure Monitor 跨平台 CLI 快速入门示例](../azure-monitor/platform/cli-samples.md)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文对简单的垂直缩放示例进行了介绍。 借助这些构建基块 - 自动化帐户、Runbook、Webhook、警报，可以使用一组自定义操作连接各种事件。
 

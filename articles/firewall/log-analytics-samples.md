@@ -1,36 +1,36 @@
 ---
-title: 防火墙日志分析的 azure 示例
-description: 防火墙日志分析的 azure 示例
+title: Azure 防火墙日志分析示例
+description: Azure 防火墙日志分析示例
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 2/15/2019
+ms.date: 09/17/2019
 ms.author: victorh
-ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4ab1263abac67714357594e5bd87a4b910953b1
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793825"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033984"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>防火墙日志分析的 azure 示例
+# <a name="azure-firewall-log-analytics-samples"></a>Azure 防火墙日志分析示例
 
-以下 Azure Monitor 日志示例可用来分析 Azure 防火墙日志。 示例文件在 Azure Monitor 中的视图设计器中生成[Azure Monitor 中的视图设计器](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer)文章包含有关视图的设计概念的详细信息。
+以下 Azure Monitor 日志示例可用于分析 Azure 防火墙日志。 示例文件是在 Azure Monitor 的视图设计器中构建的，[Azure Monitor 中的视图设计器](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer)一文提供了有关视图设计概念的更多信息。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="azure-monitor-logs-view"></a>Azure 监视器将记录视图
+## <a name="azure-monitor-logs-view"></a>Azure Monitor 日志视图
 
-下面是如何配置 Azure Monitor 日志可视化效果的示例。 可从 [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) 存储库下载可视化示例。 最简单的方法是右键单击此页面上的超链接，然后选择“另存为”，并提供类似“AzureFirewall.omsview”的名称。 
+下面是配置示例 Azure Monitor 日志可视化的方法。 可从 [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) 存储库下载可视化示例。 最简单的方法是右键单击此页面上的超链接，然后选择“另存为”，并提供类似“AzureFirewall.omsview”的名称。 
 
-执行以下步骤以将视图添加到 Log Analytics 工作区：
+执行以下步骤以将视图添加到 Log Analytics 工作区中：
 
 1. 在 Azure 门户中打开 Log Analytics 工作区。
 2. 打开“常规”下的“视图设计器”。
 3. 单击“导入”。
 4. 浏览并选择之前下载的“AzureFirewall.omsview”文件。
-5. 单击“ **保存**”。
+5. 单击“保存”。
 
 以下是视图查找应用程序规则日志数据的方式：
 
@@ -40,7 +40,7 @@ ms.locfileid: "59793825"
 
 ![网络规则日志数据]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Azure 防火墙日志 AzureDiagnostics 下面的数据为类别**AzureFirewallApplicationRule**或**AzureFirewallNetworkRule**。 包含详细信息的数据存储在 msg_s 字段中。 借助[分析](https://docs.microsoft.com/azure/kusto/query/parseoperator)运算符，可从 msg_s 字段中提取各种相关属性。 以下查询提取两种类别的信息。
+AzureDiagnostics 下的 Azure 防火墙日志数据类别为“AzureFirewallApplicationRule”或“AzureFirewallNetworkRule”。 包含详细信息的数据存储在 msg_s 字段中。 借助[分析](https://docs.microsoft.com/azure/kusto/query/parseoperator)运算符，可从 msg_s 字段中提取各种相关属性。 以下查询提取两种类别的信息。
 
 ## <a name="application-rules-log-data-query"></a>应用程序规则日志数据查询
 
@@ -70,7 +70,7 @@ SourcePort = tostring(SourcePortInt)
 TargetPort = tostring(TargetPortInt)
 | extend
 //make sure we only have Allowed / Deny in the Action Field
-Action1 = case(Action1 == "denied","Deny","Unknown Action")
+Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | extend
     Action = case(Action2 == "",Action1,Action2),
     Rule = case(Rule2a == "",case(Rule1 == "",case(Rule2b == "","N/A", Rule2b),Rule1),Rule2a), 
@@ -92,7 +92,7 @@ AzureDiagnostics
 | parse TempDetails with * "Deny." RuleCollection2b ". Proceeding with" Rule2b
 | extend SourcePort = tostring(SourcePortInt)
 | extend TargetPort = tostring(TargetPortInt)
-| extend Action1 = case(Action1 == "denied","Deny","Unknown Action")
+| extend Action1 = case(Action1 == "Deny","Deny","Unknown Action")
 | extend Action = case(Action2 == "",Action1,Action2),Rule = case(Rule2a == "", case(Rule1 == "",case(Rule2b == "","N/A", Rule2b),Rule1),Rule2a), 
 RuleCollection = case(RuleCollection2b == "",case(RuleCollection2a == "","No rule matched",RuleCollection2a), RuleCollection2b),FQDN = case(FQDN == "", "N/A", FQDN),TargetPort = case(TargetPort == "", "N/A", TargetPort)
 | project TimeGenerated, msg_s, Protocol, SourceIP, SourcePort, FQDN, TargetPort, Action ,RuleCollection, Rule
@@ -100,7 +100,7 @@ RuleCollection = case(RuleCollection2b == "",case(RuleCollection2a == "","No rul
 
 ## <a name="network-rules-log-data-query"></a>网络规则日志数据查询
 
-下面的查询分析网络规则日志数据。 在不同的注释行中，有一些关于如何生成查询的指导：
+以下查询分析网络规则日志数据。 在不同的注释行中，有一些关于如何生成查询的指导：
 
 ```Kusto
 AzureDiagnostics
@@ -151,9 +151,9 @@ AzureDiagnostics
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
 ```
 
-## <a name="threat-intelligence-log-data-query"></a>威胁智能日志数据的查询
+## <a name="threat-intelligence-log-data-query"></a>威胁智能日志数据查询
 
-以下查询来分析威胁智能规则日志数据：
+以下查询分析威胁智能规则日志数据：
 
 ```Kusto
 AzureDiagnostics
@@ -168,4 +168,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure 防火墙监视和诊断信息，请参阅[教程：监视 Azure 防火墙日志和指标](tutorial-diagnostics.md)。
+若要了解 Azure 防火墙监视和诊断，请参阅[教程：监视 Azure 防火墙日志和指标](tutorial-diagnostics.md)。

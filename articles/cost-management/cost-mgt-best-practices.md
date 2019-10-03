@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 493b71e503b6023eeea4a71e34d5405f84821e28
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7c562e6f0a1358d16b9abef08a5e582e4ff84472
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009638"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66002042"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -50,7 +50,7 @@ ms.locfileid: "58009638"
 
 #### <a name="visibility"></a>可见性
 
-如果成本管理的结构合理，这将有助于员工了解其所负责的 Azure 成本以及资金使用情况。 Azure 提供的相关服务可让你了解资金使用方向。 请充分利用这些工具。 它们可以帮助你找到未充分利用的资源、消除浪费并最大程度利用节省成本的机会。
+如果成本管理的结构合理，这将有助于员工了解其所负责的 Azure 成本以及资金使用情况。 Azure 提供的相关服务可让你了解资金使用方向  。 请充分利用这些工具。 它们可以帮助你找到未充分利用的资源、消除浪费并最大程度利用节省成本的机会。
 
 #### <a name="accountability"></a>问责制
 

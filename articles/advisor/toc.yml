@@ -22,6 +22,8 @@
       href: view-recommendations.md
     - name: 权限和阻止的操作
       href: permissions.md
+    - name: 针对建议配置警报
+      href: advisor-alerts.md
 - name: 引用
   items:
     - name: 安全中心

@@ -13,15 +13,15 @@ ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 3a255b21e8bfd7d78954603e9aa6e5ca39cee95b
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321987"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60566054"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>通过跳过不兼容行向复制活动添加容错
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](data-factory-copy-activity-fault-tolerance.md)
 > * [版本 2（当前版本）](../copy-activity-fault-tolerance.md)
 
@@ -44,7 +44,7 @@ ms.locfileid: "54321987"
 
     例如：使用包含六个列的架构定义，将数据从 Blob 存储中的 CSV 文件复制到 SQL 数据库。 包含六个列的 CSV 文件行会成功复制到接收器存储。 包含多于或少于六个列的 CSV 文件行会被检测为不兼容，并被跳过。
 
-- 写入 SQL Server/Azure SQL 数据库/Azure Cosmos DB 时发生主键冲突
+- 写入 SQL Server/Azure SQL 数据库/Azure Cosmos DB 时发生主键冲突 
 
     例如：将数据从 SQL 服务器复制到 SQL 数据库。 接收器 SQL 数据库中定义了主键，但源 SQL 服务器中未定义此类主键。 源中的重复行无法复制到接收器。 复制活动仅将源数据的第一行复制到接收器。 包含重复主键值的后续源行会被检测为不兼容，并被跳过。
 

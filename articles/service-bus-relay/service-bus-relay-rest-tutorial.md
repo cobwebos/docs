@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4e988724f842ff12cd599eba95c31006fe208fad
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847960"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422892"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF 中继 REST 教程
 本教程介绍如何生成简单的服务总线主机应用程序，该应用程序公开基于 REST 的接口。 REST 使 Web 客户端（例如 Web 浏览器）可通过 HTTP 请求访问服务总线 API。
@@ -35,7 +35,7 @@ ms.locfileid: "57847960"
 > * 托管并运行基于 REST 的 WCF 服务
 > * 运行和测试服务
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要具备以下先决条件：
 
@@ -56,7 +56,7 @@ WCF 协定和 REST 样式的协定的主要区别在于是否向 [OperationContr
 ### <a name="to-create-a-contract-with-an-interface"></a>使用接口创建协定
 
 1. 以管理员身份打开 Visual Studio：在“开始”菜单中右键单击该程序，然后选择“以管理员身份运行”。
-2. 创建新的控制台应用程序项目。 单击“文件”菜单并选择“新建”，并单击“项目”。 在“新建项目”对话框中，单击“Visual C#”，选择“控制台应用程序”模板，并将其命名为“ImageListener”。 使用默认“位置”。 单击“确定”以创建该项目  。
+2. 创建新的控制台应用程序项目。 单击“文件”菜单并选择“新建”，并单击“项目”。 在“新建项目”对话框中，单击“Visual C#”，选择“控制台应用程序”模板，并将其命名为“ImageListener”。 使用默认“位置”。 单击**确定**以创建项目。
 3. 对于 C# 项目，Visual Studio 会创建 `Program.cs` 文件。 此类包含一个空的 `Main()` 方法，需要此方法才能正确生成控制台应用程序项目。
 4. 通过安装服务总线 NuGet 包，向项目添加对服务总线和 **System.ServiceModel.dll** 的引用。 该包自动添加对服务总线库和 WCF **System.ServiceModel**的引用。 在“解决方案资源管理器”中，右键单击“ImageListener”项目，并单击“管理 NuGet 包”。 单击“浏览”选项卡，并搜索 `Microsoft Azure Service Bus`。 单击“安装” 并接受使用条款。
 5. 必须在项目中显式添加对 **System.ServiceModel.dll** 的引用：
@@ -259,7 +259,7 @@ namespace Microsoft.ServiceBus.Samples
     ```
    
     此步骤将配置一个服务，该服务使用前面定义的默认 **webHttpRelayBinding**。 此外，它还使用下一步骤中定义的默认 **sbTokenProvider**。
-4. 在 `<services>` 元素的后面，使用以下内容创建 `<behaviors>` 元素，并将 “SAS_KEY” 替换为先前从 [Azure 门户][Azure portal]获得的共享访问签名 (SAS) 密钥。
+4. 在 `<services>` 元素的后面，使用以下内容创建 `<behaviors>` 元素，并将“SAS_KEY”替换为先前从 [Azure 门户][Azure portal]获得的共享访问签名 (SAS) 密钥。
    
     ```xml
     <behaviors>
@@ -578,6 +578,6 @@ namespace Microsoft.ServiceBus.Samples
 至此，你已使用 Azure 中继服务构建一个应用程序，接下来请参阅以下文章了解详细信息：
 
 * [Azure 中继概述](relay-what-is-it.md)
-* [如何通过 .NET 使用 WCF 中继服务](relay-wcf-dotnet-get-started.md)
+* [如何通过 .NET 使用 WCF 中继服务](service-bus-relay-tutorial.md)
 
 [Azure portal]: https://portal.azure.com

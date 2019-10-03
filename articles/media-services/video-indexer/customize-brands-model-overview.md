@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 15f4b8b6d4a27e721dfcaed8b9dd700e87e3a257
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 863dbd9a6044ee33ae39ac9693a7d4f74382b9c7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872873"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65799675"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>在视频索引器中自定义品牌模型
 

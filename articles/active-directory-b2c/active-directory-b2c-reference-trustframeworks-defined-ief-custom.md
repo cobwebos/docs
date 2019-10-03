@@ -2,26 +2,26 @@
 title: 参考 - Azure Active Directory B2C 中的信任框架 | Microsoft Docs
 description: 本主题介绍了 Azure Active Directory B2C 自定义策略和标识体验框架。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8debab073d65cd64303d2f395b73a3a04e8105b6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: e96ddcb904bbda6c3123ffc9d3da50ff80823689
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166860"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500011"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>使用 Azure AD B2C 标识体验框架定义信任框架
 
 利用标识体验框架的 Azure Active Directory B2C (Azure AD B2C) 自定义策略可以为组织提供集中式服务。 此服务降低了大型社区利益体中联合身份验证的复杂性。 复杂性会降低到单一信任关系和单个元数据交换。
 
-使用标识体验框架的 Azure AD B2C 自定义策略使你能够回答以下问题：
+Azure AD B2C 自定义策略使用标识体验框架使你能够回答以下问题:
 
 - 必须遵守哪些法律、安全、隐私和数据保护策略？
 - 谁是联系人，成为认可参与者的过程是什么？

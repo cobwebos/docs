@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: sample
 ms.date: 10/09/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: c1096567a42845a0be327edfb1be67838936a057
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: e47432f6c82dc83cc13730c658ce61ba4a026c3d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434583"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074185"
 ---
 # <a name="azure-powershell-samples-for-api-management"></a>适用于 API 管理的 Azure PowerShell 示例
 

@@ -4,7 +4,7 @@ description: 了解如何使用 PowerShell 创建具有多个 NIC 的 VM（经�
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: 6e50f39a-2497-4845-a5d4-7332dbc203c5
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 087b52bd603e8aed6078ab340e84c1f6bd0e8082
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: af22bc43a06be74c7a4b6c869725a19fc87a0f3e
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652189"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058729"
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>使用 PowerShell 创建具有多个 NIC 的 VM（经典）
 
@@ -36,7 +36,7 @@ ms.locfileid: "58652189"
 
 以下步骤使用名为 *IaaSStory* 的资源组作为主资源组，并在名为 *IaaSStory-BackEnd* 的资源组中实现后端服务器。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 创建数据库服务器之前，需要先使用此方案的所有必需资源创建 *IaaSStory* 资源组。 若要创建这些资源，请完成如下步骤。 若要创建虚拟网络，请完成[创建虚拟网络](virtual-networks-create-vnet-classic-netcfg-ps.md)一文中的步骤。
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 212158d9a76fa2e49c60be0b5c52f281497c155b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669412"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60393123"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>使用 Linux Azure 诊断的事件聚合和集合
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "58669412"
 ## <a name="log-and-event-sources"></a>日志和事件源
 
 ### <a name="service-fabric-platform-events"></a>Service Fabric 平台事件
-Service Fabric 通过 [LTTng](https://lttng.org) 发出几个现成可用的日志，包括操作事件或运行时事件。 这些日志存储在群集的资源管理器模板指定的位置。 若要获取存储帐户的详细信息，请搜索 AzureTableWinFabETWQueryable 标记，然后查找 StoreConnectionString。
+Service Fabric 通过 [LTTng](https://lttng.org) 发出几个现成可用的日志，包括操作事件或运行时事件。 这些日志存储在群集的资源管理器模板指定的位置。 若要获取存储帐户的详细信息，请搜索 AzureTableWinFabETWQueryable  标记，然后查找 StoreConnectionString  。
 
 ### <a name="application-events"></a>应用程序事件
  检测软件时，事件按指定从应用程序和服务的代码中发出。 可以使用任何能够写入基于文本的日志的日志记录解决方案，例如 LTTng。 有关详细信息，请参阅有关跟踪应用程序的 LTTng 文档。

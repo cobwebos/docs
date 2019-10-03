@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8a2972b8fbc31a3f945f40949128b3f37f2f4b77
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c77b700cab4afd411c3a2df824ee8335cb394cda
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312472"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64868314"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>将文件从 Azure StorSimple 上传到 Azure 媒体服务帐户中  
 
-本文简述 Azure StorSimple 数据管理器。 本文还提供了其他教程的链接，这些教程介绍了如何从 StorSimple 提取数据并将这些数据作为资产上传到 Azure 媒体服务 (AMS) 帐户。
-
-> 
 > [!NOTE]
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+>
+> 
 > Azure StorSimple 数据管理器目前以个人预览版提供。 
 > 
 
@@ -36,7 +36,7 @@ ms.locfileid: "58312472"
 
 [Azure StorSimple](https://docs.microsoft.com/azure/storsimple/) 使用云存储作为本地解决方案的扩展，可跨本地存储和云存储自动将数据分层。 在将数据发送到云之前，StorSimple 设备会删除数据中的重复项并压缩数据，因此能够以极高的效率将大型文件发送到云中。 [StorSimple 数据管理器](../../storsimple/storsimple-data-manager-overview.md)服务提供相应的 API，让你从 StorSimple 提取数据并以 AMS 资产的形式呈现数据。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 1. [创建媒体服务帐户](media-services-portal-create-account.md)，以便将资产传输到其中。
 2. 根据 [StorSimple 数据管理器](../../storsimple/storsimple-data-manager-overview.md)一文中所述注册数据管理器预览版。

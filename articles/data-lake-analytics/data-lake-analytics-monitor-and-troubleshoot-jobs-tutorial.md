@@ -1,7 +1,6 @@
 ---
-title: 使用 Azure 门户监视 Azure Data Lake Analytics 中的作业
+title: 监视 Azure Data Lake Analytics-Azure 门户
 description: 本文介绍如何使用 Azure 门户对 Azure Data Lake Analytics 作业进行故障排除。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 1e18addc43e53cb45e92966607ad5d1db2b42c3c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
-ms.translationtype: HT
+ms.openlocfilehash: 7fb85f179f1e1e1ac873fc7d6d937b34c1d48ada
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046713"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316590"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户监视 Azure Data Lake Analytics 中的作业
 
@@ -45,7 +44,7 @@ ms.locfileid: "43046713"
     "/Samples/Data/SearchLog.tsv"
 8. 单击“提交”。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [通过使用 Azure PowerShell 实现 Azure Data Lake Analytics 入门](data-lake-analytics-get-started-powershell.md)
 * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)

@@ -1,25 +1,18 @@
 ---
-title: 检索产品/服务状态 | Microsoft Docs
+title: 检索产品/服务状态 |Azure Marketplace
 description: API 可检索产品/服务的当前状态。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9233a5919ad86adcbb7947cd095945654ed015a7
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 26ee8b5b1879c505f8200671558fe065ace068a3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805791"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935454"
 ---
 <a name="retrieve-offer-status"></a>检索产品/服务状态 
 =====================
@@ -35,11 +28,11 @@ ms.locfileid: "48805791"
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | 发布者标识符，例如 `Contoso`  |     String     |
 |  offerId        | 唯一标识产品/服务的 GUID      |     String     |
-|  api-version    | API 的最新版本                        |     日期       |
+|  api-version    | API 的最新版本                        |     Date       |
 |  |  |
 
 
-<a name="header"></a>标头
+<a name="header"></a>Header
 ------
 
 |  名称           |  值               |

@@ -3,7 +3,7 @@ title: 什么是 Azure Active Directory 报表？ | Microsoft Docs
 description: 简要介绍 Azure Active Directory 报表。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ccf8014938e813676e9338e9bfc4eaa18f63f9
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: cd3907231ce3963d43fa8279039a736b63fc2043
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436942"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127280"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>什么是 Azure Active Directory 报表？
 
@@ -44,28 +44,28 @@ ms.locfileid: "58436942"
 
 安全报表有助于保护组织的标识。 有两种类型的安全报表：
 
-- 标记为存在风险的用户 - 可以通过[标记为存在风险的用户的安全报表](concept-user-at-risk.md)大致了解可能已遭到入侵的用户帐户。
+-  标记为存在风险的用户 - 可以通过[标记为存在风险的用户的安全报表](concept-user-at-risk.md)大致了解可能已遭到入侵的用户帐户。
 
-- 风险登录 - 可以通过[风险登录安全报表](concept-risky-sign-ins.md)了解可能由非用户帐户合法拥有者进行的登录尝试。 
+-  风险登录 - 可以通过[风险登录安全报表](concept-risky-sign-ins.md)了解可能由非用户帐户合法拥有者进行的登录尝试。 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>访问安全报表需要什么 Azure AD 许可证？  
 
 所有版本的 Azure AD 都提供标记为存在风险的用户的报表和风险登录报表。 但是，各版本的报表粒度级别有所不同： 
 
-- 在“Azure Active Directory 免费版和基本版”中，获取一个列表，其中包含标记为存在风险的用户和风险登录。 
+- 在“Azure Active Directory 免费版和基本版”中，获取一个列表，其中包含标记为存在风险的用户和风险登录。  
 
-- Azure Active Directory Premium 1 版本还允许你检查每个报表中检测到的部分潜在性风险事件，从而扩展了该模型。 
+-  Azure Active Directory Premium 1 版本扩展了这个模型，它还允许你检查每个报告检测到的一些潜在风险检测。 
 
-- Azure Active Directory Premium 2 版本提供有关潜在风险事件的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
+-  Azure Active Directory Premium 2 版本提供有关潜在风险检测的最详细信息，并且还允许配置可自动响应已配置风险级别的安全策略。
 
 
 ## <a name="activity-reports"></a>活动报表
 
 可以通过活动报表了解用户在组织中的行为。 Azure AD 中有两种类型的活动报表：
 
-- 审核日志 - 可以通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
+-  审核日志 - 可以通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
 
-- 登录 -  可以通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志报表所报告的任务。
+-  登录 -  可以通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志报表所报告的任务。
 
 
 ### <a name="audit-logs-report"></a>审核日志报表 

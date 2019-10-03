@@ -1,25 +1,19 @@
 ---
-title: 业务流程库 | Microsoft Docs
+title: 业务流程库 |Azure Marketplace
 description: 业务流程库和方法的说明。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: df323d121b42ab1200844f3fefb713122ba43106
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 870e77f3390c820278970f5ffda002b4826b82a4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316074"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935620"
 ---
 # <a name="business-process-libraries"></a>业务流程库
 

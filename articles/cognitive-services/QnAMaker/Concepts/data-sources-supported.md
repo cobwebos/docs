@@ -3,40 +3,58 @@ title: 受支持的数据源 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指南、支持文档，以及以网页、PDF 文件或 MS Word 文档文件形式存储的策略）中自动提取问答对。 也可以将内容从结构化 QnA 内容文件添加到知识库中。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 03/26/2019
-ms.author: tulasim
-ms.openlocfilehash: 8fcc3ea8340a8645a1983eebb4a619904f884a19
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.topic: conceptual
+ms.date: 09/25/2019
+ms.author: diberry
+ms.openlocfilehash: 1a9f3eb0ea79a0cd79850e721d081b00dc582a31
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578622"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695281"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker 内容的数据源
 
 QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指南、支持文档，以及以网页、PDF 文件或 MS Word 文档文件形式存储的策略）中自动提取问答对。 也可以将内容从结构化 QnA 内容文件添加到知识库中。 
 
+<a name="data-types"></a>
+
+## <a name="file-and-url-data-types"></a>文件和 URL 数据类型
+
 下表汇总了 QnA Maker 支持的内容类型和文件格式。
 
 |源类型|内容类型| 示例|
 |--|--|--|
-|代码|常见问题解答<br> （平面，包含节或主题主页）<br>支持页面 <br> （单页操作指南文章、故障排除文章，等等）|[纯文本常见问题解答](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs)、 <br>[包含链接的常见问题解答](https://www.microsoft.com/software-download/faq)、<br> [包含主题主页的常见问题解答](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[支持文章](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
-|PDF / DOC|常见问题解答、<br> 产品手册、<br> 小册子、<br> 论文、<br> 传单策略、<br> 支持指南、<br> 结构化 QnA，<br> 等等|[Structured QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample Product Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)、<br> [Sample semi-structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample white paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
-|Excel|结构化 QnA 文件<br> （包括 RTF、HTML 支持）|[Sample QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
-|TXT/TSV|结构化 QnA 文件|[示例 chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
+|URL|常见问题<br> （平面，包含节或主题主页）<br>支持页面 <br> （单页操作指南文章、故障排除文章，等等）|[纯文本常见问题解答](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs)、 <br>[包含链接的常见问题解答](https://www.microsoft.com/software-download/faq)、<br> [包含主题主页的常见问题解答](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[支持文章](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
+|PDF / DOC|常见问题解答、<br> 产品手册、<br> 小册子、<br> 论文、<br> 传单策略、<br> 支持指南、<br> 结构化 QnA，<br> 等等|[Structured QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [Sample Product Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)、<br> [Sample semi-structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、<br> [示例白皮书 .pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)，<br>[示例 multi-turn](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)|
+|\* Excel|结构化 QnA 文件<br> （包括 RTF、HTML 支持）|[Sample QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|\* TXT/TSV|结构化 QnA 文件|[示例 chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
+
+通过从 QnA Maker 门户的 "**设置**" 页中导入文件，只能使用从导出的知识库中导入的**TSV 文件和 XLS 文件**。 在创建知识库或从 "**设置**" 页上的 "添加文件或 URL" 功能中，不能将它们用作数据源。 
+
+详细了解如何使用[多个文档]()。 
 
 ## <a name="data-source-locations"></a>数据源位置
 
-大多数数据源位置需要提供公共 Url 或文件，不需要身份验证。 
+数据源位置是不需要身份验证的**公共 url 或文件**。 
 
-[Sharepoint 数据源位置](../How-to/add-sharepoint-datasources.md)允许提供经过身份验证的文件。 Sharepoint 资源必须是文件，而非 web 页数。 
+如果需要对数据源进行身份验证，请考虑以下方法，以便将数据导入 QnA Maker：
 
-如果必须经过身份验证的文件或 URL，一种替代做法是将文件从已经过身份验证的站点下载到本地计算机，然后将文件从本地计算机添加到知识库。 
+* [手动下载文件](#download-file-from-authenticated-data-source-location)并导入 QnA Maker
+* 为经过身份验证的[Sharepoint 位置](#import-file-from-authenticated-sharepoint)导入文件 
+
+### <a name="download-file-from-authenticated-data-source-location"></a>从经过身份验证的数据源位置下载文件
+
+如果你有一个经过身份验证的文件（不在经过身份验证的 Sharepoint 位置）或 URL，则可以选择将已通过身份验证的站点中的文件下载到本地计算机，然后将该文件从本地计算机添加到知识库。
+
+### <a name="import-file-from-authenticated-sharepoint"></a>从经过身份验证的 Sharepoint 导入文件 
+
+允许[Sharepoint 数据源位置](../How-to/add-sharepoint-datasources.md)提供经过身份验证的**文件**。 Sharepoint 资源必须是文件，而不是网页。 如果 URL 以 web 扩展结束，例如 **。ASPX**，它不会从 Sharepoint 导入 QnA Maker。
+
 
 ## <a name="faq-urls"></a>常见问题解答 URL
 
@@ -98,7 +116,7 @@ QnA Maker 根据视觉线索（例如字体大小、字体样式、编号、颜�
 
 ### <a name="brochures-guidelines-papers-and-other-files"></a>小册子、指南、论文和其他文件
 
-许多其他类型的文档也可进行处理，以便生成 QA 对，前提是它们有清晰的结构和布局。 其中包括：小册子，指南、报告、白皮书、科学论文、策略、书籍等。请参阅[此处](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)的示例。
+许多其他类型的文档也可进行处理，以便生成 QA 对，前提是它们有清晰的结构和布局。 这些问题包括：小册子，指南、报告、白皮书、科学论文、策略、书籍等。请参阅[此处](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)的示例。
 
 下面是一个半结构化文档的示例，没有索引：
 
@@ -124,24 +142,36 @@ Answer2
 
 ## <a name="structured-txt-tsv-and-xls-files"></a>结构化 *TXT*、*TSV* 和 *XLS* 文件
 
-采用结构化 *.txt*、*.tsv* 或 *.xls* 文件形式的 QnA 也可上传到 QnA Maker，以便创建或增强知识库。  它们的内容可以是纯文本，也可以是 RTF 或 HTML 格式。 
+采用结构化 *.txt*、 *.tsv* 或 *.xls* 文件形式的 QnA 也可上传到 QnA Maker，以便创建或增强知识库。  它们的内容可以是纯文本，也可以是 RTF 或 HTML 格式。 
 
-| 问题  | Answer  | 元数据 (1 键：1 个值） |
+| 问题  | 答案  | 元数据（1键：1值） |
 |-----------|---------|-------------------------|
 | 问题 1 | 答案 1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 问题 2 | 答案 2 |      `Key:Value`           |
 
 将忽略源文件中的任何其他列。
 
+### <a name="example-of-structured-excel-file"></a>结构化 Excel 文件的示例
+
 下面是结构化 QnA *.xls* 文件的示例，包含 HTML 内容：
 
  ![知识库的结构化常见问题解答 Excel 示例](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Excel 文件中单个答案的替代问题示例
+
+下面是结构化*的 QnA 文件*的一个示例，其中有几个替代问题可用于单个答案：
+
+ ![Excel 文件中单个答案的替代问题示例](../media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+
+导入文件后，问题和答案对在知识库中显示，如下所示：
+
+ ![导入到知识库中的单个答案的替代问题的屏幕截图](../media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
 ## <a name="structured-data-format-through-import"></a>通过导入提供的结构化数据格式
 
 导入知识库将替换现有知识库的内容。 导入需要包含数据源信息的结构化 .tsv 文件。 这些信息可帮助 QnA Maker 将问答对分组，并将它们归因于特定数据源。
 
-| 问题  | Answer  | 源| 元数据 (1 键：1 个值） |          
+| 问题  | 答案  | Source| 元数据（1键：1值） |          
 |-----------|---------|----|---------------------|
 | 问题 1 | 答案 1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 问题 2 | 答案 2 | 编辑|    `Key:Value`       |
@@ -150,14 +180,43 @@ Answer2
 
 如果没有预先存在的内容来填充知识库，可以在 QnA Maker 知识库中以编辑方式添加 QnA。 在[此处](../How-To/edit-knowledge-base.md)了解如何更新知识库。
 
+<a href="#formatting-considerations"></a>
+
 ## <a name="formatting-considerations"></a>格式设置注意事项
 
-导入文件或 URL 后，它将转换为 Markdown 并以该格式存储。 如果转换过程未正确转换文件中的链接和 URL，则应在“编辑”页上编辑问题和答案。 
+导入文件或 URL 后，QnA Maker 以[markdown 格式](https://en.wikipedia.org/wiki/Markdown)转换和存储内容。 转换过程会在文本中添加新行，例如`\n\n`。 Markdown 格式的知识有助于理解转换后的内容和管理知识库内容。 
 
-|格式|目的|
-|--|--|
-|`\n\n`| 新建行|
-|`\n*`|有序列表的项目符号点|
+如果直接在知识库中添加或编辑内容，请使用**markdown 格式**创建丰富的文本内容，或者更改答案中已经存在的 markdown 格式内容。 QnA Maker 支持大部分 markdown 格式，以便为内容提供丰富的文本功能。 但是，客户端应用程序（如聊天机器人）可能不支持相同的一组 markdown 格式。 必须测试客户端应用程序的答案显示。 
+
+下面是可以在 QnA Maker 中使用的 markdown 格式的列表： 
+
+|用途|格式|示例 markdown|渲染<br>如聊天机器人中所示|
+|--|--|--|--|
+2个句子之间的新行。|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![在两个句子之间设置换行符的格式](../media/qnamaker-concepts-datasources/format-newline.png)|
+|从 h1 到 h6 的标头，的`#`数目指示了标头。 1 `#`为 h1。|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![带有 markdown 标头的格式](../media/qnamaker-concepts-datasources/format-headers.png)<br>![markdown 标头 H1 到 H5 的格式](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
+|效果 |`*text*`|`How do I create a bot with *QnA Maker*?`|![倾斜格式](../media/qnamaker-concepts-datasources/format-italics.png)|
+|字符串（粗体）|`**text**`|`How do I create a bot with **QnA Maker**?`|![带有强标记的格式（粗体）](../media/qnamaker-concepts-datasources/format-strong.png)|
+|链接 URL|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL 格式（超链接）](../media/qnamaker-concepts-datasources/format-url.png)|
+|\* 公共映像的 URL|`![text](https://www.my.com/image.png)`|`How can I create a bot with ![QnAMaker](https://review.docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/media/qnamaker-how-to-key-management/qnamaker-resource-list.png)`|![公共图像 URL 的格式 ](../media/qnamaker-concepts-datasources/format-image-url.png)|
+|删除线|`~~text~~`|`some ~~questoins~~ questions need to be asked`|![删除线格式](../media/qnamaker-concepts-datasources/format-strikethrough.png)|
+|粗体和斜体|`***text***`|`How can I create a ***QnA Maker*** bot?`|![粗体和斜体格式](../media/qnamaker-concepts-datasources/format-bold-italics.png)|
+|链接的粗体 URL|`[**text**](https://www.my.com)`|`How do I create a bot with [**QnA Maker**](https://www.qnamaker.ai)?`|![粗体 URL 格式](../media/qnamaker-concepts-datasources/format-bold-url.png)|
+|链接的斜体 URL|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![斜体 URL 格式](../media/qnamaker-concepts-datasources/format-url-italics.png)|
+|转义 markdown 符号|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![斜体 URL 格式](../media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
+|排序列表|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>前面的示例使用了自动编号，内置于 markdown 中。<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>前面的示例使用显式编号。|![排序列表的格式](../media/qnamaker-concepts-datasources/format-ordered-list.png)|
+|无序列表|`\n * item1 \n * item2`<br>或<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![无序列表的格式](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
+|嵌套列表|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>可以将有序和无序列表嵌套在一起。 选项卡`\t`指示子元素的缩进级别。|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![嵌套未排序列表的格式](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![嵌套排序列表的格式](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
+
+\* QnA Maker 不会以任何方式处理图像。 这是客户端应用程序用于呈现映像的角色。 
+
+如果要使用更新/替换知识库 Api 添加内容，并且内容/文件包含 html 标记，则可以通过确保以编码格式转换打开和关闭标记来保留文件中的 HTML。
+
+| 保留 HTML  | API 请求中的表示形式  | 表示形式（KB） |
+|-----------|---------|-------------------------|
+| 是 | \&lt; br\&g t; | &lt;b&gt; |
+| 是 | \&lt; h3\&gt; header\&lt;/h3\&g t; | &lt;h3&gt;标&lt;头/h3&gt; |
+
+此外，在 KB 中，CR LF （\r\n）转换为 \n。 LF （\n）保持原样。 如果要转义任何转义序列（如 \t 或 \n），可以使用反斜杠，例如\\： "\\\\\\r n" 和 "\\\\t"
 
 ## <a name="editing-your-knowledge-base-locally"></a>在本地编辑知识库
 
@@ -171,11 +230,15 @@ Answer2
 
 使用 **[CommonMark](https://commonmark.org/help/tutorial/index.html)** 教程验证 Markdown。 此教程具有用于快速复制/粘贴验证的**试一试**功能。 
 
+## <a name="version-control-for-data-in-your-knowledge-base"></a>知识库中数据的版本控制
+
+数据的版本控制是通过 "**设置**" 页上的 "[导入/导出" 功能](development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base)提供的。 
+
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [设置 QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>请参阅 
 
 [QnA Maker 概述](../Overview/overview.md)

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 11d0648ee5090f02cb96c2d42a8d90cc3ea0ed28
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 279660d903b3b0e893c3ccddb89da7c6dc42fa09
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551332"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205075"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>为 Azure 应用服务中配置 Linux PHP 应用
 
@@ -105,7 +105,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>访问环境变量
 
-在应用服务中，你可以[设置应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)外部应用程序代码。 然后你可以访问它们使用标准[getenv （)](https://secure.php.net/manual/function.getenv.php)模式。 例如，若要访问名为 `DB_HOST` 的应用设置，请使用以下代码：
+在应用服务中，可以在应用代码外部[设置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然后你可以访问它们使用标准[getenv （)](https://secure.php.net/manual/function.getenv.php)模式。 例如，若要访问名为 `DB_HOST` 的应用设置，请使用以下代码：
 
 ```php
 getenv("DB_HOST")
@@ -141,15 +141,15 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 
 ## <a name="customize-phpini-settings"></a>自定义 php.ini 设置
 
-如果需要对你的 PHP 安装进行更改，则可以更改的任何[php.ini 指令](http://www.php.net/manual/ini.list.php)通过执行以下步骤。
+如果需要对你的 PHP 安装进行更改，则可以更改的任何[php.ini 指令](https://www.php.net/manual/ini.list.php)通过执行以下步骤。
 
 > [!NOTE]
 > 请参阅 PHP 版本以及当前的最好办法*php.ini*配置为在调用[phpinfo （)](https://php.net/manual/function.phpinfo.php)应用程序中。
 >
 
-### <a name="customize-non-phpinisystem-directives"></a>自定义非 PHP_INI_SYSTEM 指令
+### <a name="Customize-non-PHP_INI_SYSTEM directives"></a>自定义非-PHP_INI_SYSTEM 指令
 
-若要自定义 PHP_INI_USER、 PHP_INI_PERDIR 和 PHP_INI_ALL 指令 (请参阅[php.ini 指令](http://www.php.net/manual/ini.list.php))，添加 *.htaccess*到您的应用程序的根目录的文件。
+若要自定义 PHP_INI_USER、 PHP_INI_PERDIR 和 PHP_INI_ALL 指令 (请参阅[php.ini 指令](https://www.php.net/manual/ini.list.php))，添加 *.htaccess*到您的应用程序的根目录的文件。
 
 在中 *.htaccess*文件中，将使用的指令添加`php_value <directive-name> <value>`语法。 例如：
 
@@ -165,11 +165,11 @@ php_value upload_max_filesize 10M
 
 重新部署应用程序与所做的更改并重新启动它。 如果使用 Kudu 部署 (例如，使用[Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json))，将在部署后自动重启。
 
-为使用的替代方法 *.htaccess*，可以使用[ini_set （)](http://www.php.net/manual/function.ini-set.php)应用自定义这些非 PHP_INI_SYSTEM 指令中。
+为使用的替代方法 *.htaccess*，可以使用[ini_set （)](https://www.php.net/manual/function.ini-set.php)应用自定义这些非 PHP_INI_SYSTEM 指令中。
 
-### <a name="customize-phpinisystem-directives"></a>自定义 PHP_INI_SYSTEM 指令
+### <a name="customize-php_ini_system-directives"></a>自定义 PHP_INI_SYSTEM 指令
 
-若要自定义 PHP_INI_SYSTEM 指令 (请参阅[php.ini 指令](http://www.php.net/manual/ini.list.php))，不能使用 *.htaccess*方法。 应用服务提供单独的机制使用`PHP_INI_SCAN_DIR`应用设置。
+若要自定义 PHP_INI_SYSTEM 指令 (请参阅[php.ini 指令](https://www.php.net/manual/ini.list.php))，不能使用 *.htaccess*方法。 应用服务提供单独的机制使用`PHP_INI_SCAN_DIR`应用设置。
 
 首先，在中运行以下命令[Cloud Shell](https://shell.azure.com)若要添加的应用设置调用`PHP_INI_SCAN_DIR`:
 
@@ -187,7 +187,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 > 在应用服务中内置的 Linux 容器中 */home*用作永久性的共享存储空间。 
 >
 
-例如，若要更改的值[expose_php](http://php.net/manual/ini.core.php#ini.expose-php)运行以下命令：
+例如，若要更改的值[expose_php](https://php.net/manual/ini.core.php#ini.expose-php)运行以下命令：
 
 ```bash
 cd /home/site
@@ -237,7 +237,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
     - 具体取决于你*composer.json*，可能会为生产模式下安装不同的包 (`require`与`require-dev`)。
     - 某些 web 框架可以部署在生产模式下以不同的方式的静态文件。
     - 在生产模式下运行时，某些 web 框架可能会使用自定义启动脚本。
-- 在调试模式下，在应用服务中运行你的应用。 例如，在[Laravel](http://meanjs.org/)，可以配置你的应用器输出调试的生产环境中的消息[设置`APP_DEBUG`应用设置设为`true` ](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)。
+- 在调试模式下，在应用服务中运行你的应用。 例如，在[Laravel](https://meanjs.org/)，可以配置你的应用器输出调试的生产环境中的消息[设置`APP_DEBUG`应用设置设为`true` ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。
 
 ### <a name="robots933456"></a>robots933456
 
@@ -252,7 +252,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：使用 MySQL 的 PHP 应用](tutorial-php-mysql-app.md)
+> [教程：将 PHP 应用与 MySQL 配合使用](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Linux 版应用服务常见问题解答](app-service-linux-faq.md)
+> [应用服务 Linux 常见问题解答](app-service-linux-faq.md)

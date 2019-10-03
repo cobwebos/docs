@@ -2,20 +2,20 @@
 title: 使用自定义策略来自定义用户旅程的 UI | Microsoft Docs
 description: 了解 Azure Active Directory B2C 自定义策略。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/25/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 88abd3d17218f1168119a66701f1474d27244acf
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7053f5b0211878d2f0b9d810fc3f4c0b9361e6f7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438251"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66509592"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>使用自定义策略来自定义用户旅程的 UI
 
@@ -69,7 +69,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 - 为所有链接和 CSS 内容使用绝对 URL，例如 `https://yourdomain/content`。
 
 > [!TIP]
-> 若要验证托管内容的站点是否已启用 CORS 并测试 CORS 请求，可以使用站点 https://test-cors.org/。 可以借助此站点将 CORS 请求发送到远程服务器（测试是否支持 CORS），或者将 CORS 请求发送到测试服务器（探索 CORS 的某些功能）。
+> 若要验证托管内容的站点是否已启用 CORS 并测试 CORS 请求，可以使用站点 https://test-cors.org/ 。 可以借助此站点将 CORS 请求发送到远程服务器（测试是否支持 CORS），或者将 CORS 请求发送到测试服务器（探索 CORS 的某些功能）。
 
 > [!TIP]
 > 站点 https://enable-cors.org/ 也构成了用于实现 CORS 的极有用资源。
@@ -82,18 +82,18 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 1. 打开浏览会话并导航到 [Azure 门户](https://portal.azure.com)。
 2. 使用管理凭据登录。
-3. 单击“创建资源” > “存储” > “存储帐户”。  此时会打开“创建存储帐户”窗格。
-4. 在“名称”中，提供存储帐户的名称，例如 *contoso369b2c*。 此值稍后将引用为 *storageAccountName*。
-5. 选择适当的定价层、资源组和订阅。 确保已选中“固定到启动板”选项。 单击“创建”。
+3. 单击“创建资源” > “存储” > “存储帐户”。     此时会打开“创建存储帐户”窗格。 
+4. 在“名称”中，提供存储帐户的名称，例如 *contoso369b2c*。  此值稍后将引用为 *storageAccountName*。
+5. 选择适当的定价层、资源组和订阅。 确保已选中“固定到启动板”  选项。 单击**创建**。
 6. 返回到启动板，并单击创建的存储帐户。
-7. 在“服务”部分中单击“Blob”。 此时会打开“Blob 服务”窗格。
-8. 单击“+ 容器”。
-9. 在“名称”中提供容器的名称，例如 *b2c*。 此值稍后将引用为 *containerName*。
-9. 为“访问类型”选择“Blob”。 单击“创建”。
-10. 创建的容器会显示在“Blob 服务”窗格上的列表中。
-11. 关闭“Blob”窗格。
-12. 在“存储帐户”窗格中，单击“密钥”图标。 此时会打开“访问密钥”窗格。  
-13. 记下“密钥 1”的值。 此值稍后将引用为 *key1*。
+7. 在“服务”部分中单击“Blob”。   此时会打开“Blob 服务”窗格。 
+8. 单击“+ 容器”。 
+9. 在“名称”中提供容器的名称，例如 *b2c*。  此值稍后将引用为 *containerName*。
+9. 为“访问类型”选择“Blob”。   单击**创建**。
+10. 创建的容器会显示在“Blob 服务”窗格上的列表中。 
+11. 关闭“Blob”  窗格。
+12. 在“存储帐户”窗格中，单击“密钥”图标。   此时会打开“访问密钥”窗格。   
+13. 记下“密钥 1”的值。  此值稍后将引用为 *key1*。
 
 ## <a name="downloading-the-helper-tool"></a>下载帮助程序工具
 
@@ -119,14 +119,14 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 若要验证托管内容的存储是否已启用 CORS，请继续执行以下步骤：
 
-1. 打开浏览会话，并使用页面 *unified.html* 在存储帐户中的位置的完整 URL `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` 导航到该页面。 例如， https://contoso369b2c.blob.core.windows.net/b2c/unified.html。
-2. 导航到 https://test-cors.org。在此站点中，可以验证所用的页面是否已启用 CORS。  
+1. 打开浏览会话，并使用页面 *unified.html* 在存储帐户中的位置的完整 URL `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` 导航到该页面。 例如， https://contoso369b2c.blob.core.windows.net/b2c/unified.html 。
+2. 导航到 https://test-cors.org 。在此站点中，可以验证所用的页面是否已启用 CORS。  
    <!--
    ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
    -->
 
-3. 在“远程 URL”中，输入 unified.html 内容的完整 URL，并单击“发送请求”。
-4. 在“结果”部分中检查输出是否包含“XHR 状态: 200”，此状态表明已启用 CORS。
+3. 在“远程 URL”中，输入 unified.html 内容的完整 URL，并单击“发送请求”。  
+4. 在“结果”部分中检查输出是否包含“XHR 状态:   200”，此状态表明已启用 CORS。
    <!--
    ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
    -->

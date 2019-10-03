@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 2/14/2019
 ms.author: victorh
 ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301598"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60831996"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>创建应用程序网关自定义错误页
 
@@ -49,7 +49,7 @@ ms.locfileid: "56301598"
 1. 在门户中导航到“应用程序网关”，并选择一个应用程序网关。
 
     ![ag-overview](media/custom-error/ag-overview.png)
-2. 单击“侦听器”并导航到你要在其中指定错误页的特定侦听器。
+2. 单击“侦听器”  并导航到你要在其中指定错误页的特定侦听器。
 
     ![应用程序网关侦听器](media/custom-error/ag-listener.png)
 3. 在侦听器级别为 403 WAF 错误或 502 维护页配置一个自定义错误页。
@@ -57,7 +57,7 @@ ms.locfileid: "56301598"
     > [!NOTE]
     > 目前不支持从 Azure 门户中创建全局级别的自定义错误页。
 
-4. 为给定的错误状态代码指定一个可公开访问的 blob URL，然后单击“保存”。 现在，应用程序网关已经配置了自定义错误页。
+4. 为给定的错误状态代码指定一个可公开访问的 blob URL，然后单击“保存”。  现在，应用程序网关已经配置了自定义错误页。
 
    ![应用程序网关错误代码](media/custom-error/ag-error-codes.png)
 

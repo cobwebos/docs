@@ -3,20 +3,21 @@ title: Azure 容器注册表 Webhook 架构参考
 description: Azure 容器注册表的 Webhook 请求 JSON 有效负载参考。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: danlep
-ms.openlocfilehash: 4c0845b9cf5194ecbd0ab813997e17e070840f44
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fcdee2be92f2a3052e2ebbfaab3a2f9cb96e0125
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099893"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311603"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure 容器注册表 Webhook 参考
 
-可以为容器注册表[配置 Webhook](container-registry-webhook.md)，以便对其执行某些操作时生成相应事件。 例如，启用推送到注册表，或删除容器映像或 Helm 图表时触发的 webhook。 触发 Webhook 后，Azure 容器注册表向指定的终结点发出 HTTP 或 HTTPS 请求并包含有关此事件的信息。 然后终结点处理相应的 Webhook 和操作。
+可以为容器注册表[配置 Webhook](container-registry-webhook.md)，以便对其执行某些操作时生成相应事件。 例如，启用将容器映像或 Helm 图表推送到注册表或者将其删除时要触发的 Webhook。 触发 Webhook 后，Azure 容器注册表向指定的终结点发出 HTTP 或 HTTPS 请求并包含有关此事件的信息。 然后终结点处理相应的 Webhook 和操作。
 
 以下各部分详细介绍由受支持的事件生成的 Webhook 请求的架构。 事件部分包括事件类型的有效负载架构、示例请求有效负载以及触发 Webhook 的一个或多个示例命令。
 
@@ -40,17 +41,17 @@ ms.locfileid: "58099893"
 
 ### <a name="push-event-payload"></a>Push 事件负载
 
-|元素|Type|描述|
+|元素|类型|描述|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
 |`action`|String|触发 Webhook 事件的操作。|
 |[目标](#target)|复杂类型|触发 Webhook 事件的事件目标。|
-|[请求](#request)|复杂类型|生成 Webhook 事件的请求。|
+|[request](#request)|复杂类型|生成 Webhook 事件的请求。|
 
 ### <a name="target"></a>target
 
-|元素|Type|描述|
+|元素|type|描述|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。 与 Length 字段相同。|
@@ -61,14 +62,14 @@ ms.locfileid: "58099893"
 
 ### <a name="request"></a>request
 
-|元素|Type|描述|
+|元素|类型|描述|
 |------------------|----------|-----------|
 |`id`|String|启动事件的请求 ID。|
 |`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
 |`method`|String|生成事件的请求方法。|
 |`useragent`|String|请求的用户代理标头。|
 
-### <a name="payload-example-image-push-event"></a>有效负载示例： 映像推送事件
+### <a name="payload-example-image-push-event"></a>有效负载示例：映像推送事件
 
 ```JSON
 {
@@ -92,19 +93,19 @@ ms.locfileid: "58099893"
 }
 ```
 
-示例[Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/)触发该映像的命令**推送**事件 webhook:
+触发映像**推送**事件 Webhook 的示例 [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) 命令：
 
 ```bash
 docker push myregistry.azurecr.io/hello-world:v1
 ```
 
-## <a name="chart-push-event"></a>图表 push 事件
+## <a name="chart-push-event"></a>图表推送事件
 
-Helm 图表推送到存储库时触发的 Webhook。
+将 Helm 图表推送到存储库时触发的 Webhook。
 
 ### <a name="chart-push-event-payload"></a>图表推送事件有效负载
 
-|元素|Type|描述|
+|元素|type|描述|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -113,17 +114,17 @@ Helm 图表推送到存储库时触发的 Webhook。
 
 ### <a name="helm_target"></a>target
 
-|元素|Type|描述|
+|元素|类型|描述|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。|
 |`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
 |`repository`|String|存储库名称。|
 |`tag`|String|图表标记名称。|
-|`name`|String|图表的名称。|
+|`name`|String|图表名称。|
 |`version`|String|图表版本。|
 
-### <a name="payload-example-chart-push-event"></a>有效负载示例： 图表 push 事件
+### <a name="payload-example-chart-push-event"></a>有效负载示例：图表推送事件
 
 ```JSON
 {
@@ -142,29 +143,29 @@ Helm 图表推送到存储库时触发的 Webhook。
 }
 ```
 
-示例[Azure CLI](/cli/azure/acr)命令，将触发**chart_push**事件 webhook:
+触发 **chart_push** 事件 Webhook 的示例 [Azure CLI](/cli/azure/acr) 命令：
 
 ```azurecli
 az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 ```
 
-## <a name="delete-event"></a>删除事件
+## <a name="delete-event"></a>删除活动
 
-映像存储库时触发的 Webhook 或清单被删除。 删除标记时不会触发 Webhook。
+删除映像存储库或清单时触发的 Webhook。 删除标记时不会触发 Webhook。
 
 ### <a name="delete-event-payload"></a>Delete 事件负载
 
-|元素|Type|描述|
+|元素|type|描述|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
 |`action`|String|触发 Webhook 事件的操作。|
 |[目标](#delete_target)|复杂类型|触发 Webhook 事件的事件目标。|
-|[请求](#delete_request)|复杂类型|生成 Webhook 事件的请求。|
+|[request](#delete_request)|复杂类型|生成 Webhook 事件的请求。|
 
 ### <a name="delete_target"></a> 目标
 
-|元素|Type|描述|
+|元素|type|描述|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
@@ -172,14 +173,14 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 ### <a name="delete_request"></a> 请求
 
-|元素|Type|描述|
+|元素|类型|描述|
 |------------------|----------|-----------|
 |`id`|String|启动事件的请求 ID。|
 |`host`|String|注册表实例的外部可访问主机名，由传入请求中的 HTTP 主机标头指定。|
 |`method`|String|生成事件的请求方法。|
 |`useragent`|String|请求的用户代理标头。|
 
-### <a name="payload-example-image-delete-event"></a>有效负载示例： 映像删除事件
+### <a name="payload-example-image-delete-event"></a>有效负载示例：映像删除事件
 
 ```JSON
 {
@@ -214,9 +215,9 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 
 删除 Helm 图表或存储库时触发的 Webhook。 
 
-### <a name="chart-delete-event-payload"></a>图表 delete 事件负载
+### <a name="chart-delete-event-payload"></a>图表删除事件有效负载
 
-|元素|Type|描述|
+|元素|类型|描述|
 |-------------|----------|-----------|
 |`id`|String|Webhook 事件的 ID。|
 |`timestamp`|DateTime|触发 Webhook 事件的时间。|
@@ -225,17 +226,17 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 
 ### <a name="chart_delete_target"></a> 目标
 
-|元素|Type|描述|
+|元素|type|描述|
 |------------------|----------|-----------|
 |`mediaType`|String|引用对象的 MIME 类型。|
 |`size`|Int32|内容的字节数。|
 |`digest`|String|内容摘要，由注册表 V2 HTTP API 规范定义。|
 |`repository`|String|存储库名称。|
 |`tag`|String|图表标记名称。|
-|`name`|String|图表的名称。|
+|`name`|String|图表名称。|
 |`version`|String|图表版本。|
 
-### <a name="payload-example-chart-delete-event"></a>有效负载示例： 图表删除事件
+### <a name="payload-example-chart-delete-event"></a>有效负载示例：图表删除事件
 
 ```JSON
 {
@@ -254,7 +255,7 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 }
 ```
 
-示例[Azure CLI](/cli/azure/acr)命令，将触发**chart_delete**事件 webhook:
+触发 **chart_delete** 事件 Webhook 的示例 [Azure CLI](/cli/azure/acr) 命令：
 
 ```azurecli
 az acr helm delete wordpress --version 5.4.0 --name MyRegistry

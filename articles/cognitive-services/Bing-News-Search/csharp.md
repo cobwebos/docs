@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 C# 执行新闻搜索 - 必应新闻搜索 REST API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 C# 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f7c5ce2ce4725277fc08634a021d2b38d11abc1c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c6b050a9637046a8703dd7aaf1d5ac7f1ad1a5da
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074789"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423796"
 ---
 # <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>快速入门：使用 C# 和必应新闻搜索 REST API 搜索新闻
 
@@ -26,7 +26,7 @@ ms.locfileid: "58074789"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)。
 * [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 

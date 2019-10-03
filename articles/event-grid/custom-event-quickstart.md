@@ -1,5 +1,5 @@
 ---
-title: 将自定义事件发送到 Web 终结点 - 事件网格，Azure CLI | Microsoft Docs
+title: 使用事件网格和 Azure CLI 发送自定义事件
 description: 使用 Azure 事件网格和 Azure CLI 发布自定义主题，然后订阅该主题的事件。 事件由 Web 应用程序处理。
 services: event-grid
 keywords: ''
@@ -8,13 +8,13 @@ ms.author: spelluru
 ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: d135b89d2b053e5d8d98a1319ae21759f3ff5594
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.custom: seodec18, seo-javascript-september2019
+ms.openlocfilehash: a6888179d4d465808dc28f7784db8d1d915e3f80
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462243"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861103"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Web 终结点
 
@@ -38,7 +38,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 
 
-以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。
+以下示例在“westus2”  位置创建名为“gridResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2
@@ -85,10 +85,10 @@ Web 应用的终结点必须包括后缀 `/api/updates/`。
 endpoint=https://$sitename.azurewebsites.net/api/updates
 
 az eventgrid event-subscription create \
-  -g gridResourceGroup \
-  --topic-name $topicname \
-  --name demoViewerSub \
+  --source-resource-id "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/$topicname" 
+  --name demoViewerSub 
   --endpoint $endpoint
+  
 ```
 
 再次查看 Web 应用，并注意现已向该应用发送了订阅验证事件。 选择眼睛图标以展开事件数据。 事件网格发送验证事件，以便终结点可以验证它是否想要接收事件数据。 Web 应用包含用于验证订阅的代码。

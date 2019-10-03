@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7534313a5862ececf4757be807e59b6df39f6430
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357970"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873359"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
@@ -46,15 +46,15 @@ ms.locfileid: "59357970"
 2. 准备本地 [VMware](vmware-azure-tutorial-prepare-on-premises.md) 服务器或 [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) 服务器。 如果迁移的是物理机，则不需要做任何准备。 只需检查[支持矩阵](vmware-physical-azure-support-matrix.md)即可。
 
 
-## <a name="select-a-replication-goal"></a>选择复制目标
+## <a name="select-a-protection-goal"></a>选择保护目标
 
 选择要复制的内容以及要复制到的位置。
-1. 单击“恢复服务保管库”> 保管库。
-2. 在“资源”菜单中，依次单击“Site Recovery” > “准备基础结构” > “保护目标”。
-3. 在“保护目标”中，选择要迁移的内容。
-    - **VMware**：选择“到 Azure” > “是，使用 VMWare vSphere 虚拟机监控程序”。
-    - **物理计算机**：选择“到 Azure” > “未虚拟化/其他”。
-    - **Hyper-V**：选择“到 Azure” > “是，使用 Hyper-V”。 如果 Hyper-V VM 由 VMM 管理，则选择“是”。
+1. 单击“恢复服务保管库”  > 保管库。
+2. 在“资源”菜单中，依次单击“Site Recovery”   > “准备基础结构”   > “保护目标”  。
+3. 在“保护目标”  中，选择要迁移的内容。
+    - **VMware**：选择“到 Azure”   > “是，使用 VMWare vSphere 虚拟机监控程序”  。
+    - **物理计算机**：选择“到 Azure”   > “未虚拟化/其他”  。
+    - **Hyper-V**：选择“到 Azure”   > “是，使用 Hyper-V”  。 如果 Hyper-V VM 由 VMM 管理，则选择“是”  。
 
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
@@ -69,7 +69,7 @@ Hyper-V | 设置[源环境](hyper-v-azure-tutorial.md#set-up-the-source-environm
 
 选择并验证目标资源。
 
-1. 单击“准备基础结构” > “目标”，并选择要使用的 Azure 订阅。
+1. 单击“准备基础结构”   > “目标”  ，并选择要使用的 Azure 订阅。
 2. 指定资源管理器部署模型。
 3. Site Recovery 将检查 Azure 资源。
     - 如果迁移的是 VMware VM 或物理服务器，则 Site Recovery 将会验证是否提供了一个 Azure 网络，在故障转移后创建 Azure VM 时，会将该 VM 放入该网络。
@@ -102,12 +102,12 @@ Hyper-V | [启用复制](hyper-v-azure-tutorial.md#enable-replication)<br/><br/>
 
 为想要迁移的计算机运行故障转移。
 
-1. 在“设置” > “复制的项”中，单击计算机 >“故障转移”。
-2. 在“故障转移”中，选择要故障转移到的“恢复点”。 选择最新的恢复点。
+1. 在“设置”   > “复制的项”  中，单击计算机 >“故障转移”  。
+2. 在“故障转移”  中，选择要故障转移到的“恢复点”  。 选择最新的恢复点。
 3. 加密密钥设置与此方案无关。
-4. 选择“在开始故障转移前关闭计算机”。 在触发故障转移之前，Site Recovery 会尝试关闭虚拟机。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。
+4. 选择“在开始故障转移前关闭计算机”  。 在触发故障转移之前，Site Recovery 会尝试关闭虚拟机。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。 
 5. 检查 Azure VM 是否在 Azure 中按预期显示。
-6. 在“复制的项”中，右键单击 VM >“完成迁移”。 这样会执行以下操作：
+6. 在“复制的项”  中，右键单击 VM >“完成迁移”  。 这样会执行以下操作：
 
    - 完成迁移过程，停止本地 VM 的复制，并停止 VM 的 Site Recovery 计费。
    - 此步骤清除复制数据。 它不删除迁移的 VM。

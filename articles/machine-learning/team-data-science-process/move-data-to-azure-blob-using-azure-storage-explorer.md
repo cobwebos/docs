@@ -12,11 +12,11 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8ec4289c641b3f140950575ac2f8016f894f2c9c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57879848"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61430706"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器将数据移入和移出 Azure Blob 存储
 Azure 存储资源管理器是 Microsoft 免费提供的应用，可用于在 Windows、macOS 和 Linux 上处理 Azure 存储数据。 本主题介绍如何使用它从 Azure Blob 存储上传和下载数据。 该工具可以从 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)下载。
@@ -49,7 +49,7 @@ Azure 存储资源管理器是 Microsoft 免费提供的应用，可用于在 Wi
 4. 在“**连接到 Azure 存储**”向导中，输入 Azure 存储帐户中的访问密钥，然后选择“**下一步**”。 ![输入 Azure 存储帐户访问密钥](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
 5. 在“**帐户名**”框中，输入存储帐户名称，并选择“**下一步**”。 ![附加外部存储](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
 6. 现在应列出添加的存储帐户。 要在存储帐户中创建一个 blob 容器，请用鼠标右键单击帐户中的“**Blob 容器**”节点，选择“**创建 Blob 容器**”，并输入一个名称。
-7. 要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。![存储帐户](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
-8. 单击“文件”框右侧的“...”，选择要从文件系统上载的一个或多个文件，并单击“上载”开始上载文件。![上载文件](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
+7. 要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。  ![存储帐户](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
+8. 单击“文件”框右侧的“...”，选择要从文件系统上载的一个或多个文件，并单击“上载”开始上载文件。    ![上载文件](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
 9. 要下载数据，请在相应容器中选择要下载的 blob，并单击“**下载**”。 ![下载文件](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
 

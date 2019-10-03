@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 9/14/2018
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 567a220ce9adcb3cca9c70cef6a7058a85789eb7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 995ccc8ffeb436526608803362cc361c74a75316
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861732"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790034"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>教程：使用必应图像搜索 API 和 C# 提取图像详细信息
 
@@ -36,7 +36,7 @@ ms.locfileid: "55861732"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://visualstudio.microsoft.com/downloads/)。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 

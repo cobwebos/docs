@@ -11,26 +11,26 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262788"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173030"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>从 Azure 门户获取连接字符串
 使用 [Azure 门户](https://portal.azure.com/)获取客户端程序与 Azure SQL 数据库进行交互所需的连接字符串。
 
-1. 选择“所有服务” > “SQL 数据库”。
+1. 选择“所有服务”   > “SQL 数据库”  。
 
-2. 在“SQL 数据库”边栏选项卡左上角附近的筛选器文本框中输入数据库的名称。
+2. 在“SQL 数据库”边栏选项卡左上角附近的筛选器文本框中输入数据库的名称。 
 
 3. 选择数据库所对应的行。
 
-4. 显示数据库的边栏选项卡后，为了方便查看，请选择“最小化”按钮，以便折叠用于浏览和数据库筛选的边栏选项卡。
+4. 显示数据库的边栏选项卡后，为了方便查看，请选择“最小化”按钮  ，以便折叠用于浏览和数据库筛选的边栏选项卡。
 
-5. 在数据库边栏选项卡上，选择“显示数据库连接字符串”。
+5. 在数据库边栏选项卡上，选择“显示数据库连接字符串”。 
 
-6. 复制相应的连接字符串。 也就是说，如果想要使用 ADO.NET 连接库，则从“ADO.NET”选项卡中复制相应的字符串。
+6. 复制相应的连接字符串。 也就是说，如果想要使用 ADO.NET 连接库，则从“ADO.NET”  选项卡中复制相应的字符串。
 
     ![复制数据库的 ADO 连接字符串][20-CopyAdoConnectionString]
 

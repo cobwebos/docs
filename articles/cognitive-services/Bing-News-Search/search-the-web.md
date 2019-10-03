@@ -1,6 +1,6 @@
 ---
 title: 什么是必应新闻搜索 API？
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用必应新闻搜索 API 在 Web 上搜索多个类别的当前标题，包括标题和热门主题。
 services: cognitive-services
 author: swhite-msft
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/10/2019
+ms.date: 06/19/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: a28445199c47c666fb2323a70317f81f3302c765
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 577ce53b4667928d7eb5a870f57ff7180caaf6f5
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877093"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423660"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>什么是必应新闻搜索 API？
 
@@ -54,6 +54,6 @@ ms.locfileid: "55877093"
 
 ## <a name="see-also"></a>另请参阅
 
-* [必应新闻搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) 参考部分包含有关终结点、标头、API 响应和查询参数的定义和信息，这些都可以用来请求基于图像的搜索结果。
+* [必应新闻搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) 参考部分包含有关终结点、标头、API 响应和查询参数的定义和信息，这些都可以用来请求基于图像的搜索结果。
 
 * [必应使用和显示要求](./useanddisplayrequirements.md)指定了允许用户如何使用通过必应搜索 API 获得的内容和信息。

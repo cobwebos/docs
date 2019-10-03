@@ -18,14 +18,14 @@ metadata:
   ms.date: 04/09/2019
   ms.author: jovanpop
 abstract:
-  description: Azure SQL 数据库中的托管实例是承载在 Azure 云中的一个完全托管的 SQL Server 数据库引擎实例。 这是将 SQL Server 数据库迁移到云的最佳 PaaS 选项。 使用快速入门、教程和示例，了解如何创建和使用托管实例。
+  description: Azure SQL 数据库中的托管实例是托管在 Azure 云中的一个完全托管的 SQL Server 数据库引擎实例。 这是将 SQL Server 数据库迁移到云的最佳 PaaS 选项。 使用快速入门、教程和示例，了解如何创建和使用托管实例。
   aside:
     image:
       alt: null
       height: 110
       src: media/sql-database-managed-instance-index/intro.png
       width: 250
-    title: 'Azure SQL 数据库中的托管实例简介 (5:38)'
+    title: '介绍 Azure SQL 数据库中的托管实例 (5:38)'
     href: 'https://www.youtube.com/watch?v=W8feSZXm2Ec'
     width: 250
 sections:
@@ -37,13 +37,16 @@ sections:
         items:
           - title: 概述
             href: /azure/sql-database/sql-database-managed-instance
-            html: <p>了解 Azure SQL 数据库中的托管实例的更多信息。</p>
+            html: <p>了解关于 Azure SQL 数据库中的托管实例的更多信息。</p>
           - title: 丰富的外围应用
             href: '/azure/sql-database/sql-database-managed-instance#sql-features-supported'
             html: <p>SQL 功能与最新版 SQL Server 数据库引擎的兼容度接近 100%。</p>
           - title: VNet 集成
             href: /azure/sql-database/sql-database-managed-instance-connectivity-architecture
             html: <p>使用专用 IP 地址将安全服务放置在专用 Azure VNet 中。</p>
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: <p>一个经济高效的解决方案，用于部署多个可以共享资源的托管实例。</p>
+            title: 实例池
           - title: 轻松迁移
             href: /azure/sql-database/sql-database-managed-instance-get-started-restore
             html: <p>使用本机还原可以轻松地将本地数据库迁移到 Azure 云。</p>
@@ -58,26 +61,7 @@ sections:
             html: <p>Azure PaaS 使实例的可用性高达 99.99% 且管理量最少。</p>
           - title: 服务层
             href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
-            html: <p>根据业务需求，在常规用途和业务关键服务层之间作出选择。</p>
-          - title: 高级安全
-            href: /azure/sql-database/sql-database-security-index
-            html: <p>使用内置的 Azure SQL 数据库安全功能保护实例和数据库。<p>
-  - title: 新功能和预览版功能
-    items:
-      - type: paragraph
-        text: 我们正在持续通过新功能来改进托管实例：
-      - type: list
-        style: unordered
-        items:
-          - html: '（预览版）<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">配置时区</a>实例创建过程。'
-          - html: '异地还原功能使你能够<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">将数据库还原到另一个数据中心使用 PowerShell</a>。'
-          - html: '（预览版）<a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">重新创建删除数据库使用 PowerShell</a>'
-          - html: 托管实例由<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">内置防火墙</a>提供保护。
-          - html: '（预览版）在迁移已启用了透明数据加密 (TDE) 的本地数据库时<a href="https://aka.ms/managed-instance-tde-byok">自带加密密钥</a>。'
-          - html: '（预览版）使用<a href="https://aka.ms/managed-instance-failover-groups">地理分布式故障转移组</a>将实例的副本保留在另一个区域中并确保你的数据在发生区域性灾难的情况下仍然可用。'
-          - html: '为时间点还原<a href="https://aka.ms/managed-instance-configurable-backup-retention">配置长达 35 天的备份保留期</a>。 请注意，长期备份保留（最长 10 年）仍未启用，你可以使用<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">纯副本备份</a>作为替代方法。'
-          - html: '（预览版）使用<a href="https://aka.ms/managed-instance-collation">你选择的服务器级排序规则</a>创建实例。'
-          - html: '（预览版）使用 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> 创建<a href="https://aka.ms/managed-instance-aadlogins">实例级 Azure AD 服务器主体（登录名）</a>。'
+            html: <p>根据业务需求，在“常规用途”和“业务关键”服务层级之间做出选择。</p>
   - title: 5 分钟快速入门
     items:
       - type: paragraph
@@ -102,13 +86,19 @@ sections:
             values:
               - href: /azure/sql-database/sql-database-managed-instance-get-started
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
-              - href: sql-database-managed-instance-get-started
+              - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
           - title: 修改实例
             values:
               - href: null
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/set-azsqlinstance#examples'
+              - href: null
+          - title: 创建新实例池
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
               - href: null
           - title: 配置 Azure 网络环境
             values:
@@ -122,11 +112,29 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/restore-azsqlinstancedatabase#examples'
               - href: null
+          - title: 将数据库还原到另一个实例
+            values:
+              - href: null
+              - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/'
+              - href: 'https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?view=azps-2.0.0#examples'
+              - href: null
           - title: 还原已删除的数据库
             values:
               - href: null
               - href: null
               - href: 'https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Recreate-dropped-database-on-Azure-SQL-Managed-Instance/ba-p/386285'
+              - href: null
+          - title: 异地还原数据库
+            values:
+              - href: null
+              - href: null
+              - href: /azure/sql-database/scripts/sql-managed-instance-restore-geo-backup
+              - href: null
+          - title: 设置公共 IP 终结点
+            values:
+              - href: 'sql-database-managed-instance-public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal'
+              - href: null
+              - href: 'sql-database-managed-instance-public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell'
               - href: null
   - title: 分步教程和学习材料
     items:
@@ -136,27 +144,27 @@ sections:
         style: ordered
         items:
           - html: 借助我们的快速入门指南，了解如何快速<a href="sql-database-managed-instance-quickstart-guide.md">开始使用托管实例</a>。
-          - html: 了解如何<a href="/azure/sql-database/sql-database-managed-instance-resource-limits">硬件特征和限制</a>， <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">TRANSACT-SQL 语言差异</a>，和<a href="/azure/sql-database/sql-database-managed-instance-create-manage">TRANSACT-SQL、 PowerShell、 Azure CLI API 配置的托管实例<a/>.
-          - html: '<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">配置</a>将在其中部署托管实例的 Azure VNet。'
-          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">验证</a>你现有的 Azure VNet 可用于部署托管实例。'
-          - html: '使用 <a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-easiest-way-to-create-Azure-VM-that-can-access-your-Azure/ba-p/386247">Azure 虚拟机</a>、<a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">点到站点连接</a>或<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">应用程序</a>连接到实例。'
+          - html: 了解<a href="/azure/sql-database/sql-database-managed-instance-resource-limits">硬件特征和限制</a>、<a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL 语言差异</a>和<a href="/azure/sql-database/sql-database-managed-instance-create-manage">用于配置托管实例的 Transact-SQL、PowerShell、Azure CLI API<a/>。
+          - html: '在要部署托管实例的位置<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">配置</a> Azure VNet。'
+          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">验证</a>现有的 Azure VNet 是否可以用于部署托管实例。'
+          - html: '使用<a href="sql-database-managed-instance-public-endpoint-securely">公共 IP 终结点</a>、<a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-easiest-way-to-create-Azure-VM-that-can-access-your-Azure/ba-p/386247">Azure 虚拟机</a>、<a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">点到站点连接</a>或<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">应用程序</a>连接到实例。'
           - html: '验证可以使用<a href="https://www.microsoft.com/download/details.aspx?id=53595">数据迁移助手</a>或<a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">数据库实验助手</a>迁移数据库。'
-          - html: 使你的数据库托管的实例使用<a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">本机还原</a>或<a href="/azure/dms/tutorial-sql-server-managed-instance-online">数据迁移服务</a>。
+          - html: 使用<a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">本机还原</a>或<a href="/azure/dms/tutorial-sql-server-managed-instance-online">数据迁移服务</a>将数据库移动到托管实例。
           - html: '将 SSIS 包迁移到 <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure 数据工厂</a>，将 SSAS 表格模型迁移到 <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure 分析服务</a>，并将 SSRS 报表迁移到<a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power BI Premium</a>。'
-          - html: '了解<a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">常规用途层</a>中的存储层以及应用<a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">针对常规用途服务层的存储性能最佳做法和注意事项</a>。'
+          - html: '了解<a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">“常规用途”层级</a>中的存储层以及应用<a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">针对“常规用途”服务层级的存储性能最佳做法和注意事项</a>。'
           - html: '找到<a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">保护实例</a>的最佳做法和建议。'
           - html: 查找可以帮助你配置托管实例的更多<a href="sql-database-howto-managed-instance.md">操作指南</a>。
-  - title: 参考
+  - title: 引用
     items:
       - type: list
         style: cards
         className: cardsD
         items:
           - title: 博客
-            html: '<p><a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/bg-p/Azure-SQL-Database/label-name/SQLServerStorageEngine">Techcommunity</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">中型</a></p>'
+            html: '<p><a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/bg-p/Azure-SQL-Database/label-name/SQLServerStorageEngine">技术社区</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">中型</a></p>'
           - title: 常见问题
             html: '<p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">Stack Overflow</a></p>'
           - title: 社区通道
-            html: '<p><a href="https://sqlcommunity.slack.com/messages/CH854GD7D/">Sql 社区 （托管实例）</a></p>'
+            html: '<p><a href="https://sqlcommunity.slack.com/messages/CH854GD7D/">Sql 社区（托管实例）</a></p>'
           - title: 培训材料
             html: '<p><a href="https://www.microsoft.com/handsonlabs/selfpacedlabs">动手实验</a></p><p><a href="https://www.microsoft.com/handsonlabs/instructorledlabs">教师指导的实验</a></p>'

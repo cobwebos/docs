@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 12/27/2018
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: a84cbba968baf50563a2c2b0e2843d64f17bb34a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1932221e18241d8a2d921f61375019f969e61912
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002384"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782681"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
@@ -68,7 +68,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 要求 | **详细信息**
 --- | ---
 **Azure 订阅帐户** | 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-**Azure 帐户权限** | 使用的 Azure 帐户需以下权限：<br/><br/> - 创建恢复服务保管库<br/><br/> - 在用于方案的资源组和虚拟网络中创建虚拟机<br/><br/> - 向指定的存储帐户进行写入<br/><br/> 请注意：<br/><br/> - 如果创建帐户，则你是自己的订阅的管理员，可以执行所有操作。<br/><br/> - 如果你使用现有订阅并且不是管理员，则需要请求管理员为你分配“所有者”或“参与者”权限。<br/><br/> - 如需更加细化的权限，请查看[此文](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control)。 
+**Azure 帐户权限** | 使用的 Azure 帐户需以下权限：<br/><br/> - 创建恢复服务保管库<br/><br/> - 在用于方案的资源组和虚拟网络中创建虚拟机<br/><br/> - 向指定的存储帐户进行写入<br/><br/> 请注意：<br/><br/> \- 如果创建帐户，则你是自己的订阅的管理员，可以执行所有操作。<br/><br/> - 如果你使用现有订阅并且不是管理员，则需要请求管理员为你分配“所有者”或“参与者”权限。<br/><br/> - 如需更加细化的权限，请查看[此文](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control)。 
 **Azure Stack VM** | 需要租户订阅中的 Azure Stack VM，该 VM 将部署为 Site Recovery 配置服务器。 
 
 
@@ -214,7 +214,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 4. 在“恢复点保留期”中，指定每个恢复点的保留时长。 可将复制的 VM 恢复到指定的时间窗口中的任何点。
 5. 在“应用一致性快照频率”中，指定创建应用程序一致性快照的频率。
 
-    - 应用一致性快照是 VM 内应用程序数据的时间点快照。
+    - 应用一致性快照是 VM 内应用数据的时间点快照。
     - 卷影复制服务 (VSS) 确保 VM 上的应用在创建快照时处于一致状态。
 6. 选择“确定”以创建策略。
 

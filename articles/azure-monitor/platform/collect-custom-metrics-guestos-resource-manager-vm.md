@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 5647802ff383ce046d108f25384df81bcbd08cd3
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ac8d059c2bcad7aaa005b4afe1fb7814d49f9339
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484891"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844962"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -27,11 +27,13 @@ ms.locfileid: "58484891"
 
 如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/resource-group-overview.md)及其结构和语法。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+
+- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器
@@ -76,8 +78,8 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 // Add this code directly below.
     {
         "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "WADExtensionSetup",
-        "apiVersion": "2015-05-01-preview",
+        "name": "[concat(variables('vmName'), '/', 'WADExtensionSetup')]",
+        "apiVersion": "2017-12-01",
         "location": "[resourceGroup().location]",
         "dependsOn": [
             "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]" ],
@@ -145,9 +147,9 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 //Start of section to add
 "resources": [
 {
-            "type": "extensions",
-            "name": "Microsoft.Insights.VMDiagnosticsSettings",
-            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vmName'), '/', 'Microsoft.Insights.VMDiagnosticsSettings')]",
+            "apiVersion": "2017-12-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
             "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"

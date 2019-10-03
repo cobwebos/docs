@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.openlocfilehash: ba693ed7bb3c02d0023a97c8d849e4f23af556c9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53381362"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173602"
 ---
 ## <a name="configure-a-deployment-user"></a>配置部署用户  
 

@@ -1,35 +1,35 @@
 ---
-title: 查看用户陈述
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: 主动学习捕获终结点查询，并选择不确定的用户的终结点查询文本。 查看这些语音样本，以选择意图并将标记这些读取世界语音样本添加的实体。 接受这些更改分成示例语音样本，然后定型和发布。 LUIS 然后更准确地标识语音样本。
+title: 查看用户最谈话-LUIS
+titleSuffix: Azure Cognitive Services
+description: 主动学习捕获终结点查询并选择用户不确定的终结点话语。 你审核这些话语以选择意向并标记这些真实话语的实体。 在示例话语中接受这些更改，然后对其进行训练和发布。 然后 LUIS 更准确地识别话语。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/25/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 8fac360682ef11c438cdec333fac21d6f8cfc117
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c617e4aa62ce2ff468545bef0b2ebe2c4d0e4f03
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791041"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382360"
 ---
-# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>如何查看终结点言辞，LUIS 门户中的主动学习
+# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>如何在 LUIS 门户中审核终结点话语以进行主动学习
 
-[主动学习](luis-concept-review-endpoint-utterances.md)捕获终结点查询，并选择不确定的用户的终结点查询文本。 查看这些语音样本，以选择意图并将标记这些读取世界语音样本添加的实体。 接受这些更改分成示例语音样本，然后定型和发布。 LUIS 然后更准确地标识语音样本。
+[主动学习](luis-concept-review-endpoint-utterances.md)捕获终结点查询并选择用户不确定的终结点话语。 你审核这些话语以选择意向并标记这些真实话语的实体。 在示例话语中接受这些更改，然后对其进行训练和发布。 然后 LUIS 更准确地识别话语。
 
 
 ## <a name="enable-active-learning"></a>启用主动学习
 
-若要启用主动学习，记录用户查询。 这可以通过设置[终结点查询](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)与`log=true`查询字符串参数和值。
+若要启用主动学习，请记录用户查询。 这是通过使用 `log=true` querystring 参数和值设置[终结点查询](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)来实现的。
 
 ## <a name="disable-active-learning"></a>禁用主动学习
 
-若要禁用主动学习，不记录用户查询。 这可以通过设置[终结点查询](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)与`log=false`查询字符串参数和值。
+若要禁用主动学习，请不要记录用户查询。 这是通过使用 `log=false` querystring 参数和值设置[终结点查询](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)来实现的。
 
 ## <a name="filter-utterances"></a>筛选陈述
 

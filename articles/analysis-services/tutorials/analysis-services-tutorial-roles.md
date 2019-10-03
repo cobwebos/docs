@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 4c1a3f52c37dcaad4bc2f84d6d2fa04b61376cf1
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: b36541cde457b7faf8b3a020cdde01f049ceb652
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188770"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932213"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教程：配置服务器管理员和用户角色
 
- 本教程介绍如何使用 SQL Server Management Studio (SSMS) 连接到 Azure 中的服务器，以便配置服务器管理员和模型数据库角色。 此外还介绍[表格模型脚本语言 (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)。 TMSL 是基于 JSON 的脚本语言，适用于 1200 和更高兼容级别的表格模型。 它可以用来自动执行许多表格建模任务。 TMSL 通常与 PowerShell 配合使用，但在本教程中，请在 SSMS 中使用 XMLA 查询编辑器。 使用本教程时，请完成以下任务： 
+ 本教程介绍如何使用 SQL Server Management Studio (SSMS) 连接到 Azure 中的服务器，以便配置服务器管理员和模型数据库角色。 此外还介绍[表格模型脚本语言 (TMSL)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)。 TMSL 是基于 JSON 的脚本语言，适用于 1200 和更高兼容级别的表格模型。 它可以用来自动执行许多表格建模任务。 TMSL 通常与 PowerShell 配合使用，但在本教程中，请在 SSMS 中使用 XMLA 查询编辑器。 使用本教程时，请完成以下任务： 
   
 > [!div class="checklist"]
 > * 从门户获取服务器名称
@@ -43,7 +43,7 @@ ms.locfileid: "54188770"
 ## <a name="get-server-name"></a>获取服务器名称
 若要从 SSMS 连接到服务器，首先需要服务器名称。 可以从门户获取服务器名称。
 
-在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，并复制服务器名称。
+在 **Azure 门户**中，单击“服务器”>“概述”   > “服务器名称”  ，并复制服务器名称。
    
    ![在 Azure 中获取服务器名称](./media/analysis-services-tutorial-roles/aas-copy-server-name.png)
 
@@ -51,18 +51,18 @@ ms.locfileid: "54188770"
 
 对于余下的任务，请使用 SSMS 连接到服务器并对其进行管理。
 
-1. 在 SSMS >“对象资源管理器”中，单击“连接” > “Analysis Services”。
+1. 在 SSMS >“对象资源管理器”  中，单击“连接”   > “Analysis Services”  。
 
     ![连接](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
-2. 在“连接到服务器”对话框的“服务器名称”中，粘贴从门户复制的服务器名称。 在“身份验证”中选择“具有 MFA 支持的 Active Directory 通用版”，输入用户帐户，然后按“连接”。
+2. 在“连接到服务器”对话框的“服务器名称”中，粘贴从门户复制的服务器名称。   在“身份验证”  中选择“具有 MFA 支持的 Active Directory 通用版”  ，  输入用户帐户，然后按“连接”。
    
     ![在 SSMS 中连接](./media/analysis-services-tutorial-roles/aas-connect-ssms-auth.png)
 
     > [!TIP]
     > 建议选择“具有 MFA 支持的 Active Directory 通用版”。 这种身份验证类型支持[非交互式多重身份验证](../../sql-database/sql-database-ssms-mfa-authentication.md)。 
 
-3. 在“对象资源管理器”中，以展开方式查看服务器对象。 右键单击即可查看服务器属性。
+3. 在“对象资源管理器”  中，以展开方式查看服务器对象。 右键单击即可查看服务器属性。
    
     ![在 SSMS 中连接](./media/analysis-services-tutorial-roles/aas-connect-ssms-objexp.png)
 
@@ -70,27 +70,27 @@ ms.locfileid: "54188770"
 
 在此任务中，请将用户或组帐户从 Azure AD 添加到服务器管理员角色。 如果要添加安全组，必须将 `MailEnabled` 属性设置为 `True`。
 
-1. 在“对象资源管理器”中，右键单击服务器名称，然后单击“属性”。 
-2. 在“Analysis Server 属性”窗口中，单击“安全性” > “添加”。
-3. 在“选择用户或组”窗口的 Azure AD 中输入用户或组帐户，然后单击“添加”。 
+1. 在“对象资源管理器”中，右键单击服务器名称，然后单击“属性”。   
+2. 在“Analysis Server 属性”  窗口中，单击“安全性”   >   “添加”。
+3. 在“选择用户或组”窗口的 Azure AD 中输入用户或组帐户，然后单击“添加”。   
    
      ![添加服务器管理员](./media/analysis-services-tutorial-roles/aas-add-server-admin.png)
 
-4. 单击“确定”，关闭“Analysis Server 属性”。
+4. 单击“确定”  ，关闭“Analysis Server 属性”  。
 
     > [!TIP]
-    > 也可在门户中使用“Analysis Services 管理员”来添加服务器管理员。 
+    > 也可在门户中使用“Analysis Services 管理员”来添加服务器管理员。  
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>将用户添加到模型数据库管理员角色
 
-在此任务中，请将用户或组帐户添加到已存在于模型中的“Internet 销售管理员”角色。 此角色具有 adventureworks 示例模型数据库的完全控制（管理员）权限。 此任务在为你创建的脚本中使用 [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) TMSL 命令。
+在此任务中，请将用户或组帐户添加到已存在于模型中的“Internet 销售管理员”角色。 此角色具有 adventureworks 示例模型数据库的完全控制（管理员）权限。 此任务在为你创建的脚本中使用 [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) TMSL 命令。
 
-1. 在“对象资源管理器”中，展开“数据库” > “adventureworks” > “角色”。 
-2. 右键单击“Internet 销售管理员”，然后单击“充当的脚本角色” > “CREATE OR REPLACE TO” > “新建查询编辑器窗口”。
+1. 在“对象资源管理器”  中，展开“数据库”   > “adventureworks”   >   “角色”。 
+2. 右键单击“Internet 销售管理员”，  然后单击“充当的脚本角色”   > “CREATE OR REPLACE TO”   >   “新建查询编辑器窗口”。
 
     ![新建查询编辑器窗口](./media/analysis-services-tutorial-roles/aas-add-db-admin.png)
 
-3. 在“XMLAQuery”中将“memberName:”的值更改为 Azure AD 中的某个用户或组帐户。 默认情况下，已经包括登录时使用的帐户；但是，你不需添加自己的帐户，因为你已经是服务器管理员。
+3. 在“XMLAQuery”中将“memberName:”的值更改为 Azure AD 中的某个用户或组帐户。   默认情况下，已经包括登录时使用的帐户；但是，你不需添加自己的帐户，因为你已经是服务器管理员。
 
     ![XMLA 查询中的 TMSL 脚本](./media/analysis-services-tutorial-roles/aas-add-db-admin-script.png)
 
@@ -99,9 +99,9 @@ ms.locfileid: "54188770"
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>添加新的模型数据库角色并添加用户或组
 
-在此任务中，请使用 TMSL 脚本中的 [Create](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/create-command-tmsl?view=sql-analysis-services-2017) 命令创建一个新的 Internet 销售全局角色，为该角色指定读取权限，然后从 Azure AD 添加用户或组帐户。
+在此任务中，请使用 TMSL 脚本中的 [Create](https://docs.microsoft.com/bi-reference/tmsl/create-command-tmsl) 命令创建一个新的 Internet 销售全局角色，为该角色指定读取  权限，然后从 Azure AD 添加用户或组帐户。
 
-1. 在“对象资源管理器”中右键单击“adventureworks”，然后单击“新建查询” > “XMLA”。 
+1. 在“对象资源管理器”中右键单击“adventureworks”，然后单击“新建查询”   >   “XMLA”。   
 2. 将以下 TMSL 脚本复制并粘贴到查询编辑器中：
 
     ```JSON
@@ -130,14 +130,14 @@ ms.locfileid: "54188770"
 
 ## <a name="verify-your-changes"></a>验证所做的更改
 
-1. 在“对象资源管理器”中单击服务器名，然后单击“刷新”或按 **F5**。
-2. 展开“数据库” > “adventureworks” > “角色”。 验证在前述任务中添加的用户帐户和新角色更改是否显示。   
+1. 在“对象资源管理器”中单击服务器名，然后单击“刷新”或按 **F5**。  
+2. 展开“数据库” > “adventureworks” > “角色”。    验证在前述任务中添加的用户帐户和新角色更改是否显示。   
 
     ![在对象资源管理器中验证](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要用户或组帐户和角色时，请将其删除。 为此，请通过“角色属性” > “成员身份”删除用户帐户，或者右键单击某个角色，然后单击“删除”。
+不再需要用户或组帐户和角色时，请将其删除。 为此，请通过“角色属性”   >   “成员身份”删除用户帐户，或者右键单击某个角色，然后单击“删除”。 
 
 
 ## <a name="next-steps"></a>后续步骤

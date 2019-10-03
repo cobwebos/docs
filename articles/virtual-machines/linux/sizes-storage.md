@@ -4,27 +4,26 @@ description: 列出 Azure 中适用于 Linux 虚拟机的各种存储优化大�
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/15/2019
 ms.author: jonbeck
-ms.openlocfilehash: a72ff65c7b9434ca2f43e4e4f06fc4e95dfbb4e7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 7320acc3a00702b66800af5bfd9a240f4b146670
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997336"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100829"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>存储优化虚拟机大小
 
-[!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-storage.md)]
+[!INCLUDE [virtual-machines-common-sizes-storage](../../../includes/virtual-machines-common-sizes-storage.md)]
 
 ## <a name="other-sizes"></a>其他大小
 
@@ -39,4 +38,4 @@ ms.locfileid: "59997336"
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
 
-了解如何[优化 Lsv2 系列虚拟机上的性能](storage-performance.md)。
+了解如何[在 Lsv2 系列虚拟机上优化性能](storage-performance.md)。

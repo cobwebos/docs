@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 983a090942a77c2f40e0136b00acdc0a3d49c571
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: f0994f92444da338b18447eb1b248c74df9aa2d2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528333"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566102"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的事件文件目标代码
 
@@ -35,7 +34,7 @@ ms.locfileid: "59528333"
   * 将 Azure 存储容器分配到事件文件目标。
   * 创建和启动事件会话，等等。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -100,7 +99,7 @@ $resourceGroupName   = 'YOUR_RESOURCE-GROUP-NAME';
 $policySasExpiryTime = '2018-08-28T23:44:56Z';
 $policySasStartTime  = '2017-10-01';
 
-$storageAccountLocation = 'West US';
+$storageAccountLocation = 'YOUR_STORAGE_ACCOUNT_LOCATION';
 $storageAccountName     = 'YOUR_STORAGE_ACCOUNT_NAME';
 $contextName            = 'YOUR_CONTEXT_NAME';
 $containerName          = 'YOUR_CONTAINER_NAME';
@@ -252,7 +251,7 @@ PowerShell 脚本在结束时输出了几个命名值。 必须编辑 Transact-S
 
 
 > [!WARNING]
-> 之前 PowerShell 脚本生成的 SAS 密钥值可能以“?”（问号）开头。 在以下 T-SQL 脚本中使用 SAS 密钥时，必须*删除前导“?”*。 否则，安全性可能会阻止操作。
+> 之前 PowerShell 脚本生成的 SAS 密钥值可能以“?”（问号）开头。 在以下 T-SQL 脚本中使用 SAS 密钥时，必须*删除前导“?”* 。 否则，安全性可能会阻止操作。
 
 
 ### <a name="transact-sql-code"></a>Transact-SQL 代码
@@ -423,6 +422,7 @@ SELECT
         sys.fn_xe_file_target_read_file
             (
                 -- TODO: Fill in Storage Account name, and the associated Container name.
+                -- TODO: The name of the .xel file needs to be an exact match to the files in the storage account Container (You can use Storage Account explorer from the portal to find out the exact file names or you can retrieve the name using the following DMV-query: select target_data from sys.dm_xe_database_session_targets. The 3rd xml-node, "File name", contains the name of the file currently written to.)
                 'https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent/anyfilenamexel242b',
                 null, null, null
             );
@@ -463,9 +463,9 @@ GO
 
 ## <a name="output"></a>输出
 
-完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 一个**\<事件 >** 元素，系统会显示一条 UPDATE 语句。
+完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 此时将显示一个 **\<event>** 元素，其中显示了一个 UPDATE 语句。
 
-下面是一个**\<事件 >** 测试期间生成的元素：
+下面是测试期间生成的一个 **\<event>** 元素：
 
 
 ```xml

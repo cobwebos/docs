@@ -1,5 +1,5 @@
 ---
-title: 配置客户容器-Azure 应用服务 |Microsoft Docs
+title: 配置自定义容器的 Azure 应用服务 |Microsoft Docs
 description: 了解如何配置要在 Azure 应用服务中运行的 Node.js 应用程序
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 1e5faa8d356b891d825586414c0a1a1b9fa47090
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 02231f86d4ceddd6cde53fd242c2c91158d744a9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001875"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480754"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义 Linux 容器
 
@@ -28,7 +28,7 @@ ms.locfileid: "60001875"
 
 ## <a name="configure-port-number"></a>配置端口号
 
-自定义映像中的 web 服务器可能使用非 80 的端口。 通过使用您的自定义的端口告知 Azure`WEBSITES_PORT`应用设置。 [本教程中的 Python 示例](https://github.com/Azure-Samples/docker-django-webapp-linux)的 GitHub 页显示，需将 `WEBSITES_PORT` 设置为 _8000_。 可以将其设置通过运行[ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令在 Cloud Shell 中。 例如：
+自定义映像中的 web 服务器可能使用非 80 的端口。 通过使用自定义容器的端口告知 Azure`WEBSITES_PORT`应用设置。 [本教程中的 Python 示例](https://github.com/Azure-Samples/docker-django-webapp-linux)的 GitHub 页显示，需将 `WEBSITES_PORT` 设置为 _8000_。 可以将其设置通过运行[ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令在 Cloud Shell 中。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -50,10 +50,10 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 永久性存储时处于禁用状态，然后将写入`/home`目录不会持久保存在应用重启后或跨多个实例。 唯一的例外是`/home/LogFiles`目录，用于存储 Docker 和容器日志。 启用持久存储时，所有写入到`/home`目录会保留，并且可以通过向外扩展应用的所有实例访问。
 
-持久存储是默认情况下*禁用*。 若要启用或禁用它，请设置`WEBSITES_ENABLE_APP_SERVICE_STORAGE`通过运行的应用设置[ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令在 Cloud Shell 中。 例如：
+持久存储是默认情况下*启用*和应用程序设置中未公开的设置。 若要禁用它，请设置`WEBSITES_ENABLE_APP_SERVICE_STORAGE`通过运行的应用设置[ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令在 Cloud Shell 中。 例如：
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
+az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
 ```
 
 > [!NOTE]
@@ -82,7 +82,7 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器，
     ```
 
     > [!NOTE]
-    > sshd_config 文件必须包括以下项：
+    > sshd_config 文件必须包括以下项  ：
     > - `Ciphers` 必须至少包含此列表中的一项：`aes128-cbc,3des-cbc,aes256-cbc`。
     > - `MACs` 必须至少包含此列表中的一项：`hmac-sha1,hmac-sha1-96`。
 
@@ -109,7 +109,6 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器，
 - [使用永久存储在 Docker Compose](#use-persistent-storage-in-docker-compose)
 - [预览版限制](#preview-limitations)
 - [Docker Compose 选项](#docker-compose-options)
-- [Kubernetes 配置选项](#kubernetes-configuration-options)
 
 ### <a name="use-persistent-storage-in-docker-compose"></a>使用永久存储在 Docker Compose
 
@@ -132,19 +131,6 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
-```
-
-### <a name="use-custom-storage-in-docker-compose"></a>使用自定义存储在 Docker Compose
-
-Azure 存储 （Azure 文件或 Azure Blob） 可以装载的多容器应用使用自定义 id。若要查看自定义 id 名称，请运行[ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)。
-
-在你*docker-compose.yml*文件中，映射`volumes`选项设为`custom-id`。 例如：
-
-```yaml
-wordpress:
-  image: wordpress:latest
-  volumes:
-  - <custom-id>:<path_in_container>
 ```
 
 ### <a name="preview-limitations"></a>预览版限制
@@ -179,22 +165,6 @@ wordpress:
 
 > [!NOTE]
 > 在公共预览版中，将忽略不显式调出的任何其他选项。
-
-### <a name="kubernetes-configuration-options"></a>Kubernetes 配置选项
-
-Kubernetes 支持以下配置选项：
-
-- args
-- command
-- containers
-- image
-- 名称
-- ports
-- spec
-
-> [!NOTE]
-> 在公共预览版中不支持不显式调出的任何其他选项。
->
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 573c205cd2e208a1cb2b526d96fb08ca21331c80
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 8ee8c0c9d9724706f9b46013eba14e878832fd02
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481317"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844969"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -25,12 +25,13 @@ ms.locfileid: "58481317"
 
 如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/resource-group-overview.md)及其结构和语法。  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。 
 
 - 需要安装 [Azure PowerShell](/powershell/azure)，但也可以使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 
 
+- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器 
 Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志路由到不同位置。 以下步骤说明如何通过资源管理器模板和 PowerShell 来使用新的 Azure Monitor 数据接收器部署 VM。 
@@ -245,7 +246,7 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
    ```powershell
    Select-AzSubscription -SubscriptionName "<Name of the subscription>" 
    ```
-1. 为所要部署的 VM 创建新资源组。 运行以下命令： 
+1. 为所要部署的 VM 创建新资源组。 运行下面的命令： 
 
    ```powershell
     New-AzResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 

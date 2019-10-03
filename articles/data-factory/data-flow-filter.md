@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: d1751c47ad4507260d9f8d6ea44fcb32ed0e7338
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e0b41850c149ff7095333cf77b780dec1f03b882
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57864722"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66234413"
 ---
-# <a name="azure-data-factoryfilter-transformation"></a>Azure 数据 FactoryFilter 转换
+# <a name="azure-data-factory-filter-transformation"></a>Azure 数据工厂筛选器转换
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 

@@ -12,20 +12,20 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/23/2019
+ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: a0174a5442de7a10e45e9dc2a2f43f5f401d1a69
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 5fdbd3f15b11e4c3975ca29627d5984382bcf049
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805064"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206799"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Azure Service Fabric 应用程序和群集最佳做法
 
-为了成功管理 Azure Service Fabric 应用程序和群集，强烈建议你执行一些操作来优化生产环境的可靠性；请执行本文档中定义的操作，并选择我们的 [Azure 示例 Service Fabric 群集模板](https://github.com/Azure-Samples/service-fabric-cluster-templates)之一来开始设计你的生产解决方案或修改现有模板来包括这些做法。
+本文提供了用于管理 Azure Service Fabric 应用程序和群集的最佳做法的链接。 我们强烈建议您实现这些做法来优化你的生产环境的可靠性。 使用之一[Service Fabric 群集模板](https://github.com/Azure-Samples/service-fabric-cluster-templates)开始设计你的生产解决方案，或更新现有模板以合并这些做法。
 
-## <a name="security"></a>安全 
+## <a name="security"></a>安全
 
 * [安全性最佳做法](service-fabric-best-practices-security.md)
 
@@ -46,13 +46,17 @@ ms.locfileid: "56805064"
 
 * [群集监视和诊断最佳做法](service-fabric-best-practices-monitoring.md)
 
+## <a name="application-design"></a>应用程序设计
+
+* [应用程序设计最佳实践](service-fabric-best-practices-applications.md)
+
 ## <a name="checklist"></a>清单
 
-完成上面的所有部分后，请确保你已集成了生产就绪情况核对清单中的所有最佳做法：
-* [Azure Service Fabric 生产就绪情况核对清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
+在实现前面的部分中建议的做法后，请确保整合了生产就绪状态检查表中的所有最佳实践：
+* [Azure Service Fabric 生产就绪清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
 
 ## <a name="next-steps"></a>后续步骤
 
 * 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
 * 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-cluster-creation-via-portal.md)
-* 故障排除：[Service Fabric 故障排除指南](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+* 对 Service Fabric 进行故障排除：[故障排除指南](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

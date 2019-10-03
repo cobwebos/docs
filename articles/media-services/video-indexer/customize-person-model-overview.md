@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: b491120639421d85d2fbb1a0efb2b6dd09ec1d4c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: c74b913fc3ac35039d914fc97c9c438d2e4a3069
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794622"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65799429"
 ---
 # <a name="customize-a-person-model-in-video-indexer"></a>在视频索引器中自定义人员模型
 

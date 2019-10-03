@@ -1,119 +1,136 @@
 ---
 title: 快速入门：浏览 Azure 时序见解预览版演示环境 | Microsoft Docs
-description: 了解 Azure 时序见解预览版演示环境。
+description: 本快速入门介绍 Azure 时序见解预览版演示环境。
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
-ms.reviewer: anshan
+ms.reviewer: dpalled
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 12/03/2018
-ms.openlocfilehash: de5e853db6c6a0e98dea9251cc07b526288574e1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 09/23/2019
+ms.openlocfilehash: 633eb00b479c6d2e2bf233b42aff7d393b110fd2
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276819"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258418"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>快速入门：浏览 Azure 时序见解预览版演示环境
 
-本快速入门说明如何在免费的演示环境中使用 Azure 时序见解预览版资源管理器。 了解如何使用 Web 浏览器将大量历史性的行业 IoT 数据可视化，并浏览时序见解预览版资源管理器的关键功能。
+本快速入门可帮助你开始使用 Azure 时序见解预览版环境。 在免费演示版中，浏览已添加到时序见解预览版中的关键功能。
 
-时序见解提供端到端的平台即服务 (PaaS) 产品/服务。 它可以为临时数据浏览引入、处理和查询高度情景化且时序优化的 IoT 规模的数据。 还提供运营分析。 时序见解是一项差异化的产品/服务，满足行业 IoT 部署的独特需求。
+时序见解预览版演示环境包含一家示例场景公司 Contoso，该公司经营两所风力发电厂。 每所工厂有 10 台涡轮机。 每台涡轮机都有 20 个传感器，这些传感器每隔一分钟向 Azure IoT 中心报告数据。 传感器收集有关天气状况、叶片螺距和偏转摆角的信息。 此外还会记录有关发电机性能、变速箱行为和安全性监视器的信息。
 
-演示环境展示了 Contoso 发电公司的情况。 在环境中，可以使用时序见解在 Contoso 公司的数据中查找可操作的见解，并进行简短的根本原因分析。 Contoso 公司经营着两个风电场，每个风电场都有 10 个涡轮机。 每台涡轮机都有 20 个传感器，这些传感器每隔一分钟向 Azure IoT 中心报告数据。 传感器收集的信息涉及天气条件、叶片间距和偏离位置、发电机性能、变速箱行为以及安全监视器。
+本快速入门介绍如何使用时序见解在 Contoso 数据中找到可行的见解。 此外，你还执行一项简单的根本原因分析，以便更好地预测严重故障和执行维护。
 
-使用时序见解预览版分析过去两年中 Contoso 公司不断增长的数据集，当前已达到 40 GB。 这有助于更好地了解和预测严重故障和缓慢变化的维护问题。
-
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费 Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) 。
+> [!IMPORTANT]
+> 创建 [免费 Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) （如果没有该帐户）。
 
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>在演示环境中浏览时序见解资源管理器
 
-1. 在浏览器中，请转到 [Contoso 风电场环境](https://insights.timeseries.azure.com/preview/samples)。  
+时序见解预览版资源管理器演示历史数据和根本原因分析。 开始操作：
 
-1. 如果系统提示，请使用 Azure 帐户凭据登录到时序见解资源管理器。
+1. 转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。  
 
-### <a name="demo-step-1"></a>演示步骤 1
+1. 根据系统的提示使用 Azure 帐户凭据登录到时序见解资源管理器。
 
-1. 让我们看看“Contoso 发电厂 1”中的风力涡轮机“W7”。  
+## <a name="work-with-historical-data"></a>处理历史数据
 
-    * **操作**：将视图范围更新为“17/1/1 20:00 至 17/3/10 20:00 (UTC)”，添加“Contoso 发电厂 1” > “W7” > “发电机系统” > “GeneratorSpeed”传感器，然后显示结果值。
+1. 在“Contoso 发电厂 1”中查看风力涡轮机“W7”   。  
 
-       ![快速入门一][1]
+   1. 将视图范围更改为“1/1/17 20:00 至 3/10/17 20:00 (UTC)”  。
+   1. 若要选择传感器，请选择“Contoso 发电厂 1” > “W7” > “发电机系统” > “GeneratorSpeed”。     然后，查看显示的值。
 
-1. 最近，Contoso 公司发现风力涡轮机 W7 起火。 让我们从这里开始了解。 我们可以看到火警传感器在起火期间激活。
+      [![Contoso 发电厂 1 中的 W7](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
-    * **操作**：将视图范围更新为“17/3/9 20:00 至 17/3/10 20:00 (UTC)”，并添加“安全系统” > “FireAlert”传感器。
+1. 最近，Contoso 公司发现风力涡轮机 W7 起火  。 起火原因的观点各不相同。 在时序见解中，我们可以看到火警传感器在起火期间激活。
 
-      ![快速入门二][2]
+   1. 将视图范围更改为“3/9/17 20:00 至 3/10/17 20:00 (UTC)”  。
+   1. 选择“安全系统” > “FireAlert”。  
 
-1. 让我们看看在起火时还发生了什么。 油压和活动警告刚好在起火前激发，但这时已为时过晚，无法避免问题的发生。
+      [![Contoso 公司发现风力涡轮机 W7 起火](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
 
-    * **操作**：添加“间距系统” > “HydraulicOilPressure”传感器和“间距系统” > “ActiveWarning”传感器。
+1. 检查在起火前后还发生了什么事件。 油压和活动警告数在起火之前的那一刻达到高峰。
 
-      ![快速入门三][3]
+   1. 添加“螺距系统” > “HydraulicOilPressure”。  
+   1. 选择和“螺距系统” > “ActiveWarning”。  
 
-1. 如果缩小范围，可以看到在起火前有预兆。 两个传感器都出现了波动。 那么，此问题以前是否发生过？
+      [![检查同一时间的其他事件](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
 
-    * **操作**：将视图范围更新为“17/2/24 20:00 至 17/3/10 20:00 (UTC)”。
+1. 油压和活动警告传感器在起火之前的那一刻达到高峰。 展开显示的时序，以查看导致起火的其他很明显的迹象。 这两个传感器都不断地波动了一段时间， 这表示一直存在令人担忧的模式。
 
-      ![快速入门四][4]
+    * 将视图范围更改为“2/24/17 20:00 至 3/10/17 20:00 (UTC)”  。
 
-1. 如果我们检查这两年的所有数据，可以发现以前的起火事件也有相同的征兆。 我们可以使用该数据生成相应的系统，以便及早捕获此类问题。
+      [![油压和活动警告传感器也达到了高峰](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
 
-    * **操作**：将视图范围更新为“16/1/1 至 17/12/31”（所有数据）。
+1. 检查两年的历史数据后发现，出现这种传感器波动情况时也曾经发生过一次起火事件。
 
-       ![快速入门五][5]
+    * 将视图范围更改为“1/1/16 至 12/31/17”（所有数据）。 
 
-### <a name="demo-step-2"></a>演示步骤 2
+      [![查看历史模式](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
 
-1. 其他问题更加微妙且更难以诊断。 时序见解提供了各种方法来帮助我们跟踪棘手的问题。 在这里，我们可以看到在 6 月 25 日 W6 上的警告传感器出现中断。 但是，到底发生了什么？
+使用时序见解和传感器遥测数据，我们发现历史数据中隐藏着长期的有问题趋势。 使用这些新的见解，我们可以：
 
-    * **操作**：删除当前传感器，将视图范围更新为“17/6/1 20:00 至 17/7/1 20:00 (UTC)”，然后添加“Contoso 发电厂 1” > “W6” > “安全系统” > “VoltageActuatorSwitchWarning”传感器。
+* 解释实际发生了什么问题。
+* 纠正问题。
+* 部署高级警报通知系统。
 
-       ![快速入门六][6]
+## <a name="root-cause-analysis"></a>根本原因分析
 
-1. 警告指示发电机输出的电压出现问题。 但是，问题原因是什么？ 从较小的时间间隔来看，发电机的总体电力输出正常。 但通过汇总数据，我们可以发现明确的下降趋势。
+1. 某些方案需要使用复杂分析从数据中找到微秒的线索。 选择日期 **6/25** 时的风力涡轮机 **W6**。
 
-    * **操作**：删除“VoltageActuatorSwitchWarning”传感器，添加“发电机系统” > “ActivePower”传感器，然后将间隔时间更新为“3 天”。
+    1. 将视图范围更改为“6/1/17 20:00 至 7/1/17 20:00 (UTC)”  。
+    1. 选择“Contoso 发电厂 1” > “W6” > “安全系统” > “VoltageActuatorSwitchWarning”。    
 
-       ![快速入门七][7]
+       [![更改视图范围并选择 W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
 
-1. 如果我们在数据集中向前导航，则可以看到这不是暂时性问题。 它是一个连续性的问题。
+1. 警告指示发电机输出的电压出现问题。 在当前时间间隔内，发电机的总体功率输出在正常参数范围内。 但增大间隔后，我们发现了另一种模式。 出现明显的衰减。
 
-    * **操作**：将时间跨度向右展开。
+    1. 删除 **VoltageActuatorSwitchWarning** 传感器。
+    1. 选择“发电机系统” > “ActivePower”。  
+    1. 将时间间隔更改为“3 天”。 
 
-       ![快速入门八][8]
+       [![将时间间隔更改为 3天](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
 
-1. 让我们进一步深入探讨问题。 我们可以添加其他传感器数据点按阶段查看电压。 但所有数据点看起来都类似。 让我们放一个标记，以便查看实际值。 看起来第 3 阶段的输出存在问题。
+1. 扩大时间范围后，我们可以确定问题是已停止还是在持续。
 
-    * **操作**：添加“发电机系统” > “GridVoltagePhase1”、“GridVoltagePhase2”和“GridVoltagePhase3”传感器。 在可见区域的最后一个数据点放一个标记。
+    * 将时间跨度扩大为 60 天。
 
-       ![快速入门八][8]
+      [![将时间跨度扩大为 60 天](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
 
-1. 如果我们使用同样的比例来查看所有三个数据点，可以看到第 3 阶段的下降趋势更加明显。 现在我们了解了产生警告的原因，可以将此问题转给维护团队去处理了。  
+1. 可以添加其他传感器数据点来提供更好的上下文。 查看的传感器越多，对问题的认识就更全面。 让我们放一个标记，以便查看实际值。 
 
-    * **操作**：更新显示，将所有传感器按同一图表比例叠加显示。
+    1. 选择“发电机系统”，然后选择三个传感器：  **GridVoltagePhase1**、**GridVoltagePhase2** 和 **GridVoltagePhase3**。
+    1. 在可见区域的最后一个数据点放一个标记。
 
-       ![快速入门九][9]
+       [![放置标记](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+
+    两个电压传感器的工作状态相当，且都处在正常参数范围内。 似乎 **GridVoltagePhase3** 传感器是问题所在。
+
+1. 添加可以明确反映上下文的数据后，第 3 阶段的衰减趋势似乎更明显，这进一步确认它是问题所在。 现在我们了解了警告的原因， 可以将此问题转给维护团队去处理了。  
+
+    * 更改显示内容，以将所有“发电机系统”传感器按同一图表比例叠加显示。 
+
+      [![更改显示内容以包含所有信息](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+
+## <a name="clean-up-resources"></a>清理资源
+
+现在你已完成本教程，请清除已创建的资源：
+
+1. 从 [Azure 门户](https://portal.azure.com)的左侧菜单中，选择“所有资源”  ，找到“Azure 时序见解”资源组。
+1. 通过选择“删除”  来删除整个资源组（以及其中包含的所有资源），或者单独删除每个资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-已准备好创建自己的时序见解预览版环境：
+已准备好创建自己的时序见解预览版环境。 若要开始，请执行以下操作：
 
 > [!div class="nextstepaction"]
 > [计划时序见解预览版环境](time-series-insights-update-plan.md)
 
-<!-- Images -->
-[1]: media/v2-update-quickstart/quickstart-one.png
-[2]: media/v2-update-quickstart/quickstart-two.png
-[3]: media/v2-update-quickstart/quickstart-three.png
-[4]: media/v2-update-quickstart/quickstart-four.png
-[5]: media/v2-update-quickstart/quickstart-five.png
-[6]: media/v2-update-quickstart/quickstart-six.png
-[7]: media/v2-update-quickstart/quickstart-seven.png
-[8]: media/v2-update-quickstart/quickstart-eight.png
-[9]: media/v2-update-quickstart/quickstart-nine.png
+了解如何浏览演示及其功能：
+
+> [!div class="nextstepaction"]
+> [时序见解预览版资源管理器](time-series-insights-update-explorer.md)

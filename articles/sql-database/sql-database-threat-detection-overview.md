@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 03/31/2019
-ms.openlocfilehash: 710a94c919f4262c3f572f28d03c79b77e658287
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: de802d17f57077e2b4df195e04f35cbf9665f6b3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797058"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566352"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL 数据库的高级威胁防护
 
@@ -30,7 +29,7 @@ ms.locfileid: "59797058"
 
 ## <a name="what-is-advanced-threat-protection"></a>什么是高级威胁防护
 
- 高级威胁防护提供新的安全层，在发生异常活动时会提供安全警报，让客户检测潜在威胁并做出响应。 出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问和查询模式时，用户将收到警报。 高级的威胁防护集成，警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)，其中包括可疑活动的详细信息和建议如何帮助调查和缓解威胁的操作。 不必是安全专家，也不需要管理先进的安全监视系统，就能使用高级威胁防护轻松解决数据库的潜在威胁。
+ 高级威胁防护提供新的安全层，在发生异常活动时会提供安全警报，让客户检测潜在威胁并做出响应。 出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问和查询模式时，用户将收到警报。 高级威胁防护功能将警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成, 其中包括可疑活动的详细信息以及如何调查和缓解威胁的建议操作。 不必是安全专家，也不需要管理先进的安全监视系统，就能使用高级威胁防护轻松解决数据库的潜在威胁。
 
 为了提供完整的调查体验，建议启用 [SQL 数据库审核](sql-database-auditing.md)，它会将数据库事件写入到 Azure 存储帐户中的审核日志。  
 
@@ -67,7 +66,7 @@ ms.locfileid: "59797058"
 
 ## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>在 Azure 门户中浏览针对数据库发出的高级威胁防护警报
 
-高级的威胁防护集成其警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)。 Azure 门户中“数据库和 SQL ADS”边栏选项卡内的“实时 SQL 高级威胁防护”磁贴会跟踪活动威胁的状态。
+高级威胁防护将其警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成。 Azure 门户中“数据库和 SQL ADS”边栏选项卡内的“实时 SQL 高级威胁防护”磁贴会跟踪活动威胁的状态。
 
 单击“高级威胁防护警报”以启动“Azure 安全中心警报”页，并获取在数据库或数据仓库中检测到的活动 SQL 威胁的概述。
 
@@ -78,7 +77,7 @@ ms.locfileid: "59797058"
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[单一数据库和共用数据库中的高级威胁防护](sql-database-threat-detection.md)。
-- 详细了解如何[托管实例中的高级威胁防护](sql-database-managed-instance-threat-detection.md)。
+- 详细了解[托管实例中的高级威胁防护](sql-database-managed-instance-threat-detection.md)。
 - 详细了解[高级数据安全性](sql-database-advanced-data-security.md)。
 - 详细了解 [Azure SQL 数据库审核](sql-database-auditing.md)
 - 详细了解 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)

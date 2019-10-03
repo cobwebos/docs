@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e557f7f615a53bc7ed27849e9ea1721328c1afee
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834569"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61244223"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何使 Media Encoder Standard 通过 .NET 来生成缩略图 
 
@@ -279,7 +279,7 @@ ms.locfileid: "57834569"
 
 ## <a name="example-of-generating-a-thumbnail-while-encoding"></a>在编码时生成缩略图的示例
 
-上述所有示例都在讨论如何提交仅生成图像的编码任务，但还可以将视频/音频编码与缩略图生成结合起来。 以下的 JSON 和 XML 预设指示 Media Encoder Standard 在编码过程中生成一个缩略图。
+上述所有示例都在讨论如何提交仅生成图像的编码任务，但还可以将视频/音频编码与缩略图生成结合起来。 以下的 JSON 和 XML 预设指示 Media Encoder Standard 在编码过程中生成一个缩略图  。
 
 ### <a id="json"></a>JSON 预设
 有关架构的信息，请参阅[此](https://msdn.microsoft.com/library/mt269962.aspx)文。

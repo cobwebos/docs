@@ -3,7 +3,7 @@ title: 在 Windows 上容器化 Azure Service Fabric 服务
 description: 了解如何在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors 服务。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: anmolah
 editor: roroutra
 ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
-ms.author: aljo, anmola
-ms.openlocfilehash: 147607bbea65199ff97459711ad6301a4ae93aa4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: anmola
+ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079820"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599205"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors
 
@@ -119,6 +119,16 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
    </ContainerHostPolicies>
    </Policies>
    ```
+
+> [!NOTE] 
+> 默认情况下，Service Fabric 应用程序可以以接受特定于应用程序的请求的终结点的形式访问 Service Fabric 运行时。 当应用程序托管不受信任的代码时，请考虑禁用此访问。 有关详细信息，请参阅 [Service Fabric 中的安全最佳做法](service-fabric-best-practices-security.md#platform-isolation)。 若要禁用对 Service Fabric 运行时的访问，请在与导入的服务清单对应的应用程序清单的“策略”部分中添加以下设置，如下所示：
+>
+```xml
+  <Policies>
+      <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+  </Policies>
+```
+>
 
 10. 若要测试此应用程序，需要将其部署到正在运行版本 5.7 或更高版本的群集。 对于运行时版本 6.1 或更低版本，你需要编辑并更新群集设置来启用此预览版功能。 请按照[本文](service-fabric-cluster-fabric-settings.md)中的步骤操作，添加下一步所示的设置。
     ```

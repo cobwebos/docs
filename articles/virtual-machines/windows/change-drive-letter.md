@@ -4,23 +4,22 @@ description: '介绍如何更改 Windows VM 的盘符，以使用 D: 驱动器�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: cfd46d5e9750a81d89ed6d3a79bcc9bffdc3d0dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 846bb7a5ea6c3f363a2811cf3feb30e37ff30504
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007287"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079879"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 盘作为 Windows VM 上的数据驱动器
 如果应用程序需要使用 D 盘存储数据，请按照以下说明使用其他驱动器号作为临时磁盘。 切勿使用临时磁盘来存储需要保存的数据。
@@ -64,5 +63,5 @@ ms.locfileid: "58007287"
 9. 重启虚拟机。
 
 ## <a name="next-steps"></a>后续步骤
-* 可以增加可用的存储到的虚拟机[附加的附加数据磁盘](attach-managed-disk-portal.md)。
+* 可以通过[附加更多数据磁盘](attach-managed-disk-portal.md)来增加虚拟机的可用存储空间。
 

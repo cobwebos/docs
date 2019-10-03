@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 6df29543df2b7b2609582f7e8dd9a0629182760c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0558c309cc22f39c2ed439b7930443ca0adb071e
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849766"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385379"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure 逻辑应用的架构更新 - 2016 年 6 月 1 日
 
@@ -29,7 +29,7 @@ ms.locfileid: "57849766"
 
 <a name="scopes"></a>
 
-## <a name="scopes"></a>作用域
+## <a name="scopes"></a>范围
 
 此架构包含作用域，方便用户将操作组合或嵌套到一起。 例如，一个条件可以包含另一个条件。 请详细了解[作用域语法](../logic-apps/logic-apps-loops-and-scopes.md)，或者查看下面这个基本的作用域示例：
 
@@ -175,8 +175,9 @@ ms.locfileid: "57849766"
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 * [为逻辑应用创建工作流定义](../logic-apps/logic-apps-author-definitions.md)
-* [创建逻辑应用的部署模板](../logic-apps/logic-apps-create-deploy-template.md)
+* [自动部署逻辑应用](logic-apps-azure-resource-manager-templates-overview.md)
 
 <!-- Image references -->
 [1]: ./media/logic-apps-schema-2016-04-01/upgradeButton.png

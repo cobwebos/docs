@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: design
-ms.date: 04/12/2019
+ms.subservice: load-data
+ms.date: 07/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2e65c1a33a60e19538a26e0f47f205235dd1695c
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: c90deefba75cd8bbeda126c9da8a05e1069831d4
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548633"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597471"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>为 Azure SQL 数据仓库设计 PolyBase 数据加载策略
 
@@ -49,8 +49,32 @@ ms.locfileid: "59548633"
 
 ### <a name="polybase-external-file-formats"></a>PolyBase 外部文件格式
 
-PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 除了带分隔符的文本文件以外，它还可以从 Hadoop 文件格式、RC 文件、ORC 和 Parquet 加载数据。 PolyBase 还可以从 Gzip 和 Snappy 压缩文件加载数据。 PolyBase 目前不支持扩展的 ASCII、固定宽度格式以及 WinZip、JSON 和 XML 等嵌套格式。 如果要从 SQL Server 中导出，可以使用 [bcp 命令行工具](/sql/tools/bcp-utility)，以将数据导出为带分隔符的文本文件。
+PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 除了带分隔符的文本文件以外，它还可以从 Hadoop 文件格式、RC 文件、ORC 和 Parquet 加载数据。 PolyBase 还可以从 Gzip 和 Snappy 压缩文件加载数据。 PolyBase 目前不支持扩展的 ASCII、固定宽度格式以及 WinZip、JSON 和 XML 等嵌套格式。 如果要从 SQL Server 中导出，可以使用 [bcp 命令行工具](/sql/tools/bcp-utility)，以将数据导出为带分隔符的文本文件。 Parquet 到 SQL DW 数据类型的映射如下：
 
+| **Parquet 数据类型** |                      **SQL 数据类型**                       |
+| :-------------------: | :----------------------------------------------------------: |
+|        tinyint        |                           tinyint                            |
+|       smallint        |                           smallint                           |
+|          int          |                             int                              |
+|        bigint         |                            bigint                            |
+|        boolean        |                             bit                              |
+|        双         |                            浮点数                             |
+|         浮点数         |                             real                             |
+|        双         |                            money                             |
+|        双         |                          smallmoney                          |
+|        string         |                            nchar                             |
+|        string         |                           nvarchar                           |
+|        string         |                             char                             |
+|        string         |                           varchar                            |
+|        二进制         |                            二进制                            |
+|        二进制         |                          varbinary                           |
+|       timestamp       |                             date                             |
+|       timestamp       |                        smalldatetime                         |
+|       timestamp       |                          日期时间2                           |
+|       timestamp       |                           DATETIME                           |
+|       timestamp       |                             时间                             |
+|       date            |                             date                             |
+|        decimal        |                            decimal                           |
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2.将数据移入 Azure Blob 存储或 Azure Data Lake Store
 
@@ -74,7 +98,7 @@ PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 �
 定义外部表涉及到指定数据源、文本文件的格式和表定义。 下面是需要的 T-SQL 语法主题：
 - [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql)（创建外部数据源）
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)
-- [创建外部表](/sql/t-sql/statements/create-external-table-transact-sql)
+- [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql)
 
 有关创建外部对象的示例，请参阅加载教程中的[创建外部表](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data)步骤。
 
@@ -99,7 +123,7 @@ PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 �
 - 如果数据位于 Azure Blob 存储或 Azure Data Lake Store 中，则 [PolyBase 与 T-SQL](load-data-from-azure-blob-storage-using-polybase.md) 可以发挥作用。 使用此方法可以获得加载过程的最大控制度，不过同时需要定义外部数据对象。 其他方法在你将源表映射到目标表时，在幕后定义这些对象。  若要协调 T-SQL 负载，可以使用 Azure 数据工厂、SSIS 或 Azure Functions。 
 - 如果源数据位于本地 SQL Server 或云中的 SQL Server，则 [PolyBase 与 SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) 可以发挥作用。 SSIS 定义源到目标表的映射，同时可协调负载。 如果已有 SSIS 包，可将这些包修改为使用新的数据仓库目标。 
 - [PolyBase 与 Azure 数据工厂 (ADF)](sql-data-warehouse-load-with-data-factory.md) 是另一个业务流程工具。  它定义管道并计划作业。 
-- [使用 Azure DataBricks 的 PolyBase](../azure-databricks/databricks-extract-load-sql-data-warehouse.md)将数据从 SQL 数据仓库表传输到 Databricks 数据帧和/或将数据从 Databricks 数据帧写入到使用 PolyBase 的 SQL 数据仓库表。
+- 使用[Azure DataBricks 的 PolyBase](../azure-databricks/databricks-extract-load-sql-data-warehouse.md)将数据从 SQL 数据仓库表传输到 DataBricks 数据帧, 并/或使用 PolyBase 将数据从 DataBricks 数据帧写入 Sql 数据仓库表。
 
 ### <a name="non-polybase-loading-options"></a>非 PolyBase 加载选项
 

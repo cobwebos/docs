@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8d31f04c355b47720a1c9b0334042ba2f6654768
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 6a386096d8a94c240e9a00457d87d04254e02920
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448574"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102004"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的性能准则
 
@@ -42,7 +41,7 @@ ms.locfileid: "58448574"
 | --- | --- |
 | [VM 大小](#vm-size-guidance) | SQL Enterprise Edition：- [DS3_v2](../sizes-general.md) 或更高版本。<br/><br/> SQL Standard 和 Web Edition：- [DS2_v2](../sizes-general.md) 或更高版本。 |
 | [存储](#storage-guidance) | - 使用[高级 SSD](../disks-types.md)。 仅建议将标准存储用于开发/测试。<br/><br/> - 将[存储帐户](../../../storage/common/storage-create-storage-account.md)和 SQL Server VM 保存在相同的区域。<br/><br/> * 在存储帐户上禁用 Azure [异地冗余存储](../../../storage/common/storage-redundancy.md)（异地复制）。 |
-| [磁盘](#disks-guidance) | - 使用至少 2 个 [P30 磁盘](../disks-types.md#premium-ssd)（一个用于日志，另一个用于数据文件，包括 TempDB）。 对于需要约 50,000 IOPS 的工作负荷，请考虑使用超级 SSD。 <br/><br/> - 避免使用操作系统或临时磁盘进行数据库存储或日志记录。<br/><br/> - 在托管数据文件和 TempDB 数据文件的磁盘上启用读取缓存。<br/><br/> - 请勿在托管日志文件的磁盘上启用缓存。  **重要说明**：更改 Azure VM 磁盘的缓存设置时，请停止 SQL Server 服务。<br/><br/> - 条带化多个 Azure 数据磁盘，提高 IO 吞吐量。<br/><br/> - 使用规定的分配大小格式化。 <br/><br/> - 将 TempDB 放在本地 SSD 上，用于任务关键型 SQL Server 工作负荷（在选择正确的 VM 大小后）。 |
+| [磁盘](#disks-guidance) | - 使用至少 2 个 [P30 磁盘](../disks-types.md#premium-ssd)（一个用于日志，另一个用于数据文件，包括 TempDB）。 对于需要约 50,000 IOPS 的工作负荷，请考虑使用超级 SSD。 <br/><br/> - 避免使用操作系统或临时磁盘进行数据库存储或日志记录。<br/><br/> - 在托管数据文件和 TempDB 数据文件的磁盘上启用读取缓存。<br/><br/> - 请勿在托管日志文件的磁盘上启用缓存。  **重要说明**：更改 Azure VM 磁盘的缓存设置时，请停止 SQL Server 服务。<br/><br/> - 条带化多个 Azure 数据磁盘，提高 IO 吞吐量。<br/><br/> - 使用规定的分配大小格式化。 <br/><br/> -将 TempDB 放置在本地 SSD `D:\`驱动器上, 用于任务关键型 SQL Server 工作负荷 (选择正确的 VM 大小之后)。 [使用 ssd 存储 TempDB](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)的博客中的详细信息。  |
 | [I/O](#io-guidance) |- 启用数据库页面压缩。<br/><br/> - 对数据文件启用即时文件初始化。<br/><br/> - 限制数据库自动增长。<br/><br/> - 禁用数据库自动收缩。<br/><br/> - 将所有数据库（包括系统数据库）转移到数据磁盘。<br/><br/> - 将 SQL Server 错误日志和跟踪文件目录移到数据磁盘。<br/><br/> - 设置默认的备份和数据库文件位置。<br/><br/> - 启用锁定页面。<br/><br/> - 应用 SQL Server 性能修复程序。 |
 | [Feature-specific](#feature-specific-guidance) | - 直接备份到 blob 存储。 |
 
@@ -55,7 +54,7 @@ ms.locfileid: "58448574"
 * **SQL Server Enterprise Edition**：DS3_v2 或更高
 * **SQL Server Standard 和 Web Edition**：DS2_v2 或更高
 
-[DSv2 系列](../sizes-general.md#dsv2-series) VM 支持高级存储，高级存储是能提供最佳性能的推荐选择。 这里推荐的大小是基线，实际选择的计算机大小取决于工作负载的需求。 DSv2 系列 VM 是常规用途的 VM，适用于各种工作负载，而其他计算机大小针对特定工作负载类型进行了优化。 例如，[M 系列](../sizes-memory.md#m-series)为最大型的 SQL Server 工作负载提供最高的 vCPU 数量和内存。 [GS 系列](../sizes-memory.md#gs-series)和 [DSv2 系列 11 到 15](../sizes-memory.md#dsv2-series-11-15) 经过优化，以满足较大的内存需求。 还可以在[受约束的核心大小](../../windows/constrained-vcpu.md)中选择这两种系列，这样能降低计算需求，从而节省工作负载的成本。 [Ls 系列](../sizes-storage.md)计算机是针对较高的磁盘吞吐量和 IO 进行优化的。 请务必在对 VM 系列和大小进行选择时考虑特定 SQL Server 工作负载的实际情况。
+[DSv2 系列](../sizes-general.md#dsv2-series) VM 支持高级存储，高级存储是能提供最佳性能的推荐选择。 这里推荐的大小是基线，实际选择的计算机大小取决于工作负载的需求。 DSv2 系列 VM 是常规用途的 VM，适用于各种工作负载，而其他计算机大小针对特定工作负载类型进行了优化。 例如，[M 系列](../sizes-memory.md#m-series)为最大型的 SQL Server 工作负载提供最高的 vCPU 数量和内存。 [GS 系列](../sizes-previous-gen.md#gs-series)和 [DSv2 系列 11 到 15](../sizes-memory.md#dsv2-series-11-15) 经过优化，以满足较大的内存需求。 还可以在[受约束的核心大小](../../windows/constrained-vcpu.md)中选择这两种系列，这样能降低计算需求，从而节省工作负载的成本。 [Ls 系列](../sizes-storage.md)计算机是针对较高的磁盘吞吐量和 IO 进行优化的。 请务必在对 VM 系列和大小进行选择时考虑特定 SQL Server 工作负载的实际情况。
 
 ## <a name="storage-guidance"></a>存储指导原则
 
@@ -90,11 +89,11 @@ D 系列、Dv2 系列和 G 系列 VM 上的临时驱动器基于 SSD。 如果�
 
 对于支持高级 SSD 的 VM（DS 系列、DSv2 系列和 GS 系列），建议将 TempDB 存储在支持高级 SSD 且已启用读取缓存的磁盘上。
 
-这项建议有一种例外情况；如果 TempDB 的使用是写入密集型的，则可以通过将 TempDB 存储在本地 D 驱动器（在这些计算机大小上也是基于 SSD）上来实现更高性能。
+这项建议有一种例外情况；如果 TempDB 的使用是写入密集型的，则可以通过将 TempDB 存储在本地 D 驱动器（在这些计算机大小上也是基于 SSD）上来实现更高性能。 有关详细信息, 请参阅将[ssd 与 TempDB 结合使用](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)博客。 
 
-### <a name="data-disks"></a>数据磁盘数
+### <a name="data-disks"></a>数据磁盘
 
-* **将数据磁盘用于数据和日志文件**：如果不使用磁盘条带化，请使用两个高级 SSD P30 磁盘，其中一个磁盘包含日志文件，另一个磁盘包含数据和 TempDB 文件。 每个高级 SSD 均根据其大小提供许多 IOP 和带宽 (MB/s)，如[选择磁盘类型](../disks-types.md)一文中所述。 如果使用磁盘条带化技术，例如存储空间，则可实现最佳性能，因为将具有两个池，一个用于日志文件，另一个用于数据文件。 但是，如果你打算使用 SQL Server 故障转移群集实例 (FCI)，则必须配置单个池。
+* **将数据磁盘用于数据和日志文件**：如果不使用磁盘条带化, 请使用两个高级 SSD P30 磁盘, 其中一个磁盘包含日志文件, 另一个包含数据和 TempDB (如上所述的任务关键工作负荷和写繁重工作负载除外)。 每个高级 SSD 均根据其大小提供许多 IOP 和带宽 (MB/s)，如[选择磁盘类型](../disks-types.md)一文中所述。 如果使用磁盘条带化技术，例如存储空间，则可实现最佳性能，因为将具有两个池，一个用于日志文件，另一个用于数据文件。 但是，如果你打算使用 SQL Server 故障转移群集实例 (FCI)，则必须配置单个池。
 
    > [!TIP]
    > - 有关不同磁盘和工作负荷配置的测试结果，请参阅以下博客文章：[有关 Azure VM 上 SQL Server 的存储配置指导原则](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)
@@ -179,11 +178,22 @@ D 系列、Dv2 系列和 G 系列 VM 上的临时驱动器基于 SSD。 如果�
 
 某些部署可以使用更高级的配置技术，获得更多的性能好处。 下面的列表主要介绍可帮助你实现更佳性能的一些 SQL Server 功能：
 
-* **备份到 Azure 存储**：为在 Azure 虚拟机中运行的 SQL Server 执行备份时，可以使用 [SQL Server 备份到 URL](https://msdn.microsoft.com/library/dn435916.aspx)。 此功能是从 SQL Server 2012 SP1 CU2 开始提供的，在备份到附加数据磁盘时建议使用。 备份到 Azure 存储或从中还原时，请按照 [SQL Server 备份到 URL 最佳实践和故障排除以及从 Azure 存储中存储的备份还原](https://msdn.microsoft.com/library/jj919149.aspx)中提供的建议操作。 此外还可以使用 [Azure 虚拟机中 SQL Server 的自动备份](virtual-machines-windows-sql-automated-backup.md)自动执行这些备份。
+### <a name="backup-to-azure-storage"></a>备份到 Azure 存储
+为在 Azure 虚拟机中运行的 SQL Server 执行备份时，可以使用 [SQL Server 备份到 URL](https://msdn.microsoft.com/library/dn435916.aspx)。 此功能是从 SQL Server 2012 SP1 CU2 开始提供的，在备份到附加数据磁盘时建议使用。 备份到 Azure 存储或从中还原时，请按照 [SQL Server 备份到 URL 最佳实践和故障排除以及从 Azure 存储中存储的备份还原](https://msdn.microsoft.com/library/jj919149.aspx)中提供的建议操作。 此外还可以使用 [Azure 虚拟机中 SQL Server 的自动备份](virtual-machines-windows-sql-automated-backup.md)自动执行这些备份。
 
-    对于 SQL Server 2012 以前版本，可以使用 [SQL Server 备份到 Azure 工具](https://www.microsoft.com/download/details.aspx?id=40740)。 此工具可以通过使用多个备份条带目标帮助提高备份吞吐量。
+对于 SQL Server 2012 以前版本，可以使用 [SQL Server 备份到 Azure 工具](https://www.microsoft.com/download/details.aspx?id=40740)。 此工具可以通过使用多个备份条带目标帮助提高备份吞吐量。
 
-* **Azure 中的 SQL Server 数据文件**：[Azure 中的 SQL Server 数据文件](https://msdn.microsoft.com/library/dn385720.aspx)这一新功能从 SQL Server 2014 开始提供。 在 SQL Server 上运行 Azure 中的数据文件，与使用 Azure 数据磁盘时的性能特征相当。
+### <a name="sql-server-data-files-in-azure"></a>Azure 中的 SQL Server 数据文件
+
+[Azure 中的 SQL Server 数据文件](https://msdn.microsoft.com/library/dn385720.aspx)这一新功能从 SQL Server 2014 开始提供。 在 SQL Server 上运行 Azure 中的数据文件，与使用 Azure 数据磁盘时的性能特征相当。
+
+### <a name="failover-cluster-instance-and-storage-spaces"></a>故障转移群集实例和存储空间
+
+如果正在使用存储空间，则在“确认”页上向群集添加节点时，请清除标记为“将所有符合条件的存储添加到群集”的复选框。 
+
+![取消选中符合条件的存储](media/virtual-machines-windows-sql-performance/uncheck-eligible-cluster-storage.png)
+
+如果正在使用存储空间，且选中了“将所有符合条件的存储添加到群集”，Windows 会在群集进程中分离虚拟磁盘。 这样一来，这些虚拟磁盘将不会出现在磁盘管理器或资源管理器之中，除非从群集中删除存储空间，并使用 PowerShell 将其重新附加。 存储空间将多个磁盘集合到存储池中。 有关详细信息，请参阅[存储空间](/windows-server/storage/storage-spaces/overview)。
 
 ## <a name="next-steps"></a>后续步骤
 

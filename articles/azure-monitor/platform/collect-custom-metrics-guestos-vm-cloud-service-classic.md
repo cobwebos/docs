@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 90e841628d989a16f504d2efd7a2c7b18335ff48
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482617"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844933"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>将来宾 OS 指标发送到 Azure Monitor 指标存储经典云服务 
 
@@ -27,13 +27,15 @@ ms.locfileid: "58482617"
 
 本文中所述的过程仅适用于 Azure 云服务上的性能计数器。 它不适用于其他自定义指标。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 你必须是 Azure 订阅的[服务管理员或共同管理员](~/articles/billing/billing-add-change-azure-subscription-administrator.md)。 
 
 - 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。 
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+
+- 云服务必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>预配云服务和存储帐户 
 

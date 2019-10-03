@@ -3,30 +3,31 @@ title: Azure 容器注册表任务参考 - YAML
 description: 有关在 YAML 中为 ACR 任务定义任务的参考，包括任务属性、步骤类型、步骤属性和内置变量。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: b2398e7db7ed91dee8d85c0c50058bb15b9f4c7e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 27c38f51104dfb170c59860c96a8e3a86973bb1e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894126"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638917"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
 
-ACR 任务中的多步骤任务定义提供注重于生成、测试和修补容器的，以容器为中心的计算基元。 本文介绍如何命令、 参数、 属性和定义多步骤任务的 YAML 文件的语法。
+ACR 任务中的多步骤任务定义提供注重于生成、测试和修补容器的，以容器为中心的计算基元。 本文介绍用于定义多步骤任务的 YAML 文件的命令、参数、属性和语法。
 
 本文包含有关为 ACR 任务创建多步骤任务 YAML 文件的参考信息。 如需 ACR 任务的简介，请参阅 [ACR 任务概述](container-registry-tasks-overview.md)。
 
 ## <a name="acr-taskyaml-file-format"></a>acr-task.yaml 文件格式
 
-ACR 任务支持采用标准 YAML 语法的多步骤任务声明。 YAML 文件中定义任务的步骤。 你可以然后手动运行任务通过将传递到该文件[运行 az acr] [ az-acr-run]命令。 或者，使用该文件创建的任务[az acr 任务创建][ az-acr-task-create] Git 提交或基本映像更新自动触发的。 尽管本文将 `acr-task.yaml` 称作包含步骤的文件，但 ACR 任务支持带有[受支持扩展名](#supported-task-filename-extensions)的任何有效文件名。
+ACR 任务支持采用标准 YAML 语法的多步骤任务声明。 在 YAML 文件中定义任务的步骤。 然后, 你可以通过将文件传递到[az acr run][az-acr-run]命令手动运行该任务。 或者, 使用文件创建一个使用[az acr 任务创建][az-acr-task-create]的任务, 该任务会在 Git 提交或基本映像更新上自动触发。 尽管本文将 `acr-task.yaml` 称作包含步骤的文件，但 ACR 任务支持带有[受支持扩展名](#supported-task-filename-extensions)的任何有效文件名。
 
 顶级 `acr-task.yaml` 基元为**任务属性**、**步骤类型**和**步骤属性**：
 
-* [任务属性](#task-properties)应用到整个任务执行中的所有步骤。 有多个全局任务属性，包括：
+* [任务属性](#task-properties)应用到整个任务执行中的所有步骤。 有几个全局任务属性, 其中包括:
   * `version`
   * `stepTimeout`
   * `workingDirectory`
@@ -61,13 +62,13 @@ YAML 是 ACR 任务目前支持的唯一一种文件格式。 其他文件扩展
 
 ## <a name="run-the-sample-tasks"></a>运行示例任务
 
-本文的后续部分参考了多个示例任务文件。 这些示例任务在公共 GitHub 存储库 [Azure-Samples/acr-tasks][acr-tasks] 中提供。 可以使用 Azure CLI 命令 [az acr run][az-acr-run] 运行这些任务。 示例命令如下所示：
+本文的后续部分参考了多个示例任务文件。 示例任务位于公共 GitHub 存储库、 [Azure 示例/acr-任务][acr-tasks]中。 可以通过 Azure CLI 命令[az acr 运行][az-acr-run]来运行它们。 示例命令如下所示：
 
 ```azurecli
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-示例命令的格式假设已在 Azure CLI 中配置了默认注册表，因此省略了 `--registry` 参数。 若要配置默认注册表，请结合 `--defaults` 参数（接受 `acr=REGISTRY_NAME` 值）使用 [az configure][az-configure] 命令。
+示例命令的格式假设已在 Azure CLI 中配置了默认注册表，因此省略了 `--registry` 参数。 若要配置默认注册表, 请使用带有`--defaults`参数的[az configure][az-configure]命令`acr=REGISTRY_NAME` , 该命令接受值。
 
 例如，若要在 Azure CLI 中配置名为“myregistry”的默认注册表：
 
@@ -77,38 +78,38 @@ az configure --defaults acr=myregistry
 
 ## <a name="task-properties"></a>任务属性
 
-任务属性通常显示在顶部`acr-task.yaml`文件，并应用完整的任务步骤的执行中的全局属性。 其中的某些全局属性可在单个步骤中重写。
+任务属性通常显示在`acr-task.yaml`文件的顶部, 是全局属性, 适用于整个任务步骤的整个执行。 其中的某些全局属性可在单个步骤中重写。
 
-| 属性 | Type | 可选 | 描述 | 支持的重写 | 默认值 |
+| 属性 | 类型 | 可选 | 描述 | 支持的重写 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | 字符串 | 是 | ACR 任务服务分析的 `acr-task.yaml` 文件的版本。 ACR 任务致力于保持向后兼容性，而此值能使 ACR 任务与某个定义的版本保持兼容。 如果未指定，默认为最新版本。 | 否 | 无 |
-| `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 如果任务指定的属性，它会设置默认`timeout`属性的所有步骤。 如果`timeout`属性指定上一步，它将替代任务提供的属性。 | 是 | 600（10 分钟） |
-| `workingDirectory` | 字符串 | 是 | 在运行时容器的工作目录。 如果任务指定的属性，它会设置默认`workingDirectory`属性的所有步骤。 如果指定上一步，它将替代任务提供的属性。 | 是 | `$HOME` |
-| `env` | [字符串, 字符串, ...] | 是 |  中的字符串数组`key=value`定义该任务的环境变量的格式。 如果任务指定的属性，它会设置默认`env`属性的所有步骤。 如果指定上一步，它将替代继承自该任务的任何环境变量。 | 无 |
-| `secrets` | [secret, secret, ...] | 是 | 数组[机密](#secret)对象。 | 无 |
-| `networks` | [网络，网络，...] | 是 | 数组[网络](#network)对象。 | 无 |
+| `version` | string | 是 | ACR 任务服务分析的 `acr-task.yaml` 文件的版本。 ACR 任务致力于保持向后兼容性，而此值能使 ACR 任务与某个定义的版本保持兼容。 如果未指定, 则默认为最新版本。 | 否 | 无 |
+| `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 如果在任务上指定了属性, 则会设置所有步骤`timeout`的默认属性。 如果在`timeout`步骤上指定了属性, 则它将覆盖任务提供的属性。 | 是 | 600（10 分钟） |
+| `workingDirectory` | string | 是 | 运行时容器的工作目录。 如果在任务上指定了属性, 则会设置所有步骤`workingDirectory`的默认属性。 如果是在步骤中指定的, 它将重写任务提供的属性。 | 是 | `$HOME` |
+| `env` | [字符串, 字符串, ...] | 是 |  `key=value`格式的字符串数组, 用于定义任务的环境变量。 如果在任务上指定了属性, 则会设置所有步骤`env`的默认属性。 如果是在步骤中指定的, 它将重写从任务继承的任何环境变量。 | 无 |
+| `secrets` | [secret, secret, ...] | 是 | [机密](#secret)对象的数组。 | 无 |
+| `networks` | [network, network, ...] | 是 | [网络](#network)对象的数组。 | 无 |
 
 ### <a name="secret"></a>secret
 
 机密对象具有以下属性。
 
-| 属性 | Type | 可选 | 描述 | 默认值 |
+| 属性 | type | 可选 | 描述 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | 字符串 | 否 | 机密标识符。 | 无 |
-| `akv` | 字符串 | 是 | Azure Key Vault (AKV) 机密 URL。 | 无 |
-| `clientID` | 字符串 | 是 | 客户端 ID 的用户分配管理 Azure 资源的标识。 | 无 |
+| `id` | string | 否 | 机密的标识符。 | 无 |
+| `keyvault` | string | 是 | Azure Key Vault 的机密 URL。 | None |
+| `clientID` | string | 是 | 用户为 Azure 资源[分配的托管标识](container-registry-tasks-authentication-managed-identity.md)的客户端 ID。 | 无 |
 
 ### <a name="network"></a>网络
 
-网络对象具有以下属性。
+Network 对象具有以下属性。
 
-| 属性 | Type | 可选 | 描述 | 默认值 |
+| 属性 | 类型 | 可选 | 描述 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | 字符串 | 否 | 网络的名称。 | 无 |
-| `driver` | 字符串 | 是 | 若要管理的网络驱动程序。 | 无 |
-| `ipv6` | bool | 是 | 是否已启用 IPv6 网络。 | `false` |
-| `skipCreation` | bool | 是 | 是否要跳过网络创建。 | `false` |
-| `isDefault` | bool | 是 | 该网络是提供使用 Azure 容器注册表的默认网络 | `false` |
+| `name` | string | 否 | 网络的名称。 | None |
+| `driver` | string | 是 | 用于管理网络的驱动程序。 | 无 |
+| `ipv6` | bool | 是 | IPv6 网络是否已启用。 | `false` |
+| `skipCreation` | bool | 是 | 是否跳过网络创建。 | `false` |
+| `isDefault` | bool | 是 | 网络是否是随 Azure 容器注册表提供的默认网络 | `false` |
 
 ## <a name="task-step-types"></a>步骤任务类型
 
@@ -118,7 +119,7 @@ ACR 任务支持三种步骤类型。 每种步骤类型支持多个属性，每
 | --------- | ----------- |
 | [`build`](#build) | 使用熟悉的 `docker build` 语法生成容器映像。 |
 | [`push`](#push) | 执行 `docker push`，将新生成或重新标记的映像推送到容器注册表。 支持 Azure 容器注册表、其他专用注册表和公共 Docker 中心。 |
-| [`cmd`](#cmd) | 结合传递给容器的 `[ENTRYPOINT]` 的参数，以命令形式运行容器。 `cmd`步骤类型支持等参数`env`， `detach`，和其他熟悉`docker run`命令选项，启用单元测试和并发容器执行功能测试。 |
+| [`cmd`](#cmd) | 结合传递给容器的 `[ENTRYPOINT]` 的参数，以命令形式运行容器。 步骤类型支持`env` `docker run` 、 `detach`和其他熟悉的命令选项等参数, 从而实现了并发容器执行的单元测试和功能测试。 `cmd` |
 
 ## <a name="build"></a>build
 
@@ -137,36 +138,36 @@ steps:
 
 | 参数 | 描述 | 可选 |
 | --------- | ----------- | :-------: |
-| `-t` &#124; `--image` | 定义所生成的映像的完全限定 `image:tag`。<br /><br />由于映像可用于内部任务验证（例如功能测试），并非所有映像都需要通过 `push` 推送到注册表。 但是，若要实例化任务执行中的某个映像，该映像确实需要引用某个名称。<br /><br />与不同`az acr build`，正在运行的 ACR 任务不提供默认推送行为。 使用 ACR 任务时，默认方案假设能够生成、验证再推送映像。 请参阅 [push](#push)，了解如何选择性地推送所生成的映像。 | 是 |
-| `-f` &#124; `--file` | 指定要传递给 `docker build` 的 Dockerfile。 如果未指定，则假设使用上下文根目录中的默认 Dockerfile。 若要指定的 Dockerfile，传递相对于上下文的根文件名。 | 是 |
+| `-t` &#124; `--image` | 定义所生成的映像的完全限定 `image:tag`。<br /><br />由于映像可用于内部任务验证（例如功能测试），并非所有映像都需要通过 `push` 推送到注册表。 但是，若要实例化任务执行中的某个映像，该映像确实需要引用某个名称。<br /><br />与`az acr build`不同的是, 运行 ACR 任务并不提供默认的推送行为。 使用 ACR 任务时，默认方案假设能够生成、验证再推送映像。 请参阅 [push](#push)，了解如何选择性地推送所生成的映像。 | 是 |
+| `-f` &#124; `--file` | 指定要传递给 `docker build` 的 Dockerfile。 如果未指定，则假设使用上下文根目录中的默认 Dockerfile。 若要指定 Dockerfile, 请将文件名相对于上下文的根进行传递。 | 是 |
 | `context` | 传递给 `docker build` 的根目录。 每个任务的根目录设置为某个共享的 [workingDirectory](#task-step-properties)，包括关联的 Git 克隆目录所在的根目录。 | 否 |
 
 ### <a name="properties-build"></a>属性：build
 
-`build` 步骤类型支持以下属性。 查找中的这些属性的详细信息[任务步骤属性](#task-step-properties)本文的部分。
+`build` 步骤类型支持以下属性。 在本文的[任务步骤属性](#task-step-properties)部分中查找这些属性的详细信息。
 
 | | | |
 | -------- | ---- | -------- |
 | `detach` | bool | 可选 |
 | `disableWorkingDirectoryOverride` | bool | 可选 |
-| `entryPoint` | 字符串 | 可选 |
+| `entryPoint` | string | 可选 |
 | `env` | [字符串, 字符串, ...] | 可选 |
 | `expose` | [字符串, 字符串, ...] | 可选 |
-| `id` | 字符串 | 可选 |
+| `id` | string | 可选 |
 | `ignoreErrors` | bool | 可选 |
-| `isolation` | 字符串 | 可选 |
+| `isolation` | string | 可选 |
 | `keep` | bool | 可选 |
-| `network` | 对象 | 可选 |
+| `network` | object | 可选 |
 | `ports` | [字符串, 字符串, ...] | 可选 |
 | `pull` | bool | 可选 |
 | `repeat` | int | 可选 |
 | `retries` | int | 可选 |
 | `retryDelay` | 整数（秒） | 可选 |
-| `secret` | 对象 | 可选 |
+| `secret` | object | 可选 |
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
 | `when` | [字符串, 字符串, ...] | 可选 |
-| `workingDirectory` | 字符串 | 可选 |
+| `workingDirectory` | string | 可选 |
 
 ### <a name="examples-build"></a>示例：build
 
@@ -215,12 +216,12 @@ steps:
 
 ### <a name="properties-push"></a>属性：push
 
-`push` 步骤类型支持以下属性。 查找中的这些属性的详细信息[任务步骤属性](#task-step-properties)本文的部分。
+`push` 步骤类型支持以下属性。 在本文的[任务步骤属性](#task-step-properties)部分中查找这些属性的详细信息。
 
 | | | |
 | -------- | ---- | -------- |
 | `env` | [字符串, 字符串, ...] | 可选 |
-| `id` | 字符串 | 可选 |
+| `id` | string | 可选 |
 | `ignoreErrors` | bool | 可选 |
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
@@ -266,24 +267,24 @@ steps:
 | -------- | ---- | -------- |
 | `detach` | bool | 可选 |
 | `disableWorkingDirectoryOverride` | bool | 可选 |
-| `entryPoint` | 字符串 | 可选 |
+| `entryPoint` | string | 可选 |
 | `env` | [字符串, 字符串, ...] | 可选 |
 | `expose` | [字符串, 字符串, ...] | 可选 |
-| `id` | 字符串 | 可选 |
+| `id` | string | 可选 |
 | `ignoreErrors` | bool | 可选 |
-| `isolation` | 字符串 | 可选 |
+| `isolation` | string | 可选 |
 | `keep` | bool | 可选 |
-| `network` | 对象 | 可选 |
+| `network` | object | 可选 |
 | `ports` | [字符串, 字符串, ...] | 可选 |
 | `pull` | bool | 可选 |
 | `repeat` | int | 可选 |
 | `retries` | int | 可选 |
 | `retryDelay` | 整数（秒） | 可选 |
-| `secret` | 对象 | 可选 |
+| `secret` | object | 可选 |
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
 | `when` | [字符串, 字符串, ...] | 可选 |
-| `workingDirectory` | 字符串 | 可选 |
+| `workingDirectory` | string | 可选 |
 
 可在本文的[任务步骤属性](#task-step-properties)部分找到这些属性的详细信息。
 
@@ -334,9 +335,9 @@ steps:
   - cmd: docker.io/bash:3.0 echo hello world
 ```
 
-通过使用标准`docker run`图像引用约定`cmd`可以从任何专用注册表或公共 Docker 中心运行的映像。 如果引用执行 ACR 任务的同一注册表中的映像，则无需指定任何注册表凭据。
+通过使用标准`docker run`映像引用约定, `cmd`可以从任何专用注册表或公共 Docker 中心运行映像。 如果引用执行 ACR 任务的同一注册表中的映像，则无需指定任何注册表凭据。
 
-* 运行从 Azure 容器注册表的映像
+* 运行 Azure 容器注册表中的映像
 
     将 `[myregistry]` 替换为注册表的名称：
 
@@ -362,32 +363,32 @@ steps:
 
 每个步骤类型支持适用于其类型的多个属性。 下表定义了所有可用的步骤属性。 并非所有步骤类型都支持所有属性。 若要查看其中的哪些属性可用于每个步骤类型，请参阅 [cmd](#cmd)、[build](#build) 和 [push](#push) 步骤类型参考部分。
 
-| 属性 | Type | 可选 | 描述 | 默认值 |
+| 属性 | 类型 | 可选 | 描述 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | 是 | 在运行时是否应分离容器。 | `false` |
-| `disableWorkingDirectoryOverride` | bool | 是 | 是否禁用`workingDirectory`重写功能。 结合使用这`workingDirectory`具有完全控制容器的工作目录。 | `false` |
-| `entryPoint` | 字符串 | 是 | 重写步骤容器的 `[ENTRYPOINT]`。 | 无 |
-| `env` | [字符串, 字符串, ...] | 是 | 采用 `key=value` 格式的字符串数组，定义步骤的环境变量。 | 无 |
+| `disableWorkingDirectoryOverride` | bool | 是 | 是否禁用`workingDirectory`重写功能。 将此与`workingDirectory`结合使用, 以完全控制容器的工作目录。 | `false` |
+| `entryPoint` | string | 是 | 重写步骤容器的 `[ENTRYPOINT]`。 | None |
+| `env` | [字符串, 字符串, ...] | 是 | 采用 `key=value` 格式的字符串数组，定义步骤的环境变量。 | None |
 | `expose` | [字符串, 字符串, ...] | 是 | 从容器公开的端口的数组。 |  无 |
-| [`id`](#example-id) | 字符串 | 是 | 唯一标识任务中的步骤。 任务中的其他步骤可以引用步骤的 `id`，例如，使用 `when` 执行依赖项检查。<br /><br />`id` 也是正在运行的容器的名称。 例如，在任务的其他容器中运行的进程可以引用 `id` 作为其 DNS 主机名，或者通过 Docker 日志 [id] 来访问该步骤。 | `acb_step_%d`其中`%d`是自上而下的 YAML 文件中的步的基于 0 的索引 |
-| `ignoreErrors` | bool | 是 | 是否要将步骤标记为成功而不考虑是否在容器执行期间发生了错误。 | `false` |
-| `isolation` | 字符串 | 是 | 容器的隔离级别。 | `default` |
+| [`id`](#example-id) | string | 是 | 唯一标识任务中的步骤。 任务中的其他步骤可以引用步骤的 `id`，例如，使用 `when` 执行依赖项检查。<br /><br />`id` 也是正在运行的容器的名称。 例如，在任务的其他容器中运行的进程可以引用 `id` 作为其 DNS 主机名，或者通过 Docker 日志 [id] 来访问该步骤。 | `acb_step_%d`, 其中`%d`是 YAML 文件中的第一步的从零开始的索引。 |
+| `ignoreErrors` | bool | 是 | 是否将步骤标记为成功, 而不管容器执行过程中是否发生了错误。 | `false` |
+| `isolation` | string | 是 | 容器的隔离级别。 | `default` |
 | `keep` | bool | 是 | 执行后是否应保留该步骤的容器。 | `false` |
-| `network` | 对象 | 是 | 标识在其中的容器运行的网络。 | 无 |
+| `network` | object | 是 | 标识运行容器的网络。 | 无 |
 | `ports` | [字符串, 字符串, ...] | 是 | 从容器发布到主机的端口的数组。 |  无 |
-| `pull` | bool | 是 | 是否要强制执行它以防止任何缓存的行为之前的容器的请求。 | `false` |
-| `privileged` | bool | 是 | 是否要在特权模式下运行该容器。 | `false` |
-| `repeat` | int | 是 | 重试重复容器的执行次数。 | 0 |
-| `retries` | int | 是 | 若要尝试，则在容器失败执行的重试次数。 如果容器的退出代码为非零值，只被尝试重试。 | 0 |
-| `retryDelay` | 整数（秒） | 是 | 以秒为单位的容器的执行的重试之间延迟。 | 0 |
-| `secret` | 对象 | 是 | 标识 Azure 密钥保管库机密或 Azure 资源的托管的标识。 | 无 |
-| `startDelay` | 整数（秒） | 是 | 容器的执行的延迟秒数。 | 0 |
+| `pull` | bool | 是 | 是否在执行容器之前强制提取容器以防止任何缓存行为。 | `false` |
+| `privileged` | bool | 是 | 是否在特权模式下运行容器。 | `false` |
+| `repeat` | int | 是 | 用于重复执行容器的重试次数。 | 0 |
+| `retries` | int | 是 | 容器执行失败时的重试次数。 如果容器的退出代码为非零, 则仅尝试重试。 | 0 |
+| `retryDelay` | 整数（秒） | 是 | 容器执行重试之间的延迟 (以秒为单位)。 | 0 |
+| `secret` | object | 是 | 标识 Azure 资源的 Azure Key Vault 机密或[托管标识](container-registry-tasks-authentication-managed-identity.md)。 | 无 |
+| `startDelay` | 整数（秒） | 是 | 延迟容器执行的秒数。 | 0 |
 | `timeout` | 整数（秒） | 是 | 步骤在终止之前可以执行的最大秒数。 | 600 |
 | [`when`](#example-when) | [字符串, 字符串, ...] | 是 | 配置某个步骤对任务中其他一个或多个步骤的依赖。 | 无 |
-| `user` | 字符串 | 是 | 用户名或 UID 的容器 | 无 |
-| `workingDirectory` | 字符串 | 是 | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `$HOME` |
+| `user` | string | 是 | 容器的用户名或 UID | 无 |
+| `workingDirectory` | string | 是 | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `$HOME` |
 
-### <a name="examples-task-step-properties"></a>示例：任务步骤属性
+### <a name="examples-task-step-properties"></a>示例:任务步骤属性
 
 #### <a name="example-id"></a>示例：id
 
@@ -427,7 +428,7 @@ az acr run -f when-sequential-id.yaml https://github.com/Azure-Samples/acr-tasks
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-sequential-id.yaml -->
 [!code-yml[task](~/acr-tasks/when-sequential-id.yaml)]
 
-并行映像生成中：
+并行映像生成:
 
 ```azurecli
 az acr run -f when-parallel.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -452,8 +453,10 @@ ACR 任务包含一组在执行时可供任务步骤使用的默认变量。 可
 * `Run.ID`
 * `Run.Registry`
 * `Run.Date`
+* `Run.Commit`
+* `Run.Branch`
 
-### <a name="run46id"></a>运行 ID
+### <a name="runid"></a>Run.ID
 
 通过 `az acr run` 执行的，或者使用基于触发器的执行任务通过 `az acr task create` 创建的每个运行都有唯一的 ID。 此 ID 表示当前正在执行的运行。
 
@@ -478,6 +481,14 @@ steps:
 ### <a name="rundate"></a>Run.Date
 
 运行开始时的当前 UTC 时间。
+
+### <a name="runcommit"></a>Run.Commit
+
+对于由提交到 GitHub 存储库的任务, 提交标识符。
+
+### <a name="runbranch"></a>Run.Branch
+
+对于由提交到 GitHub 存储库的任务, 分支名称。
 
 ## <a name="next-steps"></a>后续步骤
 

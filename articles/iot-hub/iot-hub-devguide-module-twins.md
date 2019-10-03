@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
 ms.openlocfilehash: cd0a9a66f3014a39a73cf04badfc67cd2ff4c3de
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295736"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61363176"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>在 IoT 中心内了解并使用模块孪生
 
@@ -26,7 +26,7 @@ ms.locfileid: "58295736"
 
 本文介绍：
 
-* 模块孪生的结构：标记、所需的属性和报告的属性。
+* 模块孪生的结构：标记、所需的属性和报告的属性    。
 * 模块和后端可在模块孪生上执行的操作。
 
 有关使用报告的属性、设备到云的消息或文件上传的指导，请参阅[设备到云的通信指南](iot-hub-devguide-d2c-guidance.md)。
@@ -176,7 +176,7 @@ ms.locfileid: "58295736"
 
   - 属性
 
-    | 名称 | 值 |
+    | Name | 值 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
@@ -191,7 +191,7 @@ ms.locfileid: "58295736"
 
     消息系统属性以 `$` 符号为前缀。
 
-  - Body
+  - 正文
         
     本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，
 
@@ -214,7 +214,7 @@ ms.locfileid: "58295736"
     }
     ```
 
-上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ServiceConnect 权限。
+上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ServiceConnect 权限  。
 
 除了上述操作以外，解决方案后端还可以使用类似于 SQL 的 [IoT 中心查询语言](iot-hub-devguide-query-language.md)查询模块孪生。
 
@@ -228,7 +228,7 @@ ms.locfileid: "58295736"
 
 * **观察所需属性**。 当前连接的模块可以选择在所需属性发生更新时接收通知。 模块收到的更新格式与解决方案后端执行的更新格式相同（部分或完全替换）。
 
-上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ModuleConnect 权限。
+上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ModuleConnect 权限  。
 
 借助 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md)，可通过多种语言和平台轻松使用上述操作。
 

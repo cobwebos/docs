@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/14/2019
+ms.date: 05/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 1e12af686a450d39332c37700b9a14b9eb620307
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dcb6729581d5282b32359874eaad22050d0d2048
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530878"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65510709"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>通过 Microsoft Power BI 使用 Azure Blockchain Workbench 数据
 
@@ -30,22 +30,22 @@ ms.locfileid: "57530878"
 ## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>将 Power BI 连接到 Azure Blockchain Workbench 中的数据
 
 1.  打开 Power BI Desktop。
-2.  选择“获取数据”。
+2.  选择“获取数据”  。
 
     ![获取数据](./media/data-powerbi/get-data.png)
-3.  从数据源类型列表中选择“SQL Server”。
+3.  从数据源类型列表中选择“SQL Server”。 
 
-4.  在对话框中提供服务器和数据库名称。 指定是要导入数据还是要执行 **DirectQuery**。 选择“确定”。
+4.  在对话框中提供服务器和数据库名称。 指定是要导入数据还是要执行 **DirectQuery**。 选择“确定”  。
 
     ![选择 SQL Server](./media/data-powerbi/select-sql.png)
 
-5.  提供数据库凭据来访问 Azure Blockchain Workbench。 选择“数据库”并输入凭据。
+5.  提供数据库凭据来访问 Azure Blockchain Workbench。 选择“数据库”  并输入凭据。
 
     如果使用由 Azure Blockchain Workbench 部署过程创建的凭据，则用户名是 **dbadmin** 并且密码是在部署过程中提供的密码。
 
     ![SQL DB 设置](./media/data-powerbi/db-settings.png)
 
-6.  在连接到数据库后，“导航器”对话框将显示数据库中可用的表和视图。 视图设计用来提供报告并且全部以 **vw** 作为前缀。
+6.  在连接到数据库后，“导航器”对话框将显示数据库中可用的表和视图。  视图设计用来提供报告并且全部以 **vw** 作为前缀。
 
     ![导航器](./media/data-powerbi/navigator.png)
 

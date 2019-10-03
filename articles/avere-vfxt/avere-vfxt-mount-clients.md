@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
 ms.openlocfilehash: 41065b4ac6bc486e204c2bfd72b78ba8722270c4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809154"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60409329"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>装载 Avere vFXT 群集  
 
@@ -74,24 +74,24 @@ function mount_round_robin() {
 
 ### <a name="junction-and-ip"></a>交接点和 IP
 
-vserver 路径是其 IP 地址加上命名空间交接点的路径的组合。 命名空间交接点是在添加存储系统时定义的虚拟路径。
+vserver 路径是其 IP 地址加上命名空间交接点的路径的组合   。 命名空间交接点是在添加存储系统时定义的虚拟路径。
 
 如果群集是使用 Blob 存储创建的，则命名空间路径为 `/msazure`
 
 示例： ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-如果在创建群集后添加了存储，则命名空间交接点路径对应于在创建交接点时在命名空间路径中设置的值。 例如，如果使用 ``/avere/files`` 作为命名空间路径，则客户端会将 IP_address:/avere/files 装载到其本地装载点。
+如果在创建群集后添加了存储，则命名空间交接点路径对应于在创建交接点时在命名空间路径中设置的值  。 例如，如果使用 ``/avere/files`` 作为命名空间路径，则客户端会将 IP_address:/avere/files 装载到其本地装载点  。
 
 ![在命名空间路径字段中使用 /avere/files 添加“添加新交接点”对话框](media/avere-vfxt-create-junction-example.png)
 
 
 IP 地址是为 vserver 定义的面向客户端的 IP 地址之一。 可在 Avere 控制面板中的两个位置找到面向客户端的 IP 范围：
 
-* VServers 表（仪表板选项卡） - 
+* VServers 表（仪表板选项卡）  - 
 
   ![Avere 控制面板的仪表板选项卡，在图表下方的数据表中选择了 VServer 选项卡，并且带有 IP 地址部分](media/avere-vfxt-ip-addresses-dashboard.png)
 
-* 面向客户端的网络设置页面 - 
+* 面向客户端的网络设置页面  - 
 
   ![“设置”>“VServer”>“面向客户端的网络”配置页面，在特定虚拟服务器的表的“地址范围”部分周围有一个圆圈](media/avere-vfxt-ip-addresses-settings.png)
 

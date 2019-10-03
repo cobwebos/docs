@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 40c9fac27f45699d4c56e57480dcfde1b0ffb64d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: f7e1507289d3c21d51a0ec8529598e5eeb089d37
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629920"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859007"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入门：使用人脸 REST API 和 C# 检测图像中的人脸
 
@@ -51,8 +51,9 @@ using System.Text;
 
 ### <a name="add-essential-fields"></a>添加必要的字段
 
-添加包含以下字段的 **Program** 类。 该数据指定如何连接到人脸服务，以及在何处获取输入数据。 需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的区域标识符（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。
+添加包含以下字段的 **Program** 类。 该数据指定如何连接到人脸服务，以及在何处获取输入数据。 需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含资源终结点字符串。
 
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 namespace DetectFace
@@ -62,22 +63,15 @@ namespace DetectFace
 
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
-
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
+        
+        // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
 ```
 
 ### <a name="receive-image-input"></a>接收图像输入
 
-将以下代码添加到 **Program** 类的 **Main** 方法。 这样会将一个提示写入到控制台，要求用户输入图像 URL。 然后，它会调用另一方法 (**MakeAnalysisRequest**)，在该位置处理图像。
+将以下代码添加到 **Program** 类的 **Main** 方法。 此代码会将一个提示写入到控制台，要求用户输入图像 URL。 然后，它会调用另一方法 (**MakeAnalysisRequest**)，在该位置处理图像。
 
 ```csharp
         static void Main(string[] args)
@@ -162,7 +156,7 @@ namespace DetectFace
 
 ### <a name="process-the-input-image-data"></a>处理输入图像数据
 
-将以下方法添加到 **Program** 类。 这会将指定 URL 中的图像转换为字节数组。
+将以下方法添加到 **Program** 类。 此方法会将指定 URL 中的图像转换为字节数组。
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +173,7 @@ namespace DetectFace
 
 ### <a name="parse-the-json-response"></a>分析 JSON 响应
 
-将以下方法添加到 **Program** 类。 这会格式化 JSON 输入，使之更加易于读取。 应用会将该字符串数据写入到控制台。 然后即可关闭类和命名空间。
+将以下方法添加到 **Program** 类。 此方法会格式化 JSON 输入，使之更加易于读取。 应用会将该字符串数据写入到控制台。 然后即可关闭类和命名空间。
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.

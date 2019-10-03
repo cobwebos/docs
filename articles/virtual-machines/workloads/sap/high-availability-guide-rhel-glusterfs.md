@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.openlocfilehash: fd5014de622c37950c15006c2cc4dcbbb27ef8e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342317"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101123"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS
 
@@ -28,14 +27,14 @@ ms.locfileid: "53342317"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2009879]:https://launchpad.support.sap.com/#/notes/2009879
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2009879]: https://launchpad.support.sap.com/#/notes/2009879
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
@@ -44,7 +43,7 @@ ms.locfileid: "53342317"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 
 本文介绍了如何部署虚拟机、配置虚拟机以及安装可用于存储高可用性 SAP 系统的共享数据的 GlusterFS 群集。
-本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的 GlusterFS。 示例中的资源名称（例如虚拟机、虚拟网络）假设你将 [SAP 文件服务器模板][template-file-server]与资源前缀 glust 配合使用。
+本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的 GlusterFS。 示例中的资源名称 (例如虚拟机、虚拟网络) 假设你已将[SAP 文件服务器模板][template-file-server]与资源前缀**glust**一起使用。
 
 请先阅读以下 SAP 说明和文档
 
@@ -62,8 +61,8 @@ ms.locfileid: "53342317"
 * SAP 说明 [2243692] 包含 Azure 中的 Linux 上的 SAP 许可的相关信息。
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
-* [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署（本文）][deployment-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署 (本文)][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [Product Documentation for Red Hat Gluster Storage](https://access.redhat.com/documentation/red_hat_gluster_storage/)（Red Hat Gluster Storage 产品文档）
 * 通用 RHEL 文档
@@ -89,7 +88,7 @@ ms.locfileid: "53342317"
 Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于部署新的虚拟机。
 可以使用 github 上的某个快速启动模板部署全部所需资源。 该模板部署虚拟机、可用性集等。请遵照以下步骤部署模板：
 
-1. 在 Azure 门户中打开 [SAP 文件服务器模板][template-file-server]
+1. 在 Azure 门户中打开[SAP 文件服务器模板][template-file-server]
 1. 输入以下参数
    1. 资源前缀  
       输入想要使用的前缀。 此值将用作所要部署的资源的前缀。
@@ -356,4 +355,4 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
-* 若要了解如何在 Azure VM 上建立 SAP HANA 高可用性以及规划灾难恢复，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复, 请参阅[Azure 虚拟机 (vm) 上的 SAP HANA 的高可用性][sap-hana-ha]

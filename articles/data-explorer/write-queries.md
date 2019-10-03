@@ -7,18 +7,18 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: b1a7e64cf6b85b517bc027d6541d63c9be729734
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 80d3eaaf7e588766d62f5e5885d75e61c590970e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274616"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881185"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Azure 数据资源管理器的编写查询
 
 在本文中，你将了解如何在 Azure 数据资源管理器中使用查询语言通过最常见的运算符来执行基本查询。 此外，还可以接触到一些更高级的语言功能。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 可以通过以下两种方式之一运行本文中的查询：
 
@@ -39,7 +39,7 @@ Azure 数据资源管理器中的查询语言是处理数据并返回结果的�
 
 例如，下面的查询有一个单独的语句，它是一个表格表达式语句。 该语句从对名为 `StormEvents` 的表引用开始（宿主此表的数据库在此是隐式的，并且是连接信息的一部分）。 然后，该表的数据（行）依次由 `StartTime` 列的值和 `State` 列的值进行筛选。 然后查询返回“幸存”的行计数。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVWws1VISSxJLQGyNYwMDMx1DQ11DQw1FRLzUpBU2aArMgIpQjGvJFXB1lZByc3HP8jTxVFJQQEkm5xfmlcCAHoR9euCAAAA)**\]**
+**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSjPSC1KVQguSSwqCcnMTVWws1VISSxJLQGyNYwMDMx1DQ11DQw1FRLzUpBU2aArMgIpQjGvJFXB1lZByc3HP8jTxVFJQQEkm5xfmlcCAHoR9euCAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -75,7 +75,7 @@ StormEvents
 
 以下查询返回 StormEvents 表中的行数。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA)**\]**
+**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA) **\]**
 
 ```Kusto
 StormEvents | count
@@ -87,7 +87,7 @@ StormEvents | count
 
 以下查询从 StormEvents 表返回 5 行。 关键字“limit”是“take”的别名。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d)**\]**
+**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVqhRKEnMTlUwBQDEz2b8FAAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents | take 5
@@ -102,7 +102,7 @@ StormEvents | take 5
 
 以下查询将返回一组特定的列。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxKLSkIyc1N1FFzzUiAMoFgJiA%2fSFlJZAGS6JOYmpqcGFOUXpBaVVAKlCjKL81NS%2fRKLihJLMstSAY%2buIINnAAAA)**\]**
+**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUShJzE5VMAWxCorys1KTSxSCSxKLSkIyc1N1FFzzUiAMoFgJiA%2fSFlJZAGS6JOYmpqcGFOUXpBaVVAKlCjKL81NS%2fRKLihJLMstSAY%2buIINnAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -110,13 +110,13 @@ StormEvents
 | project StartTime, EndTime, State, EventType, DamageProperty, EpisodeNarrative
 ```
 
-### <a name="where"></a>其中
+### <a name="where"></a>where
 
 [**where**](https://docs.microsoft.com/azure/kusto/query/whereoperator)：筛选表，获取满足谓词的行子集。
 
 以下查询依据 `EventType` 和 `State` 来筛选数据。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAEWMPQvCMBCGd8H%2fcFuWro4dBOvHkgoJOB%2fm0KjJhetRKfjjNe3g9n49r1OW1I2UdVivPvC%2bkxDM3k%2bFoG3B7F%2fMwQDmAE5Rl%2fCydceTPfjemsopPgk2VRXhB121TkV9TNRAl8MiZrz53zeww4Q3OgsXEp1%2bVYkDB7IoghpH%2bgI9OH8WnwAAAA%3d%3d)**\]**
+**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAEWMPQvCMBCGd8H%2fcFuWro4dBOvHkgoJOB%2fm0KjJhetRKfjjNe3g9n49r1OW1I2UdVivPvC%2bkxDM3k%2bFoG3B7F%2fMwQDmAE5Rl%2fCydceTPfjemsopPgk2VRXhB121TkV9TNRAl8MiZrz53zeww4Q3OgsXEp1%2bVYkDB7IoghpH%2bgI9OH8WnwAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -131,7 +131,7 @@ StormEvents
 
 以下查询依据 `DamageProperty` 按降序对数据进行排序。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2NPQvCMBCGd8H%2fcFuXrI4dBOvHEoUGnM%2fm0KjphctRKfjjNe0guL0fvM%2fbKktsBuo1LxdveN1ICCbvxkRQ11Btn8y%2bAuw9tIo6h%2bd1uz%2fYnTvaquwyi8JlhA1GvNJJOJHoCJ5yV2rFB8GqqCR8p04LSdSFSAaa3s9iopvfu%2fnDfasUMnuyKIIaBvoAtvGMsb4AAAA%3d)**\]**
+**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAF2NPQvCMBCGd8H%2fcFuXrI4dBOvHEoUGnM%2fm0KjphctRKfjjNe0guL0fvM%2fbKktsBuo1LxdveN1ICCbvxkRQ11Btn8y%2bAuw9tIo6h%2bd1uz%2fYnTvaquwyi8JlhA1GvNJJOJHoCJ5yV2rFB8GqqCR8p04LSdSFSAaa3s9iopvfu%2fnDfasUMnuyKIIaBvoAtvGMsb4AAAA%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -146,7 +146,7 @@ StormEvents
 
 ### <a name="top"></a>top
 
-[top](https://docs.microsoft.com/azure/kusto/query/topoperator)：返回按指定列排序的前“N”个记录 **。
+[top](https://docs.microsoft.com/azure/kusto/query/topoperator)：返回按指定列排序的前 *N* 列。
 
 以下查询返回与上面相同的结果，并减少了一个运算符。
 
@@ -270,7 +270,7 @@ StormEvents
 
 ### <a name="bin"></a>bin()
 
-[**bin()**](https://docs.microsoft.com/azure/kusto/query/binfunction)：将值向下舍入到给定 bin 大小的整数倍。
+[**bin()** ](https://docs.microsoft.com/azure/kusto/query/binfunction)：将值向下舍入到给定 bin 大小的整数倍。
 
 以下查询计算一天存储桶大小的计数。
 
@@ -303,7 +303,7 @@ StormEvents
 
 ### <a name="extract"></a>extract()
 
-[**extract()**](https://docs.microsoft.com/azure/kusto/query/extractfunction)：从文本字符串中获取正则表达式的匹配项。
+[**extract()** ](https://docs.microsoft.com/azure/kusto/query/extractfunction)：从文本字符串中获取正则表达式的匹配项。
 
 以下查询从跟踪中提取特定属性值。
 
@@ -317,9 +317,9 @@ MyData
 
 此查询使用 let 语句，将名称（在此情况下为 `MyData`）绑定到表达式。 对于范围中的其余部分，其中出现 let 语句（全局范围或在函数正文范围内），可以使用名称来引用其绑定值。
 
-### <a name="parsejson"></a>parse_json()
+### <a name="parse_json"></a>parse_json()
 
-[**parse_json()**](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction)：将字符串解释为 JSON 值并以动态方式返回值。 当需要提取 JSON 复合对象的多个元素时，使用它比使用 extractjson() 函数更好。
+[**parse_json()** ](https://docs.microsoft.com/azure/kusto/query/parsejsonfunction)：将字符串解释为 JSON 值并以动态方式返回值。 当需要提取 JSON 复合对象的多个元素时，使用它比使用 extractjson() 函数更好。
 
 以下查询从数组中提取 JSON 元素。
 
@@ -357,7 +357,7 @@ MyData
 
 ### <a name="ago"></a>ago()
 
-[**ago()**](https://docs.microsoft.com/azure/kusto/query/agofunction)：从当前 UTC 时钟时间减去给定时间跨度。
+[**ago()** ](https://docs.microsoft.com/azure/kusto/query/agofunction)：从当前 UTC 时钟时间减去给定时间跨度。
 
 以下查询返回最近 12 个小时的数据。
 
@@ -373,7 +373,7 @@ print TimeStamp= range(now(-5d), now(), 1h), SomeCounter = range(1,121)
 
 ### <a name="startofweek"></a>startofweek()
 
-[**startofweek()**](https://docs.microsoft.com/azure/kusto/query/startofweekfunction)：返回包含日期的一周的起点，根据偏移量移动（如提供）
+[**startofweek()** ](https://docs.microsoft.com/azure/kusto/query/startofweekfunction)：返回包含日期的一周的起点，根据偏移量移动（如提供）
 
 以下查询将返回带不同偏移量的一周的起点。
 
@@ -388,7 +388,7 @@ range offset from -1 to 1 step 1
 
 ### <a name="between"></a>between()
 
-[**between()**](https://docs.microsoft.com/azure/kusto/query/betweenoperator)：匹配包含范围内的输入。
+[**between()** ](https://docs.microsoft.com/azure/kusto/query/betweenoperator)：匹配包含范围内的输入。
 
 以下查询依据给定日期范围来筛选数据。
 
@@ -542,7 +542,7 @@ StormEvents
 
 ### <a name="dcount"></a>dcount()
 
-[**dcount()**](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction)：返回对组中某个表达式的非重复值数的估计值。 使用 [count()](https://docs.microsoft.com/azure/kusto/query/countoperator) 来计数所有值。
+[**dcount()** ](https://docs.microsoft.com/azure/kusto/query/dcount-aggfunction)：返回对组中某个表达式的非重复值数的估计值。 使用 [count()](https://docs.microsoft.com/azure/kusto/query/countoperator) 来计数所有值。
 
 以下查询根据 `State` 来计数非重复 `Source`。
 
@@ -555,7 +555,7 @@ StormEvents
 
 ### <a name="dcountif"></a>dcountif()
 
-[**dcountif()**](https://docs.microsoft.com/azure/kusto/query/dcountif-aggfunction)：返回谓词计算结果为 true 的行表达式非重复值数量的估计值。
+[**dcountif()** ](https://docs.microsoft.com/azure/kusto/query/dcountif-aggfunction)：返回谓词计算结果为 true 的行表达式非重复值数量的估计值。
 
 以下查询将计数其中 `DamageProperty < 5000` 的 `Source` 的非重复值。
 
@@ -567,9 +567,9 @@ StormEvents
 | summarize Sources = dcountif(Source, DamageProperty < 5000) by State
 ```
 
-### <a name="dcounthll"></a>dcount_hll()
+### <a name="dcount_hll"></a>dcount_hll()
 
-[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction)：从 HyperLogLog 结果中计算“dcount”（由 [“hll”](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) 或 [“hll_merge”](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction)生成） ****。
+[**dcount_hll()** ](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction)：计算 HyperLogLog 结果中的**dcount** (由[**hll**](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction)或[**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction)生成)。
 
 以下查询使用 HLL 算法来生成计数。
 
@@ -582,9 +582,9 @@ StormEvents
 | project dcount_hll(hllMerged)
 ```
 
-### <a name="argmax"></a>arg_max()
+### <a name="arg_max"></a>arg_max()
 
-[**arg_max()**](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction)：在最大化表达式的组中查找行，并返回另一个表达式的值（或使用 * 返回整个行）。
+[**arg_max()** ](https://docs.microsoft.com/azure/kusto/query/arg-max-aggfunction)：在最大化表达式的组中查找行，并返回另一个表达式的值（或使用 * 返回整个行）。
 
 以下查询返回每个州上次洪水报告的时间。
 
@@ -599,11 +599,11 @@ StormEvents
 
 ### <a name="makeset"></a>makeset()
 
-[**makeset()**](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction)：返回表达式在组中所获取非重复值集的动态 (JSON) 数组。
+[**makeset()** ](https://docs.microsoft.com/azure/kusto/query/makeset-aggfunction)：返回表达式在组中采用的非重复值集的动态 (JSON) 数组。
 
 以下查询返回每个州报告洪水的所有时间，并从非重复值集中创建一个数组。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWLQQ6CQBAE7yb8ocNJE76wR3mA8IEFOxF1mM3siIHweAVPHqsq1bianCeOnovDiveNRuzczokIAWX9VL2WW80vkWjDQuzuwqTmGQESH8z0Y%2bPRvB2EJ3QzvuTcvmR6Z%2b8%2fUf3NH6ZkMFeAAAAA)**\]**
+**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWLQQ6CQBAE7yb8ocNJE76wR3mA8IEFOxF1mM3siIHweAVPHqsq1bianCeOnovDiveNRuzczokIAWX9VL2WW80vkWjDQuzuwqTmGQESH8z0Y%2bPRvB2EJ3QzvuTcvmR6Z%2b8%2fUf3NH6ZkMFeAAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -614,11 +614,11 @@ StormEvents
 
 ### <a name="mv-expand"></a>mv-expand
 
-[**mv-展开**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator):从动态类型的列扩展多值集合，以便集合中的每个值都获得一个单独的行。 将复制扩展行中的所有其他列。 它与 makelist 相反。
+[**mv-expand**](https://docs.microsoft.com/azure/kusto/query/mvexpandoperator)：展开动态类型化列中的多值集合, 以便集合中的每个值获取单独的行。 将复制扩展行中的所有其他列。 它与 makelist 相反。
 
-下面的查询生成示例数据创建一组，然后使用它来演示**mv-展开**功能。
+以下查询通过创建一组数据，然后用其演示 **mv-expand** 功能来生成示例数据。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWOQQ6CQAxF9yTcoWGliTcws1MPIFygyk9EKTPpVBTj4Z2BjSz%2f738v7WF06r1vD2xcp%2bCoNq9yHDFYLIsvvW5Q0JybKYCco2omqnyNTxHW7oPFckbwajFZhB%2bIsE1trNZ0gi1dpuRmQ%2baC%2bjuuthS7Fbwvi%2f%2bP8lpGvAMP7Wr3A6BceSu7AAAA)**\]**
+**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAFWOQQ6CQAxF9yTcoWGliTcws1MPIFygyk9EKTPpVBTj4Z2BjSz%2f738v7WF06r1vD2xcp%2bCoNq9yHDFYLIsvvW5Q0JybKYCco2omqnyNTxHW7oPFckbwajFZhB%2bIsE1trNZ0gi1dpuRmQ%2baC%2bjuuthS7Fbwvi%2f%2bP8lpGvAMP7Wr3A6BceSu7AAAA) **\]**
 
 ```Kusto
 let FloodDataSet = StormEvents
@@ -631,7 +631,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction)：返回表达式定义的指定人口中 [“最近排名百分位数”](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction)的估计值。 准确性取决于百分位区域中的填充密度。 只能在 [summarize](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) 内的聚合上下文中使用。
+[**percentiles()** ](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction)：返回由表达式定义的总体中指定的[**最接近排名百分比**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction)的估计值。 准确性取决于百分位区域中的填充密度。 只能在 [summarize](https://docs.microsoft.com/azure/kusto/query/summarizeoperator) 内的聚合上下文中使用。
 
 以下查询计算风暴持续时间的百分位数。
 
@@ -668,7 +668,7 @@ StormEvents
 
 以下示例创建一个表格类型变量，并在后续表达式中使用。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAMtJLVHwyUzPKMnLzEsPLskvyi1WsOXlArNcy1LzSop5uWoUyjNSi1IVwPyQyoJUBVtbBSW4LiVrXq4coDGOZYk5iXnJGakkGQPXBTIGzSUgPVn5mXkKGmhmayrk5ykElySWpIKUpGQWl2TmJZdARACul3kY0gAAAA%3d%3d)**\]**
+**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAMtJLVHwyUzPKMnLzEsPLskvyi1WsOXlArNcy1LzSop5uWoUyjNSi1IVwPyQyoJUBVtbBSW4LiVrXq4coDGOZYk5iXnJGakkGQPXBTIGzSUgPVn5mXkKGmhmayrk5ykElySWpIKUpGQWl2TmJZdARACul3kY0gAAAA%3d%3d) **\]**
 
 ```Kusto
 let LightningStorms =
@@ -684,7 +684,7 @@ LightningStorms
 
 ### <a name="join"></a>join
 
-[**join**](https://docs.microsoft.com/azure/kusto/query/joinoperator)：通过匹配每个表中指定列的值，合并两个表的行以组成新表。 Kusto 支持一系列完整的联接类型：fullouter、inner、innerunique、leftanti、leftantisemi、leftouter、leftsemi、rightanti、rightantisemi、rightouter、rightsemi。 **** **** **** **** **** **** **** **** ****
+[**join**](https://docs.microsoft.com/azure/kusto/query/joinoperator)：通过匹配每个表中指定列的值，合并两个表的行以组成新表。 Kusto 支持一系列完整的联接类型：fullouter、inner、innerunique、leftanti、leftantisemi、leftouter、leftsemi、rightanti、rightantisemi、rightouter、rightsemi。
 
 以下示例使用内部联接来联接两个表。
 
@@ -718,7 +718,7 @@ X
 
 以下查询将成功执行，因为已序列化数据。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIzi%2fNK9HQVEiqVAguSSxJBcumFmUm5gBlQZzUipLUvBSFovzy%2bLzS3KTUIgVbJI6GJgB4pV4NWgAAAA%3d%3d)**\]**
+**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIzi%2fNK9HQVEiqVAguSSxJBcumFmUm5gBlQZzUipLUvBSFovzy%2bLzS3KTUIgVbJI6GJgB4pV4NWgAAAA%3d%3d) **\]**
 
 ```Kusto
 StormEvents
@@ -727,9 +727,9 @@ StormEvents
 | extend row_number = row_number()
 ```
 
-为已序列化的结果是否也被视为行集：**排序**，**顶部**，或**范围**运算符，可以选择后跟**项目**，**项目离开**，**扩展**，**其中**，**分析**， **mv-展开**，或**采取**运算符。
+如果行集是以下运算的结果，则同样视为已序列化：sort、top 或 range 运算符，后可跟 project、project-away、extend、where、parse、mv-expand 或 take 运算符。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIzi%2fNK9HQVEiqVAguSSxJBcvmF5XABRQSi5NBgqkVJal5KQpF%2beXxeaW5SalFCrZIHA1NAEGimf5iAAAA)**\]**
+**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSsp5uWqUSguzc1NLMqsSlVIzi%2fNK9HQVEiqVAguSSxJBcvmF5XABRQSi5NBgqkVJal5KQpF%2beXxeaW5SalFCrZIHA1NAEGimf5iAAAA) **\]**
 
 ```Kusto
 StormEvents
@@ -754,7 +754,7 @@ cluster("MyCluster").database("Wiki").PageViews
 
 本部分包含了一些元素和查询，用于演示在 Kusto 中执行用户行为分析的容易程度。
 
-### <a name="activitycountsmetrics-plugin"></a>activity_counts_metrics 插件
+### <a name="activity_counts_metrics-plugin"></a>activity_counts_metrics 插件
 
 [**activity_counts_metrics plugin**](https://docs.microsoft.com/azure/kusto/query/activity-counts-metrics-plugin)：计算有用的活动指标（总计数值、非重复计数值、新值的非重复计数和聚合非重复计数）。 计算每个时间窗口的指标，然后将它们进行比较，并与之前的所有时间窗口进行聚合。
 
@@ -788,7 +788,7 @@ T
 window)
 ```
 
-### <a name="activityengagement-plugin"></a>activity_engagement 插件
+### <a name="activity_engagement-plugin"></a>activity_engagement 插件
 
 [**activity_engagement plugin**](https://docs.microsoft.com/azure/kusto/query/activity-engagement-plugin)：在滑动时间线窗口中，根据 ID 列计算活动参与比率。 activity_engagement 插件可用于计算 DAU、WAU 和 MAU（每日、每周和每月的活动用户）。
 
@@ -814,7 +814,7 @@ range _day from _start to _end step 1d
 > [!TIP]
 > 在计算 DAU/MAU 时，更改结束数据和移动窗口期 (OuterActivityWindow)。
 
-### <a name="activitymetrics-plugin"></a>activity_metrics 插件
+### <a name="activity_metrics-plugin"></a>activity_metrics 插件
 
 [**activity_metrics plugin**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin)：根据当前阶段窗口和前一阶段窗口计算有用的活动指标（非重复计数值、新值的不同计数、保留率和改动率）。
 
@@ -839,13 +839,13 @@ range _day from _start to _end step 1d
 | render timechart
 ```
 
-### <a name="newactivitymetrics-plugin"></a>new_activity_metrics 插件
+### <a name="new_activity_metrics-plugin"></a>new_activity_metrics 插件
 
-[**new_activity_metrics plugin**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin)：为新用户队列计算有用的活动指标（非重复计数值、非重复计数的新值、保留率和改动率）。 此插件的概念类似于 [activity_metrics 插件](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin)，但关注的是新用户。
+[**new_activity_metrics plugin**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin)：为新用户队列计算有用的活动指标（非重复计数值、非重复计数的新值、保留率和改动率）。 此插件的概念类似于 [activity_metrics 插件](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin)，但关注的是新用户。
 
 以下查询计算新用户队列（第一周到达的用户）在周间窗口的保留率和改动率。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAG1Ry27DIBC8W%2fI%2f7C04wbJJFeVQ5VapP9BbVVnIrGMaGyy8eVjqxxcwh1QqBx7LzCwzVBW8o0EnCcFJo%2bwISpIE28F1RgeyJX3TpHHOswEJmpmkIzgFFJIeke1rcSzrQ1mL4jVh0Kj%2fEC8R4bucEd7kAp3z3ZIg2ZU2E04gVJ79AD4oVIIU2cGaM2OBVSZKUQlVPOGcxwUHrNiJp3ITbMyn2JUlHbU91FtXcPhz3u1rP5fC10UUHm%2f4mLwiaHVaZcIzaZnQdiwQCxj0qAlEHUeeVRV8yAuCNcMC1CN02s0Ed8QLtLa33igbpK9M0skRCd3q4CaHa%2fgBg%2fcmJb40%2ft7pdmafG602XzxExpN3HsPicFQ8z1IcQWhy9htbisk2EU92XZ1vZkhb04Sv5tD2V7fufwFYtolnAgIAAA%3d%3d)**\]**
+\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAG1Ry27DIBC8W%2fI%2f7C04wbJJFeVQ5VapP9BbVVnIrGMaGyy8eVjqxxcwh1QqBx7LzCwzVBW8o0EnCcFJo%2bwISpIE28F1RgeyJX3TpHHOswEJmpmkIzgFFJIeke1rcSzrQ1mL4jVh0Kj%2fEC8R4bucEd7kAp3z3ZIg2ZU2E04gVJ79AD4oVIIU2cGaM2OBVSZKUQlVPOGcxwUHrNiJp3ITbMyn2JUlHbU91FtXcPhz3u1rP5fC10UUHm%2f4mLwiaHVaZcIzaZnQdiwQCxj0qAlEHUeeVRV8yAuCNcMC1CN02s0Ed8QLtLa33igbpK9M0skRCd3q4CaHa%2fgBg%2fcmJb40%2ft7pdmafG602XzxExpN3HsPicFQ8z1IcQWhy9htbisk2EU92XZ1vZkhb04Sv5tD2V7fufwFYtolnAgIAAA%3d%3d)\]
 
 ```Kusto
 // Generate random data of user activities
@@ -861,7 +861,7 @@ range Day from _start to _end step 1d
 | project from_Day, to_Day, retention_rate, churn_rate
 ```
 
-### <a name="sessioncount-plugin"></a>session_count 插件
+### <a name="session_count-plugin"></a>session_count 插件
 
 [**session_count plugin**](https://docs.microsoft.com/azure/kusto/query/session-count-plugin)：基于某个时间线的 ID 列计算会话计数。
 
@@ -881,7 +881,7 @@ _data
 | render linechart
 ```
 
-### <a name="funnelsequence-plugin"></a>funnel_sequence 插件
+### <a name="funnel_sequence-plugin"></a>funnel_sequence 插件
 
 [**funnel_sequence plugin**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-plugin)：计算已获取州序列的用户的非重复计数；显示序列产生或遵循的前一个和下一个州的分布。
 
@@ -897,13 +897,13 @@ StormEvents
 | evaluate funnel_sequence(EpisodeId, StartTime, datetime(2007-01-01), datetime(2008-01-01), 1d,365d, EventType, dynamic(['Tornado']))
 ```
 
-### <a name="funnelsequencecompletion-plugin"></a>funnel_sequence_completion 插件
+### <a name="funnel_sequence_completion-plugin"></a>funnel_sequence_completion 插件
 
 [**funnel_sequence_completion plugin**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin)：计算不同时间段内已完成序列步骤的漏斗图。
 
-以下查询检查序列中的完成漏斗图：在一小时、四小时和一天 (`[1h, 4h, 1d]`) 的“总体”时间中的  `Hail -> Tornado -> Thunderstorm -> Wind` 。
+以下查询检查序列中的完成漏斗图：在一小时、四小时和一天 (`[1h, 4h, 1d]`) 的“总体”时间中的 `Hail -> Tornado -> Thunderstorm -> Wind`。
 
-**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QTYvCMBCG74L/YW6tkIV2XT9g8SjsnlvwICKhM9JAOqlJqrj4402CW0RIIB/PPLwzmjwcnZfWwwZQevKqo/yzKFYfRRnW7Hs60ZEhxjdi/UZcFaO5VuqPAjhfLvD/w9F5IG7iM95YdqrJ99mPVDoTkNXGskSTju3ASNZ5Y7t43wVhdhj9PVll0L1aylbAV9glJqyKldsLsXfTyR3oIvUQAsNpYCY95jg2puuDUhnOt71yBukXBVRxCnVoTjwnIlLX4rUzAUlf3/pEPYViDDd7AOyqowFQAQAA)**\]**
+**\[** [**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QTYvCMBCG74L/YW6tkIV2XT9g8SjsnlvwICKhM9JAOqlJqrj4402CW0RIIB/PPLwzmjwcnZfWwwZQevKqo/yzKFYfRRnW7Hs60ZEhxjdi/UZcFaO5VuqPAjhfLvD/w9F5IG7iM95YdqrJ99mPVDoTkNXGskSTju3ASNZ5Y7t43wVhdhj9PVll0L1aylbAV9glJqyKldsLsXfTyR3oIvUQAsNpYCY95jg2puuDUhnOt71yBukXBVRxCnVoTjwnIlLX4rUzAUlf3/pEPYViDDd7AOyqowFQAQAA) **\]**
 
 ```Kusto
 let _start = datetime(2007-01-01);
@@ -917,7 +917,7 @@ StormEvents
 
 ## <a name="functions"></a>函数
 
-本部分介绍[**函数**](https://docs.microsoft.com/azure/kusto/query/functions)：存储在服务器上的可重用查询。 函数可由查询和其他函数调用（不支持递归函数）。
+本部分介绍[**函数**](https://docs.microsoft.com/azure/kusto/query/functions)：存储在服务器上的可重用查询。 函数可由查询和其他函数调用（不支持递归函数）。
 
 > [!NOTE]
 > 你不能在只读的帮助群集上创建函数。 在此部分使用你自己的测试群集。

@@ -3,8 +3,8 @@ title: 使用 Azure 网络观察程序功能所需的权限 | Microsoft Docs
 description: 了解使用网络观察程序功能需要哪些 Azure 基于角色的访问控制权限。
 services: network-watcher
 documentationcenter: ''
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: ''
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
-ms.author: jdial
-ms.openlocfilehash: 429f7862901814fbd2017c395706fbfa2c345f72
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.author: kumud
+ms.openlocfilehash: 5bd7e30a6a95d60bda4b7c3da44be1b8046bb71f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434573"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163801"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用网络观察程序功能所需的基于角色的访问控制权限
 
@@ -27,7 +27,7 @@ ms.locfileid: "53434573"
 
 ## <a name="network-watcher"></a>网络观察程序
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/read                              | 获取网络观察程序                                          |
 | Microsoft.Network/networkWatchers/write                             | 创建或更新网络观察程序                             |
@@ -35,14 +35,14 @@ ms.locfileid: "53434573"
 
 ## <a name="nsg-flow-logs"></a>NSG 流日志
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/configureFlowLog/action           | 配置流日志                                           |
 | Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | 流日志的查询状态                                    |
 
-## <a name="connection-troubleshoot"></a>排查连接问题
+## <a name="connection-troubleshoot"></a>连接疑难解答
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/connectivityCheck/action          | 启动连接故障排除测试
 | Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | 连接故障排除测试的查询结果                |
@@ -50,7 +50,7 @@ ms.locfileid: "53434573"
 
 ## <a name="connection-monitor"></a>连接监视器
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/connectionMonitors/start/action   | 启动连接监视器                                     |
 | Microsoft.Network/networkWatchers/connectionMonitors/stop/action    | 停止连接监视器                                      |
@@ -61,7 +61,7 @@ ms.locfileid: "53434573"
 
 ## <a name="packet-capture"></a>数据包捕获
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | 查询数据包捕获的状态                           |
 | Microsoft.Network/networkWatchers/packetCaptures/stop/action        | 停止数据包捕获                                          |
@@ -71,51 +71,48 @@ ms.locfileid: "53434573"
 
 ## <a name="ip-flow-verify"></a>IP 流验证
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/ipFlowVerify/action               | 验证 IP 流                                              |
 
-## <a name="next-hop"></a>下一跃点
+## <a name="next-hop"></a>下一个跃点
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/nextHop/action                    | 从 VM 获取下一跃点                                     |
 
 ## <a name="network-security-group-view"></a>网络安全组视图
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/securityGroupView/action          | 查看安全组                                           |
 
 ## <a name="topology"></a>拓扑
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | 获取拓扑                                                   |
 
 ## <a name="reachability-report"></a>可访问性报表
 
-| 操作                                                              | 名称                                                           |
+| 操作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/azureReachabilityReport/action    | 获取 Azure 可访问性报表                               |
+
 
 ## <a name="additional-actions"></a>其他操作
 
 网络观察程序功能还需要以下操作：
 
-- Microsoft.Authorization/\*/Read
-- Microsoft.Resources/subscriptions/resourceGroups/Read
-- Microsoft.Storage/storageAccounts/Read
-- Microsoft.Storage/storageAccounts/listServiceSas/Action
-- Microsoft.Storage/storageAccounts/listAccountSas/Action
-- Microsoft.Storage/storageAccounts/listKeys/Action
-- Microsoft.Compute/virtualMachines/Read
-- Microsoft.Compute/virtualMachines/Write
-- Microsoft.Compute/virtualMachines/extensions/Read
-- Microsoft.Compute/virtualMachines/extensions/Write
-- Microsoft.Compute/virtualMachineScaleSets/Read
-- Microsoft.Compute/virtualMachineScaleSets/Write
-- Microsoft.Compute/virtualMachineScaleSets/extensions/Read
-- Microsoft.Compute/virtualMachineScaleSets/extensions/Write
-- Microsoft.Insights/alertRules/*
-- Microsoft.Support/*
+| 操作                                                           | 描述                                                    |
+| ---------                                                           | -------------                                                  |
+| Microsoft.Authorization/\*/Read                                     | 用于提取 RBAC 角色分配和策略定义          |
+| Microsoft.Resources/subscriptions/resourceGroups/Read               | 用于枚举订阅中的所有资源组    |
+| Microsoft.Storage/storageAccounts/Read                              | 用于获取指定存储帐户的属性   |
+| StorageAccounts/listServiceSas/Action, </br> StorageAccounts/listAccountSas/Action, <br> Microsoft.Storage/storageAccounts/listKeys/Action| 用于获取共享访问签名 (SAS), 以便[对存储帐户进行安全访问](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)并将其写入存储帐户 |
+| Microsoft. Compute/virtualMachines/Read, </br> Microsoft.Compute/virtualMachines/Write| 用于登录到 VM, 执行数据包捕获, 并将其上传到存储帐户|
+| Microsoft.Compute/virtualMachines/extensions/Read </br> Microsoft.Compute/virtualMachines/extensions/Write| 用于检查网络观察程序扩展是否存在, 并在需要时进行安装 |
+| Microsoft. Compute/virtualMachineScaleSets/Read, </br> Microsoft.Compute/virtualMachineScaleSets/Write| 用于访问虚拟机规模集、进行数据包捕获并将其上传到存储帐户|
+| VirtualMachineScaleSets/extensions/extension/Read, </br> Microsoft.Compute/virtualMachineScaleSets/extensions/Write| 用于检查网络观察程序扩展是否存在, 并在需要时进行安装 |
+| Microsoft.Insights/alertRules/*                                     | 用于设置指标警报                                     |
+| Microsoft.Support/*                                                 | 用于从网络观察程序创建和更新支持票证 |

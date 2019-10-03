@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 9562d0cd1ad97a459c3630456a6070ac2b6e63f3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fa8dbbbb09fbdc14049e168afe6eb4810ccc8254
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096021"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570235"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>使用分布式查询实现跨租户报告
 
@@ -67,7 +66,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
 在 Wingtip Tickets SaaS Database Per Tenant 应用程序中，每个租户都分配有一个数据库。 因此，数据库表中包含的数据范围设置为单个租户的透视。 然而，当查询所有数据库时，请注意，弹性查询可以将数据视为由租户划分的单个逻辑数据库分片的一部分。 
 
-若要模拟此模式，请将一组“全局”视图添加到租户数据库中，以将租户 ID 投射到全局查询的每个表中。 例如，VenueEvents 视图将计算出的 VenueId 添加到从 Events 表投射的列中。 同样，VenueTicketPurchases 和 VenueTickets 视图会添加从各自表中投影的 VenueId 计算列。 VenueId 列出现后，弹性查询使用这些视图来并行查询并将其推送到合适的远程租户数据库。 这大大减少了要返回的数据量，从而使许多查询的性能大幅提高。 这些全局视图已经在所有租户数据库中预先创建。
+若要模拟此模式，请将一组“全局”视图添加到租户数据库中，以将租户 ID 投射到全局查询的每个表中。 例如，VenueEvents视图将计算出的 VenueId 添加到从 Events表投射的列中。 同样，VenueTicketPurchases 和 VenueTickets 视图会添加从各自表中投影的 VenueId 计算列。 VenueId 列出现后，弹性查询使用这些视图来并行查询并将其推送到合适的远程租户数据库。 这大大减少了要返回的数据量，从而使许多查询的性能大幅提高。 这些全局视图已经在所有租户数据库中预先创建。
 
 1. 打开 SSMS 并[连接到 tenants1-&lt;USER&gt; 服务器](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms)。
 1. 展开“数据库”，右键单击“contosoconcerthall”，然后选择“新建查询”。
@@ -106,7 +105,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
 1. 在 PowerShell ISE 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1*。 
 
-1. 设置 **$DemoScenario = 2**，_部署即席生成报表数据库_。
+1. 设置 **$DemoScenario = 2**,_部署特别报告数据库_。
 
 1. 按 F5 运行脚本并创建 adhocreporting 数据库。
 
@@ -128,7 +127,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
     ![创建外部数据源](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
-   引用上一节中介绍的全局视图的外部表，通过 DISTRIBUTION = SHARDED(VenueId) 进行定义。 因为每个 VenueId  都映射到单个数据库，这样就可以提升许多方案的性能，如下一节所示。
+   引用上一节中介绍的全局视图的外部表，通过 DISTRIBUTION = SHARDED(VenueId) 进行定义。 因为每个 VenueId 都映射到单个数据库，这样就可以提升许多方案的性能，如下一节所示。
 
     ![创建外部表](media/saas-tenancy-cross-tenant-reporting/external-tables.png)
 
@@ -148,7 +147,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
 检查执行计划时，将鼠标悬停在计划图标上方可获取详细信息。 
 
-特别要注意是，定义外部数据源时的设置 DISTRIBUTION = SHARDED(VenueId) 可以提升许多方案的性能。 为每个*VenueId*映射到单个数据库，轻松地进行远程筛选，返回所需数据。
+特别要注意是，定义外部数据源时的设置 DISTRIBUTION = SHARDED(VenueId) 可以提升许多方案的性能。 由于每个*VenueId*映射到单个数据库, 因此可以轻松地远程执行筛选, 仅返回所需数据。
 
 1. 在 SSMS 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\Demo-AdhocReportingQueries.sql。
 2. 确保已连接到 adhocanalytics 数据库。
@@ -173,7 +172,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
    此查询执行稍微有些复杂的联接和聚合操作。 大多数处理操作远程执行。  仅向头像数据库返回包含每个位置每天售票数量的单个行。
 
-   ![query](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
+   ![查询](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 78a8b5e7a1c5512f81315519210bc7759dd15342
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: b69ded2591478a477cd142decb39218841c9ac62
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578469"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65410114"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>在 Azure 上安装 TmaxSoft OpenFrame
 
@@ -102,7 +102,7 @@ Windows 的 eclipse:开发平台支持的 TmaxSoft<br/>
 
 开始之前，请执行以下操作：
 
-- 获取从 TmaxSoft OpenFrame 安装介质。 如果你是现有 TmaxSoft 客户，请与的许可副本的 TmaxSoft 代表联系。 否则，请求从试用版[TmaxSoft](http://www.tmaxsoft.com/contact/)。
+- 获取从 TmaxSoft OpenFrame 安装介质。 如果你是现有 TmaxSoft 客户，请与的许可副本的 TmaxSoft 代表联系。 否则，请求从试用版[TmaxSoft](https://www.tmaxsoft.com/contact/)。
 
 - 通过发送电子邮件发送到请求 OpenFrame 文档<support@tmaxsoft.com>。
 
@@ -116,13 +116,13 @@ Windows 的 eclipse:开发平台支持的 TmaxSoft<br/>
 
 **若要创建的 VM**
 
-1. 转到 Azure 门户，网址<http://portal.azure.com>并登录到你的帐户。
+1. 转到 Azure 门户，网址<https://portal.azure.com>并登录到你的帐户。
 
-2. 单击“虚拟机”。
+2. 单击“虚拟机”  。
 
     ![在 Azure 门户中的资源列表](media/vm-01.png)
 
-3. 单击“添加”。
+3. 单击“添加”  。
 
     ![在 Azure 门户中添加选项](media/vm-02.png)
 
@@ -162,7 +162,7 @@ Windows 的 eclipse:开发平台支持的 TmaxSoft<br/>
 
     ![PuTTY 接口](media/puttygen-01.png)
 
-3.  单击“生成”。
+3.  单击“生成”  。
 
     ![PuTTY 密钥生成器对话框](media/puttygen-02.png)
 
@@ -1359,7 +1359,7 @@ JEUS （Java 企业用户解决方案） 提供了 OpenFrame web 应用程序服
      [oframe7@ofdemo setup]$ . .bash_profile
      ```
 
-11. 可选。 创建简单的关闭和启动 JEUS 组件的别名：
+11. 可选  。 创建简单的关闭和启动 JEUS 组件的别名：
 
      ```     
      # JEUS alias

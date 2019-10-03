@@ -16,11 +16,11 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5b9e42da3ae4510c217cb29c211557e28a30074
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443973"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66236201"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>使用 Linux VM 系统分配的托管标识访问 Azure 资源管理器
 
@@ -40,13 +40,13 @@ ms.locfileid: "58443973"
 
 使用 Azure 资源的托管标识，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。 Azure 资源管理器 API 支持 Azure AD 身份验证。 首先，需要授予此 VM 标识对 Azure 资源管理器中资源（在此示例中，为包含 VM 的资源组）的访问权限。  
 
-1. 转到“资源组”选项卡。
-2. 选择之前创建的特定资源组。
-3. 转到左侧面板中的“访问控制(IAM)”。
-4. 单击“添加”，为 VM 添加新的角色分配。 选择“阅读器”作为“角色”。
-5. 在下一个下拉列表中，把“将访问权限分配给”设置为资源“虚拟机”。
-6. 接下来，请确保“订阅”下拉列表中列出的订阅正确无误。 对于“资源组”，请选择“所有资源组”。
-7. 最后，在“选择”下拉列表中，选择 Linux 虚拟机，再单击“保存”。
+1. 转到“资源组”  选项卡。
+2. 选择之前创建的特定资源组  。
+3. 转到左侧面板中的“访问控制(IAM)”  。
+4. 单击“添加”  ，为 VM 添加新的角色分配。 选择“阅读器”  作为“角色”  。
+5. 在下一个下拉列表中，把“将访问权限分配给”  设置为资源“虚拟机”  。
+6. 接下来，请确保“订阅”  下拉列表中列出的订阅正确无误。 对于“资源组”  ，请选择“所有资源组”  。
+7. 最后，在“选择”  下拉列表中，选择 Linux 虚拟机，再单击“保存”  。
 
     ![Alt 图像文本](media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
 
@@ -54,8 +54,8 @@ ms.locfileid: "58443973"
 
 若要完成这些步骤，需要使用 SSH 客户端。 如果使用的是 Windows，可以在[适用于 Linux 的 Windows 子系统](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 客户端。 如果需要有关配置 SSH 客户端密钥的帮助，请参阅[如何在 Azure 上将 SSH 密钥与 Windows 配合使用](../../virtual-machines/linux/ssh-from-windows.md)或[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
-1. 在门户中，转到 Linux VM，并单击“概述”中的“连接”。  
-2. 使用所选的 SSH 客户端连接到 VM。 
+1. 在门户中，转到 Linux VM，并单击“概述”  中的“连接”  。  
+2. 使用所选的 SSH 客户端连接  到 VM。 
 3. 在终端窗口中，使用 `curl` 向 Azure 资源终结点的本地托管标识发出请求，以获取 Azure 资源管理器的访问令牌。  
  
     下面是对访问令牌的 `curl` 请求。  

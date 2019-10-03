@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
-manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 0146f6ca610a25e57771fb21436a70acbdd5a5ef
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: b36911d274a3afb3582d60ea7e85b5afd5f52ece
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481376"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570296"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>使用提取的数据运行跨租户分析 - 多租户应用
  
@@ -64,9 +63,9 @@ ms.locfileid: "58481376"
 
 了解每个租户如何一致使用服务提供了根据需要创建服务计划的机会。 本教程提供从租户数据收集见解的基本示例。
 
-## <a name="setup"></a>设置
+## <a name="setup"></a>安装
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保满足以下先决条件：
 
@@ -92,9 +91,9 @@ ms.locfileid: "58481376"
 2. 设置脚本中的 $DemoScenario 变量，使其与所选的分析存储匹配。 为了方便学习，建议使用不包含列存储的 SQL 数据库。
     - 若要使用不包含列存储的 SQL 数据库，请设置 **$DemoScenario** = **2**
     - 若要使用包含列存储的 SQL 数据库，请设置 **$DemoScenario** = **3**  
-3. 按**F5**若要运行演示脚本 (用于调用*Deploy-tenantanalytics\<XX >.ps1*脚本) 以便创建租户分析存储。 
+3. 按**F5**运行演示脚本 (调用*TenantAnalytics\<XX > ps1*脚本), 该脚本会创建租户分析存储。 
 
-现在，已部署应用程序，并填充了感兴趣的租户数据，使用[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)连接**tenants1-mt-\<用户\>** 和**目录-mt-\<用户\>** 服务器使用的登录名 =*开发人员*，密码 = *P\@ssword1*。
+现在, 你已部署了应用程序, 并使用了兴趣的租户数据对其进行了填充, 请使用[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)连接**tenants1\<-用户\>** 和**目录-mt\<\>** 使用 Login = *developer*, Password = *P\@ssword1*的服务器。
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
@@ -176,7 +175,7 @@ ms.locfileid: "58481376"
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. 选择**数据库**在左窗格中，然后输入用户名 =*开发人员*，然后输入密码 = *P\@ssword1*。 单击“连接”。  
+5. 选择左窗格中的 "**数据库**", 然后输入 "用户名 =*开发人员*", 并输入 password = *P\@ssword1*。 单击“连接”。  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
@@ -208,7 +207,7 @@ ms.locfileid: "58481376"
 
 上面的 Contoso Concert Hall 绘图显示，并非所有活动都出现销量剧增。 请体验不同的筛选选项，以查看其他会场的售量趁势。
 
-门票销售模式的见解可以引导 Wingtip Tickets 优化其业务模式。 Wingtip 也许可以不向所有租户收取相同的费用，而是推出具有不同计算大小的服务层。 可以根据更高的服务级别协议 (SLA)，向每日售出较多门票的大型会场提供更高的层。 这些会场可将数据库放在具有更高的数据库资源限制的池中。 每个服务层可以采用按小时售量分配，超出分配即会收取额外的费用。 定期出现销量喷发的大型会场将会受益于更高的层，而 Wingtip Tickets 可以更高效地将服务变现。
+门票销售模式的见解可以引导 Wingtip Tickets 优化其业务模式。 Wingtip 也许可以不向所有租户收取相同的费用，而是推出具有不同计算大小的服务层级。 可以根据更高的服务级别协议 (SLA)，向每日售出较多门票的大型会场提供更高的层。 这些会场可将数据库放在具有更高的数据库资源限制的池中。 每个服务层级可以采用按小时售量分配，超出分配即会收取额外的费用。 定期出现销量喷发的大型会场将会受益于更高的层，而 Wingtip Tickets 可以更高效地将服务变现。
 
 同时，某些 Wingtip Tickets 客户抱怨他们正在努力售出足够多的票证，以抵消服务费用。 通过这些见解，绩效不佳的会场也许能够找到促升门票销量的机会。 销量提高会增大服务的认知价值。 右键单击“fact_Tickets”并选择“新建度量值”。 针对名为 **AverageTicketsSold** 的新度量值输入以下表达式：
 
@@ -228,7 +227,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > - 部署包含预定义星型架构表的租户分析数据库
@@ -242,5 +241,5 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 ## <a name="additional-resources"></a>其他资源
 
 其他[基于 Wingtip SaaS 应用程序编写的教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。 
-- [弹性作业](sql-database-elastic-jobs-overview.md)。
+- [弹性作业](elastic-jobs-overview.md)。
 - [使用提取的数据运行跨租户分析 - 单租户应用](saas-tenancy-tenant-analytics.md) 

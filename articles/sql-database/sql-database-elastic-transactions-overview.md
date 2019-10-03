@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: d7865d394dfc955a7b24115e747dd77352d89e3d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3ca3e9074f28d66068d49b80915e98600759d9be
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901910"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568289"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>跨云数据库的分布式事务
 
@@ -99,7 +98,7 @@ SQL DB 的弹性数据库事务还支持协调分布式事务，这需要使用�
 
 ## <a name="net-installation-for-azure-cloud-services"></a>适用于 Azure 云服务的 .NET 安装
 
-Azure 为托管 .NET 应用程序提供了多个产品。 不同产品的比较可见于 [Azure 应用服务、云服务和虚拟机比较](../app-service/overview-compare.md)。 如果产品的来宾 OS 版本低于弹性事务所需的 .NET 4.6.1，需要将来宾 OS 升级到 4.6.1。 
+Azure 为托管 .NET 应用程序提供了多个产品。 不同产品的比较可见于 [Azure 应用服务、云服务和虚拟机比较](/azure/architecture/guide/technology-choices/compute-decision-tree)。 如果产品的来宾 OS 版本低于弹性事务所需的 .NET 4.6.1，需要将来宾 OS 升级到 4.6.1。 
 
 对于 Azure 应用服务，当前不支持升级到来宾 OS。 对于 Azure 虚拟机，只需要登录到 VM 并运行最新的 .NET framework 安装程序即可。 对于 Azure 云服务，需要将更高版本的 .NET 安装包括到部署的启动任务中。 [在云服务角色上安装 .NET](../cloud-services/cloud-services-dotnet-install-dotnet.md) 中说明了概念和步骤。  
 
@@ -128,13 +127,13 @@ Azure 为托管 .NET 应用程序提供了多个产品。 不同产品的比较�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 Azure SQL 数据库中支持跨不同 SQL 数据库服务器的弹性数据库事务。 当事务跨越 SQL 数据库服务器边界时，参与的服务器将首先需要进入相互通信关系。 一旦建立了通信关系，任意两个服务器中的任何数据库都可以与另一服务器的数据库参与弹性事务。 当事务跨越两个以上的 SQL 数据库服务器时，任意 SQL 数据库服务器对之间的通信关系需要准备就绪。
 
 使用以下 PowerShell cmdlet 来管理弹性数据库事务的跨服务器通信关系：
 
-* **New-AzSqlServerCommunicationLink**:使用此 cmdlet 在 Azure SQL 数据库中的两个 SQL 数据库服务器之间创建新的通信关系。 这种通信关系是对称的，这意味着这两台服务器可以使用另一台服务器启动事务。
+* **New-AzSqlServerCommunicationLink**：使用此 cmdlet 在 Azure SQL 数据库中的两个 SQL 数据库服务器之间创建新的通信关系。 这种通信关系是对称的，这意味着这两台服务器可以使用另一台服务器启动事务。
 * **Get-AzSqlServerCommunicationLink**:使用此 cmdlet 来检索现有通信关系及其属性。
 * **Remove-AzSqlServerCommunicationLink**:使用此 cmdlet 来删除现有通信关系。 
 

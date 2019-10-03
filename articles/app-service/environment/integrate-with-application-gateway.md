@@ -9,23 +9,22 @@ ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ea46b5e57e4e508a3311de8633ae61d346b574eb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 090952a065b8c3b2b25ad737992b68b9bc9aa9ec
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114189"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069471"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>将 ILB 应用服务环境与 Azure 应用程序网关集成 #
 
 [应用服务环境](./intro.md)是客户的 Azure 虚拟网络子网中的 Azure 应用服务部署。 可通过应用访问的公共或专用终结点来进行部署。 具有专用终结点（即，内部负载平衡器）的应用服务环境的部署称为 ILB 应用服务环境。  
 
-Web 应用程序防火墙会检查入站 Web 流量，并阻止 SQL 注入、跨站点脚本、恶意软件上传和应用程序 DDoS 及其他攻击，从而帮助你保护 Web 应用程序的安全。 它还会检查后端 Web 服务器的响应，实现针对数据丢失预防 (DLP)。 可以从 Azure 市场获取 WAF 设备，也可以使用 [Azure 应用程序网关][appgw]。
+Web 应用程序防火墙会检查入站 Web 流量，并阻止 SQL 注入、跨站点脚本、恶意软件上传和应用程序 DDoS 及其他攻击，从而帮助你保护 Web 应用程序的安全。 它还会检查后端 Web 服务器的响应，实现针对数据丢失预防 (DLP)。 可从 Azure marketplace 获取 WAF 设备, 也可使用[Azure 应用程序网关][appgw]。
 
 Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡、SSL 卸载以及 Web 应用程序防火墙 (WAF) 保护。 可侦听公共 IP 地址和将流量路由到应用程序终结点。 以下信息描述了如何将 WAF 配置的应用程序网关与 ILB 应用服务环境中的应用进行集成。  
 
@@ -53,7 +52,7 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
     
 * 稍后用于指向应用程序网关的公共 DNS 名称。 
 
-有关如何创建 ILB 应用服务环境的详细信息，请参阅[创建和使用 ILB 应用服务环境][ilbase]。
+有关如何创建 ILB 应用服务环境的详细信息, 请参阅[创建和使用 ILB 应用服务环境][ilbase]。
 
 本文假定你在部署了应用服务环境的 Azure 虚拟网络中需要一个应用程序网关。 在开始创建应用程序网关之前，请选择或创建一个将用来承载网关的子网。 
 
@@ -117,7 +116,7 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
 
    ![在该应用上设置自定义域名][8]
 
-[设置 Web 应用自定义域名][custom-domain]一文中提供有关设置 Web 应用自定义域名的信息。 但是对于 ILB 应用服务环境中的应用，域名上不存在任何验证。 因为拥有管理应用终结点的 DNS，便可随意设置域名。 在这种情况下添加的自定义域名无需存在于 DNS 中，但它仍需要通过应用进行配置。 
+为 web 应用设置自[定义域名][custom-domain]一文中提供了有关为你的 web 应用设置自定义域名的信息。 但是对于 ILB 应用服务环境中的应用，域名上不存在任何验证。 因为拥有管理应用终结点的 DNS，便可随意设置域名。 在这种情况下添加的自定义域名无需存在于 DNS 中，但它仍需要通过应用进行配置。 
 
 安装完成之后，有一小段时间进行 DNS 更改传播，可使用创建的自定义域名访问应用。 
 

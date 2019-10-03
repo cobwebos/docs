@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 75d0bbc536c907e6530570b4d7568f39371cfced
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: HT
+ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26367669"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60628653"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>什么是适用于云解决方案提供商的 StorSimple 计划？
 
@@ -32,7 +32,7 @@ Microsoft Azure StorSimple 是一种独特的企业存储方法，具有真正�
 
 有关适用于 CSP 的 StorSimple 的详细信息，请访问 [Azure CSP 概述](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)页。
 
-有关计费、定价、奖励和获取 CSP 支持的详细信息，请访问 [CSP 中的 StorSimple：常见问题](storsimple-partner-csp-faq.md)。 
+有关计费的详细信息，定价、 奖励和获取支持加入 csp 后，请转到[CSP 中的 StorSimple:常见问题解答](storsimple-partner-csp-faq.md)。 
 
 ## <a name="deploy-and-manage-storsimple-for-csp"></a>部署和管理用于 CSP 的 StorSimple
 
@@ -42,5 +42,5 @@ Microsoft Azure StorSimple 是一种独特的企业存储方法，具有真正�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果对 CSP 中的 StorSimple 有更多问题，请访问[用于 CSP 的 StorSimple：常见问题](storsimple-partner-csp-faq.md)。
+- 如果必须在 CSP 的 storsimple 的更多问题，请转到[适用于 CSP 的 StorSimple:常见问题](storsimple-partner-csp-faq.md)。
 - 如果已准备好部署 StorSimple，请转到[部署用于 CSP 的 StorSimple](storsimple-partner-csp-deploy.md)。

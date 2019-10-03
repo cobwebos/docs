@@ -11,36 +11,36 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 11/02/2018
+ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a392fd03016f83f86364d8f92e8bb4da0aa3364a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 70f0badc170c65b11bc244b5ed4ec2f9a205c72d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840896"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084867"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
 ## <a name="general-installation"></a>常规安装
 
-**问：如何强制执行我的 Azure AD Connect 服务器以减少安全攻击面？**
+**问：如何强化 Azure AD Connect 服务器以减少安全攻击面？**
 
-Microsoft 建议强化你的 Azure AD Connect 服务器以减少您的 IT 环境的此关键组件的安全攻击面。  遵循以下建议将降低你的组织的安全风险。
+Microsoft 建议你加固 Azure AD Connect 服务器来减小 IT 环境中的此关键组件的安全攻击面。  遵循以下建议可降低你的组织的安全风险。
 
-* 部署在加入域的服务器上的 Azure AD Connect，并向域管理员或其他受到严格控制的安全组限制管理访问权限
+* 将 Azure AD Connect 部署在已加入域的服务器上, 并限制对域管理员或其他严格控制的安全组的管理访问权限
 
 若要了解更多信息，请参阅以下文章： 
 
 * [保护管理员组](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
-* [确保内置管理员帐户的安全](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+* [保护内置的管理员帐户](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [安全改进并减少攻击面 sustainment](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [通过减小攻击面改进并维护安全性](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [减少 Active Directory 攻击面](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [减小 Active Directory 攻击面](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 **问：如果 Azure Active Directory (Azure AD) 全局管理员已启用双重身份验证 (2FA)，安装是否能够正常进行？**  
 2016 年 2 月版开始支持此方案。
@@ -62,7 +62,7 @@ Microsoft 建议强化你的 Azure AD Connect 服务器以减少您的 IT 环境
 **问：是否可对 Azure AD Connect 中的同一个 Active Directory 域使用多个连接器？**  
 不支持对同一个 AD 域使用多个连接器。 
 
-**问：是否可将 Azure AD Connect 数据库从本地数据库移到远程 SQL Server 实例？**   
+**问：是否可将 Azure AD Connect 数据库从本地数据库移到远程 SQL Server 实例？**    
 是的，以下步骤提供了此操作的一般指导。 我们目前正在努力编写更详细的文档。
 1. 备份 LocalDB ADSync 数据库。
 最简单的方法就是使用 Azure AD Connect 所在的同一台计算机上安装的 SQL Server Management Studio。 连接到 *(LocalDb).\ADSync*，然后备份 ADSync 数据库。
@@ -77,6 +77,47 @@ Microsoft 建议强化你的 Azure AD Connect 服务器以减少您的 IT 环境
       现在，在使用最新版本的情况下，可以由 SQL 管理员在带外进行数据库预配，然后由具有数据库所有者权限的 Azure AD Connect 管理员完成安装。 有关详细信息，请参阅[使用 SQL 委派的管理员权限安装 Azure AD Connect](how-to-connect-install-sql-delegation.md)。
 
 为简单起见，我们建议安装 Azure AD Connect 的用户是 SQL 中的系统管理员。 但是，在最新的版本中，现在也可以根据[使用 SQL 委派的管理员权限安装 Azure AD Connect](how-to-connect-install-sql-delegation.md) 中所述，使用委派的 SQL 管理员。
+
+**问：此字段有哪些最佳实践？**  
+
+下面是一个信息性文档, 其中提供了工程、支持和我们的顾问多年开发的一些最佳实践。  这会显示在可以快速引用的项目符号列表中。  虽然此列表会尝试全面, 但可能还有其他一些可能尚未在列表中进行此操作的最佳实践。
+
+- 如果使用完整 SQL, 则它应保留在本地与远程
+    - 更少跃点
+    - 更易于进行故障排除
+    - 复杂性较低
+    - 需要为 SQL 指定资源并允许 Azure AD Connect 和操作系统的开销
+- 绕过代理如果可能, 如果你无法绕过代理, 则需要确保超时值大于5分钟。
+- 如果需要代理, 则必须将代理添加到 machine.config 文件
+- 请注意本地 SQL 作业和维护及其对 Azure AD Connect 的影响, 尤其是重新编制索引
+- 确保不能在外部解析 DNS
+- 无论你使用的是物理服务器还是虚拟服务器, 请确保[服务器规范](how-to-connect-install-prerequisites.md#hardware-requirements-for-azure-ad-connect)按建议
+- 如果你使用的是需要专用资源的虚拟服务器, 请确保
+- 确保磁盘和磁盘配置符合 SQL Server 的最佳实践
+- 安装和配置用于监视的 Azure AD Connect Health
+- 使用内置 Azure AD Connect 的删除阈值。
+- 仔细查看要为所有更改准备的版本更新和可能添加的新属性
+- 备份一切
+    - 备份密钥
+    - 备份同步规则
+    - 备份服务器配置
+    - 备份 SQL 数据库
+- 确保在没有 SQL VSS 编写器的情况下, 没有任何第三方备份代理在备份 SQL (在具有第三方快照的虚拟服务器中常见)
+- 限制在增加复杂性时使用的自定义同步规则数量
+- 将 Azure AD Connect 服务器视为第0层服务器
+- Leery 修改云同步规则, 而无需充分了解影响和正确的业务驱动因素
+- 请确保打开正确的 URL 和防火墙端口, 以便支持 Azure AD Connect 和 Azure AD Connect Health
+- 利用云筛选属性来排查和阻止虚拟对象
+- 使用过渡服务器时, 请确保使用的是 Azure AD Connect 的配置文档服务器, 以便在服务器之间保持一致性
+- 过渡服务器应位于不同的数据中心 (物理位置)
+- 过渡服务器并不是一种高可用性解决方案, 但可以有多个过渡服务器
+- 引入 "延迟" 过渡服务器可在出现错误的情况下减少某些可能的停机时间
+- 首先测试并验证过渡服务器上的所有升级
+- 在切换到过渡之前始终验证导出 serverLeverage 过渡服务器进行完全导入和完全同步以降低业务影响
+- 尽可能保持 Azure AD Connect 服务器之间的版本一致性 
+
+**问：能否允许 Azure AD Connect 在工作组计算机上创建 Azure AD 连接器帐户？**
+否。  为了允许 Azure AD Connect 自动创建 Azure AD 连接器帐户, 计算机必须已加入域。  
 
 ## <a name="network"></a>网络
 **问：我的防火墙、网络设备或其他软硬件会限制在网络上打开连接的时间。使用 Azure AD Connect 时，客户端超时阈值应设为多少？**  
@@ -95,9 +136,9 @@ Azure AD Connect 不支持 NetBIOS 名称包含点号 (.) 的本地林或域。
 Azure AD Connect 不支持纯 IPv6 环境。
 
 **问：我有一个多林环境，两个林之间的网络使用 NAT（网络地址转换）。是否支持在这两个林之间使用 Azure AD Connect？**</br>
- 否，不支持通过 NAT 使用 Azure AD Connect。 
+否，不支持通过 NAT 使用 Azure AD Connect。 
 
-## <a name="federation"></a>联合
+## <a name="federation"></a>联合身份验证
 **问：如果我收到一封电子邮件，要求我续订 Office 365 证书，我该怎么办？**  
 有关续订证书的指导，请参阅[续订证书](how-to-connect-fed-o365-certs.md)。
 
@@ -106,7 +147,16 @@ Azure AD Connect 不支持纯 IPv6 环境。
 
 ## <a name="environment"></a>环境
 **问：安装 Azure AD Connect 之后，是否支持重命名服务器？**  
-不是。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库实例，并且服务将无法启动。
+否。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库实例，并且服务将无法启动。
+
+**问：已启用 FIPS 的计算机是否支持下一代加密 (NGC) 同步规则？**  
+否。  不支持。
+
+**问：如果我禁用了同步的设备 (例如:HAADJ) 在 Azure 门户中, 为什么重新启用它？**<br>
+同步的设备可能会在本地创作或掌控。 如果在本地启用了同步的设备, 即使管理员之前禁用了同步设备, 也可能会在 Azure 门户中重新启用它。 若要禁用已同步的设备, 请使用本地 Active Directory 禁用计算机帐户。
+
+**问：如果在 Office 365 或 Azure AD 门户中阻止用户登录到已同步的用户, 则在重新登录时, 为什么会取消阻止用户登录？**<br>
+同步的用户可能会在本地创作或掌控。 如果帐户在本地启用, 则它可以取消阻止管理员所放置的登录块。
 
 ## <a name="identity-data"></a>标识数据
 **问：Azure AD 中的 userPrincipalName (UPN) 属性为何与本地 UPN 不匹配？**  
@@ -128,7 +178,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 仅支持客户使用本站点上介绍的 cmdlet，而不支持使用 Azure AD Connect 中的其他 PowerShell cmdlet。
 
 **问：是否可以使用 Synchronization Service Manager 中的“服务器导出/服务器导入”选项在服务器之间移动配置？**  
-不是。 此选项不会检索所有配置设置，因此不应使用。 请改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 有关详细信息，请参阅[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
+否。 此选项不会检索所有配置设置，因此不应使用。 请改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。 有关详细信息，请参阅[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
 
 **问：是否可以为 Azure 登录页缓存密码，这是否会因为包含一个具有 *autocomplete = "false"* 属性的密码输入元素而阻止此缓存？**  
 目前不支持修改“密码”字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
@@ -137,7 +187,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 目前不支持修改“密码”输入字段的 HTML 属性，包括 autocomplete 标记。 我们目前正在开发一种功能，它将允许使用自定义 JavaScript 向“密码”字段添加任何属性。
 
 **问：是否有方法来阻止并发会话？**  
-不是。
+否。
 
 ## <a name="auto-upgrade"></a>自动升级
 
@@ -208,7 +258,7 @@ Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况�
 **问：我不知道升级到新版 Azure AD Connect 后会有什么风险。你们能通过电话帮助我升级吗？**  
 如果在升级到新版 Azure AD Connect 时需要帮助，请参阅[创建服务请求以联系 Office 365 支持部门](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)开具支持票证。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 **问：如何获取有关 Azure AD Connect 的帮助？**
 
 [搜索 Microsoft 知识库 (KB)](https://www.microsoft.com/en-us/search/result.aspx?q=azure+active+directory+connect)
@@ -220,3 +270,7 @@ Azure AD Connect 服务偶尔会在升级以后无法启动。 在这种情况�
 * 转到 [Azure AD 社区](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)，搜索技术问题与答案，或提出自己的问题。
 
 [获取 Azure AD 支持](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+
+**问：为什么在同步步骤错误后出现事件6311和6401？**
+
+事件 6311-**服务器在执行回调时遇到意外错误**, 6401-**管理代理控制器遇到意外错误**-在同步步骤出错后总是会记录该错误。 若要解决这些错误, 需要清除同步步骤错误。  有关详细信息, 请参阅[在同步过程中排查错误](tshoot-connect-sync-errors.md)和[排查 Azure AD Connect 同步中的对象同步](tshoot-connect-objectsync.md)

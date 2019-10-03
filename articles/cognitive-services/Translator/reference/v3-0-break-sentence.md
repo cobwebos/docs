@@ -1,21 +1,21 @@
 ---
 title: 文本翻译 API BreakSentence 方法
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用文本翻译 API BreakSentence 方法。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: de11d493c1a42b67aeab6502f719bcee1adc6e99
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.author: swmachan
+ms.openlocfilehash: 184677589b3aa777ec556215455f8018e0d71f3f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578200"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934041"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>文本翻译 API 3.0：BreakSentence
 
@@ -41,11 +41,11 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
     <td>必需的查询参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
   </tr>
   <tr>
-    <td>语言</td>
+    <td>language</td>
     <td>可选查询参数。<br/>语言标记，标识输入文本的语言。 如果未指定代码，则将应用自动语言检测。</td>
   </tr>
   <tr>
-    <td>脚本</td>
+    <td>脚本 (script)</td>
     <td>可选查询参数。<br/>脚本标记，标识输入文本使用的脚本。 如果未指定脚本，则将采用语言的默认脚本。</td>
   </tr>
 </table> 
@@ -118,7 +118,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 ]
 ```
 
-## <a name="response-headers"></a>响应标头
+## <a name="response-headers"></a>响应头
 
 <table width="100%">
   <th width="20%">标头</th>
@@ -146,7 +146,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
   <tr>
     <td>401</td>
-    <td>无法对请求进行身份验证。 请确保凭据已指定且有效。</td>
+    <td>无法验证该请求。 请确保凭据已指定且有效。</td>
   </tr>
   <tr>
     <td>403</td>
@@ -154,11 +154,11 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>调用方发送的请求过多。</td>
+    <td>由于客户端已超出请求限制，服务器拒绝了请求。</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>发生意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
@@ -172,11 +172,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 下面的示例展示了如何获取单个句子的句子边界。 服务会自动检测句子的语言。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"
 ```
-
----
 

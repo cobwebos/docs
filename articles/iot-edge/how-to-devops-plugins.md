@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 173e6ff91acd2ad28d7203b2b5db65e0ee0ecc43
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910818"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62126335"
 ---
 # <a name="integrate-azure-iot-edge-with-jenkins-pipelines"></a>将 Azure IoT Edge 与 Jenkins 管道集成
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: b81cedc9376b33b27f3a742fbe5d7410535fa727
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 966dfbf0280351c605e6dc20fc65178aee83d099
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587797"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735250"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 Node.js 应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "56587797"
 
 Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
 
-本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB [Gremlin API](graph-introduction.md) 帐户、数据库和图形。 然后使用开放源 [Gremlin Node.js](https://www.npmjs.com/package/gremlin) 驱动程序生成并运行控制台应用。
+本快速入门演示如何使用 Azure 门户创建 Azure Cosmos DB [Gremlin API](graph-introduction.md) 帐户、数据库和图。 然后使用开放源 [Gremlin Node.js](https://www.npmjs.com/package/gremlin) 驱动程序生成并运行控制台应用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -79,15 +79,22 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 * 将创建 Gremlin 客户端。
 
     ```javascript
-    const client = Gremlin.createClient(
-        443, 
+    const authenticator = new Gremlin.driver.auth.PlainTextSaslAuthenticator(
+        `/dbs/${config.database}/colls/${config.collection}`, 
+        config.primaryKey
+    )
+
+
+    const client = new Gremlin.driver.Client(
         config.endpoint, 
         { 
-            "session": false, 
-            "ssl": true, 
-            "user": `/dbs/${config.database}/colls/${config.collection}`,
-            "password": config.primaryKey
-        });
+            authenticator,
+            traversalsource : "g",
+            rejectUnauthorized : true,
+            mimeType : "application/vnd.gremlin-v2.0+json"
+        }
+    );
+
     ```
 
   配置均位于 `config.js` 中，后者可在[以下部分](#update-your-connection-string)中编辑。
@@ -95,42 +102,50 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 * 将定义一系列函数以执行不同 Gremlin 操作。 以下是其中一个函数：
 
     ```javascript
-    function addVertex1(callback)
+    function addVertex1()
     {
         console.log('Running Add Vertex1'); 
-        client.execute("g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44).property('userid', 1)", { }, (err, results) => {
-          if (err) callback(console.error(err));
-          console.log("Result: %s\n", JSON.stringify(results));
-          callback(null)
-        });
+        return client.submit("g.addV(label).property('id', id).property('firstName', firstName).property('age', age).property('userid', userid).property('pk', 'pk')", {
+                label:"person",
+                id:"thomas",
+                firstName:"Thomas",
+                age:44, userid: 1
+            }).then(function (result) {
+                    console.log("Result: %s\n", JSON.stringify(result));
+            });
     }
     ```
 
 * 每个函数均通过 Gremlin 查询字符串参数执行 `client.execute` 方法。 下面是演示如何执行 `g.V().count()` 的示例：
 
     ```javascript
-    console.log('Running Count'); 
-    client.execute("g.V().count()", { }, (err, results) => {
-        if (err) return console.error(err);
-        console.log(JSON.stringify(results));
-        console.log();
-    });
+    function countVertices()
+    {
+        console.log('Running Count');
+        return client.submit("g.V().count()", { }).then(function (result) {
+            console.log("Result: %s\n", JSON.stringify(result));
+        });
+    }
     ```
 
-* 然后在文件末尾，使用 `async.waterfall()` 方法调用所有方法。 这将依次执行它们：
+* 然后在文件末尾，调用所有方法。 这将依次执行它们：
 
     ```javascript
-    try{
-        async.waterfall([
-            dropGraph,
-            addVertex1,
-            addVertex2,
-            addEdge,
-            countVertices
-            ], finish);
-    } catch(err) {
-        console.log(err)
-    }
+    client.open()
+    .then(dropGraph)
+    .then(addVertex1)
+    .then(addVertex2)
+    .then(addEdge)
+    .then(countVertices)
+    .catch((err) => {
+        console.error("Error running query...");
+        console.error(err)
+    }).then((res) => {
+        client.close();
+        finish();
+    }).catch((err) => 
+        console.error("Fatal error:", err)
+    );
     ```
 
 
@@ -138,17 +153,13 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 1. 打开 config.js 文件。 
 
-2. 在 config.js 中，使用 Azure 门户的“概述”页中的“Gremlin URI”值填写 `config.endpoint` 密钥。 
+2. 在 config.js 中，使用 Azure 门户的“概述”页中的“Gremlin URI”值填写 `config.endpoint` 密钥。   
 
-    `config.endpoint = "GRAPHENDPOINT";`
+    `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
     ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-graph-nodejs/gremlin-uri.png)
 
-   如果“Gremlin URI”值为空，可从门户中的“密钥”页生成值。 使用“URI”值，删除 https:// 并将 documents 更改为 gremlin.cosmosdb。 如果图形帐户是在 2017 年 12 月 20 日之前创建的，请将 documents 更改为 graphs。 
-
-   Gremlin 终结点只能是没有协议/端口号的主机名，例如 `mygraphdb.gremlin.cosmosdb.azure.com`（不能是 `https://mygraphdb.gremlin.cosmosdb.azure.com` 或 `mygraphdb.gremlin.cosmosdb.azure.com:433`）。
-
-3. 在 config.js 中，使用 Azure 门户“密钥”页中的“主密钥”值填充 config.primaryKey 值。 
+3. 在 config.js 中，使用 Azure 门户“密钥”页中的“主密钥”值填充 config.primaryKey 值。   
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -162,7 +173,7 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 var config = {}
 
 // Note that this must not have HTTPS or the port number
-config.endpoint = "testgraphacct.gremlin.cosmosdb.azure.com";
+config.endpoint = "https://testgraphacct.gremlin.cosmosdb.azure.com:443/"; 
 config.primaryKey = "Pams6e7LEUS7LJ2Qk0fjZf3eGo65JdMWHmyn65i52w8ozPX2oxY3iP0yu05t9v1WymAHNcMwPIqNAEv3XDFsEg==";
 config.database = "graphdb"
 config.collection = "Persons"
@@ -182,9 +193,9 @@ module.exports = config;
 
 现在可以返回到 Azure 门户中的数据资源管理器，查看、查询、修改以及使用新的图形数据。
 
-在数据资源管理器中，新数据库会显示在“图形”窗格中。 展开数据库（后跟容器），然后选择“图形”。
+在数据资源管理器中，新数据库会显示在“图形”窗格中。  展开数据库（后跟容器），然后选择“图形”。 
 
-选择“应用筛选器”时，由示例应用生成的数据会显示在“图形”选项卡的下一窗格中。
+选择“应用筛选器”时，由示例应用生成的数据会显示在“图形”选项卡的下一窗格中。  
 
 尝试使用 `.has('firstName', 'Thomas')` 来完成 `g.V()`，对筛选器进行测试。 请注意，值区分大小写。
 

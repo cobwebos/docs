@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 37eb8ca3c25268dd7923087439a8fbf0fd1f168b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 56e87da0353a41504035a070d4c10bab0dda2279
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269903"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60551747"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的高级聚合
 
@@ -38,6 +38,7 @@ Event
 | order by TimeGenerated desc
 | summarize makelist(EventID) by Computer
 ```
+
 |Computer|list_EventID|
 |---|---|
 | computer1 | [704,701,1501,1500,1085,704,704,701] |
@@ -46,7 +47,7 @@ Event
 
 `makelist` 根据数据的传入顺序生成列表。 若要以最旧到最新的顺序排序事件，请在 order 语句中使用 `asc`，而不要使用 `desc`。 
 
-创建只包含非重复值的列表也很有用。 此列表称为“集”，它是使用 `makeset` 生成的：
+创建只包含非重复值的列表也很有用。 此列表称为“集”，它是使用 `makeset` 生成的： 
 
 ```Kusto
 Event
@@ -54,6 +55,7 @@ Event
 | order by TimeGenerated desc
 | summarize makeset(EventID) by Computer
 ```
+
 |Computer|list_EventID|
 |---|---|
 | computer1 | [704,701,1501,1500,1085] |
@@ -63,7 +65,7 @@ Event
 与 `makelist` 一样，`makeset` 也能处理有序数据，并可基于行的传入顺序生成数组。
 
 ## <a name="expanding-lists"></a>展开列表
-`makelist` 或 `makeset` 的反向操作是 `mvexpand`，该操作将值列表展开为单独的行。 它可以展开任意数目的动态列（包括 JSON 和数组）。 例如，可以在“检测信号”表中检查在过去一小时发送了检测信号的计算机中发送数据的解决方案：
+`makelist` 或 `makeset` 的反向操作是 `mvexpand`，该操作将值列表展开为单独的行。 它可以展开任意数目的动态列（包括 JSON 和数组）。 例如，可以在“检测信号”表中检查在过去一小时发送了检测信号的计算机中发送数据的解决方案： 
 
 ```Kusto
 Heartbeat
@@ -76,7 +78,7 @@ Heartbeat
 | computer1 | "security", "updates", "changeTracking" |
 | computer2 | "security", "updates" |
 | computer3 | "antiMalware", "changeTracking" |
-| ... | ... | ... |
+| ... | ... |
 
 使用 `mvexpand` 可以显示单独行（而不是逗号分隔列表）中的每个值：
 
@@ -96,7 +98,7 @@ Heartbeat
 | computer2 | "updates" |
 | computer3 | "antiMalware" |
 | computer3 | "changeTracking" |
-| ... | ... | ... |
+| ... | ... |
 
 
 然后，可以再次使用 `makelist` 将项分组到一起，这次会看到每个解决方案的计算机列表：
@@ -108,6 +110,7 @@ Heartbeat
 | mvexpand Solutions
 | summarize makelist(Computer) by tostring(Solutions) 
 ```
+
 |解决方案 | list_Computer |
 |--------------|----------------------|
 | "security" | ["computer1", "computer2"] |
@@ -124,6 +127,7 @@ Heartbeat
 | where TimeGenerated > ago(12h)
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
+
 | 类别 | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | 直接代理 | 2017-06-06T17:00:00Z | 15 |
@@ -153,6 +157,7 @@ Heartbeat
 | mvexpand TimeGenerated, count_
 | project Category, TimeGenerated, count_
 ```
+
 | 类别 | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | 直接代理 | 2017-06-06T17:00:00Z | 15 |

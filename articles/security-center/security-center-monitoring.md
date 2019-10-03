@@ -3,9 +3,8 @@ title: 使用 Azure 安全中心加强安全态势 | Microsoft Docs
 description: 本文可帮助你通过监视 Azure 安全中心的资源来加强安全态势。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 28b4667a9ceb4b3534d85ba28668f06c750e22c5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.author: memildin
+ms.openlocfilehash: b7bb67ec052244689b2775c280ff39a2121da3fa
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112251"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201692"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>使用 Azure 安全中心加强安全态势
 本文可帮助你加强安全态势。 使用 Azure 安全中心的监视功能，确保资源安全性尽可能严格，并监视策略符合性。
@@ -46,7 +45,7 @@ ms.locfileid: "56112251"
 
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 本文介绍了如何使用 Azure 安全中心的监视功能。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：
 
 * [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)：了解如何在 Azure 安全中心配置安全设置。

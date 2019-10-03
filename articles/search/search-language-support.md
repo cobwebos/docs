@@ -2,73 +2,55 @@
 title: 用于非英语搜索查询的多语言索引 - Azure 搜索
 description: Azure 搜索支持 56 种语言，通过 Microsoft 中的 Lucene 和自然语言处理技术利用语言分析器。
 author: yahnoosh
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: a198fa7fe5e1ed81e30987990359f9ecedbe225b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: 9d2e6418eb925f0d113b7e9a91463951ca52031a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631543"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186555"
 ---
-# <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>在 Azure 搜索中为多语言文档创建索引
-> [!div class="op_single_selector"]
->
-> * [门户](search-language-support.md)
-> * [REST](https://msdn.microsoft.com/library/azure/dn879793.aspx)
-> * [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
->
->
+# <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>如何在 Azure 搜索中为多种语言创建索引
 
-发掘语言分析器的强大功能，就如同在索引定义中的可搜索字段上设置属性一样简单。 现在，可以在门户中执行此步骤。
+索引可以包括包含多种语言内容的字段, 例如, 为特定于语言的字符串创建单个字段。 若要在建立索引和查询时获得最佳结果, 请分配提供适当语言规则的语言分析器。 
 
-下面是 Azure 搜索服务的 Azure 门户边栏选项卡的屏幕截图，供用户定义索引架构。 通过此边栏选项卡，用户可以创建所有字段并为它们创建分析器属性。
+Azure 搜索提供了来自 Lucene 和 Microsoft 的大量所选语言分析器, 可使用 Analyzer 属性分配给各个字段。 你还可以在门户中指定语言分析器, 如本文所述。
 
-> [!IMPORTANT]
-> 如同从头创建新索引时，或将新字段添加到现有索引时，只能在字段定义期间设置语言分析器。 确保在创建字段时完全指定所有属性，其中包括分析器。 保存更改后，将无法编辑属性或更改分析器类型。
->
->
+## <a name="add-analyzers-to-fields"></a>向字段添加分析器
 
-## <a name="define-a-new-field-definition"></a>定义新的字段定义
-1. 登录 [Azure 门户](https://portal.azure.com)，并打开搜索服务的服务边栏选项卡。
-2. 在服务仪表板顶部的命令栏中单击“添加索引”即可启动新的索引，或打开现有索引，在添加至现有索引的新字段上设置分析器。
-3. “字段”边栏选项卡随即出现，显示可供定义索引架构的选项，包括用于选择语言分析器的“分析器”选项卡。
-4. 在“字段”中，通过提供名称、选择数据类型并设置属性进行字段定义，进而将字段标记为可全文搜索、可在搜索结果中检索、可用于分面导航结构以及可排序等。
-5. 在移动到下一个字段前，打开“分析器”选项卡。
+语言分析器在创建字段时指定。 向现有字段定义添加分析器需要覆盖 (和重新加载) 索引, 或者创建一个与原始字段相同的新字段, 但使用分析器赋值。 然后, 您可以在方便时删除未使用的字段。
 
-![][1]
-*若要选择分析器，请单击“字段”边栏选项卡上的“分析器”选项卡*
+1. 登录到[Azure 门户](https://portal.azure.com)并找到搜索服务。
+1. 在服务仪表板顶部的命令栏中单击“添加索引”即可启动新的索引，或打开现有索引，在添加至现有索引的新字段上设置分析器。
+1. 通过提供名称来启动字段定义。
+1. 选择 "Edm" 数据类型。 只有字符串字段可以进行全文搜索。
+1. 设置可**搜索**属性以启用 Analyzer 属性。 字段必须基于文本, 才能使用语言分析器。
+1. 选择一个可用分析器。 
 
-## <a name="choose-an-analyzer"></a>选择分析器
-1. 滚动以找到定义的字段。
-2. 如果尚未将字段标记为可搜索，请立即单击复选框以将其标记为“可搜索”。
-3. 单击“分析器”区域以显示可用的分析器列表。
-4. 选择要使用的分析器。
+![在字段定义期间分配语言分析器](media/search-language-support/select-analyzer.png "在字段定义期间分配语言分析器")
 
-![][2]
-*为每个字段选择一个支持的分析器*
+默认情况下, 所有可搜索字段均使用与语言无关的[标准 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)。 若要查看受支持分析器的完整列表, 请参阅[将语言分析器添加到 Azure 搜索索引](index-add-language-analyzers.md)。
 
-默认情况下，所有可搜索字段会使用[标准 Lucene 分析器](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)（不限语言）。 若要查看支持的分析器的完整列表，请参阅 [Azure 搜索中的语言支持](https://msdn.microsoft.com/library/azure/dn879793.aspx)。
+在门户中, 分析器旨在按原样使用。 如果需要自定义或筛选器和 tokenizer 的特定配置, 应在代码中[创建自定义分析器](index-add-custom-analyzers.md)。 门户不支持选择或配置自定义分析器。
 
-为字段选择语言分析器后，它用于该字段的每个索引和搜索请求。 当使用不同的分析器针对多个字段发出查询时，查询由每个字段相应的分析器独立处理。
+## <a name="query-language-specific-fields"></a>查询特定于语言的字段
 
-许多 Web 和移动应用程序使用不同的语言来为世界各地的用户提供服务。 可通过为每种支持的语言创建字段来为此类方案定义索引。
-
-![][3]
-*每种支持的语言都有描述字段的索引定义*
+为字段选择语言分析器后，它用于该字段的每个索引和搜索请求。 使用不同分析器对多个字段发出查询时, 查询将由每个字段的已分配分析器单独处理。
 
 如果已知发出查询的代理的语言，可使用 **searchFields** 查询参数，将搜索请求的范围限制为特定字段。 以下查询将仅针对波兰文描述发出：
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2017-11-11`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
 
-使用“搜索资源管理器”粘贴类似上述内容的查询，可以从门户查询索引。 从服务边栏选项卡的命令栏可以获取搜索资源管理器。 有关详细信息，请参阅[在门户中查询 Azure 搜索索引](search-explorer.md)。
+可以从门户查询索引, 使用 "[**搜索资源管理器**](search-explorer.md)" 粘贴类似于上面所示的查询。
 
-有时，发出查询的代理的语言未知，在此情况下，可以针对所有字段同时发出查询。 如果需要，可以使用[计分配置文件](https://msdn.microsoft.com/library/azure/dn798928.aspx)来定义采用特定语言的结果首选项。 在下面的示例中，与波兰文和法文的匹配项相比，英文描述中提供的匹配项的评分更高：
+## <a name="boost-language-specific-fields"></a>提升特定于语言的字段
+
+有时，发出查询的代理的语言未知，在此情况下，可以针对所有字段同时发出查询。 如果需要，可以使用[计分配置文件](index-add-scoring-profiles.md)来定义采用特定语言的结果首选项。 在下面的示例中，与波兰文和法文的匹配项相比，英文描述中提供的匹配项的评分更高：
 
     "scoringProfiles": [
       {
@@ -79,11 +61,8 @@ ms.locfileid: "53631543"
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
 
-如果是一名 .NET 开发人员，请注意，可以使用 [Azure 搜索 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) 来设置语言分析器。 最新版本还提供对 Microsoft 语言分析器的支持。
+## <a name="next-steps"></a>后续步骤
 
-<!-- Image References -->
-[1]: ./media/search-language-support/AnalyzerTab.png
-[2]: ./media/search-language-support/SelectAnalyzer.png
-[3]: ./media/search-language-support/IndexDefinition.png
+如果你是 .NET 开发人员, 请注意, 可以使用[Azure 搜索 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search)和[Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)属性配置语言分析器。 

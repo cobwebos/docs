@@ -4,29 +4,28 @@ description: 利用 Azure 基础结构 VM 重启来实现 SAP 应用程序的“
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: f0b2f8f0-e798-4176-8217-017afe147917
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cda0b1c0774ed33bf550e0edf329cc22a2807be3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 64db278807b40f8b142513ac06247e916be74f4b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009359"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078044"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>利用 Azure 基础结构 VM 重启来实现 SAP 系统的“更高可用性”
 
-[1909114]:https://launchpad.support.sap.com/#/notes/1909114
+[1909114]: https://launchpad.support.sap.com/#/notes/1909114
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
@@ -239,15 +238,15 @@ Azure 托管磁盘自动放置在其附加到的虚拟机的容错域中。 如�
 
 * SAP 应用程序服务器的高可用性
 
-    SAP 应用程序服务器实例是冗余组件。 每个 SAP 应用程序服务器实例都部署在自己的 VM 上，该 VM 运行在另一 Azure 容错和升级域中。 有关详细信息，请参阅[容错域][planning-guide-3.2.1]和[升级域][planning-guide-3.2.2]部分。 
+    SAP 应用程序服务器实例是冗余组件。 每个 SAP 应用程序服务器实例都部署在自己的 VM 上，该 VM 运行在另一 Azure 容错和升级域中。 有关详细信息, 请参阅[容错域][planning-guide-3.2.1]和[升级域][planning-guide-3.2.2]部分。 
 
-    可以使用 Azure 可用性集来确保此配置。 有关详细信息，请参阅 [Azure 可用性集][planning-guide-3.2.3]部分。 
+    可以使用 Azure 可用性集来确保此配置。 有关详细信息, 请参阅[Azure 可用性集][planning-guide-3.2.3]部分。 
 
     当 Azure 容错或升级域可能出现计划内或计划外的不可用情况时，将导致有限数目的 VM 及其 SAP 应用程序服务器实例不可用。
 
-    每个 SAP 应用程序服务器实例都放置在自己的 Azure 存储帐户中。 某个 Azure 存储帐户可能出现不可用情况时，只会导致一个 VM 及其 SAP 应用程序服务器实例不可用。 不过请注意，一个 Azure 订阅中的 Azure 存储帐户数目有限。 为了确保在 VM 重启后自动启动 ASCS/SCS 实例，请设置[对 SAP 实例使用 Autostart][planning-guide-11.5] 部分所述的 ASCS/SCS 实例启动配置文件中的 Autostart 参数。
+    每个 SAP 应用程序服务器实例都放置在自己的 Azure 存储帐户中。 某个 Azure 存储帐户可能出现不可用情况时，只会导致一个 VM 及其 SAP 应用程序服务器实例不可用。 不过请注意，一个 Azure 订阅中的 Azure 存储帐户数目有限。 若要确保在 VM 重新启动后自动启动 ASCS/SCS 实例, 请在 "对[SAP 实例使用 Autostart][planning-guide-11.5] " 部分所述的 ASCS/scs 实例启动配置文件中设置自动启动参数。
   
-    有关详细信息，请参阅 [SAP 应用程序服务器的高可用性][planning-guide-11.4.1]。
+    有关详细信息, 请参阅[SAP 应用程序服务器的高可用性][planning-guide-11.4.1]。
 
     即使使用托管磁盘，这些磁盘也会存储在 Azure 存储帐户中，并可能在出现存储中断时不可用。
 
@@ -255,7 +254,7 @@ Azure 托管磁盘自动放置在其附加到的虚拟机的容错域中。 如�
 
     在此方案中，使用 Azure VM 重新启动，来保护已安装 SAP ASCS/SCS 实例的 VM。 如果 Azure 服务器发生计划内或计划外的停机，则在另一个可用的服务器上重启 VM。 如前所述，在此 ASCS/SCS 实例方案中，Azure VM 重启主要是保护 VM 而不是应用程序。 通过 VM 重启，可以间接实现 SAP ASCS/SCS 实例的“更高可用性”。 
 
-    为了确保在 VM 重启后自动启动 ASCS/SCS 实例，请设置[对 SAP 实例使用 Autostart][planning-guide-11.5] 部分所述的 ASCS/SCS 实例启动配置文件中的 Autostart 参数。 此设置意味着，在单个 VM 上作为单一故障点 (SPOF) 运行的 ASCS/SCS 实例将决定整个 SAP 布局的可用性。
+    若要确保在 VM 重新启动后自动启动 ASCS/SCS 实例, 请在 ASCS/SCS 实例启动配置文件中设置自动启动参数, 如[使用适用于 SAP 实例的 Autostart][planning-guide-11.5]部分中所述。 此设置意味着，在单个 VM 上作为单一故障点 (SPOF) 运行的 ASCS/SCS 实例将决定整个 SAP 布局的可用性。
 
 * DBMS 服务器的更高可用性
 
@@ -280,8 +279,7 @@ SAP 提供了一项设置，用于在启动 VM 中的 OS 后立即启动 SAP 实
 
   * [Start or stop SAP along with your Unix Server Start/Stop](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)（在 Unix 服务器启动/停止时也启动或停止 SAP）
   * [Starting and stopping SAP NetWeaver management agents](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)（启动和停止 SAP NetWeaver 管理代理）
-  * [How to enable autostart of the HANA database](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)（如何启用 HANA 数据库的自动启动）
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解完整的 SAP NetWeaver 应用程序感知高可用性，请参阅 [Azure IaaS 上的 SAP 应用程序高可用性][sap-high-availability-architecture-scenarios-sap-app-ha]。
+有关完整的 SAP NetWeaver 应用程序感知高可用性的信息, 请参阅[Azure IaaS 上的 sap 应用程序高可用性][sap-high-availability-architecture-scenarios-sap-app-ha]。

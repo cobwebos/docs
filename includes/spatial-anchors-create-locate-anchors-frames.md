@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 10eb16dc1757255c77ed8967dc132f42660e070f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57907623"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172653"
 ---
 ## <a name="provide-frames-to-the-session"></a>提供对会话的帧
 

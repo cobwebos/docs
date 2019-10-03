@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 71ba1266c3a6a1f063f1af4ab37a5f29752c62f0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 388b389cca7c3e820ea3ccfd37a2a93ccd476b31
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896153"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254641"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -29,16 +29,16 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
 本文假设你已阅读了以下文章：
 
 * [Azure Functions 开发人员指南](functions-reference.md)
-* [Azure Functions Visual Studio 2017 工具](functions-develop-vs.md)
+* [Azure Functions Visual Studio 2019 工具](functions-develop-vs.md)
 
 ## <a name="functions-class-library-project"></a>Functions 类库项目
 
 在 Visual Studio 中，**Azure Functions** 项目模板会创建一个 C# 类库项目，它包含以下文件：
 
 * [host.json](functions-host-json.md) - 存储着在本地或者在 Azure 中运行时会影响项目中的所有函数的配置设置。
-* [local.settings.json](functions-run-local.md#local-settings-file) - 存储着在本地运行时使用的应用设置和连接字符串。 此文件包含机密且不会发布到 Azure 中的函数应用中。 必须[向函数应用添加应用设置](functions-develop-vs.md#function-app-settings)。
+* [local.settings.json](functions-run-local.md#local-settings-file) - 存储着在本地运行时使用的应用设置和连接字符串。 此文件包含机密且不会发布到 Azure 中的函数应用中。 而是，应[将应用设置添加到函数应用](functions-develop-vs.md#function-app-settings)。
 
-生成项目时，在生成输出目录中生成如下所示的文件夹结构：
+生成项目时，在生成输出目录中生成如下例所示的文件夹结构：
 
 ```
 <framework.version>
@@ -50,7 +50,7 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
  | - host.json
 ```
 
-部署到 Azure 中函数应用的正是此目录。 Functions 运行时 [2.x 版](functions-versions.md) 中所需的绑定扩展[作为 NuGet 包添加到项目中](./functions-bindings-register.md#c-class-library-with-visual-studio-2017)。
+部署到 Azure 中函数应用的正是此目录。 Functions 运行时 [2.x 版](functions-versions.md) 中所需的绑定扩展[作为 NuGet 包添加到项目中](./functions-bindings-register.md#vs)。
 
 > [!IMPORTANT]
 > 生成过程将为每个函数创建一个 *function.json* 文件。 此 *function.json* 文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 要了解如何禁用函数，请参阅[如何禁用函数](disable-function.md#functions-2x---c-class-libraries)。
@@ -72,7 +72,7 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` 属性将该方法标记为函数入口点。 该名称在项目中必须是唯一的，以字母开头，并且只包含字母、数字 `_` 和 `-`，长度不得超过 127 个字符。 项目模板通常创建一个名为 `Run` 的方法，但方法名称可以是任何有效的 C# 方法名称。
+`FunctionName` 属性将该方法标记为函数入口点。 该名称在项目中必须是唯一的，以字母开头，并且只包含字母、数字、`_` 和 `-`，长度不得超过 127 个字符。 项目模板通常创建一个名为 `Run` 的方法，但方法名称可以是任何有效的 C# 方法名称。
 
 触发器属性指定触发器类型并将输入数据绑定到一个方法参数。 示例函数将由一条队列消息触发，并且队列消息将传递到该方法中的 `myQueueItem` 参数。
 
@@ -133,7 +133,7 @@ public static class BindingExpressionsExample
 
 此文件的用途是向缩放控制器提供用于[对消耗计划做出缩放决策](functions-scale.md#how-the-consumption-and-premium-plans-work)的信息。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
 
-生成的 *function.json* 文件包括一个 `configurationSource` 属性，该属性告诉运行时使用 .NET 属性进行绑定，而不是使用 *function.json* 配置。 下面是一个示例：
+生成的 *function.json* 文件包括一个 `configurationSource` 属性，该属性告诉运行时使用 .NET 属性进行绑定，而不是使用 *function.json* 配置。 以下是一个示例：
 
 ```json
 {
@@ -156,7 +156,7 @@ public static class BindingExpressionsExample
 
 *function.json* 文件生成是由 NuGet 包 [Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) 生成的。 
 
-Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1.x 项目和 2.x 项目的不同之处在于目标框架。 以下是 csproj 文件的相关部分，其中显示了不同的目标框架和相同的 `Sdk` 包：
+Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1\.x 项目和 2.x 项目的不同之处在于目标框架。 以下是 csproj  文件的相关部分，其中显示了不同的目标框架和相同的 `Sdk` 包：
 
 **Functions 1.x**
 
@@ -181,7 +181,7 @@ Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1.x 项目�
 </ItemGroup>
 ```
 
-`Sdk` 包的依赖关系是触发器和绑定。 1.x 项目是指 1.x 触发器和绑定，因为它们面向 .NET Framework，而 2.x 触发器和绑定面向 .NET Core。
+`Sdk` 包的依赖关系是触发器和绑定。 1\.x 项目是指 1.x 触发器和绑定，因为这些触发器和绑定面向 .NET Framework，而 2.x 触发器和绑定面向 .NET Core。
 
 `Sdk` 包也依赖于 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json)，并间接依赖于 [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage)。 这些依赖关系确保项目使用的包版本与项目面向的 Functions 运行时版本兼容。 例如，`Newtonsoft.Json` 的 11 版可用于 .NET Framework 4.6.1，但面向 .NET Framework 4.6.1 的 Functions 运行时仅与 `Newtonsoft.Json` 9.0.1 兼容。 因此该项目中的函数代码也只能使用 `Newtonsoft.Json` 9.0.1。
 
@@ -191,7 +191,7 @@ GitHub 存储库 [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azu
 
 Visual Studio 使用 [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 运行 Functions 项目。 Core Tools 是适用于 Functions 运行时的命令行接口。
 
-如果使用 npm 安装 Core Tools，则不会影响 Visual Studio 使用的 Core Tools 版本。 对于 Functions 运行时版本 1.x，Visual Studio 在 %USERPROFILE%\AppData\Local\Azure.Functions.Cli 中存储 Core Tools 版本且存储最新版本。 对于 Functions 2.x，Core Tools 包含在 Azure Functions 和 Web Jobs Tools 扩展中。 对于 1.x 和 2.x，运行 Functions 项目时可以看到控制台输出中正在使用何种版本：
+如果使用 npm 安装 Core Tools，则不会影响 Visual Studio 使用的 Core Tools 版本。 对于 Functions 运行时版本 1.x，Visual Studio 在 %USERPROFILE%\AppData\Local\Azure.Functions.Cli 中存储 Core Tools 版本且存储最新版本  。 对于 Functions 2.x，Core Tools 包含在 Azure Functions 和 Web Jobs Tools 扩展中  。 对于 1.x 和 2.x，运行 Functions 项目时可以看到控制台输出中正在使用何种版本：
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
@@ -248,7 +248,7 @@ public static class SimpleExample
 } 
 ```
 
-避免在 Azure Functions 中使用 `Console.Write`。 有关详细信息，请参阅“监视 Azure Functions”文章中的[使用 C# 函数编写日志](functions-monitoring.md#write-logs-in-c-functions)。
+避免在 Azure Functions 中使用 `Console.Write`。 有关详细信息，请参阅“监视 Azure Functions”文章中的[使用 C# 函数编写日志](functions-monitoring.md#write-logs-in-c-functions)  。
 
 ## <a name="async"></a>异步
 
@@ -344,7 +344,7 @@ public static class EnvironmentVariablesExample
   }
   ```
 
-  `BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如，移动应用表输出绑定支持[六种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于命令性绑定，仅可使用 [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
+  `BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如, 移动应用表输出绑定支持[6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), 但只能将[ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)或[IAsyncCollector\<> t](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)与命令式绑定一起使用。
 
 ### <a name="single-attribute-example"></a>单属性示例
 

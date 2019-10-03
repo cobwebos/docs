@@ -1,44 +1,47 @@
 ---
 title: 为 Azure 上的 SAP HANA（大型实例）类型 II SKU 执行操作系统备份和还原 | Microsoft Docs
-description: 为 Azure 上的 SAP HANA（大型实例）类型 II SKU 执行操作系统备份和还原
+description: 针对 Azure (大型实例) 类型 II Sku 执行操作系统备份和还原 SAP HANA
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
-ms.author: saghorpa
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c82c5c74fe13bad99528486be69089df5f477457
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 046daed4f548d24010c3d3bef177cee8cf24a55e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436334"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098726"
 ---
-# <a name="os-backup-and-restore-for-type-ii-skus"></a>为类型 II Sku 执行 OS 备份和还原
+# <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>修订版3中的 II 类 Sku 的操作系统备份和还原
 
-本文档介绍如何为 HANA 大型实例的类型 II SKU 执行操作系统文件级备份和还原。 
+本文档介绍了为修订版3的 HANA 大型实例的**II 类 sku**执行操作系统文件级别备份和还原的步骤。 
+
+>[!Important]
+> **本文不适用于修订版 4 HANA 大型实例戳记中的 II 类 SKU 部署。** 在修订版 4 HANA 大型实例中部署的第 II 类 HANA 大型实例单元的启动 LUN 可以用存储快照进行备份, 因为在修订版 3 stamp 中已有类型 I Sku
+
 
 >[!NOTE]
 >OS 备份脚本使用预安装在服务器中的 ReaR 软件。  
 
-Microsoft 服务管理团队完成预配后，默认情况下，将通过两次备份计划配置服务器来对操作系统进行文件系统级备份。 可以使用以下命令查看备份作业的计划：
+Microsoft `Service Management`团队完成预配后, 默认情况下, 服务器配置了两个备份计划以备份操作系统的文件系统级别。 可以使用以下命令检查备份作业的计划:
 ```
 #crontab –l
 ```
-可以使用以下命令随时更改备份计划：
+可以使用以下命令随时更改备份计划:
 ```
 #crontab -e
 ```
 ## <a name="how-to-take-a-manual-backup"></a>如何执行手动备份？
 
-已使用 cron 作业计划操作系统文件系统备份。 但也可以手动执行操作系统文件级备份。 要执行手动备份，请运行以下命令：
+已使用**cron 作业**计划 OS 文件系统备份。 但也可以手动执行操作系统文件级备份。 要执行手动备份，请运行以下命令：
 
 ```
 #rear -v mkbackup
@@ -64,7 +67,7 @@ Microsoft 服务管理团队完成预配后，默认情况下，将通过两次�
 >[!NOTE] 
 >从备份中还原文件后，需要将文件复制到所需位置。
 
-下面的屏幕截图演示还原完整备份：
+以下屏幕截图显示了完整备份的还原:
 
 ![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
@@ -96,4 +99,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-下面的屏幕截图演示还原完整备份：![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+以下屏幕截图显示了完整备份的还原:![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

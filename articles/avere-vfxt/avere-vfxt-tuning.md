@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: f5e780dcab20befe19ca34020908eee93c290516
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.openlocfilehash: 17e55dbe84cda87ee902c94e0024c9a3aad8b31b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197431"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698341"
 ---
 # <a name="cluster-tuning"></a>群集优化
 
@@ -46,8 +46,6 @@ ms.locfileid: "54197431"
 若要在云 NAS 或网关方案（其中的 vFXT 群集会提供云容器的 NAS 式访问）中的 vFXT 群集与云存储之间利用更高的数据速度，支持代表可以建议更改如下所述的设置，以便更主动地将数据从缓存推送到存储卷：
 
 * 增加群集与存储容器之间的 TCP 连接数
-* 减小群集与存储之间的通信 REST 超时值，以便在写入未立即成功时更快地重试写入  
-* 增加段大小，使每个后端写入段传输 8 MB 而不是 1 MB 的数据块
 
 ## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>云爆发或混合 WAN 优化
 

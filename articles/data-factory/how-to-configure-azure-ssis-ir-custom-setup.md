@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d146027ea3a21ab8df3750014c02893bc2f50dd6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4962070d69af98d0c7b10dc6f931612766529dce
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097723"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515709"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS 集成运行时的安装
 
@@ -40,7 +40,9 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
 -   Azure-SSIS IR 目前不支持管理共享。
 
-## <a name="prerequisites"></a>必备组件
+-   Azure-SSIS IR 不支持 IBM iSeries Access ODBC 驱动程序。 你可能会在自定义安装过程中看到安装错误。 请联系 IBM 支持部门以获得帮助。
+
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -82,7 +84,7 @@ Azure-SSIS 集成运行时的自定义安装界面提供了一个界面，用于
 
       ![创建 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-   1. 选择新容器并上传自定义安装脚本及其关联的文件。 请务必将 `main.cmd` 上传到容器的顶级目录，而不要上传到任何文件夹中。 另请确保你的容器仅包含所需的自定义安装文件，以便稍后将它们下载到 Azure-SSIS IR 时不会花费较长的时间。
+   1. 选择新容器并上传自定义安装脚本及其关联的文件。 请务必将 `main.cmd` 上传到容器的顶级目录，而不要上传到任何文件夹中。 另请确保你的容器仅包含所需的自定义安装文件，以便稍后将它们下载到 Azure-SSIS IR 时不会花费较长的时间。 自定义安装的最大期限目前设置为 45 分钟（以后将超时），这包括从容器下载所有文件并将其安装在 Azure-SSIS IR 上的时间。 如果需要更长的时间段, 请提出支持票证。
 
       ![将文件上传到 Blob 容器](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 

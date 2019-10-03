@@ -3,19 +3,19 @@ title: Web 搜索终结点
 titleSuffix: Azure Cognitive Services
 description: Web 搜索 API 终结点摘要。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2018
-ms.author: v-gedod
-ms.openlocfilehash: 8c3fd0fc091edbc4323315f636ed2f4fea7d822a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: be622c5636c253c48bec4d67fba58319262c2603
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880782"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883562"
 ---
 # <a name="web-search-endpoint"></a>Web 搜索终结点
 
@@ -31,7 +31,7 @@ ms.locfileid: "55880782"
 GET https://api.cognitive.microsoft.com/bing/v7.0/search
 ```
 
-终结点：有关标头、参数、市场代码、响应对象、错误等内容的详细信息，请参阅[必应 Web API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) 参考。
+终结点：有关标头、参数、市场代码、响应对象、错误等内容的详细信息，请参阅[必应 Web API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) 参考。
 
 ## <a name="response-json"></a>响应 JSON
 

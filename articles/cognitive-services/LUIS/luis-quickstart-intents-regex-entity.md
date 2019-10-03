@@ -1,5 +1,5 @@
 ---
-title: 正则表达式实体
+title: 教程：正则表达式实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用正则表达式实体从话语中提取带有一致格式的数据。
 services: cognitive-services
@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 012d77227e7c0283b565361dda32cb77e12fc62b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: db60d87b441836f38309166318dd1778ce828483
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867263"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307586"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>教程：从话语中获取格式正确的数据
-在此教程中，创建使用“正则表达式”实体从话语中提取带有一致格式的数据的应用。
+在此教程中，创建使用“正则表达式”实体从话语中提取带有一致格式的数据的应用  。
 
 **本教程介绍如何执行下列操作：**
 
@@ -61,9 +61,9 @@ ms.locfileid: "56867263"
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. 选择“创建新意向”。 
+1. 选择“创建新意向”  。 
 
-1. 在弹出对话框中输入 `FindForm`，然后选择“完成”。 
+1. 在弹出对话框中输入 `FindForm`，然后选择“完成”。  
 
     ![“创建新意向”对话框的屏幕截图，其中的搜索框中包含“实用工具”](./media/luis-quickstart-intents-regex-entity/create-new-intent-ddl.png)
 
@@ -91,19 +91,19 @@ ms.locfileid: "56867263"
 
 HRF 代表 `human resources form`。
 
-在话语添加到意向时，LUIS 会对话语执行词汇切分。 这些陈述的词汇切分会在连字符的前面和后面添加空格 (`Where is HRF - 123456?`)。在对陈述执行词汇切分之前，正则表达式将应用到原始格式的陈述。 由于正则表达式应用到原始格式，因此，它不需要处理单词边界。 
+在话语添加到意向时，LUIS 会对话语执行词汇切分。 这些陈述的词汇切分会在连字符的前面和后面添加空格 (`Where is HRF - 123456?`)。在对陈述执行词汇切分之前，正则表达式将应用到原始格式的陈述。 由于正则表达式应用到原始格式，因此，它不需要处理单词边界。  
 
 遵循以下步骤创建一个正则表达式实体，让 LUIS 知道 HRF 编号格式是什么：
 
-1. 在左侧面板中选择“实体”。
+1. 在左侧面板中选择“实体”。 
 
-1. 在“实体”页上选择“创建新实体”按钮。 
+1. 在“实体”页上选择“创建新实体”按钮。  
 
-1. 在弹出对话框中，输入新实体名称 `HRF-number`，选择“正则表达式”作为实体类型，输入 `hrf-[0-9]{6}` 作为“正则表达式”值，然后选择“完成”。
+1. 在弹出对话框中，输入新实体名称 `HRF-number`，选择“正则表达式”  作为实体类型，输入 `hrf-[0-9]{6}` 作为“正则表达式”  值，然后选择“完成”  。
 
     ![用于设置新实体属性的弹出对话框屏幕截图](./media/luis-quickstart-intents-regex-entity/create-regex-entity.png)
 
-1. 从左侧菜单中选择“意向”，然后选择“FindForm”意向查看话语中标记的正则表达式。 
+1. 从左侧菜单中选择“意向”，然后选择“FindForm”意向查看话语中标记的正则表达式。   
 
     [![“标记包含现有实体和正则表达式模式的陈述”的屏幕截图](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png)](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png#lightbox)
 
@@ -125,7 +125,11 @@ HRF 代表 `human resources form`。
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. 将光标定位到地址中 URL 的末尾，并输入 `When were HRF-123456 and hrf-234567 published in the last year?`。 最后一个查询字符串参数为 `q`，表示陈述查询 (**q**uery)。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含两个表单编号（`HRF-123456` 和 `hrf-234567`）的 `FindForm` 意向。
+2. 转到地址中 URL 的末尾并输入以下话语：
+
+    `When were HRF-123456 and hrf-234567 published in the last year?`
+
+    最后一个查询字符串参数为 `q`，表示陈述**查询**。 此陈述不同于标记的任何陈述，因此，它非常适合用于测试，测试结果应返回包含两个表单编号（`HRF-123456` 和 `hrf-234567`）的 `FindForm` 意向。
 
     ```json
     {

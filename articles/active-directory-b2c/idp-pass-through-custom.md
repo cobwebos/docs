@@ -1,35 +1,33 @@
 ---
-title: 在 Azure Active Directory B2C 中使用自定义策略将访问令牌传递给应用程序 | Microsoft Docs
+title: 在 Azure Active Directory B2C 中使用自定义策略将访问令牌传递给应用程序
 description: 了解如何在 Azure Active Directory B2C 中使用自定义策略将 OAuth2.0 标识提供者的访问令牌作为声明传递给应用程序。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: davidmu
+ms.date: 08/17/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 784387b119bff6445015419adfd3bc0e52eee43f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b6795af0829a288c36cad5b848fed50a99dc1bfc
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402637"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510126"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略将访问令牌传递给应用程序
 
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
-Azure Active Directory (Azure AD) B2C 中的[自定义策略](active-directory-b2c-get-started-custom.md)允许应用程序的用户通过标识提供者进行注册或登录。 当发生此行为时，Azure AD B2C 会从标识提供者收到一个[访问令牌](active-directory-b2c-reference-tokens.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 你在自定义策略中添加声明类型和输出声明来将该令牌传递给你在 Azure AD B2C 中注册的应用程序。 
+Azure Active Directory B2C (Azure AD B2C) 中的[自定义策略](active-directory-b2c-get-started-custom.md)为应用程序的用户提供了使用标识提供者注册或登录的机会。 当发生此行为时，Azure AD B2C 会从标识提供者收到一个[访问令牌](active-directory-b2c-reference-tokens.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 你在自定义策略中添加声明类型和输出声明来将该令牌传递给你在 Azure AD B2C 中注册的应用程序。
 
 Azure AD B2C 支持传递 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) 和 [OpenID Connect](active-directory-b2c-reference-oidc.md) 标识提供者的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 自定义策略使用 OAuth 2.0 或 OpenID Connect 标识提供者进行配置。
+* 自定义策略使用 OAuth 2.0 或 OpenID Connect 标识提供者进行配置。
 
-## <a name="add-the-claim-elements"></a>添加声明元素 
+## <a name="add-the-claim-elements"></a>添加声明元素
 
 1. 打开 *TrustframeworkExtensions.xml* 文件，向 **ClaimsSchema** 元素中添加标识符为 `identityProviderAccessToken` 的以下 **ClaimType** 元素：
 
@@ -86,29 +84,24 @@ Azure AD B2C 支持传递 [OAuth 2.0](active-directory-b2c-reference-oauth-code.
 ### <a name="upload-the-files"></a>上传文件
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+2. 通过单击顶部菜单中的 "**目录 + 订阅**" 筛选器并选择包含租户的目录, 确保使用的是包含 Azure AD B2C 租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 选择“标识体验框架”。
 5. 在“自定义策略”页上，单击“上传策略”。
 6. 选择“覆盖策略(若存在)”，然后搜索并选择 *TrustframeworkExtensions.xml* 文件。
-7. 单击“上传” 。
+7. 选择“上传”。
 8. 针对信赖方文件（例如 *SignUpOrSignIn.xml*）重复步骤 5 到 7。
 
 ### <a name="run-the-policy"></a>运行策略
 
 1. 打开你更改的策略。 例如，*B2C_1A_signup_signin*。
 2. 对于“应用程序”，选择你之前注册的应用程序。 “回复 URL”应当显示 `https://jwt.ms` 才能看到以下示例中的令牌。
-3. 单击“立即运行”。
+3. 选择“立即运行”。
 
     应会看到类似于以下示例的内容：
 
-    ![已解码的令牌](./media/idp-pass-through-custom/idp-pass-through-custom-token.png)
+    ![jwt.ms 中突出显示了 idp_access_token 块的已解码令牌](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 
-在 [Azure Active Directory 令牌参考](active-directory-b2c-reference-tokens.md)中了解有关令牌的更多信息。
-
-
-
-
-
+详细了解[Azure Active Directory B2C 令牌参考](active-directory-b2c-reference-tokens.md)中的令牌。

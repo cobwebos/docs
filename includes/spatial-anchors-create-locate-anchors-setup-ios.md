@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 26eff7b10542843be561264c316bdcf1a63271f7
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56751684"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172651"
 ---
 ## <a name="setting-up-the-library"></a>设置库
 

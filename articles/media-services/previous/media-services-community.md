@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1347e28fe36ffe9595516252aea102d817a705a7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 8070d0cc302e0c0745216cdd40c9cbbf34e2bf58
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000039"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69016634"
 ---
 # <a name="azure-media-services-community"></a>Azure 媒体服务社区  
 
@@ -56,16 +56,8 @@ ms.locfileid: "60000039"
 
 ## <a name="contact-the-team"></a>与团队联系
 
-Azure 媒体服务主要支持电子邮件是： **amshelp\@microsoft.com**。
+Azure 媒体服务主要支持电子邮件是： **amshelp@microsoft.com** 。
 
-下表列出了功能子团队的电子邮件：
+## <a name="next-steps"></a>后续步骤
 
-| Feature | 电子邮件 |
-| --- | --- |
-| Azure 媒体分析 |amsanalytics@microsoft.com |
-| Azure Media Player |ampinfo@microsoft.com |
-| Azure 媒体资源管理器 |amse@microsoft.com |
-| 工作流设计器 |mepd@microsoft.com |
-| 文件流式传输和打包 |amsstreaming@microsoft.com |
-| 实时传送视频流和打包 |amslived@microsoft.com |
-
+[概述](media-services-overview.md)

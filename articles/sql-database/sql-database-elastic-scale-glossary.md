@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 446203b45744a95c32cd41d9ded26fd960ac8a22
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: 3ed0cc9dce312cb9736b3e32ba46d2cb1cca3ef8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561427"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568451"
 ---
 # <a name="elastic-database-tools-glossary"></a>弹性数据库工具词汇表
 
@@ -29,7 +28,7 @@ Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-intr
 
 **数据库**：Azure SQL 数据库。 
 
-**依赖于数据的路由**：使应用程序能够连接到给定了特定分片键的分片的功能。 请参阅[依赖于数据的路由](sql-database-elastic-scale-data-dependent-routing.md)。 与**[多分片查询](sql-database-elastic-scale-multishard-querying.md)** 进行比较。
+**依赖于数据的路由**：使应用程序能够连接到给定了特定分片键的分片的功能。 请参阅[依赖于数据的路由](sql-database-elastic-scale-data-dependent-routing.md)。 与 **[多分片查询](sql-database-elastic-scale-multishard-querying.md)** 进行比较。
 
 **全局分片映射**：分片集内分片键及其各自分片之间的映射。 全局分片映射存储在**分片映射管理器**中。 与**局部分片映射**进行比较。
 

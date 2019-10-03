@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: adb8917605a00208b328e7fd15f96d28c7838988
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: de7858be4ac4e392b4fb92cacf55882378ba9813
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485198"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568990"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL 数据同步的 Data Sync Agent
 
@@ -38,7 +37,7 @@ ms.locfileid: "58485198"
 
 - 如果提供 `LocalSystem` 作为 **SERVICEACCOUNT** 的值，请在将代理配置为连接到本地 SQL Server 时使用 SQL Server 身份验证。
 
-- 如果提供域用户帐户或本地用户帐户作为 **SERVICEACCOUNT** 的值，则还必须使用 **SERVICEPASSWORD** 参数提供密码。 例如，`SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`。
+- 如果提供域用户帐户或本地用户帐户作为 **SERVICEACCOUNT** 的值，则还必须使用 **SERVICEPASSWORD** 参数提供密码。 例如， `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"` 。
 
 ```cmd
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
@@ -226,7 +225,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
 ### <a name="ping-the-service"></a>对服务执行 Ping 命令
 
-#### <a name="usage"></a>使用情况
+#### <a name="usage"></a>用法
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action pingsyncservice
@@ -240,7 +239,7 @@ SqlDataSyncAgentCommand.exe -action "pingsyncservice"
 
 ### <a name="display-registered-databases"></a>显示已注册的数据库
 
-#### <a name="usage"></a>使用情况
+#### <a name="usage"></a>用法
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action displayregistereddatabases
@@ -254,7 +253,7 @@ SqlDataSyncAgentCommand.exe -action "displayregistereddatabases"
 
 ### <a name="submit-the-agent-key"></a>提交代理密钥
 
-#### <a name="usage"></a>使用情况
+#### <a name="usage"></a>用法
 
 ```cmd
 Usage: SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key]  -username [user name] -password [password]
@@ -268,7 +267,7 @@ SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key generate
 
 ### <a name="register-a-database"></a>注册数据库
 
-#### <a name="usage"></a>使用情况
+#### <a name="usage"></a>用法
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action registerdatabase -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]  -username [domain\\username] -password [password] -authentication [sql or windows] -encryption [true or false]
@@ -287,7 +286,7 @@ SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -da
 
 使用此命令取消注册数据库时，它会完全取消数据库的设置。 如果数据库参与其他同步组，则此操作会中断其他同步组。
 
-#### <a name="usage"></a>使用情况
+#### <a name="usage"></a>用法
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action unregisterdatabase -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]
@@ -301,7 +300,7 @@ SqlDataSyncAgentCommand.exe -action "unregisterdatabase" -serverName localhost -
 
 ### <a name="update-credentials"></a>更新凭据
 
-#### <a name="usage"></a>使用情况
+#### <a name="usage"></a>用法
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action updatecredential -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]  -username [domain\\username] -password [password] -authentication [sql or windows] -encryption [true or false]

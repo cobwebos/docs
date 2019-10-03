@@ -8,20 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 938efe79d4f9f0b9003fcf83196df80d71d16e75
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 341f173e399196e32ab59f44db4302b1b1a195e6
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009421"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607739"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>快速入门：使用适用于 .NET Core 的语音 SDK 识别语音
 
+针对[文本转语音](quickstart-text-to-speech-dotnetcore.md)和[语音翻译](quickstart-translate-speech-dotnetcore-windows.md)也提供了快速入门。
+
+如果需要，请选择不同的编程语言和/或环境：<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-在本文中，将使用认知服务[语音 SDK](speech-sdk.md) 为 Windows 或 macOS 上的 .NET Core 创建 C# 控制台应用程序。 可以通过电脑的麦克风实时将语音转录为文本。 该应用程序是使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017（任何版本）构建的。
+在本文中，将使用认知服务[语音 SDK](speech-sdk.md) 为 Windows 或 macOS 上的 .NET Core 创建 C# 控制台应用程序。 可以通过电脑的麦克风实时将语音转录为文本。 该应用程序是使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017 或更高版本（任何版本）生成的。
 
 > [!NOTE]
 > .NET Core 是一个实现了 [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) 规范的开源跨平台 .NET 平台。
@@ -33,7 +36,7 @@ ms.locfileid: "59009421"
 本快速入门需要：
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 或更高版本
 * 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
@@ -54,11 +57,11 @@ ms.locfileid: "59009421"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-1. 构建应用程序。 从菜单栏中，选择“构建” > “构建解决方案”。 编译代码时应不会出错。
+1. 构建应用程序。 从菜单栏中，选择“构建” > “构建解决方案”   。 编译代码时应不会出错。
 
     ![Visual Studio 应用程序的屏幕截图，其中突出显示了“生成解决方案”选项](media/sdk/qs-csharp-dotnetcore-windows-05-build.png "成功生成")
 
-1. 启动应用程序。 在菜单栏中，选择“调试” > “开始调试”，或按 F5。
+1. 启动应用程序。 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
 
     ![Visual Studio 应用程序的屏幕截图，其中突出显示了“启动调试”选项](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "启动应用进入调试")
 

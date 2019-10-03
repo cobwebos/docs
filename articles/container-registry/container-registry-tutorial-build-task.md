@@ -3,23 +3,26 @@ title: 教程 - 自动化容器映像生成 - Azure 容器注册表任务
 description: 本教程介绍如何配置一个 Azure 容器注册表任务，以便在向 Git 存储库提交源代码时在云中自动触发容器映像生成。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5aa637938433eb1f906f0a4d81038cec0d6c6dcc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 25a0ef528d67deb5ea71720d2ff8e4d62b3b98a5
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893004"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744573"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时，在云中自动化容器映像生成
 
-除[快速任务](container-registry-tutorial-quick-task.md)以外，ACR 任务还支持通过生成任务自动执行 Docker 容器映像生成。 本教程介绍如何使用 Azure CLI 创建一个任务，以便在将源代码提交到 Git 存储库时，在云中自动触发映像生成。
+除了[快速任务](container-registry-tutorial-quick-task.md)之外，ACR 任务还支持在将源代码提交到 Git 存储库时自动在云中生成 Docker 容器映像。
 
-本教程（教程系列的第二部分）的内容包括：
+在本教程中，在你将源代码提交到 Git 存储库时，ACR 任务会生成并推送在 Dockerfile 中指定的单一容器映像。 要创建[多步骤任务](container-registry-tasks-multi-step.md)并让其使用 YAML 文件来定义相关步骤，以便在提交代码时生成、推送和测试（可选）多个容器，请参阅[教程：提交源代码时在云中运行多步骤容器工作流](container-registry-tutorial-multistep-task.md)。 有关 ACR 任务的概述，请参阅[使用 ACR 任务自动执行 OS 和框架修补](container-registry-tasks-overview.md)
+
+本教程的内容：
 
 > [!div class="checklist"]
 > * 创建任务
@@ -33,51 +36,13 @@ ms.locfileid: "58893004"
 
 若要在本地使用 Azure CLI，必须安装 Azure CLI **2.0.46** 或更高版本，并使用 [az login][az-login] 登录。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI][azure-cli]。
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
-### <a name="get-sample-code"></a>获取示例代码
-
-本教程假设你已完成[前面教程](container-registry-tutorial-quick-task.md)中的步骤，并且已经创建分支和克隆示例存储库。 如果尚未完成，请先完成前面教程[先决条件](container-registry-tutorial-quick-task.md#prerequisites)部分中的步骤，再继续操作。
-
-### <a name="container-registry"></a>容器注册表
-
-Azure 订阅中必须具有 Azure 容器注册表才能完成此教程。 如果需要注册表，请参阅[上一教程](container-registry-tutorial-quick-task.md)或[快速入门：使用 Azure CLI 创建容器注册表](container-registry-get-started-azure-cli.md)。
-
-## <a name="overview-of-acr-tasks"></a>ACR 任务概述
-
-任务定义自动生成的属性，包括容器映像源代码的位置和触发生成的事件。 任务中定义的事件发生时（例如向 Git 存储库提交内容），ACR 任务会在云中启动容器映像生成。 默认情况下，它之后会将成功生成的映像推送给任务中指定的 Azure 容器注册表。
-
-ACR 任务目前支持以下触发器：
-
-* 向 Git 存储库提交内容
-* 更新基础映像
-
-在本教程中，ACR 任务会生成并推送在 Dockerfile 中指定的单一容器映像。 ACR 任务也可运行[多步骤任务](container-registry-tasks-multi-step.md)，使用 YAML 文件来定义相关步骤，以便生成并推送多个容器，并可选择对其进行测试。
-
-## <a name="create-a-build-task"></a>创建生成任务
-
-在本部分，我们首先创建一个供 ACR 任务使用的 GitHub 个人访问令牌 (PAT)。 然后创建任务，向存储库分支提交代码时，该任务会触发生成。
-
-### <a name="create-a-github-personal-access-token"></a>创建 GitHub 个人访问令牌
-
-要在向 Git 存储库提交内容时触发生成，ACR 任务需要一个访问存储库的个人访问令牌 (PAT)。 请按照以下步骤进行操作，在 GitHub 中生成 PAT：
-
-1. 导航到 GitHub 上的 PAT 创建页面 https://github.com/settings/tokens/new
-1. 输入令牌的简短**说明**，例如“ACR 任务演示”
-1. 在“存储库”下方，启用“存储库:状态”和“public_repo”
-
-   ![GitHub 中个人访问令牌生成页面的屏幕截图][build-task-01-new-token]
-
-1. 选择“生成令牌”按钮（可能会要求你确认密码）
-1. 将生成的令牌复制并保存到**安全位置**（在后续部分定义任务时会使用此令牌）
-
-   ![GitHub 中已生成的个人访问令牌的屏幕截图][build-task-02-generated-token]
-
-### <a name="create-the-build-task"></a>创建生成任务
+## <a name="create-the-build-task"></a>创建生成任务
 
 现已完成启用 ACR 任务以读取提交状态和在存储库中创建 Webhook 所需的步骤，接下来可以创建任务，以便在向存储库提交内容时触发容器映像生成。
 
-首先，使用适用于环境的值填充这些 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果没有填充这些环境变量，示例命令中出现时则必须手动替换每个值。
+首先，使用适用于环境的值填充这些 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果未填充这些环境变量，则每当示例命令中出现每个值，都必须手动替换该值。
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -85,7 +50,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-现在，请执行以下 [az acr task create][az-acr-task-create] 命令创建任务：
+现在，请执行以下 [az acr task create][az-acr-task-create] 命令创建该任务：
 
 ```azurecli-interactive
 az acr task create \
@@ -93,7 +58,6 @@ az acr task create \
     --name taskhelloworld \
     --image helloworld:{{.Run.ID}} \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
-    --branch master \
     --file Dockerfile \
     --git-access-token $GIT_PAT
 ```
@@ -101,19 +65,11 @@ az acr task create \
 > [!IMPORTANT]
 > 如果以前在预览期使用 `az acr build-task` 创建了任务，则需要使用 [az acr task][az-acr-task] 命令重新创建这些任务。
 
-此任务指定向 `--context` 指定的主分支存储库提交代码时，ACR 任务将根据该分支中的代码生成容器映像。 将使用存储库根目录中由 `--file` 指定的 Dockerfile 来生成映像。 `--image` 参数为映像标记的版本部分指定参数化的 `{{.Run.ID}}` 值，确保生成映像与特定生成关联且被唯一标记。
+此任务指定向 `--context` 指定的主分支存储库提交代码时，ACR 任务将根据该分支中的代码生成容器映像  。 将使用存储库根目录中由 `--file` 指定的 Dockerfile 来生成映像。 `--image` 参数为映像标记的版本部分指定参数化的 `{{.Run.ID}}` 值，确保生成映像与特定生成关联且被唯一标记。
 
 成功的 [az acr task create][az-acr-task-create] 命令的输出应如下所示：
 
 ```console
-$ az acr task create \
->     --registry $ACR_NAME \
->     --name taskhelloworld \
->     --image helloworld:{{.Run.ID}} \
->     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
->     --branch master \
->     --file Dockerfile \
->     --git-access-token $GIT_PAT
 {
   "agentConfiguration": {
     "cpu": 2
@@ -252,7 +208,7 @@ Run ID: da2 was successful after 27s
 
 通过手动运行任务对其进行测试后，可通过更改源代码手动触发该任务。
 
-首先，确保目录中包含[存储库][sample-repo]的本地克隆：
+首先，确保你位于包含[存储库][sample-repo]的本地克隆的目录中：
 
 ```azurecli-interactive
 cd acr-build-helloworld-node
@@ -326,12 +282,11 @@ da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-task]: /cli/azure/acr
-[az-acr-task-create]: /cli/azure/acr
-[az-acr-task-run]: /cli/azure/acr
-[az-acr-task-list-runs]: /cli/azure/acr
+[az-acr-task]: /cli/azure/acr/task
+[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
+[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
 [az-login]: /cli/azure/reference-index#az-login
 
-<!-- IMAGES -->
-[build-task-01-new-token]: ./media/container-registry-tutorial-build-tasks/build-task-01-new-token.png
-[build-task-02-generated-token]: ./media/container-registry-tutorial-build-tasks/build-task-02-generated-token.png
+
+

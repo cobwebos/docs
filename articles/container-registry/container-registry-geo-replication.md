@@ -3,21 +3,21 @@ title: 异地复制的 Azure 容器注册表
 description: 开始创建和管理异地复制的 Azure 容器注册表。
 services: container-registry
 author: stevelas
-manager: jeconnoc
+manager: gwallace
 ms.service: container-registry
-ms.topic: overview
-ms.date: 04/10/2018
+ms.topic: article
+ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 2dc314dd1d1e728f03c1d0c660d9339254ddc462
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: HT
+ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541853"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208008"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
-需要本地状态或热备份的公司可选择从多个 Azure 区域运行服务。 最佳实践是在映像运行于的每个区域放置一个容器注册表，允许近网络操作，以实现快速可靠的映像层传输。 异地复制允许 Azure 容器注册表充当单个注册表，向多个区域提供多主区域注册表。
+需要本地状态或热备份的公司可选择从多个 Azure 区域运行服务。 最佳实践是在映像运行于的每个区域放置一个容器注册表，允许近网络操作，以实现快速可靠的映像层传输。 异地复制允许 Azure 容器注册表充当单个注册表，向多个区域提供多主区域注册表。 
 
 异地复制注册表有以下优点：
 
@@ -60,10 +60,11 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 * 跨所有区域管理单个注册表：`contoso.azurecr.io`
 * 管理多个映像部署的单个配置，因为所有区域使用同一个映像 URL：`contoso.azurecr.io/public/products/web:1.2`
-* 由 ACR 管理异地复制（包括用于本地通知的区域 Webhook），推送到单个注册表
+* 推送到单个注册表，而 ACR 管理异地复制。 可以配置区域性 [Webhook](container-registry-webhook.md) 来通知你特定副本中的事件。
 
 ## <a name="configure-geo-replication"></a>配置异地复制
-配置异地复制就如在地图上单击区域一样简单。
+
+配置异地复制就如在地图上单击区域一样简单。 你还可以使用工具 (包括 Azure CLI 中的[az acr replication](/cli/azure/acr/replication)命令) 管理异地复制, 或使用[Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)为异地复制启用注册表部署。
 
 异地复制是[高级注册表](container-registry-skus.md)特有的功能。 如果尚未使用高级注册表，可在 [Azure 门户](https://portal.azure.com)中将基本和标准更改为高级：
 
@@ -91,15 +92,38 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“就绪”。 门户中的副本状态不会自动更新。 使用刷新按钮查看更新状态。
 
+## <a name="considerations-for-using-a-geo-replicated-registry"></a>使用异地复制注册表的注意事项
+
+* 异地复制注册表中的每个区域在设置后都是独立的。 Azure 容器注册表 SLA 适用于每个异地复制区域。
+* 当你从异地复制注册表中推送或拉取映像时，后台的 Azure 流量管理器会将请求发送到位于离你最近的区域中的注册表。
+* 将映像或标记更新推送到最近的区域后，Azure 容器注册表需要一些时间将清单和层复制到你选择加入的其余区域。 较大的映像比较小的映像复制所需的时间更长。 映像和标记通过最终一致性模型在复制区域之间进行同步。
+* 若要管理依赖于异地复制的推送更新的工作流, 建议你将[webhook](container-registry-webhook.md)配置为响应推送事件。 你可以在异地复制注册表中设置区域性 Webhook，以跟踪在异地复制区域内完成的推送事件。
+
+## <a name="delete-a-replica"></a>删除副本
+
+为注册表配置副本后, 如果不再需要它, 可以随时将其删除。 使用 Azure 门户或其他工具 (如 Azure CLI 中的[az acr replication delete](/cli/azure/acr/replication#az-acr-replication-delete)命令) 删除副本。
+
+删除 Azure 门户中的副本:
+
+1. 导航到 Azure 容器注册表, 然后选择 "**复制**"。
+1. 选择副本的名称, 然后选择 "**删除**"。 确认是否要删除副本。
+
+> [!NOTE]
+> 不能删除注册表的*主区域*中的注册表副本, 即您创建注册表的位置。 只能通过删除注册表本身来删除主副本。
+
 ## <a name="geo-replication-pricing"></a>异地复制定价
 
 异地复制是 Azure 容器注册表[高级 SKU](container-registry-skus.md) 的一项功能。 将注册表复制到所需区域时，每个区域都会产生高级注册表费用。
 
 在前面的示例中，Contoso 将两个注册表合并到一起，并向美国东部、加拿大中部和西欧添加副本。 Contoso 每月将支付四次高级费用，且无额外配置或管理。 现在每个区域就从本地拉取映像，既提升了性能和可靠性，又节省了从美国西部到加拿大和美国东部的网络传输费用。
 
-## <a name="summary"></a>摘要
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>使用异地复制注册表对推送操作进行故障排除
+ 
+将映像推送到异地复制注册表的 Docker 客户端可能不会将所有映像层及其清单推送到单个复制区域。 出现这种情况的原因可能是因为 Azure 流量管理器将注册表请求路由到离网络最近的复制注册表。 如果注册表有两个*附近*的复制区域，则可以将映像层和清单分发到两个站点，并且在验证清单时推送操作将失败。 之所以出现此问题是因为在某些 Linux 主机上解析注册表的 DNS 名称的方式。 这个问题不会发生在 Windows 上，因为 Windows 提供了一个客户端 DNS 缓存。
+ 
+如果出现此问题，一种解决方案是在 Linux 主机上应用客户端 DNS 缓存，比如 `dnsmasq`。 这有助于确保一致地解析注册表的名称。 如果你使用 Azure 中的 Linux VM 推送到注册表，请参阅 [Azure 中 Linux 虚拟机的 DNS 名称解析选项](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns)中的选项。
 
-通过异地复制，可将区域数据中心作为一个全球云进行管理。 由于映像可跨多个 Azure 服务使用，因此不仅可以受益于单一管理平面，还可保持近网络、快速、可靠的本地映像拉取。
+若要在推送映像时将 DNS 解析优化到最近的副本，请在推送操作源所在的 Azure 区域中配置异地复制注册表，或者在 Azure 外部工作时配置最近的区域。
 
 ## <a name="next-steps"></a>后续步骤
 

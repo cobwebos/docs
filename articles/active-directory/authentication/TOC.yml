@@ -16,16 +16,16 @@
       href: tutorial-sspr-pilot.md
     - name: 启用 SSPR 本地集成
       href: tutorial-enable-writeback.md
-    - name: 启用 Windows 10 密码重置
-      href: tutorial-sspr-windows.md
-    - name: 集成 Azure Identity Protection
+    - name: 集成 Azure 标识保护
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
   expanded: true
   items:
     - name: 身份验证方法
       href: concept-authentication-methods.md
-    - name: 合并注册
+    - name: 无密码身份验证
+      href: concept-authentication-passwordless.md
+    - name: 安全信息注册
       href: concept-registration-mfa-sspr-combined.md
     - name: 密码重置
       items:
@@ -43,8 +43,6 @@
       items:
         - name: MFA 工作原理
           href: concept-mfa-howitworks.md
-        - name: 哪个版本适合？
-          href: concept-mfa-whichversion.md
         - name: 为用户授予许可
           href: concept-mfa-licensing.md
         - name: 管理身份验证提供程序
@@ -73,8 +71,8 @@
           href: howto-sspr-authenticationdata.md
         - name: 启用密码写回
           href: howto-sspr-writeback.md
-        - name: 用于 Windows 7、8 和 8.1 的 SSPR
-          href: howto-sspr-windows-7-8.md
+        - name: 用于 Windows 客户端的 SSPR
+          href: howto-sspr-windows.md
     - name: 基于云的 MFA
       items:
         - name: 部署基于云的 MFA
@@ -105,7 +103,7 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: 合并注册
+    - name: 安全信息注册
       items:
         - name: 启用合并注册
           href: howto-registration-mfa-sspr-combined.md
@@ -131,10 +129,14 @@
               href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Azure AD 智能锁定
       href: howto-password-smart-lockout.md
-    - name: Windows Hello for Business
-      href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
-    - name: 无密码的手机登录
-      href: howto-authentication-phone-sign-in.md
+    - name: 无密码
+      items:
+        - name: 无密码安全密钥
+          href: howto-authentication-passwordless-security-key.md
+        - name: 无密码的手机登录
+          href: howto-authentication-passwordless-phone.md
+        - name: Windows Hello for Business
+          href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
     - name: 基于证书的身份验证
       items:
         - name: 开始使用证书身份验证
@@ -144,12 +146,10 @@
               href: active-directory-certificate-based-authentication-android.md
             - name: iOS 设备上的 CBA
               href: active-directory-certificate-based-authentication-ios.md
-    - name: 开发
-      items:
-        - name: 将 MFA 内置于自定义应用
-          href: howto-mfa-sdk.md
     - name: 报告
       items:
+        - name: 使用情况和见解
+          href: howto-authentication-methods-usage-insights.md
         - name: SSPR 报告
           href: howto-sspr-reporting.md
         - name: MFA 报告

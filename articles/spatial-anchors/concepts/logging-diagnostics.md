@@ -4,16 +4,16 @@ description: 如何生成和检索日志记录和诊断 Azure 空间的定位点
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 134023c0884ce3a402b99806f1bf19dcb59ecc32
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b66dc7d6ec9d11fe645587fe791824009231b7c2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57882822"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65964746"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>日志记录和诊断在 Azure 空间的定位点
 

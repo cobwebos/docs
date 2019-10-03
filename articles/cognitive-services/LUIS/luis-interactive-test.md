@@ -1,6 +1,6 @@
 ---
 title: 在 LUIS 门户中测试应用
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用语言理解 (LUIS) 持续优化应用程序并改进其语言理解能力。
 services: cognitive-services
 author: diberry
@@ -8,19 +8,21 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/23/2019
+ms.topic: conceptual
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5736667acfa510d89e549afd4d0f5c61a833dd1c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893616"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932733"
 ---
+<a name="train-your-app"></a>
+
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
-对应用进行<a name="train-your-app"></a>
-[测试](luis-concept-test.md)是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看应用是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。 
+
+[测试](luis-concept-test.md)应用程序是一个迭代过程。 训练 LUIS 应用后，采用示例陈述来对应用进行测试，查看应用是否能准确地识别意向和实体。 如果未能准确识别，请对 LUIS 应用进行更新和训练，然后再次测试。 
 
 <!-- anchors for H2 name changes -->
 <a name="test-your-app"></a>
@@ -31,13 +33,13 @@ ms.locfileid: "58893616"
 
 1. 在“我的应用”页面选择应用的名字以访问应用。 
 
-2. 若要访问“测试”滑出面板，请在应用程序的顶部面板中选择“测试”。
+1. 若要访问“测试”滑出面板，请在应用程序的顶部面板中选择“测试”。
 
     ![训练和测试应用页](./media/luis-how-to-interactive-test/test.png)
 
-3. 在文本框中输入陈述，然后按 Enter。 虽然在“测试”中可键入任意数量的测试陈述，但一次只能键入一个。
+1. 在文本框中输入陈述，然后按 Enter。 虽然在“测试”中可键入任意数量的测试陈述，但一次只能键入一个。
 
-4. 陈述的最高意向和分数会添加至文本框下方的陈述列表。
+1. 陈述的最高意向和分数会添加至文本框下方的陈述列表。
 
     ![交互式测试识别错误意向](./media/luis-how-to-interactive-test/test-weather-1.png)
 
@@ -49,7 +51,7 @@ ms.locfileid: "58893616"
 
     ![选择“检查”按钮可查看有关测试结果的更多详细信息](./media/luis-how-to-interactive-test/inspect.png)
 
-2. 此时将显示“检查”面板。 此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。
+1. 此时将显示“检查”面板。 此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。
 
     ![此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。](./media/luis-how-to-interactive-test/inspect-panel.png)
 
@@ -57,7 +59,7 @@ ms.locfileid: "58893616"
 
 1. 如果评分最高的意向不正确，请选择“编辑”按钮。
 
-2.  在下拉列表中选择该陈述的正确意向。
+1.  在下拉列表中选择该陈述的正确意向。
 
     ![选择正确的意向](./media/luis-how-to-interactive-test/intent-select.png)
 
@@ -103,16 +105,14 @@ ms.locfileid: "58893616"
 
 1. 在“测试”窗格中输入一个陈述。 预测陈述后，选择输入的陈述下方的“[检查](#inspect-score)”。 
 
-2. “检查”面板打开后，选择“[与已发布版本进行比较](#compare-with-published-version)”。 
+1. “检查”面板打开后，选择“[与已发布版本进行比较](#compare-with-published-version)”。 
 
-3. “已发布”面板打开后，选择“[其他设置](#additional-settings-in-test-panel)”。
+1. “已发布”面板打开后，选择“[其他设置](#additional-settings-in-test-panel)”。
 
-4. 在弹出的对话框中，输入必应拼写检查服务密钥。 
-    ![输入必应拼写检查服务密钥](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+1. 在弹出对话框中, 选中 "**启用必应拼写检查**并输入密钥, 然后选择"**完成**"。 
+    ![输入必应拼写检查服务密钥](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
 
-5. 输入一个拼写不正确的查询，例如 `book flite to seattle`，并按 Enter。 在发送至 LUIS 的查询中，拼写不正确的 `flite` 单词会被替换，生成的 JSON 将原始查询显示为 `query`，并将查询中更正的拼写显示为 `alteredQuery`。
-
-    ![更正的 JSON 拼写](./media/luis-how-to-interactive-test/interactive-with-spell-check-results.png)
+1. 输入一个拼写不正确的查询，例如 `book flite to seattle`，并按 Enter。 在发送至 LUIS 的查询中，拼写不正确的 `flite` 单词会被替换，生成的 JSON 将原始查询显示为 `query`，并将查询中更正的拼写显示为 `alteredQuery`。
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>

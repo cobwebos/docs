@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: mamccrea
 ms.openlocfilehash: dae481fb477223f149404c6a09cad024bc15cd90
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416682"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204962"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>从 Azure Cloud Shell 中使用 Databricks CLI
 
 了解如何从 Azure Cloud Shell 中使用 Databricks CLI 对 Databricks 执行操作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 一个 Azure Databricks 工作区和群集。 有关说明，请参阅 [Azure Databricks 入门](quickstart-create-databricks-workspace-portal.md)。 
 

@@ -4,14 +4,14 @@ description: 本文介绍如何优化 Azure Cosmos DB 中存储的数据的吞�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/26/2019
 ms.author: rimman
-ms.openlocfilehash: 280d389875d5ac951e0a846f3331ea727176b5e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d874f1ba8823ceddbef378decde127cef4ff8885
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009761"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020108"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
 
@@ -29,11 +29,11 @@ ms.locfileid: "59009761"
 
 下面是确定预配吞吐量策略时可以参考的一些指导原则：
 
-**对于以下情况，考虑针对 Azure Cosmos DB 数据库（包含一组容器）预配吞吐量**：
+**如果有以下情况, 请考虑在 Azure Cosmos 数据库上预配吞吐量 (包含一组容器)** :
 
 1. 有几十个 Azure Cosmos 容器，并想要在部分或所有容器之间共享吞吐量。 
 
-2. 从专用于在 IaaS 托管的 VM 上运行或本地运行的单租户数据库（例如，NoSQL 数据库或关系数据库）迁移到 Azure Cosmos DB。 如果有多个集合/表/图形，并不希望对您的数据模型进行任何更改。 请注意，可能需要破坏一些如果从本地数据库迁移时不要更新你的数据模型提供 Azure Cosmos DB 的优势。 建议始终重新访问数据模型，以获得最大性能并优化成本。 
+2. 从专用于在 IaaS 托管的 VM 上运行或本地运行的单租户数据库（例如，NoSQL 数据库或关系数据库）迁移到 Azure Cosmos DB。 有许多集合/表/图形，并且不想要对数据模型进行任何更改。 请注意，如果在从本地数据库迁移时不更新数据模型，可能需要牺牲 Azure Cosmos DB 提供的一些优势。 建议始终重新访问数据模型，以获得最大性能并优化成本。 
 
 3. 想要在数据库级别利用入池吞吐量，来缓解容易出现意外高峰的工作负荷中的计划外高峰。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "59009761"
 |API|对于**共享**吞吐量，请配置 |对于**专用**吞吐量，请配置 |
 |----|----|----|
 |SQL API|数据库|容器|
-|Azure Cosmos DB 的用于 MongoDB 的 API|数据库|集合|
+|Azure Cosmos DB 的用于 MongoDB 的 API|数据库|Collection|
 |Cassandra API|密钥空间|表|
 |Gremlin API|数据库帐户|图形|
 |表 API|数据库帐户|表|
@@ -65,7 +65,7 @@ ms.locfileid: "59009761"
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>使用请求的速率限制进行优化
 
-对于不易受延迟影响的工作负荷，可以预配更低的吞吐量，并在实际吞吐量超过预配的吞吐量时，让应用程序处理速率限制。 服务器将抢先结束出现 RequestRateTooLarge（HTTP 状态代码 429）的请求并返回 `x-ms-retry-after-ms` 标头，该标头指示重试请求之前用户必须等待的时间长短（以毫秒为单位）。 
+对于不易受延迟影响的工作负荷，可以预配更低的吞吐量，并在实际吞吐量超过预配的吞吐量时，让应用程序处理速率限制。 服务器将提前结束请求`RequestRateTooLarge` (HTTP 状态代码 429) 并`x-ms-retry-after-ms`返回标头, 该标头指示重试请求前用户必须等待的时间量 (以毫秒为单位)。 
 
 ```html
 HTTP Status 429, 
@@ -77,15 +77,13 @@ HTTP Status 429,
 
 本机 SDK（.NET/.NET Core、Java、Node.js 和 Python）隐式捕获此响应，遵循服务器指定的 retry-after 标头，并重试请求。 除非多个客户端同时访问你的帐户，否则下次重试将会成功。
 
-如果累计有多个客户端一贯在超过请求速率的情况下运行，则当前设置为 9 的默认重试计数可能并不足够。 在这种情况下，客户端会向应用程序引发 `DocumentClientException` 并返回状态代码 429。 可以通过在 ConnectionPolicy 实例上设置 `RetryOptions` 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后将返回 DocumentClientException 和状态代码 429。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。 
+如果累计有多个客户端一贯在超过请求速率的情况下运行，则当前设置为 9 的默认重试计数可能并不足够。 在这种情况下，客户端会向应用程序引发 `DocumentClientException` 并返回状态代码 429。 可以通过在 ConnectionPolicy 实例上设置 `RetryOptions` 来更改默认重试计数。 默认情况下, `DocumentClientException`如果请求继续以高于请求速率的方式运行, 则会在30秒的累积等待时间后返回 with 状态代码429。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) 设置为 3，因此，在这种情况下，如果请求操作由于超过集合的预留吞吐量而受到速率限制，则请求操作将重试三次，然后向应用程序引发异常。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 设置为 60，因此，在这种情况下，如果自首次请求以来，累积重试等待时间（以秒为单位）超过 60 秒，则会引发异常。
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet)设置为 3, 因此在这种情况下, 如果请求操作的速率受到限制而超出容器的保留吞吐量, 则请求操作将重试三次, 然后向应用程序引发异常。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds)设置为 60, 因此在这种情况下, 如果第一个请求的累计重试等待时间 (以秒计) 超过60秒, 则会引发异常。
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
-
 connectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 3; 
-
 connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 ```
 

@@ -10,11 +10,11 @@ ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
 ms.openlocfilehash: f1b3c08cce2cb33feab899ea082fc6fb40225182
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311211"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61457943"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>（已弃用）在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布微服务
 
@@ -52,15 +52,15 @@ ms.locfileid: "58311211"
 
 1. **部署 Elasticsearch**。
 
-2. 然后通过安装 Vamp DC/OS 通用包部署 Vamp。
+2. 然后通过安装 Vamp DC/OS 通用包部署 Vamp  。
 
 ### <a name="deploy-elasticsearch"></a>部署 Elasticsearch
 
 Vamp 需要使用 Elasticsearch 来收集和聚合指标。 可以使用 [magneticio Docker 映像](https://hub.docker.com/r/magneticio/elastic/)部署兼容的 Vamp Elasticsearch 堆栈。
 
-1. 在 DC/OS UI 中转到“服务”，并单击“部署服务”。
+1. 在 DC/OS UI 中转到“服务”，并单击“部署服务”。  
 
-2. 在“部署新服务”弹出对话框中选择“JSON 模式”。
+2. 在“部署新服务”弹出对话框中选择“JSON 模式”。  
 
    ![选择 JSON 模式](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
 
@@ -93,28 +93,28 @@ Vamp 需要使用 Elasticsearch 来收集和聚合指标。 可以使用 [magnet
    ```
   
 
-3. 单击“部署”。
+3. 单击“部署”。 
 
-   DC/OS 将部署 Elasticsearch 容器。 可以在“服务”页上跟踪进度。  
+   DC/OS 将部署 Elasticsearch 容器。 可以在“服务”页上跟踪进度。   
 
    ![部署 e?Elasticsearch](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
 
 ### <a name="deploy-vamp"></a>部署 Vamp
 
-Elasticsearch 报告“正在运行”后，可以添加 Vamp DC/OS 通用包。 
+Elasticsearch 报告“正在运行”后，可以添加 Vamp DC/OS 通用包。  
 
-1. 转到“通用”，并搜索 **vamp**。 
+1. 转到“通用”，并搜索 **vamp**。  
    ![DC/OS 通用包中的 Vamp](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
 
-2. 单击 vamp 包旁边的“安装”，并选择“高级安装”。
+2. 单击 vamp 包旁边的“安装”，并选择“高级安装”。  
 
 3. 向下滚动并输入以下 elasticsearch-url：`http://elasticsearch.marathon.mesos:9200`。 
 
    ![输入 Elasticsearch URL](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
 
-4. 单击“检查并安装”，然后单击“安装”开始部署。  
+4. 单击“检查并安装”，然后单击“安装”开始部署   。  
 
-   DC/OS 将部署全部所需的 Vamp 组件。 可以在“服务”页上跟踪进度。
+   DC/OS 将部署全部所需的 Vamp 组件。 可以在“服务”页上跟踪进度。 
   
    ![将 Vamp 部署为通用包](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
   
@@ -133,9 +133,9 @@ Vamp 启动并运行后，请从蓝图部署一个服务。
 
 此方案使用名为 [**sava**](https://github.com/magneticio/sava)、版本为 1.0 的示例整体应用程序。 该整体应用程序打包在一个 Docker 容器中，该容器位于 Docker 中心的 magneticio/sava:1.0.0 下面。 正常情况下，该应用在端口 8080 上运行，但在本例中，你希望在端口 9050 下将它公开。 使用简单的蓝图通过 Vamp 部署该应用。
 
-1. 转到“部署”。
+1. 转到“部署”。 
 
-2. 单击“添加”。
+2. 单击“添加”  。
 
 3. 粘贴以下蓝图 YAML。 此蓝图包含一个群集，该群集只包含一个要在后续步骤中更改的服务变体：
 
@@ -156,13 +156,13 @@ Vamp 启动并运行后，请从蓝图部署一个服务。
 
 4. 单击“ **保存**”。 Vamp 将启动部署。
 
-该部署将列在“部署”页上。 单击该部署监视其状态。
+该部署将列在“部署”页上。  单击该部署监视其状态。
 
 ![Vamp UI - 部署 sava](./media/container-service-dcos-vamp-canary-release/09_sava100.png)
 
 ![Vamp UI 中的 sava 服务](./media/container-service-dcos-vamp-canary-release/09a_sava100.png)
 
-将创建两个网关，它们将列在“网关”页上：
+将创建两个网关，它们将列在“网关”页上： 
 
 * 一个访问正在运行的服务的稳定终结点（端口 9050） 
 * 一个由 Vamp 管理的内部网关（稍后将详细介绍此网关）。 
@@ -183,7 +183,7 @@ Vamp 在 DC/OS 代理节点上部署了 sava 服务，从而在端口 9050 上�
 有关使用 Azure 门户完成这些任务的详细步骤，请参阅[启用对 Azure 容器服务应用程序的公共访问](container-service-enable-public-access.md)。 为所有端口设置指定端口 9050。
 
 
-创建所有组件后，请转到 DC/OS 代理负载均衡器（名为 **dcos-agent-lb-xxxx** 的资源）的“概述”边栏选项卡。 找到“公共 IP 地址”，并使用该地址访问端口 9050 上的 sava。
+创建所有组件后，请转到 DC/OS 代理负载均衡器（名为 **dcos-agent-lb-xxxx** 的资源）的“概述”边栏选项卡。  找到“公共 IP 地址”，并使用该地址访问端口 9050 上的 sava。 
 
 ![Azure 门户 - 获取公共 IP 地址](./media/container-service-dcos-vamp-canary-release/18_public_ip_address.png)
 
@@ -198,9 +198,9 @@ Vamp 在 DC/OS 代理节点上部署了 sava 服务，从而在端口 9050 上�
 
 要将新 sava 1.1 服务与正在运行的部署合并，请执行以下操作：
 
-1. 在 Vamp UI 中单击“蓝图”。
+1. 在 Vamp UI 中单击“蓝图”。 
 
-2. 单击“添加”并粘贴以下蓝图 YAML：此蓝图描述要在现有群集 (sava_cluster) 中部署的新服务变体 (sava:1.1.0)。
+2. 单击“添加”  并粘贴以下蓝图 YAML：此蓝图描述要在现有群集 (sava_cluster) 中部署的新服务变体 (sava:1.1.0)。
 
    ```YAML
    name: sava:1.1.0      # blueprint name
@@ -215,13 +215,13 @@ Vamp 在 DC/OS 代理节点上部署了 sava 服务，从而在端口 9050 上�
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. 单击“ **保存**”。 该蓝图会存储，并列在“蓝图”页上。
+3. 单击“ **保存**”。 该蓝图会存储，并列在“蓝图”页上。 
 
-4. 在 sava:1.1 蓝图中打开操作菜单，并单击“合并到”。
+4. 在 sava:1.1 蓝图中打开操作菜单，并单击“合并到”。 
 
    ![Vamp UI - 蓝图](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
 
-5. 选择“sava”部署，并单击“合并”。
+5. 选择“sava”部署，并单击“合并”。  
 
    ![Vamp UI - 将蓝图合并到部署](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
 
@@ -229,17 +229,17 @@ Vamp 会在正在运行的部署的 **sava_cluster** 中，连同 sava:1.0.0 一
 
 ![Vamp UI - 更新的 sava 部署](./media/container-service-dcos-vamp-canary-release/22_sava_cluster.png)
 
-**sava/sava_cluster/webport** 网关（群集终结点）也会更新，其中会添加通往新部署的 sava:1.1.0 的路由。 目前，不会将任何流量路由到此处（“权重”设置为 0%）。
+**sava/sava_cluster/webport** 网关（群集终结点）也会更新，其中会添加通往新部署的 sava:1.1.0 的路由。 目前，不会将任何流量路由到此处（“权重”设置为 0%）。 
 
 ![Vamp UI - 群集网关](./media/container-service-dcos-vamp-canary-release/23_sava_cluster_webport.png)
 
 ### <a name="canary-release"></a>Canary 发布
 
-在同一个群集中部署两个版本的 sava 后，请移动“权重”滑块调整两个版本之间的流量分配。
+在同一个群集中部署两个版本的 sava 后，请移动“权重”滑块调整两个版本之间的流量分配。 
 
-1. 单击“权重”旁边的“Vamp UI - 编辑”。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)
+1. 单击“权重”旁边的“Vamp UI - 编辑”。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) 
 
-2. 将权重分配设置为 50%/50%，然后单击“保存”。
+2. 将权重分配设置为 50%/50%，然后单击“保存”。 
 
    ![Vamp UI - 网关权重滑块](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
 
@@ -260,7 +260,7 @@ Vamp 使用**条件**来筛选网关中路由之间的流量。 流量首先根�
 
 可以创建一个条件用于筛选所有 Firefox 用户，并将其定向到旧的 sava:1.0.0：
 
-1. 在 sava/sava_cluster/webport“网关”页上，单击“Vamp UI - 编辑”将一个**条件**添加到路由 sava/sava_cluster/sava:1.0.0/webport。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) 
+1. 在 sava/sava_cluster/webport“网关”页上，单击“Vamp UI - 编辑”将一个**条件**添加到路由 sava/sava_cluster/sava:1.0.0/webport。  ![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) 
 
 2. 输入条件 **user-agent == Firefox**，并单击“Vamp UI - 保存”。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png)
 
@@ -268,13 +268,13 @@ Vamp 使用**条件**来筛选网关中路由之间的流量。 流量首先根�
 
 3. 单击“Vamp UI - 编辑”更改应用到条件的**强度**。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)
  
-4. 将“强度”设置为 100%，然后单击“Vamp UI - 保存”以保存该设置。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png)
+4. 将“强度”设置为 100%，然后单击“Vamp UI - 保存”以保存该设置。  ![](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png)
 
    现在，Vamp 会将与该条件的所有流量（所有 Firefox 用户）发送到 sava:1.0.0。
 
    ![Vamp UI - 将条件应用到网关](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
-5. 最后，调整网关权重，以便将所有剩余流量（所有非 Firefox 用户）发送到新的 sava:1.1.0。 单击“权重”旁边的“Vamp UI - 编辑”并设置权重分配，以便将 100% 的流量定向到路由 sava/sava_cluster/sava:1.1.0/webport。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)
+5. 最后，调整网关权重，以便将所有剩余流量（所有非 Firefox 用户）发送到新的 sava:1.1.0。 单击“权重”旁边的“Vamp UI - 编辑”并设置权重分配，以便将 100% 的流量定向到路由 sava/sava_cluster/sava:1.1.0/webport。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) 
 
    现在，未根据条件筛选的所有流量将定向到新的 sava:1.1.0。
 

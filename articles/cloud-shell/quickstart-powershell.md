@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell 中的 PowerShell 快速入门 | Microsoft Docs
-description: Cloud Shell 中的 PowerShell 快速入门
+title: Azure Cloud Shell 快速入门 |Microsoft Docs
+description: Azure Cloud Shell 快速入门
 services: Azure
 documentationcenter: ''
 author: maertendmsft
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f1184f9f3a4cf827f0afef9bca8a72308c371d76
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905063"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224551"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
 
@@ -147,7 +147,7 @@ MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountN
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
 ```
 
-有关详细信息，请参阅[在 Windows 中装载 Azure 文件共享并对其进行访问][azmount]。
+有关详细信息，请参阅[在 Windows 中装载 Azure 文件共享和访问共享][azmount]。
 
 还可以按如下所示浏览 Azure 文件共享下的目录：
 
@@ -186,14 +186,15 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
   假设有一个名为 MyVM1 的 VM，现在让我们使用 `Invoke-AzVMCommand` 在远程计算机上调用 PowerShell 脚本块。
 
   ```azurepowershell-interactive
-  Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -EnableRemoting
+  Enable-AzVMPSRemoting -Name MyVM1 -ResourceGroupname MyResourceGroup
+  Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
   ```
 
   还可以先导航到 VirtualMachines 目录，然后按如下所示运行 `Invoke-AzVMCommand`。
 
   ```azurepowershell-interactive
-  PS Azure:\> cd MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines
-  PS Azure:\MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzVMCommand -Scriptblock {Get-ComputerInfo}
+  PS Azure:\> cd MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines
+  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzVMCommand -Scriptblock {Get-ComputerInfo} -Credential (Get-Credential)
 
   # You will see output similar to the following:
 
@@ -215,13 +216,13 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 可以使用 `Enter-AzVM` 以交互方式登录到 Azure 中运行的 VM。
 
   ```azurepowershell-interactive
-  PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -EnableRemoting
+  PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -Credential (Get-Credential)
   ```
 
 还可以先导航到 `VirtualMachines` 目录，然后按如下所示运行 `Enter-AzVM`
 
   ```azurepowershell-interactive
- PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM
+ PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM -Credential (Get-Credential)
  ```
 
 ### <a name="discover-webapps"></a>发现 WebApps
@@ -267,7 +268,7 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ### <a name="using-ssh"></a>使用 SSH
 
-按照说明进行操作[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)若要创建新的 VM 配置使用 Azure PowerShell cmdlet。
+按照[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)的说明使用 Azure PowerShell cmdlet 创建新的 VM 配置。
 在调用 `New-AzVM` 以启动部署之前，请将 SSH 公钥添加到 VM 配置。
 新创建的 VM 将包含 `~\.ssh\authorized_keys` 位置中的公钥，从而允许通过无凭据的 SSH 会话连接到 VM。
 
@@ -296,7 +297,7 @@ ssh azureuser@MyVM.Domain.Com
 
 ## <a name="install-custom-modules"></a>安装自定义模块
 
-可以运行 `Install-Module` 安装 [PowerShell 库][gallery]中的模块。
+您可以运行`Install-Module`以从[PowerShell 库][gallery]安装模块。
 
 ## <a name="get-help"></a>Get-Help
 
@@ -334,7 +335,7 @@ Hello World!
 可以创建 PowerShell 配置文件 `profile.ps1`（或 `Microsoft.PowerShell_profile.ps1`）来自定义 PowerShell 环境。
 将配置文件保存在 `$profile.CurrentUserAllHosts`（或 `$profile.CurrentUserAllHosts`）下，以便可以在 Cloud Shell 会话中的每个 PowerShell 中加载该文件。
 
-有关如何创建配置文件，请参阅[关于配置文件][profile]。
+有关如何创建配置文件的信息，请参阅[关于配置文件][profile]。
 
 ## <a name="use-git"></a>使用 Git
 

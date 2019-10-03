@@ -2,21 +2,21 @@
 title: include 文件
 description: include 文件
 services: virtual-machines
-author: jpconnock
+author: singhkays
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/18/2018
-ms.author: jeconnoc
+ms.date: 04/25/2019
+ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: d1a6ff8dbd17d2792709a1ce065bcf793154e585
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: de2e33ceb182383d9529bfe41afffbbf28e1e493
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37780666"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671295"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移
-本文介绍如何将服务架构 (IaaS) 资源从经典部署模型迁移到资源管理器部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 用户可以阅读有关 [Azure 资源管理器功能和优点](../articles/azure-resource-manager/resource-group-overview.md)的更多内容。 
+本文介绍如何将基础结构即服务 (IaaS) 资源从经典部署模型迁移到资源管理器部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 用户可以阅读有关 [Azure 资源管理器功能和优点](../articles/azure-resource-manager/resource-group-overview.md)的更多内容。 
 
 ## <a name="goal-for-migration"></a>迁移目标
 资源管理器除了可让你通过模板部署复杂的应用程序之外，还可使用 VM 扩展来配置虚拟机，并且纳入访问管理和标记。 Azure 资源管理器将虚拟机的可缩放并行部署包含在可用性集内。 新部署模型还针对计算、网络和存储单独提供生命周期管理。 最后，将重点介绍为了默认启用安全性而要在虚拟网络中实施虚拟机的做法。
@@ -74,7 +74,20 @@ ms.locfileid: "37780666"
 
 > [!NOTE]
 > Resource Manager 部署模型没有经典映像和磁盘的概念。 迁移存储帐户时，经典映像和磁盘不在 Resource Manager 堆栈中可见，但后备 VHD 保留在存储帐户中。
->
+
+以下屏幕截图演示了如何使用 Azure 门户将经典存储帐户升级到 Azure 资源管理器存储帐户：
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 导航到存储帐户。
+3. 在“设置”部分单击“迁移到 ARM”。  
+4. 单击“验证”，确定迁移可行性。 
+5. 如果验证通过，请单击“准备”  ，以便创建迁移的存储帐户。
+6. 键入“是”对迁移进行确认，然后单击“提交”   完成迁移。
+
+    ![验证存储帐户](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
+    
+    ![准备存储帐户](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-2.png)
+    
+    ![完成存储帐户迁移](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-3.png)
 
 ### <a name="migration-of-unattached-resources"></a>未附加资源的迁移
 没有关联的磁盘或虚拟机数据的存储帐户可以单独迁移。
@@ -94,7 +107,7 @@ ms.locfileid: "37780666"
 | 计算 | 不关联的虚拟机磁盘。 | 迁移存储帐户时，将迁移这些磁盘后面的 VHD blob |
 | 计算 | 虚拟机映像。 | 迁移存储帐户时，将迁移这些磁盘后面的 VHD blob |
 | 网络 | 终结点 ACL。 | 删除终结点 ACL 并重试迁移。 |
-| 网络 | 应用程序网关 | 开始迁移之前请删除应用程序网关，并在迁移完成后重新创建应用程序网关。 |
+| 网络 | 应用程序网关 | 开始迁移之前请删除应用程序网关，然后在迁移完成后重新创建应用程序网关。 |
 | 网络 | 使用 VNet 对等互连的虚拟网络。 | 将虚拟网络迁移到 Resource Manager，然后对等互连。 详细了解 [VNet 对等互连](../articles/virtual-network/virtual-network-peering-overview.md)。 |
 
 ### <a name="unsupported-configurations"></a>不支持的配置
@@ -118,5 +131,4 @@ ms.locfileid: "37780666"
 | Azure HDInsight |包含 HDInsight 服务的虚拟网络 |目前不支持。 |
 | Microsoft Dynamics Lifecycle Services |包含由 Dynamics Lifecycle Services 管理的虚拟机的虚拟网络 |目前不支持。 |
 | Azure AD 域服务 |包含 Azure AD 域服务的虚拟网络 |目前不支持。 |
-| Azure RemoteApp |包含 Azure RemoteApp 部署的虚拟网络 |目前不支持。 |
 | Azure API 管理 |包含 Azure API 管理部署的虚拟网络 |目前不支持。 若要迁移 IaaS VNET，则更改 API 管理部署的 VNET（该部署不会造成停机）。 |

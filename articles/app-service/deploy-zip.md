@@ -9,17 +9,17 @@ editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
-ms.author: cephalin;sisirap
+ms.date: 08/12/2019
+ms.author: cephalin
+ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: a48a72fe36b7925936758e844d959968ea921c65
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 83951f6408094b8d1e04d19650a5f2ef596be988
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544052"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801144"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务
 
@@ -31,7 +31,7 @@ ms.locfileid: "59544052"
 - 启用默认生成过程的选项，包括包还原。
 - [部署自定义](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings)，包括运行部署脚本。  
 - 部署日志。 
-- 文件大小限制为 2048 MB。
+- 文件大小上限是 2048 MB。
 
 有关详细信息，请参阅 [Kudu 文档](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)。
 
@@ -66,6 +66,7 @@ Compress-Archive -Path * -DestinationPath <file-name>.zip
 ``` 
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
+上述终结点目前不适用于 Linux 应用服务。 请考虑改用 FTP 或[ZIP 部署 API](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) 。
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>使用 Azure CLI 部署 ZIP 文件
 
@@ -81,7 +82,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 
 此命令将 zip 文件中的文件和目录部署到默认的应用服务应用程序文件夹 (`\home\site\wwwroot`) 并重启应用。
 
-默认情况下，部署引擎将假定 ZIP 文件已准备好以运行的是，并且不会运行任何生成自动化。 若要启用所在的生成作为中的自动化[Git 部署](deploy-local-git.md)，请设置`SCM_DO_BUILD_DURING_DEPLOYMENT`通过运行以下命令的应用设置[Cloud Shell](https://shell.azure.com):
+默认情况下，部署引擎假定 ZIP 文件已准备好按原样运行，并且不运行任何生成自动化。 若要启用与[Git 部署](deploy-local-git.md)相同的生成自动化，请在`SCM_DO_BUILD_DURING_DEPLOYMENT` [Cloud Shell](https://shell.azure.com)中运行以下命令，设置应用设置：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
@@ -95,29 +96,24 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="deploy-war-file"></a>部署 WAR 文件
 
-若要将 WAR 文件部署到应用服务，请将 POST 请求发送到 https://<app_name>.scm.azurewebsites.net/api/wardeploy。 POST 请求必须在消息正文中包含此 .war 文件。 应用的部署凭据是通过使用 HTTP BASIC 身份验证在请求中提供的。 
+若要将 WAR 文件部署到应用服务，请将 POST 请求`https://<app_name>.scm.azurewebsites.net/api/wardeploy`发送到。 POST 请求必须在消息正文中包含此 .war 文件。 应用的部署凭据是通过使用 HTTP BASIC 身份验证在请求中提供的。
 
 对于 HTTP 基本身份验证，需使用应用服务部署凭据。 若要了解如何设置部署凭据，请参阅[设置和重置用户级别凭据](deploy-configure-credentials.md#userscope)。
 
 ### <a name="with-curl"></a>使用 cURL
 
-以下示例使用 cURL 工具部署 .war 文件。 替换占位符 `<username>`、`<war_file_path>` 和 `<app_name>`。 出现 cURL 提示时，键入密码。
+以下示例使用 cURL 工具部署 .war 文件。 替换占位符 `<username>`、`<war-file-path>` 和 `<app-name>`。 出现 cURL 提示时，键入密码。
 
 ```bash
-curl -X POST -u <username> --data-binary @"<war_file_path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
+curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
 ```
 
 ### <a name="with-powershell"></a>使用 PowerShell
 
-以下示例使用 [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) 发送包含 .war 文件的请求。 替换占位符 `<deployment_user>`、`<deployment_password>`、`<zip_file_path>` 和 `<app_name>`。
+下面的示例使用[AzWebapp](/powershell/module/az.websites/publish-azwebapp)上传 war 文件。 替换占位符 `<group-name>`、`<app-name>` 和 `<war-file-path>`。
 
 ```powershell
-$username = "<deployment_user>"
-$password = "<deployment_password>"
-$filePath = "<war_file_path>"
-$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/wardeploy"
-$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
-Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Method POST -InFile $filePath -ContentType "multipart/form-data"
+Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <war-file-path>
 ```
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]

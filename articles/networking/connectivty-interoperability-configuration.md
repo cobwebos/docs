@@ -10,24 +10,24 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 2ceb4aeac55bd555a41c29bd41b00c771490e5f9
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777085"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68335942"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 后端连接功能中的互操作性：测试配置详细信息
 
-本文介绍[测试设置][Setup]的配置详细信息。 测试设置可帮助你分析 Azure 网络服务如何在控制平面级别和数据平面级别进行互操作。
+本文介绍了[测试设置][Setup]的配置详细信息。 测试设置可帮助你分析 Azure 网络服务如何在控制平面级别和数据平面级别进行互操作。
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>使用 VNet 对等互连建立辐射 VNet 连接
 
-下图显示了辐射虚拟网络 (VNet) 的 Azure 虚拟网络对等互连详细信息。 若要了解如何在两个 VNet 之间设置对等互连，请参阅[管理 VNet 对等互连][VNet-Config]。 如果希望辐射 VNet 使用连接到中心 VNet 的网关，请选择“使用远程网关”。
+下图显示了辐射虚拟网络 (VNet) 的 Azure 虚拟网络对等互连详细信息。 若要了解如何设置两个 Vnet 之间的对等互连, 请参阅[管理 VNet 对等互连][VNet-Config]。 如果希望辐射 VNet 使用连接到中心 VNet 的网关，请选择“使用远程网关”。
 
 [![1]][1]
 
-下图显示了中心 VNet 的 VNet 对等互连详细信息。 如果希望辐射 VNet 使用中心 VNet 网关，请选择“使用远程网关”。
+下图显示了中心 VNet 的 VNet 对等互连详细信息。 如果希望中心 VNet 允许辐射 VNet 使用集线器的网关, 请选择 "**允许网关传输**"。
 
 [![2]][2]
 
@@ -166,7 +166,7 @@ ExpressRoute 1 将中心 VNet 和本地位置 1 连接到不同 Azure 区域中�
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>基于 ExpressRoute 的站点到站点 VPN
 
-可以使用 ExpressRoute Microsoft 对等互连配置站点到站点 VPN，在本地网络与 Azure VNet 之间以私密方式交换数据。 使用此配置可以在确保保密性、真实性和完整性的基础上交换数据。 这种数据交换还可以防重播。 有关如何使用 ExpressRoute Microsoft 对等互连以隧道模式配置站点到站点 IPsec VPN 的详细信息，请参阅[基于 ExpressRoute Microsoft 对等互连的站点到站点 VPN][S2S-Over-ExR]。 
+可以使用 ExpressRoute Microsoft 对等互连配置站点到站点 VPN，在本地网络与 Azure VNet 之间以私密方式交换数据。 使用此配置可以在确保保密性、真实性和完整性的基础上交换数据。 这种数据交换还可以防重播。 有关如何使用 ExpressRoute Microsoft 对等互连在隧道模式下配置站点到站点 IPsec VPN 的详细信息, 请参阅[通过 Expressroute microsoft 对等互连建立的站点到站点 vpn][S2S-Over-ExR]。 
 
 配置使用 Microsoft 对等互连的站点到站点 VPN 的主要限制是吞吐量。 基于 IPsec 隧道的吞吐量受限于 VPN 网关容量。 VPN 网关吞吐量低于 ExpressRoute 吞吐量。 在这种情况下，对高安全性流量使用 IPsec 隧道，并对其他所有流量使用专用对等互连，将有助于优化 ExpressRoute 带宽利用率。
 
@@ -174,13 +174,13 @@ ExpressRoute 1 将中心 VNet 和本地位置 1 连接到不同 Azure 区域中�
 
 ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的 Azure 区域配置异地冗余的 ExpressRoute 连接。 另外，如测试设置中所示，在 Azure 区域中，可以使用站点到站点 VPN 为 ExpressRoute 连接创建故障转移路径。 通过 ExpressRoute 和站点到站点 VPN 播发相同的前缀时，Azure 会优先使用 ExpressRoute。 为了避免 ExpressRoute 与站点到站点 VPN 之间的非对称路由，本地网络配置同样应该优先使用 ExpressRoute 连接，然后再使用站点到站点 VPN 连接。
 
-有关如何配置 ExpressRoute 和站点到站点 VPN 共存连接的详细信息，请参阅 [ExpressRoute 和站点到站点共存][ExR-S2S-CoEx]。
+有关如何配置 ExpressRoute 连接和站点到站点 VPN 的详细信息, 请参阅[expressroute 和站点到站点共存][ExR-S2S-CoEx]。
 
 ## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>将后端连接扩展到辐射 VNet 和分支位置
 
 ### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>使用 VNet 对等互连建立辐射 VNet 连接
 
-中心辐射型 VNet 体系结构的使用非常广泛。 中心是 Azure 中的一个 VNet，充当辐射 VNet 与本地网络之间的连接中心点。 辐射是与中心对等互连的 VNet，可用于隔离工作负荷。 流量通过 ExpressRoute 或 VPN 连接在本地数据中心与中心之间流动。 有关体系结构的详细信息，请参阅[在 Azure 中实现中心辐射型网络拓扑][Hub-n-Spoke]。
+中心辐射型 VNet 体系结构的使用非常广泛。 中心是 Azure 中的一个 VNet，充当辐射 VNet 与本地网络之间的连接中心点。 辐射是与中心对等互连的 VNet，可用于隔离工作负荷。 流量通过 ExpressRoute 或 VPN 连接在本地数据中心与中心之间流动。 有关体系结构的详细信息, 请参阅[在 Azure 中实现中心辐射型网络拓扑][Hub-n-Spoke]。
 
 在区域内的 VNet 对等互连中，辐射 VNet 可以使用中心 VNet 网关（VPN 和 ExpressRoute 网关）来与远程网络通信。
 
@@ -188,15 +188,15 @@ ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的
 
 你可能想让位于不同区域中的分支 VNet 和本地网络通过中心 VNet 相互通信。 此配置的本机 Azure 解决方案是使用 VPN 建立站点到站点 VPN 连接。 替代方案是对中心内部的路由使用网络虚拟设备 (NVA)。
 
-有关详细信息，请参阅[什么是 VPN 网关？][VPN]和[部署高度可用的 NVA][Deploy-NVA]。
+有关详细信息, 请参阅[什么是 VPN 网关？][VPN]和[部署高度可用的 NVA][Deploy-NVA]。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解测试设置的[控制平面分析][Control-Analysis]，以及拓扑中不同 VNet 或 VLAN 的视图。
+了解测试设置的[控制平面分析][Control-Analysis]以及拓扑中不同 Vnet 或 vlan 的视图。
 
-了解测试设置的[数据平面分析][Data-Analysis]，以及 Azure 网络监视功能视图。
+了解测试设置和 Azure 网络监视功能视图的[数据平面分析][Data-Analysis]。
 
-请参阅 [ExpressRoute 常见问题解答][ExR-FAQ]：
+请参阅[EXPRESSROUTE 常见问题解答][ExR-FAQ], 了解:
 -   了解可将多少条 ExpressRoute 线路连接到一个 ExpressRoute 网关。
 -   了解可将多少个 ExpressRoute 网关连接到一条 ExpressRoute 线路。
 -   了解 ExpressRoute 的其他缩放限制。

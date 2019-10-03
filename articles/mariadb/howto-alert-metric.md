@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.openlocfilehash: ce9804a4ecad4cd0f2e797038dc10c71b50de9bf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122703"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61040959"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>使用 Azure 门户设置针对 Azure Database for MariaDB 指标的警报
 
@@ -32,39 +32,39 @@ ms.locfileid: "58122703"
 ## <a name="create-an-alert-rule-on-a-metric"></a>在指标上创建警报规则
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择要监视的 Azure Database for MariaDB 服务器。
 
-2. 在边栏的“监视”部分，选择“警报”，如下所示：
+2. 在边栏的“监视”部分，选择“警报”，如下所示   ：
 
    ![选择“警报规则”](./media/howto-alert-metric/2-alert-rules.png)
 
-3. 选择“添加指标警报”（+ 图标）。
+3. 选择“添加指标警报”（+ 图标）  。
 
-4. 随即打开“创建规则”页面，如下所示。 填写所需信息：
+4. 随即打开“创建规则”页面，如下所示  。 填写所需信息：
 
    ![添加指标警报窗体](./media/howto-alert-metric/4-add-rule-form.png)
 
-5. 在“条件”部分中，选择“添加条件”。
+5. 在“条件”部分中，选择“添加条件”   。
 
 6. 从要发出警报的信号列表中选择一个指标。 在此示例中，选择“存储百分比”。
    
    ![选择指标](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. 配置警报逻辑，包括“条件”（例如， “大于”）、“阈值”（例如， 85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如， “过去的 30 分钟”）、以及“频率”。
+7. 配置警报逻辑，包括“条件”（例如，  “大于”）、“阈值”（例如，  85%）、“时间聚合”、触发警报前必须满足指标规则的“时间段”。（例如，   “过去的 30 分钟”）、以及“频率”  。
    
-   完成后选择“完成”。
+   完成后选择“完成”  。
 
    ![选择指标](./media/howto-alert-metric/7-set-threshold-time.png)
 
-8. 在“操作组”部分中，选择“新建”创建新组以接收有关警报的通知。
+8. 在“操作组”部分中，选择“新建”创建新组以接收有关警报的通知   。
 
 9. 使用名称、短名称、订阅和资源组填写“添加操作组”表单。
 
-10. 配置“电子邮件/短信/推送/语音”操作类型。
+10. 配置“电子邮件/短信/推送/语音”操作类型  。
     
     选择“电子邮件 Azure 资源管理器角色”以选择订阅所有者、参与者和读取器来接收通知。
    
-    （可选）如果希望在警报触发时调用有效的 URI，请将其放入“Webhook”字段。
+    （可选）如果希望在警报触发时调用有效的 URI，请将其放入“Webhook”字段  。
 
-    完成后选择“确定”。
+    完成后选择“确定”  。
 
     ![操作组](./media/howto-alert-metric/10-action-group-type.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "58122703"
 
     ![操作组](./media/howto-alert-metric/11-name-description-severity.png) 
 
-12. 选择“创建警报规则”可以创建警报。
+12. 选择“创建警报规则”可以创建警报  。
 
     几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
@@ -80,8 +80,8 @@ ms.locfileid: "58122703"
 创建警报后，可选择它并执行以下操作：
 
 * 查看图，了解与此警报相关的指标阈值和前一天实际值。
-* 编辑或删除预警规则。
-* 如果要暂时停止或恢复接收通知，可禁用或启用警报。
+* 编辑或删除预警规则   。
+* 如果要暂时停止或恢复接收通知，可禁用或启用警报   。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,25 +1,25 @@
 ---
 title: 将请求发送到必应自动建议 API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何将请求发送到必应自动建议 API。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
-ms.topic: quickstart
-ms.date: 02/20/2019
+ms.topic: conceptual
+ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 597ef48fd7499a9d33b214b182d6dd1354756cdf
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
-ms.translationtype: HT
+ms.openlocfilehash: dbc8e2ccbd0a9d8c395a3b4e8a95e4e51f152792
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011579"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882421"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>将请求发送到必应自动建议 API。
 
-如果应用程序向任何必应搜索 API 发送查询，可以使用必应自动建议 API 来改进用户的搜索体验。 必应自动建议 API 根据搜索框中的部分查询字符串返回建议查询的列表。 在应用程序的搜索框中输入字符时，可以在下拉列表中显示建议。 通过本文详细了解如何向该 API 发送请求。
+如果应用程序向任何必应搜索 API 发送查询，可以使用必应自动建议 API 来改进用户的搜索体验。 必应自动建议 API 根据搜索框中的部分查询字符串返回建议查询的列表。 在应用程序的搜索框中输入字符时，可以在下拉列表中显示建议。 通过本文详细了解如何向该 API 发送请求。 
 
 ## <a name="bing-autosuggest-api-endpoint"></a>必应自动建议 API 终结点
 
@@ -33,7 +33,7 @@ ms.locfileid: "57011579"
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
 ```
 
-有关标头、参数、市场代码、响应对象、错误等的详细信息，请参阅[必应自动建议 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference) 参考。
+有关标头、参数、市场代码、响应对象、错误等的详细信息，请参阅[必应自动建议 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) 参考。
 
 必应 API 支持根据其类型返回结果的搜索操作。 所有搜索终结点均将结果作为 JSON 响应对象返回。
 所有终结点支持后列查询：按经度、纬度和搜索半径返回特定语言和/或位置的查询。
@@ -44,7 +44,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 ## <a name="bing-autosuggest-api-requests"></a>必应自动建议 API 请求
 
 > [!NOTE]
-> 发送到必应自动建议 API 的请求必须使用 HTTPS 协议。
+> * 发送到必应自动建议 API 的请求必须使用 HTTPS 协议。
 
 建议所有请求都源自服务器。 如果将密钥作为客户端应用程序的一部分进行分发，会让恶意的第三方有更多机会进行访问。 另外，从服务器执行调用还会提供未来更新的单一升级点。
 
@@ -95,11 +95,13 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
 如果是首次调用任何必应 API，请勿添加客户端 ID 请求头。 只有在以前调用过必应 API 且必应针对用户和设备组合返回了客户端 ID 的情况下，才包括客户端 ID 标头。
 
-以下示例演示对上一请求的响应。 该响应包括 Web 建议组，其中包含搜索查询建议列表。 每个建议都包含 `displayText`、`query` 和 `url` 字段。
+以下 Web 建议组是对上面请求的响应。 该组包含搜索查询建议的列表，每条建议包括 `displayText`、`query` 和 `url` 字段。
 
 `displayText` 字段包含用于填充搜索框下拉列表的建议查询。 必须按给定的顺序显示响应包含的所有建议。  
 
-如果用户从下拉列表中选择查询，你可以使用它来调用某个[必应搜索 API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) 并自行显示结果，也可以使用返回的 `url` 字段将用户发送到必应结果页。 以下示例使用必应 Web 搜索 API。
+如果用户从下拉列表中选择查询，你可以使用它来调用某个[必应搜索 API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) 并自行显示结果，也可以使用返回的 `url` 字段将用户发送到必应结果页。
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
@@ -168,5 +170,5 @@ BingAPIs-Market: en-US
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是必应自动建议？](../get-suggested-search-terms.md)
-- [必应自动推荐 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [必应自动推荐 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
 - [从必应自动建议 API 获取建议的搜索词](get-suggestions.md)

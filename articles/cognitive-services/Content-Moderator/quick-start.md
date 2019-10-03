@@ -1,27 +1,27 @@
 ---
 title: 快速入门：尝试在 Web 上使用内容审查器 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 本快速入门将使用联机内容审查器评审工具来测试内容审查器的基本功能，且无需编写任何代码。
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: quickstart
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: d1c65b590fd68f68fdaeb110c0fd00e0c5a6649a
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
-ms.translationtype: MT
+ms.openlocfilehash: e5b20bb45c08330c59fc72712b9e65b488c8c68b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756470"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564441"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入门：尝试在 Web 上使用内容审查器
 
 本快速入门将使用联机内容审查器评审工具来测试内容审查器的基本功能，且无需编写任何代码。 若要更快速地将此服务集成到应用中，请参阅[后续步骤](#next-steps)部分中的其他快速入门。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Web 浏览器
 
@@ -38,7 +38,7 @@ ms.locfileid: "58756470"
 
 ## <a name="upload-sample-content"></a>上传示例内容
 
-现在，可以上传示例内容。 选择“尝试 > 图像”、“尝试 > 文本”或“尝试 > 视频”。
+现在，可以上传示例内容。 选择“尝试 > 图像”、“尝试 > 文本”或“尝试 > 视频”。   
 
 ![请尝试图像或文本审核](images/tryimagesortext.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "58756470"
 
 ![查看结果](images/reviewresults_text.png)
 
-在项目中，你或评审团队可以更改这些标记，或根据需要添加更多的标记。 单击“下一步”按钮提交这些更改。 当业务应用程序调用审查器 API 时，标记的内容将在此处排队，等待评审人员团队进行评审。 可以使用此方法快速评审大量内容。
+在项目中，你或评审团队可以更改这些标记，或根据需要添加更多的标记。 单击“下一步”按钮提交这些更改。  当业务应用程序调用审查器 API 时，标记的内容将在此处排队，等待评审人员团队进行评审。 可以使用此方法快速评审大量内容。
 
 现在，你已使用内容审查器评审工具来通过示例了解了内容审查器服务的功能。 接下来，可以详细了解评审工具，以及如何使用评审 API 将它集成到软件项目，或者，可以跳转到[后续步骤](#next-steps)部分来了解如何在应用中单独使用审查 API。
 
@@ -69,5 +69,5 @@ ms.locfileid: "58756470"
 
 了解如何在应用中单独使用审查 API。
 - 实施图像审查。 使用 [API 控制台](try-image-api.md)或 [C# 快速入门](image-moderation-quickstart-dotnet.md)，根据标记、置信度评分和提取的其他信息扫描图像并检测潜在的成人和猥亵内容。
-- 实施文本审查。 使用[API 控制台](try-text-api.md)或使用[C#快速入门](text-moderation-quickstart-dotnet.md)扫描潜在的猥亵词语，计算机辅助不需要的文本分类 （预览版） 和个人数据的文本内容。
+- 实施文本审查。 使用 [API 控制台](try-text-api.md)或 [C# 快速入门](text-moderation-quickstart-dotnet.md)扫描文本内容以查找潜在的亵渎内容、机器辅助的不需要的文本分类（预览）和个人数据。
 - 实施视频审查。 请按照[适用于 C# 的视频审核操作指南](video-moderation-api.md)扫描视频并检测潜在的成人和猥亵内容。 

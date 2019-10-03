@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.author: tomfitz
 ms.openlocfilehash: 2f3db5e6260b065c83f0e337306d38dca6e5ff51
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341396"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60389869"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>解决资源提供程序注册的错误
 
@@ -63,7 +63,7 @@ Message: The client '<identifier>' with object id '<identifier>' does not have a
 
 ## <a name="solution-1---powershell"></a>解决方案 1 - PowerShell
 
-对于 PowerShell，请使用 Get-AzResourceProvider 查看注册状态。
+对于 PowerShell，请使用 Get-AzResourceProvider 查看注册状态  。
 
 ```powershell
 Get-AzResourceProvider -ListAvailable
@@ -95,7 +95,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Cdn
 az provider list
 ```
 
-若要注册资源提供程序，请使用 `az provider register` 命令，并指定要注册的*命名空间*。
+若要注册资源提供程序，请使用 `az provider register` 命令，并指定要注册的 *命名空间* 。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Cdn
@@ -111,7 +111,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 可以通过门户查看注册状态，并注册资源提供程序命名空间。
 
-1. 在门户中，选择“所有服务”。
+1. 在门户中，选择“所有服务”。 
 
    ![选择所有服务](./media/resource-manager-register-provider-errors/select-all-services.png)
 
@@ -123,10 +123,10 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
    ![选择订阅以注册资源提供程序](./media/resource-manager-register-provider-errors/select-subscription-to-register.png)
 
-1. 对于订阅，选择“资源提供程序”。
+1. 对于订阅，选择“资源提供程序”  。
 
    ![选择资源提供程序](./media/resource-manager-register-provider-errors/select-resource-provider.png)
 
-1. 查看资源提供程序列表，根据需要选择“注册”链接，注册尝试部署的类型的资源提供程序。
+1. 查看资源提供程序列表，根据需要选择“注册”链接，注册尝试部署的类型的资源提供程序  。
 
    ![列出资源提供程序](./media/resource-manager-register-provider-errors/list-resource-providers.png)

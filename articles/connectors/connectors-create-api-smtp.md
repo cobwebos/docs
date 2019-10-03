@@ -11,12 +11,12 @@ ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 78b1eb6272fa97ef392e97723454d29cf56bb4bf
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 1649f197d4dbd88e2b485ab32f254a2d09696a84
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230499"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050743"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>使用 Azure 逻辑应用从 SMTP 帐户发送电子邮件
 
@@ -24,7 +24,7 @@ ms.locfileid: "50230499"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * SMTP 帐户和用户凭据
 
@@ -47,13 +47,13 @@ ms.locfileid: "50230499"
 1. 在要添加 SMTP 操作的最后一个步骤下，选择“新建步骤”。 
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 在搜索框中，输入“smtp”作为筛选器。 在操作列表下，选择所需的操作。
 
 1. 出现提示时，提供此连接信息：
 
-   | 属性 | 必选 | Description |
+   | 属性 | 必填 | 描述 |
    |----------|----------|-------------|
    | **连接名称** | 是 | 到 SMTP 服务器的连接的名称 | 
    | **SMTP 服务器地址** | 是 | SMTP 服务器的地址 | 

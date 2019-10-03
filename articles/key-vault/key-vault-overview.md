@@ -2,23 +2,20 @@
 title: Azure Key Vault 概述 - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault 是一项云服务，用作安全的机密存储。
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: 34af20ee-3fa7-4f28-9d98-6168b1759764
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
-ms.author: barclayn
-ms.openlocfilehash: 06f1a2b33b177cf667fc2d3c5932f7ff117d2bdc
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.author: mbaldwin
+ms.openlocfilehash: e814c9f7859fb18280c3a9ffd72bd4053a4895ad
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195466"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883221"
 ---
 # <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
 
@@ -45,7 +42,7 @@ Azure Key Vault 有助于解决以下问题：
 
 身份验证通过 Azure Active Directory 来完成。 授权可以通过基于角色的访问控制 (RBAC) 或 Key Vault 访问策略来完成。 进行保管库的管理时，使用 RBAC；尝试访问存储在保管库中的数据时，使用密钥保管库访问策略。
 
-可以对 Azure Key Vault 进行软件或硬件 HSM 保护。 如果需要提高可靠性，可以在硬件安全模块 (HSM) 中导入或生成永不超出 HSM 边界的密钥。 Microsoft 使用 Thales 硬件安全模块。 可以使用 Thales 工具将密钥从 HSM 移到 Azure Key Vault。
+可以对 Azure Key Vault 进行软件或硬件 HSM 保护。 如果需要提高可靠性，可以在硬件安全模块 (HSM) 中导入或生成永不超出 HSM 边界的密钥。 Microsoft 使用 nCipher 硬件安全模块。 你可以使用 nCipher 工具将密钥从 HSM 移动到 Azure Key Vault。
 
 最后需要指出的是，根据 Azure Key Vault 的设计，Microsoft 无法查看或提取数据。
 

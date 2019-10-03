@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: gwallace
-ms.openlocfilehash: 6faf875893092496ee312e93d542d24c30abd1e1
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 65f578a82cba73a21ef8be559c3b229235a073ac
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648840"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66156878"
 ---
 # <a name="peer-two-virtual-networks"></a>对等互连两个虚拟网络
 

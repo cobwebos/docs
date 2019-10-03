@@ -3,19 +3,20 @@ title: 如何部署对话学习器机器人 - Microsoft 认知服务 | Microsoft
 titleSuffix: Azure
 description: 学习如何部署对话学习器机器人。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: ae984cc2e0f43b81b8aa2f08b3944886733c9054
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 05fd83506aac26df33f18bec83dcadac8dee2d90
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994643"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705283"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>如何部署对话学习器机器人
 
@@ -94,7 +95,7 @@ ms.locfileid: "57994643"
 
 采用与发布其他机器人类似的方式发布对话学习器机器人。 在较高级别，将代码上传到托管网站，设置相应配置值，然后使用各种渠道注册机器人。 本视频详细介绍了如何使用 Azure 机器人服务发布机器人。
 
-一旦部署智能机器人应用程序并运行状态，你可以连接不同的通道向其如 Facebook、 Teams、 Skype 等。 使用 Azure 机器人频道注册。 有关该过程，请参阅文档： https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration
+部署并运行机器人后, 可以将不同的频道 (例如 Facebook、团队、Skype 等) 连接到其中。 使用 Azure 机器人通道注册。 有关该过程，请参阅文档： https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration
 
 以下是将对话学习器机器人部署到 Azure 的分步说明。  这些说明假定可从基于云的源（如 Azure DevOps Services、GitHub、BitBucket 或 OneDrive）获得机器人源，并配置机器人以实现持续部署。
 
@@ -113,7 +114,7 @@ ms.locfileid: "57994643"
    1. 向下滚动到“应用设置”部分
    2. 添加这些设置：
 
-       环境变量 | 值
+       环境变量 | value
        --- | --- 
        CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
        CONVERSATION_LEARNER_MODEL_ID      | 应用程序 ID GUID，通过模型“设置”下的对话学习器 UI 获取

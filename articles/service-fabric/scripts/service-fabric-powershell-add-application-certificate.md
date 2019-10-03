@@ -3,24 +3,23 @@ title: Azure PowerShell 脚本示例 - 将应用程序证书添加到群集 | Mi
 description: Azure PowerShell 脚本示例 - 将应用程序证书添加到 Service Fabric 群集。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 3d2ab7339a641164a628854c00e22f437b21c3df
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 89094dc959f3a258370afc3cfb720aa3b101d1b7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670449"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036143"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>将应用程序证书添加到 Service Fabric 群集
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302336"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173334"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>从 Cloud Shell 部署模板
 
@@ -25,15 +25,15 @@ ms.locfileid: "55302336"
 
    ![选择存储帐户](./media/resource-manager-cloud-shell-deploy/select-storage.png)
 
-1. 选择“Blob”。
+1. 选择“Blob”  。
 
    ![选择 Blob](./media/resource-manager-cloud-shell-deploy/select-blobs.png)
 
-1. 选择“+ 容器”。
+1. 选择“+ 容器”  。
 
    ![添加容器](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. 为容器指定名称和访问级别。 本文中的示例模板未包含任何敏感信息，因此允许进行匿名读取访问。 选择“确定”。
+1. 为容器指定名称和访问级别。 本文中的示例模板未包含任何敏感信息，因此允许进行匿名读取访问。 选择“确定”  。
 
    ![提供容器值](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "55302336"
 
    ![选择新容器](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
-1. 选择“上传”。
+1. 选择 **“上传”** 。
 
    ![上传 blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 

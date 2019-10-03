@@ -1,19 +1,19 @@
 ---
-title: Azure 备份 - 使用 Azure 导入/导出服务进行脱机备份或初始种子设定
+title: 使用 Azure 备份导入/导出服务进行脱机备份种子设定
 description: 了解如何在 Azure 备份中使用 Azure 导入/导出服务离线发送数据。 本文介绍如何使用 Azure 导入导出服务来脱机设定初始备份数据的种子。
-services: backup
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: saurse
-ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: dacurwin
+ms.openlocfilehash: 1d3dc50d141a4e1d2864a56aff5c3adb3d2ca0b1
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107451"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954859"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 Azure 备份有多个可提升效率的内置功能，能在数据初始完整备份到 Azure 期间节省网络和存储成本。 初始完整备份通常传输大量数据，且需要较多网络带宽，相比之下，后续备份只传输增量部分。 通过脱机种子设定，Azure 备份可以使用磁盘将脱机备份数据上传到 Azure。
@@ -43,7 +43,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
   > [!NOTE]
   > 以下先决条件和工作流仅适用于使用[最新的 MARS 代理](https://aka.ms/azurebackup_agent)脱机备份文件和文件夹。 若要使用 System Center DPM 或 Azure 备份服务器执行工作负荷脱机备份，请参阅[此文](backup-azure-backup-server-import-export-.md)。 
@@ -76,7 +76,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
    输入的说明如下：
 
     * **暂存位置**：初始备份副本写入到的临时存储位置。 暂存位置可以是在网络共享或本地计算机。 如果副本计算机与源计算机不同，建议指定暂存位置的完整网络路径。
-    * **Azure 资源管理器存储帐户**：任一 Azure 订阅中的资源管理器类型存储帐户的名称。
+    * **Azure 资源管理器存储帐户**：任何 Azure 订阅中的资源管理器类型存储帐户 (常规用途 v1 或常规用途 v2) 的名称。
     * **Azure 存储容器**：Azure 存储帐户中目标存储 Blob 的名称，在备份数据复制到恢复服务保管库之前将其导入该账户。
     * **Azure 订阅 ID**：在其中创建了 Azure 存储帐户的 Azure 订阅的 ID。
     * **Azure 导入作业名称**：Azure 导入服务和 Azure 备份在跟踪磁盘上发送到 Azure 的数据的传输活动时使用的唯一名称。 
@@ -93,7 +93,7 @@ Azure 备份脱机种子设定过程与 [Azure 导入/导出服务](../storage/c
 
 4. 在向导的“确认”页上，单击“备份”。 初始备份将写入到设置过程中指定的暂存区域。
 
-   ![确认已准备好立即备份](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
+   ![确认你现在已准备好进行备份](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
     操作完成后，暂存位置已准备就绪，可用于准备磁盘。
 

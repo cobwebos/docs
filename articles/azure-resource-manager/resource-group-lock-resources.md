@@ -1,30 +1,24 @@
 ---
 title: 锁定 Azure 资源以防止更改 | Microsoft Docs
 description: 通过对所有用户和角色应用锁，来防止用户更新或删除关键 Azure 资源。
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: 53c57e8f-741c-4026-80e0-f4c02638c98b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8942ae9a24613f7b7896cf7124b344d9d9315954
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 31d77b4ea6e7594cd3ed4dba264f9ea6db4ca290
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360446"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155224"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源以防止意外更改 
 
 管理员可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为**删除**和**只读**。
 
 * **CanNotDelete** 表示经授权的用户仍可读取和修改资源，但不能删除资源。 
-* **ReadOnly** 表示经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于使用“读者”角色授予的权限。 
+* **ReadOnly** 表示经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于使用“读者”  角色授予的权限。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -36,10 +30,16 @@ ms.locfileid: "59360446"
 
 Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com` 的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁会阻止你删除或修改数据库。 它不会阻止你在数据库中创建、更新或删除数据。 允许数据事务，因为这些操作不会发送到 `https://management.azure.com`。
 
-应用 **ReadOnly** 可能会导致意外结果，因为看起来好像读取操作的某些操作实际上需要其他操作。 例如，在存储帐户上放置 **ReadOnly** 锁会阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。 另举一例，在应用服务资源上放置 **ReadOnly** 锁将阻止 Visual Studio 服务器资源管理器显示资源文件，因为该交互需要写访问权限。
+将应用**ReadOnly**会导致意外的结果，因为似乎修改的资源没有某些操作实际上需要的锁阻塞的操作。 **ReadOnly**锁可以应用到资源或包含该资源的资源组。 被阻止的操作的一些常见示例**ReadOnly**锁是：
+
+* 一个**ReadOnly**存储帐户上的锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。
+
+* 应用服务资源上的 **ReadOnly** 锁将阻止 Visual Studio 服务器资源管理器显示资源文件，因为该交互需要写访问权限。
+
+* 一个**ReadOnly**包含虚拟机的资源组上的锁将阻止所有用户启动或重新启动虚拟机。 这些操作需要 POST 请求。
 
 ## <a name="who-can-create-or-delete-locks"></a>谁可以创建或删除锁
-若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。
+若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。  
 
 ## <a name="managed-applications-and-locks"></a>托管应用程序和锁
 
@@ -152,7 +152,7 @@ New-AzResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName exam
 New-AzResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName exampleresourcegroup
 ```
 
-若要获取有关某个锁的信息，请使用 [Get-AzureRmResourceLock](/powershell/module/az.resources/get-azresourcelock)。 若要获取订阅中的所有锁，请使用：
+若要获取有关某个锁的信息，请使用[Get AzResourceLock](/powershell/module/az.resources/get-azresourcelock)。 若要获取订阅中的所有锁，请使用：
 
 ```azurepowershell-interactive
 Get-AzResourceLock

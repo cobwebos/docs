@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 5392cf5463dd0b11d1ce53856c8e4e2e788892b0
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: HT
+ms.openlocfilehash: f83b91933e2aca4bf77fcab4a30f2123f4eb4ed0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442401"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073641"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>如何创建和使用组来管理 Azure API 管理中的开发人员帐户
 
@@ -28,11 +27,11 @@ API 管理具有下列不可变的系统组：
 
 * **管理员** - Azure 订阅管理员是此组的成员。 管理员管理 API 管理服务实例、创建 API、操作，以及开发人员所使用的产品。
 * **开发人员** - 已经过身份验证的开发人员门户用户属于此组。 开发人员是使用 API 构建应用程序的客户。 开发人员有权访问开发人员门户，并构建调用 API 操作的应用程序。
-* **来宾** - 未经身份验证的开发人员门户用户，如访问此组中 API 管理实例的开发人员门户的潜在客户。 它们可以被授予某些只读访问权限，如能够查看 API，但不能调用它们。
+* **来宾** - 未经身份验证的开发人员门户用户，如访问此组中 API 管理实例的开发人员门户的潜在客户。 它们可以被授予某些只读访问权限，例如能够查看 API，但不能调用它们。
 
 除了这些系统组，管理员还可以创建自定义组或[利用关联 Azure Active Directory 租户中的外部组][leverage external groups in associated Azure Active Directory tenants]。 自定义组和外部组可与系统组一起使用为开发人员提供可见性并可以访问 API 产品。 例如，可以为隶属于一个特定合作伙伴组织的开发人员创建一个自定义组并允许他们从仅包含相关 API 的产品中访问 API。 用户可以是多个组的成员。
 
-本指南演示 API 管理实例的管理员如何添加新组并将它们关联产品和开发人员。
+本指南演示 API 管理实例的管理员如何添加新组并将它们关联到产品和开发人员。
 
 除了在发布者门户中创建和管理组，还可使用 API 管理 REST API [组](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)实体创建和管理组。
 
@@ -40,7 +39,7 @@ API 管理具有下列不可变的系统组：
 
 ## <a name="prerequisites"></a>先决条件
 
-完成此文中的任务：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
+完成此文中的任务：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

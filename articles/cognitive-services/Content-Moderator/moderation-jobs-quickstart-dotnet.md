@@ -1,34 +1,34 @@
 ---
-title: 将使用.NET-内容审查器审查作业
-titlesuffix: Azure Cognitive Services
-description: 使用内容审查器.NET SDK 来启动 Azure 内容审查器中的图像或文本内容的端到端内容审查作业。
+title: 使用 .NET 内容审查器审核作业
+titleSuffix: Azure Cognitive Services
+description: 使用内容审查器 .NET SDK 来启动 Azure 内容审查器中图像或文本内容的端到端内容审核作业。
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 24d5483cf3b418cada3c5b7f03eedbff13cc36d6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: c291a914ae9e76ce548df2a52523d60b69f0a7b0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757043"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882714"
 ---
-# <a name="define-and-use-moderation-jobs-net"></a>定义和使用审查作业 (.NET)
+# <a name="define-and-use-moderation-jobs-net"></a>定义和使用审核作业 (.NET)
 
-审查作业可作为一种类型的包装器的功能的内容审查、 工作流和评审。 本指南提供信息和代码示例来帮助你开始使用[内容审查器 SDK for.NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)到：
+裁决作业作为内容审核、工作流和评论功能的一种包装。 本指南提供了信息和代码示例, 帮助你开始使用[适用于 .net 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
 
 - 启动审核工作以扫描和创建人工审查器评审
 - 获取待处理的评审状态
 - 跟踪和获取评审的最终状态
-- 提交到回调 URL 评审结果
+- 将评审结果提交给回调 URL
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 登录或在内容审查器上创建一个帐户[审阅工具](https://contentmoderator.cognitive.microsoft.com/)站点。
+- 登录或创建内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上的帐户。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>确保 API 密钥可以调用评审 API 以创建评审
 
@@ -81,7 +81,7 @@ using System.Threading;
 添加以下代码来为订阅创建内容审查器客户端。
 
 > [!IMPORTANT]
-> 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey 字段。
+> 使用区域标识符和订阅密钥的值更新 AzureRegion 和 CMSubscriptionKey字段。
 
 ```csharp
 /// <summary>

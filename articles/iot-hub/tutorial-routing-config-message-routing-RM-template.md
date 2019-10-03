@@ -10,11 +10,11 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: d7b8c0685cf92341241575d3e67c09a759f5c190
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543732"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66163267"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>教程：使用 Azure 资源管理器模板配置 IoT 中心消息路由
 
@@ -356,11 +356,11 @@ ms.locfileid: "59543732"
 
 若要将模板部署到 Azure，请将模板和参数文件上传到 Azure Cloud Shell，然后执行某个脚本来部署模板。 打开 Azure Cloud Shell 并登录。 本示例使用 PowerShell。
 
-若要上传文件，请在菜单栏中选择“上传/下载文件”图标，然后选择“上传”。
+若要上传文件，请在菜单栏中选择“上传/下载文件”图标，然后选择“上传”。 
 
 ![Cloud Shell 菜单栏，其中已突出显示“上传/下载文件”](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
 
-使用弹出的文件资源管理器找到本地磁盘上的文件并将其选中，然后选择“打开”。
+使用弹出的文件资源管理器找到本地磁盘上的文件并将其选中，然后选择“打开”。 
 
 上传文件后，结果对话框将显示下图所示的内容。
 

@@ -1,6 +1,6 @@
 ---
 title: 使用自定义术语列表审查文本 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用列表管理 API 来创建要供文本审查 API 使用的自定义术语列表。
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 28029fe92a207dba85e2ab5a22c08879b7172925
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0a4e9b7925c2309a9682156934e9d94fa83c0d4b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105771"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564403"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>在 API 控制台中使用自定义术语列表进行审查
 

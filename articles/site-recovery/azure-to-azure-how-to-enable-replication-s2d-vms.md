@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/29/2019
 ms.author: asgang
 ms.openlocfilehash: 6c639d4503b170660abed5767e3571c8a2bf24b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112766"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60790275"
 ---
 # <a name="replicate-azure-virtual-machines-using-storage-spaces-direct-to-another-azure-region"></a>将使用存储空间直通的 Azure 虚拟机复制到另一个 Azure 区域
 
@@ -80,10 +80,10 @@ ms.locfileid: "58112766"
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 1.  在 Azure 门户中，选择恢复服务保管库。
 2.  选择已创建的恢复计划。
-3.  选择“测试故障转移”。
+3.  选择“测试故障转移”  。
 4.  若要启动测试故障转移过程，请选择恢复点和 Azure 虚拟网络。
 5.  当辅助环境启动时，执行验证。
-6.  完成验证后，选择“清理测试故障转移”清理测试故障转移环境。
+6.  完成验证后，选择“清理测试故障转移”清理测试故障转移环境。 
 
 有关详细信息，请参阅[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)。
 
@@ -91,7 +91,7 @@ ms.locfileid: "58112766"
 
 1.  在 Azure 门户中，选择恢复服务保管库。
 2.  选择针对 SAP 应用程序创建的恢复计划。
-3.  选择“故障转移”。
+3.  选择“故障转移”。 
 4.  若要启动故障转移过程，请选择恢复点。
 
 有关详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。

@@ -8,27 +8,26 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: e8b735780f4ed3402845d9d401f8e37701b9a1a6
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 6afcb891de763f156705bc9825ab7575a272c1db
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667576"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035025"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh service
 获取服务详细信息并列出应用程序资源的服务。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
-| list | 列出所有服务资源。 |
+| 列表 | 列出所有服务资源。 |
 | show | 获取具有给定名称的服务资源。 |
 
 ## <a name="sfctl-mesh-service-list"></a>sfctl mesh service list

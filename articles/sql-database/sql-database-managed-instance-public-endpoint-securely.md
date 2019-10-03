@@ -1,6 +1,6 @@
 ---
-title: 保护公共终结点托管的实例-Azure SQL 数据库托管的实例 |Microsoft Docs
-description: 在 Azure 中安全地使用公共终结点，与托管实例
+title: 保护托管实例公共终结点 - Azure SQL 数据库托管实例 | Microsoft Docs
+description: 在 Azure 中安全使用包含托管实例的公共终结点
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,45 +9,48 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
-manager: craigg
-ms.date: 04/16/2019
-ms.openlocfilehash: 9d5a3d18e8a7d3c5a6cb08e16e74dd4fbda9ca31
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 05/08/2019
+ms.openlocfilehash: c7f57a636e95bb137dd4285b8f9ce8343b27d2a0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013473"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567367"
 ---
-# <a name="using-azure-sql-database-managed-instance-securely-with-public-endpoint"></a>使用 Azure SQL 数据库托管实例安全地与公共终结点
+# <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>在公共终结点中安全使用 Azure SQL 数据库托管实例
 
-未能启用托管的实例通过提供用户连接的 azure SQL 数据库[公共终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。 本文指导如何使此配置更安全。
+Azure SQL 数据库托管实例可以通过[公共终结点](../virtual-network/virtual-network-service-endpoints-overview.md)提供用户连接。 本文将介绍如何提高此配置的安全性。
 
 ## <a name="scenarios"></a>方案
 
-托管的实例提供了专用终结点，以便从其虚拟网络中的连接。 默认选项是提供最大的隔离。 但是，有的方案需要一个公共终结点连接的位置：
+SQL 数据库托管实例提供专用终结点用于从其虚拟网络内部启用连接。 默认选项是提供最大的隔离性。 但在某些情况下，需要提供公共终结点连接：
 
-- 与多租户仅 PaaS 产品/服务的集成。
-- 更高的吞吐量的数据交换比使用 VPN。
-- 公司策略禁止在企业网络内的 PaaS。
+- 托管实例必须与仅限多租户的平台即服务 (PaaS) 产品/服务集成。
+- 所需的数据交换吞吐量高于 VPN 所能提供的吞吐量。
+- 公司政策禁止在企业网络中使用 PaaS。
 
-## <a name="deploying-managed-instance-for-public-endpoint-access"></a>部署用于公开的终结点访问的托管的实例
+## <a name="deploy-a-managed-instance-for-public-endpoint-access"></a>部署托管实例以访问公共终结点
 
-尽管不是必需的但具有公共终结点访问的托管实例的常见部署模型是专用的独立虚拟网络中创建实例。 在此配置中，使用虚拟网络，只需为虚拟群集隔离。 如果与企业网络 IP 地址空间重叠的托管的实例 IP 地址空间，它是不相关。
+可以访问公共终结点的托管实例的常用部署模型是在专用的隔离虚拟网络中创建实例，但不一定非要这样做。 在此配置中，虚拟网络只是用于实现虚拟群集隔离。 托管实例 IP 地址空间是否与企业网络 IP 地址空间重叠并不重要。
 
-## <a name="securing-data-in-motion"></a>保护移动数据
+## <a name="secure-data-in-motion"></a>保护动态数据
 
-如果客户端驱动程序支持加密，托管的实例数据流量会始终加密。 托管的实例与其他 Azure 虚拟机或 Azure 服务之间的数据不会离开 Azure 的主干。 如果没有在本地网络连接到的托管的实例，建议使用 Express Route 使用 Microsoft 对等互连。 快速路由，有助于避免通过公共 Internet 移动数据 （对于托管的实例的专用连接，仅专用对等互连可以使用）。
+如果客户端驱动程序支持加密，则始终加密托管实例数据流量。 在托管实例与其他 Azure 虚拟机或 Azure 服务之间发送的数据永远不会离开 Azure 主干网络。 如果托管实例与本地网络之间已建立连接，则我们建议配合使用 Azure ExpressRoute 和 Microsoft 对等互连。 ExpressRoute 有助于避免通过公共 Internet 移动数据。 对于托管实例专用连接，只能使用专用对等互连。
 
-## <a name="locking-down-inbound-and-outbound-connectivity"></a>阻止入站和出站连接
+## <a name="lock-down-inbound-and-outbound-connectivity"></a>锁定入站和出站连接
 
-下图显示了建议的安全配置。
+下图显示了建议的安全配置：
 
-![managed-instance-vnet.png](media/sql-database-managed-instance-public-endpoint-securely/managed-instance-vnet.png)
+![用于锁定入站和出站连接的安全配置](media/sql-database-managed-instance-public-endpoint-securely/managed-instance-vnet.png)
 
-托管的实例都有[专用公共终结点地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。 此 IP 地址应在客户端的出站防火墙和网络安全组规则设置，以限制出站连接。
+托管实例具有[专用公共终结点地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。 在客户端出站防火墙和网络安全组规则中，设置此公共终结点 IP 地址以限制出站连接。
 
-若要确保托管实例的流量来自受信任的源，建议从与已知的 IP 地址的源连接。 访问限制为端口 3342 上的托管的实例公共终结点使用网络安全组。
+为了确保发往托管实例的流量来自受信任的源，我们建议使用已知的 IP 地址从源建立连接。 使用网络安全组限制对端口 3342 上的托管实例公共终结点的访问。
 
-当客户端需要从本地网络启动连接时，请确保起始地址转换为一组已知良好的 Ip。 如果，不能实现 （例如，在典型的方案中的移动工作人员），建议使用[点到站点 VPN 连接和专用终结点](sql-database-managed-instance-configure-p2s.md)。
+如果客户端需要从本地网络发起连接，请确保发起地址可转换为一组已知的 IP 地址。 如果无法做到这一点（例如，移动工作者就是一个典型的示例），我们建议使用[点到站点 VPN 连接和专用终结点](sql-database-managed-instance-configure-p2s.md)。
 
-如果连接从 Azure 中启动，则建议它流量来自已知分配[VIP](../virtual-network/virtual-networks-reserved-public-ip.md) （例如，虚拟机）。 为便于管理 VIP 地址，客户可以考虑使用[公共 IP 地址前缀](../virtual-network/public-ip-address-prefix.md)。
+如果连接是从 Azure 发起的，我们建议从分配的已知[虚拟 IP 地址](../virtual-network/virtual-networks-reserved-public-ip.md)（例如虚拟机）发出流量。 为便于管理虚拟 IP (VIP) 地址，建议使用[公共 IP 地址前缀](../virtual-network/public-ip-address-prefix.md)。
+
+## <a name="next-steps"></a>后续步骤
+
+- 了解如何配置托管实例的公共终结点：[配置公共终结点](sql-database-managed-instance-public-endpoint-configure.md)

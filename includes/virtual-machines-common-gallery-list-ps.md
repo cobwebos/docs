@@ -9,11 +9,11 @@ ms.date: 11/07/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: a55653c0f23be594fe65e7a322c11edc37ee1ce6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188314"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172912"
 ---
 ## <a name="shared-image-management"></a>共享映像管理 
 
@@ -40,7 +40,7 @@ $imageVersions = Get-AzResource -ResourceType Microsoft.Compute/galleries/images
 $imageVersions.Name
 ```
 
-删除映像版本。 此示例将删除名为“1.0.0”的映像版本。
+删除映像版本。 此示例将删除名为“1.0.0”的映像版本  。
 
 ```azurepowershell-interactive
 Remove-AzGalleryImageVersion `

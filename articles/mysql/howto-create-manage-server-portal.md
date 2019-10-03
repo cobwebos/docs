@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure 门户创建和管理 Azure Database for MySQL 服务器
-description: 本文介绍了如何使用 Azure 门户快速创建一个新的 Azure Database for MySQL 服务器，以及如何使用 Azure 门户管理该服务器。
+description: 本文介绍如何使用 Azure 门户快速创建新的 Azure Database for MySQL 服务器和管理服务器。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: fdcb302d3a14b02ea86fb92c8dbf822ef3f42177
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57528672"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142127"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 服务器
 本主题介绍了如何快速创建新的 Azure Database for MySQL 服务器。 它还提供了有关如何使用 Azure 门户来管理服务器的信息。 服务器管理包括查看服务器详细信息和数据库、重置密码、缩放资源以及删除服务器。
@@ -41,10 +41,12 @@ ms.locfileid: "57528672"
     | 服务器管理员登录名 | myadmin（设置管理员帐户名称） |
     | *密码* | 设置管理员帐户密码 |
     | *确认密码* | 确认管理员帐户密码 |
-    | *位置* | 东南亚（在“北欧”和“美国西部”之间选择） |
+    | *Location* | 东南亚（在“北欧”和“美国西部”之间选择） |
     | *版本* | 5.7（选择 Azure Database for MySQL 服务器版本） |
 
-4. 单击“定价层”，为新服务器指定服务层和性能级别。 选择“常规用途”选项卡。“第 5 代”、“2 个 vCore”、“5 GB”和“7 天”分别是“计算代”、“vCore”、“存储”和“备份保留期”的默认值。 可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从“备份冗余选项”中选择“异地冗余”。
+   ![create-new-server](./media/howto-create-manage-server-portal/form-field.png)
+
+4. 单击“定价层”，为新服务器指定服务层级和性能级别。 选择“常规用途”选项卡。“第 5 代”、“2 个 vCore”、“5 GB”和“7 天”分别是“计算代”、“vCore”、“存储”和“备份保留期”的默认值。 可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从“备份冗余选项”中选择“异地冗余”。
 
    ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 
@@ -53,18 +55,29 @@ ms.locfileid: "57528672"
     > 选择“固定到仪表板”选项，以便轻松跟踪部署。
 
 ## <a name="update-an-azure-database-for-mysql-server"></a>更新 Azure Database for MySQL 服务器
-预配新服务器后，用户将具有用于配置现有服务器的多个选项，包括重置管理员密码以及通过更改 vCore 或存储来纵向扩展或收缩服务器。
+预配新服务器后, 用户有多个选项可用于配置现有服务器, 包括重置管理员密码、更改定价层以及通过更改 vCore 或存储来向上或向下扩展服务器
 
 ### <a name="change-the-administrator-user-password"></a>更改管理员用户密码
 1. 从服务器“概览”中，单击“重置密码”以显示密码重置窗口。
 
-   ![概览](./media/howto-create-manage-server-portal/overview.png)
+   ![概述](./media/howto-create-manage-server-portal/overview.png)
 
 2. 在窗口中输入并确认新密码，如下所示：
 
    ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. 单击“确定”以保存新密码。
+
+### <a name="change-the-pricing-tier"></a>更改定价层
+> [!NOTE]
+> 仅支持对内存优化常规用途的服务层进行缩放, 反之亦然。 请注意, 在 Azure Database for MySQL 中不支持在创建服务器后从基本定价层更改为和。
+> 
+1. 单击“设置”下的“定价层”。
+2. 选择要更改为的**定价层**。
+
+    ![更改-定价层](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+
+4. 单击“确定”保存更改。 
 
 ### <a name="scale-vcores-updown"></a>纵向扩展/收缩 vCore
 
@@ -90,7 +103,7 @@ ms.locfileid: "57528672"
 
 1. 在服务器“概览”中，单击“删除”命令按钮以打开删除确认提示。
 
-    ![delete](./media/howto-create-manage-server-portal/delete.png)
+    ![删除](./media/howto-create-manage-server-portal/delete.png)
 
 2. 在输入框中键入服务器名称以再次确认。
 
@@ -106,7 +119,7 @@ ms.locfileid: "57528672"
 ## <a name="show-details-of-an-azure-database-for-mysql-server"></a>显示 Azure Database for MySQL 服务器的详细信息
 单击“设置”下的“属性”以查看有关服务器的详细信息。
 
-![属性](./media/howto-create-manage-server-portal/properties.png)
+![properties](./media/howto-create-manage-server-portal/properties.png)
 
 ## <a name="next-steps"></a>后续步骤
 

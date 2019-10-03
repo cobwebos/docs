@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104448"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60718025"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>使用 CSP 从 VMware 灾难恢复到 Azure 的多租户支持概述
 
@@ -24,11 +24,11 @@ ms.locfileid: "58104448"
 
 有三种主要的多租户模型：
 
-* **共享托管服务提供程序 (HSP)**：合作伙伴拥有物理基础结构，并使用共享资源（vCenter、数据中心、物理存储等）在同一基础结构上托管多个租户的 VM。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有灾难恢复作为自助解决方案。
+* **共享托管服务提供程序 (HSP)** ：合作伙伴拥有物理基础结构，并使用共享资源（vCenter、数据中心、物理存储等）在同一基础结构上托管多个租户的 VM。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有灾难恢复作为自助解决方案。
 
 * **专用托管服务提供程序**：合作伙伴拥有物理基础结构，但使用专用资源（多个 vCenter、物理数据存储等）在单独的基础结构上托管每个租户的 VM。 合作伙伴可以提供灾难恢复管理作为托管服务，租户也可以拥有它作为自助解决方案。
 
-* **托管服务提供程序 (MSP)**：客户拥有托管 VM 的物理基础结构，合作伙伴提供灾难恢复启用和管理功能。
+* **托管服务提供程序 (MSP)** ：客户拥有托管 VM 的物理基础结构，合作伙伴提供灾难恢复启用和管理功能。
 
 ## <a name="shared-hosting-services-provider-hsp"></a>共享托管服务提供程序 (HSP)
 
@@ -68,18 +68,18 @@ ms.locfileid: "58104448"
 
     ![“传播到子对象”选项](./media/vmware-azure-multi-tenant-overview/assign-permissions-without-propagation.png)
 
-- 替代方法是将用户帐户和角色分配给数据中心对象，再将其传播到子对象。 然后，针对每个不允许特定租户访问的对象（例如属于其他租户的 VM），为帐户分配“无访问权限”角色。 此配置很繁琐。 它会意外公开访问控制，因为系统会自动为每个新建的子对象授予从父对象继承的访问权限。 因此，建议使用第一种方法。
+- 替代方法是将用户帐户和角色分配给数据中心对象，再将其传播到子对象。 然后，针对每个不允许特定租户访问的对象（例如属于其他租户的 VM），为帐户分配“无访问权限”角色。  此配置很繁琐。 它会意外公开访问控制，因为系统会自动为每个新建的子对象授予从父对象继承的访问权限。 因此，建议使用第一种方法。
 
 ### <a name="create-a-vcenter-account"></a>创建 vCenter 帐户
 
-1. 通过克隆预定义的“只读”角色创建新角色，然后为其提供一个方便的名称（例如此示例中显示的 Azure_Site_Recovery）。
+1. 通过克隆预定义的“只读”角色创建新角色，然后为其提供一个方便的名称（例如此示例中显示的 Azure_Site_Recovery）。 
 2. 将以下权限分配给该角色：
 
    * **数据存储**：分配空间、浏览数据存储、降低文件操作级别、删除文件、更新虚拟机文件
    * **网络**：网络分配
    * **资源**：将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM
    * **任务**：创建任务、更新任务
-   * **VM - 配置**：All
+   * **VM - 配置**：全部
    * **VM - 交互**>回答问题、设备连接、配置 CD 介质、配置软盘介质、关机、开机、VMware 工具安装
    * **VM - 清单**> 从现有项创建、新建、注册、注销
    * **VM - 预配**>允许虚拟机下载、允许虚拟机文件上传
@@ -104,7 +104,7 @@ vCenter 帐户访问现已完成。 此步骤可满足完成故障回复操作�
 ### <a name="failover-only"></a>仅故障转移
 要将灾难恢复操作限制到仅故障转移（即没有故障回复功能），可使用之前的过程，但会出现以下异常：
 
-- 仅将 Read-Only 角色分配给该账户，而没有将 Azure_Site_Recovery 角色分配给 vCenter 访问帐户。 此权限集允许 VM 复制和故障转移，不允许故障回复。
+- 仅将 Read-Only 角色分配给该账户，而没有将 Azure_Site_Recovery 角色分配给 vCenter 访问帐户   。 此权限集允许 VM 复制和故障转移，不允许故障回复。
 - 前述进程中的所有其他内容保留原样。 每个权限仍然只在对象级别分配，不传播到子对象，以便确保租户隔离并限制 VM 发现。
 
 ### <a name="deploy-resources-to-the-tenant-subscription"></a>将资源部署到租户订阅
@@ -120,7 +120,7 @@ vCenter 帐户访问现已完成。 此步骤可满足完成故障回复操作�
 
 1. 在 Azure 门户中，在之前创建的保管库中，使用你创建的 vCenter 帐户将 vCenter 服务器注册到配置服务器。
 2. 按照常规过程完成 Site Recovery 的“准备基础结构”过程。
-3. VM 现在可以进行复制了。 在“复制” > “选择虚拟机”中验证是否仅显示了该租户的 VM。
+3. VM 现在可以进行复制了。 在“复制” > “选择虚拟机”中验证是否仅显示了该租户的 VM。  
 
 ## <a name="dedicated-hosting-solution"></a>专用托管解决方案
 

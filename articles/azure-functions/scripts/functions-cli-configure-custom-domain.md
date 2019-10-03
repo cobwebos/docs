@@ -12,16 +12,16 @@ ms.topic: sample
 ms.date: 07/04/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 5299675656ea23b85f78b3dbfdc02814ab332a8b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19fd73dff045d6d784dd70d1f3ad539a22faf413
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979043"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075469"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>将自定义域映射到 Function App
 
-此示例脚本在应用服务计划中创建函数应用，然后将其映射到你提供的自定义域。 当函数应用承载在[应用服务计划](../functions-scale.md#app-service-plan)中时，可以使用 CNAME 或 A 记录来映射自定义域。 对于[消耗计划](../functions-scale.md#consumption-plan)中的函数应用，仅支持 CNAME 选项。 此示例创建一个应用服务计划，并需要一个 A 记录来映射域。 
+此示例脚本在应用服务计划中创建函数应用，然后将其映射到你提供的自定义域。 当 Function App 托管在[高级计划](../functions-scale.md#premium-plan)或[应用服务计划](../functions-scale.md#app-service-plan)中时，可以使用 CNAME 或 A 记录来映射自定义域。 对于[消耗计划](../functions-scale.md#consumption-plan)中的函数应用，仅支持 CNAME 选项。 此示例创建一个应用服务计划，并需要一个 A 记录来映射域。 
 
 若要运行此示例脚本，必须已在自定义域中配置了一个指向 Web 应用的默认域名的 A 记录。 有关详细信息，请参阅[适用于 Azure 应用服务的映射自定义域说明](https://aka.ms/appservicecustomdns)。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "46979043"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择本地安装和使用 CLI，必须使用 Azure CLI 版本 2.0 或更高版本。 若要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果选择本地安装和使用 CLI，必须使用 Azure CLI 版本 2.0 或更高版本。 要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 
 ## <a name="sample-script"></a>示例脚本

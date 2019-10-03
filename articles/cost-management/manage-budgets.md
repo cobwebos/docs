@@ -1,21 +1,21 @@
 ---
-title: 在 Azure 中管理 Cloudyn 预算 | Microsoft Docs
+title: 管理 Azure 中的 Cloudyn 预算
 description: 本文介绍了如何在 Cloudyn 中快速创建和管理预算。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2018
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: e6afa7eb91daec95c44d76007ea793fca90b61bb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ad0566f0b93593140d217767f8d97f410dfcbb3b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009114"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259239"
 ---
 # <a name="manage-azure-budgets-with-cloudyn"></a>使用 Cloudyn 管理 Azure 预算
 
@@ -79,7 +79,7 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 
 接下来举例说明。
 
-在“一段时间内的成本与预算”报告中，单击“操作”，再选择“安排生成报告”。 在“阈值”选项卡上，选择阈值指标。 例如，“成本百分比与预算”。 选择警报类型，并输入预算百分比值。 如果只要收到一次通知，请选择“连续警报数”，再键入“1”。 单击“ **保存**”。
+在“一段时间内的成本与预算”报告中，单击“操作”，再选择“安排生成报告”。 在“阈值”选项卡上，选择阈值指标。 例如，“成本百分比与预算”。 选择警报类型，并输入预算百分比值。 如果只要收到一次通知，请选择“连续警报数”，再键入“1”。 单击“保存”。
 
 ![对“保存或计划此报表”框创建预算警报](./media/manage-budgets/budget-alert.png)
 

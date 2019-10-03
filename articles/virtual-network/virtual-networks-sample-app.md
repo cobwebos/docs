@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: 6753b3a76ff5d3e0266f238d8e354943dec694a8
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480452"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60788901"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>用于 DMZ 的示例应用程序
 [返回安全边界最佳实践页面][HOME]

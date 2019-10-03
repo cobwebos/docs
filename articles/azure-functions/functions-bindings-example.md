@@ -4,18 +4,17 @@ description: 了解如何配置 Azure 函数绑定
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 6d5f9b171a4efc5e52d281655de143ac9d40d437
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d1959792823e04cf34d65ab775ae8c51e741e293
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740009"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097474"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions 触发器和绑定示例
 
@@ -23,7 +22,7 @@ ms.locfileid: "56740009"
 
 假设希望在 Azure 队列存储中显示一条新消息时就将一个新行写入 Azure 表存储。 使用 Azure 队列存储触发器和 Azure 表存储输出绑定即可实现此方案。 
 
-下面是用于这种方案的 function.json 文件。 
+下面是用于这种方案的 function.json文件。 
 
 ```json
 {
@@ -107,7 +106,7 @@ function generateRandomId() {
 
 ## <a name="class-library-example"></a>类库示例
 
-在类库中，由特性而不是 function.json 文件提供这些触发器和绑定信息 &mdash; 队列和表名称、存储帐户、输入和输出 &mdash; 的函数参数。 下面是一个示例：
+在类库中，由特性而不是 function.json 文件提供这些触发器和绑定信息 &mdash; 队列和表名称、存储帐户、输入和输出 &mdash; 的函数参数。 以下是一个示例：
 
 ```csharp
 public static class QueueTriggerTableOutput
@@ -135,7 +134,7 @@ public class Person
 }
 ```
 
-你现在有一个由 Azure 表存储触发的工作函数，该函数将数据输出到队列中。
+现在，你已有一个由 Azure 队列触发并将数据输出到 Azure 表存储的工作函数。
 
 ## <a name="next-steps"></a>后续步骤
 

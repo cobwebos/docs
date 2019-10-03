@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 90ffae3dd8b05041c34d766e464eb68f793f6066
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: c89b45dd4d8e6c2964f3d2bcbb6c3cef445c79e6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062972"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64698895"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 元素
 一个将一个或多个元素分组到同一标题下的控件。

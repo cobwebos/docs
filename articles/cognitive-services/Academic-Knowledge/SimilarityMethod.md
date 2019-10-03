@@ -10,12 +10,13 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 44930ad0f941ea174d95658f220db7aa95012133
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 855d29d2c55b841bbbe4e9eadce8c29ad85fad90
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868678"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704857"
 ---
 # <a name="similarity-method"></a>相似性方法
 
@@ -28,34 +29,42 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ```
 
 ## <a name="request-parameters"></a>请求参数
-参数        |数据类型      |必选 | 说明
+
+参数        |数据类型      |必填 | 描述
 ----------|----------|----------|------------
-s1        |String   |是  |要比较的字符串*
-s2        |String   |是  |要比较的字符串*
+**s1**        |String   |是  |要比较的字符串*
+**s2**        |String   |是  |要比较的字符串*
+
 <sub> *要比较的字符串的最大长度为 1 MB。</sub>
 <br>
+
 ## <a name="response"></a>响应
-Name | 说明
+
+名称 | 描述
 --------|---------
 SimilarityScore        |浮点值表示 s1 和 s2 的余弦相似性，值接近 1.0 表示更相似，值接近 -1.0 表示不那么相似
+
 <br>
 
 ## <a name="successerror-conditions"></a>成功/错误条件
-HTTP 状态 | 原因 | 响应
+
+HTTP 状态 | Reason | 响应
 -----------|----------|--------
 **200**         |Success | 浮点数
 **400**         | 错误的请求或请求无效 | 错误消息      
 **500**         |内部服务器错误 | 错误消息
 已超时     | 请求已超时。  | 错误消息
+
 <br>
-## <a name="example-calculate-similarity-of-two-partial-abstracts"></a>示例：计算两个部分摘要的相似性
+
+## <a name="example-calculate-similarity-of-two-partial-abstracts"></a>例如：计算两个部分摘要的相似性
 #### <a name="request"></a>请求：
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?s1=Using complementary priors, we derive a fast greedy algorithm that can learn deep directed belief networks one layer at a time, provided the top two layers form an undirected associative memory
 &s2=Deepneural nets with a large number of parameters are very powerful machine learning systems. However, overfitting is a serious problem in such networks
 ```
 在此示例中，我们使用相似性 API 生成两个部分摘要之间的相似性得分。
-#### <a name="response"></a>响应：
+#### <a name="response"></a>响应:
 ```
 0.520
 ```

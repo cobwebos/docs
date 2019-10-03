@@ -1,28 +1,24 @@
 ---
 title: 如何使用适用于 Java v7 的客户端库在 Azure 存储中创建 Blob | Microsoft Docs
 description: 在对象 (Blob) 存储中创建存储帐户和容器。 随后，使用适用于 Java v7 的 Azure 存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
-services: storage
-author: roygara
-ms.custom: mvc
-ms.service: storage
-ms.topic: conceptual
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 02/04/2019
-ms.author: rogarana
-ms.openlocfilehash: c9aaa22a656d1164ad4e9f9c1ed7539a93dd0457
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.service: storage
+ms.subservice: blobs
+ms.topic: conceptual
+ms.openlocfilehash: 0aa3af754082d91c4a5994e42146d1f1f475f64d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999928"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390321"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>如何使用适用于 Java v7 的客户端库上传、下载和列出 Blob
 
 本操作指南介绍如何使用适用于 Java v7 的客户端库上传、下载和列出 Azure Blob 存储容器中的块 Blob。
 
-> [!TIP]
-> 适用于 Java 的 Azure 存储客户端库的最新版本是 v10。 Microsoft 建议尽可能使用最新版本的客户端库。 若要开始使用 v10，请参阅[快速入门：使用 Java 存储 SDK V10 上传、下载和列出 Blob](storage-quickstart-blobs-java-v10.md)。
-
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

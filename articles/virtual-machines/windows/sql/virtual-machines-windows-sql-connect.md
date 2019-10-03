@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a33525e44b2e294b7ce85c7081864dbef0856588
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ae5c4cdd76f164d13da349c355a30d8b6dc83058
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650847"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102086"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>连接到 Azure 上的 SQL Server 虚拟机
 
@@ -94,13 +93,15 @@ Server=mysqlvm;Integrated Security=true
 
 ## <a id="change"></a>更改 SQL 连接设置
 
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
 可以更改 Azure 门户中的 SQL Server 虚拟机的连接设置。
 
-1. 在 Azure 门户中，选择“虚拟机”。
+1. 在 Azure 门户中, 选择 " **SQL 虚拟机**"。
 
 2. 选择 SQL Server VM。
 
-3. 在“设置”下，单击“SQL Server 配置”。
+3. 在 "**设置**" 下, 选择 "**安全性**"。
 
 4. 将“SQL 连接级别”更改为所需设置。 可以选择性使用此区域来更改 SQL Server 端口或 SQL 身份验证设置。
 

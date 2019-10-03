@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: 28deb9b7ba15744b9bd3d273d02db4398d2b2ef3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f9087ff33bccb54497ec8d781a47469553683d65
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896936"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570281"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>使用“每租户一个应用程序”的 SaaS 模式预配和编录新租户
 
@@ -68,7 +67,7 @@ Azure 资源管理器模板可用于部署和配置应用程序，创建租户�
 
 在本教程末尾，你将具有一组独立的租户应用程序，且已在目录中注册每个数据库。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保已完成了以下先决条件： 
 
@@ -99,7 +98,7 @@ Azure 资源管理器模板可用于部署和配置应用程序，创建租户�
 现在来看一看创建的资源。
 
 1. 打开 [Azure 门户](https://portal.azure.com/)，并浏览资源组。  打开 wingtip-sa-catalog-\<user\> 资源组并查看目录服务器和数据库。
-1. 打开门户中的数据库并从左侧菜单中选择“数据资源管理器”。  单击登录命令，然后输入密码 = **P\@ssword1**。
+1. 打开门户中的数据库并从左侧菜单中选择“数据资源管理器”。  单击 "登录" 命令, 然后输入 Password = **P\@ssword1**。
 
 
 1. 浏览 tenantcatalog 数据库的架构。  

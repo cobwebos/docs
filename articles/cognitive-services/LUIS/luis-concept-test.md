@@ -1,6 +1,6 @@
 ---
 title: 测试 LUIS 应用
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 进行测试过程中，会向 LUIS 提供示例话语并获取 LUIS 识别出的意向和实体响应。
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: c9f1cf80cd3a781e878daca2048f7c5dc9095a7c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 775b50c4735115dde8ae936c4d06b087d58683b1
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789530"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619779"
 ---
 # <a name="testing-example-utterances-in-luis"></a>在 LUIS 中测试示例话语
 
@@ -46,7 +46,7 @@ ms.locfileid: "59789530"
 如果对终结点进行测试，并且不希望记录话语，请记得使用 `logging=false` 查询字符串配置。
 
 ## <a name="where-to-find-utterances"></a>在哪里可以找到话语
-LUIS 将记录的所有话语存储在查询日志中，可在 [LUIS](luis-reference-regions.md) 网站的“应用”列表页，以及 LUIS [创作 API](https://aka.ms/luis-authoring-apis) 上下载。 
+LUIS 将记录的所有话语存储在查询日志中，可在 [LUIS](luis-reference-regions.md) 网站的“应用”列表页，以及 LUIS [创作 API](https://go.microsoft.com/fwlink/?linkid=2092087) 上下载。 
 
 [LUIS](luis-reference-regions.md) 网站的[“查看终结点话语”](luis-how-to-review-endpoint-utterances.md)页列出了 LUIS 不确定的所有话语。 
 
@@ -55,7 +55,7 @@ LUIS 将记录的所有话语存储在查询日志中，可在 [LUIS](luis-refer
 ## <a name="remember-to-train"></a>请记住进行训练
 请记住在更改模型后[训练](luis-how-to-train.md) LUIS。 在训练应用前在测试中看不到对 LUIS 应用的更改。 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 了解[最佳实践](luis-concept-best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤

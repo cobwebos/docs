@@ -1,0 +1,123 @@
+### YamlMime:Landing
+title: 个性化体验创建服务文档
+summary: 了解如何使用个性化体验创建服务来让应用程序选择要显示给用户的最佳体验，并从其实时行为中学习信息。
+metadata:
+  ms.topic: landing-page
+  ms.date: 09/10/2019
+  ms.author: nitinme
+  author: nitinme
+  ms.service: cognitive-services
+  ms.subservice: personalizer
+  services: cognitive-services
+  title: 个性化体验创建服务文档
+  titleSuffix: Azure Cognitive Services
+  description: Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。
+  ms.openlocfilehash: fd1b4a7c093beeb8d33579accee9178744b6fe50
+  ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/11/2019
+  ms.locfileid: "70882897"
+landingContent:
+- title: 关于个性化体验创建服务
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是个性化体验创建服务？
+      url: what-is-personalizer.md
+  - linkListType: concept
+    links:
+    - text: 个性化体验创建服务的工作原理
+      url: how-personalizer-works.md
+    - text: 在何处使用个性化体验创建服务？
+      url: where-can-you-use-personalizer.md
+    - text: 道德和负责使用
+      url: ethics-responsible-use.md
+- title: 创建和使用个性化体验创建服务循环
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 选择要个性化的功能和操作
+      url: concepts-features.md
+    - text: 如何计算奖励
+      url: concept-rewards.md
+  - linkListType: how-to-guide
+    links:
+    - text: 如何创建和配置个性化体验创建服务
+      url: how-to-settings.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 .Net
+      url: csharp-quickstart-commandline-feedback-loop.md
+    - text: 使用 Python
+      url: python-quickstart-commandline-feedback-loop.md
+    - text: Node.js
+      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+- title: 使用个性化体验创建服务进行开发
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 利用 .Net 开发个性化体验创建服务循环
+      url: csharp-quickstart-commandline-feedback-loop.md
+    - text: NuGet 包
+      url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
+    - text: NuGet 参考文档
+      url: https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
+  - linkListType: get-started
+    links:
+    - text: 利用 Node.js 开发个性化体验创建服务循环
+      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+    - text: NPM 包
+      url: https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0
+  - linkListType: get-started
+    links:
+    - text: 利用 Python 开发个性化体验创建服务循环
+      url: python-quickstart-commandline-feedback-loop.md
+    - text: Pypi 包
+      url: https://pypi.org/project/azure-cognitiveservices-personalizer/
+  - linkListType: get-started
+    links:
+    - text: 代码示例
+      url: https://github.com/Azure-Samples/cognitive-services-personalizer-samples
+    - text: REST API
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank
+- title: 关于强化学习
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是强化学习？
+      url: concepts-reinforcement-learning.md
+  - linkListType: concept
+    links:
+    - text: 浏览
+      url: concepts-exploration.md
+    - text: 特征、操作和上下文
+      url: concepts-features.md
+    - text: 主动学习
+      url: concept-active-learning.md
+    - text: 奖励
+      url: concept-rewards.md
+- title: 评估和改善服务
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 通过脱机评估改善循环
+      url: concepts-offline-evaluation.md
+    - text: 主动学习
+      url: concept-active-learning.md
+    - text: 可伸缩性和性能
+      url: concepts-scalability-performance.md
+  - linkListType: how-to-guide
+    links:
+    - text: 通过脱机评估分析是否成功
+      url: how-to-offline-evaluation.md
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 故障排除
+      url: troubleshooting.md
+    - text: 在 Stack Overflow 上提出问题
+      url: https://stackoverflow.com/questions/tagged/personalizer
+    - text: 利用 UserVoice 影响服务
+      url: https://cognitive.uservoice.com/forums/921562-personalizer

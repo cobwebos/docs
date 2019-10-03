@@ -1,21 +1,21 @@
 ---
 title: 字符计数 - 文本翻译 API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 文本翻译 API 如何计算字符数。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: c88eb56288d3a7cf46ce84430a53c12a4ee31c7a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: e3a16d9272e75f9a94f5381c1681c036d177e0f6
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917407"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595991"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>文本翻译 API 如何计算字符数
 
@@ -33,9 +33,9 @@ ms.locfileid: "58917407"
 * Unicode 中定义的每个码位
 * 重复的翻译（即使之前已翻译相同的文本）
 
-对于基于表意文字（例如中文汉字和日文汉字）的脚本，文本翻译 API 仍会对 Unicode 码位的数量计数，每个表意文字计为一个字符。 异常：Unicode 代理项计为两个字符。
+对于基于表意文字（例如中文汉字和日文汉字）的脚本，文本翻译 API 仍会对 Unicode 码位的数量计数，每个表意文字计为一个字符。 例外:Unicode 代理项计为两个字符。
 
-请求、单词、字节或句子的数量在字符计数中不相关。 
+请求、单词、字节或句子的数量在字符计数中不相关。
 
 对 Detect 和 BreakSentence 方法的调用不计入字符消耗。 但是，我们希望 Detect 和 BreakSentence 方法的调用次数与其他计数函数的使用次数成合理的比例。 如果发出的 Detect 或 BreakSentence 调用的数量是其他计数方法数量的 100 倍，Microsoft 保留限制使用 Detect 和 BreakSentence 方法的权利。
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
-ms.author: rajraj
-ms.openlocfilehash: bab264769576b6e5478236c452d7de920d887c1a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.author: drewm
+ms.openlocfilehash: d6207a1a77ff00ff36fe6b3b748c3f8f7279b62d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670907"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639954"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>为虚拟机规模集选择适当数量的容错域
-默认情况下，系统会在没有区域的 Azure 区域中创建具有五个容错域的虚拟机规模集。 对于支持虚拟机规模集分区部署的区域，每个区域的容错域计数的默认值为 1。 在这种情况下，FD = 1 意味着尽最大努力将属于规模集的 VM 实例分布在多个机架上。
+默认情况下，系统会在没有区域的 Azure 区域中创建具有五个容错域的虚拟机规模集。 对于支持虚拟机规模集的区域部署并且选中了此选项的区域, 容错域计数的默认值为 1 (适用于每个区域)。 在这种情况下，FD = 1 意味着尽最大努力将属于规模集的 VM 实例分布在多个机架上。
 
 你还可以考虑使规模集容错域数量与托管磁盘容错域数量对齐。 如果整个托管磁盘容错域发生故障，此对齐有助于防止仲裁。 FD 计数可以设置为小于或等于每个区域中可用托管磁盘容错域的数量。 请参阅此[文档](../virtual-machines/windows/manage-availability.md)，了解按区域划分的托管磁盘容错域数。
 
@@ -47,4 +47,4 @@ az vmss create \
 创建和配置所有的规模集资源和 VM 需要几分钟时间。
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解 Azure 环境的[可用性和冗余功能](../virtual-machines/windows/regions-and-availability.md)
+- 详细了解 Azure 环境的[可用性和冗余功能](../virtual-machines/windows/availability.md)

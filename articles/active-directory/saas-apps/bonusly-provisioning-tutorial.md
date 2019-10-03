@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-wingf-msft
+ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad0ee590572dbc92e67be9f84ffc65afc3e8473
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 692eff26dbbc2289ec589a327dbe58958b414a56
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278728"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842727"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>教程：为 Bonusly 配置自动用户预配
 
@@ -30,7 +30,7 @@ ms.locfileid: "59278728"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本教程中所述的方案假定你已具备以下项：
 
@@ -39,7 +39,7 @@ ms.locfileid: "59278728"
 * Bonusly 中具有管理员权限的用户帐户
 
 > [!NOTE]
-> Azure AD 预配集成依赖于可供 Bonusly 开发人员使用的 [Bonusly Rest API](https://bonusly.gelato.io/reference)。
+> Azure AD 预配集成依赖于可供 Bonusly 开发人员使用的 [Bonusly Rest API](https://konghq.com/solutions/gateway/)。
 
 ## <a name="adding-bonusly-from-the-gallery"></a>从库中添加 Bonusly
 
@@ -86,7 +86,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>若要在 Azure AD 中为 Bonusly 配置自动用户预配，请执行以下操作：
 
-1. 登录到[Azure 门户](https://portal.azure.com)，然后选择**企业应用程序**，选择**所有应用程序**，然后选择**Bonusly**。
+1. 登录到[Azure 门户](https://portal.azure.com)，选择 "**企业应用程序**"，选择 "**所有应用程序**"，然后选择 " **Bonusly**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -128,7 +128,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Bonusly 预配](./media/bonusly-provisioning-tutorial/EmailNotification.png)
 
-10. 单击“ **保存**”。
+10. 单击“保存”。
 
 11. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Bonusly”。
 

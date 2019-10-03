@@ -1,8 +1,6 @@
 ---
-title: 为 Microsoft 客户协议的 Azure 设置计费帐户 |Microsoft Docs
-description: 了解如何为 Microsoft 客户协议设置计费帐户。
-services: ''
-documentationcenter: ''
+title: 设置 Microsoft 客户协议的计费帐户 - Azure
+description: 了解如何设置 Microsoft 客户协议的计费帐户。
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -12,264 +10,262 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 9cdda62f0178a18897e3bc6c8cec6cfa943d3b1b
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894540"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709513"
 ---
-# <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>为 Microsoft 客户协议设置计费帐户
+# <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>设置 Microsoft 客户协议的计费帐户
 
-如果你的企业协议注册已过期或即将过期，可以注册 Microsoft 客户协议续订你的注册。 续订包括以下步骤：
+如果你的企业协议注册已过期或即将过期，可以签署一份 Microsoft 客户协议以续订该注册。 本文介绍在完成设置后如何对现有计费进行更改，并引导你完成新计费帐户的设置。 续订过程包括以下步骤：
 
-1. 接受新的 Microsoft 客户协议。 使用 Microsoft 字段代表联系以了解详细信息并接受新的协议。
-2. 设置为新的 Microsoft 客户协议创建新的计费帐户。
+1. 接受新的 Microsoft 客户协议。 咨询 Microsoft 现场代表，以了解详情并接受新协议。
+2. 对为新的 Microsoft 客户协议创建的新计费帐户进行设置。
 
-本文介绍了安装后，现有计费更改，并将指导你完成设置新的计费帐户。
+若要设置计费帐户，必须将 Azure 订阅的计费从企业协议注册转换到新帐户。 该项设置不会影响订阅中正在运行的 Azure 服务。 但是，它会改变订阅的计费管理方式。
 
-若要设置计费帐户，必须转换 Azure 订阅的计费从你的企业协议注册到新帐户。 安装程序不会影响你的订阅中运行的 Azure 服务。 但是，它更改为你的订阅管理计费的方式。
+- 应在 [Azure 门户](https://portal.azure.com)而不是 [EA 门户](https://ea.azure.com)中管理 Azure 服务和计费。
+- 你每月会收到一个数字版的费用发票。 可以在“Azure 成本管理 + 计费”页中查看和分析该发票。
+- 需使用新帐户中的计费结构和范围，而不是企业协议注册中的部门和帐户，来管理和组织计费。
 
-- 而不是[EA 门户](https://ea.azure.com)，将在管理 Azure 服务和计费[Azure 门户](https://portal.azure.com)。
-- 你将获得每月、 数字发票用于你的费用。 你可以查看和分析中的 Azure 成本管理 + 计费页面发票。
-- 而不是部门和在企业协议注册中的帐户，将使用的计费结构和作用域从新的帐户来管理和组织您的付费。
-
-在启动安装程序之前，我们建议你以下操作：
+在开始设置之前，我们建议做好以下准备工作：
 
 - **了解新的计费帐户**
-  - 新帐户简化了为你的组织计费。 [获取新的计费帐户的快速概述](billing-mca-overview.md)
-- **验证你的访问以完成设置**
-  - 只有具有特定的管理权限的用户可以完成设置。 检查您是否具有[以完成安装所需访问权限](#access-required-to-complete-the-setup)。
-- **了解对你计费的层次结构的更改**
-  - 您新帐务帐户组织方式与你的企业协议注册。 [了解计费层次结构中的新帐户将变为](#understand-changes-to-your-billing-hierarchy)。
-- **了解对计费管理员的访问权限的更改**
-  - 从你的企业协议注册管理员有权访问新帐户中的计费作用域。[了解到他们的访问权限更改](#understand-changes-to-your-billing-administrators-access)。
-- **替换为新帐户的 view 企业协议功能**
-  - 查看替换为新帐户中的功能的企业协议注册功能。
-- **视图最常见的问题的解答**
-  - 视图[的其他信息](#additional-information)若要了解有关安装程序的详细信息。
+  - 新帐户将会简化组织的计费。 [获取新计费帐户的简要概述](billing-mca-overview.md)
+- **验证是否有权完成设置**
+  - 只有拥有特定管理权限的用户才能完成该设置。 检查你是否拥有[完成设置所需的访问权限](#access-required-to-complete-the-setup)。
+- **了解计费层次结构的变化**
+  - 新计费帐户的组织方式与企业协议注册不同。 [了解新帐户中计费层次结构的变化](#understand-changes-to-your-billing-hierarchy)。
+- **了解计费管理员访问权限的变化**
+  - 企业协议注册中的管理员有权访问新帐户中的计费范围。[了解其访问权限的变化](#changes-to-billing-administrator-access)。
+- **查看新帐户取代的企业协议功能**
+  - 查看企业协议注册中已由新帐户中的功能取代的功能。
+- **查看最常见问题的解答**
+  - 查看[更多信息](#additional-information)以了解有关设置的详细信息。
 
-## <a name="access-required-to-complete-the-setup"></a>若要完成安装所需访问权限
+## <a name="access-required-to-complete-the-setup"></a>完成设置所需的访问权限
 
-若要完成的安装，需要以下访问权限：
+若要完成该设置，需要拥有以下访问权限：
 
-- Microsoft 客户协议进行签名时所创建的计费配置文件的所有者。 若要了解有关计费的配置文件的详细信息，请参阅[了解计费资料](billing-mca-overview.md#understand-billing-profiles)。
+- 签署 Microsoft 客户协议时创建的计费配置文件的所有者。 若要详细了解计费配置文件，请参阅[了解计费配置文件](billing-mca-overview.md#billing-profiles)。
 
-- 在续订时注册的企业管理员。
+- 已续订的注册的企业管理员。
 
-### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>如果您不上注册的企业管理员
+### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>如果你不是该注册的企业管理员
 
-你可以请求在注册的企业管理员，以完成您的计费帐户设置。
+可以请求该注册的企业管理员完成计费帐户的设置。
 
-1. 登录到 Azure 门户中使用签名 Microsoft 客户协议时发送给你的电子邮件中的链接。
+1. 使用签署 Microsoft 客户协议时收到的电子邮件中的链接登录到 Azure 门户。
 
-2. 如果你的组织中的其他人登录协议或您没有电子邮件，使用以下链接登录。 替换**enrollmentNumber**使用已续订的企业协议注册号。
+2. 如果该协议是由组织中的其他某人签署的，或者你未收到该电子邮件，请使用以下链接登录。 将 **enrollmentNumber** 替换为续订的企业协议的注册编号。
 
    `https://portal.azure.com/#blade/Microsoft_Azure_Billing/EATransitionToMCA/enrollmentId/enrollmentNumber`
 
-3. 选择你想要将请求发送的企业管理员。
+3. 选择要向其发送请求的企业管理员。
 
-   ![屏幕截图，显示邀请企业管理员](./media/billing-mca-setup-account/ea-mca-invite-admins.png)
+   ![显示邀请企业管理员的屏幕截图](./media/billing-mca-setup-account/ea-mca-invite-admins.png)
 
-4. 选择**发送请求**。
+4. 选择“发送请求”。 
 
-   管理员将收到一封电子邮件的说明完成安装。
+   管理员将收到一封电子邮件，其中包含有关完成设置的说明。
 
-### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>如果您不计费的配置文件的所有者
+### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>如果你不是计费配置文件的所有者
 
-用户在你的组织，Microsoft 客户协议签名者添加为上计费的配置文件的所有者。 请求用户，以便您可以完成安装程序将你添加为所有者。  <!-- Todo Are there any next steps -->
+组织中签署了 Microsoft 客户协议的用户将添加为计费配置文件的所有者。 请求该用户将你添加为所有者，使你能够完成设置。  <!-- Todo Are there any next steps -->
 
-## <a name="understand-changes-to-your-billing-hierarchy"></a>了解对计费层级结构的更改
+## <a name="understand-changes-to-your-billing-hierarchy"></a>了解计费层次结构的变化
 
-新的计费帐户简化了为你的组织同时提供增强的计费和成本管理功能计费。 下图说明如何计费的组织结构的新的计费帐户。
+新计费帐户将会简化组织的计费，同时提供增强的计费和成本管理功能。 下图解释了计费在新计费帐户中的组织方式。
 
-![Ea-mca 开机自检-转换-层次结构的图像](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
+![ea-mca-post-transition-hierarchy 插图](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
 
-1. 计费帐户用于为 Microsoft 客户协议管理计费。 若要了解有关计费帐户的详细信息，请参阅[了解计费帐户](billing-mca-overview.md#understand-billing-account)。
-2. 计费的配置文件用于为你的组织，类似于你的企业协议注册管理计费。 企业管理员成为计费的配置文件的所有者。 若要了解有关计费的配置文件的详细信息，请参阅[了解计费资料](billing-mca-overview.md#understand-billing-profiles)。
-3. 发票部分用于组织您根据需要，类似于在企业协议注册中的部门的成本。 部门变为发票部分，部门管理员成为相应发票部分的所有者。 若要了解有关发票部分的详细信息，请参阅[了解发票部分](billing-mca-overview.md#understand-invoice-sections)。
-4. 在你的企业协议中创建的帐户不支持在新的计费帐户中。 为其院系的相应发票部分属于帐户的订阅。 帐户所有者可以创建和管理其发票的部分的订阅。
+1. 使用计费帐户来管理 Microsoft 客户协议的计费。 若要详细了解计费帐户，请参阅[了解计费帐户](billing-mca-overview.md#your-billing-account)。
+2. 像在企业协议注册中那样，使用计费配置文件来管理组织的计费。 企业管理员将成为计费配置文件的所有者。 若要详细了解计费配置文件，请参阅[了解计费配置文件](billing-mca-overview.md#billing-profiles)。
+3. 可以根据需求使用发票科目来组织成本，类似于在企业协议注册中使用部门。 部门将成为发票科目，部门管理员将成为各自发票科目的所有者。 若要详细了解发票科目，请参阅[了解发票科目](billing-mca-overview.md#invoice-sections)。
+4. 新计费帐户不支持企业协议中创建的帐户。 新帐户的订阅属于其部门的相应发票科目。 帐户所有者可以创建和管理其发票科目的订阅。
 
-## <a name="understand-changes-to-your-billing-administrators-access"></a>了解对计费管理员的访问权限的更改
+## <a name="changes-to-billing-administrator-access"></a>计费管理员访问权限的变化
 
-具体取决于其访问权限，在企业协议合约的帐务管理员有权访问新帐户上的计费作用域。 下表说明在安装过程中访问的更改：
+企业协议注册中的计费管理员可以根据其访问权限访问新帐户中的计费范围。 下表解释了在设置过程中访问权限的变化：
 
-| 现有的角色 | Post 转换角色 |
+| 现有角色 | 转换后的角色 |
 | --- | --- |
-| **企业管理员 (读取仅 = No)** | **计费配置文件所有者** </br> 管理计费的配置文件中的所有内容 </br> - **发票部分所有者对所有发票部分** </br> 管理发票部分中的所有内容 |
-| **企业管理员 (读取仅 = Yes)** | **计费配置文件读取器** </br> 的只读视图的所有内容在计费帐户</br>**发票上所有发票部分的部分读取器**</br> 的只读视图的所有内容上的发票部分|
-| **部门管理员 (读取仅 = No)** |**发票上创建为其各自的院系的发票部分的部分所有者** </br>管理发票部分中的所有内容|
-| **部门管理员 (读取仅 = Yes)**|**发票部分读取器上创建为其各自的院系的发票部分**</br> 只读的所有内容的视图上的发票部分|
-| **帐户所有者** | **的创建为其各自的院系的发票部分上 azure 订阅创建者** </br>  创建 Azure 订阅，其发票部分|
+| **企业管理员（只读 = 否）** | **- 计费配置文件所有者** </br> 管理计费配置文件中的所有内容 </br> - **所有发票科目的发票科目所有者** </br> 管理发票科目中的所有内容 |
+| **企业管理员（只读 = 是）** | **- 计费配置文件读取者** </br> - 查看计费帐户中所有内容的只读视图</br>**- 所有发票科目的发票科目读取者**</br> - 查看发票科目中所有内容的只读视图|
+| **部门管理员（只读 = 否）** |**- 为相应部门创建的发票科目的发票科目所有者** </br>管理发票科目中的所有内容|
+| **部门管理员（只读 = 是）**|**- 为相应部门创建的发票科目的发票科目读取者**</br> 查看发票科目中所有内容的只读视图|
+| **帐户所有者** | **- 为相应部门创建的发票科目的 Azure 订阅创建者** </br>  为发票科目创建 Azure 订阅|
 
-登录 Microsoft 客户协议时，如果为新的计费帐户选择 Azure Active Directory 租户。 如果租户不存在为你的组织中，创建一个新租户。 租户代表你的组织在 Azure Active Directory 中。 你组织中的全局租户管理员使用租户来管理应用程序和你的组织中的数据的访问权限。
+签署 Microsoft 客户协议时，将为新计费帐户选择一个 Azure Active Directory 租户。 如果你的组织中没有租户，则系统会创建一个新租户。 该租户在 Azure Active Directory 中代表你的组织。 组织中的全局租户管理员可以使用租户来管理对组织中应用程序和数据的访问。
 
-新的帐户仅支持来自签名 Microsoft 客户协议时选定的租户的用户。 如果具有企业协议上的管理权限的用户是租户的成员，他们将在安装过程中获得新的计费帐户的访问权限。 如果它们不是租户的成员，它们将无法访问新的计费帐户，除非您邀请他们。
+新帐户仅支持在签署 Microsoft 客户协议时选择的租户中的用户。 如果对企业协议拥有管理权限的用户属于该租户，则他们在设置期间有权访问新的计费帐户。 如果他们不属于该租户，则除非你发出邀请，否则他们无权访问新的计费帐户。
 
-当您邀请的用户时，它们作为来宾用户添加到租户，并获取计费帐户的访问权限。 若要邀请的用户，则租户的来宾访问权限必须打开。 有关详细信息，请参阅[控制在 Azure Active Directory 中的来宾访问](https://docs.microsoft.com/en-us/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)。 如果来宾访问处于关闭状态，请联系你的租户以将其打开的全局管理员。 <!-- Todo - How can they find their global administrator -->
+邀请用户时，会将他们作为来宾用户添加到租户，然后他们将有权访问计费帐户。 若要邀请用户，必须为租户启用来宾访问。 有关详细信息，请参阅[在 Azure Active Directory 中控制来宾访问](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)。 如果来宾访问已禁用，请联系租户的全局管理员将它启用。 <!-- Todo - How can they find their global administrator -->
 
-## <a name="view-features-replaced-by-the-new-billing-account"></a>查看功能替换为新的计费帐户
+## <a name="view-replaced-features"></a>查看已取代的功能
 
-以下企业协议的功能替换为计费帐户中的新增功能 Microsoft 客户协议。
+以下企业协议的功能已由 Microsoft 客户协议的计费帐户中的新功能取代。
 
 ### <a name="enterprise-agreement-accounts"></a>企业协议帐户
 
-在你的企业协议注册期间创建的帐户不支持在新的计费帐户中。 该帐户的订阅属于创建为其各自的院系的发票部分。 帐户所有者成为 Azure 订阅创建者，以及可以创建和管理其发票的部分的订阅。
+新计费帐户不支持企业协议注册中创建的帐户。 新帐户的订阅属于为相应部门创建的发票科目。 帐户所有者将成为 Azure 订阅创建者，可以创建和管理其发票科目的订阅。
 
 ### <a name="notification-contacts"></a>通知联系人
 
-通知联系人发送有关 Azure 企业协议的电子邮件通信。 它们不支持在新的计费帐户中。 有关 Azure 额度和发票的电子邮件发送到在您的计费帐户有权访问计费的配置文件的用户。
+将会向通知联系人发送有关 Azure 企业协议的电子邮件通信。 新计费帐户不支持通知联系人。 有关 Azure 额度和发票的电子邮件将发送到有权访问计费帐户中计费配置文件的用户。
 
 ### <a name="spending-quotas"></a>支出配额
 
-已设置为在企业协议注册中的部门的支出配额替换为新的计费帐户中的预算。 为每个设置在注册中的部门的支出配额创建预算。 预算的详细信息，请参阅[创建和管理 Azure 预算](../cost-management/manage-budgets.md)。
+为企业协议注册中的部门设置的支出配额已由新计费帐户中的预算取代。 对于为注册中的部门设置的每个支出配额，将会创建一个预算。 有关预算的详细信息，请参阅[创建和管理 Azure 预算](../cost-management/manage-budgets.md)。
 
-### <a name="cost-centers"></a>成本的中心
+### <a name="cost-centers"></a>成本中心
 
-在企业协议注册中的 Azure 订阅设置的成本的中心一同转移的新的计费帐户。 但是，不支持部门和企业协议客户的成本中心。
+针对企业协议注册中的 Azure 订阅设置的成本中心将会沿袭到新计费帐户。 但是，不支持部门和企业协议帐户的成本中心。
 
 ## <a name="additional-information"></a>其他信息
 
-以下部分提供有关如何设置计费帐户的其他信息。
+以下部分提供了有关设置计费帐户的其他信息。
 
 ### <a name="no-service-downtime"></a>服务不会中断
 
-订阅内的 Azure 服务保持正常运行，不会中断。 我们只转换 Azure 订阅的计费关系。 这不会对现有的资源、资源组或管理组产生影响。
+订阅中的 Azure 服务将保持正常运行，而不会中断。 我们只会转换 Azure 订阅的计费关系。 这不会对现有的资源、资源组或管理组产生影响。
 
-### <a name="user-access-to-azure-resources"></a>对 Azure 资源的用户访问权限
+### <a name="user-access-to-azure-resources"></a>用户对 Azure 资源的访问权限
 
-使用 Azure RBAC （基于角色的访问控制） 设置到 Azure 资源的访问权限在转换期间不受影响。
+在转换过程中，使用 Azure RBAC（基于角色的访问控制）设置的 Azure 资源访问权限不受影响。
 
 ### <a name="azure-reservations"></a>Azure 预留
 
-在企业协议注册中的任何 Azure 预订移到新的计费帐户。 在转换期间，对订阅应用的预留折扣不会有任何更改。
+企业协议注册中的任何 Azure 预留项将转移到新计费帐户。 在转换过程中，对订阅应用的预留折扣不会有任何变化。
 
-### <a name="azure-marketplace-products"></a>Azure Marketplace 产品
+### <a name="azure-marketplace-products"></a>Azure 市场产品
 
-企业协议许可登记表中的任何 Azure Marketplace 产品订阅一起移动。 在转换期间不会有对 Marketplace 产品的服务的访问权限的任何更改。
+企业协议注册中的任何 Azure 市场产品将随订阅一起移动。 在转换过程中，服务对市场产品的访问权限不会有任何变化。
 
 ### <a name="support-plan"></a>支持计划
 
-支持权益无法转移为转换的一部分。 购买新的支持计划，以利用新的计费帐户中的 Azure 订阅。
+在转换过程中，支持权益不会转移。 购买新的支持计划可以获得新计费帐户中 Azure 订阅的权益。
 
-### <a name="past-charges-and-balance"></a>过去的费用和平衡
+### <a name="past-charges-and-balance"></a>既往费用和余额
 
-通过 Azure 门户在企业协议注册中，可以查看在转换之前的费用和信用额度余额。 <!--Todo - Add a link for this-->
+可以通过 Azure 门户查看企业协议注册中在转换之前的费用和剩余额度。 <!--Todo - Add a link for this-->
 
-### <a name="when-should-the-setup-be-completed"></a>何时完成安装程序？
+### <a name="when-should-the-setup-be-completed"></a>何时应完成设置？
 
-企业协议注册到期前，请完成您的计费帐户的设置。 如果你注册到期后，你的 Azure 订阅中的服务将仍然继续在运行而不发生中断。 但是，您将零售费率收取的服务。
+应在企业协议注册过期之前完成计费帐户的设置。 如果注册已过期，Azure 订阅中的服务将保持运行，而不会中断。 但是，你要按服务的零售费率付费。
 
-### <a name="changes-to-the-enterprise-agreement-enrollment-after-the-setup"></a>安装后，企业协议注册到的更改
+### <a name="changes-to-the-enterprise-agreement-enrollment-after-the-setup"></a>设置后企业协议注册的变化
 
-转换可以手动将移动到新的计费帐户之后为企业协议注册创建的 azure 订阅。 有关详细信息，请参阅[获取计费的其他用户的 Azure 订阅所有权](billing-mca-request-billing-ownership.md)。 若要移动的过渡后，购买 Azure 预订[联系 Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 您还可以提供用户计费帐户的访问权限后转换。 有关详细信息，请参阅[管理计费在 Azure 门户中的角色](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
+可以手动将转换后为企业协议注册创建的 Azure 订阅移到新的计费帐户。 有关详细信息，请参阅[从其他用户获取 Azure 订阅的计费所有权](billing-mca-request-billing-ownership.md)。 若要移动转换后购买的 Azure 预留项，请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 也可以在转换后向用户提供对计费帐户的访问权限。 有关详细信息，请参阅[在 Azure 门户中管理计费角色](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 
-### <a name="revert-the-transition"></a>恢复转换
+### <a name="revert-the-transition"></a>还原转换
 
-无法还原转换。 一旦你的 Azure 订阅的计费过渡到新的计费帐户，你不能还原它为企业协议注册。
+转换不可还原。 将 Azure 订阅的计费转换到新计费帐户后，无法将其还原为企业协议注册。
 
-### <a name="closing-your-browser-during-setup"></a>在安装过程中关闭你的浏览器
+### <a name="closing-your-browser-during-setup"></a>在设置期间关闭浏览器
 
-在您单击之前**开始转换**，可以关闭浏览器。 可以返回到使用了电子邮件中的链接的安装程序并启动转换。 如果您关闭浏览器中，启动转换后，转换将继续在运行。 回到转换状态页来监视您转换的最新状态。 转换完成时，你将收到一封电子邮件。
+在单击“开始转换”之前，可以关闭浏览器。  可以使用电子邮件中收到的链接返回到设置，并开始转换。 开始转换后，如果关闭浏览器，转换过程仍会继续运行。 返回到转换状态页可以监视转换过程的最新状态。 转换完成后，你会收到一封电子邮件。
 
-## <a name="complete-the-setup-in-the-azure-portal"></a>完成在 Azure 门户中设置
+## <a name="complete-the-setup-in-the-azure-portal"></a>在 Azure 门户中完成设置
 
-若要完成的安装，需要对新的计费帐户和企业协议注册的访问。 有关详细信息，请参阅[需完成的计费帐户设置访问权限](#access-required-to-complete-the-setup)。
+若要完成设置，需要同时有权访问新计费帐户和企业协议注册。 有关详细信息，请参阅[完成计费帐户设置所需的访问权限](#access-required-to-complete-the-setup)。
 
-1. 登录到 Azure 门户中使用签名 Microsoft 客户协议时发送给你的电子邮件中的链接。
+1. 使用签署 Microsoft 客户协议时收到的电子邮件中的链接登录到 Azure 门户。
 
-2. 如果你的组织中的其他人登录协议或您没有电子邮件，使用以下链接登录。 替换**enrollmentNumber**使用已续订的企业协议注册号。
+2. 如果该协议是由组织中的其他某人签署的，或者你未收到该电子邮件，请使用以下链接登录。 将 **enrollmentNumber** 替换为续订的企业协议的注册编号。
 
    `https://portal.azure.com/#blade/Microsoft_Azure_Billing/EATransitionToMCA/enrollmentId/enrollmentNumber`
 
-3. 选择**开始转换**中安装的最后一步。 一旦选择开始转换：
+3. 在设置过程的最后一个步骤中选择“开始转换”。  选择“开始转换”后：
 
-    ![显示安装向导的屏幕截图](./media/billing-mca-setup-account/ea-mca-set-up-wizard.png)
+    ![显示设置向导的屏幕截图](./media/billing-mca-setup-account/ea-mca-set-up-wizard.png)
 
-    - 新的计费帐户中创建对应于你的企业协议层次结构的计费层次结构。 有关详细信息，请参阅[了解对你计费的层次结构的更改](#understand-changes-to-your-billing-hierarchy)。
-    - 从你的企业协议注册的管理员都被赋予访问新的计费帐户，以便他们继续管理为你的组织的帐单。
-    - 你的 Azure 订阅的计费过渡到新帐户。 **不会有任何影响针对 Azure 服务在此转换。它们将继续运行而无需中断**。
-    - 如果具有 Azure 保留项，它们都移到新的计费帐户具有相同的折扣和期限。 预订折扣将继续应用转换的过程。
+    - 将在新计费帐户中创建对应于企业协议层次结构的计费层次结构。 有关详细信息，请参阅[了解计费层次结构的变化](#understand-changes-to-your-billing-hierarchy)。
+    - 企业协议注册中的管理员有权访问新计费帐户，因此他们可以继续管理组织的计费。
+    - Azure 订阅的计费将转换到新帐户。 **在此转换过程中，Azure 服务不会受到任何影响。它们将保持正常运行，而不会出现任何中断。**
+    - 如果你已购买 Azure 预留项，它们将会转移到新计费帐户，并采用相同的折扣和条款。 在转换过程中，将继续应用预留折扣。
 
-4. 可以在监视的转换状态**转换状态**页。
+4. 可以在“转换状态”页上监视转换状态。 
 
    ![显示转换状态的屏幕截图](./media/billing-mca-setup-account/ea-mca-set-up-status.png)
 
-## <a name="validate-the-billing-account-is-set-up-properly"></a>验证计费帐户已正确设置
+## <a name="validate-billing-account-set-up"></a>验证计费帐户是否已设置
 
- 验证以下内容，以确保正确设置了新的计费帐户：
+ 验证以下各项，以确保正确设置新的计费帐户：
 
 ### <a name="azure-subscriptions"></a>Azure 订阅
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”中进行搜索。
+2. 搜索“成本管理 + 计费”。 
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. 选择计费的配置文件。 具体取决于您的访问权限，可能需要选择计费帐户。 从计费帐户，选择**计费配置文件**，然后计费的配置文件。
+3. 选择计费配置文件。 根据你拥有的访问权限，可能需要选择一个计费帐户。 在该计费帐户中，选择“计费配置文件”，然后选择计费配置文件。 
 
-4. 选择**Azure 订阅**从左侧和右侧。
+4. 在左侧选择“Azure 订阅”。 
 
-   ![显示订阅的列表的屏幕截图](./media/billing-mca-setup-account/billing-mca-subscriptions-post-transition.png)
+   ![显示订阅列表的屏幕截图](./media/billing-mca-setup-account/billing-mca-subscriptions-post-transition.png)
 
-从你的企业协议注册转换为新的计费帐户的 azure 订阅的 Azure 订阅页上显示。 如果您认为不缺少任何订阅，转换在 Azure 门户中手动订阅的计费。 有关详细信息，请参阅[获取计费的其他用户的 Azure 订阅的所有权](billing-mca-request-billing-ownership.md)
+从企业协议注册转换为新计费帐户的 Azure 订阅将显示在 Azure 订阅页上。 如果你认为缺少了任何订阅，请在 Azure 门户中手动转换订阅的计费。 有关详细信息，请参阅[从其他用户获取 Azure 订阅的计费所有权](billing-mca-request-billing-ownership.md)
 
 ### <a name="azure-reservations"></a>Azure 预留
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”中进行搜索。
+2. 搜索“成本管理 + 计费”。 
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. 选择发票部分。 具体取决于您的访问权限，可能需要选择计费帐户或帐单的配置文件。  从计费帐户或帐单的配置文件中，选择**发票部分**，然后发票部分。
+3. 选择发票科目。 根据你拥有的访问权限，可能需要选择一个计费帐户或计费配置文件。  从计费帐户或计费配置文件中选择“发票科目”，然后选择一个发票科目。 
 
-    ![显示的发票部分 post 转换列表的屏幕截图](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
+    ![显示转换后的发票科目列表的屏幕截图](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
 
-4. 选择**所有产品**从左侧和右侧。
+4. 在左侧选择“所有产品”。 
 
-5. 搜索上**保留**。
+5. 搜索“已预留”。 
 
-    ![显示的订阅文章转换列表的屏幕截图](./media/billing-mca-setup-account/billing-mca-azure-reservations-post-transition.png)
+    ![显示转换后的订阅列表的屏幕截图](./media/billing-mca-setup-account/billing-mca-azure-reservations-post-transition.png)
 
-从你的企业协议注册移动到新的计费帐户的 azure 保留所有的产品页上显示。 重复所有发票节来验证所有 Azure 预订都移动从你的企业协议注册的步骤。 如果你认为任何 Azure 预订缺少[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)将预订移动到新的计费帐户。
+从企业协议注册移到新计费帐户的 Azure 预留项将显示在“所有产品”页上。 针对所有发票科目重复上述步骤，以验证是否已从企业协议注册移动所有 Azure 预留项。 如果你认为缺少了任何 Azure 预留项，请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以将该预留项移到新计费帐户。
 
-### <a name="access-of-enterprise-administrators-on-the-billing-profile"></a>企业管理员的计费的配置文件的访问权限
+### <a name="access-of-enterprise-administrators-on-the-billing-profile"></a>企业管理员对计费配置文件的访问权限
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”中进行搜索。
+2. 搜索“成本管理 + 计费”。 
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. 选择创建你的注册的计费配置文件。 具体取决于您的访问权限，可能需要选择计费帐户。  从计费帐户，选择**计费配置文件**，然后计费的配置文件。
+3. 选择为注册创建的计费配置文件。 根据你拥有的访问权限，可能需要选择一个计费帐户。  在该计费帐户中，选择“计费配置文件”，然后选择计费配置文件。 
 
-4. 选择**访问控制 (IAM)** 从左侧和右侧。
+4. 在左侧选择“访问控制(IAM)”。 
 
-   ![显示企业管理员 post 转换的访问权限的屏幕截图](./media/billing-mca-setup-account/billing-mca-ea-admins-access-post-transition.png)
+   ![显示转换后企业管理员访问权限的屏幕截图](./media/billing-mca-setup-account/billing-mca-ea-admins-access-post-transition.png)
 
-企业管理员列为计费配置文件读取器为计费时列出具有只读权限的管理员在企业的配置文件所有者。 如果您认为不缺少任何企业管理员的访问权限，您可以授予他们访问在 Azure 门户中。 有关详细信息，请参阅[管理在 Azure 门户中的计费角色](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
+企业管理员将作为计费配置文件所有者列出，而拥有只读权限的企业管理员将作为计费配置文件读取者列出。 如果你认为缺少了任何企业管理员的访问权限，可以在 Azure 门户中为其授予访问权限。 有关详细信息，请参阅[在 Azure 门户中管理计费角色](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 
-### <a name="access-of-enterprise-administrators-department-administrators-and-account-owners-on-invoice-sections"></a>企业管理员、 部门管理员和帐户所有者的发票部分的访问权限
+### <a name="access-of-enterprise-administrators-department-administrators-and-account-owners-on-invoice-sections"></a>企业管理员、部门管理员和帐户所有者对发票科目的访问权限
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”中进行搜索。
+2. 搜索“成本管理 + 计费”。 
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png).
 
-3. 选择发票部分。 发票部分具有企业协议合约中其各自部门与相同的名称。 具体取决于您的访问权限，可能需要选择计费的配置文件或计费帐户。 从计费的配置文件或计费帐户中选择**发票部分**，然后选择发票部分。
+3. 选择发票科目。 发票科目的名称与其在企业协议注册中的相应部门名称相同。 根据你拥有的访问权限，可能需要选择一个计费配置文件或计费帐户。 从计费配置文件或计费帐户中选择“发票科目”，然后选择一个发票科目。 
 
-   ![显示的发票部分 post 转换列表的屏幕截图](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
+   ![显示转换后的发票科目列表的屏幕截图](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
 
-4. 选择**访问控制 (IAM)** 从左侧和右侧。
+4. 在左侧选择“访问控制(IAM)”。 
 
-    ![显示部门和管理员访问 post 转换的帐户的访问权限的屏幕截图](./media/billing-mca-setup-account/billing-mca-department-account-admins-access-post-transition.png)
+    ![显示转换后部门和帐户管理员的访问权限的屏幕截图](./media/billing-mca-setup-account/billing-mca-department-account-admins-access-post-transition.png)
 
-企业管理员和部门管理员列为发票部分所有者或发票部分读取器时在部门中的帐户所有者列出为 Azure 订阅创建者。 重复所有发票部分来检查在企业协议注册中的所有部门的访问权限的步骤。 没有任何部门的一部分的帐户所有者会在名为发票部分获取的权限**默认发票部分**。 如果您认为不缺少任何管理员的访问权限，您可以授予他们访问在 Azure 门户中。 有关详细信息，请参阅[管理在 Azure 门户中的计费角色](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
+企业管理员和部门管理员将作为发票科目所有者或发票科目读取者列出，而部门中的帐户所有者将作为 Azure 订阅创建者列出。 针对所有发票科目重复该步骤，以检查对企业协议注册中所有部门的访问权限。 不属于任何部门的帐户所有者将会获得对名为“默认发票科目”的发票科目的权限。  如果你认为缺少了任何管理员的访问权限，可以在 Azure 门户中为其授予访问权限。 有关详细信息，请参阅[在 Azure 门户中管理计费角色](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
@@ -277,8 +273,8 @@ ms.locfileid: "57894540"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [开始使用新的计费帐户](billing-mca-overview.md)
+- [开始使用新计费帐户](billing-mca-overview.md)
 
-- [Microsoft 客户协议完成您的计费帐户中的企业协议任务](billing-mca-enterprise-operations.md)
+- [完成 Microsoft 客户协议计费帐户中的企业协议任务](billing-mca-enterprise-operations.md)
 
-- [管理对您的计费帐户的访问](billing-understand-mca-roles.md)
+- [管理对计费帐户的访问权限](billing-understand-mca-roles.md)

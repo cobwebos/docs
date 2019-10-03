@@ -10,20 +10,19 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 8784a06306f59015b95293d90ff5509dcfcae045
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549482"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057938"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
-利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。 
+利用 [Azure App Service](overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。  可以将备份配置为保持不变的时间。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。
 
 有关从备份中还原应用的信息，请参阅[在 Azure 中还原应用](web-sites-restore.md)。
 
@@ -40,7 +39,7 @@ ms.locfileid: "59549482"
    - [SQL 数据库](https://azure.microsoft.com/services/sql-database/)
    - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
    - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
-   - [MySQL 应用内产品](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
+   - [MySQL 应用内产品](https://azure.microsoft.com/en-us/blog/mysql-in-app-preview-app-service/)
  
 
 > [!NOTE]
@@ -50,7 +49,7 @@ ms.locfileid: "59549482"
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>要求和限制
-* 备份和还原功能要求应用服务计划处于标准层或高级层。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](web-sites-scale.md)。  
+* 备份和还原功能要求应用服务计划处于标准层或高级层。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。  
   与标准层相比，高级层每日允许更多备份量。
 * 在与要备份的应用相同的订阅中，需要有一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅 [Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 * 最多可备份 10 GB 的应用和数据库内容。 如果备份大小超过此限制，会出错。
@@ -69,14 +68,14 @@ ms.locfileid: "59549482"
    
    > [!NOTE]
    > 若显示以下消息，请单击该消息升级 应用服务计划，才能继续备份。
-   > 有关详细信息，请参阅[增加 Azure 中的应用](web-sites-scale.md)。  
+   > 有关详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。  
    > ![选择存储帐户](./media/web-sites-backup/01UpgradePlan1.png)
    > 
    > 
 
 2. 在“备份”页中，单击“配置”
 ![单击“配置”](./media/web-sites-backup/ClickConfigure1.png)
-3. 在“备份配置”页中，单击“存储: 未配置”以配置存储帐户。
+3. 在“备份配置”页中，单击“存储:未配置”以配置存储帐户。
    
     ![选择存储帐户][ChooseStorageAccount]
 4. 选择“存储帐户”和“容器”来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 也可在各自的页面中新建存储帐户或容器。 完成后，单击“选择”。
@@ -114,7 +113,7 @@ ms.locfileid: "59549482"
 <a name="partialbackups"></a>
 
 ## <a name="configure-partial-backups"></a>配置部分备份
-有时你不想备份应用中的所有内容。 以下是一些示例：
+有时你不想备份应用中的所有内容。 以下是几个示例：
 
 * [设置每周备份](#configure-automated-backups)应用，其中包含永远不会更改的静态内容，例如旧的博客文章或图像。
 * 应用的内容超过 10 GB（这是一次可以备份的最大量）。
@@ -123,7 +122,7 @@ ms.locfileid: "59549482"
 使用部分备份可以精确选择需要备份的文件。
 
 > [!NOTE]
-> 在备份中的单个数据库可以为 4 GB 最大，但备份的总的最大大小为 10 GB
+> 备份中的单个数据库的最大大小为4GB，但备份的总最大大小为10GB
 
 ### <a name="exclude-files-from-your-backup"></a>从备份中排除文件
 假定应用中包含的日志文件和静态映像已经过备份且不会发生更改。 这种情况下，可排除这些文件夹和文件，以免其存储在将来的备份中。 若要从备份中排除文件和文件夹，请在应用的 `D:\home\site\wwwroot` 文件夹中创建一个 `_backup.filter` 文件。 指定要在此文件中排除的文件和文件夹列表。 

@@ -1,27 +1,27 @@
 ---
-title: Azure Blockchain Workbench 体系结构
-description: Azure Blockchain Workbench 体系结构及其组件的概述。
+title: Azure 区块链工作台预览体系结构
+description: Azure 区块链工作台预览体系结构及其组件概述。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/14/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 83c5e1405c402a1c6c98f9dbcaaf74891eb75e6d
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: d50ee0fa06f34167cd4be9e787f6e351d3ef7e3b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330630"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845216"
 ---
-# <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench 体系结构
+# <a name="azure-blockchain-workbench-preview-architecture"></a>Azure 区块链工作台预览体系结构
 
-Azure Blockchain Workbench 使用多个 Azure 组件提供解决方案，从而简化区块链应用程序的开发。 可以使用 Azure 市场中的解决方案模板部署 Blockchain Workbench。 该模板可用于选择要部署的模块和组件，包括区块链堆栈、客户端应用程序类型，以及对 IoT 集成的支持。 部署后，Blockchain Workbench 会提供对 Web 应用、iOS 应用和 Android 应用的访问权限。
+Azure 区块链工作台预览版通过使用几个 Azure 组件提供解决方案来简化区块链应用程序的开发。 可以使用 Azure 市场中的解决方案模板部署 Blockchain Workbench。 该模板可用于选择要部署的模块和组件，包括区块链堆栈、客户端应用程序类型，以及对 IoT 集成的支持。 部署后，Blockchain Workbench 会提供对 Web 应用、iOS 应用和 Android 应用的访问权限。
 
-![Blockchain Workbench 体系结构](./media/architecture/architecture.png)
+![区块链工作台体系结构](./media/architecture/architecture.png)
 
 ## <a name="identity-and-authentication"></a>标识和身份验证
 
@@ -45,7 +45,7 @@ Workbench 为可用于验证、测试和查看区块链应用程序的 Web 和�
 * 上传并部署用户自己的智能合约。
 * 在特定角色的上下文中为用户分配智能合约的访问权限。
 
-有关详细信息，请参阅 [GitHub 上的 Azure Blockchain Workbench 示例客户端应用程序](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-development-kit/connect/mobile/blockchain-workbench/workbench-client)。
+有关详细信息，请参阅 [GitHub 上的 Azure Blockchain Workbench 示例客户端应用程序](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile)。
 
 ## <a name="gateway-service-api"></a>网关服务 API
 

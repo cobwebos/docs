@@ -1,20 +1,19 @@
 ---
 title: 使用 .NET 创建 Apache Hadoop 群集 - Azure HDInsight
 description: 了解如何使用 HDInsight .NET SDK 在 Linux for HDInsight 上创建 Apache Hadoop、Apache HBase、Apache Storm 或 Apache Spark 群集。
-services: hdinsight
-author: mamccrea
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.author: mamccrea
-ms.openlocfilehash: 0106063cfe376f31040b5dcd6856282ee09ae5c9
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.author: hrasheed
+ms.openlocfilehash: fccb29167dc04bf75a85935eeb57b0420b151f64
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447956"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916486"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>使用 .NET SDK 在 HDInsight 中创建基于 Linux 的群集
 
@@ -28,17 +27,17 @@ ms.locfileid: "58447956"
 >
 > 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **Azure 存储帐户**。 请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
-* **Visual Studio 2013、Visual Studio 2015 或 Visual Studio 2017**。
+* **Visual Studio**。
 
 ## <a name="create-clusters"></a>创建群集
 
-1. 打开 Visual Studio 2017。
+1. 打开 Visual Studio。
 2. 创建新的 Visual C# 控制台应用程序。
 3. 在“工具”菜单中，单击“NuGet 包管理器”，并单击“包管理器控制台”。
 4. 在控制台中运行下列命令以安装程序包：
@@ -394,7 +393,6 @@ static void Main(string[] args)
 
 ### <a name="run-jobs"></a>运行作业
 * [使用 .NET SDK 在 HDInsight 中运行 Apache Hive 作业](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
-* [使用 .NET SDK 在 HDInsight 中运行 Apache Pig 作业](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)
 * [使用 .NET SDK 在 HDInsight 中运行 Apache Sqoop 作业](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)
 * [在 HDInsight 中运行 Apache Oozie 作业](hdinsight-use-oozie-linux-mac.md)
 

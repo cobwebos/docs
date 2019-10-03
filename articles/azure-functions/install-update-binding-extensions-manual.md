@@ -7,16 +7,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: azure functions, 函数, 绑定扩展, NuGet, 更新
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/26/2018
 ms.author: glenga
-ms.openlocfilehash: cda977ba59070c3ddaac05784277d6c0b5109f0f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7686a9b2df6df6b54851e9c9957186f76be3fafd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727105"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085052"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>从门户手动安装或更新 Azure Functions 绑定扩展
 

@@ -5,13 +5,13 @@ ms.service: cosmos-db
 author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: 6902b1a26d02efbf1a31fe9a3a25253a6b5a5604
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 08/01/2019
+ms.openlocfilehash: 56f293600d876a5bc52b618ce8eed044e93f424d
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100337"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616876"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB：在 Azure 平台上实现 lambda 体系结构 
 
@@ -42,7 +42,7 @@ lambda 体系结构是一种通用、可缩放且容错的数据处理体系结�
 
 阅读后续内容后，只需使用以下内容即可实现此体系结构：
 
-* Azure Cosmos DB 集合
+* Azure Cosmos 容器
 * HDInsight (Apache Spark 2.1) 群集
 * Spark 连接器 [1.0](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark_2.1.0_2.11-1.0.0)
 
@@ -114,7 +114,7 @@ val query = streamData.withColumn("countcol", streamData.col("id").substr(0, 0))
 
  1. 所有**数据**只会推送到 Azure Cosmos DB（以避免多重强制转换问题）。
  2. **批处理层**包含 Azure Cosmos DB 中存储的主数据集（不可变、仅限追加的原始数据集）。 使用 HDI Spark 可以预先计算要存储在计算的批处理视图中的聚合。
- 3. **服务层**是一个 Azure Cosmos DB 数据库，其中包含主数据集的集合以及计算的批处理视图。
+ 3. **服务层**是一个 Azure Cosmos 数据库, 其中包含主数据集和计算的批处理视图的集合。
  4. 本文稍后将介绍**速度层**。
  5. 通过合并批处理视图和实时视图中的结果或者单独 ping 每个结果，可以应答所有查询。
 
@@ -161,7 +161,7 @@ limit 10
 
 ![按井号标签显示推文数量的图表](./media/lambda-architecture/lambda-architecture-batch-hashtags-bar-chart.png)
 
-创建查询后，让我们使用 Spark 连接器将它保存回到某个集合，以便将输出数据保存到不同的集合中。  此示例使用 Scala 来展示连接。 与在前面的示例中一样，创建配置连接，以将 Apache Spark 数据帧保存到不同的 Azure Cosmos DB 集合。
+创建查询后，让我们使用 Spark 连接器将它保存回到某个集合，以便将输出数据保存到不同的集合中。  此示例使用 Scala 来展示连接。 与前面的示例类似, 创建配置连接将 Apache Spark 数据帧保存到不同的 Azure Cosmos 容器。
 
 ```
 val writeConfigMap = Map(
@@ -192,7 +192,7 @@ val tweets_bytags = spark.sql("select hashtags.text as hashtags, count(distinct 
 tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 ```
 
-现在，这最后一条语句已将 Spark 数据帧保存到新的 Azure Cosmos DB 集合；从 lambda 体系结构的角度来看，这就是**服务层**中的**批处理视图**。
+此最后一条语句现在已将 Spark 数据帧保存到新的 Azure Cosmos 容器;从 lambda 体系结构的角度来看, 这是**服务层**中的**批处理视图**。
  
 #### <a name="resources"></a>资源
 
@@ -205,7 +205,7 @@ tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 
 ![突出显示 lambda 体系结构的速度层的示意图](./media/lambda-architecture/lambda-architecture-speed.png)
 
-为此，请创建一个独立的 Azure Cosmos DB 集合，用于保存结构化流查询的结果。  这样，就可以让其他系统（而不只是 Apache Spark）访问此信息。 另外，使用 Cosmos DB 生存时间 (TTL) 功能，可以配置为在设置的期限后自动删除文档。  有关 Azure Cosmos DB TTL 功能的详细信息，请参阅[利用生存时间使 Azure Cosmos DB 集合中的数据自动过期](time-to-live.md)
+为此, 请创建一个单独的 Azure Cosmos 容器来保存结构化流查询的结果。  这样，就可以让其他系统（而不只是 Apache Spark）访问此信息。 另外，使用 Cosmos DB 生存时间 (TTL) 功能，可以配置为在设置的期限后自动删除文档。  有关 Azure Cosmos DB TTL 功能的详细信息, 请参阅在[Azure Cosmos 容器中自动使数据过期, 并显示生存时间](time-to-live.md)
 
 ```
 // Import Libraries

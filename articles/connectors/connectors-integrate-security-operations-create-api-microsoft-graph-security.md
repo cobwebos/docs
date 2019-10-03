@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/30/2019
 tags: connectors
 ms.openlocfilehash: 24963a35bc3e54b2d140bf4ed1d169b213bd9b2a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673676"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60448040"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>通过将安全操作与 Microsoft Graph 安全性和 Azure 逻辑应用集成，提升威胁防护能力
 
@@ -34,7 +34,7 @@ ms.locfileid: "56673676"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
-* 根据 [Microsoft Graph 安全性身份验证要求](https://aka.ms/graphsecurityauth)，必须已明确授予 Azure Active Directory (AD) 租户管理员同意，才能使用 Microsoft Graph 安全性连接器。 若要授予此同意，必须提供 Microsoft Graph 安全性连接器的应用程序 ID 和名称（也可以在 [Azure 门户](https://portal.azure.com)中查找）：
+* 根据 [Microsoft Graph 安全性身份验证要求](https://aka.ms/graphsecurityauth)，必须已明确授予  Azure Active Directory (AD) 租户管理员同意，才能使用 Microsoft Graph 安全性连接器。 若要授予此同意，必须提供 Microsoft Graph 安全性连接器的应用程序 ID 和名称（也可以在 [Azure 门户](https://portal.azure.com)中查找）：
 
    | 属性 | 值 |
    |----------|-------|
@@ -50,7 +50,7 @@ ms.locfileid: "56673676"
    
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 要访问 Microsoft Graph 安全性实体（如警报）的逻辑应用。 目前，此连接器没有触发器。 因此，若要使用 Microsoft Graph 安全性操作，请使用触发器（例如，“定期”触发器）启动逻辑应用。
+* 要访问 Microsoft Graph 安全性实体（如警报）的逻辑应用。 目前，此连接器没有触发器。 因此，若要使用 Microsoft Graph 安全性操作，请使用触发器（例如，“定期”  触发器）启动逻辑应用。
 
 ## <a name="connect-to-microsoft-graph-security"></a>连接到 Microsoft Graph 安全性 
 
@@ -62,12 +62,12 @@ ms.locfileid: "56673676"
 
    -或-
 
-   对于现有逻辑应用，请在要添加 Microsoft Graph安全性操作的最后一个步骤下，选择“新建步骤”。
+   对于现有逻辑应用，请在要添加 Microsoft Graph安全性操作的最后一个步骤下，选择“新建步骤”  。
 
    -或-
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   依次选择出现的加号 (+) 和“添加操作”。
+   依次选择出现的加号 (+) 和“添加操作”  。
 
 1. 在搜索框中，输入“microsoft graph 安全性”作为筛选器。 从操作列表中选择所需的操作。
 
@@ -81,7 +81,7 @@ ms.locfileid: "56673676"
 
 ### <a name="manage-alerts"></a>管理警报
 
-若要筛选、排序或获取最新结果，只需提供 [Microsoft Graph支持的 ODATA 查询参数](https://docs.microsoft.com/graph/query-parameters)。 请勿指定完整的基 URL 或 HTTP 操作，例如 `https://graph.microsoft.com/v1.0/security/alerts` 或 `GET`/`PATCH` 操作。 下面的具体示例展示了在要获取非常严重的警报列表时“获取警报”操作的参数：
+若要筛选、排序或获取最新结果，只需  提供 [Microsoft Graph支持的 ODATA 查询参数](https://docs.microsoft.com/graph/query-parameters)。 请勿指定  完整的基 URL 或 HTTP 操作，例如 `https://graph.microsoft.com/v1.0/security/alerts` 或 `GET`/`PATCH` 操作。 下面的具体示例展示了在要获取非常严重的警报列表时“获取警报”  操作的参数：
 
 `Filter alerts value as Severity eq 'high'`
 
@@ -91,13 +91,13 @@ ms.locfileid: "56673676"
 |--------|-------------|
 | **获取警报** | 获取按一个或多个[警报属性](https://docs.microsoft.com/graph/api/resources/alert)筛选出的警报，例如： <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
 | **按 ID 获取警报** | 按警报 ID 获取特定警报。 | 
-| **更新警报** | 按警报 ID 更新特定警报。 <p>若要确保在请求中传递必需的可编辑属性，请参阅[可编辑警报属性](https://docs.microsoft.com/graph/api/alert-update)。 例如，若要向安全分析师分配警报以供调查，可以更新警报的“分配对象”属性。 |
+| **更新警报** | 按警报 ID 更新特定警报。 <p>若要确保在请求中传递必需的可编辑属性，请参阅[可编辑警报属性](https://docs.microsoft.com/graph/api/alert-update)。 例如，若要向安全分析师分配警报以供调查，可以更新警报的“分配对象”  属性。 |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>管理警报订阅
 
-Microsoft Graph 支持[订阅](https://docs.microsoft.com/graph/api/resources/subscription)或 [Webhook](https://docs.microsoft.com/graph/api/resources/webhooks)。 若要获取、更新或删除订阅，请向 Microsoft Graph 实体构造提供 [Microsoft Graph 支持的 ODATA 查询参数](https://docs.microsoft.com/graph/query-parameters)，并添加后跟 ODATA 查询的 `security/alerts`。 
-请勿添加基 URL（例如，`https://graph.microsoft.com/v1.0`）。 而是改用此示例中的格式：
+Microsoft Graph 支持[订阅  ](https://docs.microsoft.com/graph/api/resources/subscription)或 [Webhook  ](https://docs.microsoft.com/graph/api/resources/webhooks)。 若要获取、更新或删除订阅，请向 Microsoft Graph 实体构造提供 [Microsoft Graph 支持的 ODATA 查询参数](https://docs.microsoft.com/graph/query-parameters)，并添加后跟 ODATA 查询的 `security/alerts`。 
+请勿添加  基 URL（例如，`https://graph.microsoft.com/v1.0`）。 而是改用此示例中的格式：
 
 `security/alerts?$filter=status eq 'New'`
 

@@ -10,15 +10,15 @@ ms.date: 11/27/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 806654b7586895b62b014a49b8b3a00fb18f008f
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: e063875e4c619b65290511d61923fd7c715aba49
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575883"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742181"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SQL Server 存储过程活动转换数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-stored-proc-activity.md)
 > * [当前版本](transform-data-using-stored-procedure.md)
 
@@ -65,14 +65,25 @@ ms.locfileid: "57575883"
 
 下表描述了其中的 JSON 属性：
 
-| 属性                  | 说明                              | 需要 |
+| 属性                  | 说明                              | 必填 |
 | ------------------------- | ---------------------------------------- | -------- |
-| 名称                      | 活动名称                     | 是      |
+| name                      | 活动名称                     | 是      |
 | description               | 描述活动用途的文本 | 否       |
 | type                      | 对于存储过程活动，活动类型是 SqlServerStoredProcedure | 是      |
 | linkedServiceName         | 引用注册为数据工厂中的链接服务的 Azure SQL 数据库或 Azure SQL 数据仓库或 SQL Server。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
 | storedProcedureName       | 指定要调用的存储过程的名称。 | 是      |
 | storedProcedureParameters | 指定存储过程的参数值。 使用 `"param1": { "value": "param1Value","type":"param1Type" }` 传递数据源支持的参数值及其类型。 如果需要为参数传递 null，请使用 `"param1": { "value": null }`（全部小写）。 | 否       |
+
+## <a name="parameter-data-type-mapping"></a>参数数据类型映射
+为参数指定的数据类型是 Azure 数据工厂类型, 它映射到所使用数据源中的数据类型。 可以在 "连接器" 区域中找到数据源的数据类型映射。 一些示例
+
+| 数据源          | 数据类型映射 |
+| ---------------------|-------------------|
+| Azure SQL 数据仓库 | https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
+| Azure SQL 数据库   | https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
+| Oracle               | https://docs.microsoft.com/en-us/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
+| SQL Server           | https://docs.microsoft.com/en-us/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
+
 
 ## <a name="error-info"></a>错误信息
 

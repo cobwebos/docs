@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 825f667029aeb1d75bfdaf52b1084ff5133b5774
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: ce063d8a256cbf2507e19d459aafe13150eccce7
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527330"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306954"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教程：使用模板将应用程序部署到 Service Fabric 网格
 
@@ -70,7 +70,7 @@ az account set --subscription "<subscriptionName>"
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用以下命令在 eastus 位置创建名为 myResourceGroup 的资源组。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用以下命令在 eastus  位置创建名为 myResourceGroup  的资源组。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -78,7 +78,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-the-container-registry"></a>创建容器注册表
 
-使用 `az acr create` 命令创建 ACR 实例。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 以下示例使用名称 myContainerRegistry。 如果收到注册表名称正在使用的错误，请选择其他名称。
+使用 `az acr create` 命令创建 ACR 实例。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 以下示例使用名称 myContainerRegistry  。 如果收到注册表名称正在使用的错误，请选择其他名称。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name myContainerRegistry --sku Basic
@@ -109,7 +109,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry --sku 
 
 ## <a name="push-the-images-to-azure-container-registry"></a>向 Azure 容器注册表推送映像
 
-本教程使用待办事项示例应用程序作为示例。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 和 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 服务的容器映像可在 Docker 中心找到。 有关如何在 Visual Studio 中构建应用程序的信息，请参阅[构建 Service Fabric 网格 Web 应用](service-fabric-mesh-tutorial-create-dotnetcore.md)。 Service Fabric 网格可以运行 Windows 或 Linux Docker 容器。  如果你使用的是 Linux 容器，请在 Docker 中选择“切换到 Linux 容器”。  如果你使用的是 Windows 容器，请在 Docker 中选择“切换到 Windows 容器”。
+本教程使用待办事项示例应用程序作为示例。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 和 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 服务的容器映像可在 Docker 中心找到。 有关如何在 Visual Studio 中构建应用程序的信息，请参阅[构建 Service Fabric 网格 Web 应用](service-fabric-mesh-tutorial-create-dotnetcore.md)。 Service Fabric 网格可以运行 Windows 或 Linux Docker 容器。  如果你使用的是 Linux 容器，请在 Docker 中选择“切换到 Linux 容器”  。  如果你使用的是 Windows 容器，请在 Docker 中选择“切换到 Windows 容器”  。
 
 要将映像推送到 ACR 实例，首先必须具有容器映像。 如果尚不具有任何本地容器映像，请使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令从 Docker 中心拉取 [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 和 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 映像。
 
@@ -165,7 +165,7 @@ seabreeze/azure-mesh-todo-webfrontend
 seabreeze/azure-mesh-todo-service
 ```
 
-以下示例列出了 azure-mesh-todo-service 存储库中的标记。
+以下示例列出了 azure-mesh-todo-service  存储库中的标记。
 
 ```azurecli
 az acr repository show-tags --name myContainerRegistry --repository seabreeze/azure-mesh-todo-service --output table
@@ -205,9 +205,9 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
 本教程使用待办事项示例作为示例。  下载 [mesh_rp.windows.json 部署模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)和 [mesh_rp.windows.parameter.json 参数](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json)文件，而不是生成新的模板和参数文件。
 
 ### <a name="parameters"></a>parameters
-当模板中有希望在部署应用程序后进行更改的值，或者希望可以选择在每个部署的基础上进行更改时（如果计划重用此模板进行其他部署），最佳做法是参数化这些值。 执行此操作的正确方法是在部署模板的顶部创建“参数”部分，在其中可以指定参数名称和属性，稍后将在部署模板中引用这些内容。 每个参数定义包括类型、defaultValue和一个带有说明的可选元数据部分。
+当模板中有希望在部署应用程序后进行更改的值，或者希望可以选择在每个部署的基础上进行更改时（如果计划重用此模板进行其他部署），最佳做法是参数化这些值。 执行此操作的正确方法是在部署模板的顶部创建“参数”部分，在其中可以指定参数名称和属性，稍后将在部署模板中引用这些内容。 每个参数定义包括类型  、defaultValue  和一个带有说明  的可选元数据  部分。
 
-参数部分在部署模板的顶部定义，就在资源部分之前：
+参数部分在部署模板的顶部定义，就在资源  部分之前：
 
 ```json
 {

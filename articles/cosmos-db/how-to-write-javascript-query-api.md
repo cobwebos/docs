@@ -3,15 +3,15 @@ title: 如何在 Azure Cosmos DB 中使用 JavaScript 查询 API 编写存储过
 description: 了解如何在 Azure Cosmos DB 中使用 JavaScript 查询 API 编写存储过程和触发器
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 12/11/2018
+ms.topic: conceptual
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 94f72b716e149b2fa5c31deabf92a8a443eb0bef
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 96ecd77cb955d5e63cdcae8657e3096bbbadba89
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043339"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092880"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>如何使用 JavaScript 查询 API 在 Azure Cosmos DB 中编写存储过程和触发器
 
@@ -19,7 +19,7 @@ Azure Cosmos DB 允许使用流畅的 JavaScript 接口执行优化的查询，�
 
 ## <a id="stored-procedures"></a>使用 JavaScript 查询 API 的存储过程
 
-下面的代码示例是一个有关在存储过程的上下文中使用 JavaScript 查询 API 的示例。 此存储过程使用 `__.filter()` 方法插入一个由输入参数指定的 Azure Cosmos DB 项并更新元数据文档，其中 minSize、maxSize 和 totalSize 以输入项的大小属性为基础。
+下面的代码示例是一个有关在存储过程的上下文中使用 JavaScript 查询 API 的示例。 此存储过程插入由输入参数指定的 Azure Cosmos 项，并使用 `__.filter()` 方法更新元数据文档，其中 minSize、maxSize 和 totalSize 基于输入项的 size 属性。
 
 > [!NOTE]
 > 使用 JavaScript 查询 API 时，`__`（双下划线）是 `getContext().getCollection()` 的别名。

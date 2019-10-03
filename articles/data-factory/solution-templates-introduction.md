@@ -8,15 +8,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/04/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eb7a7eb8e1bdacae4b74e3a0019a376c440fe4d5
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003549"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091979"
 ---
 # <a name="templates"></a>模板
 
@@ -30,7 +30,7 @@ ms.locfileid: "58003549"
 
     ![从“概述”页打开模板库](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  在资源浏览器中的“创作”选项卡上选择 **+**，然后选择“模板中的管道”打开模板库。
+1.  在资源浏览器中的“创作”选项卡上选择 **+** ，然后选择“模板中的管道”打开模板库。
 
     ![从“创作”页打开模板库](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -40,21 +40,23 @@ ms.locfileid: "58003549"
 
 ### <a name="out-of-the-box-data-factory-templates"></a>现成的数据工厂模板
 
-数据工厂使用 Azure 资源管理器模板来保存数据工厂管道模板。 可以看到所有资源管理器模板，以及清单文件中用于数据工厂模板，带[官方 Azure 数据工厂 GitHub 存储库](https://github.com/Azure/Azure-DataFactory/tree/master/templates)。 Microsoft 提供的预定义模板包括但不限于以下各项：
+数据工厂使用 Azure 资源管理器模板来保存数据工厂管道模板。 在[官方 Azure 数据工厂 GitHub 存储库](https://github.com/Azure/Azure-DataFactory/tree/master/templates)中，可以看到所有资源管理器模板，以及现成数据工厂模板使用的清单文件。 Microsoft 提供的预定义模板包括但不限于以下各项：
 
 -   复制模板：
 
     -   [从数据库进行批量复制](solution-template-bulk-copy-with-control-table.md)
     
-    -   [将新文件通过 LastModifiedDate 复制](solution-template-copy-new-files-lastmodifieddate.md)
+    -   [按 LastModifiedDate 复制新文件](solution-template-copy-new-files-lastmodifieddate.md)
 
     -   [在基于文件的存储之间复制多个文件容器](solution-template-copy-files-multiple-containers.md)
+
+    -   [移动文件](solution-template-move-files.md)
 
     -   [从数据库进行增量复制](solution-template-delta-copy-with-control-table.md)
 
     -   从 \<源\> 复制到 \<目标\>
 
-        -   从 Amazon S3 复制到 Azure Data Lake Store Gen 2
+        -   [从 Amazon S3 到 Azure Data Lake Store 第2代](solution-template-migration-s3-azure.md)
 
         -   从 Google Big Query 复制到 Azure Data Lake Store Gen 2
 

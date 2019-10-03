@@ -2,24 +2,17 @@
 title: 在门户中自动缩放云服务 | Microsoft Docs
 description: 了解如何使用门户在 Azure 中为云服务 Web 角色或辅助角色配置自动缩放规则。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 701d4404-5cc0-454b-999c-feb94c1685c0
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 29ee71e7946145e50cc875df96b674abec3e12df
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.author: gwallace
+ms.openlocfilehash: 7e106dbd237be79be924afadbe893669c4f3daf8
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004330"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359619"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在门户中为云服务配置自动缩放
 
@@ -41,14 +34,14 @@ ms.locfileid: "39004330"
 
 * 若要使应用程序具有高可用性，应确保为其部署两个或更多角色实例。 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
 
-* 仅当所有角色都处于“就绪”状态时才能自动缩放。  
+* 仅当所有角色都处于“就绪”状态时才能自动缩放。  
 
 
 ## <a name="where-scale-is-located"></a>缩放位置
 选择云服务之后，应会看到云服务边栏选项卡。
 
 1. 在云服务边栏选项卡上的“角色和实例”磁贴中，选择云服务的名称。   
-   **重要说明**：请务必单击云服务角色，而不是角色下面的角色实例。
+   **重要说明**：请确保单击 "云服务" 角色, 而不是角色下的角色实例。
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. 选择“缩放”磁贴。

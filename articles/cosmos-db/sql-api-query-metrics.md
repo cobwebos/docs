@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/02/2017
+ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: c7b62f66830e17fd8f6607e0a629307a9ab6fc78
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983585"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614820"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>优化 Azure Cosmos DB 的查询性能
 
@@ -44,7 +44,7 @@ SDK 针对查询执行提供了各种选项。 例如，在 .NET 中，`FeedOpti
 | `EnableScanInQuery` | 如果已决定不使用索引编制，但仍然希望通过扫描方式运行查询，必须将其设置为 true。 只有针对所请求的筛选器路径禁用了索引编制时才适用。 | 
 | `MaxItemCount` | 到服务器的每次往返要返回的最大项数。 通过将其设置为 -1，可以让服务器来管理此项数。 或者，可以减小此值来使每次往返仅检索少量项。 
 | `MaxBufferedItemCount` | 这是一个客户端选项，在执行跨分区 ORDER BY 时用来限制内存占用。 较高的值有助于降低跨分区排序的延迟。 |
-| `MaxDegreeOfParallelism` | 获取或设置在 Azure Cosmos DB 数据库服务中并行执行查询期间客户端运行的并发操作数。 属性值为正会将并发操作数限制为所设置的值。 如果它设置为小于 0，则系统会自动决定要运行的并发操作数。 |
+| `MaxDegreeOfParallelism` | 获取或设置在 Azure Cosmos 数据库服务中并行执行查询期间客户端运行的并发操作数。 属性值为正会将并发操作数限制为所设置的值。 如果它设置为小于 0，则系统会自动决定要运行的并发操作数。 |
 | `PopulateQueryMetrics` | 详细记录在执行查询的各个阶段花费的时间的统计信息，例如编译时间、索引循环时间和文档加载时间。 可以与 Azure 支持共享来自查询统计信息的输出以诊断查询性能问题。 |
 | `RequestContinuation` | 可以通过传入任何查询返回的不透明继续标记来继续执行查询。 继续标记封装了执行查询所需的所有状态。 |
 | `ResponseContinuationTokenLimitInKb` | 可以限制服务器返回的继续标记的最大大小。 如果应用程序主机对响应标头大小有限制，则可能需要设置此项。 设置此项可能会增加查询的总体持续时间和所使用的 RU。  |
@@ -216,7 +216,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ### <a name="indexing-policy"></a>索引策略
 若要了解索引编制路径、种类和模式以及它们对查询执行有何影响，请参阅[配置索引编制策略](index-policy.md)。 默认情况下，索引编制策略为字符串使用哈希索引编制，字符串比较适合进行等式查询，但不适合进行范围查询/order by 查询。 如果需要对字符串使用范围查询，建议为所有字符串指定范围索引类型。 
 
-默认情况下，Azure Cosmos DB 会将应用到的所有数据自动编制索引。 对于高性能插入方案，请考虑不包括路径，因为这会减少每个插入操作的 RU 费用。 
+默认情况下，Azure Cosmos DB 会对所有数据应用自动索引。 对于高性能插入方案，考虑排除路径，因为这会降低每项插入操作的 RU 成本。 
 
 ## <a name="query-execution-metrics"></a>查询执行指标
 可以通过传入可选的 `x-ms-documentdb-populatequerymetrics` 标头（在 .NET SDK 中为 `FeedOptions.PopulateQueryMetrics`）获取有关查询执行的详细指标。 `x-ms-documentdb-query-metrics` 中返回的值具有适用于对查询执行进行高级故障排除的以下键-值对。 
@@ -259,7 +259,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 下面提供了一些示例查询，并说明了如何解释从查询执行返回的某些指标： 
 
-| Query | 示例指标 | 描述 | 
+| 查询 | 示例指标 | 描述 | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | 为匹配 TOP 子句而检索的文档数为 100+1。 查询时间主要花费在 `WriteOutputTime` 和 `DocumentLoadTime` 中，因为它是一个扫描。 | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount 现在较高（为匹配 TOP 子句为 500+1）。 | 
@@ -272,7 +272,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解受支持的 SQL 查询运算符和关键字，请参阅 [SQL 查询](how-to-sql-query.md)。 
+* 若要了解受支持的 SQL 查询运算符和关键字，请参阅 [SQL 查询](sql-query-getting-started.md)。 
 * 若要了解请求单位，请参阅[请求单位](request-units.md)。
 * 若要了解索引编制策略，请参阅[索引编制策略](index-policy.md) 
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b817346c37ec43fd66d166684f5d51ecb5a9718
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 13808871d67bb47dce82c5a3493fd89b0dfe1dcd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799422"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65952857"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>电子邮件一次性密码身份验证（预览）
 
@@ -34,7 +34,7 @@ ms.locfileid: "59799422"
 > 一次性密码用户必须使用包含租户上下文的链接登录（例如，`https://myapps.microsoft.com/?tenantid=<tenant id>` 或 `https://portal.azure.com/<tenant id>`，或者经过验证的域 `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`）。 也可以使用应用程序和资源的直接链接，只要这些链接包含租户上下文即可。 来宾用户目前无法使用不包含租户上下文的终结点登录。 例如，使用 `https://myapps.microsoft.com`、`https://portal.azure.com` 或团队公共终结点会导致错误。 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>一次性密码来宾用户的用户体验
-借助一次性密码身份验证，来宾用户可以通过单击直接链接或使用邀请电子邮件来兑换邀请。 在任一情况下，浏览器中的消息都指示代码将发送到来宾用户的电子邮件地址。 来宾用户选择“发送代码”：
+借助一次性密码身份验证，来宾用户可以通过单击直接链接或使用邀请电子邮件来兑换邀请。 在任一情况下，浏览器中的消息都指示代码将发送到来宾用户的电子邮件地址。 来宾用户选择“发送代码”  ：
  
    ![显示发送代码按钮的屏幕截图](media/one-time-passcode/otp-send-code.png)
  
@@ -56,7 +56,7 @@ ms.locfileid: "59799422"
 
 在邀请时，没有迹象表明你邀请的用户将使用一次性密码身份验证。 但是当来宾用户登录时，如果不能使用其他身份验证方法，则可以使用一次性密码身份验证作为应变方法。 
 
-通过转到“Azure Active Directory” > “组织关系” > “来自其他组织的用户”，在 Azure 门户中查看通过一次性密码进行身份验证的来宾用户。
+通过转到“Azure Active Directory”   > “组织关系”   > “来自其他组织的用户”  ，在 Azure 门户中查看通过一次性密码进行身份验证的来宾用户。
 
 ![显示具有源的 OTP 值的一次性密码用户的屏幕截图](media/one-time-passcode/otp-users.png)
 
@@ -64,17 +64,17 @@ ms.locfileid: "59799422"
 > 在用户兑换一次性密码并稍后获得 MSA、Azure AD 帐户或其他联合帐户的情况下，他们将继续使用一次性密码进行身份验证。 如果要更新用户的身份验证方法，可以删除其来宾用户帐户并重新邀请用户。
 
 ### <a name="example"></a>示例
-邀请来宾用户 alexdoe@gmail.com 加入 Fabrikam，后者未设置 Google 联合身份验证。 Alex 没有 Microsoft 帐户。 他将收到一次性密码用于身份验证。
+邀请来宾用户 alexdoe@gmail.com 加入 Fabrikam，后者未设置 Google 联合身份验证。 Alex 没有 Microsoft 帐户。 会收到一次性密码进行身份验证。
 
 ## <a name="opting-in-to-the-preview"></a>选择加入预览 
 选择加入的操作可能需要几分钟的时间才能生效。 之后，只有符合上述条件的新受邀用户才能使用一次性密码身份验证。 之前已兑换邀请的来宾用户将继续使用同一身份验证方法。
 
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>使用 Azure AD 门户选择加入
 1.  以 Azure AD 全局管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
-2.  在导航窗格中选择“Azure Active Directory”。
-3.  在“管理”下，选择“组织关系”。
-4.  选择“设置”。
-5.  在“为来宾启用电子邮件一次性密码(预览)”下，选择“是”。
+2.  在导航窗格中选择“Azure Active Directory”。 
+3.  在“管理”  下，选择“组织关系”  。
+4.  选择“设置”。 
+5.  在“为来宾启用电子邮件一次性密码(预览)”  下，选择“是”  。
  
 ### <a name="to-opt-in-using-powershell"></a>使用 PowerShell 选择加入
 
@@ -107,7 +107,7 @@ Get-Module -ListAvailable AzureAD*
    Install-Module AzureADPreview 
   ```
 
-你可能会收到正在从不受信任的存储库安装模块的提示。 如果之前未将 PSGallery 存储库设置为受信任的存储库，则可能出现此情况。 按 Y 以安装模块。
+你可能会收到正在从不受信任的存储库安装模块的提示。 如果之前未将 PSGallery 存储库设置为受信任的存储库，则可能出现此情况。 按 Y 以安装模块  。
 
 #### <a name="check-for-existing-policies-and-opt-in"></a>查看现有的策略，并选择加入
 
@@ -138,10 +138,10 @@ $currentpolicy -ne $null
 
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>使用 Azure AD 门户禁用预览
 1.  以 Azure AD 全局管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
-2.  在导航窗格中选择“Azure Active Directory”。
-3.  在“管理”下，选择“组织关系”。
-4.  选择“设置”。
-5.  在“为来宾启用电子邮件一次性密码(预览)”下，选择“否”。
+2.  在导航窗格中选择“Azure Active Directory”。 
+3.  在“管理”  下，选择“组织关系”  。
+4.  选择“设置”。 
+5.  在“为来宾启用电子邮件一次性密码(预览)”  下，选择“否”  。
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>使用 PowerShell 禁用预览
 如果尚未安装最新的 AzureADPreview 模块，请安装它，（请参阅上面的[先决条件：安装最新的 AzureADPreview 模块](#prerequisite-install-the-latest-azureadpreview-module)）。 然后，运行以下命令，验证目前是否存在一次性密码预览策略：

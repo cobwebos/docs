@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 445d6c8b527b56f63a1156a39ac07393b4ffe115
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: edb18c31f40de3358ad987be4a9c67ed3a5079e8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668541"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65811932"
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Azure Active Directory 中的 B2B 协作用户声明映射
 
 Azure Active Directory (Azure AD) 支持为 B2B 协作用户自定义在 SAML 令牌中颁发的声明。 当用户向应用程序进行身份验证时，Azure AD 会将一个 SAML 令牌颁发给应用，其中包含用于唯一标识用户的用户相关信息（或声明）。 默认情况下，这些信息包括用户的用户名、电子邮件地址、名字和姓氏。
 
-在 [Azure 门户](https://portal.azure.com)中，可以查看或编辑在 SAML 令牌中发送到应用程序的声明。 若要访问设置，请选择“Azure Active Directory” > “企业应用程序” > 配置了单一登录的应用程序 >“单一登录”。 在“用户属性”部分中查看 SAML 令牌设置。
+在 [Azure 门户](https://portal.azure.com)中，可以查看或编辑在 SAML 令牌中发送到应用程序的声明。 若要访问设置，请选择“Azure Active Directory” > “企业应用程序” > 配置了单一登录的应用程序 >“单一登录”。    在“用户属性”部分中查看 SAML 令牌设置。 
 
 ![在 UI 中显示 SAML 令牌属性](media/claims-mapping/view-claims-in-saml-token.png)
 

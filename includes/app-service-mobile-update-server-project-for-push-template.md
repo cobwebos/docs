@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: c664b089f316255fabc4c8dc36b291d7d63e6280
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 675ad278cb8bdc0ced4eff3bd77572f44c9808fc
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803402"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857327"
 ---
 在本部分中，更新现有移动应用后端项目中的代码，以便在每次添加新项目时发送推送通知。 此过程由 Azure 通知中心的[模板](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)功能提供支持，允许跨平台推送。 各种客户端使用模板注册推送通知，因此只需单个通用推送即可将内容发送到所有客户端平台。
 
@@ -70,7 +70,7 @@ ms.locfileid: "59803402"
 
 ### <a name="nodejs"></a>Node.js 后端项目
 
-1. 如果尚未执行此操作，请[下载快速入门后端项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)，或使用 [Azure 门户中的在线编辑器](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。
+1. 设置后端项目。
 2. 将 todoitem.js 文件中的现有代码替换为以下代码：
 
     ```javascript

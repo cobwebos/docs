@@ -10,16 +10,15 @@ ms.assetid: 2fa193cd-ea71-4b33-a5ca-1f55e5351e23
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 9c0c8adca9d99c00e32127e02a3d68ff668a235e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 677e38f69729bba8caf1ec3f88b2e0a1a4f8c7e8
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793299"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073667"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -38,8 +37,7 @@ ms.locfileid: "58793299"
 * [我想要添加的策略为何在策略编辑器中不可用？](#why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor)
 * [如何在单个 API 中设置多个环境？](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [是否可将 SOAP 用于 API 管理？](#can-i-use-soap-with-api-management)
-* [API 管理网关 IP 地址是否不变？是否可以在防火墙规则中使用它？](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
-* 是否可以使用 AD FS 安全配置 OAuth 2.0 授权服务器？
+* [是否可以使用 AD FS 安全配置 OAuth 2.0 授权服务器？](#can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security)
 * [API 管理使用何种路由方法部署到多个地理位置？](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
 * [是否可以为后端使用自签名 SSL 证书？](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
@@ -61,15 +59,15 @@ ms.locfileid: "58793299"
 当功能处于预览中时，这意味着我们正在积极寻求关于功能效果如何的反馈。 处于预览中的功能具备完整功能，但我们可能为了响应客户反馈而进行重大更改。 我们建议不要在生产环境中依赖处于预览中的功能。 如果有任何关于预览功能的反馈，请通过[如何向 Microsoft Azure API 管理团队提问？](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)中的联系选项之一告知我们。
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>如何确保 API 管理网关和后端服务之间的连接安全？
-有多个选项可确保 API 管理网关和后端服务之间的连接安全。 可以：
+有多个选项可确保 API 管理网关和后端服务之间的连接安全。 你可以：
 
 * 使用 HTTP 基本身份验证。 有关详细信息，请参阅[导入并发布第一个 API](import-and-publish.md)。
 * 使用[如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全](api-management-howto-mutual-certificates.md)中所述的 SSL 相互身份验证。
-* 在后端服务上使用 IP 允许列表。 在 API 管理的所有层中，网关的 IP 地址保持不变，但有几个[注意事项](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)。 可设置允许列表以允许此 IP 地址。 可在 Azure 门户中的仪表板上获取 API 管理实例的 IP 地址。
+* 在后端服务上使用 IP 允许列表。 在 API 管理的所有层中 (消耗层除外), 网关的 IP 地址仍保持不变, 并在[IP 文档一文](api-management-howto-ip-addresses.md)中介绍了几个注意事项。
 * 将 API 管理实例连接到 Azure 虚拟网络。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何将 API 管理服务实例复制到新实例？
-如果要将 API 管理实例复制到新实例，则有多个选项。 可以：
+如果要将 API 管理实例复制到新实例，则有多个选项。 你可以：
 
 * 使用 API 管理中的备份和还原功能。 有关详细信息，请参阅[如何使用 Azure API 管理中的服务备份和还原实现灾难恢复](api-management-howto-disaster-recovery-backup-restore.md)。
 * 使用 [API 管理 REST API](/rest/api/apimanagement/) 创建自己的备份和还原功能。 使用 REST API 保存和还原所需的服务实例中的实体。
@@ -87,7 +85,7 @@ ms.locfileid: "58793299"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 转到具有要更新的 API 管理实例的资源组。
-3. 在 API 管理中，将 **API 管理参与者**角色分配给该用户。
+3. 在 API 管理中，将“API 管理服务参与者”角色分配给该用户。
 
 现在，新添加的参与者可以使用 Azure PowerShell [cmdlet](https://docs.microsoft.com/powershell/azure/overview)。 下面是以管理员身份登录的方法：
 
@@ -100,26 +98,13 @@ ms.locfileid: "58793299"
 如果要添加的策略在策略管理器中显示为变暗或有阴影，请确保处于该策略的正确范围内。 每个策略声明都设计为在特定范围和策略部分中使用。 若要查看策略部分和策略范围，请参阅 [API 管理策略](/azure/api-management/api-management-policies)中的策略的用法部分。
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>如何在单个 API 中设置多个环境？
-若要在单个 API 中设置多个环境（例如，一个测试环境和一个生产环境），则有两个选项。 可以：
+若要在单个 API 中设置多个环境（例如，一个测试环境和一个生产环境），则有两个选项。 你可以：
 
 * 在同一租户上托管不同的 API。
 * 在不同租户上托管相同的 API。
 
 ### <a name="can-i-use-soap-with-api-management"></a>是否可将 SOAP 用于 API 管理？
 当前已提供 [SOAP 传递](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/)支持。 管理员可以导入其 SOAP 服务的 WSDL，以便 Azure API 管理创建一个 SOAP 前端。 开发人员门户文档、测试控制台、策略和分析都可用于 SOAP 服务。
-
-### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>API 管理网关 IP 地址是否不变？ 是否可以在防火墙规则中使用它？
-在 API 管理的所有层中，API 管理租户的公用 IP 地址 (VIP) 在租户生存期中是静态的，但有一些例外。 IP 地址在以下情况下更改：
-
-* 服务被删除并重新创建。
-* 服务订阅被[暂停](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)或[警告](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)（例如，由于未付款），然后被恢复。
-* 添加或删除 Azure 虚拟网络（只能在开发人员层和高级层使用虚拟网络）。
-
-对于多区域部署，仅当区域先空出然后恢复时，区域地址会更改（只能在高级层使用多区域部署）。
-
-对于为多区域部署配置的高级层租户，每个区域分配一个公共 IP 地址。
-
-可在 Azure 门户中的租户页面上获取一个 IP 地址（或者在多区域部署中获取多个 IP 地址）。
 
 ### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>是否可以使用 AD FS 安全配置 OAuth 2.0 授权服务器？
 若要了解如何使用 Active Directory 联合身份验证 (AD FS) 安全配置 OAuth 2.0 授权服务器，请参阅[在 API 管理中使用 ADFS](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/)。
@@ -128,7 +113,7 @@ ms.locfileid: "58793299"
 API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#performance)部署到多个地理位置。 传入流量路由到最近的 API 网关。 如果一个区域处于脱机状态，则传入流量自动路由到下一个最近的网关。 在[流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)中了解有关路由方法的详细信息。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？
-是的。 请参阅 [Azure API 管理服务](https://aka.ms/apimtemplate)快速入门模板。
+是的。 请参阅[AZURE API 管理服务](https://aka.ms/apimtemplate)快速入门模板。
 
 ### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>是否可以为后端使用自签名 SSL 证书？
 是的。 可以通过 PowerShell 或直接提交到 API 完成此操作。 这将禁用证书链验证，并允许在从 API 管理与后端服务进行通信时使用自签名证书或私人签名证书。
@@ -137,7 +122,7 @@ API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-ro
 使用 [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend)（适用于新后端）或 [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend)（适用于现有后端）PowerShell cmdlet 并将 `-SkipCertificateChainValidation` 参数设置为 `True`。 
 
 ```powershell
-$context = New-AApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+$context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
 New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 

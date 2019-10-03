@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 3b7b821227478d8c6b5859f24c50407f9eb213fe
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 2b28dde812dcce120c951730c27809f7f024e122
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312336"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64681563"
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念 
+
+> [!NOTE]
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 本部分概述最重要的媒体服务概念。
 
@@ -168,7 +171,7 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 建议使用动态打包和/或动态加密。
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。  
 
 有关详细信息，请参阅[此](media-services-portal-manage-streaming-endpoints.md)主题。
 
@@ -177,7 +180,7 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 仅当 StreamingEndpoint 处于运行状态时才进行计费。
 
 ### <a name="asset-delivery-policy"></a>资产传送策略
-媒体服务内容传送工作流中的步骤之一配置[资产传送策略](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)你想要进行流式处理。 资产传送策略告知媒体服务希望如何传送资产：应该将资产动态打包成哪种流式处理协议（例如 MPEG DASH、HLS、平滑流或全部），是否要动态加密资产以及如何加密（信封或常用加密）。
+媒体服务内容传送工作流中的步骤之一是配置[资产传送策略](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)，以便对其进行流式传输。 资产传送策略告知媒体服务希望如何传送资产：应该将资产动态打包成哪种流式处理协议（例如 MPEG DASH、HLS、平滑流或全部），是否要动态加密资产以及如何加密（信封或常用加密）。
 
 如果有存储加密的资产，在流式传输资产之前，流式处理服务器会删除存储加密，再使用指定的传送策略流式传输内容。 例如，要传送使用高级加密标准 (AES) 加密密钥加密的资产，请将策略类型设为 DynamicEnvelopeEncryption。 要删除存储加密并以明文的形式流式传输资产，请将策略类型设为 NoDynamicEncryption。
 

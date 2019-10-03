@@ -1,21 +1,19 @@
 ---
 title: Azure 快速入门 - 在浏览器中使用 JavaScript 和 HTML 在对象存储中创建 blob
 description: 了解如何通过 BlobService 实例在 HTML 页面中使用 JavaScript 上传、列出和删除 Blob。
-services: storage
 keywords: 存储, javascript, html
-author: tamram
-ms.custom: mvc
+author: mhopkins-msft
+ms.author: mhopkins
+ms.date: 08/29/2019
 ms.service: storage
-ms.author: tamram
-ms.date: 11/14/2018
-ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: a5433284d9722ce907b962be7ba437ef32ad819c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.topic: quickstart
+ms.openlocfilehash: 3dbd78f9c233515c675cd511924b3d4600b72fbd
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245365"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173089"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -30,7 +28,7 @@ ms.locfileid: "55245365"
 ## <a name="setting-up-storage-account-cors-rules"></a>设置存储帐户 CORS 规则 
 必须先将帐户配置为启用[跨域资源共享](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)（简称 CORS），然后 Web 应用程序才能从客户端访问 Blob 存储。 
 
-返回到 Azure 门户，然后选择存储帐户。 若要定义新的 CORS 规则，请返回到“设置”部分，然后单击“CORS”链接。 接下来，请单击“添加”按钮，打开“添加 CORS 规则”窗口。 对于本快速入门，请创建开放的 CORS 规则：
+返回到 Azure 门户，然后选择存储帐户。 若要定义新的 CORS 规则，请返回到“设置”部分，然后单击“CORS”链接。   接下来，请单击“添加”按钮，打开“添加 CORS 规则”窗口。   对于本快速入门，请创建开放的 CORS 规则：
 
 ![Azure Blob 存储帐户 CORS 设置](media/storage-quickstart-blobs-javascript-client-libraries/azure-blob-storage-cors-settings.png)
 
@@ -52,7 +50,7 @@ ms.locfileid: "55245365"
 [!INCLUDE [Open the Azure cloud shell](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-shared-access-signature"></a>创建共享访问签名
-在浏览器中运行的代码可以使用共享访问签名 (SAS) 对发往 Blob 存储的请求进行授权。 使用 SAS 时，客户端可以在没有帐户访问密钥或连接字符串的情况下授权访问存储资源。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md)。
+在浏览器中运行的代码可以使用共享访问签名 (SAS) 对发往 Blob 存储的请求进行授权。 使用 SAS 时，客户端可以在没有帐户访问密钥或连接字符串的情况下授权访问存储资源。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS)](../common/storage-sas-overview.md)。
 
 可以通过 Azure Cloud Shell 或 Azure 存储资源管理器使用 Azure CLI 创建 SAS。 下表对使用 CLI 生成 SAS 时需要提供值的参数进行了说明。
 
@@ -251,7 +249,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 > 若要使用此代码示例，需为 *blobName* 提供字符串值。
 
 ## <a name="clean-up-resources"></a>清理资源
-若要清理在本快速入门过程中创建的资源，请返回到 [Azure 门户](https://portal.azure.com)，然后选择存储帐户。 选中以后，即可转到“概览”>“删除存储帐户”来删除该存储帐户。
+若要清理在本快速入门过程中创建的资源，请返回到 [Azure 门户](https://portal.azure.com)，然后选择存储帐户。 选中以后，即可转到“概览”>“删除存储帐户”来删除该存储帐户。 
 
 ## <a name="next-steps"></a>后续步骤
 浏览示例，了解如何下载 Blob 以及如何在文件上传过程中报告进度。

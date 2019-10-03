@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 38ec93afd27ac75a97a28fef59bd10fafdf963c9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: e4d9aeb527461cc7292235fef1de0abdfa4242bd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247035"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60311333"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室添加标记
 
@@ -36,19 +36,19 @@ ms.locfileid: "51247035"
 
 可以在[创建实验室](devtest-lab-create-lab.md)时应用标记，稍后通过“配置和设置”下的“标记”边栏选项卡管理标记。
 
-每个标记都由“名称/值”对组成。 例如，可以创建一个标记，其中名称 costcenter 对应的值为 34543。 此类标记可能有助于稍后发现在组织的这一特定区域可计费的实验室资源。 可以选择对所需订阅整理方式有意义的名称和值。
+每个标记都由“名称  /值  ”对组成。 例如，可以创建一个标记，其中名称 costcenter  对应的值为 34543  。 此类标记可能有助于稍后发现在组织的这一特定区域可计费的实验室资源。 可以选择对所需订阅整理方式有意义的名称和值。
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>在现有实验室中管理标记的具体步骤
 
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 如果需要，请选择“所有服务”，并从列表中选择“开发测试实验室”。 实验室可能已显示在“所有资源”下的“仪表板”上。
-1. 在实验室列表中，选择要在其中添加或管理标记的实验室。  
-1. 在实验室的“概览”区域中，选择“配置和策略”。  
+1. 如果需要，请选择“所有服务”  ，并从列表中选择“开发测试实验室”  。 实验室可能已显示在“所有资源”  下的“仪表板”上。
+1. 在实验室列表中，选择要在其中添加或管理标记的实验室。
+1. 在实验室的“概览”  区域中，选择“配置和策略”  。
 
     ![“配置和策略”按钮](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
-1. 在左侧的“管理”下，选择“标记”。
-1. 若要为此实验室新建标记，请输入“名称/值”对，再选择“保存”。 还可以从列表中选择现有标记，从而查看或管理与此标记相关联的资源。
+1. 在左侧的“管理”  下，选择“标记”  。
+1. 若要为此实验室新建标记，请输入“名称  /值  ”对，再选择“保存”  。 还可以从列表中选择现有标记，从而查看或管理与此标记相关联的资源。
 
     ![管理标记](./media/devtest-lab-add-tag/devtestlab-manage-tags.png)
 
@@ -56,7 +56,7 @@ ms.locfileid: "51247035"
 
 以下限制适用于标记：
 
-* 每个资源或资源组最多可以有 15 个标记名称值对。 此限制仅适用于直接应用到资源组或资源的标记。 资源组可以包含多个资源，这些资源每个都有 15 个标记名称值对。 
+* 每个资源或资源组最多可以有 15 个标记名称值对。 此限制仅适用于直接应用到资源组或资源的标记。 资源组可以包含多个资源，这些资源每个都有 15 个标记名称值对。
 * 标记名称不能超过 512 个字符，标记值不能超过 256 个字符。 对于存储帐户，标记名称不能超过 128 个字符，标记值不能超过 256 个字符。
 * 应用于资源组的标记不会被该资源组中的资源继承。
 
@@ -66,4 +66,4 @@ ms.locfileid: "51247035"
 
 ## <a name="next-steps"></a>后续步骤
 * 可使用自定义策略对订阅应用限制和约定。 定义的策略可能要求所有资源具有特定标记的值。 有关详细信息，请参阅[设置策略和计划](devtest-lab-set-lab-policy.md)。
-* 浏览[开发测试实验室 Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/Samples)。
+* 浏览[开发测试实验室 Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。

@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: celested
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d83cad9c6681a9d1c852c3d874028ceb6913344f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 16a2438133f545c57d1046a0c4db94135f8a426d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790131"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113183"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>教程：对 B2B 用户强制执行多重身份验证
 
@@ -47,23 +47,23 @@ ms.locfileid: "59790131"
 
 若要完成本教程中的方案，需要：
 
- - 对 Access to Azure AD Premium 版本的访问权限，它包含条件访问策略功能。 需创建 Azure AD 条件访问策略，然后才可强制实施 MFA。 请注意，始终在你的组织强制实施 MFA 策略，无论合作伙伴是否具有 MFA 功能。 如果为你的组织设置 MFA，你将需要确保具有足够的 Azure AD Premium 许可证供来宾用户使用。 
- - 有效的外部电子邮件帐户，该帐户可作为来宾用户添加到租户目录中并可在登录时使用。 如果不知道如何创建来宾帐户，请参阅[在 Azure 门户中添加 B2B 来宾用户](add-users-administrator.md)。
+ - 对 Azure AD Premium 版本的访问权限，它包含条件访问策略功能  。 若要强制实施 MFA，需要创建 Azure AD 条件访问策略。 请注意，始终在你的组织强制实施 MFA 策略，无论合作伙伴是否具有 MFA 功能。 如果为你的组织设置 MFA，你将需要确保具有足够的 Azure AD Premium 许可证供来宾用户使用。 
+ - 有效的外部电子邮件帐户，该帐户可作为来宾用户添加到租户目录中并可在登录时使用  。 如果不知道如何创建来宾帐户，请参阅[在 Azure 门户中添加 B2B 来宾用户](add-users-administrator.md)。
 
 ## <a name="create-a-test-guest-user-in-azure-ad"></a>在 Azure AD 中创建测试来宾用户
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在左窗格中选择“Azure Active Directory”。
-3.  在“管理”下，选择“用户”。
-4.  选择“新来宾用户”。
+2. 在左窗格中选择“Azure Active Directory”  。
+3.  在“管理”下，选择“用户”   。
+4.  选择“新来宾用户”。 
 
     ![显示选择“新来宾用户”选项的位置的屏幕截图](media/tutorial-mfa/tutorial-mfa-user-3.png)
 
-5.  在“用户名”下，输入外部用户的电子邮件地址。 （可选）包含一条欢迎消息。 
+5.  在“用户名”下，输入外部用户的电子邮件地址。  （可选）包含一条欢迎消息。 
 
     ![显示输入来宾邀请消息的位置的屏幕截图](media/tutorial-mfa/tutorial-mfa-user-4.png)
 
-6.  选择“邀请”，以自动向来宾用户发送邀请。 随即显示“已成功邀请用户”消息。 
+6.  选择“邀请”，以自动向来宾用户发送邀请。  随即显示“已成功邀请用户”消息  。 
 7.  发送邀请后，该用户帐户将以来宾的形式自动添加到目录。
 
 ## <a name="test-the-sign-in-experience-before-mfa-setup"></a>在 MFA 设置之前测试登录体验
@@ -73,53 +73,53 @@ ms.locfileid: "59790131"
 
 ## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>创建需要 MFA 的条件访问策略
 1.  以安全管理员或条件访问管理员的身份登录到 [Azure 门户](https://portal.azure.com/)。
-2.  在 Azure 门户中，选择“Azure Active Directory”。 
-3.  在 Azure Active Directory 页面的“安全性”部分中，单击“条件访问”。
-4.  在“条件访问”页面顶部的工具栏中，选择“新建策略”。
-5.  在“新建”页面的“名称”文本框中，键入“需要 MFA 才能访问 B2B 门户”。
-6.  在“分配”部分中，选择“用户和组”。
-7.  在“用户和组”页面上，选中“选择用户和组”，然后选择“所有来宾用户(预览版)”。
+2.  在 Azure 门户中，选择“Azure Active Directory”。  
+3.  在 Azure Active Directory 页的“安全性”部分中，选择“条件访问”    。
+4.  在“条件访问”页面顶部的工具栏中，选择“新建策略”   。
+5.  在“新建”页面的“名称”文本框中，键入“需要 MFA 才能访问 B2B 门户”    。
+6.  在“分配”部分中，选择“用户和组”。  
+7.  在“用户和组”页面上，选中“选择用户和组”，然后选择“所有来宾用户(预览版)”    。
 
     ![显示选择所有来宾用户的屏幕截图](media/tutorial-mfa/tutorial-mfa-policy-6.png)
-9.  选择“完成”。
-10. 在“新建”页面的“分配”部分中，选择“云应用”。
-11. 在“云应用”页面上，选中“选择应用”，然后勾选“选择”。
+9.  选择“完成”  。
+10. 在“新建”页面的“分配”部分中，选择“云应用”    。
+11. 在“云应用”页面上，选中“选择应用”，然后勾选“选择”    。
 
     ![显示“云应用”页和“选择”选项的屏幕截图](media/tutorial-mfa/tutorial-mfa-policy-10.png)
 
-12. 在“选择”页面上，选择“Microsoft Azure 管理”，然后勾选“选择”。
+12. 在“选择”页面上，选择“Microsoft Azure 管理”，然后勾选“选择”    。
 
     ![显示已选中 Microsoft Azure 管理应用的屏幕截图](media/tutorial-mfa/tutorial-mfa-policy-11.png)
 
-13. 在“云应用”页面上，选择“完成”。
-14. 在“新建”页面的“访问控制”部分中，选择“授权”。
-15. 在“授权”页面上，选择“授予访问权限”，然后选择“需要多重身份验证”复选框和“选择”。
+13. 在“云应用”页面上，选择“完成”   。
+14. 在“新建”页面的“访问控制”部分中，选择“授权”    。
+15. 在“授权”页面上，选择“授予访问权限”，然后选择“需要多重身份验证”复选框和“选择”     。
 
     ![显示“要求多重身份验证”选项的屏幕截图](media/tutorial-mfa/tutorial-mfa-policy-13.png)
 
-16. 在“启用策略”下，选择“开”。
+16. 在“启用策略”下，选择“开”   。
 
     ![显示将“启用”策略选项设置为“开”的屏幕截图](media/tutorial-mfa/tutorial-mfa-policy-14.png)
 
-17. 选择“创建”。
+17. 选择“创建”  。
 
 ## <a name="use-the-what-if-option-to-simulate-sign-in"></a>使用 What If 选项来模拟登录情形
 
-1.  在“条件访问 - 策略”页面上，选择 What If。 
+1.  在“条件访问 - 策略”页上，选择“What If”   。 
 
     ![显示选择“What if”选项的位置的屏幕截图](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
-2.  依次选择“用户”和测试来宾用户，然后选中“选择”。
+2.  依次选择“用户”和测试来宾用户，然后选中“选择”   。
 
     ![显示已选中一个来宾用户的屏幕截图](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
 
-3.  选择“云应用”。
-4.  在“云应用”页面上，选中“选择应用”，然后单击“选择”。 在“选择”页面上，选择“Microsoft Azure 管理”，然后单击“选择”。 
+3.  选择“云应用”  。
+4.  在“云应用”页面上，选中“选择应用”，然后单击“选择”    。 在“选择”页面上，选择“Microsoft Azure 管理”，然后单击“选择”   。 
 
     ![显示已选中 Microsoft Azure 管理应用的屏幕截图](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
 
-5.  在“云应用”页面上，选择“完成”。
-6.  选择 What If，然后验证确保“要应用的策略”选项卡的“评估结果”下显示了新策略。
+5.  在“云应用”页面上，选择“完成”   。
+6.  选择 What If，然后验证确保“要应用的策略”选项卡的“评估结果”下显示了新策略    。
 
     ![显示选择“What if”选项的位置的屏幕截图](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
 
@@ -134,12 +134,12 @@ ms.locfileid: "59790131"
 ## <a name="clean-up-resources"></a>清理资源
 不再需要测试用户和测试条件访问策略时，请将其删除。
 1.  以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
-2.  在左窗格中选择“Azure Active Directory”。
-3.  在“管理”下，选择“用户”。
-4.  选择测试用户，然后选择“删除用户”。
-5.  在左窗格中选择“Azure Active Directory”。
-6.  在“安全性”下，选择“条件访问”。
-7.  在“策略名称”列表中，为测试策略选择上下文菜单 (…)，然后选择“删除”。 请选择“是”以确认。
+2.  在左窗格中选择“Azure Active Directory”  。
+3.  在“管理”下，选择“用户”   。
+4.  选择测试用户，然后选择“删除用户”  。
+5.  在左窗格中选择“Azure Active Directory”  。
+6.  在“安全性”下，选择“条件访问”   。
+7.  在“策略名称”列表中，为测试策略选择上下文菜单 (…)，然后选择“删除”   。 请选择“是”以确认。 
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，你创建了一个条件访问策略，它要求来宾用户在登录你的某个云应用时使用 MFA。 要详细了解如何添加来宾用户进行协作，请参阅[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](add-users-administrator.md)。

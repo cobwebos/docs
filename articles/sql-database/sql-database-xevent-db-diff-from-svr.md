@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 2dd3b9f0d1d8d61b2311977774c8b0f7267caa9e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f9af487e2eb35e7dc94e1b70945d5c03ffdde2ba
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090604"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566083"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL 数据库中的扩展事件
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -35,7 +34,7 @@ ms.locfileid: "58090604"
 - [快速入门：SQL Server 中的扩展事件](https://msdn.microsoft.com/library/mt733217.aspx)
 - [扩展的事件](https://msdn.microsoft.com/library/bb630282.aspx)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 本主题假设读者有以下方面的经验：
 
@@ -90,7 +89,7 @@ ms.locfileid: "58090604"
 | **sys.database_event_session_targets** |返回事件会话的每个事件目标所对应的行。 |
 | **sys.database_event_sessions** |返回 SQL 数据库中每个事件会话所对应的行。 |
 
-在 Microsoft SQL Server 中，类似目录视图的名称包含 *.server\_* 而不是 *.database\_*。 名称模式类似于 **sys.server_event_%**。
+在 Microsoft SQL Server 中，类似目录视图的名称包含 *.server\_* 而不是 *.database\_* 。 名称模式类似于 **sys.server_event_%** 。
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>新的动态管理视图 [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -172,7 +171,7 @@ SELECT
 
 - 读取
 - 写入
-- 列出
+- 列表
 
 ## <a name="performance-considerations"></a>性能注意事项
 
@@ -197,7 +196,7 @@ SELECT
 - [如何通过 .NET 使用 Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
 - [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
-- [Jonathan Kehayias 撰写的有关 Microsoft SQL Server 中扩展事件的博客文章](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
+- [Jonathan Kehayias 撰写的有关 Microsoft SQL Server 中扩展事件的博客文章](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
 - Azure *服务更新*网页，使用参数将范围缩小到 Azure SQL 数据库：

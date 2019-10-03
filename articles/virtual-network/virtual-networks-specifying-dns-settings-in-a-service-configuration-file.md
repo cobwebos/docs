@@ -4,7 +4,7 @@ description: 使用虚拟网络的服务配置文件指定自定义 DNS 设置
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: 467a4b99-8691-40b3-b640-e25e49675c71
 ms.service: virtual-network
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2016
 ms.author: genli
-ms.openlocfilehash: 0ac488a67d8b9debf6539d199395997cf44cf1e4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: f27802d76a8b94a0d5f1eb0c35fd55c93712e557
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247171"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059070"
 ---
 # <a name="specifying-dns-settings-in-a-service-configuration-file"></a>在服务配置文件中指定 DNS 设置
 ## <a name="dns-elements"></a>DNS 元素
@@ -38,7 +38,7 @@ ms.locfileid: "51247171"
 > 
 > 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [Azure 服务配置架构 (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710)
 
 [Azure 虚拟网络配置架构](https://go.microsoft.com/fwlink/?LinkId=248093)

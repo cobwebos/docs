@@ -2,52 +2,46 @@
 title: 使用 Azure 流分析进行实时 Twitter 情绪分析
 description: 本文说明如何使用流分析进行实时 Twitter 情绪分析。 在实时仪表板上提供从事件生成到数据的分步指南。
 services: stream-analytics
-author: jseb225
-ms.author: jeanb
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: jasonh
-manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/29/2017
-ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 07/09/2019
+ms.openlocfilehash: 8561789d53c3c1b00ac1477909bcbe356fe6a85d
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003694"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173122"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
 
-> [!IMPORTANT] 
-> 创建 twitter 应用程序不再是可通过[apps.twitter.com](https://apps.twitter.com/)。 本教程是在更新以包括新的 Twitter API 的过程中。
+了解如何通过将实时 Twitter 事件引入 Azure 事件中心，生成用于社交媒体分析的情绪分析解决方案。 然后编写 Azure 流分析查询来分析数据, 并存储结果以供将来使用, 或者创建一个[Power BI](https://powerbi.com/)仪表板来实时提供见解。
 
-了解如何通过将实时 Twitter 事件引入 Azure 事件中心，生成用于社交媒体分析的情绪分析解决方案。 然后，可以编写 Azure 流分析查询来分析数据，并存储结果以供将来使用，或者使用仪表板和 [Power BI](https://powerbi.com/) 提供实时见解。
+社交媒体分析工具可帮助组织了解热门话题。 趋势主题是在社交媒体上具有大量帖子的主题和看法。 情绪分析 (也称为 "*观点挖掘*") 使用社交媒体分析工具来确定对产品或想法的看法。 
 
-社交媒体分析工具可帮助组织了解热门话题。 热门话题是在社交媒体中有大量博文的主题和态度。 情绪分析（也称为“观点挖掘”）使用社交媒体分析工具来确定大众对产品、理念等的态度。 
-
-实时 Twitter 趋势分析就是一个很好的分析工具示例，因为井号标签订阅模型使你可以侦听特定关键字（井号标签）并开发源的情绪分析。
+实时 Twitter 趋势分析是分析工具的一个很好的示例, 因为井号标签订阅模型使你能够侦听特定关键字 (井号标签) 并开发源的情绪分析。
 
 ## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>场景：实时社交媒体情绪分析
 
 一家拥有新闻媒体网站的公司关注如何打造特色网站内容，使之迅速贴近其读者，以便增加相较于其竞争对手的竞争优势。 该公司通过对 Twitter 数据执行实时情绪分析，以便在贴近读者的主题上使用社交媒体分析。
 
-若要标识 Twitter 上的实时热门话题，公司需要关于关键主题推文量及情绪的实时分析。 换而言之，需要一个基于该社交媒体源的情绪分析分析引擎。
+若要标识 Twitter 上的实时热门话题，公司需要关于关键主题推文量及情绪的实时分析。
 
-## <a name="prerequisites"></a>必备组件
-本教程将使用客户端应用程序连接到 Twitter，并查找具有特定井号标签（可设置）的推文。 为了运行应用程序并使用 Azure 流分析来分析推文，必须具备以下内容：
+## <a name="prerequisites"></a>先决条件
+本操作指南将使用连接到 Twitter 的客户端应用程序，并查找具有特定井号标签（可设置）的推文。 为了运行应用程序并使用 Azure 流分析来分析推文，必须具备以下项：
 
-* Azure 订阅
-* Twitter 帐户 
-* Twitter 应用程序，以及该应用程序的 [OAuth 访问令牌](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)。 稍后将提供有关如何创建 Twitter 应用程序的高级说明。
+* 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* [Twitter](https://twitter.com)帐户。
 * TwitterWPFClient 应用程序，用于读取 Twitter 源。 若要获取此应用程序，请从 GitHub 下载 [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) 文件，然后将包解压缩到计算机上的文件夹中。 若要查看源代码，并在调试程序中运行该应用程序，请从 [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TwitterClient) 获取源代码。 
 
 ## <a name="create-an-event-hub-for-streaming-analytics-input"></a>为流分析输入创建事件中心
 
 示例应用程序生成事件并将其推送到 Azure 事件中心。 Azure 事件中心是适合流分析的首选事件引入方法。 有关详细信息，请参阅 [Azure 事件中心文档](../event-hubs/event-hubs-what-is-event-hubs.md)。
 
-
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>创建事件中心命名空间和事件中心
-在此过程中，首先创建事件中心命名空间，然后将事件中心添加到该命名空间。 事件中心命名空间用于逻辑分组相关的事件总线实例。 
+创建事件中心命名空间，然后将事件中心添加到该命名空间。 事件中心命名空间用于逻辑分组相关的事件总线实例。 
 
 1. 登录 Azure 门户，然后依次单击“创建资源” > “物联网” > “事件中心”。 
 
@@ -67,7 +61,7 @@ ms.locfileid: "60003694"
 
     ![用于创建新事件中心的边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
-7. 单击**创建**。
+7. 单击“创建”。
 
 
 ### <a name="grant-access-to-the-event-hub"></a>授予对事件中心的访问权限
@@ -85,7 +79,7 @@ ms.locfileid: "60003694"
 
     ![用于创建新事件中心访问策略的边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
  
-4.  单击**创建**。
+4.  单击“创建”。
 
 5.  部署策略后，在共享访问策略列表中单击该策略。
 
@@ -113,27 +107,26 @@ ms.locfileid: "60003694"
 客户端应用程序直接从 Twitter 获取推文事件。 为了做到这一点，需要为其赋予调用 Twitter 流式处理 API 的权限。 若要配置该权限，可在 Twitter 中创建一个应用程序，该应用会生成唯一凭据（例如 OAuth 标记）。 然后，可配置客户端应用程序，以便在其执行 API 调用时使用这些凭据。 
 
 ### <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
-如果还没有可用于本教程的 Twitter 应用程序，则可以创建一个。 必须已具有 Twitter 帐户。
+如果还没有可用于本操作指南的 Twitter 应用程序，则可以创建一个。 必须已具有 Twitter 帐户。
 
 > [!NOTE]
 > Twitter 中创建应用程序以及获取密钥、机密和令牌的确切过程可能会改变。 如果这些说明与你在 Twitter 网站上看到的内容不符，请参阅 Twitter 开发人员文档。
 
-1. 转到 [Twitter 应用程序管理页](https://apps.twitter.com/)。 
+1. 在 Web 浏览器中，转到[面向开发人员的 Twitter](https://developer.twitter.com/en/apps)，然后选择“创建应用”。 可能会看到一条消息，指出你需要申请 Twitter 开发人员帐户。 可以随意执行此操作，在你的申请获得批准后，应该会看到一封确认电子邮件。 批准开发人员帐户可能需要几天时间。
 
-2. 创建新应用程序。 
+   ![Twitter 开发人员帐户确认](./media/stream-analytics-twitter-sentiment-analysis-trends/twitter-dev-confirmation.png "Twitter 开发人员帐户确认")
 
-   * 对于网站 URL，请指定有效的 URL。 它不必是活动站点。 （不能仅指定 `localhost`。）
-   * 将回叫字段留空。 本教程使用的客户端应用程序不需要回叫。
+   ![Twitter 应用程序详细信息](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Twitter 应用程序详细信息")
 
-     ![在 Twitter 中创建应用程序](./media/stream-analytics-twitter-sentiment-analysis-trends/create-twitter-application.png)
+2. 在“创建应用程序”页中提供新应用的详细信息，然后选择“创建 Twitter 应用程序”。
 
-3. （可选）将应用程序的权限更改为只读。
+   ![Twitter 应用程序详细信息](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Twitter 应用程序详细信息")
 
-4. 创建应用程序后，转到“密钥和访问令牌”页面。
+3. 在应用程序页中选择“密钥和令牌”选项卡，复制“使用者 API 密钥”和“使用者 API 密钥”的值。 此外，在“访问令牌和访问令牌机密”下选择“创建”以生成访问令牌。 复制“访问令牌”和“访问令牌机密”的值。
 
-5. 单击此按钮，生成访问令牌和访问令牌机密。
+    ![Twitter 应用程序详细信息](./media/stream-analytics-twitter-sentiment-analysis-trends/twitter-app-key-secret.png "Twitter 应用程序详细信息")
 
-为方便起见，请保存此信息，因为下一个过程将用到它。
+保存 Twitter 应用程序的检索值。 后面的 "操作方法" 部分中需要值。
 
 >[!NOTE]
 >输入 Twitter 应用程序的密钥和机密即可访问 Twitter 帐户。 与 Twitter 密码一样，请将此信息视为敏感信息对待。 例如，不要在你提供给其他人的应用程序中嵌入此信息。 
@@ -206,7 +199,7 @@ ms.locfileid: "60003694"
 
     ![创建新的流分析作业](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
-3. 单击**创建**。
+3. 单击“创建”。
 
     创建作业后，门户就会显示作业详细信息。
 
@@ -227,14 +220,14 @@ ms.locfileid: "60003694"
 
      ![为流分析作业创建新输入](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
-3. 单击**创建**。
+3. 单击“创建”。
 
 
 ## <a name="specify-the-job-query"></a>指定作业查询
 
-流分析支持简单的声明性查询模型，该模型用于描述转换。 若要了解有关语言的详细信息，请参阅 [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)。  本教程会帮助你创作和测试多个针对 Twitter 数据的查询。
+流分析支持简单的声明性查询模型，该模型用于描述转换。 若要了解有关语言的详细信息，请参阅 [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)。  本操作方法指南可帮助你创作和测试多个对 Twitter 数据进行的查询。
 
-若要比较各个主题的提及次数，可使用[翻转窗口](https://msdn.microsoft.com/library/azure/dn835055.aspx)每五秒按主题获取提及次数。
+若要比较各个主题的提及次数，可使用[翻转窗口](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)每五秒按主题获取提及次数。
 
 1. 如果尚未关闭“输入”边栏选项卡，请将其关闭。
 
@@ -266,13 +259,13 @@ ms.locfileid: "60003694"
 
     如果未将 `TwitterStream` 用作输入的别名，请在查询中将别名替换为 `TwitterStream`。  
 
-    此查询使用 **TIMESTAMP BY** 关键字指定在临时计算中使用的有效负载的时间戳字段。 如果未指定此字段，会根据每个事件到达事件中心的时间执行窗口化操作。 通过 [Stream Analytics Query Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)（流分析查询参考）的“Arrival Time vs Application Time”（到达时间与应用程序时间比较）部分了解详细信息。
+    此查询使用 **TIMESTAMP BY** 关键字指定在临时计算中使用的有效负载的时间戳字段。 如果未指定此字段，会根据每个事件到达事件中心的时间执行窗口化操作。 通过 [Stream Analytics Query Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)（流分析查询参考）的“Arrival Time vs Application Time”（到达时间与应用程序时间比较）部分了解详细信息。
 
     此查询还可以通过使用 **System.Timestamp** 属性访问每个窗口结束时的时间戳。
 
 5. 单击“测试”。 查询会针对已采用的数据运行。
     
-6. 单击“ **保存**”。 这将查询保存为流分析作业的一部分。 （不会保存示例数据。）
+6. 单击“保存”。 这将查询保存为流分析作业的一部分。 （不会保存示例数据。）
 
 
 ## <a name="experiment-using-different-fields-from-the-stream"></a>使用流中的不同字段进行试验 
@@ -285,14 +278,14 @@ ms.locfileid: "60003694"
 |主题 | 与指定的关键字匹配的主题|
 |SentimentScore | Sentiment140 的观点分数|
 |作者 | 发送推文的 Twitter 句柄|
-|Text | 推文的完整正文|
+|文本 | 推文的完整正文|
 
 
 ## <a name="create-an-output-sink"></a>创建输出接收器
 
 现已定义事件流、用于引入事件的事件中心输入，以及用于通过流执行转换的查询。 最后一步是为作业定义输出接收器。  
 
-本教程介绍将聚合的推文事件从作业查询写入 Azure Blob 存储。  也可以将结果推送到 Azure SQL 数据库、Azure 表存储、事件中心或 Power BI，具体取决于应用程序需求。
+本操作指南会将聚合的推文事件从作业查询写入 Azure Blob 存储。  也可以将结果推送到 Azure SQL 数据库、Azure 表存储、事件中心或 Power BI，具体取决于应用程序需求。
 
 ## <a name="specify-the-job-output"></a>指定作业输出
 
@@ -312,7 +305,7 @@ ms.locfileid: "60003694"
     
      ![流分析作业的“新建输出”边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
-4. 单击**创建**。 
+4. 单击“创建”。 
 
     Azure 创建存储帐户，并自动生成密钥。 
 
@@ -348,9 +341,9 @@ ms.locfileid: "60003694"
 
 ## <a name="create-another-query-to-identify-trending-topics"></a>创建另一个查询以标识热门话题
 
-可用于了解 Twitter 情绪的另一个查询是基于[滑动窗口](https://msdn.microsoft.com/library/azure/dn835051.aspx)。 为了确定热门话题，需查找指定时间内超出某一提及次数阈值的主题。
+可用于了解 Twitter 情绪的另一个查询是基于[滑动窗口](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)。 为了确定热门话题，需查找指定时间内超出某一提及次数阈值的主题。
 
-对于本教程，需检查过去 5 秒内提及次数超过 20 次的主题。
+出于本操作指南的目的，需检查过去 5 秒内提及次数超过 20 次的主题。
 
 1. 在“作业”边栏选项卡中，单击“停止”以停止作业。 
 
@@ -365,7 +358,7 @@ ms.locfileid: "60003694"
     HAVING COUNT(*) > 20
     ```
 
-4. 单击“ **保存**”。
+4. 单击“保存”。
 
 5. 请确保 TwitterWpfClient 应用程序正在运行。 
 
@@ -379,5 +372,5 @@ ms.locfileid: "60003694"
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

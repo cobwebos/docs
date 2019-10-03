@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: ad789a597da759b9a2d58138c7ed441389a12adb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: aed716b01fe748be40ee22e3eba5742983c2a523
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103116"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620926"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>流分析地理空间函数的简介
 
@@ -27,7 +27,7 @@ Azure 流分析中的地理空间函数支持对流式处理的地理空间数�
 * 地域隔离
 * 蜂窝站点之间的电话跟踪
 
-流分析查询语言具有七种内置地理空间函数：CreateLineString、CreatePoint、CreatePolygon、ST_DISTANCE、ST_OVERLAPS、ST_INTERSECTS 和 ST_WITHIN。
+流分析查询语言具有七种内置地理空间函数：CreateLineString、CreatePoint、CreatePolygon、ST_DISTANCE、ST_OVERLAPS、ST_INTERSECTS 和 ST_WITHIN        。
 
 ## <a name="createlinestring"></a>CreateLineString
 
@@ -54,11 +54,11 @@ FROM input
 
  {"type" :"LineString", "coordinates" : [ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5] ]}
 
-若要了解详细信息，请访问 [CreateLineString](https://msdn.microsoft.com/azure/stream-analytics/reference/createlinestring) 引用。
+若要了解详细信息，请访问 [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) 引用。
 
 ## <a name="createpoint"></a>CreatePoint
 
-`CreatePoint` 函数接受纬度和经度，并返回一个 GeoJSON 点，这可在地图上被标绘出来。 维度和精度必须为 float 数据类型。
+`CreatePoint` 函数接受纬度和经度，并返回一个 GeoJSON 点，这可在地图上被标绘出来。 维度和精度必须为 float 数据类型  。
 
 下面的示例查询使用 `CreatePoint` 创建使用流式处理输入数据中的纬度和经度的点。
 
@@ -81,7 +81,7 @@ FROM input
   
  {"type" :"Point", "coordinates" : [20.2321, -87.33]}  
 
-若要了解详细信息，请访问 [CreatePoint](https://msdn.microsoft.com/azure/stream-analytics/reference/createpoint) 引用。
+若要了解详细信息，请访问 [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) 引用。
 
 ## <a name="createpolygon"></a>CreatePolygon
 
@@ -108,7 +108,7 @@ FROM input
  
  {"type" :"Polygon", "coordinates" : [[ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5], [20.2321, -87.33] ]]}
 
-若要了解详细信息，请访问 [CreatePolygon](https://msdn.microsoft.com/azure/stream-analytics/reference/createpolygon) 引用。
+若要了解详细信息，请访问 [CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) 引用。
 
 
 ## <a name="stdistance"></a>ST_DISTANCE
@@ -122,7 +122,7 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-若要了解详细信息，请访问 [ST_DISTANCE](https://msdn.microsoft.com/azure/stream-analytics/reference/st-distance) 引用。
+若要了解详细信息，请访问 [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) 引用。
 
 ## <a name="stoverlaps"></a>ST_OVERLAPS
 `ST_OVERLAPS` 函数比较两个多边形。 如果多边形重叠，函数将返回 1。 如果多边形不重叠，函数将返回 0。 
@@ -143,7 +143,7 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-若要了解详细信息，请访问 [ST_OVERLAPS](https://msdn.microsoft.com/azure/stream-analytics/reference/st-overlaps) 引用。
+若要了解详细信息，请访问 [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) 引用。
 
 ## <a name="stintersects"></a>ST_INTERSECTS
 `ST_INTERSECTS` 函数比较两个 LineString。 如果 LineString 相交，函数将返回 1。 如果 LineString 不相交，函数将返回 0。
@@ -165,11 +165,11 @@ FROM input
   
 ### <a name="output-example"></a>输出示例  
 
- 1  
+ 第  
   
  0  
 
-若要了解详细信息，请访问 [ST_INTERSECTS](https://msdn.microsoft.com/azure/stream-analytics/reference/st-intersects) 引用。
+若要了解详细信息，请访问 [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) 引用。
 
 ## <a name="stwithin"></a>ST_WITHIN
 `ST_WITHIN` 函数确定一个点或多边形位于另一个多边形内。 如果多边形包含点或多边形，函数将返回 1。 如果点或多边形位于所声明的多边形之外，函数将返回 0。
@@ -195,12 +195,12 @@ FROM input
   
  1  
 
-若要了解详细信息，请访问 [ST_WITHIN](https://msdn.microsoft.com/azure/stream-analytics/reference/st-within) 引用。
+若要了解详细信息，请访问 [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) 引用。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -1,20 +1,20 @@
 ---
-title: Authentication
-titleSuffix: Cognitive Services - Azure
+title: 身份验证
+titleSuffix: Azure Cognitive Services
 description: 有三种方法可以对 Azure 认知服务资源的请求进行身份验证：订阅密钥、持有者令牌或多服务订阅。 本文介绍每种方法以及如何发出请求。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240756"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276780"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
@@ -23,22 +23,23 @@ ms.locfileid: "57240756"
 * [使用单服务订阅密钥进行身份验证](#authenticate-with-a-single-service-subscription-key)
 * [使用多服务订阅密钥进行身份验证](#authenticate-with-a-multi-service-subscription-key)
 * [使用令牌进行身份验证](#authenticate-with-an-authentication-token)
+* [在 Azure Active Directory （AAD）中进行身份验证](#authenticate-with-azure-active-directory)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在发出请求之前，需要具有 Azure 帐户和 Azure 认知服务订阅。 如果已有帐户，请继续并跳到下一节。 如果还没有帐户，我们会提供指南，可在几分钟内完成设置：[创建 Azure 认知服务帐户](cognitive-services-apis-create-account.md)。
 
-可以获取订阅密钥从[Azure 门户](cognitive-services-apis-create-account.md#access-your-resource)创建你的帐户，或激活之后[免费试用版](https://azure.microsoft.com/try/cognitive-services/my-apis)。
- 
+创建帐户或激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/my-apis)后，可以从[Azure 门户](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)获取订阅密钥。
+
 ## <a name="authentication-headers"></a>身份验证标头
 
 让我们快速查看可用于 Azure 认知服务的身份验证标头。
 
-| 标头 | 描述 |
+| Header | 描述 |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | 使用此标头通过特定服务订阅密钥或多服务订阅密钥进行身份验证。 |
 | Ocp-Apim-Subscription-Region | 只有在使用具有[文本翻译 API](./Translator/reference/v3-0-reference.md) 的多服务订阅密钥时才需要此标头。 使用此标头指定订阅区域。 |
-| 授权 | 如果使用的是身份验证令牌，则使用此标头。 以下各节详细介绍了执行令牌交换的步骤。 提供的值遵循以下格式：`Bearer <TOKEN>`。 |
+| Authorization | 如果使用的是身份验证令牌，则使用此标头。 以下各节详细介绍了执行令牌交换的步骤。 提供的值遵循以下格式：`Bearer <TOKEN>`。 |
 
 ## <a name="authenticate-with-a-single-service-subscription-key"></a>使用单服务订阅密钥进行身份验证
 
@@ -65,7 +66,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>使用多服务订阅密钥进行身份验证
 
 >[!WARNING]
-> 目前，以下服务不支持多服务密钥：QnA Maker、语音服务和自定义视觉。
+> 目前，以下服务不支持多服务密钥：QnA Maker、语音服务、自定义视觉和异常探测器。
 
 此选项仍使用订阅密钥对请求进行身份验证。 主要区别在于订阅密钥未绑定到特定服务，而单个密钥可用于对多个认知服务的请求进行身份验证。 有关区域可用性、支持的功能和定价的信息，请参阅[认知服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
@@ -158,8 +159,10 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-## <a name="see-also"></a>另请参阅
+[!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
+
+## <a name="see-also"></a>请参阅
 
 * [什么是认知服务？](welcome.md)
 * [认知服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/)
-* [创建帐户](cognitive-services-apis-create-account.md)
+* [自定义子域](cognitive-services-custom-subdomains.md)

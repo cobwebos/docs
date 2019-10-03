@@ -3,8 +3,8 @@ title: Azure Active Directory 许可框架
 description: 了解 Azure Active Directory 中的许可框架，以及如何使用它轻松开发多租户 Web 应用程序和本机客户端应用程序。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/30/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f01555933ca8b3d0c48a956d3deb4b3356b4e1a2
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 7b9d272c8a01eeed58278a6e7f0cec147b01a10e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564952"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482939"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 许可框架
 
@@ -40,7 +40,7 @@ ms.locfileid: "59564952"
 
 1. 假设某个 Web 客户端应用程序需要请求资源/API 的特定访问权限。 下一部分将介绍如何执行此配置，但实质上，配置时需使用 Azure 门户来声明权限请求。 这些配置与其他配置设置一样，将会成为应用程序的 Azure AD 注册的一部分：
 
-    ![针对其他应用程序的权限](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
+    ![针对其他应用程序的权限](./media/consent-framework/permissions.png)
 
 1. 考虑已更新应用程序的权限，该应用程序正在运行，并且某个用户即将首次使用该应用程序。 首先，应用程序需要从 Azure AD 的 `/authorize` 终结点获取授权代码。 然后，可以使用该授权代码获取新的访问令牌和刷新令牌。
 
@@ -48,9 +48,9 @@ ms.locfileid: "59564952"
 
     ![用户或管理员登录到 Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
 
-1. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。 如果尚未授予许可，Azure AD 会提示用户授予许可，并显示运行该应用程序所需的权限。 许可对话框中显示的权限集与在 Azure 门户中的“委托权限”中选择的权限集相匹配。
+1. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。 如果尚未授予许可，Azure AD 会提示用户授予许可，并显示运行该应用程序所需的权限。 许可对话框中显示的权限集与在 Azure 门户中的“委托权限”  中选择的权限集相匹配。
 
-    ![用户同意体验](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![显示同意对话框中显示的权限的示例](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
 1. 用户授予许可后，授权代码会返回到应用程序，应用程序可凭此获取访问令牌和刷新令牌。 有关此流程的详细信息，请参阅 [Web API 应用类型](web-api.md)。
 
@@ -58,14 +58,13 @@ ms.locfileid: "59564952"
 
     **同意应用的委托权限**
 
-   1. 转到应用程序的“设置”页
-   1. 选择“所需权限”。
-   1. 单击“授予权限”按钮。
+   1. 转到**API 权限**应用程序页
+   1. 单击**授予管理员同意**按钮。
 
-      ![授予显式管理许可权限](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+      ![授予显式管理许可权限](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
-   > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可。 否则，在请求访问令牌时应用程序会失败。
+   > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可  。 否则，在请求访问令牌时应用程序会失败。
 
 ## <a name="next-steps"></a>后续步骤
 

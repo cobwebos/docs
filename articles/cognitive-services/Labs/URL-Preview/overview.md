@@ -10,17 +10,18 @@ ms.subservice: url-preview
 ms.topic: overview
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 7022c3b2d2f3618d55b0a70d2690abf1497ec6a6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: 022fe002057f157d4d9fe6e6cad03fc79810888c
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865329"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706914"
 ---
 # <a name="what-is-project-url-preview"></a>什么是项目 URL 预览？
 URL 预览终结点采用 URL 查询参数并返回 JSON 响应，其中包含目标资源的名称、简要说明以及要在预览中显示的图像的链接。 响应还包含 [isFamilyFriendly](url-preview-reference.md#query-parameters) 标志，指示 URL 是否包含成人、盗版或其他非法内容。 
 
-若要获取 URL 预览结果，请提交 GET 请求，并在 Ocp-Apim-Subscription-Key 标头中包含有效令牌：  
+若要获取 URL 预览结果，请提交 GET 请求，并在 Ocp-Apim-Subscription-Key 标头中包含有效令牌  ：  
 ```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftkey.com
 
@@ -49,7 +50,7 @@ X-MSEdge-Ref: Ref A: 3CC74C94769440C0851D9DF0869FCE7F Ref B: CO1EDGE0315 Ref C: 
 
 URL 预览 API 支持 Web 资源的简要描述。 开发人员可使用其构建丰富的预览体验。  用户可共享网页、新闻、博客、论坛等或为其添加书签。此 API 还可用于内容审核。    
 
-应用程序使用 URL 预览将 Web 请求发送到终结点，并将一个查询分配给要预览的 URL。  JSON 响应包含后列预览信息：名称、资源描述、familyFriendly 标志以及链接，通过这些链接可在线访问代表性图像和完整资源。 
+应用程序使用 URL 预览将 Web 请求发送到终结点，并将一个查询分配给要预览的 URL。  JSON 响应包含后列预览信息：名称、资源描述、familyFriendly 标志以及链接，通过这些链接可在线访问代表性图像和完整资源  。 
 
 ## <a name="terms-of-use"></a>使用条款
 仅使用项目 URL 预览中的数据，在社交媒体、聊天机器人或类似产品上共享的由最终用户启动的 URL 中显示使用超链接链接到其源站点的预览代码片段和缩略图图像。 不得复制、存储或缓存从项目 URL 预览收到的任何数据。 需执行后列操作请求：禁用可能从网站或内容所有者处收到的预览。

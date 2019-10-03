@@ -9,22 +9,22 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
-ms.openlocfilehash: 9fe29e8717c76c353f3e95d4693011f3925c4e1b
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 900529d54a26729d9d0fb949d9217d5e2d618254
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790701"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66515293"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>使用 Azure Dev Space 时如何管理机密
 
 你的服务可能需要适用于某些服务（例如数据库或其他安全的 Azure 服务）的特定密码、连接字符串和其他机密。 在配置文件中设置这些机密的值即可让其以环境变量的形式在代码中使用。  必须小心处理，以免机密的安全性受损。
 
-Azure Dev Spaces 提供两个建议用于存储机密的选项：一是存储在 values.dev.yaml 文件中，二是以内联方式直接存储在 azds.yaml 中。 建议不要将机密存储在 values.yaml 中。
- 
+Azure 开发人员空间提供用于在 Azure 开发人员空间客户端工具生成的 Helm 图表中存储机密的两个建议、 更流畅地选项： 在此 values.dev.yaml 文件，并直接在 azds.yaml 中的内联。 建议不要将机密存储在 values.yaml 中。 外部 Helm 的两种方法生成客户端工具的图表中定义本文中，如果您创建 Helm 图表，您可以使用 Helm 图表直接用于管理和存储的机密。
+
 ## <a name="method-1-valuesdevyaml"></a>方法 1：values.dev.yaml
 1. 使用为 Azure Dev Spaces 启用的项目打开 VS Code。
-2. 在现有的 _values.yaml_ 所在的文件夹中添加名为 _values.dev.yaml_ 的文件，然后定义密钥和值，如以下示例所示：
+2. 添加名为的文件_values.dev.yaml_中相同的现有文件夹_azds.yaml_和定义的机密密钥和值，如以下示例所示：
 
     ```yaml
     secrets:
@@ -34,12 +34,13 @@ Azure Dev Spaces 提供两个建议用于存储机密的选项：一是存储在
         key: "secretkeyhere"
     ```
      
-3. 更新 _azds.yaml_，告知 Azure Dev Spaces 使用新的 _values.dev.yaml_ 文件。 为此，请将此配置添加到 configurations.develop.container 部分下：
+3. _azds.yaml_已经引用_values.dev.yaml_文件存在。 如果需要不同的文件名称，更新 install.values 部分：
 
     ```yaml
-           container:
-             values:
-             - "charts/webfrontend/values.dev.yaml"
+    install:
+      values:
+      - values.dev.yaml?
+      - secrets.dev.yaml?
     ```
  
 4. 修改服务代码，将这些机密称为环境变量，如以下示例所示：
@@ -76,17 +77,17 @@ Azure Dev Spaces 提供两个建议用于存储机密的选项：一是存储在
           set:
             secrets:
               redis:
-                port: "$REDIS_PORT_DEV"
-                host: "$REDIS_HOST_DEV"
-                key: "$REDIS_KEY_DEV"
+                port: "$REDIS_PORT"
+                host: "$REDIS_HOST"
+                key: "$REDIS_KEY"
     ```
      
 2.  在 _azds.yaml_ 所在的文件夹中创建 _.env_ 文件。 使用标准的“机密=值”表示法输入机密。 请勿将 _.env_ 文件提交到源代码管理。 （请将它添加到 _.gitignore_ 文件中，而不是基于 git 的版本控制系统的源代码管理中。）以下示例显示一个 _.env_ 文件：
 
     ```
-    REDIS_PORT_DEV=3333
-    REDIS_HOST_DEV=myredishost
-    REDIS_KEY_DEV=myrediskey
+    REDIS_PORT=3333
+    REDIS_HOST=myredishost
+    REDIS_KEY=myrediskey
     ```
 2.  修改服务源代码，以便在代码中引用这些机密，如以下示例所示：
 

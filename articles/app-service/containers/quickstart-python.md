@@ -4,27 +4,25 @@ description: 数分钟内在 Linux 上的 Azure 应用服务中部署第一个 P
 services: app-service\web
 documentationcenter: ''
 author: cephalin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 08/23/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 04f08965d161e35a9ae4423ad5d3cf80cb407b8a
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: d4f1cd5193f29e929c822966ca427c6e6ebf67de
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607766"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070974"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>在 Linux 上的 Azure 应用服务（预览）中创建 Python 应用
+# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中创建 Python 应用
 
-在本快速入门中，需将简单的 Python 应用部署到 [Linux 上的应用服务](app-service-linux-intro.md)，该版本提供了一项高度可缩放、自我修补的 Web 托管服务。 由于是基于浏览器的交互式 Azure Cloud Shell 使用 Azure 命令行接口 ([Azure CLI](/cli/azure/install-azure-cli))，因此可遵循使用 Mac、Linux 或 Windows 计算机的步骤。
+在本快速入门中，需将简单的 Python 应用部署到 [Linux 上的应用服务](app-service-linux-intro.md)，该版本提供了一项高度可缩放、自我修补的 Web 托管服务。 由于是通过基于浏览器的交互式 Azure Cloud Shell 来使用 Azure 命令行接口 ([Azure CLI](/cli/azure/install-azure-cli))，因此可遵循使用 Mac、Linux 或 Windows 计算机的步骤。
 
 ![在 Azure 中运行应用的示例](media/quickstart-python/hello-world-in-browser.png)
 
@@ -38,7 +36,7 @@ ms.locfileid: "59607766"
 
 ## <a name="download-the-sample-locally"></a>将示例下载到本地
 
-在终端窗口中运行以下命令，将示例应用程序克隆到本地计算机，并导航到包含示例代码的目录。
+在终端窗口中运行以下命令，将示例应用程序克隆到本地计算机，并转到包含示例代码的目录。
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
@@ -66,9 +64,9 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-打开 Web 浏览器并导航到 `http://localhost:5000/` 处的示例应用。
+打开 Web 浏览器并转到 `http://localhost:5000/` 处的示例应用。
 
-此时会看到来自示例应用的 Hello World! 消息显示在页面中。
+此时会看到来自示例应用的 Hello World!  消息显示在页面中。
 
 ![本地运行应用的示例](media/quickstart-python/hello-world-in-browser.png)
 
@@ -83,7 +81,7 @@ flask run
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 接下来请运行以下命令，将示例应用存储库克隆到快速入门目录。
@@ -106,7 +104,7 @@ Checking connectivity... done.
 
 切换到包含示例代码的目录并运行 `az webapp up` 命令。
 
-在以下示例中，请将 `<app-name>` 替换为一个唯一的应用名称。
+在以下示例中，将 `<app-name>` 替换为全局唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`  ）。
 
 ```bash
 cd python-docs-hello-world
@@ -155,11 +153,11 @@ Python 示例代码在包含内置映像的 Linux 上的应用服务中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-python/hello-world-in-browser.png)
 
-祝贺你！ 现已将第一个 Python 应用部署到 Linux 应用服务。
+祝贺你！  现已将第一个 Python 应用部署到 Linux 应用服务。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 
-在 Cloud Shell 中，键入 `code application.py` 以打开 Cloud Shell 编辑器。
+在 Cloud Shell 中，输入 `code application.py` 以打开 Cloud Shell 编辑器。
 
 ![对 application.py 进行编码](media/quickstart-python/code-applicationpy.png)
 
@@ -171,7 +169,7 @@ return "Hello Azure!"
 
 保存更改并退出编辑器。 使用命令 `^S` 来保存，使用 `^Q` 来退出。
 
-使用 [`az webapp up`](/cli/azure/ext/webapp/webapp?view=azure-cli-latest.md#ext-webapp-az-webapp-up) 命令重新部署应用。 将 `<app-name>` 替换为你的应用名称，并为 `<location-name>` 指定位置（使用 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令中显示的某个值）。
+使用 [`az webapp up`](/cli/azure/webapp#az-webapp-up) 命令重新部署应用。 将 `<app-name>` 替换为你的应用名称，并为 `<location-name>` 指定位置（使用 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令中显示的某个值）。
 
 ```bash
 az webapp up -n <app-name> -l <location-name>
@@ -185,7 +183,7 @@ az webapp up -n <app-name> -l <location-name>
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+从左侧菜单中选择“应用程序服务”，并选择 Azure 应用的名称。 
 
 ![在门户中导航到 Azure 应用](./media/quickstart-python/app-service-list.png)
 
@@ -199,10 +197,8 @@ az webapp up -n <app-name> -l <location-name>
 
 ## <a name="next-steps"></a>后续步骤
 
-Linux 上的应用服务中内置的 Python 映像目前处于预览状态，你可以自定义用于启动应用的命令。 还可以改用自定义容器创建生产 Python 应用。
-
 > [!div class="nextstepaction"]
-> [教程：使用 PostgreSQL 的 Python 应用](tutorial-python-postgresql-app.md)
+> [教程：使用 PostgreSQL 的 Python (Django) Web 应用](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [配置 Python 应用](how-to-configure-python.md)

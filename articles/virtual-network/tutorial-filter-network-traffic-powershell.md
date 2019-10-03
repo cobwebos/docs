@@ -3,8 +3,8 @@ title: 筛选网络流量 - Azure PowerShell | Microsoft Docs
 description: 本文介绍如何在 PowerShell 中使用网络安全组筛选发往子网的网络流量。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 22090bf89e469f7e8defcd50b311c555949b9bde
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 08031bc2ac29ea77374e21c4ce6f7bcf6151bcad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317709"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66730030"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>在 PowerShell 中使用网络安全组筛选网络流量
 
@@ -37,9 +37,9 @@ ms.locfileid: "58317709"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您选择本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块版本 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
 
@@ -47,13 +47,13 @@ ms.locfileid: "58317709"
 
 ### <a name="create-application-security-groups"></a>创建应用程序安全组
 
-首先创建与本文中创建的所有资源的资源组[新建 AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)。 以下示例在 *eastus* 位置创建一个资源组：
+首先使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 针对本文中创建的所有资源创建一个资源组。 以下示例在 *eastus* 位置创建一个资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-创建与应用程序安全组[新建 AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup)。 使用应用程序安全组可以分组具有类似端口筛选要求的服务器。 以下示例创建两个应用程序安全组。
+使用 [New-AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup) 创建应用程序安全组。 使用应用程序安全组可以分组具有类似端口筛选要求的服务器。 以下示例创建两个应用程序安全组。
 
 ```azurepowershell-interactive
 $webAsg = New-AzApplicationSecurityGroup `
@@ -69,7 +69,7 @@ $mgmtAsg = New-AzApplicationSecurityGroup `
 
 ### <a name="create-security-rules"></a>创建安全规则
 
-创建具有的安全规则[新建 AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)。 以下示例创建一个规则，该规则允许通过端口 80 和 443 将来自 Internet 的入站流量发往 *myWebServers* 应用程序安全组：
+使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建安全规则。 以下示例创建一个规则，该规则允许通过端口 80 和 443 将来自 Internet 的入站流量发往 *myWebServers* 应用程序安全组：
 
 ```azurepowershell-interactive
 $webRule = New-AzNetworkSecurityRuleConfig `
@@ -123,7 +123,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-创建的子网配置[新建 AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)，然后将子网配置写入到与虚拟网络[集 AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)。 以下示例将名为 *mySubnet* 的子网添加到虚拟网络，并将 *myNsg* 网络安全组关联到该虚拟网络：
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建子网配置，然后使用 [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) 将子网配置写入虚拟网络。 以下示例将名为 *mySubnet* 的子网添加到虚拟网络，并将 *myNsg* 网络安全组关联到该虚拟网络：
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkSubnetConfig `
@@ -136,7 +136,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
-在创建 Vm 之前, 检索的子网的虚拟网络对象[Get AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork):
+在创建 VM 之前，使用 [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) 检索包含子网的虚拟网络对象：
 
 ```powershell-interactive
 $virtualNetwork = Get-AzVirtualNetwork `
@@ -144,7 +144,7 @@ $virtualNetwork = Get-AzVirtualNetwork `
  -Resourcegroupname myResourceGroup
 ```
 
-为每个 VM 创建公共 IP 地址[新建 AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress):
+使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 为每个 VM 创建一个公共 IP 地址：
 
 ```powershell-interactive
 $publicIpWeb = New-AzPublicIpAddress `
@@ -160,7 +160,7 @@ $publicIpMgmt = New-AzPublicIpAddress `
   -Name myVmMgmt
 ```
 
-创建具有两个网络接口[新建 AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)，并将公共 IP 地址分配给网络接口。 以下示例创建一个网络接口，将 *myVmWeb* 公共 IP 地址关联到该网络接口，并使其成为 *myAsgWebServers* 应用程序安全组的成员：
+使用 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 创建两个网络接口，并将公共 IP 地址分配给网络接口。 以下示例创建一个网络接口，将 *myVmWeb* 公共 IP 地址关联到该网络接口，并使其成为 *myAsgWebServers* 应用程序安全组的成员：
 
 ```powershell-interactive
 $webNic = New-AzNetworkInterface `
@@ -186,7 +186,7 @@ $mgmtNic = New-AzNetworkInterface `
 
 在虚拟网络中创建两个 VM，以便在后续步骤中可以验证流量筛选。
 
-创建 VM 配置与[新建 AzVMConfig](/powershell/module/az.compute/new-azvmconfig)，然后创建与 VM [New-azvm](/powershell/module/az.compute/new-azvm)。 以下示例创建充当 Web 服务器的 VM。 `-AsJob` 选项会在后台创建 VM，因此可继续执行下一步：
+使用 [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) 创建 VM 配置，然后使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 创建 VM。 以下示例创建充当 Web 服务器的 VM。 `-AsJob` 选项会在后台创建 VM，因此可继续执行下一步：
 
 ```azurepowershell-interactive
 # Create user object
@@ -277,7 +277,7 @@ mstsc /v:myvmWeb
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-完成 IIS 安装后，从 *myVmWeb* VM 断开连接，从而保留 *myVmMgmt* 远程桌面连接。 若要查看 IIS 欢迎屏幕上，打开 internet 浏览器并浏览到 http:\//myVmWeb。
+完成 IIS 安装后，从 *myVmWeb* VM 断开连接，从而保留 *myVmMgmt* 远程桌面连接。 若要查看 IIS 欢迎屏幕，请打开 Internet 浏览器并浏览到 http:\//myVmWeb。
 
 从 *myVmMgmt* VM 断开连接。
 
@@ -294,7 +294,7 @@ Get-AzPublicIpAddress `
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要可以使用[删除 AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)删除资源组和所有它包含的资源：
+如果不再需要资源组及其包含的所有资源，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 将其删除：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

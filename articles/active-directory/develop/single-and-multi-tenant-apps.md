@@ -3,8 +3,8 @@ title: Azure Active Directory 中的单租户和多租户应用
 description: 了解 Azure AD 中的单租户和多租户应用的功能和差异。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ec1939dd1f5445583200776e489f7596f572f0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9035cc629a11c125c1b6351bd4bff9f5576f7baf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178441"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111066"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory 中的租户
 
-Azure Active Directory (Azure AD) 将用户和应用之类的对象组织到称为“租户”的组中。 租户允许管理员针对组织中的用户以及组织拥有的应用设置策略，以满足其安全和运营策略。 
+Azure Active Directory (Azure AD) 将用户和应用之类的对象组织到称为“租户”的组中。  租户允许管理员针对组织中的用户以及组织拥有的应用设置策略，以满足其安全和运营策略。 
 
 ## <a name="who-can-sign-in-to-your-app"></a>谁可以登录到你的应用？
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) 将用户和应用之类的对象组织到称�
 
 由于 IT 管理员可能会在其租户中设置大量的不同策略，因此，构建优秀的多租户应用可能很难。 如果你选择构建多租户应用，请遵循以下最佳做法：
 
-* 在配置了[条件访问策略](conditional-access-dev-guide.md)的租户中测试应用。
+* 在已配置的租户中测试您的应用程序[条件性访问策略](conditional-access-dev-guide.md)。
 * 遵循最小用户访问权限的原则，确保应用只请求它实际需要的权限。 避免请求需要管理员同意的权限，因为这可能会完全阻止某些组织中的用户访问应用。 
 * 为作为应用的一部分公开的任何权限提供合适的名称和说明。 这可帮助用户和管理员了解当他们尝试使用应用的 API 时他们要同意什么。 有关详细信息，请参阅[权限指南](v1-permissions-and-consent.md)中的最佳做法部分。
 

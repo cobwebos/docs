@@ -4,24 +4,23 @@ description: 在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3
 services: virtual-machines-windows
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 626c1523-1026-478f-bd8a-22c83b869231
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 413e449f005d288f66da0257f5b800733e58eb94
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 66921280403027d1723b27f104b42d2c83271213
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011277"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100072"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3
 本文介绍如何通过 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署与 SQL Server 和 Windows 操作系统一起运行的 SAP IDES 系统。 屏幕截图将逐步显示此过程。 若要部署另一种解决方案，请按照相同的步骤操作。
@@ -96,7 +95,7 @@ ms.locfileid: "58011277"
 ### <a name="deploy-a-solution"></a>部署解决方案
 1. 设置 SAP CAL 帐户后，选择“Windows 和 SQL Server 上的 SAP IDES 解决方案”解决方案。 单击“创建实例”，并确认使用情况以及条款和条件。 
 
-1. 在“基本模式: 创建实例”页上，需要：
+1. 在“基本模式:创建实例”页上，需要：
 
     a. 输入实例“名称”。
 

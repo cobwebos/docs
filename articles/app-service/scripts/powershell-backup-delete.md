@@ -10,17 +10,16 @@ tags: azure-service-management
 ms.assetid: ebcadb49-755d-4202-a5eb-f211827a9168
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: dbe8417e8a26cb222fe52ac7c0284b3956ed65fb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9b9a6ecc93489c6690e0128ef9129c480f506b31
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106930"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098427"
 ---
 # <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>使用 Azure PowerShell 删除 Web 应用的备份
 

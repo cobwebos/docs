@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 88a5a1bcff8542ac500bbb5e0da790f77c90a825
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 999d44e394d47e350187f9175389e04e68567d5e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530784"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724663"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>快速入门：从控制台应用广播实时消息
 
@@ -181,4 +181,4 @@ API | `1.0-preview` | `1.0`
 在本快速入门中，你学习了如何使用 REST API 从 SignalR 服务向客户端广播实时消息。 接下来，了解有关如何使用基于 REST API 构建的 SignalR 服务绑定开发和部署 Azure Functions 的更多信息。
 
 > [!div class="nextstepaction"]
-> [使用 Azuer SignalR 服务绑定开发 Azure Functions](signalr-quickstart-azure-functions-csharp.md)
+> [使用 Azure SignalR 服务绑定开发 Azure Functions](signalr-quickstart-azure-functions-csharp.md)

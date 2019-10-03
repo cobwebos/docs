@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: e4831bdc-2068-4883-9474-0b34c2e3e255
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 523ab8aa242b2c5eab2d9c2aa5b61485d84185eb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1eae5c4b94a59b09e73454fdfcea4e9f041652f2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106794"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098355"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account"></a>将应用服务应用连接到存储帐户
 

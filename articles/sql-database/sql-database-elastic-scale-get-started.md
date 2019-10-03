@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7c2e3b2bea7ddef3dfbf69f85b499d9a60158689
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aa0827bdf6deb388123ed701013ee95f5493eee3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999121"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568467"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
 
@@ -25,7 +24,7 @@ ms.locfileid: "57999121"
 
 ## <a name="elastic-database-tools-for-java"></a>适用于 Java 的弹性数据库工具
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 * Java 开发人员工具包 (JDK) 1.8 或更高版本
 * [Maven](https://maven.apache.org/download.cgi)
@@ -71,7 +70,7 @@ ms.locfileid: "57999121"
 
 ## <a name="elastic-database-tools-for-net"></a>适用于 .NET 的弹性数据库工具
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 * 使用 C# 的 Visual Studio 2012 或更高版本。 可以从 [Visual Studio 下载页面](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)下载免费版本。
 * NuGet 2.7 或更高版本。 若要获取最新版本，请参阅[安装 NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)。
@@ -86,13 +85,13 @@ ms.locfileid: "57999121"
 
 2. 若要创建项目，请从 C# 目录打开 ElasticScaleStarterKit.sln 解决方案。
 
-3. 在示例项目的解决方案中打开 app.config 文件。 然后遵循该文件中的说明添加 Azure SQL 数据库服务器名称和登录信息（用户名和密码）。
+3. 在示例项目的解决方案中打开 app.config 文件。 然后遵循该文件中的说明，添加 Azure SQL 数据库服务器名称和登录信息（用户名和密码）。
 
-4. 构建并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作会从 NuGet 下载最新版本的弹性数据库客户端库。
+4. 生成并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作会从 NuGet 下载最新版本的弹性数据库客户端库。
 
 5. 要深入了解客户端库功能，请尝试使用不同的选项。 请注意应用程序在控制台输出中执行的步骤，并随意浏览后台代码。
    
-    ![Progress][4]
+    ![进度][4]
 
 祝贺你！ 已成功使用弹性数据库工具在 SQL 数据库上生成并运行了第一个分片应用程序。 使用 Visual Studio 或 SQL Server Management Studio 连接到 SQL 数据库，并快速查看一下样本创建的分片。 会看到该示例创建的新示例分片数据库和分片映射管理器数据库。
 
@@ -115,7 +114,7 @@ ms.locfileid: "57999121"
 
 * **合并现有分片**：分片合并也是使用拆分/合并工具执行的。 有关详细信息，请参阅[在已扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。   
 
-## <a name="cost"></a>成本
+## <a name="cost"></a>开销
 
 弹性数据库工具库免费。 使用弹性数据库工具时，除 Azure 使用成本外，无需支付其他任何费用。 
 

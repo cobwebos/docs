@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: 803d05e1aaf4d9c26a6132bde30f101ce3905924
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5a996fe6be5aa839b78b6693accac9b1000cef8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096820"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570421"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配新租户并将其注册到目录中
 
@@ -46,7 +45,7 @@ ms.locfileid: "58096820"
 
 该目录还存储其他租户或数据库元数据，如架构版本、服务计划或提供给租户的 SLA。 该目录可以存储其他在进行应用程序管理、客户支持或 DevOps 时所需的信息。 
 
-除了 SaaS 应用程序，该目录还可以启用数据库工具。 在 Wingtip Tickets SaaS 租户各有数据库示例中，目录用于启用跨租户查询中, 进行了探讨[临时报表教程](saas-tenancy-cross-tenant-reporting.md)。 [架构管理](saas-tenancy-schema-management.md)和[租户分析](saas-tenancy-tenant-analytics.md)教程中探讨了跨数据库作业管理。 
+除了 SaaS 应用程序，该目录还可以启用数据库工具。 在 Wingtip 票证 SaaS 每个租户的数据库示例中, 目录用于启用跨租户查询, 这在[即席报表教程](saas-tenancy-cross-tenant-reporting.md)中进行了介绍。 [架构管理](saas-tenancy-schema-management.md)和[租户分析](saas-tenancy-tenant-analytics.md)教程中探讨了跨数据库作业管理。 
 
 在 Wingtip Tickets SaaS 示例中，目录通过使用[弹性数据库客户端库 (EDCL)](sql-database-elastic-database-client-library.md) 的“分片管理”功能来实现。 EDCL 在 Java 和 .NET Framework 中可用。 EDCL 允许应用程序创建、管理和使用支持数据库的分片映射。 
 

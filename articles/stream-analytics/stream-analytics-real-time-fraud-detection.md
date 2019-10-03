@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 19c9448b6a743302eb81bb208444336d6435f114
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883711"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947049"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时欺诈检测
 
@@ -28,11 +28,11 @@ ms.locfileid: "58883711"
 
 本教程将使用基于电话呼叫数据的实时欺诈检测的示例。 所演示的技术还适用于其他类型的欺诈检测，如信用卡欺诈或身份盗用。 
 
-## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>场景：实时进行远程通信和 SIM 欺诈检测
+## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>方案:实时进行远程通信和 SIM 欺诈检测
 
-电信公司的传入呼叫数据量很大。 公司希望实时检测欺诈呼叫，以便他们可以通知客户或关闭特定数目的服务。 有这样一种 SIM 欺诈，即在同一时间出现多个同一身份发起的呼叫，但这些呼叫却位于不同的地理位置。 若要检测此类型的欺诈，公司需要检查来电记录，并查找特定模式 - 在本例中，即查找在不同国家/地区同时发起的呼叫。 任何属于此类别的电话记录都将写入存储，以供后续分析。
+电信公司的传入呼叫数据量很大。 公司希望实时检测欺诈呼叫，以便他们可以通知客户或关闭特定数目的服务。 有这样一种 SIM 欺诈，即在同一时间出现多个同一身份发起的呼叫，但这些呼叫却位于不同的地理位置。 若要检测这种类型的欺诈, 公司需要检查传入的电话记录, 并查找特定模式-在本例中, 对于在不同国家/地区的相同时间拨打的呼叫。 任何属于此类别的电话记录都将写入存储，以供后续分析。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本教程将通过使用生成示例电话呼叫元数据的客户端应用来模拟电话呼叫数据。 应用生成的某些记录看起来类似欺诈呼叫。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "58883711"
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
  
-7. 单击**创建**。
+7. 单击“创建”。
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>授予对事件中心的访问权限，并获取连接字符串
 
@@ -92,7 +92,7 @@ ms.locfileid: "58883711"
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  单击**创建**。
+4.  单击“创建”。
 
 5.  部署策略后，在共享访问策略列表中单击该策略。
 
@@ -127,23 +127,24 @@ ms.locfileid: "58883711"
 
    ![TelcoGenerator 配置文件显示事件中心名称和连接字符串](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
-4. 保存文件。 
+4. 保存该文件。 
 
 ### <a name="start-the-app"></a>启动应用
 1.  打开命令窗口，然后切换到解压缩 TelcoGenerator 应用的文件夹。
+
 2.  输入以下命令：
 
-        ```cmd
-        telcodatagen.exe 1000 0.2 2
-        ```
+   ```cmd
+   telcodatagen.exe 1000 0.2 2
+   ```
 
-    参数包括： 
+   参数包括： 
 
-    * 每小时的 CDR 数。 
-    * SIM 卡欺诈概率：应用模拟欺诈呼叫的频率（占所有呼叫的百分比）。 值 0.2 表示大约有 20% 的通话记录似乎具有欺诈性。
-    * 持续时间（以小时为单位）。 应用应运行的小时数。 还可以通过在命令行按 Ctrl+C 来随时停止该应用。
+   * 每小时的 CDR 数。 
+   * SIM 卡欺诈概率：应用模拟欺诈呼叫的频率（占所有呼叫的百分比）。 值 0.2 表示大约有 20% 的通话记录似乎具有欺诈性。
+   * 持续时间（以小时为单位）。 应用应运行的小时数。 还可以通过在命令行按 Ctrl+C 来随时停止该应用。
 
-    几秒钟后，当应用将电话通话记录发送到事件中心时，应用将开始在屏幕上显示通话记录。
+   几秒钟后，当应用将电话通话记录发送到事件中心时，应用将开始在屏幕上显示通话记录。
 
 将在此实时欺诈检测应用程序中使用的某些关键字段如下所示：
 
@@ -171,7 +172,7 @@ ms.locfileid: "58883711"
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. 单击**创建**。
+3. 单击“创建”。
 
     创建作业后，门户就会显示作业详细信息。 尽管尚无任何应用正在运行，但必须先配置该作业，然后才能启动。
 
@@ -196,7 +197,7 @@ ms.locfileid: "58883711"
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. 单击**创建**。
+4. 单击“创建”。
 
 ## <a name="create-queries-to-transform-real-time-data"></a>创建查询以转换实时数据
 
@@ -206,7 +207,7 @@ ms.locfileid: "58883711"
 
 此处创建的查询只会在屏幕中显示已转换的数据。 后面的部分将配置一个输出接收器和将转换的数据写入该接收器的查询。
 
-若要了解有关语言的详细信息，请参阅 [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/dn834998.aspx)。
+若要了解有关语言的详细信息，请参阅 [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)。
 
 ### <a name="get-sample-data-for-testing-queries"></a>获取用于测试查询的示例数据
 
@@ -288,11 +289,11 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
         ```
 
-    此查询在 `FROM` 子句中使用 `Timestamp By` 关键字来指定输入流中要用于定义翻转窗口的时间戳字段。 在这种情况下，窗口按每条记录中的 `CallRecTime` 字段将数据划分为段。 （如果未指定任何字段，开窗操作将使用每个事件到达事件中心的时间。 请参阅[流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)中的“到达时间与应用程序时间”。 
+    此查询在 `FROM` 子句中使用 `Timestamp By` 关键字来指定输入流中要用于定义翻转窗口的时间戳字段。 在这种情况下，窗口按每条记录中的 `CallRecTime` 字段将数据划分为段。 （如果未指定任何字段，开窗操作将使用每个事件到达事件中心的时间。 请参阅[流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)中的“到达时间与应用程序时间”。 
 
     投影包括 `System.Timestamp`，后者将返回每个窗口结束时的时间戳。 
 
-    若要指定你想要使用翻转窗口，请使用[TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx)函数，在`GROUP BY`子句。 在函数中，可以指定时间单位（从微秒到一天的任意时间）和窗口大小（单位数）。 在此示例中，翻转窗口由 5 秒时间间隔组成，因此你会收到按国家/地区的每隔 5 秒的呼叫计数。
+    若要指定想要使用翻转窗口，请在 `GROUP BY` 子句中使用 [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) 函数。 在函数中，可以指定时间单位（从微秒到一天的任意时间）和窗口大小（单位数）。 在此示例中，翻转窗口由 5 秒时间间隔组成，因此你会收到按国家/地区的每隔 5 秒的呼叫计数。
 
 2. 再次单击“测试”。 在结果中，请注意“WindowEnd”下的时间戳以 5 秒为增量。
 
@@ -364,7 +365,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. 单击“ **保存**”。 
+5. 单击“保存”。 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>启动流分析作业
@@ -417,5 +418,5 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

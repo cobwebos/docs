@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 03/21/2019
+ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 58fb1d73509ab52551bead4526dfb47588cf1ec6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 440ebfffec9378e0dad1fd04e0880c90571bb0f1
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004578"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300995"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>什么是 Windows 虚拟桌面预览版？ 
 
@@ -26,6 +26,14 @@ Windows 虚拟桌面现已推出公共预览版，它是一个在云中运行的
 * 将现有的远程桌面服务 (RDS) 和 Windows Server 桌面与应用迁移到任何计算机
 * 虚拟化桌面和应用
 * 使用统一的管理体验管理 Windows 10、Windows Server 和 Windows 7 桌面与应用
+
+## <a name="introductory-video"></a>介绍性视频
+
+通过此视频了解 Windows 虚拟桌面、它的独特之处及其新增功能：
+
+<br></br><iframe src="https://www.youtube.com/embed/NQFtI3JLtaU" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+
+有关 Windows 虚拟桌面的更多视频，请参阅[我们的播放列表](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev)。
 
 ## <a name="key-capabilities"></a>关键功能
 
@@ -54,16 +62,13 @@ Windows 虚拟桌面现已推出公共预览版，它是一个在云中运行的
 
 设置 Windows 虚拟桌面并将用户成功连接到其 Windows 桌面和应用程序需要注意几个事项。
 
-Windows 虚拟桌面目前只支持以下两种操作系统：
-- Windows 10 Enterprise 多会话
-- Windows Server 2016
-
 我们计划添加对以下操作系统的支持，因此请确保根据所要部署的桌面和应用，为用户提供[相应的许可证](https://azure.microsoft.com/pricing/details/virtual-desktop/)：
 
 |操作系统|所需的许可证|
 |---|---|
-
-|Windows 10 企业版多会话或 Windows 10 企业版|Microsoft E3、E5、A3、A5、Business<br>Windows E3、E5、A3、A5 | Windows 7 Enterprise |Microsoft E3、E5、A3、A5、Business<br>Windows E3、E5、A3、A5| |Windows Server 2012 R2、2016、2019 | 附带软件保障的 RDS 客户端访问许可证 (CAL)|
+|Windows 10 Enterprise 多会话或 Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
+|Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
+|Windows Server 2012 R2、2016、2019|附带软件保障的 RDS 客户端访问许可证 (CAL)|
 
 基础结构需要满足以下要求才能支持 Windows 虚拟桌面：
 
@@ -71,14 +76,14 @@ Windows 虚拟桌面目前只支持以下两种操作系统：
 * 一个与 Azure Active Directory 同步的 Windows Server Active Directory。 可通过以下方式满足此要求：
   * Azure AD Connect
   * Azure AD 域服务
+  >[!NOTE]
+  >Windows 虚拟桌面仅支持源自 Azure Active Directory 的 Azure AD 域服务用户。 目前不支持源自 Windows Server AD 的用户。
 * 一个包含虚拟网络的 Azure 订阅，该虚拟网络包含或已连接到 Windows Server Active Directory
   
 为 Windows 虚拟桌面创建的 Azure 虚拟机必须：
 
 * [已加入标准域](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison)，或[已加入混合 AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)。 虚拟机不能加入 Azure AD。
-* 运行以下受支持的 OS 映像之一：
-  * Windows 10 Enterprise 多会话
-  * Windows Server 2016
+* 运行以下[受支持的 OS 映像](#supported-virtual-machine-os-images)之一。
 
 >[!NOTE]
 >如需 Azure 订阅，可以[注册一个月免费试用版](https://azure.microsoft.com/free/)。 如果使用免费试用版的 Azure，则应使用 Azure AD 域服务来使 Windows Server Active Directory 与 Azure Active Directory 保持同步。
@@ -91,9 +96,19 @@ Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由
 * 当托管桌面和应用的 VM 连接到管理服务时，网络流量可能会流到国家/地区的边界以外。
 * 为了优化网络性能，我们建议将会话主机的 VM 共置到管理服务所在的同一 Azure 区域。
 
-## <a name="provide-feedback"></a>提供反馈
+## <a name="supported-remote-desktop-clients"></a>支持的远程桌面客户端
 
-请访问 [Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)，与产品团队和活跃的社区成员共同探讨 Windows 虚拟桌面服务。 目前我们不会受理 Windows 虚拟桌面预览版的支持案例。
+以下远程桌面客户端支持 Windows 虚拟桌面：
+
+* [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
+* [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
+
+## <a name="supported-virtual-machine-os-images"></a>受支持的虚拟机 OS 映像
+
+Windows 虚拟桌面目前支持以下 OS 映像：
+
+* Windows 10 Enterprise 多会话
+* Windows Server 2016
 
 ## <a name="next-steps"></a>后续步骤
 

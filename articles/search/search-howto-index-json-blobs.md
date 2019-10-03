@@ -1,34 +1,33 @@
 ---
 title: 使用 Azure Blob 索引器为 JSON blob 编制索引以进行全文搜索 - Azure 搜索
 description: 使用 Azure 搜索 Blob 索引器抓取 Azure JSON Blob 以获取文本内容。 索引器可自动为所选数据源（如 Azure Blob 存储）引入数据。
-ms.date: 04/11/2019
+ms.date: 05/02/2019
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 6db86d3e5aba1a2e43e69e71df8cc516fb14581f
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: d266f5edb85dd732cc39cfe98a64bee8019cdbd1
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527347"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656680"
 ---
-# <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>如何使用 Azure 搜索 Blob 索引器的 JSON blob 编制索引
-本文介绍如何配置 Azure 搜索 blob[索引器](search-indexer-overview.md)从 Azure Blob 存储中的 JSON 文档中提取结构化的内容，并使其可在 Azure 搜索中搜索。 此工作流创建 Azure 搜索索引并将其加载与从 JSON blob 中提取的现有文本。 
+# <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>如何使用 Azure 搜索 Blob 索引器为 JSON Blob 编制索引
+本文介绍如何配置 Azure 搜索 Blob [索引器](search-indexer-overview.md)，以从 Azure Blob 存储中的 JSON 文档提取结构化内容，并使其在 Azure 搜索中可供搜索。 此工作流将创建一个 Azure 搜索索引，然后连同从 JSON Blob 中提取的现有文本一起加载该索引。 
 
-可以使用[门户](#json-indexer-portal)、[REST API](#json-indexer-rest) 或 [.NET SDK](#json-indexer-dotnet) 为 JSON 内容编制索引。 所有方法的共同点是 JSON 文档都位于 Azure 存储帐户中的 blob 容器。 有关从其他非 Azure 平台推送 JSON 文档的指导，请参阅 [Azure 搜索中的数据导入](search-what-is-data-import.md)。
+可以使用[门户](#json-indexer-portal)、[REST API](#json-indexer-rest) 或 [.NET SDK](#json-indexer-dotnet) 为 JSON 内容编制索引。 所有方法的共同特点是 JSON 文档位于 Azure 存储帐户中的某个 Blob 容器内。 有关从其他非 Azure 平台推送 JSON 文档的指导，请参阅 [Azure 搜索中的数据导入](search-what-is-data-import.md)。
 
-Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON 实体的集合。 对于 JSON 集合，blob 可能**数组**的格式正确的 JSON 元素。 Blob 还无法组成的换行符分隔的多个单个 JSON 实体。 在 Azure 搜索 blob 索引器可以分析此类构造，具体取决于如何设置**parsingMode**参数在请求。
+Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON 实体集合。 对于 JSON 集合，Blob 可以包含正确格式的 JSON 元素的**数组**。 Blob 还可以包含由换行符分隔的多个 JSON 实体。 Azure 搜索中的 Blob 索引器可以根据请求中的 **parsingMode** 参数设置方式分析任何此类构造。
 
-> [!IMPORTANT]
-> `json` 并`jsonArray`分析模式都已公开发布，但`jsonLines`分析模式处于公共预览状态，不应在生产环境中使用。 有关详细信息，请参阅 [REST api-version=2017-11-11-Preview](search-api-2017-11-11-preview.md)。 
+所有 JSON 分析模式（`json`、`jsonArray`、`jsonLines`）现已推出正式版。 
 
 > [!NOTE]
-> 请按照中的索引器配置建议[到多索引](search-howto-index-one-to-many-blobs.md)输出从一个 Azure blob 的多个搜索文档。
+> 请遵循[一对多索引](search-howto-index-one-to-many-blobs.md)中的索引器配置建议从一个 Azure Blob 输出多个搜索文档。
 
 <a name="json-indexer-portal"></a>
 
@@ -36,19 +35,19 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON 实体的�
 
 为 JSON 文档编制索引的最简单方法是使用 [Azure 门户](https://portal.azure.com/)中的向导。 通过分析 Azure Blob 容器中的元数据，[**导入数据**](search-import-data-portal.md)向导可以创建默认索引、将源字段映射到目标索引字段，并以单个操作加载索引。 根据源数据的大小和复杂性，在数分钟内就能创建一个有效的全文搜索索引。
 
-我们建议使用 Azure 搜索和 Azure 存储，最好是在同一区域中的同一 Azure 订阅。
+我们建议对 Azure 搜索和 Azure 存储使用同一个 Azure 订阅，并且两者最好是在同一个区域。
 
 ### <a name="1---prepare-source-data"></a>1 - 准备源数据
 
 1. [登录到 Azure 门户](https://portal.azure.com/)。
 
-1. [创建 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)以包含你的数据。 公共访问级别可以设置为任何有效的值。
+1. [创建一个 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)用于包含数据。 可将“公共访问级别”设为任何有效值。
 
-你将需要存储帐户名称、 容器名称和访问密钥，以检索中的数据**导入数据**向导。
+在“导入数据”向导中检索数据时，需要用到存储帐户名称、容器名称和访问密钥。
 
 ### <a name="2---start-import-data-wizard"></a>2 - 启动“导入数据”向导
 
-在 Azure 搜索服务的概述页上，你可以[启动向导](search-import-data-portal.md)从命令栏中，或单击**添加 Azure 搜索**中**Blob 服务**部分应用存储帐户的左导航窗格中。
+在 Azure 搜索服务的“概述”页中，可以通过命令栏[启动该向导](search-import-data-portal.md)，或者在存储帐户左侧导航窗格的“Blob 服务”部分单击“添加 Azure 搜索”。
 
    ![门户中的导入数据命令](./media/search-import-data-portal/import-data-cmd2.png "启动导入数据向导")
 
@@ -58,13 +57,13 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON 实体的�
 
 + “要提取的数据”应是“内容和元数据”。 选择此选项可让向导推断索引架构并映射要导入的字段。
    
-+ **分析模式**应设置为*JSON*， *JSON 数组*或*JSON 行*。 
++ “分析模式”应设置为“JSON”、“JSON 数组”或“JSON 行”。 
 
   “JSON”将每个 Blob 表达为单个搜索文档，在搜索结果中作为独立的项显示。 
 
-  *JSON 数组*是包含格式正确的 JSON 数据的格式正确的 JSON blob 对应于数组的对象，或有一个属性，这是一个对象数组，并希望每个元素被表达为独立的独立搜索文档。 如果 Blob 比较复杂，而且你未选择“JSON 数组”，则会将整个 Blob 作为单个文档引入。
+  “JSON 数组”适用于包含正确格式的 JSON 数据的 Blob - 正确格式的 JSON 对应于某个对象数组或包含某个属性（一个对象数组），你希望将每个元素表达为独立的搜索文档。 如果 Blob 比较复杂，而且你未选择“JSON 数组”，则会将整个 Blob 作为单个文档引入。
 
-  *JSON 行*是想要被表达为独立独立搜索文档的每个实体的 blob 由新的行，分隔的多个 JSON 实体组成。 如果 blob 是复杂，并且不要选择*JSON 行*分析模式，并将整个 blob 作为单个文档引入。
+  “JSON 行”适用于包含多个以换行符分隔的 JSON 实体的 Blob，你希望将其中的每个实体表达为独立的搜索文档。 如果 Blob 比较复杂，而你未选择“JSON 行”分析模式，则会将整个 Blob 作为单个文档引入。
    
 + “存储容器”必须指定你的存储帐户和容器，或指定解析成容器的连接字符串。 可在 Blob 服务门户页上获取连接字符串。
 
@@ -74,21 +73,21 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON 实体的�
 
 导入 JSON 文档不需要添加认知技能。 除非需要特意在索引管道中[包含认知服务 API 和转换](cognitive-search-concept-intro.md)，否则应跳过此步骤。
 
-若要跳过该步骤，请首先转到下一步的页。
+若要跳过该步骤，请先转到下一页。
 
    ![认知搜索的下一页按钮](media/search-get-started-portal/next-button-add-cog-search.png)
 
-从该页面则可以跳过一些自定义索引。
+在该页中，可以直接跳到索引自定义操作。
 
    ![跳过认知技能步骤](media/search-get-started-portal/skip-cog-skill-step.png)
 
 ### <a name="5---set-index-attributes"></a>5 - 设置索引属性
 
-在“索引”页中，应会看到带有数据类型的字段列表，以及一系列用于设置索引属性的复选框。 该向导可以生成基于元数据并通过抽样源数据的字段列表。 
+在“索引”页中，应会看到带有数据类型的字段列表，以及一系列用于设置索引属性的复选框。 向导可以通过源数据采样，基于元数据生成字段列表。 
 
-您可以批量选择属性通过单击顶部的属性列的复选框。 选择**可检索**并**可搜索**应返回到客户端应用，可能会进行全文搜索处理每个字段。 您会注意到整数不是完整的文本或模糊搜索 （数字按原义计算和通常可在筛选器）。
+可以通过单击属性列顶部的复选框，来批量选择属性。 对于应该返回给客户端应用并且需要接受全文搜索处理的每个字段，请选择“可检索”和“可搜索”。 你会注意到，无法对整数进行全文搜索或模糊搜索（数字按原义评估，通常在筛选器中使用）。
 
-查看内容的说明[属性编制索引](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib)并[语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)有关详细信息。 
+有关详细信息，请查看[索引属性](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib)和[语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)的说明。 
 
 花费片刻时间来检查所做的选择。 运行向导后，将创建物理数据结构，到时，除非删除再重新创建所有对象，否则无法编辑这些字段。
 
@@ -109,58 +108,58 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON 实体的�
 索引编制完成后，可以使用[搜索浏览器](search-explorer.md)来查询索引。
 
 > [!NOTE]
-> 如果看不到所需的数据，您可能需要在多个字段上设置多个特性。 删除索引和索引器您刚刚创建，并逐步执行向导，修改您在步骤 5 中的索引属性的选择。 
+> 如果未看到所需的数据，可能需要在更多字段中设置更多的属性。 删除刚刚创建的索引和索引器，再次完成向导中的每个步骤，并修改在步骤 5 中对索引属性所做的选择。 
 
 <a name="json-indexer-rest"></a>
 
 ## <a name="use-rest-apis"></a>使用 REST API
 
-可以使用 REST API 进行索引 JSON blob 到 Azure 搜索中的所有索引器按照常见的三部分组成的工作流： 创建数据源、 创建索引、 创建索引器。 当你提交创建索引器请求，从 blob 存储提取数据时发生。 完成此请求后，将有一个可查询的索引。 
+可以遵循 Azure 搜索中所有索引器通用的三部分工作流，使用 REST API 为 JSON Blob 编制索引：创建数据源、创建索引、创建索引器。 提交“创建索引器”请求时，将从 Blob 存储提取数据。 完成此请求后，将获得一个可查询的索引。 
 
-你可以查看[REST 示例代码](#rest-example)末尾的此部分显示如何创建所有三个对象。 本部分还包含有关的详细信息[JSON 分析模式](#parsing-modes)，[单一 blob](#parsing-single-blobs)， [JSON 数组](#parsing-arrays)，以及[嵌套数组](#nested-json-arrays)。
+可以查看本部分末尾的 [REST 示例代码](#rest-example)，其中演示了如何创建所有三个对象。 本部分还包含有关 [JSON 分析模式](#parsing-modes)、[单一 Blob](#parsing-single-blobs)、[JSON 数组](#parsing-arrays)和[嵌套数组](#nested-json-arrays)的详细信息。
 
-对于 JSON 基于代码的索引编制，使用[Postman](search-fiddler.md)和 REST API 来创建这些对象：
+对于基于代码的 JSON 索引编制，请使用 [Postman](search-get-started-postman.md) 和 REST API 创建这些对象：
 
-+ [index](https://docs.microsoft.com/rest/api/searchservice/create-index)
++ [索引](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
 + [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-操作的顺序将要求您创建并按以下顺序调用对象。 与门户工作流，相比代码方法需要可用索引为接受通过发送 JSON 文档**创建索引器**请求。
+操作顺序要求按此顺序创建并调用对象。 与门户工作流相比，基于代码的方法要求通过一个可用的索引来接受通过“创建索引器”请求发送的 JSON 文档。
 
-Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON"array"。 Azure 搜索中的 Blob 索引器可以根据请求中 **parsingMode** 参数设置方式分析上述任一构造。
+Azure Blob 存储中的 JSON Blob 通常是单个 JSON 文档或 JSON“数组”。 Azure 搜索中的 Blob 索引器可以根据请求中 **parsingMode** 参数设置方式分析上述任一构造。
 
 | JSON 文档 | parsingMode | 描述 | 可用性 |
 |--------------|-------------|--------------|--------------|
-| 每个 Blob 各有一个 | `json` | 将 JSON Blob 分析为单个文本区块。 每个 JSON Blob 成为单个 Azure 搜索文档。 | 在这种正式[REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API 并[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK。 |
-| 每个 Blob 有多个 | `jsonArray` | 分析 Blob 中的 JSON 数组，其中数组的每个元素成为单独的 Azure 搜索文档。  | 推出预览版，在这种[REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API 并[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK。 |
-| 每个 Blob 有多个 | `jsonLines` | 分析 blob 包含其中每个实体将成为单独的 Azure 搜索文档的换行符分隔的多个 JSON 实体 （"数组"）。 | 推出预览版，在这种[REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API 并[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK。 |
+| 每个 Blob 各有一个 | `json` | 将 JSON Blob 分析为单个文本区块。 每个 JSON Blob 成为单个 Azure 搜索文档。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API 和 [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK 均已推出正式版。 |
+| 每个 Blob 有多个 | `jsonArray` | 分析 Blob 中的 JSON 数组，其中数组的每个元素成为单独的 Azure 搜索文档。  | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API 和 [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK 均已推出正式版。 |
+| 每个 Blob 有多个 | `jsonLines` | 分析包含换行符分隔的多个 JSON 实体（“数组”）的 Blob，其中的每个实体将成为独立的 Azure 搜索文档。 | [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API 和 [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK 均已推出正式版。 |
 
-### <a name="1---assemble-inputs-for-the-request"></a>1-组装为请求的输入
+### <a name="1---assemble-inputs-for-the-request"></a>1 - 汇编请求的输入
 
-对于每个请求，必须提供的服务名称和管理密钥 （在帖子标题中），Azure 搜索和存储帐户名称和 blob 存储的密钥。 可以使用[Postman](search-fiddler.md)将 HTTP 请求发送到 Azure 搜索。
+对于每个请求，必须提供 Azure 搜索的服务名称和管理密钥（在 POST 标头中），以及 Blob 存储的存储帐户名称和密钥。 可以使用 [Postman](search-get-started-postman.md) 将 HTTP 请求发送到 Azure 搜索。
 
-将以下四个值复制到记事本，以便可以将其粘贴到一个请求：
+将以下四个值复制到记事本中，以便将其粘贴到请求：
 
 + Azure 搜索服务名称
 + Azure 搜索管理密钥
 + Azure 存储帐户名称
 + Azure 存储帐户密钥
 
-您可以在门户中找到这些值：
+可以在门户中找到这些值：
 
-1. Azure 搜索在门户页面，从概述页中复制的搜索服务 URL。
+1. 在 Azure 搜索的门户页中，从“概述”页复制搜索服务 URL。
 
-2. 在左侧的导航窗格中，单击**密钥**然后将复制的主或辅助密钥 （它们是等效的）。
+2. 在左侧导航窗格中单击“密钥”，然后复制主密钥或辅助密钥（两者是等效的）。
 
-3. 切换到你的存储帐户的门户页。 在左侧的导航窗格中下,**设置**，单击**访问密钥**。 此页提供帐户名称和密钥。 将存储帐户名称和一个密钥复制到记事本。
+3. 切换到存储帐户的门户页。 在左侧导航窗格中的“设置”下，单击“访问密钥”。 此页提供帐户名称和密钥。 将存储帐户名称和其中一个密钥复制到记事本。
 
-### <a name="2---create-a-data-source"></a>2-创建数据源
+### <a name="2---create-a-data-source"></a>2 - 创建数据源
 
-此步骤提供索引器使用的数据源连接信息。 数据源是 Azure 搜索中保存连接信息中的命名的对象。 数据源类型， `azureblob`，确定哪些数据提取行为调用索引器。 
+此步骤提供索引器使用的数据源连接信息。 数据源是 Azure 搜索中用于保存连接信息的命名对象。 数据源类型 `azureblob` 确定索引器要调用哪些数据提取行为。 
 
-将替换为有效值服务名称、 管理密钥、 存储帐户和帐户密钥的占位符。
+请将服务名称、管理密钥、存储帐户和帐户密钥占位符替换为有效值。
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -171,7 +170,7 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON"array"。 
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }   
 
-### <a name="3---create-a-target-search-index"></a>3-创建目标搜索索引 
+### <a name="3---create-a-target-search-index"></a>3 - 创建目标搜索索引 
 
 索引器与索引架构配对。 如果使用的是 API（而不是门户），请提前准备索引，以便可以在索引器操作中指定它。
 
@@ -179,7 +178,7 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON"array"。 
 
 以下示例演示了一个[创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)请求。 该索引包含一个可搜索的 `content` 字段，该字段存储从 Blob 提取的文本：   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -192,11 +191,11 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON"array"。 
     }
 
 
-### <a name="4---configure-and-run-the-indexer"></a>4-配置和运行索引器
+### <a name="4---configure-and-run-the-indexer"></a>4 - 配置并运行索引器
 
-作为包含索引和数据源和索引器也是命名对象创建，并重复使用在 Azure 搜索服务。 创建索引器的完全指定的请求可能如下所示：
+与索引和数据源一样，索引器也是你创建的、可在 Azure 搜索服务中重复使用的命名对象。 完全指定的用于创建索引器的请求可能如下所示：
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -208,22 +207,22 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON"array"。 
       "parameters" : { "configuration" : { "parsingMode" : "json" } }
     }
 
-索引器配置为请求的正文中。 它需要使用数据源和 Azure 搜索中已存在的空目标索引。 
+索引器配置位于请求的正文中。 它要求提供一个数据源，以及已在 Azure 搜索中存在的一个空目标索引。 
 
-计划和参数是可选的。 如果将其忽略，索引器会立即运行，使用`json`作为分析模式。
+schedule 和 parameters 是可选的。 如果将其省略，索引器将使用 `json` 作为分析模式立即运行。
 
-此特定的索引器不包括字段映射。 在索引器定义中，您可以省略**字段映射**如果源 JSON 文档的属性与目标搜索索引的字段匹配。 
+此特定索引器不包含字段映射。 在索引器定义中，如果源 JSON 文档的属性与目标搜索索引的字段相匹配，则可以省略**字段映射**。 
 
 
 ### <a name="rest-example"></a>REST 示例
 
-本部分是用于创建对象的所有请求的概要信息。 有关组件的各部分的讨论，请参阅本文中前面的部分。
+本部分回顾用于创建对象的所有请求。 有关组成部分的介绍，请参阅本文前面的部分。
 
 ### <a name="data-source-request"></a>数据源请求
 
-所有索引器要求提供现有数据的连接信息的数据源对象。 
+所有索引器都需要一个提供现有数据连接信息的数据源对象。 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -237,9 +236,9 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON"array"。 
 
 ### <a name="index-request"></a>索引请求
 
-所有索引器需要接收数据的目标索引。 请求的正文定义索引架构，包含属性化，以支持所需的行为可搜索索引中的字段。 运行索引器时，此索引应为空。 
+所有索引器都需要一个接收数据的目标索引。 请求的正文定义索引架构，该架构由字段构成，帮助支持可搜索索引中的所需行为。 运行索引器时，此索引应该是空的。 
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -254,11 +253,11 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON"array"。 
 
 ### <a name="indexer-request"></a>索引器请求
 
-此请求显示完全指定的索引器。 它包括已在前面的示例中省略的字段映射。 回想一下该"schedule"，"parameters"和"fieldMappings"都是可选的只要没有用的默认值。 省略"计划"会导致要立即运行索引器。 省略"parsingMode"会导致要使用"json"默认的索引。
+此请求显示完全指定的索引器。 它包含前面示例中已省略的字段映射。 回顾前文，“schedule”、“parameters”和“fieldMappings”都是可选的，只要存在可用的默认值即可。 省略“schedule”会导致索引器立即运行。 省略“parsingMode”会导致索引使用“json”默认值。
 
-创建 Azure 搜索索引器将触发数据导入。 它立即，并且之后按计划运行如果提供了一个。
+在 Azure 搜索中创建索引器会触发数据导入。 索引器会立即运行，然后按计划运行（如果提供了计划）。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -289,27 +288,27 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON"array"。 
 
 <a name="parsing-modes"></a>
 
-## <a name="parsing-modes"></a>解析模式
+## <a name="parsing-modes"></a>分析模式
 
-为 JSON blob 可以假定多个窗体。 **ParsingMode** JSON 索引器上的参数确定如何分析并在 Azure 搜索索引结构化 JSON blob 内容：
+JSON Blob 可以采用多个表单。 JSON 索引器中的 **parsingMode** 参数确定如何在 Azure 搜索索引中分析和结构化 JSON Blob 内容：
 
 | parsingMode | 描述 |
 |-------------|-------------|
-| `json`  | 每个 blob 作为单个文档的索引。 这是默认值。 |
-| `jsonArray` | 如果 blob 包含 JSON 数组，并且你需要成为 Azure 搜索中一个单独的文档的数组的每个元素，请选择此模式。 |
-|`jsonLines` | 如果 blob 包含多个由新行分隔的 JSON 实体，并且你需要成为 Azure 搜索中一个单独的文档的每个实体，请选择此模式。 |
+| `json`  | 将每个 Blob 作为单个文档编制索引。 这是默认值。 |
+| `jsonArray` | 如果 Blob 由 JSON 数组构成，并且你需要让该数组的每个元素成为 Azure 搜索中的独立文档，请选择此模式。 |
+|`jsonLines` | 如果 Blob 由多个以的换行符分隔的 JSON 实体构成，并且你需要让每个实体成为 Azure 搜索中的独立文档，请选择此模式。 |
 
-可将某个文档视为搜索结果中的单个项。 如果你想要在搜索结果中显示为独立项的数组中每个元素，然后使用`jsonArray`或`jsonLines`相应选项。
+可将某个文档视为搜索结果中的单个项。 如果你希望数组中的每个元素在搜索结果中显示为独立的项，请相应地使用 `jsonArray` 或 `jsonLines` 选项。
 
-在索引器定义中，可以选择性地使用[字段映射](search-indexer-field-mappings.md)来选择要将源 JSON 文档的哪些属性用于填充目标搜索索引。 有关`jsonArray`分析模式下，如果数组作为较低级别属性存在，您可以设置文档的根，该值指示该数组放在 blob 的位置。
+在索引器定义中，可以选择性地使用[字段映射](search-indexer-field-mappings.md)来选择要将源 JSON 文档的哪些属性用于填充目标搜索索引。 对于 `jsonArray` 分析模式，如果数组作为较低级别的属性存在，则可以设置一个文档根，用于指示要将该数组放在 Blob 中的哪个位置。
 
 > [!IMPORTANT]
-> 当你使用`json`，`jsonArray`或`jsonLines`分析模式下，Azure 搜索假定数据源中的所有 blob 都包含 JSON。 如果需要在同一数据源中支持混合使用 JSON 和非 JSON blob，请通过[我们的 UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search)告知我们。
+> 使用`json` `jsonArray`或分析模式时,Azure搜索假定数据源中的所有blob都包含JSON。`jsonLines` 如果需要在同一数据源中支持混合使用 JSON 和非 JSON blob，请通过[我们的 UserVoice 站点](https://feedback.azure.com/forums/263029-azure-search)告知我们。
 
 
 <a name="parsing-single-blobs"></a>
 
-## <a name="parse-single-json-blobs"></a>分析单个 JSON blob
+## <a name="parse-single-json-blobs"></a>分析单个 JSON Blob
 
 默认情况下，[Azure 搜索 Blob 索引器](search-howto-indexing-azure-blob-storage.md)会将 JSON blob 分析为单个文本块。 通常会希望保留 JSON 文档的结构。 例如，假设 Azure Blob 存储中包含以下 JSON 文档：
 
@@ -329,7 +328,7 @@ Blob 索引器将 JSON 文档分析成单个 Azure 搜索文档。 索引器通�
 
 ## <a name="parse-json-arrays"></a>分析 JSON 数组
 
-或者，可以使用的 JSON 数组选项。 如果 blob 包含此选项很有用*格式正确的 JSON 对象的数组*，并且希望每个元素成为单独的 Azure 搜索文档。 例如，对于以下 JSON Blob，可以使用三个单独的文档（每个文档包含“id”和“text”字段）填充 Azure 搜索。  
+或者，可以使用 JSON 数组选项。 如果 Blob 包含正确格式的 JSON 对象的数组，并且你希望每个元素都成为单独的 Azure 搜索文档时，则此选项非常有用。 例如，对于以下 JSON Blob，可以使用三个单独的文档（每个文档包含“id”和“text”字段）填充 Azure 搜索。  
 
     [
         { "id" : "1", "text" : "example 1" },
@@ -337,9 +336,9 @@ Blob 索引器将 JSON 文档分析成单个 Azure 搜索文档。 索引器通�
         { "id" : "3", "text" : "example 3" }
     ]
 
-对于 JSON 数组，索引器定义应如以下示例所示。 请注意，parsingMode 参数指定 `jsonArray` 分析器。 指定正确的分析器，并具有正确的数据输入将是 JSON blob 编制索引的只有两个特定于阵列的要求。
+对于 JSON 数组，索引器定义应如以下示例所示。 请注意，parsingMode 参数指定 `jsonArray` 分析器。 指定适当的分析器和提供适当的数据输入，是为 JSON Blob 编制索引所要满足的，专门与数组相关的唯一两项要求。
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -355,8 +354,8 @@ Blob 索引器将 JSON 文档分析成单个 Azure 搜索文档。 索引器通�
 
 <a name="nested-json-arrays"></a>
 
-## <a name="parse-nested-arrays"></a>分析嵌套的数组
-对于 JSON 数组具有嵌套元素，可以指定`documentRoot`来指示多级别结构。 例如，如果 blob 如下所示：
+## <a name="parse-nested-arrays"></a>分析嵌套数组
+对于包含嵌套元素的 JSON 数组，可以指定 `documentRoot` 来指示多级别结构。 例如，如果 blob 如下所示：
 
     {
         "level1" : {
@@ -376,17 +375,17 @@ Blob 索引器将 JSON 文档分析成单个 Azure 搜索文档。 索引器通�
         "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
     }
 
-## <a name="parse-blobs-separated-by-newlines"></a>分析由换行符分隔的 blob
+## <a name="parse-blobs-separated-by-newlines"></a>分析换行符分隔的 Blob
 
-如果你的 blob 包含的换行符分隔的多个 JSON 实体，并且你希望每个元素都成为单独的 Azure 搜索文档，您可以选择 JSON 线选项。 例如，给定以下 blob （其中有三个不同的 JSON 实体），您可以填充 Azure 搜索索引使用三个单独的文档，每个都具有"id"和"text"字段。
+如果 Blob 包含以换行符分隔的多个 JSON 实体，并且你希望每个元素成为独立的 Azure 搜索文档，则可以选择“JSON 行”选项。 例如，对于以下 Blob（其中包含三个不同的 JSON 实体），可以使用三个独立的文档（每个文档包含“id”和“text”字段）填充 Azure 搜索索引。
 
     { "id" : "1", "text" : "example 1" }
     { "id" : "2", "text" : "example 2" }
     { "id" : "3", "text" : "example 3" }
 
-对于 JSON 行，索引器定义应类似于下面的示例。 请注意，parsingMode 参数指定 `jsonLines` 分析器。 
+对于 JSON 行，索引器定义应如以下示例所示。 请注意，parsingMode 参数指定 `jsonLines` 分析器。 
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -398,13 +397,13 @@ Blob 索引器将 JSON 文档分析成单个 Azure 搜索文档。 索引器通�
       "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
     }
 
-请再次注意，字段映射可以省略，类似于`jsonArray`分析模式。
+同样请注意，与 `jsonArray` 分析模式一样，可以省略字段映射。
 
 ## <a name="add-field-mappings"></a>添加字段映射
 
 当源与目标字段未完美对齐时，可以在请求正文中定义一个字段映射节，以建立显式的字段间关联。
 
-目前，Azure 搜索无法编制索引的任意 JSON 文档直接因为它仅支持基元数据类型、 字符串数组和 GeoJSON 点。 不过，可以使用**字段映射**选取 JSON 文档的部分，并将它们“提升”到搜索文档的顶级字段。 若要了解字段映射的基础知识，请参阅 [Azure 搜索索引器中的字段映射](search-indexer-field-mappings.md)。
+目前，Azure 搜索不能直接索引任意 JSON 文档，因为它只支持基元数据类型、字符串数组和 GeoJSON 点。 不过，可以使用**字段映射**选取 JSON 文档的部分，并将它们“提升”到搜索文档的顶级字段。 若要了解字段映射的基础知识，请参阅 [Azure 搜索索引器中的字段映射](search-indexer-field-mappings.md)。
 
 回到前面的示例 JSON 文档：
 
@@ -435,7 +434,7 @@ Blob 索引器将 JSON 文档分析成单个 Azure 搜索文档。 索引器通�
 >
 >
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [Azure 搜索中的索引器](search-indexer-overview.md)
 + [使用 Azure 搜索为 Azure Blob 存储编制索引](search-howto-index-json-blobs.md)

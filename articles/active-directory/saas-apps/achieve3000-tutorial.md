@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ddac8a87bb557daadf0a6ea0f1303545ec63d50
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8aa86f75d70e7253fa250893ce685b90d6a02f01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835531"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107422"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-achieve3000"></a>教程：Azure Active Directory 与 Achieve3000 的集成
 
@@ -51,21 +51,21 @@ ms.locfileid: "57835531"
 
 若要配置 Achieve3000 与 Azure AD 的集成，需从库中将 Achieve3000 添加到托管 SaaS 应用列表。
 
-若要从库添加 Achieve3000，请执行以下步骤：
+ 若要从库添加 Achieve3000，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Achieve3000”，在结果面板中选择“Achieve3000”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“Achieve3000”，在结果面板中选择“Achieve3000”，然后单击“添加”按钮添加该应用程序    。
 
      ![结果列表中的 Achieve3000](common/search-new-app.png)
 
@@ -89,7 +89,7 @@ ms.locfileid: "57835531"
 
 若要配置 Achieve3000 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Achieve3000”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Achieve3000”应用程序集成页上，选择“单一登录”。  
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,55 +97,55 @@ ms.locfileid: "57835531"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![Achieve3000 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://saml.achieve3000.com/district/<District Identifier>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://saml.achieve3000.com/district/<District Identifier>` 
 
-    b. 在“标识符(实体 ID)”文本框中，键入值：`achieve3000-saml`
+    b. 在“标识符(实体 ID)”文本框中，键入值：`achieve3000-saml` 
 
     > [!NOTE]
-    > 登录 URL 值不是真实值。 请使用实际登录 URL 更新此值。 联系 [Achieve3000 客户端支持团队](https://www.achieve3000.com/contact-us/)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 登录 URL 值不是真实值。 请使用实际登录 URL 更新此值。 联系 [Achieve3000 客户端支持团队](https://www.achieve3000.com/contact-us/)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. Achieve3000 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
+5. Achieve3000 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
-6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤： 
+6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ： 
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     | ---------------| --------- |
     | studentID     | user.mail |
     | | |
 
-    a. 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
     ![图像](common/new-save-attribute.png)
 
     ![图像](common/new-attribute-details.png)
 
-    b. 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
-    c. 将“命名空间”留空。
+    c. 将“命名空间”留空  。
 
-    d. 选择“源”作为“属性”。
+    d. 选择“源”作为“属性”  。
 
-    e. 在“源属性”列表中，键入为该行显示的属性值。
+    e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“确定”
+    f. 单击“确定” 
 
     g. 单击“ **保存**”。
 
-7. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+7. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-8. 在“设置 Achieve3000”部分，根据要求复制相应的 URL。
+8. 在“设置 Achieve3000”部分，根据要求复制相应的 URL。 
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -157,17 +157,17 @@ ms.locfileid: "57835531"
 
 ### <a name="configure-achieve3000-single-sign-on"></a>配置 Achieve3000 单一登录
 
-若要在 **Achieve3000** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Achieve3000 支持团队](https://www.achieve3000.com/contact-us/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Achieve3000** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Achieve3000 支持团队](https://www.achieve3000.com/contact-us/)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -175,40 +175,40 @@ ms.locfileid: "57835531"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予 Achieve3000 的访问权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Achieve3000”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Achieve3000”。   
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Achieve3000”。
+2. 在应用程序列表中，选择“Achieve3000”  。
 
     ![应用程序列表中的 Achieve3000 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-achieve3000-test-user"></a>创建 Achieve3000 测试用户
 

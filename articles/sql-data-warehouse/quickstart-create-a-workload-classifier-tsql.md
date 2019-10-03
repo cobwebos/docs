@@ -1,28 +1,25 @@
 ---
 title: 快速入门：创建工作负荷分类器 - T-SQL | Microsoft Docs
-description: 使用 T-SQL 创建具有较高重要性的工作负荷分类器
+description: 使用 T-SQL 创建具有较高重要性的工作负荷分类器。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.subservice: workload management
-ms.date: 03/13/2019
+ms.subservice: workload-management
+ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 198faf6791a4a2caa2cefee2181a13ed8185310e
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: ea2e0a3bb55d16c0b413b114fca9da7f95f5c053
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617331"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574866"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql-preview"></a>快速入门：使用 T-SQL（预览版）创建工作负荷分类器
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>快速入门：使用 T-SQL 创建工作负荷分类器
 
 在本快速入门中，我们将为组织的 CEO 快速创建一个具有较高重要性的工作负荷分类器。 此工作负荷分类器允许 CEO 查询的优先级高于队列中重要性更低的其他查询。
-
-> [!Note]
-> SQL 数据仓库第 2 代已提供工作负载分类预览。 工作负载管理分类和重要性预览适用于发布日期为 2019 年 4 月 9 日或之后的版本。  用户应避免使用早于此日期的版本来进行工作负载管理测试。  要确定你的版本是否支持工作负载管理，请在连接到 SQL 数据仓库实例时运行select @@version。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -33,7 +30,7 @@ ms.locfileid: "59617331"
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门假设读者已有一个 SQL 数据仓库，并且拥有“控制数据库”权限。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。
+本快速入门假设你已有 SQL 数据仓库，并且具有 CONTROL DATABASE 权限。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库  。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -100,16 +97,16 @@ DROP USER [TheCEO]
 
     ![清理资源](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. 若要暂停计算，请选择“暂停”按钮。 暂停数据仓库后，可看到“启动”按钮。  若要恢复计算，请选择“启动”。
+2. 若要暂停计算，请选择“暂停”  按钮。 暂停数据仓库后，可看到“启动”  按钮。  若要恢复计算，请选择“启动”  。
 
-3. 若要删除数据仓库以免产生计算或存储费用，请选择“删除”。
+3. 若要删除数据仓库以免产生计算或存储费用，请选择“删除”  。
 
-4. 要删除所创建的 SQL 服务器，请选择上图所示的“mynewserver-20180430.database.windows.net”，然后选择“删除”。  请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
+4. 要删除所创建的 SQL 服务器，请选择上图所示的“mynewserver-20180430.database.windows.net”，然后选择“删除”   。  请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
 
-5. 若要删除资源组，请选择“myResourceGroup”，然后选择“删除资源组”。
+5. 若要删除资源组，请选择“myResourceGroup”  ，然后选择“删除资源组”  。
 
 ## <a name="next-steps"></a>后续步骤
 
-现已创建一个工作负荷分类器。 以 TheCEO 身份运行一些查询，以查看该分类器的执行情况。 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以查看查询和分配的重要性。
-
-有关 SQL 数据仓库工作负荷管理的详细信息，请参阅 [SQL 数据仓库工作负荷重要性](sql-data-warehouse-workload-importance.md)和 [SQL 数据仓库工作负荷分类](sql-data-warehouse-workload-classification.md)。
+- 现已创建一个工作负荷分类器。 以 TheCEO 身份运行一些查询，以查看该分类器的执行情况。 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以查看查询和分配的重要性。
+- 有关 Azure SQL 数据仓库工作负荷管理的详细信息，请参阅[工作负荷重要性](sql-data-warehouse-workload-importance.md)和[工作负荷分类](sql-data-warehouse-workload-classification.md)。
+- 请参阅有关[配置工作负荷重要性](sql-data-warehouse-how-to-configure-workload-importance.md)和[管理和监视工作负荷管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)的操作指南文章。

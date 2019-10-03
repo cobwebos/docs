@@ -3,7 +3,7 @@ title: 开始使用 Azure 存储和 Visual Studio 连接服务（WebJob 项目�
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 Azure WebJobs 项目中使用 Azure 表存储
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 061a6c46-0592-4e5d-aced-ab7498481cde
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: a9a4475465fefb01ec53e6e0eb814f9b8f192a1b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 8875f680c8bb83c2375d6fe767f376cbb35d5a0a
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799316"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510667"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure 存储入门（Azure WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -30,7 +30,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 一些代码段显示了手动调用（即：不是使用触发器属性之一调用）的函数中使用的 **Table** 属性。
 
 ## <a name="how-to-add-entities-to-a-table"></a>如何向表中添加实体
-若要将实体添加到表中，请将 Table 属性与 ICollector<T> 或 IAsyncCollector<T> 参数一起使用，其中 T 指定想要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。
+若要将实体添加到表中, 请将**table**属性**与\<ICollector t >** 或 **\<IAsyncCollector t >** 参数一起使用, 其中**t**指定想要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。
 
 下面的代码示例将 **Person** 实体添加到名为 *Ingress* 的表。
 
@@ -79,7 +79,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 ![Ingress 函数已完成](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>如何从表中读取多个实体
-要读取表，请将 Table 属性与 IQueryable**<T>** 参数一起使用，其中 T 派生自 TableEntity 或者用于实现 ITableEntity。
+若要读取表, 请将**table**属性与**IQueryable\<t >** 参数一起使用, 其中类型**t**从**TableEntity**派生或实现**ITableEntity**。
 
 下面的代码示例读取并记录 **Ingress** 表中的所有行：
 

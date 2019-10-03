@@ -10,12 +10,13 @@ ms.subservice: recommendations
 ms.topic: overview
 ms.date: 02/15/2018
 ms.author: luisca
-ms.openlocfilehash: e04cc127e08ee219fbd82470a87a79fce657231c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: 33bc899fa1bbeb4c3cde24859666251880e79dba
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877570"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704277"
 ---
 # <a name="recommendations-api-discontinued"></a>建议 API（已停用）
 

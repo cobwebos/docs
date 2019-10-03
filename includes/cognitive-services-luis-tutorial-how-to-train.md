@@ -11,13 +11,13 @@ ms.topic: include
 ms.date: 07/30/2018
 ms.author: diberry
 ms.openlocfilehash: 53ac373cf0e4bd68339ca4c79ce0fc8e9cf396f4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741620"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173253"
 ---
-1. 在 LUIS 网站的右上方，选择“训练”按钮。 
+1. 在 LUIS 网站的右上方，选择“训练”按钮  。 
 
     ![“训练”按钮](./media/cognitive-services-luis/train-button.png)
 

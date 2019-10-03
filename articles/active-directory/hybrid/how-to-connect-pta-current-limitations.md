@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97dc67d46b08bf5765c59806b45edd82f38720cd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011970"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60347724"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 传递身份验证：当前限制
 
@@ -48,7 +48,7 @@ _不_支持以下方案：
 - 直通身份验证未与 [Azure AD Connect Health](whatis-hybrid-identity-health.md) 集成。
 
 > [!IMPORTANT]
-> 仅作为不支持方案的变通方法（除 Azure AD Connect Health 集成），可在 Azure AD Connect 向导中的[可选功能](how-to-connect-install-custom.md#optional-features)页上启用“密码哈希同步”。
+> 仅  作为不支持方案的变通方法（除 Azure AD Connect Health 集成），可在 Azure AD Connect 向导中的[可选功能](how-to-connect-install-custom.md#optional-features)页上启用“密码哈希同步”。
 > 
 > [!NOTE]
 > 此外，启用“密码哈希同步”还可以选择在本地基础结构被破坏的情况下故障转移身份验证。 这种从传递身份验证到密码哈希同步的故障转移不是自动进行的。 需要使用 Azure AD Connect 手动切换登录方法。 如果运行 Azure AD Connect 的服务器出现故障，则需要 Microsoft 支持部门的帮助以关闭传递身份验证。

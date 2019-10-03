@@ -8,12 +8,12 @@ ms.topic: include
 author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: 6af620f54acb3bf782f05b81f12aca2103cddf47
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 46a7eb25152c8c7e9ac22c5b4df67bbf6416df4d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654921"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69894090"
 ---
 >[!IMPORTANT]
 >已创建的资源可以用作其他 Azure 机器学习服务教程和操作方法文章的先决条件。 
@@ -21,12 +21,12 @@ ms.locfileid: "53654921"
 
 如果不打算使用已创建的资源，请删除它们，以免产生任何费用：
 
-1. 在 Azure 门户中，选择最左侧的“资源组”。
+1. 在 Azure 门户中，选择最左侧的“资源组”  。
  
-   ![在 Azure 门户中删除](./media/aml-delete-resource-group/delete-resources.png)
+   [![在 Azure 门户中删除](./media/aml-delete-resource-group/delete-resources.png)](./media/aml-delete-resource-group/delete-resources-expanded.png)
 
 1. 从列表中选择已创建的资源组。
 
-1. 选择“删除资源组”。
+1. 选择“删除资源组”  。
 
-1. 输入资源组名称。 然后选择“删除”。
+1. 输入资源组名称。 然后选择“删除”  。

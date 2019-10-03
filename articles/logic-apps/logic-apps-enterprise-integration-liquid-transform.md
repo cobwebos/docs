@@ -9,20 +9,20 @@ ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 5472a8ce2670a34174d6d39f0d90faca8a7002ad
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 203c57a2755a3287566a774e2878a87b847337b9
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58292880"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900658"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 Liquid 模板执行高级 JSON 转换
 
-可以在逻辑应用中通过**撰写**或**分析 JSON** 等本机数据操作完成基本 JSON 转换。 若要执行高级 JSON 转换，可以使用 [Liquid](https://shopify.github.io/liquid/)（一种用于灵活 Web 应用的开源模板语言）创建模板或映射。 Liquid 模板定义如何转换 JSON 输出，并支持更复杂的 JSON 转换，如迭代、 控制流、 变量等。 
+可以在逻辑应用中通过**撰写**或**分析 JSON** 等本机数据操作完成基本 JSON 转换。 若要执行高级 JSON 转换，可以使用 [Liquid](https://shopify.github.io/liquid/)（一种用于灵活 Web 应用的开源模板语言）创建模板或映射。 液体模板定义如何转换 JSON 输出，并支持更复杂的 JSON 转换，如迭代、控制流、变量等。 
 
-在逻辑应用中执行 Liquid 转换之前，必须首先定义 JSON 到 JSON 的映射通过映射 Liquid 模板和应用商店集成帐户中。 本文展示了如何创建并使用此 Liquid 模板或映射。 
+在逻辑应用中执行液体转换之前，必须先使用液体模板来定义 JSON 到 JSON 的映射，并将该映射存储在集成帐户中。 本文展示了如何创建并使用此 Liquid 模板或映射。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，可以[从免费的 Azure 帐户着手](https://azure.microsoft.com/free/)。 或者[注册即用即付订阅](https://azure.microsoft.com/pricing/purchase-options/)。
 
@@ -34,10 +34,10 @@ ms.locfileid: "58292880"
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>为集成帐户创建 Liquid 模板或映射
 
-1. 对于此示例，请创建此步骤中所述的示例 Liquid 模板。 在 Liquid 模板，你可以使用[Liquid 筛选](https://shopify.github.io/liquid/basics/introduction/#filters)，可使用该技术[DotLiquid](https://dotliquidmarkup.org/)和C#命名约定。 
+1. 对于此示例，请创建此步骤中所述的示例 Liquid 模板。 在液体模板中，可以使用[液体过滤器](https://shopify.github.io/liquid/basics/introduction/#filters)，使用[DotLiquid](https://dotliquidmarkup.org/)和C#命名约定。 
 
    > [!NOTE]
-   > 请确保使用的筛选器名称*句子大小写*在模板中。 否则，筛选器不会工作。
+   > 请确保筛选器名称在模板中使用*句子大小写*。 否则，筛选器将不起作用。
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -81,7 +81,7 @@ ms.locfileid: "58292880"
 
 1. 在 Azure 门户中，执行以下步骤[创建空的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-2. 在逻辑应用设计器中，向逻辑应用中添加[请求触发器](../connectors/connectors-native-reqres.md#use-the-http-request-trigger)。
+2. 在逻辑应用设计器中，向逻辑应用中添加[请求触发器](../connectors/connectors-native-reqres.md#add-request)。
 
 3. 在触发器下，选择“新建步骤”。 
    在搜索框中，输入“liquid”作为筛选器，然后选择以下操作：**将 JSON 转换为 JSON - Liquid**

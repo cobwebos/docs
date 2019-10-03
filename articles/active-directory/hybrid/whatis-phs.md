@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f588115e38ded07b79568c91b8d166949b34a886
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 83e172e61411c7c1c098706b5ff4566f565d6bf1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179172"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253859"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>什么是与 Azure AD 的密码哈希同步？
 密码哈希同步是用来实现混合标识的登录方法之一。 Azure AD Connect 将用户密码的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。
@@ -47,7 +47,7 @@ ms.locfileid: "56179172"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是混合标识？](whatis-phs.md)
+- [什么是混合标识？](whatis-hybrid-identity.md)
 - [什么是 Azure AD Connect 和 Connect Health？](whatis-azure-ad-connect.md)
 - [什么是直通身份验证 (PTA)？](how-to-connect-pta.md)
 - [什么是联合身份验证？](whatis-fed.md)

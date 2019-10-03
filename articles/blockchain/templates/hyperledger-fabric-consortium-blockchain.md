@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/23/2019
+ms.date: 05/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: ce1afbd5499e798888e77f52d7b652e7e1f548fc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005820"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65510750"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric 联盟网络
 
@@ -60,19 +60,19 @@ ms.locfileid: "58005820"
 
 开始之前，需要一个能够支持部署多个虚拟机和标准存储帐户的 Azure 订阅。 如果没有 Azure 订阅，可以[创建一个免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
-拥有订阅后，请转到 [Azure 门户](https://portal.azure.com)。 选择“创建资源”>“区块链”>“Hyperledger Fabric 联盟”。
+拥有订阅后，请转到 [Azure 门户](https://portal.azure.com)。 选择“创建资源”>“区块链”>“Hyperledger Fabric 联盟”  。
 
 ![Hyperledger Fabric 单一成员区块链市场模板](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
 
 ## <a name="deployment"></a>部署
 
-在“Hyperledger Fabric 联盟”模板中，选择“创建”。
+在“Hyperledger Fabric 联盟”模板中，选择“创建”   。
 
 模板部署将引导你配置多节点 [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) 网络。 部署流程分为四个步骤：基本信息、联盟网络设置、Fabric 配置和可选组件。
 
 ### <a name="basics"></a>基础
 
-在“基本信息”中，指定适用于任何部署的标准参数的值。 例如，订阅、资源组和基本的虚拟机属性。
+在“基本信息”中，指定适用于任何部署的标准参数的值  。 例如，订阅、资源组和基本的虚拟机属性。
 
 ![基础](./media/hyperledger-fabric-consortium-blockchain/basics.png)
 
@@ -87,26 +87,26 @@ ms.locfileid: "58005820"
 **资源组** |要将联盟网络部署到的资源组 ||
 **位置** |要部署第一个成员的 Azure 区域 ||
 
-选择“确定”。
+选择“确定”  。
 
 ### <a name="consortium-network-settings"></a>联盟网络设置
 
-在“网络设置”中，指定用于创建或加入现有联盟网络的输入，并配置组织设置。
+在“网络设置”中，指定用于创建或加入现有联盟网络的输入，并配置组织设置  。
 
 ![联盟网络设置](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
 
 | 参数名称 | 描述 | 允许的值 |
 |---|---|---|
-**网络配置** |可以选择创建新网络或加入现有网络。 如果选择“加入现有网络”，则需要提供其他值。 |新建网络 <br/> 加入现有网络 |
+**网络配置** |可以选择创建新网络或加入现有网络。 如果选择“加入现有网络”，则需要提供其他值  。 |新建网络 <br/> 加入现有网络 |
 **HLF CA 密码** |用于由证书颁发机构生成的证书的密码，在部署过程中创建。 密码必须包含以下三种字符类型：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。<br /><br />虽然所有虚拟机最初都有相同的密码，但可以在预配后更改密码。|1 - 25 个字符 |
 **组织设置** |可以自定义组织的名称和证书，也可以使用默认值。|默认 <br/> 高级 |
 **VPN 网络设置** | 预配 VPN 隧道网关以访问 VM | 是 <br/> 否 |
 
-选择“确定”。
+选择“确定”  。
 
 ### <a name="fabric-specific-settings"></a>Fabric 特定的设置
 
-在“Fabric 配置”中，配置网络大小和性能，并为网络可用性指定输入。 例如，排序节点和对等节点的数量，每个节点使用的持久性引擎，以及 VM 大小。
+在“Fabric 配置”中，配置网络大小和性能，并为网络可用性指定输入  。 例如，排序节点和对等节点的数量，每个节点使用的持久性引擎，以及 VM 大小。
 
 ![Fabric 设置](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
 
@@ -133,15 +133,15 @@ ms.locfileid: "58005820"
 
 ![多对等节点配置](./media/hyperledger-fabric-consortium-blockchain/multiple-peer-nodes.png)
 
-选择“确定”。
+选择“确定”  。
 
 ### <a name="deploy"></a>部署
 
-在“摘要”边栏选项卡中，查看指定的输入并运行基本的部署前验证。
+在“摘要”边栏选项卡中，查看指定的输入并运行基本的部署前验证  。
 
 ![摘要](./media/hyperledger-fabric-consortium-blockchain/summary.png)
 
-查看法律和隐私条款，然后选择“购买”进行部署。 部署时间可能从几分钟到数十分钟不等，具体取决于正在预配的 VM 数量。
+查看法律和隐私条款，然后选择“购买”进行部署  。 部署时间可能从几分钟到数十分钟不等，具体取决于正在预配的 VM 数量。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,16 +8,15 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
-ms.author: ayolubek
+ms.author: craigg
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b6f0d25f621768f79e8262f38617152e91692a23
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bebbb3d053db37a9716230dfbb14372696dd4936
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838844"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570524"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>使用数据库异地复制实现多租户 SaaS 应用程序的灾难恢复
 
@@ -52,7 +51,7 @@ ms.locfileid: "57838844"
 
 必须仔细考虑所有组成部分，尤其是大规模操作时。 在总体上，该计划必须实现多个目标：
 
-* 设置
+* 安装
     * 在恢复区域中建立和维护镜像映像环境。 在此恢复环境中创建弹性池和复制任何数据库可以在恢复区域中保留容量。 维护此环境的工作包括预配新租户数据库时复制这些数据库。  
 * 恢复
     * 如果使用缩减的恢复环境来最大限度地降低日常成本，则必须扩大池和数据库，以在恢复区域中获得完全运转能力
@@ -90,7 +89,7 @@ ms.locfileid: "57838844"
 ## <a name="review-the-healthy-state-of-the-application"></a>查看应用程序的正常状态
 
 启动恢复进程前，请查看应用程序的健康状态。
-1. 在 Web 浏览器中打开 Wingtip Tickets 事件中心（ http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net - 请将 &lt;user&gt; 替换为部署的用户值）。
+1. 在 Web 浏览器中打开 Wingtip Tickets 事件中心（ http://events.wingtip-dpt.&lt ;user&gt;.trafficmanager.net - 请将 &lt; user&gt; 替换为部署的用户值）。
     * 滚动到页面底部，注意页脚中的目录服务器名称和位置。 该位置是部署应用的区域。
     提示：将鼠标悬停在该位置上可以放大显示内容。
     ![原始区域中的事件中心运行状况状态](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
@@ -106,7 +105,7 @@ ms.locfileid: "57838844"
 此任务启动一个过程，将服务器、弹性池和数据库的配置同步到租户目录中。 该过程能在目录中使此信息保持最新。  该过程将处理原始区域或恢复区域中的活动目录。 恢复过程中将使用配置信息来确保恢复环境与原始环境保持一致，并且在稍后的遣返过程中，确保原始区域与恢复环境中所做的任何更改保持一致。 目录还可用于跟踪租户资源的恢复状态
 
 > [!IMPORTANT]
-> 为简单起见，同步进程以及其他长时间运行的恢复和遣返进程在作为本地 PowerShell 作业或会话在客户端用户身份下运行这些教程中实现。 在若干小时后，登录时颁发的身份验证令牌将会过期，因而作业将会失败。 在生产场景中，长时间运行的过程应该实施为某种以服务主体运行的可靠 Azure 服务。 请参阅[使用 Azure PowerShell 创建具有证书的服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)。
+> 为简单起见, 在这些教程中, 同步过程以及其他长时间运行的恢复和遣返进程都是在客户端用户登录下运行的本地 PowerShell 作业或会话来实现的。 在若干小时后，登录时颁发的身份验证令牌将会过期，因而作业将会失败。 在生产场景中，长时间运行的过程应该实施为某种以服务主体运行的可靠 Azure 服务。 请参阅[使用 Azure PowerShell 创建具有证书的服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)。
 
 1. 在 PowerShell ISE 中，打开 ...\Learning Modules\UserConfig.psm1 文件。 将第 10 行和第 11 行中的 `<resourcegroup>` 和 `<user>` 替换为部署应用时使用的值。  保存该文件！
 
@@ -207,7 +206,7 @@ ms.locfileid: "57838844"
  
      ![事件中心脱机](media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
-   * 如果直接打开脱机租户的“事件”页，将会看到“租户脱机”通知。 例如，如果 Contoso Concert Hall 处于脱机状态，请尝试打开 http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall ![Contoso 脱机页](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
+   * 如果直接打开脱机租户的“事件”页，将会看到“租户脱机”通知。 例如，如果 Contoso Concert Hall 处于脱机状态，请尝试打开 http://events.wingtip-dpt.&lt ;user&gt;.trafficmanager.net/contosoconcerthall ![ Contoso 脱机页](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
 
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>在恢复区域中预配新租户
 即使是在故障转移所有现有的租户数据库之前，也可以在恢复区域中预配新租户。  
@@ -256,7 +255,7 @@ ms.locfileid: "57838844"
 2. 在 *PowerShell ISE* 中的 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 脚本内设置以下值：
     * **$DemoScenario = 5**：从恢复区域中的某个租户删除事件
 3. 按 **F5** 执行脚本
-4. 刷新 Contoso Concert Hall 事件页（ http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall - 请将 &lt;user&gt; 替换为部署的用户值），注意最后一个事件已删除。
+4. 刷新 Contoso Concert Hall 事件页（ http://events.wingtip-dpt.&lt ;user&gt;.trafficmanager.net/contosoconcerthall - 请将 &lt; user&gt; 替换为部署的用户值），注意最后一个事件已删除。
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>将应用程序遣返到其原始生产区域
 
@@ -289,7 +288,7 @@ ms.locfileid: "57838844"
     * 按 **F5** 在新 PowerShell 窗口中运行恢复脚本。  遣返过程需要花费几分钟时间，可在 PowerShell 窗口中监视其进度。
     ![遣返过程](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
-4. 在脚本运行期间，刷新事件中心页 (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net)
+4. 在脚本运行期间，刷新事件中心页 (http://events.wingtip-dpt.&lt ;user&gt;.trafficmanager.net)
     * 请注意，所有租户都为联机状态，并且可通过此进程访问。
 
 5. 遣返完成后，刷新事件中心并打开 Hawthorn Hall 的事件页。 请注意，此数据库已遣返到原始区域。

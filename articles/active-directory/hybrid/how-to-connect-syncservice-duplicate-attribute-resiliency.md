@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438295"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60348756"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>标识同步和重复属性复原
 重复属性复原是 Azure Active Directory 的一项功能，可在运行 Microsoft 的同步工具之一时消除 **UserPrincipalName** 和 **ProxyAddress** 冲突所造成的不便。
 
-在给定 Azure Active Directory 租户的所有“用户”、“组”或“联系人”对象中，这两个属性通常必须是唯一的。
+在给定 Azure Active Directory 租户的所有“用户”  、“组”  或“联系人”  对象中，这两个属性通常必须是唯一的。
 
 > [!NOTE]
 > 只有用户可以拥有 UPN。
@@ -113,17 +113,17 @@ Azure Active Directory 并不是完全无法预配或更新具有重复属性的
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>以有限的数量或全部
-1. **MaxResults \<Int >** 可用于将查询限制到特定数目的值。
+1. **MaxResults \<Int>** 可用于将查询限制为特定数目的值。
 2. **All** 可用于确保在有大量错误的情况下检索所有结果。
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
 ## <a name="microsoft-365-admin-center"></a>Microsoft 365 管理中心
-可以在 Microsoft 365 管理中心查看目录同步错误。 Microsoft 365 管理中心中的报表中心仅显示**用户**具有这些错误的对象。 它不显示有关 **Groups** 和 **Contacts** 之间的冲突的信息。
+可以在 Microsoft 365 管理中心查看目录同步错误。 Microsoft 365 管理中心的报告只显示存在这些错误的 **User** 对象。 它不显示有关 **Groups** 和 **Contacts** 之间的冲突的信息。
 
 ![活动用户](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "活动用户")
 
-有关如何在 Microsoft 365 管理中心查看目录同步错误的说明，请参阅[识别在 Office 365 中的目录同步错误](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)。
+有关如何在 Microsoft 365 管理中心查看目录同步错误的说明，请参阅[识别 Office 365 中的目录同步错误](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)。
 
 ### <a name="identity-synchronization-error-report"></a>标识同步错误报告
 使用此新行为处理具有重复属性冲突的对象时，通知将包含在标准标识同步错误报告电子邮件中，而该电子邮件将发送给租户的技术通知联系人。 但是，此行为有一项重大变化。 在过去，有关重复属性冲突的信息包含在每个后续错误报告中，直到解决冲突为止。 使用此新行为，给定冲突的错误通知只出现一次 - 在冲突属性被隔离时。
@@ -144,9 +144,9 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
 1. 具有特定属性配置的对象继续收到导出错误，而不是重复属性被隔离。  
    例如：
    
-    a. 在其 upn 为 AD 中创建新用户**Joe\@contoso.com**和 ProxyAddress **smtp:Joe\@contoso.com**
+    a. 在 AD 中创建一个新用户，其 UPN 为 **Joe\@contoso.com**，ProxyAddress 为 **smtp:Joe\@contoso.com**
    
-    b. 此对象的属性与现有的组，其中是 ProxyAddress 冲突**SMTP:Joe\@contoso.com**。
+    b. 此对象的属性与现有 Group 发生冲突，其中 ProxyAddress 为 **SMTP:Joe\@contoso.com**。
    
     c. 导出时，将引发 **ProxyAddress 冲突**错误，而非隔离冲突属性。 此操作在每个后续的同步周期中重试，就如同在启用复原之前一样。
 2. 如果在本地创建两个具有相同 SMTP 地址的组，则其中一个组在首次尝试预配时会失败并返回标准的重复 **ProxyAddress** 错误。 但是，重复值会在下一个同步周期被适当隔离。
@@ -156,17 +156,17 @@ ProxyAddress 冲突的电子邮件通知示例如下所示：
 1. UPN 冲突集中两个对象的详细错误消息是相同的。 这意味着，它们的 UPN 都已更改/隔离，此时，实际上只有其中一个对象的数据发生更改。
 2. UPN 冲突的详细错误消息对已更改/隔离其 UPN 的用户显示不正确的 displayName。 例如：
    
-    a. **用户 A**首先使用同步**UPN = 用户\@contoso.com**。
+    a. **用户 A** 首先使用 **UPN = User\@contoso.com** 同步。
    
-    b. **用户 B**尝试同步与下一步**UPN = 用户\@contoso.com**。
+    b. 然后，尝试使用 **UPN = User\@contoso.com** 同步**用户 B**。
    
     c. **用户 B** UPN 更改为**User1234\@contoso.onmicrosoft.com**并**用户\@contoso.com**添加到**DirSyncProvisioningErrors**.
    
-    d. 错误消息**用户 B**应指示**用户 A**已**用户\@contoso.com**如 UPN，但它显示了**用户 B 的**自己的 displayName。
+    d. **用户 B** 的错误消息应指出**用户 A** 已有用作 UPN 的 **User\@contoso.com**，但却显示**用户 B** 自己的 displayName。
 
 **标识同步错误报告**：
 
-“关于如何解决此问题的步骤”链接不正确：  
+ “关于如何解决此问题的步骤”链接不正确：  
     ![活动用户](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "活动用户")  
 
 它应指向 [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency)。

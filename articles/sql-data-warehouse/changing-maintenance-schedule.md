@@ -11,11 +11,11 @@ ms.date: 04/03/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4bc1867f0dd18a101b2e764970de4e1904b960e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790852"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60680394"
 ---
 # <a name="change-a-maintenance-schedule"></a>更改维护计划 
 
@@ -31,11 +31,11 @@ ms.locfileid: "59790852"
 若要更改数据仓库的维护计划，请完成以下步骤：
 1.  登录到 [Azure 门户](https://portal.azure.com/)。
 2.  选择要更新的数据仓库。 页面将在概述边栏选项卡上打开。 
-3.  在概述边栏选项卡上选择“维护计划(预览版)摘要”链接，打开维护计划设置的页面。 或者，选择左侧资源菜单中的“维护计划”选项。  
+3.  在概述边栏选项卡上选择“维护计划(预览版)摘要”链接，打开维护计划设置的页面。  或者，选择左侧资源菜单中的“维护计划”选项。   
 
     ![概述边栏选项卡选项](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 
-4. 使用页面顶部的选项确定主要维护时段的首选日期范围。 此选择确定主要时段会出现在工作日还是周末。 所做的选择会更新下拉列表值。 在预览期，某些区域可能尚不支持完整的可用“日期”选项集。
+4. 使用页面顶部的选项确定主要维护时段的首选日期范围。 此选择确定主要时段会出现在工作日还是周末。 所做的选择会更新下拉列表值。 在预览期，某些区域可能尚不支持完整的可用“日期”选项集。 
 
    ![维护设置边栏选项卡](media/sql-data-warehouse-maintenance-scheduling/maintenance-settings-page.png)
 
@@ -44,9 +44,9 @@ ms.locfileid: "59790852"
    - **开始时间**：维护时段的首选开始时间。
    - **时间范围**：时间范围的首选持续时间。
 
-   边栏选项卡底部的“计划摘要”区域将根据所选的值更新。 
+   边栏选项卡底部的“计划摘要”区域将根据所选的值更新。  
   
-6. 选择“保存”。 此时会显示一条消息，确认新计划现已处于活动状态。 
+6. 选择“保存”。  此时会显示一条消息，确认新计划现已处于活动状态。 
 
    如果要在不支持维护计划的区域中保存计划，则会显示以下消息。 当此功能在所选区域中可用时，设置将会保存并且变为活动状态。    
 

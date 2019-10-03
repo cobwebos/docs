@@ -5,11 +5,11 @@ ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
 ms.openlocfilehash: c28441b6fe25b3480a55b79682d5067b19e3023a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58051837"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173288"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中持久保存文件
 Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始启动时，Cloud Shell 会提示关联新的或现有的文件共享，以便在会话之间持久保存文件。
@@ -37,7 +37,7 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始
 
 通过使用高级选项，可以将现有资源相关联。 选择 Cloud Shell 区域时，必须选择位于同一区域的后备存储帐户。 例如，如果你指定的区域位于美国西部，则必须关联也位于美国西部的文件共享。
 
-出现存储设置的提示时，选择“显示高级设置”查看其他选项。 填充的存储选项针对本地冗余存储 (LRS)、异地冗余存储 (GRS) 和区域冗余存储 (ZRS) 帐户进行筛选。 
+出现存储设置的提示时，选择“显示高级设置”查看其他选项  。 填充的存储选项针对本地冗余存储 (LRS)、异地冗余存储 (GRS) 和区域冗余存储 (ZRS) 帐户进行筛选。 
 
 > [!NOTE]
 > 建议使用 GRS 或 ZRS 存储帐户以提高后备文件共享的复原能力。 选择哪种类型的冗余取决于你的目标和价格首选项。 [详细了解 Azure 存储帐户的复制选项](https://docs.microsoft.com/azure/storage/common/storage-redundancy)。

@@ -15,11 +15,11 @@ ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862856"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60935753"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>将 Atlassian Jira 和 Confluence 与 Azure Active Directory 结合使用的管理员指南
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) 单一登录 (SSO) 插件可让 Microsoft Azur
 
 ## <a name="how-it-works"></a>工作原理
 
-当用户登录到 Atlassian Jira 或 Confluence 应用程序时，登录页上会显示“使用 Azure AD 登录”按钮。 当用户选择该按钮时，系统会要求他们使用 Azure AD 组织登录页（即工作或学校帐户）登录。
+当用户登录到 Atlassian Jira 或 Confluence 应用程序时，登录页上会显示“使用 Azure AD 登录”按钮。  当用户选择该按钮时，系统会要求他们使用 Azure AD 组织登录页（即工作或学校帐户）登录。
 
 用户通过身份验证后，应该可以登录到应用程序。 如果他们已使用其工作或学校帐户的 ID 和密码进行身份验证，则会直接登录到应用程序。 
 
@@ -92,7 +92,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 1. 以管理员身份登录到 Jira 或 Confluence 实例。
 
-2. 转到 Jira/Confluence 管理控制台，并选择“加载项”。
+2. 转到 Jira/Confluence 管理控制台，并选择“加载项”。 
 
 3. 从 Microsoft 下载中心下载[适用于 Jira 的 Microsoft SAML SSO 插件](https://www.microsoft.com/download/details.aspx?id=56506)/ [适用于 Confluence 的 Microsoft SAML SSO 插件](https://www.microsoft.com/download/details.aspx?id=56503)。
 
@@ -100,11 +100,11 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 4. 选择插件和通用插件管理器 (UPM) 并安装。
 
-插件安装后，会显示在“管理加载项”的“用户安装的加载项”部分。
+插件安装后，会显示在“管理加载项”的“用户安装的加载项”部分。  
 
 ## <a name="plug-in-configuration"></a>插件配置
 
-在开始使用插件之前，必须对其进行配置。 选择插件，选择“配置”按钮，并提供配置详细信息。
+在开始使用插件之前，必须对其进行配置。 选择插件，选择“配置”按钮，并提供配置详细信息。 
 
 下图显示了 Jira 和 Confluence 中的配置屏幕：
 
@@ -112,11 +112,11 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 * **元数据 URL**：用于从 Azure AD 获取联合元数据的 URL。
 
-* **标识符**：由 Azure AD 用来验证请求源的 URL。 此值映射到 Azure AD 中的“标识符”元素。 插件自动派生此 URL 称为 https://*\<域： 端口 >*/。
+* **标识符**：由 Azure AD 用来验证请求源的 URL。 此值映射到 Azure AD 中的“标识符”元素。  插件自动派生此 URL 称为 https:// *\<域： 端口 >* /。
 
-* **回复 URL**：启动 SAML 登录的标识提供者 (IdP) 中的回复 URL。 此值映射到 Azure AD 中的“回复 URL”元素。 插件自动派生此 URL 称为 https://*\<域： 端口 >*/plugins/servlet/saml/auth.
+* **回复 URL**：启动 SAML 登录的标识提供者 (IdP) 中的回复 URL。 此值映射到 Azure AD 中的“回复 URL”元素。  插件自动派生此 URL 称为 https:// *\<域： 端口 >* /plugins/servlet/saml/auth.
 
-* **登录 URL**：启动 SAML 登录的 IdP 中的登录 URL。 此值映射到 Azure AD 中的“登录”元素。 插件自动派生此 URL 称为 https://*\<域： 端口 >*/plugins/servlet/saml/auth.
+* **登录 URL**：启动 SAML 登录的 IdP 中的登录 URL。 此值映射到 Azure AD 中的“登录”元素。  插件自动派生此 URL 称为 https:// *\<域： 端口 >* /plugins/servlet/saml/auth.
 
 * **IdP 实体 ID**：IdP 使用的实体 ID。 解析元数据 URL 时会填充此框。
 
@@ -144,7 +144,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 * **Azure AD 中的证书即将过期**：加载项会处理证书的自动滚动更新。 在证书即将过期时，新证书应标记为活动，未使用的证书应被删除。 当用户尝试在此场景中登录到 Jira 时，插件会提取并保存新证书。
 
-* **如何禁用 WebSudo（禁用安全管理员会话）**：
+* **如何禁用 WebSudo（禁用安全管理员会话）** ：
 
   * 对于 Jira，安全管理员会话（即，在访问管理功能之前需要确认密码）默认已启用。 如果想要在 Jira 实例中禁用此功能，请在 jira-config.properties 文件中指定以下行：`ira.websudo.is.disabled = true`
 

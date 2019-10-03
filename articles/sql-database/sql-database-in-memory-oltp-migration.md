@@ -7,17 +7,16 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: MightyPen
-manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: ad66253d33b2e99f0be79bfaddc86b3274f5cab0
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: e869b2bba3bd64b58d9063e9445889ef709efdc3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258915"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567940"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>使用内存中 OLTP 改善 SQL 数据库中的应用程序性能
 
@@ -54,7 +53,7 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性�
 ## <a name="step-3-create-a-comparable-test-database"></a>步骤 3：创建可比较的测试数据库
 假设报告指出数据库的某个表在转换成内存优化的表后会带来好处。 我们建议先进行测试，以确认这项指示。
 
-需要创建生产数据库的测试副本。 测试数据库应当位于与生产数据库相同的服务层级别。
+需要创建生产数据库的测试副本。 测试数据库应当位于与生产数据库相同的服务层级级别。
 
 为了简化测试，请按以下方式调整测试数据库：
 

@@ -1,49 +1,53 @@
 ---
-title: 配置 Windows 虚拟桌面预览负载平衡方法-Azure
-description: 如何配置 Windows 虚拟桌面环境的负载平衡方法。
+title: 配置 Windows 虚拟桌面负载平衡方法-Azure
+description: 如何为 Windows 虚拟桌面环境配置负载平衡方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 0c4702dada17e759d89c33be99b3155f4b15ad9e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 3a940dbf592087878cb9dd19f856f1a3d94291c5
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399862"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676781"
 ---
-# <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>配置 Windows 虚拟桌面预览负载平衡方法
+# <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>配置 Windows 虚拟桌面负载均衡方法
 
-配置主机池的负载平衡方法，可调整 Windows 虚拟桌面预览环境更好地适合你的需求。
+为主机池配置负载平衡方法，可以调整 Windows 虚拟桌面环境，从而更好地满足你的需求。
 
 >[!NOTE]
-> 这不适用于持久桌面主机池因为用户始终在主机池内具有 1 对 1 映射到会话主机。
+> 这不适用于永久性桌面主机池，因为用户始终将1:1 映射到主机池中的某个会话主机。
 
-## <a name="configure-breadth-first-load-balancing"></a>配置广度优先的负载平衡
+## <a name="configure-breadth-first-load-balancing"></a>配置广度优先负载均衡
 
-广度优先的负载均衡是新的非永久性主机池的默认配置。 广度优先的负载均衡分布在主机池中的所有可用的会话主机的新用户会话。 在配置广度优先的负载平衡，您可能主机池中设置每个会话主机的最大会话限制。
+广度优先负载平衡是新的非持久性主机池的默认配置。 广度优先负载平衡在主机池中的所有可用会话主机之间分配新的用户会话。 配置广度优先负载平衡时，可以为主机池中的每个会话主机设置最大会话限制。
 
-首先，[下载并导入的 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)如果尚未在 PowerShell 会话中使用。
+首先[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做），以便在 PowerShell 会话中使用。 然后，运行以下 cmdlet 登录到你的帐户：
 
-若要配置一个主机的池来执行广度优先的负载平衡而无需调整最大会话限制，请运行以下 PowerShell cmdlet:
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
+
+若要将主机池配置为在不调整最大会话限制的情况下执行广度优先负载平衡，请运行以下 PowerShell cmdlet：
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -BreadthFirstLoadBalancer
 ```
 
-若要配置主机池执行广度优先的负载平衡，并使用新的最大会话限制，请运行以下 PowerShell cmdlet:
+若要将主机池配置为执行广度优先负载平衡，并使用新的最大会话限制，请运行以下 PowerShell cmdlet：
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -BreadthFirstLoadBalancer -MaxSessionLimit ###
 ```
 
-## <a name="configure-depth-first-load-balancing"></a>配置深度优先前负载平衡
+## <a name="configure-depth-first-load-balancing"></a>配置深度优先负载平衡
 
-深度优先前负载平衡将分发到的最大连接数具有可用的会话主机的新用户会话，但是未达到其最大会话限制阈值。 当配置深度优先前负载平衡，你**必须**主机池中设置每个会话主机的最大会话限制。
+深度优先负载平衡将新用户会话分发到具有最大连接数但未达到其最大会话限制阈值的可用会话主机。 配置深度优先负载平衡时，**必须**为主机池中的每个会话主机设置最大会话限制。
 
-若要配置一个主机的池来执行深度优先的负载平衡，请运行以下 PowerShell cmdlet:
+若要将主机池配置为执行深度优先负载平衡，请运行以下 PowerShell cmdlet：
 
 ```powershell
 Set-RdsHostPool <tenantname> <hostpoolname> -DepthFirstLoadBalancer -MaxSessionLimit ###

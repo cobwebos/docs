@@ -7,18 +7,18 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.workload: data-services
 ms.topic: tutorial
-ms.custom: seodec18
-ms.date: 12/07/2018
-ms.openlocfilehash: 261b55f722fdc3c1e8f4b45debc664f49db3f898
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.custom: mvc
+ms.date: 06/03/2019
+ms.openlocfilehash: d09ed0585250d078f728aa4e7272cca147a40c38
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523539"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612367"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 
-本教程介绍如何使用 Azure 流分析来分析电话呼叫数据。 由客户端应用程序生成的电话呼叫数据包含一些将要通过流分析作业来筛选的欺诈性呼叫。
+本教程介绍如何使用 Azure 流分析来分析电话呼叫数据。 由客户端应用程序生成的电话呼叫数据包含一些欺诈性呼叫，这些呼叫将由流分析作业进行筛选。
 
 本教程介绍如何执行下列操作：
 
@@ -32,7 +32,7 @@ ms.locfileid: "59523539"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请确保具有以下各项：
+开始之前，请执行以下操作：
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * 登录到 [Azure 门户](https://portal.azure.com/)。
@@ -46,24 +46,24 @@ ms.locfileid: "59523539"
 请按以下步骤创建一个事件中心，然后向该事件中心发送呼叫数据：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 选择“创建资源” > “物联网” > “事件中心”。
+2. 选择“创建资源” > “物联网” > “事件中心”    。
 
    ![在门户中创建 Azure 事件中心](media/stream-analytics-manage-job/find-event-hub-resource.png)
-3. 使用以下值填写“创建命名空间”窗格：
+3. 使用以下值填写“创建命名空间”窗格  ：
 
    |**设置**  |**建议的值** |**说明**  |
    |---------|---------|---------|
    |名称     | myEventHubsNS        |  用于标识事件中心命名空间的唯一名称。       |
    |订阅     |   用户的订阅\<\>      |   选择要在其中创建事件中心的 Azure 订阅。      |
-   |资源组     |   MyASADemoRG      |  选择“新建”，然后输入帐户的新资源组名称。       |
+   |资源组     |   MyASADemoRG      |  选择“新建”  ，然后输入帐户的新资源组名称。       |
    |位置     |   美国西部 2      |    一个位置，可在其中部署事件中心命名空间。     |
 
-4. 对其余设置使用默认选项，然后选择“创建”。
+4. 对其余设置使用默认选项，然后选择“创建”。 
 
    ![在 Azure 门户中创建事件中心命名空间](media/stream-analytics-manage-job/create-event-hub-namespace.png)
 
-5. 当命名空间完成部署以后，转到“所有资源”，在 Azure 资源的列表中找到“myEventHubsNS”。 选择 *myEventHubsNS* 将其打开。
-6. 接下来选择“+事件中心”，输入“MyEventHub”作为**名称**，或者输入所选的其他名称。 对其余设置使用默认选项，然后选择“创建”。 然后，等待部署成功完成。
+5. 当命名空间完成部署以后，转到“所有资源”，  在 Azure 资源的列表中找到“myEventHubsNS”。  选择 *myEventHubsNS* 将其打开。
+6. 接下来选择“+事件中心”  ，输入“MyEventHub”作为**名称**，或者输入所选的其他名称。  对其余设置使用默认选项，然后选择“创建”。  然后，等待部署成功完成。
 
    ![Azure 门户中的事件中心配置](media/stream-analytics-manage-job/create-event-hub-portal.png)
 
@@ -71,13 +71,13 @@ ms.locfileid: "59523539"
 
 在应用程序可以将数据发送到 Azure 事件中心之前，事件中心必须具有允许适当访问的策略。 访问策略生成包含授权信息的连接字符串。
 
-1. 导航到在上一步创建的事件中心“MyEventHub”。 在“设置”下选择“共享访问策略”，然后选择“+ 添加”。
+1. 导航到在上一步中创建的事件中心“MyEventHub”。 在“设置”下选择“共享访问策略”，然后选择“+ 添加”。   
 
-2. 将策略命名为“MyPolicy”，并确保选中“管理”。 然后选择“创建”。
+2. 将策略命名为“MyPolicy”，并确保选中“管理”。   然后选择“创建”  。
 
    ![创建事件中心共享访问策略](media/stream-analytics-manage-job/create-event-hub-access-policy.png)
 
-3. 创建策略以后，将其选中后打开，然后找到“连接字符串–主密钥”。 在连接字符串旁边选择蓝色的**复制**按钮。
+3. 创建策略以后，将其选中后打开，然后找到“连接字符串–主密钥”  。 在连接字符串旁边选择蓝色的**复制**按钮。
 
    ![保存共享的访问策略连接字符串](media/stream-analytics-manage-job/save-connection-string.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "59523539"
 3. 使用以下详细信息更新配置文件中的 `<appSettings>` 元素：
 
    * 将 *EventHubName* 键的值设置为连接字符串中 EntityPath 的值。
-   * 将 *Microsoft.ServiceBus.ConnectionString* 键的值设置为没有 EntityPath 值的连接字符串。
+   * 将 Microsoft.ServiceBus.ConnectionString 键的值设置为没有 EntityPath 值的连接字符串（不要忘记删除它前面的分号）  。
 
 4. 保存文件。
 5. 接下来打开命令窗口，转到解压缩 TelcoGenerator 应用程序的文件夹。 然后输入以下命令：
@@ -130,20 +130,20 @@ ms.locfileid: "59523539"
 
 1. 若要创建流分析作业，请导航到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“创建资源” > “物联网” > “流分析作业”。
+2. 选择“创建资源” > “物联网” > “流分析作业”    。
 
-3. 使用以下值填写“新建流分析作业”窗格：
+3. 使用以下值填写“新建流分析作业”窗格： 
 
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |作业名称     |  ASATutorial       |   用于标识事件中心命名空间的唯一名称。      |
    |订阅    |  用户的订阅\<\>   |   选择要在其中创建作业的 Azure 订阅。       |
-   |资源组   |   MyASADemoRG      |   选择“使用现有”，然后输入帐户的新资源组名称。      |
+   |资源组   |   MyASADemoRG      |   选择“使用现有”  ，然后输入帐户的新资源组名称。      |
    |位置   |    美国西部 2     |      一个位置，可在其中部署作业。 为获得最佳性能，建议将作业和事件中心放置在同一区域，这样在不同区域之间传输数据时就不需要付费。      |
-   |宿主环境    | 云        |     流分析作业可以部署到云或边缘设备。 可以通过“Cloud”部署到 Azure Cloud，通过“Edge”部署到 IoT Edge 设备。    |
+   |宿主环境    | 云        |     流分析作业可以部署到云或边缘设备。 可以通过云部署到 Azure 云，通过“Edge”部署到 IoT Edge 设备。    |
    |流式处理单位     |    1       |      流单元表示执行作业所需的计算资源。 默认情况下，此值设置为 1。 若要了解如何缩放流单元，请参阅[了解和调整流单元](stream-analytics-streaming-unit-consumption.md)一文。      |
 
-4. 对其余设置使用默认选项，然后选择“创建”，等待部署成功完成。
+4. 对其余设置使用默认选项，然后选择“创建”，等待部署成功完成。 
 
    ![创建 Azure 流分析作业](media/stream-analytics-manage-job/create-stream-analytics-job.png)
 
@@ -151,11 +151,11 @@ ms.locfileid: "59523539"
 
 下一步是使用在上一部分创建的事件中心，为用于读取数据的作业定义输入源。
 
-1. 从 Azure 门户打开“所有资源”窗格，找到 *ASATutorial* 流分析作业。
+1. 从 Azure 门户打开“所有资源”窗格，找到 *ASATutorial* 流分析作业。 
 
-2. 在“流分析作业”窗格的“作业拓扑”部分，选择“输入”选项。
+2. 在“流分析作业”窗格的“作业拓扑”  部分，选择“输入”  选项。
 
-3. 选择“+ 添加流输入”和“事件中心”。 在窗格中填充以下值：
+3. 选择“+ 添加流输入”  和“事件中心”  。 在窗格中填充以下值：
 
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
@@ -163,9 +163,9 @@ ms.locfileid: "59523539"
    |订阅    |   用户的订阅\<\>      |   选择在其中创建了事件中心的 Azure 订阅。 事件中心可以位于流分析作业所在的订阅中，也可以位于另一订阅中。       |
    |事件中心命名空间    |  myEventHubsNS       |  选择在上一部分创建的事件中心命名空间。 当前订阅中所有可用的事件中心命名空间均列在下拉列表中。       |
    |事件中心名称    |   MyEventHub      |  选择在上一部分创建的事件中心。 当前订阅中所有可用的事件中心均列在下拉列表中。       |
-   |事件中心策略名称   |  Mypolicy       |  选择在上一部分创建的事件中心共享访问策略。 当前订阅中所有可用的事件中心策略均列在下拉列表中。       |
+   |事件中心策略名称   |  MyPolicy       |  选择在上一部分创建的事件中心共享访问策略。 当前订阅中所有可用的事件中心策略均列在下拉列表中。       |
 
-4. 对其余设置使用默认选项，然后选择“保存”。
+4. 对其余设置使用默认选项，然后选择“保存”。 
 
    ![配置 Azure 流分析输入](media/stream-analytics-manage-job/configure-stream-analytics-input.png)
 
@@ -173,11 +173,11 @@ ms.locfileid: "59523539"
 
 最后一步是定义作业的输出接收器，以便在其中写入转换后的数据。 在本教程中，请使用 Power BI 来输出和可视化数据。
 
-1. 从 Azure 门户打开“所有资源”窗格，然后打开 *ASATutorial* 流分析作业。
+1. 从 Azure 门户打开“所有资源”窗格，然后打开 *ASATutorial* 流分析作业。 
 
-2. 在“流分析作业”窗格的“作业拓扑”部分，选择“输出”选项。
+2. 在“流分析作业”窗格的“作业拓扑”  部分，选择“输出”  选项。
 
-3. 选择“+ 添加” > “Power BI”。 然后在窗体中填写以下详细信息并选择“授权”：
+3. 选择“+ 添加”   >   “Power BI”。 然后在窗体中填写以下详细信息并选择“授权”： 
 
    |**设置**  |**建议的值**  |
    |---------|---------|
@@ -187,17 +187,17 @@ ms.locfileid: "59523539"
 
    ![配置 Azure 流分析输出](media/stream-analytics-manage-job/configure-stream-analytics-output.png)
 
-4. 选择“授权”以后，系统会打开一个弹出窗口，并要求你提供通过 Power BI 帐户进行身份验证所需的凭据。 授权成功以后，请单击“保存”以保存设置。
+4. 选择“授权”以后，系统会打开一个弹出窗口，并要求你提供通过 Power BI 帐户进行身份验证所需的凭据。  授权成功以后，请单击“保存”以保存设置。 
 
 ## <a name="define-a-query-to-analyze-input-data"></a>定义用于分析输入数据的查询
 
-下一步是创建一个分析实时数据的转换。 请使用[流分析查询语言](https://msdn.microsoft.com/library/dn834998.aspx)来定义转换查询。 在本教程中使用的查询可检测电话数据中的欺诈性呼叫。
+下一步是创建一个分析实时数据的转换。 请使用[流分析查询语言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)来定义转换查询。 在本教程中使用的查询可检测电话数据中的欺诈性呼叫。
 
 在此示例中，同一用户在五秒钟内在不同的位置发起了欺诈性呼叫。 例如，同一用户不能合法地同时从美国和澳大利亚发起呼叫。 若要定义流分析作业的转换查询，请执行以下操作：
 
-1. 从 Azure 门户打开“所有资源”窗格，然后导航到此前创建的 **ASATutorial** 流分析作业。
+1. 从 Azure 门户打开“所有资源”窗格，然后导航到此前创建的 **ASATutorial** 流分析作业。 
 
-2. 在“流分析作业”窗格的“作业拓扑”部分，选择“查询”选项。 查询窗口会列出为作业配置的输入和输出，并允许通过创建查询来转换输入流。
+2. 在“流分析作业”窗格的“作业拓扑”  部分，选择“查询”  选项。 查询窗口会列出为作业配置的输入和输出，并允许通过创建查询来转换输入流。
 
 3. 请在编辑器中将现有查询替换为以下查询，此查询针对 5 秒时间间隔的调用数据执行自联接：
 
@@ -212,7 +212,7 @@ ms.locfileid: "59523539"
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   若要检查欺诈性呼叫，可根据 `CallRecTime` 值来自联接流数据。 然后，可以查找 `CallingIMSI` 值（始发号码）相同，但 `SwitchNum` 值（来源国家/地区）不同的呼叫记录。 当对流数据使用 JOIN 操作时，该联接必须对可以及时分隔匹配行的程度施加一定限制。 由于流数据是无限的，因此请使用 [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) 函数在联接的 **ON** 子句中指定关系的时间限制。
+   若要检查欺诈性呼叫，可根据 `CallRecTime` 值来自联接流数据。 然后，可以查找 `CallingIMSI` 值（始发号码）相同，但 `SwitchNum` 值（来源国家/地区）不同的呼叫记录。 当对流数据使用 JOIN 操作时，该联接必须对可以及时分隔匹配行的程度施加一定限制。 由于流数据是无限的，因此请使用 [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics) 函数在联接的 **ON** 子句中指定关系的时间限制。
 
    除 **DATEDIFF** 函数以外，此查询就像正常的 SQL 联接一样。 此查询中使用的 **DATEDIFF** 函数是特定于流分析的，必须显示在 `ON...BETWEEN` 子句中。
 
@@ -226,54 +226,54 @@ ms.locfileid: "59523539"
 
 1. 请确保 TelcoGenerator 应用正在运行，并且正生成电话呼叫记录。
 
-2. 在“查询”窗格中，选择 *CallStream* 输入旁边的点，然后选择“来自输入的示例数据”。
+2. 在“查询”  窗格中，选择 *CallStream* 输入旁边的点，然后选择“来自输入的示例数据”。 
 
-3. 将“分钟”设置为 3，然后选择“确定”。 然后，系统会从输入流中进行 3 分钟的数据采样，并会在示例数据准备就绪时通知你。 可以在通知栏中查看采样的状态。
+3. 将“分钟”  设置为 3，然后选择“确定”  。 然后，系统会从输入流中进行 3 分钟的数据采样，并会在示例数据准备就绪时通知你。 可以在通知栏中查看采样的状态。
 
    查询窗口打开时，示例数据会临时存储并可供使用。 如果关闭查询窗口，示例数据会被丢弃，必须创建一组新的示例数据才能进行测试。 也可以使用 [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) 中的示例数据 JSON 文件，然后上传该 JSON 文件，将其用作 *CallStream* 输入的示例数据。
 
    ![对用于流分析的输入数据进行抽样的视觉对象](media/stream-analytics-manage-job/sample-input-data-asa.png)
 
-4. 选择“测试”来测试查询。 应该看到以下结果：
+4. 选择“测试”来测试查询  。 应该看到以下结果：
 
    ![来自流分析查询测试的输出](media/stream-analytics-manage-job/sample-test-output-restuls.png)
 
 ## <a name="start-the-job-and-visualize-output"></a>启动作业并可视化输出
 
-1. 若要启动作业，请导航到作业的“概览”窗格，然后选择“启动”。
+1. 若要启动作业，请导航到作业的“概览”窗格，然后选择“启动”。  
 
-2. 选择“现在”作为作业输出启动时间，然后选择“启动”。 可以在通知栏中查看作业状态。
+2. 选择“现在”作为作业输出启动时间，然后选择“启动”。   可以在通知栏中查看作业状态。
 
-3. 作业成功以后，请导航到 [Power BI](https://powerbi.com/)，然后使用工作或学校帐户登录。 如果流分析作业查询输出结果，则创建的 *ASAdataset* 数据集存在于“数据集”选项卡下。
+3. 作业成功以后，请导航到 [Power BI](https://powerbi.com/)，然后使用工作或学校帐户登录。 如果流分析作业查询输出结果，则创建的 *ASAdataset* 数据集存在于“数据集”选项卡下。 
 
-4. 从 Power BI 工作区选择“+ 创建”，创建名为“欺诈性呼叫”的新仪表板。
+4. 从 Power BI 工作区选择“+ 创建”，  创建名为“欺诈性呼叫”的新仪表板。 
 
-5. 在窗口顶部，选择“添加磁贴”。 然后选择“自定义流数据”和“下一步”。 在“你的数据集”下选择“ASAdataset”。 在“可视化效果类型”下拉列表中选择“卡”，然后向“字段”添加“fraudulentcalls”。 选择“下一步”，为磁贴输入一个名称，然后选择“应用”，创建该磁贴。
+5. 在窗口顶部，选择“添加磁贴”  。 然后选择“自定义流数据”和“下一步”。   在“你的数据集”下选择“ASAdataset”。   从“可视化效果类型”下拉列表中选择“卡”，然后向“字段”添加“欺诈性呼叫”     。 选择“下一步”  ，为磁贴输入一个名称，然后选择“应用”，创建该磁贴。 
 
    ![创建 Power BI 仪表板磁贴](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
 
 6. 使用以下选项再次执行步骤 5：
    * 转到“可视化效果类型”后，选择“折线图”。
-   * 添加轴，然后选择“windowend”。
-   * 添加值，然后选择“fraudulentcalls”。
-   * 对于“要显示的时间窗口”，请选择最近 10 分钟。
+   * 添加轴，然后选择“windowend”  。
+   * 添加值，然后选择“fraudulentcalls”  。
+   * 对于“要显示的时间窗口”，请选择最近 10 分钟  。
 
-7. 添加两个磁贴以后，仪表板应该如以下示例所示。 请注意，如果事件中心发送器应用程序和流分析应用程序正在运行，则 PowerBI 仪表板会在新数据到达时定期进行更新。
+7. 添加两个磁贴以后，仪表板应该如以下示例所示。 请注意，如果事件中心发送器应用程序和流分析应用程序正在运行，则 Power BI 仪表板会在新数据到达时定期进行更新。
 
    ![在 Power BI 仪表板中查看结果](media/stream-analytics-manage-job/power-bi-results-dashboard.png)
 
-## <a name="embedding-your-powerbi-dashboard-in-a-web-application"></a>将 PowerBI 仪表板嵌入到 Web 应用程序中
+## <a name="embedding-your-power-bi-dashboard-in-a-web-application"></a>将 Power BI 仪表板嵌入到 Web 应用程序中
 
-在本教程的此部分，请使用 PowerBI 团队创建的示例性 [ASP.NET](https://asp.net/) Web 应用程序来嵌入仪表板。 有关如何嵌入仪表板的详细信息，请参阅[使用 Power BI 嵌入](https://docs.microsoft.com/power-bi/developer/embedding)一文。
+在本教程的此部分中，请使用 Power BI 团队创建的示例性 [ASP.NET](https://asp.net/) Web 应用程序来嵌入仪表板。 有关如何嵌入仪表板的详细信息，请参阅[使用 Power BI 嵌入](https://docs.microsoft.com/power-bi/developer/embedding)一文。
 
-若要设置应用程序，请访问 [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub 存储库，然后按照“用户拥有数据”部分的说明操作（请使用 **integrate-dashboard-web-app** 子部分的重定向 URL 和主页 URL）。 由于我们使用的是“仪表板”示例，因此请使用 [GitHub 存储库](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app)中的 **integrate-dashboard-web-app** 示例代码。
+若要设置应用程序，请访问 [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub 存储库，然后按照“用户拥有数据”部分的说明操作（请使用 **integrate-dashboard-web-app** 子部分的重定向 URL 和主页 URL）。  由于我们使用的是“仪表板”示例，因此请使用 [GitHub 存储库](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app)中的 **integrate-dashboard-web-app** 示例代码。
 在浏览器中运行应用程序以后，请执行以下步骤，将此前创建的仪表板嵌入网页中：
 
-1. 选择“登录到 Power BI”，以便授予应用程序访问 PowerBI 帐户中的仪表板的权限。
+1. 选择“登录到 Power BI”  ，以便授予应用程序访问 Power BI 帐户中的仪表板的权限。
 
-2. 选择“获取仪表板”按钮，此时会在表中显示帐户的仪表板。 找到此前创建的仪表板的名称 **powerbi-embedded-dashboard**，然后复制相应的 **EmbedUrl**。
+2. 选择“获取仪表板”按钮，此时会在表中显示帐户的仪表板。  找到此前创建的仪表板的名称 **powerbi-embedded-dashboard**，然后复制相应的 **EmbedUrl**。
 
-3. 最后，将 **EmbedUrl** 粘贴到相应的文本字段中，然后选择“嵌入仪表板”。 现在可以查看嵌入 Web 应用程序中的同一仪表板了。
+3. 最后，将 **EmbedUrl** 粘贴到相应的文本字段中，然后选择“嵌入仪表板”。  现在可以查看嵌入 Web 应用程序中的同一仪表板了。
 
 ## <a name="next-steps"></a>后续步骤
 

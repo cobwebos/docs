@@ -3,21 +3,22 @@ title: 使用 Visual Studio Mobile Center 将实际用户度量发送到 Azure �
 description: 设置使用 Visual Studio Mobile Center 开发的移动应用程序，将实际用户度量发送到流量管理器
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: asudbring
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 1a5b883a8c9688d4545c0e98c00f78a2e982a611
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 95207cea5988a22b0b3caa23be39b481f9fd687b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079703"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071258"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>如何使用 Visual Studio Mobile Center 将实际用户度量发送到流量管理器
 
@@ -35,8 +36,8 @@ ms.locfileid: "58079703"
 使用以下过程通过 Azure 门户获取 RUM 密钥：
 1. 在浏览器中，登录 Azure 门户。 如果还没有帐户，可以注册免费一个月试用版。
 2. 在门户的搜索栏中，搜索要修改的流量管理器配置文件名称，并在显示的结果中单击该流量管理器配置文件。
-3. 在“流量管理器配置文件”页上，单击“设置”下的“实际用户度量”。
-4. 单击“生成密钥”新建 RUM 密钥。
+3. 在“流量管理器配置文件”页上，单击“设置”  下的“实际用户度量”  。
+4. 单击“生成密钥”  新建 RUM 密钥。
         
    ![生成实际用户度量密钥](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
@@ -46,9 +47,9 @@ ms.locfileid: "58079703"
  
    ![实际用户度量密钥的 Javascript 代码](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
-   图 2：真实用户度量密钥和度量 JavaScript
+   图 2：  真实用户度量密钥和度量 JavaScript
  
-6. 单击“复制”按钮复制 RUM 密钥。 
+6. 单击“复制”  按钮复制 RUM 密钥。 
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>步骤 2：使用 Mobile Center SDK 的 RUM 包检测应用
 

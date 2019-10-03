@@ -1,6 +1,6 @@
 ---
 title: 混合标识设计 - 采用策略 Azure | Microsoft Docs
-description: 借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选取的特定条件，然后才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
+description: 使用条件访问控制，Azure Active Directory 检查选取用户进行身份验证时，然后才允许访问应用程序的特定条件。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d64cac3812d8daf8ac34b93c91338e1dfab88a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193471"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109339"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定义混合标识采用策略
 在此任务中，你将根据所述的业务要求，为混合标识解决方案定义混合标识采用策略：
@@ -37,7 +37,7 @@ ms.locfileid: "56193471"
 ## <a name="define-an-integration-strategy"></a>定义集成策略
 Microsoft 有三个主要集成方案，分别为云标识、同步标识和联合标识。  应该规划采用这些集成策略的其中一个。  选择的策略可能各异，决策因素可能包括要提供何种用户体验、是否已部署现有基础结构，以及哪种做法最经济高效。  
 
-![](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
+![集成方案](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
 
 上图中定义的方案如下：
 
@@ -111,14 +111,14 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 ### <a name="supported-topologies"></a>支持的拓扑
 定义同步策略时，必须确定使用的拓扑。 可以根据步骤 2 中已确定的信息，确定适合使用的拓扑。 单林单 Azure AD 拓扑最常见，它由单个 Active Directory 林和单个 Azure AD 实例组成。  这会用于大多数方案，也是在使用 Azure AD Connect Express 安装时预期的拓扑，如下图所示。
 
-![](./media/plan-hybrid-identity-design-considerations/single-forest.png) 单林方案。在大型组织甚至小型组织中，拥有多个林很常见，如图 5 所示。
+![支持的拓扑](./media/plan-hybrid-identity-design-considerations/single-forest.png)单一林方案中很常见的大型组织甚至小型组织，拥有多个林，如图 5 中所示。
 
 > [!NOTE]
 > 有关不同的本地和 Azure AD 拓扑与 Azure AD Connect 同步的详细信息，请参阅 [Azure AD Connect 的拓扑](plan-connect-topologies.md)一文。
 > 
 > 
 
-![](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
+![多林拓扑](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
 
 多林方案
 
@@ -140,7 +140,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 如果有多个活动帐户或多个邮箱，Azure AD Connect 将选择其中一个并忽略其他的帐户或邮箱。  如果有链接的邮箱但没有其他帐户，则这些帐户不会导出到 Azure AD，并且用户将不是任何组的成员。  这不同以往在 DirSync 中的情况，主要是为了更充分支持这些多林方案。 下图显示了多林方案。
 
-![](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
+![多个 Azure AD 租户](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
 
 **多林多 Azure AD 方案**
 
@@ -148,7 +148,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 可以且支持将一个 Active Directory 本地实例连接到多个 Azure AD 目录，如下图所示：
 
-![](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
+![单林筛选](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
 
 **单林筛选方案**
 
@@ -199,8 +199,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 本地 AD |多重身份验证服务器 |
 
 > [!NOTE]
-> 还应该确保选择的多重身份验证设计选项支持设计所需的功能。  有关详细信息，请参阅 [Choose the multi-factor security solution for you](../authentication/concept-mfa-whichversion.md#what-am-i-trying-to-secure)（选择适合自己的多因素安全解决方案）。
-> 
+> 还应该确保选择的多重身份验证设计选项支持设计所需的功能。  有关详细信息，请参阅 [Choose the multi-factor security solution for you](../authentication/concept-mfa-howitworks.md)（选择适合自己的多因素安全解决方案）。
 > 
 
 ## <a name="multi-factor-auth-provider"></a>Multi-Factor Auth 提供程序

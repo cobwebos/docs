@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: mikeray
-ms.openlocfilehash: 3dc799ecc75589279c8d1c73062a8f2157761330
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: c6666f4417cde9e0f77cc965ded1d6bdb5dced34
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56212940"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172908"
 ---
 ## <a name="start-your-powershell-session"></a>启动 PowerShell 会话
  

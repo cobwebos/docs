@@ -4,18 +4,18 @@ description: 利用 Azure Cosmos DB 的存储灵活性和其他 Azure 服务了�
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 36b77ff6666c2c8b0d27cbdc8552ade15b21d005
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 45e27b37ca7a1718674914fbe9203b7dc64475b1
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100357"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342113"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
 
-生活在大规模互连的社会中，这意味着有时候你也成了社交网络中的一部分。 使用社交网络与朋友、同事和家人保持联系，有时还会与有共同兴趣的人分享我们的激情。
+生活在大规模互连的社会中，这意味着有时候你也成了社交网络中的一部分  。 使用社交网络与朋友、同事和家人保持联系，有时还会与有共同兴趣的人分享我们的激情。
 
 作为工程师或开发者，你可能想知道这些网络如何存储和互连数据。 或者，你甚至可能承担着为特定利基市场创建或构建新社交网络的任务。 这时就会产生一个大问题：所有这些数据是如何存储的？
 
@@ -96,7 +96,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-可拥有“最新”的流，其中包含按创建日期排序的帖子。 或者可拥有一个“最热门”的流，其中包含过去 24 小时内点赞数较多的帖子。 甚至可以根据关注者和兴趣等逻辑为每个用户实现自定义流。 它仍然是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能不会受到阻碍。 在获得其中一个列表之后，使用 [IN 运算符](how-to-sql-query.md#WhereClause)向 Cosmos DB 发布单个查询以一次性获取帖子的所有页面。
+可拥有“最新”的流，其中包含按创建日期排序的帖子。 或者可拥有一个“最热门”的流，其中包含过去 24 小时内点赞数较多的帖子。 甚至可以根据关注者和兴趣等逻辑为每个用户实现自定义流。 它仍然是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能不会受到阻碍。 一旦您获得其中一个列表，发布到 Cosmos DB 使用单个查询[IN 关键字](sql-query-keywords.md#in)一次获取帖子的所有页面。
 
 可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Webjobs](../app-service/webjobs-create.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/)[队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 触发）触发后台处理，从而根据自己的自定义逻辑实现流内的帖子传播。
 
@@ -220,21 +220,21 @@ Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/libra
 
 ## <a name="a-planet-scale-social-experience"></a>全球范围内的社交体验
 
-最后，还必须说明一个非常重要的项目：可伸缩性。 设计体系结构时，每个组件都应该自行缩放。 你最终将需要处理更多数据，或者希望拥有更大的地理覆盖范围。 幸运的是，使用 Cosmos DB 完成这两项任务是一种统包体验。
+最后，还必须说明一个非常重要的项目：可伸缩性  。 设计体系结构时，每个组件都应该自行缩放。 你最终将需要处理更多数据，或者希望拥有更大的地理覆盖范围。 幸运的是，使用 Cosmos DB 完成这两项任务是一种统包体验  。
 
-Cosmos DB 支持现成的动态分区。 它会根据给定的分区键自动创建分区，分区键在文档中定义为属性。 定义正确的分区键操作必须在设计时完成。 有关详细信息，请参阅 [Azure Cosmos DB 分区](partitioning-overview.md)。
+Cosmos DB 支持现成的动态分区。 它会根据给定的分区键自动创建分区，分区键在文档中定义为属性  。 定义正确的分区键操作必须在设计时完成。 有关详细信息，请参阅 [Azure Cosmos DB 分区](partitioning-overview.md)。
 
 对于社交体验，必须将分区策略与查询和写入方式保持一致。 （例如，推荐在同一分区内进行读取，并通过在多个分区上分散写入来避免“热点”。）某些选项为：基于临时键的分区（日/月/周）、按内容类别、按地理区域，或按用户。 这一切都取决于查询数据并在社交体验中显示数据的方式。
 
 Cosmos DB 以透明方式在所有分区中运行查询（包括[聚合](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)），因此无需在数据增长过程中添加任何逻辑。
 
-一段时间后，最终流量会增加，资源消耗（通过 [RU](request-units.md) 即“请求单位”进行度量）也会增加。 随着用户群体的增长，你将更频繁地进行读取和写入操作。 用户群体将开始创建和阅读更多内容。 因此，缩放吞吐量的能力至关重要。 增加 RU 非常容易。 可以通过在 Azure 门户中单击几次或[通过 API 发出命令](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer)来实现。
+一段时间后，最终流量会增加，资源消耗（通过 [RU](request-units.md) 即“请求单位”进行度量）也会增加。 随着用户群体的增长，你将更频繁地进行读取和写入操作。 用户群体将开始创建和阅读更多内容。 因此，缩放吞吐量的能力至关重要  。 增加 RU 非常容易。 可以通过在 Azure 门户中单击几次或[通过 API 发出命令](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer)来实现。
 
 ![扩展和定义分区键](./media/social-media-apps/social-media-apps-scaling.png)
 
 如果情况不断好转会怎样？ 假设来自其他区域、国家/地区或大洲的用户注意到你的平台并开始使用。 真是太棒了！
 
-可是等等！ 你很快就会发现他们使用平台的体验并不是最佳体验。 他们距离你的运营区域太远，会出现非常严重的延迟情况。 你显然不希望他们放弃使用。 要是有一种简单的方法可以扩大全球覆盖范围呢？ 方法就在这里！
+可是等等！ 你很快就会发现他们使用平台的体验并不是最佳体验。 他们距离你的运营区域太远，会出现非常严重的延迟情况。 你显然不希望他们放弃使用。 要是有一种简单的方法可以扩大全球覆盖范围呢  ？ 方法就在这里！
 
 通过 Cosmos DB，只需单击数次即可通过透明方式[全局复制数据](../cosmos-db/tutorial-global-distribution-sql-api.md)，并从[客户端代码](../cosmos-db/tutorial-global-distribution-sql-api.md)中自动选择可用区域。 此进程还意味着可以拥有[多个故障转移区域](high-availability.md)。
 

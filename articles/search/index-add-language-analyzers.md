@@ -7,7 +7,7 @@ ms.service: search
 ms.topic: conceptual
 author: Yahnoosh
 ms.author: jlembicz
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 39fbe30ccf4429003dc0c9f11165c5dd057a89cd
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: e54fa449e0ed7f3208d9924b69946c6598a00444
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549146"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648812"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>向 Azure 搜索索引添加语言分析器
 
@@ -46,9 +46,6 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 
 + Microsoft 的英语分析器执行词形还原，而不是词干分解。 这意味着它可以更好地处理曲折和不规则字词形式，从而产生相关度更高的搜索结果。 
 
-  > [!Tip]
-  > [搜索分析器演示版](https://alice.unearth.ai/)可对标准 Lucene 分析器、Lucene 英语分析器和 Microsoft 英语自然语言处理器生成的结果进行并排比较。 对于提供的每个搜索输入，每个分析器的结果将显示在相邻窗格中。
-
 ## <a name="configuring-analyzers"></a>配置分析器
 
 语言分析器按原样使用。 对于索引定义中的每个字段，可将分析器属性设置为用于指定语言和语言学堆栈（Microsoft 或 Lucene）的分析器名称。 将在为该字段编入索引和搜索时应用相同的分析器。 例如，可以为在同一个索引中并行存在的英语、法语和西班牙语酒店说明使用单独的字段。 或者，可以使用 indexAnalyzer 和 searchAnalyzer 代替“分析器”，以在索引或查询时具有不同的分析规则。 
@@ -66,7 +63,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |--------------|-----------------------------|--------------------------|  
 |阿拉伯语|ar.microsoft|ar.lucene|  
 |亚美尼亚语||hy.lucene|  
-|Bangla|bn.microsoft||  
+|孟加拉语|bn.microsoft||  
 |巴斯克语||eu.lucene|  
 |保加利亚语|bg.microsoft|bg.lucene|  
 |加泰罗尼亚语|ca.microsoft|ca.lucene|  
@@ -121,9 +118,9 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |乌尔都语|ur.microsoft||  
 |越南语|vi.microsoft||  
 
- 名称带有 **Lucene** 批注的所有分析器都由 [Apache Lucene 的语言分析器](https://lucene.apache.org/core/4_9_0/core/overview-summary.html )提供支持。
+ 名称带有 **Lucene** 批注的所有分析器都由 [Apache Lucene 的语言分析器](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )提供支持。
 
-## <a name="see-also"></a>另请参阅  
+## <a name="see-also"></a>请参阅  
  [创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)  
  [AnalyzerName Class](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)（AnalyzerName 类）  
  [Video: module 7 of Azure Search MVA presentation](https://channel9.msdn.com/Series/Adding-Microsoft-Azure-Search-to-Your-Websites-and-Apps/07)（视频：Azure 搜索 MVA 演示文稿的模块 7）。  

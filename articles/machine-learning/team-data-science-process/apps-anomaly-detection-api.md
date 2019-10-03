@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: b67028562a2c377e1dd99635bdf04cad14782341
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 16f13cd4ad580ea2f163fe87b5924c1462890972
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793129"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "64926185"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
 
 > [!NOTE]
-> 此项处于维护状态。 我们鼓励您使用[异常情况检测器 API 服务](https://azure.microsoft.com/en-us/services/cognitive-services/anomaly-detector/)下 Azure 认知服务，以检测异常从业务、 运营和 IoT 指标库的机器学习算法为后盾。
+> 此项处于维护下。 我们鼓励你使用由 Azure 认知服务下的机器学习算法库提供支持的[异常探测器 API 服务](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/), 以检测业务、操作和 IoT 指标中的异常。
 
 ## <a name="overview"></a>概述
 [异常情况检测 API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) 是一个示例，使用 Azure 机器学习构建，检测时序数据和均匀分布在时间中的数字值的异常情况。
@@ -111,33 +111,33 @@ Score API 用于运行非季节性时序数据的异常情况检测。 Score API
 ### <a name="detectors"></a>检测程序
 异常情况检测 API 支持检测程序中的 3 个主要类别。 可在下表中找到特定输入的参数和每个检测程序输出结果的详细信息。
 
-| 检测程序类别 | 检测程序 | 描述 | 输入参数 | Outputs |
+| 检测程序类别 | 检测程序 | 描述 | 输入参数 | outputs |
 | --- | --- | --- | --- | --- |
 | 峰值检测程序 |TSpike 检测程序 |根据值与第一个和第三个四分位数的距离，检测峰值和低值 |tspikedetector.sensitivity：取 1-10 范围内的整数值，默认值：3；更高的值会捕获更多极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” |
 | 峰值检测程序 | ZSpike 检测程序 |根据数据点与平均值的距离，检测峰值和低值 |spikedetector.sensitivity：取 1-10 范围内的整数值，默认值：3；更高的值会捕获更多极值，从而使敏感度降低 |TSpike：二进制值 – 如果检测到峰值或低值，显示“1”，否则为“0” |
 | 慢速趋势检测程序 |慢速趋势检测程序 |根据每组的敏感度，检测慢速正面发展趋势 |trenddetector.sensitivity：检测程序分数的阈值（默认值：3.25，3.25 – 5 是合理的取值范围；值越高敏感度越低） |tscore：浮动数字，表示趋势的异常分数 |
 | 级别更改检测程序 | 双向级别更改检测程序 |根据每组的敏感度，检测向下和向上级别的更改 |bileveldetector.sensitivity：检测程序分数的阈值（默认值：3.25，3.25 – 5 是合理的取值范围；值越高敏感度越低） |rpscore：浮动数字，表示向上和向下级别更改的异常分数 |
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 下表中列出了这些输入参数的更多详细信息：
 
-| 输入参数 | 描述 | 默认设置 | Type | 有效的范围 | 推荐的区域 |
+| 输入参数 | 描述 | 默认设置 | type | 有效的范围 | 推荐的区域 |
 | --- | --- | --- | --- | --- | --- |
-| detectors.historywindow |用于记录异常分数计算结果（在数据点的 #） |500 |integer |10-2000 |时间序列依赖项 |
+| detectors.historywindow |用于记录异常分数计算结果（在数据点的 #） |500 |整数 |10-2000 |时间序列依赖项 |
 | detectors.spikesdips | 是仅检测峰值、仅检测 dip，还是两者都检测 |两者 |枚举 |两者、峰值、Dip |两者 |
-| bileveldetector.sensitivity |双向级别更改检测程序的敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
-| 趋势检测程序敏感度 |正面发展趋势检测程序敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
-| tspikedetector.sensitivity |TSpike 检测程序的敏感度 |3 |integer |1-10 |3-5（值越小，敏感度越高） |
-| zspikedetector.sensitivity |ZSpike 检测程序的敏感度 |3 |integer |1-10 |3-5（值越小，敏感度越高） |
-| postprocess.tailRows |保留输出结果中的最新数据点的数量 |0 |integer |0（保留所有数据点），或指定要保留在结果中的点的数量 |不适用 |
+| bileveldetector.sensitivity |双向级别更改检测程序的敏感度。 |3.25 |双 |无 |3.25-5（值越小，敏感度越高） |
+| 趋势检测程序敏感度 |正面发展趋势检测程序敏感度。 |3.25 |双 |无 |3.25-5（值越小，敏感度越高） |
+| tspikedetector.sensitivity |TSpike 检测程序的敏感度 |3 |整数 |1-10 |3-5（值越小，敏感度越高） |
+| zspikedetector.sensitivity |ZSpike 检测程序的敏感度 |3 |整数 |1-10 |3-5（值越小，敏感度越高） |
+| postprocess.tailRows |保留输出结果中的最新数据点的数量 |0 |整数 |0（保留所有数据点），或指定要保留在结果中的点的数量 |不可用 |
 
-### <a name="output"></a>输出
+### <a name="output"></a>Output
 API 在时间系列数据上运行所有检测程序，并及时返回异常的分数以及每个点的二进制峰值指示符。 下表列出了 API 的输出内容。
 
-| Outputs | 描述 |
+| outputs | 描述 |
 | --- | --- |
-| 时间 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的时间戳 |
-| 数据 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的值 |
+| Time |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的时间戳 |
+| Data |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的值 |
 | TSpike |二进制指示符指示 TSpike 检测程序是否检测到峰值 |
 | ZSpike |二进制指示符指示 ZSpike 检测程序是否检测到峰值 |
 | rpscore |浮动数字表示双向级别更改上的异常分数 |
@@ -153,33 +153,33 @@ ScoreWithSeasonality API 用于对具有季节性模式的时序运行异常情�
 ### <a name="detectors"></a>检测程序
 季节性终结点中的检测器类似于非季节性终结点中的检测器，但使用的参数名称（如下所列）略有不同。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 下表中列出了这些输入参数的更多详细信息：
 
-| 输入参数 | 描述 | 默认设置 | Type | 有效的范围 | 推荐的区域 |
+| 输入参数 | 描述 | 默认设置 | 类型 | 有效的范围 | 推荐的区域 |
 | --- | --- | --- | --- | --- | --- |
-| preprocess.aggregationInterval |聚合输入时间序列的聚合间隔单位为秒 |0（不执行任何聚合） |integer |0：跳过聚合，> 0 否则 |5 分钟到 1 天，时间系列依赖项 |
-| preprocess.aggregationFunc |用于将数据聚合到指定的 AggregationInterval 函数 |平均值 |枚举 |平均值、总和、长度 |不适用 |
-| preprocess.replaceMissing |用户输入缺失的数据值 |lkv（最近一次的值） |枚举 |零、lkv、平均值 |不适用 |
-| detectors.historywindow |用于记录异常分数计算结果（在数据点的 #） |500 |integer |10-2000 |时间序列依赖项 |
+| preprocess.aggregationInterval |聚合输入时间序列的聚合间隔单位为秒 |0（不执行任何聚合） |整数 |0：跳过聚合，> 0 否则 |5 分钟到 1 天，时间系列依赖项 |
+| preprocess.aggregationFunc |用于将数据聚合到指定的 AggregationInterval 函数 |平均值 |枚举 |平均值、总和、长度 |不可用 |
+| preprocess.replaceMissing |用户输入缺失的数据值 |lkv（最近一次的值） |枚举 |零、lkv、平均值 |不可用 |
+| detectors.historywindow |用于记录异常分数计算结果（在数据点的 #） |500 |整数 |10-2000 |时间序列依赖项 |
 | detectors.spikesdips | 是仅检测峰值、仅检测 dip，还是两者都检测 |两者 |枚举 |两者、峰值、Dip |两者 |
-| bileveldetector.sensitivity |双向级别更改检测程序的敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
-| postrenddetector.sensitivity |正面发展趋势检测程序敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
-| negtrenddetector.sensitivity |负面发展趋势检测程序敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
-| tspikedetector.sensitivity |TSpike 检测程序的敏感度 |3 |integer |1-10 |3-5（值越小，敏感度越高） |
-| zspikedetector.sensitivity |ZSpike 检测程序的敏感度 |3 |integer |1-10 |3-5（值越小，敏感度越高） |
-| seasonality.enable |是否要执行季节性分析 |true |布尔值 |true、false |时间序列依赖项 |
-| seasonality.numSeasonality |检测到的定期周期的最大数量 |1 |integer |1, 2 |1-2 |
-| seasonality.transform |是否应在应用异常检测前删除季节性（和）趋势组件 |deseason |枚举 |none, deseason, deseasontrend |不适用 |
-| postprocess.tailRows |保留输出结果中的最新数据点的数量 |0 |integer |0（保留所有数据点），或指定要保留在结果中的点的数量 |不适用 |
+| bileveldetector.sensitivity |双向级别更改检测程序的敏感度。 |3.25 |双 |无 |3.25-5（值越小，敏感度越高） |
+| postrenddetector.sensitivity |正面发展趋势检测程序敏感度。 |3.25 |双 |无 |3.25-5（值越小，敏感度越高） |
+| negtrenddetector.sensitivity |负面发展趋势检测程序敏感度。 |3.25 |双 |无 |3.25-5（值越小，敏感度越高） |
+| tspikedetector.sensitivity |TSpike 检测程序的敏感度 |3 |整数 |1-10 |3-5（值越小，敏感度越高） |
+| zspikedetector.sensitivity |ZSpike 检测程序的敏感度 |3 |整数 |1-10 |3-5（值越小，敏感度越高） |
+| seasonality.enable |是否要执行季节性分析 |真 |boolean |true、false |时间序列依赖项 |
+| seasonality.numSeasonality |检测到的定期周期的最大数量 |1 |整数 |1, 2 |1-2 |
+| seasonality.transform |是否应在应用异常检测前删除季节性（和）趋势组件 |deseason |枚举 |none, deseason, deseasontrend |不可用 |
+| postprocess.tailRows |保留输出结果中的最新数据点的数量 |0 |整数 |0（保留所有数据点），或指定要保留在结果中的点的数量 |不可用 |
 
-### <a name="output"></a>输出
+### <a name="output"></a>Output
 API 在时间系列数据上运行所有检测程序，并及时返回异常的分数以及每个点的二进制峰值指示符。 下表列出了 API 的输出内容。
 
-| Outputs | 描述 |
+| outputs | 描述 |
 | --- | --- |
-| 时间 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的时间戳 |
+| Time |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的时间戳 |
 | 原始数据 |应用聚合（和/或）缺失数据时，原始数据或聚合（和/或）数据估算中的值 |
 | ProcessedData |执行下列操作之一： <ul><li>如果检测到重大季节性变化并选中非季节性选项，随季节波动调整时间序列；</li><li>如果检测到重大季节性变化并选中非季节性选项，随季节波动调整时间序列，并去除其趋势</li><li>否则，与 OriginalData 相同</li> |
 | TSpike |二进制指示符指示 TSpike 检测程序是否检测到峰值 |

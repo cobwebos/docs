@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096344"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60455752"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>用户隐私和 Azure AD Connect 
 
@@ -37,9 +37,9 @@ ms.locfileid: "58096344"
 Azure AD Connect 团队建议使用第二个选项，因为它更易于实施和维护。
 
 Azure AD Connect 同步服务器可存储以下用户隐私数据：
-1.  Azure AD Connect 数据库中的用户相关数据
-2.  Windows 事件日志文件中可能包含用户相关信息的数据
-3.  Azure AD Connect 安装日志文件中可能包含用户信息的数据
+1.  Azure AD Connect 数据库中的用户相关数据 
+2.  Windows 事件日志文件中可能包含用户相关信息的数据 
+3.  Azure AD Connect 安装日志文件中可能包含用户信息的数据 
 
 删除用户数据时，Azure AD Connect 客户应遵循以下准则：
 1.  定期删除包含 Azure AD Connect 安装日志文件的文件夹中的内容——至少每 48 小时删除一次
@@ -48,7 +48,7 @@ Azure AD Connect 同步服务器可存储以下用户隐私数据：
 当从生成用户数据的源系统中删除此用户数据时，会自动删除 Azure AD Connect 数据库中的此数据。 管理员无需执行特定操作既能保证符合 GDPR。  但是，至少每两天需要将 Azure AD Connect 数据与数据源进行同步一次。
 
 ## <a name="delete-the-azure-ad-connect-installation-log-file-folder-contents"></a>删除 Azure AD Connect 安装日志文件文件夹内容
-定期检查和删除 c:\programdata\aadconnect 文件夹中的内容，但保留 PersistedState.Xml 文件。 此文件会保留 Azure A Connect 先前安装的状态，并在进行升级安装时使用。 此文件不包含任何用户数据，不得删除。
+定期检查和删除 c:\programdata\aadconnect 文件夹中的内容，但保留 PersistedState.Xml 文件   。 此文件会保留 Azure A Connect 先前安装的状态，并在进行升级安装时使用。 此文件不包含任何用户数据，不得删除。
 
 >[!IMPORTANT]
 >请勿删除 PersistedState.xml 文件。  此文件不包含任何用户信息，仅保存先前安装的状态。
@@ -67,18 +67,18 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
 ### <a name="schedule-this-script-to-run-every-48-hours"></a>将此脚本设置为每 48 小时运行一次
 请使用以下步骤将脚本设置为每 48 小时运行一次。
 
-1.  将脚本保存在扩展名为 .PS1 的文件中，然后打开控制面板并单击“系统和安全”。
+1.  将脚本保存在扩展名为 .PS1 的文件中，然后打开控制面板并单击“系统和安全”   。
     ![系统](./media/reference-connect-user-privacy/gdpr2.png)
 
-2.  在“管理工具”标题下，单击“安排任务”。
+2.  在“管理工具”标题下，单击“安排任务”  。
     ![任务](./media/reference-connect-user-privacy/gdpr3.png)
-3.  在任务计划程序中，右键单击“任务计划库”，再单击“创建基本任务...”
-4.  输入新任务的名称，然后单击“下一步”。
-5.  针对任务触发器选择“每日”，再单击“下一步”。
-6.  将重复周期设置为“两天”并单击“下一步”。
-7.  选择“启动项目”作为操作，并单击“下一步”。
-8.  在“程序/脚本”框中键入 PowerShell，在标记为“添加参数(可选)”的框中输入之前创建的脚本的完整路径，然后单击“下一步”。
-9.  下一屏幕会显示要创建的任务摘要。 验证各个值，然后单击“完成”以创建任务。
+3.  在任务计划程序中，右键单击“任务计划库”，再单击“创建基本任务...”  
+4.  输入新任务的名称，然后单击“下一步”  。
+5.  针对任务触发器选择“每日”，再单击“下一步”   。
+6.  将重复周期设置为“两天”并单击“下一步”   。
+7.  选择“启动项目”作为操作，并单击“下一步”   。
+8.  在“程序/脚本”框中键入 PowerShell，在标记为“添加参数(可选)”的框中输入之前创建的脚本的完整路径，然后单击“下一步”    。
+9.  下一屏幕会显示要创建的任务摘要。 验证各个值，然后单击“完成”以创建任务  。
 
 
 

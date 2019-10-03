@@ -14,11 +14,11 @@ ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272371"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60773802"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>使用 Azure 开发测试实验室的热门方案
 具体取决于企业的需求，可以配置开发测试实验室，以满足不同的要求。  本文讨论了常用方案。 每个方案介绍如何通过使用开发测试实验室和资源来用于实现这些方案带来的好处。  

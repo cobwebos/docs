@@ -3,7 +3,7 @@ title: Service Fabric 和容器概述 | Microsoft 文档
 description: 概述 Service Fabric，以及如何使用容器部署微服务应用程序。 本文概述容器的用法以及 Service Fabric 提供的功能。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/8/2018
-ms.author: aljo
-ms.openlocfilehash: 5a45f14e5ac1da5152f320bd92b1ebb42be1d214
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: atsenthi
+ms.openlocfilehash: 2ed3a9d4b1ec219d22a9e01e7acec5d7e950289b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662732"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68599763"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric 和容器
 
@@ -49,7 +49,7 @@ Service Fabric 是用于跨计算机群集部署微服务的 Microsoft [容器�
 相比于虚拟机，容器具有以下优势：
 
 * **小型**：容器使用单个存储空间和层的版本与更新提高了效率。
-* **快**：容器无需启动整个操作系统，因此它们可以启动速度更快-通常以秒为单位。
+* **快**：容器无需启动整个操作系统, 因此它们可以更快地启动 (通常以秒为单位)。
 * **可移植性**：容器化的应用程序映像可以移植到云中或本地运行、移植到虚拟机中运行，或者直接在物理机上运行。
 * **资源调控**：容器可限制在其主机上消耗的物理资源。
 

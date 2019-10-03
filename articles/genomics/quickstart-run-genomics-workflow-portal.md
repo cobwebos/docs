@@ -8,12 +8,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: 4c8d488021ca12a704a5c0a06bb0c491588bcaed
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b2d68f878aed5ce400214b6bdf6e1c0d713043bb
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261683"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670745"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>快速入门：通过 Microsoft 基因组学服务运行工作流
 
@@ -87,14 +87,14 @@ pip install msgen
 
 
 ### <a name="test-the-microsoft-genomics-client"></a>测试 Microsoft 基因组学客户端
-要测试 Microsoft 基因组学客户端，请从基因组学帐户下载配置文件。 可以单击左上角的“所有服务”，进行筛选，然后针对基因组学帐户进行选择，以便导航到你的基因组学帐户。
+要测试 Microsoft 基因组学客户端，请从基因组学帐户下载配置文件。 可以单击左上角的“所有服务”，进行筛选，然后针对基因组学帐户进行选择，以便导航到你的基因组学帐户  。
 
 
 ![Azure 门户中的 Microsoft 基因组学筛选器](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Azure 门户中的 Microsoft 基因组学筛选器")
 
 
 
-选择刚创建的基因组学帐户，导航到“访问密钥”，然后下载配置文件。
+选择刚创建的基因组学帐户，导航到“访问密钥”，然后下载配置文件  。
 
 ![从 Microsoft 基因组学下载配置文件](./media/quickstart-run-genomics-workflow-portal/genomics-mygenomicsaccount-box.png "从 Microsoft 基因组学下载配置文件")
 
@@ -146,13 +146,13 @@ Microsoft 基因组学服务要求使用双端读数作为输入文件。 进行
 ## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-python-client"></a>使用 Python 客户端通过 Microsoft 基因组学服务运行工作流 
 
 要通过 Microsoft 基因组学服务运行工作流，请编辑 config.txt 文件，为数据指定输入和输出存储容器。
-打开从基因组学帐户下载的 config.txt 文件。 需指定的部分包括：订阅密钥和底部的六个项、存储帐户名称、输入和输出的密钥和容器名称。 若要查找该信息，可以在门户中导航到存储帐户的“访问密钥”，也可以直接从 Azure 存储资源管理器导航。  
+打开从基因组学帐户下载的 config.txt 文件。 需指定的部分包括：订阅密钥和底部的六个项、存储帐户名称、输入和输出的密钥和容器名称。 若要查找该信息，可以在门户中导航到存储帐户的“访问密钥”，也可以直接从 Azure 存储资源管理器导航  。  
 
 
 ![基因组学配置](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "基因组学配置")
 
 
-如果想要运行 GATK4，请将 `process_name` 参数设置为 gatk4 或 gatk4-promo。 有关 GATK4 提升的详细信息，请访问[此页](https://aka.ms/msgatk4)。
+如果想要运行 GATK4，请将 `process_name` 参数设置为 `gatk4`。
 
 默认情况下，基因组学服务将输出 VCF 文件。 如果需要 gVCF 输出而非 VCF 输出（等效于 GATK 3.x 中的 `-emitRefConfidence` 和 GATK 4.x 中的 `emit-ref-confidence`），请将 `emit_ref_confidence` 参数添加到 `config.txt` 并将它设置为 `gvcf`，如上图中所示。  若要更改回 VCF 输出，请将它从 `config.txt` 文件中删除，或者将 `emit_ref_confidence` 参数设置为 `none`。 
 

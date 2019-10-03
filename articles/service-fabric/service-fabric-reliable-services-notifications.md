@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: a3df5f28475b03f1799dc1e245c3a7e904b49cb3
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d009749b7bc31595be26124b9d1eee7666e95bd4
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662663"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551671"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services 通知
 通知可让客户端跟踪对它们感兴趣的对象所进行的更改。 两种类型的对象支持通知：*可靠状态管理器*并*可靠字典*。
@@ -112,7 +112,7 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 * 重新生成：时调用**ReliableDictionary**已从恢复或复制的本地状态或备份中恢复其状态。
 * 清除：时调用的状态**ReliableDictionary**已通过清除**无法恢复的 ClearAsync**方法。
 * 添加：当已为添加的项时调用**ReliableDictionary**。
-* 更新:中的项时调用**IReliableDictionary**已更新。
+* 更新：中的项时调用**IReliableDictionary**已更新。
 * 删除：中的项时调用**IReliableDictionary**已被删除。
 
 若要获取可靠字典通知，需在 **DictionaryChanged** 上注册 **IReliableDictionary** 事件处理程序。 注册这些事件处理程序的常见位置是在 **ReliableStateManager.StateManagerChanged** 添加通知中。
@@ -167,7 +167,7 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 
 * **NotifyDictionaryChangedAction.Rebuild**:**NotifyDictionaryRebuildEventArgs**
 * **NotifyDictionaryChangedAction.Clear**:**NotifyDictionaryClearEventArgs**
-* **NotifyDictionaryChangedAction.Add**并**NotifyDictionaryChangedAction.Remove**:**NotifyDictionaryItemAddedEventArgs**
+* **NotifyDictionaryChangedAction.Add**:**NotifyDictionaryItemAddedEventArgs**
 * **NotifyDictionaryChangedAction.Update**:**NotifyDictionaryItemUpdatedEventArgs**
 * **NotifyDictionaryChangedAction.Remove**:**NotifyDictionaryItemRemovedEventArgs**
 

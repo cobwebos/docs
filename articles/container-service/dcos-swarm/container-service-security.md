@@ -10,10 +10,10 @@ ms.date: 03/28/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 4c6249128bddc42f0a423fb21e197b158558f181
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994881"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60953134"
 ---
 [!INCLUDE [container-service-security.md](../../../includes/container-service-security.md)]

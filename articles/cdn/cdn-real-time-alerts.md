@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 1e85b809-e1a9-4473-b835-69d1b4ed3393
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: e20161147aa16456e31aff2bd3cc6337c3690e89
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b8cbc27757cf6c321ea4b3c27720a129aa27c1b
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789917"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593482"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Microsoft Azure CDN 中的实时警报
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -60,14 +60,14 @@ ms.locfileid: "59789917"
     ![HTTP 大型对象处于选中状态的媒体类型](./media/cdn-real-time-alerts/cdn-http-large.png)
    
    > [!IMPORTANT]
-   > 必须选择“**HTTP 大型对象**”作为“**媒体类型**”。  **来自 Verizon 的 Azure CDN** 会不使用其他选项。  如果未能选择“HTTP 大型对象”，永远不会触发警报。
+   > 必须选择“**HTTP 大型对象**”作为“**媒体类型**”。  **来自 Verizon 的 Azure CDN** 会不使用其他选项。  如果未能选择“HTTP 大型对象”  ，永远不会触发警报。
    > 
    > 
 8. 通过选择“**指标**”、“**运算符**”和“**触发值**”，创建一个**表达式**来进行监视。
    
    * 对于”**指标**”，请选择要监视的条件类型。  “**带宽 Mbps**”是每秒兆位的带宽使用量。  “**总连接数**”是边缘服务器的并发 HTTP 连接数。  有关各种缓存状态和状态代码的定义，请参阅 [Azure CDN 缓存状态代码](/previous-versions/azure/mt759237(v=azure.100))和 [Azure CDN HTTP 状态代码](/previous-versions/azure/mt759238(v=azure.100))
    * “**运算符**”是在指标和触发值之间建立关系的数学运算符。
-   * “触发值”是发送通知之前必须满足的阈值。
+   * “触发值”  是发送通知之前必须满足的阈值。
      
      在以下示例中，创建的表达式指示在 404 状态代码数大于 25 时发送通知。
      
@@ -75,10 +75,10 @@ ms.locfileid: "59789917"
 9. 对于“**间隔**”，输入希望表达式进行计算的频率。
 10. 在“**通知时间**”下拉列表中，选择在表达式为真时何时想获得通知。
     
-    * “条件开始”指明在第一次检测到指定的条件时会发送通知。
-    * “条件结束”指明在未检测到指定的条件时会发送通知。 只有在网络监视系统检测到指定的条件发生后，才会触发此通知。
-    * “连续”指明在网络监视系统每次检测到指定的条件时都将发送通知。 请记住，对于指定的条件，网络监视系统每个间隔只会检查一次。
-    * “条件开始和结束”指明在第一次检测到指定的条件时发送一次通知，并在不能再检测到条件时再次发送一次通知。
+    * “条件开始”  指明在第一次检测到指定的条件时会发送通知。
+    * “条件结束”  指明在未检测到指定的条件时会发送通知。 只有在网络监视系统检测到指定的条件发生后，才会触发此通知。
+    * “连续”  指明在网络监视系统每次检测到指定的条件时都将发送通知。 请记住，对于指定的条件，网络监视系统每个间隔只会检查一次。
+    * “条件开始和结束”  指明在第一次检测到指定的条件时发送一次通知，并在不能再检测到条件时再次发送一次通知。
 1. 如果想要通过电子邮件接收通知，请勾选“**通过电子邮件通知**”复选框。  
     
     ![通过电子邮件的形式通知](./media/cdn-real-time-alerts/cdn-notify-email.png)
@@ -93,7 +93,7 @@ ms.locfileid: "59789917"
     
     ![“通过 HTTP Post 通知”表单](./media/cdn-real-time-alerts/cdn-notify-http.png)
     
-    在“**Url**”字段中，输入要将 HTTP 消息发布到的 URL。 在“**标头**”文本框中，输入要在请求中发送的 HTTP 标头。  对于“正文”，可使用“可用关键字”列表自定义消息，在发送消息时动态插入警报数据。  “标头”和“正文”默认为 XML 有效负载，类似于以下示例：
+    在“**Url**”字段中，输入要将 HTTP 消息发布到的 URL。 在“**标头**”文本框中，输入要在请求中发送的 HTTP 标头。  对于“正文”  ，可使用“可用关键字”  列表自定义消息，在发送消息时动态插入警报数据。  “标头”  和“正文”  默认为 XML 有效负载，类似于以下示例：
     
     ```
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">

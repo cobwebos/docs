@@ -4,17 +4,17 @@ description: 汇总了可用于在 Azure 自动化中启动 Runbook 的不同方
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b065b611c923c4a28dc79c390ffb56ed97b316fd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a42ba0a385b73032e3d4045094bc88613016b849
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918444"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850345"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>在 Azure 自动化中启动 Runbook
 
@@ -84,7 +84,7 @@ Azure 自动化 Web 服务将为使用特定数据类型的参数提供特殊功
 
 ### <a name="named-values"></a>命名值
 
-如果参数的数据类型为 [object]，则可以使用以下 JSON 格式向它发送命名值列表：*{Name1:'Value1', Name2:'Value2', Name3:'Value3'}*。 这些值必须使用简单类型。 Runbook 以 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) 的形式接收参数，该对象的属性对应于每个命名值。
+如果参数的数据类型为 [object]，则可以使用以下 JSON 格式向它发送命名值列表： *{Name1:'Value1', Name2:'Value2', Name3:'Value3'}* 。 这些值必须使用简单类型。 Runbook 以 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) 的形式接收参数，该对象的属性对应于每个命名值。
 
 请考虑以下接受名为 user 的参数的测试 Runbook。
 
@@ -121,7 +121,7 @@ Smith
 
 ### <a name="arrays"></a>数组
 
-如果参数是数组（如 [array] 或 [string[]]），则可以使用以下 JSON 格式向它发送值列表：*[Value1,Value2,Value3]*。 这些值必须使用简单类型。
+如果参数是数组（如 [array] 或 [string[]]），则可以使用以下 JSON 格式向它发送值列表： *[Value1,Value2,Value3]* 。 这些值必须使用简单类型。
 
 请考虑以下接受名为 *user* 的参数的测试 Runbook。
 
@@ -187,3 +187,4 @@ jsmith
 
 * 本文中的 Runbook 体系结构提供了在本地和 Azure 中使用混合 Runbook 辅助角色管理资源的 Runbook 的高级概述。 若要了解如何在数据中心执行自动化 Runbook，请参阅[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)。
 * 若要详细了解如何创建模块化 Runbook，以供其他 Runbook 用于特定或常用函数，请参阅[子 Runbook](automation-child-runbooks.md)。
+* 有关 PowerShell 的详细信息, 包括语言参考和学习模块, 请参阅[Powershell 文档](https://docs.microsoft.com/en-us/powershell/scripting/overview)。

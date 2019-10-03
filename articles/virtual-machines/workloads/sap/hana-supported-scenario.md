@@ -4,22 +4,21 @@ description: Azure SAP HANA（大型实例）的支持方案及其体系结构�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 501c5ffa86f2360e44c187e087f7285bbf4084fd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: f17e447f26ae4f7573941fc0c578a918ff45a145
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482957"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101231"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型实例的支持方案
 本文档介绍 HANA 大型实例 (HLI) 的支持方案及其体系结构详细信息。
@@ -101,7 +100,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 根据请求的拓扑结构预配置存储。 卷大小和装入点有所不同，具体取决于配置的服务器、SKU 和拓扑的数量。 查看你所需的方案（本文档的后文）以获取详细信息。 如果需要更多存储空间，可按一个 TB 增量购买。
 
 >[!NOTE]
->装入点 /usr/sap/\<SID > 是指向/hana/共享装入点的符号链接。
+>装载点/usr/sap/\<SID > 是指向/hana/shared 装入点的符号链接。
 
 
 ## <a name="supported-scenarios"></a>支持的方案

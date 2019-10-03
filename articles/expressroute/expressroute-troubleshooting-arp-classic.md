@@ -9,11 +9,11 @@ ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 3e49a1da0e8ea83faf5fc5a10d4c01a41d62fa88
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439632"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60883090"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>在经典部署模型中获取 ARP 表
 > [!div class="op_single_selector"]

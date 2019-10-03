@@ -9,11 +9,11 @@ ms.date: 03/27/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
 ms.openlocfilehash: 2c8b3b4671fd14f9b10b8491861ae2c652f0188b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580578"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60461648"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>创建 Nva 虚拟 WAN 的中心路由表：Azure 门户
 
@@ -67,12 +67,12 @@ ms.locfileid: "58580578"
 
 使用中心路由表更新中心。 对于此练习的目的，可以使用以下值：
 
-* **间接辐射 VNet 的地址空间：**（VNet1 和 VNet2） 10.0.2.0/24 和 10.0.3.0/24
+* **间接辐射 VNet 的地址空间：** （VNet1 和 VNet2） 10.0.2.0/24 和 10.0.3.0/24
 * **外围网络 NVA 网络接口专用 IP 地址：** 10.0.4.5
 
 1. 导航到你的虚拟 WAN。
 2. 单击你想要创建路由表的中心。
-3. 单击 **...**，然后单击**编辑虚拟中心**。
+3. 单击 **...** ，然后单击**编辑虚拟中心**。
 4. 上**编辑虚拟中心**页上，向下滚动并选中该复选框**使用的路由表**。
 5. 在中**如果目标前缀**列中，添加地址空间。 在中**将发送到下一跃点**列中，添加外围网络 NVA 网络接口专用 IP 地址。
 6. 单击**确认**使用路由表设置更新中心资源。
@@ -91,15 +91,15 @@ ms.locfileid: "58580578"
 
 重复以下过程为每个你想要连接的 VNet。
 
-1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。
-2. 在虚拟网络连接页上，单击“+添加连接”。
-3. 在“添加连接”页上填写以下字段：
+1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。 
+2. 在虚拟网络连接页上，单击“+添加连接”。 
+3. 在“添加连接”页上填写以下字段  ：
 
     * **连接名称** - 为连接命名。
     * **中心** - 选择要与此连接关联的中心。
     * **订阅** - 验证订阅。
     * **虚拟网络** - 选择要连接到此中心的虚拟网络。 此虚拟网络不能包含现有的虚拟网络网关。
-4. 单击“确定”以创建连接。
+4. 单击“确定”以创建连接。 
 
 ## <a name="next-steps"></a>后续步骤
 

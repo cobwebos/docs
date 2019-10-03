@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Data Lake Analytics 中使用 R 扩展 U-SQL 脚本
-description: 了解如何使用 Azure Data Lake Analytics 在 U-SQL 脚本中运行 R 代码
+description: 了解如何使用 Azure Data Lake Analytics 在 U SQL 脚本中运行 R 代码。 嵌入 R 代码内联或从文件引用。
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -9,20 +9,20 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 59a52b2aeb83732a608f1fcf5bc4de907d25dfd1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c5dd3f493e85afc925b639c142a293eed1e8cbd7
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885020"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672695"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中使用 R 代码扩展 U-SQL 脚本
 
 以下示例演示了用于部署 R 代码的基本步骤：
 * 使用 `REFERENCE ASSEMBLY` 语句为 U-SQL 脚本启用 R 扩展。
-* 使用`REDUCE`操作对某个键对输入的数据进行分区。
+* 使用 `REDUCE` 操作对某个键的输入数据进行分区。
 * U-SQL 的 R 扩展包括内置化简器 (`Extension.R.Reducer`)，可在分配给化简器的每个顶点上运行 R 代码。 
-* 专用命名数据帧称作`inputFromUSQL`和`outputToUSQL`分别用于 U-SQL 和。 输入之间传递数据和输出数据框标识符名称固定的 （即，用户不能更改这些预定义的输入和输出数据框标识符）。
+* 使用名为 `inputFromUSQL` 的专用命名数据帧和第 1 @no__t 的专用命名数据帧，在数据帧和 R 之间传递数据。输入和输出的标识符名称是固定的（即，用户无法更改输入和输出数据帧标识符的预定义名称）。
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>在 U-SQL 脚本中嵌入 R 代码
 

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619435"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61131725"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>使用 Azure 门户分析媒体 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。 
 > 
 > 
 
@@ -34,16 +34,16 @@ Azure 媒体服务分析是一系列语音和影像组件（具企业规模、�
 
 ## <a name="choose-an-asset-that-you-want-to-analyze"></a>选择要分析的资产
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 在“设置”窗口中，选择“资产”。  
+2. 在“设置”  窗口中，选择“资产”  。  
    
     ![分析视频](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
-3. 选择要分析的资产，按“分析”按钮。
+3. 选择要分析的资产，按“分析”  按钮。
    
     ![分析视频](./media/media-services-portal-analyze/media-services-portal-analyze002.png)
-4. 在“使用媒体分析处理媒体资产”窗口中，选择处理器。 
+4. 在“使用媒体分析处理媒体资产”  窗口中，选择处理器。 
    
     本文的其余部分介绍每种处理器的功能和使用方式。 
-5. 按“创建”，开始作业。
+5. 按“创建”  ，开始作业。
 
 ## <a name="azure-media-indexer"></a>Azure Media Indexer
 通过 **Azure Media Indexer** 媒体处理器，可使媒体文件和内容具有可搜索性并可生成隐藏式字幕跟踪。 本部分提供有关可为此 MP 指定的选项的一些详细信息。
@@ -136,11 +136,11 @@ Azure 媒体服务分析是一系列语音和影像组件（具企业规模、�
 
 ![审查视频](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
 
-### <a name="version"></a>版本 
+### <a name="version"></a>Version 
 使用“2.0”。
 
-### <a name="mode"></a>Mode
-2.0 版忽略 `Mode` 设置。
+### <a name="mode"></a>模式
+2\.0 版忽略 `Mode` 设置。
 
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。

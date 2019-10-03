@@ -12,16 +12,19 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f97b4ee364ecadde7738b8fe077f21d5732365f6
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: eac6cff0f0f12daaf772549f547aafd670600d61
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371798"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536973"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
 
 使用 Azure MFA 服务器的“目录集成”部分可与 Active Directory 或其他 LDAP 目录集成。 可以配置属性来匹配目录架构，并设置用户自动同步。
+
+> [!IMPORTANT]
+> 截至 2019 年 7 月 1 日，Microsoft 将 MFA 服务器不再提供对新的部署。 想要要求从其用户的多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 已激活在 7 月 1 日之前的 MFA 服务器的现有客户将能够下载最新版本，将来的更新并照常生成激活凭据。
 
 ## <a name="settings"></a>设置
 
@@ -29,26 +32,29 @@ ms.locfileid: "58371798"
 
 ![编辑 LDAP 配置在 MFA 服务器](./media/howto-mfaserver-dir-ad/dirint.png)
 
+> [!NOTE]
+> 目录集成不保证能够使用 Active Directory 域服务以外的目录。
+
 | Feature | 描述 |
 | --- | --- |
-| 使用 Active Directory |选择“使用 Active Directory”选项可使用 Active Directory 进行导入和同步。  此设置为默认设置。 <br>注意：要正常完成 Active Directory 集成，请将计算机加入域并使用域帐户登录。 |
-| 包括受信任域 |选中“包括受信任域”可让代理尝试连接到当前域、林中其他域或林信任涉及的域所信任的域。  当不从任何受信任域导入或同步用户时，请取消选中该复选框以提高性能。  默认处于选中状态。 |
-| 使用特定 LDAP 配置 |选择“使用 LDAP”选项可使用指定的 LDAP 设置进行导入和同步。 注意：选择“使用 LDAP”时，用户界面会将引用从 Active Directory 更改为 LDAP。 |
+| 使用 Active Directory |选择“使用 Active Directory”选项可使用 Active Directory 进行导入和同步。  此设置为默认设置。 <br>请注意:要正常完成 Active Directory 集成，请将计算机加入域并使用域帐户登录。 |
+| 包括受信任域 |选中“包括受信任域”可让代理尝试连接到当前域、林中其他域或林信任涉及的域所信任的域。   当不从任何受信任域导入或同步用户时，请取消选中该复选框以提高性能。  默认处于选中状态。 |
+| 使用特定 LDAP 配置 |选择“使用 LDAP”选项可使用指定的 LDAP 设置进行导入和同步。 请注意:选择“使用 LDAP”时，用户界面会将引用从 Active Directory 更改为 LDAP。 |
 | 编辑按钮 |使用“编辑”按钮可以修改当前 LDAP 配置设置。 |
-| 使用属性范围查询 |指示是否应使用属性范围查询。  属性范围查询允许根据其他记录的属性中的条目，实现对符合条件的记录的高效目录搜索。  Azure 多重身份验证服务器使用属性范围查询有效地查询属于安全组的用户。   <br>注意：在某些情况下，系统支持属性范围查询，但不应使用。  例如，如果安全组包含来自多个域的成员，Active Directory 可能在使用属性范围查询时出现问题。 在这种情况下，请取消选中该复选框。 |
+| 使用属性范围查询 |指示是否应使用属性范围查询。  属性范围查询允许根据其他记录的属性中的条目，实现对符合条件的记录的高效目录搜索。  Azure 多重身份验证服务器使用属性范围查询有效地查询属于安全组的用户。   <br>请注意:在某些情况下，系统支持属性范围查询，但不应使用。  例如，如果安全组包含来自多个域的成员，Active Directory 可能在使用属性范围查询时出现问题。 在这种情况下，请取消选中该复选框。 |
 
 下表描述了 LDAP 配置设置。
 
 | Feature | 描述 |
 | --- | --- |
-| 服务器 |输入运行 LDAP 目录的服务器的主机名或 IP 地址。  还可以以分号分隔形式指定备份服务器。 <br>注意：当绑定类型是 SSL 时，需要输入完全限定的主机名。 |
+| 服务器 |输入运行 LDAP 目录的服务器的主机名或 IP 地址。  还可以以分号分隔形式指定备份服务器。 <br>请注意:当绑定类型是 SSL 时，需要输入完全限定的主机名。 |
 | 基 DN |输入要从中启动所有目录查询的基目录对象的可分辨名称。  例如，dc=abc,dc=com。 |
 | 绑定类型 - 查询 |选择在绑定搜索 LDAP 目录时要使用的相应绑定类型。  这会用于导入、同步和用户名解析。 <br><br>  匿名 - 执行匿名绑定。  不使用绑定 DN 和绑定密码。  仅当 LDAP 目录允许匿名绑定，并且权限允许查询相应的记录和属性时，此项才适用。  <br><br> 简单 - 用于绑定到 LDAP 目录的绑定 DN 和绑定密码以纯文本的形式传递。  此选项用于测试目的，验证是否能够访问服务器，以及绑定帐户是否具有适当的访问权限。 安装适当的证书后，请改用 SSL。  <br><br> SSL - 用于绑定到 LDAP 目录的绑定 DN 和绑定密码将使用 SSL 加密。  在本地安装 LDAP 目录信任的证书。  <br><br> Windows - 使用绑定用户名和绑定密码安全连接到 Active Directory 域控制器或 ADAM 目录。  如果将“绑定用户名”留空，已登录用户的帐户用于绑定。 |
 | 绑定类型 - 身份验证 |选择在执行 LDAP 绑定身份验证时要使用的相应绑定类型。  请参阅“绑定类型 - 查询”下的绑定类型说明。  例如，这样一来，在使用 SSL 绑定来确保 LDAP 绑定身份验证安全的同时，就可以对查询使用匿名绑定。 |
 | 绑定 DN 或绑定用户名 |输入绑定到 LDAP 目录时要使用的帐户的用户记录的可分辨名称。<br><br>仅当绑定类型为“简单”或“SSL”时使用绑定的可分辨名称。  <br><br>输入在绑定类型为 Windows 时，绑定到 LDAP 目录时要使用的 Windows 帐户的用户名。  如果留空，已登录用户的帐户用于绑定。 |
 | 绑定密码 |为用于绑定到 LDAP 目录的绑定 DN 或用户名输入绑定密码。  若要为多重身份验证服务器 AdSync 服务配置密码，请启用同步并确保该服务在本地计算机上运行。  该密码保存在用于运行多重身份验证服务器 AdSync 服务的帐户下的“Windows 存储的用户名和密码”中。  该密码还会保存在用于运行多重身份验证服务器用户界面的帐户下，以及用于运行多重身份验证服务器服务的帐户下。  <br><br>由于该密码只存储在本地服务器的“Windows 存储的用户名和密码”中，因此请针对每个需要访问该密码的多重身份验证服务器重复此步骤。 |
 | 查询大小限制 |指定目录搜索要返回的用户数上限的大小限制。  此限制应与 LDAP 目录配置相匹配。  对于不支持分页的大型搜索，导入和同步将尝试分批检索用户。  如果此处指定的大小限制大于 LDAP 目录上配置的限制，则可能会缺失一些用户。 |
-| “测试”按钮 |单击“测试”可测试 LDAP 服务器的绑定。  <br><br>无需选择“使用 LDAP”选项来测试绑定。 使用此选项可在使用 LDAP 配置之前测试绑定。 |
+| “测试”按钮 |单击“测试”可测试 LDAP 服务器的绑定。   <br><br>无需选择“使用 LDAP”选项来测试绑定。  使用此选项可在使用 LDAP 配置之前测试绑定。 |
 
 ## <a name="filters"></a>筛选器
 
@@ -58,9 +64,9 @@ ms.locfileid: "58371798"
 
 Azure 多重身份验证提供以下三个筛选选项：
 
-* **容器筛选器** - 指定用于在执行目录搜索时限定容器记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (|(objectClass=organizationalUnit)(objectClass=container))。  对于其他 LDAP 目录，请根据目录架构使用限定每种类型的容器对象的筛选条件。  <br>注意：如果留空，将默认使用 ((objectClass=organizationalUnit)(objectClass=container))。
-* **安全组筛选器** - 指定用于在执行目录搜索时限定安全组记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648))。  对于其他 LDAP 目录，请根据目录架构使用限定每种类型的安全组对象的筛选条件。  <br>注意：如果留空，将默认使用 (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648))。
-* **用户筛选器** - 指定用于在执行目录搜索时限定用户记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (&(objectClass=user)(objectCategory=person))。  对于其他 LDAP 目录，请根据目录架构使用 (objectClass=inetOrgPerson) 或类似语句。 <br>注意：如果留空，将默认使用 (&(objectCategory=person)(objectClass=user))。
+* **容器筛选器** - 指定用于在执行目录搜索时限定容器记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (|(objectClass=organizationalUnit)(objectClass=container))。  对于其他 LDAP 目录，请根据目录架构使用限定每种类型的容器对象的筛选条件。  <br>请注意:如果留空，将默认使用 ((objectClass=organizationalUnit)(objectClass=container))。
+* **安全组筛选器** - 指定用于在执行目录搜索时限定安全组记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648))。  对于其他 LDAP 目录，请根据目录架构使用限定每种类型的安全组对象的筛选条件。  <br>请注意:如果留空，将默认使用 (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648))。
+* **用户筛选器** - 指定用于在执行目录搜索时限定用户记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (&(objectClass=user)(objectCategory=person))。  对于其他 LDAP 目录，请根据目录架构使用 (objectClass=inetOrgPerson) 或类似语句。 <br>请注意:如果留空，将默认使用 (&(objectCategory=person)(objectClass=user))。
 
 ## <a name="attributes"></a>属性
 
@@ -93,11 +99,11 @@ Azure 多重身份验证提供以下三个筛选选项：
 | 移动电话 |输入用户记录中包含移动电话号码的属性的属性名称。  默认值为 mobile。 |
 | 传真 |输入用户记录中包含传真号码的属性的属性名称。  默认值为 facsimileTelephoneNumber。 |
 | IP 电话 |输入用户记录中包含 IP 电话号码的属性的属性名称。  默认值为 ipPhone。 |
-| “自定义” |输入用户记录中包含自定义电话号码的属性的属性名称。  默认为空。 |
+| 自定义 |输入用户记录中包含自定义电话号码的属性的属性名称。  默认为空。 |
 | 分机 |输入用户记录中包含电话号码分机的属性的属性名称。  分机字段的值只用作主电话号码的分机。  默认为空。 <br><br>如果未指定“分机”属性，则分机可以包含在“电话”属性中。 在这种情况下，请在分机前面加上“x”，以便正常分析该号码。  例如，如果输入 555-123-4567 x890，系统会将 555-123-4567 视为电话号码，将 890 视为分机号码。 |
-| “还原默认值”按钮 |单击“还原默认值”可将所有属性还原为默认值。  默认值会在标准 Active Directory 或 ADAM 架构中正常工作。 |
+| “还原默认值”按钮 |单击“还原默认值”可将所有属性还原为默认值。   默认值会在标准 Active Directory 或 ADAM 架构中正常工作。 |
 
-若要编辑属性，请在“属性”选项卡上单击“编辑”。此时会打开一个窗口，可在其中编辑属性。 选择任一属性旁边的“...”会打开一个窗口，可在其中选择要显示的属性。
+若要编辑属性，请在“属性”选项卡上单击“编辑”。  此时会打开一个窗口，可在其中编辑属性。 选择任一属性旁边的“...”会打开一个窗口，可在其中选择要显示的属性。 
 
 ![编辑在 MFA 服务器目录属性映射](./media/howto-mfaserver-dir-ad/dirint4.png)
 
@@ -117,8 +123,8 @@ Multi-Factor Auth AdSync 服务使用 Microsoft 提供的 DirSync LDAP 服务器
 
 | Feature | 描述 |
 | --- | --- |
-| 启用与 Active Directory 的同步 |如果选中此项，多重身份验证服务器服务将定期轮询 Active Directory 的更改。 <br><br>注意：必须先至少添加一个同步项并且必须执行“立即同步”，然后 Multi-Factor Auth 服务器服务才会开始处理更改。 |
-| 同步间隔 |指定 Multi-Factor Auth 服务器服务在轮询和处理更改之间需要等待的时间间隔。 <br><br> 注意：指定的时间间隔是每个周期开始之间的时间。  如果处理更改的时间超过了此时间间隔，该服务将立即重新轮询。 |
+| 启用与 Active Directory 的同步 |如果选中此项，多重身份验证服务器服务将定期轮询 Active Directory 的更改。 <br><br>请注意:必须先至少添加一个同步项并且必须执行“立即同步”，然后 Multi-Factor Auth 服务器服务才会开始处理更改。 |
+| 同步间隔 |指定 Multi-Factor Auth 服务器服务在轮询和处理更改之间需要等待的时间间隔。 <br><br> 请注意:指定的时间间隔是每个周期开始之间的时间。  如果处理更改的时间超过了此时间间隔，该服务将立即重新轮询。 |
 | 删除不再在 Active Directory 中的用户 |选中此项时，Multi-Factor Auth 服务器服务将处理 Active Directory 已删除用户的逻辑删除并删除相关的 Multi-Factor Auth 服务器用户。 |
 | 始终执行完全同步 |选中此项时，Multi-Factor Auth服务器服务将始终执行完全同步。  未选中此项时，Multi-Factor Auth 服务器服务将通过只查询已更改的用户来执行增量同步。  默认情况下处于未选中状态。 <br><br>如果未选中此项，仅当目录支持 DirSync 控件并且用于绑定到目录的帐户有权执行 DirSync 增量查询时，Azure MFA 服务器才执行增量同步。  如果该帐户没有相应的权限或者同步操作涉及多个域，Azure MFA 服务器将执行完全同步。 |
 | 将禁用或删除 X 个以上的用户时，需要管理员批准 |可以配置同步项以禁用或删除不再属于该项的容器或安全组的用户。  为安全起见，可以规定当要禁用或删除的用户的数量超过阈值时，必须获得管理员的批准。  如果选中此项，需要审批指定的阈值。  默认值为 5，范围为 1 到 999。 <br><br> 可以先向管理员发送电子邮件通知以加快批准速度。 电子邮件通知为审阅和批准用户禁用和删除操作提供说明。  启动 Multi-Factor Auth 服务器用户界面时，会提示需要进行审批。 |
@@ -135,7 +141,7 @@ Multi-Factor Auth AdSync 服务使用 Microsoft 提供的 DirSync LDAP 服务器
 管理员可以使用“上移”和“下移”按钮更改同步项的顺序。  顺序很重要，因为同一用户可能是多个同步项（例如容器和安全组）的成员。  在同步过程中应用于用户的设置将来自该用户所关联到的列表中的第一个同步项。  因此，同步项应按优先级顺序放置。
 
 > [!TIP]
-> 删除同步项之后，应执行完全同步。  在对同步项进行排序后，应执行完全同步。  单击“立即同步”可执行完全同步。
+> 删除同步项之后，应执行完全同步。  在对同步项进行排序后，应执行完全同步。  单击“立即同步”可执行完全同步。 
 
 ## <a name="multi-factor-authentication-servers"></a>多重身份验证服务器
 

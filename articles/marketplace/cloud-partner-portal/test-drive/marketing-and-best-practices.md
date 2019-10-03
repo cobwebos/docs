@@ -1,25 +1,19 @@
 ---
-title: 体验版营销最佳做法 | Microsoft Docs
-description: 面向发布者的体验版营销最佳做法
+title: 测试驱动器市场营销最佳做法 |Azure Marketplace
+description: 体验版的发布服务器市场营销最佳做法
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 81fc5e9ca93178f7c2d7f56563b4cf9253c8f326
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: pabutler
+ms.openlocfilehash: 02b2715c813f7814cf8bf5d23414bc14d5ff5a30
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457572"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64939979"
 ---
 <a name="test-drive-marketing-and-best-practices"></a>体验版营销和最佳做法
 =======================================

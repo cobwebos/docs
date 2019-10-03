@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f7f235ce709fd81c4bb4c367774b4a96cd920e13
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf004f07558ae1f252a6bd26b4fd59ea9e4eea6e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120340"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069273"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>教程：保护 Azure 资源管理器模板部署中的项目
 
@@ -74,59 +74,59 @@ ms.locfileid: "58120340"
 2. 输入以下属性：
 
     * **订阅**：选择 Azure 订阅。
-    * **资源组**：选择“新建”并指定名称。 资源组是 Azure 资源的容器，用于实现管理目的。 在本教程中，可为存储帐户和 Azure SQL 数据库使用同一个资源组。 请记下此资源组名称，因为稍后在本教程中创建 Azure SQL 数据库时需要用到。
+    * **资源组**：选择“新建”并指定名称。  资源组是 Azure 资源的容器，用于实现管理目的。 在本教程中，可为存储帐户和 Azure SQL 数据库使用同一个资源组。 请记下此资源组名称，因为稍后在本教程中创建 Azure SQL 数据库时需要用到。
     * **位置**：选择区域。 例如“美国中部”。 
-    * **存储帐户类型**：使用默认值“Standard_LRS”。
-    * **位置**：使用默认值“[resourceGroup().location]”。 这意味着，要使用存储帐户的资源组位置。
+    * **存储帐户类型**：使用默认值“Standard_LRS”。 
+    * **位置**：使用默认值“[resourceGroup().location]”。  这意味着，要使用存储帐户的资源组位置。
     * **我同意上述条款和条件**：（选中）
-3. 选择“购买”。
+3. 选择“购买”。 
 4. 选择门户右上角的通知图标（钟形图标）查看部署状态。
 
     ![资源管理器教程门户通知窗格](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-portal-notifications-pane.png)
-5. 成功部署存储帐户后，在通知窗格中选择“转到资源组”打开该资源组。
+5. 成功部署存储帐户后，在通知窗格中选择“转到资源组”打开该资源组。 
 
 ### <a name="create-a-blob-container"></a>创建 Blob 容器
 
-在上传任何文件之前，需要创建一个 Blob 容器。 
+在上传任何文件之前，需要创建一个 Blob 容器。
 
 1. 选择存储帐户以将其打开。 应会看到，资源组中只列出了一个存储帐户。 你的存储帐户名称不同于以下屏幕截图所示的名称。
 
     ![资源管理器教程存储帐户](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-storage-account.png)
 
-2. 选择“Blob”磁贴。
+2. 选择“Blob”磁贴。 
 
     ![资源管理器教程 Blob](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-blobs.png)
-3. 选择顶部的“+ 容器”创建新容器。
+3. 选择顶部的“+ 容器”创建新容器。 
 4. 输入以下值：
 
-    * **名称**：输入 **sqlbacpac**。 
-    * **公共访问级别**：使用默认值“专用(不允许匿名访问)”。
-5. 选择“确定”。
-6. 选择“sqlbacpac”打开新建的容器。
+    * **名称**：输入 **sqlbacpac**。
+    * **公共访问级别**：使用默认值“专用(不允许匿名访问)”。 
+5. 选择“确定”  。
+6. 选择“sqlbacpac”打开新建的容器。 
 
 ### <a name="upload-the-bacpac-file-to-the-container"></a>将 BACPAC 文件上传到容器
 
-1. 选择“上传”。
+1. 选择“上传”。 
 2. 输入以下值：
 
     * **文件**：遵照说明选择前面下载的 BACPAC 文件。 默认名称为 **SQLDatabaseExtension.bacpac**。
-    * **身份验证类型**：选择“SAS”。  “SAS”是默认值。
-3. 选择“上传”。  成功上传文件后，容器中应会列出其文件名。
+    * **身份验证类型**：选择“SAS”。   “SAS”是默认值。 
+3. 选择“上传”。   成功上传文件后，容器中应会列出其文件名。
 
 ### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a><a name="generate-a-sas-token" />生成 SAS 令牌
 
-1. 右键单击容器中的“SQLDatabaseExtension.bacpac”，并选择“生成 SAS”。
+1. 右键单击容器中的“SQLDatabaseExtension.bacpac”，并选择“生成 SAS”。  
 2. 输入以下值：
 
-    * **权限**：使用默认值“读取”。
-    * **开始和过期日期/时间**：默认值为使用 SAS 令牌八小时。 如果需要更多的时间来完成本教程，请更新“过期时间”。
+    * **权限**：使用默认值“读取”。 
+    * **开始和过期日期/时间**：默认值为使用 SAS 令牌八小时。 如果需要更多的时间来完成本教程，请更新“过期时间”。 
     * **允许的 IP 地址**：将此字段留空。
-    * **允许的协议**：使用默认值“HTTPS”。
-    * **签名密钥**：使用默认值“密钥 1”。
-3. 选择“生成 Blob SAS 令牌和 URL”。
-4. 复制“Blob SAS URL”。 URL 的中间是文件名 **SQLDatabaseExtension.bacpac**。  文件名将 URL 划分为三个部分：
+    * **允许的协议**：使用默认值“HTTPS”。 
+    * **签名密钥**：使用默认值“密钥 1”。 
+3. 选择“生成 Blob SAS 令牌和 URL”。 
+4. 复制“Blob SAS URL”。  URL 的中间是文件名 **SQLDatabaseExtension.bacpac**。  文件名将 URL 划分为三个部分：
 
-   - **项目位置**： https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/。 请确保位置以“/”结尾。
+   - **项目位置**： https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/ 。 请确保位置以“/”结尾。
    - **BACPAC 文件名**：SQLDatabaseExtension.bacpac。
    - **项目位置 SAS 令牌**：请确保该令牌的前面带有“?”。
 
@@ -136,13 +136,13 @@ ms.locfileid: "58120340"
 
 在此会话中，修改在[教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)中创建的模板，以通过 SAS 令牌调用 BACPAC 文件。  在 SQL 扩展教程中开发的模板已在 [https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json) 位置共享。
 
-1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。
-2. 在“文件名”中粘贴以下 URL：
+1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
+2. 在“文件名”中粘贴以下 URL： 
 
     ```url
     https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json
     ```
-3. 选择“打开”以打开该文件。
+3. 选择“打开”以打开该文件。 
 
     该模板中定义了五个资源：
 
@@ -153,7 +153,7 @@ ms.locfileid: "58120340"
    * `Microsoft.SQL/server/databases/extensions`。  请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions)。
 
      在自定义模板之前，不妨对其进行一些基本的了解。
-4. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。
+4. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。  
 
 ## <a name="edit-the-template"></a>编辑模板
 
@@ -222,7 +222,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="verify-the-deployment"></a>验证部署
 
-在门户中，从新部署的资源组中选择 SQL 数据库。 选择“查询编辑器(预览)”，然后输入管理员凭据。 此时会看到两个表导入到数据库中：
+在门户中，从新部署的资源组中选择 SQL 数据库。 选择“查询编辑器(预览)”，然后输入管理员凭据。  此时会看到两个表导入到数据库中：
 
 ![Azure 资源管理器部署 sql 扩展 BACPAC](./media/resource-manager-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
@@ -230,14 +230,14 @@ New-AzResourceGroupDeployment `
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”。
-2. 在“按名称筛选”字段中输入资源组名称。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
+2. 在“按名称筛选”字段中输入资源组名称。 
 3. 选择资源组名称。  应会看到，该资源组中总共有六个资源。
-4. 在顶部菜单中选择“删除资源组”。
+4. 在顶部菜单中选择“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已部署 SQL Server、SQL 数据库，并已使用 SAS 令牌导入 BACPAC 文件。 若要了解如何跨多个区域部署 Azure 资源，以及如何使用安全部署做法，请参阅
+在本教程中，你已部署 SQL Server、SQL 数据库，并已使用 SAS 令牌导入 BACPAC 文件。 若要了解如何创建 Azure Pipeline 以持续开发和部署资源管理器模板，请参阅
 
 > [!div class="nextstepaction"]
-> [使用 Azure 部署管理器](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [使用 Azure Pipeline 进行持续集成](./resource-manager-tutorial-use-azure-pipelines.md)

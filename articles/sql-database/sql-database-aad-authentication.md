@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 1318cd3d1c0c51889cc70b6836d06d6d6ee70c24
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308374"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897005"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>使用 Azure Active Directory 身份验证进行 SQL 身份验证
 
@@ -99,7 +98,7 @@ Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) �
   - `SUSER_ID(<admin name>)`
   - `SUSER_SID(<admin name>)`
 
-### <a name="manage-instances"></a>管理实例
+### <a name="managed-instances"></a>托管实例
 
 - Azure AD 服务器主体（登录名）和用户作为[托管实例](sql-database-managed-instance.md)的预览功能受支持。
 - [托管实例](sql-database-managed-instance.md)中不支持将映射到 Azure AD 组的 Azure AD 服务器主体（登录名）设置为数据库所有者。
@@ -117,8 +116,9 @@ Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) �
 
 Azure Active Directory 身份验证支持使用 Azure AD 标识连接到数据库的以下方法：
 
-- 使用集成的 Windows 身份验证
-- 使用 Azure AD 主体名称和密码
+- Azure Active Directory 密码
+- 集成式 Azure Active Directory
+- 采用了 MFA 的通用 Azure Active Directory
 - 使用应用程序令牌身份验证
 
 Azure AD 服务器主体（登录名）（**公共预览版**）支持以下身份验证方法：
@@ -126,7 +126,6 @@ Azure AD 服务器主体（登录名）（**公共预览版**）支持以下身�
 - Azure Active Directory 密码
 - 集成式 Azure Active Directory
 - 采用了 MFA 的通用 Azure Active Directory
-- 交互式 Azure Active Directory
 
 
 ### <a name="additional-considerations"></a>其他注意事项

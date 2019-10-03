@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310505"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61038173"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>为多层 Citrix XenApp 和 XenDesktop 部署设置灾难恢复
 
@@ -26,7 +26,7 @@ Citrix XenApp 暂不提供任何灾难恢复功能。
 本文档分步介绍了如何为 Hyper-V 和 VMware vSphere 平台上的本地 Citrix XenApp 部署生成灾难恢复解决方案。 此外还介绍了如何利用恢复计划、支持的配置和先决条件，执行到 Azure 的测试故障转移（灾难恢复演练）和计划外故障转移。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，请确保了解以下知识：
 
@@ -108,7 +108,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 
 注意以下事项：
 
-* 可以设置目标 IP 地址。 如果未提供地址，故障转移的计算机将使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移将不会正常工作。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
+* 可以设置目标 IP 地址。 如果未提供地址，故障转移的计算机将使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移不会正常工作。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
 
 * 对于 AD/DNS 服务器，如果保留本地地址，则可以为 Azure 虚拟网络指定与 DNS 服务器相同的地址。
 

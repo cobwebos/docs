@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: magattus
-ms.openlocfilehash: afe959e80b339db5112fa97fd79d0528390e3954
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9f185f58e1d33a3985777cb22bc7578f9f2c4541
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096446"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593807"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>通过在 Azure CDN 中压缩文件来提高性能
 文件压缩是提高文件传输速度和增加页面加载性能的一种简单有效的方法，可通过在从服务器发送文件之前减少其大小来实现。 文件压缩可以减少带宽成本，并为用户提供更快的响应体验。
@@ -27,13 +27,13 @@ ms.locfileid: "58096446"
 有两种方法可启用文件压缩：
 
 - 在源服务器上启用压缩。 在此示例中，Azure CDN 传递压缩文件，将这些文件传递给发出请求的客户端。
-- 直接在 CDN POP 服务器上启用压缩（“快速压缩”）。 在这种情况下，CDN 会压缩文件并将其提供给最终用户，即使源服务器未压缩文件也是如此。
+- 直接在 CDN POP 服务器上启用压缩（“快速压缩”  ）。 在这种情况下，CDN 会压缩文件并将其提供给最终用户，即使源服务器未压缩文件也是如此。
 
 > [!IMPORTANT]
 > Azure CDN 配置更改可能需要一段时间，才能在整个网络中传播： 
 > - 对于 **Microsoft 推出的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
 > - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
-> - 对于“Verizon 提供的 Azure CDN 标准版”和“Verizon 提供的 Azure CDN 高级版”配置文件，传播通常在 10 分钟内完成。 
+> - 对于“Verizon 提供的 Azure CDN 标准版”  和“Verizon 提供的 Azure CDN 高级版”  配置文件，传播通常在 10 分钟内完成。 
 > 
 > 如果首次为 CDN 终结点设置压缩，请考虑等待 1-2 个小时，确保将压缩设置传播到 POP 之后再排查问题。
 
@@ -51,12 +51,12 @@ ms.locfileid: "58096446"
     ![CDN 配置文件终结点](./media/cdn-file-compression/cdn-endpoints.png)
 
     CDN 终结点页面会打开。
-2. 选择“压缩”。
+2. 选择“压缩”  。
 
     ![CDN 压缩选择](./media/cdn-file-compression/cdn-compress-select-std.png)
 
     此时将打开“压缩”页。
-3. 选择“启用”以启用压缩。
+3. 选择“启用”  以启用压缩。
 
     ![CDN 文件压缩选项](./media/cdn-file-compression/cdn-compress-standard.png)
 4. 使用默认 MIME 类型，或通过添加或删除 MIME 类型来修改列表。
@@ -69,38 +69,38 @@ ms.locfileid: "58096446"
    > Microsoft 提供的 Azure CDN 标准版暂不支持修改 MIME 类型的默认列表。
    > 
 
-5. 进行更改后，请选择“保存”。
+5. 进行更改后，请选择“保存”  。
 
 ### <a name="premium-cdn-profiles"></a>高级 CDN 配置文件
 > [!NOTE]
 > 本部分仅适用于**来自 Verizon 的高级 Azure CDN** 配置文件。
 > 
 
-1. 从“CDN 配置文件”页中，选择“管理”。
+1. 从“CDN 配置文件”页中，选择“管理”  。
 
     ![CDN 管理选择](./media/cdn-file-compression/cdn-manage-btn.png)
 
     CDN 管理门户打开。
-2. 将鼠标悬停在“**HTTP 大**”选项卡上，然后悬停在“**缓存设置**”浮出控件。 选择“压缩”。
+2. 将鼠标悬停在“**HTTP 大**”选项卡上，然后悬停在“**缓存设置**”浮出控件。 选择“压缩”  。
 
     ![CDN 压缩选择](./media/cdn-file-compression/cdn-compress-select.png)
 
     此时将显示压缩选项。
 
     ![CDN 文件压缩选项](./media/cdn-file-compression/cdn-compress-files.png)
-3. 通过选择“启用压缩”来启用压缩。 在“文件类型”框中，以逗号分隔的列表（无空格）的形式输入想要压缩的 MIME 类型。
+3. 通过选择“启用压缩”  来启用压缩。 在“文件类型”  框中，以逗号分隔的列表（无空格）的形式输入想要压缩的 MIME 类型。
 
    > [!TIP]
    > 建议不要对压缩格式应用压缩（虽然可以执行此操作）。 压缩格式示例有 ZIP、MP3、MP4 或 JPG。
    > 
 
-4. 进行更改后，请选择“更新”。
+4. 进行更改后，请选择“更新”  。
 
 ## <a name="compression-rules"></a>压缩规则
 
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Microsoft 的 Azure CDN 标准版配置文件
 
-对于“Microsoft 提供的 Azure CDN 标准版”配置文件，只有符合条件的文件才能进行压缩。 要符合压缩条件，文件必须：
+对于“Microsoft 提供的 Azure CDN 标准版”  配置文件，只有符合条件的文件才能进行压缩。 要符合压缩条件，文件必须：
 - 已为 MIME 类型[配置为压缩](#enabling-compression)。
 - 大于 1 KB
 - 小于 8 MB
@@ -153,7 +153,7 @@ ms.locfileid: "58096446"
 | --- | --- | --- | --- |
 | 压缩 |压缩 |压缩 |在支持的格式之间进行 CDN 转码。 |
 | 压缩 |未压缩 |压缩 |CDN 执行压缩。 |
-| 压缩 |未缓存 |压缩 |如果源返回未压缩文件，CDN 将执行压缩。 <br/>来自 Verizon 的 Azure CDN 将传递第一个请求上的未压缩文件，然后压缩并缓存文件以供后续请求使用。 <br/>永远不会压缩带 `Cache-Control: no-cache` 标头的文件。 |
+| 压缩 |未缓存 |压缩 |如果源返回未压缩文件，CDN 将执行压缩。 <br/>来自 Verizon 的 Azure CDN 将传递第一个请求上的未压缩文件，然后压缩并缓存文件以供后续请求使用  。 <br/>永远不会压缩带 `Cache-Control: no-cache` 标头的文件。 |
 | 未压缩 |压缩 |未压缩 |CDN 执行解压缩。 |
 | 未压缩 |未压缩 |未压缩 | |
 | 未压缩 |未缓存 |未压缩 | |
@@ -165,6 +165,6 @@ ms.locfileid: "58096446"
 - application/vnd.apple.mpegurl
 - application/f4m+xml 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [排查 CDN 文件压缩问题](cdn-troubleshoot-compression.md)    
 

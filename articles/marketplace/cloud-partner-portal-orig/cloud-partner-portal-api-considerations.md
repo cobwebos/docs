@@ -1,28 +1,21 @@
 ---
-title: API 注意事项 | Microsoft Docs
+title: API 时的注意事项 |Azure Marketplace
 description: 使用市场 API 时的版本控制、错误处理和授权问题。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: c6cfb41cb6254145821ab3fef662e9a5e54f6298
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 6bf27db27daee50f78552344ae1b2b116d48a5c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805753"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935580"
 ---
-<a name="api-considerations"></a>API 注意事项
-=================
+# <a name="api-considerations"></a>API 注意事项
+
 
 <a name="api-versioning"></a>API 版本控制
 --------------

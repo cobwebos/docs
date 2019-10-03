@@ -2,18 +2,19 @@
 title: 需要在 Azure 存储中安全传输 | Microsoft Docs
 description: 了解 Azure 存储的“需要安全传输”功能，以及如何启用它。
 services: storage
-author: fhryo-msft
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 06/20/2017
-ms.author: fryu
+ms.author: tamram
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e75cd873b780f514b24ee254dd491b6aa779c420
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7239e7fbe1221acc3c302260045d6fc510db2cbe
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101918"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65148576"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>在 Azure 存储中需要安全传输
 
@@ -32,22 +33,22 @@ ms.locfileid: "58101918"
 
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>新的存储帐户需要安全传输
 
-1. 在 Azure 门户中打开“创建存储帐户”窗格。
-1. 在“需要安全传输”下，选择“启用”。
+1. 在 Azure 门户中打开“创建存储帐户”  窗格。
+1. 在“需要安全传输”  下，选择“启用”  。
 
    ![“创建存储帐户”边栏选项卡](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
 ### <a name="require-secure-transfer-for-an-existing-storage-account"></a>对现有存储帐户需要安全传输
 
 1. 在 Azure 门户中选择现有存储帐户。
-1. 在存储帐户菜单窗格的“设置”下，选择“配置”。
-1. 在“需要安全传输”下，选择“启用”。
+1. 在存储帐户菜单窗格的“设置”  下，选择“配置”  。
+1. 在“需要安全传输”  下，选择“启用”  。
 
    ![“存储帐户”菜单窗格](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
 ## <a name="enable-secure-transfer-required-programmatically"></a>以编程方式启用“需要安全传输”
 
-若要以编程方式启用“需要安全传输”，请通过 REST API、工具或库使用存储帐户属性中的 supportsHttpsTrafficOnly 设置：
+若要以编程方式启用“需要安全传输”，请通过 REST API、工具或库使用存储帐户属性中的 supportsHttpsTrafficOnly  设置：
 
 * [REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts)（版本：2016-12-01）
 * [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount)（版本：0.7）

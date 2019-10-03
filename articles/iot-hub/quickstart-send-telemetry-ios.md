@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/03/2019
-ms.openlocfilehash: a3f72c2a55acfc53d7d8a07bd10250c6ed6102ea
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 03a0f285b2e8c74070a30bfbaac50e9bd9c58f65
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006899"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051474"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>快速入门：将遥测数据从设备发送到 IoT 中心 (iOS)
 
@@ -57,7 +57,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
    az iot hub device-identity create --hub-name YourIoTHubName --device-id myiOSdevice
    ```
 
-1. 运行以下命令，获取刚注册设备的设备连接字符串：
+1. 运行以下命令，获取刚注册设备的设备连接字符串： 
 
    ```azurecli-interactive
    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id myiOSdevice --output table
@@ -99,15 +99,15 @@ pod install
    open "MQTT Client Sample.xcworkspace"
    ```
 
-2. 展开“MQTT 客户端示例”项目，然后展开同一名称的文件夹。  
+2. 展开“MQTT 客户端示例”项目，然后展开同一名称的文件夹。   
 3. 打开 **ViewController.swift**，以便在 XCode 中进行编辑。 
 4. 搜索 **connectionString** 变量，并使用以前记下的设备连接字符串更新其值。
 5. 保存所做更改。 
-6. 使用“生成并运行”按钮或“Command + R”组合键在设备模拟器中运行项目。 
+6. 使用“生成并运行”按钮或“Command + R”组合键在设备模拟器中运行项目。   
 
    ![运行项目](media/quickstart-send-telemetry-ios/run-sample.png)
 
-7. 当模拟器打开后，在示例应用中选择“启动”。
+7. 当模拟器打开后，在示例应用中选择“启动”。 
 
 以下屏幕截图显示了在应用程序将模拟遥测数据发送到 IoT 中心后的一些示例输出：
 
@@ -141,9 +141,3 @@ az iot hub monitor-events --device-id myiOSdevice --hub-name YourIoTHubName
 
 > [!div class="nextstepaction"]
 > [快速入门：控制连接到 IoT 中心的设备](quickstart-control-device-node.md)
-
-<!-- Links -->
-[lnk-process-d2c-tutorial]: tutorial-routing.md
-[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-connect-device]: https://azure.microsoft.com/develop/iot/

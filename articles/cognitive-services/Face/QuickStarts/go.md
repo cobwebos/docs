@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 752f15fd730f1244f44ba3749bff3c5bb85ca02b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 0bcd94c62ec0fe5d9e9ffec18c982e7a102f0ffc
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312593"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858961"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>快速入门：使用 REST API 和 Go 检测图像中的人脸
 
@@ -49,7 +49,7 @@ func main() {
     // subscription keys. For example, if you got your subscription keys from
     // westus, replace "westcentralus" in the URL below with "westus".
     const uriBase =
-      "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect"
+      "https://<My Endpoint String>.com/face/v1.0/detect"
     const imageUrl =
       "https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg"
 
@@ -60,8 +60,16 @@ func main() {
 
     reader := strings.NewReader(imageUrlEnc)
 
+    //Configure TLS, etc.
+    tr := &http.Transport{
+        TLSClientConfig: &tls.Config{
+            InsecureSkipVerify: true,
+        },
+    }
+    
     // Create the Http client
     client := &http.Client{
+        Transport: tr,
         Timeout: time.Second * 2,
     }
 
@@ -100,7 +108,9 @@ func main() {
 }
 ```
 
-需使用订阅密钥更新 `subscriptionKey` 值，并且可能需要更改 `uriBase` 字符串，使之包含正确的区域标识符（如需所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 
+需使用订阅密钥更新 `subscriptionKey` 值，并更改 `uriBase` 字符串，使之包含正确的终结点字符串。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 你可能还希望更改 `imageUrl` 字段以指向自己的输入图像。 你还可能想要更改 `returnFaceAttributes` 字段，该字段指定要检索的人脸属性。
 

@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 本教程展示了如何使用 Azure 门户创建和管理标准负载均衡器。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: I want to create and Standard Load Balancer so that I can load balance internet traffic to VMs and add and remove VMs from the load-balanced set.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/11/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 78266e447d1ddf6daf5a9b0ad9172ab6470bf0c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 22d0e56a77036c551b6006f43997c92fcce07499
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845199"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273357"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>教程：通过 Azure 门户对从 Internet 到 VM 的流量进行负载均衡
 
@@ -49,8 +49,8 @@ ms.locfileid: "57845199"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | 订阅               | 选择订阅。    |    
-    | 资源组         | 选择“新建”并在文本框中键入 *myResourceGroupSLB*。|
+    | Subscription               | 选择订阅。    |    
+    | Resource group         | 选择“新建”并在文本框中键入 *myResourceGroupSLB*。|
     | Name                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”。                                        |
     | Type          | 选择“公共”。                                        |
@@ -126,13 +126,13 @@ ms.locfileid: "57845199"
     | ------- | ----- |
     | Name | 输入 *myVNet*。 |
     | 地址空间 | 输入 10.1.0.0/16。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择现有资源 - *myResourceGroupSLB*。 |
+    | Subscription | 选择订阅。|
+    | Resource group | 选择现有资源 - *myResourceGroupSLB*。 |
     | 位置 | 选择“西欧”。|
     | 子网 - 名称 | 输入 *myBackendSubnet*。 |
     | 子网 - 地址范围 | 输入 10.1.0.0/24。 |
     
-3. 将剩余的字段保留默认设置，然后选择“创建”。
+3. 将剩余的字段保留默认设置，然后选择 **“创建”** 。
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 
@@ -147,7 +147,7 @@ ms.locfileid: "57845199"
    - 在“实例详细信息” > “可用性选项”中，选择“可用性区域”。 
    - 在“实例详细信息” > “可用性区域”中，选择“1”。
   
-1. 选择“网络”选项卡，或选择“下一步: 磁盘”，然后选择“下一步:网络”。 
+1. 选择“网络”选项卡，或选择 **“下一步:磁盘”，然后选择“下一步:网络”**。 
    
    - 确保选中以下项：
        - **虚拟网络**：**myVnet**

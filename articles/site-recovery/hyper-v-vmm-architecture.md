@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure Site Recovery 执行 Hyper-V 到辅助本地站点的灾难恢复的体系结构 | Microsoft Docs
+title: 使用 Azure Site Recovery 将 Hyper-v 灾难恢复到辅助本地站点的体系结构
 description: 本文概述使用 Azure Site Recovery 将本地 Hyper-V VM 灾难恢复到辅助 System Center VMM 站点所用的体系结构。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/19/2019
+ms.topic: conceptual
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 553ecefc9f7588de0ee9056f2b2385f9a0ede50f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 2d8e9c3531e031538c593cfd60d83b4ae97b4f4c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316161"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813729"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>体系结构 - 从 Hyper-V 复制到辅助站点
 

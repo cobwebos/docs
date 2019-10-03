@@ -1,25 +1,18 @@
 ---
-title: 从 VHD 部署 Azure 市场 VM | Microsoft Docs
+title: 从适用于 Azure Marketplace 的 Vhd 部署 VM
 description: 介绍如何从 Azure 部署的 VHD 注册 VM。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: qianw211
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
-ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f37ab1b9eef5be4aff6e5f8aecebc3688592f040
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 08/08/2019
+ms.author: evansma
+ms.openlocfilehash: 1aa946c813de41423d4fb2ba5b3aa5274db90f39
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046676"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934969"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>从 VHD 部署 VM
 
@@ -66,12 +59,12 @@ ms.locfileid: "59046676"
    |  -------------              |   ---------------                                                            |
    | 用户存储帐户名称   | 通用化 VHD 所在的存储帐户名称                    |
    | 用户存储容器名称 | 通用化 VHD 所在的容器名称                          |
-   | 公共 IP 的 DNS 名称      | 公共 IP DNS 名称                                                           |
+   | 公共 IP 的 DNS 名称      | 公共 IP DNS 名称。 DNS 名称为 VM, 一旦部署该产品/服务, 你将在 Azure 门户中定义此名称。  |
    | 管理员用户名             | 新 VM 的管理员帐户的用户名                                  |
    | 管理员密码              | 新 VM 的管理员帐户的密码                                  |
    | OS 类型                     | VM 操作系统：`Windows` \| `Linux`                                    |
    | 订阅 ID             | 所选订阅的标识符                                      |
-   | 位置                    | 部署的地理位置                                        |
+   | Location                    | 部署的地理位置                                        |
    | VM 大小                     | [Azure VM 大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)，例如 `Standard_A2` |
    | 公共 IP 地址名称      | 公共 IP 地址的名称                                               |
    | VM 名称                     | 新 VM 的名称                                                           |

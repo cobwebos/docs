@@ -3,8 +3,8 @@ title: Azure 网络观察程序中的安全组视图简介 | Microsoft 文档
 description: 此页概述了网络观察程序安全视图功能
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: ad27ab85-9d84-4759-b2b9-e861ef8ea8d8
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: jdial
-ms.openlocfilehash: 15f6bd0d7da63924e52db8ec7e2cbb0ee7483f82
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
-ms.translationtype: HT
+ms.author: kumud
+ms.openlocfilehash: ed0ad244a758b92f5ccba5785184190b030c306c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391532"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64722591"
 ---
 # <a name="introduction-to-network-security-group-view-in-azure-network-watcher"></a>Azure 网络观察程序中的网络安全组视图简介 | Microsoft 文档
 

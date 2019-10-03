@@ -1,6 +1,6 @@
 ---
 title: Azure 服务总线常见问题解答 (FAQ) | Microsoft Docs
-description: 回答了一些关于 Azure 服务总线的常见问题。
+description: 解答一些有关 Azure 服务总线的常见问题。
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 41a5f08be833d1235146d6e748580751af2c9d73
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046081"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278341"
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
 
@@ -33,7 +33,7 @@ ms.locfileid: "59046081"
 [服务总线队列](service-bus-queues-topics-subscriptions.md)是用于存储消息的实体。 有多个应用程序，或者有多个需要彼此通信的分布式应用程序部分时，队列特别有用。 队列和发行中心的相似之处在于，两者都会接收多个产品（消息），再从该处送出。
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>什么是 Azure 服务总线主题和订阅？
-主题可被视为队列，使用多个订阅时，它将成为更丰富的消息传送模型；实质上是一种一对多的通信工具。 此发布/订阅模型（或 pub/sub）启用了一个应用程序，该应用程序将消息发送到具有多个订阅的主题中，进而使多个应用程序接收到该消息。
+主题可被视为队列，使用多个订阅时，它将成为更丰富的消息传送模型；实质上是一种一对多的通信工具。 此发布/订阅模型（或 pub/sub  ）启用了一个应用程序，该应用程序将消息发送到具有多个订阅的主题中，进而使多个应用程序接收到该消息。
 
 ### <a name="what-is-a-partitioned-entity"></a>什么是分区实体？
 传统的队列或主题由单个消息中转站进行处理并存储在一个消息存储中。 仅在基本和标准消息传递层中受支持，[分区队列或主题](service-bus-partitioning.md)由多个消息中转站处理，并存储在多个消息传送存储中。 此功能意味着分区的队列或主题的总吞吐量不再受到单个消息中转站或消息存储的性能限制。 此外，消息传送存储的临时中断不会导致分区的队列或主题不可用。
@@ -42,9 +42,51 @@ ms.locfileid: "59046081"
 
  [高级 SKU](service-bus-premium-messaging.md) 中不再支持分区实体。 
 
-## <a name="best-practices"></a>最佳做法
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火墙上打开哪些端口？ 
+可以将以下协议与 Azure 服务总线配合使用，以便发送和接收消息：
+
+- 高级消息队列协议 (AMQP)
+- 服务总线邮件协议 (SBMP)
+- HTTP
+
+请查看下表，了解需要打开哪些出站端口，以便使用这些协议与 Azure 事件中心通信。 
+
+| Protocol | 端口 | 详细信息 | 
+| -------- | ----- | ------- | 
+| AMQP | 5671 和 5672 | 请参阅 [AMQP 协议指南](service-bus-amqp-protocol-guide.md) | 
+| SBMP | 9350 到 9354 | 请参阅[连接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| HTTP、HTTPS | 80、443 | 
+
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>我需要将哪些 IP 地址加入允许列表？
+若要找到适合加入连接的允许列表的 IP 地址，请执行以下步骤：
+
+1. 从命令提示符处运行以下命令： 
+
+    ```
+    nslookup <YourNamespaceName>.servicebus.windows.net
+    ```
+2. 记下在 `Non-authoritative answer` 中返回的 IP 地址。 此 IP 地址是静态的。 只有在你将命名空间还原到另一群集时，它才会更改。
+
+如果对命名空间使用区域冗余，则需执行一些额外的步骤： 
+
+1. 首先，在命名空间中运行 nslookup。
+
+    ```
+    nslookup <yournamespace>.servicebus.windows.net
+    ```
+2. 记下“非权威回答”  部分中的名称，该名称采用下述格式之一： 
+
+    ```
+    <name>-s1.servicebus.windows.net
+    <name>-s2.servicebus.windows.net
+    <name>-s3.servicebus.windows.net
+    ```
+3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
+
+
+## <a name="best-practices"></a>最佳实践
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure 服务总线的最佳实践有哪些？
-请参阅[使用服务总线改进性能的最佳做法][Best practices for performance improvements using Service Bus] - 本文介绍了如何在交换消息时优化性能。
+请参阅[使用服务总线改进性能的最佳实践][Best practices for performance improvements using Service Bus]-本文介绍如何在交换消息时优化性能。
 
 ### <a name="what-should-i-know-before-creating-entities"></a>创建实体前需了解哪些事项？
 队列和主题的下列属性固定不变。 预配实体时，请考虑此限制，因为必须创建新的替代实体才可修改这些属性。
@@ -62,7 +104,7 @@ ms.locfileid: "59046081"
 还可以访问 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)了解常规的 Azure 定价信息。 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>服务总线如何收取费用？
-有关服务总线定价的完整信息，请参阅[服务总线定价详细信息][Pricing overview]。 除标示的价格外，还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
+有关服务总线定价的完整信息，请参阅[服务总线定价][Pricing overview]。 除标示的价格外，还需为在其中部署应用程序的数据中心之外的相关数据输出支付费用。
 
 ### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>服务总线的哪些使用情况受数据传输限制？ 哪些不受其限制？
 免费提供给定 Azure 区域内的任意数据传输和入站数据传输。 区域外的数据传输需收取输出费用，详见[此处](https://azure.microsoft.com/pricing/details/bandwidth/)。
@@ -72,27 +114,27 @@ ms.locfileid: "59046081"
 
 ## <a name="quotas"></a>配额
 
-有关服务总线限制和配额的列表，请参阅[服务总线配额概述][Quotas overview]。
+有关服务总线限制和配额的列表, 请参阅[服务总线配额概述][Quotas overview]。
 
 ### <a name="does-service-bus-have-any-usage-quotas"></a>服务总线是否有任何使用率配额？
 默认情况下，对于任何云服务，Microsoft 设置聚合的每月使用配额，通过对所有的客户订阅计算得到。 如果你需要更多配额，可以随时联系客户服务，以便了解你的需求并相应地调整这些限制。 对于服务总线，总用量配额是每月 50 亿条消息。
 
 虽然 Microsoft 保留禁用在给定月份超过使用配额的客户帐户的权利，但仍然会在采取任何措施前发送电子邮件通知，并多次尝试与客户联系。 超过这些配额的客户仍需负责超出配额的费用。
 
-至于 Azure 上的其他服务，服务总线会强制使用一组特定配额，以确保资源的公平使用。 可以在[服务总线配额概述][Quotas overview]中找到有关这些配额的更多详细信息。
+至于 Azure 上的其他服务，服务总线会强制使用一组特定配额，以确保资源的公平使用。 你可以在[服务总线配额概述][Quotas overview]中找到有关这些配额的更多详细信息。
 
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>如何处理大小 > 1 MB 的消息？
 服务总线消息服务（队列和主题/订阅）允许应用程序发送大小不超过 256 KB（标准层）或 1 MB（高级层）的消息。 若要处理大小超过 1 MB 的消息，请使用[此博客文章](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)中所述的声明检查模式。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>为什么在从其他订阅中删除命名空间后无法创建该命名空间？ 
 从订阅中删除命名空间时，请等待 4 个小时，然后才能在另一个订阅中使用相同的名称重新创建它。 否则，可能会收到以下错误消息：`Namespace already exists`。 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Azure 服务总线 API 生成了哪些异常？建议采取什么操作？
-有关可能的服务总线异常的列表，请参阅[异常概述][Exceptions overview]。
+有关可能的服务总线异常的列表, 请参阅[异常概述][Exceptions overview]。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>什么是共享访问签名？哪些语言支持生成签名？
-共享访问签名是基于 SHA-256 安全哈希或 URI 的身份验证机制。 有关如何在 Node.js、PHP、Java 和 C\# 中生成自己的签名的信息，请参阅[共享访问签名][Shared Access Signatures]一文。
+共享访问签名是基于 SHA-256 安全哈希或 URI 的身份验证机制。 有关如何在 node.js、PHP、Java、Python 和C#中生成自己的签名的信息, 请参阅[共享访问签名][Shared Access Signatures]一文。
 
 ## <a name="subscription-and-namespace-management"></a>订阅和命名空间管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>如何将命名空间迁移到另一个 Azure 订阅中？
@@ -101,7 +143,7 @@ ms.locfileid: "59046081"
 
 #### <a name="portal"></a>门户
 
-要使用 Azure 门户将服务总线命名空间迁移到其他订阅，可按照[此处](../azure-resource-manager/resource-group-move-resources.md#use-portal)的说明操作。 
+要使用 Azure 门户将服务总线命名空间迁移到其他订阅，可按照[此处](../azure-resource-manager/resource-group-move-resources.md#use-the-portal)的说明操作。 
 
 #### <a name="powershell"></a>PowerShell
 

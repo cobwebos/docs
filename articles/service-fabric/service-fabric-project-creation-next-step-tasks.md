@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 12/07/2017
 ms.author: atsenthi
 ms.openlocfilehash: e5371cd3ea9de1993f0f824325f6cbf1e25343d4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667921"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60773037"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric 应用程序和后续步骤
 已创建 Azure Service Fabric 应用程序。 本文介绍了一些试验教程、项目的组成、你可能感兴趣的其他信息以及有可能执行的后续步骤。

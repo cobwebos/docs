@@ -12,14 +12,15 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55dfab0c60e77b86157a005db34c37917a5e08d2
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341096"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915981"
 ---
 # <a name="manage-app-passwords-from-your-security-info-preview-page"></a>从“安全信息”（预览版）页面管理应用密码
+
 某些应用（例如 Outlook 2010）不支持双重验证。 缺少这种支持意味着，如果你在组织中使用双重验证，该应用将不会正常工作。 若要解决此问题，可以创建一个与普通密码不同的自动生成的密码，并在每个非浏览器应用中使用该密码。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
@@ -29,22 +30,22 @@ ms.locfileid: "57341096"
 
 使用应用密码时，请务必记住：
 
-- 应用密码是自动生成的，并且只能为每个应用输入一次。
+- 应用密码是自动生成的，应为每个应用创建和输入一次。
 
 - 每个用户的密码限制为 40 个。 如果在达到该限制后尝试创建密码，系统会提示删除现有的密码，然后才能创建新密码。
-
-- 对每个设备（而不是每个应用）使用一个应用密码。 例如，为笔记本电脑上的所有应用创建一个密码，然后为台式机上的所有应用创建另一个密码。
 
     >[!Note]
     >Office 2013 客户端（包括 Outlook）支持新的身份验证协议，并可用于双重验证。 此支持意味着，在启用双重验证后，不再需要对 Office 2013 客户端使用应用密码。 有关详细信息，请参阅[如何对 Office 2013 和 Office 2016 客户端应用使用新式身份验证](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517)一文。
 
 ## <a name="create-new-app-passwords"></a>创建新的应用密码
+
 如果对工作或学校帐户使用双重验证，并且管理员已启用安全信息体验，则你可以使用“安全信息”页面创建和删除应用密码。
 
 >[!Note]
 >如果管理员尚未启用安全信息体验，则必须根据[管理双重验证的应用密码](multi-factor-authentication-end-user-app-passwords.md)部分中的说明和信息操作。
 
 ### <a name="to-create-a-new-app-password"></a>创建新的应用密码
+
 1. 登录到你的工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页面。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
@@ -64,10 +65,11 @@ ms.locfileid: "57341096"
 5. 复制“密码”框中的文本，将密码粘贴到应用（在本例中为 Outlook 2010）的密码区域，然后选择“完成”。
 
     ![“应用密码”页面，其中显示了应用名称](media/security-info/securityinfo-myprofile-password-copytext.png)
-    
+
     密码已添加，你将可以成功登录到应用程序。
 
 ## <a name="delete-your-app-passwords"></a>删除应用密码
+
 如果你不再需要使用要求使用应用密码的应用，则可以删除关联的应用密码。 删除应用密码将释放一个可用的应用密码位置点供将来使用。
 
 >[!Important]
@@ -81,5 +83,6 @@ ms.locfileid: "57341096"
 
 2. 从确认框中选择“是”，以删除“应用密码”。 删除应用密码后，它将从你的安全信息中删除，并从“安全信息”页面中消失。
 
-## <a name="for-more-information"></a>更多信息
+## <a name="for-more-information"></a>获取详细信息
+
 - 有关“安全信息”页面以及如何设置它的详细信息，请参阅[安全信息概述](user-help-security-info-overview.md)

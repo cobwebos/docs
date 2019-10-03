@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 841794dcbb41249ea25f615524150df4bd257b45
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901927"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568391"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>在扩展云数据库之间移动数据
 
@@ -101,7 +100,7 @@ ms.locfileid: "57901927"
 
     有关引用表和分片表对比的信息可由分片映射上的 `SchemaInfo` API 提供。 以下示例说明了如何在给定分片映射管理器对象上使用这些 API：
 
-    ```c#
+    ```csharp
     // Create the schema annotations
     SchemaInfo schemaInfo = new SchemaInfo();
 
@@ -176,7 +175,7 @@ ms.locfileid: "57901927"
 - 在请求处理过程中，一些 shardlet 数据可能会同时存在于源分片和目标分片上。 为了防止在 shardlet 移动过程中出现故障，这是必需的。 拆分/合并服务与分片映射功能的集成可以确保在分片映射上使用“OpenConnectionForKey”方法通过依赖于数据的路由 API 建立的连接不会显示任何不一致的中间状态。 但是，在不使用 **OpenConnectionForKey** 方法连接到源分片或目标分片时，如果正在执行拆分 / 合并/移动请求，则不一致的中间状态可能可见。 这些连接可能会显示部分或重复的结果，具体取决于时间设置或进行基础连接的分片。 此限制当前包括由 Elastic Scale 多分片查询建立的连接。
 - 不能在不同的角色之间共享用于拆分/合并服务的元数据数据库。 例如，在过渡环境中运行的拆分/合并服务的角色需要指向其他元数据数据库而不是生产角色。
 
-## <a name="billing"></a>计费
+## <a name="billing"></a>帐单
 
 在 Microsoft Azure 订阅中拆分 / 合并服务作为云服务运行。 因此将对服务实例收取云服务费用。 除非频繁地执行拆分/合并/移动操作，否则建议删除拆分/合并云服务。 这可以节省用于运行中的或已部署的云服务实例的成本。 只要需要执行拆分或合并操作，便可以重新部署和启用已准备好的可运行配置。
 
@@ -218,7 +217,7 @@ ms.locfileid: "57901927"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 针对 NuGet 包所提供的 Web 和辅助角色，若要使用诊断配置启用监视和诊断，请使用 Azure PowerShell 运行以下命令：
 
@@ -248,7 +247,7 @@ ms.locfileid: "57901927"
 
 ## <a name="performance"></a>性能
 
-通常，Azure SQL 数据库中更高、更可执行的服务层应具有更好的性能。 为更高服务层分配更高的 IO、CPU 和内存有利于拆分/合并服务在使用的批量复制和删除操作。 因此，在定义的有限时间段内仅为这些数据库提高服务层。
+通常，Azure SQL 数据库中更高、更可执行的服务层级应具有更好的性能。 为更高服务层级分配更高的 IO、CPU 和内存有利于拆分/合并服务在使用的批量复制和删除操作。 因此，在定义的有限时间段内仅为这些数据库提高服务层级。
 
 该服务也会会验证查询作为其常规操作的一部分来执行。 除此之外，这些验证查询还会检查目标范围中数据的异常存在，确保任何拆分/合并/移动操作都从一致状态开始进行。 这些查询在操作范围定义的分片键范围和作为请求定义的一部分而提供的批大小上都有效。 当使用分片键作为起始列的索引存在时，这些查询表现最好。
 

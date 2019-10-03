@@ -4,23 +4,22 @@ description: 了解如何创建和上传包含 Linux 操作系统的 Azure 虚�
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: d351396c-95a0-4092-b7bf-c6aae0bbd112
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eb6ef87edd2ff16750573c6b8c719fa4b81d3a4c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105516"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083589"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -74,12 +73,12 @@ Azure 在 Hyper-V 虚拟机监控程序上运行，因此 Linux 需要某些内�
 ### <a name="resizing-vhds"></a>调整 VHD 大小
 Azure 上的 VHD 映像必须已将虚拟大小调整为 1MB。  通常情况下，使用 Hyper-V 创建的 VHD 已正确调整。  如果未正确调整 VHD，在尝试基于 VHD 创建映像时，可能会收到如下错误消息：
 
-* VHD http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd 的虚拟大小为 21475270656 字节，这是不受支持的。 大小必须是整数（以 MB 为单位）。
+* Vhd http:\//>mystorageaccount/vhd/MyLinuxVM的虚拟大小(21475270656字节)不受支持。\< 大小必须是整数（以 MB 为单位）。
 
 在这种情况下，可使用 Hyper-V 管理器控制台或 [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell cmdlet 调整 VM 大小。  如果不是在 Windows 环境中运行，我们建议使用 `qemu-img` 转换（如果需要）并调整 VHD 大小。
 
 > [!NOTE]
-> 2.2.1 或更高版本的 qemu-img 存在一个[已知的 bug](https://bugs.launchpad.net/qemu/+bug/1490611)，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 我们建议使用 `qemu-img` 2.2.0 或更低版本，或者 2.6 或更高版本。
+> 2\.2.1 或更高版本的 qemu-img 存在一个[已知的 bug](https://bugs.launchpad.net/qemu/+bug/1490611)，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 我们建议使用 `qemu-img` 2.2.0 或更低版本，或者 2.6 或更高版本。
 > 
 
 1. 直接使用工具（如 `qemu-img` 或 `vbox-manage`）调整 VHD 大小可能会生成无法启动的 VHD。  我们建议先将 VHD 转换为 RAW 磁盘映像。  如果已将 VM 映像创建为 RAW 磁盘映像（对于 KVM 等某些虚拟机监控程序，这是默认设置），则可以跳过此步骤。
@@ -144,10 +143,10 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
 必须在内核中包含以下修补程序。 此列表并不完整，并未包括所有分发版。
 
 * [ata_piix：默认情况下，将磁盘交由 Hyper-V 驱动程序处理](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
-* [storvsc:解释 RESET 路径中传输中数据包](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
+* [storvsc：考虑 RESET 路径中正在传输的数据包](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
 * [storvsc：避免使用 WRITE_SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=3e8f4f4065901c8dfc51407e1984495e1748c090)
-* [storvsc:对 RAID 和虚拟主机适配器驱动程序禁用 WRITE SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
-* [storvsc:NULL 指针取消引用修补程序](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
+* [storvsc：对 RAID 和虚拟主机适配器驱动程序禁用 WRITE SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
+* [storvsc：NULL 指针取消引用修补程序](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
 * [storvsc：环形缓冲区故障可能会导致 I/O 冻结](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=e86fb5e8ab95f10ec5f2e9430119d5d35020c951)
 * [scsi_sysfs：防止执行两次 __scsi_remove_device](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 

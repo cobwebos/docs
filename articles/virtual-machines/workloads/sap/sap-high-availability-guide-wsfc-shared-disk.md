@@ -4,25 +4,24 @@ description: 了解如何使用群集共享磁盘在 Windows 故障转移群集�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: f6fb85f8-c77a-4af1-bde8-1de7e4425d2e
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 608965160f4abb57ccdfe8b8256fef971754b4d6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 848b15cef43efa62fdff6715bfcfef9819f4e100
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000308"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078278"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -192,7 +191,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 故障转移群集是一组 1+n 个独立服务器（节点），这些服务器相互配合，共同提高应用程序和服务的可用性。 如果发生节点故障，Windows Server 故障转移群集会计算可能发生的故障数并保留正常运行的群集以提供应用程序和服务。 可从不同的仲裁模式中选择，以实现故障转移群集。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在开始本文中的任务之前，请先查看以下文章：
 
 * [适用于 SAP NetWeaver 的 Azure 虚拟机高可用性体系结构和方案][sap-high-availability-architecture-scenarios]
@@ -210,7 +209,7 @@ Azure 负载均衡器服务提供适用于 Azure 的内部负载均衡器。 借
 
 在包含群集节点的资源组中部署内部负载均衡器。 然后，使用内部负载均衡器的探测端口配置所有必要的端口转发规则。 客户端可以通过虚拟主机名连接。 DNS 服务器解析群集 IP 地址，内部负载均衡器处理向活动群集节点的端口转发。
 
-![图 1：Windows 故障转移群集在 Azure 中未使用共享磁盘的配置][sap-ha-guide-figure-1001]
+![图 1：Azure 中没有共享磁盘的 Windows 故障转移群集配置][sap-ha-guide-figure-1001]
 
 _**图 1：** Azure 中未使用共享磁盘的 Windows Server 故障转移群集配置_
 
@@ -220,37 +219,37 @@ _**图 1：** Azure 中未使用共享磁盘的 Windows Server 故障转移群�
 SAP ASCS/SCS 实例具有以下组件：
 
 * SAP 中心服务：
-    * 两个进程（即消息和排队服务器），以及用于访问这两个进程的 <ASCS/SCS 虚拟主机名>。
-    * 文件结构：S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<instance number\>
+    * 两个进程 (一种消息和排队服务器) \<, 以及用于访问这两个进程的 ASCS/SCS 虚拟主机名 >。
+    * 文件结构:S:\usr\sap\\SID\&gt;ASCS/SCS\<实例编号&lt;\>
 
 
 * SAP 全局主机文件：
-  * 文件结构：S:\usr\sap\\&lt;SID&gt;\SYS\...
-  * sapmnt 文件共享，可通过使用以下 UNC 路径实现对这些全局 S:\usr\sap\\&lt;SID&gt;\SYS\..文件的访问：
+  * 文件结构:S:\usr\sap\\SID&lt;\SYS&gt;\...
+  * sapmnt 文件共享，可通过使用以下 UNC 路径实现对这些全局 S:\usr\sap\\&lt;SID&gt;\SYS\... 文件的访问：
 
-    \\\\&lt;ASCS/SCS virtual host name&gt;\sapmnt\\&lt;SID&gt;\SYS\..
+    \\\\< ASCS/SCS 虚拟主机名\>\sapmnt\\&lt;SID&gt;\SYS\...
 
 
-![图 2：进程、 文件结构和 global 主机 sapmnt 文件共享的 SAP ASCS/SCS 实例][sap-ha-guide-figure-8001]
+![图 2：SAP ASCS/SCS 实例的进程、文件结构和全局主机 sapmnt 文件共享][sap-ha-guide-figure-8001]
 
-_**图 2：** 进程、 文件结构和 global 主机 sapmnt 文件共享的 SAP ASCS/SCS 实例_
+_**图 2：** SAP ASCS/SCS 实例的进程、文件结构和全局主机 sapmnt 文件共享_
 
 在高可用性设置中，可群集化 SAP ASCS/SCS 实例。 我们使用群集共享磁盘（在示例中为驱动器 S）放置 SAP ASCS/SCS 文件和 SAP 全局主机文件。
 
-![图 3：SAP ASCS/SCS HA 体系结构使用共享磁盘][sap-ha-guide-figure-8002]
+![图 3：包含共享磁盘的 SAP ASCS/SCS HA 体系结构][sap-ha-guide-figure-8002]
 
-_**图 3：** SAP ASCS/SCS HA 体系结构使用共享磁盘_
+_**图 3：** 包含共享磁盘的 SAP ASCS/SCS HA 体系结构_
 
 > [!IMPORTANT]
 > 由于这两个组件在相同的 SAP ASCS/SCS 实例下运行，因此：
->* 使用相同的 <ASCS/SCS 虚拟主机名> 访问 SAP 消息和排队服务器进程，并通过 sapmnt 文件共享访问 SAP 全局主机文件。
+>* 相同\<的 ASCS/SCS 虚拟主机名 > 用于通过 sapmnt 文件共享访问 sap 消息和排队服务器进程, 以及 sap 全局主机文件。
 >* 它们共用同一个群集共享磁盘驱动器 S。
 >
 
 
-![图 4：SAP ASCS/SCS HA 体系结构使用共享磁盘][sap-ha-guide-figure-8003]
+![图 4：包含共享磁盘的 SAP ASCS/SCS HA 体系结构][sap-ha-guide-figure-8003]
 
-_**图 4：** SAP ASCS/SCS HA 体系结构使用共享磁盘_
+_**图 4：** 包含共享磁盘的 SAP ASCS/SCS HA 体系结构_
 
 ### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Azure 中使用 SIOS DataKeeper 的共享磁盘
 
@@ -264,11 +263,11 @@ _**图 4：** SAP ASCS/SCS HA 体系结构使用共享磁盘_
 2. 在两个虚拟机节点上都运行 SIOS DataKeeper Cluster Edition。
 3. 配置 SIOS DataKeeper Cluster Edition，以便它将额外磁盘附加卷的内容从源虚拟机映射到目标虚拟机的额外磁盘附加卷。 SIOS DataKeeper 抽象化源和目标本地卷，并以单个共享磁盘形式呈现给 Windows Server 故障转移群集。
 
-获取有关 [SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/) 的详细信息。
+获取有关 [SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/) 的详细信息。
 
-![图 5：Windows Server 故障转移群集使用 SIOS DataKeeper 在 Azure 中的配置][sap-ha-guide-figure-1002]
+![图 5：Azure 中的 Windows Server 故障转移群集配置和 SIOS DataKeeper][sap-ha-guide-figure-1002]
 
-_**图 5：** Windows 故障转移群集使用 SIOS DataKeeper 在 Azure 中的配置_
+_**图 5：** Azure 中带 SIOS DataKeeper 的 Windows 故障转移群集配置_
 
 > [!NOTE]
 > 对于某些 DBMS 产品（如 SQL Server），无需共享磁盘来实现高可用性。 SQL Server AlwaysOn 将 DBMS 数据和日志从一个群集节点的本地磁盘复制到另一个群集节点的本地磁盘。 在此情况下，Windows 群集配置不需要共享磁盘。
@@ -276,6 +275,6 @@ _**图 5：** Windows 故障转移群集使用 SIOS DataKeeper 在 Azure 中的�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
+* [为 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* [对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘安装 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]
+* [在 SAP ASCS/SCS 实例的 Windows 故障转移群集和共享磁盘上安装 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]

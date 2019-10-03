@@ -1,48 +1,55 @@
 ---
-title: 文本翻译 API V2.0
+title: 文本翻译 API v2.0
 titleSuffix: Azure Cognitive Services
-description: 文本翻译 API V2.0 参考文档。
+description: 文本翻译 API v2.0 的参考文档。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
-ms.author: v-jansko
-ms.openlocfilehash: 961dd277034db7e5406e671233f26b4fd8fe5f26
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.author: swmachan
+ms.openlocfilehash: c18c062d5537603284acb37081ac0a4eb8d2fd20
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527279"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797819"
 ---
 # <a name="translator-text-api-v20"></a>文本翻译 API v2.0
 
 > [!IMPORTANT]
-> 此版文本翻译 API 已弃用。 [查看文本翻译 API v3 的文档](v3-0-reference.md)。
+> 此版文本翻译 API 已弃用。 [查看文档，了解版本 3 的文本翻译 API](v3-0-reference.md)。
 
-文本翻译 API V2 可以无缝集成到应用程序、网站、工具或其他解决方案中，提供多语言用户体验。 它采用行业标准，可以在任何硬件平台上使用，以及在任何操作系统中使用，用于执行语言翻译以及其他语言相关操作，例如文本语言检测或文本转语音操作。 有关 Microsoft 翻译 API 的详细信息，请单击此处。
+第 2 版文本翻译 API 可以无缝集成到您的应用程序、 网站、 工具或其他解决方案能够提供多语言用户体验。 您可以使用它在任何硬件平台，用于任何操作系统执行语言翻译和其他与语言相关的任务，如文本语言检测和文本到语音，根据行业标准。 有关详细信息，请参阅[文本翻译 API](../translator-info-overview.md)。
 
 ## <a name="getting-started"></a>入门
-若要访问文本翻译 API，需[注册 Microsoft Azure](../translator-text-how-to-signup.md)。
+若要访问文本翻译 API，需要[名义注册 Microsoft Azure](../translator-text-how-to-signup.md)。
 
-## <a name="authorization"></a>授权
-只要调用文本翻译 API，就需要使用订阅密钥进行身份验证。 此 API 支持两种身份验证模式：
+## <a name="authentication"></a>身份验证 
+对文本翻译 API 的所有调用都需要进行身份验证的订阅密钥。 API 支持三种身份验证方法：
 
-* 使用访问令牌。 使用**步骤** 9 中提到的订阅密钥，通过向授权服务发出 POST 请求来生成访问令牌。 有关详细信息，请参阅令牌服务文档。 使用 Authorization 标头或 access_token 查询参数，将访问令牌传递给翻译工具服务。 访问令牌的有效期为 10 分钟。 每 10 分钟获取一次新的访问令牌，在这 10 分钟内，始终对重复的请求使用同一访问令牌。
+- 访问令牌。 使用引用在步骤 9 中的订阅密钥通过向身份验证服务发出的 POST 请求来创建访问令牌。 有关详细信息，请参阅令牌服务文档。 通过将访问令牌传递给 Translator 服务`Authorization`标头或`access_token`查询参数。 访问令牌的有效期为 10 分钟。 获取新的访问令牌每隔 10 分钟，并使用相同的访问令牌的重复请求期间保持 10 分钟。
+- 直接使用订阅密钥。 将你的订阅密钥作为中的值传递`Ocp-Apim-Subscription-Key`文本翻译 api 在请求中包含的标头。 当直接使用订阅密钥时，你无需调用要创建访问令牌的令牌身份验证服务。
+- [Azure 认知服务多服务订阅](https://azure.microsoft.com/pricing/details/cognitive-services/)。 此方法，可使用一个密钥用于多个服务请求进行身份验证。
+当使用多服务的机密密钥时，需要包含两个身份验证标头与你的请求。 第一个标头会传递的机密密钥。 第二个标头指定与你的订阅关联的区域：
+   - `Ocp-Apim-Subscription-Key`
+   - `Ocp-Apim-Subscription-Region`
 
-* 直接使用订阅密钥。 将订阅密钥作为请求中包括的 `Ocp-Apim-Subscription-Key` 标头中的值传递给翻译 API。 在此模式中，不需调用身份验证令牌服务即可生成访问令牌。
+区域是必需的多服务的文本 API 订阅。 所选的区域是使用多服务的订阅密钥时，可以使用文本转换的唯一区域。 它必须是多服务订阅在 Azure 门户上注册时选择的同一区域。
 
-将订阅密钥和访问令牌视为不应允许查看的机密。
+可用的区域有`australiaeast`， `brazilsouth`， `canadacentral`， `centralindia`， `centraluseuap`， `eastasia`， `eastus`， `eastus2`， `japaneast`， `northeurope`， `southcentralus`， `southeastasia`，`uksouth`， `westcentralus`， `westeurope`， `westus`，和`westus2`。
+
+你的订阅密钥和访问令牌是应从视图中隐藏的机密信息。
 
 ## <a name="profanity-handling"></a>不雅内容处理
-通常，翻译工具服务在翻译中会保留源中存在的不雅内容。 不雅程度和使词语不雅的语境在不同的文化之间有所不同，因此，目标语言中的不雅程度可能会放大或缩小。
+通常情况下，Translator 服务将保留源中存在的猥亵语言。 根据区域性不同程度的猥亵语言和使敬词的上下文。 因此无法增加或减少以目标语言的猥亵词语的程度。
 
-如果无论源文本中是否存在不雅内容，你都希望避免在翻译中出现不雅内容，可以将不雅内容筛选项用于支持它的方法。 使用该选项可以选择是要看到不雅内容被删除、标有相应标记还是不被执行任何操作。 就 `ProfanityAction` 来说，接受的值为 `NoAction`（默认）、Marked、`Deleted`。
+如果你想要防止在翻译中的猥亵词语，即使是在源文本中，可以使用猥亵语言筛选器支持它的方法的选项。 选项允许你选择是否想要查看猥亵语言已删除或标记有适当的标签，或是否想要在目标中允许猥亵语言。 接受的值的`ProfanityAction`都`NoAction`（默认值）， `Marked`，和`Deleted`。
 
 
-|ProfanityAction    |操作 |示例源（日语）  |示例翻译（中文）  |
+|ProfanityAction    |Action |示例源 （日语）  |示例转换 （英语）  |
 |:--|:--|:--|:--|
 |NoAction   |默认。 与不设置此选项等效。 不雅内容会从源传递到目标。        |彼はジャッカスです。     |他是一个笨蛋。   |
 |Marked     |将 XML 标记包围不当的词语\<猥亵语言 > 和\</profanity >。       |彼はジャッカスです。 |他\<猥亵语言 > jackass\</profanity >。  |
@@ -50,7 +57,7 @@ ms.locfileid: "59527279"
 
     
 ## <a name="excluding-content-from-translation"></a>将内容从翻译中排除
-翻译 HTML (`contentType=text/html`) 之类的带标记的内容时，有时候需从翻译中排除特定的内容。 可以使用属性 `class=notranslate` 指定应保留不译的内容。 在以下示例中，第一个 `div` 元素中的内容不会翻译，第二个 `div` 元素中的内容则会翻译。
+当转换标记，类似于 HTML 的内容 (`contentType=text/html`)，有时是从转换中排除特定的内容很有用。 可以使用属性 `class=notranslate` 指定应保留不译的内容。 在下面的示例中，在第一个内容`div`元素不会翻译，但在第二个内容`div`元素将被转换。
 
 ```HTML
 <div class="notranslate">This will not be translated.</div>
@@ -64,47 +71,47 @@ ms.locfileid: "59527279"
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/Translate`。
 
-**返回值：** 一个字符串，表示已翻译的文本。
+**返回值：** 表示已翻译的文本的字符串。
 
-如果以前已使用 `AddTranslation` 或 `AddTranslationArray` 为相同的源句输入了一个评分为 5 或更高的翻译，则 `Translate` 只返回适用于系统的首选内容。 “相同的源句”意味着完全相同（100% 匹配），但大小写、空格、标记值以及句尾的标点除外。 如果没有存储 5 分或更高分的评分，则返回的结果会是 Microsoft 翻译工具的自动翻译。
+如果以前使用过`AddTranslation`或`AddTranslationArray`输入等级为 5 或更高版本的相同的源句子的翻译`Translate`返回仅可供您的系统的最佳选择。 "相同的源句子"意味着完全相同 （100%匹配），除大小写、 空格、 标记值和一个句子末尾的标点。 如果未分级存储且其分级为 5 或更高版本中，返回的结果将是通过 Microsoft Translator 自动翻译。
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
 
-字符串
+string
 
-响应内容类型：application/xml 
+响应内容类型： application/xml
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-|参数|值|描述    |参数类型|数据类型|
+|参数|ReplTest1|描述    |参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|appid  |(empty)    |必需。 如果使用了 Authorization 或 Ocp-Apim-Subscription-Key 标头，请将 appid 字段留空，否则请包括一个包含 "Bearer" + " " + "access_token" 的字符串。|query|字符串|
-|text|(empty)   |必需。 一个字符串，表示要翻译的文本。 文本大小不得超过 10000 个字符。|query|字符串|
-|from|(empty)   |可选。 一个表示翻译文本语言代码的字符串。 例如，en 表示英语。|query|字符串|
-|to|(empty) |必需。 一个字符串，表示进行文本翻译时目标语言的语言代码。|query|字符串|
-|contentType|(empty)    |可选。 要翻译的文本的格式。 支持的格式为 text/plain（默认）和 text/html。 HTML 必须是格式正确的完整元素。|query|字符串|
-|category|(empty)   |可选。 一个字符串，包含翻译的类别（领域）。 默认为“general”。|query|字符串|
-|授权|(empty)  |必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌：“持有者” + “ ” + “访问令牌”。|标头的值开始缓存响应|字符串|
-|Ocp-Apim-Subscription-Key|(empty)  |必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
+|appid  |(empty)    |必需。 如果`Authorization`或`Ocp-Apim-Subscription-Key`使用标头，保留`appid`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。|query|string|
+|text|(empty)   |必需。 表示要转换的文本字符串。 文本不能包含超过 10,000 个字符。|query|string|
+|from|(empty)   |可选。 一个字符串，表示要转换的文本的语言代码。 例如，en 表示英语。|query|string|
+|to|(empty) |必需。 一个字符串，表示要转换到的文本的语言代码。|query|string|
+|contentType|(empty)    |可选。 要翻译的文本的格式。 支持的格式为`text/plain`（默认值） 和`text/html`。 任何 HTML 元素必须是格式正确的、 完整的元素。|query|string|
+|category|(empty)   |可选。 包含转换的类别 （域） 的字符串。 默认值为 `general`。|query|string|
+|Authorization|(empty)  |如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|string|
+|Ocp-Apim-Subscription-Key|(empty)  |如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
 
 
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码|原因|
+|HTTP 状态代码|Reason|
 |:--|:--|
 |400    |请求错误。 请查看输入参数和详细的错误响应。|
-|401    |凭据无效|
-|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 X-MS-Trans-Info 中的请求 ID。|
+|401    |凭据无效。|
+|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供的大概日期和时间的请求和响应标头中包含的请求 ID `X-MS-Trans-Info`。|
 |503    |服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 ## <a name="post-translatearray"></a>POST /TranslateArray
 
 ### <a name="implementation-notes"></a>实现说明
-使用 `TranslateArray` 方法检索多个源文本的翻译。
+检索多个源文本的翻译。
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/TranslateArray`。
 
-请求正文的格式应如下所示：
+下面是请求正文的格式：
 
 ```
 <TranslateArrayRequest>
@@ -126,34 +133,34 @@ ms.locfileid: "59527279"
 </TranslateArrayRequest>
 ```
 
-`TranslateArrayRequest` 中的元素包括：
+这些元素位于`TranslateArrayRequest`:
 
 
-* `appid`：必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。
-* `from`：可选。 一个字符串，表示进行文本翻译时源语言的语言代码。 如果留空，则响应会包括语言自动检测的结果。
-* `options`：可选。 一个 `Options` 对象，包含下面列出的值。 它们都是可选的，并且默认为最常用的设置。 指定的元素必须按字母顺序列出。
-    - `Category`：一个字符串，包含翻译的类别（领域）。 默认为 `general`。
-    - `ContentType`：要翻译的文本的格式。 支持的格式为 `text/plain`（默认）、`text/xml`、`text/html`。 HTML 必须是格式正确的完整元素。
-    - `ProfanityAction`：指定如何处理上述不雅内容。 就 `ProfanityAction` 来说，接受的值为 `NoAction`（默认）、`Marked`、`Deleted`。
-    - `State`：用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
+* `AppId`：必需。 如果`Authorization`或`Ocp-Apim-Subscription-Key`使用标头，保留`AppId`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。
+* `From`：可选。 一个字符串，表示要转换的文本的语言代码。 如果此字段留空，则响应将包含自动语言检测的结果。
+* `Options`：可选。 `Options`对象，其中包含以下值。 它们都是可选参数，并默认为最常用的设置。 指定的元素必须按字母顺序列出。
+    - `Category`：包含转换的类别 （域） 的字符串。 默认值为 `general`。
+    - `ContentType`：要翻译的文本的格式。 支持的格式为`text/plain`（默认值）， `text/xml`，和`text/html`。 任何 HTML 元素必须是格式正确的、 完整的元素。
+    - `ProfanityAction`：指定 profanities 的处理方式，如前面所述。 接受的值是`NoAction`（默认值）， `Marked`，和`Deleted`。
+    - `State`：若要帮助将请求和响应相关联的用户状态。 将在响应中返回相同的内容。
     - `Uri`：按此 URI 筛选结果。 默认：`all`。
     - `User`：按此用户筛选结果。 默认：`all`。
-* `texts`：必需。 一个包含要翻译文本的数组。 所有字符串必须采用同一语言。 要翻译的所有文本总共不得超过 10000 个字符。 最大数组元素数为 2000。
-* `to`：必需。 一个字符串，表示进行文本翻译时目标语言的语言代码。
+* `Texts`：必需。 一个数组，包含翻译的文本。 所有字符串都必须位于相同的语言。 要转换的所有文本的总量不能超过 10,000 个字符。 数组元素的最大数目为 2,000。
+* `To`：必需。 一个字符串，表示要转换到的文本的语言代码。
 
-可选元素可以省略。 属于 TranslateArrayRequest 的直接子项的元素必须按字母顺序列出。
+可以省略可选元素。 元素的直接子级的`TranslateArrayRequest`必须按字母顺序列出。
 
-TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Type`。
+`TranslateArray`方法接受`application/xml`或`text/xml`为`Content-Type`。
 
-**返回值：** 一个 `TranslateArrayResponse` 数组。 每个 `TranslateArrayResponse` 都有以下元素：
+**返回值：** 一个 `TranslateArrayResponse` 数组。 每个`TranslateArrayResponse`包含以下元素：
 
-* `Error`：指示一个错误（如果有）。 否则设置为 null。
-* `OriginalSentenceLengths`：一个整数数组，指示原始的源文本中每个句子的长度。 数组的长度指示句子数。
+* `Error`：如果发生这种错误，则表示出现错误。 否则设置为 null。
+* `OriginalSentenceLengths`：指示每个句子中的源文本的长度的整数数组。 数组的长度指示句子数。
 * `TranslatedText`：翻译的文本。
-* `TranslatedSentenceLengths`：一个整数数组，指示翻译的文本中每个句子的长度。 数组的长度指示句子数。
-* `State`：用户状态，可帮助关联请求和响应。 返回的内容与请求中的一样。
+* `TranslatedSentenceLengths`：指示每个句子中的已翻译的文本的长度的整数数组。 数组的长度指示句子数。
+* `State`：若要帮助将请求和响应相关联的用户状态。 返回与请求相同的内容。
 
-响应正文的格式如下所示。
+下面是响应正文的格式：
 
 ```
 <ArrayOfTranslateArrayResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2"
@@ -172,37 +179,37 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 </ArrayOfTranslateArrayResponse>
 ```
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
-成功的响应包括一个 `TranslateArrayResponse` 数组，采用的格式如上所述。
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
+成功的响应包含一系列的`TranslateArrayResponse`中前面所述的格式的数组。
 
-字符串
+string
 
-响应内容类型：application/xml
+响应内容类型： application/xml
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-|参数|值|描述|参数类型|数据类型|
+|参数|ReplTest1|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|授权|(empty) |必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌：“持有者” + “ ” + “访问令牌”。|标头的值开始缓存响应|字符串|
-|Ocp-Apim-Subscription-Key|(empty)|必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
+|Authorization|(empty)  |如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|string|
+|Ocp-Apim-Subscription-Key|(empty)|如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
 
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码   |原因|
+|HTTP 状态代码   |Reason|
 |:--|:--|
-|400    |请求错误。 请查看输入参数和详细的错误响应。 常见错误包括： <ul><li>数组元素不能为空</li><li>类别无效</li><li>源语言无效</li><li>目标语言无效</li><li>请求包含的元素太多</li><li>不支持源语言</li><li>不支持目标语言</li><li>翻译请求的数据太多</li><li>HTML 格式有误</li><li>在翻译请求中传递的字符串过多</li></ul>|
-|401    |凭据无效|
-|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 X-MS-Trans-Info 中的请求 ID。|
+|400    |请求错误。 请查看输入参数和详细的错误响应。 常见错误包括： <ul><li>数组元素不能为空。</li><li>无效的类别。</li><li>从语言是无效的。</li><li>为语言是无效的。</li><li>该请求包含太多的元素。</li><li>不支持 From 语言。</li><li>不支持到语言。</li><li>转换请求包含太多的数据。</li><li>HTML 不是格式正确。</li><li>在转换请求中传递了太多的字符串。</li></ul>|
+|401    |凭据无效。|
+|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供的大概日期和时间的请求和响应标头中包含的请求 ID `X-MS-Trans-Info`。|
 |503    |服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 ## <a name="post-getlanguagenames"></a>POST /GetLanguageNames
 
 ### <a name="implementation-notes"></a>实现说明
-检索已作为 `languageCodes` 参数传入并已使用传递的区域设置语言本地化的语言的友好名称。
+检索语言的友好名称作为参数传入`languageCodes`本地化所传递`locale`语言。
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/GetLanguageNames`。
 
-请求正文包括一个字符串数组，该数组代表需检索其友好名称的语言所对应的 ISO 639-1 语言代码。 例如：
+请求正文包含一个字符串数组，表示要检索的友好名称的 ISO 639-1 语言代码。 以下是一个示例：
 
 ```
 <ArrayOfstring xmlns:i="https://www.w3.org/2001/XMLSchema-instance"  xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -211,64 +218,64 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 </ArrayOfstring>
 ```
 
-**返回值：** 一个字符串数组，其包含的语言名称受翻译工具服务的支持，并已本地化为请求的语言。
+**返回值：** 包含支持的翻译服务，本地化为请求的语言的语言名称的字符串数组。
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
-一个字符串数组，其包含的语言名称受翻译工具服务的支持，并已本地化为请求的语言。
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
+包含支持的翻译服务，本地化为请求的语言的语言名称的字符串数组。
 
-字符串
+string
 
-响应内容类型：application/xml
+响应内容类型： application/xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 |参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
-|区域设置|(empty) |必需。 一个表示组合的字符串，该组合包含一个与某种语言关联的 ISO 639 双字母小写区域性代码，以及一个用于将语言名称本地化的 ISO 3166 双字母大写子区域性代码，或者一个单纯的 ISO 639 小写区域性代码。|query|字符串|
-|授权|(empty)  |必需，前提是 appid 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
-|Ocp-Apim-Subscription-Key|(empty)  |必需，前提是 appid 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|
+|appid|(empty)|必需。 如果`Authorization`或`Ocp-Apim-Subscription-Key`使用标头，保留`appid`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。|query|string|
+|区域设置|(empty) |必需。 用于本地化的语言名称的字符串，表示以下值之一： <ul><li>与语言相关的 ISO 639 双小写字母的区域性代码和 ISO 3166 双字母的大写字母子区域性代码的组合。 <li>单独的 ISO 639 小写字母的区域性代码。|query|string|
+|Authorization|(empty)  |如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|string|
+|Ocp-Apim-Subscription-Key|(empty)  |如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
 
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码|原因|
+|HTTP 状态代码|Reason|
 |:--|:--|
 |400    |请求错误。 请查看输入参数和详细的错误响应。|
-|401    |凭据无效|
-|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 X-MS-Trans-Info 中的请求 ID。|
+|401    |凭据无效。|
+|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供的大概日期和时间的请求和响应标头中包含的请求 ID `X-MS-Trans-Info`。|
 |503    |服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 ## <a name="get-getlanguagesfortranslate"></a>GET /GetLanguagesForTranslate
 
 ### <a name="implementation-notes"></a>实现说明
-获取一个语言代码的列表，其中的代码所代表的语言受翻译服务的支持。  `Translate` 和 `TranslateArray` 可以在这些语言的任意两种之间互译。
+获取表示语言翻译服务支持的语言代码的列表。  `Translate` 和 `TranslateArray` 可以在这些语言的任意两种之间互译。
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForTranslate`。
 
-**返回值：** 一个字符串数组，其包含的语言代码受翻译工具服务的支持。
+**返回值：** 一个字符串数组，包含 Translator 服务支持的语言代码。
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
-一个字符串数组，其包含的语言代码受翻译工具服务的支持。
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
+一个字符串数组，包含 Translator 服务支持的语言代码。
 
-字符串
+string
 
-响应内容类型：application/xml
+响应内容类型： application/xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 |参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
-|授权|(empty)  |必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
-|Ocp-Apim-Subscription-Key|(empty)|必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|
+|appid|(empty)|必需。 如果`Authorization`或`Ocp-Apim-Subscription-Key`使用标头，保留`appid`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。|query|string|
+|Authorization|(empty)  |如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|string|
+|Ocp-Apim-Subscription-Key|(empty)|如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
 
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码|原因|
+|HTTP 状态代码|Reason|
 |:--|:--|
 |400    |请求错误。 请查看输入参数和详细的错误响应。|
-|401    |凭据无效|
-|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 X-MS-Trans-Info 中的请求 ID。|
+|401    |凭据无效。|
+|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供的大概日期和时间的请求和响应标头中包含的请求 ID `X-MS-Trans-Info`。|
 |503|服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 ## <a name="get-getlanguagesforspeak"></a>GET /GetLanguagesForSpeak
@@ -278,110 +285,111 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForSpeak`。
 
-**返回值：** 一个字符串数组，其包含的语言代码受翻译工具服务的支持，可以进行语音合成。
+**返回值：** 一个字符串数组，包含 Translator 服务支持用于语音合成的语言代码。
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
-一个字符串数组，其包含的语言代码受翻译工具服务的支持，可以进行语音合成。
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
+一个字符串数组，包含 Translator 服务支持用于语音合成的语言代码。
 
-字符串
+string
 
-响应内容类型：application/xml
+响应内容类型： application/xml
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 |参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
-|授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
-|Ocp-Apim-Subscription-Key|(empty)|必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|
+|appid|(empty)|必需。 如果`Authorization`或`Ocp-Apim-Subscription-Key`使用标头，保留`appid`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。|query|string|
+|Authorization|(empty)|如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|string|
+|Ocp-Apim-Subscription-Key|(empty)|如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
  
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码|原因|
+|HTTP 状态代码|Reason|
 |:--|:--|
 |400|请求错误。 请查看输入参数和详细的错误响应。|
-|401|凭据无效|
-|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 `X-MS-Trans-Info` 中的请求 ID。|
+|401|凭据无效。|
+|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供的大概日期和时间的请求和响应标头中包含的请求 ID `X-MS-Trans-Info`。|
 |503    |服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 ## <a name="get-speak"></a>GET /Speak
 
 ### <a name="implementation-notes"></a>实现说明
-返回以所需语言朗读的传入文本的 wave 或 mp3 流。
+返回传入的文本，所需的语言中讲述的 WAV 或 MP3 流。
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/Speak`。
 
-**返回值：** 以所需语言朗读的传入文本的 wave 或 mp3 流。
+**返回值：** WAV 或 MP3 的传入的文本的所需的语言中讲述的流。
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
 
 binary
 
-响应内容类型：application/xml 
+响应内容类型： application/xml
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-|参数|值|描述|参数类型|数据类型|
+|参数|ReplTest1|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
-|text|(empty)   |必需。 一个字符串，包含 wave 流对应的指定要朗读的语言的一个或多个句子。 要朗读的文本的大小不得超过 2000 个字符。|query|字符串|
-|语言|(empty)   |必需。 一个字符串，表示要朗读的文本所采用语言的受支持语言代码。 此代码必须存在于从 `GetLanguagesForSpeak` 方法返回的代码的列表中。|query|字符串|
-|格式|(empty)|可选。 一个字符串，指定 content-type ID。 目前，`audio/wav` 和 `audio/mp3` 可用。 默认值为 `audio/wav`。|query|字符串|
-|options|(empty)    |<ul><li>可选。 一个字符串，指定已合成语音的属性：<li>`MaxQuality` 和 `MinSize` 可以用来指定音频信号的质量。 使用 `MaxQuality` 可以获取质量最高的语音，而使用 `MinSize` 则可获取大小最小的语音。 默认为 `MinSize`。</li><li>`female` 和 `male` 可以用来指定语音的所需性别。 默认为 `female`。 使用垂直条 <code>\|</code> 包含多个选项。 例如 `MaxQuality|Male`。</li></li></ul> |query|字符串|
-|授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
-|Ocp-Apim-Subscription-Key|(empty)  |必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|
+|appid|(empty)|必需。 如果`Authorization`或`Ocp-Apim-Subscription-Key`使用标头，保留`appid`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。|query|string|
+|text|(empty)   |必需。 一个字符串，包含一个或多个句子要朗读的流，以指定的语言。 文本不得超过 2000 个字符。|query|string|
+|language|(empty)   |必需。 一个字符串，表示在其中朗读该文本的语言的受支持的语言代码。 代码必须是该方法返回代码之一`GetLanguagesForSpeak`。|query|string|
+|format|(empty)|可选。 一个字符串，指定内容类型 id。 目前，`audio/wav` 和 `audio/mp3` 可用。 默认值为 `audio/wav`。|query|string|
+|options|(empty)    |可选。 一个字符串，指定的合成语音属性：<ul><li>`MaxQuality` 和`MinSize`指定质量的音频信号。 `MaxQuality` 提供最高的质量。 `MinSize` 提供的最小文件大小。 默认值是`MinSize`。</li><li>`female` 和`male`指定所需的语音的性别。 默认值为 `female`。 使用垂直条 (<code>\|</code>) 包括多个选项。 例如，`MaxQuality|Male`。</li></li></ul>  |query|string|
+|Authorization|(empty)|如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|string|
+|Ocp-Apim-Subscription-Key|(empty)  |如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
 
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码|原因|
+|HTTP 状态代码|Reason|
 |:--|:--|
 |400    |请求错误。 请查看输入参数和详细的错误响应。|
-|401    |凭据无效|
-|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 `X-MS-Trans-Info` 中的请求 ID。|
+|401    |凭据无效。|
+|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供的大概日期和时间的请求和响应标头中包含的请求 ID `X-MS-Trans-Info`。|
 |503    |服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 ## <a name="get-detect"></a>GET /Detect
 
 ### <a name="implementation-notes"></a>实现说明
-使用 `Detect` 方法标识所选的一段文本的语言。
+标识的一部分文本的语言。
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/Detect`。
 
-**返回值：** 一个字符串，其包含的双字符语言代码适用于给定的文本。 .
+**返回值：** 一个字符串，包含文本的双字符语言代码。
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
 
-字符串
+string
 
-响应内容类型：application/xml
+响应内容类型： application/xml
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-|参数|值|描述|参数类型|数据类型|
+|参数|ReplTest1|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|appid|(empty)  |必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
-|text|(empty)|必需。 一个字符串，所包含的一些文本需标识其语言。 文本大小不得超过 10000 个字符。|query| 字符串|
-|授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
-|Ocp-Apim-Subscription-Key  |(empty)    |必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|
+|appid|(empty)  |必需。 如果`Authorization`或`Ocp-Apim-Subscription-Key`使用标头，保留`appid`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。|query|string|
+|text|(empty)|必需。 一个字符串，包含其语言是可以识别的文本。 文本不得超过 10,000 个字符。|query|  string|
+|Authorization|(empty)|如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|string|
+|Ocp-Apim-Subscription-Key  |(empty)    |如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
 
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码|原因|
+|HTTP 状态代码|Reason|
 |:--|:--|
 |400|请求错误。 请查看输入参数和详细的错误响应。|
-|401    |凭据无效|
-|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 `X-MS-Trans-Info` 中的请求 ID。|
+|401    |凭据无效。|
+|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供的大概日期和时间的请求和响应标头中包含的请求 ID `X-MS-Trans-Info`。|
 |503    |服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 
 ## <a name="post-detectarray"></a>POST /DetectArray
 
 ### <a name="implementation-notes"></a>实现说明
-使用 `DetectArray` 方法同时标识一组字符串的语言。 对每个单独的数组元素进行独立的检测，为数组的每一行返回一个结果。
+
+标识字符串数组中的语言。 独立检测的每个单个数组元素的语言，并返回数组的每个行的结果。
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/DetectArray`。
 
-请求正文的格式应如下所示。
+下面是请求正文的格式：
 
 ```
 <ArrayOfstring xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -390,11 +398,11 @@ binary
 </ArrayOfstring>
 ```
 
-文本大小不得超过 10000 个字符。
+文本不能超过 10,000 个字符。
 
-**返回值：** 一个字符串数组，其包含的双字符语言代码适用于输入数组的每一行。
+**返回值：** 一个字符串数组，包含输入数组中的每一行的双字符语言代码。
 
-响应正文的格式如下所示。
+下面是响应正文的格式：
 
 ```
 <ArrayOfstring xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
@@ -403,28 +411,28 @@ binary
 </ArrayOfstring>
 ```
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
-DetectArray 成功。 返回一个字符串数组，其包含的双字符语言代码适用于输入数组的每一行。
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
+`DetectArray` 已成功完成。 返回包含输入数组的每一行的双字符语言代码的字符串数组。
 
-字符串
+string
 
-响应内容类型：application/xml
+响应内容类型： application/xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 |参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
-|授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
-|Ocp-Apim-Subscription-Key|(empty)|必需，前提是 `appid` 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
+|appid|(empty)|必需。 如果`Authorization`或`Ocp-Apim-Subscription-Key`使用标头，保留`appid`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。|query|string|
+|Authorization|(empty)|如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。  授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|string|
+|Ocp-Apim-Subscription-Key|(empty)|如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
 
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码|原因|
+|HTTP 状态代码|Reason|
 |:--|:--|
 |400    |请求错误。 请查看输入参数和详细的错误响应。|
-|401    |凭据无效|
-|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 X-MS-Trans-Info 中的请求 ID。|
+|401    |凭据无效。|
+|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供的大概日期和时间的请求和响应标头中包含的请求 ID `X-MS-Trans-Info`。|
 |503    |服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 ## <a name="get-addtranslation"></a>GET /AddTranslation
@@ -432,43 +440,43 @@ DetectArray 成功。 返回一个字符串数组，其包含的双字符语言�
 ### <a name="implementation-notes"></a>实现说明
 
 > [!IMPORTANT]
-> **弃用说明：** 在 2018 年 1 月 31 日之后，此方法不接受新的句子提交，并且会发送错误消息。 请查看此公告，了解对协作翻译功能所做的更改。
+> **不推荐使用注意：** 在 2018 年 1 月 31 日之后此方法将不会接受新句子提交。 你将收到错误消息。 请有关更改到协作翻译框架 (CTF) 公告，参阅。
 
 向翻译记忆库添加翻译。
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/AddTranslation`。
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
 
-字符串
+string
 
-响应内容类型：application: xml
+响应内容类型： 应用程序： xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-|参数|值|描述|参数类型|数据类型   |
+|参数|ReplTest1|描述|参数类型|数据类型   |
 |:--|:--|:--|:--|:--|
-|appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
-|originalText|(empty)|必需。 一个字符串，包含要翻译的文本。 字符串的最大长度为 1000 个字符。|query|字符串|
-|translatedText|(empty) |必需。 一个字符串，包含以目标语言翻译的文本。 字符串的最大长度为 2000 个字符。|query|字符串|
-|from|(empty)   |必需。 一个表示翻译文本语言代码的字符串。 en = 英语，de = 德语，依此类推。|query|字符串|
-|to|(empty)|必需。 一个字符串，表示进行文本翻译时目标语言的语言代码。|query|字符串|
-|rating|(empty) |可选。 一个整数，表示此字符串的质量评分。 值为 -10 到 10。 默认值为 1。|query|integer|
-|contentType|(empty)    |可选。 要翻译的文本的格式。 支持的格式为 "text/plain" 和 "text/html"。 HTML 必须是格式正确的完整元素。   |query|字符串|
-|category|(empty)|可选。 一个字符串，包含翻译的类别（领域）。 默认为“general”。|query|字符串|
-|user|(empty)|必需。 一个字符串，用于跟踪提交发起方。|query|字符串|
-|uri|(empty)|可选。 一个字符串，包含此翻译的内容位置。|query|字符串|
-|授权|(empty)|必需，前提是 appid 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。    |标头的值开始缓存响应|字符串|
-|Ocp-Apim-Subscription-Key|(empty)|必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|
+|appid|(empty)|必需。 如果`Authorization`或`Ocp-Apim-Subscription-Key`使用标头，保留`appid`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。|query|string|
+|originalText|(empty)|必需。 包含要翻译的文本的字符串。 字符串的最大长度为 1000 个字符。|query|string|
+|translatedText|(empty) |必需。 包含文本的字符串转换为目标语言。 字符串的最大长度为 2000 个字符。|query|string|
+|from|(empty)   |必需。 一个字符串，表示文本的原始语言的语言代码。 例如，en 表示英语，de 代表德语。|query|string|
+|to|(empty)|必需。 一个字符串，表示要转换到的文本的语言的语言代码。|query|string|
+|rating|(empty) |可选。 一个整数，表示字符串的质量级别。 值为-10 到 10 之间。 默认值为 1。|query|integer|
+|contentType|(empty)    |可选。 要翻译的文本的格式。 支持的格式为`text/plain`和`text/html`。 任何 HTML 元素必须是格式正确的、 完整的元素。    |query|string|
+|category|(empty)|可选。 包含转换的类别 （域） 的字符串。 默认值为 `general`。|query|string|
+|user|(empty)|必需。 一个字符串，用于跟踪在提交内容的原始发件人。|query|string|
+|uri|(empty)|可选。 一个字符串，包含翻译的内容的位置。|query|string|
+|Authorization|(empty)|如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。  授权令牌：`"Bearer" + " " + "access_token"`。  |标头的值开始缓存响应|string|
+|Ocp-Apim-Subscription-Key|(empty)|如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
 
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码|原因|
+|HTTP 状态代码|Reason|
 |:--|:--|
 |400    |请求错误。 请查看输入参数和详细的错误响应。|
-|401    |凭据无效|
-|410|不再支持 AddTranslation。|
-|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 X-MS-Trans-Info 中的请求 ID。|
+|401    |凭据无效。|
+|410|`AddTranslation` 不再受支持。|
+|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供的大概日期和时间的请求和响应标头中包含的请求 ID `X-MS-Trans-Info`。|
 |503    |服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 ## <a name="post-addtranslationarray"></a>POST /AddTranslationArray
@@ -476,13 +484,13 @@ DetectArray 成功。 返回一个字符串数组，其包含的双字符语言�
 ### <a name="implementation-notes"></a>实现说明
 
 > [!IMPORTANT]
-> **弃用说明：** 在 2018 年 1 月 31 日之后，此方法不接受新的句子提交，并且会发送错误消息。 请查看此公告，了解对协作翻译功能所做的更改。
+> **不推荐使用注意：** 在 2018 年 1 月 31 日之后此方法将不会接受新句子提交。 你将收到错误消息。 请有关更改到协作翻译框架 (CTF) 公告，参阅。
 
-向翻译记忆库添加一个翻译数组。 它是数组版本的 `AddTranslation`。
+将翻译的数组添加到翻译记忆。 此方法是数组版本`AddTranslation`。
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/AddTranslationArray`。
 
-请求正文的格式如下所示。
+下面是请求正文的格式：
 
 ```
 <AddtranslationsRequest>
@@ -506,81 +514,83 @@ DetectArray 成功。 返回一个字符串数组，其包含的双字符语言�
 </AddtranslationsRequest>
 ```
 
-AddtranslationsRequest 元素中的元素包括：
+这些元素位于`AddtranslationsRequest`:
 
-* `AppId`：必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。
-* `From`：必需。 一个字符串，包含源语言的语言代码。 必须是 `GetLanguagesForTranslate` 方法返回的语言之一。
+* `AppId`：必需。 如果`Authorization`或`Ocp-Apim-Subscription-Key`使用标头，保留`AppId`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。
+* `From`：必需。 包含源代码的语言的语言代码的字符串。 必须是 `GetLanguagesForTranslate` 方法返回的语言之一。
 * `To`：必需。 一个字符串，包含目标语言的语言代码。 必须是 `GetLanguagesForTranslate` 方法返回的语言之一。
-* `Translations`：必需。 要添加到翻译记忆库的一个翻译数组。 每个翻译必须包含 originalText、translatedText 和评分。 每个 originalText 和 translatedText 的大小仅限 1000 个字符。 所有 originalText 和 translatedText 的总计不得超过 10000 个字符。 最大数组元素数为 100。
-* `Options`：必需。 一组选项，包括 Category、ContentType、Uri 和 User。 User 为必填项。 Category、ContentType 和 Uri 为可选项。 指定的元素必须按字母顺序列出。
+* `Translations`：必需。 要添加到翻译记忆库的一个翻译数组。 必须包含每个翻译`OriginalText`， `TranslatedText`，和`Rating`。 每个的最大大小`OriginalText`和`TranslatedText`为 1,000 个字符。 所有的总和`OriginalText`和`TranslatedText`元素不能超过 10,000 个字符。 最大数组元素数为 100。
+* `Options`：必需。 选项，包括一套`Category`， `ContentType`， `Uri`，和`User`。 `User` 是必需的。 `Category``ContentType`，和`Uri`都是可选的。 指定的元素必须按字母顺序列出。
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
-AddTranslationArray 方法成功。 2018 年 1 月 31 日以后，不接受句子提交。 此服务会以错误代码 410 进行响应。
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
+`AddTranslationArray` 方法成功。 
 
-字符串
+在 2018 年 1 月 31 日之后不会接受句子提交。 此服务会以错误代码 410 进行响应。
 
-响应内容类型：application/xml
+string
+
+响应内容类型： application/xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-|参数|值|描述|参数类型|数据类型|
+|参数|ReplTest1|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|授权|(empty)|必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌：“持有者” + “ ” + “访问令牌”。|标头的值开始缓存响应|字符串|
-|Ocp-Apim-Subscription-Key|(empty)|必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
+|Authorization|(empty)|如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。  授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|string|
+|Ocp-Apim-Subscription-Key|(empty)|如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
 
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码|原因|
+|HTTP 状态代码|Reason|
 |:--|:--|
 |400    |请求错误。 请查看输入参数和详细的错误响应。|
-|401    |凭据无效|
-|410    |不再支持 AddTranslation。|
-|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 `X-MS-Trans-Info` 中的请求 ID。|
+|401    |凭据无效。|
+|410    |`AddTranslation` 不再受支持。|
+|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供的大概日期和时间的请求和响应标头中包含的请求 ID `X-MS-Trans-Info`。|
 |503|服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 ## <a name="get-breaksentences"></a>GET /BreakSentences
 
 ### <a name="implementation-notes"></a>实现说明
-将一段文本拆分成多个句子，并返回一个数组，其中包含每个句子的长度。
+分解成的句子的文本的一部分，并返回包含每个句子的长度的数组。
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/BreakSentences`。
 
-**返回值：** 一个整数数组，表示句子的长度。 数组的长度是句子的数量，而各个值是每个句子的长度。
+**返回值：** 表示的语句的长度的整数数组。 数组的长度表示的语句的数量。 这些值表示每个句子的长度。
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
-一个整数数组，表示句子的长度。 数组的长度是句子的数量，而各个值是每个句子的长度。
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
+表示的语句的长度的整数数组。 数组的长度表示的语句的数量。 这些值表示每个句子的长度。
 
 integer
 
-响应内容类型：application/xml 
+响应内容类型： application/xml
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-|参数|值|描述|参数类型|数据类型|
+|参数|ReplTest1|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|appid|(empty)  |必需。 如果使用了 Authorization 或 Ocp-Apim-Subscription-Key 标头，请将 appid 字段留空，否则请包括一个包含 "Bearer" + " " + "access_token" 的字符串。|query| 字符串|
-|text|(empty)   |必需。 一个字符串，表示要拆分成句子的文本。 文本大小不得超过 10000 个字符。|query|字符串|
-|语言   |(empty)    |必需。 一个表示字符串，表示输入文本的语言代码。|query|字符串|
-|授权|(empty)|必需，前提是 appid 字段或 Ocp-Apim-Subscription-Key 标头未指定。 授权令牌：“持有者” + “ ” + “访问令牌”。    |标头的值开始缓存响应|字符串|
-|Ocp-Apim-Subscription-Key|(empty)|必需，前提是 appid 字段或 Authorization 标头未指定。|标头的值开始缓存响应|字符串|
+|appid|(empty)  |必需。 如果`Authorization`或`Ocp-Apim-Subscription-Key`使用标头，保留`appid`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。|query| string|
+|text|(empty)   |必需。 表示要拆分成句子的文本字符串。 文本的最大大小为 10,000 个字符。|query|string|
+|language   |(empty)    |必需。 一个字符串，表示输入文本的语言代码。|query|string|
+|Authorization|(empty)|如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。 授权令牌：`"Bearer" + " " + "access_token"`。   |标头的值开始缓存响应|string|
+|Ocp-Apim-Subscription-Key|(empty)|如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
 
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码|原因|
+|HTTP 状态代码|Reason|
 |:--|:--|
 |400|请求错误。 请查看输入参数和详细的错误响应。|
-|401|凭据无效|
-|500|服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 X-MS-Trans-Info 中的请求 ID。|
+|401|凭据无效。|
+|500|服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供的大概日期和时间的请求和响应标头中包含的请求 ID `X-MS-Trans-Info`。|
 |503|服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 ## <a name="post-gettranslations"></a>POST /GetTranslations
 
 ### <a name="implementation-notes"></a>实现说明
-从存储和 MT 引擎中检索给定语言对的翻译数组。 GetTranslations 不同于 Translate，因为它返回所有可用的翻译。
+从存储和 MT 引擎中检索给定语言对的翻译数组。 `GetTranslations` 不同于`Translate`，它将返回所有可用翻译。
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/GetTranslations`。
 
-请求的正文包括可选的 TranslationOptions 对象，该对象的格式如下。
+请求的正文包括可选`TranslationOptions`对象，它具有以下格式：
 
 ```
 <TranslateOptions xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2">
@@ -593,22 +603,24 @@ integer
 </TranslateOptions>
 ```
 
-`TranslateOptions` 对象包含下面列出的值。 它们都是可选的，并且默认为最常用的设置。 指定的元素必须按字母顺序列出。
+`TranslateOptions`对象包含以下列表中的值。 它们都是可选参数，并默认为最常用的设置。 指定的元素必须按字母顺序列出。
 
-* `Category`：一个字符串，包含翻译的类别（领域）。 默认为“general”。
-* `ContentType`：唯一支持也是默认的选项为“text/plain”。
-* `IncludeMultipleMTAlternatives`：布尔标志，用于确定是否应从 MT 引擎返回多个备选项。 有效值为 true 和 false（区分大小写）。 默认值为 false，并且仅包括 1 个备选项。 将此标志设置为 true 即可在翻译中生成人工备选项，这些备选项已完全集成到协作翻译框架 (CTF) 中。 此功能允许为在 CTF 中没有备选项的句子返回备选项，其方法是从解码器的 n-best 列表中添加人工备选项。
-    - 评级
-评级的适用范围如下：1) 最佳自动翻译评级为 5。 2) CTF 中的备选项反映了审阅者的权威性，其评分为 -10 到 +10。 3) 自动生成的（N 个最佳）翻译备选项的评级为 0，匹配度为 100。
-    - 备选项数 返回的备选项的数目最多为 maxTranslations，但可以更少。
-    - 语言对 此功能不可用于简体中文与繁体中文之间的翻译（双向）。 它可用于 Microsoft 翻译工具支持的所有其他语言对。
-* `State`：用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
-* `Uri`：按此 URI 筛选结果。 如果未设置任何值，则默认值为 all。
-* `User`：按此用户筛选结果。 如果未设置任何值，则默认值为 all。
+* `Category`：包含转换的类别 （域） 的字符串。 默认值为 `general`。
+* `ContentType`：唯一支持的选项，并且默认值， `text/plain`。
+* `IncludeMultipleMTAlternatives`：一个布尔标志，指定是否应从 MT 引擎返回多个替代方法。 有效的值为`true`和`false`（区分大小写）。 默认值是`false`，它将返回仅一种替代方法。 将标志设置为`true`允许创建自定义的替代，完全集成在一起协作翻译框架 (CTF)。 功能使返回的替代方法，通过添加人工备选方法从 CTF 中有任何翻译的句子*n*-最佳的解码器的列表。
+    - 分级。 分级应用如下所示： 
+         - 最佳自动翻译评级为 5。
+       - 这些备选方法从 CTF 反映审阅者的颁发机构。 范围从-10 到 + 10。
+       - 自动生成 (*n*-最佳) 转换的替代项已从 0 到 100 的匹配程度进行评级。
+    - 替代项的数目。 中指定的值作为最高可返回的备选方法数量`maxTranslations`，但可能会较低。
+    - 语言对。 此功能不可用于之间简体中文和繁体中文在任一方向的转换。 它是可用于通过 Microsoft Translator 支持的所有其他语言对。
+* `State`：若要帮助将请求和响应相关联的用户状态。 将在响应中返回相同的内容。
+* `Uri`：按此 URI 筛选结果。 如果未不设置任何值，默认值是`all`。
+* `User`：按此用户筛选结果。 如果未不设置任何值，默认值是`all`。
 
 请求 `Content-Type` 应为 `text/xml`。
 
-**返回值：** 响应的格式如下所示。
+**返回值：** 下面是响应的格式：
 
 ```
 <GetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2"
@@ -627,57 +639,57 @@ integer
 </GetTranslationsResponse>
 ```
 
-这包括一个包含以下值的 `GetTranslationsResponse` 元素：
+此响应包含`GetTranslationsResponse`元素，其中包含以下值：
 
-* `Translations`：一系列已发现的匹配项，存储在 TranslationMatch（见下）对象中。 翻译可能包括原始文本的略变体（模糊匹配）。 将对翻译进行排序：首先是 100% 匹配，然后是模糊匹配。
-* `From`：如果方法未指定源语言，则此项为自动语言检测的结果。 否则，它就会是给定的源语言。
-* `State`：用户状态，可帮助关联请求和响应。 包含的值与在 TranslateOptions 参数中给出的值相同。
+* `Translations`：找到匹配项的数组，存储在`TranslationMatch`（下一节中所述） 的对象。 翻译可能包括 （模糊匹配） 的原始文本的细微的变体。 将对翻译进行排序：100%匹配第一次，模糊匹配下一步。
+* `From`：如果该方法不会指定`From`语言中，此值将来自自动语言检测。 否则，它将为指定`From`语言。
+* `State`：若要帮助将请求和响应相关联的用户状态。 中提供的值包含`TranslateOptions`参数。
 
-TranslationMatch 对象由以下元素组成：
+`TranslationMatch`对象包含这些值：
 
-* `Error`：如果特定的输入字符串出错，则会存储错误代码。 否则，此字段为空。
-* `MatchDegree`：系统将输入句子与存储内容进行匹配，包括不精确匹配。  MatchDegree 表示输入文本与存储中发现的原始文本的匹配程度。 返回的值为 0 到 100，0 表示不相似，100 表示完全匹配（区分大小写）。
-MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原始文本不同于输入文本的情况下，才返回此项。 用于返回模糊匹配的源文本。 不是针对 Microsoft 翻译工具结果返回的。
-* `Rating`：表示进行质量决策的人员的权威性。 机器翻译结果的评分将为 5。 匿名提供的翻译的评分通常为 1 到 4，而权威人士提供的翻译的评分则通常为 6 到 10。
-* `Count`：此评分的这个翻译被选中的次数。 对于自动翻译的响应，此值将为 0。
+* `Error`：如果特定的输入字符串就会出错，错误代码。 否则，此字段为空。
+* `MatchDegree`：指示输入的文本与在存储中找到的原始文本的匹配程度。 系统将输入句子与存储内容进行匹配，包括不精确匹配。 返回的值范围从 0 到 100 之间，其中 0 表示没有相似性，100 是完全相同的、 区分大小写的匹配项。
+* `MatchedOriginalText`：此结果的匹配的原始文本。 仅当匹配的原始文本已不同于输入文本，则返回此值。 它用于返回模糊匹配的源文本。 返回此值不是为 Microsoft Translator 结果。
+* `Rating`：表示进行质量决策的人员的权威性。 机器翻译结果具有评级为 5。 以匿名方式提供的转换通常具有从 1 到 4 的分级。 权威地提供的翻译通常具有从 6 到 10 的分级。
+* `Count`：此评分的这个翻译被选中的次数。 值为 0 的自动翻译后的响应。
 * `TranslatedText`：翻译的文本。
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
-一个 `GetTranslationsResponse` 对象，其格式如上所述。
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
+一个`GetTranslationsResponse`中前面所述的格式对象。
 
-字符串
+string
 
-响应内容类型：application/xml
+响应内容类型： application/xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 |参数|值|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|appid|(empty)|必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。|query|字符串|
-|text|(empty)|必需。 一个字符串，表示要翻译的文本。 文本大小不得超过 10000 个字符。|query|字符串|
-|from|(empty)|必需。 一个表示翻译文本语言代码的字符串。|query|字符串|
-|to |(empty)    |必需。 一个字符串，表示进行文本翻译时目标语言的语言代码。|query|字符串|
-|maxTranslations|(empty)|必需。 一个整数，表示要返回的最大翻译数。|query|integer|
-|授权| (empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|字符串| 标头的值开始缓存响应|
-|Ocp-Apim-Subscription-Key|(empty)  |必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|
+|appid|(empty)|必需。 如果`Authorization`或`Ocp-Apim-Subscription-Key`使用标头，保留`appid`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。|query|string|
+|text|(empty)|必需。 表示要转换的文本字符串。 文本的最大大小为 10,000 个字符。|query|string|
+|from|(empty)|必需。 一个字符串，表示要转换的文本的语言代码。|query|string|
+|to |(empty)    |必需。 一个字符串，表示要转换到的文本的语言的语言代码。|query|string|
+|maxTranslations|(empty)|必需。 一个整数，表示转换，可返回的最大数目。|query|integer|
+|Authorization| (empty)|如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。 授权令牌：`"Bearer" + " " + "access_token"`。|string|  标头的值开始缓存响应|
+|Ocp-Apim-Subscription-Key|(empty)  |如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
 
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码|原因|
+|HTTP 状态代码|Reason|
 |:--|:--|
 |400    |请求错误。 请查看输入参数和详细的错误响应。|
-|401    |凭据无效|
-|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 `X-MS-Trans-Info` 中的请求 ID。|
+|401    |凭据无效。|
+|500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供的大概日期和时间的请求和响应标头中包含的请求 ID `X-MS-Trans-Info`。|
 |503|服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 ## <a name="post-gettranslationsarray"></a>POST /GetTranslationsArray
 
 ### <a name="implementation-notes"></a>实现说明
-使用 `GetTranslationsArray` 方法检索多个源文本的多个翻译候选项。
+检索多个源文本的多个翻译候选项。
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/GetTranslationsArray`。
 
-请求正文的格式如下所示。
+下面是请求正文的格式：
 
 ```
 <GetTranslationsArrayRequest>
@@ -701,28 +713,30 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
 
 `GetTranslationsArrayRequest` 包括以下元素：
 
-* `AppId`：必需。 如果使用了 Authorization 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。
-* `From`：必需。 一个表示翻译文本语言代码的字符串。
-* `MaxTranslations`：必需。 一个整数，表示要返回的最大翻译数。
-* `Options`：可选。 一个 Options 对象，包含下面列出的值。 它们都是可选的，并且默认为最常用的设置。 指定的元素必须按字母顺序列出。
-    - 类别：一个字符串，包含翻译的类别（领域）。 默认为“general”。
-    - `ContentType`：唯一支持也是默认的选项为“text/plain”。
-    - `IncludeMultipleMTAlternatives`：布尔标志，用于确定是否应从 MT 引擎返回多个备选项。 有效值为 true 和 false（区分大小写）。 默认值为 false，并且仅包括 1 个备选项。 将此标志设置为 true 即可在翻译中生成人工备选项，这些备选项已完全集成到协作翻译框架 (CTF) 中。 此功能允许为在 CTF 中没有备选项的句子返回备选项，其方法是从解码器的 n-best 列表中添加人工备选项。
-        - 评级
-评级的适用范围如下：1) 最佳自动翻译评级为 5。 2) CTF 中的备选项反映了审阅者的权威性，其评分为 -10 到 +10。 3) 自动生成的（N 个最佳）翻译备选项的评级为 0，匹配度为 100。
-        - 备选项数 返回的备选项的数目最多为 maxTranslations，但可以更少。
-        - 语言对 此功能不可用于简体中文与繁体中文之间的翻译（双向）。 它可用于 Microsoft 翻译工具支持的所有其他语言对。
-* `State`：用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
-* `Uri`：按此 URI 筛选结果。 如果未设置任何值，则默认值为 all。
-* `User`：按此用户筛选结果。 如果未设置任何值，则默认值为 all。
-* `Texts`：必需。 一个包含要翻译文本的数组。 所有字符串必须采用同一语言。 要翻译的所有文本总共不得超过 10000 个字符。 最大数组元素数为 10。
-* `To`：必需。 一个字符串，表示进行文本翻译时目标语言的语言代码。
+* `AppId`：必需。 如果`Authorization`使用标头，保留`AppId`字段均为空。 否则，包含一个字符串，包含`"Bearer" + " " + "access_token"`。
+* `From`：必需。 一个字符串，表示要转换的文本的语言代码。
+* `MaxTranslations`：必需。 一个整数，表示转换，可返回的最大数目。
+* `Options`：可选。 `Options`对象，其中包含以下值。 它们都是可选参数，并默认为最常用的设置。 指定的元素必须按字母顺序列出。
+    - `Category`：包含转换的类别 （域） 的字符串。 默认值为 `general`。
+    - `ContentType`：唯一支持的选项，并且默认值， `text/plain`。
+    - `IncludeMultipleMTAlternatives`：一个布尔标志，指定是否应从 MT 引擎返回多个替代方法。 有效的值为`true`和`false`（区分大小写）。 默认值是`false`，它将返回仅一种替代方法。 将标志设置为`true`可以生成的人工翻译，完全集成在一起协作翻译框架 (CTF) 中的替代项。 功能，返回替代项的添加从人工备用方案没有替代项在 CTF 句子*n*-最佳的解码器的列表。
+        - 分级级别应用如下所示：
+          - 最佳自动翻译评级为 5。
+          - 这些备选方法从 CTF 反映审阅者的颁发机构。 范围从-10 到 + 10。
+          - 自动生成 (*n*-最佳) 转换的替代项已从 0 到 100 的匹配程度进行评级。
+        - 替代项的数目。 中指定的值作为最高可返回的备选方法数量`maxTranslations`，但可能会较低。
+        - 语言对。 此功能不可用于之间简体中文和繁体中文在任一方向的转换。 它是可用于通过 Microsoft Translator 支持的所有其他语言对。
+* `State`：若要帮助将请求和响应相关联的用户状态。 将在响应中返回相同的内容。
+* `Uri`：按此 URI 筛选结果。 如果未不设置任何值，默认值是`all`。
+* `User`：按此用户筛选结果。 如果未不设置任何值，默认值是`all`。
+* `Texts`：必需。 一个数组，包含翻译的文本。 所有字符串都必须位于相同的语言。 要转换的所有文本的总量不能超过 10,000 个字符。 最大数组元素数为 10。
+* `To`：必需。 一个字符串，表示要转换到的文本的语言的语言代码。
 
-可选元素可以省略。 属于 `GetTranslationsArrayRequest` 的直接子项的元素必须按字母顺序列出。
+可以省略可选元素。 元素的直接子级的`GetTranslationsArrayRequest`必须按字母顺序列出。
 
 请求 `Content-Type` 应为 `text/xml`。
 
-**返回值：** 响应的格式如下所示。
+**返回值：** 下面是响应的格式：
 
 ```
 <ArrayOfGetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
@@ -749,54 +763,46 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
 </ArrayOfGetTranslationsResponse>
 ```
 
-每个 `GetTranslationsResponse` 元素包含以下值：
+每个`GetTranslationsResponse`元素包含这些值：
 
-* `Translations`：一系列已发现的匹配项，存储在 `TranslationMatch`（见下）对象中。 翻译可能包括原始文本的略变体（模糊匹配）。 将对翻译进行排序：首先是 100% 匹配，然后是模糊匹配。
-* `From`：如果方法未指定 `From` 语言，则此项为自动语言检测的结果。 否则，它就会是给定的源语言。
-* `State`：用户状态，可帮助关联请求和响应。 包含的值与在 `TranslateOptions` 参数中给出的值相同。
+* `Translations`：找到匹配项的数组，存储在`TranslationMatch`（下一节中所述） 的对象。 翻译可能包括 （模糊匹配） 的原始文本的细微的变体。 将对翻译进行排序：100%匹配第一次，模糊匹配下一步。
+* `From`：如果该方法不会指定`From`语言中，此值将来自自动语言检测。 否则，它将为指定`From`语言。
+* `State`：若要帮助将请求和响应相关联的用户状态。 中提供的值包含`TranslateOptions`参数。
 
-`TranslationMatch` 对象由以下项组成：
-* `Error`：如果特定的输入字符串出错，则会存储错误代码。 否则，此字段为空。
-* `MatchDegree`：系统将输入句子与存储内容进行匹配，包括不精确匹配。  `MatchDegree` 表示输入文本与存储中发现的原始文本的匹配程度。 返回的值为 0 到 100，0 表示不相似，100 表示完全匹配（区分大小写）。
-* `MatchedOriginalText`：此结果的匹配的原始文本。 只有在匹配的原始文本不同于输入文本的情况下，才返回此项。 用于返回模糊匹配的源文本。 不是针对 Microsoft 翻译工具结果返回的。
-* `Rating`：表示进行质量决策的人员的权威性。 机器翻译结果的评分将为 5。 匿名提供的翻译的评分通常为 1 到 4，而权威人士提供的翻译的评分则通常为 6 到 10。
-* `Count`：此评分的这个翻译被选中的次数。 对于自动翻译的响应，此值将为 0。
+`TranslationMatch`对象包含以下值：
+* `Error`：如果特定的输入字符串就会出错，错误代码。 否则，此字段为空。
+* `MatchDegree`：指示输入的文本与在存储中找到的原始文本的匹配程度。 系统将输入句子与存储内容进行匹配，包括不精确匹配。 返回的值范围从 0 到 100 之间，其中 0 表示没有相似性，100 是完全相同的、 区分大小写的匹配项。
+* `MatchedOriginalText`：此结果的匹配的原始文本。 仅当匹配的原始文本已不同于输入文本，则返回此值。 它用于返回模糊匹配的源文本。 返回此值不是为 Microsoft Translator 结果。
+* `Rating`：表示进行质量决策的人员的权威性。 机器翻译结果具有评级为 5。 以匿名方式提供的转换通常具有从 1 到 4 的分级。 权威地提供的转换通常具有从 6 到 10 的分级。
+* `Count`：此评分的这个翻译被选中的次数。 值为 0 的自动翻译后的响应。
 * `TranslatedText`：翻译的文本。
 
 
-### <a name="response-class-status-200"></a>响应类（状态 200）
+### <a name="response-class-status-200"></a>Response 类 （状态 200）
 
-字符串
+string
 
-响应内容类型：application/xml
+响应内容类型： application/xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
-|参数|值|描述|参数类型|数据类型|
+|参数|ReplTest1|描述|参数类型|数据类型|
 |:--|:--|:--|:--|:--|
-|授权  |(empty)    |必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
-|Ocp-Apim-Subscription-Key|(empty)  |必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|
+|Authorization  |(empty)    |如果这两个必需`appid`字段和`Ocp-Apim-Subscription-Key`保留为空的标头。  授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|string|
+|Ocp-Apim-Subscription-Key|(empty)  |如果这两个必需`appid`字段和`Authorization`保留为空的标头。|标头的值开始缓存响应|string|
 
 ### <a name="response-messages"></a>响应消息
 
-|HTTP 状态代码|原因|
+|HTTP 状态代码|Reason|
 |:--|:--|
 |400    |请求错误。 请查看输入参数和详细的错误响应。|
-|401    |凭据无效|
+|401    |凭据无效。|
 |500    |服务器错误。 如果此错误仍然存在，请告知我们。 请向我们提供请求的大致日期和时间，以及包括在响应标头 `X-MS-Trans-Info` 中的请求 ID。|
 |503    |服务暂时不可用。 请重试。如果此错误仍然存在，请告知我们。|
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [迁移到 v3 文本翻译 API](../migrate-to-v3.md)
-
-
-
-
-
-
-
-
+> [将迁移到文本翻译 API v3](../migrate-to-v3.md)
 
 

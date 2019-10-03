@@ -35,6 +35,8 @@
       href: powershell-samples.md
     - name: Azure CLI
       href: cli-samples.md
+    - name: 资源管理器模板
+      href: resource-manager-template-samples.md
 - name: 概念
   items:
     - name: 基础
@@ -45,6 +47,8 @@
           href: application-gateway-components.md
         - name: 配置概述
           href: configuration-overview.md
+    - name: 自动缩放 v2 SKU
+      href: application-gateway-autoscaling-zone-redundant.md
     - name: 路由
       items:
         - name: 多站点托管
@@ -71,14 +75,16 @@
           href: waf-overview.md
         - name: WAF 配置
           href: application-gateway-waf-configuration.md
+        - name: 自定义规则
+          href: custom-waf-rules-overview.md
     - name: 运行状况监视
       items:
         - name: 运行状况探测
           href: application-gateway-probe-overview.md
-        - name: 诊断
+        - name: 诊断日志和后端运行状况
           href: application-gateway-diagnostics.md
-    - name: 自动缩放和区域冗余
-      href: application-gateway-autoscaling-zone-redundant.md
+        - name: 度量值
+          href: application-gateway-metrics.md
     - name: 应用服务 Web 应用和多租户支持
       href: application-gateway-web-app-overview.md
     - name: WebSocket 支持
@@ -93,8 +99,6 @@
           href: tutorial-manage-web-traffic-powershell.md
         - name: Azure CLI
           href: tutorial-manage-web-traffic-cli.md
-        - name: 模板
-          href: create-vmss-template.md
     - name: 配置内部负载均衡器
       items:
         - name: Azure 门户
@@ -119,10 +123,12 @@
               href: application-gateway-end-to-end-ssl-powershell.md
         - name: 管理证书
           items:
-            - name: 创建证书以便将后端列入允许列表
+            - name: 后端证书
               href: certificates-for-backend-authentication.md
             - name: 续订证书
               href: renew-certificates.md
+            - name: 生成自签名证书
+              href: self-signed-certificates.md
         - name: SSL 策略
           items:
             - name: 配置 SSL 策略
@@ -141,6 +147,12 @@
           href: application-gateway-customize-waf-rules-powershell.md
         - name: Azure CLI
           href: application-gateway-customize-waf-rules-cli.md
+    - name: WAF 自定义规则
+      items:
+        - name: 自定义规则示例
+          href: create-custom-waf-rules.md
+        - name: 使用自定义规则配置 WAF
+          href: configure-waf-custom-rules.md
     - name: 按 URL 路由
       items:
         - name: Azure PowerShell
@@ -183,6 +195,8 @@
           href: rewrite-http-headers-portal.md
         - name: Azure PowerShell
           href: add-http-header-rewrite-rule-powershell.md
+        - name: 创建和重写 HTTP 标头
+          href: tutorial-http-header-rewrite-powershell.md
     - name: 配置应用服务 Web 应用和多租户服务
       items:
         - name: 门户
@@ -201,12 +215,22 @@
       items:
         - name: 将 ILB 与应用服务环境配合使用
           href: create-gateway-internal-load-balancer-app-service-environment.md
-        - name: 重定向到应用服务的 URL
+        - name: 应用服务问题
           href: troubleshoot-app-service-redirection-app-service-url.md
         - name: 会话关联问题
           href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
         - name: “错误的网关 (502)”错误
           href: application-gateway-troubleshooting-502.md
+        - name: Web 应用程序防火墙 (WAF)
+          href: web-application-firewall-troubleshoot.md
+        - name: 资源运行状况
+          href: resource-health-overview.md
+        - name: 使用 Log Analytics
+          href: log-analytics.md
+        - name: 后端运行状况问题
+          href: application-gateway-backend-health-troubleshooting.md
+    - name: 从 v1 迁移到 v2
+      href: migrate-v1-v2.md
 - name: 引用
   items:
     - name: CRS 规则
@@ -226,14 +250,20 @@
     - name: REST
       href: /rest/api/applicationgateway
     - name: Azure 资源管理器
+      displayName: ARM
       href: ../azure-resource-manager/resource-group-overview.md
+    - name: 资源管理器模板
+      displayName: ARM
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways'
 - name: 资源
   items:
     - name: 创作模板
+      displayName: ARM
       href: ../azure-resource-manager/resource-group-authoring-templates.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 社区模板
+      displayName: ARM
       href: 'https://azure.microsoft.com/documentation/templates'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/#Linux'

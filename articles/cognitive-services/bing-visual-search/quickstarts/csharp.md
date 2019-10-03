@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 3/28/2019
+ms.date: 04/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: d2f5e87bd6c6780e8504abe1753e90eca5db763a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: b1518af9c37ffe0b8175e741b363d79941e3caaf
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880400"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905702"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>快速入门：使用必应视觉搜索 REST API 和 C# 获取图像见解
 
@@ -23,7 +23,7 @@ ms.locfileid: "58880400"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 * [Json.NET 框架](https://www.newtonsoft.com/json)，以 NuGet 程序包的形式提供。
 * 如果使用的是 Linux/MacOS，则可以使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 

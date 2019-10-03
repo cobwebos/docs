@@ -11,22 +11,21 @@ ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: linux
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: da4d246e098751f650eb6315de3794ad957884d6
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 43771392adcbf49c9103ee7ebc4b3febbac11b05
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543887"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071216"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>在 Linux 上的应用服务中创建 ASP.NET Core 应用
 
 > [!NOTE]
-> 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 Windows 的应用服务，请参阅[在 Azure 中创建 ASP.NET Core 应用](../app-service-web-get-started-dotnet.md)。
+> 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 Windows 的应用服务，请参阅[在 Azure 中创建 ASP.NET Core 应用](../app-service-web-get-started-dotnet.md)  。
 >
 
 [Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门演示如何在 Linux 应用服务中创建 [.NET Core](https://docs.microsoft.com/aspnet/core/) 应用。 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建应用，并使用 Git 将 .NET Core 代码部署到该应用。
@@ -71,7 +70,7 @@ dotnet run
 
 打开 Web 浏览器并导航到 `http://localhost:5000` 处的应用。
 
-页面中会显示该示例应用发出的 Hello World 消息。
+页面中会显示该示例应用发出的 Hello World  消息。
 
 ![使用浏览器进行测试](media/quickstart-dotnetcore/dotnet-browse-local.png)
 
@@ -95,10 +94,10 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-浏览到新建的应用。 将 &lt;app name> 替换为你的应用名称。
+浏览到新建的应用。 将 &lt;app name> 替换为你的应用名称  。
 
 ```bash
-http://<app name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 新应用应该如下所示：
@@ -148,11 +147,11 @@ http://<app_name>.azurewebsites.net
 
 ![在 Azure 中运行应用的示例](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
-祝贺你！ 现已将第一个 .NET Core 应用部署到 Linux 应用服务。
+祝贺你！  现已将第一个 .NET Core 应用部署到 Linux 应用服务。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 
-在本地目录中，打开 Startup.cs 文件。 对方法调用 `context.Response.WriteAsync` 中的文本稍作更改：
+在本地目录中，打开 Startup.cs 文件  。 对方法调用 `context.Response.WriteAsync` 中的文本稍作更改：
 
 ```csharp
 await context.Response.WriteAsync("Hello Azure!");
@@ -165,7 +164,7 @@ git commit -am "updated output"
 git push azure master
 ```
 
-完成部署后，切换回在“浏览到应用”步骤中打开的浏览器窗口，并点击“刷新”。
+完成部署后，切换回在“浏览到应用”  步骤中打开的浏览器窗口，并点击“刷新”。
 
 ![已更新的在 Azure 中运行应用的示例](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
 
@@ -173,7 +172,7 @@ git push azure master
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/quickstart-dotnetcore/portal-app-service-list.png)
 

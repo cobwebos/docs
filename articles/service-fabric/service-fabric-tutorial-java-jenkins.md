@@ -88,33 +88,33 @@ ms.locfileid: "57880580"
 
 1. 在 ``http://<HOST-IP>:8080`` 的 Jenkins 仪表板上创建一个**新项**。
 
-1. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，并单击“确定”。
+1. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，并单击“确定”。  
 
-1. 转到作业页，单击“配置”。
+1. 转到作业页，单击“配置”。 
 
-   a. 在常规部分中，选择“GitHub 项目”所对应的复选框，指定 GitHub 项目 URL。 此 URL 托管要与 Jenkins 持续集成和持续部署 (CI/CD) 流（例如 ``https://github.com/testaccount/dev_test``）集成的 Service Fabric Java 应用程序。
+   a. 在常规部分中，选择“GitHub 项目”所对应的复选框，指定 GitHub 项目 URL。  此 URL 托管要与 Jenkins 持续集成和持续部署 (CI/CD) 流（例如 ``https://github.com/testaccount/dev_test``）集成的 Service Fabric Java 应用程序。
 
-   b. 在“源代码管理”部分，选择 **Git**。 指定用于托管要与 Jenkins CI/CD 流（例如 *https://github.com/testaccount/dev_test.git*）集成的 Service Fabric Java 应用程序的存储库 URL。 也可在此处指定要生成的分支（例如 **/master**）。
+   b. 在“源代码管理”  部分，选择 **Git**。 指定用于托管要与 Jenkins CI/CD 流（例如 *https://github.com/testaccount/dev_test.git* ）集成的 Service Fabric Java 应用程序的存储库 URL。 也可在此处指定要生成的分支（例如 **/master**）。
 
 1. 配置 *GitHub*（存储库的托管位置），使它能够与 Jenkins 通信。 请执行以下步骤：
 
-   a. 转到 GitHub 存储库页。 转到“设置” > “集成和服务”。
+   a. 转到 GitHub 存储库页。 转到“设置”   >   “集成和服务”。
 
-   b. 选择“添加服务”，键入 **Jenkins**，并选择“Jenkins-GitHub 插件”。
+   b. 选择“添加服务”，键入 **Jenkins**，并选择“Jenkins-GitHub 插件”。  
 
-   c. 输入 Jenkins Webhook URL（默认为 ``http://<PublicIPorFQDN>:8081/github-webhook/``）。 单击“添加/更新服务”。
+   c. 输入 Jenkins Webhook URL（默认为 ``http://<PublicIPorFQDN>:8081/github-webhook/``）。 单击“添加/更新服务”。 
 
    d. 将向 Jenkins 实例发送一个测试事件。 GitHub 中的 Webhook 旁边应会显示一个绿色复选标记，同时会生成项目。
 
    ![Service Fabric Jenkins 配置](./media/service-fabric-tutorial-java-jenkins/jenkinsconfiguration.png)
 
-1. 在“生成触发器”部分下面，选择所需的生成选项。 在此示例中，我们希望每当向存储库推送信息，就会触发生成。 为此，可以选择“用于 GITScm 轮询的 GitHub 挂钩触发器”。
+1. 在“生成触发器”部分下面，选择所需的生成选项。  在此示例中，我们希望每当向存储库推送信息，就会触发生成。 为此，可以选择“用于 GITScm 轮询的 GitHub 挂钩触发器”。 
 
-1. 在“生成”部分下面，从“添加生成步骤”下拉列表中选择“调用 Gradle 脚本”。 在出现的小组件中，打开高级菜单，为应用程序指定“根生成脚本”的路径。 该脚本将从指定的路径中选择 build.gradle，然后执行相应的操作。
+1. 在“生成”部分下面，从“添加生成步骤”下拉列表中选择“调用 Gradle 脚本”。    在出现的小组件中，打开高级菜单，为应用程序指定“根生成脚本”的路径。  该脚本将从指定的路径中选择 build.gradle，然后执行相应的操作。
 
     ![Service Fabric Jenkins 生成操作](./media/service-fabric-tutorial-java-jenkins/jenkinsbuildscreenshot.png)
 
-1. 在“生成后操作”下拉列表中，选择“部署 Service Fabric 项目”。 此处需要提供有关在何处部署 Jenkins 编译的 Service Fabric 应用程序的群集详细信息。 证书的路径是卷的装载位置 (/tmp/myCerts)。
+1. 在“生成后操作”下拉列表中，选择“部署 Service Fabric 项目”。   此处需要提供有关在何处部署 Jenkins 编译的 Service Fabric 应用程序的群集详细信息。 证书的路径是卷的装载位置 (/tmp/myCerts)。
 
     还可以提供用于部署应用程序的其他详细信息。 有关应用程序详细信息的示例，请参阅以下屏幕截图：
 
@@ -183,7 +183,7 @@ ms.locfileid: "57880580"
 
 1. 若要初始化执行应用程序升级的 Jenkins 作业，请将新更改推送到 GitHub 存储库。
 
-1. 在 Service Fabric Explorer 中，单击“应用程序”下拉列表。 若要查看升级状态，请单击“正在进行升级”选项卡。
+1. 在 Service Fabric Explorer 中，单击“应用程序”下拉列表。  若要查看升级状态，请单击“正在进行升级”选项卡。 
 
     ![正在进行升级](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 

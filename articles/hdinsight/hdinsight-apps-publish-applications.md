@@ -1,7 +1,6 @@
 ---
 title: 发布 Azure HDInsight 应用程序
 description: 了解如何创建 HDInsight 应用程序，然后在 Azure 市场中进行发布。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,30 +8,30 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: fd6d47d8300872f5bcdf36aec492289f93858504
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814176"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64685326"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>在 Azure 市场中发布 HDInsight 应用程序
 可在基于 Linux 的 HDInsight 群集上安装 Azure HDInsight 应用程序。 在本文中，你将了解如何在 Azure 市场中发布 HDInsight 应用程序。 有关在 Azure 市场中发布的一般信息，请参阅[在 Azure 市场中发布产品/服务](../marketplace/marketplace-publishers-guide.md)。
 
-HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，应用程序提供商负责向应用用户提供应用程序许可。 应用用户仅需为其创建的 Azure 资源付费，例如 HDInsight 群集以及群集的 VM 和节点。 目前，Azure 不对应用程序本身进行计费。
+HDInsight 应用程序使用自带许可 (BYOL) 模型  。 在 BYOL 方案中，应用程序提供商负责向应用用户提供应用程序许可。 应用用户仅需为其创建的 Azure 资源付费，例如 HDInsight 群集以及群集的 VM 和节点。 目前，Azure 不对应用程序本身进行计费。
 
 有关详细信息，请参阅以下 HDInsight 应用程序相关文章：
 
 * [安装 HDInsight 应用程序](hdinsight-apps-install-applications.md). 了解如何在群集上安装 HDInsight 应用程序。
 * [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。 了解如何安装和测试自定义 HDInsight 应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要在市场中提交自定义应用程序，首先需[创建并测试该自定义应用程序](hdinsight-apps-install-custom-applications.md)。
 
 还必须注册开发人员帐户。 有关详细信息，请参阅[在 Azure 市场中发布产品/服务](../marketplace/marketplace-publishers-guide.md)和[创建 Microsoft 开发人员帐户](../marketplace/marketplace-publishers-guide.md)。
 
 ## <a name="define-the-application"></a>定义应用程序
-在市场中发布应用程序，分为两个步骤。 首先，定义 createUiDef.json 文件。 CreateUiDef.json 文件指示应用程序与哪些群集兼容。 然后，从 Azure 门户中发布模板。 下面是一个示例 createUiDef.json 文件：
+在市场中发布应用程序，分为两个步骤。 首先，定义 createUiDef.json 文件  。 CreateUiDef.json 文件指示应用程序与哪些群集兼容。 然后，从 Azure 门户中发布模板。 下面是一个示例 createUiDef.json 文件：
 
 ```json
 {
@@ -45,7 +44,7 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
 }
 ```
 
-| 字段 | 说明 | 可能的值 |
+| 字段 | 描述 | 可能的值 |
 | --- | --- | --- |
 | types |与应用程序兼容的群集类型。 |Hadoop、HBase、Storm、Spark（或这些类型的任意组合） |
 | versions |与应用程序兼容的 HDInsight 群集类型。 |3.4 |
@@ -64,7 +63,7 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
   > * 连字符，用于提高可读性。
   > * 一个唯一字符串函数，以应用程序名称作为参数。
   > 
-  > 在持久化脚本操作列表中，上述示例显示为 hue-install-v0-4wkahss55hlas。 请参阅[示例 JSON 有效负载](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json)。
+  > 在持久化脚本操作列表中，上述示例显示为 hue-install-v0-4wkahss55hlas  。 请参阅[示例 JSON 有效负载](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json)。
   > 
 
 安装脚本必须具有以下特点：
@@ -88,14 +87,14 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
 要发布 HDInsight 应用程序：
 
 1. 登录到 [Azure 发布](https://publish.windowsazure.com/)。
-2. 在左侧菜单中，选择“解决方案模板”。
-3. 输入标题，然后选择“创建新的解决方案模板”。
-4. 如果尚未注册组织，选择“创建开发人员中心帐户并加入 Azure 计划”。  有关详细信息，请参阅[创建 Microsoft 开发人员帐户](../marketplace/marketplace-publishers-guide.md)。
-5. 选择“定义一些拓扑以开始使用”。 解决方案模板是其所有拓扑的“父级”。 可以在一个产品或解决方案模板中定义多个拓扑。 将产品/服务推送到过渡环境时，它会随其所有拓扑一起推送。 
-6. 输入拓扑名称，然后选择 +。
-7. 输入新版本，然后选择 +。
+2. 在左侧菜单中，选择“解决方案模板”  。
+3. 输入标题，然后选择“创建新的解决方案模板”  。
+4. 如果尚未注册组织，选择“创建开发人员中心帐户并加入 Azure 计划”  。  有关详细信息，请参阅[创建 Microsoft 开发人员帐户](../marketplace/marketplace-publishers-guide.md)。
+5. 选择“定义一些拓扑以开始使用”  。 解决方案模板是其所有拓扑的“父级”。 可以在一个产品或解决方案模板中定义多个拓扑。 将产品/服务推送到过渡环境时，它会随其所有拓扑一起推送。 
+6. 输入拓扑名称，然后选择 +  。
+7. 输入新版本，然后选择 +  。
 8. 打包应用程序时上传创建的 .zip 文件。  
-9. 选择“请求认证”。 Microsoft 认证团队将审查该文件并认证拓扑。
+9. 选择“请求认证”  。 Microsoft 认证团队将审查该文件并认证拓扑。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何在群集中[安装 HDInsight 应用程序](hdinsight-apps-install-applications.md)。

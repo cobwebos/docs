@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 31c6c1258b6d20eb2d2802cf23244cb59df682c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8ad5c4cb4d17443144febd716391803064ccdad1
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786483"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626380"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>用于数据科学项目的平台和工具
 
@@ -48,7 +48,7 @@ Microsoft 在 Windows 和 Linux 上提供的数据科学虚拟机包含用于数
 
 DSVM 目前可在 **Windows** 和 **Linux CentOS** 操作系统中使用。 根据计划在其上执行的数据科学项目的需求，选择 DSVM 的大小（CPU 核心数和内存量）。 
 
-有关 Windows 版 DSVM 的详细信息，请参阅 Azure 市场中的 [Microsoft 数据科学虚拟机](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/)。 有关 Linux 版 DSVM，请参阅 [Linux 数据科学虚拟机](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)。
+有关 Windows 版 DSVM 的详细信息，请参阅 Azure 市场中的 [Microsoft 数据科学虚拟机](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows)。 有关 Linux 版 DSVM，请参阅 [Linux 数据科学虚拟机](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)。
 
 若要了解如何在 DSVM 上有效执行某些常见的数据科学任务，请参阅[数据科学虚拟机的十大功能](../data-science-virtual-machine/vm-do-ten-things.md)
 
@@ -59,7 +59,7 @@ Apache Spark 是一种开源并行处理框架，支持使用内存中处理来�
 
 在 HDInsight 中创建 Spark 群集时，即会创建已安装并配置了 Spark 的 Azure 计算资源。 在 HDInsight 中创建 Spark 群集需要约 10 分钟。 将要处理的数据存储在 Azure Blob 存储中。 有关在群集中使用 Azure Blob 存储的信息，请参阅[将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)。
 
-Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight“Spark 群集”的详细信息，请参阅[概述：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
+Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight“Spark 群集”的详细信息，请参阅[概述  ：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
@@ -94,7 +94,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 能够创建一个 Azure 文件存储作为与项目团队成员共享项目数据的位置，对于数据科学项目特别有用。 然后，每个成员可以访问 Azure 文件存储中的相同数据副本。 他们还可使用此文件存储来共享执行项目期间生成的特征集。 如果项目是客户参与项目，则客户可以在其自己的 Azure 订阅下创建一个 Azure 文件存储，用来与你共享项目数据和特征。 这样，客户便可以完全控制项目数据资产。 有关 Azure 文件存储的详细信息，请参阅 [在 Windows 上开始使用 Azure 文件存储](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files)和[如何通过 Linux 使用 Azure 文件存储](../../storage/files/storage-how-to-use-files-linux.md)。
 
 
-## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R 服务
+## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
 
 R 服务（数据库内部）提供一个平台用于开发和部署可以发现新见解的智能应用程序。 可以使用丰富强大的 R 语言（包括 R 社区提供的许多包）来创建模型，基于 SQL Server 数据生成预测。 由于 R 服务（数据库内部）可将 R 语言与 SQL Server 集成，因此可以保持与数据接近的分析结果，同时消除与数据移动相关的成本和安全风险。
 
@@ -133,11 +133,11 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Se
 
 - 复制整个 SSH 密钥，包括 *ssh-rsa*。 
 - 登录到 Azure DevOps Services。 
-- 单击页面右上角的“<你的姓名\>”，再单击“安全性”。 
+- 单击页面右上角的“<你的姓名\>”，再单击“安全性”。   
     
     ![单击你的姓名，再单击“安全性”](./media/platforms-and-tools/resources-2-user-setting.png)
 
-- 依次单击“SSH 公钥”、“+添加”。 
+- 依次单击“SSH 公钥”、“+添加”。   
 
     ![单击 SSH 公钥，再单击“+ 添加”](./media/platforms-and-tools/resources-3-add-ssh.png)
 

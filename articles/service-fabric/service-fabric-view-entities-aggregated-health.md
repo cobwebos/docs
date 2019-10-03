@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c8113bffba824ddb0885e92b0d6c5392748899da
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 1721f10f8950577080a89ba58a3eb4dd3a25c188
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662765"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249185"
 ---
 # <a name="view-service-fabric-health-reports"></a>查看 Service Fabric 运行状况报告
 Azure Service Fabric 引入了一种具有运行状况实体的[运行状况模型](service-fabric-health-introduction.md)，系统组件和监视器可以在其上报告它们监视的本地状况。 [运行状况存储](service-fabric-health-introduction.md#health-store)聚合所有运行状况数据以确定实体是否正常运行。
@@ -1053,7 +1053,7 @@ ApplicationHealthStateChunks :
   * PowerShell：Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
-> 有些查询会返回已分页的结果。 这些查询的返回结果是派生自 [PagedList<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1) 的列表。 如果一条消息无法容纳这些结果，则仅返回一页，以及一个用于跟踪枚举停止位置的 ContinuationToken。 继续调用相同的查询，并从先前的查询传入继续标记以获取后续结果。
+> 有些查询会返回已分页的结果。 这些查询的返回是派生自[\<PagedList T >](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1)的列表。 如果一条消息无法容纳这些结果，则仅返回一页，以及一个用于跟踪枚举停止位置的 ContinuationToken。 继续调用相同的查询，并从先前的查询传入继续标记以获取后续结果。
 
 ### <a name="examples"></a>示例
 以下代码获取群集中不正常的应用程序：

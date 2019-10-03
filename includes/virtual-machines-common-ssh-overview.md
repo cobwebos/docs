@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 12/21/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: bca78e2963f19b60071b1b27c8dc65c76818e10e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 3f9b86dd3716a25ab95265cf46b616144f57163b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54029277"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168637"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>SSH 和密钥概述
 

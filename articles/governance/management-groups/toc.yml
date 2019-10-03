@@ -1,0 +1,16 @@
+- name: Azure 管理组文档
+  href: ./index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: Azure 管理
+      href: ../azure-management.md
+    - name: 管理组
+      href: ./overview.md
+- name: 操作指南
+  expanded: true
+  items:
+    - name: 创建管理组
+      href: ./create.md
+    - name: 管理资源
+      href: ./manage.md

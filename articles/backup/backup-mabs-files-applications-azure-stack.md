@@ -1,21 +1,22 @@
 ---
-title: 备份 Azure Stack VM 中的文件
+title: 备份 Azure Stack Vm 中的文件
 description: 使用 Azure 备份将 Azure Stack 文件与应用程序备份和恢复到 Azure Stack 环境。
-services: backup
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/5/2018
-ms.author: adigan
-ms.openlocfilehash: 67d79f2aa41bab8a14d693098538d22ffeb05a4e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.date: 06/05/2018
+ms.author: dacurwin
+ms.openlocfilehash: d9e7aaca99e551e17e8b4be5ef6146a19e44355f
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301469"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210209"
 ---
-# <a name="back-up-files-on-azure-stack"></a>备份 Azure Stack 中的文件
+# <a name="back-up-files-and-applications-on-azure-stack"></a>在 Azure Stack 上备份文件和应用程序
+
 可以使用 Azure 备份保护（或备份）Azure Stack 上的文件和应用程序。 若要备份文件和应用程序，请将 Microsoft Azure 备份服务器安装为 Azure Stack 上运行的虚拟机。 可以保护相同虚拟网络中任何 Azure Stack 服务器上的文件。 安装 Azure 备份服务器后，可添加 Azure 磁盘以增加可用于短期备份数据的本地存储。 Azure 备份服务器将 Azure 存储用于长期保留。
 
 > [!NOTE]
@@ -23,7 +24,6 @@ ms.locfileid: "55301469"
 >
 
 本文不介绍如何在 Azure Stack 环境中安装 Azure 备份服务器。 若要在 Azure Stack 中安装 Azure 备份服务器，请参阅[安装 Azure 备份服务器](backup-mabs-install-azure-stack.md)一文。
-
 
 ## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>将 Azure Stack VM 中的文件和文件夹备份到 Azure
 
@@ -41,7 +41,7 @@ ms.locfileid: "55301469"
 
     ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
-    此时会打开“选择组成员”屏幕。 
+    此时会打开“选择组成员”屏幕。
 
     ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "55301469"
     > **不**应在 Azure 备份服务器附加的磁盘上保留操作恢复（备份）数据超过 5 天。
     >
 
-    ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png) 
+    ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
     无需选择增量备份的间隔，只需单击“直接在恢复点之前”，即可在每个计划的恢复点之前运行快速完整备份。 如果保护的是应用程序工作负荷，Azure 备份服务器会根据同步频率计划创建恢复点（前提是应用程序支持增量备份）。 如果应用程序不支持增量备份，Azure 备份服务器会运行快速完整备份。
 
@@ -80,13 +80,13 @@ ms.locfileid: "55301469"
 
 9. 如果选择备份到 Azure，请在“指定在线保护数据”页上，确保选择要备份到 Azure 的工作负荷。
 
-10. 在“指定在线备份计划”中，指定何时增量备份到 Azure。 
+10. 在“指定在线备份计划”中，指定何时增量备份到 Azure。
 
     可将备份计划为每日/每周/每月/每年运行，并指定运行备份的时间/日期。 备份一天最多可以进行两次。 每次备份作业运行时，会通过 Azure 备份服务器磁盘上存储的备份数据的副本在 Azure 中创建数据恢复点。
 
 11. 在“指定在线保留策略”中，指定如何在 Azure 中保留通过每日/每周/每月/每年备份创建的恢复点。
 
-12. 在“选择在线复制”中，指定如何进行数据的初始完整复制。 
+12. 在“选择在线复制”中，指定如何进行数据的初始完整复制。
 
 13. 在“摘要”中检查设置。 单击“创建组”时，会进行初始数据复制。 数据复制完成后，在“状态”页上，保护组状态显示为“正常”。 初始备份作业根据保护组设置运行。
 
@@ -115,11 +115,10 @@ ms.locfileid: "55301469"
     * **通知**单击“恢复完成时发送电子邮件”，并指定通知的收件人。 使用逗号分隔电子邮件地址。
     * 完成选择后，单击“下一步”
 
-7. 检查恢复设置，单击“恢复”。 
+7. 检查恢复设置，单击“恢复”。
 
-    > [!Note] 
-    > 恢复作业正在进行时，会取消针对选定恢复项运行的所有同步作业。
-    >
+    >[!Note]
+    >恢复作业正在进行时，会取消针对选定恢复项运行的所有同步作业。
 
 如果使用新式备份存储 (MBS)，则不支持文件服务器最终用户恢复 (EUR)。 文件服务器 EUR 依赖于卷影复制服务 (VSS)，而新式备份存储并不使用该服务。 如果启用了 EUR，请使用以下步骤恢复数据：
 
@@ -128,12 +127,16 @@ ms.locfileid: "55301469"
 2. 在“属性”菜单中单击“旧版”，然后选择要恢复的版本。
 
 ## <a name="view-azure-backup-server-with-a-vault"></a>使用保管库查看 Azure 备份服务器
-若要在 Azure 门户中查看 Azure 备份服务器实体，可以按照下列步骤操作：
+
+若要查看 Azure 门户中 Azure 备份服务器实体, 你可以执行以下步骤:
+
 1. 打开恢复服务保管库。
 2. 单击“备份基础结构”。
 3. 查看备份管理服务器。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
+
 有关使用 Azure 备份服务器保护其他工作负荷的信息，请参阅以下文章之一：
-- [备份 SharePoint 场](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
-- [备份 SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+
+* [备份 SharePoint 场](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+* [备份 SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)

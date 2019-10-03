@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 99db4a85-4f5f-431f-ac3a-69e05518c997
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
-ms.openlocfilehash: 2f0a361d53489e22ccc8e41406e5b86b423ea2f6
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 2bea8aa06daef5d119b4cbfc4853a2d6ab07ddb7
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091396"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593519"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>使用查询字符串控制 Azure CDN 缓存行为 - 高级层
 > [!div class="op_single_selector"]
@@ -37,30 +37,30 @@ ms.locfileid: "49091396"
 
 可用的三种查询字符串模式如下：
 
-- **标准缓存**：默认模式。 在此模式下，CDN 接入点 (POP) 节点将来自请求者的查询字符串传递到第一个请求上的源服务器并缓存该资产。 所有由 POP 服务器处理的该资产的后续请求将忽略查询字符串，直至缓存的资产到期。
+- **标准缓存**:默认模式。 在此模式下，CDN 接入点 (POP) 节点将来自请求者的查询字符串传递到第一个请求上的源服务器并缓存该资产。 所有由 POP 服务器处理的该资产的后续请求将忽略查询字符串，直至缓存的资产到期。
 
     >[!IMPORTANT] 
     > 如果对此帐户中的任何路径启用了令牌授权，则标准缓存模式是可用的唯一模式。 
 
-- **无缓存**：在此模式下，包含查询字符串的请求不会被缓存在 CDN POP 节点。 POP 节点直接从源服务器检索资产，并将其传递给每个请求的请求者。
+- **无缓存**:在此模式下，包含查询字符串的请求不会被缓存在 CDN POP 节点。 POP 节点直接从源服务器检索资产，并将其传递给每个请求的请求者。
 
-- **唯一缓存**：在此模式下，包含唯一 URL 的每个请求（包括查询字符串）将视为具有其自己的缓存的唯一资产。 例如，源服务器对 .ashx?q=test1 的请求做出的响应将缓存在 POP 节点，并为具有同一查询字符串的后续缓存返回该响应。 例如，.ashx?q=test2 的请求将作为具有其自己的生存时间设置的单独资产来缓存。
+- **唯一缓存**:在此模式下，包含唯一 URL 的每个请求（包括查询字符串）将视为具有其自己的缓存的唯一资产。 例如，源服务器对 .ashx?q=test1 的请求做出的响应将缓存在 POP 节点，并为具有同一查询字符串的后续缓存返回该响应。 例如，.ashx?q=test2 的请求将作为具有其自己的生存时间设置的单独资产来缓存。
    
     >[!IMPORTANT] 
     > 如果查询字符串包含随每个请求更改的参数（例如会话 ID 或用户名），请不要使用此模式，因为这会导致缓存命中率降低。
 
 ## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>为高级 CDN 配置文件更改查询字符串缓存设置
-1. 打开 CDN 配置文件，单击“管理”。
+1. 打开 CDN 配置文件，单击“管理”  。
    
     ![CDN 配置文件管理按钮](./media/cdn-query-string-premium/cdn-manage-btn.png)
    
     CDN 管理门户打开。
-2. 将鼠标悬停在“HTTP 大”选项卡上，然后悬停在“缓存设置”浮出菜单上。 单击“查询字符串缓存”。
+2. 将鼠标悬停在“HTTP 大”选项卡上，然后悬停在“缓存设置”浮出菜单上   。 单击“查询字符串缓存”  。
    
     将显示查询字符串缓存选项。
    
     ![CDN 查询字符串缓存选项](./media/cdn-query-string-premium/cdn-query-string.png)
-3. 选择查询字符串模式，单击“更新”。
+3. 选择查询字符串模式，单击“更新”  。
 
 > [!IMPORTANT]
 > 由于注册通过 CDN 传播需要时间，缓存字符串设置更改不会立即显示。 传播通常在 10 分钟内完成。

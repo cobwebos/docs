@@ -6,16 +6,16 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/03/2017
+ms.date: 05/11/2019
 ms.author: robinsh
-ms.openlocfilehash: 274b77644326cbf73696aae77b48afcbc63aa4c2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5dd93af7deec2b0c8c90f6a8586de905207ad0a6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049966"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65796360"
 ---
-# <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>导入和导出大容量的 IoT 中心设备标识
+# <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>批量导入和导出 IoT 中心设备标识
 
 每个 IoT 中心都有一个标识注册表，可以使用该注册表在服务中创建每设备资源。 设备标识注册表还可控制对面向设备的终结点的访问。 本文介绍如何在标识注册表中批量导入和导出设备标识。
 
@@ -30,7 +30,7 @@ ms.locfileid: "59049966"
 
 ## <a name="what-are-jobs"></a>什么是作业？
 
-当操作出现以下情况时，标识注册表操作使用“作业”系统：
+当操作出现以下情况时，标识注册表操作使用“作业”  系统：
 
 * 相较标准运行时操作，其执行时间可能很长。
 
@@ -49,7 +49,7 @@ JobProperties exportJob = await
 > [!NOTE]
 > 若要在 C# 代码中使用 **RegistryManager** 类，请将 **Microsoft.Azure.Devices** NuGet 包添加到项目。 **RegistryManager** 类位于 **Microsoft.Azure.Devices** 命名空间。
 
-可使用 **RegistryManager** 类，查询使用返回的 **JobProperties** 元数据的**作业**的状态。 若要创建 RegistryManager 类的实例，请使用 CreateFromConnectionString 方法。
+可使用 **RegistryManager** 类，查询使用返回的 **JobProperties** 元数据的**作业**的状态。 若要创建 RegistryManager 类的实例，请使用 CreateFromConnectionString 方法   。
 
 ```csharp
 RegistryManager registryManager =
@@ -60,7 +60,7 @@ RegistryManager registryManager =
 
 - 导航到 IoT 中心。
 
-- 选择“共享访问策略”。
+- 选择“共享访问策略”  。
 
 - 选择一个策略（考虑到所需的权限）。
 
@@ -84,6 +84,10 @@ while(true)
   await Task.Delay(TimeSpan.FromSeconds(5));
 }
 ```
+
+## <a name="device-importexport-job-limits"></a>设备导入/导出作业限制
+
+所有 IoT 中心层级一次只允许 1 个活动的设备导入或导出作业。 IoT 中心也限制作业操作的速率。 若要了解详细信息，请参阅[参考 - IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
 
 ## <a name="export-devices"></a>导出设备
 
@@ -211,13 +215,13 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 
 **ImportDevicesAsync** 方法采用两个参数：
 
-* 一个字符串，其中包含作为作业的输入使用的 [Azure 存储](../storage/index.yml) Blob 容器的 URI。 此 URI 必须包含可授予容器读取权限的 SAS 令牌。 此容器必须包含名为 **devices.txt** 的 Blob，其中包含要导入标识注册表的序列化设备数据。 导入数据包含的设备信息必须采用 **ExportImportDevice** 作业在创建 **devices.txt** Blob 时使用的同一种 JSON 格式。 SAS 令牌必须包含这些权限：
+* 一个字符串  ，其中包含作为作业的输入  使用的 [Azure 存储](../storage/index.yml) Blob 容器的 URI。 此 URI 必须包含可授予容器读取权限的 SAS 令牌。 此容器必须包含名为 **devices.txt** 的 Blob，其中包含要导入标识注册表的序列化设备数据。 导入数据包含的设备信息必须采用 **ExportImportDevice** 作业在创建 **devices.txt** Blob 时使用的同一种 JSON 格式。 SAS 令牌必须包含这些权限：
 
    ```csharp
    SharedAccessBlobPermissions.Read
    ```
 
-* 一个字符串，其中包含作为作业中的输出使用的 [Azure 存储](https://azure.microsoft.com/documentation/services/storage/) Blob 容器的 URI。 该作业在此容器中创建块 Blob，以存储来自已完成的导入**作业**的任何错误信息。 SAS 令牌必须包含这些权限：
+* 一个字符串  ，其中包含作为作业中的输出  使用的 [Azure 存储](https://azure.microsoft.com/documentation/services/storage/) Blob 容器的 URI。 该作业在此容器中创建块 Blob，以存储来自已完成的导入**作业**的任何错误信息。 SAS 令牌必须包含这些权限：
 
    ```csharp
    SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
@@ -390,7 +394,7 @@ while(true)
 
 ## <a name="get-the-container-sas-uri"></a>获取容器 SAS URI
 
-下面的代码示例演示如何使用 Blob 容器的读取、写入和删除权限生成 [SAS URI](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)：
+下面的代码示例演示如何使用 Blob 容器的读取、写入和删除权限生成 [SAS URI](../storage/common/storage-dotnet-shared-access-signature-part-1.md)：
 
 ```csharp
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -420,7 +424,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 在本文中，已学习如何对 IoT 中心内的标识注册表执行批量操作。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
 * [IoT 中心指标](iot-hub-metrics.md)
-* [操作监视](iot-hub-operations-monitoring.md)
+* [IoT 中心日志](iot-hub-monitor-resource-health.md)
 
 若要进一步探索 IoT 中心的功能，请参阅：
 

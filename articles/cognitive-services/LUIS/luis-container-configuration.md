@@ -1,22 +1,22 @@
 ---
-title: Docker 容器设置
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Docker 容器设置-LUIS
+titleSuffix: Azure Cognitive Services
 description: 使用 `docker run` 命令参数配置 LUIS 容器运行时环境。 LUIS 有几个必需的设置以及一些可选设置。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
-ms.openlocfilehash: e05998f74223ead6bb4e94b86469e51791e0263f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 09/18/2019
+ms.author: dapine
+ms.openlocfilehash: 9760475886ecb0f20d9f0f3981eab8246643da21
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678558"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101982"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>配置语言理解 Docker 容器 
 
@@ -26,15 +26,15 @@ ms.locfileid: "59678558"
 
 此容器具有以下配置设置：
 
-|需要|设置|目的|
+|必填|设置|用途|
 |--|--|--|
 |是|[ApiKey](#apikey-setting)|用于跟踪账单信息。|
 |否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
-|是|[计费](#billing-setting)|指定 Azure 上服务资源的终结点 URI。|
+|是|[Billing](#billing-setting)|指定 Azure 上服务资源的终结点 URI。|
 |是|[Eula](#eula-setting)| 表示已接受容器的许可条款。|
 |否|[Fluentd](#fluentd-settings)|将日志和（可选）指标数据写入 Fluentd 服务器。|
 |否|[Http 代理](#http-proxy-credentials-settings)|配置 HTTP 代理以发出出站请求。|
-|否|[日志记录](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
+|否|[Logging](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
 |是|[Mounts](#mount-settings)|从主计算机读取数据并将其写入到容器，以及从容器读回数据并将其写回到主计算机。|
 
 > [!IMPORTANT]
@@ -42,11 +42,11 @@ ms.locfileid: "59678558"
 
 ## <a name="apikey-setting"></a>ApiKey 设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值，该值必须为有效的密钥_认知服务_为指定的资源[ `Billing` ](#billing-setting)配置设置。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-setting) 配置设置指定的“认知服务”资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**资源管理下**密钥**
+* Azure 门户：**认知服务**“资源管理”部分的“密钥”下
 * LUIS 门户：“密钥和终结点”设置页。 
 
 请勿使用初学者密钥或创作密钥。 
@@ -57,26 +57,25 @@ ms.locfileid: "59678558"
 
 ## <a name="billing-setting"></a>账单设置
 
-`Billing`设置指定的终结点 URI 的_认知服务_使用在 Azure 上的资源要计数的容器的计费信息。 必须指定此配置设置，一个值，该值必须是有效的终结点 URI 对于_认知服务_在 Azure 上的资源。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“认知服务”资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
 * Azure 门户：**认知服务**概述，标记为 `Endpoint`
 * LUIS 门户：“密钥和终结点设置”页面，作为终结点 URI 的一部分。
 
-请记住包括`luis/v2.0`路由在 URL 中下, 表中所示：
+请记住在 URL 中包括 `luis/v2.0` 路由，如下表所示：
 
 
-|需要| 名称 | 数据类型 | 描述 |
+|必填| 姓名 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
+|是| `Billing` | String | 账单终结点 URI<br><br>例如：<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
 ## <a name="eula-setting"></a>Eula 设置
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
 ## <a name="fluentd-settings"></a>Fluentd 设置
-
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -88,7 +87,6 @@ ms.locfileid: "59678558"
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-
 ## <a name="mount-settings"></a>装载设置
 
 使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令中指定 `--mount` 选项来指定输入装载或输出装载。 
@@ -99,62 +97,60 @@ LUIS 容器不使用输入或输出装载来存储训练或服务数据。
 
 下表描述了支持的设置。
 
-|需要| 名称 | 数据类型 | 描述 |
+|必填| 姓名 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
-|是| `Input` | String | 输入装入点的目标。 默认值为 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
-|否| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|是| `Input` | String | 输入装入点的目标。 默认值为 `/input`。 这是 LUIS 包文件的位置。 <br><br>例如：<br>`--mount type=bind,src=c:\input,target=/input`|
+|否| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>例如：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 
 以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。  运行后，容器将继续运行，直到[停止](luis-container-howto.md#stop-the-container)它。
 
+* 这些示例使用 `C:` 驱动器外的目录来避免 Windows 上的任何权限冲突。 如果需要使用特定目录作为输入目录，则需要授予 docker 服务权限。 
+* 除非非常熟悉 docker 容器，否则不要更改参数顺序。
+* 如果使用的是不同的操作系统，请使用正确的控制台/终端、用于装载的文件夹语法和系统的行继续符。 这些示例假定 Windows 控制台使用行继续符 `^`。 由于容器是 Linux 操作系统，因此目标装载使用 Linux 样式的文件夹语法。
 
-* **行继续符**：以下各节中的 docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
-* **参数顺序**：除非非常熟悉 docker 容器，否则不要更改参数顺序。
-
-请记住包括`luis/v2.0`路由在 URL 中下, 表中所示。
+请记住在 URL 中包括 `luis/v2.0` 路由，如下表所示。
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | 值 | 格式或示例 |
+| 占位符 | ReplTest1 | 格式或示例 |
 |-------------|-------|---|
-|{ENDPOINT_KEY} | 已训练 LUIS 应用程序的终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT} | 计费的终结点值是可在 Azure 上`Cognitive Services`概述页。 |https://westus.api.cognitive.microsoft.com/luis/v2.0|
+| **{API_KEY}** | `LUIS` Azure`LUIS`密钥页上的资源的终结点键。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Azure `LUIS`“概览”页面上提供了账单终结点值。| 有关显式示例，请参阅[收集所需的参数](luis-container-howto.md#gathering-required-parameters)。 |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](luis-container-howto.md#billing)。
-> ApiKey 当值**键**从密钥和终结点页 LUIS 门户中，也可在 Azure 上`Cognitive Services`资源密钥页。 
+> 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。 有关详细信息，请参阅[计费](luis-container-howto.md#billing)。
+> ApiKey 值是 LUIS 门户中“密钥和终结点”页面中的“密钥”，也可以在 Azure `Cognitive Services`资源密钥页上找到。 
 
 ### <a name="basic-example"></a>基本示例
 
 以下示例具有运行容器的最少参数：
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis:latest \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
-ApiKey={ENDPOINT_KEY}
+```console
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis:latest ^
+Eula=accept ^
+Billing={ENDPOINT_URL} ^
+ApiKey={API_KEY}
 ```
-
-> [!Note] 
-> 上述命令使用 `c:` 驱动器下的目录来避免 Windows 上的任何权限冲突。 如果需要使用特定目录作为输入目录，则需要授予 docker 服务权限。 前面的 docker 命令使用反斜杠 `\` 作为行继续符。 根据[主计算机](luis-container-howto.md#the-host-computer)操作系统的要求替换或删除此字符。 除非非常熟悉 docker 容器，否则不要更改参数顺序。
-
 
 ### <a name="applicationinsights-example"></a>ApplicationInsights 示例
 
 以下示例设置 ApplicationInsights 参数，以便在容器运行时将遥测数据发送到 Application Insights：
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis:latest \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
-ApiKey={ENDPOINT_KEY}
+```console
+docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis:latest ^
+Eula=accept ^
+Billing={ENDPOINT_URL} ^
+ApiKey={API_KEY} ^
 InstrumentationKey={INSTRUMENTATION_KEY}
 ```
 
@@ -162,14 +158,14 @@ InstrumentationKey={INSTRUMENTATION_KEY}
 
 以下命令设置日志记录级别 `Logging:Console:LogLevel`，将日志记录级别配置为 [`Information`](https://msdn.microsoft.com)。 
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis:latest \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
-ApiKey={ENDPOINT_KEY} \
+```console
+docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis:latest ^
+Eula=accept ^
+Billing={ENDPOINT_URL} ^
+ApiKey={API_KEY} ^
 Logging:Console:LogLevel:Default=Information
 ```
 

@@ -5,15 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 10/17/2018
+ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: bf7d80bbbe63204cda47719a7d7c019013ad800b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 722907328fe17c4116f4f8d948e081f9582ca712
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099165"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266565"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
 
@@ -76,10 +75,10 @@ SKU = VpnGw1 <br>
 
 下表显示了有关如何定义示例 VNet 和本地站点的示例：
 
-| 虚拟网络 | 地址空间 | 区域 | 连接到本地网络站点 |
+| 虚拟网络 | 地址空间 | 地区 | 连接到本地网络站点 |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |美国西部 | RMVNetLocal (192.168.0.0/16) |
-| RMVNet | (192.168.0.0/16) |美国东部 |ClassicVNetLocal (10.0.0.0/24) |
+| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |
 
 ## <a name="classicvnet"></a>第 1 节 - 配置经典 VNet 设置
 
@@ -144,20 +143,13 @@ SKU = VpnGw1 <br>
 * 子网名称 = Subnet-1 <br>
 * 地址范围 = 192.168.1.0/24 <br>
 
-
 如果还没有资源管理器 VNet 并且运行这些步骤进行练习，则可以使用[创建虚拟网络](../virtual-network/quick-create-portal.md)中的步骤以及示例设置值创建虚拟网络。
 
-### <a name="2-create-a-gateway-subnet"></a>2.创建网关子网
+### <a name="creategw"></a>2.创建虚拟网络网关
 
-**示例值：** 网关子网 = 192.168.0.0/26
+在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
-创建虚拟网络网关前，先要创建网关子网。 创建 CIDR 计数为 /28 或更大（/27、/26 等）的网关子网。 如果正在练习创建此配置，可以使用示例值。
-
-[!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
-
-[!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
-
-### <a name="creategw"></a>3.创建虚拟网络网关
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
 **示例值：**
 
@@ -167,18 +159,21 @@ SKU = VpnGw1 <br>
 * SKU = VpnGw1 <br>
 * 位置 = 美国东部 <br>
 * 虚拟网络 = RMVNet <br>
+* 网关子网 = 192.168.0.0/26 <br>
 * 第一个 IP 配置 = rmgwpip <br>
 
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
-### <a name="createlng"></a>4.创建本地网络网关
+[!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
+
+### <a name="createlng"></a>3.创建本地网络网关
 
 **示例值：** 本地网络网关 = ClassicVNetLocal
 
-| 虚拟网络 | 地址空间 | 区域 | 连接到本地网络站点 |网关公共 IP 地址|
+| 虚拟网络 | 地址空间 | 地区 | 连接到本地网络站点 |网关公共 IP 地址|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |美国西部 | RMVNetLocal (192.168.0.0/16) |分配给 ClassicVNet 网关的公共 IP 地址|
-| RMVNet | (192.168.0.0/16) |美国东部 |ClassicVNetLocal (10.0.0.0/24) |分配给 RMVNet 网关的公共 IP 地址。|
+| RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |分配给 RMVNet 网关的公共 IP 地址。|
 
 本地网络网关指定与经典 VNet 和其虚拟网络网关关联的地址范围和公共 IP 地址。 如果执行这些步骤进行练习，可以参考示例值。
 
@@ -280,7 +275,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 
 设置共享密钥并创建从经典 VNet 到 Resource Manager VNet 的连接。 无法使用门户设置共享密钥。 使用经典版本的 PowerShell cmdlet 登录时，请确保运行这些步骤。 为此，请使用 Add-AzureAccount。 否则无法设置“-AzureVNetGatewayKey”。
 
-- 在此示例中，**-VNetName** 是在网络配置文件中找到的经典 VNet 的名称。 
+- 在此示例中， **-VNetName** 是在网络配置文件中找到的经典 VNet 的名称。 
 - **-LocalNetworkSiteName** 是为本地站点指定的名称，与在网络配置文件中找到的一样。
 - **-SharedKey** 是生成并指定的值。 在此示例中，我们使用的是 *abc123*，但可以生成更复杂的内容。 重要的是，在此处指定的值必须与创建从 Resource Manager 虚拟网络到经典虚拟网络的连接时指定的值相同。
 

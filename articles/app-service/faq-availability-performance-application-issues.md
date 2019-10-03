@@ -4,30 +4,29 @@ description: 获取有关 Azure 应用服务的 Web 应用功能中的可用性�
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: ae59f54de9c02bfc4e538dd10c809ba398d599ee
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565949"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122070"
 ---
-> [!NOTE]
-> 一些的以下准则可能仅适用于 Windows 或 Linux 应用服务。 例如，Linux 应用服务默认情况下在 64 位模式下运行。
->
-
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
+
+> [!NOTE]
+> 下面的某些准则可能仅适用于 Windows 或 Linux 应用服务。 例如，默认情况下，Linux 应用服务在64位模式下运行。
+>
 
 本文包含有关针对 [Azure 应用服务的 Web 应用功能](https://azure.microsoft.com/services/app-service/web/)的应用程序性能问题的常见问题 (FAQ) 解答。
 
@@ -39,11 +38,11 @@ ms.locfileid: "59565949"
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>如何对高 CPU 使用率情况进行故障排除？
 
-在某些高 CPU 使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层，以便应用程序可获取所需的所有资源。 在其他时候，错误循环或编码做法可能会导致高 CPU 使用率。 深入了解触发 CPU 使用率提高的因素是包含两个部分的过程。 首先，创建一个进程转储，然后分析该进程转储。 有关详细信息，请参阅[针对 Web 应用的高 CPU 使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)。
+在某些高 CPU 使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 在其他时候，错误循环或编码做法可能会导致高 CPU 使用率。 深入了解触发 CPU 使用率提高的因素是包含两个部分的过程。 首先，创建一个进程转储，然后分析该进程转储。 有关详细信息，请参阅[针对 Web 应用的高 CPU 使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)。
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>如何对高内存使用率情况进行故障排除？
 
-在某些高内存使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层，以便应用程序可获取所需的所有资源。 在其他时候，代码中的 bug 可能会导致内存泄漏。 编码做法也可能会提高内存使用率。 深入了解触发高内存使用率的因素是包含两个部分的过程。 首先，创建进程转储，然后分析此进程转储。 Azure 站点扩展库中的故障诊断程序可以高效地执行这两个步骤。 有关详细信息，请参阅[针对 Web 应用的间歇性高内存使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)。
+在某些高内存使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 在其他时候，代码中的 bug 可能会导致内存泄漏。 编码做法也可能会提高内存使用率。 深入了解触发高内存使用率的因素是包含两个部分的过程。 首先，创建进程转储，然后分析此进程转储。 Azure 站点扩展库中的故障诊断程序可以高效地执行这两个步骤。 有关详细信息，请参阅[针对 Web 应用的间歇性高内存使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)。
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>如何使用 PowerShell 自动执行应用服务 Web 应用？
 
@@ -161,7 +160,7 @@ ms.locfileid: "59565949"
 
 另请注意，64 位环境需要基本或标准服务计划。 免费和共享计划始终在 32 位环境中运行。
 
-有关详细信息，请参阅[在应用服务中配置 Web 应用](web-sites-configure.md)。
+有关详细信息，请参阅[在应用服务中配置 Web 应用](configure-common.md)。
 
 ## <a name="why-does-my-request-time-out-after-230-seconds"></a>为何我的请求在 230 秒后超时？
 

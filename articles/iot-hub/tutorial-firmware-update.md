@@ -10,20 +10,20 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2019
+ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c576020118778e34b80187ec056fca22a4d9c5b1
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59008896"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485828"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教程：实现设备固件更新过程
 
 可能需要更新连接到 IoT 中心的设备上的固件。 例如，可能需要向固件添加新功能，或者需要应用安全修补程序。 在许多 IoT 方案中，以物理方式访问设备并以手动方式对设备应用固件更新是不现实的。 本教程介绍如何通过连接到中心的后端应用程序以远程方式启动并监视固件更新过程。
 
-为了创建并监视固件更新过程，本教程中的后端应用程序在 IoT 中心创建了一个配置。 IoT 中心[自动设备管理](iot-hub-auto-device-config.md)使用此配置在所有冷却器设备上更新一组设备孪生所需属性。 所需属性指定所需固件更新的详细信息。 冷却器设备在运行固件更新过程时，会使用设备孪生报告属性将其状态报告给后端应用程序。 后端应用程序可以使用此配置监视从设备发送的报告属性，并跟踪固件更新过程至完成：
+为了创建并监视固件更新过程，本教程中的后端应用程序在  IoT 中心创建了一个配置。 IoT 中心[自动设备管理](iot-hub-auto-device-config.md)使用此配置在所有冷却器设备上更新一组设备孪生所需属性。  所需属性指定所需固件更新的详细信息。 冷却器设备在运行固件更新过程时，会使用设备孪生报告属性将其状态报告给后端应用程序。  后端应用程序可以使用此配置监视从设备发送的报告属性，并跟踪固件更新过程至完成：
 
 ![固件更新过程](media/tutorial-firmware-update/Process.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "59008896"
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v4.x.x 或更高版本。
+本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
 可从 [nodejs.org](https://nodejs.org) 为下载适用于多个平台的 Node.js。
 
@@ -57,7 +57,7 @@ node --version
 
 若要完成本教程，你的 Azure 订阅必须有一个 IoT 中心，其中的某个设备已添加到设备标识注册表。 在本教程中运行的模拟设备可以通过设备标识注册表中的条目连接到中心。
 
-如果尚未在订阅中设置 IoT 中心，可使用以下 CLI 脚本设置一个。 此脚本使用 **tutorial-iot-hub** 作为 IoT 中心的名称。运行此脚本时，应将此名称替换为自己的唯一名称。 此脚本在“美国中部”区域创建资源组和中心。可以更改为更靠近自己的区域。 此脚本将检索 IoT 中心服务连接字符串。在后端示例应用程序中，请使用该连接字符串连接到 IoT 中心：
+如果尚未在订阅中设置 IoT 中心，可使用以下 CLI 脚本设置一个。 此脚本使用 **tutorial-iot-hub** 作为 IoT 中心的名称。运行此脚本时，应将此名称替换为自己的唯一名称。 此脚本在“美国中部”区域创建资源组和中心。可以更改为更靠近自己的区域。  此脚本将检索 IoT 中心服务连接字符串。在后端示例应用程序中，请使用该连接字符串连接到 IoT 中心：
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -73,7 +73,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --name $hubname -o table
+az iot hub show-connection-string --name $hubname -policy-name service -o table
 
 ```
 
@@ -95,8 +95,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 ```
 
 > [!TIP]
-> 如果在 Windows 命令提示符或 Powershell 提示符处运行这些命令，请查看 [azure-iot-cli-extension 提示](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
-)页，了解如何引用 JSON 字符串。
+> 如果在 Windows 命令提示符或 Powershell 提示符处运行这些命令，请查看 [azure-iot-cli-extension 提示](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips)页，了解如何引用 JSON 字符串。
 
 ## <a name="start-the-firmware-update"></a>启动固件更新
 
@@ -187,7 +186,7 @@ node ServiceClient.js "{your service connection string}"
 
 ![后端应用程序](./media/tutorial-firmware-update/BackEnd2.png)
 
-由于 IoT 中心设备标识注册表中存在延迟，可能看不到发送到后端应用程序的每个状态更新。 也可在门户中查看这些指标，具体说来就是在 IoT 中心的“自动设备管理 -> IoT 设备配置”部分：
+由于自动设备配置在创建时运行，然后每五分钟运行一次，因此你可能看不到发送到后端应用程序的每个状态更新。 也可在门户中查看这些指标，具体说来就是在 IoT 中心的“自动设备管理 -> IoT 设备配置”部分： 
 
 ![在门户中查看配置](./media/tutorial-firmware-update/portalview.png)
 
@@ -195,7 +194,7 @@ node ServiceClient.js "{your service connection string}"
 
 如果你打算完成下一篇教程，请保留资源组和 IoT 中心，以便到时重复使用。
 
-如果不再需要 IoT 中心，请在门户中删除该中心与资源组。 为此，请选择包含 IoT 中心的 **tutorial-iot-hub-rg** 资源组，然后单击“删除”。
+如果不再需要 IoT 中心，请在门户中删除该中心与资源组。 为此，请选择包含 IoT 中心的 **tutorial-iot-hub-rg** 资源组，然后单击“删除”  。
 
 或者使用 CLI：
 

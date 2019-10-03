@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: c07a9d92cac13d6325e66f44426f1a64e8ac53cb
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.openlocfilehash: fbbc8a4f636a95d18baa0dc5de541279ce36789b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096194"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60551897"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>通过使用基于角色的访问控制来共享 Azure 仪表板
 配置仪表板后，可将其发布，并与组织中的其他用户共享。 通过使用 Azure [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)，允许他人查看仪表板。 将一个用户或一组用户分配到某角色，该角色定义这些用户是否可以查看或修改已发布的仪表板。 
@@ -47,34 +47,34 @@ ms.locfileid: "47096194"
 ## <a name="publish-dashboard"></a>发布仪表板
 假设已配置完成要与订阅中的一组用户共享的仪表板。 下面的步骤描述了一个称为存储管理器的自定义组，但也可以将组命名为任何想要的名称。 有关创建 Active Directory 组并将用户添加到该组的详细信息，请参阅[在 Azure Active Directory 中管理组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-1. 在仪表板中，选择“共享”。
+1. 在仪表板中，选择“共享”  。
    
      ![选择共享](./media/azure-portal-dashboard-share-access/select-share.png)
-2. 在分配访问权限之前，必须先发布仪表板。 默认情况下，仪表板将发布到名为“仪表板”的资源组。 选择“发布”。
+2. 在分配访问权限之前，必须先发布仪表板。 默认情况下，仪表板将发布到名为“仪表板”  的资源组。 选择“发布”  。
    
      ![发布](./media/azure-portal-dashboard-share-access/publish.png)
 
 仪表板现已发布。 如果从订阅继承的权限合适，则不需要再执行任何操作。 组织中的其他用户能够根据其订阅级别角色访问和修改仪表板。 但是，在本教程中，我们将一组用户分配给该仪表板的角色。
 
 ## <a name="assign-access-to-a-dashboard"></a>向仪表板分配访问权限
-1. 发布仪表板后，选择“管理用户”。
+1. 发布仪表板后，选择“管理用户”  。
    
      ![管理用户](./media/azure-portal-dashboard-share-access/manage-users.png)
-2. 会看到已为其分配了此仪表板角色的现有用户列表。 现有用户列表可能与下方图片有所不同。 分配很可能继承自订阅。 若要添加新用户或组，请选择“添加”。
+2. 会看到已为其分配了此仪表板角色的现有用户列表。 现有用户列表可能与下方图片有所不同。 分配很可能继承自订阅。 若要添加新用户或组，请选择“添加”  。
    
      ![添加用户](./media/azure-portal-dashboard-share-access/existing-users.png)
-3. 选择表示要授予的权限的角色。 对于此示例，请选择“参与者”。
+3. 选择表示要授予的权限的角色。 对于此示例，请选择“参与者”  。
    
      ![选择角色](./media/azure-portal-dashboard-share-access/select-role.png)
 4. 选择要分配给角色的用户或组。 如果在列表中没有看到要查找的用户或组，请使用搜索框。 可用组列表取决于已在 Active Directory 中创建的组。
    
      ![选择用户](./media/azure-portal-dashboard-share-access/select-user.png) 
-5. 完成添加用户或组后，请选择“确定”。 
-6. 会将新分配添加到用户列表。 请注意，其“访问权限”将被列为“已分配”，而非“已继承”。
+5. 完成添加用户或组后，请选择“确定”  。 
+6. 会将新分配添加到用户列表。 请注意，其“访问权限”  将被列为“已分配”  ，而非“已继承”  。
    
      ![已分配的角色](./media/azure-portal-dashboard-share-access/assigned-roles.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 有关角色列表，请参阅 [RBAC：内置角色](../role-based-access-control/built-in-roles.md)。
+* 有关角色的列表，请参阅[RBAC:内置角色](../role-based-access-control/built-in-roles.md)。
 * 若要了解有关管理资源的信息，请参阅[通过门户管理 Azure 资源](resource-group-portal.md)。
 

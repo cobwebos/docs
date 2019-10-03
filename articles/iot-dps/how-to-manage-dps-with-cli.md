@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: cfbebf8570ee044698b0f4e0abdd58370b04f759
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 59d2277bd99fac1e8357c1b0d7336ca7451bf8dc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992858"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62122857"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务
 
@@ -94,7 +94,7 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 
 
 ## <a name="next-steps"></a>后续步骤
-本教程介绍了如何：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 注册设备

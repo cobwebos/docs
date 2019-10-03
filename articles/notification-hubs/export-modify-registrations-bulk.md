@@ -1,23 +1,25 @@
 ---
-title: 导出和导入大容量中的 Azure 通知中心注册 |Microsoft Docs
+title: 批量导出和导入 Azure 通知中心注册 |Microsoft Docs
 description: 了解如何使用通知中心批量操作支持针对通知中心执行大量操作或导出所有注册。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: jowargo
-ms.openlocfilehash: c24fcd5f007b641bb594bb07348491f70c03ea41
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490837"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212395"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>批量导出和导入 Azure 通知中心注册
 在某些情况下，我们需要在通知中心创建或修改大量的注册。 其中的某些情况是先进行标记更新，再进行批量计算，或者迁移现有的推送实施方案以使用通知中心。
@@ -34,7 +36,7 @@ ms.locfileid: "59490837"
 
 - 一个预配的通知中心。
 - 一个 Azure 存储 Blob 容器。
-- 对引用[Azure 存储 NuGet 包](https://www.nuget.org/packages/windowsazure.storage/)并[通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.9)。
+- 对 [Azure 存储 NuGet 包](https://www.nuget.org/packages/windowsazure.storage/)和[通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)的引用。
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>创建输入文件并将其存储在 Blob 中
 输入文件包含以 XML 格式序列化的注册列表，每行包含一个注册。 以下代码示例演示如何使用 Azure SDK 序列化注册并将其上传到 Blob 容器。

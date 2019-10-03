@@ -11,32 +11,31 @@ ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/11/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 29126171a2d808153c7578d911e0725641ec39ff
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: cfcea4c4450ea806b36d1d46c17c6676f7d92893
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545139"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071066"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 Ruby on Rails 应用
 
-[Linux 上的 Azure 应用服务](app-service-linux-intro.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门介绍如何创建一个基本的 [Ruby on Rails](https://rubyonrails.org/) 应用程序并将其部署到 Azure 上，以作为 Linux 上的 Web 应用。
+[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门教程介绍了如何使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 将 Ruby on Rails 应用部署到 Linux 上的 Azure 应用服务。
 
 > [!NOTE]
 > Ruby 开发堆栈目前仅支持 Ruby on Rails。 如果想要使用不同的平台（如 Sinatra），或者想要使用[不受支持的 Ruby 版本](app-service-linux-intro.md)，则需[在自定义容器中运行它](quickstart-docker-go.md)。
 
-![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
+![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">安装 Ruby 2.3 或更高版本</a>
+* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">安装 Ruby 2.6 或更高版本</a>
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 
 ## <a name="download-the-sample"></a>下载示例
@@ -51,7 +50,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 在本地运行应用程序，以便你能了解将它部署到 Azure 时它的外观应该是什么样的。 打开终端窗口，转到 `hello-world` 目录，然后使用 `rails server` 命令启动该服务器。
 
-第一步是安装必需的 gem。 示例中包含 `Gemfile`，因此无需指定要安装的 gem。 为此，我们将使用捆绑程序：
+第一步是安装必需的 gem。 示例中包含了 `Gemfile`，因此只需运行以下命令：
 
 ```bash
 bundle install
@@ -65,7 +64,7 @@ bundle exec rails server
 
 使用 Web 浏览器导航到 `http://localhost:3000` 以在本地测试该应用。
 
-![已配置了 Hello World](./media/quickstart-ruby/hello-world-configured.png)
+![已配置了 Hello World](./media/quickstart-ruby/hello-world-updated.png)
 
 [!INCLUDE [Try Cloud Shell](../../../includes/cloud-shell-try-it.md)]
 
@@ -79,7 +78,7 @@ bundle exec rails server
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-浏览到该站点查看使用内置映像新建的 Web 应用。 将 _&lt;应用名称>_ 替换为 Web 应用名称。
+浏览到该应用，查看使用内置映像新建的 Web 应用。 将 _&lt;应用名称>_ 替换为 Web 应用名称。
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -91,47 +90,42 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="deploy-your-application"></a>部署应用程序
 
-运行以下命令，以将本地应用程序部署到 Azure 网站：
+运行以下命令将本地应用程序部署到 Azure Web 应用：
 
 ```bash
 git remote add azure <Git deployment URL from above>
-git add -A
-git commit -m "Initial deployment commit"
 git push azure master
 ```
 
 确认远程部署操作报告了成功消息。 命令生成的输出类似于以下文本：
 
 ```bash
-remote: Using sass-rails 5.0.6
-remote: Updating files in vendor/cache
-remote: Bundle gems are installed into ./vendor/bundle
-remote: Updating files in vendor/cache
-remote: ~site/repository
+remote: Using turbolinks 5.2.0
+remote: Using uglifier 4.1.20
+remote: Using web-console 3.7.0
+remote: Bundle complete! 18 Gemfile dependencies, 78 gems now installed.
+remote: Bundled gems are installed into `/tmp/bundle`
+remote: Zipping up bundle contents
+remote: .......
+remote: ~/site/repository
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
-  579ccb....2ca5f31  master -> master
-myuser@ubuntu1234:~workspace/<app name>$
+remote: App container will begin restart within 10 seconds.
+To https://<app-name>.scm.azurewebsites.net/<app-name>.git
+   a6e73a2..ae34be9  master -> master
 ```
 
-在部署完成后，通过使用 [`az webapp restart`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-restart) 命令，重新启动 Web 应用以使部署生效，如下所示：
-
-```azurecli-interactive
-az webapp restart --name <app name> --resource-group myResourceGroup
-```
-
-导航到你的站点并验证结果。
+部署完成后，请等待大约 10 秒，然后重启 Web 应用，再导航到 Web 应用并验证结果。
 
 ```bash
-http://<app name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
-![更新的 Web 应用](./media/quickstart-ruby/hello-world-updated.png)
+![更新的 Web 应用](./media/quickstart-ruby/hello-world-configured.png)
 
 > [!NOTE]
-> 当应用正在重新启动时，尝试浏览站点会生成 HTTP 状态代码 `Error 503 Server unavailable`。 可能需要花费几分钟时间才能完全重新启动。
+> 应用重启时，可能会在浏览器中看到 HTTP 状态代码 `Error 503 Server unavailable` 或在默认页面中看到 `Hey, Ruby developers!`。 可能需要花费几分钟时间才能完全重启应用。
 >
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]

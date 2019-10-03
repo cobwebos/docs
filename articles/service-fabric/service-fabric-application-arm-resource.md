@@ -3,7 +3,7 @@ title: 使用 Azure 资源管理器部署和升级应用程序及服务 | Micros
 description: 了解如何使用 Azure 资源管理器模板，将应用程序和服务部署到 Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: dekapur
-ms.openlocfilehash: e2e1b2ae354d26c3d9729e3a3fdf39bee43647ca
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: atsenthi
+ms.openlocfilehash: 0bec430cbb98452f8c852c96053f3f699ce5098e
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663122"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71153585"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>将应用程序和服务作为 Azure 资源管理器资源进行管理
 
@@ -36,25 +36,25 @@ ms.locfileid: "58663122"
 
 ```json
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applicationTypes",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applicationTypes/versions",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'), '/', parameters('applicationTypeVersion'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applications",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applications/services",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
     "location": "[variables('clusterLocation')]"
@@ -142,7 +142,7 @@ ms.locfileid: "58663122"
     },
     "resources": [
       {
-        "apiVersion": "2017-07-01-preview",
+        "apiVersion": "2019-03-01",
         "type": "Microsoft.ServiceFabric/clusters/applicationTypes",
         "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'))]",
         "location": "[variables('clusterLocation')]",
@@ -152,7 +152,7 @@ ms.locfileid: "58663122"
         }
       },
       {
-        "apiVersion": "2017-07-01-preview",
+        "apiVersion": "2019-03-01",
         "type": "Microsoft.ServiceFabric/clusters/applicationTypes/versions",
         "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'), '/', parameters('applicationTypeVersion'))]",
         "location": "[variables('clusterLocation')]",
@@ -165,7 +165,7 @@ ms.locfileid: "58663122"
         }
       },
       {
-        "apiVersion": "2017-07-01-preview",
+        "apiVersion": "2019-03-01",
         "type": "Microsoft.ServiceFabric/clusters/applications",
         "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
         "location": "[variables('clusterLocation')]",
@@ -200,7 +200,7 @@ ms.locfileid: "58663122"
         }
       },
       {
-        "apiVersion": "2017-07-01-preview",
+        "apiVersion": "2019-03-01",
         "type": "Microsoft.ServiceFabric/clusters/applications/services",
         "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
         "location": "[variables('clusterLocation')]",
@@ -221,7 +221,7 @@ ms.locfileid: "58663122"
         }
       },
       {
-        "apiVersion": "2017-07-01-preview",
+        "apiVersion": "2019-03-01",
         "type": "Microsoft.ServiceFabric/clusters/applications/services",
         "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName2'))]",
         "location": "[variables('clusterLocation')]",
@@ -255,16 +255,27 @@ ms.locfileid: "58663122"
    ```
 
    > [!NOTE] 
-   > 必须将 apiVersion 设置为 `"2017-07-01-preview"`。 部署的此模板也可以与群集互不影响，只要群集已部署即可。
+   > 必须将 apiVersion 设置为 `"2019-03-01"`。 部署的此模板也可以与群集互不影响，只要群集已部署即可。
 
 5. 部署！ 
 
+## <a name="remove-service-fabric-resource-provider-application-resource"></a>删除 Service Fabric 资源提供程序应用程序资源
+以下命令将触发从群集取消预配应用程序包，这将清理已用的磁盘空间：
+```powershell
+Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/providers/Microsoft.ServiceFabric/clusters/{cluster}/applicationTypes/{apptType}/versions/{version} -ApiVersion "2019-03-01" | Remove-AzureRmResource -Force -ApiVersion "2017-07-01-preview"
+```
+只是从 ARM 模板中删 Microsoft.ServiceFabric/clusters/application 就不会取消预配应用程序
+
+>[!NOTE]
+> 删除完成后，你应该不会再在 SFX 或 ARM 中看到包版本。 你不能删除应用程序运行所使用的应用程序类型版本资源；ARM/SFRP 将阻止此操作。 如果你尝试取消预配正在运行的包，SF 运行时将阻止此操作。
+
+
 ## <a name="manage-an-existing-application-via-resource-manager"></a>通过资源管理器管理现有应用程序
 
-如果群集已部署，且其上已部署一些要作为资源管理器资源进行管理的应用程序，可以使用相同的 API，将这些应用程序确定为资源管理器资源，从而执行 PUT 调用，而不用删除并重新部署应用程序。 
+如果群集已部署，且其上已部署一些要作为资源管理器资源进行管理的应用程序，可以使用相同的 API，将这些应用程序确定为资源管理器资源，从而执行 PUT 调用，而不用删除并重新部署应用程序。 有关其他信息，请参阅[什么是 Service Fabric 应用程序资源模型？](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
 
 > [!NOTE]
-> 若要允许客户的群集升级，以忽略不正常的应用程序可以指定"maxPercentUnhealthyApplications:100 – 在"升级描述/healthPolicy"部分中;对于所有设置的详细的说明位于[服务结构 REST API 群集升级策略文档](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)。
+> 若要允许群集升级以忽略不正常的应用，客户可以指定 "maxPercentUnhealthyApplications："upgradeDescription/healthPolicy" 节中的 "100";有关所有设置的详细说明，请[参阅 Service fabric REST API 群集升级策略文档](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,9 +3,8 @@ title: Azure 安全中心内的文件完整性监视 | Microsoft Docs
 description: " 了解如何在 Azure 安全中心启用文件完整性监视。 "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
-ms.author: monhaber
-ms.openlocfilehash: f8bc10edcdc31dd2ae3995dcb8321a5523e1e51c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: memildin
+ms.openlocfilehash: f7f5c257b23cd273a2cda40f874f5edfc62c0dbd
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901571"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202199"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
@@ -38,10 +37,10 @@ ms.locfileid: "57901571"
 > [!NOTE]
 > 文件完整性监视 (FIM) 功能适用于 Windows 和 Linux 计算机与 VM，已在安全中心的标准层上提供。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。 FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。
 
-FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视后，必须**更改跟踪**类型的资源**解决方案**。 数据收集频率详细信息，请参阅[更改跟踪数据收集详细信息](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)用于 Azure 更改跟踪。
+FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视时，你具有类型为 "**解决方案**" 的**更改跟踪**资源。 有关数据收集频率的详细信息，请参阅更改跟踪 Azure 更改跟踪的[数据收集详细信息](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
 
 > [!NOTE]
-> 如果删除**更改跟踪**资源，您还将禁用文件完整性监视安全中心中的新功能。
+> 如果删除**更改跟踪**资源，还将禁用安全中心中的文件完整性监视功能。
 
 ## <a name="which-files-should-i-monitor"></a>应监视哪些文件？
 在选择要监视的文件时，应考虑对系统和应用程序至关重要的文件。 考虑选择预期不会在计划外发生更改的文件。 选择应用程序或操作系统经常更改的文件（例如日志文件和文本文件）会造成很多的干扰，使攻击识别变得很困难。
@@ -137,7 +136,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
    ![工作区配置][12]
 
-2. 选择一种标识的保护。 在此示例中，我们选择了“Windows 注册表”下的某个项。 此时会打开“更改跟踪的编辑”。
+2. 选择标识保护。 在此示例中，我们选择了“Windows 注册表”下的某个项。 此时会打开“更改跟踪的编辑”。
 
    ![编辑或更改跟踪][13]
 

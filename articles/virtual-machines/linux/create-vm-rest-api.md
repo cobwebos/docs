@@ -4,23 +4,22 @@ description: 了解如何使用 Azure REST API 在 Azure 中创建使用托管�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9851305bdaa2f214e0d00eda3235068cac2ea980
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447840"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083477"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>使用 REST API 创建使用 SSH 身份验证的 Linux 虚拟机
 
@@ -63,10 +62,10 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 下面的通用定义用来构建请求正文：
 
-| 名称                       | 需要 | Type                                                                                | 描述  |
+| 姓名                       | 必填 | 类型                                                                                | 描述  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| 位置                   | True     | 字符串                                                                              | 资源位置。 |
-| 名称                       |          | 字符串                                                                              | 虚拟机的名称。 |
+| location                   | True     | string                                                                              | 资源位置。 |
+| name                       |          | string                                                                              | 虚拟机的名称。 |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | 指定虚拟机的硬件设置。 |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | 指定虚拟机磁盘的存储设置。 |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | 指定虚拟机的操作系统设置。 |
@@ -127,19 +126,19 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 }
 ```
 
-有关可用的请求正文中定义的完整列表，请参阅[虚拟机创建或更新请求正文定义](/rest/api/compute/virtualmachines/createorupdate#definitions)。
+有关请求正文中的变量定义的完整列表，请参阅[虚拟机创建或更新请求正文定义](/rest/api/compute/virtualmachines/createorupdate#definitions)。
 
 ## <a name="sending-the-request"></a>发送请求
 
 可以使用你喜欢使用的客户端发送此 HTTP 请求。 还可以通过单击“试用”按钮使用某个[浏览器中工具](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)。
 
-### <a name="responses"></a>响应
+### <a name="responses"></a>Responses
 
 对于要创建或更新虚拟机的操作，有两个成功响应：
 
-| 名称        | 类型                                                                              | 描述 |
+| 姓名        | 类型                                                                              | 描述 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
-| 200 正常      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
+| 200 正常      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 确定          |
 | 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 已创建     |
 
 下面是一个精简后的 *201 Created* 响应，它来自前面创建 VM 的示例请求正文，该响应表明已分配了 *vmId* 并且 *provisioningState* 为 *Creating*：

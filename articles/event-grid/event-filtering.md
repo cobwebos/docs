@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 87599b05a3569bf6f28880352185a131f48a7f52
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470610"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390180"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -43,7 +43,7 @@ ms.locfileid: "54470610"
 
 将事件发布到自定义主题时，可为事件创建主题，便于订阅者们了解他们是否对该事件感兴趣。 订阅者使用主题属性来筛选和路由事件。 考虑添加事件发生位置的路径，以便订阅者可以按该路径的段进行筛选。 通过路径，订阅者可精确或宽泛地筛选事件。 如果在主题中提供一个由三个段构成的路径（如 `/A/B/C`），订阅者可根据第一个段 `/A` 进行筛选，获取范围较宽泛的一组事件。 这些订阅者会获取主题为 `/A/B/C` 或 `/A/D/E` 这样的事件。 其他订阅者可通过 `/A/B` 进行筛选，这样可以获取范围更精确的一组事件。
 
-按事件类型筛选的 JSON 语法是：
+按主题筛选的 JSON 语法是：
 
 ```json
 "filter": {
@@ -61,23 +61,40 @@ ms.locfileid: "54470610"
 * 键 - 用于筛选的事件数据中的字段。 它可以是数字、布尔值或字符串。
 * 值 - 要与键进行比较的值。
 
-使用高级筛选器的 JSON 语法是：
+如果指定具有多个值的单个筛选器，则执行**或**操作，因此键字段的值必须是下列值之一。 下面是一个示例：
 
 ```json
-"filter": {
-  "advancedFilters": [
+"advancedFilters": [
     {
-      "operatorType": "NumberGreaterThanOrEquals",
-      "key": "Data.Key1",
-      "value": 5
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/",
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
+    }
+]
+```
+
+如果指定多个不同的筛选器，则执行**和**操作，因此必须满足每个筛选条件。 下面是一个示例： 
+
+```json
+"advancedFilters": [
+    {
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/"
+        ]
     },
     {
-      "operatorType": "StringContains",
-      "key": "Subject",
-      "values": ["container1", "container2"]
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
     }
-  ]
-}
+]
 ```
 
 ### <a name="operator"></a>运算符
@@ -103,22 +120,22 @@ ms.locfileid: "54470610"
 
 所有字符串比较都不区分大小写。
 
-### <a name="key"></a>密钥
+### <a name="key"></a>Key
 
 对于事件网格架构中的事件，请使用以下键值：
 
-* ID
+* id
 * 主题
-* 主题
-* EventType
+* Subject
+* 事件类型
 * DataVersion
 * 事件数据（如 Data.key1）
 
 对于云事件架构中的事件，请使用以下键值：
 
 * EventId
-* 源
-* EventType
+* Source
+* 事件类型
 * EventTypeVersion
 * 事件数据（如 Data.key1）
 
@@ -128,10 +145,10 @@ ms.locfileid: "54470610"
 
 值可以是：
 
-* 数字
-* 字符串
-* 布尔值
-* 数组
+* number
+* string
+* boolean
+* array
 
 ### <a name="limitations"></a>限制
 
@@ -140,8 +157,6 @@ ms.locfileid: "54470610"
 * 每个事件网格订阅有五个高级筛选器
 * 每个字符串值有 512 个字符
 * “in”和“not in”运算符有 5 个值
-* 键只能有一个嵌套级别（如 data.key1）
-* 自定义事件架构只能基于顶级字段进行筛选
 
 可以在多个筛选器中使用相同的键。
 

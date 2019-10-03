@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 198e7d8d32e7142a266881e2f4ddbc3ed573c521
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 52ccaa17b9994751bb9dfd54848e20aef90146c3
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187277"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905884"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>快速入门：配置服务器防火墙 - 门户
 
@@ -23,6 +23,7 @@ ms.locfileid: "54187277"
 
 - 订阅中的 Analysis Services 服务器。 要了解详细信息，请参阅[快速入门：创建服务器 - 门户](analysis-services-create-server.md)或[快速入门：创建服务器 - PowerShell](analysis-services-create-powershell.md)
 - 客户端计算机的一个或多个 IP 地址范围（如果需要）。
+- 请注意，目前不支持从 Power BI Premium 导入方案。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户 
 
@@ -31,9 +32,9 @@ ms.locfileid: "54187277"
 ## <a name="configure-a-firewall"></a>配置防火墙
 
 1. 单击服务器打开“概述”页。 
-2. 在“设置” > “防火墙” > “启用防火墙”，单击“开”。
-3. 若要允许从 Power BI 服务进行 DirectQuery 访问，请在“允许从Power BI 访问”中，单击“开”。  
-4. （可选）指定一个或多个 IP 地址范围。 输入每个范围的名称、起始和结束 IP 地址。 
+2. 在“设置”   > “防火墙”   > “启用防火墙”  ，单击“开”  。
+3. 若要允许从 Power BI 服务进行 DirectQuery 访问，请在“允许从Power BI 访问”  中，单击“开”  。  
+4. （可选）指定一个或多个 IP 地址范围。 输入每个范围的名称、起始和结束 IP 地址。 防火墙规则名称应限制为 128 个字符，并且只能包含大写字符、小写字符、数字、下划线和连字符。 不允许使用空格和其他特殊字符。
 5. 单击“ **保存**”。
 
      ![防火墙设置](./media/analysis-services-qs-firewall/aas-qs-firewall.png)

@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: fe9098592fcfde2d5e23b78a3e33f2b4ebb9e2dc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 3f0ce4f3bdf3159e991bfd72590882dfa7412ee3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468642"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568486"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>使用数据依赖型路由可将查询路由到相应的数据库
 
-**数据依赖型路由**是使用查询中的数据将请求路由到相应数据库的功能。 在使用分片数据库时，数据依赖型路由是一种基础模式。 请求上下文也可用于路由请求，尤其是当分片键不是查询的一部分时。 将应用程序中使用数据依赖型路由的每个特定查询和事务限制为针对每个请求访问一个数据库。 对于 Azure SQL 数据库弹性工具，这种路由是通过 ShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)）类实现的。
+**数据依赖型路由**是使用查询中的数据将请求路由到相应数据库的功能。 在使用分片数据库时，数据依赖型路由是一种基础模式。 请求上下文也可用于路由请求，尤其是当分片键不是查询的一部分时。 将应用程序中使用数据依赖型路由的每个特定查询和事务限制为针对每个请求访问一个数据库。 对于 Azure SQL 数据库弹性工具，这种路由是通过ShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)）类实现的。
 
 应用程序无需在分片环境中跟踪与不同的数据片相关联的各种连接字符串或数据库位置。 但是，[分片映射管理器](sql-database-elastic-scale-shard-map-management.md)在需要时基于分片映射中的数据以及作为应用程序请求目标的分片键值，将开放连接分发给正确的数据库。 该键通常为 customer_id、tenant_id、date_key 或一些作为数据库请求的基础参数的其他特定标识符。
 
@@ -112,7 +111,7 @@ using (SqlConnection conn = customerShardMap.OpenConnectionForKey(customerId, Co
 
 **OpenConnectionForKey** 方法返回与正确数据库建立的、新的且已打开的连接。 此方法中所采用的连接仍然可以充分利用连接池。
 
-如果应用程序使用异步编程，也可以使用 OpenConnectionForKeyAsync 方法（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkeyasync)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync)）。
+如果应用程序使用异步编程，也可以使用OpenConnectionForKeyAsync 方法（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkeyasync)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync)）。
 
 ## <a name="integrating-with-transient-fault-handling"></a>与暂时性故障处理集成
 

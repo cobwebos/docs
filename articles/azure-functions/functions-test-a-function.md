@@ -4,19 +4,18 @@ description: 为 Visual Studio 中的 C# 函数和 VS Code 中的 JavaScript 函
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions，函数，事件处理，webhook，动态计算，无服务体系结构，测试
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: e0009e1c6380e02e2e0e24bf86e6dab435b6c022
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ff3d7d1272f9067f6bf9791c7964f8bf5f71945b
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357637"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709334"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -36,7 +35,7 @@ ms.locfileid: "59357637"
 
 ![使用 Visual Studio 中的 C# 测试 Azure Functions](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="setup"></a>设置
+### <a name="setup"></a>安装
 
 若要设置环境，请创建一个函数和测试应用。 以下步骤可帮助你创建用于支持测试的应用和函数：
 
@@ -44,7 +43,7 @@ ms.locfileid: "59357637"
 2. [从模板创建 HTTP 函数](./functions-create-first-azure-function.md)并将其命名为 *HttpTrigger*。
 3. [从模板创建计时器函数](./functions-create-scheduled-function.md)并将其命名为 *TimerTrigger*。
 4. 单击“文件”>“新建”>“项目”>“Visual C#”>“.NET Core”>“xUnit 测试项目”，在 Visual Studio 中[创建 xUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)，并将其命名为“Functions.Test”。 
-5. 使用 Nuget 添加引用从测试应用[Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+5. 使用 Nuget 从测试应用 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 添加引用
 6. [从 *Functions.Test* 应用引用 *Functions* 应用](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)。
 
 ### <a name="create-test-classes"></a>创建测试类
@@ -55,7 +54,7 @@ ms.locfileid: "59357637"
 
 `ListLogger` 类用于实现 `ILogger` 接口并保存在消息的内部列表中，以便在测试期间用于评估。
 
-**右键单击**上*Functions.Test*应用程序并选择**添加 > 类**，其命名为**NullScope.cs**并输入以下代码：
+**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **NullScope.cs**，然后输入以下代码：
 
 ```csharp
 using System;
@@ -73,7 +72,7 @@ namespace Functions.Tests
 }
 ```
 
-下一步，**右击**上*Functions.Test*应用程序并选择**添加 > 类**，其命名为**ListLogger.cs**和输入以下代码：
+接下来，**右键单击**“Functions.Test”应用程序并选择“添加”>“类”，将类命名为 **ListLogger.cs**，然后输入以下代码：
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -111,7 +110,7 @@ namespace Functions.Tests
 
 `ListLogger` 类实现 `ILogger` 接口收缩的以下成员：
 
-- **BeginScope**：范围将上下文添加到日志记录。 在这种情况下，测试只是指向静态实例上`NullScope`类，以允许对函数的测试。
+- **BeginScope**：范围将上下文添加到日志记录。 在本例中，测试只是指向 `NullScope` 类中的静态实例，使测试能够正常运行。
 
 - **IsEnabled**：提供 `false` 的默认值。
 
@@ -221,7 +220,7 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string()
         {
             var request = TestFactory.CreateHttpRequest("name", "Bill");
-            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
+            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
             Assert.Equal("Hello, Bill", response.Value);
         }
 
@@ -230,7 +229,7 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string_from_member_data(string queryStringKey, string queryStringValue)
         {
             var request = TestFactory.CreateHttpRequest(queryStringKey, queryStringValue);
-            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
+            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
             Assert.Equal($"Hello, {queryStringValue}", response.Value);
         }
 
@@ -253,7 +252,7 @@ namespace Functions.Tests
 
 - **Timer_should_log_message**：此测试创建 `ListLogger` 的实例并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
 
-如果你想要访问在测试中的应用程序设置，则可以使用[System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
+如果要在测试中访问应用程序设置，可以使用 [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
 
 ### <a name="run-tests"></a>运行测试
 
@@ -271,7 +270,7 @@ namespace Functions.Tests
 
 ![使用 VS Code 中的 JavaScript 测试 Azure Functions](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="setup"></a>设置
+### <a name="setup"></a>安装
 
 若要设置环境，请运行 `npm init`，在空文件夹中初始化新的 Node.js 应用。
 
@@ -312,7 +311,7 @@ module.exports = {
 ```
 此模块实现 `IsPastDue` 属性，表示该实例是一个虚构的计时器实例。
 
-接下来，使用 VS Code Functions 扩展[创建新的 JavaScript HTTP 函数](https://code.visualstudio.com/tutorials/functions-extension/getting-started)，并将其命名为 *HttpTrigger*。 创建函数后，在名为 **index.test.js** 的同一文件夹中添加一个新文件，然后添加以下代码：
+接下来，使用 VS Code Functions 扩展[创建新的 JavaScript HTTP 函数](/azure/javascript/tutorial-vscode-serverless-node-01)，并将其命名为 *HttpTrigger*。 创建函数后，在名为 **index.test.js** 的同一文件夹中添加一个新文件，然后添加以下代码：
 
 ```javascript
 const httpFunction = require('./index');

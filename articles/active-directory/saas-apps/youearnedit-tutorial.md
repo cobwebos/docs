@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0610ac9578b1aa85ae422275d69e651b0b4cfd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f3a3339481538cd38a1d26f97869ff55d3f6021
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838198"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086322"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>教程：Azure Active Directory 与 YouEarnedIt 集成
 
@@ -45,7 +45,7 @@ ms.locfileid: "57838198"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* YouEarnedIt 支持 SP 发起的 SSO
+* YouEarnedIt 支持 SP 发起的 SSO 
 
 ## <a name="adding-youearnedit-from-the-gallery"></a>从库添加 YouEarnedIt
 
@@ -53,25 +53,25 @@ ms.locfileid: "57838198"
 
 **若要从库添加 YouEarnedIt，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“YouEarnedt”，从结果面板中选择“YouEarnedt”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“YouEarnedt”，从结果面板中选择“YouEarnedt”，然后单击“添加”按钮添加该应用程序    。
 
      ![结果列表中的 YouEarnedIt](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本节中，将基于名为 Britta Simon 的测试用户，使用 YouEarnedIt 配置和测试 Azure AD 单一登录。
+在本节中，将基于名为 Britta Simon 的测试用户，使用 YouEarnedIt 配置和测试 Azure AD 单一登录  。
 若要运行单一登录，需要在 Azure AD 用户与 YouEarnedIt 相关用户之间建立链接关系。
 
 若要使用 YouEarnedIt 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
@@ -89,7 +89,7 @@ ms.locfileid: "57838198"
 
 若要使用 YouEarnedIt 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 Azure 门户的 [YouEarnedIt](https://portal.azure.com/) 应用程序集成页上，选择“单一登录”。
+1. 在 Azure 门户的 [YouEarnedIt](https://portal.azure.com/) 应用程序集成页上，选择“单一登录”   。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,22 +97,22 @@ ms.locfileid: "57838198"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![YouEarnedIt 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
 
     | 环境  | 模式  |
     |:--- |:--- |
     | 生产 | `https://<company name>.youearnedit.com/users/sign_in` |
     | 沙盒  |`https://<company name>.sandbox.youearnedit.com/users/sign_in` |
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：
+    b. 在“标识符”文本框中，使用以下模式键入 URL  ：
 
     | 环境  | 模式  |
     |:--- |:--- |
@@ -122,11 +122,11 @@ ms.locfileid: "57838198"
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系分配给你的 YouEarnedIt 客户成功经理以获取这些值。
 
-5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 YouEarnedIt”部分，根据要求复制相应 URL。
+6. 在“设置 YouEarnedIt”部分，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -138,17 +138,17 @@ ms.locfileid: "57838198"
 
 ### <a name="configure-youearnedit-single-sign-on"></a>配置 YouEarnedIt 单一登录
 
-若要在 YouEarnedIt 端配置单一登录，需要将下载的证书 (Base64) 和相应已复制的 URL 从 Azure 门户发送给分配给你的 YouEarnedIt 客户成功经理。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 YouEarnedIt 端配置单一登录，需要将下载的证书 (Base64) 和相应已复制的 URL 从 Azure 门户发送给分配给你的 YouEarnedIt 客户成功经理   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -156,40 +156,40 @@ ms.locfileid: "57838198"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 YouEarnedIt 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“YouEarnedIt”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“YouEarnedIt”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，键入并选择“YouEarnedIt”。
+2. 在应用程序列表中，键入并选择“YouEarnedIt”。 
 
     ![应用程序列表中的 YouEarnedIt 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-youearnedit-test-user"></a>创建 YouEarnedIt 测试用户
 

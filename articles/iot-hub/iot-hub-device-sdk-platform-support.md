@@ -1,18 +1,18 @@
 ---
 title: Azure IoT 设备 SDK 平台支持 | Microsoft Docs
 description: 概念 - Azure IoT 设备 SDK 支持的平台的列表
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: yizhon
-ms.openlocfilehash: 7bcc1bf6b734abe202c5fec5d515604f4bf8e4a7
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.author: robinsh
+ms.openlocfilehash: 9a64c6e476910ab4fe983fa949680f05fdded3ae
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669357"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70161863"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Azure IoT SDK 平台支持
 
@@ -32,13 +32,13 @@ Microsoft 支持各种操作系统/平台/框架，后者可以通过 Azure IoT 
 * .NET Standard 1.3（包含 .NET Core 2.1 和 .NET Framework 4.7）
 * Xamarin iOS、Android、UWP
 
-## <a name="supported-platforms"></a>支持的平台
+## <a name="supported-platforms"></a>受支持的平台
 
 有几个支持的平台。
 
 ### <a name="c-sdk"></a>C SDK
 
-| 操作系统                  | Arch | 编译器             | TLS 库       |
+| OS                  | Arch | 编译器             | TLS 库       |
 |---------------------|------|----------------------|-------------------|
 | Ubuntu 16.04 LTS    | X64  | gcc-5.4.0            | openssl  - 1.0.2g |
 | Ubuntu 18.04 LTS    | X64  | gcc-7.3              | WolfSSL – 1.13    |
@@ -50,7 +50,7 @@ Microsoft 支持各种操作系统/平台/框架，后者可以通过 Azure IoT 
 
 ### <a name="python-sdk"></a>Python SDK
 
-| 操作系统                  | Arch | 编译器   | TLS 库 |
+| OS                  | Arch | 编译器   | TLS 库 |
 |---------------------|------|------------|-------------|
 | Windows Server 2016 | x86  | Python 2.7 | openssl     |
 | Windows Server 2016 | x64  | Python 2.7 | openssl     |
@@ -62,23 +62,23 @@ Microsoft 支持各种操作系统/平台/框架，后者可以通过 Azure IoT 
 
 ### <a name="net-sdk"></a>.NET SDK
 
-| 操作系统                  | Arch | 框架            | 标准          |
+| OS                  | Arch | 框架            | 标准          |
 |---------------------|------|----------------------|-------------------|
 | Ubuntu 16.04 LTS    | X64  | .NET Core 2.1        | .NET Standard 2.0 |
 | Windows Server 2016 | X64  | .NET Core 2.1        | .NET Standard 2.0 |
 | Windows Server 2016 | X64  | .NET Framework 4.7   | .NET Standard 2.0 |
-| Windows Server 2016 | X64  | .NET Framework 4.5.1 | 不适用               |
+| Windows Server 2016 | X64  | .NET Framework 4.5.1 | 不可用               |
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
-| 操作系统                                           | Arch | Node 版本 |
-|----------------------------------------------|------|--------------|
-| Ubuntu 16.04 LTS（使用 node 6 docker 映像） | X64  | Node 6       |
-| Windows Server 2016                          | X64  | Node 6       |
+| OS                                           | Arch | Node 版本    |
+|----------------------------------------------|------|-----------------|
+| Ubuntu 16.04 LTS（使用 node 6 docker 映像） | X64  | LTS 和当前 |
+| Windows Server 2016                          | X64  | LTS 和当前 |
 
 ### <a name="java-sdk"></a>Java SDK
 
-| 操作系统                  | Arch | Java 版本 |
+| OS                  | Arch | Java 版本 |
 |---------------------|------|--------------|
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |
@@ -94,7 +94,7 @@ Microsoft 支持各种操作系统/平台/框架，后者可以通过 Azure IoT 
 | Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT 调制解调器     | [Qualcomm LTE for IoT SDK](https://developer.qualcomm.com/software/lte-iot-sdk)（用于 IoT SDK 的 Qualcomm LTE） | [论坛](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
 | ST Microelectronics | STM32L4 系列 <br/> STM32F4 系列 <br/>  STM32F7 系列 <br/>  用于 IoT 节点的 STM32L4 发现包    | [X-CUBE-CLOUD](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [X-CUBE-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [支持](https://www.st.com/content/st_com/en/support/support-home.html)
-| Texas Instruments   | CC3220SF Launchpad <br/> CC3220S Launchpad <br/> MSP432E4 Launchpad      | [适用于 SimpleLink 的 Azure IoT 插件](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2E 论坛](https://e2e.ti.com) <br/> [CC3220 的 TI E2E 论坛](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [MSP432E4 的 TI E2E 论坛](https://e2e.ti.com/support/microcontrollers/msp430/) |
+| Texas Instruments   | CC3220SF LaunchPad </br> CC3220S LaunchPad </br> CC3235SF LaunchPad </br> CC3235S LaunchPad </br> MSP432E4 LaunchPad | [适用于 SimpleLink 的 Azure IoT 插件](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2E 论坛](https://e2e.ti.com) <br/> [CC3220 的 TI E2E 论坛](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [MSP432E4 的 TI E2E 论坛](https://e2e.ti.com/support/microcontrollers/msp430/) |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,7 +1,6 @@
 ---
 title: 使用 .NET SDK 管理 HDInsight 中的 Apache Hadoop 群集 - Azure
 description: 了解如何使用 HDInsight .NET SDK 针对 HDInsight 中的 Apache Hadoop 群集执行管理任务。
-services: hdinsight
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2e57726c3519fbb2660d7dfb4794a885871acc0d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: abfbac552cc5cb4449a75c45d0c1ffdbcf6b770c
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793901"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508101"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>使用 .NET SDK 管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -258,10 +257,6 @@ foreach (var key in results.Configuration.Keys)
 
 请参阅[使用 .NET SDK 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。
 
-**提交 Apache Pig 作业**
-
-请参阅[使用 .NET SDK 运行 Apache Pig 作业](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)。
-
 **提交 Apache Sqoop 作业**
 
 请参阅[将 Apache Sqoop 与 HDInsight 配合使用](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)。
@@ -278,7 +273,7 @@ foreach (var key in results.Configuration.Keys)
 
 * [HDInsight .NET SDK 参考文档](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)
-* [使用命令行接口管理 HDInsight][hdinsight-admin-cli]
+* [管理 HDInsight 使用命令行界面][hdinsight-admin-cli]
 * [创建 HDInsight 群集][hdinsight-provision]
 * [将数据上传到 HDInsight][hdinsight-upload-data]
 * [Azure HDInsight 入门][hdinsight-get-started]

@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
 ms.openlocfilehash: 70721b8bfbecaf554a9502b9ec3417fc8e561b3f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885938"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60609677"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI
 
@@ -55,11 +55,11 @@ IaaS 解决方案演示如何将本地基于 SQL 的解决方案迁移到 Azure�
 
 基础体系结构由以下组件构成：
 
--   **[威胁模型](https://aka.ms/healththreatmodel)**：以 tm7 格式提供的综合性威胁模型适用于 [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168)，可以显示解决方案的组件、组件之间的数据流，以及信任边界。 此模型有助于客户了解在开发机器学习工作室组件或其他修改项时系统基础结构中存在的潜在风险点。
+-   **[威胁模型](https://aka.ms/healththreatmodel)** ：以 tm7 格式提供的综合性威胁模型适用于 [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168)，可以显示解决方案的组件、组件之间的数据流，以及信任边界。 此模型有助于客户了解在开发机器学习工作室组件或其他修改项时系统基础结构中存在的潜在风险点。
 
--   **[客户实现矩阵](https://aka.ms/healthcrmblueprint)**：一种 Microsoft Excel 工作簿，其中列出了相关的 HITRUST 要求，并说明了 Microsoft 和客户的相互责任。
+-   **[客户实现矩阵](https://aka.ms/healthcrmblueprint)** ：一种 Microsoft Excel 工作簿，其中列出了相关的 HITRUST 要求，并说明了 Microsoft 和客户的相互责任。
 
--   **[健康审核](https://aka.ms/healthreviewpaper)**。 此解决方案已由 Coalfire systems, Inc. 审核。有关健康符合性（HIPAA 和 HITRUST）实施方面的审核和指南提供了审核员对此解决方案的审核意见，以及在将蓝图转换为生产就绪型部署过程中的注意事项。
+-   **[健康审核](https://aka.ms/healthreviewpaper)** 。 此解决方案已由 Coalfire systems, Inc. 审核。有关健康符合性（HIPAA 和 HITRUST）实施方面的审核和指南提供了审核员对此解决方案的审核意见，以及在将蓝图转换为生产就绪型部署过程中的注意事项。
 
 ## <a name="architectural-diagram"></a>体系结构图
 
@@ -251,7 +251,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 
 **1.批量导入客户数据 phi 数据**
 
-根据 “部署和运行演示”中的概述，将演示脚本..\\HealthcareDemo.ps1 与 **BulkPatientAdmission** 开关配合使用时，该脚本会执行以下处理管道：
+根据  “部署和运行演示”中的概述，将演示脚本..\\HealthcareDemo.ps1 与 **BulkPatientAdmission** 开关配合使用时，该脚本会执行以下处理管道：
 1. **Azure Blob 存储** - 病人数据 .csv 文件示例上传到存储
 2. **事件网格** - 事件将数据发布到 Azure Function（批量导入 - Blob 事件）
 3. **Azure Function** - 进行处理后，将数据存储到 SQL 存储中，使用的是安全的函数 - event(type; blob url)
@@ -267,7 +267,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 
 **2.新病人入院**
 
-根据 “部署和运行演示”中的概述，将演示脚本..\\HealthcareDemo.ps1 与 **BulkPatientadmission** 开关配合使用时，该脚本会执行以下处理管道：![](images/securetransact.png)
+根据  “部署和运行演示”中的概述，将演示脚本..\\HealthcareDemo.ps1 与 **BulkPatientadmission** 开关配合使用时，该脚本会执行以下处理管道：![](images/securetransact.png)
 **1.Azure Function** 被触发，该函数从 Azure Active Directory 请求[持有者令牌](/rest/api/)。
 
 **2.Key Vault** 请求获取与请求的令牌关联的机密。

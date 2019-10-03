@@ -1,33 +1,32 @@
 ---
 title: 使用 Azure 存储在云中上传图像数据 | Microsoft Docs
 description: 将 Azure blob 存储与 Web 应用配合使用来存储应用数据
-services: storage
-author: tamram
+author: normesta
 ms.service: storage
-ms.devlang: dotnet
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 11/26/2018
-ms.author: tamram
-ms.custom: mvc
-ms.openlocfilehash: 7d06d23af8d4d4f0282f6eb743c0f47dba80e3f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: normesta
+ms.reviewer: dineshm
+ms.openlocfilehash: 7185d118c9f4419713ebe1291dd55c44635f0c56
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58015307"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844953"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
 本教程是一个系列中的第一部分。 在本教程中，你将了解如何部署一个 Web 应用，它使用 Azure 存储客户端库将图像上传到存储帐户。 完成后，你将具有一个通过 Azure 存储来存储和显示图像的 Web 应用。
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![图像容器视图](media/storage-upload-process-images/figure2.png)
+![.NET 中的图像调整器应用](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![图像容器视图](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Node.js V2 中的图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![图像容器视图](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Node.js V10 中的图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -78,7 +77,7 @@ az storage account create --name $blobStorageAccount \
 
 ## <a name="create-blob-storage-containers"></a>创建 Blob 存储容器
 
-应用使用 Blob 存储帐户中的两个容器。 容器类似于文件夹，用于存储 blob。 images 容器是应用在其中上传完整分辨率图像的位置。 在本系列的后面部分中，一个 Azure 函数应用将调整大小后的图像缩略图上传到 thumbnails 容器。
+应用使用 Blob 存储帐户中的两个容器。 容器类似于文件夹，用于存储 blob。 images  容器是应用在其中上传完整分辨率图像的位置。 在本系列的后面部分中，一个 Azure 函数应用将调整大小后的图像缩略图上传到 thumbnails  容器。
 
 使用 [az storage account keys list](/cli/azure/storage/account/keys) 命令获取存储帐户密钥。 然后，使用此密钥通过 [az storage container create](/cli/azure/storage/container) 命令创建两个容器。  
 
@@ -106,7 +105,7 @@ echo $blobStorageAccountKey
 
 使用 [az appservice plan create](/cli/azure/appservice/plan) 命令创建应用服务计划。
 
-以下示例在免费定价层中创建名为 `myAppServicePlan` 的应用服务计划：
+以下示例在免费  定价层中创建名为 `myAppServicePlan` 的应用服务计划：
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
@@ -130,7 +129,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 应用服务支持通过多种方式将内容部署到 Web 应用。 在本教程中，将从[公共 GitHub 示例存储库](https://github.com/Azure-Samples/storage-blob-upload-from-webapp)部署 Web 应用。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。
 
-示例项目包含一个 [ASP.NET MVC](https://www.asp.net/mvc) 应用。 该应用接受一个图像，将其保存到存储帐户，然后从缩略图容器显示图像。 Web 应用使用 Azure 存储客户端库中的 [Microsoft.WindowsAzure.Storage](/dotnet/api/microsoft.windowsazure.storage?view=azure-dotnet)、[Microsoft.WindowsAzure.Storage.Blob](/dotnet/api/microsoft.windowsazure.storage.blob?view=azure-dotnet) 和 [Microsoft.WindowsAzure.Storage.Auth](/dotnet/api/microsoft.windowsazure.storage.auth?view=azure-dotnet) 命名空间与 Azure 存储进行交互。
+示例项目包含一个 [ASP.NET MVC](https://www.asp.net/mvc) 应用。 该应用接受一个图像，将其保存到存储帐户，然后从缩略图容器显示图像。 Web 应用使用 Azure 存储客户端库中的 [Microsoft.Azure.Storage](/dotnet/api/overview/azure/storage)、[Microsoft.Azure.Storage.Blob](/dotnet/api/microsoft.azure.storage.blob) 和 Microsoft.Azure.Storage.Auth 命名空间与 Azure 存储进行交互。
 
 ```azurecli-interactive
 az webapp deployment source config --name $webapp \
@@ -162,7 +161,7 @@ az webapp deployment source config --name $webapp \
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-示例 Web 应用使用 [Azure 存储客户端库](/dotnet/api/overview/azure/storage?view=azure-dotnet)请求用于上传图像的访问令牌。 存储 SDK 使用的存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
+示例 Web 应用使用 [Azure 存储客户端库](/dotnet/api/overview/azure/storage)请求用于上传图像的访问令牌。 存储 SDK 使用的存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
 ```azurecli-interactive
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -208,11 +207,11 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-选择“上传照片”区域以选择并上传文件，或者将文件拖放到该区域上。 如果成功上传，图像会消失。 “生成的缩略图”部分将保持为空，直到我们稍后在本主题中对其进行测试为止。
+选择“上传照片”  区域以选择并上传文件，或者将文件拖放到该区域上。 如果成功上传，图像会消失。 “生成的缩略图”  部分将保持为空，直到我们稍后在本主题中对其进行测试为止。
 
-![ImageResizer 应用](media/storage-upload-process-images/figure1.png)
+![在 .NET 中上传照片](media/storage-upload-process-images/figure1.png)
 
-在示例代码中，*Storagehelper.cs* 文件中的 `UploadFiletoStorage` 任务用于通过 [UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) 方法将图像上传到存储帐户中的 *images* 容器。 下面的代码示例包含 `UploadFiletoStorage` 任务。
+在示例代码中，*Storagehelper.cs* 文件中的 `UploadFiletoStorage` 任务用于通过 [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) 方法将图像上传到存储帐户中的 *images* 容器。 下面的代码示例包含 `UploadFiletoStorage` 任务。
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName, AzureStorageConfig _storageConfig)
@@ -243,17 +242,17 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 
 |类  |方法  |
 |---------|---------|
-|[StorageCredentials](/dotnet/api/microsoft.windowsazure.storage.auth.storagecredentials?view=azure-dotnet)     |         |
-|[CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount?view=azure-dotnet)    |  [CreateCloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.createcloudblobclient?view=azure-dotnet)       |
-|[CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient?view=azure-dotnet)     |[GetContainerReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient.getcontainerreference?view=azure-dotnet)         |
-|[CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer?view=azure-dotnet)    | [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference?view=azure-dotnet)        |
-|[CloudBlockBlob](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azure-dotnet)     | [UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet)        |
+|[StorageCredentials](/dotnet/api/microsoft.azure.cosmos.table.storagecredentials)     |         |
+|[CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount)    |  [CreateCloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient)       |
+|[CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)     |[GetContainerReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.getcontainerreference)         |
+|[CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)    | [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference)        |
+|[CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob)     | [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.file.cloudfile.uploadfromstreamasync)        |
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
 
-选择“选择文件”以选择文件，然后单击“上传图像”。 “生成的缩略图”部分将保持为空，直到我们稍后在本主题中对其进行测试为止。 
+选择“选择文件”  以选择文件，然后单击“上传图像”  。 “生成的缩略图”  部分将保持为空，直到我们稍后在本主题中对其进行测试为止。 
 
-![图像上传应用](media/storage-upload-process-images/upload-app-nodejs.png)
+![在 Node.js V2 中上传照片](media/storage-upload-process-images/upload-app-nodejs.png)
 
 在示例代码中，`post` 路由负责将图像上传到 Blob 容器中。 此路由使用模块来帮助处理上传：
 
@@ -315,9 +314,9 @@ router.post('/', uploadStrategy, (req, res) => {
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-选择“选择文件”以选择文件，然后单击“上传图像”。 “生成的缩略图”部分将保持为空，直到我们稍后在本主题中对其进行测试为止。 
+选择“选择文件”  以选择文件，然后单击“上传图像”  。 “生成的缩略图”  部分将保持为空，直到我们稍后在本主题中对其进行测试为止。 
 
-![图像上传应用](media/storage-upload-process-images/upload-app-nodejs.png)
+![在 Node.js V10 中上传照片](media/storage-upload-process-images/upload-app-nodejs.png)
 
 在示例代码中，`post` 路由负责将图像上传到 Blob 容器中。 此路由使用模块来帮助处理上传：
 
@@ -395,34 +394,34 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>验证图像是否显示在存储帐户中
 
-登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 在“Blob 服务”下，选择“Blob”，然后选择“images”容器。
+登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”  ，然后选择你的存储帐户的名称。 在“Blob 服务”  下，选择“Blob”  ，然后选择“images”  容器。
 
 验证图像是否显示在该容器中。
 
-![图像容器视图](media/storage-upload-process-images/figure13.png)
+![Azure 门户图像容器列表](media/storage-upload-process-images/figure13.png)
 
 ## <a name="test-thumbnail-viewing"></a>测试缩略图查看
 
 为了测试缩略图查看，你将把图像上传到 **thumbnails** 容器，以检查应用可以读取 **thumbnails** 容器。
 
-登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 在“Blob 服务”下，选择“Blob”，然后选择“thumbnails”容器。 选择“上传”以打开“上传 blob”窗格。
+登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”  ，然后选择你的存储帐户的名称。 在“Blob 服务”  下，选择“Blob”  ，然后选择“thumbnails”  容器。 选择“上传”  以打开“上传 blob”  窗格。
 
-使用文件选取器选择文件，然后选择“上传”。
+使用文件选取器选择文件，然后选择“上传”  。
 
 导航回到应用，以验证上传到 **thumbnails** 容器的图像是否可见。
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![图像容器视图](media/storage-upload-process-images/figure2.png)
+![显示新图像的 .NET 图像调整器应用](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![图像容器视图](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![显示新图像的 Node.js V2 图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![图像容器视图](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![显示新图像的 Node.js V10 图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
-在本系列的第二部分中，您将使缩略图创建自动化，以便不需要此图像。 在 Azure 门户中的 **thumbnails** 容器中，选择上传的图像，然后选择“删除”以删除图像。 
+在本系列的第二部分中，您将使缩略图创建自动化，以便不需要此图像。 在 Azure 门户中的 **thumbnails** 容器中，选择上传的图像，然后选择“删除”  以删除图像。 
 
 你可以启用 CDN 来缓存 Azure 存储帐户的内容。 有关如何对 Azure 存储帐户启用 CDN 的详细信息，请参阅：[将 Azure 存储帐户与 Azure CDN 集成](../../cdn/cdn-create-a-storage-account-with-cdn.md)。
 

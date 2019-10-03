@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: c168182f0b34329ed3e72e90ce86456dfbe210ca
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.author: anilmur
+ms.reviewer: juliako
+ms.openlocfilehash: a828d03093c73d5c65a92ccf899fbaa1ef622bd6
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189846"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69016492"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
 
@@ -88,7 +89,7 @@ ms.locfileid: "58189846"
 以下是在创建常见的实时流应用程序时涉及的常规步骤。
 
 > [!NOTE]
-> 目前，实时事件的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amslived@microsoft.com。 实时编码会影响计费，应该记住，将实时编码通道保持为“正在运行”状态会产生按小时计算的费用。  建议在实时流式处理事件完成之后立即停止正在运行的通道，以避免产生额外的小时费用。 
+> 目前，直播活动的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amshelp@microsoft.com。 实时编码会影响计费，应该记住，将实时编码通道保持为“正在运行”状态会产生按小时计算的费用。  建议在实时流式处理事件完成之后立即停止正在运行的通道，以避免产生额外的小时费用。 
 
 1. 将视频摄像机连接到计算机。 启动并配置一个可通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 
 
@@ -210,7 +211,7 @@ ms.locfileid: "58189846"
 ### <a id="preset"></a>系统预设
 指定此频道内的实时编码器要使用的预设。 目前，唯一允许的值是 **Default720p**（默认值）。
 
-请注意，如果需要自定义预设，应联系 amslived@microsoft.com。
+请注意, 如果需要自定义预设, 应联系amshelp@microsoft.com。
 
 Default720p 会将视频编码为以下 6 层。
 
@@ -230,12 +231,12 @@ Default720p 会将视频编码为以下 6 层。
 音频以 128 kbps 的速率编码为立体声 AAC-LC，采样率为 48 kHz。
 
 ## <a name="signaling-advertisements"></a>指示广告
-通道启用实时编码后，管道中会有一个正在处理视频的组件，可对其进行操作。 可以向通道发出信号，以将静态图像和/或广告插入到传出自适应比特率流中。 清单是在某些情况下（例如，在商业广告期间）可用于覆盖输入实时源的静止图像。 广告信号是嵌入到传出流中的时间同步信号，用于指示视频播放机执行特殊操作（例如，在适当时间切换到广告）。 有关用于此目的的 SCTE-35 信号机制的概述，请参阅此[博客](https://codesequoia.wordpress.com/2014/02/24/understanding-scte-35/)。 下面是可以在实时事件中实现的典型方案。
+通道启用实时编码后，管道中会有一个正在处理视频的组件，可对其进行操作。 可以向通道发出信号，以将静态图像和/或广告插入到传出自适应比特率流中。 清单是在某些情况下（例如，在商业广告期间）可用于覆盖输入实时源的静止图像。 广告信号是嵌入到传出流中的时间同步信号，用于指示视频播放机执行特殊操作（例如，在适当时间切换到广告）。 有关用于此目的的 SCTE-35 信号机制的概述，请参阅此[博客](https://codesequoia.wordpress.com/2014/02/24/understanding-scte-35/)。 下面是可以在直播活动中实现的典型方案。
 
 1. 在事件开始前，让观看者获得事件前图像。
 2. 在事件结束后，让观看者获得事件后图像。
 3. 如果在事件期间出现问题（例如，在体育场中出现电源故障，让观看者获得错误事件图像。
-4. 在商业广告期间发送广告时间图像以隐藏实时事件源。
+4. 在商业广告期间发送广告时间图像以隐藏直播活动源。
 
 以下是指示广告时可以设置的属性。 
 
@@ -329,8 +330,8 @@ Default720p 会将视频编码为以下 6 层。
 * 只有当频道处于“正在运行”状态且频道中的所有节目都已停止时才能停止频道。
 * 默认情况下，只能向媒体服务帐户添加 5 个通道。 这是所有新帐户的软配额。 有关详细信息，请参阅[配额和限制](media-services-quotas-and-limitations.md)。
 * 当频道或其关联的节目正在运行时，无法更改输入协议。 如果需要不同的协议，应当针对每个输入协议创建单独的频道。
-* 仅当通道处于“正在运行”  状态时才会收取费用。 有关详细信息，请参阅[此](media-services-manage-live-encoder-enabled-channels.md#states)部分。
-* 目前，实时事件的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amslived@microsoft.com。
+* 仅当通道处于“正在运行” 状态时才会收取费用。 有关详细信息，请参阅[此](media-services-manage-live-encoder-enabled-channels.md#states)部分。
+* 目前，直播活动的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amshelp@microsoft.com。
 * 确保使要从中流式传输内容的流式处理终结点处于“正在运行”状态。
 * 编码预设使用“最大帧速率”30 fps 的思路。 因此，如果输入为 60fps/59.94i，则输入帧将修剪/反交错为 30/29.97 fps。 因此，如果输入为 50fps/50i，则输入帧将修剪/反交错为 25 fps。 如果输入为 25 fps，则输出将保持为 25 fps。
 * 完成后请不要忘记关闭通道。 否则会继续计费。
@@ -359,7 +360,7 @@ Default720p 会将视频编码为以下 6 层。
 
 [媒体服务概念](media-services-concepts.md)
 
-[Azure 媒体服务零碎的 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
+[Azure 媒体服务零碎的 MP4 实时引入规范](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
 

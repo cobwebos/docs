@@ -1,29 +1,29 @@
 ---
-title: Azure Blockchain Workbench 中的区块链应用程序版本控制
-description: 如何在 Azure Blockchain Workbench 中使用应用程序版本。
+title: Azure 区块链工作台预览版中的区块链应用程序版本控制
+description: 如何在 Azure 区块链工作台预览版中使用应用程序版本。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 63f18e3ee316b9791bb62bfcd20c07a30cbebb5e
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 33ecb6dea48117edd876b90eda54768785f25c20
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579201"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843875"
 ---
-# <a name="azure-blockchain-workbench-application-versioning"></a>Azure Blockchain Workbench 应用程序版本控制
+# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Azure 区块链工作台预览版应用程序版本控制
 
-可以创建和使用 Azure Blockchain Workbench 应用的多个版本。 如果上传了同一应用程序的多个版本，则会提供版本历史记录并且用户可以选择要使用哪个版本。
+你可以创建和使用 Azure 区块链工作台预览应用的多个版本。 如果上传了同一应用程序的多个版本，则会提供版本历史记录并且用户可以选择要使用哪个版本。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Blockchain Workbench 部署。 有关部署的详细信息，请参阅 [Azure Blockchain Workbench 部署](deploy.md)
 * Blockchain Workbench 中部署的区块链应用程序。 请参阅 [在 Azure Blockchain Workbench 中创建区块链应用程序](create-app.md)

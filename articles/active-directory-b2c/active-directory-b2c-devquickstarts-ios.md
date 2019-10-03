@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中使用 iOS 应用程序的 AppAuth | Microsoft Docs
 description: 本文说明如何创建一个使用 AppAuth 和 Azure Active Directory B2C 来管理用户标识以及对用户进行身份验证的 iOS 应用。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c7eace7c643286575e2625cb81f84d858bbaa8f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 96221ffc8249f722268ea5778bee4b4389ded26e
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172742"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326599"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C：使用 iOS 应用程序登录
 
@@ -32,11 +32,12 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 只有在创建目录或租户之后，才可使用 Azure AD B2C。 目录是所有用户、应用、组等对象的容器。 如果没有容器，请先 [创建 B2C 目录](tutorial-create-tenant.md) ，再继续。
 
 ## <a name="create-an-application"></a>创建应用程序
-接下来，需要在 B2C 目录中创建应用。 应用注册为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。 若要创建移动应用，请遵循[这些说明](active-directory-b2c-app-registration.md)。 请务必：
 
-* 在应用程序中包含**本机客户端**。
-* 复制分配给应用的 **应用程序 ID** 。 稍后需要用到此 GUID。
-* 使用自定义方案（例如 com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect）设置“重定向 URI”。 稍后需要用到此 URI。
+接下来，将应用程序注册到 Azure AD B2C 租户。 这为 Azure AD 提供了与应用安全通信所需的信息。
+
+[!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
+
+记录**应用程序 ID** ，以便在后面的步骤中使用。 接下来，在列表中选择应用程序，并记录**自定义重定向 URI**，还可在后面的步骤中使用。 例如， `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
 ## <a name="create-your-user-flows"></a>创建用户流
 在 Azure AD B2C 中，每个用户体验由[用户流](active-directory-b2c-reference-policies.md)定义。 此应用程序包含一个标识体验：合并的登录和注册。 创建用户流时，请务必：
@@ -79,21 +80,22 @@ static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.
 运行以下代码创建 AuthorizationServiceConfiguration 对象：
 
 ```objc
-OIDServiceConfiguration *configuration = 
+OIDServiceConfiguration *configuration =
     [[OIDServiceConfiguration alloc] initWithAuthorizationEndpoint:authorizationEndpoint tokenEndpoint:tokenEndpoint];
 // now we are ready to perform the auth request...
 ```
 
 ### <a name="authorizing"></a>授权
 
-配置或检索授权服务配置后，可以构造授权请求。 若要创建该请求，需要提供以下信息：  
-* 客户端 ID（例如 00000000-0000-0000-0000-000000000000）
-* 使用自定义方案的重定向 URI（例如 com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect）
+配置或检索授权服务配置后，可以构造授权请求。 若要创建该请求，需要提供以下信息：
+
+* 之前记录的客户端 ID （应用程序 ID）。 例如， `00000000-0000-0000-0000-000000000000` 。
+* 之前记录的自定义重定向 URI。 例如， `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
 [注册应用](#create-an-application)时应已保存这两项信息。
 
 ```objc
-OIDAuthorizationRequest *request = 
+OIDAuthorizationRequest *request =
     [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
                                                   clientId:kClientId
                                                     scopes:@[OIDScopeOpenID, OIDScopeProfile]
@@ -102,7 +104,7 @@ OIDAuthorizationRequest *request =
                                       additionalParameters:nil];
 
 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-appDelegate.currentAuthorizationFlow = 
+appDelegate.currentAuthorizationFlow =
     [OIDAuthState authStateByPresentingAuthorizationRequest:request
                                    presentingViewController:self
                                                    callback:^(OIDAuthState *_Nullable authState, NSError *_Nullable error) {

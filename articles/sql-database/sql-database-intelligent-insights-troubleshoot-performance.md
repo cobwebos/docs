@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: fff4aa947f878974d2d0f18f373b8c0917ed7d70
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: f884b39db92f44f7cff938e0ac4b9c2e22dc36cb
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316041"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262188"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用 Intelligent Insights 排查 Azure SQL 数据库性能问题
 
-本页提供有关通过 [Intelligent Insights](sql-database-intelligent-insights.md) 数据库性能诊断日志检测到的 Azure SQL 数据库和托管实例性能问题的信息。 诊断日志遥测数据可以流向[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)， [Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)， [Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)，或第三方解决方案的自定义 DevOps 警报和报告功能。
+本页提供有关通过 [Intelligent Insights](sql-database-intelligent-insights.md) 数据库性能诊断日志检测到的 Azure SQL 数据库和托管实例性能问题的信息。 诊断日志遥测可以流式传输到[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)、 [azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
 
 > [!NOTE]
 > 有关通过 Intelligent Insights 快速排查 SQL 数据库性能问题的指导，请参阅本文档中的[建议的故障排除流程](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)流程图。
@@ -67,13 +66,13 @@ SQL 数据库上的资源通常称为 [DTU](sql-database-what-is-a-dtu.md) 或 [
 
 达到工作线程限制是一种特殊的达到资源限制的情况，因为可用工作线程数不会计入 DTU 或 vCore 用量。 数据库中达到工作线程限制可能会导致资源特定的等待时间延长，从而导致查询性能降低。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志会输出影响性能和资源消耗百分比的查询的查询哈希。 可以使用此信息作为优化数据库工作负荷的入手点。 具体而言，可以通过添加索引优化那些导致性能降低的查询。 也可以让工作负荷分配更均衡，从而优化应用程序。 如果无法减少工作负荷或进行优化，可以考虑提高 SQL 数据库订阅的定价层，以增加可用的资源量。
 
 如果已达到可用会话限制，可以通过减少数据库登录次数来优化应用程序。 如果无法减少从应用程序到数据库的登录数，可以考虑提高数据库的定价层。 也可以将数据库拆分成多个数据库并进行移动，使工作负荷的分配更为均衡。
 
-有关解决会话限制的更多建议，请参阅 [How to deal with the limits of SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)（如何处理 SQL 数据库最大登录数的限制）。 有关服务器和订阅级别限制的信息，请参阅 [SQL 数据库服务器上的资源限制概述](sql-database-resource-limits-database-server.md)。
+有关解决会话限制的更多建议，请参阅 [How to deal with the limits of SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)（如何处理 SQL 数据库最大登录数的限制）。 有关服务器和订阅级别限制的信息，请参阅 [SQL 数据库服务器资源限制概述](sql-database-resource-limits-database-server.md)。
 
 ## <a name="workload-increase"></a>工作负载增加
 
@@ -85,7 +84,7 @@ SQL 数据库上的资源通常称为 [DTU](sql-database-what-is-a-dtu.md) 或 [
 
 更严重时，由于 SQL 数据库无法处理工作负荷，导致工作负荷不断堆积。 结果就是工作负荷不断增大，即出现工作负荷堆积情况。 因此，工作负荷等待执行的时间也增加。 这种情况代表最严重的数据库性能问题之一。 可通过监视已中止工作线程数的增加情况来检测此问题。 
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志会输出执行时间已延长的查询数，以及对工作负荷增加影响最大的查询的查询哈希。 可以使用此信息作为优化工作负荷的入手点。 一开始可以确定对工作负荷增加影响最大的查询，这很有用。
 
@@ -101,7 +100,7 @@ SQL 数据库上的资源通常称为 [DTU](sql-database-what-is-a-dtu.md) 或 [
 
 内存压力增大时，更严重者会出现内存堆积的情况。 这种情况表明，请求内存授予的工作线程数超出释放内存的查询数。 这个请求内存授予的工作线程数还可能在此数字的基础上不断增加（堆积），因为 SQL 数据库引擎无法以足够高的效率分配内存，因而无法满足需求。 内存堆积的情况代表最严重的数据库性能问题之一。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志会输出内存对象存储详细信息，并输出已标记为内存使用率高最大原因的分配器（即工作线程）和相关时间戳。 可以将此信息用作故障排除的基础。 
 
@@ -121,7 +120,7 @@ SQL 数据库上的资源通常称为 [DTU](sql-database-what-is-a-dtu.md) 或 [
 
 如果 SQL 引擎执行的事务长时间等待访问已被锁定供独占使用的资源，这段等待时间会导致工作负荷在执行起来时变慢。 
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志会输出锁定详细信息，可将这些信息用作故障排除的基础。 可以分析报告的阻塞查询（即造成锁定性能降低的查询）并将其删除。 在某些情况下，可以成功优化阻塞查询。
 
@@ -139,7 +138,7 @@ SQL 数据库上的资源通常称为 [DTU](sql-database-what-is-a-dtu.md) 或 [
 
 SQL 数据库的 MAXDOP 服务器配置选项用于控制并行执行同一查询时可以使用的 CPU 核心数。 
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志会输出与查询相关的查询哈希，这些查询由于并行化程度超出预期，其执行持续时间延长。 日志还会输出 CXP 等待时间。 此时间表示单个组织器/协调器线程（线程 0）在合并结果并继续运行之前，等待其他所有线程完成的时间。 此外，诊断日志还会输出性能不佳的查询在执行过程中等待的总时间。 可以将此信息用作故障排除的基础。
 
@@ -159,7 +158,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 当多个线程同时尝试获取同一内存中结构上的闩锁，从而造成查询执行的等待时间延长时，就会发生页闩锁争用。 如果在需要从存储访问数据时发生 Pagelatch IO 争用，这段等待时间甚至会更长， 并可能会显著影响工作负荷性能。 Pagelatch 争用是线程相互等待，在多个 CPU 系统上争用资源的最常见情景。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志输出 Pagelatch 争用详细信息。 可以将此信息用作故障排除的基础。
 
@@ -179,7 +178,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 可以通过此项检测来识别导致性能降低的特定查询。创建索引对性能有利。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志会输出查询的查询哈希，这些查询已确定会影响工作负荷性能。 可以为这些查询生成索引。 还可以优化查询，或者删除不需要的那些查询。 在性能方面，合理的做法是避免查询不使用的数据。
 
@@ -189,7 +188,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 > 若要持续进行 SQL 数据库性能优化，建议启用 [SQL 数据库自动优化](sql-database-automatic-tuning.md)。 SQL 数据库内置智能的这项独特功能可以持续监视 SQL 数据库并自动优化和创建数据库的索引。
 >
 
-## <a name="new-query"></a>新查询
+## <a name="new-query"></a>新建查询
 
 ### <a name="what-is-happening"></a>发生了什么
 
@@ -197,7 +196,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 有时，编写性能良好的查询很有难度。 有关编写查询的详细信息，请参阅 [Writing SQL queries](https://msdn.microsoft.com/library/bb264565.aspx)（编写 SQL 查询）。 若要优化现有的查询性能，请参阅[查询优化](https://msdn.microsoft.com/library/ms176005.aspx)。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志会输出最多两个 CPU 消耗量最大的新查询的信息，包括其查询哈希。 由于检测到的查询影响工作负荷性能，可以优化查询。 最好是只检索需要使用的数据。 另外，建议使用带 WHERE 子句的查询， 并简化复杂的查询，将其分解成更小的查询。 将大批查询分解成小批查询也是好办法。 为新查询引入索引通常是缓解此性能问题的好办法。
 
@@ -211,7 +210,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 在这种情况下，系统无法将性能不佳的查询归到任何其他标准的可检测性能类别下，但确实检测到导致性能回归的等待统计信息。 因此，系统会将其视为具有等待时间延长统计信息的查询，并会在其中公开导致性能回归的等待时间统计信息。 
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志会输出等待时间延长详情、受影响查询的查询哈希的信息。
 
@@ -225,7 +224,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 这种可检测的性能模式表示这样一种数据库性能状况：尝试访问 tempDB 资源的线程存在瓶颈。 （这种状况与 IO 不相关。）此性能问题的典型情景是数百个并发查询都在创建、使用然后删除小型 tempDB 表。 系统已检测到使用相同 tempDB 表的并发请求数出现了统计学意义上的大幅增长，影响了数据库的性能（与过去七天的性能基线相比）。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志输出 tempDB 争用详细信息。 可以将此信息用作故障排除的入手点。 可以通过两项操作来减轻此类争用并提高整个工作负荷的吞吐量：一是停止使用临时表， 二是使用内存优化表。 
 
@@ -239,7 +238,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 SQL 数据库中的资源通常称为 [DTU 资源](sql-database-purchase-models.md#dtu-based-purchasing-model)，由 CPU 和 IO（数据和事务日志 IO）资源的混合度量值构成。 [Azure 弹性池资源](sql-database-elastic-pool.md)用作出于缩放目的而在多个数据库之间共享的可用 eDTU 资源的池。 如果弹性池中的可用 eDTU 资源不够大，无法支持池中的所有数据库，则系统就会检测到“弹性池 DTU 不足”性能问题。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志会输出有关弹性池的信息，列出 DTU 消耗量最大的数据库，并提供消耗量最大的数据库所使用的池 DTU 的百分比。
 
@@ -261,7 +260,7 @@ SQL 数据库可以确定查询执行开销最低的查询执行计划。 由于
 
 有关计划回归的详细信息，请参阅 [What is plan regression in SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/)（SQL Server 中的计划回归是什么？）。 
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志输出查询哈希、正确计划 ID、错误计划 ID 和查询 ID。 可以将此信息用作故障排除的基础。
 
@@ -283,7 +282,7 @@ SQL 数据库可以确定查询执行开销最低的查询执行计划。 由于
 
 可以针对每个数据库设置数据库范围的配置更改。 根据具体的情况使用此配置可以优化数据库的个体性能。 可以为每个单独的数据库配置以下选项：MAXDOP、LEGACY_CARDINALITY_ESTIMATION、PARAMETER_SNIFFING、QUERY_OPTIMIZER_HOTFIXES 和 CLEAR PROCEDURE_CACHE。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 诊断日志会输出最近进行的、导致性能相比过去七天的工作负荷行为有所降级的数据库范围配置更改。 可以将配置更改还原为以前的值。 也可对值逐个进行优化，直到达到所需性能级别。 可以从性能令人满意的类似数据库中复制数据库范围配置值。 如果无法排查性能问题，可以还原为 SQL 数据库默认值，并尝试从此基线开始进行微调。
 
@@ -297,7 +296,7 @@ SQL 数据库可以确定查询执行开销最低的查询执行计划。 由于
 
 仅当检测到性能回归（与过去七天的数据库工作负荷行为相比）时，才会产生这种状况。 仅当性能与过去的性能行为相比，在统计学上有显著的降级时，才会检测到这种性能问题。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 这种可检测的性能模式指示客户端的情况。 必须在客户端应用程序或客户端网络上进行故障排除。 诊断日志会输出在过去两小时内让客户端等待最长时间来使用的查询哈希和等待时间。 可以将此信息用作故障排除的基础。
 
@@ -311,7 +310,7 @@ SQL 数据库可以确定查询执行开销最低的查询执行计划。 由于
 
 此外，可能 SQL 数据库订阅的定价层曾经降级，后来又在短时间内升级到更高的层。 检测到这种暂时性的性能降低时，会将检测结果作为定价层降级和升级输出到诊断日志的 details 节中。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 如果降低了定价层，因而减少了可供 SQL 数据库使用的 DTU 数，但同时对性能感到满意，则不需采取任何措施。 如果降低定价层后对 SQL 数据库的性能不满意，请减少数据库工作负荷，或考虑将定价层提升到更高的级别。
 
@@ -332,4 +331,4 @@ Intelligent Insights 通常需要花费一小时来针对性能问题执行根�
 - 了解 [Intelligent Insights](sql-database-intelligent-insights.md) 概念。
 - 使用 [Intelligent Insights Azure SQL 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
 - [使用 Azure SQL Analytics 监视 Azure SQL 数据库](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)。
-- 了解如何[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/diagnostic-logs-overview.md)。
+- 了解如何[从 Azure 资源收集和使用日志数据](../azure-monitor/platform/resource-logs-overview.md)。

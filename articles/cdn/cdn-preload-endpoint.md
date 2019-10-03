@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 5ea3eba5-1335-413e-9af3-3918ce608a83
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: magattus
-ms.openlocfilehash: 0d34985c8d83e8adad43aeec36ead939d8b22132
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d91507ad2cb271b23b588ef7da88e6e6712915b1
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918359"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593583"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>在 Azure CDN 终结点上预加载资产
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -37,17 +37,17 @@ ms.locfileid: "58918359"
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到包含要预加载的终结点的 CDN 配置文件。 此时将打开配置文件窗格。
     
 2. 单击列表中的终结点。 此时将打开终结点窗格。
-3. 从 CDN 终结点的窗格中，选择“加载”。
+3. 从 CDN 终结点的窗格中，选择“加载”  。
    
     ![CDN 终结点窗格](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
    
-    此时将打开“加载”窗格。
+    此时将打开“加载”  窗格。
    
     ![CDN 加载窗格](./media/cdn-preload-endpoint/cdn-load-blade.png)
-4. 对于“内容路径”，输入想要加载的每个资产的完整路径（例如，`/pictures/kitten.png`）。
+4. 对于“内容路径”  ，输入想要加载的每个资产的完整路径（例如，`/pictures/kitten.png`）。
    
    > [!TIP]
-   > 开始输入文本后，会出现更多“内容路径”文本框，以允许生成多个资产的列表。 若要从列表中删除资产，请选择省略号 (...) 按钮，然后选择“删除”。
+   > 开始输入文本后，会出现更多“内容路径”  文本框，以允许生成多个资产的列表。 若要从列表中删除资产，请选择省略号 (...) 按钮，然后选择“删除”  。
    > 
    > 每个内容路径必须是符合以下[正则表达式](/dotnet/standard/base-types/regular-expression-language-quick-reference)的相对 URL：  
    > - 加载单个文件路径：`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
@@ -58,7 +58,7 @@ ms.locfileid: "58918359"
    > 
    
     ![“加载”按钮](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. 完成输入内容路径后，请选择“加载”。
+5. 完成输入内容路径后，请选择“加载”  。
    
 
 > [!NOTE]
@@ -66,7 +66,7 @@ ms.locfileid: "58918359"
 > 
 > 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [清除 Azure CDN 终结点](cdn-purge-endpoint.md)
 * [Azure CDN REST API 参考：预加载终结点上的内容](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
 * [Azure CDN REST API 参考：从终结点清除内容](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)

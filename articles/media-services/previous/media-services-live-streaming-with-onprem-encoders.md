@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: cenkd;juliako
-ms.openlocfilehash: da20e4601b75bcb22546d21f6ad218ac9ba2728b
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.author: juliako
+ms.openlocfilehash: a299c050be37d53acd01ddc2db580c4881eeae07
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188350"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "69015481"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>使用从本地编码器接收多比特率实时流的频道
 
@@ -45,7 +45,7 @@ ms.locfileid: "58188350"
 > [!NOTE]
 > 本文讨论未启用执行实时编码的频道的属性。 若要了解如何使用执行实时编码的频道，请参阅[使用 Azure 媒体服务创建多比特率流的实时传送视频流](media-services-manage-live-encoder-enabled-channels.md)。
 >
->有关建议在本地编码器上，请参阅有关的信息[建议在本地编码器上](media-services-recommended-encoders.md)。
+>有关建议的本地编码器的信息，请参阅[建议的本地编码器](media-services-recommended-encoders.md)。
 
 下图表示的是一个使用本地实时编码器输出多比特率 RTMP 或分片 MP4（平滑流式处理）流的实时传送视频流工作流。
 
@@ -229,9 +229,9 @@ ms.locfileid: "58188350"
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>相关主题
-[建议在本地编码器上](media-services-recommended-encoders.md)
+[建议的本地编码器](media-services-recommended-encoders.md)
 
-[Azure 媒体服务分片 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
+[Azure 媒体服务分片 MP4 实时引入规范](../media-services-fmp4-live-ingest-overview.md)
 
 [Azure 媒体服务概述和常见方案](media-services-overview.md)
 

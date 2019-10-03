@@ -7,22 +7,23 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 1c77d0ea9e67c8d69f3f632cace164d8a0c4d921
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617591"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66305259"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念
 
 本文介绍了 Azure 事件网格中的主要概念。
 
-## <a name="events"></a>活动
+## <a name="events"></a>Events
 
 事件是完全描述系统中所发生情况的最小信息量。 每个事件都具有通用信息，如事件源、事件发生的时间和唯一标识符。 此外，每个事件还具有仅与特定事件类型相关的特定信息。 例如，与在 Azure 存储中创建的有关新文件的事件将包含有关该文件的详细信息，如 `lastTimeModified` 值。 再如，事件中心事件具有 Capture 文件的 URL。 
 
-每个事件被限制为 64 KB 的数据。
+事件的大小高达 64 KB 介绍了通过正式版 (GA) 服务级别协议 (SLA)。 大小最多的事件的支持 1 MB 目前处于预览状态。 超过 64 KB 的事件是按 64 KB 的增量计费。 
+
 
 至于在事件中发送的属性，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
@@ -40,7 +41,7 @@ ms.locfileid: "59617591"
 
 事件网格主题提供源在其中发送事件的终结点。 发布服务器创建事件网格主题，并决定事件源需要一个主题还是多个主题。 主题用于收集相关事件。 为了对某些类型的事件作出响应，订阅服务器将决定要订阅的主题。
 
-系统主题是 Azure 服务提供的内置主题。 在 Azure 订阅中看不到系统主题，因为发布服务器拥有这些主题，但你可以订阅它们。 若要订阅，可以提供想要从中接收事件的资源的相关信息。 只要有权访问资源时，您可以订阅其事件。
+系统主题是 Azure 服务提供的内置主题。 在 Azure 订阅中看不到系统主题，因为发布服务器拥有这些主题，但你可以订阅它们。 若要订阅，可以提供想要从中接收事件的资源的相关信息。 只要你有权访问资源，就可以订阅其事件。
 
 自定义主题是应用程序和第三方主题。 在创建或分配了对自定义主题的访问权限后，就会在订阅中看到该自定义主题。
 
@@ -59,9 +60,6 @@ ms.locfileid: "59617591"
 有关获取当前事件网格订阅的信息，请参阅[查询事件网格订阅](query-event-subscriptions.md)。
 
 ## <a name="event-subscription-expiration"></a>事件订阅过期
-
-Azure CLI 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)允许你在创建事件订阅时设置过期日期。 如果你使用的是 REST API，请使用 `api-version=2018-09-15-preview`
-
 事件订阅在该日期后自动过期。 为仅在有限时间内需要的事件订阅设置一个过期日期，你不需要担心清理这些订阅。 例如，创建事件订阅来测试某个方案时，你可能想要设置过期日期。 
 
 有关设置过期日期的示例，请参阅[使用高级筛选器进行订阅](how-to-filter-events.md#subscribe-with-advanced-filters)。
@@ -82,7 +80,10 @@ Azure CLI 的[事件网格扩展](/cli/azure/azure-cli-extensions-list)允许你
 
 ## <a name="batching"></a>批处理
 
-使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，可采用单批；但对于大容量用例，建议在每次发布时对多个事件进行批处理，以实现更高的效率。 批的大小最大可达 1 MB。 每个事件还不应当超过 64 KB。
+使用自定义主题时，必须始终在数组中发布事件。 对于低吞吐量方案，可采用单批；但对于大容量用例，建议在每次发布时对多个事件进行批处理，以实现更高的效率。 批的大小最大可达 1 MB。 每个事件应仍不能大于 64 KB （正式版） 或 1 MB （预览版）。
+
+> [!NOTE]
+> 事件的大小高达 64 KB 介绍了通过正式版 (GA) 服务级别协议 (SLA)。 大小最多的事件的支持 1 MB 目前处于预览状态。 超过 64 KB 的事件是按 64 KB 的增量计费。 
 
 ## <a name="next-steps"></a>后续步骤
 

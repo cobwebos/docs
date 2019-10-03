@@ -3,16 +3,16 @@ title: Azure IoT 中心的设备配置最佳做法 | Microsoft Docs
 description: 了解有关大规模配置 IoT 设备的最佳做法
 author: chrisgre
 ms.author: chrisgre
-ms.date: 06/24/2018
+ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: c97395981ea3af90c7b0c590cb049fccc7392304
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 33e77d63b958df292ee9b4ac8ded41f3693cb6bc
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797186"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485810"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT 解决方案中设备配置的最佳做法
 
@@ -64,9 +64,11 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 * **组织设备使用设备孪生标记：** 该解决方案应允许运算符来定义质量环或基于如 canary 的各种部署策略的设备的其他设置。 可以使用设备孪生标记和[查询](iot-hub-devguide-query-language.md)在解决方案内部实施设备组织。 需要通过设备组织以安全准确的方式实现配置实施。
 
-* **实现[自动设备配置](iot-hub-auto-device-config.md):** 自动设备配置部署和监视配置更改为大量 IoT 设备通过设备孪生。 自动设备配置通过**目标条件**（针对设备孪生标记或报告属性执行的查询）将设备孪生集指定为目标。 **目标内容**是要在目标设备孪生内部设置的所需属性集。 目标内容应与 IoT 硬件制造商/系统集成商定义的设备孪生结构相符。
+* **实现[自动设备配置](iot-hub-auto-device-config.md):** 自动设备配置部署和监视配置更改为大量 IoT 设备通过设备孪生。
 
-   **指标**是针对设备孪生报告属性执行的查询，也应该与 IoT 硬件制造商/集成商定义的设备孪生结构相符。 自动设备配置还具有 IoT 中心的优势。IoT 中心以永不超过设备孪生读取和更新[限制](iot-hub-devguide-quotas-throttling.md)的速率执行设备孪生操作。
+   自动设备配置通过**目标条件**（针对设备孪生标记或报告属性执行的查询）将设备孪生集指定为目标。 **目标内容**是要在目标设备孪生内部设置的所需属性集。 目标内容应与 IoT 硬件制造商/系统集成商定义的设备孪生结构相符。 **指标**为查询设备孪生报告属性和也应与 IoT 硬件制造商/集成商定义的设备孪生结构保持一致。
+
+   自动设备配置运行首次创建的配置后不久和，然后在五分钟的时间间隔。 他们还可从 IoT 中心设备孪生操作不会超过的速率执行获益[节流限制](iot-hub-devguide-quotas-throttling.md)针对设备孪生读取和更新。
 
 * **使用[设备预配服务](../iot-dps/how-to-manage-enrollments.md):** 解决方案开发人员应使用设备预配服务将设备孪生标记分配给新的设备，以便它们将自动配置通过**自动设备配置**面向孪生带有该标记。 
 

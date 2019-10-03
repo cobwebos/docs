@@ -3,7 +3,7 @@ title: 安全连接 Azure Service Fabric 群集 | Microsoft Docs
 description: 介绍如何对访问 Service Fabric 群集的客户端进行身份验证，以及如何保护客户端与群集之间的通信。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2019
-ms.author: aljo
-ms.openlocfilehash: 42c8fa15c6b1e7c98ae47180bec5cc61236a7c44
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: atsenthi
+ms.openlocfilehash: c350b53b2d0b235c5e34431386205f090f37b482
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666522"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599715"
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 
@@ -355,7 +355,7 @@ Azure 门户的群集基本信息窗格中也提供了完整 URL。
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-系统会自动提示用户使用 AAD 登录。
+系统会自动提示你登录到 AAD。
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用客户端证书连接到安全群集
 

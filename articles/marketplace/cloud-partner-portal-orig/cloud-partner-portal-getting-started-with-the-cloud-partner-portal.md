@@ -1,25 +1,18 @@
 ---
-title: 入门 | Microsoft Docs
+title: 入门 |Azure Marketplace
 description: 云合作伙伴门户入门。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 00558b9effed39e160aef93c22431863daf6aa0d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 9d2c64479f65995c0eca756b86bd0a96a752867d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805234"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935742"
 ---
 # <a name="getting-started-with-the-cloud-partner-portal"></a>云合作伙伴门户入门
 
@@ -51,7 +44,7 @@ ms.locfileid: "48805234"
 ![产品页面](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/offer-page.png)
 
 在“产品/服务”页上，可以执行以下操作：
-- 通过在两种顶级模式：**编辑器**和**状态**之间来回切换，来添加内容或检查产品/服务的状态。
+- 添加内容或检查通过两种最高级别模式之间切换产品/服务的状态：**编辑器**并**状态**。
 - 使用**操作栏**通过保存和放弃输入来显式管理产品/服务的更改。
 - 在更改产品/服务设置时，可以在每个产品/服务所需要的**格式**之间导航。
 

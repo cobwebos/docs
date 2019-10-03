@@ -10,16 +10,15 @@ ms.assetid: 5189f3d8-2a4c-4dc8-ab19-11c7df0114d4
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 0f339984a9db1a337f97e6db24571004cc34f679
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: HT
+ms.openlocfilehash: eb06c1c5db20f3216c5c8e81580e445f9c0ba804
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445474"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072607"
 ---
 # <a name="developer-portal-templates"></a>开发人员门户模板
 

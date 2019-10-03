@@ -7,13 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/11/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: fd8eecbd20446bfde8d3a7467e2982398c3b8c19
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d94f6297f27eb3ea130b443ccf94052d391eb46d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59044957"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985328"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>启动存储帐户故障转移（预览版）
 
@@ -26,7 +27,7 @@ ms.locfileid: "59044957"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 请先确保已按照以下步骤操作，然后才能对存储帐户执行帐户故障转移：
 
@@ -66,13 +67,14 @@ ms.locfileid: "59044957"
 1. 卸载以前安装的所有 Azure PowerShell：
 
     - 使用“设置”下的“应用和功能”设置从 Windows 中删除以前安装的所有 Azure PowerShell。
-    - 从 `%Program Files%\WindowsPowerShell\Modules` 中删除所有 **Azure*** 模块。
-    
+    - 从中 `%Program Files%\WindowsPowerShell\Modules`删除所有 Azure 模块。
+
 1. 确保已安装 PowerShellGet 最新版本。 打开 Windows PowerShell 窗口，然后运行以下命令以安装最新版本：
- 
+
     ```powershell
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+
 1. 安装 PowerShellGet 后关闭并重新打开 PowerShell 窗口。 
 
 1. 安装最新版本的 Azure PowerShell：
@@ -81,14 +83,14 @@ ms.locfileid: "59044957"
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. 安装支持 Azure AD 的 Azure 存储预览模块：
-   
+1. 安装支持帐户故障转移的 Azure 存储预览模块:
+
     ```powershell
     Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
     ```
+
 1. 关闭并重新打开 PowerShell 窗口。
  
-
 若要使用 PowerShell 启动帐户故障转移，请执行以下命令：
 
 ```powershell

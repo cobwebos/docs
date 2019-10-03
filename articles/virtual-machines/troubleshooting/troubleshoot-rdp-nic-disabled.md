@@ -4,21 +4,20 @@ description: 了解因为 NIC 在 Azure VM 中被禁用而导致 RDP 失败时�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 742026a8ff35f318f58674ebc2fb5c03e45161a8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
-ms.translationtype: HT
+ms.openlocfilehash: 666868d723b5e040b69762cdb39f472f2f8822c9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133326"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057918"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>无法通过远程桌面连接到 VM，因为网络接口被禁用
 
@@ -53,8 +52,7 @@ ms.locfileid: "53133326"
 
     例如，如果网络接口名为“以太网 2”，请运行以下命令：
 
-        netsh interface set interface name=""Ethernet 2" admin=enabled
-
+        netsh interface set interface name="Ethernet 2" admin=enabled
 
 4.  再次检查该网络接口的状态以确保该网络接口已启用。
 

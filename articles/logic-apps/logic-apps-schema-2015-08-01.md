@@ -11,18 +11,18 @@ ms.assetid: 0d03a4d4-e8a8-4c81-aed5-bfd2a28c7f0c
 ms.topic: article
 ms.date: 05/31/2016
 ms.openlocfilehash: 92f522c72f69218e55b1ee4cfff74511a30288b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904535"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60553753"
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Azure 逻辑应用的架构更新 - 2015 年 8 月 1 日预览版
 
 适用于 Azure 逻辑应用的这个架构和 API 版本包含多项关键改进，使逻辑应用更可靠且更易于使用：
 
-* “APIApp”操作类型现在名为“[APIConnection](#api-connections)”。
-* “Repeat”操作现在名为“[Foreach](#foreach)”。
+* “APIApp”操作类型现在名为“[APIConnection](#api-connections)”   。
+* “Repeat”操作现在名为“[Foreach](#foreach)”   。
 * 不再需要 [**HTTP 侦听器** API 应用](#http-listener)。
 * 调用子工作流会使用[新架构](#child-workflows)。
 
@@ -39,7 +39,7 @@ ms.locfileid: "57904535"
 
 ### <a name="managed-apis"></a>托管 API
 
-Microsoft 代表你管理某些 API，例如 Office 365、Salesforce、Twitter 和 FTP。 某些托管 API 可以按原样使用（例如必应翻译），但另一些 API 需要进行配置，也称为连接。
+Microsoft 代表你管理某些 API，例如 Office 365、Salesforce、Twitter 和 FTP。 某些托管 API 可以按原样使用（例如必应翻译），但另一些 API 需要进行配置，也称为连接  。
 
 例如，在使用 Office 365 时，必须创建包括 Office 365 登录令牌的连接。 令牌以安全方式存储和刷新，以便逻辑应用可以随时调用 Office 365 API。 如果要连接到 SQL 或 FTP 服务器，则必须创建具有连接字符串的连接。 
 
@@ -78,7 +78,7 @@ Microsoft 代表你管理某些 API，例如 Office 365、Salesforce、Twitter �
 GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/locations/<location>/managedApis?api-version=2015-08-01-preview
 ```
 
-使用 API 时，该 API 可以定义也可以不定义任何连接参数。 因此，如果 API 未定义这些参数，则不需要任何连接。 如果 API 定义了这些参数，则必须创建含有指定名称的连接。  
+使用 API 时，该 API 可以定义也可以不定义任何连接参数  。 因此，如果 API 未定义这些参数，则不需要任何连接。 如果 API 定义了这些参数，则必须创建含有指定名称的连接。  
 然后，可以在 `host` 对象内的 `connection` 对象中引用该名称。 若要在资源组中创建连接，请调用此方法：
 
 ```text
@@ -221,7 +221,7 @@ PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceG
 
 ### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>使用 2015-08-01-preview 调用已部署的 API 应用
 
-如果以前部署了 API 应用，则可以通过 HTTP 操作调用该应用。
+如果以前部署了 API 应用，则可以通过 HTTP 操作调用该应用  。
 例如，如果使用 Dropbox 列出文件，则 **2014-12-01-preview** 架构版本定义可能具有与下面类似的内容：
 
 ``` json
@@ -305,7 +305,7 @@ PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceG
 
 ## <a name="renamed-repeat-to-foreach"></a>已将“repeat”重命名为“foreach”
 
-对于以前的架构版本，很多客户反馈说，“Repeat”操作名称让人困惑，并且没有正确地表达“Repeat”实际上是一个 for-each 循环。 因此，我们将 `repeat` 重命名为 `foreach`。 以前，你会如下例所示编写此操作：
+对于以前的架构版本，很多客户反馈说，“Repeat”操作名称让人困惑，并且没有正确地表达“Repeat”实际上是一个 for-each 循环   。 因此，我们将 `repeat` 重命名为 `foreach`。 以前，你会如下例所示编写此操作：
 
 ``` json
 "actions": {

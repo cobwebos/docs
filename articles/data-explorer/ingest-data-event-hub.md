@@ -1,32 +1,32 @@
 ---
-title: 快速入门：将数据从事件中心引入到 Azure 数据资源管理器
-description: 在本快速入门中，将了解如何将数据从事件中心引入（加载）到 Azure 数据资源管理器。
+title: 将数据从事件中心引入到 Azure 数据资源管理器
+description: 本文介绍如何将数据从事件中心引入（加载）到 Azure 数据资源管理器中。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 02/02/2018
-ms.openlocfilehash: 52bdbe6d34fb631cd4b2205dfad25399fe0e43fb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 07/17/2019
+ms.openlocfilehash: e52ce4411a2fa1969db196ba2e32bb485f71f8b6
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048381"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931228"
 ---
-# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>快速入门：将数据从事件中心引入到 Azure 数据资源管理器
+# <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本快速入门中，将创建事件中心，从 Azure 数据资源管理器中连接到该事件中心，并查看系统中的数据流。
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本文中，将创建事件中心，从 Azure 数据资源管理器中连接到该事件中心，并查看通过系统的数据流。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* [测试群集和数据库](create-cluster-database-portal.md)
+* [一个测试群集和数据库](create-cluster-database-portal.md)。
 
 * 生成数据并将其发送到事件中心的[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)。 将示例应用下载到系统。
 
-* 运行示例应用的 [Visual Studio 2017 版本 15.3.2 或更高版本](https://www.visualstudio.com/vs/)
+* 用于运行示例应用的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -34,7 +34,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="create-an-event-hub"></a>创建事件中心
 
-在本快速入门中，生成示例数据并将其发送到事件中心。 第一步是创建事件中心。 通过使用 Azure 资源管理器模板在 Azure 门户中执行此操作。
+在本文中，将生成示例数据并将其发送到事件中心。 第一步是创建事件中心。 通过使用 Azure 资源管理器模板在 Azure 门户中执行此操作。
 
 1. 若要创建事件中心，请使用以下按钮开始部署。 右键单击并选择“在新窗口中打开”，以便按本文中的剩余步骤操作。
 
@@ -56,9 +56,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     **设置** | **建议的值** | **字段说明**
     |---|---|---|
-    | 订阅 | 订阅 | 选择要用于事件中心的 Azure 订阅。|
+    | 订阅 | 你的订阅 | 选择要用于事件中心的 Azure 订阅。|
     | 资源组 | test-hub-rg | 创建新的资源组。 |
-    | 位置 | *美国西部* | 为此快速入门选择美国西部。 对于生产系统，请选择最能满足你需求的区域。 在与 Kusto 群集相同的位置创建事件中心命名空间以获得最佳性能（对于具有高吞吐量的事件中心命名空间来说最重要）。
+    | Location | *美国西部* | 对于本文, 请选择 "*美国西部*"。 对于生产系统，请选择最能满足你需求的区域。 在与 Kusto 群集相同的位置创建事件中心命名空间以获得最佳性能（对于具有高吞吐量的事件中心命名空间来说最重要）。
     | 命名空间名称 | 唯一的命名空间名称 | 选择用于标识命名空间的唯一名称。 例如，mytestnamespace。 域名 servicebus.windows.net 将追加到所提供的名称。 该名称只能包含字母、数字和连字符。 名称必须以字母开头，并且必须以字母或数字结尾。 值长度必须介于 6 到 50 个字符之间。
     | 事件中心名称 | test-hub | 事件中心位于命名空间下，该命名空间提供唯一的范围容器。 事件中心名称在命名空间中必须唯一。 |
     | 使用者组名称 | test-group | 使用者组允许多个使用应用程序各自具有事件流的单独视图。 |
@@ -118,15 +118,18 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     目标表：
 
-    有两个路由选项：静态和动态。 对于此快速入门，请使用静态路由（默认），以便指定表名、文件格式和映射。 因此，请让“我的数据包含路由信息”保留未选中状态。
-    也可使用动态路由，其中的数据包含必需的路由信息。
+    路由引入数据有两个选项：静态和动态。 
+    本文将使用静态路由，需在其中指定表名、数据格式和映射。 因此，请让“我的数据包含路由信息”保留未选中状态。
 
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
     | 表 | TestTable | 在“TestDatabase”中创建的表。 |
-    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOH、SCSV、TSV 和 TXT。 |
-    | 列映射 | TestMapping | 在 **TestDatabase** 中创建的映射将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。|
+    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOH、SCSV、TSV 和 TXT。 支持的压缩选项：GZip |
+    | 列映射 | TestMapping | 在 **TestDatabase** 中创建的映射将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。 对于 JSON、多行 JSON 或 AVRO 是必需的，对于其他格式是可选的。|
     | | |
+
+    > [!NOTE]
+    > 选择“我的数据包含路由信息”以使用动态路由，其中你的数据包含必要的路由信息，如[示例应用](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)注释中所示。 如果同时设置了静态和动态属性，则动态属性将覆盖静态属性。 
 
 ## <a name="copy-the-connection-string"></a>复制连接字符串
 
@@ -134,7 +137,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 在创建的事件中心命名空间下，选择“共享访问策略”，然后选择“RootManageSharedAccessKey”。
 
-    ![共享访问策略](media/ingest-data-event-hub/shared-access-policies.png)
+    ![共享的访问策略](media/ingest-data-event-hub/shared-access-policies.png)
 
 1. 复制“连接字符串 - 主键”。 请将其粘贴到下一节。
 
@@ -184,7 +187,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     ![消息结果集](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 该策略配置为 5 分钟，因此你可能会遇到延迟。
+    > * Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。 默认情况下，该策略配置为 5 分钟或 500 MB 数据，因此你可能会遇到延迟。 有关聚合选项，请参阅[批处理策略](/azure/kusto/concepts/batchingpolicy)。 
+    > * 事件中心引入包括 10 秒或 1 MB 的事件中心响应时间。 
+    > * 配置表以支持流式处理并消除响应时间延迟。 请参阅[流式处理策略](/azure/kusto/concepts/streamingingestionpolicy)。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -202,5 +207,4 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [快速入门：在 Azure 数据资源管理器中查询数据](web-query-data.md)
+* [在 Azure 数据资源管理器中查询数据](web-query-data.md)

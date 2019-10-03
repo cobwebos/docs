@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 9a267150673499c397d85059a0d03826a3584a87
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165105"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173170"
 ---
 > [!div class="op_single_selector"]
 > * [.NET](../articles/storage/common/storage-client-side-encryption.md)

@@ -1,19 +1,19 @@
 ---
 title: 在 Apache Kafka 中启用自动创建主题功能 - Azure HDInsight
 description: 了解如何将 Apache Kafka on HDInsight 配置为自动创建主题。 配置 Kafka 时，可以通过 Ambari 将 auto.create.topics.enable 设置为 true，也可以在创建群集的过程中通过 PowerShell 或资源管理器模板来进行。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: b9f17ad0ccfd5e58d5b93bde91e6f9c537a15fa6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.openlocfilehash: 393087f4d5c5e7a52fd2dd10d20362a045a0075b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606888"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122670"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>如何将 Apache Kafka on HDInsight 配置为自动创建主题
 
@@ -25,7 +25,7 @@ ms.locfileid: "53606888"
 
 1. 从 [Azure 门户](https://portal.azure.com)选择 Kafka 群集。
 
-2. 从“群集概览”中选择“群集仪表板”。 
+2. 从“群集概览”中选择“群集仪表板”。
 
     ![群集仪表板处于选中状态的门户的图像](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
 
@@ -35,15 +35,15 @@ ms.locfileid: "53606888"
 
 3. 从页面左侧的列表选择 Kafka 服务。
 
-    ![服务列表](./media/apache-kafka-auto-create-topics/service-list.png)
+    ![Apache Ambari 服务列表选项卡](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
 4. 在页面中间选择“配置”。
 
-    ![“服务配置”选项卡](./media/apache-kafka-auto-create-topics/service-config.png)
+    ![Apache Ambari 服务配置选项卡](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-5. 在“筛选器”字段中输入值 `auto.create`。 
+5. 在“筛选器”字段中输入值 `auto.create`。
 
-    ![筛选器字段图像](./media/apache-kafka-auto-create-topics/filter.png)
+    ![Apache Ambari 搜索筛选器字段](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
     这将筛选的属性，并显示列表`auto.create.topics.enable`设置。
 
@@ -53,7 +53,7 @@ ms.locfileid: "53606888"
 
 7. 依次选择 Kafka 服务、“重启”、“重启所有受影响的项”。 出现提示时，选择“确认全部重启”。
 
-    ![重启选择的图像](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    ![Apache Ambari 重新启动所有受影响的](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]  
 > 也可通过 Ambari REST API 设置 Ambari 值。 这通常更为困难，因为需进行多次 REST 调用来检索并修改当前配置以及执行其他操作。有关详细信息，请参阅[使用 Apache Ambari REST API 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari-rest-api.md)文档。

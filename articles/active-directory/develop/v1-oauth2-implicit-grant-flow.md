@@ -3,27 +3,27 @@ title: 了解 Azure AD 中的 OAuth2 隐式授权流 | Microsoft 文档
 description: 详细了解 Azure Active Directory 的 OAuth2 隐式授权流实现，以及它是否适合应用程序。
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
-ms.author: celested
+ms.date: 08/15/2019
+ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50b223e428c8f0b1f0c26e7c73e79a503a7c0121
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: eb751d4cad036135865af9f97e159da104749388
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211047"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532407"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>了解 Azure Active Directory (AD) 中的 OAuth2 隐式授权流
 
@@ -35,7 +35,7 @@ OAuth2 隐式授权是 OAuth2 规范中安全疑虑最多的授权方式，因�
 
 典型的 [OAuth2 授权代码授予](https://tools.ietf.org/html/rfc6749#section-1.3.1)是使用两个单独终结点的授权授予。 授权终结点用于用户交互阶段，此阶段会生成授权代码。 然后，客户端会通过令牌终结点用该代码交换访问令牌，通常还会交换刷新令牌。 Web 应用程序必须向令牌终结点提交自身的应用程序凭据，授权服务器才能对客户端进行身份验证。
 
-[OAuth2 隐式授权](https://tools.ietf.org/html/rfc6749#section-1.3.2)是其他授权的变体。 它可以让客户端直接从授权终结点获取访问令牌（使用 [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html) 时，还会获取 id_token），不必联系令牌终结点，也不必验证客户端。 此变体专为在 Web 浏览器中运行的基于 JavaScript 的应用程序设计：在原始 OAuth2 规范中，令牌在 URI 片段中返回。 这样，令牌位便可供客户端中的 JavaScript 代码使用，但可以保证令牌位不包含在朝向服务器的重定向中。 通过浏览器返回令牌即可直接从授权终结点重定向。 另一优点是消除跨域调用的任何要求，在需要通过 JavaScript 应用程序联系令牌终结点的情况下，这些要求是必需的。
+[OAuth2 隐式授权](https://tools.ietf.org/html/rfc6749#section-1.3.2)是其他授权的变体。 它可以让客户端直接从授权终结点获取访问令牌（使用 [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html) 时，还会获取 id_token），不必联系令牌终结点，也不必验证客户端。 此变体专为在 Web 浏览器中运行的基于 JavaScript 的应用程序设计：在原始 OAuth2 规范中，令牌在 URI 片段中返回。 这样，令牌位便可供客户端中的 JavaScript 代码使用，但可以保证令牌位不包含在朝向服务器的重定向中。 在 OAuth2 隐式授权中, 授权终结点使用之前提供的重定向 URI 直接向客户端颁发访问令牌。 另一优点是消除跨域调用的任何要求，在需要通过 JavaScript 应用程序联系令牌终结点的情况下，这些要求是必需的。
 
 OAuth2 隐式授权的重要特征是，此类流程绝对不会将刷新令牌返回到客户端。 下一部分将说明这如何是不必要的，实际上会造成安全问题。
 
@@ -62,7 +62,7 @@ OAuth2 规范声明，设计隐式授权是为了实现用户代理应用程序�
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>隐式授权适合我的应用吗？
 
-与其他授权相比，隐式授权具有更多风险，需要注意的方面已有详细记录（例如，[在隐式流中误用访问令牌来模拟资源所有者][OAuth2-Spec-Implicit-Misuse]和 [OAuth 2.0 威胁模型和安全注意事项][OAuth2-Threat-Model-And-Security-Implications]）。 但是，风险走势之所以较高，主要是因为它要启用执行活动代码的应用程序，并由远程资源提供给浏览器。 如果要规划一个 SPA 体系结构，则不要设置后端组件或尝试通过 JavaScript 调用 Web API，而应使用隐式流来获取令牌。
+隐式授权与其他授权相比有更多的风险, 并且你需要注意的方面有很好的记录 (例如,[在隐式流中误用访问令牌来模拟资源所有者][OAuth2-Spec-Implicit-Misuse]和[OAuth 2.0 威胁模型和安全性注意事项][OAuth2-Threat-Model-And-Security-Implications])。 但是，风险走势之所以较高，主要是因为它要启用执行活动代码的应用程序，并由远程资源提供给浏览器。 如果要规划一个 SPA 体系结构，则不要设置后端组件或尝试通过 JavaScript 调用 Web API，而应使用隐式流来获取令牌。
 
 如果应用程序是本机客户端，则隐式流并不太适合。 在使用本机客户端的情况下，如果没有 Azure AD 会话 Cookie，应用程序将无法长时间维持一个会话。 这意味着，在为新资源获取访问令牌时，应用程序会反复提示用户。
 
@@ -70,8 +70,8 @@ OAuth2 规范声明，设计隐式授权是为了实现用户代理应用程序�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关开发人员资源的完整列表，包括 Azure AD 支持的协议和 OAuth2 授权流的参考信息，请参阅 [Azure AD 开发人员指南][AAD-Developers-Guide]
-* 要更深入地了解应用程序集成过程，请参阅[如何将应用程序与 Azure AD 集成][ACOM-How-To-Integrate]。
+* 有关开发人员资源的完整列表，包括 Azure AD 支持的协议和 OAuth2 授权流的参考信息，请参阅 [Azure AD Developer's Guide][AAD-Developers-Guide]（Azure AD 开发人员指南）
+* 要更深入了解应用程序集成过程，请参阅 [How to integrate an application with Azure AD][ACOM-How-To-Integrate]（如何将应用程序与 Azure AD 集成）。
 
 <!--Image references-->
 

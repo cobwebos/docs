@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: deb98c2c633200ab4be1d763a94fd2a04979a3b1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235694"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60562272"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室添加内部支持声明
 
@@ -32,32 +32,32 @@ ms.locfileid: "51235694"
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>向现有实验室添加支持声明的步骤
 
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 如果需要，请选择“所有服务”，并从列表中选择“开发测试实验室”。 （实验室可能已显示在“所有资源”下的“仪表板”上）。
+1. 如果需要，请选择“所有服务”  ，并从列表中选择“开发测试实验室”  。 （实验室可能已显示在“所有资源”  下的“仪表板”上）。
 1. 从实验室列表中选择要向其添加支持声明的实验室。  
-1. 在实验室的“概览”区域中，选择“配置和策略”。  
+1. 在实验室的“概览”  区域中，选择“配置和策略”  。  
 
     ![“配置和策略”按钮](./media/devtest-lab-internal-support-message/devtestlab-config-and-policies.png)
 
-1. 在左侧的“设置”下面，选择“内部支持”。
+1. 在左侧的“设置”下面，选择“内部支持”   。
 
     ![“内部支持”按钮](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
 
-1. 要为此实验室中的用户创建内部支持消息，请将“已启用”设置为“是”。
+1. 要为此实验室中的用户创建内部支持消息，请将“已启用”设置为“是”  。
 
-1. 在“支持消息”字段中，输入要向实验室用户呈现的内部支持声明。 支持消息接受 Markdown。 输入消息文本时，可以在屏幕底部的“预览”区域中查看向用户显示的消息。
+1. 在“支持消息”字段中，输入要向实验室用户呈现的内部支持声明  。 支持消息接受 Markdown。 输入消息文本时，可以在屏幕底部的“预览”区域中查看向用户显示的消息  。
 
     ![用于创建消息的内部支持屏幕。](./media/devtest-lab-internal-support-message/devtestlab-add-support-statement.png)
 
 
-1. 准备好发布支持声明后，请选择“保存”。
+1. 准备好发布支持声明后，请选择“保存”  。
 
-如果不再想要向实验室用户显示此支持消息，请返回“内部支持”页，并将“已启用”设置为“否”。
+如果不再想要向实验室用户显示此支持消息，请返回“内部支持”页，并将“已启用”设置为“否”    。
 
 ## <a name="steps-for-users-to-view-the-support-message"></a>用户查看支持消息的步骤
 
 1. 在 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)中，选择一个实验室。
 
-1. 在实验室的“概述”区域，选择“内部支持”。  
+1. 在实验室的“概述”区域，选择“内部支持”   。  
 
     ![“内部支持”按钮](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
 

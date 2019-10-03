@@ -4,21 +4,20 @@ description: 了解如何排查使用远程桌面服务连接到虚拟机时出�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: c9accf09da240f6d3235edd3c9da1876529d8654
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 9f7957fb0e6e888367c1f8ded1abfb3828697cbb
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650736"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087096"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
 
@@ -41,10 +40,10 @@ ms.locfileid: "58650736"
     **源**：      服务控制管理器 </br>
     **日期**：        2017 年 12 月 16 日上午 11:19:36</br>
     **事件 ID**：    7022</br>
-    **任务类别**：无</br>
-    **级别**：       错误</br>
+    **任务类别**：None</br>
+    **级别**：       Error</br>
     **关键字**：    经典</br>
-    **用户**：        不适用</br>
+    **用户**：        不可用</br>
     **计算机**: vm.contoso.com</br>
     **说明**：远程桌面服务服务在启动时挂起。 
 
@@ -57,8 +56,8 @@ ms.locfileid: "58650736"
 之所以发生此问题，是因为远程桌面服务未在 VM 上运行。 未运行的原因取决于以下情况： 
 
 - TermService 服务设置为“已禁用”。 
-- TermService 服务崩溃或挂起。 
-- 不开始 TermService 由于配置不正确。
+- TermService 服务崩溃或未响应。 
+- 错误的配置导致 TermService 不启动。
 
 ## <a name="solution"></a>解决方案
 
@@ -97,7 +96,7 @@ ms.locfileid: "58650736"
    ```
 8. 如果该服务无法启动，请根据收到的错误遵循相应的解决方法：
 
-    |  错误 |  建议 |
+    |  Error |  建议 |
     |---|---|
     |5- 访问被拒绝 |请参阅 [TermService 服务由于访问被拒绝错误而停止](#termservice-service-is-stopped-because-of-an-access-denied-problem)。 |
     |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |请参阅 [TermService 服务已禁用](#termservice-service-is-disabled)。  |  
@@ -146,7 +145,7 @@ ms.locfileid: "58650736"
 
     1. [将数据磁盘附加到 VM](../windows/attach-managed-disk-portal.md
 )。
-    2. 使用串行控制台可将文件复制到新驱动器。 例如，`copy C:\temp\ProcMonTrace.PML F:\`。 在此命令中，F 是附加的数据磁盘的驱动程序号。
+    2. 使用串行控制台可将文件复制到新驱动器。 例如， `copy C:\temp\ProcMonTrace.PML F:\` 。 在此命令中，F 是附加的数据磁盘的驱动程序号。
     3. 分离数据驱动器，并将其附加到已安装进程监视器 ubstakke 的正常 VM。
 
 6. 在正常的 VM 上使用进程监视器打开 **ProcMonTrace.PML**。 然后按“结果为‘访问被拒绝’”进行筛选，如以下屏幕截图所示 **：**
@@ -222,6 +221,6 @@ ms.locfileid: "58650736"
 
 4. [分离 OS 磁盘并重新创建 VM](../windows/troubleshoot-recovery-disks-portal.md)。 然后检查是否解决了问题。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
+## <a name="need-help-contact-support"></a>需要帮助？ 联系技术支持
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)解决问题。

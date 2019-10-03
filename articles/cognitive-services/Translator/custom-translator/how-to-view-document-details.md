@@ -2,19 +2,19 @@
 title: 文档详细信息 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 此文档列表页面显示你的工作区中的前 10 个文档。 对于每个文档，它显示名称、配对、类型、语言、上传时间戳，以及上传了此文档的用户的电子邮件地址。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d380c8bcdcb4954901df0b460269493c5be0a6de
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: cf0d96414c40784210723e315da5d885d61198c5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777382"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595577"
 ---
 # <a name="view-document-details"></a>查看文档详细信息
 
@@ -27,7 +27,7 @@ ms.locfileid: "57777382"
 
 ![文档详细信息](media/how-to/how-to-view-document-details.png)
 
-## <a name="delete-a-document"></a>删除文档
+## <a name="delete-a-document"></a>删除一个文档
 
 用户必须是工作区所有者才能删除文档。 此外，如果文档由翻译过程或部署过程中的某个模型使用，则无法删除该文档。
 

@@ -2,21 +2,19 @@
 title: 认知搜索的故障排除提示 - Azure 搜索
 description: 在 Azure 搜索中设置认知搜索管道的提示和故障排除。
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: ebc0ca718ab8edf5ef644993c71b0353861265b8
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: ee54d560ae1a294467e4520063153566d2c3b0a2
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961836"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265847"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>认知搜索故障排除提示
 
@@ -84,7 +82,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 缺少内容可能是由于文档在索引编制过程中被丢弃。 免费层和基本层对文档大小的限制都很低。 如果文件超出此限制，则会在索引编制过程中将其丢弃。 可以在 Azure 门户中查找丢弃的文档。 在搜索服务仪表板中，双击“索引器”磁贴。 查看成功地进行索引的文档的比率。 如果不是 100%，可以单击该比率以获取更多详细信息。 
 
-如果问题与文件大小相关，则可能会看到这样的错误：“Blob <file-name> 的大小为 <file-size> 字节，这超出了当前服务层的文档提取的最大大小。” 有关索引器限制的详细信息，请参阅[服务限制](search-limits-quotas-capacity.md)。
+如果问题与文件大小相关，则可能会看到这样的错误：“Blob \<file-name> 的大小为 \<file-size> 字节，这超出了当前服务层级的文档提取的最大大小。” 有关索引器限制的详细信息，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
 内容没有出现的另一原因可能与输入/输出映射错误相关。 例如，输出目标名称为“People”，但索引字段名称为“people”（小写）。 系统可能会针对整个管道返回“201 成功”消息，因此你认为索引编制成功，但实际上有一个字段是空的。 
 
@@ -94,7 +92,10 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 最长运行时间因层而异：免费层为数分钟，收费层为 24 小时（索引编制）。 进行按需处理时，如果处理无法在 24 小时期限内完成，则可改用计划形式，让索引器在计划时间接着上次的工作继续处理。 
 
-对于计划的索引器来说，索引编制会按计划从已知正常的最后一个文档继续开始。 使用定时计划时，索引器可以在计划的一系列时间或日期进行积压图像的处理，直至所有未处理的图像得到处理。 有关计划语法的详细信息，请参阅[步骤 3：创建索引器](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)。
+对于计划的索引器来说，索引编制会按计划从已知正常的最后一个文档继续开始。 使用定时计划时，索引器可以在计划的一系列时间或日期进行积压图像的处理，直至所有未处理的图像得到处理。 有关计划语法的详细信息，请参阅[步骤 3：Create-a-索引](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)器或参阅[如何为 Azure 搜索计划索引器](search-howto-schedule-indexers.md)。
+
+> [!NOTE]
+> 如果索引器设置为某个计划，但每次运行时在同一文档上重复失败，则索引器将以不太频繁的间隔（最多每24小时至少一次）运行，直到它成功完成进度 aga中.  如果你认为已修复了导致索引器停留在某个时间点的任何问题，则可以执行索引器的按需运行，如果成功，则索引器将再次返回到其设置的计划时间间隔。
 
 进行基于门户的索引编制（如快速入门中所述）时，选择“运行一次”索引器选项即可将处理时间限制为 1 小时 (`"maxRunTime": "PT1H"`)。 可能需要延长处理时间至更长。
 
@@ -103,7 +104,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 进行[并行索引编制](search-howto-large-index.md)时，请将数据置于多个容器中，或者置于同一容器的多个虚拟文件夹中， 然后创建多个数据源和索引器对。 所有索引器可以使用同一技术集并写入同一目标搜索索引，因此你的搜索应用不需了解这种分区。
 有关详细信息，请参阅[为大型数据集编制索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 + [快速入门：在门户中创建认知搜索管道](cognitive-search-quickstart-blob.md)
 + [教程：了解认知搜索 REST API](cognitive-search-tutorial-blob.md)
 + [指定数据源凭据](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)

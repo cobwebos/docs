@@ -3,31 +3,30 @@ title: Azure 数字孪生概述 | Microsoft Docs
 description: 详细了解 Azure 数字孪生，一种适用于空间智能的 Azure IoT 解决方案。
 author: julieseto
 ms.author: jseto
-ms.date: 12/14/2018
+ms.date: 09/17/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 2848f9ce97c2bdad59d86031c5894219875b6059
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 2b80d0b364330a0effa7b89c620bd935157de290
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437106"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178292"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Azure 数字孪生概述
 
-Azure 数字孪生是一种 Azure IoT 服务，用于创建物理环境的综合性模型。 它可以创建空间智能图，为人员、空间和设备之间的关系和交互建模。
+Azure 数字孪生预览版是一种 Azure IoT 服务，用于创建物理环境的综合性模型。 它可以创建空间智能图，为人员、空间和设备之间的关系和交互建模。
 
-可以通过 Azure 数字孪生在物理空间中而不是许多不同的传感器中查询数据。 此服务用于构建可重用的、高度可缩放的、可以进行空间感知的体验，以便跨数字世界和物理世界将流式处理数据链接到一起。 可以通过这些唯一相关的上下文功能来增强应用。 Azure 数字孪生可用于以下示例任务，目的是：
+可以通过 Azure 数字孪生在物理空间中而不是许多不同的传感器中查询数据。 此服务用于构建可重用的、高度可缩放的、可以进行空间感知的体验，以便跨数字世界和物理世界将流式处理数据链接到一起。 可以通过这些唯一相关的上下文功能来增强应用。 
+
+Azure 数字孪生适用于所有类型的环境，例如，仓库、机构、学校、医院和银行。 它甚至可以用于体育场、工厂、停车场、公园、智能电网、城市。 以下是一些 Azure 数字孪生可能非常有用的方案：
 
 - 预测工厂的维护需求。
 - 分析某个输电网络的实时电力需求。
 - 优化办公室的可用空间的使用。
-
-Azure 数字孪生适用于所有类型的环境。 例如：仓库、办公室、学校、医院、银行。 它甚至可以用于体育场、工厂、停车场、公园、智能电网、城市。 Azure 数字孪生可用于以下示例方案，目的是：
-
 - 跟踪多个州的每日温度。
 - 监视繁忙的无人机路径。
 - 确定自动驾驶车辆。
@@ -46,13 +45,13 @@ Azure 数字孪生包括以下重要功能。
 
 ### <a name="spatial-intelligence-graph"></a>空间智能图
 
-[空间智能图](./concepts-objectmodel-spatialgraph.md)或智能图是物理环境的虚拟表示形式， 用于对人员、地点和设备之间的关系建模。
+[  空间智能图](./concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph)或智能图  是物理环境的虚拟表示形式， 用于对人员、地点和设备之间的关系建模。
 
 考虑一个智能实用工具应用，该应用涉及某个街区中的多个连接的电量计量。 智能公用事业公司必须准确地监视和预测电量使用情况和计费。 每个设备和传感器必须使用有关位置和计费客户的上下文来建模。 可以使用空间智能图对此类复杂关系建模。
 
 ### <a name="digital-twin-object-models"></a>数字孪生对象模型
 
-[数字孪生对象模型](./concepts-objectmodel-spatialgraph.md)是预定义的设备协议和数据架构， 可以满足解决方案的特定于域的需求，加快并简化开发过程。
+[数字孪生对象模型](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models)是预定义的设备协议和数据架构， 可以满足解决方案的特定于域的需求，加快并简化开发过程。
 
 例如，房间占用应用程序可以使用预定义的空间类型，例如校园、大楼、楼层、房间。
 
@@ -94,9 +93,9 @@ Azure 数字孪生可用于表示物理世界及其多项关系。 它可以简�
 
 Azure 数字孪生使用 Azure IoT 中心来连接 IoT 设备和传感器，使一切与物理世界同步。 下图显示了 Azure 数字孪生与其他 Azure IoT 服务的关系。
 
-![Azure 数字孪生是构建于 Azure IoT 中心之上的服务][1]
+[![Azure 数字孪生是构建于 Azure IoT 中心之上的服务](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-有关 IoT 的详细信息，请参阅 [Azure IoT 技术和解决方案](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies)。
+有关 IoT 的详细信息，请参阅 [Azure IoT 技术和解决方案](../iot-fundamentals/iot-services-and-technologies.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -114,6 +113,3 @@ Azure 数字孪生使用 Azure IoT 中心来连接 IoT 设备和传感器，使�
 
 >[!div class="nextstepaction"]
 >[了解数字孪生对象模型和空间智能图](./concepts-objectmodel-spatialgraph.md)
-
-<!-- Images -->
-[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

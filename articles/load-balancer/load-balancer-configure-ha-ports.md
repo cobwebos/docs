@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
-ms.author: kumud
-ms.openlocfilehash: ec43b79109181457f8ef8e214e296969db5dcb26
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.author: allensu
+ms.openlocfilehash: c0cf1eb62c8e01988c9014478ff72816e45ea64c
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593397"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275617"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>为内部负载均衡器配置高可用性端口
 
@@ -44,11 +44,11 @@ ms.locfileid: "56593397"
 
 若要配置高可用性端口，请在后端池中使用 NVA 设置内部负载均衡器。 设置相应的负载均衡器运行状况探测配置，以便使用高可用性端口检测 NVA 运行状况和负载均衡器规则。 [入门](load-balancer-get-started-ilb-arm-portal.md)中介绍了常规的负载均衡器相关配置。 本文重点介绍高可用性端口配置。
 
-该配置实质上包括将前端端口和后端端口值设置为“0”。 将协议值设置为“All”。 本文介绍如何使用 Azure 门户、PowerShell 和 Azure CLI 配置高可用性端口。
+该配置实质上包括将前端端口和后端端口值设置为“0”  。 将协议值设置为“All”  。 本文介绍如何使用 Azure 门户、PowerShell 和 Azure CLI 配置高可用性端口。
 
 ### <a name="configure-a-high-availability-ports-load-balancer-rule-with-the-azure-portal"></a>使用 Azure 门户配置高可用性端口负载均衡器规则
 
-若要使用 Azure 门户配置高可用性端口，请选中“HA 端口”复选框。 选中时，会自动填充相关端口和协议配置。 
+若要使用 Azure 门户配置高可用性端口，请选中“HA 端口”复选框  。 选中时，会自动填充相关端口和协议配置。 
 
 ![通过 Azure 门户配置高可用性端口](./media/load-balancer-configure-ha-ports/haports-portal.png)
 

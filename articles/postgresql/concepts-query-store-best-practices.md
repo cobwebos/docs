@@ -1,21 +1,21 @@
 ---
-title: Azure Database for PostgreSQL 中的查询存储最佳做法
-description: 本文介绍了 Azure Database for PostgreSQL 中查询存储的最佳做法。
+title: Azure Database for PostgreSQL - 单一服务器中的查询存储最佳做法
+description: 本文介绍了 Azure Database for PostgreSQL - 单一服务器中的查询存储的最佳做法。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: af68d5cdc891a8c924ca493d8e798edaa4670ab5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 5/6/2019
+ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483989"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764232"
 ---
 # <a name="best-practices-for-query-store"></a>查询存储的最佳做法
 
-**适用于：** Azure Database for PostgreSQL 9.6 和 10
+**适用于：** Azure Database for PostgreSQL-单服务器版本9.6、10、11
 
 本文概述了在 Azure Database for PostgreSQL 中使用查询存储的最佳做法。
 
@@ -26,7 +26,7 @@ ms.locfileid: "58483989"
 |---|---|
 |_全部_  |根据所有查询及其执行频率和其他统计信息彻底分析工作负荷。 识别工作负荷中的新查询。 检测是否使用即席查询来识别用户或自动参数化的机会。 “全部”会增加资源消耗成本。 |
 |顶部  |将注意力集中在热门查询 - 客户发布的查询上。
-|无 |已捕获了要调查的查询集和时间窗口，并且希望消除其他查询可能引入的干扰。 “无”适用于测试和基准测试环境。 由于可能错过了跟踪和优化重要新查询的机会，因此应谨慎使用“无”。 无法恢复那些过去时间窗口上的数据。 |
+|_无_ |已捕获了要调查的查询集和时间窗口，并且希望消除其他查询可能引入的干扰。 “无”适用于测试和基准测试环境。 由于可能错过了跟踪和优化重要新查询的机会，因此应谨慎使用“无”。 无法恢复那些过去时间窗口上的数据。 |
 
 查询存储还包括等待统计信息库。 还有一个额外的捕获模式查询可管理等待统计信息：可将 pgms_wait_sampling.query_capture_mode 设置为“无”或“全部”。 
 

@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3fa75710adacf71214c977465bcd696500c55e32
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733440"
 documentType: LandingData
 title: Microsoft 基因组学文档
 metadata:
@@ -20,14 +14,14 @@ metadata:
 abstract:
   description: 了解 Microsoft 基因组学如何使用 Burrows-Wheeler Aligner (BWA) 的云实现以及用于辅助分析的基因组分析工具包 (GATK) 为基因组排序提供支持。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 通过 Microsoft 基因组学服务提交工作流。
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: media/index/helix-blue-orange.svg
-      text: 提交工作流
-      href: quickstart-run-genomics-workflow-portal
+      - type: paragraph
+        text: 通过 Microsoft 基因组学服务提交工作流。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/helix-blue-orange.svg
+            text: 提交工作流
+            href: quickstart-run-genomics-workflow-portal

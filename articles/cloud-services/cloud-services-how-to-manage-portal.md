@@ -3,23 +3,17 @@ title: 常见的云服务管理任务 | Microsoft Docs
 description: 了解如何在 Azure 门户中管理云服务。 这些示例使用 Azure 门户。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: cb218ad9-77d4-4149-83db-71159c00767e
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: jeconnoc
-ms.openlocfilehash: e9f4153c68f0a2a4ce83f900ff63152311163ff6
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: HT
+ms.author: gwallace
+ms.openlocfilehash: 8ec7784fb51d0fa4de2563f76444b0b5e5f34902
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038039"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359598"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>在 Azure 门户中管理云服务
 在 Azure 门户的“云服务”区域中，可以：
@@ -57,7 +51,7 @@ ms.locfileid: "40038039"
 ## <a name="swap-deployments-to-promote-a-staged-deployment-to-production"></a>交换部署以将预留部署升级到生产环境
 如果决定部署云服务的新版本，可以在云服务过渡环境中暂存和测试新版本。 使用“交换”将用于寻址这两个部署的 URL 地址互换，将新版本提升为生产。
 
-可以通过“云服务”页或仪表板来交换部署。
+可以通过“云服务”  页面或仪表板交换部署。
 
 1. 在 [Azure 门户][Azure portal]中，选择要更新的云服务。 此步骤将打开云服务实例边栏选项卡。
 

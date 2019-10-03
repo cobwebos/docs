@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295617"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65768369"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
-邀请电子邮件是将合作伙伴登记为 Azure AD 中的 B2B 协作用户的关键组件。 可使用它们增强收件人的信任。 可在电子邮件中添加合法性与社交证据，确保收件人愿意选择“开始”按钮来接受邀请。 这种信任是减少共享冲突的关键。 同时还要让电子邮件赏心悦目！
+邀请电子邮件是将合作伙伴登记为 Azure AD 中的 B2B 协作用户的关键组件。 可使用它们增强收件人的信任。 可在电子邮件中添加合法性与社交证据，确保收件人愿意选择“开始”按钮来接受邀请  。 这种信任是减少共享冲突的关键。 同时还要让电子邮件赏心悦目！
 
-![显示 B2B 邀请电子邮件的屏幕截图](media/invitation-email-elements/invitation-email.png)
+![显示企业间邀请电子邮件的屏幕截图](media/invitation-email-elements/invitation-email.png)
 
 ## <a name="explaining-the-email"></a>电子邮件说明
 让我们看看电子邮件的几个元素，以便了解如何充分利用其功能。
 
-### <a name="subject"></a>主题
+### <a name="subject"></a>Subject
 电子邮件的主题遵循以下模式：诚邀你加入 &lt;tenantname&gt; 组织
 
 ### <a name="from-address"></a>发件人地址
@@ -44,7 +44,7 @@ ms.locfileid: "58295617"
 行动号召由两个部分组成：解释收件人为什么会收到该邮件，请求收件人采取哪种行动。
 - “为什么”部分可以使用以下模式进行处理：我们已邀请你访问 &lt;tenantname&gt; 组织中的应用程序
 
-- “请求你采取哪种行动”部分可通过提供“开始”按钮来指明。 如果无需发出邀请即会添加收件人，则不显示此按钮。
+- “请求你采取哪种行动”部分可通过提供“开始”按钮来指明。  如果无需发出邀请即会添加收件人，则不显示此按钮。
 
 ### <a name="inviters-information"></a>邀请方的信息
 邀请方的显示名称包含在电子邮件中。 此外，如果为 Azure AD 帐户设置了个人资料图片，邀请电子邮件也会包含该图片。 这两项信息旨在增强收件人对电子邮件的信任。
@@ -53,7 +53,7 @@ ms.locfileid: "58295617"
 
   ![显示邀请，其中包含邀请者姓名首字母缩写显示的屏幕截图](media/invitation-email-elements/inviters-initials.png)
 
-### <a name="body"></a>Body
+### <a name="body"></a>正文
 正文包含邀请者在[使用邀请 API](customize-invitation-api.md) [邀请来宾用户访问目录、组或应用](add-users-administrator.md)时撰写的消息。 这是文本区域，因此出于安全原因不会处理 HTML 标记。
 
   ![显示的邀请电子邮件正文的屏幕截图](media/invitation-email-elements/invitation-email-body.png)

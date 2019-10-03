@@ -14,16 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: f05e3e85d36ffc23a193a6771a0271c71b2f8544
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2e7c1eedf02c8a7783ee90f403dbd77ec2ee53ea
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013637"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963327"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列软件、高可用性和网络要求
 
 ## <a name="overview"></a>概述
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 欢迎使用 Microsoft Azure StorSimple。 本文介绍了 StorSimple 设备以及访问此设备的存储客户端的重要系统要求和最佳实践。 建议在部署 StorSimple 系统之前仔细查看信息，并且在进行部署和后续操作过程中按需重新参阅。
 
@@ -61,16 +63,16 @@ ms.locfileid: "58013637"
 
 StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口以允许传输 iSCSI、云和管理流量。 下表列出了需要在防火墙中打开的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
-| 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 需要 | 说明 |
+| 端口号 <sup>1、2</sup> | 入或出 | 端口范围 | 必填 | 说明 |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |出 |WAN |否 |<ul><li>出站端口用于 Internet 访问以检索更新。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |出 |WAN |是 |<ul><li>出站端口用于访问云中的数据。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li><li>此端口还在两个控制器中用于垃圾回收。</li></ul> |
-| UDP 53 (DNS) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 DNS 服务器时，才需要此端口。 |
-| UDP 123 (NTP) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 NTP 服务器时，才需要此端口。 |
-| TCP 9354 |出 |WAN |是 |StorSimple 设备使用出站端口与 StorSimple 设备管理器服务进行通信。 |
-| 3260 (iSCSI) |In |LAN |否 |此端口用于通过 iSCSI 访问数据。 |
-| 5985 |In |LAN |否 |StorSimple Snapshot Manager 使用入站端口与 StorSimple 设备进行通信。<br>通过 HTTP 远程连接到 Windows PowerShell for StorSimple 时，也会使用此端口。 |
-| 5986 |In |LAN |否 |通过 HTTPS 远程连接到 Windows PowerShell for StorSimple 时使用此端口。 |
+| TCP 80 (HTTP)<sup>3</sup> |输出 |WAN |否 |<ul><li>出站端口用于 Internet 访问以检索更新。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |输出 |WAN(广域网) |是 |<ul><li>出站端口用于访问云中的数据。</li><li>出站 Web 代理可由用户配置。</li><li>若要允许系统更新，还必须为控制器的固定 IP 打开此端口。</li><li>此端口还在两个控制器中用于垃圾回收。</li></ul> |
+| UDP 53 (DNS) |出 |WAN(广域网) |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 DNS 服务器时，才需要此端口。 |
+| UDP 123 (NTP) |输出 |WAN(广域网) |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 NTP 服务器时，才需要此端口。 |
+| TCP 9354 |输出 |WAN(广域网) |是 |StorSimple 设备使用出站端口与 StorSimple 设备管理器服务进行通信。 |
+| 3260 (iSCSI) |流入 |LAN |否 |此端口用于通过 iSCSI 访问数据。 |
+| 5985 |流入 |LAN |否 |StorSimple Snapshot Manager 使用入站端口与 StorSimple 设备进行通信。<br>通过 HTTP 远程连接到 Windows PowerShell for StorSimple 时，也会使用此端口。 |
+| 5986 |流入 |LAN |否 |通过 HTTPS 远程连接到 Windows PowerShell for StorSimple 时使用此端口。 |
 
 <sup>1</sup> 无需在公共 Internet 上打开任何入站端口。
 
@@ -96,7 +98,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 
 | URL 模式 | 组件/功能 | 设备 IP |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple Device Manager 服务<br>访问控制服务<br>Azure 服务总线<br>身份验证服务 |启用云的网络接口 |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple 设备管理器服务<br>访问控制服务<br>Azure 服务总线<br>身份验证服务 |启用云的网络接口 |
 | `https://*.backup.windowsazure.com` |设备注册 |仅限 DATA 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |证书吊销 |启用云的网络接口 |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure 存储帐户和监视 |启用云的网络接口 |
@@ -108,7 +110,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 
 | URL 模式 | 组件/功能 | 设备 IP |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple Device Manager 服务<br>访问控制服务<br>Azure 服务总线<br>身份验证服务 |启用云的网络接口 |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple 设备管理器服务<br>访问控制服务<br>Azure 服务总线<br>身份验证服务 |启用云的网络接口 |
 | `https://*.backup.windowsazure.us` |设备注册 |仅限 DATA 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |证书吊销 |启用云的网络接口 |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure 存储帐户和监视 |启用云的网络接口 |
@@ -129,7 +131,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 
     | 网络接口 | 启用云 | 禁用云但配有网关 |
     |-----|---------------|---------------------------|
-    | Data 0  | 第            | -                        |
+    | Data 0  | 1            | -                        |
     | Data 1  | 2            | 20                       |
     | Data 2  | 3            | 30                       |
     | Data 3  | 4            | 40                       |
@@ -155,7 +157,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 * VIP 失败还会在 StorSimple 设备上引发警报。 有关详细信息，请转到[警报快速参考](storsimple-8000-manage-alerts.md)。
 * 对于重试，iSCSI 优先于云。
   
-    下面是一个示例：StorSimple 设备已启用的两个网络接口、 Data 0 和 Data 1。 Data 0 是启用云的接口，而 Data 1 既启用云又启用了 iSCSI。 此设备上的其他网络接口均未启用云或 iSCSI。
+    请看下面的示例：StorSimple 设备启用了两个网络接口, Data 0 和 Data 1。 Data 0 是启用云的接口，而 Data 1 既启用云又启用了 iSCSI。 此设备上的其他网络接口均未启用云或 iSCSI。
   
     如果 Data 1 失败，因为它是最后一个 iSCSI 网络接口，会导致将控制器故障转移到另一个控制器上的 Data 1。
 
@@ -239,7 +241,7 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 
 请仔细查看这些最佳实践，确保连接到 StorSimple 设备的主机具有高可用性。
 
-* 通过[双节点文件服务器群集配置][1]来配置 StorSimple。 通过消除单点故障并在主机端内置冗余，整个解决方案变得高度可用。
+* 将 StorSimple 配置为具有[双节点文件服务器群集配置][1]。 通过消除单点故障并在主机端内置冗余，整个解决方案变得高度可用。
 * 在存储控制器故障转移期间，使用可用于 Windows Server 2012 (SMB 3.0) 的连续可用 (CA) 共享来实现高可用性。 有关通过 Windows Server 2012 配置文件服务器群集和持续可用共享的其他信息，请参阅该[视频演示](https://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)。
 
 ## <a name="next-steps"></a>后续步骤

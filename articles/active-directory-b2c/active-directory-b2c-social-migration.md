@@ -2,25 +2,26 @@
 title: 在 Azure Active Directory B2C 中迁移具有社交标识的用户 | Microsoft Docs
 description: 介绍使用图形 API 将具有社交标识的用户迁移到 Azure AD B2C 的核心概念。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/03/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 12b464d9b6bd09acb9c93ab1de0ba178f28a778a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 0117a0881422584e3cb949661b1d58cd0257cf67
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894895"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853867"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C：迁移具有社交标识的用户
-计划将标识提供者迁移到 Azure AD B2C 时，可能还需要迁移具有社交标识的用户。 本文介绍如何将现有社交标识帐户（例如：Facebook、LinkedIn、Microsoft 和 Google 帐户）迁移到 Azure AD B2C。 本文也适用于联合标识，但这种迁移不太常见。
+计划将标识提供者迁移到 Azure AD B2C 时，可能还需要迁移具有社交标识的用户。 本文介绍如何将现有社交标识帐户（例如：Facebook、LinkedIn、Microsoft 和 Google 帐户）迁移到 Azure AD B2C。 本文也适用于联合标识，但这种迁移不太常见。 对于本文的其余部分, 请考虑适用于社交帐户的任何内容也适用于其他类型的联合帐户。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 本文是“用户迁移”一文的延续，重点介绍社交标识迁移。 在开始之前，请阅读[用户迁移](active-directory-b2c-user-migration.md)。
 
 ## <a name="social-identities-migration-introduction"></a>社交标识迁移简介
@@ -29,11 +30,11 @@ ms.locfileid: "58894895"
 
 * **社交帐户**的标识存储在 `userIdentities` 集合中。 该条目指定 `issuer`（标识提供者名称，例如 facebook.com 和 `issuerUserId`），是颁发者的唯一用户标识符。 `userIdentities` 属性包含一个或多个 UserIdentity 记录，这些记录指定社交标识提供者中的社交帐户类型和唯一用户标识符。
 
-* **将本地帐户与社交标识相结合**。 如前所述，本地帐户登录名和社交帐户标识存储在不同的属性中。 `signInNames` 用于本地帐户，`userIdentities` 用于社交帐户。 单个 Azure AD B2C 帐户可以只是本地帐户、只是社交帐户，也可以在一条用户记录中结合本地帐户和社交标识。 此行为允许你管理单个帐户，而用户可以使用本地帐户凭据或社交标识登录。
+* **将本地帐户与社交标识相结合**。 如前所述，本地帐户登录名和社交帐户标识存储在不同的属性中。 `signInNames`用于本地帐户, 而`userIdentities`用于社交帐户。 单个 Azure AD B2C 帐户只能是本地帐户、仅限社交帐户或将本地帐户与一个或多个社交标识合并在一个用户记录中。 此行为允许你管理单个帐户，而用户可以使用本地帐户凭据或社交标识登录。
 
 * `UserIdentity` 类型 - 包含 Azure AD B2C 租户中社交帐户用户的标识信息：
   * `issuer` - 颁发用户标识符的标识提供者的字符串表示形式，例如 facebook.com。
-  * `issuerUserId` - 社交标识提供者使用的唯一用户标识符，采用 base64 格式。
+  * `issuerUserId`社交标识提供者使用的唯一用户标识符, 采用 Base64 编码格式。
 
     ```JSON
     "userIdentities": [{
@@ -43,10 +44,10 @@ ms.locfileid: "58894895"
     ]
     ```
 
-* 根据标识提供者，**社交用户 ID** 是每个应用程序给定用户的唯一值，或者是开发帐户。 使用社交网络提供商以前分配的相同应用程序 ID 配置 Azure AD B2C 策略。 或者是同一开发帐户内的另一个应用程序。
+* 根据标识提供者, 每个应用程序或开发帐户的**颁发者用户 ID**是给定用户的唯一值。 使用同一个开发帐户中的社交提供程序或另一个应用程序之前分配的相同应用程序 ID 来配置 Azure AD B2C 策略。
 
 ## <a name="use-graph-api-to-migrate-users"></a>使用图形 API 迁移用户
-通过[图形 API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) 创建 Azure AD B2C 用户帐户。 若要与图形 API 通信，首先必须创建具有管理特权的服务帐户。 在 Azure AD 中，可以注册应用程序并向 Azure AD 进行身份验证。 应用程序凭据是应用程序 ID 和应用程序机密。 应用程序代表自身而不是用户来调用图形 API。 遵照[用户迁移](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration)一文步骤 1 中的说明。
+通过[图形 API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet)创建 Azure AD B2C 用户帐户。 若要与图形 API 通信，首先必须创建具有管理特权的服务帐户。 在 Azure AD 中，可以注册应用程序并向 Azure AD 进行身份验证。 应用程序凭据是应用程序 ID 和应用程序机密。 应用程序代表自身而不是用户来调用图形 API。 按照[用户迁移](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration)一文中的步骤1中的说明进行操作。
 
 ## <a name="required-properties"></a>必需的属性
 以下列表显示了在创建用户时必须指定的属性。
@@ -55,7 +56,7 @@ ms.locfileid: "58894895"
 * **passwordProfile** - 用户的密码配置文件。 
 
 > [!NOTE]
-> 仅适用于社交帐户（没有本地帐户凭据）。仍必须指定密码。 Azure AD B2C 将忽略你为社交帐户指定的密码。
+> 仅适用于社交帐户 (没有本地帐户凭据), 你仍必须指定密码。 Azure AD B2C 将忽略你为社交帐户指定的密码。
 
 * **userPrincipalName** - 用户主体名称 (someuser@contoso.com)。 用户主体名称必须包含租户的一个验证域。 若要指定 UPN，请生成新的 GUID 值，并将 `@` 与租户名称相连接。
 * **mailNickname** - 用户的邮件别名。 此值可以是对 userPrincipalName 使用的同一个 ID。 
@@ -66,7 +67,7 @@ ms.locfileid: "58894895"
 有关详细信息，请参阅：[图形 API 参考](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>仅迁移社交帐户
-只创建社交帐户，而不创建本地帐户凭据。 将 HTTPS POST 请求发送到图形 API。 请求正文包含要创建的社交帐户用户的属性。 最起码要指定必需的属性。 
+若要仅创建不带本地帐户凭据的社交帐户, 请将 HTTPS POST 请求发送到图形 API。 请求正文包含要创建的社交帐户用户的属性。 最起码要指定必需的属性。 
 
 
 **POST**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
@@ -98,7 +99,7 @@ ms.locfileid: "58894895"
 }
 ```
 ## <a name="migrate-social-account-with-local-account"></a>迁移社交帐户和本地帐户
-创建结合社交标识的本地帐户。 将 HTTPS POST 请求发送到图形 API。 请求正文包含要创建的社交帐户用户的属性。 最起码要指定必需的属性。 
+若要使用社交标识创建组合的本地帐户, 请将 HTTPS POST 请求发送到图形 API。 请求正文包含要创建的社交帐户用户的属性, 包括本地帐户的登录名。 最起码要指定必需的属性。 
 
 **POST**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
 
@@ -147,8 +148,8 @@ ms.locfileid: "58894895"
 > [!NOTE]
 > 使用 B2C 租户本地的 B2C 租户管理员帐户。 帐户名的语法为 admin@tenant-name.onmicrosoft.com。
 
-### <a name="is-it-possible-to-add-social-identity-to-an-existing-local-account"></a>是否可将社交标识添加到现有的本地帐户？
-是的。 创建本地帐户后，可以添加社交标识。 运行 HTTPS PATCH 请求。 将 userObjectId 替换为要更新的用户 ID。 
+### <a name="is-it-possible-to-add-a-social-identity-to-an-existing-user"></a>是否可以将社交标识添加到现有用户？
+是的。 你可以在创建 Azure AD B2C 帐户后添加社交标识 (无论该帐户是本地帐户还是社交帐户, 或者将其组合在一起)。 运行 HTTPS PATCH 请求。 将 userObjectId 替换为要更新的用户 ID。 
 
 **PATCH** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 

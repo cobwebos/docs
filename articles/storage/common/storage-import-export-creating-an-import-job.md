@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: fa76f4fb5d4da5fd00bb9fa4ed862c6977a47e90
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102173"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61483071"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>为 Azure 导入/导出服务创建导入作业
 
@@ -33,7 +33,7 @@ ms.locfileid: "58102173"
 
 ## <a name="preparing-drives-with-the-azure-importexport-tool"></a>使用 Azure 导入/导出工具准备驱动器
 
-若要为导入作业准备驱动器的步骤是相同的是否在创建作业通过门户或通过 REST API。
+无论是通过门户还是 REST API 创建作业，为导入作业准备驱动器的步骤都是相同的。
 
 下面是驱动器准备工作的简要概述。 有关完整说明，请参阅 [Azure 导入/导出工具参考](storage-import-export-tool-how-to-v1.md)。 可从[此处](https://go.microsoft.com/fwlink/?LinkID=301900)下载 Azure 导入/导出工具。
 
@@ -61,7 +61,7 @@ ms.locfileid: "58102173"
 
  遵循以下步骤获取寄送位置：
 
--   指定存储帐户位置的名称。 可在 Azure 门户中存储帐户的“仪表板”上的“位置”字段下找到该值，或者使用服务管理 API 操作[获取存储帐户属性](/rest/api/storagerp/storageaccounts)来查询该值。
+-   指定存储帐户位置的名称。 可在 Azure 门户中存储帐户的“仪表板”  上的“位置”  字段下找到该值，或者使用服务管理 API 操作[获取存储帐户属性](/rest/api/storagerp/storageaccounts)来查询该值。
 
 -   通过调用“`Get Location`”操作来检索可用于处理此存储帐户的位置。
 

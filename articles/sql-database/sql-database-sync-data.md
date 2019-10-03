@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: a887c79a51c7a239e7057171e51e67a53af2f84b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 08/20/2019
+ms.openlocfilehash: 7ff7712130372dcfd277750e881cccce23b36465
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483543"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648347"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
 
@@ -32,11 +31,11 @@ ms.locfileid: "58483543"
 
 - **混合数据同步：** 借助数据同步，可以在本地数据库和 Azure SQL 数据库之间保持数据同步，以便启用混合应用程序。 此功能可能会吸引在考虑迁移到云中，并希望启用 Azure 应用程序的客户。
 - **分布式应用程序：** 在许多情况下，跨各个数据库分散不同的工作负载会大有裨益。 例如，如果有大型生产数据库，但还需要对此数据运行报表或分析工作负载，那么使用第二个数据库来处理此额外工作负载将会有所帮助。 这种方法可最大限度地减轻对生产工作负载造成的性能影响。 可以使用 SQL 数据同步来同步这两个数据库。
-- **全球分布的应用程序：** 许多企业的业务分布在多个区域，甚至是多个国家/地区。 为了最大限度地缩短网络延迟时间，最好将数据存储在靠近的区域中。 借助 SQL 数据同步，可轻松同步世界各地区域中的数据库。
+- **全球分布的应用程序：** 许多企业的业务分布在多个区域，甚至是多个国家/地区/区域。 为了最大限度地缩短网络延迟时间，最好将数据存储在靠近的区域中。 借助 SQL 数据同步，可轻松同步世界各地区域中的数据库。
 
 数据同步不是以下场景的首选解决方案：
 
-| 场景 | 一些建议的解决方案 |
+| 应用场景 | 一些建议的解决方案 |
 |----------|----------------------------|
 | 灾难恢复 | [Azure 异地冗余备份](sql-database-automated-backups.md) |
 | 读取缩放 | [使用只读副本对只读的查询工作负荷进行负载均衡（预览版）](sql-database-read-scale-out.md) |
@@ -79,7 +78,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 | | 数据同步 | 事务复制 |
 |---|---|---|
 | 优点 | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 |
-| 缺点 | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库单一数据库或入池数据库发布<br/>- 维护成本高 |
+| 缺点 | - 5 分钟或更长的延迟<br/>- 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库单一数据库或共用数据库发布<br/>- 维护成本高 |
 | | | |
 
 ## <a name="get-started-with-sql-data-sync"></a>SQL 数据同步入门
@@ -110,7 +109,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 
 #### <a name="performance-impact"></a>性能影响
 
-SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在用户数据库中创建用于跟踪的端表。 这些更改跟踪活动会对数据库工作负荷产生影响。 评估服务层并根据需要升级。
+SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在用户数据库中创建用于跟踪的端表。 这些更改跟踪活动会对数据库工作负荷产生影响。 评估服务层级并根据需要升级。
 
 在同步组创建、更新和删除期间预配和取消预配也可能会影响数据库性能。 
 
@@ -119,6 +118,12 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 ### <a name="general-requirements"></a>一般要求
 
 - 每个表都必须有主键。 请勿更改任何一行中的主键值。 如果必须更改主键值，请先删除行，再使用新的主键值重新创建此行。 
+
+> [!IMPORTANT]
+> 更改现有主键的值将导致以下错误行为:   
+>   - 即使同步未报告任何问题, 集线器和成员之间的数据也会丢失。
+> - 同步可能会失败, 因为跟踪表包含源中不存在的行, 因为主键发生更改。
+
 - 必须启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
 
 ### <a name="general-limitations"></a>一般限制
@@ -129,6 +134,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 - 对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
 - 不支持 Azure Active Directory 身份验证。
 - 不支持具有相同名称但架构不同（例如，dbo.customers 和 sales.customers）的表。
+- 不支持具有用户定义数据类型的列
 
 #### <a name="unsupported-data-types"></a>不支持的数据类型
 
@@ -228,7 +234,7 @@ SQL 数据同步在所有区域中都可用。
 
 SQL 数据同步是否按预期执行？ 若要监视活动和排查问题，请参阅以下文章：
 
-- [使用 Azure Monitor 监视 Azure SQL 数据同步日志](sql-database-sync-monitor-oms.md)
+- [利用 Azure Monitor 日志监视 Azure SQL 数据同步](sql-database-sync-monitor-oms.md)
 - [Azure SQL 数据同步问题疑难解答](sql-database-troubleshoot-data-sync.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>了解有关 Azure SQL 数据库的详细信息

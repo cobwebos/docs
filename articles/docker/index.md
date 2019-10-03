@@ -2,21 +2,20 @@
 title: Azure 上的 Docker
 description: 在 Azure 上部署 Docker 并将其与 Azure 集成
 services: multiple
-author: czeumault
-manager: carolz
+author: georgewallace
+manager: gwallace
 layout: LandingPage
 ms.service: multiple
-ms.tgt_pltfrm: na
 ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
-ms.author: carolz
-ms.openlocfilehash: f3e26701a5764169b6d459d28c5d70227386c6bf
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.author: gwallace
+ms.openlocfilehash: 33f18722c26decb117a476a9d3adb562a7a726ed
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588137"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610451"
 ---
 <div class="content">
    <h1>Azure 上的 Docker</h1>   

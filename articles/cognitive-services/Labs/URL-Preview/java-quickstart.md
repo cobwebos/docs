@@ -9,21 +9,22 @@ ms.service: cognitive-services
 ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 04/24/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: f4acab2cb4522048f4a78b12ca41161695a31e18
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.author: rosh
+ROBOTS: NOINDEX
+ms.openlocfilehash: ec9d9757a776601bdf79b796cf6b7b2987411257
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259595"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705172"
 ---
 # <a name="quickstart-url-preview-with-java"></a>快速入门：通过 Java 使用 URL 预览
 
-以下 Java 实例创建 SwiftKey 网站的 URL 预览： https://swiftkey.com/en。
+以下 Java 实例创建 SwiftKey 网站的 URL 预览： https://swiftkey.com/en 。
 
 ## <a name="prerequisites"></a>先决条件
 
-获取[认知服务实验室](https://aka.ms/answersearchsubscription)免费试用版的访问密钥
+获取[认知服务实验室](https://labs.cognitive.microsoft.com/en-us/project-answer-search)免费试用版的访问密钥
 
 ## <a name="request"></a>请求 
 

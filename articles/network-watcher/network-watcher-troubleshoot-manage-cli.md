@@ -3,8 +3,8 @@ title: 对 Azure 虚拟网络网关和连接进行故障排除 - Azure CLI | Mic
 description: 此页说明如何使用 Azure 网络观察程序对 Azure CLI 进行故障排除
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 2838bc61-b182-4da8-8533-27db8fdbd177
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: jdial
-ms.openlocfilehash: 8910b4963c7f40b5b6ecdde06c7c7a0c9b86e97a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: kumud
+ms.openlocfilehash: 0974c242533ff122d75979acc5eb158ec36c179d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899105"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64699595"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>使用 Azure 网络观察程序 Azure CLI 对虚拟网络网关和连接进行故障排除
 

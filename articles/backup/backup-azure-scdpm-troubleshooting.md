@@ -1,19 +1,19 @@
 ---
 title: 排查 System Center Data Protection Manager 和 Azure 备份问题
 description: 排查 System Center Data Protection Manager 中的问题。
-services: backup
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: kasinh
-ms.openlocfilehash: 4108616e3ae41e2c88b74bb08d5f846c0035101f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.author: dacurwin
+ms.openlocfilehash: 501e61d06b7724147d7224ae51bde5de736279b3
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55293989"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689031"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>排查 System Center Data Protection Manager 问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "55293989"
 有关 System Center Data Protection Manager 的最新发行说明，请参阅 [System Center 文档](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016)。 可在[此矩阵](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016)中详细了解 Data Protection Manager 支持的功能。
 
 
-## <a name="error-replica-is-inconsistent"></a>错误：副本不一致
+## <a name="error-replica-is-inconsistent"></a>错误：副本内容不一致
 
 副本可能出于以下原因而不一致：
 - 副本创建作业失败。

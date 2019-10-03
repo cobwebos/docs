@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure CLI 的 MariaDB 服务器重新启动 Azure 数据库
-description: 本文介绍如何重新启动 Azure Database for MariaDB 服务器使用 Azure CLI。
+title: 使用 Azure CLI 重启 Azure Database for MariaDB 服务器
+description: 本文介绍了如何使用 Azure CLI 重启 Azure Database for MariaDB 服务器。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/28/2019
 ms.openlocfilehash: a6e0509d941d9bfdfe6db7a8b93ee49c5bece1a6
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58623073"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66171440"
 ---
-# <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>使用 Azure CLI 的 MariaDB 服务器重新启动 Azure 数据库
+# <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>使用 Azure CLI 重启 Azure Database for MariaDB 服务器
 本主题介绍了如何重启 Azure Database for MariaDB 服务器。 出于维护原因，可能需要重启服务器，这会在服务器执行操作时导致短暂中断。
 
 如果服务处于繁忙状态，则会阻止重启服务器。 例如，服务可以处理缩放 vCores 等先前请求的操作。
@@ -32,7 +32,7 @@ ms.locfileid: "58623073"
 
 ## <a name="restart-the-server"></a>重启服务器
 
-重新启动服务器使用以下命令：
+使用以下命令重启服务器：
 
 ```azurecli-interactive
 az mariadb server restart --name mydemoserver --resource-group myresourcegroup
@@ -40,4 +40,4 @@ az mariadb server restart --name mydemoserver --resource-group myresourcegroup
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[如何在 Azure 数据库中的参数设置的 MariaDB](howto-configure-server-parameters-cli.md)
+了解[如何在 Azure Database for MariaDB 中设置参数](howto-configure-server-parameters-cli.md)

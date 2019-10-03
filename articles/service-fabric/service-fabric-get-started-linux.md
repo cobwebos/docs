@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 9f738ab5022d1378925d920818e3f89fc2a1ee6d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 6916eea26f03d7b9cd0b3792fa65354619f97f74
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670517"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828504"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "58670517"
 不支持在适用于 Linux 的 Windows 子系统上安装 Service Fabric 运行时和 SDK。 可以使用受支持的 Azure Service Fabric 命令行接口 (CLI) 来管理托管在云中或本地其他位置的 Service Fabric 实体。 有关如何安装 CLI 的信息，请参阅[设置 Service Fabric CLI](./service-fabric-cli.md)。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 支持使用以下操作系统版本进行开发。
 
@@ -87,8 +87,7 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
 4. 向 APT Keyring 添加新的 Gnu 隐私防护（GnuPG 或 GPG）密钥。
 
     ```bash
-    sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+    curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
 5. 向 APT Keyring 添加官方的 Docker GPG 密钥。
@@ -107,7 +106,7 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
 7. 将 Azul JDK 密钥添加到 APT Keyring 并设置其存储库。
 
     ```bash
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
@@ -179,8 +178,8 @@ SDK 安装随附的 Service Fabric 运行时包含下表中所述的包。
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit from npm | 最新 |
-RHEL | - | OpenJDK 1.8 | Implicit from npm | 最新 |
+Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit from npm | latest |
+RHEL | - | OpenJDK 1.8 | Implicit from npm | latest |
 
 ## <a name="set-up-a-local-cluster"></a>设置本地群集
 安装完成后，启动本地群集。
@@ -216,19 +215,20 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 1. 在计算机上安装 Node.js 和 npm。
 
     ```bash
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-    nvm install node
+    sudo add-apt-repository "deb https://deb.nodesource.com/node_8.x $(lsb_release -s -c) main"
+    sudo apt-get update
+    sudo apt-get install nodejs
     ```
 2. 通过 npm 在计算机上安装 [Yeoman](https://yeoman.io/) 模板生成器。
 
     ```bash
-    npm install -g yo
+    sudo npm install -g yo
     ```
 3. 通过 npm 安装 Service Fabric Yeo 容器生成器和来宾可执行文件生成器。
 
     ```bash
-    npm install -g generator-azuresfcontainer  # for Service Fabric container application
-    npm install -g generator-azuresfguest      # for Service Fabric guest executable application
+    sudo npm install -g generator-azuresfcontainer  # for Service Fabric container application
+    sudo npm install -g generator-azuresfguest      # for Service Fabric guest executable application
     ```
 
 安装生成器后，可通过运行 `yo azuresfguest` 或 `yo azuresfcontainer` 分别创建来宾可执行文件或容器服务。
@@ -276,7 +276,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 2. 若要安装 Service Fabric 插件，请选择“帮助” > “安装新软件”。
 
-3. 在“使用”框中，输入 **https://dl.microsoft.com/eclipse**。
+3. 在“使用”框中，输入 **https://dl.microsoft.com/eclipse** 。
 
 4. 选择 **添加** 。
 
@@ -333,7 +333,6 @@ sudo apt-get install servicefabric servicefabricsdkcommon
 * [在 Windows 上准备 Linux 开发环境](service-fabric-local-linux-cluster-windows.md)
 * [使用 Service Fabric CLI 管理应用程序](service-fabric-application-lifecycle-sfctl.md)
 * [Service Fabric Windows 和 Linux 差异](service-fabric-linux-windows-differences.md)
-* [在 Linux 群集上自动进行操作系统修补](service-fabric-patch-orchestration-application-linux.md)
 * [Service Fabric CLI 入门](service-fabric-cli.md)
 
 <!-- Links -->

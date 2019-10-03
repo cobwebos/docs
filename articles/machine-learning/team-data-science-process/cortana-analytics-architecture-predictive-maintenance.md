@@ -12,11 +12,11 @@ ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
 ms.openlocfilehash: 057607a67de72fa3607f584772693a31c9448fd6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457728"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60303702"
 ---
 # <a name="architecture-of-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>航天工业预见性维护的 Cortana Intelligence 解决方案模板体系结构
 下图提供了 [Cortana Intelligence Solution Template for predictive maintenance](https://gallery.cortanaanalytics.com/SolutionTemplate/Predictive-Maintenance-for-Aerospace-1)（预见性维护的 Cortana Intelligence 解决方案模板）的体系结构概述。

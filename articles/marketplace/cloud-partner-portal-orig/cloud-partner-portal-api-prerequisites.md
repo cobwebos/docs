@@ -1,25 +1,18 @@
 ---
-title: API 先决条件 | Microsoft Docs
+title: API 系统必备组件 |Azure Marketplace
 description: 使用云合作伙伴门户 API 的先决条件。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 0d743d89c344ce9cb6eec116ed9c3e0cbe56f86e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: a973ab0a406168756af61900fd35947c8be6d03b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878641"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935386"
 ---
 <a name="api-prerequisites"></a>API 先决条件
 ================
@@ -41,21 +34,21 @@ ms.locfileid: "57878641"
 使用以下步骤添加服务主体：
 
 1. 登录到云合作伙伴门户。 
-2. 在左侧菜单栏上单击“用户”并选择“添加用户”。
+2. 在左侧菜单栏上单击“用户”  并选择“添加用户”。 
 
    ![向门户中添加用户](./media/cloud-partner-portal-api-prerequisites/add-user.jpg)
 
-3. 从“类型”下拉列表中，选择“服务主体”并添加以下详细信息：
+3. 从“类型”  下拉列表中，选择“服务主体”  并添加以下详细信息：
 
 -   服务主体的**友好名称**，例如 `spAccount`。
--   **应用程序 ID**。 若要查找此标识符，请转到 [Azure 门户](https://portal.azure.com)，单击“Azure Active Directory”，选择“应用注册”，然后单击你的应用。
--   你的 Azure AD 租户的**租户 ID**，也称为**目录 ID**。 在 [Azure 门户](https://portal.azure.com)中，可以在 Azure Active Directory 页面上的“属性”下找到此标识符。
--   你的服务主体对象的**对象 ID**。 可以从 Azure 门户获取此标识符。 转到“Azure Active Directory”，选择“应用注册”，在“本地目录中的托管应用程序”下单击你的应用并单击应用名称。 然后，转到“属性”页来查找对象 ID。 请确保不是获取你的应用上的初始对象 ID，而是获取托管应用程序中的对象 ID。
+-   **应用程序 ID**。 若要查找此标识符，请转到 [Azure 门户](https://portal.azure.com)，单击“Azure Active Directory”  ，选择“应用注册”  ，然后单击你的应用。
+-   你的 Azure AD 租户的**租户 ID**，也称为**目录 ID**。 在 [Azure 门户](https://portal.azure.com)中，可以在 Azure Active Directory 页面上的“属性”  下找到此标识符。
+-   你的服务主体对象的**对象 ID**。 可以从 Azure 门户获取此标识符。 转到“Azure Active Directory”  ，选择“应用注册”  ，在“本地目录中的托管应用程序”下单击你的应用并单击应用名称。  然后，转到“属性”  页来查找对象 ID。 请确保不是获取你的应用上的初始对象 ID，而是获取托管应用程序中的对象 ID。
 -   与帐户关联的**角色**，它将用于 RBAC。
 
      ![向门户中添加托管应用](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
 
-1. 单击“添加”将服务主体添加到你的帐户。
+1. 单击“添加”将服务主体添加到你的帐户。 
 
    ![添加服务主体](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
 

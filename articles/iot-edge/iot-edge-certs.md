@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 91cde6965f3635d6d2acfaf581f570779020f8ff
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
+ms.openlocfilehash: 0aa70e591c7aac977fe13ed638f8ee56b88e4bd1
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232220"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982913"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Azure IoT Edge 证书使用详细信息
 
@@ -93,14 +93,14 @@ New-CACertsCertChain rsa
 同样，这些命令可生成“设备 CA 证书”。
 
 ```bash
-./certGen.sh create_edge_device_certificate "<gateway device name>"
+./certGen.sh create_edge_device_ca_certificate "<gateway device name>"
 ```
 
 ```Powershell
-New-CACertsEdgeDevice "<gateway device name>"
+New-CACertsEdgeDeviceCA "<gateway device name>"
 ```
 
-* 传递到这些脚本中的 \<网关设备名称\> 不得与 config.yaml 中的“hostname”参数相同。 脚本将“.ca”字符串追加到 \<网关设备名\> 可防止用户在两个位置使用相同的名称来设置 IoT Edge 时出现名称冲突，从而帮助避免产生任何问题。 但最好避免使用相同的名称。
+* 传入这些脚本的 **\> \<网关设备名称**不应与 yaml 中的 "hostname" 参数相同。 脚本将“.ca”字符串追加到 \<网关设备名\> 可防止用户在两个位置使用相同的名称来设置 IoT Edge 时出现名称冲突，从而帮助避免产生任何问题。 但最好避免使用相同的名称。
 
 >[!Tip]
 > 要通过 IoT Edge 连接设备 IoT“叶”设备和使用 IoT 设备 SDK 的应用程序，必须将可选的 GatewayHostName 参数添加到设备连接字符串的末尾。 生成 Edge 中心服务器证书时，该证书基于 config.yaml 中主机名的小写版本，因此，为使要匹配的名称和 TLS 证书验证成功，应以小写形式输入 GatewayHostName 参数。

@@ -1,5 +1,5 @@
 ---
-title: 服务到服务身份验证：通过 Azure Active Directory 将 Python 与 Azure 数据湖存储 Gen1 |Microsoft Docs
+title: 服务到服务身份验证：使用 Azure Active Directory Azure Data Lake Storage Gen1 Python |Microsoft Docs
 description: 了解如何通过 Python 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 84b7fac10374c1c8f23d17ad775d522b4cb261e8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b63209c9174867e69356bb6800d70502f2afdaa4
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877744"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088833"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>使用 Python 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "58877744"
 本文介绍如何使用 Python SDK 执行 Azure Data Lake Storage Gen1 服务到服务身份验证。 若要了解使用 Python 的 Data Lake Storage Gen1 最终用户身份验证，请参阅[使用 Python 通过 Data Lake Storage Gen1 进行最终用户身份验证](data-lake-store-end-user-authenticate-python.md)。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用的是 Python 3.6.2。
 
@@ -43,7 +43,7 @@ ms.locfileid: "58877744"
 若要通过 Python 使用 Data Lake Storage Gen1，需要安装三个模块。
 
 * `azure-mgmt-resource` 模块，包括用于 Active Directory 的 Azure 模块，等等。
-* `azure-mgmt-datalake-store` 模块，包括 Data Lake Storage Gen1 帐户管理操作。 有关此模块的详细信息，请参阅 [Azure Data Lake Storage Gen1 管理模块参考](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)。
+* `azure-mgmt-datalake-store` 模块，包括 Data Lake Storage Gen1 帐户管理操作。 有关此模块的详细信息，请参阅 [Azure Data Lake Storage Gen1 管理模块参考](/python/api/azure-mgmt-datalake-store/)。
 * `azure-datalake-store` 模块，其中包括 Data Lake Storage Gen1 文件系统操作。 有关此模块的详细信息，请参阅 [azure-datalake-store 文件系统模块参考](https://azure-datalake-store.readthedocs.io/en/latest/)。
 
 使用以下命令安装这些模块。

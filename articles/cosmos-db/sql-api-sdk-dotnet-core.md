@@ -8,18 +8,19 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: bae180e2ceae6fe0768a5f7951c18dc5147870fa
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: c39db870e44d4e810817b70e2793b8805088180e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545240"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932544"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB .NET Core SDK：发行说明和资源
 > [!div class="op_single_selector"]
+> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET 标准](sql-api-sdk-dotnet-standard.md)
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [异步 Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
@@ -27,29 +28,51 @@ ms.locfileid: "59545240"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**SDK 下载**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**API 文档**|[ 参考文档](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**示例**|[.NET代码示例](sql-api-dotnet-samples.md)|
-|**入门**|[Azure Cosmos DB .NET Core SDK 入门](sql-api-dotnet-core-get-started-preview.md)|
+|**入门**|[Azure Cosmos DB .NET 入门](sql-api-sdk-dotnet.md)|
 |**Web 应用教程**|[使用 Azure Cosmos DB 进行 Web 应用程序开发](sql-api-dotnet-application.md)|
 |**当前受支持的框架**|[.NET Standard 1.6 和 .NET Standard 1.5](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>发行说明
 
-Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md) 相同的功能。
+> [!NOTE]
+> 如果你使用的是 .NET Core, 请参阅[.NET SDK](sql-api-sdk-dotnet-standard.md)的最新版本 1.x, 该版本面向 .NET Standard。 
 
-### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-preview
-* .NET SDK [版本 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 的预览版 1（公共预览版）。
-* 适用于 .NET Standard，.NET Standard 支持 .NET Framework 4.6.1+ 和 .NET Core 2.0+
-* 新对象模型，使用顶级 CosmosClient 和方法拆分成相关的 CosmosDatabases、CosmosContainers 和 CosmosItems 类。
-* 支持流。
-* 对来自服务器的 CosmosResponseMessage 进行了更新以返回状态代码，并且仅在未返回响应时引发异常。
+### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
 
+* 已将 PortReusePolicy 添加到 ConnectionPolicy
+* Fixed ntdll.dll！在 UWP 应用中使用 SDK 时出现 RtlGetVersion TypeLoadException 问题
+
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* SDK 的系统 .Net 版本现在与 NuGet 包中定义的版本匹配。
+* 如果原始的请求失败, 则允许写入请求回退到另一个区域。
+* 为写入请求添加会话重试策略。
+
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+
+* 修复导致空页的查询的跟踪争用条件
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+
+* 增加了 LINQ 查询的十进制精度大小。
+* 添加了新的类 CompositePath、CompositePathSortOrder、SpatialSpec、SpatialType 和 PartitionKeyDefinitionVersion
+* 已将 TimeToLivePropertyPath 添加到 DocumentCollection
+* 将 CompositeIndexes 和 SpatialIndexes 添加到 IndexPolicy
+* 向 PartitionKeyDefinition 添加了版本
+* 无添加到 PartitionKey
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+
+ * 已将 IdleTcpConnectionTimeout、OpenTcpConnectionTimeout、MaxRequestsPerTcpConnection 和 MaxTcpConnectionsPerEndpoint 添加到 ConnectionPolicy。
+ 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
 * 诊断改进
@@ -214,7 +237,7 @@ Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
-* 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。 请参阅[聚合支持](how-to-sql-query.md#Aggregates)。
+* 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。 请参阅[聚合支持](sql-query-aggregates.md)。
 * 将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
@@ -234,11 +257,28 @@ Azure Cosmos DB .NET Core 预览版 SDK 与最新版 [Azure Cosmos DB .NET SDK](
 若有与此 SDK 相关的问题，请发布到 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb)，或在 [GitHub 存储库](https://github.com/Azure/azure-documentdb-dotnet/issues)中提出问题。
 
 ## <a name="release--retirement-dates"></a>发布和停用日期
+Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
 
-| 版本 | 发布日期 | 停用日期 |
+新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。 
+
+使用已停用的 SDK 对 Azure Cosmos DB 发出的任何请求都会遭服务拒绝。
+
+> [!WARNING]
+> SQL API**的 .NET Core SDK 的所有版本 1.x**将于**2020 年8月30日**停用。
+> 
+>
+<br/>
+
+
+| Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [2.2.3](#2.2.3) |2019 年 3 月 11日日 |--- |
-| [2.2.2](#2.2.2) |2019 年 2 月 6 日， |--- |
+| [2.6.0](#2.6.0) |2019年8月30日 |--- |
+| [2.5.1](#2.5.1) |2019年7月 |--- |
+| [2.4.1](#2.4.1) |2019年6月20日 |--- |
+| [2.4.0](#2.4.0) |5月5日, 2019 |--- |
+| [2.3.0](#2.3.0) |2019年4月 |--- |
+| [2.2.3](#2.2.3) |2019年3月11日 |--- |
+| [2.2.2](#2.2.2) |2019年2月6日 |--- |
 | [2.2.1](#2.2.1) |2018 年 12 月 24 日 |--- |
 | [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
 | [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |
@@ -246,28 +286,28 @@ Azure Cosmos DB .NET Core 预览版 SDK 与最新版 [Azure Cosmos DB .NET SDK](
 | [2.1.1](#2.1.1) |2018 年 9 月 27 日 |--- |
 | [2.1.0](#2.1.0) |2018 年 9 月 21 日 |--- |
 | [2.0.0](#2.0.0) |2018 年 9 月 7 日 |--- |
-| [1.9.1](#1.9.1) |2018 年 3 月 9 日 |--- |
-| [1.8.2](#1.8.2) |2018 年 2 月 21 日 |--- |
-| [1.8.1](#1.8.1) |2018 年 2 月 5 日 |--- |
-| [1.7.1](#1.7.1) |2017 年 11 月 16 日 |--- |
-| [1.7.0](#1.7.0) |2017 年 11 月 10 日 |--- |
-| [1.6.0](#1.6.0) |2017 年 10 月 17 日 |--- |
-| [1.5.1](#1.5.1) |2017 年 10 月 2日 |--- |
-| [1.5.0](#1.5.0) |2017 年 8 月 10 日 |--- | 
-| [1.4.1](#1.4.1) |2017 年 8 月 7 日 |--- |
-| [1.4.0](#1.4.0) |2017 年 8 月 2 日 |--- |
-| [1.3.2](#1.3.2) |2017 年 6 月 12 日 |--- |
-| [1.3.1](#1.3.1) |2017 年 5 月 23 日 |--- |
-| [1.3.0](#1.3.0) |2017 年 5 月 10 日 |--- |
-| [1.2.2](#1.2.2) |2017 年 4 月 19 日 |--- |
-| [1.2.1](#1.2.1) |2017 年 3 月 29 日 |--- |
-| [1.2.0](#1.2.0) |2017 年 3 月 25 日 |--- |
-| [1.1.2](#1.1.2) |2017 年 3 月 20 日 |--- |
-| [1.1.1](#1.1.1) |2017 年 3 月 14 日 |--- |
-| [1.1.0](#1.1.0) |2017 年 2 月 16 日 |--- |
-| [1.0.0](#1.0.0) |2016 年 12 月 21 日 |--- |
+| [1.9.1](#1.9.1) |2018 年 3 月 9 日 |2020年8月30日 |
+| [1.8.2](#1.8.2) |2018 年 2 月 21 日 |2020年8月30日 |
+| [1.8.1](#1.8.1) |2018 年 2 月 5 日 |2020年8月30日 |
+| [1.7.1](#1.7.1) |2017 年 11 月 16 日 |2020年8月30日 |
+| [1.7.0](#1.7.0) |2017 年 11 月 10 日 |2020年8月30日 |
+| [1.6.0](#1.6.0) |2017 年 10 月 17 日 |2020年8月30日 |
+| [1.5.1](#1.5.1) |2017 年 10 月 2日 |2020年8月30日 |
+| [1.5.0](#1.5.0) |2017 年 8 月 10 日 |2020年8月30日 | 
+| [1.4.1](#1.4.1) |2017 年 8 月 7 日 |2020年8月30日 |
+| [1.4.0](#1.4.0) |2017 年 8 月 2 日 |2020年8月30日 |
+| [1.3.2](#1.3.2) |2017 年 6 月 12 日 |2020年8月30日 |
+| [1.3.1](#1.3.1) |2017 年 5 月 23 日 |2020年8月30日 |
+| [1.3.0](#1.3.0) |2017 年 5 月 10 日 |2020年8月30日 |
+| [1.2.2](#1.2.2) |2017 年 4 月 19 日 |2020年8月30日 |
+| [1.2.1](#1.2.1) |2017 年 3 月 29 日 |2020年8月30日 |
+| [1.2.0](#1.2.0) |2017 年 3 月 25 日 |2020年8月30日 |
+| [1.1.2](#1.1.2) |2017 年 3 月 20 日 |2020年8月30日 |
+| [1.1.1](#1.1.1) |2017 年 3 月 14 日 |2020年8月30日 |
+| [1.1.0](#1.1.0) |2017 年 2 月 16 日 |2020年8月30日 |
+| [1.0.0](#1.0.0) |2016 年 12 月 21 日 |2020年8月30日 |
 | [0.1.0-preview](#0.1.0-preview) |2016 年 11 月 15 日 |2016 年 12 月 31 日 |
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。
 

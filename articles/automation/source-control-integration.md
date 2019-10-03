@@ -4,74 +4,76 @@ description: 本文介绍 Azure 自动化中源代码管理与 GitHub 的集成�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 04/15/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 81602f1a30fb753d7a8fcfccace581cd8c7b2f0c
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 52fcd0d928ecbce5c617ff6a27175fccb8fd96f6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607086"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990238"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
-源代码管理可让你可以让你的 runbook 在自动化帐户是与您的脚本在 GitHub 或 Azure 存储库源控件存储库中最新。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试或生产自动化帐户。 这样可以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。 源代码管理与自动化集成支持单向同步从源代码管理存储库。
+源代码管理使你能够在你的 GitHub 或 Azure Repos 源代码管理存储库中, 使你的自动化帐户中的 runbook 保持最新。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，通过源代码管理可以将源代码管理中的不同分支同步到开发、测试或生产自动化帐户。 这样可以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。 源代码管理与自动化的集成支持从源代码管理存储库进行单向同步。
 
 Azure 自动化支持三种类型的源代码管理：
 
 * GitHub
-* Azure 存储库 (Git)
-* Azure 存储库 (TFVC)
+* Azure Repos (Git)
+* Azure Repos (TFVC)
 
 ## <a name="pre-requisites"></a>先决条件
 
-* 源代码管理存储库 （GitHub 或 Azure 存储库）
+* 源代码管理存储库（GitHub 或 Azure Repos）
 * 一个[运行方式帐户](manage-runas-account.md)
-* 请确保您具有[最新的 Azure 模块](automation-update-azure-modules.md)在自动化帐户中
+* 确保已在自动化帐户中安装[最新的 Azure 模块](automation-update-azure-modules.md)
 
 > [!NOTE]
 > 源代码管理同步作业以自动化帐户用户身份运行，并且按与其他自动化作业相同的费率计费。
 
-## <a name="configure-source-control---azure-portal"></a>配置源代码管理-Azure 门户
+## <a name="configure-source-control---azure-portal"></a>配置源代码管理 - Azure 门户
 
-在自动化帐户中，选择**源代码管理**单击 **+ 添加**
+在你的自动化帐户中选择“源代码管理”，然后单击“+ 添加”
 
 ![选择“源代码管理”](./media/source-control-integration/select-source-control.png)
 
-选择“源代码管理类型”，单击“身份验证”。 打开一个浏览器窗口，提示你登录，根据提示完成身份验证。
+选择“源代码管理类型”，单击“身份验证”。 此时会打开一个提示登录的浏览器窗口，请遵照提示完成身份验证。
 
 在“源代码管理摘要”页上，填写信息并单击“保存”。 下表显示了可用字段的说明。
 
 |属性  |描述  |
 |---------|---------|
-|源代码管理名称     | 源控件的友好名称。 *此名称必须包含字母和数字。*        |
-|源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> GitHub</br>Azure 存储库 (Git)</br> Azure 存储库 (TFVC)        |
-|存储库     | 存储库或项目的名称。 返回前 200 个存储库。 若要搜索存储库，在字段中键入名称，然后单击**GitHub 上的搜索**。|
-|分支     | 要从源文件中提取的分支。 分支目标不是适用于 TFVC 源控件类型。          |
-|文件夹路径     | 包含要同步的 runbook 的文件夹。示例：/Runbooks </br>*指定的文件夹中的唯一 runbook 会同步。不支持递归。*        |
-|自动同步     | 在源代码管理存储库中提交时打开或关闭自动同步         |
-|发布 Runbook     | 如果设置为**上**后从源代码管理，它们将自动发布同步 runbook。         |
+|源代码管理名称     | 源代码管理的易记名称。 *此名称只能包含字母和数字。*        |
+|源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
+|存储库     | 存储库或项目的名称。 将返回前 200 个存储库。 若要搜索存储库，请在字段中键入名称，然后单击“在 GitHub 中搜索”。|
+|分支     | 要从源文件中提取的分支。 分支目标确定不适用于 TFVC 源代码管理类型。          |
+|文件夹路径     | 包含要同步的 runbook 的文件夹。示例：/Runbooks </br>*只会同步指定文件夹中的 Runbook。不支持递归。*        |
+|自动同步<sup>1</sup>     | 在源代码管理存储库中提交时打开或关闭自动同步         |
+|发布 Runbook     | 如果设置为“打开”，在从源代码管理同步 Runbook 后，它们将自动发布。         |
 |描述     | 用于提供其他详细信息的一个文本字段        |
+
+<sup>1</sup> 只有项目管理员才能在配置源代码管理与 Azure 存储库的集成时启用自动同步。
 
 ![源代码管理摘要](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> 配置源代码管理时请确保使用正确的帐户登录。 如果有疑问，请在浏览器中打开新的选项卡并从 visualstudio.com 或 github.com 中注销，然后再次尝试连接源代码管理。
+> 你的源代码管理存储库的登录名可能不同于 Azure 门户的登录名。 配置源代码管理时，请确保使用源代码管理存储库的正确帐户登录。 如果有疑问，请在浏览器中打开新的选项卡并从 visualstudio.com 或 github.com 中注销，然后再次尝试连接源代码管理。
 
-## <a name="configure-source-control---powershell"></a>配置源代码管理-PowerShell
+## <a name="configure-source-control---powershell"></a>配置源代码管理 - PowerShell
 
-此外可以使用 PowerShell 在 Azure 自动化中配置源代码管理。 若要使用 PowerShell cmdlet 配置源代码管理，需要个人访问令牌 (PAT)。 您使用[新建 AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl)创建源代码管理连接。 该 cmdlet 需要安全字符串的个人访问令牌，若要了解如何创建安全字符串，请参阅[Convertto-securestring](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)。
+也可以使用 PowerShell 在 Azure 自动化中配置源代码管理。 若要使用 PowerShell cmdlet 配置源代码管理，需要个人访问令牌 (PAT)。 使用 [New-AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl) 创建源代码管理连接。 该 cmdlet 需要使用个人访问令牌的安全字符串来了解如何创建安全字符串，具体请参阅 [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)。
 
-### <a name="azure-repos-git"></a>Azure 存储库 (Git)
+### <a name="azure-repos-git"></a>Azure Repos (Git)
 
 ```powershell-interactive
 New-AzureRmAutomationSourceControl -Name SCReposGit -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
-### <a name="azure-repos-tfvc"></a>Azure 存储库 (TFVC)
+### <a name="azure-repos-tfvc"></a>Azure Repos (TFVC)
 
 ```powershell-interactive
 New-AzureRmAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_versionControl -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
@@ -85,7 +87,7 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 
 ### <a name="personal-access-token-permissions"></a>个人访问令牌权限
 
-源代码管理需要一些个人访问令牌的最低权限。 下表包含 GitHub 和 Azure 存储库所需的最小权限。
+源代码管理需要一些个人访问令牌的最低权限。 下表包含 GitHub 和 Azure Repos 所需的最低权限。
 
 #### <a name="github"></a>GitHub
 
@@ -103,7 +105,7 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 
 #### <a name="azure-repos"></a>Azure Repos
 
-有关在 Azure 存储库中创建个人访问令牌的详细信息，请访问[进行身份验证使用个人访问令牌访问](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)。
+有关在 Azure Repos 中创建个人访问令牌的详细信息，请访问[使用个人访问令牌对访问进行身份验证](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)。
 
 |范围  |
 |---------|
@@ -114,11 +116,11 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 |工作项(读取)    |
 |服务连接(读取、查询和管理)<sup>1</sup>    |
 
-<sup>1</sup>服务连接权限，才需要是否已启用自动同步。
+<sup>1</sup>只有在启用了自动同步时才需要“服务连接”权限。
 
-## <a name="syncing"></a>同步
+## <a name="syncing"></a>正在同步
 
-在选择表中的源**源代码管理**页。 单击“开始同步”以开始同步过程。
+从“源代码管理”页上的表格中选择源。 单击“开始同步”以开始同步过程。
 
 可以通过单击“同步作业”选项卡来查看当前同步作业或之前的同步作业的状态。在“源代码管理”下拉列表中，选择一个源代码管理。
 
@@ -159,17 +161,24 @@ Source Control Sync Summary:
 ========================================================================================================
 ```
 
-附加的日志记录是可通过选择**的所有日志**上**源控件同步作业摘要**页。 这些额外的日志条目可以帮助您解决使用源代码管理时可能出现的问题。
+在“源代码管理同步作业摘要”页上选择“所有日志”可以查看其他日志。 这些附加的日志条目可帮助你排查使用源代码管理时可能遇到的问题。
 
 ## <a name="disconnecting-source-control"></a>断开连接源代码管理
 
-若要断开与源代码管理存储库的连接，打开**源代码管理**下**帐户设置**在自动化帐户中。
+若要从源代码管理存储库断开连接，请在你的自动化帐户中的“帐户设置”下打开“源代码管理”。
 
 选择要删除的源代码管理。 在“源代码管理摘要”页面上，单击“删除”。
 
 ## <a name="encoding"></a>编码
 
-如果多人正在使用不同的编辑器编辑源代码控制存储库中的 runbook，则可能会遇到编码问题。 这种情况下可能会导致不正确的字符在 runbook 中。 若要了解详细信息，请参阅[常见编码问题的原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
+如果有多个人正在使用不同的编辑器编辑你的源代码管理存储库中的 Runbook，可能会遇到编码问题。 这种情况可能会导致 Runbook 中出现错误的字符。 有关详细信息，请参阅[编码问题的常见原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
+
+## <a name="updating-the-access-token"></a>更新访问令牌
+
+当前无法从门户更新源代码管理中的访问令牌。 个人访问令牌过期或吊销后, 可以通过以下方式使用新的访问令牌来更新源代码管理:
+
+* 通过[REST Api](https://docs.microsoft.com/en-us/rest/api/automation/sourcecontrol/update)。
+* 使用[AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet。
 
 ## <a name="next-steps"></a>后续步骤
 

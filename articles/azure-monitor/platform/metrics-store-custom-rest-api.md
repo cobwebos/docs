@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: aa842979bf86410e9dab97d6209f336eb6b02bd3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621900"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60253880"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储
 
@@ -102,19 +102,19 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 
 1. 登录到 Azure 门户。 
 
-1. 在左侧菜单中选择“监视”。 
+1. 在左侧菜单中选择“监视”  。 
 
-1. 在“监视”页上选择“指标”。 
+1. 在“监视”页上选择“指标”   。 
 
    ![选择“指标”](./media/metrics-store-custom-rest-api/metrics.png) 
 
-1. 将聚合时限更改为“过去 30 分钟”。  
+1. 将聚合时限更改为“过去 30 分钟”  。  
 
-1. 在“资源”下拉菜单中，选择你针对其发布了指标的资源。  
+1. 在“资源”  下拉菜单中，选择你针对其发布了指标的资源。  
 
-1. 在“命名空间”下拉菜单中，选择“QueueProcessing”。 
+1. 在“命名空间”  下拉菜单中，选择“QueueProcessing”  。 
 
-1. 在“指标”下拉菜单中，选择“QueueDepth”。  
+1. 在“指标”  下拉菜单中，选择“QueueDepth”  。  
 
  
 ## <a name="next-steps"></a>后续步骤

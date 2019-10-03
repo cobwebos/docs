@@ -3,7 +3,7 @@ title: 开始使用 Azure 队列存储和 Visual Studio 连接服务 (ASP.NET) |
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 ASP.NET 项目中使用 Azure 队列存储
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 94ca3413-5497-433f-abbe-836f83a9de72
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: 3f3a649308449a8ba4e1dbaebd4db4afbf731c5b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 19cf2dd912968d0a5df8743c1e720776b8a949f0
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105754"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515983"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务 (ASP.NET)
 
@@ -29,7 +29,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 
 本教程介绍如何针对 Azure 队列存储实体的一些常见使用方案编写 ASP.NET 代码。 这些方案包括一些常见任务，如创建 Azure 队列，添加、修改、读取和删除队列消息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)
@@ -137,7 +137,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
     <li>@Html.ActionLink("Create queue", "CreateQueue", "Queues")</li>
     ```
 
-1. 运行该应用程序，并选择**创建队列**以查看结果是否与以下屏幕截图类似：
+1. 运行应用程序, 并选择 "**创建队列**" 以查看类似于以下屏幕截图的结果:
   
     ![创建队列](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
@@ -226,7 +226,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
     <li>@Html.ActionLink("Add message", "AddMessage", "Queues")</li>
     ```
 
-1. 运行该应用程序，并选择**添加消息**以查看结果是否与以下屏幕截图类似：
+1. 运行应用程序, 并选择 "**添加消息**" 以查看类似于以下屏幕截图的结果:
   
     ![添加消息](./media/vs-storage-aspnet-getting-started-queues/add-message-results.png)
 
@@ -278,7 +278,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
     CloudQueueMessage message = queue.PeekMessage();
     ```
 
-1. 使用两个值更新 **ViewBag**：队列名称和已读取的消息。 **CloudQueueMessage**对象公开用于获取对象的值的两个属性：**CloudQueueMessage.AsBytes**并**CloudQueueMessage.AsString**。 **AsString**（已在此示例中使用）返回一个字符串，而**AsBytes** 则返回一个字节数组。
+1. 使用两个值更新 **ViewBag**：队列名称和已读取的消息。 **CloudQueueMessage**对象公开了两个属性, 用于获取对象的值:**CloudQueueMessage. cloudqueuemessage.asbytes**和**CloudQueueMessage. AsString**。 **AsString**（已在此示例中使用）返回一个字符串，而**AsBytes** 则返回一个字节数组。
 
     ```csharp
     ViewBag.QueueName = queue.Name; 
@@ -312,7 +312,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
     <li>@Html.ActionLink("Peek message", "PeekMessage", "Queues")</li>
     ```
 
-1. 运行该应用程序，并选择**速览消息**以查看结果是否与以下屏幕截图类似：
+1. 运行应用程序, 并选择 "**速览消息**" 以查看类似于以下屏幕截图的结果:
   
     ![速览消息](./media/vs-storage-aspnet-getting-started-queues/peek-message-results.png)
 
@@ -403,7 +403,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
     <li>@Html.ActionLink("Read/Delete message", "ReadMessage", "Queues")</li>
     ```
 
-1. 运行该应用程序，并选择**读取/删除消息**以查看结果是否与以下屏幕截图类似：
+1. 运行应用程序, 并选择 "**读取/删除消息**" 以查看类似于以下屏幕截图的结果:
   
     ![读取并删除消息](./media/vs-storage-aspnet-getting-started-queues/read-message-results.png)
 
@@ -490,7 +490,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
     <li>@Html.ActionLink("Get queue length", "GetQueueLength", "Queues")</li>
     ```
 
-1. 运行该应用程序，并选择**获取队列长度**以查看结果是否与以下屏幕截图类似：
+1. 运行应用程序, 并选择 "**获取队列长度**" 以查看类似于以下屏幕截图的结果:
   
     ![获取队列长度](./media/vs-storage-aspnet-getting-started-queues/get-queue-length-results.png)
 
@@ -570,7 +570,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
     <li>@Html.ActionLink("Delete queue", "DeleteQueue", "Queues")</li>
     ```
 
-1. 运行该应用程序，并选择**获取队列长度**以查看结果是否与以下屏幕截图类似：
+1. 运行应用程序, 并选择 "**获取队列长度**" 以查看类似于以下屏幕截图的结果:
   
     ![删除队列](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
 

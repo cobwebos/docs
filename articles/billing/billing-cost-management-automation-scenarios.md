@@ -3,7 +3,7 @@ title: Azure 计费和成本管理自动化方案 | Microsoft Docs
 description: 了解如何将常用的计费和成本管理方案映射到不同的 API。
 services: billing
 documentationcenter: ''
-author: Erikre
+author: bandersmsft
 manager: dougeby
 editor: ''
 tags: billing
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 6/13/2018
-ms.author: erikre
-ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.date: 10/01/2019
+ms.author: banders
+ms.openlocfilehash: 54c4426fb8bdb1476b33defb5351b3fb0e6a0663
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792814"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718836"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>计费和成本管理自动化方案
 
@@ -66,11 +66,11 @@ ms.locfileid: "59792814"
 ### <a name="consumption"></a>消耗
 除非另有说明，否则 Web 直连客户和企业客户可使用下面的所有 API：
 
--   [预算 API](https://docs.microsoft.com/rest/api/consumption/budgets)（仅限企业客户）：创建资源、资源组或计费计量的成本预算或使用情况预算。 创建预算后，可以将警报配置为，在超出定义的预算阈值时发出通知。 还可以配置在达到预算金额时采取的操作。
+-   [预算 API](https://docs.microsoft.com/rest/api/consumption/budgets)（仅限企业客户  ）：创建资源、资源组或计费计量的成本预算或使用情况预算。 创建预算后，可以将警报配置为，在超出定义的预算阈值时发出通知。 还可以配置在达到预算金额时采取的操作。
 
 -   [市场费用 API](https://docs.microsoft.com/rest/api/consumption/marketplaces)：获取所有 Azure 市场资源（Azure 合作伙伴产品/服务）的费用和使用情况数据。 使用此数据，可以计算所有市场资源的费用总和，也可以调查特定资源的费用/使用情况。
 
--   [价目表 API](https://docs.microsoft.com/rest/api/consumption/pricesheet)（仅限企业客户）：获取所有计量的自定义定价。 企业可以将此数据与使用情况详细信息和市场使用情况信息相结合，从而根据使用情况和市场数据来计算费用。 
+-   [价目表 API](https://docs.microsoft.com/rest/api/consumption/pricesheet)（仅限企业客户  ）：获取所有计量的自定义定价。 企业可以将此数据与使用情况详细信息和市场使用情况信息相结合，从而根据使用情况和市场数据来计算费用。 
 
 -   [预留建议 API](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations)：获取与购买虚拟机预留实例相关的建议。 建议有助于分析预期费用节省情况和购买金额。 有关详细信息，请参阅[适用于 Azure 预留自动化的 API](billing-reservation-apis.md)。
 
@@ -85,9 +85,9 @@ ms.locfileid: "59792814"
 -   [未计费的使用情况 API](/previous-versions/azure/reference/mt219003(v=azure.100))：获取在 Azure 进行任何计量/计费前的原始使用情况信息。
 
 ### <a name="billing"></a>计费
--   [计费周期 API](https://docs.microsoft.com/rest/api/billing/billingperiods)：确定要分析的计费周期，以及此周期的发票 ID。 可以将发票 ID 与发票 API 结合使用。
+-   [计费周期 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)：确定要分析的计费周期，以及此周期的发票 ID。 可以将发票 ID 与发票 API 结合使用。
 
--   [发票 API](https://docs.microsoft.com/rest/api/billing/invoices)：获取计费周期的发票（PDF 格式）的下载 URL。
+-   [发票 API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices)：获取计费周期的发票（PDF 格式）的下载 URL。
 
 ### <a name="enterprise-consumption"></a>企业使用情况
 以下 API 仅适用于企业：
@@ -126,7 +126,7 @@ ms.locfileid: "59792814"
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>发票 API 与使用情况详细信息 API 有何区别？
 这些 API 提供包含相同数据的不同视图：
 
-- [发票 API](https://docs.microsoft.com/rest/api/billing/invoices) 仅适用于 Web 直连客户。 它根据每种计量类型的汇总费用提供每月帐单汇总。 
+- [发票 API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) 仅适用于 Web 直连客户。 它根据每种计量类型的汇总费用提供每月帐单汇总。 
 
 - [使用情况详细信息 API](https://docs.microsoft.com/rest/api/consumption/usagedetails) 提供每天使用情况/费用记录的具体视图。 企业客户和 Web 直连客户都可以使用它。
 
@@ -143,4 +143,4 @@ ms.locfileid: "59792814"
 
 - 若要比较发票与 Azure 门户中的每日使用情况明细文件和成本管理报告，请参阅[了解 Microsoft Azure 帐单](billing-understand-your-bill.md)。
 
-- 如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+- 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

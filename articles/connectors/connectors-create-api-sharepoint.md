@@ -11,12 +11,12 @@ ms.assetid: e0ec3149-507a-409d-8e7b-d5fbded006ce
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: e636b2bb08477e6c56c6ae41f08983fc5bfa2a9b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 8a34ee4e90b551da35aff8802c8badc0d74ff539
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798649"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050785"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 SharePoint 资源
 
@@ -37,9 +37,9 @@ ms.locfileid: "59798649"
 可以使用触发器从 SharePoint 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作在 SharePoint 中执行任务。 还可以让其他操作使用 SharePoint 操作的输出。 例如，如果你定期从 SharePoint 提取文件，可以使用 Slack 连接器向团队发送消息。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * SharePoint 站点地址和用户凭据
 
@@ -63,16 +63,16 @@ ms.locfileid: "59798649"
 
 1. 对于空白逻辑应用，请在搜索框中输入“sharepoint”作为筛选器。 在触发器列表下，选择所需的触发器。 
 
-   -或-
+   或
 
    对于现有逻辑应用，请在要添加 SharePoint 操作的最后一个步骤下，选择“新建步骤”。 
    在搜索框中，输入“sharepoint”作为筛选器。 
    在操作列表下，选择所需的操作。
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
-1. 系统提示登录时，请提供所需的连接信息。 如果您使用 SharePoint Server，请确保选择**通过本地数据网关连接**。 完成后，选择“创建”。
+1. 系统提示登录时，请提供所需的连接信息。 如果使用 SharePoint 服务器，请务必选择“通过本地数据网关连接”。 完成后，选择“创建”。
 
 1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 

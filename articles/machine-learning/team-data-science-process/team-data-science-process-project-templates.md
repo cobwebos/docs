@@ -12,11 +12,11 @@ ms.date: 11/27/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bbedaa554e9c97a24e26c7927c1bf9c94d5cd507
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474456"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60253005"
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process 项目规划
 
@@ -39,7 +39,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 打开规划时，单击最左侧的关于 TDSP 的链接。 更改名称和说明，然后添加任何其他所需的团队资源。 根据经验估计所需的日期。
 
-![1](./media/team-data-science-process-project-templates/ms-project-templates.png)
+![第](./media/team-data-science-process-project-templates/ms-project-templates.png)
 
 每个任务都有一个注释。 打开这些任务，查看已为你创建的资源。
 

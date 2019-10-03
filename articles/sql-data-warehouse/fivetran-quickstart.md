@@ -2,20 +2,20 @@
 title: Azure SQL 数据仓库 Fivetran 快速入门 | Microsoft Docs
 description: 快速开始使用 Fivetran 和 Azure SQL 数据仓库。
 services: sql-data-warehouse
-author: hirokib
-manager: jrj
+author: mlee3gsd
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
+ms.subservice: integration
 ms.date: 10/12/2018
-ms.author: elbutter
-ms.reviewer: craigg
-ms.openlocfilehash: 1d8b6d2df21fe0aabe85754e061db4deb129b32e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: martinle
+ms.reviewer: igorstan
+ms.openlocfilehash: d829ee67d516892283fa31d9180336d768170ac1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895696"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65857004"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>快速开始使用 Fivetran 和 SQL 数据仓库
 
@@ -80,5 +80,5 @@ ms.locfileid: "57895696"
 * 主机（服务器名称）。
 * 端口。
 * 数据库。
-* 用户 (用户名称应**fivetran\@_server_name_** 其中*server_name*是您的 Azure 主机 URI 的一部分: ***server_name *。database.windows.net**)。
+* 用户 (用户名称应**fivetran\@_server_name_** 其中*server_name*是您的 Azure 主机 URI 的一部分: ***server_name*.database.windows.net**)。
 * Password。

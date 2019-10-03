@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: aa5e5fba3758fa3983924660b9b5f714d02613c6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 0236491f9ebc8e3ecf7df8b74db4fd5ff441c7f8
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158595"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677436"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>在 Windows 上创建和预配模拟 TPM Edge 设备
 
@@ -46,7 +46,7 @@ ms.locfileid: "54158595"
 
 选择要用来创建模拟设备的 SDK 语言，并遵循本文中的步骤，直到创建了个人注册为止。
 
-创建个人注册时，请选择“启用”，将 Windows 开发计算机上的模拟 TPM 设备声明为“IoT Edge设备”。
+创建单个注册时, 请选择 " **True** " 以声明 Windows 开发计算机上的模拟 TPM 设备是**IoT Edge 设备**。
 
 模拟设备和个人注册指南：
 
@@ -82,15 +82,9 @@ Get-Service iotedge
 
 检查过去 5 分钟的服务日志。
 
-```powershell
-# Displays logs from last 5 min, newest at the bottom.
 
-Get-WinEvent -ea SilentlyContinue `
-  -FilterHashtable @{ProviderName= "iotedged";
-    LogName = "application"; StartTime = [datetime]::Now.AddMinutes(-5)} |
-  select TimeCreated, Message |
-  sort-object @{Expression="TimeCreated";Descending=$false} |
-  format-table -autosize -wrap
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
 列出正在运行的模块。

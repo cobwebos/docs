@@ -3,35 +3,37 @@ title: Azure 容器实例故障排除
 description: 了解如何排查 Azure 容器实例问题
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: bf783c988c0163fe562669a8331c332dbf8d535e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 7c4812a63137dc2efc5eab2cb3b9e136a5465e78
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371870"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300459"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
-本文展示了如何排查管理容器或向 Azure 容器实例部署容器时出现的常见问题。
+本文展示了如何排查管理容器或向 Azure 容器实例部署容器时出现的常见问题。 另请参阅[常见问题解答。](container-instances-faq.md) 
+
+如果需要更多支持，请参阅[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)中的可用**帮助和支持**选项。
 
 ## <a name="naming-conventions"></a>命名约定
 
 定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。 有关 Azure 命名约定的详细信息，请参阅 Azure 体系结构中心中的[命名约定][azure-name-restrictions]。
 
-| 范围 | Length | 大小写 | 有效的字符 | 建议的模式 | 示例 |
+| 范围 | 长度 | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- |
-| 容器组名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| 容器名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| 容器端口 | 介于 1 和 65535 之间 |Integer |一个介于 1 和 65535 之间的整数 |`<port-number>` |`443` |
-| DNS 名称标签 | 5-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>` |`frontend-site1` |
-| 环境变量 | 1-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和下划线 (_) |`<name>` |`MY_VARIABLE` |
-| 卷名 | 5-63 |不区分大小写 |第一个或最后一个字符不能为小写字母、数字和连字符。 不能包含两个连续的连字符。 |`<name>` |`batch-output-volume` |
+| 容器组名称 | 1-64 |区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| 容器名 | 1-64 |区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| 容器端口 | 介于 1 和 65535 之间 |整数 |一个介于 1 和 65535 之间的整数 |`<port-number>` |`443` |
+| DNS 名称标签 | 5-63 |区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>` |`frontend-site1` |
+| 环境变量 | 1-63 |区分大小写 |第一个或最后一个字符不能为字母数字和下划线 (_) |`<name>` |`MY_VARIABLE` |
+| 卷名 | 5-63 |区分大小写 |第一个或最后一个字符不能为小写字母、数字和连字符。 不能包含两个连续的连字符。 |`<name>` |`batch-output-volume` |
 
 ## <a name="os-version-of-image-not-supported"></a>不受支持的映像的操作系统版本
 
@@ -46,11 +48,7 @@ ms.locfileid: "58371870"
 }
 ```
 
-在部署基于半年频道 (SAC) 版本的 Windows 映像时，通常会遇到此错误。 例如，Windows 版本 1709 和 1803 是 SAC 版本，在部署时会生成此错误。
-
-Azure 容器实例目前支持仅基于 **Windows Server 2016 长期服务频道 (LTSC)** 版本的 Windows 映像。 若要缓解此问题，部署 Windows 容器时，请始终部署基于 Windows Server 2016 (LTSC) 的映像。 不支持基于 Windows Server 2019 (LTSC) 的映像。
-
-有关 Windows 的 LTSC 和 SAC 版本的详细信息，请参阅 [Windows Server 半年频道概述][windows-sac-overview]。
+部署基于半年频道版本1709或1803的 Windows 映像时, 通常会遇到此错误, 这是不受支持的。 有关 Azure 容器实例中支持的 Windows 映像, 请参阅[常见问题解答](container-instances-faq.md#what-windows-base-os-images-are-supported)。
 
 ## <a name="unable-to-pull-image"></a>无法请求映像
 
@@ -58,7 +56,7 @@ Azure 容器实例目前支持仅基于 **Windows Server 2016 长期服务频道
 
 若要解决此问题，请删除容器实例，然后重试部署。 请确保映像存在于注册表中，并且你已正确键入映像名称。
 
-如果无法请求映像，[az container show][az-container-show] 的输出会显示如下事件：
+如果无法请求映像, 则[az container show][az-container-show]的输出中会显示如下所示的事件:
 
 ```bash
 "events": [
@@ -93,7 +91,7 @@ Azure 容器实例目前支持仅基于 **Windows Server 2016 长期服务频道
 
 容器组的[重启策略](container-instances-restart-policy.md)默认为 **Always**，因此容器组中的容器在运行完成后始终会重启。 如果打算运行基于任务的容器，则可能需要将此策略更改为 **OnFailure** 或 **Never**。 如果指定了“失败时”，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
 
-在没有长时间运行的进程的情况下运行容器组时，可能会看到重复退出并重启 Ubuntu 或 Alpine 等映像。 通过 [EXEC](container-instances-exec.md) 连接将无法正常工作，因为容器没有使其保持活动的进程。 若要解决此问题，包括如下所示与容器组部署 start 命令，以使容器保持运行。
+在没有长时间运行的进程的情况下运行容器组时，可能会看到重复退出并重启 Ubuntu 或 Alpine 等映像。 通过 [EXEC](container-instances-exec.md) 连接将无法正常工作，因为容器没有使其保持活动的进程。 若要解决此问题, 请在容器组部署中包含如下所示的 "启动" 命令, 以使容器保持运行。
 
 ```azurecli-interactive
 ## Deploying a Linux container
@@ -102,11 +100,11 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2019
  --command-line "ping -t localhost"
 ```
 
-容器实例 API 和 Azure 门户包含 `restartCount` 属性。 若要检查容器的重启次数，可在 Azure CLI 中使用 [az container show][az-container-show] 命令。 在以下示例输出中（为简洁起见已将其截断），可以在输出末尾看到 `restartCount` 属性。
+容器实例 API 和 Azure 门户包含 `restartCount` 属性。 若要检查容器的重启次数, 可以在 Azure CLI 中使用[az container show][az-container-show]命令。 在以下示例输出中（为简洁起见已将其截断），可以在输出末尾看到 `restartCount` 属性。
 
 ```json
 ...
@@ -156,7 +154,7 @@ az container create -g myResourceGroup --name mywindowsapp --os-type Windows --i
 * [映像大小](#image-size)
 * [映像位置](#image-location)
 
-Windows 映像具有[其他注意事项](#cached-windows-images)。
+Windows 映像具有[其他注意事项](#cached-images)。
 
 ### <a name="image-size"></a>映像大小
 
@@ -176,14 +174,12 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 若要减小映像请求对容器启动时间的影响，另一种方法是在希望部署容器实例的同一区域的 [Azure 容器注册表](/azure/container-registry/)中托管容器映像。 这会缩短容器映像需要经过的网络路径，显著缩短下载时间。
 
-### <a name="cached-windows-images"></a>缓存的 Windows 映像
+### <a name="cached-images"></a>缓存的图像
 
-Azure 容器实例使用一种缓存机制来帮助加快容器启动时间的基于常见的 Windows 和 Linux 映像的映像。 有关缓存的映像和标记的详细列表，使用[列出缓存映像][ list-cached-images] API。
+Azure 容器实例使用缓存机制来帮助加快使用常见[Windows 基准映像](container-instances-faq.md#what-windows-base-os-images-are-supported)(包括`nanoserver:1809`、 `servercore:ltsc2019`和`servercore:1809`) 生成的映像的容器启动时间。 常用的 Linux 映像 (例如`ubuntu:1604`和`alpine:3.6` ) 也被缓存。 有关缓存的图像和标记的最新列表, 请使用[列出缓存的映像][list-cached-images]API。
 
-若要确保最快的 Windows 容器启动时间，请使用以下**两个映像**的**三个最新**版本之一作为基础映像：
-
-* [Windows Server 核心 2016年][ docker-hub-windows-core] (仅 LTSC)
-* [Windows Server 2016 Nano Server][docker-hub-windows-nano]
+> [!NOTE]
+> 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。
 
 ### <a name="windows-containers-slow-network-readiness"></a>Windows 容器慢速网络准备情况
 
@@ -206,13 +202,32 @@ Azure 容器实例使用一种缓存机制来帮助加快容器启动时间的�
 
 Azure 容器实例不公开对托管容器组的底层基础结构的直接访问。 这包括访问运行在容器主机上的 Docker API 和运行特权容器。 如果需要 Docker 交互，请查看 [REST 参考文档](https://aka.ms/aci/rest)以了解 ACI API 支持的内容。 如果缺少某些内容，请在 [ACI 反馈论坛](https://aka.ms/aci/feedback)上提交请求。
 
-## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>IP 可能会由于端口不匹配而无法访问
+## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>由于端口不匹配，可能无法访问容器组 IP 地址
 
-Azure 容器实例目前不支持具有常规 docker 配置的端口映射，但此修复已在规划中。 如果发现 IP 在你认为应该可以访问的情况下无法访问，请确保已使用 `ports` 属性将容器映像配置为侦听在容器组中公开的相同端口。
+Azure 容器实例尚不支持类似于常规 docker 配置的端口映射。 如果找不到可访问的容器组的 IP 地址，请确保已将容器映像配置为使用`ports`属性侦听容器组中公开的相同端口。
+
+如果要确认 Azure 容器实例可以侦听容器映像中配置的端口，请测试公开此端口的`aci-helloworld`映像的部署。 同时运行`aci-helloworld`应用，使其侦听端口。 `aci-helloworld`接受一个可选的环境`PORT`变量以替代它侦听的默认端口80。 例如，若要测试端口9000：
+
+1. 设置容器组以公开端口9000，并将端口号作为环境变量的值传递：
+    ```azurecli
+    az container create --resource-group myResourceGroup \
+    --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
+    --ip-address Public --ports 9000 \
+    --environment-variables 'PORT'='9000'
+    ```
+1. 在的命令输出`az container create`中找到该容器组的 IP 地址。 查找 " **ip**" 的值。 
+1. 成功设置容器后，在浏览器中浏览到容器应用的 IP 地址和端口，例如： `192.0.2.0:9000`。 
+
+    应会看到 "欢迎使用 Azure 容器实例！" web 应用显示的消息。
+1. 完成容器的操作后，使用命令将`az container delete`其删除：
+
+    ```azurecli
+    az container delete --resource-group myResourceGroup --name mycontainer
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[检索容器日志和事件](container-instances-get-logs.md)来帮助调试你的容器。
+了解如何[检索容器日志和事件](container-instances-get-logs.md)以帮助调试容器。
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions

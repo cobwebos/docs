@@ -12,17 +12,16 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2d17991854f13f889c4e8c3a8c6f18e933655546
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3f7389022eaee4268d5d4fc5439b64d7f7f1bf07
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884216"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066527"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中应用性能缓慢的问题
 本文帮助排查 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中应用性能缓慢的问题。
@@ -64,7 +63,7 @@ ms.locfileid: "57884216"
 * 平均响应时间
 * CPU 时间
 * 内存工作集
-* Requests
+* 请求
 
 ![监视应用性能](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
@@ -155,14 +154,14 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 #### <a name="scale-the-app"></a>缩放应用
 在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 纵向扩展应用涉及到两个相关操作：将应用服务计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
 
-有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](web-sites-scale.md)。
+有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](manage-scale-up.md)。
 
 此外，可以选择在多个实例上运行应用程序。 扩展不仅能提供更强大的处理功能，而且还能提供一定程度的容错。 如果进程在某个实例上中断，其他实例会继续处理请求。
 
 可以将缩放设置为手动或自动。
 
 #### <a name="use-autoheal"></a>使用 AutoHeal
-AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终都可从 Azure 门户中直接重启应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 即使你的应用程序不是一个.NET 应用程序，这些设置的工作方式相同。
+AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终都可从 Azure 门户中直接重启应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 即使您的应用程序不是 .NET 应用程序, 这些设置的工作方式也相同。
 
 有关详细信息，请参阅[自动修复 Azure 网站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 

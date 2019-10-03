@@ -2,25 +2,25 @@
 title: 如何链接 Azure 订阅 - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure 订阅中启用 Azure AD B2C 租户计费的分步指南。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/24/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c914b3a3ab40971cf9318cafc787d358dab2faff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 892f47b6acf22c62ce2290e2ede9d0bcd21eefc8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196168"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065900"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>将 Azure 订阅链接到 Azure Active Directory B2C 租户
 
 > [!IMPORTANT]
-> 有关 Azure Active Directory (Azure AD) B2C 的用量计费和定价的最新信息，请参阅 [Azure AD B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。
+> 有关 Azure Active Directory B2C （Azure AD B2C）使用情况计费和定价的最新信息，请参阅[Azure AD B2C 价格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。
 
 将在 Azure 订阅中计收 Azure AD B2C 的使用费。 创建 Azure AD B2C 租户后，租户管理员需要将 Azure AD B2C 租户显式链接到 Azure 订阅。 本文介绍相关实现方法。
 
@@ -45,9 +45,9 @@ Azure AD B2C 中支持 Azure 云解决方案提供商 (CSP) 订阅。 可以使�
 
 ## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>在 Azure 市场中找到 Azure AD B2C
 
-单击“创建资源”按钮。 在“在市场中搜索”字段中，输入 `B2C`。
+单击“创建资源”按钮。 在“搜索市场”字段中，输入 `Active Directory B2C`。
 
-![添加突出显示的按钮，并在“在市场中搜索”字段中添加文本“Azure AD B2C”](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
+![市场搜索中包含“Active Directory B2C”的门户屏幕截图](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
 在结果列表中，选择“Azure AD B2C”。
 
@@ -67,7 +67,7 @@ Azure AD B2C 中支持 Azure 云解决方案提供商 (CSP) 订阅。 可以使�
 
 选择资源组和资源组位置。 此处所做的选择不会对 Azure AD B2C 租户位置、性能或计费状态造成影响。
 
-![创建 B2C 资源](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
+![Azure 门户中的 Azure AD B2C 资源创建页](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
 
 ## <a name="manage-your-azure-ad-b2c-tenant-resources"></a>管理 Azure AD B2C 租户资源
 
@@ -80,7 +80,15 @@ Azure AD B2C 中支持 Azure 云解决方案提供商 (CSP) 订阅。 可以使�
 - 提交支持请求
 - 将 Azure AD B2C 租户资源移到另一个 Azure 订阅或另一个资源组。
 
-![B2C 资源设置](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
+![Azure 门户中的 B2C 资源设置页](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.PNG)
+
+## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>更改 Azure AD B2C 租户计费订阅
+
+如果源订阅和目标订阅存在于同一 Azure Active Directory 租户中，则可以将 Azure AD B2C 租户移到另一个订阅。
+
+若要了解如何将 Azure 资源（如 Azure AD B2C 租户）移到其他订阅，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md)。
+
+在开始移动之前，请务必阅读整篇文章，以充分了解此类移动的限制和要求。 除了移动资源的说明之外，它还包括一些重要信息，如移动前检查清单以及如何验证移动操作。
 
 ## <a name="known-issues"></a>已知问题
 

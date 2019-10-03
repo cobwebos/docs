@@ -32,8 +32,12 @@
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
 - name: 概念
   items:
-    - name: 身份验证和授权
-      href: relay-authentication-and-authorization.md
+    - name: 安全
+      items:
+        - name: 身份验证和授权
+          href: relay-authentication-and-authorization.md
+        - name: 内置安全控件
+          href: service-bus-relay-security-controls.md
     - name: 混合连接协议
       href: relay-hybrid-connections-protocol.md
 - name: 如何
@@ -46,8 +50,6 @@
       items:
         - name: 创建命名空间
           href: relay-create-namespace-portal.md
-        - name: 使用 WCF 中继向外部客户端公开 WCF 服务
-          href: relay-wcf-dotnet-get-started.md
         - name: 可用 API
           href: relay-api-overview.md
           items:

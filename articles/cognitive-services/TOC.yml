@@ -1,20 +1,50 @@
 - name: Azure 认知服务文档
-  href: index.md
+  href: index.yml
 - name: 概述
   expanded: true
   items:
     - name: 什么是认知服务？
       href: Welcome.md
+    - name: 认知服务的自定义子域
+      href: cognitive-services-custom-subdomains.md
+    - name: 认知服务和机器学习
+      href: cognitive-services-and-machine-learning.md
     - name: 语言支持
       href: language-support.md
+- name: 容器支持
+  items:
     - name: 容器支持
       href: cognitive-services-container-support.md
+    - name: 容器常见问题解答
+      href: ./containers/container-faq.md
+    - name: 容器方案
+      items:
+        - name: 容器重复使用
+          href: ./containers/container-reuse-recipe.md
+        - name: 部署到 Azure 容器实例
+          href: ./containers/azure-container-instance-recipe.md
+        - name: 部署到 Azure Kubernetes
+          href: ./containers/azure-kubernetes-recipe.md
+        - name: 使用 Docker Compose 进行部署
+          href: ./containers/docker-compose-recipe.md
+    - name: 其他容器服务
+      items:
+        - name: Azure 容器实例
+          href: ../container-instances/container-instances-tutorial-prepare-app.md
+        - name: Azure 容器注册表
+          href: ../container-registry/container-registry-get-started-azure-cli.md
+        - name: Azure Kubernetes 服务 (AKS)
+          href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: 快速入门
   items:
-    - name: 创建帐户
+    - name: 使用 Azure 门户创建新资源
       href: cognitive-services-apis-create-account.md
+    - name: 使用 Azure CLI 创建新资源
+      href: cognitive-services-apis-create-account-cli.md
     - name: Authentication
       href: authentication.md
+    - name: 诊断日志记录
+      href: diagnostic-logging.md
 - name: 资源
   items:
     - name: Azure 路线图
@@ -23,10 +53,18 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 合规性
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 服务级别协议 (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
+    - name: 博客
+      href: 'https://azure.microsoft.com/blog/topics/cognitive-services/'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: 提供产品反馈
+      href: 'https://cognitive.uservoice.com/'
     - name: 行为准则
       href: 'https://go.microsoft.com/fwlink/?LinkId=698895'
     - name: 知识库

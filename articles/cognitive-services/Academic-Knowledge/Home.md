@@ -10,12 +10,13 @@ ms.subservice: academic-knowledge
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: darrine
-ms.openlocfilehash: b15ed5e2b31ed817d3f6558858e2b7285f98a70f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 305d73ba4b1b955b731e34ee5da0b1dced6acddc
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551715"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704972"
 ---
 # <a name="academic-knowledge-api"></a>学术知识 API
 
@@ -29,13 +30,13 @@ MAG 数据源自必应 Web 索引和必应的内部知识库。 由于必应索�
 
 ## <a name="features"></a>功能
 学术知识 API 由 4 个相关的 REST 终结点构成：  
-  1. interpret - 解释自然语言用户查询字符串。 返回带批注的解释，实现可预测用户输入内容的丰富的搜索框自动完成体验。  
-  2. evaluate - 评估查询表达式并返回学术知识实体结果。  
-  3. calchistogram - 计算由查询表达式返回的学术实体属性值的分布直方图，例如按年份分布给定作业的引文。  
+  1. interpret - 解释自然语言用户查询字符串  。 返回带批注的解释，实现可预测用户输入内容的丰富的搜索框自动完成体验。  
+  2. evaluate - 评估查询表达式并返回学术知识实体结果  。  
+  3. calchistogram - 计算由查询表达式返回的学术实体属性值的分布直方图，例如按年份分布给定作业的引文  。  
   
-综合使用这些 API 方法，可创建丰富的语义搜索体验。 假定具有用户查询字符串，则 interpret 方法提供一个带批注的查询和一个结构化的查询表达式，同时选择性地基于潜在学术数据的语义完成用户查询。 例如，如果用户键入字符串“latent s”，则 interpret 方法可提供一组已排名的解释，提示用户可能正在搜索研究领域“latent semantic analysis”（潜在语义分析）、论文“latent structure analysis”（语义结构分析）或其他以“latent s”开始的实体表达式。 此信息可用于快速引导用户获得所需搜索结果。
+综合使用这些 API 方法，可创建丰富的语义搜索体验。 假定具有用户查询字符串，则 interpret 方法提供一个带批注的查询和一个结构化的查询表达式，同时选择性地基于潜在学术数据的语义完成用户查询  。 例如，如果用户键入字符串“latent s”，则 interpret 方法可提供一组已排名的解释，提示用户可能正在搜索研究领域“latent semantic analysis”（潜在语义分析）、论文“latent structure analysis”（语义结构分析）或其他以“latent s”开始的实体表达式      。 此信息可用于快速引导用户获得所需搜索结果。
 
-evaluate 方法可用于从学术知识库中检索出一组相匹配的论文实体，而 calchistogram 方法可用于计算一组论文实体的属性值分布，这可用于进一步筛选搜索结果。        
+evaluate 方法可用于从学术知识库中检索出一组相匹配的论文实体，而 calchistogram 方法可用于计算一组论文实体的属性值分布，这可用于进一步筛选搜索结果   。        
 
 ## <a name="getting-started"></a>入门 
 如需详细文档，请参阅左侧的副标题。  请注意，为了提高示例的可读性，REST API 调用包含未经 URL 编码的字符（如空格）。  你的代码需要应用适当的 URL 编码。

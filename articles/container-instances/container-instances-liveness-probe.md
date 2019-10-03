@@ -3,17 +3,17 @@ title: 在 Azure 容器实例中配置运行情况探测
 description: 了解如何配置运行情况探测以重启 Azure 容器实例中不正常的容器
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: 89b76fc68c113b7931894c0cf003ffd846c646ab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 28205d6db85d7a5051f283445d95dd2375e174c8
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899717"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325873"
 ---
 # <a name="configure-liveness-probes"></a>配置运行情况探测
 

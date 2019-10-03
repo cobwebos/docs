@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: cd4d1aed666b2c64ade700a768df0525029b392c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 0dcd8ba1b1bacd990c91ce90ef0013caac446cdc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062734"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64722545"
 ---
 # <a name="microsoftcommontextblock-ui-element"></a>Microsoft.Common.TextBlock UI 元素
 可用于向门户界面添加文本的控件。

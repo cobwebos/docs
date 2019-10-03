@@ -4,9 +4,9 @@ description: 本教程介绍如何使用 Azure 通知中心和 Google Firebase C
 services: notification-hubs
 documentationcenter: android
 keywords: 推送通知、推送通知、android 推送通知
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,17 +15,22 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 6e82ec9563832c7569fa1cff735a46dad50a8b3b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 36af79b90722041ddb16bb90a73175a8635531fd
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887572"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212359"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging（已弃用）将通知推送到 Android 设备
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
+
+> [!WARNING]
+> 截至 2018 年 4 月 10 日，Google 已弃用 Google Cloud Messaging (GCM)。 GCM 服务器和客户端 API 已弃用，最快将于 2019 年 5 月 29 日移除。 有关详细信息，请参阅 [GCM 和 FCM 常见问题解答](https://developers.google.com/cloud-messaging/faq)。
 
 ## <a name="overview"></a>概述
 
@@ -63,9 +68,9 @@ ms.locfileid: "57887572"
 
 ### <a name="configure-gcm-setting-for-the-notification-hub"></a>配置通知中心的 GCM 设置
 
-1. 在“通知设置”中选择“Google (GCM)”。
+1. 在“通知设置”中选择“Google (GCM)”。  
 2. 输入从 Google 云控制台获得的 **API 密钥**。
-3. 在工具栏上选择“保存”。
+3. 在工具栏上选择“保存”。 
 
     ![Azure 通知中心 - Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
@@ -78,10 +83,10 @@ ms.locfileid: "57887572"
 1. 在 Android Studio 中，启动新的 Android Studio 项目。
 
    ![Android Studio - 新项目][13]
-2. 选择“手机和平板电脑”外形规格和要支持的“最低 SDK 版本”。 然后单击“下一步”。
+2. 选择“手机和平板电脑”  外形规格和要支持的“最低 SDK 版本”  。 然后单击“下一步”  。
 
    ![Android Studio - 项目创建工作流][14]
-3. 选择“空活动”作为主活动，单击“下一步”，并单击“完成”。
+3. 选择“空活动”作为主活动，单击“下一步”，并单击“完成”    。
 
 ### <a name="add-google-play-services-to-the-project"></a>将 Google Play 服务添加到项目
 
@@ -107,7 +112,7 @@ ms.locfileid: "57887572"
 
 ### <a name="updating-the-projects-androidmanifestxml"></a>更新项目的 AndroidManifest.xml
 
-1. 若要支持 GCM，请在代码中实现实例 ID 侦听器服务，以便使用 [Google 的实例 ID API](https://developers.google.com/instance-id/) 来[获取注册令牌](https://developers.google.com/cloud-messaging/android/client#sample-register)。 在本教程中，类的名称为 `MyInstanceIDService`。
+1. 若要支持 GCM，请在代码中实现实例 ID 侦听器服务，以便使用 [Google 的实例 ID API](https://developers.google.com/instance-id/) 来[获取注册令牌](https://developers.google.com/cloud-messaging/)。 在本教程中，类的名称为 `MyInstanceIDService`。
 
     将以下服务定义添加到 AndroidManifest.xml 文件的 `<application>` 标记内。 将 `<your package>` 占位符替换为 `AndroidManifest.xml` 文件顶部显示的实际包名称。
   
@@ -141,7 +146,7 @@ ms.locfileid: "57887572"
     ```
 4. 在 `</application>` 标记下面添加以下必要的 GCM 权限。 将 `<your package>` 替换为 `AndroidManifest.xml` 文件顶部显示的包名称。
 
-    有关这些权限的详细信息，请参阅 [Setup a GCM Client app for Android](https://developers.google.com/cloud-messaging/android/client#manifest)（设置适用于 Android 的 GCM 客户端应用）。
+    有关这些权限的详细信息，请参阅 [Setup a GCM Client app for Android](https://developers.google.com/cloud-messaging/)（设置适用于 Android 的 GCM 客户端应用）。
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -155,14 +160,14 @@ ms.locfileid: "57887572"
 
 ### <a name="adding-code"></a>添加代码
 
-1. 在项目视图中，展开 **app** > **src** > **main** > **java** 右键单击 **java** 下的包文件夹，单击“新建”，并单击“Java 类”。 `NotificationSettings`的新类。
+1. 在项目视图中，展开 **app** > **src** > **main** > **java** 右键单击 **java** 下的包文件夹，单击“新建”，并单击“Java 类”。   `NotificationSettings`的新类。
 
     ![Android Studio - 新 Java 类][6]
 
     在 `NotificationSettings` 类的以下代码中更新三个占位符：
 
    * `SenderId`：之前在 [Google 云控制台](https://cloud.google.com/console)中获取的项目编号。
-   * `HubListenConnectionString`：中心的 `DefaultListenAccessSignature` 连接字符串。 可以复制该连接字符串，方法是在 [Azure 门户]的中心的“设置”页上单击“访问策略”。
+   * `HubListenConnectionString`：中心的 `DefaultListenAccessSignature` 连接字符串。 可以复制该连接字符串，方法是在 [Azure 门户]的中心的“设置”页上单击“访问策略”   。
    * `HubName`：使用 [Azure 门户]的中心页中显示的通知中心的名称。
 
      `NotificationSettings` 代码：
@@ -378,7 +383,7 @@ ms.locfileid: "57887572"
         });
     }
     ```
-10. `ToastNotify` 方法使用“Hello World”`TextView` 控件持续报告应用状态和通知。 在 activity_main.xml 布局中，为该控件添加以下 ID。
+10. `ToastNotify` 方法使用“Hello World”`TextView` 控件持续报告应用状态和通知  。 在 activity_main.xml 布局中，为该控件添加以下 ID。
 
     ```xml
     android:id="@+id/text_hello"
@@ -444,7 +449,7 @@ ms.locfileid: "57887572"
         }
     }
     ```
-14. 在 Android Studio 的菜单栏上，单击“生成” > “重新生成项目”，确保代码中没有任何错误。
+14. 在 Android Studio 的菜单栏上，单击“生成” > “重新生成项目”，确保代码中没有任何错误。  
 
 ## <a name="testing-your-app"></a>测试应用程序
 
@@ -457,7 +462,7 @@ ms.locfileid: "57887572"
 
       ![测试 Android - 发送一条消息][19]
 
-3. 按“发送通知”。 任何有应用运行的设备都会显示一个 `AlertDialog` 实例，其中包含推送通知消息。 未运行此应用程序，但之前已注册推送通知的设备会在 Android 通知管理器中收到通知。 从左上角向下轻扫即可查看通知消息。
+3. 按“发送通知”。  任何有应用运行的设备都会显示一个 `AlertDialog` 实例，其中包含推送通知消息。 未运行此应用程序，但之前已注册推送通知的设备会在 Android 通知管理器中收到通知。 从左上角向下轻扫即可查看通知消息。
 
       ![测试 Android - 通知][21]
 
@@ -465,9 +470,9 @@ ms.locfileid: "57887572"
 
 可以通过 [Azure 门户]发送推送通知，以便测试此类通知在应用中的接收。
 
-1. 在“故障排除”部分，选择“测试性发送”。
-2. 对于“平台”，请选择“Android”。
-3. 选择“发送”，发送测试性通知。
+1. 在“故障排除”部分，选择“测试性发送”。  
+2. 对于“平台”，请选择“Android”  。 
+3. 选择“发送”，发送测试性通知。 
 4. 确认在 Android 设备上看到通知消息。
 
     ![Azure 通知中心 - 测试发送](./media/notification-hubs-android-get-started/notification-hubs-test-send.png)
@@ -478,13 +483,13 @@ ms.locfileid: "57887572"
 
 如果想要在模拟器中测试推送通知，请确保模拟器映像支持你为应用程序选择的 Google API 级别。 如果映像不支持本机 Google API，那么此测试最终以 **SERVICE\_NOT\_AVAILABLE** 异常结束。
 
-另外，请确保已将 Google 帐户添加到运行的模拟器的“设置” > “帐户”下。 否则，尝试向 GCM 注册可能会导致 **AUTHENTICATION\_FAILED** 异常。
+另外，请确保已将 Google 帐户添加到运行的模拟器的“设置” > “帐户”下   。 否则，尝试向 GCM 注册可能会导致 **AUTHENTICATION\_FAILED** 异常。
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>（可选）直接从应用程序发送推送通知
 
 通常，会使用后端服务器发送通知。 在某些情况下，你可能希望能够直接从客户端应用程序发送推送通知。 本部分说明了如何使用 [Azure 通知中心 REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx)从客户端发送通知。
 
-1. 在 Android Studio 项目视图中，展开 **App** > **src** > **main** > **res** > **layout** 打开 `activity_main.xml` 布局文件，并单击“文本”选项卡以更新此文件的文本内容。 使用以下代码更新此文件，此代码将添加新的 `Button` 和 `EditText` 控件，用于将推送通知消息发送到通知中心。 将此代码添加到底部紧靠 `</RelativeLayout>`前面的位置。
+1. 在 Android Studio 项目视图中，展开 **App** > **src** > **main** > **res** > **layout** 打开 `activity_main.xml` 布局文件，并单击“文本”  选项卡以更新此文件的文本内容。 使用以下代码更新此文件，此代码将添加新的 `Button` 和 `EditText` 控件，用于将推送通知消息发送到通知中心。 将此代码添加到底部紧靠 `</RelativeLayout>`前面的位置。
 
     ```xml
     <Button
@@ -513,7 +518,7 @@ ms.locfileid: "57887572"
     ```
 3. 在 `NotificationSetting.java` 文件中，将以下设置添加到 `NotificationSettings` 类。
 
-    使用中心的 **DefaultFullSharedAccessSignature** 连接字符串更新 `HubFullAccess`。 可从 [Azure 门户]复制此连接字符串，方法是单击通知中心的“设置”页上的“访问策略”。
+    使用中心的 **DefaultFullSharedAccessSignature** 连接字符串更新 `HubFullAccess`。 可从 [Azure 门户]复制此连接字符串，方法是单击通知中心的“设置”页上的“访问策略”   。
 
     ```java
     public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
@@ -627,7 +632,7 @@ ms.locfileid: "57887572"
         return token;
     }
     ```
-8. 在 `MainActivity.java` 中，将以下方法添加到 `MainActivity` 类，以使用内置的 REST API 处理“发送通知”按钮的点击行为，并将推送通知消息发送到中心。
+8. 在 `MainActivity.java` 中，将以下方法添加到 `MainActivity` 类，以使用内置的 REST API 处理“发送通知”按钮的点击行为，并将推送通知消息发送到中心  。
 
     ```java
     /**

@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: df77a745ef6508b15b5a8bcde5eede0e06eb1afc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 8d0806bc0262cd45a49e4f97ea629683ac239aa8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001649"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65799640"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义品牌模型
 
@@ -38,7 +39,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|类型 |**必需**|**说明**|
 |---|---|---|---|
 |位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
@@ -62,7 +63,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 **referenceUrl** 值可以是品牌的任何引用网站，例如其维基百科页的链接。
 
-**tags** 值是品牌的标记的列表。 这会显示在品牌在视频索引器网站的“类别”字段中。 例如，品牌“Azure”可以标记或归类为“云”。
+**tags** 值是品牌的标记的列表。 这会显示在品牌在视频索引器网站的“类别”字段中。  例如，品牌“Azure”可以标记或归类为“云”。
 
 ### <a name="response"></a>响应
 
@@ -100,7 +101,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|类型 |**必需**|**说明**|
 |---|---|---|---|
 |位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
@@ -129,7 +130,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|类型 |**必需**|**说明**|
 |---|---|---|---|
 |位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
@@ -179,7 +180,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|类型 |**必需**|**说明**|
 |---|---|---|---|
 |位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
@@ -204,7 +205,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 ```
 
 > [!NOTE]
-> 在此示例中，在“创建品牌”部分的示例请求正文中创建的品牌在此处使用新的标记和新的说明进行更新。 **enabled** 也已更改为 false，目的是将它置于 *Exclude* 列表中。
+> 在此示例中，在“创建品牌”部分的示例请求正文中创建的品牌在此处使用新的标记和新的说明进行更新。  **enabled** 也已更改为 false，目的是将它置于 *Exclude* 列表中。
 
 ### <a name="response"></a>响应
 
@@ -242,7 +243,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|类型 |**必需**|**说明**|
 |---|---|---|---|
 |位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
@@ -302,7 +303,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|类型 |**必需**|**说明**|
 |---|---|---|---|
 |位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
@@ -339,7 +340,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|类型 |**必需**|**说明**|
 |---|---|---|---|
 |位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|

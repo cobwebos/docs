@@ -1,25 +1,18 @@
 ---
-title: Power BI 应用产品/服务的 Azure Marketplace |Microsoft Docs
+title: Power BI 应用产品/服务 |Azure Marketplace
 description: 如何将 Power BI 应用发布到 Microsoft AppSource marketplace。
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: pbutlerm
-ms.openlocfilehash: f18a1b05e5a38a79945d8df6706dd2147d6b43df
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 72de873b773f174499b0cdc7225b344ea30a137f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798090"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943036"
 ---
 # <a name="power-bi-app-offer"></a>Power BI 应用套餐
 

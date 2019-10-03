@@ -3,48 +3,51 @@ title: Azure Maps 中的地图样式功能 | Microsoft Docs
 description: 了解 Azure Maps 样式的相关功能。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/08/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ffed12b9184c7b6a690c30db9826f031fe6c9f9b
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: eb667c398be0bd51e05a6b65d416d5bce54e4386
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259782"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881968"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>在 Azure Maps 中选择地图样式
 
-Azure Maps 有四种不同的地图样式可供选择。 有关地图样式的详细信息，请参阅 [Azure Maps 中支持的地图样式](./supported-map-styles.md)。 本文介绍如何使用样式的相关功能设置地图加载的样式、设置新的样式和使用样式选取器控件。
+Azure Maps 中提供了许多[支持的地图样式](./supported-map-styles.md)。 本文介绍如何使用样式的相关功能设置地图加载的样式、设置新的样式和使用样式选取器控件。
 
 ## <a name="set-style-on-map-load"></a>设置地图加载的样式
+
+在下面的代码中, `style`在初始化时, 映射的选项`grayscale_dark`设置为。
+
+<br/>
 
 <iframe height='500' scrolling='no' title='设置地图加载的样式' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅画笔 <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 在 <a href='https://codepen.io'>CodePen</a> 上设置地图加载的样式</a>。
 </iframe>
 
-上面的代码块设置订阅密钥并创建一个 Map 对象，其样式设置为 grayscale_dark。 有关如何创建地图的说明，请参阅[创建地图](./map-create.md)。
-
 ## <a name="update-the-style"></a>更新样式
+
+在下面的代码中, 在加载映射实例之后, 会将映射样式从`road`更新为`satellite`使用地图的[system.windows.forms.control.setstyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)函数。
+
+<br/>
 
 <iframe height='500' scrolling='no' title='更新样式' src='//codepen.io/azuremaps/embed/yqXYzY/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅画笔 <a href='https://codepen.io/azuremaps/pen/yqXYzY/'>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 在 <a href='https://codepen.io'>CodePen</a> 上更新样式</a>。
 </iframe>
 
-上面的代码块设置订阅密钥并创建一个 Map 对象而不预先设置样式。 有关如何创建地图的说明，请参阅[创建地图](./map-create.md)。
-
-第二个代码块使用 map 的 [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法将地图样式设置为卫星。
-
 ## <a name="add-the-style-picker"></a>添加样式选取器
+
+下面的代码将[StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol)添加到地图中, 以便用户可以轻松地在不同的地图样式之间切换。 
+
+<br/>
 
 <iframe height='500' scrolling='no' title='添加样式选取器' src='//codepen.io/azuremaps/embed/OwgyvG/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅画笔 <a href='https://codepen.io/azuremaps/pen/OwgyvG/'>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 在 <a href='https://codepen.io'>CodePen</a> 上添加样式选取器</a>。
 </iframe>
 
-上述代码中的第一个代码块设置订阅密钥并创建一个 Map 对象，地图样式预先设置为 grayscale_dark。 有关如何创建地图的说明，请参阅[创建地图](./map-create.md)。
-
-第二个代码块使用 atlas [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) 构造函数来构造样式选取器。
-
-样式选取器支持为地图选择样式。 第三个代码块使用 map 的 [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 方法向地图添加样式选取器。 样式选取器位于地图**事件侦听器**内，以确保它在地图完全加载后加载。
+> [!TIP]
+> 默认情况下, "样式选取器" 控件默认列出默认情况下使用 Azure Maps 的 S0 定价层时可用的所有样式。 如果要减少此列表中的样式数量, 请将你希望在列表中显示的样式数组传递到样式选取器的`mapStyle`选项中。 如果使用的是 S1 并想要显示所有可用样式, 请将样式`mapStyles`选取器的选项设置为`"all"`。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -53,12 +56,10 @@ Azure Maps 有四种不同的地图样式可供选择。 有关地图样式的�
 > [!div class="nextstepaction"]
 > [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
-将控件添加到地图：
+将控件添加到地图:
 
 > [!div class="nextstepaction"]
-> [添加地图控件](./map-add-controls.md)
-
-添加地图图钉：
+> [添加地图控件](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [添加图钉](./map-add-pin.md)
+> [添加图钉](map-add-pin.md)

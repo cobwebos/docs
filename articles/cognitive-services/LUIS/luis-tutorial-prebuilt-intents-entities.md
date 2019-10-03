@@ -1,5 +1,5 @@
 ---
-title: 预生成意向和实体
+title: 教程：预生成意向和实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，我们将预生成的意向和实体添加到某个应用，以便快速了解意向预测和数据提取。 不需要使用预生成的实体标记任何话语。 自动检测实体。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 87e006cc5d56e0c7eb5455147c5ce9eb40afc162
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aaeddac98e3f192d5e6a87ecfd48005526379ff2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086609"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390984"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>教程：确定常见意向和实体
 
@@ -47,32 +47,21 @@ LUIS 提供几个预生成意向，以便提供常见用户意向。
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. 选择“添加预生成域意向”。 
+1. 选择“添加预生成域意向”  。 
 
 1. 搜索 `Utilities`。 
 
-    [![“预生成意向”对话框的屏幕截图，其中的搜索框中包含“实用工具”](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
-
-1. 选择以下意向，然后选择“完成”： 
-
-   * Utilities.Cancel
-   * Utilities.Confirm
-   * Utilities.Help
-   * Utilities.StartOver
-   * Utilities.Stop
-
-     这些意向有助于确定用户在聊天中所处的位置及其需求。 
-
+1. 选择所有意向并选择“完成”  。 这些意向有助于确定用户在聊天中所处的位置及其需求。 
 
 ## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>添加预生成的实体以帮助提取常见数据类型
 
 LUIS 为常见数据提取提供多个预生成的实体。 
 
-1. 在左侧导航菜单中选择“实体”。
+1. 在左侧导航菜单中选择“实体”  。
 
-1. 选择“添加预生成的实体”按钮。
+1. 选择“添加预生成的实体”按钮  。
 
-1. 从预生成的实体列表中选择以下实体，然后选择“完成”：
+1. 从预生成的实体列表中选择以下实体，然后选择“完成”： 
 
    * **[PersonName](luis-reference-prebuilt-person.md)** 
    * **[GeographyV2](luis-reference-prebuilt-geographyV2.md)**
@@ -101,35 +90,75 @@ LUIS 为常见数据提取提供多个预生成的实体。
 
     ```json
     {
-      "query": "I want to cancel my trip to Seattle to see Bob Smith",
+      "query": "I want to cancel my trip to Seattle to see Bob Smith.",
       "topScoringIntent": {
-        "intent": "Utilities.Cancel",
-        "score": 0.807676256
+        "intent": "Utilities.ReadAloud",
+        "score": 0.100361854
       },
       "intents": [
         {
-          "intent": "Utilities.Cancel",
-          "score": 0.807676256
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.0487322025
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.0208660364
-        },
-        {
-          "intent": "None",
-          "score": 0.008789532
+          "intent": "Utilities.ReadAloud",
+          "score": 0.100361854
         },
         {
           "intent": "Utilities.Stop",
-          "score": 0.006929268
+          "score": 0.08102781
+        },
+        {
+          "intent": "Utilities.SelectNone",
+          "score": 0.0398852825
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.0277276486
+        },
+        {
+          "intent": "Utilities.SelectItem",
+          "score": 0.0220712926
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.0145813478
+        },
+        {
+          "intent": "None",
+          "score": 0.012434179
+        },
+        {
+          "intent": "Utilities.Escalate",
+          "score": 0.0122632384
+        },
+        {
+          "intent": "Utilities.ShowNext",
+          "score": 0.008534077
+        },
+        {
+          "intent": "Utilities.ShowPrevious",
+          "score": 0.00547111453
+        },
+        {
+          "intent": "Utilities.SelectAny",
+          "score": 0.00152912608
+        },
+        {
+          "intent": "Utilities.Repeat",
+          "score": 0.0005556819
+        },
+        {
+          "intent": "Utilities.FinishTask",
+          "score": 0.000169488427
         },
         {
           "intent": "Utilities.Confirm",
-          "score": 0.00136293867
+          "score": 0.000149565312
+        },
+        {
+          "intent": "Utilities.GoBack",
+          "score": 0.000141017343
+        },
+        {
+          "intent": "Utilities.Reject",
+          "score": 6.27324E-06
         }
       ],
       "entities": [

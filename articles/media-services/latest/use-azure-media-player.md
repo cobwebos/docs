@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: 6de626323c82689d0ead4f5aaad2a2e43187ebd0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6157f59d96770298d947a1cf6ca28aa343e1a0d4
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896987"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311828"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player 概述
 
@@ -24,23 +24,26 @@ Azure Media Player 是一种 Web 视频播放器，用于在各种浏览器和�
 
 Microsoft Azure 媒体服务允许播放使用 HLS、DASH、平滑流格式提供的内容。 Azure 媒体播放器会考虑这些不同的格式并基于平台/浏览器功能自动播放最佳链接。 媒体服务还允许使用 PlayReady 加密或 AES 128 位信封加密对资产进行动态加密。 Azure 媒体播放器在合理配置时允许对 PlayReady 和 AES-128 位加密的内容进行解密。 
 
-[开始免费试用](https://azure.microsoft.com/en-us/pricing/free-trial/)
+> [!NOTE]
+> Widevine 加密的内容需要 HTTPS 播放。
+
+[开始免费试用](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>使用 Azure Media Player 演示页
 
 ### <a name="start-using"></a>开始使用
 
-可以使用 [Azure Media Player 演示页](https://aka.ms/amp)播放 Azure 媒体服务示例或你自己的流。  
+可以使用 [Azure Media Player 演示页](https://aka.ms/azuremediaplayer)播放 Azure 媒体服务示例或你自己的流。  
 
-若要播放新视频，请粘贴一个不同的 URL，然后按“更新”。
+若要播放新视频，请粘贴一个不同的 URL，然后按“更新”  。
 
-若要配置各种播放选项（例如技术、语言或加密），请按“高级选项”。
+若要配置各种播放选项（例如技术、语言或加密），请按“高级选项”  。
 
 ![Azure Media Player](./media/azure-media-player/home-page.png)
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>监视视频流的诊断
 
-可以使用 [Azure Media Player 演示页](https://aka.ms/amp)监视视频流的诊断。 
+可以使用 [Azure Media Player 演示页](https://aka.ms/azuremediaplayer)监视视频流的诊断。 
 
 ![Azure Media Player 诊断](./media/azure-media-player/diagnostics.png)
 

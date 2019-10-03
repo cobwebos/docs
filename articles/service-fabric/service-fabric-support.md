@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: a931de8be07d41cf4daab63aa7691973ee158452
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: ac36b1a538d5899613e19f157695d0bc333d9ece
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005037"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679061"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
 
@@ -35,15 +35,15 @@ ms.locfileid: "60005037"
 - [Microsoft 顶级支持](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> 铜级的可靠性层上运行的群集，可运行测试工作负荷。 如果使用铜牌可靠性上运行的群集时遇到问题，Microsoft 支持团队将帮助您缓解问题，但不是会执行根本原因分析。 请参阅[群集的可靠性特征](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)的更多详细信息。
+> 在青铜可靠性层或单节点群集上运行的群集只允许运行测试工作负荷。 如果在青铜色或单节点群集上运行的群集遇到问题, Microsoft 支持团队将会帮助你缓解问题, 但不会执行根本原因分析。 请参阅[群集的可靠性特征](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)以获取更多详细信息。
 >
-> 有关什么是所必需的生产就绪的群集的详细信息，请参阅[生产就绪清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
+> 若要详细了解生产就绪性群集的必要信息，请参阅[生产就绪性核对清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
 
 <a id="getlivesitesupportonprem"></a>
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>报告生产问题，或者请求独立 Service Fabric 群集的付费支持
 
-若要报告部署在本地或其他云上的 Service Fabric 群集的问题，请通过 [Microsoft 支持门户](https://support.microsoft.com/oas/default.aspx?prid=16146)开具专业支持票证。
+若要报告部署在本地或其他云上的 Service Fabric 群集的问题，请通过 [Microsoft 支持门户](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)开具专业支持票证。
 
 了解有关以下方面的详细信息：
 
@@ -60,11 +60,11 @@ ms.locfileid: "60005037"
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow 和 MSDN 论坛
 
-[StackOverflow 上的 Service Fabric 标记][stackoverflow]和 [MSDN 上的 Service Fabric 论坛][msdn-forum]最适合提问有关平台工作方式以及如何通过该平台完成某些任务的问题。
+[StackOverflow 上的 Service Fabric 标记][stackoverflow]和[MSDN 上的 Service Fabric 论坛][msdn-forum]最适用于询问有关平台工作方式以及如何通过该平台完成某些任务的问题。
 
 ### <a name="azure-feedback-forum"></a>Azure 反馈论坛
 
-[有关 Service Fabric 的 Azure 反馈论坛][uservoice-forum]最适合提交用户关于产品的大型功能创意，我们可以看到，大多数常见的请求都属于我们的中长期规划。 我们鼓励你在社区内争取大家对建议的支持。
+[适用于 Service Fabric 的 Azure 反馈论坛][uservoice-forum]是提交有关产品的重要功能构想的最佳位置, 因为我们查看最常见的请求是中型到长期规划的一部分。 我们鼓励你在社区内争取大家对建议的支持。
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 预览版本 - 不支持在生产环境中使用
 

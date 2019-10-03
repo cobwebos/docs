@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: spelluru
 ms.openlocfilehash: b6e0e57881154f5885e9f518363eda3c5b1169a0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330743"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173192"
 ---
 ### <a name="install-via-composer"></a>通过 Composer 安装
 1. 在项目的根目录中创建名为 **composer.json** 的文件并向其添加以下代码：
@@ -21,7 +21,7 @@ ms.locfileid: "52330743"
       }
     }
     ```
-2. 将 **[composer.phar][composer-phar]** 下载到项目根目录中。
+2. 将 [composer.phar][composer-phar] 下载到项目根目录中  。
 3. 打开命令提示符并在项目根目录中执行以下命令
    
     ```

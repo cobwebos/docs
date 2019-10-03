@@ -3,7 +3,7 @@ title: Azure AD 报告 API 入门 | Microsoft Docs
 description: 如何开始使用 Azure Active Directory 报告 API
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ff3e530dae3a6db4b7c84292a25e83c11000baf
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 28c64653ee0f9135e6da4c3768b89f9a0b25b2ef
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437758"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127360"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -34,7 +34,7 @@ Azure Active Directory 提供了各种[报告](overview-reports.md)，其中包�
 
 如果遇到问题，请参阅[如何获取对 Azure Active Directory 的支持](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要访问报告 API，无论是否需要用户干预，都需要：
 
@@ -49,7 +49,7 @@ Azure Active Directory 提供了各种[报告](overview-reports.md)，其中包�
 
 用于审核日志的 Microsoft Graph API 终结点为 `https://graph.microsoft.com/beta/auditLogs/directoryAudits`，用于登录的 Microsoft Graph API 终结点为 `https://graph.microsoft.com/beta/auditLogs/signIns`。 有关详细信息，请参阅[审核 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)和[登录 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)。
 
-此外，还可以使用 [Identity Protection 风险事件 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) 通过 Microsoft Graph 以编程方式访问安全检测。 有关详细信息，请参阅 [Azure Active Directory Identity Protection 和 Microsoft Graph 入门](../identity-protection/graph-get-started.md)。 
+此外, 还可以使用[身份保护风险检测 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) , 通过 Microsoft Graph 获取对安全检测的编程访问。 有关详细信息，请参阅 [Azure Active Directory 标识保护和 Microsoft Graph 入门](../identity-protection/graph-get-started.md)。 
 
 > [!NOTE]
 >  **https:\/\/graph.windows.net\/\<tenant-name\>\/reports\/** 终结点已被弃用。 请使用上述新的 API 终结点以编程方式访问活动和安全报告。

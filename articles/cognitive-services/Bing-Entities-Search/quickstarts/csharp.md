@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 C# 向必应实体搜索 REST API 发送搜索请求
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 C# 向必应实体搜索 REST API 发送请求，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: d31be245d906ba0405a44d4482272051982c943c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e41d99b4ddee41778e97aac9b5b947c0aa0eac5a
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59488331"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404956"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>快速入门：使用 C# 向必应实体搜索 REST API 发送搜索请求
 
@@ -26,14 +26,15 @@ ms.locfileid: "59488331"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
-* [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。
-    * 若要在 Visual studio 中安装 NuGet 包，请执行以下操作：
-        1. 右键单击解决方案资源管理器
-        2. 单击“管理 NuGet 包”。
-        3. 搜索 **newtonsoft.json** 并安装该包
+- 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)。
 
-* 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
+- [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。 若要在 Visual Studio 中安装 NuGet 包，请执行以下操作：
+
+   1. 在**解决方案资源管理器**中右键单击你的项目。
+   2. 选择“管理 NuGet 包”。 
+   3. 搜索 *Newtonsoft.Json* 并安装该包。
+
+- 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
@@ -177,4 +178,4 @@ ms.locfileid: "59488331"
 > [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
 
 * [什么是必应实体搜索 API？](../overview.md )
-* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

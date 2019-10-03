@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 9d1d9caccac0fcdeb4e1d2dae40e677f36de40ea
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728039"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66170253"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 队列存储
 
@@ -37,7 +37,7 @@ Azure 事件网格是针对云的事件处理服务。 Azure 队列存储是受�
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 
 
-以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。
+以下示例在“westus2”  位置创建名为“gridResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2

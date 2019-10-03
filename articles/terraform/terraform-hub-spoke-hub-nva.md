@@ -8,17 +8,17 @@ author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 4155a67f70ccc238c6046c07dded7f0214689617
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 1fae21e9a60f533533607e74609853ef68348daf
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993508"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173412"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-appliance-with-terraform-in-azure"></a>教程：在 Azure 中使用 Terraform 创建中心虚拟网络设备
 
-VPN 设备是用于向本地网络提供外部连接的设备。 VPN 设备可以是硬件设备或软件解决方案。 软件解决方案的一个示例为 Windows Server 2012 中的路由和远程访问服务 (RRAS)。 有关 VPN 设备的详细信息，请参阅[关于站点到站点 VPN 网关连接的 VPN 设备](/azure/vpn-gateway/vpn-gateway-about-vpn-devices)。
+VPN 设备是用于向本地网络提供外部连接的设备  。 VPN 设备可以是硬件设备或软件解决方案。 软件解决方案的一个示例为 Windows Server 2012 中的路由和远程访问服务 (RRAS)。 有关 VPN 设备的详细信息，请参阅[关于站点到站点 VPN 网关连接的 VPN 设备](/azure/vpn-gateway/vpn-gateway-about-vpn-devices)。
 
 Azure 支持各种网络虚拟设备，可供选择。 本教程使用 Ubuntu 映像。 若要详细了解 Azure 中支持的多种设备解决方案，请参阅[网络设备主页](https://azure.microsoft.com/solutions/network-appliances/)。
 
@@ -40,7 +40,7 @@ Azure 支持各种网络虚拟设备，可供选择。 本教程使用 Ubuntu �
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)。
 
-1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。
+1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。 
 
     ![Cloud Shell 提示符](./media/terraform-common/azure-portal-cloud-shell-button-min.png)
 
@@ -68,7 +68,7 @@ Azure 支持各种网络虚拟设备，可供选择。 本教程使用 Ubuntu �
 
 1. 在编辑器中粘贴以下代码：
     
-    ```JSON
+    ```hcl
     locals {
       prefix-hub-nva         = "hub-nva"
       hub-nva-location       = "CentralUS"

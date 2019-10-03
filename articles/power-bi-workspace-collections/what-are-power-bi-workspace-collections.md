@@ -2,20 +2,20 @@
 title: 什么是 Power BI 工作区集合？
 description: Power BI Embedded 使你可将 Power BI 报表集成到 Web 或移动应用程序中，因此无需构建自定义解决方案。
 services: power-bi-embedded
-author: markingmyname
+author: rkarlin
 ROBOTS: NOINDEX
 ms.assetid: 03649b72-b7d7-40ca-b077-12356d72d4f3
 ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: 6650eed6bf2559e9fb76b573189179a7f5df81ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: rkarlin
+ms.openlocfilehash: 7f23856363b337a361f329ed54e2152842faf26e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57896698"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64705129"
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>什么是 Power BI 工作区集合？
 
@@ -40,7 +40,7 @@ Power BI 工作区集合是一项 **Azure 服务**，使 ISV 和应用程序开�
 
 ## <a name="workspace-collection"></a>工作区集合
 
-**工作区集合**是一个顶级 Azure 资源容器，包含 0 个或多个**工作区**。  **工作区****集合**具有所有标准 Azure 属性和下列内容：
+**工作区集合**是一个顶级 Azure 资源容器，包含 0 个或多个**工作区**。  **工作区** **集合**具有所有标准 Azure 属性和下列内容：
 
 * **访问密钥** - 安全地调用 Power BI API 时使用的密钥（后面的部分中进行了介绍）。
 * **用户** - 具有管理员权限的 Azure Active Directory (AAD) 用户，通过 Azure 门户或 Azure 资源管理器 API 管理 Power BI 工作区集合。
@@ -87,4 +87,4 @@ Power BI 工作区集合是一项 **Azure 服务**，使 ISV 和应用程序开�
 [PowerBI-CSharp Git 存储库](https://github.com/Microsoft/PowerBI-CSharp)  
 [PowerBI-Node Git 存储库](https://github.com/Microsoft/PowerBI-Node)  
 
-有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)
+有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)

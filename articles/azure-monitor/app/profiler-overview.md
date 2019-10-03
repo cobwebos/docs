@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c07b325f3de6cd2cf3aaa436736786d2cdc42881
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: debc30a368a0f9ef7be9b0cda0b1238f8e2bc2e3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498122"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338074"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>使用 Application Insights 探查 Azure 中的生产应用程序
 ## <a name="enable-application-insights-profiler-for-your-application"></a>对应用程序启用 Application Insights Profiler
@@ -30,13 +30,13 @@ Profiler 适用于以下 Azure 服务中部署的 .NET 应用程序。 下面提
 * [Azure 云服务](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虚拟机和虚拟机规模集](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
-* [**预览**ASP.NET Core Azure Linux Web 应用](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
+* [**预览** ASP.NET Core Azure Linux Web 应用](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
 
 如果已启用 Profiler 但未看到跟踪，请查看[故障排除指南](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)。
 
 ## <a name="view-profiler-data"></a>查看 Profiler 数据
 
-要使 Profiler 上传跟踪，应用程序必须主动处理请求。 如果你正在进行试验，可以通过 [Application Insights 性能测试](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)生成针对 Web 应用的请求。 如果最近启用了 Profiler，可以运行简短的负载测试。 运行负载测试时，请选择 [**Profiler 设置页**](profiler-settings.md#profiler-settings-pane)中的“立即探查”按钮。 Profiler 开始运行后，它会每小时随机探查大约一次，持续时间为两分钟。 如果应用程序处理的请求流比较稳定，则 Profiler 会每隔一小时上传跟踪。
+要使 Profiler 上传跟踪，应用程序必须主动处理请求。 如果你正在进行试验，可以通过 [Application Insights 性能测试](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)生成针对 Web 应用的请求。 如果最近启用了 Profiler，可以运行简短的负载测试。 运行负载测试时，请选择 [**Profiler 设置页**](profiler-settings.md)中的“立即探查”按钮。 Profiler 开始运行后，它会每小时随机探查大约一次，持续时间为两分钟。 如果应用程序处理的请求流比较稳定，则 Profiler 会每隔一小时上传跟踪。
 
 应用程序收到一些流量后，如果 Profiler 有时间上传跟踪，则你应会获得一些可查看的跟踪。 此过程最多可能需要 5 到 10 分钟。 若要查看跟踪，请在“性能”窗格中选择“采取措施”，然后选择“Profiler 跟踪”按钮。
 
@@ -75,7 +75,7 @@ clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker 指示当前线程正
 
 ### <a id="ngencold"></a>加载代码 ([COLD])
 
-如果方法名称包含 **[COLD]**（例如 **mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined**），则表示 .NET Framework 运行时首次执行的代码未经过[按配置优化](/cpp/build/profile-guided-optimizations)功能的优化。 对于每个方法，在进程的生存期内，它最多只应显示一次。
+如果方法名称包含 **[COLD]** （例如 **mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined**），则表示 .NET Framework 运行时首次执行的代码未经过[按配置优化](/cpp/build/profile-guided-optimizations)功能的优化。 对于每个方法，在进程的生存期内，它最多只应显示一次。
 
 如果针对某个请求加载代码花费的时间很长，则表示这是第一个执行该方法的未优化部分的请求。 请考虑在用户访问该代码部分之前使用执行该代码部分的预热进程。
 
@@ -95,9 +95,9 @@ AWAIT\_TIME 指示代码正在等待另一个任务完成。 这种延迟通常�
 
 BLOCKED_TIME 指示代码正在等待另一个资源变为可用。 例如，它可能会等待同步对象或线程变为可用，或等待请求完成。
 
-### <a name="unmanaged-async"></a>非托管的异步
+### <a name="unmanaged-async"></a>非托管异步
 
-.NET framework 发出 ETW 事件和线程之间传递活动 id，以便可以在线程之间跟踪异步调用。 非托管的代码 （本机代码） 和异步代码的某些较旧样式缺少这些事件和活动 id，因此探查器无法判断哪个线程和线程上正在运行哪些函数。 这是在调用堆栈中标记为非托管 Async。 如果下载 ETW 文件，您可能能够使用[PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md)以获取更详细地了解发生了什么情况。
+.NET Framework 发出 ETW 事件并在线程之间传递活动 ID，以便可以跨线程跟踪异步调用。 非托管代码（本机代码）和一些较旧样式的异步代码缺少这些事件和活动 ID，因此探查器无法分辨线程上运行的线程和函数。 这在调用堆栈中标记为“非托管异步”。 如果下载 ETW 文件，则可以使用 [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) 更深入地了解正在发生的情况。
 
 ### <a id="cpu"></a>CPU 时间
 

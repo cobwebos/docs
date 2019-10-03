@@ -2,27 +2,27 @@
 title: 在 Azure Active Directory B2C 中使用 Application Insights 排查自定义策略问题 | Microsoft Docs
 description: 如何设置 Application Insights 来跟踪自定义策略的执行。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a6ec4c7d239754fe3211b528dd0ac64ee150ad3c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: df5d710792d8c47e491f5b06d88f4050e8eb4a01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089363"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66508073"
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C：收集日志
 
 本文提供用于从 Azure AD B2C 收集日志的步骤，以便可以诊断自定义策略存在的问题。
 
 >[!NOTE]
->目前，此处所述的详细活动日志仅用来帮助开发自定义策略。 请勿在生产中使用开发模式。  日志收集在开发过程中发送到标识提供者以及从中发出的所有声明。  如果在生产中使用，则开发人员对他们所拥有的 App Insights 日志中收集的 PII（私人身份信息）负责。  仅当策略处于“开发模式”时才会收集这些详细日志。
+>目前，此处所述的详细活动日志仅  用来帮助开发自定义策略。 请勿在生产中使用开发模式。  日志收集在开发过程中发送到标识提供者以及从中发出的所有声明。  如果在生产中使用，则开发人员对他们所拥有的 App Insights 日志中收集的 PII（私人身份信息）负责。  仅当策略处于“开发模式”  时才会收集这些详细日志。
 
 
 ## <a name="use-application-insights"></a>使用 Application Insights
@@ -32,11 +32,11 @@ Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Applica
 ### <a name="setup-application-insights"></a>设置 Application Insights
 
 1. 转到 [Azure 门户](https://portal.azure.com)。 确保在具有 Azure 订阅的租户（而不是 Azure AD B2C 租户）中。
-1. 在左侧导航菜单中，单击“+ 新建”。
-1. 搜索并选择“Application Insights”，单击“创建”。
-1. 完成表单，并单击“创建”。 选择“常规”作为“应用程序类型”。
+1. 在左侧导航菜单中，单击“+ 新建”  。
+1. 搜索并选择“Application Insights”  ，单击“创建”  。
+1. 完成表单，并单击“创建”  。 选择“常规”  作为“应用程序类型”  。
 1. 创建资源后，打开 Application Insights 资源。
-1. 在左侧菜单中找到“属性”，并单击它。
+1. 在左侧菜单中找到“属性”  ，并单击它。
 1. 复制**检测密钥**并将其保存，以便在下一部分中使用。
 
 ### <a name="set-up-the-custom-policy"></a>设置自定义策略
@@ -87,7 +87,7 @@ Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Applica
 > 在 Application Insights 中看到新日志之前会有一小段延迟（短于 5 分钟）。
 
 1. 打开在 [Azure 门户](https://portal.azure.com)中创建的 Application Insights 资源。
-1. 在“概述”菜单中，单击“分析”。
+1. 在“概述”  菜单中，单击“分析”  。
 1. 在 Application Insights 中打开新选项卡。
 1. 下面是可用于查看日志的查询列表
 
@@ -106,7 +106,7 @@ traces \| where timestamp > ago(1d) | 查看 Azure AD B2C 为前一天生成的�
 从 Application Insights 读取事件的查看器版本位于[此处](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
 
 >[!NOTE]
->目前，此处所述的详细活动日志仅用来帮助开发自定义策略。 请勿在生产中使用开发模式。  日志收集在开发过程中发送到标识提供者以及从中发出的所有声明。  如果在生产中使用，则开发人员对他们所拥有的 App Insights 日志中收集的 PII（私人身份信息）负责。  仅当策略处于“开发模式”时才会收集这些详细日志。
+>目前，此处所述的详细活动日志仅  用来帮助开发自定义策略。 请勿在生产中使用开发模式。  日志收集在开发过程中发送到标识提供者以及从中发出的所有声明。  如果在生产中使用，则开发人员对他们所拥有的 App Insights 日志中收集的 PII（私人身份信息）负责。  仅当策略处于“开发模式”  时才会收集这些详细日志。
 
 [不支持的自定义策略示例和相关工具的 GitHub 存储库](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 

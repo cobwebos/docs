@@ -1,20 +1,19 @@
 ---
 title: 机器学习概述 - Azure HDInsight
-description: 介绍 HDInsight 中的机器学习选项。
-services: hdinsight
+description: Azure HDInsight 中群集的大数据机器学习选项的概述。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: hrasheed
-ms.openlocfilehash: a88ff7c7b889d197e78dddfbb498b7150e08d5ed
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 139d82079b5946b0628760f5b05bb08d208cae6f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526803"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105420"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 中的机器学习
 
@@ -30,7 +29,7 @@ ms.locfileid: "59526803"
 
 [R](https://www.r-project.org/) 目前是世界上最常用的统计编程语言。 它是一种开源数据可视化工具，其社区的用户超过 250 万，并且仍在增长。 R 拥有蓬勃增长的用户群，其用户贡献的程序包超过 8,000 个，是许多需要机器学习的公司的极佳选择。 可以使用 ML Services 创建随时可与大型数据集和模型配合使用的 HDInsight 群集。 这项功能为数据科学家和统计学家提供了可通过 HDInsight 按需缩放的熟悉 R 界面，并消除了群集设置和维护方面的开销。
 
-![通过 R Server 进行预测训练](./media/hdinsight-machine-learning-overview/r-training.png)
+![通过 R Server 进行预测训练](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
 
 群集的边缘节点为连接到群集和运行 R 脚本提供了便捷的位置。  还可以选择跨群集的各个节点运行 R 脚本，只需使用 ScaleR 的 Hadoop Map Reduce 或 Spark 计算上下文即可。
 
@@ -40,7 +39,7 @@ ms.locfileid: "59526803"
 
 Azure 机器学习不仅提供预测分析建模工具，还提供完全托管的服务，可以通过此服务将预测模型部署为随时可用的 Web 服务。 Azure 机器学习是云中的完整预测分析解决方案，可以用来创建、测试、操作和管理预测模型。 可以从大型算法库中进行选择、使用基于 Web 的工作室来构建模型，然后将模型轻松部署为 Web 服务。
 
-![通过 Microsoft Azure 机器学习使高级分析可供 Hadoop 访问](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
+![Microsoft Azure 机器学习概述](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
 使用 [Hive 查询](../machine-learning/team-data-science-process/create-features-hive.md)，在 HDInsight Hadoop 群集中创建数据特征。 *特征工程*尝试通过从原始数据创建特征，简化学习过程，从而增加学习算法的预测能力。 可以使用[“导入数据”模块](../machine-learning/studio/import-data.md)从 Azure 机器学习工作室运行 HiveQL 查询，以及访问在 Hive 中处理和在 Blob 存储中存储的数据。
 
@@ -50,7 +49,7 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 
 为了推进自身在深度学习方面的工作，Microsoft 开发了免费、易用的开源 [Microsoft 认知工具包](https://www.microsoft.com/en-us/cognitive-toolkit/)。 各种 Microsoft 产品、世界各地需要大规模部署深度学习的公司，以及对最新算法和技术感兴趣的学生都在使用该工具包。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 ### <a name="scenarios"></a>方案
 
@@ -63,6 +62,6 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 
 ### <a name="deep-learning-resources"></a>深度学习资源
 
-* [使用 Microsoft 认知工具包深入学习模型与 Azure HDInsight Spark 群集](spark/apache-spark-microsoft-cognitive-toolkit.md)
+* [使用 Azure HDInsight Spark 群集的 Microsoft Cognitive Toolkit 深度学习模型](spark/apache-spark-microsoft-cognitive-toolkit.md)
 * [使用 Caffe on Azure HDInsight Spark 进行分布式深度学习](spark/apache-spark-deep-learning-caffe.md)
-* [数据科学虚拟机 (DSVM) 上的深度学习和人工智能框架](../machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks.md)
+* [Data Science Virtual Machine 上的深度学习和 AI 框架（DSVM）](../machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks.md)

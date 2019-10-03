@@ -4,22 +4,21 @@ description: 列出可能会导致 VM 重启的事件
 services: virtual-machines
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 70a6845349b90cf614a84e13680ebb6fc6b3e2a9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a536eb89f2040333617329e963ce00f5c6b1ba7a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433155"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086975"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系统重启
 
@@ -102,7 +101,7 @@ Azure 安全中心每天对 Windows 和 Linux VM 进行监控，以找出缺少�
 
 在少数情况下，Azure 运营团队可能需要执行维护活动，确保 Azure 平台总体上正常运行。 此行为可能会影响 VM 可用性，并且通常会导致相同的自动恢复操作，如前所述。  
 
-计划外的维护包括：
+计划外维护包括以下内容：
 
 - 紧急节点碎片整理
 - 紧急网络交换机更新

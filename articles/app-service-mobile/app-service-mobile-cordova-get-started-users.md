@@ -3,7 +3,7 @@ title: 使用移动应用在 Apache Cordova 中添加身份验证 | Microsoft Do
 description: 了解如何使用 Azure 应用服务中的移动应用通过各种标识提供者（包括 Google、Facebook、Twitter 和 Microsoft）对 Apache Cordova 应用用户进行身份验证。
 services: app-service\mobile
 documentationcenter: javascript
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
@@ -12,17 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: b5cce832ae7ae83552c2a5ded2f5f5bda0ac76bf
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
-ms.translationtype: HT
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: b0634038dbf5771ac1aa0bc00d007e758171b238
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27591940"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443505"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>将身份验证添加到 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-users)今天。
+>
 
 ## <a name="summary"></a>摘要
 本教程介绍如何使用支持的标识提供者将身份验证添加到 Apache Cordova 上的待办事项列表快速入门项目。 本教程基于[移动应用入门]教程，必须先完成该教程。
@@ -38,7 +42,7 @@ ms.locfileid: "27591940"
 现在，可以验证是否已禁用对后端的匿名访问。 在 Visual Studio 中：
 
 * 打开完成[移动应用入门]教程后创建的项目。
-* 在“Google Android 模拟器”中运行应用程序。
+* 在“Google Android 模拟器”  中运行应用程序。
 * 验证在应用启动后，是否显示“意外的连接失败”。
 
 接下来，需要更新应用程序，以便在从移动应用后端请求资源之前对用户进行身份验证。
@@ -60,7 +64,7 @@ ms.locfileid: "27591940"
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
             data: gap: https://login.microsoftonline.com https://yourapp.azurewebsites.net; style-src 'self'">
 
-    将 `https://login.microsoftonline.com` 替换为上表中的 OAuth 主机。  有关 content-security-policy 元标记的详细信息，请参阅 [Content-Security-Policy 文档]。
+    将 `https://login.microsoftonline.com` 替换为上表中的 OAuth 主机。  有关 content-security-policy 元标记的详细信息，请参阅 [Content-Security-Policy]。
 
     在相应的移动设备上使用时，某些身份验证提供程序不需要 Content-Security-Policy 更改。  例如，在 Android 设备上使用 Google 身份验证时便不需要 Content-Security-Policy 更改。
 
@@ -105,7 +109,7 @@ ms.locfileid: "27591940"
 
 <!-- URLs. -->
 [移动应用入门]: app-service-mobile-cordova-get-started.md
-[Content-Security-Policy 文档]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
+[Content-Security-Policy]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
 [推送通知]: app-service-mobile-cordova-get-started-push.md
 [关于身份验证]: app-service-mobile-auth.md
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md

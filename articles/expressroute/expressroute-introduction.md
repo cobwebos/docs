@@ -5,20 +5,20 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 10/18/2018
+ms.date: 09/18/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 56baabb95a7873b48a27943a58b8e26c56efb6b7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a068912857c16d2257d09e221477afc5d4a8d603
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139548"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123336"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute 概述
-使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 Dynamics 365 等 Microsoft 云服务建立连接。
+使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure 和 Office 365 等 Microsoft 云服务建立连接。
 
-可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。 要了解如何使用 ExpressRoute 将网络连接到 Microsoft，请参阅 [ExpressRoute 连接模型](expressroute-connectivity-models.md)。
+可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、一致的延迟和更高的安全性。 要了解如何使用 ExpressRoute 将网络连接到 Microsoft，请参阅 [ExpressRoute 连接模型](expressroute-connectivity-models.md)。
 
 ![ExpressRoute 连接概述](./media/expressroute-introduction/expressroute-connection-overview.png)
 
@@ -46,7 +46,6 @@ Microsoft 使用 BGP（一种行业标准动态路由协议），在本地网络
 通过 ExpressRoute 连接可访问以下服务：
 * Microsoft Azure 服务
 * Microsoft Office 365 服务
-* Microsoft Dynamics 365
 
 > [!NOTE]
 > [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
@@ -59,8 +58,11 @@ Microsoft 使用 BGP（一种行业标准动态路由协议），在本地网络
 
 例如，如果在阿姆斯特丹通过 ExpressRoute 连接到 Microsoft，则能访问在北欧和西欧托管的所有 Microsoft 云服务。 有关地缘政治区域、关联的 Microsoft 云区域和对应的 ExpressRoute 对等位置的概述，请参阅 [ExpressRoute 合作伙伴和对等位置](expressroute-locations.md)一文。
 
-### <a name="global-connectivity-with-expressroute-premium-add-on"></a>使用 ExpressRoute 高级版附加组件建立全球连接
-可以启用 ExpressRoute 高级版附加功能，将连接扩展为跨越地缘政治边界。 例如，如果在阿姆斯特丹通过 ExpressRoute 连接到 Microsoft，则能访问全球所有区域托管的所有 Microsoft 云服务（不包括国家/地区云）。 就像访问北欧和西欧区域一样，还可以访问部署在南美洲或澳大利亚的服务。
+### <a name="global-connectivity-with-expressroute-premium"></a>使用 ExpressRoute 高级版建立全球连接
+你可以启用 [ExpressRoute 高级版](expressroute-faqs.md)，将连接扩展为跨越地缘政治边界。 例如，如果在阿姆斯特丹通过 ExpressRoute 连接到 Microsoft，则能访问全球所有区域托管的所有 Microsoft 云服务（不包括国家/地区云）。 就像访问北欧和西欧区域一样，还可以访问部署在南美洲或澳大利亚的服务。
+
+### <a name="local-connectivity-with-expressroute-local"></a>使用 ExpressRoute Local 建立本地连接
+如果你可以将你的数据带到靠近所需 Azure区域的 ExpressRoute 位置，则可以通过启用[本地 SKU](expressroute-faqs.md) 来经济高效地传输数据。 使用 ExpressRoute Local 时，ExpressRoute 端口费用中包括了数据传输。 
 
 ### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>使用 ExpressRoute Global Reach 进行本地连接
 可以启用 ExpressRoute Global Reach，通过连接 ExpressRoute 线路，经本地站点交换数据。 例如，如果使用 ExpressRoute Global Reach，位于加利福利亚州的专用数据中心连接到硅谷中的 ExpressRoute，而位于德克萨斯州的另一个专用数据中心连接到达拉斯州的 ExpressRoute，则可以通过两个 ExpressRoute 线路将专用数据中心连接起来。 跨数据中心的流量将通过 Microsoft 的网络进行遍历。

@@ -2,21 +2,19 @@
 title: 快速入门 - 使用 Node Web 应用在 Azure Key Vault 中设置和检索机密 | Microsoft Docs
 description: 在本快速入门中，你将使用 Node Web 应用在 Azure Key Vault 中设置和检索机密
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
-manager: sumedhb
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
-ms.workload: identity
 ms.topic: quickstart
-ms.date: 09/05/2018
-ms.author: barclayn
+ms.date: 09/03/2010
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 9aa7c4a5464230abe9ac7e75854a7422534f40f6
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 02b9c439a932a4b35700871e68bdad7f03451110
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522298"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003509"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>快速入门：使用 Node Web 应用在 Azure Key Vault 中设置和检索机密 
 
@@ -26,10 +24,10 @@ ms.locfileid: "59522298"
 * 在密钥保管库中存储机密。
 * 从密钥保管库检索机密。
 * 创建 Azure Web 应用程序。
-* 为 Web 应用启用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)。
+* 为 Web 应用启用[托管标识](../active-directory/managed-service-identity/overview.md)。
 * 授予所需的权限，让 Web 应用程序从密钥保管库读取数据。
 
-在继续操作之前，请确保熟悉 [Key Vault 的基本概念](key-vault-whatis.md#basic-concepts)。
+在继续操作之前，请确保熟悉 [Key Vault 的基本概念](basic-concepts.md)。
 
 > [!NOTE]
 > Key Vault 是一个以编程方式存储机密的中央存储库。 但要这样做，应用程序和用户需要首先向 Key Vault 进行身份验证，即提供机密。 为了遵循安全最佳做法，第一个机密需要定期轮换。 
@@ -83,7 +81,7 @@ az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGr
 
 我们将添加机密以帮助说明这是如何工作的。 可以存储需要安全保存的，但同时也要提供给应用程序使用的 SQL 连接字符串或其他任何信息。 在本教程中，密码名为 **AppSecret**，将在其中存储 **MySecret** 的值。
 
-键入以下命令，在名为 **AppSecret** 的密钥保管库中创建机密。 此机密将存储值“MySecret”。
+键入以下命令，在名为 **AppSecret** 的密钥保管库中创建机密。 此机密将存储值“MySecret”。 
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
@@ -168,7 +166,7 @@ npm install
 az webapp identity assign --name <app_name> --resource-group "<YourResourceGroupName>"
 ```
 
-此命令等同于转到门户并在 Web 应用程序属性中将“标识/系统分配”设置切换为“打开”。
+此命令等同于转到门户并在 Web 应用程序属性中将“标识/系统分配”设置切换为“打开”   。
 
 ### <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>为应用程序分配从 Key Vault 读取机密的权限
 
@@ -198,5 +196,9 @@ git push azure master
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [Azure SDK for Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+在本快速入门中，你创建了 Key Vault 并在其中存储了一个机密。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
+
+- 阅读 [Azure Key Vault 概述](key-vault-overview.md)
+- 参阅 [Azure Key Vault 开发人员指南](key-vault-developers-guide.md)
+- 了解[密钥、机密和证书](about-keys-secrets-and-certificates.md)
+- 查看 [Azure Key Vault 最佳做法](key-vault-best-practices.md)

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078153"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64926235"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>排查经典存储资源删除错误
 请遵循本文中的指导排查在尝试删除 Azure 存储帐户、容器或 *.vhd 页 Blob 文件时发生的以下错误之一。 
@@ -37,14 +37,14 @@ ms.locfileid: "58078153"
 3. 中断磁盘租约后，可以删除页 Blob 本身。 删除存储帐户或容器中的所有“磁盘”资源后，可以删除该存储帐户或容器。
 
 >[!NOTE] 
->如果用户删除 VM 但不删除 VHD，页 Blob *.vhd 文件仍会产生存储费用。 费用根据存储帐户类型计算，有关更多详细信息，请查看[定价页](https://azure.microsoft.com/en-us/pricing/details/storage/)。 如果用户不再打算使用 VHD，请将其删除以免将来产生费用。 
+>如果用户删除 VM 但不删除 VHD，页 Blob *.vhd 文件仍会产生存储费用。 费用根据存储帐户类型计算，有关更多详细信息，请查看[定价页](https://azure.microsoft.com/pricing/details/storage/)。 如果用户不再打算使用 VHD，请将其删除以免将来产生费用。 
 
 ## <a name="unable-to-delete-storage-account"></a>无法删除存储帐户 
 
 当用户尝试删除不再需要的经典存储帐户时，可能会看到以下行为。
 
 #### <a name="azure-portal"></a>Azure 门户 
-当用户在 [Azure 门户](https://portal.azure.com)中导航到经典存储帐户并单击“删除”时，会看到以下消息： 
+当用户在 [Azure 门户](https://portal.azure.com)中导航到经典存储帐户并单击“删除”时，会看到以下消息：  
 
 磁盘“已附加”到虚拟机
 
@@ -99,7 +99,7 @@ ms.locfileid: "58078153"
 #### <a name="azure-powershell"></a>Azure PowerShell 
 如果用户选择使用 PowerShell 进行删除，则会导致以下错误。 
 
-> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
+> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"** </span>
 > 
 > <span style="color:red">Remove-AzureStorageBlob :远程服务器返回错误：(412) Blob 中当前包含租约，但请求中未指定任何租约 ID。HTTP 状态代码：412 - HTTP 错误消息：Blob 中当前包含租约，但请求中未指定任何租约 ID。</span>
 

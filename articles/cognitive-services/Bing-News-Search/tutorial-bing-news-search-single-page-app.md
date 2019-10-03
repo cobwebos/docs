@@ -1,22 +1,22 @@
 ---
-title: 教程：创建单页 Web 应用 - 必应新闻搜索 API
-titlesuffix: Azure Cognitive Services
+title: 教程：使用必应新闻搜索 API 创建单页 Web 应用
+titleSuffix: Azure Cognitive Services
 description: 使用本教程构建可向必应新闻 API 发送搜索查询并在网页内显示结果的单页 Web 应用程序。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 01/10/2019
-ms.author: v-gedod
+ms.date: 07/12/2019
+ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 29539ba39e724208093910f8fb6fa2d3bc309bda
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885032"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423601"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>教程：创建单页 Web 应用
 
@@ -267,7 +267,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> 成功的 HTTP 请求不一定意味着搜索本身成功。 如果搜索操作中出现错误，必应新闻搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
+> 成功的 HTTP 请求不  一定意味着搜索本身成功。 如果搜索操作中出现错误，必应新闻搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
 
 上面两个函数中的很多代码专用于错误处理。 以下阶段可能会出现错误：
 
@@ -381,7 +381,7 @@ searchItemRenderers = {
 > * 生成链接到图像及所在页面的 HTML `<a>` 标记。
 > * 可生成显示有关图像及所在站点的信息的说明。
 
-`<img>` 标记以及缩略图 URL 的 `h` 和 `w` 字段中均使用了缩略图大小。 然后，[必应缩略图服务](resize-and-crop-thumbnails.md)会提供正好为该大小的缩略图。
+`<img>` 标记以及缩略图 URL 的 `h` 和 `w` 字段中均使用了缩略图大小。 然后，[必应缩略图服务](../bing-web-search/resize-and-crop-thumbnails.md)会提供正好为该大小的缩略图。
 
 ## <a name="persisting-client-id"></a>保留客户端 ID
 来自必应搜索 API 的响应可能包含应通过后续请求发送回 API 的 `X-MSEdge-ClientID` 标头。 如果正在使用多个必应搜索 API，应将相同客户端 ID 用于所有这些必应搜索 API（如有可能）。
@@ -397,7 +397,7 @@ searchItemRenderers = {
 > [!NOTE]
 > 在生产 Web 应用程序中，应执行请求服务器端。 否则，你的必应搜索 API 密钥必须包含在网页中，该网页可供查看来源的任何人使用。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。
 
-进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 来自此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，此标头将响应头列入允许列表，并将它们提供给 JavaScript。
+进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应包含 `Access-Control-Expose-Headers` 标头，该标头允许响应标头并使其可供 JavaScript 访问。
 
 安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请[安装它](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
 

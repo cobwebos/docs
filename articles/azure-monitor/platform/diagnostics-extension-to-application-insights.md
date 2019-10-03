@@ -9,11 +9,11 @@ ms.date: 03/19/2016
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: f7e21b805c64522005dce3e7d04aa158e1c21032
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892842"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "60396102"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights
 云服务、虚拟机、虚拟机规模集和 Service Fabric 都使用 Azure 诊断扩展来收集数据。  Azure 诊断将数据发送到 Azure 存储表。  但是，也可以 Azure 诊断扩展 1.5 或更高版本，通过管道将所有或一部分数据发送到其他位置。
@@ -70,8 +70,8 @@ Application Insights 接收器的示例配置：
         - 详细
         - 信息
         - 警告
-        - 错误
-        - 严重
+        - Error
+        - 关键
 
 通道的作用类似于筛选器，可让你选择要发送到目标接收器的特定日志级别。 例如，可以收集详细日志并将其发送到存储，但只将“错误”日志发送到接收器。
 

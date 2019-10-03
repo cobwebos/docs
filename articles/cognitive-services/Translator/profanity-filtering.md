@@ -1,21 +1,21 @@
 ---
 title: 不雅内容筛选 - 翻译文本 API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用翻译文本 API 中的不雅内容筛选。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: bd7a05f2f597d1882293387e5aac8e4d7367d051
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: 114dea098db5c824a1235ba1635f547383bf6743
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916625"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595195"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>使用翻译文本 API 添加不雅内容筛选
 
@@ -26,7 +26,7 @@ ms.locfileid: "58916625"
 Translate() 方法采用“options”参数，该参数包含新元素“ProfanityAction”。 可接受的 ProfanityAction 值为“NoAction”、“Marked”和“Deleted”。
 
 ## <a name="accepted-values-of-profanityaction-and-examples"></a>可接受的 ProfanityAction 值和示例
-|ProfanityAction 值 | 操作 | 示例：源 - 日语 | 示例：目标 - 英语|
+|ProfanityAction 值 | Action | 例如：源 - 日语 | 例如：目标 - 英语|
 | :---|:---|:---|:---|
 | NoAction | 默认。 与不设置此选项等效。 不雅内容从源传递到目标。 | 彼は変態です。 | He is a jerk. |
 | Marked | 将不雅词语括在 XML 标记 \<profanity> ... \</profanity> 内。 | 彼は変態です。 | He is a \<profanity>jerk\</profanity>. |

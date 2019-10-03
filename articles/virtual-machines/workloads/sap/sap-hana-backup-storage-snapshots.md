@@ -4,25 +4,24 @@ description: 对于 Azure 虚拟机上的 SAP HANA，可以采用两种可行的
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 74f47344afff630a8633b340ea4ce21db28db7ca
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: 8bcfdefa2ea9de12ca6029839a41c91111a5c61c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159921"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078600"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>基于存储快照的 SAP HANA 备份
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 本文是有关 SAP HANA 备份的系列教程所包含的三篇文章中的一篇。 [Azure 虚拟机上的 SAP HANA 备份指南](sap-hana-backup-guide.md)提供概述和入门信息，[文件级别的 SAP HANA Azure 备份](sap-hana-backup-file-level.md)介绍基于文件的备份选项。
 
@@ -32,7 +31,7 @@ ms.locfileid: "54159921"
 
 SAP HANA 中提供了一项用于支持创建存储快照的功能。 仅限于对单容器系统使用该功能。 具有多个租户的 SAP HANA MCS 方案不支持这种类型的 SAP HANA 数据库快照（请参阅[创建存储快照 (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm)）。
 
-此功能的工作原理如下：
+其工作原理，如下所示：
 
 - 通过启动 SAP HANA 快照来准备存储快照
 - 运行存储快照（例如 Azure Blob 快照）

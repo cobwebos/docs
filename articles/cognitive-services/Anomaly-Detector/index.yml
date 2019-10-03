@@ -1,65 +1,113 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: 7b7305a84ac8600629ce27551c0243c427082e5e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473357"
-documentType: LandingData
+### YamlMime:Landing
 title: 异常检测器 API 文档
+summary: 了解如何使用异常检测器 API 在一段时间内监视数据，并通过机器学习检测异常。 深入了解数据，而无论数据量、行业或场景如何。
 metadata:
-  title: 异常检测器 API - 教程、快速入门和 API 参考 - Azure 认知服务 | Microsoft Docs
+  title: 异常检测器 API - 教程、快速入门和 API 参考
+  titleSuffix: Azure Cognitive Services
   description: 使用异常检测器 API 可在一段时间内监视数据，并通过机器学习检测异常。 深入了解数据，而无论数据量、行业或场景如何。
   services: cognitive-services
   author: aahill
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: anomaly-detector
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.date: 09/10/2019
   ms.author: aahi
-abstract:
-  description: 异常检测器 API 可帮助你轻松将异常情况检测功能嵌入到应用中，以便你的用户可以快速确定问题，从而最大程度地降低损失和客户影响。 无需任何机器学习背景。 通过单个 API 调用，可以激活此预先训练的 AI 模型，从而引入所有类型和数量的时序数据、选择最适合你的数据的异常情况检测模型以确保高准确性，并自动在事件发生后立即提供其相关信息。 可以自定义该服务以检测各种规模的异常情况。  使用异常检测器可识别业务事件、监视 IoT 设备流量、管理欺诈、应对不断变化的市场，等等。
-sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
-    items:
-    - href: /azure/cognitive-services/anomaly-detector/overview
-      html: <p>了解异常检测器 API</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: 什么是异常检测器 API？
-    - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
-      html: <p>通过将最佳做法与该 API 配合使用来优化异常情况检测结果</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: 使用异常检测器 API 时的最佳做法
-    - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
-      html: <p>调整异常情况检测灵敏度、使用不同的检测模式，等等。</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: 使用异常情况检测 API
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 使用以下语言检测时序数据中的异常：
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/logo_Csharp.svg
-      href: quickstarts/detect-data-anomalies-csharp
-      text: C#
-    - image:
-        src: media/logo_Java.svg
-      href: quickstarts/detect-data-anomalies-java
-      text: Java
-    - image:
-        src: media/logo_python.svg
-      href: quickstarts/detect-data-anomalies-python
-      text: Python
+  ms.openlocfilehash: d073adfbc1b05bbd4d92f5cfb500184653444f4b
+  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71086783"
+landingContent:
+- title: 关于异常检测器 API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是异常检测器 API？
+      url: overview.md
+  - linkListType: get-started
+    links:
+    - text: 异常探测器演示
+      url: https://aka.ms/adDemo
+  - linkListType: video
+    links:
+    - text: 异常检测器 API 简介
+      url: https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner
+    - text: 异常情况检测 API 使用的算法
+      url: https://www.youtube.com/embed/ERTaAnwCarM
+  - linkListType: reference
+    links:
+    - text: 在异常情况检测中使用的算法（白皮书）
+      url: https://arxiv.org/abs/1906.03821
+- title: 检测数据中的异常
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 C#
+      url: quickstarts/detect-data-anomalies-csharp-sdk.md
+    - text: 使用 Python
+      url: quickstarts/detect-data-anomalies-python-sdk.md
+  - linkListType: tutorial
+    links:
+    - text: 使用批量检测和 Power BI 将异常可视化
+      url: tutorials/batch-anomaly-detection-powerbi.md
+    - text: 使用 Azure Databricks 检测流数据中的异常
+      url: tutorials/batch-anomaly-detection-powerbi.md
+  - linkListType: video
+    links:
+    - text: 使用 Azure Databricks 针对流数据进行异常情况检测
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-detection-on-streaming-data-using-Azure-Databricks
+- title: 优化检测结果
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 调整数据的异常情况检测模式和参数。
+      url: how-to/identify-anomalies.md
+    - text: 使用最佳做法来优化异常情况检测结果。
+      url: concepts/anomaly-detection-best-practices.md
+  - linkListType: video
+    links:
+    - text: 异常检测器最佳做法
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-Detector-v10-Best-Practices
+- title: 使用 Docker 容器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 安装并运行异常检测器容器
+      url: anomaly-detector-container-howto.md
+    - text: 配置异常检测器容器
+      url: anomaly-detector-container-configuration.md
+    - text: 将容器实例部署到 Azure
+      url: how-to/deploy-anomaly-detection-on-container-instances.md
+  - linkListType: video
+    links:
+    - text: 通过提供容器支持让异常检测器可供在本地使用
+      url: https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support
+- title: 加入“异常检测器”社区
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 加入 Microsoft Teams 中的异常检测器顾问组
+      url: https://aka.ms/adadvisorsjoin
+    - text: 用户生成的特色内容
+      url: user-generated-content.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://aka.ms/anomaly-detector-rest-api-ref
+    - text: .NET SDK
+      url: https://aka.ms/anomaly-detector-dotnet-ref
+    - text: Python SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090370
+    - text: Go SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2089915
+    - text: Node.js SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090788
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure CLI
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list

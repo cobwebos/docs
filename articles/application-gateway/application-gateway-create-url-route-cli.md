@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.openlocfilehash: 061156a455664a5a3f0b4c4497d24f4e8ff6eea7
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527245"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66135671"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>通过 Azure CLI 使用基于 URL 路径的路由规则创建应用程序网关
 
@@ -232,17 +232,17 @@ az network public-ip show \
 
 ![在应用程序网关中测试基 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
 
-将 URL 更改为`http://<ip-address>:8080/video/test.html`到末尾的基 URL，并且应会出现类似于下面的示例：
+将 `http://<ip-address>:8080/video/test.html` 的 URL 更改到基 URL 的末尾，你应当会看到类似下例所示的内容：
 
 ![在应用程序网关中测试映像 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
 
-将 URL 更改为`http://<ip-address>:8080/video/test.html`和，应看到类似于下面的示例。
+将 URL 更改为 `http://<ip-address>:8080/video/test.html`，此时会看到类似以下示例的内容。
 
 ![在应用程序网关中测试视频 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 设置网络

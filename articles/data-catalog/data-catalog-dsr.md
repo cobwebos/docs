@@ -1,18 +1,17 @@
 ---
 title: Azure 数据目录中支持的数据源
-description: 本文列出当前支持的数据源的规范。
-services: data-catalog
+description: 本文列出了 Azure 数据目录当前支持的数据源的规格。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 8b584e06697f9f4212fe0d1d59c29e4670a87eda
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 08/01/2019
+ms.openlocfilehash: 8f148bfe08d5f7933857eb46cf0d13d4582da108
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008607"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950277"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 数据目录中支持的数据源
 
@@ -30,7 +29,7 @@ ms.locfileid: "60008607"
        <td><b>说明</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store 目录 (仅第 1 代)</td>
+      <td>Azure Data Lake Store 目录 (仅第1代)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -38,7 +37,7 @@ ms.locfileid: "60008607"
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store 文件 (仅第 1 代)</td>
+      <td>Azure Data Lake Store 文件 (仅第1代)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -67,10 +66,8 @@ ms.locfileid: "60008607"
       <td>✓</td>
       <td>✓</td>
       <td>
-        <font size="2">
       </td>
       <td>
-        <font size="2">
       </td>
     </tr>
     <tr>
@@ -154,7 +151,7 @@ ms.locfileid: "60008607"
       <td></td>
     </tr>
     <tr>
-      <td>SQL 数据仓库视图</td>
+      <td>Azure SQL 数据仓库视图</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -167,7 +164,7 @@ ms.locfileid: "60008607"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 及更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services KPI</td>
@@ -175,7 +172,7 @@ ms.locfileid: "60008607"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 及更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services 度量</td>
@@ -183,7 +180,7 @@ ms.locfileid: "60008607"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 及更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services 表</td>
@@ -191,7 +188,7 @@ ms.locfileid: "60008607"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 及更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services 报表</td>
@@ -199,7 +196,7 @@ ms.locfileid: "60008607"
       <td>✓</td>
       <td>✓</td>
       <td>浏览器</td>
-      <td>仅本机模式服务器。 不支持 SharePoint 模式。</td>
+      <td>仅本机模式服务器。 不支持 SharePoint 模式。 仅 SQL Server 2008 和更高版本</td>
     </tr>
     <tr>
       <td>SQL Server 表</td>
@@ -207,7 +204,7 @@ ms.locfileid: "60008607"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server Data Tools</td>
-      <td></td>
+      <td>SQL Server 2008 及更高版本。</td>
     </tr>
     <tr>
       <td>SQL Server 视图</td>
@@ -215,7 +212,7 @@ ms.locfileid: "60008607"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server Data Tools</td>
-      <td></td>
+      <td>SQL Server 2008 及更高版本。</td>
     </tr>
     <tr>
       <td>Teradata 表</td>
@@ -232,6 +229,14 @@ ms.locfileid: "60008607"
       <td>✓</td>
       <td>Excel</td>
       <td></td>
+    </tr>
+    <tr>
+      <td>SAP Business Warehouse</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td></td>
+      <td>仅适用于英语。 度量值不受支持。</td>
     </tr>
     <tr>
       <td>SAP HANA 视图</td>

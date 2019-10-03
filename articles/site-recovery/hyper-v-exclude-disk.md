@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
 ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992330"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60773869"
 ---
 # <a name="exclude-disks-from-replication"></a>从复制中排除磁盘
 本文介绍如何从复制中排除磁盘。 这种排除可以优化消耗的复制带宽，或者优化此类磁盘利用的目标端资源。
@@ -43,7 +43,7 @@ ms.locfileid: "57992330"
 2. 从复制中排除 tempdb 磁盘。
 
 ## <a name="how-to-exclude-disks"></a>如何排除磁盘
-按照[启用复制](site-recovery-hyper-v-site-to-azure.md)工作流，通过 Azure Site Recovery 门户保护虚拟机。 在工作流的第四步，使用“要复制的磁盘”列从复制中排除磁盘。 默认情况下，选择所有磁盘进行复制。 清除要从复制中排除的磁盘所对应的复选框，并完成启用复制的步骤。
+按照[启用复制](site-recovery-hyper-v-site-to-azure.md)工作流，通过 Azure Site Recovery 门户保护虚拟机。 在工作流的第四步，使用“要复制的磁盘”  列从复制中排除磁盘。 默认情况下，选择所有磁盘进行复制。 清除要从复制中排除的磁盘所对应的复选框，并完成启用复制的步骤。
 
 ![从复制中排除磁盘，并为 Hyper-V 启用到 Azure 故障回复的复制](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)
 

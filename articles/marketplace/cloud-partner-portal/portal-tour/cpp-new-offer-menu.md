@@ -1,29 +1,22 @@
 ---
-title: Azure 市场的新产品/服务菜单 | Microsoft Docs
-description: .
+title: Azure Marketplace 的新产品/服务菜单
+description: 概述的新建为 Azure Marketplace 提供云合作伙伴门户中的菜单。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 04cac492fd044471a646444afc21bc70f92537d2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 8ec1a6a6ec77838ec75666d219d90739bf74517b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656845"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943273"
 ---
 # <a name="new-offer-menu"></a>“新产品/服务”菜单
 
-“新产品/服务”菜单可使合作伙伴能够创建[云合作伙伴门户](https://cloudpartner.azure.com)支持的产品/服务类型的实例。  选择左侧导航菜单栏上的“新产品/服务”菜单项，随即将显示以下产品/服务类型的列表。  选择任一类型即可开始进行产品/服务的创建和发布过程。
+“新产品/服务”菜单可使合作伙伴能够创建[云合作伙伴门户](https://cloudpartner.azure.com)支持的产品/服务类型的实例  。  选择左侧导航菜单栏上的“新产品/服务”菜单项，随即将显示以下产品/服务类型的列表  。  选择任一类型即可开始进行产品/服务的创建和发布过程。
 
 |    **新产品/服务菜单项**     |     **相应的文档部分**                       |
 |    -----------------------     |     -----------------------------                       |

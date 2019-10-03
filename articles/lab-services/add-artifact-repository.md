@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 42b59c8da9e66b0f749d067e3df867911c7108e9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c391aa157e35bdc389bd30efe48fa380d06c193e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106825"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508356"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>将项目存储库添加到自己的实验室中开发测试实验室
-开发测试实验室，可指定要在创建 VM 或之后创建 VM 时添加到 VM 的项目。 此项目可能是一种工具或你想要在 VM 上安装的应用程序。 从 GitHub 或 VSTS Git 存储库加载的 JSON 文件中定义的项目。 
+开发测试实验室，可指定要在创建 VM 或之后创建 VM 时添加到 VM 的项目。 此项目可能是一种工具或你想要在 VM 上安装的应用程序。 从 GitHub 或 Azure DevOps Git 存储库加载的 JSON 文件中定义的项目。 
 
 [公共项目存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)，维护的开发测试实验室，适用于 Windows 和 Linux 提供许多常用工具。 此存储库的链接自动添加到你的实验室。 可以使用公共项目存储库中不可用的特定工具创建自己的项目存储库。 若要了解如何创建自定义项目，请参阅[创建自定义项目](devtest-lab-artifact-author.md)。
 
@@ -35,38 +35,38 @@ ms.locfileid: "58106825"
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>获取 GitHub 存储库克隆 URL 和个人访问令牌
 
 1. 转到包含项目定义或资源管理器模板定义的 GitHub 存储库主页。
-2. 选择“克隆或下载”。
-3. 要将 URL 复制到剪贴板，请选择“HTTPS 克隆 URL”按钮。 保存该 URL 以供将来使用。
-4. 选择 GitHub 右上角的配置文件图像，然后选择“设置”。
+2. 选择“克隆或下载”  。
+3. 要将 URL 复制到剪贴板，请选择“HTTPS 克隆 URL”  按钮。 保存该 URL 以供将来使用。
+4. 选择 GitHub 右上角的配置文件图像，然后选择“设置”  。
 5. 在中**个人设置**左侧，选择菜单上的**开发人员设置**。
 6. 选择**个人访问令牌**在左侧菜单中。
-7. 选择“生成新令牌”。
-8. 在“新建个人访问令牌”页上，在“令牌描述”下输入相关描述。 接受“选择范围”下的默认项，然后选择“生成令牌”。
+7. 选择“生成新令牌”  。
+8. 在“新建个人访问令牌”页上，在“令牌描述”下输入相关描述   。 接受“选择范围”下的默认项，然后选择“生成令牌”   。
 9. 保存生成的令牌。 稍后会用到该令牌。
 10. 关闭 GitHub。   
 
 ### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>获取 Azure Repos 克隆 URL 和个人访问令牌
 1. 转到团队集合主页（例如 https://contoso-web-team.visualstudio.com) ） ，并选择项目。
-2. 在项目主页上，选择“代码”。
-3. 若要查看克隆 URL，在项目“代码”页上，选择“克隆”。
+2. 在项目主页上，选择“代码”  。
+3. 若要查看克隆 URL，在项目“代码”  页上，选择“克隆”  。
 4. 保存 URL。 稍后会用到该 URL。
-5. 若要创建个人访问令牌，在用户帐户下拉列表菜单中选择“我的个人资料”。
-6. 在个人资料信息页中，选择“安全性”。
-7. 在“安全性”选项卡上，选择“添加”。
-8. 在“创建个人访问令牌”页中：
+5. 若要创建个人访问令牌，在用户帐户下拉列表菜单中选择“我的个人资料”  。
+6. 在个人资料信息页中，选择“安全性”  。
+7. 在“安全性”  选项卡上，选择“添加”  。
+8. 在“创建个人访问令牌”  页中：
    1. 输入令牌的**说明**。
-   2. 选择“有效期”列表中的“180 天”。
-   3. 选择“帐户”列表中的“所有可访问的帐户”。
-   4. 选择“所有范围”选项。
-   5. 选择“创建令牌”。
-9. 随后“个人访问令牌”列表中会出现新的令牌。 选择“复制令牌”，并保存令牌值以备后用。
+   2. 选择“有效期”列表中的“180 天”   。
+   3. 选择“帐户”列表中的“所有可访问的帐户”   。
+   4. 选择“所有范围”选项  。
+   5. 选择“创建令牌”  。
+9. 随后“个人访问令牌”列表中会出现新的令牌  。 选择“复制令牌”  ，并保存令牌值以备后用。
 10. 转到连接到存储库部分实验室。
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
 本部分提供在项目存储库中将添加到 Azure 门户中的步骤。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“更多服务”，并从服务列表中选择“开发测试实验室”。
+2. 选择“更多服务”，并从服务列表中选择“开发测试实验室”   。
 3. 在实验室列表中，选择实验室。 
 4. 选择**配置和策略**在左侧菜单中。
 5. 选择**存储库**下**外部资源**在左侧菜单中的部分。
@@ -81,7 +81,7 @@ ms.locfileid: "58106825"
    5. **文件夹路径**。 输入至少一个与包含项目定义或资源管理器模板定义的克隆 URL 有关的文件夹路径。 指定子目录时，请确保在文件夹路径中包含正斜杠。
 
         ![“存储库”区域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. 选择“保存”。
+6. 选择“保存”。 
 
 ## <a name="use-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 Azure 资源管理 （Azure 资源管理器） 模板是描述您想要创建的 Azure 中的资源的 JSON 文件。 有关这些模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。
@@ -232,7 +232,7 @@ Folder under which artifacts can be found. Defaults to '/Artifacts'
 
 .PARAMETER PersonalAccessToken
 Security token for access to GitHub or VSOGit repository.
-See https://azure.microsoft.com/en-us/documentation/articles/devtest-lab-add-artifact-repo/ for instructions to get personal access token
+See https://azure.microsoft.com/documentation/articles/devtest-lab-add-artifact-repo/ for instructions to get personal access token
 
 .PARAMETER SourceType
 Whether artifact is VSOGit or GitHub repository.
@@ -303,7 +303,7 @@ $propertiesObject = @{
     status = 'Enabled'
 }
 
-Write-Verbose @"Properties to be passed to New-AzResource:$($propertiesObject | Out-String)"@
+Write-Verbose @"Properties to be passed to New-AzResource:$($propertiesObject | Out-String)"
 
 #Resource will be added to current subscription.
 $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'
@@ -352,7 +352,7 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 | --------- | ----------- | 
 | LabName | 在实验室的名称。 |
 | ArtifactRepositoryName | 新的项目存储库的名称。 如果未指定，该脚本将创建存储库的随机名称。 |
-| ArtifactRepositoryDisplayName | 在项目存储库的显示名称。 这是在 Azure 门户中显示的名称 (https://portal.azure.com)查看某个实验室的所有项目存储库时。 |
+| ArtifactRepositoryDisplayName | 在项目存储库的显示名称。 这是在 Azure 门户中显示的名称 (https://portal.azure.com) 查看某个实验室的所有项目存储库时。 |
 | RepositoryUri | 向存储库的 Uri。 示例：`https://github.com/<myteam>/<nameofrepo>.git`或`"https://MyProject1.visualstudio.com/DefaultCollection/_git/TeamArtifacts"`。| 
 | RepositoryBranch | 文件可以找到哪些项目中的分支。 默认值为 master。 | 
 | FolderPath | 可以在其下找到项目的文件夹。 默认为 / 项目的 |

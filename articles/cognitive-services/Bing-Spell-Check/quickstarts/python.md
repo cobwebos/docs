@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用必应拼写检查 REST API 和 Python 检查拼写
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: 1cf46fd5ec55f0b240f6bb4adbe49c1344a4663b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: fef329a46594071b5f1621e9a46140f407eeb415
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547673"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996717"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>快速入门：使用必应拼写检查 REST API 和 Python 检查拼写
 
@@ -133,4 +133,4 @@ ms.locfileid: "59547673"
 > [创建单页 Web 应用](../tutorials/spellcheck.md)
 
 - [什么是必应拼写检查 API？](../overview.md)
-- [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+- [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

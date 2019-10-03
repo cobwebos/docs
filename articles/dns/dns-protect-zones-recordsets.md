@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 12/4/2018
 ms.author: victorh
 ms.openlocfilehash: 9340a43eb88b4be03c0f0ccc0d07a32f22a9001c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997373"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66121454"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保护 DNS 区域和记录
 
@@ -30,9 +30,9 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 用户、组和资�
 
 “DNS 区域参与者”角色是 Azure 为管理 DNS 资源提供的内置角色。  将 DNS 区域参与者权限分配给用户或组可让该组管理 DNS 资源，但不能管理任何其他类型的资源。
 
-例如，假设资源组“myzones”包含 Contoso Corporation 的五个区域。 授予 DNS 管理员对该资源组的 DNS 区域参与者权限，可以完全控制这些 DNS 区域。 它还避免了授予不必要的权限，例如 DNS 管理员无法创建或停止虚拟机。
+例如，假设资源组“myzones”包含 Contoso Corporation 的五个区域。  授予 DNS 管理员对该资源组的 DNS 区域参与者权限，可以完全控制这些 DNS 区域。 它还避免了授予不必要的权限，例如 DNS 管理员无法创建或停止虚拟机。
 
-分配 RBAC 权限最简单方法是[通过 Azure 门户](../role-based-access-control/role-assignments-portal.md)进行分配。  打开资源组的“访问控制(IAM)”，然后选择“添加”，接着选择“DNS 区域参与者”角色，并选择所需用户或组来授予权限。
+分配 RBAC 权限最简单方法是[通过 Azure 门户](../role-based-access-control/role-assignments-portal.md)进行分配。  打开资源组的“访问控制(IAM)”，然后选择“添加”，接着选择“DNS 区域参与者”角色，并选择所需用户或组来授予权限。   
 
 ![使用 Azure 门户的资源组级别 RBAC](./media/dns-protect-zones-recordsets/rbac1.png)
 
@@ -54,9 +54,9 @@ azure role assignment create --signInName "<user email address>" --roleName "DNS
 
 Azure RBAC 规则可应用于订阅，资源组或单个资源。 在 Azure DNS 的情况下，该资源可以是单个 DNS 区域，或甚至单个记录集。
 
-例如，假设资源组“myzones”包含区域“contoso.com”和子区域“customers.contoso.com”（其中针对每个客户帐户创建 CNAME 记录）。  应为用于管理这些 CNAME 记录的帐户分配权限，以便仅在“customers.contoso.com”区域中创建记录，但该帐户不应具有对其他区域的访问权限。
+例如，假设资源组“myzones”包含区域“contoso.com”和子区域“customers.contoso.com”（其中针对每个客户帐户创建 CNAME 记录）。     应为用于管理这些 CNAME 记录的帐户分配权限，以便仅在“customers.contoso.com”区域中创建记录，但该帐户不应具有对其他区域的访问权限。 
 
-可以通过 Azure 门户授予区域级别的 RBAC 权限。  打开区域的“访问控制(IAM)”，然后选择“添加”，接着选择“DNS 区域参与者”角色，并选择所需用户或组来授予权限。
+可以通过 Azure 门户授予区域级别的 RBAC 权限。  打开区域的“访问控制(IAM)”，然后选择“添加”，接着选择“DNS 区域参与者”角色，并选择所需用户或组来授予权限。   
 
 ![使用 Azure 门户的 DNS 区域级别 RBAC](./media/dns-protect-zones-recordsets/rbac2.png)
 
@@ -78,7 +78,7 @@ azure role assignment create --signInName <user email address> --roleName "DNS Z
 
 再进一步分析。 假设 Contoso Corporation 的邮件管理员需要访问“contoso.com”区域核心位置的 MX 和 TXT 记录。  她无需访问任何其他 MX 或 TXT 记录，也无需访问任何其他类型的任何记录。  可通过 Azure DNS 在记录集级别分配权限，仅针对邮件管理员需要访问的记录分配权限。  邮件管理员仅被授予所需控制权，无法进行任何其他更改。
 
-记录集级别的 RBAC 权限可在 Azure 门户中使用“记录集”页面中的“用户”按钮进行配置：
+记录集级别的 RBAC 权限可在 Azure 门户中使用“记录集”页面中的“用户”按钮进行配置： 
 
 ![使用 Azure 门户的记录集级别 RBAC](./media/dns-protect-zones-recordsets/rbac3.png)
 
@@ -100,7 +100,7 @@ azure role assignment create --signInName "<user email address>" --roleName "DNS
 
 内置“DNS 区域参与者”角色可以完全控制 DNS 资源。 还可以构建自己的客户 Azure 角色，以提供更细致的控制。
 
-再次以为每个 Contoso Corporation 客户帐户创建区域“customers.contoso.com”中的 CNAME 记录为例。  应对用于管理这些 CNAME 的帐户仅授予管理 CNAME 记录的权限。  这样，它将无法修改其他类型的记录（例如更改 MX 记录）或执行区域级操作（如区域删除）。
+再次以为每个 Contoso Corporation 客户帐户创建区域“customers.contoso.com”中的 CNAME 记录为例。   应对用于管理这些 CNAME 的帐户仅授予管理 CNAME 记录的权限。  这样，它将无法修改其他类型的记录（例如更改 MX 记录）或执行区域级操作（如区域删除）。
 
 以下示例显示了仅用于管理 CNAME 记录的自定义角色定义：
 
@@ -160,13 +160,13 @@ azure role create -inputfile <file path>
 
 除支持 RBAC 外，Azure 资源管理器还支持另一种类型的安全控制，即“锁定”资源的能力。 其中 RBAC 规则用于控制特定用户和组的操作，而资源锁将应用于资源且对所有用户和角色都有效。 有关详细信息，请参阅 [使用 Azure 资源管理器锁定资源](../azure-resource-manager/resource-group-lock-resources.md)。
 
-有两种类型的资源锁：CanNotDelete 和 ReadOnly。 它们都可应用到 DNS 区域或单个记录集。  以下各节描述了几种常见情况以及如何使用资源锁支持它们。
+有两种类型的资源锁：  CanNotDelete 和 ReadOnly  。 它们都可应用到 DNS 区域或单个记录集。  以下各节描述了几种常见情况以及如何使用资源锁支持它们。
 
 ### <a name="protecting-against-all-changes"></a>防止所有更改
 
 若要防止进行任何更改，可在该区域应用 ReadOnly 锁。  这会阻止创建新的记录集，并防止修改或删除现有记录集。
 
-可通过 Azure 门户创建区域级别的资源锁。  从 DNS 区域页上，选择“锁定”，然后选择“+添加”：
+可通过 Azure 门户创建区域级别的资源锁。  从 DNS 区域页上，选择“锁定”  ，然后选择“+添加”  ：
 
 ![使用 Azure 门户的区域级别资源锁](./media/dns-protect-zones-recordsets/locks1.png)
 

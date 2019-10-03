@@ -4,17 +4,17 @@ description: 本文介绍如何安装 Azure 自动化混合 Runbook 辅助角色
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc07aa9c1b2c540c33949a8c591bd98f91b04666
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 360fa750da054f9b126a8694f3dd2ce4b0b417b7
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225444"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240299"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -51,7 +51,7 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 |Glibc |GNU C 库| 2.5-12 |
 |Openssl| OpenSSL 库 | 1.0（支持 TLS 1.1 和 TLS 1.2）|
 |Curl | cURL Web 客户端 | 7.15.5|
-|Python-ctype | |
+|Python-ctype | 需要 Python 2。x |
 |PAM | 可插入验证模块|
 | **可选包** | **说明** | **最低版本**|
 | PowerShell Core | 若要运行 PowerShell Runbook，需要安装 PowerShell，请参阅[在 Linux 上安装 PowerShell Core](/powershell/scripting/setup/installing-powershell-core-on-linux) 了解如何安装。  | 6.0.0 |
@@ -62,7 +62,7 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 
 1. 使用以下方法之一，在 Azure 中启用“自动化混合辅助角色”解决方案：
 
-   * 添加**自动化混合辅助角色**解决方案添加到你的订阅使用的过程[添加 Azure Monitor 记录到你的工作区解决方案](../log-analytics/log-analytics-add-solutions.md)。
+   * 使用[将 Azure Monitor 日志解决方案添加到工作区](../log-analytics/log-analytics-add-solutions.md)中所述的过程，将“自动化混合辅助角色”解决方案添加到订阅。
    * 运行以下 cmdlet：
 
         ```azurepowershell-interactive
@@ -71,13 +71,13 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 
 1. 运行以下命令，安装 Log Analytics Linux 代理。 请将 \<WorkspaceID\> 和 \<WorkspaceKey\> 替换为工作区中的相应值。
 
-   [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+   [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
    ```bash
    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
    ```
 
-1. 运行以下命令，更改 *-w*、*-k*、*-g* 和 *-e* 参数的值。 对于 *-g* 参数，请将值替换为新的 Linux 混合 Runbook 辅助角色应加入的混合 Runbook 辅助角色组的名称。 如果自动化帐户中尚不存在该名称，系统会使用该名称生成一个新的混合 Runbook 辅助角色组。
+1. 运行以下命令，更改 *-w*、 *-k*、 *-g* 和 *-e* 参数的值。 对于 *-g* 参数，请将值替换为新的 Linux 混合 Runbook 辅助角色应加入的混合 Runbook 辅助角色组的名称。 如果自动化帐户中尚不存在该名称，系统会使用该名称生成一个新的混合 Runbook 辅助角色组。
 
    ```bash
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
@@ -86,11 +86,11 @@ Linux 混合 Runbook 辅助角色的最低要求如下：
 1. 命令完成后，Azure 门户中的“混合辅助角色组”页面会显示新组和成员数。 如果这是现有的组，则成员数会递增。 可以从“混合辅助角色组”页上的列表中选择组，并选择“混合辅助角色”磁贴。 在“混合辅助角色”页上，会列出组的每个成员。
 
 > [!NOTE]
-> 如果使用 Azure Monitor 虚拟机扩展适用于 Linux 的 Azure VM 建议设置`autoUpgradeMinorVersion`为 false 为自动升级版本可能会导致问题混合 Runbook 辅助角色。 若要了解如何手动升级该扩展，请参阅[Azure CLI 部署](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)。
+> 如果要对 Azure VM 使用用于 Linux 的 Azure Monitor 虚拟机扩展，我们建议将 `autoUpgradeMinorVersion` 设置为 false，因为自动升级版本可能会导致混合 Runbook 辅助角色出现问题。 若要了解如何手动升级扩展，请参阅 [Azure CLI 部署](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)。
 
 ## <a name="turning-off-signature-validation"></a>关闭签名验证
 
-默认情况下，Linux 混合 Runbook 辅助角色需要签名验证。 如果针对辅助角色运行未签名的 runbook，将看到显示“签名验证失败”字样的错误。 若要禁用签名验证，请运行以下命令。 第二个参数替换为你的 log analytics 工作区 id。
+默认情况下，Linux 混合 Runbook 辅助角色需要签名验证。 如果针对辅助角色运行未签名的 runbook，将看到显示“签名验证失败”字样的错误。 若要禁用签名验证，请运行以下命令。 将第二个参数替换为 Log Analytics 工作区 ID。
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>

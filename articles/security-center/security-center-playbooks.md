@@ -3,9 +3,8 @@ title: Azure 安全中心安全攻略 | Microsoft Docs
 description: 本文档介绍如何使用 Azure 安全中心安全攻略来自动响应安全事件。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: a8c45ddf-5c4c-4393-b6e9-46ed1f91bf5f
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: ec16e6daec099adbede625c5ec6fe6909059143b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.author: memildin
+ms.openlocfilehash: faf297ef4b07b76f98bb7773c636cd8f6228bbc0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116739"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201739"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Azure 安全中心安全攻略（预览版）
 本文档介绍如何使用 Azure 安全中心安全攻略来响应安全相关问题。
@@ -74,7 +73,7 @@ ms.locfileid: "56116739"
 
 5. 在“攻略”页面选择要运行的攻略，然后单击“运行”按钮。 若要在触发之前查看攻略，可以单击该攻略，然后设计器就会打开。
 
-    ![攻略](./media/security-center-playbooks/security-center-playbooks-fig13.png)
+    ![Playbook](./media/security-center-playbooks/security-center-playbooks-fig13.png)
 
 ### <a name="history"></a>历史记录
 
@@ -96,7 +95,7 @@ ms.locfileid: "56116739"
 > 若要详细了解如何使用 Azure 逻辑应用创建自己的攻略，请阅读[创建第一个逻辑应用工作流以自动化云应用与云服务之间的流程](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app)。
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 本文档介绍了如何使用 Azure 安全中心的攻略。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：
 
 * [Managing and responding to security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)（管理和响应 Azure 安全中心的安全警报）。 了解如何管理警报并响应安全中心的安全事件。

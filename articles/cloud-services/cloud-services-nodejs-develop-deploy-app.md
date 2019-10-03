@@ -3,23 +3,18 @@ title: Node.js 入门指南
 description: 了解如何创建简单的 Node.js Web 应用程序并将其部署到 Azure 云服务。
 services: cloud-services
 documentationcenter: nodejs
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 50951a87-fed4-48e0-bcfa-453b9e50452e
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 270f400f78b971e022a59e5e9a04a76dfa929941
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: gwallace
+ms.openlocfilehash: 81ad3bce6c7e331fd67fba60b35de6b8a37c5da9
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761151"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359530"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务
 
@@ -36,7 +31,7 @@ ms.locfileid: "57761151"
 
 ![Web 浏览器中显示“Hello World”网页][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 > [!NOTE]
 > 本教程使用 Azure PowerShell，因此需要在 Windows 上运行。
 
@@ -164,7 +159,7 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 
 <!-- URL List -->
 
-[Azure 网站、云服务和虚拟机的比较]: ../app-service/overview-compare.md
+[Azure 网站、云服务和虚拟机的比较]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [使用轻型 Web 应用]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [用于 .NET 2.7 的 Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=48178

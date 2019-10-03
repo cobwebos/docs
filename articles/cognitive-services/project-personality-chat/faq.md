@@ -9,14 +9,15 @@ ms.service: cognitive-services
 ms.subservice: personality-chat
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: nolachar
+ms.author: nitinme
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: 88dfbb2a547b44de1bb98ca536c7841570a12168
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ROBOTS: NOINDEX
+ms.openlocfilehash: d5f144fa0bf5325bfe2922fdc00c6689d894ff7e
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766829"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258577"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 

@@ -7,13 +7,13 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 75d2930363b6ad1aeace22d7529df04f31deefe5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.date: 09/01/2019
+ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037218"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241248"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>从 Spark 连接到 Azure Cosmos DB Cassandra API
 
@@ -29,7 +29,7 @@ ms.locfileid: "54037218"
 
 * **Cassandra API 的 Azure Cosmos DB 帮助器库：** 除了 Spark 连接器以外，还需要 Azure Cosmos DB 中名为 [azure-cosmos-cassandra-spark-helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) 的另一个库。 此库包含自定义连接工厂和重试策略类。
 
-  Azure Cosmos DB 中的重试策略配置为处理 HTTP 状态代码 429（“请求速率太大”）异常。 Azure Cosmos DB Cassandra API 在 Cassandra 本机协议中将这些异常解释为过载错误，你可以结合退让进行重试。 由于 Azure Cosmos DB 使用预配的吞吐量模型，当传入/传出速率增大时，会发生请求速率限制异常。 重试策略可以防范 Spark 作业出现数据高峰（短暂性地超过针对集合分配的吞吐量）。
+  Azure Cosmos DB 中的重试策略配置为处理 HTTP 状态代码 429（“请求速率太大”）异常。 Azure Cosmos DB Cassandra API 在 Cassandra 本机协议中将这些异常解释为过载错误，你可以结合退让进行重试。 由于 Azure Cosmos DB 使用预配的吞吐量模型，当传入/传出速率增大时，会发生请求速率限制异常。 重试策略可防止 spark 作业受到暂时超出为容器分配的吞吐量的数据高峰。
 
   > [!NOTE] 
   > 重试策略只能防范 Spark 作业出现短暂的高峰。 如果尚未配置用于运行工作负荷的足够 RU，则重试策略不适用，并且重试策略类会再次引发异常。
@@ -46,8 +46,8 @@ ms.locfileid: "54037218"
 | spark.cassandra.connection.connections_per_executor_max  | 无 | 每个执行器的每个节点的最大连接数。 10*n 相当于 n 节点 Cassandra 群集中每个节点可以建立 10 个连接。 因此，如果需要为 5 节点 Cassandra 群集的每个执行器的每个节点建立 5 个连接，则应将此配置设置为 25。 请根据为 Spark 作业配置的并行度或执行器数目修改此值。   |
 | spark.cassandra.output.concurrent.writes  |  100 | 定义每个执行器可以执行的并行写入数。 由于“batch.size.rows”设置为 1，因此请务必相应地增大此值。 请根据工作负荷要实现的并行度或吞吐量修改此值。 |
 | spark.cassandra.concurrent.reads |  512 | 定义每个执行器可以执行的并行读取数。 请根据工作负荷要实现的并行度或吞吐量修改此值  |
-| spark.cassandra.output.throughput_mb_per_sec  | 无 | 定义每个执行器的总写入吞吐量。 可将此参数用作 Spark 作业吞吐量的上限，并根据 Cosmos DB 集合的预配吞吐量修改此参数。   |
-| spark.cassandra.input.reads_per_sec| 无   | 定义每个执行器的总读取吞吐量。 可将此参数用作 Spark 作业吞吐量的上限，并根据 Cosmos DB 集合的预配吞吐量修改此参数。  |
+| spark.cassandra.output.throughput_mb_per_sec  | 无 | 定义每个执行器的总写入吞吐量。 此参数可用作 spark 作业吞吐量的上限，并使其基于 Cosmos 容器的预配吞吐量。   |
+| spark.cassandra.input.reads_per_sec| 无   | 定义每个执行器的总读取吞吐量。 此参数可用作 spark 作业吞吐量的上限，并使其基于 Cosmos 容器的预配吞吐量。  |
 | spark.cassandra.output.batch.grouping.buffer.size |  1000  | 定义每个 Spark 任务的、在发送到 Cassandra API 之前可以存储在内存中的批数 |
 | spark.cassandra.connection.keep_alive_ms | 60000 | 定义在经过多长的时间之后未使用的连接可供使用。 | 
 

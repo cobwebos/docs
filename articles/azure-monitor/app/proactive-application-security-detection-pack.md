@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 16dd381301bdc650022ba5580f96a1733aeb32b0
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
-ms.translationtype: HT
+ms.openlocfilehash: 90d58d1b22e893e922aa0f3770198fc95f539419
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54004284"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64572885"
 ---
 # <a name="application-security-detection-pack-preview"></a>应用程序安全检测包（预览版）
 
@@ -29,7 +29,7 @@ Application Insights 会自动分析应用程序生成的遥测数据并检测�
 检测到的安全问题分三种类型：
 1. 不安全的 URL 访问：正在同时通过 HTTP 和 HTTPS 访问应用程序中的 URL。 通常情况下，接受 HTTPS 请求的 URL 不应当接受 HTTP 请求。 这可能表明应用程序中存在 bug 或安全问题。
 2. 不安全的窗体：应用程序中的窗体（或其他“POST”请求）使用了 HTTP 而非 HTTPS。 使用 HTTP 可能会危害窗体发送的用户数据的安全。
-3. 可疑用户活动：同一用户大约在同一时间在从多个国家/地区访问应用程序。 例如，同一用户在同一小时内从西班牙和美国访问了应用程序。 此检测表明可能有人试图恶意访问你的应用程序。
+3. 可疑用户活动： 应用程序正在从访问多个国家/地区由同一用户在一段时间。 例如，同一用户在同一小时内从西班牙和美国访问了应用程序。 此检测表明可能有人试图恶意访问你的应用程序。
 
 ## <a name="does-my-app-definitely-have-a-security-issue"></a>我的应用是否一定有安全问题？
 否，收到通知并不意味着你的应用一定有问题。 在许多情况下，检测到以上任一状况可能意味着存在安全问题。 但是，检测可能有正常的业务理由并且可以忽略。
@@ -46,5 +46,5 @@ Application Insights 会自动分析应用程序生成的遥测数据并检测�
 
 ## <a name="how-do-i-fix-the-suspicious-user-activity-detection"></a>如何修复“可疑用户活动”检测？
 1. **会审。** 该通知提供表现出可疑行为的不同用户的数量。 这可以帮助你对问题分配优先级。
-2. **划分范围。** 可疑请求是从哪些国家/地区发起的？ 哪个用户最为可疑？ 可以从通知中获取此信息。
-3. **诊断。** 该检测提供可疑用户的列表以及每个用户的国家/地区列表，以帮助你进一步诊断问题。
+2. **划分范围。** 从哪些国家/地区未可疑请求源自？ 哪个用户最为可疑？ 可以从通知中获取此信息。
+3. **诊断。** 该检测提供可疑用户的列表以及为每个用户，以帮助你进一步诊断问题的国家/地区的列表。

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ed18fd985173a4d978edccedc8b6e5cf527f16dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698719"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993384"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -34,7 +34,7 @@ ms.locfileid: "59698719"
 ||||
 
 <a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。   
-<a name="azsqlmanaged">2</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例在 Azure VNet 中使用专用 IP 地址运行，因此需要本地数据网关。   
+<a name="azsqlmanaged">2</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例在使用专用 IP 地址的 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则需要本地数据网关。    
 <a name="databricks">3</a> - 目前不支持使用 Spark 连接器的 Azure Databricks。   
 <a name="gen2">4</a> - 目前不支持 ADLS Gen2。
 
@@ -42,7 +42,7 @@ ms.locfileid: "59698719"
 **提供程序**   
 连接到 Azure 数据源的内存中和 DirectQuery 模型使用用于 SQL Server 的 .NET Framework 数据提供程序。
 
-## <a name="on-premises-data-sources"></a>本地数据源
+## <a name="other-data-sources"></a>其他数据源
 
 从 Azure AS 服务器连接到本地数据源需要使用本地网关。 使用网关时，需要 64 位提供程序。
 
@@ -50,9 +50,9 @@ ms.locfileid: "59698719"
 
 |数据源 | 内存中提供程序 | DirectQuery 提供程序 |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
-| SQL Server 数据仓库 |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
-| Oracle |用于 Oracle 的 Microsoft OLE DB 提供程序、用于 .NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 |
+| SQL Server |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据访问接口 |
+| SQL Server 数据仓库 |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据访问接口 |
+| Oracle | 用于 Oracle 的 OLE DB 提供程序、用于 .NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 |
 | Teradata |用于 Teradata 的 OLE DB 提供程序、用于 .NET 的 Teradata 数据提供程序 |用于 .Net 的 Teradata 数据提供程序 |
 | | | |
 
@@ -76,23 +76,23 @@ ms.locfileid: "59698719"
 |OData 源<sup>[1](#tab1400b)</sup>     |  
 |ODBC 查询     | 
 |OLE DB     |   
-|Postgre SQL 数据库<sup>[1](#tab1400b)</sup>    | 
+|PostgreSQL 数据库<sup>[1](#tab1400b)</sup>    | 
 |Salesforce 对象<sup>[1](#tab1400b)</sup> |  
 |Salesforce 报表<sup>[1](#tab1400b)</sup> |
 |SAP HANA<sup>[1](#tab1400b)</sup>    |  
 |SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
-|SharePoint 列表<sup>[1](#tab1400b)</sup>， <sup> [2](#filesSP)</sup>     |   
+|SharePoint 列表<sup>[1](#tab1400b)</sup>、<sup>[2](#filesSP)</sup>     |   
 |Sybase 数据库     |  
 |TXT 文件  |
 |XML 表<sup>[1](#tab1400b)</sup>    |  
 ||
  
 <a name="tab1400b">1</a> - 仅限表格 1400 和更高模型。   
-<a name="filesSP">2</a> -不支持在本地 SharePoint 中的文件。
+<a name="filesSP">2</a> - 不支持本地 SharePoint 中的文件。
 
 ## <a name="specifying-a-different-provider"></a>指定不同的提供程序
 
-连接到某些数据源时，Azure Analysis Services 中的数据模型可能需要不同的数据提供程序。 在某些情况下，使用本机提供程序（如 SQL Server Native Client (SQLNCLI11)）连接到数据源的表格模型可能返回错误。 如果使用 SQLOLEDB 之外的本机提供程序，可能会看到错误消息：**未注册提供程序“SQLNCLI11.1”**。 或者，在某个 DirectQuery 模型连接到本地数据源时，如果使用了本机提供程序，则可能会看到错误消息：**创建 OLE DB 行集时出错。“LIMIT”附近的语法不正确**。
+连接到某些数据源时，Azure Analysis Services 中的数据模型可能需要不同的数据提供程序。 在某些情况下，使用本机提供程序（如 SQL Server Native Client (SQLNCLI11)）连接到数据源的表格模型可能返回错误。 如果使用 SQLOLEDB 之外的本机提供程序，可能会看到错误消息：**未注册提供程序“SQLNCLI11.1”** 。 或者，在某个 DirectQuery 模型连接到本地数据源时，如果使用了本机提供程序，则可能会看到错误消息：**创建 OLE DB 行集时出错。“LIMIT”附近的语法不正确**。
 
 将本地 SQL Server Analysis Services 表格模型迁移到 Azure Analysis Services 时，可能需要更改提供程序。
 
@@ -113,6 +113,10 @@ ms.locfileid: "59698719"
 对于云数据源：
 
 * 如果使用 SQL 身份验证，则模拟应为服务帐户。
+
+## <a name="oauth-credentials"></a>OAuth 凭据
+
+对于1400和更高兼容级别的表格模型，Azure SQL 数据库、Azure SQL 数据仓库、Dynamics 365 和 SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 SSMS 设置凭据。
 
 ## <a name="next-steps"></a>后续步骤
 [本地网关](analysis-services-gateway.md)   

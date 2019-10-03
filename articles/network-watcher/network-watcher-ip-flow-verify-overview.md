@@ -3,8 +3,8 @@ title: Azure 网络观察程序中的“IP 流验证”简介 | Microsoft 文档
 description: 此页概述了网络观察程序“IP 流验证”功能
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: d352fb2d-4b4f-4ac4-9c2e-1cfccf0e7e03
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2017
-ms.author: jdial
-ms.openlocfilehash: 88cb7e2cd04d13ade5c581a1ff2dc09669d89ab2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.author: kumud
+ms.openlocfilehash: 5c34fd2b6d354f594ed153647c1bed700566fad6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837998"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64709591"
 ---
 # <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Azure 网络观察程序中的“IP 流验证”简介
 
@@ -29,7 +29,7 @@ IP 流验证查看应用于网络接口的所有网络安全组 (NSG) 的规则�
 
 需要在要运行“IP 流验证”的所有区域中创建网络观察程序实例。 网络观察程序是一个区域性服务，只能针对同一区域中的资源运行。 所使用的实例不会影响“IP 流验证”的结果，因为仍将返回与 NIC 或子网关联的任何路由。
 
-![1][1]
+![第][1]
 
 ## <a name="next-steps"></a>后续步骤
 

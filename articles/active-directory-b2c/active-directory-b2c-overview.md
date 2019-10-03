@@ -2,26 +2,26 @@
 title: 什么是 Azure Active Directory B2C？ | Microsoft Docs
 description: 了解如何使用 Azure Active Directory B2C 在应用程序中创建和管理标识体验，例如注册/登录和个人资料管理。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 02/20/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9e01ba8ae53dbcca686a9844600a5df416a685ae
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: ca636079439f811a887d16b627473e7d73930799
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455494"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065705"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>什么是 Azure Active Directory B2C？
 
-Azure Active Directory (Azure AD) B2C 是一个标识管理服务。 使用此服务可以自定义和控制用户如何安全地与 Web、桌面、移动或单页应用程序交互。 用户可以使用 Azure AD B2C 注册、登录、重置密码和编辑个人资料。 Azure AD B2C 实现某种形式的 OpenID Connect 和 OAuth 2.0 协议。 这些协议的实现中的重要密钥是安全令牌及其声明，用于提供对资源的安全访问。
+Azure Active Directory B2C (Azure AD B2C) 是一种企业对消费者标识管理服务。 使用此服务可以自定义和控制用户如何安全地与 Web、桌面、移动或单页应用程序交互。 用户可以使用 Azure AD B2C 注册、登录、重置密码和编辑个人资料。 Azure AD B2C 实现某种形式的 OpenID Connect 和 OAuth 2.0 协议。 这些协议的实现中的重要密钥是安全令牌及其声明，用于提供对资源的安全访问。
 
-用户旅程是用于指定策略的请求，该策略控制用户和应用程序在与 Azure AD B2C 交互时的行为。 可通过两种途径在 Azure AD B2C 中定义用户旅程。 
+用户旅程是用于指定策略的请求，该策略控制用户和应用程序在与 Azure AD B2C 交互时的行为。  可通过两种途径在 Azure AD B2C 中定义用户旅程。
 
 如果你是具备或不具备标识专业知识的应用程序开发人员，可以选择使用 Azure 门户定义通用的标识用户流。 如果你是标识专家、系统集成商、顾问或者内部标识团队的成员，能够熟练使用 OpenID Connect 流，并且了解标识提供者和基于声明的身份验证，则可以选择基于 XML 的自定义策略。
 
@@ -29,13 +29,13 @@ Azure Active Directory (Azure AD) B2C 是一个标识管理服务。 使用此�
 
 ## <a name="protocols-and-tokens"></a>协议和令牌
 
-Azure AD B2C 支持对用户旅程使用 [OpenID Connect 和 OAuth 2.0 协议](active-directory-b2c-reference-protocols.md)。 在 OpenID Connect 的 Azure AD B2C 实现中，应用程序通过向 Azure AD B2C 发出身份验证请求，来启动此用户旅程。 
+Azure AD B2C 支持对用户旅程使用 [OpenID Connect 和 OAuth 2.0 协议](active-directory-b2c-reference-protocols.md)。 在 OpenID Connect 的 Azure AD B2C 实现中，应用程序通过向 Azure AD B2C 发出身份验证请求，来启动此用户旅程。
 
 向 Azure AD B2C 发出请求后会获得一个安全令牌，例如 [ID 令牌或访问令牌](active-directory-b2c-reference-tokens.md)。 此安全令牌定义用户的标识。 令牌是从 Azure AD B2C 终结点（例如 `/token` 或 `/authorize` 终结点）接收的。 通过这些令牌，可以访问用于验证标识以及允许访问安全资源的声明。
 
 ## <a name="tenants-and-applications"></a>租户和应用程序
 
-在 Azure AD B2C 中，租户表示组织，它是用户的目录。 每个 Azure AD B2C 租户都是独特的，独立于其他 Azure AD B2C 租户。 你可能已有一个 Azure Active Directory 租户，Azure AD B2C 租户是不同的租户。 租户包含已注册使用你的应用程序的用户的信息。 例如，密码、个人资料数据和权限。 有关详细信息，请参阅[教程：创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)中的步骤创建一个。
+在 Azure AD B2C 中，租户表示组织，它是用户的目录。  每个 Azure AD B2C 租户都是独特的，独立于其他 Azure AD B2C 租户。 你可能已有一个 Azure Active Directory 租户，Azure AD B2C 租户是不同的租户。 租户包含已注册使用你的应用程序的用户的信息。 例如，密码、个人资料数据和权限。 有关详细信息，请参阅[教程：创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)中的步骤创建一个。
 
 在将应用程序配置为使用 Azure AD B2C 之前，首先需要使用 Azure 门户将它注册到租户中。 注册过程将收集一些值并将其分配给应用程序。 这些值包含用于唯一标识应用程序的应用程序 ID，以及用于将响应定向回到该应用程序的重定向 URI。
 
@@ -62,17 +62,17 @@ Azure AD B2C 支持对用户旅程使用 [OpenID Connect 和 OAuth 2.0 协议](a
 - 页面的外观
 - 返回给应用程序的信息
 
-自定义策略是在 Azure AD B2C 租户中定义[标识体验框架](trustframeworkpolicy.md)行为的配置文件。 标识体验框架是建立多方信任和完成用户旅程中的步骤的底层平台。 
+自定义策略是在 Azure AD B2C 租户中定义[标识体验框架](trustframeworkpolicy.md)行为的配置文件。 标识体验框架是建立多方信任和完成用户旅程中的步骤的底层平台。
 
-可以更改自定义策略以完成大量任务。 自定义策略是一个或多个采用 XML 格式的文件，这些文件在分层链中相互引用。 自定义策略可以使用[初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)来实现常见的标识任务。 
+可以更改自定义策略以完成大量任务。 自定义策略是一个或多个采用 XML 格式的文件，这些文件在分层链中相互引用。 自定义策略可以使用[初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)来实现常见的标识任务。
 
 可根据需要在 Azure AD B2C 租户中使用不同类型的自定义策略或用户流，并可在不同的应用程序之间重复使用这些策略或用户流。 由于这种灵活性，只需对代码做出极少量的更改或根本不需要更改，即可定义和修改用户标识体验。 可以通过在 HTTP 身份验证请求中添加特殊的查询参数来使用策略。 若要创建自己的自定义策略，请参阅 [Azure Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)。
 
-## <a name="identity-providers"></a>标识提供者 
+## <a name="identity-providers"></a>标识提供者
 
-在应用程序中，不妨允许用户使用不同的标识提供程序登录。 标识提供程序创建、维护和管理标识信息，同时向应用程序提供身份验证服务。 可以使用 Azure 门户添加 Azure AD B2C 支持的标识提供程序。 
+在应用程序中，不妨允许用户使用不同的标识提供程序登录。 标识提供程序  创建、维护和管理标识信息，同时向应用程序提供身份验证服务。 可以使用 Azure 门户添加 Azure AD B2C 支持的标识提供程序。
 
-通常在应用程序中只使用一个标识提供者，但可以视需要添加更多标识提供者。 若要在 Azure AD B2C 租户中配置标识提供者，请先在标识提供者开发人员站点上创建一个应用程序，然后记录所创建的标识提供者应用程序中的应用程序标识符或客户端标识符，以及密码或客户端机密。 然后，使用此标识符和密码来配置应用程序。 
+通常在应用程序中只使用一个标识提供者，但可以视需要添加更多标识提供者。 若要在 Azure AD B2C 租户中配置标识提供者，请先在标识提供者开发人员站点上创建一个应用程序，然后记录所创建的标识提供者应用程序中的应用程序标识符或客户端标识符，以及密码或客户端机密。 然后，使用此标识符和密码来配置应用程序。
 
 以下文章介绍了将某些常见标识提供者添加到用户流的步骤：
 
@@ -90,7 +90,7 @@ Azure AD B2C 支持对用户旅程使用 [OpenID Connect 和 OAuth 2.0 协议](a
 
 ## <a name="page-customization"></a>页面自定义
 
-可以控制呈现给用户旅程中的客户的大部分 HTML 和 CSS 内容。 使用页面自定义可对任何自定义策略或用户流的外观进行自定义。 可以通过此自定义功能在应用程序与 Azure AD B2C 之间保持品牌和视觉一致性。 
+可以控制呈现给用户旅程中的客户的大部分 HTML 和 CSS 内容。 使用页面自定义可对任何自定义策略或用户流的外观进行自定义。 可以通过此自定义功能在应用程序与 Azure AD B2C 之间保持品牌和视觉一致性。
 
 Azure AD B2C 在用户的浏览器中运行代码，并使用称为“跨域资源共享”(CORS) 的新式方法。 首先，在包含自定义 HTML 内容的策略中指定 URL。 Azure AD B2C 将用户界面元素与从 URL 加载的 HTML 内容合并，然后向用户显示页面。
 
@@ -121,7 +121,7 @@ Azure AD B2C 在用户的浏览器中运行代码，并使用称为“跨域资�
 
 ### <a name="javascript"></a>JavaScript
 
-可将自己的 JavaScript 客户端代码添加到 Azure AD B2C 中的应用程序。 若要在应用程序中设置 JavaScript，可以定义[页面合同](page-contract.md)，并在用户流或自定义策略中启用 [JavaScript](javascript-samples.md)。
+可将自己的 JavaScript 客户端代码添加到 Azure AD B2C 中的应用程序。 若要在应用程序中设置 JavaScript，可以定义[页面布局](page-layout.md)，并在用户流或自定义策略中启用 [JavaScript](javascript-samples.md)。
 
 ### <a name="user-accounts"></a>用户帐户
 

@@ -9,31 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 06/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 532701eb2c5e92e5443f69c464b561d6fa242598
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: b0a71e8b3ffff822521a23aafd6764bcce9bd4d4
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617625"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303930"
 ---
 # <a name="encoding-with-media-services"></a>使用媒体服务进行编码
 
-Azure 媒体服务，可将高质量的数字媒体文件编码为自适应比特率 MP4 文件，因此可在各种浏览器和设备上播放内容。 成功的媒体服务编码作业创建一个输出资产的一组自适应比特率 mp4 和流式处理配置文件。 配置文件包括.ism、.ismc、.mpi 和其他不应修改的文件。 完成编码作业后，可以充分利用[动态打包](dynamic-packaging-overview.md)和启动流式处理。
+在媒体服务中的术语编码适用于转换包含数字视频和/或从一种标准格式到另一个，、 目的在于 （a） 减小文件的大小和/或 （b） 生成与兼容的格式的音频文件的过程广泛的设备和应用程序。 此过程也称为视频压缩或转码。 请参阅[数据压缩](https://en.wikipedia.org/wiki/Data_compression)并[什么是编码和转码？](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx)有关概念的进一步讨论。
 
-若要在输出中进行视频播放的客户端可用的资产，则必须创建**流式处理定位符**和生成流 Url。 然后，你的客户端根据清单中指定的格式，它们具有选定的协议接收流。
+视频通常情况下传递到设备和应用程序通过[渐进式下载](https://en.wikipedia.org/wiki/Progressive_download)或通过[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)。 
 
-下图显示了按需流式处理与动态打包工作流。
+* 若要通过渐进式下载传送，您可以使用 Azure 媒体服务将数字媒体文件 （夹层） 转换到[MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14)文件，其中包含已编码使用的视频[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)编解码器，和使用已编码的音频[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)编解码器。 此 MP4 文件写入到你的存储帐户中的资产。 可以使用 Azure 存储 Api 或 Sdk (例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md)， [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md)，或[.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) 直接下载该文件。 如果您创建的输出资产的特定容器名称在存储中，使用该位置。 否则，可以使用媒体服务添加到[列出资产容器 Url](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)。 
+* 若要准备的自适应比特率流式处理交付内容，需要将夹层文件 （从高到低） 的多个比特率进行编码。 若要确保质量的正常转换，如降低比特率，因此是视频的分辨率。 这会导致所谓的编码阶梯 – 表的分辨率和比特率 (请参阅[自动生成自适应比特率阶梯](autogen-bitrate-ladder.md))。 您可以使用媒体服务在多个比特率 – 在此过程中将夹层文件编码，你将收到一组 MP4 文件和关联流式处理的配置文件，写入到你的存储帐户中的资产。 然后，可以使用[动态打包](dynamic-packaging-overview.md)媒体服务中的功能将通过流式处理协议，如视频[MPEG DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP)并[HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)。 这需要你创建[流式处理定位符](streaming-locators-concept.md)和生成流 Url 对应于受支持的协议，然后可以传递给设备/应用程序基于其功能关闭。
 
-![动态打包](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+下图显示了按需编码使用动态打包的工作流。
+
+![动态打包](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 本主题介绍如何使用媒体服务 v3 对内容进行编码。
 
 ## <a name="transforms-and-jobs"></a>转换和作业
 
-若要使用媒体服务 v3 进行编码，需创建[转换](https://docs.microsoft.com/rest/api/media/transforms)和[作业](https://docs.microsoft.com/rest/api/media/jobs)。 转换用于定义编码设置和输出的配方，作业则是该配方的一个实例。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
+若要使用媒体服务 v3 进行编码，需创建[转换](https://docs.microsoft.com/rest/api/media/transforms)和[作业](https://docs.microsoft.com/rest/api/media/jobs)。 转换可定义一个方案，用于在编码的设置和输出;作业是该方案的实例。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
 
 使用媒体服务进行编码时，可以使用预设来指示编码器应如何处理输入媒体文件。 例如，可以在编码内容中指定所需的视频分辨率和/或音频信道数量。 
 
@@ -44,11 +47,46 @@ Azure 媒体服务，可将高质量的数字媒体文件编码为自适应比�
 > [!NOTE]
 > 不应修改或删除该 MPI 文件，也不应在存在（或不存在）此类文件的情况下采用服务中的任何依赖项。
 
+### <a name="creating-job-input-from-an-https-url"></a>从 HTTPS URL 创建作业输入
+
+当提交作业来处理视频时，您必须告诉在何处查找输入的视频的 Media Services。 其中一个选项是指定为作业输入的 HTTPS URL。 目前，媒体服务 v3 不支持分块的传输编码通过 HTTPS Url。 
+
+#### <a name="examples"></a>示例
+
+* [从.NET 使用 HTTPS URL 编码](stream-files-dotnet-quickstart.md)
+* [从与其余部分的 HTTPS URL 编码](stream-files-tutorial-with-rest.md)
+* [从 CLI 使用 HTTPS URL 编码](stream-files-cli-quickstart.md)
+* [从与 Node.js 配合使用 HTTPS URL 编码](stream-files-nodejs-quickstart.md)
+
+### <a name="creating-job-input-from-a-local-file"></a>从本地文件创建作业输入
+
+可将输入视频存储为媒体服务资产，这种情况下会基于文件（存储在本地或 Azure Blob 存储中）创建输入资产。 
+
+#### <a name="examples"></a>示例
+
+[对本地文件使用内置的预设进行编码](job-input-from-local-file-how-to.md)
+
+### <a name="creating-job-input-with-subclipping"></a>使用子剪辑创建作业输入
+
+当对视频进行编码，可以指定还剪裁或剪辑的源文件和生成具有所需的部分输入视频的输出。 此功能适用于任何[转换](https://docs.microsoft.com/rest/api/media/transforms)生成使用[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)预设，或者[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)预设。 
+
+您可以指定创建[作业](https://docs.microsoft.com/rest/api/media/jobs/create)单个剪辑视频按需或实时存档 （记录事件） 的使用。 作业输入可能是一项资产或 HTTPS URL。
+
+> [!TIP]
+> 如果你想要流式视频的 sublip 传输而无需 reencoding 视频，请考虑使用[预筛选与动态打包程序清单](filters-dynamic-manifest-overview.md)。
+
+#### <a name="examples"></a>示例
+
+请参阅示例：
+
+* [子剪辑使用.NET 的视频](subclip-video-dotnet-howto.md)
+* [子剪辑与其余部分的视频](subclip-video-rest-howto.md)
+
 ## <a name="built-in-presets"></a>内置预设
 
 媒体服务当前支持以下内置编码预设：  
 
-### <a name="builtinstandardencoderpreset-preset"></a>BuiltInStandardEncoderPreset 预设
+### <a name="builtinstandardencoderpreset"></a>BuiltInStandardEncoderPreset
 
 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 用于设置内置预设，以便使用标准编码器对输入视频进行编码。 
 
@@ -68,7 +106,7 @@ Azure 媒体服务，可将高质量的数字媒体文件编码为自适应比�
 
 若要了解如何使用预设，请查看[正在上传、 编码和流式处理文件](stream-files-tutorial-with-api.md)。
 
-### <a name="standardencoderpreset-preset"></a>StandardEncoderPreset 预设
+### <a name="standardencoderpreset"></a>StandardEncoderPreset
 
 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 介绍使用标准编码器对输入视频进行编码时要使用的设置。 自定义转换预设时使用此预设。 
 
@@ -79,21 +117,31 @@ Azure 媒体服务，可将高质量的数字媒体文件编码为自适应比�
 - 高度和宽度 AVC 内容上的所有值必须都是 4 的倍数。
 - 在 Azure 媒体服务 v3 所有编码比特率是比特 / 秒。 这是不同于与我们使用千比特/秒为单位的 v2 Api 的预设。 例如，如果在 v2 中的比特率 （千比特/秒） 已指定为 128，v3 中它将设置为 128000 （比特/秒）。
 
-#### <a name="examples"></a>示例
+### <a name="customizing-presets"></a>自定义预设
 
 媒体服务完全支持自定义预设中的所有值，可满足特定的编码需求和要求。 有关演示如何自定义编码器预设的示例，请参阅：
+
+#### <a name="examples"></a>示例
 
 - [自定义预设使用.NET](customize-encoder-presets-how-to.md)
 - [自定义预设使用 CLI](custom-preset-cli-howto.md)
 - [自定义预设使用 REST](custom-preset-rest-howto.md)
 
+## <a name="preset-schema"></a>预设的架构
+
+在媒体服务 v3 预设是 API 本身中的强类型化的实体。 可以找到这些对象中的"架构"定义[开放 API 规范 （或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)。 你还可以查看预设的定义 (如**StandardEncoderPreset**) 中[REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)， [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) （或其他媒体服务 v3 SDK 参考文档）。
+
 ## <a name="scaling-encoding-in-v3"></a>在 v3 中缩放编码
 
 若要缩放媒体处理，请参阅[使用 CLI 缩放](media-reserved-units-cli-how-to.md)。
 
+## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
+
+查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
+
 ## <a name="next-steps"></a>后续步骤
 
+* [使用媒体服务上传、编码和流式传输](stream-files-tutorial-with-api.md)
 * [从 HTTPS URL 使用内置的预设编码](job-input-from-http-how-to.md)
 * [对本地文件使用内置的预设进行编码](job-input-from-local-file-how-to.md)
 * [生成自定义预设，以满足特定的方案或设备要求](customize-encoder-presets-how-to.md)
-* [使用媒体服务上传、编码和流式传输](stream-files-tutorial-with-api.md)

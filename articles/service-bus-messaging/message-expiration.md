@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 1ea645ee53f91a62bd49fb1da0d44e2962708b88
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: 109ecc671b43365c433a626ff8d9fe55a5a626b5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856955"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310292"
 ---
 # <a name="message-expiration-time-to-live"></a>消息过期时间（生存时间）
 
@@ -26,7 +26,7 @@ ms.locfileid: "54856955"
 
 对于经常在应用程序或应用程序部件部分运行轮次的上下文中使用队列与主题的开发和测试环境，还需要对滞留的测试消息自动进行垃圾回收，使下一轮测试运行能够从新启动。
 
-可以通过设置 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 系统属性（指定相对持续时间）来控制任何一条消息的过期时间。 在实体中将消息排队后，过期时间即成为一个绝对时刻。 此时，[ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) 属性取值为 [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)。 当任何客户端都没有在主动侦听时，不强制实施中转消息的生存时间 (TTL) 设置。
+可以通过设置 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 系统属性（指定相对持续时间）来控制任何一条消息的过期时间。 在实体中将消息排队后，过期时间即成为一个绝对时刻。 此时，[ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) 属性取值为 [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)。 如果没有正在进行的客户端主动侦听, 则不会强制执行对中转消息的生存时间 (TTL) 设置。
 
 在 **ExpiresAtUtc** 时刻过后，消息不可检索。 过期时间不会影响当前已锁定等待传送的消息；这些消息仍会按正常方式得到处理。 如果锁已过期或者消息被丢弃，则过期时间立即生效。
 
@@ -35,6 +35,11 @@ ms.locfileid: "54856955"
 ## <a name="entity-level-expiration"></a>实体级过期时间
 
 发送到队列或主题中的所有消息附带一个默认的过期时间，该时间是使用 [defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) 属性在实体级别设置的，或者也可以在创建期间在门户中设置，并且以后可以调整。 默认过期时间是针对发送到未显式设置 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 的实体的所有消息使用的。 默认过期时间还充当 **TimeToLive** 值的上限。 **TimeToLive** 过期时间长于默认值的消息在排队之前，会以无提示方式调整为 **defaultMessageTimeToLive** 值。
+
+> [!NOTE]
+> 如果没有另外指定, 则中转消息的默认[TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)值为 " [Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) "。
+>
+> 对于消息传递实体 (队列和主题), 默认的过期时间也是[最大](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue)为服务总线标准级别和高级层。  对于基本层, 默认的过期时间为14天。
 
 可以选择性地通过设置 [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) 属性或者在门户中选中相应的框，将已过期的消息移到[死信队列](service-bus-dead-letter-queues.md)。 如果保持禁用该选项，将会丢弃已过期的消息。 可以通过评估由中转站存储在用户属性部分中的 [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) 属性（在本例中，该值为 [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq)），将已移到死信队列的已过期消息与其他死信消息区分开来。
 
@@ -53,7 +58,7 @@ ms.locfileid: "54856955"
 
 此功能是使用 [autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) 属性启用的。 此属性设置为自动删除某个实体之前，该实体必须处于空闲（未使用）状态的持续时间。 此属性的最小值为 5。
  
-必须通过 Azure 资源管理器操作或 .NET Framework 客户端 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 设置此 autoDeleteOnIdle 属性。 不能在门户中设置此属性。
+必须通过 Azure 资源管理器操作或 .NET Framework 客户端 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 设置此  autoDeleteOnIdle 属性。 不能在门户中设置此属性。
 
 ## <a name="idleness"></a>空闲
 
@@ -69,7 +74,7 @@ ms.locfileid: "54856955"
     - 无发送  
     - 无主题更新  
     - 无计划的消息 
-- 订阅
+- Subscriptions
     - 无接收  
     - 无订阅更新  
     - 无添加到订阅的新规则  

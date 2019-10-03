@@ -1,42 +1,99 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: a42db3dd4af0e02e001b3a4fbcc5f3b126606a6f
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239752"
-documentType: LandingData
-title: Azure Blockchain Workbench 文档
+### YamlMime:Landing
+title: Azure Blockchain Workbench 预览版文档
+summary: 了解如何创建区块链应用程序。 教程、API 参考和其他文档介绍了如何部署 Azure Blockchain Workbench 并在 Azure 上创建和管理区块链应用程序。
 metadata:
-  title: Azure Blockchain Workbench 文档 - 教程和 API 参考 | Microsoft Docs
+  title: Azure Blockchain Workbench 预览版文档 - 教程和 API 参考
   description: 了解如何创建区块链应用程序。 教程、API 参考和其他文档介绍了如何部署 Azure Blockchain Workbench 并在 Azure 上创建和管理区块链应用程序。
-  services: blockchain-workbench
-  author: patricka
-  manager: femila
-  ms.service: blockchain-workbench
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  services: azure-blockchain
+  ms.service: azure-blockchain
   ms.topic: landing-page
-  ms.date: 04/17/2018
+  author: PatAltimore
   ms.author: patricka
-abstract:
-  description: 了解如何创建区块链应用程序。 教程、API 参考和其他文档介绍了如何部署 Azure Blockchain Workbench 以在 Azure 上创建并使用区块链应用程序。
-sections:
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何在 Azure 上部署、创建和使用区块链应用程序。
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="/azure/blockchain-workbench/blockchain-workbench-deploy">部署 Azure Blockchain Workbench</a>
-    - html: <a href="/azure/blockchain-workbench/blockchain-workbench-create-app">创建区块链应用</a>
-    - html: <a href="/azure/blockchain-workbench/blockchain-workbench-use">使用区块链应用</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/azure-blockchain-workbench">REST API</a></p>
+  ms.date: 09/05/2019
+  ms.openlocfilehash: cc493ae3813cc1c53670b8f6ea46f915d7f9efee
+  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70845024"
+landingContent:
+- title: 关于 Azure Blockchain Workbench
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Blockchain Workbench？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 体系结构
+      url: architecture.md
+  - linkListType: video
+    links:
+    - text: Azure Blockchain Workbench 简介
+      url: https://channel9.msdn.com/Shows/Blocktalk/Introduction-to-Azure-Blockchain-Workbench
+- title: 入门
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 部署 Azure Blockchain Workbench
+      url: deploy.md
+  - linkListType: tutorial
+    links:
+    - text: 创建 Blockchain Workbench 应用程序
+      url: create-app.md
+    - text: 使用 Blockchain Workbench 应用程序
+      url: use.md
+  - linkListType: video
+    links:
+    - text: 构建你的第一个 Azure Blockchain Workbench 应用程序
+      url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
+- title: 示例合约
+  linkLists:
+  - linkListType: download
+    links:
+    - text: 简单市场
+      url: https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/simple-marketplace
+    - text: 基本来源
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/basic-provenance
+    - text: 数字保险箱
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/digital-locker
+    - text: 冷藏运输
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation
+    - text: 资产转移
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer
+    - text: 具有多个工作流的高级市场
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/bazaar-item-listing
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理应用程序用户
+      url: manage-users.md
+    - text: 应用程序配置
+      url: configuration.md
+    - text: 应用程序版本控制
+      url: version-app.md
+- title: 集成
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 智能合约集成模式
+      url: integration-patterns.md
+  - linkListType: how-to-guide
+    links:
+    - text: 连接到链下数据库
+      url: getdb-details.md
+    - text: 使用 Excel 中的数据
+      url: data-excel.md
+    - text: 使用 Power BI 中的数据
+      url: data-powerbi.md
+    - text: 使用 SQL Management Studio 中的数据
+      url: data-sql-management-studio.md
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: use-api.md
+    - text: 消息传送 API
+      url: messages-overview.md
+    - text: 数据库视图
+      url: database-views.md

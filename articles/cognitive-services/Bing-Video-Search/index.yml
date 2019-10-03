@@ -2,18 +2,17 @@
 documentType: LandingData
 title: 必应视频搜索 API 文档
 metadata:
-  title: 必应视频搜索 API 文档 - 教程、快速入门和 API 参考 | Microsoft Docs
+  title: 必应视频搜索 API 文档 - 教程、快速入门和 API 参考
+  titleSuffix: Azure Cognitive Services
   description: 了解如何使用必应视频搜索 API 在 Web 中搜索并查找视频。
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-video-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/31/2019
-  ms.author: v-gedod
+  ms.date: 07/25/2019
+  ms.author: aahi
 abstract:
   description: 必应视频搜索 API 可用于将必应的视频搜索功能集成到应用程序中。 通过向此 API 发送搜索查询，可以获取并显示与 bing.com/videos 类似的相关高质量视频。
 sections:
@@ -90,9 +89,9 @@ sections:
         className: cardsD
         items:
           - title: API
-            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference">必应视频搜索 API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference/">必应视频搜索 API v5</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference">必应视频搜索 API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v5-reference/">必应视频搜索 API v5</a></p>'
           - title: SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvideo?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-videosearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/videosearch?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/videosearch">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/videosearch?view=azure-java-stable">Java</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvideosearch?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-videosearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/videosearch?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/videosearch">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvideosearch?view=azure-java-stable">Java</a></p>'
           - title: PowerShell
             html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
           - title: CLI

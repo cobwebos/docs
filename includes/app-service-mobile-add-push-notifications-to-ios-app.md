@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 87514a139c097ebec3804c8c5ff82a1a21ccdd8c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.openlocfilehash: a53d2b259bc4ece12c4ccb1cf47409cd2f0af86f
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42809675"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173635"
 ---
 **Objective-C**：
 
@@ -99,7 +99,7 @@ ms.locfileid: "42809675"
 
 **Swift**：
 
-1. 将文件“ClientManager.swift”与以下内容一起添加。 用 Azure 移动应用后端的 URL 替换 *%AppUrl%*。
+1. 将文件“ClientManager.swift”与以下内容一起添加。  用 Azure 移动应用后端的 URL 替换 *%AppUrl%* 。
 
     ```swift
     class ClientManager {

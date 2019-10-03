@@ -1,9 +1,9 @@
 ---
-title: 将 PIM 的 Azure Active Directory 中的 Azure 资源角色分配 |Microsoft Docs
+title: 在 PIM 中分配 Azure 资源角色 - Azure Active Directory | Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中分配 Azure 资源角色。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 610aeec9e4c40d0aad0c28f02697e2cf01edbe4a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e2850f17c96ef031f9e1b8e11558ab369e4175b0
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493975"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804282"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>在 PIM 中分配 Azure 资源角色
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管理内置的 Azure 资源角色，以及自定义角色，包括 （但不是限于）：
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管理内置的 Azure 资源角色以及自定义角色，包括但不限于：
 
 - 所有者
 - 用户访问管理员
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管
 - 安全管理器等等
 
 > [!NOTE]
-> 已分配到“所有者”或“用户访问管理员”角色的用户或组成员，以及在 Azure AD 中启用订阅管理的全局管理员都属于资源管理员。 这些管理员可以对 Azure 资源使用 PIM 来分配角色、配置角色设置，以及审查访问权限。 查看 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)列表。
+> 已分配到“所有者”或“用户访问管理员”角色的用户或组成员，以及在 Azure AD 中启用订阅管理的全局管理员都属于资源管理员。 这些管理员可以对 Azure 资源使用 PIM 来分配角色、配置角色设置，以及审查访问权限。 也就是说，如果用户没有“资源管理员”角色，则该帐户将不具有管理资源 PIM 的权限。 查看 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)列表。
 
 ## <a name="assign-a-role"></a>分配角色
 
@@ -129,4 +129,4 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管
 
 - [在 PIM 中扩展或续订 Azure 资源角色](pim-resource-roles-renew-extend.md)
 - [在 PIM 中配置 Azure 资源角色设置](pim-resource-roles-configure-role-settings.md)
-- [将 Azure AD PIM 中的角色分配](pim-how-to-add-role-to-user.md)
+- [在 PIM 中分配 Azure AD 角色](pim-how-to-add-role-to-user.md)

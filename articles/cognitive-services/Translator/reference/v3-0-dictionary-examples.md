@@ -1,21 +1,21 @@
 ---
 title: 文本翻译 API 字典示例方法
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用文本翻译 API 字典示例方法。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: d48349b802023d9a05bf14898440837b7793715d
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.author: swmachan
+ms.openlocfilehash: 419e11862b2c584686922cfc8d1db72ee4751a03
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578256"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934036"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>文本翻译 API 3.0：字典示例
 
@@ -123,15 +123,11 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 此示例演示如何查找由英语术语 `fly` 及其西班牙语翻译 `volar` 组成的配对的示例。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"
 ```
 
----
-
-响应正文是（为清楚起见已缩写）：
+（为清楚起见已缩写）响应正文是：
 
 ```
 [

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791536"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60242103"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>用户隐私和 Azure AD 无缝单一登录
 
@@ -69,5 +69,5 @@ Foreach ($file in $Files) {
 ## <a name="next-steps"></a>后续步骤
 
 * [查看信任中心上的 Microsoft 隐私策略](https://www.microsoft.com/trustcenter)
-  - [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
-  - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+  - [故障排除  ](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
+  - [UserVoice  ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

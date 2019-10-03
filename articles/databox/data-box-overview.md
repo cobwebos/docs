@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/18/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: a81eef9e3f7892afa1d64befec35852381ffe17b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117738"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067006"
 ---
 # <a name="what-is-azure-data-box"></a>什么是 Azure Data Box？
 
@@ -109,13 +109,9 @@ Data Box 包括以下组件：
 
 ## <a name="region-availability"></a>上市区域
 
-Data Box 可以根据部署服务的区域、设备运送到的国家/地区以及传输数据的目标 Azure 存储帐户来传输数据。 
+Data Box 可以根据部署服务的区域、设备的发货国家/地区以及传输数据的目标 Azure 存储帐户传输数据。 
 
-- **服务可用性** - 对于此版本，Data Box 服务可在以下区域获得：
-    - 美国的所有区域 - 美国中西部、美国西部 2、美国西部、美国中南部、美国中部、美国中北部、美国东部和美国东部 2。
-    - 欧盟 - 西欧和北欧。
-    - 英国 - 英国南部和英国西部。
-    - 法国 - 法国中部和法国南部。
+- **服务可用性** - 有关区域可用性的信息，请转到 [Azure 可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 Data Box 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。
 
 - **目标存储帐户** - 存储数据的存储帐户可在服务可用的所有 Azure 区域中获得。  
 

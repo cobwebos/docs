@@ -1,5 +1,5 @@
 ---
-title: 文本完全匹配
+title: 教程：文本完全匹配 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 获取与项的预定义列表匹配的数据。 列表中的每个项可以有也是完全匹配的同义词
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 9083227dd81dca219666e07b70f487069413855d
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 25882f2aaa5d32dfb594d5f8fdb9cdc46f2ad958
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521265"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307617"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>教程：从话语中获取文本完全匹配的数据
 
@@ -57,9 +57,9 @@ ms.locfileid: "59521265"
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. 选择“创建新意向”。 
+2. 选择“创建新意向”  。 
 
-3. 在弹出对话框中输入 `TransferEmployeeToDepartment`，然后选择“完成”。 
+3. 在弹出对话框中输入 `TransferEmployeeToDepartment`，然后选择“完成”。  
 
     ![“创建新意向”对话框的屏幕截图](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-ddl.png)
 
@@ -84,9 +84,9 @@ ms.locfileid: "59521265"
 
 ## <a name="department-list-entity"></a>部门列表实体
 
-“TransferEmployeeToDepartment”意向有示例话语以后，LUIS 需了解什么是部门。 
+“TransferEmployeeToDepartment”意向有示例话语以后，LUIS 需了解什么是部门  。 
 
-每个项的主规范名称是部门名称。 每个规范名称的同义词的示例如下： 
+每个项的主规范名称是部门名称  。 每个规范名称的同义词的示例如下： 
 
 |规范名称|同义词|
 |--|--|
@@ -98,21 +98,17 @@ ms.locfileid: "59521265"
 |内部销售|isale<br>insale<br>1414|
 |研究和开发|R&D<br>1234|
 
-1. 在左侧面板中选择“实体”。
+1. 在左侧面板中选择“实体”。 
 
-1. 选择“创建新实体”。
+1. 选择“创建新实体”  。
 
-1. 在实体弹出对话框中，输入 `Department` 作为实体名称，输入“列表”作为实体类型。 选择“完成”。  
+1. 在实体弹出对话框中，输入 `Department` 作为实体名称，输入“列表”作为实体类型。  选择“完成”  。  
 
     [![创建新实体弹出项对话框的屏幕截图](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Screenshot of creating new entity pop-up dialog")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
 1. 在“部门”实体页上，输入 `Accounting` 作为新值。
 
-    [![输入值的屏幕截图](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Screenshot of entering value")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
-
 1. 对于同义词，请从上表中添加同义词。
-
-    [![输入同义词的屏幕截图](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Screenshot of entering synonyms")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
 1. 继续添加所有规范名称及其同义词。 
 

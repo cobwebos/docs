@@ -10,16 +10,15 @@ ms.assetid: 2e3b73ef-d223-44fe-9280-c3af3fd4a030
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 9d74cd3bd466578c61f8f12bf9b6e862c046e9bc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0f24b9c6ce2aeb318040b61c29d7e14c01886c46
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58903754"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073314"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API 管理中的用户配置文件模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
@@ -96,7 +95,7 @@ ms.locfileid: "58903754"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控件  
  此模板可能不使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  
@@ -104,19 +103,19 @@ ms.locfileid: "58903754"
 > [!NOTE]
 >  [配置文件](#Profile)、[应用程序](#Applications)和[订阅](#Subscriptions)模板共享相同的数据模型，并接收相同的模板数据。  
   
-|属性|Type|描述|  
+|属性|类型|描述|  
 |--------------|----------|-----------------|  
-|`firstName`|字符串|当前用户的名字。|  
-|`lastName`|字符串|当前用户的姓氏。|  
-|`companyName`|字符串|当前用户所在公司的名称。|  
-|`addresserEmail`|字符串|当前用户的电子邮件地址。|  
-|`developersUsageStatisticsLink`|字符串|相对 URL，用于查看当前用户的分析。|  
+|`firstName`|string|当前用户的名字。|  
+|`lastName`|string|当前用户的姓氏。|  
+|`companyName`|string|当前用户所在公司的名称。|  
+|`addresserEmail`|string|当前用户的电子邮件地址。|  
+|`developersUsageStatisticsLink`|string|相对 URL，用于查看当前用户的分析。|  
 |`subscriptions`|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
 |`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
-|`changePasswordUrl`|字符串|相对 URL，用于更改当前用户的密码。|  
-|`changeNameOrEmailUrl`|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
-|`canChangePassword`|布尔值|当前用户是否可更改其密码。|  
-|`isSystemUser`|布尔值|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
+|`changePasswordUrl`|string|相对 URL，用于更改当前用户的密码。|  
+|`changeNameOrEmailUrl`|string|相对 URL，用于更改当前用户的名称和电子邮件。|  
+|`canChangePassword`|boolean|当前用户是否可更改其密码。|  
+|`isSystemUser`|boolean|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -315,7 +314,7 @@ ms.locfileid: "58903754"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控件  
  此模板使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [subscription-cancel](api-management-page-controls.md#subscription-cancel)  
@@ -325,19 +324,19 @@ ms.locfileid: "58903754"
 > [!NOTE]
 >  [配置文件](#Profile)、[应用程序](#Applications)和[订阅](#Subscriptions)模板共享相同的数据模型，并接收相同的模板数据。  
   
-|属性|Type|描述|  
+|属性|类型|描述|  
 |--------------|----------|-----------------|  
-|`firstName`|字符串|当前用户的名字。|  
-|`lastName`|字符串|当前用户的姓氏。|  
-|`companyName`|字符串|当前用户所在公司的名称。|  
-|`addresserEmail`|字符串|当前用户的电子邮件地址。|  
-|`developersUsageStatisticsLink`|字符串|相对 URL，用于查看当前用户的分析。|  
+|`firstName`|string|当前用户的名字。|  
+|`lastName`|string|当前用户的姓氏。|  
+|`companyName`|string|当前用户所在公司的名称。|  
+|`addresserEmail`|string|当前用户的电子邮件地址。|  
+|`developersUsageStatisticsLink`|string|相对 URL，用于查看当前用户的分析。|  
 |`subscriptions`|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
 |`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
-|`changePasswordUrl`|字符串|相对 URL，用于更改当前用户的密码。|  
-|`changeNameOrEmailUrl`|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
-|`canChangePassword`|布尔值|当前用户是否可更改其密码。|  
-|`isSystemUser`|布尔值|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
+|`changePasswordUrl`|string|相对 URL，用于更改当前用户的密码。|  
+|`changeNameOrEmailUrl`|string|相对 URL，用于更改当前用户的名称和电子邮件。|  
+|`canChangePassword`|boolean|当前用户是否可更改其密码。|  
+|`isSystemUser`|boolean|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -478,7 +477,7 @@ ms.locfileid: "58903754"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控件  
  此模板使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [app-actions](api-management-page-controls.md#app-actions)  
@@ -488,19 +487,19 @@ ms.locfileid: "58903754"
 > [!NOTE]
 >  [配置文件](#Profile)、[应用程序](#Applications)和[订阅](#Subscriptions)模板共享相同的数据模型，并接收相同的模板数据。  
   
-|属性|Type|描述|  
+|属性|类型|描述|  
 |--------------|----------|-----------------|  
-|`firstName`|字符串|当前用户的名字。|  
-|`lastName`|字符串|当前用户的姓氏。|  
-|`companyName`|字符串|当前用户所在公司的名称。|  
-|`addresserEmail`|字符串|当前用户的电子邮件地址。|  
-|`developersUsageStatisticsLink`|字符串|相对 URL，用于查看当前用户的分析。|  
+|`firstName`|string|当前用户的名字。|  
+|`lastName`|string|当前用户的姓氏。|  
+|`companyName`|string|当前用户所在公司的名称。|  
+|`addresserEmail`|string|当前用户的电子邮件地址。|  
+|`developersUsageStatisticsLink`|string|相对 URL，用于查看当前用户的分析。|  
 |`subscriptions`|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
 |`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
-|`changePasswordUrl`|字符串|相对 URL，用于更改当前用户的密码。|  
-|`changeNameOrEmailUrl`|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
-|`canChangePassword`|布尔值|当前用户是否可更改其密码。|  
-|`isSystemUser`|布尔值|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
+|`changePasswordUrl`|string|相对 URL，用于更改当前用户的密码。|  
+|`changeNameOrEmailUrl`|string|相对 URL，用于更改当前用户的名称和电子邮件。|  
+|`canChangePassword`|boolean|当前用户是否可更改其密码。|  
+|`isSystemUser`|boolean|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -605,7 +604,7 @@ ms.locfileid: "58903754"
 </a>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控件  
  此模板可能不使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  

@@ -12,17 +12,16 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fdbd77db349eed62af2eb8cf539ef749217a187a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899122"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066686"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>排查 Azure 应用服务中出现的 HTTP 错误“502 错误的网关”和“503 服务不可用”
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中托管的应用经常出现“502 错误的网关”和“503 服务不可用”错误。 本文将帮助你排查这些错误。
@@ -63,7 +62,7 @@ ms.locfileid: "57899122"
 * 平均响应时间
 * CPU 时间
 * 内存工作集
-* Requests
+* 请求
 
 ![监视应用以解决 HTTP 错误“502 错误的网关”和“503 服务不可用”](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
@@ -102,14 +101,14 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 #### <a name="scale-the-app"></a>缩放应用
 在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 纵向扩展应用涉及到两个相关操作：将应用服务计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
 
-有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](web-sites-scale.md)。
+有关缩放的详细信息，请参阅[缩放 Azure 应用服务中的应用](manage-scale-up.md)。
 
 此外，可以选择在多个实例上运行应用程序。 这不仅能提供更强大的处理能力，而且还能提供一定程度的容错。 如果进程在某个实例上中断，其他实例仍将继续处理请求。
 
 可以将缩放设置为手动或自动。
 
 #### <a name="use-autoheal"></a>使用 AutoHeal
-AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终可以从 Azure 门户直接重新启动应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 请注意这些设置的相同方式工作，即使你的应用程序不是一个.NET。
+AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终可以从 Azure 门户直接重新启动应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 请注意, 即使应用程序不是 .NET 应用程序, 这些设置的工作方式也相同。
 
 有关详细信息，请参阅[自动修复 Azure 网站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 

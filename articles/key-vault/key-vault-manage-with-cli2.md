@@ -2,23 +2,18 @@
 title: 使用 CLI 管理 Azure 密钥保管库 - Azure 密钥保管库 | Microsoft Docs
 description: 使用本文通过 Azure CLI 自动执行密钥保管库中的常见任务
 services: key-vault
-documentationcenter: ''
-author: barclayn
-manager: barbkess
-tags: azure-resource-manager
-ms.assetid: ''
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 01/10/2019
-ms.author: barclayn
-ms.openlocfilehash: 1679fbe0dedc88ca3e8293512f9a79bb7da69790
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.topic: tutorial
+ms.date: 08/12/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 51e5c654da95732409c3bbb7acae088d8935a59d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115617"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000627"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 管理密钥保管库 
 
@@ -40,7 +35,7 @@ ms.locfileid: "56115617"
 > 本文未说明如何编写其中一个步骤所包括的 Azure 应用程序，但说明了如何授权应用程序使用 Key Vault 中的密钥或机密。
 >
 
-有关 Azure Key Vault 的概述，请参阅[什么是 Azure Key Vault？](key-vault-whatis.md)
+有关 Azure Key Vault 的概述，请参阅[什么是 Azure Key Vault？](key-vault-overview.md)
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -124,7 +119,7 @@ az provider register -n Microsoft.KeyVault
 
 使用 `az keyvault create` 命令来创建密钥保管库。 此脚本包含三个必需参数：资源组名称、密钥保管库名称和地理位置。
 
-若要在位于“东亚”的资源组 **ContosoResourceGroup** 中创建名为 **ContosoKeyVault** 的新保管库，请键入： 
+若要在位于“东亚”的资源组 **ContosoResourceGroup** 中创建名为 **ContosoKeyVault** 的新保管库，请键入：  
 
 ```azurecli
 az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East Asia"
@@ -133,7 +128,7 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 此命令的输出会显示创建的 Key Vault 的属性。 两个最重要的属性是：
 
 * **名称**：在本示例中，名称为 ContosoKeyVault。 将在其他 Key Vault 命令中使用此名称。
-* **vaultUri**：在本示例中，URI 为 https://contosokeyvault.vault.azure.net。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
+* **vaultUri**：在本示例中，URI 为 https://contosokeyvault.vault.azure.net 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 到目前为止，尚未授权其他任何人。
 
@@ -151,7 +146,7 @@ az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" -
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-现在可以通过使用密钥的 URI，引用已创建或上传到 Azure Key Vault 的密钥。 使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** 始终会获取当前版本。 使用 https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] 会获取此特定版本。 例如，**https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**。 
+现在可以通过使用密钥的 URI，引用已创建或上传到 Azure Key Vault 的密钥。 使用 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** 始终会获取当前版本。 使用 https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] 会获取此特定版本。 例如， **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** 。 
 
 将机密（名为 SQLPassword 的密码，其值为“hVFkk965BuUv”）添加到 Azure 密钥保管库。 
 
@@ -159,7 +154,7 @@ az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" -
 az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
-使用此密码的 URI 引用此密码。 使用 **https://ContosoVault.vault.azure.net/secrets/SQLPassword** 始终会获取当前版本，使用 https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] 会获取此特定版本。 例如，**https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**。
+使用此密码的 URI 引用此密码。 使用 **https://ContosoVault.vault.azure.net/secrets/SQLPassword** 始终会获取当前版本，使用 https://[keyvault-name].vault.azure.net/secret/[secret-name]/[secret-unique-id] 会获取此特定版本。 例如， **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** 。
 
 使用 .pem 或 .pfx 将证书导入保管库。
 

@@ -1,20 +1,20 @@
 ---
 title: Azure 备份：Linux VM 的应用程序一致性备份
 description: 创建 Linux 虚拟机到 Azure 的应用程序一致性备份。 本文介绍如何配置脚本框架以备份 Azure 部署的 Linux VM。 本文还包括故障排除信息。
-services: backup
-author: anuragmehrotra
-manager: shivamg
+ms.reviewer: anuragm
+author: dcurwin
+manager: carmonm
 keywords: 应用程序一致性备份; 应用程序一致性 Azure VM 备份; Linux VM 备份; Azure 备份
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/12/2018
-ms.author: anuragm
-ms.openlocfilehash: a81c0b9c87db85771fcecab87c6b9ac88dcbd472
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.date: 01/12/2018
+ms.author: dacurwin
+ms.openlocfilehash: dc7745c7c1110bf3635b1621cecfd5e61488b9f9
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581838"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210404"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM 的应用程序一致性备份
 
@@ -24,7 +24,7 @@ ms.locfileid: "53581838"
 
 该框架提供一个选项，用于在创建 VM 快照时运行自定义的操作前脚本和操作后脚本。 前脚本在创建 VM 快照前的那一刻运行，后脚本在创建 VM 快照后立即运行。 使用前脚本和后脚本可在创建 VM 快照时灵活控制应用程序和环境。
 
-前脚本可以调用本机应用程序 API 来使 IO 处于静默状态并将内存中内容刷新到磁盘。 这些操作可确保快照是应用程序一致的。 后脚本使用本机应用程序 API 来解冻 IO，使应用程序能够在创建 VM 快照后恢复正常操作。
+前脚本可以调用本机应用程序 API 来使 IO 处于静默状态并将内存中内容刷新到磁盘。 这些操作可确保快照是应用程序一致的。 后脚本使用本机应用程序 Api 来解冻 Io, 使应用程序能够在 VM 快照后恢复正常操作。
 
 ## <a name="steps-to-configure-pre-script-and-post-script"></a>配置操作前脚本和操作后脚本的步骤
 
@@ -70,11 +70,11 @@ ms.locfileid: "53581838"
 
 6. 现已配置脚本框架。 如果已配置 VM 备份，则下一次备份将调用这些脚本，并触发应用程序一致性备份。 如果未配置 VM 备份，请使用[将 Azure 虚拟机备份到恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)进行配置。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 编写操作前脚本和操作后脚本时，请确保添加相应的日志记录，并查看脚本日志来解决任何脚本问题。 如果运行脚本时仍然遇到问题，请参阅下表中的详细信息。
 
-| 错误 | 错误消息 | 建议的操作 |
+| Error | 错误消息 | 建议的操作 |
 | ------------------------ | -------------- | ------------------ |
 | Pre-ScriptExecutionFailed |操作前脚本返回错误，因此备份可能不具有应用程序一致性。   | 查看脚本的失败日志来解决问题。|  
 |   Post-ScriptExecutionFailed |    操作后脚本返回了可能影响应用程序状态的错误。 |    查看脚本的失败日志来解决问题，并检查应用程序状态。 |

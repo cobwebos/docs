@@ -26,7 +26,7 @@ sections:
           - title: 了解概念
             html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">云上传和存储</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">编码</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">监视</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">媒体分析</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">打包</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">保护</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">实时流式处理</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">播放器客户端</a></p>'
           - title: 使用 v3 API 进行开发
-            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">使用 REST 进行开发</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">使用 SDK 进行开发</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-java-howto">通过 Java 进行连接</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-dotnet-howto">通过 .NET 进行连接</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-nodejs-howto">通过 Node.js 进行连接</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/media-services-apis-overview">指南</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">使用 REST 进行开发</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-java-howto">通过 Java 进行连接</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-dotnet-howto">通过 .NET 进行连接</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-nodejs-howto">通过 Node.js 进行连接</a></p>'
   - title: 5 分钟快速入门
     items:
       - type: paragraph
@@ -55,34 +55,22 @@ sections:
         className: cardsM
         columns: 1
         items:
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>本教程上传本地视频文件、对文件进行编码，并对编码的内容进行流式传输。<p/>
+          - html: <p>本教程上传本地视频文件、对文件进行编码，并对编码的内容进行流式传输。<p/>
             href: /azure/media-services/latest/stream-files-tutorial-with-api
             title: 对上传的文件和流视频进行编码
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>本教程介绍如何针对直播事件进行设置， 以及如何使用 .NET 创建直通类型的直播事件。</p>
+          - html: <p>本教程介绍如何针对直播活动进行设置， 以及如何创建直通类型的直播活动。</p>
             href: /azure/media-services/latest/stream-live-tutorial-with-api
             title: 实时广播
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>本教程介绍如何使用 Azure 媒体服务 API 分析视频。</p>
+          - html: <p>本教程介绍如何使用 Azure 媒体服务 API 分析视频。</p>
             href: /azure/media-services/latest/analyze-videos-tutorial-with-api
             title: 分析视频
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>了解如何配置和使用媒体服务 API，以便通过 AES-128 来动态加密内容。</p>
+          - html: <p>了解如何配置和使用媒体服务 API，以便通过 AES-128 来动态加密内容。</p>
             href: /azure/media-services/latest/protect-with-aes128
             title: 通过 AES-128 进行动态加密
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>了解如何配置和使用媒体服务 API，以便通过多重 DRM（PlayReady、Widevine 和 FairPlay）来动态加密内容。</p>
+          - html: <p>了解如何配置和使用媒体服务 API，以便通过多重 DRM（PlayReady、Widevine 和 FairPlay）来动态加密内容。</p>
             href: /azure/media-services/latest/protect-with-drm
             title: 通过多重 DRM 进行动态加密
-          - image:
-              src: media/index/rest.svg
-            html: <p>本教程介绍如何基于 URL 对远程文件进行编码并流式传输视频。</p>
+          - html: <p>本教程介绍如何基于 URL 对远程文件进行编码并流式传输视频。</p>
             href: /azure/media-services/latest/stream-files-tutorial-with-rest
             title: 对远程文件进行编码并流式传输视频
   - title: 示例

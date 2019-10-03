@@ -4,7 +4,7 @@ description: 了解 Azure 中的访问控制列表
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: 83d66c84-8f6b-4388-8767-cd2de3e72d76
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 6265a7f9f60b60d7b79e15a04feb0ec76dc59f6d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
-ms.translationtype: HT
+ms.openlocfilehash: 38655a9da103d1d669f87c6195be7f17702f9348
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293112"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056678"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>什么是终结点访问控制列表？
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。 
+> Azure 具有用于创建和处理资源的两个不同的[部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)：资源管理器部署模型和经典部署模型。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。 
 
-终结点访问控制列表 (ACL) 是可用于 Azure 部署的安全增强。 利用 ACL，可以选择允许还是拒绝虚拟机终结点的流量。 此数据包筛选功能额外提供了一层安全性。 只能为终结点指定网络 ACL， 无法为虚拟网络或虚拟网络中包含的特定子网指定 ACL。 建议尽可能使用网络安全组 (NSG)，而不要使用 ACL。 使用 NSG 时，终结点访问控制列表将被替换并不再强制执行。 若要了解有关 NSG 的详细信息，请参阅[网络安全组概述](security-overview.md)
+终结点访问控制列表 (ACL) 是可用于 Azure 部署的安全增强。 利用 ACL，你可以选择允许还是拒绝虚拟机终结点的流量。 此数据包筛选功能额外提供了一层安全性。 只能为终结点指定网络 ACL， 无法为虚拟网络或虚拟网络中包含的特定子网指定 ACL。 建议尽可能使用网络安全组 (NSG)，而不要使用 ACL。 使用 NSG 时，终结点访问控制列表将被替换并不再强制执行。 若要了解有关 NSG 的详细信息，请参阅[网络安全组概述](security-overview.md)
 
 可以使用 PowerShell 或 Azure 门户配置 ACL。 若要使用 PowerShell 配置网络 ACL，请参阅[使用 PowerShell 管理终结点的访问控制列表](virtual-networks-acl-powershell.md)。 若要使用 Azure 门户配置网络 ACL，请参阅[如何设置虚拟机的终结点](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
@@ -58,15 +58,15 @@ ACL 是包含规则列表的对象。 创建 ACL 并将其应用于虚拟机终�
 考虑的要点：
 
 1. **无 ACL -** 默认情况下，在创建一个终结点后，我们将允许终结点的所有流量。
-2. **允许 -** 默认情况，在添加一个或多个“允许”范围后，将拒绝所有其他范围。 只有来自允许的 IP 范围的数据包才能与虚拟机终结点进行通信。
-3. **拒绝 -** 默认情况，在添加一个或多个“拒绝”范围后，将允许所有其他范围的流量。
+2. **允许** - 默认情况，在添加一个或多个“允许”范围后，你拒绝所有其他范围。 只有来自允许的 IP 范围的数据包才能与虚拟机终结点进行通信。
+3. **拒绝** - 默认情况，在添加一个或多个“拒绝”范围后，你允许所有其他范围的流量。
 4. **允许和拒绝的组合 -** 要指定允许或拒绝的特定 IP 范围时，可结合使用“允许”和“拒绝”。
 
 ## <a name="rules-and-rule-precedence"></a>规则和规则优先顺序
-可对特定虚拟机终结点设置网络 ACL。 例如，可为在虚拟机上创建的 RDP 终结点指定一个网络 ACL，它将锁定对某些 IP 地址的访问。 下表显示了如何为某个范围的公共虚拟 IP (VIP) 授予访问权限以允许访问 RDP。 将拒绝所有其他远程 IP。 我们会采用*越小越优先*的规则顺序。
+可对特定虚拟机终结点设置网络 ACL。 例如，可为在虚拟机上创建的 RDP 终结点指定一个网络 ACL，它将锁定对某些 IP 地址的访问。 下表显示了如何为某个范围的公共虚拟 IP (VIP) 授予访问权限以允许访问 RDP。 将拒绝所有其他远程 IP。 我们采用*越小越优先*的规则顺序。
 
 ### <a name="multiple-rules"></a>多个规则
-在以下示例中，如果希望仅允许两个公共 IPv4 地址范围（65.0.0.0/8 和 159.0.0.0/8）内的 IP 访问 RDP 终结点，则可以通过指定两个“*允许*”规则来实现。 在这种情况下，由于默认为虚拟机创建 RDP，因此，你需要锁定对基于远程子网的 RDP 端口的访问。 下述示例显示了如何为某个范围的公共虚拟 IP (VIP) 授予访问权限以允许访问 RDP。 将拒绝所有其他远程 IP。 由于可为特定虚拟机终结点设置网络 ACL 访问且在默认情况下访问会被拒绝，因此这种方法很有用。
+在以下示例中，如果你希望仅允许两个公共 IPv4 地址范围（65.0.0.0/8 和 159.0.0.0/8）内的 IP 访问 RDP 终结点，则可以通过指定两个“*允许*”规则来实现。 在这种情况下，由于默认为虚拟机创建 RDP，因此，你需要锁定对基于远程子网的 RDP 端口的访问。 下述示例显示了如何为某个范围的公共虚拟 IP (VIP) 授予访问权限以允许访问 RDP。 将拒绝所有其他远程 IP。 由于可为特定虚拟机终结点设置网络 ACL 访问且在默认情况下访问会被拒绝，因此这种方法很有用。
 
 **示例 - 多个规则**
 

@@ -2,26 +2,27 @@
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 03/23/2019
 ms.author: sngun
-ms.openlocfilehash: 30efb963f34ff567c70d845a4a8891ead285b178
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seo-java-september2019
+ms.openlocfilehash: d5a0e8412b928aea83670ad9f7c99a892a058c70
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571813"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210154"
 ---
-如果不打算继续使用此应用，请按照以下步骤删除本快速入门中创建的所有资源，以免产生任何费用：
+执行完 Web 应用和 Azure Cosmos DB 帐户的操作以后，可以删除所创建的 Azure 资源，以免产生更多费用。 若要删除资源，请执行以下操作：
 
-1. 在 Azure 门户的最左侧选择“资源组”，，然后选择创建的资源组。  
+1. 在 Azure 门户中，选择最左侧的“资源组”  。 如果左侧菜单处于折叠状态，请选择 ![“展开”按钮](./media/cosmos-db-delete-resource-group/expand.png) 将其展开。
 
-    如果左侧菜单处于折叠状态，请单击 ![“展开”按钮](./media/cosmos-db-delete-resource-group/expand.png) 将其展开。
+2. 选择为本快速入门创建的资源组。  
 
-   ![Azure 门户中的指标](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
+   ![选择要删除的资源组](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
 
-2. 在新窗口中选择资源组，然后单击“删除资源组”。
+2. 在新窗口中选择“删除资源组”。 
 
-   ![Azure 门户中的指标](./media/cosmos-db-delete-resource-group/delete-resources.png)   
+   ![删除资源组](./media/cosmos-db-delete-resource-group/delete-resources.png)   
 
-3. 在新窗口中键入要删除的资源组的名称，然后单击“删除”。
+3. 在下一窗口中输入要删除的资源组的名称，然后选择“删除”  。
 

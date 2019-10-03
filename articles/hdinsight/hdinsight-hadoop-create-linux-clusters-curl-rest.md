@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure REST API 创建 Apache Hadoop 群集 - Azure
 description: 了解如何通过将 Azure 资源管理器模板提交到 Azure REST API 来创建 HDInsight 群集。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: fec87bf3af7f215b69a891c2d75cdd979a7b5a52
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: d771d91feaba942b88a0ddb68f0d997fad4a981e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789205"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059414"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 创建 Apache Hadoop 群集
 
@@ -24,15 +23,12 @@ ms.locfileid: "53789205"
 
 Azure REST API 允许对托管在 Azure 平台中的服务执行管理操作，包括创建新资源（例如 HDInsight 群集）。
 
-> [!IMPORTANT]  
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
-
 > [!NOTE]  
 > 本文档中的步骤使用 [curl (https://curl.haxx.se/)](https://curl.haxx.se/) 实用工具与 Azure REST API 进行通信。
 
 ## <a name="create-a-template"></a>创建模板
 
-Azure 资源管理器模板是描述**资源组**及其包含的所有资源（例如 HDInsight）的 JSON 文档此基于模板的方法可以在一个模板中定义需要用于 HDInsight 的资源。
+Azure Resource Manager 模板是描述**资源组**及其包含的所有资源（例如 HDInsight）的 JSON 文档。此基于模板的方法可以在一个模板中定义需要用于 HDInsight 的资源。
 
 下面的 JSON 文档是来自 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) 的模板与参数文件的组合形式，它将创建基于 Linux 的群集，并使用密码保护 SSH 用户帐户。
 
@@ -209,21 +205,21 @@ Azure 资源管理器模板是描述**资源组**及其包含的所有资源（�
    }
    ```
 
-本文档中的步骤会使用此示例。 将 Parameters 部分中的示例值替换为用于群集的值。
+本文档中的步骤会使用此示例。 将 Parameters  部分中的示例值  替换为用于群集的值。
 
 > [!IMPORTANT]  
 > 此模板对 HDInsight 群集使用默认数目（4 个）的辅助角色节点。 如果计划使用 32 个以上的辅助角色节点，则必须选择至少具有 8 个核心和 14 GB ram 的头节点大小。
 >
 > 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
-## <a name="log-in-to-your-azure-subscription"></a>登录到 Azure 订阅
+## <a name="sign-in-to-your-azure-subscription"></a>登录到 Azure 订阅
 
 请按照 [Azure CLI 入门](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)中所述的步骤操作，并使用 `az login` 命令连接到订阅。
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
 > [!NOTE]  
-> 这些步骤是[使用 Azure CLI 创建服务主体以访问资源](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)文档的“使用密码创建服务主体”部分的缩减版本。 这些步骤创建用于向 Azure REST API 进行身份验证的服务主体。
+> 这些步骤是[使用 Azure CLI 创建服务主体以访问资源](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)文档的“使用密码创建服务主体”  部分的缩减版本。 这些步骤创建用于向 Azure REST API 进行身份验证的服务主体。
 
 1. 从命令行使用以下命令列出 Azure 订阅。
 
@@ -239,12 +235,12 @@ Azure 资源管理器模板是描述**资源组**及其包含的所有资源（�
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    将 `--display-name`、`--homepage` 和 `--identifier-uris` 的值替换成自己的值。 为新的 Active Directory 条目提供密码。
+    将 `--display-name`、`--homepage` 和 `--identifier-uris` 的值替换为自己的值。 为新的 Active Directory 条目提供密码。
 
    > [!NOTE]  
    > `--home-page` 和 `--identifier-uris` 值无需引用在 Internet 上承载的实际网页。 它们必须是唯一的 URI。
 
-   此命令返回的值是新应用程序的__应用 ID__。 保存此值。
+   此命令返回的值是新应用程序的 __应用 ID__ 。 保存此值。
 
 3. 通过以下命令使用**应用 ID** 创建服务主体。
 
@@ -314,7 +310,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 
 使用以下命令将模板部署到资源组。
 
-* 将 `$DEPLOYMENTNAME` 设置为要为此部署使用的名称：
+* 将 `$DEPLOYMENTNAME` 设置为要用于此部署的名称。
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \

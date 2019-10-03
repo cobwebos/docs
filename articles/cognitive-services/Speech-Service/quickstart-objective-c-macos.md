@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 04/03/2019
+ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 55fc671d926880375b0420e0eafb6dc63f170ba6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 45cd1210ee6af3c456171a427729f6e16caf2d58
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59012322"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559371"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Objective-C 识别语音
 
@@ -34,14 +34,14 @@ ms.locfileid: "59012322"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-认知服务语音 SDK 的当前版本是 `1.4.0`。
+认知服务语音 SDK 的当前版本是 `1.6.0`。
 
 适用于 Mac 的认知服务语音 SDK 目前以框架捆绑包的形式分发。
 可在 Xcode 项目将它作为 [CocoaPod](https://cocoapods.org/) 使用，或者从 https://aka.ms/csspeech/macosbinary 下载，然后手动与它建立链接。 本指南使用 CocoaPod。
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。
+启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。   
 在模板选择对话框中，选择“Cocoa 应用”模板。
 
 在随后的对话框中，进行以下选择：
@@ -67,30 +67,25 @@ ms.locfileid: "59012322"
 ## <a name="install-the-sdk-as-a-cocoapod"></a>安装用作 CocoaPod 的 SDK
 
 1. 根据[安装说明](https://guides.cocoapods.org/using/getting-started.html)中所述，安装 CocoaPod 依赖项管理器。
-1. 导航到示例应用所在的目录 (`helloworld`)。 在该目录中添加一个包含以下内容的名为 `Podfile` 的文本文件：
-    ```
-    target 'helloworld' do
-        platform :osx, '10.13'
-        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.4.0'
-    end
-    ```
+1. 导航到示例应用所在的目录 (`helloworld`)。 在该目录中添加一个包含以下内容的名为 `Podfile` 的文本文件：  
+   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
 1. 在终端中导航到 `helloworld` 目录并运行命令 `pod install`。 这会生成一个 `helloworld.xcworkspace` Xcode 工作区，其中包含示例应用以及用作依赖项的语音 SDK。 在后续步骤中将使用此工作区。
 
 ## <a name="add-the-sample-code"></a>添加示例代码
 
 1. 在 Xcode 中打开 `helloworld.xcworkspace` 工作区。
-1. 将自动生成的 `AppDelegate.m` 文件的内容替换为：[!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/helloworld/AppDelegate.m#code)]
+1. 通过以下方式替换自动生成的 `AppDelegate.m` 文件的内容：  
+   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/helloworld/AppDelegate.m#code)]
 1. 将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](regions.md)（例如，免费试用版订阅的 `westus`）。
 
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 
-1. 使调试输出可见（“视图” > “调试区域” > “激活控制台”）。
-1. 在菜单中选择“产品” -> “运行”，或者单击“播放”按钮，以生成并运行示例代码。
+1. 使调试输出可见（“视图”   > “调试区域”   >   “激活控制台”）。
+1. 在菜单中选择“产品” > “运行”，或者单击“播放”按钮，以生成并运行示例代码。   
 1. 单击相应按钮并讲几句话后，应会在屏幕下方看到讲出的文本。 首次运行该应用时，系统应会提示是否允许该应用访问计算机的麦克风。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的 Objective-C 示例](https://aka.ms/csspeech/samples)
-

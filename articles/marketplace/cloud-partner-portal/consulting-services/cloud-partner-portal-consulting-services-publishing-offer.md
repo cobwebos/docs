@@ -1,25 +1,18 @@
 ---
-title: Azure 和 Dynamics 365 咨询服务产品/服务 | Microsoft Docs
+title: Azure 和 Dynamics 365 咨询服务服务 |Azure Marketplace
 description: 有关在云合作伙伴门户中定义和发布 Azure 或 Dynamics 365 咨询服务产品/服务的指导。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: e543c24a8e3549bc53d6074c7008f3d01fcc96c4
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 6c75664e558602429250420f1896b75a74546e67
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54228753"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145461"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure 和 Dynamics 365 咨询服务产品/服务
 
@@ -40,6 +33,7 @@ ms.locfileid: "54228753"
 
 - [咨询服务先决条件](./cpp-consulting-service-prerequisites.md)列出了发布咨询服务产品/服务的要求：
  
+    - Microsoft Azure
     - Dynamics 365 for Customer Engagement 
     - Dynamics 365 for Finance & Operations 
     - Dynamics 365 Business Central 

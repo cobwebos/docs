@@ -1,25 +1,18 @@
 ---
-title: Azure 市场的见解页 | Microsoft Docs
-description: .
+title: Azure Marketplace 的见解页面
+description: 适用于 Azure Marketplace 的云合作伙伴门户中的见解页的概述。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 93cc8e84f13988357a363a70c44a479bed8f462c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 2cbe3b790197c3f71305e4cb21d0f37fe0404511
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266200"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943489"
 ---
 # <a name="insights-page"></a>“见解”页
 

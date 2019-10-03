@@ -3,19 +3,18 @@ title: Azure 开发人员空间如何工作，是配置
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 03/04/2019
 ms.topic: conceptual
 description: 描述的过程，该 power Azure 开发人员空格和如何 azds.yaml 配置文件中配置
 keywords: azds.yaml，Azure 开发人员空格、 开发空格、 Docker、 Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 83034dd3c99cc030ed770995bf00a6ad9fb57bdc
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544917"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670823"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure 开发人员空间如何工作，是配置
 
@@ -29,7 +28,7 @@ Azure 开发人员空间创建并部署、 运行和调试 Kubernetes 应用程�
 
 * [使用 CLI 和 Visual Studio Code 的 Java](quickstart-java.md)
 * [.NET core 和 CLI 和 Visual Studio Code](quickstart-netcore.md)
-* [.NET core 和 Visual Studio 2017](quickstart-netcore-visualstudio.md)
+* [.NET core 和 Visual Studio](quickstart-netcore-visualstudio.md)
 * [使用 CLI 和 Visual Studio Code 的 Node.js](quickstart-nodejs.md)
 
 ## <a name="how-azure-dev-spaces-works"></a>Azure 开发人员空间的工作原理
@@ -66,7 +65,7 @@ Azure 开发人员空间的两个与交互的不同组件： 在控制器和客�
 可以使用客户端从命令行工具的一部分`azds`命令。 此外可以使用客户端工具：
 
 * 使用 visual Studio Code [Azure 开发人员空间扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。
-* 带有 visual Studio 2017[适用于 Kubernetes 的 Visual Studio 工具](https://aka.ms/get-vsk8stools)。
+* Visual Studio 中的使用[适用于 Kubernetes 的 Visual Studio 工具](https://aka.ms/get-vsk8stools)。
 
 下面是用于设置和使用 Azure 开发人员空间的基本流程：
 1. 为 Azure 开发人员空间准备你的 AKS 群集
@@ -80,7 +79,7 @@ Azure 开发人员空间的两个与交互的不同组件： 在控制器和客�
 ## <a name="prepare-your-aks-cluster"></a>准备在 AKS 群集
 
 准备在 AKS 群集的过程包括：
-* 验证你的 AKS 群集位于区域[支持的 Azure 开发人员空格](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)。
+* 验证你的 AKS 群集位于区域[支持的 Azure 开发人员空格][supported-regions]。
 * 验证运行 Kubernetes 1.10.3 或更高版本。
 * 使用在群集上启用 Azure 开发人员空格 `az aks use-dev-spaces`
 
@@ -210,7 +209,7 @@ azds up
 1. 生成你的应用程序的容器。
 1. 将部署到开发应用程序。
 1. 如果配置，请创建具有可公开访问的应用程序终结点的 DNS 名称。
-1. 使用*端口转发*来提供对应用程序终结点使用访问 http://locahost。
+1. 使用*端口转发*来提供对应用程序终结点使用访问 http://localhost 。
 1. 将转发 stdout 和 stderr 到客户端工具。
 
 
@@ -225,7 +224,7 @@ azds up
 1. 控制器替换 *$(tag)* Helm 图表使用唯一的会话 ID 和安装 Helm 图表为您的服务中的占位符。 添加到 Helm 图表的唯一会话 id 的引用允许容器部署到 AKS 群集，此特定会话中进行关联回到会话请求和相关信息。
 1. 安装过程中的 Helm 图表，Kubernetes webhook 许可服务器将更多的容器添加到应用程序的 pod 规范和访问你的项目的源代码。 添加 devspaces 代理和 devspaces 代理初始化容器来提供 HTTP 跟踪和空间路由。 添加 devspaces 生成容器，以提供用于构建应用程序的容器的 Docker 实例和项目源代码的访问权限的 pod。
 1. 启动应用程序的 pod，devspaces 生成容器和 devspaces 代理初始化容器用于生成应用程序容器。 然后启动应用程序容器和 devspaces 代理容器。
-1. 客户端功能的应用程序容器启动后，使用 Kubernetes*端口转发*功能通过提供对你的应用程序的 HTTP 访问 http://localhost。 此端口转发将在开发计算机连接到你的开发空间中的服务。
+1. 客户端功能的应用程序容器启动后，使用 Kubernetes*端口转发*功能通过提供对你的应用程序的 HTTP 访问 http://localhost 。 此端口转发将在开发计算机连接到你的开发空间中的服务。
 1. 当在 pod 中的所有容器都启动后时，服务正在运行。 此时，客户端功能开始流式传输的 HTTP 跟踪、 stdout 和 stderr。 开发人员的情况下，此信息显示的客户端的功能。
 
 ### <a name="updating-a-running-service"></a>更新正在运行的服务
@@ -272,13 +271,13 @@ azds up
 
 ### <a name="how-routing-works"></a>路由的工作原理
 
-适用于开发人员空间基于 AKS，并使用相同[的网络概念](../aks/concepts-network.md)。 Azure 开发人员空格也有集中式*ingressmanager*服务并将其自身入口控制器部署到 AKS 群集。 *Ingressmanager*服务的监视 AKS 群集使用适用于开发人员空间并增加 Azure 开发人员空格入口控制器与入口路由到应用程序 pod 的对象在群集中的内容。 每个 pod 中的 devspaces 代理容器添加`azds-route-as`HTTP 标头的 HTTP 流量传输到开发人员空间根据 URL。 例如，对 URL 的请求*http://azureuser.s.default.serviceA.fedcba09...azds.io*将获取 HTTP 标头与`azds-route-as: azureuser`。 将不会添加 devspaces 代理容器`azds-route-as`标头，如果已存在。
+适用于开发人员空间基于 AKS，并使用相同[的网络概念](../aks/concepts-network.md)。 Azure 开发人员空格也有集中式*ingressmanager*服务并将其自身入口控制器部署到 AKS 群集。 *Ingressmanager*服务的监视 AKS 群集使用适用于开发人员空间并增加 Azure 开发人员空格入口控制器与入口路由到应用程序 pod 的对象在群集中的内容。 每个 pod 中的 devspaces 代理容器添加`azds-route-as`HTTP 标头的 HTTP 流量传输到开发人员空间根据 URL。 例如，对 URL 的请求 *http://azureuser.s.default.serviceA.fedcba09...azds.io* 将获取 HTTP 标头与`azds-route-as: azureuser` 。 将不会添加 devspaces 代理容器`azds-route-as`标头，如果已存在。
 
 当 HTTP 请求从群集外部的服务请求将发送到入口控制器。 入口控制器请求将直接路由到相应的 pod 根据其入口对象和规则。 Pod 中的 devspaces 代理容器收到请求时，将添加`azds-route-as`标头基于 URL，并随后将请求路由到应用程序容器。
 
 当对服务进行的 HTTP 请求时从群集内的另一个服务时，请求首先经历 devspaces 代理调用服务的容器。 Devspaces 代理容器会查看 HTTP 请求和检查`azds-route-as`标头。 基于标头，devspaces 代理容器将查找标头值与关联的服务的 IP 地址。 如果找到的 IP 地址，则 devspaces 代理容器重新确定对该 IP 地址的请求。 如果找不到 IP 地址，devspaces 代理容器会将请求路由到父应用程序容器。
 
-例如，应用程序*serviceA*并*serviceB*已部署到名为父开发空间*默认*。 *serviceA*依赖*serviceB*和 HTTP 对其进行调用。 Azure 用户创建基于一个子开发空间*默认*空间称为*azureuser*。 Azure 用户还可部署他们自己的版本*serviceA*到其子空间。 当请求*http://azureuser.s.default.serviceA.fedcba09...azds.io*:
+例如，应用程序*serviceA*并*serviceB*已部署到名为父开发空间*默认*。 *serviceA*依赖*serviceB*和 HTTP 对其进行调用。 Azure 用户创建基于一个子开发空间*默认*空间称为*azureuser*。 Azure 用户还可部署他们自己的版本*serviceA*到其子空间。 当请求 *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
 ![路由的 azure 开发人员空格](media/how-dev-spaces-works/routing.svg)
 
@@ -337,13 +336,13 @@ install:
 
 在上述示例中， *install.set.replicaCount*属性会指示控制器在你开发的空间中运行应用程序的多少个实例。 具体取决于你的方案，可以增大此值，但它会影响将调试器附加到应用程序的 pod。 有关详细信息，请参阅[疑难解答文章](troubleshooting.md)。
 
-生成 Helm 图表，在容器映像设置为 *{{。Values.image.repository}}:{{。Values.image.tag}}*。 `azds.yaml`文件定义*install.set.image.tag*属性设置为 *$(tag)* 默认情况下，它作为的值中使用 *{{。Values.image.tag}}*。 通过设置*install.set.image.tag*以这种方式的属性，它允许你的应用程序来运行 Azure 开发人员空格时以不同方式标记容器映像。 在此特定情况下，映像标记为 *<value from image.repository>: $(tag)*。 必须使用 *$(tag)* 变量的值作为*install.set.image.tag*为了使开发人员空间识别并找出在 AKS 群集中的容器。
+生成 Helm 图表，在容器映像设置为 *{{。Values.image.repository}}:{{。Values.image.tag}}* 。 `azds.yaml`文件定义*install.set.image.tag*属性设置为 *$(tag)* 默认情况下，它作为的值中使用 *{{。Values.image.tag}}* 。 通过设置*install.set.image.tag*以这种方式的属性，它允许你的应用程序来运行 Azure 开发人员空格时以不同方式标记容器映像。 在此特定情况下，映像标记为 *\<image.repository 值 >: $(tag)* 。 必须使用 *$(tag)* 变量的值作为*install.set.image.tag*为了使开发人员空间识别并找出在 AKS 群集中的容器。
 
-在上述示例中，`azds.yaml`定义*install.set.ingress.hosts*。 *Install.set.ingress.hosts*属性定义的公共终结点的主机名格式。 此属性也使用 *$(spacePrefix)*， *$(rootSpacePrefix)*，并 *$(hostSuffix)*，这是由控制器提供的值。 
+在上述示例中，`azds.yaml`定义*install.set.ingress.hosts*。 *Install.set.ingress.hosts*属性定义的公共终结点的主机名格式。 此属性也使用 *$(spacePrefix)* ， *$(rootSpacePrefix)* ，并 *$(hostSuffix)* ，这是由控制器提供的值。 
 
 *$(SpacePrefix)* 是子开发空间，其形式的名称*SPACENAME.s*。 *$(RootSpacePrefix)* 是父空间的名称。 例如，如果*azureuser*的子空间*默认*，为值 *$(rootSpacePrefix)* 是*默认*值 *$(spacePrefix)* 是*azureuser.s*。 如果没有子空间的空间。 *$(spacePrefix)* 为空。 例如，如果*默认*空间具有没有父空间的值 *$(rootSpacePrefix)* 是*默认*的值和 *$(spacePrefix)* 为空。 *$(HostSuffix)* 是指向在 AKS 群集中运行的 Azure 开发人员空格入口控制器的 DNS 后缀。 此 DNS 后缀与通配符 DNS 条目，例如对应 *\*。RANDOM_VALUE.eus.azds.io*，Azure 开发人员空格控制器添加到你的 AKS 群集时创建。
 
-在上面`azds.yaml`文件，也可以更新*install.set.ingress.hosts*若要更改你的应用程序的主机名。 例如，如果您希望简化应用程序的主机名 *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* 到 *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)*.
+在上面`azds.yaml`文件，也可以更新*install.set.ingress.hosts*若要更改你的应用程序的主机名。 例如，如果您希望简化应用程序的主机名 *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* 到 *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* .
 
 若要生成你的应用程序的容器的控制器，，请使用下面的部分`azds.yaml`配置文件：
 
@@ -404,11 +403,11 @@ ingress:
 
 ## <a name="debug-your-code"></a>调试代码
 
-对于 Java、.NET 和 Node.js 应用程序，您可以调试直接在您使用 Visual Studio Code 或 Visual Studio 2017 的开发人员共享空间中运行的应用程序。 Visual Studio Code 和 Visual Studio 2017 提供了工具连接到你的开发空间，启动应用程序，并附加调试器。 运行之后`azds prep`，可以在 Visual Studio Code 或 Visual Studio 2017 中打开你的项目。 Visual Studio Code 或 Visual Studio 2017 将生成其自己的配置文件来连接分开运行`azds prep`。 从 Visual Studio Code 或 Visual Studio 2017 中，您可以设置断点并启动应用程序以便对你适用于开发人员的空间。
+对于 Java、.NET 和 Node.js 应用程序，您可以调试直接在您使用 Visual Studio Code 或 Visual Studio 的开发人员共享空间中运行的应用程序。 Visual Studio Code 和 Visual Studio 提供了工具连接到你的开发空间，启动应用程序，并附加调试器。 运行之后`azds prep`，可以在 Visual Studio Code 或 Visual Studio 中打开你的项目。 Visual Studio Code 或 Visual Studio 将生成其自己的配置文件来连接分开运行`azds prep`。 从 Visual Studio Code 或 Visual Studio 中，您可以设置断点并启动应用程序以便对你适用于开发人员的空间。
 
 ![调试代码](media/get-started-node/debug-configuration-nodejs2.png)
 
-当您启动使用 Visual Studio Code 或 Visual Studio 2017 调试应用程序时，它们处理启动并正在运行相同的方式连接到你的开发空间`azds up`。 Visual Studio Code 和 Visual Studio 2017 中的客户端工具还提供与特定的调试信息的附加参数。 参数包含的调试程序映像中调试器的映像中, 调试器的位置和应用程序的容器装载调试器文件夹中的目标位置的名称。 
+启动时使用 Visual Studio Code 或 Visual Studio 进行调试的应用程序，它们处理启动并正在运行相同的方式连接到你的开发空间`azds up`。 Visual Studio Code 和 Visual Studio 中的客户端工具还提供与特定的调试信息的附加参数。 参数包含的调试程序映像中调试器的映像中, 调试器的位置和应用程序的容器装载调试器文件夹中的目标位置的名称。
 
 由客户端工具自动确定调试程序映像。 它使用类似于在 Dockerfile 过程中使用的方法和 Helm 图表生成运行时`azds prep`。 在应用程序的映像中装载调试器后，运行使用`azds exec`。
 
@@ -433,12 +432,16 @@ ingress:
 
 * [使用 CLI 和 Visual Studio Code 的 Java](quickstart-java.md)
 * [.NET core 和 CLI 和 Visual Studio Code](quickstart-netcore.md)
-* [.NET core 和 Visual Studio 2017](quickstart-netcore-visualstudio.md)
+* [.NET core 和 Visual Studio](quickstart-netcore-visualstudio.md)
 * [使用 CLI 和 Visual Studio Code 的 Node.js](quickstart-nodejs.md)
 
 若要开始使用团队开发，请参阅以下操作指南文章：
 
 * [团队开发-使用 CLI 和 Visual Studio Code 的 Java](team-development-java.md)
 * [-.NET Core CLI 和 Visual Studio Code 和进行团队开发](team-development-netcore.md)
-* [团队开发的.NET Core 和 Visual Studio 2017](team-development-netcore-visualstudio.md)
+* [团队开发的.NET Core 和 Visual Studio](team-development-netcore-visualstudio.md)
 * [团队开发-使用 CLI 和 Visual Studio Code 的 Node.js](team-development-nodejs.md)
+
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

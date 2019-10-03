@@ -8,11 +8,11 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: fa9b970ee9319af061ceab99844b0497253881ad
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286612"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66117942"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms-previous-release"></a>为 Windows IaaS 启用 Azure 磁盘加密（以前的版本）
 
@@ -32,9 +32,9 @@ ms.locfileid: "58286612"
 ## <a name="enable-encryption-on-new-iaas-vms-created-from-the-marketplace"></a>在通过市场创建的新 IaaS VM 上启用加密。
 可以使用资源管理器模板从 Azure 市场为新的 IaaS Windows VM 启用磁盘加密。 该模板使用 Windows Server 2012 库映像创建新的加密 Windows VM。
 
-1. 在[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)中，单击“部署到 Azure”。
+1. 在[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)中，单击“部署到 Azure”。 
 
-2. 选择订阅、资源组、资源组位置、参数、法律条款和协议。 单击“购买”，部署已启用加密的新 IaaS VM。
+2. 选择订阅、资源组、资源组位置、参数、法律条款和协议。 单击“购买”，部署已启用加密的新 IaaS VM。 
 
 3. 部署模板后，使用首选的方法验证 VM 加密状态：
      - 在 Azure CLI 中使用 [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) 命令进行验证。 
@@ -49,7 +49,7 @@ ms.locfileid: "58286612"
          Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
          ```
 
-     -  在门户中选择 VM，然后单击“设置”标题下面的“磁盘”验证加密状态。 在“加密”下面的图表中，可以看到是否已启用加密。 
+     -  在门户中选择 VM，然后单击“设置”标题下面的“磁盘”验证加密状态。   在“加密”下面的图表中，可以看到是否已启用加密。  
            ![Azure 门户 - 已启用磁盘加密](./media/azure-security-disk-encryption/disk-encryption-fig2.png)下表列出了市场方案中使用 Azure AD 客户端 ID 的新 VM 的资源管理器模板参数：
 
 | 参数 | 描述 | 
@@ -164,9 +164,9 @@ ms.locfileid: "58286612"
 可以通过使用[资源管理器模板加密正在运行的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)，在 Azure 中现有或正在运行的 IaaS Windows VM 上启用磁盘加密。
 
 
-1. 在 Azure 快速入门模板中，单击“部署到 Azure”。
+1. 在 Azure 快速入门模板中，单击“部署到 Azure”。 
 
-2. 选择订阅、资源组、资源组位置、参数、法律条款和协议。 单击“购买”，在现有或正在运行的 IaaS VM 上启用加密。
+2. 选择订阅、资源组、资源组位置、参数、法律条款和协议。 单击“购买”，在现有或正在运行的 IaaS VM 上启用加密。 
 
 下表列出了使用 Azure AD 客户端 ID 的现有或正在运行的 VM 的 资源管理器模板参数：
 
@@ -175,8 +175,8 @@ ms.locfileid: "58286612"
 | AADClientID | 有权将机密写入 Key Vault 的 Azure AD 应用程序的客户端 ID。 |
 | AADClientSecret | 有权将机密写入 Key Vault 的 Azure AD 应用程序的客户端机密。 |
 | KeyVaultName | BitLocker 密钥应上传到的 Key Vault 的名称。 可使用 cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MySecureGroup"` 获取该名称|
-|  keyEncryptionKeyURL | 用于加密所生成 BitLocker 密钥的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择“nokek”，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择“kek”，则必须输入 _keyEncryptionKeyURL_ 值。 |
-| volumeType | 要对其执行加密操作的卷的类型。 有效值为“OS”、“Data”和“All”。 |
+|  keyEncryptionKeyURL | 用于加密所生成 BitLocker 密钥的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择“nokek”  ，则此参数为可选参数。 如果在 UseExistingKek 下拉列表中选择“kek”  ，则必须输入 _keyEncryptionKeyURL_ 值。 |
+| volumeType | 要对其执行加密操作的卷的类型。 有效值为“OS”  、“Data”  和“All”  。 |
 | sequenceVersion | BitLocker 操作的序列版本。 每当在同一个 VM 上执行磁盘加密操作时，此版本号便会递增。 |
 | vmName | 要对其执行加密操作的 VM 的名称。 |
 
@@ -339,9 +339,9 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $VMName -Aa
      ```
 - **使用资源管理器模板禁用加密：** 
 
-    1. 单击[在正在运行的 Windows VM 上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm)模板中的“部署到 Azure”。
+    1. 单击[在正在运行的 Windows VM 上禁用磁盘加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm)模板中的“部署到 Azure”。 
     2. 选择订阅、资源组、位置、VM、法律条款和协议。
-    3.  单击“购买”，在正在运行的 Windows VM 上禁用磁盘加密。 
+    3.  单击“购买”，在正在运行的 Windows VM 上禁用磁盘加密。  
 
 ## <a name="next-steps"></a>后续步骤
 

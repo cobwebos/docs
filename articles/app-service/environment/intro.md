@@ -9,17 +9,16 @@ ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 48b053b6520bff2ac83cd02af31194f81413e92c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 5c668d1d0783300333e4d0b78c93fe5e7a9d0dd0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598748"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069240"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>应用服务环境简介 #
  
@@ -43,7 +42,7 @@ Azure 应用服务环境是一项 Azure 应用服务功能，可提供完全隔�
 
 ASE 可在隔离后只运行单个客户的应用程序，并可始终部署到虚拟网络中。 客户可以对入站和出站应用程序网络流量进行精细控制。 应用程序可以通过 VPN 建立到本地公司资源的高速安全连接。
 
-* ASE 附带自己的定价层，了解[隔离产品](https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment)如何有助于驱动超大规模和安全性。
+* ASE 附带自己的定价层，了解[隔离套餐](https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment)如何有助于驱动超大规模和安全性。
 * [应用服务环境 v2](https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment) 提供了一个环境来保护网络子网中的应用，并提供你自己的 Azure 应用服务专用部署。
 * 可使用多个 ASE 进行水平缩放。 有关详细信息，请参阅[如何设置异地分布式应用布局](app-service-app-service-environment-geo-distributed-scale.md)。
 * 可使用 ASE 配置安全体系结构，如“AzureCon 深入探讨”中所示。 若要查看“AzureCon 深入探讨”中所示的安全体系结构的配置方式，请参阅有关如何使用应用服务环境实现[分层安全体系结构](app-service-app-service-environment-layered-security.md)的文章。
@@ -63,7 +62,7 @@ ASE 由前端和辅助角色组成。 前端负责处理 HTTP/HTTPS 终止以及
 
 客户无需管理前端和辅助角色。 客户扩展其应用服务计划时，会自动添加所有基础结构。 在 ASE 中创建或缩放应用服务计划时，将在适当的情况下添加或删除所需的基础结构。
 
-ASE 每月会产生统一的基础结构使用费，该费率不会随 ASE 的大小变化而改变。 此外，每个应用服务计划 vCPU 也会产生费用。 ASE 中托管的所有应用都在“隔离”定价 SKU 中。 有关 ASE 定价的相关信息，请参阅[应用服务定价][Pricing]页并查看 ASE 的可用选项。
+ASE 每月会产生统一的基础结构使用费，该费率不会随 ASE 的大小变化而改变。 此外，每个应用服务计划 vCPU 也会产生费用。 ASE 中托管的所有应用都在“隔离”定价 SKU 中。 有关 ASE 定价的信息，请参阅[应用服务定价][Pricing]页并查看 ASE 的可用选项。
 
 ## <a name="virtual-network-support"></a>虚拟网络支持 ##
 

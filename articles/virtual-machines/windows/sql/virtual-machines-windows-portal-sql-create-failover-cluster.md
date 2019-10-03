@@ -9,19 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 9fc761b1-21ad-4d79-bebc-a2f094ec214d
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 3e954a6c714e525e5bbefe8f62c798cf8ac9a517
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011357"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036389"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -54,7 +53,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
 使用 PAYG 许可，Azure 虚拟机上的 SQL Server 的故障转移群集实例 (FCI) 会对 FCI 的所有节点（包括被动节点）收取费用。 有关详细信息，请参阅 [SQL Server Enterprise 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/)。 
 
-与软件保障达成企业协议的客户有权为每个活动节点使用一个免费的被动 FCI 节点。 要在 Azure 中利用此优势，请使用 BYOL VM 映像，然后在 FCI 的主动节点和被动节点上使用相同的许可证。 有关详细信息，请参阅[企业协议](https://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx)。
+与软件保障达成企业协议的客户有权为每个活动节点使用一个免费的被动 FCI 节点。 要在 Azure 中利用此优势，请使用 BYOL VM 映像，然后在 FCI 的主动节点和被动节点上使用相同的许可证。 有关详细信息，请参阅[企业协议](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx)。
 
 如需比较 Azure 虚拟机中 SQL Server 的 PAYG 和 BYOL 许可，请参阅 [SQL VM 入门](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)。
 
@@ -111,7 +110,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
    - 在 Azure 门户中，单击 **+** 打开 Azure 市场。 搜索“可用性集”。
    - 单击“可用性集”。
-   - 单击**创建**。
+   - 单击“创建”。
    - 在“创建可用性集”边栏选项卡中设置以下值：
       - **名称**：可用性集的名称。
       - **订阅**：Azure 订阅。
@@ -158,7 +157,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
 1. Azure 在创建虚拟机之后，将使用 RDP 连接到每个虚拟机。
 
-   首次使用 RDP 连接到虚拟机时，计算机将询问是否允许在网络上发现此 PC。 单击 **“是”**。
+   首次使用 RDP 连接到虚拟机时，计算机将询问是否允许在网络上发现此 PC。 单击 **“是”** 。
 
 1. 如果使用某个基于 SQL Server 的虚拟机映像，请删除 SQL Server 实例。
 
@@ -175,7 +174,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
    在每个虚拟机上的 Windows 防火墙中打开以下端口。
 
-   | 目的 | TCP 端口 | 说明
+   | 用途 | TCP 端口 | 说明
    | ------ | ------ | ------
    | SQL Server | 1433 | SQL Server 的默认实例正常使用的端口。 如果使用了库中的某个映像，此端口会自动打开。
    | 运行状况探测 | 59999 | 任何打开的 TCP 端口。 在后面的步骤中，需要将负载均衡器[运行状况探测](#probe)和群集配置为使用此端口。  
@@ -239,7 +238,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
 1. 在“服务器管理器”中单击“工具”，并单击“故障转移群集管理器”。
 1. 在“故障转移群集管理器”中单击“操作”，并单击“验证配置...”。
-1. 单击“资源组名称” 的 Azure 数据工厂。
+1. 单击“资源组名称”的 Azure 数据工厂。
 1. 在“选择服务器或群集”中，键入两个虚拟机的名称。
 1. 在“测试选项”中，选择“仅运行选择的测试”。 单击“下一步”。
 1. 在“测试选择”中，包含除“存储”以外的所有测试。 参阅下图：
@@ -268,11 +267,22 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 - 故障转移群集的名称
 - 故障转移群集的 IP 地址。 可以使用群集节点所在的同一 Azure 虚拟网络和子网中未使用的 IP 地址。
 
-以下 PowerShell 可创建故障转移群集。 使用节点的名称（虚拟机名称）以及 Azure VNET 中可用的 IP 地址更新脚本：
+#### <a name="windows-server-2008-2016"></a>Windows Server 2008-2016
+
+以下 PowerShell 为**Windows Server 2008-2016**创建一个故障转移群集。 使用节点的名称（虚拟机名称）以及 Azure VNET 中可用的 IP 地址更新脚本：
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
+
+#### <a name="windows-server-2019"></a>Windows Server 2019
+
+以下 PowerShell 为 Windows Server 2019 创建一个故障转移群集。  有关详细信息，请查看博客[故障转移群集：群集网络对象](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)。  使用节点的名称（虚拟机名称）以及 Azure VNET 中可用的 IP 地址更新脚本：
+
+```powershell
+New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
+```
+
 
 ### <a name="create-a-cloud-witness"></a>创建云见证
 
@@ -361,7 +371,7 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 
 1. 单击“+ 添加”。 在市场中搜索“负载均衡器”。 单击“负载均衡器”。
 
-1. 单击**创建**。
+1. 单击“创建”。
 
 1. 为负载均衡器配置以下属性：
 
@@ -399,7 +409,7 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 
    - **名称**：运行状况探测的名称。
    - **协议**：TCP。
-   - **端口**：设置为在防火墙中的运行状况探测中创建的端口[此步骤](#ports)。 在本文中，该示例使用 TCP 端口`59999`。
+   - **端口**：设置为你在[此步骤](#ports)中在防火墙中为运行状况探测创建的端口。 在本文中，示例使用了 TCP 端口 `59999`。
    - **时间间隔**：5 秒。
    - **不正常阈值**：2 次连续失败。
 
@@ -420,10 +430,10 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
    - **后端池**：使用前面配置的后端池名称。
    - **运行状况探测**：使用前面配置的运行状况探测。
    - **会话持久性**：无。
-   - **空闲超时(分钟)**：4.
-   - **浮动 IP (直接服务器返回)**：Enabled
+   - **空闲超时(分钟)** ：4.
+   - **浮动 IP (直接服务器返回)** ：Enabled
 
-1. 单击“确定”。
+1. 单击 **“确定”** 。
 
 ## <a name="step-6-configure-cluster-for-probe"></a>步骤 6：为探测配置群集
 
@@ -491,7 +501,7 @@ Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理
 - 无法将群集 MSDTC 资源配置为使用共享存储。 对于 Windows Server 2016，如果创建 MSDTC 资源，即使存储存在，也不会显示任何可用的共享存储。 Windows Server 2019 中已修复此问题。
 - 基本负载均衡器不处理 RPC 端口。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [Setup S2D with remote desktop (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)（使用远程桌面设置 S2D (Azure)）
 

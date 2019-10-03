@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Service Fabric 上创建 Spring Boot 应用 | Microsoft Docs
+title: 快速入门：在 Azure Service Fabric 上创建 Spring Boot 应用
 description: 在本快速入门中，请使用 Spring Boot 示例应用程序为 Azure Service Fabric 部署 Spring Boot 应用程序。
 services: service-fabric
 documentationcenter: java
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 2c98b069e042f9cbd07ccee643028ac84b3471c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 2aa5879ee3960bd5d26855ac7e7c3e12994ee54e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886674"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861342"
 ---
-# <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>快速入门：将 Java Spring Boot 应用程序部署到 Service Fabric
+# <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>快速入门：在 Azure Service Fabric 上部署 Java Spring Boot 应用
 
-Azure Service Fabric 是一款分布式系统平台，可用于部署和管理微服务和容器。
+本快速入门演示如何将 Java Spring Boot 应用程序部署到 Azure Service Fabric。 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理微服务和容器。 
 
-本快速入门演示如何将 Spring Boot 应用程序部署到 Service Fabric。 本快速入门使用 Spring 网站中的[入门](https://spring.io/guides/gs/spring-boot/)示例。 本快速入门逐步讲解如何使用熟悉的命令行工具，将 Spring Boot 示例部署为 Service Fabric 应用程序。 完成后，Spring Boot 入门示例将在 Service Fabric 上正常运行。
+本快速入门使用 Spring 网站中的[入门](https://spring.io/guides/gs/spring-boot/)示例。 本快速入门逐步讲解如何使用熟悉的命令行工具，将 Spring Boot 示例部署为 Service Fabric 应用程序。 完成后，Spring Boot 入门示例将在 Service Fabric 上正常运行。
 
 ![应用程序屏幕截图](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 
@@ -90,7 +90,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
-1. 在 `gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml` 文件中添加**终结点**资源
+1. 在 gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml  文件中添加**终结点**资源
 
     ```xml 
         <Resources>
@@ -145,11 +145,11 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
     ```
 
-    启动本地群集需要一些时间。 若要确认群集是否完全正常，请访问 Service Fabric Explorer（网址：**http://localhost:19080**）。 5 个节点均正常即表示本地群集运行正常。 
+    启动本地群集需要一些时间。 若要确认群集是否完全正常，请访问 Service Fabric Explorer（网址： **http://localhost:19080** ）。 5 个节点均正常即表示本地群集运行正常。 
     
     ![本地群集正常运行](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
-1. 导航到 `gs-spring-boot/SpringServiceFabric` 文件夹。
+1. 打开 `gs-spring-boot/SpringServiceFabric` 文件夹。
 1. 运行以下命令连接到本地群集。
 
     ```bash
@@ -176,13 +176,13 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
 若要缩放 Web 前端服务，请执行以下操作：
 
 1. 在群集中打开 Service Fabric Explorer - 例如 `http://localhost:19080`。
-1. 在树视图中单击“fabric:/SpringServiceFabric/SpringGettingStarted”节点旁边的省略号（三个点），选择“缩放服务”。
+1. 在树视图中选择“fabric:/SpringServiceFabric/SpringGettingStarted”节点旁边的省略号 ( **...** )，选择“缩放服务”   。
 
     ![Service Fabric Explorer 缩放服务](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
 
     现在可以选择缩放服务的实例数量。
 
-1. 将数字更改为 **3**，单击“缩放服务”。
+1. 将数字更改为 **3**，选择“缩放服务”  。
 
     下面显示了使用命令行缩放服务的另一种方法。
 
@@ -194,7 +194,7 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
     sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
-1. 在树视图中单击“fabric:/SpringServiceFabric/SpringGettingStarted”节点，展开分区节点（由 GUID 表示）。
+1. 在树视图中选择“fabric:/SpringServiceFabric/SpringGettingStarted”  节点，展开分区节点（由 GUID 表示）。
 
     ![Service Fabric Explorer 缩放服务完成](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
 
@@ -207,7 +207,7 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
 为了演示服务故障转移，可以使用 Service Fabric Explorer 来模拟节点重启。 请确保只有一个服务实例在运行。
 
 1. 在群集中打开 Service Fabric Explorer - 例如 `http://localhost:19080`。
-1. 单击运行服务实例的节点旁边的省略号（三个点），并重启节点。
+1. 选择运行服务实例的节点旁边的省略号 ( **...** )，并重启节点。
 
     ![Service Fabric Explorer - 重启节点](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
 1. 服务实例已转移到另一个节点，且应用程序并未关闭。

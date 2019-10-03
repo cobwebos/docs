@@ -1,5 +1,5 @@
 ---
-title: 快速入门：将文本转换为语音 (Python) - 语音服务
+title: 快速入门：将文本转换为语音，Python - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何使用 Python 和文本转语音 REST API 将文本转换为语音。 本指南中包含的示例文本以语音合成标记语言 (SSML) 的形式构造。 这样你就可以选择语音响应的语音和语言。
 services: cognitive-services
@@ -7,37 +7,38 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: conceptual
-ms.date: 03/13/2019
+ms.topic: quickstart
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 087440b60e1d5fecc668849bc1350d66988b16b9
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.openlocfilehash: 0afe5897c723e22405d9bde2e9c9e729d0373a06
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339070"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553673"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>快速入门：使用 Python 将文本转换为语音
 
 本快速入门介绍如何使用 Python 和文本转语音 REST API 将文本转换为语音。 本指南中包含的请求正文以[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 的形式构造，这样你就可以选择响应的语音和语言。
 
-本快速入门需要[Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)与语音服务资源。 如果没有帐户，可以使用[免费试用版](get-started.md)获取订阅密钥。
+此快速入门需要包含语音服务资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](get-started.md)获取订阅密钥。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要：
 
 * Python 2.7.x 或 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
-* 用于语音服务的 Azure 订阅密钥
+* 语音服务的 Azure 订阅密钥
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
 使用最喜欢的 IDE 或编辑器创建新的 Python 项目。 然后，将此代码片段复制到项目的名为 `tts.py` 的文件中。
 
 ```python
-import os, requests, time
+import os
+import requests
+import time
 from xml.etree import ElementTree
 ```
 
@@ -51,8 +52,10 @@ from xml.etree import ElementTree
 在以下几个部分，我们将创建一些方法用于处理授权、调用文本转语音 API，以及验证响应。 首先让我们添加一些代码，以确保此示例适用于 Python 2.7.x 和 3.x。
 
 ```python
-try: input = raw_input
-except NameError: pass
+try:
+    input = raw_input
+except NameError:
+    pass
 ```
 
 接下来，让我们创建一个类。 我们将在此类中放置用于交换令牌和调用文本转语音 API 的方法。
@@ -70,9 +73,9 @@ class TextToSpeech(object):
 
 ## <a name="get-an-access-token"></a>获取访问令牌
 
-文本转语音 REST API 需要使用访问令牌进行身份验证。 若要获取访问令牌，需要进行交换。 此示例交换访问令牌使用语音服务的订阅密钥`issueToken`终结点。
+文本转语音 REST API 需要使用访问令牌进行身份验证。 若要获取访问令牌，需要进行交换。 此示例通过 `issueToken` 终结点使用语音服务订阅密钥来交换访问令牌。
 
-此示例假定您的语音服务的订阅已在美国西部区域中。 如果使用其他区域，请更新 `fetch_token_url` 的值。 如需完整的列表，请参阅[区域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)。
+此示例假定语音服务订阅位于“美国西部”区域。 如果使用其他区域，请更新 `fetch_token_url` 的值。 如需完整的列表，请参阅[区域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)。
 
 将以下代码复制到 `TextToSpeech` 类中：
 
@@ -120,7 +123,8 @@ def save_audio(self):
     xml_body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-us')
     voice = ElementTree.SubElement(xml_body, 'voice')
     voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
-    voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+    voice.set(
+        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
     voice.text = self.tts
     body = ElementTree.tostring(xml_body)
 
@@ -128,9 +132,11 @@ def save_audio(self):
     if response.status_code == 200:
         with open('sample-' + self.timestr + '.wav', 'wb') as audio:
             audio.write(response.content)
-            print("\nStatus code: " + str(response.status_code) + "\nYour TTS is ready for playback.\n")
+            print("\nStatus code: " + str(response.status_code) +
+                  "\nYour TTS is ready for playback.\n")
     else:
-        print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
+        print("\nStatus code: " + str(response.status_code) +
+              "\nSomething went wrong. Check your subscription key and headers.\n")
 ```
 
 ## <a name="put-it-all-together"></a>将其放在一起

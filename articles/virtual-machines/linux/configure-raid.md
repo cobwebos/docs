@@ -4,24 +4,23 @@ description: 了解如何使用 mdadm 在 Azure 中的 Linux 上配置 RAID。
 services: virtual-machines-linux
 documentationcenter: na
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
 ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: e773fdcb031f0f8f896ea40d76231fd54a603dc4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d0658af090d9a3f39bee69f5103a78a329fe189c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089023"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083795"
 ---
 # <a name="configure-software-raid-on-linux"></a>在 Linux 上配置软件 RAID
 在 Azure 中的 Linux 虚拟机上使用软件 RAID 将多个附加的数据磁盘呈现为一个单一的 RAID 设备，是一种常见的情形。 通常，使用这种方法可以改进性能，而且与只使用单独一块磁盘相比，吞吐量也会有所改进。
@@ -122,19 +121,19 @@ ms.locfileid: "58089023"
 
 1. 在新 RAID 设备上创建文件系统
    
-    a. **CentOS、Oracle Linux、SLES 12、openSUSE 和 Ubuntu**
+    **CentOS、Oracle Linux、SLES 12、openSUSE 和 Ubuntu**
 
     ```bash   
     sudo mkfs -t ext4 /dev/md127
     ```
    
-    b. **SLES 11**
+    **SLES 11**
 
     ```bash
     sudo mkfs -t ext3 /dev/md127
     ```
    
-    c. **SLES 11** - 启用 boot.md 并创建 mdadm.conf
+    **SLES 11** - 启用 boot.md 并创建 mdadm.conf
 
     ```bash
     sudo -i chkconfig --add boot.md
@@ -144,7 +143,7 @@ ms.locfileid: "58089023"
    > [!NOTE]
    > 在 SUSE 系统中完成这些更改之后，可能需要重新引导。 在 SLES 12 中，此步骤*不*是必需的。
    > 
-   > 
+   
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>将新文件系统添加到 /etc/fstab
 > [!IMPORTANT]

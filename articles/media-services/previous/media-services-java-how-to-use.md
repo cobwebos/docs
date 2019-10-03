@@ -14,16 +14,17 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a12d0e7d4382d1f8feac721c103d9231e54ad249
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: fedec6ea764394d36f5b4d7c883f7cb9f9520a29
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189523"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64869024"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>用于 Azure 媒体服务的 Java 客户端 SDK 入门  
 
-[!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
+> [!NOTE]
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 本教程介绍了通过 Java 客户端 SDK 在 Azure 媒体服务中实施基本的视频内容传送服务的步骤。
 
@@ -52,7 +53,7 @@ ms.locfileid: "58189523"
 ## <a name="how-to-use-azure-media-services-with-java"></a>如何：将 Azure 媒体服务与 Java 配合使用
 
 >[!NOTE]
->创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
+>创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
 
 以下代码演示了如何创建资产、将媒体文件上传到该资产、使用任务运行某个作业以转换该资产，以及创建定位符流式传输视频。
 
@@ -64,7 +65,7 @@ ms.locfileid: "58189523"
 * `clientKey`：Azure AD 应用程序的客户端密钥
 * `restApiEndpoint`：Azure 媒体服务帐户的 REST API 终结点
 
-可以创建一个 Azure AD 应用程序，然后从 Azure 门户获取前面的配置值。 有关详细信息，请参阅[使用 Azure 门户进行 Azure AD 身份验证入门](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)的“服务主体身份验证”部分。
+可以创建一个 Azure AD 应用程序，然后从 Azure 门户获取前面的配置值。 有关详细信息，请参阅[使用 Azure 门户进行 Azure AD 身份验证入门](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)的“服务主体身份验证”部分。 
 
 该代码还依赖于本地存储的视频文件。 必须编辑代码，提供自己的要上传的本地文件。
 

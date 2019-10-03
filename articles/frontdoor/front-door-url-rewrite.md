@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 00fe3aa7a641b9d07aad90a9d008a99efc6e9d97
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: dc2126276e3e8e0d35ce8ed1f835544386659eff
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993455"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "60736169"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL 重写（自定义转发路径）
 Azure Front Door 服务支持 URL 重写，方法是允许配置可选的**自定义转发路径**，以便在构造要转发到后端的请求时使用。 默认情况下，如果未提供自定义转发路径，则 Front Door 会将传入的 URL 路径复制到转发请求中使用的 URL。 转发请求中使用的主机标头与为选定后端配置的主机标头一样。 阅读[后端主机标头](front-door-backend-pool.md#hostheader)，了解它的作用以及配置方式。
@@ -30,7 +30,7 @@ Azure Front Door 服务支持 URL 重写，方法是允许配置可选的**自�
 
 | 主机      | 路径       |
 |------------|-------------|
-| www.contoso.com | /\*         |
+| www\.contoso.com | /\*         |
 |            | /foo        |
 |            | /foo/\*     |
 |            | /foo/bar/\* |
@@ -42,12 +42,12 @@ Azure Front Door 服务支持 URL 重写，方法是允许配置可选的**自�
 
 | 传入的请求       | 最确切的匹配路径 | /          | /fwd/          | /foo/          | /foo/bar/          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
-| www.contoso.com/            | /\*                      | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www.contoso.com/**sub**     | /\*                      | /**sub**   | /fwd/**sub**   | /foo/**sub**   | /foo/bar/**sub**   |
-| www.contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /fwd/**a/b/c** | /foo/**a/b/c** | /foo/bar/**a/b/c** |
-| www.contoso.com/foo         | /foo                     | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www.contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/bar/          |
-| www.contoso.com/foo/**bar** | /foo/\*                  | /**bar**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
+| www\.contoso.com/            | /\*                      | /          | /fwd/          | /foo/          | /foo/bar/          |
+| www\.contoso.com/**sub**     | /\*                      | /**sub**   | /fwd/**sub**   | /foo/**sub**   | /foo/bar/**sub**   |
+| www\.contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /fwd/**a/b/c** | /foo/**a/b/c** | /foo/bar/**a/b/c** |
+| www\.contoso.com/foo         | /foo                     | /          | /fwd/          | /foo/          | /foo/bar/          |
+| www\.contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/bar/          |
+| www\.contoso.com/foo/**bar** | /foo/\*                  | /**bar**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
 
 
 ## <a name="optional-settings"></a>可选设置

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: atsenthi
-ms.openlocfilehash: ca473b9947a9b0df610a9c3dac66914b06cc9217
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 012d75ff6ad4acdc6612a197f274e2dfdb98370a
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662561"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249272"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>对 Service Fabric 中的有状态服务进行单元测试
 
@@ -36,7 +36,7 @@ ms.locfileid: "58662561"
 
 ## <a name="common-practices"></a>常见做法
 
-以下部分提供关于对有状态服务进行单元测试的最常见做法的建议。 它还建议模拟层应该要与 Service Fabric 业务流程和状态管理紧密地保持一致。 模拟库确实存在提供此功能的库。 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) 自 3.3.0 开始或更高版本就是这样一个库，提供了建议的模拟功能并遵循下面概述的做法。
+以下部分提供关于对有状态服务进行单元测试的最常见做法的建议。 它还建议模拟层应该要与 Service Fabric 业务流程和状态管理紧密地保持一致。 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) 自 3.3.0 开始或更高版本就是这样一个库，提供了建议的模拟功能并遵循下面概述的做法。
 
 ### <a name="arrangement"></a>排列
 
@@ -51,8 +51,8 @@ ms.locfileid: "58662561"
 状态管理器应视为远程资源，并因此进行模拟。 模拟状态管理器时，需要有一些基础内存存储，用于跟踪保存到状态管理器的内容，以便可以进行读取和验证。 实现此目的的一个简单方法是创建每个“可靠集合”类型的模拟实例。 在这些模拟中，使用与针对该集合执行的操作保持紧密一致的数据类型。 以下是每个可靠集合的一些建议数据类型
 
 - IReliableDictionary<TKey, TValue> -> System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
-- IReliableQueue<T> -> System.Collections.Generic.Queue<T>
-- IReliableConcurrentQueue<T> -> System.Collections.Concurrent.ConcurrentQueue<T>
+- IReliableQueue\<t > >\<的 t >
+- IReliableConcurrentQueue\<t > > system.collections.concurrent.concurrentqueue\<t >
 
 #### <a name="many-state-manager-instances-single-storage"></a>许多状态管理器实例，单个存储
 如前所述，状态管理器和可靠集合应视为远程资源。 因此，这些资源应该并且将在单元测试中进行模拟。 但是，在运行有状态服务的多个实例时，要使每个模拟状态管理器在不同的有状态服务实例之间保持同步将是一项挑战。 当有状态服务在群集上运行时，Service Fabric 负责保持每个次要副本的状态管理器与主要副本一致。 因此，测试的行为应相同，以便它们可以模拟角色更改。

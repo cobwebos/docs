@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc45c63d3168a15b4701dcaff7bb531f759d47ad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fa15a91a6b82a8858bf46a08e8a9dbe11a51d8d1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888700"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105941"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>教程：Azure Active Directory 与 Brightidea 的集成
 
@@ -56,19 +56,19 @@ ms.locfileid: "57888700"
 
 **若要从库中添加 Brightidea，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Brightidea**，在结果面板中选择“Brightidea”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入 **Brightidea**，在结果面板中选择“Brightidea”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的“Brightidea”](common/search-new-app.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "57888700"
 
 若要配置 Brightidea 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Brightidea”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Brightidea”应用程序集成页上，选择“单一登录”。  
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -100,38 +100,38 @@ ms.locfileid: "57888700"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果已获取“服务提供商元数据文件”并想要在 **IDP** 发起的模式下进行配置，请在“基本 SAML 配置”部分执行以下步骤：
+4. 如果已获取“服务提供商元数据文件”并想要在 **IDP** 发起的模式下进行配置，请在“基本 SAML 配置”部分执行以下步骤：  
 
-    a. 单击“上传元数据文件”。
+    a. 单击“上传元数据文件”  。
 
     ![上传元数据文件](common/upload-metadata.png)
 
-    b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
+    b. 单击“文件夹徽标”  来选择元数据文件并单击“上传”。 
 
     ![选择元数据文件](common/browse-upload-metadata.png)
 
-    c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“Brightidea”部分的文本框中：
+    c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“Brightidea”部分的文本框中：  
 
-    ![图像](common/idp-intiated.png)
+    ![image](common/idp-intiated.png)
 
     > [!Note]
-    > 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。
+    > 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。  
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    ![图像](common/metadata-upload-additional-signon.png)
+    ![image](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.brightidea.com`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.brightidea.com`
 
-4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Brightidea”部分，根据要求复制相应的 URL。
+6. 在“设置 Brightidea”部分，根据要求复制相应的 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -145,46 +145,46 @@ ms.locfileid: "57888700"
 
 1. 在另一个 Web 浏览器窗口中，使用管理员凭据登录到 Brightidea。
 
-2. 若要在 Brightidea 系统中使用 SSO 功能，请导航到“企业设置” -> “身份验证”选项卡。此时会看到两个子选项卡：“身份验证选择”和“SAML 配置文件”。
+2. 若要在 Brightidea 系统中使用 SSO 功能，请导航到“企业设置” -> “身份验证”选项卡。   此时会看到两个子选项卡：“身份验证选择”和“SAML 配置文件”。
 
     ![Brightidea 配置](./media/brightidea-tutorial/configure1.png)
 
-3. 选择“身份验证选择”。 默认只会显示两种标准方法：Brightidea 登录和注册。 添加 SSO 方法后，它会显示在列表中。
+3. 选择“身份验证选择”。  默认只会显示两种标准方法：Brightidea 登录和注册。 添加 SSO 方法后，它会显示在列表中。
 
     ![Brightidea 配置](./media/brightidea-tutorial/configure2.png)
 
-4. 选择“SAML 配置文件”并执行以下步骤：
+4. 选择“SAML 配置文件”并执行以下步骤  ：
 
     ![Brightidea 配置](./media/brightidea-tutorial/configure3.png)
 
-    a. 单击“下载元数据”，然后在 Azure 门户中的“基本 SAML 配置”部分上传。
+    a. 单击“下载元数据”，然后在 Azure 门户中的“基本 SAML 配置”部分上传。  
 
-    b. 单击“标识提供者设置”下的“新增”按钮并执行以下步骤：
+    b. 单击“标识提供者设置”下的“新增”按钮并执行以下步骤：  
     
     ![Brightidea 配置](./media/brightidea-tutorial/configure4.png)
     
-   * 输入“SAML 配置文件名称”，例如 `Azure Ad SSO`
+   * 输入“SAML 配置文件名称”，例如 `Azure Ad SSO` 
     
-   * 对于“上传元数据”，请单击“选择文件”，然后上传从 Azure 门户下载的元数据文件。
+   * 对于“上传元数据”，请单击“选择文件”，然后上传从 Azure 门户下载的元数据文件。 
 
      > [!NOTE]
-     > 上传元数据文件后，剩余的字段“单一登录服务”、“标识提供者颁发者”和“上传公钥”将自动填充。
+     > 上传元数据文件后，剩余的字段“单一登录服务”、“标识提供者颁发者”和“上传公钥”将自动填充。 
 
-   * 在“电子邮件”文本框中，输入 `mail` 作为值。
+   * 在“电子邮件”文本框中，输入 `mail` 作为值。 
      
-   * 在“屏幕名称”文本框中，输入 `givenName` 作为值。
+   * 在“屏幕名称”文本框中，输入 `givenName` 作为值。 
      
-   * 单击“保存更改”。  
+   * 单击“保存更改”  。  
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -192,40 +192,40 @@ ms.locfileid: "57888700"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”字段中，输入 BrittaSimon。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 Britta Simon 访问 Brightidea 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Brightidea”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Brightidea”。   
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在“应用程序”列表中，选择“Brightidea”。
+2. 在“应用程序”列表中，选择“Brightidea”  。
 
     ![“应用程序”列表中的“Brightidea”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。   
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-brightidea-test-user"></a>创建 Brightidea 测试用户
 

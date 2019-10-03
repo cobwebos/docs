@@ -10,17 +10,16 @@ ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4dbd65a391bdc5726436ba461a34e1ca7cab87b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d03b209902d3ab0bcdb247b1deefdd70d01905cb
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855174"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018498"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
@@ -52,9 +51,9 @@ ms.locfileid: "57855174"
 const port = process.env.PORT || 1337;
 ```
 
-应用服务会将 process.env.PORT 注入应用程序，因此代码将使用该变量来获知要侦听的端口。 
+应用服务填充环境变量 **process.env.PORT**。 在应用程序中使用此项，以便代码知道要侦听哪个端口。
 
-在终端窗口中，导航到示例 Node.js 项目的根目录（包含 _index.js_ 的目录）。
+在一个终端窗口中，导航到示例 Node.js 项目的**根目录**（包含 _index.js_ 的目录）。
 
 ## <a name="run-the-app-locally"></a>在本地运行应用
 
@@ -66,7 +65,7 @@ npm start
 
 打开 Web 浏览器并导航到 `http://localhost:1337` 处的示例应用。
 
-页面中会显示该示例应用发出的 Hello World 消息。
+页面中会显示该示例应用发出的 Hello World  消息。
 
 ![本地运行应用的示例](media/app-service-web-get-started-nodejs-poc/localhost-hello-world-in-browser.png)
 
@@ -75,7 +74,19 @@ npm start
 > [!NOTE]
 > 在 Azure 应用服务中，此应用在 IIS 中使用 [iisnode](https://github.com/Azure/iisnode) 运行。 为了让应用能够使用 iisnode 运行，根应用目录包含一个 web.config 文件。 此文件可以由 IIS 读取，与 iisnode 相关的设置记录在 [iisnode GitHub 存储库](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)中。
 
-[!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
+## <a name="create-a-project-zip-file"></a>创建一个项目 zip 文件
+
+在一个终端窗口中，导航到示例 Node.js 项目的**根目录**（包含 _index.js_ 的目录）。 创建一个包含项目所有内容的 zip 文件。 以下命令使用您终端中的默认工具执行操作：
+
+```
+# Bash
+zip -r myAppFiles.zip .
+
+# PowerShell
+Compress-Archive -Path * -DestinationPath myAppFiles.zip
+```
+
+命令执行完后将此 ZIP 文件上传到 Azure 并将其部署到应用服务。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -143,7 +154,7 @@ Node.js 示例代码在 Azure 应用服务 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-祝贺你！ 现已将第一个 Node.js 应用部署到应用服务。
+祝贺你！  现已将第一个 Node.js 应用部署到应用服务。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 
@@ -153,7 +164,7 @@ Node.js 示例代码在 Azure 应用服务 Web 应用中运行。
 response.end("Hello Azure!");
 ```
 
-在本地终端窗口中，导航到应用程序的根目录，为更新的项目创建新的 ZIP 文件。
+在本地终端窗口中，导航到你的应用程序的**根目录**（包含 _index.js_ 的目录），为更新后的项目创建新的 ZIP 文件。
 
 ```azurecli-interactive
 # Bash
@@ -165,7 +176,7 @@ Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
 
 将此新的 ZIP 文件部署到应用服务，使用的步骤与[部署 ZIP 文件](#deploy-zip-file)中的步骤相同。
 
-切换回在“浏览到应用”步骤中打开的浏览器窗口，然后刷新页面。
+切换回在“浏览到应用”  步骤中打开的浏览器窗口，然后刷新页面。
 
 ![已更新的在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
@@ -173,7 +184,7 @@ Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 

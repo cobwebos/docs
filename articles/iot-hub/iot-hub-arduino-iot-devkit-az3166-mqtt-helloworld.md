@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.openlocfilehash: 60520f5a72fd7e27d4ea64ac76511a00a727426e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552004"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61369266"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>向 MQTT 服务器发送消息
 
@@ -45,10 +45,10 @@ ms.locfileid: "57552004"
 
 ## <a name="open-the-mqttclient-sample"></a>打开 MQTTClient 示例
 
-展开左侧的“ARDUINO 示例”部分，浏览到“MXCHIP AZ3166 的示例 > MQTT”，然后选择“MQTTClient”。 此时会打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
+展开左侧的“ARDUINO 示例”  部分，浏览到  “MXCHIP AZ3166 的示例 > MQTT”，然后选择“MQTTClient”  。 此时会打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
 
 > [!NOTE]
-> 也可以从命令面板打开示例。 使用 `Ctrl+Shift+P`（macOS: `Cmd+Shift+P`）打开命令面板，键入“Arduino”，然后找到并选择“Arduino:Examples”。
+> 也可以从命令面板打开示例。 使用 `Ctrl+Shift+P`（macOS: `Cmd+Shift+P`）打开命令面板，键入“Arduino”，然后找到并选择“Arduino:   Examples”。
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>生成 Arduino 草图并将其上传到 DevKit
 

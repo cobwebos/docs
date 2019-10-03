@@ -1,20 +1,21 @@
 ---
-title: 必应当地企业搜索 API 的搜索类别 |Microsoft Docs
+title: 必应当地企业搜索 API 的搜索类别
 titleSuffix: Azure Cognitive Services
 description: 通过本文了解如何指定必应当地企业搜索 API 终结点的搜索类别。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.subservice: bing-local-business
+ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: b96c4e0ebfb12f48917febcc8ad623de18758935
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: rosh
+ms.openlocfilehash: 56b94d66eb0929d2fd0ca74a1a631d229330adfa
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773656"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906396"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>必应当地企业搜索 API 的搜索类别
 

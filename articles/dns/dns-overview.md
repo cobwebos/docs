@@ -6,12 +6,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: cea19ad2ba03d3e71df32912a1d7ee9e6171689a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 06e53f07969ab5dfdebec88d36d0cb3d06cc87e1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339444"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078428"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 

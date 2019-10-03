@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: a8bd260db7a141ce845ce7fb5b7e10f642907b82
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2864e3d29a0beccd2ef52732a85ea1495e1efab8
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788162"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575287"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>通过升级 SQL 数据仓库优化性能
 
@@ -27,7 +27,7 @@ ms.locfileid: "59788162"
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
-## <a name="applies-to"></a>适用于
+## <a name="applies-to"></a>适用对象
 
 此升级适用于[受支持的区域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)中的“计算优化第 1 代”层级数据仓库。
 
@@ -63,7 +63,7 @@ ms.locfileid: "59788162"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 从 Gen1 到第 2 代的通过 Azure 门户迁移，以及是永久性的。 不返回到 Gen1 的过程。  
+> 通过 Azure 门户从第 1 代迁移到第 2 代是永久性的。 无法通过任何流程返回到第 1 代。  
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -189,7 +189,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 3. 在“概述”部分的顶部，选择“+ 新建还原点”。
 
-    ![新建还原点](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
+    ![新还原点](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
 
 4. 为还原点指定一个名称。
 
@@ -198,7 +198,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>使用 Azure 门户还原活动或暂停的数据库
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 导航到要从中进行还原的 SQL 数据仓库。
+2. 导航到要从中还原的 SQL 数据仓库。
 3. 在“概述”部分的顶部，选择“还原”。
 
     ![ 还原概述](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)
@@ -215,7 +215,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-若要恢复数据库，请使用[还原 AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) cmdlet。
+若要恢复数据库，请使用 [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) cmdlet。
 
 > [!NOTE]
 > 可以执行到第 2 代的异地还原！ 若要执行此操作，请将一个第 2 代 ServiceObjectiveName（例如 DW1000**c**）指定为可选参数。

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 09/16/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6834ab15f3d46b8b7116a48b0e970f553eb65ba8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521808"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802288"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -37,6 +37,7 @@ ms.locfileid: "58521808"
 
 ## <a name="can-i-use-application-insights-with-"></a>是否可以将 Application Insights 用于...？
 
+* [Azure VM 或 Azure 虚拟机规模集中的 IIS 服务器上的 Web 应用](azure-vm-vmss-apps.md)
 * [IIS 服务器上的 Web 应用 - 本地或在 VM 中](asp-net.md)
 * [Java Web 应用](java-get-started.md)
 * [Node.js 应用](nodejs.md)
@@ -58,7 +59,7 @@ ms.locfileid: "58521808"
 
 [阅读定价计划](https://azure.microsoft.com/pricing/details/application-insights/)。
 
-## <a name="how-much-is-it-costing"></a>花费是多少？
+## <a name="how-much-does-it-cost"></a>费用是多少？
 
 * 在 Application Insights 资源中打开“使用情况和估算成本”页面。 此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
 * 打开 [Azure 计费边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)查看所有资源的帐单。
@@ -104,9 +105,9 @@ ms.locfileid: "58521808"
 * HTTP 请求
 * [依赖项](asp-net-dependencies.md)。 调用: SQL 数据库; 对外部服务的 HTTP 调用; Azure Cosmos DB、表、blob 存储和队列。 
 * [异常](asp-net-exceptions.md)和堆栈跟踪。
-* [性能计数器](performance-counters.md) - 如果使用[状态监视器](monitor-performance-live-website-now.md)、[Azure 监视](azure-web-apps.md)或 [Application Insights 收集编写器](java-collectd.md)。
+* [性能计数器](performance-counters.md)-如果你使用[状态监视器](monitor-performance-live-website-now.md)、[适用于应用服务的 AZURE 监视](azure-web-apps.md)、适用[于 VM 或虚拟机规模集的 azure 监视](azure-vm-vmss-apps.md)或[Application Insights collectd 编写器](java-collectd.md)。
 * [自定义编码的事件和指标](api-custom-events-metrics.md)。
-* 如果配置相应的收集器，则会[跟踪日志](asp-net-trace-logs.md)。
+* [跟踪日志](asp-net-trace-logs.md)（如果配置相应的收集器）。
 
 从[客户端网页](javascript.md)：
 
@@ -132,12 +133,14 @@ ms.locfileid: "58521808"
 
 深入了解 [ASP.NET](api-filtering-sampling.md) 或 [Java](java-filter-telemetry.md)。
 
-## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>如何计算市/县/区、国家/地区和其他地理位置数据？
+## <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>如何计算市/县/区、国家/地区和其他地理位置数据？
 
-使用 [GeoLite2](http://dev.maxmind.com/geoip/geoip2/geolite2/) 查找 Web 客户端的 IP 地址（IPv4 或 IPv6）。
+使用 [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) 查找 Web 客户端的 IP 地址（IPv4 或 IPv6）。
 
 * 浏览器遥测：收集发送方的 IP 地址。
 * 服务器遥测：Application Insights 模块收集客户端 IP 地址。 如果设置了 `X-Forwarded-For`，则不会进行收集。
+* 若要详细了解如何在中收集 IP 地址和地理位置数据 Application Insights 参阅此[文](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)。
+
 
 可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
 
@@ -153,7 +156,7 @@ ms.locfileid: "58521808"
 
 **所有**八进制数的客户端 web 地址始终设置为 0，查找异地位置属性。
 
-## <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>我的检测密钥在网页源中是可见的。 
+## <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>在网页源中可见我的检测密钥。 
 
 * 这是监视解决方案的常见做法。
 * 它不能用于窃取数据。
@@ -162,7 +165,7 @@ ms.locfileid: "58521808"
 
 可以：
 
-* （单独的 Application Insights 资源） 的两个的单独的检测密钥，用于客户端和服务器数据。 或
+* 将两个单独检测密钥（独立的 Application Insights 资源）分别用于客户端和服务器数据。 或
 * 编写一个在服务器中运行的代理，并使 Web 客户端通过该代理发送数据。
 
 ## <a name="post"></a>如何在诊断搜索中查看 POST 数据？
@@ -288,12 +291,12 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 注意，自 v2.6.0 开始具备 ApplicationIdProvider 功能
 
-### <a name="proxy-passthrough"></a>代理传递
+### <a name="proxy-passthrough"></a>代理透传
 
-可以通过配置计算机级别或应用程序级别实现的代理传递代理。
-有关详细信息请参阅 》 上 dotnet 的文章[DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)。
+可以通过配置计算机级代理或应用程序级代理来实现代理透传。
+有关详细信息，请参阅 dotnet 关于 [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings) 的文章。
  
- 示例 Web.config:
+ 示例 Web.config：
  ```xml
 <system.net>
     <defaultProxy>

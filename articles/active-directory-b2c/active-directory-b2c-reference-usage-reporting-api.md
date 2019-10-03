@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 中的使用情况报表 API 示例和定义 | Microsoft Docs
 description: 获取有关 Azure AD B2C 租户用户、身份验证和多重身份验证报表的指南和示例。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5ccd9ea36fcf20c56684ac5892a7fa32e0345633
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: fe7dd90bdec816ee433310a803d85c57f4892f8c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165993"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66508709"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>通过报告 API 访问 Azure AD B2C 中的使用情况报表
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供了基于用户登录名的身�
 本文重点介绍与计费活动有关的报表，计费活动以用户数、基于登录名的可计费身份验证数和多重身份验证数为基础。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 开始前，需要先完成[访问 Azure AD 报表 API 的先决条件](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)中的步骤。 创建应用程序、获取它的密码，并授予它访问 Azure AD B2C 租户报表的权限。 此处还提供 *Bash 脚本*和 *Python 脚本*示例。 
 
 ## <a name="powershell-script"></a>PowerShell 脚本

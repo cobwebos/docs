@@ -3,8 +3,8 @@ title: 读取 NSG 流日志 | Microsoft Docs
 description: 本文介绍如何分析 NSG 流日志
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
-ms.author: jdial
-ms.openlocfilehash: cddf6526a798195e3e3091af766fee28791ac522
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.author: kumud
+ms.openlocfilehash: becae0f085fcaf4b0d0c7b29e102aaa3186fb85e
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795474"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653744"
 ---
 # <a name="read-nsg-flow-logs"></a>读取 NSG 流日志
 
@@ -29,17 +29,17 @@ NSG 流日志存储于[块 blob](https://docs.microsoft.com/rest/api/storageserv
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>应用场景
 
 在如下方案中，你有一个存储在存储帐户的示例流日志。 了解如何选择性地读取 NSG 流日志中的最新事件。 虽然本文中将使用 PowerShell，但本文中讨论到的概念并不限于编程语言，而是适用于 Azure 存储 API 支持的所有语言。
 
-## <a name="setup"></a>设置
+## <a name="setup"></a>安装
 
 在开始之前，必须在帐户中的一个或多个网络安全组上启用网络安全组流日志记录。 有关如何启用网络安全流日志的说明，请参阅以下文章：[Introduction to flow logging for Network Security Groups](network-watcher-nsg-flow-logging-overview.md)（网络安全组流日志记录简介）。
 
 ## <a name="retrieve-the-block-list"></a>检索块列表
 
-下方 PowerShell 设置查询 NSG 流日志 blob 和列出 [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) 块 blob 中的块所需的变量。 更新脚本以包含适合你环境的有效值。
+下方 PowerShell 设置查询 NSG 流日志 blob 和列出 [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) 块 blob 中的块所需的变量。 更新脚本以包含适合你环境的有效值。
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -116,7 +116,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>读取块 blob
 
-接下来需要读取 `$blocklist` 变量以检索数据。 在此示例中我们循环访问阻止列表，从每个块读取字节并将它们存储在数组中。 使用 [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 方法来检索数据。
+接下来需要读取 `$blocklist` 变量以检索数据。 在此示例中我们循环访问阻止列表，从每个块读取字节并将它们存储在数组中。 使用 [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) 方法来检索数据。
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {

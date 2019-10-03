@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/18/2017
+ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 14a7389fe562b5f3206b81411d2224257051c636
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f44a44c0923374b2f6024903213305f1defb3b94
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666641"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035924"
 ---
 # <a name="scaling-in-service-fabric"></a>在 Service Fabric 中进行缩放
 Azure Service Fabric 通过管理服务、分区以及群集的节点上的副本，让生成可缩放的应用程序更简单。 在同一硬件上运行多个工作负荷不仅可实现最大资源使用率，还可提供在如何选择缩放工作负荷方面的灵活性。 此第 9 频道视频介绍了如何构建可缩放的微服务应用程序：
@@ -103,14 +103,14 @@ Service Fabric 支持分区。 分区可将服务拆分成若干逻辑和物理�
 
 <center>
 
-![三节点式分区布局](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
+![包含三个节点的分区布局](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
 </center>
 
 如果增加节点数目，Service Fabric 将移动其中的一些现有副本。 例如，假设节点数增加到 4，且已重新分发副本。 现在，服务在每个节点上有 3 个正在运行的副本，每个副本均属于不同的分区。 这可以实现更高的资源利用率，因为新节点不冷。 通常情况下，这还可提高性能，因为每项服务均有更多可用资源。
 
 <center>
 
-![四节点式分区布局](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
+![包含四个节点的分区布局](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
 </center>
 
 ## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>使用 Service Fabric 群集资源管理器和指标进行缩放
@@ -122,10 +122,14 @@ Service Fabric 支持分区。 分区可将服务拆分成若干逻辑和物理�
 
 有关详细信息，请参阅[群集缩放](service-fabric-cluster-scaling.md)。
 
+## <a name="choosing-a-platform"></a>选择平台
+
+由于操作系统之间的实现差异, 选择使用 Windows 或 Linux Service Fabric 可能是缩放应用程序的重要部分。 一个潜在的障碍是如何执行暂存日志记录。 Windows 上的 Service Fabric 使用内核驱动程序进行一台每台计算机的日志, 在有状态服务副本之间共享。 此日志约为 8 GB。 另一方面, Linux 对每个副本使用 256 MB 暂存日志, 这使得对于想要最大程度地减少在给定节点上运行的轻型服务副本数量的应用程序而言, 这种情况并不理想。 临时存储要求的这些差异可能会通知所需的平台进行 Service Fabric 群集部署。
+
 ## <a name="putting-it-all-together"></a>汇总
 让我们汇总已在此文中讨论的所有观点，并讨论一个示例。 请考虑以下服务：你想要生成一个充当通讯簿的服务，其中保存名称和联系信息。 
 
-右预先具有一系列与缩放相关的问题：要设置多少个用户？ 每个用户将存储多少个联系人？ 如果要在第一次构建服务时解决所有问题，这会很难。 我们假设你将处理具有特定分区计数的单个静态服务。 选错分区计数的后果可能会导致以后遇到缩放问题。 同样，即使选对计数，也可能并没有所需的所有信息。 例如，还需要首先决定群集的大小（节点数和其大小）。 通常难以预测服务将在其生存期内使用的资源数。 也可能很难提前知道服务实际看到的流量模式。 例如，可能人们只在早上首先添加和删除其联系人，或者也可能在一天中均匀分布。 基于此，可能需要动态地扩大和缩小服务。 也许可以学习预测何时需要扩大和缩小服务，但无论哪种方式，可能都需要应对服务不断变化的资源消耗情况。 这可能涉及更改群集的大小，以在重新组织现有资源的使用不足以解决问题时提供更多资源。 
+首先，需要考虑多个与缩放相关的问题：要设置多少个用户？ 每个用户将存储多少个联系人？ 如果要在第一次构建服务时解决所有问题，这会很难。 我们假设你将处理具有特定分区计数的单个静态服务。 选错分区计数的后果可能会导致以后遇到缩放问题。 同样，即使选对计数，也可能并没有所需的所有信息。 例如，还需要首先决定群集的大小（节点数和其大小）。 通常难以预测服务将在其生存期内使用的资源数。 也可能很难提前知道服务实际看到的流量模式。 例如，可能人们只在早上首先添加和删除其联系人，或者也可能在一天中均匀分布。 基于此，可能需要动态地扩大和缩小服务。 也许可以学习预测何时需要扩大和缩小服务，但无论哪种方式，可能都需要应对服务不断变化的资源消耗情况。 这可能涉及更改群集的大小，以在重新组织现有资源的使用不足以解决问题时提供更多资源。 
 
 但为什么要尝试为所有用户选择出单个分区方案？ 为什么局限于一项服务和一个静态群集？ 实际情况通常更具动态。 
 

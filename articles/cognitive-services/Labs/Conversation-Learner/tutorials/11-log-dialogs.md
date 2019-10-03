@@ -3,19 +3,20 @@ title: 如何在对话学习器模型中记录对话 - Microsoft 认知服务 | 
 titleSuffix: Azure
 description: 了解如何在对话学习器模型中记录对话。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: e3a84bfa643ebe74983bcef0d0ea72c701ffa589
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 388942e8195048d7528a54e5a290f1724c8e876b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170490"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703975"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>如何在对话学习器模型中记录对话
 
@@ -35,7 +36,7 @@ ms.locfileid: "58170490"
 ## <a name="details"></a>详细信息
 日志对话是所录制的、机器人与最终用户进行交互的日志。 通过利用这些日志对话，可以修复实体标签和操作选择来改进模型的性能和整体系统性能。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 在 Web UI 中，单击“导入教程”并选择名为“Tutorial-11-LogDialogs”的模型。
 

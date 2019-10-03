@@ -1,19 +1,19 @@
 ---
-title: 重新启动 MySQL 服务器使用 Azure CLI 的 Azure 数据库
-description: 本文介绍如何重新启动 Azure Database for MySQL 服务器使用 Azure CLI。
+title: 使用 Azure CLI 重启 Azure Database for MySQL 服务器
+description: 本文介绍了如何使用 Azure CLI 重启 Azure Database for MySQL 服务器。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/28/2019
 ms.openlocfilehash: d00aa35437f93c010ce48f3036b4a684910702c0
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58623148"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66160431"
 ---
-# <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>重新启动 MySQL 服务器使用 Azure CLI 的 Azure 数据库
+# <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>使用 Azure CLI 重启 Azure Database for MySQL 服务器
 本主题介绍如何重启 Azure Database for MySQL 服务器。 出于维护原因，可能需要重启服务器，这会在服务器执行操作时导致短暂中断。
 
 如果服务处于繁忙状态，则会阻止重启服务器。 例如，服务可以处理缩放 vCores 等先前请求的操作。
@@ -32,7 +32,7 @@ ms.locfileid: "58623148"
 
 ## <a name="restart-the-server"></a>重启服务器
 
-重新启动服务器使用以下命令：
+使用以下命令重启服务器：
 
 ```azurecli-interactive
 az mysql server restart --name mydemoserver --resource-group myresourcegroup
@@ -40,4 +40,4 @@ az mysql server restart --name mydemoserver --resource-group myresourcegroup
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[如何在 Azure 数据库中为 MySQL 设置参数](howto-configure-server-parameters-using-cli.md)
+了解[如何在 Azure Database for MySQL 中设置参数](howto-configure-server-parameters-using-cli.md)

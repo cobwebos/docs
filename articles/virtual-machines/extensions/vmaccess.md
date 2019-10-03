@@ -3,8 +3,8 @@ title: 重置对 Azure Linux VM 的访问 | Microsoft Docs
 description: 如何使用 VMAccess 扩展和 Azure CLI 在 Linux VM 上管理管理员用户和重置访问权限
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 261a9646-1f93-407e-951e-0be7226b3064
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
-ms.author: roiyz
-ms.openlocfilehash: 71aecc1748e70e2119b1f54c21a0f705afc5d5d0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.author: akjosh
+ms.openlocfilehash: 447c10037503c627092bb23e23b4fe1ee88ca45d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731302"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173954"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>配合使用 VMAccess 扩展和 Azure CLI 管理管理用户、SSH，并检查或修复 Linux VM 上的磁盘
 ## <a name="overview"></a>概述
@@ -36,7 +36,7 @@ Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的 root 密
 
 VM 访问扩展可以针对这些 Linux 分发运行：
 
-| 分发 | 版本 |
+| 分发 | Version |
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS 和 12.04 LTS |
 | Debian | Debian 7.9+、8.2+ |
@@ -66,9 +66,9 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **注意：**`az vm user update` 命令将新公钥文本追加​​到 VM 上管理员用户的 `~/.ssh/authorized_keys` 文件。 此操作不会替换或删除任何现有的 SSH 密钥。 这不会删除在部署时设置的先前密钥或通过 VMAccess 扩展进行的后续更新。
+> **注意：** `az vm user update` 命令将新公钥文本追加​​到 VM 上管理员用户的 `~/.ssh/authorized_keys` 文件。 此操作不会替换或删除任何现有的 SSH 密钥。 这不会删除在部署时设置的先前密钥或通过 VMAccess 扩展进行的后续更新。
 
-## <a name="reset-password"></a>重置密码
+## <a name="reset-password"></a>重新设置密码
 以下示例重置名为 `myVM` 的 VM 上用户 `azureuser` 的密码：
 
 ```azurecli-interactive

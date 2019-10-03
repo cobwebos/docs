@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 9e73fc4db1404842e6d3878d88d8f02511587bc9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
-ms.translationtype: HT
+ms.openlocfilehash: 0827311218202de447e5cf27356e00c4da020e94
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044971"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61472985"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>在本地调试 Azure Data Lake Analytics 代码
 
@@ -30,22 +30,22 @@ ms.locfileid: "43044971"
 ### <a name="debug-local-code-in-a-code-behind-file"></a>在代码隐藏文件中调试本地代码
 
 1. 在代码隐藏文件中设置断点。
-2. 选择 F5 在本地调试脚本。
+2. 选择 F5  在本地调试脚本。
 
 > [!NOTE]
-   > 以下过程仅适用于 Visual Studio 2015。 在旧版 Visual Studio 中，可能需要手动添加 PDB 文件。  
+   > 以下过程仅适用于 Visual Studio 2015。 在旧版 Visual Studio 中，可能需要手动添加 PDB  文件。  
    >
    >
 
 ### <a name="debug-local-code-in-a-referenced-c-project"></a>在引用的 C# 项目中调试本地代码
 
-1. 创建 C# 程序集项目，构建该项目以生成输出 DLL 文件。
-2. 使用 U-SQL 语句注册该 DLL 文件：
+1. 创建 C# 程序集项目，构建该项目以生成输出 DLL  文件。
+2. 使用 U-SQL 语句注册该 DLL  文件：
 
         CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
         
 3. 在 C# 代码中设置断点。
-4. 选择 F5，通过在本地引用 C# DLL 文件来调试脚本。
+4. 选择 F5  ，通过在本地引用 C# DLL  文件来调试脚本。
 
 
 ## <a name="next-steps"></a>后续步骤

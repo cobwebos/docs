@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.openlocfilehash: 3ddbf5832424cdafad2c29254f51754203c7f079
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602267"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428319"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>配置连接的工厂解决方案加速器
 
@@ -29,7 +29,7 @@ ms.locfileid: "53602267"
 * 测试工作站
 * 打包工作站
 
-这些 OPC UA 服务器具有 OPC UA 节点，并且 [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)会将这些节点的值发送到连接的工厂。 这包括：
+这些 OPC UA 服务器具有 OPC UA 节点，并且 [OPC 发布服务器](overview-opc-publisher.md)会将这些节点的值发送到连接的工厂。 这包括：
 
 * 当前的操作状态，例如当前的功耗。
 * 生产信息，例如生产的产品数量。
@@ -236,7 +236,7 @@ ms.locfileid: "53602267"
 
 * **ConstValue**（双精度类型）
 
-  如果“OpCode”为“Const”，此属性则为节点的值。
+  如果“OpCode”为“Const”，此属性则为节点的值   。
 
 * **Minimum**（双精度类型）
 
@@ -254,7 +254,7 @@ ms.locfileid: "53602267"
 
   定义操作的集合，可执行这些操作以响应最大值警报。
 
-在工作站级别，还可以看到模拟对象。 这些对象仅用于配置连接的工厂模拟，不应用于配置真正的拓扑。
+在工作站级别，还可以看到模拟对象  。 这些对象仅用于配置连接的工厂模拟，不应用于配置真正的拓扑。
 
 ## <a name="how-the-configuration-data-is-used-at-runtime"></a>配置数据在运行时的使用方式
 
@@ -265,15 +265,15 @@ ms.locfileid: "53602267"
 此类别中的属性定义连接的工厂仪表板的可视外观。 示例包括：
 
 * 名称
-* Description
-* 映像
-* 位置
+* 描述
+* Image
+* Location
 * 单位
 * Visible
 
 ### <a name="internal-topology-tree-addressing"></a>内部拓扑树寻址
 
-WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 OpcUri 属性用作访问此字典的密钥，并且需要是唯一的。
+WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 OpcUri 属性用作访问此字典的密钥，并且需要是唯一的   。
 
 ### <a name="oeekpi-computation"></a>OEE/KPI 计算
 
@@ -282,9 +282,9 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 * 要包括在计算中的 OPC UA 节点值。
 * 从遥测值计算图表数据的方式。
 
-连接的工厂使用 https://www.oeefoundation.org 上发布的 OEE 公式。
+已连接的工厂由发布使用 OEE 公式[ http://www.oeefoundation.org ](http://www.oeefoundation.org)。
 
-工作站中的 OPC UA 节点对象支持在 OEE/KPI 计算中使用标记。 Relevance 属性指示 OPC UA 节点值应用于的 OEE/KPI 图表数据。 OpCode 属性定义如何在计算中包含值。
+工作站中的 OPC UA 节点对象支持在 OEE/KPI 计算中使用标记。 Relevance 属性指示 OPC UA 节点值应用于的 OEE/KPI 图表数据  。 OpCode 属性定义如何在计算中包含值  。
 
 ### <a name="alert-handling"></a>警报处理
 
@@ -301,13 +301,13 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 
 * **OpcUri**
 
-  标识遥测来自的（全局唯一）OPC UA 服务器。 在引入的消息中，此属性作为 ApplicationUri 发送。
+  标识遥测来自的（全局唯一）OPC UA 服务器。 在引入的消息中，此属性作为 ApplicationUri 发送  。
 
 * **NodeId**
 
-  标识 OPC UA 服务器中的节点值。 此属性的格式必须在 OPC UA 规范中指定。 在引入的消息中，此属性作为 NodeId 发送。
+  标识 OPC UA 服务器中的节点值。 此属性的格式必须在 OPC UA 规范中指定。 在引入的消息中，此属性作为 NodeId 发送  。
 
-查看[此](https://github.com/Azure/iot-edge-opc-publisher) GitHub 页面，详细了解如何使用 OPC 发布服务器将遥测数据引入连接的工厂。
+请参阅[什么是 OPC 发布服务器](overview-opc-publisher.md)有关如何将遥测数据引入到连接工厂的详细信息。
 
 ## <a name="example-how-kpi1-is-calculated"></a>示例：如何计算 KPI1
 
@@ -332,12 +332,12 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 * 最小值。
 * 最大值。
 * 所有值的平均值。
-* 给定时间跨度中所有唯一的 OpcUri (ApplicationUri)、NodeId 对的所有值的总和。
+* 给定时间跨度中所有唯一的 OpcUri (ApplicationUri)、NodeId 对的所有值的总和    。
 
-NumberOfManufactureredProducts 节点值的一个特征是它只会增加。 若要计算在时间跨度中生产的产品数量，连接的工厂将使用 **OpCode** **SubMaxMin**。 此计算在时间跨度的开头检索最小值，在时间跨度的结尾检索最大值。
+NumberOfManufactureredProducts 节点值的一个特征是它只会增加  。 若要计算在时间跨度中生产的产品数量，连接的工厂将使用 **OpCode** **SubMaxMin**。 此计算在时间跨度的开头检索最小值，在时间跨度的结尾检索最大值。
 
-配置中的 OpCode 配置计算逻辑以计算最大值和最小值差异的结果。 然后这些结果将由下而上累计到根（全局）级别并显示在仪表板中。
+配置中的 OpCode 配置计算逻辑以计算最大值和最小值差异的结果  。 然后这些结果将由下而上累计到根（全局）级别并显示在仪表板中。
 
 ## <a name="next-steps"></a>后续步骤
 
-建议执行的下一步骤是了解如何[在 Windows 或 Linux 上为连接的工厂解决方案加速器部署网关](iot-accelerators-connected-factory-gateway-deployment.md)。
+建议下一步是了解如何[自定义连接工厂解决方案](iot-accelerators-connected-factory-customize.md)。

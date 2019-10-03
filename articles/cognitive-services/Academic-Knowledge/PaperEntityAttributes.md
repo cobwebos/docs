@@ -10,25 +10,26 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: bd37665e962ada59149b54075d7f8acbea895c50
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4b9431469a7925d26003ad9c34f6b401e5767f6d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437456"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704941"
 ---
 # <a name="paper-entity"></a>论文实体
 
 <sub> *以下属性特定于论文实体。(Ty = '0') </sub>
 
 
-名称    |描述                                        |Type       | 操作
+名称    |描述                                        |type       | 操作
 ------- | ------------------------------------------------- | --------- | ----------------------------
-ID      |实体 ID                                          |Int64      |等于
+Id      |实体 ID                                          |Int64      |等于
 Ti      |论文标题                                        |String     |Equals、<br/>-StartsWith
-L       |论文语言代码，以“\@@@”分隔            |String     |等于
+L       |用 "\@\@"分隔的纸张语言代码\@          |String     |等于
 Y       |论文年份                                         |Int32      |Equals、<br/>IsBetween
-D       |论文日期                                         |日期       |Equals、<br/>IsBetween
+D       |论文日期                                         |Date       |Equals、<br/>IsBetween
 CC      |引文计数                                     |Int32      |无  
 ECC     |估计的引文计数                           |Int32      |无
 AA.AuN  |作者姓名                                        |String     |Equals、<br/>-StartsWith
@@ -61,7 +62,7 @@ VSN     | 场馆短名称 - 期刊或会议的短名称
 V       | 卷 - 期刊卷
 BV      | 期刊名称
 BT      | 
-PB      | 日记本缩写
+PB      | 日志缩写
 I       | 刊号 - 期刊刊号
 FP      | FirstPage - 论文第一页
 LP      | LastPage - 论文最后一页

@@ -2,24 +2,25 @@
 title: Azure Active Directory B2C 解决方案和培训 | Microsoft Docs
 description: 本文提供解决方案和培训信息的链接，这些解决方案和培训可帮助了解 Azure Active Directory B2C 并将其用于端到端业务解决方案。
 services: active-directory-b2c
-author: davidmu1
-ms.author: davidmu
+author: mmacy
+manager: celestedg
+ms.author: marsma
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 08a5e288d58d86cdad18561cb8a08a31f44ae498
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 82f78ba50a6717c1d14e4921bb3c46a3525ad2cf
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009729"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063501"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 解决方案和培训
 
-借助 Azure Active Directory (Azure AD) B2C，组织能够实现帮助其与客户建立联系的业务解决方案。 以下解决方案指南和培训是可供下载的文档，能够帮助你了解这些解决方案。
+Azure Active Directory B2C （Azure AD B2C）使组织能够实现业务解决方案，帮助他们与客户联系。 以下解决方案指南和培训是可供下载的文档，能够帮助你了解这些解决方案。
 
-| 标题 | 描述 |
+| Title | 描述 |
 | ----- | ----------- |
 | [使用 Azure AD B2C 进行客户标识管理](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | 在本服务概述中，来自 Azure AD B2C 团队的 Parakh Jain ([@jainparakh](https://twitter.com/jainparakh)) 概要介绍了服务的工作原理，并展示了如何快速将 B2C 连接到 ASP.NET Core 应用程序。 |
 | [使用 Azure AD B2C 的优点](https://aka.ms/b2coverview) | 了解 Azure AD B2C 的优点和常见方案，以及应用程序可以如何利用此 CIAM 服务。 |

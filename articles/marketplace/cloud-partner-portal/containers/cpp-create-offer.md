@@ -1,25 +1,18 @@
 ---
-title: 创建 Azure 容器产品/服务 | Microsoft Docs
+title: 创建 Azure 容器产品/服务 |Azure Marketplace
 description: 如何为市场发布新的容器产品/服务。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 3b2a34a5ed2c6b57bfce0b9a4cf35cdf14cff9c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 1a0a2bd9132ba5d018bc5d45699c052d10c30162
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900074"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942679"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>使用云合作伙伴门户创建新的容器产品/服务
 
@@ -34,13 +27,13 @@ ms.locfileid: "57900074"
 
 ## <a name="new-offer-form"></a>“新建套餐”窗体 
 
-登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建产品/服务”。 在“新建产品/服务”菜单中，选择“容器”以显示“新建产品/服务”表单，并开始为新容器产品/服务定义资产。
+登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建产品/服务”  。 在“新建产品/服务”菜单中，选择“容器”  以显示“新建产品/服务”  表单，并开始为新容器产品/服务定义资产。
 
 ![为“新建产品/服务”选择“容器”选项](./media/azure-container-offer.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-容器产品/服务类型的“新建产品/服务”页提供一组选项卡和表单字段用于创建新的产品/服务。 以下每篇文章均介绍了如何使用选项卡来为新的容器产品/服务定义资产组和支持服务。
+容器产品/服务类型的“新建产品/服务”页提供一组选项卡和表单字段用于创建新的产品/服务。  以下每篇文章均介绍了如何使用选项卡来为新的容器产品/服务定义资产组和支持服务。
 
 - [“产品/服务设置”选项卡](./cpp-offer-settings-tab.md)
 - [“SKU”选项卡](./cpp-skus-tab.md)

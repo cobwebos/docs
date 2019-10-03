@@ -1,20 +1,19 @@
 ---
 title: 创建 Apache Spark 机器学习管道 - Azure HDInsight
-description: 使用 Apache Spark 机器学习库创建数据管道。
-services: hdinsight
+description: 使用 Apache Spark 机器学习库在 Azure HDInsight 中创建数据管道。
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: dbda20554b119bfb72b939cbeb7f19e0b9093b31
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.date: 07/22/2019
+ms.openlocfilehash: 22583d82d8e422d8176fdb7cd70a98d229e8b6bb
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53597471"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736385"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>创建 Apache Spark 机器学习管道
 
@@ -57,19 +56,23 @@ from pyspark.sql import Row
 LabeledDocument = Row("BuildingID", "SystemInfo", "label")
 
 # Define a function that parses the raw CSV file and returns an object of type LabeledDocument
+
+
 def parseDocument(line):
     values = [str(x) for x in line.split(',')]
     if (values[3] > values[2]):
         hot = 1.0
     else:
-        hot = 0.0        
+        hot = 0.0
 
     textValue = str(values[4]) + " " + str(values[5])
 
     return LabeledDocument((values[6]), textValue, hot)
 
+
 # Load the raw HVAC.csv file, parse it using the function
-data = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+data = sc.textFile(
+    "wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
 documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 training = documents.toDF()
@@ -129,6 +132,6 @@ only showing top 20 rows
 
 现在可以使用 `model` 对象来进行预测。 有关此机器学习应用程序的完整示例以及运行此应用程序的分步说明，请参阅[在 Azure HDInsight 上生成 Apache Spark 机器学习应用程序](apache-spark-ipython-notebook-machine-learning.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [在 Azure 上使用 Scala 和 Apache Spark 展开数据科研](../../machine-learning/team-data-science-process/scala-walkthrough.md)

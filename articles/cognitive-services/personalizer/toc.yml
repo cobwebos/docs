@@ -1,0 +1,109 @@
+- name: 个性化体验创建服务文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是个性化体验创建服务？
+      href: what-is-personalizer.md
+      displayName: 'loop, context, feature, action, rank, reward, developer, use case'
+    - name: 新增功能
+      href: whats-new.md
+      displayName: 'release notes, service updates, videos'
+- name: 快速入门
+  items:
+    - name: '使用 C#'
+      href: csharp-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, c#'
+    - name: 使用 Node.js
+      href: quickstart-command-line-feedback-loop-nodejs-sdk.md
+      displayName: 'code, sample, quickstart, node, npm, sdk'
+    - name: 使用 Python
+      href: python-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, python'
+- name: 概念
+  items:
+    - name: 个性化体验创建服务的工作原理
+      href: how-personalizer-works.md
+      displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
+    - name: 可在哪种场合下使用个性化体验创建服务？
+      href: where-can-you-use-personalizer.md
+      displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: 道德和负责使用
+      href: ethics-responsible-use.md
+      displayName: 'best practice, design'
+    - name: 基本概念
+      items:
+        - name: 特征 - 操作和上下文
+          href: concepts-features.md
+          displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
+        - name: 主动学习
+          href: concept-active-learning.md
+          displayName: 'active, inactive'
+        - name: 奖励
+          href: concept-rewards.md
+          displayName: 'reward, wait time, default reward'
+        - name: 强化学习
+          href: concepts-reinforcement-learning.md
+          displayName: 'RL, contextual bandits, Vowpal Wabbit'
+        - name: 浏览
+          href: concepts-exploration.md
+    - name: 分析
+      items:
+        - name: 脱机评估
+          href: concepts-offline-evaluation.md
+          displayName: 'learning policy, Counterfactual, features'
+        - name: 功能评估
+          href: concept-feature-evaluation.md
+    - name: 可伸缩性和性能
+      href: concepts-scalability-performance.md
+- name: 操作指南
+  items:
+    - name: 创建并配置个性化体验创建服务
+      href: how-to-settings.md
+      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model'
+    - name: 分析
+      items:
+        - name: 脱机评估
+          href: how-to-offline-evaluation.md
+- name: 引用
+  items:
+    - name: 示例
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092083'
+    - name: REST API 参考
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092082'
+    - name: SDK
+      items:
+        - name: .NET
+          items:
+            - name: 引用
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet'
+            - name: NuGet 包
+              href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
+        - name: Go
+          items:
+            - name: SDK 中 IsInRole 中的声明
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer'
+        - name: Node.js
+          items:
+            - name: NPM
+              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
+        - name: Python
+          items:
+            - name: Pypi 包
+              href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
+- name: 资源
+  items:
+    - name: 故障排除
+      href: troubleshooting.md
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: 合规性
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Azure 路线图
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
+    - name: 定价
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/personalizer'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/921562-personalizer'

@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 069a2a5b3b26bf517b57034f05ab7080ab392319
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 01d3af14963e92393d34a952bddc8097b7b08f18
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013341"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65232608"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>使用 Azure SQL 数据库机器学习服务 （预览版） 中的 R 和 SQL 数据
 
@@ -37,9 +37,9 @@ ms.locfileid: "60013341"
 
 - 如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/)。
 
-- 若要运行示例代码在这些练习中，首先必须启用机器学习服务 （使用 R) Azure SQL 数据库。 在发布公共预览版期间，Microsoft 会将你加入该版本并为你的现有数据库或新数据库启用机器学习。 执行[注册预览版](sql-database-machine-learning-services-overview.md#signup)中的步骤。
+- 若要在这些练习中运行示例代码，必须先有一个启用了机器学习服务（使用 R）的 Azure SQL 数据库。 在发布公共预览版期间，Microsoft 会将你加入该版本并为你的现有数据库或新数据库启用机器学习。 执行[注册预览版](sql-database-machine-learning-services-overview.md#signup)中的步骤。
 
-- 请确保已安装最新[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。 可以运行 R 脚本使用其他数据库管理或查询工具，但在本快速入门中，您将使用 SSMS。
+- 确保已安装了最新的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。 你可以使用其他数据库管理或查询工具运行 R 脚本，但在本快速入门中，你将使用 SSMS。
 
 ## <a name="working-with-a-data-frame"></a>使用数据帧
 
@@ -222,10 +222,10 @@ WITH RESULT SETS((
     
 |*Col2*|*Col3*|
 |----|----|
-|1|1|
+|第|第|
 |10|2|
 |100|3|
-|1|4|
+|第|4|
 |10|5|
 |100|6|
 
@@ -300,4 +300,4 @@ STDOUT message(s) from external script: $ Amount       : num  3400 16925 20350 1
 - 准备输入的数据，以避免意外情况时，请执行根据需要显式强制转换。
 - 避免传递列的数据 （如 GUID 或 rowguid） 会导致错误并不是适用于建模。
 
-有关支持和不支持 R 数据类型的详细信息，请参阅[R 库和数据类型](/sql/advanced-analytics/r/r-libraries-and-data-types.md)。
+有关支持和不支持 R 数据类型的详细信息，请参阅[R 库和数据类型](/sql/advanced-analytics/r/r-libraries-and-data-types)。

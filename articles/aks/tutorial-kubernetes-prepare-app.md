@@ -2,18 +2,18 @@
 title: Azure 上的 Kubernetes 教程 - 准备应用程序
 description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何通过 Docker Compose 准备和生成一个多容器应用，以便能够随后将其部署到 AKS。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 9212e065ff7f6b0e3df1b90296f54159762bdaf9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3ff93d006b7599eaa3f97c33efb047ce480c301c
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002004"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71264476"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>教程：准备用于 Azure Kubernetes 服务 (AKS) 的应用程序
 
@@ -103,7 +103,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 docker-compose down
 ```
 
-删除本地应用程序以后，你就有了一个包含 Azure 投票应用程序的 Docker 映像 *azure-front-front*，可以在下一教程中使用。
+删除本地应用程序以后，你就有了一个包含 Azure 投票应用程序的 Docker 映像 azure-vote-front  ，可以在下一教程中使用。
 
 ## <a name="next-steps"></a>后续步骤
 

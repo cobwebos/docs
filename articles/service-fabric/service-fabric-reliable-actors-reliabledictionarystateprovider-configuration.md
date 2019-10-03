@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: 4e39357a765ec85aa64055b1aa422d8d7a01c116
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669395"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60727125"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>配置 Reliable Actors - ReliableDictionaryActorStateProvider
 通过更改 Visual Studio 包根目录下的指定执行组件的 Config 文件夹中生成的 settings.xml 文件，可以修改 ReliableDictionaryActorStateProvider 的默认配置。
@@ -84,7 +84,7 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>配置名称
-| 名称 | 单位 | 默认值 | 备注 |
+| Name | 单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |秒 |0.015 |收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
 | ReplicatorEndpoint |不适用 |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 若要了解有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |

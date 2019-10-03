@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: a9d6396cab560a201b98497e787af4b6c7c2dabb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 725e265bb7f8c98db19971c50e690974cb38a0d2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896276"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65518140"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>使用视频索引器编辑器创建项目
 
@@ -56,7 +57,7 @@ ms.locfileid: "58896276"
 
     ![筛选器](./media/video-indexer-view-edit/visual-text.png)
 
-    您可以在查询层多个筛选器。 使用**+** / **-** 按钮来添加/删除筛选器。 使用**清除筛选器**中删除所有筛选器。
+    您可以在查询层多个筛选器。 使用 **+** / **-** 按钮来添加/删除筛选器。 使用**清除筛选器**中删除所有筛选器。
 1. 若要添加视频，请选择它们，然后选择**添加**。
 1. 现在，您将看到所有所选的视频。 这些是要从中选择为你的项目的剪辑的视频。
 

@@ -2,20 +2,20 @@
 title: SQL 数据仓库商业智能合作伙伴 | Microsoft Docs
 description: 其解决方案支持 SQL 数据仓库的第三方商业智能合作伙伴列表。
 services: sql-data-warehouse
-author: jrowlandjones
+author: mabasile-MSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
 ms.date: 03/27/2019
-ms.author: jrj
+ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 6860746a1b20fe06de2dafa6035ae560bde24a29
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 87379631cc7f7b9e31def157ba38336e41b693d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678660"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65873818"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL 数据仓库商业智能合作伙伴
 若要创建端到端数据仓库解决方案，请从行业领先的各种工具中进行选择。  本文重点介绍的正式的商业智能 (BI) 解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。

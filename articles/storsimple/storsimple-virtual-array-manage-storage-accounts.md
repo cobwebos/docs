@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.openlocfilehash: a992851deda0659509c0ee4ea5de76b19734f017
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867593"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62128832"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的存储帐户凭据
 
 ## <a name="overview"></a>概述
-StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“配置”部分提供了可以在 StorSimple Manager 服务中创建的全局服务参数。 这些参数可应用到所有连接到该服务的设备。具体参数包括：
+StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“配置”  部分提供了可以在 StorSimple Manager 服务中创建的全局服务参数。 这些参数可应用到所有连接到该服务的设备。具体参数包括：
 
 * 存储帐户凭据
 * 访问控制记录
@@ -35,14 +35,14 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
 
 存储帐户凭据包含设备通过云服务提供程序访问存储帐户时使用的凭据。 对于 Microsoft Azure 存储帐户，这些是帐户名和主访问密钥等凭据。
 
-在“存储帐户凭据”边栏选项卡上，为计费订阅创建的所有存储帐户凭据以表格格式显示，其中包含以下信息：
+在“存储帐户凭据”  边栏选项卡上，为计费订阅创建的所有存储帐户凭据以表格格式显示，其中包含以下信息：
 
 * **名称** – 创建帐户时分配给帐户的唯一名称。
 * **已启用 SSL** – 是否启用 SSL，设备到云的通信将通过安全通道进行。
   
   ![“配置”部分](./media/storsimple-virtual-array-manage-storage-accounts/ova-storageaccountcredentials-blade.png)
 
-可以在“存储帐户凭据”边栏选项卡上执行的与存储帐户凭据相关的最常见任务包括：
+可以在“存储帐户凭据”  边栏选项卡上执行的与存储帐户凭据相关的最常见任务包括：
 
 * 添加存储帐户凭据
 * 编辑存储帐户凭据
@@ -67,51 +67,51 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
 
 #### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>添加与 Device Manager 服务具有相同 Azure 订阅的存储帐户凭据
 
-1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”边栏选项卡。
-2. 在“配置”部分中，选择“存储帐户凭据”。
-3. 单击“添加”。
-4. 在“添加存储帐户”边栏选项卡中，执行以下操作：
+1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”  边栏选项卡。
+2. 在“配置”  部分中，选择“存储帐户凭据”  。
+3. 单击“添加”  。
+4. 在“添加存储帐户”  边栏选项卡中，执行以下操作：
    
-    1. 对于“订阅”，选择“当前”。
+    1. 对于“订阅”  ，选择“当前”  。
     2. 提供 Azure 存储帐户的名称。
-    3. 选择“启用”，创建用于在 StorSimple 设备和云之间传输网络通信的安全通道。 仅当要在私有云中操作时，才选择“禁用”。
-    4. 单击“添加”。 成功创建存储帐户后，将收到通知。<br></br>
+    3. 选择“启用”，创建用于在 StorSimple 设备和云之间传输网络通信的安全通道。  仅当要在私有云中操作时，才选择“禁用”  。
+    4. 单击“添加”  。 成功创建存储帐户后，将收到通知。<br></br>
    
         ![添加现有的存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
 #### <a name="to-add-an-azure-storage-account-credential-that-is-outside-of-the-device-manager-service-subscription"></a>添加 Device Manager 服务订阅外部的 Azure 存储帐户凭据
 
-1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”边栏选项卡。
-2. 在“配置”部分中，选择“存储帐户凭据”。 这会列出与 StorSimple Device Manager 服务关联的任何现有存储帐户凭据。
-3. 单击“添加”。
-4. 在“添加存储帐户”边栏选项卡中，执行以下操作：
+1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”  边栏选项卡。
+2. 在“配置”  部分中，选择“存储帐户凭据”  。 这会列出与 StorSimple Device Manager 服务关联的任何现有存储帐户凭据。
+3. 单击“添加”  。
+4. 在“添加存储帐户”  边栏选项卡中，执行以下操作：
    
-    1. 对于“订阅”，选择“其他”。
+    1. 对于“订阅”  ，选择“其他”  。
    
     2. 提供 Azure 存储帐户凭据的名称。
    
-    3. 在“存储帐户访问密钥”文本框中，提供 Azure 存储帐户凭据的主访问密钥。 要获取此密钥，请转到“Azure 存储服务”，选择存储帐户凭据，并单击“管理帐户密钥”。 现在，可以复制主访问密钥。
+    3. 在“存储帐户访问密钥”  文本框中，提供 Azure 存储帐户凭据的主访问密钥。 要获取此密钥，请转到“Azure 存储服务”，选择存储帐户凭据，并单击“管理帐户密钥”。  现在，可以复制主访问密钥。
    
-    4. 若要启用 SSL，请单击“启用”按钮以创建用于在 StorSimple Device Manager 服务和云之间传输网络通信的安全通道。 仅当要在私有云中操作时，才单击“禁用”按钮。
+    4. 若要启用 SSL，请单击“启用”  按钮以创建用于在 StorSimple Device Manager 服务和云之间传输网络通信的安全通道。 仅当要在私有云中操作时，才单击“禁用”  按钮。
    
-    5. 单击“添加”。 成功创建存储帐户凭据后，将收到通知。
+    5. 单击“添加”  。 成功创建存储帐户凭据后，将收到通知。
 
-5. 新创建的存储帐户凭据会显示在 StorSimple 配置 Device Manager 服务边栏选项卡上的“存储帐户凭据”下。
+5. 新创建的存储帐户凭据会显示在 StorSimple 配置 Device Manager 服务边栏选项卡上的“存储帐户凭据”  下。
    
     ![在 Device Manager 服务订阅外部添加 Azure 存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-outside-storageacct.png)
 
 ## <a name="edit-a-storage-account-credential"></a>编辑存储帐户凭据
-可以编辑设备所使用的存储帐户凭据。 如果编辑当前正在使用的存储帐户凭据，可供修改的字段是存储帐户凭据的访问密钥和 SSL 模式。 可以提供新的存储访问密钥，或修改“启用 SSL 模式”选项并保存更新的设置。
+可以编辑设备所使用的存储帐户凭据。 如果编辑当前正在使用的存储帐户凭据，可供修改的字段是存储帐户凭据的访问密钥和 SSL 模式。 可以提供新的存储访问密钥，或修改“启用 SSL 模式”  选项并保存更新的设置。
 
 #### <a name="to-edit-a-storage-account-credential"></a>编辑存储帐户凭据
-1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”边栏选项卡。
-2. 在“配置”部分中，选择“存储帐户凭据”。 这会列出与 StorSimple Device Manager 服务关联的任何现有存储帐户凭据。
+1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”  边栏选项卡。
+2. 在“配置”  部分中，选择“存储帐户凭据”  。 这会列出与 StorSimple Device Manager 服务关联的任何现有存储帐户凭据。
 3. 在存储帐户凭据的表格列表中，选择并双击要修改的帐户。
-4. 在存储帐户凭据的“属性”边栏选项卡中，执行以下操作：
+4. 在存储帐户凭据的“属性”  边栏选项卡中，执行以下操作：
    
-   1. 如果需要，可以修改“启用 SSL 模式”选项。
+   1. 如果需要，可以修改“启用 SSL 模式”  选项。
    2. 可以选择重新生成存储帐户凭据访问密钥。 有关详细信息，请参阅[重新生成存储帐户密钥](../storage/common/storage-account-manage.md#access-keys)。 提供新的存储帐户凭据密钥。 对于 Azure 存储帐户，这是主访问密钥。
-   3. 单击“属性”边栏选项卡顶部的“保存”以保存设置。 “存储帐户凭据”边栏选项卡上将更新设置。
+   3. 单击“属性”边栏选项卡顶部的“保存”以保存设置   。 “存储帐户凭据”  边栏选项卡上将更新设置。
       
       ![编辑存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-edit-storageacct.png)
 
@@ -122,13 +122,13 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
 > 
 
 #### <a name="to-delete-a-storage-account-credential"></a>删除存储帐户凭据
-1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”边栏选项卡。
-2. 在“配置”部分中，选择“存储帐户凭据”。 这会列出与 StorSimple Device Manager 服务关联的任何现有存储帐户凭据。
+1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”  边栏选项卡。
+2. 在“配置”  部分中，选择“存储帐户凭据”  。 这会列出与 StorSimple Device Manager 服务关联的任何现有存储帐户凭据。
 3. 在存储帐户凭据的表格列表中，选择并双击要删除的帐户。
-4. 在存储帐户凭据的“属性”边栏选项卡中，执行以下操作：
+4. 在存储帐户凭据的“属性”  边栏选项卡中，执行以下操作：
    
-   1. 单击“删除”，删除这些凭据。
-   2. 系统提示确认时，请单击“是”继续删除。 表格列表随即会更新以反映更改。
+   1. 单击“删除”  ，删除这些凭据。
+   2. 系统提示确认时，请单击“是”  继续删除。 表格列表随即会更新以反映更改。
       
       ![删除存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-del-storageacct.png)
 
@@ -138,15 +138,15 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
 为了告知 StorSimple Device Manager 服务发生了这种更改，需要访问 StorSimple Device Manager 服务，访问存储帐户凭据，并同步主密钥或辅助密钥（具体取决于更改了哪一个）。 然后，服务将获取最新密钥，加密密钥，并将其发送到设备。
 
 #### <a name="to-synchronize-keys-for-storage-account-credentials-in-the-same-subscription-as-the-service-azure-only"></a>同步与服务相同的订阅中存储帐户凭据的密钥（仅限 Azure）
-1. 在服务登陆边栏选项卡上，选择服务、双击服务名称，然后在“配置”部分中单击“存储帐户凭据”。
-2. 在“存储帐户凭据”边栏选项卡上的存储帐户凭据列表中，选择要同步其密钥的存储帐户凭据。
-3. 在所选存储帐户凭据的“属性”边栏选项卡中，执行以下操作：
+1. 在服务登陆边栏选项卡上，选择服务、双击服务名称，然后在“配置”部分中单击“存储帐户凭据”   。
+2. 在“存储帐户凭据”  边栏选项卡上的存储帐户凭据列表中，选择要同步其密钥的存储帐户凭据。
+3. 在所选存储帐户凭据的“属性”  边栏选项卡中，执行以下操作：
    
-    1. 单击“更多”，并单击“同步访问密钥”。
+    1. 单击“更多”  ，并单击“同步访问密钥”  。
    
-    2. 当系统提示确认时，单击“同步密钥”以完成同步。
+    2. 当系统提示确认时，单击“同步密钥”  以完成同步。
     
-4. 在 StorSimple Device Manager 服务中，需要更新前面在 Microsoft Azure 存储服务中更改的密钥。 在“同步存储帐户密钥”边栏选项卡中，如果更改了主访问密钥（重新生成），请单击“主”，并单击“同步密钥”。 如果更改了辅助密钥，请单击“辅助”，并单击“同步密钥”。
+4. 在 StorSimple Device Manager 服务中，需要更新前面在 Microsoft Azure 存储服务中更改的密钥。 在“同步存储帐户密钥”  边栏选项卡中，如果更改了主访问密钥（重新生成），请单击“主”，并单击“同步密钥”  。 如果更改了辅助密钥，请单击“辅助”  ，并单击“同步密钥”  。
    
     ![同步访问密钥](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
 

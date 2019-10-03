@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c330afb2c5d315b3d386d1477669f1aab2f6e6f9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360161"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972080"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>将 VMware VM 和物理服务器灾难恢复到辅助站点时的支持矩阵
 
@@ -30,7 +30,7 @@ ms.locfileid: "59360161"
 
 **操作系统** | **详细信息**
 --- | ---
-vCenter 服务器 | vCenter 5.5、6.0 和 6.5<br/><br/> 如果运行 6.0 或 6.5，请注意，仅支持 5.5 功能。
+vCenter Server | vCenter 5.5、6.0 和 6.5<br/><br/> 如果运行 6.0 或 6.5，请注意，仅支持 5.5 功能。
 
 
 ## <a name="replicated-vm-support"></a>复制的 VM 支持
@@ -75,7 +75,7 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 **存储（主机）** | **支持** 
 --- | --- 
 NFS | 是 
-SMB 3.0 | 不适用 
+SMB 3.0 | 不可用 
 SAN (ISCSI) | 是 
 多路径 (MPIO) | 是 
 
@@ -84,8 +84,8 @@ SAN (ISCSI) | 是
 **配置** | **支持** 
 --- | --- 
 VMDK | 是 
-VHD/VHDX | 不适用 
-第 2 代 VM | 不适用 
+VHD/VHDX | 不可用 
+第 2 代 VM | 不可用 
 共享群集磁盘 | 是 
 加密磁盘 | 否 
 UEFI| 是 
@@ -97,7 +97,7 @@ RDM | 是
 存储空间 | 否 
 热添加/移除磁盘 | 是 
 排除磁盘 | 是 
-多路径 (MPIO) | 不适用 
+多路径 (MPIO) | 不可用 
 
 ## <a name="vaults"></a>保管库
 

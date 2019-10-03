@@ -9,17 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 6ada2a5e505bfe37f4f9a956570d8b6f38f55e55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4941038288b90bcbfd61660458c564ce64add9e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357441"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958509"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
 
@@ -172,7 +171,7 @@ ms.locfileid: "59357441"
 
 5. 选择审核事件的目标 - 事件中心和/或 Azure Monitor 日志。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
 
-6. 单击“ **保存**”。
+6. 单击“保存”。
 
     ![配置诊断设置](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 
@@ -213,11 +212,11 @@ ms.locfileid: "59357441"
 
 若要使用事件中心的审核日志数据，需设置一个流来使用事件并将其写入到目标。 有关详细信息，请参阅 Azure 事件中心文档。
 
-### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>使用和分析日志存储在 Azure Monitor 日志
+### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>使用和分析存储在 Azure Monitor 日志中的日志
 
-如果审核日志将写入到 Azure Monitor 日志，并可在 Log Analytics 工作区中，可以审核数据运行的高级的搜索。 作为起点，导航到 Log Analytics 工作区并在*常规*部分中，单击*日志*并输入一个简单查询，例如：`search "SQLSecurityAuditEvents"`若要查看审核日志。  
+如果将审核日志写入到 Azure Monitor 日志，则可以在 Log Analytics 工作区中使用它们，可以在其中对审核数据运行高级搜索。 首先，导航到 Log Analytics 工作区，在“常规”部分下单击“日志”，然后输入一个简单查询（例如：`search "SQLSecurityAuditEvents"`）以查看审核日志。  
 
-Azure Monitor 日志可以使用集成的搜索和自定义仪表板轻松分析跨所有工作负荷和服务器的记录数以百万计的实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅[Azure Monitor 日志搜索引用](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
+有了 Azure Monitor 日志，就可以使用集成的搜索和自定义仪表板来轻松分析所有工作负荷和服务器上的数百万记录，获得实时操作见解。 有关 Azure Monitor 日志搜索语言和命令的其他有用信息，请参阅 [Azure Monitor 日志搜索参考](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

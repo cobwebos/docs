@@ -9,15 +9,15 @@ ms.assetid: 1446AD8B-A685-4F5F-B4AA-74C8E9A40BE9
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: overview
-ms.date: 02/06/2019
+ms.date: 09/13/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: fa1e2e6ac6e85c431a759d8eb1c22923e86e40d4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f9e33ae30b3aa59f4705518c3df20118fa056a93
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237308"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996764"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>什么是必应图像搜索 API？
 
@@ -31,7 +31,7 @@ ms.locfileid: "56237308"
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [实时建议搜索词](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) | 在用户键入时通过[必应自动建议 API](../bing-autosuggest/get-suggested-search-terms.md) 显示建议的搜索词改善应用体验。 |
 | [筛选和限制图像结果](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)                       | 通过编辑查询参数筛选必应返回的图像。                                                                                                       |
-| [缩略图的裁剪、重设大小和显示](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/resize-and-crop-thumbnails)                                                | 编辑和显示必应图像搜索返回的图像的缩略图预览。                                                                                      |
+| [缩略图的裁剪、重设大小和显示](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/resize-and-crop-thumbnails)                                                | 编辑和显示必应图像搜索返回的图像的缩略图预览。                                                                                      |
 | [用户搜索查询的分段和扩展](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)               | 通过包括和显示必应建议的查询搜索词，扩展搜索功能。                                                                    |
 | [获取热门图像](https://review.docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images)                                                                     | 自定义一个搜罗全世界热门图像的搜索。                                                                                                          |
 
@@ -59,10 +59,12 @@ ms.locfileid: "56237308"
 
 * 必应搜索 API 的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
 
-* [必应图像搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) 参考部分包含有关 API 的终结点、标头、API 响应和查询参数的信息。
+* [必应图像搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) 参考部分包含有关 API 的终结点、标头、API 响应和查询参数的信息。
 
 * [必应使用和显示要求](./useanddisplayrequirements.md)指定了允许用户如何使用通过必应搜索 API 获得的内容和信息。
 
 * [使用必应图像搜索 API 从 Web 获取图像](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)一文介绍了如何在 Web 中搜索和获取图像。
 
 * [发送和使用搜索查询](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)一文介绍了如何完成搜索查询的发出、自定义和分段。
+
+* [比较必应搜索 API](../Bing-web-search/bing-api-comparison.md)

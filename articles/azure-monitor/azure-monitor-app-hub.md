@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 514f0c193dbbca6d8583c9f93feadee3415f163c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6f35bf82e1c3275772bc9f5ccdcaceed024bd7d9
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426267"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967789"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -56,22 +56,7 @@ ms.locfileid: "59426267"
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="">
-                                                    <div class="cardSize">
-                                                        <div class="cardPadding">
-                                                            <div class="card">
-                                                                <div class="cardImageOuter">
-                                                                    <div class="cardImage">
-                                                                        <img alt="" src="/learn/achievements/secure-azure-resources-with-conditional-access.svg" data-linktype="external">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="cardText" style="padding-left: 0px">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
+                                           </li>
                                         </ul>
                                     </li>
                                     <li>
@@ -79,12 +64,18 @@ ms.locfileid: "59426267"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
+                                                        <h3>新增功能</h3>
+                                                        <p>
+                                                            <a href="./app/azure-vm-vmss-apps.md">无代码置备监视 Azure VM 和 Azure 虚拟机规模集应用程序</a><br>
+                                                            <a href="./app/kubernetes.md">监视 Kubernetes 应用程序</a><br>
+                                                            <a href="./app/status-monitor-v2-overview.md">用于 IIS 应用的状态监视器 v2</a><br>
+                                                        </p>
+                                                        <br><br>
                                                         <h3>快速入门</h3>
                                                         <p>
                                                             <a href="./learn/quick-monitor-portal.md">ASP.NET</a><br>
                                                             <a href="./learn/dotnetcore-quick-start.md">ASP.NET Core</a><br>
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
-                                                            <a href="./learn/java-quick-start.md">Java</a><br>
                                                             <a href="./learn/mobile-center-quickstart.md">Mobile</a><br>
                                                             <a href="./app/website-monitoring.md">浏览器/客户端监视</a>
                                                         </p>
@@ -155,6 +146,7 @@ ms.locfileid: "59426267"
                                                             <a href="./app/asp-net.md">深入的监视配置</a><br>
                                                             <a href="./app/monitor-performance-live-website-now.md">状态监视器</a><br>
                                                             <a href="./app/azure-web-apps.md">应用服务监视</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">VM 和虚拟机规模集应用程序监视</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">自定义事件和指标</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">开源 .NET SDK GitHub 存储库</a>
                                                         </p>

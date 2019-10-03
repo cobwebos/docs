@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c024954053588537ac3363703876f716a38f41d9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58861856"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702946"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD 密码保护代理版本历史记录
 
@@ -38,7 +38,7 @@ ms.locfileid: "58861856"
   * 软件版本和 Azure 租户数据仅适用于 DC 代理和代理运行版本 1.2.116.0 或更高版本。
   * Azure 租户的数据可能不会报告代理重新注册 （或续订） 之前或发生林。
 * 代理服务现在要求安装.NET 4.7。
-  * 应已完全更新的 Windows Server 上安装.NET 4.7。 如果这不是这种情况，下载并运行安装程序，请参阅[Windows.NET Framework 4.7 脱机安装程序](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)。
+  * 应已完全更新的 Windows Server 上安装.NET 4.7。 如果这不是这种情况，下载并运行安装程序，请参阅[Windows.NET Framework 4.7 脱机安装程序](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)。
   * 在服务器核心的系统上可能需要将 /q 标志传递到.NET 4.7 安装程序以使其成功。
 * 代理服务现在支持自动升级。 自动升级过程使用与代理服务并行安装的 Microsoft Azure AD Connect 代理更新程序服务。 自动升级是在默认情况下。
 * 自动升级可以启用或禁用使用集 AzureADPasswordProtectionProxyConfiguration cmdlet。 可以使用 Get AzureADPasswordProtectionProxyConfiguration cmdlet 查询的当前设置。

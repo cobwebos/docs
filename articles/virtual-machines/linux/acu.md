@@ -4,23 +4,22 @@ description: 适用于 Linux 的 Azure 计算单元的概念的概述。 ACU 提
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: jonbeck
-ms.openlocfilehash: 69617a09de6ca80c1e674e0b20a40d36a48f5825
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e0ec84f2e7423310119981b74a52c3e751af8d19
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60187747"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084132"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure 计算单元 (ACU)
 

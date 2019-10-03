@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f53e21b8121006a6a6a1d2099b26e7cb28ca0ed9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545291"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933070"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>使用 Azure Maps 创建店铺定位器
 
@@ -35,7 +35,7 @@ ms.locfileid: "59545291"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程中的示例，首先需要[创建 Azure Maps 帐户](./tutorial-search-location.md#createaccount)并[获取帐户的订阅密钥](./tutorial-search-location.md#getkey)。
+若要完成本教程中的步骤，首先需要[创建 Azure Maps 帐户](./tutorial-search-location.md#createaccount)并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤获取帐户的主订阅密钥。
 
 ## <a name="design"></a>设计
 
@@ -71,7 +71,7 @@ ms.locfileid: "59545291"
 
 ## <a name="create-the-store-location-dataset"></a>创建店铺位置数据集
 
-在开发店铺定位器应用程序之前，需要创建要在地图上显示的店铺的数据集。 在本教程中，我们将使用一家名为 Contoso Coffee 的虚构咖啡厅的数据集。 此简单店铺定位器的数据集在 Excel 工作簿中进行管理。 该数据集包含分布在 9 个国家的 10,213 家 Contoso Coffee 咖啡厅位置：美国、加拿大、英国、法国、德国、意大利、荷兰、丹麦和西班牙。 下面是数据外观的屏幕截图：
+在开发店铺定位器应用程序之前，需要创建要在地图上显示的店铺的数据集。 在本教程中，我们将使用一家名为 Contoso Coffee 的虚构咖啡厅的数据集。 此简单店铺定位器的数据集在 Excel 工作簿中进行管理。 该数据集包含分布在 9 个国家/地区的 10,213 家 Contoso Coffee 咖啡厅位置：美国、加拿大、英国、法国、德国、意大利、荷兰、丹麦和西班牙。 下面是数据外观的屏幕截图：
 
 <br/>
 <center>
@@ -93,7 +93,7 @@ ms.locfileid: "59545291"
 
 另一种方法是将此数据集转换成浏览器可轻松分析的平面文本文件。 该文件本身可与应用程序的剩余部分托管在一起。 这种做法能够简化开发，但只适合小型数据集，因为用户需要下载所有数据。 由于数据文件大小小于 1 MB，因此我们对此数据集使用了平面文本文件。  
 
-若要将工作簿转换为平面文本文件，请将工作簿另存为制表符分隔的文件。 每个列由制表符分隔，因此可以方便地在代码中分析列。 可以使用逗号分隔值 (CSV) 格式，但这样做需要其他分析逻辑。 将两边带有逗号的任何字段括在引号中。 若要在 Excel 中以制表符分隔文件的格式导出此数据，请选择“另存为”。 在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。 将文件命名为 *ContosoCoffee.txt*。 
+若要将工作簿转换为平面文本文件，请将工作簿另存为制表符分隔的文件。 每个列由制表符分隔，因此可以方便地在代码中分析列。 可以使用逗号分隔值 (CSV) 格式，但这样做需要其他分析逻辑。 将两边带有逗号的任何字段括在引号中。 若要在 Excel 中以制表符分隔文件的格式导出此数据，请选择“另存为”。  在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。   将文件命名为 *ContosoCoffee.txt*。 
 
 <br/>
 <center>
@@ -139,7 +139,7 @@ ms.locfileid: "59545291"
 1. 添加对 Azure Maps 服务模块的引用。 该模块是一个 JavaScript 库，用于包装 Azure Maps REST 服务，并使其可在 JavaScript 中方便使用。 该模块可用于增强搜索功能。
 
     ```HTML
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
 1. 添加对 *index.js* 和 *index.css* 的引用：
@@ -417,7 +417,7 @@ ms.locfileid: "59545291"
             center: [-90, 40],
             zoom: 2,
 
-            //Add your Azure Maps subscription key to the map SDK.
+            //Add your Azure Maps primary subscription key to the map SDK.
             authOptions: {
                 authType: 'subscriptionKey',
                 subscriptionKey: '<Your Azure Maps Key>'
@@ -432,7 +432,7 @@ ms.locfileid: "59545291"
 
         //Use subscriptionKeyCredential to create a pipeline
         const pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential, {
-            retryOptions: { maxTries: 4 }, // Retry options
+            retryOptions: { maxTries: 4 } // Retry options
         });
 
         //Create an instance of the SearchURL client.
@@ -707,21 +707,6 @@ ms.locfileid: "59545291"
         var camera = map.getCamera();
         var listPanel = document.getElementById('listPanel');
 
-        //Get all the shapes that have been rendered in the bubble layer.
-        var data = map.layers.getRenderedShapes(map.getCamera().bounds, [iconLayer]);
-
-        data.forEach(function(shape) {
-            if (shape instanceof atlas.Shape) {
-                //Calculate the distance from the center of the map to each shape, and then store the data in a distance property.  
-                shape.distance = atlas.math.getDistanceTo(camera.center, shape.getCoordinates(), 'miles');
-            }
-        });
-
-        //Sort the data by distance.
-        data.sort(function(x, y) {
-            return x.distance - y.distance;
-        });
-
         //Check to see whether the user is zoomed out a substantial distance. If they are, tell the user to zoom in and to perform a search or select the My Location button.
         if (camera.zoom < maxClusterZoomLevel) {
             //Close the pop-up window; clusters might be displayed on the map.  
@@ -747,6 +732,25 @@ ms.locfileid: "59545291"
             </div>
             */
 
+            //Get all the shapes that have been rendered in the bubble layer. 
+            var data = map.layers.getRenderedShapes(map.getCamera().bounds, [iconLayer]);
+
+            //Create an index of the distances of each shape.
+            var distances = {};
+
+            data.forEach(function (shape) {
+                if (shape instanceof atlas.Shape) {
+
+                    //Calculate the distance from the center of the map to each shape and store in the index. Round to 2 decimals.
+                    distances[shape.getId()] = Math.round(atlas.math.getDistanceTo(camera.center, shape.getCoordinates(), 'miles') * 100) / 100;
+                }
+            });
+
+            //Sort the data by distance.
+            data.sort(function (x, y) {
+                return distances[x.getId()] - distances[y.getId()];
+            });
+
             data.forEach(function(shape) {
                 properties = shape.getProperties();
                 html.push('<div class="listItem" onclick="itemSelected(\'', shape.getId(), '\')"><div class="listItem-title">',
@@ -760,8 +764,8 @@ ms.locfileid: "59545291"
                 getOpenTillTime(properties),
                 '<br />',
 
-                //Route the distance to two decimal places.  
-                (Math.round(shape.distance * 100) / 100),
+                //Get the distance of the shape.
+                distances[shape.getId()],
                 ' miles away</div>');
             });
 
@@ -872,6 +876,9 @@ ms.locfileid: "59545291"
             </div>
         */
 
+         //Calculate the distance from the center of the map to the shape in miles, round to 2 decimals.
+        var distance = Math.round(atlas.math.getDistanceTo(map.getCamera().center, shape.getCoordinates(), 'miles') * 100)/100;
+
         var html = ['<div class="storePopup">'];
         html.push('<div class="popupTitle">',
             properties['AddressLine'],
@@ -882,8 +889,8 @@ ms.locfileid: "59545291"
             //Convert the closing time to a format that's easier to read.
             getOpenTillTime(properties),
 
-            //Route the distance to two decimal places.  
-            '<br/>', (Math.round(shape.distance * 100) / 100),
+            //Add the distance information.  
+            '<br/>', distance,
             ' miles away',
             '<br /><img src="images/PhoneIcon.png" title="Phone Icon"/><a href="tel:',
             properties['Phone'],
@@ -896,11 +903,11 @@ ms.locfileid: "59545291"
             html.push('<br/>Amenities: ');
 
             if (properties['IsWiFiHotSpot']) {
-                html.push('<img src="images/WiFiIcon.png" title="Wi-Fi Hotspot"/>')
+                html.push('<img src="images/WiFiIcon.png" title="Wi-Fi Hotspot"/>');
             }
 
             if (properties['IsWheelchairAccessible']) {
-                html.push('<img src="images/WheelChair-small.png" title="Wheelchair Accessible"/>')
+                html.push('<img src="images/WheelChair-small.png" title="Wheelchair Accessible"/>');
             }
         }
 

@@ -1,29 +1,29 @@
 ---
-title: Azure HDInsight Go SDK
-description: Azure HDInsight Go SDK 参考
-services: hdinsight
+title: 用于 Go 的 Azure HDInsight SDK
+description: 使用 Azure HDInsight SDK for 中转和 Apache Hadoop 群集的参考资料
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 05/8/2019
 ms.author: tyfox
+ms.reviewer: jasonh
 ms.custom: seodec18
-ms.openlocfilehash: b430c69f4ed9206b34f8ca66534aa82e85c0b240
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 60ac0509aed1fc83bc7f660783d4bdbd6cb7d976
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224781"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077132"
 ---
-# <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go 管理 SDK 预览版
+# <a name="hdinsight-sdk-for-go-preview"></a>用于 Go 的 HDInsight SDK（预览版）
 
 ## <a name="overview"></a>概述
-HDInsight Go SDK 提供了用于管理 HDInsight 群集的类和函数。 该 SDK 包含用于创建、删除、更新、列出、调整大小、执行脚本操作，以及监视、获取 HDInsight 群集属性等操作。
+用于 Go 的 HDInsight SDK 提供了用于管理 HDInsight 群集的类和函数。 该 SDK 包含用于创建、删除、更新、列出、调整大小、执行脚本操作，以及监视、获取 HDInsight 群集属性等操作。
 
 > [!NOTE]  
 >还可以[从此处获得](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)适用于此 SDK 的GoDoc 参考资料。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 一个 Azure 帐户。 如果没有帐户，可[获取一个免费试用帐户](https://azure.microsoft.com/free/)。
 * [Go](https://golang.org/dl/)。
@@ -32,12 +32,12 @@ HDInsight Go SDK 提供了用于管理 HDInsight 群集的类和函数。 该 SD
 
 从 GOPATH 位置中，运行 `go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 首先需要使用 Azure 订阅对该 SDK 进行身份验证。  请遵循以下示例创建服务主体，然后使用该服务主体进行身份验证。 完成此操作后，将会获得 `ClustersClient` 的实例，其中包含可用于执行管理操作的许多函数（以下部分将概述这些函数）。
 
 > [!NOTE]  
-> 除了以下示例中所示的方法以外，还有其他一些身份验证方法可能更符合你的需要。 此处概述了所有函数：[Azure SDK for Go 中的身份验证函数](https://docs.microsoft.com/go/azure/azure-sdk-go-authorization)
+> 除了以下示例中所示的方法以外，还有其他一些身份验证方法可能更符合你的需要。 此处概述了所有函数：[Azure SDK for Go 中的身份验证函数](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
 
 ### <a name="authentication-example-using-a-service-principal"></a>使用服务主体的身份验证示例
 
@@ -71,7 +71,7 @@ az account set -s <name or ID of subscription>
 ```
 
 > [!IMPORTANT]  
-> 如果你尚未注册 HDInsight 资源提供程序的另一个函数 (如通过创建一个通过 Azure 门户的 HDInsight 群集)，您需要执行此操作后之前您可以进行身份验证。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令来完成此操作：
+> 如果尚未通过其他功能注册 HDInsight 资源提供程序（例如通过 Azure 门户创建 HDInsight 群集），则需要执行此操作一次，然后才能进行身份验证。 可以在 [Azure Cloud Shell](https://shell.azure.com/bash) 中运行以下命令来完成此操作：
 >```azurecli-interactive
 >az provider register --namespace Microsoft.HDInsight
 >```

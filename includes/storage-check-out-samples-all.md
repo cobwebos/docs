@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 6b537c4186748c5fe23814726723ce8183197992
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164294"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "67173015"
 ---
 > [!TIP]
 > 

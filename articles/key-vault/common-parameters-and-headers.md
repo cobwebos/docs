@@ -2,23 +2,19 @@
 title: 常见参数和标头
 description: 这些参数和标头常见于与 Key Vault 资源相关的所有操作。
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: a715d13ca9-d6e8-4e54-ac5e-0ed9400fb15b15d13ca9-d6e8-4e54-ac5e-0ed9400fb15b
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc6c937e37ebb7919ca271e765ad6460c104e43b
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7ec8e1df71e6513b13e9c37174a3363471be01d9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405039"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879281"
 ---
 # <a name="common-parameters-and-headers"></a>常见参数和标头
 
@@ -43,12 +39,12 @@ ms.locfileid: "57405039"
    }  
 ```
 
-|元素名称 | Type | 描述 |
+|元素名称 | type | 描述 |
 |---|---|---|
-| 代码 | 字符串 | 发生的错误类型。|
-| message | 字符串 | 错误原因说明。 |
+| code | string | 发生的错误类型。|
+| 消息 | string | 错误原因说明。 |
 
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
  [Azure Key Vault REST API 参考](/rest/api/keyvault/)

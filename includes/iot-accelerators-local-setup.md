@@ -9,11 +9,11 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59630450"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173383"
 ---
 ## <a name="download-the-source-code"></a>下载源代码
 
@@ -74,6 +74,6 @@ git submodule foreach git pull origin master
 * **PCS_AAD_APPID** -AAD 应用程序 ID
 * **PCS_AAD_APPSECRET** -AAD 应用程序机密
 
-将此 Azure 密钥保管库资源中读取配置值。 这些环境变量可以保存在**\<主文件夹\>\\.pcs\\\<解决方案名称\>.env**从部署的文件。 请注意，运行 **docker-compose** 时，在本地计算机上设置的环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
+将此 Azure 密钥保管库资源中读取配置值。 这些环境变量可以保存在 **\<主文件夹\>\\.pcs\\\<解决方案名称\>.env** 从部署的文件。 请注意，运行 **docker-compose** 时，在本地计算机上设置的环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
 
 某些微服务所需的配置存储中的实例**Key Vault**创建初始部署。 根据需要应修改在密钥保管库中的相应变量。

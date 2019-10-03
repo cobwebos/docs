@@ -3,19 +3,19 @@ title: 快速入门：必应视觉搜索 SDK、Python
 titleSuffix: Azure Cognitive Services
 description: 设置视觉搜索 SDK Python 控制台应用程序。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 06/11/2018
-ms.author: v-gedod
-ms.openlocfilehash: 970b3e7e8e45e5d5249fb5a45c966d9395b130a0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 06/18/2019
+ms.author: aahi
+ms.openlocfilehash: eb0befe3b6f131559a86c121251a4b6194abc49c
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884148"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204015"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>快速入门：使用适用于 Python 的必应视觉搜索 SDK 获取图像见解
 
@@ -24,7 +24,7 @@ ms.locfileid: "55884148"
 ## <a name="prerequisites"></a>先决条件
 
 * [Python](https://www.python.org/) 2.x 或 3.x
-* 建议使用[虚拟环境](https://docs.python.org/3/tutorial/venv.html)。 使用 [venv 模块](https://pypi.python.org/pypi/virtualenv)安装并初始化虚拟环境。 安装适用于 Python 2.7 的 virtualenv。
+* 建议使用[虚拟环境](https://docs.python.org/3/tutorial/venv.html)。 使用 [venv 模块](https://pypi.python.org/pypi/virtualenv)安装并初始化虚拟环境。
 * 适用于 Python 的必应视觉搜索 SDK。 通过使用以下命令来安装它：
     1. `cd mytestenv`
     2. `python -m pip install azure-cognitiveservices-search-visualsearch`
@@ -50,6 +50,7 @@ ms.locfileid: "55884148"
         Filters,
         KnowledgeRequest,
     )
+    from msrest.authentication import CognitiveServicesCredentials
     ```
 2. 针对订阅密钥、自定义配置 ID 和要上传的图像创建变量。 
     
@@ -63,7 +64,7 @@ ms.locfileid: "55884148"
 3. 对客户端进行实例化
 
     ```python
-    var client = new VisualSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"))
+    client = VisualSearchClient(endpoint="https://api.cognitive.microsoft.com", credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
 ## <a name="send-the-search-request"></a>发送搜索请求

@@ -1,22 +1,22 @@
 ---
-title: 管理服务器的 VMware Vm 灾难恢复和 Azure Site Recovery 使用的物理服务器上的移动代理 |Microsoft Docs
-description: 管理的 VMware Vm 和物理服务器到 Azure 中使用 Azure Site Recovery 服务灾难恢复的移动服务代理。
+title: 为 VMware Vm 和物理服务器的灾难恢复管理服务器上的移动代理 Azure Site Recovery |Microsoft Docs
+description: 使用 Azure Site Recovery 服务管理要将 VMware Vm 和物理服务器灾难恢复到 Azure 的移动服务代理。
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 69b8e1c533747d1bade69949911ea43f299f49e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0a8b3a8bcfc2aa8270d7be140a94e5b83973f3e5
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794229"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972126"
 ---
 # <a name="manage-mobility-agent-on-protected-machines"></a>管理受保护计算机上的移动代理
 
-你设置移动代理在服务器上使用 Azure Site Recovery 进行 VMware Vm 和物理服务器到 Azure 的灾难恢复时。 移动代理在受保护的计算机，配置服务器/扩展进程服务器之间协调通信并管理数据复制。 本文汇总了部署后管理移动代理的常见任务。
+使用 Azure Site Recovery 对 VMware Vm 和物理服务器到 Azure 的灾难恢复时, 你可以在服务器上设置移动代理。 移动代理协调受保护的计算机、配置服务器/横向扩展进程服务器之间的通信并管理数据复制。 本文概述了在部署移动代理后对其进行管理的常见任务。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "59794229"
 Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
 
-## <a name="update-account-used-for-push-installation-of-mobility-service"></a>更新用于推送安装移动服务的帐户
+## <a name="update-account-used-for-push-installation-of-mobility-service"></a>用于移动服务的推送安装的更新帐户
 
 在部署 Site Recovery 时，为了启用移动服务的推送安装，你已指定一个帐户，供 Site Recovery 进程服务器在为计算机启用了复制时，用来访问计算机和安装服务。 若要更新此帐户的凭据，请遵照[这些说明](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)操作。
 
@@ -54,28 +54,29 @@ Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Acco
 从 UI 或命令提示符卸载。
 
 - **通过 UI**：在计算机的控制面板中，选择“程序”。 选择“Microsoft Azure Site Recovery 移动服务/主目标服务器” > “卸载”。
-- **通过命令提示符**：在计算机上以管理员身份打开命令提示符窗口。 运行以下命令： 
+- **通过命令提示符**：在计算机上以管理员身份打开命令提示符窗口。 运行下面的命令： 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
     ```
 
 ### <a name="on-a-linux-machine"></a>在 Linux 计算机上
 1. 在 Linux 计算机上以 **root** 用户身份登录。
-2. 在终端中，转到 /user/local/ASR。
-3. 运行以下命令：
+2. 在终端中, 请参阅/Usr/local/asr。
+3. 运行下面的命令：
     ```
     uninstall.sh -Y
+   ```
+   
+## <a name="install-site-recovery-vss-provider-on-source-machine"></a>在源计算机上安装 Site Recovery VSS 提供程序
 
-## Install Site Recovery VSS provider on source machine
+在源计算机上需要 Azure Site Recovery VSS 提供程序才能生成应用程序一致性点。 如果安装程序未通过推送安装成功完成, 请遵循以下给定指导原则手动安装它。
 
-Azure Site Recovery VSS provider is required on the source machine to generate application consistency points. If the installation of the provider didn't succeed through push installation, follow the below given guidelines to install it manually.
+1. 打开 "管理 cmd" 窗口。
+2. 导航到移动服务安装位置。 (例如 C:\Program Files (x86) \Microsoft Azure Site Recovery\agent)
+3. 运行脚本 InMageVSSProvider_Uninstall。 这将卸载服务 (如果已存在)。
+4. 运行脚本 InMageVSSProvider_Install 以手动安装 VSS 提供程序。
 
-1. Open admin cmd window.
-2. Navigate to the mobility service installation location. (Eg - C:\Program Files (x86)\Microsoft Azure Site Recovery\agent)
-3. Run the script InMageVSSProvider_Uninstall.cmd . This will uninstall the service if it already exists.
-4. Run the script InMageVSSProvider_Install.cmd to install the VSS provider manually.
+## <a name="next-steps"></a>后续步骤
 
-## Next steps
-
-- [Set up disaster recovery for VMware VMs](vmware-azure-tutorial.md)
-- [Set up disaster recovery for physical servers](physical-azure-disaster-recovery.md)
+- [为 VMware VM 设置灾难恢复](vmware-azure-tutorial.md)
+- [为物理服务器设置灾难恢复](physical-azure-disaster-recovery.md)

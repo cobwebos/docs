@@ -1,9 +1,9 @@
 ---
-title: 如何安装和使用用于 Azure Active Directory 的日志分析视图（预览版）| Microsoft Docs
-description: 了解如何安装和使用用于 Azure Active Directory 的日志分析视图（预览版）
+title: 如何安装和使用 log analytics 视图进行 Azure Active Directory |Microsoft Docs
+description: 了解如何安装和使用 log analytics 视图进行 Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: markvi
+ms.date: 04/18/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7d1b2262f8f57b2ad180650fa6d4c08fbabfef5
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7cb1241387144b691b76ec330a5f90b762ebc11f
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437299"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989789"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安装和使用用于 Azure Active Directory 的日志分析视图
 
@@ -31,7 +31,7 @@ Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD
 * 审核日志：可通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
 * 登录日志：可通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要使用日志分析视图，需要执行以下操作：
 

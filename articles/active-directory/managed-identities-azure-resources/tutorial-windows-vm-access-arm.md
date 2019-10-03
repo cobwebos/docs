@@ -16,11 +16,11 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33079303f7f2239b7de4d8a92e78acaf205bfbd5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444533"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66236084"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>使用 Windows VM 系统分配的托管标识访问资源管理器
 
@@ -39,23 +39,23 @@ ms.locfileid: "58444533"
 ## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>授予 VM 对资源管理器中资源组的访问权限
 使用 Azure 资源的托管标识，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。  Azure 资源管理器支持 Azure AD 身份验证。  首先，需要向此 VM 的系统分配的托管标识授予对资源管理器中资源（在本例中为包含 VM 的资源组）的访问权限。  
 
-1.  转到“资源组”选项卡。 
-2.  选择为 Windows VM 创建的特定“资源组”。 
-3.  转到左侧面板中的“访问控制(IAM)”。 
-4.  然后单击“添加角色分配”为 **Windows VM** 添加一个新的角色分配。  选择“阅读器”作为“角色”。 
-5.  在下一个下拉列表中，为资源虚拟机分配访问权限。 
-6.  接下来，请确保“订阅”下拉列表中列出的订阅正确无误。 对于“资源组”，请选择“所有资源组”。 
-7.  最后，在“选择”中，选择下拉列表中的 Windows VM 并单击“保存”。
+1.  转到“资源组”  选项卡。 
+2.  选择为 Windows VM  创建的特定“资源组”  。 
+3.  转到左侧面板中的“访问控制(IAM)”  。 
+4.  然后单击“添加角色分配”  为 **Windows VM** 添加一个新的角色分配。  选择“阅读器”  作为“角色”  。 
+5.  在下一个下拉列表中，为资源虚拟机  分配访问权限  。 
+6.  接下来，请确保“订阅”  下拉列表中列出的订阅正确无误。 对于“资源组”  ，请选择“所有资源组”  。 
+7.  最后，在“选择”  中，选择下拉列表中的 Windows VM 并单击“保存”  。
 
     ![Alt 图像文本](media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 的系统分配的托管标识获取访问令牌并使用它来调用 Azure 资源管理器 
 
-在此部分中将需要使用 PowerShell。  如果尚未安装 **PowerShell**，请从[此处](https://docs.microsoft.com/powershell/azure/overview)下载。 
+在此部分中将需要使用 PowerShell  。  如果尚未安装 **PowerShell**，请从[此处](https://docs.microsoft.com/powershell/azure/overview)下载。 
 
-1.  在门户中，导航到“虚拟机”并转到 Windows 虚拟机，然后在“概述”中，单击“连接”。 
-2.  输入创建 Windows VM 时添加的用户名和密码。 
-3.  现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。 
+1.  在门户中，导航到“虚拟机”  并转到 Windows 虚拟机，然后在“概述”  中，单击“连接”  。 
+2.  输入创建 Windows VM 时添加的用户名  和密码  。 
+3.  现在，已经创建了与虚拟机的远程桌面连接  ，请在远程会话中打开 PowerShell  。 
 4.  使用 Invoke-WebRequest cmdlet，向 Azure 资源终结点的本地托管标识发出请求以获取 Azure 资源管理器的访问令牌。
 
     ```powershell

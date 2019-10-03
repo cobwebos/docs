@@ -10,12 +10,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 04/06/2018
-ms.openlocfilehash: be678648ab93fcbdfd0a0baa1b01dcb273060ce2
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 7a51477dbbf6f4e50959a6d979342961c7e49ad9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729446"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60641103"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>使用 Microsoft 基因组学实现业务连续性的概述
 本概述介绍 Microsoft 基因组学针对业务连续性和灾难恢复所提供的功能。 了解在发生可能导致数据丢失的中断事件（如 Azure 区域中断）后进行恢复的选项。 

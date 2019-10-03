@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: f9cd6e2fee738d2d42c790b4eb7b9a876a44b01d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: a9ef2cd695f9591f299bb85b95d14d60b987c38d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670789"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258690"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>通过 Reliable Services 使用 C# 进行服务远程处理
 
@@ -277,7 +277,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>使用显式远程处理类为 V2（接口兼容）版本创建侦听器/客户端工厂。
 
-执行以下步骤:
+请执行以下步骤：
 
 1. 在服务清单中添加名为“ServiceEndpointV2_1”的终结点资源。
 
@@ -321,6 +321,11 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 若要从 V1 升级到 V2（接口兼容，称为 V2_1），必须执行双步升级。 请按顺序执行以下步骤。
 
+> [!NOTE]
+> 从 V1 升级到 V2 时，请确保`Remoting`将命名空间更新为使用 V2。 例如："FabricTransport" 的 "ServiceFabric"。
+>
+>
+
 1. 使用以下属性将 V1 服务升级到 V2_1 服务。
 此项更改可确保服务在 V1 和 V2_1 侦听器上侦听。
 
@@ -361,7 +366,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>在远程处理包装消息中使用自定义序列化
 
 对于远程处理包装消息，我们将创建一个包装对象，并将所有参数作为其中的一个字段。
-执行以下步骤:
+请执行以下步骤：
 
 1. 实现 `IServiceRemotingMessageSerializationProvider` 接口，以提供自定义序列化的实现。
     此代码片段演示该实现的大致形式。

@@ -4,24 +4,23 @@ description: Linux 上的 Azure 应用服务常见问题解答。
 keywords: Azure 应用服务, Web 应用, 常见问题解答, Linux, oss, 用于容器的 Web 应用, 多容器, 多容器
 services: app-service
 documentationCenter: ''
-author: yili
+author: msangapu-msft
 manager: stefsch
 editor: ''
 ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: yili
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e3b6eed6f70eb2803ef4fa4e6b5d32fb0a4d843a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: fa7b6a02ba287c7f51284a28ce41b2291317f99c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525120"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066901"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -39,13 +38,15 @@ ms.locfileid: "59525120"
 
 **配置运行时堆栈时，“启动文件”部分的所需值是什么？**
 
-| 堆栈     | 预期值                                                                |
-|-----------|-------------------------------------------------------------------------------|
-| Java SE   | 一个命令用于启动在`.jar`应用程序                                    |
-| Tomcat    | 执行您的应用程序的任何配置的脚本的位置          |
-| Node.js   | PM2 配置文件或脚本文件                                |
-| .NET Core | 作为已编译的 DLL 名称 `dotnet <myapp>.dll`                                 |
-| Ruby      | 你想要初始化应用的 Ruby 脚本                     |
+| 堆栈           | 预期值                                                                         |
+|-----------------|----------------------------------------------------------------------------------------|
+| Java SE         | 用于启动 JAR 应用的命令 (例如`java -jar my-app.jar --server.port=80`) |
+| Tomcat、Wildfly | 用于执行任何所需配置的脚本的位置 (例如, `/home/site/deployments/tools/startup_script.sh`)          |
+| Node.js         | PM2 配置文件或脚本文件                                |
+| .NET Core       | 已编译的 DLL 名称`dotnet <myapp>.dll`                                 |
+| Ruby            | 要用于初始化应用的 Ruby 脚本                     |
+
+这些命令或脚本在内置 Docker 容器启动后, 但在启动应用程序代码之前执行。
 
 ## <a name="management"></a>管理
 
@@ -58,7 +59,7 @@ ms.locfileid: "59525120"
 是的，可以通过源代码管理 (SCM) 站点实现此操作。
 
 > [!NOTE]
-> 还可以使用 SSH、SFTP 或 Visual Studio Code（用于实时调试 Node.js 应用）直接从本地开发计算机连接到应用容器。 有关详细信息，请参阅[远程调试和通过 SSH 登录到 Linux 上的应用服务](https://aka.ms/linux-debug)。
+> 还可以使用 SSH、SFTP 或 Visual Studio Code（用于实时调试 Node.js 应用）直接从本地开发计算机连接到应用容器。 有关详细信息，请参阅[远程调试和通过 SSH 登录到 Linux 上的应用服务](https://azure.github.io/AppService/2018/05/07/New-SSH-Experience-and-Remote-Debugging-for-Linux-Web-Apps.html)。
 >
 
 **如何通过 SDK 或 Azure 资源管理器模板创建 Linux 应用服务计划？**
@@ -83,7 +84,7 @@ ms.locfileid: "59525120"
 
 如果 Linux Web 应用的 Git 部署失败，可选择以下选项之一部署应用程序代码：
 
-- 使用持续交付（预览版）功能：可以在 Azure DevOps Git 存储库或要使用 Azure 持续交付的 GitHub 存储库中存储应用的源代码。 有关详细信息，请参阅[如何为 Linux Web 应用配置持续交付](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
+- 使用持续交付（预览版）功能：可以在 Azure DevOps Git 存储库或 GitHub 存储库中存储应用的源代码, 以使用 Azure 持续交付。 有关详细信息，请参阅[如何为 Linux Web 应用配置持续交付](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
 
 - 使用 [ZIP 部署 API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)：要使用此 API，请[通过 SSH 连接到 Web 应用](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support)，并转到要在其中部署代码的文件夹。 运行以下代码：
 
@@ -117,10 +118,7 @@ const io = require('socket.io')(server,{
 
 **我使用的是我自己的自定义容器。我希望平台将 SMB 共享装载到 `/home/` 目录。**
 
-可以通过将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 应用设置设为 *true* 来实现此目的。 请记住，此操作将导致容器在平台存储发生变动时重新启动。
-
->[!NOTE]
->如果 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置未指定或设为 *false*，则 `/home/` 目录将不跨规模实例共享，且重启后其中写入的文件不会保留。
+如果`WEBSITES_ENABLE_APP_SERVICE_STORAGE` **未指定**设置或将其设置为 true `/home/` , 则将跨缩放实例**共享**该目录, 并且写入**的文件将**在重新启动后保持。 显式设置`WEBSITES_ENABLE_APP_SERVICE_STORAGE`为*false*将禁用装入。
 
 **自定义容器需要很长时间才能启动，并且平台在它完成启动之前便重启了容器。**
 
@@ -136,7 +134,7 @@ const io = require('socket.io')(server,{
 
 **是否可以在自定义容器映像上公开多个端口？**
 
-目前不支持公开多个端口。
+我们不支持公开多个端口。
 
 **可以自带存储吗？**
 
@@ -154,16 +152,16 @@ SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件
 
 不需要，平台会处理共享前端上的 HTTPS 终止。
 
-## <a name="multi-container-with-docker-compose-and-kubernetes"></a>多容器与 Docker Compose 和 Kubernetes 结合使用
+## <a name="multi-container-with-docker-compose"></a>多容器与 Docker Compose
 
 **如何将 Azure 容器注册表 (ACR) 配置为用于多容器？**
 
-若要将 ACR 用于多容器，**所有容器映像**都必须托管在同一台 ACR 注册表服务器上。 在将它们托管在同一台注册表服务器上之后，需要创建应用程序设置，然后更新 Docker Compose 或 Kubernetes 配置文件以包含 ACR 映像名称。
+若要将 ACR 用于多容器，**所有容器映像**都必须托管在同一台 ACR 注册表服务器上。 一旦它们位于同一注册表服务器上, 你将需要创建应用程序设置, 然后更新 Docker Compose 配置文件以包含 ACR 映像名称。
 
 创建以下应用程序设置：
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (完整 URL，例如： `https://<server-name>.azurecr.io`)
+- DOCKER_REGISTRY_SERVER_URL (完整 URL, 例如: `https://<server-name>.azurecr.io`)
 - DOCKER_REGISTRY_SERVER_PASSWORD（在 ACR 设置中启用管理员访问权限）
 
 在配置文件内引用 ACR 映像，如下例所示：
@@ -202,5 +200,5 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是 Linux 上的 Azure 应用服务？](app-service-linux-intro.md)
-- [设置 Azure 应用服务中的过渡环境](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [设置过渡环境，在 Azure 应用服务](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [使用用于容器的 Web 应用进行持续部署](./app-service-linux-ci-cd.md)

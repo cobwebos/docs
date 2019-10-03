@@ -15,11 +15,11 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: ebced83346a7b130598e4a5f49a72d51ffd18e4f
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56584890"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62118767"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-azure-cli"></a>使用 Azure CLI 为 Azure 资源创建自定义角色
 
@@ -71,7 +71,7 @@ az role definition list --output json | jq '.[] | if .roleType == "CustomRole" t
 az role definition list --name <role_name>
 ```
 
-以下示例列出了“虚拟机操作员”角色定义：
+以下示例列出了“虚拟机操作员”  角色定义：
 
 ```azurecli
 az role definition list --name "Virtual Machine Operator"
@@ -113,7 +113,7 @@ az role definition list --name "Virtual Machine Operator"
 ]
 ```
 
-以下示例仅列出了“虚拟机操作员”角色的 actions：
+以下示例仅列出了“虚拟机操作员”角色的 actions： 
 
 ```azurecli
 az role definition list --name "Virtual Machine Operator" --output json | jq '.[] | .permissions[0].actions'
@@ -143,7 +143,7 @@ az role definition list --name "Virtual Machine Operator" --output json | jq '.[
 az role definition create --role-definition <role_definition>
 ```
 
-以下示例创建名为“虚拟机操作员”的自定义角色。 该自定义角色分配访问 *Microsoft.Compute*、*Microsoft.Storage* 和 *Microsoft.Network* 资源提供程序的所有读取操作的权限，并分配访问虚拟机启动、重启和监视操作的权限。 该自定义角色可以在两个订阅中使用。 此示例将 JSON 文件用作输入。
+以下示例创建名为“虚拟机操作员”  的自定义角色。 该自定义角色分配访问 *Microsoft.Compute*、*Microsoft.Storage* 和 *Microsoft.Network* 资源提供程序的所有读取操作的权限，并分配访问虚拟机启动、重启和监视操作的权限。 该自定义角色可以在两个订阅中使用。 此示例将 JSON 文件用作输入。
 
 vmoperator.json
 
@@ -186,7 +186,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 az role definition update --role-definition <role_definition>
 ```
 
-以下示例将 *Microsoft.Insights/diagnosticSettings/* 操作添加到“虚拟机操作员”自定义角色的“Actions”。
+以下示例将 *Microsoft.Insights/diagnosticSettings/* 操作添加到“虚拟机操作员”自定义角色的“Actions”  。 
 
 vmoperator.json
 
@@ -230,7 +230,7 @@ az role definition update --role-definition ~/roles/vmoperator.json
 az role definition delete --name <role_name or role_id>
 ```
 
-以下示例删除了“虚拟机操作员”自定义角色。
+以下示例删除了“虚拟机操作员”  自定义角色。
 
 ```azurecli
 az role definition delete --name "Virtual Machine Operator"

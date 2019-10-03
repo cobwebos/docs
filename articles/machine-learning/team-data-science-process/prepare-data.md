@@ -12,11 +12,11 @@ ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 2b3ec3352d6e1939b195bbba87b8a824404346ae
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453512"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61044593"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>用于准备数据以进行增强型机器学习的任务
 预处理和清理数据是重要的任务，通常必须先执行此任务才能有效地使用数据集进行机器学习。 原始数据通常具有干扰性且不可靠，还可能缺少值。 使用此类数据进行建模会产生误导性结果。 这些任务是 Team Data Science Process (TDSP) 的一部分，通常对用于发现和计划所需预处理的数据集进行初步探索。 有关 TDSP 过程的详细说明，请参阅 [Team Data Science Process](overview.md) 中概述的步骤。
@@ -66,7 +66,7 @@ ms.locfileid: "55453512"
 若要处理缺失值，最好先确定缺少值的原因以更好地解决问题。 通常的缺失值处理方法包括：
 
 * **删除**：删除具有缺失值的记录
-* **虚拟替换**：使用虚拟值替换缺失值：例如，用 unknown 替换分类值，或用 0 替换数值。
+* **虚拟替换**：使用虚拟值替换缺失值：例如，用 unknown 替换分类值，或用 0 替换数值  。
 * **平均值替换**：如果缺失的数据是数字，则使用平均值替换缺失值。
 * **常用项替换**：如果缺失的是分类数据，则使用最常用的项替换缺失值
 * **回归替换**：使用回归方法，将缺失值替换为回归值。  
@@ -97,7 +97,7 @@ ms.locfileid: "55453512"
 **数据浏览**支持提前预览数据。 执行该步骤时会发现多个数据问题，可应用相应的方法解决这些问题。  提问非常重要，例如问题的源是什么以及问题是如何引入的。 这还有助于确定需采取哪些数据处理步骤来解决这些问题。 从数据中获得的见解也可用于确定数据处理操作的优先级。
 
 ## <a name="references"></a>参考
-> 《数据挖掘：概念和技术》，第三版，Morgan Kaufmann 出版社，2011，Jiawei Han、Micheline Kamber 和 Jian Pei
+> 《数据挖掘：  概念和技术》，第三版，Morgan Kaufmann 出版社，2011，Jiawei Han、Micheline Kamber 和 Jian Pei
 > 
 > 
 

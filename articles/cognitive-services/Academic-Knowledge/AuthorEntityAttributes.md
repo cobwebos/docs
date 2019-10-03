@@ -10,19 +10,20 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: d4b33c06ab023023aadf403cf0ef0b08c2bafc5f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: e63e9d3f8f17a2473caf3d31b83e318ddb132b43
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878929"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705096"
 ---
 # <a name="author-entity"></a>作者实体
 <sub> *以下属性特定于作者实体。(Ty = '1') </sub>
 
-Name    |说明                            |Type       | 操作
+名称    |描述                            |类型       | 操作
 ------- | ------------------------------------- | --------- | ----------------------------
-ID      |实体 ID                              |Int64      |等于
+Id      |实体 ID                              |Int64      |等于
 AuN     |作者规范化名称                 |String     |等于
 DAuN    |作者显示名称                    |String     |无
 CC      |作者引文总计数            |Int32      |无  
@@ -32,7 +33,7 @@ E       |扩展的元数据（请参阅“扩展的元数据属性”表）  |St
 
 ## <a name="extended-metadata-attributes"></a>扩展的元数据属性 ##
 
-Name    | 说明               
+姓名    | 描述               
 --------|---------------------------    
 LKA.Afn     | 与作者相关联的隶属关系的显示名称  
 LKA.AfId        | 与作者相关联的隶属关系的实体 ID

@@ -5,27 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2c31867f4de0e49e2c82733dc859f17ba060bdaa
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369989"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69561338"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
 自助密码重置 (SSPR) 的工作原理 该选项在界面中意味着什么？ 请继续阅读，详细了解 Azure Active Directory (Azure AD) SSPR。
-
-|     |
-| --- |
-| 将移动应用通知和移动应用代码用作 Azure AD 自助密码重置方法是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
 
 ## <a name="how-does-the-password-reset-portal-work"></a>密码重置门户的工作原理
 
@@ -59,24 +54,24 @@ ms.locfileid: "58369989"
 
 ## <a name="authentication-methods"></a>身份验证方法
 
-如果已启用 SSPR，则必须选择以下至少一个选项作为身份验证方法。 有时，这些选项也称为“门限”。 我们强烈建议**选择两种或更多种身份验证方法**，以便在用户无法使用所需的方法时，能够更灵活地选择其他方法。 可以在文章中找到下面列出的方法的更多详情[什么是身份验证方法？](concept-authentication-methods.md)。
+如果已启用 SSPR，则必须选择以下至少一个选项作为身份验证方法。 有时，这些选项也称为“门限”。 我们强烈建议**选择两种或更多种身份验证方法**，以便在用户无法使用所需的方法时，能够更灵活地选择其他方法。 若要更详细地了解下面列出的方法，可参阅[有哪些身份验证方法？](concept-authentication-methods.md)一文。
 
-* 移动应用通知（预览版）
-* 移动应用代码（预览版）
-* 电子邮件
-* 移动电话
-* 办公电话
-* 安全提问
+* 移动应用通知
+* 移动应用代码
+* Email
+* 手机
+* 办公室电话
+* 安全问题
 
 仅当用户在管理员已启用的身份验证方法中输入了数据时，他们才能重置其密码。
 
 > [!IMPORTANT]
-> 开始在 2019 年 3 月中的电话呼叫选项将不能向免费/试用 Azure AD 租户中用户的 MFA 和 SSPR 的用户。 此更改不会影响短信。 电话呼叫将继续可供用户在付费 Azure AD 租户。 此更改只会影响免费/试用 Azure AD 租户。
+> 从2019年3月开始, 将无法在免费/试用 Azure AD 租户中向 MFA 和 SSPR 用户提供电话呼叫选项。 SMS 消息不受此更改的影响。 电话呼叫将继续为付费 Azure AD 租户中的用户提供。 此更改仅影响免费/试用 Azure AD 租户。
 
 > [!WARNING]
 > 要使用[管理员重置策略差异](concept-sspr-policy.md#administrator-reset-policy-differences)中定义的方法，将需要具有分配了帐户的 Azure 管理员角色。
 
-![在 Azure 门户中的身份验证方法选择][Authentication]
+![Azure 门户中的身份验证方法选择][Authentication]
 
 ### <a name="number-of-authentication-methods-required"></a>所需身份验证方法的数量
 
@@ -86,7 +81,7 @@ ms.locfileid: "58369989"
 
 如果没有为用户注册最少数目的所需方法，他们将看到一个错误页面，让他们请求管理员重置其密码。
 
-#### <a name="mobile-app-and-sspr-preview"></a>移动应用和 SSPR（预览版）
+#### <a name="mobile-app-and-sspr"></a>移动应用和 SSPR
 
 使用移动应用（例如 Microsoft Authenticator 应用）作为密码重置方法时，应注意以下几个注意事项：
 
@@ -114,7 +109,7 @@ ms.locfileid: "58369989"
 
 如果更改了用户可用的身份验证方法类型，则可能会在无意间阻止用户使用 SSPR（如果不具有可用的最小数据量）。
 
-示例：
+例如：
 1. 原始策略配置为需要两种身份验证方法。 该策略使用办公电话和安全提问。 
 2. 管理员将策略更改为不再使用安全提问，而是允许使用移动电话和备用电子邮件。
 3. 未填写移动电话或备用电子邮件字段的用户无法重置密码。
@@ -154,13 +149,13 @@ ms.locfileid: "58369989"
 
 如果此选项设置为“是”，则所有管理员的、在 Azure AD 中登记的主要电子邮件地址都会收到一封电子邮件。 该电子邮件告知另一位管理员已使用 SSPR 更改了他们的密码。
 
-示例：某个环境中有四名管理员。 管理员 A 使用 SSPR 重置了其他管理员的密码。 管理员 B、C 和 D 将收到一封电子邮件，告知已发生密码重置。
+例如：某个环境中有四名管理员。 管理员 A 使用 SSPR 重置了其他管理员的密码。 管理员 B、C 和 D 将收到一封电子邮件，告知已发生密码重置。
 
 ## <a name="on-premises-integration"></a>本地集成
 
 如果已安装、配置并启用 Azure AD Connect，可以使用以下附加选项进行本地集成。 如果这些选项灰显，则表示写回配置不正确。 有关详细信息，请参阅[配置密码写回](howto-sspr-writeback.md)。
 
-![验证密码写回已启用和使用][Writeback]
+![验证密码写回已启用且正常工作][Writeback]
 
 本页提供了本地写回客户端的快速状态，根据当前配置将显示以下消息之一：
 
@@ -197,7 +192,7 @@ Azure AD 自助服务密码重置相当于在 Active Directory 中执行管理�
 * 通过自助注册**注册的用户**：如果合作组织使用[自助注册](../users-groups-roles/directory-self-service-signup.md)功能来访问租户，我们将允许他们使用已注册的电子邮件来重置密码。
 * **B2B 用户**：使用新的 [Azure AD B2B 功能](../active-directory-b2b-what-is-azure-ad-b2b.md)创建的任何新 B2B 用户也可以使用他们在邀请过程中注册的电子邮件来重置其密码。
 
-若要测试此方案，请通过这些合作伙伴用户之一转到 https://passwordreset.microsoftonline.com。 如果他们定义了备用电子邮件或身份验证电子邮件，则密码重置就能按预期方式工作。
+若要测试此方案，请通过这些合作伙伴用户之一转到 https://passwordreset.microsoftonline.com 。 如果他们定义了备用电子邮件或身份验证电子邮件，则密码重置就能按预期方式工作。
 
 > [!NOTE]
 > 已被授予 Azure AD 租户来宾访问权限的 Microsoft 帐户（例如 Hotmail.com、Outlook.com 的电子邮件地址或其他个人电子邮件地址）无法使用 Azure AD SSPR。 他们需要使用[当你无法登录到 Microsoft 帐户时](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)文章中的信息重置其密码。

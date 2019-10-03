@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: 34222f396ed3c43932371aa9f64a459bb2a5dd0e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51827079"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61442843"
 ---
 # <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>将 IoT Edge 包导入到远程监视解决方案加速器
 
@@ -29,11 +29,11 @@ ms.locfileid: "51827079"
 
 使用 Azure 门户从开发环境中导出部署清单：
 
-1. 在 Azure 门户中，导航到用于开发和测试 IoT Edge 设备的 IoT 中心。 单击“IoT Edge”，然后单击“IoT Edge 部署”：![IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
+1. 在 Azure 门户中，导航到用于开发和测试 IoT Edge 设备的 IoT 中心。 单击“IoT Edge”，然后单击“IoT Edge 部署”   ：![IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
 
-1. 单击包含要使用的部署配置的部署。 随即显示“部署详细信息”页面：![IoT Edge 部署详细信息](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
+1. 单击包含要使用的部署配置的部署。 此时将显示“部署详细信息”  页：![IoT Edge 部署详细信息](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
 
-1. 单击“下载 IoT Edge 清单”：![下载部署清单](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
+1. 单击“下载 IoT Edge 清单”  ：![下载部署清单](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
 
 1. 将 JSON 文件另存为名为 **deploymentmanifest.json** 的本地文件。
 
@@ -43,13 +43,13 @@ ms.locfileid: "51827079"
 
 按照以下步骤将 Edge 部署清单作为包导入到解决方案中：
 
-1. 导航到远程监视 Web UI 中的“包”页面：![“包”页面](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
+1. 导航到远程监视 Web UI 中的“包”页面  ：![包页面](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
 
-1. 单击“+ 新建包”，选择“Edge 清单”作为包类型，然后单击“浏览”以选择在上一部分中保存的 **deploymentmanifest.json** 文件：![选择清单](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
+1. 单击“+ 新建包”，选择“Edge 清单”作为包类型，然后单击“浏览”以选择在上一部分中保存的 **deploymentmanifest.json** 文件    ：![选择清单](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
 
-1. 单击“上传”将包添加到远程监视解决方案中：![上传的包](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
+1. 单击“上载”将包添加到远程监视解决方案中  ：![上传的包](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
 
-现在已将 IoT Edge 部署清单作为包上传。 在“部署”页面上，可以将此包部署到已连接的 IoT Edge 设备。
+现在已将 IoT Edge 部署清单作为包上传。 在“部署”页面上，可以将此包部署到已连接的 IoT Edge 设备  。
 
 ## <a name="next-steps"></a>后续步骤
 

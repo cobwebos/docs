@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: ba4d25c749a1c1b99559ce4033fe90d671701d66
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c8f7198b59a0fe7ed6775736f8b97f5b5a262640
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046472"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66306863"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>设置群集的 Azure Monitor 日志
 
@@ -35,19 +35,19 @@ ms.locfileid: "59046472"
 
 ## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>使用 Azure 市场部署 Log Analytics 工作区
 
-若要在部署群集之后添加 Log Analytics 工作区，请转到门户中的 Azure 市场，然后查找“Service Fabric 分析”。 这是一个适用于 Service Fabric 部署的自定义解决方案，其数据是特定于 Service Fabric 的。 在此过程中，需创建解决方案（用于查看见解的仪表板）和工作区（聚合了基础的群集数据）。
+若要在部署群集之后添加 Log Analytics 工作区，请转到门户中的 Azure 市场，然后查找“Service Fabric 分析”  。 这是一个适用于 Service Fabric 部署的自定义解决方案，其数据是特定于 Service Fabric 的。 在此过程中，需创建解决方案（用于查看见解的仪表板）和工作区（聚合了基础的群集数据）。
 
-1. 在左侧导航菜单中选择“新建”。 
+1. 在左侧导航菜单中选择“新建”  。 
 
-2. 搜索“Service Fabric 分析”。 选择显示的资源。
+2. 搜索“Service Fabric 分析”。  选择显示的资源。
 
-3. 选择“创建”。
+3. 选择“创建”  。
 
     ![市场中的 Service Fabric 分析](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-4. 在 Service Fabric 分析创建窗口中，为“OMS 工作区”字段选中“选择工作区”，然后选择“创建新工作区”。 填写所需的条目。 此处仅要求 Service Fabric 群集和工作区的订阅相同。 验证条目后，即开始部署工作区。 几分钟即可完成部署。
+4. 在 Service Fabric 分析创建窗口中，为“OMS 工作区”字段选中“选择工作区”，然后选择“创建新工作区”    。 填写所需的条目。 此处仅要求 Service Fabric 群集和工作区的订阅相同。 验证条目后，即开始部署工作区。 几分钟即可完成部署。
 
-5. 完成后，在 Service Fabric 分析创建窗口底部再次选择“创建”。 请确保新工作区显示在 OMS 工作区下。 此操作会将解决方案添加到所创建的工作区中。
+5. 完成后，在 Service Fabric 分析创建窗口底部再次选择“创建”  。 请确保新工作区显示在 OMS 工作区  下。 此操作会将解决方案添加到所创建的工作区中。
 
 如果使用的 Windows，继续以下步骤以连接 Azure Monitor 日志到存储帐户存储群集事件的位置。 
 
@@ -56,19 +56,19 @@ ms.locfileid: "59046472"
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>将 Log Analytics 工作区连接到群集 
 
-1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric\<nameOfWorkspace\>**，然后转到其概述页。 可在此处更改解决方案设置和工作区设置，还可访问 Log Analytics 工作区。
+1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric\<nameOfWorkspace\>** ，然后转到其概述页。 可在此处更改解决方案设置和工作区设置，还可访问 Log Analytics 工作区。
 
-2. 在左侧导航菜单的“工作区数据源”下，选择“存储帐户日志”。
+2. 在左侧导航菜单的“工作区数据源”下，选择“存储帐户日志”   。
 
-3. 在“存储帐户日志”页面顶部选择“添加”，将群集的日志添加到工作区。
+3. 在“存储帐户日志”页面顶部选择“添加”，将群集的日志添加到工作区   。
 
-4. 选择“存储帐户”，添加在群集中创建的相应帐户。 若使用的是默认名称，存储帐户为 sfdg\<resourceGroupName\>。 还可检查 applicationDiagnosticsStorageAccountName 所使用的值，进而通过部署群集时所用的 Azure 资源管理器模板确认此名称。 如果不显示名称，请向下滚动并选择“加载更多”。 选择存储帐户名称。
+4. 选择“存储帐户”，添加在群集中创建的相应帐户  。 若使用的是默认名称，存储帐户为 sfdg\<resourceGroupName\>  。 还可检查 applicationDiagnosticsStorageAccountName 所使用的值，进而通过部署群集时所用的 Azure 资源管理器模板确认此名称  。 如果不显示名称，请向下滚动并选择“加载更多”  。 选择存储帐户名称。
 
-5. 指定数据类型。 将其设置为“Service Fabric 事件”。
+5. 指定数据类型。 将其设置为“Service Fabric 事件”  。
 
-6. 确保源已自动设置为 WADServiceFabric\*EventTable。
+6. 确保源已自动设置为 WADServiceFabric\*EventTable  。
 
-7. 选择“确定”，将工作区连接到群集的日志。
+7. 选择“确定”，将工作区连接到群集的日志  。
 
     ![将存储帐户日志添加到 Azure Monitor 日志](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
@@ -110,7 +110,7 @@ $Location = "<Resource group location>"
 $WorkspaceName = "<Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
-# Log in to Azure and access the correct subscription
+# Sign in to Azure and access the correct subscription
 Connect-AzAccount
 Select-AzSubscription -SubscriptionId $SubID 
 

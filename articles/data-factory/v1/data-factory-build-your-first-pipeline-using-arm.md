@@ -3,28 +3,24 @@ title: 构建第一个数据工厂（Resource Manager 模板）| Microsoft Docs
 description: 本教程使用 Azure 资源管理器模板创建一个示例 Azure 数据工厂管道。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: eb9e70b9-a13a-4a27-8256-2759496be470
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: d0eda93855c3be66d4c733774a6cc1d5875a8394
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c4ff0f28f4f0058d388e3b2f9c753737fb6ee0d4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998304"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140497"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
-> * [Azure 门户](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager 模板](data-factory-build-your-first-pipeline-using-arm.md)
@@ -336,22 +332,22 @@ ms.locfileid: "57998304"
     ```
 
 ## <a name="monitor-pipeline"></a>监视管道
-1. 登录到 [Azure 门户](https://portal.azure.com/)后，单击“浏览”，并选择“数据工厂”。
+1. 登录到 [Azure 门户](https://portal.azure.com/)后，单击“浏览”，并选择“数据工厂”。  
      ![“浏览”->“数据工厂”](./media/data-factory-build-your-first-pipeline-using-arm/BrowseDataFactories.png)
-2. 在“数据工厂”边栏选项卡中，单击创建的数据工厂 (**TutorialFactoryARM**)。    
-3. 在数据工厂的“数据工厂”边栏选项卡中，单击“图示”。
+2. 在“数据工厂”边栏选项卡中，单击创建的数据工厂 (**TutorialFactoryARM**)。     
+3. 在数据工厂的“数据工厂”边栏选项卡中，单击“图示”。  
 
      ![图示磁贴](./media/data-factory-build-your-first-pipeline-using-arm/DiagramTile.png)
-4. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。
+4. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。 
    
    ![图示视图](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
 5. 在“图示视图”中，双击数据集 **AzureBlobOutput**。 此时会显示当前正在处理的切片。
    
     ![数据集](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
-6. 处理完成后，可以看到切片处于“就绪”状态。 创建按需 HDInsight 群集通常需要一段时间（大约 20 分钟）。 因此，预期管道需要花费 **大约 30 分钟** 来处理切片。
+6. 处理完成后，可以看到切片处于“就绪”状态。  创建按需 HDInsight 群集通常需要一段时间（大约 20 分钟）。 因此，预期管道需要花费 **大约 30 分钟** 来处理切片。
    
     ![数据集](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    
-7. 当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。  
+7. 当切片处于“就绪”状态时，检查 Blob 存储中 **adfgetstarted** 容器内 **partitioneddata** 文件夹的输出数据。   
 
 有关如何使用 Azure 门户边栏选项卡监视本教程中所创建管道和数据集的说明，请参阅 [Monitor datasets and pipeline](data-factory-monitor-manage-pipelines.md) （监视数据集和管道）。
 

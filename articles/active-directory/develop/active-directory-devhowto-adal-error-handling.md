@@ -1,26 +1,26 @@
 ---
-title: Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
+title: 处理 Azure AD 身份验证库 (ADAL) 客户端的最佳实践时出错
 description: 提供适用于 ADAL 客户端应用程序的错误处理指南和最佳做法。
 services: active-directory
 documentationcenter: ''
-author: danieldobalian
-manager: mtillman
-ms.author: celested
+author: rwike77
+manager: CelesteDG
+ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: develop
+ms.custom: aaddev
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
-ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e92c3b302ab18aaaf20d187d61a488603ce81a7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c0c1bbbdf9b42dfe2b507f533ad1806e06991f33
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178016"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835411"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
 
@@ -52,7 +52,7 @@ AcquireTokenSilent 在保证最终用户不会看到用户界面 (UI) 的情况�
 
 从根本上说，存在两种 AcquireTokenSilent 错误情况：
 
-| 案例 | 说明 |
+| 大小写 | 描述 |
 |------|-------------|
 | **情况 1**：通过交互式登录可解决错误 | 对于因缺少有效令牌而导致的错误，执行交互式请求是必要的。 具体而言，缓存查找和无效/过期的刷新令牌必须通过 AcquireToken 调用才能解决。<br><br>在这些情况下，需提示最终用户进行登录。 应用程序可以选择是在最终用户交互（如点击登录按钮）后立即执行交互式请求，还是稍后执行。 这一选择取决于应用程序所需的行为。<br><br>请参阅下一节中的代码，了解此特定情况及其诊断错误。|
 | **情况 2**：通过交互式登录无法解决错误 | 对于网络和瞬间/临时错误或其他故障，执行交互式 AcquireToken 请求不能解决问题。 不必要的交互式登录提示也会使最终用户受挫。 对于大多数 AcquireTokenSilent 失败错误，ADAL 会自动尝试重试一次。<br><br>客户端应用程序也可稍后尝试重试，但执行此操作的时间和方式取决于应用程序的行为和所需的最终用户体验。 例如，应用程序可以在几分钟后执行 AcquireTokenSilent 重试，或者在响应某一最终用户操作时执行。 立即重试会导致应用程序中止，不应尝试这种方式。<br><br>后续重试失败并出现相同的错误，这并不意味着客户端应使用 AcquireToken 进行交互式请求，因为该方法不能解决错误。<br><br>请参阅下一节中的代码，了解此特定情况及其诊断错误。 |
@@ -579,14 +579,14 @@ window.Logging = {
 ```
 ## <a name="related-content"></a>相关内容
 
-* [Azure AD 开发人员指南][AAD-Dev-Guide]
+* [Azure AD Developer's Guide][AAD-Dev-Guide]（Azure AD 开发人员指南）
 * [Azure AD 身份验证库][AAD-Auth-Libraries]
 * [Azure AD 身份验证方案][AAD-Auth-Scenarios]
 * [将应用程序与 Azure Active Directory 集成][AAD-Integrating-Apps]
 
 欢迎通过下方的“评论”部分提供反馈，帮助我们改进内容。
 
-[![“登录”按钮][AAD-Sign-In]][AAD-Sign-In]
+[![显示 "Microsoft 登录" 按钮][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md

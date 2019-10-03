@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/16/2018
+ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: d27702983a4378becdbc67f3f156c92be3dc3af6
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f3b3d5c3dcea7d190724ae946a27c47b34a26c31
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665128"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68225039"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 > [!div class="op_single_selector"]
@@ -41,11 +41,11 @@ Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 �
 ## <a name="create-a-stateless-service"></a>创建无状态服务
 无状态服务是目前在云应用程序中作为基准的服务类型。 该服务之所以被视为无状态，是因为它本身不包含需要可靠存储或高度可用的数据。 如果无状态服务的实例关闭，其所有内部状态都会丢失。 在这种类型的服务中，必须将状态保存到外部存储（如 Azure 表或 SQL 数据库），才能实现高可用性和可靠性。
 
-以管理员身份启动 Visual Studio 2015 或 Visual Studio 2017，并新建一个名为 *HelloWorld* 的 Service Fabric 应用程序项目：
+以管理员身份启动 Visual Studio 2017 或 Visual Studio 2019, 并创建名为*HelloWorld*的新 Service Fabric 应用程序项目:
 
 ![使用“新建项目”对话框新建 Service Fabric 应用程序](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
-然后，创建无状态服务项目使用 **.NET Core 2.0**名为*HelloWorldStateless*:
+然后, 使用名为*HelloWorldStateless*的 **.net Core 2.0**创建无状态服务项目:
 
 ![在第二个对话框中，创建无状态服务项目](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
@@ -127,7 +127,7 @@ Service Fabric 引入了一种新的有状态服务。 有状态服务能够可�
 
 ![向 Service Fabric 应用程序添加服务](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-选择 **.NET Core 2.0-> 有状态服务**并将其命名*HelloWorldStateful*。 单击“确定”。
+选择 " **.Net Core 2.0-> 有状态服务**", 并将其命名为*HelloWorldStateful*。 单击 **“确定”** 。
 
 ![使用“新建项目”对话框新建 Service Fabric 有状态服务](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 

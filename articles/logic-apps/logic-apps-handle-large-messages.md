@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: HT
+ms.openlocfilehash: ed086c4c36711f92ba654a64856b43a5fdaadf5f
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085765"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69989925"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用分块处理大型消息
 
@@ -57,7 +57,7 @@ ms.locfileid: "50085765"
 
 另外，如果某个 HTTP 操作尚未启用分块功能，则还必须在操作的 `runTimeConfiguration` 属性中设置分块。 可以在操作中设置此属性，可以按照后面的说明在代码视图编辑器中直接进行，也可以按下述说明在逻辑应用设计器中进行：
 
-1. 在 HTTP 操作的右上角选择省略号按钮 (**...**)，然后选择“设置”。
+1. 在 HTTP 操作的右上角选择省略号按钮 ( **...** )，然后选择“设置”。
 
    ![在操作中打开设置菜单](./media/logic-apps-handle-large-messages/http-settings.png)
 
@@ -117,18 +117,18 @@ GET 请求将表示字节范围的 "Range" 标头设置为 "bytes=0-1023"。 如
 
 1. 你的逻辑应用使用空的消息正文发送初始的 HTTP POST 或 PUT 请求。 请求标头包括与逻辑应用需要以区块形式上传的内容的以下信息：
 
-   | 逻辑应用请求标头字段 | 值 | 类型 | Description |
+   | 逻辑应用请求标头字段 | ReplTest1 | type | 描述 |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | 分块 | String | 指示内容以区块形式上传 |
-   | **x-ms-content-length** | <*content-length*> | Integer | 整个内容在分块之前的大小（以字节为单位） |
+   | **x-ms-content-length** | <*content-length*> | 整数 | 整个内容在分块之前的大小（以字节为单位） |
    ||||
 
 2. 终结点以“200”成功状态代码和以下可选信息进行响应：
 
-   | 终结点响应标头字段 | 类型 | 必选 | Description |
+   | 终结点响应标头字段 | 类型 | 必填 | 描述 |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-chunk-size** | Integer | 否 | 建议的区块大小（以字节为单位） |
-   | **位置** | String | 否 | 要向其发送 HTTP PATCH 消息的 URL 位置 |
+   | **x-ms-chunk-size** | 整数 | 否 | 建议的区块大小（以字节为单位） |
+   | **Location** | String | 是 | 要向其发送 HTTP PATCH 消息的 URL 位置 |
    ||||
 
 3. 逻辑应用创建并发送后续 HTTP PATCH 消息 - 每条消息包含以下信息：
@@ -137,14 +137,20 @@ GET 请求将表示字节范围的 "Range" 标头设置为 "bytes=0-1023"。 如
 
    * 这些标头详述了在每个 PATCH 消息中发送的内容区块：
 
-     | 逻辑应用请求标头字段 | 值 | 类型 | Description |
+     | 逻辑应用请求标头字段 | ReplTest1 | 类型 | 描述 |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*range*> | String | 当前内容区块的字节范围，包括起始值、结束值、内容总大小，例如："bytes=0-1023/10100" |
      | **Content-Type** | <*content-type*> | String | 分块内容的类型 |
      | **Content-Length** | <*content-length*> | String | 当前区块的大小长度（以字节为单位） |
      |||||
 
-4. 每次进行 PATCH 请求之后，终结点会以“200”状态代码进行响应，以此确认每个区块的接收情况。
+4. 每次修补请求后, 端点通过使用 "200" 状态代码和以下响应标头来确认每个区块的回执:
+
+   | 终结点响应标头字段 | type | 必填 | 描述 |
+   |--------------------------------|------|----------|-------------|
+   | **Range** | String | 是 | 终结点收到的内容的字节范围, 例如: "bytes = 0-1023" |   
+   | **x-ms-chunk-size** | 整数 | 否 | 建议的区块大小（以字节为单位） |
+   ||||
 
 例如，此操作定义显示一个要求将分块内容上传到终结点的 HTTP POST 请求。 在操作的 `runTimeConfiguration` 属性中，`contentTransfer` 属性将 `transferMode` 设置为 `chunked`：
 

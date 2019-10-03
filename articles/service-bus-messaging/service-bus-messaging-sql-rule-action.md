@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/05/2018
 ms.author: aschhab
 ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847724"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "60307472"
 ---
 # <a name="sqlruleaction-syntax"></a>SQLRuleAction 语法
 
@@ -92,7 +92,7 @@ ms.locfileid: "54847724"
   
  这是指任何以字母开头且后跟一个或多个下划线/字母/数字的字符串。  
   
- `[:IsLetter:]` 是指其类别为 Unicode 字母的任何 Unicode 字符。 `System.Char.IsLetter(c)` 返回 `true`（如果 `c` 为 Unicode 字母）。  
+ `[:IsLetter:]` 是指分类为 Unicode 字母的任何 Unicode 字符。 `System.Char.IsLetter(c)` 返回 `true`（如果 `c` 为 Unicode 字母）。  
   
  `[:IsDigit:]` 是指其类别为十进制数字的任何 Unicode 字符。 `System.Char.IsDigit(c)` 返回 `true`（如果 `c` 为 Unicode 数字）。  
   
@@ -158,7 +158,7 @@ ms.locfileid: "54847724"
     2  
     ```  
   
--   `<decimal_constant>` 是一个数字字符串，不使用引号，但包含小数点。 这些值以 `System.Double` 形式存储在内部，并具有相同的范围/精度。  
+-   `<decimal_constant>` 是一个数字字符串，不使用引号，但包含小数点。 这些值作为 `System.Double` 在内部存储，并具有相同的作用域/精度。  
   
      在未来版本中，此数字可能以其他数据类型存储，目的是支持确切的数字语义，因此不应依赖于 `<decimal_constant>` 的基础数据类型为 `System.Double` 这一事实。  
   

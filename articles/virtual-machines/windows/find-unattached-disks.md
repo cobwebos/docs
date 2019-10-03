@@ -1,27 +1,18 @@
 ---
 title: 查找并删除未连接的 Azure 托管和非托管磁盘 | Microsoft Docs
 description: 如何使用 Azure PowerShell 查找并删除未连接的 Azure 托管和非托管（VHD/页 blob）磁盘。
-services: virtual-machines-windows
-documentationcenter: ''
-author: ramankumarlive
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: roygara
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/22/2019
-ms.author: ramankum
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: cb52956afe085c076f0a9a7c2d6810f3def32e3f
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 0de0e68bb8419894386641c827bdbc40ed142d3f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568951"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698693"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>查找并删除未连接的 Azure 托管和非托管磁盘
 

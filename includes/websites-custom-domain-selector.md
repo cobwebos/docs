@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: cephalin
 ms.openlocfilehash: 8dac6bd1c844085cb4af618c8329056784144c5a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729418"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173524"
 ---
 > [!div class="op_single_selector"]
 > * [购买域](../articles/app-service/manage-custom-dns-buy-domain.md)

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: kasparks
 ms.openlocfilehash: 9f599a63fd5f52420f1b79e769d4f7bca9683b32
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59052832"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60467810"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>查看对您重要的 Azure 顾问建议
 
@@ -26,7 +26,7 @@ Azure 顾问提供建议来帮助你优化 Azure 部署。 在顾问，您有权
 
 1. 打开[Azure 顾问](https://aka.ms/azureadvisordashboard)在 Azure 门户中。
 
-1. 在菜单中选择“配置”。
+1. 在菜单中选择“配置”  。
 
    ![顾问配置菜单](./media/view-recommendations/configuration.png)
 

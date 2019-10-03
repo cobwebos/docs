@@ -13,30 +13,24 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 7eb5f090026b415e3c980116a9317594f4ca8115
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 75beb7b66863efd2fb3679f034a3663dca4a6d2f
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750763"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076705"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用函数
-
-> [!NOTE]
-> 在学习本课程之前，需完成 [Analytics 门户入门](get-started-portal.md)和[查询入门](get-started-queries.md)。
-
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
-
 
 若要将某个日志查询用于其他查询，可以将其保存为函数。 这使你能够通过分解复杂查询将其简化，并能够对多个查询重用通用代码。
 
 ## <a name="create-a-function"></a>创建函数
 
-创建函数与 Log Analytics 在 Azure 门户中通过单击**保存**然后提供下表中的信息。
+在 Azure 门户中单击“保存”，然后提供下表中的信息，使用 Log Analytics 创建函数。
 
 | 设置 | 描述 |
 |:---|:---|
-| 名称           | 查询资源管理器中查询的显示名称。 |
+| 姓名           | 查询资源管理器中查询的显示名称。 |
 | 另存为        | 函数 |
 | 函数别名 | 在其他查询中使用该函数的短名称。 不可包含空格，必须唯一。 |
 | 类别       | 用于在查询资源管理器中整理已保存的查询和函数的类别。 |
@@ -44,8 +38,6 @@ ms.locfileid: "56750763"
 > [!NOTE]
 > Azure Monitor 中的函数不能包含其他函数。
 
-> [!NOTE]
-> 可以在 Azure Monitor 日志查询中保存函数，但目前无法将这些函数用于 Application Insights 查询。
 
 
 

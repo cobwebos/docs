@@ -1,5 +1,5 @@
 ---
-title: 将 SQL Server 数据库迁移到 Azure SQL 数据库中的单一/入池数据库 | Microsoft Docs
+title: 将 SQL Server 数据库迁移到 Azure SQL 数据库中的单一/共用数据库 | Microsoft Docs
 description: 了解如何将 SQL Server 数据库迁移到 Azure SQL 数据库中的单一数据库或弹性池。
 keywords: 数据库迁移, SQL Server 数据库迁移, 数据库迁移工具, 迁移数据库, 迁移 SQL 数据库
 services: sql-database
@@ -8,25 +8,24 @@ ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: 2feece21644f8b79b4e5fc74331944cdddbdee4a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a156d73c7eedcbdf7c703b946a26d46ca9129632
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996424"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566594"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>将 SQL Server 数据库迁移到 Azure SQL 数据库
 
-本文介绍将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库中的单个或共用数据库的主要方法。 有关迁移到托管实例的信息，请参阅[将 SQL Server 实例迁移到 Azure SQL 数据库托管实例](sql-database-managed-instance-migrate.md)。 有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。
+本文介绍将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库的主要方法。 有关迁移到托管实例的信息，请参阅[将 SQL Server 实例迁移到 Azure SQL 数据库托管实例](sql-database-managed-instance-migrate.md)。 有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。
 
-## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>迁移到单个数据库或共用数据库
+## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>迁移到单一数据库或共用数据库
 
-将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库中的单个或共用数据库有两种主要方法。 第一种方法相对简单，但需要在迁移过程中进行一定时间（可能较长）的停机。 第二种方法更复杂些，但在迁移过程中的停机时间大大缩短。
+将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库有两种主要方法。 第一种方法相对简单，但需要在迁移过程中进行一定时间（可能较长）的停机。 第二种方法更复杂些，但在迁移过程中的停机时间大大缩短。
 
 两种方法均需使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) 确保源数据库与 Azure SQL 数据库兼容。 SQL 数据库 V12 除了要解决服务器级操作和跨数据库操作的相关问题之外，还要解决与 SQL Server 的[功能对等性](sql-database-features.md)问题。 依赖[部分支持或不受支持的函数](sql-database-transact-sql-information.md)的数据库和应用程序需要进行某种程度的[重新设计来修复这些不兼容性](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)，然后才能迁移 SQL Server 数据库。
 
@@ -35,9 +34,9 @@ ms.locfileid: "57996424"
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1：在迁移过程中需停机的迁移
 
- 如果可以承受一定的停机时间，或者正在针对以后的迁移执行生产数据库的测试迁移，请使用此方法迁移到单个或共用数据库。 有关教程，请参阅[迁移 SQL Server 数据库](../dms/tutorial-sql-server-to-azure-sql.md)。
+ 如果可以承受一定的停机时间，或者正在针对以后的迁移执行生产数据库的测试迁移，请使用此方法迁移到单一数据库或共用数据库。 有关教程，请参阅[迁移 SQL Server 数据库](../dms/tutorial-sql-server-to-azure-sql.md)。
 
-下面的列表包含使用此方法将 SQL Server 数据库迁移到单个或共用数据库的常规工作流。 有关迁移到托管实例的信息，请参阅[迁移到托管实例](sql-database-managed-instance-migrate.md)。
+下面的列表包含使用此方法将 SQL Server 数据库迁移到单一数据库或共用数据库的常规工作流。 有关迁移到托管实例的信息，请参阅[迁移到托管实例](sql-database-managed-instance-migrate.md)。
 
   ![VSSSDT 迁移示意图](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
@@ -54,7 +53,7 @@ ms.locfileid: "57996424"
 
 以下列表包含的建议可帮助用户在导入过程中获得最佳性能。
 
-- 若要获得最高的传输性能，请在预算允许范围内选择最高的服务层和计算大小。 为了节省资金，可以在迁移完成后向下缩放。
+- 若要获得最高的传输性能，请在预算允许范围内选择最高的服务层级和计算大小。 为了节省资金，可以在迁移完成后向下缩放。
 - 尽量缩短 BACPAC 文件和目标数据中心的距离。
 - 在迁移过程中禁用自动进行数据统计
 - 分区表和索引

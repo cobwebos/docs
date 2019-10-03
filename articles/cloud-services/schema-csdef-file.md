@@ -3,22 +3,17 @@ title: Azure 云服务定义架构（.csdef 文件）| Microsoft Docs
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
-ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
 ms.topic: reference
-ms.assetid: b7735dbf-8e91-4d1b-89f7-2f17e9302469
 caps.latest.revision: 42
-author: jpconnock
-ms.author: jeconnoc
-manager: timlt
-ms.openlocfilehash: 4e018af7df64c9ed8050a3c618cf2645d5509cdd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+author: georgewallace
+ms.author: gwallace
+ms.openlocfilehash: b832723fdf773ff06c0b03b9aa80f542279cd309
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918495"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360627"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure 云服务定义架构（.csdef 文件）
 服务定义文件定义应用程序的服务模型。 该文件包含可供云服务使用的角色的定义，指定服务终结点，并建立服务的配置设置。 配置设置值是在服务配置文件中设置的，如[云服务（经典）配置架构](/previous-versions/azure/reference/ee758710(v=azure.100))所述。
@@ -67,9 +62,9 @@ ms.locfileid: "58918495"
 
 下表介绍了 `ServiceDefinition` 元素的属性。
 
-| 属性               | 描述 |
+| 特性               | 描述 |
 | ----------------------- | ----------- |
-| 名称                    |必需。 服务的名称。 该名称在服务帐户中必须是唯一的。|
+| name                    |必需。 服务的名称。 该名称在服务帐户中必须是唯一的。|
 | topologyChangeDiscovery | 可选。 指定拓扑更改通知的类型。 可能的值包括：<br /><br /> -   `Blast` - 将更新尽早发送到所有角色实例。 如果选择此选项，则角色应该能够在不重启的情况下处理拓扑更新。<br />-   `UpgradeDomainWalk` – 在前一个实例成功接受更新后，按顺序将更新发送到每个角色实例。|
 | schemaVersion           | 可选。 指定服务定义架构的版本。 如果并排安装了多个版本的 SDK，架构版本允许 Visual Studio 选择正确的 SDK 工具用于架构验证。|
-| upgradeDomainCount      | 可选。 指定在其中分配了此服务中的角色的升级域的数目。 在部署服务时会将角色实例分配到升级域。 有关详细信息，请参阅[更新云服务角色或部署](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment)。<br /><br /> 最多可以指定 20 个升级域。 如果未指定，则升级域的默认数目为 5 个。|
+| upgradeDomainCount      | 可选。 指定在其中分配了此服务中的角色的升级域的数目。 在部署服务时会将角色实例分配到升级域。 有关详细信息, 请参阅[更新云服务角色或部署](cloud-services-how-to-manage-portal.md#update-a-cloud-service-role-or-deployment)、[管理虚拟机的可用性](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)和[什么是云服务模型](https://docs.microsoft.com/azure/cloud-services/cloud-services-model-and-package)。<br /><br /> 最多可以指定 20 个升级域。 如果未指定，则升级域的默认数目为 5 个。|

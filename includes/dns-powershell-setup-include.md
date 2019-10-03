@@ -8,12 +8,12 @@ ms.topic: include file for PowerShell for Azure DNS
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 6f042b9bc971498310ec51d07a1eba7193b21b00
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 32c516ccee3a9f4f7604a3e330285703a776b47d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554662"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133247"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>设置适用于 Azure DNS 的 Azure PowerShell
 
@@ -52,7 +52,7 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
 
-打开 PowerShell 控制台并连接到帐户。 有关详细信息，请参阅[登录](/powershell/azure/install-az-ps?view=azps-1.4.0#sign-in)。
+打开 PowerShell 控制台并连接到帐户。 有关详细信息，请参阅[使用 AzureRM 登录](/powershell/azure/azurerm/authenticate-azureps)。
 
 ```powershell
 Connect-AzureRmAccount

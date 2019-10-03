@@ -1,18 +1,18 @@
 ---
 title: Azure IoT 中心 IP 连接筛选器 | Microsoft Docs
 description: 如何使用 IP 筛选阻止特定 IP 地址到 Azure IoT 中心的连接。 可阻止来自单独 IP 地址或 IP 地址范围的连接。
-author: rezasherafat
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/23/2017
-ms.author: rezas
-ms.openlocfilehash: 02059409000ee5b68fbcb8695f580980c95effe6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.date: 07/22/2017
+ms.author: robinsh
+ms.openlocfilehash: a6bd8a766f3205358a65ef2fd0816643e4261cab
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731701"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414282"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
@@ -40,23 +40,27 @@ ms.locfileid: "56731701"
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>添加或编辑 IP 筛选器规则
 
-添加 IP 筛选器规则时，系统会提示输入以下值：
-
-* “IP 筛选器规则名称”，该名称必须是一个唯一的字母数字字符串，不区分大小写并且最大长度为 128 个字符。 只接受 ASCII 7 位字母数字字符以及以下字符：`{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
-
-* 选择“拒绝”或“接受”作为 IP 筛选器规则的“操作”。
-
-* 提供单个 IPv4 地址或者以 CIDR 表示法提供一个 IP 地址块。 例如，在 CIDR 表示法中，192.168.100.0/22 表示从 192.168.100.0 到 192.168.103.255 的 1024 个 IPv4 地址。
+若要添加 IP 筛选器规则, 请选择 " **+ 添加 Ip 筛选器规则**"。
 
 ![向 IoT 中心添加 IP 筛选规则](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
 
-保存规则后，会看到一个警报，通知你更新正在进行。
+选择 "**添加 IP 筛选器规则**" 后, 填写字段。
+
+![选择 "添加 IP 筛选器规则" 后](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
+
+* 提供 IP 筛选规则的**名称**。 这必须是唯一的、不区分大小写的字母数字字符串, 最长为128个字符。 只接受 ASCII 7 位字母数字字符以及以下字符：`{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
+
+* 提供单个 IPv4 地址或者以 CIDR 表示法提供一个 IP 地址块。 例如，在 CIDR 表示法中，192.168.100.0/22 表示从 192.168.100.0 到 192.168.103.255 的 1024 个 IPv4 地址。
+
+* 选择 "**允许**" 或 "**阻止**" 作为 IP 筛选器规则的**操作**。
+
+填写字段后, 选择 "**保存**" 以保存规则。 你会看到一个警报, 通知你更新正在进行。
 
 ![关于保存 IP 筛选规则的通知](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
 
 当存在的 IP 筛选规则达到最大数目 10 时，“添加”选项被禁用。
 
-可以通过双击包含某个现有规则的行编辑该规则。
+若要编辑现有规则, 请选择要更改的数据, 进行更改, 然后选择 "**保存**" 以保存编辑。
 
 > [!NOTE]
 > 拒绝 IP 地址即可阻止其他 Azure 服务（例如门户中的 Azure 流分析、Azure 虚拟机或设备资源管理器）与 IoT 中心交互。
@@ -66,13 +70,13 @@ ms.locfileid: "56731701"
 
 ## <a name="delete-an-ip-filter-rule"></a>删除 IP 筛选器规则
 
-如果要删除 IP 筛选器规则，请在网格中选择一个或多个规则，并单击“删除”。
+若要删除 IP 筛选器规则, 请在该行上选择垃圾桶图标, 然后选择 "**保存**"。 删除该规则, 并保存更改。
 
 ![删除 IoT 中心 IP 筛选规则](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>使用 Azure CLI 检索和更新 IP 筛选器
 
-可以通过 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 检索和更新 IoT 中心的 IP 筛选器。 
+可以通过 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 检索和更新 IoT 中心的 IP 筛选器。
 
 若要检索 IoT 中心的当前 IP 筛选器，请运行：
 
@@ -118,12 +122,11 @@ az resource update -n <iothubName> -g <resourceGroupName> --resource-type Micros
 
 请注意，`<ipFilterIndexToRemove>` 必须对应于 IoT 中心 `properties.ipFilterRules` 中的 IP 筛选器顺序。
 
-
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>使用 Azure PowerShell 检索和更新 IP 筛选器
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-可以检索和设置通过 IoT 中心的 IP 筛选器[Azure PowerShell](/powershell/azure/overview)。 
+可以通过[Azure PowerShell](/powershell/azure/overview)检索和设置 IoT 中心的 IP 筛选器。
 
 ```powershell
 # Get your IoT Hub resource using its name and its resource group name
@@ -148,7 +151,6 @@ $iothubResource | Set-AzResource -Force
 ## <a name="update-ip-filter-rules-using-rest"></a>使用 REST 更新 IP 筛选器
 
 还可以使用 Azure 资源提供程序的 REST 终结点检索和修改 IoT 中心的 IP 筛选器。 请参阅 [createorupdate 方法](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate) `properties.ipFilterRules`。
-
 
 ## <a name="ip-filter-rule-evaluation"></a>IP 筛选器规则评估
 

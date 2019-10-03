@@ -16,11 +16,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: a8f647018ba6ed3c9e951db2054036b60c7d4ab5
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678762"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60822465"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>使用 C 将事件发送到 Azure 事件中心
 
@@ -34,7 +34,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 * C 语言开发环境。 本教程假定 gcc 堆栈在使用 Ubuntu 14.04 的 Azure Linux VM 上。
 * [Microsoft Visual Studio](https://www.visualstudio.com/)。
-* **创建事件中心命名空间和事件中心**。 使用[Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间并获取你的应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 按照以下文章中的说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 可在本教程后面编写的代码中使用该访问密钥。 默认密钥名称为：RootManageSharedAccessKey。
+* **创建事件中心命名空间和事件中心**。 使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 按照以下文章中的说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 可在本教程后面编写的代码中使用该访问密钥。 默认密钥名称为：RootManageSharedAccessKey  。
 
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>编写将消息发送到事件中心的代码
 本部分介绍如何编写用于将事件发送到事件中心的 C 应用。 此代码使用 [Apache Qpid 项目](https://qpid.apache.org/)中的 Proton AMQP 库。 这类似于通过 C 将服务总线队列和主题与 AMQP 配合使用，如[此示例](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)所示。 有关详细信息，请参阅 [Qpid Proton 文档](https://qpid.apache.org/proton/index.html)。
@@ -60,7 +60,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. 在工作目录中，创建一个包含以下代码的名为 sender.c 的新文件。 请记得替换为你的 SAS 密钥/名称、事件中心名称和命名空间的值。 还必须用密钥的 URL 编码版本替换之前创建的 **SendRule**。 可以在[此处](https://www.w3schools.com/tags/ref_urlencode.asp)对它进行 URL 编码。
+5. 在工作目录中，创建一个包含以下代码的名为 sender.c  的新文件。 请记得替换为你的 SAS 密钥/名称、事件中心名称和命名空间的值。 还必须用密钥的 URL 编码版本替换之前创建的 **SendRule**。 可以在[此处](https://www.w3schools.com/tags/ref_urlencode.asp)对它进行 URL 编码。
    
     ```c
     #include "proton/message.h"
@@ -158,7 +158,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 请阅读以下文章：
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [功能和 Azure 事件中心内的术语](event-hubs-features.md)。
+- [Azure 事件中心的功能和术语](event-hubs-features.md)。
 
 
 <!-- Images. -->

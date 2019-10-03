@@ -2,18 +2,18 @@
 title: 在 Power BI 工作区集合中保存报表 | Microsoft Docs
 description: 了解如何在 Power BI 工作区集合中保存报表。 需要有适当的权限才能成功执行此操作。
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+ms.service: power-bi-embedded
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: bc3c9f71900abcbba440db259d92df53a4c7a586
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 1e23bd22f2b89ef42f4b27f5e4ca2590be7fe5a7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516444"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668900"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中保存报表
 
@@ -22,7 +22,7 @@ ms.locfileid: "58516444"
 > [!IMPORTANT]
 > Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
-在 Power BI 工作区集合中，可编辑和保存现有报表。 还可以创建一个新报表，并将它另存为新报表来创建另一个报表。
+在 Power BI 工作区集合中，可编辑和保存现有报表。 还可以创建一个新报表，然后将它另存为新报表来创建另一个报表。
 
 若要保存报表，首先需要为特定的报表创建具有适当范围的令牌：
 
@@ -41,7 +41,7 @@ ms.locfileid: "58516444"
 
 ## <a name="embed-report-in-edit-mode"></a>嵌入处于编辑模式的报表
 
-假设用户要在应用中嵌入一个处于编辑模式的报表，为此，只需在 Embed 配置中传递适当的属性，并调用 powerbi.embed()。 提供权限和 viewMode 才能在编辑模式下看到“保存”和“另存为”按钮。 有关详细信息，请参阅 [Embed 配置详细信息](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details)。
+假设要在应用中嵌入一个处于编辑模式的报表，为此，只需在 Embed 配置中传递适当的属性，并调用 powerbi.embed()。 提供权限和 viewMode 才能在编辑模式下看到“保存”和“另存为”按钮。 有关详细信息，请参阅[嵌入配置详细信息](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details)。
 
 例如，在 JavaScript 中：
 
@@ -106,9 +106,9 @@ ms.locfileid: "58516444"
 ```
 
 > [!IMPORTANT]
-> 只有在调用“另存为”之后，才能创建新报表。 保存后，画布仍显示处于编辑模式的旧报表，而不是新报表。 嵌入已创建的新报表。 嵌入新报表需要获取新的访问令牌，因为令牌是针对每个报表创建的。
+> 只有在调用“另存为”之后，才能创建新报表。  保存后，画布仍显示处于编辑模式的旧报表，而不是新报表。 嵌入已创建的新报表。 嵌入新报表需要获取新的访问令牌，因为令牌是针对每个报表创建的。
 
-然后，需要在执行“另存为”操作后加载新报表。 加载新报表类似于嵌入任何报表。
+然后，需要在执行“另存为”  操作后加载新报表。 加载新报表类似于嵌入任何报表。
 
 ```html
 <div id="reportContainer"></div>
@@ -127,7 +127,7 @@ var embedConfiguration = {
 </script>
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [示例入门](get-started-sample.md)  
 [嵌入报表](embed-report.md)  
@@ -136,5 +136,5 @@ var embedConfiguration = {
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript 嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)
 

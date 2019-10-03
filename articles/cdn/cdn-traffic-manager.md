@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: afadef8b29927f909af5be1e1204180724258b74
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 276fe9352d0c4ca7ec525b88d65689b56c0ba027
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58167059"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593345"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>使用 Azure 流量管理器跨多个 Azure CDN 终结点设置故障转移
 
@@ -44,11 +44,11 @@ ms.locfileid: "58167059"
 
 1. 遵循[创建流量管理器配置文件](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile)中的步骤创建 Azure 流量管理器配置文件。 
 
-    对于“路由方法”，请选择“优先级”。
+    对于“路由方法”，请选择“优先级”。  
 
 2. 遵循[添加流量管理器终结点](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints)中的步骤，在流量管理器配置文件中添加 CDN 终结点
 
-    对于“类型”，请选择“外部终结点”。 对于“优先级”，请输入一个数字。
+    对于“类型”，请选择“外部终结点”。   对于“优先级”，请输入一个数字。 
 
     例如，创建优先级为 *1* 的 *cdndemo101akamai.azureedge.net*，以及优先级为 *2* 的 *cdndemo101verizon.azureedge.net*。
 
@@ -80,6 +80,10 @@ ms.locfileid: "58167059"
 2.  在 Azure CDN 配置文件中，选择第一个 CDN 终结点 (Akamai)。 选择**添加自定义域**并输入*cdndemo101.dustydogpetcare.online*。 确认表示验证自定义域的复选标记是否显示为绿色。 
 
     Azure CDN 使用 *cdnverify* 子域来验证 DNS 映射，以完成此注册过程。 有关详细信息，请参阅[创建 CNAME DNS 记录](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)。 此步骤使 Azure CDN 能够识别自定义域，以便对其请求做出响应。
+    
+    > [!NOTE]
+    > 若要在上启用 SSL**来自 Akamai 的 Azure CDN**配置文件，您必须直接 cname 自定义域到终结点。 尚不支持 cdnverify 启用 SSL。 
+    >
 
 3.  返回自定义域提供商的网站，并更新创建的第一个 DNS 映射，以便将自定义域映射到第二个 CDN 终结点。
                              

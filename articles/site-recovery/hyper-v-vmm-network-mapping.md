@@ -1,19 +1,18 @@
 ---
-title: 关于使用 Site Recovery 进行 Hyper-V VM（使用 VMM）灾难恢复到 Azure 的网络映射 | Microsoft Docs
+title: 关于通过 Site Recovery 将 Hyper-v VM （带 VMM）灾难恢复到 Azure 的网络映射
 description: 介绍如何使用 Azure Site Recovery 为 Hyper-V VM（在 VMM 云中托管）到 Azure 的灾难恢复设置网络映射。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 12/27/2018
+ms.topic: conceptual
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: cefde79cf8c544a6900b1efa5dbcefbc43638d40
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 637f327b40341ac04f37baf9e43f136a0315b17f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009964"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813671"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>为 Hyper-V VM 灾难恢复到 Azure 准备网络映射
 
@@ -54,9 +53,9 @@ ms.locfileid: "58009964"
 
 以下示例演示了此机制。 假设一个组织有两个经营地点：纽约和芝加哥。
 
-**位置** | **VMM 服务器** | **VM 网络** | **映射到**
+**Location** | **VMM 服务器** | **VM 网络** | **映射到**
 ---|---|---|---
-纽约 | VMM-NewYork| VMNetwork1-NewYork | 映射到 VMNetwork1-Chicago
+New York | VMM-NewYork| VMNetwork1-NewYork | 映射到 VMNetwork1-Chicago
  |  | VMNetwork2-NewYork | 未映射
 芝加哥 | VMM-Chicago| VMNetwork1-Chicago | 映射到 VMNetwork1-NewYork
  | | VMNetwork2-Chicago | 未映射
@@ -74,14 +73,14 @@ ms.locfileid: "58009964"
 ---|---|---
 GoldCloud1 | GoldCloud2 |
 SilverCloud1| SilverCloud2 |
-GoldCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
-SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+GoldCloud2 | <p>不可用</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+SilverCloud2 | <p>不可用</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
 
 ### <a name="logical-and-vm-network-settings"></a>逻辑和 VM 网络设置
 
-**位置** | **逻辑网络** | **关联的 VM 网络**
+**Location** | **逻辑网络** | **关联的 VM 网络**
 ---|---|---
-纽约 | LogicalNetwork1-NewYork | VMNetwork1-NewYork
+New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 芝加哥 | LogicalNetwork1-Chicago | VMNetwork1-Chicago
  | LogicalNetwork2Chicago | VMNetwork2-Chicago
 

@@ -2,7 +2,7 @@
 title: 门户中 Azure 搜索的服务管理 - Azure 搜索
 description: 使用 Azure 门户管理 Azure 搜索服务（Microsoft Azure 上托管的云搜索服务）。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d5820c927b88eba37eaf092dfd4b209180bfc8eb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775588"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719868"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure 门户中 Azure 搜索服务管理
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ Azure 搜索是一种完全托管的、基于云的搜索服务，用于在自�
 > [!div class="checklist"]
 > * 管理对用于服务读取或写入的 api-keys 的访问。
 > * 通过更改分区和副本的分配以调整服务容量。
-> * 根据服务层的最大限制，监视资源使用情况。
+> * 根据服务层级的最大限制，监视资源使用情况。
 
 请注意，“升级”未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 搜索服务](search-create-service-portal.md)。
 
@@ -60,7 +60,7 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>监视资源使用情况
-在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果你想要捕获和保存已记录的事件，可以预配外部资源，例如 Azure 监视。 有关详细信息，请参阅[监视 Azure 搜索](search-monitor-usage.md)。
+在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果你希望捕获并持久保存所记录的事件，可以预配外部资源，例如 Azure 监视。 有关详细信息，请参阅[监视 Azure 搜索](search-monitor-usage.md)。
 
 使用搜索服务 REST API，可以通过编程方式获取文档和索引的计数： 
 
@@ -79,10 +79,9 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 
 ## <a name="backup-and-restore"></a>备份和还原
 
-由于 Azure 搜索不是主数据存储解决方案，因此，我们不提供正式的自助备份和还原机制。 如果误删索引，用于创建和填充索引的应用程序代码是事实上的还原选项。 
+由于 Azure 搜索不是主数据存储解决方案，因此，我们不提供正式的自助备份和还原机制。 但是，可以使用此[Azure 搜索 .net 示例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存储库中的**索引备份-还原**示例代码将索引定义和快照备份到一系列 JSON 文件，然后根据需要使用这些文件还原索引。 此工具还可以在服务层之间移动索引。
 
-要重新生成索引，请删除它（假设其存在），在服务中重新创建该索引，并通过从主数据存储中检索数据来重新加载该索引。
-
+否则，如果错误地删除了索引，则用于创建和填充索引的应用程序代码将是事实上的还原选项。 要重新生成索引，请删除它（假设其存在），在服务中重新创建该索引，并通过从主数据存储中检索数据来重新加载该索引。
 
 <a id="scale"></a>
 

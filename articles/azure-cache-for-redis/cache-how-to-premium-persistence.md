@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/24/2017
 ms.author: yegu
 ms.openlocfilehash: de0b2e3ef7b0268540ef4896ade132a297ee88ff
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233977"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60543309"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置数据暂留
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 本文介绍如何配置高级 Azure Redis 缓存实例中的暂留功能。
@@ -34,52 +34,52 @@ Azure Redis 缓存使用以下模型提供 Redis 暂留：
 * **RDB 暂留** - 配置 RDB（Redis 数据库）暂留以后，Azure Redis 缓存按照可配置的备份频率，将 Azure Redis 缓存的快照以 Redis 二进制格式暂留在磁盘上。 如果发生了灾难性事件，导致主缓存和副缓存都无法使用，则会使用最新快照重新构造缓存。 详细了解 RDB 暂留的[优点](https://redis.io/topics/persistence#rdb-advantages)和[缺点](https://redis.io/topics/persistence#rdb-disadvantages)。
 * **AOF 暂留** - 配置 AOF（仅追加文件）暂留后，Azure Redis 缓存将每个写入操作保存到日志，此日志每秒至少保存到 Microsoft Azure 存储帐户一次。 如果发生了灾难性事件，导致主缓存和副缓存都无法使用，则会使用存储的写入操作重新构造缓存。 详细了解 AOF 暂留的[优点](https://redis.io/topics/persistence#aof-advantages)和[缺点](https://redis.io/topics/persistence#aof-disadvantages)。
 
-可在缓存创建过程中通过“新建 Azure Redis 缓存”边栏选项卡或者在现有高级缓存的“资源”菜单上配置暂留。
+可在缓存创建过程中通过“新建 Azure Redis 缓存”边栏选项卡或者在现有高级缓存的“资源”菜单上配置暂留   。
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-选中某个高级定价层后，请单击“Redis 暂留”。
+选中某个高级定价层后，请单击“Redis 暂留”  。
 
 ![Redis 暂留][redis-cache-persistence]
 
-下一部分中的步骤介绍如何在新的高级缓存上配置 Redis 暂留。 配置 Redis 暂留后，单击“创建”以创建具有 Redis 暂留的新高级版缓存。
+下一部分中的步骤介绍如何在新的高级缓存上配置 Redis 暂留。 配置 Redis 暂留后，单击“创建”  以创建具有 Redis 暂留的新高级版缓存。
 
 ## <a name="enable-redis-persistence"></a>启用 Redis 暂留
 
-通过选择“RDB”或“AOF”暂留可在“Redis 数据暂留”边栏选项卡上启用 Redis 暂留。 对于新缓存，可以按前一部分中所述，在创建缓存过程中访问此边栏选项卡。 对于现有缓存，可从缓存的“资源菜单”访问“Redis 数据暂留”边栏选项卡。
+通过选择“RDB”或“AOF”暂留可在“Redis 数据暂留”边栏选项卡上启用 Redis 暂留    。 对于新缓存，可以按前一部分中所述，在创建缓存过程中访问此边栏选项卡。 对于现有缓存，可从缓存的“资源菜单”  访问“Redis 数据暂留”  边栏选项卡。
 
 ![Redis 设置][redis-cache-settings]
 
 
 ## <a name="configure-rdb-persistence"></a>配置 RDB 暂留
 
-若要启用 RDB 暂留，请单击“RDB”。 若要在以前启用的高级缓存上禁用 RDB 暂留，请单击“禁用”。
+若要启用 RDB 暂留，请单击“RDB”  。 若要在以前启用的高级缓存上禁用 RDB 暂留，请单击“禁用”  。
 
 ![Redis RDB 暂留][redis-cache-rdb-persistence]
 
-若要配置备份间隔，请从下拉列表选择“备份频率”。 选项包括“15 分钟”、“30 分钟”、“60 分钟”、“6 小时”、“12 小时”和“24 小时”。 在上一个备份操作成功完成以后，此时间间隔就会开始倒计时，同时会启动新的备份。
+若要配置备份间隔，请从下拉列表选择“备份频率”  。 选项包括“15 分钟”  、“30 分钟”  、“60 分钟”  、“6 小时”  、“12 小时”  和“24 小时”  。 在上一个备份操作成功完成以后，此时间间隔就会开始倒计时，同时会启动新的备份。
 
-单击“存储帐户”以选择要使用的存储帐户，并从“存储密钥”下拉列表中选择要使用的“主密钥”或“辅助密钥”。 必须选择与缓存处于相同区域的存储帐户，建议选择“高级存储”帐户，因为高级存储的吞吐量较高。 
+单击“存储帐户”  以选择要使用的存储帐户，并从“存储密钥”  下拉列表中选择要使用的“主密钥”  或“辅助密钥”  。 必须选择与缓存处于相同区域的存储帐户，建议选择“高级存储”  帐户，因为高级存储的吞吐量较高。 
 
 > [!IMPORTANT]
-> 如果重新生成了暂留帐户的存储密钥，必须从“存储密钥”下拉列表中重新配置所需密钥。
+> 如果重新生成了暂留帐户的存储密钥，必须从“存储密钥”  下拉列表中重新配置所需密钥。
 > 
 > 
 
-单击“确定”可保存暂留配置。
+单击“确定”  可保存暂留配置。
 
 一旦备份频率间隔时间已过，则会启动下一次备份（或新缓存的首次备份）。
 
 ## <a name="configure-aof-persistence"></a>配置 AOF 暂留
 
-若要启用 AOF 暂留，请单击“AOF”。 若要在以前启用的高级缓存上禁用 AOF 暂留，请单击“禁用”。
+若要启用 AOF 暂留，请单击“AOF”  。 若要在以前启用的高级缓存上禁用 AOF 暂留，请单击“禁用”  。
 
 ![Redis AOF 暂留][redis-cache-aof-persistence]
 
-若要配置 AOF 暂留，请指定“第一个存储帐户”。 此存储帐户必须与缓存处于相同区域，建议选择“高级存储”帐户，因为高级存储的吞吐量较高。 也可配置名为“第二个存储帐户”的其他存储帐户。 如果配置第二个存储帐户，写入副本缓存操作会写入到第二个存储帐户。 对于每个配置的存储帐户，请从“存储密钥”下拉列表选择要使用的“主密钥”或“辅助密钥”。 
+若要配置 AOF 暂留，请指定“第一个存储帐户”  。 此存储帐户必须与缓存处于相同区域，建议选择“高级存储”帐户，因为高级存储的吞吐量较高  。 也可配置名为“第二个存储帐户”的其他存储帐户  。 如果配置第二个存储帐户，写入副本缓存操作会写入到第二个存储帐户。 对于每个配置的存储帐户，请从“存储密钥”下拉列表选择要使用的“主密钥”或“辅助密钥”    。 
 
 > [!IMPORTANT]
-> 如果重新生成了暂留帐户的存储密钥，必须从“存储密钥”下拉列表中重新配置所需密钥。
+> 如果重新生成了暂留帐户的存储密钥，必须从“存储密钥”  下拉列表中重新配置所需密钥。
 > 
 > 
 
@@ -133,7 +133,7 @@ AOF 暂留将每个写入保存到日志，与 RDB 暂留相比，这对吞吐�
 * 如果缩放到更小的大小，并且更小的大小空间不足，无法容纳上次备份的所有数据，则在还原过程中，通常会使用 [allkeys-lru](https://redis.io/topics/lru-cache) 逐出策略逐出密钥。
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>创建缓存后是否可更改 RDB 备份频率？
-可以，可在“Redis 数据暂留”边栏选项卡上更改 RDB 暂留的备份频率。 有关说明，请参阅“配置 Redis 暂留”。
+可以，可在“Redis 数据暂留”边栏选项卡上更改 RDB 暂留的备份频率  。 有关说明，请参阅“配置 Redis 暂留”。
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>为何我的 RDB 备份频率为 60 分钟，而两次备份的间隔却超过 60 分钟？
 RDB 暂留备份频率间隔在先前备份过程已成功完成后才会开始。 如果备份频率为 60 分钟，而备份过程需要 15 分钟才能成功完成，则在上一次备份开始以后，要再过 75 分钟才会开始下一次备份。

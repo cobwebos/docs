@@ -13,15 +13,15 @@ ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2017
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c081a6296e1fae89f24a2c3ddb1ae66f7a3f94aa
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b5dba1f7e71149c37edc909d2bb43d708192bdbb
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662536"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385226"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>教程：在 Linux Service Fabric 群集上创建容器映像
 
@@ -63,7 +63,7 @@ cd service-fabric-containers/Linux/container-tutorial/
 
 ## <a name="create-container-images"></a>创建容器映像
 
-在“azure-vote”目录中，运行以下命令，生成前端 Web 组件的映像。 下面的命令使用此目录中的 Dockerfile 生成映像。
+在“azure-vote”目录中，运行以下命令，生成前端 Web 组件的映像  。 下面的命令使用此目录中的 Dockerfile 生成映像。
 
 ```bash
 docker build -t azure-vote-front .
@@ -77,7 +77,7 @@ docker build -t azure-vote-front .
 docker images
 ```
 
-请注意，已下载或创建两个映像。 *azure-vote-front* 映像包含应用程序。 它派生自 Docker 中心的 python 映像。
+请注意，已下载或创建两个映像。 *azure-vote-front* 映像包含应用程序。 它派生自 Docker 中心的 python 映像  。
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
@@ -102,7 +102,7 @@ az account set --subscription <subscription_id>
 
 在部署 Azure 容器注册表时，首先需要一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-使用 **az group create** 命令创建资源组。 在此示例中，在“westus”区域中创建了名为“myResourceGroup”的资源组。
+使用 **az group create** 命令创建资源组。 在此示例中，在“westus”区域中创建了名为“myResourceGroup”的资源组   。
 
 ```bash
 az group create --name <myResourceGroup> --location westus
@@ -116,7 +116,7 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 在本教程的余下部分，将使用“acrName”作为所选容器注册表名称的占位符。 请记下此值。
 
-## <a name="log-in-to-your-container-registry"></a>登录容器注册表
+## <a name="sign-in-to-your-container-registry"></a>登录容器注册表
 
 先登录 ACR 实例，再向其推送映像。 使用 **az acr login** 命令完成此操作。 请提供创建容器注册表时所使用的唯一名称。
 
@@ -158,7 +158,7 @@ Result
 <acrName>.azurecr.io
 ```
 
-现在，使用容器注册表的 loginServer 标记 azure-vote-front 映像。 另外，将 `:v1` 添加至映像名称的末端。 此标记代表映像版本。
+现在，使用容器注册表的 loginServer 标记 azure-vote-front 映像  。 另外，将 `:v1` 添加至映像名称的末端。 此标记代表映像版本。
 
 ```bash
 docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
@@ -178,7 +178,7 @@ tiangolo/uwsgi-nginx-flask             python3.6           590e17342131        5
 
 ## <a name="push-images-to-registry"></a>将映像推送到注册表
 
-将 azure-vote-front 映像推送到注册表。 
+将 azure-vote-front  映像推送到注册表。 
 
 使用以下示例，将 ACR loginServer 名称替换为环境中的 loginServer。
 

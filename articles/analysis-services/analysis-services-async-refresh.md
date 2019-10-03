@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5e9558eae43b351aa198b64bb2a7903c756064c2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 82e40f756e0d8e0b5627b7c8856bd25fa98adbcb
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168011"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932295"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 
 使用支持 REST 调用的任何编程语言，可以针对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
 
-数据刷新操作可能需要一段时间，具体取决于多种因素，包括数据卷、使用分区的优化级别，等等。在传统上，这些操作是使用现有方法调用的，例如，使用 [TOM](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)（表格对象模型）、[PowerShell](https://docs.microsoft.com/sql/analysis-services/powershell/analysis-services-powershell-reference) cmdlet，或 [TMSL](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)（表格模型脚本语言）。 但是，这些方法可能需要通常不可靠的且长时间运行的 HTTP 连接。
+数据刷新操作可能需要一段时间，具体取决于多种因素，包括数据卷、使用分区的优化级别，等等。在传统上，这些操作是使用现有方法调用的，例如，使用 [TOM](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)（表格对象模型）、[PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) cmdlet，或 [TMSL](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)（表格模型脚本语言）。 但是，这些方法可能需要通常不可靠的且长时间运行的 HTTP 连接。
 
 使用 Azure Analysis Services 的 REST API 能够以异步方式执行数据刷新操作。 如果使用 REST API，则不需要从客户端应用程序建立长时间运行的 HTTP 连接。 还有其他内置功能可以确保可靠性，例如自动重试和分批提交。
 
@@ -57,7 +57,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 所有调用必须使用 Authorization 标头中的有效 Azure Active Directory (OAuth 2) 令牌进行身份验证，并且必须满足以下要求：
 
@@ -94,17 +94,17 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 }
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>Parameters
 
 不需要指定参数。 将应用默认值。
 
 | 名称             | 类型  | 描述  |默认  |
 |------------------|-------|--------------|---------|
-| `Type`           | 枚举  | 要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
-| `CommitMode`     | 枚举  | 确定是要分批提交对象，还是只在完成时才提交。 模式包括：default、transactional、partialBatch。  |  transactional       |
-| `MaxParallelism` | Int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
+| `Type`           | Enum  | 要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
+| `CommitMode`     | Enum  | 确定是要分批提交对象，还是只在完成时才提交。 模式包括：default、transactional、partialBatch。  |  transactional       |
+| `MaxParallelism` | Int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
 | `RetryCount`     | Int   | 指示操作在失败之前要重试的次数。      |     0    |
-| `Objects`        | Array | 要处理的对象数组。 每个对象包含：“table”（处理整个表时），或者“table”和“partition”（处理分区时）。 如果未指定任何对象，则会刷新整个模型。 |   处理整个模型      |
+| `Objects`        | 阵列 | 要处理的对象数组。 每个对象包含：“table”（处理整个表时），或者“table”和“partition”（处理分区时）。 如果未指定任何对象，则会刷新整个模型。 |   处理整个模型      |
 
 CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个小时的初始加载时，将会使用 CommitMode。 如果在成功提交一个或多个批之后刷新操作失败，则成功提交的批将保留已提交状态（不会回滚已成功提交的批）。
 
@@ -201,51 +201,18 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 1.  克隆或下载存储库。 打开 RestApiSample 解决方案。
 2.  找到 **client.BaseAddress = …** 行 并提供自己的[基 URL](#base-url)。
 
-该代码示例可以使用交互式登录、用户名/密码或[服务主体](#service-principal)。
+此代码示例使用[服务主体](#service-principal)身份验证。
 
-#### <a name="interactive-login-or-usernamepassword"></a>交互式登录或用户名/密码
-
-这种形式的身份验证要求使用分配的所需 API 权限创建一个 Azure 应用程序。 
-
-1.  在 Azure 门户中，单击“创建资源” > “Azure Active Directory” > “应用注册” > “新建应用程序注册”。
-
-    ![新建应用程序注册](./media/analysis-services-async-refresh/aas-async-app-reg.png)
-
-
-2.  在“创建”中键入一个名称，选择“本机”应用程序类型。 对于“重定向 URI”，请输入 **urn:ietf:wg:oauth:2.0:oob**，然后单击“创建”。
-
-    ![设置](./media/analysis-services-async-refresh/aas-async-app-reg-name.png)
-
-3.  选择应用，然后复制并保存**应用程序 ID**。
-
-    ![复制应用程序 ID](./media/analysis-services-async-refresh/aas-async-app-id.png)
-
-4.  在“设置”中，单击“所需权限” > “添加”。
-
-    ![添加 API 访问权限](./media/analysis-services-async-refresh/aas-async-add.png)
-
-5.  在“选择 API”中，将 **Azure Analysis Services** 键入到搜索框中，然后选择它。
-
-    ![选择 API](./media/analysis-services-async-refresh/aas-async-select-api.png)
-
-6.  选择“读取和写入所有模型”，然后单击“选择”。 选择这两项后，请单击“完成”添加权限。 可能需要几分钟时间才能完成传播。
-
-    ![选择“读取和写入所有模型”](./media/analysis-services-async-refresh/aas-async-select-read.png)
-
-7.  在代码示例中，找到 **UpdateToken()** 方法。 观察此方法的内容。
-8.  找到 **string clientID = …**，然后输入步骤 3 中复制的**应用程序 ID**。
-9.  运行示例。
-
-#### <a name="service-principal"></a>服务主体
+### <a name="service-principal"></a>服务主体
 
 有关如何在 Azure AS 中设置服务主体和分配必要权限的详细信息，请参阅[创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)和[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。 完成上述步骤后，请完成以下附加步骤：
 
-1.  在代码示例中，找到 **string authority = …**，将 **common** 替换为组织的租户 ID。
+1.  在代码示例中，找到 **string authority = …** ，将 **common** 替换为组织的租户 ID。
 2.  注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保以安全方式访问 \<App ID> 和 \<App Key> 值，或者对服务主体使用基于证书的身份验证。
 3.  运行示例。
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [示例](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

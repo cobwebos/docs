@@ -1,19 +1,19 @@
 ---
 title: Azure Data Lake Storage Gen2 性能优化指南 | Microsoft Docs
 description: Azure Data Lake Storage Gen2 性能优化指南
-services: storage
-author: swums
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: stewu
-ms.openlocfilehash: f175360586428b57d1ff10e3529ae9e3283399e8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: b134842303bebdf10efdf388057c8ad7b3be61be
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117042"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855571"
 ---
 # <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>优化 Azure Data Lake Storage Gen2 性能
 
@@ -43,7 +43,7 @@ Data Lake Storage Gen2 可进行缩放，以便为所有分析方案提供必要
 
 解决上述源硬件和网络连接瓶颈后，即可配置引入工具。 下表概述了几种常用引入工具的关键设置，并提供了关于这些工具的详尽性能优化文章。  若要深入了解方案应使用何种工具，请参阅这篇[文章](data-lake-storage-data-scenarios.md)。
 
-| 工具               | 设置     | 更多详细信息                                                                 |
+| Tool               | 设置     | 更多详细信息                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (mapper)   | [链接](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure 数据工厂| parallelCopies    | [链接](../../data-factory/copy-activity-performance.md)                          |
@@ -138,5 +138,5 @@ HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅
 | [MapReduce on HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [Storm on HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>工作进程数</li><li>Spout 执行器实例数</li><li>Bolt 执行器实例数 </li><li>Spout 任务数</li><li>Bolt 任务数</li></ul>|
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure Data Lake Storage Gen2 概述](data-lake-storage-introduction.md)

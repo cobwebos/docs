@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 64f78b04d433c81302499addf15c3d19621bbf9f
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 499b08dbdc8e798a884b721bcba51be1f6973df6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58919870"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562391"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>教程：有关使用 Azure 空间定位点创建新 Android 应用的分步说明
 
@@ -23,18 +23,18 @@ ms.locfileid: "58919870"
 
 若要完成本教程，请确保做好以下准备：
 
-- 具有 <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 +</a> 的 Windows 或 macOS 计算机。
+- 具有 <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4+</a> 的 Windows 或 macOS 计算机。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">支持开发人员</a>和 <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 功能</a>的 Android 设备。
 
 ## <a name="getting-started"></a>入门
 
-启动 Android Studio。 在“欢迎使用 Android Studio”窗口中，选择“启动新的 Android Studio 项目”。 如果已打开某个项目，请选择“文件”->“新建项目”。
+启动 Android Studio。 在“欢迎使用 Android Studio”窗口中，选择“启动新的 Android Studio 项目”。   如果已打开某个项目，请选择“文件”->“新建项目”。  
 
-在“创建新项目”窗口中的“手机和平板电脑”部分下，选择“空活动”并单击“下一步”。 然后，在“最低 API 级别”下选择 `API 26: Android 8.0 (Oreo)`，并确保“语言”设置为 `Java`。 可以更改“项目名称”和“位置”以及“包名称”。 将其他选项保持不变。 单击“完成”。 “组件安装程序”随即运行。 完成后，单击“完成”。 经过某种处理后，Android Studio 将打开 IDE。
+在“创建新项目”窗口中的“手机和平板电脑”部分下，选择“空活动”并单击“下一步”。     然后，在“最低 API 级别”下选择 `API 26: Android 8.0 (Oreo)`，并确保“语言”设置为 `Java`。   可以更改“项目名称”和“位置”以及“包名称”。 将其他选项保持不变。 单击“完成”  。 “组件安装程序”随即运行。  完成后，单击“完成”。  经过某种处理后，Android Studio 将打开 IDE。
 
 ## <a name="trying-it-out"></a>体验一下
 
-若要测试新应用，请使用 USB 线缆将开发人员启用的设备连接到开发计算机。 单击“运行”->“运行‘应用’”。 在“选择部署目标”窗口中选择自己的设备，然后单击“确定”。 Android Studio 将在连接的设备上安装并启动该应用。 现在应会看到“Hello World!” 显示在设备上运行的应用中。 单击“运行”->“停止‘应用’”。
+若要测试新应用，请使用 USB 线缆将开发人员启用的设备连接到开发计算机。 单击“运行”->“运行‘应用’”。   在“选择部署目标”窗口中选择自己的设备，然后单击“确定”。   Android Studio 将在连接的设备上安装并启动该应用。 现在应会看到“Hello World!” 显示在设备上运行的应用中。 单击“运行”->“停止‘应用’”。  
 
 ## <a name="integrating-arcore"></a>集成 _ARCore_
 
@@ -57,12 +57,12 @@ ms.locfileid: "58919870"
 </application>
 ```
 
-修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码将确保应用面向 ARCore 版本 1.5（不久后，Azure 空间定位点将会支持 ARCore 1.6+）。 完成此项更改后，Gradle 可能会发出一条通知，询问是否要同步：请单击“立即同步”。
+修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码将确保应用面向 ARCore 版本 1.8。 完成此项更改后，Gradle 可能会发出一条通知，询问是否要同步：请单击“立即同步”。 
 
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.5.0'
+    implementation 'com.google.ar:core:1.8.0'
     ...
 }
 ```
@@ -71,7 +71,7 @@ dependencies {
 
 使用 <a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> 能够轻松地在增强现实应用中渲染逼真的 3D 场景，且无需学习 OpenGL。
 
-修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码允许应用使用 Java 8 中的语言构造，而 `Sceneform` 要求使用此类构造。 它还确保应用面向 `Sceneform` 版本 1.5，该版本应该与应用使用的 ARCore 版本相匹配。 完成此项更改后，Gradle 可能会发出一条通知，询问是否要同步：请单击“立即同步”。
+修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码允许应用使用 Java 8 中的语言构造，而 `Sceneform` 要求使用此类构造。 它还将确保应用面向 `Sceneform` 版本 1.8，因为该版本应该与此应用正在使用的 ARCore 版本相匹配。 完成此项更改后，Gradle 可能会发出一条通知，询问是否要同步：请单击“立即同步”。 
 
 ```
 android {
@@ -85,7 +85,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.5.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.8.0'
     ...
 }
 ```
@@ -123,18 +123,18 @@ dependencies {
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>附加本地 Azure 空间定位点
 
-修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码确保应用面向 Azure 空间定位点版本 1.0.2。 即，可以引用任何最新版本的 Azure 空间定位点。
+修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码将确保应用面向 Azure 空间定位点版本 1.3.0。 即，可以引用任何最新版本的 Azure 空间定位点。
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.0.2]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.0.2]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.3.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.3.0]"
     ...
 }
 ```
 
-右键单击 `app\java\<PackageName>`->“新建”->“Java 类”。 将“名称”设置为 _MyFirstApp_，将“超类”设置为 _android.app.Application_。 将其他选项保持不变。 单击“确定”。 将创建名为 `MyFirstApp.java` 的文件。 将以下 import 语句添加到该文件：
+右键单击 `app\java\<PackageName>`->“新建”->“Java 类”。   将“名称”设置为 _MyFirstApp_，将“超类”设置为 _android.app.Application_。   将其他选项保持不变。 单击“确定”。  将创建名为 `MyFirstApp.java` 的文件。 将以下 import 语句添加到该文件：
 
 ```java
 import com.microsoft.CloudServices;

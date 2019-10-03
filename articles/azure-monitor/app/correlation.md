@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 565f08f0c69aef393a9296f3cce90570a3f0bc2c
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: fe52fe51b347b232e03bad943906413b90c853c0
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683012"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338173"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -35,7 +35,7 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 可以结合 `dependency.id` 使用 `operation_Id`、`operation_parentId` 和 `request.id`，生成分布式逻辑操作的视图。 这些字段还定义了遥测调用的因果关系顺序。
 
-在微服务环境中，来自组件的跟踪可能会进入不同的存储项。 每个组件可能在 Application Insights 中具有其自身的检测密钥。 若要获取逻辑操作的遥测数据，必须查询每个存储项中的数据。 如果存储项的数目极大，需要提示后续查找位置。 Application Insights 数据模型定义了以下两个字段来解决此问题：`request.source` 和 `dependency.target`。 第一个字段定义发起依赖项请求的组件，第二个字段定义哪个组件返回依赖项调用的响应。
+在微服务环境中，来自组件的跟踪可能会进入不同的存储项。 每个组件可能在 Application Insights 中具有其自身的检测密钥。 为了获取逻辑操作的遥测数据，Application Insights UX 会查询每个存储项中的数据。 如果存储项的数目极大，需要提示后续查找位置。 Application Insights 数据模型定义了以下两个字段来解决此问题：`request.source` 和 `dependency.target`。 第一个字段定义发起依赖项请求的组件，第二个字段定义哪个组件返回依赖项调用的响应。
 
 ## <a name="example"></a>示例
 
@@ -51,7 +51,7 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 在结果中可以看到，所有遥测项共享根 `operation_Id`。 从该页面发出 Ajax 调用后，会将新的唯一 ID (`qJSXU`) 分配给依赖项遥测，并将 pageView 的 ID 用作 `operation_ParentId`。 接着，服务器请求将 Ajax ID 用作 `operation_ParentId`。
 
-| itemType   | 名称                      | ID           | operation_ParentId | operation_Id |
+| itemType   | name                      | id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock page                |              | STYz               | STYz         |
 | dependency | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
@@ -62,31 +62,64 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 ## <a name="correlation-headers"></a>关联标头
 
-我们正在开发[关联 HTTP 协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)的 RFC 提案。 此提案定义两个标头：
-
-- `Request-Id`：承载调用的全局唯一 ID。
-- `Correlation-Context`：承载分布式跟踪属性的名称值对集合。
-
-该标准还定义了 `Request-Id` 生成项的两个架构：平面和分层。 使用平面架构时，将为 `Correlation-Context` 集合定义一个已知的 `Id` 键。
-
-Application Insights 为关联 HTTP 协议定义了[扩展](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)。 它使用 `Request-Context` 名称值对来传播直接调用方或被调用方使用的属性集合。 Application Insights SDK 使用此标头设置 `dependency.target` 和 `request.source` 字段。
-
-### <a name="w3c-distributed-tracing"></a>W3C 分布式跟踪
-
-我们正在转换为 [W3C 分布式跟踪格式](https://w3c.github.io/trace-context/)。 定义的内容：
+我们正在转换到[W3C 跟踪上下文](https://w3c.github.io/trace-context/)，该上下文定义：
 
 - `traceparent`：承载调用的全局唯一操作 ID 和唯一标识符。
 - `tracestate`：承载跟踪系统特定的上下文。
 
-#### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>启用对经典 ASP.NET 应用的 W3C 分布式跟踪支持
+最新版本的 Application Insights Sdk 支持跟踪上下文协议，但你可能需要选择加入该协议（它将使与 Applicationinsights.config Sdk 支持的旧相关协议保持向后兼容）。
 
+[相关 HTTP 协议称为请求 Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)在弃用路径上。 此协议定义了两个标头：
+
+- `Request-Id`：承载调用的全局唯一 ID。
+- `Correlation-Context`：承载分布式跟踪属性的名称值对集合。
+
+Application Insights 还定义了相关 HTTP 协议的[扩展](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)。 它使用 `Request-Context` 名称值对来传播直接调用方或被调用方使用的属性集合。 Application Insights SDK 使用此标头设置 `dependency.target` 和 `request.source` 字段。
+
+### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>启用对经典 ASP.NET 应用的 W3C 分布式跟踪支持
+ 
+  > [!NOTE]
+  > 不需要从 `Microsoft.ApplicationInsights.Web` 开始配置，`Microsoft.ApplicationInsights.DependencyCollector` 
+
+W3C 跟踪上下文支持是以向后兼容的方式完成的，相关内容应与使用早期版本的 SDK （不支持 W3C）检测到的应用程序配合使用。 
+
+如果出于任何原因需要继续使用旧的 `Request-Id` 协议，则可以使用以下配置*禁用*跟踪上下文：
+
+```csharp
+  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
+  Activity.ForceDefaultIdFormat = true;
+```
+
+如果运行的是较旧版本的 SDK，我们建议对其进行更新或应用以下配置，以启用跟踪上下文。
 从版本 2.8.0-beta1 开始，`Microsoft.ApplicationInsights.Web` 和 `Microsoft.ApplicationInsights.DependencyCollector` 包中提供此功能。
 此项默认禁用。 若要启用该项，请更改 `ApplicationInsights.config`：
 
 - 在 `RequestTrackingTelemetryModule` 下，添加 `EnableW3CHeadersExtraction` 元素，并将值设为 `true`。
 - 在 `DependencyTrackingTelemetryModule` 下，添加 `EnableW3CHeadersInjection` 元素，并将值设为 `true`。
+- 在 `TelemetryInitializers` 下添加 `W3COperationCorrelationTelemetryInitializer`，类似于 
 
-#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>启用对 ASP.NET Core 应用的 W3C 分布式跟踪支持
+```xml
+<TelemetryInitializers>
+  <Add Type="Microsoft.ApplicationInsights.Extensibility.W3C.W3COperationCorrelationTelemetryInitializer, Microsoft.ApplicationInsights"/>
+   ...
+</TelemetryInitializers> 
+```
+
+### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>启用对 ASP.NET Core 应用的 W3C 分布式跟踪支持
+
+ > [!NOTE]
+  > 从 `Microsoft.ApplicationInsights.AspNetCore` 版本2.8.0 开始，无需进行任何配置。
+ 
+W3C 跟踪上下文支持是以向后兼容的方式完成的，相关内容应与使用早期版本的 SDK （不支持 W3C）检测到的应用程序配合使用。 
+
+如果出于任何原因需要继续使用旧的 `Request-Id` 协议，则可以使用以下配置*禁用*跟踪上下文：
+
+```csharp
+  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
+  Activity.ForceDefaultIdFormat = true;
+```
+
+如果运行的是较旧版本的 SDK，我们建议对其进行更新或应用以下配置，以启用跟踪上下文。
 
 此功能在 `Microsoft.ApplicationInsights.AspNetCore` 的版本 2.5.0-beta1 以及 `Microsoft.ApplicationInsights.DependencyCollector` 的版本 2.8.0-beta1 中提供。
 此项默认禁用。 若要启用该项，请将 `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` 设置为 `true`：
@@ -100,7 +133,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-#### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>启用对 Java 应用的 W3C 分布式跟踪支持
+### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>启用对 Java 应用的 W3C 分布式跟踪支持
 
 - **传入配置**
 
@@ -137,13 +170,46 @@ public void ConfigureServices(IServiceCollection services)
 > [!IMPORTANT]
 > 请确保传入和传出配置完全相同。
 
+### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>启用对 Web 应用的 W3C 分布式跟踪支持
+
+此功能在 `Microsoft.ApplicationInsights.JavaScript` 中。 此项默认禁用。 若要启用它，请使用 `distributedTracingMode` 配置。提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容：
+
+- **NPM 设置（如果使用代码段设置，则忽略）**
+
+  ```javascript
+  import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
+
+  const appInsights = new ApplicationInsights({ config: {
+    instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
+    distributedTracingMode: DistributedTracingModes.W3C
+    /* ...Other Configuration Options... */
+  } });
+  appInsights.loadAppInsights();
+  ```
+  
+- **代码段设置（如果使用 NPM 设置，则忽略）**
+
+  ```
+  <script type="text/javascript">
+  var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){i[e]=function(){var n=arguments;i.queue.push(function(){i[e].apply(i,n)})}}var i={config:e};i.initialize=!0;var a=document,t=window;setTimeout(function(){var n=a.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",a.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{i.cookie=a.cookie}catch(e){}i.queue=[],i.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var o="Track"+r[0];if(n("start"+o),n("stop"+o),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var s=t[r];t[r]=function(e,n,a,t,o){var c=s&&s(e,n,a,t,o);return!0!==c&&i["_"+r]({message:e,url:n,lineNumber:a,columnNumber:t,error:o}),c},e.autoExceptionInstrumented=!0}return i}
+  (
+    {
+      instrumentationKey:"INSTRUMENTATION_KEY",
+      distributedTracingMode: 2 // DistributedTracingModes.W3C
+      /* ...Other Configuration Options... */
+    }
+  );
+  window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+  </script>
+  ```
+
 ## <a name="opentracing-and-application-insights"></a>OpenTracing 和 Application Insights
 
 [OpenTracing 数据模型规范](https://opentracing.io/)和 Application Insights 数据模型按以下方式映射：
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`、`PageView`                 | 带 `span.kind = server` 的 `Span`                  |
+| `Request`， `PageView`                 | 带 `span.kind = server` 的 `Span`                  |
 | `Dependency`                          | 带 `span.kind = client` 的 `Span`                  |
 | `Request` 和 `Dependency` 的 `Id`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
@@ -168,7 +234,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 
-从版本 4.1.0 开始，`System.Net.HttpClient` 支持自动注入关联 HTTP 标头和以活动形式跟踪 HTTP 调用。
+从版本 4.1.0 开始，`System.Net.Http.HttpClient` 支持自动注入关联 HTTP 标头和以活动形式跟踪 HTTP 调用。
 
 经典 ASP.NET 有一个新的 HTTP 模块 [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)。 此模块使用 `DiagnosticSource` 实现遥测关联。 它会基于传入的请求标头启动活动。 它还会关联不同请求处理阶段的遥测，即使 Internet Information Services (IIS) 处理的每个阶段在不同的托管线程上运行。
 
@@ -186,11 +252,11 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 
 ### <a name="telemetry-correlation-in-asynchronous-java-application"></a>异步 Java 应用程序中的遥测关联
 
-为了将异步 Spring Boot 应用程序中的遥测相关联，请按照[这](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)详细的文章。 它提供了有关检测 Spring 的指导[ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) ，以及[ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html)。 
+若要在异步 Spring Boot 应用程序中关联遥测，请遵循[此](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)深入文章。 它为检测 Spring 的 [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) 和 [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html) 提供了指导。 
 
 
 <a name="java-role-name"></a>
-## <a name="role-name"></a>角色名称
+## <a name="role-name"></a>角色名
 
 有时候，可能需要对组件名称在[应用程序映射](../../azure-monitor/app/app-map.md)中的显示方式进行自定义。 为此，可执行以下操作之一，以便手动设置 `cloud_RoleName`：
 
@@ -217,6 +283,7 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 ## <a name="next-steps"></a>后续步骤
 
 - 编写[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)。
+- 有关 ASP.NET Core 和 ASP.NET 中的高级关联方案，请参阅[跟踪自定义操作](custom-operations-tracking.md)一文。
 - 详细了解如何为其他 SDK [设置 cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name)。
 - 在 Application Insights 中载入微服务的所有组件。 查看[支持的平台](../../azure-monitor/app/platforms.md)。
 - 有关 Application Insights 的类型，请参阅[数据模型](../../azure-monitor/app/data-model.md)。

@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9ae8620b803fa9a911f44840a5fff5d190a316a1
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820019"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086535"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
 
@@ -70,7 +70,7 @@ ms.locfileid: "56820019"
     ```
 
 > [!Note]
-> 如果通过组策略对象设置了防火墙，则此方法可能无法工作，因为此命令将更改仅本地注册表条目。 如果应用策略，它将覆盖此更改。 
+> 如果通过组策略对象设置防火墙，则此方法可能不起作用，因为此命令只更改本地注册表项。 如果应用策略，它将覆盖此更改。 
 
 #### <a name="mitigation-3-pstools-commands"></a>缓解措施 3：PSTools 命令
 
@@ -108,7 +108,7 @@ ms.locfileid: "56820019"
 
 6.  选择“连接到另一台计算机”。
 
-7.  输入问题 VM 的 **专用 IP 地址 (DIP)** 。
+7.  输入问题 VM 的 **专用 IP 地址 (DIP)**  。
 
 8.  重启本地防火墙策略。
 

@@ -1,21 +1,19 @@
 ---
-title: 如何通过 Java 使用队列存储 | Microsoft Docs
+title: 如何通过 Java 使用队列存储-Azure 存储
 description: 了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。 用 Java 编写的示例。
-services: storage
-author: roygara
+author: mhopkins-msft
 ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: Java
-ms.topic: article
+ms.author: mhopkins
 ms.date: 12/08/2016
-ms.author: rogarana
 ms.subservice: queues
-ms.openlocfilehash: 7c2fbc168c663cc4dc5981071d40540cfc4797ca
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: 5d2bd94f6b95ff993ae367b99f48746c091f5739
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648480"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721430"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何通过 Java 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -23,9 +21,9 @@ ms.locfileid: "58648480"
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="overview"></a>概述
-本指南演示如何使用 Azure 队列存储服务执行常见方案。 这些示例用 Java 编写并使用[用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java]。 介绍的方案包括**插入**、**扫视**、**获取**和**删除**队列消息以及**创建**和**删除**队列。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
+本指南演示如何使用 Azure 队列存储服务执行常见方案。 这些示例用 Java 编写并使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 介绍的方案包括插入、扫视、获取和删除队列消息以及创建和删除队列。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
 
-注意：SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅[用于 Android 的 Azure 存储 SDK][Azure Storage SDK for Android]。
+注意:SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -34,7 +32,7 @@ ms.locfileid: "58648480"
 ## <a name="create-a-java-application"></a>创建 Java 应用程序
 在本指南中，将使用存储功能，这些功能可在本地 Java 应用程序中运行，或在 Azure 的 Web 角色或辅助角色中通过运行的代码来运行。
 
-为此，需要安装 Java 开发工具包 (JDK)，并在 Azure 订阅中创建一个 Azure 存储帐户。 完成此操作后，需要验证开发系统满足最低要求和 GitHub 上[用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java] 存储库中列出的依赖项。 如果系统满足这些要求，可以按照说明从该存储库将用于 Java 的 Azure 存储库下载并安装到你的系统中。 完成这些任务后，便能够创建一个 Java 应用程序，以便使用本文中的示例。
+为此，需要安装 Java 开发工具包 (JDK)，并在 Azure 订阅中创建一个 Azure 存储帐户。 完成此操作后，需要验证开发系统是否满足最低要求和 GitHub 上的 [Azure Storage SDK for Java][Azure Storage SDK for Java] 存储库中列出的依赖项。 如果系统满足这些要求，可以按照说明下载和安装系统中该存储库的 Azure Storage Libraries for Java。 完成这些任务后，便能够创建一个 Java 应用程序，以便使用本文中的示例。
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>配置应用程序以访问队列存储
 将下列 import 语句添加到需要在其中使用 Azure 存储 API 来访问队列的 Java 文件的顶部：
@@ -390,10 +388,10 @@ catch (Exception e)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，已了解有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
+现在，了解了有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
 
-* [用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java]
-* [Azure 存储客户端 SDK 参考][Azure 存储客户端 SDK 参考]
+* [Azure Storage SDK for Java][Azure Storage SDK for Java]
+* [Azure 存储客户端 SDK 参考][Azure Storage Client SDK Reference]
 * [Azure 存储服务 REST API][Azure Storage Services REST API]
 * [Azure 存储团队博客][Azure Storage Team Blog]
 

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 075d0e2471457e1a585f7fdea9b523b1d13499c7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 322cc2fd53972c7c084da76ac0c80b757d0d2297
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100422"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570412"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
@@ -57,7 +56,7 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 
 [Azure 门户](https://portal.azure.com)提供内置的监视和警报功能，可以监视大多数资源。 对于 SQL 数据库来说，监视和警报功能可以在数据库和池上使用。 这种内置的监视和警报功能是特定于资源的，因此对于少量资源使用方便，但在处理大量资源时就不是很方便。
 
-对于大容量方案，其中你正在使用许多资源，请[Azure Monitor 日志](saas-dbpertenant-log-analytics.md)可用。 这是单独的 Azure 服务的基础上发出的诊断日志和 Log Analytics 工作区中收集的遥测提供了分析。 Azure Monitor 日志可以收集多个服务的遥测数据和用于查询和设置警报。
+对于大容量方案, 使用多个资源时, 可以使用[Azure Monitor 日志](saas-dbpertenant-log-analytics.md)。 这是单独的 Azure 服务, 可针对在 Log Analytics 工作区中收集的发出的诊断日志和遥测提供分析。 Azure Monitor 日志可以收集来自多个服务的遥测数据, 并用于查询和设置警报。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS Database Per Tenant 应用程序的脚本
 
@@ -69,7 +68,7 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 
 如果在之前的教程中已预配一批租户，则可跳到[模拟所有租户数据库上的使用情况](#simulate-usage-on-all-tenant-databases)部分。
 
-1. 在 PowerShell ISE 中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
+1. 在 PowerShell ISE中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
 1. 设置 **$DemoScenario** = **1**，**预配一批租户**
 1. 按 **F5** 运行脚本。
 
@@ -81,17 +80,17 @@ New-TenantBatch 脚本使用嵌套或链接形式的一组[资源管理器](../a
 
 我们提供了 Demo-PerformanceMonitoringAndManagement.ps1 脚本，用于模拟针对所有租户数据库运行的工作负荷。 负载是使用可用负载方案之一生成的：
 
-| 演示 | 场景 |
+| 演示 | 应用场景 |
 |:--|:--|
 | 2 | 生成正常强度负载 (约 40 DTU) |
 | 3 | 生成单个数据库的突发时间更长且频率更高的负载|
-| 4 | 生成每个数据库 (约 80 DTU) 的 DTU 突发更高的负载|
-| 5 | 生成在正常负载的高负载在单个租户 (约 95 DTU)|
+| 4 | 生成每个数据库的 DTU 猝发负载较高的负载 (约 80 DTU)|
+| 5 | 在单个租户上生成正常负载和高负载 (大约 95 DTU)|
 | 6 | 生成跨多个池的不均衡负载|
 
 负载生成器向每个租户数据库应用仅限 CPU 的综合负载。 该生成器为每个租户数据库启动一个作业，以便定期调用生成负载的存储过程。 负载级别（以 eDTU 为单位）、持续时间和间隔在各个数据库之间并不相同，模拟不可预测的租户活动。
 
-1. 在 PowerShell ISE 中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
+1. 在 PowerShell ISE中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
 1. 设置 $DemoScenario = 2，生成正常强度负载。
 1. 按 **F5** 将负载应用到所有租户数据库。
 
@@ -142,7 +141,7 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 
 如果某个池的聚合负载级别增加过多，以至于耗光了池的资源，达到了 100% 的 eDTU 使用率，则会影响单个数据库的性能，可能会拖累池中所有数据库的查询响应时间。
 
-短期可考虑通过扩展池来提供更多的资源，或者从池中删除数据库（将数据库移至其他池，或者从池中移至单独的服务层）。
+短期可考虑通过扩展池来提供更多的资源，或者从池中删除数据库（将数据库移至其他池，或者从池中移至单独的服务层级）。
 
 长期可考虑优化查询或索引使用，从而改进数据库性能。 根据应用程序对性能问题的敏感程度，最佳做法是在池达到 100% eDTU 使用率之前对其进行扩展。 使用警报提前示警。
 
@@ -196,7 +195,7 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 本练习模拟 Contoso 音乐厅在销售热门音乐会票时遇到的负载过高的情况。
 
 1. 在 PowerShell ISE 中打开 \\Demo-PerformanceMonitoringAndManagement.ps1 脚本。
-1. 设置 **$DemoScenario = 5，生成正常的负载以及单租户 (约 95 DTU) 上的负载高。**
+1. 设置 **$DemoScenario = 5, 在单个租户上生成正常负载加上高负载 (大约 95 DTU)。**
 1. 设置 **$SingleTenantDatabaseName = contosoconcerthall**
 1. 使用 **F5** 执行该脚本。
 
@@ -247,4 +246,4 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 * [构建 Wingtip Tickets SaaS Database Per Tenant 应用程序部署的其他教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [SQL 弹性池](sql-database-elastic-pool.md)
 * [Azure 自动化](../automation/automation-intro.md)
-* [Azure Monitor 日志](saas-dbpertenant-log-analytics.md)-设置启动并使用 Azure Monitor 日志教程
+* [Azure Monitor 日志](saas-dbpertenant-log-analytics.md)-设置和使用 Azure Monitor 日志教程

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b5ba5fadd229fa7119f9af791f7eaedbc984c92a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 2b101aebd048b94ac95e1dba0f6504446d6d6803
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457184"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568438"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>弹性数据库工具常见问题解答 (FAQ)
 
@@ -55,6 +54,6 @@ ms.locfileid: "55457184"
 
 ## <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>在拆分或合并操作期间，“拆分/合并”工具是否会设置（或删除）数据库
 
-不是。 对于**拆分**操作，必须存在目标数据库和相应的架构，并且必须注册到分片映射管理器。  对于**合并**操作，必须从分片映射管理器中删除分片，并删除数据库。
+否。 对于**拆分**操作，必须存在目标数据库和相应的架构，并且必须注册到分片映射管理器。  对于**合并**操作，必须从分片映射管理器中删除分片，并删除数据库。
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

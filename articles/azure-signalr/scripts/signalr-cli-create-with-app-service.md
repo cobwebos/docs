@@ -8,16 +8,16 @@ ms.topic: sample
 ms.date: 04/20/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 5fd9e593a9a5158b35d3c0e17436d54bc7c1bd03
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d0f0747aa393475265be4aeb9ca05000fbd5b97b
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547764"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565752"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>使用应用服务创建 SignalR 服务
 
-此示例脚本会创建新的 Azure SignalR 服务资源，用于将实时内容更新推送到客户端。 此脚本还会添加新的 Web 应用和应用服务计划，以托管使用 SignalR 服务的 ASP.NET Core Web 应用。 Web 应用通过名为“AzureSignalRConnectionString”的应用设置进行了配置，以便连接到新的 SignalR 服务资源。
+此示例脚本会创建新的 Azure SignalR 服务资源，用于将实时内容更新推送到客户端。 此脚本还会添加新的 Web 应用和应用服务计划，以托管使用 SignalR 服务的 ASP.NET Core Web 应用。 Web 应用通过名为“AzureSignalRConnectionString”的应用设置进行了配置，以便连接到新的 SignalR 服务资源  。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "57547764"
 
 ## <a name="sample-script"></a>示例脚本
 
-此脚本使用适用于 Azure CLI 的 signalr 扩展。 使用此示例脚本前，执行以下命令，安装适用于 Azure CLI 的 signalr 扩展：
+此脚本使用适用于 Azure CLI 的 signalr 扩展  。 使用此示例脚本前，执行以下命令，安装适用于 Azure CLI 的 signalr 扩展  ：
 
 ```azurecli-interactive
 az extension add -n signalr
@@ -46,8 +46,8 @@ az extension add -n signalr
 | 命令 | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az signalr create](/cli/azure/ext/signalr/signalr#ext-signalr-az-signalr-create) | 创建 Azure SignalR 服务资源。 |
-| [az signalr key list](/cli/azure/ext/signalr/signalr/key#ext-signalr-az-signalr-key-list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
+| [az signalr create](/cli/azure/signalr#az-signalr-create) | 创建 Azure SignalR 服务资源。 |
+| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
 | [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) | 创建用于托管 Web 应用的 Azure 应用服务计划。 |
 | [az webapp create](/cli/azure/webapp#az-webapp-create) | 使用应用服务托管计划创建 Azure Web 应用。 |
 | [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | 为 Web 应用添加新应用设置。 此应用设置用于存储 SignalR 连接字符串。 |

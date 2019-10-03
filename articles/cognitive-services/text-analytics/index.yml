@@ -1,91 +1,149 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 文本分析 API 文档
+summary: 文本分析 API 是一种基于云的服务，它对原始文本提供高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、命名实体识别和语言检测。
 metadata:
   title: 文本分析 API 文档 - 教程和 API 参考 - Azure 认知服务| Microsoft Docs
-  description: 文本分析 API 是一种基于云的服务，它对原始文本提供高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、命名实体识别和语言检测。
+  titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: nitinme
-  manager: cgronlun
+  description: 文本分析 API 是一种基于云的服务，它对原始文本提供高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、命名实体识别和语言检测。 使用快速入门、教程和示例，了解如何以不同的方式分析内容。
+  author: aahill
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: text-analytics
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/24/2018
-  ms.author: nitinme
-abstract:
-  description: 文本分析 API 是一种基于云的服务，它对原始文本提供高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、命名实体识别和语言检测。 使用快速入门、教程和示例，了解如何以不同的方式分析内容。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/text-analytics/overview
-            html: <p>了解文本分析 API。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什么是文本分析？
-          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-signup
-            html: <p>了解如何注册文本分析 API。</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: 注册文本分析 API
-          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-access-key
-            html: <p>了解如何获取文本分析 API 的访问密钥和终结点。</p>
-            image:
-              src: ../media/index/i_tasks.svg
-            title: 文本分析 API 的访问密钥
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 通过检测语言、分析情绪和提取关键短语以及识别实体，开始使用文本分析 API：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_csharp.svg
-            text: 'C&#35;'
-            href: quickstarts/csharp
-          - image:
-              src: media/index/logo_java.svg
-            text: Java
-            href: quickstarts/java
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Node.js
-            href: quickstarts/nodejs
-          - image:
-              src: media/index/logo_python.svg
-            text: Python
-            href: quickstarts/python
-          - image:
-              src: media/index/logo_go.svg
-            text: Go
-            href: quickstarts/go
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用文本分析 API 开发应用程序：
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorials/tutorial-power-bi-key-phrases.md">使用 Power BI 进行文本分析</a>
-          - html: '<a href="https://powerapps.microsoft.com/tutorials/cognitive-services-api/">PowerApps 中的文本分析</a>'
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7">API 参考</a></p>'
-          - title: SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable">Java</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  ms.date: 07/29/2019
+  ms.author: aahi
+  ms.openlocfilehash: 3a95cedb76c25b8e22e0d93c60221015e5836506
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71300481"
+landingContent:
+- title: 关于文本分析 API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是文本分析 API？
+      url: overview.md
+    - text: 示例用户方案
+      url: text-analytics-user-scenarios.md
+  - linkListType: video
+    links:
+    - text: 使用认知服务理解文本
+      url: https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player
+  - linkListType: whats-new
+    links:
+    - text: 新增功能
+      url: whats-new.md
+- title: 情绪分析
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 C#
+      url: quickstarts/csharp.md#sentiment-analysis
+    - text: 使用 Python
+      url: quickstarts/python-sdk.md#sentiment-analysis
+    - text: 使用 Node.js
+      url: quickstarts/nodejs-sdk.md#sentiment-analysis
+    - text: 使用 Go
+      url: quickstarts/go-sdk.md#sentiment-analysis
+    - text: 使用 Ruby
+      url: quickstarts/ruby-sdk.md#sentiment-analysis
+  - linkListType: tutorial
+    links:
+    - text: 集成 Power BI 以分析客户情绪
+      url: tutorials/tutorial-power-bi-key-phrases.md
+    - text: 使用 Flask 翻译文本、分析情绪以及合成语音
+      url: https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 情绪分析
+      url: how-tos/text-analytics-how-to-sentiment-analysis.md
+- title: 语言检测
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 C#
+      url: quickstarts/csharp.md#language-detection
+    - text: 使用 Python
+      url: quickstarts/python-sdk.md#language-detection
+    - text: 使用 Node.js
+      url: quickstarts/nodejs-sdk.md#language-detection
+    - text: 使用 Go
+      url: quickstarts/go-sdk.md#language-detection
+    - text: 使用 Ruby
+      url: quickstarts/ruby-sdk.md#language-detection
+  - linkListType: how-to-guide
+    links:
+    - text: 语言检测
+      url: how-tos/text-analytics-how-to-language-detection.md
+- title: 关键短语提取
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 C#
+      url: quickstarts/csharp.md#key-phrase-extraction
+    - text: 使用 Python
+      url: quickstarts/python-sdk.md#key-phrase-extraction
+    - text: 使用 Node.js
+      url: quickstarts/nodejs-sdk.md#key-phrase-extraction
+    - text: 使用 Go
+      url: quickstarts/go-sdk.md#key-phrase-extraction
+    - text: 使用 Ruby
+      url: quickstarts/ruby-sdk.md#key-phrase-extraction
+  - linkListType: how-to-guide
+    links:
+    - text: 关键字提取
+      url: how-tos/text-analytics-how-to-keyword-extraction.md
+- title: 实体识别
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 C#
+      url: quickstarts/csharp.md#entity-recognition
+    - text: 使用 Python
+      url: quickstarts/python-sdk.md#entity-recognition
+    - text: 使用 Node.js
+      url: quickstarts/nodejs-sdk.md#entity-recognition
+    - text: 使用 Go
+      url: quickstarts/go-sdk.md#entity-recognition
+    - text: 使用 Ruby
+      url: quickstarts/ruby-sdk.md#entity-recognition
+  - linkListType: how-to-guide
+    links:
+    - text: 实体识别
+      url: how-tos/text-analytics-how-to-entity-linking.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7
+    - text: .NET 客户端库
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet
+    - text: Python 客户端库
+      url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python
+    - text: Node.js 客户端库
+      url: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics?view=azure-node-latest
+    - text: Java 客户端库
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable
+    - text: Go 客户端库
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services"
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+- title: 使用 Docker 容器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 安装和运行文本分析容器
+      url: how-tos/text-analytics-how-to-install-containers.md
+    - text: 配置文本分析容器
+      url: text-analytics-resource-container-config.md
+    - text: 将容器实例部署到 Azure
+      url: how-tos/text-analytics-how-to-use-container-instances.md
+    - text: 将容器部署到 Azure Kubernetes 服务 (AKS)
+      url: how-tos/text-analytics-how-to-use-kubernetes-service.md

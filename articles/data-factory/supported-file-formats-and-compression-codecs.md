@@ -3,48 +3,52 @@ title: Azure 数据工厂中支持的文件格式 | Microsoft Docs
 description: 本主题说明 Azure 数据工厂中基于文件的连接器支持的文件格式和压缩代码。
 author: linda33wj
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 9e30337eb8acaa6dc3386f5e60285faa80dd6307
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2c8983b5d6a44834d0c9659877c857fd73805ce6
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257903"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812307"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
 
 本文适用于以下连接器：[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。
 
-如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 如果要**分析或生成具有特定格式的文件**，Azure 数据工厂支持以下文件格式类型：
+如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 如果要**分析或生成具有特定格式的文件**，Azure 数据工厂支持以下文件格式类型：
 
 * [文本格式](#text-format)
 * [JSON 格式](#json-format)
 * [Parquet 格式](#parquet-format)
 * [ORC 格式](#orc-format)
 * [Avro 格式](#avro-format)
+* [二进制格式](#binary-format)
 
 > [!TIP]
-> 了解复制活动如何从[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)将源数据映射到接收器，包括如何根据文件格式设置确定元数据以及有关何时指定 [dataset`structure`](concepts-datasets-linked-services.md#dataset-structure) 节的技巧。
+> 了解复制活动如何将源数据映射到[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)的接收器。
 
 ## <a name="text-format"></a>文本格式
 
+>[!NOTE]
+>数据工厂引入了新的分隔文本格式数据集，请参阅包含详细信息的[分隔文本格式](format-delimited-text.md)文章。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
+
 如果想要读取或写入某个文本文件，请将数据集的 `format` 节中的 `type` 属性设置为 **TextFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [TextFormat 示例](#textformat-example)部分，了解如何进行配置。
 
-| 属性 | 说明 | 允许的值 | 需要 |
+| 属性 | 说明 | 允许的值 | 必填 |
 | --- | --- | --- | --- |
-| columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中可能不存在的极少见的不可打印字符。 例如，指定“\u0001”表示标题开头 (SOH)。 |只允许一个字符。 **默认**值为**逗号（“,”）**。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
-| rowDelimiter |用于分隔文件中的行的字符。 |只允许一个字符。 **默认**值为以下任何一项：**[“\r\n”、“\r”、“\n”]**（读取时）和 **“\r\n”**（写入时）。 |否 |
+| columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中可能不存在的极少见的不可打印字符。 例如，指定“\u0001”表示标题开头 (SOH)。 |只允许一个字符。 **默认**值为**逗号（“,”）** 。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
+| rowDelimiter |用于分隔文件中的行的字符。 |只允许一个字符。 **默认**值为以下任何一项： **[“\r\n”、“\r”、“\n”]** （读取时）和 **“\r\n”** （写入时）。 |否 |
 | escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>示例：如果使用逗号 (',') 作为列分隔符，但希望在文本中包含逗号字符（例如："Hello, world"），可以将“$”定义为转义字符，并在源代码中使用字符串 "Hello$, world"。 |否 |
 | quoteChar |括住字符串值的引号字符。 引号字符内的列和行分隔符被视为字符串值的一部分。 此属性同时适用于输入和输出数据集。<br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>例如，如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：<Hello, world>），可以将 "（双引号）定义为引号字符，在源中使用字符串“Hello, world”。 |否 |
-| nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认**值为 **“\N”和“NULL”**（读取时）及 **“\N”**（写入时）。 |否 |
+| nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认**值为 **“\N”和“NULL”** （读取时）及 **“\N”** （写入时）。 |否 |
 | encodingName |指定编码名称。 |有效的编码名称。 请参阅 [Encoding.EncodingName 属性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 **默认**值为 **UTF-8**。 |否 |
 | firstRowAsHeader |指定是否将第一行视为标头。 对于输入数据集，数据工厂将读取第一行作为标头。 对于输出数据集，数据工厂将写入第一行作为标头。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |True<br/><b>False（默认值）</b> |否 |
-| skipLineCount |指示从输入文件读取数据时要跳过的非空行数。 如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过代码行，然后从输入文件读取标头信息。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |Integer |否 |
+| skipLineCount |指示从输入文件读取数据时要跳过的非空行数。 如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过代码行，然后从输入文件读取标头信息。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |整数 |否 |
 | treatEmptyAsNull |指定从输入文件读取数据时，是否将 null 或空字符串视为 null 值。 |**True（默认值）**<br/>False |否 |
 
 ### <a name="textformat-example"></a>TextFormat 示例
@@ -84,11 +88,14 @@ ms.locfileid: "59257903"
 
 ## <a name="json-format"></a>JSON 格式
 
+>[!NOTE]
+>数据工厂引入了新的 JSON 格式数据集，请参阅包含详细信息的[JSON](format-json.md)文章。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
+
 若要**在 Azure Cosmos DB 中按原样导入/导出 JSON 文件**，请参阅[将数据移入/移出 Azure Cosmos DB](connector-azure-cosmos-db.md) 一文中的“导入/导出 JSON 文档”部分。
 
 要分析 JSON 文件或以 JSON 格式写入数据，请将 `format` 节中的 `type` 属性设置为 **JsonFormat**。 也可在 `format` 节指定以下**可选**属性。 请参阅 [JsonFormat 示例](#jsonformat-example)部分，了解如何进行配置。
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | --- | --- | --- |
 | filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：**setOfObjects** 和 **arrayOfObjects**。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
 | jsonNodeReference | 若要进行迭代操作，以同一模式从数组字段中的对象提取数据，请指定该数组的 JSON 路径。 只有**从** JSON 文件复制数据时，才支持此属性。 | 否 |
@@ -97,7 +104,7 @@ ms.locfileid: "59257903"
 | nestingSeparator |用于分隔嵌套级别的字符。 默认值为“.”（点）。 |否 |
 
 >[!NOTE]
->情况下跨应用数组中的数据为多个行 (情况 1-> 中的示例 2 [JsonFormat 示例](#jsonformat-example))，您只能选择将展开使用属性的单个数组`jsonNodeReference`。 
+>对于将数组中的数据交叉应用到多行的情况（案例 1 -> [JsonFormat 示例](#jsonformat-example)中的示例 2），只能选择使用属性 `jsonNodeReference` 展开单个数组。
 
 ### <a name="json-file-patterns"></a>JSON 文件模式
 
@@ -196,7 +203,7 @@ ms.locfileid: "59257903"
 
 **示例 1：从对象和数组中提取数据**
 
-在此示例中，预期要将一个根 JSON 对象映射到表格结果中的单个记录。 如果 JSON 文件包含以下内容：  
+在此示例中，预期要将一个根 JSON 对象映射到表格结果中的单个记录。 如果 JSON 文件包含以下内容：
 
 ```json
 {
@@ -224,7 +231,7 @@ ms.locfileid: "59257903"
 
 并且你想要通过从对象和数组中提取数据，使用以下格式将该文件复制到 Azure SQL 表：
 
-| ID | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| id | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
@@ -356,7 +363,7 @@ ms.locfileid: "59257903"
 
 如果 SQL 数据库中存在以下表：
 
-| ID | order_date | order_price | order_by |
+| id | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
@@ -408,7 +415,10 @@ ms.locfileid: "59257903"
 
 ## <a name="parquet-format"></a>Parquet 格式
 
-若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为 **ParquetFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+>[!NOTE]
+>数据工厂引入了新的 Parquet 格式数据集，有关详细信息，请参阅[Parquet format](format-parquet.md)文章。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
+
+若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为 **ParquetFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 例如：
 
 ```json
 "format":
@@ -426,13 +436,13 @@ ms.locfileid: "59257903"
 > [!IMPORTANT]
 > 对于由自承载集成运行时（例如，在本地与云数据存储之间）支持的复制，如果不是**按原样**复制 Parquet 文件，则需要在 IR 计算机上安装 **64 位 JRE 8（Java 运行时环境）或 OpenJDK**。 请参阅下面段落中的更多详细信息。
 
-对于使用 Parquet 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。 
+对于使用 Parquet 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。
 
 - **若要使用 JRE**：64 位 IR 需要 64 位 JRE。 可在[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到它。
 - **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
 
 >[!TIP]
->如果使用自承载集成运行时将数据复制为 Parquet 格式或从 Parquet 格式复制数据，并遇到“调用 java 时发生错误，消息: java.lang.OutOfMemoryError:Java 堆空间”的错误，则可以在托管自承载 IR 的计算机上添加环境变量 `_JAVA_OPTIONS`，以便调整 JVM 的最小/最大堆大小，以支持此类复制，然后重新运行管道。 
+>如果使用自承载集成运行时将数据复制为 Parquet 格式或从 Parquet 格式复制数据，并遇到“调用 java 时发生错误，消息: java.lang.OutOfMemoryError:Java 堆空间”的错误，则可以在托管自承载 IR 的计算机上添加环境变量 `_JAVA_OPTIONS`，以便调整 JVM 的最小/最大堆大小，以支持此类复制，然后重新运行管道。
 
 ![在自承载 IR 上设置 JVM 堆大小](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -442,7 +452,7 @@ ms.locfileid: "59257903"
 
 | 数据工厂临时数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（串行化） |
 |:--- |:--- |:--- |:--- |
-| Boolean | Boolean | 不适用 | 不适用 |
+| Boolean | Boolean | 不可用 | 不可用 |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -451,21 +461,21 @@ ms.locfileid: "59257903"
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/二进制 | UInt64 | Decimal |
-| Single | Float | 不适用 | 不适用 |
-| Double | Double | 不适用 | 不适用 |
-| Decimal | 二进制 | Decimal | Decimal |
-| String | 二进制 | Utf8 | Utf8 |
-| DateTime | Int96 | 不适用 | 不适用 |
-| TimeSpan | Int96 | 不适用 | 不适用 |
-| DateTimeOffset | Int96 | 不适用 | 不适用 |
-| ByteArray | 二进制 | 不适用 | 不适用 |
-| Guid | 二进制 | Utf8 | Utf8 |
-| Char | 二进制 | Utf8 | Utf8 |
-| CharArray | 不支持 | 不适用 | 不适用 |
+| Single | Float | 不可用 | 不可用 |
+| Double | Double | 不可用 | 不可用 |
+| Decimal | Binary | Decimal | Decimal |
+| String | Binary | Utf8 | Utf8 |
+| DateTime | Int96 | 不可用 | 不可用 |
+| TimeSpan | Int96 | 不可用 | 不可用 |
+| DateTimeOffset | Int96 | 不可用 | 不可用 |
+| ByteArray | Binary | 不可用 | 不可用 |
+| Guid | Binary | Utf8 | Utf8 |
+| 字符 | Binary | Utf8 | Utf8 |
+| CharArray | 不支持 | 不可用 | 不可用 |
 
 ## <a name="orc-format"></a>ORC 格式
 
-若要分析 ORC 文件或以 ORC 格式写入数据，请将 `format` `type` 属性设置为 **OrcFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+若要分析 ORC 文件或以 ORC 格式写入数据，请将 `format` `type` 属性设置为 **OrcFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 例如：
 
 ```json
 "format":
@@ -478,12 +488,12 @@ ms.locfileid: "59257903"
 
 * 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）。
 * 不支持列名称中的空格。
-* ORC 文件有三个[压缩相关的选项](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)：NONE、ZLIB、SNAPPY。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 ORC 文件时，数据工厂会选择 ZLIB，这是 ORC 的默认选项。 目前没有任何选项可以重写此行为。
+* ORC 文件有三个[压缩相关的选项](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)：NONE、ZLIB、SNAPPY。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 ORC 文件时，数据工厂会选择 ZLIB，这是 ORC 的默认选项。 目前没有任何选项可以重写此行为。
 
 > [!IMPORTANT]
 > 对于由自承载集成运行时（例如，在本地与云数据存储之间）支持的复制，如果不是**按原样**复制 ORC 文件，则需要在 IR 计算机上安装 **64 位 JRE 8（Java 运行时环境）或 OpenJDK**。 请参阅下面段落中的更多详细信息。
 
-对于使用 ORC 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。 
+对于使用 ORC 文件序列化/反序列化在自承载集成运行时上运行的复制，ADF 将通过首先检查 JRE 的注册表项 *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 来查找 Java 运行时，如果未找到，则会检查系统变量 *`JAVA_HOME`* 来查找 OpenJDK。
 
 - **若要使用 JRE**：64 位 IR 需要 64 位 JRE。 可在[此处](https://go.microsoft.com/fwlink/?LinkId=808605)找到它。
 - **若要使用 OpenJDK**：从 IR 版本 3.13 开始受支持。 将 jvm.dll 以及所有其他必需的 OpenJDK 程序集打包到自承载 IR 计算机中，并相应地设置系统环境变量 JAVA_HOME。
@@ -498,23 +508,26 @@ ms.locfileid: "59257903"
 | Int16 | Short |
 | UInt16 | Int |
 | Int32 | Int |
-| UInt32 | Long |
-| Int64 | Long |
+| UInt32 | 长 |
+| Int64 | 长 |
 | UInt64 | String |
 | Single | Float |
 | Double | Double |
 | Decimal | Decimal |
 | String | String |
-| DateTime | Timestamp |
-| DateTimeOffset | Timestamp |
-| TimeSpan | Timestamp |
-| ByteArray | 二进制 |
+| DateTime | 时间戳 |
+| DateTimeOffset | 时间戳 |
+| TimeSpan | 时间戳 |
+| ByteArray | Binary |
 | Guid | String |
-| Char | Char(1) |
+| 字符 | Char(1) |
 
 ## <a name="avro-format"></a>AVRO 格式
 
-若要分析 Avro 文件或以 Avro 格式写入数据，请将 `format` `type` 属性设置为 **AvroFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
+>[!NOTE]
+>数据工厂引入了新的 Avro 格式数据集，有关详细信息，请参阅[Avri format](format-avro.md)文章。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
+
+若要分析 Avro 文件或以 Avro 格式写入数据，请将 `format` `type` 属性设置为 **AvroFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 例如：
 
 ```json
 "format":
@@ -529,6 +542,10 @@ ms.locfileid: "59257903"
 
 * 不支持[复杂数据类型](https://avro.apache.org/docs/current/spec.html#schema_complex)（记录、枚举、数组、映射、联合与固定值）。
 
+## <a name="binary-format"></a>二进制格式
+
+有关详细信息，请参阅[二进制格式](format-binary.md)一文。
+
 ## <a name="compression-support"></a>压缩支持
 
 在复制期间，Azure 数据工厂支持压缩/解压缩数据。 在输入数据集中指定 `compression` 属性时，复制活动从源读取压缩的数据并对其进行解压缩；在输出数据集中指定属性时，复制活动将压缩数据并将其写入到接收器。 下面是一些示例方案：
@@ -538,7 +555,7 @@ ms.locfileid: "59257903"
 * 从 FTP 服务器读取 .zip 文件，将它解压缩以获取文件内容，然后将这些文件加入 Azure Data Lake Store。 使用值为 ZipDeflate 的 `compression` `type` 属性定义输入 FTP 数据集。
 * 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，然后将结果数据写入 Azure Blob。 使用设置为 GZIP 的 `compression` `type` 定义输入 Azure Blob 数据集，使用设置为 BZIP2 的 `compression` `type` 定义输出数据集。
 
-若要为数据集指定压缩，请在数据集 JSON 中使用 **compression** 属性，如以下示例所示：   
+若要为数据集指定压缩，请在数据集 JSON 中使用 **compression** 属性，如以下示例所示：
 
 ```json
 {
@@ -579,11 +596,12 @@ ms.locfileid: "59257903"
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>不支持的文件类型和压缩格式
 
-可以使用 Azure 数据工厂的可扩展性功能来转换不受支持的文件。 两个选项包括使用 Azure Batch 的 Azure Functions 和自定义任务。
+可以使用 Azure 数据工厂的可扩展性功能来转换不受支持的文件。
+两个选项包括 Azure Functions 和使用 Azure Batch 的自定义任务。
 
-可以看到使用到的 Azure 函数的示例[提取 tar 文件内容](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)。 有关详细信息，请参阅[Azure Functions 活动](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)。
+可以看到一个示例，它使用 Azure 函数[提取 tar 文件的内容](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)。 有关详细信息，请参阅 [Azure Functions 活动](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)。
 
-此外可以构建自定义 dotnet 活动使用此功能。 提供了进一步的信息[此处](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity)
+还可以使用自定义 dotnet 活动构建此功能。 更多的信息可以在[这里](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)找到
 
 ## <a name="next-steps"></a>后续步骤
 

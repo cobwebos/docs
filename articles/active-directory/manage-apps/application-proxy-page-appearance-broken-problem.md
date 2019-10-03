@@ -1,10 +1,10 @@
 ---
-title: 应用程序代理应用程序的应用程序页无法正确显示 | Microsoft Docs
+title: 应用程序代理应用未正确显示应用页 |Microsoft Docs
 description: 当页面在已集成到 Azure AD 的应用程序代理应用程序中无法正确显示时所要遵循的指南。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 950a349506f32405261d90c05312d24aa3deadc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 13e73f0ed56648ce162f00d6df5e7b86a922ca01
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089941"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381429"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>应用程序代理应用程序的应用程序页无法正确显示
 

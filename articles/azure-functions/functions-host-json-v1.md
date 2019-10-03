@@ -1,36 +1,33 @@
 ---
 title: Azure Functions 1.x 的 host.json 参考
 description: 使用 v1 运行时的 Azure Functions host.json 文件的参考文档。
-services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: 44bc5a245d1bcbc8ff53991af4193ef86f7cd704
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: b373afc9b5a60abee7a587fc405320fe3c583369
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436313"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735159"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="选择要使用的 Azure Functions 运行时的版本： "]
 > * [版本 1](functions-host-json-v1.md)
 > * [第 2 版](functions-host-json.md)
 
-*host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了可用于 v1 运行时的设置。 JSON 架构位于 http://json.schemastore.org/host。
+*host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了可用于 v1 运行时的设置。 JSON 架构位于 http://json.schemastore.org/host 。
 
 > [!NOTE]
 > 本文适用于 Azure Functions 1.x。  有关 Functions 2.x 中 host.json 的参考，请参阅 [Azure Functions 2.x 的 host.json 参考](functions-host-json.md)。
 
 其他函数应用配置选项是在你的[应用设置](functions-app-settings.md)中管理的。
 
-某些 host.json 设置只有在本地运行时才会在 [local.settings.json](functions-run-local.md#local-settings-file) 文件中使用。
+[local.settings.json](functions-run-local.md#local-settings-file) 文件中的某些 host.json 设置仅在本地运行时才使用。
 
 ## <a name="sample-hostjson-file"></a>示例 host.json 文件
 
@@ -47,6 +44,13 @@ ms.locfileid: "58436313"
         "sampling": {
           "isEnabled": true,
           "maxTelemetryItemsPerSecond" : 5
+        }
+    },
+    "documentDB": {
+        "connectionMode": "Gateway",
+        "protocol": "Https",
+        "leaseOptions": {
+            "leasePrefix": "prefix"
         }
     },
     "eventHub": {
@@ -87,6 +91,9 @@ ms.locfileid: "58436313"
       "maxDequeueCount": 5,
       "newBatchThreshold": 8
     },
+    "sendGrid": {
+        "from": "Contoso Group <admin@contoso.com>"
+    },
     "serviceBus": {
       "maxConcurrentCalls": 16,
       "prefetchCount": 100,
@@ -117,6 +124,28 @@ ms.locfileid: "58436313"
 
 [!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
 
+## <a name="documentdb"></a>DocumentDB
+
+[Azure Cosmos DB 触发器和绑定](functions-bindings-cosmosdb.md)的配置设置。
+
+```json
+{
+    "documentDB": {
+        "connectionMode": "Gateway",
+        "protocol": "Https",
+        "leaseOptions": {
+            "leasePrefix": "prefix1"
+        }
+    }
+}
+```
+
+|属性  |默认 | 描述 |
+|---------|---------|---------|
+|GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
+|Protocol|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)|
+|leasePrefix|不适用|应用中所有函数要使用的租用前缀。|
+
 ## <a name="durabletask"></a>durableTask
 
 [!INCLUDE [durabletask](../../includes/functions-host-json-durabletask.md)]
@@ -127,9 +156,9 @@ ms.locfileid: "58436313"
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>函数
 
-作业宿主运行的函数的列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 中的函数应用中，你应当改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤来禁用特定函数，而不是使用此设置。
+作业主机运行的函数列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 的函数应用中，应改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤禁用特定函数，而不是使用此设置。
 
 ```json
 {
@@ -165,7 +194,7 @@ ms.locfileid: "58436313"
 
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
-|已启用|true|指定是否启用此功能。 | 
+|enabled|真|指定是否已启用该功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 
@@ -179,9 +208,9 @@ ms.locfileid: "58436313"
 
 ## <a name="id"></a>id
 
-*仅限版本 1.x。*
+*仅限版本 1.x*。
 
-作业宿主的唯一 ID。 可以是不带短划线的小写 GUID。 在本地运行时必须指定。 在 Azure 中运行时，建议你不要设置 ID 值。 当省略 `id` 时，会自动在 Azure 中生成 ID。 
+作业宿主的唯一 ID。 可以是不带短划线的小写 GUID。 在本地运行时必须指定。 在 Azure 中运行时，我们建议你不要设置 ID 值。 当省略 `id` 时，会自动在 Azure 中生成 ID。 
 
 如果跨多个函数应用共享存储帐户，请确保每个函数应用都有不同的 `id`。 可省略 `id` 属性或手动将每个函数应用的 `id` 设置为不同的值。 计时器触发器使用存储锁来确保当函数应用横向扩展到多个实例时将只有一个计时器实例。 如果两个函数应用共享相同的 `id` 且每个都使用计时器触发器，则只会运行一个计时器。
 
@@ -213,7 +242,7 @@ ms.locfileid: "58436313"
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
 |categoryFilter|不适用|指定按类别进行筛选| 
-|defaultLevel|信息|对于 `categoryLevels` 数组中未指定的任何类别，会将此级别和更高级别的日志发送到 Application Insights。| 
+|defaultLevel|Information|对于 `categoryLevels` 数组中未指定的任何类别，会将此级别和更高级别的日志发送到 Application Insights。| 
 |categoryLevels|不适用|一个类别数组，指定每个类别的、要发送到 Application Insights 的最低日志级别。 此处指定的类别控制以相同值开头的所有类别，较长的值优先。 在前面的示例 *host.json* 文件中，将在 `Information` 级别记录以“Host.Aggregator”开头的所有类别的日志。 在 `Error` 级别记录以“Host”开头的其他所有类别（例如“Host.Executor”）的日志。| 
 
 ## <a name="queues"></a>queues
@@ -239,6 +268,21 @@ ms.locfileid: "58436313"
 |batchSize|16|Functions 运行时同时检索并并行处理的队列消息数。 当处理的数量下降到 `newBatchThreshold` 时，运行时可获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是 `batchSize` 加上 `newBatchThreshold`。 此限制分别应用于各个队列触发的函数。 <br><br>如果要避免对队列上收到的消息并行执行，可以将 `batchSize` 设置为 1。 但是，只有在函数于单个虚拟机 (VM) 上运行时，此设置才可消除并发。 如果函数应用横向扩展到多个 VM，每个 VM 可运行每个队列触发的函数的一个实例。<br><br>`batchSize` 的最大值为 32。 | 
 |maxDequeueCount|5|在将某个消息移到有害队列之前，尝试处理该消息的次数。| 
 |newBatchThreshold|batchSize/2|只要同时处理的消息数下降到此数值，运行时即检索另一个批次。| 
+
+## <a name="sendgrid"></a>SendGrid
+
+[SendGrind 输出绑定](functions-bindings-sendgrid.md)的配置设置
+
+```json
+{
+    "sendGrid": {
+        "from": "Contoso Group <admin@contoso.com>"
+    }
+```
+
+|属性  |默认 | 描述 |
+|---------|---------|---------| 
+|来自|不适用|所有函数的发件人电子邮件地址。| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -286,7 +330,7 @@ ms.locfileid: "58436313"
 
 ## <a name="tracing"></a>tracing
 
-*版本 1.x*
+版本 1.x
 
 使用 `TraceWriter` 对象创建的日志的配置设置。 请参阅 [C# 日志记录](functions-reference-csharp.md#logging)和 [Node.js 日志记录](functions-reference-node.md#writing-trace-output-to-the-console)。
 
@@ -301,7 +345,7 @@ ms.locfileid: "58436313"
 
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
-|consoleLevel|info|控制台日志记录的跟踪级别。 选项包括：`off`、`error`、`warning`、`info` 和 `verbose`。|
+|consoleLevel|信息|控制台日志记录的跟踪级别。 选项包括：`off`、`error`、`warning`、`info` 和 `verbose`。|
 |fileLoggingMode|debugOnly|文件日志记录的跟踪级别。 选项包括 `never`、`always` 和 `debugOnly`。| 
 
 ## <a name="watchdirectories"></a>watchDirectories

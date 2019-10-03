@@ -1,29 +1,23 @@
 ---
 title: Azure HDInsight 上的 ML Services 简介
 description: 了解如何使用 HDInsight 上的 ML Services 创建用于大数据分析的应用程序。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: a07f052cf89da039bb9fe091f1cd997c19d2fcc7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.topic: overview
+ms.date: 06/12/2019
+ms.openlocfilehash: 5108424c4e39c1c47710c0e25e4e22c4474e68ad
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584524"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941694"
 ---
-# <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight 上的 ML Services 和开放源代码 R 功能简介
+# <a name="what-is-ml-services-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 ML 服务
 
-> [!NOTE]  
-> 2017 年 9 月，Microsoft R Server 以 Microsoft Machine Learning Server 或 ML Server 的新名称发布。 因此，HDInsight 上的 R Server 群集现称为 HDInsight 上的机器学习服务或 ML Services 群集。 有关 R Server 名称更改的详细信息，请参阅 [Microsoft R Server 现在是 Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server)。
-
-可以在 Azure 中创建 HDInsight 群集时选择使用 Microsoft Machine Learning Server 部署。 提供此选项的群集类型名为 ML Services。 这项功能可让数据科研人员、统计人员和 R 程序员根据需要访问 HDInsight 上可缩放的分布式分析方法。
-
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
+可以在 Azure 中创建 HDInsight 群集时选择使用 Microsoft Machine Learning Server 部署。 提供此选项的群集类型名为 ML Services  。 这项功能可让数据科研人员、统计人员和 R 程序员根据需要访问 HDInsight 上可缩放的分布式分析方法。
 
 HDInsight 上的 ML Services 提供最新的功能，可针对载入 Azure Blob 或 Data Lake 存储的几乎任何大小的数据集执行基于 R 的分析。 由于 ML Services 群集基于开放源代码 R 构建，因此，构建的基于 R 的应用程序可以利用超过 8000 个任意开放源代码 R 包。 ScaleR 中的例程（Microsoft 的大数据分析包）同样可用。
 
@@ -33,7 +27,7 @@ HDInsight 上的 ML Services 提供最新的功能，可针对载入 Azure Blob 
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight 上的 ML Services 入门
 
-若要在 Azure HDInsight 中创建 ML Services 群集，请在使用 Azure 门户创建 HDInsight 群集时选择 ML Services 群集类型。 ML Services 群集类型包括群集数据节点以及作为基于 ML Services 的分析登录区域的边缘节点上的 ML Services。 请参阅 [HDInsight 上的 ML Services 入门](r-server-get-started.md)了解创建群集的详细演练。
+若要在 Azure HDInsight 中创建 ML Services 群集，请在使用 Azure 门户创建 HDInsight 群集时选择 ML Services 群集类型  。 ML Services 群集类型包括群集数据节点以及作为基于 ML Services 的分析登录区域的边缘节点上的 ML Services。 有关如何创建群集的演练，请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="why-choose-ml-services-in-hdinsight"></a>为什么选择 HDInsight 中的 ML Services？
 
@@ -61,7 +55,7 @@ HDInsight 中的 ML Services 具有下述优势：
 
 HDInsight 上的 ML Services 包含以下功能。
 
-| 功能类别 | Description |
+| 功能类别 | 说明 |
 |------------------|-------------|
 | 支持 R | 适用于以 R 编写的解决方案的 [R 包](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference)，R 开源分发版和用于执行脚本的运行时基础结构。 |
 | 支持 Python | 适用于以 Python 编写的解决方案的 [Python 模块](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference)，Python 开源分发版和用于执行脚本的运行时基础结构。
@@ -74,13 +68,13 @@ HDInsight 上的 ML Services 包含以下功能。
 
 HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户或 Azure Data Lake Store 相关联。 这种关联可确保在分析过程中，上传到群集存储的任何数据均会持久保存，即使在删除群集后，数据也可供使用。 对于所选择的将数据传输到存储的选项有各种工具，包括存储帐户的基于门户的上传工具和 [AzCopy](../../storage/common/storage-use-azcopy.md) 实用程序。
 
-无论选择哪个来充当主存储，都可以在群集预配过程中选择启用对附加 Blob 和 Data Lake Store 的访问权限。 有关向额外帐户授予访问权限的信息，请参阅 [HDInsight 上的 ML Services 入门](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started)。 要了解有关使用多个存储帐户的详细信息，请参阅[适用于 HDInsight 上的 ML Services 的 Azure 存储选项](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage)一文。
+无论选择哪个来充当主存储，都可以在群集预配过程中选择启用对附加 Blob 和 Data Lake Store 的访问权限。  要了解有关使用多个存储帐户的详细信息，请参阅[适用于 HDInsight 上的 ML Services 的 Azure 存储选项](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage)一文。
 
 也可以将 [Azure 文件](../../storage/files/storage-how-to-use-files-linux.md)服务用作边缘节点上的存储选项。 Azure 文件可让你将 Azure 存储中创建的文件共享装载到 Linux 文件系统。 若要深入了解 HDInsight 上的 ML Services 群集的数据存储选项，请参阅 [适用于 HDInsight 上的 ML Services 的 Azure 存储选项](r-server-storage.md)。
 
 ## <a name="access-ml-services-edge-node"></a>访问 ML Services 边缘节点
 
-可以使用浏览器连接到边缘节点上的 Microsoft ML Server。 它是在群集创建过程中默认安装的。 有关详细信息，请参阅 [HDInsight 上的 ML Services 入门](r-server-get-started.md)。 还可以使用 SSH/PuTTY 通过命令行连接到群集边缘节点，以访问 R 控制台。
+可以使用浏览器连接到边缘节点上的 Microsoft ML Server。 它是在群集创建过程中默认安装的。  还可以使用 SSH/PuTTY 通过命令行连接到群集边缘节点，以访问 R 控制台。
 
 ## <a name="develop-and-run-r-scripts"></a>开发和运行 R 脚本
 
@@ -96,7 +90,7 @@ HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户
 
 ### <a name="score-in-azure-machine-learning-aml"></a>在 Azure 机器学习中评分 (AML)
 
-若要使用 Azure 机器学习进行评分，请使用名为 [AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) 的开放源代码 Azure 机器学习 R 包将模型发布为 Azure Web 服务。 为提供方便，此包已预装在边缘节点上。 接下来，使用 Azure 机器学习中的工具创建 Web 服务的用户界面，并根据需要调用 Web 服务进行评分。
+若要使用 Azure 机器学习进行评分，请使用名为 [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) 的开放源代码 Azure 机器学习 R 包将模型发布为 Azure Web 服务。 为提供方便，此包已预装在边缘节点上。 接下来，使用 Azure 机器学习中的工具创建 Web 服务的用户界面，并根据需要调用 Web 服务进行评分。
 
 如果选择此选项，则必须将所有 ScaleR 模型对象转换成对等的开放源代码模型对象，才可配合 Web 服务使用。 使用 ScaleR 强制转换函数，例如适用于装配模型的 `as.randomForest()` 来完成转换。
 
@@ -110,7 +104,7 @@ HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户
 
 由于 R 脚本的大多数步骤在边缘节点上运行，因此边缘节点上需要有大部分使用的 R 包。 若要在边缘节点上安装其他 R 包，可以在 R 中使用 `install.packages()` 方法。
 
-如果正在群集中使用 ScaleR 库中的例程，则通常不需要在数据节点上安装其他 R 包。 但是，可能需要其他包才能支持在数据节点上使用 rxExec 或 RxDataStep 执行。
+如果正在群集中使用 ScaleR 库中的例程，则通常不需要在数据节点上安装其他 R 包。 但是，可能需要其他包才能支持在数据节点上使用 rxExec 或 RxDataStep 执行   。
 
 在这种情况下，可以在创建群集之后，使用脚本操作来安装其他包。 有关详细信息，请参阅[管理 HDInsight 群集中的 ML Services](r-server-hdinsight-manage.md)。
 
@@ -118,7 +112,7 @@ HDInsight 群集的 HDFS 文件系统的默认存储可以与 Azure 存储帐户
 
 可以在运行 MapReduce 作业时修改群集，以更改 ML Services 的可用内存量。 若要修改群集，可以通过群集的 Azure 门户边栏选项卡使用 Apache Ambari UI。 有关如何访问群集的 Ambari UI 的说明，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari.md)。
 
-也可以在 RxHadoopMR 的调用中使用 Hadoop 开关更改 ML Services 的可用内存量，如下所示：
+也可以在 RxHadoopMR 的调用中使用 Hadoop 开关更改 ML Services 的可用内存量，如下所示  ：
 
     hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
 
@@ -138,7 +132,7 @@ HDInsight 群集的 Linux 边缘节点是基于 R 的分析的登录区域。 �
 
 此外，可以安装桌面 IDE，并使用它通过远程 MapReduce 或 Spark 计算上下文来访问群集。 选项包括 Microsoft 的[针对 Visual Studio 的 R 工具](https://www.visualstudio.com/features/rtvs-vs.aspx) (RTVS)、RStudio 和 Walware 的基于 Eclipse 的 [StatET](http://www.walware.de/goto/statet)。
 
-此外，通过 SSH 或 PuTTY 连接后，在 Linux 命令提示符下键入 R 即可访问边缘节点上的 R 控制台。 如果在另一个窗口中运行 R 脚本开发的文本编辑器，可根据需要将脚本部分剪切并粘贴到 R 控制台，以便于使用控制台界面。
+此外，通过 SSH 或 PuTTY 连接后，在 Linux 命令提示符下键入 R 即可访问边缘节点上的 R 控制台  。 如果在另一个窗口中运行 R 脚本开发的文本编辑器，可根据需要将脚本部分剪切并粘贴到 R 控制台，以便于使用控制台界面。
 
 ## <a name="pricing"></a>定价
 
@@ -148,6 +142,6 @@ HDInsight 群集的 Linux 边缘节点是基于 R 的分析的登录区域。 �
 
 若要了解有关如何使用 HDInsight 群集上的 ML Services 的详细信息，请参阅以下主题：
 
-* [HDInsight 上的 ML Services 群集入门](r-server-get-started.md)
+* [使用 RStudio Server 在 Azure HDInsight 中的 ML Services 群集上执行 R 脚本](machine-learning-services-quickstart-job-rstudio.md)
 * [适用于 HDInsight 上的 ML Services 群集的计算上下文选项](r-server-compute-contexts.md)
 * [适用于 HDInsight 上的 ML Services 群集的存储选项](r-server-storage.md)

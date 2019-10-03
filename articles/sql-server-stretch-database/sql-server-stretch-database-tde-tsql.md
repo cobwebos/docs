@@ -3,21 +3,22 @@ title: 为 Stretch Database TSQL 启用透明数据加密 - Azure | Microsoft Do
 description: 为 Azure TSQL 上的 SQL Server Stretch Database 启用透明数据加密 (TDE)
 services: sql-server-stretch-database
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: 27753d91-9ca2-4d47-b34d-b5e2c2f029bb
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: douglasl
-ms.openlocfilehash: 634e1b097f2ca16a8c52da02445b3f5f2af7ff3d
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: HT
+author: blazem-msft
+ms.author: blazem
+ms.reviewer: jroth
+manager: jroth
+ms.openlocfilehash: 9718db18ea675fa744262f0736aff3c07732e1d1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744779"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66002875"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>为 Azure 上的 Stretch Database 启用透明数据加密 (TDE) (Transact-SQL)
 > [!div class="op_single_selector"]
@@ -53,7 +54,7 @@ ALTER DATABASE [database_name] SET ENCRYPTION OFF;
 ## <a name="verifying-encryption"></a>验证加密
 若要验证存储从启用延伸的 SQL Server 数据库迁移的数据的 Azure 数据库的加密状态，请执行以下操作：
 
-1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到 *master* 数据库或实例数据库
+1. 使用在 master 数据库中充当管理员或 *dbmanager* 角色成员的登录名，连接到 **master** 数据库或实例数据库
 2. 执行以下语句来加密数据库。
 
 ```sql

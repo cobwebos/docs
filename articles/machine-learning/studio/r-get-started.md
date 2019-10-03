@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 307636b019b53c8457c65261824adbf8e52ca0a9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5c4fa2260b00043e016748010528926b1b9d74a3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875509"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64726526"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>开始使用 R 编程语言中 Azure 机器学习工作室
 
@@ -153,7 +153,7 @@ RStudio 的教程介绍，请参阅[使用 RStudio IDE](https://support.rstudio.
 
 1. 启动 Azure 机器学习工作室环境。
 1. 选择 **+ 新建**左下角的屏幕，选择**数据集**。
-1. 选择“从本地文件”，并单击“浏览”以选择文件。
+1. 选择“从本地文件”  ，并单击“浏览”  以选择文件。
 1. 请确保选择了**具有标题 (.csv) 的通用 CSV 文件**作为数据集的类型。
 1. 选中复选标记。
 1. 通过选择已上传数据集后，应看到新的数据集**数据集**选项卡。  
@@ -163,10 +163,10 @@ RStudio 的教程介绍，请参阅[使用 RStudio IDE](https://support.rstudio.
 现在，机器学习工作室中已有一些数据，我们需要创建一个试验来执行分析。  
 
 1. 选择 **+ 新建**较低的左侧并选择**实验**，然后**的空白实验**。
-1. 可以命名试验，方法是选择和修改页面顶部的“在...创建的试验”标题。 例如，将其改为“CA 乳品分析”。
-1. 在试验页面的左侧，展开“保存的数据集”，并选择“我的数据集”。 可看到之前上传的 **cadairydata.csv**。
+1. 可以命名试验，方法是选择和修改页面顶部的“在...创建的试验”  标题。 例如，将其改为“CA 乳品分析”  。
+1. 在试验页面的左侧，展开“保存的数据集”  ，并选择“我的数据集”  。 可看到之前上传的 **cadairydata.csv**。
 1. 将 **csdairydata.csv 数据集**拖放到试验。
-1. 在左窗格顶部的“搜索试验项”框中，键入[执行 R 脚本][execute-r-script]。 可以看到模块在搜索列表中显示。
+1. 在左窗格顶部的“搜索试验项”  框中，键入[执行 R 脚本][execute-r-script]。 可以看到模块在搜索列表中显示。
 1. 将[执行 R 脚本][execute-r-script]拖放到托盘上。  
 1. 将 **csdairydata.csv 数据集**的输出连接到[执行 R 脚本][execute-r-script]最左侧输入 (**Dataset1**)。
 1. **别忘了选择保存 ！**  
@@ -253,7 +253,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 1. 在[执行 R 脚本][execute-r-script]模块的代码窗口中键入具有 zip 文件名的 `source()` 函数。 在本例中我键入 `source("src/simpleplot.R")`。  
 
-1. 请确保选择**保存**。
+1. 请务必选择“保存”。 
 
 这些步骤完成后，运行试验时，[执行 R 脚本][execute-r-script]模块将执行 zip 文件中的 R 脚本。 此时试验如图 5 所示。
 
@@ -420,7 +420,7 @@ maml.mapOutputPort('cadairydata')
 
 *图 9.具有因子变量的数据框摘要*
 
-现在 Month 的类型显示为**具有 14 个级别的因子**。 由于一年只有 12 个月，因此这是一个问题。 还可以查看该类型在结果数据集端口的“可视化”中为“分类”。
+现在 Month 的类型显示为**具有 14 个级别的因子**。 由于一年只有 12 个月，因此这是一个问题。 还可以查看该类型在结果数据集端口的“可视化”  中为“分类”  。
 
 问题在于“Month”列未系统地进行编码。 在某些情况下一个月份称为 April，但在其他情况下，它缩写为 Apr。可通过将字符串剪裁到 3 个字符来解决此问题。 现在代码行如下所示：
 
@@ -657,7 +657,7 @@ cadairydata <- na.omit(cadairydata)
 
 ### <a name="time-series-object-example"></a>时序对象示例
 
-让我们开始使用示例。 将新的[执行 R 脚本][execute-r-script]模块拖放到试验中。 将现有的[执行 R 脚本][execute-r-script]模块的结果 Dataset1 输出端口连接到新的[执行 R 脚本][execute-r-script]模块的 Dataset1 输入端口。
+让我们开始使用示例。 将新的[执行 R 脚本][execute-r-script]模块拖放到试验中  。 将现有的[执行 R 脚本][execute-r-script]模块的结果 Dataset1 输出端口连接到新的[执行 R 脚本][execute-r-script]模块的 Dataset1 输入端口。
 
 正如第一个示例中所演示的，在完成示例中的步骤时，在某些时候我只展示每个步骤中 R 代码的附加行。  
 
@@ -952,7 +952,7 @@ outframe
 
 ### <a name="creating-the-dataframe-for-analysis"></a>创建用于分析的数据框
 
-首先将新的[执行 R 脚本][execute-r-script]模块添加到试验中。 将现有的[执行 R 脚本][execute-r-script]模块的**结果数据集**输出连接到新的模块的 **Dataset1** 输入。 结果如图 20 所示。
+首先将新的[执行 R 脚本][execute-r-script]模块添加到试验中  。 将现有的[执行 R 脚本][execute-r-script]模块的**结果数据集**输出连接到新的模块的 **Dataset1** 输入。 结果如图 20 所示。
 
 ![已添加新执行 R 脚本模块的实验](./media/r-quickstart/fig21.png)
 
@@ -1320,7 +1320,7 @@ RStudio 文档非常齐全。 以下是一些指向 RStudio 文档以帮助你�
 * **R 编程艺术：教程的统计软件设计**Norman Matloff 是极好在 R 中的编程简介  
 * **R Cookbook** Paul teetor 提供使用 R 的问题和解决方案方法  
 * **操作中的 R** Robert Kabacoff 是另一个有用的入门性书籍。 随附[的 Quick R 网站](https://www.statmethods.net/)是一个有用的资源。
-* **R Inferno** Patrick Burns 的是非常幽默的书，使用多个 R 编程中可能遇到的棘手而困难主题书此书是免费获取网址[R Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/)。
+* **R Inferno** Patrick Burns 的是非常幽默的书，使用多个 R 编程中可能遇到的棘手而困难主题书此书是免费获取网址[R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/)。
 * 如果您想深入了解 R 主题，了解一下本书**高级 R** Hadley wickham。 本书的联机版本是免费获取网址[ http://adv-r.had.co.nz/ ](http://adv-r.had.co.nz/)。
 
 可以在中找到 R 时序包的目录[CRAN 任务视图：时序分析的时间](https://cran.r-project.org/web/views/TimeSeries.html)。 有关特定时序对象包的信息，请参考此包的文档。

@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7ad328eec7e16b5368b78a0dfccbf5c09adb5c13
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: 30a5bc9c5f0b7d1443e7ca2a16d9f0e0d1120dd8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330001"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836631"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据推送到 Azure 搜索索引
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-azure-search-connector.md)
 > * [版本 2（当前版本）](../connector-azure-search.md)
 
@@ -38,15 +38,15 @@ ms.locfileid: "54330001"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从源数据存储将数据推送到 Azure 搜索索引。
 
-创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+还可以使用以下工具来创建管道：**Visual Studio**， **Azure PowerShell**， **Azure Resource Manager 模板**， **.NET API**，并且**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
+1. 创建链接服务可将输入和输出数据存储链接到数据工厂  。
+2. 创建数据集以表示复制操作的输入和输出数据  。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出  。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于将数据复制到 Azure 搜索索引的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从本地 SQL Server 复制到 Azure 搜索索引](#json-example-copy-data-from-on-premises-sql-server-to-azure-search-index)部分。
 
@@ -77,7 +77,7 @@ ms.locfileid: "54330001"
 
 对于复制活动，如果接收器类型为 **AzureSearchIndexSink**，则可在 typeProperties 节中使用以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必填 |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。| 合并（默认值）<br/>上载| 否 |
 | WriteBatchSize | 缓冲区大小达到 writeBatchSize 时会数据上传到 Azure 搜索索引。 有关详细信息，请参阅 [WriteBatchSize 属性](#writebatchsize-property)。 | 1 到 1,000。 默认值为 1000。 | 否 |

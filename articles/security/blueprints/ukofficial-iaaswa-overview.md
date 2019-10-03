@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4a30e496c96fcc90417e58b0f921717985b89693
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443464"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262802"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure 安全性和符合性蓝图 - 适用于英国官方的三层 IaaS Web 应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "57443464"
 
  NCSC 建议客户使用“云安全原则”评估服务的安全属性，并帮助了解客户与供应商之间的责任划分。 我们提供了有关其中每项原则的信息，以帮助读者了解责任的划分。
 
- Microsoft 白皮书[使用 Microsoft Azure 的英国云的 14 项云安全控制措施](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)支持此体系结构和相应的 Azure 资源管理器模板。 本白皮书目录 Azure 服务如何与英国 NCSC 14 项云安全原则，从而使组织能够快速跟踪其能够满足在 Microsoft Azure 上使用基于云的服务以及在英国的法规要求保持一致云。
+ Microsoft 白皮书[使用 Microsoft Azure 的英国云的 14 项云安全控制措施](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)支持此体系结构和相应的 Azure 资源管理器模板。 本白皮书目录 Azure 服务如何与英国 NCSC 的云安全原则保持一致，从而使组织能够使用基于云的服务（全局和在英国）来快速跟踪其符合性义务的能力 Microsoft Azure形成.
 
  此模板会部署工作负荷的基础结构。 必须安装并配置应用程序代码和支持性的业务层与数据层软件。 [此处](https://aka.ms/ukwebappblueprintrepo)提供了详细的部署说明。
 
@@ -141,7 +141,7 @@ ms.locfileid: "57443464"
 
 **网关**：[VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)在本地网络中的路由器与生产 VNet 之间提供连接。
 
-**Internet 网关和公共 IP 地址**：Internet 网关通过 Internet 向用户公开应用程序服务。 结合 Web 应用程序防火墙 (WAF) 保护，使用可提供第 7 层路由和负载均衡功能的[应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)来保护访问这些服务的流量。
+**Internet 网关和公共 IP 地址**：Internet 网关通过 Internet 向用户公开应用程序服务。 结合 Web 应用程序防火墙 (WAF) 保护，使用可提供第 7 层路由和负载均衡功能的[应用程序网关](../../application-gateway/overview.md)来保护访问这些服务的流量。
 
 **管理 VNet**：此 [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) 包含针对生产 VNet 中运行的工作负荷实施管理和监视功能的资源。
 
@@ -152,11 +152,11 @@ ms.locfileid: "57443464"
 **已建立网络对等互连的 VNet**：使用 [VNet 对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)连接生产环境和管理 VNet。
 这些 VNet 仍作为单独的资源进行管理，但在建立各种连接时，这些虚拟机上只显示一个 VNet。 这些网络直接使用专用 IP 地址相互通信。 只能在同一 Azure 区域中的 VNet 之间建立 VNet 对等互连。
 
-**网络安全组**：[NSG](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) 包含允许或拒绝 VNet 中流量的访问控制列表。 NSG 可用于在子网或单个 VM 的级别保护流量。
+**网络安全组**：[NSG](../../virtual-network/virtual-network-vnet-plan-design-arm.md) 包含允许或拒绝 VNet 中流量的访问控制列表。 NSG 可用于在子网或单个 VM 的级别保护流量。
 
-**Active Directory 域服务 (AD DS)**：此体系结构提供专用的 [Active Directory 域服务](https://technet.microsoft.com/library/hh831484.aspx)部署。
+**Active Directory 域服务 (AD DS)** ：此体系结构提供专用的 [Active Directory 域服务](https://technet.microsoft.com/library/hh831484.aspx)部署。
 
-**日志记录和审核**：[Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)捕获针对订阅中的资源执行的操作，例如，操作的发起者、操作发生时间、操作状态，以及可能有助于调查该操作的其他属性值。 Azure 活动日志是一个 Azure 平台服务，可捕获针对订阅执行的所有操作。 可根据需要将日志存档或导出。
+**日志记录和审核**：[Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)捕获针对订阅中的资源执行的操作，例如，操作的发起者、操作发生时间、操作状态，以及可能有助于调查该操作的其他属性值。 Azure 活动日志是一个 Azure 平台服务，可捕获针对订阅执行的所有操作。 可根据需要将日志存档或导出。
 
 **网络监视和警报**：[Azure 网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)是一个平台服务，可针对 VNet 中的网络流量提供网络数据包捕获、流日志记录、拓扑工具和诊断。
 
@@ -168,47 +168,47 @@ ms.locfileid: "57443464"
 
 ### <a name="logging-and-audit"></a>日志记录和审核
 
-**监视**：[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) 是一个平台服务，为监视所有 Azure 资源的活动日志、指标和诊断日志提供一个中心位置。 可将 Azure Monitor 配置为可视化、查询、路由、存档和处理来自 Azure 中资源的指标和日志。 建议使用基于资源的访问控制来保护审核线索，帮助确保用户无法修改日志。
+**监视**：[Azure Monitor](../../azure-monitor/overview.md) 是一个平台服务，为监视所有 Azure 资源的活动日志、指标和诊断日志提供一个中心位置。 可将 Azure Monitor 配置为可视化、查询、路由、存档和处理来自 Azure 中资源的指标和日志。 建议使用基于资源的访问控制来保护审核线索，帮助确保用户无法修改日志。
 
-**活动日志**：配置 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)可提供有关对订阅中资源执行的操作的见解。
+**活动日志**：配置 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)可提供有关对订阅中资源执行的操作的见解。
 
-**诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)是资源发出的所有日志。 这些日志可能包括 Windows 事件系统日志，以及 Blob、表和队列的日志。
+**诊断日志**：[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)是资源发出的所有日志。 这些日志可能包括 Windows 事件系统日志，以及 Blob、表和队列的日志。
 
 **防火墙日志**：应用程序网关提供完整的诊断和访问日志。 防火墙日志适用于已启用 WAF 的应用程序网关资源。
 
-**日志存档**：日志数据存储可以配置为写入到集中式 Azure 存储帐户，存档和一个定义的保留期的。 可以使用 Azure Monitor 日志处理日志或由第三方 SIEM 系统。
+**日志存档**：日志数据存储可配置为写入集中式 Azure 存储帐户以进行存档和定义的保持期。 可以使用 Azure Monitor 日志或第三方 SIEM 系统处理日志。
 
 ### <a name="identity"></a>标识
 
 **Active Directory 域服务**：此体系结构在 Azure 中提供 Active Directory 域服务部署。 有关在 Azure 中实施 Active Directory 的具体建议，请参阅以下文章：
 
-[将 Active Directory 域服务 (AD DS) 扩展到 Azure](https://docs.microsoft.com/azure/guidance/guidance-identity-adds-extend-domain)。
+[将 Active Directory 域服务 (AD DS) 扩展到 Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain)。
 
 [有关在 Azure 虚拟机上部署 Windows Server Active Directory 的指导](https://msdn.microsoft.com/library/azure/jj156090.aspx)。
 
-**Active Directory 集成**：客户可能希望使用 [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) 集成或 [Azure 中已加入本地林的 Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) 作为专用 AD DS 体系结构的替代方案。
+**Active Directory 集成**：客户可能希望使用 [Azure Active Directory](/azure/architecture/reference-architectures/identity) 集成或 [Azure 中已加入本地林的 Active Directory](/azure/architecture/reference-architectures/identity) 作为专用 AD DS 体系结构的替代方案。
 
-### <a name="security"></a>安全
+### <a name="security"></a>安全性
 
 **管理安全性**：此蓝图允许管理员使用 RDP 从受信任的源连接到管理 VNet 和 Jumpbox。 使用 NSG 控制管理 VNet 的网络流量。 仅限受信任 IP 范围内可访问包含 Jumpbox 的子网的流量访问端口 3389。
 
 连接到管理 VNet 和 Jumpbox 时，客户也可以考虑使用[增强的安全管理模型](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/securing-privileged-access)来保护环境。 建议想要增强安全性的客户使用[特权访问工作站](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations#what-is-a-privileged-access-workstation-paw)和 RDGateway 配置。 使用网络虚拟设备和公共/专用外围网络会进一步增强安全性。
 
-**保护网络**：建议对每个子网使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG)，以针对入站流量提供第二层保护，并绕过错误配置的或已禁用的网关。 示例 - [用于部署 NSG 的资源管理器模板](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups)。
+**保护网络**：建议对每个子网使用[网络安全组](../../virtual-network/virtual-network-vnet-plan-design-arm.md) (NSG)，以针对入站流量提供第二层保护，并绕过错误配置的或已禁用的网关。 示例 - [用于部署 NSG 的资源管理器模板](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups)。
 
-**保护公共终结点**：Internet 网关通过 Internet 向用户公开应用程序服务。 可使用提供 Web 应用程序防火墙和 HTTPS 协议管理的[应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)保护访问这些服务的流量。
+**保护公共终结点**：Internet 网关通过 Internet 向用户公开应用程序服务。 可使用提供 Web 应用程序防火墙和 HTTPS 协议管理的[应用程序网关](../../application-gateway/overview.md)保护访问这些服务的流量。
 
 **IP 范围**：体系结构中的 IP 范围是建议的范围。 建议客户考虑自身的环境，并使用适当的范围。
 
-**混合连接**：基于云的工作负荷使用 Azure VPN 网关通过 IPSEC VPN 连接到本地数据中心。 客户应确保使用适当的 VPN 网关连接到 Azure。 示例 - [VPN 网关资源管理器模板](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection)。 运行大规模任务关键型工作负荷且要满足大数据要求的客户可能需要考虑混合网络体系结构，使用 [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) 来与 Microsoft 云服务建立专用网络连接。
+**混合连接**：基于云的工作负荷使用 Azure VPN 网关通过 IPSEC VPN 连接到本地数据中心。 客户应确保使用适当的 VPN 网关连接到 Azure。 示例 - [VPN 网关资源管理器模板](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection)。 运行大规模任务关键型工作负荷且要满足大数据要求的客户可能需要考虑混合网络体系结构，使用 [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) 来与 Microsoft 云服务建立专用网络连接。
 
-**关注点分离**：此参考体系结构将用于管理运营和业务运营的 VNet 分离开来。 将 VNet 和子网分离可以实现流量管理，包括根据 [Microsoft 云服务和网络安全](https://docs.microsoft.com/azure/best-practices-network-security)最佳做法，在网段之间使用 NSG 来限制传入和传出流量。
+**关注点分离**：此参考体系结构将用于管理运营和业务运营的 VNet 分离开来。 将 VNet 和子网分离可以实现流量管理，包括根据 [Microsoft 云服务和网络安全](/azure/architecture/vdc/networking-virtual-datacenter)最佳做法，在网段之间使用 NSG 来限制传入和传出流量。
 
-**资源管理**：将 VM、VNet 和负载均衡器等 Azure 资源分组到 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)可对其进行管理。 然后，可将基于资源的访问控制角色分配到每个资源组，以将访问权限限制给已获授权的用户。
+**资源管理**：将 VM、VNet 和负载均衡器等 Azure 资源分组到 [Azure 资源组](../../azure-resource-manager/resource-group-overview.md)可对其进行管理。 然后，可将基于资源的访问控制角色分配到每个资源组，以将访问权限限制给已获授权的用户。
 
-**访问控制限制**：使用[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) 管理应用程序中的资源；可以使用[自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC 来限制 DevOps 可在每个层上执行的操作。 授予权限时，请使用[最低特权原则](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)。 记录所有管理操作并执行定期审核，确保所有配置更改按计划进行。
+**访问控制限制**：使用[基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md) (RBAC) 管理应用程序中的资源；可以使用[自定义角色](../../role-based-access-control/custom-roles.md) RBAC 来限制 DevOps 可在每个层上执行的操作。 授予权限时，请使用[最低特权原则](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)。 记录所有管理操作并执行定期审核，确保所有配置更改按计划进行。
 
-**Internet 访问**：此参考体系结构利用[Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)作为面向 internet 网关和负载均衡器。 某些客户还可以考虑使用第三方网络虚拟设备作为附加的网络安全层，取代 [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)。
+**Internet 访问**：此参考体系结构利用[Azure 应用程序网关](../../application-gateway/overview.md)作为面向 internet 的网关和负载均衡器。 某些客户还可以考虑使用第三方网络虚拟设备作为附加的网络安全层，取代 [Azure 应用程序网关](../../application-gateway/overview.md)。
 
 **Azure 安全中心**：[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)在一个中心视图中提供订阅中资源的安全状态，并提供建议帮助避免资源泄密。 此外，它还可用于启用更精细的策略。 例如，可将策略应用到特定的资源组，使企业能够根据风险调整方向。 建议客户在其 Azure 订阅中启用 Azure 安全中心。
 
@@ -226,7 +226,7 @@ Crown Commercial Service（一家致力于改善政府商业和采购活动的�
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-部署用户可使用两种方法部署此蓝图自动化。 第一种方法使用的 PowerShell 脚本，而第二种方法使用 Azure 门户部署参考体系结构。 [此处](https://aka.ms/ukofficial-iaaswa-repo)提供了详细的部署说明。
+部署用户可使用两种方法部署此蓝图自动化。 第一种方法使用 PowerShell 脚本，而第二种方法使用 Azure 门户来部署参考体系结构。 [此处](https://aka.ms/ukofficial-iaaswa-repo)提供了详细的部署说明。
 
 ## <a name="disclaimer"></a>免责声明
 

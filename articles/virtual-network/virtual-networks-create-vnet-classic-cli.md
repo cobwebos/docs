@@ -4,7 +4,7 @@ description: 了解如何在 ARM | Resource Manager 中使用 Azure CLI 创建�
 services: virtual-network
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: 604d128b-88e1-42aa-87ec-49b2f6a54526
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 9d254fa17ae2b45a5771777bc7cedf9fa90d9815
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 5c73a0057a95d88737e82b01e3cacb3814798e1f
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38477635"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056651"
 ---
 # <a name="create-a-virtual-network-classic-by-using-the-azure-cli"></a>使用 Azure CLI 创建虚拟网络（经典）
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]

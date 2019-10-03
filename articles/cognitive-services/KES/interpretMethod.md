@@ -11,35 +11,35 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 88776e2f4167c950d60c0405dcf950b5173fb989
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870920"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60814130"
 ---
 # <a name="interpret-method"></a>interpret 方法
 
-interpret 方法采用自然语言查询字符串，并根据语法和索引数据返回对用户意向的格式化解释。  为了提供交互式搜索体验，可以调用此方法，因为每个字符都由用户输入，其中 complete 参数设置为 1 以启用自动完成建议。
+interpret  方法采用自然语言查询字符串，并根据语法和索引数据返回对用户意向的格式化解释。  为了提供交互式搜索体验，可以调用此方法，因为每个字符都由用户输入，其中 complete  参数设置为 1 以启用自动完成建议。
 
 ## <a name="request"></a>请求
 
 `http://<host>/interpret?query=<query>[&<options>]`
 
-Name|值| 说明
+Name|值| 描述
 ----|----|----
 query    | 文本字符串 | 用户输入的查询。  如果 complete 设置为 1，查询将被解释为生成查询自动完成建议的前缀。        
 complete | 0（默认值）或 1 | 1 意味着自动完成建议是基于语法和索引数据生成的。         
 计数    | 数字（默认值为 10） | 返回的最大解释数。         
-offset   | 数字（默认值为 0） | 返回的第一个解释的索引。  例如，count=2&offset=0 返回解释 0 和 1。 count=2&offset=2 返回解释 2 和 3。       
+offset   | 数字（默认值为 0） | 返回的第一个解释的索引。  例如，count=2&offset=0  返回解释 0 和 1。 count=2&offset=2  返回解释 2 和 3。       
 timeout  | 数字（默认值为 1000） | 超时（以毫秒为单位）。 仅返回在超时之前找到的解释。
 
-使用 count 和 offset 参数，可以在多个请求中以增量方式获取大量结果。
+使用 count  和 offset  参数，可以在多个请求中以增量方式获取大量结果。
 
 ## <a name="response-json"></a>响应 (JSON)
 
-JSONPath     | 说明
+JSONPath     | 描述
 ---------|---------
-$.query |query 参数来自请求。
+$.query |query  参数来自请求。
 $.interpretations   |将输入查询与语法相匹配的 0 种或多种方法数组。
 $.interpretations[\*].logprob   |解释的相对对数概率 (<=0)。  较高值更有可能。
 $.interpretations[\*].parse |XML 字符串，显示如何解释查询的各个部分。
@@ -112,7 +112,7 @@ $.aborted | 如果请求超时，则为 True。
 }
 ```  
 
-当语义输出类型为“query”，就像本例所示，可以通过 expr 参数将 output.value 传递到 [evaluate](evaluateMethod.md) API 来检索匹配对象。
+当语义输出类型为“query”，就像本例所示，可以通过 expr  参数将 output.value  传递到 [evaluate  ](evaluateMethod.md) API 来检索匹配对象。
 
 `http://<host>/evaluate?expr=Composite(AA.AuN=='jaime teevan')`
   

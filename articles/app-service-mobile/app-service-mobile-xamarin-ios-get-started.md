@@ -3,7 +3,7 @@ title: 适用于 Xamarin iOS 应用的 Azure 应用服务移动应用入门 | Mi
 description: 按照本教程进行操作，开始使用移动应用进行 Xamarin.iOS 开发。
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 14428794-52ad-4b51-956c-deb296cafa34
@@ -12,17 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 03fb286bd24bb12f3a1e508627a2de156e185568
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 57867eeca9f29cfc3983cbdca94c830aa7a20500
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892426"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446246"
 ---
 # <a name="create-a-xamarinios-app"></a>创建 Xamarin iOS 应用
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
+
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-ios-get-started)今天。
+>
 
 ## <a name="overview"></a>概述
 本教程说明如何使用 Azure 移动应用后端向 Xamarin.iOS 移动应用添加基于云的后端服务。  将创建一个新的移动应用后端以及一个简单的 *待办事项列表* Xamarin.iOS 应用，此应用将应用数据存储在 Azure 中。
@@ -32,60 +36,41 @@ ms.locfileid: "58892426"
 ## <a name="prerequisites"></a>必备组件
 若要完成本教程，需要具备以下先决条件：
 
-* 有效的 Azure 帐户。 如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
-* Visual Studio with Xamarin。 有关说明，请参阅 [设置和安装 Visual Studio 和 Xamarin](/visualstudio/cross-platform/setup-and-install) 。
-* 安装了 Xcode v7.0 版或更高版本以及 Xamarin Studio Community 的 Mac。 请参阅[设置和安装 Visual Studio 和 Xamarin](/visualstudio/cross-platform/setup-and-install) 以及 [Mac 用户的设置、安装和验证](/visualstudio/cross-platform/setup-install-and-verifications-for-mac-users) (MSDN)。
-
+* 有效的 Azure 帐户。 如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* Visual Studio for Mac。 请参阅[设置和安装 Visual Studio for Mac](https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019)
+* 安装了 Xcode 9.0 或更高版本的 Mac。
+  
 ## <a name="create-an-azure-mobile-app-backend"></a>创建 Azure 移动应用后端
-按照这些步骤创建移动应用后端。
-
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="configure-the-server-project"></a>配置服务器项目
-现已预配可供移动客户端应用程序使用的 Azure 移动应用后端。 接下来，为简单的“待办事项列表”后端下载服务器项目并将其发布到 Azure。
-
-按照下列步骤将服务器项目配置为使用 Node.js 或 .NET 后端。
-
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>创建数据库连接并配置客户端和服务器项目
 [!INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-xamarinios-app"></a>下载并运行 Xamarin.iOS 应用
-1. 在浏览器窗口中，打开 [Azure 门户] 。
-2. 在移动应用的“设置”边栏选项卡上，单击“开始使用” > “Xamarin.iOS”。 在步骤 3 下，单击“创建新应用”  （如果尚未选择它）。  接下来，单击“下载”  按钮。
+## <a name="run-the-xamarinios-app"></a>运行 Xamarin.iOS 应用
+1. 打开 Xamarin.iOS 项目。
 
-      将下载连接到移动后端的客户端应用程序。 将压缩的项目文件保存到本地计算机，并记下保存位置。
-3. 解压缩下载的项目，然后在 Xamarin Studio（或 Visual Studio）中打开它。
+2. 转到 [Azure 门户](https://portal.azure.com/)，并导航到已创建的移动应用。 在 `Overview` 边栏选项卡上，查找作为移动应用公共终结点的 URL。 示例 - 我的应用名称“test123”的站点名将为 https://test123.azurewebsites.net 。
 
-    ![][9]
+3. 打开此文件夹（xamarin.iOS/ZUMOAPPNAME）中的文件 `QSTodoService.cs`。 应用程序名称为 `ZUMOAPPNAME`。
 
-    ![][8]
-4. 按 F5 键生成项目，并在 iPhone 模拟器中启动应用。
-5. 在应用中键入有意义的文本（例如 *Learn Xamarin*），并单击“+”按钮。
+4. 在 `QSTodoService` 类中，将 `ZUMOAPPURL` 变量替换为上面的公共终结点。
+
+    `const string applicationURL = @"ZUMOAPPURL";`
+
+    变为
+    
+    `const string applicationURL = @"https://test123.azurewebsites.net";`
+    
+5. 按 F5 键在 iPhone 模拟器中部署并运行应用。
+
+6. 在应用中键入有意义的文本（例如“完成教程”  ），然后单击 + 按钮。
 
     ![][10]
 
     来自请求的数据插入到 TodoItem 表。 移动应用后端返回存储在表中的项，数据显示在列表中。
 
-> [!NOTE]
-> 可以在 QSTodoService.cs C# 文件中查看用于访问移动应用后端以查询和插入数据的代码。
->
->
-
-## <a name="next-steps"></a>后续步骤
-* [向应用添加脱机同步](app-service-mobile-xamarin-ios-get-started-offline-data.md)
-* [向应用添加身份验证](app-service-mobile-xamarin-ios-get-started-users.md)
-* [向 Xamarin.Android 应用添加推送通知](app-service-mobile-xamarin-ios-get-started-push.md)
-* [如何使用 Azure 移动应用的托管客户端](app-service-mobile-dotnet-how-to-use-client-library.md)
-
-<!-- Anchors. -->
-[Getting started with mobile app backends]:#getting-started
-[Create a new mobile app backend]:#create-new-service
-[Next Steps]:#next-steps
-
+   > [!NOTE]
+   > 可以查看访问移动应用后端以查询和插入数据的代码，这些代码在 ToDoActivity.cs C# 文件中。
+   
 <!-- Images. -->
-[6]: ./media/app-service-mobile-xamarin-ios-get-started/xamarin-ios-quickstart.png
-[8]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-xamarin-project-ios-vs.png
-[9]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-xamarin-project-ios-xs.png
 [10]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
-
-<!-- URLs. -->
-[Azure 门户]: https://portal.azure.com/

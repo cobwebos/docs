@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 0b1e3b98fe5b934b712db2a5549ebdc865523bfb
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 01962770c011a0107abd4e035c25d6c0d45fa0a0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487713"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569369"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
 
@@ -51,7 +50,7 @@ Azure SQL 数据库仅支持单组凭据。 若要在此约束内完成这些任
 -   针对不同阶段更改凭据（例如 credential1 用于安装，credential2 用于正在运行）。  
 -   更改凭据的权限（即，在设置同步后更改权限）。
 
-## <a name="setup"></a>设置
+## <a name="setup"></a>安装
 
 ### <a name="database-considerations-and-constraints"></a> 数据库考虑因素和约束
 
@@ -97,7 +96,7 @@ SQL 数据同步自动预配的限制如下：
 -   对外键约束的 ON UPDATE CASCADE 和 ON DELETE CASCADE 操作不会在目标表中重新创建。
 -   如果具有精度大于 28 的十进制或数值列，则 SQL 数据同步在同步期间可能出现转换溢出问题。建议将十进制或数值列的精度限制为 28 或更小。
 
-#### <a name="recommendations"></a>建议
+#### <a name="recommendations"></a>推荐
 
 -   仅在尝试使用该服务时使用 SQL 数据同步自动预配功能。  
 -   对于生产环境，应预配数据库架构。
@@ -194,7 +193,7 @@ SQL 数据同步自动预配的限制如下：
 
 在某些情况下，向客户端代理取消注册数据库可能会导致同步失败。
 
-#### <a name="scenario"></a>场景
+#### <a name="scenario"></a>应用场景
 
 1. 使用 SQL 数据库实例和本地 SQL Server 数据库创建与本地代理 1 关联的同步组 A。
 2. 向本地代理 2（此代理不与任何同步组关联）注册同一本地数据库。

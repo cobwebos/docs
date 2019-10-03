@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 95830cdffb232e16f9fbae51cfa11fbd18172c3c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ec0b9fbdfdb96317e1e7f6fe00384ba4f8c42bcc
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094462"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607952"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义页面
 
@@ -160,7 +160,7 @@ npm start
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    仅应在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快再次禁用](../security/azure-security-network-security-best-practices.md)。
+    仅应在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快再次禁用](../security/fundamentals/network-best-practices.md)。
 
 1. 使用 Azure 门户或 [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 查找虚拟机的名称和公共 IP 地址。 例如：
 

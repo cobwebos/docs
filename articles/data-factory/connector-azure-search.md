@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 1c8cbcd2e5f137b1e8381dcce164ae9a4b87e804
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c2165d0ff16233766918f9e274324b02d1bf1ac8
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852835"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962099"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 搜索索引
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-search-connector.md)
 > * [当前版本](connector-azure-search.md)
 
@@ -45,11 +45,11 @@ Azure 搜索链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureSearch** | 是 |
 | url | Azure 搜索服务的 URL。 | 是 |
-| key | Azure 搜索服务的管理密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| 钥 | Azure 搜索服务的管理密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 > [!IMPORTANT]
-> 将数据从云数据存储复制到 Azure 搜索索引，在 Azure 搜索链接服务，需要显式区域位于 connactVia Azure 集成运行时，请参阅。 将此区域设置为 Azure 搜索所在的位置。 从 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime) 了解更多信息。
+> 将数据从云数据存储复制到 Azure 搜索索引时，在 Azure 搜索链接服务中，需要在 connactVia 中使用显式区域引用 Azure Integration Runtime。 将此区域设置为 Azure 搜索所在的位置。 从 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime) 了解更多信息。
 
 **示例：**
 
@@ -75,9 +75,9 @@ Azure 搜索链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Azure 搜索数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Azure 搜索数据集支持的属性列表。
 
-要将数据复制到 Azure 搜索，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
+若要将数据复制到 Azure 搜索，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -91,12 +91,13 @@ Azure 搜索链接的服务支持以下属性：
     "name": "AzureSearchIndexDataset",
     "properties": {
         "type": "AzureSearchIndex",
+        "typeProperties" : {
+            "indexName": "products"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Search linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties" : {
-            "indexName": "products"
         }
    }
 }
@@ -163,7 +164,7 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 ]
 ```
 
-### <a name="data-type-support"></a>数据类型支持
+## <a name="data-type-support"></a>数据类型支持
 
 下表指定是否支持某个 Azure 搜索数据类型。
 
@@ -177,6 +178,8 @@ Azure 搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个
 | DataTimeOffset | Y |
 | String Array | N |
 | GeographyPoint | N |
+
+当前不支持其他数据类型，例如 ComplexType。 有关 Azure 搜索支持的数据类型的完整列表，请参阅[支持的数据类型（Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

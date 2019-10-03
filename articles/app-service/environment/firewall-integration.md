@@ -9,17 +9,16 @@ ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 08/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6ae7037ad4cd532b6661a56e6e37a88df3eb54a2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 038178b3b73e9b07ce96e079403cb641f8efe8b1
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121700"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210053"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -31,11 +30,26 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 保护出站地址的解决方案在于使用可基于域名控制出站流量的防火墙设备。 Azure 防火墙可以根据目标的 FQDN 限制出站 HTTP 和 HTTPS 流量。  
 
+## <a name="system-architecture"></a>系统体系结构
+
+如果使用通过防火墙设备进行的出站流量部署 ASE, 则需要更改 ASE 子网上的路由。 路由在 IP 级别运行。 如果你不小心定义你的路由, 则可以将 TCP 回复流量从另一个地址强制发送到源。 如果答复地址不同于发送到的地址, 则问题称为非对称路由, 并将中断 TCP。
+
+必须已定义路由, 以便与 ASE 的入站流量可以通过与流量传入相同的方式回复。 必须为入站管理请求和入站应用程序请求定义路由。
+
+进出 ASE 的流量必须遵守以下约定
+
+* 使用防火墙设备不支持到 Azure SQL、存储和事件中心的流量。 此流量必须直接发送到那些服务。 实现此目的的方法是为这三项服务配置服务终结点。 
+* 必须定义路由表规则, 以便将入站管理流量从传入的位置发回。
+* 必须定义路由表规则, 以便从传入的位置发回入站应用程序流量。 
+* 所有其他可以发送 ASE 的流量都可以通过路由表规则发送到防火墙设备。
+
+![使用 Azure 防火墙的 ASE 连接流][5]
+
 ## <a name="configuring-azure-firewall-with-your-ase"></a>在 ASE 中配置 Azure 防火墙 
 
 使用 Azure 防火墙锁定现有 ASE 的传出流量的步骤如下：
 
-1. 为 ASE 子网中的 SQL、存储和事件中心启用服务终结点。 为此，请转到网络门户 >“子网”，然后从服务终结点下拉列表中选择“Microsoft.EventHub”、“Microsoft.SQL”和“Microsoft.Storage”。 为 Azure SQL 启用服务终结点后，还必须为应用的所有 Azure SQL 依赖项配置服务终结点。 
+1. 为 ASE 子网中的 SQL、存储和事件中心启用服务终结点。 若要启用服务终结点, 请进入网络门户 > 子网, 并从 "服务终结点" 下拉列表中选择 ""。 为 Azure SQL 启用服务终结点后，还必须为应用的所有 Azure SQL 依赖项配置服务终结点。 
 
    ![选择服务终结点][2]
   
@@ -69,8 +83,6 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 如果你知道应用程序请求流量将来自哪个地址范围，则可将该范围添加到要分配给 ASE 子网的路由表。 如果地址范围很大或未指定，则你可以使用应用程序网关等网络设备来提供一个要添加到路由表的地址。 有关在 ILB ASE 中配置应用程序网关的详细信息，请阅读[将 ILB ASE 与应用程序网关集成](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
 
-![使用 Azure 防火墙的 ASE 连接流][5]
-
 使用应用程序网关只是系统配置方法的一个例子。 如果遵循此路径，则需要将路由添加到 ASE 子网路由表，以便发送到应用程序网关的回复流量直接通过该路由传送。 
 
 ## <a name="logging"></a>日志记录 
@@ -79,7 +91,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-首次运行应用程序时，如果不知道所有的应用程序依赖项，则将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 可以通过[在 Azure Monitor 中分析日志数据](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)详细了解 Azure Monitor 日志
+首次运行应用程序时，如果不知道所有的应用程序依赖项，则将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 可以在 Azure Monitor 中详细了解 Azure Monitor 日志[分析日志数据](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
  
 ## <a name="dependencies"></a>依赖项
 
@@ -104,15 +116,15 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 | 终结点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
-| \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |
-| 40.77.24.27:80 | 监视器和警报在 ASE 问题所需 |
-| 40.77.24.27:443 | 监视器和警报在 ASE 问题所需 |
-| 13.90.249.229:80 | 监视器和警报在 ASE 问题所需 |
-| 13.90.249.229:443 | 监视器和警报在 ASE 问题所需 |
-| 104.45.230.69:80 | 监视器和警报在 ASE 问题所需 |
-| 104.45.230.69:443 | 监视器和警报在 ASE 问题所需 |
-| 13.82.184.151:80 | 监视器和警报在 ASE 问题所需 |
-| 13.82.184.151:443 | 监视器和警报在 ASE 问题所需 |
+| \*:12000 | 此端口用于某些系统监视活动。 如果被阻止, 某些问题将更难会审, 而 ASE 将继续运行 |
+| 40.77.24.27:80 | 需要监视 ASE 问题并发出警报 |
+| 40.77.24.27:443 | 需要监视 ASE 问题并发出警报 |
+| 13.90.249.229:80 | 需要监视 ASE 问题并发出警报 |
+| 13.90.249.229:443 | 需要监视 ASE 问题并发出警报 |
+| 104.45.230.69:80 | 需要监视 ASE 问题并发出警报 |
+| 104.45.230.69:443 | 需要监视 ASE 问题并发出警报 |
+| 13.82.184.151:80 | 需要监视 ASE 问题并发出警报 |
+| 13.82.184.151:443 | 需要监视 ASE 问题并发出警报 |
 
 使用 Azure 防火墙时，将使用 FQDN 标记自动配置以下所有设置。 
 
@@ -169,11 +181,33 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 |flighting.cp.wd.microsoft.com:443 |
 |dmd.metaservices.microsoft.com:80 |
 |admin.core.windows.net:443 |
+|prod.warmpath.msftcloudes.com:443 |
+|prod.warmpath.msftcloudes.com:80 |
 |azureprofileruploads.blob.core.windows.net:443 |
 |azureprofileruploads2.blob.core.windows.net:443 |
 |azureprofileruploads3.blob.core.windows.net:443 |
 |azureprofileruploads4.blob.core.windows.net:443 |
 |azureprofileruploads5.blob.core.windows.net:443 |
+|azperfmerges.blob.core.windows.net:443 |
+|azprofileruploads1.blob.core.windows.net:443 |
+|azprofileruploads10.blob.core.windows.net:443 |
+|azprofileruploads2.blob.core.windows.net:443 |
+|azprofileruploads3.blob.core.windows.net:443 |
+|azprofileruploads4.blob.core.windows.net:443 |
+|azprofileruploads6.blob.core.windows.net:443 |
+|azprofileruploads7.blob.core.windows.net:443 |
+|azprofileruploads8.blob.core.windows.net:443 | 
+|azprofileruploads9.blob.core.windows.net:443 |
+|azureprofilerfrontdoor.cloudapp.net:443 |
+|settings-win.data.microsoft.com:443 |
+|maupdateaccount2.blob.core.windows.net:443 |
+|maupdateaccount3.blob.core.windows.net:443 |
+|dc.services.visualstudio.com:443 |
+|gmstorageprodsn1.blob.core.windows.net:443 |
+|gmstorageprodsn1.file.core.windows.net:443 |
+|gmstorageprodsn1.queue.core.windows.net:443 |
+|gmstorageprodsn1.table.core.windows.net:443 |
+|rteventservice.trafficmanager.net:443 |
 
 #### <a name="wildcard-httphttps-dependencies"></a>通配符 HTTP/HTTPS 依赖项 
 
@@ -183,6 +217,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 | \*.management.azure.com:443 |
 | \*.update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
+| \*。 identity.azure.net:443 |
 
 #### <a name="linux-dependencies"></a>Linux 依赖项 
 
@@ -197,6 +232,145 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 |download.mono-project.com:80 |
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
+| \*。 cdn.mscr.io:443 |
+|mcr.microsoft.com:443 |
+|packages.fluentbit.io:80 |
+|packages.fluentbit.io:443 |
+|apt-mo.trafficmanager.net:80 |
+|apt-mo.trafficmanager.net:443 |
+|azure.archive.ubuntu.com:80 |
+|azure.archive.ubuntu.com:443 |
+|changelogs.ubuntu.com:80 |
+|13.74.252.37:11371 |
+|13.75.127.55:11371 |
+|13.76.190.189:11371 |
+|13.80.10.205:11371 |
+|13.91.48.226:11371 |
+|40.76.35.62:11371 |
+|104.215.95.108:11371 |
+
+## <a name="us-gov-dependencies"></a>US Gov 依赖关系
+
+对于 US Gov 仍需为存储、SQL 和事件中心设置服务终结点。  你还可以将 Azure 防火墙与本文档前面的说明配合使用。 如果需要使用自己的出口防火墙设备, 请在下面列出这些终结点。
+
+| 终结点 |
+|----------|
+| \*。 ctldl.windowsupdate.com:80 |
+| \*。 management.usgovcloudapi.net:80 |
+| \*。 update.microsoft.com:80 |
+|admin.core.usgovcloudapi.net:80 |
+|azperfmerges.blob.core.windows.net:80 |
+|azperfmerges.blob.core.windows.net:80 |
+|azprofileruploads1.blob.core.windows.net:80 |
+|azprofileruploads10.blob.core.windows.net:80 |
+|azprofileruploads2.blob.core.windows.net:80 |
+|azprofileruploads3.blob.core.windows.net:80 |
+|azprofileruploads4.blob.core.windows.net:80 |
+|azprofileruploads5.blob.core.windows.net:80 |
+|azprofileruploads6.blob.core.windows.net:80 |
+|azprofileruploads7.blob.core.windows.net:80 |
+|azprofileruploads8.blob.core.windows.net:80 |
+|azprofileruploads9.blob.core.windows.net:80 |
+|azureprofilerfrontdoor.cloudapp.net:80 |
+|azurewatsonanalysis.usgovcloudapp.net:80 |
+|cacerts.digicert.com:80 |
+|client.wns.windows.com:80 |
+|crl.microsoft.com:80 |
+|crl.verisign.com:80 |
+|crl3.digicert.com:80 |
+|csc3-2009-2.crl.verisign.com:80 |
+|ctldl.windowsupdate.com:80 |
+|definitionupdates.microsoft.com:80 |
+|download.windowsupdate.com:80 |
+|fairfax.warmpath.usgovcloudapi.net:80 |
+|flighting.cp.wd.microsoft.com:80 |
+|gcwsprodgmdm2billing.queue.core.usgovcloudapi.net:80 |
+|gcwsprodgmdm2billing.table.core.usgovcloudapi.net:80 |
+|global.metrics.nsatc.net:80 |
+|go.microsoft.com:80 |
+|gr-gcws-prod-bd3.usgovcloudapp.net:80 |
+|gr-gcws-prod-bn1.usgovcloudapp.net:80 |
+|gr-gcws-prod-dd3.usgovcloudapp.net:80 |
+|gr-gcws-prod-dm2.usgovcloudapp.net:80 |
+|gr-gcws-prod-phx20.usgovcloudapp.net:80 |
+|gr-gcws-prod-sn5.usgovcloudapp.net:80 |
+|login.live.com:80 |
+|login.microsoftonline.us:80 |
+|management.core.usgovcloudapi.net:80 |
+|management.usgovcloudapi.net:80 |
+|maupdateaccountff.blob.core.usgovcloudapi.net:80 |
+|mscrl.microsoft.com
+|digicert。 |
+|ocsp.msocsp.co|
+|ocsp。0 |
+|rteventse.trafficmanager.net:80 |
+|settings-n.data.microsoft.com:80 |
+|shavamafestcdnprod1.azureedge.net:80 |
+|shavanifestcdnprod1.azureedge.net:80 |
+|v10ortex-win.data.microsoft.com:80 |
+|wp.microsoft.com:80 |
+|dcpalt.microsoft.com:80 |
+|www.microsoft.com:80 |
+|www.msftconnecttest.com:80 |
+|www.thawte.com:80 |
+|\*ctldl.windowsupdate.com:443 |
+|\*。 management.usgovcloudapi.net:443 |
+|\*.update.microsoft.com:443 |
+|admin.core.usgovcloudapi.net:443 |
+|azperfmerges.blob.core.windows.net:443 |
+|azperfmerges.blob.core.windows.net:443 |
+|azprofileruploads1.blob.core.windows.net:443 |
+|azprofileruploads10.blob.core.windows.net:443 |
+|azprofileruploads2.blob.core.windows.net:443 |
+|azprofileruploads3.blob.core.windows.net:443 |
+|azprofileruploads4.blob.core.windows.net:443 |
+|azprofileruploads5.blob.core.windows.net:443 |
+|azprofileruploads6.blob.core.windows.net:443 |
+|azprofileruploads7.blob.core.windows.net:443 |
+|azprofileruploads8.blob.core.windows.net:443 |
+|azprofileruploads9.blob.core.windows.net:443 |
+|azureprofilerfrontdoor.cloudapp.net:443 |
+|azurewatsonanalysis.usgovcloudapp.net:443 |
+|cacerts.digicert.com:443 |
+|client.wns.windows.com:443 |
+|crl.microsoft.com:443 |
+|crl.verisign.com:443 |
+|crl3.digicert.com:443 |
+|csc3-2009-2.crl.verisign.com:443 |
+|ctldl.windowsupdate.com:443 |
+|definitionupdates.microsoft.com:443 |
+|download.windowsupdate.com:443 |
+|fairfax.warmpath.usgovcloudapi.net:443 |
+|flighting.cp.wd.microsoft.com:443 |
+|gcwsprodgmdm2billing.queue.core.usgovcloudapi.net:443 |
+|gcwsprodgmdm2billing.table.core.usgovcloudapi.net:443 |
+|global.metrics.nsatc.net:443 |
+|go.microsoft.com:443 |
+|gr-gcws-prod-bd3.usgovcloudapp.net:443 |
+|gr-gcws-prod-bn1.usgovcloudapp.net:443 |
+|gr-gcws-prod-dd3.usgovcloudapp.net:443 |
+|gr-gcws-prod-dm2.usgovcloudapp.net:443 |
+|gr-gcws-prod-phx20.usgovcloudapp.net:443 |
+|gr-gcws-prod-sn5.usgovcloudapp.net:443 |
+|login.live.com:443 |
+|login.microsoftonline.us:443 |
+|management.core.usgovcloudapi.net:443 |
+|management.usgovcloudapi.net:443 |
+|maupdateaccountff.blob.core.usgovcloudapi.net:443 |
+|mscrl.microsoft.com:443 |
+|ocsp.digicert.com:443 |
+|ocsp.msocsp.com:443 |
+|ocsp.verisign.com:443 |
+|rteventservice.trafficmanager.net:443 |
+|settings-win.data.microsoft.com:443 |
+|shavamanifestcdnprod1.azureedge.net:443 |
+|shavamanifestcdnprod1.azureedge.net:443 |
+|v10.vortex-win.data.microsoft.com:443 |
+|wdcp.microsoft.com:443 |
+|wdcpalt.microsoft.com:443 |
+|www.microsoft.com:443 |
+|www.msftconnecttest.com:443 |
+|www.thawte.com:443 |
 
 <!--Image references-->
 [1]: ./media/firewall-integration/firewall-apprule.png

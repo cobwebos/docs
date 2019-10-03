@@ -3,8 +3,8 @@ title: Azure Active Directory 中的单页应用程序
 description: 介绍什么是单页应用程序 (SPA)，以及有关此应用类型的协议流、注册和令牌到期的基础知识。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6704c00734d18b9918378db6e056696407421014
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 1f6f66779bec9ed4e38e5a662c2d3728ba2034b6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207171"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65545302"
 ---
 # <a name="single-page-applications"></a>单页应用程序
 

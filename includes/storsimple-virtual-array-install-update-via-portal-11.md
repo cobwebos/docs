@@ -8,42 +8,42 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: a83095b8330ccf08d777e48389c17058c6d29527
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
-ms.translationtype: HT
+ms.openlocfilehash: 65d5a88f7b5d059deb633f062639e455c64ef2f7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347668"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173474"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>通过 Azure 门户安装更新
 
-1. 转到 StorSimple 设备管理器并选择“设备”。 从连接到服务的设备列表中，选择并单击要更新的设备。
+1. 转到 StorSimple 设备管理器并选择“设备”。  从连接到服务的设备列表中，选择并单击要更新的设备。
 
-2. 在“设置”下，单击“设备更新”。  
+2. 在“设置”下，单击“设备更新”。    
 
-3. 如果有可用的软件更新，会显示一条消息。 若要检查更新，还可以单击“扫描”。 记下运行的软件版本。 
+3. 如果有可用的软件更新，会显示一条消息。 若要检查更新，还可以单击“扫描”。  记下运行的软件版本。 
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate3m1.png)
 
     在扫描开始和成功完成时，系统会发出通知。
  
-4. 在扫描更新后，单击“下载更新”。 在“新的更新”下，查看发行说明。 另请注意，在下载更新之后，需确认安装。 单击“确定”。
+4. 在扫描更新后，单击“下载更新”。  在“新的更新”下，查看发行说明  。 另请注意，在下载更新之后，需确认安装。 单击“确定”。 
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
 
     在上传开始和成功完成时，系统会发出通知。
 
-5. 在“设备更新”下，单击“安装”。
+5. 在“设备更新”  下，单击“安装”。 
 
      ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate11m1.png)
 
-6. 在“新的更新”下，会警告你该更新会造成中断。 因为虚拟阵列是单节点设备，所以设备在更新后会重新启动。 这会中断正在进行的任何 IO。 单击“确定”以安装更新。
+6. 在“新的更新”下，会警告你该更新会造成中断。  因为虚拟阵列是单节点设备，所以设备在更新后会重新启动。 这会中断正在进行的任何 IO。 单击“确定”以安装更新。 
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate12m.png)
 
     当安装作业开始时，系统会发出通知。
 
-7.  在安装作业成功完成后，单击“查看作业”链接。 此操作将转到“安装更新”边栏选项卡。 可以在此处查看关于该作业的详细信息。 
+7.  在安装作业成功完成后，单击“查看作业”  链接。 此操作将转到“安装更新”边栏选项卡  。 可以在此处查看关于该作业的详细信息。 
 
     ![更新设备](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate16m1.png)
 

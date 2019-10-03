@@ -2,20 +2,20 @@
 title: 在 Azure SQL 数据仓库中使用动态 SQL | Microsoft Docs
 description: 有关在开发解决方案时使用 Azure SQL 数据仓库中的动态 SQL 的技巧。
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: query
 ms.date: 04/17/2018
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e1d209828313068e61b4acec3c4f92b7d643e1b6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 4454b1d44d0be61dca8571e86c73e09a9527d1eb
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458409"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479655"
 ---
 # <a name="dynamic-sql-in-sql-data-warehouse"></a>SQL 数据仓库中的动态 SQL
 有关在开发解决方案时使用 Azure SQL 数据仓库中的动态 SQL 的技巧。

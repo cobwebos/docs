@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: f94cec7919edc6cf6ebb6618d38b8591feb1278b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 958f82ef94a08adaf2bbae1ef8ceefae5db289ea
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796080"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780802"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure 中的管理服务概述
 
@@ -28,7 +28,7 @@ Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure �
 
 下列部分简要介绍了不同的管理领域，并提供了用于处理这些领域的主要 Azure 服务的详细内容链接。
 
-## <a name="monitor"></a>监视
+## <a name="monitor"></a>监视器
 
 监视是一种数据收集和分析操作，用于审核资源的性能、运行状况及可用性。 有效的监视策略有助于了解组件的运行情况，并通过通知延长正常运行时间。 请阅读监视概述，了解[监视 Azure 应用程序和资源](../monitoring/monitoring-overview.md)中使用的不同服务。
 
@@ -40,11 +40,11 @@ Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure �
 ## <a name="govern"></a>治理
 
 “治理”提供了机制和流程来保持对 Azure 中的应用程序和资源的控制。 它涉及规划计划和设置战略优先级。
-Azure 中的治理主要是通过两个服务实现的。 [Azure 策略](./policy/overview.md)允许你创建、分配和管理策略定义，以强制执行资源规则。 此功能可使这些资源符合企业标准。 [Cloudyn 提供的 Azure 成本管理](../cost-management/overview.md)可用于跟踪 Azure 资源和其他云提供商的云使用情况和开支。
+Azure 中的治理主要是通过两个服务实现的。 [Azure Policy ](./policy/overview.md)允许你创建、分配和管理策略定义，以强制执行资源规则。 此功能可使这些资源符合企业标准。 使用[Azure 成本管理](../cost-management/overview-cost-mgt.md), 可以跟踪 azure 资源和其他云提供商的云使用情况和支出。
 
 ## <a name="secure"></a>安全
 
-管理资源和数据的安全性。 安全计划涉及评估威胁、收集和分析数据以及应用程序和资源的符合性。 安全监视和威胁分析由 [Azure 安全中心](../security-center/security-center-intro.md)提供，该中心包括跨混合云工作负荷的统一安全管理和高级威胁防护。 请参阅 [Azure 安全性简介](../security/azure-security.md)的全面信息，以及有关保护 Azure 资源的指南。
+管理资源和数据的安全性。 安全计划涉及评估威胁、收集和分析数据以及应用程序和资源的符合性。 安全监视和威胁分析由 [Azure 安全中心](../security-center/security-center-intro.md)提供，该中心包括跨混合云工作负荷的统一安全管理和高级威胁防护。 请参阅 [Azure 安全性简介](../security/fundamentals/overview.md)的全面信息，以及有关保护 Azure 资源的指南。
 
 ## <a name="protect"></a>保护
 

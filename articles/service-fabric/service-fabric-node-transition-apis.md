@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
 ms.openlocfilehash: df0e53736c08fd2c26c467def7328e85f2989f26
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752936"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60718132"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>将启动节点 API 和停止节点 API 替换为节点转换 API
 
@@ -45,7 +45,7 @@ ms.locfileid: "55752936"
 如果调用节点转换 API 后未引发异常，则表示系统已接受异步操作，将执行该操作。  成功的调用并不意味着操作已完成。  若要获取有关该操作的当前状态的信息，请使用为此操作调用节点转换 API 时使用的 guid 来调用节点转换进度 API（在托管环境中为：[GetNodeTransitionProgressAsync()][gntp]）。  节点转换进度 API 返回 NodeTransitionProgress 对象。  此对象的 State 属性指定当前操作状态。  如果状态为“Running”，则表示该操作正在执行。  如果状态为“Completed”，则表示该操作已完成且未出错。  如果状态为“Faulted”，则表示执行该操作时出现问题。  Result 属性的 Exception 属性将指示具体的问题。  请参阅 https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate 了解有关状态属性的详细信息，并查看以下“示例用法”部分了解代码示例。
 
 
-**区分停止的节点和关闭的节点** 如果节点是使用节点转换 API“停止的”，则节点查询（在托管环境中为：[GetNodeListAsync()][nodequery]，在 PowerShell 中为：[Get-ServiceFabricNode][nodequeryps]）的输出将显示此节点的 *IsStopped* 属性值为 true。  请注意，这与 *NodeStatus* 属性的值不同，后者显示 *Down*。  如果 *NodeStatus* 属性的值为 *Down*，但 *IsStopped* 为 false，则表示未使用节点转换 API 停止该节点，而是出于其他原因而使该节点处于*关闭*状态。  如果 *IsStopped* 属性为 true，*NodeStatus* 属性为 *Down*，则表示已使用节点转换 API 停止该节点。
+**区分停止的节点和关闭的节点** 如果节点是使用节点转换 API“停止的”  ，则节点查询（在托管环境中为：[GetNodeListAsync()][nodequery]，在 PowerShell 中为：[Get-ServiceFabricNode][nodequeryps]）的输出将显示此节点的 *IsStopped* 属性值为 true。  请注意，这与 *NodeStatus* 属性的值不同，后者显示 *Down*。  如果 *NodeStatus* 属性的值为 *Down*，但 *IsStopped* 为 false，则表示未使用节点转换 API 停止该节点，而是出于其他原因而使该节点处于*关闭*状态。  如果 *IsStopped* 属性为 true，*NodeStatus* 属性为 *Down*，则表示已使用节点转换 API 停止该节点。
 
 使用节点转换 API 启动*停止的*节点可让它重新成为群集的正常成员。  节点查询 API 的输出会显示 *IsStopped* 为 false，*NodeStatus* 为除 Down 以外的某个值（例如 Up）。
 
@@ -53,10 +53,10 @@ ms.locfileid: "55752936"
 **有限持续时间**使用节点转换 API 停止某个节点时，必须使用 *stopNodeDurationInSeconds* 参数，表示将该节点保持*停止*状态的秒数。  此值必须在允许的范围内，最小为 600，最大为 14400。  经过这段时间后，该节点将自行重新启动，自动进入 Up（启动）状态。  有关用法示例，请参阅下面的“示例 1”。
 
 > [!WARNING]
-> 避免将节点转换 API 与停止节点 API 和启动节点 API 混合使用。  建议只使用节点转换 API。  > 如果已使用停止节点 API 停止某个节点，应先使用启动节点 API 将它启动，> 再使用节点转换 API。
+> 避免将节点转换 API 与停止节点 API 和启动节点 API 混合使用。  建议只使用节点转换 API。  > 如果已使用停止节点 API 停止某个节点，应先使用启动节点 API 将它启动，> 然后再使用节点转换 API。
 
 > [!WARNING]
-> 不能同时针对同一个节点执行多次节点转换 API 调用。  否则，节点转换 API 将    > 引发 FabricException 并返回 ErrorCode 属性值 NodeTransitionInProgress。  在特定的节点上启动  > 节点转换后，应等到该操作进入终止状态（Completed、Faulted 或 ForceCancelled），然后在同一节点上启动  > 新的转换。  允许同时针对不同的节点执行节点转换调用。
+> 不能同时针对同一个节点执行多次节点转换 API 调用。  否则，节点转换 API 将    > 引发 FabricException 并返回 ErrorCode 属性值 NodeTransitionInProgress。  在特定的节点上启动  > 节点转换后，应等到该操作进入终止状态（Completed、Faulted 或 ForceCancelled），> 然后在同一节点上启动新的转换。  允许同时针对不同的节点执行节点转换调用。
 
 
 #### <a name="sample-usage"></a>示例用法
@@ -207,7 +207,7 @@ ms.locfileid: "55752936"
         }
 ```
 
-**示例 3** - 以下示例显示错误的用法。  这种用法之所以不正确，是因为提供的 *stopDurationInSeconds* 超出了允许的范围。  由于 StartNodeTransitionAsync() 会失败并返回严重错误，因此该操作未被接受。不应调用进度 API。  此示例使用第一个示例中的某些帮助器方法。
+**示例 3** - 以下示例显示错误的用法。  这种用法之所以不正确，是因为提供的 *stopDurationInSeconds* 超出了允许的范围。  由于 StartNodeTransitionAsync() 将会失败并返回严重错误，因此该操作未被接受。不应调用进度 API。  此示例使用第一个示例中的某些帮助器方法。
 
 ```csharp
         static async Task StopNodeWithOutOfRangeDurationAsync(FabricClient fc, string nodeName)

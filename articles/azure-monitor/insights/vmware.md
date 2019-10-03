@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.openlocfilehash: eac6a27c3bcf64462a9f3d9a57da6df736f30c78
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883269"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61386023"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视 （已弃用） 解决方案
 
@@ -47,10 +47,10 @@ vSphere ESXi 主机 5.5、6.0 和 6.5
    ![系统日志流](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>配置系统日志收集
-1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.0 及更高版本上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 转到“ESXi 主机配置” > “软件” > “高级设置” > “Syslog”。
+1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.0 及更高版本上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 转到“ESXi 主机配置”   > “软件”   > “高级设置”   > “Syslog”  。
    ![vsphereconfig](./media/vmware/vsphere1.png)  
-1. 在“Syslog.global.logHost”字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
-1. 为 syslog 打开 ESXi 主机防火墙。 “ESXi 主机配置” > “软件” > “安全配置文件” > “防火墙”并打开“属性”。  
+1. 在“Syslog.global.logHost”  字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
+1. 为 syslog 打开 ESXi 主机防火墙。 “ESXi 主机配置”   > “软件”   > “安全配置文件”   > “防火墙”  并打开“属性”  。  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
@@ -115,7 +115,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 ![磁贴](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>导航仪表板视图
-在“VMware”仪表板视图中，边栏选项卡的组织方式如下：
+在“VMware”  仪表板视图中，边栏选项卡的组织方式如下：
 
 * 失败状态计数
 * 按事件计数排名靠前的主机
@@ -138,7 +138,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 可以通过单击 ESXi 主机或事件类型进一步了解相关信息。
 
-单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“ProcessName”。 会缩小信息范围。
+单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“ProcessName”  。 会缩小信息范围。
 
 ![钻取](./media/vmware/eventhostdrilldown.png)
 
@@ -158,7 +158,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 
 #### <a name="save-queries"></a>保存查询
-保存的日志查询是在 Azure Monitor 中的标准功能，可帮助你记录你觉得有用的任何查询。 创建有用的查询后，单击“收藏夹”将其保存下来。 已保存的查询可在以后从[我的仪表板](../learn/tutorial-logs-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
+保存的日志查询是在 Azure Monitor 中的标准功能，可帮助你记录你觉得有用的任何查询。 创建有用的查询后，单击“收藏夹”  将其保存下来。 已保存的查询可在以后从[我的仪表板](../learn/tutorial-logs-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 

@@ -4,7 +4,7 @@ description: 了解如何排查无法在 Azure 中删除虚拟网络的问题。
 services: virtual-network
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4bd143b37e4403d039108b4349b27604b6503e0e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 2d427a8b40fcb537801ce76aae6bc32fcda3a307
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415213"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056926"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>故障排除：无法在 Azure 中删除虚拟网络
 
@@ -66,7 +66,7 @@ ms.locfileid: "50415213"
 
 ![检查已连接的设备](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
-若要禁用服务，请参阅[使用 Azure 门户禁用 Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-disable-aadds.md)。
+若要禁用服务，请参阅[使用 Azure 门户禁用 Azure Active Directory 域服务](../active-directory-domain-services/delete-aadds.md)。
 
 ### <a name="check-whether-the-virtual-network-is-connected-to-other-resource"></a>检查虚拟网络是否已连接到其他资源
 
@@ -93,4 +93,4 @@ ms.locfileid: "50415213"
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 虚拟网络](virtual-networks-overview.md)
-- [Azure 虚拟网络常见问题 (FAQ)](virtual-networks-faq.md)
+- [Azure 虚拟网络常见问题解答 (FAQ)](virtual-networks-faq.md)

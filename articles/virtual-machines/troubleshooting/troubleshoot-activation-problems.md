@@ -4,22 +4,21 @@ description: 介绍了用于修复 Azure 中的 Windows 虚拟机激活问题的
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 18cd5a86cc2f52567c5f320719d1a9f21b377ed4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f3ad58c4094e9f39bcf9782b7b98e351e9d7809b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791705"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058135"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -51,11 +50,9 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
 >
 >如果使用的是 ExpressRoute 且已发布默认路由，请参阅 [Azure VM 可能无法通过 ExpressRoute 激活](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx)。
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>第 1 步：配置相应的 KMS 客户端安装密钥（对于 Windows Server 2016 和 Windows Server 2012 R2）
+### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>步骤 1 配置相应的 KMS 客户端安装密钥
 
-对于通过 Windows Server 2016 或 Windows Server 2012 R2 自定义映像创建的 VM，必须为 VM 配置相应的 KMS 客户端安装密钥。
-
-这一步不适用于 Windows 2012 或 Windows 2008 R2。 因为使用的自动虚拟机激活 (AVMA) 功能仅受 Windows Server 2016 和 Windows Server 2012 R2 支持。
+对于通过自定义映像创建的 VM，必须为 VM 配置相应的 KMS 客户端安装密钥。
 
 1. 在提升的命令提示符处，运行 slmgr.vbs /dlv。 检查输出中的 Description 值，并确定是通过零售 (RETAIL channel) 还是通过卷 (VOLUME_KMSCLIENT) 许可证介质创建的：
   
@@ -86,7 +83,6 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
 
 3. 请确保 VM 已配置为使用正确的 Azure KMS 服务器。 为此，请运行以下命令：
   
-
     ```powershell
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
@@ -95,41 +91,38 @@ Azure 使用不同的终结点进行 KMS 激活，具体取决于 VM 所在的�
 
 4. 使用 Psping 验证是否已连接到 KMS 服务器。 切换到将 Pstools.zip 下载内容提取到的文件夹，再运行以下命令：
   
-
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-
-  
    确保输出的倒数第二行显示以下内容：Sent = 4, Received = 4, Lost = 0 (0% loss)。
 
    如果“Lost”大于 0（零），表示 VM 未连接到 KMS 服务器。 在这种情况下，如果 VM 位于虚拟网络中，并且指定了自定义 DNS 服务器，必须确保此 DNS 服务器能够解析 kms.core.windows.net。 或者，将 DNS 服务器更改为可以解析 kms.core.windows.net。
 
    请注意，如果从虚拟网络中删除所有 DNS 服务器，VM 将使用 Azure 的内部 DNS 服务。 此服务可以解析 kms.core.windows.net。
   
-此外，还要验证是否未以阻止激活尝试的方式配置来宾防火墙。
+    另外，请确保到具有 1688 端口的 KMS 终结点的出站网络流量未被 VM 上的防火墙阻止。
 
-1. 验证成功连接到 kms.core.windows.net 后，在提升的 Windows PowerShell 提示符处运行以下命令。 此命令可多次尝试激活。
+5. 验证成功连接到 kms.core.windows.net 后，在提升的 Windows PowerShell 提示符处运行以下命令。 此命令可多次尝试激活。
 
     ```powershell
-    1..12 | ForEach-Object { Invoke-Expression “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato” ; start-sleep 5 }
+    1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }
     ```
 
-如果激活成功，将返回如下信息：
+    如果激活成功，将返回如下信息：
+    
+    正在激活 Windows(R)，已成功激活服务器数据中心版本(12345678-1234-1234-1234-12345678) … 产品。
 
-**正在激活 Windows(R)，已成功激活服务器数据中心版本(12345678-1234-1234-1234-12345678) … 产品。**
-
-## <a name="faq"></a>常见问题解答 
+## <a name="faq"></a>常见问题 
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>我从 Azure 市场创建了 Windows Server 2016。 是否需要配置用于激活 Windows Server 2016 的 KMS 密钥？ 
 
  
-不。 Azure 市场中的映像已配置了相应的 KMS 客户端安装密钥。 
+否。 Azure 市场中的映像已配置了相应的 KMS 客户端安装密钥。 
 
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>无论 VM 是否使用 Azure 混合使用权益 (HUB)，Windows 激活的工作方式是否都一样？ 
 
  
-是的。 
+是。 
  
 
 ### <a name="what-happens-if-windows-activation-period-expires"></a>如果 Windows 激活已过期，会出现什么情况？ 

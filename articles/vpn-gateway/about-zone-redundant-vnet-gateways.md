@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0ba818ef3c24d0e88e662adf87b22cc938fe5fab
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: d076e2b0057f0ba666fa47ffd0b3d7d1fcc14631
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697794"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725588"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>关于 Azure 可用性区域中的区域冗余虚拟网络网关
 
@@ -86,7 +86,7 @@ ms.locfileid: "55697794"
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>我可以在哪些区域中使用新 SKU？
 
-新 SKU 可在具有 Azure 可用性区域的 Azure 区域（“美国中部”、“法国中部”、“北欧”、“西欧”和“美国西部 2”区域）中使用。 今后，我们将在其他 Azure 公共区域推出区域冗余网关。
+Azure 区域中提供了新的 Sku, 其中包含 Azure 可用性区域美国、法国中部、北欧、西欧和美国西部2区域、美国东部、美国东部2、东南亚、日本东部、英国南部。 今后，我们将在其他 Azure 公共区域推出区域冗余网关。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>我能否将现有虚拟网络网关更改/迁移/升级为区域冗余网关或区域网关？
 

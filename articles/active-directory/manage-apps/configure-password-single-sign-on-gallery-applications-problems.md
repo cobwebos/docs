@@ -1,10 +1,10 @@
 ---
-title: 配置 Azure AD 库应用程序密码单一登录时遇到的问题 | Microsoft Docs
+title: 为 Azure AD 库应用配置密码单一登录时遇到问题 |Microsoft Docs
 description: 了解在为 Azure AD 应用程序库中所列应用程序配置密码单一登录时人们面对的常见问题
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6c313cc654461ea22c126fede317ed230408b82
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bc75346b1093cc41a44edad1376c5f10dfec2409
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079190"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381126"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序密码单一登录时遇到的问题
 

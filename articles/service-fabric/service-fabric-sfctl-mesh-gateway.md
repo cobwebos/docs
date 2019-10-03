@@ -8,28 +8,27 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 27cfe380e5988f17ca79c430cde7defc7f7bc440
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b8acb23b274e6062ae3c50ab80220ab93297037e
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661354"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036424"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh gateway
 获取和删除网格网关资源。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
-| delete | 删除网关资源。 |
-| list | 列出所有网关资源。 |
+| 删除 | 删除网关资源。 |
+| 列表 | 列出所有网关资源。 |
 | show | 获取具有给定名称的网关资源。 |
 
 ## <a name="sfctl-mesh-gateway-delete"></a>sfctl mesh gateway delete

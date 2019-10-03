@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 门户中查看计费帐户 |Microsoft Docs
+title: 在 Azure 门户中查看计费帐户 | Microsoft Docs
 description: 了解如何在 Azure 门户中查看计费帐户。
 services: ''
 documentationcenter: ''
@@ -12,43 +12,80 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/11/2018
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 31e4eb1d6493c8de99ac48e09dfb2b8b6481b70a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 6df787dbc06f7ee56ba9a26c8382396bf3b6e74a
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854273"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719604"
 ---
-# <a name="view-your-billing-accounts-in-azure-portal"></a>在 Azure 门户中查看计费帐户  
+# <a name="view-billing-accounts-in-azure-portal"></a>在 Azure 门户中查看计费帐户  
 
-为每个协议，则使用签署 Microsoft 使用 Azure 创建计费帐户。 使用您的计费帐户来管理发票和付款方法，并跟踪的 Azure 服务费用。 可以具有多个计费帐户的访问权限。 例如，你可能已注册 Azure 为您个人的项目。 你也可以通过组织的企业协议或 Microsoft 客户协议的访问权限。 对于每种方案，必须具有单独的计费帐户。
+当你注册使用 Azure 时，系统将为你创建计费帐户。 可以使用计费帐户管理发票、付款并跟踪成本。 可以访问多个计费帐户。 例如，可以为个人项目注册 Azure。 也可通过组织的企业协议或 Microsoft 客户协议进行访问。 每个这样的方案都会有单独的计费帐户。
 
 Azure 门户当前支持以下类型的计费帐户：
 
-- **Microsoft Online Services 计划**:当你注册 Azure 通过 Azure 网站创建 Microsoft Online Services 计划的计费帐户。 例如，当你注册[Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)， [Azure 现用现付产品/服务](https://azure.microsoft.com/offers/ms-azr-0003p/)或是[Visual studio 订阅者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)。
+- **Microsoft Online Services 计划**：Microsoft Online Services 计划的计费帐户是通过 Azure 网站注册 Azure 时创建的。 例如，当你注册 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)、[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)或作为 [Visual Studio 订阅者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)时。
 
-- **企业协议**：你的组织签署企业协议使用 Azure 时创建了企业协议的计费帐户。 企业协议计费帐户中的管理员使用部门和帐户计费作用域，以管理组织为其组织的帐单。
+- **企业协议**：当组织签署使用 Azure 的[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 时，将为企业协议创建一个计费帐户。
 
-- **Microsoft 客户协议**:当你的组织中注销 Microsoft 客户协议使用 Azure 时创建的 Microsoft 客户协议的计费帐户。 Microsoft 客户协议的计费帐户中的管理员使用计费的配置文件和发票计费作用域，以管理组织为其组织的帐单的部分。 有关详细信息，请参阅[开始使用您的计费帐户的 Microsoft 客户协议](billing-mca-overview.md)。
+- **Microsoft 客户协议**：当组织与 Microsoft 代表一起签署 Microsoft 客户协议时，将会为 Microsoft 客户协议创建一个计费帐户。 特定区域的某些客户通过 Azure 网站注册[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)或者升级其 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)，这些客户可能也有一个适用于 Microsoft 客户协议的计费帐户。 有关详细信息，请参阅 [Microsoft 客户协议的计费帐户入门](billing-mca-overview.md)。
 
-## <a name="change-billing-account-view-in-the-azure-portal"></a>更改计费在 Azure 门户中的帐户视图
+<!--Todo Add section to identify the type of accounts -->
 
-作用域是用户用于查看和管理计费的计费帐户中的节点。 例如，Microsoft 在线服务计划的计费帐户具有仅作用域的计费帐户，为企业协议计费帐户有计费帐户、 部门和帐户作用域。 如果你有权访问计费的多个作用域，默认情况下，作用域之一将显示在 Azure 成本管理 + 计费页面。 可以按照以下说明更改作用域：
+## <a name="scopes-for-billing-accounts"></a>计费帐户的范围
+范围是计费帐户中的一个节点，用户使用该节点查看和管理计费。 用户可以在其中管理计费数据、付款、发票，以及执行常规的帐户管理。 
+
+### <a name="microsoft-online-services-program"></a>Microsoft Online Services 计划
+
+|范围  |定义  |
+|---------|---------|
+|计费帐户     | 表示一个或多个 Azure 订阅的单个所有者（帐户管理员）。 帐户管理员有权执行各种计费任务，例如创建订阅、查看发票或更改订阅的账单。  |
+|Subscription     |  表示 Azure 资源的分组。 发票在此范围生成。 它自带付款方式，用于发票付款。|
+
+
+### <a name="enterprise-agreement"></a>企业协议
+
+|范围  |定义  |
+|---------|---------|
+|计费帐户    | 表示企业协议注册。 发票在此范围生成。 它通过部门和注册帐户来构建。  |
+|部门     |  对注册帐户进行的可选分组。      |
+|注册帐户     |  表示单个帐户所有者。 Azure 订阅在此范围创建。  |
+
+
+### <a name="microsoft-customer-agreement"></a>Microsoft 客户协议
+
+|范围  |任务  |
+|---------|---------|
+|计费帐户     |   表示针对多个 Microsoft 产品和服务的客户协议。 它通过计费对象信息和发票科目构建。   |
+|计费配置文件     |  表示发票及其付款方式。 发票在此范围生成。 它可以有多个发票科目。      |
+|发票科目     |   表示发票中的一组成本。 订阅和其他购买关联到此范围。    |
+
+
+## <a name="switch-billing-scope-in-the-azure-portal"></a>在 Azure 门户中切换计费范围
+
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“成本管理 + 计费”中进行搜索。
+2. 搜索“成本管理 + 计费”。 
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-view-all-accounts/billing-search-cost-management-billing.png)
 
-3. 选择**计费的所有作用域**从左侧内容。
+3. 在左侧选择“所有计费范围”。 
 
-   ![显示所有计费作用域的屏幕截图](./media/billing-view-all-accounts/billing-list-of-accounts.png)
+   ![显示所有计费范围的屏幕截图](./media/billing-view-all-accounts/billing-list-of-accounts.png)
 
-4. 选择要查看详细信息的作用域。
+   ** 如果你只能访问一个范围，则看不到“所有计费范围”选项。 
+
+4. 选择要查看详细信息的范围。
+
+
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+
+## <a name="next-steps"></a>后续步骤
+- 了解如何开始[分析成本](../cost-management/quick-acm-cost-analysis.md)。

@@ -4,21 +4,20 @@ description: 了解如何对 Windows 重启循环进行故障排除 |Microsoft D
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 032bc1b9c4b1b0e3bf8040ed52bf4db65ba7b6c7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8a1d64ac8e65fd52730ee1750c0b0b1949b3512
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085586"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088472"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM 上的 Windows 重启循环
 本文介绍在 Microsoft Azure 中的 Windows 虚拟机 (VM) 上可能遇到的重启循环。
@@ -102,6 +101,8 @@ ms.locfileid: "58085586"
 将 VM 还原到上一个已知的正确配置：按照[如何使用上一个已知的正确配置启动 Azure Windows VM](https://support.microsoft.com/help/4016731/) 中的步骤执行操作。
 
 ### <a name="solution-for-cause-3"></a>原因 3 的解决方案
+>[!NOTE]
+>以下过程应该仅作为最后的手段。 尽管从 regback 还原可以还原对计算机的访问权限，但 OS 并不稳定，因为注册表中将出现数据丢失（在配置单元和当天的时间戳之间）。 需要构建新的 VM 并制订数据迁移计划。
 
 1. 将磁盘附加到故障排除 VM 后，请确保磁盘在磁盘管理控制台中标记为“联机”。
 
@@ -113,5 +114,4 @@ ms.locfileid: "58085586"
 
 5. [从 OS 磁盘创建新的 VM](../windows/create-vm-specialized.md)。
 
->[!NOTE]
->以下过程应该仅作为最后的手段。 尽管从 regback 还原可以还原对计算机的访问权限，但 OS 并不稳定，因为注册表中将出现数据丢失（在配置单元和当天的时间戳之间）。 需要构建新的 VM 并制订数据迁移计划。
+

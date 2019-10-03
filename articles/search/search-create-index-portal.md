@@ -1,21 +1,19 @@
 ---
 title: 在 Azure 门户中创建 Azure 搜索索引 - Azure 搜索
 description: 了解如何使用内置门户索引设计器为 Azure 搜索创建索引。
-manager: cgronlun
+manager: nitinme
 author: heidisteen
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 02/16/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 6a2bac71c37cc750eb24e3492ecdcdf0b2333cce
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: fec81cd9660348d492b1dabd24ac689f2b06e880
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338829"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638807"
 ---
 # <a name="create-an-azure-search-index-in-the-portal"></a>在门户中创建 Azure 搜索索引
 
@@ -65,7 +63,7 @@ Azure 搜索在门户中包含一个内置索引设计器，可用于原型或�
 
 字段属性决定了字段的使用方式，例如，是否用于全文搜索、分面导航和排序等操作中。 下表介绍了每个属性。
 
-|属性|说明|  
+|特性|描述|  
 |---------------|-----------------|  
 |**可搜索**|可全文搜索，在编制索引期间遵从语法分析，例如分词。 如果将某个可搜索字段设置为“sunny day”之类的值，在内部它将拆分为单独的标记“sunny”和“day”。 有关详细信息，请参阅[全文搜索工作原理](search-lucene-query-architecture.md)。|  
 |**可筛选**|在 **$filter** 查询中引用。 `Edm.String` 或 `Collection(Edm.String)` 类型的可筛选字段不进行分词，因此，比较仅用于查找完全匹配项。 例如，如果将此类字段 f 设置为“sunny day”，则 `$filter=f eq 'sunny'` 将找不到任何匹配项，但 `$filter=f eq 'sunny day'` 可找到。 |  
@@ -80,7 +78,7 @@ Azure 搜索在门户中包含一个内置索引设计器，可用于原型或�
 
 另外，也可以[更深入地了解索引](search-what-is-an-index.md)。 除了字段集合之外，索引还指定分析器、建议器、评分配置文件和 CORS 设置。 门户提供了用于定义以下最常用元素的选项卡式页面：字段、分析器和建议器。 若要创建或修改其他元素，可以使用 REST API 或 .NET SDK。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
  [全文搜索工作原理](search-lucene-query-architecture.md)  
  [搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/) [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)

@@ -4,7 +4,7 @@ description: 排查在 Azure 中重启现有虚拟机或重设其大小时遇到
 services: virtual-machines
 documentationcenter: ''
 author: Deland-Han
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 0756b52d-4f5a-4503-ae45-c00a6a2edcdf
@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74ba9b8d0ce86a5c663eb9fbb6190e2bcf4513d7
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: cd05f9f7db0db22759c5e19dbfb59cc377e63f4d
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47411334"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155471"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>排查在 Azure 中重新启动现有 Windows VM 或调整其大小时遇到的部署问题
 尝试启动已停止的 Azure 虚拟机 (VM)，或调整现有 Azure VM 的大小时，经常遇到的错误是分配失败。 当群集或区域没有可用的资源或无法支持所请求的 VM 大小时，将发生此错误。
@@ -38,7 +38,7 @@ ms.locfileid: "47411334"
 ### <a name="cause"></a>原因
 必须在托管云服务的原始群集上尝试发出启动已停止 VM 的请求。 但是，群集没有足够的空间可完成该请求。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 * 停止可用性集中的所有 VM 并重新启动每个 VM。
   
   1. 单击“资源组” > *资源组* > “资源” > *可用性集* > “虚拟机” > *虚拟机* > “停止”。
@@ -51,7 +51,7 @@ ms.locfileid: "47411334"
 ### <a name="cause"></a>原因
 必须在托管云服务的原始群集上尝试发出调整 VM 大小的请求。 但是，群集不支持请求的 VM 大小。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 * 以更小的 VM 大小重试请求。
 * 如果无法更改请求的 VM 大小：
   

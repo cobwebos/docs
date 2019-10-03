@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: fa19ea0c7ebeea0170822db0dae298f84e958983
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: d539bd569eee613eb43947e5fd0e3b0614ca5d79
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006125"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858616"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
@@ -40,9 +39,9 @@ SQL 数据库托管实例放置在专用于托管实例的 Azure 虚拟网络和
 
 由最终用户或应用程序启动的某些 SQL Server 操作可能需要使用托管实例来与平台交互。 一种情况是创建托管实例数据库。 此资源是通过 Azure 门户、PowerShell、Azure CLI 和 REST API 公开的。
 
-托管的实例依赖于 Azure 服务，例如备份的 Azure 存储、 遥测数据的 Azure 事件中心、 Azure Active Directory 进行身份验证、 Azure 密钥保管库的透明数据加密 (TDE) 和几个 Azure 平台提供的服务安全性和可支持性的功能。 托管的实例将连接到这些服务。
+托管实例依赖于使用 Azure 存储等 Azure 服务进行备份、使用 Azure 事件中心传送遥测数据、使用 Azure Active Directory 进行身份验证、使用 Azure Key Vault 进行透明数据加密 (TDE)，并使用多个 Azure 平台服务来提供安全与支持功能。 托管实例与这些服务建立连接。
 
-所有通信进行加密和签名使用证书。 若要检查的通信方，管理可信度实例不断验证这些证书通过证书吊销列表。 如果证书被吊销，托管的实例将关闭连接后，若要保护的数据。
+所有通信都使用证书进行加密和签名。 为了检查通信方的可信度，托管实例会不断地通过证书吊销列表来验证这些证书。 如果证书被吊销，则托管实例会关闭连接以保护数据。
 
 ## <a name="high-level-connectivity-architecture"></a>高级连接体系结构
 
@@ -50,44 +49,44 @@ SQL 数据库托管实例放置在专用于托管实例的 Azure 虚拟网络和
 
 一个虚拟群集可以承载多个托管实例。 当客户更改子网中预配的实例数时，群集可根据需要自动扩展或收缩。
 
-客户应用程序可以连接到托管实例和可以查询和更新虚拟网络对等互连虚拟网络中的数据库或通过 VPN 或 Azure ExpressRoute 连接的网络。 此网络必须使用一个终结点和一个专用 IP 地址。  
+客户应用程序可以连接到托管实例，并可以在虚拟网络、对等互连的虚拟网络或者通过 VPN 或 Azure ExpressRoute 连接的网络中查询和更新数据库。 此网络必须使用一个终结点和一个专用 IP 地址。  
 
 ![连接体系结构示意图](./media/managed-instance-connectivity-architecture/connectivityarch002.png)
 
-外部虚拟网络中运行 Microsoft 管理和部署服务。 通过具有公共 IP 地址的终结点连接的托管的实例和 Microsoft 服务。 当托管实例建立出站连接时，在接收端，网络地址转换 (NAT) 会使该连接看上去来自此公共 IP 地址。
+Microsoft 管理和部署服务在虚拟网络外部运行。 托管实例和 Microsoft 服务通过具有公共 IP 地址的终结点进行连接。 当托管实例建立出站连接时，在接收端，网络地址转换 (NAT) 会使该连接看上去来自此公共 IP 地址。
 
 管理流量通过客户的虚拟网络传送。 这意味着，虚拟网络基础结构的要素可能会使实例发生故障并变得不可用，从而对管理流量造成不利影响。
 
 > [!IMPORTANT]
-> 若要改善客户体验和服务可用性，Microsoft 将网络意向策略应用对 Azure 虚拟网络基础结构元素中。 该策略可影响托管实例的工作方式。 此平台机制以透明方式向用户传达网络要求。 该策略的主要目的是防止网络配置不当，并确保托管实例正常运行。 删除某个托管实例时，会一并删除网络意向策略。
+> 为了改善客户体验和服务可用性, Microsoft 在 Azure 虚拟网络基础结构元素上应用了网络意向策略。 该策略可影响托管实例的工作方式。 此平台机制以透明方式向用户传达网络要求。 该策略的主要目的是防止网络配置不当，并确保托管实例正常运行。 删除某个托管实例时，会一并删除网络意向策略。
 
 ## <a name="virtual-cluster-connectivity-architecture"></a>虚拟群集连接体系结构
 
-让我们考虑的托管实例的连接体系结构更深入的了解。 以下关系图演示了虚拟群集的概念布局。
+让我们更深入地探讨托管实例的连接体系结构。 以下关系图演示了虚拟群集的概念布局。
 
 ![虚拟群集的连接体系结构](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-客户端使用 `<mi_name>.<dns_zone>.database.windows.net` 格式的主机名连接到托管实例。 此主机名将解析为专用 IP 地址，不过，它将在公共域名系统 (DNS) 区域中注册，且可公开解析。 `zone-id` 是创建群集时自动生成的。 如果新建的群集托管辅助托管实例，它会将其区域 ID 与主群集共享。 有关详细信息，请参阅[使用自动故障转移组来启用多个数据库的透明和协调故障转移](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)。
+客户端使用 `<mi_name>.<dns_zone>.database.windows.net` 格式的主机名连接到托管实例。 此主机名将解析为专用 IP 地址，不过，它将在公共域名系统 (DNS) 区域中注册，且可公开解析。 `zone-id` 是创建群集时自动生成的。 如果新建的群集托管辅助托管实例，它会将其区域 ID 与主群集共享。 有关详细信息, 请参阅[使用自动故障转移组启用多个数据库的透明和协调故障转移](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)。
 
-此专用 IP 地址属于托管的实例的内部负载均衡器。 负载均衡器将流量定向到托管的实例的网关。 由于多个托管的实例可以运行在同一群集中，网关将使用的托管的实例的主机名来将流量重定向到正确的 SQL 引擎服务。
+此专用 IP 地址属于托管实例的内部负载均衡器。 该负载均衡器将流量定向到托管实例网关。 由于多个托管实例可能在同一群集中运行，因此网关使用托管实例主机名来将流量重新定向到正确的 SQL 引擎服务。
 
 管理和部署服务使用映射到外部负载均衡器的[管理终结点](#management-endpoint)连接到托管实例。 仅当流量是在一组专用于托管实例管理组件的预定义端口上收到的时，才将流量路由到节点。 节点上的内置防火墙设置为只允许来自 Microsoft IP 范围的流量。 证书将对管理组件与管理平面之间的所有通信进行相互身份验证。
 
 ## <a name="management-endpoint"></a>管理终结点
 
-Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于该实例的虚拟群集内部。 管理终结点在网络级别受到内置防火墙的保护。 在应用程序级别，管理终结点受到证书相互验证的保护。 若要查找终结点的 IP 地址，请参阅[确定管理终结点的 IP 地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
+Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例的虚拟群集内部。 管理终结点在网络级别受到内置防火墙的保护。 在应用程序级别，管理终结点受到证书相互验证的保护。 若要查找终结点的 IP 地址，请参阅[确定管理终结点的 IP 地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
 
 在托管实例中启动连接时（提供备份和审核日志），流量似乎是从管理终结点的公共 IP 地址启动的。 可以通过将防火墙规则设置为只允许托管实例的 IP 地址，来限制从托管实例访问公共服务。 有关详细信息，请参阅[验证托管实例的内置防火墙](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)。
 
 > [!NOTE]
-> 将转到托管的实例的区域内的 Azure 服务的流量进行了优化，并为该原因不到托管实例管理终结点公共 IP 地址的 nat 型。 因此如果您需要使用基于 IP 的防火墙规则，最常进行存储，服务需要在不同的区域从托管实例。
+> 发往托管实例所在区域中的 Azure 服务的流量经过优化，因此，不会通过 NAT 转换为托管实例管理终结点公共 IP 地址。 因此，如果需要使用基于 IP 的防火墙规则（往往用于存储），服务需要与托管实例位于不同的区域中。
 
 ## <a name="network-requirements"></a>网络要求
 
 在虚拟网络中的专用子网内部署托管实例。 该子网必须具有以下特征：
 
-- **专用子网：** 托管实例的子网不能包含其他任何关联的云服务，且不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加资源。
-- **网络安全组 (NSG)**：与虚拟网络关联的 NSG 必须在其他任何规则的前面定义[入站安全规则](#mandatory-inbound-security-rules)和[出站安全规则](#mandatory-outbound-security-rules)。 可以使用 NSG 来控制对该托管的实例的数据终结点访问端口 1433年上筛选流量和端口 11000-11999 时托管的实例配置为将连接重定向。
+- **专用子网：** 托管实例的子网不能包含其他任何关联的云服务，且不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加其他类型的资源。
+- **网络安全组 (NSG)** ：与虚拟网络关联的 NSG 必须在其他任何规则的前面定义[入站安全规则](#mandatory-inbound-security-rules)和[出站安全规则](#mandatory-outbound-security-rules)。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。
 - **用户定义的路由 (UDR) 表：** 与虚拟网络关联的 UDR 表必须包含特定的[条目](#user-defined-routes)。
 - **没有服务终结点：** 不应将任何服务终结点与托管实例的子网相关联。 创建虚拟网络时，请务必禁用“服务终结点”选项。
 - **足够的 IP 地址：** 托管实例子网必须至少有 16 个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](sql-database-managed-instance-configure-vnet-subnet.md)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
@@ -97,21 +96,21 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
-| Name       |端口                        |协议|源           |目标|操作|
+| 姓名       |Port                        |Protocol|Source           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |允许 |
-|mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |允许 |
-|health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |允许 |
+|管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |Allow |
+|mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |Allow |
+|health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |Allow |
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
 
-| Name       |端口          |协议|源           |目标|操作|
+| 姓名       |Port          |Protocol|Source           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
-|管理  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |允许 |
-|mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |允许 |
+|管理  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |Allow |
+|mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |Allow |
 
 > [!IMPORTANT]
-> 确保端口 9000、9003、1438、1440、1452 只有一个入站规则，端口 80、443、12000 只有一个出站规则。 托管实例预配通过 Azure 资源管理器部署将失败，如果为每个端口单独配置入站和出站规则。 如果这些端口在单独的规则中，则部署将会失败并出现错误代码 `VnetSubnetConflictWithIntendedPolicy`
+> 确保端口 9000、9003、1438、1440、1452 只有一个入站规则，端口 80、443、12000 只有一个出站规则。 如果单独为每个端口配置入站和出站规则，则无法通过 Azure 资源管理器部署预配托管实例。 如果这些端口在单独的规则中，则部署将会失败并出现错误代码 `VnetSubnetConflictWithIntendedPolicy`
 
 \* MI SUBNET 是指子网的 IP 地址范围，采用 10.x.x.x/y 格式。 可以在 Azure 门户上的子网属性中找到此信息。
 
@@ -122,7 +121,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 
 ### <a name="user-defined-routes"></a>用户定义的路由
 
-|Name|地址前缀|下一跃点|
+|姓名|地址前缀|下一跃点|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
@@ -228,7 +227,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 
 此外，还可以将条目添加到路由表，以通过虚拟网络网关或虚拟网络设备 (NVA) 路由发往本地专用 IP 范围的流量。
 
-如果虚拟网络中包含的自定义 DNS，自定义 DNS 服务器必须能够解析中的主机名称\*。 core.windows.net 组合在一起的区域。 使用其他功能等 Azure AD 身份验证可能需要解决额外的 Fqdn。 有关详细信息，请参阅[设置自定义 DNS](sql-database-managed-instance-custom-dns.md)。
+如果虚拟网络包括自定义 DNS, 则自定义 DNS 服务器必须能够解析公共 dns 记录。 使用其他功能（例如 Azure AD 身份验证）可能需要解析其他 FQDN。 有关详细信息，请参阅[设置自定义 DNS](sql-database-managed-instance-custom-dns.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -239,4 +238,4 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
   - 通过 [Azure 门户](sql-database-managed-instance-get-started.md)。
   - 使用 [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)。
   - 使用 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)。
-  - 使用 [Azure 资源管理器模板（使用包含 SSMS 的 JumpBox）](https://portal.azure.com/)。 
+  - 使用 [Azure 资源管理器模板（使用包含 SSMS 的 JumpBox）](https://azure.microsoft.com/en-us/resources/templates/201-sqlmi-new-vnet-w-jumpbox/)。 

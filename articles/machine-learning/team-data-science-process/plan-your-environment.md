@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0eaa5f24be85eab96f11e0c3915a3f60d79a0551
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8eed4f2425cdbfec7d3addad11ddaba57e5370e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864739"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64704489"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
 
@@ -92,7 +92,7 @@ ms.locfileid: "57864739"
 * 数值
 * 分类
 * 字符串
-* 二进制
+* Binary
 
 ### <a name="how-is-your-data-formatted"></a>数据格式是如何设置的？
 
@@ -150,7 +150,7 @@ ms.locfileid: "57864739"
 * [Microsoft Azure Powershell](/powershell/azure/overview) - 用于管理脚本语言中 Azure 资源的一种脚本语言
 * [Azure 机器学习工作室](../studio/what-is-ml-studio.md)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
-* [RStudio](http://www.rstudio.com)
+* [RStudio](https://www.rstudio.com)
 * [用于 Visual Studio 的 Python 工具](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
 * [Jupyter 笔记本](https://jupyter.org/)

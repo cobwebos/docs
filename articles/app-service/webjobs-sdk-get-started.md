@@ -13,32 +13,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: b824c99a015cfa2c1d1c75e2a1257eff482e8dd6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8f33e36568171ab7b37f536a3c7883b004cb71c0
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087952"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68838041"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
-本文介绍如何使用 Visual Studio 2017 创建 Azure WebJobs SDK 项目、在本地运行它，然后将其部署到 [Azure 应用服务](overview.md)。 创建的项目是使用 WebJobs SDK 版本 3.x 的 .NET Core 控制台应用。 如果你对使用 .NET Framework 的版本 2.x 感兴趣，请参阅[使用 Visual Studio 开发和部署 WebJob - Azure 应用服务](webjobs-dotnet-deploy-vs.md)。
+本文介绍如何使用 Visual Studio 2019 创建 Azure WebJobs SDK 项目、在本地运行它，然后将其部署到 [Azure 应用服务](overview.md)。 WebJobs SDK 的 3.x 版同时支持 .NET Core 和 .NET Framework 控制台应用。 若要详细了解如何使用 WebJobs SDK，请参阅[如何使用 Azure WebJobs SDK 进行事件驱动的后台处理](webjobs-sdk-how-to.md)。
 
-若要详细了解如何使用 WebJobs SDK，请参阅[如何使用 Azure WebJobs SDK 进行事件驱动的后台处理](webjobs-sdk-how-to.md)。
+本文介绍如何将 WebJobs 部署为 .NET Core 控制台应用。 若要将 WebJobs 部署为 .NET Framework 控制台应用，请参阅 [WebJobs 作为 .NET Framework 控制台应用](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps)。 如果你对仅支持 .NET Framework 的 WebJobs SDK 版本 2.x 感兴趣，请参阅[使用 Visual Studio 开发和部署 WebJob - Azure 应用服务](webjobs-dotnet-deploy-vs.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
-* [安装](/visualstudio/install/)包含 **Azure 开发**工作负荷的 Visual Studio 2017。 如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。
+* [安装 Visual Studio 2019](/visualstudio/install/)（包含 **Azure 开发**工作负荷）。 如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。
 
 * 必须有一个 [Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)才能将 WebJobs SDK 项目发布到 Azure。
 
 ## <a name="create-a-project"></a>创建一个项目
 
-1. 在 Visual Studio 中，选择“文件”>“新建”>“项目”。
+1. 在 Visual Studio 中，选择“新建项目”。
 
-2. 选择“.NET Core”>“控制台应用(.NET Core)”。
+2. 选择“控制台应用(.NET Core)”。
 
-3. 将项目命名为 *WebJobsSDKSample*，然后选择“确定”。
+3. 将项目命名为 *WebJobsSDKSample*，然后选择“创建”。
 
    ![“新建项目”对话框](./media/webjobs-sdk-get-started/new-project.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "58087952"
     using Microsoft.Extensions.Hosting;
     ```
 
-1. 将 `Main`方法替换为以下代码：
+1. 将 `Main` 方法替换为以下代码：
 
     ```cs
     static void Main(string[] args)
@@ -195,7 +195,7 @@ ms.locfileid: "58087952"
 
    `QueueTrigger` 特性告知运行时，在名为 `queue` 的 Azure 存储队列中写入新消息时，应调用此函数。 队列消息的内容将提供给 `message` 参数中的方法代码。 在方法的正文中处理触发器数据。 在此示例中，代码只是记录消息。
 
-   `message` 参数不一定要是字符串。 也可以绑定到 JSON 对象、字节数组或 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) 对象。 [参阅队列触发器用法](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 每个绑定类型（例如队列、Blob 或表）具有一组可以绑定到的不同参数类型。
+   `message` 参数不一定要是字符串。 也可以绑定到 JSON 对象、字节数组或 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 对象。 [参阅队列触发器用法](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 每个绑定类型（例如队列、Blob 或表）具有一组可以绑定到的不同参数类型。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -203,7 +203,7 @@ ms.locfileid: "58087952"
 
 1. 在 Visual Studio 中打开“服务器资源管理器”并登录 Azure。 右键单击“Azure”节点，选择“连接到 Microsoft Azure 订阅”。
 
-   ![登录 Azure](./media/webjobs-sdk-get-started/sign-in.png)
+   ![登录  Azure](./media/webjobs-sdk-get-started/sign-in.png)
 
 1. 在“服务器资源管理器”中的“Azure”节点下，右键单击“存储”并选择“创建存储帐户”。
 
@@ -217,7 +217,7 @@ ms.locfileid: "58087952"
 
    ![创建存储帐户](./media/webjobs-sdk-get-started/create-storage-account.png)
 
-1. 在“服务器资源管理器”中的“存储”节点下，选择新存储帐户。 在“属性”窗口中，选择“连接字符串”值字段右侧的省略号 (**...**)。
+1. 在“服务器资源管理器”中的“存储”节点下，选择新存储帐户。 在“属性”窗口中，选择“连接字符串”值字段右侧的省略号 ( **...** )。
 
    ![“连接字符串”右侧的省略号](./media/webjobs-sdk-get-started/conn-string-ellipsis.png)
 
@@ -338,9 +338,9 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 在“连接字符串”框中添加以下条目。
 
-   |名称  |连接字符串  |数据库类型|
+   |姓名  |连接字符串  |数据库类型|
    |---------|---------|------|
-   |AzureWebJobsStorage | {前面复制的存储连接字符串}|“自定义”|
+   |AzureWebJobsStorage | {前面复制的存储连接字符串}|自定义|
 
 1. 如果“应用程序设置”框中没有 Application Insights 检测密钥，请添加前面复制的检测密钥。 （根据应用服务应用的创建方式，该框中可能已包含检测密钥。）
 
@@ -350,9 +350,9 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 将 *{instrumentation key}* 替换为所用 Application Insights 资源中的检测密钥。
 
-1. 选择“保存”。
+1. 选择**保存**。
 
-1. 向项目添加 Application Insights 连接，以便在本地运行。 在“appsettings.json”文件中，添加 `APPINSIGHTS_INSTRUMENTATIONKEY` 字段，如下例所示：
+1. 将 Application Insights 连接添加到项目, 以便可以在本地运行它。 在“appsettings.json”文件中，添加 `APPINSIGHTS_INSTRUMENTATIONKEY` 字段，如下例所示：
 
     ```json
     {
@@ -370,7 +370,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 若要利用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 日志记录，请更新日志记录代码以执行以下操作：
 
 * 使用默认[筛选](webjobs-sdk-how-to.md#log-filtering)添加 Application Insights 日志记录提供程序；在本地运行时，所有“信息”和更高级别的日志将转到控制台和 Application Insights。
-* 将 `LoggerFactory` 对象放在 `using` 块中，以确保在主机退出时刷新日志输出。
+* 将[server.loggerfactory](./webjobs-sdk-how-to.md#logging-and-monitoring)对象置于`using`块中, 以确保在主机退出时刷新日志输出。
 
 1. 为 Application Insights 日志记录提供程序安装 NuGet 包的最新稳定版本 3.x 版：`Microsoft.Azure.WebJobs.Logging.ApplicationInsights`。
 
@@ -411,7 +411,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
     }
     ```
 
-    这将 Application Insights 提供程序添加到日志记录，使用先前添加到你的应用设置的密钥。
+    这会使用之前添加到应用设置的密钥, 将 Application Insights 提供程序添加到日志记录中。
 
 ## <a name="test-application-insights-logging"></a>测试 Application Insights 日志记录
 
@@ -526,7 +526,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 输出绑定可以简化写入数据的代码。 本示例在前一个示例的基础上做了修改，它会写入 Blob 的副本，而不是记录其大小。 Blob 存储绑定包含在我们之前安装的 Azure 存储扩展包中。
 
-1. 将 `ProcessQueueMessage`方法替换为以下代码：
+1. 将 `ProcessQueueMessage` 方法替换为以下代码：
 
    ```cs
    public static void ProcessQueueMessage(

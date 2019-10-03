@@ -4,7 +4,6 @@ description: 使用共享访问签名 (SAS) 身份验证向服务总线验证应
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: 18bad0ed-1cee-4a5c-a377-facc4785c8c9
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 7c5a45504b7c44d97ff2250663ef9c47ef6e3595
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: 7234e33c04e742c77630f8d87481c7831fb00bf2
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851549"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013246"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服务总线身份验证和授权
 
@@ -30,8 +29,19 @@ SAS 令牌既可由服务总线客户端直接生成，也可由某些颁发与�
 > [!IMPORTANT]
 > 如果结合使用 Azure Active Directory 访问控制（又称为访问控制服务或 ACS）与服务总线，请注意当前提供给此方法的支持有限，应将应用程序迁移至使用 SAS。 有关详细信息，请参阅[此博客文章](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)和[此文章](service-bus-migrate-acs-sas.md)。
 
-## <a name="shared-access-signature-authentication"></a>共享访问签名身份验证
+## <a name="azure-active-directory"></a>Azure Active Directory
+服务总线资源的 Azure Active Directory (Azure AD) 集成提供了基于角色的访问控制 (RBAC), 以便对客户端对资源的访问进行精细控制。 你可以使用基于角色的访问控制 (RBAC) 向安全主体授予权限, 这可能是用户、组或应用程序服务主体。 安全主体经 Azure AD 进行身份验证后会返回 OAuth 2.0 令牌。 令牌可用于授权请求访问服务总线资源 (队列、主题等)。
 
+有关在 Azure AD 中进行身份验证的详细信息, 请参阅以下文章:
+
+- [用托管标识进行身份验证](service-bus-managed-service-identity.md)
+- [从应用程序进行身份验证](authenticate-application.md)
+
+> [!IMPORTANT]
+> 使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供更高的安全性, 并可通过共享访问签名 (SAS) 轻松使用。 在 Azure AD 中, 无需在代码中存储令牌并存在潜在的安全漏洞。 建议尽可能将 Azure AD 用于 Azure 服务总线应用程序。 
+
+
+## <a name="shared-access-signature"></a>共享访问签名
 通过 [SAS 身份验证](service-bus-sas.md)可向具有特定权限的用户授予对服务总线资源的访问权限。 服务总线中的 SAS 身份验证涉及配置具有服务总线资源相关权限的加密密钥。 客户端随后即可通过提供 SAS 令牌获取该资源的访问权限，该令牌由要访问的资源 URI 和签有已配置密钥的过期时间组成。
 
 可以在服务总线命名空间上配置用于 SAS 的密钥。 该密钥将应用到该命名空间中的所有消息传送实体。 可在服务总线队列和主题上配置密钥。 [Azure 中继](../service-bus-relay/relay-authentication-and-authorization.md)也支持 SAS。

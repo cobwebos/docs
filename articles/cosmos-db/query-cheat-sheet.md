@@ -4,18 +4,18 @@ description: 可打印的 PDF 备忘单，借助该备忘录可使用 Azure Cosm
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 848b5a75e4e957b2ad61072ff2e229cacdba2019
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 51660fb416aa9850381f515a3a31cc57519094b0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035063"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66256983"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB 查询备忘单
 
-Azure Cosmos DB 查询备忘单通过在易于打印的 PDF 参考单中显示常见的数据查询、操作、函数和运算符帮助快速编写数据查询。 备忘单包含 SQL API、MongoDB API、表 API 和 Gremlin API 的参考信息。 
+Azure Cosmos DB 查询备忘单通过在易于打印的 PDF 参考单中显示常见的数据查询、操作、函数和运算符帮助快速编写数据查询  。 备忘单包含 SQL API、MongoDB API、表 API 和 Gremlin API 的参考信息。 
 
 选择以信纸尺寸或 A3 尺寸下载。 
 

@@ -3,20 +3,20 @@ title: 使用 REST API 检索指标
 titlesuffix: Azure Load Balancer
 description: 在给定的时间和日期范围内，使用 Azure REST API 收集负载均衡器的运行状况和利用率指标。
 services: sql-database
-author: KumudD
+author: asudbring
 ms.reviewer: routlaw
 manager: jeconnoc
 ms.service: load-balancer
 ms.custom: REST, seodec18
 ms.topic: article
 ms.date: 06/06/2017
-ms.author: KumudD
-ms.openlocfilehash: 9f5206ef5348ee8fd7b3fe981a9cfe4afc1367fb
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.author: allensu
+ms.openlocfilehash: 0d12dc04aff58dd6273d8d29d422bdbd9e7c886b
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337045"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274525"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>使用 REST API 获取负载均衡器利用率指标
 
@@ -38,8 +38,8 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 |请求标头|描述|  
 |--------------------|-----------------|  
-|Content-Type：|必需。 设置为 `application/json`。|  
-|Authorization：|必需。 设置为有效的 `Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
+|Content-Type： |必需。 设置为 `application/json`。|  
+|Authorization： |必需。 设置为有效的 `Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 参数
 

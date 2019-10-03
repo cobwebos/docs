@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: mbullwin
 ms.openlocfilehash: a6e7e8e01ccb623a3ff340c318c9c238c919cb38
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54027068"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61298578"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>异常卷的异常增加（预览）
 

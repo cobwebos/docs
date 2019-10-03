@@ -2,26 +2,26 @@
 title: 如何使用 ADAL 在 iOS 上启用跨应用 SSO | Microsoft Docs
 description: 如何使用 ADAL SDK 的功能跨应用程序启用单一登录。
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e79b73123b33a012c062a89fb9748fa101fabcea
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 19b010091ebd909745b272fca704bb87adf7924b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448673"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65962621"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>如何：使用 ADAL 在 iOS 上启用跨应用 SSO
 
@@ -44,7 +44,7 @@ ms.locfileid: "57448673"
 
 本操作指南假定你知道如何：
 
-* 使用 Azure AD 的旧门户预配你的应用。 有关详细信息，请参阅[向 Azure AD v1.0 终结点注册应用](quickstart-v1-add-azure-ad-app.md)。
+* 使用 Azure AD 的旧门户预配你的应用。 有关详细信息，请参阅[注册应用](quickstart-register-app.md)
 * 将你的应用程序与 [Azure AD iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc) 进行集成。
 
 ## <a name="single-sign-on-concepts"></a>单一登录概念
@@ -163,9 +163,9 @@ Microsoft 为每个移动平台提供了应用程序，可在来自不同供应�
 
 对于跨应用程序的非中转站辅助 SSO，使用 SDK 可以大大消除 SSO 的复杂性。 这包括在缓存中查找适当的用户，以及维护登录用户的列表供你查询。
 
-若要跨拥有的应用程序启用 SSO，需要执行以下操作：
+要跨你拥有的应用程序启用 SSO，需要执行以下操作：
 
-1. 确保所有应用程序使用相同的客户端 ID 或应用程序 ID。
+1. 确保所有应用程序使用的相同客户端 ID 或应用程序 id。
 2. 确保所有应用程序共享来自 Apple 的相同签名证书，以便可以共享密钥链。
 3. 请求每个应用程序的相同密钥链授权。
 4. 告知 SDK 要使用的共享密钥链。

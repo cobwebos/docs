@@ -1,22 +1,22 @@
 ---
-title: 快速入门：执行新闻搜索 - 适用于 C# 的必应新闻搜索 SDK
+title: 快速入门：使用适用于 C# 的必应新闻搜索 SDK 执行新闻搜索
 titleSuffix: Azure Cognitive Services
 description: 按照本快速入门使用适用于 C# 的必应新闻搜索 SDK 搜索新闻，并处理响应。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 01/10/2019
-ms.author: v-gedod
+ms.date: 06/18/2019
+ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: fe9010215e5b6c4c9ece2372e3ce87bcf99b150c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 626596cc88b1b3b1067d7d6d157a548f92fb621a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262884"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206019"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-c"></a>快速入门：使用适用于 C# 的必应新闻搜索 SDK 执行新闻搜索
 
@@ -24,7 +24,7 @@ ms.locfileid: "59262884"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)。
 * [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 

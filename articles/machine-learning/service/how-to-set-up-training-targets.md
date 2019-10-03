@@ -1,6 +1,6 @@
 ---
 title: 为模型训练创建和使用计算目标
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 为机器学习模型训练配置训练环境（计算目标）。 可以轻松地在训练环境之间切换。 在本地开始训练。 如果需要横向扩展，请切换到基于云的计算目标。
 services: machine-learning
 author: heatherbshapiro
@@ -9,20 +9,20 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c97f23c2dfc2b1c0ff794aa20ffb58cd8b8741a
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 7c3bae2fff9e20ed9427c72b5f5f632d975f9f94
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683896"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034415"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标
+# <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型定型的计算目标 
 
-使用 Azure 机器学习服务可以在不同的资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-target)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以为模型部署创建计算目标，如[“部署模型的位置和方式”](how-to-deploy-and-where.md)中所述。
+使用 Azure 机器学习，可以在各种资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-targets)）上训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以为模型部署创建计算目标，如[“部署模型的位置和方式”](how-to-deploy-and-where.md)中所述。
 
-可以使用 Azure 机器学习 SDK、Azure 门户或 Azure CLI 创建和管理计算目标。 如果通过其他服务（例如 HDInsight 群集）创建了计算目标，可以通过将其附加到 Azure 机器学习服务工作区来使用它们。
+您可以使用 Azure 机器学习 SDK、Azure 门户、工作区登陆页面（预览）、Azure CLI 或 Azure 机器学习 VS Code 扩展来创建和管理计算目标。 如果计算目标是通过其他服务（例如 HDInsight 群集）创建的，则可以通过将其附加到 Azure 机器学习工作区来使用它们。
  
 本文介绍如何使用各种计算目标进行模型训练。  适用于所有计算目标的步骤遵循相同的工作流：
 1. __创建__计算目标（如果没有）。
@@ -31,61 +31,46 @@ ms.locfileid: "59683896"
 
 
 >[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.6 进行测试。
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.39 进行测试。
 
 ## <a name="compute-targets-for-training"></a>训练的计算目标
 
-Azure 机器学习服务为不同的计算目标提供不同的支持。 典型的模型开发生命周期从开发/试验少量的数据开始。 在此阶段，我们建议使用本地环境。 例如，本地计算机或基于云的 VM。 针对更大的数据集扩展训练或执行分布式训练时，我们建议使用 Azure 机器学习计算来创建可在每次提交运行时自动缩放的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为各种方案提供的支持可能有所不同，详情如下：
+Azure 机器学习在不同的计算目标之间具有不同的支持。 典型的模型开发生命周期从开发/试验少量的数据开始。 在此阶段，我们建议使用本地环境。 例如，本地计算机或基于云的 VM。 针对更大的数据集扩展训练或执行分布式训练时，我们建议使用 Azure 机器学习计算来创建可在每次提交运行时自动缩放的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为各种方案提供的支持可能有所不同，详情如下：
 
+[!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
-|训练的计算目标| GPU 加速 | 自动<br/> 超参数优化 | 自动</br> 机器学习 | Azure 机器学习管道 |
-|----|:----:|:----:|:----:|:----:|
-|[本地计算机](#local)| 可能 | &nbsp; | ✓ | &nbsp; |
-|[Azure 机器学习计算](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
-|[远程 VM](#vm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
-|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-
-**所有计算目标都可重复用于多个训练作业**。 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。
 
 > [!NOTE]
 > Azure 机器学习计算资源可以创建为持久资源，也可以在你请求运行时动态创建。 基于运行的创建在训练运行完成后会删除计算目标，因此无法重复使用以这种方式创建的计算目标。
 
 ## <a name="whats-a-run-configuration"></a>什么是运行配置？
 
-训练时，通常会在本地计算机上开始，然后在不同的计算目标上运行该训练脚本。 使用 Azure 机器学习服务可以在各种计算目标上运行脚本，而无需更改脚本。 
+训练时，通常会在本地计算机上开始，然后在不同的计算目标上运行该训练脚本。 通过 Azure 机器学习，你可以在不同的计算目标上运行脚本，而无需更改脚本。
 
-只需使用**运行配置**为每个计算目标定义环境即可。  然后，当你想要在不同的计算目标上运行训练试验时，可以指定该计算的运行配置。 
+只需在**运行配置**中为每个计算目标定义环境。  然后，当你想要在不同的计算目标上运行训练试验时，可以指定该计算的运行配置。 有关指定环境并将其绑定到运行配置的详细信息，请参阅[创建和管理用于定型和部署的环境](how-to-use-environments.md)。
 
 本文的最后详细介绍了如何[提交试验](#submit)。
 
-### <a name="manage-environment-and-dependencies"></a>管理环境和依赖项
+## <a name="whats-an-estimator"></a>估计器是什么？
 
-创建运行配置时，需要确定如何管理计算目标上的环境和依赖项。 
+为了便于使用常见框架进行模型训练，Azure 机器学习 Python SDK 提供了一个替代级别更高的抽象方法，即估计器类。 此类使你能够轻松地构造运行配置。 您可以创建和使用一般[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交使用您选择的任何学习框架的培训脚本（如 scikit-learn）。
 
-#### <a name="system-managed-environment"></a>系统管理的环境
+对于 PyTorch、TensorFlow 和 Chainer 任务，Azure 机器学习还提供相应的[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)和[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)估算以简化使用这些框架的操作。
 
-若要通过 [Conda](https://conda.io/docs/) 管理 Python 环境和脚本依赖项，请使用系统管理的环境。 默认已采用系统管理的环境，这是最常见的选项。 系统管理的环境在远程计算目标上非常有用，尤其是无法配置该目标时。 
+有关详细信息，请参阅[用估算训练 ML 模型](how-to-train-ml-models.md)。
 
-只需使用 [CondaDependency 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py)指定每个包依赖项即可。然后，Conda 将在工作区中的 **aml_config** 目录内创建名为 **conda_dependencies.yml** 的、包含包依赖项列表的文件，并在你提交训练试验时设置 Python 环境。 
+## <a name="whats-an-ml-pipeline"></a>什么是 ML 管道？
 
-新环境的初始设置可能需要几分钟才能完成，具体取决于所需依赖项的大小。 只要包列表保持不变，就只需设置一次。
-  
-以下代码演示了一个需要 scikit-learn 的系统管理环境示例：
-    
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_system_managed)]
+借助 ML 管道，你可以通过简单、速度、可移植性和重复使用优化工作流。 当通过 Azure 机器学习构建管道时，可以专注于专业技能、机器学习，而不是在基础结构和自动化上。
 
-#### <a name="user-managed-environment"></a>用户管理的环境
+ML 管道是从多个**步骤**构造的，这些步骤是管道中的不同计算单元。 每个步骤都可以独立运行并使用独立的计算资源。 这允许多个数据科学家在同一时间同时处理同一管道，而不会产生过多的计算资源，同时还可以轻松地对每个步骤使用不同的计算类型/大小。
 
-对于用户管理的环境，你需要负责设置环境，并在计算目标上安装训练脚本所需的每个包。 如果已配置训练环境（例如，在本地计算机上），可以通过将 `user_managed_dependencies` 设置为 True 来跳过设置步骤。 Conda 将不检查你的环境，也不会安装任何组件。
+> [!TIP]
+> 在训练模型时，ML 管道可以使用运行配置或估算。
 
-以下代码演示了一个为用户管理的环境配置训练运行的示例：
+虽然 ML 管道可以训练模型，但它们还可以在训练和部署模型之后准备数据。 管道的主要用例之一是批处理评分。 有关详细信息，请[参阅管道：优化机器学习工作](concept-ml-pipelines.md)流。
 
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
-  
-## <a name="set-up-compute-targets-with-python"></a>使用 Python 设置计算目标
+## <a name="set-up-in-python"></a>在 Python 中设置
 
 使用以下部分配置这些计算目标：
 
@@ -121,7 +106,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 可将 Azure 机器学习计算创建为运行时的计算目标。 将自动为运行创建计算。 完成运行后，会自动删除计算。 
 
 > [!NOTE]
-> 若要指定要使用的节点的最大数量，通常可以设置`node_count`到的节点数。 目前 (04/04/2019) 可以避免这一工作的 bug。 作为一种解决方法，使用`amlcompute._cluster_max_node_count`运行配置的属性。 例如，`run_config.amlcompute._cluster_max_node_count = 5`。
+> 若要指定要使用的最大节点数，通常会将`node_count`设置为节点数。 当前有（04/04/2019） bug 阻止了此操作。 解决方法是使用`amlcompute._cluster_max_node_count`运行配置的属性。 例如， `run_config.amlcompute._cluster_max_node_count = 5` 。
 
 > [!IMPORTANT]
 > Azure 机器学习计算的基于运行的创建功能目前为预览版。 如果使用自动化超参数优化或自动化机器学习，请不要使用基于运行的创建。 若要使用超参数优化或自动化机器学习，请改为创建[持久性计算](#persistent)目标。
@@ -158,7 +143,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
 ### <a id="vm"></a>远程虚拟机
 
-Azure 机器学习还支持将自己的计算资源附加到工作区。 任意远程 VM 就是这样一种资源类型（前提是可从 Azure 机器学习服务访问它）。 该资源可以是 Azure VM，也可以是组织内部或本地的远程服务器。 具体而言，在指定 IP 地址和凭据（用户名和密码，或 SSH 密钥）的情况下，可以使用任何可访问的 VM 进行远程运行。
+Azure 机器学习还支持将自己的计算资源附加到工作区。 这种类型的资源类型是任意远程 VM，只要可从 Azure 机器学习访问。 该资源可以是 Azure VM，也可以是组织内部或本地的远程服务器。 具体而言，在指定 IP 地址和凭据（用户名和密码，或 SSH 密钥）的情况下，可以使用任何可访问的 VM 进行远程运行。
 
 可以使用系统生成的 conda 环境、现有的 Python 环境或 Docker 容器。 若要在 Docker 容器中执行，必须在 VM 上运行 Docker 引擎。 需要一个比本地计算机更灵活的基于云的开发/试验环境时，此功能特别有用。
 
@@ -245,35 +230,39 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
 
 
-### <a id="azbatch"></a>Azure 批处理 
+### <a id="azbatch"></a>Azure Batch 
 
-使用 azure Batch 在云中高效运行大规模并行和高性能计算 (HPC) 应用程序。 可以在 Azure 机器学习管道中使用 AzureBatchStep，若要将作业提交到计算机的 Azure Batch 池。
+Azure Batch 用于在云中高效运行大规模并行和高性能计算（HPC）应用程序。 可以在 Azure 机器学习管道中使用 AzureBatchStep 将作业提交到 Azure Batch 计算机池。
 
-若要附加 Azure Batch 用作计算目标，必须使用 Azure 机器学习 SDK，并提供以下信息：
+若要将 Azure Batch 附加为计算目标，必须使用 Azure 机器学习 SDK，并提供以下信息：
 
--   **Azure Batch 计算名称**:一个友好名称以用于在工作区中的计算
--   **Azure Batch 帐户名称**:Azure Batch 帐户的名称
+-   **Azure Batch 计算名称**：要在工作区内用于计算的友好名称
+-   **Azure Batch 帐户名称**：Azure Batch 帐户的名称
 -   **资源组**：包含 Azure Batch 帐户的资源组。
 
-下面的代码演示如何将附加 Azure Batch 用作计算目标：
+下面的代码演示如何将 Azure Batch 附加为计算目标：
 
 ```python
 from azureml.core.compute import ComputeTarget, BatchCompute
 from azureml.exceptions import ComputeTargetException
 
-batch_compute_name = 'mybatchcompute' # Name to associate with new compute in workspace
+# Name to associate with new compute in workspace
+batch_compute_name = 'mybatchcompute'
 
 # Batch account details needed to attach as compute to workspace
-batch_account_name = "<batch_account_name>" # Name of the Batch account
-batch_resource_group = "<batch_resource_group>" # Name of the resource group which contains this account
+batch_account_name = "<batch_account_name>"  # Name of the Batch account
+# Name of the resource group which contains this account
+batch_resource_group = "<batch_resource_group>"
 
 try:
     # check if the compute is already attached
     batch_compute = BatchCompute(ws, batch_compute_name)
 except ComputeTargetException:
     print('Attaching Batch compute...')
-    provisioning_config = BatchCompute.attach_configuration(resource_group=batch_resource_group, account_name=batch_account_name)
-    batch_compute = ComputeTarget.attach(ws, batch_compute_name, provisioning_config)
+    provisioning_config = BatchCompute.attach_configuration(
+        resource_group=batch_resource_group, account_name=batch_account_name)
+    batch_compute = ComputeTarget.attach(
+        ws, batch_compute_name, provisioning_config)
     batch_compute.wait_for_completion()
     print("Provisioning state:{}".format(batch_compute.provisioning_state))
     print("Provisioning errors:{}".format(batch_compute.provisioning_errors))
@@ -281,13 +270,14 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-compute-in-the-azure-portal"></a>在 Azure 门户中设置计算
+## <a name="set-up-in-azure-portal"></a>在 Azure 门户中设置
 
 可以在 Azure 门户中访问与工作区关联的计算目标。  可以使用门户执行以下操作：
 
 * [查看](#portal-view)附加到工作区的计算目标
 * 在工作区中[创建计算目标](#portal-create)
 * [附加](#portal-reuse)在工作区外部创建的计算目标
+
 
 创建目标并将其附加到工作区后，可以通过一个 `ComputeTarget` 对象在运行配置中使用该目标： 
 
@@ -301,10 +291,11 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 若要查看工作区的计算目标，请使用以下步骤：
 
-1. 导航到 [Azure 门户](https://portal.azure.com)，并打开你的工作区。 
+1. 导航到 [Azure 门户](https://portal.azure.com)，并打开你的工作区。 你还可以在[工作区登陆页面（预览版）](https://ml.azure.com)中访问这些相同的步骤，尽管下面的图像显示了 Azure 门户。
+ 
 1. 在“应用程序”下，选择“计算”。
 
-    ![查看“计算”选项卡](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
+    [![查看计算选项卡](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>创建计算目标
 
@@ -323,8 +314,6 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 1. 填写表单。 提供必需属性的值，尤其是“VM 系列”，以及用于运转计算的**最大节点数**。  
 
-    ![填写表单](./media/how-to-set-up-training-targets/add-compute-form.png) 
-
 1. 选择“创建”。
 
 
@@ -336,11 +325,9 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
     ![查看计算目标详细信息](./media/how-to-set-up-training-targets/compute-target-details.png) 
 
-
-
 ### <a id="portal-reuse"></a>附加计算目标
 
-若要使用在 Azure 机器学习服务工作区外部创建的计算目标，必须附加它们。 附加计算目标会使其可供你的工作区使用。
+若要使用在 Azure 机器学习工作区之外创建的计算目标，必须附加它们。 附加计算目标会使其可供你的工作区使用。
 
 遵循上述步骤查看计算目标的列表。 然后使用以下步骤来附加计算目标： 
 
@@ -367,9 +354,9 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 1. 选择“附加”。 
 1. 通过在列表中选择计算目标来查看附加操作的状态。
 
-## <a name="set-up-compute-with-the-cli"></a>使用 CLI 设置计算
+## <a name="set-up-with-cli"></a>设置 CLI
 
-可以使用适用于 Azure 机器学习服务的 [CLI 扩展](reference-azure-machine-learning-cli.md)访问与工作区关联的计算目标。  可以使用 CLI 执行以下操作：
+您可以使用 Azure 机器学习的[CLI 扩展](reference-azure-machine-learning-cli.md)访问与工作区关联的计算目标。  可以使用 CLI 执行以下操作：
 
 * 创建托管计算目标
 * 更新托管计算目标
@@ -377,7 +364,11 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 有关详细信息，请参阅[资源管理](reference-azure-machine-learning-cli.md#resource-management)。
 
-## <a id="submit"></a>提交训练运行
+## <a name="set-up-with-vs-code"></a>设置 VS Code
+
+你可以使用 Azure 机器学习的[VS Code 扩展](how-to-vscode-tools.md#create-and-manage-compute-targets)来访问、创建和管理与工作区关联的计算目标。
+
+## <a id="submit"></a>使用 Azure 机器学习 SDK 提交培训运行
 
 创建运行配置后，可以使用它来运行试验。  对于所有类型的计算目标，用于提交训练运行的代码模式都是相同的：
 
@@ -386,11 +377,11 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 1. 等待运行任务完成。
 
 > [!IMPORTANT]
-> 当提交培训运行时，快照包含训练脚本的目录的创建，并发送到计算目标。 它还存储为你的工作区中的实验的一部分。 如果更改文件和提交运行同样，将上载更改的文件。
+> 提交训练运行时，将创建包含定型脚本的目录的快照，并将其发送到计算目标。 它也作为实验的一部分存储在工作区中。 如果更改文件并再次提交运行，则只会上载已更改的文件。
 >
-> 若要防止文件被包含在快照中，创建[.gitignore](https://git-scm.com/docs/gitignore)或`.amlignore`文件的目录中，并向其中添加文件。 `.amlignore`文件使用相同的语法，作为模式[.gitignore](https://git-scm.com/docs/gitignore)文件。 如果这两个文件存在，`.amlignore`文件具有优先权。
+> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果同时存在这两个`.amlignore`文件, 则该文件将优先。
 > 
-> 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshot)。
+> 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 
 ### <a name="create-an-experiment"></a>创建试验
 
@@ -414,10 +405,101 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
+> [!TIP]
+> 此示例默认为仅使用计算目标的一个节点进行定型。 若要使用多个节点，请将`node_count`运行配置的设置为所需的节点数。 例如，下面的代码将用于定型的节点数设置为4：
+>
+> ```python
+> src.run_config.node_count = 4
+> ```
+
 或者可以：
 
-* 根据[使用评估器训练机器学习模型](how-to-train-ml-models.md)中所述，使用 `Estimator` 对象提交试验。 
-* [使用 CLI 扩展](reference-azure-machine-learning-cli.md#experiments)提交试验。
+* 根据[使用评估器训练机器学习模型](how-to-train-ml-models.md)中所述，使用 `Estimator` 对象提交试验。
+* 提交用于[超参数优化](how-to-tune-hyperparameters.md)的 HyperDrive 运行。
+* 通过[VS Code 扩展](how-to-vscode-tools.md#train-and-tune-models)提交试验。
+
+有关详细信息，请参阅[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py)和[RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py)文档。
+
+## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>使用 Azure 机器学习 CLI 创建运行配置并提交运行
+
+您可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)和[机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)来创建运行配置，并将运行中的运行提交到不同的计算目标。 以下示例假定你已有 Azure 机器学习工作区，并使用`az login` CLI 命令登录到 Azure。 
+
+### <a name="create-run-configuration"></a>创建运行配置
+
+创建运行配置的最简单方法是导航包含机器学习 Python 脚本的文件夹，并使用 CLI 命令
+
+```azurecli
+az ml folder attach
+```
+
+此命令创建一个子`.azureml`文件夹，其中包含不同计算目标的模板运行配置文件。 可以复制和编辑这些文件，以自定义配置，例如添加 Python 包或更改 Docker 设置。  
+
+### <a name="structure-of-run-configuration-file"></a>运行配置文件的结构
+
+运行配置文件的格式 YAML，以下部分
+ * 要运行的脚本及其参数
+ * 计算目标名称，可以是 "本地"，也可以是工作区中计算的名称。
+ * 用于执行运行的参数：框架，用于分布式运行的 communicator，最大持续时间和计算节点数。
+ * 环境部分。 有关本部分中的字段的详细信息，请参阅[创建和管理用于培训和部署的环境](how-to-use-environments.md)。
+   * 若要指定要为运行安装的 Python 包，请创建[conda 环境文件](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually)，并设置__condaDependenciesFile__字段。
+ * 运行历史记录详细信息以指定日志文件文件夹，以及启用或禁用输出收集和运行历史记录快照。
+ * 特定于所选框架的配置详细信息。
+ * 数据引用和数据存储的详细信息。
+ * 用于创建新群集的机器学习计算的特定配置详细信息。
+
+### <a name="create-an-experiment"></a>创建试验
+
+首先，为您的运行创建一个试验
+
+```azurecli
+az ml experiment create -n <experiment>
+```
+
+### <a name="script-run"></a>脚本运行
+
+若要提交脚本运行，请执行命令
+
+```azurecli
+az ml run submit-script -e <experiment> -c <runconfig> my_train.py
+```
+
+### <a name="hyperdrive-run"></a>HyperDrive 运行
+
+可以将 HyperDrive 与 Azure CLI 结合使用来执行参数优化运行。 首先，创建以下格式的 HyperDrive 配置文件。 有关超参数优化参数的详细信息，请参阅[优化模型的超参数](how-to-tune-hyperparameters.md)一文。
+
+```yml
+# hdconfig.yml
+sampling: 
+    type: random # Supported options: Random, Grid, Bayesian
+    parameter_space: # specify a name|expression|values tuple for each parameter.
+    - name: --penalty # The name of a script parameter to generate values for.
+      expression: choice # supported options: choice, randint, uniform, quniform, loguniform, qloguniform, normal, qnormal, lognormal, qlognormal
+      values: [0.5, 1, 1.5] # The list of values, the number of values is dependent on the expression specified.
+policy: 
+    type: BanditPolicy # Supported options: BanditPolicy, MedianStoppingPolicy, TruncationSelectionPolicy, NoTerminationPolicy
+    evaluation_interval: 1 # Policy properties are policy specific. See the above link for policy specific parameter details.
+    slack_factor: 0.2
+primary_metric_name: Accuracy # The metric used when evaluating the policy
+primary_metric_goal: Maximize # Maximize|Minimize
+max_total_runs: 8 # The maximum number of runs to generate
+max_concurrent_runs: 2 # The number of runs that can run concurrently.
+max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
+```
+
+将此文件与运行配置文件一起添加。 然后使用以下内容提交 HyperDrive 运行：
+```azurecli
+az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
+```
+
+请注意 .runconfig 和 HyperDrive config 中的*参数空间*中的*参数*部分。它们包含要传递给训练脚本的命令行参数。 .Runconfig 中的值在每次迭代中保持不变，而 HyperDrive config 中的范围将循环访问。 不要在这两个文件中指定相同的参数。
+
+有关这些```az ml``` CLI 命令和完整参数集的更多详细信息，请参阅[参考文档](reference-azure-machine-learning-cli.md)。
+
+<a id="gitintegration"></a>
+
+## <a name="git-tracking-and-integration"></a>Git 跟踪和集成
+
+当你开始在源目录为本地 Git 存储库的训练运行时, 有关存储库的信息存储在运行历史记录中。 例如, 将在历史记录中记录存储库的当前提交 ID。
 
 ## <a name="notebook-examples"></a>Notebook 示例
 
@@ -430,6 +512,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 ## <a name="next-steps"></a>后续步骤
 
 * [教程：训练模型](tutorial-train-models-with-aml.md)使用一个托管计算目标来训练模型。
+* 了解如何[有效地调整超参数](how-to-tune-hyperparameters.md)以构建更好的模型。
 * 训练模型后，了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
 * 查看 [RunConfiguration 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK 参考。
-* [通过 Azure 虚拟网络使用 Azure 机器学习服务](how-to-enable-virtual-network.md)
+* [在 Azure 虚拟网络中使用 Azure 机器学习](how-to-enable-virtual-network.md)

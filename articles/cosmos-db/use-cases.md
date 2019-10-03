@@ -5,13 +5,13 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 05/07/2017
-ms.openlocfilehash: 935c6ff03485c2b8e4d3e2f3df51c740ec1e8371
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.date: 05/21/2019
+ms.openlocfilehash: e22b426b2172c169f9343569fffac57f370afbee
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043288"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219882"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB 常见用例
 本文概述了 Azure Cosmos DB 的几个常见用例。  本文中的建议可以作为使用 Cosmos DB 开发应用程序的一个起点。   
@@ -40,11 +40,11 @@ Azure Cosmos DB 是一种全球分步的多模型数据库，广泛用于应用�
 这些特性对于需要低响应时间和需要处理大量读取和写入操作的 Web、移动、游戏和 IoT 应用程序尤为有益。
 
 ## <a name="iot-and-telematics"></a>IoT 和 Telematic
-IoT 用例在引入、处理和存储数据方法方面通常具有相同的模式。  首先，这些系统需要引入各处设备传感器中的激增数据。 其次，这些系统可以处理和分析流式传输数据，以获得实时见解。 然后将数据存档到冷存储进行批量分析。 Microsoft Azure 提供可应用于 IoT 用例的多种服务，包括 Azure Cosmos DB、Azure 事件中心、Azure 流分析、Azure 通知中心、Azure 机器学习、Azure HDInsight 和 PowerBI。 
+IoT 用例在引入、处理和存储数据方法方面通常具有相同的模式。  首先，这些系统需要引入各处设备传感器中的激增数据。 其次，这些系统可以处理和分析流式传输数据，以获得实时见解。 然后将数据存档到闲置存储以进行批量分析。 Microsoft Azure 提供可应用于 IoT 用例的多种服务，包括 Azure Cosmos DB、Azure 事件中心、Azure 流分析、Azure 通知中心、Azure 机器学习、Azure HDInsight 和 Power BI。 
 
 ![Azure Cosmos DB IoT 参考体系结构](./media/use-cases/iot.png)
 
-由于 Azure 事件中心可以低延迟引入高吞吐量数据，因此它可以引入激增数据。 可以将需要进行实时分析的引入数据传输至 Azure 流分析，以进行实时分析。 可将数据加载到 Azure Cosmos DB 中进行即席查询。 将数据加载到 Azure Cosmos DB 后，即可对其进行查询。 此外，可以在更改源中读取新数据以及对现有数据的更改。 更改源是持久性的、仅限追加的日志，可按顺序存储对 Cosmos DB 容器的更改。 Azure Cosmos DB 中的所有数据或者仅仅对数据所做的更改可用作实时分析中的参考数据。 此外，通过将 Azure Cosmos DB 数据连接到 HDInsight 进行 Pig、Hive 或 Map/Reduce 作业，可进一步优化和处理数据。  经过优化的数据随后被加载回 Azure Cosmos DB 用于报告。   
+由于 Azure 事件中心可以低延迟引入高吞吐量数据，因此它可以引入激增数据。 可以将需要进行实时分析的引入数据传输至 Azure 流分析，以进行实时分析。 可将数据加载到 Azure Cosmos DB 中进行即席查询。 将数据加载到 Azure Cosmos DB 后，即可对其进行查询。 此外，可以在更改源中读取新数据以及对现有数据的更改。 更改源是持久性的、仅限追加的日志，可按顺序存储对 Cosmos 容器的更改。 Azure Cosmos DB 中的所有数据或者仅仅对数据所做的更改可用作实时分析中的参考数据。 此外，通过将 Azure Cosmos DB 数据连接到 HDInsight 进行 Pig、Hive 或 Map/Reduce 作业，可进一步优化和处理数据。  经过优化的数据随后被加载回 Azure Cosmos DB 用于报告。   
 
 有关使用 Azure Cosmos DB、EventHubs 和 Storm 的 IoT 解决方案示例，请参阅 [GitHub 上的 hdinsight-storm-examples 存储库](https://github.com/hdinsight/hdinsight-storm-examples/)。
 
@@ -68,7 +68,7 @@ Azure Cosmos DB 通常用于事件寻源，可使用其[更改源](change-feed.m
 ## <a name="gaming"></a>游戏
 数据库层是游戏应用程序的关键组件。 新式游戏可在移动/控制台客户端执行图形处理，但需依赖云传输自定义的个性化内容，例如游戏中的统计数据、社交媒体集成以及高分排行榜。 游戏通常需要单毫秒的读取和写入延迟，从而带来具有吸引力的游戏体验。 新游戏启动和功能更新期间，游戏数据库需要具备很快的速度，并且要能够处理请求速率中的大量峰值。
 
-Azure Cosmos DB 用于 [Next Games](https://www.nextgames.com/) 推出的 [The Walking Dead:No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/)（行尸走肉：无人地带）和 [Halo 5:Guardians](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/)（光环 5：守护者）等游戏。 对于游戏开发人员，Azure Cosmos DB 具备以下优势：
+Azure Cosmos DB 用于 Next Games 推出的 [The Walking Dead:No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/)（行尸走肉：无人地带）和 [Halo 5:Guardians](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/)（光环 5：守护者）等游戏。 对于游戏开发人员，Azure Cosmos DB 具备以下优势：
 
 * Azure Cosmos DB 允许弹性提高或降低性能。 此优势使游戏可以通过执行单个 API 调用同时处理从几十到数百万不等的游戏配置文件和统计数据的更新。
 * Azure Cosmos DB 支持毫秒读取和写入，有助于避免在玩游戏期间出现任何延迟。
@@ -98,32 +98,7 @@ JSON 是一种用于呈现 UI 布局数据的有效格式，它受 Cosmos DB 支
 ![Azure Cosmos DB Web 应用参考体系结构](./media/use-cases/personalization.png)
 
 ## <a name="next-steps"></a>后续步骤
-可以根据[快速入门](create-sql-api-dotnet.md)开始使用 Azure Cosmos DB，其中逐步讲解了如何创建帐户并开始使用 Cosmos DB。 
 
-或者，如果想要了解有关使用 Cosmos DB 的客户的详细信息，可以参阅下面的客户案例：
+* 可以根据[快速入门](create-sql-api-dotnet.md)开始使用 Azure Cosmos DB，其中逐步讲解了如何创建帐户并开始使用 Cosmos DB。
 
-* [Jet.com](https://jet.com)。 电子商务挑战者的目标是占领最高位置，即在 Microsoft 云端运行并在全球范围内利用 Cosmos DB。
-* [Asos.com](https://www.asos.com/)。 Asos.com 是一家英国时尚服饰及美妆产品线上零售商。 Asos 主要面向年轻消费者，销售品牌超过 850 种，还销售其自主品牌的服装和配饰。
-* [Toyota](https://www.toyota.com/)。 Toyota Motor Corporation 是一家日本汽车制造商。 它将 Cosmos DB 用于全球 IoT 应用。
-* [Citrix](https://customers.microsoft.com/story/citrix)。 Citrix 使用 Azure Service Fabric 和 Azure Cosmos DB 开发单一登录解决方案
-* [TEXA](https://customers.microsoft.com/story/texaspa) TEXA 为车辆所有者提供的革命性 IoT 解决方案有助于节省时间、金钱和汽油，甚至可能拯救生命。
-* [Domino's Pizza](https://www.dominos.com)。 Domino's Pizza Inc. 是一家美国披萨连锁餐厅。
-* [Johnson Controls](https://www.johnsoncontrols.com)。 Johnson Controls 是一家全球性多元化科技公司，在多个行业占据领先地位，为 150 多个国家或地区的大量用户提供服务。
-* [Microsoft Windows、通用应用商店、Azure IoT 中心、Xbox Live 和其他 Internet 规模的服务](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/)。 Microsoft 如何使用 Azure Cosmos DB 构建高度可缩放的服务。
-* [Microsoft 数据和分析团队](https://customers.microsoft.com/story/microsoftdataandanalytics)。 Microsoft 的数据和分析团队通过 Azure Cosmos DB 实现全球规模的大数据收集
-* [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india)。 Sulekha 使用 Azure Cosmos DB 连接整个印度的客户和企业。
-* [NewOrbit](https://customers.microsoft.com/story/neworbit-takes-flight-with-azure-documentdb)。 NewOrbit 使用了 Azure Cosmos DB。
-* [Affinio](https://customers.microsoft.com/doclink/affinio-switches-from-aws-to-azure-documentdb-to-harness-social-data-at-scale)。 Affinio 从 AWS 切换到 Azure Cosmos DB，以便大规模利用社交数据。
-* [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/)。 The Walking Dead:No Man’s Land（行尸走肉：无人之地）游戏在 Azure Cosmos DB 的支持下飙升至排行榜第 1 名。
-* [Halo（光环）](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/)。 Halo 5（光环 5）使用 Azure Cosmos DB 实现社交游戏玩法。
-* [Cortana Analytics Gallery](https://azure.microsoft.com/blog/cortana-analytics-gallery-a-scalable-community-site-built-on-azure-documentdb/)。 Cortana Analytics Gallery - 构建在 Azure Cosmos DB 基础之上的可扩展社区网站。
-* [Breeze](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18602)。 领先集成商使用灵活的云技术在几分钟内为跨国公司提供全球见解。
-* [News Republic](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18639)。 让新闻更智能，以便为订阅的市民提供有目的性的信息。 
-* [SGS International](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18653)。 为了在全球范围内保持颜色一致，大品牌求救于 SGS。 而 SGS 采用 Azure。
-* [Telenor](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18608)。 全球领先企业 Telenor 使用云以初创企业的速度发展。 
-* [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667)。 未来的存储依赖于数据的快速搜索和轻松流动。
-* [Nucleo](https://customers.microsoft.com/story/azure-based-software-platform-breaks-down-barriers-bet)。 基于 Azure 的软件平台将打破企业和客户之间的屏障
-* [Weka](https://customers.microsoft.com/story/weka-smart-fridge-improves-vaccine-management-so-more-people-can-be-protected-against-diseases)。 Weka 智能冰箱可改善疫苗管理，保护更多人免受疾病侵扰
-* [Orange Tribes](https://customers.microsoft.com/story/theres-more-to-that-food-app-than-meets-the-eye-or-the-mouth)。 使用这款食品应用，得到的不仅仅是视觉或味觉上的满足。
-* [Real Madrid](https://customers.microsoft.com/story/real-madrid-brings-the-stadium-closer-to-450-million-f)。 皇家马德里足球俱乐部借助 Microsoft 云拉近体育场与全球 4.5 亿粉丝之间的距离。
-* [Tuku](https://customers.microsoft.com/story/tuku-makes-car-buying-fun-with-help-from-azure-services)。 TUKU 借助 Azure 服务增加购买汽车的乐趣
+* 如果你想要了解有关使用 Azure Cosmos DB 的客户的详细信息，请参阅[客户案例研究](https://azure.microsoft.com/en-us/case-studies/?service=cosmos-db)页面。

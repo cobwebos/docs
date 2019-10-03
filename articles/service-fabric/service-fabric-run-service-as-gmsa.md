@@ -1,5 +1,5 @@
 ---
-title: 运行 gMSA 帐户下的 Azure Service Fabric 服务 |Microsoft Docs
+title: 在 gMSA 帐户下运行 Azure Service Fabric 服务 |Microsoft Docs
 description: 了解如何在 Service Fabric Windows 独立群集上以 gMSA 身份运行服务。
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/29/2018
 ms.author: dekapur
-ms.openlocfilehash: 5c3781c2111fff7483a7fb65bd7b2e69c2011d18
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d00eceffebb222196191a389058c0feb496e169a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666420"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307646"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>以组托管服务帐户身份运行服务
 在 Windows Server 独立群集上，可以使用 RunAs 策略以组托管服务帐户 (gMSA) 的身份来运行服务。  默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 即使在共享托管环境中以不同帐户身份运行应用程序，也可确保运行的应用程序彼此更安全。 注意：这是域中的本地 Active Directory，不是 Azure Active Directory (Azure AD)。 使用 gMSA 时，没有密码或加密的密码存储在应用程序清单中。  还可以采用 [Active Directory 用户或组](service-fabric-run-service-as-ad-user-or-group.md)身份运行服务。
@@ -28,7 +28,7 @@ ms.locfileid: "58666420"
 
 先决条件：
 - 域需要 KDS 根密钥。
-- 域必须位于 Windows Server 2012 或更高功能级别上。
+- 域中必须至少有一个 Windows Server 2012 （或 R2） DC。
 
 1. 让 Active Directory 域管理员使用 `New-ADServiceAccount` commandlet 创建组托管服务帐户，并确保 `PrincipalsAllowedToRetrieveManagedPassword` 包括所有 service fabric 群集节点。 `AccountName`、`DnsHostName` 和 `ServicePrincipalName` 必须是唯一的。
 

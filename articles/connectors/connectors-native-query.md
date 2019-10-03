@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
 ms.openlocfilehash: 2a82afe396039857e5b9ad6b8a6d0e710573037f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794873"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60538208"
 ---
 # <a name="get-started-with-the-query-action"></a>查询操作入门
 通过使用查询操作，可使用批处理和数组完成工作流，以便：
@@ -38,9 +38,9 @@ ms.locfileid: "59794873"
 
 下面是在逻辑应用中添加它的方法：
 
-1. 选择“新步骤”按钮。
-2. 选择“添加操作”。
-3. 在操作搜索框中，键入“筛选”列出“筛选数组”操作。
+1. 选择“新步骤”  按钮。
+2. 选择“添加操作”  。
+3. 在操作搜索框中，键入“筛选”  列出“筛选数组”  操作。
    
     ![选择查询操作](./media/connectors-native-query/using-action-1.png)
 4. 选择要筛选的数组。 （以下屏幕截图显示来自 Twitter 搜索的结果数组。）
@@ -65,9 +65,9 @@ ms.locfileid: "59794873"
 
 ### <a name="filter-array"></a>筛选数组
 下面是操作的输入字段，该操作发出 HTTP 出站请求。
-* 表示它是必填字段。
+\* 表示它是必填字段。
 
-| 显示名称 | 属性名称 | 描述 |
+| Display name | 属性名称 | 描述 |
 | --- | --- | --- |
 | 来自* |from |要筛选的数组 |
 | 条件* |其中 |要为每个项目评估的条件 |

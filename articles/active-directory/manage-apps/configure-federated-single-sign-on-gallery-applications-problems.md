@@ -1,10 +1,10 @@
 ---
-title: 配置 Azure AD 库应用程序的联合单一登录时遇到的问题 | Microsoft Docs
+title: 为 Azure AD 库应用配置联合单一登录时遇到问题 |Microsoft Docs
 description: 解决在使用 SAML 配置 Azure AD 应用程序库中所列应用程序的联合单一登录时可能遇到的一些常见问题
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31e9746c0739a2ddd6267428f428e977151077b6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6f4e690b440604a312ddfa8cd320ac200c0f40cf
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099774"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381216"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序的联合单一登录时遇到的问题
 
@@ -64,13 +64,13 @@ ms.locfileid: "58099774"
 
 10. 有三种方法可以了解应用程序支持的模式：
 
-    * 在文本框中，可以看到受支持的模式作为一个占位符。*示例：*<https://contoso.com>。
+    * 在文本框中，可以看到受支持的模式作为一个占位符。*示例：* <https://contoso.com>。
 
     * 如果此模式不受支持，当在文本框中试图输入值时会看到一个红色感叹号。 将鼠标悬停在红色感叹号上，就能看到受支持的模式。
 
     * 在应用程序的教程中，还可以获得受支持的模式的信息。 在“配置 Azure AD 单一登录”部分下。 转到该步骤下，在“域和 URL”部分下找到已配置的值。
 
-如果此值与 Azure AD 上预配置的模式不匹配。 可以：
+如果此值与 Azure AD 上预配置的模式不匹配。 你可以：
 
 -   与应用程序供应商沟通以获取与 Azure AD 上预配置的模式匹配的值
 

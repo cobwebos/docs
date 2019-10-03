@@ -8,16 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 4/03/2019
+ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: a013189e45b1c1c8eeb88d62a718d495c0c415a2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 65db847c5df1a05671e3b1c0ac4541f00506c8fd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59012378"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854698"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>快速入门：使用适用于 .NET Framework 的语音 SDK (Windows) 合成语音
+
+针对[语音识别](quickstart-csharp-dotnet-windows.md)和[语音翻译](quickstart-translate-speech-dotnetframework-windows.md)也提供了快速入门。
 
 按照本指南使用适用于 Windows 的 .NET framework 和语音 SDK 创建文本转语音控制台应用程序。 完成后，你可以从文本合成语音，并实时听到扬声器上的语音。
 
@@ -29,7 +31,7 @@ ms.locfileid: "59012378"
 
 若要完成本项目，需要：
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * 语音服务的订阅密钥。 [免费获得一个](get-started.md)。
 * 可用的扬声器（或耳机）。
 
@@ -51,11 +53,11 @@ ms.locfileid: "59012378"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-1. 从菜单栏中，选择“构建” > “构建解决方案”。 现在，编译代码时应不会提示错误。
+1. 从菜单栏中，选择“构建” > “构建解决方案”   。 现在，编译代码时应不会提示错误。
 
     ![Visual Studio 应用程序的屏幕截图，其中突出显示了“生成解决方案”选项](media/sdk/qs-csharp-dotnet-windows-08-build.png "成功生成")
 
-1. 在菜单栏中，选择“调试” > “开始调试”，或按 F5 以启动应用程序。
+1. 在菜单栏中，选择“调试” > “开始调试”，或按 F5 以启动应用程序    。
 
     ![Visual Studio 应用程序的屏幕截图，其中突出显示了“启动调试”选项](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "启动应用进入调试")
 

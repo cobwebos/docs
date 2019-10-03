@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/03/2019
 ms.author: mayg
 ms.openlocfilehash: e75d4b1701944e206fcf6ded2dcb6d1e1fbc77cb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900550"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60723768"
 ---
 # <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>准备目标环境，以便将 VMware VM 或物理服务器灾难恢复到 Azure
 
@@ -27,7 +27,7 @@ ms.locfileid: "57900550"
 
 ## <a name="prepare-target"></a>准备目标
 
-完成“步骤 1：选择保护目标”和“步骤 2：准备源”后，将转到“步骤 3：目标”
+完成“步骤 1：  选择保护目标”和“步骤 2：  准备源”后，将转到“步骤 3：目标” 
 
 ![准备目标](./media/vmware-azure-set-up-target/prepare-target-vmware-to-azure.png)
 

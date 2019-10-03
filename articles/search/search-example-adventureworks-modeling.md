@@ -1,27 +1,27 @@
 ---
-title: 示例：为 AdventureWorks Inventory 数据库建模 - Azure 搜索
+title: 例如：为 AdventureWorks Inventory 数据库建模 - Azure 搜索
 description: 了解如何为关系数据建模，将其转换为平展数据集，以便在 Azure 搜索中进行索引编制和全文本搜索。
-author: cstone
-manager: cgronlun
+author: HeidiSteen
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: chstone
-ms.openlocfilehash: 6d5d01dfbbcfda56818f5c38b06117a87e021445
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.date: 09/05/2019
+ms.author: heidist
+ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174561"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274041"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>示例：为 Azure 搜索的 AdventureWorks Inventory 数据库建模
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>例如：为 Azure 搜索的 AdventureWorks Inventory 数据库建模
 
-将结构化数据库内容建模为有效的搜索索引通常不能直接进行。 除了进行计划和更改管理，还必须将源行进行反规范化处理，从表联接状态变为易于搜索的实体。 本文使用在线提供的 AdventureWorks 示例数据，在从数据库到搜索的转换过程中突出显示常见体验。 
+Azure 搜索接受平展行集作为[索引（数据引入）管道](search-what-is-an-index.md)的输入。 如果源数据来自 SQL Server 关系数据库，本文演示了在编制索引之前创建平展行集的一种方法，使用 AdventureWorks 示例数据库作为示例。
 
 ## <a name="about-adventureworks"></a>关于 AdventureWorks
 
-如果有 SQL Server 实例，你可能已熟悉 AdventureWorks 示例数据库。 在此数据库提供的表中，有五个表会公开产品信息。
+如果有 SQL Server 实例，则可能会熟悉[AdventureWorks 示例数据库](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)。 在此数据库提供的表中，有五个表会公开产品信息。
 
 + **ProductModel**：名称
 + **Product**：名称、颜色、成本、大小、重量、图像、类别（每个行都联接到特定的 ProductModel）
@@ -29,7 +29,7 @@ ms.locfileid: "55174561"
 + **ProductModelProductDescription**：区域设置（就具体语言来说，每个行都会将 ProductModel 联接到特定的 ProductDescription）
 + **ProductCategory**：名称、父类别
 
-当前任务是将所有此类数据组合到一个平展的行集中，以便将其引入搜索索引中。 
+此示例的目的是将所有这些数据合并到可以引入搜索索引的平展行集中。 
 
 ## <a name="considering-our-options"></a>考虑我们的选项
 
@@ -43,7 +43,7 @@ ms.locfileid: "55174561"
 
 ## <a name="use-a-collection-data-type"></a>使用 Collection 数据类型
 
-“正确方法”是利用搜索架构功能，该功能在数据库模型中没有直接的对应项：**Collection(Edm.String)**。 如果有一个由单个字符串组成的列表，而不是一个很长的字符串，则使用 Collection 数据类型。 如果有标记或关键字，则对此字段使用 Collection 数据类型。
+“正确方法”是利用搜索架构功能，该功能在数据库模型中没有直接的对应项：**Collection(Edm.String)** 。 此构造在 Azure 搜索索引架构中定义。 如果需要表示单个字符串的列表，而不是非常长的（单个）字符串，则使用集合数据类型。 如果有标记或关键字，则对此字段使用 Collection 数据类型。
 
 针对“color”、“size”和“image”定义 **Collection(Edm.String)** 的多值索引字段后，就会保留用于分面和筛选的辅助信息，不会使用重复项来“污染”索引。 类似地，将聚合函数应用到 Product 表的数字字段，为 **minListPrice** 而不是每个产品 **listPrice** 编制索引。
 
@@ -164,5 +164,3 @@ WHERE
 
 > [!div class="nextstepaction"]
 > 示例：[Azure 搜索中的多层分面分类](search-example-adventureworks-multilevel-faceting.md)
-
-

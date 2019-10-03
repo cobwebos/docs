@@ -1,25 +1,18 @@
 ---
-title: 上线 | Microsoft Docs
+title: 进入正常运行状态 |Azure Marketplace
 description: 上线 API 启动产品/服务上线一览过程。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: ea3f26d70c4a4ce07c988612890687504a4cf5ac
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.author: pabutler
+ms.openlocfilehash: ac56f86bad132f3e00a4b5c2507d65c0722c628c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594672"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935494"
 ---
 <a name="go-live"></a>上线
 =======
@@ -35,14 +28,14 @@ ms.locfileid: "56594672"
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | 要检索的产品/服务的发布者标识符，例如 `contoso`       |  String       |
 | offerId        | 要检索的产品/服务的产品/服务标识符                                   |  String       |
-| api-version    | API 最新版本                                                   |  日期         |
+| api-version    | API 最新版本                                                   |  Date         |
 |  |  |  |
 
 
-<a name="header"></a>标头
+<a name="header"></a>Header
 ------
 
-|  **名称**       |     **值**       |
+|  **名称**       |     **ReplTest1**       |
 |  ---------      |     ----------      |
 | Content-Type    | `application/json`  |
 | 授权   | `Bearer YOUR_TOKEN` |
@@ -59,7 +52,7 @@ ms.locfileid: "56594672"
 
 ### <a name="response-header"></a>响应标头
 
-|  **名称**             |      **值**                                                            |
+|  **名称**             |      **ReplTest1**                                                            |
 |  --------             |      ----------                                                           |
 | Operation-Location    |  要查询的 URL，用于确定操作的当前状态            |
 |  |  |

@@ -4,25 +4,24 @@ description: 在 Azure 上使用 Windows Server 故障转移群集和文件共�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 00c38c5c8140bffe0767ebe69470285bb15f5fc6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540136"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098719"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -199,7 +198,7 @@ ms.locfileid: "58540136"
 > ![Windows][Logo_Windows] Windows
 >
 
-可以使用 [Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址。 
+可以使用[Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址。 
 
 在 SAP 部署中，可使用内部负载均衡器，为 SAP Central Services (ASCS/SCS) 实例创建 Windows 群集配置。
 
@@ -207,7 +206,7 @@ ms.locfileid: "58540136"
 
 > [!NOTE]
 >
-> 此功能仅在 Azure Resource Manager 部署模型中可用。
+> 此功能仅在 Azure 资源管理器部署模型中可用。
 >
 >每个 Azure 内部负载均衡器的专用前端 IP 数有限制。
 >
@@ -216,9 +215,9 @@ ms.locfileid: "58540136"
 > 本文档中介绍的配置尚不支持用于 [Azure 可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)
 > 
 
-有关负载均衡器限制的详细信息，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”。 还可考虑使用 [Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而不是 Azure 负载均衡器的基本 SKU。
+有关负载均衡器限制的详细信息，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]。 还可考虑使用 [Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而不是 Azure 负载均衡器的基本 SKU。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 已配置 WSFC 群集，通过文件共享用于一个 SAP ASCS/SCS 实例，如下图所示。
 
@@ -227,11 +226,11 @@ ms.locfileid: "58540136"
 _**图 1：** 在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
 
 > [!IMPORTANT]
-> 安装必须满足以下条件：
+> 该设置必须满足以下条件：
 > * SAP ASCS/SCS 实例必须共享同一个 WSFC 群集。
 > * 属于不同 SAP SID 的不同 SAP 全局主机文件共享必须共享相同的 SOFS 群集。
 > * 每个数据库管理系统 (DBMS) SID 都必须有自己专用的 WSFC 群集。
-> * 属于同一 SAP 系统 SID 的 SAP 应用程序服务器必须具有自身的专用 VM。
+> * 属于一个 SAP 系统 SID 的 SAP 应用程序服务器必须有自身的专用 VM。
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>使用文件共享实现的 SAP ASCS/SCS 多 SID 体系结构
 
@@ -241,7 +240,7 @@ _**图 1：** 在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
 
 _**图 2：** 两个群集中的 SAP 多 SID 配置_
 
-安装其他**SAP \<SID2 >** 系统等同于安装一个\<SID > 系统。 还需要在 ASCS/SCS 群集和文件共享 SOFS 群集上完成额外两步准备操作。
+安装其他 **\<SAP SID2 >** 系统与安装一个\<SID > 系统相同。 还需要在 ASCS/SCS 群集和文件共享 SOFS 群集上完成额外两步准备操作。
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>为 SAP 多 SID 方案准备基础结构
 
@@ -261,7 +260,7 @@ _**图 2：** 两个群集中的 SAP 多 SID 配置_
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>通过使用现有的 SAP 全局主机在 SOFS 群集上准备基础结构
 
-您可以重复使用现有\<SAPGlobalHost > 和 Volume1 的第一个 SAP \<SID1 > 系统。
+你可以重复使用第\<一个 SAP \<SID1 > 系统的现有 SAPGlobalHost > 和 Volume1。
 
 ![图 3：多 SID SOFS 使用相同的 SAP 全局主机名][sap-ha-guide-figure-8014]
 
@@ -271,7 +270,7 @@ _**图 3：** 多 SID SOFS 使用相同的 SAP 全局主机名_
 >对于第二个 SAP \<SID2> 系统，使用相同的 Volume1 和 \<SAPGlobalHost> 网络名称。
 >因为已经设置了 SAPMNT 作为各种 SAP 系统的共享名称，若要重复使用 \<SAPGlobalHost> 网络名称，则必须使用相同 Volume1.
 >
->文件路径\<SID2 > 全局主机是 C:\ClusterStorage\\**Volume1**\usr\sap\<SID2 > \SYS\.
+>\<SID2 > 全局主机的文件路径为 C:\ClusterStorage\\**Volume1**\usr\sap\<SID2 > \SYS\.
 >
 
 对于 \<SID2> 系统，必须准备 SAP 全局主机 ..\SYS\. SOFS 群集上的文件夹。
@@ -347,7 +346,7 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![图 5：第二个 Volume2 在故障转移群集管理器][sap-ha-guide-figure-8016]
+![图 5：故障转移群集管理器中的第二个 Volume2][sap-ha-guide-figure-8016]
 
 _**图 5：** 故障转移群集管理器中的第二个 Volume2_
 
@@ -404,19 +403,19 @@ _**图 6：** 启动“添加文件共享”向导_
 
 <br>
 
-![图 7："选择 SMB 共享 – 快速"][sap-ha-guide-figure-8018]
+![图 7："选择 SMB 共享-快速"][sap-ha-guide-figure-8018]
 
 _**图 7：** 选择“SMB 共享 - 快速”_
 
 <br>
 
-![图 8：选择"sapglobalhost2"，并指定 Volume2 上的路径][sap-ha-guide-figure-8019]
+![图 8：选择 "sapglobalhost2", 并在 Volume2 上指定路径][sap-ha-guide-figure-8019]
 
 _**图 8：** 选择“sapglobalhost2”，并指定 Volume2 上的路径_
 
 <br>
 
-![图 9：文件共享名设置为"sapmnt"][sap-ha-guide-figure-8020]
+![图 9：将文件共享名设置为 "sapmnt"][sap-ha-guide-figure-8020]
 
 _**图 9：** 将文件共享名设置为“sapmnt”_
 
@@ -444,7 +443,7 @@ _**图 12：** 选择“创建”_
 
 <br>
 
-![图 13：第二个 sapmnt 绑定到 sapglobal2 主机和 Volume2 已创建][sap-ha-guide-figure-8024]
+![图 13：已创建绑定到 sapglobal2 主机和 Volume2 的第二个 sapmnt][sap-ha-guide-figure-8024]
 
 _**图 13：** 绑定到 sapglobal2 主机和 Volume2 的第二个 sapmnt 已创建_
 
@@ -461,10 +460,10 @@ _**图 13：** 绑定到 sapglobal2 主机和 Volume2 的第二个 sapmnt 已创
 
 ## <a name="next-steps"></a>后续步骤
 
-* [不使用共享磁盘在故障转移群集上安装 ASCS/SCS 实例][sap-official-ha-file-share-document]：HA 文件共享的官方 SAP 指南
+* [在没有共享磁盘的故障转移群集上安装 ASCS/SCS 实例][sap-official-ha-file-share-document]:HA 文件共享的官方 SAP 指南
 
 * [Windows Server 2016 中的存储空间直通][s2d-in-win-2016]
 
 * [应用程序数据的横向扩展文件服务器概述][sofs-overview]
 
-* [Windows Server 2016 中存储方面的新增功能][new-in-win-2016-storage]
+* [Windows Server 2016 中的存储的新增功能][new-in-win-2016-storage]

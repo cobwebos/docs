@@ -3,7 +3,7 @@ title: 开始使用队列存储和 Visual Studio 连接服务（云服务）| Mi
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的云服务项目中使用 Azure 队列存储
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: da587aac-5e64-4e9a-8405-44cc1924881d
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 28a7de1b43d793641237197aea841022996b07e3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5ea0af23ef8cf41b20de033d38e4d8652f9f8310
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994037"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510695"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务（云服务项目）
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -105,7 +105,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 * 可以获取一批消息（最多 32 条）。
 * 可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少的时间来完全处理每个消息。 以下代码示例使用 **GetMessages** 方法在一次调用中获取 20 条消息。 然后，它使用 **foreach** 循环处理每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。 请注意，5 分钟超时时间对于所有消息都是同时开始的，因此在调用 **GetMessages**5 分钟后，尚未删除的任何消息都将再次变得可见。
 
-下面是一个示例：
+以下是一个示例：
 
     foreach (CloudQueueMessage message in messageQueue.GetMessages(20, TimeSpan.FromMinutes(5)))
     {

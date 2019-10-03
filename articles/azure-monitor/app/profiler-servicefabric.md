@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 0b1a06d181fc4d2a44d389d47d1f9480c2fdcb40
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 5c01c2721a29bf142ee0ba53c9bc29ec66a7278f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401108"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64727915"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>使用 Application Insights 探查实时 Azure Service Fabric 应用程序
 
@@ -32,7 +32,7 @@ Azure 诊断中包括了 Application Insights Profiler。 可以使用 Azure 资
 
 若要设置环境，请执行以下操作：
 
-1. 若要确保使用的是 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本，只需确认部署的 OS 是 `Windows Server 2012 R2` 或更高版本。
+1. Profiler 支持 .NET Framework 和 .Net Core。 如果使用的是 .NET Framework，请确保使用 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更高版本。 只需确认部署的 OS 是 `Windows Server 2012 R2` 或更高版本。 Profiler 支持 .NET Core 2.1 及更高版本的应用程序。
 
 1. 在部署模板文件中搜索 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)。
 
@@ -55,11 +55,10 @@ Azure 诊断中包括了 Application Insights Profiler。 可以使用 Azure 资
   如果你的设置正确，则在安装 Azure 诊断扩展时将安装并启用 Application Insights Profiler。 
 
 1. 将 Application Insights 添加到你的 Service Fabric 应用程序。  
-  Profiler 收集你的请求的配置文件，为你的应用程序必须跟踪使用 Application Insights 的操作。 对于无状态 Api，您可以参考的说明[进行分析跟踪请求](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)。 有关跟踪中其他类型的应用程序的自定义操作的详细信息，请参阅[跟踪使用 Application Insights.NET SDK 的自定义操作](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json)。
+  要使 Profiler 收集请求的配置文件，应用程序必须使用 Application Insights 跟踪操作。 对于无状态 API，可以参考[跟踪分析请求](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)的说明。 有关在其他类型的应用中跟踪自定义操作的详细信息，请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json)。
 
 1. 重新部署应用程序。
 
-> [提示] 对于虚拟机，上述基于 JSON 的步骤的替代方法是在 Azure 门户中导航到“虚拟机”>“诊断设置”>“接收器”，将向 Application Insights 发送诊断数据设置为“已启用”，然后选择 Application Insights 帐户或特定的 ikey>。
 
 ## <a name="next-steps"></a>后续步骤
 

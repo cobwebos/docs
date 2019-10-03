@@ -4,19 +4,19 @@ description: 在删除含有附加 VHD 的存储资源时如何进行故障排�
 keywords: ''
 services: virtual-machines
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: a1eb946d3f1b18aaa86735dedcfbaa1fd6a89621
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089975"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058150"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>排查存储资源删除错误
 
@@ -97,7 +97,7 @@ Azure 阻止删除附加到 VM 的磁盘，以防发生损坏。 它还会阻止
 
      ![门户屏幕截图，其中打开了存储“blob 元数据”窗格](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
-9. 选择“保存”。 此时该磁盘将与 VM 分离，并且 VHD 将不再租用。 可能需要几分钟才能释放租约。 若要验证租用是否已解除，请转到 blob 位置，再检查“blob 属性”窗格中的“租用状态”值是否为“已解锁”或“可租用”。
+9. 选择**保存**。 此时该磁盘将与 VM 分离，并且 VHD 将不再租用。 可能需要几分钟才能释放租约。 若要验证租用是否已解除，请转到 blob 位置，再检查“blob 属性”窗格中的“租用状态”值是否为“已解锁”或“可租用”。
 
 [Storage deletion errors in Resource Manager deployment]: #storage-delete-errors-in-rm
 

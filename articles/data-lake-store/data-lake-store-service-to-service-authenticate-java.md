@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c32eada2acca73e089c2296ce8e59c529d7af665
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879159"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60194988"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-java"></a>使用 Java 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ ms.locfileid: "58879159"
 ## <a name="service-to-service-authentication"></a>服务到服务身份验证
 1. 在命令行使用 [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 或通过 IDE 创建一个 Maven 项目。 有关如何使用 IntelliJ 创建 Java 项目的说明，请参阅[此文](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 有关如何使用 Eclipse 创建项目的说明，请参阅[此文](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。
 
-2. 将以下依赖项添加到 Maven pom.xml 文件。 在 \</project> 标记前添加以下代码片段：
+2. 将以下依赖项添加到 Maven pom.xml  文件。 在 \</project> 标记前添加以下代码片段  ：
    
         <dependencies>
           <dependency>
@@ -56,7 +56,7 @@ ms.locfileid: "58879159"
           </dependency>
         </dependencies>
    
-    第一个依赖项从 maven 存储库使用 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 使用 [slf4j](https://www.slf4j.org/) 日志记录体系，允许用户从多种流行的记录框架（如 log4j、Java 日志记录、logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定。 若要在应用中使用其他日志记录选项，请参阅[此文](https://www.slf4j.org/manual.html#projectDep)。
+    第一个依赖项从 maven 存储库使用 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 使用 [slf4j](https://www.slf4j.org/) 日志记录体系，允许用户从多种流行的记录框架（如 log4j、Java 日志记录、logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定  。 若要在应用中使用其他日志记录选项，请参阅[此文](https://www.slf4j.org/manual.html#projectDep)。
 
 3. 将以下导入语句添加到应用程序。
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: d1aa3e3a23acf82af8435cbb075fac38353500e5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bc8d20abcc7bc66d319874978e134c5c86c86e1c
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538725"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859047"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>快速入门：使用 REST API 和 JavaScript 检测图像中的人脸
 
@@ -41,7 +41,7 @@ ms.locfileid: "57538725"
 </html>
 ```
 
-然后在该文档的 `body` 元素中添加以下代码。 这将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”按钮、响应窗格和图像显示窗格。
+然后在该文档的 `body` 元素中添加以下代码。 此代码将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”  按钮、响应窗格和图像显示窗格。
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +65,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>编写 JavaScript 脚本
 
-在该文档中 `h1` 元素的正上方添加以下代码。 这会设置调用人脸 API 的 JavaScript 代码。
+在该文档中 `h1` 元素的正上方添加以下代码。 此代码会设置调用人脸 API 的 JavaScript 代码。
 
 ```html
 <script type="text/javascript">
@@ -73,16 +73,8 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
     
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change 
-        // this region.
         var uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<My Endpoint String>.com/face/v1.0/detect";
     
         // Request parameters.
         var params = {
@@ -132,15 +124,17 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 </script>
 ```
 
-需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的区域标识符（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 `returnFaceAttributes` 字段指定要检索的人脸属性；你可能希望根据自己的预期用途更改此字符串。
+需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的终结点字符串。 `returnFaceAttributes` 字段指定要检索的人脸属性；你可能希望根据自己的预期用途更改此字符串。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>运行脚本
 
-在浏览器中打开 *detectFaces.html*。 单击“分析人脸”按钮时，应用应显示给定 URL 中的图像并打印出人脸数据的 JSON 字符串。
+在浏览器中打开 *detectFaces.html*。 单击“分析人脸”  按钮时，应用应显示给定 URL 中的图像并打印出人脸数据的 JSON 字符串。
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-下面是成功的 JSON 响应的示例。
+以下文本是成功的 JSON 响应的示例。
 
 ```json
 [

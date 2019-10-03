@@ -1,5 +1,5 @@
 ---
-title: 开始使用基于证书的身份验证-Azure Active Directory
+title: 基于证书的身份验证入门 - Azure Active Directory
 description: 了解如何在环境中配置基于证书的身份验证
 services: active-directory
 ms.service: active-directory
@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f57d4615fc80df6c5df9ba295288ad71ae12fa23
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310823"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60359069"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
 
@@ -60,7 +60,7 @@ ms.locfileid: "58310823"
 
 若要在 Azure Active Directory 中配置证书颁发机构，针对每个证书颁发机构，需要上传以下信息：
 
-* 证书的公共部分，格式为 .cer
+* 证书的公共部分，格式为 .cer 
 * 证书吊销列表 (CRL) 所在的面向 Internet 的 URL
 
 证书颁发机构的架构如下所示：
@@ -136,7 +136,7 @@ ms.locfileid: "58310823"
 
 ## <a name="step-3-configure-revocation"></a>步骤 3：配置吊销
 
-要吊销客户端证书，Azure Active Directory 会从作为证书颁发机构信息的一部分上传的 URL 中提取证书吊销列表 (CRL)，并将其缓存。 CRL 中的上次发布时间戳（“生效日期”属性）用于确保 CRL 仍然有效。 将定期引用 CRL，以撤销对该列表中证书的访问权限。
+要吊销客户端证书，Azure Active Directory 会从作为证书颁发机构信息的一部分上传的 URL 中提取证书吊销列表 (CRL)，并将其缓存。 CRL 中的上次发布时间戳（“生效日期”属性）用于确保 CRL 仍然有效。  将定期引用 CRL，以撤销对该列表中证书的访问权限。
 
 如果需要更即时的吊销（例如，如果用户丢失了设备），可以使用户的授权令牌失效。 若要使授权令牌失效，请使用 Windows PowerShell 为此特定用户设置 **StsRefreshTokenValidFrom** 字段。 必须为要撤销其访问权限的每个用户更新 **StsRefreshTokenValidFrom** 字段。
 

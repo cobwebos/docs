@@ -5,16 +5,18 @@ ms.service: iot-central
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 02/15/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 322be1e13662d92a3cb0a805a9ccaacd05928f7d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 897b72dd7b292492e45cdc7401fe1acc5c86ca20
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328089"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877457"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>在 Power BI 仪表板中可视化和分析 Azure IoT Central 数据
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 *本主题适用于管理员。*
 
@@ -66,7 +68,7 @@ Azure 数据工厂作为链接服务连接到 SQL 数据库。 它运行存储�
 ### <a name="azure-sql-database"></a>Azure SQL 数据库
 将自动创建这些表以填充默认报表。 探索 Power BI 中的这些架构，且可以生成自己对此数据的可视化效果。
 
-| 表名称 |
+| 表单名称 |
 |------------|
 |[analytics].[Measurements]|
 |[analytics].[Messages]|

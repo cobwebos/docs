@@ -4,14 +4,14 @@ description: 了解有关 Azure Cosmos DB 中的访问控制概念，包括主�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 133181fcc76d759a57725df1ff965966f3797399
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: f2e01e42a53f6f099191c03f45d6521668ea73a1
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245705"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616671"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
 
@@ -28,7 +28,7 @@ Azure Cosmos DB 使用两种类型的密钥来验证用户身份并提供对其�
 
 ## <a name="master-keys"></a>主密钥 
 
-主密钥提供对数据库帐户中所有管理资源的访问权限。 主密钥：  
+主密钥提供对数据库帐户的所有管理资源的访问权限。 主密钥：  
 - 提供对帐户、数据库、用户和权限的访问权限。 
 - 无法用于提供对容器和文档的精细访问权限。
 - 在创建帐户过程中创建。
@@ -104,8 +104,8 @@ Cosmos DB 资源令牌提供一种安全的替代方案，使客户端能够根�
 
 <a id="users"></a>
 
-## <a name="users"></a>用户
-Cosmos DB 用户与 Cosmos DB 数据库关联。  每个数据库可以包含零个或多个 Cosmos DB 用户。  以下代码示例演示如何创建 Cosmos DB 用户资源。
+## <a name="users"></a>位用户
+Cosmos DB 用户与 Cosmos 数据库相关联。  每个数据库可以包含零个或多个 Cosmos DB 用户。  以下代码示例演示如何创建 Cosmos DB 用户资源。
 
 ```csharp
 //Create a user.
@@ -183,7 +183,7 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 4. 在“分配其访问权限”框中，选择“Azure AD 用户、组或应用程序”。
 5. 在你想要授予访问权限的目录中选择用户、组或应用程序。  可以通过显示名称、电子邮件地址或对象标识符搜索目录。
     所选用户、组或应用程序会显示在所选成员列表中。
-6. 单击“ **保存**”。
+6. 单击“保存”。
 
 实体现在便可以读取 Azure Cosmos DB 资源。
 
@@ -193,5 +193,5 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* 若要详细了解 Cosmos DB 数据库安全性，请参阅 [Cosmos DB：数据库安全性](database-security.md)。
+* 若要了解有关 Cosmos 数据库安全性的详细[信息, 请参阅 Cosmos DB:数据库安全性](database-security.md)。
 * 若要了解如何构造 Azure Cosmos DB 授权令牌，请参阅 [Azure Cosmos DB 资源的访问控制](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)。

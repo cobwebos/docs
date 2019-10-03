@@ -1,22 +1,22 @@
 ---
-title: 配置容器
-titlesuffix: Text Analytics - Azure Cognitive Services
+title: 配置容器-文本分析
+titleSuffix: Azure Cognitive Services
 description: 文本分析为每个容器提供一个通用配置框架，以便可以轻松配置和管理容器的存储、日志记录、遥测和安全性设置。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
-ms.openlocfilehash: 1333aefc145e95223624f42a28ec0bb31ab70065
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 08/21/2019
+ms.author: dapine
+ms.openlocfilehash: f1c42002343de1dd3b3ef6b9c9e35f458db925f4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011752"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051120"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>配置文本分析 docker 容器
 
@@ -31,11 +31,11 @@ ms.locfileid: "60011752"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值，该值必须为有效的密钥_认知服务_为指定的资源[ `Billing` ](#billing-configuration-setting)配置设置。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，并且该值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的_文本分析_资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**资源管理下**密钥**
+* Azure 门户：在 "**密钥**" 下**文本分析**资源管理
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -43,17 +43,15 @@ ms.locfileid: "60011752"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing`设置指定的终结点 URI 的_认知服务_使用在 Azure 上的资源要计数的容器的计费信息。 必须指定此配置设置，一个值，该值必须是有效的终结点 URI __认知服务_在 Azure 上的资源。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器的账单信息的文本分析资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上的_文本分析_资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**概述，标记为 `Endpoint`
+* Azure 门户：**文本分析**概述, 标记`Endpoint`
 
-您需要添加`text/analytics/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。
-
-|需要| Name | 数据类型 | 描述 |
+|必填| 姓名 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.1` |
+|是| `Billing` | String | 所需计费终结点 URI |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -79,10 +77,10 @@ ms.locfileid: "60011752"
 
 主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| Name | 数据类型 | 描述 |
+|可选| 姓名 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | 文本分析容器不使用此项。|
-|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>例如：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例 
 
@@ -91,66 +89,30 @@ ms.locfileid: "60011752"
 * **行继续符**：以下各节中的 docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
 * **参数顺序**：除非非常熟悉 docker 容器，否则不要更改参数顺序。
 
-您需要添加`text/analytics/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。
-
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | Value | 格式或示例 |
+| 占位符 | ReplTest1 | 格式或示例 |
 |-------------|-------|---|
-|{BILLING_KEY} | 为终结点密钥的`Cognitive Services`可在 Azure 上的资源`Cognitive Services`密钥页。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | 计费的终结点值是可在 Azure 上`Cognitive Services`概述页。|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+| **{API_KEY}** | Azure `Text Analytics`“密钥”页上提供的 `Text Analytics` 资源的终结点密钥。 |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | Azure `Text Analytics`“概览”页面上提供了账单终结点值。| 有关显式示例, 请参阅[收集所需的参数](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters)。 |
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](how-tos/text-analytics-how-to-install-containers.md#billing)。
-> ApiKey 当值**键**从 Azure`Cognitive Services`资源密钥页。 
+> ApiKey 值是来自 Azure `Text Analytics`“资源密钥”页的“密钥”。 
 
-## <a name="key-phrase-extraction-container-docker-examples"></a>关键短语提取容器 docker 示例
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[关键短语提取](#tab/keyphrase)
 
-以下 docker 示例适用于关键短语提取容器。 
+[!INCLUDE [key-phrase-extraction-docker-examples](includes/key-phrase-extraction-docker-examples.md)]
 
-### <a name="basic-example"></a>基本示例 
+#### <a name="language-detectiontablanguage"></a>[语言检测](#tab/language)
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} 
-  ```
+[!INCLUDE [language-detection-docker-examples](includes/language-detection-docker-examples.md)]
 
-### <a name="logging-example"></a>日志记录示例 
+#### <a name="sentiment-analysistabsentiment"></a>[情绪分析](#tab/sentiment)
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel:Default=Information
-  ```
+[!INCLUDE [sentiment-analysis-docker-examples](includes/sentiment-analysis-docker-examples.md)]
 
-## <a name="language-detection-container-docker-examples"></a>语言检测容器 docker 示例
-
-以下 docker 示例适用于语言检测容器。 
-
-### <a name="basic-example"></a>基本示例
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} 
-  ```
-
-### <a name="logging-example"></a>日志记录示例
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel:Default=Information
-  ```
- 
-## <a name="sentiment-analysis-container-docker-examples"></a>情绪分析容器 docker 示例
-
-以下 docker 示例适用于情绪分析容器。 
-
-### <a name="basic-example"></a>基本示例
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} 
-  ```
-
-### <a name="logging-example"></a>日志记录示例
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} Logging:Console:LogLevel:Default=Information
-  ```
+***
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,36 +14,42 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 6c9b257ab88b3564253b0f48d953094f84a1d71d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: b4642ecfad17bf3e926e9efdec034bbe4aa6c20e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051433"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076310"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 ASP.NET Core 应用
 
-Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码即可在一个位置轻松存储和管理所有应用程序设置。 本快速入门将介绍如何将服务合并到 ASP.NET Core web 应用中。 
-
-ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，生成基于键值的单个配置对象。 这些数据源称为配置提供程序。 由于应用程序配置的 .NET Core 客户端作为此类提供程序实现，因此服务就像是另一个数据源。
-
-你可使用任意代码编辑器来执行该快速入门中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
+在本快速入门中，会将 Azure 应用程序配置合并到 ASP.NET Core 应用中，以集中存储和管理与代码分离的应用程序设置。 ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，生成基于键值的单个配置对象。 这些数据源称为配置提供程序  。 由于应用程序配置的 .NET Core 客户端作为此类提供程序实现，因此服务就像是另一个数据源。
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成本快速入门，请安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- [.NET Core SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
+6. 选择“配置资源管理器” > “+创建”来添加以下键值对   ：
+
+    | 密钥 | 值 |
+    |---|---|
+    | TestApp:Settings:BackgroundColor | 白色 |
+    | TestApp:Settings:FontSize | 24 |
+    | TestApp:Settings:FontColor | 黑色 |
+    | TestApp:Settings:Message | Azure 应用配置的数据 |
+
+    暂时将“标签”和“内容类型”保留为空   。
+
 ## <a name="create-an-aspnet-core-web-app"></a>创建一个 ASP.NET Core Web 应用
 
 使用 [.NET Core命令行接口 (CLI)](https://docs.microsoft.com/dotnet/core/tools/) 创建新的 ASP.NET Core MVC Web 应用项目。 通过 Visual Studio 使用 .NET Core CLI 的优点是，它可用于 Windows、macOS 和 Linux 平台。
 
-1. 为项目新建一个文件夹。 在此快速入门中，将其命名为 TestAppConfig。
+1. 为项目新建一个文件夹。 在此快速入门中，将其命名为 TestAppConfig  。
 
 2. 在新文件夹中，运行以下命令，创建新的 ASP.NET Core MVC Web 应用项目：
 
@@ -51,9 +57,9 @@ ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，�
 
 ## <a name="add-secret-manager"></a>添加机密管理器
 
-向项目添加[机密管理器工具](https://docs.microsoft.com/aspnet/core/security/app-secrets)。 机密管理器工具存储敏感数据，以便用于项目树之外的开发工作。 此方法有助于防止意外共享源代码中的应用密码。
+若要使用机密管理器，请将 `UserSecretsId` 元素添加到 .csproj  文件。
 
-- 打开 .csproj 文件。 如下所示，添加 `UserSecretsId` 元素，将其值替换为你自己的值（通常为 GUID）。 保存文件。
+- 打开 *.csproj* 文件。 添加 `UserSecretsId` 元素，如下所示。 可以使用相同的 GUID，也可以将此值替换为你自己的值。 保存文件。
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -71,29 +77,34 @@ ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，�
     </Project>
     ```
 
+机密管理器工具存储敏感数据，以便用于项目树之外的开发工作。 此方法有助于防止意外共享源代码中的应用密码。 有关机密管理器的详细信息，请参阅[在 ASP.NET Core 开发中安全存储应用机密](https://docs.microsoft.com/aspnet/core/security/app-secrets)
+
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 通过运行以下命令，添加对 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 包的引用：
+1. 通过运行以下命令，添加对 `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet 包的引用：
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-007830001
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
 
 2. 运行以下命令，还原项目包：
 
         dotnet restore
 
-3. 将名为 ConnectionStrings:AppConfig 的机密添加到机密管理器。
+3. 将名为 ConnectionStrings:AppConfig 的机密添加到机密管理器  。
 
     此机密包含用于访问应用程序配置存储区的连接字符串。 将以下命令中的值替换为应用程序配置存储区的连接字符串。
 
-    必须在 .csproj 文件所在的同一目录中执行此命令。
+    必须在 .csproj 文件所在的同一目录中执行此命令  。
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
-    机密管理器仅用于本地测试 web 应用程序。 应用部署（例如部署到 [Azure 应用服务](https://azure.microsoft.com/services/app-service/web)）后，你将使用应用程序设置（例如应用服务中的连接字符串）。 使用此设置，而不使用机密管理器存储连接字符串。
+    > [!IMPORTANT]
+    > 有些 shell 会截断连接字符串，除非将连接字符串括在引号中。 确保 `dotnet user-secrets` 命令的输出显示整个连接字符串。 如果未显示，请重新运行该命令，并将连接字符串括在引号中。
+
+    机密管理器仅用于本地测试 web 应用程序。 例如，将应用部署到 [Azure 应用服务](https://azure.microsoft.com/services/app-service/web)后，可以使用应用服务中的“连接字符串”应用程序设置，而无需使用机密管理器来存储连接字符串。 
 
     此机密使用配置 API 进行访问。 在所有支持的平台上，冒号 (:) 可以在配置 API 的配置名称中使用。 请参阅[按环境进行的配置](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)。
 
-4. 打开 *Program.cs*，并添加对应用程序配置 .NET Core 配置提供程序的引用。
+4. 打开 *Program.cs*，并添加对 .NET Core 应用程序配置提供程序的引用。
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -107,22 +118,17 @@ ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，�
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(options => {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .SetOfflineCache(new OfflineFileCache());
-                });
+                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
             })
             .UseStartup<Startup>();
     ```
 
-6. 在“视图”>“主页”目录中打开 Index.cshtml，并将其内容替换以下代码：
+6. 在“视图”>“主页”目录中打开 *Index.cshtml*，并将其内容替换以下代码：
 
     ```html
     @using Microsoft.Extensions.Configuration
     @inject IConfiguration Configuration
 
-    <!DOCTYPE html>
-    <html lang="en">
     <style>
         body {
             background-color: @Configuration["TestApp:Settings:BackgroundColor"]
@@ -132,16 +138,11 @@ ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，�
             font-size: @Configuration["TestApp:Settings:FontSize"];
         }
     </style>
-    <head>
-        <title>Index View</title>
-    </head>
-    <body>
-        <h1>@Configuration["TestApp:Settings:Message"]</h1>
-    </body>
-    </html>
+
+    <h1>@Configuration["TestApp:Settings:Message"]</h1>
     ```
 
-7. 在“视图”>“共享”目录中打开 _Layout.cshtml，并将其内容替换以下代码：
+7. 在“视图”>“共享”目录中打开 *_Layout.cshtml*，并将其内容替换以下代码：
 
     ```html
     <!DOCTYPE html>
@@ -180,15 +181,13 @@ ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，�
 
 3. 启动浏览器窗口并转到 `http://localhost:5000`，即本地托管的 Web 应用的默认 URL。
 
-    ![本地启动应用快速入门](./media/quickstarts/aspnet-core-app-launch-local.png)
-
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个新的应用配置存储区，并通过[应用配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其用于 ASP.NET Core Web 应用。 若要深入了解如何使用应用程序配置，请继续学习下一个教程，其中将介绍如何进行身份验证。
+在本快速入门中，你创建了一个新的应用配置存储区，并通过[应用配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其用于 ASP.NET Core Web 应用。 若要详细了解如何使用应用配置，请继续学习下一教程，该教程演示如何将 Web 应用配置为动态刷新配置设置。
 
 > [!div class="nextstepaction"]
-> [用于 Azure 资源集成的托管标识](./integrate-azure-managed-service-identity.md)
+> [在 ASP.NET Core 应用中使用动态配置](./enable-dynamic-configuration-aspnet-core.md)

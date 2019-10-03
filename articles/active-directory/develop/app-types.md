@@ -3,8 +3,8 @@ title: v1.0 中的应用程序类型 | Azure
 description: 介绍 Azure Active Directory v2.0 终结点支持的应用和方案类型。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef180fb444e32e8b055837fd418e21162ff58339
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: efed9e35aed729c9efa39b0772b681d8c53ba7b8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191463"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65540665"
 ---
 # <a name="application-types-in-v10"></a>v1.0 中的应用程序类型
 
@@ -34,11 +34,11 @@ Azure Active Directory (Azure AD) 支持各种新型应用体系结构的身份�
 
 下面是 Azure AD 支持的五种主要应用程序方案：
 
-- **[单页应用程序 (SPA)](single-page-application.md)**：用户需要登录到受 Azure AD 保护的单页应用程序。
-- **[Web 浏览器到 Web 应用程序](web-app.md)**：用户需要登录到受 Azure AD 保护的 Web 应用程序。
-- **[本机应用程序到 Web API](native-app.md)**：在手机、平板电脑或电脑上运行的本机应用程序需要对用户进行身份验证以通过受 Azure AD 保护的 Web API 获取资源。
-- **[Web 应用程序到 Web API](web-api.md)**：Web 应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
-- **[守护程序或服务器应用程序到 Web API](service-to-service.md)**：没有 Web 用户界面的守护程序应用程序或服务器应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
+- **[单页应用程序 (SPA)](single-page-application.md)** ：用户需要登录到受 Azure AD 保护的单页应用程序。
+- **[Web 浏览器到 Web 应用程序](web-app.md)** ：用户需要登录到受 Azure AD 保护的 Web 应用程序。
+- **[本机应用程序到 Web API](native-app.md)** ：在手机、平板电脑或电脑上运行的本机应用程序需要对用户进行身份验证以通过受 Azure AD 保护的 Web API 获取资源。
+- **[Web 应用程序到 Web API](web-api.md)** ：Web 应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
+- **[守护程序或服务器应用程序到 Web API](service-to-service.md)** ：没有 Web 用户界面的守护程序应用程序或服务器应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
 
 在开始使用代码之前，请打开链接详细了解每种类型应用并了解高级方案。 还可以了解在编写适用于 v1.0 终结点或 v2.0 终结点的特定应用时需要了解的差异。
 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) 支持各种新型应用体系结构的身份�
   * **密钥** - 向 Azure AD 进行身份验证以调用 Web API 时会随应用程序 ID 一起发送的密钥。
 * Azure AD 需要确保应用程序具有访问目录数据、组织中的其他应用程序等内容所需的权限。
 
-有关详细信息，请了解如何[向 Azure AD v1.0 终结点注册应用](quickstart-v1-add-azure-ad-app.md)。
+有关详细信息，请了解如何[注册应用](quickstart-register-app.md)。
 
 ## <a name="single-tenant-and-multi-tenant-apps"></a>单租户应用和多租户应用
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) 支持各种新型应用体系结构的身份�
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>开发单租户应用或多租户应用时的其他注意事项
 
-与开发单租户应用程序相比，当开发多租户应用程序时，会出现一些额外的注意事项。 例如，如果要使应用程序可供多个目录中的用户使用，需要一种机制来确定用户在哪个租户中。 单租户应用程序只需要在其自己的目录中查找用户，而多租户应用程序需要从 Azure AD 中的所有目录来识别特定用户。 为此，Azure AD 提供了一个任何多租户应用程序都可以在其中对登录请求进行定向的通用身份验证终结点，而不是提供特定于租户的终结点。 对于 Azure AD 中的所有目录，此终结点为 https://login.microsoftonline.com/common，而特定于租户的终结点可能为 https://login.microsoftonline.com/contoso.onmicrosoft.com。 在开发应用程序时考虑通用终结点尤为重要，因为在登录、注销和令牌验证期间需要必要的逻辑来处理多租户。
+与开发单租户应用程序相比，当开发多租户应用程序时，会出现一些额外的注意事项。 例如，如果要使应用程序可供多个目录中的用户使用，需要一种机制来确定用户在哪个租户中。 单租户应用程序只需要在其自己的目录中查找用户，而多租户应用程序需要从 Azure AD 中的所有目录来识别特定用户。 为此，Azure AD 提供了一个任何多租户应用程序都可以在其中对登录请求进行定向的通用身份验证终结点，而不是提供特定于租户的终结点。 对于 Azure AD 中的所有目录，此终结点为 https://login.microsoftonline.com/common ，而特定于租户的终结点可能为 https://login.microsoftonline.com/contoso.onmicrosoft.com 。 在开发应用程序时考虑通用终结点尤为重要，因为在登录、注销和令牌验证期间需要必要的逻辑来处理多租户。
 
 如果当前在开发单租户应用程序但希望使其可供许多组织使用，可以轻松地在 Azure AD 中更改该应用程序及其配置以使其支持多租户。 此外，无论是在单租户应用程序中还是在多租户应用程序中提供身份验证，Azure AD 都将为所有目录中的所有令牌使用相同的签名密钥。
 

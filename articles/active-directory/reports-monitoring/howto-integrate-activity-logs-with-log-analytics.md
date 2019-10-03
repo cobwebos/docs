@@ -1,9 +1,9 @@
 ---
-title: 将 Azure Active Directory 日志流式传输到 Azure Monitor 日志（预览版）| Microsoft Docs
-description: 了解如何将 Azure Active Directory 日志与 Azure Monitor 日志集成（预览版）
+title: 将 Azure Active Directory 日志流式传输到 Azure Monitor 日志 |Microsoft Docs
+description: 了解如何将 Azure Active Directory 日志与 Azure Monitor 日志集成
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
@@ -13,18 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: markvi
+ms.date: 04/18/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 056a529101ffc39170ea057832bcd50b283505be
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: bffe16d604ac6b86b489092f50fbdc0b856867b3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436263"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989771"
 ---
-# <a name="integrate-azure-ad-logs-with-azure-monitor-logs-preview"></a>将 Azure AD 日志与 Azure Monitor 日志集成（预览版）
+# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>将 Azure AD 日志与 Azure Monitor 日志集成
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 使用 Azure Monitor 日志可以跨各种数据源查询数据以查找特定事件、分析趋势和执行关联。 通过将 Azure AD 活动日志与 Azure Monitor 日志集成，你现在可以执行以下任务：
 
@@ -38,8 +40,6 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 
 本文介绍如何将 Azure Active Directory (Azure AD) 日志与 Azure Monitor 集成。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 ## <a name="supported-reports"></a>支持的报表
 
 可以将审核活动日志和登录活动日志路由到 Azure Monitor 日志以供进一步分析。 
@@ -51,16 +51,16 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 > 目前不支持 B2C 相关的审核和登录活动日志。
 >
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>先决条件 
 
-若要使用此功能，需满足以下条件：
+若要使用此功能，需满足以下条件:
 
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * Azure AD 租户。
 * 一个是 Azure AD 租户的全局管理员或安全管理员的用户。
 * 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
 
-## <a name="send-logs-to-azure-monitor-logs"></a>将日志发送到 Azure Monitor 日志
+## <a name="send-logs-to-azure-monitor"></a>将日志发送到 Azure Monitor
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
@@ -83,4 +83,4 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Azure Monitor 日志分析 Azure AD 活动日志](howto-analyze-activity-logs-log-analytics.md)
-* [安装和使用用于 Azure Active Directory 的 Log Analytics 视图](howto-install-use-log-analytics-views.md)
+* [安装和使用用于 Azure Active Directory 的日志分析视图](howto-install-use-log-analytics-views.md)

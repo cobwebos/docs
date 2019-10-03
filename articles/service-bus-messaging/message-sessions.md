@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500135"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091816"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>消息会话：先进先出 (FIFO) 
 
@@ -40,6 +40,9 @@ ms.locfileid: "59500135"
 在门户中，选中下图中展示的复选框设置标志：
 
 ![][2]
+
+> [!NOTE]
+> 在队列或订阅上启用会话时，客户端应用程序无法***再***发送/接收常规消息。 所有消息都必须作为会话的一部分进行发送（通过设置会话 id）并接收会话接收。
 
 会话 API 存在于队列和订阅客户端上。 可以使用一个命令性模型，控制会话和消息的接收时间；还可以使用一个基于处理程序的模型（类似于 OnMessage），此模型简化了接收循环的管理操作。
 
@@ -77,10 +80,19 @@ ms.locfileid: "59500135"
 
 队列或订阅中保留的会话状态计入相应实体的存储配额。 因此，当应用程序完成会话时，建议应用程序清理保留的状态，以杜绝外部管理成本。
 
+## <a name="impact-of-delivery-count"></a>传递计数的影响
+
+会话上下文中每条消息的传递数定义与会话的由于没有中的定义略有不同。 下面是一个表，汇总了传递计数增加的时间。
+
+| 应用场景 | 消息的传递计数是否递增 |
+|----------|---------------------------------------------|
+| 会话被接受，但会话锁过期（由于超时） | 是 |
+| 会话被接受，会话中的消息不会完成（即使它们已被锁定），会话也会关闭 | 否 |
+| 接受会话，消息完成，然后显式关闭会话 | 不适用（这是标准流。 此处的消息将从会话中删除） |
+
 ## <a name="next-steps"></a>后续步骤
 
-- [完整示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient)展示了如何使用 .NET Standard 库发送和接收服务总线队列中基于会话的消息。
-- [示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions)展示了如何使用 .NET Framework 客户端处理会话感知消息。 
+- 有关使用 .NET Framework 客户端处理会话感知消息的示例，请参见 [Microsoft.Azure.ServiceBus 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions)或 [Microsoft.ServiceBus.Messaging 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions)。 
 
 若要了解有关服务总线消息传送的详细信息，请参阅以下主题：
 

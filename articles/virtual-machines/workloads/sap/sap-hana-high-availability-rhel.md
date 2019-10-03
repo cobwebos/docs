@@ -4,21 +4,20 @@ description: 在 Azure 虚拟机 (VM) 上建立 SAP HANA 的高可用性。
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 1be3c411a208a2a9da1a4f6a319fdf37cc8aa2dd
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f51870fb8f6ed71aab2558099c2361bf6e340493
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669038"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078518"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -28,18 +27,18 @@ ms.locfileid: "58669038"
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
 [1944799]:https://launchpad.support.sap.com/#/notes/1944799
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
-[2292690]:https://launchpad.support.sap.com/#/notes/2292690
-[2455582]:https://launchpad.support.sap.com/#/notes/2455582
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[2292690]: https://launchpad.support.sap.com/#/notes/2292690
+[2455582]: https://launchpad.support.sap.com/#/notes/2455582
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2009879]: https://launchpad.support.sap.com/#/notes/2009879
 
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
 [template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
@@ -66,8 +65,8 @@ SAP HANA 复制由一个主节点和至少一个辅助节点组成。 对主节�
 * SAP 说明 [2243692] 包含 Azure 中的 Linux 上的 SAP 许可的相关信息。
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
-* [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署（本文）][deployment-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署 (本文)][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [SAP HANA system replication in pacemaker cluster](https://access.redhat.com/articles/3004101)（Pacemaker 群集中的 SAP HANA 系统复制）
 * 通用 RHEL 文档
@@ -101,15 +100,15 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 可以使用 GitHub 上的某个快速入门模板部署全部所需的资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。
 若要部署模板，请执行以下步骤：
 
-1. 在 Azure 门户中打开[数据库模板][template-multisid-db]。
+1. 打开 Azure 门户上的[数据库模板][template-multisid-db]。
 1. 输入以下参数：
     * **SAP 系统 ID**：输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
     * **OS 类型**：选择一个 Linux 发行版。 对于此示例，请选择“RHEL 7”。
     * **数据库类型**：选择“HANA”。
     * **SAP 系统大小**：输入新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
     * **系统可用性**：选择“HA”。
-    * **管理员用户名、管理员密码或 SSH 密钥**：创建一个新用户，可用于登录到计算机。
-    * **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：**/subscriptions/\<订阅 ID>/resourceGroups/\<资源组名称>/providers/Microsoft.Network/virtualNetworks/\<虚拟网络名称>/subnets/\<子网名称>**。 如果要创建新的虚拟网络，请将其留空
+    * **管理员用户名、管理员密码或 SSH 密钥**：将创建一个可用于登录计算机的新用户。
+    * **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示： **/subscriptions/\<订阅 ID>/resourceGroups/\<资源组名称>/providers/Microsoft.Network/virtualNetworks/\<虚拟网络名称>/subnets/\<子网名称>** 。 如果要创建新的虚拟网络，请将其留空
 
 ### <a name="manual-deployment"></a>手动部署
 
@@ -181,21 +180,21 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
    1. 选择“确定”。
    1. 针对端口 3**03**41 和 3**03**42 重复上述步骤。
 
-有关 SAP HANA 所需端口的详细信息，请阅读 [SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南中的[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)一章或 [SAP 说明 2388694][2388694]。
+有关 SAP HANA 所需的端口的详细信息, 请参阅[SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南或[SAP 说明 2388694][2388694]中的[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)的章节。
 
 > [!IMPORTANT]
-> 不要启用 TCP 放置在 Azure 负载均衡器之后的 Azure Vm 上的时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数设置**net.ipv4.tcp_timestamps**到**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview)。
-> 另请参阅 SAP 注释[2382421](https://launchpad.support.sap.com/#/notes/2382421)。 
+> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.tcp _timestamps**设置为**0**。 有关详细信息, 请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 另请参阅 SAP 说明[2382421](https://launchpad.support.sap.com/#/notes/2382421)。 
 
 ## <a name="install-sap-hana"></a>安装 SAP HANA
 
 本部分中的步骤使用以下前缀：
 
-* **[A]**：该步骤适用于所有节点。
-* **[1]**：该步骤仅适用于节点 1。
-* **[2]**：该步骤仅适用于 Pacemaker 群集的节点 2。
+* **[A]** ：该步骤适用于所有节点。
+* **[1]** ：该步骤仅适用于节点 1。
+* **[2]** ：该步骤仅适用于 Pacemaker 群集的节点 2。
 
-1. **[A]** 设置磁盘布局：**逻辑卷管理器 (LVM)**。
+1. **[A]** 设置磁盘布局：**逻辑卷管理器 (LVM)** 。
 
    我们建议对存储数据和日志文件的卷使用 LVM。 以下示例假设虚拟机上附加了四个用于创建两个卷的数据磁盘。
 
@@ -335,14 +334,14 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 1. **[A]** 升级 SAP 主机代理。
 
-   从 [SAP 软件中心][sap-swcenter]下载最新的 SAP 主机代理存档，并运行以下命令升级代理。 替换存档的路径，使其指向已下载的文件：
+   从[Sap 软件中心][sap-swcenter]下载最新的 Sap 主机代理, 并运行以下命令来升级代理。 替换存档的路径，使其指向已下载的文件：
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
 
 1. **[A]** 配置防火墙
 
-   创建 Azure 负载均衡器探测端口的防火墙规则。
+   为 Azure 负载均衡器探测端口创建防火墙规则。
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=625<b>03</b>/tcp
    sudo firewall-cmd --zone=public --add-port=625<b>03</b>/tcp --permanent
@@ -352,9 +351,9 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 本部分中的步骤使用以下前缀：
 
-* **[A]**：该步骤适用于所有节点。
-* **[1]**：该步骤仅适用于节点 1。
-* **[2]**：该步骤仅适用于 Pacemaker 群集的节点 2。
+* **[A]** ：该步骤适用于所有节点。
+* **[1]** ：该步骤仅适用于节点 1。
+* **[2]** ：该步骤仅适用于 Pacemaker 群集的节点 2。
 
 1. **[A]** 配置防火墙
 
@@ -382,14 +381,14 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
    如果使用的是 SAP HANA 2.0 或 MDC，请为 SAP NetWeaver 系统创建一个租户数据库。 将 **NW1** 替换为 SAP 系统的 SID。
 
-   作为执行 < hanasid\>adm 以下命令：
+   < Hanasid\>adm 执行以下命令:
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** 在第一个节点上配置系统复制：
 
-   备份数据库作为 < hanasid\>adm:
+   将数据库备份为 < hanasid\>adm:
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -409,7 +408,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 1. **[2]** 在第二个节点上配置系统复制：
     
-   注册第二个节点以启动系统复制。 运行以下命令的访问权限 < hanasid\>adm:
+   注册第二个节点以启动系统复制。 运行以下命令作为 < hanasid\>adm:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
@@ -443,9 +442,9 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 本部分中的步骤使用以下前缀：
 
-* **[A]**：该步骤适用于所有节点。
-* **[1]**：该步骤仅适用于节点 1。
-* **[2]**：该步骤仅适用于 Pacemaker 群集的节点 2。
+* **[A]** ：该步骤适用于所有节点。
+* **[1]** ：该步骤仅适用于节点 1。
+* **[2]** ：该步骤仅适用于 Pacemaker 群集的节点 2。
 
 1. **[A]** 配置防火墙
 
@@ -467,7 +466,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 1. **[A]** 创建密钥存储条目。
 
-   若要创建新的密钥存储条目的根以运行以下命令：
+   以 root 身份运行以下命令, 创建新的密钥存储条目:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
@@ -475,7 +474,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 1. **[1]** 备份数据库。
 
-   将数据库备份以 root 身份：
+   以 root 身份备份数据库:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -d SYSTEMDB -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
@@ -496,7 +495,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 1. **[2]** 在第二个节点上配置系统复制。
 
-   注册辅助站点作为 < hanasid\>adm:
+   将辅助站点注册为 < hanasid\>adm:
 
    <pre><code>HDB stop
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
@@ -647,7 +646,7 @@ Resource Group: g_ip_HN1_03
 </code></pre>
 
 可以通过禁用节点上的网络接口（SAP HANA 作为主控节点运行）来测试 Azure 隔离代理的设置。
-请参阅[Red Hat 知识库文章 79523](https://access.redhat.com/solutions/79523)有关如何模拟网络故障的说明。 此示例使用 net_breaker 脚本阻止对网络的所有访问。
+有关如何模拟网络故障的说明, 请参阅[Red Hat 知识库文章 79523](https://access.redhat.com/solutions/79523) 。 此示例使用 net_breaker 脚本阻止对网络的所有访问。
 
 <pre><code>[root@hn1-db-1 ~]# sh ./net_breaker.sh BreakCommCmd 10.0.0.6
 </code></pre>

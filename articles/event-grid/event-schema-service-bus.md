@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: babanisa
 ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467734"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60561755"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>服务总线的 Azure 事件网格事件架构
 
@@ -25,7 +25,7 @@ ms.locfileid: "54467734"
 
 服务总线发出以下事件类型：
 
-| 事件类型 | 说明 |
+| 事件类型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | 当队列或订阅中存在活动消息，但却没有接收器在侦听时会引发此事件。 |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | 当死信队列中存在活动消息，但却没有活动接收器时会引发此事件。 |
@@ -80,27 +80,27 @@ ms.locfileid: "54467734"
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
-| 数据 | 对象 | Blob 存储事件数据。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| topic | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 事件主题的发布者定义路径。 |
+| eventType | string | 此事件源的一个注册事件类型。 |
+| eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 事件的唯一标识符。 |
+| data | object | Blob 存储事件数据。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| namespaceName | 字符串 | 资源所在的服务总线命名空间。 |
-| requestUri | 字符串 | 发出此事件的特定队列或订阅的 URI。 |
-| entityType | 字符串 | 发出事件的服务总线实体的类型（队列或订阅）。 |
-| queueName | 字符串 | 如果订阅队列，则为包含活动消息的队列。 如果使用主题 / 订阅，则为值 null。 |
-| topicName | 字符串 | 包含活动消息的服务总线订阅所属的主题。 如果使用队列，则值为 null。 |
-| subscriptionName | 字符串 | 包含活动消息的服务总线订阅。 如果使用队列，则值为 null。 |
+| namespaceName | string | 资源所在的服务总线命名空间。 |
+| requestUri | string | 发出此事件的特定队列或订阅的 URI。 |
+| entityType | string | 发出事件的服务总线实体的类型（队列或订阅）。 |
+| queueName | string | 如果订阅队列，则为包含活动消息的队列。 如果使用主题 / 订阅，则为值 null。 |
+| topicName | string | 包含活动消息的服务总线订阅所属的主题。 如果使用队列，则值为 null。 |
+| subscriptionName | string | 包含活动消息的服务总线订阅。 如果使用队列，则值为 null。 |
 
 ## <a name="next-steps"></a>后续步骤
 

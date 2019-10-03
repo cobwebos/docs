@@ -3,18 +3,18 @@ title: 在云中渲染场景 - Azure Batch
 description: 教程 - 如何使用 Batch 渲染服务和 Azure 命令行界面通过 Arnold 来渲染 Autodesk 3ds Max 场景
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 5abc2e673438a1ffa22e8d010bf2ee395cd521ae
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 28914244f7ea84ec133821d4b125cbd3b0378348
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149922"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272335"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教程：使用 Azure Batch 渲染场景 
 
@@ -43,7 +43,7 @@ Azure Batch 提供云规模的渲染功能，按使用付费。 Azure Batch 支�
 
 在订阅中创建资源组、Batch 帐户和链接存储帐户（如果尚未这样做）。 
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 以下示例在“eastus2”位置创建名为“myResourceGroup”的资源组。
+使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 以下示例在“eastus2”  位置创建名为“myResourceGroup”的资源组  。
 
 ```azurecli-interactive 
 az group create \
@@ -168,20 +168,20 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-为了将输出文件写入到容器中，Batch 需要使用共享访问签名 (SAS) 令牌。 使用 [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas) 命令创建该令牌。 以下示例创建的令牌用于向帐户中的任何 Blob 容器写入内容，该令牌在 2018 年 11 月 15 日过期：
+为了将输出文件写入到容器中，Batch 需要使用共享访问签名 (SAS) 令牌。 使用 [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas) 命令创建该令牌。 以下示例创建的令牌用于向帐户中的任何 Blob 容器写入内容，该令牌在 2020 年 11 月 15 日过期：
 
 ```azurecli-interactive
 az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2019-11-15
+    --expiry 2020-11-15
 ```
 
 记下该命令返回的令牌，如下所示。 在稍后的步骤中会使用此令牌。
 
 ```
-se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+se=2020-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## <a name="render-a-single-frame-scene"></a>渲染单帧场景
@@ -217,7 +217,7 @@ az batch job create \
   "commandLine": "cmd /c \"%3DSMAX_2018%3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 MotionBlur-DragonFlying.max\"",
   "resourceFiles": [
     {
-        "blobSource": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
+        "httpUrl": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
         "filePath": "MotionBlur-DragonFlying.max"
     }
   ],

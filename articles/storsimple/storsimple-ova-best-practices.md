@@ -12,17 +12,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/08/2018
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: HT
+ms.openlocfilehash: a8aed646f03b777722518152354cfe80cea043a0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300908"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002805"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple 虚拟阵列最佳实践
+
 ## <a name="overview"></a>概述
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 Microsoft Azure StorSimple 虚拟阵列是一个集成式存储解决方案，可管理虚拟机监控程序中运行的本地虚拟设备与 Microsoft Azure 云存储之间的存储任务。 StorSimple 虚拟阵列是 8000 系列物理阵列的替代品，具有很高的效率和性价比。 该虚拟阵列可在现有虚拟机监控程序基础结构上运行，支持 iSCSI 和 SMB 协议，适合用于远程办公室/分支机构方案。 有关 StorSimple 解决方案的详细信息，请转到 [Microsoft Azure StorSimple 概述](https://www.microsoft.com/en-us/server-cloud/products/storsimple/overview.aspx)。
 
 本文介绍在 StorSimple 虚拟阵列初始设置、部署和管理期间实施的最佳实践。 这些最佳实践提供经过验证的指导原则，让用户了解如何设置和管理虚拟阵列。 本文面向想要在数据中心内部署和管理虚拟阵列的 IT 管理员。
@@ -32,7 +36,7 @@ Microsoft Azure StorSimple 虚拟阵列是一个集成式存储解决方案，�
 ## <a name="configuration-best-practices"></a>配置最佳实践
 这些最佳实践涵盖初始设置和部署虚拟阵列时遵循的指导原则。 其中包括与虚拟机预配、组策略设置、调整大小、设置网络、配置存储帐户以及创建虚拟阵列的共享和卷相关的最佳实践。 
 
-### <a name="provisioning"></a>设置
+### <a name="provisioning"></a>预配
 StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 VMware）上预配的虚拟机 (VM)。 预配虚拟机时，请确保主机能够提供足够的资源。 有关详细信息，请转到预配阵列所要满足的[最低资源要求](storsimple-virtual-array-deploy2-provision-hyperv.md#step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements)。
 
 预配虚拟阵列时，请实施以下最佳实践：
@@ -44,7 +48,7 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 | **数据磁盘类型** |预配为**动态扩展**。<br></br> 预配**固定大小**需要很长时间。 <br></br> 不要使用**差异**选项。 |使用**精简预配**选项。 |
 | **数据磁盘修改** |不允许扩展或收缩。 尝试这样做造成设备上的本地数据丢失。 |不允许扩展或收缩。 尝试这样做造成设备上的本地数据丢失。 |
 
-### <a name="sizing"></a>调整大小
+### <a name="sizing"></a>大小调整
 调整 StorSimple 虚拟阵列的大小时，请考虑以下因素：
 
 * 卷或共享的本地预留空间。 在本地层保留大约 12% 的空间给每个预配的分层卷或共享。 另外，大约保留 10% 的空间给本地固定卷用于保存文件系统。
@@ -77,7 +81,7 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 
 到目前为止，本地层所需的总空间是：240 GB + 120 GB + 330 GB = 690 GB。
 
-其次，本地层所需的空间至少要与最大的单个预留空间一样大。 需要从云快照还原时，就要用到此额外空间量。 在本示例中，最大本地预留空间是 330 GB （包括文件系统的预留空间），因此，要为 690 GB 加上该空间量：690 GB + 330 GB = 1020 GB。
+其次，本地层所需的空间至少要与最大的单个预留空间一样大。 需要从云快照还原时，就要用到此额外空间量。 在此示例中，最大本地预订为 330 GB （包括文件系统的保留），因此你可以将其添加到 690 GB：690 GB + 330 GB = 1020 GB。
 在执行其他后续还原操作时，始终可以释放以前还原操作的空间。
 
 第三，需要本地总空间的 15% 来存储本地快照，因此只剩 85% 的空间可供使用。 在本示例中，这大约是 1020 GB，即 0.85 &ast; 预配的数据磁盘 TB 数。 因此，预配的数据磁盘是 (1020&ast;(1/0.85))= 1200 GB = 1.20 TB ~ 1.25 TB（四舍五入为最接近的四分位数）
@@ -195,7 +199,7 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 ### <a name="data-security-and-encryption"></a>数据安全与加密
 StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机密性和完整性。 使用这些功能时，建议遵循以下最佳实践： 
 
-* 先定义用于生成 AES-256 加密的云存储加密密钥，然后将数据从虚拟阵列发送到云。 如果数据一开始就已加密，则不需要此密钥。 使用密钥管理系统（例如 [Azure 密钥保管库](../key-vault/key-vault-whatis.md)）可以生成并妥善保存密钥。
+* 先定义用于生成 AES-256 加密的云存储加密密钥，然后将数据从虚拟阵列发送到云。 如果数据一开始就已加密，则不需要此密钥。 使用密钥管理系统（例如 [Azure 密钥保管库](../key-vault/key-vault-overview.md)）可以生成并妥善保存密钥。
 * 在通过 StorSimple Manager 服务配置存储帐户时，请务必启用 SSL 模式来创建用于在 StorSimple 设备与云之间实现网络通信的安全隧道。
 * 定期重新生成存储帐户的密钥（通过访问 Azure 存储服务），反映管理员列表更改造成的访问权限更改。
 * 虚拟阵列上的数据先压缩并进行重复数据删除，再发送到 Azure。 不建议在 Windows Server 主机上使用“重复数据删除”角色服务。
@@ -203,7 +207,7 @@ StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机
 ## <a name="operational-best-practices"></a>操作最佳实践
 操作最佳实践是指在虚拟阵列的日常管理或操作期间应遵循的指导原则。 这些最佳实践涵盖特定的管理任务，例如备份、从备份集还原、执行故障转移、禁用和删除阵列、监视系统使用情况和运行状况，以及在虚拟阵列上运行病毒扫描。
 
-### <a name="backups"></a>备份
+### <a name="backups"></a>备用
 虚拟阵列上的数据通过两种方式备份到云：默认在每天 22:30 自动启动的全设备备份，或者手动按需备份。 默认情况下，设备会自动创建其上所有数据的每日云快照。 有关详细信息，请转到 [back up your StorSimple Virtual Array](storsimple-virtual-array-backup.md)（备份 StorSimple 虚拟阵列）。
 
 与默认备份关联的频率和保留期无法更改，但可以配置每天启动每日备份的时间。 在配置自动备份的开始时间时，我们建议：
@@ -283,6 +287,6 @@ StorSimple 虚拟阵列可以自动将数据从本地层分层到 Microsoft Azur
 * 从负载均衡的立场看，在部署多个虚拟阵列时，建议将这些阵列分布到不同的虚拟机监控程序主机。
 * 可以在一个分布式文件系统命名空间中部署多个虚拟阵列（如果配置为文件服务器或 iSCSI 服务器）。 有关详细步骤，请转到 [Distributed File System Namespace Solution with Hybrid Cloud Storage Deployment Guide](https://www.microsoft.com/download/details.aspx?id=45507)（使用混合云存储的分布式文件系统命名空间解决方案部署指南）。 目前不建议将分布式文件系统复制用于虚拟阵列。 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 了解如何通过 StorSimple Manager 服务[管理 StorSimple 虚拟阵列](storsimple-virtual-array-manager-service-administration.md)。
 

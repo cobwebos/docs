@@ -1,36 +1,36 @@
 ---
 title: 将 HDInsight 群集升级到最新版本 - Azure
-description: 了解如何将 HDInsight 群集升级到较新版本。
-services: hdinsight
-ms.service: hdinsight
+description: 了解将 Azure HDInsight 群集升级到较新版本的准则。
 author: omidm1
 ms.author: omidm
+ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 266de596633201b5590a6433d078cc05f2a267b4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
-ms.translationtype: HT
+ms.openlocfilehash: 808e592a01bca2066b7d3d37a5fdfa697d739d4b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994515"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122447"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>将 HDInsight 群集升级到更新版本
+
 要利用最新的 HDInsight 功能，我们建议将 HDInsight 群集升级到最新版本。 遵循以下准则升级 HDInsight 群集版本。
 
 > [!NOTE]  
 > 有关支持的 HDInsight 版本的信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
 
 ## <a name="upgrade-tasks"></a>升级任务
-升级 HDInsight 群集的工作流如下所示。
 
-![升级工作流示意图](./media/hdinsight-upgrade-cluster/upgrade-workflow.png)
+升级 HDInsight 群集的工作流如下所示。
+![HDInsight 升级工作流关系图](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. 请阅读本文档的每个部分，了解在升级 HDInsight 群集时可能需要进行的更改。
 2. 创建群集作为测试/质量保证环境。 有关创建群集的详细信息，请参阅[了解如何创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
-3. 将现有作业、数据源及接收器复制到新环境。 有关详细信息，请参阅[将数据复制到测试环境](hdinsight-migrate-from-windows-to-linux.md#copy-data-to-the-test-environment)。
+3. 将现有作业、数据源及接收器复制到新环境。
 4. 执行验证测试，以确保作业在新群集上按预期工作。
-
 
 验证一切都按预期工作后，请为迁移安排停机时间。 在此停机期间，请执行以下操作：
 
@@ -41,7 +41,7 @@ ms.locfileid: "53994515"
 5.  使用新群集启动作业/继续处理。
 
 ## <a name="next-steps"></a>后续步骤
+
 * [了解如何创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [使用 SSH 连接到 HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [使用 Apache Ambari 管理基于 Linux 的群集](hdinsight-hadoop-manage-ambari.md)
-

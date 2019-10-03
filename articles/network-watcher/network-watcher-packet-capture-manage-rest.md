@@ -3,8 +3,8 @@ title: 使用 Azure 网络观察程序管理数据包捕获 - REST API | Microso
 description: 此页说明如何使用 Azure REST API 管理网络观察程序的数据包捕获功能
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 53fe0324-835f-4005-afc8-145eeb314aeb
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 614c3e1831680fff50058cd5192449f8e6e28179
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: kumud
+ms.openlocfilehash: 896c681cd7337faba7add214e186e18ec87b529d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049790"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676353"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>通过 Azure REST API 使用 Azure 网络观察程序管理数据包捕获
 
@@ -63,7 +63,7 @@ armclient login
 
 以下代码需要以下变量：
 
-- **subscriptionId** -也可以使用检索的订阅 id **Get AzSubscription** cmdlet。
+- **subscriptionId** - 还可以使用 **Get-AzSubscription** cmdlet 检索订阅 ID。
 - **resourceGroupName** - 包含虚拟机的资源组的名称。
 
 ```powershell
@@ -242,8 +242,8 @@ $remoteIP = ""
 $remotePort = "" # Examples are: 80, or 80-120
 $protocol = "" # Valid values are TCP, UDP and Any.
 $targetUri = "" # Example: /subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.compute/virtualMachine/$vmName
-$storageId = "" # Example: "https://mytestaccountname.blob.core.windows.net/capture/vm1Capture.cap"
-$storagePath = ""
+$storageId = "" #Example "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoExampleRG/providers/Microsoft.Storage/storageAccounts/contosoexamplergdiag374"
+$storagePath = "" # Example: "https://mytestaccountname.blob.core.windows.net/capture/vm1Capture.cap"
 $localFilePath = "c:\\temp\\packetcapture.cap" # Example: "d:\capture\vm1Capture.cap"
 
 $requestBody = @"

@@ -5,18 +5,18 @@ keywords: 自动化安全性, 安全的自动化; 自动化身份验证
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
 ROBOTS: NOINDEX
-ms.openlocfilehash: 60175a5b9309c08d5fdab997469a9d0526afaefe
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: 88f1826191934ee76c565bd73de907a26d368c88
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437957"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476842"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Azure 自动化中的身份验证简介  
 Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (AWS)）针对 Azure、本地中的资源来自动执行任务。  为了使 Runbook 执行所需操作，Runbook 必须有权使用订阅中所需的最小权限来安全地访问资源。
@@ -24,7 +24,7 @@ Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (A
 本文介绍 Azure 自动化支持的各种身份验证方案，并介绍如何根据需要管理的单个或多个环境来入门。  
 
 ## <a name="automation-account-overview"></a>自动化帐户概述
-首次启动 Azure 自动化时，必须创建至少一个自动化帐户。 使用自动化帐户，可以会自动化资源（Runbook、资产、配置）与其他自动化帐户中包含的资源相隔离。 可以使用自动化帐户将资源隔离到独立的逻辑环境中。 例如，可以在开发环境中使用一个帐户，在生产环境中使用另一个帐户，并在本地环境中使用另一个账户。  Azure 自动化帐户不同于 Microsoft 帐户或在 Azure 订阅中创建的帐户。
+首次启动 Azure 自动化时，必须创建至少一个自动化帐户。 使用自动化帐户，可以将自动化资源（Runbook、资产、配置）与其他自动化帐户中包含的资源隔离。 可以使用自动化帐户将资源隔离到独立的逻辑环境中。 例如，可以在开发环境中使用一个帐户，在生产环境中使用另一个帐户，并在本地环境中使用另一个账户。  Azure 自动化帐户不同于 Microsoft 帐户或在 Azure 订阅中创建的帐户。
 
 每个自动化帐户的自动化资源与单个 Azure 区域相关联，但自动化帐户可以管理订阅中的所有资源。 在不同区域中创建自动化帐户的主要原因是，策略要求数据和资源隔离到特定的区域。
 

@@ -4,7 +4,7 @@ description: 了解如何将虚拟网络（经典）从地缘组迁移到区域�
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: 84febcb9-bb8b-4e79-ab91-865ad9de41cb
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 1fca7f6165998b95254f841638cf8bcbc1fb352d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: d33d9ec4eadeaa3a082103f1ad699e2fc3010e3b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792148"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058402"
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>将虚拟网络（经典）从地缘组迁移到区域
 
 > [!IMPORTANT]
-> Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。
 
-地缘组确保在相同地缘组中创建的资源由彼此靠近的服务器实际托管，从而加快这些资源的通信速度。 过去，地缘组是创建虚拟网络（经典）的必要条件。 当时，托管虚拟网络（经典）的网络管理器服务只能在一组物理服务器或缩放单位内工作。 体系结构改进已将网络管理的范畴扩大到了区域。
+地缘组确保在相同地缘组中创建的资源由彼此靠近的服务器实际托管，从而加快这些资源的通信速度。 过去，地缘组是创建虚拟网络（经典）的必要条件。 当时，托管虚拟网络（经典）的网络管理器服务只能在一组物理服务器或缩放单元内工作。 体系结构改进已将网络管理的范畴扩大到了区域。
 
 由于这些体系结构的改进，不再建议或需要对虚拟网络（经典）使用地缘组。 现在，对虚拟网络（经典）使用地缘组的做法已被区域取代。 与区域关联的虚拟网络（经典）称为区域虚拟网络。
 
@@ -50,9 +50,9 @@ ms.locfileid: "31792148"
    
     编辑网络配置文件中的以下行，将相应值替换成自己的值： 
    
-    **旧值：** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
+    **旧值：** \<VirtualNetworkSitename = "VNetUSWest" AffinityGroup = "VNetDemoAG"\> 
    
-    **新值：** \<VirtualNetworkSitename="VNetUSWest" Location="West US"\>
+    **新值：** \<VirtualNetworkSitename = "VNetUSWest" Location = "美国西部"\>
 3. 保存所做的更改，并将网络配置[导入](virtual-networks-using-network-configuration-file.md#import)到 Azure。
 
 > [!NOTE]
@@ -61,4 +61,4 @@ ms.locfileid: "31792148"
 > 
 
 ## <a name="what-to-do-if-you-have-a-vm-classic-in-an-affinity-group"></a>如果在地缘组中有一个 VM（经典）该怎么办
-当前位于地缘组中的 VM（经典）不需要从地缘组中删除。 在 VM 部署后，系统会将其部署到单个缩放单位。 地缘组可以限制可用于新 VM 部署的 VM 大小集，但是部署的任何现有 VM 已限制为在其中部署该 VM 的缩放单位中可用的 VM 大小集。 由于该 VM 已部署到缩放单位，因此，从地缘组中删除该 VM 不会对 VM 产生影响。
+当前位于地缘组中的 VM（经典）不需要从地缘组中删除。 在 VM 部署后，系统会将其部署到单个缩放单元。 地缘组可以限制可用于新 VM 部署的 VM 大小集，但是部署的任何现有 VM 已限制为在其中部署该 VM 的缩放单元中可用的 VM 大小集。 由于该 VM 已部署到缩放单元，因此，从地缘组中删除该 VM 不会对 VM 产生影响。

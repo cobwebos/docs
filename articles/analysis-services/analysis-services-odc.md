@@ -9,11 +9,11 @@ ms.date: 01/09/2018
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 37f068be544f964f3aec63d85702098c8f382ab8
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187921"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60785704"
 ---
 # <a name="create-an-office-data-connection-file"></a>创建 Office 数据连接文件
 
@@ -32,7 +32,7 @@ ms.locfileid: "54187921"
 
 4. 将带有 `.odc` 扩展名的文件保存到 C:\Users\\*username*\Documents\My Data Sources 文件夹。
 
-5. 右键单击文件，并单击“在 Excel 中打开”。 或者在 Excel 的“数据”功能区上，单击“现有连接”、选择你的文件，并单击“打开”。
+5. 右键单击文件，并单击“在 Excel 中打开”  。 或者在 Excel 的“数据”  功能区上，单击“现有连接”  、选择你的文件，并单击“打开”  。
 
 
 

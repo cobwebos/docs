@@ -5,23 +5,27 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 09/30/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 24a77561d08cc3db5356dd0e931f62bf2d16406d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f9db07f648956130bb5bdebb23321b0eb14679c7
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014178"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695392"
 ---
 # <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
 
-具有 Azure Enterprise 协议的用户在 Azure 门户和企业 (EA) 门户中被授予了一些权限的组合，这些权限定义了用户对 Azure 成本管理数据的访问级别。 对于其他 Azure 帐户类型的用户，用户的访问级别是访问成本管理数据更简单。 本文介绍如何分配对成本管理数据的访问权限。 用户分配到权限组合后，会基于他们有权访问的范围和他们在 Azure 门户中所选的范围查看成本管理中的数据。
+具有 Azure Enterprise 协议的用户在 Azure 门户和企业 (EA) 门户中被授予了一些权限的组合，这些权限定义了用户对 Azure 成本管理数据的访问级别。 对于具有其他 Azure 帐户类型的用户，通过使用 Azure 基于角色的访问控制，可以更简单地定义用户对成本管理数据的访问级别。 本文介绍如何分配对成本管理数据的访问权限。 用户分配到权限组合后，会基于他们有权访问的范围和他们在 Azure 门户中所选的范围查看成本管理中的数据。
 
 用户所选的范围将用于整个成本管理，以提供数据整合并控制对成本信息的访问。 使用范围时，用户不要多选它们。 而应选择一个子范围要汇总到的较大范围，然后筛选到要查看的范围。 理解数据整合很重要，因为有些人不应该访问子范围汇总到的父范围。
+
+观看[如何使用 Azure 成本管理来分配访问](https://www.youtube.com/watch?v=J997ckmwTa8)视频，了解如何通过 azure 基于角色的访问控制分配访问权限，以查看成本和费用。
+
+>[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
 
 ## <a name="cost-management-scopes"></a>成本管理范围
 
@@ -125,7 +129,7 @@ ms.locfileid: "58014178"
 
 ## <a name="assign-management-group-scope-access"></a>分配管理组范围的访问权限
 
-若要访问管理组范围，至少需要成本管理读取者（或读取者）权限。 可以在 Azure 门户中配置对管理组的访问权限。 你必须至少对管理组具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外对于 Azure EA 帐户，还必须在 EA 门户中启用“AO 视图费用”设置。
+查看管理组作用域的访问权限至少需要成本管理读者（或读者）权限。 可以在 Azure 门户中配置对管理组的访问权限。 你必须至少对管理组具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外对于 Azure EA 帐户，还必须在 EA 门户中启用“AO 视图费用”设置。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在侧栏中选择“所有服务”，搜索“管理组”，然后选择“管理组”。
@@ -136,7 +140,7 @@ ms.locfileid: "58014178"
 7. 在“角色”下选择“成本管理读取者”。
 8. 在“分配访问权限至”下选择“Azure AD 用户、组或应用程序”。
 9. 若要分配访问权限，请搜索用户并选择用户。
-10. 单击“ **保存**”。  
+10. 单击“保存”。  
     ![管理组中的“添加权限”框中的示例信息](./media/assign-access-acm-data/add-permissions.png)
 
 ## <a name="assign-subscription-scope-access"></a>分配订阅范围的访问权限
@@ -151,7 +155,7 @@ ms.locfileid: "58014178"
 6. 在“角色”下选择“成本管理读取者”。
 7. 在“分配访问权限至”下选择“Azure AD 用户、组或应用程序”。
 8. 若要分配访问权限，请搜索用户并选择用户。
-9. 单击“ **保存**”。
+9. 单击“保存”。
 
 ## <a name="assign-resource-group-scope-access"></a>分配资源组范围的访问权限
 
@@ -165,7 +169,14 @@ ms.locfileid: "58014178"
 6. 在“角色”下选择“成本管理读取者”。
 7. 在“分配访问权限至”下选择“Azure AD 用户、组或应用程序”。
 8. 若要分配访问权限，请搜索用户并选择用户。
-9. 单击“ **保存**”。
+9. 单击“保存”。
+
+## <a name="cross-tenant-authentication-issues"></a>跨租户身份验证问题
+
+目前，Azure 成本管理对跨租户身份验证的支持有限。 在某些情况下，尝试跨租户进行身份验证时，可能会在成本分析中收到 "**拒绝访问**" 错误。 如果将基于角色的访问控制（RBAC）配置到其他租户的订阅，然后尝试查看成本数据，则可能出现此问题。
+
+*若要解决此问题*：配置跨租户 RBAC 后，请等待一小时。 然后，尝试查看成本分析中的成本或授予对这两个租户中用户的成本管理访问权限。  
+
 
 ## <a name="next-steps"></a>后续步骤
 

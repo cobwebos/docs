@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 50d0a920bef097013feddc828d2c37133b9057b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 13a3e57bb27c075fc045e87790dbe13369ed9f8e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108615"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60699441"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>使用 StorSimple 设备管理器服务管理 StorSimple 带宽模板
 
@@ -38,7 +38,7 @@ ms.locfileid: "23108615"
 
 ## <a name="the-bandwidth-templates-blade"></a>“带宽模板”边栏选项卡
 
-“带宽模板”边栏选项卡以表格格式显示服务的所有带宽模板，其中包含以下信息：
+“带宽模板”边栏选项卡以表格格式显示服务的所有带宽模板，其中包含以下信息： 
 
 * **名称** – 创建带宽模板时分配给带宽模板的唯一名称。
 * **计划** – 给定带宽模板中包含的计划数。
@@ -55,11 +55,11 @@ ms.locfileid: "23108615"
 
 #### <a name="to-add-a-bandwidth-template"></a>添加带宽模板
 
-1. 转到 StorSimple 设备管理器服务，依次单击“带宽模板”、“+ 添加带宽模板”。
+1. 转到 StorSimple 设备管理器服务，依次单击“带宽模板”、“+ 添加带宽模板”。  
 
     ![单击“+ 添加带宽模板”](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp1.png)
 
-2. 在“添加带宽模板”边栏选项卡中，执行以下步骤：
+2. 在“添加带宽模板”边栏选项卡中，执行以下步骤： 
    
     1. 为带宽模板指定一个唯一的名称。
     2. 定义带宽计划。 若要创建计划，请执行以下操作：
@@ -73,13 +73,13 @@ ms.locfileid: "23108615"
            > [!NOTE]
            > 不允许重叠的计划。 如果开始时间和结束时间会导致计划重叠，会显示一条错误消息。
 
-        4. 指定“带宽速率”。 这是指 StorSimple 设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。 为此字段提供介于 1 和 1,000 之间的数字。
+        4. 指定“带宽速率”。  这是指 StorSimple 设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。 为此字段提供介于 1 和 1,000 之间的数字。
 
             ![定义带宽计划](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp2.png)
          
             重复上述步骤为模板定义多个计划，直到完成。
 
-        5. 单击“添加”开始创建带宽模板。 创建的模板会添加到带宽模板列表中。
+        5. 单击“添加”开始创建带宽模板。  创建的模板会添加到带宽模板列表中。
       
 
 ## <a name="edit-a-bandwidth-template"></a>编辑带宽模板
@@ -88,9 +88,9 @@ ms.locfileid: "23108615"
 
 ### <a name="to-edit-a-bandwidth-template"></a>编辑带宽模板
 
-1. 转到 StorSimple 设备管理器服务并单击“带宽模板”。
-2. 在带宽模板列表中，选择要删除的模板。 单击右键，并从上下文菜单中选择“删除”。
-3. 出现确认提示时，单击“确定”。 随即应会删除该带宽模板。 
+1. 转到 StorSimple 设备管理器服务并单击“带宽模板”。 
+2. 在带宽模板列表中，选择要删除的模板。 单击右键，并从上下文菜单中选择“删除”。 
+3. 出现确认提示时，单击“确定”  。 随即应会删除该带宽模板。 
 4. 带宽模板列表会更新以反映删除后的结果。
 
 > [!NOTE]
@@ -102,14 +102,14 @@ ms.locfileid: "23108615"
 
 #### <a name="to-delete-a-bandwidth-template"></a>删除带宽模板
 
-1. 转到 StorSimple 设备管理器服务并单击“带宽模板”。
+1. 转到 StorSimple 设备管理器服务并单击“带宽模板”。 
 2. 在带宽模板列表中，选择要删除的模板。 单击右键，并从上下文菜单中选择“删除”。
-3. 出现确认提示时，单击“确定”。 随即应会删除该带宽模板。
+3. 出现确认提示时，单击“确定”  。 随即应会删除该带宽模板。
 4. 带宽模板列表会更新以反映删除后的结果。
 
 如果模板被任何卷使用，将不允许删除该模板。 此时会显示一条错误消息，指出该模板正在使用中。 系统会显示一个错误消息对话框，告知应删除对该模板的所有引用。
 
-要删除对此模板的所有引用，可以访问“卷容器”页，并修改使用此模板的卷容器，使其使用其他模板，或使用自定义或不受限制的带宽设置。 删除所有引用后，便可以删除该模板。
+要删除对此模板的所有引用，可以访问“卷容器”页，并修改使用此模板的卷容器，使其使用其他模板，或使用自定义或不受限制的带宽设置。  删除所有引用后，便可以删除该模板。
 
 ## <a name="use-a-default-bandwidth-template"></a>使用默认带宽模板
 

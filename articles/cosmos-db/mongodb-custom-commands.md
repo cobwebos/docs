@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876882"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64925659"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB 扩展命令来管理存储在 Azure Cosmos DB API for MongoDB 数据 
 
@@ -32,7 +32,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a id="create-database"></a> 创建数据库
 
-创建数据库扩展命令创建新的 MongoDB 数据库。 从执行命令所针对的数据库上下文使用的数据库名称。 CreateDatabase 命令的格式如下所示：
+“创建数据库”扩展命令可创建新的 MongoDB 数据库。 数据库名称取自该命令所针对的数据库上下文。 CreateDatabase 命令的格式如下：
 
 ```
 {
@@ -41,22 +41,22 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 }
 ```
 
-下表描述该命令中的参数：
+下表描述了该命令中的参数：
 
-|**字段**|类型 |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-| customAction   |  字符串  |   名称的自定义命令，它必须是"CreateDatabase"。      |
-| offerThroughput | int  | 在数据库设置的预配的吞吐量。 此参数是可选的。 |
+| customAction   |  字符串  |   自定义命令的名称，必须是“CreateDatabase”。      |
+| offerThroughput | int  | 对数据库设置的预配吞吐量。 此参数是可选的。 |
 
 ### <a name="output"></a>输出
 
-返回默认自定义命令响应。 请参阅[默认输出](#default-output)的自定义命令的输出中的参数。
+返回默认的自定义命令响应。 有关输出中的参数，请参阅自定义命令的[默认输出](#default-output)。
 
 ### <a name="examples"></a>示例
 
 **创建数据库**
 
-若要创建名为"test"的数据库，请使用以下命令：
+若要创建名为“test”的数据库，请使用以下命令：
 
 ```shell
 use test
@@ -65,7 +65,7 @@ db.runCommand({customAction: "CreateDatabase"});
 
 **创建具有吞吐量的数据库**
 
-若要创建的数据库名为"test"和预配的吞吐量的 1000 Ru，请使用以下命令：
+若要创建名为“test”、预配吞吐量为 1000 RU 的数据库，请使用以下命令：
 
 ```shell
 use test
@@ -74,7 +74,7 @@ db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 
 ## <a id="update-database"></a> 更新数据库
 
-更新数据库扩展命令将更新与指定的数据库关联的属性。 目前，只能更新"offerThroughput"属性。
+“更新数据库”扩展命令可更新与指定的数据库相关联的属性。 目前只能更新“offerThroughput”属性。
 
 ```
 {
@@ -83,22 +83,22 @@ db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 }
 ```
 
-下表描述该命令中的参数：
+下表描述了该命令中的参数：
 
-|**字段**|类型 |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-| customAction    |    字符串     |   自定义命令的名称。 必须是"UpdateDatabase"。      |
-|  offerThroughput   |  int       |     你想要在数据库上设置的新预配的吞吐量。    |
+| customAction    |    字符串     |   自定义命令的名称。 必须是“UpdateDatabase”。      |
+|  offerThroughput   |  int       |     要对数据库设置的新预配吞吐量。    |
 
 ### <a name="output"></a>输出
 
-返回默认自定义命令响应。 请参阅[默认输出](#default-output)的自定义命令的输出中的参数。
+返回默认的自定义命令响应。 有关输出中的参数，请参阅自定义命令的[默认输出](#default-output)。
 
 ### <a name="examples"></a>示例
 
-**更新与数据库关联的预配的吞吐量**
+**更新与数据库关联的预配吞吐量**
 
-若要使用名称"test"到 1200 Ru 更新数据库的预配的吞吐量，请使用以下命令：
+若要将名为“test”的数据库的预配吞吐量更新为 1200 RU，请使用以下命令：
 
 ```shell
 use test
@@ -107,7 +107,7 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 
 ## <a id="get-database"></a> 获取数据库
 
-获取数据库扩展命令返回的数据库对象。 从执行命令所针对的数据库上下文使用的数据库名称。
+“获取数据库”扩展命令返回数据库对象。 数据库名称取自该命令所针对的数据库上下文。
 
 ```
 {
@@ -115,30 +115,30 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 }
 ```
 
-下表描述该命令中的参数：
+下表描述了该命令中的参数：
 
 
-|**字段**|类型 |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-|  customAction   |   字符串      |   自定义命令的名称。 必须是"GetDatabase"|
+|  customAction   |   字符串      |   自定义命令的名称。 必须是“GetDatabase”|
         
 ### <a name="output"></a>输出
 
-如果命令成功，则响应包含具有以下字段的文档：
+如果该命令成功，则响应包含带有以下字段的文档：
 
-|**字段**|类型 |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-|  `ok`   |   `int`     |   响应的状态。 1 = = 成功。 0 = = 失败。      |
+|  `ok`   |   `int`     |   响应的状态。 1 == 成功。 0 == 失败。      |
 | `database`    |    `string`        |   数据库的名称。      |
-|   `provisionedThroughput`  |    `int`      |    在数据库设置的预配的吞吐量。 这是一个可选响应参数。     |
+|   `provisionedThroughput`  |    `int`      |    对数据库设置的预配吞吐量。 这是一个可选的响应参数。     |
 
-如果该命令将失败，则返回默认自定义命令响应。 请参阅[默认输出](#default-output)的自定义命令的输出中的参数。
+如果该命令失败，则返回默认的自定义命令响应。 有关输出中的参数，请参阅自定义命令的[默认输出](#default-output)。
 
 ### <a name="examples"></a>示例
 
 **获取数据库**
 
-若要获取名为"test"的数据库的数据库对象，使用以下命令：
+若要获取名为“test”的数据库的数据库对象，请使用以下命令：
 
 ```shell
 use test
@@ -147,7 +147,7 @@ db.runCommand({customAction: "GetDatabase"});
 
 ## <a id="create-collection"></a> 创建集合
 
-创建集合扩展命令创建新的 MongoDB 集合。 从执行命令所针对的数据库上下文使用的数据库名称。 CreateCollection 命令的格式如下所示：
+“创建集合”扩展命令可创建新的 MongoDB 集合。 数据库名称取自该命令所针对的数据库上下文。 CreateCollection 命令的格式如下：
 
 ```
 {
@@ -158,24 +158,24 @@ db.runCommand({customAction: "GetDatabase"});
 }
 ```
 
-下表描述该命令中的参数：
+下表描述了该命令中的参数：
 
-|**字段**|类型 |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-| customAction    | 字符串 | 自定义命令的名称。 必须是"CreateDatabase"     |
+| customAction    | 字符串 | 自定义命令的名称。 必须是“CreateCollection”     |
 | collection      | 字符串 | 集合的名称                                   |
-| offerThroughput | int    | 若要在数据库上设置的预配的吞吐量。 它是一个可选参数 |
-| shardKey        | 字符串 | 要创建分片集合的分片键路径。 它是一个可选参数 |
+| offerThroughput | int    | 要对数据库设置的预配吞吐量。 它是一个可选参数 |
+| shardKey        | 字符串 | 要在其中创建分片集合的分片键路径。 它是一个可选参数 |
 
 ### <a name="output"></a>输出
 
-返回默认自定义命令响应。 请参阅[默认输出](#default-output)的自定义命令的输出中的参数。
+返回默认的自定义命令响应。 有关输出中的参数，请参阅自定义命令的[默认输出](#default-output)。
 
 ### <a name="examples"></a>示例
 
-**创建 unsharded 集合**
+**创建未分片集合**
 
-若要创建具有名称"testCollection"和预配的吞吐量的 1000 Ru unsharded 集合，请使用以下命令： 
+若要创建名为“testCollection”、预配吞吐量为 1000 RU 的未分片集合，请使用以下命令： 
 
 ```shell
 use test
@@ -184,7 +184,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 **创建分片集合**
 
-若要创建具有名称"testCollection"和预配的吞吐量的 1000 Ru 的分片集合，请使用以下命令：
+若要创建名为“testCollection”、预配吞吐量为 1000 RU 的分片集合，请使用以下命令：
 
 ```shell
 use test
@@ -193,7 +193,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 ## <a id="update-collection"></a> 更新集合
 
-更新集合扩展命令将更新与指定集合关联的属性。
+“更新集合”扩展命令可更新与指定的集合相关联的属性。
 
 ```
 {
@@ -203,23 +203,23 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 }
 ```
 
-下表描述该命令中的参数：
+下表描述了该命令中的参数：
 
-|**字段**|类型 |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-|  customAction   |   字符串      |   自定义命令的名称。 必须是"UpdateCollection"。      |
+|  customAction   |   字符串      |   自定义命令的名称。 必须是“UpdateCollection”。      |
 |  collection   |   字符串      |   集合的名称。       |
-| offerThroughput   |int|   若要将集合设置的预配的吞吐量。|
+| offerThroughput   |int|   要对集合设置的预配吞吐量。|
 
 ## <a name="output"></a>输出
 
-返回默认自定义命令响应。 请参阅[默认输出](#default-output)的自定义命令的输出中的参数。
+返回默认的自定义命令响应。 有关输出中的参数，请参阅自定义命令的[默认输出](#default-output)。
 
 ### <a name="examples"></a>示例
 
-**更新与集合相关联的预配的吞吐量**
+**更新与集合关联的预配吞吐量**
 
-若要更新具有名称"testCollection"的集合的预配的吞吐量为 1200 RUs，请使用以下命令：
+若要将名为“testCollection”的集合的预配吞吐量更新为 1200 RU，请使用以下命令：
 
 ```shell
 use test
@@ -228,7 +228,7 @@ db.runCommand({customAction: "UpdateCollection", collection: "testCollection", o
 
 ## <a id="get-collection"></a> 获取集合
 
-获取集合自定义命令返回的集合对象。
+“获取集合”自定义命令返回集合对象。
 
 ```
 {
@@ -237,34 +237,34 @@ db.runCommand({customAction: "UpdateCollection", collection: "testCollection", o
 }
 ```
 
-下表描述该命令中的参数：
+下表描述了该命令中的参数：
 
 
-|**字段**|类型 |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-| customAction    |   字符串      |   自定义命令的名称。 必须是"GetCollection"。      |
+| customAction    |   字符串      |   自定义命令的名称。 必须是“GetCollection”。      |
 | collection    |    字符串     |    集合的名称。     |
 
 ### <a name="output"></a>输出
 
-如果命令成功，则响应包含具有以下字段的文档
+如果该命令成功，则响应包含带有以下字段的文档
 
 
-|**字段**|类型 |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-|  `ok`   |    `int`     |   响应的状态。 1 = = 成功。 0 = = 失败。      |
+|  `ok`   |    `int`     |   响应的状态。 1 == 成功。 0 == 失败。      |
 | `database`    |    `string`     |   数据库的名称。      |
 | `collection`    |    `string`     |    集合的名称。     |
-|  `shardKeyDefinition`   |   `document`      |  用作分片键索引规范文档。 这是一个可选响应参数。       |
-|  `provisionedThroughput`   |   `int`      |    若要将集合设置的预配的吞吐量。 这是一个可选响应参数。     |
+|  `shardKeyDefinition`   |   `document`      |  用作分片键的索引规范文档。 这是一个可选的响应参数。       |
+|  `provisionedThroughput`   |   `int`      |    要对集合设置的预配吞吐量。 这是一个可选的响应参数。     |
 
-如果该命令将失败，则返回默认自定义命令响应。 请参阅[默认输出](#default-output)的自定义命令的输出中的参数。
+如果该命令失败，则返回默认的自定义命令响应。 有关输出中的参数，请参阅自定义命令的[默认输出](#default-output)。
 
 ### <a name="examples"></a>示例
 
-**获取的集合。**
+**获取集合**
 
-若要获取名为"testCollection"的集合的集合对象，请使用以下命令：
+若要获取名为“testCollection”的集合的集合对象，请使用以下命令：
 
 ```shell
 use test
@@ -273,17 +273,17 @@ db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 
 ## <a id="default-output"></a> 默认输出的自定义命令
 
-如果未指定，则自定义响应包含具有以下字段的文档：
+如果未指定，则自定义响应包含带有以下字段的文档：
 
-|**字段**|类型 |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-|  `ok`   |    `int`     |   响应的状态。 1 = = 成功。 0 = = 失败。      |
-| `code`    |   `int`      |   该命令失败时，才返回 （即确定 = = 0）。 包含 MongoDB 错误代码。 这是一个可选响应参数。      |
-|  `errMsg`   |  `string`      |    该命令失败时，才返回 （即确定 = = 0）。 包含的用户友好错误消息。 这是一个可选响应参数。      |
+|  `ok`   |    `int`     |   响应的状态。 1 == 成功。 0 == 失败。      |
+| `code`    |   `int`      |   仅当命令失败时才返回（即，正常 == 0）。 包含 MongoDB 错误代码。 这是一个可选的响应参数。      |
+|  `errMsg`   |  `string`      |    仅当命令失败时才返回（即，正常 == 0）。 包含用户友好的错误消息。 这是一个可选的响应参数。      |
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来可以继续学习以下的 Azure Cosmos DB 概念： 
+接下来，可以继续学习以下 Azure Cosmos DB 概念： 
 
 * [Azure Cosmos DB 中的索引](../cosmos-db/index-policy.md)
 * [利用生存时间使 Azure Cosmos DB 中的数据自动过期](../cosmos-db/time-to-live.md)

@@ -7,17 +7,16 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: python
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 788e21dc5d866bdd6641349ceeeeacbfab98c25c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 659f6333d16f84cc35be45c45b7a7119e53fd0d0
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444968"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764283"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>快速入门：使用 Python 查询 Azure SQL 数据库
 
@@ -27,7 +26,7 @@ ms.locfileid: "58444968"
 
 若要完成本快速入门，请确保符合以下条件：
 
-- Azure SQL 数据库。 可以根据下述快速入门中的一个的说明在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+- Azure SQL 数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
   || 单一数据库 | 托管实例 |
   |:--- |:--- |:---|
@@ -49,7 +48,7 @@ ms.locfileid: "58444968"
 
   - **Ubuntu**：使用 `sudo apt-get install python python-pip gcc g++ build-essential` 安装 Python 和其他所需的程序包。 下载并安装用于 SQL Server 的 ODBC 驱动程序、SQLCMD 和 Python 驱动程序。 有关说明，请参阅[配置用于 pyodbc Python 开发的开发环境](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux)。
 
-  - Windows：安装用于 SQL Server 的 Python、ODBC 驱动程序和 SQLCMD 以及 Python 驱动程序。 有关说明，请参阅[配置用于 pyodbc Python 开发的开发环境](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)。
+  - Windows  ：安装用于 SQL Server 的 Python、ODBC 驱动程序和 SQLCMD 以及 Python 驱动程序。 有关说明，请参阅[配置用于 pyodbc Python 开发的开发环境](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)。
 
 ## <a name="get-sql-server-connection-information"></a>获取 SQL Server 连接信息
 
@@ -57,13 +56,13 @@ ms.locfileid: "58444968"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 导航到“SQL 数据库”或“SQL 托管实例”页。
+2. 转到“SQL 数据库”或“SQL 托管实例”页。  
 
-3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标。
+3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称    。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标  。
 
 ## <a name="create-code-to-query-your-sql-database"></a>创建用于查询 SQL 数据库的代码 
 
-1. 在文本编辑器中，创建新文件 sqltest.py。  
+1. 在文本编辑器中，创建新文件 sqltest.py  。  
    
 1. 添加以下代码。 将自己的值替换为 \<服务器>、\<数据库>、\<用户名> 和 \<密码>。
    

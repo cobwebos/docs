@@ -7,75 +7,74 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/20/2019
-ms.openlocfilehash: b3514eca8db5d5b68b3e5784ee95e8583813945c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 84e39a727d5be842b356e5bd30333cb154df86aa
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008952"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568784"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>使用基于 DTU 的购买模型的单一数据库的资源限制
 
 本文提供了针对使用基于 DTU 的购买模型的 Azure SQL 数据库的单一数据库的详细资源限制。
 
-有关弹性池的基于 DTU 的购买模型资源限制，请参阅[基于 DTU 的资源限制 - 弹性池](sql-database-dtu-resource-limits-elastic-pools.md)。 有关基于 vCore 的资源限制，请参阅[基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。 有关不同购买模型的更多信息，请参阅[购买模型和服务层](sql-database-purchase-models.md)。
+有关弹性池的基于 DTU 的购买模型资源限制，请参阅[基于 DTU 的资源限制 - 弹性池](sql-database-dtu-resource-limits-elastic-pools.md)。 有关基于 vCore 的资源限制，请参阅[基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。 有关不同购买模型的更多信息，请参阅[购买模型和服务层级](sql-database-purchase-models.md)。
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>单一数据库：存储大小和计算大小
 
-下表显示了可用于每个服务层和计算大小的单一数据库的资源。 可通过 [Azure 门户](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases) 或 [REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) 为单一数据库设置服务层级、计算大小和存储量。
+下表显示了可用于每个服务层级和计算大小的单一数据库的资源。 可通过 [Azure 门户](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases) 或 [REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) 为单一数据库设置服务层级、计算大小和存储量。
 
 > [!IMPORTANT]
 > 有关缩放指南和注意事项，请参阅[缩放单一数据库](sql-database-single-database-scale.md)
 
-### <a name="basic-service-tier"></a>基本服务层
+### <a name="basic-service-tier"></a>“基本”服务层级
 
 | **计算大小** | **基本** |
 | :--- | --: |
 | 最大 DTU 数 | 5 |
 | 包含的存储 (GB) | 2 |
 | 最大存储选择 (GB) | 2 |
-| 最大内存中 OLTP 存储 (GB) |不适用 |
+| 最大内存中 OLTP 存储 (GB) |不可用 |
 | 最大并发工作线程数（请求数） | 30 |
 | 最大并发会话数 | 300 |
 |||
 
-### <a name="standard-service-tier"></a>标准服务层
+### <a name="standard-service-tier"></a>“标准”服务层级
 
 | **计算大小** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | 最大 DTU | 10 | 20 | 50 | 100 |
 | 包含的存储 (GB) | 250 | 250 | 250 | 250 |
 | 最大存储选择 (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| 最大内存中 OLTP 存储 (GB) | 不适用 | 不适用 | 不适用 | 不适用 |
+| 最大内存中 OLTP 存储 (GB) | 不可用 | 不可用 | 不可用 | 不可用 |
 | 最大并发工作线程数（请求数）| 60 | 90 | 120 | 200 |
 | 最大并发会话数 |600 | 900 | 1200 | 2400 |
 ||||||
 
-### <a name="standard-service-tier-continued"></a>标准服务层（续）
+### <a name="standard-service-tier-continued"></a>“标准”服务层级（续）
 
 | **计算大小** | **S4** | **S6** | S7 | S9 | S12 |
 | :--- |---:| ---:|---:|---:|---:|
 | 最大 DTU 数 | 200 | 400 | 800 | 1600 | 3000 |
 | 包含的存储 (GB) | 250 | 250 | 250 | 250 | 250 |
 | 最大存储选择 (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| 最大内存中 OLTP 存储 (GB) | 不适用 | 不适用 | 不适用 | 不适用 |不适用 |
+| 最大内存中 OLTP 存储 (GB) | 不可用 | 不可用 | 不可用 | 不可用 |不可用 |
 | 最大并发工作线程数（请求数）| 400 | 800 | 1600 | 3200 |6000 |
 | 最大并发会话数 |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
 
-### <a name="premium-service-tier"></a>高级服务层
+### <a name="premium-service-tier"></a>“高级”服务层级
 
 | **计算大小** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | 最大 DTU 数 | 125 | 250 | 500 | 1000 | 1750 | 4000 |
 | 包含的存储 (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
 | 最大存储选择 (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
-| 最大内存中 OLTP 存储 (GB) | 第 | 2 | 4 | 8 | 14 | 32 |
+| 最大内存中 OLTP 存储 (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | 最大并发工作线程数（请求数）| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | 最大并发会话数 | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||

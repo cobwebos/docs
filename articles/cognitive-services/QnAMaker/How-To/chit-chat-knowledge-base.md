@@ -3,35 +3,40 @@ title: 向 QnA Maker 知识库添加聊天内容
 titleSuffix: Azure Cognitive Services
 description: 在创建 KB 时向机器人中添加个性化聊天内容可使其更健谈而有趣。 使用 QnA Maker，可以轻松将预填充的一组最常用的聊天内容添加到知识库中。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 01/14/2019
-ms.author: tulasim
+ms.topic: conceptual
+ms.date: 05/10/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: d40330f257694e81704bf6fffa1fd2df8ed86c06
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: a8ebd0b36c6ee8bf6762a70af9f4a7c09f6b118d
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858036"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955152"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
 
 向机器人中添加聊天内容可使其更健谈而有趣。 使用 QnA Maker 中的聊天功能，可以轻松地将预填充的一组最常用的聊天内容添加到知识库 (KB) 中。 这可以用作你的机器人的个性化内容的起点，并节省从头开始编写它们的时间和成本。  
 
-此数据集有大约 100 个场景的聊天内容，使用三种角色（专业、友好、有趣）的口音。 选择与机器人的语音最接近的角色。 对于给定的用户查询，QnA Maker 会尝试将其与最接近的已知聊天内容 QnA 匹配。 
+此数据集具有大约100的 chit 方案-在多个角色 (如专业、友好和 Witty) 的语音中聊天。 选择与机器人的语音最接近的角色。 对于给定的用户查询，QnA Maker 会尝试将其与最接近的已知聊天内容 QnA 匹配。  
 
-不同个性的一些示例：<!-- added quotes so acrolinx doesn't score these sentences -->
-|用户查询|专业|友好|有趣|
-|--|--|--|--|
-|`You are awesome`|`I aim to serve.`|`That's so nice of you!`|`Flattery. I like it.`|
-|`Are you hungry?`|`I don't need to eat.`|`I only do food for thought.`|`Eating would require a lot of things I don't have. Like a digestive system. And silverware.`|
-|`Sing a song`|`I'm afraid I'm not musically inclined.`|`La la la, tra la la. I'm awesome at this.`|`You can't handle my dulcet tones.`|
-|`Will you marry me?`|`I think it's best if we stick to a professional relationship.`|`Aw, that's sweet.`|`Sure. Take me to city hall. See what happens.`|
+下面是一些不同个性的示例。 你可以看到所有的个性[数据集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)以及个性的详细信息。
 
+对于的用户查询`When is your birthday?`, 每个用户都有一个有样式的响应:
+
+<!-- added quotes so acrolinx doesn't score these sentences -->
+|个性化|示例|
+|--|--|
+|专业的|年龄并不真正适用于我。|
+|友好|我真的没有时间了。|
+|Witty|我是免费的。|
+|关心|我没有年龄。|
+|热情|我是 bot, 所以没有时间。|
+||
 
 > [!NOTE]
 > 聊天内容支持目前仅提供英文形式。 
@@ -51,10 +56,12 @@ ms.locfileid: "55858036"
 
 ![编辑聊天内容 QnA](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
+若要查看元数据, 请在工具栏中选择 "**查看选项**", 然后选择 "**显示元数据**"。
+
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>添加其他的聊天内容问题和解答
 可以添加新的不在预定义集中的聊天内容 QnA。 确保不复制聊天内容集中已涵盖的 QnA 对。 添加任何新的聊天内容 QnA 时，它会添加到“编辑”源。 若要确保排名程序理解这是聊天内容，请添加元数据键/值对“编辑: 聊天内容”，如下图所示：
    
-![添加聊天内容 QnA](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)
+![![Add chit-chat Qna](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>从现有 KB 中删除聊天内容
 选择 KB，导航到“设置”页。 特定的聊天内容源作为文件列出，使用所选的个性名称。 可以将其作为源文件删除。
@@ -66,6 +73,6 @@ ms.locfileid: "55858036"
 > [!div class="nextstepaction"]
 > [导入知识库](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>另请参阅 
+## <a name="see-also"></a>请参阅 
 
 [QnA Maker 概述](../Overview/overview.md)

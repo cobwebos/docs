@@ -10,16 +10,15 @@ ms.assetid: 740f6a27-8323-474d-ade2-828ae0c75e7a
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 05/15/2019
 ms.author: apimpm
-ms.openlocfilehash: 8e3f34210627fbb455a1eca0b415cdd6de9b3681
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 2e8863eed774884a99de8643c9e497378368d166
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407617"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072500"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>在 Azure API 管理中使用用于 Redis 的外部 Azure 缓存
 
@@ -41,11 +40,6 @@ ms.locfileid: "58407617"
 > [!div class="checklist"]
 > * 在 API 管理中添加外部缓存
 
-## <a name="availability"></a>可用性
-
-> [!NOTE]
-> 此功能当前仅在 Azure API 管理的“消耗”层中可用。
-
 ## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
@@ -66,7 +60,7 @@ ms.locfileid: "58407617"
 ![将自己的缓存带到 APIM](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
-> **使用从**设置指定区域的部署将进行通信的 API 管理与 API 管理的多区域配置时配置的缓存。 指定为**默认**的缓存将替代为具有区域值的缓存。
+> "**使用源**" 设置指定在多区域配置 api 管理的情况下, 哪些 API 管理区域部署将与配置的缓存通信。 指定为**默认**的缓存将替代为具有区域值的缓存。
 >
 > 例如，如果 API 管理承载在“美国东部”、“东南亚”和“西欧”，并且配置了两个缓存，一个用于**默认**，另一个用于**东南亚**，则**东南亚**中的 API 管理将使用其自己的缓存，而其他两个区域将使用**默认**缓存项。
 
@@ -74,27 +68,28 @@ ms.locfileid: "58407617"
 
 1. 在 Azure 门户中浏览到你的 API 管理实例。
 2. 从左侧的菜单中选择“外部缓存”选项卡。
-3. 单击“**+ 添加**”按钮。
+3. 单击“ **+ 添加**”按钮。
 4. 从“缓存实例”下拉字段中选择你的缓存。
-5. 选择**默认**，或指定所需的区域中**从使用**下拉列表中的字段。
-6. 单击“ **保存**”。
+5. 选择 "**默认**" 或在 "**从**下拉列表中指定所需的区域"。
+6. 单击“保存”。
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>添加位于当前 Azure 订阅外部或 Azure 外部（后者为一般情况）的用于 Redis 的 Azure 缓存
 
 1. 在 Azure 门户中浏览到你的 API 管理实例。
 2. 从左侧的菜单中选择“外部缓存”选项卡。
-3. 单击“**+ 添加**”按钮。
+3. 单击“ **+ 添加**”按钮。
 4. 从“缓存实例”下拉字段中选择“自定义”。
-5. 选择**默认**，或指定所需的区域中**从使用**下拉列表中的字段。
+5. 选择 "**默认**" 或在 "**从**下拉列表中指定所需的区域"。
 6. 在“连接字符串”字段中提供用于 Redis 的 Azure 缓存连接字符串。
-7. 单击“ **保存**”。
+7. 单击“保存”。
 
 ## <a name="use-the-external-cache"></a>使用外部缓存
 
 在 Azure API 管理中配置外部缓存后，可以通过缓存策略使用该缓存。 有关详细步骤，请参阅[添加缓存以提高 Azure API 管理中的性能](api-management-howto-cache.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关缓存策略的详细信息，请参阅 [API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
+
+* 有关缓存策略的详细信息, 请参阅[API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
 * 有关使用策略表达式按密钥缓存项目的信息，请参阅 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
 
 [API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx

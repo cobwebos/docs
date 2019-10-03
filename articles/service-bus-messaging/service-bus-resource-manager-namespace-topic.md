@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 8155a9c8dd8e16ae9853f78ea949954fd15d30e1
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: a63ad846f569f434e1cae33746f61e3a033de66c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847503"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66755034"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含主题和订阅的服务总线命名空间
 
@@ -30,14 +30,14 @@ ms.locfileid: "54847503"
 有关完整模板，请参阅[包含主题和订阅的服务总线命名空间][Service Bus namespace with topic and subscription]模板。
 
 > [!NOTE]
-> 以下 Azure 资源管理器模板可供下载和部署。
+> 以下 Azure Resource Manager 模板可供下载和部署。
 > 
 > * [创建服务总线命名空间](service-bus-resource-manager-namespace.md)
 > * [创建包含队列的服务总线命名空间](service-bus-resource-manager-namespace-queue.md)
 > * [创建包含队列和授权规则的服务总线命名空间](service-bus-resource-manager-namespace-auth-rule.md)
 > * [创建包含主题、订阅和规则的服务总线命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> 若要查找最新模板，请访问 [Azure 快速入门模板][Azure Quickstart Templates]库并搜索“服务总线”。
+> 若要查找最新模板，请访问 [Azure 快速入门模板][Azure Quickstart Templates]库并搜索“服务总线”  。
 > 
 > 
 
@@ -45,7 +45,7 @@ ms.locfileid: "54847503"
 
 使用此模板，将部署包含主题和订阅的服务总线命名空间。
 
-[服务总线主题和订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”模式提供一对多的通信形式。
+[服务总线主题和订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”  模式提供一对多的通信形式。
 
 若要自动运行部署，请单击以下按钮：
 
@@ -99,7 +99,7 @@ ms.locfileid: "54847503"
 创建类型为 **Messaging** 的包含主题和订阅的标准服务总线命名空间。
 
 ```json
-"resources ": [{
+"resources": [{
         "apiVersion": "[variables('sbVersion')]",
         "name": "[parameters('serviceBusNamespaceName')]",
         "type": "Microsoft.ServiceBus/Namespaces",

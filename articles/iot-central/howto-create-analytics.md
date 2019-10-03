@@ -3,29 +3,29 @@ title: 在 Azure IoT Central 应用程序中分析设备数据 | Microsoft Docs
 description: 在 Azure IoT Central 应用程序中分析设备数据。
 author: lmasieri
 ms.author: lmasieri
-ms.date: 02/20/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 05915e2059e45c002a9dfa71a538ed6391caa157
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ffe8b350c1b5cea23aeb65092c7912c6d6c1ed89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078323"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052949"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>如何使用分析功能来分析设备数据
 
 *本文适用于操作员、构建者和管理员。*
 
-Azure IoT Central 提供各种分析功能对来自设备的大量数据进行分析。 若要开始，请访问左侧导航菜单中的“Analytics”。
+Azure IoT Central 提供各种分析功能对来自设备的大量数据进行分析。 若要开始，请访问左侧导航菜单中的“Analytics”。 
 
 ## <a name="querying-your-data"></a>查询数据
 
 若要开始，需要选择一个**设备集**，添加一个**筛选器**（可选），然后选择一个**时间段**。 完成后，选择**显示结果**开始可视化你的数据。
 
-* **设备集：**[设备集](howto-use-device-sets.md)是用户定义的设备组。 例如，奥克兰市的所有冷冻机，或所有版本 2.0 的风力涡轮机。
+* **设备集：** [设备集](howto-use-device-sets.md)是用户定义的设备组。 例如，奥克兰市的所有冷冻机，或所有版本 2.0 的风力涡轮机。
 
 * **筛选器：** 可以选择性地在搜索中添加筛选器，以专注于分析数据。 一次最多可以添加 10 个筛选器。 例如，在奥克兰市的所有冷冻机中，找到温度超过 60 度的冷冻机。
 * **时间段：** 默认会检索过去 10 分钟的数据。 可将此值更改为预定义的时间范围之一，或者选择自定义的时间段。

@@ -2,24 +2,17 @@
 title: 云市场的潜在顾客管理 | Azure 市场和 AppSource
 description: 有关向 Azure 市场和 AppSource 发布产品/服务和技术项目的各种主题的概述
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: yijenj
-manager: nunoc
-editor: ''
-ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: yijenj
-ms.openlocfilehash: 810298fc45becf132da6f082df7ad33e7af828aa
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.author: pabutler
+ms.openlocfilehash: a89921d4b5ec25bc0c924646d3bd41aecf3e8d9c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735535"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870926"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>云市场的潜在顾客管理
 
@@ -138,7 +131,7 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|<Offer Name> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|\<Offer Name> 
 
 oid = 00Do0000000ZHog 
 
@@ -152,14 +145,14 @@ title = MSFT_TEST_636573304831318844
 
 每个潜在顾客都会在所选潜在顾客目标的字段中传递数据，潜在顾客将采用以下格式：**源 - 操作|产品/服务** 
 
-  源：
+  源： 
 
     “AzureMarketplace”, 
     “AzurePortal”, 
     “TestDrive”,  
     “SPZA” (acronym for AppSource) 
 
-  操作：
+  操作： 
 
     “INS” – Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
     “PLT” – Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
@@ -171,7 +164,7 @@ title = MSFT_TEST_636573304831318844
     “StartTestDrive” – This is for Test Drives only and is whenever a customer starts their test drive. 
 
 
-  产品/服务：
+  产品/服务： 
 
     “checkpoint.check-point-r77-10sg-byol”, 
     “bitnami.openedxcypress”, 
@@ -179,7 +172,7 @@ title = MSFT_TEST_636573304831318844
 
  
 
-  以下为客户信息示例数据
+  以下为客户信息示例数据 
 
     { 
 

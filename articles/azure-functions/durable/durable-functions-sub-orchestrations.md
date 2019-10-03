@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1ab9a5714a7ef24b51957bd48b1b67240cf13adb
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 7b5e811daecbb7687abe7a37b75e2730d7830c2c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607660"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983622"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的子业务流程 (Azure Functions)
 
@@ -23,7 +22,10 @@ ms.locfileid: "59607660"
 
 一个业务流程协调程序函数可以通过在 .NET 中调用 [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) 或 [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) 方法，或者在 JavaScript 中调用 `callSubOrchestrator` 或 `callSubOrchestratorWithRetry` 方法来调用另一个业务流程协调程序函数。 [错误处理和修正](durable-functions-error-handling.md#automatic-retry-on-failure)一文提供了有关自动重试的更多信息。
 
-从调用方的角度来看，子业务流程协调程序函数的行为与活动函数相同。 它们可以返回值，引发异常，并且父业务流程协调程序函数可以等待它们。
+从调用方的角度来看，子业务流程协调程序函数的行为与活动函数相同。 它们可以返回值，引发异常，并且父业务流程协调程序函数可以等待它们。 
+
+> [!NOTE]
+> 目前，需要向 JavaScript 中的 subOrchestration `instanceId` API 提供参数值。
 
 ## <a name="example"></a>示例
 
@@ -108,9 +110,12 @@ module.exports = df.orchestrator(function*(context) {
 
     // Run multiple device provisioning flows in parallel
     const provisioningTasks = [];
+    var id = 0;
     for (const deviceId of deviceIds) {
-        const provisionTask = context.df.callSubOrchestrator("DeviceProvisioningOrchestration", deviceId);
+        const child_id = context.df.instanceId+`:${id}`;
+        const provisionTask = context.df.callSubOrchestrator("DeviceProvisioningOrchestration", deviceId, child_id);
         provisioningTasks.push(provisionTask);
+        id++;
     }
 
     yield context.df.Task.all(provisioningTasks);
@@ -119,7 +124,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+> [!NOTE]
+> 子业务流程必须在与父业务流程相同的函数应用中定义。 如果需要在另一个函数应用中调用并等待业务流程，请考虑使用 HTTP Api 的内置支持和 HTTP 202 轮询使用者模式。 有关详细信息，请参阅[HTTP 功能](durable-functions-http-features.md)主题。
+
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解什么是任务中心以及如何配置它们](durable-functions-task-hubs.md)
+> [了解如何设置自定义业务流程状态](durable-functions-custom-orchestration-status.md)

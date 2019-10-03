@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用必应自动建议 REST API 和 Java 建议搜索查询
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 64b6ed680ba0812322d5796debc5edada19bc926
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a0fb1e8f79587223ae1f25ca8a7e0d6dc7cc5bb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118827"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565831"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>快速入门：使用必应自动建议 REST API 和 Java 建议搜索查询
 
@@ -44,7 +44,7 @@ ms.locfileid: "58118827"
     import com.google.gson.JsonParser;
     ```
 
-2. 为订阅密钥、API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)和搜索查询创建变量。
+2. 为订阅密钥、API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和搜索查询创建变量。
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -207,4 +207,4 @@ public static String prettify(String json_text) {
 > [创建单页 Web 应用](../tutorials/autosuggest.md)
 
 - [什么是必应自动建议？](../get-suggested-search-terms.md)
-- [必应自动推荐 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [必应自动推荐 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

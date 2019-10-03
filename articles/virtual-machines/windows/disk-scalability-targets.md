@@ -1,20 +1,18 @@
 ---
 title: Windows 上的 VM 磁盘的可伸缩性和性能目标 - Microsoft Azure | Microsoft Docs
 description: 了解附加到运行 Windows 的 VM 的虚拟机磁盘的可伸缩性和性能目标。
-services: virtual-machines-windows,storage
 author: roygara
 ms.author: rogarana
 ms.date: 11/15/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: windows
 ms.subservice: disks
-ms.openlocfilehash: fed6b75833ea4283ef8f09ed4def3b083c388584
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9b89cbab450e74a75a63d54ca3b327da622a78c3
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770657"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698777"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Windows 上的 VM 磁盘的可伸缩性和性能目标
 
@@ -33,6 +31,6 @@ ms.locfileid: "57770657"
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-subscription-service-limits)

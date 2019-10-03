@@ -1,101 +1,103 @@
 ---
-title: 如何从零开始的 Azure 部署 OPC 孪生模块 |Microsoft Docs
-description: 如何将 OPC 孪生部署从零开始。
+title: 如何从头开始部署适用于 Azure 的 OPC 克隆模块 |Microsoft Docs
+description: 如何从头开始部署 OPC 克隆。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f470beb79e69b5a4a3febeb6a433c48490b96cf7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: df1dd45d58baf82710b5e362afaf055aad140b98
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59491350"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302647"
 ---
-# <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>部署 OPC 孪生模块从零开始的依赖项
+# <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>从头开始部署 OPC 克隆模块和依赖项
 
-OPC 孪生模块在 IoT Edge 上运行，并提供了多个边缘服务添加到 OPC 设备孪生和注册表服务。 
+OPC 克隆模块在 IoT Edge 上运行, 并向 OPC 设备克隆和注册表服务提供多个边缘服务。 
 
-有几个选项来部署模块到您[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/)网关，在它们之间
+有几个选项可用于将模块部署到[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/)网关, 其中包括
 
-- [部署从 Azure 门户的 IoT Edge 边栏选项卡](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)
+- [从 Azure 门户的 IoT Edge 边栏选项卡进行部署](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)
 - [使用 AZ CLI 进行部署](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor-cli)
 
 > [!NOTE]
-> 部署详细信息和说明的详细信息，请参阅 GitHub[存储库](https://github.com/Azure/azure-iiot-components)。
+> 有关部署详细信息和说明的详细信息, 请参阅 GitHub[存储库](https://github.com/Azure/azure-iiot-components)。
 
 ## <a name="deployment-manifest"></a>部署清单
 
-使用部署清单部署所有模块。  若要同时部署的示例清单[OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)并[OPC 孪生](https://github.com/Azure/azure-iiot-opc-twin-module)如下所示。
+所有模块都是使用部署清单部署的。  下面显示了用于部署[Opc 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)和[opc](https://github.com/Azure/azure-iiot-opc-twin-module)克隆的示例清单。
 
 ```json
 {
-  "modulesContent": {
-    "$edgeAgent": {
-      "properties.desired": {
-        "schemaVersion": "1.0",
-        "runtime": {
-          "type": "docker",
-          "settings": {
-            "minDockerVersion": "v1.25",
-            "loggingOptions": "",
-            "registryCredentials": {}
-          }
-        },
-        "systemModules": {
-          "edgeAgent": {
+  "content": {
+    "modulesContent": {
+      "$edgeAgent": {
+        "properties.desired": {
+          "schemaVersion": "1.0",
+          "runtime": {
             "type": "docker",
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
-              "createOptions": ""
+              "minDockerVersion": "v1.25",
+              "loggingOptions": "",
+              "registryCredentials": {}
             }
           },
-          "edgeHub": {
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-              "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}], \"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
-            }
-          }
-        },
-        "modules": {
-          "opctwin": {
-            "version": "1.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "never",
-            "settings": {
-              "image": "mcr.microsoft.com/iotedge/opc-twin:latest",
-              "createOptions": "{\"HostConfig\": { \"NetworkMode\": \"host\", \"CapAdd\": [\"NET_ADMIN\"] } }"
+          "systemModules": {
+            "edgeAgent": {
+              "type": "docker",
+              "settings": {
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "createOptions": ""
+              }
+            },
+            "edgeHub": {
+              "type": "docker",
+              "status": "running",
+              "restartPolicy": "always",
+              "settings": {
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}], \"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
+              }
             }
           },
-          "opcpublisher": {
-            "version": "2.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "never",
-            "settings": {
-              "image": "mcr.microsoft.com/iotedge/opc-publisher:latest",
-              "createOptions": "{\"Hostname\": \"publisher\", \"Cmd\": [ \"publisher\", \"--pf=./pn.json\", \"--di=60\", \"--to\", \"--aa\", \"--si=0\", \"--ms=0\" ], \"ExposedPorts\": { \"62222/tcp\": {} }, \"HostConfig\": { \"PortBindings\": { \"62222/tcp\": [{ \"HostPort\": \"62222\" }] } } }"
+          "modules": {
+            "opctwin": {
+              "version": "1.0",
+              "type": "docker",
+              "status": "running",
+              "restartPolicy": "always",
+              "settings": {
+                "image": "mcr.microsoft.com/iotedge/opc-twin:latest",
+                "createOptions": "{\"NetworkingConfig\": {\"EndpointsConfig\": {\"host\": {}}}, \"HostConfig\": {\"NetworkMode\": \"host\" }}"
+              }
+            },
+            "opcpublisher": {
+              "version": "2.0",
+              "type": "docker",
+              "status": "running",
+              "restartPolicy": "always",
+              "settings": {
+                "image": "mcr.microsoft.com/iotedge/opc-publisher:latest",
+                "createOptions": "{\"Hostname\":\"publisher\",\"Cmd\":[\"publisher\",\"--pf=./pn.json\",\"--di=60\",\"--to\",\"--aa\",\"--si=0\",\"--ms=0\"],\"ExposedPorts\":{\"62222/tcp\":{}},\"NetworkingConfig\":{\"EndpointsConfig\":{\"host\":{}}},\"HostConfig\":{\"NetworkMode\":\"host\",\"PortBindings\":{\"62222/tcp\":[{\"HostPort\":\"62222\"}]}}}"
+              }
             }
           }
         }
-      }
-    },
-    "$edgeHub": {
-      "properties.desired": {
-        "schemaVersion": "1.0",
-        "routes": {
-          "opctwinToIoTHub": "FROM /messages/modules/opctwin/outputs/* INTO $upstream",
-          "opcpublisherToIoTHub": "FROM /messages/modules/opcpublisher/outputs/* INTO $upstream"
-        },
-        "storeAndForwardConfiguration": {
-          "timeToLiveSecs": 7200
+      },
+      "$edgeHub": {
+        "properties.desired": {
+          "schemaVersion": "1.0",
+          "routes": {
+            "opctwinToIoTHub": "FROM /messages/modules/opctwin/* INTO $upstream",
+            "opcpublisherToIoTHub": "FROM /messages/modules/opcpublisher/* INTO $upstream"
+          },
+          "storeAndForwardConfiguration": {
+            "timeToLiveSecs": 7200
+          }
         }
       }
     }
@@ -107,80 +109,80 @@ OPC 孪生模块在 IoT Edge 上运行，并提供了多个边缘服务添加到
 
 将模块部署到 Azure IoT Edge 网关设备的最简单方法是通过 Azure 门户。  
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
-1. 部署 OPC 孪生[依赖项](howto-opc-twin-deploy-dependencies.md)获取所生成和`.env`文件。 请注意已部署`hub name`的`PCS_IOTHUBREACT_HUB_NAME`变量中生成`.env`文件。
+1. 部署 OPC 克隆[依赖项](howto-opc-twin-deploy-dependencies.md)并获取生成`.env`的文件。 请注意, `hub name`生成`.env`的`PCS_IOTHUBREACT_HUB_NAME`文件中的变量已部署。
 
-2. 注册并启动[Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)或[Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge 网关并记下及其`device id`。
+2. 注册并启动[Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)或[Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge 的网关, 并`device id`记下其。
 
-### <a name="deploy-to-an-edge-device"></a>部署到 edge 设备
+### <a name="deploy-to-an-edge-device"></a>部署到边缘设备
 
 1. 登录 [Azure 门户](https://portal.azure.com/)，导航到 IoT 中心。
 
-2. 选择**IoT Edge**左侧的菜单。
+2. 从左侧菜单中选择 " **IoT Edge** "。
 
 3. 在设备列表中单击目标设备的 ID。
 
-4. 选择“设置模块”。
+4. 选择“设置模块”  。
 
-5. 在中**部署模块**部分中的页上，选择**添加**和**IoT Edge 模块。**
+5. 在页面的 "**部署模块**" 部分, 选择 "**添加**并**IoT Edge 模块"。**
 
-6. 在中**IoT Edge Custom Module**对话框中使用`opctwin`作为模块的名称，然后指定容器*图像 URI*作为
+6. 在 " **IoT Edge 自定义模块**" `opctwin`对话框中, 将其用作模块的名称, 然后将容器*映像 URI*指定为
 
    ```bash
    mcr.microsoft.com/iotedge/opc-twin:latest
    ```
 
-   作为*创建选项*使用以下 JSON:
+   对于*容器创建选项*, 请使用以下 JSON:
 
    ```json
-   {"HostConfig":{"NetworkMode":"host","CapAdd":["NET_ADMIN"]}}
+   {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
    ```
 
    必要时请填写可选字段。 要详细了解容器创建选项、重启策略和所需状态，请参阅 [EdgeAgent 必需属性](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties)。 要详细了解模块孪生，请参阅[定义或更新所需属性](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)。
 
-7. 选择**保存**并重复执行步骤**5**。  
+7. 选择 "**保存**", 然后重复步骤**5**。  
 
-8. 在 IoT Edge Custom Module 对话框中，使用`opcpublisher`作为名称的模块，并在容器*映像 URI*作为 
+8. 在 "IoT Edge 自定义模块" 对话框`opcpublisher`中, 使用 as name 作为模块, 并将容器*映像 URI*用作 
 
    ```bash
    mcr.microsoft.com/iotedge/opc-publisher:latest
    ```
 
-   作为*创建选项*使用以下 JSON:
+   对于*容器创建选项*, 请使用以下 JSON:
 
    ```json
    {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--to","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
    ```
 
-9. 选择**保存**，然后**下一步**继续路由部分。
+9. 选择 "**保存**", 然后选择 "**下一步**" 继续执行路由部分。
 
-10. 在路由选项卡中，粘贴以下 
+10. 在 "路由" 选项卡中, 粘贴以下 
 
     ```json
     {
       "routes": {
-        "opctwinToIoTHub": "FROM /messages/modules/opctwin/outputs/* INTO $upstream",
-        "opcpublisherToIoTHub": "FROM /messages/modules/opcpublisher/outputs/* INTO $upstream"
+        "opctwinToIoTHub": "FROM /messages/modules/opctwin/* INTO $upstream",
+        "opcpublisherToIoTHub": "FROM /messages/modules/opcpublisher/* INTO $upstream"
       }
     }
     ```
 
-    然后选择**下一步**
+    然后选择 "**下一步**"
 
-11. 审阅部署信息和清单。  它应类似于上面的部署清单。  选择“提交”。
+11. 查看部署信息和清单。  它应类似于上面的部署清单。  选择**提交**。
 
-12. 将模块部署到设备之后，即可在门户的“设备详细信息”页中查看所有模块。 此页面显示每个已部署模块的名称，以及部署状态和退出代码等有用信息。
+12. 将模块部署到设备之后，即可在门户的“设备详细信息”页中查看所有模块  。 此页面显示每个已部署模块的名称，以及部署状态和退出代码等有用信息。
 
-## <a name="deploying-using-azure-cli"></a>使用 Azure CLI 进行部署
+## <a name="deploying-using-azure-cli"></a>使用 Azure CLI 部署
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
-1. 安装最新版本[Azure 命令行界面 (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)从[此处](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+1. 从[此处](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)安装最新版本的[Azure 命令行接口 (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 。
 
 ### <a name="quickstart"></a>快速入门
 
-1. 保存到更高版本的部署清单`deployment.json`文件。  
+1. 将上面的部署清单保存到`deployment.json`文件中。  
 
 2. 使用以下命令将配置应用于 IoT Edge 设备：
 
@@ -188,8 +190,8 @@ OPC 孪生模块在 IoT Edge 上运行，并提供了多个边缘服务添加到
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content ./deployment.json
    ```
 
-   `device id`参数是区分大小写。 content 参数指向你保存的部署清单文件。 
-    ![az IoT Edge 模块集输出](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
+   `device id`参数区分大小写。 content 参数指向你保存的部署清单文件。 
+    ![az IoT Edge 集模块输出](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
 
 3. 将模块部署到设备后，可以使用以下命令查看所有模块：
 
@@ -197,57 +199,11 @@ OPC 孪生模块在 IoT Edge 上运行，并提供了多个边缘服务添加到
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-   设备 ID 参数是区分大小写。 ![az iot hub module-identity list output](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
-
-## <a name="run-and-debug-locally"></a>本地运行和调试
-
-对于故障排除和调试它非常有用若要运行的 Edge 模块，使用本地[IoT Edge 开发模拟器](https://github.com/Azure/iotedgehubdev)。  它与模拟器中提供的本地开发体验的创建、 开发、 测试、 运行和调试 Azure IoT Edge 模块并使用相同的位或代码在生产环境中使用的解决方案。
-
-### <a name="prerequisites"></a>必备组件
-
-1. 部署 OPC 孪生[依赖项](howto-opc-twin-deploy-dependencies.md)。
-
-2. 安装[Docker CE (18.02.0+)](https://www.docker.com/community-edition)上[Windows](https://docs.docker.com/docker-for-windows/install/)， [macOS](https://docs.docker.com/docker-for-mac/install/)或者[Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)。
-
-3. 安装[Docker Compose (1.20.0+)](https://docs.docker.com/compose/install/#install-compose) (才需要**Linux**。 Compose 已包含在 Windows/macOS Docker CE 安装)
-
-4. 安装[Python (2.7 / 3.5+) 和 Pip](https://www.python.org/)
-
-5. 通过运行以下命令在终端中安装 iotedgehubdev
-
-   ```bash
-   pip install --upgrade iotedgehubdev
-   ```
-
-> [!NOTE]
-> 安装`iotedgehubdev`到**根**Linux/macOS 上 (*不使用-用户中 pip install 命令选项*)。
-> 请确保没有 iotedgehubdev 与在同一台计算机上运行，因为它们需要相同的端口的 Azure IoT Edge 运行时。
-
-### <a name="quickstart"></a>快速入门
-
-1. 按照说明[Azure 门户中创建 Edge 设备](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)。  将复制 edge 设备连接字符串。
-
-2. 设置模拟器使用 edge 连接字符串。
-
-    ```bash
-    iotedgehubdev setup -c <edge-device-connection-string>
-    ```
-
-3. 复制上面到清单`deployment.json`同一文件夹中的文件。  使用在模拟器中启动的部署
-
-    ```bash
-    iotedgehubdev start -d deployment.json
-    ```
-
-4. 停止模拟器使用
-
-   ```bash
-   iotedgehubdev stop
-   ```
+   设备 ID 参数区分大小写。 ![az iot hub module-identity list output](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已了解如何部署从零开始的 OPC 孪生，下面是建议的下一步：
+现在, 你已了解如何从头开始部署 OPC 克隆, 下面是建议的后续步骤:
 
 > [!div class="nextstepaction"]
-> [将 OPC 孪生部署到现有项目](howto-opc-twin-deploy-existing.md)
+> [将 OPC 克隆部署到现有项目](howto-opc-twin-deploy-existing.md)

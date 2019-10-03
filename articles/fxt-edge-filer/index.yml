@@ -1,0 +1,42 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure FXT Edge Filer 文档
+metadata:
+  title: Azure FXT Edge Filer 文档
+  description: 使用 Azure FXT Edge Filer 作为缓存层来执行需要进行大量读取操作的高性能计算 (HPC) 任务
+  author: ekpgh
+  ms.service: fxt-edge-filer
+  ms.topic: landing-page
+  ms.date: 07/10/2019
+  ms.author: v-erkell
+abstract:
+  description: Azure FXT Edge Filer 混合存储缓存是一个硬件/软件混合系统，它为基于文件的、需要进行大量读取操作的高性能计算 (HPC) 工作流加快了数据访问速度。 包含三个或更多 Azure FXT Edge Filer 设备的群集可以提高本地 NAS 系统（NetApp 或 Dell EMC Isilon）、云存储或解决方案组合的存储性能。
+sections:
+  - title: 分步教程
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="fxt-install">安装 Azure FXT Edge Filer 硬件</a>
+          - html: <a href="fxt-network-power">为 Azure FXT Edge Filer 进行网络连接</a>
+          - html: <a href="fxt-node-password">在硬件节点上设置根密码</a>
+          - html: <a href="fxt-cluster-create">创建混合存储缓存群集</a>
+          - html: <a href="fxt-add-nodes">添加群集节点</a>
+          - html: <a href="fxt-add-storage">添加后端存储并配置虚拟命名空间</a>
+          - html: <a href="fxt-configure-network">配置群集的网络设置</a>
+  - title: 操作指南
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="fxt-mount-clients">将客户端连接到 Azure FXT Edge Filer 群集</a>
+          - html: <a href="fxt-monitor">监视 Azure FXT Edge Filer</a>
+          - html: <a href="fxt-power-off">安全关闭硬件节点的电源</a>
+  - title: 资源
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="fxt-specs">硬件规格</a>
+          - html: <a href="fxt-additional-doc">其他文档</a>
+          - html: <a href="fxt-support-ticket">开具支持票证</a>

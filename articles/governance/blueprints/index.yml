@@ -1,44 +1,103 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 蓝图服务文档
+### YamlMime:Landing
+title: Azure 蓝图文档
+summary: 通过将项目（例如资源管理器模板、基于角色的访问控制和策略）打包到单个蓝图定义中，来简化部署。
 metadata:
-  title: Azure 蓝图文档 - 教程和 API 参考
-  description: Azure 蓝图是一项 Azure 服务，可用于在 Azure 环境中创建、定义和部署项目。
-  author: DCtheGeek
-  manager: carmonm
+  title: Azure 蓝图文档
+  description: 通过将项目（例如资源管理器模板、基于角色的访问控制和策略）打包到单个蓝图定义中，来简化部署。
   ms.service: blueprints
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: Azure 蓝图帮助你使用可组合的项目（例如 Azure 资源管理器模板）预配资源、基于角色的访问控制和策略，从而以可重复的方式部署和更新云环境。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何在 Azure 中创建、分配和管理蓝图定义。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              alt: Azure 门户
-              src: ./media/portal.svg
-            text: Azure 门户
-            href: create-blueprint-portal.md
-          - image:
-              alt: REST
-              src: ./media/rest.svg
-            text: REST
-            href: create-blueprint-rest-api.md
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: '<p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>'
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/blueprints/management">用于 .NET 的 Azure SDK</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/blueprints/">API 参考</a></p>
+  ms.date: 09/01/2019
+  ms.openlocfilehash: 44d21c07a81dc3fe5912137691b67af1a3e910e2
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70239203"
+landingContent:
+- title: 关于 Azure 蓝图
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 蓝图？
+      url: ./overview.md
+    - text: 部署的阶段
+      url: ./concepts/deployment-stages.md
+    - text: 蓝图的生命周期
+      url: ./concepts/lifecycle.md
+  - linkListType: video
+    links:
+    - text: Azure Friday - Azure 蓝图概述
+      url: https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建新蓝图（门户）
+      url: ./create-blueprint-portal.md
+    - text: 创建新蓝图 (PowerShell)
+      url: ./create-blueprint-powershell.md
+    - text: 创建新蓝图 (REST API)
+      url: ./create-blueprint-rest-api.md
+  - linkListType: tutorial
+    links:
+    - text: 使用蓝图示例
+      url: ./tutorials/create-from-sample.md
+  - linkListType: deploy
+    links:
+    - text: 蓝图示例的索引
+      url: ./samples/index.md
+- title: 自定义蓝图
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 动态参数
+      url: ./concepts/parameters.md
+    - text: 将项目排序
+      url: ./concepts/sequencing-order.md
+    - text: 锁定已部署的资源
+      url: ./concepts/resource-locking.md
+  - linkListType: tutorial
+    links:
+    - text: 使用锁保护新资源
+      url: ./tutorials/protect-new-resources.md
+- title: 演变到“大规模”
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 更新现有蓝图
+      url: ./how-to/update-existing-assignments.md
+    - text: 使用 PowerShell 管理分配
+      url: ./how-to/manage-assignments-ps.md
+    - text: 使用 PowerShell 进行导入和导出
+      url: ./how-to/import-export-ps.md
+    - text: 使蓝图操作员起作用
+      url: ./how-to/configure-for-blueprint-operator.md
+    - text: 将蓝图作为代码管理
+      url: https://github.com/Azure/azure-blueprints/blob/master/README.md
+- title: 参与
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure 治理 YouTube 频道
+      url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+    - text: 请求产品功能
+      url: https://feedback.azure.com/forums/915958-azure-governance
+    - text: Azure 治理的技术社区
+      url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 蓝图特定的函数
+      url: ./reference/blueprint-functions.md
+    - text: PowerShell 模块 (PSGallery)
+      url: https://www.powershellgallery.com/packages/Az.Blueprint
+    - text: Azure PowerShell
+      url: /powershell/module/az.blueprint/#blueprint
+    - text: REST API
+      url: /rest/api/blueprints/
+    - text: .NET
+      url: /dotnet/api/overview/azure/blueprints/management

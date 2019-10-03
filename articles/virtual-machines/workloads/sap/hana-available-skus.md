@@ -4,26 +4,43 @@ description: Azure SAP HANA（大型实例）的 SKU。
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/20/2018
-ms.author: saghorpa
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b80f872c82061c0cb87f4f1e2714183e71cf02cd
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: 987f84301608129075b55769f886912ec2354cbb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448120"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099904"
 ---
 # <a name="available-skus-for-hli"></a>对 HLI 可用的 SKU
 
-多个 Azure 区域发布了多种配置的 Azure 上的 SAP HANA（大型实例）服务，其中包括美国西部和美国东部、澳大利亚东部、澳大利亚东南部、西欧、北欧、日本东部和日本西部。
+在 Azure 区域的几个配置中提供了基于修订版 3 stamp 的 Azure 上的 SAP HANA (大型实例) 服务:
+
+- 美国西部
+- East US
+- 澳大利亚东部
+- 澳大利亚东南部
+- 西欧
+- 北欧
+- 日本东部
+- 日本西部
+
+基于修订版本4的 Azure (大型实例) 服务上的 SAP HANA 在 Azure 区域的多个配置中提供:
+
+- 美国西部 2
+- East US
+- 西欧
+- 北欧
+
+
 
 [经 SAP HANA 认证的 HANA 大型实例 SKU](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) 列表如下：
 
@@ -43,16 +60,16 @@ ms.locfileid: "56448120"
 |---| Azure 上的 SAP HANA S960m<br /> – 20 x Intel® Xeon® 处理器 E7-8890 v4<br /> 480 CPU 内核和 960 CPU 线程 |  20.0 TB |  46 TB | 可用 |
 
 
-在 SAP HANA TDIv5 下，SAP 允许特定于客户的规模调整和特定于客户的项目，这可能导致出现未经认证的服务器配置：
+在 SAP HANA TDIv5 下, SAP 允许客户特定的大小和客户特定的项目, 这些项目可能会导致服务器配置, 这些配置未在中列出为已认证:
 
 - [经 SAP HANA 认证的设备](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/appliances.html)
 - [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 
-在许多情况下，这些特定于客户的服务器配置比经 SAP 认证的服务器单元承载更多内存。 使用 SAP 时，客户可获得 SAP 支持并对其特定于客户的规模调整服务器配置进行认证。 Azure 提供了以下 HANA 大型实例标准 SKU，Microsoft 提供了此类 TDIv5 特定于客户的规模调整项目的价目表。
+在许多情况下, 这些客户特定的服务器配置所需的内存比通过 SAP 认证的服务器单元多。 使用 SAP 时，客户可获得 SAP 支持并对其特定于客户的规模调整服务器配置进行认证。 在 Azure 中, 以下 HANA 大型实例标准 Sku 适用于此类 TDIv5 客户特定大小项目的 Microsoft 价目表。
 
 | SKU|CPU | 内存 | 存储 | 可用性 |
 | ---| --- | --- | --- | --- |
-| S96 | Azure 上的 SAP HANA S96<br /> - 2 x Intel® Xeon® 处理器 E7-8890 v4<br /> 48 CPU 内核和 96 CPU 线程 |  768 GB |  3 TB | 可用 |
+| S96 | Azure 上的 SAP HANA S96<br /> \- 2 x Intel® Xeon® 处理器 E7-8890 v4<br /> 48 CPU 内核和 96 CPU 线程 |  768 GB |  3 TB | 可用 |
 
 
 | 可在内存中 <br /> 扩展的原始 SKU | CPU | 内存 | 存储 | 可用性 |
@@ -72,7 +89,7 @@ ms.locfileid: "56448120"
 除特定于客户的规模调整项目的单元外，产品/服务的硬件基础均通过了 SAP HANA TDI 认证。 两种不同类的硬件将 SKU 分为：
 
 - 称为“I 类”SKU 的 S72、S72m、S96、S144、S144m、S192、S192m 和 S192xm。
-- 称为“II 类”SKU 的 S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm 和 S960m。
+- S384、S384m、S384xm、S384xxm、S576m、S576xm S768m、S768xm 和 S960m, 它们被称为 Sku 的 "类型 II 类"。
 
 不会将整个 HANA 大型实例模具以独占方式分配给单个客户使用。 此事实也适用于通过 Azure 中部署的网络结构连接的计算和存储资源的机架。 HANA 大型实例基础结构（例如 Azure）部署在以下三个级别中相互隔离的不同客户&quot;租户&quot;：
 

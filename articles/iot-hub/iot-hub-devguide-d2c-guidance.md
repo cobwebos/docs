@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: fffa064b912a96b05feb901d1d2d44533c4681b7
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57007975"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60885510"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>从设备到云通信指南
 
@@ -35,7 +35,7 @@ ms.locfileid: "57007975"
 | 存储和检索 | IoT 中心的临时存储，最多可保存 7 天。 仅顺序读取。 | 由 IoT 中心存储在设备孪生中。 可使用 [IoT 中心查询语言](iot-hub-devguide-query-language.md)进行检索。 | 存储在用户提供的 Azure 存储帐户中。 |
 | 大小 | 消息大小最大为 256-KB。 | 报告属性大小最大为 8 KB。 | Azure Blob 存储支持的最大文件大小。 |
 | 频率 | 高。 有关详细信息，请参阅 [IoT 中心限制](iot-hub-devguide-quotas-throttling.md)。 | 中。 有关详细信息，请参阅 [IoT 中心限制](iot-hub-devguide-quotas-throttling.md)。 | 低。 有关详细信息，请参阅 [IoT 中心限制](iot-hub-devguide-quotas-throttling.md)。 |
-| 协议 | 适用于所有协议。 | 使用 MQTT 或 AMQP 时可用。 | 在使用任何协议时可用，但设备上必须具备 HTTPS。 |
+| Protocol | 适用于所有协议。 | 使用 MQTT 或 AMQP 时可用。 | 在使用任何协议时可用，但设备上必须具备 HTTPS。 |
 
 应用程序可能需要同时将信息作为遥测时序或警报发送，并且使其在设备孪生中可用。 在这种情况下，可以选择以下选项之一：
 

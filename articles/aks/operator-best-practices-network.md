@@ -2,17 +2,17 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的网络连接
 description: 了解 Azure Kubernetes 服务 (AKS) 中虚拟网络资源和连接的群集运算符的最佳实践
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.author: iainfou
-ms.openlocfilehash: aaa16245fada7fbccdd0865d973de2fa19970989
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: mlearned
+ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176576"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67614749"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络连接和安全的最佳做法
 
@@ -47,7 +47,7 @@ ms.locfileid: "58176576"
 
 有关 AKS 服务主体委托的详细信息，请参阅[委托对其他 Azure 资源的访问权限][sp-delegation]。
 
-每个节点和 Pod 在接收自己的 IP 地址时，请规划 AKS 子网的地址范围。 子网必须大到足以为每个部署的节点、Pod 和网络资源提供 IP 地址。 每个 AKS 群集必须位于自己的子网中。 要允许连接到 Azure 中的本地网络或对等互连网络，请勿使用与现有网络资源重叠的 IP 地址范围。 每个节点使用 kubenet 和 Azure CNI 网络运行的 Pod 数量存在默认限制。 若要处理纵向扩展事件或群集升级，还需要可在分配的子网中使用的其他 IP 地址。
+每个节点和 Pod 在接收自己的 IP 地址时，请规划 AKS 子网的地址范围。 子网必须大到足以为每个部署的节点、Pod 和网络资源提供 IP 地址。 每个 AKS 群集必须位于自己的子网中。 要允许连接到 Azure 中的本地网络或对等互连网络，请勿使用与现有网络资源重叠的 IP 地址范围。 每个节点使用 kubenet 和 Azure CNI 网络运行的 Pod 数量存在默认限制。 若要处理纵向扩展事件或群集升级，还需要可在分配的子网中使用的其他 IP 地址。 如果使用 Windows Server 容器 (当前在 AKS 中为预览版), 则此额外的地址空间尤其重要, 因为这些节点池需要升级才能应用最新的安全修补程序。 有关 Windows Server 节点的详细信息, 请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
 
 若要计算所需的 IP 地址，请参阅[在 AKS 中配置 Azure CNI 网络][advanced-networking]。
 
@@ -99,34 +99,36 @@ spec:
          servicePort: 80
 ```
 
-入口控制器是在 AKS 节点上运行的守护程序并监视传入请求。 然后根据入口资源中定义的规则分配流量。 最佳常见的入口控制器基于 [NGINX]。 AKS 不会限制于特定的控制器，因此可以使用其他控制器，例如 [Contour][contour]、[HAProxy][haproxy] 或 [Traefik][traefik]。
+入口控制器是在 AKS 节点上运行的守护程序并监视传入请求。 然后根据入口资源中定义的规则分配流量。 最佳常见的入口控制器基于 [NGINX]。 AKS 不会限制你使用特定控制器，因此可以使用其他控制器，例如 [Contour][contour]、[HAProxy][haproxy] 或 [Traefik][traefik]。
+
+必须在 Linux 节点上计划入口控制器。 Windows Server 节点 (当前在 AKS 中为预览版) 不应运行入口控制器。 使用 YAML 清单中的节点选择器或 Helm 图表部署来指示该资源应在基于 Linux 的节点上运行。 有关详细信息, 请参阅[使用节点选择器控制在 AKS 中计划 pod 的位置][concepts-node-selectors]。
 
 入口有许多方案，包括以下操作指南：
 
-* [使用外部网络连接创建基本入口控制器][aks-ingress-basic]
+* [创建具有外部网络连接的基本入口控制器][aks-ingress-basic]
 * [创建使用内部、专用网络和 IP 地址的入口控制器][aks-ingress-internal]
 * [创建使用你自己的 TLS 证书的入口控制器][aks-ingress-own-tls]
 * 创建一个使用 Let's Encrypt 的入口控制器，以自动生成[具有动态公共 IP 地址][aks-ingress-tls]或[具有静态公共 IP 地址][aks-ingress-static-tls]的 TLS 证书
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>使用 Web 应用程序防火墙 (WAF) 保护流量
 
-**最佳做法指南** - 要扫描传入流量是否存在潜在攻击，请使用 Web 应用程序防火墙 (WAF)，例如 [Barracuda WAF for Azure][barracuda-waf] 或 Azure 应用程序网关。 这些更高级的网络资源还可以将流量路由到 HTTP 和 HTTPS 连接或基本 SSL 终端之外。
+**最佳做法指南**-若要扫描传入流量是否存在潜在攻击, 请使用 web 应用程序防火墙 (WAF), 例如[Barracuda WAF for Azure][barracuda-waf]或 Azure 应用程序网关。 这些更高级的网络资源还可以将流量路由到 HTTP 和 HTTPS 连接或基本 SSL 终端之外。
 
 将流量分配到服务和应用程序的入口控制器通常是 AKS 群集中的 Kubernetes 资源。 控制器作为守护程序在 AKS 节点上运行，并使用一些节点资源（例如 CPU、内存和网络带宽）。 在较大的环境中，通常需要将部分流量路由或 TLS 终端卸载到 AKS 群集之外的网络资源。 还需要扫描传入流量是否存在潜在攻击。
 
 ![Azure 应用程序网关等 Web 应用程序防火墙 (WAF) 可以保护和分配 AKS 群集的流量](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Web 应用程序防火墙 (WAF) 通过筛选传入流量提供额外的安全层。 开放式 Web 应用程序安全项目 (OWASP) 提供了一套规则来监视跨网站脚本或 cookie 中毒之类的攻击。 [Azure 应用程序网关][ app-gateway] （在 AKS 中的当前处于预览状态） 是 WAF 可以将与 AKS 群集中提供这些安全功能，才能流量到达你的 AKS 群集和应用程序集成。 其他第三方解决方案也可以执行这些功能，因此可以在给定的产品中继续使用现有的资源和专业知识。
+Web 应用程序防火墙 (WAF) 通过筛选传入流量提供额外的安全层。 开放式 Web 应用程序安全项目 (OWASP) 提供了一套规则来监视跨网站脚本或 cookie 中毒之类的攻击。 [Azure 应用程序网关][app-gateway](目前在预览版中, AKS) 是一个 WAF, 可与 AKS 群集集成以提供这些安全功能, 然后流量就会进入 AKS 群集和应用程序。 其他第三方解决方案也可以执行这些功能，因此可以在给定的产品中继续使用现有的资源和专业知识。
 
-负载均衡器或入口资源继续在 AKS 群集中运行以进一步优化流量分配。 通过资源定义，可以将应用程序网关可以作为入口控制器进行集中管理。 要快速入门，请[创建应用程序网关入口控制器][app-gateway-ingress]。
+负载均衡器或入口资源继续在 AKS 群集中运行以进一步优化流量分配。 通过资源定义，可以将应用程序网关可以作为入口控制器进行集中管理。 若要开始, 请[创建应用程序网关入口控制器][app-gateway-ingress]。
 
 ## <a name="control-traffic-flow-with-network-policies"></a>使用网络策略控制流量流
 
 **最佳做法指南** - 使用网络策略允许或拒绝到 Pod 的流量。 默认情况下，将允许群集中 Pod 之间的所有流量。 为了提高安全性，请定义对 Pod 通信进行限制的规则。
 
-（目前以预览版在 AKS 中） 的网络策略是 Kubernetes 功能，可用于控制 pod 之间的流量流。 可选择基于分配的标签、命名空间或流量端口等设置来允许或拒绝流量。 使用网络策略提供了一种云本机方式来控制流量流。 因为 Pod 是在 AKS 群集中动态创建的，则可以动态应用所需的网络策略。 不要使用 Azure 网络安全组来控制 Pod 到 Pod 流量，请使用网络策略。
+网络策略是一项 Kubernetes 功能，可用于控制 Pod 之间的流量流。 你可以选择基于分配的标签、命名空间或流量端口等设置来允许或拒绝流量。 使用网络策略提供了一种云本机方式来控制流量流。 因为 Pod 是在 AKS 群集中动态创建的，则可以动态应用所需的网络策略。 不要使用 Azure 网络安全组来控制 Pod 到 Pod 流量，请使用网络策略。
 
-若要使用网络策略，必须在创建 AKS 群集时启用此功能。 无法在现有 AKS 群集上启用网络策略。 请提前进行规划以确保在群集上启用网络策略并根据需要使用它们。
+若要使用网络策略，必须在创建 AKS 群集时启用此功能。 无法在现有 AKS 群集上启用网络策略。 请提前进行规划以确保在群集上启用网络策略并根据需要使用它们。 网络策略应仅用于 AKS 中基于 Linux 的节点和 pod。
 
 网络策略是使用 YAML 清单作为 Kubernetes 资源创建的。 策略应用于所定义的 Pod，然后，入口或出口规则定义流量可以如何流动。 以下示例将向应用了 *app: backend* 标签的 Pod 应用网络策略。 然后，入口规则仅允许来自具有 *app: frontend* 标签的 Pod 的流量：
 
@@ -146,7 +148,7 @@ spec:
           app: frontend
 ```
 
-若要开始使用策略，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量][use-network-policies]。
+若要开始使用策略, 请参阅[使用 Azure Kubernetes 服务中的网络策略在 pod 之间保护流量 (AKS)][use-network-policies]。
 
 ## <a name="securely-connect-to-nodes-through-a-bastion-host"></a>通过堡垒主机安全地连接到节点
 
@@ -156,7 +158,7 @@ AKS 中的大多数操作都可以使用 Azure 管理工具或通过 Kubernetes 
 
 ![使用堡垒主机或跳转盒连接到 AKS 节点](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
 
-堡垒主机的管理网络也应受到保护。 使用 [Azure ExpressRoute][expressroute] 或 [VPN 网关][ vpn-gateway]连接到本地网络，并使用网络安全组控制访问。
+堡垒主机的管理网络也应受到保护。 使用 [Azure ExpressRoute][expressroute] 或 [VPN 网关][vpn-gateway]连接到本地网络，并使用网络安全组控制访问。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -186,3 +188,5 @@ AKS 中的大多数操作都可以使用 Azure 管理工具或通过 Kubernetes 
 [use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
+[concepts-node-selectors]: concepts-clusters-workloads.md#node-selectors
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

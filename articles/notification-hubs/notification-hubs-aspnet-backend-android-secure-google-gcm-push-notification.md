@@ -3,9 +3,9 @@ title: 通过 Azure 通知中心发送安全推送通知
 description: 了解如何从 Azure 将安全推送通知发送到 Android 应用。 用 Java 和 C# 编写的代码示例。
 documentationcenter: android
 keywords: 推送通知、推送通知、推送消息、android 推送通知
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: daf3de1c-f6a9-43c4-8165-a76bfaa70893
 ms.service: notification-hubs
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 27536b0a3d7e0858a5660b4c7b33cb6679b5fbf1
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 419a9f9b5ce698c7516edd55856cbea9891ba029
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452099"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212177"
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>通过 Azure 通知中心发送安全推送通知
 
@@ -32,7 +34,7 @@ ms.locfileid: "54452099"
 ## <a name="overview"></a>概述
 
 > [!IMPORTANT]
-> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)。
+> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)。
 
 利用 Microsoft Azure 中的推送通知支持，可访问易于使用且横向扩展的多平台推送消息基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。
 

@@ -17,11 +17,11 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16c302fbe151d6cd8c2198240bc31a2bd69dbd7b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270897"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60337644"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Velpic
 
@@ -61,13 +61,13 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>若要配置自动用户帐户预配到 Velpic 在 Azure AD 中：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”  部分。
 
 2. 如果你已为实现单一登录配置 Velpic，搜索 Velpic 使用搜索字段的实例。 否则，请选择**外**并搜索**Velpic**应用程序库中。 从搜索结果中，选择 Velpic 并将其添加到应用程序的列表。
 
 3. 选择实例 Velpic，然后选择**预配**选项卡。
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![Velpic 预配](./media/velpic-provisioning-tutorial/Velpic1.png)
 
@@ -77,7 +77,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 6. 在 Azure 门户中，单击**测试连接**以确保 Azure AD 可以连接到 Velpic 应用。 如果连接失败，请确保你的 Velpic 帐户具有管理员权限，然后重试步骤 5。
 
-7. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
+7. 在“通知电子邮件”  字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
 8. 单击“ **保存**”。
 
@@ -89,7 +89,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 12. 单击“ **保存**”。
 
-这将启动初始任何的同步用户和/或组分配到 Velpic 中的用户和组部分。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务执行的所有操作。
+这将启动初始任何的同步用户和/或组分配到 Velpic 中的用户和组部分。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务执行的所有操作  。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 

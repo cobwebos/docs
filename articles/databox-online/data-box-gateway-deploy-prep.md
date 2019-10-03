@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/28/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 34bc4d7cbdbb89cd9ff3f334ca32087c474735b7
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 428b42e62f44d182de109740359544135561e54b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620081"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441490"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>教程：准备部署 Azure Data Box Gateway
 
@@ -50,7 +50,12 @@ ms.locfileid: "58620081"
 
 在开始之前，请确保：
 
-- Data Box Gateway 资源应该支持你的 Microsoft Azure 订阅。 不支持即用即付订阅。
+- Data Box Gateway 资源应该支持你的 Microsoft Azure 订阅。 还支持即用即付订阅。
+- 你在资源组级别拥有 Data Box Edge/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
+
+    - 若要创建任何 Data Box Edge/Data Box Gateway 资源，你应该具有资源组级别范围内的参与者（或更高级别）权限。 你还需要确保已注册 `Microsoft.DataBoxEdge` 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers)。
+    - 若要创建存储帐户资源，你同样需要资源组级别范围内的参与者或更高级别访问权限。 Azure 存储在默认情况下是已注册的资源提供程序。
+- 你拥有对 Azure Active Directory 图形 API 的管理员或用户访问权限。 有关详细信息，请参阅 [Azure Active Directory 图形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
 - 具有 Microsoft Azure 存储帐户和访问凭据。
 
 ### <a name="for-the-data-box-gateway-device"></a>对于 Data Box Gateway 设备
@@ -85,22 +90,22 @@ ms.locfileid: "58620081"
 
 1. 使用 Microsoft Azure 凭据通过
 
-    - URL [https://portal.azure.com](http://portal.azure.com) 登录到 Azure 门户。
+    - URL [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
     - 或者，通过 URL [https://portal.azure.us](https://portal.azure.us) 登录到 Azure 政府版门户。 有关更多详细信息，请参阅[使用门户连接到 Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)。
 
-2. 在左窗格中，选择“+ 创建资源”。 搜索 **Data Box Edge/Data Box Gateway**。 选择“Data Box Edge/Data Box Gateway”。 选择“创建”。
-3. 选择用于 Data Box Gateway 设备的订阅。 选择要将 Data Box Gateway 资源部署到的区域。 在此版本中，可以选择“美国东部”、“东南亚”和“西欧”。 选择离要部署设备的地理区域最近的位置。 在“Data Box Gateway”选项中，选择“创建”。
+2. 在左窗格中，选择“+ 创建资源”  。 搜索 **Data Box Edge/Data Box Gateway**。 选择“Data Box Edge/Data Box Gateway”。 选择“创建”  。
+3. 选择用于 Data Box Gateway 设备的订阅。 选择要将 Data Box Gateway 资源部署到的区域。 在此版本中，可以选择“美国东部”、“东南亚”和“西欧”。 选择离要部署设备的地理区域最近的位置。 在“Data Box Gateway”选项中，选择“创建”。  
 
     ![搜索 Data Box Gateway 服务](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
-4. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。
+4. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。  
     
     |设置  |值  |
     |---------|---------|
     |订阅    |系统会根据前面所做的选择自动填充此字段。 订阅将链接到你的计费帐户。 |
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。     |
 
-5. 输入或选择以下“实例详细信息”。
+5. 输入或选择以下“实例详细信息”。 
 
     |设置  |值  |
     |---------|---------|
@@ -109,13 +114,13 @@ ms.locfileid: "58620081"
     
     ![创建 Data Box Gateway 资源](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     
-6. 选择“查看 + 创建”。
+6. 选择“查看 + 创建”  。
  
-7. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。 选择“创建”。
+7. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。    选择“创建”  。
 
     ![查看 Data Box Gateway 资源详细信息](media/data-box-gateway-deploy-prep/data-box-gateway-resource1.png)
 
-创建资源需要几分钟时间。 成功创建并部署资源后，你会收到通知。 选择“转到资源”。
+创建资源需要几分钟时间。 成功创建并部署资源后，你会收到通知。 选择“转到资源”。 
 
 ![查看 Data Box Gateway 资源详细信息](media/data-box-gateway-deploy-prep/data-box-gateway-resource2.png)
 
@@ -128,11 +133,11 @@ ms.locfileid: "58620081"
 
 在 [Azure 门户](https://portal.azure.com/)中执行以下步骤，以下载虚拟设备映像。
 
-1. 选择创建的资源，然后选择“概述”。 如果有现有的 Azure Data Box Gateway 资源，请选择该资源并转到“概述”。 选择“设备设置”。
+1. 选择创建的资源，然后选择“概述”。  如果有现有的 Azure Data Box Gateway 资源，请选择该资源并转到“概述”。  选择“设备设置”。 
 
     ![新的 Data Box Gateway 资源](media/data-box-gateway-deploy-prep/data-box-gateway-resource-created.png)
 
-2. 在“下载映像”磁贴上，选择与主机服务器上的操作系统对应的、用于预配 VM 的虚拟设备映像。 映像文件约为 5.6 GB。
+2. 在“下载映像”磁贴上，选择与主机服务器上的操作系统对应的、用于预配 VM 的虚拟设备映像。  映像文件约为 5.6 GB。
    
    * [Windows Server 2012 R2 及更高版本上的适用于 Hyper-V 的 VHDX](https://aka.ms/dbe-vhdx-2012)。
    * [适用于 VMWare ESXi 6.0、6.5 或 6.7 的 VMDK](https://aka.ms/dbe-vmdk)。
@@ -146,11 +151,11 @@ ms.locfileid: "58620081"
 
 启动并运行 Data Box Gateway 资源后，需要获取激活密钥。 此密钥用于激活 Data Box Gateway 设备并将其连接到资源。 如果你仍在 Azure 门户中，则现在可以获取此密钥。
 
-1. 选择创建的资源，然后选择“概述”。 在“设备设置”中，转到“配置并激活”磁贴。
+1. 选择创建的资源，然后选择“概述”。  在“设备设置”中，转到“配置并激活”磁贴。  
 
     ![“配置并激活”磁贴](media/data-box-gateway-deploy-prep/data-box-gateway-configure-activate.png)
 
-2. 选择“生成密钥”以创建激活密钥。 选择复制图标复制密钥并将其保存供日后使用。
+2. 选择“生成密钥”以创建激活密钥。  选择复制图标复制密钥并将其保存供日后使用。
 
     ![获取激活密钥](media/data-box-gateway-deploy-prep/get-activation-key.png)
 

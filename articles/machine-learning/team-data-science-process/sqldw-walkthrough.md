@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e27c4462e7137145917d1284bfb6f8838e8a090b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: f9da031fd4b35c2fa9126f545eecacf6143b18a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523590"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66478857"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>团队数据科学过程实务：使用 SQL 数据仓库
 在本教程中，我们指导为某个公开提供的数据集（[NYC 出租车车程](https://www.andresmh.com/nyctaxitrips/)数据集）完成以下过程：使用 SQL 数据仓库 (SQL DW) 构建和部署机器学习模型。 构建的二元分类模型可预测是否为某段旅程支付了小费；而且还会讨论用于多类分类和回归的模型，这些模型可预测支付的小费金额的分布。
@@ -46,13 +46,13 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 用于联接 trip\_data 和 trip\_fare 的**唯一键**由以下三个字段组成︰
 
 * medallion、
-* hack\_license 和 
+* hack\_license 和
 * pickup\_datetime。
 
 ## <a name="mltasks"></a>解决三种类型的预测任务
 我们根据 *tip\_amount* 编写了三个预测问题的公式，来阐明三种类型的建模任务︰
 
-1. **二元分类**：预测是否已支付某个行程的小费，即大于 $0 的 tip\_amount 是正例，等于 $0 的 tip\_amount 是反例。
+1. **二元分类**：预测是否已支付某个行程的小费，即大于 $0 的 tip\_amount 是正例，等于 $0 的 tip\_amount 是反例   。
 2. **多类分类**：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
 
         Class 0 : tip_amount = $0
@@ -82,7 +82,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 * **用户名**
 * **密码**
 
-**安装 Visual Studio 和 SQL Server Data Tools。**  有关说明，请参阅[为 SQL 数据仓库安装 Visual Studio 2015 和/或 SSDT (SQL Server Data Tools) ](../../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
+**安装 Visual Studio 和 SQL Server Data Tools。** 有关说明，请参阅[为 SQL 数据仓库安装 Visual Studio 2015 和/或 SSDT (SQL Server Data Tools) ](../../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)。
 
 **使用 Visual Studio 连接到 Azure SQL DW。** 有关说明，请参阅[使用 Visual Studio 连接到 Azure SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-connect-overview.md)中的步骤 1 和 2。
 
@@ -431,7 +431,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 | tip_class | tip_freq |
 | --- | --- |
-| 1 |82230915 |
+| 第 |82230915 |
 | 2 |6198803 |
 | 3 |1932223 |
 | 0 |82264625 |
@@ -535,7 +535,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
-| 1 |40.731804 |-74.001083 |40.736622 |-73.988953 |.7169601222 |
+| 第 |40.731804 |-74.001083 |40.736622 |-73.988953 |.7169601222 |
 | 2 |40.715794 |-74,010635 |40.725338 |-74.00399 |.7448343721 |
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
@@ -578,17 +578,17 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 3. 单击新 IPython Notebook 左上角的“Jupyter”符号。
 
     ![单击 Jupyter 符号][24]
-4. 将示例 IPython Notebook 拖放到 AzureML IPython Notebook 服务的“树”页面，然后单击“上传”。 然后，示例 IPython Notebook 将上传到 AzureML IPython Notebook 服务。
+4. 将示例 IPython Notebook 拖放到 AzureML IPython Notebook 服务的“树”  页面，然后单击“上传”  。 然后，示例 IPython Notebook 将上传到 AzureML IPython Notebook 服务。
 
     ![单击“上传”][25]
 
 若要运行示例 IPython Notebook 或 Python 脚本文件，需要使用以下 Python 包。 如果使用的是 AzureML IPython Notebook 服务，这些包已经预安装。
 
-    - pandas
-    - numpy
-    - matplotlib
-    - pyodbc
-    - PyTables
+- pandas
+- numpy
+- matplotlib
+- pyodbc
+- PyTables
 
 在 AzureML 上使用大型数据生成高级分析解决方案的建议顺序如下：
 
@@ -817,7 +817,7 @@ and
 
 典型的训练实验由以下步骤组成：
 
-1. “**新建 +**”实验。
+1. “**新建 +** ”实验。
 2. 将数据导入 Azure 机器学习工作室。
 3. 根据需要预处理、转换和操作数据。
 4. 根据需要生成功能。
@@ -830,13 +830,13 @@ and
 
 在此练习中，我们已经探讨和设计了 SQL 数据仓库中的数据，并确定了要引入 Azure 机器学习工作室中的样本大小。 下面是构建一个或多个预测模型的过程：
 
-1. 使用“数据输入和输出”部分的[导入数据][import-data]模块，将数据导入 Azure 机器学习工作室。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
+1. 使用“数据输入和输出”  部分的[导入数据][import-data]模块，将数据导入 Azure 机器学习工作室。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
 
     ![Azure ML 导入数据][17]
 2. 在“**属性**”面板中，选择“**Azure SQL 数据库**”作为**数据源**。
 3. 在“**数据库服务器名称**”字段中输入数据库 DNS 名称。 格式：`tcp:<your_virtual_machine_DNS_name>,1433`
 4. 在相应字段中输入**数据库名称**。
-5. 在“服务器用户帐户名”中输入 *SQL 用户名*，在“服务器用户帐户密码”中输入*密码*。
+5. 在“服务器用户帐户名”  中输入 *SQL 用户名*，在“服务器用户帐户密码”  中输入*密码*。
 7. 在**数据库查询**编辑文本区域，粘贴提取必要数据库字段（包括任何计算的字段，例如标签）的查询，并向下采样数据至所需样本大小。
 
 下图是二元分类实验直接从 SQL 数据仓库数据库读取数据的一个示例（建议按演练中所用的架构名称和表名称替换表名称 nyctaxi_trip 和 nyctaxi_fare）。 可以针对多类分类和回归问题构建类似实验。
@@ -868,7 +868,7 @@ Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特�
 2. 标识逻辑**输入端口**，以表示预期输入数据架构。
 3. 标识逻辑**输出端口**，以表示预期 Web 服务输出架构。
 
-创建评分实验后，请检查并根据需要进行调整。 典型调整是将输入数据集和/或查询替换为排除标签字段的数据集和/或查询，因为这些数据集和/或查询在调用该服务时不可用。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“评分标签”和“评分概率”。
+创建评分实验后，请检查并根据需要进行调整。 典型调整是将输入数据集和/或查询替换为排除标签字段的数据集和/或查询，因为这些数据集和/或查询在调用该服务时不可用。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“评分标签”  和“评分概率”  。
 
 下图提供评分实验示例。 准备部署时，请单击下方操作栏中的“**发布 WEB 服务**”按钮。
 

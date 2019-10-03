@@ -2,21 +2,21 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中创建用于多个 Pod 的静态卷
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 文件手动创建用于多个并发 Pod 的卷
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: 65e94a271fc8fc72ac74d51af3cf7b717f8410b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: mlearned
+ms.openlocfilehash: 009da6c16d446f2b0d4d3f402c1c1ec63dde34d8
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785238"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018738"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 文件共享手动创建并使用卷
 
-基于容器的应用程序通常需要访问数据并将数据保存在外部数据卷中。 如果多个 Pod 需要同时访问同一存储卷，则可以使用 Azure 文件通过[服务器消息块 (SMB) 协议][smb-overview]进行连接。 本文介绍了如何手动创建 Azure 文件共享并将其附加到 AKS 中的 Pod。
+基于容器的应用程序通常需要访问数据并将数据保存在外部数据卷中。 如果多个 Pod 需要同时访问同一存储卷，则可以使用 Azure 文件存储通过[服务器消息块 (SMB) 协议][smb-overview]进行连接。 本文介绍了如何手动创建 Azure 文件共享并将其附加到 AKS 中的 Pod。
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
@@ -71,7 +71,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>将文件共享装载为卷
 
-若要将 Azure 文件共享装载到 Pod 中，请在容器规范中配置卷。使用以下内容创建名为 `azure-files-pod.yaml` 的新文件。 如果更改了文件共享名称或机密名称，请更新 *shareName* 和 *secretName*。 如果需要，请更新 `mountPath`，这是文件共享在 Pod 中的装载路径。
+若要将 Azure 文件共享装载到 Pod 中，请在容器规范中配置卷。使用以下内容创建名为 `azure-files-pod.yaml` 的新文件。 如果更改了文件共享名称或机密名称，请更新 *shareName* 和 *secretName*。 如果需要，请更新 `mountPath`，这是文件共享在 Pod 中的装载路径。 对于 Windows Server 容器（当前在 AKS 中为预览版），请使用 Windows 路径约定指定*mountPath* ，如 *"d："* 。
 
 ```yaml
 apiVersion: v1
@@ -135,17 +135,7 @@ Volumes:
 
 ## <a name="mount-options"></a>装载选项
 
-默认的 *fileMode* 和 *dirMode* 值的 Kubernetes 版本有差异，如下表所述。
-
-| 版本 | value |
-| ---- | ---- |
-| v1.6.x、v1.7.x | 0777 |
-| v1.8.0-v1.8.5 | 0700 |
-| v1.8.6 或更高版本 | 0755 |
-| v1.9.0 | 0700 |
-| v1.9.1 或更高版本 | 0755 |
-
-如果使用版本 1.8.5 或更高版本的群集并静态创建永久性卷对象，则需要在 *PersistentVolume* 对象上指定装载选项。
+对于 Kubernetes 版本1.9.1 和更高*版本，"dirMode" 和 "* " 的默认值为*0755* 。 如果使用 Kuberetes 版本1.8.5 或更高版本的群集并静态创建永久卷对象，则需要在*PersistentVolume*对象上指定装载选项。 以下示例设置 *0777*：
 
 ```yaml
 apiVersion: v1
@@ -157,24 +147,95 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
+  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
-    shareName: azurefile
+    shareName: aksshare
     readOnly: false
   mountOptions:
   - dir_mode=0777
   - file_mode=0777
   - uid=1000
   - gid=1000
+  - mfsymlinks
+  - nobrl
 ```
 
 如果使用版本为 1.8.0 - 1.8.4 的群集，则可在指定安全性上下文时，将 *runAsUser* 值设置为 *0*。 有关 Pod 安全性上下文的详细信息，请参阅[配置安全性上下文][kubernetes-security-context]。
+
+若要更新装载选项，请使用*PersistentVolume*创建*azurefile-yaml*文件。 例如：
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: azurefile
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  storageClassName: azurefile
+  azureFile:
+    secretName: azure-secret
+    shareName: aksshare
+    readOnly: false
+  mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl
+```
+
+创建*azurefile-yaml*文件，其中包含使用*PersistentVolume*的*PersistentVolumeClaim* 。 例如：
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azurefile
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: azurefile
+  resources:
+    requests:
+      storage: 5Gi
+```
+
+使用命令来创建*PersistentVolume*和 PersistentVolumeClaim。 `kubectl`
+
+```console
+kubectl apply -f azurefile-mount-options-pv.yaml
+kubectl apply -f azurefile-mount-options-pvc.yaml
+```
+
+验证是否已创建*PersistentVolumeClaim*并将其绑定到*PersistentVolume*。
+
+```console
+$ kubectl get pvc azurefile
+
+NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
+```
+
+更新容器规范以引用*PersistentVolumeClaim*并更新 pod。 例如：
+
+```yaml
+...
+  volumes:
+  - name: azure
+    persistentVolumeClaim:
+      claimName: azurefile
+```
 
 ## <a name="next-steps"></a>后续步骤
 
 如需相关的最佳做法，请参阅[在 AKS 中存储和备份的最佳做法][operator-best-practices-storage]。
 
-有关 AKS 群集与 Azure 文件进行交互的详细信息，请参阅 [Azure 文件的 Kubernetes 插件][kubernetes-files]。
+有关 AKS 群集与 Azure 文件存储进行交互的详细信息，请参阅 [Azure 文件存储的 Kubernetes 插件][kubernetes-files]。
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

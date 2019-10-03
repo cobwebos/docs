@@ -6,25 +6,26 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/07/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d55e246e6fc3a5eeb182a49d1e159887f66d6872
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 205dc7d9e69788ea29a48ff342844a4b74e143bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011310"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65799085"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>检查视频索引器输出中生成的 API
 
-调用“获取视频索引”API 时，如果响应状态为 OK，则你会获得详细的 JSON 输出（响应内容）。 JSON 内容包含指定的视频见解的详细信息。 Insights 包括如维度： 脚本，Ocr，人脸，主题、 块等。维度包含视频中出现每个维度时显示的时间范围实例。  
+调用“获取视频索引”API 时，如果响应状态为 OK，则你会获得详细的 JSON 输出（响应内容）。  JSON 内容包含指定的视频见解的详细信息。 Insights 包括如维度： 脚本，Ocr，人脸，主题、 块等。维度包含视频中出现每个维度时显示的时间范围实例。  
 
-此外，可以通过在[视频索引器](https://www.videoindexer.ai/)网站中的视频上按“播放”按钮，来直观检查视频的汇总见解。 有关详细信息，请参阅[查看和编辑视频见解](video-indexer-view-edit.md)。
+此外，可以通过在[视频索引器](https://www.videoindexer.ai/)网站中的视频上按“播放”按钮，来直观检查视频的汇总见解。  有关详细信息，请参阅[查看和编辑视频见解](video-indexer-view-edit.md)。
 
 ![洞察力](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-本文探讨“获取视频索引”API 返回的 JSON 内容。 
+本文探讨“获取视频索引”API 返回的 JSON 内容。  
 
 > [!NOTE]
 > 视频索引器中所有访问令牌的有效期为一小时。
@@ -36,7 +37,7 @@ ms.locfileid: "60011310"
 |---|---|
 |accountId|播放列表的 VI 帐户 ID。|
 |id|播放列表的 ID。|
-|名称|播放列表的名称。|
+|name|播放列表的名称。|
 |description|播放列表的说明。|
 |userName|创建播放列表的用户名。|
 |created|播放列表的创建时间。|
@@ -72,11 +73,11 @@ ms.locfileid: "60011310"
 
 本部分介绍见解的摘要。
 
-|属性 | 描述|
+|特性 | 描述|
 |---|---|
-|名称|视频的名称。 例如 Azure Monitor。|
+|name|视频的名称。 例如 Azure Monitor。|
 |id|视频的 ID。 例如 63c6d532ff。|
-|privacyMode|可以细分为以下模式之一：“私用”、“公共”。 **公共** - 向你帐户中的任何人，以及具有视频链接的每个人显示该视频。 **私用** - 向你帐户中的每个人显示该视频。|
+|privacyMode|可以细分为以下模式之一：“私用”、“公共”。   **公共** - 向你帐户中的任何人，以及具有视频链接的每个人显示该视频。 **私用** - 向你帐户中的每个人显示该视频。|
 |duration|包含一个持续时间，用于描述见解发生的时间。 持续时间以秒为单位。|
 |thumbnailVideoId|从其创建缩略图的视频的 ID。
 |thumbnailId|视频的缩略图 ID。 若要获取实际的缩略图，请调用[获取缩略图](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail)并将其传递 thumbnailVideoId 和 thumbnailId。|
@@ -92,11 +93,11 @@ ms.locfileid: "60011310"
 
 ## <a name="videos"></a>videos
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |accountId|视频的 VI 帐户 ID。|
 |id|视频的 ID。|
-|名称|视频的名称。
+|name|视频的名称。
 |state|视频的状态（已上传、正在处理、已处理、失败、已隔离）。|
 |processingProgress|处理进度（例如 20%）。|
 |failureCode|无法处理时显示的失败代码（例如“UnsupportedFileType”）。|
@@ -111,7 +112,7 @@ ms.locfileid: "60011310"
 |publishedUrlProxy|要从中流式传输视频的 URL（适用于 Apple 设备）。|
 |viewToken|用于流式传输视频的短期查看令牌。|
 |sourceLanguage|视频的源语言。|
-|语言|视频的实际语言（翻译）。|
+|language|视频的实际语言（翻译）。|
 |indexingPreset|用于编制视频索引的预设。|
 |streamingPreset|用于发布视频的预设。|
 |linguisticModelId|用于转录视频的 CRIS 模型。|
@@ -151,7 +152,7 @@ ms.locfileid: "60011310"
 |Version|代码版本|
 |---|---|
 |sourceLanguage|视频的源语言（采用一种主要语言）。 格式为 [BCP-47](https://tools.ietf.org/html/bcp47) 字符串。|
-|语言|见解语言（从源语言翻译）。 格式为 [BCP-47](https://tools.ietf.org/html/bcp47) 字符串。|
+|language|见解语言（从源语言翻译）。 格式为 [BCP-47](https://tools.ietf.org/html/bcp47) 字符串。|
 |脚本|[transcript](#transcript) 维度。|
 |ocr|[OCR](#ocr)维度。|
 |关键字|[keywords](#keywords) 维度。|
@@ -190,18 +191,18 @@ ms.locfileid: "60011310"
 
 #### <a name="blocks"></a>blocks
 
-属性 | 描述
+特性 | 描述
 ---|---
 id|块的 ID。|
 instances|此块的时间范围列表。|
 
 #### <a name="transcript"></a>脚本
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|行 ID。|
-|Text|脚本本身。|
-|语言|脚本语言。 旨在支持每行语言不同的脚本。|
+|text|脚本本身。|
+|language|脚本语言。 旨在支持每行语言不同的脚本。|
 |instances|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
 
 示例：
@@ -235,12 +236,12 @@ instances|此块的时间范围列表。|
 
 #### <a name="ocr"></a>ocr
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|OCR 行 ID。|
-|Text|OCR 文本。|
+|text|OCR 文本。|
 |confidence|识别置信度。|
-|语言|OCR 语言。|
+|language|OCR 语言。|
 |instances|出现此 OCR 的时间范围列表（同一 OCR 可重复多次出现）。|
 |height|OCR 矩形的高度|
 |top|像素中的顶部位置|
@@ -273,9 +274,9 @@ instances|此块的时间范围列表。|
 |Name|描述|
 |---|---|
 |id|关键字 ID。|
-|Text|关键字文本。|
+|text|关键字文本。|
 |confidence|关键字的识别置信度。|
-|语言|关键字语言（转换后）。|
+|language|关键字语言（转换后）。|
 |instances|出现此关键字的时间范围列表（一个关键字可重复多次出现）。|
 
 ```json
@@ -301,10 +302,10 @@ instances|此块的时间范围列表。|
 
 #### <a name="faces"></a>人脸
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|人脸 ID。|
-|名称|人脸名称。 可以为“Unknown #0”、公认的名人或经过客户培训的人员。|
+|name|人脸名称。 可以为“Unknown #0”、公认的名人或经过客户培训的人员。|
 |confidence|人脸识别置信度。|
 |description|名人的说明。 |
 |thumbnailId|该人脸的缩略图 ID。|
@@ -349,8 +350,8 @@ instances|此块的时间范围列表。|
 |Name|描述|
 |---|---|
 |id|标签 ID。|
-|名称|标签名称（例如“计算机”、“电视”）。|
-|语言|标签名称语言（转换后）。 BCP-47|
+|name|标签名称（例如“计算机”、“电视”）。|
+|language|标签名称语言（转换后）。 BCP-47|
 |instances|出现此标签的时间范围列表（一个标签可重复多次出现）。 每个实例都有置信度字段。 |
 
 
@@ -438,7 +439,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="shots"></a>截图
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|截图 ID。|
 |keyFrames|（每个具有一个 ID 和实例时间范围的列表） 的截图中的关键帧的列表。 每个关键帧实例都包含关键帧的缩略图的 thumbnailId 字段 id。|
@@ -491,7 +492,7 @@ instances|此块的时间范围列表。|
 |Name|描述|
 |---|---|
 |id|品牌 ID。|
-|名称|品牌名称。|
+|name|品牌名称。|
 |referenceId | 品牌维基百科 URL 的后缀。 例如，“Target_Corporation”是 [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) 的后缀。
 |referenceUrl | 品牌的维基百科 URL（如果存在）。 例如，[https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)。
 |description|品牌说明。|
@@ -547,7 +548,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="statistics"></a>statistics
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
 |SpeakerWordCount|每个发言人的单词数。|
@@ -557,7 +558,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|音频效果 ID。|
 |type|音频效果类型（例如鼓掌、语音、静音）。|
@@ -586,7 +587,7 @@ instances|此块的时间范围列表。|
 
 情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
@@ -764,10 +765,10 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 |Name|描述|
 |---|---|
 |id|主题 ID。|
-|名称|主题名称，例如：“药品”。|
+|name|主题名称，例如：“药品”。|
 |referenceId|反映主题层次结构的痕迹导航。 例如：“健康和福利/医疗和保健/药品”。|
 |confidence|[0,1] 范围内的置信度评分。 评分越高，则置信度越高。|
-|语言|主题中使用的语言。|
+|language|主题中使用的语言。|
 |iptcName|IPTC 媒体代码名称（如果已检测到）。|
 |instances |目前，视频索引器不会按时间间隔编制主题的索引，因此，整个视频将用作间隔。|
 

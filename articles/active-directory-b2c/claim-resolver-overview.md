@@ -2,28 +2,28 @@
 title: 关于 Azure Active Directory B2C 自定义策略中的声明解析程序 | Microsoft Docs
 description: 了解声明解析程序如何用于 Azure Active Directory B2C 中的自定义策略。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/25/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 44ac4a5fd14d262fdbd1f6fcd36bb2351d08f754
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: f08c85cee2378f4a879daf197af7a2adf0c20f45
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692436"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064403"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
-Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-overview-custom.md)中的声明解析程序提供关于授权请求的上下文信息，例如策略名称、请求相关 ID、用户界面语言等。
+Azure Active Directory B2C （Azure AD B2C）[自定义策略](active-directory-b2c-overview-custom.md)中的声明解析程序提供有关授权请求的上下文信息，如策略名称、请求相关 ID、用户界面语言等。
 
-若要在输入或输出声明中使用声明解析程序，请在 [ClaimsSchema](claimsschema.md) 元素下定义字符串 ClaimType，然后将 DefaultValue 设置为输入或输出声明元素中的声明解析程序。 Azure AD B2C 读取声明解决程序的值并将该值用于技术配置文件中。 
+若要在输入或输出声明中使用声明解析程序，请在 [ClaimsSchema](claimsschema.md) 元素下定义字符串 ClaimType，然后将 DefaultValue 设置为输入或输出声明元素中的声明解析程序。 Azure AD B2C 读取声明解决程序的值并将该值用于技术配置文件中。
 
-在以下示例中，使用 `string` 数据类型定义名为 `correlationId` 的声明类型。  
+在以下示例中，使用 `string` 数据类型定义名为 `correlationId` 的声明类型。
 
 ```XML
 <ClaimType Id="correlationId">
@@ -43,41 +43,41 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 以下部分列出了可用的声明解析程序。
 
-### <a name="culture"></a>环境
+### <a name="culture"></a>区域性
 
-| 声明 | 说明 | 示例 |
+| 声明 | 描述 | 示例 |
 | ----- | ----------- | --------|
-| {Culture:LanguageName} | 语言的两字母 ISO 代码。 | en |
-| {Culture:LCID}   | 语言代码的 LCID。 | 1033 |
+| {Culture:LanguageName} | 语言的两字母 ISO 代码。 | zh-CN |
+| {Culture:LCID}   | 语言代码的 LCID。 | 4 |
 | {Culture:RegionName} | 区域的两字母 ISO 代码。 | 美国 |
 | {Culture:RFC5646} | RFC5646 语言代码。 | en-US |
 
 ### <a name="policy"></a>策略
 
-| 声明 | 说明 | 示例 |
+| 声明 | 描述 | 示例 |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | 信赖方策略名称。 | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | 信赖方策略的租户 ID。 | your-tenant.onmicrosoft.com |
 | {Policy:TenantObjectId} | 信赖方策略的租户对象 ID。 | 00000000-0000-0000-0000-000000000000 |
 | {Policy:TrustFrameworkTenantId} | 信任框架的租户 ID。 | your-tenant.onmicrosoft.com |
 
-### <a name="openid-connect"></a>OpenID Connect
+### <a name="openid-connect"></a>OpenID 连接
 
-| 声明 | 说明 | 示例 |
+| 声明 | 描述 | 示例 |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 不适用 |
+| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 不可用 |
 | {OIDC:ClientId} |`client_id` 查询字符串参数。 | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |`domain_hint` 查询字符串参数。 | facebook.com |
 | {OIDC:LoginHint} |  `login_hint` 查询字符串参数。 | someone@contoso.com |
-| {OIDC:MaxAge} | `max_age`。 | 不适用 |
+| {OIDC:MaxAge} | `max_age`。 | 不可用 |
 | {OIDC:Nonce} |`Nonce` 查询字符串参数。 | defaultNonce |
 | {OIDC:Prompt} | `prompt` 查询字符串参数。 | 登录 |
-| {OIDC:Resource} |`resource` 查询字符串参数。 | 不适用 |
+| {OIDC:Resource} |`resource` 查询字符串参数。 | 不可用 |
 | {OIDC:scope} |`scope` 查询字符串参数。 | openid |
 
 ### <a name="context"></a>上下文
 
-| 声明 | 说明 | 示例 |
+| 声明 | 描述 | 示例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | 标识体验框架版本（内部版本号）。  | 1.0.507.0 |
 | {Context:CorrelationId} | 相关 ID。  | 00000000-0000-0000-0000-000000000000 |
@@ -90,24 +90,24 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 可以将 OIDC 或 OAuth2 请求中包括的任何参数名称映射到用户旅程中的某个声明， 例如，来自应用程序的请求可能包括名为 `app_session`、`loyalty_number` 的查询字符串参数或任何自定义查询字符串。
 
-| 声明 | 说明 | 示例 |
+| 声明 | 描述 | 示例 |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | 查询字符串参数。 | hawaii |
 | {OAUTH-KV:app_session} | 查询字符串参数。 | A3C5R |
 | {OAUTH-KV:loyalty_number} | 查询字符串参数。 | 1234 |
-| {OAUTH-KV:any custom query string} | 查询字符串参数。 | 不适用 |
+| {OAUTH-KV:any custom query string} | 查询字符串参数。 | 不可用 |
 
 ### <a name="oauth2"></a>OAuth2
 
-| 声明 | 说明 | 示例 |
+| 声明 | 描述 | 示例 |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | 访问令牌。 | 不适用 |
+| {oauth2:access_token} | 访问令牌。 | 不可用 |
 
 ## <a name="how-to-use-claim-resolvers"></a>如何使用声明解析程序
 
 ### <a name="restful-technical-profile"></a>RESTful 技术配置文件
 
-在 [RESTful](restful-technical-profile.md) 技术配置文件中，可能想要发送用户语言、策略名称、作用域和客户端 ID。 根据这些声明，REST API 可以运行自定义业务逻辑，并提出已本地化的错误消息（如有必要）。 
+在 [RESTful](restful-technical-profile.md) 技术配置文件中，可能想要发送用户语言、策略名称、作用域和客户端 ID。 根据这些声明，REST API 可以运行自定义业务逻辑，并提出已本地化的错误消息（如有必要）。
 
 以下示例演示了一个 RESTful 技术配置文件：
 

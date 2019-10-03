@@ -1,6 +1,6 @@
 ---
-title: Microsoft 365 工作负载管理员角色内容 - Azure AD | Microsoft Docs
-description: 在 Azure Active Directory 中查找针对 Microsoft 365 工作负载的管理员角色内容和 API 引用
+title: Microsoft 365 services Azure AD 的管理员角色内容 |Microsoft Docs
+description: 在 Azure Active Directory 中查找 Microsoft 365 services 的管理员角色的内容和 API 参考
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,23 +15,23 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7460c3a7d957634d14186d313994c65d89fa4a32
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 12ffa1d4f3e802b3419b31844ddd8133ceab5086
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217864"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304397"
 ---
-# <a name="administrator-roles-for-microsoft-365-workloads"></a>Microsoft 365 工作负载的管理员角色
+# <a name="administrator-roles-for-microsoft-365-services"></a>Microsoft 365 services 的管理员角色
 
 在 Azure AD 中，可以使用管理角色管理 Microsoft 365 中的所有产品。 某些产品还提供特定于该产品的其他角色。 有关每个产品所支持角色的信息，请参阅下表。 有关委派问题的常规讨论，请参阅 [Azure Active Directory 中的角色委派计划](roles-concept-delegation.md)。
 
 ## <a name="where-to-find-content"></a>查找内容位置
 
-Microsoft 365 工作负载 | 角色内容 | API 内容
+Microsoft 365 服务 | 角色内容 | API 内容
 ---------------------- | ------------------ | -----------------
 Office 365 和 Microsoft 365 业务计划中的管理员角色 | [Office 365 管理员角色](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | 不可用
-Azure Active Directory (Azure AD) 和 Azure AD Identity Protection| [Azure AD 管理员角色](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
+Azure Active Directory (Azure AD) 和 Azure AD 标识保护| [Azure AD 管理员角色](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 Exchange Online| [Exchange 基于角色的访问控制](https://docs.microsoft.com/exchange/understanding-role-based-access-control-exchange-2013-help) |  [PowerShell for Exchange](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[提取角色分配](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
 SharePoint Online | [Azure AD 管理员角色](directory-assign-admin-roles.md)<br>还有[关于 Office 365 中的 SharePoint 管理员角色](https://docs.microsoft.com/sharepoint/sharepoint-admin-role) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 Teams/Skype for Business | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)

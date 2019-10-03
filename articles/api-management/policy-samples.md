@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: c58396379db2d9073c1f7d3a4c3aa68dfd06079e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f8bd768dc7c01310874cd484f59869fbafcf3fe7
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830177"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074196"
 ---
 # <a name="api-management-policy-samples"></a>API 管理策略示例
 

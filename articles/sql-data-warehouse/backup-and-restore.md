@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/01/2019
+ms.date: 04/30/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ebe45bf8f562b5be9ae2afda9d5940296396f155
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 90544e182eb25f53232cee9a4dd0c05bd25508a3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787626"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988471"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的备份和还原
 
@@ -25,7 +25,7 @@ ms.locfileid: "59787626"
 
 数据仓库快照会创建一个还原点，利用该还原点可将数据仓库恢复或复制到以前的状态。  由于 SQL 数据仓库属于分布式系统，因此数据仓库快照包含许多位于 Azure 存储中的文件。 快照捕获数据仓库中存储的数据的增量更改。
 
-数据仓库还原是基于现有数据仓库或已删除数据仓库的还原点创建的新数据仓库。 还原数据仓库是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库还原可以在意外损坏或删除数据后重新创建数据。 此外，数据仓库是出于测试或开发目的创建数据仓库副本的强大机制。  SQL 数据仓库还原费率根据数据库大小和源和目标数据仓库的位置而异。 在同一区域内的平均值，恢复率通常需要大约 20 分钟。 
+数据仓库还原是基于现有数据仓库或已删除数据仓库的还原点创建的新数据仓库。 还原数据仓库是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库还原可以在意外损坏或删除数据后重新创建数据。 此外，数据仓库是出于测试或开发目的创建数据仓库副本的强大机制。  SQL 数据仓库还原速度因数据库大小以及源和目标数据仓库的位置而异。 就同一区域的平均还原速度来说，通常需要大约 20 分钟才能完成还原。 
 
 ## <a name="automatic-restore-points"></a>自动还原点
 
@@ -83,7 +83,7 @@ Azure 帐单上将列出存储的明细项目，以及灾难恢复存储的明�
 
 如果使用的是异地冗余存储，则会单独收取异地存储费。 异地冗余存储按标准的读取访问异地冗余存储 (RA-GRS) 费率计费。
 
-有关 SQL 数据仓库定价的详细信息，请参阅 [SQL 数据仓库定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)和跨区域还原时的[传出费用](https://azure.microsoft.com/pricing/details/bandwidth/)。
+有关 SQL 数据仓库定价的详细信息, 请参阅 [SQL 数据仓库定价]。 跨区域还原时，不会对数据流出量收费。
 
 ## <a name="restoring-from-restore-points"></a>从还原点还原
 
@@ -97,11 +97,11 @@ Azure 帐单上将列出存储的明细项目，以及灾难恢复存储的明�
 
 ## <a name="cross-subscription-restore"></a>跨订阅还原
 
-如果你需要直接跨订阅还原，为此功能投票[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)。 还原到不同的逻辑服务器和[移动](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)跨订阅以执行跨订阅还原服务器。 
+如果需要在订阅之间直接还原, 请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)投票此功能。 还原到不同的逻辑服务器, 并跨订阅["移动"](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)服务器以执行跨订阅还原。 
 
 ## <a name="geo-redundant-restore"></a>异地冗余还原
 
-可[将数据仓库还原](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region)到支持所选性能级别的 SQL 数据仓库的任何区域。
+可[将数据仓库还原](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-from-geo-backup#restore-from-an-azure-geographical-region-through-powershell)到支持所选性能级别的 SQL 数据仓库的任何区域。
 
 > [!NOTE]
 > 若要执行异地冗余还原，不能选择退出此功能。

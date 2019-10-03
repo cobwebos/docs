@@ -1,10 +1,10 @@
 ---
-title: 将 Azure AD 与应用集成入门 | Microsoft 文档
+title: 将 Azure AD 与应用集成入门 | Microsoft Docs
 description: 本文是一篇入门指南，介绍如何将 Azure Active Directory (AD) 与本地应用程序和云应用程序集成。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1223c96bffdf125da0c47fc932d46cfa84fa45c8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 11453ad9132664313df2b56cb3664512628a16ba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187774"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108240"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>将 Azure Active Directory 与应用程序集成入门指南
 
@@ -57,7 +57,7 @@ ms.locfileid: "56187774"
 * 当前如何管理用户对应用程序的访问？ 是否需要做出更改？  是否考虑过使用其他方式来管理访问，例如使用 [RBAC](../../role-based-access-control/role-assignments-portal.md)？
 * 谁需要访问哪些应用程序？
 
-可能最初没有所有这些问题的答案，但没有关系。  本指南可帮助你回答其中一些问题并做出一些明智的决策。
+也许你最初无法回答所有这些问题，但没有关系。  本指南可帮助你回答其中一些问题并做出一些明智的决策。
 
 ### <a name="find-unsanctioned-cloud-applications-with-cloud-discovery"></a>使用 Cloud Discovery 查找未批准的云应用程序
 
@@ -91,11 +91,11 @@ ms.locfileid: "56187774"
 * [共享帐户](../active-directory-sharing-accounts.md)
 
 ## <a name="next-steps"></a>后续步骤
-若要了解详细信息，可以从 [GitHub](https://aka.ms/deploymentplans) 下载 Azure Active Directory 部署计划。 对于库应用程序，你可以通过 [Azure 门户](https://portal.azure.com)下载适用于单一登录、条件性访问和用户预配的部署计划。 
+若要了解详细信息，可以从 [GitHub](https://aka.ms/deploymentplans) 下载 Azure Active Directory 部署计划。 对于库应用程序，您可以下载上单一登录、 条件性访问和用户通过预配的部署计划[Azure 门户](https://portal.azure.com)。 
 
 若要从 Azure 门户下载部署计划，请执行以下操作：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“企业应用程序” | “选取应用” | “部署计划”。
+2. 选择“企业应用程序” | “选取应用” | “部署计划”。   
 
 通过完成[部署计划调查](https://aka.ms/DeploymentPlanFeedback)来提供有关部署计划的反馈。

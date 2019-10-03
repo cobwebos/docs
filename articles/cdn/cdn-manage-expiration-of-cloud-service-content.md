@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: c21ae227d74442be5701dd906180392b1e0fdf8b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: a701c332659181081184906a73826b7137d8c49c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525664"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593714"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>在 Azure CDN 中管理 Web 内容的到期时间
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "59525664"
 
 来自可公开访问的源 Web 服务器的文件均可缓存在 Azure 内容分发网络 (CDN) 中，直到其生存时间 (TTL) 结束。 TTL 由来自源服务器的 HTTP 响应中的 `Cache-Control` 标头决定。 本文介绍如何为 Microsoft Azure 应用服务的 Web 应用功能、Azure 云服务、ASP.NET 应用程序和 Internet Information Services (IIS) 网站设置 `Cache-Control` 标头，所有标头的配置方式都类似。 可以使用配置文件或以编程方式设置 `Cache-Control` 标头。 
 
-此外，还可以通过设置 [CDN 缓存规则](cdn-caching-rules.md)从 Azure 门户控制缓存设置。 如果创建了一个或多个缓存规则并将其缓存行为设置为“替代”或“绕过缓存”，则将忽略本文中讨论的源提供的缓存设置。 有关一般缓存概念的信息，请参阅[缓存工作原理](cdn-how-caching-works.md)。
+此外，还可以通过设置 [CDN 缓存规则](cdn-caching-rules.md)从 Azure 门户控制缓存设置。 如果创建了一个或多个缓存规则并将其缓存行为设置为“替代”  或“绕过缓存”  ，则将忽略本文中讨论的源提供的缓存设置。 有关一般缓存概念的信息，请参阅[缓存工作原理](cdn-how-caching-works.md)。
 
 > [!TIP]
 > 可以选择不对文件设置 TTL。 在这种情况下，Azure CDN 将自动应用默认 TTL（七天），除非已在 Azure 门户中设置了缓存规则。 此默认 TTL 仅适用于常规 Web 交付优化。 对于大型文件优化，默认 TTL 为一天；对于媒体流优化，默认 TTL 为一年。
@@ -47,40 +47,40 @@ ms.locfileid: "59525664"
 
 1. 在 Azure 门户中，选择一个 CDN 配置文件，然后选择 Web 服务器的终结点。
 
-1. 在左窗格中的“设置”下，选择“缓存规则”。
+1. 在左窗格中的“设置”下，选择“缓存规则”。 
 
    ![CDN 缓存规则按钮](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-rules-btn.png)
 
-   “缓存规则”页随即出现。
+   “缓存规则”  页随即出现。
 
    ![CDN 缓存页](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-page.png)
 
 
 **使用全局缓存规则设置 Web 服务器的 Cache-Control 标头：**
 
-1. 在“全局缓存规则”下，将“查询字符串缓存行为”设置为“忽略查询字符串”，将“缓存行为”设置为“覆盖”。
+1. 在“全局缓存规则”下，将“查询字符串缓存行为”设置为“忽略查询字符串”，将“缓存行为”设置为“覆盖”。     
       
-1. 对于“缓存过期持续时间”，在“秒”框中输入 3600，或者在“小时”框中输入 1。 
+1. 对于“缓存过期持续时间”  ，在“秒”  框中输入 3600，或者在“小时”  框中输入 1。 
 
    ![CDN 全局缓存规则示例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-global-caching-rules-example.png)
 
    此全局缓存规则设置为期一小时的缓存持续时间，并会影响发送到终结点的所有请求。 它会替代由终结点指定的源服务器发送的所有 `Cache-Control` 或 `Expires` HTTP 标头。   
 
-1. 选择“保存”。
+1. 选择**保存**。
 
 **使用自定义缓存规则设置 Web 服务器文件的 Cache-Control 标头：**
 
-1. 在“自定义缓存规则”下，创建两个匹配条件：
+1. 在“自定义缓存规则”  下，创建两个匹配条件：
 
-     a. 对于第一个匹配条件，将“匹配条件”设置为“路径”，对于“匹配值”输入 `/webfolder1/*`。 将“缓存行为”设置为“替代”，并在“小时”框中输入 4。
+     a. 对于第一个匹配条件，将“匹配条件”  设置为“路径”  ，对于“匹配值”输入 `/webfolder1/*`。  将“缓存行为”  设置为“替代”  ，并在“小时”  框中输入 4。
 
-     b. 对于第二个匹配条件，将“匹配条件”设置为“路径”，对于“匹配值”输入 `/webfolder1/file1.txt`。 将“缓存行为”设置为“替代”，并在“小时”框中输入 2。
+     b. 对于第二个匹配条件，将“匹配条件”  设置为“路径”  ，对于“匹配值”输入 `/webfolder1/file1.txt`。  将“缓存行为”  设置为“替代”  ，并在“小时”  框中输入 2。
 
     ![CDN 自定义缓存规则示例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 
     第一个自定义缓存规则为终结点指定的源服务器上的 `/webfolder1` 文件夹中的所有文件设置为期四小时的缓存持续时间。 第二个规则仅替代 `file1.txt` 文件的第一个规则，并且为它设置为期两小时的缓存持续时间。
 
-1. 选择“保存”。
+1. 选择**保存**。
 
 
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>使用配置文件设置 Cache-Control 标头

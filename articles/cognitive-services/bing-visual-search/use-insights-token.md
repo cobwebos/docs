@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 4/05/2019
+ms.date: 4/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: e42e56e6361b1fde7ab13655d3c57a90d7235938
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493869"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341727"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用 insights 标记图像中获取见解
 
@@ -64,7 +64,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 
 ### <a name="c-prerequisites"></a>C#系统必备组件
 
-- 任何版本的[Visual Studio 2017](https://www.visualstudio.com/downloads/)若要获取在 Windows 上运行此代码。
+- 任何版本的[Visual Studio 2019](https://www.visualstudio.com/downloads/)若要获取在 Windows 上运行此代码。
 - Azure 订阅。 对于此快速入门中，你可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费的订阅密钥。
 
 ## <a name="run-the-application"></a>运行应用程序
@@ -434,7 +434,8 @@ function requestCallback(err, res, body) {
 # Run the following in a command console window
 # pip3 install requests
 
-import requests, json
+import requests
+import json
 
 BASE_URI = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch'
 
@@ -449,10 +450,11 @@ insightsToken = 'ccid_tmaGQ2eU*mid_D12339146CFEDF3D409CC7A66D2C98D0D71904D4*simi
 formData = '{"imageInfo":{"imageInsightsToken":"' + insightsToken + '"}}'
 
 
-file = {'knowledgeRequest' : (None, formData)}
+file = {'knowledgeRequest': (None, formData)}
+
 
 def main():
-    
+
     try:
         response = requests.post(BASE_URI, headers=HEADERS, files=file)
         response.raise_for_status()
@@ -467,7 +469,6 @@ def print_json(obj):
     print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
 
 
-
 # Main execution
 if __name__ == '__main__':
     main()
@@ -475,7 +476,7 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>后续步骤
 
-[创建视觉搜索的单页 web 应用](tutorial-bing-visual-search-single-page-app.md)  
+[创建视觉搜索单页 Web 应用](tutorial-bing-visual-search-single-page-app.md)  
 [必应视觉搜索 API 是什么？](overview.md)  
 [试用认知服务](https://aka.ms/bingvisualsearchtryforfree)  
 [获取免费试用访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  

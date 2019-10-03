@@ -3,9 +3,8 @@ title: 从 Android 应用登录用户并调用 Microsoft Graph API | Microsoft D
 description: 了解如何从 Android 应用登录用户并调用 Microsoft Graph API。
 services: active-directory
 documentationcenter: android
-author: CelesteDG
-manager: mtillman
-editor: ''
+author: rwike77
+manager: CelesteDG
 ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
 ms.service: active-directory
 ms.subservice: develop
@@ -13,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: celested
-ms.reviewer: dadobali
+ms.date: 05/21/2019
+ms.author: ryanwi
+ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9537748f8dd3ee027236c73e9587ff6b78ded7f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ac4007cc9379aa98d88099df13ba303063f9831f
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207579"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268522"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -31,7 +30,7 @@ ms.locfileid: "56207579"
 
 如果你要开发 Android 应用程序，Microsoft 可让 Azure Active Directory (Azure AD) 用户拥有简单直接的登录体验。 Azure AD 允许应用程序通过 Microsoft Graph 或你自己的受保护 Web API 访问用户数据。
 
-Azure AD 身份验证库 (ADAL) Android 库使用行业标准的 OAuth 2.0 和 OpenID Connect 支持 [Microsoft Azure Active Directory 帐户](https://azure.microsoft.com/services/active-directory/)，因此你的应用能够开始使用 [Microsoft Azure 云](https://cloud.microsoft.com) 和 [Microsoft Graph API](https://developer.microsoft.com/graph)。
+Azure AD 身份验证库 (ADAL) Android 库使用行业标准的 OAuth 2.0 和 OpenID Connect 支持 [Microsoft Azure Active Directory 帐户](https://azure.microsoft.com/services/active-directory/)，因此你的应用能够开始使用 [Microsoft Azure 云](https://azure.microsoft.com/free/cloud-services/) 和 [Microsoft Graph API](https://developer.microsoft.com/graph)。
 
 在本快速入门中，你将学习如何：
 
@@ -46,7 +45,7 @@ Azure AD 身份验证库 (ADAL) Android 库使用行业标准的 OAuth 2.0 和 O
 
 ## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>方案：让用户登录并调用 Microsoft Graph
 
-![拓扑](./media/quickstart-v1-android/active-directory-android-topology.png)
+![显示 Azure AD 和 Android 拓扑](./media/quickstart-v1-android/active-directory-android-topology.png)
 
 可以将此应用用于所有 Azure AD 帐户。 它同时支持单租户方案和多租户方案（分步讨论）。 它演示了如何生成应用来连接企业用户并通过 Microsoft Graph 访问其 Azure 和 O365 数据。 在身份验证流中，最终用户需要登录该应用程序并同意其权限，某些情况下可能需要管理员同意该应用。 本示例中的大部分逻辑展示了如何对最终用户进行身份验证并对 Microsoft Graph 进行基本调用。
 
@@ -86,18 +85,17 @@ mAuthResult.getAccessToken()
     - 选择“Azure Active Directory” > “应用注册”。
 
 2. 创建应用程序
-    - 选择“新建应用程序注册”。
-    - 在“名称”字段中输入应用名称。
-    - 在“应用程序类型”中选择“本机”。
-    - 在“重定向 URI”中输入 `http://localhost`。
+    - 选择“新注册”。 
+    - 在“名称”字段中输入应用名称  。
+    - 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
+    - 另外，请从下拉列表中选择“公共客户端(移动和桌面)”并输入 `http://localhost`。  
+    - 单击“注册”  。
 
 3. 配置 Microsoft Graph
-    - 选择“设置”>“所需权限”。
-    - 选择“添加”，在“选择 API”中选择“Microsoft Graph”。
-    - 选择“登录并读取用户配置文件”权限，然后按“选择”进行保存。
-        - 此权限映射到 `User.Read` 作用域。
-    - 可选：在“所需权限 > Windows Azure Active Directory”内，删除选定权限“登录并读取用户配置文件”。 这将避免用户同意页面两次列出该权限。
-
+    - 选择“API 权限”  。
+    - 选择“添加权限”，在“选择 API”中选择“Microsoft Graph”   。
+    - 在“委托的权限”  下，选择 **User.Read** 权限，然后点击“添加”  以保存。        
+    
 4. 恭喜！ 应用已配置成功。 在下一部分中，你需要：
     - `Application ID`
     - `Redirect URI`
@@ -109,7 +107,7 @@ mAuthResult.getAccessToken()
     git clone https://github.com/Azure-Samples/active-directory-android
     ```
 2. 在 Android Studio 中打开示例。
-    - 选择“打开现有 Android Studio 项目”。
+    - 选择“打开现有 Android Studio 项目”  。
 
 ## <a name="step-3-configure-your-code"></a>步骤 3：配置代码
 
@@ -120,8 +118,8 @@ mAuthResult.getAccessToken()
 
 ## <a name="step-4-run-the-sample"></a>步骤 4：运行示例
 
-1. 选择“生成”>“清理项目”。
-2. 选择“运行”>“运行应用”。
+1. 选择“生成”>“清理项目”  。
+2. 选择“运行”>“运行应用”  。
 3. 该应用应生成并显示一些基本的 UX。 单击 `Call Graph API` 按钮时，它将提示登录，然后自动使用新令牌调用 Microsoft Graph API。
 
 ## <a name="next-steps"></a>后续步骤

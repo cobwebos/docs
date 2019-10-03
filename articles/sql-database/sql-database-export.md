@@ -7,17 +7,16 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 03/11/2019
-ms.openlocfilehash: 27a65a871264fa13a42acfb5be2d4b5f99d31adc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 07/16/2019
+ms.openlocfilehash: 9b4770f565f256d444ab6a6f06bb369b8417eb18
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57758686"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568255"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>将 Azure SQL 数据库导出到 BACPAC 文件
 
@@ -28,7 +27,7 @@ ms.locfileid: "57758686"
 - 为保证导出的事务处理方式一致，必须确保导出期间未发生写入活动，或者正在从 Azure SQL 数据库的[事务处理方式一致性副本](sql-database-copy.md)中导出。
 - 如果计划导出到 blob 存储，则 BACPAC 文件的最大大小为 200 GB。 若要存档更大的 BACPAC 文件，请导出到本地存储。
 - 本文介绍的方法不支持将 BACPAC 文件导出到 Azure 高级存储。
-- 目前不支持存储位于防火墙后面。
+- 目前不支持有防火墙的存储。
 - 如果从 Azure SQL 数据库的导出操作超过 20 个小时，则可能会取消操作。 为提高导出过程中的性能，可以进行如下操作：
 
   - 暂时提高计算大小。
@@ -40,18 +39,20 @@ ms.locfileid: "57758686"
 
 ## <a name="export-to-a-bacpac-file-using-the-azure-portal"></a>使用 Azure 门户导出到 BACPAC 文件
 
+当前不支持使用 Azure PowerShell 从[托管实例](sql-database-managed-instance.md)导出数据库的 BACPAC。 请改用 SQL Server Management Studio 或 SQLPackage。
+
 > [!NOTE]
-> [托管实例](sql-database-managed-instance.md)当前不支持使用 Azure 门户将数据库导出到 BACPAC 文件。 若要将托管实例导出到 BACPAC 文件，请使用 SQL Server Management Studio 或 SQLPackage。
+> 处理通过 Azure 门户或 PowerShell 提交的导入/导出请求的计算机需要存储 BACPAC 文件以及由数据层应用程序框架 (DacFX) 生成的临时文件。 所需的磁盘空间在大小相同的数据库之间发生了重大变化, 并且需要磁盘空间的大小最多可达数据库大小的3倍。 运行导入/导出请求的计算机仅具有450GB 的本地磁盘空间。 因此, 某些请求可能会失败并出现错误`There is not enough space on the disk`。 在这种情况下, 解决方法是在具有足够的本地磁盘空间的计算机上运行 sqlpackage。 我们鼓励使用[SqlPackage](#export-to-a-bacpac-file-using-the-sqlpackage-utility)导入/导出大于 150 gb 的数据库, 以避免此问题。
 
 1. 若要使用 [Azure 门户](https://portal.azure.com)导出数据库，请打开数据库页，并在工具栏上单击“导出”。
 
    ![数据库导出](./media/sql-database-export/database-export1.png)
 
-2. 指定 BACPAC 文件名，为导出选择现有的 Azure 存储帐户和容器，然后提供用于访问源数据库的相应凭据。
+2. 指定 BACPAC 文件名，为导出选择现有的 Azure 存储帐户和容器，然后提供用于访问源数据库的相应凭据。 如果你是 Azure 管理员, 则在此处需要 SQL **Server 管理员登录名**, 因为 azure 管理员不等同于拥有 SQL Server 管理员权限。
 
     ![数据库导出](./media/sql-database-export/database-export2.png)
 
-3. 单击“确定”。
+3. 单击 **“确定”** 。
 
 4. 若要监视导出操作的进度，请打开包含待导出数据库的 SQL 数据库服务器的相应页面。 向下滚动到“设置”，并单击“导入/导出历史记录”。
 
@@ -78,7 +79,7 @@ SQL Server Management Studio 的最新版本提供一个向导，可将 Azure SQ
 > [!NOTE]
 > [托管实例](sql-database-managed-instance.md)当前不支持使用 Azure PowerShell 将数据库导出到 BACPAC 文件。 若要将托管实例导出到 BACPAC 文件，请使用 SQL Server Management Studio 或 SQLPackage。
 
-使用[新建 AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) cmdlet 提交导出数据库请求向 Azure SQL 数据库服务。 根据数据库的大小，导出操作可能需要一些时间才能完成。
+使用 [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) cmdlet 向 Azure SQL 数据库服务提交导出数据库请求。 根据数据库的大小，导出操作可能需要一些时间才能完成。
 
 ```powershell
 $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -ServerName $ServerName `
@@ -86,7 +87,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-若要检查导出请求状态，请使用[Get AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet。 如果在提交请求后立即运行此命令，通常会返回“状态: 正在进行”。 显示“状态: 成功”时，表示导出完毕。
+若要检查导出请求的状态，请使用 [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet。 如果在提交请求后立即运行此命令，通常会返回“状态:正在进行”。 显示“状态:成功”时，表示导出完毕。
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink

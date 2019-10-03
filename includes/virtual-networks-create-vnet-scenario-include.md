@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: cff737b8c79c44494cb0151d6a6281550401b26e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 2b1f9990985951a4e6ef260954968c0e1466c298
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805041"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172866"
 ---
 ## <a name="scenario"></a>场景
 

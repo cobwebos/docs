@@ -6,16 +6,15 @@ author: alexkarcher-msft
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 2fbf29385b9a14cf5d4a9df621f0767a32079587
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 72e359cf5cfef2072d3511990297f67fc4df92bb
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094569"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773058"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
@@ -66,7 +65,7 @@ ms.locfileid: "58094569"
 
  
 >[!Note]  
->如果函数使用“函数”、“管理员”或“sys” 授权级别，将需要根据原始函数 URL 提供代码和 clientId。 在这种情况下，引用将如下所示：`"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`
+>如果函数使用“函数”、“管理员”或“sys” 授权级别，将需要根据原始函数 URL 提供代码和 clientId。 在这种情况下，引用如下所示：`"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`建议将这些密钥存储在[应用程序设置]中，并在代理中引用这些密钥。 这样可以避免在源代码中存储机密。 
 
 ### <a name="request-parameters"></a>引用请求参数
 
@@ -80,17 +79,17 @@ ms.locfileid: "58094569"
 #### <a name="additional-request-parameters"></a>其他请求参数
 除了路由模板参数以外，还可以在配置值中使用以下值：
 
-* **{request.method}**：对原始请求使用的 HTTP 方法。
-* **{request.headers.\<HeaderName\>}**：从原始请求中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在请求中，则该值为空字符串。
-* **{request.querystring.\<ParameterName\>}**：可从原始请求中读取的查询字符串参数。 请将 *\<ParameterName\>* 替换为要读取的参数的名称。 如果该参数未包含在请求中，则该值为空字符串。
+* **{request.method}** ：对原始请求使用的 HTTP 方法。
+* **{request.headers.\<HeaderName\>}** ：从原始请求中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在请求中，则该值为空字符串。
+* **{request.querystring.\<ParameterName\>}** ：可从原始请求中读取的查询字符串参数。 请将 *\<ParameterName\>* 替换为要读取的参数的名称。 如果该参数未包含在请求中，则该值为空字符串。
 
 ### <a name="response-parameters"></a>引用后端响应参数
 
 在修改返回给客户端的响应过程中，可以使用响应参数。 可以在配置值中使用以下值：
 
-* **{backend.response.statusCode}**：在后端响应中返回的 HTTP 状态代码。
-* **{backend.response.statusReason}**：在后端响应中返回的 HTTP 原因短语。
-* **{backend.response.headers.\<HeaderName\>}**：可以从后端响应中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在响应中，则该值将为空字符串。
+* **{backend.response.statusCode}** ：在后端响应中返回的 HTTP 状态代码。
+* **{backend.response.statusReason}** ：在后端响应中返回的 HTTP 原因短语。
+* **{backend.response.headers.\<HeaderName\>}** ：可以从后端响应中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在响应中，则该值将为空字符串。
 
 ### <a name="use-appsettings"></a>引用应用程序设置
 
@@ -189,8 +188,8 @@ Proxies.json 是由一个代理对象定义的，包括已命名的代理及其�
 requestOverrides 对象定义调用后端资源时对请求所做的更改。 该对象由以下属性定义：
 
 * **backend.request.method**：用于调用后端的 HTTP 方法。
-* **backend.request.querystring.\<ParameterName\>**：可为后端调用设置的查询字符串参数。 请将 *\<ParameterName\>* 替换为要设置的参数的名称。 如果提供空字符串，该参数不会包含在后端请求中。
-* **backend.request.headers.\<HeaderName\>**：可为后端调用设置的标头。 请将 *\<HeaderName\>* 替换为要设置的标头的名称。 如果提供空字符串，该标头不会包含在后端请求中。
+* **backend.request.querystring.\<ParameterName\>** ：可为后端调用设置的查询字符串参数。 请将 *\<ParameterName\>* 替换为要设置的参数的名称。 如果提供空字符串，该参数不会包含在后端请求中。
+* **backend.request.headers.\<HeaderName\>** ：可为后端调用设置的标头。 请将 *\<HeaderName\>* 替换为要设置的标头的名称。 如果提供空字符串，该标头不会包含在后端请求中。
 
 值可以引用应用程序设置和原始客户端请求中的参数。
 
@@ -222,7 +221,7 @@ requestOverrides 对象定义对传回客户端的响应所做的更改。 该�
 * **response.statusCode**：要返回给客户端的 HTTP 状态代码。
 * **response.statusReason**：要返回给客户端的 HTTP 原因短语。
 * **response.body**：要返回给客户端的正文的字符串表示形式。
-* **response.headers.\<HeaderName\>**：可为返回给客户端的响应设置的标头。 请将 *\<HeaderName\>* 替换为要设置的标头的名称。 如果提供空字符串，该标头不会包含在响应中。
+* **response.headers.\<HeaderName\>** ：可为返回给客户端的响应设置的标头。 请将 *\<HeaderName\>* 替换为要设置的标头的名称。 如果提供空字符串，该标头不会包含在响应中。
 
 值可以引用应用程序设置、原始客户端请求中的参数和后端响应中的参数。
 

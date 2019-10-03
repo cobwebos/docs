@@ -2,21 +2,21 @@
 title: 数据加载最佳做法 - Azure SQL 数据仓库 | Microsoft Docs
 description: 关于如何将数据加载到 Azure SQL 数据仓库中的建议以及与之相关的性能优化。
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
-ms.reviewer: jrasnick
+ms.subservice: load-data
+ms.date: 08/08/2019
+ms.author: kevin
+ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: a8cb3714d11994b36991e56df7fc0f97d08c89ff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a1433139695eb59fa3fd721852fae3181b8f892b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791364"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882480"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>将数据加载到 Azure SQL 数据仓库中的最佳做法
 
@@ -38,7 +38,7 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 若要尽量提高加载速度，请一次只运行一个加载作业。 如果这不可行，请将同时运行的负载的数量降至最低。 如果预期的加载作业较大，可以考虑在加载前纵向扩展数据仓库。
 
-若要使用适当的计算资源运行负载，请创建指定运行负载的加载用户。 将每个加载用户分配给一个特定的资源类。 若要运行负载，以某个加载用户登录，然后运行该负载。 该负载使用用户的资源类运行。  与尝试根据当前的资源类需求更改用户的资源类相比，此方法更简单。
+若要使用适当的计算资源运行负载，请创建指定运行负载的加载用户。 将每个加载用户分配给一个特定的资源类。 若要运行负载，请以某个加载用户的身份登录，然后运行该负载。 该负载使用用户的资源类运行。  与尝试根据当前的资源类需求更改用户的资源类相比，此方法更简单。
 
 ### <a name="example-of-creating-a-loading-user"></a>创建加载用户的示例
 
@@ -58,7 +58,7 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
 ```
 
-若要使用 staticRC20 资源类的资源运行负载，以 loaderrc20 的身份登录并运行该负载。
+若要使用 staticRC20 资源类的资源运行负载，请以 LoaderRC20 身份登录，然后运行该负载。
 
 在静态而非动态资源类下运行负载。 使用静态资源类可确保不管[数据仓库单元](what-is-a-data-warehouse-unit-dwu-cdwu.md)如何，资源始终不变。 如果使用动态资源类，则资源因服务级别而异。 对于动态类，如果服务级别降低，则意味着可能需要对加载用户使用更大的资源类。
 
@@ -69,8 +69,8 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 例如，考虑为部门 A 使用数据库架构 schema_A，为部门 B 使用 schema_B；让数据库用户 user_A 和 user_B 分别作为部门 A 和 B 中加载的 PolyBase 用户。 两个用户均已被授予“控制”数据库权限。 架构 A 和架构 B 的创建者现在使用 DENY 锁定其架构：
 
 ```sql
-   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
-   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
+   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
+   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
 ```
 
 现在 user_A 和 user_B 被锁在其他部门的架构之外。
@@ -88,6 +88,9 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 - 若要确保加载用户有足够的内存来实现最大压缩率，请使用属于中大型资源类的加载用户。 
 - 加载足够的行，以便完全填充新的行组。 在大容量加载期间，数据会以 1,048,576 行为一个完整的行组直接压缩到列存储中。 不到 102,400 行的加载会将行发送到增量存储中以 B 树索引的形式保存。 如果加载的行太少，这些行可能会全部进入增量存储中，不会立即压缩成列存储格式。
 
+## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SQLBulkCopy API 或 BCP 时增加批大小
+如前所述, 通过 PolyBase 加载可提供 SQL 数据仓库的最大吞吐量。 如果无法使用 PolyBase 加载并且必须使用 SQLBulkCopy API (或 BCP), 则应考虑增加批大小以提高吞吐量。 
+
 ## <a name="handling-loading-failures"></a>处理加载失败
 
 使用外部表的加载可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。 此消息表示外部数据包含脏记录。 如果数据类型和列数目与外部表的列定义不匹配，或数据不符合指定的外部文件格式，则会将数据记录视为脏记录。 
@@ -102,7 +105,9 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 ## <a name="creating-statistics-after-the-load"></a>创建加载后的统计信息
 
-为了改进查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。  有关统计信息的详细说明，请参阅[统计信息](sql-data-warehouse-tables-statistics.md)。 以下示例针对 Customer_Speed 表的五个列创建统计信息。
+为了改进查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。  这可以手动完成, 也可以启用[自动创建统计信息](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)。
+
+有关统计信息的详细说明，请参阅[统计信息](sql-data-warehouse-tables-statistics.md)。 以下示例演示如何针对 Customer_Speed 表的五个列创建统计信息。
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -120,13 +125,13 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 
 对于每个已更改密钥的存储帐户，请发出 [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql) 命令。
 
-示例：
+例如：
 
 已创建原始密钥
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1'
-``` 
+```
 
 将密钥从密钥 1 轮换为密钥 2
 
@@ -141,6 +146,3 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 - 若要详细了解 PolyBase 以及如何设计提取、加载和转换 (ELT) 过程，请参阅[为 SQL 数据仓库设计 ELT](design-elt-data-loading.md)。
 - 如需加载教程，请参阅[使用 PolyBase 将数据从 Azure Blob 存储加载到 Azure SQL 数据仓库](load-data-from-azure-blob-storage-using-polybase.md)。
 - 若要监视数据加载，请参阅[使用 DMV 监视工作负荷](sql-data-warehouse-manage-monitor.md)。
-
-
-

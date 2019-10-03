@@ -6,16 +6,15 @@ author: alexkarcher-msft
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 00dedd069914384a1883a54bfb433857286fb49c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076728"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097578"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 元数据支持（预览版）
 Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一项预览版功能，可用于在 Function App 中编写 OpenAPI 2.0 定义。 随后可使用 Function App 托管该文件。
@@ -45,7 +44,7 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 
 ### <a name="templates"></a>可用模板
 
-|名称| 描述 |
+|姓名| 描述 |
 |:-----|:-----|
 |生成的定义|一个 OpenAPI 定义，内含可从函数的现有元数据中推断出的大量信息。|
 
@@ -75,7 +74,7 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
    1. 将“API 定义源”设置为“函数”。
    1. 单击“生成 API 定义模板”，然后单击“保存”以创建模板定义供稍后修改。
    1. 记下 API 定义 URL 和密钥。
-1. [设置持续集成/持续部署 (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#continuous-deployment-requirements)。
+1. [设置持续集成/持续部署 (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment)。
 2. 在 \site\wwwroot\.azurefunctions\swagger\swagger.json 处的源控件中修改 swagger.json。
 
 现在，存储库中对 swagger.json 的更改就由 Function App 通过步骤 1.c 中记录的 API 定义 URL 和密码进行托管。

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: db1af4f046bd8849fddee299e949d6edbdaae86a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.openlocfilehash: a58e408feadd10e6dbc9d6878b82a4d045918ea6
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609083"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781429"
 ---
 ## <a name="access-the-virtual-machine"></a>访问虚拟机
 
-以下步骤在 Azure Cloud Shell 中使用 `az` 命令。 如果愿意，可以在开发计算机上[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)，并在本地运行命令。
+以下步骤使用 Azure Cloud Shell 中的 Azure CLI。 如果愿意, 可以在开发计算机上[安装 Azure CLI](/cli/azure/install-azure-cli) , 并在本地运行命令。
 
 以下步骤演示如何配置 Azure 虚拟机，以允许 SSH 访问。 所示步骤假定为解决方案加速器选择的名称为 contoso-simulation - 将此值替换为部署名称：
 
@@ -35,7 +35,7 @@ ms.locfileid: "53609083"
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
-    仅在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快再次禁用](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices#disable-rdpssh-access-to-virtual-machines)。
+    仅在测试和开发期间启用 SSH 访问。 如果启用 SSH，[应尽快再次禁用](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#disable-rdpssh-access-to-virtual-machines)。
 
 1. 在虚拟机上将 azureuser 帐户的密码更新为你知道的密码。 运行以下命令时，选择自己的密码：
 

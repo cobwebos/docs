@@ -1,24 +1,23 @@
 ---
 title: 连接到 Azure AD 时对 WebAPI 项目所做的更改
 description: 介绍使用 Visual Studio 连接到 Azure AD 时，WebAPI 项目会发生什么情况
-services: active-directory
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
 ms.workload: azure-vs
+ms.prod: visual-studio-windows
+ms.technology: vs-azure
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4946251cf72d7869ec5fc2f0fd844b9c06ac34
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 32fc72d22d3f739018df22c315d7a1a3124c8823
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161926"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851805"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况
 
@@ -34,7 +33,7 @@ ms.locfileid: "56161926"
 
 影响项目文件 *.NET 引用和 `packages.config`（NuGet 引用）。
 
-| Type | 引用 |
+| 类型 | 参考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -47,7 +46,7 @@ ms.locfileid: "56161926"
 
 选择了“读取目录数据”选项时的其他引用：
 
-| Type | 引用 |
+| 类型 | 参考 |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer（仅限 Visual Studio 2015） |
@@ -61,7 +60,7 @@ ms.locfileid: "56161926"
 
 删除了以下引用（仅限 ASP.NET 4 项目，如 Visual Studio 2015 中所示）：
 
-| Type | 引用 |
+| 类型 | 参考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |

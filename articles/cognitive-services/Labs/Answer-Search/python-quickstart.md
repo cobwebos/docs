@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 2eaf07e041998efade1091861144a2dc4d78c56d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: c35bf9649a0a22f3488c45d1f4f8729e211e0ddb
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860297"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707087"
 ---
 # <a name="quickstart-project-answer-search-with-python"></a>快速入门：通过 Python 使用项目答案搜索
 
@@ -23,7 +24,7 @@ ms.locfileid: "55860297"
 
 ## <a name="prerequisites"></a>先决条件
 
-获取[认知服务实验室](https://aka.ms/answersearchsubscription)免费试用版的访问密钥
+获取[认知服务实验室](https://labs.cognitive.microsoft.com/en-us/project-answer-search)免费试用版的访问密钥
 
 本示例使用 Python 3.6.4
 
@@ -34,8 +35,8 @@ ms.locfileid: "55860297"
 1. 声明变量，以按主机和路径指定终结点。
 2. 指定要预览的查询 URL，然后添加查询参数。  
 3. 设置查询参数。
-4. 定义搜索函数，用以创建请求并添加 Ocp-Apim-Subscription-Key 标头。
-5. 设置 Ocp-Apim-Subscription-Key 标头。 
+4. 定义搜索函数，用以创建请求并添加 Ocp-Apim-Subscription-Key 标头  。
+5. 设置 Ocp-Apim-Subscription-Key 标头  。 
 6. 建立连接，并发送请求。
 7. 输出 JSON 结果。
 

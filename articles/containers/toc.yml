@@ -1,87 +1,93 @@
-items:
 - name: 适用于容器的 Azure
   href: index.yml
   items:
-  - name: Kubernetes 服务 (AKS)
-    href: https://docs.microsoft.com/azure/aks/
-    items:
-    - name: AKS 简介
-      href: ../aks/intro-kubernetes.md
-    - name: 快速入门 - 部署 AKS 群集
-      href: ../aks/kubernetes-walkthrough.md
-    expanded: true
-  - name: 容器实例 (ACI)
-    href: https://docs.microsoft.com/azure/container-instances/
-    items:
-    - name: 快速入门 - 创建容器实例
-      href: https://docs.microsoft.com/azure/container-instances/container-instances-quickstart
-    - name: 教程 - 生成并部署容器
+    - name: Kubernetes 服务 (AKS)
+      href: 'https://docs.microsoft.com/azure/aks/'
+      expanded: true
       items:
-      - name: 1 - 创建容器映像
-        href: https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app
-      - name: 2 - 创建容器注册表
-        href: https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr
-      - name: 3 - 部署应用
-        href: https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-deploy-app
-  - name: 容器注册表 (ACR)
-    href: https://docs.microsoft.com/azure/container-registry/
-    items:
-    - name: 快速入门 - 创建注册表
-      href: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
-    - name: 教程 - 生成容器映像
+        - name: AKS 简介
+          href: ../aks/intro-kubernetes.md
+        - name: 快速入门 - 部署 AKS 群集
+          href: ../aks/kubernetes-walkthrough.md
+    - name: 容器实例 (ACI)
+      href: 'https://docs.microsoft.com/azure/container-instances/'
       items:
-      - name: 1 - 在 Azure 中生成映像
-        href: ../container-registry/container-registry-tutorial-quick-task.md
-      - name: 2 - 自动生成映像
-        href: ../container-registry/container-registry-tutorial-build-task.md
-      - name: 3 - 基础映像更新生成
-        href: ../container-registry/container-registry-tutorial-base-image-update.md
-  - name: 容器的 Web 应用
-    href: https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro
-    items:
-    - name: 为容器的 Azure Web 应用使用自定义 Docker 映像
-      href: https://docs.microsoft.com/azure/app-service/containers/tutorial-custom-docker-image
-    - name: 教程 - 多容器应用
-      href: https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app
-  - name: Service Fabric
-    href: https://docs.microsoft.com/azure/service-fabric/
-    items:
-    - name: 概述 - Service Fabric 和容器
-      href: https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview
-    - name: 如何
+        - name: 快速入门 - 创建容器实例
+          href: 'https://docs.microsoft.com/azure/container-instances/container-instances-quickstart'
+        - name: 教程 - 生成并部署容器
+          items:
+            - name: 1 - 创建容器映像
+              href: 'https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app'
+            - name: 2 - 创建容器注册表
+              href: 'https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr'
+            - name: 3 - 部署应用
+              href: 'https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-deploy-app'
+    - name: 容器注册表 (ACR)
+      href: 'https://docs.microsoft.com/azure/container-registry/'
       items:
-      - name: 在 Windows 上创建容器应用程序
-        href: https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers
-      - name: 在 Linux 上创建容器应用程序
-        href: https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers-linux
-      - name: 将现有 .NET 应用程序容器化
-        href: https://docs.microsoft.com/azure/service-fabric/service-fabric-host-app-in-a-container
-  - name: Windows 容器
-    href: https://docs.microsoft.com/azure/virtual-machines/windows/overview
-    items:
-    - name: 快速入门 - Windows Server 上的 Windows 容器
-      href: https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server
-    - name: 关于 Windows 容器
-      href: https://docs.microsoft.com/virtualization/windowscontainers/about/index
-  - name: 引用
-    items:
-    - name: Azure 容器实例 (az container)
-      href: https://docs.microsoft.com/cli/azure/container
-    - name: Azure 容器服务 (az acs)
-      href: https://docs.microsoft.com/cli/azure/acs
-    - name: Azure 容器注册表 (az acr)
-      href: https://docs.microsoft.com/cli/azure/acr
-    - name: 用于容器的 Web 应用 (az appservice)
-      href: https://docs.microsoft.com/cli/azure/appservice
-    - name: Azure 应用服务 Web 应用 (az webapp)
-      href: https://docs.microsoft.com/cli/azure/webapp
-    - name: Azure Service Fabric (az sf)
-      href: https://docs.microsoft.com/cli/azure/sf
-    - name: Azure 虚拟机 (az vm)
-      href: https://docs.microsoft.com/cli/azure/vm
-ms.openlocfilehash: 9ee48a00784c0ca9fa00507e2956e34e7e6792d5
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486225"
+        - name: 快速入门 - 创建注册表
+          href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
+        - name: 教程 - 生成容器映像
+          items:
+            - name: 1 - 在 Azure 中生成映像
+              href: ../container-registry/container-registry-tutorial-quick-task.md
+            - name: 2 - 自动生成映像
+              href: ../container-registry/container-registry-tutorial-build-task.md
+            - name: 3 - 基础映像更新生成
+              href: ../container-registry/container-registry-tutorial-base-image-update.md
+    - name: 容器的 Web 应用
+      href: 'https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro'
+      items:
+        - name: 为容器的 Azure Web 应用使用自定义 Docker 映像
+          href: 'https://docs.microsoft.com/azure/app-service/containers/tutorial-custom-docker-image'
+        - name: 教程 - 多容器应用
+          href: 'https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app'
+    - name: Service Fabric
+      href: 'https://docs.microsoft.com/azure/service-fabric/'
+      items:
+        - name: 概述 - Service Fabric 和容器
+          href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview'
+        - name: 如何
+          items:
+            - name: 在 Windows 上创建容器应用程序
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers'
+            - name: 在 Linux 上创建容器应用程序
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers-linux'
+            - name: 将现有 .NET 应用程序容器化
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-host-app-in-a-container'
+    - name: Windows 容器
+      href: 'https://docs.microsoft.com/azure/virtual-machines/windows/overview'
+      items:
+        - name: 快速入门 - Windows Server 上的 Windows 容器
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
+        - name: 关于 Windows 容器
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/about/index'
+    - name: Azure Red Hat OpenShift
+      href: 'https://docs.microsoft.com/azure/openshift/'
+      items:
+        - name: 什么是 Azure Red Hat Openshift？
+          href: ../openshift/intro-openshift.md
+        - name: 教程 - 创建和管理 Azure Red Hat OpenShift 群集
+          items:
+            - name: 1 - 创建 Azure Red Hat OpenShift 群集
+              href: ../openshift/tutorial-create-cluster.md
+            - name: 2 - 缩放 Azure Red Hat OpenShift 群集
+              href: ../openshift/tutorial-scale-cluster.md
+            - name: 3 - 删除 Azure Red Hat OpenShift 群集
+              href: ../openshift/tutorial-delete-cluster.md
+    - name: 引用
+      items:
+        - name: Azure 容器实例 (az container)
+          href: 'https://docs.microsoft.com/cli/azure/container'
+        - name: Azure 容器服务 (az acs)
+          href: 'https://docs.microsoft.com/cli/azure/acs'
+        - name: Azure 容器注册表 (az acr)
+          href: 'https://docs.microsoft.com/cli/azure/acr'
+        - name: 用于容器的 Web 应用 (az appservice)
+          href: 'https://docs.microsoft.com/cli/azure/appservice'
+        - name: Azure 应用服务 Web 应用 (az webapp)
+          href: 'https://docs.microsoft.com/cli/azure/webapp'
+        - name: Azure Service Fabric (az sf)
+          href: 'https://docs.microsoft.com/cli/azure/sf'
+        - name: Azure 虚拟机 (az vm)
+          href: 'https://docs.microsoft.com/cli/azure/vm'

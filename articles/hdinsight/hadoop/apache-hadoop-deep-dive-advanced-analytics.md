@@ -1,7 +1,6 @@
 ---
 title: 深入探讨 - 高级分析 - Azure HDInsight
-description: 了解高级分析如何使用算法来处理大数据。
-services: hdinsight
+description: 了解高级分析如何在 Azure HDInsight 中使用算法来处理大数据。
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 893273fc325eaf878814c07eb095c67f5ea3c3f1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675052"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066982"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探讨 - 高级分析
 
@@ -24,17 +23,17 @@ HDInsight 提供可从大量结构化、非结构化和快速移动的数据中�
 
 ## <a name="advanced-analytics-process"></a>高级分析过程
 
-![进程](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![高级分析流程](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
 
-在识别业务问题并开始收集和处理数据之后，需要创建一个模型用于表示所要预测的问题。 该模型使用一种或多种机器学习算法做出最符合业务需求的预测类型。  大部分数据应该用于训练模型，剩余的数据用于测试或评估该模型。 
+在识别业务问题并开始收集和处理数据之后，需要创建一个模型用于表示所要预测的问题。 该模型使用一种或多种机器学习算法做出最符合业务需求的预测类型。  大部分数据应该用于训练模型，剩余的数据用于测试或评估该模型。
 
-在创建、加载、测试和评估模型之后，下一步就是部署该模型，让它开始为问题提供解答。 最后一步是监视模型的性能，并根据需要进行优化。 
+在创建、加载、测试和评估模型之后，下一步就是部署该模型，让它开始为问题提供解答。 最后一步是监视模型的性能，并根据需要进行优化。
 
 ## <a name="common-types-of-algorithms"></a>常见算法类型
 
 高级分析解决方案提供一套机器学习算法。 下面是算法类别和相关常见业务用例的摘要。
 
-![机器学习用例](./media/apache-hadoop-deep-dive-advanced-analytics/ml-use-cases.png)
+![机器学习类别摘要](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
 
 除了选择最合适的算法以外，还要考虑是否需要提供用于训练的数据。 机器学习算法划分为：
 
@@ -47,7 +46,7 @@ HDInsight 提供可从大量结构化、非结构化和快速移动的数据中�
 | 算法类别| 用途 | 学习类型 | 算法 |
 | --- | --- | --- | -- |
 | 分类 | 将人员或事物分类成组 | 监督式 | 决策树、逻辑回归、神经网络 |
-| 群集功能 | 将一组示例分割成地缘组 | 非监督式 | K 平均值聚类 |
+| 群集 | 将一组示例分割成地缘组 | 非监督式 | K 平均值聚类 |
 | 模式检测 | 标识数据中的常见关联 | 非监督式 | 关联规则 |
 | 回归 | 预测数字结果 | 监督式 | 线性回归、神经网络 |
 | 增强式 | 确定机器人的最佳行为 | 增强式 | 蒙特卡洛仿真、DeepMind |
@@ -99,7 +98,7 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 此示例使用 Alex Krizhevsky、Vinod Nair 及 Geoffrey Hinton 编译和分发的 CIFAR-10 图像集。 CIFAR-10 数据集包含 60,000 个分属 10 个互斥类的 32×32 彩色图像：
 
-![映像](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
+![机器学习示例图像](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
 有关该数据集的详细信息，请参阅 Alex Krizhevsky 撰写的 [Learning Multiple Layers of Features from Tiny Images](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)（从微小图像中学习多层特征）。
 
@@ -112,7 +111,7 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 在包含 4 个工作节点的群集上，10,000 个图像的前处理/评分花费了不到 1 分钟。 该模型可准确预测大约 9,100 个 (91%) 图像的标签。 混淆矩阵可演示最常见的分类错误。 例如，以下矩阵显示，与其他标签对相比，发生将狗标记成猫（以及将猫标记成狗）的错误的频率较高。
 
-![结果](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
+![机器学习结果图表](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
 
 ### <a name="try-it-out"></a>试试吧！
 

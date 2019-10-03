@@ -2,53 +2,17 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是数据资源管理器？
+    - name: 什么是 Azure 数据资源管理器？
       href: data-explorer-overview.md
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建群集和数据库
-      items:
-        - name: Azure 门户
-          href: create-cluster-database-portal.md
-        - name: Azure CLI
-          href: create-cluster-database-cli.md
-        - name: PowerShell
-          href: create-cluster-database-powershell.md
-        - name: 'C#'
-          href: create-cluster-database-csharp.md
-        - name: Python
-          href: create-cluster-database-python.md
-    - name: 引入数据
-      items:
-        - name: 流式处理数据 - 事件中心
-          href: ingest-data-event-hub.md
-        - name: 流式处理数据 - 事件网格
-          href: ingest-data-event-grid.md
-        - name: 流式处理数据 - Kafka
-          href: ingest-data-kafka.md
-        - name: 批处理数据 - Python
-          href: python-ingest-data.md
-        - name: 批处理数据 - Node SDK
-          href: node-ingest-data.md
-        - name: 批处理数据 - .NET 标准 SDK
-          href: net-standard-ingest-data.md
-        - name: 批处理数据 - Logstash
-          href: ingest-data-logstash.md
-    - name: 查询数据
-      items:
-        - name: Web UI
-          href: web-query-data.md
-        - name: Python
-          href: python-query-data.md
-    - name: 可视化数据
-      items:
-        - name: Power BI - 连接器
-          href: power-bi-connector.md
-        - name: Power BI - 导入的查询
-          href: power-bi-imported-query.md
-        - name: Power BI - SQL 查询
-          href: power-bi-sql-query.md
+    - name: 创建群集和数据库 - Azure 门户
+      href: create-cluster-database-portal.md
+    - name: 引入示例数据
+      href: ingest-sample-data.md
+    - name: 使用 Web UI 查询数据
+      href: web-query-data.md
 - name: 教程
   items:
     - name: 引入数据而无需使用代码
@@ -60,46 +24,132 @@
     - name: 数据引入概述
       displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
       href: ingest-data-overview.md
-    - name: 时序分析
-      href: time-series-analysis.md
+    - name: 数据可视化概述
+      href: viz-overview.md
 - name: 操作指南
   items:
-    - name: 入门
+    - name: 创建群集和数据库
+      items:
+        - name: Azure CLI
+          href: create-cluster-database-cli.md
+        - name: PowerShell
+          href: create-cluster-database-powershell.md
+        - name: 'C#'
+          href: create-cluster-database-csharp.md
+        - name: Python
+          href: create-cluster-database-python.md
+        - name: Azure 资源管理器模板
+          href: create-cluster-database-resource-manager.md
+    - name: 引入数据
+      items:
+        - name: 事件中心
+          href: ingest-data-event-hub.md
+        - name: 事件网格
+          href: ingest-data-event-grid.md
+        - name: IoT 中心
+          href: ingest-data-iot-hub.md
+        - name: 一键式引入
+          href: ingest-data-one-click.md
+        - name: 流式引入
+          href: ingest-data-streaming.md
+        - name: Kafka
+          href: ingest-data-kafka.md
+        - name: Python
+          href: python-ingest-data.md
+        - name: Node SDK
+          href: node-ingest-data.md
+        - name: .NET 标准 SDK
+          href: net-standard-ingest-data.md
+        - name: Logstash
+          href: ingest-data-logstash.md
+        - name: 使用 Azure 数据工厂复制数据
+          href: data-factory-load-data.md
+    - name: 部署
+      items:
+        - name: DevOps 任务
+          href: devops.md
+    - name: 查询数据
       items:
         - name: 编写查询
           href: write-queries.md
-        - name: 引入示例数据
-          href: ingest-sample-data.md
+        - name: 在 Azure Data Lake 中查询数据
+          href: data-lake-query-data.md
+        - name: 在 Azure Monitor 中查询数据
+          href: query-monitor-data.md
+        - name: Python
+          href: python-query-data.md
+        - name: 时序分析和机器学习
+          items:
+            - name: 时序分析
+              href: time-series-analysis.md
+            - name: 异常检测和预测
+              href: anomaly-detection.md
+            - name: 机器学习
+              href: machine-learning-clustering.md
+    - name: 可视化数据
+      items:
+        - name: Power BI
+          items:
+            - name: 最佳做法
+              href: power-bi-best-practices.md
+            - name: 连接器
+              href: power-bi-connector.md
+            - name: 导入的查询
+              href: power-bi-imported-query.md
+            - name: SQL 查询
+              href: power-bi-sql-query.md
+        - name: Excel
+          items:
+            - name: 连接器
+              href: excel-connector.md
+            - name: 空查询
+              href: excel-blank-query.md
+        - name: Grafana
+          href: grafana.md
+        - name: ODBC 连接器
+          href: connect-odbc.md
+        - name: Tableau
+          href: tableau.md
+        - name: Sisense
+          href: sisense.md
     - name: 管理
       items:
-        - name: 管理数据库权限
-          href: manage-database-permissions.md
         - name: 检查群集运行状况
           href: check-cluster-health.md
-        - name: 管理群集横向扩展
-          href: manage-cluster-scale-out.md
-        - name: 管理群集纵向扩展
-          href: manage-cluster-scale-up.md
+        - name: 选择群集 VM SKU
+          href: manage-cluster-choose-sku.md
+        - name: 管理群集横向缩放
+          href: manage-cluster-horizontal-scaling.md
+        - name: 管理群集纵向缩放
+          href: manage-cluster-vertical-scaling.md
+        - name: 管理群集安全性
+          href: manage-cluster-security.md
+        - name: 管理数据库权限
+          href: manage-database-permissions.md
         - name: 删除数据
           href: delete-data.md
         - name: 处理重复数据
           href: dealing-with-duplicates.md
     - name: 监视
       items:
+        - name: 使用诊断日志监视引入
+          href: using-diagnostic-logs.md
         - name: 使用指标来监视群集运行状况
           href: using-metrics.md
-    - name: 与其他工具配合使用
+    - name: 与其他工具集成
       items:
+        - name: Azure 数据工厂
+          items:
+            - name: 使用 Azure 数据工厂模板批量复制数据
+              href: data-factory-template.md
+            - name: 使用 Azure 数据工厂运行控制命令
+              href: data-factory-command-activity.md
+        - name: Apache Spark 连接器
+          href: spark-connector.md
         - name: 使用 Python 从 Databricks 连接
           href: connect-from-databricks.md
         - name: 在 Jupyter Notebook 和 Kqlmagic 中分析数据
           href: kqlmagic.md
-        - name: 使用 Azure 数据工厂复制数据
-          href: data-factory-load-data.md
-        - name: 在 Grafana 中将数据可视化
-          href: grafana.md
-        - name: 与 ODBC 连接
-          href: connect-odbc.md
     - name: 故障排除
       items:
         - name: 创建群集

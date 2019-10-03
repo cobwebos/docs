@@ -10,14 +10,14 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fe9cd6c951f9eba73cee1bea66df88f3143859b9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: da9c3d42919bba6ce04fc54bafc2fb5d245379f5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58846842"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306092"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>快速入门：使用 PowerShell 暂停和恢复 Azure SQL 数据仓库中的计算
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 暂停和恢复 Azure SQL 数据仓库中的计算
 
 使用 PowerShell 暂停 Azure SQL 数据仓库中的计算来节约成本。 在准备好使用数据仓库时[还原计算](sql-data-warehouse-manage-compute-overview.md)。
 
@@ -27,7 +27,7 @@ ms.locfileid: "58846842"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本快速入门教程假定已有可暂停和恢复的 SQL 数据仓库。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。
+本快速入门假定你已有可暂停和继续的 SQL 数据仓库。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库  。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -56,19 +56,19 @@ Set-AzContext -SubscriptionName "MySubscription"
 按照以下步骤查找数据仓库的位置信息。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户的左侧页面中，单击“SQL 数据库”。
-3. 从“SQL 数据库”页中选择“mySampleDataWarehouse”。 此操作打开数据仓库。
+2. 在 Azure 门户的左侧页面中，单击“SQL 数据库”  。
+3. 从“SQL 数据库”页中选择“mySampleDataWarehouse”   。 此操作打开数据仓库。
 
     ![服务器名称和资源组](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
 4. 记下将用作数据库名称的数据仓库名称。 同时记下服务器名称和资源组。
-6. 如果服务器是 foo.database.windows.net，请在 PowerShell cmdlet 中仅使用第一部分作为服务器名称。 在上图中，完整的服务器名称为 newserver-20171113.database.windows.net。 删除后缀并使用 newserver-20171113 作为 PowerShell cmdlet 中的服务器名称。
+6. 如果服务器是 foo.database.windows.net，请在 PowerShell cmdlet 中仅使用第一部分作为服务器名称。 在上图中，完整的服务器名称为 newserver-20171113.database.windows.net。 删除后缀并使用 newserver-20171113 作为 PowerShell cmdlet 中的服务器名称  。
 
 ## <a name="pause-compute"></a>暂停计算
 
 为了节省成本，可以按需暂停和恢复计算资源。 例如，如果晚上和周末不使用数据库，那么可以在这些时间暂停数据库的使用，然后在白天时恢复使用。 数据库暂停时，不对计算资源进行收费。 但是，仍将收取存储费用。
 
-若要暂停数据库，请使用 [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) cmdlet。 以下示例暂停 newserver-20171113 服务器上托管的 mySampleDataWarehouse 数据仓库。 该服务器位于名为 myResourceGroup 的 Azure 资源组中。
+若要暂停数据库，请使用 [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) cmdlet。 以下示例暂停 newserver-20171113 服务器上托管的 mySampleDataWarehouse 数据仓库   。 该服务器位于名为 myResourceGroup 的 Azure 资源组中  。
 
 
 ```Powershell
@@ -125,13 +125,13 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Serv
 
     ![清理资源](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. 要暂停计算，请单击“暂停”按钮。 暂停数据仓库后，可看到“启动”按钮。  要恢复计算，请单击“启动”。
+2. 要暂停计算，请单击“暂停”  按钮。 暂停数据仓库后，可看到“启动”  按钮。  要恢复计算，请单击“启动”  。
 
-3. 要删除数据仓库，以便不再为计算或存储付费，请单击“删除”。
+3. 要删除数据仓库，以便不再为计算或存储付费，请单击“删除”  。
 
-4. 要删除创建的 SQL Server，请单击“mynewserver-20171113.database.windows.net”，然后单击“删除”。  请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
+4. 要删除创建的 SQL Server，请单击“mynewserver-20171113.database.windows.net”，然后单击“删除”   。  请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
 
-5. 要删除资源组，请单击“myResourceGroup”，然后单击“删除资源组”。
+5. 要删除资源组，请单击“myResourceGroup”  ，然后单击“删除资源组”  。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 3e1e1266122ebcccc0149ca8e0421577becd6708
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56212941"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036665"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>（已弃用）容器服务常见问题解答
 
@@ -37,7 +37,7 @@ Swarm 模式目前不受支持，但已列入服务计划。 
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Azure 容器服务和 ACS 引擎的区别是什么？ 
 Azure 容器服务是支持 SLA 的 Azure 服务，具有 Azure 门户、Azure 命令行工具和 Azure API 中提供的功能。 用户可以使用该服务快速实现和管理运行标准容器协调工具的群集，配置选项相对较少。 
 
-[ACS 引擎](http://github.com/Azure/acs-engine)是一个开源项目，适用于高级用户在所有级别自定义群集配置。 可以更改基础结构和软件的配置意味着，我们不提供针对 ACS 引擎的 SLA。 支持问题是通过 GitHub 上的开源项目处理的，不通过官方的 Microsoft 渠道。 
+[ACS 引擎](https://github.com/Azure/acs-engine)是一个开源项目，适用于高级用户在所有级别自定义群集配置。 可以更改基础结构和软件的配置意味着，我们不提供针对 ACS 引擎的 SLA。 支持问题是通过 GitHub 上的开源项目处理的，不通过官方的 Microsoft 渠道。 
 
 如需其他详细信息，请参阅[适用于容器的支持策略](https://support.microsoft.com/en-us/help/4035670/support-policy-for-containers)。
 

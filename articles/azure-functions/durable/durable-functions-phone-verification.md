@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: cf43e29e967ee6f920eb38feb9c73d70f9621ea4
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 4d8955517450ce3b4efdf30e2790e4be678dfc7b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609330"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735182"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
@@ -54,7 +53,7 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 
 实现该函数的代码如下：
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# 脚本
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
@@ -85,7 +84,7 @@ E4_SendSmsChallenge 函数使用 Twilio 绑定向最终用户发送包含 4 位�
 
 以下代码可生成 4 位数质询代码和发送短信：
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# 脚本
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 

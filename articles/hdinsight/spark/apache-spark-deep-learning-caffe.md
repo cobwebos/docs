@@ -1,26 +1,25 @@
 ---
 title: 使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
-description: 使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
-services: hdinsight
+description: 在 Apache Spark 上使用 Caffe 在 Azure HDInsight 中进行分布式深度学习。
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: c79f840becce43c47287ef38bd39ed3ac9168b73
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: e0490913029efc17d12139378369646c286a276c
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891073"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145706"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
 
-
 ## <a name="introduction"></a>介绍
 
-深度学习正在影响我们生活中的方方面面，从医疗保健到交通运输到生产制造，不一而足。 很多公司都在致力于通过深度学习来解决各种棘手的问题，例如[图像分类](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[语音识别](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体识别和机器翻译。 
+深度学习正在影响我们生活中的方方面面，从医疗保健到交通运输到生产制造，不一而足。 很多公司都在致力于通过深度学习来解决各种棘手的问题，例如[图像分类](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[语音识别](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体识别和机器翻译。
 
 有[许多常用框架](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)，其中包括 [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、[Apache MXNet](https://mxnet.apache.org/)、Theano 等。[Caffe](https://caffe.berkeleyvision.org/) 是最著名的非符号（命令式）神经网络框架之一，广泛用于包括计算机视觉在内的许多领域。 此外，[CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) 将 Caffe 与 Apache Spark 相结合，因此，可在现有 Hadoop 集群上轻松使用深度学习。 可将深度学习与 Spark ETL 管道搭配使用，降低系统复杂性和完整解决方案学习中的延迟。
 
@@ -59,19 +58,17 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
     sudo ldconfig
     echo "protobuf installation done"
 
-
 脚本操作有两个步骤。 第一步是安装所有必需的库。 这些库包括编译 Caffe 所必需的库（例如 gflags、glog）和运行 Caffe 所必需的库（例如 numpy）。 考虑到 CPU 优化，你使用的是 libatlas，但始终可以按照 CaffeOnSpark Wiki 上的说明来安装其他优化库，例如 MKL 或 CUDA（适合 GPU）。
 
 第二步是在运行时下载、编译和安装适用于 Caffe 的 protobuf 2.5.0。 Protobuf 2.5.0 [是必需的](https://github.com/yahoo/CaffeOnSpark/issues/87)，但 Ubuntu 16 不提供包形式的该版本，因此需从源代码对其进行编译。 Internet 上也有一些介绍其编译方法的资源。 有关详细信息，请参阅[此文](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html)。
 
 若要开始，可直接针对群集的所有工作节点和头节点运行此脚本操作（适用于 HDInsight 3.5）。 可在现有群集上运行脚本操作，或在群集创建过程中使用脚本操作。 有关脚本操作的详细信息，请参阅[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)的文档。
 
-![用于安装依赖项的脚本操作](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
-
+![用于安装依赖项的脚本操作](./media/apache-spark-deep-learning-caffe/submit-script-action.png)
 
 ## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>步骤 2：在头节点上生成 Caffe on Apache Spark for HDInsight
 
-第二步是在头节点上生成 Caffe，然后将编译的库分发到所有工作节点。 在此步骤中，必须[使用 SSH 连接到头节点](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)。 之后，必须执行 [CaffeOnSpark 生成步骤](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)。 下面是使用其他步骤生成 CaffeOnSpark 的脚本。 
+第二步是在头节点上生成 Caffe，然后将编译的库分发到所有工作节点。 在此步骤中，必须[使用 SSH 连接到头节点](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)。 之后，必须执行 [CaffeOnSpark 生成步骤](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)。 下面是使用其他步骤生成 CaffeOnSpark 的脚本。
 
     #!/bin/bash
     git clone https://github.com/yahoo/CaffeOnSpark.git --recursive
@@ -115,7 +112,6 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 - 将数据集置于 BLOB 存储，这是一个共享位置，可供所有工作节点在以后使用时访问。
 - 将编译的 Caffe 库置于 BLOB 存储，以便将来使用脚本操作将这些库复制到所有节点，不再需要编译。
 
-
 ### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>故障排除：出现 Ant BuildException: exec 返回:2
 
 首次尝试生成 CaffeOnSpark 时，有时会出现以下错误消息：
@@ -134,7 +130,6 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
     INFO: I/O exception (java.net.SocketException) caught when processing request to {s}->https://repo.maven.apache.org:443: Connection timed out (Read failed)
 
 必须在几分钟后重试。
-
 
 ### <a name="troubleshooting-test-failure-for-caffe"></a>故障排除：Caffe 测试失败
 
@@ -167,7 +162,7 @@ Caffe 使用的是“富有表现力的体系结构”，因此若要编写模�
 
 你训练的模型是用于 MNIST 训练的示例模型。 包含手写数字的 MNIST 数据库有一个 60,000 示例的训练集，还有一个 10,000 示例的测试集。 它是 NIST 提供的更大型集的子集。 这些数字已在大小方面规范化，在固定大小的图像中居中。 CaffeOnSpark 提供的一些脚本可以下载该数据集并将其转换成正确的格式。
 
-CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具有良好的设计，将网络体系结构（网络拓扑）和优化进行了拆分。 在本示例中，需要两个文件： 
+CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具有良好的设计，将网络体系结构（网络拓扑）和优化进行了拆分。 在本示例中，需要两个文件：
 
 “解算器”文件 (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) 用于监控优化情况和生成参数更新。 例如，它可以定义是使用 CPU 还是 GPU，以及具体的动量和迭代次数等。它还定义程序应使用哪个神经元网络拓扑（即你需要的第二个文件）。 有关解算器的详细信息，请参阅 [Caffe 文档](https://caffe.berkeleyvision.org/tutorial/solver.html)。
 
@@ -176,7 +171,8 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
     # solver mode: CPU or GPU
     solver_mode: CPU
 
-![Caffe 配置](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
+![HDInsight caffe 配置示例](./media/apache-spark-deep-learning-caffe/caffe-configuration1.png
+)
 
 可以根据需要更改其他行。
 
@@ -185,7 +181,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 - 将 "file:/Users/mridul/bigml/demodl/mnist_train_lmdb" 更改为 "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb"
 - 将 "file:/Users/mridul/bigml/demodl/mnist_test_lmdb/" 更改为 "wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb"
 
-![Caffe 配置](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
+![HDInsight caffe 配置示例](./media/apache-spark-deep-learning-caffe/caffe-configuration2.png)
 
 如需详细了解如何定义网络，请查看[有关 MNIST 数据集的 Caffe 文档](https://caffe.berkeleyvision.org/gathered/examples/mnist.html)
 
@@ -201,19 +197,19 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 
     17/02/01 23:22:16 INFO Client: Application report for application_1485916338528_0015 (state: RUNNING)
 
-若要了解所发生的情况，通常需获取 Spark 驱动程序的日志，其中包含详细信息。 在本示例中，需转到 YARN UI 查找相关的 YARN 日志。 可通过以下 URL 获取 YARN UI： 
+若要了解所发生的情况，通常需获取 Spark 驱动程序的日志，其中包含详细信息。 在本示例中，需转到 YARN UI 查找相关的 YARN 日志。 可通过以下 URL 获取 YARN UI：
 
     https://yourclustername.azurehdinsight.net/yarnui
-   
-![YARN UI](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
+
+![apache yarn 计划程序浏览器视图](./media/apache-spark-deep-learning-caffe/apache-yarn-window-1.png)
 
 可以看看为这个特定的应用程序分配了多少资源。 单击“计划程序”链接即可查看此应用程序的资源分配情况，有九个容器正在运行。 你要求 YARN 提供八个执行程序，另一个容器用于驱动程序进程。 
 
-![YARN 计划程序](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
+![HDI apache YARN 计划程序视图](./media/apache-spark-deep-learning-caffe/apache-yarn-scheduler.png)
 
 如果发生故障，可能需要查看驱动程序日志或容器日志。 要查看驱动程序日志，可在 YARN UI 中单击应用程序 ID，并单击“日志”按钮。 此时驱动程序日志会写入 stderr 中。
 
-![YARN UI 2](./media/apache-spark-deep-learning-caffe/YARN-UI-2.png)
+![apache yarn 窗口浏览器视图](./media/apache-spark-deep-learning-caffe/apache-yarn-window-2.png)
 
 例如，可能会显示下面列出的来自驱动程序日志的部分错误，指示用户分配的执行程序过多。
 
@@ -261,7 +257,6 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
     WARNING: Logging before InitGoogleLogging() is written to STDERR
     F0201 07:10:48.309725 11624 common.cpp:79] Cannot use GPU in CPU-only Caffe: check mode.
 
-
 ## <a name="getting-results"></a>获取结果
 
 由于分配的执行程序为 8 个，且网络拓扑简单，获取结果应该只需要大约 30 分钟。 从命令行中，可以看到模型置于 wasb:///mnist.model 中，结果置于名为 wasb:///mnist_features_result 的文件夹中。
@@ -284,19 +279,19 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 
 SampleID 表示 MNIST 数据集中的 ID，标签是模型的标识数字。
 
-
 ## <a name="conclusion"></a>结束语
 
 在本文档中，用户尝试安装 CaffeOnSpark 并运行一个简单的示例。 HDInsight 是完全托管的云分布式计算平台，尤其适合在大型数据集上运行机器学习和高级分析工作负荷，而对于分布式深度学习，用户可以使用 Caffe on HDInsight Spark 执行深度学习任务。
 
-
 ## <a name="seealso"></a>另请参阅
+
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>方案
+
 * [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="manage-resources"></a>管理资源
-* [管理 Azure HDInsight 中 Apache Spark 群集的资源](apache-spark-resource-manager.md)
 
+* [管理 Azure HDInsight 中 Apache Spark 群集的资源](apache-spark-resource-manager.md)

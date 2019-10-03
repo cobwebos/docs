@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 83de0046a56788e40b9224823af0411a18dea5eb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 885fb18e6f582caba2e90bbe3f535b9c763aff85
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449931"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839344"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从 ODBC 数据存储移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-odbc-connector.md)
 > * [版本 2（当前版本）](../connector-odbc.md)
 
@@ -48,15 +48,15 @@ ms.locfileid: "57449931"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从 ODBC 数据存储移动数据。
 
-创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+还可以使用以下工具来创建管道：**Visual Studio**， **Azure PowerShell**， **Azure Resource Manager 模板**， **.NET API**，并且**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
+1. 创建链接服务可将输入和输出数据存储链接到数据工厂  。
+2. 创建数据集以表示复制操作的输入和输出数据  。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出  。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于从 ODBC 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 ODBC 数据存储复制到 Azure Blob](#json-example-copy-data-from-odbc-data-store-to-azure-blob) 部分。
 
@@ -71,8 +71,8 @@ ms.locfileid: "57449931"
 | connectionString |连接字符串的非访问凭据部分和可选的加密凭据。 请参阅以下部分中的示例。 <br/><br/>可以使用类似 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 的模式指定连接字符串，也可以利用在网关计算机上使用 `"DSN=<name of the DSN>;"` 设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。 |是 |
 | credential |连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 示例：`"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`。 |否 |
 | authenticationType |用于连接 ODBC 数据存储的身份验证类型。 可能的值包括：Anonymous 和 Basic。 |是 |
-| username |如果使用基本身份验证，请指定用户名。 |否 |
-| password |指定为用户名指定的用户帐户的密码。 |否 |
+| userName |如果使用基本身份验证，指定的用户名。 |否 |
+| password |指定为 userName 指定的用户帐户的密码。 |否 |
 | gatewayName |数据工厂服务应用于连接到 ODBC 数据存储的网关的名称。 |是 |
 
 ### <a name="using-basic-authentication"></a>使用基本身份验证
@@ -154,7 +154,7 @@ ms.locfileid: "57449931"
 
 
 ## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON 示例：将数据从 ODBC 数据存储复制到 Azure Blob
-此示例提供 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它演示了如何将数据从 ODBC 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+此示例提供 JSON 定义，可用于通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 它演示了如何将数据从 ODBC 源复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 此示例具有以下数据工厂实体：
 
@@ -356,17 +356,17 @@ ms.locfileid: "57449931"
 从关系数据源复制数据时，请注意可重复性，以免发生意外结果。 在 Azure 数据工厂中，可手动重新运行切片。 还可以为数据集配置重试策略，以便在出现故障时重新运行切片。 无论以哪种方式重新运行切片，都需要确保读取相同的数据，而与运行切片的次数无关。 请参阅[从关系源进行可重复读取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="troubleshoot-connectivity-issues"></a>解决连接问题
-若要解决连接问题，请使用“数据管理网关配置管理器”的“诊断”选项卡。
+若要解决连接问题，请使用“数据管理网关配置管理器”  的“诊断”  选项卡。
 
-1. 启动“数据管理网关配置管理器”。 可以直接运行 "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe"（或）搜索“网关”以查找“Microsoft 数据管理网关”应用程序的链接，如下图所示。
+1. 启动“数据管理网关配置管理器”  。 可以直接运行 "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe"（或）搜索“网关”  以查找“Microsoft 数据管理网关”  应用程序的链接，如下图所示。
 
     ![搜索网关](./media/data-factory-odbc-connector/search-gateway.png)
-2. 切换到“诊断”选项卡。
+2. 切换到“诊断”  选项卡。
 
     ![网关诊断](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
-3. 选择数据存储（链接服务）的“类型”。
-4. 指定“身份验证”并输入“凭据”（或）输入用于连接数据存储的“连接字符串”。
-5. 单击“测试连接”以测试数据存储的连接。
+3. 选择数据存储（链接服务）的“类型”  。
+4. 指定“身份验证”  并输入“凭据”  （或）输入用于连接数据存储的“连接字符串”  。
+5. 单击“测试连接”  以测试数据存储的连接。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

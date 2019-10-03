@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 04/09/2019
-ms.openlocfilehash: 8d060ce60194e47814308bfd67bd14db996650b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/28/2019
+ms.openlocfilehash: f3e9bb0e9a2c4c58a205798441ddc2208019e7d2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425774"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566570"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure SQL 数据库中创建单一数据库
 
@@ -29,142 +28,31 @@ ms.locfileid: "59425774"
 
 单一数据库有一组通过两个[购买模型](sql-database-purchase-models.md)中的一个定义的计算、内存和存储资源。 创建单一数据库时，也定义一个 [SQL 数据库服务器](sql-database-servers.md)来管理它并将它放置在指定区域的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中。
 
-以下 JSON 文件是本文中使用的模板。 模板存储在 Azure 存储帐户中。 可在[此处](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular)找到更多 Azure SQL 数据库模板示例。
+以下 JSON 文件是本文中使用的模板。 该模板存储在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/SQLServerAndDatabase/azuredeploy.json) 中。 可以在 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular)中找到更多 Azure SQL 数据库模板示例。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "serverName": {
-      "type": "string",
-      "defaultValue": "[concat('server-', uniqueString(resourceGroup().id, deployment().name))]",
-      "metadata": {
-        "description": "Name for the SQL server"
-      }
-    },
-    "shouldDeployDb": {
-      "type": "string",
-      "allowedValues": [
-        "Yes",
-        "No"
-      ],
-      "defaultValue": "Yes",
-      "metadata": {
-        "description": "Whether an Azure SQL Database should be deployed under the server"
-      }
-    },
-    "databaseName": {
-      "type": "string",
-      "defaultValue": "[concat('db-', uniqueString(resourceGroup().id, deployment().name), '-1')]",
-      "metadata": {
-        "description": "Name for the SQL database under the SQL server"
-      }
-    },
-    "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-        "description": "Location for server and optional DB"
-      }
-    },
-    "emailAddresses": {
-      "type": "array",
-      "defaultValue": [
-        "user1@example.com",
-        "user2@example.com"
-      ],
-      "metadata": {
-        "description": "Email addresses for receiving alerts"
-      }
-    },
-    "adminUser": {
-      "type": "string",
-      "metadata": {
-        "description": "Username for admin"
-      }
-    },
-    "adminPassword": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Password for admin"
-      }
-    }
-  },
-  "variables": {
-    "databaseServerName": "[toLower(parameters('serverName'))]",
-    "databaseName": "[parameters('databaseName')]",
-    "shouldDeployDb": "[parameters('shouldDeployDb')]",
-    "databaseServerLocation": "[parameters('location')]",
-    "databaseServerAdminLogin": "[parameters('adminUser')]",
-    "databaseServerAdminLoginPassword": "[parameters('adminPassword')]",
-    "emailAddresses": "[parameters('emailAddresses')]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Sql/servers",
-      "name": "[variables('databaseServerName')]",
-      "location": "[variables('databaseServerLocation')]",
-      "apiVersion": "2015-05-01-preview",
-      "properties": {
-        "administratorLogin": "[variables('databaseServerAdminLogin')]",
-        "administratorLoginPassword": "[variables('databaseServerAdminLoginPassword')]",
-        "version": "12.0"
-      },
-      "tags": {
-        "DisplayName": "[variables('databaseServerName')]"
-      },
-      "resources": [
-        {
-          "type": "securityAlertPolicies",
-          "name": "DefaultSecurityAlert",
-          "apiVersion": "2017-03-01-preview",
-          "dependsOn": [
-            "[variables('databaseServerName')]"
-          ],
-          "properties": {
-            "state": "Enabled",
-            "emailAddresses": "[variables('emailAddresses')]",
-            "emailAccountAdmins": true
-          }
-        }
-      ]
-    },
-    {
-      "condition": "[equals(variables('shouldDeployDb'), 'Yes')]",
-      "type": "Microsoft.Sql/servers/databases",
-      "name": "[concat(string(variables('databaseServerName')), '/', string(variables('databaseName')))]",
-      "location": "[variables('databaseServerLocation')]",
-      "apiVersion": "2017-10-01-preview",
-      "dependsOn": [
-        "[concat('Microsoft.Sql/servers/', variables('databaseServerName'))]"
-      ],
-      "properties": {},
-      "tags": {
-        "DisplayName": "[variables('databaseServerName')]"
-      }
-    }
-  ]
-}
-```
+[!code-json[create-azure-sql-database-server-and-database](~/resourcemanager-templates/SQLServerAndDatabase/azuredeploy.json)]
 
-1. 选择下图登录到 Azure 并打开一个模板。
+1. 从以下 PowerShell 代码块中选择“试用”  以打开 Azure Cloud Shell。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Farmtutorials.blob.core.windows.net%2Fcreatesql%2Fazuredeploy.json"><img src="./media/sql-database-single-database-get-started-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+    $location = Read-Host -Prompt "Enter an Azure location (i.e. centralus)"
+    $adminUser = Read-Host -Prompt "Enter the SQL server administrator username"
+    $adminPassword = Read-Host -Prompt "Enter the SQl server administrator password" -AsSecureString
 
-2. 选择或输入以下值。  
+    $resourceGroupName = "${projectName}rg"
 
-    ![资源管理器模板创建 Azure SQL 数据库](./media/sql-database-single-database-get-started-template/create-azure-sql-database-resource-manager-template.png)
 
-    除非指定，否则使用默认值。
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "D:\GitHub\azure-docs-json-samples\SQLServerAndDatabase\azuredeploy.json" -projectName $projectName -adminUser $adminUser -adminPassword $adminPassword
 
-    * **订阅**：选择一个 Azure 订阅。
-    * **资源组**：选择“新建”，输入资源组的唯一名称，然后单击“确定”。 
-    * **位置**：选择一个位置。  例如“美国中部”。
-    * **管理员用户**：指定 SQL 数据库服务器管理员用户名。
-    * **管理员密码**：指定管理员密码。 
-    * **我同意上述条款和条件**：选中。
-3. 选择“购买”。
+    Read-Host -Prompt "Press [ENTER] to continue ..."
+    ```
+
+1. 选择“复制”  将 PowerShell 脚本复制到剪贴板。
+1. 右键单击 shell 窗格，然后选择“粘贴”  。
+
+    创建数据库服务器和数据库需要一些时间。
 
 ## <a name="query-the-database"></a>查询数据库
 
@@ -174,17 +62,15 @@ ms.locfileid: "59425774"
 
 如果希望转到[后续步骤](#next-steps)，请保留此资源组、数据库服务器和单一数据库。 后续步骤展示了如何使用各种方法连接和查询数据库。
 
-使用 Azure CLI 或 Azure PowerShell 删除资源组：
-
-```azurecli-interactive
-echo "Enter the Resource Group name:" &&
-read resourceGroupName &&
-az group delete --name $resourceGroupName 
-```
+使用 Azure Powershell 删除资源组：
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-Remove-AzResourceGroup -Name $resourceGroupName 
+$projectName = Read-Host -Prompt "Enter the same project name"
+$resourceGroupName = "${projectName}rg"
+
+Remove-AzResourceGroup -Name $resourceGroupName
+
+Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 
 ## <a name="next-steps"></a>后续步骤

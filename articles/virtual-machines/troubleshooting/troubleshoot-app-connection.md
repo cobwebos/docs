@@ -4,7 +4,7 @@ description: 使用以下详细故障排除步骤可以查明连接到 Azure 中
 services: virtual-machines
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 keywords: 无法启动应用程序, 程序打不开, 侦听端口受阻, 无法启动程序, 侦听端口受阻
@@ -12,16 +12,15 @@ ms.assetid: b9ff7cd0-0c5d-4c3c-a6be-3ac47abf31ba
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 81535d51617a419174331dbf9b18ea558913dfa9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: caf73ffbc18a603ace22acfbd0da490048da698a
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413156"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058123"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>排查 Azure 中虚拟机上的应用程序连接问题
 
@@ -144,6 +143,6 @@ ms.locfileid: "50413156"
 ## <a name="additional-resources"></a>其他资源
 [对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](troubleshoot-rdp-connection.md)
 
-[对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](troubleshoot-ssh-connection.md)
+[对与基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](troubleshoot-ssh-connection.md)
 
 

@@ -12,24 +12,24 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 778690fb2796cea3154b3acbb662341fdaea87da
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: 5bef5a6037c6eb29d0dc48e313958e2d243904eb
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259591"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299573"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
 Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码的指标，并可用于将数据导出到偏爱的监视系统。 本文介绍如何对 Spring Boot 和非 Spring Boot 应用程序配合使用 Micrometer 与 Application Insights。
 
 ## <a name="using-spring-boot-15x"></a>使用 Spring Boot 1.5x
 将以下依赖项添加到 pom.xml 或 build.gradle 文件： 
-* [Application Insights spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-BETA 或更高版本
+* [Application Insights 春季 boot](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 或更高版本
 * Micrometer Azure Registry 1.1.0 或更高版本
 * [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 或更高版本（用于向后移植 Spring 框架中的自动配置代码）。
 * [ApplicationInsights 资源](../../azure-monitor/app/create-new-resource.md )
 
-Steps
+步骤
 
 1. 更新 Spring Boot 应用程序的 pom.xml 文件，在其中添加以下依赖项：
 
@@ -37,7 +37,7 @@ Steps
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>applicationinsights-spring-boot-starter</artifactId>
-        <version>1.1.0-BETA</version>
+        <version>2.5.0</version>
     </dependency>
 
     <dependency>
@@ -64,7 +64,7 @@ Steps
 将以下依赖项添加到 pom.xml 或 build.gradle 文件：
 
 * Application Insights Spring-boot-starter 2.1.2 或更高版本
-* Azure-spring-boot-metrics-starters 2.0.7 或更高版本  
+* 2\.0.7-boot-boot 或更高版本
 * [Application Insights 资源](../../azure-monitor/app/create-new-resource.md )
 
 步骤：
@@ -87,9 +87,9 @@ Steps
 默认指标：
 
 *    为 Tomcat、JVM 自动配置的指标、Logback 指标、Log4J 指标、运行时间指标、处理器指标、FileDescriptorMetrics。
-*    例如，如果类路径中存在 netflix hystrix，则我们也可以获取这些指标。 
+*    例如, 如果类路径上存在 Netflix Hystrix, 我们也会获得这些指标。 
 *    可通过添加相应的 bean 来获取以下指标。 
-        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcaseCache, Jcache)     
+        - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)     
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
@@ -121,10 +121,8 @@ Steps
 ## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>对非 Spring Boot Web 应用程序使用 Micrometer
 
 将以下依赖项添加到 pom.xml 或 build.gradle 文件：
- 
-* [Application Insight Core 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.2.0) 或更高版本
-* [Application Insights Web 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) 或更高版本
-* [注册 Web 筛选器](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+
+* Application Insights Web 自动2.5.0 或更高版本
 * Micrometer Azure Registry 1.1.0 或更高版本
 * [Application Insights 资源](../../azure-monitor/app/create-new-resource.md )
 
@@ -141,14 +139,41 @@ Steps
         
         <dependency>
             <groupId>com.microsoft.azure</groupId>
-            <artifactId>applicationinsights-web</artifactId>
-            <version>2.2.0</version>
-        </dependency
+            <artifactId>applicationinsights-web-auto</artifactId>
+            <version>2.5.0</version>
+        </dependency>
      ```
 
-2. 将 Application Insights.xml 放入 resources 文件夹
+2. 将`ApplicationInsights.xml`文件放入资源文件夹：
 
-    示例 Servlet 类（发出计时器指标）：
+    ```XML
+    <?xml version="1.0" encoding="utf-8"?>
+    <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+    
+       <!-- The key from the portal: -->
+       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+    
+       <!-- HTTP request component (not required for bare API) -->
+       <TelemetryModules>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
+       </TelemetryModules>
+    
+       <!-- Events correlation (not required for bare API) -->
+       <!-- These initializers add context data to each event -->
+       <TelemetryInitializers>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
+          <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
+       </TelemetryInitializers>
+    
+    </ApplicationInsights>
+    ```
+
+3. 示例 Servlet 类（发出计时器指标）：
 
     ```Java
         @WebServlet("/hello")
@@ -187,7 +212,7 @@ Steps
     
     ```
 
-      示例配置类：
+4. 示例配置类：
 
     ```Java
          @WebListener
@@ -252,5 +277,5 @@ Steps
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解 Micrometer，请参阅官方的 [Micrometer 文档](https://micrometer.io/docs)。
-* 若要了解 Azure 上的 Spring，请参阅官方的[“Azure 上的 Spring”文档](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)。
+* 若要了解有关 Micrometer 的详细信息，请参阅官方[Micrometer 文档](https://micrometer.io/docs)。
+* 若要了解有关 Azure 的弹簧，请参阅[azure 上的官方春季文档](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)。

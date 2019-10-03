@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 92e8435e4336c68982e4becc2a95f99b2c776c0e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58861836"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736628"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>在 Azure 第一道防线服务中的 HTTP 标头的协议支持
 本文概述了与的调用路径部分的第一道防线服务支持的协议 （请参阅图）。 以下部分提供有关支持的第一道防线服务的 HTTP 标头的详细信息。
@@ -33,7 +33,7 @@ ms.locfileid: "58861836"
 
 第一道防线服务包括从传入请求的标头，除非由于限制中删除。 第一道防线还添加了以下标头：
 
-| 标头  | 示例和说明 |
+| Header  | 示例和说明 |
 | ------------- | ------------- |
 | Via |  通过：1.1 Azure </br> 第一道防线添加客户端的 HTTP 版本后跟*Azure*作为 Via 标头的值。 这表示客户端的 HTTP 版本和该第一道防线是请求客户端和后端之间的中间收件人。  |
 | X-Azure-ClientIP | X-Azure-ClientIP:127.0.0.1 </br> 表示与处理的请求关联的客户端 IP 地址。 例如，来自代理的请求可能会添加 X-转发-对于标头以指示原始调用方的 IP 地址。 |
@@ -48,7 +48,7 @@ ms.locfileid: "58861836"
 
 从后端发送到第一道防线任何标头还将传递到客户端。 以下是从第一道防线发送到客户端的标头。
 
-| 标头  | 示例 |
+| Header  | 示例 |
 | ------------- | ------------- |
 | X-Azure-Ref |  *X-Azure-Ref:0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> 这是一个唯一的引用字符串，用于标识 Front Door 处理的请求。 这是故障排除，因为它用于访问日志中搜索的关键。|
 

@@ -6,16 +6,15 @@ author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 33ca6c36cd11d53a3c50a8374181c511fd2f8c3e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ef64a43cbed7f033a938351506b7f78142ff044c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549078"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097623"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Durable Functions 中的版本控制 (Azure Functions)
 
@@ -96,7 +95,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 * 停止所有正在进行的实例
 * 并行部署
 
-### <a name="do-nothing"></a>不执行任何操作
+### <a name="do-nothing"></a>不采取任何措施
 
 处理中断更改的最简单方法是使正在进行的业务流程实例失败。 新实例成功运行更改后的代码。
 
@@ -140,7 +139,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 建议将函数应用的新版本部署到一个新的[部署槽位](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/)。 通过部署槽位，可以并行运行函数应用的多个副本，且仅其中一个槽位为活动生产槽位。 当准备好向现有基础结构公开新业务流程逻辑时，它可以像将新版本交换到生产槽一样简单。
 
 > [!NOTE]
-> 在对业务流程协调程序函数使用 HTTP 和 webhook 触发器时，此策略效果最佳。 对于非 HTTP 触发器，例如队列或事件中心触发器定义应[派生的应用设置](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings)，获取更新交换操作的一部分。
+> 在对业务流程协调程序函数使用 HTTP 和 webhook 触发器时，此策略效果最佳。 对于非 HTTP 触发器（如队列或事件中心），触发器定义应[派生自在交换操作过程中更新的应用设置](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings)。
 
 ## <a name="next-steps"></a>后续步骤
 

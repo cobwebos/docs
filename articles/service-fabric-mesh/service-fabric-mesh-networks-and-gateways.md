@@ -16,11 +16,11 @@ ms.date: 11/26/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: b0e1047c5bbd7d8caaf2afd8b002be1c46837852
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339255"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60811015"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric 网格应用程序中的网络简介
 本文介绍了不同类型的负载均衡器、网关如何将网络与你的应用程序连接到其他网络，以及如何在应用程序中的服务之间路由流量。

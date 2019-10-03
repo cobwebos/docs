@@ -2,19 +2,20 @@
 title: 将 Azure CLI 用于 Azure 存储 | Microsoft Docs
 description: 了解如何将 Azure 命令行界面 (Azure CLI) 用于 Azure 存储，以便创建和管理存储帐户并处理 Azure blob 和文件。
 services: storage
-author: roygara
+author: tamram
 ms.service: storage
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
-ms.author: rogarana
+ms.author: tamram
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f485f38d4c580937b027bb76d0c34c98f699ed93
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 46ae70bf4f1c2fe0276a3327ff37650dd57341d0
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816843"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259393"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>将 Azure CLI 用于 Azure 存储
 
@@ -24,10 +25,12 @@ ms.locfileid: "55816843"
 
 指南中的示例假定在 Ubuntu 上使用 Bash shell，但其他平台的执行情况应与此类似。 
 
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
 ## <a name="prerequisites"></a>先决条件
-本指南假定你了解 Azure 存储的基本概念。 本指南还假定，用户能够满足下面为 Azure 和存储服务指定的帐户创建要求。
+本指南假设读者了解 Azure 存储的基本概念。 本指南还假定，用户能够满足下面为 Azure 和存储服务指定的帐户创建要求。
 
 ### <a name="accounts"></a>帐户
 * **Azure 帐户**：如果你还没有 Azure 订阅，可以[创建一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
@@ -133,12 +136,12 @@ echo "Done"
 
 2. 接下来，更新脚本的变量以反映用户的配置设置。 按照明确的说明替换以下值：
 
-   * **\<storage_account_name\>**：存储帐户的名称。
-   * **\<storage_account_key\>**：存储帐户的主访问密钥或辅助访问密钥。
-   * **\<container_name\>**：要创建的新容器的名称，例如“azure-cli-sample-container”。
-   * **\<blob_name\>**：容器中目标 Blob 的名称。
-   * **\<file_to_upload\>**：本地计算机上小文件的路径，例如：“~/images/HelloWorld.png”。
-   * **\<destination_file\>**：目标文件路径，例如“~/downloadedImage.png”。
+   * \<storage_account_name\>：存储帐户的名称。
+   * **\<storage_account_key\>** ：存储帐户的主访问密钥或辅助访问密钥。
+   * **\<container_name\>** ：要创建的新容器的名称，例如“azure-cli-sample-container”。
+   * **\<blob_name\>** ：容器中目标 Blob 的名称。
+   * **\<file_to_upload\>** ：本地计算机上小文件的路径，例如：“~/images/HelloWorld.png”。
+   * \<destination_file\>：目标文件路径，如“~/downloadedImage.png”。
 
 3. 更新了必要的变量后，保存脚本并退出编辑器。 后续步骤假定已将脚本命名为 **my_storage_sample.sh**。
 
@@ -172,7 +175,7 @@ Done
 
 ## <a name="manage-storage-accounts"></a>管理存储帐户
 
-### <a name="create-a-new-storage-account"></a>新建存储帐户
+### <a name="create-a-new-storage-account"></a>创建新的存储帐户
 若要使用 Azure 存储，用户需要一个存储帐户。 可以在将计算机配置为连接到订阅之后，创建新的 Azure 存储帐户。
 
 ```azurecli
@@ -192,6 +195,8 @@ az storage account create \
   * `Standard_LRS`
   * `Standard_RAGRS`
   * `Standard_ZRS`
+  * `Standard_GZRS`效果
+  * `Standard_RAGZRS`效果
 
 ### <a name="set-default-azure-storage-account-environment-variables"></a>设置默认的 Azure 存储帐户环境变量
 
@@ -231,7 +236,7 @@ export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 > 本文下列部分中的所有示例均假定已设置 `AZURE_STORAGE_ACCOUNT` 和 `AZURE_STORAGE_KEY` 环境变量。
 
 ## <a name="create-and-manage-blobs"></a>创建并管理 blob
-Azure Blob 存储是用于存储大量非结构化数据（例如文本或二进制数据）的服务，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。 本部分假设已熟悉 Azure Blob 存储概念。 有关详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](../blobs/storage-dotnet-how-to-use-blobs.md)和 [Blob 服务概念](/rest/api/storageservices/blob-service-concepts)。
+Azure Blob 存储是用于存储大量非结构化数据（例如文本或二进制数据）的服务，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。 本部分假设读者熟悉 Azure Blob 存储的概念。 有关详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](../blobs/storage-dotnet-how-to-use-blobs.md)和 [Blob 服务概念](/rest/api/storageservices/blob-service-concepts)。
 
 ### <a name="create-a-container"></a>创建容器
 Azure 存储中的每个 Blob 都必须在容器中。 可以使用 `az storage container create` 命令创建容器：
@@ -322,6 +327,17 @@ az storage blob copy start \
 
 ```azurecli
 az storage blob delete --container-name <container_name> --name <blob_name>
+```
+
+### <a name="set-the-content-type"></a>设置内容类型
+
+内容类型（也称为 MIME 类型）标识 Blob 中数据的格式。 浏览器和其他软件使用内容类型来确定如何处理数据。 例如，PNG 图像的内容类型为 `image/png`。 若要设置内容类型，请使用 `blob update` 命令：
+
+```azurecli
+az storage blob update
+    --container-name <container_name> 
+    --name <blob_name>
+    --content-type <content_type>
 ```
 
 ## <a name="create-and-manage-file-shares"></a>创建和管理文件共享

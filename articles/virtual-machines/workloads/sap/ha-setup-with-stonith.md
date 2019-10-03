@@ -4,27 +4,26 @@ description: 使用 STONITH 在 SUSE 中为 Azure 上的 SAP HANA（大型实例
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ef1656a7e8a66092de3050a8f14c5b38e0e2e6c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525460"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212530"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中进行高可用性设置
 本文档将针对如何使用 STONITH 设备在 SUSE 操作系统上设置高可用性，进行详细的分步说明。
 
-**免责声明：***本指南是通过测试成功运行的 Microsoft HANA 大型实例环境中的设置得出的。由于面向 HANA 大型实例的 Microsoft 服务管理团队不支持操作系统，因此，你可能需要联系 SUSE，以进一步了解操作系统层面的疑难解答或说明。* Microsoft 服务管理团队对 STONITH 设备进行设置并提供全力支持，可以对有关 STONITH 设备的问题进行疑难解答。
+**免责声明：** *本指南是通过测试成功运行的 Microsoft HANA 大型实例环境中的设置得出的。由于面向 HANA 大型实例的 Microsoft 服务管理团队不支持操作系统，因此，你可能需要联系 SUSE，以进一步了解操作系统层面的疑难解答或说明。* Microsoft 服务管理团队对 STONITH 设备进行设置并提供全力支持，可以对有关 STONITH 设备的问题进行疑难解答。
 ## <a name="overview"></a>概述
 要使用 SUSE 群集设置高可用性，必须满足以下先决条件。
 ### <a name="pre-requisites"></a>先决条件
@@ -155,7 +154,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![yast-key-file.png](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
-单击 **“确定”**
+单击“确定”
 
 使用 Csync2 中的 IP 地址和预共享密钥执行身份验证。 使用 csync2 -k /etc/csync2/key_hagroup 生成密钥文件。 在创建文件 key_hagroup 后，应将其手动复制到群集的所有成员。 确保将文件从 node1 复制到 node2。
 
@@ -232,7 +231,7 @@ systemctl start pacemaker
 ```
 ![start-pacemaker.png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-如果 pacemaker 服务失败，请参阅“方案 5：Pacemaker 服务失败”*
+如果 pacemaker 服务失败，请参阅“方案 5： Pacemaker 服务失败”
 
 ## <a name="5---joining-the-cluster"></a>5. 加入群集
 本部分将介绍如何将节点加入到群集。
@@ -258,7 +257,7 @@ systemctl start pacemaker
 ```
 crm_mon
 ```
-![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png)你还可以登录到 hawk 查看群集状态*https://\<节点 IP >: 7630*。 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd 命令更改密码。
+![crm-mon 你还可以登录到 hawk 以检查群集状态*https://\<节点 IP >：7630。* ](media/HowToHLI/HASetupWithStonith/crm-mon.png) 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd命令更改密码。
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7.配置群集属性和资源 
 本部分将介绍配置群集资源的步骤。
@@ -323,7 +322,7 @@ crm configure load update crm-vip.txt
 在运行命令 crm_mon 时，可以在那里看到两个资源。
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-此外，还会显示在状态*https://\<节点 IP 地址 >: 7630 上/状态*
+此外，你还可以在*https://\<节点 IP 地址 >： 7630/cib/live/state*中查看状态
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
@@ -334,14 +333,15 @@ Service pacemaker stop
 ```
 现在，停止 node2 上的 pacemaker 服务，资源已故障转移到 node1
 
-**在故障转移前**
-![Before-failover.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)
-**在故障转移后**
-![after-failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)
-![crm-mon-after-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)
+故障转移前  
+![Before-failover .png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+
+故障转移后  
+![after-failover .png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-mon-after-failover .png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
-## <a name="9-troubleshooting"></a>9.故障排除
+## <a name="9-troubleshooting"></a>9.疑难解答
 本部分将介绍几个在安装过程中可能会遇到的失败情景。 你不一定会遇到这些问题。
 
 ### <a name="scenario-1-cluster-node-not-online"></a>方案 1：群集节点未联机

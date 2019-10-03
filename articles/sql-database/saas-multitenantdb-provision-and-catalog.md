@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
-manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3e8e0c69c93c992f31c515c2033a9ae57d2ee3e0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835775"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570316"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>在使用分片多租户 Azure SQL 数据库的 SaaS 应用程序中预配和编录新租户
 
@@ -61,7 +60,7 @@ ms.locfileid: "57835775"
 #### <a name="tenant-metadata-beyond-location"></a>位置外部的租户元数据
 
 目录还可以指示租户是否处于脱机状态，以便进行维护或其他操作。 此外，可以扩展目录来存储其他租户或数据库元数据，例如以下各项：
-- 数据库的服务层或版本。
+- 数据库的服务层级或版本。
 - 数据库架构的版本。
 - 租户名称及其 SLA（服务级别协议）。
 - 用于实现应用程序管理、客户支持或 devops 流程的信息。  
@@ -86,7 +85,7 @@ ms.locfileid: "57835775"
 - 该数据库是否为新租户准备了包含所需引用数据的表，或者，是否可以添加数据？
 - 该数据库是否为新租户提供基本架构的相应变体？
 - 该数据库的相应地理位置是否与新租户靠近？
-- 该数据库是否位于新租户的适当服务层？
+- 该数据库是否位于新租户的适当服务层级？
 
 如果想要在新租户自身的数据库中隔离该租户，可以根据租户的规范创建该租户。
 
@@ -123,7 +122,7 @@ ms.locfileid: "57835775"
 > * 将一批租户同时预配到多租户和单租户数据库中
 > * 在目录中注册数据库和租户映射
 
-#### <a name="prerequisites"></a>必备组件
+#### <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保已完成了以下先决条件：
 
@@ -150,7 +149,7 @@ ms.locfileid: "57835775"
 - **向目录扩展表添加租户名称**：向目录中的租户表添加地点名称。  此项添加内容说明如何扩展目录数据库来支持其他特定于应用程序的数据。
 - **打开新租户的“事件”页**：在浏览器中打开 Bushwillow Blues 事件页。
 
-   ![活动](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
+   ![事件](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
 #### <a name="debugger-steps"></a>调试程序步骤
 
@@ -169,7 +168,7 @@ ms.locfileid: "57835775"
 
 4. 脚本执行在断点处停止之后，按 F11 单步执行代码。
 
-   ![debug](media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![调试](media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. 使用“调试”菜单选项（F10 和 F11）逐过程或单步执行调用的函数，跟踪脚本的执行。
 
@@ -190,7 +189,7 @@ ms.locfileid: "57835775"
 - **将租户名称添加到目录**：将地点名称添加到目录的租户扩展表中。
 - **打开新租户的“事件”页**：在浏览器中打开 Sequoia Soccer 事件页。
 
-   ![活动](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
+   ![事件](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 
 #### <a name="debugger-steps"></a>调试程序步骤
 
@@ -220,7 +219,7 @@ ms.locfileid: "57835775"
 
 ### <a name="verify-the-deployed-set-of-tenants"></a>验证部署的一组租户 
 
-在此阶段，将混合的租户部署到共享数据库中，并将租户部署到各自的数据库中。 Azure 门户可用于检查创建的数据库。 在 [Azure 门户](https://portal.azure.com)中，通过浏览到 SQL Server 列表来打开 tenants1-mt-\<USER\> 服务器。  SQL 数据库列表应包含共享的 tenants1 数据库和各自数据库中的租户的数据库：
+在此阶段，将混合的租户部署到共享数据库中，并将租户部署到各自的数据库中。 Azure 门户可用于检查创建的数据库。 在 [Azure 门户](https://portal.azure.com)中，通过浏览到 SQL Server 列表来打开 tenants1-mt-\<USER\> 服务器。  SQL 数据库列表应包含共享的 tenants1数据库和各自数据库中的租户的数据库：
 
    ![数据库列表](media/saas-multitenantdb-provision-and-catalog/Databases.png)
 
@@ -237,7 +236,7 @@ ms.locfileid: "57835775"
 - 租户名称存储在“租户”表中。
 - 数据库名称存储在“分片管理”表中。
 
-1. 在 SQL Server Management Studio (SSMS)，连接到租户服务器处**catalog-mt\<用户\>。 database.windows.net**，与登录名 =**开发人员**，和密码 = **P\@ssword1**
+1. 在 SQL Server Management Studio (SSMS) 中, 连接到 database.windows.net 的租户 **\<\>** 服务器, 登录名 = **developer**, 密码 = **\@P ssword1**
 
     ![“SSMS 连接”对话框](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

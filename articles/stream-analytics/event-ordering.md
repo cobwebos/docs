@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 970eeb871775e24abb87c8b977e214645e514d3b
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 47a8ee2c03e67d4fd9b34888430ed0cc702205f6
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190508"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273183"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>配置事件排序策略用于 Azure Stream Analytics
 
@@ -73,7 +73,9 @@ Stream Analytics 作业可以处理事件的任*事件时间*或*到达时间*�
 <br><code>
 {"message Time":"2/3/2019 8:54:16 PM UTC","message":"Input Partition [2] does not have additional data for more than [5] minute(s). Partition will not progress until either events arrive or late arrival threshold is met.","type":"InputPartitionNotProgressing","correlation ID":"2328d411-52c7-4100-ba01-1e860c757fc2"} 
 </code><br><br>
-此消息，通知你，在输入中的至少一个分区为空，并且将由延迟到达阈值延迟输出。 若要解决此问题，建议你或者：1. 请确保所有分区的事件中心/IoT 中心都接收的输入。 2. 通过在查询中的 PartitionID 子句中使用分区。 
+此消息，通知你，在输入中的至少一个分区为空，并且将由延迟到达阈值延迟输出。 若要解决此问题，建议你或者：  
+1. 请确保所有分区的事件中心/IoT 中心都接收的输入。 
+2. 通过在查询中的 PartitionID 子句中使用分区。 
 
 ## <a name="next-steps"></a>后续步骤
 * [时间处理注意事项](stream-analytics-time-handling.md)

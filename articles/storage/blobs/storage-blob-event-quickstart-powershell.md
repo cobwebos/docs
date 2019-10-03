@@ -1,20 +1,19 @@
 ---
 title: 将 Azure Blob 存储事件发送到 Web 终结点 - Powershell | Microsoft Docs
 description: 使用 Azure 事件网格订阅 Blob 存储事件。
-services: storage,event-grid
-author: david-stanford
-ms.author: dastanfo
+author: normesta
+ms.author: normesta
+ms.reviewer: dastanfo
 ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.custom: seodec18
-ms.openlocfilehash: 3e1a482cc59d951fbe6b25fcf0bfc4a967222839
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246409"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847154"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>快速入门：利用 PowerShell 将存储事件路由到 Web 终结点
 
@@ -26,13 +25,13 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 ![查看结果](./media/storage-blob-event-quickstart-powershell/view-results.png)
 
-## <a name="setup"></a>设置
+## <a name="setup"></a>安装
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 本文要求运行最新版本的 Azure PowerShell。 如需进行安装或升级，请参阅[安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps)。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录  Azure
 
 使用 `Connect-AzAccount` 命令登录到 Azure 订阅，然后按照屏幕上的说明进行身份验证。
 

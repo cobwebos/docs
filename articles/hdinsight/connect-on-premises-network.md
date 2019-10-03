@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 连接到本地网络
+title: 将 Azure HDInsight 连接到本地网络
 description: 了解如何在 Azure 虚拟网络中创建 HDInsight 群集，并将其连接到本地网络。 了解如何使用自定义 DNS 服务器配置 HDInsight 与本地网络之间的名称解析。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 52fe8c05101f9647549acec276f0bdb9fa52d1c7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ad43af0f6f9bd8d5d78cef78b26345436169c0fd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256798"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034135"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>将 HDInsight 连接到本地网络
 
@@ -40,13 +40,13 @@ ms.locfileid: "59256798"
 
 在下面的关系图中，绿线表示以虚拟网络的 DNS 后缀结尾的资源请求。 蓝线表示本地网络或公共 Internet 上的资源请求。
 
-![本文档将使用如何解析配置中的 DNS 请求的关系图](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+![如何在配置中解析 DNS 请求的关系图](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md)。
-* 如果使用 PowerShell，则需要[AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
-* 如果想要使用 Azure CLI 和你尚未安装它，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* 如果使用 PowerShell，你将需要 [AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
+* 若要使用 Azure CLI 但尚未安装它，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="create-virtual-network-configuration"></a>创建虚拟网络配置
 
@@ -65,38 +65,38 @@ ms.locfileid: "59256798"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
   
-2. 从左侧菜单中，导航到 **+ 创建资源** > **计算** > **Ubuntu Server 18.04 LTS**。
+2. 在左侧菜单中，导航到“+创建资源” > “计算” > “Ubuntu Server 18.04 LTS”。
 
-    ![创建 Ubuntu 虚拟机](./media/connect-on-premises-network/create-ubuntu-vm.png)
+    ![创建 Ubuntu 虚拟机](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
 
 3. 在“基本信息”选项卡中输入以下信息：  
   
-    | 字段 | 值 |
+    | 字段 | ReplTest1 |
     | --- | --- |
     |订阅 |选择相应的订阅。|
     |资源组 |选择包含此前创建的虚拟网络的资源组。|
     |虚拟机名称 | 输入用于标识该虚拟机的友好名称。 本示例使用 **DNSProxy**。|
-    |区域 | 选择与此前创建的虚拟网络相同的区域。  并非所有 VM 大小都可在所有区域中使用。  |
+    |地区 | 选择与此前创建的虚拟网络相同的区域。  并非所有 VM 大小都可在所有区域中使用。  |
     |可用性选项 |  选择所需的可用性级别。  Azure 提供一系列的选项，用于管理应用程序的可用性和复原能力。  将解决方案构建为使用可用性区域或可用性集中的已复制 VM，使应用和数据免受事件中心中断和维护事件的影响。 此示例使用“不需要基础结构冗余”。 |
-    |映像 | 将保留**Ubuntu Server 18.04 LTS**。 |
-    |身份验证类型 | __密码__或 __SSH 公钥__：SSH 帐户的身份验证方法。 建议使用公钥，因为公钥更安全。 此示例使用**密码**。  有关详细信息，请参阅[创建并使用用于 Linux VM 的 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md)文档。|
+    |图像 | 保留“Ubuntu Server 18.04 LTS”。 |
+    |身份验证类型 | __密码__或 __SSH 公钥__：SSH 帐户的身份验证方法。 建议使用公钥，因为公钥更安全。 本示例使用**密码**。  有关详细信息，请参阅[创建并使用用于 Linux VM 的 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md)文档。|
     |用户名 |输入 VM 的管理员用户名。  本示例使用 **sshuser**。|
     |密码或 SSH 公钥 | 可用字段取决于针对“身份验证类型”所做的选择。  输入相应的值。|
-    |公共入站端口|选择“允许所选端口”。 然后选择**SSH (22)** 从**选择入站的端口**下拉列表。|
+    |公共入站端口|选择“允许所选端口”。 然后从“选择入站端口”下拉列表中选择“SSH (22)”。|
 
-    ![虚拟机基础配置](./media/connect-on-premises-network/vm-basics.png)
+    ![虚拟机基础配置](./media/connect-on-premises-network/virtual-machine-basics.png)
 
     将其他项保留为默认值，然后选择“网络”选项卡。
 
 4. 在“网络”选项卡中，输入以下信息：
 
-    | 字段 | 值 |
+    | 字段 | ReplTest1 |
     | --- | --- |
     |虚拟网络 | 选择此前创建的虚拟网络。|
-    |子网 | 选择前面创建的虚拟网络的默认子网。 请勿选择 VPN 网关所用的子网。|
-    |公共 IP | 使用会自动填充值。  |
+    |Subnet | 选择前面创建的虚拟网络的默认子网。 请勿选择 VPN 网关所用的子网。|
+    |公共 IP | 使用自动填充的值。  |
 
-    ![虚拟网络设置](./media/connect-on-premises-network/virtual-network-settings.png)
+    ![HDInsight 虚拟网络设置](./media/connect-on-premises-network/virtual-network-settings.png)
 
     将其他项保留为默认值，然后选择“查看 + 创建”。
 
@@ -109,11 +109,11 @@ ms.locfileid: "59256798"
 
 2. 记下“公共 IP 地址/DNS 名称标签”和“专用 IP 地址”的值供以后使用。
 
-   ![公共和专用 IP 地址](./media/connect-on-premises-network/vm-ip-addresses.png)
+   ![公共和专用 IP 地址](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>安装和配置 Bind（DNS 软件）
 
-1. 使用 SSH 连接到虚拟机的公共 IP 地址。 替换为`sshuser`创建 VM 时指定的 SSH 用户帐户。 以下示例将在 40.68.254.142 连接到虚拟机：
+1. 使用 SSH 连接到虚拟机的公共 IP 地址。 将 `sshuser` 替换为创建 VM 时指定的 SSH 用户帐户。 以下示例将在 40.68.254.142 连接到虚拟机：
 
     ```bash
     ssh sshuser@40.68.254.142
@@ -227,11 +227,11 @@ ms.locfileid: "59256798"
     Address: 192.168.0.4
     ```
 
-## <a name="configure-virtual-network-to-use-the-custom-dns-server"></a>虚拟网络配置为使用自定义 DNS 服务器
+## <a name="configure-virtual-network-to-use-the-custom-dns-server"></a>将虚拟网络配置为使用自定义 DNS 服务器
 
 若要配置虚拟网络以使用自定义 DNS 服务器，而不是 Azure 递归解析程序，请在 [Azure 门户](https://portal.azure.com)中使用以下步骤：
 
-1. 从左侧菜单中，导航到**所有服务** > **网络** > **虚拟网络**。
+1. 在左侧菜单中，导航到“所有服务” > “网络” > “虚拟网络”。
 
 2. 从列表中选择虚拟网络，此时会打开虚拟网络的默认视图。  
 
@@ -239,7 +239,7 @@ ms.locfileid: "59256798"
 
 4. 选择“自定义”，然后输入自定义 DNS 服务器的专用 IP 地址。   
 
-5. 选择“保存”。  <br />  
+5. 选择__保存__。  <br />  
 
     ![为网络设置自定义 DNS 服务器](./media/connect-on-premises-network/configure-custom-dns.png)
 
@@ -275,14 +275,14 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 > [!WARNING]  
 > HDInsight 需要来自 Azure 云中的特定 IP 地址的入站访问权限以及不受限制的出站访问权限。 如果使用 NSG 或 UDR 来控制流量，必须执行以下步骤：
 
-1. 查找包含虚拟网络的位置的 IP 地址。 若要获取按位置划分的所需 IP 列表，请参阅[所需 IP 地址](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)。
+1. 查找包含虚拟网络的位置的 IP 地址。 若要获取按位置划分的所需 IP 列表，请参阅[所需 IP 地址](./hdinsight-management-ip-addresses.md)。
 
 2. 对于步骤 1 中确定的 IP 地址，允许该 IP 地址的入站流量。
 
    * 如果使用 __NSG__：在端口 443上允许该 IP地址的入站流量。
    * 如果使用 __UDR__：为该 IP 地址将路由的下一个跃点类型设置为“Internet”。
 
-有关使用 Azure PowerShell 或 Azure CLI 创建 NSG 的示例，请参阅[使用 Azure 虚拟网络扩展 HDInsight](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg) 文档。
+有关使用 Azure PowerShell 或 Azure CLI 创建 NSG 的示例，请参阅[使用 Azure 虚拟网络扩展 HDInsight](hdinsight-create-virtual-network.md#hdinsight-nsg) 文档。
 
 ## <a name="create-the-hdinsight-cluster"></a>创建 HDInsight 群集
 
@@ -334,7 +334,7 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关在 Azure 虚拟网络中使用 HDInsight 的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight](./hdinsight-extend-hadoop-virtual-network.md)。
+* 有关在虚拟网络中使用 HDInsight 的详细信息，请参阅为[Azure HDInsight 群集计划虚拟网络部署](./hdinsight-plan-virtual-network-deployment.md)。
 
 * 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 

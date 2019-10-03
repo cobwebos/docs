@@ -1,7 +1,7 @@
 ---
-title: 意向
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: 单个意向表示任务或操作用户想要执行。 它是用户话语中表达的目的或目标。 定义一组意向，对应于用户希望在应用程序中执行的操作。
+title: 意向-LUIS
+titleSuffix: Azure Cognitive Services
+description: 单个意向表示用户想执行的任务或操作。 它是用户话语中表达的目的或目标。 定义一组意向，对应于用户希望在应用程序中执行的操作。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: bb7fa9d930f4c1ab3c241048804060e17fe5a8e4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371105"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619922"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>关于 LUIS 应用中的意向的概念
 
@@ -29,9 +29,9 @@ ms.locfileid: "58371105"
  BookFlight     |   “帮我预订下周去里约的航班” <br/> “24 号飞里约” <br/> “我需要下周日去里约热内卢的机票”    |
  Greeting     |   “嗨” <br/>“你好” <br/>“早上好”  |
  CheckWeather | “波士顿的天气怎样？” <br/> “显示本周末的天气预报” |
- 无         | “给我一份饼干食谱”<br>“湖人赢了吗？” |
+ None         | “给我一份饼干食谱”<br>“湖人赢了吗？” |
 
-所有应用程序都具有预定义的目的，"[None](#none-intent-is-fallback-for-app)"，即回退的意图。 
+所有应用程序均附带了预定义意向“[None](#none-intent-is-fallback-for-app)”，这是一个回退意向。 
 
 ## <a name="prebuilt-domains-provide-intents"></a>预生成域提供意向
 除了定义的意向外，还可以使用其中一个预生成域中的预生成意向。 有关详细信息，请参阅[在 LUIS 应用中使用预生成域](luis-how-to-use-prebuilt-domains.md)，了解如何从预生成域自定义意向以用于应用。
@@ -42,12 +42,15 @@ ms.locfileid: "58371105"
 ## <a name="intent-compared-to-entity"></a>意向与实体
 意向表示聊天机器人应为用户采取的操作，以整个陈述为基础。 实体表示陈述中包含的词或短语。 陈述仅可具有一个得分最高的意向，但可具有多个实体。 
 
-<a name="how-do-intents-relate-to-entities"></a> 当用户的意向将在客户端应用程序中触发操作时（例如，调用 checkweather() 函数），请创建意图。 然后创建实体来表示执行操作所需的参数。 
+<a name="how-do-intents-relate-to-entities"></a>
+
+在用户希望在客户端应用程序中触发操作 (如调用 checkweather () 函数) 时创建意向。 然后创建实体来表示执行操作所需的参数。 
 
 |示例意向   | 实体 | 示例陈述中的实体   | 
 |------------------|------------------------------|------------------------------|
 | CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | What's the weather like in `Seattle` `tomorrow`?（西雅图明天天气怎样？） |
 | CheckWeather | { "type": "date_range", "entity": "this weekend" } | Show me the forecast for `this weekend`（显示本周末的天气预报） | 
+||||
 
 ## <a name="custom-intents"></a>自定义意向
 
@@ -59,7 +62,7 @@ ms.locfileid: "58371105"
 
 ## <a name="none-intent"></a>None 意向
 
-**None**意图对每个应用程序非常重要且不应具有零个语音样本。
+**None** 意向对每个应用都很重要，不应该有零话语。
 
 ### <a name="none-intent-is-fallback-for-app"></a>None 意向是应用的回退意向
 “None”意向是全方位或或回退意向。 它用于训练应用域（主题区域）中不重要的 LUIS 陈述。 None 意向应占应用程序中总陈述数的 10 % 到 20%。 不要将“None”意向留空。 
@@ -83,9 +86,9 @@ None 意向是必需的意向，不能删除或重命名。
 
 ## <a name="intents-and-patterns"></a>意向和模式
 
-如果你有示例语音样本，部分或整个正则表达式来定义，请考虑使用[正则表达式实体](luis-concept-entity-types.md#regular-expression-entity)已与配对[模式](luis-concept-patterns.md)。 
+如果你有可部分或全部定义为正则表达式的示例话语，请考虑使用与[模式](luis-concept-patterns.md)配对的[正则表达式实体](luis-concept-entity-types.md#regular-expression-entity)。 
 
-使用正则表达式的实体可保证数据提取，以便匹配模式。 模式匹配可保证返回准确的意图。 
+使用正则表达式实体可以确保数据提取，以便匹配模式。 模式匹配可确保返回确切的意向。 
 
 ## <a name="intent-balance"></a>意向平衡
 应用域意向应让每个意向的陈述数保持平衡。 请勿出现一个意向具有 10 个陈述，而另一个意向具有 500 个陈述的情况。 这样不平衡。 如果遇到这种情况，请查看具有 500 个陈述的意向，了解是否可将其中许多意向重新组织为[模式](luis-concept-patterns.md)。 

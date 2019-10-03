@@ -3,19 +3,19 @@ title: 快速入门：通过适用于 Node.js 的必应实体搜索 SDK 来发�
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门通过适用于 Node.js 的必应实体搜索 SDK 来搜索实体。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
-ms.author: v-gedod
-ms.openlocfilehash: 015a2d344b066bd7b65c3228a2795c3395793f2b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 07/24/2019
+ms.author: aahi
+ms.openlocfilehash: 40c9062dba5eb3bbed6ee90bfdb0a74c1d6c11d5
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097024"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479036"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>快速入门：通过适用于 Node.js 的必应实体搜索 SDK 来发送搜索请求
 

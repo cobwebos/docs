@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 399dcd744819cf4cb5d9f5f9636967c34e186a0e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 86fa817128dc89eb97bee18f4f8a6de1f650c265
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004595"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814305"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>VMware 到 Azure 的灾难恢复的配置服务器要求
 

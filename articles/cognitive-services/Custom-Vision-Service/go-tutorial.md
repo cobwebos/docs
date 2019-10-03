@@ -1,25 +1,25 @@
 ---
 title: 快速入门：使用适用于 Go 的自定义视觉 SDK 创建图像分类项目
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用 Go SDK 创建项目、添加标记、上传图像、训练项目以及进行预测。
 services: cognitive-services
 author: areddish
 manager: daauld
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: f740974d17ad5f95bca6530a61619ee0283f819a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ed49d5763db4c9ffcb11d24dfa835c899d76aeec
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479972"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946193"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>快速入门：使用自定义视觉 Go SDK 创建图像分类项目
 
-本文提供信息和示例代码，以帮助你开始通过 Go 使用自定义视觉 SDK 来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Go 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，请改为查看[基于浏览器的指南](getting-started-build-a-classifier.md)。
+本文提供信息和示例代码，以帮助你开始通过 Go 使用自定义视觉 SDK 来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Go 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，  请改为查看[基于浏览器的指南](getting-started-build-a-classifier.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,12 +29,12 @@ ms.locfileid: "58479972"
 
 若要安装适用于 Go 的自定义视觉服务 SDK，请在 PowerShell 中运行以下命令：
 
-```
+```shell
 go get -u github.com/Azure/azure-sdk-for-go/...
 ```
 
-或者，如果使用 dep，则在存储库中运行：
-```
+或者，如果使用 `dep`，则在存储库中运行：
+```shell
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
 
@@ -44,11 +44,11 @@ dep ensure -add github.com/Azure/azure-sdk-for-go
 
 ## <a name="add-the-code"></a>添加代码
 
-在首选项目目录中创建名为 sample.go 的新文件。
+在首选项目目录中创建名为 sample.go  的新文件。
 
 ### <a name="create-the-custom-vision-service-project"></a>创建自定义视觉服务项目
 
-将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。
+将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。 请查看 [CreateProject](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_) 方法，以在创建项目时指定其他选项（在[生成分类器](getting-started-build-a-classifier.md) Web 门户指南中进行了说明）。
 
 ```go
 import(
@@ -88,45 +88,45 @@ func main() {
 
 ### <a name="create-tags-in-the-project"></a>在项目中创建标记
 
-若要在项目中创建分类标记，请将以下代码添加到 sample.go 末尾：
+若要在项目中创建分类标记，请将以下代码添加到 sample.go  末尾：
 
 ```go
-    // Make two tags in the new project
-    hemlockTag, _ := trainer.CreateTag(ctx, *project.ID, "Hemlock", "Hemlock tree tag", string(training.Regular))
-    cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese cherry tree tag", string(training.Regular))
+// Make two tags in the new project
+hemlockTag, _ := trainer.CreateTag(ctx, *project.ID, "Hemlock", "Hemlock tree tag", string(training.Regular))
+cherryTag, _ := trainer.CreateTag(ctx, *project.ID, "Japanese Cherry", "Japanese cherry tree tag", string(training.Regular))
 ```
 
 ### <a name="upload-and-tag-images"></a>上传和标记图像
 
-要将示例图像添加到项目，请在创建标记后插入以下代码。 此代码会上传具有相应标记的每个图像。 需根据下载认知服务 Go SDK 示例项目的位置输入基本的图像 URL 路径。
+要将示例图像添加到项目，请在创建标记后插入以下代码。 此代码会上传具有相应标记的每个图像。 最多可以在单个批次中上传 64 个图像。
 
 > [!NOTE]
 > 需根据此前下载认知服务 Go SDK 示例项目的位置更改图像的路径。
 
 ```go
-    fmt.Println("Adding images...")
-    japaneseCherryImages, err := ioutil.ReadDir(path.Join(sampleDataDirectory, "Japanese Cherry"))
-    if err != nil {
-        fmt.Println("Error finding Sample images")
-    }
+fmt.Println("Adding images...")
+japaneseCherryImages, err := ioutil.ReadDir(path.Join(sampleDataDirectory, "Japanese Cherry"))
+if err != nil {
+    fmt.Println("Error finding Sample images")
+}
 
-    hemLockImages, err := ioutil.ReadDir(path.Join(sampleDataDirectory, "Hemlock"))
-    if err != nil {
-        fmt.Println("Error finding Sample images")
-    }
+hemLockImages, err := ioutil.ReadDir(path.Join(sampleDataDirectory, "Hemlock"))
+if err != nil {
+    fmt.Println("Error finding Sample images")
+}
 
-    for _, file := range hemLockImages {
-        imageFile, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Hemlock", file.Name()))
-        imageData := ioutil.NopCloser(bytes.NewReader(imageFile))
+for _, file := range hemLockImages {
+    imageFile, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Hemlock", file.Name()))
+    imageData := ioutil.NopCloser(bytes.NewReader(imageFile))
 
-        trainer.CreateImagesFromData(ctx, *project.ID, imageData, []string{ hemlockTag.ID.String() })
-    }
+    trainer.CreateImagesFromData(ctx, *project.ID, imageData, []string{ hemlockTag.ID.String() })
+}
 
-    for _, file := range japaneseCherryImages {
-        imageFile, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Japanese Cherry", file.Name()))
-        imageData := ioutil.NopCloser(bytes.NewReader(imageFile))
-        trainer.CreateImagesFromData(ctx, *project.ID, imageData, []string{ cherryTag.ID.String() })
-    }
+for _, file := range japaneseCherryImages {
+    imageFile, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Japanese Cherry", file.Name()))
+    imageData := ioutil.NopCloser(bytes.NewReader(imageFile))
+    trainer.CreateImagesFromData(ctx, *project.ID, imageData, []string{ cherryTag.ID.String() })
+}
 ```
 
 ### <a name="train-the-classifier-and-publish"></a>训练分类器和发布
@@ -134,19 +134,19 @@ func main() {
 此代码在项目中创建第一个迭代，然后将该迭代发布到预测终结点。 为发布的迭代起的名称可用于发送预测请求。 在发布迭代之前，迭代在预测终结点中不可用。
 
 ```go
-    fmt.Println("Training...")
-    iteration, _ := trainer.TrainProject(ctx, *project.ID)
-    for {
-        if *iteration.Status != "Training" {
-            break
-        }
-        fmt.Println("Training status: " + *iteration.Status)
-        time.Sleep(1 * time.Second)
-        iteration, _ = trainer.GetIteration(ctx, *project.ID, *iteration.ID)
+fmt.Println("Training...")
+iteration, _ := trainer.TrainProject(ctx, *project.ID)
+for {
+    if *iteration.Status != "Training" {
+        break
     }
     fmt.Println("Training status: " + *iteration.Status)
+    time.Sleep(1 * time.Second)
+    iteration, _ = trainer.GetIteration(ctx, *project.ID, *iteration.ID)
+}
+fmt.Println("Training status: " + *iteration.Status)
 
-    trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
+trainer.PublishIteration(ctx, *project.ID, *iteration.ID, iteration_publish_name, prediction_resource_id))
 ```
 
 ### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>获取并使用预测终结点上发布的迭代
@@ -169,15 +169,15 @@ func main() {
 
 ## <a name="run-the-application"></a>运行应用程序
 
-运行 sample.go。
+运行 sample.go  。
 
-```powershell
+```shell
 go run sample.go
 ```
 
 应用程序的输出应类似于以下文本：
 
-```
+```console
 Creating project...
 Adding images...
 Training...

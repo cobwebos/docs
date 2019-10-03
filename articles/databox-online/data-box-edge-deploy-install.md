@@ -1,20 +1,20 @@
 ---
-title: 有关安装 Azure Data Box Edge 物理设备的教程 | Microsoft Docs
+title: 教程：安装 Azure Data Box Edge 物理设备（拆包、装机和布线）| Microsoft Docs
 description: 有关安装 Azure Data Box Edge 的第二篇教程涉及到物理设备的拆包、装机和布线。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/20/2019
+ms.date: 05/31/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 46192d32e70e371325abeafd4da26fa29e491b13
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0a9939155d92897019dc1ad5651d249cda11b993
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278473"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476948"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>教程：安装 Azure Data Box Edge
 
@@ -70,7 +70,7 @@ ms.locfileid: "59278473"
 1. 将箱子放在平坦的水平表面上。
 2. 检查箱子和包装泡沫是否有破损、刮痕、水渍或任何其他明显损坏。 如果箱子或包装严重损坏，请勿打开包装。 请联系 Microsoft 支持部门，帮助你评估设备是否处于良好的工作状态。
 3. 打开箱子。 打开包装箱后，请确保有：
-    - 一个单机箱 Edge 设备
+    - 一个单机箱 Data Box Edge 设备
     - 两根电源线
     - 一个导轨套装件
     - 一本“安全、环保和法规信息”小册子
@@ -100,7 +100,7 @@ ms.locfileid: "59278473"
 1. 两个 A7 Dell ReadyRails II 滑轨装配件
 2. 两片粘扣带
 
-![识别导轨工具包内容](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
+    ![识别导轨工具包内容](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
 
 ### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>安装和拆除免工具导轨（方孔或圆孔机架）
 
@@ -112,7 +112,7 @@ ms.locfileid: "59278473"
 3. 啮合导轨的末端，使之完全进入立式机架法兰，并且闩锁卡入就位。 在立式机架法兰上重复这些步骤以定位和固定正面尾段。
 4. 若要拆除导轨，请拉起尾段中间的闩锁释放按钮，并松开每个导轨。
 
-![安装和拆除免工具导轨](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
+    ![安装和拆除免工具导轨](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>安装和拆除工模导轨（螺孔机架）
 
@@ -124,7 +124,7 @@ ms.locfileid: "59278473"
 3. 使用四颗螺丝将左右安装导轨安装到正面的立式机架法兰上。
 4. 将左右背面支架滑向背面的立式机架法兰，并使用四颗螺丝将其固定。
 
-![安装和拆除工模导轨](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![安装和拆除工模导轨](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
 
 ### <a name="install-the-system-in-a-rack"></a>在机架中安装系统
 
@@ -133,7 +133,7 @@ ms.locfileid: "59278473"
 3. 向内推动系统，直到锁定杆卡入就位。
 4. 按下两个导轨上的滑动/释放锁定按钮，并将系统滑入机架。
 
-![在机架中安装系统](./media/data-box-edge-deploy-install/installing-system-rack.png)
+    ![在机架中安装系统](./media/data-box-edge-deploy-install/installing-system-rack.png)
 
 ### <a name="remove-the-system-from-the-rack"></a>从机架中拆除系统
 
@@ -141,17 +141,18 @@ ms.locfileid: "59278473"
 2. 将每个锁定杆向上旋转到释放位置，以解除锁定每个锁定杆。
 3. 紧紧抓住系统的两侧并将其向前拉动，直到导轨支架滑到 J 形槽的正面。 向上抬起系统使其脱离机架，然后将其放在水平的表面上。
 
-![从机架中拆除系统](./media/data-box-edge-deploy-install/removing-system-rack.png)
+    ![从机架中拆除系统](./media/data-box-edge-deploy-install/removing-system-rack.png)
 
 ### <a name="engage-and-release-the-slam-latch"></a>啮合和释放撞击闩锁
 
-注意：对于未配备撞击闩锁的系统，请根据本过程的步骤 3 中所述，使用螺丝来紧固系统。
+> [!NOTE]
+> 对于未配备撞击闩锁的系统，请根据本过程的步骤 3 中所述，使用螺丝来紧固系统。
 
 1. 朝向正面，在系统的任一侧找到撞击闩锁。
 2. 将系统推入机架时，闩锁会自动啮合；拉起闩锁会释放闩锁。
 3. 若要在机架中保护系统以便于装运，或者要在其他不稳定的环境中保护系统，请在每个闩锁下面找到五金螺丝，并使用 #2 号十字螺丝刀拧紧每颗螺丝。
 
-![啮合和释放撞击闩锁](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
+    ![啮合和释放撞击闩锁](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
 
 ### <a name="route-the-cables"></a>布线
 
@@ -163,16 +164,16 @@ ms.locfileid: "59278473"
 3. 将挂钩和环带穿过系统两侧外部 CMA 支架上的插槽，以固定电缆束。
 
 
-![布线](./media/data-box-edge-deploy-install/routing-cables.png)
+    ![布线](./media/data-box-edge-deploy-install/routing-cables.png)
 
 ## <a name="cable-the-device"></a>为设备布线
 
-以下过程说明如何为 Edge 设备排布电源线和网线。
+以下过程说明如何为 Data Box Edge 设备排布电源线和网线。
 
 在开始为设备布线之前，需要符合以下先决条件：
 
-- 已拆包并装入机架的 Edge 物理设备。
-- 两根电源线。 
+- 已拆包并装入机架的 Data Box Edge 物理设备。
+- 两根电源线。
 - 至少一根用于连接管理接口的 1-GbE RJ-45 网线。 设备上有两个 1-GbE 网络接口：一个用于管理，一个用于数据。
 - 一根 25-GbE SFP+ 铜缆用于配置每个数据网络接口。 至少需要将一个数据网络接口（端口 2、端口 3、端口 4、端口 5 或端口 6）连接到 Internet（在连接到 Azure 的情况下）。  
 - 可以取用两个配电单元（建议）。
@@ -180,34 +181,46 @@ ms.locfileid: "59278473"
 > [!NOTE]
 > - 如果仅连接一个数据网络接口，我们建议使用 25/10-GbE 网络接口（例如端口 3、端口 4、端口 5 或端口 6）将数据发送到 Azure。 
 > - 为获得最佳性能并处理大量数据，请考虑连接所有数据端口。
-> - Edge 设备应连接到数据中心网络，这样才能从数据源服务器引入数据。
+> - Data Box Edge 设备应连接到数据中心网络，这样才能从数据源服务器引入数据。
 
-Edge 设备有 8 块 NVMe SSD。 前面板上还有状态 LED 和电源按钮。 设备的背面带有冗余电源单元 (PSU)。 设备有六个网络接口：
+在 Data Box Edge 设备上：
 
-- 两个 1-Gbps 接口
-- 四个 25-Gbps 接口，它们也可以充当 10-Gbps 接口。
-- 主板管理控制器 (BMC)。 
+- 前面板有磁盘驱动器和电源按钮。
 
-请识别设备背板上的各个端口。
- 
-  ![已布线设备的背板](./media/data-box-edge-deploy-install/backplane-cabled.png)
+    - 设备正面有 10 个磁盘插槽。
+    - 插槽 0 有一个 240 GB SATA 驱动器用作操作系统磁盘。 插槽 1 为空，插槽 2 到插槽 9 是用作数据磁盘的 NVMe SSD。
+- 背板带有冗余电源单元 (PSU)。
+- 背板有六个网络接口：
 
-设备有两块对应于 6 个端口的网卡： 
+    - 两个 1-Gbps 接口。
+    - 四个 25-Gbps 接口，它们也可以充当 10-Gbps 接口。
+    - 主板管理控制器 (BMC)。
 
- - QLogic FastLinQ 41264
- - QLogic FastLinQ 41262
+- 背板有两块对应于 6 个端口的网卡：
+
+    - QLogic FastLinQ 41264
+    - QLogic FastLinQ 41262
 
 有关这些网卡支持的线缆、交换机和收发器的完整列表，请参阅 [Cavium FastlinQ 41000 系列互操作性矩阵](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
  
 执行以下步骤，为设备排布电源线和网线。
 
-1. 将电源线连接到机柜中的每个 PSU。 为确保高可用性，请安装这两个 PSU 并将其连接到不同的电源。
+1. 识别设备背板上的各个端口。
 
-2. 将电源线连接到配电装置 (PDU)。 确保两个 PSU 使用单独的电源。
+    ![已布线设备的背板](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
-3. 将 1-GbE 网络接口的端口 1 连接到用于配置物理设备的计算机。 端口 1 是专用的管理接口。
+2. 在设备正面找到磁盘插槽和电源按钮。
 
-4. 将一个或多个端口 2、端口 3、端口 4、端口 5 或端口 6 连接到数据中心网络/Internet。 如果连接端口 2，请使用 RJ-45 网线。 对于 10/25-GbE 网络接口，请使用 SFP+ 铜缆。  
+    ![设备的前面板](./media/data-box-edge-deploy-install/device-front-plane-labeled-1.png)
+
+3. 将电源线连接到机柜中的每个 PSU。 为确保高可用性，请安装这两个 PSU 并将其连接到不同的电源。
+4. 将电源线连接到配电装置 (PDU)。 确保两个 PSU 使用单独的电源。
+5. 按下电源按钮打开设备。
+6. 将 1-GbE 网络接口的端口 1 连接到用于配置物理设备的计算机。 端口 1 是专用的管理接口。
+7. 将一个或多个端口 2、端口 3、端口 4、端口 5 或端口 6 连接到数据中心网络/Internet。
+
+    - 如果连接端口 2，请使用 RJ-45 网线。
+    - 对于 10/25-GbE 网络接口，请使用 SFP+ 铜缆。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -222,5 +235,3 @@ Edge 设备有 8 块 NVMe SSD。 前面板上还有状态 LED 和电源按钮。
 
 > [!div class="nextstepaction"]
 > [连接并设置 Data Box Edge](./data-box-edge-deploy-connect-setup-activate.md)
-
-

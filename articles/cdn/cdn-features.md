@@ -5,26 +5,26 @@ services: cdn
 documentationcenter: ''
 author: mdgattuso
 manager: danielgi
-editor: ''
+editor: mdgattuso
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/25/2019
+ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: d78b10edd005a593b4ebe4f34ca2280ccdfdaa04
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6826c1340de16891933b290eb29bd4fb8d120974
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918903"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127924"
 ---
 # <a name="compare-azure-cdn-product-features"></a>比较 Azure CDN 产品功能
 
-Azure 内容分发网络 (CDN) 包括四个产品：“来自 Microsoft 的 Azure CDN Standard”、“来自 Akamai 的 Azure CDN Standard”、“来自 Verizon 的 Azure CDN Standard”和“来自 Verizon 的 Azure CDN Premium”。 有关将**来自 Verizon 的标准 Azure CDN** 配置文件迁移到**来自 Verizon 的高级 Azure CDN** 的信息，请参阅[将 Azure CDN 配置文件从标准 Verizon 迁移到高级 Verizon](cdn-migrate.md)。
+Azure 内容分发网络 (CDN) 包括四个产品：“来自 Microsoft 的 Azure CDN Standard”、“来自 Akamai 的 Azure CDN Standard”、“来自 Verizon 的 Azure CDN Standard”和“来自 Verizon 的 Azure CDN Premium”     。 有关将**来自 Verizon 的标准 Azure CDN** 配置文件迁移到**来自 Verizon 的高级 Azure CDN** 的信息，请参阅[将 Azure CDN 配置文件从标准 Verizon 迁移到高级 Verizon](cdn-migrate.md)。 请注意，虽然存在从标准 Verizon 到高级 Verizon 的升级路径，但目前没有其他产品之间的转换机制。
 
 下表比较了每个产品的可用功能。
 
@@ -33,13 +33,13 @@ Azure 内容分发网络 (CDN) 包括四个产品：“来自 Microsoft 的 Azur
 | [动态站点加速](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration)  | 通过 [Azure Front Door 服务](https://docs.microsoft.com/azure/frontdoor/front-door-overview)提供 | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[动态站点加速 - 自适应图像压缩](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[动态站点加速 - 对象预提取](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
-| [常规 Web 传送优化](https://docs.microsoft.com/azure/cdn/cdn-optimization-overview#general-web-delivery)  | **&#x2713;** | **&#x2713;**，如果平均文件大小小于 10 MB，请选择此优化类型  | **&#x2713;** |  **&#x2713;** |
+| [常规 Web 传送优化](https://docs.microsoft.com/azure/cdn/cdn-optimization-overview#general-web-delivery)  | **&#x2713;** | **&#x2713;** ，如果平均文件大小小于 10 MB，请选择此优化类型  | **&#x2713;** |  **&#x2713;** |
 | [视频流式处理优化](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization)  | 通过常规 Web 传送 | **&#x2713;**  | 通过常规 Web 传送 |  通过常规 Web 传送 |
-| [大型文件优化](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization)  | 通过常规 Web 传送 | **&#x2713;**，如果平均文件大小大于 10 MB，请选择此优化类型   | 通过常规 Web 传送 |  通过常规 Web 传送 |
+| [大型文件优化](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization)  | 通过常规 Web 传送 | **&#x2713;** ，如果平均文件大小大于 10 MB，请选择此优化类型   | 通过常规 Web 传送 |  通过常规 Web 传送 |
 | 更改优化类型 | |**&#x2713;** | | |
 | 原点端口 |所有 TCP 端口 |[允许的原点端口](https://docs.microsoft.com/previous-versions/azure/mt757337(v%3Dazure.100)#allowed-origin-ports) |所有 TCP 端口 |所有 TCP 端口 |
 | [全局服务器负载均衡 (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [快速清除](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;**，目前 Akamai 的 Azure CDN 不支持全部清除和通配符清除 |**&#x2713;** |**&#x2713;** |
+| [快速清除](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** ，目前 Akamai 的 Azure CDN 不支持全部清除和通配符清除 |**&#x2713;** |**&#x2713;** |
 | [资产预加载](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
 | 缓存/标头设置（使用[缓存规则](cdn-caching-rules.md)）  |  |**&#x2713;** |**&#x2713;** | |
 | 可自定义的基于规则的内容交付引擎（使用[规则引擎](cdn-rules-engine.md)）  |  | | |**&#x2713;** |
@@ -52,12 +52,12 @@ Azure 内容分发网络 (CDN) 包括四个产品：“来自 Microsoft 的 Azur
 ||||
  **安全性** | **标准版 Microsoft** | **标准 Akamai** | **标准 Verizon** | **高级 Verizon** | 
 | 对 CDN 终结点的 HTTPS 支持 | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [自定义域 HTTPS](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [自定义域 HTTPS](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** ，需要使用直接 CNAME 来启用 |**&#x2713;** |**&#x2713;** |
 | [自定义域名支持](cdn-map-content-to-custom-domain.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [地理筛选](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [令牌身份验证](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [DDOS 保护](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [使用自己的证书](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates) |**&#x2713;** |  |  |  |
+| [使用自己的证书](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
 ||||
 | **分析和报告** | **标准版 Microsoft** | **标准 Akamai** | **标准 Verizon** | **高级 Verizon** | 
 | [Azure 诊断日志](cdn-azure-diagnostic-logs.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |

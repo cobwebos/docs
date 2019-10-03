@@ -4,23 +4,22 @@ description: 排查在 Azure 中创建新 Linux 虚拟机时遇到的 Resource M
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.assetid: 906a9c89-6866-496b-b4a4-f07fb39f990c
 ms.service: virtual-machines-linux
 ms.workload: na
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: 9fea914fdf9b025fd5d38219a6bfc81b4a9cc584
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f02e1f73460140c9fe9f2cf6d7ffda26533d570d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450270"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090026"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>排查在 Azure 中新建 Linux 虚拟机时遇到的 Resource Manager 部署问题
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -43,29 +42,29 @@ ms.locfileid: "57450270"
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**Y：** 如果 OS 是通用的 Linux，并且它是上传和/或捕获使用通用设置，则不会有任何错误。 同理，如果 OS 是通用的 Linux，并且是使用专用设置上传和/或捕获的，则不会有任何错误。
+**Y：** 如果 OS 是通用的 Linux, 并且已上传和/或采用通用设置捕获, 则不会出现任何错误。 同理，如果 OS 是通用的 Linux，并且是使用专用设置上传和/或捕获的，则不会有任何错误。
 
 **上载错误：**
 
-**N<sup>1</sup>：** 如果 OS 是通用的 Linux，并将它作为上传专用化，您将收到预配超时错误，因为 VM 会卡在预配阶段。
+**N<sup>1</sup>：** 如果 OS 是通用的 Linux，但是以专用设置上传的，则会发生预配超时错误，并且 VM 会卡在预配阶段。
 
-**N<sup>2</sup>：** 如果 OS 是专用的 Linux，并将它上传为通用化，则会预配失败错误，因为新 VM 以原始计算机名称、 用户名和密码运行。
+**N<sup>2</sup>：** 如果 OS 是专用的 Linux，但是以通用设置上传的，则会发生预配失败错误，因为新 VM 是以原始计算机名称、用户名和密码运行的。
 
 **解决方法：**
 
-若要解决这两个错误，将上传原始 VHD，可在本地，与该 os （通用/专用） 相同的设置。 若要以通用设置上传，请记得先运行 -deprovision。
+若要解决这两个错误，请上传原始 VHD、可用的本地设置、以及与该 OS（通用/专用）相同的设置。 若要以通用设置上传，请记得先运行 -deprovision。
 
 **捕获错误：**
 
-**N<sup>3</sup>：** 如果 OS 是通用的 Linux，并且捕获为专用化，则会发生预配超时错误因为原始 VM 不可用，因为它标记为通用化。
+**N<sup>3</sup>：** 如果 OS 是通用的 Linux，但是以专用设置捕获的，则会发生预配超时错误，因为标记为通用的原始 VM 不可用。
 
-**N<sup>4</sup>：** 如果 OS 是专用的 Linux，并捕获为通用化，则会预配失败错误，因为新 VM 以原始计算机名称、 用户名和密码运行。 此外，标记为专用的原始 VM 不可用。
+**N<sup>4</sup>：** 如果 OS 是专用的 Linux，但是以通用设置捕获的，则会发生预配失败错误，因为新 VM 是以原始计算机名称、用户名和密码运行的。 此外，标记为专用的原始 VM 不可用。
 
 **解决方法：**
 
 若要解决这两个错误，请从门户中删除当前映像，并[从当前 VHD 重新捕获映像](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，该映像具有与该 OS（通用/专用）相同的设置。
 
-## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>问题：自定义 / 库 / 应用商店映像;分配失败
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>问题：自定义/库/市场映像；分配失败
 当新的 VM 请求被固定到不支持所请求的 VM 大小、或没有可用空间可处理请求的群集时，便会发生此错误。
 
 **原因 1：** 群集无法支持所请求的 VM 大小。

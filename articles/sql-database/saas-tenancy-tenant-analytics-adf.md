@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b22a9cf8c79530fd931cbe944ef5bfc876a02243
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850286"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570132"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>探索如何使用 Azure SQL 数据库、SQL 数据仓库、数据工厂和 Power BI 运行 SaaS 分析
 
@@ -63,9 +62,9 @@ SaaS 应用程序在云中保存租户数据，这些数据可能非常庞大。
 
 本教程提供了基本示例，演示可从 Wingtip Tickets 数据中收集的见解。 例如，如果 Wingtip Tickets 供应商了解每个会场使用该服务的方式，则他们就能思考如何针对或多或少的活跃会场运用不同的服务计划。 
 
-## <a name="setup"></a>设置
+## <a name="setup"></a>安装
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 > [!NOTE]
 > 本教程使用 Azure 数据工厂中目前以受限预览版提供的功能（链接服务参数化）。 若要完成本教程，请在[此处](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxrVywox1_tHk9wgd5P8SVJUNlFINjNEOElTVFdMUEREMjVVUlJCUDdIRyQlQCN0PWcu)提供订阅 ID。 启用订阅后，我们会发送确认邮件。
@@ -94,7 +93,7 @@ SaaS 应用程序在云中保存租户数据，这些数据可能非常庞大。
 
 现在，查看部署的 Azure 资源：
 #### <a name="tenant-databases-and-analytics-store"></a>租户数据库和分析存储
-使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 连接到 **tenants1-dpt-&lt;user&gt;** 和 **catalog-dpt-&lt;user&gt;** 服务器。 将 &lt;user&gt; 替换为部署应用时使用的值。 使用登录名 =*开发人员*和密码 = *P\@ssword1*。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
+使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 连接到 **tenants1-dpt-&lt;user&gt;** 和 **catalog-dpt-&lt;user&gt;** 服务器。 将 &lt;user&gt; 替换为部署应用时使用的值。 使用 Login = *developer*和 Password = *P\@ssword1*。 有关更多指导，请参阅[简介教程](saas-dbpertenant-wingtip-app-overview.md)。
 
 ![从 SSMS 连接到 SQL 数据库服务器](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
 
@@ -195,7 +194,7 @@ SQL 数据仓库用作分析存储，对租户数据执行聚合。 本示例中
 
     ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 选择**数据库**在左窗格中，然后输入用户名 =*开发人员*，然后输入密码 = *P\@ssword1*。 单击“连接”。  
+5. 选择左窗格中的 "**数据库**", 然后输入 "用户名 =*开发人员*", 并输入 password = *P\@ssword1*。 单击“连接”。  
 
     ![database-sign-in](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
@@ -227,7 +226,7 @@ SQL 数据仓库用作分析存储，对租户数据执行聚合。 本示例中
 
 此绘图显示 Contoso Concert Hall 举办的每场活动在不同时间的累积门票销量，从中可以看出，并非所有活动都出现了销量剧增的情况。 请体验不同的筛选选项，以浏览其他会场的销量趁势。
 
-门票销售模式的见解可以引导 Wingtip Tickets 优化其业务模式。 Wingtip 也许可以不向所有租户收取相同的费用，而是推出具有不同计算大小的服务层。 可以根据更高的服务级别协议 (SLA)，向每日售出较多门票的大型会场提供更高的层。 这些会场可将数据库放在具有更高的数据库资源限制的池中。 每个服务层可以采用按小时售量分配，超出分配即会收取额外的费用。 定期出现销量喷发的大型会场将会受益于更高的层，而 Wingtip Tickets 可以更高效地将服务变现。
+门票销售模式的见解可以引导 Wingtip Tickets 优化其业务模式。 Wingtip 也许可以不向所有租户收取相同的费用，而是推出具有不同计算大小的服务层级。 可以根据更高的服务级别协议 (SLA)，向每日售出较多门票的大型会场提供更高的层。 这些会场可将数据库放在具有更高的数据库资源限制的池中。 每个服务层级可以采用按小时售量分配，超出分配即会收取额外的费用。 定期出现销量喷发的大型会场将会受益于更高的层，而 Wingtip Tickets 可以更高效地将服务变现。
 
 同时，某些 Wingtip Tickets 客户抱怨他们正在努力售出足够多的票证，以抵消服务费用。 通过这些见解，绩效不佳的会场也许能够找到促升门票销量的机会。 销量提高会增大服务的认知价值。 右键单击“fact_Tickets”并选择“新建度量值”。 针对名为 **AverageTicketsSold** 的新度量值输入以下表达式：
 
@@ -249,7 +248,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 部署填充了星型架构的 SQL 数据仓库，以进行租户分析。

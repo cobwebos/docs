@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
 ms.openlocfilehash: f8821060b98ebfc954a6e59abad60350e6779b76
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553271"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67173315"
 ---
-| 资源 | 默认限制 |
+| Resource | 默认限制 |
 | --- | :--- |
 | 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的容器组数 | 100<sup>1</sup> |
 | 每个容器组的容器数 | 60 |
@@ -25,7 +25,7 @@ ms.locfileid: "57553271"
 | 每 5 分钟删除容器次数 | 100<sup>1</sup> |
 
 
-<sup>1</sup>若要请求增加限制，创建[Azure 支持请求][azure-support]。<br />
+<sup>1</sup>要请求提高上限，请创建一个 [Azure 支持请求][azure-support]。<br />
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

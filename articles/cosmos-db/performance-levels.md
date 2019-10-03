@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.openlocfilehash: 06fa98ae4acc2252d8866858ed0e2194ed84ff79
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034380"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60928272"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>停用 S1、S2 和 S3 性能级别
 
@@ -39,16 +39,16 @@ S1、S2 和 S3 性能级别无法提供标准 Azure Cosmos DB 服务可提供的
 
 <a name="compare"></a>
 
-## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>单分区集合和分区集合与 S1、S2、S3 性能级别相比存在哪些差别？
+## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>单区集合和分区集合与 S1、S2、S3 性能级别有哪些区别？
 
 下表对单分区集合和分区集合与 S1、S2、S3 性能级别提供的吞吐量及存储选项做了比较。 下面是美国东部 2 区域的一个示例：
 
 |   |分区集合|单分区集合|S1|S2|S3|
 |---|---|---|---|---|---|
 |最大吞吐量|不受限制|10K RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
-|最小吞吐量|2.5 K RU/秒|400 RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
+|最小吞吐量|2.5 K RU/秒|400 RU/秒|250 RU/s|1 K RU/秒|2.5 K RU/秒|
 |最大存储|不受限制|10 GB|10 GB|10 GB|10 GB|
-|价格（每月）|吞吐量：6 美元/100 RU/秒<br><br>存储：0.25 美元/GB|吞吐量：6 美元/100 RU/秒<br><br>存储：0.25 美元/GB|25 美元|50 美元|100 美元|
+|价格（每月）|吞吐量：6 美元/100 RU/秒<br><br>存储：0.25 美元/GB|吞吐量：6 美元/100 RU/s<br><br>存储：0.25 美元/GB|25 美元|50 美元|100 美元|
 
 是 EA 客户？ 如果是，请参阅[如果我是 EA 客户，我会受到怎样的影响？](#ea-customer)
 

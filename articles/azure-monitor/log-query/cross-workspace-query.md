@@ -11,26 +11,26 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 06/05/2019
 ms.author: magoedte
-ms.openlocfilehash: b0d12021be5a5dca348ea3ffa3f0b853725812da
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a1ea4012b7cda5b5deab82027e5547a9c9ef786f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791295"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650155"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>在 Azure Monitor 中执行跨资源日志查询  
 
-以前，使用 Azure Monitor 只能分析来自当前工作区内的数据，这限制了跨订阅中定义的多个工作区查询数据的能力。  此外，之前只能直接在 Application Insights 中或从 Visual Studio 中使用 Application Insights 搜索通过基于 web 的应用程序收集的遥测数据项。  这还使得难以采用本机方式将操作数据和应用程序数据一起分析。   
+以前，使用 Azure Monitor 只能分析来自当前工作区内的数据，这限制了跨订阅中定义的多个工作区查询数据的能力。  此外，之前只能直接在 Application Insights 中或从 Visual Studio 中使用 Application Insights 搜索通过基于 web 的应用程序收集的遥测数据项。 这还使得难以采用本机方式将操作数据和应用程序数据一起分析。
 
-现在不但可以跨多个 Log Analytics 工作区进行查询，而且还可以查询同一资源组、另一资源组或另一订阅中特定 Application Insights 应用的数据。 这可以提供数据的系统级视图。  你只能在 [Log Analytics](portals.md) 中执行这些类型的查询。
+现在不但可以跨多个 Log Analytics 工作区进行查询，而且还可以查询同一资源组、另一资源组或另一订阅中特定 Application Insights 应用的数据。 这可以提供数据的系统级视图。 你只能在 [Log Analytics](portals.md) 中执行这些类型的查询。
 
 ## <a name="cross-resource-query-limits"></a>跨资源查询限制 
 
-* 可以包括在单个查询中的 Application Insights 资源数被限制为 100。
-* 视图设计器中不支持跨资源查询。 可以创作 Log Analytics 中的查询并将其固定到 Azure 仪表板并[可视化日志搜索](../../azure-monitor/learn/tutorial-logs-dashboards.md#visualize-a-log-search)。 
-* 在新支持跨资源日志警报中的查询[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 而无需使用进行切换，可以在警报规则创建跨资源查询日志[scheduledQueryRules API 的 ARM 模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)– 不过是可管理此警报规则，但[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)而不是从 Azure 门户。
+* 可以在单个查询中包含的 Application Insights 资源和 Log Analytics 工作区的数量限制为 100。
+* 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作一个查询，将其固定到 Azure 仪表板，以[将日志查询可视化](../learn/tutorial-logs-dashboards.md)。 
+* 新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支持日志警报中的跨资源查询。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 Azure 资源管理器模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)创建跨资源查询日志警报规则，而无需进行切换。但是，此警报规则可通过 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 进行管理，而不可通过 Azure 门户进行管理。
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>跨 Log Analytics 工作区以及从 Application Insights 进行查询
@@ -44,9 +44,6 @@ ms.locfileid: "59791295"
 * 资源名称 - 用户可读的工作区名称，有时称为“组件名称”。 
 
     `workspace("contosoretail-it").Update | count`
- 
-    >[!NOTE]
-    >按名称标识工作区会假设它在所有可访问订阅中是唯一的。 如果具有多个采用指定名称的应用程序，查询将因多义性而失败。 在这种情况下，必须使用其他标识符之一。
 
 * 限定名称 - 工作区的“全名”，由订阅名称、资源组和组件名称组成，并采用以下格式：*subscriptionName/resourceGroup/componentName*。 
 
@@ -76,6 +73,9 @@ ms.locfileid: "59791295"
 
     `app("fabrikamapp")`
 
+    >[!NOTE]
+    >按名称标识应用程序假定所有可访问订阅中的唯一性。 如果具有多个采用指定名称的应用程序，查询将因多义性而失败。 在这种情况下，必须使用其他标识符之一。
+
 * 限定名称 - 应用的“全名”，由订阅名称、资源组和组件名称组成，并采用以下格式：*subscriptionName/resourceGroup/componentName*。 
 
     `app("AI-Prototype/Fabrikam/fabrikamapp").requests | count`
@@ -88,7 +88,7 @@ ms.locfileid: "59791295"
 
     `app("b459b4f6-912x-46d5-9cb1-b43069212ab4").requests | count`
 
-* Azure 资源 ID - Azure 定义的应用唯一标识。 当资源名称不明确时需使用资源 ID。 格式为：*/subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft.OperationalInsights/components/componentName*。  
+* Azure 资源 ID - Azure 定义的应用唯一标识。 当资源名称不明确时需使用资源 ID。 格式为： */subscriptions/subscriptionId/resourcegroups/resourceGroup/providers/microsoft.OperationalInsights/components/componentName*。  
 
     例如：
     ```
@@ -134,6 +134,11 @@ applicationsScoping
 | summarize count() by applicationName, bin(timestamp, 1h) 
 | render timechart
 ```
+
+>[!NOTE]
+>此方法不能用于日志警报, 因为警报规则资源 (包括工作区和应用程序) 的访问验证是在警报创建时执行的。 不支持在创建警报后将新资源添加到该函数。 如果希望在日志警报中使用资源范围的函数, 则需要在门户中编辑警报规则, 或使用资源管理器模板来更新已确定作用域的资源。 或者, 可以在日志警报查询中包含资源列表。
+
+
 ![时间表](media/cross-workspace-query/chart.png)
 
 ## <a name="next-steps"></a>后续步骤

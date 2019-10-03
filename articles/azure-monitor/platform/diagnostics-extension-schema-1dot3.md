@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e303fe5ca1869249d57373aab9c60a5f92b7ea9c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59497077"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735102"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure 诊断 1.3 及更高版本的配置架构
 > [!NOTE]
@@ -27,13 +27,11 @@ ms.locfileid: "59497077"
 >
 > 在使用以下某个服务时，才需要参阅此页。
 
-此页面适用于版本 1.3 及更高版本（Azure SDK 2.4 及更高版本）。 已对较新的配置节进行注释，以显示其添加于哪一版本。  
+此页面适用于版本 1.3 及更高版本（Azure SDK 2.4 及更高版本）。 已对较新的配置节进行注释，以显示其添加于哪一版本。 架构的版本1.0 和1.2 已存档，不再可用。 
 
 此处描述的配置文件用来在诊断监视器启动时设置诊断配置设置。  
 
-与 Azure Monitor，其中包括 Application Insights 和 Log Analytics 等其他 Microsoft 诊断产品结合使用扩展。
-
-
+此扩展与其他 Microsoft 诊断产品（如 Azure Monitor）结合使用，其中包括 Application Insights 和 Log Analytics。
 
 通过执行以下 PowerShell 命令来下载公共配置文件架构定义：  
 
@@ -445,9 +443,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration 元素
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
 
- 需要
+ 必填
 
-|属性|描述|  
+|特性|描述|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | 由 Azure 诊断收集的各类诊断数据使用的最大本地磁盘空间量。 默认设置是 4096 MB。<br />
 |**useProxyServer** | 将 Azure 诊断配置为使用在 IE 设置中设置的代理服务器设置。|
@@ -474,7 +472,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  启用故障转储收集。  
 
-|属性|描述|  
+|特性|描述|  
 |----------------|-----------------|  
 |**containerName**|可选。 Azure 存储帐户中用于存储故障转储的 blob 容器的名称。|  
 |**crashDumpType**|可选。  将 Azure 诊断配置为收集少量或完整故障转储。|  
@@ -583,7 +581,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |子元素|描述|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> - **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time`。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> - **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。|
+|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> - **counterSpecifier** - 性能计数器的名称。 例如， `\Processor(_Total)\% Processor Time` 。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> - **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。|
 |**sinks** | 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如 Azure Monitor 或事件中心。|    
 
 
@@ -606,11 +604,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="logs-element"></a>Logs 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Logs*
 
- 在 1.0 和 1.1 版本中提供。 1.2 中不提供。 在 1.3 中重新添加。  
+ 在 1.0 和 1.1 版本中提供。 1\.2 中不提供。 在 1.3 中重新添加。  
 
  定义基本 Azure 日志的缓冲区配置。  
 
-|属性|Type|描述|  
+|特性|类型|描述|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
 |**scheduledTransferLogLevelFilter**|**string**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
@@ -642,14 +640,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  定义向其中发送诊断数据的位置。 例如，Application Insights 服务。  
 
-|属性|Type|描述|  
+|特性|类型|描述|  
 |---------------|----------|-----------------|  
-|name|字符串|标识 sinkname 的字符串。|  
+|**name**|string|标识 sinkname 的字符串。|  
 
-|元素|Type|描述|  
+|元素|类型|描述|  
 |-------------|----------|-----------------|  
-|**Application Insights**|字符串|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
-|**通道**|字符串|每个对应一个流处理的其他筛选|  
+|**Application Insights**|string|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
+|**通道**|string|每个对应一个流处理的其他筛选|  
 
 ## <a name="channels-element"></a>Channels 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
@@ -658,9 +656,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  定义通过接收器的日志数据流的筛选器。  
 
-|元素|Type|描述|  
+|元素|类型|描述|  
 |-------------|----------|-----------------|  
-|**Channel**|字符串|在此页的其他位置查看说明。|  
+|**Channel**|string|在此页的其他位置查看说明。|  
 
 ## <a name="channel-element"></a>Channel 元素
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel*
@@ -669,7 +667,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  定义向其中发送诊断数据的位置。 例如，Application Insights 服务。  
 
-|属性|Type|描述|  
+|特性|类型|描述|  
 |----------------|----------|-----------------|  
 |**logLevel**|**string**|指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
 |**name**|**string**|要引用的通道的唯一名称|  

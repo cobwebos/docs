@@ -3,8 +3,8 @@ title: Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET Core) 入门 | M
 description: 使用 Visual Studio 连接服务连接到存储帐户之后，如何在 Visual Studio 的 ASP.NET Core 项目中开始使用 Azure Blob 存储
 services: storage
 documentationcenter: ''
-author: camsoper
-manager: wpickett
+author: ghogen
+manager: jillfra
 editor: ''
 ms.service: storage
 ms.workload: web
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
-ms.author: casoper
-ms.openlocfilehash: f8de7f7a263a087abb16ed48d05b2cae9834b4ad
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.author: ghogen
+ms.openlocfilehash: 8ae82548d4976e505dae055445c71a5c12cbf263
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961104"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516171"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET Core)
 

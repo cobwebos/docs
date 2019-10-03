@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用必应视频搜索 REST API 和 Node.js 来搜索视频
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 通过本快速入门使用 JavaScript 向必应视频搜索 REST API 发送视频搜索请求。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: a4e3d37b2eb32fa0384986e37781f21b906bed42
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 786302b882fbd59932af17ccc6a390fa41b30ac9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077303"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932956"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>快速入门：使用必应视频搜索 REST API 和 Node.js 来搜索视频
 
@@ -75,7 +75,7 @@ ms.locfileid: "58077303"
        });
        ```
 
-# <a name="create-and-send-the-search-request"></a>创建并发送搜索请求
+## <a name="create-and-send-the-search-request"></a>创建并发送搜索请求
 
 1. 创建一个名为 `bing_video_search()` 的函数。 为请求添加参数，包括主机名和标头。 将搜索词编码并通过 `?q=` 参数将其追加到路径参数。 然后通过 `req.end()` 发送请求。
 

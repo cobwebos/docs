@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 66ae7045cfb94ec70f3b14046af736f784b88ea6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471838"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60320544"
 ---
 # <a name="setting-properties-and-metadata-during-the-import-process"></a>在导入过程中设置属性和元数据
 在运行 Microsoft Azure 导入/导出工具准备驱动器时，可以指定要对目标 blob 设置的属性和元数据。 执行以下步骤:  

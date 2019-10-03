@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 06/22/2018
 ms.author: twooley
 ms.custom: include file
-ms.openlocfilehash: f5c395bd03fab2613a28aa35c9975ec71ffa34eb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 8bae952db0bb1617bddcd736fba6fd60652f2ebc
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885134"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968827"
 ---
 > [!NOTE]
-> Azure Data Lake Storage Gen2 现已正式发布。 我们建议你立即开始使用它。 有关详细信息，请参阅[产品页](https://aka.ms/adlsgen2-product)。
+> Azure Data Lake Storage Gen2 现已正式发布。 我们建议你立即开始使用它。 有关详细信息, 请参阅 "[产品" 页](https://aka.ms/adlsgen2-product)。
 > 
 
 

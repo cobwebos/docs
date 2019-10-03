@@ -3,22 +3,17 @@ title: Azure 云服务定义LoadBalancerProbe 架构 | Microsoft Docs
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
-ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
 ms.topic: reference
-ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
 caps.latest.revision: 14
-author: jpconnock
-ms.author: jeconnoc
-manager: timlt
-ms.openlocfilehash: f7b0ba3b4797149798037dee0188850eff6baf1d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+author: georgewallace
+ms.author: gwallace
+ms.openlocfilehash: 6f82406772f650b4565f2c9240efe580545dcad9
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003282"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360607"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure 云服务定义 LoadBalancerProbe 架构
 负载均衡器探测是由客户定义的，用于探测 UDP 终结点和角色实例中的终结点的运行状况。 `LoadBalancerProbe` 不是一个独立的元素；它在服务定义文件中与 Web 角色或辅助角色结合。 `LoadBalancerProbe` 可由多个角色使用。
@@ -59,14 +54,14 @@ Azure 负载均衡器负责将传入流量路由到角色实例。 负载均衡�
 
 下表描述 `LoadBalancerProbe` 元素的属性：
 
-|属性|Type|Description|
+|特性|类型|描述|
 | ------------------- | -------- | -----------------|
-| `name`              | `string` | 必需。 负载均衡器探测的名称。 此名称必须唯一。|
+| `name`              | `string` | 必需。 负载均衡器探测的名称。 名称必须唯一。|
 | `protocol`          | `string` | 必需。 指定终结点的协议。 可能的值为 `http` 或 `tcp`。 如果已指定 `tcp`，则需要接收到的 ACK 才可完成进行探测。 如果已指定 `http`，则需要来自指定 URI 的 200 正常响应才可成功完成探测。|
 | `path`              | `string` | 用于从 VM 请求运行状况的 URI。 如果 `protocol` 设置为 `http`，则需要 `path`。 否则，不允许使用该属性。<br /><br /> 没有默认值。|
 | `port`              | `integer` | 可选。 用于传达探测的端口。 这对任何终结点都是可选的，因为相同的端口之后会用于探测。 还可为探测配置其他端口。 可能的值介于 1 和 65535（含）之间。<br /><br /> 默认值由终结点设置。|
 | `intervalInSeconds` | `integer` | 可选。 探测终结点的运行状况的间隔（以秒为单位）。 通常，该间隔略小于所分配超时期限（以秒为单位）的一半，以便在退出轮转前执行两次完整的探测。<br /><br /> 默认值为 15，最小值为 5。|
 | `timeoutInSeconds`  | `integer` | 可选。 应用于探测的超时期限（以秒为单位），在此期限内没有响应就会停止向终结点传送后续流量。 该值允许终结点以比 Azure 中通常所用的时间（默认值）更短或更长的时间退出轮转。<br /><br /> 默认值为 31，最小值为 11。|
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [云服务（经典）定义架构](schema-csdef-file.md)

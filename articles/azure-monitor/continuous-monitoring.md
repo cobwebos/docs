@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: f101a8885d9bf67e8bd589d7cf932b0d35cdfe32
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994007"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744503"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 
@@ -34,7 +34,7 @@ ms.locfileid: "55994007"
 - [Azure DevOps Projects](../devops-project/overview.md) 提供一种简化的体验，在其中可以使用现有的代码和 Git 存储库，或者选择一个示例应用程序，来与 Azure 建立持续集成 (CI) 和持续交付 (CD) 管道。
 - 使用 [DevOps 发布管道中的持续监视](../azure-monitor/app/continuous-monitoring.md)可以基于监视数据限制或回滚部署。
 - 使用 [Status Monitor](../azure-monitor/app/monitor-performance-live-website-now.md) 可以配合 Azure Application Insights 检测 Windows 上的实时 .NET 应用，而无需修改或重新部署代码。
-- 如果你有权访问应用程序的代码，则可以通过安装适用于 [.NET](../azure-monitor/learn/quick-monitor-portal.md)、[Java](../azure-monitor/learn/java-quick-start.md)、[Node.js](../azure-monitor/learn/nodejs-quick-start.md)或[其他任何编程语言](../azure-monitor/app/platforms.md)的 Azure Monitor Application Insights SDK，使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 启用完全监视。 这样可以指定与应用程序和业务相关的自定义事件、指标或页面视图。
+- 如果你有权访问应用程序的代码，则可以通过安装适用于 [.NET](../azure-monitor/learn/quick-monitor-portal.md)、[Java](../azure-monitor/app/java-get-started.md)、[Node.js](../azure-monitor/learn/nodejs-quick-start.md)或[其他任何编程语言](../azure-monitor/app/platforms.md)的 Azure Monitor Application Insights SDK，使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 启用完全监视。 这样可以指定与应用程序和业务相关的自定义事件、指标或页面视图。
 
 
 
@@ -56,7 +56,7 @@ ms.locfileid: "55994007"
 ##  <a name="combine-resources-in-azure-resource-groups"></a>在 Azure 资源组中合并资源
 当今 Azure 中的典型应用程序包含多个资源，例如，托管在云服务、AKS 群集中或 Service Fabric 中的 VM 和应用服务或微服务。 这些应用程序经常利用事件中心、存储、SQL 和服务总线等依赖项。
 
-- 在 Azure 资源组中合并资源可以全面洞察构成不同应用程序的所有资源。 使用[用于资源组的 Azure Monitor](../azure-monitor/insights/resource-group-insights.md) 可以方便地跟踪整个全堆栈应用程序的运行状况和性能，并可以出于任何调查或调试目的深入到相关组件。
+- 合并 Azure 资源组中的资源，以全面了解构成不同应用程序的所有资源。 使用[用于资源组的 Azure Monitor](../azure-monitor/insights/resource-group-insights.md) 可以方便地跟踪整个全堆栈应用程序的运行状况和性能，并可以出于任何调查或调试目的深入到相关组件。
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>通过持续部署确保质量
 使用持续集成/持续部署可以根据自动测试的结果，将代码更改自动集成和部署到应用程序。 它简化了部署过程，并确保任何更改在转移到生产环境之前具有可靠的质量。

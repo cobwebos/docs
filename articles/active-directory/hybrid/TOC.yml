@@ -18,12 +18,18 @@
       href: tutorial-phs-backup.md
 - name: 概念
   items:
+    - name: 混合标识
+      items:
+        - name: 针对本地工作负荷的云治理管理
+          href: cloud-governed-management-for-on-premises.md
+        - name: 构建坚实标识基础的四个步骤
+          href: four-steps.md
     - name: Azure AD Connect 和 Connect Health
       items:
         - name: 什么是 Azure AD Connect 和 Connect Health？
           href: whatis-azure-ad-connect.md
         - name: 选择正确的身份验证
-          href: 'https://docs.microsoft.com/azure/security/azure-ad-choose-authn'
+          href: 'https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn'
         - name: 标识同步和重复属性复原
           href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     - name: 密码哈希同步
@@ -64,6 +70,8 @@
       items:
         - name: 什么是 Azure AD Connect Sync？
           href: how-to-connect-sync-whatis.md
+        - name: Azure ADSync 服务帐户
+          href: concept-adsync-service-account.md
         - name: Azure AD Connect 同步功能
           href: how-to-connect-syncservice-features.md
         - name: 什么是 Azure AD Connect 同步服务管理器？
@@ -186,7 +194,7 @@
           href: how-to-connect-configure-ad-ds-connector-account.md
         - name: 更改 Azure ADSync 服务帐户密码
           href: how-to-connect-sync-change-serviceacct-pass.md
-        - name: 更改 Azure AD 连接器帐户
+        - name: 更改 Azure AD 连接器帐户密码
           href: how-to-connect-azureadaccount.md
         - name: 更改 AD DS 连接器帐户密码
           href: how-to-connect-sync-change-addsacct-pass.md
@@ -342,3 +350,7 @@
       href: reference-connect-adsynctools.md
     - name: ADConnectivityTools 参考
       href: reference-connect-adconnectivitytools.md
+    - name: msExchUserHoldPolicies 和 cloudMSExchUserHoldPolicies
+      href: reference-connect-msexchuserholdpolicies.md
+    - name: 了解 Azure AD Connect 1.4.xx.x 设备消失
+      href: reference-connect-device-disappearance.md

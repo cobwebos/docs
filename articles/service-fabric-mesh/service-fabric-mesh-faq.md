@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: chackdan
 ms.author: chackdan
-ms.date: 12/12/2018
+ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 27cf4d31f11eaf861d1cafc093d912aa15c8bec0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 950f9ac89b9d3224db29b32fe2d1e403ccc98116
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979745"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65143279"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>有关 Service Fabric 网格的常见问题
 
@@ -28,7 +28,7 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 ### <a name="what-is-the-cost-of-participating-in-the-preview"></a>参与预览版的成本是多少？
 
-当前，将应用程序或容器部署到网格预览版不收取任何费用。 但是，建议删除你部署的资源，不要让它们保持运行，除非正在主动测试这些资源。
+目前可免费用于将应用程序或容器部署到网格预览。 请继续观看 5 月中的更新要启用计费。 不过，我们建议您删除的资源将部署并不会使其保持运行，除非你积极地测试它们。
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>内核和 RAM 的数量是否有配额限制？
 
@@ -77,7 +77,9 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 若要删除资源组，请使用 `az group delete <nameOfResourceGroup>` 命令。
 
-## <a name="supported-container-os-images"></a>支持的容器 OS 映像
+## <a name="deployments"></a>部署
+
+### <a name="what-container-images-are-supported"></a>支持哪些容器映像？
 
 如果是在 Windows Fall Creators Update（版本 1709）计算机上进行开发，则只能使用 Windows 1709 版本的 Docker 映像。
 
@@ -86,10 +88,19 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 以下容器 OS 映像可以用来部署服务：
 
 - Windows - windowsservercore 和 nanoserver
-    - Windows Server 版本 1709
-    - Windows Server 版本 1803
+    - Windows Server 1709
+    - Windows Server 1803
+    - Windows Server 1809
+    - Windows Server 2019 LTSC
 - Linux
     - 无已知限制
+
+> [!NOTE]
+> Visual Studio 工具网格尚不支持部署到 Windows Server 2019 和 1809年容器。
+
+### <a name="what-types-of-applications-can-i-deploy"></a>可以部署哪些类型的应用程序？ 
+
+你可以部署为应用程序资源 （请参阅上面有关配额的详细信息） 放置在适合的限制范围内的容器中运行的任何内容。 如果我们检测到使用网格用于运行非法工作负荷或滥用系统 （即挖掘），然后我们保留终止您的部署和阻止列表从服务上运行你的订阅的权限。 请联系我们如果你有正在运行的特定工作负荷上的任何问题。 
 
 ## <a name="developer-experience-issues"></a>开发人员体验问题
 
@@ -132,6 +143,10 @@ Azure 网格目前不支持跨应用程序进行 DNS 解析。
 不能将多个应用程序部署到一个单节点群集。 缓解措施：
 - 将多个应用部署到一个本地群集时，请使用一个五节点群集。
 - 删除当前未测试的应用。
+
+### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>VS 工具的支持有限的 Windows 容器
+
+Visual Studio 工具仅支持与 Windows Server 1709 和 1803年的基础 OS 版本现在部署 Windows 容器。 
 
 ## <a name="feature-gaps-and-other-known-issues"></a>功能差距和其他已知问题
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 1417ecdaf6a85f491e1accfb9564e27d15e13445
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f34799bbf2142ba07c29915deae5b5dbe590c9fc
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045827"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330539"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教程：第 2 部分 - 查看路由的消息
 
@@ -38,141 +38,141 @@ ms.locfileid: "59045827"
 
 服务总线队列将用于检索指定为关键的消息。 设置一个逻辑应用，用于监视服务总线队列，并在消息添加到队列时发送电子邮件。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“+ 创建资源”。 在搜索框中输入“逻辑应用”，并单击 Enter。 在显示的搜索结果中选择“逻辑应用”，然后选择“创建”进入“创建逻辑应用”窗格。 填充字段。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“+ 创建资源”。  在搜索框中输入“逻辑应用”，并单击 Enter  。 在显示的搜索结果中选择“逻辑应用”，然后选择“创建”进入“创建逻辑应用”窗格   。 填充字段。
 
-   **名称**：此字段是逻辑应用的名称。 本教程使用 ContosoLogicApp。
+   **名称**：此字段是逻辑应用的名称。 本教程使用 ContosoLogicApp  。
 
    **订阅**：选择 Azure 订阅。
 
-   **资源组**：选择“使用现有项”并选择你的资源组。 本教程使用 ContosoResources。
+   **资源组**：选择“使用现有项”并选择你的资源组  。 本教程使用 ContosoResources  。
 
-   **位置**：使用你的位置。 本教程使用“美国西部”。
+   **位置**：使用你的位置。 本教程使用“美国西部”  。
 
    **Log Analytics**：应关闭此开关。
 
    ![“创建逻辑应用”屏幕](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
-   选择“创建”。
+   选择“创建”  。
 
-2. 现在转到该逻辑应用。 转到“逻辑应用”的最简单方法是选择“资源组”，选择你的资源组（本教程使用 **ContosoResources**），然后从资源列表中选择“逻辑应用”。 随即将显示该逻辑应用设计器页面（可能需要向右滚动才可查看完整页面）。 在“逻辑应用设计器”页上向下滚动，直到出现带有“空白逻辑应用 +”字样的磁贴；选择该磁贴。 默认选项卡是“为你提供”。 如果此窗格为空，请选择“全部”以查看所有可用的连接器和触发器。
+2. 现在转到该逻辑应用。 转到“逻辑应用”的最简单方法是选择“资源组”，选择你的资源组（本教程使用 **ContosoResources**），然后从资源列表中选择“逻辑应用”  。 随即将显示该逻辑应用设计器页面（可能需要向右滚动才可查看完整页面）。 在“逻辑应用设计器”页上向下滚动，直到出现带有“空白逻辑应用 +”字样的磁贴；选择该磁贴  。 默认选项卡是“为你提供”。 如果此窗格为空，请选择“全部”以查看所有可用的连接器和触发器。 
 
-3. 从连接器列表中选择“服务总线”。
+3. 从连接器列表中选择“服务总线”。 
 
    ![连接器列表](./media/tutorial-routing-view-message-routing-results/logic-app-connectors.png)
 
-4. 此时会显示触发器的列表。 选择“在队列中收到消息时(自动完成)/服务总线”。
+4. 此时会显示触发器的列表。 选择“在队列中收到消息时(自动完成)/服务总线”  。
 
    ![服务总线的触发器列表](./media/tutorial-routing-view-message-routing-results/logic-app-triggers.png)
 
-5. 在下一屏幕上，填写“连接名称”。 本教程使用 ContosoConnection。
+5. 在下一屏幕上，填写“连接名称”。 本教程使用 ContosoConnection  。
 
    ![为服务总线队列设置连接](./media/tutorial-routing-view-message-routing-results/logic-app-define-connection.png)
 
-   选择“服务总线”命名空间。 本教程使用 ContosoSBNamespace。 选择该命名空间时，门户会查询该“服务总线”命名空间以检索密钥。 依次选择“RootManageSharedAccessKey”、“创建”。
+   选择“服务总线”命名空间。 本教程使用 ContosoSBNamespace  。 选择该命名空间时，门户会查询该“服务总线”命名空间以检索密钥。 依次选择“RootManageSharedAccessKey”、“创建”   。
 
    ![完成设置连接](./media/tutorial-routing-view-message-routing-results/logic-app-finish-connection.png)
 
-6. 在下一步屏幕上，从下拉列表选择队列名称（本教程使用 contososbqueue）。 其余字段可使用默认值。
+6. 在下一步屏幕上，从下拉列表选择队列名称（本教程使用 contososbqueue）  。 其余字段可使用默认值。
 
    ![队列选项](./media/tutorial-routing-view-message-routing-results/logic-app-queue-options.png)
 
-7. 现在，设置一个在队列接收到消息时发送电子邮件的操作。 在逻辑应用设计器中选择“+ 新建步骤”以添加步骤，然后选择“全部”以查看所有可用选项。 在“选择操作”窗格中，找到并选择“Office 365 Outlook”。 在触发器屏幕上，选择“发送电子邮件/Office 365 Outlook”。  
+7. 现在，设置一个在队列接收到消息时发送电子邮件的操作。 在逻辑应用设计器中选择“+ 新建步骤”以添加步骤，然后选择“全部”以查看所有可用选项。   在“选择操作”窗格中，找到并选择“Office 365 Outlook”   。 在触发器屏幕上，选择“发送电子邮件/Office 365 Outlook”  。  
 
    ![Office365 选项](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
 8. 登录到 Office 365 帐户并设置连接。 如果此操作超时，只需重试即可。 为电子邮件收件人指定电子邮件地址。 同时指定主题，并在正文键入想要让收件人看到的消息。 测试时，可填入自己的电子邮件地址作为收件人。
 
-   选择“添加动态内容”，以显示消息中可包含的内容。 选择“内容”- 将包含电子邮件中的消息。
+   选择“添加动态内容”，以显示消息中可包含的内容  。 选择“内容”- 将包含电子邮件中的消息  。
 
    ![逻辑应用的电子邮件选项](./media/tutorial-routing-view-message-routing-results/logic-app-send-email.png)
 
-9. 选择“保存”。 然后关闭逻辑应用设计器。
+9. 选择“保存”。  然后关闭逻辑应用设计器。
 
 ## <a name="set-up-azure-stream-analytics"></a>设置 Azure 流分析
 
-若要在 Power BI 可视化中查看数据，首先需要设置流分析作业来检索数据。 请记住，只会将“级别”为“常规”的消息发送到默认终结点，并由针对 Power BI 可视化的流分析作业检索。
+若要在 Power BI 可视化中查看数据，首先需要设置流分析作业来检索数据。 请记住，只会将“级别”为“常规”的消息发送到默认终结点，并由针对 Power BI 可视化的流分析作业检索   。
 
 ### <a name="create-the-stream-analytics-job"></a>创建流分析作业
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “物联网” > “流分析作业”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “物联网” > “流分析作业”。   
 
 2. 为作业输入以下信息。
 
-   **作业名称**：作业的名称。 该名称必须全局唯一。 本教程使用 contosoJob。
+   **作业名称**：作业的名称。 该名称必须全局唯一。 本教程使用 contosoJob  。
 
    **订阅**：本教程使用的 Azure 订阅。
 
-   **资源组**：使用 IoT 中心所用的同一资源组。 本教程使用 ContosoResources。
+   **资源组**：使用 IoT 中心所用的同一资源组。 本教程使用 ContosoResources  。
 
-   **位置**：使用设置脚本中所用的同一位置。 本教程使用“美国西部”。
+   **位置**：使用设置脚本中所用的同一位置。 本教程使用“美国西部”  。
 
    ![创建流分析作业](./media/tutorial-routing-view-message-routing-results/stream-analytics-create-job.png)
 
-3. 选择“创建”来创建作业。 若要返回到该作业，请选择“资源组”。 本教程使用 ContosoResources。 选择资源组，然后在资源列表中选择流分析作业。
+3. 选择“创建”  来创建作业。 若要返回到该作业，请选择“资源组”。  本教程使用 ContosoResources  。 选择资源组，然后在资源列表中选择流分析作业。
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>将输入添加到流分析作业
 
-4. 在“作业拓扑”下选择“输入”。
+4. 在“作业拓扑”下选择“输入”。  
 
-5. 在“输入”窗格中，依次选择“添加流输入”、“IoT 中心”。 在出现的屏幕上，填写以下字段：
+5. 在“输入”窗格中，依次选择“添加流输入”、“IoT 中心”   。 在出现的屏幕上，填写以下字段：
 
-   **输入别名**：本教程使用 contosoinputs。
+   **输入别名**：本教程使用 contosoinputs  。
 
    **从订阅选择 IoT 中心**：选中此单选按钮选项。
 
    **订阅**：选择本教程使用的 Azure 订阅。
 
-   **IoT 中心**：选择 IoT 中心。 本教程使用 ContosoTestHub。
+   **IoT 中心**：选择 IoT 中心。 本教程使用 ContosoTestHub  。
 
-   **终结点**：选择“消息传送”。 （如果选择操作监视，将获得有关 IoT 中心的遥测数据，而不是正在发送的数据。） 
+   **终结点**：选择“消息传送”  。 （如果选择操作监视，将获得有关 IoT 中心的遥测数据，而不是正在发送的数据。） 
 
-   **共享访问策略名称**：选择“iothubowner”。 门户将填充共享访问策略密钥。
+   **共享访问策略名称**：选择“服务”  。 门户将填充共享访问策略密钥。
 
-   **使用者组**：选择在本教程的步骤 1 中设置的使用者组。 本教程使用 contosoconsumers。
+   **使用者组**：选择在本教程的步骤 1 中设置的使用者组。 本教程使用 contosoconsumers  。
    
    其余字段接受默认值。 
 
    ![设置流分析作业的输入](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
-6. 选择“保存”。
+6. 选择“保存”。 
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>将输出添加到流分析作业
 
-1. 在“作业拓扑”下选择“输出”。
+1. 在“作业拓扑”下选择“输出”。  
 
-2. 在“输出”窗格中，依次选择“添加”、“Power BI”。 在出现的屏幕上，填写以下字段：
+2. 在“输出”窗格中，依次选择“添加”、“Power BI”    。 在出现的屏幕上，填写以下字段：
 
-   **输出别名**：输出的唯一别名。 本教程使用 contosooutputs。 
+   **输出别名**：输出的唯一别名。 本教程使用 contosooutputs  。 
 
-   **数据集名称**：要在 Power BI 中使用的数据集的名称。 本教程使用 contosodataset。 
+   **数据集名称**：要在 Power BI 中使用的数据集的名称。 本教程使用 contosodataset  。 
 
-   **表名称**：要在 Power BI 中使用的表的名称。 本教程使用 contosotable。
+   **表名称**：要在 Power BI 中使用的表的名称。 本教程使用 contosotable  。
 
    在剩余字段中使用默认值。
 
-3. 选择“授权”并登录到 Power BI 帐户。 （这可能需要多次重试。）
+3. 选择“授权”并登录到 Power BI 帐户  。 （这可能需要多次重试。）
 
    ![设置流分析作业的输出](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-outputs.png)
 
-4. 选择“保存”。
+4. 选择“保存”。 
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>配置流分析作业的查询
 
-1. 在“作业拓扑”下选择“查询”。
+1. 在“作业拓扑”下选择“查询”。  
 
-2. 将 `[YourInputAlias]` 替换为作业的输入别名。 本教程使用 contosoinputs。
+2. 将 `[YourInputAlias]` 替换为作业的输入别名。 本教程使用 contosoinputs  。
 
-3. 将 `[YourOutputAlias]` 替换为作业的输出别名。 本教程使用 contosooutputs。
+3. 将 `[YourOutputAlias]` 替换为作业的输出别名。 本教程使用 contosooutputs  。
 
    ![设置流分析作业的查询](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-query.png)
 
-4. 选择“保存”。
+4. 选择“保存”。 
 
 5. 关闭“查询”窗格。 随后将返回到资源组中资源的视图。 选择流分析作业。 本教程中将其称为 **contosoJob**。
 
 ### <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
-在流分析作业中，单击“启动” > “立即” > “启动”。 成功启动作业后，作业状态将从“已停止”更改为“正在运行”。
+在流分析作业中，单击“启动”   > “立即”   >   “启动”。 成功启动作业后，作业状态将从“已停止”  更改为“正在运行”  。
 
 设置 Power BI 报表需要数据，因此将先创建设备并运行设备模拟应用程序再设置 Power BI。
 
@@ -184,7 +184,7 @@ ms.locfileid: "59045827"
 
 如果在本教程的步骤 1 中未从存储库下载这些文件，现在请继续从 [IoT 设备模拟](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)下载。 选择此链接可下载包含多个应用程序的存储库；要查找的解决方案是 iot-hub/Tutorials/Routing/IoT_SimulatedDevice.sln。 
 
-双击解决方案文件 (IoT_SimulatedDevice.sln) 以在 Visual Studio 中打开代码，然后打开 Program.cs。 使用 IoT 中心主机名代替 `{iot hub hostname}`。 IoT 中心主机名的格式为“{iot-hub-name}.azure-devices.net”。 本教程的中心主机名为“ContosoTestHub.azure-devices.net”。 接下来，使用之前设置模拟设备时保存的设备密钥代替 `{device key}`。 
+双击解决方案文件 (IoT_SimulatedDevice.sln) 以在 Visual Studio 中打开代码，然后打开 Program.cs。 使用 IoT 中心主机名代替 `{iot hub hostname}`。 IoT 中心主机名的格式为“{iot-hub-name}.azure-devices.net”  。 本教程的中心主机名为“ContosoTestHub.azure-devices.net”  。 接下来，使用之前设置模拟设备时保存的设备密钥代替 `{device key}`。 
 
    ```csharp
         static string myDeviceId = "contoso-test-device";
@@ -212,7 +212,7 @@ ms.locfileid: "59045827"
    * 从服务总线队列检索消息的逻辑应用运行正常。
    * 连接到 Outlook 的逻辑应用连接器工作正常。 
 
-2. 在 [Azure 门户](https://portal.azure.com)中选择“资源组”，然后选择你的资源组。 本教程使用 ContosoResources。 依次选择存储帐户、“Blob”、“容器”。 本教程使用 contosoresults。 现在应该可以看见一个文件夹，可继续深入查看目录，直到看见一个或多个文件。 打开其中某个文件；这些文件中包含路由到存储帐户的条目。 
+2. 在 [Azure 门户](https://portal.azure.com)中选择“资源组”，然后选择你的资源组  。 本教程使用 ContosoResources  。 依次选择存储帐户、“Blob”、“容器”  。 本教程使用 contosoresults  。 现在应该可以看见一个文件夹，可继续深入查看目录，直到看见一个或多个文件。 打开其中某个文件；这些文件中包含路由到存储帐户的条目。 
 
    ![存储中的结果文件](./media/tutorial-routing-view-message-routing-results/results-in-storage.png)
 
@@ -226,13 +226,13 @@ ms.locfileid: "59045827"
 
 1. 登录到 [Power BI](https://powerbi.microsoft.com/) 帐户。
 
-2. 转到“工作区”，然后选择为流分析作业创建输出时设置的工作区。 本教程使用“我的工作区”。 
+2. 转到“工作区”，然后选择为流分析作业创建输出时设置的工作区  。 本教程使用“我的工作区”  。 
 
-3. 选择“数据集”。 如果没有任何数据集，请在几分钟后再次检查。
+3. 选择“数据集”。  如果没有任何数据集，请在几分钟后再次检查。
 
-   此时会看到列出的数据集，该数据集是在为流分析作业创建输出时指定的。 本教程使用 contosodataset。 （数据集首次显示的过程可能需要 5-10 分钟。）
+   此时会看到列出的数据集，该数据集是在为流分析作业创建输出时指定的。 本教程使用 contosodataset  。 （数据集首次显示的过程可能需要 5-10 分钟。）
 
-4. 在“操作”下，选择第一个图标以创建报表。
+4. 在“操作”下，选择第一个图标以创建报表。 
 
    ![Power BI 工作区，其中突出显示了“操作”和报表图标](./media/tutorial-routing-view-message-routing-results/power-bi-actions.png)
 
@@ -242,19 +242,19 @@ ms.locfileid: "59045827"
 
      ![可视化效果和字段](./media/tutorial-routing-view-message-routing-results/power-bi-visualizations-and-fields.png)
 
-   * 在“字段”窗格中展开一个表，该表是在为流分析作业创建输出时指定的。 本教程使用 contosotable。
+   * 在“字段”窗格中展开一个表，该表是在为流分析作业创建输出时指定的。  本教程使用 contosotable  。
 
-   * 将 **EventEnqueuedUtcTime** 拖至“可视化效果”窗格中的“轴”。
+   * 将 **EventEnqueuedUtcTime** 拖至“可视化效果”窗格中的“轴”。  
 
-   * 将“温度”拖至“值”。
+   * 将“温度”拖至“值”。  
 
    已创建一个折线图。 X 轴显示 UTC 时区的日期和时间。 Y 轴显示来自传感器的温度。
 
-6. 创建另一个折线图，显示某段时间的实时湿度。 要设置第二个折线图，请执行上诉相同步骤，将“EventEnqueuedUtcTime”置于 x 轴，将“湿度”置于 y 轴。
+6. 创建另一个折线图，显示某段时间的实时湿度。 要设置第二个折线图，请执行上诉相同步骤，将“EventEnqueuedUtcTime”置于 x 轴，将“湿度”置于 y 轴   。
 
    ![最终的 Power BI 报表，其中包含两个图表](./media/tutorial-routing-view-message-routing-results/power-bi-report.png)
 
-7. 选择“保存”以保存报表。
+7. 选择“保存”以保存报表。 
 
 现在应在两个图表上都能看到数据。 此结果表示以下语句为 true：
 
@@ -270,7 +270,7 @@ ms.locfileid: "59045827"
 
 ### <a name="clean-up-resources-in-the-power-bi-visualization"></a>清理 Power BI 可视化效果中的资源
 
-登录到 [Power BI](https://powerbi.microsoft.com/) 帐户。 转到你的工作区。 本教程使用“我的工作区”。 若要删除 Power BI 可视化效果，请转到“数据集”并选择垃圾桶图标来删除相应的数据集。 本教程使用 contosodataset。 删除数据集时，报表也随之删除。
+登录到 [Power BI](https://powerbi.microsoft.com/) 帐户。 转到你的工作区。 本教程使用“我的工作区”  。 若要删除 Power BI 可视化效果，请转到“数据集”并选择垃圾桶图标来删除相应的数据集。 本教程使用 contosodataset  。 删除数据集时，报表也随之删除。
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 清理资源
 

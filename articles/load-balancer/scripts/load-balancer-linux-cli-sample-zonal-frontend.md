@@ -3,7 +3,7 @@ title: CLI 示例 - 区域中的负载均衡器 VM - Azure | Microsoft Docs
 description: 此 Azure CLI 脚本示例演示如何在特定的可用性区域中对传入 VM 的流量进行负载均衡
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
+author: asudbring
 manager: jeconnoc
 editor: tysonn
 tags: ''
@@ -15,13 +15,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
-ms.author: kumud
-ms.openlocfilehash: 888808c94115e2ea136e90eb635faf28e7d92fd2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: allensu
+ms.openlocfilehash: 29671283a1ef2906e03685a59d62ccc13c1307fe
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431012"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273735"
 ---
 # <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI 脚本示例：对传入 VM 的流量进行负载均衡以实现高可用性
 

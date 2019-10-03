@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: b6abb0048dcc722241a2cd87354224b0fd7fa2f9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: ad9bb5c135684c4573195298fb8e55a08208f6b6
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234180"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785822"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件网格中的事件源
 
@@ -24,9 +24,9 @@ ms.locfileid: "56234180"
 
 订阅 Azure 订阅事件即可对整个 Azure 订阅中的资源更改进行响应。
 
-|标题 |说明  |
+|标题 |描述  |
 |---------|---------|
-| [教程：Azure 自动化与事件网格和 Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |创建用于发送事件的虚拟机。 此事件触发一个用于标记虚拟机的自动化 Runbook，并触发一条发送到 Microsoft Teams 频道的消息。 |
+| [教程：Azure 自动化与事件网格和 Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |创建用于发送事件的虚拟机。 此活动触发一个用于标记虚拟机的自动化 Runbook，并触发一条发送到 Microsoft Teams 频道的消息。 |
 | [如何：通过门户订阅事件](subscribe-through-portal.md) | 使用门户订阅 Azure 订阅的事件。 |
 | [Azure CLI：订阅 Azure 订阅的事件](./scripts/event-grid-cli-azure-subscription.md) |用于在 Azure 订阅中创建事件网格订阅并将事件发送到 WebHook 的示例脚本。 |
 | [PowerShell：订阅 Azure 订阅的事件](./scripts/event-grid-powershell-azure-subscription.md)| 用于在 Azure 订阅中创建事件网格订阅并将事件发送到 WebHook 的示例脚本。 |
@@ -36,7 +36,7 @@ ms.locfileid: "56234180"
 
 订阅容器注册表事件以响应映像中的更改。
 
-|标题 |说明  |
+|标题 |描述  |
 |---------|---------|
 | [快速入门：发送容器注册表事件](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 介绍如何使用 Azure CLI 发送容器注册表事件。 |
 | [事件架构](event-schema-container-registry.md) | 显示容器注册表事件中的字段。 |
@@ -45,7 +45,7 @@ ms.locfileid: "56234180"
 
 订阅自定义主题即可响应应用程序事件。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [快速入门：使用 Azure CLI 创建和路由自定义事件](custom-event-quickstart.md) | 说明如何使用 Azure CLI 发送自定义事件。 |
 | [快速入门：使用 Azure PowerShell 创建和路由自定义事件](custom-event-quickstart-powershell.md) | 说明如何使用 Azure PowerShell 发送自定义事件。 |
@@ -65,7 +65,7 @@ ms.locfileid: "56234180"
 
 订阅事件中心事件即可响应捕获文件事件。 事件中心可以充当事件源或事件处理程序。 以下文章介绍了如何将事件中心用作源。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [教程：将大数据流式传输到数据仓库](event-grid-event-hubs-integration.md) | 当事件中心创建捕获文件时，事件网格会将一个事件发送到函数应用。 应用会检索捕获文件并将数据迁移到数据仓库。 |
 | [事件架构](event-schema-event-hubs.md) | 说明事件中心事件中的字段。 |
@@ -74,9 +74,9 @@ ms.locfileid: "56234180"
 
 ## <a name="iot-hub"></a>IoT 中心
 
-订阅 IoT 中心事件以响应设备已创建、已删除、已连接和已断开连接事件。
+订阅到 IoT 中心事件来响应创建，已删除、 连接、 断开连接的设备和遥测事件。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件](publish-iot-hub-events-to-logic-apps.md) | 每次将设备添加到 IoT 中心时，逻辑应用就会发送一封通知电子邮件。 |
 | [使用事件网格来触发操作，对 IoT 中心事件进行响应](../iot-hub/iot-hub-event-grid.md) | 概述 IoT 中心与事件网格的集成。 |
@@ -87,7 +87,7 @@ ms.locfileid: "56234180"
 
 订阅媒体服务事件即可响应作业状态事件。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [概述：响应媒体服务事件](../media-services/latest/reacting-to-media-services-events.md) | 概述媒体服务与事件网格的集成。 |
 | [教程：使用 CLI 将 Azure 媒体服务事件路由到自定义 Web 终结点](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 说明如何从媒体服务发送事件。 |
@@ -97,7 +97,7 @@ ms.locfileid: "56234180"
 
 订阅资源组事件即可对整个资源组中的资源更改进行响应。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](monitor-virtual-machine-changes-event-grid-logic-app.md) | 逻辑应用可监视对虚拟机的更改并就这些更改发送电子邮件。 |
 | [Azure CLI：订阅资源组的事件](./scripts/event-grid-cli-resource-group.md)| 用于订阅资源组的事件的示例脚本。 它将事件发送到 WebHook。 |
@@ -111,7 +111,7 @@ ms.locfileid: "56234180"
 
 订阅服务总线事件即可在没有活动侦听器的情况下响应消息。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [教程：Azure 服务总线到 Azure 事件网格集成示例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 事件网格将消息从服务总线主题发送到函数应用和逻辑应用。 |
 | [概述：Azure 服务总线到事件网格的集成](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | 概述服务总线与事件网格的集成。 |
@@ -121,7 +121,7 @@ ms.locfileid: "56234180"
 
 订阅 Blob 存储事件即可响应创建的 Blob 和删除的事件。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [快速入门：使用 Azure CLI 将 Blob 存储事件路由到自定义 Web 终结点](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 介绍如何使用 Azure CLI 将 Blob 存储事件发送到 WebHook。 |
 | [快速入门：使用 PowerShell 将 Blob 存储事件路由到自定义 Web 终结点](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 介绍如何使用 Azure PowerShell 将 Blob 存储事件发送到 WebHook。 |
@@ -135,11 +135,30 @@ ms.locfileid: "56234180"
 ## <a name="maps"></a>地图
 订阅 Azure Maps 事件以响应地理围栏事件。 例如，当设备每次进入或退出地理围栏时，应用程序都可以提供电子邮件通知。
 
-|标题  |说明  |
+|标题  |描述  |
 |---------|---------|
 | [使用事件网格对 Azure Maps 事件做出响应](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 概述了 Azure Maps 与事件网格的集成。 |
 | [教程：设置地理围栏](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教程将引导你完成使用 Azure Maps 设置地理围栏的基本步骤。 你将使用 Azure 事件网格来流式传输地理围栏结果，并根据地理围栏结果设置通知。 |
 | [事件架构](event-schema-azure-maps.md) | 显示了 Azure Maps 事件中的字段。 |
+
+## <a name="app-configuration"></a>应用配置
+订阅 Azure 应用程序配置事件以响应键-值修改事件。
+
+|标题 | 描述 |
+|---------|---------|
+| [对 Azure 应用程序配置事件通过事件网格做出响应](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 将 Azure 应用程序配置与事件网格集成的概述。 |
+| [快速入门： 将 Azure 应用程序配置事件路由到自定义 web 终结点使用 Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 演示如何使用 Azure CLI 将 Azure 应用程序配置事件发送到 WebHook。 |
+| [事件架构](event-schema-app-configuration.md) | 在 Azure 应用程序配置事件中显示字段。 |
+
+## <a name="azure-signalr"></a>Azure SignalR
+订阅 Azure SignalR 服务事件以响应客户端连接事件。
+
+|标题 | 描述 |
+|---------|---------|
+| [对 Azure SignalR 服务事件通过事件网格做出响应](../azure-signalr/signalr-concept-event-grid-integration.md) | 与事件网格集成 Azure SignalR 服务的概述。 |
+| [如何将 Azure SignalR 服务事件发送到事件网格](../azure-signalr/signalr-howto-event-grid-integration.md) | 演示如何将 Azure SignalR 服务事件发送到通过事件网格的应用程序。 |
+| [事件架构](event-schema-azure-signalr.md) | Azure SignalR 服务事件中显示字段。 |
+
 
 
 ## <a name="next-steps"></a>后续步骤

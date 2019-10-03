@@ -10,23 +10,23 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: c4950d03449f2b293a87ab88f1ea3f49eee29557
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e8fd49781301406e0c35e1de57cea3040167c6c3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790088"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915866"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 门户即将转移到 Azure
 
 > [!NOTE]
 > 本文适用于 Azure 公有云和政府云（除非另有说明）。
 
-Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功能，例如，为固定资源提供仪表板、为查找资源提供智能搜索，以及为资源管理提供标记。 用于整合和简化监视与管理工作流，我们已开始将 OMS 门户功能添加到 Azure 门户。 OMS 门户的所有功能现已并入 Azure 门户。 事实上，某些新功能（例如流量分析）只在 Azure 门户中提供。 使用 Azure 门户就能完成在 OMS 门户中所能完成的任何工作，而且 Azure 门户的功能更强大。 如果你尚未使用 Azure 门户，请立即开始使用！
+**Azure 公有云的 OMS 门户已正式停用。适用于 Azure 美国政府云的 OMS 门户在5月 15 2019 日正式停用。** 我们很高兴能够转移到 Azure 门户，并且希望实现轻松过渡。 但我们也知道，变化会带来一定的困扰。 本文的剩余部分介绍此项过渡的关键场景和路线图。
 
-对于 Azure 商业云和 Azure 美国政府云，**OMS 门户将于 2019 年 1 月 15 日正式停用**，整个 OMS 门户**将于 2019 年 3 月 30 日正式停用**。 我们很高兴能够转移到 Azure 门户，并且希望实现轻松过渡。 但我们也知道，变化会带来一定的困扰。 发送任何问题、 反馈或考虑事项**LAUpgradeFeedback\@microsoft.com**。 本文的剩余部分介绍此项过渡的关键场景和路线图。
+Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功能，例如，为固定资源提供仪表板、为查找资源提供智能搜索，以及为资源管理提供标记。 用于整合和简化监视与管理工作流，我们已开始将 OMS 门户功能添加到 Azure 门户。 OMS 门户的所有功能现已并入 Azure 门户。 事实上，某些新功能（例如流量分析）只在 Azure 门户中提供。 使用 Azure 门户就能完成在 OMS 门户中所能完成的任何工作，而且 Azure 门户的功能更强大。 如果你尚未使用 Azure 门户，请立即开始使用！
 
 ## <a name="what-is-changing"></a>有什么变化？ 
 随着 OMS 门户的弃用，我们将宣布以下变化。 其中的每项变化将在下面的相应部分做出详细描述。
@@ -47,10 +47,10 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 - 需[将用户权限迁移](#user-access-and-role-migration)到 Azure 门户。
 - 有关转移更新管理解决方案的详细信息，请参阅[将 OMS 更新部署迁移到 Azure](../../automation/migrate-oms-update-deployments.md)。
 
-参阅 [Log Analytics 用户从 OMS 门户过渡到 Azure 门户时的常见问题](oms-portal-faq.md)，了解有关如何过渡到 Azure 门户的信息。 发送任何反馈、 问题或考虑事项**LAUpgradeFeedback\@microsoft.com**。
+参阅 [Log Analytics 用户从 OMS 门户过渡到 Azure 门户时的常见问题](oms-portal-faq.md)，了解有关如何过渡到 Azure 门户的信息。 
 
 ## <a name="user-access-and-role-migration"></a>用户访问权限和角色迁移
-与 OMS 门户中的访问权限管理相比，Azure 门户的访问权限管理功能是更丰富且更强大。 有关 Log Analytics 中访问权限管理的详细信息，请参阅[管理工作区](manage-access.md#manage-accounts-and-users)。
+与 OMS 门户中的访问权限管理相比，Azure 门户的访问权限管理功能是更丰富且更强大。 有关 Log Analytics 中的访问管理的详细信息，请参阅[设计 Azure Monitor 日志工作区](design-logs-deployment.md)。
 
 > [!NOTE]
 > 本文的先前版本指出，权限会自动从 OMS 门户转换到 Azure 门户。 我们已不再规划这种自动转换，你必须自行执行转换。
@@ -64,7 +64,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 
 | OMS 门户权限 | Azure 角色 |
 |:---|:---|
-| ReadOnly | Log Analytics 读者 |
+| 只读 | Log Analytics 读者 |
 | 参与者 | Log Analytics 参与者 |
 | 管理员 | 所有者 | 
  
@@ -76,10 +76,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 
 ### <a name="alert-extension"></a>警报扩展  
 
-> [!NOTE]
-> 针对公有云，警报现已完全扩展到 Azure 门户中。 可在 OMS 门户中查看现有警报规则，但只能在 Azure 门户中对其进行管理。 针对 Azure 政府云，将于 2019 年 2 月开始将警报扩展到 Azure 门户中。
-
-警报已[扩展到 Azure 门户中](alerts-extend.md)。 完成此过渡后，只能在 Azure 门户中针对警报执行管理操作。 现有的警报将继续列在 OMS 门户中。 如果使用 Log Analytics 警报 REST API 或 Log Analytics 警报资源模板以编程方式访问警报，需要在 API 调用、Azure 资源管理器模板和 PowerShell 命令中使用操作组而非操作。
+警报已[扩展到 Azure 门户](alerts-extend.md) 现有警报将继续列在 OMS 门户中，但你只能在 Azure 门户中管理它们。 如果使用 Log Analytics 警报 REST API 或 Log Analytics 警报资源模板以编程方式访问警报，需要在 API 调用、Azure 资源管理器模板和 PowerShell 命令中使用操作组而非操作。
 
 ### <a name="alert-management-solution"></a>警报管理解决方案
 作为上次公告中的一个更改，[警报管理解决方案](alert-management-solution.md)在 Azure 门户中将继续可用并完全受支持。 可以继续从 Azure 市场安装该解决方案。
@@ -94,7 +91,7 @@ OMS 移动应用将随 OMS 门户一起淘汰。 无需使用 OMS 移动应用�
 ## <a name="application-insights-connector-and-solution"></a>Application Insights 连接器和解决方案
 使用 [Application Insights 连接器](app-insights-connector.md)可将 Application Insights 数据包括在 Log Analytics 工作区中。 需要进行这种数据复制才能实现跨基础结构和应用程序数据的可见性。 通过将于 2019 年 3 月推出的 Application Insights 延长数据保留期支持以及执行[跨资源查询](../log-query/cross-workspace-query.md)的能力，除了能够[查看多个 Azure Monitor Application Insights 资源](../log-query/unify-app-resource-data.md)，不再需要从 Application Insights 资源复制数据并将其发送到 Log Analytics。 此外，连接器会将应用程序属性的一个子集发送到 Log Analytics，同时，跨资源查询提供了增强的灵活性。  
 
-这样，随着 OMS 门户在 2019 年 3 月 30 日被弃用，Application Insights 连接器也会被弃用并从 Azure 市场中删除，而现有连接将继续工作到 2019 年 6 月30 日。 随着 OMS 门户被弃用，将无法从门户中配置和删除现有的连接。 将支持使用 2019 年 1 月推出的 REST API 来执行上述操作，并且将在 [Azure 更新](https://azure.microsoft.com/updates/)中发布通知。 
+因此，在2019年3月30日，Application Insights 连接器已弃用，并已从 Azure Marketplace 中删除，以及 OMS 门户弃用。 现有连接将继续运行到 2019 年 6 月 30 日为止。 随着 OMS 门户被弃用，将无法从门户中配置和删除现有的连接。 将支持使用 2019 年 1 月推出的 REST API 来执行上述操作，并且将在 [Azure 更新](https://azure.microsoft.com/updates/)中发布通知。 
 
 ## <a name="azure-network-security-group-analytics"></a>Azure 网络安全组分析
 [Azure 网络安全组分析解决方案](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor)将被最近推出的[流量分析](https://azure.microsoft.com/blog/traffic-analytics-in-preview/)取代。在流量分析中可以洞察云网络上的用户和应用程序活动。 流量分析可帮助你审核组织的网络活动、保护应用程序和数据、优化工作负荷性能和保持符合性。 

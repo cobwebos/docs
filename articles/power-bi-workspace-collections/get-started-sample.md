@@ -1,19 +1,19 @@
 ---
-title: 开始使用示例
+title: 示例入门
 description: 本文介绍 Power BI 工作区集合入门示例。
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+ms.service: power-bi-embedded
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: 6c80dc2ca4d0062fcb98aeb6431566ce6ca39411
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9b45dd6bcc9aa3abf2d5078b54e51531cae4ec5f
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519487"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669124"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Power BI 工作区集合入门示例
 
@@ -22,7 +22,7 @@ ms.locfileid: "58519487"
 > [!IMPORTANT]
 > Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
-在继续之前，需要保存以下资源：将 Power BI 报表集成到示例应用和你自己的应用中时，这些资源都可以提供帮助。
+在继续之前，需要保存以下资源：在将 Power BI 报表集成到示例应用和自己的应用中时，这些资源都可以提供帮助。
 
 * [示例工作区 Web 应用](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [Power BI 工作区集合 API 参考](https://msdn.microsoft.com/library/azure/mt711507.aspx)
@@ -34,22 +34,22 @@ ms.locfileid: "58519487"
 
 ## <a name="configure-the-sample-app"></a>配置示例应用
 
-下面引导完成 Visual Studio 开发环境的设置，以便访问运行示例应用时所需的组件。
+下面将引导完成 Visual Studio 开发环境的设置，以便访问运行示例应用时所需的组件。
 
 1. 下载并解压缩 GitHub 上的 [Power BI 工作区集合 - 将报表集成到 Web 应用中](https://go.microsoft.com/fwlink/?LinkId=761493)示例。
-2. 在 Visual Studio 中打开“PowerBI embedded.sln”  。 可能需要在 NuGet 程序包管理器控制台中执行 **Update-Package** 命令来更新此解决方案中使用的程序包。
+2. 在 Visual Studio 中打开 **PowerBI-embedded.sln**。 可能需要在 NuGet 程序包管理器控制台中执行 **Update-Package** 命令来更新此解决方案中使用的程序包。
 3. 生成解决方案。
-4. 运行“ProvisionSample”  控制台应用。 在示例控制台应用中，预配一个工作区并导入 PBIX 文件。
-5. 要预配新的工作区，请选择选项 1“收集管理”，并选择选项 6“预配新的工作区”
-6. 要导入新的“报表”，请选择选项 2“报表管理”，然后选择选项 3“将 PBIX 桌面文件导入到工作区”。
+4. 运行 **ProvisionSample** 控制台应用。 在示例控制台应用中，预配一个工作区并导入 PBIX 文件。
+5. 要预配新的工作区  ，请选择选项 1“收集管理”  ，并选择选项 6“预配新的工作区” 
+6. 要导入新的“报表”  ，请选择选项 2“报表管理”  ，然后选择选项 3“将 PBIX 桌面文件导入到工作区”  。
 
 7. 输入**工作区集合**名称和**访问密钥**。 可以通过 **Azure 门户**获取这些信息。 若要了解有关如何获取**访问密钥**的详细信息，请参阅“Microsoft Power BI Embedded 入门”中的[查看 Power BI API 访问密钥](get-started.md#view-power-bi-api-access-keys)。
 
     ![Azure 门户中的访问密钥](media/get-started-sample/azure-portal.png)
-8. 复制并保存新创建的 **工作区 ID** 以便在本文后面部分使用。 创建**工作区 ID** 之后，可以在 **Azure 门户**中找到该数据。
+8. 复制并保存新创建的**工作区 ID** 以便在本文后面部分使用。 创建**工作区 ID** 之后，可以在 **Azure 门户**中找到该数据。
 
     ![Azure 门户中的工作区 ID](media/get-started-sample/workspace-id.png)
-9. 要将 PBIX 文件导入到**工作区**，请选择选项 6 **。**“将 PBIX 文件导入到现有工作区”。 如果没有现有的 PBIX 文件，则可以下载 [Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547)（零售分析示例 PBIX）。
+9. 要将 PBIX 文件导入到**工作区**，请选择选项 6 **。** “将 PBIX 文件导入到现有工作区”。 如果没有现有的 PBIX 文件，则可以下载 [Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547)（零售分析示例 PBIX）。
 10. 如果出现提示，请为**数据集**输入一个易记的名称。
 
 应该会看到如下所示的响应：
@@ -62,14 +62,14 @@ Checking import state... Succeeded
 > [!NOTE]
 > 如果 PBIX 文件包含任何直接查询连接，请选择选项 7 以更新连接字符串。
 
-此时， **工作区**中已导入了一个 Power BI PBIX 报表。 接下来将演示如何运行 **Power BI 工作区集合**入门示例 Web 应用。
+此时，**工作区**中已导入了一个 Power BI PBIX 报表。 接下来将演示如何运行 **Power BI 工作区集合**入门示例 Web 应用。
 
 ## <a name="run-the-sample-web-app"></a>运行示例 Web 应用
 
 Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入的报表。 下面介绍了如何配置 Web 应用示例。
 
-1. 在 **PowerBI Embedded** Visual Studio 解决方案中，右键单击“EmbedSample”Web 应用程序，并选择“设为启动项目”。
-2. 在 **web.config** 中，在 **EmbedSample** Web 应用程序中，编辑 **appSettings**：**AccessKey**、**WorkspaceCollection** 名称和 **WorkspaceId**。
+1. 在 **PowerBI Embedded** Visual Studio 解决方案中，右键单击“EmbedSample”  Web 应用程序，并选择“设为启动项目”  。
+2. 在 **EmbedSample** Web 应用程序的 **web.config** 中，编辑 **appSettings**：**AccessKey**、**WorkspaceCollection** 名称和 **WorkspaceId**。
 
     ```xml
     <appSettings>
@@ -81,17 +81,17 @@ Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入
     ```
 3. 运行 **EmbedSample** Web 应用程序。
 
-运行 **EmbedSample** Web 应用程序后，左侧的导航面板应包含“报表”菜单。 如果要查看导入的报表，请展开“报表” ，并单击任一报表。 如果已导入了 [Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547)（零售分析示例 PBIX），则示例 Web 应用将如下所示：
+运行 **EmbedSample** Web 应用程序后，左侧的导航面板应包含“报表”菜单。  要查看导入的报表，请展开“报表”，并单击任一报表。  如果已导入了[零售分析示例 PBIX](https://go.microsoft.com/fwlink/?LinkID=780547)，则示例 Web 应用将如下所示：
 
 ![示例应用程序中的示例左导航栏](media/get-started-sample/sample-left-nav.png)
 
-单击某个报表后， **EmbedSample** Web 应用程序应类似于以下内容：
+单击某个报表后，**EmbedSample** Web 应用程序应类似于以下内容：
 
 ![应用程序中的示例报表显示](media/get-started-sample/sample-web-app.png)
 
 ## <a name="explore-the-sample-code"></a>探索示例代码
 
-**Microsoft Power BI 工作区集合**示例是一个 Web 应用示例，演示了如何将 **Power BI** 报表集成到应用中。 它采用模型-视图-控制器 (MVC) 设计模式来演示最佳做法。 本部分重点介绍可以在 **PowerBI Embedded** Web 应用解决方案中浏览的示例代码。 模型-视图-控制器 (MVC) 模式根据用户输入的三个单独的类（模型、视图和控件）对域、演示文稿和操作分开进行建模。 若要了解关于 MVC 的详细信息，请参阅 [Learn About ASP.NET](https://www.asp.net/mvc)（了解 ASP.NET）。
+**Microsoft Power BI 工作区集合**示例是一个 Web 应用示例，演示了如何将 **Power BI** 报表集成到应用中。 它采用模型-视图-控制器 (MVC) 设计模式来演示最佳做法。 本部分重点介绍可以在 **PowerBI Embedded** Web 应用解决方案中浏览的示例代码。 模型-视图-控制器 (MVC) 模式将域、表示和基于用户输入的操作的建模分为三个单独的类：模型、视图和控制。 若要了解关于 MVC 的详细信息，请参阅 [Learn About ASP.NET](https://www.asp.net/mvc)（了解 ASP.NET）。
 
 **Microsoft Power BI 工作区集合**示例代码分隔方式如下所示。 每个部分在 PowerBI embedded.sln 解决方案中都包括了文件名称，以便轻松查找示例中的代码。
 
@@ -111,7 +111,7 @@ public class ReportsViewModel
 }
 ```
 
-**ReportViewModel.cs**：表示一个 Power BI 报表。
+**ReportViewModel.cs**：表示单个 Power BI 报表。
 
 ```csharp
 public class ReportViewModel
@@ -140,7 +140,7 @@ Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 
 | 部分 | 描述 |
 | --- | --- |
-| 职务 |报表的名称。 |
+| 标题 |报表的名称。 |
 | QueryString |指向报表 ID 的链接。 |
 ```cshtml
 <div id="reports-nav" class="panel-collapse collapse">
@@ -209,7 +209,7 @@ public ActionResult Reports()
 }
 ```
 
-任务<ActionResult>报表 (string reportId)
+任务\<ActionResult > 报表 (string reportId)
 
 ```csharp
 public async Task<ActionResult> Report(string reportId)
@@ -259,7 +259,7 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 > [!NOTE]
 > {tableName/fieldName} 不能包含空格或特殊字符。 {fieldValue} 接受单个分类值。  
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [常见 Microsoft Power BI 工作区集合方案](scenarios.md)  
 [在 Power BI 工作区集合中进行身份验证和授权](app-token-flow.md)  
@@ -268,4 +268,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript 嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

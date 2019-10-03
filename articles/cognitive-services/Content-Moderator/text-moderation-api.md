@@ -1,5 +1,6 @@
 ---
 title: 文本审查 - 内容审查器
+titleSuffix: Azure Cognitive Services
 description: 对可能不需要的文本、PII 和自定义字词列表使用文本审查。
 services: cognitive-services
 author: sanjeev3
@@ -9,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5a1007f2408b48c96f5eeaf585b94c8caa7ceb45
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: e1d5224d8dc86c82624613b0d2a984ceef3ae5bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757760"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564383"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 

@@ -3,27 +3,26 @@ title: 如何使用 ADAL 在 Android 上启用跨应用 SSO | Microsoft Docs
 description: 如何使用 ADAL SDK 的功能启用跨应用程序单一登录。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
-editor: ''
+author: rwike77
+manager: CelesteDG
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
-ms.reviewer: dadobali
+ms.author: ryanwi
+ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5085acad8a82394340892a3a67a3d1e5d85384b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: eb11a4a926c676d37a0bf6be456e3b831a5d8357
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442165"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65962637"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>如何：使用 ADAL 在 Android 上启用跨应用 SSO
 
@@ -39,7 +38,7 @@ ms.locfileid: "57442165"
 
 本操作指南假定你知道如何：
 
-- 使用 Azure Active Directory (Azure AD) 的旧门户预配你的应用。 有关详细信息，请参阅[向 Azure AD v1.0 终结点注册应用](quickstart-v1-add-azure-ad-app.md)。
+- 使用 Azure Active Directory (Azure AD) 的旧门户预配你的应用。 有关详细信息，请参阅[注册应用](quickstart-register-app.md)
 - 将你的应用程序与 [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) 进行集成。
 
 ## <a name="single-sign-on-concepts"></a>单一登录概念

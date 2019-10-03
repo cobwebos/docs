@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 6fb9099ebfe884fc6eee58882ee23e46ba550e13
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.date: 09/22/2019
+ms.openlocfilehash: 94efc87cdea8e1d9b63361d4652b63909c6ce3e7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546236"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203608"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB 服务器防火墙规则
 在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
@@ -48,7 +48,7 @@ ms.locfileid: "53546236"
 
 <!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
 
-## <a name="troubleshooting-the-database-firewall"></a>数据库防火墙故障排除
+## <a name="troubleshooting-firewall-issues"></a>防火墙问题疑难解答
 对 Microsoft Azure Database for MariaDB 服务器服务的访问与预期不符时，请考虑以下几点：
 
 * **对允许列表的更改尚未生效：** 对 Azure Database for MariaDB 防火墙配置所做的更改可能最多需要 5 分钟的延迟才可生效。
@@ -57,9 +57,11 @@ ms.locfileid: "53546236"
 
 * **动态 IP 地址：** 如果 Internet 连接使用动态 IP 寻址，并且在通过防火墙时遇到问题，则可以尝试以下解决方法之一：
 
-* 向 Internet 服务提供商 (ISP) 询问分配给客户端计算机、用于访问 Azure Database for MariaDB 服务器的 IP 地址范围，然后将该 IP 地址范围作为防火墙规则添加。
+   * 向 Internet 服务提供商 (ISP) 询问分配给客户端计算机、用于访问 Azure Database for MariaDB 服务器的 IP 地址范围，然后将该 IP 地址范围作为防火墙规则添加。
 
-* 改为获取客户端计算机的静态 IP 地址，并将该 IP 地址作为防火墙规则添加。
+   * 改为获取客户端计算机的静态 IP 地址，并将该 IP 地址作为防火墙规则添加。
+
+* **服务器的 IP 似乎是公共的：** 与 Azure Database for MariaDB 服务器的连接通过可公开访问的 Azure 网关进行路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请访问[连接体系结构一文](concepts-connectivity-architecture.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 - [使用 Azure 门户创建和管理 Azure Database for MariaDB 防火墙规则](./howto-manage-firewall-portal.md)

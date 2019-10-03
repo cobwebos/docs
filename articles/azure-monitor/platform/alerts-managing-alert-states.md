@@ -6,14 +6,14 @@ services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 2aa521b0552b60e5a875a5f46ab9887c6e5b6e3e
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: f72abd1168d14cae703f7fcfc7b58eaa56bdc592
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472052"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702938"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>管理警报和智能组状态
 Azure Monitor 中的警报现在具有[警报状态和监视条件](https://aka.ms/azure-alerts-overview)，与此类似，智能组具有[智能组状态](https://aka.ms/smart-groups)。 现在，在与相应警报或智能组相关联的历史记录中捕获对状态的更改。 本文将指导完成更改状态（包括警报和智能组）的过程。

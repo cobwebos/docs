@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/13/2017
-ms.openlocfilehash: a0358859d6f806a94c529bae2eb6fa9d1ab82963
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077830"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173459"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>使用 Terraform 和 HCL 创建 VM 群集
 
@@ -46,7 +46,7 @@ ms.locfileid: "58077830"
 
 5. 将以下代码复制到变量声明文件中：
 
-   ```tf
+   ```hcl
    variable subscription_id {}
    variable tenant_id {}
    variable client_id {}
@@ -64,7 +64,7 @@ ms.locfileid: "58077830"
 
 7. 将以下代码复制到变量文件中。 请确保按如下所示替换占位符：对于 `subscription_id`，请使用运行 `az account set` 时指定的 Azure 订阅 ID。 对于 `tenant_id`，请使用从 `az ad sp create-for-rbac` 返回的 `tenant` 值。 对于 `client_id`，请使用从 `az ad sp create-for-rbac` 返回的 `appId` 值。 对于 `client_secret`，请使用从 `az ad sp create-for-rbac` 返回的 `password` 值。
 
-   ```tf
+   ```hcl
    subscription_id = "<azure-subscription-id>"
    tenant_id = "<tenant-returned-from-creating-a-service-principal>"
    client_id = "<appId-returned-from-creating-a-service-principal>"
@@ -79,7 +79,7 @@ ms.locfileid: "58077830"
 
 2. 将以下示例资源定义复制到新创建的 `main.tf` 文件中： 
 
-   ```tf
+   ```hcl
    resource "azurerm_resource_group" "test" {
     name     = "acctestrg"
     location = "West US 2"
@@ -103,7 +103,7 @@ ms.locfileid: "58077830"
     name                         = "publicIPForLB"
     location                     = "${azurerm_resource_group.test.location}"
     resource_group_name          = "${azurerm_resource_group.test.name}"
-    public_ip_address_allocation = "static"
+    allocation_method            = "Static"
    }
 
    resource "azurerm_lb" "test" {
@@ -227,7 +227,7 @@ ms.locfileid: "58077830"
 
 若要初始化 Terraform，请运行以下命令：
 
-  ```cmd
+  ```bash
   terraform init
   ```
 
@@ -245,13 +245,13 @@ ms.locfileid: "58077830"
 
 如果不需要保存执行计划，请运行以下命令：
 
-  ```cmd
+  ```bash
   terraform plan
   ```
 
 如果需要保存执行计划，请运行以下命令（用所需输出路径替换 &lt;路径> 占位符）：
 
-  ```cmd
+  ```bash
   terraform plan -out=<path>
   ```
 
@@ -263,13 +263,13 @@ ms.locfileid: "58077830"
 
 如果需要应用最新的执行计划，请运行以下命令：
 
-  ```cmd
+  ```bash
   terraform apply
   ```
 
 如果需要应用上次保存的执行计划，请运行以下命令（使用包含所保存执行计划的路径替换 &lt;路径> 占位符）：
 
-  ```cmd
+  ```bash
   terraform apply <path>
   ```
 

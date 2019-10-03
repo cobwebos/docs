@@ -1,68 +1,205 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 管理 - 治理
+### YamlMime:Hub
+title: Azure 治理文档
+summary: 获取任何主要云提供商的一组高级管理功能。
+brand: azure
 metadata:
-  title: Azure 管理 - 治理
-  description: 了解可通过明确的设计和规则，对环境进行一致性管理的概念和 Azure 服务，并了解符合性的审核方法。
-  author: DCtheGeek
-  manager: carmonm
+  title: Azure 治理文档
+  description: 获取任何主要云提供商的一组高级管理功能。
   ms.service: governance
-  ms.topic: landing-page
-  ms.date: 09/18/2018
+  ms.topic: hub-page
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: Azure 治理是一组概念和服务，旨在实现大规模管理各种 Azure 资源。 这些服务提供了以逻辑方式组织和构建订阅，创建和部署可重用的 Azure 本机资源包以及定义、审核和修复资源等功能。 可通过此页面了解有关这些概念和服务的更多信息，以及如何立即在环境中启用和使用每个概念和服务。
-  aside:
-    image:
-      alt: null
-      height: 225
-      src: ./media/video.png
-      width: 250
-    title: '使用 Azure 治理对资源进行加速和控制 (1:47)'
-    href: 'https://www.youtube.com/watch?v=MhGbKjlmuRs'
-    width: 250
-sections:
-  - title: 组件和服务
-  - items:
-      - type: list
-        style: cards
-        className: cardsD
-        columns: 2
-        items:
-          - href: ./management-groups/overview
-            html: <p>了解如何在逻辑层次结构中对订阅进行分组和组织，以支持以结构化方式部署其他治理服务。<br /></p>
-            image:
-              alt: 管理组
-              src: ./media/management-groups-illustration.svg
-            title: 管理组
-          - href: ./resource-graph/
-            html: <p>使用功能强大的命令行工具（支持 Azure CLI 和 Azure PowerShell）快速查询有关 Azure 资源的复杂详细信息。 查找并公开信息（以前需要复杂的迭代脚本才能找到），以便大规模发现这些资源。</p>
-            image:
-              alt: Resource Graph
-              src: ./media/resource-graph-illustration.svg
-            title: Resource Graph
-          - href: ./policy/
-            html: <p>为环境中的资源定义和应用标准。 防止创建不需要的资源，使用其他元素强化新资源，以及审核和修复环境中的已有资源。</p>
-            image:
-              alt: 策略
-              src: ./media/policy-illustration.svg
-            title: 策略
-          - href: ./blueprints/
-            html: <p>创建一个 Azure 本机<i>项目</i>包（资源组、策略、角色分配、资源管理器模板等），从而可将该包动态部署到订阅以创建一致的可重复环境。</p>
-            image:
-              alt: 蓝图
-              src: ./media/blueprints-illustration.svg
-            title: 蓝图
-  - title: 实现形式
-  - items:
-      - type: list
-        style: cards
-        className: cardsZ
-        columns: 3
-        items:
-          - href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-            html: <p>在过去，企业必须全权拥有技术，并承担各种程度的责任，包括从基础结构到软件等各个方面。 现在，云提供了变革的潜力，可让企业通过预配和使用所需的资源来利用技术。</p>
-            title: 企业云的采用
-          - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-            html: <p>它能使管理员确保工作负荷满足组织的最低治理要求，同时又不妨碍业务小组和开发人员尽快实现自身的目标。<br /><br /></p>
-            title: 企业基架
+  ms.date: 09/10/2019
+  ms.openlocfilehash: 32fe6f5967c6f09b095fc1128d7ffa5007b03c59
+  ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/02/2019
+  ms.locfileid: "71802747"
+highlightedContent:
+  items:
+  - title: 治理概述
+    itemType: overview
+    url: ./azure-management.md
+  - title: 治理 YouTube 频道
+    itemType: video
+    url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+  - title: 云采用框架中的治理
+    itemType: architecture
+    url: /azure/architecture/cloud-adoption/governance
+  - title: 使用 Azure Policy 应用和监视基础结构标准
+    itemType: learn
+    url: /learn/modules/intro-to-governance/
+productDirectory:
+  title: 组件和服务
+  items:
+  - title: Azure 管理组
+    imageSrc: ./media/management-groups.svg
+    links:
+    - url: ./management-groups/overview.md
+      text: 概述
+    - url: ./management-groups/index.yml
+      text: 查看更多 >
+  - title: Azure Policy
+    imageSrc: ./media/azure-policy.svg
+    links:
+    - url: ./policy/overview.md
+      text: 概述
+    - url: ./policy/how-to/get-compliance-data.md
+      text: 评估符合性
+    - url: ./policy/concepts/rego-for-aks.md
+      text: 管理 AKS 配置
+    - url: ./policy/concepts/guest-configuration.md
+      text: 管理 VM 配置
+    - url: ./policy/index.yml
+      text: 查看更多 >
+  - title: Azure 蓝图
+    imageSrc: ./media/azure-blueprints.svg
+    links:
+    - url: ./blueprints/overview.md
+      text: 概述
+    - url: ./blueprints/tutorials/protect-new-resources.md
+      text: 保护资源
+    - url: ./blueprints/index.yml
+      text: 查看更多 >
+  - title: Azure Resource Graph
+    imageSrc: ./media/azure-resource-graph.svg
+    links:
+    - url: ./resource-graph/overview.md
+      text: 概述
+    - url: ./resource-graph/concepts/explore-resources.md
+      text: 浏览 Azure 资源
+    - url: ./resource-graph/how-to/get-resource-changes.md
+      text: 跟踪更改
+    - url: ./resource-graph/index.yml
+      text: 查看更多 >
+  - title: 成本管理
+    imageSrc: ./media/cost-management.svg
+    links:
+    - url: ../cost-management/overview-cost-mgt.md
+      text: 概述
+    - url: ../cost-management/aws-integration-manage.md
+      text: 管理 AWS 成本和使用情况
+    - url: ../cost-management/index.yml
+      text: 查看更多 >
+tools:
+  title: 示例
+  summary: 策略定义、符合性蓝图、资源查询等
+  items:
+  - title: Azure Policy
+    imageSrc: ./media/azure-policy.svg
+    url: ./policy/samples/index.md
+  - title: Azure 蓝图
+    imageSrc: ./media/azure-blueprints.svg
+    url: ./blueprints/samples/index.md
+  - title: Azure Resource Graph
+    imageSrc: ./media/azure-resource-graph.svg
+    url: ./resource-graph/samples/starter.md
+  - title: 成本管理
+    imageSrc: ./media/cost-management.svg
+    url: https://github.com/Azure-Samples/Cost-Management-Samples
+additionalContent:
+  sections:
+  - title: 开发人员资源
+    items:
+    - title: 管理组
+      links:
+      - text: Azure CLI
+        url: /cli/azure/ext/managementgroups/?view=azure-cli-latest
+      - text: Azure PowerShell
+        url: /powershell/module/az.resources/#resources
+      - text: 用于 .NET 的 Azure SDK
+        url: /dotnet/api/overview/azure/managementgroups
+      - text: 用于 Node 的 Azure SDK
+        url: /javascript/api/azure-arm-resource/managementgroups
+    - title: Azure Policy
+      links:
+      - text: Azure CLI
+        url: /cli/azure/policy
+      - text: Azure PowerShell
+        url: /powershell/module/az.resources/#policies
+        note: （策略）
+      - text: Azure PowerShell
+        url: /powershell/module/az.policyinsights#policy_insights
+        note: （策略见解）
+      - text: Azure PowerShell
+        url: https://www.powershellgallery.com/packages/Az.GuestConfiguration
+        note: （来宾配置）
+      - text: 用于 .NET 的 Azure SDK
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+        note: （分配）
+      - text: 用于 .NET 的 Azure SDK
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+        note: （策略定义）
+      - text: REST
+        url: /rest/api/policy-insights/
+        note: （策略见解）
+      - text: REST
+        url: /rest/api/resources/policyassignments
+        note: （分配）
+      - text: REST
+        url: /rest/api/resources/policydefinitions
+        note: （定义）
+      - text: REST
+        url: /rest/api/resources/policysetdefinitions
+        note: （计划）
+      - text: REST
+        url: /rest/api/guestconfiguration/
+        note: （来宾配置）
+      - text: 资源管理器模板
+        url: /azure/templates/microsoft.authorization/allversions
+    - title: Azure 蓝图
+      links:
+      - text: 蓝图函数
+        url: ./blueprints/reference/blueprint-functions.md
+      - text: Azure PowerShell
+        url: /powershell/module/az.blueprint/#blueprint
+      - text: Azure PowerShell
+        url: https://www.powershellgallery.com/packages/Az.Blueprint
+        note: （PS 库模块）
+      - text: 用于 .NET 的 Azure SDK
+        url: /dotnet/api/overview/azure/blueprints/management
+      - text: REST
+        url: /rest/api/blueprints/
+    - title: Azure Resource Graph
+      links:
+      - text: Azure CLI
+        url: /cli/azure/ext/resource-graph/graph
+      - text: Azure PowerShell
+        url: /powershell/module/az.resourcegraph/
+      - text: Azure PowerShell
+        url: https://www.powershellgallery.com/packages/Az.ResourceGraph
+        note: （PS 库模块）
+      - text: 用于 .NET 的 Azure SDK
+        url: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
+      - text: 用于 .NET 的 Azure SDK
+        url: https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceGraph/
+        note: (NuGet)
+      - text: Azure SDK for Go
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph
+      - text: 用于 Java 的 Azure SDK
+        url: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable
+      - text: 用于 Java 的 Azure SDK
+        url: https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0-beta/jar
+        note: (Maven)
+      - text: 用于 Node 的 Azure SDK
+        url: /javascript/api/@azure/arm-resourcegraph
+      - text: 用于 Python 的 Azure SDK
+        url: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph
+      - text: 用于 Ruby 的 Azure SDK
+        url: https://rubygems.org/gems/azure_mgmt_resourcegraph
+        note: (Gem)
+      - text: REST
+        url: /rest/api/azureresourcegraph/resources/resources
+    - title: 成本管理
+      links:
+      - text: REST
+        url: /rest/api/cost-management
+        note: （成本管理）
+      - text: REST
+        url: /rest/api/consumption
+        note: （消耗）
+      - text: 资源管理器模板
+        url: /azure/templates/microsoft.consumption/budgets
+  footer: '[UserVoice](https://feedback.azure.com/forums/915958-azure-governance) | [Microsoft 技术社区 - Azure 治理](https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance) | [Azure 支持](https://azure.microsoft.com/support/create-ticket/)'

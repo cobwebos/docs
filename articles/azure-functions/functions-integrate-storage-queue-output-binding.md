@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 381eecefbba238e712820a09c8ec489706ef3751
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1d24eb81361a337ed00d719a7fb5895e73583030
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106451"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096315"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 将消息添加到 Azure 存储队列
 
@@ -29,7 +28,7 @@ ms.locfileid: "58106451"
 
 完成本快速入门教程需要：
 
-* 按[通过 Azure 门户创建第一个函数](functions-create-first-azure-function.md)中的说明操作，请勿执行“清理资源”这一步。 该快速入门创建此处所用的函数应用和函数。
+* 按[通过 Azure 门户创建第一个函数](functions-create-first-azure-function.md)中的说明操作，请勿执行“清理资源”  这一步。 该快速入门创建此处所用的函数应用和函数。
 
 * 安装 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)。 这是一项工具，可以用来检查输出绑定创建的队列消息。
 
@@ -37,21 +36,21 @@ ms.locfileid: "58106451"
 
 在此部分，请使用门户 UI 将队列存储输出绑定添加到此前创建的函数。 有了此绑定，就可以在尽量减少代码编写工作的情况下在队列中创建消息。 不需为打开存储连接、创建队列、获取队列引用之类的任务编写代码。 Azure Functions 运行时和队列输出绑定为你处理这些任务。
 
-1. 在 Azure 门户中，打开在[通过 Azure 门户创建第一个函数](functions-create-first-azure-function.md)中创建的函数应用的函数应用页。 为此，请选择“所有服务”>“Function App”，然后选择你的函数应用。
+1. 在 Azure 门户中，打开在[通过 Azure 门户创建第一个函数](functions-create-first-azure-function.md)中创建的函数应用的函数应用页。 为此，请选择“所有服务”>“Function App”，然后选择你的函数应用。 
 
 1. 选择在此前的那个快速入门中创建的函数。
 
-1. 选择“集成”>“新建输出”>“Azure 队列存储”。
+1. 选择“集成”>“新建输出”>“Azure 队列存储”。 
 
-1. 单击“选择”。
+1. 单击“选择”  。
 
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-1. 如果收到“扩展未安装”消息，请选择“安装”以在函数应用中安装存储绑定扩展。 这可能需要一到两分钟。
+1. 如果收到“扩展未安装”  消息，请选择“安装”  以在函数应用中安装存储绑定扩展。 这可能需要一到两分钟。
 
     ![安装存储绑定扩展](./media/functions-integrate-storage-queue-output-binding/functions-integrate-install-binding-extension.png)
 
-1. 在“Azure 队列存储输出”下，使用在此屏幕截图下的表中指定的设置： 
+1. 在“Azure 队列存储输出”下，使用在此屏幕截图下的表中指定的设置：  
 
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -61,13 +60,13 @@ ms.locfileid: "58106451"
     | **存储帐户连接** | AzureWebJobsStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |
     | **队列名称**   | outqueue    | 要连接到存储帐户中的队列的名称。 |
 
-1. 单击“保存”添加绑定。
+1. 单击“保存”  添加绑定。
 
 现在，已定义输出绑定，需要更新代码以使用绑定将消息添加到队列。  
 
 ## <a name="add-code-that-uses-the-output-binding"></a>添加使用输出绑定的代码
 
-在此部分，请添加将消息写入输出队列的代码。 该消息包括在查询字符串中传递到 HTTP 触发器的值。 例如，如果查询字符串包含 `name=Azure`，则队列消息将是“传递给函数的名称：Azure”。
+在此部分，请添加将消息写入输出队列的代码。 该消息包括在查询字符串中传递到 HTTP 触发器的值。 例如，如果查询字符串包含 `name=Azure`，则队列消息将是“传递给函数的名称：  Azure”。
 
 1. 选择函数以在编辑器中显示函数代码。
 
@@ -102,17 +101,17 @@ ms.locfileid: "58106451"
 
     ---
 
-1. 选择“保存”以保存更改。
+1. 选择“保存”  以保存更改。
 
 ## <a name="test-the-function"></a>测试函数
 
-1. 保存代码更改后，选择“运行”。 
+1. 保存代码更改后，选择“运行”  。 
 
     ![将队列存储输出绑定添加到 Azure 门户中的函数。](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
     请注意，**请求正文**包含 `name` 值 *Azure*。 此值显示在队列消息中，该消息是在调用函数时创建的。
     
-    如果不想选择此处的“运行”，也可调用该函数，方法是在浏览器中输入 URL，然后在查询字符串中指定 `name` 值。 此浏览器方法在[以前的快速入门](functions-create-first-azure-function.md#test-the-function)中演示过。
+    如果不想选择此处的“运行”，也可调用该函数，方法是在浏览器中输入 URL，然后在查询字符串中指定 `name` 值。  此浏览器方法在[以前的快速入门](functions-create-first-azure-function.md#test-the-function)中演示过。
 
 2. 检查日志以确保该函数成功。 
 
@@ -122,25 +121,25 @@ ms.locfileid: "58106451"
 
 如果已安装存储资源管理器并将其连接到此快速入门中使用的存储帐户，则请跳过此部分。
 
-1. 运行 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)工具，选择左侧的“连接”图标，选择“使用存储帐户名称和密钥”，然后选择“下一步”。
+1. 运行 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)工具，选择左侧的“连接”图标，选择“使用存储帐户名称和密钥”  ，然后选择“下一步”  。
 
     ![运行“存储帐户资源管理器”工具。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
 
-1. 在 Azure 门户的函数应用页中选择函数，然后选择“集成”。
+1. 在 Azure 门户的函数应用页中选择函数，然后选择“集成”。 
 
-1. 选择在前面的步骤中添加的“Azure 队列存储”输出绑定。
+1. 选择在前面的步骤中添加的“Azure 队列存储”输出绑定。 
 
-1. 展开页面底部的“文档”部分。 
+1. 展开页面底部的“文档”部分。  
 
    门户显示的凭据可以在存储资源管理器中用于连接到存储帐户。
 
    ![获取存储帐户连接凭据。](./media/functions-integrate-storage-queue-output-binding/function-get-storage-account-credentials.png)
 
-1. 从门户复制“帐户名称”值，将其粘贴在存储资源管理器的“帐户名称”框中。
+1. 从门户复制“帐户名称”值，将其粘贴在存储资源管理器的“帐户名称”框中。  
  
-1. 单击“帐户密钥”旁边的显示/隐藏图标以显示该值，然后复制“帐户密钥”值并将其粘贴在存储资源管理器的“帐户密钥”框中。
+1. 单击“帐户密钥”旁边的显示/隐藏图标以显示该值，然后复制“帐户密钥”值并将其粘贴在存储资源管理器的“帐户密钥”框中。   
   
-1. 选择“下一步”>“连接”。
+1. 选择“下一步”>“连接”。 
 
    ![粘贴存储凭据，然后进行连接。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
@@ -148,9 +147,9 @@ ms.locfileid: "58106451"
 
 1. 在存储资源管理器中选择用于本快速入门的存储帐户。
 
-1. 展开“队列”节点，然后选择名为 **outqueue** 的队列。 
+1. 展开“队列”节点，然后选择名为 **outqueue** 的队列。  
 
-   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用 Azure 的默认 `name` 值调用了此函数，则队列消息为“传递给函数的名称：Azure”。
+   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用 Azure 的默认 `name` 值调用了此函数，则队列消息为“传递给函数的名称：   Azure”。
 
     ![存储资源管理器中显示的队列消息](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 

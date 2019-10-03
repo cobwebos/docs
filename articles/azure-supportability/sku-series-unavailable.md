@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: xingwan
-ms.openlocfilehash: 62964d0c5d75168226a35b25e5c256a1b57f3f81
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
-ms.translationtype: HT
+ms.openlocfilehash: a57899e36a6716a6fd59cb018119c225b7396c0d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
-ms.locfileid: "24870572"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60649085"
 ---
 # <a name="region-or-sku-unavailable"></a>区域或 SKU 不可用
 本文介绍如何解决 Azure 订阅无法访问区域或 VM SKU 的问题。
@@ -43,7 +43,7 @@ Code: NotAvailableForSubscription
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>购买保留虚拟机实例时，收到以下错误消息之一：
+### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>购买虚拟机预留实例时，收到以下错误消息之一：
 
 ```
 Message: Your subscription doesn’t support virtual machine reservation in <location>. Choose a 
@@ -67,7 +67,7 @@ Message: This size is currently unavailable in this location for this subscripti
 
 -   在“问题”页上，选择“其他常规问题”作为问题类型。
 - 在“详细信息”部分中：
-  - 请指示是要部署虚拟机还是要购买保留虚拟机实例
+  - 请指示是要部署虚拟机还是要购买虚拟机预留实例
   - 请指定区域、SKU 以及计划部署或购买的虚拟机实例数
 
 

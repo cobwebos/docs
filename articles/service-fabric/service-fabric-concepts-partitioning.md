@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/30/2017
 ms.author: atsenthi
 ms.openlocfilehash: 833d87dab59890b9903ea8eecf2334d7dd1c7436
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666216"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60711840"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
 本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) 上获取。
@@ -129,7 +129,7 @@ Service Fabric 提供了三个分区方案可供选择：
 1. 打开“**Visual Studio**” > “**文件**” > “**新建**” > “**项目**”。
 2. 在“**新建项目**”对话框中，选择 Service Fabric 应用程序。
 3. 将项目命名为“AlphabetPartitions”。
-4. 在“创建服务”对话框中，选择“有状态”服务并将它称为“Alphabet.Processing”。
+4. 在“创建服务”  对话框中，选择“有状态”  服务并将它称为“Alphabet.Processing”。
 5. 设置分区数。 打开 AlphabetPartitions 项目的 ApplicationPackageRoot 文件夹中的 Applicationmanifest.xml 文件，然后将参数 Processing_PartitionCount 更新为 26，如下所示。
    
     ```xml

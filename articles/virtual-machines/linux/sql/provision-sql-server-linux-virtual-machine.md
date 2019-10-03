@@ -7,17 +7,16 @@ manager: craigg
 ms.date: 12/5/2018
 ms.topic: conceptual
 tags: azure-service-management
-ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 468db9d62a98e079fbe6954843e23a518eaabd0a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cd87477da15d5c18f94b66cac855672b4a2a3523
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011721"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091354"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中预配 Linux SQL Server 虚拟机
 
@@ -34,7 +33,7 @@ ms.locfileid: "58011721"
 * [更改 SA 密码](#password)
 * [针对远程连接进行配置](#remote)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
@@ -156,9 +155,9 @@ ssh azureadmin@40.55.55.555
 
 ## <a name="add-the-tools-to-your-path-optional"></a>将工具添加到路径（可选）
 
-默认安装了多个 SQL Server [包](sql-server-linux-virtual-machines-overview.md#packages)，包括 SQL Server 命令行工具包。 工具包包含 sqlcmd 和 bcp 工具。 为了方便，可以选择将工具路径 `/opt/mssql-tools/bin/` 添加到 PATH 环境变量。
+默认安装了多个 SQL Server [包](sql-server-linux-virtual-machines-overview.md#packages)，包括 SQL Server 命令行工具包。 工具包包含sqlcmd 和bcp 工具。 为了方便，可以选择将工具路径 `/opt/mssql-tools/bin/` 添加到PATH 环境变量。
 
-1. 运行以下命令，修改登录会话和交互式/非登录会话的 PATH：
+1. 运行以下命令，修改登录会话和交互式/非登录会话的PATH：
 
    ```bash
    echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile

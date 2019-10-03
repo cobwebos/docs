@@ -1,21 +1,21 @@
 ---
 title: 通过必应实体搜索 API 来搜索实体
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用必应实体搜索 API 从搜索查询中提取和搜索实体和场所。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 948110e5532aeeb2b9acbbb66361eb9c55eaf897
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: HT
+ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543332"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883706"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>使用必应实体 API 搜索实体
 
@@ -23,9 +23,9 @@ ms.locfileid: "57543332"
 
 如果提供供用户输入搜索词的搜索框，请使用[必应自动推荐 API](../../bing-autosuggest/get-suggested-search-terms.md) 来改进体验。 此 API 根据用户键入的部分搜索词返回建议的查询字符串。
 
-用户输入搜索词以后，URL 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query) 查询参数之前会对搜索词进行编码。 例如，如果用户输入 *Marcus Appel*，则将 `q` 设置为 *Marcus+Appel* 或 *Marcus%20Appel*。
+用户输入搜索词以后，URL 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) 查询参数之前会对搜索词进行编码。 例如，如果用户输入 *Marcus Appel*，则将 `q` 设置为 *Marcus+Appel* 或 *Marcus%20Appel*。
 
-如果搜索词包含拼写错误，则搜索响应会包含 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#querycontext) 对象。 该对象显示原始拼写以及必应用于搜索的已更正拼写。
+如果搜索词包含拼写错误，则搜索响应会包含 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 对象。 该对象显示原始拼写以及必应用于搜索的已更正拼写。
 
 ```json
 "queryContext": {
@@ -38,15 +38,15 @@ ms.locfileid: "57543332"
 
 ## <a name="the-bing-entity-search-api-response"></a>必应实体搜索 API 响应
 
-API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse) 对象。 如果必应找到相关的实体或场所，则此对象会包含 `entities` 和/或 `places` 字段。 否则，响应对象不包含任一字段。
+API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) 对象。 如果必应找到相关的实体或场所，则此对象会包含 `entities` 和/或 `places` 字段。 否则，响应对象不包含任一字段。
 > [!NOTE]
 > 实体响应支持多个市场，但 Places 响应仅支持美国业务位置。 
 
-`entities` 字段是一个 [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) 对象，该对象包含 [Entity](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity) 对象的列表（参见 `value` 字段）。 此列表可能包含单个主实体和/或多个消除歧义实体。 
+`entities` 字段是一个 [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) 对象，该对象包含 [Entity](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) 对象的列表（参见 `value` 字段）。 此列表可能包含单个主实体和/或多个消除歧义实体。 
 
 当必应认为某个实体是符合请求的唯一实体时将返回该主实体（对于哪个实体符合请求不存在争议）。 如果多个实体可能符合请求，则列表包含多个消除歧义实体。 例如，如果请求使用某个电影系列的宽泛的名称，则列表可能包含多个消除歧义实体。 但是，如果请求指定了来自该系列的一个具体的名称，则列表可能包含单个主实体。
 
-实体包括知名人士（例如歌唱家、演员、运动员、模特等）、场所和地标（例如瑞尼尔山或林肯纪念堂）、事物（例如香蕉、黄金贵宾犬、书或电影名称）。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entitypresentationinfo) 字段包含的提示用于标识实体的类型。 例如，它是人物、电影、动物还是景点。 如需可能的类型的列表，请参阅[实体类型](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)
+实体包括知名人士（例如歌唱家、演员、运动员、模特等）、场所和地标（例如瑞尼尔山或林肯纪念堂）、事物（例如香蕉、黄金贵宾犬、书或电影名称）。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) 字段包含的提示用于标识实体的类型。 例如，它是人物、电影、动物还是景点。 如需可能的类型的列表，请参阅[实体类型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
 
 ```json
 "entityPresentationInfo": {
@@ -174,9 +174,9 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
 
 ## <a name="find-places"></a>查找场所
 
-`places` 字段是一个 [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) 对象，该对象包含 [Place](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place) 对象的列表（有关详细信息，请参阅[实体类型](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)）。 此列表包含一个或多个符合请求的本地实体。
+`places` 字段是一个 [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) 对象，该对象包含 [Place](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) 对象的列表（有关详细信息，请参阅[实体类型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)）。 此列表包含一个或多个符合请求的本地实体。
 
-场所包括餐馆、酒店或本地商业场所。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entitypresentationinfo) 字段包含的提示用于标识本地实体的类型。 此列表包含一系列提示，例如场所、本地商业场所、餐馆。 数组中的每个后续提示都会缩窄实体的类型范围。 如需可能的类型的列表，请参阅[实体类型](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)
+场所包括餐馆、酒店或本地商业场所。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) 字段包含的提示用于标识本地实体的类型。 此列表包含一系列提示，例如场所、本地商业场所、餐馆。 数组中的每个后续提示都会缩窄实体的类型范围。 如需可能的类型的列表，请参阅[实体类型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
 
 ```json
 "entityPresentationInfo": {
@@ -189,7 +189,7 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
 > [!NOTE]
 > 实体响应支持多个市场，但 Places 响应仅支持美国业务位置。 
 
-本地感知型实体查询（例如“我附近的餐馆”）需要用户的位置才能提供准确结果。 请求应始终使用 X-Search-Location 和 X-MSEdge-ClientIP 标头来指定用户的位置。 如果必应认为查询可以利用用户的位置，它会将 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#querycontext) 的 `askUserForLocation` 字段设置为 **true**。 
+本地感知型实体查询（例如“我附近的餐馆”）需要用户的位置才能提供准确结果。 请求应始终使用 X-Search-Location 和 X-MSEdge-ClientIP 标头来指定用户的位置。 如果必应认为查询可以利用用户的位置，它会将 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 的 `askUserForLocation` 字段设置为 **true**。 
 
 ```json
 {
@@ -290,7 +290,7 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
 
 ### <a name="license-attribution"></a>许可证属性
 
-如果协定规则的列表包含 [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution) 规则，则必须在紧随许可证应用到的内容的行中显示声明。 `LicenseAttribution` 规则使用 `targetPropertyName` 字段识别许可证适用的属性。
+如果协定规则的列表包含 [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#licenseattribution) 规则，则必须在紧随许可证应用到的内容的行中显示声明。 `LicenseAttribution` 规则使用 `targetPropertyName` 字段识别许可证适用的属性。
 
 以下内容显示了包括 `LicenseAttribution` 规则的示例。
 
@@ -300,7 +300,7 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
 
 ### <a name="link-and-text-attribution"></a>链接和文本属性
 
-[LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#linkattribution) 和 [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#textattribution) 规则通常用于识别数据提供程序。 `targetPropertyName` 字段识别该规则适用的字段。
+[LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#linkattribution) 和 [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#textattribution) 规则通常用于识别数据提供程序。 `targetPropertyName` 字段识别该规则适用的字段。
 
 要归属提供程序，则包括紧跟属性适用内容的一行（例如，目标字段）。 该行应明确标记，指示提供商是数据的来源。 例如，“数据来自: contoso.com”。 对于 `LinkAttribution` 规则，必须创建指向提供商网址的超链接。
 
@@ -310,7 +310,7 @@ API 响应包含一个 [SearchResponse](https://docs.microsoft.com/rest/api/cogn
 
 ### <a name="media-attribution"></a>媒体属性
 
-如果实体包括图像而该图像会显示，则必须提供指向提供商网站的点击链接。 如果实体包括 [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mediaattribution) 规则，则使用规则的 URL 创建点击链接。 否则，请使用包括在图像的 `provider` 字段中的 URL 创建点击链接。
+如果实体包括图像而该图像会显示，则必须提供指向提供商网站的点击链接。 如果实体包括 [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution) 规则，则使用规则的 URL 创建点击链接。 否则，请使用包括在图像的 `provider` 字段中的 URL 创建点击链接。
 
 下面显示的一个示例包含图像的 `provider` 字段和协定规则。 由于此示例包含协定规则，请忽略图像的 `provider` 字段并应用 `MediaAttribution` 规则。
 

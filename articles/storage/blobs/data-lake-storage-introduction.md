@@ -1,19 +1,19 @@
 ---
 title: Azure Data Lake Storage Gen2 简介
 description: 提供 Azure Data Lake Storage Gen2 的概述
-services: storage
-author: jamesbak
+author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 12/06/2018
-ms.author: jamesbak
+ms.author: normesta
+ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 8777a7504c48b22d0e670dd9f0d28016ac8918db
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: de2dc5068dc454925744688a43f49a855aac42f3
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009457"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991837"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 简介
 
@@ -27,27 +27,27 @@ Data Lake Storage Gen2 的一个基本部分是向 Blob 存储添加[分层命�
 
 过去，基于云的分析必须在性能、管理和安全性方面做出妥协。 Data Lake Storage Gen2 通过以下方式解决这些方面中的每个问题：
 
--   优化了性能，因为你不需要将复制或转换数据作为分析的先决条件。 分层命名空间极大地提高了目录管理操作的性能，从而提高了整体作业性能。
+-   优化了性能  ，因为你不需要将复制或转换数据作为分析的先决条件。 分层命名空间极大地提高了目录管理操作的性能，从而提高了整体作业性能。
 
--   管理更为容易，因为你可以通过目录和子目录来组织和操作文件。
+-   管理  更为容易，因为你可以通过目录和子目录来组织和操作文件。
 
--   安全性是可以强制实施的，因为可以在目录或单个文件上定义 POSIX 权限。
+-   安全性  是可以强制实施的，因为可以在目录或单个文件上定义 POSIX 权限。
 
--   由于 Data Lake Storage Gen2 基于低成本的 [Azure Blob 存储](storage-blobs-introduction.md)而构建，因此，可以实现成本效益。 这些新增功能进一步降低了在 Azure 上运行大数据分析的总拥有成本。
+-   由于 Data Lake Storage Gen2 基于低成本的 [Azure Blob 存储](storage-blobs-introduction.md)而构建，因此，可以实现成本效益  。 这些新增功能进一步降低了在 Azure 上运行大数据分析的总拥有成本。
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 的主要功能
 
--   Hadoop 兼容访问：使用 Data Lake Storage Gen2，可以像使用 [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。 新的 [ABFS 驱动程序](data-lake-storage-abfs-driver.md)可在所有 Apache Hadoop 环境中使用（包括 [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)、[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index) 和 [SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/)）以访问 Data Lake Storage Gen2 中存储的数据。
+-   Hadoop 兼容访问  ：使用 Data Lake Storage Gen2，可以像使用 [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。 新的 [ABFS 驱动程序](data-lake-storage-abfs-driver.md)可在所有 Apache Hadoop 环境中使用（包括 [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)、[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index) 和 [SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/)）以访问 Data Lake Storage Gen2 中存储的数据  。
 
--   POSIX 权限的超集：Data Lake Gen2 的安全模型支持 ACL 和 POSIX 权限，以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过存储资源管理器或 Hive 和 Spark 等框架来配置设置。
+-   POSIX 权限的超集  ：Data Lake Gen2 的安全模型支持 ACL 和 POSIX 权限，以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过存储资源管理器或 Hive 和 Spark 等框架来配置设置。
 
--   经济高效：Data Lake Storage Gen2 提供低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，记帐费率变化通过诸如 [Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)的内置功能使成本保持在最低水平。
+-   经济高效  ：Data Lake Storage Gen2 提供低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，记帐费率变化通过诸如 [Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)的内置功能使成本保持在最低水平。
 
--   已优化的驱动程序：ABFS 驱动程序是[专门优化](data-lake-storage-abfs-driver.md)进行大数据分析。 相应的 REST Api 提供通过终结点`dfs.core.windows.net`。
+-   已优化的驱动程序  ：ABFS 驱动程序已针对大数据分析[专门进行了优化](data-lake-storage-abfs-driver.md)。 相应的 REST API 通过终结点 `dfs.core.windows.net` 进行显示。
 
 ### <a name="scalability"></a>可伸缩性
 
-按照设计，无论是通过 Data Lake Storage Gen2 还是 Blob 存储接口进行访问，Azure 存储都可自如缩放。 它可以存储和处理许多百亿亿字节的数据。 这种存储量可用于在每秒高级别的输入/输出操作 (IOPS) 下以每秒千兆位 (Gbps) 的速度测量的吞吐量。 除持久性之外，以几乎恒定的每个请求延迟执行处理，这些延迟是在服务、帐户和文件级别上测量的。
+按照设计，无论是通过 Data Lake Storage Gen2 还是 Blob 存储接口进行访问，Azure 存储都可自如缩放。 它可以存储和处理许多百亿亿字节的数据  。 这种存储量可用于在每秒高级别的输入/输出操作 (IOPS) 下以每秒千兆位 (Gbps) 的速度测量的吞吐量。 除持久性之外，以几乎恒定的每个请求延迟执行处理，这些延迟是在服务、帐户和文件级别上测量的。
 
 ### <a name="cost-effectiveness"></a>成本效益
 
@@ -64,7 +64,7 @@ Data Lake Storage Gen2 是用于大数据分析的附加功能，基于 Azure Bl
 | 概念                                | 顶级组织 | 较低级别的组织                                            | 数据容器 |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | Blob - 常规用途对象存储 | 容器              | 虚拟目录（仅限 SDK - 不提供原子操作） | Blob           |
-| ADLS Gen2 - 分析存储          | 文件系统             | Directory                                                           | 文件           |
+| ADLS Gen2 - 分析存储          | 容器            | Directory                                                           | 文件           |
 
 ## <a name="supported-open-source-platforms"></a>支持的开源平台
 

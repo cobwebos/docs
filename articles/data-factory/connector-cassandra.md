@@ -10,23 +10,28 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 743dad6032547f8f535543413adff416efb56ac0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1531f2530af9c2fbc90d1bf25f04962fb4148a8d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998394"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090471"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>使用 Azure 数据工厂从 Cassandra 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-cassandra-connector.md)
 > * [当前版本](connector-cassandra.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Cassandra 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 Cassandra 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 Cassandra 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -38,9 +43,11 @@ ms.locfileid: "57998394"
 >[!NOTE]
 >对于自承载集成运行时上运行的活动，从 IR 版本 3.7 以及更高版本开始，Cassandra 3.x 受支持。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-要从不可公开访问的 Cassandra 数据库复制数据，需要设置自承载集成运行时。 要了解详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。 集成运行时提供内置 Cassandra 驱动程序，因此从/向 Cassandra 复制数据时，无需手动安装任何驱动程序。
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+集成运行时提供内置 Cassandra 驱动程序，因此从/向 Cassandra 复制数据时，无需手动安装任何驱动程序。
 
 ## <a name="getting-started"></a>入门
 
@@ -60,7 +67,7 @@ Cassandra 链接的服务支持以下属性：
 | authenticationType | 用于连接 Cassandra 数据库的身份验证类型。<br/>允许值包括：基本和匿名。 |是 |
 | username |为用户帐户指定用户名。 |是（如果 authenticationType 设置为 Basic）。 |
 | password |指定用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（如果 authenticationType 设置为 Basic）。 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure Integration Runtime 时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
 >当前不支持使用 SSL 连接到 Cassandra。
@@ -91,7 +98,7 @@ Cassandra 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Cassandra 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Cassandra 数据集支持的属性列表。
 
 要从 Cassandra 复制数据，请将数据集的 type 属性设置为“CassandraTable”。 支持以下属性：
 
@@ -108,13 +115,14 @@ Cassandra 链接的服务支持以下属性：
     "name": "CassandraDataset",
     "properties": {
         "type": "CassandraTable",
-        "linkedServiceName": {
-            "referenceName": "<Cassandra linked service name>",
-            "type": "LinkedServiceReference"
-        },
         "typeProperties": {
             "keySpace": "<keyspace name>",
             "tableName": "<table name>"
+        },
+        "schema": [],
+        "linkedServiceName": {
+            "referenceName": "<Cassandra linked service name>",
+            "type": "LinkedServiceReference"
         }
     }
 }
@@ -127,7 +135,7 @@ Cassandra 链接的服务支持以下属性：
 
 ### <a name="cassandra-as-source"></a>以 Cassandra 作为源
 
-要从 Cassandra 复制数据，请将复制活动中的源类型设置为“CassandraSource”。 复制活动源部分支持以下属性：
+要从 Cassandra 复制数据，请将复制活动中的源类型设置为“CassandraSource”。 复制活动**source**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -176,8 +184,8 @@ Cassandra 链接的服务支持以下属性：
 | ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| BOOLEAN |布尔 |
-| DECIMAL |小数 |
+| BOOLEAN |Boolean |
+| DECIMAL |Decimal |
 | DOUBLE |Double |
 | FLOAT |Single |
 | INET |String |
@@ -187,7 +195,7 @@ Cassandra 链接的服务支持以下属性：
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |String |
-| VARINT |小数 |
+| VARINT |Decimal |
 
 > [!NOTE]
 > 对于集合类型（映射、集、列表等），请参阅[通过虚拟表使用 Cassandra 集合类型](#work-with-collections-using-virtual-table)部分。
@@ -257,6 +265,10 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 | 1 |C |
 | 3 |A |
 | 3 |E |
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md##supported-data-stores-and-formats)。

@@ -1,5 +1,5 @@
 ---
-title: 预测意向
+title: 教程：预测意向 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，创建可预测用户意向的自定义应用。 此应用是最简单类型的 LUIS 应用，因为它不从话语文本（例如电子邮件地址或日期）提取各种数据元素。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7139876f64841a877e688ec6faf03597c527d1f2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593907"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375826"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>教程：生成 LUIS 应用，以确定用户意向
 
@@ -45,7 +45,7 @@ ms.locfileid: "56593907"
 
 此应用具有多个意向。 
 
-|意向|目的|
+|Intent|目的|
 |--|--|
 |ApplyForJob|确定用户是否正在申请工作。|
 |GetJobInformation|确定用户是否正在寻找有关常规工作或特定工作的信息。|
@@ -57,11 +57,11 @@ ms.locfileid: "56593907"
 
 ## <a name="create-intent-for-job-information"></a>创建工作信息的意向
 
-1. 选择“创建新意向”。 输入新意向名称 `GetJobInformation`。 当某位用户想要获取公司空缺职位的信息时，就会预测此意向。 
+1. 选择“创建新意向”  。 输入新意向名称 `GetJobInformation`。 当某位用户想要获取公司空缺职位的信息时，就会预测此意向。 
 
     ![语言理解 (LUIS) 新建意向对话框的屏幕截图](media/luis-quickstart-intents-only/create-intent.png "Screenshot of Language Understanding (LUIS) New intent dialog")
 
-1. 选择“完成”。
+1. 选择“完成”  。
 
 2. 将多个示例话语添加到你预期用户会请求的此意向：
 
@@ -86,7 +86,7 @@ ms.locfileid: "56593907"
 
     [![为 MyStore 意向输入新话语的屏幕截图](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Screenshot of entering new utterances for MyStore intent")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
-    可通过提供示例话语来训练 LUIS，让其了解应该根据哪些类型的话语预测出此意向。 
+    可通过提供示例话语来训练 LUIS，让其了解应该根据哪些类型的话语预测出此意向  。 
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
@@ -129,7 +129,7 @@ ms.locfileid: "56593907"
     }
     ```
 
-    `verbose=true` 查询字符串参数意味着在应用的查询结果中包含“所有意向”。 实体数组为空，因为此应用当前没有任何实体。 
+    `verbose=true` 查询字符串参数意味着在应用的查询结果中包含“所有意向”  。 实体数组为空，因为此应用当前没有任何实体。 
 
     JSON 结果中标识了评分最高的意向作为 **`topScoringIntent`** 属性。 所有评分介于 1 和 0 之间，评分越接近 1 越好。 
 
@@ -137,11 +137,11 @@ ms.locfileid: "56593907"
 
 返回到 LUIS 门户并创建一个新的意向，以便确定用户话语是否与申请工作有关。
 
-1. 在右上侧菜单中选择“生成”，返回到应用生成界面。
+1. 在右上侧菜单中选择“生成”，返回到应用生成界面。 
 
-1. 从左侧菜单中选择“意向”以进入意向列表。
+1. 从左侧菜单中选择“意向”以进入意向列表  。
 
-1. 选择“创建新意向”，并输入名称 `ApplyForJob`。 
+1. 选择“创建新意向”，并输入名称 `ApplyForJob`。  
 
     ![用于创建新意向的 LUIS 对话框](./media/luis-quickstart-intents-only/create-applyforjob-intent.png)
 

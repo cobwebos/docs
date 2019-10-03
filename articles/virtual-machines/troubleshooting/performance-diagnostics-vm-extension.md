@@ -4,22 +4,21 @@ description: 介绍适用于 Windows 的 Azure 性能诊断 VM 扩展。
 services: virtual-machines-windows'
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: na
 tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002732"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057546"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>适用于 Windows 的 Azure 性能诊断 VM 扩展
 
@@ -28,7 +27,7 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 > [!NOTE]
 > 如果要从 Azure 门户为非经典 VM 运行 VM 上的诊断，建议使用新体验。 有关详细信息，请参阅 [Azure 虚拟机的性能诊断](performance-diagnostics.md) 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 此扩展可以安装在 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016 上。 它还可以安装在 Windows 8.1 和 Windows 10 上。
 
@@ -70,15 +69,15 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 |   **名称**   |**值/示例**|       **说明**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API 的版本。
-|发布者|Microsoft.Azure.Performance.Diagnostics|扩展的发布服务器命名空间。
+|publisher|Microsoft.Azure.Performance.Diagnostics|扩展的发布服务器命名空间。
 |type|AzurePerformanceDiagnostics|VM 扩展的类型。
 |typeHandlerVersion|1.0|扩展处理程序的版本。
-|performanceScenario|基本|需为其捕获数据的性能方案。 有效值为：“基本”、“vmslow”、“azurefiles”和“自定义”。
+|performanceScenario|基础|需为其捕获数据的性能方案。 有效值为：“基本”、“vmslow”、“azurefiles”和“自定义”。
 |traceDurationInSeconds|300|在选择任意跟踪选项的情况下的跟踪持续时间。
 |perfCounterTrace|p|启用性能计数器跟踪的选项。 有效值为“p”或空值。 如果不希望捕获此跟踪，请将该值留空。
 |networkTrace|n|启用网络跟踪的选项。 有效值为 n 或空值。 如果不希望捕获此跟踪，请将该值留空。
-|xperfTrace|x|启用 XPerf 跟踪的选项。 有效值为“x”或空值。 如果不希望捕获此跟踪，请将该值留空。
-|storPortTrace|s|启用 StorPort 跟踪的选项。 有效值为 **s** 或空值。 如果不希望捕获此跟踪，请将该值留空。
+|xperfTrace|X|启用 XPerf 跟踪的选项。 有效值为“x”或空值。 如果不希望捕获此跟踪，请将该值留空。
+|storPortTrace|秒|启用 StorPort 跟踪的选项。 有效值为 **s** 或空值。 如果不希望捕获此跟踪，请将该值留空。
 |srNumber|123452016365929|支持票证编号（如果有）。 将此值留空（如果没有此值）。
 |requestTimeUtc|2017-09-28T22:08:53.736Z|UTC 格式的当前日期时间。 如果使用门户来安装此扩展，则不需要提供此值。
 |resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|VM 的唯一标识符。
@@ -99,7 +98,7 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 4. 选择“Azure 性能诊断”，查看条款和条件，然后选择“创建”。
 
     ![“新建资源”屏幕的屏幕截图，其中突出显示了“Azure 性能诊断”](media/performance-diagnostics-vm-extension/create-azure-performance-diagnostics-extension.png)
-5. 提供用于安装的参数值，然后选择“确定”安装扩展。 有关支持的方案的详细信息，请参阅[如何使用 PerfInsights](how-to-use-perfInsights.md#supported-troubleshooting-scenarios)。 
+5. 提供用于安装的参数值，然后选择“确定”安装扩展。 有关支持的方案的详细信息，请参阅[如何使用 PerfInsights](how-to-use-perfinsights.md#supported-troubleshooting-scenarios)。 
 
     ![“安装扩展”对话框的屏幕截图](media/performance-diagnostics-vm-extension/install-the-extension.png)
 6. 安装成功后，会看到一条指示此状态的消息。

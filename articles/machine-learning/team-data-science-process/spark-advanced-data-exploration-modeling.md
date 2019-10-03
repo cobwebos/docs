@@ -12,11 +12,11 @@ ms.date: 02/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5f6145e581393d874871d214515a660f987d1d7f
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523743"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60253428"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>使用 Spark 进行高级数据探索和建模
 
@@ -241,7 +241,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 ![按乘客数的行程频率](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-可通过使用笔记本中的“类型”菜单按钮从多个不同类型的可视化（表、饼图、行、区域或栏）中选择。 此处显示了条形图。
+可通过使用笔记本中的“类型”  菜单按钮从多个不同类型的可视化（表、饼图、行、区域或栏）中选择。 此处显示了条形图。
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>绘制小费金额以及小费金额如何随乘客数和车费金额变化的直方图。
 使用 SQL 查询为数据采样。

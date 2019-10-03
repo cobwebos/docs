@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785378"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66159152"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>适用于 StorSimple 的基于角色的访问控制
 
@@ -37,12 +37,12 @@ ms.locfileid: "59785378"
 
 * **自定义角色** - 如果内置角色无法满足需求，可创建适用于 StorSimple 的自定义 RBAC 角色。 若要创建自定义 RBAC 角色，首先需使用某个内置角色，对其进行编辑，然后将其导回环境中。 使用 Azure PowerShell 或 Azure CLI 管理角色的下载和上传。 有关详细信息，请参阅[针对基于角色的访问控制创建自定义角色](../role-based-access-control/custom-roles.md)。
 
-若要在 Azure 门户中查看可用于 StorSimple 设备用户的不同角色，请转到 StorSimple 设备管理器服务，然后转到“访问控制(IAM)”>“角色”。
+若要在 Azure 门户中查看可用于 StorSimple 设备用户的不同角色，请转到 StorSimple 设备管理器服务，然后转到“访问控制(IAM)”>“角色”  。
 
 
 ## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>为 StorSimple 基础结构管理员创建自定义角色
 
-在以下示例中，我们首先使用内置角色“读者”，该角色可使用户查看所有资源范围，但不能对其进行编辑或创建新的范围。 然后，扩展此角色以创建新的自定义角色 StorSimple 基础结构管理员。将此角色分配给可以管理 StorSimple 设备基础结构的用户。
+在以下示例中，我们首先使用内置角色“读者”，该角色可使用户查看所有资源范围，但不能对其进行编辑或创建新的范围  。 然后，扩展此角色以创建新的自定义角色 StorSimple 基础结构管理员。将此角色分配给可以管理 StorSimple 设备基础结构的用户。
 
 1. 以管理员身份运行 Windows PowerShell。
 
@@ -58,9 +58,9 @@ ms.locfileid: "59785378"
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. 在 Visual Studio 中打开 JSON 文件。 可看到典型的 RBAC 角色由三个主要节组成：Actions、NotActions 和 AssignableScopes。
+4. 在 Visual Studio 中打开 JSON 文件。 可看到典型的 RBAC 角色由三个主要节组成：Actions、NotActions 和 AssignableScopes    。
 
-    Actions 节列出了允许此角色执行的所有操作。 每个操作都是从资源提供程序分配的。 对于 StorSimple 基础结构管理员，请使用 `Microsoft.StorSimple` 资源提供程序。
+    Actions 节列出了允许此角色执行的所有操作  。 每个操作都是从资源提供程序分配的。 对于 StorSimple 基础结构管理员，请使用 `Microsoft.StorSimple` 资源提供程序。
 
     使用 PowerShell 可查看订阅中可用且注册的所有资源提供程序。
 
@@ -68,9 +68,9 @@ ms.locfileid: "59785378"
 
     还可查看可用于管理资源提供程序的所有 PowerShell cmdlet。
 
-    NotActions 节列出了特定 RBAC 角色的所有受限制操作。 在此示例中，不会限制任何操作。
+    NotActions 节列出了特定 RBAC 角色的所有受限制操作  。 在此示例中，不会限制任何操作。
     
-    AssignableScopes 下列出了订阅 ID。 确保 RBAC 角色包含它所应用到的显式订阅 ID。 如果未指定正确的订阅 ID，则不能导入订阅中的角色。
+    AssignableScopes 下列出了订阅 ID  。 确保 RBAC 角色包含它所应用到的显式订阅 ID。 如果未指定正确的订阅 ID，则不能导入订阅中的角色。
 
     编辑文件，同时记住上述注意事项。
 
@@ -107,7 +107,7 @@ ms.locfileid: "59785378"
     `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 
 
-此角色现应显示在“访问控制”边栏选项卡的角色列表中。
+此角色现应显示在“访问控制”边栏选项卡的角色列表中  。
 
 ![查看 RBAC 角色](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
@@ -165,27 +165,27 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 授予资源、资源组或订阅（即角色分配范围）内的访问权限。 提供访问权限时，请牢记在父节点上授予的访问权限会由子节点继承。 有关详细信息，请转到[基于角色的访问控制](../role-based-access-control/overview.md)。
 
-1. 请转到“访问控制(IAM)”。 在“访问控制”边栏选项卡上单击“+ 添加”。
+1. 请转到“访问控制(IAM)”  。 在“访问控制”边栏选项卡上单击“+ 添加”  。
 
     ![添加对 RBAC 角色的访问权限](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
-2. 选择要分配的角色，在本例中为“StorSimple 基础结构管理员”。
+2. 选择要分配的角色，在本例中为“StorSimple 基础结构管理员”  。
 
 3. 在你想要授予访问权限的目录中选择用户、组或应用程序。 可以通过显示名称、电子邮件地址和对象标识符搜索该目录。
 
-4. 选择“保存”创建分配。
+4. 选择“保存”创建分配  。
 
     ![将权限添加到 RBAC 角色](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
 
-“添加用户”通知会跟踪进度。 成功添加用户后，访问控制中的用户列表会进行更新。
+“添加用户”通知会跟踪进度  。 成功添加用户后，访问控制中的用户列表会进行更新。
 
 ## <a name="view-permissions-for-the-custom-role"></a>查看自定义角色的权限
 
 创建此角色后，可在 Azure 门户中查看与此角色关联的权限。
 
-1. 若要查看与此角色关联的权限，请转到“访问控制(IAM)”>“角色”>“StorSimple 基础结构管理员”。随即显示此角色中的用户列表。
+1. 若要查看与此角色关联的权限，请转到“访问控制(IAM)”>“角色”>“StorSimple 基础结构管理员”  。随即显示此角色中的用户列表。
 
-2. 选择 StorSimple 基础结构管理员用户，然后单击“权限”。
+2. 选择 StorSimple 基础结构管理员用户，然后单击“权限”  。
 
     ![查看 StorSimple 基础结构管理员角色的权限](./media/storsimple-8000-role-based-access-control/rbac-roles-view-permissions.png)
 

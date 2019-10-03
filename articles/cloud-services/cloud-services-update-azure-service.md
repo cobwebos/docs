@@ -2,24 +2,17 @@
 title: 如何更新云服务 | Microsoft Docs
 description: 了解如何在 Azure 中更新云服务。 了解如何云服务上进行更新以确保可用性。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: gwallace
+ms.openlocfilehash: ae9d124391a1b17187ca98964874f681352498da
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917215"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945353"
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新云服务
 
@@ -28,7 +21,7 @@ ms.locfileid: "58917215"
 ## <a name="update-an-azure-service"></a>更新 Azure 服务
 Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD) 是角色实例的逻辑集，将以组的方式进行更新。  Azure 每次更新一个 UD 的一个云服务，使其他 UD 中的实例能够继续处理流量。
 
-升级域的默认数量为 5 个。 可以在服务定义文件 (.csdef) 中包含 upgradeDomainCount 属性以指定不同数量的升级域。 有关 upgradeDomainCount 属性的详细信息，请参阅 [WebRole 架构](/previous-versions/azure/reference/gg557553(v=azure.100))或 [WorkerRole 架构](/previous-versions/azure/reference/gg557552(v=azure.100))。
+升级域的默认数量为 5 个。 可以在服务定义文件 (.csdef) 中包含 upgradeDomainCount 属性以指定不同数量的升级域。 有关 upgradeDomainCount 属性的详细信息, 请参阅[Azure 云服务定义架构 (. 文件)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)。
 
 在为服务中的一个或多个角色执行就地更新时，Azure 会根据所属的升级域更新角色实例集。 Azure 更新给定升级域中的所有实例（停止这些实例，更新这些实例并将它们重新联机），然后移到下一个域上。 通过仅停止在当前升级域中运行的实例，Azure 确保在执行更新时会对运行的服务造成的影响降到最低。 有关详细信息，请参阅本文后面的[如何进行更新](#howanupgradeproceeds)。
 
@@ -106,7 +99,7 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 
 在将服务从单个实例升级到多个实例时，由于 Azure 升级服务的方式，会在执行升级时停止服务。 保证服务可用性的服务级别协议仅适用于部署的具有多个实例的服务。 以下列表描述了每种 Azure 服务升级方案如何影响每个驱动器上的数据：
 
-|场景|C 盘|D 盘|E 盘|
+|应用场景|C 盘|D 盘|E 盘|
 |--------|-------|-------|-------|
 |VM 重启|已保留|已保留|已保留|
 |门户重启|已保留|已保留|已破坏|
@@ -141,7 +134,7 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
   1. Locked 元素用于检测何时可以在给定部署上调用变动操作。
   2. RollbackAllowed 元素用于检测何时可以在给定部署上调用“[回滚更新或升级](/previous-versions/azure/reference/hh403977(v=azure.100))”操作。
 
-  要执行回滚，不需要检查 Locked 和 RollbackAllowed 元素。 确认 RollbackAllowed 设置为 true 就足够了。 如果使用请求标头设置为调用这些方法时，才会返回这些元素"x ms 版本：2011-10-01"或更高版本。 有关版本控制标头的详细信息，请参阅[服务管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
+  要执行回滚，不需要检查 Locked 和 RollbackAllowed 元素。 确认 RollbackAllowed 设置为 true 就足够了。 仅当使用设置为 "x-ms-版本" 的请求标头调用这些方法时, 才会返回这些元素。2011-10-01 "或更高版本。 有关版本控制标头的详细信息，请参阅[服务管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
 
 在某些情况下，不支持回滚更新或升级，这些情况包括：
 
@@ -162,11 +155,11 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 
 在进行第一个更新的同时启动第二个更新操作以类似回滚操作的方式执行。 如果第二个更新是在自动模式下执行的，将立即升级第一个升级域，这可能会导致多个升级域中的实例在同一时刻处于脱机状态。
 
-变异操作如下所示：[更改部署配置](/previous-versions/azure/reference/ee460809(v=azure.100))，[升级部署](/previous-versions/azure/reference/ee460793(v=azure.100))，[更新部署状态](/previous-versions/azure/reference/ee460808(v=azure.100))，[删除部署](/previous-versions/azure/reference/ee460815(v=azure.100))，和[回滚更新或升级](/previous-versions/azure/reference/hh403977(v=azure.100))。
+变异操作如下所示:[更改部署配置](/previous-versions/azure/reference/ee460809(v=azure.100))、[升级部署](/previous-versions/azure/reference/ee460793(v=azure.100))、[更新部署状态](/previous-versions/azure/reference/ee460808(v=azure.100))、[删除部署](/previous-versions/azure/reference/ee460815(v=azure.100))以及[回滚更新或升级](/previous-versions/azure/reference/hh403977(v=azure.100))。
 
 “[获取部署](/previous-versions/azure/reference/ee460804(v=azure.100))”和“[获取云服务属性](/previous-versions/azure/reference/ee460806(v=azure.100))”这两个操作返回 Locked 标志，可以通过检查该标志，以确定是否可以在给定部署上调用变动操作。
 
-若要调用返回 Locked 标志的这些方法版本，必须将请求标头设置为"x-ms-version 的：2011-10-01"或更高版本。 有关版本控制标头的详细信息，请参阅[服务管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
+若要调用返回 Locked 标志的这些方法的版本, 必须将请求标头设置为 "x-ms-版本:2011-10-01 "或更高版本。 有关版本控制标头的详细信息，请参阅[服务管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
 
 <a name="distributiondfroles"></a>
 

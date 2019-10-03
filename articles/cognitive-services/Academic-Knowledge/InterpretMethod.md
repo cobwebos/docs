@@ -10,12 +10,13 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ROBOTS: NOINDEX
+ms.openlocfilehash: d960aff109e0eca70cb87463770620093e563f63
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57975485"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706674"
 ---
 # <a name="interpret-method"></a>interpret 方法
 
@@ -29,14 +30,14 @@ REST 终结点：
 
 ## <a name="request-parameters"></a>请求参数
 
-名称     | 值 | 必需？  | 描述
+名称     | ReplTest1 | 必需?  | 描述
 ---------|---------|---------|---------
 **query**    | 文本字符串 | 是 | 用户输入的查询。  如果 complete 设置为 1，查询将被解释为生成查询自动完成建议的前缀。        
 **model**    | 文本字符串 | 否  | 要查询的模型的名称。  当前，值默认为“最新”。        
 complete | 0 或 1 | 否<br>default:0  | 1 意味着自动完成建议是基于语法和关系图数据生成的。         
-**count**    | Number | 否<br>default:10 | 返回的最大解释数。         
-**offset**   | Number | 否<br>default:0  | 返回的第一个解释的索引。 例如，count=2&offset=0 返回解释 0 和 1。 count=2&offset=2 返回解释 2 和 3。       
-timeout  | Number | 否<br>default:1000 | 超时（以毫秒为单位）。 仅返回在超时之前找到的解释。
+**计数**    | 数量 | 否<br>default:10 | 返回的最大解释数。         
+**offset**   | 数量 | 否<br>default:0  | 返回的第一个解释的索引。 例如，count=2&offset=0 返回解释 0 和 1。 count=2&offset=2 返回解释 2 和 3。       
+**timeout**  | 数量 | 否<br>default:1000 | 超时（以毫秒为单位）。 仅返回在超时之前找到的解释。
 
 <br>
   
@@ -57,11 +58,11 @@ aborted | 如果请求超时，则为 True。
 
 <br>
 
-#### <a name="example"></a>示例：
+#### <a name="example"></a>例如：
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime&complete=1&count=2
  ```
-<br>以下响应包含前两个（归因于参数 count=2）最有可能的解释，这两个解释完成了部分 papers by jaime 用户输入：papers by jaime teevan  和 papers by jaime green。  该服务生成查询完成，而不是只考虑作者 jaime 的精确匹配，因为请求指定 complete=1。 请注意，规范值 j l green 通过同义词 jamie green 匹配，如解析中所示。
+<br>以下响应包含前两个（归因于参数 count=2）最有可能的解释，这两个解释完成了部分 papers by jaime用户输入：papers by jaime teevan 和 papers by jaime green。  该服务生成查询完成，而不是只考虑作者 jaime的精确匹配，因为请求指定 complete=1。 请注意，规范值 j l green通过同义词jamie green 匹配，如解析中所示。
 
 
 ```JSON

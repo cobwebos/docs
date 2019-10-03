@@ -1,26 +1,26 @@
 ---
-title: 快速入门：提取手写文本 - JavaScript
+title: 快速入门：提取印刷体文本和手写文本 - REST、JavaScript
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将使用计算机视觉 API 和 JavaScript 从图像中提取手写文本。
+description: 在本快速入门中，你将使用计算机视觉 API 和 JavaScript 从图像中提取印刷体文本和手写文本。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 887e3b24a061225c2b4adbfdc5e5696ed268e349
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 36c5eff33c47e62d8b17be7fa4ca05c925f73250
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540204"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137835"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 JavaScript 提取手写文本
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>快速入门：使用计算机视觉 REST API 和 JavaScript 提取印刷体文本和手写文本
 
-在本快速入门中，你将使用计算机视觉的 REST API 从图像中提取手写文本。 使用[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API 和[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API，可以检测图像中的手写文本，并将识别的字符提取到计算机可用的字符流中。
+在本快速入门中，你将使用计算机视觉 REST API 从图像中提取印刷体文本和/或手写文本。 使用[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)和[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)方法，可以检测图像中的文本，并将识别的字符提取到计算机可读的字符流中。 该 API 将确定用于每行文本的识别模型，因此它支持同时包含印刷体文本和手写文本的图像。
 
 > [!IMPORTANT]
 > 不同于 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)方法以异步方式运行。 此方法不返回成功响应正文中的任何信息。 相反，批量读取方法返回 `Operation-Content` 响应标头字段值中的 URI。 然后就可以调用此 URI，它表示[读取操作结果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)方法，用于检查状态并返回批量读取方法调用的结果。
@@ -29,27 +29,24 @@ ms.locfileid: "57540204"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须具有计算机视觉的订阅密钥。 要获取订阅密钥，请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
+必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
 要创建和运行示例，请执行以下步骤：
 
 1. 将以下代码复制到文本编辑器中。
-1. 必要时在代码中进行如下更改：
-    1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
-    1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[批量读取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)方法的终结点 URL。
-    1. （可选）将 `inputImage` 控件的 `value` 属性的值替换为要从中提取手写文本的另一图像的 URL。
-1. 将代码保存为以 `.html` 为扩展名的文件。 例如，`get-handwriting.html`。
+1. （可选）将 `inputImage` 控件的 `value` 属性的值替换为要从中提取文本的另一图像的 URL。
+1. 将代码保存为以 `.html` 为扩展名的文件。 例如，`get-text.html`。
 1. 打开一个浏览器窗口。
 1. 在浏览器中，将文件拖放到浏览器窗口。
-1. 在浏览器中显示网页时，选择“读取图像”按钮。
+1. 在浏览器中显示网页时，选择“读取图像”按钮  。
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Handwriting Sample</title>
+    <title>Text Recognition Sample</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
@@ -60,24 +57,11 @@ ms.locfileid: "57540204"
         // *** Update or verify the following values. ***
         // **********************************************
 
-        // Replace <Subscription Key> with your valid subscription key.
-        var subscriptionKey = "<Subscription Key>";
-
-        // You must use the same Azure region in your REST API method as you used to
-        // get your subscription keys. For example, if you got your subscription keys
-        // from the West US region, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
-        var uriBase =
-            "https://westus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
-
-        // Request parameter.
-        var params = {
-            "mode": "Handwritten",
-        };
+        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
+        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
+        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        
+        var uriBase = endpoint + "vision/v2.0/read/core/asyncBatchAnalyze";
 
         // Display the image.
         var sourceImageUrl = document.getElementById("inputImage").value;
@@ -88,7 +72,7 @@ ms.locfileid: "57540204"
         //
         // Make the first REST API call to submit the image for processing.
         $.ajax({
-            url: uriBase + "?" + $.param(params),
+            url: uriBase,
 
             // Request headers.
             beforeSend: function(jqXHR){
@@ -104,10 +88,10 @@ ms.locfileid: "57540204"
 
         .done(function(data, textStatus, jqXHR) {
             // Show progress.
-            $("#responseTextArea").val("Handwritten text submitted. " +
+            $("#responseTextArea").val("Text submitted. " +
                 "Waiting 10 seconds to retrieve the recognized text.");
 
-            // Note: The response may not be immediately available. Handwriting
+            // Note: The response may not be immediately available. Text
             // recognition is an asynchronous operation that can take a variable
             // amount of time depending on the length of the text you want to
             // recognize. You may need to wait or retry the GET operation.
@@ -165,8 +149,8 @@ ms.locfileid: "57540204"
         });
     };
 </script>
-<h1>Read handwritten image:</h1>
-Enter the URL to an image of handwritten text, then click
+<h1>Read text from image:</h1>
+Enter the URL to an image of text, then click
 the <strong>Read image</strong> button.
 <br><br>
 Image to read:
@@ -294,10 +278,6 @@ Image to read:
   ]
 }
 ```
-
-## <a name="clean-up-resources"></a>清理资源
-
-不再需要该文件时，请将其删除。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,64 +9,63 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/1/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f50f013020c704ddc294a59f8c6c5dac24bbd5a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 51e97089b1de88ccf9f45b1a0f429abc0cfac9f3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850951"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101331"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
-[773830]:https://launchpad.support.sap.com/#/notes/773830
+[773830]: https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
-[1245200]:https://launchpad.support.sap.com/#/notes/1245200
+[1245200]: https://launchpad.support.sap.com/#/notes/1245200
 [1409604]:https://launchpad.support.sap.com/#/notes/1409604
-[1558958]:https://launchpad.support.sap.com/#/notes/1558958
-[1585981]:https://launchpad.support.sap.com/#/notes/1585981
-[1588316]:https://launchpad.support.sap.com/#/notes/1588316
-[1590719]:https://launchpad.support.sap.com/#/notes/1590719
+[1558958]: https://launchpad.support.sap.com/#/notes/1558958
+[1585981]: https://launchpad.support.sap.com/#/notes/1585981
+[1588316]: https://launchpad.support.sap.com/#/notes/1588316
+[1590719]: https://launchpad.support.sap.com/#/notes/1590719
 [1597355]:https://launchpad.support.sap.com/#/notes/1597355
-[1605680]:https://launchpad.support.sap.com/#/notes/1605680
+[1605680]: https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
-[1619967]:https://launchpad.support.sap.com/#/notes/1619967
-[1750510]:https://launchpad.support.sap.com/#/notes/1750510
-[1752266]:https://launchpad.support.sap.com/#/notes/1752266
-[1757924]:https://launchpad.support.sap.com/#/notes/1757924
-[1757928]:https://launchpad.support.sap.com/#/notes/1757928
-[1758182]:https://launchpad.support.sap.com/#/notes/1758182
-[1758496]:https://launchpad.support.sap.com/#/notes/1758496
+[1619967]: https://launchpad.support.sap.com/#/notes/1619967
+[1750510]: https://launchpad.support.sap.com/#/notes/1750510
+[1752266]: https://launchpad.support.sap.com/#/notes/1752266
+[1757924]: https://launchpad.support.sap.com/#/notes/1757924
+[1757928]: https://launchpad.support.sap.com/#/notes/1757928
+[1758182]: https://launchpad.support.sap.com/#/notes/1758182
+[1758496]: https://launchpad.support.sap.com/#/notes/1758496
 [1772688]:https://launchpad.support.sap.com/#/notes/1772688
-[1814258]:https://launchpad.support.sap.com/#/notes/1814258
-[1882376]:https://launchpad.support.sap.com/#/notes/1882376
+[1814258]: https://launchpad.support.sap.com/#/notes/1814258
+[1882376]: https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
-[1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[1941500]:https://launchpad.support.sap.com/#/notes/1941500
-[1956005]:https://launchpad.support.sap.com/#/notes/1956005
-[1973241]:https://launchpad.support.sap.com/#/notes/1973241
+[1922555]: https://launchpad.support.sap.com/#/notes/1922555
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1941500]: https://launchpad.support.sap.com/#/notes/1941500
+[1956005]: https://launchpad.support.sap.com/#/notes/1956005
+[1973241]: https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
 [2039619]:https://launchpad.support.sap.com/#/notes/2039619
 [2069760]:https://launchpad.support.sap.com/#/notes/2069760
-[2121797]:https://launchpad.support.sap.com/#/notes/2121797
-[2134316]:https://launchpad.support.sap.com/#/notes/2134316
+[2121797]: https://launchpad.support.sap.com/#/notes/2121797
+[2134316]: https://launchpad.support.sap.com/#/notes/2134316
 [2171857]:https://launchpad.support.sap.com/#/notes/2171857
 [2178632]:https://launchpad.support.sap.com/#/notes/2178632
 [2191498]:https://launchpad.support.sap.com/#/notes/2191498
@@ -393,7 +392,7 @@ SAP ASE 可执行文件应位于或安装在 VM 的 OS 磁盘的系统驱动器�
 > 
 > 
 
-可以在[此处][virtual-machines-azurerm-versus-azuresm]找到有关 DNS 名称的更多详细信息。
+可在[此处][virtual-machines-azurerm-versus-azuresm]找到有关 DNS 名称的更多详细信息。
 
 将 SAP 配置文件参数 icm/host_name_full 设置为 Azure VM 的 DNS 名称，其链接可能如下所示：
 
@@ -504,7 +503,7 @@ SAP ASE 可执行文件应位于或安装在 VM 的根文件系统 ( /sybase ) �
 
 此配置使 tempdb 使用的空间比系统驱动器可以提供的还多。 作为参考，可以在运行于本地的现有系统上检查 tempdb 设备的大小。 或者，这类配置针对 tempdb 启用系统驱动器无法提供的 IOPS 数目。 本地运行的系统可以用来监视 tempdb 的 I/O 工作负荷。
 
-永远不要将任何 SAP ASE 目录放入 VM 的 /mnt 或 /mnt/resource。 对于 SAP ASE，此建议也适用于 tempdb，即使 tempdb 中保留的对象只是暂时性的也适用。 因为 /mnt 或 /mnt/resource 是默认的 Azure VM 临时空间，这不是永久的。 可以在[此文][virtual-machines-linux-how-to-attach-disk]中找到有关 Azure VM 临时空间的更多详细信息
+永远不要将任何 SAP ASE 目录放入 VM 的 /mnt 或 /mnt/resource。 对于 SAP ASE，此建议也适用于 tempdb，即使 tempdb 中保留的对象只是暂时性的也适用。 因为 /mnt 或 /mnt/resource 是默认的 Azure VM 临时空间，这不是永久的。 可在[此文][virtual-machines-linux-how-to-attach-disk]中找到有关 Azure VM 临时空间的更多详细信息
 
 有关数据和事务日志文件部署的信息，请参阅[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述和建议。 对于基于 Linux 的部署，建议使用 LVM 或 MDADM 来构建具有足够 IOPS、吞吐量和卷的带区集。 
 
@@ -546,7 +545,7 @@ SAP ASE 可执行文件应位于或安装在 VM 的根文件系统 ( /sybase ) �
 > 
 > 
 
-可以在[此处][virtual-machines-azurerm-versus-azuresm]找到有关 DNS 名称的更多详细信息。
+可在[此处][virtual-machines-azurerm-versus-azuresm]找到有关 DNS 名称的更多详细信息。
 
 将 SAP 配置文件参数 icm/host_name_full 设置为 Azure VM 的 DNS 名称，其链接可能如下所示：
 

@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: juliako
+ms.reviewer: cenkdin;anilmur
+ms.openlocfilehash: be3c75680599c07a3cebe3dcf0436884958e1706
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890043"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016666"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 编码器发送单比特率实时流 
 > [!div class="op_single_selector"]
@@ -33,7 +34,7 @@ ms.locfileid: "57890043"
 
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
 * 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
 * 安装最新版本的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
@@ -44,7 +45,7 @@ ms.locfileid: "57890043"
 * 在确定带宽要求时，可以认为它就是将流式处理比特率翻倍。 虽然此要求不是强制性要求，但它可以减轻网络拥塞的影响。
 * 使用基于软件的编码器时，请关闭任何不需要的程序。
 
-## <a name="create-a-channel"></a>创建通道
+## <a name="create-a-channel"></a>创建频道
 1. 在 AMSE 工具中，导航到“实时”选项卡，并右键单击频道区域。 从菜单中选择“创建频道…” 从菜单中。
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
@@ -69,7 +70,7 @@ ms.locfileid: "57890043"
 >
 >
 
-## <a name="a-idconfigurewirecastrtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />配置 Telestream Wirecast 编码器
+## <a name="a-idconfigure_wirecast_rtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />配置 Telestream Wirecast 编码器
 在本教程中，将使用以下输出设置。 本部分的其余内容介绍更详细的配置步骤。
 
 **视频**：
@@ -91,10 +92,10 @@ ms.locfileid: "57890043"
 2. 导航到“输出”选项卡并选择“输出设置…”，以配置输出。
 
     确保已将“输出目标”设置为“RTMP 服务器”。
-3. 单击“确定”。
+3. 单击 **“确定”** 。
 4. 在设置页上，将“目标”字段设置为“Azure 媒体服务”。
 
-    编码配置文件已预先选择为 **Azure H.264 720p 16:9 (1280x720)**。 要自定义这些设置，请选择下拉列表右侧的齿轮图标，并选择“新建预设”。
+    编码配置文件已预先选择为 **Azure H.264 720p 16:9 (1280x720)** 。 要自定义这些设置，请选择下拉列表右侧的齿轮图标，并选择“新建预设”。
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. 配置编码器预设。
@@ -158,7 +159,7 @@ ms.locfileid: "57890043"
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
 2. 为节目命名，并根据需要调整“存档时段长度”（默认为 4 小时）。 还可以指定存储位置，也可以将其保留为默认值。  
 3. 选中“立即启动节目”框。
-4. 单击“创建节目” 。  
+4. 单击“创建节目”。  
 
    >[!NOTE]
    >创建节目需要的时间比创建频道需要的时间少。
@@ -168,7 +169,7 @@ ms.locfileid: "57890043"
 
 现在可以将流嵌入到播放器中，也可将其分发给受众进行实时观看。  
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 有关指南，请参阅[故障排除](media-services-troubleshooting-live-streaming.md)一文。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

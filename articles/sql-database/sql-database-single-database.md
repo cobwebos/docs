@@ -7,21 +7,20 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-manager: craigg
-ms.date: 034/08/2019
-ms.openlocfilehash: 0437ba24727c06e874b49908a5a22d0063de72fd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.date: 04/08/2019
+ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799093"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316658"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
 
-单一数据库部署选项使用自己的资源集在 Azure SQL 数据库中创建数据库，并通过 SQL 数据库服务器进行管理。 使用单一数据库，每个数据库都彼此独立且可移植，各自在[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中有其自己的服务层，并具备有保证的计算大小。
+单一数据库部署选项使用自己的资源集在 Azure SQL 数据库中创建数据库，并通过 SQL 数据库服务器进行管理。 使用单一数据库，每个数据库都彼此独立且可移植，各自在[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中有其自己的服务层级，并具备有保证的计算大小。
 
 > [!IMPORTANT]
 > 单一数据库是用于 Azure SQL 数据库的三个部署选项之一。 其他两个是[弹性池](sql-database-elastic-pool.md)和[托管实例](sql-database-managed-instance.md)。
@@ -30,7 +29,7 @@ ms.locfileid: "59799093"
 
 ## <a name="dynamic-scalability"></a>动态可伸缩性
 
-可以在小型单一数据库中构建你的第一个应用，每个月只需在低性价比服务层中花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式将[服务层更改为](sql-database-single-database-scale.md)较高性价比服务层。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
+可以在无服务器（预览版）计算层级中以低成本构建第一个基于小型单一数据库的应用，或者在预配的计算层级中构建小型计算大小。 可以根据解决方案的需要，随时以手动或编程方式更改[计算或服务层级](sql-database-single-database-scale.md)。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 
 ## <a name="single-databases-and-elastic-pools"></a>单一数据库和弹性池
 
@@ -42,7 +41,7 @@ ms.locfileid: "59799093"
 
 ## <a name="availability-capabilities"></a>可用性功能
 
-单个数据库、 弹性池，托管的实例都提供了许多的可用性特征。 有关信息，请参阅[可用性特征](sql-database-technical-overview.md#availability-capabilities)。
+单一数据库、弹性池和托管实例全都提供许多可用性特征。 有关信息，请参阅[可用性特征](sql-database-technical-overview.md#availability-capabilities)。
 
 ## <a name="transact-sql-differences"></a>Transact-SQL 的差异
 
@@ -51,15 +50,15 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](sql-database-transact-sql-information.md)。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 SQL 数据库提供一系列[内置安全性和符合性](sql-database-security-overview.md)功能，帮助应用程序满足各种安全性和符合性要求。
 
 > [!IMPORTANT]
-> Azure SQL 数据库（所有部署选项）已通过了许多合规性标准的认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)在哪里可以找到 SQL 数据库法规认证的最新列表。
+> Azure SQL 数据库（所有部署选项）已通过了许多合规性标准的认证。 有关详细信息, 请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), 你可以在其中找到最新的 SQL 数据库符合性认证列表。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要快速开始使用单一数据库，请从 [Single database quickstart guide.md](sql-database-single-database-quickstart-guide.md) 开始。
+- 若要快速开始使用单个数据库，请首先了解[单一数据库快速入门指南](sql-database-single-database-quickstart-guide.md)。
 - 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](sql-database-single-database-migrate.md)。
 - 有关支持的功能的信息，请参阅[功能](sql-database-features.md)。

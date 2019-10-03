@@ -1,79 +1,94 @@
 ---
-title: 在逻辑应用中添加延迟 | Microsoft Docs
-description: 延迟和延迟到操作以及如何将它们用于 Azure 逻辑应用的概述。
-services: ''
-documentationcenter: ''
-author: jeffhollan
-manager: erikre
-editor: ''
-tags: connectors
-ms.assetid: 915f48bf-3bd8-4656-be73-91a941d0afcd
+title: 工作流-Azure 逻辑应用中的下一步操作的延迟
+description: 等待 Azure 逻辑应用中使用的延迟直到操作在逻辑应用工作流中运行下一步操作
+services: logic-apps
 ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/18/2016
-ms.author: jehollan
-ms.openlocfilehash: 15e581454b60319ab734f2fa5faf0d90e0a7c8bf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: deli, klam, LADocs
+tags: connectors
+ms.topic: conceptual
+ms.date: 05/25/2019
+ms.openlocfilehash: 27475fb3f086dbc5166a473e9d657d2dab723938
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893718"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66297635"
 ---
-# <a name="get-started-with-the-delay-and-delay-until-actions"></a>延迟和延迟到操作入门
-通过使用延迟和“延迟到”操作，可以完成各种工作流方案。
+# <a name="delay-running-the-next-action-in-azure-logic-apps"></a>在 Azure 逻辑应用中运行下一步操作的延迟
 
-例如，可以：
+若要使逻辑应用等待一段时间运行的下一步操作之前，可以添加内置**延迟-计划**操作，然后才能在逻辑应用的工作流中的操作。 或者，可以添加内置**延迟截止时间-安排**特定日期和时间之前运行的下一步操作之前要等待的操作。 有关内置的计划操作和触发器的详细信息，请参阅[计划和定期自动运行、 任务和使用 Azure 逻辑应用工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
+
+* **延迟**:等待指定数目的时间单位，例如秒、 分钟、 小时、 天、 周或几个月下, 一步操作运行之前。
+
+* **延迟截止时间**:等到指定的日期和时间之前在下一步操作运行。
+
+下面是一些示例方法使用这些操作：
 
 * 等到工作日通过电子邮件发送状态更新。
-* 在恢复和检索结果前，延迟工作流直到 HTTP 调用有时间完成。
 
-若要开始在逻辑应用中使用延迟操作，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 延迟工作流直到 HTTP 调用完成之前在恢复和检索数据。
 
-## <a name="use-the-delay-actions"></a>使用延迟操作
+## <a name="prerequisites"></a>必备组件
 
-操作是由在逻辑应用中定义的工作流执行的操作。 
-[了解有关操作的详细信息](../connectors/apis-list.md)。
+* Azure 订阅。 如果你没有订阅，则可以[注册免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-下面是如何在逻辑应用中使用延迟步骤的示例序列：
+* 有关的基本知识[逻辑应用](../logic-apps/logic-apps-overview.md)。 可以使用操作之前，必须首先使用触发器启动逻辑应用。 可以使用任何需要的触发器添加其他操作之前添加延迟操作。 本主题使用 Office 365 Outlook 触发器。 如果您熟悉逻辑应用，了解[如何创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-1. 添加触发器后，单击“新步骤”添加操作。
-2. 搜索“延迟”弹出延迟操作。 在此示例中，我们将选择“延迟”。
-   
-    ![延迟操作](./media/connectors-native-delay/using-action-1.png)
-3. 完成任意操作属性以配置延迟。
-   
-    ![延迟配置](./media/connectors-native-delay/using-action-2.png)
-4. 单击“保存”发布并激活逻辑应用。
+<a name="add-delay"></a>
 
-## <a name="action-details"></a>操作详细信息
-重复触发器具有以下可配置的属性。
+## <a name="add-the-delay-action"></a>添加延迟操作
 
-### <a name="delay-action"></a>延迟操作
-此操作使运行延迟特定时间间隔。
-* 表示它是必填字段。
+1. 在逻辑应用设计器中，你想要添加延迟操作，在步骤下选择**新步骤**。
 
-| 显示名称 | 属性名称 | 描述 |
-| --- | --- | --- |
-| 计数* |计数 |要延迟的时间单位数 |
-| 单位* |单位 |时间单位：`Second`、`Minute`、`Hour` 或 `Day` |
+   若要添加步骤之间的延迟操作，请将指针移连接步骤的箭头。 选择加号 （+），并选择**添加操作**。
 
-<br>
+1. 在搜索框中，输入作为筛选器的"延迟"。 在操作列表中选择此操作：**Delay**
 
-### <a name="delay-until-action"></a>延迟到操作
-此操作将运行延迟到指定日期/时间。
-* 表示它是必填字段。
+   ![添加"延迟"操作](./media/connectors-native-delay/add-delay-action.png)
 
-| 显示名称 | 属性名称 | 描述 |
-| --- | --- | --- |
-| 年* |timestamp |要延迟到的年 (GMT) |
-| 月* |timestamp |要延迟到的月 (GMT) |
-| 日* |timestamp |要延迟到的日 (GMT) |
+1. 指定要在下一步操作运行前等待时间的量。
 
-<br>
+   ![设置长时间延迟](./media/connectors-native-delay/delay-time-intervals.png)
+
+   | 属性 | JSON 名称 | 需要 | Type | 描述 |
+   |----------|-----------|----------|------|-------------|
+   | Count | 计数 | 是 | Integer | 要延迟的时间单位数 |
+   | 单位 | 单位 | 是 | String | 单位的时间，例如： `Second`， `Minute`， `Hour`， `Day`， `Week`，或 `Month` |
+   ||||||
+
+1. 添加你想要在工作流中运行的任何其他操作。
+
+1. 完成后，保存逻辑应用。
+
+<a name="add-delay-until"></a>
+
+## <a name="add-the-delay-until-action"></a>添加延迟-until 操作
+
+1. 在逻辑应用设计器中，你想要添加延迟操作，在步骤下选择**新步骤**。
+
+   若要添加步骤之间的延迟操作，请将指针移连接步骤的箭头。 选择加号 （+），并选择**添加操作**。
+
+1. 在搜索框中，输入作为筛选器的"延迟"。 在操作列表中选择此操作：**延迟截止时间**
+
+   ![添加“延迟截止时间”操作](./media/connectors-native-delay/add-delay-until-action.png)
+
+1. 当你想要恢复工作流提供的结束日期和时间。
+
+   ![指定何时结束延迟的时间戳](./media/connectors-native-delay/delay-until-timestamp.png)
+
+   | 属性 | JSON 名称 | 必选 | Type | 描述 |
+   |----------|-----------|----------|------|-------------|
+   | Timestamp | timestamp | 是 | String | 结束日期和时间的恢复工作流使用此格式： <p>YYYY-MM-DDThh:mm:ssZ <p>因此，例如，如果想 2017 年 9 月 18 日下午 2:00，则指定"2017年-09-18T14:00:00Z"。 <p>**注意：** 此时间格式必须遵循[ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)中[UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)，但如果没有[UTC 偏移量](https://en.wikipedia.org/wiki/UTC_offset)。 没有时区，必须在不包含任何空格末尾添加字母"Z"。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 |
+   ||||||
+
+1. 添加你想要在工作流中运行的任何其他操作。
+
+1. 完成后，保存逻辑应用。
 
 ## <a name="next-steps"></a>后续步骤
-现在，试用平台并[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
 
+* [创建、 安排和使用重复触发器运行重复任务和工作流](../connectors/connectors-native-recurrence.md)
+* [适用于逻辑应用连接器](../connectors/apis-list.md)

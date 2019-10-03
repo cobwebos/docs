@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 73bff460db8428332a92d8deb68bf062ca4134ae
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003150"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60758904"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>使用 Azure 门户管理 Azure Data Box Edge 上的共享
 
@@ -24,7 +24,7 @@ ms.locfileid: "60003150"
 若要将数据传输到 Azure，需在 Azure Data Box Edge 上创建共享。 在 Data Box Edge 设备上添加的共享可以是本地共享，也可以是用于将数据推送到云的共享。
 
  - **本地共享**：希望在设备本地处理数据时，请使用这些共享。
- - **共享**：希望将设备数据自动推送到云中的存储帐户时，请使用这些共享。 所有云功能（例如“刷新”和“同步存储密钥”）都适用于这些共享。
+ - **共享**：希望将设备数据自动推送到云中的存储帐户时，请使用这些共享。 所有云功能（例如“刷新”和“同步存储密钥”）都适用于这些共享。  
 
 在本文中，学习如何：
 
@@ -39,22 +39,22 @@ ms.locfileid: "60003150"
 
 在 Azure 门户中执行以下步骤，以创建共享。
 
-1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“网关”>“共享”。 在命令栏上选择“+ 添加共享”。
+1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“网关”>“共享”。  在命令栏上选择“+ 添加共享”  。
 
     ![选择“添加共享”](media/data-box-edge-manage-shares/add-share-1.png)
 
-2. 在“添加共享”中指定共享设置。 提供共享的唯一名称。
+2. 在“添加共享”中指定共享设置。  提供共享的唯一名称。
     
     共享名称只能包含数字、小写字母和连字符。 共享名称必须为 3 到 63 个字符长，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。
 
-3. 选择共享的**类型**。 类型可以是“SMB”或“NFS”，默认为“SMB”。 SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
+3. 选择共享的**类型**。 类型可以是“SMB”或“NFS”，默认为“SMB”。   SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
 
 4. 提供共享所在的**存储帐户**。 如果还没有容器，则使用共享名称在存储帐户中创建一个容器。 如果该容器已存在，则使用现有容器。
 
-5. 在下拉列表中，选择块 Blob、页 Blob 或文件作为“存储服务”。 所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以块 Blob 的形式驻留在 Azure 中，因此选择“块 Blob”。 如果选择“页 Blob”，必须确保数据经过 512 字节对齐。 对于始终经过 512 字节对齐的 VHD 或 VHDX，请使用“页 Blob”。
+5. 在下拉列表中，选择块 Blob、页 Blob 或文件作为“存储服务”。  所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以块 Blob 的形式驻留在 Azure 中，因此选择“块 Blob”。  如果选择“页 Blob”，必须确保数据经过 512 字节对齐。  对于始终经过 512 字节对齐的 VHD 或 VHDX，请使用“页 Blob”。 
 
 6. 此步骤取决于你是创建 SMB 共享还是 NFS 共享。
-    - **如果创建 SMB 共享** - 在“所有特权本地用户”字段中，选择“新建”或“使用现有”。 如果创建新的本地用户，请提供**用户名**、**密码**和确认密码。 这样就会为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
+    - **如果创建 SMB 共享** - 在“所有特权本地用户”字段中，选择“新建”或“使用现有”。    如果创建新的本地用户，请提供**用户名**、**密码**和确认密码。 这样就会为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
 
         ![添加 SMB 共享](media/data-box-edge-manage-shares/add-smb-share.png)
 
@@ -63,33 +63,33 @@ ms.locfileid: "60003150"
 
         ![添加 NFS 共享](media/data-box-edge-manage-shares/add-nfs-share.png)
 
-7. 若要轻松地从 Edge 计算模块访问共享，请使用本地装入点。 选择“将共享与 Edge 计算配合使用”，这样就会在创建共享后自动装载共享。 选择此选项后，Edge 模块也可将计算与本地装入点配合使用。
+7. 若要轻松地从 Edge 计算模块访问共享，请使用本地装入点。 选择“将共享与 Edge 计算配合使用”，这样就会在创建共享后自动装载共享。  选择此选项后，Edge 模块也可将计算与本地装入点配合使用。
 
-8. 单击“创建”以创建共享。 将通知你“正在创建共享”。 使用指定的设置创建共享后，“共享”边栏选项卡会更新以反映新共享。
+8. 单击“创建”  以创建共享。 将通知你“正在创建共享”。 使用指定的设置创建共享后，“共享”  边栏选项卡会更新以反映新共享。
 
 ## <a name="add-a-local-share"></a>添加本地共享
 
-1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“网关”>“共享”。 在命令栏上选择“+ 添加共享”。
+1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“网关”>“共享”。  在命令栏上选择“+ 添加共享”  。
 
     ![选择“添加共享”](media/data-box-edge-manage-shares/add-local-share-1.png)
 
-2. 在“添加共享”中指定共享设置。 提供共享的唯一名称。
+2. 在“添加共享”中指定共享设置。  提供共享的唯一名称。
     
     共享名称只能包含数字、小写字母和连字符。 共享名称必须为 3 到 63 个字符长，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。
 
-3. 选择共享的**类型**。 类型可以是“SMB”或“NFS”，默认为“SMB”。 SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
+3. 选择共享的**类型**。 类型可以是“SMB”或“NFS”，默认为“SMB”。   SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
 
-4. 若要轻松地从 Edge 计算模块访问共享，请使用本地装入点。 选择“将共享与 Edge 计算配合使用”，使 Edge 模块能够将计算与本地装入点配合使用。
+4. 若要轻松地从 Edge 计算模块访问共享，请使用本地装入点。 选择“将共享与 Edge 计算配合使用”，使 Edge 模块能够将计算与本地装入点配合使用。 
 
-5. 选择“配置为 Edge 本地共享”。 本地共享中的数据将保留在设备本地。 可在本地处理此数据。
+5. 选择“配置为 Edge 本地共享”。  本地共享中的数据将保留在设备本地。 可在本地处理此数据。
 
-6. 在“所有特权本地用户”字段中，选择“新建”或“使用现有项”。
+6. 在“所有特权本地用户”字段中，选择“新建”或“使用现有项”。   
 
-7. 选择“创建”。 
+7. 选择“创建”  。 
 
     ![创建本地共享](media/data-box-edge-manage-shares/add-local-share-2.png)
 
-    此时会显示一条通知，指出正在创建共享。 使用指定的设置创建共享后，“共享”边栏选项卡会更新以反映新共享。
+    此时会显示一条通知，指出正在创建共享。 使用指定的设置创建共享后，“共享”  边栏选项卡会更新以反映新共享。
 
     ![查看更新的“共享”边栏选项卡](media/data-box-edge-manage-shares/add-local-share-3.png)
     
@@ -102,19 +102,19 @@ ms.locfileid: "60003150"
 如果先创建了某个共享，然后再在 Data Box Edge 设备上配置计算，则需装载该共享。 通过以下步骤装载共享。
 
 
-1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“网关”>“共享”。 从共享列表中选择要装载的共享。 “用于计算”列会将所选共享的状态显示为“已禁用”。
+1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“网关”>“共享”。  从共享列表中选择要装载的共享。 “用于计算”列会将所选共享的状态显示为“已禁用”。  
 
     ![选择共享](media/data-box-edge-manage-shares/select-share-mount.png)
 
-2. 选择“装载”。
+2. 选择“装载”  。
 
     ![选择装载](media/data-box-edge-manage-shares/select-mount.png)
 
-3. 出现确认提示时，选择“是”。 此时会装载共享。
+3. 出现确认提示时，选择“是”  。 此时会装载共享。
 
     ![确认装载](media/data-box-edge-manage-shares/confirm-mount.png)
 
-4. 装载共享以后，转到共享列表。 此时会看到“用于计算”列将共享状态显示为“已启用”。
+4. 装载共享以后，转到共享列表。 此时会看到“用于计算”列将共享状态显示为“已启用”。  
 
     ![装载的共享](media/data-box-edge-manage-shares/share-mounted.png)
 
@@ -126,19 +126,19 @@ ms.locfileid: "60003150"
 
 在 Azure 门户中执行以下步骤，以卸载共享。
 
-1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“网关”>“共享”。
+1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“网关”>“共享”。 
 
     ![选择共享](media/data-box-edge-manage-shares/select-share-unmount.png)
 
-2. 从共享列表中选择要卸载的共享。 需确保卸载的共享不被任何模块使用。 如果共享被某个模块使用，则相应模块会出问题。 选择“卸载”。
+2. 从共享列表中选择要卸载的共享。 需确保卸载的共享不被任何模块使用。 如果共享被某个模块使用，则相应模块会出问题。 选择“卸载”  。
 
     ![选择卸载](media/data-box-edge-manage-shares/select-unmount.png)
 
-3. 出现确认提示时，选择“是”。 此时会卸载共享。
+3. 出现确认提示时，选择“是”  。 此时会卸载共享。
 
     ![确认卸载](media/data-box-edge-manage-shares/confirm-unmount.png)
 
-4. 卸载共享以后，转到共享列表。 此时会看到“用于计算”列将共享状态显示为“已禁用”。
+4. 卸载共享以后，转到共享列表。 此时会看到“用于计算”列将共享状态显示为“已禁用”。  
 
     ![卸载的共享](media/data-box-edge-manage-shares/share-unmounted.png)
 
@@ -150,11 +150,11 @@ ms.locfileid: "60003150"
 
     ![选择共享](media/data-box-edge-manage-shares/delete-share-1.png)
 
-2. 单击“删除” 。
+2. 单击“删除”  。
 
     ![单击“删除”](media/data-box-edge-manage-shares/delete-share-2.png)
 
-3. 出现确认提示时，单击“是”。
+3. 出现确认提示时，单击“是”  。
 
     ![确认删除](media/data-box-edge-manage-shares/delete-share-3.png)
 
@@ -171,15 +171,15 @@ ms.locfileid: "60003150"
 
 在 Azure 门户中执行以下步骤，以刷新共享。
 
-1.  在 Azure 门户中转到“共享”。 选择并单击要刷新的共享。
+1.  在 Azure 门户中转到“共享”。  选择并单击要刷新的共享。
 
     ![选择共享](media/data-box-edge-manage-shares/refresh-share-1.png)
 
-2.  单击“刷新”。 
+2.  单击“刷新”。  
 
     ![单击“刷新”](media/data-box-edge-manage-shares/refresh-share-2.png)
  
-3.  出现确认提示时，单击“是”。 此时会启动一个作业来刷新本地共享的内容。
+3.  出现确认提示时，单击“是”  。 此时会启动一个作业来刷新本地共享的内容。
 
     ![确认刷新](media/data-box-edge-manage-shares/refresh-share-3.png)
  
@@ -198,11 +198,11 @@ ms.locfileid: "60003150"
 
 在 Azure 门户中执行以下步骤，以同步存储访问密钥。
 
-1. 在资源中转到“概述”。 在共享列表中，选择并单击与需要同步的存储帐户相关联的共享。
+1. 在资源中转到“概述”。  在共享列表中，选择并单击与需要同步的存储帐户相关联的共享。
 
     ![选择包含相关存储帐户的共享](media/data-box-edge-manage-shares/sync-storage-key-1.png)
 
-2. 单击“同步存储密钥”。 当系统提示确认时，请单击“是”。
+2. 单击“同步存储密钥”。  当系统提示确认时，请单击“是”。 
 
      ![选择“同步存储密钥”](media/data-box-edge-manage-shares/sync-storage-key-2.png)
 

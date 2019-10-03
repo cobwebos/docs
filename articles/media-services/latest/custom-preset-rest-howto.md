@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 03/12/2019
+ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: a9de15530981e14e664df605cb3274c9e754ef0d
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755484"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65761800"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>如何使用自定义转换的其余部分进行编码
 
@@ -115,7 +115,7 @@ ms.locfileid: "58755484"
                     "formats": [
                         {
                             "@odata.type": "#Microsoft.Media.Mp4Format",
-                            "filenamePattern": "Video-{Basename}-{Label}{Extension}",
+                            "filenamePattern": "Video-{Basename}-{Label}-{Bitrate}{Extension}",
                             "outputFiles": []
                         },
                         {
@@ -145,7 +145,7 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 选择**正文**选项卡并将替换为使用的 json 正文代码[前面定义](#define-a-custom-preset)。 对于将转换应用到指定的视频或音频的媒体服务，需要提交作业下该转换。
 
-选择“发送”。 
+选择“发送”。  
 
 对于将转换应用到指定的视频或音频的媒体服务，需要提交作业下该转换。 有关演示如何提交下一个转换，转换作业的完整示例，请参阅[教程：Stream 的视频文件的其余部分](stream-files-tutorial-with-rest.md)。
 

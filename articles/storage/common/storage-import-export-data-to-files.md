@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 28026a429643c62434ddfd7591126169857a7371
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265623"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478955"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 导入/导出服务将数据导入到 Azure 文件
 
@@ -115,18 +115,18 @@ ms.locfileid: "59265623"
 ## <a name="step-2-create-an-import-job"></a>步骤 2：创建导入作业 
 
 在 Azure 门户中执行以下步骤来创建导入作业。
-1. 登录到 https://portal.azure.com/。
-2. 转到“所有服务”>“存储”>“导入/导出作业”。 
+1. 登录到 https://portal.azure.com/ 。
+2. 转到“所有服务”>“存储”>“导入/导出作业”。  
 
     ![转到“导入/导出”](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. 单击“创建导入/导出作业”。
+3. 单击“创建导入/导出作业”  。
 
     ![单击导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. 在“基本信息”中：
+4. 在“基本信息”  中：
 
-    - 选择“导入到 Azure”。
+    - 选择“导入到 Azure”。 
     - 输入导入作业的描述性名称。 在作业进行过程中以及作业完成后，可以使用此名称来跟踪作业。
         -  此名称只能包含小写字母、数字、连字符和下划线。
         -  此名称必须以字母开头，并且不得包含空格。 
@@ -135,7 +135,7 @@ ms.locfileid: "59265623"
 
         ![创建导入作业 - 步骤 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-3. 在“作业详细信息”中：
+3. 在“作业详细信息”中  ：
     
     - 上传你在前面的[步骤 1：准备驱动器](#step-1-prepare-the-drives)中创建的日志文件。 
     - 选择要将数据导入到的存储帐户。 
@@ -143,7 +143,7 @@ ms.locfileid: "59265623"
    
        ![创建导入作业 - 步骤 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-4. 在“回寄信息”中：
+4. 在“回寄信息”  中：
 
     - 从下拉列表中选择承运商。 如果你想要使用非 FedEx/DHL 快递商，请从下拉列表中选择一个现有的选项。 联系 Azure 数据框操作团队的`adbops@microsoft.com`与你打算使用与运营商相关的信息。
     - 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 
@@ -155,10 +155,10 @@ ms.locfileid: "59265623"
        ![创建导入作业 - 步骤 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
    
-5. 在“摘要”中：
+5. 在“摘要”  中：
 
     - 提供用来将磁盘寄回 Azure 的 Azure 数据中心送货地址。 请确保寄送标签上标明了作业名称和完整地址。
-    - 单击“确定”以完成导入作业创建。
+    - 单击“确定”以完成导入作业创建。 
 
         ![创建导入作业 - 步骤 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 

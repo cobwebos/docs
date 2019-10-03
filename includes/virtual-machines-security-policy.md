@@ -4,18 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: 5c90d7b5eefdf8357c0f6f8efb619bd69af12b06
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302353"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843138"
 ---
 为了所运行的应用程序，请务必确保虚拟机 (VM) 安全。 保护 VM 可以添加一个或多个 Azure 服务和功能，这些服务和功能涵盖保护对 VM 的访问和保护数据存储。 按照本文提供的信息操作，可确保 VM 和应用程序安全。
 
-## <a name="antimalware"></a>反恶意软件
+## <a name="antimalware"></a>Antimalware
 
-现代云环境的威胁局势非常多变，增加了为了满足合规性和安全要求，维护有效保护机制方面的压力。 [适用于 Azure 的 Microsoft 反恶意软件](../articles/security/azure-security-antimalware.md)是一种免费实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 可配置警报，以便在已知恶意或不需要的软件试图安装自身或在 VM 上运行时通知你。
+现代云环境的威胁局势非常多变，增加了为了满足合规性和安全要求，维护有效保护机制方面的压力。 [适用于 Azure 的 Microsoft 反恶意软件](../articles/security/fundamentals/antimalware.md)是一种免费实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 可配置警报，以便在已知恶意或不需要的软件试图安装自身或在 VM 上运行时通知你。 运行 Linux 或 Windows Server 2008 的 Vm 不支持此方法。
 
 ## <a name="azure-security-center"></a>Azure 安全中心
 
@@ -53,4 +53,4 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 
 ## <a name="next-steps"></a>后续步骤
-- 完成相关步骤，使用适用于 [Linux](../articles/virtual-machines/linux/tutorial-azure-security.md) 或 [Windows](../articles/virtual-machines/windows/tutorial-azure-security.md) 的 Azure 安全中心监视虚拟机的安全性。
+- 完成相关步骤，使用适用于 [Linux](../articles/security/fundamentals/overview.md) 或 [Windows](../articles/virtual-machines/windows/tutorial-azure-security.md) 的 Azure 安全中心监视虚拟机的安全性。

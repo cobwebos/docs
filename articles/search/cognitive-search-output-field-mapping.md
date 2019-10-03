@@ -1,21 +1,19 @@
 ---
 title: 将认知搜索扩充输入字段映射到输出字段 - Azure 搜索
 description: 提取并扩充源数据字段，然后映射到 Azure 搜索索引中的输出字段。
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: dd62119b01465392a92c7e68231fed8027b04da2
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 4ceb8e6290e3e7f4fb552db13c97558db1c8c97e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750525"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265505"
 ---
 # <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>如何将扩充字段映射到可搜索索引
 
@@ -26,7 +24,7 @@ ms.locfileid: "56750525"
 要映射字段，请按如下所示将 `outputFieldMappings` 添加到索引器定义：
 
 ```http
-PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
 api-key: [admin key]
 Content-Type: application/json
 ```

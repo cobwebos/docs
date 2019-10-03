@@ -19,11 +19,11 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446633"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60245698"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>使用 Azure AD Connect 管理 AD FS 与 Azure AD 之间的信任关系
 
@@ -105,16 +105,16 @@ Azure AD Connect 确保始终使用适当的建议声明规则集来配置 Azure
 
 每当对 Azure AD 信任设置进行更新时，Azure AD Connect 1.1.873.0 或更高版本都会创建 Azure AD 信任设置的备份。 Azure AD 信任设置将备份到 **%ProgramData%\AADConnect\ADFS**。 文件名采用以下格式：AadTrust-&lt;日期&gt;-&lt;时间&gt;.txt，例如 AadTrust-20180710-150216.txt
 
-![示例的屏幕截图备份的 Azure AD 信任](./media/how-to-connect-azure-ad-trust/backup.png)
+![Azure AD 信任示例备份的快照](./media/how-to-connect-azure-ad-trust/backup.png)
 
 可以使用下面建议的步骤还原颁发转换规则
 
 1. 在服务器管理器中打开 AD FS 管理 UI
-2. 转到“AD FS”&gt;“信赖方信任”&gt;“Microsoft Office 365 标识平台”&gt;“编辑声明颁发策略”，打开 Azure AD 信任属性
-3. 单击“添加规则”
-4. 在声明规则模板中，选择“使用自定义规则发送声明”并单击“下一步”
-5. 从备份文件复制声明规则的名称，并将其粘贴到“声明规则名称”字段中
-6. 将备份文件中的声明规则复制到“自定义规则”的文本字段中，并单击“完成”
+2. 转到“AD FS”&gt;“信赖方信任”&gt;“Microsoft Office 365 标识平台”&gt;“编辑声明颁发策略”，打开 Azure AD 信任属性 
+3. 单击“添加规则” 
+4. 在声明规则模板中，选择“使用自定义规则发送声明”并单击“下一步” 
+5. 从备份文件复制声明规则的名称，并将其粘贴到“声明规则名称”字段中 
+6. 将备份文件中的声明规则复制到“自定义规则”的文本字段中，并单击“完成”  
 
 > [!NOTE]
 > 确保其他规则不与 Azure AD Connect 配置的规则相冲突。

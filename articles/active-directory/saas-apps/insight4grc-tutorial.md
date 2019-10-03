@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1ad101d209415acdceb0091dba5fbedeb8b0aa4b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d7b5856e76e426d282c5cb0a2e5c90a9983383f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280513"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100055"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>教程：Azure Active Directory 与 Insight4GRC 集成
 
@@ -54,25 +54,25 @@ ms.locfileid: "59280513"
 
 **若要从库中添加 Insight4GRC，请按照以下步骤操作：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Insight4GRC”，从结果面板中选择“Insight4GRC”，再单击“添加”按钮，以添加应用程序。
+4. 在搜索框中，键入“Insight4GRC”  ，从结果面板中选择“Insight4GRC”  ，再单击“添加”  按钮，以添加应用程序。
 
      ![结果列表中的“Insight4GRC”](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-本部分以测试用户“Britta Simon”为例，介绍了如何配置和测试 Azure AD 与 Insight4GRC 单一登录。
+本部分以测试用户“Britta Simon”为例，介绍了如何配置和测试 Azure AD 与 Insight4GRC 单一登录。 
 若要运行单一登录，需要在 Azure AD 用户与 Insight4GRC 中相关用户之间建立链接关系。
 
 若要配置和测试 Azure AD 与 Insight4GRC 单一登录，需要完成以下构建基块：
@@ -90,7 +90,7 @@ ms.locfileid: "59280513"
 
 若要配置 Azure AD 与 Insight4GRC 单一登录，请按照以下步骤操作：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Insight4GRC”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Insight4GRC”应用程序集成页上，选择“单一登录”。  
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,44 +98,44 @@ ms.locfileid: "59280513"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
 
     ![“Insight4GRC 域和 URL”单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/SAML`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/SAML`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx`
+    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![“Insight4GRC 域和 URL”单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/Public/Login.aspx`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/Public/Login.aspx`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Insight4GRC 客户端支持团队](mailto:support.ss@rsmuk.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Insight4GRC 客户端支持团队](mailto:support.ss@rsmuk.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-6. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+6. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
 ### <a name="configure-insight4grc-single-sign-on"></a>配置 Insight4GRC 单一登录
 
-若要在 Insight4GRC 端配置单一登录，需要将应用联合元数据 URL 发送给 [Insight4GRC 支持团队](mailto:support.ss@rsmuk.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Insight4GRC 端配置单一登录，需要将应用联合元数据 URL 发送给 [Insight4GRC 支持团队](mailto:support.ss@rsmuk.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -143,40 +143,40 @@ ms.locfileid: "59280513"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 本部分介绍了如何向 Britta Simon 授予对 Insight4GRC 访问权限，让其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Insight4GRC”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Insight4GRC”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Insight4GRC”。
+2. 在应用程序列表中，选择“Insight4GRC”  。
 
     ![应用程序列表中的“Insight4GRC”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-insight4grc-test-user"></a>创建 Insight4GRC 测试用户
 

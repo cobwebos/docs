@@ -5,20 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 10/01/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: d9c607114d6c6c56c25303a88dcc11f4ab804eb4
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: b566cc9e45348241cf6ae7b81bd0e471fbf59ba0
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404326"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720042"
 ---
-# <a name="about-virtual-network-gateways-for-expressroute"></a>关于 ExpressRoute 的虚拟网络网关
-虚拟网络网关用于在 Azure 虚拟网络和本地位置之间发送网络流量。 可以使用虚拟网络网关发送 ExpressRoute 流量或 VPN 流量。 本文重点介绍 ExpressRoute 虚拟网络网关，并且包含了有关 SKU、按 SKU 预估的性能和网关类型的信息。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+# <a name="expressroute-virtual-network-gateway-and-fastpath"></a>ExpressRoute 虚拟网络网关和 FastPath
+若要通过 ExpressRoute 连接 Azure 虚拟网络和本地网络，必须先创建虚拟网络网关。 虚拟网络网关有两个用途： exchange IP 路由网络之间的路由和路由网络流量。 本文介绍了各 SKU 的网关类型、网关 Sku 和估计性能。 本文还介绍了 ExpressRoute [FastPath](#fastpath)，这是一项功能，可让你的本地网络中的网络流量绕过虚拟网络网关，从而提高性能。
 
 ## <a name="gateway-types"></a>网关类型
 
@@ -33,7 +31,7 @@ ms.locfileid: "57404326"
 ## <a name="gwsku"></a>网关 SKU
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-如果你想要升级到更强大的网关 SKU 网关，可以在大多数情况下使用重设大小 AzVirtualNetworkGateway PowerShell cmdlet。 此方法适用于升级到 Standard 和 HighPerformance SKU。 但是，若要升级到 UltraPerformance SKU，需要重新创建网关。 重新创建网关会导致停机。
+如果想要将网关升级为功能更强大的网关 SKU，在大多数情况下，可以使用“Resize-AzVirtualNetworkGateway”PowerShell cmdlet。 此方法适用于升级到 Standard 和 HighPerformance SKU。 但是，若要升级到 UltraPerformance SKU，需要重新创建网关。 重新创建网关会导致停机。
 
 ### <a name="aggthroughput"></a>预估性能（按网关 SKU）
 下表显示网关类型和估计性能。 此表适用于 Resource Manager 与经典部署模型。
@@ -59,6 +57,16 @@ ms.locfileid: "57404326"
 
 新的网关 SKU 还支持其他部署选项，以最好地满足你的需求。 使用新网关 SKU 创建虚拟网络网关时，还可以选择在特定区域中部署网关。 这称为区域网关。 部署区域网关时，网关的所有实例都部署在同一可用性区域中。
 
+## <a name="fastpath"></a>FastPath
+ExpressRoute 虚拟网络网关旨在交换网络路由和路由网络流量。 FastPath 旨在提高本地网络与虚拟网络之间的数据路径性能。 启用后，FastPath 会将网络流量直接发送到虚拟网络中的虚拟机，绕过网关。 
+
+FastPath 在所有 ExpressRoute 线路上都可用。 它仍需要创建一个虚拟网络网关，以在虚拟网络和本地网络之间交换路由。 虚拟网络网关必须为超高性能或 ErGw3AZ。
+
+FastPath 不支持以下功能：
+* 网关子网中的 UDR：如果将 UDR 应用到虚拟网络的网关子网，则来自本地网络的网络流量将继续发送到虚拟网络网关。
+* VNet 对等互连：如果有其他虚拟网络与连接到 ExpressRoute 的虚拟网络对等互连，则会将网络流量从本地网络传输到其他虚拟网络（即所谓的 "轮辐" Vnet），并将继续发送到虚拟网络关子. 解决方法是直接将所有虚拟网络连接到 ExpressRoute 线路。
+* 基本负载均衡器：如果在虚拟网络中部署基本的内部负载均衡器，或者在虚拟网络中部署的 Azure PaaS 服务使用基本的内部负载均衡器，则从本地网络到托管在基本负载均衡器将发送到虚拟网络网关。 解决方案是将基本负载均衡器升级到[标准负载均衡器](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview)。 
+ 
 ## <a name="resources"></a>REST API 和 PowerShell cmdlet
 有关将 REST API 和 PowerShell cmdlet 用于虚拟网络网关配置的其他技术资源和特定语法要求，请参阅以下页面：
 
@@ -73,3 +81,5 @@ ms.locfileid: "57404326"
 有关创建 ExpressRoute 网关的详细信息，请参阅[创建 ExpressRoute 的虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)。
 
 有关配置区域冗余型网关的详细信息，请参阅[创建区域冗余型虚拟网络网关](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md)。
+
+有关如何启用 FastPath 的详细信息，请参阅[将虚拟网络链接到 ExpressRoute](expressroute-howto-linkvnet-arm.md) 。 

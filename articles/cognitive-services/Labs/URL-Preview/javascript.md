@@ -10,25 +10,26 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 1f3c37e770c2edd76bd299771648b2de29d42dd9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: ec8a7ceef8cd938984b8eedc8397f6f67294c990
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873642"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706931"
 ---
 # <a name="quickstart-url-preview-in-javascript"></a>快速入门：JavaScript 中的 URL 预览 
 
-以下单页应用程序使用 JavaScript 创建 SwiftKey 站点的 URL 预览： https://swiftkey.com/en。 
+以下单页应用程序使用 JavaScript 创建 SwiftKey 站点的 URL 预览： https://swiftkey.com/en 。 
 
 ## <a name="prerequisites"></a>先决条件
 
 获取[认知服务实验室](https://labs.cognitive.microsoft.com/en-us/project-url-preview)免费试用版的访问密钥
 
 ## <a name="code-scenario"></a>代码方案
-下面的 javascript 示例包括用户在其中输入 URL 以进行预览的文本框输入对象。  当用户单击“预览”按钮时，onclick 方法会路由到 `getPreview`，代码在其中会生成对 UrlPreview 终结点的 Web 请求。
+下面的 javascript 示例包括用户在其中输入 URL 以进行预览的文本框输入对象。  当用户单击“预览”  按钮时，onclick 方法会路由到 `getPreview`，代码在其中会生成对 UrlPreview  终结点的 Web 请求。
 
-该代码会创建 XMLHttpRequest，添加 Ocp-Apim-Subscription-Key 标头和密钥，并发送请求。  它会添加异步事件处理程序来处理该响应。
+该代码会创建 XMLHttpRequest  ，添加 Ocp-Apim-Subscription-Key  标头和密钥，并发送请求。  它会添加异步事件处理程序来处理该响应。
 
 如果成功返回响应，该处理程序会将响应的 JSON 文本分配到页面上的 `demo` 段落。 其他响应元素设置为以下供显示的段落。
 
@@ -60,9 +61,9 @@ ms.locfileid: "55873642"
 2. 将 HTML 和脚本保存到扩展名为 .html 的文件中。
 3. 在浏览器中运行网页。
 4. 使用现有 URL，或在文本框中输入其他 URL。
-5. 单击“预览”按钮。
+5. 单击“预览”  按钮。
 
-源代码：
+源代码： 
 
 ```
 <!DOCTYPE html>

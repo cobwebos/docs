@@ -4,23 +4,22 @@ description: 描述 B 系列可突增 Azure VM 大小。
 services: virtual-machines-linux
 documentationcenter: ''
 author: ayshakeen
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/07/2017
+ms.date: 06/25/2019
 ms.author: ayshak
-ms.openlocfilehash: 7cbab5c6b3a724c2219648873fd45ca6bde90339
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 01da424872cdfde6c7e035cadd2b948117fb996c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683134"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084004"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 

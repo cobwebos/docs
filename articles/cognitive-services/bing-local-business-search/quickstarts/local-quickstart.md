@@ -1,20 +1,21 @@
 ---
-title: 快速入门 - 使用 C# 将查询发送到必应当地企业搜索 API | Microsoft Docs
+title: 快速入门 - 使用 C# 将查询发送到必应当地企业搜索 API
 titleSuffix: Azure Cognitive Services
 description: 使用本文开始在 C# 中使用必应当地企业搜索 API。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 91ff4c8e6f8487a2b0e5849f881e0cdb9c10385f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.subservice: bing-local-business
+ms.topic: quickstart
+ms.date: 04/26/2019
+ms.author: rosh
+ms.openlocfilehash: 163a85a7fb7521054ebec58fb9ac86373963f2b9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763794"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906312"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>快速入门：使用 C# 将查询发送到必应当地企业搜索 API
 
@@ -22,9 +23,9 @@ ms.locfileid: "57763794"
 
 此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
 必须创建一个具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。

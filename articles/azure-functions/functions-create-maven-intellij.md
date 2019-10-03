@@ -7,19 +7,19 @@ author: jeffhollan
 manager: jpconnock
 keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构, java
 ms.service: azure-functions
-ms.devlang: java
 ms.topic: conceptual
+ms.devlang: java
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: da93c60b52edf509900adf89fb688a0596d9763b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5aa0763206289305e98960b6e03ad903eb4547ae
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877799"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70743990"
 ---
-# <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 中创建第一个 Azure 函数
+# <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 创建第一个 Azure 函数
 
 本文将介绍以下内容：
 - 如何使用 IntelliJ IDEA 和 Apache Maven 创建[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数项目
@@ -52,8 +52,8 @@ ms.locfileid: "58877799"
 1. 在“添加 Archetype”窗口中按以下说明填写各个字段：
     - _GroupId_：com.microsoft.azure
     - _ArtifactId_：azure-functions-archetype
-    - _版本_：使用中的最新版本[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![从原型在 IntelliJ IDEA 中创建一个 Maven 项目](media/functions-create-first-java-intellij/functions-create-intellij.png)  
+    - _版本_：使用[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    中的最新版本 **1.22** ![在 IntelliJ IDEA 中根据 archetype 创建 Maven 项目](media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. 选择“确定”，然后选择“下一步”。
 1. 输入当前项目的详细信息，并选择“完成”。
 
@@ -87,13 +87,13 @@ Maven 在新文件夹中创建项目文件，文件名称与 _ArtifactId_ 值相
 1. 填写“名称”和“设置”字段，然后选择“确定”以保存配置。
 1. 在设置后，选择“调试<远程配置名称>”或在键盘上按 Shift+F9 以启动调试。
 
-   ![在 IntelliJ 中调试函数](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
+   ![在 IntelliJ 中调试函数](media/functions-create-first-java-intellij/debug-configuration-intellij.png)
 
 1. 完成后，请停止调试器和正在运行的进程。 一次只能有一个函数主机处于活动状态并在本地运行。
 
 ## <a name="deploy-the-function-to-azure"></a>将函数部署到 Azure
 
-1. 必须先[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)，才能将函数部署至 Azure。
+1. 在向 Azure 部署函数之前，必须[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
    ``` azurecli
    az login

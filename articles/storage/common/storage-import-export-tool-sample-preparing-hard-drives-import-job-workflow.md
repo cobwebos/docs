@@ -9,11 +9,11 @@ ms.date: 04/07/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 42da285fbb55df43959506996bcde9cf547c2a22
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439252"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60320561"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器的示例工作流
 
@@ -23,7 +23,7 @@ ms.locfileid: "57439252"
 
 本示例将以下数据导入到名为 `mystorageaccount` 的 Azure 存储帐户：
 
-|位置|描述|数据大小|
+|Location|描述|数据大小|
 |--------------|-----------------|-----|
 |H:\Video\ |视频集合|12 TB|
 |H:\Photo\ |照片集合|30 GB|
@@ -34,7 +34,7 @@ ms.locfileid: "57439252"
 
 导入作业将这些数据导入到存储帐户中的以下目标：
 
-|源|目标虚拟目录或 Blob|
+|source|目标虚拟目录或 Blob|
 |------------|-------------------------------------------|
 |H:\Video\ |video/|
 |H:\Photo\ |photo/|

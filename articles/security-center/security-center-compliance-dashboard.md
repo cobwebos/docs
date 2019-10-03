@@ -3,23 +3,22 @@ title: 使用 Azure 安全中心提高合规性 | Microsoft Docs
 description: 教程：了解如何使用 Azure 安全中心提高合规性。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2e73cbd1de4336a08e26a609dfe704da0a068860
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 4/30/2019
+ms.author: memildin
+ms.openlocfilehash: 20842997c5df81835024a6f458cd863b4e4d78b0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105996"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202424"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 ---
@@ -47,8 +46,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 >[!NOTE]
 > 目前支持的法规标准如下：Azure CIS、PCI DSS 3.2、ISO 27001 和 SOC TSP。 其他标准会根据情况反映在仪表板中。
-
-1.  在“安全中心”主菜单的“策略和符合性”下，选择“合规性仪表板”。 <br>
+1.  在“安全中心”主菜单的“策略和符合性”下，选择“法规符合应”。   <br>
 在屏幕顶部会显示一个仪表板，其中概述了你的符合性状态以及一组支持的符合性法规。 可以查看总体符合性分数，以及与每个标准相关联的已通过评估和失败的评估的数目。
 
     ![计算机说明高置信度](./media/security-center-compliance-dashboard/compliance-dashboard.png)
@@ -58,22 +56,27 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
     ![符合性选项卡](./media/security-center-compliance-dashboard/compliance-pci.png)
 
-3.  选择“全部”选项卡即可看到一个视图，其中包含所有相关的安全中心建议以及关联的标准。 此视图可以用来确定受某项特定建议影响的所有不同的标准。 <br> 可以使用此视图来确定需要采用的建议的优先级。 例如，如果看到建议“为具有订阅所有者权限的帐户启用 MFA”在多个资源上失败且与多个标准相关联，则说明采用该建议会对总体的符合性分数有重大影响。
+3. 选择“全部”选项卡即可看到一个视图，其中包含所有相关的安全中心建议以及关联的标准。  此视图可以用来确定受某项特定建议影响的所有不同的标准。 <br> 可以使用此视图来确定需要采用的建议的优先级。 例如，如果看到建议“为具有订阅所有者权限的帐户启用 MFA”在多个资源上失败且与多个标准相关联，则说明采用该建议会对总体的符合性分数有重大影响。 
 
     ![符合性分数影响](./media/security-center-compliance-dashboard/compliance-all-tabs.png)
 
-## <a name="improve-your-compliance-posture"></a>改进符合性情况
+1. 若要生成并下载总结当前特定标准的符合性状态的 PDF 报告，请单击“下载报告”  。
 
+    该报告根据安全中心评估数据为所选标准提供符合性状态的高级别总结，并根据该特定标准的控制进行整理。 该报告可与相关利益干系人共享，并可用于为内部和外部审计员提供证据。
+
+    ![下载](./media/security-center-compliance-dashboard/download-report.png)
+
+## <a name="improve-your-compliance-posture"></a>改进符合性情况
 
 可以根据合规性仪表板中的信息直接在仪表板中采用相关建议，改进符合性情况。
 
 1.  单击在仪表板中显示的失败评估即可查看该建议的详细信息。 每项建议都包含一组修正步骤，遵循这些步骤即可解决问题。
 
-2.  可以选择特定的资源来查看更多的详细信息，然后解决与该资源的建议相关的问题。 <br>例如，在“Azure CIS 标准”选项卡中，可以单击建议“需要安全地传输到存储帐户”。
+2.  可以选择特定的资源来查看更多的详细信息，然后解决与该资源的建议相关的问题。 <br>例如，在“Azure CIS 标准”选项卡中，  可以单击建议“需要安全地传输到存储帐户”。 
 
     ![符合性建议](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
-3. 一路单击，直至出现建议信息，然后选择一个运行不正常的资源，此时就会直接转到在 Azure 门户中启用“安全的存储传输”这一体验。<br>有关如何应用建议的详细信息，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
+3. 一路单击，直至出现建议信息，然后选择一个运行不正常的资源，此时就会直接转到在 Azure 门户中启用“安全的存储传输”这一体验。 <br>有关如何应用建议的详细信息，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
 
     ![符合性建议](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 

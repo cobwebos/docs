@@ -4,23 +4,22 @@ description: Azure 中的 OpenShift 概述。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/01/2019
+ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 826085df8d928cab0a05527be8c464af5f4e9180
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 80f0ec57aa287bae9b10d9a4cdb013014aab3332
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002515"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082553"
 ---
 # <a name="openshift-in-azure"></a>Azure 中的 OpenShift
 
@@ -32,45 +31,27 @@ OpenShift 包括用于容器业务流程和管理的 Kubernetes 容器。 它增
 - 轻松部署和缩放。
 - 针对团队和应用程序的长期生命期维护。
 
-有多个可用的 OpenShift 版本：
+有多个 OpenShift 版本可用。  在这些版本中，目前只有以下两个可供客户部署到 Azure 中：OpenShift 容器平台和 OKD（以前的 OpenShift Origin）。
 
-- OpenShift 容器平台
-- Azure 上的 OpenShift（完全托管的 OpenShift，将于 CY2019 年第一季度末推出）
-- OKD（以前称为 OpenShift Origin）
-- OpenShift Dedicated
-- OpenShift Online
+## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-在本文所述的五个版本中，目前只有以下两个可供客户部署到 Azure 中：OpenShift 容器平台和 OKD。
+Microsoft Azure Red Hat OpenShift 是在 Azure 中运行的 OpenShift 的完全托管的服务。 此服务由 Microsoft 和 Red Hat 共同管理并提供支持。 有关更多详细信息, 请参阅[Azure Red Hat OpenShift 服务](https://docs.microsoft.com/azure/openshift/)文档。
 
 ## <a name="openshift-container-platform"></a>OpenShift 容器平台
 
 容器平台 是 Red Hat 支持的企业就绪[商业版本](https://www.openshift.com)。 使用此版本时，客户需购买 OpenShift 容器平台的必要权利，并负责安装和管理整个基础结构。
 
-由于客户"拥有"整个平台，他们可以在本地数据中心，或在公有云 （例如 Azure) 中安装它。
+由于客户“拥有”整个平台，他们可在本地数据中心或公有云（例如 Azure）位置中进行安装。
 
-## <a name="openshift-on-azure"></a>Azure 上的 OpenShift
-
-Azure 上的 OpenShift 是一种在 Azure 中运行的完全托管的 OpenShift 产品/服务。 此服务由 Microsoft 和 Red Hat 共同管理并提供支持。 群集将部署到客户的 Azure 订阅中。 此服务目前为个人预览版，计划在 CY2019 年第一季度末正式发布。 对于有兴趣参与个人预览版的客户，请填写[提名表单](https://aka.ms/openshiftazureinterest)。  随着产品/服务越来越临近正式发布，将提供更多的信息。
-
-## <a name="okd-formerly-openshift-origin"></a>OKD（以前称为 OpenShift Origin）
+## <a name="okd"></a>OKD
 
 OKD 是社区支持的 OpenShift 的[开源](https://www.okd.io/)上游项目。 可在 CentOS 或 Red Hat Enterprise Linux (RHEL) 上安装 OKD。
-
-## <a name="openshift-dedicated"></a>OpenShift Dedicated
-
-Dedicated 是 Red Hat 托管的，使用 OpenShift 容器平台的单租户 OpenShift。 Red Hat 管理所有底层基础结构（VM、OpenShift 群集、网络、存储等）。 该群集特定于某个客户，并在公有云 （例如 Azure) 中运行。 起始群集包括四个应用程序节点，所有费用都按年收取并且预付款。
-
-## <a name="openshift-online"></a>OpenShift Online
-
-Online 是 Red Hat 托管的，使用容器平台的多租户 OpenShift。 Red Hat 管理所有底层基础结构（例如 VM、OpenShift 群集、网络和存储）。 
-
-使用此版本时，客户需部署容器，但无法控制容器在哪个主机上运行。 由于 Online 是多租户产品，因此可能将容器放置到与其他客户的容器相同的 VM 主机。 成本按容器计算。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [在 Azure 中配置 OpenShift 的常见先决条件](./openshift-prerequisites.md)
 - [在 Azure 中部署 OpenShift 容器平台](./openshift-container-platform.md)
-- [在 Azure 中部署 OKD](./openshift-okd.md)
+- [部署 OpenShift 容器平台自行管理的 Marketplace 产品/服务](./openshift-marketplace-self-managed.md)
 - [在 Azure Stack 中部署 OpenShift](./openshift-azure-stack.md)
 - [部署后任务](./openshift-post-deployment.md)
 - [OpenShift 部署故障排除](./openshift-troubleshooting.md)

@@ -1,6 +1,6 @@
 ---
 title: 配置必应自定义搜索体验 | Microsoft Docs
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 介绍如何创建站点和垂直搜索服务
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: c4cb93e39a67e13646a339af6ac999a8fd96b383
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 1827bfdbebaf1ffa17c7c631a94aa8fc6471d13b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234809"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854104"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>配置必应自定义搜索体验
 
@@ -25,9 +25,9 @@ ms.locfileid: "56234809"
 
 定义 Web 切片时，请使用以下各项：
 
-| 切片名称 | 说明                                                                                                                                                                                                                                                                                                |
+| 切片名称 | 描述                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 域     | 域切片包括在 Internet 域中找到的所有内容。 例如，`www.microsoft.com`。 省略 `www.` 会导致必应同时搜索该域的子域。 例如，如果指定  `microsoft.com`，则必应还会返回来自  `support.microsoft.com` 或 `technet.microsoft.com` 的结果。 |
+| Domain     | 域切片包括在 Internet 域中找到的所有内容。 例如， `www.microsoft.com` 。 省略 `www.` 会导致必应同时搜索该域的子域。 例如, 如果指定`microsoft.com`, 必应还会从`support.microsoft.com`或`technet.microsoft.com`返回结果。 |
 | 子页面    | 子页面切片包括在子页面及其下面的路径中找到的所有内容。 最多可在路径中指定两个子页面。 例如： `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | 网页    | 网页切片在自定义搜索中只能包含该网页。 你可以选择指定是否包含子页面。                                                                                                                                                                                  |
 
@@ -40,7 +40,7 @@ ms.locfileid: "56234809"
 
 如果知道要包含在实例中的切片，请将它们添加到自定义搜索实例的“活动”列表中。 
 
-如果不确定要包含哪些切片，可以在“预览”窗格中向必应发送搜索查询，然后选择所需的切片。 为此，请按以下步骤操作： 
+如果不确定要包含哪些切片，可以在“预览”窗格中向必应发送搜索查询，然后选择所需的切片。 为此，请执行以下操作: 
 
 1. 在“预览”窗格上的下拉列表中选择“必应”，然后输入搜索查询
 
@@ -74,7 +74,7 @@ ms.locfileid: "56234809"
 
 ## <a name="search-for-images-and-videos"></a>搜索图像和视频
 
-可以使用[必应自定义图像搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference) 或[必应自定义视频搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference) 来搜索类似于 Web 内容的图像和视频。 可以使用[托管 UI](hosted-ui.md) 或 API 显示这些结果。 
+可以使用[必应自定义图像搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) 或[必应自定义视频搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) 来搜索类似于 Web 内容的图像和视频。 可以使用[托管 UI](hosted-ui.md) 或 API 显示这些结果。 
 
 这些 API 类似于非自定义的[必应图像搜索](../Bing-Image-Search/overview.md)和[必应视频搜索](../Bing-Video-Search/search-the-web.md) API，但会搜索整个 Web，且不需要 `customConfig` 查询参数。 有关处理图像和视频的详细信息，请参阅相关的文档集。 
 
@@ -83,7 +83,7 @@ ms.locfileid: "56234809"
 可以使用门户右侧的预览窗格来提交搜索查询和查看结果，以测试搜索实例。 
 
 1. 在搜索框下面，选择“我的实例”。 可以选择“必应”，将搜索体验与必应提供的结果进行比较。 
-2. 选择一个安全搜索筛选器以及要搜索的市场（请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)）。
+2. 选择一个安全搜索筛选器以及要搜索的市场（请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)）。
 3. 输入查询并按 Enter 或单击搜索图标以查看当前配置的结果。 可以通过单击“Web”、“图像”或“视频”更改所要执行的搜索类型，以获取相应的结果。 
 
 <a name="adjustrank"></a>
@@ -94,7 +94,7 @@ ms.locfileid: "56234809"
 
 |            |                                                                                                                                                                      |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 街区      | 将域、子页面或网页移至“受阻”列表。 必应将排除选定站点中的内容，以防止其显示在搜索结果中。                    |
+| 阻止      | 将域、子页面或网页移至“受阻”列表。 必应将排除选定站点中的内容，以防止其显示在搜索结果中。                    |
 | 提升      | 在搜索结果中提高该域或子页面的内容。                                                                                        |
 | 降级     | 对搜索结果中域或子页面的内容降级。 可选择是否对网页所属的域或子页面的内容降级。 |
 | 固定至顶部 | 将域、子页面或网页移到“固定”列表。 这会强制该网页显示为给定搜索查询的最顶层搜索结果。                   |
@@ -118,9 +118,9 @@ ms.locfileid: "56234809"
 
 可通过两种方式将网页固定到顶部：
 
-* 在“固定”选项卡中，输入要固定到顶部的网页的 URL 及其相应的查询。 **** 
+* 在 "**固定**" 选项卡中, 输入要固定到顶部的网页的 URL 及其相应的查询。
 
-* 在“预览”窗格中，输入搜索查询并单击“搜索”。 找到要为查询固定的网页，然后单击“固定到顶部”。 **** 该网页和查询将添加到“固定”列表。
+* 在“预览”窗格中，输入搜索查询并单击“搜索”。 查找要为查询固定的网页, 然后单击 "**固定到顶部**"。 该网页和查询将添加到“固定”列表。
 
 ### <a name="specify-the-pins-match-condition"></a>指定固定项的匹配条件
 
@@ -129,11 +129,11 @@ ms.locfileid: "56234809"
 > [!NOTE]
 > 用户搜索查询之间的所有比较以及固定项的搜索查询不区分大小写。
 
-| 值 | 说明                                                                          |
+| 值 | 描述                                                                          |
 |---------------|----------------------------------------------------------------------------------|
 | 开头为 | 如果用户的查询字符串以固定项的查询字符串开头，则固定项为匹配项 |
 | 结尾为   | 如果用户的查询字符串以固定项的查询字符串结尾，则固定项为匹配项。  |
-| Contains    | 如果用户的查询字符串包含固定项的查询字符串，则固定项为匹配项。   |
+| 包含    | 如果用户的查询字符串包含固定项的查询字符串，则固定项为匹配项。   |
 
 
 若要更改固定项的匹配条件，请单击固定项的编辑图标。 在“查询匹配条件”列中，单击下拉列表并选择要使用的新条件。 然后，单击保存图表，保存更改。
@@ -159,5 +159,5 @@ ms.locfileid: "56234809"
 
 - [调用自定义搜索](./search-your-custom-view.md)
 - [配置托管 UI 体验](./hosted-ui.md)
-- [使用修饰标记来突出显示文本](./hit-highlighting.md)
+- [使用修饰标记来突出显示文本](../bing-web-search/hit-highlighting.md)
 - [网页](./page-webpages.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 864e9586082ed95bf17135414ec4b879e3034ace
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: fd8e886a78d0689ca60d8ea7c4d16639c81d5733
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267336"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65602727"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的聚合
 
@@ -32,7 +32,7 @@ ms.locfileid: "56267336"
 ## <a name="counts"></a>计数
 
 ### <a name="count"></a>计数
-在应用任一筛选器后，计算结果集中的行数。 以下示例返回过去 30 分钟内 Perf 表中的总行数。 结果将在名为“count_”的列中返回，除非为其指定特定名称：
+在应用任一筛选器后，计算结果集中的行数。 以下示例返回过去 30 分钟内 Perf 表中的总行数  。 结果将在名为“count_”的列中返回，除非为其指定特定名称  ：
 
 
 ```Kusto

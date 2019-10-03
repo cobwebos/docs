@@ -1,21 +1,21 @@
 ---
 title: 使用必应拼写检查 API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解必应拼写检查模式、设置和与 API 相关的其他信息。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 9544337ef1322e52cbdf123bb48d283485a8c7dd
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
-ms.translationtype: HT
+ms.openlocfilehash: c5c9ad8be8bd4cd834b01a0c67e0bbc81b8cdd4a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890775"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881886"
 ---
 # <a name="using-the-bing-spell-check-api"></a>使用必应拼写检查 API
 
@@ -44,14 +44,14 @@ ms.locfileid: "56890775"
 
 ## <a name="market-setting"></a>市场设置
 
-应在请求中使用 `mkt` 查询参数指定[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference#market-codes)。 否则，API 将使用基于请求 IP 地址的默认市场。
+应在请求中使用 `mkt` 查询参数指定[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes)。 否则，API 将使用基于请求 IP 地址的默认市场。
 
 
 ## <a name="http-post-and-get-support"></a>HTTP POST 和 GET 支持
 
 此 API 支持 HTTP POST 或 HTTP GET。 使用哪一个取决于计划进行校对的文本的长度。 如果字符串始终不到 1,500 个字符，则使用 GET。 但如果需要支持长达 10,000 个字符的字符串，则使用 POST。 文本字符串可能包含任何有效的 UTF-8 字符。
 
-以下示例显示的 POST 请求用于检查文本字符串的拼写和语法。 此示例包含针对完整性的 [mode](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference#mode) 查询参数（可能已省略，因为 `mode` 默认为 Proof）。 [text](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference#text) 查询参数包含要检查的字符串。
+以下示例显示的 POST 请求用于检查文本字符串的拼写和语法。 此示例包含针对完整性的 [mode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#mode) 查询参数（可能已省略，因为 `mode` 默认为 Proof）。 [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) 查询参数包含要检查的字符串。
   
 ```  
 POST https://api.cognitive.microsoft.com/bing/v7.0/spellcheck?mode=proof&mkt=en-us HTTP/1.1  
@@ -68,7 +68,7 @@ text=when+its+your+turn+turn,+john,+come+runing
 
 如果使用 HTTP GET，则应在 URL 的查询字符串中包括 `text` 查询参数
   
-下面的示例展示了对上一请求的响应。 此响应包含 [SpellCheck](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference#spellcheck) 对象。 
+下面的示例展示了对上一请求的响应。 此响应包含 [SpellCheck](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#spellcheck) 对象。 
   
 ```json
 {  
@@ -112,7 +112,7 @@ text=when+its+your+turn+turn,+john,+come+runing
 }  
 ```  
   
-[flaggedTokens](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference#flaggedtokens) 字段列出了 API 在[文本](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference#text)字符串中发现的拼写和语法错误。 `token` 字段包含要替换的词。 可以使用 `offset` 字段中基于零的偏移来查找 `text` 字符串中的令牌。 然后，使用该位置的词来替换 `suggestion` 字段中的词。 
+[flaggedTokens](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) 字段列出了 API 在[文本](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text)字符串中发现的拼写和语法错误。 `token` 字段包含要替换的词。 可以使用 `offset` 字段中基于零的偏移来查找 `text` 字符串中的令牌。 然后，使用该位置的词来替换 `suggestion` 字段中的词。 
 
 如果 `type` 字段为 RepeatedToken，仍需将令牌替换为 `suggestion`，但可能还需删除尾随空格。
 
@@ -123,4 +123,4 @@ text=when+its+your+turn+turn,+john,+come+runing
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是必应拼写检查 API？](../overview.md)
-- [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+- [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

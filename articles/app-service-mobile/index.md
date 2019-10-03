@@ -2,22 +2,19 @@
 title: Azure 移动应用文档 - 教程和 API 参考 | Microsoft 文档
 description: 了解如何使用 Azure 应用服务中的移动应用，通过 Xamarin 或 Cordova 构建和托管本机 iOS、Android 或 Windows 应用，或者跨平台应用。
 services: app-service-mobile
-author: czeumault
-manager: carolz
+author: georgewallace
+manager: gwallace
 layout: LandingPage
-ms.assetid: ''
 ms.service: app-service-mobile
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/25/2018
-ms.author: carolz
-ms.openlocfilehash: 5adf1f12bd2c7757bfde1408c52b0753bff64797
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.author: gwallace
+ms.openlocfilehash: 5526f7ce11722469909adfaad11773bc2c8e4b66
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389643"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610212"
 ---
 # <a name="mobile-apps-documentation"></a>移动应用文档
 
@@ -197,7 +194,7 @@ ms.locfileid: "49389643"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>语言</h3>
+                        <h3>Languages</h3>
                         <p><a href="https://msdn.microsoft.com/library/azure/dn961176.aspx">.NET 后端 SDK</a></p>
                         <p><a href="https://azure.github.io/azure-mobile-apps-node/">Node.js 后端 SDK</a></p>
                         <p><a href="https://azure.github.io/azure-mobile-apps-android-client/">Android 客户端 SDK</a></p>

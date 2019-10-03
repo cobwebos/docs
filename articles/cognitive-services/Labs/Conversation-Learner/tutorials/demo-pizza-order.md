@@ -3,19 +3,20 @@ title: 演示对话学习器模型，披萨订购 - Microsoft 认知服务 | Mic
 titleSuffix: Azure
 description: 了解如何创建演示对话学习器模型。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 3fe11bef6c505771ee1e3f2e12e647eafc7c45d1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4d42121468b8a875ecd13fb936d810728bd4b644
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212437"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703422"
 ---
 # <a name="demo-pizza-order"></a>演示：披萨订单
 此演示演示了披萨订购机器人，其支持单个披萨订购的方式包括：
@@ -47,7 +48,7 @@ ms.locfileid: "55212437"
 
 ![](../media/tutorial_pizza_entities.PNG)
 
-### <a name="actions"></a>操作
+### <a name="actions"></a>个操作
 
 此模型包含一组操作，这些操作会询问用户的配料选择、累积配料等内容。
 

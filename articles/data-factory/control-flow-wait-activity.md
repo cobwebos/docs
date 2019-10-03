@@ -3,23 +3,22 @@ title: Azure 数据工厂中的等待活动 | Microsoft Docs
 description: 等待活动在一段指定的时间内暂停管道的执行。
 services: data-factory
 documentationcenter: ''
-author: shlo
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.author: shlo
-ms.openlocfilehash: 66d79bc1597cd8f3c7e01eb8227eb7c91ba04d1d
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 48a722979e61209a855dd1fec22fcdcc756ae1ce
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807807"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142417"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行的等待活动
+# <a name="execute-wait-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行等待活动
 在管道中使用等待活动时，管道将等待一段指定的时间，然后继续执行后续活动。 
 
 ## <a name="syntax"></a>语法
@@ -37,11 +36,11 @@ ms.locfileid: "56807807"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 需要
+属性 | 说明 | 允许的值 | 必填
 -------- | ----------- | -------------- | --------
-名称 | `Wait` 活动的名称。 | String | 是
+name | `Wait` 活动的名称。 | String | 是
 type | 必须被设置为 **Wait**。 | String | 是
-waitTimeInSeconds | 管道在继续进行处理前所等待的秒数。 | Integer | 是
+waitTimeInSeconds | 管道在继续进行处理前所等待的秒数。 | 整数 | 是
 
 ## <a name="example"></a>示例
 

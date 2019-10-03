@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 55ff6d37f18f4ffa2f12e17bd33dd196b77f79af
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: f6fcdddb2da005d563ee0a10381e7aa4f26487d0
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025770"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089255"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-sybase-connector.md)
 > * [当前版本](connector-sybase.md)
 
@@ -28,12 +28,17 @@ ms.locfileid: "54025770"
 
 ## <a name="supported-capabilities"></a>支持的功能
 
+以下活动支持此 Sybase 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
+
 可以将数据从 Sybase 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，此 Sybase 连接器支持：
 
 - SAP Sybase SQL 随处 (ASA) **版本 16 和更高版本**；不支持智能和 ASE。
-- 使用**基本**或 **Windows** 身份验证复制数据。
+- 使用**Basic**或 **Windows** 身份验证复制数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -55,7 +60,7 @@ Sybase 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Sybase** | 是 |
-| server | Sybase 服务器的名称。 |是 |
+| 服务器 | Sybase 服务器的名称。 |是 |
 | database | Sybase 数据库的名称。 |是 |
 | authenticationType | 用于连接 Sybase 数据库的身份验证类型。<br/>允许值包括：**Basic** 和 **Windows**。 |是 |
 | username | 指定用于连接到 Sybase 数据库的用户名。 |是 |
@@ -89,13 +94,13 @@ Sybase 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Sybase 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Sybase 数据集支持的属性列表。
 
-要从 Sybase 复制数据，请将数据集的 type 属性设置为“RelationalTable”。 支持以下属性：
+若要从 Sybase 复制数据，支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**RelationalTable** | 是 |
+| type | 数据集的 type 属性必须设置为：**SybaseTable** | 是 |
 | tableName | Sybase 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -104,15 +109,18 @@ Sybase 链接的服务支持以下属性：
 {
     "name": "SybaseDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "SybaseTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Sybase linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+如果使用`RelationalTable`的是类型化的数据集，则仍支持原样，但建议使用新的数据集。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
@@ -120,11 +128,11 @@ Sybase 链接的服务支持以下属性：
 
 ### <a name="sybase-as-source"></a>以 Sybase 作为源
 
-要从 Sybase 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动源部分支持以下属性：
+若要从 Sybase 复制数据，复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**RelationalSource** | 是 |
+| type | 复制活动源的 type 属性必须设置为：**SybaseSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
@@ -148,7 +156,7 @@ Sybase 链接的服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SybaseSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -159,11 +167,18 @@ Sybase 链接的服务支持以下属性：
 ]
 ```
 
+如果使用`RelationalSource`的是类型化的源，则仍支持原样，但建议使用新的源。
+
 ## <a name="data-type-mapping-for-sybase"></a>Sybase 的数据类型映射
 
 从 Sybase 复制数据时，以下映射用于从 Sybase 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
 Sybase 支持 T-SQL 类型。 有关从 SQL 类型到 Azure 数据工厂临时数据类型的映射表，请参阅 [Azure SQL 数据库连接器 - 数据类型映射](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)一节。
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,45 +1,39 @@
 ---
-title: Azure Active Directory Identity Protection 常见问题解答 | Microsoft Docs
-description: 有关 Azure AD Identity Protection 的常见问题解答
+title: Azure Active Directory 标识保护常见问题解答 | Microsoft Docs
+description: 有关 Azure AD 标识保护的常见问题解答
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bea455371938ccc4d512bdb7ffddd72eb9508da
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e30f8264870272fc12dcb7e15b37e5fd30688bcb
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522224"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126531"
 ---
-# <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection 常见问题解答
+# <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory 标识保护常见问题解答
 
-本文包括了对 Azure Active Directory (Azure AD) 标识保护常见问题的解答。 有关详细信息，请参阅 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)。 
+本文包括了对 Azure Active Directory (Azure AD) 标识保护常见问题的解答。 有关详细信息，请参阅 [Azure Active Directory 标识保护](../active-directory-identityprotection.md)。 
 
+## <a name="why-do-some-risk-detections-have-closed-system-status"></a>为什么某些风险检测的状态为 "已关闭 (系统)"？
 
-## <a name="why-do-some-risk-events-have-closed-system-status"></a>为何某些风险事件具有“已关闭(系统)”状态？
-
-**答:** 这些是 Identity Protection 检测到的风险事件，之所以稍后关闭是因为已不再认为这些事件有风险。 这些事件不会计入用户的风险级别。 
-
----
-
-## <a name="do-i-need-to-be-a-global-admin-to-use-identity-protection-in-the-azure-portal"></a>是否需要是全局管理员，才能在 Azure 门户中使用 Identity Protection？
-**答:** 不。 若要使用 Identity Protection，可以是安全读取者、安全管理员或全局管理员。
+**答:** 这些风险检测已被标识保护检测到, 以后关闭, 因为这些事件不再被视为有风险。 这些事件不会计入用户的风险级别。 
 
 ---
 
-## <a name="how-do-i-get-identity-protection"></a>如何获取 Identity Protection？
+## <a name="do-i-need-to-be-a-global-admin-to-use-identity-protection-in-the-azure-portal"></a>是否需要是全局管理员，才能在 Azure 门户中使用“标识保护”？
+**答:** 否。 若要使用“标识保护”，可以是安全读取者、安全管理员或全局管理员。
+
+---
+
+## <a name="how-do-i-get-identity-protection"></a>如何获取“标识保护”？
 
 **答:** 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)获取此问题的解答。
 

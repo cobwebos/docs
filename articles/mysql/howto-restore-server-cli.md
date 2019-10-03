@@ -8,11 +8,11 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.openlocfilehash: f3850623f5918ea9405131edb1821b941019ac34
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532315"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66160444"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 中备份和还原服务器
 
@@ -72,7 +72,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 | 设置 | 建议的值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  源服务器所在的资源组。  |
-| 名称 | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
+| name | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
 | restore-point-in-time | 2018-03-13T13:59:00Z | 选择要还原到的时间点。 此日期和时间必须在源服务器的备份保留期限内。 使用 ISO8601 日期和时间格式。 例如，可以使用自己的本地时区，如 `2018-03-13T05:59:00-08:00`。 也可以使用 UTC Zulu 格式，如 `2018-03-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要从其还原的源服务器的名称或 ID。 |
 
@@ -110,9 +110,9 @@ az mysql server georestore --resource-group newresourcegroup --name mydemoserver
 | 设置 | 建议的值 | 描述  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新服务器将属于的资源组的名称。|
-|名称 | mydemoserver-georestored | 新服务器的名称。 |
+|name | mydemoserver-georestored | 新服务器的名称。 |
 |source-server | mydemoserver | 将使用其异地冗余备份的现有服务器的名称。 |
-|位置 | eastus | 新服务器的位置。 |
+|location | eastus | 新服务器的位置。 |
 |sku-name| GP_Gen5_8 | 此参数设置新服务器的定价层、计算层代和 vCore 数。 GP_Gen5_8 映射为一台第 5 代常规用途服务器，具有 8 个 vCore。|
 
 

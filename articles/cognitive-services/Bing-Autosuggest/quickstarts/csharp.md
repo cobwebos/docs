@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用必应自动建议 REST API 和 C# 建议搜索查询
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用必应自动建议 API 快速开始实时建议搜索词。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 10e25797c15a821579cd15333cdd833e491acbd0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bf5322b64b46854d2652c6edf264e25ce0be3d0f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546103"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564722"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>快速入门：使用必应自动建议 REST API 和 C# 建议搜索查询
 
@@ -23,7 +23,7 @@ ms.locfileid: "57546103"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "57546103"
     using System.Text;
     ```
 
-2. 在新类中，为 API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)和部分搜索查询创建变量。
+2. 在新类中，为 API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和部分搜索查询创建变量。
 
     ```csharp
     static string host = "https://api.cognitive.microsoft.com";
@@ -166,4 +166,4 @@ ms.locfileid: "57546103"
 ## <a name="see-also"></a>另请参阅
 
 - [什么是必应自动建议？](../get-suggested-search-terms.md)
-- [必应自动推荐 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [必应自动推荐 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

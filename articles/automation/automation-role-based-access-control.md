@@ -5,17 +5,17 @@ keywords: 自动化 rbac, 基于角色的访问控制, azure rbac
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9b2bcdf3d74c6946b8c9f0dacaeabf28d9c76f94
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918784"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477722"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
 
@@ -214,7 +214,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 ### <a name="onboarding-from-a-virtual-machine"></a>从虚拟机加入
 
-|**Action**  |权限  |**最小范围**  |
+|**Action**  |权限   |**最小范围**  |
 |---------|---------|---------|
 |写入新部署      | Microsoft.Resources/deployments/*          |订阅          |
 |写入新资源组      | Microsoft.Resources/subscriptions/resourceGroups/write        | 订阅          |
@@ -232,12 +232,13 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |加入状态检查 - 读取 VM      | Microsoft.Compute/virtualMachines/read         | 虚拟机         |
 |加入状态检查 - 读取帐户      | Microsoft.Automation/automationAccounts/read  |  自动化帐户   |
 | 加入工作区中检查 vm<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | 订阅         |
+| 注册 Log Analytics 提供程序 |Microsoft.Insights/register/action | 订阅|
 
 <sup>1</sup>载入通过虚拟机门户体验需要此权限。
 
 ### <a name="onboarding-from-automation-account"></a>从自动化帐户加入
 
-|**Action**  |权限 |**最小范围**  |
+|**Action**  |权限  |**最小范围**  |
 |---------|---------|---------|
 |新建部署     | Microsoft.Resources/deployments/*        | 订阅         |
 |新建资源组     | Microsoft.Resources/subscriptions/resourceGroups/write         | 订阅        |
@@ -251,6 +252,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |创建/编辑保存的搜索     | Microsoft.OperationalInsights/workspaces/write        | 工作区        |
 |创建/编辑范围配置     | Microsoft.OperationalInsights/workspaces/write        | 工作区        |
 |将解决方案链接到范围配置      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | 解决方案         |
+| 注册 Log Analytics 提供程序 |Microsoft.Insights/register/action | 订阅|
 |**步骤 2 - 加入多个 VM**     |         |         |
 |VMOnboarding 边栏选项卡 - 创建 MMA 扩展     | Microsoft.Compute/virtualMachines/write           | 虚拟机        |
 |创建/编辑保存的搜索     | Microsoft.OperationalInsights/workspaces/write           | 工作区        |
@@ -276,27 +278,27 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 ### <a name="configure-rbac-using-the-azure-portal"></a>使用 Azure 门户配置 RBAC
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，然后从“自动化帐户”页打开自动化帐户。
-2. 单击右上角的“访问控制(IAM)”控件。 此时会打开“访问控制(IAM)”页，可以在其中添加新的用户、组和应用程序，以便管理自动化帐户并查看可以为自动化帐户配置的现有角色。
-3. 单击“角色分配”选项卡。
+2. 单击右上角的“访问控制(IAM)”控件  。 此时会打开“访问控制(IAM)”页，可以在其中添加新的用户、组和应用程序，以便管理自动化帐户并查看可以为自动化帐户配置的现有角色  。
+3. 单击“角色分配”  选项卡。
 
    ![访问按钮](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>添加新用户并分配角色
 
-1. 在“访问控制(IAM)”页中，单击“+ 添加角色分配”打开“添加角色分配”页，以便添加用户、组或应用程序并向其分配角色。
+1. 在“访问控制(IAM)”页中，单击“+ 添加角色分配”打开“添加角色分配”页，以便添加用户、组或应用程序并向其分配角色    。
 
 2. 从可用角色列表中选择一个角色。 可以选择自动化帐户所支持的任何可用的内置角色，或者定义的任何自定义角色。
 
-3. 在“选择”字段中键入要对其授予权限的用户的用户名。 从列表中选择用户，然后单击“保存”。
+3. 在“选择”字段中键入要对其授予权限的用户的用户名  。 从列表中选择用户，然后单击“保存”  。
 
    ![添加用户](media/automation-role-based-access-control/automation-04-add-users.png)
 
-   现在，应当会看到该用户已添加到“用户”页并且分配有所选角色
+   现在，应当会看到该用户已添加到“用户”  页并且分配有所选角色
 
    ![列出用户](media/automation-role-based-access-control/automation-05-list-users.png)
 
-   也可以通过“角色”页向用户分配角色。
-4. 单击“访问控制(IAM)”页中的“角色”打开“角色”页。 在这里，可以查看角色的名称以及分配给该角色的用户和组的数目。
+   也可以通过“角色”页向用户分配角色  。
+4. 单击“访问控制(IAM)”页中的“角色”打开“角色”页    。 在这里，可以查看角色的名称以及分配给该角色的用户和组的数目。
 
     ![从用户页分配角色](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
 
@@ -307,8 +309,8 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 可以删除不管理自动化帐户或不再为组织工作的用户的访问权限。 下面是删除用户的步骤：
 
-1. 在“访问控制 (IAM)”页中，选择要删除的用户，然后单击“删除”。
-2. 单击“分配详细信息”页中的“删除”按钮。
+1. 在“访问控制 (IAM)”页中，选择要删除的用户，然后单击“删除”   。
+2. 单击“分配详细信息”页中的“删除”按钮  。
 3. 单击“是”以确认删除  。
 
    ![删除用户](media/automation-role-based-access-control/automation-08-remove-users.png)
@@ -416,7 +418,7 @@ New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job 
 New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
 ```
 
-一旦运行，用户可以登录到 Azure 门户并查看“所有资源”。 在列表中，他们会看到他们在其中被添加为“自动化 Runbook 操作员”的 Runbook。
+一旦运行，用户可以登录到 Azure 门户并查看“所有资源”  。 在列表中，他们会看到他们在其中被添加为“自动化 Runbook 操作员”  的 Runbook。
 
 ![门户中的 Runbook RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 9e29b08da35b9fd2f479f1d4e3b0d89ed881344b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 25559c7a6f66a1092007054c72f601b428fa4e7b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901995"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845507"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>适用于 Windows 10 的 PlayReady 脱机流式处理
 
@@ -28,20 +28,23 @@ Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用�
 - [适用于 iOS 的 FairPlay 脱机流式处理](offline-fairplay-for-ios.md)
 - [适用于 Android 的 Widevine 脱机流式处理](offline-widevine-for-android.md)
 
+> [!NOTE]
+> 脱机 DRM 仅计费，以便在下载内容时发出许可证的单个请求。 任何错误都不收费。
+
 ## <a name="overview"></a>概述
 
 本节介绍有关脱机模式播放的一些背景，特别是以下问题的原因：
 
 * 在某些国家/地区，Internet 可用性和/或宽带仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，OTT/OVP 提供程序就会请求提供脱机模式支持。
 * 在 Netflix 2016 年第 3 季度股东大会上，Netflix 首席执行官 Reed Hastings 表示，下载内容是“经常请求的功能”，“我们对此持开放态度”。
-* 某些内容提供程序可能不允许在某个国家/地区边界之外进行 DRM 许可证传送。 如果用户想在国外旅行期间查看内容，需要脱机下载。
+* 某些内容提供程序可能不允许在某个国家/地区的边界之外进行 DRM 许可证传送。 如果用户想在国外旅行期间查看内容，需要脱机下载。
  
 实现脱机模式所面临的挑战如下：
 
 * 许多播放器、编码器工具都支持 MP4，但 MP4 容器和 DRM 之间不存在绑定；
 * 从长远来看，具有 CENC 的 CFF 是趋势。 然而，目前工具/播放机支持生态系统尚未出现。 现在需要一个解决方案。
  
-其理念为：具有 H264/AAC 的平滑流式处理 ([PIFF](https://go.microsoft.com/?linkid=9682897)) 文件格式与 PlayReady (AES-128 CTR) 存在绑定。 平滑流式处理 .ismv 文件（假设音频混合在视频中）本身就是 fMP4，可以用于播放。 如果平滑流式处理内容经过 PlayReady 加密，则每个 .ismv 文件会变成受 PlayReady 保护的片段 MP4。 我们可以选择具有首选比特率的 .ismv 文件，并将其重命名为 .mp4 以便下载。
+其理念为：具有 H264/AAC 的平滑流式处理 ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) 文件格式与 PlayReady (AES-128 CTR) 存在绑定。 平滑流式处理 .ismv 文件（假设音频混合在视频中）本身就是 fMP4，可以用于播放。 如果平滑流式处理内容经过 PlayReady 加密，则每个 .ismv 文件会变成受 PlayReady 保护的片段 MP4。 我们可以选择具有首选比特率的 .ismv 文件，并将其重命名为 .mp4 以便下载。
 
 有以下两种方式用于承载 PlayReady 保护的 MP4，以便进行渐进式下载：
 
@@ -63,7 +66,7 @@ Azure 媒体服务支持带 DRM 保护的脱机下载/播放。 本文涵盖用�
 资产 #2：
 
 * 渐进式下载 URL：[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL （本地）： [https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* PlayReady LA_URL （本地）：[https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
 
 对于播放测试，我们在 Windows 10 上使用了通用 Windows 应用程序。 在 [Windows 10 通用示例](https://github.com/Microsoft/Windows-universal-samples)中，有一个名为 [Adaptive Streaming Sample](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)（自适应流式处理示例）的基础播放器示例。 我们只需要添加代码，选择下载的视频并将其用作源，而不是用作自适应流式处理源。 按钮单击事件处理程序中的更改：
 

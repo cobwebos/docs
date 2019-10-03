@@ -1,6 +1,6 @@
 ---
 title: 什么是必应自动建议？
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用必应自动建议 API。
 services: cognitive-services
 author: swhite-msft
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 669eaaf0eaf28c696a7ca368c02f5816054e5d10
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 13606fa5a58106575648a39e5074507f5d3bf471
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010100"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405385"
 ---
 # <a name="what-is-bing-autosuggest"></a>什么是必应自动建议？
 
@@ -47,7 +47,7 @@ ms.locfileid: "57010100"
 
 若要快速了解如何使用第一个请求，请参阅[创建第一个查询](quickstarts/csharp.md)。
 
-使自己熟悉[必应自动建议 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference) 参考文档。 此参考文档包含可以用来请求建议查询词的终结点、标头和查询参数的列表，以及响应对象的定义。
+使自己熟悉[必应自动建议 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) 参考文档。 此参考文档包含可以用来请求建议查询词的终结点、标头和查询参数的列表，以及响应对象的定义。
 
 了解如何使用[必应 Web 搜索 API](../bing-web-search/search-the-web.md) 搜索网页。
 

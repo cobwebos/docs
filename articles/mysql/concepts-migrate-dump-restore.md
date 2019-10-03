@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/02/2018
-ms.openlocfilehash: e79c83ecb17c4dcd11f7ccbecded59e7d1d13dfd
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: a2a879ed677b981adcd50aea0468e0c5976c2a8a
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542455"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390546"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 本文介绍了在 Azure Database for MySQL 中备份和还原数据库的两种常见方式
@@ -49,6 +49,7 @@ ms.locfileid: "53542455"
 -   适当时使用已分区表。
 -   并行加载数据。 避免太多将导致达到资源限制的并行度，并通过使用 Azure 门户中提供的指标监视资源。 
 -   转储数据库时，使用 mysqlpump 中的 `defer-table-indexes` 选项，以便在加载表数据后创建索引。
+-   使用 mysqlpump `skip-definer`中的选项可从 create 语句中省略视图和存储过程的 definer 和 SQL SECURITY 子句。  重新加载转储文件时，它会创建使用默认 DEFINER 和 SQL 安全值的对象。
 -   将备份文件复制到 Azure blob/存储，并在其中执行还原，这应该比通过 Internet 执行还原要快得多。
 
 ## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>使用 mysqldump 从命令行创建备份文件
@@ -76,10 +77,6 @@ $ mysqldump -u root -p testdb table1 table2 > testdb_tables_backup.sql
 若要一次性备份多个数据库，请使用 --database 切换并列出数据库名（用空格隔开）。 
 ```bash
 $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sql 
-```
-若要一次性备份服务器中的所有数据库，应使用 --all-databases 选项。
-```bash
-$ mysqldump -u root -p --all-databases > alldb_backup.sql 
 ```
 
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 目标服务器上创建数据库

@@ -4,19 +4,18 @@ description: 了解如何处理 Azure Functions 中的事件网格事件。
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: b2ab07e40ac2652d97e912f8c7bd3b8893bfc114
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d2e15c63ac6d93824aeab3f251c2860b7ea114d6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094154"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086825"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -214,6 +213,7 @@ module.exports = function (context, eventGridEvent) {
 import logging
 import azure.functions as func
 
+
 def main(event: func.EventGridEvent):
     logging.info("Python Event Grid function processed a request.")
     logging.info("  Subject: %s", event.subject)
@@ -300,7 +300,7 @@ public class EventSchema {
 
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 EventGrid 的参数使用 `EventGridTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
-## <a name="attributes"></a>属性
+## <a name="attributes"></a>特性
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/EventGridTriggerAttribute.cs) 特性。
 
@@ -322,11 +322,11 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 |function.json 属性 |描述|
 |---------|---------|
-| type | 必需 - 必须设置为 `eventGridTrigger`。 |
-| direction | 必需 - 必须设置为 `in`。 |
-| name | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
+| **type** | 必需 - 必须设置为 `eventGridTrigger`。 |
+| **direction** | 必需 - 必须设置为 `in`。 |
+| **名称** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 
 在 Azure Functions 1.x 的 C# 和 F# 函数中，可以为事件网格触发器使用以下参数类型：
 
@@ -402,11 +402,11 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 该命令需要可调用函数的终结点 URL。 以下示例显示特定于版本的 URL 模式：
 
-#### <a name="version-2x-runtime"></a>2.x 版运行时
+#### <a name="version-2x-runtime"></a>2\.x 版运行时
 
     https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
 
-#### <a name="version-1x-runtime"></a>1.x 版运行时
+#### <a name="version-1x-runtime"></a>1\.x 版运行时
 
     https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
 
@@ -414,7 +414,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 下面是一个订阅 Blob 存储帐户的示例（包含系统密钥的占位符）：
 
-#### <a name="version-2x-runtime"></a>2.x 版运行时
+#### <a name="version-2x-runtime"></a>2\.x 版运行时
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -425,7 +425,7 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 --endpoint https://mystoragetriggeredfunction.azurewebsites.net/runtime/webhooks/eventgrid?functionName=imageresizefunc&code=<key>
 ```
 
-#### <a name="version-1x-runtime"></a>1.x 版运行时
+#### <a name="version-1x-runtime"></a>1\.x 版运行时
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -442,13 +442,13 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 
 可以使用以下 API (HTTP GET) 获取系统密钥：
 
-#### <a name="version-2x-runtime"></a>2.x 版运行时
+#### <a name="version-2x-runtime"></a>2\.x 版运行时
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
 ```
 
-#### <a name="version-1x-runtime"></a>1.x 版运行时
+#### <a name="version-1x-runtime"></a>1\.x 版运行时
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
@@ -529,13 +529,13 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 * 设置 `aeg-event-type: Notification` 标头。
 * 将 RequestBin 数据粘贴到请求正文。
 * 发布到事件网格触发器函数的 URL。
-  * 有关 2.x 中，使用以下模式：
+  * 对于 2.x, 请使用以下模式:
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
     ```
 
-  * 对于 1.x 使用：
+  * 对于1.x 使用:
 
     ```
     http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
@@ -555,7 +555,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ## <a name="local-testing-with-ngrok"></a>使用 ngrok 进行本地测试
 
-在本地测试事件网格触发器的另一种方法是自动化 Internet 与开发计算机之间的 HTTP 连接。 为此，可以使用名为 [ngrok](https://ngrok.com/) 的开源工具：
+在本地测试事件网格触发器的另一种方法是自动化 Internet 与开发计算机之间的 HTTP 连接。 可以使用[ngrok](https://ngrok.com/)之类的工具来执行此操作:
 
 1. [创建 ngrok 终结点](#create-an-ngrok-endpoint)。
 1. [运行事件网格触发器函数](#run-the-event-grid-trigger-function)。

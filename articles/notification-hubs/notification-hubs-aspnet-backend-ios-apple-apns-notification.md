@@ -2,9 +2,9 @@
 title: 使用 Azure 通知中心向特定用户推送通知 | Microsoft Docs
 description: 了解如何使用 Azure 通知中心向特定用户推送通知。
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethm
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: 1f7d1410-ef93-4c4b-813b-f075eed20082
 ms.service: notification-hubs
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 9b6c0715cb85e245aba94adfb8b33d0d07ece9a9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 85461f72d4385805e2aa13691a574a2161036ca5
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084406"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212235"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户推送通知
 
@@ -38,7 +40,7 @@ ms.locfileid: "58084406"
 > * 修改 iOS 应用
 > * 测试应用程序
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本教程假设已根据[通知中心入门 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 中所述创建并配置了通知中心。 此外，只有在学习本教程后，才可以学习[安全推送 (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 教程。
 如果要使用移动应用作为后端服务，请参阅[移动应用中的推送通知入门](../app-service-mobile/app-service-mobile-ios-get-started-push.md)。
@@ -54,7 +56,7 @@ ms.locfileid: "58084406"
 
 2. 在 `Main.storyboard` 文件中，添加屏幕截图中显示的对象库中的组件。
 
-    ![编辑在 Xcode 接口生成器中的情节提要][1]
+    ![在 Xcode interface builder 中编辑情节提要][1]
 
    * **用户名**：包含占位符文本“*输入用户名*”的 UITextField，直接位于发送结果标签的下面并受左右边距的限制。
    * **密码**：包含占位符文本“*输入密码*”的 UITextField，直接位于用户名文本字段的下面并受左右边距的限制。 选中属性检查器中“*返回密钥*”下的“**安全文本输入**”选项。
@@ -86,7 +88,7 @@ ms.locfileid: "58084406"
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. 在 `ViewController.h` 中，在 import 语句后面添加以下 `#define`。 将 `<Enter Your Backend Endpoint>` 占位符替换为在上一部分中用于部署应用后端的目标 URL。 例如，`http://your_backend.azurewebsites.net`。
+4. 在 `ViewController.h` 中，在 import 语句后面添加以下 `#define`。 将 `<Enter Your Backend Endpoint>` 占位符替换为在上一部分中用于部署应用后端的目标 URL。 例如， `http://your_backend.azurewebsites.net` 。
 
     ```objc
     #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
@@ -483,7 +485,7 @@ ms.locfileid: "58084406"
 
     ![iOS 测试应用程序][2]
 
-3. 应看到弹出窗口通知你注册成功。 单击“确定”。
+3. 应看到弹出窗口通知你注册成功。 单击 **“确定”** 。
 
     ![显示的 iOS 测试通知][3]
 

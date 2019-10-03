@@ -2,37 +2,37 @@
 title: Azure Active Directory B2C 自定义策略 | Microsoft Docs
 description: 了解 Azure Active Directory B2C 自定义策略。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7921454cc9269278db58fcc50bc63ca49b41b1e0
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 335b6c1a12f3786d7c0f1083f5b052aaac4beccb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417927"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065777"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-自定义策略是定义 Azure Active Directory (Azure AD) B2C 租户行为的配置文件。 用户流在 Azure AD B2C 门户中预定义，用于最常见的标识任务。 标识开发人员可以完全编辑自定义策略来完成许多不同的任务。
+自定义策略是定义 Azure Active Directory B2C （Azure AD B2C）租户行为的配置文件。 用户流在 Azure AD B2C 门户中预定义，用于最常见的标识任务。 标识开发人员可以完全编辑自定义策略来完成许多不同的任务。
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>比较用户流和自定义策略
 
 | | 用户流 | 自定义策略 |
 |-|-------------------|-----------------|
-| 目标用户 | 具有或不具有标识专业知识的所有应用程序开发人员。 | 标识专业人员、系统集成人员、顾问和内部标识团队。 他们能够熟悉运作 OpenIDConnect 流，并了解标识提供者和基于声明的身份验证。 |
+| 目标用户 | 具有或不具有标识专业知识的所有应用程序开发人员。 | 标识专业人员、系统集成人员、顾问和内部标识团队。 他们能够熟悉运作 OpenID Connect 流，并了解标识提供者和基于声明的身份验证。 |
 | 配置方法 | 具有用户友好用户界面 (UI) 的 Azure 门户。 | 直接编辑 XML 文件，并上传到 Azure 门户。 |
-| UI 自定义 | 完全 UI 自定义包括 HTML、 CSS 和 JavaScript。<br><br>使用自定义字符串实现多语言支持。 | 相同 |
+| UI 自定义 | 完整的 UI 自定义包括 HTML、CSS 和 JavaScript。<br><br>使用自定义字符串实现多语言支持。 | 相同 |
 | 属性自定义 | 标准和自定义属性。 | 相同 |
 | 令牌和会话管理 | 自定义令牌和多个会话选项。 | 相同 |
-| 标识提供者 | 预定义的本地或社交提供程序和大多数 OIDC 标识提供程序，如与 Azure Active Directory 租户的联合身份验证。 | 基于标准的 OIDC、OAUTH 和 SAML。  身份验证，也可以通过使用集成的 REST Api。 |
+| 标识提供者 | 预定义的本地或社交提供程序以及大多数 OIDC 标识提供者，例如与 Azure Active Directory 租户进行的联合身份验证。 | 基于标准的 OIDC、OAUTH 和 SAML。  也可通过集成 REST API 进行身份验证。 |
 | 标识任务 | 使用本地帐户或许多社交帐户注册或登录。<br><br>自助密码重置。<br><br>配置文件编辑。<br><br>多重身份验证。<br><br>自定义令牌和会话。<br><br>访问令牌流。 | 使用自定义标识提供者或自定义范围完成与用户流相同的任务。<br><br>注册时在另一系统中预配用户帐户。<br><br>使用自己的电子邮件服务提供程序发送欢迎电子邮件。<br><br>使用 Azure AD B2C 外部的用户存储。<br><br>使用 API 通过受信任的系统验证用户提供的信息。 |
 
 ## <a name="policy-files"></a>策略文件
@@ -50,12 +50,12 @@ Azure AD B2C 中的用户流遵循上面描述的三文件模式，但开发人�
 Azure 中的客户标识和访问管理 (CIAM) 服务包括：
 
 - 一个用户目录，可通过使用 Microsoft Graph 进行访问，并保存本地帐户和联合帐户的用户数据。
-- 访问“标识体验框架”。此框架协调用户与实体之间的信任，并在两者之间传递声明，以完成标识或访问管理任务。 
+- 访问“标识体验框架”。此框架协调用户与实体之间的信任，并在两者之间传递声明，以完成标识或访问管理任务。
 - 安全令牌服务 (STS)，颁发 ID 令牌、刷新令牌和访问令牌（以及等效的 SAML 断言），并对其进行验证以保护资源。
 
 Azure AD B2C 依次与标识提供程序、用户、其他系统和本地用户目录交互，以完成标识任务。 例如，登录用户、注册新用户或重置密码。 “标识体验框架”和策略（亦称为“用户旅程”或“信任框架策略”）可建立多方信任并显式定义执行组件、操作、协议和要完成的步骤顺序。
 
-“标识体验框架”是一个完全可配置的、策略驱动的、基于云的 Azure 平台，用于协调采用标准协议格式（例如 OpenIDConnect、OAuth、SAML、WSFed）的实体与一些非标准实体（例如基于 REST API 的系统间声明交换）之间的信任关系。 该框架创建支持 HTML 和 CSS 的用户友好的白标体验。
+标识体验框架是一个完全可配置的、策略驱动的、基于云的 Azure 平台，用于协调标准协议格式（例如 OpenID Connect、OAuth、SAML）和几个非标准的实体之间的信任，例如 REST基于 API 的系统间声明交换。 该框架创建支持 HTML 和 CSS 的用户友好的白标体验。
 
 自定义策略以一个或多个采用 XML 格式的文件表示，这些文件在分层链中相互引用。 XML 元素定义声明架构、声明转换、内容定义、声明提供程序、技术配置文件、用户旅程业务流程步骤，以及其他元素。 自定义策略可作为一个或多个 XML 文件进行访问，这些文件在信赖方调用时由标识体验框架执行。 配置自定义策略的开发人员必须严谨地定义信任关系，以包含元数据终结点和确切的声明交换定义，并配置每个标识提供者所需的机密、密钥和证书。
 

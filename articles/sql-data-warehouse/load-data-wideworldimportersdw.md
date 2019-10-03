@@ -1,25 +1,25 @@
 ---
 title: 教程：将数据加载到 Azure SQL 数据仓库 | Microsoft Docs
-description: 教程使用 Azure 门户和 SQL Server Management Studio 将 WideWorldImportersDW 数据仓库从公共 Azure Blob 加载到 Azure SQL 数据仓库。
+description: 教程使用 Azure 门户和 SQL Server Management Studio 将 WideWorldImportersDW 数据仓库从全局 Azure blob 加载到 Azure SQL 数据仓库。
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.subservice: load-data
+ms.date: 07/17/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 44ad37120034d59161fe3b5f0ed521fc6f630b0f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: f81a19631b29954f9bd3da55a4b332e37746152e
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454328"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574935"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>教程：将数据加载到 Azure SQL 数据仓库
 
-本教程使用 PolyBase 将 WideWorldImportersDW 数据仓库从 Azure Blob 存储加载到 Azure SQL 数据仓库。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 执行以下操作： 
+本教程使用 PolyBase 将 WideWorldImportersDW 数据仓库从 Azure Blob 存储加载到 Azure SQL 数据仓库。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 门户中创建数据仓库
@@ -38,14 +38,13 @@ ms.locfileid: "55454328"
 
 开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
-
-## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录到 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>创建空白 SQL 数据仓库
 
-创建 Azure SQL 数据仓库时，会使用定义好的一组[计算资源](memory-and-concurrency-limits.md)。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 逻辑服务器](../sql-database/sql-database-features.md)中创建。 
+Azure SQL 数据仓库是使用一组已定义的[计算资源](memory-and-concurrency-limits.md)创建的。 数据库在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)和 [Azure SQL 逻辑服务器](../sql-database/sql-database-features.md)中创建。 
 
 按照以下步骤创建空白 SQL 数据仓库。 
 
@@ -68,20 +67,20 @@ ms.locfileid: "55454328"
 
 4. 单击“服务器”，为新数据库创建并配置新服务器。 使用以下信息填写“新建服务器”窗体： 
 
-    | 设置 | 建议的值 | 说明 | 
+    | 设置 | 建议的值 | Description | 
     | ------- | --------------- | ----------- |
     | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 | 
     | 服务器管理员登录名 | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。|
     | **密码** | 任何有效的密码 | 密码必须至少有八个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
-    | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |
+    | **Location** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |
 
     ![创建数据库服务器](media/load-data-wideworldimportersdw/create-database-server.png)
 
 5. 单击“选择”。
 
-6. 单击“性能层”，指定是否针对弹性或计算，以及数据仓库单位对数据仓库进行优化。 
+6. 单击 "**性能层**" 以指定数据仓库是 Gen1、Gen2 还是数据仓库单位数。 
 
-7. 对于本教程，选择“针对弹性进行优化”服务层。 默认情况下，滑块设置为“DW400”。  请尝试上下移动滑块，以查看其工作原理。 
+7. 对于本教程, 请选择 " **Gen1** " 服务层。 默认情况下，滑块设置为“DW400”。  请尝试上下移动滑块，以查看其工作原理。 
 
     ![配置性能](media/load-data-wideworldimportersdw/configure-performance.png)
 
@@ -152,14 +151,14 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     | 服务器类型 | 数据库引擎 | 此值是必需的 |
     | 服务器名称 | 完全限定的服务器名称 | 例如，**sample-svr.database.windows.net** 就是完全限定的服务器名称。 |
     | 身份验证 | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
-    | 登录 | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |
+    | 登录 | 服务器管理员帐户 | 此帐户是在创建服务器时指定的帐户。 |
     | 密码 | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
 
     ![连接到服务器](media/load-data-wideworldimportersdw/connect-to-server.png)
 
 4. 单击“连接”。 此时会在 SSMS 中打开“对象资源管理器”窗口。 
 
-5. 在对象资源管理器中，展开“数据库”。 然后展开“系统数据库”和“master”，查看 master 数据库中的对象。  展开“mySampleDatabase”，查看新数据库中的对象。
+5. 在对象资源管理器中，展开“数据库”。 然后展开“系统数据库”和“master”，查看 master 数据库中的对象。  展开 " **SampleDW** ", 查看新数据库中的对象。
 
     ![数据库对象](media/load-data-wideworldimportersdw/connected.png) 
 
@@ -182,7 +181,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
     ```
 
-3. 单击“执行” 。
+3. 单击“执行”。
 
 4. 右键单击“SampleDW”，并选择“新建查询”。 此时会打开一个新的查询窗口。  
 
@@ -196,7 +195,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     EXEC sp_addrolemember 'staticrc60', 'LoaderRC60';
     ```
 
-6. 单击“执行” 。
+6. 单击“执行”。
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>以加载用户的身份连接到服务器
 
@@ -218,7 +217,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 已准备好开始将数据加载到新的数据仓库。 今后若要了解如何将数据移入 Azure Blob 存储，或者将数据直接从源载入 SQL 数据仓库，请参阅[有关加载的概述](sql-data-warehouse-overview-load.md)。
 
-运行以下 SQL 脚本，指定有关想要加载的数据的信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。 数据位于公共 Azure Blob 中。
+运行以下 SQL 脚本，指定有关想要加载的数据的信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。 数据位于全局 Azure Blob 中。
 
 1. 在前一部分，我们以 LoaderRC60 的身份登录到了数据仓库。 在 SSMS 中，右键单击 LoaderRC60 连接下面的“SampleDW”，并选择“新建查询”。  此时会显示一个新的查询窗口。 
 
@@ -232,7 +231,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     CREATE MASTER KEY;
     ```
 
-4. 运行以下 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) 语句，定义 Azure Blob 的位置。 这是外部出租车数据的位置。  要运行追加到查询窗口的命令，请突出显示要运行的命令，然后单击“执行”。
+4. 运行以下 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) 语句，定义 Azure Blob 的位置。 这是外部导入程序数据的位置。  要运行追加到查询窗口的命令，请突出显示要运行的命令，然后单击“执行”。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -541,13 +540,13 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     );
     ```
 
-8. 在对象资源管理器中展开“SampleDW”，查看刚刚创建的外部表列表。
+8. 在对象资源管理器中, 展开 SampleDW 以查看创建的外部表的列表。
 
     ![查看外部表](media/load-data-wideworldimportersdw/view-external-tables.png)
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>将数据加载到数据仓库
 
-本部分使用刚刚定义的外部表将示例数据从 Azure Blob 加载到 SQL 数据仓库。  
+本部分使用定义的外部表将示例数据从 Azure Blob 加载到 SQL 数据仓库。  
 
 > [!NOTE]
 > 本教程直接将数据加载到最终表。 在生产环境中，通常使用 CREATE TABLE AS SELECT 将数据加载到临时表。 数据在临时表中时，可以执行任何必要的转换。 要将临时表中的数据追加到生产表，可以使用 INSERT...SELECT 语句。 有关详细信息，请参阅[将数据插入到生产表](guidance-for-loading-data.md#inserting-data-into-a-production-table)。
@@ -555,7 +554,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当 select 语句从外部表进行选择时，SQL 数据仓库将数据导入数据仓库中的关系表。 
 
-此脚本不会将数据载入 wwi.dimension_Date 和 wwi.fact_Sales 表。 稍后的步骤会生成这些表，使表中包含数目可调整的行。
+此脚本不会将数据加载到 wwi dimension_Date 和 wwi 表中。 稍后的步骤会生成这些表，使表中包含数目可调整的行。
 
 1. 运行以下脚本，将数据加载到数据仓库中的新表。
 
@@ -751,7 +750,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>创建表以及用于生成日期和销售表的过程
 
-本部分将创建 wwi.dimension_Date 和 wwi.fact_Sales 表。 此外，还会创建可在 wwi.dimension_Date 和 wwi.fact_Sales 表中生成数百万行的存储过程。
+本部分创建 dimension_Date 和 wwi 表 wwi。 它还创建可以在 dimension_Date 和 wwi 表中生成数百万行的存储过程。
 
 1. 创建 dimension_Date 和 fact_Sale 表。  
 
@@ -894,7 +893,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     DROP table #days;
     END;
     ```
-4. 创建此过程，以便填充 wwi.dimension_Date 和 wwi.fact_Sales 表。 此过程调用 [wwi].[PopulateDateDimensionForYear] 来填充 wwi.dimension_Date。
+4. 创建此过程, 以填充 wwi 和 wwi 表。 此过程调用 [wwi].[PopulateDateDimensionForYear] 来填充 wwi.dimension_Date。
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -950,7 +949,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     ```
 
 ## <a name="generate-millions-of-rows"></a>生成数百万行
-使用创建的存储过程在 wwi.fact_Sales 表中生成数百万行，并在 wwi.dimension_Date 表中生成相应的数据。 
+使用你创建的存储过程, 在 wwi 表中生成数百万行, 在 wwi 表中生成相应的数据。 
 
 
 1. 运行此过程，在 [wwi].[seed_Sale] 中播种更多行。
@@ -959,7 +958,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. 运行此过程，以便每天在 wwi.fact_Sales 中填充 100,000 行，这些行对应于 2000 年的每一天。
+2. 运行此过程, 以将100000行每日的行填充到2000年的每一天。
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000
@@ -1095,11 +1094,11 @@ SQL 数据仓库通过将数据缓存到每个计算节点来复制表。 针对
 
 请按照下列步骤按需清理资源。
 
-1. 登录 [Azure 门户](https://portal.azure.com)，单击数据仓库。
+1. 登录到 [Azure 门户](https://portal.azure.com)，单击数据仓库。
 
     ![清理资源](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. 如果想要将数据保留在存储中，可以在不使用数据仓库时暂停计算。 暂停计算后，仅需为数据存储付费，并且随时都可在准备处理数据时恢复计算。 要暂停计算，请单击“暂停”按钮。 暂停数据仓库后，可看到“启动”按钮。  要恢复计算，请单击“启动”。
+2. 如果想要将数据保留在存储中，可以在不使用数据仓库时暂停计算。 通过暂停计算, 你只会对数据存储收费, 并且可以在准备好使用数据时恢复计算。 要暂停计算，请单击“暂停”按钮。 暂停数据仓库后，可看到“启动”按钮。  要恢复计算，请单击“启动”。
 
 3. 如果不想支付将来的费用，则可以删除数据仓库。 要删除数据仓库，以便不再为计算或存储付费，请单击“删除”。
 
@@ -1121,7 +1120,7 @@ SQL 数据仓库通过将数据缓存到每个计算节点来复制表。 针对
 > * 查看了正在加载的数据的进度
 > * 创建了新加载的数据的统计信息
 
-转到迁移概述，了解如何将现有数据库迁移到 SQL 数据仓库。
+转到开发概述，了解如何将现有数据库迁移到 SQL 数据仓库。
 
 > [!div class="nextstepaction"]
->[了解如何将现有数据库迁移到 SQL 数据仓库](sql-data-warehouse-overview-migrate.md)
+>[将现有数据库迁移到 SQL 数据仓库的设计决策](sql-data-warehouse-overview-develop.md)

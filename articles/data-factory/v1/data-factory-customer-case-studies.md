@@ -3,31 +3,29 @@ title: Azure 数据工厂 - 客户案例研究 | Microsoft Docs
 description: 了解一些客户是怎样使用 Azure 数据工厂的。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 5474d9a1-e278-429f-bc31-db34551d3881
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 952a8aa2dbfdabfb7f0df198a7453b847c33f7e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 4944a870d27fd9ca0b64234b303906739bdc0d04
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019072"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139953"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure 数据工厂 - 客户案例研究
 数据工厂是一项基于云的信息管理服务，可以自动移动和转换数据。 各个行业的用户通过数据工厂和其他 Azure 服务生成其分析管道以及解决业务问题。  直接通过客户了解其如何以及为什么使用数据工厂。
 
 ## <a name="milliman"></a>Milliman
-[顶级保险公司改变保险行业](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20096)
+[顶级保险公司改变保险行业](https://customers.microsoft.com/en-us/story/732463-top-actuarial-firm-transforms-the-insurance-industry-w)
 
 ## <a name="rockwell-automation"></a>罗克韦尔自动化
-[Industrial Automation Firm Cuts Costs up to 90 Percent with big data Solutions](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18356)（工业自动化公司利用大数据解决方案节省 90% 的成本）
+[Industrial Automation Firm Cuts Costs up to 90 Percent with big data Solutions](https://customers.microsoft.com/en-us/story/726192-industrial-automation-firm-cuts-costs-up-to-90-percent)（工业自动化公司利用大数据解决方案节省 90% 的成本）
 
 ## <a name="ziosk"></a>Ziosk
 [面对这个汉堡你有什么点子？Ziosk 可能已经知道了。](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)

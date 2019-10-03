@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 17410e4f-130e-489c-834e-7ca6d6f9778d
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
-ms.openlocfilehash: f0dab3dc81c626e3e7f8c79b4142e5eb4f2a1276
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 2b9e56f8a0a023c8423426fee081a5a48ebda330
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093793"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593457"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>使用查询字符串控制 Azure CDN 缓存行为 - 标准层
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.locfileid: "49093793"
 
 - **忽略查询字符串**：默认模式。 在此模式下，CDN 接入点 (POP) 节点将来自请求者的查询字符串传递到第一个请求上的源服务器并缓存该资产。 所有由 POP 处理的该资产的后续请求将忽略查询字符串，直至缓存的资产到期。
 
-- **绕过查询字符串的缓存**：在此模式下，包含查询字符串的请求不会被缓存在 CDN POP 节点。 POP 节点直接从源服务器检索资产，并将其传递给每个请求的请求者。
+- **绕过查询字符串的缓存**:在此模式下，包含查询字符串的请求不会被缓存在 CDN POP 节点。 POP 节点直接从源服务器检索资产，并将其传递给每个请求的请求者。
 
 - **缓存每个唯一的 URL**：在此模式下，包含唯一 URL 的每个请求（包括查询字符串）将视为具有其自己的缓存的唯一资产。 例如，源服务器对 .ashx?q=test1 的请求做出的响应将缓存在 POP 节点，并为具有同一查询字符串的后续缓存返回该响应。 例如，.ashx?q=test2 的请求将作为具有其自己的生存时间设置的单独资产来缓存。
    
@@ -49,11 +49,11 @@ ms.locfileid: "49093793"
    
    ![CDN 配置文件终结点](./media/cdn-query-string/cdn-endpoints.png)
    
-2. 在左窗格中的“设置”下面，单击“缓存规则”。
+2. 在左窗格中的“设置”下面，单击“缓存规则”。 
    
     ![CDN 缓存规则按钮](./media/cdn-query-string/cdn-caching-rules-btn.png)
    
-3. 在“查询字符串缓存行为”列表中，选择查询字符串模式，然后单击“保存”。
+3. 在“查询字符串缓存行为”  列表中，选择查询字符串模式，然后单击“保存”  。
    
    ![CDN 查询字符串缓存选项](./media/cdn-query-string/cdn-query-string.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "49093793"
 > 由于注册需要一段时间才能在整个 Azure CDN 内传播，因此缓存字符串设置更改可能不会立即显示：
 > - 对于 **Microsoft 推出的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
 > - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
-> - 对于“Verizon 提供的 Azure CDN 标准版”和“Verizon 提供的 Azure CDN 高级版”配置文件，传播通常在 10 分钟内完成。 
+> - 对于“Verizon 提供的 Azure CDN 标准版”  和“Verizon 提供的 Azure CDN 高级版”  配置文件，传播通常在 10 分钟内完成。 
 
 
 

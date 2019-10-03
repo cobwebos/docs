@@ -3,22 +3,21 @@ title: 使用 Azure .NET SDK 创建数据管道 | Microsoft Docs
 description: 了解如何使用数据工厂 SDK 以编程方式创建、监视和管理 Azure 数据工厂。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: b0a357be-3040-4789-831e-0d0a32a0bda5
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 11120a84f2796061d76d8d813ba906da073b57c6
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486965"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140219"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
 > [!NOTE]
@@ -30,7 +29,7 @@ ms.locfileid: "58486965"
 > [!NOTE]
 > 本文不会介绍所有数据工厂 .NET API。 有关数据工厂 .NET API 的综合文档，请参阅 [Data Factory .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)（数据工厂 .NET API 参考）。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -117,7 +116,7 @@ ms.locfileid: "58486965"
    4. 从右侧项目类型列表中选择“控制台应用程序”。
    5. 在“名称”中输入 **DataFactoryAPITestApp** 。
    6. 在“位置”中选择“C:\ADFGetStarted”。
-   7. 单击“确定”以创建该项目  。
+   7. 单击**确定**以创建项目。
 2. 单击“工具”，指向“NuGet 包管理器”，并单击“包管理器控制台”。
 3. 在“包管理器控制台”中执行以下步骤：
    1. 运行以下命令安装数据工厂包：`Install-Package Microsoft.Azure.Management.DataFactories`
@@ -139,7 +138,7 @@ ms.locfileid: "58486965"
         </appSettings>
     </configuration>
     ```
-5. 在 App.Config 文件中，使用自己的值更新 **&lt;Application ID&gt;**、**&lt;Password&gt;**、**&lt;Subscription ID&gt;** 和 **&lt;tenant ID&gt;** 的值。
+5. 在 App.Config 文件中，使用自己的值更新 **&lt;Application ID&gt;** 、 **&lt;Password&gt;** 、 **&lt;Subscription ID&gt;** 和 **&lt;tenant ID&gt;** 的值。
 6. 将以下 **using** 语句添加到项目中的 **Program.cs** 文件。
 
     ```csharp
@@ -222,9 +221,9 @@ ms.locfileid: "58486965"
     ```
 9. 将以下用于创建**输入和输出数据集**的代码添加到 **Main** 方法。
 
-    输入 blob 的 **FolderPath** 设置为 **adftutorial/**，其中 **adftutorial** 是 Blob 存储中的容器名称。 如果 Azure Blob 存储中不包含此容器，请创建名为 **adftutorial** 的容器，并将文本文件上传到该容器。
+    输入 blob 的 **FolderPath** 设置为 **adftutorial/** ，其中 **adftutorial** 是 Blob 存储中的容器名称。 如果 Azure Blob 存储中不包含此容器，请创建名为 **adftutorial** 的容器，并将文本文件上传到该容器。
 
-    输出 blob 的 FolderPath 设置为 **adftutorial/apifactoryoutput/{Slice}**，在此位置基于 **SliceStart** 的值（每个切片的开始日期时间）动态评估**切片**。
+    输出 blob 的 FolderPath 设置为 **adftutorial/apifactoryoutput/{Slice}** ，在此位置基于 **SliceStart** 的值（每个切片的开始日期时间）动态评估**切片**。
 
     ```csharp
     // create input and output datasets

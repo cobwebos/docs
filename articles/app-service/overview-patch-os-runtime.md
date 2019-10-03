@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 576627c96b19dd3563ab21a5d478b779e4a3ed64
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 3469c4f11a075ceb958e35e4cfc87a78e60b3882
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729941"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074132"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
 
@@ -37,7 +36,7 @@ ms.locfileid: "53729941"
 
 Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务器和来宾虚拟机 (VM)。 这两种方案会根据每月的[周二修补](https://technet.microsoft.com/security/bulletins.aspx)计划更新。 这些更新会自动应用，保证达到 Azure 服务的高可用性 SLA。 
 
-有关如何应用更新的详细信息，请参阅[揭示应用服务 OS 背后的秘密](https://blogs.msdn.microsoft.com/appserviceteam/2018/01/18/demystifying-the-magic-behind-app-service-os-updates/)。
+有关如何应用更新的详细信息，请参阅[揭示应用服务 OS 背后的秘密](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html)。
 
 ## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Azure 如何处理重大漏洞？
 
@@ -85,7 +84,7 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 
 下表显示了应用中运行的 Windows 和语言运行时版本：
 
-| 信息 | 查找位置 | 
+| Information | 查找位置 | 
 |-|-|
 | Windows 版本 | 查看 `https://<appname>.scm.azurewebsites.net/Env.cshtml`（在“系统信息”下） |
 | .NET 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |

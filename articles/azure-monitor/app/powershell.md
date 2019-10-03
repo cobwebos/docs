@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/02/2017
+ms.date: 06/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 1c360d60a429f137c4b74ad4afe8ae9bba895b7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 07d52544b584adb02cc60790b7cb63c8aee1e366
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883405"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66514479"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>使用 PowerShell 创建 Application Insights 资源
 
@@ -82,7 +82,7 @@ ms.locfileid: "58883405"
                     2
                 ],
                 "metadata": {
-                    "description": "1 = Basic, 2 = Enterprise"
+                    "description": "1 = Per GB (Basic), 2 = Per Node (Enterprise)"
                 }
             },
             "dailyQuota": {
@@ -200,13 +200,13 @@ ms.locfileid: "58883405"
 
 |价格代码|计划|
 |---|---|
-|1|基本|
+|第|基本|
 |2|Enterprise|
 
 * 如果仅想使用默认的基本价格计划，可在模板中省略 CurrentBillingFeatures 资源。
 * 若要在创建组件资源后更改价格计划，可使用一个忽略“microsoft.insights/components”资源的模板。 此外，请忽略计费资源中的 `dependsOn` 节点。 
 
-若要验证已更新的价格计划，请在浏览器中查看“使用情况和预估成本”边栏选项卡。 **刷新浏览器视图**以确保其显示最新状态。
+若要验证已更新的价格计划，请在浏览器中查看“使用情况和预估成本”边栏选项卡。  **刷新浏览器视图**以确保其显示最新状态。
 
 
 
@@ -452,4 +452,3 @@ Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置�
 * [将 Azure 诊断发送到 Application Insights](powershell-azure-diagnostics.md)
 * [从 GitHub 部署到 Azure](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [创建版本注释](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
-

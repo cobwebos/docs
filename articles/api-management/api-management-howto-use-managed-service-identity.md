@@ -11,18 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: ebded5d1d58baf501ee5106d622162edc62d46ec
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 49576b805e6c6d01340e663bfb5d8e9013917625
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310550"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461611"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>使用 Azure API 管理中管理的标识
 
 本文介绍如何创建 API 管理服务实例的托管的标识以及如何访问其他资源。 生成的 Azure Active Directory (Azure AD) 的托管的标识，API 管理实例轻松安全地访问其他 Azure AD 保护的资源，如 Azure Key Vault。 此标识由 Azure 管理，不需要设置或转交任何机密。 有关托管标识的详细信息，请参阅[什么是 Azure 资源的管理的标识](../active-directory/managed-identities-azure-resources/overview.md)。
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="create-a-managed-identity-for-an-api-management-instance"></a>创建托管的标识为 API 管理实例
 
@@ -53,28 +51,25 @@ ms.locfileid: "57310550"
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "0.9.0.0"
-    },
-    "resources": [
-        {
-            "apiVersion": "2017-03-01",
-            "name": "contoso",
-            "type": "Microsoft.ApiManagement/service",
-            "location": "[resourceGroup().location]",
-            "tags": {},
-            "sku": {
-                "name": "Developer",
-                "capacity": "1"
-            },
-            "properties": {
-                "publisherEmail": "admin@contoso.com",
-                "publisherName": "Contoso"
-            },
-            "identity": {
-                "type": "systemAssigned"
-            }
+    "contentVersion": "0.9.0.0",
+    "resources": [{
+        "apiVersion": "2017-03-01",
+        "name": "contoso",
+        "type": "Microsoft.ApiManagement/service",
+        "location": "[resourceGroup().location]",
+        "tags": {},
+        "sku": {
+            "name": "Developer",
+            "capacity": "1"
+        },
+        "properties": {
+            "publisherEmail": "admin@contoso.com",
+            "publisherName": "Contoso"
+        },
+        "identity": {
+            "type": "systemAssigned"
         }
-    ]
+    }]
 }
 ```
 ## <a name="use-the-managed-service-identity-to-access-other-resources"></a>使用托管服务标识访问其他资源
@@ -242,3 +237,4 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 
 * [什么是 Azure 资源的管理的标识](../active-directory/managed-identities-azure-resources/overview.md)
 * [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates)
+* [使用托管标识在策略中进行身份验证](./api-management-authentication-policies.md#ManagedIdentity)

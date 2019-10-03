@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: ad4801e9-d09a-49bf-b35c-efdc4e6034e8
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: f7fc11af8cd2574271b26f7dec62072692685672
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: edeb2a798031e34a8ee3f93fd104ebb221ce9c61
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916795"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593768"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>在 Azure CDN 中管理 Azure Blob 存储的到期时间
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "58916795"
 
 在多个与 Azure 内容分发网络 (CDN) 集成的基于 Azure 的源中，Azure 存储中的 [Blob 存储服务](../storage/common/storage-introduction.md#blob-storage)是其中一个。 任何可公开访问的 blob 内容均可在 Azure CDN 中进行缓存，直到其生存时间 (TTL) 结束。 TTL 由来自源服务器的 HTTP 响应中的 `Cache-Control` 标头决定。 本文介绍了几种可以在 Azure 存储中的 Blob 上设置 `Cache-Control` 标头的方式。
 
-此外，还可以通过设置 CDN 缓存规则，从 Azure 门户控制缓存设置。 如果创建了一个缓存规则并将其缓存行为设置为“替代”或“绕过缓存”，则将忽略本文中讨论的源提供的缓存设置。 有关一般缓存概念的信息，请参阅[缓存工作原理](cdn-how-caching-works.md)。
+此外，还可以通过设置 CDN 缓存规则，从 Azure 门户控制缓存设置。 如果创建了一个缓存规则并将其缓存行为设置为“替代”  或“绕过缓存”  ，则将忽略本文中讨论的源提供的缓存设置。 有关一般缓存概念的信息，请参阅[缓存工作原理](cdn-how-caching-works.md)。
 
 > [!TIP]
 > 可以选择不对 blob 设置 TTL。 在这种情况下，Azure CDN 将自动应用默认 TTL（七天），除非已在 Azure 门户中设置了缓存规则。 此默认 TTL 仅适用于常规 Web 交付优化。 对于大型文件优化，默认 TTL 为一天；对于媒体流优化，默认 TTL 为一年。
@@ -50,40 +50,40 @@ ms.locfileid: "58916795"
 
 1. 在 Azure 门户中，选择一个 CDN 配置文件，然后选择 blob 的终结点。
 
-2. 在左窗格中的“设置”下，选择“缓存规则”。
+2. 在左窗格中的“设置”下，选择“缓存规则”。 
 
    ![CDN 缓存规则按钮](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
 
-   “缓存规则”页随即出现。
+   “缓存规则”  页随即出现。
 
    ![CDN 缓存页](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
 
 
 **使用全局缓存规则设置 Blob 存储服务的 Cache-Control 标头：**
 
-1. 在“全局缓存规则”下，将“查询字符串缓存行为”设置为“忽略查询字符串”，将“缓存行为”设置为“覆盖”。
+1. 在“全局缓存规则”下，将“查询字符串缓存行为”设置为“忽略查询字符串”，将“缓存行为”设置为“覆盖”。     
       
-2. 对于“缓存过期持续时间”，在“秒”框中输入 3600，或者在“小时”框中输入 1。 
+2. 对于“缓存过期持续时间”  ，在“秒”  框中输入 3600，或者在“小时”  框中输入 1。 
 
    ![CDN 全局缓存规则示例](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
 
    此全局缓存规则设置为期一小时的缓存持续时间，并会影响发送到终结点的所有请求。 它会替代由终结点指定的源服务器发送的所有 `Cache-Control` 或 `Expires` HTTP 标头。   
 
-3. 选择“保存”。
+3. 选择**保存**。
  
 **使用自定义缓存规则设置 Blob 文件的 Cache-Control 标头：**
 
-1. 在“自定义缓存规则”下，创建两个匹配条件：
+1. 在“自定义缓存规则”  下，创建两个匹配条件：
 
-     A. 对于第一个匹配条件，将“匹配条件”设置为“路径”，对于“匹配值”输入 `/blobcontainer1/*`。 将“缓存行为”设置为“替代”，并在“小时”框中输入 4。
+     A. 对于第一个匹配条件，将“匹配条件”  设置为“路径”  ，对于“匹配值”输入 `/blobcontainer1/*`。  将“缓存行为”  设置为“替代”  ，并在“小时”  框中输入 4。
 
-    B. 对于第二个匹配条件，将“匹配条件”设置为“路径”，对于“匹配值”输入 `/blobcontainer1/blob1.txt`。 将“缓存行为”设置为“替代”，并在“小时”框中输入 2。
+    B. 对于第二个匹配条件，将“匹配条件”  设置为“路径”  ，对于“匹配值”输入 `/blobcontainer1/blob1.txt`。  将“缓存行为”  设置为“替代”  ，并在“小时”  框中输入 2。
 
     ![CDN 自定义缓存规则示例](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
     第一个自定义缓存规则为终结点指定的源服务器上的 `/blobcontainer1` 文件夹中的所有 blob 文件设置为期四小时的缓存持续时间。 第二个规则仅替代 `blob1.txt` blob 文件的第一个规则，并且为它设置为期两小时的缓存持续时间。
 
-2. 选择“保存”。
+2. 选择**保存**。
 
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>使用 Azure PowerShell 设置 Cache-Control 标头
@@ -114,7 +114,7 @@ $blob.ICloudBlob.SetProperties()
 >
 
 ## <a name="setting-cache-control-headers-by-using-net"></a>使用 .NET 设置 Cache-Control 标头
-要使用 .NET 代码指定 Blob 的 `Cache-Control` 标头，请使用[适用于 .NET 的 Azure 存储客户端库](../storage/blobs/storage-dotnet-how-to-use-blobs.md)来设置 [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol#Microsoft_WindowsAzure_Storage_Blob_BlobProperties_CacheControl) 属性。
+要使用 .NET 代码指定 Blob 的 `Cache-Control` 标头，请使用[适用于 .NET 的 Azure 存储客户端库](../storage/blobs/storage-dotnet-how-to-use-blobs.md)来设置 [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) 属性。
 
 例如：
 
@@ -152,12 +152,12 @@ class Program
 ## <a name="setting-cache-control-headers-by-using-other-methods"></a>使用其他方法设置 Cache-Control 标头
 
 ### <a name="azure-storage-explorer"></a>Azure 存储资源管理器
-借助 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，可以查看和编辑 Blob 存储资源，包括 CacheControl 等属性。 
+借助 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，可以查看和编辑 Blob 存储资源，包括 CacheControl 等属性  。 
 
 若要使用 Azure 存储资源管理器更新 blob 的 *CacheControl* 属性：
-   1. 选择 blob，然后从上下文菜单中选择“属性”。 
+   1. 选择 blob，然后从上下文菜单中选择“属性”  。 
    2. 向下滚动到 *CacheControl* 属性。
-   3. 输入一个值，然后选择“保存”。
+   3. 输入一个值，然后选择“保存”  。
 
 
 ![Azure 存储资源管理器属性](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)

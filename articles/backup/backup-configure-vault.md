@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: raynew
 ms.openlocfilehash: 7a1bd6da68b49481429709c7e4fd37dd5c07ae2c
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200780"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60810232"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>备份 Windows 计算机与 Azure 备份 MARS 代理
 
@@ -86,7 +86,7 @@ IP 地址
    - 该名称可以包含 2 到 50 个字符。
    - 名称必须以字母开头，只能包含字母、数字和连字符。
 
-5. 选择 Azure 订阅、 资源组和将在其中创建保管库的地理区域。 备份数据发送到保管库。 然后单击“创建”。
+5. 选择要在其中创建保管库的 Azure 订阅、资源组和地理区域。 备份数据发送到保管库。 然后单击“创建”。
 
     ![创建恢复服务保管库步骤 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
 
@@ -100,9 +100,9 @@ IP 地址
 Azure 备份会自动处理存储在保管库。 需要指定如何复制该存储。
 
 1. 在“恢复服务保管库”边栏选项卡中，单击新保管库。 下**设置**部分中，单击**属性**。
-2. 在中**属性**下**备份配置**，单击**更新**。
+2. 在“属性”中的“备份配置”下，单击“更新”。
 
-3. 选择存储复制类型，然后单击**保存**。
+3. 选择存储复制类型，然后单击“保存”。
 
       ![设置新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 

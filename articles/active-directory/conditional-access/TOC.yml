@@ -19,8 +19,10 @@
 - name: 概念
   expanded: false
   items:
-    - name: 基线保护
-      href: baseline-protection.md
+    - name: 常用条件访问策略
+      href: concept-conditional-access-policy-common.md
+    - name: 条件访问策略组件
+      href: concept-conditional-access-policies.md
     - name: 条件
       href: conditions.md
     - name: 位置条件
@@ -31,6 +33,8 @@
       href: service-dependencies.md
     - name: 假设分析工具
       href: what-if-tool.md
+    - name: 基线保护策略
+      href: concept-baseline-protection.md
 - name: 操作指南
   expanded: true
   items:
@@ -38,12 +42,26 @@
       href: plan-conditional-access.md
     - name: 最佳做法
       href: best-practices.md
+    - name: 常用条件访问策略
+      items:
+        - name: 要求对管理员执行 MFA
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: 要求将 MFA 用于 Azure 管理
+          href: howto-conditional-access-policy-azure-management.md
+        - name: 阻止传统身份验证
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: 基于风险的条件访问
+          href: howto-conditional-access-policy-risk.md
+        - name: 要求在进行 MFA 注册时处于受信任的位置
+          href: howto-conditional-access-policy-registration.md
+        - name: 按位置阻止访问
+          href: howto-conditional-access-policy-location.md
+        - name: 要求符合的设备
+          href: howto-conditional-access-policy-compliant-device.md
     - name: 阻止传统身份验证
       href: block-legacy-authentication.md
-    - name: 控制对 Exchange Online 和 SharePoint Online 的访问
-      href: conditional-access-for-exo-and-spo.md
-    - name: 迁移经典策略
-      href: policy-migration.md
+    - name: 用于 MFA 注册的条件访问
+      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: 需要已批准的客户端应用
       href: app-based-conditional-access.md
     - name: 需要应用保护策略
@@ -54,6 +72,26 @@
       href: untrusted-networks.md
     - name: 需要使用条款
       href: terms-of-use.md
+    - name: 登录频率和浏览器持久性控制
+      href: howto-conditional-access-session-lifetime.md
+    - name: 迁移经典策略
+      href: policy-migration.md
+    - name: 基线策略
+      items:
+        - name: 要求管理员进行 MFA
+          href: howto-baseline-protect-administrators.md
+        - name: 最终用户保护
+          href: howto-baseline-protect-end-users.md
+        - name: 阻止传统身份验证
+          href: howto-baseline-protect-legacy-auth.md
+        - name: 要求将 MFA 用于服务管理
+          href: howto-baseline-protect-azure.md
+    - name: 采用条件访问
+      href: howto-conditional-access-adoption-kit.md
+    - name: 故障排除
+      items:
+        - name: 使用 What If 工具排查问题
+          href: troubleshoot-conditional-access-what-if.md
 - name: 引用
   items:
     - name: 技术参考

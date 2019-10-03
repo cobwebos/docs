@@ -73,10 +73,14 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 5 - 删除群集
           href: service-fabric-tutorial-delete-cluster.md
-    - name: 在 AWS 上创建独立群集
+    - name: 创建独立群集
       items:
-        - name: 1- 在 AWS 上创建基础结构
-          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 1- 创建基础结构
+          items:
+            - name: 使用 AWS
+              href: service-fabric-tutorial-standalone-create-infrastructure.md
+            - name: 使用 Azure
+              href: service-fabric-tutorial-standalone-azure-create-infrastructure.md
         - name: 2 - 设置 Service Fabric
           href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
         - name: 3- 将应用程序部署到群集
@@ -97,12 +101,14 @@
       href: service-fabric-best-practices-infrastructure-as-code.md
     - name: 监视和诊断
       href: service-fabric-best-practices-monitoring.md
+    - name: 应用程序设计
+      href: service-fabric-best-practices-applications.md
     - name: 生产就绪情况核对清单
       href: service-fabric-production-readiness-checklist.md
 - name: 示例
   items:
     - name: 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?service=service-fabric'
+      href: 'https://docs.microsoft.com/samples/browse/'
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
@@ -125,8 +131,8 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric 群集安全性
           href: service-fabric-cluster-security.md
-        - name: Azure 的常见安全属性
-          href: service-fabric-security-attributes.md
+        - name: 内置安全控件
+          href: service-fabric-security-controls.md
     - name: 术语
       href: service-fabric-technical-overview.md
     - name: 构建应用程序
@@ -191,6 +197,8 @@
       items:
         - name: 应用程序模型
           href: service-fabric-application-model.md
+        - name: 创建应用程序模型模板
+          href: service-fabric-concept-resource-model.md
         - name: 应用程序和服务清单
           href: service-fabric-application-and-service-manifests.md
         - name: 应用程序和服务清单示例
@@ -268,7 +276,7 @@
           items:
             - name: Azure 群集概述
               href: service-fabric-azure-clusters-overview.md
-            - name: 节点类型和 VM 规模集
+            - name: 节点类型和虚拟机规模集
               href: service-fabric-cluster-nodetypes.md
             - name: 升级 Azure 中的群集
               href: service-fabric-cluster-upgrade.md
@@ -344,6 +352,12 @@
           href: service-fabric-diagnostics-partners.md
     - name: 与 API 管理集成
       href: service-fabric-api-management-overview.md
+    - name: 应用资源模型
+      href: service-fabric-concept-resource-model.md
+    - name: 托管标识（预览版）
+      href: concepts-managed-identity.md
+    - name: 配置容器存储库凭据
+      href: configure-container-repository-credentials.md
 - name: 操作指南
   items:
     - name: 设置开发环境
@@ -515,6 +529,8 @@
               href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
             - name: 在 Windows 上设置 Linux 群集
               href: service-fabric-local-linux-cluster-windows.md
+            - name: 将 .NET Core 应用从 VS 部署到远程 Linux 群集
+              href: service-fabric-how-to-publish-linux-app-vs.md
         - name: 在 Linux/Eclipse 开发环境中工作
           items:
             - name: 用于 Java 开发的 Eclipse 插件入门
@@ -539,8 +555,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: 建议的做法
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: 重构已迁移的应用
-          href: /azure/architecture/service-fabric/refactor-migrated-app
+        - name: 实现应用程序现代化
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: 管理应用程序生命周期
       items:
         - name: 打包应用程序
@@ -609,6 +625,8 @@
                   href: service-fabric-cluster-azure-deployment-preparation.md
                 - name: 在 Azure 门户中创建
                   href: service-fabric-cluster-creation-via-portal.md
+                - name: 跨可用性区域部署 Azure Service Fabric 群集
+                  href: service-fabric-cross-availability-zones.md
                 - name: 设置 Azure Active Directory 身份验证
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: 创建自定义群集模板
@@ -639,8 +657,6 @@
                   href: service-fabric-cluster-config-upgrade-azure.md
                 - name: 修补群集节点 (Windows)
                   href: service-fabric-patch-orchestration-application.md
-                - name: 修补群集节点 (Linux)
-                  href: service-fabric-patch-orchestration-application-linux.md
                 - name: 启用磁盘加密 (Windows)
                   href: service-fabric-enable-azure-disk-encryption-windows.md
                 - name: 启用磁盘加密 (Linux)
@@ -691,6 +707,8 @@
       items:
         - name: 诊断常见方案
           href: service-fabric-diagnostics-common-scenarios.md
+        - name: 诊断代码包错误
+          href: service-fabric-diagnostics-code-package-errors.md
         - name: 监视应用程序
           items:
             - name: 将日志记录添加到应用程序
@@ -731,6 +749,26 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: 对本地群集进行故障排除
           href: service-fabric-troubleshoot-local-cluster-setup.md
+    - name: 将托管标识用于 Service Fabric 应用（预览版）
+      items:
+        - name: 群集设置
+          items:
+            - name: 将现有群集配置为启用托管标识
+              href: configure-existing-cluster-enable-managed-identity-token-service.md
+            - name: 将新 Azure Service Fabric 群集配置为启用托管标识
+              href: configure-new-azure-service-fabric-enable-managed-identity.md
+        - name: 应用程序设置
+          items:
+            - name: 如何部署具有托管标识的应用程序
+              items:
+                - name: 如何部署具有系统分配的托管标识的应用程序
+                  href: how-to-deploy-service-fabric-application-system-assigned-managed-identity.md
+                - name: 如何部署具有用户分配的托管标识的应用程序
+                  href: how-to-deploy-service-fabric-application-user-assigned-managed-identity.md
+        - name: 通过 Service Fabric 应用程序代码使用 MITS
+          href: how-to-managed-identity-service-fabric-app-code.md
+        - name: 授予对其他 Azure 资源的访问权限
+          href: how-to-grant-access-other-resources.md
 - name: 引用
   items:
     - name: Azure PowerShell
@@ -840,8 +878,8 @@
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 疑难解答指南
-      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
+    - name: 发行说明
+      href: release-notes.md
     - name: 代码示例
       href: 'https://aka.ms/servicefabricsamples'
     - name: 支持选项
@@ -850,5 +888,7 @@
       href: service-fabric-versions.md
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=service-fabric'
+    - name: 疑难解答指南
+      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'

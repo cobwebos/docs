@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/21/2018
-ms.openlocfilehash: 9806855aff54e72da6ac8336338c63f82ffda736
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: ad022f6ac9cebbe92cdca3a4b368524d828a9cbb
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351501"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931563"
 ---
 # <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Node.js 连接和查询数据
 本快速入门演示如何在 Windows、Ubuntu Linux 和 Mac 平台中使用 [Node.js](https://nodejs.org/) 连接到适用于 MySQL 的 Azure 数据库。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 Node.js 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
@@ -33,7 +33,7 @@ ms.locfileid: "58351501"
 ### <a name="windows"></a>**Windows**
 1. 请访问 [Node.js 下载页](https://nodejs.org/en/download/)，然后选择所需的 Windows 安装程序选项。
 2. 创建本地项目文件夹，例如 `nodejsmysql`。 
-3. 启动命令提示符，然后将目录更改为项目文件夹，例如 `cd c:\nodejsmysql\`
+3. 打开命令提示符，然后将目录更改为项目文件夹，例如 `cd c:\nodejsmysql\`
 4. 运行 NPM 工具，将 mysql 库安装到项目文件夹中。
 
    ```cmd
@@ -83,19 +83,19 @@ ms.locfileid: "58351501"
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器（例如 mydemoserver）。
-3. 单击服务器名称。
-4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。 如果忘记了密码，也可通过此面板来重置密码。
+2. 在 Azure 门户的左侧菜单中，选择“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
+3. 选择服务器名称。
+4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。
  ![Azure Database for MySQL 服务器名称](./media/connect-nodejs/1_server-overview-name-login.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>在 Node.js 中运行 JavaScript 代码
 1. 将 JavaScript 代码粘贴到文本文件中，然后使用文件扩展名 .js 将其保存到项目文件夹中（例如 C:\nodejsmysql\createtable.js 或 /home/username/nodejsmysql/createtable.js）。
-2. 启动命令提示符或 bash shell，然后将目录更改为项目文件夹 `cd nodejsmysql`。
-3. 若要运行应用程序，请键入 node 命令并后接文件名，例如 `node createtable.js`。
+2. 打开命令提示符或 bash shell，然后将目录更改为项目文件夹 `cd nodejsmysql`。
+3. 若要运行应用程序，请输入 node 命令并后接文件名，例如 `node createtable.js`。
 4. 在 Windows 上，如果 Node 应用程序不在环境变量路径中，则你可能需要使用完整路径来启动 Node 应用程序，例如 `"C:\Program Files\nodejs\node.exe" createtable.js`
 
 ## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
-通过以下代码进行连接，然后使用 CREATE TABLE 和 INSERT INTO SQL 语句加载数据。
+通过以下代码进行连接，然后使用 CREATE TABLE  和 INSERT INTO  SQL 语句加载数据。
 
 [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与 MySQL 服务器对接。 [connect()](https://github.com/mysqljs/mysql#establishing-connections) 函数用于与服务器建立连接。 [query()](https://github.com/mysqljs/mysql#performing-queries) 函数用于针对 MySQL 数据库执行 SQL 查询。 
 
@@ -162,7 +162,7 @@ function queryDatabase(){
 ```
 
 ## <a name="read-data"></a>读取数据
-使用以下代码进行连接，并使用 SELECT SQL 语句读取数据。 
+使用以下代码进行连接，并使用 SELECT  SQL 语句读取数据。 
 
 [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与 MySQL 服务器对接。 [connect()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与服务器建立连接。 [query()](https://github.com/mysqljs/mysql#performing-queries) 方法用于针对 MySQL 数据库执行 SQL 查询。 结果数组用于保存查询结果。
 
@@ -214,7 +214,7 @@ function readData(){
 ```
 
 ## <a name="update-data"></a>更新数据
-使用以下代码进行连接，并使用 UPDATE SQL 语句读取数据。 
+使用以下代码进行连接，并使用 UPDATE  SQL 语句读取数据。 
 
 [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与 MySQL 服务器对接。 [connect()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与服务器建立连接。 [query()](https://github.com/mysqljs/mysql#performing-queries) 方法用于针对 MySQL 数据库执行 SQL 查询。 
 
@@ -262,7 +262,7 @@ function updateData(){
 ```
 
 ## <a name="delete-data"></a>删除数据
-使用以下代码进行连接，并使用 DELETE SQL 语句读取数据。 
+使用以下代码进行连接，并使用 DELETE  SQL 语句读取数据。 
 
 [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与 MySQL 服务器对接。 [connect()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与服务器建立连接。 [query()](https://github.com/mysqljs/mysql#performing-queries) 方法用于针对 MySQL 数据库执行 SQL 查询。 
 

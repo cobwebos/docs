@@ -1,7 +1,6 @@
 ---
 title: 将 Java 用户定义函数 (UDF) 与 HDInsight 中的 Apache Hive 配合使用 - Azure
 description: 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此 UDF 示例将表中的文本字符串转换为小写。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,23 +8,23 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: b8417fe4c15259a7fd485254cf9edd2c8c082e92
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 43208636fb275c38573f820ef8245d7652b4aa86
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629702"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181181"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>将 Java UDF 与 HDInsight 中的 Apache Hive 配合使用
 
 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此示例中的 Java UDF 将表中的文本字符串转换为全小写字符。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 在 HDInsight Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
+* HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 * [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)
-* [Apache Maven](https://maven.apache.org/download.cgi)正确[安装](https://maven.apache.org/install.html)根据 Apache。  Maven 是 Java 项目的项目生成系统。
-* [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)群集主存储。 这将是 wasb: / / 适用于 Azure 存储，abfs: / / 用于 Azure 数据湖存储第 2 代或 adl: / / 用于 Azure 数据湖存储 Gen1。 如果为 Azure 存储或数据湖存储第 2 代启用了安全传输，则 URI 将为 wasbs: / / 或 abfss: / / 分别另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
+* 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
+* 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 wasb://；对于Azure Data Lake Storage Gen2，此值为 abfs://；对于 Azure Data Lake Storage Gen1，此值为 adl://。 如果为 Azure 存储启用安全传输，则 URI 将为`wasbs://`。  另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
 * 文本编辑器或 Java IDE
 
@@ -33,9 +32,9 @@ ms.locfileid: "58629702"
     > 如果在 Windows 客户端上创建 Python 文件，则必须使用将 LF 用作行尾的编辑器。 如果无法确定编辑器使用的是 LF 还是 CRLF，请参阅[故障排除](#troubleshooting)部分，了解删除 CR 字符的步骤。
 
 ## <a name="test-environment"></a>测试环境
-使用本文中的环境是一台计算机运行 Windows 10。  在命令提示符中，已执行命令并使用记事本编辑各种文件。 相应地修改您的环境。
+本文使用的环境是一台运行 Windows 10 的计算机。  命令在命令提示符下执行，各种文件使用记事本进行编辑。 针对环境进行相应的修改。
 
-从命令提示符下输入以下命令来创建工作环境：
+在命令提示符下，输入以下命令以创建工作环境：
 
 ```cmd
 IF NOT EXIST C:\HDI MKDIR C:\HDI
@@ -44,28 +43,28 @@ cd C:\HDI
 
 ## <a name="create-an-example-java-udf"></a>创建 Java UDF 示例
 
-1. 输入以下命令创建的新 Maven 项目：
+1. 通过输入以下命令创建一个新的 Maven 项目：
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    此命令将创建一个名为目录`exampleudf`，其中包含 Maven 项目。
+    此命令创建一个名为`exampleudf`的目录，其中包含 Maven 项目。
 
-2. 一旦创建项目后，删除`exampleudf/src/test`目录作为项目的一部分创建的通过输入以下命令：
+2. 创建项目后，通过输入以下命令删除`exampleudf/src/test`作为项目的一部分创建的目录：
 
     ```cmd
     cd ExampleUDF
     rmdir /S /Q "src/test"
     ```
 
-3. 打开`pom.xml`通过输入以下命令：
+3. 输入以下命令打开 `pom.xml`：
 
     ```cmd
     notepad pom.xml
     ```
 
-    然后替换现有`<dependencies>`条目使用以下 XML:
+    然后，将现有`<dependencies>`条目替换为以下 XML：
 
     ```xml
     <dependencies>
@@ -144,13 +143,13 @@ cd C:\HDI
 
     一旦进行了更改，请保存该文件。
 
-4. 输入以下命令以创建并打开一个新文件`ExampleUDF.java`:
+4. 输入以下命令，以创建并打开新文件 `ExampleUDF.java`：
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
     ```
 
-    然后复制并粘贴到新文件的以下 java 代码。 然后关闭文件。
+    将以下 Java 代码复制并粘贴到新文件中。 然后关闭该文件。
 
     ```java
     package com.microsoft.examples;
@@ -181,9 +180,9 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>生成并安装 UDF
 
-在下面的命令中，将为`sshuser`与实际用户名不同。 替换为`mycluster`实际群集名称。
+在以下命令中，请将 `sshuser` 替换为实际用户名（如果两者不同）。 将 `mycluster` 替换为实际群集名称。
 
-1. 编译和打包 UDF 通过输入以下命令：
+1. 通过输入以下命令编译和打包 UDF：
 
     ```cmd
     mvn compile package
@@ -191,13 +190,13 @@ cd C:\HDI
 
     此命令生成 UDF 并将其打包到 `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` 文件。
 
-2. 使用`scp`命令以将文件复制到 HDInsight 群集，通过输入以下命令：
+2. 通过输入以下命令，使用命令将文件复制到HDInsight群集：`scp`
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-3. 连接到群集使用 SSH 通过输入以下命令：
+3. 输入以下命令，使用 SSH 连接到群集：
 
     ```cmd
     ssh sshuser@mycluster-ssh.azurehdinsight.net
@@ -211,7 +210,7 @@ cd C:\HDI
 
 ## <a name="use-the-udf-from-hive"></a>在 Hive 中使用 UDF
 
-1. 从 SSH 会话启动 Beeline 客户端，通过输入以下命令：
+1. 通过输入以下命令从 SSH 会话启动 Beeline 客户端：
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -232,7 +231,7 @@ cd C:\HDI
     SELECT tolower(state) AS ExampleUDF, state FROM hivesampletable LIMIT 10;
     ```
 
-    此查询从表中选择状态，将转换要更低时用例中，并显示以及未修改的名称的字符串。 显示的输出类似于以下文本：
+    此查询从表中选择状态，将字符串转换为小写形式，然后将其与未修改的名称一起显示。 显示的输出类似于以下文本：
 
         +---------------+---------------+--+
         |  exampleudf   |     state     |
@@ -249,7 +248,7 @@ cd C:\HDI
         | colorado      | Colorado      |
         +---------------+---------------+--+
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 运行 Hive 作业时，可能会遇到类似于以下文本的错误：
 

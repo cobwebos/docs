@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b1a849732539dbc9e066bee7cc20141f56ffe10c
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050938"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348355"
 ---
 # <a name="symmetric-key-attestation"></a>对称密钥证明
 
@@ -46,9 +46,9 @@ SAS 令牌的格式如下：
 
 下面是每个令牌的组成元素：
 
-| 值 | 描述 |
+| ReplTest1 | 描述 |
 | --- | --- |
-| {signature} |HMAC-SHA256 签名字符串。 对于单个注册，此签名通过使用对称密钥（主密钥或辅助密钥）执行哈希而生成。 对于注册组，从注册组密钥中派生的密钥用于执行哈希。 哈希在以下格式的消息上执行：`URL-encoded-resourceURI + "\n" + expiry`。 **重要**：必须先从 base64 解码密钥，然后才能将其用于执行 HMAC-SHA256 计算。 此外，签名结果必须为 URL 编码。 |
+| {signature} |HMAC-SHA256 签名字符串。 对于单个注册，此签名通过使用对称密钥（主密钥或辅助密钥）执行哈希而生成。 对于注册组，从注册组密钥中派生的密钥用于执行哈希。 哈希在以下格式的消息上执行：`URL-encoded-resourceURI + "\n" + expiry`。 **重要说明**：必须先从 base64 解码密钥，然后才能将其用于执行 HMAC-SHA256 计算。 此外，签名结果必须为 URL 编码。 |
 | {resourceURI} |以设备预配服务实例的范围 ID 开头、可通过此令牌访问的注册终结点的 URI。 例如： `{Scope ID}/registrations/{Registration ID}` |
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
 | {URL-encoded-resourceURI} |小写资源 URI 的小写 URL 编码 |
@@ -75,7 +75,7 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 为设备定义注册 ID 后，注册组的对称密钥用于计算注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) 哈希，以生成派生的设备密钥。 可使用以下 C# 代码执行注册 ID 的哈希处理：
 
-```C#
+```csharp
 using System; 
 using System.Security.Cryptography; 
 using System.Text;  
@@ -92,7 +92,7 @@ public static class Utils
 } 
 ```
 
-```C#
+```csharp
 String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(masterKey), registrationId);
 ```
 

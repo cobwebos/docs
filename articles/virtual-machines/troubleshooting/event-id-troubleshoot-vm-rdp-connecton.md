@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 4c783c70217a84bbe5ccf15accc4a2bec0b7cca8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: 166648402eec7f8033c090a3f7862a902bae4be6
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959676"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154195"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>按事件 ID 排查 Azure VM RDP 连接问题 
 
@@ -59,9 +59,9 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **日期：**          时间 <br />
 **事件 ID：**    1058 <br />
 **任务类别：** 无 <br />
-**级别：**       错误 <br />
+**级别：**       Error <br />
 **关键字：**    经典 <br />
-**用户：**        不适用 <br />
+**用户：**        不可用 <br />
 **计算机：**      计算机 <br />
 **说明：** RD 会话主机服务器无法替换 RD 会话主机服务器在 SSL 连接上进行身份验证使用的过期自签名证书。 相关的状态代码为“访问被拒”。
 
@@ -70,9 +70,9 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **日期：**          时间 <br />
 **事件 ID：**    1058 <br />
 **任务类别：** 无 <br />
-**级别：**       错误 <br />
+**级别：**       Error <br />
 **关键字：**    经典 <br />
-**用户：**        不适用 <br />
+**用户：**        不可用 <br />
 **计算机：**      计算机 <br />
 **说明：** RD 会话主机服务器无法创建 RD 会话主机服务器在 SSL 连接上进行身份验证使用的新自签名证书，相关状态代码为“对象已存在”。
 
@@ -81,9 +81,9 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **日期：**          时间 <br />
 **事件 ID：**    1057 <br />
 **任务类别：** 无 <br />
-**级别：**       错误 <br />
+**级别：**       Error <br />
 **关键字：**    经典 <br />
-**用户：**        不适用 <br />
+**用户：**        不可用 <br />
 **计算机：**      计算机 <br />
 **说明：** RD 会话主机服务器无法创建 RD 会话主机服务器在 SSL 连接上进行身份验证使用的新自签名证书。 相关状态代码为“不存在 Keyset”
 
@@ -99,7 +99,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **日期：**          — <br />
 **事件 ID：**    36870 <br />
 **任务类别：** 无 <br />
-**级别：**       错误 <br />
+**级别：**       Error <br />
 **关键字：**       <br />
 **用户：**        SYSTEM <br />
 **计算机：**      计算机 <br />
@@ -113,7 +113,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 2. RSA 密钥已损坏或丢失。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
 若要解决此问题，必须使用这些步骤在 RDP 证书上设置正确的权限。
 
@@ -221,7 +221,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **日期：**          — <br />
 **事件 ID：**    36871 <br />
 **任务类别：** 无 <br />
-**级别：**       错误 <br />
+**级别：**       Error <br />
 **关键字：**       <br />
 **用户：**        SYSTEM <br />
 **计算机：**      计算机 <br />
@@ -231,7 +231,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 此问题由安全策略造成。 禁用较早版本的 TLS（例如 1.0）时，RDP 访问失败。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>分辨率
 
 RDP 默认使用 TLS 1.0 协议。 但是，该协议可能会更改为 TLS 1.1（这是新标准）。
 
@@ -250,24 +250,24 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 **源：**      Microsoft-Windows-TerminalServices-SessionBroker <br />
 **日期：**          时间 <br />
 **事件 ID：**    2056 <br />
-**任务类别：**(109) <br />
-**级别：**       错误 <br />
+**任务类别：** (109) <br />
+**级别：**       Error <br />
 **关键字：**       <br />
 **用户：**        网络服务 <br />
 **计算：**      *计算机 fqdn* <br />
 **说明：** 无法找到源 Microsoft-Windows-TerminalServices-SessionBroker 的事件 ID 2056 的说明。 未在本地计算机上安装引发此事件的组件，或者安装已损坏。 可在本地计算机上安装或修复该组件。 <br />
 如果另一台计算机上生成该事件，则必须保存该事件的显示信息。 <br />
 事件中包含以下信息： <br />
-Null <br />
-Null <br />
+NULL <br />
+NULL <br />
 登录数据库失败。
 
 **日志名称：**    Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
 **源：**      Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
 **日期：**          时间 <br />
 **事件 ID：**    1296 <br />
-**任务类别：**(104) <br />
-**级别：**       错误 <br />
+**任务类别：** (104) <br />
+**级别：**       Error <br />
 **关键字：**       <br />
 **用户：**        网络服务 <br />
 **计算：**      *计算机 fqdn* <br />
@@ -284,7 +284,7 @@ Null <br />
 
 主机名具有 Windows 内部数据库的条目和依赖项，这是远程桌面服务场正常工作所必需的。 在场已生成后更改主机名会导致许多错误，并且会使代理服务器停止工作。
 
-### <a name="resolution"></a>解决方法 
+### <a name="resolution"></a>分辨率 
 
 若要解决此问题，必须重新安装远程桌面连接代理角色和 Windows 内部数据库。
 

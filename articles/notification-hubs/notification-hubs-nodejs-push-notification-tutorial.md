@@ -4,9 +4,9 @@ description: 了解如何使用通知中心从 Node.js 应用程序发送推送�
 keywords: 推送通知,push notification,node.js 推送,ios 推送
 services: notification-hubs
 documentationcenter: nodejs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: bdeba401e99ad16555b9f6ea00017fc525302983
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994991"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213187"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
 
@@ -46,7 +48,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
-本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、使用 Windows PowerShell [创建 Node.js 云服务][Node.js Cloud Service]或[使用 WebMatrix 创建网站][webmatrix]。
+本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、使用 Windows PowerShell 创建 [Node.js 云服务][Node.js Cloud Service]或[使用 WebMatrix 创建网站][webmatrix]。
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>将应用程序配置为使用通知中心
 
@@ -80,7 +82,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 通过执行以下步骤从 [Azure 门户] 获取连接 `connectionstring` 值：
 
 1. 在左侧导航窗格中，单击“浏览”。
-2. 选择“通知中心”，并找到要用于示例的中心。 您可以参考[Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)如果您需要创建新的通知中心的帮助。
+2. 选择“通知中心”，并找到要用于示例的中心。 如果在创建新通知中心时需要帮助，可以参阅 [Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
 3. 选择“设置”。
 4. 单击“访问策略”。 会看到共享连接字符串和完全访问连接字符串。
 
@@ -106,7 +108,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** — 消息的 JSON 或原始字符串的有效负载。
 - **Callback** — 回调函数。
 
-有关有效负载格式的详细信息，请参阅 [Implementing GCM Server](https://developer.android.com/google/gcm/server.html#payload)（实现 GCM 服务器）文档中的 **Payload**（有效负载）部分。
+有关负载格式的详细信息，请参阅[有效负载文档](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
 
 以下代码使用由 `NotificationHubService` 公开的 `GcmService` 实例将推送通知发送到所有已注册的客户端。
 

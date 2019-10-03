@@ -1,6 +1,6 @@
 ---
 title: 使用必应视频搜索 API 在 Web 上搜索热门视频
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用必应视频搜索 API 在 Web 上搜索热门视频。
 services: cognitive-services
 author: swhite-msft
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 486cf2e3bcf851f23011bb2fb8d91691d6190698
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ea6f79bf6c305ecc07b3e684ede15ad439039e7e
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120833"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500611"
 ---
 # <a name="get-trending-videos-with-the-bing-video-search-api"></a>使用必应视频搜索 API 获取热门视频 
 

@@ -1,5 +1,5 @@
 ---
-title: 迁移后管理单一和共用数据库 - Azure SQL 数据库 | Microsoft Docs
+title: 迁移后管理单一数据库和共用数据库 - Azure SQL 数据库 | Microsoft Docs
 description: 了解如何在迁移到 Azure SQL 数据库后管理数据库。
 services: sql-database
 ms.service: sql-database
@@ -10,25 +10,25 @@ ms.topic: conceptual
 author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
-manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358419"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845601"
 ---
-# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中单一和共用数据库
+# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中的单一数据库和共用数据库
 
-从传统的自主管理、自主控制环境迁移到 PaaS 环境似乎在开始的时候让人有点不知所措。 作为应用开发人员或 DBA，你需要了解该平台的核心功能，有助于应用程序始终保持可用性、高性能、安全性和复原性。 这也是本文的主旨。 本文简要地整理了一下资源，并指导如何充分利用单一和共用 SQL 数据库的主要功能在云中管理应用程序，使应用程序保持高效运行并获得最佳效果。 本文主要面向：
+从传统的自主管理、自主控制环境迁移到 PaaS 环境似乎在开始的时候让人有点不知所措。 作为应用开发人员或 DBA，你需要了解该平台的核心功能，有助于应用程序始终保持可用性、高性能、安全性和复原性。 这也是本文的主旨。 本文简要地整理了一下资源，并指导如何充分利用单一数据库和共用 SQL 数据库的主要功能在云中管理应用程序，使应用程序保持高效运行并获得最佳效果。 本文主要面向：
 
 - 正在评估向 Azure SQL 数据库迁移应用程序的人员 - 应用程序现代化。
 - 正在迁移应用程序的人员 - 正在进行的迁移方案。
 - 最近完成了向 Azure SQL DB 迁移的人员 - 云中新的 DBA。
 
-本文讨论 Azure SQL 数据库的一些核心特性，作为在弹性池中使用单一数据库和共用数据库时可以轻松利用的平台。 这些特点为：
+本文讨论 Azure SQL 数据库的一些核心特性。作为一个平台，Azure SQL 数据库非常便于你在使用单一数据库和弹性池中的共用数据库时加以利用。 这些特点为：
 
+- 使用 Azure 门户监视数据库
 - 业务连续性和灾难恢复 (BCDR)
 - 安全和符合性
 - 智能数据库监视和维护
@@ -37,13 +37,32 @@ ms.locfileid: "59358419"
 > [!NOTE]
 > 本文适用于 Azure SQL 数据库中的下列部署选项：单一数据库和弹性池。 它不适用于 SQL 数据库中的托管实例部署选项。
 
+## <a name="monitor-databases-using-the-azure-portal"></a>使用 Azure 门户监视数据库
+
+在[Azure 门户](https://portal.azure.com/)中，可以通过选择数据库并单击 "**监视**" 图表来监视单个数据库的使用情况。 这会显示“指标”窗口，可通过单击“编辑图表”按钮来对其进行更改。 添加以下指标：
+
+- CPU 百分比
+- DTU 百分比
+- 数据 IO 百分比
+- 数据库大小百分比
+
+添加这些指标后，可以继续在“监视”图表上查看它们，并可在“指标”窗口上查看更多详细信息。 **DTU** 的平均利用率百分比。 有关服务层级的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)文章。  
+
+![监视数据库服务层的性能。](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
+
+还可针对性能指标配置警报。 在“指标”窗口中单击“添加警报”按钮。 按照向导说明来配置警报。 可选择在指标超出或低于特定阈值时显示警报。
+
+例如，如果预期数据库的工作负荷会增长，则可以选择配置在数据库的任何性能指标达到 80% 时发出电子邮件警报。 可以将此警报用作预警，以确定你何时需要切换到下一个更高的计算大小。
+
+性能指标还可以帮助你确定是否能够降级到更低的计算大小。 假定你正在使用一个标准 S2 数据库并且所有性能指标均显示该数据库在任何给定时间平均的使用率不超过 10%。 很可能该数据库在标准 S1 中会很好地正常工作。 但是，在决定转换到更低的计算大小之前，请注意出现峰值或波动情况的工作负荷。
+
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>业务连续性和灾难恢复 (BCDR)
 
 借助业务连续性和灾难恢复功能，发生灾难时仍可像往常一样继续运行业务。 灾难可能是数据库级别的事件（例如，有人错误地删除了关键表格）或数据中心级别的事件（例如，海啸等区域性灾难）。
 
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>如何在 SQL 数据库中创建和管理备份
 
-无需在 Azure SQL DB 上创建备份，因为没这个必要。 SQL 数据库会自动备份数据库，因此不再需要操心去计划、执行和管理备份。 该平台每周执行一次完整备份，每隔几小时执行一次差异备份，每 5 分钟执行一次日志备份，确保高效的灾难恢复，将数据丢失降至最低。 创建数据库后，首先会执行完整备份。 在称为“保留期”的某段时间内，这些备份均可用，可用情况因所选服务层而有所不同。 凭借 SQL 数据库，可使用[时点恢复 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) 还原到此保留期内的任意时间点。
+无需在 Azure SQL DB 上创建备份，因为没这个必要。 SQL 数据库会自动备份数据库，因此不再需要操心去计划、执行和管理备份。 该平台每周执行一次完整备份，每隔几小时执行一次差异备份，每 5 分钟执行一次日志备份，确保高效的灾难恢复，将数据丢失降至最低。 创建数据库后，首先会执行完整备份。 在称为“保留期”的某段时间内，这些备份均可用，可用情况因所选服务层级而有所不同。 凭借 SQL 数据库，可使用[时点恢复 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) 还原到此保留期内的任意时间点。
 
 |服务层|保留天数|
 |---|:---:|
@@ -123,11 +142,11 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 
 #### <a name="reserved-ips"></a>保留 IP
 
-另一种方法是为 VM 设置[保留 IP](../virtual-network/virtual-networks-reserved-public-ip.md)，并将服务器防火墙设置中的那些特定 VM IP 地址列入允许列表。 通过分配保留 IP，就可以避免通过更改 IP 地址来更新防火墙规则的麻烦。
+另一种方法是为 Vm 设置[保留 ip](../virtual-network/virtual-networks-reserved-public-ip.md) ，并在服务器防火墙设置中添加这些特定的 VM IP 地址。 通过分配保留 IP，就可以避免通过更改 IP 地址来更新防火墙规则的麻烦。
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>连接到哪些端口上的 SQL 数据库
 
-端口 1433。 SQL 数据库通过此端口通信。 要从公司网络内进行连接，必须在组织防火墙设置中添加出站规则。 原则上请避免在 Azure 边界外公开端口 1433。 可在 Azure 中使用 [Azure RemoteApp](https://www.microsoft.com/cloud-platform/azure-remoteapp-client-apps) 运行 SSMS。 此操作不需要打开到端口 1433 的出站连接，因为 IP 是静态的，所以数据库可以只对 RemoteApp 开放，它支持多重身份验证 (MFA)。
+端口 1433。 SQL 数据库通过此端口通信。 要从公司网络内进行连接，必须在组织防火墙设置中添加出站规则。 原则上请避免在 Azure 边界外公开端口 1433。
 
 ### <a name="how-can-i-monitor-and-regulate-activity-on-my-server-and-database-in-sql-database"></a>如何监视和管理 SQL 数据库中服务器和数据库上的活动
 
@@ -160,7 +179,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 
 ### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>如何限制对数据库中敏感数据的访问
 
-每个应用程序在数据库中都有一定的敏感数据，需要防止这些数据被所有人查看。 组织内的某些人员需要查看此数据，但其他人员应无法查看此数据。 比如，员工工资。 经理需要查看其直接下属的工资信息，但团队成员应无法查看其同事的工资信息。 另一种情况是，数据开发人员在开发阶段或测试期间可能需要使用敏感数据，例如客户的 SSN。 而此信息后来不再需要向开发人员公开。 在这种情况下，敏感数据要么需要屏蔽，要么完全不公开。 SQL 数据库提供了两种方法来防止未经授权的用户查看敏感数据：
+每个应用程序在数据库中都有一定的敏感数据，需要防止这些数据被所有人查看。 组织内的某些人员需要查看此数据，但其他人员应无法查看此数据。 比如，员工工资。 经理需要访问其直接下属的工资信息，但各团队成员不应有权访问其对等方的工资信息。 另一种情况是，数据开发人员在开发阶段或测试期间可能需要使用敏感数据，例如客户的 SSN。 而此信息后来不再需要向开发人员公开。 在这种情况下，敏感数据要么需要屏蔽，要么完全不公开。 SQL 数据库提供了两种方法来防止未经授权的用户查看敏感数据：
 
 [动态数据掩码](sql-database-dynamic-data-masking-get-started.md)是一种数据屏蔽功能，它通过屏蔽应用程序层上的非特权用户来限制敏感数据的公开。 可以定义屏蔽规则来创建屏蔽模式（例如，只显示国家/地区 ID 号的最后 4 位数：XXX-XX-0000，并将大部分编号标记为 X），并确定哪些用户被排除在屏蔽规则之外。 随时都可能出现屏蔽，有各种屏蔽功能可用于各种数据类别。 通过动态数据屏蔽可以自动检测数据库中的敏感数据，并对其应用屏蔽。
 
@@ -207,7 +226,7 @@ Express Route 还允许激增高达 2 倍的带宽限制，无需额外付费。
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL 数据库是否符合任何规章要求，这对我组织的符合性有什么帮助
 
-SQL 数据库符合一系列规章遵从性。 若要查看最新的 SQL 数据库的均已满足的符合性要求集，请访问[Microsoft 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)和向下钻取对你的组织能够了解 SQL 数据库包含符合重要的符合性要求Azure 服务。 需要注意的是，尽管 SQL 数据库可能被认证为符合的服务，它有助于确保组织服务的符合性，但不会自动保证这一点。
+SQL 数据库符合一系列规章遵从性。 若要查看 SQL 数据库已满足的最新符合性要求集，请访问[Microsoft 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，并向下钻取对你的组织很重要的符合性要求，以了解 sql 数据库是否包含在合规的 Azure 服务中。 需要注意的是，尽管 SQL 数据库可能被认证为符合的服务，它有助于确保组织服务的符合性，但不会自动保证这一点。
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>迁移后的智能数据库监视和维护
 
@@ -259,11 +278,11 @@ Azure 门户通过选择数据库并单击“概述”窗格中的图表来显�
 
 可以使用[查询性能见解](sql-database-query-performance.md)查看特定数据库那些排名靠前的资源消耗查询和长时间运行查询的历史记录。 可通过资源利用率、持续时间和执行频率快速找出热门查询。 还可跟踪查询，并检测回归。 此功能需要为数据库启用和激活[查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
 
-![查询性能见解](./media/sql-database-manage-after-migration/query-performance-insight.png)
+![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Monitor 日志中的 azure SQL Analytics （预览版）
+#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Monitor 日志中的 Azure SQL Analytics （预览）
 
-[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)，可收集和可视化关键的 Azure SQL Azure 性能指标，最多支持 150,000 个 SQL 数据库和 5,000 个 SQL 弹性池，每个工作区。 你可以使用它监视并接收通知。 可以跨多个 Azure 订阅和弹性池监视 SQL 数据库和弹性池指标，并可用于识别应用程序堆栈每一层上的问题。
+[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)可用于收集和直观显示关键 Azure SQL Azure 性能指标，每个工作区最多支持150000个 sql 数据库和5000个 sql 弹性池。 你可以使用它监视并接收通知。 可以跨多个 Azure 订阅和弹性池监视 SQL 数据库和弹性池指标，并可用于识别应用程序堆栈每一层上的问题。
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>我注意到了性能问题：我的 SQL 数据库故障排除方法与 SQL Server 有何不同
 
@@ -273,13 +292,13 @@ Azure 门户通过选择数据库并单击“概述”窗格中的图表来显�
 
 进行性能故障排除时，请务必确定是应用程序，还是支持它的数据库影响了应用程序的性能。 性能问题往往存在于应用程序层。 问题可能出现在体系结构或是数据访问模式上。 例如，假设你有一个对网络延迟敏感的聊天应用程序。 在这种情况下，应用程序会受到影响，因为在应用程序和服务器间往返出现了许多短请求（“聊天”），在网络拥塞时，这些往返请求会快速增加。 要在这种情况下提高性能，可使用[批量查询](sql-database-performance-guidance.md#batch-queries)。 批量查询会为你带来极大的帮助，因为此时会对请求进行批处理，帮助你减少往返请求的延迟，提高应用程序的性能。
 
-此外，如果注意到数据库总体性能下降，则可以监视 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 动态管理视图，了解 CPU、IO 和内存消耗情况。 应用性能可能会受到影响，因为数据库缺乏资源。 你可能会需要根据工作负荷需求的增加和减少来更改计算大小和/或服务层。
+此外，如果注意到数据库总体性能下降，则可以监视 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 动态管理视图，了解 CPU、IO 和内存消耗情况。 应用性能可能会受到影响，因为数据库缺乏资源。 你可能会需要根据工作负荷需求的增加和减少来更改计算大小和/或服务层级。
 
 有关优化性能问题的全套建议，请参阅：[优化数据库](sql-database-performance-guidance.md#tune-your-database)。
 
-### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>如何确保我使用的是适当的服务层和计算大小
+### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>如何确保我使用的是适当的服务层级和计算大小
 
-SQL 数据库提供了各种服务层：基本、标准和高级。 在每个服务层，将获得与该服务层对应的有保障且可预测的性能。 根据工作负荷情况，活动可能会激增，资源利用率可能会达到当前所处计算大小的上限。 在这种情况下，最好先评估进行优化是否会有所帮助（例如，添加或更改索引等）。 如果仍然存在限制问题，请考虑转移到更高的服务层或计算大小。
+SQL 数据库提供了各种服务层级：“基本”、“标准”和“高级”。 在每个服务层级，将获得与该服务层级对应的有保障且可预测的性能。 根据工作负荷情况，活动可能会激增，资源利用率可能会达到当前所处计算大小的上限。 在这种情况下，最好先评估进行优化是否会有所帮助（例如，添加或更改索引等）。 如果仍然存在限制问题，请考虑转移到更高的服务层级或计算大小。
 
 |**服务层**|**常见用例方案**|
 |---|---|

@@ -5,6 +5,7 @@ description: 了解如何在 Azure 中使用公共和专用 IP 地址（经典�
 services: virtual-network
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 207e728d25df9192f8a600b13d86330af8311700
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652161"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058926"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure 中的 IP 地址类型和分配方法（经典）
 可以将 IP 地址分配到与其他 Azure 资源通信的 Azure 资源，也可以将其分配到本地网络和 Internet。 可以在 Azure 中使用两种类型的 IP 地址：公共地址和专用地址。
@@ -38,7 +39,7 @@ ms.locfileid: "58652161"
 * IaaS 虚拟机 (VM)
 * PaaS 角色实例
 * VPN 网关
-* 应用程序网关数
+* 应用程序网关
 
 ### <a name="allocation-method"></a>分配方法
 如果需要向 Azure 资源分配公共 IP 地址，将 动态地从资源的创建位置中的可用公共 IP 地址池分配该 IP 地址。 停止该资源时，将释放此 IP 地址。 对于云服务，所有角色实例均已停止时会发生这种情况，可以使用*静态*（保留）IP 地址避免发生这种情况（请参阅[云服务](#cloud-services)）。
@@ -87,7 +88,7 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 ### <a name="at-a-glance"></a>速览
 下表显示了具有可能分配方法（动态/静态）的每种资源类型以及它是否具有分配多个公共 IP 地址的能力。
 
-| 资源 | 动态 | 静态 | 多个 IP 地址 |
+| Resource | 动态 | 静态 | 多个 IP 地址 |
 | --- | --- | --- | --- |
 | 云服务 |是 |是 |是 |
 | IaaS VM 或 PaaS 角色实例 |是 |否 |否 |
@@ -116,7 +117,7 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 
 如果是虚拟网络中部署的云服务，资源将获取从关联子网（在其网络配置中指定）的地址范围中分配的专用 IP 地址。 此专用 IP 地址可用于 VNet 中所有 VM 之间的通信。
 
-此外，如果是 VNet 中的云服务，则默认*动态*（使用 DHCP）分配专用 IP 地址。 停止和启动该资源时，该地址可能更改。 要确保 IP 地址保持不变，则需要将分配方法设置为 静态，并提供相应地址范围内的有效 IP 地址。
+此外，如果是 VNet 中的云服务，则默认*动态*（使用 DHCP）分配专用 IP 地址。 停止和启动该资源时，该地址可能更改。 要确保 IP 地址保持不变，则需要将分配方法设置为静态，并提供相应地址范围内的有效 IP 地址。
 
 静态专用 IP 地址通常用于：
 
@@ -134,10 +135,10 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>内部负载均衡器 (ILB) 和应用程序网关
 可以将专用 IP 地址分配到 [Azure 内部负载均衡器](../load-balancer/load-balancer-internal-overview.md) (ILB) 或 [Azure 应用程序网关](../application-gateway/application-gateway-introduction.md)的**前端**配置。 此专用 IP 地址将用作内部终结点，仅供其虚拟网络 (VNet) 和连接到该 VNet 的远程网络中的资源访问。 可以将动态或静态专用 IP 地址分配到前端配置。 还可以分配多个专用 IP 地址以启用多 vip 方案。
 
-### <a name="at-a-glance"></a>速览
+### <a name="at-a-glance"></a>概览
 下表显示了具有可能分配方法（动态/静态）的每种资源类型以及它是否具有分配多个专用 IP 地址的能力。
 
-| 资源 | 动态 | 静态 | 多个 IP 地址 |
+| Resource | 动态 | 静态 | 多个 IP 地址 |
 | --- | --- | --- | --- |
 | VM（在独立云服务或 VNet 中） |是 |是 |是 |
 | PaaS 角色实例（在独立云服务或 VNet 中） |是 |否 |否 |
@@ -149,10 +150,10 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 
 |  | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 公共 IP 地址 (动态) |5 |联系支持人员 |
+| 公共 IP 地址 (动态) |5 |与支持部门联系 |
 | 保留的公共 IP 地址 |20 |联系支持人员 |
-| 每个部署（云服务）的公共 VIP |5 |联系支持人员 |
-| 每个部署（云服务）的专用 VIP (ILB) |第 |第 |
+| 每个部署（云服务）的公共 VIP |5 |与支持部门联系 |
+| 每个部署（云服务）的专用 VIP (ILB) |1 |1 |
 
 确保已阅读 Azure 中所有的[网络限制](../azure-subscription-service-limits.md#networking-limits)。
 
@@ -162,7 +163,7 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 ## <a name="differences-between-resource-manager-and-classic-deployments"></a>Resource Manager 与经典部署之间的差异
 下面是 Resource Manager 和经典部署模型中的 IP 寻址功能的比较。
 
-|  | 资源 | 经典 | 资源管理器 |
+|  | Resource | 经典 | 资源管理器 |
 | --- | --- | --- | --- |
 | **公共 IP 地址** |***VM*** |称为 ILPIP（仅限动态） |称为公共 IP（动态或静态） |
 |  ||分配到 IaaS VM 或 PaaS 角色实例 |与 VM 的 NIC 关联 |

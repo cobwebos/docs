@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: cc0c7c4928fb03cb60bb51f74d74fdc1ab914348
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315123"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844923"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>将来宾 OS 指标发送到适用于 Windows 虚拟机（经典）的 Azure Monitor 数据存储
 
@@ -27,13 +27,15 @@ Azure Monitor [诊断扩展](https://docs.microsoft.com/azure/monitoring-and-dia
 
 本文概述的过程仅适用于运行 Windows 操作系统的经典虚拟机。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 你必须是 Azure 订阅的[服务管理员或共同管理员](../../billing/billing-add-change-azure-subscription-administrator.md)。 
 
 - 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。 
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+
+- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>创建经典虚拟机和存储帐户
 

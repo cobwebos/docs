@@ -2,20 +2,19 @@
 title: 在 HDInsight 上运行 Apache Hadoop MapReduce 示例 - Azure
 description: 开始使用 HDInsight 随附的 jar 文件中的 MapReduce 示例。 使用 SSH 连接到群集，然后使用 Hadoop 命令运行示例作业。
 keywords: hadoop 示例 jar,hadoop 示例 jar,hadoop mapreduce 示例,mapreduce 示例
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 04/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7ff91a4fdc4bf0118c231a1ac18ebb521530a980
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: f0251e3926c569b45ebebcd18b98df5af4564443
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447018"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64706665"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>运行 HDInsight 随附的 MapReduce 示例
 
@@ -25,12 +24,9 @@ ms.locfileid: "58447018"
 
 ## <a name="prerequisites"></a>必备组件
 
-* **一个 HDInsight 群集**：请参阅[开始在 Linux 上的 HDInsight 中将 Apache Hadoop 与 Apache Hive 配合使用](apache-hadoop-linux-tutorial-get-started.md)
+* HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
-    > [!IMPORTANT]  
-    > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
-
-* **一个 SSH 客户端**：有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+* SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="the-mapreduce-examples"></a>MapReduce 示例
 
@@ -65,7 +61,11 @@ ms.locfileid: "58447018"
 
 ## <a name="run-the-wordcount-example"></a>运行 wordcount 示例
 
-1. 使用 SSH 连接到 HDInsight。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+1. 使用 SSH 连接到 HDInsight。 替换为`CLUSTER`与群集的名称，然后输入以下命令：
+
+    ```cmd
+    ssh sshuser@CLUSTER-ssh.azurehdinsight.net
+    ```
 
 2. 在 `username@#######:~$` 提示符下，使用以下命令列出示例：
 
@@ -87,7 +87,7 @@ ms.locfileid: "58447018"
 
     此消息表示可以为源文档提供多个输入路径。 最后的路径是存储输出（源文档中的单词计数）的位置。
 
-4. 使用以下语句来计算《达芬奇笔记》（已作为示例数据提供给群集）中所有单词的数目：
+4. 使用以下命令以便在笔记本的 Leonardo da Vinci 提供作为示例数据与你的群集中的所有单词进行计数：
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
@@ -163,11 +163,11 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 此命令返回的值类似于 **3.14159155000000000000**。 例如，pi 采用前 10 位小数时为 3.1415926535。
 
-## <a name="10-gb-greysort-example"></a>10 GB Greysort 示例
+## <a name="10-gb-graysort-example"></a>10GB GraySort 示例
 
 GraySort 是一种基准排序。 其指标为在给大量数据（通常至少 100 TB）排序时达到的排序速率（TB/分钟）。
 
-此示例使用适中的 10 GB 数据，这样它运行时能相对快一点。 它使用由 Owen O'Malley 和 Arun Murthy 开发的 MapReduce 应用程序。 这些应用程序以 0.578 TB/分钟（100 TB 用时 173 分钟）的速率赢得了 2009 年年度常用（“daytona”）TB 级排序基准。 有关这一排序基准和其他排序基准的详细信息，请参阅 [Sortbenchmark](https://sortbenchmark.org/) 站点。
+此示例使用适中的 10 GB 数据，这样它运行时能相对快一点。 它使用由 Owen O'Malley 和 Arun Murthy 开发的 MapReduce 应用程序。 这些应用程序在 2009 年，0.578 TB/分钟 (100 TB 用时 173 分钟） 的速率赢得年度的常规用途 ("Daytona") tb 级排序基准。 这和其他排序基准的详细信息，请参阅[排序基准](https://sortbenchmark.org/)站点。
 
 本示例使用三组 MapReduce 程序：
 
@@ -212,7 +212,3 @@ GraySort 是一种基准排序。 其指标为在给大量数据（通常至少 
 * [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)
-
-[hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-introduction]:apache-hadoop-introduction.md
-

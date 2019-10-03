@@ -1,6 +1,6 @@
 ---
 title: 如何翻页浏览可用视频 - 必应视频搜索
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何翻页浏览必应视频搜索 API 返回的视频。
 services: cognitive-services
 author: swhite-msft
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 0af36fa68b2d801eed52e6f081b040fb56929c91
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c3570d8772734595c6707ca8103006867a8eb47a
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101306"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500707"
 ---
 # <a name="paging-through-video-search-results"></a>翻页浏览视频搜索结果
 
@@ -26,7 +26,7 @@ ms.locfileid: "58101306"
 
 ## <a name="total-estimated-matches"></a>估计匹配项总数
 
-若要获取找到的搜索结果估计数量，请使用 JSON 响应中的 [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-totalestimatedmatches) 字段。   
+若要获取找到的搜索结果估计数量，请使用 JSON 响应中的 [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos-totalestimatedmatches) 字段。   
   
 ```json  
 {
@@ -39,7 +39,7 @@ ms.locfileid: "58101306"
   
 ## <a name="paging-through-videos"></a>翻页浏览视频
 
-若要翻页浏览可用视频，请在发送请求时使用 [count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#count) 和 [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#offset) 查询参数。  
+若要翻页浏览可用视频，请在发送请求时使用 [count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#count) 和 [offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) 查询参数。  
   
 
 |参数  |描述  |
@@ -57,7 +57,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```  
 
-如果对 [count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#count) 使用默认值，则只需指定 `offset` 查询参数，如以下示例所示。  
+如果对 [count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#count) 使用默认值，则只需指定 `offset` 查询参数，如以下示例所示。  
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  
@@ -67,7 +67,7 @@ Host: api.cognitive.microsoft.com
 
 如果一次翻页浏览 35 个视频，则可以在第一次请求时将 `offset` 查询参数设置为 0，然后在每个后续请求中按 35 增加 `offset`。 但是，下一个响应中的某些结果可能包含前一个响应中的重复视频结果。 例如，响应中的前两个视频可能与前一个响应中的最后两个视频相同。
 
-若要消除重复结果，请使用 `Videos` 对象的 [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-nextoffset) 字段。
+若要消除重复结果，请使用 `Videos` 对象的 [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos-nextoffset) 字段。
 
 例如，如果希望一次翻页浏览 30 个视频，则可以在第一个请求中将 `count` 设置为 30，并将 `offset` 设置为 0。 在下一个请求中，将 `offset` 查询参数设置为 `nextOffset` 值。
 

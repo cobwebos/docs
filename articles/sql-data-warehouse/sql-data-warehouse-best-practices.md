@@ -2,25 +2,25 @@
 title: Azure SQL 数据仓库最佳实践 | Microsoft Docs
 description: 开发 Azure SQL 数据仓库解决方案时应了解的建议和最佳实践。
 services: sql-data-warehouse
-author: ronortloff
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: design
 ms.date: 11/26/2018
-ms.author: rortloff
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 519eae012db30d772a388865380e4909d91b711a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a89988fd369a382ac86f0f4b1ef0f61c0b7b9cad
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878136"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178425"
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库最佳实践
 本文包含一系列最佳实践，可帮助你从 Azure SQL 数据仓库获得最佳性能。  本文的有些概念很基本且很容易解释，而有些概念则相对高级，本文只对其进行大致介绍。  本文的目的是提供一些基本指导，让用户在生成数据仓库时更加关注那些重要的方面。  每部分都介绍一个概念，并提供哪里可以阅读深度介绍的详细文章。
 
-如果刚开始使用 Azure SQL 数据仓库，千万别让本文吓到。  主题的顺序主要按照重要性排列。  如果一开始就关注头几个概念，则效果应该不错。  更熟悉 SQL 数据仓库且能运用自如后，请再回来看看其他概念。  融会贯通不需要很长时间。
+如果刚开始使用 Azure SQL 数据仓库，千万别让本文吓到。  主题的顺序主要按照重要性排列。  如果一开始就关注头几个概念，则效果应该不错。  随着使用 SQL 数据仓库更加熟悉和熟悉，请返回并查看几个其他概念。  融会贯通不需要很长时间。
 
 有关加载指南，请参阅[加载数据的指南](guidance-for-loading-data.md)。
 
@@ -49,9 +49,9 @@ SQL 数据仓库支持通过多种工具（包括 Azure 数据工厂、PolyBase�
 另请参阅 [Guide for using PolyBase][Guide for using PolyBase]（PolyBase 使用指南）
 
 ## <a name="hash-distribute-large-tables"></a>哈希分布大型表
-默认情况下，表是以轮循机制分布的。  这可让用户更容易开始创建表，而不必确定应该如何分布其表。  轮循机制表在某些工作负荷中执行良好，但大多数情况下，选择分布列的执行性能将更好。  按列分布表的性能远远高于轮循机制表的最常见例子是联接两个大型事实表。  例如，如果有一个依 order_id 分布的订单表，以及一个也是依 order_id 分布的事务表，如果将订单数据联接到事务表上的 order_id，此查询将变成传递查询，也就是数据移动操作会被消除。  减少步骤意味着加快查询速度。  更少的数据移动也将让查询更快。  这种解释较为粗略。 加载分布的表时，请确保传入数据的分布键没有排序，因为这会拖慢加载速度。  请参阅以下链接很多有关如何选择分布列可以提高性能，以及如何在 CREATE TABLE 语句的 WITH 子句中定义的分布式的表的详细信息。
+默认情况下，表是以轮循机制分布的。  这可让用户更容易开始创建表，而不必确定应该如何分布其表。  轮循机制表在某些工作负荷中执行良好，但大多数情况下，选择分布列的执行性能将更好。  按列分布表的性能远远高于轮循机制表的最常见例子是联接两个大型事实表。  例如，如果有一个依 order_id 分布的订单表，以及一个也是依 order_id 分布的事务表，如果将订单数据联接到事务表上的 order_id，此查询将变成传递查询，也就是数据移动操作会被消除。  减少步骤意味着加快查询速度。  更少的数据移动也将让查询更快。  这种解释较为粗略。 加载分布的表时，请确保传入数据的分布键没有排序，因为这会拖慢加载速度。  有关选择分布列如何能提升性能，以及如何在 CREATE TABLE 语句的 WITH 子句中定义分布表的详细信息，请参阅以下链接。
 
-另请参阅[表概述][Table overview]、[表分布][Table distribution]、[Selecting table distribution][Selecting table distribution]（选择表分布）、[CREATE TABLE][CREATE TABLE]、[CREATE TABLE AS SELECT][CREATE TABLE AS SELECT]
+另请参阅[表概述][Table overview]、[表数据分布][Table distribution]、[Selecting table distribution][Selecting table distribution]（选择表数据分布）、[CREATE TABLE][CREATE TABLE]、[CREATE TABLE AS SELECT][CREATE TABLE AS SELECT]
 
 ## <a name="do-not-over-partition"></a>不要过度分区
 尽管数据分区可以让数据维护变得有效率（通过分区切换或优化扫描将分区消除），太多的分区将让查询变慢。  通常在 SQL Server 上运行良好的高数据粒度分区策略可能无法在 SQL 数据仓库上正常工作。  如果每个分区的行数少于 1 百万，太多分区还会降低聚集列存储索引的效率。  请记住，SQL 数据仓库数据在幕后将数据分区成 60 个数据库，因此如果创建包含 100 个分区的表，实际上将导致 6000 个分区。  每个工作负荷都不同，因此最佳建议是尝试不同的分区，找出最适合工作负荷的分区。  请考虑比 SQL Server 上运行良好的数据粒度更低的粒度。  例如，考虑使用每周或每月分区，而不是每日分区。
@@ -62,6 +62,9 @@ SQL 数据仓库支持通过多种工具（包括 Azure 数据工厂、PolyBase�
 在事务中运行的 INSERT、UPDATE、DELETE 语句，失败时必须回滚。  为了将长时间回滚的可能性降到最低，请尽可能将事务大小最小化。  这可以通过将 INSERT、UPDATE、DELETE 语句分成小部分来达成。  例如，如果预期 INSERT 需要 1 小时，可能的话，将 INSERT 分成 4 个部分，每个运行 15 分钟。  使用特殊的最低限度日志记录方案，像是 CTAS、TRUNCATE、DROP TABLE 或 INSERT 空表，来降低回滚的风险。  另一个消除回滚的作法是使用“仅元数据”操作（像是分区切换）进行数据管理。  例如，不要运行 DELETE 语句来删除表中所有 order_date 为 2001 年 10 月的行，而是将数据每月分区后，再从另一个表将有空分区之数据的分区调动出来（请参阅 ALTER TABLE 示例）。  针对未分区的表，请考虑使用 CTAS 将想要保留的数据写入表中，而不是使用 DELETE。  如果 CTAS 需要的时间一样长，则较安全的操作，是在它具有极小事务记录的条件下运行它，且必要时可以快速地取消。
 
 另请参阅[了解事务][Understanding transactions]、[优化事务][Optimizing transactions]、[表分区][Table partitioning]、[TRUNCATE TABLE][TRUNCATE TABLE]、[ALTER TABLE][ALTER TABLE]、[Create table as select (CTAS)][Create table as select (CTAS)]
+
+## <a name="reduce-query-result-sizes"></a>缩小查询结果大小  
+这有助于避免由大型查询结果引起的客户端问题。  您可以编辑您的查询以减少返回的行数。 某些查询生成工具允许您向每个查询添加 "top N" 语法。  您还可以将查询结果 CETAS 到临时表，然后使用 PolyBase 导出来进行下层处理。
 
 ## <a name="use-the-smallest-possible-column-size"></a>使用最小可能的列大小
 在定义 DDL 时，使用可支持数据的最小数据类型，能够改善查询性能。  这对 CHAR 和 VARCHAR 列尤其重要。  如果列中最长的值是 25 个字符，请将列定义为 VARCHAR(25)。  避免将所有字符列定义为较大的默认长度。  此外，将列定义为 VARCHAR（当它只需要这样的大小时）而非 NVARCHAR。
@@ -100,9 +103,9 @@ SQL 数据仓库有多个 DMV 可用于监视查询执行。  以下监视相关
 ## <a name="other-resources"></a>其他资源
 另请参阅[故障诊断][Troubleshooting]一文，了解常见的问题和解决方案。
 
-如果在本文中没有找到所需内容，可尝试使用本页面左侧的“搜索文档”来搜索所有 Azure SQL 数据仓库文档。  在 [Azure SQL 数据仓库论坛][Azure SQL Data Warehouse MSDN Forum]中可以向其他用户和 SQL 数据仓库的产品小组提出问题。  我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  若要提问有关堆栈溢出的问题，还可以访问 [Azure SQL 数据仓库堆栈溢出论坛][Azure SQL Data Warehouse Stack Overflow Forum]。
+如果在本文中没有找到所需内容，可尝试使用本页面左侧的“搜索文档”来搜索所有 Azure SQL 数据仓库文档。  在[AZURE Sql 数据仓库论坛][Azure SQL Data Warehouse MSDN Forum]中，您可以向其他用户和 SQL 数据仓库产品组提出问题。  我们会主动观察此论坛，确保用户的问题获得其他用户或我们的回答。  若要提问有关堆栈溢出的问题，请访问 [Azure SQL 数据仓库堆栈溢出论坛][Azure SQL Data Warehouse Stack Overflow Forum]。
 
-最后，如需提出功能方面的请求，请使用 [Azure SQL 数据仓库反馈][Azure SQL Data Warehouse Feedback] 页。  添加请求或对其他请求投赞成票对我们确定功能的优先级有很大的帮助。
+最后，如需提出功能方面的请求，请使用 [Azure SQL 数据仓库反馈][Azure SQL Data Warehouse Feedback]页。  添加请求或对其他请求投赞成票对我们确定功能的优先级有很大的帮助。
 
 <!--Image references-->
 

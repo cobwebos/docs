@@ -3,26 +3,26 @@ title: 使用 Azure 容器实例获取容器日志和事件
 description: 了解如何使用 Azure 容器实例获取容器日志和事件以进行调试
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f286e2136b12a88e65e40f8fb956542233f71715
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8ae7ab3f53f480f46165800504fbb1eb6649c3e2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368997"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68325971"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>在 Azure 容器实例中检索容器日志和事件
 
-如果容器的行为错误，应首先使用 [az container logs][az-container-logs] 查看其日志，然后使用 [az container attach][az-container-attach] 流式传输其标准输出和标准错误。
+如果有错误的容器, 请首先使用[az 容器日志][az-container-logs]查看其日志, 并使用[az container attach][az-container-attach]流式传输其标准输出和标准错误。
 
 ## <a name="view-logs"></a>查看日志
 
-若要查看容器内应用程序代码的日志，可使用 [az container logs][az-container-logs] 命令。
+要查看容器内应用程序代码的日志，可使用 [az container logs][az-container-logs] 命令。
 
 下面是[在 ACI 中运行容器化任务](container-instances-restart-policy.md)中基于任务的示例容器，在向其送入无效的 URL 进行处理后的日志输出：
 
@@ -50,7 +50,7 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 ## <a name="attach-output-streams"></a>附加输出流
 
-[az container attach][az-container-attach] 命令在容器启动过程中提供诊断信息。 启动容器后，它会将 STDOUT 和 STDERR 流式传输到本地控制台。
+[Az container attach][az-container-attach]命令在容器启动过程中提供诊断信息。 启动容器后，它会将 STDOUT 和 STDERR 流式传输到本地控制台。
 
 例如，下面是[在 ACI 中运行容器化任务](container-instances-restart-policy.md)中基于任务的容器，在向其提供一个大型文本文件的有效 URL 进行处理后的输出：
 

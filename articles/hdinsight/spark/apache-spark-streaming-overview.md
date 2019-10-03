@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight 中的 Spark 流式处理
-description: 如何在 HDInsight Spark 群集上使用 Spark 流式处理应用程序。
-services: hdinsight
+description: 如何在 HDInsight Spark 群集上使用 Apache Spark 流式处理应用程序。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 3ecabd683ed4303a7ff54780299ed0e83aa14c26
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f990e5eb2761f1743c2731f499ecc341990edf53
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892073"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813996"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark 流式处理概述
 
@@ -146,7 +145,7 @@ stream.foreachRDD { rdd =>
 ssc.start()
 ```
 
-等待大约 30 秒后启动应用程序更高版本。  然后，您可以查询 DataFrame 定期以查看当前批处理中, 存在的值集例如使用以下 SQL 查询：
+在启动上面的应用程序以后，等待约 30 秒钟。  然后，你可以定期查询 DataFrame 来查看批处理中存在的当前值集，例如，使用以下 SQL 查询：
 
 ```sql
 %%sql
@@ -155,7 +154,7 @@ SELECT * FROM demo_numbers
 
 生成的输出如下所示：
 
-| 值 | time |
+| value | 时间 |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -223,9 +222,9 @@ ssc.start()
 
 第一分钟后，会产生 12 个条目 - 窗口中收集到的两个批处理中各有 6 个条目。
 
-| 值 | time |
+| value | 时间 |
 | --- | --- |
-| 第 | 1497316294139 |
+| 1 | 1497316294139 |
 | 2 | 1497316299158
 | 3 | 1497316304178
 | 4 | 1497316309204

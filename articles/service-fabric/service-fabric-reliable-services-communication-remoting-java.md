@@ -14,11 +14,11 @@ ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
 ms.openlocfilehash: 51c8c689bd3fe3e8967bab77e776ad02f9cb59f1
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667960"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62123629"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>通过 Reliable Services 在 Java 中进行服务远程处理
 > [!div class="op_single_selector"]

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: memccror
 ms.openlocfilehash: 861c68ae8163e0ba8c2af2a3d96153ac3e84855f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978130"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60803218"
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>规模集中的低优先级 VM（预览版）
 
@@ -30,11 +30,11 @@ ms.locfileid: "55978130"
 
 ## <a name="eviction-policy"></a>逐出策略
 
-如果创建低优先级规模集，可将收回策略设置为“解除分配”（默认值）或“删除”。 
+如果创建低优先级规模集，可将收回策略设置为“解除分配”（默认值）或“删除”   。 
 
-“解除分配”策略可将已收回的 VM 移到已停止解除分配的状态，以允许重新部署收回的实例。 但是，不保证分配将成功。 已解除分配的 VM 将计入规模集实例配额，基础磁盘仍会产生费用。 
+“解除分配”策略可将已收回的 VM 移到已停止解除分配的状态，以允许重新部署收回的实例  。 但是，不保证分配将成功。 已解除分配的 VM 将计入规模集实例配额，基础磁盘仍会产生费用。 
 
-如果希望在收回低优先级规模集中的 VM 后将其删除，可以将收回策略设置为删除。 将逐出策略设置为删除后，可以通过增大规模集实例计数属性来创建新的 VM。 逐出的 VM 会连同其基础磁盘一起删除，因此可以避免存储费用。 还可以使用规模集的自动缩放功能来自动尝试补偿逐出的 VM，但是，无法保证分配成功。 我们建议仅在将逐出策略设置为删除时，才对低优先级规模集使用自动缩放功能，以免产生磁盘费用和达到配额限制。 
+如果希望在收回低优先级规模集中的 VM 后将其删除，可以将收回策略设置为删除  。 将逐出策略设置为删除后，可以通过增大规模集实例计数属性来创建新的 VM。 逐出的 VM 会连同其基础磁盘一起删除，因此可以避免存储费用。 还可以使用规模集的自动缩放功能来自动尝试补偿逐出的 VM，但是，无法保证分配成功。 我们建议仅在将逐出策略设置为删除时，才对低优先级规模集使用自动缩放功能，以免产生磁盘费用和达到配额限制。 
 
 > [!NOTE]
 > 在预览期，可以使用 [Azure 门户](#use-the-azure-portal)和 [Azure 资源管理器模板](#use-azure-resource-manager-templates)设置收回策略。 
@@ -82,11 +82,11 @@ $vmssConfig = New-AzVmssConfig `
 
 ## <a name="use-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
-创建使用低优先级 VM 的规模集的过程与适用于 [Linux](quick-create-template-linux.md) 或 [Windows](quick-create-template-windows.md) 的入门文章中详述的过程相同。 在模板中将“priority”属性添加到 *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* 资源类型，并指定*Low* 作为值。 请务必使用 2018-03-01 或更高版本的 API。 
+创建使用低优先级 VM 的规模集的过程与适用于 [Linux](quick-create-template-linux.md) 或 [Windows](quick-create-template-windows.md) 的入门文章中详述的过程相同。 在模板中将“priority”属性添加到 *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* 资源类型，并指定*Low* 作为值。 请务必使用 2018-03-01 或更高版本的 API  。 
 
 若要将逐出策略设置为删除，请添加“evictionPolicy”参数并将其设置为 *delete*。
 
-以下示例在 *West Central US*（美国中西部）位置创建名为 *myScaleSet* 的 Linux 低优先级规模集，逐出时会删除该规模集中的 VM：
+以下示例在 *West Central US*（美国中西部）位置创建名为 *myScaleSet* 的 Linux 低优先级规模集，逐出时会删除该规模集中的 VM： 
 
 ```json
 {

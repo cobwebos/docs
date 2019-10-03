@@ -10,11 +10,11 @@ ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: 754d2a246a86585e9f05f8a070c51e158f73affd
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342589"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60253595"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>监视部署的托管应用程序实例
 
@@ -26,7 +26,7 @@ ms.locfileid: "53342589"
 
    ![创建托管应用程序](./media/monitor-managed-application-portal/select-managed-application.png)
 
-1. 选择“资源运行状况”。
+1. 选择“资源运行状况”  。
 
    ![选择资源运行状况](./media/monitor-managed-application-portal/select-resource-health.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "53342589"
 
    ![查看警报](./media/monitor-managed-application-portal/view-alerts.png)
 
-1. 若要添加警报规则，请选择“+ 新建警报规则”。
+1. 若要添加警报规则，请选择“+ 新建警报规则”  。
 
    ![创建警报](./media/monitor-managed-application-portal/create-new-alert.png)
 

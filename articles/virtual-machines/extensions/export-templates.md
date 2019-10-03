@@ -3,28 +3,27 @@ title: 导出包含 VM 扩展的 Azure 资源组 | Microsoft 文档
 description: 导出包含虚拟机扩展的 Resource Manager 模板。
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 7f4e2ca6-f1c7-4f59-a2cc-8f63132de279
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
-ms.author: roiyz
-ms.openlocfilehash: f56cfeeede393dbdb9632ea4120d3a81e89f3f7c
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
-ms.translationtype: HT
+ms.author: akjosh
+ms.openlocfilehash: 652ed732a7fe8f08e48aba6fc4bd1b52164d1fa0
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451963"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169060"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>导出包含 VM 扩展的资源组
 
-可以将 Azure 资源组导出到新的 Resource Manager 模板，然后重新部署该模板。 导出过程会对现有资源进行解释，并创建一个 Resource Manager 模板，该模板在部署后会生成类似的资源组。 针对包含虚拟机扩展的资源组使用资源组导出选项时，需考虑多个事项，例如扩展兼容性和受保护设置。
+可以将 Azure 资源组导出到新的 Resource Manager 模板，并重新部署该模板。 导出过程会对现有资源进行解释，并创建一个 Resource Manager 模板，该模板在部署后会生成类似的资源组。 针对包含虚拟机扩展的资源组使用资源组导出选项时，需考虑多个事项，例如扩展兼容性和受保护设置。
 
 本文档详细介绍在使用虚拟机扩展（包括支持的扩展的列表）时如何实施资源组导出过程，以及如何处理受保护的数据。
 
@@ -34,7 +33,7 @@ ms.locfileid: "47451963"
 
 以下扩展可以使用自动化脚本功能导出。
 
-| 分机 ||||
+| 扩展 ||||
 |---|---|---|---|
 | Acronis 备份 | Datadog Windows 代理 | 针对 Linux 进行的 OS 修补 | VM 快照 Linux
 | Acronis 备份 Linux | Docker 扩展 | Puppet 代理 |

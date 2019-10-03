@@ -2,20 +2,20 @@
 title: Azure 流量管理器 - 流量路由方法
 description: 本文讲解流量管理器使用的各种流量路由方法。
 services: traffic-manager
-author: KumudD
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: kumud
-ms.openlocfilehash: 3cabfeda458011c5d3006642085f78dc74f3451e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.author: allensu
+ms.openlocfilehash: 06ce7fb5d18920be6f71821b034dc13061c60032
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054718"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051460"
 ---
 # <a name="traffic-manager-routing-methods"></a>流量管理器路由方法
 
@@ -33,7 +33,7 @@ Azure 流量管理器支持使用六种流量路由方法来确定如何将网�
 
 所有流量管理器配置文件都包括监视终结点运行状况以及终结点自动故障转移的设置。 有关详细信息，请参阅[流量管理器终结点监视](traffic-manager-monitoring.md)。 一个流量管理器配置文件只能使用一种流量路由方法。 可以随时为配置文件选择其他流量路由方法。 一分钟内即可应用所做的更改，不会导致停机。 可以通过嵌套式流量管理器配置文件来组合使用多种流量路由方法。 使用嵌套可以启用复杂且灵活的流量路由配置，满足更大、更复杂应用程序的需求。 有关详细信息，请参阅[嵌套式流量管理器配置文件](traffic-manager-nested-profiles.md)。
 
-## <a name = "priority"></a>优先级流量路由方法
+## <a name = "priority"></a>“优先级”流量路由方法
 
 组织往往会提供一个或多个备份服务来防范主服务发生故障，从而确保其服务的可靠性。 Azure 客户可以通过“优先级”流量路由方法来轻松实现此故障转移模式。
 
@@ -45,7 +45,7 @@ Azure 流量管理器支持使用六种流量路由方法来确定如何将网�
 
 在 Azure 资源管理器中，可以使用每个终结点的“priority”属性显式配置终结点优先级。 此属性是一个介于 1 和 1000 之间的值。 值越小，优先级越高。 终结点不能共享优先级值。 该属性的设置是可选的。 如果省略该属性，会根据终结点顺序使用默认优先级。
 
-## <a name = "weighted"></a>加权流量路由方法
+## <a name = "weighted"></a>“加权”流量路由方法
 使用“加权”流量路由方法可以均匀分布流量，或使用预定义的权重。
 
 ![Azure 流量管理器的“加权”流量路由方法](media/traffic-manager-routing-methods/weighted.png)
@@ -123,8 +123,38 @@ Azure 流量管理器支持使用六种流量路由方法来确定如何将网�
 
 如[流量管理器工作原理](traffic-manager-how-it-works.md)中所述，流量管理器不会直接从客户端接收 DNS 查询。 DNS 查询来自客户端配置使用的递归 DNS 服务。 因此，用于确定区域的 IP 地址不是客户端的 IP 地址，而是递归 DNS 服务的 IP 地址。 在实践中，此 IP 地址是客户端的适当代理。
 
+### <a name="faqs"></a>常见问题
+
+* [地理路由有哪些用例？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
+
+* [如何实现决定是否应使用性能路由方法或地理路由方法？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
+
+* [用于地理路由的流量管理器支持哪些区域？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
+
+* [流量管理器如何确定用户从何处进行查询？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
+
+* [是否保证流量管理器在每种情况下都可以正确确定用户的确切地理位置？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
+
+* [终结点是否需要与配置用于地理路由的终结点位于同一区域中？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
+
+* [是否可以将地理区域分配给配置文件中未配置为进行地理路由的终结点？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
+
+* [为什么我在尝试将现有配置文件的路由方法更改为地理时遇到错误？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
+
+* [为什么强烈建议客户创建嵌套配置文件而不是启用了地理路由的配置文件中的终结点？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
+
+* [对于支持此路由类型的 API 版本, 是否存在任何限制？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
+
 ## <a name = "multivalue"></a>多值流量路由方法
-**多值**流量路由方法允许你在单个 DNS 查询响应中获得多个正常运行的终结点。 这使得调用方在返回的某个终结点无法响应时能够通过其他终结点进行重试。 此模式可以提高服务可用性，并降低与新 DNS 查询获取正常运行的终结点相关的延迟。 只有当所有终结点的类型都是“外部”并且指定为 IPv4 或 IPv6 地址时，多值路由方法才有效。 当收到对此配置文件的查询时，会根据可配置的最大返回计数返回所有正常运行的终结点。
+**多值**流量路由方法允许你在单个 DNS 查询响应中获得多个正常运行的终结点。 这使得调用方能够在返回的终结点无法响应的情况下, 使用其他终结点进行客户端重试。 此模式可以提高服务可用性，并降低与新 DNS 查询获取正常运行的终结点相关的延迟。 只有当所有终结点的类型都是“外部”并且指定为 IPv4 或 IPv6 地址时，多值路由方法才有效。 当收到对此配置文件的查询时，会根据可配置的最大返回计数返回所有正常运行的终结点。
+
+### <a name="faqs"></a>常见问题
+
+* [多值路由有哪些用例？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
+
+* [使用多值路由时返回多少个终结点？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
+
+* [使用多值路由时, 是否会获得相同的终结点集？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
 
 ## <a name = "subnet"></a>子网流量路由方法
 **子网**流量路由方法允许你将一个最终用户 IP 地址范围集映射到配置文件中的特定终结点。 此后，如果流量管理器收到针对该配置文件的 DNS 查询，则它将检查该请求的源 IP 地址（大多数情况下，这是调用方使用的 DNS 解析程序的传出 IP 地址），确定它映射到哪个终结点，并在查询响应中返回该终结点。 
@@ -133,6 +163,19 @@ Azure 流量管理器支持使用六种流量路由方法来确定如何将网�
 如果定义一个没有地址范围的终结点，则该终结点将用作回退终结点并从任何剩余的子网获取流量。 如果未包含回退终结点，则流量管理器会针对任何未定义的范围发送 NODATA 响应。 因此，强烈建议你定义回退终结点，或者确保在终结点上指定所有可能的 IP 范围。
 
 子网路由可以用来为从特定 IP 空间进行连接的用户提供不同的体验。 例如，使用子网路由，客户可以将来自其公司的所有请求路由到一个不同的终结点，他们可以在这里测试其应用的仅限内部版本。 另一种情况是，你可能希望为从特定 ISP 进行连接的用户提供不同的体验（例如，阻止来自给定 ISP 的用户）。
+
+### <a name="faqs"></a>常见问题
+
+* [子网路由有哪些用途？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
+
+* [流量管理器如何知道最终用户的 IP 地址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
+
+* [使用子网路由时如何指定 IP 地址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
+
+* [使用子网路由时如何指定回退终结点？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
+
+* [如果子网路由类型配置文件中禁用了终结点, 会发生什么情况？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
+
 
 ## <a name="next-steps"></a>后续步骤
 

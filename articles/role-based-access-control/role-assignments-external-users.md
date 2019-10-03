@@ -1,5 +1,5 @@
 ---
-title: 使用 RBAC 管理外部用户对 Azure 资源的访问 | Microsoft Docs
+title: 使用 RBAC 管理外部来宾用户对 Azure 资源的访问权限 |Microsoft Docs
 description: 了解如何使用基于角色的访问控制 (RBAC) 管理组织外部用户对 Azure 资源的访问。
 services: active-directory
 documentationcenter: ''
@@ -12,123 +12,198 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/20/2018
+ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 91548a4df4a77623978ea4bcb214b76427c026a6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5ed9088bcc5776fe1fb0d09e6ae771adabb1b879
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012021"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802691"
 ---
-# <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>使用 RBAC 管理外部用户对 Azure 资源的访问
+# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>使用 RBAC 管理外部来宾用户对 Azure 资源的访问权限
 
-基于角色的访问控制 (RBAC) 可以为大型组织和中小企业提供更好的安全管理，与中小企业合作的外部协作者、供应商或自由职业者需要访问你环境中的特定资源，但不一定需要访问整个基础架构或任何与计费相关的区域。 RBAC 允许灵活拥有管理员帐户（订阅级别的服务管理员角色）管理的 Azure 订阅，并邀请多个用户在同一个订阅下工作，但不为他们分配任何管理权限。
+基于角色的访问控制（RBAC）为大型组织以及与外部协作者、供应商或需要访问您的环境中的特定资源的兼职人员合作的中小型企业提供更好的安全管理，但不一定是整个基础结构或任何计费相关范围。 你可以使用[AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md)中的功能与外部来宾用户合作，你可以使用 RBAC 仅授予来宾用户在你的环境中所需的权限。
 
-> [!NOTE]
-> 从 Office 365 管理员中心预配的 Office 365 订阅或 Azure Active Directory 许可证（例如：从 Microsoft 365 管理中心内不符合 RBAC 的使用预配到 Azure Active Directory 的访问权限）。
+## <a name="when-would-you-invite-guest-users"></a>何时邀请来宾用户？
 
-## <a name="assign-rbac-roles-at-the-subscription-scope"></a>在订阅范围分配 RBAC 角色
+下面是几个示例方案，你可能会向组织邀请来宾用户并授予权限：
 
-使用 RBAC 时，有两个（但不限于）常见的示例：
+- 允许仅拥有电子邮件帐户的外部个体私营供应商访问项目的 Azure 资源。
+- 允许外部合作伙伴管理某些资源或整个订阅。
+- 允许组织外的支持工程师（如 Microsoft 支持部门）临时访问 Azure 资源，以解决问题。
 
-* 邀请组织外部的用户（不属于管理员用户的 Azure Active Directory 租户）管理特定的资源或整个订阅
-* 与组织内部的、但属于不同团队或组的用户（属于用户的 Azure Active Directory 租户）合作，这些团队或组需要对环境中的整个订阅或者特定资源组或资源范围拥有精细访问权限
+## <a name="permission-differences-between-member-users-and-guest-users"></a>成员用户和来宾用户之间的权限差异
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>为 Azure Active Directory 外部的用户授予订阅级访问权限
+目录的本机成员（成员用户）具有的权限不同于作为 B2B 协作来宾（来宾用户）从另一个目录邀请的用户。 例如，在来宾用户具有受限的目录权限的情况下，用户可以读取几乎所有的目录信息。 有关成员用户和来宾用户的详细信息，请参阅[Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。
 
-RBAC 角色只能由订阅的“所有者”授予。 因此，管理员必须使用已预先分配有此角色或已创建 Azure 订阅的用户身份登录。
+## <a name="add-a-guest-user-to-your-directory"></a>将来宾用户添加到目录
 
-在 Azure 门户中以管理员身份登录后，选择“订阅”，并选择所需的订阅。
-![Azure 门户中的订阅边栏选项卡](./media/role-assignments-external-users/0.png)默认情况下，如果管理员用户购买了 Azure 订阅，则该用户会显示为“帐户管理员”，即订阅角色。 有关 Azure 订阅角色的详细信息，请参阅[添加或更改 Azure 订阅管理员](../billing/billing-add-change-azure-subscription-administrator.md)。
+按照以下步骤，使用 "Azure Active Directory" 页将来宾用户添加到目录。
 
-在此示例中，用户“alflanigan@outlook.com”是 AAD 租户“默认租户 Azure”中“免费试用”订阅的“所有者”。 由于此用户是使用最初的 Microsoft 帐户“Outlook”（Microsoft 帐户 = Outlook、Live 等等）创建 Azure 订阅的用户，因此，添加到此租户的其他所有用户的默认域名将是“\@alflaniganuoutlook.onmicrosoft.com”。 根据设计，新域的语法格式是将创建租户的用户的用户名和域名组合在一起，并加上扩展 **.onmicrosoft.com**。
-此外，在为新租户添加并验证自定义域名后，用户可以在租户中使用该域名登录。 有关如何在 Azure Active Directory 租户中验证自定义域名的详细信息，请参阅[将自定义域名添加到目录](../active-directory/fundamentals/add-custom-domain.md)。
+1. 确保你的组织的外部协作设置已配置为允许你邀请来宾。 有关详细信息，请参阅[启用 B2B 外部协作和管理可以邀请来宾的人员](../active-directory/b2b/delegate-invitations.md)。
 
-在此示例中，“默认租户 Azure”目录仅包含域名为“\@alflanigan.onmicrosoft.com”的用户。
+1. 在 Azure 门户中，单击 " **Azure Active Directory** > **用户** > " "**新建来宾用户**"。
 
-选择订阅后，管理员用户必须单击“访问控制(IAM)”，并单击“添加新角色”。
+    ![Azure 门户中的新来宾用户功能](./media/role-assignments-external-users/invite-guest-user.png)
 
-![Azure 门户中的访问控制 IAM 功能](./media/role-assignments-external-users/1.png)
+1. 按照步骤添加新的来宾用户。 有关详细信息，请参阅[在 Azure 门户中添加 AZURE ACTIVE DIRECTORY B2B 协作用户](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory)。
 
-![在 Azure 门户的访问控制 IAM 功能中添加新用户](./media/role-assignments-external-users/2.png)
+将来宾用户添加到目录后，你可以向来宾用户发送指向共享应用程序的直接链接，或者来宾用户可以单击邀请电子邮件中的兑换 URL。
 
-下一步是选择要分配的角色，以及要将 RBAC 角色分配到的用户。 在“角色”下拉菜单中，管理员用户只会看到 Azure 中提供的内置 RBAC 角色。 有关每个角色及其可分配范围的更详细的说明，请参阅 [Azure 资源的内置角色](built-in-roles.md)。
+![来宾用户邀请电子邮件](./media/role-assignments-external-users/invite-email.png)
 
-然后，管理员用户需要添加外部用户的电子邮件地址。 预期的行为不在现有租户中显示外部用户。 邀请外部用户后，“订阅”>“访问控制(IAM)”下面会显示该用户，以及当前在订阅范围分配有 RBAC 角色的所有当前用户。
+要使来宾用户能够访问你的目录，必须完成邀请。
 
-![将权限添加到新的 RBAC 角色](./media/role-assignments-external-users/3.png)
+![来宾用户邀请审阅权限](./media/role-assignments-external-users/invite-review-permissions.png)
 
-![列出订阅级别的 RBAC 角色](./media/role-assignments-external-users/4.png)
+有关邀请过程的详细信息，请参阅[AZURE ACTIVE DIRECTORY B2B 协作邀请兑换](../active-directory/b2b/redemption-experience.md)。
 
-已邀请用户“chessercarlton@gmail.com”成为“免费试用”订阅的“所有者”。 发送邀请后，外部用户将收到包含激活链接的电子邮件确认。
-![RBAC 角色的电子邮件邀请](./media/role-assignments-external-users/5.png)
+## <a name="grant-access-to-a-guest-user"></a>向来宾用户授予访问权限
 
-由于在组织外部，新用户在“默认租户 Azure”目录中没有任何现有的属性。 在外部用户同意记录在与其分配有角色的订阅关联的目录中后，会创建这些属性。
+在 RBAC 中，若要授予访问权限，请分配角色。 若要向来宾用户授予访问权限，请执行与成员用户、组、服务主体或托管标识[相同的步骤](role-assignments-portal.md#add-a-role-assignment)。 请按照以下步骤向不同范围内的来宾用户授予访问权限。
 
-![RBAC 角色的电子邮件邀请消息](./media/role-assignments-external-users/6.png)
+1. 在 Azure 门户中，单击“所有服务”。
 
-从现在开始，该外部用户会显示在 Azure Active Directory 租户中，可以在 Azure 门户中查看该用户。
+1.  选择访问应用到的资源集，也称为 "作用域"。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源。
 
-![Azure Active Directory Azure 门户中的用户边栏选项卡](./media/role-assignments-external-users/7.png)
+1. 单击特定的资源。
 
-在“用户”视图中，可以通过 Azure 门户中的不同图标类型识别外部用户。
+1. 单击“访问控制(IAM)”。
 
-但是，在“订阅”范围向外部用户授予“所有者”或“参与者”访问权限并不允许他们访问管理员用户的目录，除非“全局管理员”允许访问。 在用户属性中，可以标识包含“成员”和“来宾”这两个通用参数的“用户类型”。 成员是已在目录中注册的用户，而来宾是来自外部源的、受邀加入目录的用户。 有关详细信息，请参阅 [Azure Active Directory 管理员如何添加 B2B 协作用户](../active-directory/active-directory-b2b-admin-add-users.md)。
+    以下屏幕截图显示了资源组的 "访问控制（IAM）" 边栏选项卡的示例。 如果在此处进行任何访问控制更改，这些更改仅适用于资源组。
 
-> [!NOTE]
-> 请确保在门户中输入凭据后，外部用户选择要登录到的正确目录。 同一个用户可以访问多个目录，并且可以选择其中的一个目录：在 Azure 门户中单击右上角的用户名，并从下拉列表中选择相应的目录。
+    ![资源组的“访问控制(IAM)”边栏选项卡](./media/role-assignments-external-users/access-control-resource-group.png)
 
-成为目录中的来宾后，外部用户可以管理 Azure 订阅的所有资源，但无法访问该目录。
+1. 单击“角色分配”选项卡以查看在此范围内的所有角色分配。
 
-![Azure Active Directory Azure 门户中受限的访问权限](./media/role-assignments-external-users/9.png)
+1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。
 
-Azure Active Directory 与 Azure 订阅之间不像其他 Azure 资源（例如：虚拟机、虚拟网络、Web 应用、存储等）与 Azure 订阅之间一样存在子-父关系。 后者都是在 Azure 订阅下创建、管理和计费的，而 Azure 订阅用于管理对 Azure 目录的访问。 有关详细信息，请参阅 [Azure 订阅与 Azure AD 的关系](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+    如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-在所有内置 RBAC 角色中，“所有者”和“参与者”提供对环境中所有资源的完全管理访问权限，两者的区别在于，“参与者”无法创建和删除新的 RBAC 角色。 其他内置角色（例如“虚拟机参与者”）只提供对按名称指定的资源的完全管理访问权限，不管这些角色是在哪个**资源组**中创建的。
+    ![添加菜单](./media/role-assignments-external-users/add-menu.png)
 
-在订阅级别分配“虚拟机参与者”内置 RBAC 角色意味着分配有该角色的用户：
+1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。
 
-* 可以查看所有虚拟机，不管这些虚拟机的部署日期及其所属的资源组是什么
-* 对订阅中的虚拟机拥有完全管理访问权限
-* 无法查看订阅中的其他任何资源类型
-* 从计费角度无法操作任何更改
+1. 在 "**选择**" 列表中，选择 "来宾用户"。 如果在列表中看不到用户，则可以在 "**选择**" 框中键入，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
 
-## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>将内置的 RBAC 角色分配到外部用户
+   ![“添加角色分配”窗格](./media/role-assignments-external-users/add-role-assignment.png)
 
-针对此项测试中的不同方案，外部用户“alflanigan@gmail.com”将添加为“虚拟机参与者”。
+1. 单击 "**保存**" 可在所选作用域分配角色。
 
-![虚拟机参与者内置角色](./media/role-assignments-external-users/11.png)
+    ![虚拟机参与者的角色分配](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-使用此内置角色的此外部用户的正常行为是仅查看和管理虚拟机，以及部署时所需的仅限 Resource Manager 的相邻资源。 按照设计，这些有限的角色仅提供对在 Azure 门户中创建的其对应资源的访问权限。
+## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>向来宾用户授予对你的目录的访问权限
 
-![Azure 门户中的虚拟机参与者角色概览](./media/role-assignments-external-users/12.png)
+在 RBAC 中，若要授予访问权限，请分配角色。 若要向来宾用户授予访问权限，请执行与成员用户、组、服务主体或托管标识[相同的步骤](role-assignments-portal.md#add-a-role-assignment)。
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-in-the-same-directory"></a>为同一目录中的用户授予订阅级访问权限
+如果来宾用户还不在你的目录中，你可以直接从 "添加角色分配" 窗格邀请用户。
 
-无论是从授予 RBAC 角色的管理角度，还是将授予用户对角色的访问权限的角度来看，流程都与添加外部用户相同。 此处的差别在于，受邀用户不会收到任何电子邮件邀请，因为订阅中的所有资源范围只有在登录后才会显示在仪表板中。
+1. 在 Azure 门户中，单击“所有服务”。
 
-## <a name="assign-rbac-roles-at-the-resource-group-scope"></a>在资源组范围分配 RBAC 角色
+1.  选择访问应用到的资源集，也称为 "作用域"。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源。
 
-对于外部和内部（属于同一个目录）这两种用户类型，在**资源组**范围分配 RBAC 角色的过程与在订阅级别分配角色的过程相同。 分配有 RBAC 角色的用户只能通过 Azure 门户中的“资源组”图标查看其环境中他们有权访问的资源组。
+1. 单击特定的资源。
 
-## <a name="assign-rbac-roles-at-the-resource-scope"></a>在资源范围分配 RBAC 角色
+1. 单击“访问控制(IAM)”。
 
-在 Azure 中的资源范围分配 RBAC 角色的过程，与在订阅级别或资源组级别分配该角色的过程相同，这两种方案都遵循相同的工作流。 同样，分配有 RBAC 角色的用户只能在“所有资源”选项卡或直接在仪表板中查看他们有权访问的项。
+1. 单击“角色分配”选项卡以查看在此范围内的所有角色分配。
 
-对于资源组范围或资源范围的 RBAC，一个重要的方面是，用户必须确保登录到正确的目录。
+1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。
 
-![Azure 门户中的目录登录](./media/role-assignments-external-users/13.png)
+    ![添加菜单](./media/role-assignments-external-users/add-menu.png)
 
-## <a name="assign-rbac-roles-for-an-azure-active-directory-group"></a>为 Azure Active Directory 组分配 RBAC 角色
+1. 在“角色”下拉列表中选择一个角色，例如“虚拟机参与者”。
 
-在 Azure 中的三个不同范围使用 RBAC 的所有方案都提供以已分配用户身份管理和部署各种资源的特权，而无需管理个人订阅。 不管 RBAC 角色是针对订阅、资源组还是资源范围分配的，已分配用户创建的其他所有资源都会根据用户有权访问的某个 Azure 订阅进行计费。 这样，对整个 Azure 订阅拥有计费管理员权限的用户便可以获得完整的消耗概况，不管资源由谁管理。
+1. 在 "**选择**" 列表中，键入要邀请的人员的电子邮件地址，并选择该用户。
 
-对于大型组织，可通过不同的方式针对 Azure Active Directory 组应用 RBAC 角色，同时考虑到管理员用户是否想要针对团队或整个部门而不是每个用户授予精细访问权限，因此可将此方案视为一个极具时间和管理效率的选项。 为了演示此示例，我们已在订阅级别将“参与者”角色添加到租户中的某个组。
+   ![在 "添加角色分配" 窗格中邀请来宾用户](./media/role-assignments-external-users/add-role-assignment-new-guest.png)
 
-![为 AAD 组添加 RBAC 角色](./media/role-assignments-external-users/14.png)
+1. 单击 "**保存**" 将来宾用户添加到目录，分配角色并发送邀请。
 
-这些组是只在 Azure Active Directory 中预配和管理的安全组。
+    几分钟后，你将看到有关角色分配和邀请信息的通知。
 
+    ![角色分配和受邀用户通知](./media/role-assignments-external-users/invited-user-notification.png)
+
+1. 若要手动邀请来宾用户，请右键单击并复制通知中的 "邀请" 链接。 不要单击邀请链接，因为它会启动邀请。
+
+    邀请链接将采用以下格式：
+
+    `https://invitations.microsoft.com/redeem/...`
+
+1. 向来宾用户发送邀请链接以完成邀请。
+
+    有关邀请过程的详细信息，请参阅[AZURE ACTIVE DIRECTORY B2B 协作邀请兑换](../active-directory/b2b/redemption-experience.md)。
+
+## <a name="remove-a-guest-user-from-your-directory"></a>从目录中删除来宾用户
+
+从目录中删除来宾用户之前，应该先删除该来宾用户的所有角色分配。 请按照以下步骤从目录中删除来宾用户。
+
+1. 在作用域（例如管理组、订阅、资源组或资源）中打开**访问控制（IAM）** ，其中 guest 用户具有角色分配。
+
+1. 单击 "**角色分配**" 选项卡以查看所有角色分配。
+
+1. 在角色分配列表中，在包含要删除的角色分配的来宾用户旁边添加复选标记。
+
+   ![删除角色分配](./media/role-assignments-external-users/remove-role-assignment-select.png)
+
+1. 单击“删除”。
+
+   ![“删除角色分配”消息](./media/role-assignments-external-users/remove-role-assignment.png)
+
+1. 在显示的“删除角色分配”消息中，单击“是”。
+
+1. 在左侧导航栏中，单击 " **Azure Active Directory** > **用户**"。
+
+1. 单击要删除的来宾用户。
+
+1. 单击“删除”。
+
+   ![删除来宾用户](./media/role-assignments-external-users/delete-guest-user.png)
+
+1. 在出现的删除消息中单击“是”。
+
+## <a name="troubleshoot"></a>故障排除
+
+### <a name="guest-user-cannot-browse-the-directory"></a>来宾用户无法浏览目录
+
+来宾用户的目录权限受到限制。 例如，来宾用户无法浏览目录，也无法搜索组或应用程序。 有关详细信息，请参阅[Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。
+
+![来宾用户无法浏览目录中的用户](./media/role-assignments-external-users/directory-no-users.png)
+
+如果来宾用户在目录中需要额外的权限，则可以向来宾用户分配目录角色。 如果你确实希望来宾用户对目录拥有完全读取访问权限，则可以在 Azure AD 中将来宾用户添加到[目录读者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)角色。 有关详细信息，请参阅[从 Azure Active Directory 租户中的合作伙伴组织向用户授予权限](../active-directory/b2b/add-guest-to-role.md)。
+
+![分配目录读者角色](./media/role-assignments-external-users/directory-roles.png)
+
+### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>来宾用户不能浏览用户、组或服务主体来分配角色
+
+来宾用户的目录权限受到限制。 即使来宾用户是作用域的[所有者](built-in-roles.md#owner)，如果他们尝试创建角色分配来向其他人授予访问权限，他们也无法浏览用户、组或服务主体的列表。
+
+![来宾用户无法浏览安全主体来分配角色](./media/role-assignments-external-users/directory-no-browse.png)
+
+如果来宾用户在目录中知道某人的确切登录名，则他们可以授予访问权限。 如果你确实希望来宾用户对目录拥有完全读取访问权限，则可以在 Azure AD 中将来宾用户添加到[目录读者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)角色。 有关详细信息，请参阅[从 Azure Active Directory 租户中的合作伙伴组织向用户授予权限](../active-directory/b2b/add-guest-to-role.md)。
+
+### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>来宾用户无法注册应用程序或创建服务主体
+
+来宾用户的目录权限受到限制。 如果来宾用户需要能够注册应用程序或创建服务主体，则可以将来宾用户添加到 Azure AD 中的[应用程序开发者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)角色。 有关详细信息，请参阅[从 Azure Active Directory 租户中的合作伙伴组织向用户授予权限](../active-directory/b2b/add-guest-to-role.md)。
+
+![来宾用户无法注册应用程序](./media/role-assignments-external-users/directory-access-denied.png)
+
+### <a name="guest-user-does-not-see-the-new-directory"></a>来宾用户看不到新目录
+
+如果已向来宾用户授予对某个目录的访问权限，但他们在尝试在 "**目录 + 订阅**" 窗格中切换时看不到 Azure 门户中列出的新目录，请确保来宾用户已完成邀请。 有关邀请过程的详细信息，请参阅[AZURE ACTIVE DIRECTORY B2B 协作邀请兑换](../active-directory/b2b/redemption-experience.md)。
+
+### <a name="guest-user-does-not-see-resources"></a>来宾用户看不到资源
+
+如果已向来宾用户授予对某个目录的访问权限，但他们在 Azure 门户中看不到他们有权访问的资源，请确保来宾用户选择了正确的目录。 来宾用户可能有权访问多个目录。 若要切换目录，请在左上方单击 "**目录 + 订阅**"，然后单击相应的目录。
+
+![目录 + 订阅窗格 Azure 门户](./media/role-assignments-external-users/directory-subscription.png)
+
+## <a name="next-steps"></a>后续步骤
+
+- [在 Azure 门户中添加 Azure Active Directory B2B 协作用户](../active-directory/b2b/add-users-administrator.md)
+- [Azure Active Directory B2B 协作用户的属性](../active-directory/b2b/user-properties.md)
+- [B2B 协作邀请电子邮件的元素-Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
+- [添加来宾用户作为共同管理员](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)

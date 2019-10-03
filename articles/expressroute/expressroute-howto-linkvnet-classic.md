@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: cherylmc
 ms.openlocfilehash: 21676ff329613f792d6570713f044bb7440e58d4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045352"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60370622"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 将虚拟网络连接到 ExpressRoute 线路（经典）
 > [!div class="op_single_selector"]
@@ -112,13 +112,13 @@ Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VN
 ![跨订阅连接](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
 ### <a name="administration"></a>管理
-“线路所有者”是在其中创建了 ExpressRoute 线路的订阅的管理员/共同管理员。 线路所有者可以授权其他订阅的管理员/共同管理员（称为线路用户）使用他们拥有的专用线路。 有权使用组织的 ExpressRoute 线路的线路用户在获得授权后可以将其订阅中的虚拟网络链接到 ExpressRoute 线路。
+“线路所有者”  是在其中创建了 ExpressRoute 线路的订阅的管理员/共同管理员。 线路所有者可以授权其他订阅的管理员/共同管理员（称为线路用户  ）使用他们拥有的专用线路。 有权使用组织的 ExpressRoute 线路的线路用户在获得授权后可以将其订阅中的虚拟网络链接到 ExpressRoute 线路。
 
 线路所有者有权随时修改和撤消授权。 撤消授权将导致从撤消其访问权限的订阅中删除所有链接。
 
 ### <a name="circuit-owner-operations"></a>线路所有者操作
 
-“创建授权”
+“创建授权” 
 
 线路所有者可授权其他订阅的管理员使用指定的线路。 在下面的示例中，线路 (Contoso IT) 管理员允许另一个订阅（开发-测试）的管理员最多将两个虚拟网络链接到线路。 Contoso IT 管理员可以通过指定开发-测试 Microsoft ID 来启用此功能。 该 cmdlet 不会将电子邮件发送到指定的 Microsoft ID。 线路所有者需要显式通知其他订阅所有者：授权已完成。
 

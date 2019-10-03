@@ -3,23 +3,19 @@ title: 在 Azure 云服务角色上安装 .NET | Microsoft Docs
 description: 本文介绍如何在云服务 Web 角色和辅助角色上手动安装 .NET Framework
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 8d1243dc-879c-4d1f-9ed0-eecd1f6a6653
+author: georgewallace
+manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/22/2018
-ms.author: jeconnoc
-ms.openlocfilehash: 4b6aeb2968d7642881535753cb6c8434cfe10886
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: gwallace
+ms.openlocfilehash: 25151f154b9806646406639df3efd7616e53f6bf
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534065"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359630"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>在 Azure 云服务角色上安装 .NET
 本文介绍如何安装不随 Azure 来宾 OS 一起提供的 .NET Framework 版本。 可使用来宾 OS 上的 .NET 配置云服务 web 角色和辅助角色。
@@ -34,6 +30,7 @@ ms.locfileid: "57534065"
 ## <a name="add-the-net-installer-to-your-project"></a>将 .NET 安装程序添加到项目
 若要下载 .NET Framework 的 Web 安装程序，请选择想要安装的版本：
 
+* [.NET 4.8 Web 安装程序](https://dotnet.microsoft.com/download/thank-you/net48)
 * [.NET 4.7.2 Web 安装程序](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [.NET 4.6.2 Web 安装程序](https://www.microsoft.com/download/details.aspx?id=53345)
 
@@ -102,7 +99,8 @@ ms.locfileid: "57534065"
    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP471" ***** https://go.microsoft.com/fwlink/?LinkId=852095
    REM ***** To install .NET 4.7.2 set the variable netfx to "NDP472" ***** https://go.microsoft.com/fwlink/?LinkId=863262
    set netfx="NDP472"
-   
+   REM ***** To install .NET 4.8 set the variable netfx to "NDP48" ***** https://dotnet.microsoft.com/download/thank-you/net48
+      
    REM ***** Set script start timestamp *****
    set timehour=%time:~0,2%
    set timestamp=%date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2%
@@ -226,8 +224,8 @@ ms.locfileid: "57534065"
 
 ## <a name="additional-resources"></a>其他资源
 * [安装 .NET Framework][Installing the .NET Framework]
-* [确定安装的 .NET Framework 版本][How to: Determine Which .NET Framework Versions Are Installed]
-* [.NET Framework 安装故障排除][Troubleshooting .NET Framework Installations]
+* [确定安装了哪些 .NET Framework 版本][How to: Determine Which .NET Framework Versions Are Installed]
+* [.NET Framework 安装疑难解答][Troubleshooting .NET Framework Installations]
 
 [How to: Determine Which .NET Framework Versions Are Installed]: /dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
 [Installing the .NET Framework]: /dotnet/framework/install/guide-for-developers

@@ -3,15 +3,15 @@ title: 了解如何使用 Azure Cosmos DB SDK 调用存储过程、触发器和�
 description: 了解如何使用 Azure Cosmos DB SDK 注册和调用存储过程、触发器与用户定义的函数
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 12/08/2018
+ms.topic: conceptual
+ms.date: 09/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: d3ab0f78cc59c94a95aac6c067ad185476502f6c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 3cc144c1b8748710f0500b6ca2a418cd8bf5a2b7
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998618"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104834"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中注册和使用存储过程、触发器与用户定义的函数
 
@@ -26,9 +26,9 @@ Azure Cosmos DB 中的 SQL API 支持注册和调用以 JavaScript 编写的存�
 > [!NOTE]
 > 对于已分区的容器，在执行存储过程时，必须在请求选项中提供分区键值。 存储过程的范围始终限定为分区键。 存储过程看不到具有不同分区键值的项。 这一点也适用于触发器。
 
-### <a name="stored-procedures---net-sdk"></a>存储过程 - .NET SDK
+### <a name="stored-procedures---net-sdk-v2"></a>存储过程-.NET SDK V2
 
-以下示例演示如何使用 .NET SDK 注册存储过程：
+下面的示例演示如何使用 .NET SDK V2 注册存储过程：
 
 ```csharp
 string storedProcedureId = "spCreateToDoItem";
@@ -42,7 +42,7 @@ var response = await client.CreateStoredProcedureAsync(containerUri, newStoredPr
 StoredProcedure createdStoredProcedure = response.Resource;
 ```
 
-以下代码演示如何使用 .NET SDK 调用存储过程：
+下面的代码演示如何使用 .NET SDK V2 调用存储过程：
 
 ```csharp
 dynamic newItem = new
@@ -56,7 +56,32 @@ dynamic newItem = new
 Uri uri = UriFactory.CreateStoredProcedureUri("myDatabase", "myContainer", "spCreateToDoItem");
 RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("Personal") };
 var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
-var id = result.Response;
+```
+
+### <a name="stored-procedures---net-sdk-v3"></a>存储过程-.NET SDK V3
+
+下面的示例演示如何使用 .NET SDK V3 注册存储过程：
+
+```csharp
+StoredProcedureResponse storedProcedureResponse = await client.GetContainer("database", "container").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
+{
+    Id = "spCreateToDoItem",
+    Body = File.ReadAllText(@"..\js\spCreateToDoItem.js")
+});
+```
+
+下面的代码演示如何使用 .NET SDK V3 调用存储过程：
+
+```csharp
+dynamic newItem = new
+{
+    category = "Personal",
+    name = "Groceries",
+    description = "Pick up strawberries",
+    isComplete = false
+};
+
+var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItem);
 ```
 
 ### <a name="stored-procedures---java-sdk"></a>存储过程 - Java SDK
@@ -148,9 +173,9 @@ with open('../js/spCreateToDoItem.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 sproc_definition = {
-            'id': 'spCreateToDoItem',
-            'serverScript': file_contents,
-        }
+    'id': 'spCreateToDoItem',
+    'serverScript': file_contents,
+}
 sproc = client.CreateStoredProcedure(container_link, sproc_definition)
 ```
 
@@ -176,9 +201,9 @@ client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 > [!NOTE]
 > 即使以列表的形式传递触发器的名称，也仍只能对每个操作执行一个触发器。
 
-### <a name="pre-triggers---net-sdk"></a>前触发器 - .NET SDK
+### <a name="pre-triggers---net-sdk-v2"></a>预先触发器-.NET SDK V2
 
-以下代码演示如何使用 .NET SDK 注册前触发器：
+下面的代码演示如何使用 .NET SDK V2 注册预先触发器：
 
 ```csharp
 string triggerId = "trgPreValidateToDoItemTimestamp";
@@ -189,11 +214,11 @@ Trigger trigger = new Trigger
     TriggerOperation = TriggerOperation.Create,
     TriggerType = TriggerType.Pre
 };
-containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
+Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-以下代码演示如何使用 .NET SDK 调用前触发器：
+下面的代码演示如何使用 .NET SDK V2 调用预先触发器：
 
 ```csharp
 dynamic newItem = new
@@ -204,9 +229,37 @@ dynamic newItem = new
     isComplete = false
 };
 
-containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
+Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 RequestOptions requestOptions = new RequestOptions { PreTriggerInclude = new List<string> { "trgPreValidateToDoItemTimestamp" } };
 await client.CreateDocumentAsync(containerUri, newItem, requestOptions);
+```
+
+### <a name="pre-triggers---net-sdk-v3"></a>预先触发器-.NET SDK V3
+
+下面的代码演示如何使用 .NET SDK V3 注册预先触发器：
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
+{
+    Id = "trgPreValidateToDoItemTimestamp",
+    Body = File.ReadAllText("@..\js\trgPreValidateToDoItemTimestamp.js"),
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Pre
+});
+```
+
+下面的代码演示如何使用 .NET SDK V3 调用预先触发器：
+
+```csharp
+dynamic newItem = new
+{
+    category = "Personal",
+    name = "Groceries",
+    description = "Pick up strawberries",
+    isComplete = false
+};
+
+await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PreTriggers = new List<string> { "trgPreValidateToDoItemTimestamp" } });
 ```
 
 ### <a name="pre-triggers---java-sdk"></a>前触发器 - Java SDK
@@ -279,11 +332,11 @@ with open('../js/trgPreValidateToDoItemTimestamp.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 trigger_definition = {
-            'id': 'trgPreValidateToDoItemTimestamp',
-            'serverScript': file_contents,
-            'triggerType': documents.TriggerType.Pre,
-            'triggerOperation': documents.TriggerOperation.Create
-        }
+    'id': 'trgPreValidateToDoItemTimestamp',
+    'serverScript': file_contents,
+    'triggerType': documents.TriggerType.Pre,
+    'triggerOperation': documents.TriggerOperation.Create
+}
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
@@ -291,24 +344,26 @@ trigger = client.CreateTrigger(container_link, trigger_definition)
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-item = { 'category': 'Personal', 'name': 'Groceries', 'description':'Pick up strawberries', 'isComplete': False}
-client.CreateItem(container_link, item, { 'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
+item = {'category': 'Personal', 'name': 'Groceries',
+        'description': 'Pick up strawberries', 'isComplete': False}
+client.CreateItem(container_link, item, {
+                  'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
 ```
 
 ## <a id="post-triggers"></a>如何运行后触发器
 
 以下示例演示如何使用 Azure Cosmos DB SDK 注册后触发器。 请参阅[后触发器示例](how-to-write-stored-procedures-triggers-udfs.md#post-triggers)，因为此后触发器的源代码保存为 `trgPostUpdateMetadata.js`。
 
-### <a name="post-triggers---net-sdk"></a>后触发器 - .NET SDK
+### <a name="post-triggers---net-sdk-v2"></a>后触发器-.NET SDK V2
 
-以下代码演示如何使用 .NET SDK 注册后触发器：
+下面的代码演示如何使用 .NET SDK V2 注册后期触发器：
 
 ```csharp
 string triggerId = "trgPostUpdateMetadata";
 Trigger trigger = new Trigger
 {
     Id = triggerId,
-    Body = File.ReadAllText($@"..\js\{triggerId}.js");,
+    Body = File.ReadAllText($@"..\js\{triggerId}.js"),
     TriggerOperation = TriggerOperation.Create,
     TriggerType = TriggerType.Post
 };
@@ -316,7 +371,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-以下代码演示如何使用 .NET SDK 调用后触发器：
+下面的代码演示如何使用 .NET SDK V2 调用后期触发器：
 
 ```csharp
 var newItem = { 
@@ -325,9 +380,35 @@ var newItem = {
     albums: ["Hellujah", "Rotators", "Spinning Top"]
 };
 
-var options = { postTriggerInclude: "trgPostUpdateMetadata" };
+RequestOptions options = new RequestOptions { PostTriggerInclude = new List<string> { "trgPostUpdateMetadata" } };
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 await client.createDocumentAsync(containerUri, newItem, options);
+```
+
+### <a name="post-triggers---net-sdk-v3"></a>后触发器-.NET SDK V3
+
+下面的代码演示如何使用 .NET SDK V3 注册后期触发器：
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
+{
+    Id = "trgPostUpdateMetadata",
+    Body = File.ReadAllText(@"..\js\trgPostUpdateMetadata.js"),
+    TriggerOperation = TriggerOperation.Create,
+    TriggerType = TriggerType.Post
+});
+```
+
+下面的代码演示如何使用 .NET SDK V3 调用后触发器：
+
+```csharp
+var newItem = { 
+    name: "artist_profile_1023",
+    artist: "The Band",
+    albums: ["Hellujah", "Rotators", "Spinning Top"]
+};
+
+await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PostTriggers = new List<string> { "trgPostUpdateMetadata" } });
 ```
 
 ### <a name="post-triggers---java-sdk"></a>后触发器 - Java SDK
@@ -398,11 +479,11 @@ with open('../js/trgPostUpdateMetadata.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 trigger_definition = {
-            'id': 'trgPostUpdateMetadata',
-            'serverScript': file_contents,
-            'triggerType': documents.TriggerType.Post,
-            'triggerOperation': documents.TriggerOperation.Create
-        }
+    'id': 'trgPostUpdateMetadata',
+    'serverScript': file_contents,
+    'triggerType': documents.TriggerType.Post,
+    'triggerOperation': documents.TriggerOperation.Create
+}
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
@@ -410,32 +491,34 @@ trigger = client.CreateTrigger(container_link, trigger_definition)
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-item = { 'name': 'artist_profile_1023', 'artist': 'The Band', 'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
-client.CreateItem(container_link, item, { 'postTriggerInclude': 'trgPostUpdateMetadata'})
+item = {'name': 'artist_profile_1023', 'artist': 'The Band',
+        'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
+client.CreateItem(container_link, item, {
+                  'postTriggerInclude': 'trgPostUpdateMetadata'})
 ```
 
 ## <a id="udfs"></a>如何使用用户定义的函数
 
 以下示例演示如何使用 Azure Cosmos DB SDK 注册用户定义的函数。 请参阅[用户定义的函数示例](how-to-write-stored-procedures-triggers-udfs.md#udfs)，因为此后触发器的源代码保存为 `udfTax.js`。
 
-### <a name="user-defined-functions---net-sdk"></a>用户定义的函数 - .NET SDK
+### <a name="user-defined-functions---net-sdk-v2"></a>用户定义函数-.NET SDK V2
 
-以下代码演示如何使用 .NET SDK 注册用户定义的函数：
+下面的代码演示如何使用 .NET SDK V2 注册用户定义函数：
 
 ```csharp
 string udfId = "Tax";
 var udfTax = new UserDefinedFunction
 {
     Id = udfId,
-    Body = File.ReadAllText($@"..\js\{udfId}.js"),
+    Body = File.ReadAllText($@"..\js\{udfId}.js")
 };
 
-containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
+Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
 await client.CreateUserDefinedFunctionAsync(containerUri, udfTax);
 
 ```
 
-以下代码演示如何使用 .NET SDK 调用用户定义的函数：
+下面的代码演示如何使用 .NET SDK V2 调用用户定义函数：
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -444,6 +527,32 @@ var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM I
 foreach (var result in results)
 {
     //iterate over results
+}
+```
+
+### <a name="user-defined-functions---net-sdk-v3"></a>用户定义函数-.NET SDK V3
+
+下面的代码演示如何使用 .NET SDK V3 注册用户定义函数：
+
+```csharp
+await client.GetContainer("database", "container").Scripts.CreateUserDefinedFunctionAsync(new UserDefinedFunctionProperties
+{
+    Id = "Tax",
+    Body = File.ReadAllText(@"..\js\Tax.js")
+});
+```
+
+下面的代码演示如何使用 .NET SDK V3 调用用户定义函数：
+
+```csharp
+var iterator = client.GetContainer("database", "container").GetItemQueryIterator<dynamic>("SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000");
+while (iterator.HasMoreResults)
+{
+    var results = await iterator.ReadNextAsync();
+    foreach (var result in results)
+    {
+        //iterate over results
+    }
 }
 ```
 
@@ -514,9 +623,9 @@ with open('../js/udfTax.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 udf_definition = {
-            'id': 'Tax',
-            'serverScript': file_contents,
-        }
+    'id': 'Tax',
+    'serverScript': file_contents,
+}
 udf = client.CreateUserDefinedFunction(container_link, udf_definition)
 ```
 
@@ -524,7 +633,8 @@ udf = client.CreateUserDefinedFunction(container_link, udf_definition)
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-results = list(client.QueryItems(container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
+results = list(client.QueryItems(
+    container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
 ## <a name="next-steps"></a>后续步骤

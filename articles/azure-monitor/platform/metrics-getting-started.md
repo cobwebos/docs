@@ -8,65 +8,69 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e611f1564896cfdecb3ce34ab7c5361e5200b48a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ceaefffaf04a3ab266cde300e8c4b93a5e804796
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537331"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861081"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure 指标资源管理器入门
 
-## <a name="where-do-i-start"></a>如何开始
-Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，通过它可以绘制图表、以直观的形式关联趋势及研究指标值的上升和下降。 使用指标资源管理器来调查运行状况和资源的利用率。 按以下顺序启动：
+## <a name="where-do-i-start"></a>从哪里开始
+Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，通过它可以绘制图表、以直观的形式关联趋势及研究指标值的上升和下降。 使用指标资源管理器调查资源的运行状况和利用率。 请按以下顺序开始：
 
-1. [选择资源和指标](#create-your-first-metric-chart)并查看基本图表。 然后[选择时间范围](#select-a-time-range)这就是为您的调查相关。
+1. [选取资源和指标](#create-your-first-metric-chart)并查看基本图表。 然后选择与调查相关的[时间范围](#select-a-time-range)。
 
-1. 请尝试[在应用维度筛选器和拆分](#apply-dimension-filters-and-splitting)。 筛选器和拆分可以分析哪些细分市场的指标的作用于的整体指标值和确定可能离群值。
+1. 尝试[应用维度筛选器和拆分](#apply-dimension-filters-and-splitting)。 使用筛选器和拆分可以分析哪些指标段影响了整体指标值，以及识别可能的离群值。
 
-1. 使用[高级设置](#advanced-chart-settings-and-next-steps)之前固定到仪表板自定义图表。 [配置警报](alerts-metric-overview.md)度量值超过或低于阈值时接收通知。
+1. 在将图表固定到仪表板之前使用[高级设置](#advanced-chart-settings)对其进行自定义。 [配置警报](alerts-metric-overview.md)，以便在指标值超过阈值或降到阈值以下时收到通知。
 
-## <a name="create-your-first-metric-chart"></a>创建第一个度量值图表
+## <a name="create-your-first-metric-chart"></a>创建第一个指标图表
 
-若要创建指标图表中，从你的资源、 资源组、 订阅或 Azure Monitor 视图，请打开**指标**选项卡上，执行以下步骤：
+若要在资源、资源组、订阅或 Azure Monitor 视图中创建指标图表，请打开“指标”选项卡并执行以下步骤：
 
-1. 使用资源选取器，选择你想要查看的指标的资源。 (如果您打开的资源是预选**指标**特定资源的上下文中)。
+1. 使用资源选取器选择要查看其指标的资源。 （如果已在特定资源的上下文中打开了“指标”，则系统已预先选择该资源）。
 
     > ![选择资源](./media/metrics-getting-started/resource-picker.png)
 
-2. 对于某些资源，必须选择一个命名空间。 命名空间是只是一种方法来组织度量值，以便您可以轻松地找到它们。 例如，存储帐户具有独立的命名空间来存储文件、 表、 Blob 和队列的指标。 许多资源类型只能有一个命名空间。
+2. 对于某些资源，必须选取一个命名空间。 命名空间只是组织指标的一种方式，可方便你查找指标。 例如，存储帐户提供用于存储文件、表、Blob 和队列指标的独立命名空间。 许多资源类型只有一个命名空间。
 
-3. 从可用度量值的列表中选择一个指标。
+3. 从可用指标列表中选择一个指标。
 
     > ![选择指标](./media/metrics-getting-started/metric-picker.png)
 
-4. （可选） 可以更改度量值的聚合。 例如，您可能希望图表以显示指标的最小值、 最大值，或平均值。
+4. （可选）可以更改指标聚合。 例如，你可能希望图表显示指标的最小值、最大值或平均值。
 
 > [!NOTE]
-> 使用**添加的度量值**按钮，然后重复上述步骤，如果你想要查看同一个图表中绘制多个指标。 对于在一个视图中的多个图表，选择**添加图表**顶部的按钮。
+> 若要查看同一个图表中绘制的多个指标，请使用“添加指标”按钮并重复上述步骤。 若要在一个视图中添加多个图表，请选择顶部的“添加图表”按钮。
 
-## <a name="select-a-time-range"></a>选择时间范围
+## <a name="select-a-time-range"></a>选择时间跨度
 
-默认情况下，图表将显示在最近 24 小时内的指标数据。 使用**时间选取器**要更改的时间范围、 放大，或在图表上缩小工作区面板。 
+默认情况下，图表会显示最近 24 小时的指标数据。 使用“时间选取器”面板可更改时间范围，以及放大或缩小图表。 
 
 ![更改时间范围面板](./media/metrics-getting-started/time-picker.png)
 
+> [!NOTE]
+> 使用**时间画笔**来调查图表（峰值或 dip）的关注区域。 将鼠标指针放在该区域的开头，单击并按住鼠标左键，拖动到区域的另一侧，然后松开按钮。 图表将在该时间范围内放大。 
+
 ## <a name="apply-dimension-filters-and-splitting"></a>应用维度筛选器和拆分
 
-[筛选](metrics-charts.md#apply-filters-to-charts)并[拆分](metrics-charts.md#apply-splitting-to-a-chart)是功能强大的诊断工具，对于具有维度的指标。 这些功能显示了各种指标段 （"维度值"） 产生影响总体的度量值，并允许你识别可能离群值。
+[筛选](metrics-charts.md#apply-filters-to-charts)和[拆分](metrics-charts.md#apply-splitting-to-a-chart)是用于处理包含维度的指标的强大诊断工具。 这些功能会显示各种指标段（“维度值”）如何影响指标的整体值，并让你识别可能的离群值。
 
-- **筛选**允许您选择的维度值包含在图表中。 例如，你可能想要绘制图表时显示成功的请求*服务器响应时间*指标。 需要在应用该筛选器*请求的成功*维度。 
+- 使用**筛选**可以选择要将哪些维度值包含在图表中。 例如，在绘制“服务器响应时间”指标的图表时，你可能想要成功的请求。 需要对“请求成功”维度应用筛选器。 
 
-- **拆分**控件是否该图表显示的单独行的某个维度，每个值或聚合为单个行的值。 例如，您可以平均响应时间在所有服务器实例，将看到一个行，或者查看单独为每个服务器的行。 需要应用上拆分*服务器实例*维度，若要查看单独的行。
+- **拆分**控制图表是要对每个维度值显示单独的行，还是要将这些值聚合到一行。 例如，可以在一行中查看所有服务器实例的平均响应时间，也可以在不同的行中查看每台服务器的此项指标。 需要对“服务器实例”维度应用拆分才能查看单独的行。
 
-请参阅[图表的示例](metric-chart-samples.md)，具有筛选和拆分应用。 本文介绍的步骤用于配置图表。
+请查看应用了筛选和拆分的[图表的示例](metric-chart-samples.md)。 本文介绍了用于配置图表的步骤。
 
-## <a name="advanced-chart-settings-and-next-steps"></a>高级的图表设置和后续步骤
+## <a name="advanced-chart-settings"></a>高级图表设置
 
-可以自定义图表样式，标题，并修改高级的图表设置。 完成自定义项，则将其固定到仪表板以保存所做的工作。 此外可以配置指标警报。 请按照[产品文档](metrics-charts.md)若要了解有关这些和其他高级功能的 Azure Monitor 指标资源管理器。
+可以自定义图表样式、标题，以及修改高级图表设置。 完成自定义后，请将图表固定到仪表板以保存所做的工作。 还可以配置指标警报。 请参阅[产品文档](metrics-charts.md)来了解 Azure Monitor 指标资源管理器的上述功能和其他高级功能。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [请参阅 Azure 服务的可用指标的列表](metrics-supported.md)
-* [了解有关指标资源管理器的高级功能](metrics-charts.md)
-* [请参阅配置图表的示例](metric-chart-samples.md)
+* [了解指标资源管理器的高级功能](metrics-charts.md)
+* [对指标资源管理器进行故障排除](metrics-troubleshoot.md)
+* [查看 Azure 服务的可用指标列表](metrics-supported.md)
+* [查看已配置图表的示例](metric-chart-samples.md)

@@ -2,22 +2,22 @@
 title: 远程访问本地应用 - Azure Active Directory 应用程序代理 | Microsoft Docs
 description: Azure Active Directory 应用程序代理提供对本地 Web 应用程序的安全远程访问。 单一登录到 Azure AD 后，用户可以通过外部 URL 或内部应用程序门户访问云端和本地的应用程序。 例如，应用程序代理可以为远程桌面、SharePoint、Teams、Tableau、Qlik 和业务线 (LOB) 应用程序提供远程访问和单一登录功能。
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: celested
+ms.date: 05/09/2019
+ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac94574ac297da7b3555be8d92ba3c5b62a990c5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 780dedd52e492aceaab1aa00eedb631d0814ebf3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174752"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108383"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>通过 Azure Active Directory 应用程序代理远程访问本地应用程序 
 
@@ -27,7 +27,7 @@ Azure AD 应用程序代理的特性：
 
 - **简单易用**。 用户可以像访问 O365 以及其他与 Azure AD 集成的 SaaS 应用一样访问本地应用程序。 无需更改或更新应用程序即可使用应用程序代理。 
 
-- **安全**。 本地应用程序可以使用 Azure 的授权控制和安全分析功能。 例如，本地应用程序可以使用条件访问和双重验证。 应用程序代理不要求通过防火墙打开入站连接。
+- **安全**。 本地应用程序可以使用 Azure 的授权控制和安全分析功能。 例如，在本地应用程序可以使用条件性访问和双重验证。 应用程序代理不要求通过防火墙打开入站连接。
  
 - **经济高效**。 本地解决方案通常需要设置和维护隔离区 (DMZ)、边缘服务器或其他复杂的基础结构。 应用程序代理在云中运行，易于使用。 若要使用应用程序代理，无需更改网络基础结构或在本地环境中安装其他设备。
 
@@ -44,6 +44,8 @@ Azure AD 应用程序代理的特性：
 
 应用程序代理支持单一登录。 有关支持的方法的详细信息，请参阅[选择单一登录方法](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。
 
+对于允许远程用户访问内部资源，建议应用程序代理。 应用程序代理，将适用于 VPN 或反向代理。 这不被专为企业网络上的内部用户。  这些不必要地使用应用程序代理的用户可能会引入意外和不良性能问题。
+
 ## <a name="how-application-proxy-works"></a>应用程序代理的工作原理
 
 下图显示了 Azure AD 和应用程序代理如何共同向本地应用程序提供单一登录。
@@ -57,7 +59,7 @@ Azure AD 应用程序代理的特性：
 5. 连接器将请求发送到本地应用程序。  
 6. 通过连接器和应用程序代理服务将响应发送给用户。
 
-| 组件 | 说明 |
+| 组件 | 描述 |
 | --------- | ----------- |
 | 终结点  | 终结点是 URL 或[最终用户门户](end-user-experiences.md)。 用户可通过访问外部 URL 访问位于你网络外部的应用程序。 网络内的用户可以通过 URL 或最终用户门户访问应用程序。 当用户转到其中一个终结点时，将在 Azure AD 中进行身份验证，并通过连接器路由到本地应用程序。|
 | Azure AD | Azure AD 使用存储在云端的租户目录执行身份验证。 |

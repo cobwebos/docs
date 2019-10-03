@@ -1,69 +1,103 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: e94a667cb67e4812984d4a338e763ebeaa1d3205
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073214"
-documentType: LandingData
-title: Azure 上的 Jenkins
+### YamlMime:Landing
+title: “Azure 上的 Jenkins”文档
+summary: 了解如何使用 Jenkins 在 Azure 上自动进行持续集成和持续交付。
 metadata:
-  title: “Azure 上的 Jenkins”文档 - 教程、示例、参考和资源
-  description: 在 Azure 上部署 Jenkins 并将其与 Azure 集成
+  title: “Azure 上的 Jenkins”文档
+  description: 了解如何使用 Jenkins 在 Azure 上自动进行持续集成和持续交付。
+  services: azure
   ms.service: jenkins
-  keywords: jenkins, azure, devops, 教程, 示例, 参考
-  author: tomarchermsft
-  manager: jeconnoc
-  ms.author: tarcher
   ms.topic: landing-page
-  ms.date: 08/27/2018
-abstract:
-  description: 使用开源 Jenkins 服务器在云中生成应用并将其部署到 Azure。 了解如何借助快速入门、教程和示例管道，在 Azure 上安装、配置和缩放 Jenkins 并为应用设置持续集成 (CI)。
-  aside:
-    image:
-      alt: Jenkins 徽标
-      height: 133
-      width: 110
-      src: media/Jenkins.png
-    title: 
-sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 在 Azure 中创建 Jenkins 系统并生成应用。
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg
-      text: Azure 门户
-      href: https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 为应用设置持续集成、在云中运行代理，以及在作业中使用 Azure 服务。
-  - type: list
-    style: ordered
-    items:
-    - html: 设置到 <a href="/azure/jenkins/java-deploy-webapp-tutorial">Azure 应用服务</a>、<a href="/azure/container-service/kubernetes/container-service-kubernetes-jenkins">Kubernetes</a> 或 <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Linux VM</a> 的 CI。
-    - html: <a href="/azure/jenkins/execute-cli-jenkins-pipeline">预配管道作业中的资源</a>。
-    - html: <a href="/azure/jenkins/jenkins-azure-vm-agents">使用 Azure VM 代理进行缩放</a>。
-- title: 示例
-  items:
-  - type: paragraph
-    text: 管道的示例脚本和阶段。
-  - type: list
-    style: unordered
-    className: spaced noBullet
-    items:
-    - html: <a href="https://github.com/Azure/azure-devops-utils/tree/master/jenkins">Jenkinsfile 阶段和代码片段</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: 插件
-      html: <p><a href="https://plugins.jenkins.io/azure-vm-agents">Azure VM Agents</a>（Azure VM 代理）<p><a href="https://plugins.jenkins.io/azure-app-service">Azure 应用服务</a></p><p><a href="https://plugins.jenkins.io/windows-azure-storage">Azure 存储</a></p><p><a href="https://plugins.jenkins.io/azure-container-agents">Azure Container Agents</a>（Azure 容器代理）<p><a href="https://plugins.jenkins.io/azure-function">Azure Function 插件</a><p><a href="https://plugins.jenkins.io/azure-acs">Azure Container Service plugin</a>（Azure 容器服务插件）
-- type: paragraph
-  text: <h4>Jenkins® 是 Public Interest, Inc. 的软件的注册商标。[Jenkins® 徽标](https://wiki.jenkins.io/display/JENKINS/Logo)已根据 [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) 从 [Jenkins 项目](https://jenkins.io)进行了授权。</h4>
+  author: TomArcherMsft
+  ms.author: tarcher
+  ms.date: 09/17/2019
+  ms.openlocfilehash: 3d0a74df70b2007812acf22a40e8bd210948fae2
+  ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71104272"
+landingContent:
+- title: 关于 Azure 上的 Jenkins
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于 Azure 上的 Jenkins
+      url: overview.md
+  - linkListType: reference
+    links:
+    - text: 适用于 Azure 的 Jenkins 插件
+      url: jenkins-plugins.md
+  - linkListType: architecture
+    links:
+    - text: Jenkins 体系结构
+      url: /azure/architecture/reference-architectures/jenkins/
+- title: 安装并配置 Jenkins
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建 Jenkins 服务器
+      url: install-jenkins-solution-template.md
+  - linkListType: download
+    links:
+    - text: 示例作业和脚本
+      url: https://github.com/azure/jenkins
+- title: 使用 Jenkins 和 Azure 进行缩放
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 通过 Azure 容器实例进行缩放
+      url: /azure/container-instances/container-instances-jenkins?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+    - text: 使用 Azure VM 代理进行缩放
+      url: jenkins-azure-vm-agents.md
+- title: CI/CD 到 Azure Functions
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 部署到 Azure Functions
+      url: jenkins-azure-functions-deploy.md
+- title: CI/CD 到 AKS
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 从 GitHub 部署到 AKS
+      url: /azure/aks/jenkins-continuous-deployment?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+    - text: 使用蓝/绿模式部署到 AKS
+      url: jenkins-aks-blue-green-deployment.md
+    - text: 使用 Azure Dev Spaces 插件进行部署
+      url: tutorial-jenkins-dev-spaces.md
+- title: CI/CD 到应用服务
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 在管道作业中创建 Azure 资源
+      url: execute-cli-jenkins-pipeline.md
+    - text: 从 GitHub 部署到应用服务
+      url: tutorial-jenkins-deploy-web-app-azure-app-service.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用应用服务插件进行部署
+      url: deploy-jenkins-app-service-plugin.md
+- title: CI/CD 到 Azure DevOps
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用 Azure DevOps Services 部署到 Linux VM
+      url: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+- title: CI/CD 到 Azure 存储
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将 Azure 存储与 Jenkins C/I 解决方案配合使用
+      url: /azure/storage/storage-java-jenkins-continuous-integration-solution?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+- title: CI/CD 到 Linux VM
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 在 Linux VM 上创建开发基础结构
+      url: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+- title: CI/CD 到 Service Fabric
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 构建和部署 Azure Service Fabric 应用
+      url: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json

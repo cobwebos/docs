@@ -14,11 +14,11 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 75ce5d6a88b5398bd010cc363b4241bc90068f55
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436564"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60192993"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure 开发测试实验室基础结构的监管 - 应用程序迁移和集成
 建立开发/测试实验室环境之后，你需要考虑以下问题：
@@ -76,9 +76,9 @@ ms.locfileid: "57436564"
 ### <a name="answer"></a>Answer
 是的。 有两个方面需要考虑，即入站和出站流量。
 
-入站流量 – 如果虚拟机没有公用 IP 地址，则无法通过 Internet 访问它。 一种常见方法是确保设置订阅级别的策略，以便任何用户都不能创建公用 IP 地址。
+ 入站流量 – 如果虚拟机没有公用 IP 地址，则无法通过 Internet 访问它。 一种常见方法是确保设置订阅级别的策略，以便任何用户都不能创建公用 IP 地址。
 
-出站流量 – 如果要防止虚拟机直接访问公共 Internet 并强制流量通过企业防火墙，则可以使用强制路由通过快速路由或 VPN 在本地路由流量。
+ 出站流量 – 如果要防止虚拟机直接访问公共 Internet 并强制流量通过企业防火墙，则可以使用强制路由通过快速路由或 VPN 在本地路由流量。
 
 > [!NOTE]
 > 如果你的代理服务器在没有代理设置的情况下阻止流量，则不要忘记向实验室的项目存储帐户添加例外。
@@ -116,9 +116,9 @@ ms.locfileid: "57436564"
 ### <a name="answer"></a>Answer
 在考虑每个用户或每个实验室的虚拟机数量时，主要有三个考虑因素：
 
-- 团队在实验室资源上花费的总成本。 运行很多计算机很容易。 为了控制成本，一种机制是限制每个用户和/或每个实验室的 VM 数量
+- 团队在实验室资源上花费的总成本  。 运行很多计算机很容易。 为了控制成本，一种机制是限制每个用户和/或每个实验室的 VM 数量
 - 实验室中的虚拟机总数受可用[订阅级别配额](../azure-subscription-service-limits.md)的影响。 其中一个上限是每个订阅 800 个资源组。 开发测试实验室当前为每个 VM 创建一个新的资源组（除非使用共享的公用 IP）。 如果在订阅中有 10 个实验室，实验室可满足每个实验室 （800 上限 – 10 个实验室本身的 10 个资源组） 中的大约 79 虚拟机 = 79 每个实验室的虚拟机。
-- 举例来说，如果实验室通过 Express Route 连接到本地，则可以为 VNet/子网定义可用的 IP 地址空间。 为了确保能够在实验室中创建 VM（出现“无法获取 IP 地址”错误时无法创建），实验室所有者可以根据可用的 IP 地址空间指定每个实验室的最大 VM 数量。
+- 举例来说，如果实验室通过 Express Route 连接到本地，则可以为 VNet/子网定义可用的 IP 地址空间  。 为了确保能够在实验室中创建 VM（出现“无法获取 IP 地址”错误时无法创建），实验室所有者可以根据可用的 IP 地址空间指定每个实验室的最大 VM 数量。
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 模板
 

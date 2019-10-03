@@ -1,5 +1,5 @@
 ---
-title: 模式角色
+title: 教程：模式角色 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 模式从格式正确的模板言语中提取数据。 模板话语使用简单的实体和角色提取相关的数据，例如源位置和目标位置。
 ms.custom: seodec18
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: d6a2c9d92d79bed3f0e9a9976a64f6e11debba88
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 7b95dcf6a93c9abdeab9520f0a0fd80eb17dccff
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523268"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387646"
 ---
 # <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>教程：使用角色提取与上下文相关的模式
 
@@ -43,11 +43,11 @@ ms.locfileid: "59523268"
 角色的用途是在言语中提取与上下文相关的实体。 在 `Move new employee Robert Williams from Sacramento and San Francisco` 话语中，原城市和目的地城市值彼此相关，并使用公共语言来表示每个位置。 
 
 
-新员工 Billy Patterson 的名称还不是“员工”列表实体的一部分。 首先需提取新员工名称，才能将名称发送到外部系统以创建公司凭据。 创建公司凭据后，会将员工凭据添加到“员工”列表实体。
+新员工 Billy Patterson 的名称还不是“员工”  列表实体的一部分。 首先需提取新员工名称，才能将名称发送到外部系统以创建公司凭据。 创建公司凭据后，会将员工凭据添加到“员工”  列表实体。
 
 需要将新员工和家人从现有城市调到虚构公司所在的城市。 由于新员工可以来自于任何城市，因此需要发现此位置。 诸如列表实体等的集合列表可能不起作用，因为只会提取列表中的城市。
 
-与原城市和目的地城市相关联的角色名称需要在所有实体中是唯一的。 确保这些角色唯一的一种简单办法是通过命名策略将其绑定到包含实体。 NewEmployeeRelocation 实体是具有以下两个角色的简单实体：NewEmployeeReloOrigin 和 NewEmployeeReloDestination。 Relo 是 relocation 的缩写。
+与原城市和目的地城市相关联的角色名称需要在所有实体中是唯一的。 确保这些角色唯一的一种简单办法是通过命名策略将其绑定到包含实体。 NewEmployeeRelocation 实体是具有以下两个角色的简单实体  ：NewEmployeeReloOrigin 和 NewEmployeeReloDestination   。 Relo 是 relocation 的缩写。
 
 由于示例话语 `Move new employee Robert Williams from Sacramento and San Francisco` 仅具有机器学习的实体，因此，向意向提供足够的示例话语至关重要，以便检测到这些实体。  
 
@@ -64,23 +64,23 @@ ms.locfileid: "59523268"
 
 2. 将 JSON 导入到新应用中。
 
-3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `roles`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
+3. 在“管理”  部分的“版本”  选项卡上，克隆版本并将其命名为 `roles`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。
 
 ## <a name="create-new-entities"></a>创建新实体
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. 在左侧导航栏中选择“实体”。 
+2. 在左侧导航栏中选择“实体”  。 
 
-3. 选择“创建新实体”。
+3. 选择“创建新实体”  。
 
-4. 在弹出窗口中，输入 `NewEmployee` 作为简单实体。
+4. 在弹出窗口中，输入 `NewEmployee` 作为简单实体  。
 
-5. 选择“创建新实体”。
+5. 选择“创建新实体”  。
 
-6. 在弹出窗口中，输入 `NewEmployeeRelocation` 作为简单实体。
+6. 在弹出窗口中，输入 `NewEmployeeRelocation` 作为简单实体  。
 
-7. 从实体列表中选择“NewEmployeeRelocation”。 
+7. 从实体列表中选择“NewEmployeeRelocation”  。 
 
 8. 输入第一个角色作为 `NewEmployeeReloOrigin` 并选择 Enter。
 
@@ -89,13 +89,13 @@ ms.locfileid: "59523268"
 ## <a name="create-new-intent"></a>创建新意向
 如果在开始前删除了预生成的 keyPhrase 实体，接着在执行完此部分中的步骤后又将其添加了回来，则在这些步骤中为实体添加标签可能会更加轻松。 
 
-1. 从左侧导航栏中选择“意向”。
+1. 从左侧导航栏中选择“意向”  。
 
-2. 选择“创建新意向”。 
+2. 选择“创建新意向”  。 
 
 3. 在弹出对话框中，输入 `NewEmployeeRelocationProcess` 作为意向名称。
 
-4. 输入以下示例话语，为新实体添加标签。 实体和角色值均以粗体显示。 如果发现为文本添加标签很容易，请记得切换到“令牌视图”。 
+4. 输入以下示例话语，为新实体添加标签。 实体和角色值均以粗体显示。 如果发现为文本添加标签很容易，请记得切换到“令牌视图”  。 
 
     在意向中添加标签时，不要指定实体的角色。 在稍后创建模式时才执行此操作。 
 
@@ -224,11 +224,11 @@ ms.locfileid: "59523268"
 
 ## <a name="pattern-with-roles"></a>包含角色的模式
 
-1. 选择顶部导航栏中的“生成”。
+1. 选择顶部导航栏中的“生成”  。
 
-2. 选择左侧导航栏中的“模式”。
+2. 选择左侧导航栏中的“模式”  。
 
-3. 从“选择意向”下拉列表中选择“NewEmployeeRelocationProcess”。 
+3. 从“选择意向”  下拉列表中选择“NewEmployeeRelocationProcess”  。 
 
 4. 输入以下模式：`move {NewEmployee} from {NewEmployeeRelocation:NewEmployeeReloOrigin} to {NewEmployeeRelocation:NewEmployeeReloDestination}[.]`
 
@@ -237,7 +237,7 @@ ms.locfileid: "59523268"
 ## <a name="cities-phrase-list"></a>城市短语列表
 城市就像人名一样很棘手，因为它们可以是字和标点符号的任意组合。 区域和全球的城市都是已知的，因此，LUIS 需要城市的短语列表才能开始学习。 
 
-1. 从左侧菜单的“提高应用性能”部分中，选择“短语列表”。 
+1. 从左侧菜单的“提高应用性能”  部分中，选择“短语列表”  。 
 
 2. 命名 `Cities` 列表，并为该列表添加以下 `values`：
 
@@ -252,7 +252,7 @@ ms.locfileid: "59523268"
     |迈阿密|
     |达拉斯|
 
-    请勿添加世界上的每个城市，也不要添加区域中的每个城市。 LUIS 需要能够从列表中推断出城市的概况。 确保“这些值可互换”处于选中状态。 此设置意味着列表上的字被视为同义词。 
+    请勿添加世界上的每个城市，也不要添加区域中的每个城市。 LUIS 需要能够从列表中推断出城市的概况。 确保“这些值可互换”  处于选中状态。 此设置意味着列表上的字被视为同义词。 
 
 3. 定型并发布应用。
 

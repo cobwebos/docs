@@ -1,19 +1,19 @@
 ---
 title: Azure 存储分析指标（经典）
 description: 了解如何使用 Azure 存储中的指标。
-services: storage
-author: fhryo-msft
+author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/11/2019
-ms.author: fryu
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: c15242b0c480e2da39897b850ab7b2a2fd05bf11
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ca831fe66a0ce6a2dbfafc54a761b86473067b10
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489274"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846883"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 存储分析指标（经典）
 
@@ -23,7 +23,7 @@ ms.locfileid: "59489274"
 
 > [!NOTE]
 > 存储分析指标适用于 Blob、队列、表和文件服务。
-> 存储分析指标目前为经典指标。 Microsoft 建议使用[Azure Monitor 中的存储指标](storage-metrics-in-azure-monitor.md)而不是存储分析度量值。
+> 存储分析指标目前为经典指标。 Microsoft 建议[在 Azure Monitor 中使用存储度量值](storage-metrics-in-azure-monitor.md), 而不是存储分析指标。
 
 ## <a name="transaction-metrics"></a>事务度量值  
  对于每个存储服务和请求的 API 操作，以小时或分钟为间隔记录一组可靠的数据，其中包括入口/出口、可用性、错误和分类请求百分比。 可以在[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)主题中查看事务详细信息的完整列表。  
@@ -70,7 +70,7 @@ ms.locfileid: "59489274"
 1. 确保“状态”设置为“打开”。
 1. 选择希望监视的服务的度量值。
 1. 指定用来指示保留度量值和日志数据的时间长度的保留期策略。
-1. 选择“保存”。
+1. 选择**保存**。
 
 [Azure 门户](https://portal.azure.com)目前不允许在存储帐户中配置分钟指标；必须通过 PowerShell 或编程方式启用分钟指标。
 
@@ -89,18 +89,27 @@ ms.locfileid: "59489274"
 * **服务**：收集 Blob、队列、表和文件服务的流入量/流出量、可用性、延迟及成功百分比等聚合指标。
 * **ServiceAndApi**：除服务指标外，在 Azure 存储服务 API 中为每项存储操作收集一组相同的指标。
 
-例如，以下命令在保留期设为 5 天的情况下，在默认存储帐户中为 Blob 服务打开分钟度量值：  
+例如，以下命令在存储帐户中打开 blob 服务的分钟指标，并将保留期设置为五天： 
+
+> [!NOTE]
+> 此命令假定你已使用 `Connect-AzAccount` 命令登录 Azure 订阅。
 
 ```  
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute   
--ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5  
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
+
+Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
+
+* 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+
+* 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+
+
 
 以下命令在默认存储帐户中为 Blob 服务检索当前的小时度量值级别和保留天数：  
 
 ```  
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour   
--ServiceType Blob  
+Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
 若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[如何安装和配置 Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)。  
@@ -140,7 +149,7 @@ queueClient.SetServiceProperties(serviceProperties);
 ||||  
 |-|-|-|  
 |**指标**|**表名**|**说明**|  
-|小时指标|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在版本 2013-08-15 之前，这些表名为：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 从版本 2015-04-05 开始提供文件服务的指标。|  
+|每小时度量值|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在版本 2013-08-15 之前，这些表名为：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 从版本 2015-04-05 开始提供文件服务的指标。|  
 |分钟度量值|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|只能通过 PowerShell 或编程方式启用。<br /><br /> 从版本 2015-04-05 开始提供文件服务的指标。|  
 |容量|$MetricsCapacityBlob|仅限 Blob 服务。|  
 
@@ -151,8 +160,8 @@ queueClient.SetServiceProperties(serviceProperties);
 |**PartitionKey**|**RowKey**|**Timestamp**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**可用性**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
 |20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
 |20140522T1100|user;QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
-|20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|第|第|538|633|100|3|3|100|  
-|20140522T1100|user;UpdateEntity|2014-05-22T11:01:16.7650250Z|第|第|771|217|100|9|6|100|  
+|20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  
+|20140522T1100|user;UpdateEntity|2014-05-22T11:01:16.7650250Z|1|1|771|217|100|9|6|100|  
 
 在这个分钟度量值数据示例中，分区键按分钟使用时间。 行键可识别行中存储的信息的类型，其中包含两条信息，即访问类型和请求类型：  
 

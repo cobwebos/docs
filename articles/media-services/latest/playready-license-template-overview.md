@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
 ms.openlocfilehash: 0ce0d40bfd9d41838573f6355ceffc17761111c2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843347"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61472645"
 ---
 # <a name="media-services-playready-license-template-overview"></a>媒体服务 PlayReady 许可证模板概述 
 
-通过 Azure 媒体服务，可使用 Microsoft PlayReady 加密内容。 媒体服务还提供用于交付 PlayReady 许可证的服务。 可使用媒体服务 API 来配置 PlayReady 许可证。 当播放器尝试播放受 PlayReady 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并用来解密和播放指定的内容。
+通过 Azure 媒体服务，可使用 Microsoft PlayReady 加密内容  。 媒体服务还提供用于交付 PlayReady 许可证的服务。 可使用媒体服务 API 来配置 PlayReady 许可证。 当播放器尝试播放受 PlayReady 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并用来解密和播放指定的内容。
 
 PlayReady 许可证包含了当用户尝试播放受保护的内容时要由 PlayReady 数字版权管理 (DRM) 运行时强制实施的权限和限制。 下面是可以指定的 PlayReady 许可证限制的一些示例：
 

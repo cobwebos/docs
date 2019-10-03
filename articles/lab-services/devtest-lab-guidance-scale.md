@@ -14,11 +14,11 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 25a088686c739c53feadd6354baf75f3147bdc33
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431183"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60561483"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>纵向扩展 Azure 开发测试实验室基础结构
 在以企业规模实施开发测试实验室之前，有几个关键的决策点。 组织大致了解这些决策点有助于将来做出设计决策。 但是，这些要点不应阻碍组织的概念证明工作。 初始纵向扩展规划的三个首要方面包括：

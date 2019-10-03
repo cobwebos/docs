@@ -1,5 +1,5 @@
 ---
-title: 生成并导出用于点到站点的证书：MakeCert:Azure | Microsoft Docs
+title: 生成并导出用于点到站点的证书：MakeCert：Azure | Microsoft Docs
 description: 使用 MakeCert 创建自签名根证书、导出公钥和生成客户端证书。
 services: vpn-gateway
 documentationcenter: na
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
 ms.openlocfilehash: 973c0aa3bd187e963f15adbe34955d6bc9fa612d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102071"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60768100"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>使用 Makecert 为点到站点连接生成并导出证书
 
@@ -28,7 +28,7 @@ ms.locfileid: "58102071"
 以下步骤演示如何使用 MakeCert 创建自签名证书。 这些步骤并非特定于部署模型。 它们同样适用于 Resource Manager 和经典部署模型。
 
 1. 下载并安装 [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx)。
-2. 安装完成后，您通常可以找到此路径下的 makecert.exe 实用工具：'C:\Program Files (x86)\Windows Kits\10\bin\<arch>'. 但它也有可能安装到了另一位置。 以管理员身份打开命令提示符，并导航到 MakeCert 实用工具所在位置。 可使用以下示例，调整到适当的位置：
+2. 安装后，通常可在此路径中找到 makecert.exe 实用工具：“C:\Program Files (x86)\Windows Kits\10\bin\<arch>”。 但它也有可能安装到了另一位置。 以管理员身份打开命令提示符，并导航到 MakeCert 实用工具所在位置。 可使用以下示例，调整到适当的位置：
 
    ```cmd
    cd C:\Program Files (x86)\Windows Kits\10\bin\x64
@@ -61,8 +61,8 @@ ms.locfileid: "58102071"
  
 1. 在用于创建自签名证书的同一台计算机上，以管理员身份打开命令提示符。
 2. 修改并运行示例，生成客户端证书。
-   * 将“P2SRootCert”更改为生成客户端证书所用的自签名根证书的名称。 确保使用的是根证书的名称，即创建根证书时指定的“CN=”值。
-   * 将 P2SChildCert 更改为生成客户端证书所用的名称。
+   * 将“P2SRootCert”更改为生成客户端证书所用的自签名根证书的名称  。 确保使用的是根证书的名称，即创建根证书时指定的“CN=”值。
+   * 将 P2SChildCert  更改为生成客户端证书所用的名称。
 
    如果未经修改就运行以下示例，则个人证书存储中将有一个从根证书 P2SRootCert 生成的客户端证书，名为 P2SChildcert。
 

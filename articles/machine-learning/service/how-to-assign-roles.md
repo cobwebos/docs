@@ -1,7 +1,7 @@
 ---
 title: 管理 Azure 机器学习工作区中的角色
-titleSuffix: Azure Machine Learning service
-description: 了解如何访问使用基于角色的访问控制 (RBAC) 的 Azure 机器学习服务工作区。
+titleSuffix: Azure Machine Learning
+description: 了解如何使用基于角色的访问控制（RBAC）访问 Azure 机器学习工作区。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,65 +9,65 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 2/20/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 56813d9a075e1c327fb5612c50ea72f067ec505d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 22ce9ea44dde6da4d1194463fe266ed00c5a3f96
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805593"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067712"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问
 
-在本文中，您将了解如何管理对 Azure 机器学习工作区的访问。 [基于角色的访问控制 (RBAC)](/azure/role-based-access-control/overview)用于管理 Azure 资源的访问权限。 Azure Active Directory 中的用户分配特定角色，授予对资源的访问。 Azure 提供的内置角色和创建自定义角色的功能。
+本文介绍如何管理对 Azure 机器学习工作区的访问。 [基于角色的访问控制（RBAC）](/azure/role-based-access-control/overview)用于管理对 Azure 资源的访问。 将为 Azure Active Directory 中的用户分配特定角色，从而授予对资源的访问权限。 Azure 既提供内置角色，也提供创建自定义角色的功能。
 
 ## <a name="default-roles"></a>默认角色
 
-Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一样创建一个新的 Azure 机器学习工作区时，它附带了三个默认角色。 可以将用户添加到工作区并将其分配到这些内置角色之一。
+Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一样，创建新的 Azure 机器学习工作区时，它附带三个默认角色。 您可以将用户添加到工作区，并将其分配给这些内置角色之一。
 
-| 角色 | 访问级别 |
+| Role | 访问级别 |
 | --- | --- |
-| **读取者** | 在工作区中的只读操作。 读取器可以列出和查看在工作区中，资产，但无法创建或更新这些资产。 |
-| **参与者** | 查看、 创建、 编辑或删除 （如果适用） 的工作区中的资产。 例如，参与者可以创建试验、 创建或附加的计算群集、 提交运行，和部署 web 服务。 |
-| **所有者** | 完全访问权限的工作区，包括能够查看、 创建、 编辑或删除 （如果适用） 的工作区中的资产。 此外，还可以更改角色分配。 |
+| **读取者** | 工作区中的只读操作。 读者可以在工作区中列出和查看资产，但不能创建或更新这些资产。 |
+| **参与者** | 查看、创建、编辑或删除工作区中的资产（如果适用）。 例如，参与者可以创建试验、创建或附加计算群集、提交运行和部署 web 服务。 |
+| **所有者** | 对工作区的完全访问权限，包括查看、创建、编辑或删除工作区中的资产（如果适用）的功能。 此外，还可以更改角色分配。 |
 
 > [!IMPORTANT]
-> 可以在 Azure 中的多个级别到作用域角色的访问权限。 例如，具有对工作区所有者访问权限的人员可能不具有到包含的工作区的资源组的所有者访问权限。 有关详细信息，请参阅[如何 RBAC 适用](/azure/role-based-access-control/overview#how-rbac-works)。
+> 角色访问可划分为 Azure 中的多个级别。 例如，对工作区拥有所有者访问权限的某人可能不具有对包含该工作区的资源组的所有者访问权限。 有关详细信息，请参阅[RBAC 的工作](/azure/role-based-access-control/overview#how-rbac-works)原理。
 
-有关特定的内置角色的详细信息，请参阅[适用于 Azure 的内置角色](/azure/role-based-access-control/built-in-roles)。
+有关特定内置角色的详细信息，请参阅[Azure 的内置角色](/azure/role-based-access-control/built-in-roles)。
 
-## <a name="manage-workspace-access"></a>管理工作区的访问权限
+## <a name="manage-workspace-access"></a>管理工作区访问
 
-如果您的工作区所有者，你可以添加和删除工作区的角色。 此外可以向用户分配角色。 使用以下链接来了解如何管理访问权限：
+如果你是工作区的所有者，则可以为工作区添加和删除角色。 你还可以将角色分配给用户。 使用以下链接来了解如何管理访问权限：
 - [Azure 门户 UI](/azure/role-based-access-control/role-assignments-portal)
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
 - [Azure 资源管理器模板](/azure/role-based-access-control/role-assignments-template)
 
-如果已安装[Azure 机器学习 CLI](reference-azure-machine-learning-cli.md)，还可以使用 CLI 命令为用户分配角色。
+如果已安装[AZURE 机器学习 cli](reference-azure-machine-learning-cli.md)，还可以使用 cli 命令向用户分配角色。
 
 ```azurecli-interactive 
-az ml workspace share -n <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
+az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
-`user`字段是工作区父订阅所在的 Azure Active Directory 的实例中的现有用户的电子邮件地址。 下面是如何使用此命令的示例：
+此`user`字段是 Azure Active Directory 的实例中的现有用户的电子邮件地址，工作区父订阅所在的位置。 下面是有关如何使用此命令的示例：
 
 ```azurecli-interactive 
-az ml workspace share -n my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
 
 ## <a name="create-custom-role"></a>创建自定义角色
 
-如果内置角色的数量不足，可以创建自定义角色。 自定义角色可能具有读取、 写入、 删除和计算该工作区中的资源权限。 您可以使该角色可用在特定工作区级别、 特定资源组级别或特定的订阅级别。
+如果内置角色不足，则可以创建自定义角色。 自定义角色可能在该工作区中具有读取、写入、删除和计算资源权限。 可以使角色在特定的工作区级别、特定的资源组级别或特定的订阅级别可用。
 
 > [!NOTE]
-> 您必须是资源的该级别处的所有者才能创建该资源中的自定义角色。
+> 您必须是该级别的资源所有者才能在该资源中创建自定义角色。
 
-若要创建自定义角色，请先构造指定的权限和角色作用域的角色定义 JSON 文件。 下面的示例定义名为"数据科学家"作用域特定的工作区级别的自定义角色：
+若要创建自定义角色，请首先构造角色定义 JSON 文件，该文件指定角色的权限和作用域。 以下示例定义了在特定工作区级别范围内的名为 "数据科研" 的自定义角色：
 
-`data_scientist_role.json` :
+`data_scientist_role.json`：
 ```json
 {
     "Name": "Data Scientist",
@@ -86,14 +86,14 @@ az ml workspace share -n my_workspace -g my_resource_group --role Contributor --
 }
 ```
 
-您可以更改`AssignableScopes`字段，以便在订阅级别、 资源组级别或特定工作区级别设置此自定义角色的作用域。
+您可以更改`AssignableScopes`该字段，以便在订阅级别、资源组级别或特定工作区级别设置此自定义角色的作用域。
 
-此自定义角色可以执行以下操作除外的工作区中的所有内容操作：
+此自定义角色可执行工作区中的所有操作，但以下操作除外：
 
-- 它不能创建或更新的计算资源。
-- 它不能删除计算资源。
-- 它不能添加、 删除或更改角色分配。
-- 它不能删除工作区。
+- 不能创建或更新计算资源。
+- 它无法删除计算资源。
+- 它无法添加、删除或更改角色分配。
+- 它无法删除工作区。
 
 若要部署此自定义角色，请使用以下 Azure CLI 命令：
 
@@ -101,17 +101,19 @@ az ml workspace share -n my_workspace -g my_resource_group --role Contributor --
 az role definition create --role-definition data_scientist_role.json
 ```
 
-在部署后，此角色变为可用的指定工作区中。 现在可以添加和分配此角色在 Azure 门户中。 或者，可以向用户分配此角色，通过使用`az ml workspace share`CLI 命令：
+部署之后，此角色将在指定的工作区中可用。 现在，你可以在 Azure 门户中添加并分配此角色。 或者，可以使用`az ml workspace share` CLI 命令将此角色分配给用户：
 
 ```azurecli-interactive
-az ml workspace share -n my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
+有关自定义角色的详细信息，请参阅[Azure 资源的自定义角色](/azure/role-based-access-control/custom-roles)。
 
-有关详细信息，请参阅[Azure 资源的自定义角色](/azure/role-based-access-control/custom-roles)。
+有关自定义角色可用的操作（操作）的详细信息，请参阅[资源提供程序操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [企业安全概述](concept-enterprise-security.md)
-- [安全地运行试验和虚拟网络中的推断](how-to-enable-virtual-network.md)
+- [企业安全性概述](concept-enterprise-security.md)
+- [在虚拟网络内安全地运行试验和推理/评分](how-to-enable-virtual-network.md)
 - [教程：训练模型](tutorial-train-models-with-aml.md)
+- [资源提供程序操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

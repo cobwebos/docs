@@ -1,21 +1,19 @@
 ---
-ms.assetid: ''
 title: 配置 Azure 密钥保管库防火墙和虚拟网络 - Azure 密钥保管库
 description: 配置 Key Vault 防火墙和虚拟网络的分步说明
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.workload: identity
-ms.date: 01/02/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: c54b78a24068758fabb0918cfeb7d6516fd1bce5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: 60378632a55fe4578bb376a3a00de5efffc5d275
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487229"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976960"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>配置 Azure Key Vault 防火墙和虚拟网络
 
@@ -29,14 +27,14 @@ ms.locfileid: "58487229"
 下面介绍了如何使用 Azure 门户配置 Key Vault 防火墙和虚拟网络：
 
 1. 浏览要保护的 Key Vault。
-2. 选择“防火墙和虚拟网络”。
-3. 在“允许的访问来源”下，选择“所选网络”。
-4. 若要将现有虚拟网络添加到防火墙和虚拟网络规则，请选择“+ 添加现有虚拟网络”。
-5. 在打开的新边栏选项卡中，选择可访问此 Key Vault 的订阅、虚拟网络和子网。 如果虚拟网络和选择的子网没有启用服务终结点，确认想要启用服务终结点，并选择“启用”。 此操作最多可能需要 15 分钟才能生效。
-6. 在“IP 网络”下，可通过采用 [CIDR（无类域间路由）表示法](https://tools.ietf.org/html/rfc4632)键入 IPv4 地址范围或单个 IP 地址来添加 IPv4 地址范围。
-7. 选择“保存”。
+2. 选择“防火墙和虚拟网络”  。
+3. 在“允许的访问来源”  下，选择“所选网络”  。
+4. 若要将现有虚拟网络添加到防火墙和虚拟网络规则，请选择“+ 添加现有虚拟网络”  。
+5. 在打开的新边栏选项卡中，选择可访问此 Key Vault 的订阅、虚拟网络和子网。 如果虚拟网络和选择的子网没有启用服务终结点，确认想要启用服务终结点，并选择“启用”  。 此操作最多可能需要 15 分钟才能生效。
+6. 在“IP 网络”  下，可通过采用 [CIDR（无类域间路由）表示法](https://tools.ietf.org/html/rfc4632)键入 IPv4 地址范围或单个 IP 地址来添加 IPv4 地址范围。
+7. 选择“保存”。 
 
-还可添加新的虚拟网络和子网，然后通过选择“+ 添加新的虚拟网络”，为新创建的虚拟网络和子网启用服务终结点。 然后遵照提示操作。
+还可添加新的虚拟网络和子网，然后通过选择“+ 添加新的虚拟网络”  ，为新创建的虚拟网络和子网启用服务终结点。 然后遵照提示操作。
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI 
 

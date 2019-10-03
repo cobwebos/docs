@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb44c64540cc461bca4e305f7783f7c6b612591b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996342"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607661"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
 Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登录云和本地资源。 本文介绍每个标识模型的重要概念，以帮助你选择登录到 Azure AD 时想要使用的标识。
@@ -49,7 +49,7 @@ Azure AD 支持以下身份验证方法：
 
 由于大多数组织只想让用户登录 Office 365、SaaS 应用程序和其他基于 Azure AD 的资源，因此，我们建议使用默认的密码哈希同步选项。
  
-有关选择身份验证方法的详细信息，请参阅[选择 Azure Active Directory 混合标识解决方案的正确身份验证方法](../../security/azure-ad-choose-authn.md)
+有关选择身份验证方法的详细信息，请参阅[选择 Azure Active Directory 混合标识解决方案的正确身份验证方法](../../security/fundamentals/choose-ad-authn.md)
 
 ### <a name="password-hash-synchronization"></a>密码哈希同步
 凭借密码哈希同步，可将用户密码的哈希从本地 Active Directory 同步到 Azure AD。 当在本地更改或重置密码时，新密码哈希将立即同步到 Azure AD，以便用户始终可用相同密码访问云资源与本地资源。 密码绝不会被发送到 Azure AD，也不会以明文的形式存储在 Azure AD 中。 你可将密码哈希同步与密码写回一起使用，以在 Azure AD 中启用自助密码重置。
@@ -60,7 +60,7 @@ Azure AD 支持以下身份验证方法：
 
 有关详细信息，请参阅[密码哈希同步](how-to-connect-password-hash-synchronization.md)一文。
 
-### <a name="pass-through-authentication"></a>直通身份验证
+### <a name="pass-through-authentication"></a>传递身份验证
 凭借直通身份验证，将针对本地 Active Directory 控制器验证用户的密码。 密码无需以任何形式存在于 Azure AD 中。 此身份验证允许在对云服务进行身份验证的过程中评估本地策略（例如登录时间限制）。
 
 直通身份验证使用本地环境中已加入域的 Windows Server 2012 R2 计算机上的简单代理。 此代理侦听密码验证请求。 它不需要对 Internet 开放的任何入站端口。
@@ -77,7 +77,7 @@ Azure AD 支持以下身份验证方法：
 
 <center>
 
-![使用 Windows Server 2012 R2 中的 AD FS 联合身份验证](./media/plan-connect-user-signin/federatedsignin.png)</center>
+![在 Windows Server 2012 R2 中与 AD FS 联合](./media/plan-connect-user-signin/federatedsignin.png)</center>
 
 #### <a name="deploy-federation-with-ad-fs-in-windows-server-2012-r2"></a>在 Windows Server 2012 R2 中部署使用 AD FS 的联合身份验证
 
@@ -95,7 +95,7 @@ Azure AD 支持以下身份验证方法：
 
 有关详细信息，请参阅[使用 AD FS 配置 SSO](how-to-connect-install-custom.md#configuring-federation-with-ad-fs)。
 
-### <a name="federation-with-pingfederate"></a>使用 PingFederate 进行联合身份验证
+### <a name="federation-with-pingfederate"></a>向 PingFederate 进行联合身份验证
 凭借联合登录，用户可以使用其本地密码登录到 Azure 基于 AD 的服务。 当用户处于企业网络上时，他们甚至无需输入其密码。
 
 有关配置 PingFederate 以与 Azure Active Directory 一起使用的详细信息，请参阅 [PingFederate 与 Azure Active Directory 和 Office 365 的集成](https://www.pingidentity.com/AzureADConnect)

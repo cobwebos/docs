@@ -1,19 +1,19 @@
 ---
-title: 高级威胁防护 - Azure Database for PostgreSQL
+title: 高级的威胁保护-Azure Database for PostgreSQL-单个服务器
 description: 高级威胁防护会检测异常的数据库活动，指出对数据库的潜在安全威胁。
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 0521283f917d05a56d26503dc6f0af349f1ac1e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 5/6/2019
+ms.openlocfilehash: 81f42183276f95ddfb24fbdc388fef59acbe680e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786059"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65073521"
 ---
-# <a name="azure-database-for-postgresql-advanced-threat-protection"></a>Azure Database for PostgreSQL 高级威胁防护
+# <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>高级的威胁防护中 Azure Database for PostgreSQL-单个服务器
 
 Azure Database for PostgreSQL 的高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试。
 

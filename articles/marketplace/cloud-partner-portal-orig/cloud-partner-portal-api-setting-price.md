@@ -1,30 +1,23 @@
 ---
-title: 虚拟机产品/服务的定价 | Microsoft Docs
-description: 说明指定虚拟机产品/服务定价的三种方法。
+title: 虚拟机产品/服务的定价 |Azure Marketplace
+description: 说明指定虚拟机套餐定价的三种方法。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a029477dfd8046863ebfe34cd839562a0b1f3d87
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.author: pabutler
+ms.openlocfilehash: e398b43e679fb6420c2256e77d34359ae537ac1c
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607785"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868749"
 ---
-<a name="pricing-for-virtual-machine-offers"></a>虚拟机产品/服务的定价
+<a name="pricing-for-virtual-machine-offers"></a>虚拟机套餐的定价
 ==================================
 
-指定虚拟机产品/服务定价的方法有三种：自定义核心定价、按核心定价和电子表格定价。
+指定虚拟机套餐定价的方法有三种：自定义核心定价、按核心定价和电子表格定价。
 
 
 <a name="customized-core-pricing"></a>自定义核心定价
@@ -41,21 +34,31 @@ ms.locfileid: "59607785"
             "currency": "USD",
                 "individually": 
                 {
-                    "sharedcore": 2,
+                    "sharedcore": 1,
                     "1core": 2,
-                    "2core": 3,
-                    "4core": 4,
-                    "6core": 5,
+                    "2core": 2,
+                    "4core": 2,
+                    "6core": 2,
                     "8core": 2,
+                    "10core": 4,
                     "12core": 4,
                     "16core": 4,
                     "20core": 4,
                     "24core": 4,
-                    "32core": 4,
-                    "36core": 4,
-                    "40core": 4,
-                    "64core": 4,
-                    "128core": 4
+                    "32core": 6,
+                    "36core": 6,
+                    "40core": 6,
+                    "44core": 6,
+                    "48core": 10,
+                    "60core": 10,
+                    "64core": 10,
+                    "72core": 10,
+                    "80core": 12,
+                    "96core": 12,
+                    "120core": 15,
+                    "128core": 15,
+                    "208core": 20,
+                    "416core": 30
                 }
         }
         ...
@@ -84,7 +87,7 @@ ms.locfileid: "59607785"
 <a name="spreadsheet-pricing"></a>电子表格定价
 -------------------
 
-发布者还可以将其定价电子表格上传到临时存储位置，然后像其他文件项目一样在请求中包含 URI。 然后上传电子表格，进行转换以评估指定的价格表，最后使用定价信息更新产品/服务。 对产品/服务的后续 GET 请求将返回电子表格 URI 和该区域的评估价格。
+发布者还可以将其定价电子表格上传到临时存储位置，然后像其他文件项目一样在请求中包含 URI。 然后上传电子表格，进行转换以评估指定的价格表，最后使用定价信息更新套餐。 对产品/服务的后续 GET 请求将返回电子表格 URI 和该区域的评估价格。
 
 ``` json
      "virtualMachinePricing": 
@@ -97,7 +100,13 @@ ms.locfileid: "59607785"
      }
 ```
 
-<a name="regions"></a>区域
+<a name="new-core-sizes-added-on-722019"></a>7/2/2019 上增加了新的核心大小
+---------------------------
+
+VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价格 (基于内核数) 通知。  新价格适用于核心大小10、44、48、60、120、208和416。  对于现有 VM, 将根据当前价格自动计算这些核心大小的新价格。  发布者截至2019年8月1日, 以查看其他价格并进行任何所需的更改。  在此日期之后, 如果发布者尚未重新发布, 则这些新的核心大小的自动计算价格将生效。
+
+
+<a name="regions"></a>Regions
 -------
 
 下表显示了可以为自定义核心定价指定的不同区域及其对应的货币代码。
@@ -135,7 +144,7 @@ ms.locfileid: "59607785"
 | HU         | 匈牙利              | HUF               |
 | IS         | 冰岛              | ISK               |
 | IN         | 印度                | INR               |
-| ID         | 印度尼西亚            | IDR               |
+| id         | 印度尼西亚            | IDR               |
 | IE         | 爱尔兰              | EUR               |
 | IL         | 以色列               | ILS               |
 | IT         | 意大利                | EUR               |
@@ -181,7 +190,7 @@ ms.locfileid: "59607785"
 | LK         | 斯里兰卡            | USD               |
 | SE         | 瑞典               | SEK               |
 | CH         | 瑞士          | CHF               |
-| TW         | 台湾               | TWD               |
+| TW         | 中国台湾               | TWD               |
 | TH         | 泰国             | THB               |
 | TT         | 特立尼达和多巴哥  | TTD               |
 | TN         | 突尼斯              | TND               |

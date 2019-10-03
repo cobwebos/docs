@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 827d7d9a3d584342703a84dd2a42e5cda9b3a656
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.date: 08/08/2019
+ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579404"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950411"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
 
@@ -24,9 +24,9 @@ ms.locfileid: "58579404"
 | **分区计数** | 在创建时设置此属性，以便为设备到云事件引入定义[分区](../event-hubs/event-hubs-features.md#partitions)数。 |
 | **保留时间**  | 此属性指定 IoT 中心保留消息的时间（以天为单位）。 默认值为一天，但可以增加到七天。 |
 
-IoT 中心允许将数据保留在内置的事件中心，最长保留期为 7 天。 可以在创建 IoT 中心期间设置保留时间。 在 IoT 中心的数据保留时间取决于你的 IoT 中心层和单位类型。 就大小来说，内置事件中心能够保留的消息的最大大小为至少 24 小时的配额。 例如，使用 1 个 S1 单元时，在每条消息的大小为 4k 的情况下，IoT 中心提供的存储足以保留至少 40 万条消息。 如果设备发送的消息较小，则这些消息可能会保留更长的时间（最多 7 天），具体取决于使用的存储。 我们保证至少将数据保留指定的保留时间。
+IoT 中心允许将数据保留在内置的事件中心，最长保留期为 7 天。 可以在创建 IoT 中心期间设置保留时间。 IoT 中心的数据保留时间取决于你的 IoT 中心层和单位类型。 就大小来说，内置事件中心能够保留的消息的最大大小为至少 24 小时的配额。 例如，使用 1 个 S1 单元时，在每条消息的大小为 4k 的情况下，IoT 中心提供的存储足以保留至少 40 万条消息。 如果设备发送的消息较小，则这些消息可能会保留更长的时间（最多 7 天），具体取决于使用的存储。 我们保证至少将数据保留指定的保留时间。
 
-IoT 中心还支持用户管理内置设备到云接收终结点上的使用者组。
+IoT 中心还支持用户管理内置设备到云接收终结点上的使用者组。 每个 IoT 中心最多可以有20个使用者组。
 
 如果使用[消息路由](iot-hub-devguide-messages-d2c.md)，并启用了[回退路由](iot-hub-devguide-messages-d2c.md#fallback-route)，则与任何路由上的查询不匹配的所有消息都会进入内置终结点。 如果禁用此回退路由，将删除与任何查询都不匹配的消息。
 
@@ -48,9 +48,9 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
     ![设备到云的设置](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
-在门户中，“与事件中心兼容的终结点”字段包含完整的事件中心连接字符串，如下所示：**Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**. 如果所用 SDK 需求其他值，则这些值将会是：
+在门户中，“与事件中心兼容的终结点”字段包含完整的事件中心连接字符串，如下所示：**终结点 = sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName = iothubowner;SharedAccessKey = keykeykeykeykeykey =;EntityPath = iothub-ehub-1234-123456**。 如果所用 SDK 需求其他值，则这些值将会是：
 
-| 名称 | 值 |
+| 姓名 | ReplTest1 |
 | ---- | ----- |
 | 终结点 | sb://abcd1234namespace.servicebus.windows.net/ |
 | 主机名 | abcd1234namespace.servicebus.windows.net |
@@ -60,7 +60,7 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 可以用来连接到内置的、与事件中心兼容的且由 IoT 中心公开的终结点的 SDK 包括：
 
-| 语言 | SDK 中 IsInRole 中的声明 | 示例 | 说明 |
+| 语言 | SDK | 示例 | 说明 |
 | -------- | --- | ------ | ----- |
 | .NET | https://github.com/Azure/azure-event-hubs-dotnet | [快速入门](quickstart-send-telemetry-dotnet.md) | 使用与事件中心兼容的信息 |
  Java | https://github.com/Azure/azure-event-hubs-java | [快速入门](quickstart-send-telemetry-java.md) | 使用与事件中心兼容的信息 |
@@ -69,7 +69,7 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 可以与内置的、与事件中心兼容的且由 IoT 中心公开的终结点配合使用的产品集成包括：
 
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。 请参阅[处理 IoT 中心使用 Azure Functions 的数据](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/)。
+* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。 请参阅[利用 Azure Functions 处理 IoT 中心的数据](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/)。
 * [Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/)。 请参阅[将数据作为流分析的输入进行流式传输](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub)。
 * [时序见解](https://docs.microsoft.com/azure/time-series-insights/)。 请参阅[向时序见解环境添加 IoT 中心事件源](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md)。
 * [Apache Storm Spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md)。 可以在 GitHub 上查看 [Spout 源代码](https://github.com/apache/storm/tree/master/external/storm-eventhubs) 。

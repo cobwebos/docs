@@ -2,20 +2,20 @@
 title: 快速入门：在 Azure SQL 数据仓库中横向扩展计算资源 - T-SQL | Microsoft Docs
 description: 缩放 Azure SQL 数据仓库使用 T-SQL 和 SQL Server Management Studio (SSMS) 中的计算。 横向扩展计算为提高性能或缩放重新计算以节约成本。
 services: sql-data-warehouse
-author: kevinvngo
+author: Antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.subservice: manage
+ms.subservice: implement
 ms.date: 04/17/2018
-ms.author: kevin
+ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a734e0173a3432e03c5876d30cf54ea3fd23d4dc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9a2a11c2263500970e2f4294dd5d3711a57be349
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460336"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574575"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>快速入门：使用 T-SQL 在 Azure SQL 数据仓库中缩放计算资源
 
@@ -29,7 +29,7 @@ ms.locfileid: "55460336"
  
 ## <a name="create-a-data-warehouse"></a>创建数据仓库
 
-使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。 完成快速入门，以确保防火墙规则并可以连接到数据仓库从 SQL Server Management Studio 中。
+使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库  。 完成快速入门，以确保防火墙规则并可以连接到数据仓库从 SQL Server Management Studio 中。
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以服务器管理员的身份连接到服务器
 
@@ -37,21 +37,21 @@ ms.locfileid: "55460336"
 
 1. 打开 SQL Server Management Studio。
 
-2. 在“连接到服务器”对话框中，输入以下信息：
+2. 在“连接到服务器”对话框中，输入以下信息： 
 
    | 设置       | 建议的值 | 说明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | 服务器类型 | 数据库引擎 | 此值是必需的 |
-   | 服务器名称 | 完全限定的服务器名称 | 下面是一个示例：mynewserver-20171113.database.windows.net。 |
-   | 身份验证 | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
+   | 服务器名称 | 完全限定的服务器名称 | 下面是一个示例：mynewserver-20171113.database.windows.net  。 |
+   | Authentication | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
    | 登录 | 服务器管理员帐户 | 在创建服务器时指定的帐户。 |
    | 密码 | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
 
     ![连接到服务器](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-4. 单击“连接”。 此时会在 SSMS 中打开“对象资源管理器”窗口。 
+4. 单击“连接”  。 此时会在 SSMS 中打开“对象资源管理器”窗口。 
 
-5. 在对象资源管理器中，展开“数据库”。 然后展开“mySampleDatabase”，查看新数据库中的对象。
+5. 在对象资源管理器中，展开“数据库”  。 然后展开“mySampleDatabase”  ，查看新数据库中的对象。
 
     ![数据库对象](media/create-data-warehouse-portal/connected.png) 
 
@@ -61,7 +61,7 @@ ms.locfileid: "55460336"
 若要查看数据仓库当前数据仓库单位：
 
 1. 在连接到下 **mynewserver 20171113.database.windows.net**，展开**系统数据库**。
-2. 右键单击“master”，并单击“新建查询”。 此时会打开一个新的查询窗口。
+2. 右键单击“master”，并单击“新建查询”。   此时会打开一个新的查询窗口。
 3. 运行以下查询，从 sys.database_service_objectives 动态管理视图中选择。 
 
     ```sql
@@ -87,12 +87,12 @@ ms.locfileid: "55460336"
 
 更改数据仓库单位：
 
-1. 右键单击“master”，并单击“新建查询”。
+1. 右键单击“master”，并单击“新建查询”。  
 2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) T-SQL 语句修改的服务目标。 运行以下查询以将服务目标更改为 DW300。 
 
     ```Sql
     ALTER DATABASE mySampleDataWarehouse
-    MODIFY (SERVICE_OBJECTIVE = 'DW300')
+    MODIFY (SERVICE_OBJECTIVE = 'DW300c')
     ;
     ```
 
@@ -101,7 +101,7 @@ ms.locfileid: "55460336"
 
 若要轮询服务对象更改状态，请执行以下操作：
 
-1. 右键单击“master”，并单击“新建查询”。
+1. 右键单击“master”，并单击“新建查询”。  
 2. 运行以下查询来轮询 sys.dm_operation_status DMV。
 
     ```sql

@@ -1,0 +1,85 @@
+- name: IoT 即插即用文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 IoT 即插即用？
+      href: overview-iot-plug-and-play.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 使用设备功能模型创建设备
+      href: quickstart-create-pnp-device.md
+    - name: 将设备连接到 IoT 中心
+      href: quickstart-connect-pnp-device.md
+    - name: 将设备连接到 IoT Central
+      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: 连接到解决方案中的设备
+      href: quickstart-connect-pnp-device-solution.md
+- name: 教程
+  items:
+    - name: 使用 VS Code 创建设备
+      href: tutorial-pnp-visual-studio-code.md
+    - name: 构建可供认证的设备
+      href: tutorial-build-device-certification.md
+    - name: 认证你的设备
+      href: tutorial-certification-test.md
+- name: 概念
+  items:
+    - name: 术语表
+      href: iot-plug-and-play-glossary.md
+    - name: 开发人员指南
+      href: concepts-developer-guide.md
+    - name: 公共接口
+      href: concepts-common-interfaces.md
+    - name: 模型发现
+      href: concepts-model-discovery.md
+    - name: 限制和配额
+      href: concepts-limits-quotas.md
+- name: 操作指南
+  items:
+    - name: 使用 Visual Studio 和 Visual Studio Code 进行开发
+      href: howto-develop-with-vs-vscode.md
+    - name: 安装 IoT 资源管理器
+      href: howto-install-iot-explorer.md
+    - name: 安装 Azure CLI 扩展
+      href: howto-install-pnp-cli.md
+    - name: 载入到 IoT 门户
+      href: howto-onboard-portal.md
+    - name: 管理模型
+      href: howto-manage-models.md
+    - name: 连接到设备并与之交互
+      href: howto-develop-solution.md
+- name: 引用
+  items:
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
+    - name: 生成 REST 安全令牌
+      href: howto-generate-sas-token.md
+- name: 相关内容
+  items:
+    - name: 解决方案
+      items:
+        - name: IoT Central
+          href: /azure/iot-central
+        - name: IoT 解决方案加速器
+          href: /azure/iot-accelerators
+    - name: 平台服务
+      items:
+        - name: IoT 中心
+          href: /azure/iot-hub
+        - name: IoT 即插即用
+          href: /azure/iot-pnp
+        - name: IoT 中心设备预配服务
+          href: /azure/iot-dps
+        - name: IoT 服务 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: 地图
+          href: /azure/azure-maps
+        - name: 时序见解
+          href: /azure/time-series-insights
+    - name: IoT Edge
+      items:
+        - name: Azure IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 设备 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

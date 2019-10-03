@@ -12,11 +12,11 @@ ms.date: 03/21/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7611f5f16111b5d8b0d2d293750f658125e50837
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878198"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60535423"
 ---
 # <a name="constituency-parsing"></a>成分分析
 
@@ -29,7 +29,7 @@ ms.locfileid: "55878198"
 
 ## <a name="phrases"></a>短语
 
-若要成为语言学家，就不能只将短语看作是一系列字词。
+若要成为语言学家，就不能只将短语  看作是一系列字词。
 一组字词必须组合在一起，并在句子中起到特定作用，才能称为短语。
 这样的一组字词可以进行整体移动或替换，而句子仍应流畅且合乎语法。
 
@@ -61,11 +61,11 @@ ms.locfileid: "55878198"
 ![树](./Images/tree.png)
 
 在此树中，标记为“NP”的分支是名词短语。
-有多个此类短语：I（我）、a new hybrid automobile（新混合动力汽车）、Bluetooth（蓝牙）和 a new hybrid automobile with Bluetooth（带蓝牙的新混合动力汽车）。
+有多个此类短语：I  （我）、a new hybrid automobile  （新混合动力汽车）、Bluetooth  （蓝牙）和 a new hybrid automobile with Bluetooth  （带蓝牙的新混合动力汽车）。
 
 ## <a name="phrase-types"></a>短语类型
 
-| Label | 说明 | 示例 |
+| Label | 描述 | 示例 |
 |-------|-------------|---------|
 |ADJP   | 形容词短语 | "so rude" |
 |ADVP   | 副词短语 | "clear through" |

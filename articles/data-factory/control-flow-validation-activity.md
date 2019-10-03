@@ -1,26 +1,25 @@
 ---
-title: Azure 数据工厂中的验证活动 |Microsoft Docs
-description: 验证活动不会继续执行管道，直到它验证了用户指定特定条件的附加数据集。
+title: Azure 数据工厂中的 Validation 活动 | Microsoft Docs
+description: Validation 活动在使用用户指定的某些条件验证附加的数据集之前，不会继续执行管道。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: shlo
-ms.openlocfilehash: 46447bdbea93d1f99c5682cf878c2035e6f49b78
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 77fdab04e03429d135875cb2ef223e8c23d312a2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522891"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141610"
 ---
-# <a name="validation-activity-in-azure-data-factory"></a>Azure 数据工厂中的验证活动
-可以在管道中使用验证以确保管道仅继续执行，一旦其已经验证附加数据集的引用存在，它满足指定的条件时，或达到超时。
+# <a name="validation-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Validation 活动
+可以在管道中使用 Validation，以确保管道仅在验证附加数据集引用存在并满足指定条件或已达到超时后才继续执行。
 
 
 ## <a name="syntax"></a>语法
@@ -59,15 +58,15 @@ ms.locfileid: "58522891"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 需要
+属性 | 说明 | 允许的值 | 必填
 -------- | ----------- | -------------- | --------
-名称 | 验证活动的名称 | String | 是 |
-类型 | 必须设置为**验证**。 | String | 是 |
-dataset | 活动将阻止执行，直到其已经验证此数据集引用存在，并且满足指定的条件时，或达到超时。 提供数据集应支持"MinimumSize"或"ChildItems"属性。 | 数据集引用 | 是 |
-超时 | 指定活动运行的超时。 如果未不指定任何值，默认值为 7 天 ("7.00:00:00")。 格式是 d.hh:mm:ss | String | 否 |
-进入睡眠状态 | 以秒为单位验证尝试之间延迟。 如果未不指定任何值，默认值为 10 秒。 | 整数 | 否 |
-childItems | 检查文件夹是否包含子项目。 可以设置为 true:验证该文件夹存在并且它具有项。 阻止，直到至少一项是文件夹中存在或达到超时值。-false:验证该文件夹存在并且为空。 达到受到阻止，直到文件夹为空或直到超时值。 如果未不指定任何值，直到该文件夹存在，或达到超时，将阻止活动。 | Boolean | 否 |
-minimumSize | 以字节为单位的文件的最小大小。 如果未不指定任何值，默认值为 0 字节 | 整数 | 否 |
+name | “Validation”活动的名称 | String | 是 |
+type | 必须设置为“验证”。 | String | 是 |
+dataset | 活动将阻止执行，直到它验证此数据集引用存在并满足指定的条件，或者达到超时为止。 提供的数据集应支持“MinimumSize”或“ChildItems”属性。 | 数据集引用 | 是 |
+超时 | 指定活动运行的超时。 如果未指定值，则默认值为 7 天 ("7.00:00:00")。 格式为 d.hh:mm:ss | String | 否 |
+sleep | 验证尝试之间的延迟（以秒为单位）。 如果未指定值，则默认值为 10 秒。 | 整数 | 否 |
+childItems | 检查文件夹是否包含子项目。 可以设置为 -true：验证文件夹是否存在以及它是否包含项目。 一直阻止，直到文件夹中至少存在一个项目或达到超时值为止。-false：验证文件夹是否存在以及它是否为空。 一直阻止，直到文件夹为空或达到超时值为止。 如果未指定值，则活动将一直阻止，直到文件夹存在或达到超时为止。 | Boolean | 否 |
+minimumSize | 文件的最小大小（以字节为单位）。 如果未指定值，则默认值为 0 字节 | 整数 | 否 |
 
 
 ## <a name="next-steps"></a>后续步骤

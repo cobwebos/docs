@@ -10,20 +10,21 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 82e6a5b66342e58e62da029d617cbd1d74c28149
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 333875472d9b859196c4d828061301b9d32c4d5a
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864360"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705118"
 ---
 # <a name="affiliation-entity"></a>隶属关系实体
 
 <sub> *以下属性特定于隶属关系实体。(Ty = '5') </sub>
 
-Name    |说明                            |Type       | 操作
+名称    |描述                            |type       | 操作
 ------- | ------------------------------------- | --------- | ----------------------------
-ID      |实体 ID                              |Int64      |等于
+Id      |实体 ID                              |Int64      |等于
 AfN     |隶属关系规范化名称        |String     |等于
 DAfN    |隶属关系显示名称       |String     |无
 CC      |隶属关系引文总计数           |Int32      |无  
@@ -31,6 +32,6 @@ ECC     |隶属关系估计引文总计数 |Int32      |无
 
 ## <a name="extended-metadata-attributes"></a>扩展的元数据属性 ##
 
-Name    | 说明               
+名称    | 描述               
 --------|---------------------------    
-PC      |隶属关系的论文计数
+电脑      |隶属关系的论文计数

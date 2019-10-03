@@ -1,129 +1,171 @@
 ---
-title: 从 Azure 逻辑应用调用 REST 终结点 | Microsoft Docs
-description: 在 Azure 逻辑应用中使用 HTTP + Swagger 连接器，自动执行与 REST 终结点通信的任务和工作流
+title: 从 Azure 逻辑应用连接到 REST 终结点
+description: 使用 Azure 逻辑应用监视自动化的任务、 流程和工作流中的 REST 终结点
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
-ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 07/05/2019
 tags: connectors
-ms.topic: article
-ms.date: 07/18/2016
-ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f0410ed7a98e4838e41407868cf26b5254811ae3
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893375"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541592"
 ---
-# <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP + Swagger 连接器调用 REST 终结点
+# <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用调用 REST 终结点
 
-在逻辑应用工作流中使用 HTTP + Swagger 操作时，可以通过 [Swagger 文档](https://swagger.io)向任意 REST 终结点创建一流连接器。 还可以扩展逻辑应用以调用任何带有一流逻辑应用设计器体验的 REST 终结点。
+与[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置 HTTP + Swagger 连接器，你可以自动执行定期调用通过任何 REST 终结点的工作流[Swagger 文件](https://swagger.io)通过构建逻辑应用。 HTTP + Swagger 触发器和操作与相同[HTTP 触发器和操作](connectors-native-http.md)，但通过公开的 API 结构和 Swagger 文件描述的输出提供在逻辑应用设计器更好的体验。 若要实现轮询触发器，请按照中所述的轮询模式[创建自定义 Api 以从逻辑应用中调用其他 Api、 服务和系统](../logic-apps/logic-apps-create-api-app.md#polling-triggers)。
 
-若要了解如何使用连接器创建逻辑应用，请参阅[创建新的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+## <a name="prerequisites"></a>必备组件
 
-## <a name="use-http--swagger-as-a-trigger-or-an-action"></a>将 HTTP + Swagger 用作触发器或操作
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功能相同，但通过公开来自 [Swagger 元数据](https://swagger.io)的 API 结构和输出，在逻辑应用设计器中提供更好的体验。 HTTP + Swagger 连接器还可用作触发器。 如果要实现轮询触发器，请遵循[创建用于调用逻辑应用的其他 API、服务和系统的自定义 API](../logic-apps/logic-apps-create-api-app.md#polling-triggers) 中所述的轮询模式。
+* 描述目标 REST 终结点的 Swagger 文件 URL
 
-深入了解[逻辑应用触发器和操作](../connectors/apis-list.md)。
+  通常情况下，REST 终结点必须满足此条件连接器才能正常：
 
-以下示例演示如何在逻辑应用中将 HTTP + Swagger 操作用作工作流中的操作。
+  * Swagger 文件必须驻留在可公开访问的 HTTPS URL。
 
-1. 选择“新步骤”按钮。
-2. 选择“添加操作”。
-3. 在操作搜索框中，键入“swagger”列出 HTTP + Swagger 操作。
-   
-    ![选择 HTTP + Swagger 操作](./media/connectors-native-http-swagger/using-action-1.png)
-4. 键入 Swagger 文档的 URL：
-   
-   * 若要从逻辑应用设计器工作，URL 必须是 HTTPS 终结点并已启用 CORS。
-   * 如果 Swagger 文档不满足此要求，可以使用启用 CORS 的 Azure 存储来存储该文档。
-5. 单击“下一步”从 Swagger 文档读取并呈现。
-6. 添加 HTTP 调用所需的任何参数。
-   
-    ![完成 HTTP 操作](./media/connectors-native-http-swagger/using-action-2.png)
-7. 若要保存并发布逻辑应用，请在设计器工具栏上单击“保存”。
+  * Swagger 文件必须具有[跨域资源共享 (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)启用。
 
-### <a name="host-swagger-from-azure-storage"></a>从 Azure 存储托管 Swagger
-可能要引用未托管或者不满足设计器的安全和跨源要求的 Swagger 文档。 要解决此问题，可以将 Swagger 文档存储在 Azure 存储中，并使 CORS 引用该文档。  
+  若要引用未托管或者不满足安全和跨源要求的 Swagger 文件，你可以[Swagger 文件上传到 Azure 存储帐户中的 blob 容器](#host-swagger)，并因此在该存储帐户上启用 CORS可以引用该文件。
 
-下面是在 Azure 存储中创建、配置和存储 Swagger 文档的步骤：
+  在本主题使用示例[认知服务人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/overview)，这要求[认知服务帐户和访问密钥](../cognitive-services/cognitive-services-apis-create-account.md)。
 
-1. [创建具有 Azure Blob 存储的 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。 要执行此步骤，请将权限设置为**公共访问**。
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-2. 在 blob 上启用 CORS。 
+* 逻辑应用从你想要调用的目标终结点。 开始使用 HTTP + Swagger 触发器，请[创建空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 为使用 HTTP + Swagger 操作，使用所需的任何触发器启动逻辑应用。 此示例使用 HTTP + Swagger 触发器为第一步。
 
-   若要自动配置该设置，可使用[此 PowerShell 脚本](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)。
+## <a name="add-an-http--swagger-trigger"></a>添加 HTTP + Swagger 触发器
 
-3. 将 Swagger 文件上传到 blob 中。 
+此内置的触发器将 HTTP 请求发送到 Swagger 文件，用于描述 REST API 并返回响应，其中包含该文件的内容的 URL。
 
-   可通过 [Azure 门户](https://portal.azure.com)或 [Azure 存储资源管理器](https://storageexplorer.com/)之类的工具执行此步骤。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
 
-4. 在 Azure Blob 存储中引用文档的 HTTPS 链接。 
+1. 在设计器中，在搜索框中，输入作为筛选器的"swagger"。 从**触发器**列表中，选择**HTTP + Swagger**触发器。
 
-   该链接使用此格式：
+   ![选择 HTTP + Swagger 触发器](./media/connectors-native-http-swagger/select-http-swagger-trigger.png)
 
-   `https://*storageAccountName*.blob.core.windows.net/*container*/*filename*`
+1. 在中**SWAGGER 终结点 URL** ，输入的 URL 的 Swagger 文件，并选择**下一步**。
 
-## <a name="technical-details"></a>技术详细信息
-下面是此 HTTP + Swagger 连接器支持的触发器和操作的详细信息。
+   此示例使用位于美国西部区域中的 Swagger URL[认知服务人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
-## <a name="http--swagger-triggers"></a>HTTP + Swagger 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 HTTP + Swagger 连接器具有一个触发器。 [了解有关触发器的详细信息](../connectors/apis-list.md)。
+   `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-| 触发器 | 描述 |
-| --- | --- |
-| HTTP + Swagger |进行 HTTP 调用并返回响应内容 |
+   ![输入 Swagger 终结点 URL](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
-## <a name="http--swagger-actions"></a>HTTP + Swagger 操作
-操作是由在逻辑应用中定义的工作流执行的操作。 HTTP + Swagger 连接器具有一个可能的操作。 [了解有关操作的详细信息](../connectors/apis-list.md)。
+1. 当在设计器显示由 Swagger 文件描述的操作时，选择你想要使用的操作。
 
-| 操作 | 描述 |
-| --- | --- |
-| HTTP + Swagger |进行 HTTP 调用并返回响应内容 |
+   ![Swagger 文件中的操作](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
-### <a name="action-details"></a>操作详细信息
-HTTP + Swagger 连接器附带一个可能的操作。 下面是每个操作的相关信息、其必填和选填输入字段以及与其用途相关联的对应输出详细信息。
+1. 对于触发器参数，而有所不同基于所选的操作，你想要包含终结点调用中提供的值。 设置你希望多久触发器的重复调用的终结点。
 
-#### <a name="http--swagger"></a>HTTP + Swagger
-在 Swagger 元数据的协助下发出 HTTP 出站请求。
-星号 (*) 表示必填字段。
+   此示例将重命名触发器绑定到"HTTP + Swagger 触发器：人脸-检测"，以便具有更具描述性的名称。
 
-| 显示名称 | 属性名称 | 描述 |
-| --- | --- | --- |
-| 方法* |方法 |要使用的 HTTP 谓词。 |
-| URI* |uri |HTTP 请求的 URI。 |
-| 标头 |headers |要包含的 HTTP 标头的 JSON 对象。 |
-| Body |body |HTTP 请求正文。 |
-| Authentication |authentication |要用于请求的身份验证。 有关详细信息，请参阅 [HTTP 连接器](connectors-native-http.md#authentication)。 |
+   ![操作详细信息](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
-**输出详细信息**
+1. 若要添加其他可用参数，请打开**添加新参数**列表，然后选择所需的参数。
 
-HTTP 响应
+   HTTP + Swagger 可用的身份验证类型的详细信息，请参阅[进行身份验证的 HTTP 触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)。
 
-| 属性名称 | 数据类型 | 描述 |
-| --- | --- | --- |
-| 标头 |对象 |响应标头 |
-| Body |对象 |响应对象 |
-| 状态代码 |int |HTTP 状态代码 |
+1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
-### <a name="http-responses"></a>HTTP 响应
-对各种操作进行调用时，可能得到特定响应。 下表概述对应的响应和说明。
+1. 完成后，请记住保存逻辑应用。 在设计器工具栏上，选择**保存**。
 
-| 名称 | 描述 |
-| --- | --- |
-| 200 |OK |
-| 202 |已接受 |
-| 400 |错误的请求 |
-| 401 |未授权 |
-| 403 |禁止 |
-| 404 |未找到 |
-| 500 |内部服务器错误。 发生未知错误。 |
+## <a name="add-an-http--swagger-action"></a>添加 HTTP + Swagger 操作
+
+此内置操作到 Swagger 文件，用于描述 REST API 并返回响应，其中包含该文件的内容的 URL 发出 HTTP 请求。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
+
+1. 在你想要添加 HTTP + Swagger 中的步操作中，选择**新步骤**。
+
+   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择加号 ( **+** ) 的出现，并选择**添加操作**。
+
+1. 在设计器中，在搜索框中，输入作为筛选器的"swagger"。 从**操作**列表中，选择**HTTP + Swagger**操作。
+
+    ![选择 HTTP + Swagger 操作](./media/connectors-native-http-swagger/select-http-swagger-action.png)
+
+1. 在中**SWAGGER 终结点 URL** ，输入的 URL 的 Swagger 文件，并选择**下一步**。
+
+   此示例使用位于美国西部区域中的 Swagger URL[认知服务人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+
+   `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
+
+   ![输入 Swagger 终结点 URL](./media/connectors-native-http-swagger/http-swagger-action-parameters.png)
+
+1. 当在设计器显示由 Swagger 文件描述的操作时，选择你想要使用的操作。
+
+   ![Swagger 文件中的操作](./media/connectors-native-http-swagger/http-swagger-action-operations.png)
+
+1. 为操作参数，而有所不同基于所选的操作，你想要包含终结点调用中提供的值。
+
+   此示例中没有任何参数，但重命名操作保存到"HTTP + Swagger 操作：人脸-识别"，以便具有更具描述性的名称。
+
+   ![操作详细信息](./media/connectors-native-http-swagger/http-swagger-action-operation-details.png)
+
+1. 若要添加其他可用参数，请打开**添加新参数**列表，然后选择所需的参数。
+
+   HTTP + Swagger 可用的身份验证类型的详细信息，请参阅[进行身份验证的 HTTP 触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)。
+
+1. 完成后，请记住保存逻辑应用。 在设计器工具栏上，选择**保存**。
+
+<a name="host-swagger"></a>
+
+## <a name="host-swagger-in-azure-storage"></a>在 Azure 存储托管 Swagger
+
+您可以引用未托管或者不满足安全和跨源要求通过将该文件上传到 Azure 存储帐户中 blob 容器并在该存储帐户上启用 CORS 的 Swagger 文件。 若要创建、 设置，并存储在 Azure 存储中的 Swagger 文件，请按照下列步骤：
+
+1. [创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。
+
+1. 现在为 blob 中启用 CORS。 在存储帐户的菜单中选择**CORS**。 上**Blob 服务**选项卡上，指定这些值，然后选择**保存**。
+
+   | 属性 | 值 |
+   |----------|-------|
+   | **允许的来源** | `*` |
+   | **允许的方法** | `GET`、`HEAD`、`PUT` |
+   | **允许的标头** | `*` |
+   | **公开的标头** | `*` |
+   | **最大期限**（以秒为单位） | `200` |
+   |||
+
+   虽然此示例使用[Azure 门户](https://portal.azure.com)，可以使用一种工具，如[Azure 存储资源管理器](https://storageexplorer.com/)，或使用此示例自动配置此设置[PowerShell 脚本](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1).
+
+1. [创建 blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 在容器上**概述**窗格中，选择**更改访问级别**。 从**公共访问级别**列表中，选择**Blob （仅限对 blob 的匿名读取访问）** ，然后选择**确定**。
+
+1. [将 Swagger 文件上传到 blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)，而是通过[Azure 门户](https://portal.azure.com)或[Azure 存储资源管理器](https://storageexplorer.com/)。
+
+1. 若要引用的 blob 容器中的文件，请使用遵循此格式，这是区分大小写的 HTTPS 链接：
+
+   `https://<storage-account-name>.blob.core.windows.net/<blob-container-name>/<swagger-file-name>`
+
+## <a name="connector-reference"></a>连接器参考
+
+以下是详细信息的输出的 HTTP + Swagger 触发器或操作。 HTTP + Swagger 调用将返回此信息：
+
+| 属性名称 | Type | 描述 |
+|---------------|------|-------------|
+| headers | object | 从请求标头 |
+| body | object | JSON 对象 | 具有从请求的正文内容的对象 |
+| 状态代码 | int | 请求中的状态代码 |
+|||
+
+| 状态代码 | 描述 |
+|-------------|-------------|
+| 200 | OK |
+| 202 | 已接受 |
+| 400 | 错误的请求 |
+| 401 | 未授权 |
+| 403 | 禁止 |
+| 404 | 未找到 |
+| 500 | 内部服务器错误。 发生未知错误。 |
+|||
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [查找其他连接器](apis-list.md)
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

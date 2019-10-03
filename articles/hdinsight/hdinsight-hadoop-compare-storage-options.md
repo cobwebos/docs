@@ -6,17 +6,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/17/2019
+ms.openlocfilehash: b73810b37020bf01c1088f194bd426e93fd95d2c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361782"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180765"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比较用于与 Azure HDInsight 群集配合使用的存储选项
 
-你可以选择几个不同的 Azure 存储服务时创建 HDInsight 群集：
+创建 HDInsight 群集时，可以在几个不同的 Azure 存储服务之间进行选择：
 
 * Azure 存储
 * Azure Data Lake Storage Gen2
@@ -24,34 +24,38 @@ ms.locfileid: "59361782"
 
 本文概述了这些存储类型和其独特功能。
 
-下表总结了使用不同版本的 HDInsight 支持的 Azure 存储服务：
+下表汇总了不同版本的 HDInsight 支持的 Azure 存储服务：
 
-| 存储服务 | 帐户类型 | Namespace 类型 | 支持的服务 | 支持的性能层 | 支持的访问层 | HDInsight 版本 | 群集类型 |
+| 存储服务 | 帐户类型 | 命名空间类型 | 支持的服务 | 支持的性能层 | 支持的访问层 | HDInsight 版本 | 群集类型 |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| 常规用途 V2 | 分层 （文件系统） | Blob | 标准 | 热、 冷、 存档 | 3.6+ | All |
-|Azure 存储| 常规用途 V2 | 对象 | Blob | 标准 | 热、 冷、 存档 | 3.6+ | All |
-|Azure 存储| 常规用途 V1 | 对象 | Blob | 标准 | 不适用 | All | All |
-|Azure 存储| Blob 存储 | 对象 | Blob | 标准 | 热、 冷、 存档 | All | All |
-|Azure Data Lake Storage Gen1| 不适用 | 分层 （文件系统） | 不适用 | 不适用 | 不适用 | 仅 3.6 | 除 HBase |
+|Azure Data Lake Storage Gen2| 常规用途 V2 | 层次结构（文件系统） | Blob | 标准 | 热、冷、存档 | 3.6+ | All |
+|Azure 存储| 常规用途 V2 | Object | Blob | 标准 | 热、冷、存档 | 3.6+ | All |
+|Azure 存储| 常规用途 V1 | Object | Blob | 标准 | 不可用 | All | All |
+|Azure 存储| Blob 存储 * * | Object | 块 Blob | 标准 | 热、冷、存档 | All | All |
+|Azure Data Lake Storage Gen1| 不可用 | 层次结构（文件系统） | 不可用 | 不可用 | 不可用 | 仅3。6 | 除 HBase 之外的所有 |
 
-有关 Azure 存储访问层的详细信息，请参阅[Azure Blob 存储：高级 （预览版）、 热、 冷和存档存储层](../storage/blobs/storage-blob-storage-tiers.md)
+\* * 对于 HDInsight 群集，只有辅助存储帐户的类型为 BlobStorage，页 Blob 不是受支持的存储选项。
 
-可以创建使用主要和可选的辅助存储服务的不同组合的群集。 下表汇总了目前支持在 HDInsight 中的群集存储配置：
+有关 Azure 存储帐户类型的详细信息，请参阅[azure 存储帐户概述](../storage/common/storage-account-overview.md)
+
+有关 azure 存储访问层的详细信息，请[参阅 azure Blob 存储：高级（预览版）、热、冷和存档存储层](../storage/blobs/storage-blob-storage-tiers.md)
+
+可以使用不同的服务组合创建群集，以用于主要和可选的辅助存储。 下表总结了 HDInsight 当前支持的群集存储配置：
 
 | HDInsight 版本 | 主存储 | 辅助存储 | 支持 |
 |---|---|---|---|
-| 3.6 & 4.0 | 标准 Blob | 标准 Blob | 是 |
-| 3.6 & 4.0 | 标准 Blob | Data Lake Storage Gen2 | 否 |
-| 3.6 & 4.0 | 标准 Blob | Data Lake Storage Gen1 | 是 |
-| 3.6 & 4.0 | Data Lake Storage Gen2* | Data Lake Storage Gen2 | 是 |
-| 3.6 & 4.0 | Data Lake Storage Gen2* | 标准 Blob | 是 |
+| 3.6 & 4.0 | 常规用途 V1，常规用途 V2 | 常规用途 V1，常规用途 V2，BlobStorage （块 Blob） | 是 |
+| 3.6 & 4.0 | 常规用途 V1，常规用途 V2 | Data Lake Storage Gen2 | 否 |
+| 3.6 & 4.0 | 常规用途 V1，常规用途 V2 | Data Lake Storage Gen1 | 是 |
+| 3.6 & 4.0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | 是 |
+| 3.6 & 4.0 | Data Lake Storage Gen2 * | 常规用途 V1，常规用途 V2，BlobStorage （块 Blob） | 是 |
 | 3.6 & 4.0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | 否 |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | 是 |
-| 3.6 | Data Lake Storage Gen1 | 标准 Blob | 是 |
+| 3.6 | Data Lake Storage Gen1 | 常规用途 V1，常规用途 V2，BlobStorage （块 Blob） | 是 |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | 否 |
 | 4.0 | Data Lake Storage Gen1 | 任意 | 否 |
 
-* =，只要它们是相同的托管的标识用于群集访问权限的所有安装程序，这可能是一个或多个数据湖存储第 2 代帐户。
+\* = 这可能是一个或多个 Data Lake Storage Gen2 帐户，只要它们都设置为使用相同的托管标识进行群集访问。
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>在 Azure HDInsight 中将 Azure Data Lake Storage Gen2 用于 Apache Hadoop
 
@@ -91,9 +95,9 @@ Apache Hadoop 应用程序会以本机方式从本地磁盘存储读取和写入
 
 Azure Data Lake Storage Gen2 使用新的 URI 方案从 HDInsight 访问 Azure 存储中的文件：
 
-`abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
+`abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
-此 URI 方案提供了 SSL 加密访问（前缀为 `abfss://`）和未加密访问（前缀为 `abfs://`）。 请尽量使用 `abfss`，即使在访问位于 Azure 中同一区域内的数据时也是如此。
+URI 方案提供 SSL 加密访问。
 
 `<FILE_SYSTEM_NAME>` 标识文件系统 Data Lake Storage Gen2 的路径。
 
@@ -104,8 +108,8 @@ Azure Data Lake Storage Gen2 使用新的 URI 方案从 HDInsight 访问 Azure �
 如果未指定 `<FILE_SYSTEM_NAME>` 和`<ACCOUNT_NAME>` 的值，则会使用默认文件系统。 对于默认文件系统中的文件，可以使用相对路径或绝对路径。 例如，可以使用以下任一路径引用 HDInsight 群集附带的 `hadoop-mapreduce-examples.jar` 文件：
 
 ```
-abfss://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
-abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
+abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
+abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
 ```
 
 > [!Note]
@@ -117,15 +121,15 @@ abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapredu
 
 Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无缝集成。 HDInsight 可将 Azure 存储中的 Blob 容器用作群集的默认文件系统。 HDInsight 中的整套组件可以通过 HDFS 界面直接操作以 Blob 形式存储的结构化或非结构化数据。
 
-我们建议使用单独的存储容器的默认群集存储和业务数据，来隔离的 HDInsight 日志和从你自己的业务数据的临时文件。 我们还建议删除默认 blob 容器，其中包含应用程序和系统日志之后每次使用，以降低存储成本。 请确保在删除该容器之前检索日志。
+我们建议对默认群集存储和你的业务数据使用单独的存储容器，以便将 HDInsight 日志和临时文件与你自己的业务数据隔离开来。 我们还建议在每次使用后删除包含应用程序和系统日志的默认 blob 容器以降低存储成本。 请确保在删除该容器之前检索日志。
 
-如果您选择要保护使用存储帐户**防火墙和虚拟网络**限制**选定的网络**，请务必启用例外**允许受信任的 Microsoft服务...** ，以便 HDInsight 可以访问你的存储帐户。
+如果选择在“选定网络”上通过“防火墙和虚拟网络”限制来保护存储帐户的安全，请务必启用例外“允许受信任的 Microsoft 服务...”，这样 HDInsight 就能访问存储帐户。
 
 ### <a name="hdinsight-storage-architecture"></a>HDInsight 存储体系结构
 
 下图提供了 Azure 存储的 HDInsight 存储体系结构的抽象视图：
 
-![显示 Hadoop 群集使用 HDFS API 来访问 Blob 存储中的结构化和非结构化数据，并在其中存储这些数据的示意图](./media/hdinsight-hadoop-compare-storage-options/HDI.WASB.Arch.png "HDInsight 存储体系结构")
+![HDInsight 存储体系结构](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "HDInsight 存储体系结构")
 
 HDInsight 提供对在本地附加到计算节点的分布式文件系统的访问。 可使用完全限定 URI 访问该文件系统，例如：
 
@@ -133,7 +137,7 @@ HDInsight 提供对在本地附加到计算节点的分布式文件系统的访�
 
 通过 HDInsight 还可以访问 Azure 存储中的数据。 语法如下：
 
-    wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
+    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
 将 Azure 存储帐户与 HDInsight 群集配合使用时，请注意以下原则：
 
@@ -213,7 +217,7 @@ Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证，使用
 
 | **功能** | **说明** |
 | --- | --- |
-| Authentication |Data Lake Storage Gen1 与 Azure Active Directory (Azure AD) 集成，可对 Data Lake Storage Gen1 中存储的所有数据进行标识与访问管理。 因为这种集成，Data Lake Storage Gen1 可受益于所有 Azure AD 功能。 这些功能包括多重身份验证、条件访问、基于角色的访问控制、应用程序使用情况监视、安全监视和警报，等等。 Data Lake Storage Gen1 支持在 REST 接口中使用 OAuth 2.0 协议进行身份验证。 参阅[使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 身份验证](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)。|
+| 身份验证 |Data Lake Storage Gen1 与 Azure Active Directory (Azure AD) 集成，可对 Data Lake Storage Gen1 中存储的所有数据进行标识与访问管理。 因为这种集成，Data Lake Storage Gen1 可受益于所有 Azure AD 功能。 这些功能包括多重身份验证、条件访问、基于角色的访问控制、应用程序使用情况监视、安全监视和警报等。 Data Lake Storage Gen1 支持在 REST 接口中使用 OAuth 2.0 协议进行身份验证。 参阅[使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 身份验证](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)。|
 | 访问控制 |Data Lake Storage Gen1 通过支持 WebHDFS 协议公开的 POSIX 样式权限来提供访问控制。 可对根文件夹、子文件夹和单个文件启用 ACL。 有关 ACL 在 Data Lake Storage Gen1 上下文中的工作原理的详细信息，请参阅 [Data Lake Storage Gen1 中的访问控制](../data-lake-store/data-lake-store-access-control.md)。 |
 | 加密 |Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 创建 Data Lake Storage Gen1 帐户时可以指定加密设置。 可以选择加密或不加密数据。 有关详细信息，请参阅 [Data Lake Storage Gen1 中的加密](../data-lake-store/data-lake-store-encryption.md)。 有关如何提供加密相关配置的说明，请参阅[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-get-started-portal.md)。 |
 

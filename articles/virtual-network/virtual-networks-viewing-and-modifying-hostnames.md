@@ -4,7 +4,7 @@ description: 如何查看和更改 Azure 虚拟机、Web 角色和辅助角色�
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
 ms.service: virtual-network
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 3fdb0f566789382a1606b19e4fac179f9ecf40cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cce248e2906f4a36737388e8cc7124b1bb19fbae
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887453"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058676"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>查看和修改主机名
 若要允许通过主机名引用角色实例，必须在服务配置文件中为每个角色设置主机名的值。 可以通过将所需主机名添加到 **Role** 元素的 **vmName** 属性来执行该操作。 **vmName** 属性的值将用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。 无需在配置文件中为虚拟机指定主机名，因为虚拟机的主机名会基于虚拟机名称填充。 有关配置 Microsoft Azure 服务的详细信息，请参阅 [Azure Service 配置架构（.cscfg 文件）](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -42,7 +42,7 @@ ms.locfileid: "57887453"
 
 1. 确保有用于连接到 Azure 门户的客户端证书。 若要获取客户端证书，请执行[如何：下载和导入发布设置和订阅信息](https://msdn.microsoft.com/library/dn385850.aspx)中提供的步骤。 
 2. 使用值 2013-11-01 设置名为 x-ms-version 的标头条目。
-3. 将请求发送采用以下格式： https:\//management.core.windows.net/\<订阅 id\>/services/托管/\<服务名称\>？ 嵌入-详细信息 = true
+3. 按以下格式发送\/请求： https：/management.core.windows.net/\<subscrition-id-id\>/services/hostedservices/service-name\<服务名称\>？ embed-detail = true
 4. 在 **HostName** 元素中查找每个 **RoleInstance** 元素。
 
 > [!WARNING]

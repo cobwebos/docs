@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 81bde837cd78646f1fc59d921246c72978ecb840
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 15724adfc6eb875f3d2d5b6d3ecbbb54135a7265
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551503"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671437"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中将基础结构自动化工具与虚拟机配合使用
 若要以一致的方式大规模创建和管理 Azure 虚拟机 (VM)，通常需要某种形式的自动化。 可以通过许多工具和解决方案来自动完成整个 Azure 基础结构部署和管理生命周期。 本文介绍了一些可以在 Azure 中使用的基础结构自动化工具。 这些工具通常适合以下某个方法：
@@ -45,7 +45,7 @@ ms.locfileid: "59551503"
 
 
 ## <a name="puppet"></a>Puppet
-[Puppet](https://www.puppet.com) 是可供企业使用的自动化平台，用于处理应用程序交付和部署过程。 代理安装在目标计算机上，因此 Puppet Master 可以通过运行清单来定义 Azure 基础结构和 VM 的所需配置。 Puppet 可以通过集成其他解决方案（例如 Jenkins 和 GitHub）来改进 DevOps 工作流。 有关详细信息，请参阅 [How Puppet works](https://puppet.com/product/how-puppet-works)（Puppet 工作原理）。
+[Puppet](https://www.puppet.com) 是可供企业使用的自动化平台，用于处理应用程序交付和部署过程。 代理安装在目标计算机上，因此 Puppet Master 可以通过运行清单来定义 Azure 基础结构和 VM 的所需配置。 Puppet 可以通过集成其他解决方案（例如 Jenkins 和 GitHub）来改进 DevOps 工作流。 有关详细信息，请参阅 [How Puppet works](https://puppet.com/products/how-puppet-works)（Puppet 工作原理）。
 
 了解如何：
 
@@ -53,9 +53,9 @@ ms.locfileid: "59551503"
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
+[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
 
-Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
+Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装  或 yum 安装  来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 
 我们正在积极地与我们认可的 Linux 发行版合作伙伴合作，以便在 Azure 市场中提供已启用 cloud-init 的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。 了解有关 Azure 上的 cloud-init 的更多详细信息：
 

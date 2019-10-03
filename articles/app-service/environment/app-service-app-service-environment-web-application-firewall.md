@@ -10,17 +10,16 @@ ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: c1930777f44266755f20400d063ec938ee631adb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 01224e4270ba8a7c7df4a311823dd6156038438a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089312"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070048"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
@@ -74,7 +73,7 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 
 ![管理仪表板][ManagementDashboard]
 
-单击“服务”选项卡可以根据 WAF 保护的服务配置 WAF。 有关配置 Barracuda WAF 的详细信息，请参阅[相关文档](https://techlib.barracuda.com/waf/getstarted1)。 在以下示例中，已配置处理 HTTP 和 HTTPS 流量的应用服务应用。
+单击“服务”选项卡可以根据 WAF 保护的服务配置 WAF  。 有关配置 Barracuda WAF 的详细信息，请参阅[相关文档](https://techlib.barracuda.com/waf/getstarted1)。 在以下示例中，已配置处理 HTTP 和 HTTPS 流量的应用服务应用。
 
 ![管理添加服务][ManagementAddServices]
 
@@ -88,7 +87,7 @@ Barracuda WAF 使用 TCP 端口 8000 通过其管理门户进行配置。 如果
 
 ![流量管理器终结点][TrafficManagerEndpoint]
 
-如果应用程序需要身份验证，请确保有某个资源不需要任何身份验证，使流量管理器能够 ping 出应用程序的可用性。 可以在 [Azure 门户](https://portal.azure.com)的“配置”页上配置 URL，如下图所示：
+如果应用程序需要身份验证，请确保有某个资源不需要任何身份验证，使流量管理器能够 ping 出应用程序的可用性。 可以在 [Azure 门户](https://portal.azure.com)的“配置”  页上配置 URL，如下图所示：
 
 ![配置流量管理器][ConfigureTrafficManager]
 

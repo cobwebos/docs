@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure Site Recovery 针对物理本地服务器设置到 Azure 的灾难恢复 | Microsoft Docs
+title: 为具有 Azure Site Recovery 的物理本地服务器设置到 Azure 的灾难恢复
 description: 了解如何使用 Azure Site Recovery 服务针对本地 Windows 和 Linux 服务器设置到 Azure 的灾难恢复。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/31/2018
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: a6be2fbbf946f13213f95b8876cfdddfa2ffbe67
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 55b375c1e98518a6c3bc2926030cfe072963216c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329211"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814557"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 

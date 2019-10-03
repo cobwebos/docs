@@ -1,50 +1,60 @@
 ---
-title: 连接到使用 Windows 7 和 Windows 10-Azure Windows 虚拟桌面预览
-description: 如何连接到 Windows 7 或 Windows 10 的 Windows 虚拟桌面预览服务。
+title: 从 Windows 10 或 Windows 7 连接到 Windows 虚拟桌面-Azure
+description: 如何使用 Windows 桌面客户端连接到 Windows 虚拟桌面。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
-ms.date: 03/27/2019
+ms.topic: conceptual
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 8b5a649d767dae9ae9c0fb077f550451a7f83601
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 561dad566d7f1caaf609c8013fa075062e4471ea
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630385"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676747"
 ---
-# <a name="connect-with-windows-7-and-windows-10"></a>使用 Windows 7 和 Windows 10 进行连接
+# <a name="connect-with-the-windows-desktop-client"></a>使用 Windows 桌面客户端进行连接
 
-> 适用于Windows 7 和 Windows 10。
+> 适用于：Windows 7 和 Windows 10
 
-提供可下载的客户端，提供对访问的 Windows 虚拟桌面预览资源从运行 Windows 7 和 Windows 10 的设备。
+可以使用 windows 桌面客户端通过 Windows 7 或 Windows 10 访问 Windows 虚拟桌面资源。
 
 > [!IMPORTANT]
-> 不要使用**RemoteApp 和桌面连接 (RADC)** 或**远程桌面连接 (MSTSC)** 访问 Windows 虚拟机的资源，因为 Windows 虚拟桌面不支持客户端。
+> Windows 虚拟桌面不支持 RemoteApp 和桌面连接（RADC）客户端或远程桌面连接（MSTSC）客户端。
 
-## <a name="install-the-client"></a>安装客户端
+## <a name="install-the-windows-desktop-client"></a>安装 Windows 桌面客户端
 
-[下载](https://go.microsoft.com/fwlink/?linkid=2068602) 和客户端安装到本地 PC。 这需要管理员权限。
+下面是你当前可以下载的客户端：
+
+- [Windows 64 位](https://go.microsoft.com/fwlink/?linkid=2068602)
+
+我们将更新此列表，因为客户端将可用于更多版本的 Windows。
+
+您可以为当前用户安装客户端，而不需要管理员权限，或者您的管理员可以安装和配置客户端，以便设备上的所有用户都可以访问该客户端。
+
+安装后，可以通过搜索 "**远程桌面**"，从 "开始" 菜单启动客户端。
 
 ## <a name="subscribe-to-a-feed"></a>订阅源
 
-获取列表的可用资源向你从本地电脑通过订阅源提供的管理员联系。
+通过订阅管理员提供的源，获取可供你使用的托管资源的列表。订阅会使资源在本地 PC 上可用。
 
-若要订阅源：
+订阅源：
 
-1. 启动客户端从所有应用程序列表中，查找有关**远程桌面**。
-1. 选择**Subscribe**在主页上，若要连接到该服务并检索你的资源。
-1. **登录**与您的用户帐户时提示。
+1. 打开 Windows 桌面客户端。
+2. 在主页上选择 "**订阅**"，连接到服务并检索资源。
+3. 出现提示时，请用用户帐户登录。
 
-成功身份验证后，现在应看到可用资源的列表。
+成功登录后，应会看到可访问的资源列表。
 
-可以通过两种方法之一启动的资源。
+可以通过以下两种方法之一启动资源。
 
-- 从客户端的主页上，双击要启动它的资源。
-- 启动资源，如往常一样从开始菜单上的其他应用。
-  - 您还可以搜索在搜索栏中的应用。
+- 在客户端的主页中，双击资源以启动它。
+- 从 "开始" 菜单正常启动资源。
+  - 你还可以在搜索栏中搜索应用。
 
-## <a name="update-the-client"></a>更新客户端
+订阅源后，会定期自动更新源的内容。 可以根据管理员所做的更改来添加、更改或删除资源。
 
-可用新版本的客户端时，将客户端和 Windows 操作中心通知您。 选择通知以开始更新过程。
+## <a name="next-steps"></a>后续步骤
+
+若要了解有关如何使用 Windows 桌面客户端的详细信息，请参阅[Windows 桌面客户端入门](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windowsdesktop)。

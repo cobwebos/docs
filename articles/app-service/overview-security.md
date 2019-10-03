@@ -10,17 +10,16 @@ editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e4feaed9f4e8f6dd3275da25e33e57197731572
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: b6f122abff1ac75bb1cb836f3389c96dfcdf60e0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523437"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074115"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
 
@@ -58,7 +57,7 @@ ms.locfileid: "59523437"
 
 默认情况下，应用服务应用接受来自 Internet 的所有 IP 地址的请求，但你可以将该访问权限限定于一小部分 IP 地址。 通过 Windows 上的应用服务，可定义允许访问应用的 IP 地址的列表。 允许列表可包括单个 IP 地址或由子网掩码定义的 IP 地址范围。 有关详细信息，请参阅 [Azure 应用服务静态 IP 限制](app-service-ip-restrictions.md)。
 
-对于 Windows 上的应用服务，还可以通过配置 _web.config_ 来动态限制 IP 地址。有关详细信息，请参阅[动态 IP 安全\<dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
+对于 Windows 上的应用服务，还可以通过配置 _web.config_ 来动态限制 IP 地址。有关详细信息, 请参阅[动态 IP \<Security dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
 
 ## <a name="client-authentication-and-authorization"></a>客户端身份验证和授权
 
@@ -71,7 +70,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 在向后端服务进行身份验证时，应用服务根据你的需要提供两种不同的机制：
 
 - **服务标识**：使用应用本身的标识登录到远程资源。 通过应用服务可轻松创建[托管标识](overview-managed-identity.md)，在向 [Azure SQL 数据库](/azure/sql-database/)或 [Azure Key Vault](/azure/key-vault/) 等其他服务进行身份验证时可使用该标识。 有关此方法的端到端教程，请参阅[使用托管标识确保从应用服务进行的 Azure SQL 数据库连接安全](app-service-web-tutorial-connect-msi.md)。
-- **代表 (OBO)**：代表用户对远程资源进行委托访问。 使用 Azure Active Directory 作为验证提供程序时，应用服务应用可以执行远程服务（例如 [Azure Active Directory 图形 API](../active-directory/develop/active-directory-graph-api.md) 或应用服务中的远程 API 应用）委托登录。 有关此方法的端到端教程，请参阅[在 Azure 应用服务中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)。
+- **代表 (OBO)** ：代表用户对远程资源进行委托访问。 使用 Azure Active Directory 作为验证提供程序时，应用服务应用可以执行远程服务（例如 [Azure Active Directory 图形 API](../active-directory/develop/active-directory-graph-api.md) 或应用服务中的远程 API 应用）委托登录。 有关此方法的端到端教程，请参阅[在 Azure 应用服务中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)。
 
 ## <a name="connectivity-to-remote-resources"></a>远程资源连接
 
@@ -105,7 +104,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 
 ## <a name="application-secrets"></a>应用程序密钥
 
-请勿将应用程序密钥（例如数据库凭据、API 令牌和私钥）存储在代码或配置文件中。 广为接受的方法是使用所选语言的标准模式将它们作为[环境变量](https://wikipedia.org/wiki/Environment_variable)进行访问。 在应用服务中，环境变量通过[应用设置](web-sites-configure.md#app-settings)（对于 .NET 应用程序则为[连接字符串](web-sites-configure.md#connection-strings)）进行定义。 应用设置和连接字符串以加密方式存储在 Azure 中，只有在应用启动并将其注入应用的进程内存之前才会对其进行解密。 加密密钥会定期轮换。
+请勿将应用程序密钥（例如数据库凭据、API 令牌和私钥）存储在代码或配置文件中。 广为接受的方法是使用所选语言的标准模式将它们作为[环境变量](https://wikipedia.org/wiki/Environment_variable)进行访问。 在应用服务中，环境变量通过[应用设置](configure-common.md#configure-app-settings)（对于 .NET 应用程序则为[连接字符串](configure-common.md#configure-connection-strings)）进行定义。 应用设置和连接字符串以加密方式存储在 Azure 中，只有在应用启动并将其注入应用的进程内存之前才会对其进行解密。 加密密钥会定期轮换。
 
 或者，可以将应用服务应用与 [Azure Key Vault](/azure/key-vault/) 集成，以实现高级密钥管理。 通过[使用托管标识访问 Key Vault](../key-vault/tutorial-web-application-keyvault.md)，应用服务应用可以安全地访问所需的机密。
 
@@ -113,7 +112,6 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 
 除了**独立**定价层，所有层都在应用服务的共享网络基础结构上运行应用。 例如，公共 IP 地址和前端负载均衡器与其他租户共享。 通过在专用的[应用服务环境](environment/intro.md)中运行应用，**独立**层可提供完整的网络隔离。 应用服务环境在你自己的 [Azure 虚拟网络](/azure/virtual-network/)实例中运行。 它允许： 
 
-- 使用[网络安全组](../virtual-network/virtual-networks-dmz-nsg.md)限制网络访问权限。 
 - 通过专用的公共终结点为应用提供专用前端。
 - 使用内部负载均衡器 (ILB) 为内部应用程序提供服务，该内部负载均衡器仅允许从 Azure 虚拟网络内部进行访问。 ILB 有一个来自专用子网的 IP 地址，它可以让应用与 Internet 完全隔离。
 - [在 Web 应用程序防火墙 (WAF) 后面使用 ILB](environment/integrate-with-application-gateway.md)。 WAF 为面向公众的应用程序提供企业级保护，例如 DDoS 防护、URI 筛选和 SQL 注入防护。

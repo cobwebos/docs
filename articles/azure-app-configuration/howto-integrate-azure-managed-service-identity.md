@@ -1,6 +1,6 @@
 ---
-title: 将与 Azure 集成托管标识 |Microsoft Docs
-description: 了解如何使用 Azure 托管标识进行身份验证并获取对 Azure 应用程序配置访问权限
+title: 与 Azure 托管标识集成 |Microsoft Docs
+description: 了解如何使用 Azure 托管标识进行身份验证，并获取对 Azure 应用配置的访问权限
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 84dddf5ed9c31e8585480319af189d31e39163e5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 4318c4b4d8f1b1f0974d0fae0a2ae5bd6e94b593
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998985"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076538"
 ---
-# <a name="tutorial-integrate-with-azure-managed-identities"></a>教程：与 Azure 托管身份集成
+# <a name="integrate-with-azure-managed-identities"></a>与 Azure 托管身份集成
 
 Azure Active Directory [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)可帮助简化云应用程序的机密管理。 使用托管标识，你可以设置代码以使用为其运行的 Azure 计算服务创建的服务主体。 使用托管标识而不是存储在 Azure Key Vault 中的单独凭据或本地连接字符串。 
 
@@ -36,7 +36,7 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
 > * 授予对应用程序配置的托管身份访问权限。
 > * 配置应用以在连接到应用程序配置时使用托管标识。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，必须满足以下先决条件：
 
@@ -49,17 +49,19 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
 
 要在门户中设置托管标识，首先要正常创建应用程序，然后启用该功能。
 
-1. 按常规在 [Azure 门户](https://aka.ms/azconfig/portal)中创建应用。 在门户网站中转到它。
+1. 按通常的方式在[Azure 门户](https://portal.azure.com)中创建应用服务实例。 在门户网站中转到它。
 
 2. 在左侧窗格向下滚动到“设置”组，然后选择“标识”。
 
 3. 在“系统分配”选项卡中，将“状态”切换为“启用”并选择“保存”。
 
+4. 在系统提示启用系统分配的托管标识时回答 **"是"** 。
+
     ![在应用服务中设置托管标识](./media/set-managed-identity-app-service.png)
 
 ## <a name="grant-access-to-app-configuration"></a>授予对应用配置的访问权限
 
-1. 在 [Azure 门户](https://aka.ms/azconfig/portal)中，选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区。
 
 2. 选择“访问控制 (IAM)”。
 
@@ -69,13 +71,15 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
 
 5. 在“订阅”下，选择 Azure 订阅。 选择应用的应用服务资源。
 
-6. 选择“保存”。
+6. 选择**保存**。
 
     ![添加托管标识](./media/add-managed-identity.png)
 
 ## <a name="use-a-managed-identity"></a>使用托管标识
 
-1. 打开“appsettings.json”，并添加以下脚本。 将 \<service_endpoint>（含括号）替换为应用配置存储区的 URL：
+1. 转到 "Azure 门户中的" 配置 "屏幕，然后单击"**访问密钥**"选项卡，查找应用配置存储的 URL。
+
+2. 打开“appsettings.json”，并添加以下脚本。 将 *\<service_endpoint >* （包括括号）替换为应用配置存储的 URL。 
 
     ```json
     "AppConfig": {
@@ -83,7 +87,7 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
     }
     ```
 
-2. 打开“Program.cs”，并通过替换 `config.AddAzureAppConfiguration()` 方法更新 `CreateWebHostBuilder` 方法。
+3. 打开“Program.cs”，并通过替换 `config.AddAzureAppConfiguration()` 方法更新 `CreateWebHostBuilder` 方法。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -110,6 +114,13 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
 ### <a name="enable-local-git-with-kudu"></a>使用 Kudu 启用本地 Git
+如果你的应用程序还没有本地 git 存储库，则需要通过在应用的项目目录中运行以下命令来初始化一个存储库：
+
+```cmd
+git init
+git add .
+git commit -m "Initial version"
+```
 
 要使用 Kudu 生成服务器为应用启用本地 Git 部署，请在 Cloud Shell 中运行 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git)。
 

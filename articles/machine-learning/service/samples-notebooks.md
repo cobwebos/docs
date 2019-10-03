@@ -1,7 +1,7 @@
 ---
 title: 示例 Jupyter Notebook
-titleSuffix: Azure Machine Learning service
-description: 找到并使用示例 Jupyter 笔记本，以便在 Python 中探索 Azure 机器学习服务。
+titleSuffix: Azure Machine Learning
+description: 找到并使用示例 Jupyter Notebook，以便探索 Azure 机器学习 Python SDK。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,53 +9,54 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: b597d6efa87aa2811ce42f3315698acfa17426b2
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548582"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997061"
 ---
-# <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>使用 Jupyter 笔记本探索 Azure 机器学习服务
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>使用 Jupyter Notebook 探索 Azure 机器学习
 
-为了方便用户，我们开发了一系列 Jupyter Python 笔记本，用于探索 Azure 机器学习服务。 
+[示例 Azure 机器学习笔记本存储库](https://github.com/azure/machinelearningnotebooks)包含最新的 Azure 机器学习 Python SDK 示例。 这些 Juypter 笔记本旨在帮助你浏览 SDK，并充当你自己的机器学习项目的模型。
 
-了解如何将服务与有关本站点的文档配合使用，并使用这些笔记本，根据情况来自定义它们。 
+本文介绍如何从以下环境访问该存储库：
 
-使用下面的路径之一，以便运行笔记本服务器和这些示例笔记本。  待服务器运行以后，在 **tutorials** 文件夹中找到教程笔记本，或者在 **how-to-use-azureml** 文件夹中浏览不同的功能。
+- [Azure 机器学习笔记本 VM](#notebookvm)
+- [自带笔记本服务器](#byo)
+- [数据科学虚拟机](#dsvm)
 
+> [!NOTE]
+> 克隆此存储库以后，即可在 **tutorials** 文件夹中找到教程笔记本，在 **how-to-use-azureml** 文件夹中找到特定于功能的笔记本。
 
-## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>试用 Azure Notebook：云中免费的 Jupyter Notebook
+<a name="notebookvm"></a>
+## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>获取 Azure 机器学习笔记本 VM 上的示例
 
-Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks.azure.com/) 上安装和配置[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)。 安装和未来的更新通过 Azure 服务自动管理。
-  
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+若要开始使用示例，最简单的方法是完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。 完成后，你就有了一个预先装载了 SDK 和示例存储库的专用笔记本服务器。 不需下载，也不需安装。
 
+<a name="byo"></a>
 
-## <a name="use-a-data-science-virtual-machine-dsvm"></a>使用 Data Science Virtual Machine (DSVM)
+## <a name="get-samples-on-your-notebook-server"></a>获取笔记本服务器上的示例
 
-已在 DSVM 上安装和配置[用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk) 和笔记本服务器。 
-
-[创建 DSVM](how-to-configure-environment.md#dsvm) 以后，在 DSVM 上根据这些步骤运行笔记本。
-
-[!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
-
-
-## <a name="use-your-own-jupyter-notebook-server"></a>使用自己的 Jupyter Notebook 服务器
-
-执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。
+若要自带笔记本服务器进行本地开发，请按照以下步骤操作：
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-快速入门说明会安装运行快速入门和教程笔记本所需的程序包。  其他示例笔记本可能需要安装附加组件。  有关这些组件的详细信息，请参阅[安装适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install)。
+这些说明会安装快速入门和教程笔记本所需的基础 SDK 包。 其他示例笔记本可能需要安装额外组件。 有关详细信息，请参阅[安装适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install)。
+
+<a name="dsvm"></a>
+## <a name="get-samples-on-dsvm"></a>获取 DSVM 上的示例
+
+Data Science Virtual Machine (DSVM) 是专为研究数据科学而构建的自定义 VM 映像。 如果[创建 DSVM](how-to-configure-environment.md#dsvm)，则会为你安装和配置 SDK 和笔记本服务器。 但是，你仍然需要创建工作区并克隆示例存储库。
+
+[!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览[适用于 Azure 机器学习服务的 GitHub 笔记本存储库](https://aka.ms/aml-notebooks)
+浏览[示例笔记本](https://aka.ms/aml-notebooks)，了解 Azure 机器学习的功能，或者尝试以下教程：
 
-试用以下教程：
-+ [通过 MNIST 训练并部署图像分类模型](tutorial-train-models-with-aml.md)
+- [通过 MNIST 训练并部署图像分类模型](tutorial-train-models-with-aml.md)
 
-+ [准备数据并使用纽约市出租车数据集通过自动化机器学习来训练回归模型](tutorial-data-prep.md)
+- [准备数据并使用纽约市出租车数据集通过自动化机器学习来训练回归模型](tutorial-auto-train-models.md)

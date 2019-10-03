@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/26/2018
-ms.author: zhiweiw
+ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ffd783ec41b1b0c4a11ee426648c1e36fbbbf75
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6c5bc2ea76c558e47eaa5f297ebe36a629aa5754
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883694"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702638"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>“运行状况服务数据不是最新的”警报
 
@@ -40,7 +40,7 @@ Azure AD Connect Health 监视定期的本地计算机上的代理将数据上�
  
 下表将服务类型映射到相应的所需的数据类型：
 
-| 服务类型 | 代理 （Windows 服务名称） | 目的 | 生成的数据类型  |
+| 服务类型 | 代理 （Windows 服务名称） | 用途 | 生成的数据类型  |
 | --- | --- | --- | --- |  
 | Azure AD Connect （同步） | Azure AD Connect Health Sync Insights 服务 | 收集特定于 AAD Connect 的信息 （连接器，同步规则，等等。） | - AadSyncService-SynchronizationRules <br />  - AadSyncService-Connectors <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
 |  | Azure AD Connect Health Sync 监视服务 | 收集特定于 AAD Connect 的性能计数器，ETW 跟踪，文件 | 性能计数器 |

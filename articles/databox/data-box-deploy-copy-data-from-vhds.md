@@ -1,19 +1,19 @@
 ---
-title: 使用 Microsoft Azure Data Box 从 VHD 导入数据并将其复制到托管磁盘 | Microsoft Docs
+title: 教程：使用 Azure Data Box 将数据从 VHD 复制到托管磁盘 | Microsoft Docs
 description: 了解如何将数据从本地 VM 工作负荷中的 VHD 复制到 Azure Data Box
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/27/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: ec2013a793f766221a66912d6de9d8da8b8106dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b7182d1fa70a146da1c01273ffe1032f2982546
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282553"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240465"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>教程：在 Azure 中使用 Data Box 将数据导入为托管磁盘
 
@@ -32,7 +32,7 @@ ms.locfileid: "59282553"
 在开始之前，请确保：
 
 1. 已完成[教程：设置 Azure Data Box](data-box-deploy-set-up.md)。
-2. 已收到 Data Box，并且门户中的订单状态为“已送达”。
+2. 已收到 Data Box，并且门户中的订单状态为“已送达”。 
 3. 已连接到高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，可以使用 1-GbE 数据链路，但复制速度会受影响。
 4. 已查看：
 
@@ -56,8 +56,8 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
  
 |        连接协议           |             共享的 UNC 路径                                               |
 |-------------------|--------------------------------------------------------------------------------|
-| SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Premium SSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard HDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard SSD>\file3.vhd` |  
-| NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<Premium SSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard HDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard SSD>/file3.vhd` |
+| SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<PremiumSSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<StandardHDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<StandardSSD>\file3.vhd` |  
+| NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<PremiumSSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<StandardHDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<StandardSSD>/file3.vhd` |
 
 根据是使用 SMB 还是 NFS 连接到 Data Box 共享，连接步骤会有所不同。
 
@@ -68,14 +68,14 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
 
 如果使用 Windows Server 主机，请按照以下步骤连接到 Data Box。
 
-1. 第一步是进行身份验证并启动会话。 转到“连接和复制”。 单击“获取凭据”，获取与资源组关联的共享的访问凭据。 也可以通过 Azure 门户中的“设备详细信息”获取访问凭据。
+1. 第一步是进行身份验证并启动会话。 转到“连接和复制”。  单击“获取凭据”，获取与资源组关联的共享的访问凭据。  也可以通过 Azure 门户中的“设备详细信息”获取访问凭据。 
 
     > [!NOTE]
     > 托管磁盘的所有共享的凭据是相同的。
 
     ![获取共享凭据 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. 在“访问共享和复制数据”对话框中，复制共享的“用户名”和“密码”。 单击“确定”。
+2. 在“访问共享和复制数据”对话框中，复制共享的“用户名”和“密码”。   单击“确定”。 
     
     ![获取共享凭据 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
@@ -97,7 +97,7 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
     C: \>
     ```
 
-4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>\<ShareName>`。 单击“确定”打开文件资源管理器。
+4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>\<ShareName>`。  单击“确定”打开文件资源管理器  。
     
     ![通过文件资源管理器连接到共享 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
@@ -110,11 +110,11 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
 
 如果使用 Linux 主机，请执行以下步骤将 Data Box 配置为允许 NFS 客户端访问。
 
-1. 提供允许访问共享的客户端的 IP 地址。 在本地 Web UI 中，转到“连接和复制”页。 在“NFS 设置”下，单击“NFS 客户端访问”。
+1. 提供允许访问共享的客户端的 IP 地址。 在本地 Web UI 中，转到“连接和复制”页。  在“NFS 设置”下，单击“NFS 客户端访问”。  
 
     ![配置 NFS 客户端访问 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。 可以重复此步骤为多个 NFS 客户端配置访问。 单击“确定”。
+2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。  可以重复此步骤为多个 NFS 客户端配置访问。 单击“确定”。 
 
     ![配置 NFS 客户端访问 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 
@@ -149,7 +149,7 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
 
 ![“连接并复制”页上未显示错误](media/data-box-deploy-copy-data-from-vhds/verify-no-errors-connect-and-copy.png)
 
-如果复制过程中出错，请从“连接和复制”页下载日志。
+如果复制过程中出错，请从“连接和复制”页下载日志。 
 
 - 如果复制的文件未经过 512 字节对齐，该文件不会作为页 Blob 上传到临时存储帐户。 日志中会出现错误。 请删除该文件，并复制经过 512 字节对齐的文件。
 
@@ -163,7 +163,7 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
     
 ![在仪表板上检查可用空间和已用空间](media/data-box-deploy-copy-data-from-vhds/verify-used-space-dashboard.png)
 
-复制作业完成后，可以转到“准备交付”。
+复制作业完成后，可以转到“准备交付”。 
 
 
 ## <a name="next-steps"></a>后续步骤

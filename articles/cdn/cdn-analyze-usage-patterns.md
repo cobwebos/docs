@@ -1,25 +1,25 @@
 ---
 title: Verizon 中的核心报告 | Microsoft Docs
-description: 可以通过下列报告查看 CDN 的使用模式：带宽报告、已传输数据报告、命中数报告、缓存状态报告、缓存命中率报告、已传输 IPV4/IPV6 数据报告。
+description: 您可以通过使用以下报表来查看 CDN 使用模式：带宽、 传输的数据命中，缓存状态、 缓存命中率，IPV4/IPV6 传输的数据。
 services: cdn
 documentationcenter: ''
 author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 5a0d9018-8bdb-48ff-84df-23648ebcf763
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d10a40d03f0f76676e70afdec94e9adfaa0dd09f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
-ms.translationtype: HT
+ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162064"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594156"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon 中的核心报告
 
@@ -44,16 +44,16 @@ ms.locfileid: "44162064"
    
     ![CDN 管理门户 - 核心报告菜单](./media/cdn-reports/cdn-core-reports.png)
 
-3. 对于每份报告，请从“日期范围”列表中选择一个日期范围。 可选择预定义的日期范围，例如“今天”或“本周”，也可选择“自定义”，并通过单击日历图标手动输入日期范围。 
+3. 对于每份报告，请从“日期范围”列表中选择一个日期范围。  可选择预定义的日期范围，例如“今天”或“本周”，也可选择“自定义”，并通过单击日历图标手动输入日期范围    。 
 
-4. 选择日期范围后，单击“开始”生成报告。 
+4. 选择日期范围后，单击“开始”生成报告  。 
 
-4. 若要以 Excel 格式导出数据，请单击“执行”按钮上方的“Excel”图标。
+4. 若要以 Excel 格式导出数据，请单击“执行”按钮上方的“Excel”图标。 
 
 ## <a name="bandwidth"></a>带宽
 带宽报告包含一个图和一个数据表，说明了特定时段内 HTTP 和 HTTPS 的 CDN 带宽使用量，以 Mbps 为单位。 可以查看所有 POP 或特定 POP 的带宽使用量。 此报告允许查看整个 POP 的流量高峰和分布。
 
-在“边缘节点”列表中，选择“所有边缘节点”以查看所有节点的流量，或选择特定的区域。
+在“边缘节点”列表中，选择“所有边缘节点”以查看所有节点的流量，或选择特定的区域。  
 
 该报告每五分钟更新一次。
 
@@ -62,7 +62,7 @@ ms.locfileid: "44162064"
 ## <a name="data-transferred"></a>传输的数据
 该报告包含一个图和一个数据表，说明了特定时段内 HTTP 和 HTTPS 的 CDN 流量用量，以 GB 为单位。 可以查看所有 POP 或特定 POP 的流量用量。 此报告允许查看整个 POP 的流量高峰和分布情况。
 
-在“边缘节点”列表中，选择“所有边缘节点”以查看所有节点的流量，或选择特定的区域。
+在“边缘节点”列表中，选择“所有边缘节点”以查看所有节点的流量，或选择特定的区域。  
 
 该报告每五分钟更新一次。
 
@@ -86,10 +86,10 @@ ms.locfileid: "44162064"
 ![缓存状态报告](./media/cdn-reports/cdn-cache-statuses.png)
 
 ### <a name="main-cache-statuses-include"></a>主要的缓存状态包括：
-* TCP_HIT：从边缘服务器提供。 该对象已在缓存中且尚未超过其最大有效期。
-* TCP_MISS：从源服务器提供。 该对象不在缓存中，响应已发送回源。
-* TCP_EXPIRED _MISS：通过源重新验证之后，从源服务器提供。 该对象已在缓存中，但已超过其最大有效期。 通过源重新验证之后，缓存对象就会被新的来自源的响应替换。
-* TCP_EXPIRED _HIT：通过源重新验证之后，从 Edge 提供 。 该对象已在缓存中，但已超过其最大有效期。 通过源服务器重新验证之后，就会取消对缓存对象的修改。
+* TCP_HIT:从边缘服务器提供。 该对象已在缓存中且尚未超过其最大有效期。
+* TCP_MISS:从源服务器提供。 该对象不在缓存中，响应已发送回源。
+* TCP_EXPIRED _MISS:从源服务器提供后通过源重新验证。 该对象已在缓存中，但已超过其最大有效期。 通过源重新验证之后，缓存对象就会被新的来自源的响应替换。
+* TCP_EXPIRED _HIT:通过源重新验证之后从 Edge 提供。 该对象已在缓存中，但已超过其最大有效期。 通过源服务器重新验证之后，就会取消对缓存对象的修改。
 
 ### <a name="full-list-of-cache-statuses"></a>缓存状态的完整列表
 * TCP_HIT - 通过 POP 直接处理客户端的请求时，会报告此状态。 当某项资产缓存在最靠近客户端的 POP 中且具有有效的生存时间 (TTL) 时，就会立即从该 POP 提供该资产。 TTL 取决于以下响应标头：
@@ -97,16 +97,16 @@ ms.locfileid: "44162064"
   * Cache-Control: s-maxage
   * Cache-Control: max-age
   * Expires
-* TCP_MISS：此状态指示在最靠近客户端的 POP 上找不到所请求资产的缓存版本。 将从源服务器或源盾牌服务器请求该资产。 如果源服务器或源盾牌服务器返回一个资产，该资产将提供给客户端并缓存在客户端和边缘服务器上。 否则，返回非 200 状态代码（例如“403 已禁止”、“404 找不到”）。
-* TCP_EXPIRED _HIT：当客户端请求因所针对的资产的 TTL 已过期而被系统直接交由 POP 处理时，会报告此状态。 例如，资产的最大有效期已过期。 
+* TCP_MISS:此状态指示，靠近客户端的 POP 上未找到所请求资产的缓存的版本。 将从源服务器或源盾牌服务器请求该资产。 如果源服务器或源盾牌服务器返回一个资产，该资产将提供给客户端并缓存在客户端和边缘服务器上。 否则，返回非 200 状态代码（例如“403 已禁止”、“404 找不到”）。
+* TCP_EXPIRED_HIT:当针对的资产的 TTL 已过期的请求直接从 POP 提供给客户端时，会报告此状态。 例如，资产的最大有效期已过期。 
   
    当某个请求过期时，通常会向源服务器发送重新验证请求。 只有在源服务器指示更新版资产不存在的情况下，才会报告 TCP_EXPIRED _HIT 状态。 出现此类情况时，通常会更新该资产的 Cache-Control 和 Expires 标头。
-* TCP_EXPIRED _MISS：当更新版的已过期缓存资产是由 POP 提供给客户端时，会报告此状态。 当缓存资产的 TTL 已过期（例如，最大有效期已过期）且源服务器返回该资产的更新版本时，会出现此状态。 将向客户端提供这个新版的资产而不是缓存版本的资产。 此外，它还会缓存在边缘服务器和客户端上。
-* CONFIG_NOCACHE：此状态指示，在边缘 POP 上存在的特定于客户的配置导致资产无法缓存。
+* TCP_EXPIRED _MISS:已过期缓存资产的较新版本从 POP 提供给客户端时，会报告此状态。 当缓存资产的 TTL 已过期（例如，最大有效期已过期）且源服务器返回该资产的更新版本时，会出现此状态。 将向客户端提供这个新版的资产而不是缓存版本的资产。 此外，它还会缓存在边缘服务器和客户端上。
+* CONFIG_NOCACHE:此状态指示，特定于客户的配置在边缘 POP 导致资产无法缓存。
 * NONE - 此状态指示尚未执行缓存内容新鲜度检查。
-* TCP_ CLIENT_REFRESH _MISS：当某个 HTTP 客户端（例如浏览器）强制边缘 POP 从源服务器检索过时资产的新版本时，会报告此状态。 默认情况下，服务器会禁止 HTTP 客户端强制边缘服务器从源服务器检索新版资产。
-* TCP_ PARTIAL_HIT：当某个字节范围请求导致某个部分缓存的资产被命中时，会报告此状态。 请求的字节范围将立即从 POP 提供给客户端。
-* UNCACHEABLE：当资产的 `Cache-Control` 和 `Expires` 标头指示该资产不应缓存在 POP 上或不应由 HTTP 客户端缓存时，会报告此状态。 这些类型的请求均由源服务器处理。
+* TCP_CLIENT_REFRESH_MISS:当 HTTP 客户端，例如浏览器中，强制边缘 POP 从源服务器检索过时资产的新版本时，会报告此状态。 默认情况下，服务器会禁止 HTTP 客户端强制边缘服务器从源服务器检索新版资产。
+* PARTIAL_HIT:当某个字节范围请求导致某个部分缓存的资产一次点击，会报告此状态。 请求的字节范围将立即从 POP 提供给客户端。
+* UNCACHEABLE:当资产时，会报告此状态`Cache-Control`和`Expires`标头指示，它不应缓存在 POP 上或通过 HTTP 客户端。 这些类型的请求均由源服务器处理。
 
 ## <a name="cache-hit-ratio"></a>缓存命中率
 此报告指示直接从缓存提供的已缓存请求的百分比。
@@ -119,7 +119,7 @@ ms.locfileid: "44162064"
 
 报告不包括：
 
-* 因国家/地区的筛选选项而被拒绝的请求。
+* 由于国家/地区筛选选项而拒绝的请求。
 * 其标头指示不应进行缓存的资产所对应的请求。 例如，`Cache-Control: private`、`Cache-Control: no-cache` 或 `Pragma: no-cache` 标头会阻止缓存资产。
 * 针对部分缓存内容的字节范围请求。
 

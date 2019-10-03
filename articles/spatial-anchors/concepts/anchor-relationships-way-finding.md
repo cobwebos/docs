@@ -4,16 +4,16 @@ description: 了解有关定位点关系背后的概念模型。 了解如何连
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 619cd051eccce3434469ae909f69496a254d0d9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 008269a5883750dc8899d896c101c6a05bf7e814
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863332"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65969278"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>定位点关系和在 Azure 空间的定位点的方式查找
 

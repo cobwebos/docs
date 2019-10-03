@@ -1,25 +1,18 @@
 ---
-title: 为 Azure 市场虚拟机套餐创建技术资产 | Microsoft Docs
+title: 为 Azure Marketplace 的虚拟机产品/服务创建技术资产
 description: 介绍如何为 Azure 市场中的虚拟机套餐创建技术资产。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 08/20/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 6f1a93c3d3059e612d8c309b263e263dbb84c67f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: c1ef00f846dfad76629b0603ab79fba17249417c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050095"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224530"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>为虚拟机套餐创建技术资产
 
@@ -41,7 +34,7 @@ ms.locfileid: "59050095"
 
 ## <a name="fundamental-technical-knowledge"></a>基础技术知识
 
-设计、生成和测试这些资产需要一些时间，并在 Azure 平台和用于生成套餐的技术方面有一定的专业知识。 除了解决方案领域以外，工程团队还应该了解以下 Microsoft 技术： 
+设计、构建和测试这些资产需要一定的时间，并需要 Azure 平台和用于构建产品/服务的技术的技术知识。 除解决方案域外，工程团队还应了解以下 Microsoft 技术： 
 -   基本了解 [Azure 服务](https://azure.microsoft.com/services/) 
 -   如何[设计和架构 Azure 应用程序](https://azure.microsoft.com/solutions/architecture/)
 -   [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)、[Azure 存储](https://azure.microsoft.com/services/?filter=storage)和 [Azure 网络](https://azure.microsoft.com/services/?filter=networking)的实践知识

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
 ms.openlocfilehash: 73173c144f979d4a10b90a16aec783fe51a3f90e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000396"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62116235"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>使用网络观察程序和 Grafana 管理和分析网络安全组流日志
 
@@ -186,13 +186,13 @@ sudo service grafana-server start
 
 #### <a name="add-the-elasticsearch-server-as-a-data-source"></a>将 ElasticSearch 服务器添加为数据源
 
-接下来，需要将包含流日志的 ElasticSearch 索引添加为数据源。 可以通过选择“添加数据源”并使用相关信息完成表单来添加数据源。 可以在下面的屏幕截图中找到此配置的示例：
+接下来，需要将包含流日志的 ElasticSearch 索引添加为数据源。 可以通过选择“添加数据源”并使用相关信息完成表单来添加数据源。  可以在下面的屏幕截图中找到此配置的示例：
 
 ![添加数据源](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
 
 #### <a name="create-a-dashboard"></a>创建仪表板
 
-现在，你已成功配置了 Grafana 来从包含 NSG 流日志的 ElasticSearch 索引读取数据，可以创建并个性化仪表板了。 若要创建新仪表板，请选择“创建第一个仪表板”。 以下示例图形配置显示了按 NSG 规则分段的流：
+现在，你已成功配置了 Grafana 来从包含 NSG 流日志的 ElasticSearch 索引读取数据，可以创建并个性化仪表板了。 若要创建新仪表板，请选择“创建第一个仪表板”。  以下示例图形配置显示了按 NSG 规则分段的流：
 
 ![仪表板图形](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
 

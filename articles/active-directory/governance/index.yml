@@ -1,48 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure AD 标识治理文档
+### YamlMime:Landing
+title: Azure Active Directory Identity Governance 文档
+summary: 借助 Azure Active Directory (Azure AD) Identity Governance，能够保护、监视和审核对关键资产的访问，同时确保员工的工作效率。
 metadata:
-  document_id: null
-  title: Azure Active Directory 标识治理文档 | Microsoft Docs
-  description: 了解跨员工和合作伙伴的标识生命周期治理、访问权限生命周期治理和安全管理。
-  services: active-directory
-  author: rolyon
-  manager: mtillman
+  author: msaburnley
+  description: 了解如何保护、监视和审核对关键资产的访问，同时确保员工的工作效率。
+  manager: daveba
+  ms.author: ajburnle
+  ms.collection: na
+  ms.date: 08/15/2019
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 08/16/2018
-  ms.author: rolyon
-abstract:
-  description: Azure Active Directory (Azure AD) 标识治理使组织可以跨员工和合作伙伴治理标识生命周期、治理访问权限生命周期以及保护管理。
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-identity-governance.png
-      width: 200
-    title: '治理对资源的访问 (1: 17:24)'
-    href: 'https://www.youtube.com/embed/aY7A0Br8u5M'
-    width: 200
-sections:
-  - title: 标识治理
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/identity-governance-overview">什么是标识治理？</a>
-  - title: 访问评审
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/access-reviews-overview">什么是访问评审？</a>
-          - html: <a href="/azure/active-directory/governance/manage-user-access-with-access-reviews">使用访问评审管理用户访问权限</a>
-          - html: <a href="/azure/active-directory/governance/manage-guest-access-with-access-reviews">使用访问评审管理来宾访问权限</a>
-  - title: 使用条款
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">“使用条款”可以用来做什么？</a>
+  services: active-directory
+  ms.openlocfilehash: cb3a19a372e81f7efe816d9f08831045b5f3332b
+  ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/16/2019
+  ms.locfileid: "69542429"
+landingContent:
+- title: 关于 Identity Governance
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure AD Identity Governance？
+      url: identity-governance-overview.md
+  - linkListType: learn
+    links:
+    - text: 监管对资源的访问
+      url: https://www.youtube.com/watch?v=bFfowdpApu4&list=PLQXpv_NQsPIBg3op2xONM9KgwlayFDue6
+- title: 监管对组、应用和站点的访问的生命周期
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD 权利管理是什么？ （预览版）
+      url: entitlement-management-overview.md
+  - linkListType: tutorial
+    links:
+    - text: 创建你的首个访问包，以帮助用户请求他们所需的访问权限
+      url: entitlement-management-access-package-first.md
+  - linkListType: how-to-guide
+    links:
+    - text: 编辑和管理现有访问包
+      url: entitlement-management-access-package-edit.md
+- title: 再次验证对组、应用和特权角色的访问权限
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD 访问评审是什么？
+      url: access-reviews-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建访问评审以确保用户不会保留过多的访问权限
+      url: create-access-review.md
+    - text: 评审对组或应用的访问权限
+      url: perform-access-review.md
+- title: 使用户有资格获得特权角色
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure AD Privileged Identity Management？
+      url: ../privileged-identity-management/pim-configure.md
+- title: 确保用户看到免责声明
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 要求用户在使用应用时同意使用条款
+      url: ../conditional-access/terms-of-use.md

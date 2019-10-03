@@ -4,22 +4,21 @@ description: 如何使用 Azure 中的嵌套虚拟化排查问题 Azure VM
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: ad359a19cb42bf115189aca7905d1908d0dc5284
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005592"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087055"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>使用 Azure 中的嵌套虚拟化排查问题 Azure VM
 
@@ -41,7 +40,7 @@ ms.locfileid: "51005592"
 
     -  操作系统：Windows Server 2016 Datacenter
 
-    -  大小：任何支持嵌套虚拟化的 V3 系列至少具有双核。 有关详细信息，请参阅[引入新的 Dv3 和 Ev3 VM 大小](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)。
+    -  大小：任何支持嵌套虚拟化且至少具有双核的 V3 系列。 有关详细信息，请参阅[引入新的 Dv3 和 Ev3 VM 大小](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)。
 
     -  与问题 VM 相同的位置、存储帐户和资源组。
 
@@ -71,7 +70,7 @@ ms.locfileid: "51005592"
 
 13. 允许服务器安装 Hyper-V 角色。 这需要几分钟的时间，服务器将自动重新启动。
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>步骤 2：在救援 VM 的 Hyper-V 服务器上创建问题 VM
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>步骤 2：在修复 VM 的 Hyper-v 服务器上创建问题 VM
 
 1.  记录问题 VM 中的磁盘名称，然后删除问题 VM。 请确保已保留所有附加磁盘。 
 

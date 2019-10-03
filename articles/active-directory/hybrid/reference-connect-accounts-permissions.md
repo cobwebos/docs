@@ -13,22 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8e7bd33d74d9ecf6ebc35981df7255ecc19253c7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879112"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812600"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>用于 Azure AD Connect 的帐户
 
-![](media/reference-connect-accounts-permissions/account5.png)
+![帐户概述](media/reference-connect-accounts-permissions/account5.png)
 
 Azure AD Connect 使用 3 个帐户，将信息从本地或 Windows Server Active Directory 同步到 Azure Active Directory。  这些帐户是：
 
@@ -38,7 +38,7 @@ Azure AD Connect 使用 3 个帐户，将信息从本地或 Windows Server Activ
 
 - Azure AD 连接器帐户：用于将信息写入 Azure AD
 
-除了用于运行 Azure AD Connect 的这三个帐户外，还需要以下其他帐户以安装 Azure AD Connect。  其中包括：
+除了用于运行 Azure AD Connect 的这三个帐户外，还需要以下其他帐户以安装 Azure AD Connect。  这些是：
 
 - **本地管理员帐户**：将安装 Azure AD Connect 并且在计算机上具有本地管理员权限的管理员。
 
@@ -48,7 +48,20 @@ Azure AD Connect 使用 3 个帐户，将信息从本地或 Windows Server Activ
 
 - SQL SA 帐户（可选）：用于使用完整版 SQL Server 时创建 ADSync 数据库。  此 SQL Server 对 Azure AD Connect 安装而言可能是本地或远程的。  此帐户可能是企业管理员的帐户。  现在，可以由 SQL 管理员在带外进行数据库预配，然后由具有数据库所有者权限的 Azure AD Connect 管理员完成安装。  有关详细信息，请参阅[使用 SQL 委派的管理员权限安装 Azure AD Connect](how-to-connect-install-sql-delegation.md)
 
-## <a name="installing-azure-ad-connect"></a>安装 Azure AD Connect
+<<<<<<< HEAD
+>[!IMPORTANT]
+> 在 build 1.4. # # #. # 中，不再支持使用企业管理员帐户或域管理员帐户作为 AD DS 连接器帐户。  如果在指定 "**使用现有帐户**" 时尝试输入企业管理员或域管理员帐户，则会收到错误。
+=======
+> [!NOTE]
+> 支持从 ESAE 管理林（也称为 "Red 林"）管理 Azure AD Connect 中使用的管理帐户。
+> 专用管理林允许组织在安全控制比生产环境更强的环境中托管管理帐户、工作站和组。
+> 若要了解有关专用管理林的详细信息，请参阅[ESAE 管理林设计方法](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
+>>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+
+> [!NOTE]
+> 在初始安装后不需要全局管理员角色，并且唯一需要的帐户将是**目录同步帐户**角色帐户。 这并不 necssarily 意味着只需删除具有全局管理员角色的帐户。 最好将角色更改为不太强大的角色，因为如果需要重新运行向导，则完全删除帐户可能会导致问题。 通过减少角色的权限，你始终可以重新提升权限（如果必须再次使用 Azure AD Connect 向导）。 
+
+## <a name="installing-azure-ad-connect"></a>正在安装 Azure AD Connect
 Azure AD Connect 安装向导提供提供两种不同的路径：
 
 * 在“快速设置”中，此向导需要更多权限。  这样便可以轻松设置配置，而无需创建用户或配置权限。
@@ -90,7 +103,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 
 | 向导页 | 收集的凭据 | 所需的权限 | 用途 |
 | --- | --- | --- | --- |
-| 不适用 |运行安装向导的用户 |本地服务器的管理员 |<li>创建用于运行同步服务的 ADSync 服务帐户。 |
+| 不可用 |运行安装向导的用户 |本地服务器的管理员 |<li>创建用于运行同步服务的 ADSync 服务帐户。 |
 | 连接到 Azure AD |Azure AD 目录凭据 |Azure AD 中的全局管理员角色 |<li>在 Azure AD 目录中启用同步。</li>  <li>创建在 Azure AD 中用于持续同步操作的 Azure AD 连接器帐户。</li> |
 | 连接到 AD DS |本地 Active Directory 凭据 |Active Directory 中企业管理员 (EA) 组的成员 |<li>在 Active Directory 中创建 AD DS 连接器帐户并向其授予权限。 同步期间，所创建的该帐户用于读取和写入目录信息。</li> |
 
@@ -107,14 +120,14 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 
 | 向导页 | 收集的凭据 | 所需的权限 | 用途 |
 | --- | --- | --- | --- |
-| 不适用 |运行安装向导的用户 |<li>本地服务器的管理员</li><li>只有 SQL 中的系统管理员 (SA) 才可使用 SQL Server 完整版。</li> |默认情况下，将创建充当同步引擎服务帐户的本地帐户。 只有在管理员未指定特定帐户时才创建该帐户。 |
+| 不可用 |运行安装向导的用户 |<li>本地服务器的管理员</li><li>只有 SQL 中的系统管理员 (SA) 才可使用 SQL Server 完整版。</li> |默认情况下，将创建充当同步引擎服务帐户的本地帐户。 只有在管理员未指定特定帐户时才创建该帐户。 |
 | 安装同步服务，服务帐户选项 |AD 或本地用户帐户凭据 |用户，权限由安装向导授予 |如果管理员指定了帐户，则此帐户将用作同步服务的服务帐户。 |
 | 连接到 Azure AD |Azure AD 目录凭据 |Azure AD 中的全局管理员角色 |<li>在 Azure AD 目录中启用同步。</li>  <li>创建在 Azure AD 中用于持续同步操作的 Azure AD 连接器帐户。</li> |
 | 连接目录 |要连接到 Azure AD 的每个林的本地 Active Directory 凭据 |权限随所启用的功能而定，可在“创建 AD DS 连接器帐户”中查找 |在同步期间，将使用此帐户读取和写入目录信息。 |
 | AD FS 服务器 |对于列表中的每个服务器，如果运行向导的用户的登录凭据权限不足，因而无法连接，则向导会收集凭据 |域管理员 |安装和配置 AD FS 服务器角色。 |
 | Web 应用程序代理服务器 |对于列表中的每个服务器，如果运行向导的用户的登录凭据权限不足，因而无法连接，则向导会收集凭据 |目标计算机上的本地管理员 |安装和配置 WAP 服务器角色。 |
 | 代理信任凭据 |联合身份验证服务信任凭据（代理用来注册 FS 信任证书的凭据） |作为 AD FS 服务器本地管理员的域帐户 |初始注册 FS-WAP 信任证书。 |
-| “AD FS 服务帐户”页上的“使用域用户帐户选项” |AD 用户帐户凭据 |域用户 |提供了其凭据的 AD 用户帐户将用作 AD FS 服务的登录帐户。 |
+| “AD FS 服务帐户”页上的“使用域用户帐户选项” |AD 用户帐户凭据 |域用户 |提供了其凭据的 Azure AD 用户帐户用作 AD FS 服务的登录帐户。 |
 
 ### <a name="create-the-ad-ds-connector-account"></a>创建 AD DS 连接器帐户
 
@@ -129,7 +142,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 
 需要哪些权限取决于启用的可选功能。 如果有多个域，则必须对林中的所有域授予权限。 如果某项功能未启动，则默认的**域用户**权限已足够。
 
-| Feature | 权限 |
+| 功能 | 权限 |
 | --- | --- |
 | ms DS ConsistencyGuid 功能 |对[设计概念 - 使用 ms-DS-ConsistencyGuid 作为 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 中所述的 ms-DS-ConsistencyGuid 属性的写入权限。 | 
 | 密码哈希同步 |<li>复制目录更改</li>  <li>复制所有目录更改 |
@@ -154,7 +167,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 
 ## <a name="more-about-the-created-accounts"></a>有关所创建帐户的详细信息
 ### <a name="ad-ds-connector-account"></a>AD DS 连接器帐户
-如果使用快速设置，会在 Active Directory 中创建用于同步的帐户。 创建的帐户位于用户容器的林根域中，其名称前缀为 **MSOL_**。 该帐户带有永不过期的长复杂密码。 如果域中有密码策略，请确保允许此帐户使用长密码和复杂密码。
+如果使用快速设置，会在 Active Directory 中创建用于同步的帐户。 创建的帐户位于用户容器的林根域中，其名称前缀为 **MSOL_** 。 该帐户带有永不过期的长复杂密码。 如果域中有密码策略，请确保允许此帐户使用长密码和复杂密码。
 
 ![AD 帐户](./media/reference-connect-accounts-permissions/adsyncserviceaccount.png)
 
@@ -188,7 +201,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 - sMSA - [独立托管服务帐户](https://technet.microsoft.com/library/dd548356.aspx)
 - gMSA - [组托管服务帐户](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Express | LocalDB/LocalSQL</br>“自定义” | 远程 SQL</br>“自定义” |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>“自定义” | 远程 SQL</br>自定义 |
 | --- | --- | --- | --- |
 | **独立/工作组计算机** | 不支持 | **VSA**</br>本地帐户 (2008)</br>本地帐户 |  不支持 |
 | **加入域的计算机** | **VSA**</br>本地帐户 (2008) | **VSA**</br>本地帐户 (2008)</br>本地帐户</br>域帐户</br>sMSA、gMSA | **gMSA**</br>域帐户 |
@@ -239,6 +252,11 @@ VSA 旨在当同步引擎和 SQL 位于同一服务器上时使用。 如果使�
 Azure AD 将同步服务帐户数目限制为 20 个。 若要在 Azure AD 中获取现有 Azure AD 服务帐户的列表，请运行以下 Azure AD PowerShell cmdlet：`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
 若要删除未使用的 Azure AD 服务帐户，请运行以下 Azure AD PowerShell cmdlet：`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+
+>[!NOTE]
+>在可以使用上述 PowerShell 命令之前，你将需要安装[Azure Active Directory PowerShell For Graph 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module)，并使用[AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)连接到 Azure AD 实例
+
+有关如何管理或重置 Azure AD Connect 帐户密码的更多信息，请参阅[管理 Azure AD Connect 帐户](how-to-connect-azureadaccount.md)
 
 ## <a name="related-documentation"></a>相关文档
 如果尚未阅读文档了解如何[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)，请查看下表获取相关主题的链接。

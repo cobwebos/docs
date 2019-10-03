@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure Site Recovery 执行 Hyper-V 到 Azure 灾难恢复的体系结构 | Microsoft Docs
+title: Azure Site Recovery 中的 hyper-v 到 Azure 灾难恢复体系结构
 description: 本文概述了使用 Azure Site Recovery 服务将本地 Hyper-V VM（不带 VMM）的灾难恢复部署到 Azure 时使用的组件和体系结构。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: f77069592fb34caf409b387f5c8452159f55e296
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 4035746772b44d7267d6a9cd90c7bdc02c804a8a
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311503"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147076"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 到 Azure 的灾难恢复体系结构
 

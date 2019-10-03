@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007468"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61442836"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>将 Azure 时序见解与远程监视集成
 
@@ -51,7 +51,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 选择“创建资源” > “物联网” > “时序见解”。
+1. 选择“创建资源” > “物联网” > “时序见解”    。
 
     ![新建时序见解](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
 
@@ -59,16 +59,16 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 环境名称 | 以下屏幕截图使用名称“contorosrmtsi”。 完成此步骤后，请选择自己的唯一名称。 |
+    | 环境名称 | 以下屏幕截图使用名称“contorosrmtsi”  。 完成此步骤后，请选择自己的唯一名称。 |
     | 订阅 | 在下拉列表中选择自己的 Azure 订阅。 |
     | 资源组 | **使用现有项**。 选择现有远程监视资源组的名称。 |
-    | 位置 | 本文使用“美国东部”。 在远程监视解决方案所在的同一区域中创建环境（若可能）。 |
+    | 位置 | 本文使用“美国东部”  。 在远程监视解决方案所在的同一区域中创建环境（若可能）。 |
     | SKU |**S1** |
     | 容量 | **1** |
 
     ![创建时序见解](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. 单击“创建”。 可能需要花费片刻时间来创建环境。
+1. 单击“创建”  。 可能需要花费片刻时间来创建环境。
 
 ## <a name="create-event-source"></a>创建事件源
 
@@ -76,11 +76,11 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 1. 导航到新的时序见解环境。
 
-1. 在左侧选择“事件源”。
+1. 在左侧选择“事件源”  。
 
     ![查看事件源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. 单击“添加”。
+1. 单击“添加”  。
 
     ![添加事件源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
@@ -88,12 +88,12 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 事件源名称 | 以下屏幕截图使用名称“contosorm-iot-hub”。 完成此步骤后，请使用自己的唯一名称。 |
+    | 事件源名称 | 以下屏幕截图使用名称“contosorm-iot-hub”  。 完成此步骤后，请使用自己的唯一名称。 |
     | 源 | **IoT 中心** |
     | 导入选项 | **从可用的订阅使用 IoT 中心** |
     | 订阅 ID | 在下拉列表中选择自己的 Azure 订阅。 |
     | IoT 中心名称 | **contosorma57a6**。 使用远程监视解决方案中的 IoT 中心名称。 |
-    | IoT 中心策略名称 | iothubowner 确保使用的策略是所有者策略。 |
+    | IoT 中心策略名称 | iothubowner 确保使用的策略是所有者策略  。 |
     | IoT 中心策略密钥 | 此字段会自动填充。 |
     | IoT 中心使用者组 | **timeseriesinsights** |
     | 事件序列化格式 | **JSON**     | 
@@ -101,29 +101,29 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     ![创建事件源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. 单击“创建”。
+1. 单击“创建”  。
 
 ## <a name="configure-the-data-access-policy"></a>配置数据访问策略
 
 要确保有权访问远程监视解决方案的所有用户都能够在时序见解资源管理器中浏览数据，请在 Azure 门户中的数据访问策略下添加应用程序和用户。 
 
-1. 在导航列表中，选择“资源组”。
+1. 在导航列表中，选择“资源组”  。
 
-1. 选择“ContosoRM”资源组。
+1. 选择“ContosoRM”资源组  。
 
-1. 在 Azure 资源列表中选择“contosormtsi”。
+1. 在 Azure 资源列表中选择“contosormtsi”  。
 
-1. 选择“数据访问策略”，以查看当前的角色分配列表。
+1. 选择“数据访问策略”，以查看当前的角色分配列表  。
 
-1. 选择“添加”以打开“选择用户规则”窗格。
+1. 选择“添加”以打开“选择用户规则”窗格   。
 
-   如果无权分配角色，则不会看到“添加”选项。
+   如果无权分配角色，则不会看到“添加”选项  。
 
-1. 在“角色”下拉列表中选择一个角色，例如“读者”和“参与者”。
+1. 在“角色”下拉列表中选择一个角色，例如“读者”和“参与者”    。
 
-1. 在“选择”列表中，选择用户、组或应用程序。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
+1. 在“选择”列表中，选择用户、组或应用程序  。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符  。
 
-1. 选择“保存”，创建角色分配。 片刻之后，会在数据访问策略中为安全主体分配角色。
+1. 选择“保存”，创建角色分配  。 片刻之后，会在数据访问策略中为安全主体分配角色。
 
 > [!NOTE]
 > 如果需要向其他用户授予对时序见解资源管理器的访问权限，可以使用这些步骤来[授予数据访问权限](../time-series-insights/time-series-insights-data-access.md#grant-data-access)。
@@ -132,15 +132,15 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 下一步将配置 Azure 流分析管理器微服务以停止向 Cosmos DB 发送消息并仅将其存储在时序见解中。 如果希望在 Cosmos DB 中复制消息，请跳过该步骤。
 
-1. 在导航列表中，选择“资源组”。
+1. 在导航列表中，选择“资源组”  。
 
-1. 选择“ContosoRM”资源组。
+1. 选择“ContosoRM”资源组  。
 
-1. 在资源列表中查找 Azure 流分析 (ASA) 流式处理作业。 资源名称以“streamingjobs-”开头。
+1. 在资源列表中查找 Azure 流分析 (ASA) 流式处理作业。 资源名称以“streamingjobs-”开头  。
 
 1. 在顶部，请单击按钮以停止 ASA 流式处理作业。
 
-1. 编辑 ASA 查询并删除“SELECT”、“INTO”和“FROM”子句，这些子句指向 Cosmos DB 中的消息流。 这些子句应位于查询的底部，如以下示例所示：
+1. 编辑 ASA 查询并删除“SELECT”、“INTO”和“FROM”子句，这些子句指向 Cosmos DB 中的消息流    。 这些子句应位于查询的底部，如以下示例所示：
 
     ```sql
     SELECT
@@ -191,7 +191,7 @@ Java:
 docker pull azureiotpcs/telemetry-java:1.0.2
 ```
 
-## <a name="optional-configure-the-web-ui-to-link-to-the-time-series-insights-explorer"></a>“[可选]”配置 Web UI 以链接到时序见解资源管理器
+## <a name="optional-configure-the-web-ui-to-link-to-the-time-series-insights-explorer"></a>“[可选]”配置 Web UI 以链接到时序见解资源管理器 
 
 要在时序见解资源管理器中轻松查看数据，建议自定义 UI，以轻松链接到环境。 为此，请使用以下命令将最新更改拉取到 Web UI：
 
@@ -207,13 +207,13 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 为已更新的微服务配置 `basic` 部署的环境。
 
-1. 在 Azure 门户的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 Azure 门户的左侧导航面板中，单击“Azure Active Directory”图标  。
 
-1. 单击“应用注册”。
+1. 单击“应用注册”  。
 
-1. 搜索并单击“ContosoRM”应用程序。
+1. 搜索并单击“ContosoRM”应用程序  。
 
-1. 导航到“设置” > “密钥”并为应用程序创建新密钥。 请确保将密钥值复制到安全位置。
+1. 导航到“设置” > “密钥”并为应用程序创建新密钥   。 请确保将密钥值复制到安全位置。
 
 1. 使用最新标记从 GitHub 存储库中拉取[最新 docker compose yaml 文件](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm)。 
 
@@ -231,9 +231,9 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
     PCS_AAD_APPSECRET={AAD application key}
     ```
 
-1. 导航到“遥测服务”并通过添加上述相同的环境变量来编辑 docker compose 文件。
+1. 导航到“遥测服务”并通过添加上述相同的环境变量来编辑 docker compose 文件  。
 
-1. 导航到“ASA 管理器服务”并通过添加 `PCS_TELEMETRY_STORAGE_TYPE` 编辑 docker compose 文件。
+1. 导航到“ASA 管理器服务”并通过添加 `PCS_TELEMETRY_STORAGE_TYPE` 编辑 docker compose 文件  。
 
 1. 使用 VM 中的 `sudo ./start.sh` 重启 docker 容器。
 

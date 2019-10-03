@@ -1,27 +1,22 @@
 ---
-title: 通过 Microsoft 促进业务发展 | Azure
+title: 将提升您的企业提供 Microsoft |Azure Marketplace
 description: 使用面向应用和服务发布者的 Azure 市场和 AppSource 促进业务发展
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3bd2361547a8210ae287eabaa67b60e8ba1f26e3
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f21c5f94c595fe3718a0a59a80deff8f1c53b9fc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738141"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64937646"
 ---
-# <a name="promote-your-business-with-microsoft"></a>通过 Microsoft 促进业务发展  
+# <a name="promote-your-business-with-microsoft"></a>通过 Microsoft 促进业务发展 
+
 Microsoft 旨在支持合作伙伴（也就是你），并简化在市场店铺中销售应用或产品/服务的过程。 通过市场中的一览，可以访问市场中的程序和资源。 
 
 如果还未注册 Microsoft 合作伙伴网络 (MPN)，必须先注册，然后才能继续。  

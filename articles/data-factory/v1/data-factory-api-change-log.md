@@ -3,23 +3,21 @@ title: 数据工厂 - .NET API 更改日志 | Microsoft Docs
 description: 描述 Azure 数据工厂的 .NET API 的特定版本中的重大更改、新增功能、Bug 修复等。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
-ms.assetid: 8208271b-7f4c-4214-b665-d2ff503c4470
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 863f3500c84eeab1c3dac19141cd334fc6961694
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.date: 01/22/2018
+ms.openlocfilehash: 35f0145526aa596691fde26e92695f64f5ac35e0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015910"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140517"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure 数据工厂 - .NET API 更改日志
 > [!NOTE]
@@ -137,10 +135,10 @@ ms.locfileid: "54015910"
   * [AzureDataLakeStoreSink](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestoresink.aspx)
 
 ## <a name="version-401"></a>版本 4.0.1
-### <a name="breaking-changes"></a>重大变化
+### <a name="breaking-changes"></a>中断性变更
 已重命名下面的类。 新名称是 4.0.0 版之前的类的原始名称。
 
-| 4.0.0 版中的名称 | 4.0.1 版中的名称 |
+| 4\.0.0 版中的名称 | 4\.0.1 版中的名称 |
 |:--- |:--- |
 | AzureSqlDataWarehouseDataset |[AzureSqlDataWarehouseTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqldatawarehousetabledataset.aspx) |
 | AzureSqlDataset |[AzureSqlTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuresqltabledataset.aspx) |
@@ -150,7 +148,7 @@ ms.locfileid: "54015910"
 | SqlServerDataset |[SqlServerTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.sqlservertabledataset.aspx) |
 
 ## <a name="version-400"></a>版本 4.0.0
-### <a name="breaking-changes"></a>重大变化
+### <a name="breaking-changes"></a>中断性变更
 * 已重命名下面的类/接口。
 
 | 旧名称 | 新名称 |

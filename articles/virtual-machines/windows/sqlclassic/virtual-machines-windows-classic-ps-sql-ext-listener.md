@@ -9,18 +9,17 @@ editor: ''
 tags: azure-service-management
 ms.assetid: a2453032-94ab-4775-b976-c74d24716728
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 89623adbddce07cbc3c3ead811f5174d108c9b0e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 78881830d4e558daaad6e1929b30287e2731fb1b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444780"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100414"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 AlwaysOn 可用性组的外部侦听器
 > [!div class="op_single_selector"]
@@ -123,11 +122,11 @@ ms.locfileid: "57444780"
 [!INCLUDE [Test-Listener-Within-VNET](../../../../includes/virtual-machines-ag-listener-test.md)]
 
 ## <a name="test-the-availability-group-listener-over-the-internet"></a>测试可用性组侦听器（通过 Internet）
-若要访问从虚拟网络外部的侦听器，您必须使用外部/公共负载均衡 （本主题中所述） 而不 ILB，即仅在同一 VNet 中访问。 在连接字符串中指定云服务名称。 例如，如果云服务名为 *mycloudservice*，则 sqlcmd 语句将如下所示：
+若要从虚拟网络外部访问侦听器，必须使用外部/公共负载均衡（如本主题中所述）而不是 ILB，因为 ILB 只能在同一 VNet 中进行访问。 在连接字符串中指定云服务名称。 例如，如果云服务名为 *mycloudservice*，则 sqlcmd 语句将如下所示：
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-与前面的示例不同，现在必须使用 SQL 身份验证，因为调用方无法通过 Internet 使用 Windows 身份验证。 有关详细信息，请参阅[Always On 可用性组在 Azure VM 中：客户端连接方案](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)。 使用 SQL 身份验证时，请确保在两个副本上创建相同的登录名。 有关排查可用性组登录问题的详细信息，请参阅[如何映射登录名或使用包含的 SQL 数据库用户连接到其他副本并映射到可用性数据库](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)。
+与前面的示例不同，现在必须使用 SQL 身份验证，因为调用方无法通过 Internet 使用 Windows 身份验证。 有关详细信息，请参阅 [Azure VM 中的 Always On 可用性组：客户端连接方案](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)。 使用 SQL 身份验证时，请确保在两个副本上创建相同的登录名。 有关排查可用性组登录问题的详细信息，请参阅[如何映射登录名或使用包含的 SQL 数据库用户连接到其他副本并映射到可用性数据库](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)。
 
 如果 Always On 副本位于不同子网中，客户端必须在连接字符串中指定 **MultisubnetFailover=True**。 这会导致尝试并行连接到不同子网中的副本。 请注意，这种情况下包括跨区域 AlwaysOn 可用性组部署。
 

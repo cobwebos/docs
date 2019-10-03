@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: d0ef9f34d6b657a063e50b0f144197c41905e809
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667440"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "60949120"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 运行状况监视简介
 Azure Service Fabric 引入了一个运行状况模型，该模型提供丰富、灵活且可扩展的运行状况评估和报告。 使用该模型可对群集及其中运行的服务的状态进行近乎实时的监视。 可以轻松获取运行状况信息，并在潜在问题级联和造成大规模停机之前予以更正。 在典型的模型中，服务基于其本地视图发送报告，并聚合信息，以提供整体的群集级别视图。
@@ -211,7 +211,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 * **RemoveWhenExpired**。 一个布尔值。 如果设置为 true，过期的运行状况报告会自动从运行状况存储中删除，并且该报告不会影响实体运行状况评估。 仅当报告在一段指定时间内有效且报告器不需要显式清除它时使用。它也用于从运行状况存储中删除报告（例如，更改监视器，并停止发送具有以前的源和属性的报告）。 它可以发送具有短暂的 TimeToLive 和 RemoveWhenExpired 的报告，以清除运行状况存储中的所有以往状态。 如果该值设置为 false，过期的报告在运行状况评估中则被视为错误。 false 值向运行状况存储发出指示，源应该对此属性进行定期报告。 如果没有报告，则一定是监视器出现了一些问题。 通过将事件视为错误来捕获监视器运行状况。
 * **SequenceNumber**。 需要不断增加的正整数，它表示报告的顺序。 运行状况存储使用它来检测因网络延迟或其他问题而较晚收到的过时报告。 针对相同的实体、源和属性，如果序列号小于或等于最新应用的序列号，则报告会被拒绝。 如果未指定，则会自动生成序列号。 只有在报告状态转换时，才需放入序列号。 在此情况下，源必须记住它所发送的报告，并保留信息以便在故障转移时进行恢复。
 
-每个运行状况报告都需要四种信息（SourceId、实体标识符、属性和 HealthState）。 不允许 SourceId 字符串以前缀“**System.**”开头，该字符串是为系统报告保留的。 对于相同实体，相同的源和属性只有一个报告。 如果为相同的源和属性生成多个报告，它们会在运行状况客户端（如果按批处理）或在运行状况存储端覆盖彼此。 根据序列号进行这种替换操作：较新的报告（具有更高的序列号）替换较旧的报告。
+每个运行状况报告都需要四种信息（SourceId、实体标识符、属性和 HealthState）。 不允许 SourceId 字符串以前缀“**System.** ”开头，该字符串是为系统报告保留的。 对于相同实体，相同的源和属性只有一个报告。 如果为相同的源和属性生成多个报告，它们会在运行状况客户端（如果按批处理）或在运行状况存储端覆盖彼此。 根据序列号进行这种替换操作：较新的报告（具有更高的序列号）替换较旧的报告。
 
 ### <a name="health-events"></a>运行状况事件
 在内部，运行状况存储保留[运行状况事件](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent)，其中包含报告的所有信息以及其他元数据。 元数据包括报告提供给运行状况客户端的时间，以及在服务器端修改该报告的时间。 运行状况事件通过[运行状况查询](service-fabric-view-entities-aggregated-health.md#health-queries)返回。
@@ -229,7 +229,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 * 仅针对在最后 X 分钟内更改的条件发出警报。 如果在指定时间之前，报告已处于“错误”状态，则可以忽略它，因为之前已对它发出指示。
 * 如果属性在“警告”和“错误”之间切换，则确定它处于不正常状态（即不“正常”）的时长。 例如，当属性处于不正常状态超过 5 分钟时发出警报，可以转化为（HealthState != 正常并且立即 - LastOkTransitionTime > 5 分钟）。
 
-## <a name="example-report-and-evaluate-application-health"></a>示例：报告和评估应用程序运行状况
+## <a name="example-report-and-evaluate-application-health"></a>例如：报告和评估应用程序运行状况
 下列示例在源 **MyWatchdog** 中的应用程序 **fabric:/WordCount** 上通过 PowerShell 发送运行状况报告。 运行状况报告包含有关“错误”运行状况状态下的运行状况属性可用性的信息，含无限 TimeToLive。 然后，它会查询应用程序运行状况，此查询会返回已聚合运行状况状态错误和运行状况事件列表中已报告的运行状况事件。
 
 ```powershell

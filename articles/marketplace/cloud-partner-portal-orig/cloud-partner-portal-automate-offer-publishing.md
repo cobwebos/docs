@@ -1,25 +1,18 @@
 ---
-title: 自动执行产品/服务发布 | Microsoft Docs
+title: 自动执行的产品/服务发布 |Azure Marketplace
 description: 说明如何以编程方式自动执行虚拟机发布工作流。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 929bff618bfca0405b8c1a2b53d5fbacad9ad5f5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 0a927c72a82c6aa3c79988c599ea8b840821a2b8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805948"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935904"
 ---
 <a name="automate-offer-publishing"></a>自动执行产品/服务发布
 =========================

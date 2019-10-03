@@ -1,5 +1,6 @@
 ---
-title: 什么是语言理解 (LUIS) - Azure 认知服务 | Microsoft Docs
+title: 什么是语言理解 (LUIS)？
+titleSuffix: Azure Cognitive Services
 description: 语言理解 (LUIS) 是一种基于云的 API 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。
 services: cognitive-services
 author: diberry
@@ -7,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/23/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: c26f3d6c3b34ed90a5455bb94ea71d7556b47751
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3d4251613ac2a00ddc56d5e573b49ced01adf61c
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441961"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703097"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -28,7 +29,7 @@ LUIS 的客户端应用程序可以是任何传统的应用程序，只要其能
 
 <a name="Accessing-LUIS"></a>
 
-LUIS 应用一旦发布，客户端应用程序即可向 LUIS 自然语言处理终结点 [API][endpoint-apis] 发送话语（文本）并接收结果作为 JSON 响应。 LUIS 的常用客户端应用程序是聊天机器人。
+LUIS 应用一旦发布，客户端应用程序即可向 LUIS 自然语言处理终结点 [API][endpoint-apis] 发送话语（文本）并将结果作为 JSON 响应接收。 LUIS 的常用客户端应用程序是聊天机器人。
 
 
 ![使用聊天机器人通过自然语言理解 (NLP) 来预测用户文本的 LUIS 的概念图像](./media/luis-overview/luis-overview-process-2.png "使用聊天机器人通过自然语言理解 (NLP") 来预测用户文本的 LUIS 的概念图像
@@ -53,21 +54,21 @@ LUIS 应用包含一个特定于域的自然语言模型。 可通过预构建�
 * **自定义实体** LUIS 提供多种方式来自行标识自定义的意向和实体，比如机器学习到的实体、特定实体或文本实体，以及机器学习到的实体和文本实体的组合。
 
 ## <a name="build-the-luis-model"></a>构建 LUIS 模型
-使用[创作](https://aka.ms/luis-authoring-apis) API 或 LUIS 门户构建模型。
+使用[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API 或 LUIS 门户构建模型。
 
 LUIS 模型从称为 **[意向](luis-concept-intent.md)** 的用户意向的类别开始。 每个意向都需要用户 **[话语](luis-concept-utterance.md)** 的示例。 每个话语都可以提供各种数据，这些数据需要通过 **[实体](luis-concept-entity-types.md)** 来提取。 
 
-|示例用户话语|意向|实体|
+|示例用户话语|Intent|实体|
 |-----------|-----------|-----------|
-|“预订到西雅图的航班？”|BookFlight|西雅图|
-|“你的店铺何时开门？”|店铺营业时间和位置|开门|
-|“安排下午 1 点与分销部的何石谈话”|安排谈话|下午 1 点，何石|
+|“预订到西雅图的航班？” |BookFlight|西雅图|
+|“你的店铺何时开门？” |店铺营业时间和位置|开门|
+|“安排下午 1 点与分销部的何石谈话”  |安排谈话|下午 1 点，何石|
 
 ## <a name="query-prediction-endpoint"></a>查询预测终结点
 
-在生成模型并将其发布到终结点以后，客户端应用程序会将话语发送到已发布的预测[终结点](https://aka.ms/luis-endpoint-apis) API。 API 将模型应用于要分析的文本。 API 使用 JSON 格式的预测结果进行响应。  
+在生成模型并将其发布到终结点以后，客户端应用程序会将话语发送到已发布的预测[终结点](https://go.microsoft.com/fwlink/?linkid=2092356) API。 API 将模型应用于要分析的文本。 API 使用 JSON 格式的预测结果进行响应。  
 
-JSON 终结点响应至少包含查询话语和得分最高的意向。 它还可以提取数据，例如下面的“联系人类型”实体。 
+JSON 终结点响应至少包含查询话语和得分最高的意向。 它还可以提取数据，例如下面的“联系人类型”实体。  
 
 ```JSON
 {
@@ -101,7 +102,7 @@ LUIS 提供工具、版本控制以及与其他 LUIS 创建者的协作，以便
 作为 REST API，LUIS 可以与任何发送 HTTP 请求的产品、服务或框架配合使用。 以下列表包含与 LUIS 配合使用的顶级 Microsoft 产品和服务。
 
 LUIS 的顶级客户端应用程序是：
-* [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0)可以快速创建支持 LUIS 的聊天机器人，该机器人可以通过文本输入与用户交谈。 使用 [Bot Framework][bot-framework] [3.x](https://github.com/Microsoft/BotBuilder) 或 [4.x](https://github.com/Microsoft/botbuilder-dotnet) 版以获取完整的机器人体验。
+* [Web 应用机器人](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)可以快速创建支持 LUIS 的聊天机器人，该机器人可以通过文本输入与用户交谈。 使用 [Bot Framework][bot-framework] [4.x](https://github.com/Microsoft/botbuilder-dotnet) 版以获取完整的机器人体验。
 
 通过机器人快速轻松地使用 LUIS 的工具：
 * [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS)：NPM 包以独立命令行工具或导入的形式提供创作和预测。 
@@ -122,10 +123,10 @@ LUIS 的顶级客户端应用程序是：
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[预构建的](luis-get-started-create-app.md)或[自定义的](luis-quickstart-intents-only.md)域创作新的 LUIS 应用。 [查询公用 IoT 应用的预测终结点](luis-get-started-cs-get-intent.md)。
+使用[预构建的](luis-get-started-create-app.md)或[自定义的](luis-quickstart-intents-only.md)域创作新的 LUIS 应用。 [查询公用 IoT 应用的预测终结点](luis-get-started-get-intent-from-browser.md)。
 
 [bot-framework]: https://docs.microsoft.com/bot-framework/
 [flow]: https://docs.microsoft.com/connectors/luis/
-[authoring-apis]: https://aka.ms/luis-authoring-api
-[endpoint-apis]: https://aka.ms/luis-endpoint-apis
+[authoring-apis]: https://go.microsoft.com/fwlink/?linkid=2092087
+[endpoint-apis]: https://go.microsoft.com/fwlink/?linkid=2092356
 [qnamaker]: https://qnamaker.ai/

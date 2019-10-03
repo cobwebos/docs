@@ -3,15 +3,15 @@ title: 使用 Azure Cosmos 模拟器在本地开发
 description: 利用 Azure Cosmos 模拟器，无需创建 Azure 订阅即可在本地免费开发和测试应用程序。
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 04/20/2018
-author: deborahc
-ms.author: dech
-ms.openlocfilehash: 1db103fe46db292e2aa41b648c0ace16fd450d90
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+author: markjbrown
+ms.author: mjbrown
+ms.date: 07/26/2019
+ms.openlocfilehash: 4c26431ee0d506dda547fb4027845baa15c9a134
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525416"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997887"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -61,7 +61,7 @@ Azure Cosmos 模拟器具有以下硬件和软件要求：
 
 ## <a name="running-on-windows"></a>在 Windows 上运行
 
-要启动 Azure Cosmos 模拟器，请选择“开始”按钮或按 Windows 键。 开始键入“Azure Cosmos 模拟器”，再从应用程序列表中选择该模拟器。
+要启动 Azure Cosmos 模拟器，请选择“开始”按钮或按 Windows 键。 开始键入“Azure Cosmos 模拟器”，再从应用程序列表中选择该模拟器  。
 
 ![选择“开始”按钮或按 Windows 键，开始键入**Azure Cosmos DB 模拟器**，再从应用程序列表中选择该模拟器](./media/local-emulator/database-local-emulator-start.png)
 
@@ -97,7 +97,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > Azure Cosmos 模拟器支持的主密钥仅可用于该模拟器。 不能在 Azure Cosmos DB 模拟器中使用生产 Azure Cosmos DB 帐户和密钥。
 
 > [!NOTE]
-> 如果是使用 /Key 选项启动的模拟器，请使用所生成的密钥而不是 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。 有关 /Key 选项的详细信息，请参阅[命令行工具参考](#command-line-syntax)。
+> 如果是使用 /Key 选项启动的模拟器，请使用所生成的密钥而不是 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。 有关 /Key 选项的详细信息，请参阅[命令行工具参考](#command-line)。
 
 与 Azure Cosmos DB 一样，Azure Cosmos 模拟器仅支持采用 SSL 的安全通信。
 
@@ -122,7 +122,7 @@ DocumentClient client = new DocumentClient(
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB 的用于 MongoDB 的 API
 
-如果使用 [Azure Cosmos DB 的 API for MongoDB](mongodb-introduction.md)，请使用以下连接字符串：
+在桌面上运行 Azure Cosmos 模拟器后，可以使用 [Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md) 与该模拟器进行交互。 在命令提示符下，以管理员的身份使用“/EnableMongoDbEndpoint”启动模拟器。 然后，使用以下连接字符串来连接到 MongoDB API 帐户：
 
 ```bash
 mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
@@ -153,7 +153,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 * [安装 Python 2.7](https://www.python.org/downloads/release/python-2716/)
 
-* [安装 Cassandra CLI/CQLSH](http://cassandra.apache.org/download/)
+* [安装 Cassandra CLI/CQLSH](https://cassandra.apache.org/download/)
 
 * 在常规命令提示符窗口中运行以下命令：
 
@@ -181,7 +181,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 使用“/EnableGremlinEndpoint”在管理员命令提示符处启动模拟器。 或者，也可设置环境变量 `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
-* [安装 apache-tinkerpop-gremlin-console-3.3.4](http://tinkerpop.apache.org/downloads.html)
+* [安装 apache-tinkerpop-gremlin-console-3.3.4](https://tinkerpop.apache.org/downloads.html)
 
 * 在模拟器的数据资源管理器中，创建数据库“db1”和集合“coll1”，并选择“/name”作为分区键
 
@@ -232,7 +232,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 ### <a name="command-line-syntax"></a>命令行语法
 
-    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/?]
+    CosmosDB.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort] [/DirectPorts] [/Key] [/EnableRateLimiting] [/DisableRateLimiting] [/NoUI] [/NoExplorer] [/EnableMongoDbEndpoint] [/?]
 
 若要查看选项列表，请在命令提示符下键入 `CosmosDB.Emulator.exe /?`。
 
@@ -244,20 +244,21 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 | 关机| 关闭 Azure Cosmos 模拟器。| CosmosDB.Emulator.exe /Shutdown | |
 |DataPath | 指定要在其中存储数据文件的路径。 默认值为 %LocalAppdata%\CosmosDBEmulator。 | CosmosDB.Emulator.exe /DataPath=\<datapath\> | \<datapath\>：可访问路径 |
 |端口 | 指定用于模拟器的端口号。 默认值为 8081。 |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>：单个端口号 |
-| MongoPort | 指定用于 MongoDB 兼容性 API 的端口号。 默认值为 10255。 |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>：单个端口号|
-| CassandraPort | 指定用于 Cassandra 终结点的端口号。 默认值为 10350。 | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>：单个端口号 |
 | ComputePort | 指定用于计算互操作网关服务的端口号。 该网关的 HTTP 终结点探测端口计算得出 ComputePort + 79。 因此，ComputePort 和 ComputePort + 79 必须打开且可使用。 默认值为 8900, 8979。 | CosmosDB.Emulator.exe /ComputePort = \<computeport\> | \<computeport\>：单个端口号 |
+| EnableMongoDbEndpoint | 启用 MongoDB API | CosmosDB.Emulator.exe /EnableMongoDbEndpoint | |
+| MongoPort | 指定用于 MongoDB 兼容性 API 的端口号。 默认值为 10255。 |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<mongoport\>：单个端口号|
 | EnableCassandraEndpoint | 启用 Cassandra API | CosmosDB.Emulator.exe /EnableCassandraEndpoint | |
+| CassandraPort | 指定用于 Cassandra 终结点的端口号。 默认值为 10350。 | CosmosDB.Emulator.exe /CassandraPort = \<cassandraport\> | \<cassandraport\>：单个端口号 |
 | EnableGremlinEndpoint | 启用 Gremlin API | CosmosDB.Emulator.exe /EnableGremlinEndpoint | |
 | GremlinPort | 用于 Gremlin 终结点的端口号。 默认值为 8901。 | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>：单个端口号 |
+|EnableTableEndpoint | 启用 Azure 表 API | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |TablePort | 用于 Azure 表终结点的端口号。 默认值为 8902。 | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>：单个端口号|
 | KeyFile | 从指定文件中读取授权密钥。 使用 /GenKeyFile 选项来生成密钥文件 | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<file_name\>：文件的路径 |
-| ResetDataPath | 以递归方式删除指定路径中的所有文件。 如果不指定路径，则默认为 %LOCALAPPDATA%\CosmosDbEmulator | CosmosDB.Emulator.exe /ResetDataPath[=\<path>] | \<path\>：文件路径  |
+| ResetDataPath | 以递归方式删除指定路径中的所有文件。 如果不指定路径，则默认为 %LOCALAPPDATA%\CosmosDbEmulator | CosmosDB.Emulator.exe /ResetDataPath=\<path> | \<path\>：文件路径  |
 | StartTraces  |  开始收集调试跟踪日志。 | CosmosDB.Emulator.exe /StartTraces | |
 | StopTraces     | 停止收集调试跟踪日志。 | CosmosDB.Emulator.exe /StopTraces  | |
-|EnableTableEndpoint | 启用 Azure 表 API | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |FailOnSslCertificateNameMismatch | 默认情况下，如果证书的 SAN 不包含模拟器主机的域名、本机 IPv4 地址、“localhost”和“127.0.0.1”，则模拟器会重新生成自签名的 SSL 证书。 启用此选项后，模拟器在启动时会失败。 之后，你应使用 /GenCert 选项来创建和安装新的自签名 SSL 证书。 | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | 生成并安装新的自签名 SSL 证书。 选择性地包含用于通过网络访问模拟器的其他 DNS 名称的列表（以逗号分隔）。 | CosmosDB.Emulator.exe /GenCert[ \<comma-separated list of additional dns-names\>] | |
+| GenCert | 生成并安装新的自签名 SSL 证书。 选择性地包含用于通过网络访问模拟器的其他 DNS 名称的列表（以逗号分隔）。 | CosmosDB.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>：其他 dns 名称的逗号分隔列表（可选）  |
 | DirectPorts |指定用于直接连接的端口。 默认值为 10251、10252、10253、10254。 | CosmosDB.Emulator.exe /DirectPorts:\<directports\> | \<directports\>：以逗号分隔的 4 个端口的列表 |
 | 密钥 |模拟器的授权密钥。 密钥必须是 64 字节向量的 base 64 编码。 | CosmosDB.Emulator.exe /Key:\<key\> | \<key\>：密钥必须是 64 字节向量的 base 64 编码|
 | EnableRateLimiting | 指定已启用请求速率限制行为。 |CosmosDB.Emulator.exe /EnableRateLimiting | |
@@ -274,19 +275,19 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 ## <a id="set-partitioncount"></a>更改容器数量
 
-默认情况下，可最多创建 25 个固定大小的容器（仅支持使用 Azure Cosmos DB SDK 创建），或使用 Azure Cosmos 模拟器创建 5 个不受限容器。 通过修改 PartitionCount 值，可最多创建 250 个固定大小的容器或 50 个不受限容器，也可创建两者的任意组合（前提是总数不超过 250 个固定大小的容器，其中 1 个不受限容器 = 5 个固定大小的容器）。 但是，建议不要设置用 200 个以上固定大小的容器进行运行的模拟器。 因为这会造成磁盘 IO 操作的开销增加，导致在运行终结点 API 时出现不可预测的超时情况。
-
+默认情况下，可最多创建 25 个固定大小的容器（仅支持使用 Azure Cosmos DB SDK 创建），或使用 Azure Cosmos 模拟器创建 5 个不受限容器。 通过修改 PartitionCount 值，可最多创建 250 个固定大小的容器或 50 个不受限容器，也可创建两者的任意组合（前提是总数不超过 250 个固定大小的容器，其中 1 个不受限容器 = 5 个固定大小的容器）  。 但是，建议不要设置用 200 个以上固定大小的容器进行运行的模拟器。 因为这会造成磁盘 IO 操作的开销增加，导致在运行终结点 API 时出现不可预测的超时情况。
 
 如果在已超过当前分区计数后尝试创建容器，则模拟器将引发 ServiceUnavailable 异常，并收到以下消息。
 
 “很抱歉，此区域当前需求较高，暂时无法满足你的请求。 我们在持续努力推出越来越多的容量，请进行重试。
-随时欢迎出于任何原因发送电子邮件至 askcosmosdb@microsoft.com。 ActivityId:12345678-1234-1234-1234-123456789abc”
+随时欢迎出于任何原因发送电子邮件至 askcosmosdb@microsoft.com。
+ActivityId:12345678-1234-1234-1234-123456789abc”
 
 要更改 Azure Cosmos 模拟器中可用容器的数量，请执行以下步骤：
 
-1. 在系统任务栏上右键单击“Azure Cosmos 模拟器”图标，并单击“重置数据...”，删除所有本地 Azure Cosmos 模拟器数据。
+1. 在系统任务栏上右键单击“Azure Cosmos 模拟器”图标，并单击“重置数据...”，删除所有本地 Azure Cosmos 模拟器数据   。
 2. 删除文件夹 `%LOCALAPPDATA%\CosmosDBEmulator` 中的所有模拟器数据。
-3. 通过在系统任务栏上右键单击“Azure Cosmos DB 模拟器”图标，并单击“退出”，退出所有打开的实例。 退出所有实例可能需要一分钟。
+3. 通过在系统任务栏上右键单击“Azure Cosmos DB 模拟器”  图标，并单击“退出”  ，退出所有打开的实例。 退出所有实例可能需要一分钟。
 4. 安装最新版的 [Azure Cosmos 模拟器](https://aka.ms/cosmosdb-emulator)。
 5. 通过设置一个 <= 250 的值启动具有 PartitionCount 标志的模拟器。 例如：`C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`。
 
@@ -352,12 +353,12 @@ Import-Module Microsoft.Azure.CosmosDB.Emulator
 
 可在用于 Windows 的 Docker 上运行 Azure Cosmos 模拟器。 该模拟器不适合于用于 Oracle Linux 的 Docker。
 
-安装[用于 Windows 的 Docker](https://www.docker.com/docker-windows) 后，通过右键单击工具栏上的 Docker 图标并选择“切换到 Windows 容器”切换到 Windows 容器。
+安装[用于 Windows 的 Docker](https://www.docker.com/docker-windows) 后，通过右键单击工具栏上的 Docker 图标并选择“切换到 Windows 容器”  切换到 Windows 容器。
 
 接下来，通过从你喜欢使用的 shell 运行以下命令，从 Docker 中心拉取模拟器映像。
 
 ```bash
-docker pull microsoft/azure-cosmosdb-emulator
+docker pull mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
 ```
 若要启动映像，请运行以下命令。
 
@@ -366,15 +367,18 @@ docker pull microsoft/azure-cosmosdb-emulator
 
 md %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
 
-docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 microsoft/azure-cosmosdb-emulator
+docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
 ```
+
+> [!NOTE]
+> 如果在运行 docker run 命令时发现端口冲突错误（指定的端口已在使用中），则可以通过更改端口号来传递自定义端口。 例如，可以将“-p 8081:8081”更改为“-p 443:8081”
 
 通过 PowerShell：
 ```powershell
 
 md $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount 2>null
 
-docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=$env:LOCALAPPDATA\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 microsoft/azure-cosmosdb-emulator
+docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=$env:LOCALAPPDATA\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
 
 ```
 
@@ -413,6 +417,57 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
+## 在 Mac 或 Linux 上运行<a id="mac"></a>
+
+目前 Cosmos 模拟器只能在 Windows 上运行。 运行 Mac 或 Linux 的用户可以在托管虚拟机监控程序（如 Parallels 或 VirtualBox）的 Windows 虚拟机中运行模拟器。 以下是启用此功能的步骤。
+
+在 Windows VM 中运行以下命令并记下 IPv4 地址。
+
+```cmd
+ipconfig.exe
+```
+
+在应用程序中，需要更改 DocumentClient 对象的 URI，以使用 `ipconfig.exe` 返回的 IPv4 地址。 下一步是在构建 DocumentClient 对象时绕过 CA 验证。 为此，需要向 DocumentClient 构造函数提供一个 HttpClientHandler，其中包含它自己的 ServerCertificateCustomValidationCallback 实现。
+
+下面是代码应该是什么样的示例。
+
+```csharp
+using System;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
+using System.Net.Http;
+
+namespace emulator
+{
+    class Program
+    {
+        static async void Main(string[] args)
+        {
+            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
+            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+
+            //Work around the CA validation
+            var httpHandler = new HttpClientHandler()
+            {
+                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
+            };
+
+            //Pass http handler to document client
+            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
+            {
+                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
+                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
+            }
+        }
+    }
+}
+```
+
+最后，在 Windows VM 中，使用以下选项从命令行启动 Cosmos 模拟器。
+
+```cmd
+Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+```
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -430,16 +485,16 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
 - 如果遇到连接问题，请[收集跟踪文件](#trace-files)、进行压缩并将其附加到电子邮件，发送至 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com)。
 
-- 如果收到“服务不可用”消息，模拟器可能无法初始化网络堆栈。 请查看是否安装了 Pulse 安全客户端或 Juniper 网络客户端，因为其网络筛选器驱动程序可能会导致该问题。 卸载第三方网络筛选器驱动程序通常可修复此问题。 或者，使用 /DisableRIO 启动模拟器，这会将模拟器网络通信切换到常规 Winsock。 
+- 如果收到“服务不可用”  消息，模拟器可能无法初始化网络堆栈。 请查看是否安装了 Pulse 安全客户端或 Juniper 网络客户端，因为其网络筛选器驱动程序可能会导致该问题。 卸载第三方网络筛选器驱动程序通常可修复此问题。 或者，使用 /DisableRIO 启动模拟器，这会将模拟器网络通信切换到常规 Winsock。 
 
-- 在模拟器运行时，如果计算机进入了睡眠模式或运行了任何 OS 更新，则你可能会看到“服务当前不可用”消息。 请右键单击 Windows 通知托盘中显示的图标，再选择“重置数据”来重置模拟器的数据。
+- 在模拟器运行时，如果计算机进入了睡眠模式或运行了任何 OS 更新，则你可能会看到“服务当前不可用”  消息。 请右键单击 Windows 通知托盘中显示的图标，再选择“重置数据”来重置模拟器的数据。 
 
 ### <a id="trace-files"></a>收集跟踪文件
 
 若要收集调试跟踪，请从管理命令提示符运行以下命令：
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. `CosmosDB.Emulator.exe /shutdown`。 监视系统托盘，确保该程序已关闭，这可能需要几分钟时间。 还可仅单击 Azure Cosmos 模拟器用户界面中的“退出”。
+2. `CosmosDB.Emulator.exe /shutdown`。 监视系统托盘，确保该程序已关闭，这可能需要几分钟时间。 还可仅单击 Azure Cosmos 模拟器用户界面中的“退出”  。
 3. `CosmosDB.Emulator.exe /starttraces`
 4. `CosmosDB.Emulator.exe`
 5. 再现问题。 如果数据资源管理器无法运行，只需等待几秒钟，待浏览器打开以捕获错误。
@@ -450,8 +505,8 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 ### <a id="uninstall"></a>卸载本地模拟器
 
 1. 通过在系统任务栏上右键单击“Azure Cosmos 模拟器”图标，然后单击“退出”，退出所有打开的本地模拟器实例。 退出所有实例可能需要一分钟。
-2. 在 Windows 搜索框中，键入“应用和功能”，然后单击“应用和功能(系统设置)”结果。
-3. 在应用列表中，滚动到“Azure Cosmos DB 模拟器”并将其选中，单击“卸载”，然后确认并再次单击“卸载”。
+2. 在 Windows 搜索框中，键入“应用和功能”，然后单击“应用和功能(系统设置)”结果   。
+3. 在应用列表中，滚动到“Azure Cosmos DB 模拟器”并将其选中，单击“卸载”，然后确认并再次单击“卸载”    。
 4. 卸载应用后，导航到 `%LOCALAPPDATA%\CosmosDBEmulator` 并删除该文件夹。
 
 ## <a name="next-steps"></a>后续步骤

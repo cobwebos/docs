@@ -1,5 +1,5 @@
 ---
-title: 发布应用
+title: 发布应用-LUIS
 titleSuffix: Azure Cognitive Services
 description: 当完成生成和测试活动 LUIS 应用时，可通过将其发布到终结点使其可用于客户端应用程序。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 22bed877d853c7023f8efe6bfb3dd21b4aa4c8df
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: f92776072038c5684e9334d2dda1690ebb7bcaa8
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873133"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257808"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>将活动的已训练应用发布到过渡或生产终结点
 
@@ -24,41 +24,69 @@ ms.locfileid: "55873133"
 
 <a name="publish-your-trained-app-to-an-http-endpoint"></a>
 
-## <a name="publishing"></a>发布
+## <a name="publishing"></a>正在发布
 
-若要发布到终结点，请在右上方的面板中选择“发布”。 
+1. 若要发布到终结点，请在右上方的面板中选择“发布”。 
 
-![右上方的导航栏](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
+    ![顶部的 "发布" 按钮，右侧导航栏](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
-当显示弹出窗口时选择正确的槽：过渡或生产。 使用两个发布槽，可以对已发布的终结点使用两个不同的版本，或者在两个不同的终结点上使用同一版本。 
+1. 为已发布的预测终结点选择设置，然后选择 "**发布**"。
 
-该应用将发布到与 LUIS 门户中添加的 LUIS 资源关联的所有区域。 例如，对于在 [www.luis.ai](https://www.luis.ai) 上创建的应用，如果你在 **westus** 中创建 LUIS 资源并将其作为资源添加到该应用，则该应用将发布到此区域中。 有关 LUIS 区域的详细信息，请参阅[区域](luis-reference-regions.md)。
- 
-![“发布”弹出窗口](./media/luis-how-to-publish-app/publish-pop-up.png)
+    ![选择 "发布设置"，然后选择 "发布" 按钮](./media/luis-how-to-publish-app/publish-pop-up.png)
+
+### <a name="publishing-slots"></a>发布槽
+
+显示弹出窗口时选择正确的槽： 
+
+* 分级.
+* 成品. 
+
+通过使用这两个发布槽，可以在发布的终结点上提供两个不同版本的应用，也可以在两个不同的终结点上使用同一版本。 
+
+### <a name="publishing-regions"></a>发布区域
+
+应用程序将发布到与 LUIS 门户中添加的 LUIS 预测终结点资源关联的所有区域。 
+
+例如，对于在[www.luis.ai](https://www.luis.ai)上创建的应用，如果在两个区域**westus**和**eastus**中创建 luis 资源，并将它们作为资源添加到该应用，则会在这两个区域发布该应用。 有关 LUIS 区域的详细信息，请参阅[区域](luis-reference-regions.md)。
+
+
+## <a name="configuring-publish-settings"></a>配置发布设置
+
+选择槽后，配置的发布设置：
+
+* 情绪分析
+* 拼写更正
+* 语音启动 
+
+发布后，可以从 "**管理**" 部分的 "**发布设置**" 页查看这些设置。 你可以在每次发布时更改设置。 如果取消发布，则在发布过程中所做的任何更改也将被取消。 
+
+### <a name="when-your-app-is-published"></a>发布应用程序时
 
 成功发布应用后，浏览器顶部会显示一个表示成功的绿色通知。 绿色通知栏还包含指向终结点的链接。 
 
 ![“发布”弹出窗口，其中包含指向终结点的链接](./media/luis-how-to-publish-app/publish-success.png)
 
-如果需要终结点 URL，请选择该链接。 还可以通过在顶部菜单中选择“管理”，然后在左侧菜单中选择“密钥和终结点”来访问终结点 URL。 
+如果需要终结点 URL，请选择该链接。 还可以通过在顶部菜单中选择 "**管理**"，然后在左侧菜单中选择 " **Azure 资源**" 来访问终结点 url。 
 
-## <a name="configuring-publish-settings"></a>配置发布设置
-
-通过在右上方导航栏中选择“管理”，然后选择“发布设置”来配置发布设置。 
-
-![发布设置](./media/luis-how-to-publish-app/publish-settings.png)
-
-### <a name="publish-after-enabling-sentiment-analysis"></a>在启用情绪分析后发布
+## <a name="sentiment-analysis"></a>情绪分析
 
 <a name="enable-sentiment-analysis"></a>
 
 情绪分析使 LUIS 可以与[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/)集成，以便提供情绪和关键短语分析。 
 
-不需提供文本分析密钥，而且系统不会因为此服务向你的 Azure 帐户收费。 检查此设置后，它就会变成持久性的。 
+不需提供文本分析密钥，而且系统不会因为此服务向你的 Azure 帐户收费。 
 
 情绪数据是一个介于 0 到 1 之间的分数，指示数据的正面情绪（分数接近 1）或负面情绪（分数接近 0）。 `positive`、`neutral` 和 `negative` 的情绪标签针对每个支持的区域性。 目前，仅英语支持情绪标签。 
 
 若要详细了解使用情绪分析时的 JSON 终结点响应，请参阅[情绪分析](luis-concept-data-extraction.md#sentiment-analysis)
+
+## <a name="spelling-correction"></a>拼写更正
+
+在 LUIS 用户查询文本预测之前进行拼写更正。 在响应中，可以看到对原始查询文本的任何更改（包括拼写）。
+
+## <a name="speech-priming"></a>语音启动
+
+语音填充是在将文本转换为语音之前，使用将 LUIS 模型发送到语音服务的过程。 这使语音服务能够更准确地为你的模型提供语音转换。 这样一来，就可以通过发出一次语音呼叫并返回 LUIS 响应，在一个调用中实现 bot 语音和 LUIS 请求和响应。 它降低了总体延迟。
 
 ## <a name="next-steps"></a>后续步骤
 

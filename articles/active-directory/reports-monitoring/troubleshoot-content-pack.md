@@ -3,7 +3,7 @@ title: Azure Active Directory 活动日志内容包错误故障排除 | Microsof
 description: 本文将主要介绍 Azure Active Directory 活动内容包的错误消息列表，以及修复这些错误的步骤。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: markvi
+ms.date: 06/07/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78676ac2f2dcff74a27e0260a5d83e924f7c246f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 9e50f2b92318ada729ad8e3405af8403f31d7b6e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434817"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129292"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory 活动日志内容包错误故障排除 
 
@@ -47,7 +47,7 @@ ms.locfileid: "58434817"
 | 原因 | 如何解决 |
 | ---   | ---        |
 | 当连接到内容包的用户的凭据被重置，但在内容包的连接设置中未更新时，可能会导致刷新失败错误。 | 在 Power BI 中，找到与 Azure AD 活动日志仪表板（**Azure Active Directory 活动日志**）相对应的数据集，选择计划刷新，然后输入你的 Azure AD 凭据。 |
-| 由于基础内容包中的数据问题可能会导致刷新失败。 | [提交一个支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)。|
+| 由于数据集较大，刷新可能会失败。 | 当前，Power BI 的 Azure AD 内容包只能支持小数据集（少于500000行），因为 Power BI 服务中的超时有一些限制。 如果遇到限制错误，或由于超时问题而导致刷新失败，这可能是因为你正在尝试提取大型数据集。 减少查询中的时间段，然后重试。|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>无法更新数据源凭据 
@@ -71,6 +71,6 @@ ms.locfileid: "58434817"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [安装适用于 Azure AD 报告 Power BI 内容包](quickstart-install-power-bi-content-pack.md)。
+* [安装 Azure AD 报表 Power BI 内容包](quickstart-install-power-bi-content-pack.md)。
 * [将 Power BI 内容包用于 Azure AD 报表来可视化数据](howto-power-bi-content-pack.md)
 * [如何获取对 Azure Active Directory 的支持](../fundamentals/active-directory-troubleshooting-support-howto.md)

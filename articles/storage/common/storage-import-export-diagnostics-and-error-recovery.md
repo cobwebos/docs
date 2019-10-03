@@ -9,14 +9,14 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 306b94fbe23e0ae92dcd59f7a87b7bb58ef7c3b6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454651"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478804"
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Azure 导入/导出作业的诊断和错误恢复
-对于每个已处理的驱动器，Azure 导入/导出服务会在关联的存储帐户中创建错误日志。 用户也可以通过在调用[放置作业](/rest/api/storageimportexport/jobs)或[更新作业属性](/rest/api/storageimportexport/jobs)操作时将 `LogLevel` 属性设置为 `Verbose` 来启用详细日志记录。
+对于每个已处理的驱动器，Azure 导入/导出服务会在关联的存储帐户中创建错误日志。 也可以通过在调用[放置作业](/rest/api/storageimportexport/jobs)或[更新作业属性](/rest/api/storageimportexport/jobs)操作时将 `LogLevel` 属性设置为 `Verbose` 来启用详细日志记录。
 
  默认情况下，日志将写入一个名为 `waimportexport` 的容器中。 可以在调用“`Put Job`”或“`Update Job Properties`”操作时设置“`DiagnosticsPath`”属性来指定其他名称。 使用以下命名约定将日志存储为块 Blob：`waies/jobname_driveid_timestamp_logtype.xml`。
 

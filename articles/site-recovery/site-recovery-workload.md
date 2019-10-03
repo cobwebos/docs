@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 3ad3438f02ead9063a683a39d4ac5823274d55f7
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155161"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232185"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>可以通过 Azure Site Recovery 保护哪些工作负荷？
 
@@ -30,18 +30,18 @@ Site Recovery 集成 Microsoft 应用程序，其中包括 SharePoint、Exchange
 
 ## <a name="why-use-site-recovery-for-application-replication"></a>为何要使用站点恢复来复制应用程序？
 
-站点恢复可帮助实现应用程序级的保护和恢复，如下所述：
+Site Recovery 可帮助实现应用程序级的保护和恢复，如下所示：
 
 * 不区分应用，为受支持计算机上运行的任何工作负荷提供复制。
 * 几乎同步的复制，RPO 低至 30 秒，满足大多数关键业务应用的需要。
 * 针对单层或多层应用程序的应用一致性快照。
-* 集成 SQL Server AlwaysOn，纳入了其他应用程序级复制技术，其中包括 AD 复制、SQL AlwaysOn、Exchange 数据库可用性组 (DAG) 和 Oracle 数据防护。
+* 集成 SQL Server AlwaysOn，纳入了其他应用程序级复制技术，其中包括 AD 复制、SQL AlwaysOn、Exchange 数据库可用性组 (DAG)。
 * 灵活的恢复计划，一次单击即可恢复整个应用程序堆栈，包括在计划中使用外部脚本和手动操作。
 * 站点恢复和 Azure 中的高级网络管理可以简化应用的网络要求，包括保留 IP 地址、配置负载均衡器或集成 Azure 流量管理器以降低 RTO 网络切换数。
 * 丰富的自动化库，提供特定于应用程序的生产就绪型脚本，可以下载并与恢复计划集成。
 
 ## <a name="workload-summary"></a>工作负荷摘要
-站点恢复可复制受支持计算机上运行的任何应用。 此外，我们已经与产品团队合作执行其他特定于应用的测试。
+站点恢复可复制受支持计算机上运行的任何应用。 此外, 我们还与产品团队合作, 为表中指定的应用程序执行其他测试。
 
 | **工作负载** |**将 Azure VM 复制到 Azure** |**将 Hyper-V VM 复制到辅助站点** | **将 Hyper-V VM 复制到 Azure** | **将 VMware VM 复制到辅助站点** | **将 VMware VM 复制到 Azure** |
 | --- | --- | --- | --- | --- |---|
@@ -55,7 +55,7 @@ Site Recovery 集成 Microsoft 应用程序，其中包括 SharePoint、Exchange
 | Linux（操作系统和应用） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试） |Y（Microsoft 已测试）|
 | Dynamics AX |Y |Y |Y |Y |Y|
 | Windows 文件服务器 |Y |Y |Y |Y |Y|
-| Citrix XenApp 和 XenDesktop |Y|不适用 |Y |不适用 |Y |
+| Citrix XenApp 和 XenDesktop |Y|不可用 |Y |不可用 |Y |
 
 ## <a name="replicate-active-directory-and-dns"></a>复制 Active Directory 和 DNS
 Active Directory 和 DNS 基础结构对于大多数企业应用而言至关重要。 在灾难恢复过程中恢复工作负荷和应用之前，需要保护和恢复这些基础结构组件。
@@ -78,7 +78,7 @@ SQL Server 是本地数据中心许多业务应用的数据服务基础。  站�
 ## <a name="protect-sharepoint"></a>保护 SharePoint
 Azure Site Recovery 可帮助保护 SharePoint 部署，如下所述：
 
-* 消除对用于灾难恢复的备用场的需要以及相关的基础结构成本。 使用站点恢复将整个场（Web 层、应用层和数据库层）复制到 Azure 或辅助站点。
+* 消除对用于灾难恢复的备用场的需要以及相关的基础结构成本。 使用 Site Recovery 将整个场（Web 层、应用层和数据库层）复制到 Azure 或辅助站点。
 * 简化应用程序部署和管理。 部署到主站点的更新会自动复制，因此可在故障转移和恢复辅助站点中的场之后使用。 此外，还可降低使后备场保持最新状态的管理复杂性和相关成本。
 * 按照副本环境的需要创建一个与生产类似的副本来进行测试和调试，从而简化 SharePoint 应用程序的开发与测试。
 * 使用站点恢复将 SharePoint 部署迁移到 Azure，从而简化从本地到云的过渡过程。

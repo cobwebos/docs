@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 9f80edf18a531d6c2850658ddef9c7007edb350f
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074200"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795511"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -25,13 +25,13 @@ ms.locfileid: "54074200"
 设置[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)。
 
 ### <a name="email-if-my-site-is-overloaded"></a>站点过载时发送电子邮件
-针对“服务器响应时间”设置[警报](../../azure-monitor/app/alerts.md)。 介于 1 和 2 秒之间的阈值应可解决问题。
+针对“服务器响应时间”设置[警报](../../azure-monitor/app/alerts.md)。  介于 1 和 2 秒之间的阈值应可解决问题。
 
 ![](./media/how-do-i/030-server.png)
 
-应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。
+应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。 
 
-如果想要针对“服务器异常”设置警报，可能需要执行[其他一些设置](../../azure-monitor/app/asp-net-exceptions.md)才能看到数据。
+如果想要针对“服务器异常”设置警报，可能需要执行[其他一些设置](../../azure-monitor/app/asp-net-exceptions.md)才能看到数据。 
 
 ### <a name="email-on-exceptions"></a>发生异常时发送电子邮件
 1. [设置异常监视](../../azure-monitor/app/asp-net-exceptions.md)
@@ -137,19 +137,28 @@ ms.locfileid: "54074200"
 ## <a name="disable-telemetry"></a>禁用遥测
 **动态停止和启动**从服务器收集与传输遥测数据：
 
-```
+### <a name="aspnet-classic-applications"></a>ASP.NET 经典应用程序
 
+```csharp
     using  Microsoft.ApplicationInsights.Extensibility;
 
     TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
+### <a name="other-applications"></a>其他应用程序
+不建议使用`TelemetryConfiguration.Active`控制台或 ASP.NET Core 应用程序上的单一实例。
+如果您创建`TelemetryConfiguration`自己的实例设置`DisableTelemetry`到`true`。
 
+对于 ASP.NET Core 应用程序可以访问`TelemetryConfiguration`实例使用[ASP.NET Core 依赖关系注入](/aspnet/core/fundamentals/dependency-injection/)。 请查找中的更多详细信息[ASP.NET Core 应用程序的 ApplicationInsights](../../azure-monitor/app/asp-net-core.md)一文。
 
-若要**禁用选定的标准收集器**（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](../../azure-monitor/app/api-custom-events-metrics.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
+## <a name="disable-selected-standard-collectors"></a>禁用选定的标准收集器
+您可以禁用 （例如，性能计数器、 HTTP 请求或依赖项） 的标准收集器
+
+* **ASP.NET 应用程序**-删除或注释掉中的相关行[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)
+* **ASP.NET Core 应用程序**-请按照中的遥测模块配置选项[ApplicationInsights ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="view-system-performance-counters"></a>查看系统性能计数器
-可以在指标资源管理器中显示的指标信息是一组系统性能计数器。 有一个标题为“服务器”的预定义边栏选项卡显示了其中的多个计数器。
+可以在指标资源管理器中显示的指标信息是一组系统性能计数器。 有一个标题为“服务器”的预定义边栏选项卡显示了其中的多个计数器。 
 
 ![打开 Application Insights 资源并单击“服务器”](./media/how-do-i/121-servers.png)
 

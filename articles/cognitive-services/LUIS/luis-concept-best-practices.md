@@ -1,6 +1,6 @@
 ---
-title: 最佳做法
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 最佳做法-LUIS
+titleSuffix: Azure Cognitive Services
 description: 学习 LUIS 最佳做法以从 LUIS 应用的模型中获取最佳结果。
 services: cognitive-services
 author: diberry
@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 9a6f9d54c52f36b8f709eacaf25d3fea31dbe516
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 91ff99f674439580d369aad1490ded85d39d377c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895809"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382879"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>使用认知服务生成语言理解应用的最佳做法
-使用应用创作进程生成 LUIS 应用。 
+使用应用创作过程构建你的 LUIS 应用： 
 
 * 生成语言模型
 * 添加几个训练话语示例（每个意向 10 到 15 个）
@@ -27,7 +27,7 @@ ms.locfileid: "58895809"
 * 从终结点进行测试 
 * 添加特征
 
-[发布](luis-how-to-publish-app.md)应用后，请采用后列创作周期：添加特征、发布和从终结点进行测试。 请勿通过添加更多话语示例来启动下一个创作周期。 这无法让 LUIS 通过真实的用户话语来学习相关模型。 
+[发布](luis-how-to-publish-app.md)应用后，请使用创作周期来添加功能、发布和测试终结点。 请勿通过添加更多话语示例来启动下一个创作周期。 这无法让 LUIS 通过真实的用户话语来学习相关模型。 
 
 为了让 LUIS 高效学习，请勿在当前示例话语与终结点话语配对组返回较高的可信度和预测分数之前展开话语。 使用[主动学习](luis-concept-review-endpoint-utterances.md)、[模式](luis-concept-patterns.md)和[短语列表](luis-concept-feature.md)来提高分数。 
 
@@ -78,13 +78,13 @@ ms.locfileid: "58895809"
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>应在后续的迭代中添加短语列表和模式
 
-最佳做法是在测试应用之前不要应用这些做法。 您应该了解应用添加短语列表和模式，因为这些功能加权更重比示例语音样本，则会导致置信度之前的行为方式。 
+最佳做法是在测试应用之前不要应用这些做法。 在添加[短语列表](luis-concept-feature.md)和[模式](luis-concept-patterns.md)之前，你应了解应用的行为方式，因为这些功能的加权比示例最谈话更高，并将会歪曲置信度。 
 
 在了解没有这些项时你的应用的行为方式后，在这些功能适用于你的应用时再添加每个功能。 你不需要在每次[迭代](luis-concept-app-iteration.md)中都添加这些功能，也不需要在每个版本中都更改这些功能。 
 
 在设计模型之初就添加它们并没有什么坏处，但如果在使用言语测试模型之后再添加，则可以更容易地看出每个功能如何改变结果。 
 
-最佳做法是通过[终结点](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)进行测试，以便获得[主动学习](luis-concept-review-endpoint-utterances.md)的额外好处。 [交互式测试窗格](luis-interactive-test.md)也是有效的测试方法。 
+最佳做法是通过[终结点](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)进行测试，以便获得[主动学习](luis-concept-review-endpoint-utterances.md)的额外好处。 [交互式测试窗格](luis-interactive-test.md)也是有效的测试方法。 
  
 
 ### <a name="phrase-lists"></a>短语列表

@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: df9cfb0c0e36f54c8b1fbee4def552c78e9d42c1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/30/2019
+ms.openlocfilehash: 67a6de6d85a58f48af4761e0b5d5b0a1a4d74b1a
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359778"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703399"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>映射数据流表达式生成器
 
@@ -19,26 +19,29 @@ ms.locfileid: "59359778"
 
 Azure 数据工厂映射数据流中提供了表达式框，可在其中输入数据转换表达式。 请在这些框中使用数据流中的列、字段、变量、参数和函数。 若要生成表达式，请使用表达式生成器。单击转换中的表达式文本框即可启动表达式生成器。 选择转换的列时，有时还会看到“计算列”选项。 单击该选项也会启动表达式生成器。
 
-![表达式生成器](media/data-flow/expression.png "表达式生成器")
+![表达式生成器](media/data-flow/xpb1.png "表达式生成器")
 
 表达式生成器工具默认使用文本编辑器选项。 自动填写功能从整个 Azure 数据工厂数据流对象模型读取数据，并支持语法检查和突出显示。
 
 ![表达式生成器自动填写](media/data-flow/expb1.png "表达式生成器自动填写")
 
-## <a name="currently-working-on-field"></a>“当前正在处理”字段
+## <a name="build-schemas-in-output-schema-pane"></a>在输出架构窗格中生成架构
 
-![表达式生成器](media/data-flow/exp3.png "当前正在处理")
+![添加复杂列](media/data-flow/complexcolumn.png "添加列")
 
-在表达式生成器 UI 的左上方，可以看到一个名为“当前正在处理”的字段，以及你当前正在处理的字段的名称。 在 UI 中生成的表达式只会应用到当前正在处理的字段。 若要转换另一个字段，请保存当前工作，使用此下拉列表选择另一个字段，然后为其他字段生成表达式。
+在左侧的输出架构窗格中，你将看到正在修改的列并将其添加到你的架构。 可在此处以交互方式生成简单复杂的数据结构。 使用 "添加列" 添加其他字段，并使用 "添加 subcolumn" 生成层次结构。
+
+![添加 subcolumn](media/data-flow/addsubcolumn.png "添加 subcolumn")
 
 ## <a name="data-preview-in-debug-mode"></a>调试模式下的数据预览
 
 ![表达式生成器](media/data-flow/exp4b.png "表达式数据预览")
 
-处理表达式时，可以选择性地在 Azure 数据工厂数据流设计图面上打开“调试”模式，以便在生成表达式的过程中，实时预览该表达式生成的数据结果。 为表达式启用实时调试。
+在处理数据流表达式时，请从 Azure 数据工厂数据流设计图面切换调试模式，从而启用正在生成的表达式中的数据结果的实时预览。 为表达式启用实时调试。
 
 ![调试模式](media/data-flow/debugbutton.png "调试按钮")
 
+单击 "刷新" 按钮以实时更新您的源的实时示例。
 
 ![表达式生成器](media/data-flow/exp5.png "表达式数据预览")
 
@@ -50,7 +53,7 @@ Azure 数据工厂映射数据流中提供了表达式框，可在其中输入�
 
 ## <a name="regular-expressions"></a>正则表达式
 
-Azure 数据工厂数据流表达式语言（[此处提供了完整参考文档](https://aka.ms/dataflowexpressions)）支持包含正则表达式语法的函数。 使用正则表达式函数时，表达式生成器将尝试解释反斜杠 (\\) 作为转义字符序列。 当正则表达式中使用反斜杠，可以将整个正则表达式以计时周期 (\`) 或使用双反斜杠。
+Azure 数据工厂数据流表达式语言（[此处提供了完整参考文档](https://aka.ms/dataflowexpressions)）支持包含正则表达式语法的函数。 使用正则表达式函数时，表达式生成器将尝试将反斜杠（\\）解释为转义字符序列。 在正则表达式中使用反斜杠时，请将整个正则表达式括在刻度（\`）中，或使用双反斜杠。
 
 使用居中圆点符号的示例
 
@@ -70,9 +73,9 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 ![表达式生成器数组](media/data-flow/expb2.png "表达式数据预览")
 
-## <a name="handling-names-with-special-characters"></a>处理具有特殊字符的名称
+## <a name="handling-names-with-special-characters"></a>处理带有特殊字符的名称
 
-如果具有列名称包含特殊字符或空格，用大括号将名称括起来。
+如果列名称包含特殊字符或空格，请使用大括号将该名称括起来。
 * ```{[dbo].this_is my complex name$$$}```
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,7 +1,7 @@
 ---
-title: 设置 Azure Application Insights 监视机器学习模型
-titleSuffix: Azure Machine Learning service
-description: 监视部署与使用 Azure Application Insights 的 Azure 机器学习服务的 web 服务
+title: 设置 Azure 应用程序 Insights 来监视 ML 模型
+titleSuffix: Azure Machine Learning
+description: 使用 Azure 应用程序 Insights 监视使用 Azure 机器学习部署的 web 服务
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 04/02/2019
+ms.date: 07/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 785507e9ae12d8da564a223c8cdf544a98b8de61
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885484"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002866"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>使用 Application Insights 监视 Azure 机器学习模型
 
-本文介绍如何设置适用于 Azure 机器学习服务的 Application Insights。 使用 Application Insights 可以监视：
+本文介绍如何设置 Azure 机器学习 Azure 应用程序见解。 使用 Application Insights 可以监视：
 * 请求速率、响应时间和失败率。
 * 依赖项率、响应时间和失败率。
 * 异常。
@@ -28,9 +28,9 @@ ms.locfileid: "58885484"
 [详细了解 Application Insights](../../azure-monitor/app/app-insights-overview.md)。 
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+* 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 * 已安装 Azure 机器学习工作区、一个包含脚本的本地目录以及用于 Python 的 Azure 机器学习 SDK。 若要了解如何满足这些先决条件，请参阅[如何配置开发环境](how-to-configure-environment.md)。
 * 要部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 的经过训练的机器学习模型。 如果没有模型，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程。
@@ -111,7 +111,7 @@ ms.locfileid: "58885484"
  
 
 ## <a name="evaluate-data"></a>评估数据
-服务的数据将存储在 Application Insights 帐户中，此帐户与 Azure 机器学习服务位于同一资源组。
+服务的数据存储在与 Azure 机器学习相同的资源组中的 Application Insights 帐户中。
 查看数据：
 1. 转到 [Azure 门户](https://portal.azure.com)中的机器学习服务工作区，然后单击 Application Insights 链接。
 
@@ -127,15 +127,15 @@ ms.locfileid: "58885484"
    [![自定义追踪](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
 若要详细了解 Application Insights，请参阅[什么是 Application Insights？](../../azure-monitor/app/app-insights-overview.md)。
-    
+
 
 ## <a name="example-notebook"></a>示例笔记本
 
-[How-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) 笔记本演示了本文中的概念。 
+[Ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb)笔记本展示了这篇文章中的概念的概念。 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>后续步骤
 还可以在生产环境中收集模型上的数据。 阅读[在生产环境中收集模型数据](how-to-enable-data-collection.md)一文。 
 
-请参阅有关[容器的 Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)。
+同时读取[容器 Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)。

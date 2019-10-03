@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004561"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61436488"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box Blob 存储要求
 
@@ -57,7 +57,7 @@ Azure Data Box 1.8 及更高版本
 |--------------------|--------------------------------------------|--------|---------------------------------|
 |    .NET                |    9.2.0                                           |    Nuget 包： https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>GitHub 版本： https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    app.config 文件                 |
 |    Java                |    7.0.0                                           |    Maven 包： https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub 版本： https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    连接字符串设置         |
-|    Node.js             |    2.8.3                                           |    NPM 链接： https://www.npmjs.com/package/azure-storage   (运行： `npm install azure-storage@2.7.0`)   <br>GitHub 版本： https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    服务实例声明    |
+|    Node.js             |    2.8.3                                           |    NPM 链接： https://www.npmjs.com/package/azure-storage   (运行： `npm install azure-storage@2.7.0` )   <br>GitHub 版本： https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    服务实例声明    |
 |    C++                 |    5.2.0                                           |    Nuget 包： https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>GitHub 版本： https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    连接字符串设置         |
 |    PHP                 |    1.2.0                                           |    GitHub 版本：<br>通用： https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Blob： https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>通过 Composer 安装（请参阅下面的详细信息）。                                                                                                             |    连接字符串设置         |
 |    Python              |    1.1.0                                           |    GitHub 版本：<br>通用： https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Blob： https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    服务实例声明    |

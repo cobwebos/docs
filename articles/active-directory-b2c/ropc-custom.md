@@ -2,26 +2,26 @@
 title: 在 Azure Active Directory B2C 中配置资源所有者密码凭据流 | Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中配置资源所有者密码凭据流。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 265f1405a8779cdca101f18cf37b64f1933c2ff3
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 2f3eb2c0071eecb20bbf5616a01c80e55645207a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400763"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678144"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>使用自定义策略在 Azure Active Directory B2C 中配置资源所有者密码凭据流
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-在 Azure Active Directory (Azure AD) B2C 中，资源所有者密码凭据 (ROPC) 流是一种 OAuth 标准身份验证流。 在此流中，应用程序（也称为信赖方）为令牌交换有效凭据。 凭据包括用户 ID 和密码。 返回的令牌为 ID 令牌、访问令牌和刷新令牌。
+在 Azure Active Directory B2C （Azure AD B2C）中，资源所有者密码凭据（ROPC）流是 OAuth 标准身份验证流。 在此流中，应用程序（也称为信赖方）为令牌交换有效凭据。 凭据包括用户 ID 和密码。 返回的令牌为 ID 令牌、访问令牌和刷新令牌。
 
 ROPC 流支持以下选项：
 
@@ -35,20 +35,13 @@ ROPC 流支持以下选项：
 - **单页面应用程序**：主要使用 JavaScript 编写的前端应用程序。 通常，该应用程序通过 AngularJS、Ember.js 或 Durandal 等框架编写。
 - **机密客户端流**：应用程序客户端 ID 已验证，但应用程序密钥未验证。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成 [Azure Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
 
 ## <a name="register-an-application"></a>注册应用程序
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-4. 选择“应用程序”，然后选择“添加”。
-5. 输入应用程序名称，例如 *ROPC_Auth_app*。
-6. 对“Web 应用/Web API”选择“否”，然后对“本机客户端”选择“是”。
-7. 保留所有其他值不变，然后选择“创建”。
-8. 选择新应用程序，并记下应用程序 ID 供以后使用。
+[!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
 ##  <a name="create-a-resource-owner-policy"></a>创建资源所有者策略
 
@@ -88,7 +81,7 @@ ROPC 流支持以下选项：
           <OutputClaim ClaimTypeReferenceId="sub" TransformationClaimType="createdClaim" />
         </OutputClaims>
       </ClaimsTransformation>
-    
+
       <ClaimsTransformation Id="AssertRefreshTokenIssuedLaterThanValidFromDate" TransformationMethod="AssertDateTimeIsGreaterThan">
         <InputClaims>
           <InputClaim ClaimTypeReferenceId="refreshTokenIssuedOnDateTime" TransformationClaimType="leftOperand" />
@@ -140,7 +133,7 @@ ROPC 流支持以下选项：
     </TechnicalProfile>
     ```
 
-    将 **client_id** 和 **resource_id** 的 **DefaultValue** 替换为在先决条件教程中创建的 ProxyIdentityExperienceFramework 应用程序的应用程序 ID。
+    将**client_id**的**DefaultValue**替换为在必备教程中创建的 ProxyIdentityExperienceFramework 应用程序的应用程序 id。 然后，将**resource_id**的**DefaultValue**替换为你还在必备教程中创建的 IdentityExperienceFramework 应用程序的应用程序 id。
 
 5. 将以下 **ClaimsProvider** 元素及其技术配置文件添加到 **ClaimsProviders** 元素：
 
@@ -245,7 +238,7 @@ ROPC 流支持以下选项：
 2. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更改为唯一的值。 策略 ID 是策略的名称。 例如，**B2C_1A_ROPC_Auth**。
 3. 将 **DefaultUserJourney** 中 **ReferenceId** 属性的值更改为 `ResourceOwnerPasswordCredentials`。
 4. 将 **OutputClaims** 元素更改为仅包含以下声明：
-    
+
     ```XML
     <OutputClaim ClaimTypeReferenceId="sub" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
@@ -255,7 +248,7 @@ ROPC 流支持以下选项：
     ```
 
 5. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
-6. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
+6. 如果已存在，请启用 **"覆盖策略"** ，然后浏览到并选择 " *ROPC_Auth* " 文件。
 7. 单击“上传” 。
 
 ## <a name="test-the-policy"></a>测试策略
@@ -267,12 +260,12 @@ ROPC 流支持以下选项：
 - 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。
 - 将 `B2C_1A_ROPC_Auth` 替换为资源所有者密码凭据策略的全名。
 
-| 密钥 | 值 |
+| Key | ReplTest1 |
 | --- | ----- |
 | username | `user-account` |
 | password | `password1` |
 | grant_type | password |
-| 作用域 | openid `application-id` offline_access |
+| 范围 | openid `application-id` offline_access |
 | client_id | `application-id` |
 | response_type | token id_token |
 
@@ -312,12 +305,12 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 - 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。
 - 将 `B2C_1A_ROPC_Auth` 替换为资源所有者密码凭据策略的全名。
 
-| 密钥 | 值 |
+| Key | ReplTest1 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| resource | `application-id` |
+| 资源 | `application-id` |
 | refresh_token | `refresh-token` |
 
 - 将 `application-id` 替换为 *ROPC_Auth_app* 注册中的应用程序 ID。

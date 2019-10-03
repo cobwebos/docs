@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 PHP 向必应实体搜索 REST API 发送搜索请求
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 PHP 向必应实体搜索 REST API 发送请求，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: f311216182f85da3dd6cf01269062cc9c555f868
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5d57924a22ee097cfe7f492d18b8f84e7e658f41
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538521"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478964"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>快速入门：使用 PHP 向必应实体搜索 REST API 发送搜索请求
 
@@ -153,4 +153,4 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 > [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
 
 * [什么是必应实体搜索 API？](../overview.md )
-* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

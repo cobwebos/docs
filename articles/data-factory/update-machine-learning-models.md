@@ -3,21 +3,20 @@ title: 使用 Azure 数据工厂更新机器学习模型 | Microsoft Docs
 description: 介绍了如何使用 Azure 数据工厂和机器学习创建预测管道
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: shlo
-ms.openlocfilehash: 8f1320db0af85f6c83a9daf8e17a691336c9b251
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 56d0ce6668c1077b99c980c2bc5b16998a3a41c1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58164453"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140527"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习模型
 本文是对主要 Azure 数据工厂 - Azure 机器学习集成文章的补充：[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。
@@ -57,9 +56,9 @@ ms.locfileid: "58164453"
 }
 ```
 
-| 属性                      | 说明                              | 需要 |
+| 属性                      | 说明                              | 必填 |
 | :---------------------------- | :--------------------------------------- | :------- |
-| 名称                          | 管道中活动的名称     | 是      |
+| name                          | 管道中活动的名称     | 是      |
 | description                   | 描述活动用途的文本。  | 否       |
 | type                          | 对于 Azure 机器学习“更新资源”活动，活动类型为 **AzureMLUpdateResource**。 | 是      |
 | linkedServiceName             | 包含 updateResourceEndpoint 属性的 Azure 机器学习链接服务。 | 是      |
@@ -71,7 +70,7 @@ ms.locfileid: "58164453"
 
 对模型进行重新训练以及更新预测性 Web 服务的整个操作过程涉及以下步骤：
 
-- 使用 **“批处理执行”活动**调用**训练 Web 服务**。 调用训练 Web 服务与[使用 Azure 机器学习和数据工厂“批处理执行”活动创建预测性管道](transform-data-using-machine-learning.md)中所述的调用预测性 Web 服务相同。 训练 Web 服务的输出是一个可用于更新预测 Web 服务的 iLearner 文件。
+- 使用 **“批处理执行”活动**调用**训练 Web 服务**。 调用训练 Web 服务与[使用 Azure 机器学习和数据工厂“批处理执行”活动创建预测性管道](transform-data-using-machine-learning.md)中所述的调用预测性 Web 服务相同。 定型 Web 服务的输出是一个 iLearner 文件, 可用于更新预测 Web 服务。
 - 通过使用 **“更新资源”活动**调用**预测性 Web 服务**的**更新资源终结点**来使用新训练的模型更新 Web 服务。
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure 机器学习链接服务

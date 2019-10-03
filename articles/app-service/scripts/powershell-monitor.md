@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 5805d7cd-9e56-4eba-bd85-75b013690ff5
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: becec6881ccc5c061a0f0e93e697852645f9388f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e9e376de3356a23df648f77738fd2c84cb26d97f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115957"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098299"
 ---
 # <a name="monitor-a-web-appwith-web-server-logs"></a>使用 Web 服务器日志监视 Web 应用
 
@@ -53,7 +52,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | 创建 Web 应用。 |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | 修改 Web 应用的配置。 |
-| [Get-AzWebAppMetrics](/powershell/module/az.websites/get-azwebappmetrics) | 获取 Web 应用的指标。 |
+| [Get-AzWebAppMetric](/powershell/module/az.websites/get-azwebappmetric) | 获取 Web 应用的指标。 |
 
 ## <a name="next-steps"></a>后续步骤
 

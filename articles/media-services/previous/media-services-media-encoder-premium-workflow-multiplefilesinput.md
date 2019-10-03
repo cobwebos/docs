@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 608ca4bc3b58dd3c718d6239f90260154d2f6c3a
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.author: xpouyat
+ms.reviewer: anilmur;juliako
+ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189472"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69015451"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>在高级编码器中使用多个输入文件和组件属性
 ## <a name="overview"></a>概述
@@ -82,7 +83,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 **setRuntimeProperties** 用于覆盖工作流组件中的属性。
 
-示例：
+例如：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -98,7 +99,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 ### <a name="property-with-an-xml-value"></a>具有 XML 值的属性
 若要设置预期具有 XML 值的属性，可使用 `<![CDATA[ and ]]>` 进行封装。
 
-示例：
+例如：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -270,7 +271,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 ## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>示例 1：覆盖视频顶层的图像
 
-### <a name="presentation"></a>呈现
+### <a name="presentation"></a>演示文稿
 假设要在视频编码时覆盖输入视频中的徽标图像。 此示例中，输入视频命名为“Microsoft_HoloLens_Possibilities_816p24.mp4”，徽标命名为“logo.png”。 应该执行以下步骤：
 
 * 创建包含工作流文件的工作流资产（参阅以下示例）。
@@ -465,7 +466,7 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 
 * 编码资产会包含多语言音频轨道，且可在 Azure Media Player 中选择这些轨道。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [在 Azure 媒体服务中引入高级编码](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [如何在 Azure 媒体服务中使用高级编码](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [使用 Azure 媒体服务对按需内容进行编码](media-services-encode-asset.md#media-encoder-premium-workflow)

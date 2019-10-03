@@ -7,17 +7,16 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 4d3f27d48819a4bd997cbb62177f5aae4afc85eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0f64642d04504770415c0d2243ec77b44bde05f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993153"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566293"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异
 
@@ -56,7 +55,7 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 - 高可用性：与通过 Microsoft Azure 帐户管理的高可用性相关的语法。 这包括备份、还原、Always On、数据库镜像、日志传送、恢复模式的语法。
 - 日志读取器：依赖于在 SQL 数据库上不可用的日志读取器的语法：推送复制、更改数据捕获。 SQL 数据库可以是推送复制项目的订阅服务器。
 - 函数：`fn_get_sql`、`fn_virtualfilestats`、`fn_virtualservernodes`
-- 硬件：与硬件相关的服务器设置（例如，内存、工作线程、CPU 相关性、跟踪标志）有关的语法。 请改用服务层和计算大小。
+- 硬件：与硬件相关的服务器设置（例如，内存、工作线程、CPU 相关性、跟踪标志）有关的语法。 请改用服务层级和计算大小。
 - `KILL STATS JOB`
 - `OPENQUERY`、`OPENROWSET`、`OPENDATASOURCE` 和由四部分构成的名称
 - .NET Framework：CLR 与 SQL Server 集成
@@ -83,9 +82,9 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 ### <a name="about-the-applies-to-tags"></a>有关“适用于”标记
 
-Transact-SQL 参考包含从 SQL Server 2008 到最新版本的相关文章。 文章标题下面有一个图标栏，其中列出了四个 SQL Server 平台，并指明了适用性。 例如，SQL Server 2012 中引入了可用性组。   [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) 一文指明该语句适用于 **SQL Server（从版本 2012 开始）**。 该语句不适用于 SQL Server 2008、SQL Server 2008 R2、Azure SQL 数据库、Azure SQL 数据仓库或并行数据仓库。
+Transact-SQL 参考包含从 SQL Server 2008 到最新版本的相关文章。 文章标题下面有一个图标栏，其中列出了四个 SQL Server 平台，并指明了适用性。 例如，SQL Server 2012 中引入了可用性组。  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) 一文指明该语句适用于 **SQL Server（从版本 2012 开始）** 。 该语句不适用于 SQL Server 2008、SQL Server 2008 R2、Azure SQL 数据库、Azure SQL 数据仓库或并行数据仓库。
 
-在某些情况下，某一产品，可以使用的项目的常规主旨，但有一些产品之间的细微差别。 在适当的情况下，我们会在文章的中间位置指出该差异。 在某些情况下，某一产品，可以使用的项目的常规主旨，但有一些产品之间的细微差别。 在适当的情况下，我们会在文章的中间位置指出该差异。 例如，CREATE TRIGGER 文章在 SQL 数据库中可用。 但服务器级触发器的 **ALL SERVER** 选项指示不能在 SQL 数据库中使用服务器级触发器。 请改用数据库级触发器。
+在某些情况下, 可以在产品中使用文章的一般主题, 但产品之间存在细微的差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 在某些情况下, 可以在产品中使用文章的一般主题, 但产品之间存在细微的差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 例如，CREATE TRIGGER 文章在 SQL 数据库中可用。 但服务器级触发器的 **ALL SERVER** 选项指示不能在 SQL 数据库中使用服务器级触发器。 请改用数据库级触发器。
 
 ## <a name="next-steps"></a>后续步骤
 

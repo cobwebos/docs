@@ -1,5 +1,5 @@
 ---
-title: 更改、训练应用，Node.js
+title: 快速入门：更改、训练应用，Node.js - LUIS
 titleSuffix: Azure Cognitive Services
 description: 在本 Node.js 快速入门中，你将向家庭自动化应用中添加示例话语并训练该应用。
 services: cognitive-services
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/17/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: e2a8bed2b07934bf178ea338e074ec8e239ee646
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 23b66a5541e8ee2b61355b3303995e8ffceaa8a5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874832"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307512"
 ---
 # <a name="quickstart-change-model-using-nodejs"></a>快速入门：使用 Node.js 更改模型
 
-[!INCLUDE [Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+[!INCLUDE [Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

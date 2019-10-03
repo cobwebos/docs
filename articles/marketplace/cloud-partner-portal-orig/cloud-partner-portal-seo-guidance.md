@@ -1,25 +1,18 @@
 ---
-title: Azure Marketplace SEO 指南 |Microsoft Docs
+title: Azure Marketplace SEO 指南
 description: 提供了有关最大程度地提升搜索引擎优化 (SEO) 的指南。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.author: pbutlerm
-ms.openlocfilehash: da7b59400baa4c964dff71fa1f842fede9d68df1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: f5b956ed1197e3898c9536bda3a93a41e8ee35c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787050"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935128"
 ---
 # <a name="azure-marketplace-seo-guidance"></a>Azure Marketplace SEO 指南
 

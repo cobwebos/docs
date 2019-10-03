@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: a4c315d2696b081a4f2ac646d097e76ff9562380
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009474"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881922"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>必应图像搜索 API 的语言和区域支持
 
@@ -32,7 +32,7 @@ ms.locfileid: "60009474"
 > - en-AU（英语，澳大利亚）
 > - zh-CN（中文，中国）
 
-## <a name="countries"></a>国家/地区
+## <a name="countriesregions"></a>国家/地区
 
 |国家/地区|代码|
 |-------|----|
@@ -47,9 +47,9 @@ ms.locfileid: "60009474"
 |芬兰|FI|
 |法国|FR|
 |德国|DE|
-|中国香港特别行政区|HK|
+|香港特别行政区|HK|
 |印度|IN|
-|印度尼西亚|ID|
+|印度尼西亚|id|
 |意大利|IT|
 |日本|JP|
 |韩国|KR|
@@ -91,7 +91,7 @@ ms.locfileid: "60009474"
 |芬兰|芬兰语|fi-FI|
 |法国|法语|fr-FR|
 |德国|德语|de-DE|
-|中国香港特别行政区|繁体中文|zh-HK|
+|香港特别行政区|繁体中文|zh-HK|
 |印度|英语|en-IN|
 |印度尼西亚|英语|en-ID|
 |意大利|意大利语|it-IT|
@@ -115,8 +115,8 @@ ms.locfileid: "60009474"
 |中国台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
 |英国|英语|en-GB|
-|美国|英语|en-US|
+|美国|英语|zh-CN|
 |美国|西班牙语|es-US|
 
 ## <a name="next-steps"></a>后续步骤
-有关必应新闻搜索终结点的详细信息，请参阅[新闻图像搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)。
+有关必应新闻搜索终结点的详细信息，请参阅[新闻图像搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)。

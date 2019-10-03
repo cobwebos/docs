@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2018
 ms.author: spelluru
-ms.openlocfilehash: 3ef08cfc94a029f97250578e9b0366a18770c809
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: 9d11179a8518ebf48f68f8607f94e0253d4edb80
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696729"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60789920"
 ---
 # <a name="azure-relay-port-settings"></a>Azure 中继端口设置
 
@@ -27,11 +27,11 @@ ms.locfileid: "43696729"
 
 ## <a name="hybrid-connections"></a>混合连接
 
-混合连接在端口 443 上结合使用 WebSocket 和 SSL，以用作仅使用 HTTPS 的基础传输机制。 
+混合连接在端口 443 上结合使用 WebSocket 和 SSL，以用作仅使用 HTTPS  的基础传输机制。 
 
 ## <a name="wcf-relays"></a>WCF 中继
   
-|绑定|传输安全|端口|  
+|绑定|传输安全|Port|  
 |-------------|------------------------|----------|  
 |[BasicHttpRelayBinding 类](/dotnet/api/microsoft.servicebus.basichttprelaybinding)（客户端）|是|HTTPS| 
 |" |否|HTTP|  

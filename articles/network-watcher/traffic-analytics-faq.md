@@ -3,8 +3,8 @@ title: Azure 流量分析常见问题解答 | Microsoft Docs
 description: 获取有关流量分析的常见问题的解答。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
-ms.author: jdial
-ms.openlocfilehash: 3938427c23993f0546e7df62da88dadaf3353118
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.author: kumud
+ms.openlocfilehash: 45200e7620326dedcee92c579843e61bb07ff68e
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549365"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610247"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -54,11 +54,11 @@ ms.locfileid: "59549365"
         
 检查针对订阅分配给用户的角色：
 
-1. 通过使用登录到 Azure**登录名 AzAccount**。 
+1. 使用**AzAccount**登录到 Azure。 
 
-2. 通过选择所需的订阅**选择 AzSubscription**。 
+2. 使用**AzSubscription**选择所需的订阅。 
 
-3. 若要列出分配给指定的用户的所有角色，请使用**Get AzRoleAssignment SignInName [用户电子邮件]-IncludeClassicAdministrators**。 
+3. 若要列出分配给特定用户的所有角色, 请使用**AzRoleAssignment-SignInName [user email]-IncludeClassicAdministrators**。 
 
 如果未看到任何输出，请与相应的订阅管理员联系以获取运行命令的权限。 有关详细信息，请参阅[使用 Azure PowerShell 管理基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
 
@@ -68,7 +68,7 @@ ms.locfileid: "59549365"
 可以在以下任何受支持的区域中对 NSG 使用流量分析：
 - 加拿大中部
 - 美国中西部
-- 美国东部
+- East US
 - 美国东部 2
 - 美国中北部
 - 美国中南部
@@ -90,22 +90,29 @@ ms.locfileid: "59549365"
 - 印度南部
 - 日本东部
 - 日本西部
-- 美国政府弗吉尼亚州
+- US Gov 弗吉尼亚州
 
 Log Analytics 工作区必须存在于以下区域中：
 - 加拿大中部
 - 美国中西部
+- 美国西部
 - 美国西部 2
-- 美国东部
+- 美国中南部
+- 美国中部
+- East US
+- 美国东部 2
 - 法国中部
 - 西欧
+- 北欧
 - 英国南部
+- 澳大利亚东部
 - 澳大利亚东南部
+- 东亚
 - 东南亚 
 - 韩国中部
 - 印度中部
 - 日本东部
-- 美国政府弗吉尼亚州
+- US Gov 弗吉尼亚州
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>启用流日志的 NSG 是否可与工作区位于不同的区域？
 
@@ -117,7 +124,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-use-an-existing-workspace"></a>是否可以使用现有的的工作区？
 
-是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[Azure Monitor 记录升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md)。
+是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息, 请参阅[Azure Monitor 日志升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md)。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可将 Azure 存储帐户放在一个订阅中，并将 Log Analytics 工作区放在另一个订阅中？
 
@@ -125,17 +132,11 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>是否可将原始日志存储在不同的订阅中？
 
-不。 可将原始日志存储在为流日志启用了 NSG 的任何存储帐户中。 但存储帐户和原始日志必须位于同一订阅和区域中。
+否。 可将原始日志存储在为流日志启用了 NSG 的任何存储帐户中。 但存储帐户和原始日志必须位于同一订阅和区域中。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>如果由于“未找到”错误而无法为流量分析配置 NSG，该如何解决？
 
 选择支持的区域。 如果选择不支持的区域，则会收到“未找到”错误。 前文列出了支持的区域。
-
-## <a name="why-am-i-getting-the-error-failed-to-update-flow-logs-settings-for--internalservererror-when-enabling-nsgs-in-us-gov-virginia"></a>为什么我收到错误"无法更新流日志设置...InternalServerError..."在启用 NSG 在美国弗吉尼亚州政府？
-
-这是由于不在美国弗吉尼亚州政府订阅重新注册 'Microsoft.Network 资源提供程序的 bug。 团队正致力于此的解决方法。 为解决此问题，你将需要向[手动重新注册 Microsoft.Network RP](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-register-provider-errors)。 
-
-请如果问题仍然存在，联系支持部门。 
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>如果在 NSG 流日志页显示“无法加载”状态，该如何解决？
 
@@ -173,7 +174,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>是否可以使用 PowerShell 或 Azure 资源管理器模板或客户端配置流量分析？
 
-可使用版本 6.2.1 及以上版本的 Windows PowerShell 配置流量分析。 若要通过使用在 Set cmdlet，为特定的 NSG 配置流日志记录和流量分析，请参阅[集 AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要获取特定的 NSG 流日志记录和流量分析状态，请参阅[Get AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
+可使用版本 6.2.1 及以上版本的 Windows PowerShell 配置流量分析。 若要使用 Set cmdlet 配置特定 NSG 的流日志记录和流量分析, 请参阅[AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要获取特定 NSG 的流日志记录和流量分析状态, 请参阅[AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
 
 目前，无法使用 Azure 资源管理器模板配置流量分析。
 
@@ -245,28 +246,28 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 例如，根据[定价计划](https://azure.microsoft.com/pricing/details/network-watcher/)，就美国中西部地区而言，如果流量分析处理的存储帐户中存储的流日志数据为 10 GB，而 Log Analytics 工作区中引入的增强日志为 1 GB 则适用的费用是：10 x 2.3$ + 1 x 2.76$ = 25.76$
 
-## <a name="how-frequently-does-traffic-analytics-process-data"></a>流量分析如何经常处理的数据？
+## <a name="how-frequently-does-traffic-analytics-process-data"></a>流量分析处理数据的频率如何？
 
-请参阅[数据聚合部分](https://docs.microsoft.com/en-us/azure/network-watcher/traffic-analytics-schema#data-aggregation)流量分析架构和数据聚合文档中
+请参阅流量分析架构和数据聚合文档中的 "[数据聚合" 部分](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)
 
-## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何决定 IP 是恶意活动？ 
+## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何确定 IP 是恶意的？ 
 
-流量分析依赖于 Microsoft 内部威胁智能系统，从而确认为恶意 IP。 这些系统利用不同的遥测数据源，如 Microsoft 产品和服务、 Microsoft 数字犯罪部门 (DCU)、 Microsoft 安全响应中心 (MSRC)，以及外部源，并生成大量在其上的智能。 Mircosoft 内部这样的一些数据。 如果已知的 IP 获取标记为 malicios，请提出支持票证以了解详细信息。
+流量分析依赖 Microsoft 内部威胁情报系统将 IP 视为恶意 IP。 这些系统利用各种遥测源, 如 Microsoft 产品和服务、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC) 以及外部源, 并在其之上构建大量智能。 其中一些数据是 Microsoft 内部数据。 如果已知 IP 被标记为恶意 IP, 请提供支持票证来了解详细信息。
 
 ## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>如何对流量分析数据设置警报？
 
-流量分析不具有对警报的内置的支持。 但是，因为流量分析数据存储在 Log Analytics 可以编写自定义查询，并对其设置警报。 步骤：
-- 为流量分析中的 Log Analytics，可以使用短链接。 
-- 使用[此处介绍架构](traffic-analytics-schema.md)编写查询 
-- 单击"新建警报规则"以创建警报
-- 请参阅[文档的日志警报](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log)创建警报
+流量分析没有对警报的内置支持。 不过, 由于流量分析数据存储在 Log Analytics 可以编写自定义查询并对这些查询设置警报。 逐步
+- 可以在流量分析中使用 Log Analytics 的向。 
+- 使用[此处所述的架构](traffic-analytics-schema.md)编写查询 
+- 单击 "新建警报规则" 以创建警报
+- 请参阅[日志警报文档](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)以创建警报
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>如何在地图视图中使用键盘导航？
 
 地图页面包含两个主要部分：
     
-- **标题**：地图顶部的标题提供用于选择流量分配筛选器（例如，“部署”、“来自国家/地区的流量”和“恶意”）的按钮。 选择某按钮时，将在地图上应用相应的筛选器。 例如，如果选择“活动”按钮，则地图会突出显示部署中的活动数据中心。
-- **地图**：标题下的地图部分显示 Azure 数据中心和国家/地区之间的流量分配。
+- **标题**："地理地图" 顶部的横幅提供了用于选择流量分布筛选器 (例如, 部署、来自国家/地区的流量和恶意) 的按钮。 选择某按钮时，将在地图上应用相应的筛选器。 例如，如果选择“活动”按钮，则地图会突出显示部署中的活动数据中心。
+- **地图**：在标题下方, 地图部分显示了 Azure 数据中心和国家/地区之间的流量分布。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>标题中的键盘导航
     

@@ -1,7 +1,6 @@
 ---
 title: 适用于 ML Services on HDInsight 的 Azure 存储解决方案 - Azure
 description: 了解 ML Services on HDInsight 所提供的不同存储选项
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ffde6f3e94cab94fca5a815db28478790a2a4221
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 8c1624ba6780fc45e3e663cadc032e253ce9545f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523386"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448879"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>适用于 ML Services on HDInsight 的 Azure 存储解决方案
 
@@ -33,7 +32,7 @@ ML Services on HDInsight 可使用各种存储解决方案来保存数据、代�
 
 ## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>将 Azure Blob 存储帐户用于 ML Services 群集
 
-如果在创建 ML Services 群集时指定了多个存储帐户，以下说明介绍如何使用辅助帐户在 ML Services 群集上访问数据和执行操作。 假定为以下存储帐户和容器：storage1 和名为 container1 的一个默认容器以及包含 **container2** 的 storage2。
+如果在创建 ML Services 群集时指定了多个存储帐户，以下说明介绍如何使用辅助帐户在 ML Services 群集上访问数据和执行操作。 假定为以下存储帐户和容器：storage1 和名为 container1 的一个默认容器以及包含 **container2** 的 storage2    。
 
 > [!WARNING]  
 > 出于性能目的，HDInsight 群集会在与你指定的主存储帐户相同的数据中心内创建。 不支持在 HDInsight 群集之外的其他位置使用存储帐户。
@@ -47,7 +46,7 @@ ML Services on HDInsight 可使用各种存储解决方案来保存数据、代�
         hadoop fs –mkdir /share
         hadoop fs –copyFromLocal mycsv.scv /share  
 
-3. 切换到 R Studio 或其他 R 控制台，写入 R 代码，将名称节点设置为默认和要访问的文件的位置。  
+3. 切换到 R Studio 或其他 R 控制台，写入 R 代码，将名称节点设置为默认和要访问的文件的位置  。  
 
         myNameNode <- "default"
         myPort <- 0
@@ -111,17 +110,17 @@ ML Services on HDInsight 可使用各种存储解决方案来保存数据、代�
 ### <a name="add-cluster-access-to-your-azure-data-lake-storage"></a>为群集添加 Azure Data Lake Storage 访问权限
 可以使用与 HDInsight 群集关联的 Azure Active Directory (Azure AD) 服务主体来访问 Data Lake Storage。
 
-1. 创建 HDInsight 群集时，请在“数据源”选项卡中选择“群集 AAD 标识”。
+1. 创建 HDInsight 群集时，请在“数据源”  选项卡中选择“群集 AAD 标识”  。
 
-2. 在“群集 AAD 标识”对话框中的“选择 AD 服务主体”下面，选择“新建”。
+2. 在“群集 AAD 标识”  对话框中的“选择 AD 服务主体”  下面，选择“新建”  。
 
-为服务主体命名并创建密码后，单击“管理 ADLS 访问”将该服务主体与 Data Lake Storage 相关联。
+为服务主体命名并创建密码后，单击“管理 ADLS 访问”将该服务主体与 Data Lake Storage 相关联  。
 
-创建群集后，还可向一个或多个 Data Lake Storage 帐户添加群集访问权限。 打开 Data Lake Storage 的 Azure 门户条目，转至“数据资源管理器”>“访问权限”>“添加”。 
+创建群集后，还可向一个或多个 Data Lake Storage 帐户添加群集访问权限。 打开 Data Lake Storage 的 Azure 门户条目，转至“数据资源管理器”>“访问权限”>“添加”  。 
 
 ### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>如何从 ML Services on HDInsight 访问 Data Lake Storage Gen1
 
-获得 Data Lake Storage Gen1 访问权限后，便可以在 HDInsight 上的 ML Services 群集中使用该存储，其使用方式与使用辅助 Azure 存储帐户类似。 唯一的差别在于，前缀 **wasb://** 需更改为 **adl://**，如下所示：
+获得 Data Lake Storage Gen1 访问权限后，便可以在 HDInsight 上的 ML Services 群集中使用该存储，其使用方式与使用辅助 Azure 存储帐户类似。 唯一的差别在于，前缀 **wasb://** 需更改为 **adl://** ，如下所示：
 
 
     # Point to the ADL Storage (e.g. ADLtest)
@@ -170,6 +169,5 @@ ML Services on HDInsight 可使用各种存储解决方案来保存数据、代�
 ## <a name="next-steps"></a>后续步骤
 
 * [HDInsight 上的 ML Services 群集概述](r-server-overview.md)
-* [Apache Hadoop 上的 ML Services 群集入门](r-server-get-started.md)
 * [适用于 HDInsight 上的 ML Services 群集的计算上下文选项](r-server-compute-contexts.md)
 * [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

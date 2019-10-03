@@ -4,17 +4,17 @@ description: 使用安全筛选器和用户标识对 Azure 搜索内容进行访
 ms.service: search
 ms.topic: conceptual
 services: search
-ms.date: 08/07/2017
+ms.date: 05/02/2019
 author: brjohnstmsft
 ms.author: brjohnst
-manager: jlembicz
+manager: nitinme
 ms.custom: seodec2018
-ms.openlocfilehash: 326a449d3992d22a4be2d365061c99ef8b13aef9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d1ffa5b29a56d32a4f6a8ccf40f5bafd27795e6
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453484"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186489"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>用于在 Azure 搜索中修整结果的安全筛选器
 
@@ -33,7 +33,7 @@ ms.locfileid: "57453484"
 >[!NOTE]
 > 本文档未介绍检索主体标识符的过程。 应该从标识服务提供程序获取该标识符。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本文假设读者拥有 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、[Azure 搜索服务](https://docs.microsoft.com/azure/search/search-create-service-portal)和 [Azure 搜索索引](https://docs.microsoft.com/azure/search/search-create-index-portal)。  
 
@@ -61,7 +61,7 @@ ms.locfileid: "57453484"
 向索引的 URL 终结点发出 HTTP POST 请求。 HTTP 请求的正文是一个 JSON 对象，包含要添加的文档：
 
 ```
-POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=[api-version]  
+POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2019-05-06  
 Content-Type: application/json
 api-key: [admin key]
 ```
@@ -119,7 +119,7 @@ api-key: [admin key]
 发出 HTTP POST 请求：
 
 ```
-POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=[api-version]  
+POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2019-05-06
 Content-Type: application/json  
 api-key: [admin or query key]
 ```
@@ -152,9 +152,9 @@ api-key: [admin or query key]
 ```
 ## <a name="conclusion"></a>结束语
 
-本文介绍了如何基于用户标识和 Azure 搜索 `search.in()` 函数筛选结果。 此函数可用于传入请求的用户可以与每个目标文档关联的主体标识符匹配的主体标识符。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
+本文介绍了如何基于用户标识和 Azure 搜索 `search.in()` 函数筛选结果。 可以使用此函数传入请求用户的主体标识符，以将其与每个目标文档关联的主体标识符进行匹配。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
  
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [使用 Azure 搜索筛选器进行 Active Directory 基于标识的访问控制](search-security-trimming-for-azure-search-with-aad.md)
 + [Azure 搜索中的筛选器](search-filters.md)

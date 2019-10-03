@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用适用于 C# 的自定义视觉 SDK 创建对象检测项目
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用 .NET SDK 和 C# 创建项目、添加标记、上传图像、训练项目以及检测对象。
 services: cognitive-services
 author: areddish
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: cc66630f57af32e18916e0662a400b38f27000a9
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 34b814e854a1576fcf55d14ddc5ac213d8f87070
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472593"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945167"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>快速入门：使用自定义视觉 .NET SDK 创建对象检测项目
 
@@ -27,14 +27,14 @@ ms.locfileid: "58472593"
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>获取自定义视觉 SDK 和示例代码
 
-若要编写使用自定义视觉的 .NET 应用，需要自定义视觉 NuGet 包。 这些都包括在要下载的示例项目中，但你可以在此处逐个访问它们。
+若要编写使用自定义视觉的 .NET 应用，需要自定义视觉 NuGet 包。 这些包将包含在要下载的示例项目中，但你可以在此处逐个访问它们。
 
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 - [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
 克隆或下载[认知服务 .NET 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)项目。 导航到 **CustomVision/ObjectDetection** 文件夹，在 Visual Studio 中打开 _ObjectDetection.csproj_。
 
-此 Visual Studio 项目会新建名为“我的新项目”的自定义视觉项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。 然后，该项目会上传图像来训练和测试对象检测模型。 在此项目中，会训练模型对图像中的叉子和剪刀进行检测。
+此 Visual Studio 项目会新建名为“我的新项目”的自定义视觉项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。  然后，该项目会上传图像来训练和测试对象检测模型。 在此项目中，会训练模型对图像中的叉子和剪刀进行检测。
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -50,7 +50,7 @@ Endpoint 参数应指向创建包含自定义视觉资源的 Azure 资源组的�
 
 ### <a name="create-a-new-custom-vision-service-project"></a>创建新的自定义视觉服务项目
 
-随后的代码创建对象检测项目。 创建的项目将显示在以前访问过的[自定义视觉网站](https://customvision.ai/)上。 
+随后的代码创建对象检测项目。 创建的项目将显示在以前访问过的[自定义视觉网站](https://customvision.ai/)上。 请查看 [CreateProject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__) 方法，以在创建项目时指定其他选项（在[生成检测器](get-started-build-detector.md) Web 门户指南中进行了说明）。  
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=29-35)]
 
@@ -64,7 +64,7 @@ Endpoint 参数应指向创建包含自定义视觉资源的 Azure 资源组的�
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=41-84)]
 
-然后，使用此关联映射上传每个示例图像及其区域坐标。
+然后，使用此关联映射上传每个示例图像及其区域坐标。 最多可以在单个批次中上传 64 个图像。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=86-104)]
 
@@ -109,7 +109,7 @@ Console.WriteLine("Making a prediction:");
 var imageFile = Path.Combine("Images", "test", "test_image.jpg");
 using (var stream = File.OpenRead(imageFile))
 {
-        var result = endpoint.DetectImage(project.Id, publishedModelName, File.OpenRead(imageFile));
+        var result = endpoint.DetectImage(project.Id, publishedModelName, stream);
 
         // Loop over each prediction and write out the results
         foreach (var c in result.Predictions)
@@ -123,7 +123,7 @@ using (var stream = File.OpenRead(imageFile))
 
 应用程序运行时，会打开一个控制台窗口并写入以下输出：
 
-```
+```console
 Creating new project:
         Training
 Done!

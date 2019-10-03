@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 46eea21e1eafce1696ed1cf77a1f334798f0bc17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a6fc9f1a5c32fc9ffa1e1e6ebe525b72030fe803
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848401"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155651"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 
@@ -23,7 +23,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="cassandra-protocol"></a>Cassandra 协议 
 
-Azure Cosmos DB Cassandra API 与 CQL 版本 v4 兼容。 下面列出了支持的 CQL 命令、工具、限制和例外。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB Cassandra API。
+Azure Cosmos DB Cassandra API 与 CQL 版本 v4  兼容。 下面列出了支持的 CQL 命令、工具、限制和例外。 任何理解这些协议的客户端驱动程序应该都能够连接到 Azure Cosmos DB Cassandra API。
 
 ## <a name="cassandra-driver"></a>Cassandra 驱动程序
 
@@ -74,6 +74,8 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 数据类型：
 Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
 
 * 令牌  
+* 聚合函数
+  * 最小值、最大值、平均值、计数
 * Blob 转换函数 
   * typeAsBlob(value)  
   * blobAsType(value)
@@ -88,7 +90,8 @@ Azure Cosmos DB Cassandra API 支持以下 CQL 函数：
   * toDate(timestamp)  
   * toUnixTimestamp(timestamp)  
   * toTimestamp(date)  
-  * toUnixTimestamp(date)  
+  * toUnixTimestamp(date) 
+  
 
 
 ## <a name="cassandra-query-language-limits"></a>Cassandra 查询语言限制
@@ -154,11 +157,11 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>一致性映射 
 
-Azure Cosmos DB Cassandra API 为读取操作提供了一致性选择。 无论帐户的一致性如何，所有写入操作都始终会使用写入性能 SLA 进行编写。
+Azure Cosmos DB Cassandra API 为读取操作提供了一致性选择。  一致性映射的详细信息[在这里](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping) 。
 
 ## <a name="permission-and-role-management"></a>权限和角色管理
 
-Azure Cosmos DB 支持基于角色的访问控制 (RBAC) 以及读写和只读密码/密钥（可通过 [Azure 门户](https://portal.azure.com)获取）。 Azure Cosmos DB 在数据平面活动中尚不支持用户和角色。 
+Azure Cosmos DB 支持基于角色的访问控制 (RBAC) 用于预配、旋转密钥、查看指标以及读写和只读密码/密钥（可通过 [Azure 门户](https://portal.azure.com)获取）。 Azure Cosmos DB 在 CRUD 活动中尚不支持用户和角色。 
 
 ## <a name="planned-support"></a>计划的支持 
 * 目前忽略 create keypace 命令中的区域名称 - 数据分配在底层 Cosmos DB 平台中实现，并通过门户或 powershell 向帐户公开。 

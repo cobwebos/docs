@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 1464d1ca8fcf1ad5a955d69aa76caec9aa568dad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6cbe583ca59cb98ba233e58dc665c7e18c2a1f7f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886111"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559293"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>快速入门：使用适用于 Python 的语音 SDK 识别语音
 
@@ -30,15 +30,24 @@ ms.locfileid: "57886111"
 * Python 语音 SDK 包适用于以下操作系统：
     * Windows：x64 和 x86。
     * Mac：macOS X 10.12 或更高版本。
-    * Linux：x64 架构上的 Ubuntu 16.04 或 18.04。
-* 在 Ubuntu 上，请运行以下命令安装所需的包：
+    * Linux：x64 上的 Ubuntu 16.04、Ubuntu 18.04、Debian 9。
+* 在 Linux 上，请运行以下命令安装所需的包：
 
-  ```sh
-  sudo apt-get update
-  sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-  ```
+  * 在 Ubuntu 上：
 
-* 在 Windows 上，还需要安装适用于你的平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。
+    ```sh
+    sudo apt-get update
+    sudo apt-get install build-essential libssl1.0.0 libasound2
+    ```
+
+  * 在 Debian 9 上：
+
+    ```sh
+    sudo apt-get update
+    sudo apt-get install build-essential libssl1.0.2 libasound2
+    ```
+
+* 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
@@ -78,12 +87,12 @@ python quickstart.py
 
 1. 在计算机上下载并安装 64 位版本的 [Python](https://www.python.org/downloads/)（3.5 或更高版本）。
 1. 下载并安装 [Visual Studio Code](https://code.visualstudio.com/Download)。
-1. 打开 Visual Studio Code 并安装 Python 扩展。 在菜单中选择“文件” > “首选项” > “扩展”。 搜索 **Python**。
+1. 打开 Visual Studio Code 并安装 Python 扩展。 在菜单中选择“文件”   >   “首选项” >   “扩展”。 搜索 **Python**。
 
    ![安装 Python 扩展](media/sdk/qs-python-vscode-python-extension.png)
 
 1. 创建一个文件夹用于存储项目。 例如，使用 Windows 资源管理器。
-1. 在 Visual Studio Code 中选择“文件”图标。 然后打开创建的文件夹。
+1. 在 Visual Studio Code 中选择“文件”图标。  然后打开创建的文件夹。
 
    ![打开文件夹](media/sdk/qs-python-vscode-python-open-folder.png)
 
@@ -98,7 +107,7 @@ python quickstart.py
 1. 如果尚未为所选的 Python 解释器安装， 可以从 Visual Studio Code 内部安装语音 SDK Python 包。
    若要安装语音 SDK 包，请打开终端。 再次启动命令面板 (Ctrl+Shift+P) 并输入 **Terminal:Create New Integrated Terminal** 来打开终端。
    在打开的终端中，输入命令 `python -m pip install azure-cognitiveservices-speech`，或者输入适用于系统的命令。
-1. 若要运行示例代码，请在编辑器中的某个位置单击右键。 选择“在终端中运行 Python 文件”。
+1. 若要运行示例代码，请在编辑器中的某个位置单击右键。 选择“在终端中运行 Python 文件”。 
    根据提示讲出几句话。 片刻之后，听录的文本将会显示。
 
    ![运行示例](media/sdk/qs-python-vscode-python-run.png)

@@ -3,21 +3,22 @@ title: 对话学习器控制流 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
 description: 了解对话学习器控制流。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: e0a0a88e249c0a032e5afaeea14b9b3cfcbdc319
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: f28b60d67e84e3e2e39cc647045a6dfca473b810
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080654"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932093"
 ---
-## <a name="control-flow"></a>控制流
+# <a name="control-flow"></a>控制流
 
 本文介绍对话学习器 (CL) 的控制流，如下方图表所示。
 
@@ -41,4 +42,4 @@ ms.locfileid: "58080654"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何指导使用对话学习器](./how-to-teach-cl.md)
+> [如何 Conversation Learner](./how-to-teach-cl.md)

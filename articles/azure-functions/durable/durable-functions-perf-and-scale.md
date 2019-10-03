@@ -6,16 +6,15 @@ author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e6ae4cc527ae0828f530ab7f3904d2b3c64c910b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 53f561283d4d07d58bd03b59a24a30d8010caaf0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895743"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933292"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -56,7 +55,7 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 可以通过 [host.json 文件](../functions-host-json.md#durabletask)中的 `maxQueuePollingInterval` 属性配置最大轮询延迟。 将此项设置为较高的值时，可能导致的消息处理延迟也越高。 只有在不活动的时间段过后，才会出现较高的延迟。 将此项设置为较低的值时，可能导致的存储成本会较高，因为存储事务数增高。
 
 > [!NOTE]
-> Azure Functions 消耗计划和高级计划，在运行时[Azure Functions 缩放控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)将轮询每个控件和工作项队列一次每隔 10 秒。 此附加的轮询有必要确定何时激活函数应用实例并做出缩放决策。 在撰写本文时，此 10 的第二个间隔保持不变，并且无法进行配置。
+> 在 Azure Functions 消耗量和高级计划中运行时， [Azure Functions 规模控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)将每10秒轮询一次每个控件和一次工作项队列。 若要确定何时激活函数应用实例并进行缩放决策，这种额外的轮询是必需的。 在撰写本文时，这种 10 秒的时间间隔为常量，不能进行配置。
 
 ## <a name="storage-account-selection"></a>存储帐户的选择
 
@@ -229,7 +228,7 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 
 下表显示了前面所述方案的预期最大吞吐量数字。 “实例”是指在 Azure 应用服务中单个小型 ([A1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM 上运行的业务流程协调程序函数的单个实例。 在各种情况下，都假设已启用[扩展会话](#orchestrator-function-replay)。 实际结果可能根据函数代码执行的 CPU 或 I/O 工作而异。
 
-| 场景 | 最大吞吐量 |
+| 应用场景 | 最大吞吐量 |
 |-|-|
 | 顺序活动执行 | 每个实例每秒 5 个活动 |
 | 并行活动执行（扇出） | 每个实例每秒 100 个活动 |
@@ -244,4 +243,4 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 C# 创建第一个 Durable Function](durable-functions-create-first-csharp.md)
+> [了解灾难恢复和地理分布](durable-functions-disaster-recovery-geo-distribution.md)

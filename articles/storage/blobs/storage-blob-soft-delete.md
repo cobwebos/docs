@@ -2,18 +2,18 @@
 title: Azure 存储 blob 的软删除 | Microsoft Docs
 description: Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或其他存储帐户用户错误地修改或删除数据后可以更轻松地恢复数据。
 services: storage
-author: MichaelHauss
+author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 07/15/2018
-ms.author: mihauss
+ms.topic: conceptual
+ms.date: 04/23/2019
+ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 08d51b1b6a09bb4df3986bd8c4c44d3834882def
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: 253f42080d7c0eab2f7b3cfc5de3d4462f63c738
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506118"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673398"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure 存储 Blob 的软删除
 Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或其他存储帐户用户错误地修改或删除数据后可以更轻松地恢复数据。
@@ -41,7 +41,7 @@ Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-overwrite.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。使用 B1 覆盖 B0 时会生成 B0 的软删除快照。使用 B2 覆盖 B1 时会生成 B1 的软删除快照。
+*软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。使用 B1 覆盖 B0 时会生成 B0 的软删除快照。使用 B2 覆盖 B1 时会生成 B1 的软删除快照。*
 
 > [!NOTE]  
 > 对目标 blob 的帐户启用软删除时，软删除仅对复制操作提供覆盖保护。
@@ -59,7 +59,7 @@ Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。此处调用了“删除 Blob”来删除 B2 和所有相关快照 。活动 blob B2 和所有相关快照均被标记为软删除。
+*软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。此处调用了“删除 Blob”来删除 B2 和所有相关快照。活动 blob B2 和所有相关快照均被标记为软删除。*
 
 > [!NOTE]  
 > 覆盖软删除 blob 时，将自动生成写入操作前 blob 状态的软删除快照。 新 blob 将继承被覆盖 blob 的层级。
@@ -227,10 +227,12 @@ from azure.storage.blob import BlockBlobService
 from azure.storage.common.models import DeleteRetentionPolicy
 
 # Initialize a block blob service
-block_blob_service = BlockBlobService(account_name='<enter your storage account name>', account_key='<enter your storage account key>')
+block_blob_service = BlockBlobService(
+    account_name='<enter your storage account name>', account_key='<enter your storage account key>')
 
 # Set the blob client's service property settings to enable soft delete
-block_blob_service.set_blob_service_properties(delete_retention_policy = DeleteRetentionPolicy(enabled = True, days = 7))
+block_blob_service.set_blob_service_properties(
+    delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
 ### <a name="net-client-library"></a>.NET 客户端库
@@ -274,8 +276,8 @@ CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)ve
 blockBlob.StartCopy(copySource);
 ```
 
-## <a name="should-i-use-soft-delete"></a>是否应该使用软删除？
-如果应用程序或其他存储帐户用户可能意外修改或删除数据，则建议启用软删除。 作为数据保护策略的一部分，软删除可防止数据意外丢失。
+## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>使用软删除时是否有任何特殊注意事项？
+如果应用程序或其他存储帐户用户可能意外修改或删除数据，则建议启用软删除。 为频繁覆盖的数据启用软删除可能会导致在列出 Blob 时存储容量费用增加且延迟增加。 可以通过将经常覆盖的数据存储在禁用了软删除的单独存储帐户中来缓解这种情况。 
 
 ## <a name="faq"></a>常见问题
 **哪种存储类型可以使用软删除？**  
@@ -288,7 +290,7 @@ blockBlob.StartCopy(copySource);
 是的，软删除适用于所有存储层，包括热、冷和存档层。 但是，软删除对存档层中的 blob 不提供覆盖保护。
 
 **是否可以使用“设置 Blob 层 API”将 Blob 与软删除的快照置于一层？**  
-是的。 软删除的快照会保留在原始层中，但基础 Blob 会移到新层中。 
+是。 软删除的快照会保留在原始层中，但基础 Blob 会移到新层中。 
 
 **高级存储帐户每个 blob 的快照上限为 100.软删除快照是否计入此限制？**  
 不，软删除快照不记入此限制。

@@ -2,19 +2,19 @@
 title: 如何管理设置？ - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 了解如何在自定义翻译中管理设置、创建工作区、共享工作区和管理订阅密钥。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 6e8406cdd265063622bc5dcebbb9f22549b3633a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766795"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595770"
 ---
 # <a name="how-to-manage-settings"></a>如何管理设置
 

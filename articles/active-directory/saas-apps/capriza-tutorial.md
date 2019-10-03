@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d5c79709344d8a110495b16afdc61a5ff1f68cf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 80cf7706e5ecb7c4bb1f18462a9476226d5d2f0e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849187"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-capriza-platform"></a>教程：Azure Active Directory 与 Capriza Platform 集成
 
@@ -45,8 +45,8 @@ ms.locfileid: "57849187"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Capriza Platform 支持 SP 发起的 SSO
-* Capriza Platform 支持“恰时”用户预配
+* Capriza Platform 支持 SP 发起的 SSO 
+* Capriza Platform 支持“恰时”  用户预配
 
 ## <a name="adding-capriza-platform-from-the-gallery"></a>从库中添加 Capriza Platform
 
@@ -54,25 +54,25 @@ ms.locfileid: "57849187"
 
 **若要从库中添加 Capriza Platform，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“Capriza Platform”，在结果面板中选择“Capriza Platform”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入“Capriza Platform”，在结果面板中选择“Capriza Platform”，然后单击“添加”按钮添加该应用程序    。
 
     ![结果列表中的 Capriza Platform](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于名为“Britta Simon”的测试用户配置并测试 Capriza Platform 的 Azure AD 单一登录。
+在本部分中，基于名为“Britta Simon”的测试用户配置并测试 Capriza Platform 的 Azure AD 单一登录。 
 若要运行单一登录，需要在 Azure AD 用户与 Capriza Platform 相关用户之间建立链接关系。
 
 若要配置和测试 Capriza Platform 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -90,7 +90,7 @@ ms.locfileid: "57849187"
 
 若要配置 Capriza Platform 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 Capriza Platform 应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)的 Capriza Platform 应用程序集成页上，选择“单一登录”   。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,24 +98,24 @@ ms.locfileid: "57849187"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![Capriza Platform 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.capriza.com/<tenantid>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.capriza.com/<tenantid>`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Capriza Platform 客户端支持团队](mailto:support@capriza.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Capriza Platform 客户端支持团队](mailto:support@capriza.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Capriza Platform”部分，根据要求复制相应 URL。
+6. 在“设置 Capriza Platform”部分，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -133,11 +133,11 @@ ms.locfileid: "57849187"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -145,40 +145,40 @@ ms.locfileid: "57849187"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予 Capriza Platform 的访问权限支持她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Capriza Platform”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Capriza Platform”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Capriza Platform”。
+2. 在应用程序列表中，选择“Capriza Platform”  。
 
     ![应用程序列表中的 Capriza Platform 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-capriza-platform-test-user"></a>创建 Capriza Platform 测试用户
 

@@ -1,19 +1,19 @@
 ---
 title: 快速入门：使用 .NET 在 Azure 存储中创建队列
 description: 本快速入门介绍如何使用 .NET 的 Azure 存储客户端库创建队列并在其中添加消息。 接下来，介绍如何在队列中读取和处理消息。
-services: storage
-author: tamram
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 02/06/2018
-ms.author: tamram
-ms.openlocfilehash: f16c4438dfb2feb70dece0b95f8afc701c5a3d66
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.service: storage
+ms.subservice: queues
+ms.topic: quickstart
+ms.reviewer: cbrooks
+ms.openlocfilehash: d3706f8585c2644a31bf1f418f5425e0fa58d2a0
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009302"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721259"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>快速入门：使用 .NET 在 Azure 存储中创建队列
 
@@ -52,7 +52,7 @@ ms.locfileid: "59009302"
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-此命令会将存储库克隆到本地 git 文件夹。 若要打开 Visual Studio 解决方案，请找到 *storage-queues-dotnet-quickstart* 文件夹并将其打开，然后双击“storage-queues-dotnet-quickstart.sln”。 
+此命令会将存储库克隆到本地 git 文件夹。 若要打开 Visual Studio 解决方案，请找到 *storage-queues-dotnet-quickstart* 文件夹并将其打开，然后双击“storage-queues-dotnet-quickstart.sln”。  
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -144,7 +144,7 @@ Press any key to delete the sample queue.
 
 ### <a name="try-parsing-the-connection-string"></a>尝试分析连接字符串
 
-该示例首先检查环境变量是否包含一个连接字符串，该字符串在经过分析后可以创建一个指向存储帐户的 [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) 对象。 该示例使用 [TryParse](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.tryparse) 方法检查连接字符串是否有效。 如果 **TryParse** 成功，它会初始化 *storageAccount* 变量并返回 **true**。
+该示例首先检查环境变量是否包含一个连接字符串，该字符串在经过分析后可以创建一个指向存储帐户的 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) 对象。 该示例使用 [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) 方法检查连接字符串是否有效。 如果 **TryParse** 成功，它会初始化 *storageAccount* 变量并返回 **true**。
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -186,9 +186,9 @@ Console.WriteLine();
 
 接下来，该示例将消息添加到队列的后部。 
 
-消息必须采用可包含在 XML 请求中的 UTF-8 编码格式，大小不能超过 64 KB。 如果消息包含二进制数据，则 Microsoft 建议对消息进行 Base64 编码。
+消息必须采用可包含在 XML 请求中的 UTF-8 编码格式，大小不能超过 64 KB。 如果消息包含二进制数据，则我们建议对消息进行 Base64 编码。
 
-消息的最大生存时间默认设置为 7 天。 可为消息生存时间指定任何正数，-1 表示该消息不会过期。
+消息的最大生存时间默认设置为 7 天。 可以为消息生存时间指定任何正数。
 
 ```csharp
 // Create a message and add it to the queue. Set expiration time to 14 days.
@@ -198,6 +198,12 @@ Console.WriteLine("Added message '{0}' to queue '{1}'", message.Id, queue.Name);
 Console.WriteLine("Message insertion time: {0}", message.InsertionTime.ToString());
 Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToString());
 Console.WriteLine();
+```
+
+若要添加未过期的消息，请在对 [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) 的调用中使用 `Timespan.FromSeconds(-1)`。
+
+```csharp
+await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
 ```
 
 ### <a name="peek-a-message-from-the-queue"></a>扫视队列中的消息
@@ -256,7 +262,9 @@ if (queue != null)
 
 ### <a name="binaries-and-source-code"></a>二进制文件和源代码
 
-- 下载 Azure 存储的最新版 [.NET 客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)的 NuGet 包。 
+- 下载最新版本的[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)的 NuGet 包
+    - [通用](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+    - [队列](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - 查看 GitHub 上的 [.NET 客户端库源代码](https://github.com/Azure/azure-storage-net)。
 
 ### <a name="client-library-reference-and-samples"></a>客户端库参考和示例

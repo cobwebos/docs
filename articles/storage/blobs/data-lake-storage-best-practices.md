@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Data Lake Storage Gen2 的最佳做法 | Microsoft Docs
 description: 了解与使用 Azure Data Lake Storage Gen2（以前称为 Azure Data Lake Store）相关的数据引入、日期安全和性能的最佳做法
-services: storage
-author: sachinsbigdata
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: sachins
-ms.openlocfilehash: e371ac848eff0e66390fe17bc23934725fca35f9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: normesta
+ms.reviewer: sachins
+ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000600"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991874"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>使用 Azure Data Lake Storage Gen2 的最佳做法
 
@@ -31,17 +31,17 @@ Azure Data Lake Storage Gen2 为 Azure Active Directory (Azure AD) 用户、组�
 
 ### <a name="security-for-groups"></a>组的安全性
 
-当你或你的用户需要访问启用了分层命名空间的存储帐户中的数据时，最好是使用 Azure Active Directory 安全组。 一些推荐的组的开始可能包括**ReadOnlyUsers**， **WriteAccessUsers**，并**FullAccessUsers**为根文件系统，甚至使用单独的密钥的子目录。 如果还有其他预期会在以后添加但目前尚未确定的用户组，可以考虑创建能够访问特定文件夹的虚拟安全组。 使用安全组可确保在为数千个文件分配新权限时不需要很长的处理时间。
+当你或你的用户需要访问启用了分层命名空间的存储帐户中的数据时，最好是使用 Azure Active Directory 安全组。 对于容器的根目录, 某些建议的组可能是**ReadOnlyUsers**、 **WriteAccessUsers**和**FullAccessUsers** , 甚至是为密钥子目录单独使用。 如果还有其他预期会在以后添加但目前尚未确定的用户组，可以考虑创建能够访问特定文件夹的虚拟安全组。 使用安全组可确保在为数千个文件分配新权限时不需要很长的处理时间。
 
 ### <a name="security-for-service-principals"></a>服务主体的安全性
 
-Azure Active Directory 服务主体通常可供 Azure Databricks 之类的服务用来访问 Data Lake Storage Gen2 中的数据。 对于许多客户，单个 Azure Active Directory 服务主体可能已经足够，并可以完全控制权限的数据湖存储第 2 代文件系统根目录下。 其他客户可能需要多个包含不同服务主体的群集，让一个群集拥有数据的完全访问权限，另一个群集拥有只读访问权限。 
+Azure Active Directory 服务主体通常可供 Azure Databricks 之类的服务用来访问 Data Lake Storage Gen2 中的数据。 对于许多客户而言, 单个 Azure Active Directory 服务主体可能是足够的, 它可以在 Data Lake Storage Gen2 容器的根目录中拥有完全权限。 其他客户可能需要多个包含不同服务主体的群集，让一个群集拥有数据的完全访问权限，另一个群集拥有只读访问权限。 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>启用 Data Lake Storage Gen2 防火墙，允许 Azure 服务访问
 
 Data Lake Storage Gen2 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要限制外部攻击途径，建议使用这一选项。 可以通过“防火墙” > “启用防火墙(启用)” > “允许 Azure 服务访问”选项在 Azure 门户的存储帐户上启用防火墙。
 
-将 Azure Databricks 群集添加到可能允许通过存储防火墙访问的虚拟网络时，需要使用 Databricks 的预览功能。 若要启用此功能，请提出支持请求。
+若要从 Azure Databricks 访问你的存储帐户, 请将 Azure Databricks 部署到你的虚拟网络, 然后将该虚拟网络添加到防火墙。 请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 
 ## <a name="resiliency-considerations"></a>复原注意事项
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen2 支持启用防火墙并仅限 Azure 服务进行访问�
 
 ### <a name="high-availability-and-disaster-recovery"></a>高可用性和灾难恢复
 
-高可用性 (HA) 和灾难恢复 (DR) 有时可以组合在一起，虽然每个的策略稍有不同，尤其是在涉及到数据的时候。 Data Lake Storage Gen2 已经可以在后台处理 3 个副本形式的复制，来应对局部硬件故障。 此外，也可使用其他复制选项，例如，使用 ZRS 来改善 HA，使用 GRS 和 RA-GRS 来改善 DR。 在制定计划以确保 HA 时，应考虑到在发生服务中断的情况下，工作负荷需尽快切换到在本地或新区域中单独复制的实例，以便访问最新数据。
+高可用性 (HA) 和灾难恢复 (DR) 有时可以组合在一起，虽然每个的策略稍有不同，尤其是在涉及到数据的时候。 Data Lake Storage Gen2 已经可以在后台处理 3 个副本形式的复制，来应对局部硬件故障。 此外, 其他复制选项 (如 ZRS 或 GZRS (预览版)) 提高了 HA, 而 GRS & RA-GRS 改善了 DR。 在制定计划以确保 HA 时，应考虑到在发生服务中断的情况下，工作负荷需尽快切换到在本地或新区域中单独复制的实例，以便访问最新数据。
 
 在 DR 策略中，为了应对某个区域发生灾难性故障这种不太可能的事件，必须使用 GRS 或 RA-GRS 复制选项将数据复制到其他区域，这也很重要。 此外，还必须考虑到在出现数据损坏这样的极端例子时的要求，因此需要创建可供回退的定期快照。 根据数据的重要性和大小，可以考虑每隔 1 小时、6 小时、24 小时创建滚动性的增量快照，具体取决于风险承受能力。
 

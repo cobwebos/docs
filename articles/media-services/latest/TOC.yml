@@ -4,98 +4,117 @@
   items:
     - name: 关于媒体服务
       href: media-services-overview.md
-- name: 快速入门
+- name: 教程
   expanded: true
   items:
-    - name: 流式处理视频文件 - .NET
-      href: stream-files-dotnet-quickstart.md
-    - name: 流式处理视频文件 - CLI
-      href: stream-files-cli-quickstart.md
-    - name: 流式处理视频文件 - Node.js
-      href: stream-files-nodejs-quickstart.md
-- name: 教程
-  items:
-    - name: 对远程文件和流视频进行编码 – REST
-      displayName: 'encoding, job, transform'
-      href: stream-files-tutorial-with-rest.md
-    - name: 对上传的文件和流视频进行编码 – .NET
+    - name: 对远程文件进行编码并流式传输视频
+      items:
+        - name: 使用 REST
+          displayName: 'encoding, job, transform'
+          href: stream-files-tutorial-with-rest.md
+        - name: 使用 CLI
+          href: stream-files-cli-quickstart.md
+        - name: 使用 .NET
+          href: stream-files-dotnet-quickstart.md
+        - name: 利用 Node.js
+          href: stream-files-nodejs-quickstart.md
+    - name: 对上传的文件和流视频进行编码
       displayName: 'encode, encoding, job, transform'
       href: stream-files-tutorial-with-api.md
-    - name: 实时流 - .NET
+    - name: 实时流式处理
       href: stream-live-tutorial-with-api.md
-    - name: 分析视频 - .NET
-      displayName: 'job, transform'
+      displayName: 'Live Events, Live Outputs, ingest'
+    - name: 分析视频
+      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
       href: analyze-videos-tutorial-with-api.md
-    - name: AES-128 动态加密 - .NET
+    - name: 通过 AES-128 进行动态加密
       href: protect-with-aes128.md
+    - name: 通过 DRM 进行动态加密
+      displayName: 'PlayReady, Widevine, FairPlay'
+      href: protect-with-drm.md
 - name: 示例
   items:
-    - name: Azure 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
-    - name: Azure CLI
-      href: cli-samples.md
+    - name: 媒体服务示例
+      displayName: '.NET, Java'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
 - name: 概念
-  href: concepts-overview.md
   items:
-    - name: 云上传和存储
+    - name: 概述
+      href: concepts-overview.md
+    - name: 帐户
       items:
-        - name: 存储
+        - name: 媒体服务帐户
+          displayName: subscription
+          href: media-services-account-concept.md
+        - name: 存储帐户
           href: storage-account-concept.md
+          displayName: Storage side encryption
+    - name: 上传
+      items:
         - name: 资产
           href: assets-concept.md
+          displayName: 'name, naming, file name'
     - name: 编码
       items:
         - name: 概述
           href: encoding-concept.md
-          displayName: Presets
+          displayName: 'encoding, presets, jobs, adaptive, bitrate'
         - name: 转换和作业
           href: transforms-jobs-concept.md
-        - name: Media Encoder Standard 格式
+          displayName: 'preset, schema'
+        - name: 标准编码器格式
           displayName: 'containers, codecs'
           href: media-encoder-standard-formats.md
         - name: 自动生成自适应比特率阶梯
           href: autogen-bitrate-ladder.md
         - name: 内容感知型编码
           href: cae-experimental.md
+        - name: 作业错误代码
+          href: job-error-codes.md
     - name: 媒体分析
       items:
         - name: 概述
           href: analyzing-video-audio-files-concept.md
-          displayName: Presets
+          displayName: 'analyzing, presets, jobs'
         - name: 转换和作业
           href: transforms-jobs-concept.md
-    - name: 打包、传送、保护
+        - name: 作业错误代码
+          href: job-error-codes.md
+    - name: 打包和交付
       items:
-        - name: 打包
-          items:
-            - name: 动态打包
-              displayName: packager
-              href: dynamic-packaging-overview.md
-            - name: 动态清单
-              href: filters-dynamic-manifest-overview.md
-            - name: 筛选器
-              href: filters-concept.md
-        - name: 内容保护
-          items:
-            - name: 流式处理协议和加密类型
-              displayName: Dynamic encryption
-              href: content-protection-overview.md
-            - name: 带有访问控制的多 DRM 系统
-              href: design-multi-drm-system-with-access-control.md
-            - name: DRM 许可证
-              items:
-                - name: PlayReady 许可证模板
-                  href: playready-license-template-overview.md
-                - name: Widevine 许可证模板
-                  href: widevine-license-template-overview.md
-                - name: FairPlay 许可证要求
-                  href: fairplay-license-overview.md
-        - name: 流式处理终结点/源
-          displayName: 'origins, cdn'
+        - name: 动态打包
+          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest'
+          href: dynamic-packaging-overview.md
+        - name: 动态清单
+          href: filters-dynamic-manifest-overview.md
+        - name: 筛选器
+          href: filters-concept.md
+        - name: 流式处理终结点
+          displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
         - name: 流式处理定位符
           displayName: URLs
           href: streaming-locators-concept.md
+        - name: 流式处理策略
+          href: streaming-policy-concept.md
+        - name: 流式处理终结点错误代码
+          href: streaming-endpoint-error-codes.md
+    - name: 内容保护
+      items:
+        - name: 动态加密和密钥传送
+          displayName: 'content protection, streaming protocols, encryption types, content protection, PlayReady, Widevine, FairPlay'
+          href: content-protection-overview.md
+        - name: 多 DRM 系统的设计
+          displayName: 'drm, access control'
+          href: design-multi-drm-system-with-access-control.md
+        - name: DRM 许可证
+          items:
+            - name: PlayReady 许可证模板
+              href: playready-license-template-overview.md
+            - name: Widevine 许可证模板
+              href: widevine-license-template-overview.md
+            - name: FairPlay 许可证要求
+              href: fairplay-license-overview.md
         - name: 流式处理策略
           href: streaming-policy-concept.md
         - name: 内容密钥策略
@@ -104,18 +123,19 @@
       items:
         - name: 概述
           href: live-streaming-overview.md
-        - name: 实时事件和实时输出
+        - name: 直播活动和实时输出
           href: live-events-outputs-concept.md
+          displayName: 'vanity, ingest'
         - name: 推荐的实时编码器
           href: recommended-on-premises-live-encoders.md
-        - name: 使用云 DVR
-          displayName: archive
+        - name: 时移和直播到 VOD
+          displayName: 'archive, dvr'
           href: live-event-cloud-dvr.md
         - name: 功能比较
           href: live-event-types-comparison.md
         - name: 状态和计费
           href: live-event-states-billing.md
-        - name: Latency
+        - name: 延迟
           href: live-event-latency.md
     - name: 监视
       items:
@@ -132,30 +152,45 @@
         - name: Azure Media Player
           href: use-azure-media-player.md
     - name: 使用 v3 API 进行开发
-      href: media-services-apis-overview.md
       items:
+        - name: 概述
+          href: media-services-apis-overview.md
+          displayName: 'accessing, long-running, invalid character, name, naming, file name'
         - name: 对实体进行分页、筛选、排序
           href: entities-overview.md
         - name: RBAC
           href: rbac-overview.md
+        - name: 错误代码
+          items:
+            - name: 流式处理终结点错误代码
+              href: streaming-endpoint-error-codes.md
+            - name: 作业错误代码
+              href: job-error-codes.md
     - name: 从 v2 到 v3 的迁移指南
       href: migrate-from-v2-to-v3.md
+      displayName: naming
 - name: 操作指南
   items:
     - name: 入门
       items:
         - name: 创建帐户 - CLI
           href: create-account-cli-how-to.md
+          displayName: storage
+        - name: 重置帐户凭据 - CLI
+          href: cli-reset-account-credentials.md
         - name: 访问 API - CLI
           href: access-api-cli-how-to.md
-        - name: 缩放媒体保留单位 - CLI
+        - name: 缩放媒体预留单位 - CLI
           href: media-reserved-units-cli-how-to.md
+        - name: 创建资产 - CLI
+          href: cli-create-asset.md
+    - name: 开发人员指南
+      items:
         - name: 使用 REST 进行开发
           items:
             - name: 使用 Postman 进行连接
               href: media-rest-apis-with-postman.md
         - name: 使用 SDK 进行开发
-          href: developers-guide.md
           items:
             - name: 通过 Java 进行连接
               href: configure-connect-java-howto.md
@@ -176,6 +211,14 @@
         - name: 从本地文件 - REST
           displayName: upload
           href: upload-files-rest-how-to.md
+        - name: 从本地文件 - CLI
+          href: cli-upload-file-asset.md
+    - name: 创建转换和作业
+      items:
+        - name: 创建转换 - CLI
+          href: cli-create-transform.md
+        - name: 创建作业 - CLI
+          href: cli-create-jobs.md
     - name: 对内容进行编码
       items:
         - name: HTTPS 作为作业输入 - .NET
@@ -187,23 +230,38 @@
         - name: 通过自定义转换进行编码
           items:
             - name: 使用 .NET
+              displayName: 'encode, encoding, custom, transform'
               href: customize-encoder-presets-how-to.md
             - name: 使用 CLI
+              displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
             - name: 使用 REST
+              displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+        - name: 对视频进行子剪辑
+          items:
+            - name: 使用 .NET
+              href: subclip-video-dotnet-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
+            - name: 使用 REST
+              href: subclip-video-rest-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
     - name: 使用事件网格
       items:
         - name: 监视事件 - 门户
           href: monitor-events-portal-how-to.md
         - name: 监视事件 - CLI
           href: job-state-events-cli-how-to.md
+    - name: 使用 Azure Monitor
+      items:
+        - name: 监控指标
+          href: media-services-metrics-howto.md
+        - name: 监视诊断日志
+          href: media-services-diagnostic-logs-howto.md
     - name: 保护内容
       items:
         - name: 获取内容密钥策略 - .NET
           href: get-content-key-policy-dotnet-howto.md
-        - name: DRM 动态加密 - .NET
-          href: protect-with-drm.md
         - name: 适用于 iOS 的脱机 FairPlay
           href: offline-fairplay-for-ios.md
         - name: 适用于 Android 的脱机 Widevine
@@ -214,14 +272,22 @@
       items:
         - name: 使用 .NET
           href: filters-dynamic-manifest-dotnet-howto.md
+          displayName: filters
         - name: 使用 REST
           href: filters-dynamic-manifest-rest-howto.md
+          displayName: filters
         - name: 使用 CLI
           href: filters-dynamic-manifest-cli-howto.md
+          displayName: filters
+    - name: 传送内容
+      items:
+        - name: 发布资产 - CLI
+          href: cli-publish-asset.md
 - name: 引用
   items:
     - name: OpenAPI 规范 (Swagger)
       href: 'https://aka.ms/ams-v3-rest-sdk'
+      displayName: schema
     - name: REST
       href: 'https://aka.ms/ams-v3-rest-ref'
     - name: Azure CLI
@@ -240,6 +306,12 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: 资源管理器模板
       href: /azure/templates/microsoft.media/allversions
+    - name: 错误代码
+      items:
+        - name: 流式处理终结点错误代码
+          href: streaming-endpoint-error-codes.md
+        - name: 作业错误代码
+          href: job-error-codes.md
 - name: 资源
   items:
     - name: Azure 媒体服务社区
@@ -265,9 +337,11 @@
           href: 'https://aka.ms/ams-v3-python-sdk'
         - name: Node.js
           href: 'https://aka.ms/ams-v3-nodejs-sdk'
+        - name: Go
+          href: 'https://aka.ms/ams-v3-go-sdk'
         - name: Ruby
           href: 'https://aka.ms/ams-v3-ruby-sdk'
-    - name: AMSE
+    - name: Azure 媒体服务浏览器
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
     - name: 发行说明
       href: release-notes.md

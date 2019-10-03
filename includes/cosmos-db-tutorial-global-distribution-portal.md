@@ -9,23 +9,23 @@ ms.date: 12/26/2018
 ms.author: rimman
 ms.custom: include file
 ms.openlocfilehash: 751571820d52c003a7e740bd63af8c9d9e071c7a
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796107"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172693"
 ---
 ## <a id="addregion"></a>使用 Azure 门户添加全局数据库区域
 Azure Cosmos DB 在全球范围的所有 [Azure 区域][azureregions]中推出。 为数据库帐户选择默认的一致性级别后，可以关联一个或多个区域（具体取决于所选的默认一致性级别和全局分发需求）。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的左侧栏中，单击“Azure Cosmos DB”。
-2. 在“Azure Cosmos DB”页中，选择要修改的数据库帐户。
-3. 在“帐户”页上的菜单中单击“全局复制数据”。
-4. 在“全局复制数据”页中，通过单击地图中的区域选择要添加或删除的区域，并单击“保存”。 添加区域会产生费用，有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)或[使用 Azure Cosmos DB 全局分发数据](../articles/cosmos-db/distribute-data-globally.md)。
+1. 在 [Azure 门户](https://portal.azure.com/)的左侧栏中，单击“Azure Cosmos DB”  。
+2. 在“Azure Cosmos DB”  页中，选择要修改的数据库帐户。
+3. 在“帐户”页上的菜单中单击“全局复制数据”  。
+4. 在“全局复制数据”  页中，通过单击地图中的区域选择要添加或删除的区域，并单击“保存”  。 添加区域会产生费用，有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)或[使用 Azure Cosmos DB 全局分发数据](../articles/cosmos-db/distribute-data-globally.md)。
    
     ![单击图中的区域可以添加或删除区域][1]
     
-添加第二个区域后，门户中的“全局复制数据”页上会启用“手动故障转移”选项。 可以使用此选项测试故障转移过程或更改主写入区域。 添加第三个区域后，会在同一页上启用“故障转移优先级”选项，以便更改读取的故障转移顺序。  
+添加第二个区域后，门户中的“全局复制数据”  页上会启用“手动故障转移”  选项。 可以使用此选项测试故障转移过程或更改主写入区域。 添加第三个区域后，会在同一页上启用“故障转移优先级”  选项，以便更改读取的故障转移顺序。  
 
 ### <a name="selecting-global-database-regions"></a>选择全局数据库区域
 配置两个或更多区域有两个常见方案：

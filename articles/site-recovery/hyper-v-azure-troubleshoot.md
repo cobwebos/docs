@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8bb790571e1499bd45fb8bee27f4f1896046cbc2
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: 2cf43f8a235b112cfcf1fc6c9dba626a5a0c9b7e
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149073"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828404"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>排查 Hyper-V 到 Azure 的复制和故障转移的问题
 
@@ -30,7 +30,7 @@ ms.locfileid: "60149073"
 5. 在来宾 VM 上，验证 WMI 是否已启用并可访问。
    - [了解](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)基本 WMI 测试。
    - [排查](https://aka.ms/WMiTshooting) WMI 问题。
-   - [进行故障排除](https://technet.microsoft.com/library/ff406382.aspx#H22)WMI 脚本和服务的问题。
+   - [排查](https://technet.microsoft.com/library/ff406382.aspx#H22) WMI 脚本和服务的问题。
 6. 在来宾 VM 上，确保运行最新版本的 Integration Services。
     - [检查](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)是否安装了最新版本。
     - [始终使用](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)最新的 Integration Services。
@@ -129,7 +129,7 @@ ms.locfileid: "60149073"
 
 2. 若要为 VM 生成 VSS 快照，请检查 VM 上是否已安装 Hyper-V Integration Services，并已启用备份 (VSS) 集成服务。
     - 确保 Integration Services VSS 服务/守护程序在来宾上运行，并处于“正常”状态。
-    - 可以在 Hyper-V 主机上权限提升的 PowerShell 会话中，使用命令 **et-VMIntegrationService -VMName<VMName>-Name VSS** 执行此项检查。也可以登录到来宾 VM 来获取此信息。 [了解详细信息](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
+    - 你可以通过命令**enable-vmintegrationservice-VMName\<VMName >-Name VSS**从 hyper-v 主机上提升的 PowerShell 会话中进行检查, 还可以通过登录到来宾 VM 来获取此信息。 [了解详细信息](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
     - 确保 VM 上的备份/VSS Integration Services 正在运行且处于正常状态。 否则，请重启这些服务，并重启 Hyper-V 主机服务器上的 Hyper-V 卷影复制请求程序服务。
 
 ### <a name="common-errors"></a>常见错误

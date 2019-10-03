@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 02/08/2019
 ms.author: v-musehg
 ms.openlocfilehash: 74a3674e632f8dc3f0755bc2ad48376708c7966f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007655"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60861848"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Maps 的 Azure 事件网格事件架构
 
@@ -22,7 +22,7 @@ ms.locfileid: "56007655"
 
 Azure Maps 帐户发出以下事件类型：
 
-| 事件类型 | 说明 |
+| 事件类型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.Maps.GeofenceEntered | 当接收的坐标从给定地理围栏的外部进入内部时引发 |
 | Microsoft.Maps.GeofenceExited | 当接收的坐标从给定地理围栏的内部移到外部时引发 |
@@ -102,66 +102,66 @@ Azure Maps 帐户发出以下事件类型：
 
 事件具有以下顶级数据：
 
-| 属性 | Type | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
-| 数据 | 对象 | 地理围栏事件数据。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| topic | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 事件主题的发布者定义路径。 |
+| eventType | string | 此事件源的一个注册事件类型。 |
+| eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 事件的唯一标识符。 |
+| data | object | 地理围栏事件数据。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| 属性 | Type | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| apiCategory | 字符串 | 事件的 API 类别。 |
-| apiName | 字符串 | 事件的 API 名称。 |
-| issues | 对象 | 列出处理过程中遇到的问题。 如果返回了任何问题，则不会随响应一起返回几何图形。 |
+| apiCategory | string | 事件的 API 类别。 |
+| apiName | string | 事件的 API 名称。 |
+| issues | object | 列出处理过程中遇到的问题。 如果返回了任何问题，则不会随响应一起返回几何图形。 |
 | responseCode | 数字 | HTTP 响应代码 |
-| geometries | 对象 | 列出围栏几何图形，这些几何图形包含坐标位置，或者覆盖该位置周围的 searchBuffer。 |
+| geometries | object | 列出围栏几何图形，这些几何图形包含坐标位置，或者覆盖该位置周围的 searchBuffer。 |
 
 当 Maps API 中发生错误时，将返回 error 对象。 error 对象具有以下属性：
 
-| 属性 | Type | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | error | ErrorDetails |当 Maps API 中发生错误时，将返回此对象  |
 
 当 Maps API 中发生错误时，将返回 ErrorDetails 对象。 ErrorDetails 对象具有以下属性：
 
-| 属性 | Type | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| 代码 | 字符串 | HTTP 状态代码。 |
-| message | 字符串 | 在适用的情况下，将提供该错误的用户可读说明。 |
+| code | string | HTTP 状态代码。 |
+| message | string | 在适用的情况下，将提供该错误的用户可读说明。 |
 | innererror | InnerError | 在适用的情况下，将提供一个包含有关该错误的特定于服务的信息的对象。 |
 
 InnerError 是包含有关该错误的特定于服务的信息的对象。 InnerError 对象具有以下属性： 
 
-| 属性 | Type | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| 代码 | 字符串 | 错误消息。 |
+| code | string | 错误消息。 |
 
 几何图形对象，其中列出了相对于请求中用户时间已过期的地理围栏的几何图形 ID。 geometries 对象包含具有以下属性的几何图形项： 
 
-| 属性 | Type | 说明 |
+| 属性 | Type | 描述 |
 |:-------- |:---- |:----------- |
-| deviceid | 字符串 | 设备的 ID。 |
-| distance | 字符串 | <p>从坐标到最近的地理围栏边界的距离。 正值表示坐标在地理围栏的外部。 如果坐标在地理围栏外部，但大于 searchBuffer 与最近地理围栏边界之间的距离值，则该值为 999。 负值表示坐标在地理围栏的内部。 如果坐标在多边形的内部，但大于 searchBuffer 与最近地理围栏边界之间的距离值，则该值为 -999。 值 999 表示坐标位于地理围栏外部的置信度很高。 值 -999 表示坐标位于地理围栏内部的置信度很高。<p> |
-| geometryid |字符串 | 用于标识地理围栏几何图形的唯一 ID。 |
+| deviceid | string | 设备的 ID。 |
+| distance | string | <p>从坐标到最近的地理围栏边界的距离。 正值表示坐标在地理围栏的外部。 如果坐标在地理围栏外部，但大于 searchBuffer 与最近地理围栏边界之间的距离值，则该值为 999。 负值表示坐标在地理围栏的内部。 如果坐标在多边形的内部，但大于 searchBuffer 与最近地理围栏边界之间的距离值，则该值为 -999。 值 999 表示坐标位于地理围栏外部的置信度很高。 值 -999 表示坐标位于地理围栏内部的置信度很高。<p> |
+| geometryid |string | 用于标识地理围栏几何图形的唯一 ID。 |
 | nearestlat | 数字 | 最近几何图形点的纬度。 |
 | nearestlon | 数字 | 最近几何图形点的经度。 |
-| udId | 字符串 | 上传地理围栏时由用户上传服务返回的唯一 ID。 不会包含地理围栏 POST API 中。 |
+| udId | string | 上传地理围栏时由用户上传服务返回的唯一 ID。 不会包含地理围栏 POST API 中。 |
 
 数据对象具有以下属性：
 
-| 属性 | Type | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | string[] | 相对于请求中用户时间已过期的地理围栏的几何图形 ID 列表。 |
 | geometries | geometries[] |列出围栏几何图形，这些几何图形包含坐标位置，或者覆盖该位置周围的 searchBuffer。 |
 | invalidPeriodGeofenceGeometryId | string[]  | 相对于请求中用户时间处于失效期的地理围栏的几何图形 ID 列表。 |
-| isEventPublished | 布尔值 | 如果至少已将一个事件发布到 Azure Maps 事件订阅服务器，则为 true；如果未将任何事件发布到 Azure Maps 事件订阅服务器，则为 false。 |
+| isEventPublished | boolean | 如果至少已将一个事件发布到 Azure Maps 事件订阅服务器，则为 true；如果未将任何事件发布到 Azure Maps 事件订阅服务器，则为 false。 |
 
 ## <a name="next-steps"></a>后续步骤
 

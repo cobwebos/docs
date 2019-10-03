@@ -13,25 +13,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/02/2018
+ms.date: 10/01/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 8c2843840790d1e0dbfd4a789775c6c7ceb51a54
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 035d2e567b6aad23801ff043652ea143e3f6105b
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838249"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709623"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理对 Azure 账单信息的访问权限
 
-就大多数订阅来说，可以在 Azure 门户中通过“订阅”将账单信息访问权限授予团队的成员。 如果你是签署企业协议的 Azure 客户（EA 客户），并且是企业管理员，则可在企业门户中将权限授予部门管理员和帐户所有者。
+你可以在 Azure 门户中向其他人提供对你帐户的账单信息的访问权限。 计费角色的类型以及提供计费信息访问权限的说明因计费帐户的类型而异。 若要确定计费帐户的类型，请参阅[检查计费帐户的类型](#check-the-type-of-your-billing-account)。
 
-## <a name="give-access-to-billing"></a>授予对账单信息的访问权限
+本文适用于使用 Microsoft 联机服务程序帐户的客户。 如果你是签订了企业协议 (EA) 的 Azure 客户，并且是企业管理员，则可在 Enterprise Portal 中将权限授予部门管理员和帐户所有者。 有关详细信息，请参阅[了解 Azure 中的 Azure 企业协议管理角色](billing-understand-ea-roles.md)。 如果你是 Microsoft 客户协议客户，请参阅[了解 Azure 中的 Microsoft 客户协议管理角色](billing-understand-mca-roles.md)。 
 
-除 EA 客户之外的所有人员都可以授予对 Azure 账单信息的访问权限，方法是将下述用户角色之一分配给团队的成员：
+## <a name="account-administrators-for-microsoft-online-service-program-accounts"></a>Microsoft 联机服务程序帐户的帐户管理员
 
-- 帐户管理员
+帐户管理员是 Microsoft 联机服务程序计费帐户的唯一所有者。 该角色将分配给已注册 Azure 的人员。 帐户管理员有权执行各种计费任务，例如创建订阅、查看发票或更改订阅的账单。
+
+## <a name="give-others-access-to-view-billing-information"></a>向他人授予查看账单信息的访问权限
+
+帐户管理员可以通过在其帐户中为订阅分配以下角色之一来授予其他人访问 Azure 账单信息的权限。
+
 - 服务管理员
 - 共同管理员
 - 所有者
@@ -39,22 +44,32 @@ ms.locfileid: "57838249"
 - 读取器
 - 计费读者
 
+这些角色可以在 [Azure 门户](https://portal.azure.com/)中访问账单信息。 分配了这些角色的人员也可以使用[计费 API](billing-usage-rate-card-overview.md) 以编程方式获取发票和使用详细信息。
+
 若要分配角色，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
 
-这些角色可以在 [Azure 门户](https://portal.azure.com/)中访问账单信息。 被分配了这些角色的人员也可使用[计费 API](billing-usage-rate-card-overview.md) 以编程方式获取发票和用法详细信息。 有关详细信息，请参阅 [Azure RBAC 中的角色](../role-based-access-control/built-in-roles.md)。
+\* * 如果你是 EA 客户，帐户所有者可以将上述角色分配给其团队的其他用户。 但是，要让这些用户查看账单信息，企业管理员必须在 Enterprise Portal 中启用 AO 查看费用。
+
 
 ### <a name="opt-in"></a> 允许用户下载发票
 
-将相应的角色分配给你的团队成员后，帐户管理员必须启用下载发票，在 Azure 门户中的访问权限。 早于 2016 年 12 月的发票仅供帐户管理员查看。
+帐户管理员将适当角色分配给其他用户后，他们必须在 Azure 门户中打开下载发票的访问权限。 早于 2016 年 12 月的发票仅供帐户管理员查看。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 作为帐户管理员，请从 Azure 门户的[“订阅”边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择订阅。
+1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com/)，
 
-1. 选择“发票”，并“访问发票”。
+1. 在“成本管理 + 计费”  中进行搜索。
+
+    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-manage-access/billing-search-cost-management-billing.png)
+ 
+1. 从左侧窗格中选择“订阅”  。 根据你的访问权限，可能需要选择计费范围，然后选择“订阅”  。
+ 
+    ![显示选择订阅的屏幕截图](./media/billing-manage-access/billing-select-subscriptions.png)
+
+1. 选择“发票”  ，然后选择“访问发票”  。
 
     ![显示如何委托对发票的访问权限的屏幕截图](./media/billing-manage-access/AA-optin.png)
 
-1. 选择“启用”，然后进行保存。
+1. 选择“启用”  ，然后进行保存。
 
     ![屏幕截图，显示用于委托对发票的访问权限的开关](./media/billing-manage-access/AA-optinAllow.png)
 
@@ -64,40 +79,35 @@ ms.locfileid: "57838249"
 
 将“账单读取者”角色分配给需要以只读方式访问订阅账单信息的人员，而不是需要 Azure 服务管理或创建功能的人员。 此角色适用于组织中负责 Azure 订阅的财务和成本管理的用户。
 
-如果你是 EA 客户，则帐户所有者或部门管理员可以将“账单读取者”角色分配给团队成员。 但是，企业管理员必须在企业门户中启用“AO 视图费用”或“DA 视图费用”策略，该账单读取者才能查看部门或帐户的账单信息。
-
 计费读取者功能处于预览状态，尚不支持非全局云。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 从 Azure 门户的[“订阅”边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中选择订阅。
+1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com/)，
 
-1. 选择“访问控制 (IAM)”。
-1. 选择“角色分配”以查看此订阅的所有角色分配。
-1. 选择“添加角色分配”。
-1. 在“角色”下拉列表中，选择“账单读取者”。
-1. 在“选择”文本框中，键入要添加的用户的名称或电子邮件。
+1. 在“成本管理 + 计费”  中进行搜索。
+
+    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-manage-access/billing-search-cost-management-billing.png)
+
+1. 从左侧窗格中选择“订阅”  。 根据你的访问权限，可能需要选择计费范围，然后选择“订阅”  。
+ 
+    ![显示选择订阅的屏幕截图](./media/billing-manage-access/billing-select-subscriptions.png)
+
+1. 选择“访问控制 (IAM)”  。
+1. 从页面顶部选择“添加”。 
+
+    ![显示单击“添加角色分配”的屏幕截图](./media/billing-manage-access/billing-click-add-role-assignment.png)
+
+1. 在“角色”  下拉列表中，选择“账单读取者”  。
+1. 在“选择”文本框中，键入要添加的用户的名称或电子邮件。 
 1. 选择用户。
-1. 选择“保存”。
-1. 片刻之后，会在订阅范围内为该用户分配“账单读取者”角色。
-1. 账单读取者会收到一封电子邮件，其中包含登录链接。
+1. 选择“保存”。 
+    ![显示单击“添加角色分配”的屏幕截图](./media/billing-manage-access/billing-save-role-assignment.png)
 
-    ![显示计费读取者可在 Azure 门户中所见内容的屏幕截图](./media/billing-manage-access/billing-reader-view.png)
+1. 片刻之后，为用户分配了订阅的“账单读取者”角色。
 
-## <a name="allow-department-administrator-or-account-owner-billing-access"></a>允许部门管理员或帐户所有者访问账单信息
+如果你是 EA 客户，则帐户所有者或部门管理员可以将“账单读取者”角色分配给团队成员。 但是，企业管理员必须在企业门户中启用“AO 视图费用”或“DA 视图费用”策略，该账单读取者才能查看部门或帐户的账单信息。  
 
-企业管理员可以允许部门管理员和帐户所有者查看与他们管理的部门和帐户相关联的使用详细信息和成本。
-
-1. 以企业管理员身份登录到 [EA 门户](https://ea.azure.com/)。
-1. 选择“管理”。
-1. 在“注册”下将“DA 视图费用”更改为“启用”，以便部门管理员可以查看使用情况和成本。
-1. 将“AO 视图费用”更改为“启用”，以便帐户所有者可以查看使用情况和成本。
-
-
-有关详细信息，请参阅[了解 Azure 中的 Azure 企业协议管理角色](billing-understand-ea-roles.md)。
-
-## <a name="only-account-admins-can-access-account-center"></a>只有帐户管理员可以访问帐户中心
-
-帐户管理员是订阅的合法所有者。 默认情况下，注册或购买 Azure 订阅的人员即为帐户管理员，除非[订阅所有权被转让](billing-subscription-transfer.md)给了其他人。 帐户管理员可以通过[帐户中心](https://account.azure.com/Subscriptions)创建订阅、取消订阅、更改订阅的账单地址和管理订阅的访问策略。
+## <a name="check-the-type-of-your-billing-account"></a>检查计费帐户的类型
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -106,4 +116,4 @@ ms.locfileid: "57838249"
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

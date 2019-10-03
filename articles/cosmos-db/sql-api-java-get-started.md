@@ -6,22 +6,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 05/22/2017
+ms.date: 12/22/2018
 ms.author: sngun
-ms.openlocfilehash: dbaafca8692b144b0032315c0b40eb02bec0e3ff
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 269b2bd1c1457b9e70ea4ada758aacb2f2ae96f3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438663"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614637"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL 教程：构建 SQL API Java 控制台应用程序
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET（预览版）](sql-api-dotnet-get-started-preview.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [.NET Core（预览版）](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [异步 Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
@@ -79,7 +76,7 @@ ms.locfileid: "57438663"
 ## <a id="Connect"></a>步骤 3：连接到 Azure Cosmos DB 帐户
 接下来，返回到 [Azure 门户](https://portal.azure.com)检索终结点和主密钥。 Azure Cosmos DB 终结点和主密钥是必需的，可让应用程序知道要连接的对象，使 Azure Cosmos DB 信任应用程序的连接。
 
-在 Azure 门户中，导航到 Azure Cosmos DB 帐户，并单击“密钥”。 从门户中复制该 URI 并将它粘贴到 Program.java 文件中的 `https://FILLME.documents.azure.com`。 然后从门户中复制“主密钥”并将它粘贴到 `FILLME`。
+在 Azure 门户中，导航到 Azure Cosmos DB 帐户，然后单击“密钥”  。 从门户中复制该 URI 并将它粘贴到 Program.java 文件中的 `https://FILLME.documents.azure.com`。 然后从门户中复制“主密钥”并将它粘贴到 `FILLME`。
 
     this.client = new DocumentClient(
         "https://FILLME.documents.azure.com",
@@ -108,7 +105,7 @@ ms.locfileid: "57438663"
     DocumentCollection collectionInfo = new DocumentCollection();
     collectionInfo.setId("familycoll");
 
-    // Azure Cosmos DB collections can be reserved with throughput specified in request units/second. 
+    // Azure Cosmos containers can be reserved with throughput specified in request units/second. 
     // Here we create a collection with 400 RU/s.
     RequestOptions requestOptions = new RequestOptions();
     requestOptions.setOfferThroughput(400);

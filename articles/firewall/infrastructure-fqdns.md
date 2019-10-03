@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/24/2018
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 1369a82829b2c80768d746ba92daf2482c1fd7f8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 5b134058e1924bae030338411226a9a6aff46557
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994133"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130205"
 ---
 # <a name="infrastructure-fqdns"></a>基础结构 FQDN
 
@@ -23,7 +23,6 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 - 存储平台映像存储库 (PIR) 的计算访问权限
 - 托管磁盘状态存储访问权限
 - Azure 诊断和日志记录 (MDS)
-- Azure Active Directory
 
 ## <a name="overriding"></a>替代 
 

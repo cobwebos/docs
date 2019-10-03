@@ -1,27 +1,18 @@
 ---
 title: 从 Linux VM 中分离数据磁盘 - Azure | Microsoft Docs
 description: 了解如何使用 Azure CLI 或 Azure 门户从 Azure 虚拟机中分离数据磁盘。
-services: virtual-machines-linux
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-service-management
-ms.assetid: ''
+author: roygara
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: azurecli
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b6fda5d16b3f694cb1d0a1a9407cda5c2a73fcbc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: e026617db4da58c12a454000f6d97f8b6843e95d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330624"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695867"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>如何从 Linux 虚拟机中分离数据磁盘
 

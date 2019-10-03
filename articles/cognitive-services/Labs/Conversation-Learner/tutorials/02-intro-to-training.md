@@ -3,19 +3,20 @@ title: Conversation Learner 模型训练简介 - Microsoft 认知服务 | Micros
 titleSuffix: Azure
 description: 了解如何通过 Conversation Learner 训练一个模型，包括如何对以前的训练进行分支和编辑。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 1e6dea521207ec00efe948a879c705bd28a75d57
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: c657025ce588363cf76ce10868d809a9aff69222
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213185"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705613"
 ---
 # <a name="introduction-to-training"></a>训练简介
 
@@ -32,11 +33,11 @@ ms.locfileid: "55213185"
 
 ## <a name="details"></a>详细信息
 
-- 操作：机器人对用户输入的响应。
+- 操作:机器人对用户输入的响应。
 - 训练：以特定方式教导机器人对用户输入进行响应。
 - 分支：在保存的训练对话中修改用户输入，以便创建新的训练对话，该对话启动时与原始对话相同，但聊天的方向不同。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 ### <a name="create-a-new-model"></a>创建新模型
 
@@ -80,7 +81,7 @@ ms.locfileid: "55213185"
 7. 单击“+ 操作”按钮 
     - 这样即可创建一个新的操作，以便机器人用它来进行响应。
 8. 键入机器人的响应“没问题! 祝你愉快!”
-9. 单击“法律条款” 
+9. 单击“法律条款”
 10. 请注意，机器人会立即进行响应。
 11. 单击“保存”按钮。
 

@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: 沉浸式阅读器文档
+summary: 沉浸式阅读器是一种工具，它实现了可靠的技术来提高萌发期读者、语言学习者和具有学习差异的人士的阅读理解力。 通过使用沉浸式阅读器 SDK，可以在 Web 应用程序中使用沉浸式阅读器。
+metadata:
+  title: 沉浸式阅读器文档
+  description: 沉浸式阅读器是一种工具，它实现了可靠的技术来提高萌发期读者、语言学习者和具有学习差异的人士的阅读理解力。 通过使用沉浸式阅读器 SDK，可以在 Web 应用程序中使用沉浸式阅读器。
+  services: service
+  ms.service: cognitive-services
+  ms.subservice: immersive-reader
+  ms.topic: landing-page
+  ms.collection: collection
+  author: IEvangelist
+  ms.author: dapine
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 50185a0bbfc3a9677ebc90f326b0c43ab2a2eb13
+  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70164496"
+landingContent:
+- title: 关于沉浸式阅读器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是沉浸式阅读器？
+      url: overview.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: ASP.NET Core
+      url: quickstart.md
+    - text: Swift (iOS)
+      url: ios-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Node.js
+      url: tutorial-nodejs.md
+    - text: Python
+      url: tutorial-python.md
+    - text: Swift (iOS)
+      url: tutorial-ios-picture-immersive-reader.md
+- title: 探索沉浸式阅读器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure Active Directory 进行身份验证
+      url: azure-active-directory-authentication.md
+  - linkListType: reference
+    links:
+    - text: JavaScript SDK
+      url: reference.md
+    - text: iOS SDK
+      url: ios-reference.md

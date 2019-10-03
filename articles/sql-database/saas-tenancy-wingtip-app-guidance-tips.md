@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 758cb47760f4a15e262a4d682089ac7d9fee64e8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6c14fd69521be85dbda5ec4ceda991dfdff54ae0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900499"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570064"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>使用 Wingtip Tickets 示例 SaaS 应用的一般指南
 
@@ -35,7 +34,7 @@ ms.locfileid: "57900499"
 3. 单击“下载 zip”并保存文件。
 4. 右键单击 zip 文件并选择“属性”。 zip 文件名与存储库名称对应。 （例如： WingtipTicketsSaaS-DbPerTenant-master.zip）
 5. 在“常规”选项卡上，选择“取消阻止”。
-6. 单击“确定”。
+6. 单击 **“确定”** 。
 7. 解压缩文件。
 
 脚本位于 ..\\Learning Modules 文件夹中。
@@ -77,7 +76,7 @@ ms.locfileid: "57900499"
 
 使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 连接和浏览应用程序服务器和数据库。
 
-该部署最初具有要连接的租户和目录 SQL 数据库服务器。 服务器的命名取决于数据库租户模式（请参阅下文了解详细信息）。 
+该部署最初具有要连接到的租户和目录 SQL 数据库服务器。 服务器的命名取决于数据库租户模式（请参阅下文了解详细信息）。 
 
    - **独立的应用程序：** 每个租户的服务器（例如： contosoconcerthall-&lt;User&gt; 服务器）和 catalog-sa-&lt;User&gt;
    - **每个租户一个数据库：** tenants1-dpt-&lt;User&gt; 和 catalog-dpt-&lt;User&gt; 服务器
@@ -94,7 +93,7 @@ ms.locfileid: "57900499"
 
    ![编录服务器](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. 演示凭据为：登录名 =*开发人员*，密码 = *P\@ssword1*
+3. 演示凭据为：登录名 = *developer*, Password *=\@P ssword1*
 
     下图显示“每个租户一个数据库”模式的登录。 
     ![连接](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)

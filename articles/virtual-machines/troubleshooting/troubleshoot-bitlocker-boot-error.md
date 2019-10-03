@@ -4,27 +4,26 @@ description: 了解如何排查 Azure VM 中的 BitLocker 启动错误
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/25/2019
+ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 51fc47a28cc40d286b5a268d4c42e3531f346c5e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: b0b8528a8eaf5cab22bb2482bd60e760d8bf5e3d
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796858"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058105"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
 
  本文介绍在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能遇到的 BitLocker 错误。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>症状
 
@@ -32,7 +31,7 @@ ms.locfileid: "59796858"
 
 - 插入含 BitLocker 密钥的 USB 驱动程序
 
-- 你被锁定！ 输入恢复密钥，以便再次开始操作（键盘布局：美式键盘）错误登录信息输入次数过多，因此，你的 PC 被锁定以保护你的隐私。 若要检索恢复密钥，请从另一电脑或移动设备转到 https://windows.microsoft.com/recoverykeyfaq。 如果需要，密钥 ID 为 XXXXXXX。 或者，可以重置电脑。
+- 你被锁定！ 输入恢复密钥，以便再次开始操作（键盘布局：美式键盘）错误登录信息输入次数过多，因此，你的 PC 被锁定以保护你的隐私。 若要检索恢复密钥，请从另一电脑或移动设备转到 https://windows.microsoft.com/recoverykeyfaq 。 如果需要，密钥 ID 为 XXXXXXX。 或者，可以重置电脑。
 
 - 输入密码以解锁此驱动器 [ ] 按 Insert 键在键入时查看密码。
 - 输入恢复密钥 从 USB 设备加载恢复密钥。
@@ -48,7 +47,7 @@ ms.locfileid: "59796858"
 如果此方法未能解决此问题，请执行以下步骤，手动还原 BEK 文件：
 
 1. 拍摄受影响的 VM 的系统磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
-2. [将系统磁盘附加到由 BitLocker 加密的恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 如果要运行仅可在 BitLocker 加密的 VM 上使用的 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，这是必需的。
+2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤 7 中运行 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，必须在恢复 VM 中启用“BitLocker 驱动器加密”功能。
 
     附加托管磁盘时，可能会收到“包含加密设置，因此不能用作数据磁盘”错误消息。 在此情况下，运行以下脚本，重试附加磁盘：
 
@@ -83,7 +82,7 @@ ms.locfileid: "59796858"
     ```powershell
     $vmName = "myVM"
     $vault = "myKeyVault"
-    Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.ContentType -match 'BEK')} `
+    Get-AzKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.ContentType -match 'BEK')} `
             | Sort-Object -Property Created `
             | ft  Created, `
                 @{Label="Content Type";Expression={$_.ContentType}}, `
@@ -106,47 +105,48 @@ ms.locfileid: "59796858"
 
     如果“内容类型”值为“包装的 BEK”，请转到[密钥加密密钥 (KEK) 方案](#key-encryption-key-scenario)。
 
-    获取驱动器的 BEK 文件名称后，须创建 secret-file-name.BEK 文件以解锁驱动器。 
+    获取驱动器的 BEK 文件名称后，须创建 secret-file-name.BEK 文件以解锁驱动器。
 
 6.  将 BEK 文件下载到恢复磁盘。 以下示例将 BEK 文件保存到 C:\BEK 文件夹。 运行脚本前，请确保 `C:\BEK\` 路径存在。
 
     ```powershell
     $vault = "myKeyVault"
-    $bek = " EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK"
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $vault -Name $bek
+    $bek = " EF7B2F5A-50C6-4637-9F13-7F599C12F85C"
+    $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $vault -Name $bek
     $bekSecretBase64 = $keyVaultSecret.SecretValueText
     $bekFileBytes = [Convert]::FromBase64String($bekSecretbase64)
     $path = "C:\BEK\DiskEncryptionKeyFileName.BEK"
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  若要使用 BEK 文件解锁附加磁盘，请运行以下命令：
+7.  若要使用 BEK 文件解锁附加磁盘，请运行以下命令。
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
     在此示例中，附加的 OS 磁盘为驱动器 F。请确保使用正确的驱动器号。 
 
-    - 如果使用 BEK 密钥成功解锁了磁盘。 可以认为 BItLocker 问题已解决。 
+8. 使用 BEK 密钥成功解锁磁盘后，请从恢复 VM 分离磁盘，然后使用这个新的 OS 磁盘重新创建 VM。
 
-    - 如果使用 BEK 密钥未能解锁磁盘，则可以使用暂停保护，通过运行以下命令暂时关闭 BitLocker
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - 如果要使用 dytem 磁盘重新生成 VM，必须完全解密驱动器。 为此，请运行以下命令：
+    > [!NOTE]
+    > 使用磁盘加密的 Vm 不支持交换 OS 磁盘。
 
-        ```powershell
-        manage-bde -off F:
-        ```
-8.  从恢复 VM 分离磁盘，然后将磁盘作为系统磁盘重新附加到受影响的 VM。 有关详细信息，请参阅[通过将 OS 磁盘附加到恢复 VM 来排查 Windows VM 相关问题](troubleshoot-recovery-disks-windows.md)。
+9. 如果新 VM 仍无法正常启动，请在解锁驱动器后尝试执行以下步骤之一：
+
+    - 通过运行以下内容暂停保护以暂时关闭 BitLocker：
+
+                    manage-bde -protectors -disable F: -rc 0
+           
+    - 完全解密驱动器。 为此，请运行以下命令：
+
+                    manage-bde -off F:
 
 ### <a name="key-encryption-key-scenario"></a>密钥加密密钥方案
 
 对于密钥加密密钥方案，请执行以下步骤：
 
 1. 请确保登录的用户帐户需要“用户|密钥权限|加密操作|解包密钥”中 Key Vault 访问策略中的“解包”权限。
-2. 将以下脚本保存到 .PS1 文件：
+2. 将以下脚本保存到。PS1 文件：
 
     ```powershell
     #Set the Parameters for the script
@@ -184,6 +184,7 @@ ms.locfileid: "59796858"
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
     $authResult = $authContext.AcquireTokenAsync($resourceAppIdURI, $clientId, $redirectUri, $platformParameters).result
     # Generate auth header 
     $authHeader = $authResult.CreateAuthorizationHeader()
@@ -198,7 +199,7 @@ ms.locfileid: "59796858"
     ########################################################################################################################
 
     #Get wrapped BEK and place it in JSON object to send to KeyVault REST API
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $keyVaultName -Name $secretName
+    $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $secretName
     $wrappedBekSecretBase64 = $keyVaultSecret.SecretValueText
     $jsonObject = @"
     {
@@ -208,7 +209,7 @@ ms.locfileid: "59796858"
     "@
 
     #Get KEK Url
-    $kekUrl = (Get-AzureKeyVaultKey -VaultName $keyVaultName -Name $kekName).Key.Kid;
+    $kekUrl = (Get-AzKeyVaultKey -VaultName $keyVaultName -Name $kekName).Key.Kid;
     $unwrapKeyRequestUrl = $kekUrl+ "/unwrapkey?api-version=2015-06-01";
 
     #Call KeyVault REST API to Unwrap 
@@ -231,7 +232,7 @@ ms.locfileid: "59796858"
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
     ```
-3. 设置参数。 该脚本处理 KEK 机密以创建 BEK 密钥，然后将其保存到恢复 VM 上的本地文件夹中。
+3. 设置参数。 该脚本处理 KEK 机密以创建 BEK 密钥，然后将其保存到恢复 VM 上的本地文件夹中。 如果在运行脚本时收到错误，请参阅[脚本故障排除](#script-troubleshooting)部分。
 
 4. 脚本开始时，将看到以下输出：
 
@@ -254,17 +255,38 @@ ms.locfileid: "59796858"
     ```
     在此示例中，附加的 OS 磁盘为驱动器 F。请确保使用正确的驱动器号。 
 
-    - 如果使用 BEK 密钥成功解锁了磁盘。 可以认为 BItLocker 问题已解决。 
+6. 使用 BEK 密钥成功解锁磁盘后，请从恢复 VM 分离磁盘，然后使用这个新的 OS 磁盘重新创建 VM。 
 
-    - 如果使用 BEK 密钥未能解锁磁盘，则可以使用暂停保护，通过运行以下命令暂时关闭 BitLocker
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - 如果要使用 dytem 磁盘重新生成 VM，必须完全解密驱动器。 为此，请运行以下命令：
+    > [!NOTE]
+    > 使用磁盘加密的 Vm 不支持交换 OS 磁盘。
 
-        ```powershell
-        manage-bde -off F:
-        ```
+7. 如果新 VM 仍无法正常启动，请在解锁驱动器后尝试执行以下步骤之一：
 
-6. 从恢复 VM 分离磁盘，然后将磁盘作为系统磁盘重新附加到受影响的 VM。 有关详细信息，请参阅[通过将 OS 磁盘附加到恢复 VM 来排查 Windows VM 相关问题](troubleshoot-recovery-disks-windows.md)。
+    - 通过运行以下命令暂停保护以暂时关闭 BitLocker：
+
+             manage-bde -protectors -disable F: -rc 0
+           
+    - 完全解密驱动器。 为此，请运行以下命令：
+
+                    manage-bde -off F:
+## <a name="script-troubleshooting"></a>脚本疑难解答
+
+**错误：未能加载文件或程序集**
+
+之所以发生此错误，是因为 ADAL 程序集的路径不正确。 如果仅为当前用户安装 AZ 模块，则 ADAL 程序集将位于中`C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`。
+
+您还可以搜索`Az.Accounts`文件夹以查找正确的路径。
+
+**错误：不能将 AzKeyVaultSecret 或 AzKeyVaultSecret 识别为 cmdlet 的名称**
+
+如果使用的是旧的 AZ PowerShell 模块，则必须将两个命令更改`Get-AzureKeyVaultSecret`为`Get-AzureKeyVaultSecret`和。
+
+**参数示例**
+
+| Parameters  | 值示例  |注释   |
+|---|---|---|
+|  $keyVaultName | myKeyVault2112852926  | 存储密钥的密钥保管库的名称 |
+|$kekName   |mykey   | 用于加密 VM 的密钥的名称|
+|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | VM 密钥的机密名称|
+|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D.BEK |用于写入 BEK 文件的路径。|
+|$adTenant  |contoso.onmicrosoft.com   | 承载密钥保管库的 Azure Active Directory 的 FQDN 或 GUID |

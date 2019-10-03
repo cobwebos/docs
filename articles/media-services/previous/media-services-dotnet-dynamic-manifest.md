@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;cenkdin
-ms.openlocfilehash: 05b899658b5c58e15b2f30ab759eb49319979fee
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.author: juliako
+ms.reviewer: cenkdin
+ms.openlocfilehash: c60b223f91a151bf63cabc5e95816f2545022503
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313798"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016610"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 创建筛选器 
 > [!div class="op_single_selector"]
@@ -134,6 +135,6 @@ ms.locfileid: "58313798"
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [动态清单概述](media-services-dynamic-manifest-overview.md)
 

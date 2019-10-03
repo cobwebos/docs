@@ -11,17 +11,16 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 10/31/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 936abe80a66c1dbe99e7d8a255fe8995a2df0803
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: a5e69209c30eae816837ce8f00a065231a5fd821
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715642"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067210"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 
@@ -42,7 +41,7 @@ ms.locfileid: "53715642"
 
    若要创建计划，请执行以下操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“[+] 新建”。
+   a. 选择“[+] 新建”。
 
       ![创建应用服务计划。][createASP] 
 
@@ -97,7 +96,7 @@ ms.locfileid: "53715642"
 
 ## <a name="scale-an-app-service-plan"></a>缩放应用服务计划
 
-若要纵向扩展应用服务计划的定价层，请参阅[在 Azure 中纵向扩展应用](web-sites-scale.md)。
+若要纵向扩展应用服务计划的定价层，请参阅[在 Azure 中纵向扩展应用](manage-scale-up.md)。
 
 若要增加应用的实例计数，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)。
 
@@ -113,7 +112,7 @@ ms.locfileid: "53715642"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [纵向扩展 Azure 中的应用](web-sites-scale.md)
+> [纵向扩展 Azure 中的应用](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

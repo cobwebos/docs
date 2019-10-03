@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085314"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694927"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>使用 Azure Maps 设置地域隔离区
 
@@ -36,7 +36,7 @@ ms.locfileid: "58085314"
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户 
 
-若要完成本教程中的步骤，首先需要参阅[管理帐户和密钥](how-to-manage-account-keys.md)以创建并管理采用 S1 定价层的帐户订阅。
+若要完成本教程中的步骤，请按照[管理帐户](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](./tutorial-search-location.md#getkey)中的步骤获取适用于你的帐户的主订阅密钥。
 
 ## <a name="upload-geofences"></a>上传地域隔离区
 
@@ -56,11 +56,11 @@ ms.locfileid: "58085314"
     
     URL 路径中的 GEOJSON 参数表示正在上传的数据的数据格式。
 
-3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。 将 subscription-key 值替换为 Azure Maps 订阅密钥。
+3. 单击“参数”，输入用于 POST 请求 URL 的以下键/值对。  将 subscription-key 值替换为 Azure Maps 主订阅密钥。
    
     ![Postman 中的键值对参数](./media/tutorial-geofence/postman-key-vals.png)
 
-4. 单击“正文”，选择原始输入格式，然后从下拉列表中选择“JSON”作为输入格式。 提供以下 JSON 作为要上传的数据：
+4. 单击“正文”，选择原始输入格式，然后从下拉列表中选择“JSON”作为输入格式  。 提供以下 JSON 作为要上传的数据：
 
    ```JSON
    {
@@ -148,10 +148,24 @@ ms.locfileid: "58085314"
    }
    ```
 
-5. 单击“发送”并查看响应标头。 位置标头包含用于访问或下载供将来使用的数据的 URI。 它还包含上传的数据的唯一 `udId`。
+5. 单击“发送”并查看响应标头。 成功请求后，**Location** 标头将包含状态 URI，可在其中检查上传请求的当前状态。 状态 URI 采用以下格式。 
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
+   ```
+
+6. 复制状态 URI 并在其后追加一个 `subscription-key` 参数，其值为 Azure Maps 帐户订阅密钥。 状态 URI 格式应如下所示：
+
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
+
+7. 若要获取 `udId`，请在 Postman 应用中打开一个新选项卡，在生成器选项卡上选择 GET HTTP 方法，并在状态 URI 中发出 GET 请求。 如果数据上传成功，你将在响应正文中收到一个 udId。 请复制该 udId 供稍后使用。
+
+   ```JSON
+   {
+    "udid" : "{udId}"
+   }
    ```
 
 ## <a name="set-up-an-event-handler"></a>设置事件处理程序

@@ -2,20 +2,20 @@
 title: UserJourneys | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 UserJourneys 元素。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ccc1f94b9411a158b5c60509e09bd3edc0a61640
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: d2e6ad9aa9692efa4ea5633dff78b262bb1917be
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795146"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66512031"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -23,23 +23,23 @@ ms.locfileid: "59795146"
 
 用户旅程指定策略允许信赖方应用程序为用户获取所需声明的显式路径。 用户通过这些路径检索要提供给信赖方的声明。 换言之，用户旅程定义最终用户在 Azure AD B2C 标识体验框架处理请求时所经历的业务逻辑。
 
-这些用户旅程可视为一些模板，可用于满足感兴趣社区的各种回复方的核心需求。 用户旅程有助于定义策略的信赖方部分。 策略可以定义多个用户旅程。 每个用户旅程都是一系列的业务流程步骤。
+这些用户旅程可视为一些模板，可用于满足感兴趣社区的各种信赖方的核心需求。 用户旅程有助于定义策略的信赖方部分。 策略可以定义多个用户旅程。 每个用户旅程都是一系列的业务流程步骤。
 
-若要定义策略支持的用户旅程，请在策略文件的顶级元素下添加 UserJourneys 元素。 
+若要定义策略支持的用户旅程，请在策略文件的顶级元素下添加 UserJourneys  元素。 
 
-UserJourneys 元素包含以下元素：
+UserJourneys  元素包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | UserJourney | 1:n | 定义完整用户流所需的所有构造的用户旅程。 | 
 
-UserJourney 元素包含以下属性：
+UserJourney  元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| ID | 是 | 用户旅程的标识符，可用于从策略中的其他元素中引用它。 [信赖方策略](relyingparty.md)的 DefaultUserJourney 元素指向此属性。 |
+| Id | 是 | 用户旅程的标识符，可用于从策略中的其他元素中引用它。 [信赖方策略](relyingparty.md)的 DefaultUserJourney  元素指向此属性。 |
 
-UserJourney 元素包含以下元素：
+UserJourney  元素包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
@@ -51,25 +51,25 @@ UserJourney 元素包含以下元素：
 
 业务流程步骤可以基于业务流程步骤元素中定义的前提条件有条件地执行。 例如，仅当存在特定声明或声明等于或未达到指定值时，才能检查执行业务流程步骤。 
 
-若要指定业务流程步骤的有序列表，请将 OrchestrationSteps 元素作为策略的一部分添加。 此元素是必需的。
+若要指定业务流程步骤的有序列表，请将 OrchestrationSteps  元素作为策略的一部分添加。 此元素是必需的。
 
-OrchestrationSteps 元素包含以下元素：
+OrchestrationSteps  元素包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | OrchestrationStep | 1:n | 一个有序的业务流程步骤。 | 
 
-OrchestrationStep 元素包含以下属性：
+OrchestrationStep  元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | `Order` | 是 | 业务流程步骤的顺序。 | 
-| `Type` | 是 | 业务流程步骤的类型。 可能的值： <ul><li>ClaimsProviderSelection - 指示业务流程步骤向用户提供各种声明提供程序以选择一个。</li><li>CombinedSignInAndSignUp - 指示业务流程步骤提供组合的社交提供程序登录和本地帐户注册页面。</li><li>ClaimsExchange - 指示业务流程步骤与声明提供程序交换声明。</li><li>SendClaims - 指示业务流程步骤将声明发送给具有声明颁发者颁发的令牌的信赖方。</li></ul> | 
-| ContentDefinitionReferenceId | 否 | 与此业务流程步骤相关联的[内容定义](contentdefinitions.md)的标识符。 通常内容定义引用标识符在自断言的技术配置文件中定义。 但是，在某些情况下，Azure AD B2C 需要显示无技术配置文件的某些内容。 如果业务流程步骤的类型是以下项（`ClaimsProviderSelection` 或 `CombinedSignInAndSignUp`）之一，则有两个示例。 Azure AD B2C 需要在没有技术配置文件的情况下显示标识提供者选择。 | 
+| `Type` | 是 | 业务流程步骤的类型。 可能的值： <ul><li>ClaimsProviderSelection  - 指示业务流程步骤向用户提供各种声明提供程序以选择一个。</li><li>CombinedSignInAndSignUp  - 指示业务流程步骤提供组合的社交提供程序登录和本地帐户注册页面。</li><li>ClaimsExchange  - 指示业务流程步骤与声明提供程序交换声明。</li><li>SendClaims  - 指示业务流程步骤将声明发送给具有声明颁发者颁发的令牌的信赖方。</li></ul> | 
+| ContentDefinitionReferenceId | 否 | 与此业务流程步骤相关联的[内容定义](contentdefinitions.md)的标识符。 通常内容定义引用标识符在自断言的技术配置文件中定义。 但是，在某些情况下，Azure AD B2C 需要显示无技术配置文件的某些内容。 有两个示例 - 如果业务流程步骤的类型是以下类型之一：`ClaimsProviderSelection` 或 `CombinedSignInAndSignUp`，Azure AD B2C 需要在没有技术配置文件的情况下显示标识提供者选择。 | 
 | CpimIssuerTechnicalProfileReferenceId | 否 | 业务流程步骤的类型是 `SendClaims`。 此属性定义为信赖方颁发令牌的声明提供程序的技术配置文件标识符。  如果不存在，则不会创建任何信赖方令牌。 |
 
 
-OrchestrationStep 元素可以包含以下元素：
+OrchestrationStep  元素可以包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- | 
@@ -79,7 +79,7 @@ OrchestrationStep 元素可以包含以下元素：
 
 ### <a name="preconditions"></a>Preconditions
 
-Preconditions 元素包含以下元素：
+Preconditions  元素包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- | 
@@ -88,14 +88,14 @@ Preconditions 元素包含以下元素：
 
 #### <a name="precondition"></a>Precondition
 
-Precondition 元素包含以下属性：
+Precondition  元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
-| `Type` | 是 | 要对此前置条件执行的检查或查询的类型。 值可以是 ClaimsExist（指定在用户当前声明集中存在指定声明时应执行操作）或 ClaimEquals（指定当指定声明存在且其值等于指定值时应执行操作）。 |
+| `Type` | 是 | 要对此前置条件执行的检查或查询的类型。 值可以是 ClaimsExist  （指定在用户当前声明集中存在指定声明时应执行操作）或 ClaimEquals  （指定当指定声明存在且其值等于指定值时应执行操作）。 |
 | `ExecuteActionsIf` | 是 | 使用 true 或 false 测试确定是否应执行前置条件中的操作。 | 
 
-Precondition 元素包含以下元素：
+Precondition  元素包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
@@ -162,15 +162,15 @@ Preconditions 可以检查多个前置条件。 以下示例检查是否存在�
 
 类型 `ClaimsProviderSelection` 或 `CombinedSignInAndSignUp` 的业务流程步骤可能包含用户可以登录的声明提供程序列表。 `ClaimsProviderSelections` 元素内的元素顺序控制提供给用户的标识提供程序的顺序。
 
-ClaimsProviderSelection 元素包含以下元素：
+ClaimsProviderSelection  元素包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 0:n | 提供可以选择的声明提供程序的列表。|
 
-ClaimsProviderSelection 元素包含以下属性： 
+ClaimsProviderSelection  元素包含以下属性： 
 
-| 属性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
 | TargetClaimsExchangeId | 否 | 声明交换的标识符，在声明提供程序选择的下一个业务流程步骤中执行。 必须指定此属性或 ValidationClaimsExchangeId 属性，但不能同时指定这两个属性。 | 
 | ValidationClaimsExchangeId | 否 | 声明交换的标识符，在当前业务流程步骤中执行以验证声明提供程序选择。 必须指定此属性或 TargetClaimsExchangeId 属性，但不能同时指定这两个属性。 |
@@ -214,15 +214,15 @@ ClaimsProviderSelection 元素包含以下属性：
 
 ## <a name="claimsexchanges"></a>ClaimsExchanges
 
-ClaimsExchanges 元素包含以下元素：
+ClaimsExchanges  元素包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsExchange | 0:n | 具体取决于正在使用的技术配置文件，根据所选的 ClaimsProviderSelection 重定向客户端，或对交换声明进行服务器调用。 | 
 
-ClaimsExchange 元素包含以下属性：
+ClaimsExchange  元素包含以下属性：
 
-| 属性 | 需要 | 描述 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
-| ID | 是 | 声明交换步骤的标识符。 该标识符用于从策略中的声明提供程序选择步骤引用声明交换。 | 
+| Id | 是 | 声明交换步骤的标识符。 该标识符用于从策略中的声明提供程序选择步骤引用声明交换。 | 
 | TechnicalProfileReferenceId | 是 | 要执行的技术配置文件的标识符。 |

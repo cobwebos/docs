@@ -1,19 +1,18 @@
 ---
 title: 将 Azure 文件共享与 Windows 配合使用 | Microsoft Docs
 description: 了解如何将 Azure 文件共享与 Windows 和 Windows Server 配合使用。
-services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/07/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 315bad5c4ffc3d5e8909c86cb8de703e9cb941b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 831c771da385ef6faeba194878ca53ede34ccc0a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048837"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816637"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>将 Azure 文件共享与 Windows 配合使用
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以在 Windows 和 Windows Server 中无缝使用。 本文讨论将 Azure 文件共享与 Windows 和 Windows Server 配合使用时的注意事项。
@@ -34,8 +33,8 @@ ms.locfileid: "59048837"
 | Windows 7              | SMB 2.1     | 是                   | 否                   |
 | Windows Server 2008 R2 | SMB 2.1     | 是                   | 否                   |
 
-<sup>1</sup>Windows 10 版本 1507、1607、1703、1709、1803 和 1809。  
-<sup>2</sup>Windows Server 版本 1709 和 1803。
+<sup>1</sup>Windows 10 版本1507、1607、1703、1709、1803、1809和1903。  
+<sup>2</sup>Windows Server、版本1803、1809和1903。
 
 > [!Note]  
 > 我们始终建议你使用相对于 Windows 版本来说最新的 KB。
@@ -43,14 +42,14 @@ ms.locfileid: "59048837"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>先决条件 
 * **存储帐户名称**：需提供存储帐户的名称才能装载 Azure 文件共享。
 
 * **存储帐户密钥**：需提供主要（或辅助）存储密钥才能装载 Azure 文件共享。 目前不支持使用 SAS 密钥进行装载。
 
-* **确保端口 445 处于打开状态**：SMB 协议要求 TCP 端口 445 处于打开状态；如果端口 445 被阻止，则连接会失败。 可以通过 `Test-NetConnection` cmdlet 来查看防火墙是否在阻止端口 445。 可以在此处了解[如何通过各种方式来解决端口 445 被阻止的问题](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)。
+* **确保端口 445 处于打开状态**：SMB 协议要求 TCP 端口 445 处于打开状态；如果端口 445 被阻止，则连接会失败。 可以通过 `Test-NetConnection` cmdlet 来查看防火墙是否在阻止端口 445。 可以在此处了解[如何通过各种方式来解决端口 445 被阻止的问题](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)。
 
-    以下 PowerShell 代码假定你具有 Azure PowerShell 模块安装，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)有关详细信息。 记得将 `<your-storage-account-name>` 和 `<your-resource-group-name>` 替换为存储帐户的相应名称。
+    以下 PowerShell 代码假设已安装 Azure PowerShell 模块。有关详细信息，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 记得将 `<your-storage-account-name>` 和 `<your-resource-group-name>` 替换为存储帐户的相应名称。
 
     ```powershell
     $resourceGroupName = "<your-resource-group-name>"
@@ -234,19 +233,19 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 | Windows 版本                           | SMB 1 默认状态 | 禁用/删除方法       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019（预览版）             | 已禁用             | 通过 Windows 功能进行删除 |
+| Windows Server 2019                       | 已禁用             | 通过 Windows 功能进行删除 |
 | Windows Server，版本 1709+            | 已禁用             | 通过 Windows 功能进行删除 |
 | Windows 10，版本 1709+                | 已禁用             | 通过 Windows 功能进行删除 |
-| Windows Server 2016                       | 已启用              | 通过 Windows 功能进行删除 |
-| Windows 10，版本 1507、1607 和 1703 | 已启用              | 通过 Windows 功能进行删除 |
-| Windows Server 2012 R2                    | 已启用              | 通过 Windows 功能进行删除 | 
-| Windows 8.1                               | 已启用              | 通过 Windows 功能进行删除 | 
-| Windows Server 2012                       | 已启用              | 通过注册表进行禁用       | 
-| Windows Server 2008 R2                    | 已启用              | 通过注册表进行禁用       |
-| Windows 7                                 | 已启用              | 通过注册表进行禁用       | 
+| Windows Server 2016                       | Enabled              | 通过 Windows 功能进行删除 |
+| Windows 10，版本 1507、1607 和 1703 | Enabled              | 通过 Windows 功能进行删除 |
+| Windows Server 2012 R2                    | Enabled              | 通过 Windows 功能进行删除 | 
+| Windows 8.1                               | Enabled              | 通过 Windows 功能进行删除 | 
+| Windows Server 2012                       | Enabled              | 通过注册表进行禁用       | 
+| Windows Server 2008 R2                    | Enabled              | 通过注册表进行禁用       |
+| Windows 7                                 | Enabled              | 通过注册表进行禁用       | 
 
 ### <a name="auditing-smb-1-usage"></a>审核 SMB 1 使用情况
-> 适用于 Windows Server 2019（预览版）、Windows Server 半年通道（版本 1709 和 1803）、Windows Server 2016、Windows 10（版本 1507、1607、1703、1709 和 1803）、Windows Server 2012 R2 和 Windows 8.1
+> 适用于 Windows Server 2019、Windows Server 半年通道（版本 1709 和 1803）、Windows Server 2016、Windows 10（版本 1507、1607、1703、1709 和 1803）、Windows Server 2012 R2 和 Windows 8.1
 
 在删除环境中的 SMB 1 之前，可能需要审核 SMB 1 使用情况，看是否有客户端会因更改而受损。 如果有客户端通过 SMB 1 对 SMB 共享提出了请求，系统会在 `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` 下的事件日志中记录审核事件。 
 
@@ -260,7 +259,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>从 Windows Server 中删除 SMB 1
-> 适用于 Windows Server 2019（预览版）、Windows Server 半年通道（版本 1709 和 1803）、Windows Server 2016、Windows Server 2012 R2
+> 适用于 Windows Server 2019、Windows Server 半年通道（版本 1709 和 1803）、Windows Server 2016、Windows Server 2012 R2
 
 若要从 Windows Server 实例中删除 SMB 1，请通过权限提升的 PowerShell 会话执行以下 cmdlet：
 

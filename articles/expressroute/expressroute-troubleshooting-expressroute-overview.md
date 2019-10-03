@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 888f4dedf2fda0f54297d42a5f813abf73ded748
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 026900e3dcbf7c20750bb8e17e44ba64897c9a30
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121513"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123439"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
 本文可帮助验证 ExpressRoute 连接并对其进行故障排除。 ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络扩展到 Microsoft 云中，涉及以下三个不同的网络区域：
@@ -22,10 +22,10 @@ ms.locfileid: "58121513"
 -   提供商网络
 -   Microsoft 数据中心
 
-本文档的目的是帮助用户确定存在连接问题的位置和区域（或者只是单纯地确定是否存在连接问题），以便向相应的团队寻求帮助以解决问题。 如果需要 Microsoft 的支持才能解决问题，请开具一张 [Microsoft 支持部门][Support]的支持票证。
+本文档的目的是帮助用户确定存在连接问题的位置和区域（或者只是单纯地确定是否存在连接问题），以便向相应的团队寻求帮助以解决问题。 如果需要 Microsoft 支持才能解决问题，请使用[Microsoft 支持部门][Support]打开支持票证。
 
 > [!IMPORTANT]
-> 本文档旨在帮助用户诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果无法通过所提供的指南解决问题，则请开具一张 [Microsoft 支持部门][Support]的支持票证。
+> 本文档旨在帮助用户诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果无法使用所提供的指南解决问题，请使用[Microsoft 支持部门][Support]打开支持票证。
 >
 >
 
@@ -66,7 +66,7 @@ ms.locfileid: "58121513"
 将来会添加更多的验证和检查，请每月回来查看！
 
 ## <a name="validate-circuit-provisioning-and-state"></a>验证线路预配和状态
-不管什么连接模型，都必须创建 ExpressRoute 线路，从而生成用于线路预配的服务密钥。 预配 ExpressRoute 线路即可在 PE-MSEE (4) 和 MSEE (5) 之间建立冗余性的第 2 层连接。 如需详细了解如何创建、修改、预配和验证 ExpressRoute 线路，请参阅[创建和修改 ExpressRoute 线路][CreateCircuit]一文。
+不管什么连接模型，都必须创建 ExpressRoute 线路，从而生成用于线路预配的服务密钥。 预配 ExpressRoute 线路即可在 PE-MSEE (4) 和 MSEE (5) 之间建立冗余性的第 2 层连接。 有关如何创建、修改、预配和验证 ExpressRoute 线路的详细信息，请参阅[创建和修改 expressroute 线路][CreateCircuit]一文。
 
 >[!TIP]
 >服务密钥可以唯一地标识 ExpressRoute 线路。 对于本文档中提到的大多数 PowerShell 命令，此密钥是必需的。 另外，如果需要 Microsoft 或 ExpressRoute 合作伙伴的帮助来排查 ExpressRoute 问题，请提供服务密钥，以便标识线路。
@@ -74,7 +74,7 @@ ms.locfileid: "58121513"
 >
 
 ### <a name="verification-via-the-azure-portal"></a>通过 Azure 门户进行验证
-可以在 Azure 门户中查看 ExpressRoute 线路的状态，方法是：在左侧栏菜单上选择“![2][2]”，并选择 ExpressRoute 线路。 选择“所有资源”下列出的 ExpressRoute 线路即可打开 ExpressRoute 线路边栏选项卡。 在中![3][3]部分的边栏选项卡，列出的 ExpressRoute 概要将如以下屏幕截图中所示：
+可以在 Azure 门户中查看 ExpressRoute 线路的状态，方法是：在左侧栏菜单上选择“![2][2]”，并选择 ExpressRoute 线路。 选择“所有资源”下列出的 ExpressRoute 线路即可打开 ExpressRoute 线路边栏选项卡。 在边栏选项卡的 " ![3][3] " 部分中，列出了 ExpressRoute 概要，如以下屏幕截图所示：
 
 ![4][4]    
 
@@ -83,7 +83,7 @@ ms.locfileid: "58121513"
 若要确保 ExpressRoute 线路正常运行，“线路状态”必须为“已启用”，“提供商状态”必须为“已预配”。
 
 > [!NOTE]
-> 如果“线路状态”不是“已启用”，请与 [Microsoft 支持部门][Support]联系。 如果“提供商状态”不是“已预配”，请与服务提供商联系。
+> 如果未启用*线路状态*，请联系[Microsoft 支持部门][Support]。 如果“提供商状态”不是“已预配”，请与服务提供商联系。
 >
 >
 
@@ -93,7 +93,7 @@ ms.locfileid: "58121513"
     Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 
 >[!TIP]
->可通过 Azure 获取资源组名称。 请参阅本文档的上一小节，并请注意，示例屏幕截图中列出的资源组名称。
+>可通过 Azure 获取资源组名称。 请参阅本文档的上一小节，并注意该资源组名称已在示例屏幕截图中列出。
 >
 >
 
@@ -132,7 +132,7 @@ ms.locfileid: "58121513"
     ServiceProviderProvisioningState : Provisioned
 
 > [!NOTE]
-> 如果“CircuitProvisioningState”不是“已启用”，请与 [Microsoft 支持部门][Support]联系。 如果“ServiceProviderProvisioningState”不是“已预配”，请与服务提供商联系。
+> 如果未启用*CircuitProvisioningState* ，请联系[Microsoft 支持部门][Support]。 如果“ServiceProviderProvisioningState”不是“已预配”，请与服务提供商联系。
 >
 >
 
@@ -157,15 +157,15 @@ ms.locfileid: "58121513"
     Sku                              : Standard
     Status                           : Enabled
 
-若要确认 ExpressRoute 线路是否正常运行，请特别注意以下字段：ServiceProviderProvisioningState：预配状态：已启用
+若要确认 ExpressRoute 线路是否正常运行，请特别注意以下字段：ServiceProviderProvisioningState：预配状态：Enabled
 
 > [!NOTE]
-> 如果“状态”不是“已启用”，请与 [Microsoft 支持部门][Support]联系。 如果“ServiceProviderProvisioningState”不是“已预配”，请与服务提供商联系。
+> 如果*状态*为 "未启用"，请联系[Microsoft 支持部门][Support]。 如果“ServiceProviderProvisioningState”不是“已预配”，请与服务提供商联系。
 >
 >
 
 ## <a name="validate-peering-configuration"></a>验证对等互连配置
-在服务提供商完成对 ExpressRoute 线路的预配以后，即可基于 MSEE-PR (4) 和 MSEE (5) 之间的 ExpressRoute 线路创建路由配置。 每条 ExpressRoute 线路可以启用一个、两个或三个路由上下文：Azure 专用对等互连（流量通往 Azure 中的专用虚拟网络）、Azure 公共对等互连（流量通往 Azure 中的公共 IP 地址）、以及 Microsoft 对等互连（流量通往 Office 365 和 Dynamics 365）。 有关如何创建和修改路由配置的详细信息，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]一文。
+在服务提供商完成对 ExpressRoute 线路的预配以后，即可基于 MSEE-PR (4) 和 MSEE (5) 之间的 ExpressRoute 线路创建路由配置。 每条 ExpressRoute 线路可以启用一个、两个或三个路由上下文：Azure 专用对等互连（流向 Azure 中的专用虚拟网络）、Azure 公共对等互连（到 Azure 中的公共 IP 地址的流量）以及 Microsoft 对等互连（流量发送到 Office 365）。 有关如何创建和修改路由配置的详细信息，请参阅[创建和修改 ExpressRoute 线路的路由一][CreatePeering]文。
 
 ### <a name="verification-via-the-azure-portal"></a>通过 Azure 门户进行验证
 
@@ -174,14 +174,14 @@ ms.locfileid: "58121513"
 >
 >
 
-可以在 Azure 门户中查看 ExpressRoute 线路的状态，方法是：在左侧栏菜单上选择“![2][2]”，并选择 ExpressRoute 线路。 选择“所有资源”下列出的 ExpressRoute 线路会打开 ExpressRoute 线路边栏选项卡。 在中![3][3]边栏选项卡会列出 essentials，如以下屏幕截图中所示的 ExpressRoute 部分：
+可以在 Azure 门户中查看 ExpressRoute 线路的状态，方法是：在左侧栏菜单上选择“![2][2]”，并选择 ExpressRoute 线路。 选择“所有资源”下列出的 ExpressRoute 线路会打开 ExpressRoute 线路边栏选项卡。 在边栏选项卡的 " ![3][3] " 部分中，将列出 ExpressRoute 概要，如以下屏幕截图所示：
 
 ![5][5]
 
 如以上示例所述，Azure 专用对等互连路由上下文已启用，而 Azure 公共和 Microsoft 对等互连路由上下文则未启用。 成功启用的对等互连上下文还会列出主要的和辅助的点到点（BGP 所必需）子网。 /30 子网适用于 MSEE 和 PE-MSEE 的接口 IP 地址。 
 
 > [!NOTE]
-> 如果未启用对等互连，请检查分配的主要子网和辅助子网是否符合 PE-MSEE 上的配置。 否则，若要更改 MSEE 路由器上的配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]
+> 如果未启用对等互连，请检查分配的主要子网和辅助子网是否符合 PE-MSEE 上的配置。 如果没有，若要更改 MSEE 路由器上的配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]
 >
 >
 
@@ -276,10 +276,10 @@ ms.locfileid: "58121513"
 >
 
 ## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>验证 Microsoft 和服务提供商之间的 ARP
-本部分使用 PowerShell（经典）命令。 如果一直使用 PowerShell Azure 资源管理器命令，请确保对订阅具有管理员/共同管理员权限。 有关使用 Azure 资源管理器命令进行故障排除的信息，请参阅文档[在资源管理器部署模型中获取 ARP 表][ARP]。
+本部分使用 PowerShell（经典）命令。 如果一直使用 PowerShell Azure 资源管理器命令，请确保对订阅具有管理员/共同管理员权限。 有关使用 Azure 资源管理器命令进行故障排除，请参阅[资源管理器部署模型文档中的获取 ARP 表][ARP]。
 
 > [!NOTE]
->若要获取 ARP，可以使用 Azure 门户和 Azure Resource Manager PowerShell 命令。 如果使用 Azure 资源管理器 PowerShell 命令时出错，则应使用经典 PowerShell 命令，因为经典 PowerShell 命令也适用于 Azure 资源管理器 ExpressRoute 线路。
+>获取 ARP 时，Azure 门户和 Azure 资源管理器 PowerShell 命令均可使用。 如果使用 Azure 资源管理器 PowerShell 命令时出错，则应使用经典 PowerShell 命令，因为经典 PowerShell 命令也适用于 Azure 资源管理器 ExpressRoute 线路。
 >
 >
 
@@ -381,9 +381,9 @@ ms.locfileid: "58121513"
 ## <a name="next-steps"></a>后续步骤
 有关详细信息或帮助，请查看以下链接：
 
-- [Microsoft 支持部门][Support]
+- [Microsoft 支持][Support]
 - [创建和修改 ExpressRoute 线路][CreateCircuit]
-- [创建和修改 ExpressRoute 线路的路由][CreatePeering]
+- [为 ExpressRoute 线路创建和修改路由][CreatePeering]
 
 <!--Image References-->
 [1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "逻辑 ExpressRoute 连接"

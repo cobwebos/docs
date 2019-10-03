@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 34bc8263053cd4a701c16ee1832cf1b27340a345
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: f607ba68563aa92797f45cf77db0575ae6802fee
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55501235"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385601"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理课堂实验室日程安排 
 借助日程安排，可以配置课堂实验室，这样实验室中的 VM 就能在指定时间自动启动和关闭。 可以定义一次性日程安排，也可以定义定期日程安排。 下面的过程逐步介绍了如何创建和管理课堂实验室日程安排： 
 
 > [!IMPORTANT]
-> VM 的计划内运行时间不计入[分配给用户的配额](how-to-configure-student-usage.md#set-quotas-per-user)。 配额是指学生在 VM 上花费的计划外时间。 
+> VM 的计划内运行时间不计入[分配给用户的配额](how-to-configure-student-usage.md#set-quotas-for-users)。 配额是指学生在 VM 上花费的计划外时间。 
 
 ## <a name="add-a-schedule-once"></a>添加日程安排（一次性）
 
@@ -37,7 +37,7 @@ ms.locfileid: "55501235"
 5. 对于“停止时间”，选择所需的 VM 关闭时间。 如果未设置启动时间，必须设置停止时间。 如果只想指定启动时间，请选择“删除停止事件”。 如果“停止时间”遭禁用，选择下拉列表旁边的“添加停止事件”即可启用它。
 6. 对于“时区(必需)”，选择已指定的启动时间和停止时间的时区。 
 7. 对于“备注”，输入日程安排的任何说明或备注。 
-8. 选择“保存”。 
+8. 选择**保存**。 
 
     ![一次性日程安排](../media/how-to-create-schedules/add-schedule-page.png)
 
@@ -48,13 +48,13 @@ ms.locfileid: "55501235"
     ![“日程安排”页上的“添加日程安排”按钮](../media/how-to-create-schedules/add-schedule-button.png)
 2. 在“添加日程安排”页上，将最上面的选项切换为“每周”。 
 3. 对于“日程安排日期(必需)”，选择所需的日程安排生效日期。 在下面的示例中，选中的是“星期一”至“星期五”。 
-4. 对于“开始日期”字段，输入“日程安排开始日期”，或通过选择“日历”按钮来选择日期。 此字段是必填的。 
+4. 对于“开始日期”字段，输入“日程安排开始日期”，或通过选择“日历”按钮来选择日期。 此字段为必填。 
 5. 对于“日程安排结束日期”，输入或选择结束日期（在这一天，VM 关闭）。 
 6. 对于“启动时间”，选择所需的 VM 启动时间。 如果未设置停止时间，必须设置启动时间。 如果只想指定停止时间，请选择“删除启动事件”。 如果“启动时间”遭禁用，选择下拉列表旁边的“添加启动事件”即可启用它。 
 7. 对于“停止时间”，选择所需的 VM 关闭时间。 如果未设置启动时间，必须设置停止时间。 如果只想指定启动时间，请选择“删除停止事件”。 如果“停止时间”遭禁用，选择下拉列表旁边的“添加停止事件”即可启用它。
 8. 对于“时区(必需)”，选择已指定的启动时间和停止时间的时区。  
 9. 对于“备注”，输入日程安排的任何说明或备注。 
-10. 选择“保存”。 
+10. 选择**保存**。 
 
     ![每周日程安排](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 

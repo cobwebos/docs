@@ -1,19 +1,18 @@
 ---
 title: 在 macOS 中通过 SMB 装载 Azure 文件共享 | Microsoft Docs
 description: 了解如何在 macOS 中通过 SMB 装载 Azure 文件共享。
-services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 09/19/2017
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 198e9102561af9ebec7a337a7b5e01f59453c8be
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6bd696ce5a314b0c849256311d0629b917036ea2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760727"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699548"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>在 macOS 中通过 SMB 装载 Azure 文件共享
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以通过 macOS El Capitan 10.11+ 使用标准的 SMB 3 协议进行装载。 本文介绍如何使用两种不同的方法通过 Finder UI 和 Terminal 在 macOS 中装载 Azure 文件共享。
@@ -38,7 +37,7 @@ ms.locfileid: "57760727"
 1. **打开 Finder**：默认情况下，Finder 在 macOS 中处于打开状态，但你可以通过单击 Dock 中的“macOS 笑脸图标”来确保它是当前选定的应用程序：  
     ![macOS 笑脸图标](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **在“前往”菜单中选择“连接到服务器”**：使用先决条件中的 UNC 路径，将开头的双反斜杠 (`\\`) 转换为 `smb://`，将所有其他的反斜杠 (`\`) 转换为斜杠 (`/`)。 链接应如下所示：![“连接到服务器”对话框](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **在“前往”菜单中选择“连接到服务器”** ：使用先决条件中的 UNC 路径，将开头的双反斜杠 (`\\`) 转换为 `smb://`，将所有其他的反斜杠 (`\`) 转换为斜杠 (`/`)。 链接应如下所示：![“连接到服务器”对话框](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
 3. **当系统提示你输入用户名和密码时，使用存储帐户名称和存储帐户密钥**：单击“连接到服务器”对话框中的“连接”时，系统会提示你输入用户名和密码（系统会使用你的 macOS 用户名自动填充此用户名字段）。 可以选择将存储帐户名称/存储帐户密钥置于 macOS 密钥链中。
 

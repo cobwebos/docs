@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: c201945e94474d54b8a19918f3b55a0b40995a97
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670304"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60743507"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>群集 Resource Manager 与 Service Fabric 群集管理的集成
 Service Fabric 群集资源管理器不会在 Service Fabric 中驱动升级，但会关注升级。 群集 Resource Manager 帮助进行管理的第一种方式是跟踪群集及其中服务的所需状态。 无法将群集放入所需配置时，群集 Resource Manager 会发出运行状况报告。 例如，如果容量不足，则群集资源管理器会发出运行状况警告和错误，指示该问题。 集成的另一个部分与升级的工作方式有关。 在升级期间，群集资源管理器会稍微改变其行为。  
@@ -77,7 +77,7 @@ HealthEvents          :
 2. 当前违反了升级域分发约束。 这表示特定的升级域在此分区中拥有的副本数超出了预期。
 3. 哪些节点包含会引起违规的副本。 在这种情况下，是名为“Node.8”的节点
 4. 此分区中是否正在进行升级（“当前正在升级 -- false”）
-5. 此服务的分发策略：“分发策略 - 打包”。 这受`RequireDomainDistribution`[放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)管制。 “打包”指示在此情况下不需要 DomainDistribution，从而使我们知道未对此服务指定放置策略。 
+5. 此服务的分发策略：“分发策略 - 打包”。 这受`RequireDomainDistribution`[放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)管制。 “打包”指示在此情况下不需要 DomainDistribution，从而使我们知道未对此服务指定放置策略  。 
 6. 报告发生时间 -- 2015/8/10 晚上 7:13:02
 
 此类信息丰富了生产环境中触发的警报，可让用户知道某个地方出错了，还可用于检测和暂停错误升级。 在此情况下，我们可以调查 Resource Manager 为何必须将副本打包到升级域。 例如，打包通常是暂时的，因为其他升级域中的节点已关闭。
@@ -125,7 +125,7 @@ HealthEvents          :
 
 更改约束的优先级并不常见。 有时需要更改约束优先级，通常是为了解决已影响环境的其他 bug 或行为。 一般而言，约束优化级基础结构的弹性可以应对各种问题，但我们并不经常需要利用这种弹性。 在大部分时间内，每个组成部分使用其默认优先级就能正常运作。 
 
-优先级别不表示会违反给定的约束，也不表示会始终满足给定约束。 约束优先级定义强制执行约束的顺序。 优先级定义无法满足所有约束时的折衷方案。 通常可以满足所有约束，除非环境中还有其他要求。 一些将导致约束冲突的方案示例包括违反约束或大量的并发故障。
+优先级别不表示会违反给定的约束，也不表示会始终满足给定约束  。 约束优先级定义强制执行约束的顺序。 优先级定义无法满足所有约束时的折衷方案。 通常可以满足所有约束，除非环境中还有其他要求。 一些将导致约束冲突的方案示例包括违反约束或大量的并发故障。
 
 在某些高级场合中，可以更改约束优先级。 例如，假如希望确保有必要解决节点容量问题时始终违反相关性。 为此，可将相关性约束的优先级设置为“软”(1)，将容量约束保持设置为“硬”(0)。
 

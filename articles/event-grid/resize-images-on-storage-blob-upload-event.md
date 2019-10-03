@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 652fe182663d37c389658c8fe3b172826168e51f
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: c09e2cd812dd34976218ff71036734466943e8cd
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617982"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "69623880"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 
 [Azure 事件网格](overview.md)是一项用于云的事件处理服务， 可使你创建由 Azure 服务或第三方资源引发的事件的订阅。  
 
-本教程是存储教程系列中的第二部分。 它对[前面存储教程][previous-tutorial]的内容进行了扩充，以学习如何使用 Azure 事件网格和 Azure Functions 添加无服务器自动缩略图生成。 事件网格可使 [Azure Functions](../azure-functions/functions-overview.md) 响应 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)事件，并生成上传图像的缩略图。 针对 Blob 存储创建事件会创建一个事件订阅。 当将 blob 添加到特定 Blob 存储容器时，将调用一个函数终结点。 从事件网格传递到函数绑定的数据用于访问 blob 并生成缩略图。
+本教程是存储教程系列中的第二部分。 它扩展了[以前的存储教程][previous-tutorial]，以添加使用 Azure 事件网格和 Azure Functions 自动生成无服务器缩略图的功能。 事件网格可使 [Azure Functions](../azure-functions/functions-overview.md) 响应 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)事件，并生成上传图像的缩略图。 针对 Blob 存储创建事件会创建一个事件订阅。 当将 blob 添加到特定 Blob 存储容器时，将调用一个函数终结点。 从事件网格传递到函数绑定的数据用于访问 blob 并生成缩略图。
 
 可以使用 Azure CLI 和 Azure 门户将调整大小功能添加到现有图像上传应用。
 
@@ -54,7 +54,7 @@ ms.locfileid: "59617982"
 
 完成本教程：
 
-必须已完成以前的 Blob 存储教程：[使用 Azure 存储在云中上传图像数据][previous-tutorial]。
+必须已完成以前的 Blob 存储教程：[使用 Azure 存储将映像数据上传到云中][previous-tutorial]。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -221,11 +221,11 @@ az functionapp deployment source config --name $functionapp \
 
 事件订阅指示要发送到特定终结点的提供程序生成的事件。 在这种情况下，终结点由函数公开。 使用以下步骤创建一个事件订阅，以便向 Azure 门户中的函数发送通知： 
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单上选择“所有服务”，然后选择“Function App”。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单上选择“所有服务”，然后选择“Function App”。   
 
     ![在 Azure 门户中浏览到 Function App](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
 
-2. 展开函数应用，选择 **Thumbnail** 函数，然后选择“添加事件网格订阅”。
+2. 展开函数应用，选择 **Thumbnail** 函数，然后选择“添加事件网格订阅”  。
 
     ![在 Azure 门户中浏览到 Function App](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
 
@@ -236,19 +236,19 @@ az functionapp deployment source config --name $functionapp \
     | 设置      | 建议的值  | 说明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **名称** | imageresizersub | 标识新事件订阅的名称。 | 
-    | 主题类型 |  存储帐户 | 选择存储帐户事件提供程序。 | 
+    | 主题类型  |  存储帐户 | 选择存储帐户事件提供程序。 | 
     | **订阅** | Azure 订阅 | 默认情况下，选择当前的 Azure 订阅。   |
-    | **资源组** | myResourceGroup | 选择“使用现有”，然后选择此教程中使用的资源组。  |
+    | **资源组** | myResourceGroup | 选择“使用现有”  ，然后选择此教程中使用的资源组。  |
     | **资源** |  你的 Blob 存储帐户 |  使用你创建 Blob 存储帐户。 |
-    | 事件类型 | 已创建 blob | 除“已创建 Blob”以外，取消选中所有其他类型。 只有 `Microsoft.Storage.BlobCreated` 的事件类型传递给函数。| 
+    | 事件类型  | 已创建 blob | 除“已创建 Blob”以外，取消选中所有其他类型  。 只有 `Microsoft.Storage.BlobCreated` 的事件类型传递给函数。| 
     | **订阅者类型** |  自动生成 |  预定义为 Webhook。 |
-    | 订阅者终结点 | 自动生成 | 使用为你生成的终结点 URL。 | 
-4. 切换到“Filter”选项卡，然后执行以下操作：     
-    1. 选择“启用主题筛选”选项。
-    2. 对于“主题开头为”，输入以下值：**/blobServices/default/containers/images/blobs/**。
+    | 订阅者终结点  | 自动生成 | 使用为你生成的终结点 URL。 | 
+4. 切换到“Filter”  选项卡，然后执行以下操作：     
+    1. 选择“启用主题筛选”  选项。
+    2. 对于“主题开头为”  ，输入以下值： **/blobServices/default/containers/images/blobs/** 。
 
         ![指定事件订阅筛选器](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
-2. 选择“创建”以添加事件订阅。 这将创建一个事件订阅，在将 Blob 添加到 `images` 容器时，该订阅会触发 `Thumbnail` 函数。 此函数重设图像大小，然后将图像添加到 `thumbnails` 容器。
+2. 选择“创建”  以添加事件订阅。 这将创建一个事件订阅，在将 Blob 添加到 `images` 容器时，该订阅会触发 `Thumbnail` 函数。 此函数重设图像大小，然后将图像添加到 `thumbnails` 容器。
 
 至此，已配置后端服务，可在示例 Web 应用中测试调整图像大小功能。 
 
@@ -258,23 +258,25 @@ az functionapp deployment source config --name $functionapp \
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-单击“上传照片”区域，选择并上传文件。 或者，也可以将照片拖动到此区域。 
+单击“上传照片”  区域，选择并上传文件。 或者，也可以将照片拖动到此区域。 
 
-注意，上传的图像消失后，上传图像的副本将显示在生成的缩略图轮廓中。 此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
+注意，上传的图像消失后，上传图像的副本将显示在生成的缩略图  轮廓中。 此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
 
 ![在浏览器中发布的 Web 应用](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
 
-单击“选择文件”选择一个文件，然后单击“上传图像”。 上传成功后，浏览器会导航到一个成功页面。 单击返回到主页的链接。 已上传图像的副本显示在**生成的缩略图**区域中。 （如果一开始没有显示图像，请尝试重新加载页面。）此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
+单击“选择文件”  选择一个文件，然后单击“上传图像”  。 上传成功后，浏览器会导航到一个成功页面。 单击返回到主页的链接。 已上传图像的副本显示在**生成的缩略图**区域中。 （如果一开始没有显示图像，请尝试重新加载页面。）此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
 
 ![在浏览器中发布的 Web 应用](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-单击“选择文件”选择一个文件，然后单击“上传图像”。 上传成功后，浏览器会导航到一个成功页面。 单击返回到主页的链接。 已上传图像的副本显示在**生成的缩略图**区域中。 （如果一开始没有显示图像，请尝试重新加载页面。）此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
+单击“选择文件”  选择一个文件，然后单击“上传图像”  。 上传成功后，浏览器会导航到一个成功页面。 单击返回到主页的链接。 已上传图像的副本显示在**生成的缩略图**区域中。 （如果一开始没有显示图像，请尝试重新加载页面。）此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
 
 ![在浏览器中发布的 Web 应用](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

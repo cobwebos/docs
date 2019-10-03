@@ -1,23 +1,23 @@
 ---
 title: 将 Azure 中的数据还原到 Windows Server 或 Windows 计算机
 description: 了解如何将 Azure 中存储的数据还原到 Windows Server 或 Windows 计算机。
-services: backup
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 9/7/2018
-ms.author: saurse
-ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/07/2018
+ms.author: dacurwin
+ms.openlocfilehash: 4c0686fc72bfcafdfee650822aece15b8f3fb766
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110811"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210340"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>使用 Azure 资源管理器部署模型将文件还原到 Windows
 
-本文介绍如何从备份保管库还原数据。 若要还原数据，请在 Microsoft Azure 恢复服务 (MARS) 代理中使用“恢复数据”向导。 可以：
+本文介绍如何从备份保管库还原数据。 若要还原数据，请在 Microsoft Azure 恢复服务 (MARS) 代理中使用“恢复数据”向导。 你可以：
 
 * 将数据还原到备份时所在的同一台计算机。
 * 将数据还原到备用计算机。
@@ -48,7 +48,7 @@ ms.locfileid: "58110811"
 
     ![恢复数据向导“开始”页的屏幕截图](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. 上**选择恢复模式**页上，选择**单个文件和文件夹** > **下一步**。
+4. 在“选择恢复模式”页上，选择“单个文件和文件夹”>“下一步”。
 
     ![恢复数据向导“选择恢复模式”页的屏幕截图](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
@@ -97,7 +97,7 @@ ms.locfileid: "58110811"
 * *示例保管库* – 源计算机和目标计算机注册到的恢复服务保管库。 <br/>
 
 > [!NOTE]
-> 无法将备份还原到运行较低 操作系统版本的目标计算机。 例如，在 Windows 8（或更高版本）的计算机上，可以还原在 Windows 7 计算机中创建的备份。 但是，在 Windows 8 计算机上创建的备份无法还原到 Windows 7 计算机。
+> 无法将备份还原到运行较低 操作系统版本的目标计算机。 例如, 可以在 Windows 7 (或更高版本) 计算机上还原从 Windows 7 计算机中创建的备份。 但是，在 Windows 8 计算机上创建的备份无法还原到 Windows 7 计算机。
 >
 >
 

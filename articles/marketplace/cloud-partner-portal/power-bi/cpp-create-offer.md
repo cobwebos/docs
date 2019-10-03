@@ -1,25 +1,18 @@
 ---
-title: 创建 Power BI 应用产品/服务 - Azure 市场 | Microsoft Docs
+title: 创建 Power BI 应用产品/服务 |Azure Marketplace
 description: 如何针对 Microsoft AppSource 市场创建 Power BI 应用产品/服务。
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 6a4f7daa337618278c3652fad3053c20557a9e28
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 702be34a5be69c050b809713a5742c2189892a27
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414682"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943317"
 ---
 # <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用产品/服务
 
@@ -27,7 +20,7 @@ ms.locfileid: "56414682"
 
 资产组如下表所述：
 
-|   资产组      | 说明                                                                         |
+|   资产组      | 描述                                                                         |
 | ----------------   | ----------------                                                                    |
 | 产品/服务设置     | 产品/服务的主要标识和名称。                                      |
 | 技术信息     | 用于在客户端的 Power BI 工作区中安装应用的安装程序 URL。 有关如何生成此 URL 的详细信息，请参阅 [Power BI 应用文档](https://go.microsoft.com/fwlink/?linkid=2028636)。 |
@@ -36,17 +29,17 @@ ms.locfileid: "56414682"
 
 ## <a name="new-offer-form"></a>“新建套餐”窗体
 
-登录“云合作伙伴门户”后，在左窗格中选择“新产品/服务”。 然后，若要显示“新建产品/服务”表单并开始为新应用产品/服务定义资产，请选择“Power BI 应用”。
+登录“云合作伙伴门户”后，在左窗格中选择“新产品/服务”  。 然后，若要显示“新建产品/服务”表单并开始为新应用产品/服务定义资产，请选择“Power BI 应用”  。
 
 ![Power BI 产品/服务菜单项](./media/new-offer-menu.png)
 
 > [!NOTE] 
-> 如果未显示或未启用“Power BI 应用”选项，则帐户无权创建此产品/服务类型。 检查以确保满足了此产品/服务类型的所有[先决条件](./cpp-prerequisites.md)，包括注册开发人员帐户注册。
+> 如果未显示或未启用“Power BI 应用”选项，则帐户无权创建此产品/服务类型  。 检查以确保满足了此产品/服务类型的所有[先决条件](./cpp-prerequisites.md)，包括注册开发人员帐户注册。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-以下文章介绍了 Power BI 应用产品/服务类型的“新产品/服务”页上的标签。 每篇文章都介绍了新的 Power BI 应用产品/服务的资产组和支持服务。
+以下文章介绍了 Power BI 应用产品/服务类型的“新产品/服务”页上的标签  。 每篇文章都介绍了新的 Power BI 应用产品/服务的资产组和支持服务。
 
 -  [“产品/服务设置”选项卡](./cpp-offer-settings-tab.md)
 -  [“技术信息”选项卡](./cpp-technical-info-tab.md)

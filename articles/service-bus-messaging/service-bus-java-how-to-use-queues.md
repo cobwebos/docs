@@ -1,5 +1,5 @@
 ---
-title: 如何通过 Java 使用 Azure 服务总线队列 | Microsoft Docs
+title: 通过 Java 使用 Azure 服务总线队列
 description: 了解如何在 Azure 中使用服务总线队列。 用 Java 编写的代码示例。
 services: service-bus-messaging
 documentationcenter: java
@@ -14,34 +14,35 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 958dc02ecc744f89badee851467f2e78190287cd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 19cfd2c5dd4229e4687fcb1a3286509c9b768d7a
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786915"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155507"
 ---
-# <a name="how-to-use-service-bus-queues-with-java"></a>如何通过 Java 使用服务总线队列
+# <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>通过 Java 使用 Azure 服务总线队列发送和接收消息
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-在本教程中，您将学习如何创建 Java 应用程序将消息发送到和从服务总线队列接收消息。 
+本教程介绍如何创建 Java 应用程序，以便在 Azure 服务总线队列中发送和接收消息。 
 
 > [!NOTE]
 > 可在 [azure-service-bus 存储库](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)中的 GitHub 上找到 Java 示例。
 
-## <a name="prerequisites"></a>必备组件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 如果没有要处理的队列，按照步骤[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)项目创建的队列。
-    1. 阅读快速**概述**的服务总线**队列**。 
-    2. 创建服务总线**命名空间**。 
+## <a name="prerequisites"></a>先决条件
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
+    1. 阅读服务总线**队列**的快速**概述**。 
+    2. 创建一个服务总线**命名空间**。 
     3. 获取**连接字符串**。
-    4. 创建服务总线**队列**。
-3. 安装[用于 Java 的 Azure SDK][Azure SDK for Java]。 
+    4. 创建一个服务总线**队列**。
+3. 安装 [Azure SDK for Java][Azure SDK for Java]。 
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
-在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java]。 如果使用 Eclipse，则可以安装包含 Azure SDK for Java 的[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]。 然后，可将 Microsoft Azure Libraries for Java 添加到项目：
+在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java]。 如果使用了 Eclipse，则可以安装包含 Azure SDK for Java 的[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]。 然后，可将 Microsoft Azure Libraries for Java 添加到项目：
 
-![](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
+![将用于 Java 的 Microsoft Azure 库添加到 Eclipse 项目](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
 将以下 `import` 语句添加到 Java 文件顶部：
 
@@ -183,12 +184,15 @@ public void run() throws Exception {
 
 如果在处理消息之后，发出 deleteMessage 请求之前，应用程序发生崩溃，该消息会在应用程序重新启动时重新传送给它。 此情况通常称作至少处理一次，即每条消息至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 通常可使用消息的 getMessageId 方法实现此操作，这在多个传送尝试中保持不变。
 
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
+
 ## <a name="next-steps"></a>后续步骤
-了解服务总线队列的基本信息后，请参阅[队列、主题和订阅][Queues, topics, and subscriptions]以获取更多信息。
+了解服务总线队列的基础知识后，请参阅[队列、主题和订阅][Queues, topics, and subscriptions]以获取更多信息。
 
 有关详细信息，请参阅 [Java 开发人员中心](https://azure.microsoft.com/develop/java/)。
 
-[Azure SDK for Java]: https://azure.microsoft.com/develop/java/
-[Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
+[Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/
+[Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage

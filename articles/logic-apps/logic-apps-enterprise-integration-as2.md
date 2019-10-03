@@ -1,6 +1,6 @@
 ---
-title: 用于 B2B 企业集成的 AS2 消息 - Azure 逻辑应用 | Microsoft 文档
-description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
+title: 用于 B2B 企业集成的 AS2 消息 - Azure 逻辑应用
+description: 在 Azure 逻辑应用中通过 Enterprise Integration Pack 交换 AS2 消息
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,170 +8,117 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
-ms.date: 06/08/2017
-ms.openlocfilehash: 3413b235d9202530eb1a3129637e3746bbe6585b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 08/22/2019
+ms.openlocfilehash: b1e7664aa08171c16c83e17ad93977b29e31b5c0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872547"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656460"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
 
-在交换 Azure 逻辑应用的 AS2 消息之前，必须先创建 AS2 协议并将它存储在集成帐户中。 下面是创建 AS2 协议的步骤。
+若要在 Azure 逻辑应用中使用 AS2 消息, 可以使用 AS2 连接器, 它提供用于管理 AS2 通信的触发器和操作。 例如, 若要在传输消息时建立安全性和可靠性, 可以使用以下操作:
 
-## <a name="before-you-start"></a>开始之前
+* [ **AS2 编码**操作](#encode), 用于通过消息处置通知 (MDN) 提供加密、数字签名和确认, 帮助支持不可否认性。 例如, 此操作会在配置时应用 AS2/HTTP 标头并执行以下任务:
 
-下面是需要准备好的项：
+  * 对传出消息进行签名。
+  * 加密传出消息。
+  * 压缩消息。
+  * 传输 MIME 标头中的文件名。
 
-* 已定义的、与 Azure 订阅关联的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)
-* 在集成帐户中至少已定义两个[合作伙伴](logic-apps-enterprise-integration-partners.md)，并且在“企业标识”下面配置了这些合作伙伴的 AS2 限定符
+* [ **AS2 解码**操作](#decode), 用于通过消息处置通知 (MDN) 提供解密、数字签名和确认。 例如, 此操作执行以下任务:
 
-> [!NOTE]
-> 创建协议时，协议文件中的内容必须与协议类型匹配。    
+  * 处理 AS2/HTTP 标头。
+  * 协调接收的 Mdn 与原始出站消息。
+  * 更新并关联不可否认数据库中的记录。
+  * 写入 AS2 状态报告的记录。
+  * 输出以 base64 编码的负载内容。
+  * 确定是否需要 Mdn。 根据 AS2 协议, 确定 Mdn 应为同步还是异步。
+  * 基于 AS2 协议生成同步或异步 Mdn。
+  * 设置 Mdn 上的相关标记和属性。
 
-[创建集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)并[添加合作伙伴](logic-apps-enterprise-integration-partners.md)之后，可以遵循以下步骤来创建 AS2 协议。
+  此操作还会在配置时执行这些任务:
 
-## <a name="create-an-as2-agreement"></a>创建 AS2 协议
+  * 验证签名。
+  * 对消息进行解密。
+  * 解压缩消息。
+  * 选中并不允许消息 ID 重复项。
 
-1.  登录 [Azure 门户](https://portal.azure.com "Azure portal")。  
+本文介绍如何向现有逻辑应用添加 AS2 编码和解码操作。
 
-2. 在 Azure 主菜单中，选择“所有服务”。 在搜索框中输入“集成”，然后选择“集成帐户”。
+> [!IMPORTANT]
+> 将弃用原始 AS2 连接器, 因此请确保改用**AS2 (v2)** 连接器。 此版本提供的功能与原版本相同, 是逻辑应用运行时的本机功能, 可在吞吐量和消息大小方面提供显著的性能改进。 此外, 本机 v2 连接器不需要创建与集成帐户的连接。 相反, 如先决条件中所述, 请确保将集成帐户链接到计划使用连接器的逻辑应用。
 
-   ![查找集成帐户](./media/logic-apps-enterprise-integration-as2/overview-1.png)
+## <a name="prerequisites"></a>先决条件
 
-   > [!TIP]
-   > 如果未看到“所有服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示文本标签”。
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-3. 在“集成帐户”下，选择要创建协议的集成帐户。
+* 要从中使用 AS2 连接器的逻辑应用, 以及用于启动逻辑应用工作流的触发器。 AS2 连接器仅提供操作, 而不提供触发器。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-   ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-overview/overview-3.png)
+* 与 Azure 订阅关联的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), 并链接到计划使用 AS2 连接器的逻辑应用。 逻辑应用和集成帐户必须存在于同一位置或 Azure 区域中。
 
-4. 选择“协议”磁贴。 如果未添加“协议”磁贴，请先添加该磁贴。
+* 已使用 AS2 标识限定符在集成帐户中至少定义了两个[贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)。
 
-    ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+* 你必须在你的贸易合作伙伴之间创建 AS2[协议](../logic-apps/logic-apps-enterprise-integration-agreements.md), 并将该协议存储在集成帐户中, 然后才能使用 as2 连接器。
 
-5. 在“协议”下，选择“添加”。
+* 如果使用[Azure Key Vault](../key-vault/key-vault-overview.md)进行证书管理, 请检查保管库密钥是否允许**加密**和**解密**操作。 否则, 编码和解码操作将失败。
 
-    ![选择“添加”](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
+  在 Azure 门户中, 请切换到密钥保管库, 查看保管库密钥的**允许操作**, 并确认已选择 "**加密**和**解密**" 操作。
 
-6. 在“添加”下面，输入协议的**名称**。 对于“协议类型”，请选择“AS2”。 为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。
+  ![检查保管库密钥操作](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
 
-    ![提供协议详细信息](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
+<a name="encode"></a>
 
-    | 属性 | 描述 |
-    | --- | --- |
-    | 名称 |协议的名称 |
-    | 协议类型 | 应为 AS2 |
-    | 管理方 |协议需要有管理方和托管方。 宿主合作伙伴代表配置协议的组织。 |
-    | 管理方标识 |管理方的标识符 |
-    | 托管方 |协议需要有管理方和托管方。 托管方代表与管理方进行交易的组织。 |
-    | 托管方标识 |托管方的标识符 |
-    | 接收设置 |这些属性适用于协议接收的所有消息。 |
-    | 发送设置 |这些属性适用于协议发送的所有消息。 |
+## <a name="encode-as2-messages"></a>为 AS2 消息编码
 
-## <a name="configure-how-your-agreement-handles-received-messages"></a>配置协议如何处理收到的消息
+1. 如果尚未这样做, 请在[Azure 门户](https://portal.azure.com)中的逻辑应用设计器中打开逻辑应用。
 
-设置协议属性后，可以配置此协议如何识别和处理从合作伙伴接收的传入消息。
+1. 在设计器中, 将新操作添加到逻辑应用。
 
-1.  在“添加”下面，选择“接收设置”。
-根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
+1. 在 "**选择操作**" 和 "搜索" 框下, 选择 "**全部**"。 在搜索框中, 输入 "as2 编码", 并确保选择 AS2 (v2) 操作:**AS2 编码**
 
-    ![配置“接收设置”](./media/logic-apps-enterprise-integration-as2/agreement-4.png)
+   ![选择 "AS2 编码"](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
-2. 或者，可以选择“替代消息属性”来替代传入消息的属性。
+1. 现在提供这些属性的信息:
 
-3. 如需对所有传入消息进行签名，请选择“应对消息进行签名”。 在“证书”列表中，选择现有的[来宾合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)来验证消息的签名。 如果没有该证书，可以创建一个。
+   | 属性 | 描述 |
+   |----------|-------------|
+   | **要编码的消息** | 消息负载 |
+   | **AS2 来源** | AS2 协议指定的消息发送方的标识符 |
+   | **AS2 到** | AS2 协议指定的消息接收方的标识符 |
+   |||
 
-4.  如果要对所有传入消息进行加密，请选择“应对消息进行加密”。 在“证书”列表中，选择现有的[宿主合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)来解密传入的消息。 如果没有该证书，可以创建一个。
+   例如：
 
-5. 若要压缩消息，请选择“应对消息进行压缩”。
+   ![消息编码属性](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
-6. 如需为接收的消息发送同步消息处置通知 (MDN)，请选择“发送 MDN”。
+<a name="decode"></a>
 
-7. 如需为接收的消息发送已签名 MDN，请选择“发送已签名的 MDN”。
+## <a name="decode-as2-messages"></a>为 AS2 消息解码
 
-8. 如需为接收的消息发送异步 MDN，请选择“发送异步 MDN”。
+1. 如果尚未这样做, 请在[Azure 门户](https://portal.azure.com)中的逻辑应用设计器中打开逻辑应用。
 
-9. 完成后，请务必选择“确定”保存设置。
+1. 在设计器中, 将新操作添加到逻辑应用。
 
-协议现已准备就绪，可以处理符合所选设置的传入消息。
+1. 在 "**选择操作**" 和 "搜索" 框下, 选择 "**全部**"。 在搜索框中, 输入 "as2 解码", 并确保选择 AS2 (v2) 操作:**AS2 解码**
 
-| 属性 | 描述 |
-| --- | --- |
-| 替代消息属性 |表示可替代接收消息中的属性。 |
-| 对消息进行签名 |要求对消息进行数字签名。 配置来宾合作伙伴公共证书以进行签名验证。  |
-| 对消息进行加密 |要求对消息进行加密。 未加密的消息会被拒绝。 配置主机合作伙伴私有证书以对消息进行解密。  |
-| 对消息进行压缩 |要求对消息进行压缩。 未压缩的消息会被拒绝。 |
-| MDN 文本 |要发送到消息发送方的默认消息处置通知 (MDN)。 |
-| 发送 MDN |要求对 MDN 进行发送。 |
-| 发送已签名的 MDN |要求对 MDN 进行签名。 |
-| MIC 算法 |选择用于消息签名的算法。 |
-| 发送异步 MDN | 要求对消息进行异步发送。 |
-| 代码 | 指定要将 MDN 发送到的 URL。 |
+   ![选择 "AS2 解码"](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
-## <a name="configure-how-your-agreement-sends-messages"></a>配置协议如何发送消息
+1. 对于**要编码的消息**和**消息标头**属性, 请从以前的触发器或操作输出中选择这些值。
 
-可以配置此协议如何识别和处理发送给合作伙伴的传出消息。
+   例如, 假定逻辑应用通过请求触发器接收消息。 你可以从该触发器中选择输出。
 
-1.  在“添加”下面，选择“发送设置”。
-根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
+   ![从请求输出中选择正文和标头](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
 
-    ![设置“发送设置”属性](./media/logic-apps-enterprise-integration-as2/agreement-51.png)
+## <a name="sample"></a>样本
 
-2. 要将签名的消息发送到合作伙伴，请选择“启用消息签名”。 若要对消息签名，请在“MIC 算法”列表中，选择“宿主合作伙伴专用证书 MIC 算法”。 在“证书”列表中，选择现有的[宿主合作伙伴专用证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。
+若要尝试部署完全正常运行的逻辑应用和示例 AS2 方案，请参阅 [AS2 逻辑应用模板和方案](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)。
 
-3. 要将加密的消息发送到合作伙伴，请选择“启用消息加密”。 若要加密消息，请在“加密算法”列表中，选择*来宾合作伙伴公共证书算法*。
-在“证书”列表中，选择现有的[来宾合作伙伴公共证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。
+## <a name="connector-reference"></a>连接器参考
 
-4. 若要压缩消息，请选择“启用消息压缩”。
-
-5. 要将 HTTP 内容类型标头展开为单个行，请选择“展开 HTTP 标头”。
-
-6. 若要接收所发送消息的同步 MDN，请选择“请求 MDN”。
-
-7. 若要接收所发送消息的已签名 MDN，请选择“请求已签名的 MDN”。
-
-8. 若要接收所发送消息的异步 MDN，请选择“请求异步 MDN”。 如果选择此选项，请输入要将 MDN 发送到的 URL。
-
-9. 若要启用回执的不可否认性，请选择“启用 NRR”。  
-
-10. 若要指定要在 MIC 中使用或者在 AS2 消息或 MDN 的传出标头中签名的算法格式，请选择“SHA2 算法格式”。  
-
-11. 完成后，请务必选择“确定”保存设置。
-
-协议现已准备就绪，可以处理符合所选设置的传出消息。
-
-| 属性 | 描述 |
-| --- | --- |
-| 启用消息签名 |要求对所有发送自此协议的消息进行签名。 |
-| MIC 算法 |用于消息签名的算法。 配置主机合作伙伴私有证书 MIC 算法以对消息进行签名。 |
-| 证书 |选择用于消息签名的证书。 配置主机合作伙伴私有证书以对消息进行签名。 |
-| 启用消息加密 |要求对所有发送自协议的消息进行加密。 配置来宾合作伙伴公共证书算法以对消息进行加密。 |
-| 加密算法 |要用于消息加密的加密算法。 配置来宾合作伙伴公共证书以对消息进行加密。 |
-| 证书 |要用于对消息进行加密的证书。 配置来宾合作伙伴私有证书以对消息进行加密。 |
-| 启用消息压缩 |要求对所有发送自协议的消息进行压缩。 |
-| 展开 HTTP 标头 |将 HTTP 内容类型标头展开为单行。 |
-| 请求 MDN |需要所有发送自此协议的消息的 MDN。 |
-| 要求对 MDN 进行签名 |要求对所有发送到此协议的 MDN 进行签名。 |
-| 要求发送异步 MDN |要求将异步 MDN 发送到此协议。 |
-| 代码 |指定要将 MDN 发送到的 URL。 |
-| 启用 NRR |需要回执的不可否认性 (NRR)，这是一种通信属性，提供数据已按址接收到的证据。 |
-| SHA2 算法格式 |选择要在 MIC 中使用或者在 AS2 消息或 MDN 的传出标头中签名的算法格式 |
-
-## <a name="find-your-created-agreement"></a>查找创建的协议
-
-1. 设置完所有协议属性后，请在“添加”页中选择“确定”来完成创建协议，并返回到集成帐户。
-
-    新添加的协议随即会出现在“协议”列表中。
-
-2. 还可以在集成帐户概述中查看协议。 在集成帐户菜单中选择“概述”，并选择“协议”磁贴。 
-
-   ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
-
-## <a name="view-the-swagger"></a>查看 Swagger
-请参阅 [Swagger 详细信息](/connectors/as2/)。 
+如需技术详细信息（例如触发器、操作和限制，如连接器的 OpenAPI（以前为 Swagger）文件所述），请参阅[连接器的参考页](/connectors/as2/)。
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  
+
+详细了解[Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)

@@ -1,19 +1,18 @@
 ---
 title: 如何通过 C++ 使用对象 (Blob) 存储 - Azure | Microsoft Docs
 description: 使用 Azure Blob（对象）存储将非结构化数据存储在云中。
-services: storage
-author: MichaelHauss
-ms.service: storage
-ms.topic: conceptual
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 03/21/2018
-ms.author: michaelhauss
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: d86b2c71515900405b0e7714d2c36cd8e4cbc7fc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.topic: conceptual
+ms.openlocfilehash: f64856d5b0140d529e939d92d4be61b074928d6e
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993213"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726430"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>如何通过 C++ 使用 Blob 存储
 
@@ -67,7 +66,7 @@ const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;
 
 下面的示例假定使用了这两个方法之一来获取存储连接字符串。  
 
-## <a name="retrieve-your-connection-string"></a>检索连接字符串
+## <a name="retrieve-your-storage-account"></a>检索存储帐户
 可使用 **cloud_storage_account** 类来表示存储帐户信息。 若要从存储连接字符串中检索存储帐户信息，可以使用 **parse** 方法。  
 
 ```cpp

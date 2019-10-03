@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: e51313bbed21459de9f717edd123887caed18f4b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7113914fe8681ca099fc0f3fc1e4a7d064c19480
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279340"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000253"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
@@ -77,9 +77,9 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 适用于 Python 的 Azure IoT 中心设备 SDK： 
 
-* 通过 [pip](https://pypi.python.org/pypi/azure-iothub-device-client/) 安装
+* 通过 [pip](https://pypi.org/project/azure-iot-device/) 安装
 * [源代码](https://github.com/Azure/azure-iot-sdk-python)
-* API 参考：请参阅 [C API 参考](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+* [API 参考](https://docs.microsoft.com/python/api/azure-iot-device)
 
 适用于 iOS 的 Azure IoT 中心设备 SDK： 
 
@@ -112,7 +112,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 适用于 Python 的 Azure IoT 中心服务 SDK： 
 
 * 通过 [pip](https://pypi.python.org/pypi/azure-iothub-service-client/) 下载
-* [源代码](https://github.com/Azure/azure-iot-sdk-python)
+* [源代码](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated)
 
 适用于 C 的 Azure IoT 中心服务 SDK： 
 
@@ -157,8 +157,8 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 适用于 Python 的 Azure 预配设备和服务 SDK：
 
-* [源代码](https://github.com/Azure/azure-iot-sdk-python)
-* 通过 pip 下载[设备 SDK](https://pypi.org/project/azure-iot-provisioning-device-client/) 和[服务 SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/)
+* [源代码](https://github.com/Azure/azure-iot-device)
+* 通过 pip 下载[设备 SDK](https://pypi.org/project/azure-iot-device/) 和[服务 SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/)
 
 ## <a name="next-steps"></a>后续步骤
 

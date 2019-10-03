@@ -3,20 +3,20 @@ title: 必应语音概念 | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: Microsoft 语音服务中使用的基本概念。
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c114c726bea34465972a282acac6b8acbbf9a80f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fba1bbdeaf68bdd45524b336011627a27cd024da
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670405"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965714"
 ---
 # <a name="basic-concepts"></a>基本概念
 
@@ -32,7 +32,7 @@ ms.locfileid: "56670405"
 
 语音的基本概念中最重要的是音频流。 与击键不同，击键发生在单个时间点并且包含单条信息，而语音请求历时数百毫秒并且包含若干千字节大小的信息。 口述话语的持续时间给希望为其应用程序提供简练顺畅的语音体验的开发者造成了一定的困难。 如今的计算机和算法执行语音听录的时间约占话语持续时间的一半，也就是在大约 1 秒内可以听录 2 秒的话语，但是任何在处理用户时经历 1 秒延迟的应用程序都无法实现简练顺畅。
 
-好在有一些方法可以“隐藏”听录时间，即在用户说出话语后一部分的同时，对话语的前一部分执行听录。 例如，通过将 1 秒钟的话语分成 10 个 100 毫秒的区块，并依次对每个区块执行听录，可在总共听录 500 毫秒中“隐藏”超过 450 毫秒，使用户在说话时不会知道正在进行听录。 联系此示例时，请记住该服务对音频的前一个 100 毫秒执行听录，而此时用户正在说出下一个 100 毫秒，所以当用户停止讲话时，该服务只需要听录大约 100 毫秒的音频来制作结果。
+好在有一些方法可以“隐藏”听录时间，即在用户说出话语后一部分的同时，对话语的前一部分执行听录。 例如，通过将1秒的查询文本拆分为10个块100毫秒，并依次对每个区块执行脚本，可以 "隐藏" 超过450个，而脚本所需的总500毫秒数为 "隐藏"，以使用户不知道脚本在说话时执行。 联系此示例时，请记住该服务对音频的前一个 100 毫秒执行听录，而此时用户正在说出下一个 100 毫秒，所以当用户停止讲话时，该服务只需要听录大约 100 毫秒的音频来制作结果。
 
 为了实现这种用户体验，将采用区块形式收集语音音频信息，并在用户说话时进行听录。 这些音频区块全部来自于音频流，将这些音频区块发送到服务的过程称为流式传输音频。 流式传输音频是任何支持语音的应用程序的重要组成部分；调整区块大小和优化流式传输的执行是改善应用程序用户体验的最有效方法。
 
@@ -166,7 +166,7 @@ https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservic
 | NoMatch | 在音频流中检测到语音，但没有匹配目标语言的字词。 有关详细信息，请参阅 [NoMatch 识别状态 (#nomatch-recognition-status)  |
 | InitialSilenceTimeout | 音频流的开始仅包含静音，并且服务在等待语音时超时 |
 | BabbleTimeout | 音频流的开始仅包含噪音，并且服务在等待语音时超时 |
-| 错误 | 识别服务遇到内部错误，无法继续 |
+| Error | 识别服务遇到内部错误，无法继续 |
 
 - `DisplayText` 表示在应用了大写、标点符号和反向文本规范化之后的已识别短语，并用星号屏蔽了不当字词。 仅当 `RecognitionStatus` 字段的值为 `Success` 时，才会显示 DisplayText 字段。
 

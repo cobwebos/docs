@@ -1,25 +1,18 @@
 ---
-title: 创建 Azure Key Vault 证书 | Microsoft Docs
+title: 创建 Azure Key Vault 证书 |Azure Marketplace
 description: 介绍如何从 Azure 部署的 VHD 注册 VM。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a25418f30225184424011527def468d0d3909563
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: c27605d2f9b87a9d4ba3d2326c0ce7ad437d3441
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045688"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240984"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>创建 Azure Key Vault 证书
 
@@ -208,7 +201,7 @@ ms.locfileid: "59045688"
     "dataType" :"pfx",
     "password": "$certpassword"
     }
-    "@
+"@
             echo $certpassword
             $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
             $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)

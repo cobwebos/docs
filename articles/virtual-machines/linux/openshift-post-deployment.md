@@ -9,22 +9,21 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: fba29cd55f2d765faa107de3a8961032ef44deec
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: ac93f08a5e93fefaa1de82a7d86a2cfdf3e6aa6d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997388"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091760"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
 
-部署 OpenShift 群集后，可以配置附加的项。 本文介绍：
+部署 OpenShift 群集后，可以配置附加的项。 本文包含以下内容：
 
 - 了解如何使用 Azure Active Directory (Azure AD) 配置单一登录
 - 如何配置 Azure Monitor 日志以监视 OpenShift
@@ -158,14 +157,14 @@ sudo /usr/local/bin/master-restart controllers
 
 在 OpenShift 控制台中，现在可以看到两个身份验证选项：“htpasswd_auth”和“[应用注册]”。
 
-## <a name="monitor-openshift-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 OpenShift
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>用 Azure Monitor 日志监视 OpenShift
 
 可通过三种方法将 Log Analytics 代理添加到 OpenShift。
 - 在每个 OpenShift 节点上直接安装适用于 Linux 的 Log Analytics 代理
-- 每个 OpenShift 节点上启用 Azure 监视器 VM 扩展
+- 启用每个 OpenShift 节点上的 Azure Monitor VM 扩展
 - 安装 Log Analytics 代理作为 OpenShift daemon-set
 
-阅读整[说明](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift)的更多详细信息。
+有关更多详细信息, 请阅读完整[说明](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift)。
 
 ## <a name="configure-metrics-and-logging"></a>配置指标和日志记录
 
@@ -205,7 +204,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 
 若要在 OpenShift 中安装 OSBA，请遵照 https://github.com/Azure/open-service-broker-azure#openshift-project-template 中的说明。 
 > [!NOTE]
-> 仅完成 OpenShift 项目模板部分并不是整个安装部分中的步骤。
+> 只完成 OpenShift 项目模板部分中的步骤, 而不是整个安装部分。
 
 ## <a name="next-steps"></a>后续步骤
 

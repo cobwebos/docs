@@ -1,20 +1,19 @@
 ---
 title: 配置 Spark 设置 - Azure HDInsight
-description: 如何为 Azure HDInsight 群集配置 Spark。
-services: hdinsight
-author: maxluk
-ms.author: maxluk
+description: 如何查看和配置 Azure HDInsight 群集的 Apache Spark 设置
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 91f706b882c4f245dbd111b0f9cac269db6fd65f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.date: 06/17/2019
+ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652229"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003152"
 ---
 # <a name="configure-apache-spark-settings"></a>配置 Apache Spark 设置
 
@@ -45,11 +44,11 @@ Apache Spark 有三个系统配置位置：
 选择特定的 Spark 版本时，群集将包含默认的配置设置。  可以通过使用自定义的 Spark 配置文件来更改默认的 Spark 配置值。  下面显示了一个示例。
 
 ```
-    spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
-    spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
-    spark.hadoop.parquet.block.size 1099511627776
-    spark.sql.files.maxPartitionBytes 1099511627776
-    spark.sql.files.openCostInBytes 1099511627776
+spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
+spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
+spark.hadoop.parquet.block.size 1099511627776
+spark.sql.files.maxPartitionBytes 1099511627776
+spark.sql.files.openCostInBytes 1099511627776
 ```
 
 上面所示的示例替代了五个 Spark 配置参数的多个默认值。  这些值是压缩编解码器、Apache Hadoop MapReduce 拆分最小大小和 parquet 块大小，以及 Spar SQL 分区和打开的文件大小默认值。  之所以选择这些配置更改，是因为关联的数据和作业（在此示例中为基因组数据）具有特定的特征，使用这些自定义配置设置可以更好地完成这些作业。
@@ -58,13 +57,13 @@ Apache Spark 有三个系统配置位置：
 
 ## <a name="view-cluster-configuration-settings"></a>查看群集配置设置
 
-在群集上执行性能优化之前，请验证当前的 HDInsight 群集配置设置。 单击 Spark 群集窗格中的“仪表板”链接，从 Azure 门户启动 HDInsight 仪表板。 使用群集管理员的用户名和密码登录。
+在群集上执行性能优化之前，请验证当前的 HDInsight 群集配置设置。 单击 Spark 群集窗格中的“仪表板”链接，从 Azure 门户启动 HDInsight 仪表板。 用群集管理员的用户名和密码登录。
 
 此时会显示 Apache Ambari Web UI，其中的仪表板视图显示了重要的群集资源利用率指标。  Ambari 仪表板显示 Apache Spark 配置，以及安装的其他服务。 仪表板包含“配置历史记录”选项卡，可在其中查看所有已安装服务（包括 Spark）的配置信息。
 
 若要查看 Apache Spark 的配置值，请依次选择“配置历史记录”、“Spark2”。  选择“配置”选项卡，然后在服务列表中选择 `Spark` 或 `Spark2`（取决于版本）链接。  此时会显示群集的配置值列表：
 
-![Spark 配置](./media/apache-spark-settings/spark-config.png)
+![Spark 配置](./media/apache-spark-settings/spark-configurations.png)
 
 若要查看和更改单个 Spark 配置值，请在链接标题中选择包含单词“spark”的任何链接。  Spark 配置包括以下类别的自定义配置值和高级配置值：
 
@@ -83,7 +82,7 @@ Apache Spark 有三个系统配置位置：
 
 下图显示了关键的 Spark 对象：驱动程序及其关联的 Spark 上下文，以及群集管理器及其 *n* 个工作节点。  每个工作节点包括执行器、缓存和 *n* 个任务实例。
 
-![群集对象](./media/apache-spark-settings/spark-arch.png)
+![群集对象](./media/apache-spark-settings/hdi-spark-architecture.png)
 
 Spark 作业使用辅助角色资源（具体而言是内存），因此，我们往往会调整工作节点执行器的 Spark 配置值。
 
@@ -94,7 +93,7 @@ Spark 作业使用辅助角色资源（具体而言是内存），因此，我�
 
 Spark 应用程序 UI 是有关 Spark 执行器使用的资源的另一个信息源。  在 Spark UI 中，选择“执行器”选项卡可以显示执行器使用的配置和资源的“摘要”与“详细信息”视图。  借助这些视图可以确定是要更改整个群集的 Spark 执行器的默认值，还是更改一组特定的作业执行。
 
-![Spark 执行器](./media/apache-spark-settings/spark-executors.png)
+![Spark 执行器](./media/apache-spark-settings/apache-spark-executors.png)
 
 或者，可以使用 Ambari REST API 以编程方式验证 HDInsight 和 Spark 群集的配置设置。  [GitHub 上的 Apache Ambari API 参考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)提供了详细信息。
 
@@ -106,7 +105,7 @@ Spark 应用程序 UI 是有关 Spark 执行器使用的资源的另一个信息
 
 下面是使用不同配置值的两个工作节点的示例：
 
-![双节点配置](./media/apache-spark-settings/executor-config.png)
+![双节点配置](./media/apache-spark-settings/executor-configuration.png)
 
 以下列表显示关键的 Spark 执行器内存参数。
 
@@ -117,7 +116,7 @@ Spark 应用程序 UI 是有关 Spark 执行器使用的资源的另一个信息
 
 YARN 控制每个 Spark 节点上的容器使用的最大内存量总计。 下图显示了 YARN 配置对象与 Spark 对象之间的节点关系。
 
-![YARN Spark 内存管理](./media/apache-spark-settings/yarn-spark-memory.png)
+![YARN Spark 内存管理](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>更改 Jupyter Notebook 中运行的应用程序的参数
 
@@ -137,8 +136,8 @@ HDInsight 中的 Spark 群集默认包含许多组件。 其中每个组件包�
 以下代码演示如何更改 Jupyter Notebook 中运行的应用程序的配置。
 
 ```
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 ```
 
 ## <a name="conclusion"></a>结束语

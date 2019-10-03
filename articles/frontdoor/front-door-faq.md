@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 256435dfd016ebbd86dbbe49f4abbb346fb1cd19
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 37ec8a611f94b869c8277c135f8e6dc5d2108392
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407741"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442896"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>有关 Azure 第一道防线服务常见问题
 
@@ -24,7 +24,7 @@ ms.locfileid: "58407741"
 
 1. 本文评论部分。
 2. [Azure 的第一道防线服务 UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025)。
-3. **Microsoft 支持部门：** 若要创建新的支持请求，请在 Azure 门户中的“帮助”选项卡上，选择“帮助和支持”按钮，然后选择“新建支持请求”。
+3. **Microsoft 支持部门：** 若要创建新的支持请求，请在 Azure 门户中的“帮助”  选项卡上，选择“帮助和支持”  按钮，然后选择“新建支持请求”  。
 
 ## <a name="general"></a>常规
 
@@ -75,29 +75,38 @@ Azure 的第一道防线服务都有来自 Microsoft 的 Azure CDN 的 POP （�
 
 ### <a name="is-azure-front-door-service-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>是我的应用程序专门的部署的第一道防线的 Azure 服务或为其所有客户之间都共享？
 
-第一道防线的 azure 服务是全球分布的多租户服务。 因此，所有客户之间共享的基础结构的第一道防线。 但是，通过创建第一道防线定义你的应用程序所需的特定配置和 
+第一道防线的 azure 服务是全球分布的多租户服务。 因此，所有客户之间共享的基础结构的第一道防线。 但是，通过创建的第一道防线配置文件，你定义你的应用程序所需的特定配置，对您指定的地址进行任何更改会影响其他第一道防线配置。
 
 ### <a name="is-http-https-redirection-supported"></a>是否支持 HTTP 到 HTTPS 的重定向？
 
-第一道防线目前不支持 URL 重定向。
+是的。 实际上，Azure 第一道防线服务支持主机、 路径、 查询字符串重定向以及 URL 重定向的一部分。 详细了解如何[URL 重定向](front-door-url-redirect.md)。 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>在何种顺序的路由规则处理？
 
 在第一道防线的路由未排序并基于最佳匹配项选择具体的路由。 详细了解如何[前门如何匹配请求路由规则](front-door-route-matching.md)。
 
-### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-service"></a>如何向我的后端到仅 Azure 第一道防线服务锁定的访问？
+### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>如何向我的后端到仅 Azure 第一道防线锁定的访问？
 
-你可以配置为接受来自 Azure 第一道防线服务的流量仅在后端的 IP ACLing。 你可以限制应用程序接受仅来自 Azure 第一道防线服务的后端 IP 空间的传入连接。 我们正在致力于与集成[Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)但现在可以引用按如下所示的 IP 范围：
+若要锁定应用程序接受仅来自特定第一道防线的流量，将需要设置你的后端 IP Acl，然后限制的 X-转发-主机发送的标头由 Azure 第一道防线的可接受值集。 以下步骤详细查看如下所示：
+
+- 配置执行 IP Acl 的后端以接受来自 Azure 第一道防线的后端 IP 地址空间和 Azure 的基础结构服务的流量。 我们正在致力于与集成[Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)但现在可以引用按如下所示的 IP 范围：
  
-- **IPv4** - `147.243.0.0/16`
-- **IPv6** - `2a01:111:2050::/44`
+    - 第一道防线的**IPv4**后端 IP 空间： `147.243.0.0/16`
+    - 第一道防线的**IPv6**后端 IP 空间： `2a01:111:2050::/44`
+    - Azure 的[基本基础结构服务](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)通过虚拟化的主机 IP 地址：`168.63.129.16`和 `169.254.169.254`
 
-> [!WARNING]
-> 我们的后端 IP 空间可能会更高版本更改，但是，我们将确保之前发生这种情况，我们将使用已集成[Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)。 我们建议你订阅了[Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)进行任何更改或更新。 
+    > [!WARNING]
+    > 第一道防线的后端 IP 空间可能会更高版本更改，但是，我们将确保之前发生这种情况，我们将使用已集成[Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)。 我们建议你订阅了[Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)进行任何更改或更新。
+
+-   针对传入标头的值筛选器**X 转发主机**发送的第一道防线。 第一道防线配置中定义的标头唯一允许的值应为所有前端主机。事实上甚至更具体而言，仅主机名要接受来自，你的此特定后端上的流量。
+    - 示例 – 让我们假设第一道防线配置具有以下前端主机 _`contoso.azurefd.net`_ （A)， _`www.contoso.com`_ （B)、 _ (C) 和 _`notifications.contoso.com`_ （D)。 我们假设您有两个后端 X 和 Y。 
+    - 后端 X 应仅将流量来自主机名 A 和 b。 后端 Y 可以将流量从 A，C 和 d。
+    - 因此，在后端 X 应仅接受流量的标头**X 转发主机**' 设置为 _`contoso.azurefd.net`_ 或 _`www.contoso.com`_ 。 对于所有其他后端 X 应拒绝流量。
+    - 同样，在后端 y 轴上应仅接受流量的标头"**X 转发主机**"设置为 _`contoso.azurefd.net`_ ， _`api.contoso.com`_ 或 _`notifications.contoso.com`_ . 对于所有其他后端 Y 应拒绝流量。
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>任意广播 IP 可以更改我第一道防线的生存期内？
 
-在第一道防线的前端任意广播 IP 通常不能更改和可能的第一道防线生存期内保持静态。 但是，有**不能保证**的相同。 请先将其做不需要任何直接依赖项在 IP。  
+在第一道防线的前端任意广播 IP 通常不能更改和可能的第一道防线生存期内保持静态。 但是，有**不能保证**的相同。 请先将其做不需要任何直接依赖项在 IP。
 
 ### <a name="does-azure-front-door-service-support-static-or-dedicated-ips"></a>Azure 第一道防线服务是否支持静态或专用 Ip？
 
@@ -142,6 +151,11 @@ Azure 的第一道防线 (AFD) 需要公共 IP 或将流量路由到可公开解
 若要启用用于安全地交付内容在第一道防线自定义域的 HTTPS 协议，你可以选择使用由 Azure 第一道防线服务管理的证书或使用你自己的证书。
 第一道防线托管 Digicert 通过标准的 SSL 证书的选项预配并存储在 Front 门的密钥保管库。 如果您选择使用你自己的证书，则可以登记受支持的 ca 颁发的证书，可以为标准 SSL、 扩展的验证证书或甚至的通配符证书。 不支持自签名的证书。 了解[如何为自定义域启用 HTTPS](https://aka.ms/FrontDoorCustomDomainHTTPS)。
 
+### <a name="does-front-door-support-autorotation-of-certificates"></a>第一道防线是否支持 autorotation 证书？
+
+第一道防线托管证书选项时，证书是 autorotated 的第一道防线。 如果使用的是第一道防线托管的证书，请参阅证书到期日期是 60 天内，文件支持票证。
+</br>对于您自己的自定义 SSL 证书，不支持 autorotation。 类似于它如何设置第一个多时间用于给定的自定义域，你将需要正确的证书版本到点第一道防线，密钥保管库中并确保第一道防线的服务主体仍有权访问密钥保管库。 第一道防线通过此更新的证书推出操作是原子的不会导致任何生产影响提供使用者名称或 SAN 证书不会更改。
+
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door-service"></a>Azure 第一道防线服务支持的当前密码套件是什么？
 
 以下是 Azure 第一道防线服务支持的当前密码套件：
@@ -171,7 +185,7 @@ Azure 的第一道防线 (AFD) 需要公共 IP 或将流量路由到可公开解
 
 ### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>是否可以配置 SSL 策略来控制 SSL 协议版本？
 
-不可以，目前不支持第一道防线拒绝特定 TLS 版本，也可以设置最小的 TLS 版本。 
+不可以，目前不支持第一道防线拒绝特定 TLS 版本，也可以设置的最低 TLS 版本。 
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>可以配置第一道防线，以仅支持特定的密码套件吗？
 

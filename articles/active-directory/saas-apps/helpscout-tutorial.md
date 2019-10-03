@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35f9a8949f5b51f88b9297890fc5562e7b8dd591
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3625a6bbf22a2d51546a91e8a5f7c58b7fbb264f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273373"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101176"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>教程：Azure Active Directory 与 Help Scout 集成
 
@@ -54,25 +54,25 @@ ms.locfileid: "59273373"
 
 **要从库中添加 Help Scout，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Help Scout”，在结果面板中选择“Help Scout”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“Help Scout”，在结果面板中选择“Help Scout”，然后单击“添加”按钮添加该应用程序    。
 
      ![结果列表中的 Help Scout](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Help Scout 的 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Help Scout 的 Azure AD 单一登录。 
 若要使单一登录有效，需要在 Azure AD 用户与 Help Scout 相关用户之间建立链接关系。
 
 要配置和测试 Help Scout 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -90,7 +90,7 @@ ms.locfileid: "59273373"
 
 若要配置 Help Scout 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 **Help Scout** 应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 **Help Scout** 应用程序集成页上，选择“单一登录”。 
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,32 +98,32 @@ ms.locfileid: "59273373"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
 
     ![Help Scout 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. “标识符”是 Help Scout 的“受众 URI (服务提供程序实体 ID)”，以 `urn:` 开头
+    a. “标识符”是 Help Scout 的“受众 URI (服务提供程序实体 ID)”，以 `urn:` 开头  
 
-    b. “回复 URL”是 Help Scout 的“发回 URL (断言使用者服务 URL)”，以 `https://` 开头 
+    b. “回复 URL”是 Help Scout 的“发回 URL (断言使用者服务 URL)”，以 `https://` 开头   
 
     > [!NOTE]
-    > 这些 URL 中的值仅用于演示。 需要使用实际回复 URL 和标识符更新这些值。 可从“身份验证”部分下面的“单一登录”选项卡获取这些值，本教程稍后将会介绍。
+    > 这些 URL 中的值仅用于演示。 需要使用实际回复 URL 和标识符更新这些值。 可从“身份验证”部分下面的“单一登录”选项卡获取这些值，本教程稍后将会介绍。 
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![Help Scout 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，键入 URL `https://secure.helpscout.net/members/login/`
+    在“登录 URL”文本框中，键入 URL `https://secure.helpscout.net/members/login/` 
 
-6. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
-7. 在“设置 Help Scout”部分中，根据要求复制相应 URL。
+7. 在“设置 Help Scout”部分中，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -137,11 +137,11 @@ ms.locfileid: "59273373"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Help Scout 公司站点。
 
-2. 在顶部菜单中单击“管理”，并从下拉菜单中选择“公司”。
+2. 在顶部菜单中单击“管理”，并从下拉菜单中选择“公司”。  
 
     ![配置单一登录](./media/helpscout-tutorial/settings1.png)
 
-3. 从左侧导航窗格中选择“身份验证”。
+3. 从左侧导航窗格中选择“身份验证”。 
 
     ![配置单一登录](./media/helpscout-tutorial/settings2.png)
 
@@ -149,21 +149,21 @@ ms.locfileid: "59273373"
 
     ![配置单一登录](./media/helpscout-tutorial/settings3.png)
 
-    a. 复制“发回 URL (断言使用者服务 URL)”值，并将其粘贴到 Azure 门户的“基本 SAML 配置”部分的“回复 URL”文本框中。
+    a. 复制“发回 URL (断言使用者服务 URL)”值，并将其粘贴到 Azure 门户的“基本 SAML 配置”部分的“回复 URL”文本框中。   
 
-    b. 复制“受众 URL (服务提供商实体 ID)”值，并将其粘贴到 Azure 门户的“基本 SAML 配置”部分的“标识符”文本框中。
+    b. 复制“受众 URL (服务提供商实体 ID)”值，并将其粘贴到 Azure 门户的“基本 SAML 配置”部分的“标识符”文本框中。   
 
-5. 将“启用 SAML”切换为打开状态，并执行以下步骤：
+5. 将“启用 SAML”切换为打开状态，并执行以下步骤： 
 
     ![配置单一登录](./media/helpscout-tutorial/settings4.png)
 
-    a. 在“单一登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
+    a. 在“单一登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    b. 单击“上传证书”，上传已从 Azure 门户下载的**证书 (Base64)**。
+    b. 单击“上传证书”，上传已从 Azure 门户下载的**证书 (Base64)**  。
 
-    c. 在“电子邮件域”文本框中输入组织的电子邮件域，例如 `contoso.com`。 可使用逗号分隔多个域。 每当 Help Scout 用户或管理员在 [Help Scout 登录页](https://secure.helpscout.net/members/login/)上输入该特定域时，都会路由到“标识提供者”，以使用其凭据进行身份验证。
+    c. 在“电子邮件域”文本框中输入组织的电子邮件域，例如 `contoso.com`。  可使用逗号分隔多个域。 每当 Help Scout 用户或管理员在 [Help Scout 登录页](https://secure.helpscout.net/members/login/)上输入该特定域时，都会路由到“标识提供者”，以使用其凭据进行身份验证。
 
-    d. 最后，可以希望用户只能通过此方法登录到 Help Scout，可将“强制 SAML 登录”切换为打开状态。 如果希望用户仍旧使用其 Help Scout 凭据登录，可将此选项切换为关闭状态。 即使启用此选项，帐户所有者也始终能够使用其帐户密码登录到 Help Scout。
+    d. 最后，可以希望用户只能通过此方法登录到 Help Scout，可将“强制 SAML 登录”切换为打开状态。  如果希望用户仍旧使用其 Help Scout 凭据登录，可将此选项切换为关闭状态。 即使启用此选项，帐户所有者也始终能够使用其帐户密码登录到 Help Scout。
 
     e. 单击“ **保存**”。
 
@@ -171,11 +171,11 @@ ms.locfileid: "59273373"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -183,40 +183,40 @@ ms.locfileid: "59273373"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过向 Britta Simon 授予 Help Scout 的访问权限使之能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Help Scout”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Help Scout”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Help Scout”。
+2. 在应用程序列表中，选择“Help Scout”  。
 
     ![应用程序列表中的 Help Scout 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-help-scout-test-user"></a>创建 Help Scout 测试用户
 

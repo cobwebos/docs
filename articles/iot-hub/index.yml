@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bf548ff69d7ce92e8d08759a96a241adc5a36c0b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828122"
 documentType: LandingData
 title: IoT 中心文档
 metadata:
@@ -20,78 +14,78 @@ metadata:
 abstract:
   description: 了解如何使用 IoT 中心来连接、监视和控制数十亿个物联网资产。 教程、API 参考、视频和其他文档可帮助你在 IoT 设备与解决方案后端之间部署可靠的双向通信。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_nodejs.svg
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_NET.svg
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_java.svg
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_python.svg
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_android.svg
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_c.svg
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_ios.svg
-    rows:
-    - title: 发送遥测
-      values:
-      - href: /azure/iot-hub/quickstart-send-telemetry-node
-      - href: /azure/iot-hub/quickstart-send-telemetry-dotnet
-      - href: /azure/iot-hub/quickstart-send-telemetry-java
-      - href: /azure/iot-hub/quickstart-send-telemetry-python
-      - href: /azure/iot-hub/quickstart-send-telemetry-android
-      - href: /azure/iot-hub/quickstart-send-telemetry-c
-      - href: /azure/iot-hub/quickstart-send-telemetry-ios
-    - title: 控制设备
-      values:
-      - href: /azure/iot-hub/quickstart-control-device-node
-      - href: /azure/iot-hub/quickstart-control-device-dotnet
-      - href: /azure/iot-hub/quickstart-control-device-java
-      - href: /azure/iot-hub/quickstart-control-device-python
-      - href: /azure/iot-hub/quickstart-control-device-android
-    - title: 使用设备流进行通信（预览版）
-      values:
-      - href: /azure/iot-hub/quickstart-device-streams-echo-nodejs
-      - href: /azure/iot-hub/quickstart-device-streams-echo-csharp
-      - href: 
-      - href: 
-      - href: 
-      - href: /azure/iot-hub/quickstart-device-streams-echo-c
-      - href: 
-    - title: 使用设备流发送 SSH/RDP 流量（预览版）
-      values:
-      - href: /azure/iot-hub/quickstart-device-streams-proxy-nodejs
-      - href: /azure/iot-hub/quickstart-device-streams-proxy-csharp
-      - href: 
-      - href: 
-      - href: 
-      - href: /azure/iot-hub/quickstart-device-streams-proxy-c
-      - href: 
-- title: 分步教程
-  items:
-  - type: list
-    style: ordered
+  - title: 5 分钟快速入门
     items:
-    - html: <a href="/azure/iot-hub/tutorial-routing">在 IoT 中心配置自动消息路由</a>
-    - html: <a href="/azure/iot-hub/tutorial-device-twins">从后端服务配置设备</a>
-    - html: <a href="/azure/iot-hub/tutorial-firmware-update">实现设备固件更新过程</a>
-    - html: <a href="/azure/iot-hub/tutorial-connectivity">使用模拟设备测试 IoT 中心的连接</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_NET.svg'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_python.svg'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_android.svg'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_c.svg'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_ios.svg'
+        rows:
+          - title: 发送遥测
+            values:
+              - href: /azure/iot-hub/quickstart-send-telemetry-node
+              - href: /azure/iot-hub/quickstart-send-telemetry-dotnet
+              - href: /azure/iot-hub/quickstart-send-telemetry-java
+              - href: /azure/iot-hub/quickstart-send-telemetry-python
+              - href: /azure/iot-hub/quickstart-send-telemetry-android
+              - href: /azure/iot-hub/quickstart-send-telemetry-c
+              - href: /azure/iot-hub/quickstart-send-telemetry-ios
+          - title: 控制设备
+            values:
+              - href: /azure/iot-hub/quickstart-control-device-node
+              - href: /azure/iot-hub/quickstart-control-device-dotnet
+              - href: /azure/iot-hub/quickstart-control-device-java
+              - href: /azure/iot-hub/quickstart-control-device-python
+              - href: /azure/iot-hub/quickstart-control-device-android
+          - title: 使用设备流进行通信（预览版）
+            values:
+              - href: /azure/iot-hub/quickstart-device-streams-echo-nodejs
+              - href: /azure/iot-hub/quickstart-device-streams-echo-csharp
+              - href: null
+              - href: null
+              - href: null
+              - href: /azure/iot-hub/quickstart-device-streams-echo-c
+              - href: null
+          - title: 使用设备流发送 SSH/RDP 流量（预览版）
+            values:
+              - href: /azure/iot-hub/quickstart-device-streams-proxy-nodejs
+              - href: /azure/iot-hub/quickstart-device-streams-proxy-csharp
+              - href: null
+              - href: null
+              - href: null
+              - href: /azure/iot-hub/quickstart-device-streams-proxy-c
+              - href: null
+  - title: 分步教程
     items:
-    - title: 命令行
-      html: <p><a href="/cli/azure/iot">Azure CLI</a></p>
-    - title: 语言
-      html: <p><a href="/dotnet/api/microsoft.azure.devices">.NET（服务）</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET（设备）</a></p><p><a href="https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/">C（设备 SDK）</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java（服务）</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java（设备）</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js（服务）</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js（设备）</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/iothub/device">REST（设备）</a></p><p><a href="/rest/api/iothub/service">REST（服务）</a></p><p><a href="/rest/api/iothub/iothubresource">REST（IoT 中心资源）</a></p><p><a href="/rest/api/iothub/certificates">REST（证书）</a></p>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/iot-hub/tutorial-routing">在 IoT 中心配置自动消息路由</a>
+          - html: <a href="/azure/iot-hub/tutorial-device-twins">从后端服务配置设备</a>
+          - html: <a href="/azure/iot-hub/tutorial-firmware-update">实现设备固件更新过程</a>
+          - html: <a href="/azure/iot-hub/tutorial-connectivity">使用模拟设备测试 IoT 中心的连接</a>
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="/cli/azure/iot">Azure CLI</a></p>
+          - title: Languages
+            html: '<p><a href="/dotnet/api/microsoft.azure.devices">.NET（服务）</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET（设备）</a></p><p><a href="https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/">C（设备 SDK）</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java（服务）</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java（设备）</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js（服务）</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js（设备）</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/iothub/device">REST（设备）</a></p><p><a href="/rest/api/iothub/service">REST（服务）</a></p><p><a href="/rest/api/iothub/iothubresource">REST（IoT 中心资源）</a></p><p><a href="/rest/api/iothub/certificates">REST（证书）</a></p>

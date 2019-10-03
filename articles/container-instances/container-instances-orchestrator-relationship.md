@@ -3,17 +3,18 @@ title: Azure 容器实例和容器业务流程
 description: 了解 Azure 容器实例如何与容器业务流程协调程序交互。
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/30/2018
+ms.date: 04/15/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0a1e3c2facc10b68fe4b33d4cd0531f181b1e813
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 044b74e1a8683c6beb0220c1cf9fb97403286a95
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838129"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972250"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器实例和容器协调器
 
@@ -56,11 +57,11 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 
 ## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>示例实现：Azure Kubernetes 服务 (AKS) 的虚拟节点
 
-可以使用在 Azure 容器实例中动态创建的虚拟节点，来快速缩放 [Azure Kubernetes 服务](../aks/intro-kubernetes.md) (AKS) 群集中的应用程序工作负载。 虚拟节点当前处于预览阶段，ACI 和 AKS 群集中运行的 Pod 可以借助它进行网络通信。 
+可以使用在 Azure 容器实例中动态创建的虚拟节点，来快速缩放 [Azure Kubernetes 服务](../aks/intro-kubernetes.md) (AKS) 群集中的应用程序工作负载。 ACI 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 
 
 目前虚拟节点支持 Linux 容器实例。 可通过 [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) 或 [Azure门户](https://go.microsoft.com/fwlink/?linkid=2047545)开始使用虚拟节点。
 
-虚拟节点通过注册为具有无限容量的节点，来使用开源[虚拟 Kubelet][aci-connector-k8s] 模拟 Kubernetes [kubelet][kubelet-doc]。 虚拟 Kubelet 作为 Azure 容器实例中的容器组调度 [Pod][pod-doc] 创建。
+虚拟节点使用开源[虚拟 Kubelet][aci-connector-k8s] ，通过将其注册为具有无限容量的节点来模拟 Kubernetes [Kubelet][kubelet-doc] 。 Virtual Kubelet 调度在 Azure 容器实例中将 pod[创建为容器][pod-doc]组。
 
 请参阅[虚拟 Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) 项目，以获取更多将 Kubernetes API 扩展到无服务器容器平台的示例。
 
@@ -71,6 +72,6 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 <!-- IMAGES -->
 
 <!-- LINKS -->
-[aci-connector-k8s]: https://github.com/virtual-kubelet/virtual-kubelet/tree/master/providers/azure
+[aci-connector-k8s]: https://github.com/virtual-kubelet/azure-aci
 [kubelet-doc]: https://kubernetes.io/docs/admin/kubelet/
 [pod-doc]: https://kubernetes.io/docs/concepts/workloads/pods/pod/

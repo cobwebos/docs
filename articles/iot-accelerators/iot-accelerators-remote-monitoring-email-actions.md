@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 693da06ce14a4854d5db49f588fa29d791060166
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fbb5f92258ff31dd7077bb1ade7fa7e5644c8bac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108097"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65466939"
 ---
 # <a name="add-an-email-action"></a>添加电子邮件操作
 
@@ -21,7 +21,7 @@ ms.locfileid: "58108097"
 
 要完成本操作指南中的步骤，需要在 Azure 订阅中部署远程监视解决方案加速器实例。
 
-要创建或修改规则，你必须是[“管理员”或具有正确的权限](iot-accelerators-remote-monitoring-rbac.md)。
+要创建或修改规则，你必须是[“管理员”或具有正确的权限](iot-accelerators-remote-monitoring-rbac.md)  。
 
 ## <a name="edit-an-existing-rule"></a>编辑现有规则
 
@@ -29,17 +29,17 @@ ms.locfileid: "58108097"
 
 1. 导航到远程监视解决方案。
 
-1. 从“仪表板”导航到“规则”页面：
+1. 从“仪表板”导航到“规则”页面   ：
 
     ![“规则”页面](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. 单击要修改的现有规则旁边的复选框，然后单击顶部的“编辑”。 随即出现可编辑的“规则”面板。
+1. 单击要修改的现有规则旁边的复选框，然后单击顶部的“编辑”  。 随即出现可编辑的“规则”面板  。
 
-1. 在“操作”部分中，将“已启用电子邮件”切换为“开”。
+1. 在“操作”部分中，将“已启用电子邮件”切换为“开”    。
 
 1. 首次在解决方案加速器中启用电子邮件操作时，必须[登录 Outlook](#outlook)。
 
-1. 在收件人框中输入电子邮件地址，然后按每个电子邮件地址的“Enter”键以添加：
+1. 在收件人框中输入电子邮件地址，然后按每个电子邮件地址的“Enter”键以添加  ：
 
     ![地址项](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
@@ -47,9 +47,9 @@ ms.locfileid: "58108097"
 
 1. 以纯文本格式输入电子邮件收件人的任何其他备注。 如果[编辑电子邮件模板](#htmledit)，可以使用 HTML 格式设置。
 
-1. 确保“规则状态”设置为“已启用”。
+1. 确保“规则状态”设置为“已启用”   。
 
-1. 单击“应用”。
+1. 单击“应用”  。
 
 ## <a name="create-a-new-rule"></a>创建新规则
 
@@ -57,17 +57,17 @@ ms.locfileid: "58108097"
 
 1. 导航到远程监视解决方案。
 
-1. 从“仪表板”导航到“规则”页面：
+1. 从“仪表板”导航到“规则”页面   ：
 
     ![“规则”页面](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. 请按照[创建规则部分](iot-accelerators-remote-monitoring-automate.md#create-a-rule)中的步骤进行操作。 请按照[创建高级规则](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule)部分中的步骤进行操作，直到设置“严重级别”。 此时请勿单击“应用”。
+1. 请按照[创建规则部分](iot-accelerators-remote-monitoring-automate.md#create-a-rule)中的步骤进行操作。 请按照[创建高级规则](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule)部分中的步骤进行操作，直到设置“严重级别”  。 此时请勿单击“应用”  。
 
-1. 在“操作”部分中，将“已启用电子邮件”切换为“开”。
+1. 在“操作”部分中，将“已启用电子邮件”切换为“开”    。
 
 1. 首次在解决方案加速器中启用电子邮件操作时，必须[登录 Outlook](#outlook)。
 
-1. 在收件人框中输入电子邮件地址，然后按每个电子邮件地址的“Enter”键以添加：
+1. 在收件人框中输入电子邮件地址，然后按每个电子邮件地址的“Enter”键以添加  ：
 
     ![地址项](./media/iot-accelerators-remote-monitoring-email-actions/address-email.png)
 
@@ -75,9 +75,9 @@ ms.locfileid: "58108097"
 
 1. 以纯文本格式输入电子邮件收件人的任何其他备注。 如果[编辑电子邮件模板](#htmledit)，可以使用 HTML 格式设置。
 
-1. 确保“规则状态”设置为“已启用”。
+1. 确保“规则状态”设置为“已启用”   。
 
-1. 单击“应用”。
+1. 单击“应用”  。
 
 现已启用包含电子邮件操作的规则。 每次触发操作时，新的电子邮件都会发送给收件人。
 
@@ -90,7 +90,7 @@ ms.locfileid: "58108097"
 
 ### <a name="contributor-role-outlook-setup"></a>参与者角色 Outlook 安装向导
 
-如果订阅中具有“参与者”角色的某个人部署了解决方案加速器，则该应用程序没有足够的权限来通过 Web UI 设置和验证电子邮件操作。
+如果订阅中具有“参与者”角色的某个人部署了解决方案加速器，则该应用程序没有足够的权限来通过 Web UI 设置和验证电子邮件操作  。
 
 在开始之前，请创建 Outlook 帐户以用于从解决方案加速器发送电子邮件通知。
 
@@ -100,27 +100,27 @@ ms.locfileid: "58108097"
 
 1. 导航到解决方案加速器的资源组。
 
-1. 单击“office365-connector”：
+1. 单击“office365-connector”  ：
 
-    ![API 连接](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector.png)
+    ![API 连接](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector1.png)
 
 1. 单击横幅，开始授权过程：
 
-    ![授权](./media/iot-accelerators-remote-monitoring-email-actions/connector.png)
+    ![授权](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
 
-1. 单击“授权”。 系统会提示你进行登录。 用于登录的帐户应是该应用程序用于发送电子邮件通知的电子邮件地址：
+1. 单击“授权”  。 系统会提示你进行登录。 用于登录的帐户应是该应用程序用于发送电子邮件通知的电子邮件地址：
 
     ![授权按钮](./media/iot-accelerators-remote-monitoring-email-actions/authorize.png)
 
-1. 在底部单击“保存”。 如果横幅消失，则授权将会成功。
+1. 在底部单击“保存”。  如果横幅消失，则授权将会成功。
 
-1. 要更改发送通知的电子邮件地址，请单击“编辑 API 连接”。
+1. 要更改发送通知的电子邮件地址，请单击“编辑 API 连接”  。
 
-    ![更改电子邮件](./media/iot-accelerators-remote-monitoring-email-actions/editemail.png)
+    ![更改电子邮件](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
 
 ### <a name="owner-role-outlook-setup"></a>所有者角色 Outlook 设置
 
-如果订阅中具有“所有者”角色的某个人部署了解决方案加速器，则该应用程序可以验证是否已通过 Web UI 正确设置了电子邮件操作。
+如果订阅中具有“所有者”角色的某个人部署了解决方案加速器，则该应用程序可以验证是否已通过 Web UI 正确设置了电子邮件操作。 
 
 在开始之前，请创建 Outlook 帐户以用于从解决方案加速器发送电子邮件通知。
 
@@ -130,7 +130,7 @@ ms.locfileid: "58108097"
 
    ![登录 Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
 
-1. 单击“授权”。 系统会提示你进行登录。 用于登录的帐户应是该应用程序用于发送电子邮件通知的电子邮件地址：
+1. 单击“授权”  。 系统会提示你进行登录。 用于登录的帐户应是该应用程序用于发送电子邮件通知的电子邮件地址：
 
 1. 单击“ **保存**”。 返回到解决方案加速器并刷新页面。
 
@@ -142,7 +142,7 @@ ms.locfileid: "58108097"
 
 现成的远程监视解决方案加速器为电子邮件操作提供了基本的 HTML 模板。 电子邮件模板使用电子邮件操作设置中的值。 下面是电子邮件示例：
 
-![电子邮件示例](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate.png)
+![电子邮件示例](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
 
 以下步骤介绍如何编辑 HTML 电子邮件模板。 例如，可以包含更多信息或添加自定义图像：
 

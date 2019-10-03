@@ -1,19 +1,19 @@
 ---
 title: Azure 快速入门 - 使用 Azure 门户在 Azure 存储中创建队列 | Microsoft Docs
 description: 在本快速入门中，我们将使用 Azure 门户创建一个队列。 然后使用 Azure 门户添加消息，查看消息的属性，并将消息取消排队。
-services: storage
-author: tamram
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 03/06/2019
-ms.author: tamram
-ms.openlocfilehash: 8a5dba5f949d5c20e0fbf752caac4125b8aecd52
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.service: storage
+ms.subservice: queues
+ms.topic: quickstart
+ms.reviewer: cbrooks
+ms.openlocfilehash: d2f7b01c03b877a3dede496fc02f0d0cc9525cef
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726237"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721319"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建队列并添加消息
 
@@ -28,10 +28,10 @@ ms.locfileid: "57726237"
 若要在 Azure 门户中创建队列，请执行以下步骤：
 
 1. 导航到 Azure 门户中的新存储帐户。
-2. 在存储帐户的左侧菜单中滚动到“队列服务”部分，然后选择“队列”。
-3. 选择“+ 队列”按钮。
+2. 在存储帐户的左侧菜单中滚动到“队列服务”部分，然后选择“队列”。  
+3. 选择“+ 队列”按钮。 
 4. 键入新队列的名称。 队列名称必须小写，必须以字母或数字开头，并且只能包含字母、数字和短划线 (-) 字符。
-6. 选择“确定”以创建队列。
+6. 选择“确定”以创建队列。 
 
     ![显示如何在 Azure 门户中创建队列的屏幕截图](media/storage-quickstart-queues-portal/create-queue.png)
 
@@ -40,10 +40,10 @@ ms.locfileid: "57726237"
 接下来，将消息添加到新队列。 消息的大小最大可为 64 KB。
 
 1. 从存储帐户中的队列列表内选择新队列。
-1. 选择“+ 添加消息”按钮以将消息添加到队列。 在“消息文本”字段中输入消息。 
+1. 选择“+ 添加消息”按钮以将消息添加到队列。  在“消息文本”字段中输入消息。  
 1. 指定消息何时过期。 消息可以保留在队列中的最长时间为 7 天。
 1. 指示是否要将消息编码为 Base64。 建议对二进制数据编码。
-1. 选择“确定”按钮添加该消息。
+1. 选择“确定”按钮添加该消息。 
 
     ![显示如何将消息添加到队列的屏幕截图](media/storage-quickstart-queues-portal/add-message.png)
 

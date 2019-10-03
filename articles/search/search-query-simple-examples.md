@@ -1,33 +1,35 @@
 ---
-title: 使用"简单"的搜索语法的 Azure 搜索的查询示例
-description: 用于查询 Azure 搜索索引的全文搜索、筛选搜索、地理搜索、分面搜索和其他搜索字符串的简单查询示例。
+title: 创建简单查询-Azure 搜索
+description: 按示例学习，具体方法是根据全文搜索的简单语法、筛选器搜索、异地搜索、针对 Azure 搜索索引的分面搜索运行查询。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9b7147971bd320a11606a93ab4d988e924cf93b2
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7c4aeef07d34159e01f188effae77926895e2857
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439103"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179190"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>在 Azure 搜索中使用"简单"的搜索语法的查询示例
+# <a name="create-a-simple-query-in-azure-search"></a>在 Azure 搜索中创建简单查询
 
-[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)调用默认查询分析器，用于对 Azure 搜索索引执行全文搜索查询。 简单查询分析器速度很快，处理对象是 Azure 搜索中的全文搜索、筛选及分面搜索和地理搜索等常见方案。 本文逐步展示了一些示例，它们显示在使用简单语法时可用的查询操作。
+在 Azure 搜索中，[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)调用默认查询分析器来对索引执行全文搜索查询。 此分析器非常快捷，并处理常见方案，包括全文搜索、筛选和分面搜索以及异地搜索。 
 
-备选的查询语法是[完整的 Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)，它支持模糊搜索和通配符搜索等更复杂的查询结构，而这可能需要额外的处理时间。 要获取完整语法的详细信息和演示示例，请参阅 [Lucene 语法查询示例](search-query-lucene-examples.md)。
+本文将使用示例来阐释简单的语法。
+
+可选的查询语法是[完整的 Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)，支持更复杂的查询结构，如模糊和通配符搜索，这可能需要额外的时间来处理。 有关演示完整语法的详细信息和示例，请参阅[使用完整的 Lucene 语法](search-query-lucene-examples.md)。
 
 ## <a name="formulate-requests-in-postman"></a>在 Postman 中创建请求
 
 下面的示例使用“纽约工作岗位”搜索索引，它包含基于[纽约市开放数据](https://nycopendata.socrata.com/)计划提供的数据集得出的岗位。 此数据不应认为是最新或完整数据。 该索引位于 Microsoft 提供的一项沙盒服务上，也就是说无需 Azure 订阅或 Azure 搜索即可试用这些查询。
 
-要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[使用 REST 客户端进行浏览](search-fiddler.md)。
+要在 GET 上发出 HTTP 请求，需具备 Postman 或其等效工具。 有关详细信息，请参阅[快速入门：使用 Postman](search-get-started-postman.md)浏览 Azure Search REST API。
 
 ### <a name="set-the-request-header"></a>设置请求标头
 
@@ -50,17 +52,17 @@ URL 组合具备以下元素：
 + `https://azs-playground.search.windows.net/` 是由 Azure 搜索开发团队维护的沙盒搜索服务。 
 + `indexes/nycjobs/` 是该服务的索引集合中的“纽约工作岗位”索引。 请求中需同时具备服务名称和索引。
 + `docs` 是包含所有可搜索内容的文档集合。 请求标头中提供的查询 api-key 仅适用于针对文档集合的读取操作。
-+ `api-version=2017-11-11` 设置了 api-version（每个请求都需具备此参数）。
++ `api-version=2019-05-06` 设置了 api-version（每个请求都需具备此参数）。
 + `search=*` 是查询字符串，此元素在初始查询中为 NULL，返回前 50 个结果（此为默认情况）。
 
 ## <a name="send-your-first-query"></a>发送自己的第一个查询
 
-进行验证，将以下请求粘贴至 GET 并单击“发送”。 结果以详细的 JSON 文档形式返回。 返回整个文档，其中可以查看所有字段并将所有值。
+进行验证，将以下请求粘贴至 GET 并单击“发送”。 结果以详细的 JSON 文档形式返回。 将返回整个文档，这样就可以查看所有字段和所有值。
 
-作为验证步骤并查看文档结构，请将此 URL 粘贴到 REST 客户端。
+将此 URL 作为验证步骤粘贴到 REST 客户端中并查看文档结构。
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
 查询字符串 `search=*` 是一个未指定的搜索，它与 NULL 或空搜索等效。 它的用处不大，但却是你能执行的最简单的搜索。
@@ -83,16 +85,16 @@ URL 组合具备以下元素：
 searchFields=business_title&$select=business_title&search=*
 ```
 
-下面是使用以逗号分隔列表中的多个字段相同的查询。
+下面是同一查询，在逗号分隔列表中具有多个字段。
 
 ```http
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
 ```
 
-### <a name="full-url"></a>完整的 URL
+### <a name="full-url"></a>完整 URL
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
 
 此查询的响应应与以下屏幕截图类似。
@@ -108,21 +110,21 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 所有文档都有一个唯一标识符。 要在查找查询中试用此语法，请先返回一个文档 ID 列表，以便找到要使用的文档。 对于纽约工作岗位，标识符存储在 `id` 字段中。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=id&$select=id&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=id&$select=id&search=*
 ```
 
 下面的示例是基于 `id`“9E1E3AF9-0660-4E00-AF51-9B654925A2D5”返回特定文档的查找查询，最早出现在前面的响应中。 以下查询返回整个文档，而不仅是所选字段。 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2017-11-11&$count=true&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2019-05-06&$count=true&search=*
 ```
 
 ## <a name="example-3-filter-queries"></a>示例 3：筛选器查询
 
-[筛选器语法](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples)是可以配合 **search** 使用或单独使用的 OData 表达式。 如果筛选表达式能够完全限定所需的文档，则不带 search 参数的单独筛选器很有用。 不使用查询字符串也就不会执行词法或语言分析、评分（所有评分为 1）和排名。 请注意，搜索字符串为空。
+[筛选器语法](https://docs.microsoft.com/azure/search/search-query-odata-filter)是可以配合 **search** 使用或单独使用的 OData 表达式。 如果筛选表达式能够完全限定所需的文档，则不带 search 参数的单独筛选器很有用。 不使用查询字符串也就不会执行词法或语言分析、评分（所有评分为 1）和排名。 请注意，搜索字符串为空。
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
@@ -138,16 +140,16 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 若要使用 GET 在 Postman 中尝试此查询，可以粘贴以下字符串：
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
-另一种合并筛选器和搜索的有效方法是通过筛选表达式中的 **`search.ismatch*()`**，在其中可以使用筛选器中的搜索查询。 此筛选表达式使用计划中的通配符来选择包含字词 plan、planner、planning 等的 business_title。
+另一种合并筛选器和搜索的有效方法是通过筛选表达式中的 **`search.ismatch*()`** ，在其中可以使用筛选器中的搜索查询。 此筛选表达式使用计划中的通配符来选择包含字词 plan、planner、planning 等的 business_title。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-有关该函数的详细信息，请参阅[“筛选器示例”中的 search.ismatch](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples)。
+有关该函数的详细信息，请参阅[“筛选器示例”中的 search.ismatch](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples)。
 
 ## <a name="example-4-range-filters"></a>示例 4：范围筛选器
 
@@ -158,7 +160,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 为方便阅读，以下示例采用 POST 格式（数字范围后接文本范围）：
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "num_of_positions ge 5 and num_of_positions lt 10",
@@ -171,7 +173,7 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "business_title ge 'A*' and business_title lt 'C*'",
@@ -186,11 +188,11 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 也可以使用 GET 在 Postman 中尝试这些查询：
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
 ```
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
 ```
 
 > [!NOTE]
@@ -198,12 +200,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 ## <a name="example-5-geo-search"></a>示例 5：地理搜索
 
-示例索引包含带有纬度和经度坐标的 geo_location 字段。 此示例使用 [geo.distance 函数](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples)来筛选从起点开始，直到所提供的任意距离（以公里为单位）圆周范围内的文档。 可以调整查询 (4) 中的最后一个值，以缩小或放大查询的表面积。
+示例索引包含带有纬度和经度坐标的 geo_location 字段。 此示例使用 [geo.distance 函数](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples)来筛选从起点开始，直到所提供的任意距离（以公里为单位）圆周范围内的文档。 可以调整查询 (4) 中的最后一个值，以缩小或放大查询的表面积。
 
 为方便阅读，以下示例采用 POST 格式：
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4",
@@ -211,12 +213,12 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
       "count": "true"
     }
 ```
-为更具可读性的结果，搜索结果中剪裁掉，以包括作业 ID、 职务和工作位置。 起始坐标是从索引中的随机文档（在本例中，为斯塔顿岛上的某个工位）获取的。
+为方便阅读结果，搜索结果已剪裁，只包含职位 ID、职务和工位。 起始坐标是从索引中的随机文档（在本例中，为斯塔顿岛上的某个工位）获取的。
 
 也可以使用 GET 在 Postman 中尝试此查询：
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
 ## <a name="example-6-search-precision"></a>示例 6：搜索精度
@@ -226,19 +228,19 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 示例 1：`&search=fire` 返回 150 个结果，即整个文档中包含“fire”一词的所有匹配项。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=fire
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
 ```
 
 示例 2：`&search=fire department` 返回 2002 个结果。 针对此文档返回了包含“fire”或“department”的匹配项。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=fire department
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
 示例 3：`&search="fire department"` 返回 82 个结果。 将该字符串用引号引起来，构成对这两个词的逐字搜索，在索引中包含该组合词的已标记化的字词中查找匹配项。 这就解释了为何诸如 `search=+fire +department` 之类的搜索是不等效的。 需具备两个字词，但独立扫描它们。 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search="fire department"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
 ```
 
 ## <a name="example-7-booleans-with-searchmode"></a>示例 7：使用 searchMode 的布尔值
@@ -248,7 +250,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 使用默认的 searchMode (any) 时，返回了 2800 个文档：其中有包含多部分字词“fire department”的文档，以及所有不带有字词“Metrotech Center”的文档。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
   ![搜索模式 - any](media/search-query-simple-examples/searchmodeany.png)
@@ -256,7 +258,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 若将 searchMode 更改为 `all`，会强制累积条件并返回一个较小的结果集，它只有 21 个文档，其文档数是包含完整短语“fire department”的文档减去 Metrotech Center 工作岗位数之差。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
   ![搜索模式 - all](media/search-query-simple-examples/searchmodeall.png)
 
@@ -265,24 +267,24 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 有多个参数控制着搜索结果中包括哪些字段、每批返回多少文档以及排列顺序。 此示例重新设置了上述几个示例，使用 $select 语句和逐字搜索条件将结果限制为仅包含特定字段，返回了 82 个匹配项 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
 将此改动追加到上一示例，即可按职位排序。 这种排序是可行的，因为在该索引中 civil_service_title 是可排序的。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
 ```
 
 使用 $top 参数可实现结果分页，本例中返回了前 5 个文档：
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
 ```
 
 要获取后续 5 个文档，请跳过第一批：
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -9,24 +9,23 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 6a4ad827c39ec106acdc7b52a5b769ab6e7febf8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9de75b5537b3e267116882e7f151d893de575071
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783799"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072468"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>如何在 Azure API 管理中管理用户帐户
 
-在 API 管理（预览版）中，开发人员是公开使用 API 管理的 API 的用户。 本指南演示如何创建和邀请开发人员使用通过 API 管理实例向其提供的 API 和产品。 有关以编程方式管理用户帐户的信息，请参阅 [API 管理 REST](/rest/api/apimanagement/)参考中的[用户实体](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)文档。
+在 API 管理（预览版）中，开发人员是公开使用 API 管理的 API 的用户。 本指南演示如何创建和邀请开发人员使用通过 API 管理实例向其提供的 API 和产品。 有关以编程方式管理用户帐户的信息，请参阅 [API 管理 REST](/rest/api/apimanagement/)参考中的[用户实体](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)文档。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成此文中的任务：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 
@@ -53,7 +52,7 @@ ms.locfileid: "59783799"
 
 将显示一条确认消息，但新受邀请的开发人员之后不会出现在列表中，直到他们接受邀请。 
 
-当邀请一名开发人员时，会将一封电子邮件发送给开发人员。 此电子邮件使用模板生成并可自定义。 有关详细信息，请参阅[配置电子邮件模板][Configure email templates]。
+当邀请一名开发人员时，会将一封电子邮件发送给开发人员。 此电子邮件使用一个模板生成并可自定义。 有关详细信息，请参阅[配置电子邮件模板][Configure email templates]。
 
 一旦接受邀请，该帐户将变为活动状态。
 
@@ -69,10 +68,10 @@ ms.locfileid: "59783799"
 
 ## <a name="reset-a-user-password"></a>重置用户密码
 
-若要以编程方式处理用户帐户，请参阅 [API 管理 REST](/rest/api/apimanagement/) 参考中的[用户实体](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)文档。 要将用户帐户密码重置为特定值，可使用[更新用户](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser)操作并指定所需密码。
+若要以编程方式使用用户帐户, 请参阅[API 管理 REST API](/rest/api/apimanagement/)参考中的用户实体文档。 要将用户帐户密码重置为特定值，可使用[更新用户](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser)操作并指定所需密码。
 
 ## <a name="next-steps"></a>后续步骤
-创建开发人员帐户后，可以将其与角色相关联，并订阅产品和 API。 有关详细信息，请参阅[如何创建和使用组][How to create and use groups]。
+创建开发人员帐户后，可以将其与角色相关联，并订阅产品和 API。 有关详细信息，请参阅 [如何创建和使用组][How to create and use groups]。
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png
 [api-management-add-new-user]: ./media/api-management-howto-create-or-invite-developers/api-management-add-new-user.png

@@ -16,17 +16,17 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 607d538a2a2636e17265e95195000a777f162dc4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192330"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60263377"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>教程：为 Jive 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Jive 和取消其预配而需要在 Jive 和 Azure 中执行的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在本教程中概述的方案假定已有以下各项：
 
@@ -60,43 +60,43 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 本部分的目的是概述如何对 Jive 启用 Active Directory 用户帐户的用户预配。
 在此过程中，需要提供从 Jive.com 发出请求所需的用户安全令牌。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分  。
 
-1. 如果已为 Jive 配置单一登录，请使用搜索字段搜索 Jive 实例。 否则，请选择“添加”并在应用程序库中搜索“Jive”。 从搜索结果中选择 Jive，并将其添加到应用程序列表。
+1. 如果已为 Jive 配置单一登录，请使用搜索字段搜索 Jive 实例。 否则，请选择“添加”  并在应用程序库中搜索“Jive”  。 从搜索结果中选择 Jive，并将其添加到应用程序列表。
 
-1. 选择 Jive 实例，并选择“预配”选项卡。
+1. 选择 Jive 实例，并选择“预配”  选项卡。
 
-1. 将“预配模式”设置为“自动”。 
+1. 将“预配模式”  设置为“自动”  。 
 
     ![预配](./media/jive-provisioning-tutorial/provisioning.png)
 
-1. 在“管理员凭据”部分中，提供以下配置设置：
+1. 在“管理员凭据”  部分中，提供以下配置设置：
    
-    a. 在“Jive 管理员用户名”文本框中，键入在 Jive.com 中已分配**系统管理员**配置文件的 Jive 帐户名称。
+    a. 在“Jive 管理员用户名”  文本框中，键入在 Jive.com 中已分配**系统管理员**配置文件的 Jive 帐户名称。
    
-    b. 在“Jive 管理员密码”文本框中，键入此帐户的密码。
+    b. 在“Jive 管理员密码”  文本框中，键入此帐户的密码。
    
-    c. 在“Jive 租户 URL”文本框中，键入 Jive 租户 URL。
+    c. 在“Jive 租户 URL”  文本框中，键入 Jive 租户 URL。
       
       > [!NOTE]
       > Jive 租户 URL 是组织用于登录到 Jive 的 URL。  
       > 通常，该 URL 具有以下格式：**www.\<organization\>.jive.com**。          
 
-1. 在 Azure 门户中，单击“测试连接”确保 Azure AD 可以连接到 Jive 应用。
+1. 在 Azure 门户中，单击“测试连接”  确保 Azure AD 可以连接到 Jive 应用。
 
-1. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
+1. 在“通知电子邮件”  字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-1. 单击“保存”。
+1. 单击“保存”  。
 
-1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Jive”。
+1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Jive”  。
 
-1. 在“属性映射”部分，查看从 Azure AD 同步到 Jive 的用户属性。 选为“匹配”属性的特性用于匹配 Jive 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+1. 在“属性映射”部分，查看从 Azure AD 同步到 Jive 的用户属性  。 选为“匹配”属性的特性用于匹配 Jive 中的用户帐户以执行更新操作  。 选择“保存”按钮以提交任何更改。
 
-1. 要为 Jive 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
+1. 要为 Jive 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”  更改为“启用” 
 
-1. 单击“保存”。
+1. 单击“保存”  。
 
-这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Jive。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Jive 应用执行的所有操作。
+这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Jive。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”  部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Jive 应用执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
 

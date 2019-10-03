@@ -4,18 +4,18 @@ description: 使用 EDIFACT 消息编码器为带有 Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
 ms.topic: article
 ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
 ms.date: 01/27/2017
-ms.openlocfilehash: e1c990030a9fa9ad25950ccb24b36b82a8c69f5c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: HT
+ms.openlocfilehash: 7396aee56acdf2476ed1bb3cc5a9909349662dc7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122347"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64705536"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>为带有 Enterprise Integration Pack 的 Azure 逻辑应用编码 EDIFACT 消息
 
@@ -37,7 +37,7 @@ ms.locfileid: "43122347"
 
 2. 编码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
 
-3.  在搜索框中，输入“EDIFACT”作为筛选器。 选择“编码 EDIFACT 消息(按协议名称)”或“编码为 EDIFACT 消息(按标识)”。
+3.  在搜索框中，输入“EDIFACT”作为筛选器。 选择“编码 EDIFACT 消息(按协议名称)”或“编码为 EDIFACT 消息(按标识)”。  
    
     ![搜索 EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 
@@ -52,7 +52,7 @@ ms.locfileid: "43122347"
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”。
+5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”  。
 
     ![集成帐户连接详细信息](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "43122347"
 
 #### <a name="encode-edifact-message-by-agreement-name"></a>编码 EDIFACT 消息(按协议名称)
 
-如果选择了按协议名称编码 EDIFACT 消息，请打开“EDIFACT 协议的名称”列表，输入或选择现有的 EDIFACT 协议名称。 输入要编码的 XML 消息。
+如果选择了按协议名称编码 EDIFACT 消息，请打开“EDIFACT 协议的名称”  列表，输入或选择现有的 EDIFACT 协议名称。 输入要编码的 XML 消息。
 
 ![输入 EDIFACT 协议名称和要编码的 XML 消息](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 

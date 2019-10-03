@@ -1,19 +1,19 @@
 ---
 title: Azure 监视 REST API 演练
 description: 如何对请求进行身份验证，以及如何使用 Azure Monitor REST API 检索可用的指标定义和指标值。
-author: mcollier
+author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: mcollier
+ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: ddbc00155c3c5c136f7d33861e9ad5177df77470
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: bbc5aaf02f4ab4388e816faaf8df536770f3302a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528061"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65205637"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
 
@@ -88,7 +88,7 @@ $authHeader = @{
 2. 检索指标值
 
 > [!NOTE]
-> 有关使用 Azure REST API 进行身份验证的其他信息，请参阅[Azure REST API 参考](https://docs.microsoft.com/rest/api/azure/)。
+> 有关使用 Azure REST API 进行身份验证的其他信息，请参阅 [Azure REST API 参考](https://docs.microsoft.com/rest/api/azure/)。
 >
 >
 
@@ -98,7 +98,7 @@ $authHeader = @{
 
 **方法**：GET
 
-**请求 URI**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}* / *{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**请求 URI**: https:\/\/management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{apiVersion}*
 
 例如，若要检索 Azure 存储帐户的指标定义，请求将如下所示：
 
@@ -242,7 +242,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**请求 URI**: https\://management.azure.com/subscriptions/*{订阅 id}*/resourceGroups/*{资源组名称}*/providers/*{资源提供程序 namespace}*/*{资源类型}*/*{资源名称}*/providers/microsoft.insights/metrics？metricnames =*{指标}*& timespan =*{starttime/endtime}*& $filter =*{filter}*& resultType = 元数据和 api 版本 =*{apiVersion}*
+**请求 URI**: https\://management.azure.com/subscriptions/ *{订阅 id}* /resourceGroups/ *{资源组名称}* /providers/ *{资源提供程序 namespace}* / *{资源类型}* / *{资源名称}* /providers/microsoft.insights/metrics？metricnames = *{指标}* & timespan = *{starttime/endtime}* & $filter = *{filter}* & resultType = 元数据和 api 版本 = *{apiVersion}*
 
 例如，若要检索为“事务”指标的“API 名称维度”发出的维度值列表，其中在指定时间范围内 GeoType 维度为“Primary”，则请求将如下所示：
 
@@ -315,7 +315,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-请求 URI： https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}/providers/microsoft.insights/metrics?metricnames={metric}&timespan={starttime/endtime}&$filter={filter}&interval={timeGrain}&aggregation={aggreation}&api-version={apiVersion}
+请求 URI  ： https://management.azure.com/subscriptions/ {subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/ {resource-type}/ {resource-name}/providers/microsoft.insights/metrics?metricnames={metric}&timespan={starttime/endtime}&$filter={filter}&interval={timeGrain}&aggregation={aggreation}&api-version={apiVersion}           
 
 例如，若要在 5 分钟时间范围内按“事务”数降序值检索前 3 个 API，其中 GeotType 为 “Primary”，则请求将如下所示：
 
@@ -394,7 +394,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**请求 URI**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}* / *{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{apiVersion}*
+**请求 URI**: https:\/\/management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{apiVersion}*
 
 例如，若要检索某个 Azure 逻辑应用的指标定义，请求将如下所示：
 
@@ -467,7 +467,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-请求 URI： https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}/providers/microsoft.insights/metrics?$filter={filter}&api-version={apiVersion}
+请求 URI： https://management.azure.com/subscriptions/ {subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/ {resource-type}/ {resource-name}/providers/microsoft.insights/metrics?$filter={filter}&api-version={apiVersion}        
 
 例如，要检索给定时间范围内时间粒度为 1 小时的 RunsSucceeded 指标数据点，请求将如下所示：
 
@@ -605,13 +605,13 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 
 以下列表包含各种 Azure 资源的几个资源 ID 格式示例：
 
-* **IoT 中心** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
-* **SQL 弹性池** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{pool-db}*/elasticpools/*{sql-pool-name}*
-* **SQL 数据库 (v12)** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Sql/servers/*{server-name}*/databases/*{database-name}*
-* **服务总线** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.ServiceBus/*{namespace}*/*{servicebus-name}*
-* **虚拟机规模集** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachineScaleSets/*{vm-name}*
-* **VM** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachines/*{vm-name}*
-* **事件中心** - /subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.EventHub/namespaces/*{eventhub-namespace}*
+* **IoT 中心** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Devices/IotHubs/ *{iot-hub-name}*
+* **SQL 弹性池** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Sql/servers/ *{pool-db}* /elasticpools/ *{sql-pool-name}*
+* **SQL 数据库 (v12)** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Sql/servers/ *{server-name}* /databases/ *{database-name}*
+* **服务总线** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.ServiceBus/ *{namespace}* / *{servicebus-name}*
+* **虚拟机规模集** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachineScaleSets/ *{vm-name}*
+* **VM** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.Compute/virtualMachines/ *{vm-name}*
+* **事件中心** - /subscriptions/ *{subscription-id}* /resourceGroups/ *{resource-group-name}* /providers/Microsoft.EventHub/namespaces/ *{eventhub-namespace}*
 
 还可以通过其他方法检索资源 ID，包括使用 Azure 资源浏览器，以及通过 Azure 门户、PowerShell 或 Azure CLI 查看所需的资源。
 
@@ -657,7 +657,7 @@ Version        : 08586982649483762729
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要检索使用 Azure CLI 的 Azure 存储帐户的资源 ID，请执行`az storage account show`命令，如下面的示例中所示：
+若要使用 Azure CLI 检索某个 Azure 存储帐户的资源 ID，请执行 `az storage account show` 命令，如以下示例中所示：
 
 ```
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017

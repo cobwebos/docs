@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617202"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60348012"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 直通身份验证安全性深入研究
 
@@ -72,7 +72,7 @@ ms.locfileid: "59617202"
 
 ### <a name="authentication-agent-installation"></a>安装身份验证代理
 
-仅全局管理员可在本地服务器上安装身份验证代理（使用 Azure AD Connect 或独立安装）。 安装后，“控制面板” > “程序” > “程序和功能”列表中将显示两个新条目：
+仅全局管理员可在本地服务器上安装身份验证代理（使用 Azure AD Connect 或独立安装）。 安装后，“控制面板” > “程序” > “程序和功能”列表中将显示两个新条目：   
 - 身份验证代理应用程序本身。 此应用程序使用 [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) 特权运行。
 - 用于自动更新身份验证代理的更新程序应用程序。 此应用程序使用 [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) 特权运行。
 
@@ -99,7 +99,7 @@ ms.locfileid: "59617202"
     - Azure AD 中的根 CA 用于证书签名。 
 
       > [!NOTE]
-      > 此 CA 不在 Windows 的受信任根证书颁发机构存储中。
+      > 此 CA 不在 Windows 的受信任根证书颁发机构存储中  。
     - 此 CA 仅由直通身份验证功能使用。 CA 仅在身份验证代理注册过程中用于签署 CSR。
     -  没有任何其他 Azure AD 服务使用此 CA。
     - 证书主题（可分辨名称或 DN）将设置为租户 ID。 此 DN 是唯一标识租户的 GUID。 此 DN 将此证书限制为仅用于租户。
@@ -132,9 +132,9 @@ ms.locfileid: "59617202"
 
 1. 用户尝试访问某个应用程序，例如 [Outlook Web 应用](https://outlook.office365.com/owa)。
 2. 如果用户尚未登录，此应用程序将浏览器重定向到 Azure AD 登录页面。
-3. Azure AD STS 服务通过“用户登录”页面反向响应。
-4. 用户在“用户登录”页中输入其用户名，然后选择“下一步”按钮。
-5. 用户在“用户登录”页中输入其密码，然后选择“登录”按钮。
+3. Azure AD STS 服务通过“用户登录”页面反向响应。 
+4. 用户在“用户登录”页中输入其用户名，然后选择“下一步”按钮   。
+5. 用户在“用户登录”页中输入其密码，然后选择“登录”按钮   。
 6. 在 HTTPS POST 请求中，将用户名和密码提交到 Azure AD STS。
 7. Azure AD STS 从 Azure SQL 数据库检索租户上注册的所有身份验证代理的公钥，并将其用于加密密码。
     - 如果租户上注册了“N”个身份验证代理，它就会生成“N”个加密密码值。
@@ -186,7 +186,7 @@ ms.locfileid: "59617202"
 
 当发布新版本 （使用 bug 修复或性能增强功能），更新应用程序自动更新身份验证代理。 更新应用程序不处理租户的任何密码验证请求。
 
-Azure AD 以已签名 Windows Installer 程序包 (MSI) 的形式，托管该软件的新版本。 使用 [Microsoft 验证码](https://msdn.microsoft.com/library/ms537359.aspx)和 SHA256 摘要算法对 MSI 进行签名。 
+Azure AD 以已签名 Windows Installer 程序包 (MSI)  的形式，托管该软件的新版本。 使用 [Microsoft 验证码](https://msdn.microsoft.com/library/ms537359.aspx)和 SHA256 摘要算法对 MSI 进行签名。 
 
 ![自动更新](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 

@@ -9,19 +9,19 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: reference
-ms.date: 08/13/2018
+ms.date: 04/29/2019
 ms.reviewer: mbullwin
 ms.author: nimolnar
-ms.openlocfilehash: 7f152de89f5d374a5b97368eafe7287fc9377291
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 839ab291a99de646053b638520ce43f459d5c41f
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011324"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297012"
 ---
 # <a name="dependency-auto-collection"></a>依赖项自动收集
 
-下面是当前支持的依赖项调用的列表，系统会自动将其检测为依赖项，不需对应用程序的代码进行额外的修改。 这包括对通信库、存储客户端、日志记录和指标库的传出调用，以及对应用程序框架和服务器的传入调用。 这些依赖项在 Application Insights 的[应用程序映射](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)和[事务诊断](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)视图中可视化。 如果依赖项不在下面的列表中，仍可通过[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪它。
+下面是当前支持的依赖项调用的列表，系统会自动将其检测为依赖项，不需对应用程序的代码进行额外的修改。 这些依赖项在 Application Insights 的[应用程序映射](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)和[事务诊断](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)视图中可视化。 如果依赖项不在下面的列表中，仍可通过[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪它。
 
 ## <a name="net"></a>.NET
 
@@ -38,11 +38,6 @@ ms.locfileid: "57011324"
 | [ServiceBus 客户端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | 3.0.0 |
 | <b>存储客户端</b>|  |
 | ADO.NET | 4.5+ |
-| <b>日志记录库</b> |  |
-| ILogger | 1.1+ |
-| System.Diagnostics.Trace | 4.5+ |
-| [nLog](https://www.nuget.org/packages/NLog/) | 4.4.12+ |
-| [log4net](https://www.nuget.org/packages/log4net/) | NetStandard 1.3 上的 2.0.8+、.NET 4.5+ 上的 2.0.6+ |
 
 ## <a name="java"></a>Java
 | 应用服务器 | 版本 |
@@ -58,6 +53,7 @@ ms.locfileid: "57011324"
 | [Apache Http 客户端](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3+<sup>†</sup> |
 | <b>存储客户端</b> | |
 | [SQL Server]( https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc) | 1+<sup>†</sup> |
+| [PostgreSQL（Beta 版本支持）](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/CHANGELOG.md#version-240-beta) | |
 | [Oracle]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1+<sup>†</sup> |
 | [MySql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1+<sup>†</sup> |
 | <b>日志记录库</b> | |

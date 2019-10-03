@@ -6,19 +6,19 @@ documentationcenter: ''
 author: lichard
 manager: erikre
 editor: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
-ms.author: rli
-ms.openlocfilehash: b4751320af82a29fb13dc6012c1b197ebc2b1f9b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.author: ril
+ms.openlocfilehash: 703623e3f7f314d87417458f3f9a218dfdf45427
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764836"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849975"
 ---
 # <a name="http2-support-in-azure-cdn"></a>Azure CDN 中的 HTTP/2 支持
 
@@ -45,7 +45,7 @@ HTTP/2 的优点包括：
 
 所有主流浏览器均已在其当前版本中实现 HTTP/2 支持。 不支持的浏览器会自动回退到 HTTP/1.1。
 
-|浏览器|最低版本|
+|浏览者|最低版本|
 |-------------|------------|
 |Microsoft Edge| 12|
 |Google Chrome| 43|

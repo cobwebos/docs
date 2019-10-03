@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: fc303a0ab53c80c91bb29c36a1a7e0f04c4a89e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a08719d322f044bbf1ced8103af5e4e23ed948c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006872"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998492"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (Python)
 
@@ -30,22 +30,6 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
-
-本快速入门中运行的示例应用程序是使用 Python 编写的。 目前，用于 Python 的 Microsoft Azure IoT SDK 仅支持每个平台的特定 Python 版本。 若要了解详细信息，请参阅 [Python SDK 自述文件](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)。
-
-本快速入门假定你使用的是 Windows 开发计算机。 对于 Windows 系统，仅支持 [Python 3.6.x](https://www.python.org/downloads/release/python-368/)。 所选的 Python 安装程序应基于所使用的系统体系结构。 如果系统 CPU 体系结构是 32 位，则下载 x86 安装程序；对于 64 位体系结构，则下载 x86-64 安装程序。 此外，请确保为你的体系结构（x86 或 x64）安装了 [Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)。
-
-可以从 [Python.org](https://www.python.org/downloads/) 为其他平台下载 Python。
-
-可以使用以下命令之一验证开发计算机上 Python 的当前版本：
-
-```python
-python --version
-```
-
-```python
-python3 --version
-```
 
 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
@@ -73,7 +57,7 @@ az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
     ```
 
-1. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的_设备连接字符串_：
+1. 在 Azure Cloud Shell 中运行以下命令，以获取已注册设备的_设备连接字符串_：
 
     **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
@@ -93,14 +77,14 @@ az extension add --name azure-cli-iot-ext
 
 1. 在本地终端窗口中，导航到示例 Python 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device** 文件夹。
 
-1. 在所选文本编辑器中打开 SimulatedDevice.py 文件。
+1. 在所选文本编辑器中打开 SimulatedDevice.py 文件  。
 
-    将 `CONNECTION_STRING` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.py 文件。
+    将 `CONNECTION_STRING` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 SimulatedDevice.py 文件  。
 
 1. 在本地终端窗口中，运行以下命令，为模拟设备应用程序安装所需的库：
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
 1. 在本地终端窗口中，运行以下命令，以便运行模拟设备应用程序：
@@ -112,6 +96,7 @@ az extension add --name azure-cli-iot-ext
     以下屏幕截图显示了模拟设备应用程序将遥测数据发送到 IoT 中心后的输出：
 
     ![运行模拟设备](media/quickstart-send-telemetry-python/SimulatedDevice.png)
+
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 

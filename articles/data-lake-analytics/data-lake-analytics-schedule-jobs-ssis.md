@@ -1,6 +1,6 @@
 ---
 title: 使用 SSIS 计划 Azure Data Lake Analytics U-SQL 作业
-description: 了解如何使用 SQL Server Integration Services 计划 U-SQL 作业。
+description: 了解如何使用 SQL Server Integration Services 通过内联脚本或从 U SQL 查询文件来计划 U SQL 作业。
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -10,18 +10,18 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 6894486118f69e682353142be04821e1d28440e5
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 0650fcc5023ac57b193fa23b0dedf65113fd64e6
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523165"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672896"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>使用 SQL Server Integration Services (SSIS) 计划 U-SQL 作业
 
 本文介绍如何使用 SQL Server Integration Service (SSIS) 安排和创建 U-SQL 作业。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [用于 Integration Services 的 Azure 功能包](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)提供 [Azure Data Lake Analytics 任务](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)和 [Azure Data Lake Analytics 连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)，该管理器可帮助连接 Azure Data Lake Analytics 服务。 若要使用此任务，请务必：
 
@@ -93,7 +93,7 @@ Azure Data Lake Analytics 任务允许用户向 Azure Data Lake Analytics 帐户
     
     创建此文件连接：
 
-   1. 选择**\<新建连接...>** FileConnection 设置中。
+   1. 选择 **\<New 连接 .。。>** FileConnection 设置。
    2. 将“使用类型”设置为“现有文件”，并将“文件”设置为任何现有文件的文件路径。
 
        ![配置 Foreach 循环容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
@@ -171,4 +171,3 @@ Azure Data Lake Analytics 任务允许用户向 Azure Data Lake Analytics 帐户
 - [在 Azure 中运行 SSIS 包](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 - [适用于 Integration Services (SSIS) 的 Azure 功能包](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
 - [使用 Azure 数据工厂计划 U-SQL 作业](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
-

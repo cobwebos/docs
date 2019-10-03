@@ -1,7 +1,6 @@
 ---
 title: 在 YARN 中创建高可用性 Spark 流作业 - Azure HDInsight
-description: 如何为高可用性方案设置 Spark 流。
-services: hdinsight
+description: 如何在 Azure HDInsight 中设置高可用性方案的 Apache Spark 流式处理
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 1d9a7caa7ab70ef1f0da41e1ec3f30780f93536a
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: e4414a64b2ee34ec16fde56dd750f2faa26b2e09
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53649715"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002974"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>使用 YARN 创建高可用性 Apache Spark 流式处理作业
 
@@ -22,7 +21,7 @@ ms.locfileid: "53649715"
 
 Spark 流创建长时间运行的作业，在此期间，你可以对数据应用转换，然后将结果推送到文件系统、数据库、仪表板和控制台。 Spark 流处理微批数据，它首先收集定义的时间间隔内的一批事件。 接下来，发送该批进行处理和输出。 批时间间隔通常以几分之一秒定义。
 
-![Spark Streaming](./media/apache-spark-streaming-high-availability/spark-streaming.png)
+![Spark Streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
 
 ## <a name="dstreams"></a>DStreams
 
@@ -30,7 +29,7 @@ Spark 流使用离散流 (DStream) 表示连续的数据流。 可以从事件�
 
 Spark 核心使用弹性分布式数据集 (RDD)。 RDD 将数据分布到群集中的多个节点，其中每个节点通常完全在内存中维护其自身的数据，以实现最佳性能。 每个 RDD 表示在某个批间隔内收集的事件。 批间隔时间过后，Spark 流会生成新的 RDD，其中包含该间隔内的所有数据。 此连续 RDD 集将收集到 DStream 中。 Spark 流应用程序处理每个批的 RDD 中存储的数据。
 
-![Spark DStream](./media/apache-spark-streaming-high-availability/DStream.png)
+![Spark DStream](./media/apache-spark-streaming-high-availability/apache-spark-dstream.png)
 
 ## <a name="spark-structured-streaming-jobs"></a>Spark 结构化流作业
 
@@ -58,7 +57,7 @@ RDD 包含多个属性，可帮助创建高可用性且容错的 Spark 流作业
 
 在 HDInsight 中，群集工作由 *Yet Another Resource Negotiator* (YARN) 协调。 设计 Spark 流的高可用性涉及到 Spark 流和 YARN 组件方面的技术。  下面显示了使用 YARN 的示例配置。 
 
-![YARN 体系结构](./media/apache-spark-streaming-high-availability/yarn-arch.png)
+![YARN 体系结构](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
 
 以下部分描述此配置的设计注意事项。
 

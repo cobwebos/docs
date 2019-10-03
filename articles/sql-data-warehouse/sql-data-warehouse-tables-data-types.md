@@ -2,20 +2,20 @@
 title: 定义数据类型 - Azure SQL 数据仓库 | Microsoft Docs
 description: 有关在 Azure SQL 数据仓库中定义表数据类型的建议。
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: aab51c3dc66a1486e8ad7ced55425a2b49c7dea1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 61bb977271186699b0a72389e1538573f978c56b
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247504"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479373"
 ---
 # <a name="table-data-types-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的表数据类型
 有关在 Azure SQL 数据仓库中定义表数据类型的建议。 
@@ -55,7 +55,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 | [geometry](/sql/t-sql/spatial-geometry/spatial-types-geometry-transact-sql) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [geography](/sql/t-sql/spatial-geography/spatial-types-geography) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [hierarchyid](/sql/t-sql/data-types/hierarchyid-data-type-method-reference) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql)(4000) |
-| [图片](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
+| [image](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [text](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql) |
 | [ntext](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql) |
 | [sql_variant](/sql/t-sql/data-types/sql-variant-transact-sql) |将列拆分成多个强类型化列。 |

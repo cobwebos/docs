@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 582533d23757de748b9cc7d40e45acc00240d384
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 0d877dafc4ab4f8ec4edb0a94450fa9c5dfcd0bb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570311"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850230"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>将服务器配置到所需状态并管理偏移
 
@@ -27,7 +27,7 @@ ms.locfileid: "57570311"
 > - 将节点配置分配给托管节点
 > - 检查托管节点的符合性状态
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 
@@ -63,6 +63,9 @@ configuration TestConfig {
    }
 }
 ```
+
+> [!NOTE]
+> 在更高级的方案中, 若要导入提供 DSC 资源的多个模块, 请确保每个模块`Import-DscResource`在配置中都有唯一的行。
 
 调用 `Import-AzureRmAutomationDscConfiguration` cmdlet，将配置上传到自动化帐户：
 
@@ -131,6 +134,17 @@ Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAcc
 默认情况下，每隔 30 分钟会检查一次 DSC 节点是否符合节点配置。
 有关如何更改符合性检查间隔的信息，请参阅[配置本地配置管理器](/PowerShell/DSC/metaConfig)。
 
+## <a name="working-with-partial-configurations"></a>使用部分配置
+
+Azure 自动化状态配置支持使用[部分配置](/powershell/dsc/pull-server/partialconfigs)。
+在此方案中, DSC 配置为独立管理多个配置, 并且每个配置都是从 Azure 自动化检索的。
+但是，每个自动化帐户只能为一个节点分配一个配置。
+这意味着，如果对节点使用两种配置，则需要两个自动化帐户。
+
+有关如何从请求服务注册部分配置的详细信息, 请参阅[部分配置](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)的文档。
+
+有关团队如何协作以代码形式使用配置来协作管理服务器的更多信息，请参见[了解 DSC 在 CI/CD 管道中的角色](/powershell/dsc/overview/authoringadvanced)。
+
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>检查托管节点的符合性状态
 
 可以通过调用 `Get-AzureRmAutomationDscNodeReport` cmdlet 来获取有关托管节点符合性状态的报告：
@@ -145,6 +159,27 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 # Display the most recent report
 $reports[0]
 ```
+
+## <a name="removing-nodes-from-service"></a>从服务中删除节点
+
+当节点添加到 Azure 自动化 State Configuration 时，本地配置管理器中的设置会设置为注册到服务，并拉取配置和所需的模块，以配置计算机。
+如果选择从服务中删除节点，则可以使用 Azure 门户或 Az cmdlet 进行删除。
+
+> [!NOTE]
+> 从服务注销节点只会设置本地配置管理器设置，这样，该节点便不再连接到该服务。
+> 这不影响当前应用于该节点的配置。
+> 若要删除当前配置，请使用 [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) 或删除本地配置文件（这是适用于 Linux 节点的唯一选项）。
+
+### <a name="azure-portal"></a>Azure 门户
+
+在 Azure 自动化中，单击目录中的“状态配置(DSC)”。
+接下来，单击“节点”，以查看注册到服务的节点的列表。
+单击要删除的节点的名称。
+在打开的“节点”视图中，单击“注销”。
+
+### <a name="powershell"></a>PowerShell
+
+若要使用 PowerShell 从 Azure 自动化 State Configuration 服务中注销节点，请按照 cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0) 的文档进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,7 +4,7 @@ description: 获取有关虚拟机规模集常见问题的解答。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
+manager: drewm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2019
+ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 56a31770c374cdccaec4dbee751925a6da00fa59
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 429e201ba1d15103ae130ee2fb767cd1b4fa909a
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683947"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779430"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -69,7 +69,7 @@ ms.locfileid: "59683947"
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>规模集是否可以与 Azure 可用性区域配合使用？
 
- 能！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
+是! 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
 
 
 ## <a name="autoscale"></a>自动缩放
@@ -134,13 +134,13 @@ ms.locfileid: "59683947"
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>如果我已停止（解除分配）VM，该 VM 是否作为自动缩放操作的一部分启动？
 
-不。 如果自动缩放规则要求将其他 VM 实例作为规模集的一部分，则会创建新的 VM 实例。 停止（解除分配）的 VM 实例不会作为自动缩放事件的一部分启动。 但是，那些已停止（解除分配）的 VM 可能会作为可缩小实例数的自动缩放事件的一部分删除，这与基于 VM 实例 ID 的顺序可以删除任何 VM 实例的方式相同。
+否。 如果自动缩放规则要求将其他 VM 实例作为规模集的一部分，则会创建新的 VM 实例。 停止（解除分配）的 VM 实例不会作为自动缩放事件的一部分启动。 但是，那些已停止（解除分配）的 VM 可能会作为可缩小实例数的自动缩放事件的一部分删除，这与基于 VM 实例 ID 的顺序可以删除任何 VM 实例的方式相同。
 
 
 
 ## <a name="certificates"></a>证书
 
-### <a name="how-do-i-securely-ship-a-certificate-to-the-vm-how-do-i-provision-a-virtual-machine-scale-set-to-run-a-website-where-the-ssl-for-the-website-is-shipped-securely-from-a-certificate-configuration-the-common-certificate-rotation-operation-would-be-almost-the-same-as-a-configuration-update-operation-do-you-have-an-example-of-how-to-do-this"></a>如何安全地将证书传送到 VM？ 如何预配虚拟机规模集来运行网站，并且可以通过证书配置安全传送该网站的 SSL？ （常见的证书轮转操作几乎与配置更新操作相同。）是否有示例说明如何执行此操作？
+### <a name="how-do-i-securely-ship-a-certificate-to-the-vm"></a>如何安全地将证书传送到 VM？
 
 为了将证书安全地传送到 VM，可以将客户证书从客户的密钥保管库直接安装到 Windows 证书存储中。
 
@@ -167,16 +167,14 @@ ms.locfileid: "59683947"
 有关详细信息，请参阅[创建或更新虚拟机规模集](https://msdn.microsoft.com/library/mt589035.aspx)。
 
 
-### <a name="example-of-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>为 Azure Service Fabric 群集预配的自签名证书的示例。
+### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>如何使用为 Azure Service Fabric 群集预配的自签名证书？
 如需最新的示例，请在 azure shell 中使用以下 azure CLI 语句，阅读 Service Fabrics CLI 模块示例文档，该文档将打印到 stdout：
 
 ```bash
 az sf cluster create -h
 ```
 
-请查看 keyvaults 文档，了解 Azure 中最新的 API 支持的证书操作。
-
-自签名证书不能用于证书颁发机构提供的分布式信任，也不应用于任何旨在托管企业生产解决方案的 Service Fabric 群集；有关其他 Service Fabric 安全指南，请查看 [Azure Service Fabric 安全最佳做法](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)和 [Service Fabric 群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)。
+自签名证书不能用于证书颁发机构提供的分布式信任，也不应用于任何旨在托管企业生产解决方案的 Service Fabric 群集；有关其他 Service Fabric 安全指南，请查看 [Azure Service Fabric 安全最佳做法](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)和 [Service Fabric 群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)。
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>是否可以通过 Resource Manager 模板指定一个 SSH 密钥对，用于对 Linux 虚拟机规模集进行 SSH 身份验证？
 
@@ -202,9 +200,7 @@ az sf cluster create -h
 }
 ```
 
-[101-vm-sshkey GitHub 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json) 中使用了此 JSON 块。
-
-[grelayhost.json GitHub 快速启动模板](https://github.com/ExchMaster/gadgetron/blob/master/Gadgetron/Templates/grelayhost.json)中也使用了此 OS 配置文件。
+此 JSON 块用于[此 Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)。
 
 有关详细信息，请参阅[创建或更新虚拟机规模集](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration)。
 
@@ -212,9 +208,9 @@ az sf cluster create -h
 
 若要删除已弃用的证书，请从保管库证书列表中删除旧证书。 在列表中留下想要在计算机上保留的所有证书。 这不会从所有虚拟机中删除此证书。 也不会向虚拟机规模集中创建的新 VM 添加证书。
 
-若要从现有 VM 中删除证书，需要编写一个自定义脚本扩展，从证书存储中手动删除证书。
+若要从现有 VM 中删除证书，请使用自定义脚本扩展从证书存储中手动删除证书。
 
-### <a name="how-do-i-inject-an-existing-ssh-public-key-into-the-virtual-machine-scale-set-ssh-layer-during-provisioning-i-want-to-store-the-ssh-public-key-values-in-azure-key-vault-and-then-use-them-in-my-resource-manager-template"></a>如何在预配期间将现有的 SSH 公钥注入到虚拟机规模集 SSH 层？ 我想要将 SSH 公钥值存储在 Azure Key Vault 中，然后在 Resource Manager 模板中使用这些值。
+### <a name="how-do-i-inject-an-existing-ssh-public-key-into-the-virtual-machine-scale-set-ssh-layer-during-provisioning"></a>如何在预配期间将现有的 SSH 公钥注入到虚拟机规模集 SSH 层？
 
 如果仅向 VM 提供 SSH 公钥，则不需要将公钥放在 Key Vault 中。 公钥不是机密。
 
@@ -233,17 +229,17 @@ az sf cluster create -h
 }
 ```
 
-linuxConfiguration 元素名称 | 需要 | Type | 描述
---- | --- | --- | --- 
-ssh | 否 | 集合 | 指定 Linux OS 的 SSH 密钥配置
-路径 | 是 | String | 指定 SSH 密钥或证书应放置到的 Linux 文件路径
+linuxConfiguration 元素名称 | 必填 | 类型 | 描述
+--- | --- | --- | ---
+ssh | 否 | Collection | 指定 Linux OS 的 SSH 密钥配置
+path | 是 | String | 指定 SSH 密钥或证书应放置到的 Linux 文件路径
 keyData | 是 | String | 指定 base64 编码的 SSH 公钥
 
 有关示例，请参阅 [101-vm-sshkey GitHub 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)。
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>添加同一个密钥保管库中的多个证书后，运行 `Update-AzVmss` 时看到以下消息：
 
->Update-AzVmss：列表机密包含的重复的实例\<我的订阅 id > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev，这不允许。
+>Update-AzVmss：列表机密包含 /subscriptions/\<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev 的重复实例，这是不允许的。
 
 如果尝试重新添加同一保管库，而不是对现有源保管库使用新保管库证书，可能会看到此消息。 如果要添加其他机密，`Add-AzVmssSecret` 命令将无法正常运行。
 
@@ -303,16 +299,6 @@ CRP 组件不会持久保留客户机密。 如果对虚拟机规模集中的所
 
 扩大时不会遇到此问题，因为（单 Fabric 租户模型中的）Azure Service Fabric 中存在机密的缓存副本。
 
-### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>为什么我是否需要指定证书 URL 的准确位置 (https:\/\/\<的保管库名称 >.vault.azure.net:443/secrets/\<的确切位置 >) 中所示， [Service Fabric群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)？
-
-根据 Azure Key Vault 文档，在未指定版本的情况下，Get Secret REST API 应返回最新版本的机密。
-
-方法 | 代码
---- | ---
-GET | <https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}>
-
-请将 {secret-name} 替换为具体名称，将 {secret-version} 替换为要检索的机密的版本。 机密版本可能被排除。 在这种情况下，将检索当前的版本。
-
 ### <a name="why-do-i-have-to-specify-the-certificate-version-when-i-use-key-vault"></a>使用 Key Vault 时，为什么需要指定证书版本？
 
 Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪些证书部署在其 VM 上。
@@ -325,7 +311,7 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 
 有关详细信息，请参阅 [X509Certificate.Export 方法 (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx))。
 
-### <a name="i-do-not-see-an-option-for-users-to-pass-in-certificates-as-base64-strings-most-other-resource-providers-have-this-option"></a>我没有看到可让用户以 base64 字符串形式传入证书的选项。 其他大多数资源提供程序提供此选项。
+### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>如何以 base64 字符串形式传入证书？
 
 若要模拟以 base64 字符串形式传入证书，可以在 Resource Manager 模板中提取最新版本的 URL。 在 Resource Manager 模板中包含以下 JSON 属性：
 
@@ -355,10 +341,10 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 
 ### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>是否可以将 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/msi-overview)用于虚拟机规模集？
 
-是的。 可在 Azure 快速入门模板中查看一些示例 MSI 模板。 Linux：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。 Windows：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。
+是的。 可在适用于[Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)和[Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)的 Azure 快速入门模板中查看一些示例 MSI 模板。
 
 
-## <a name="extensions"></a>扩展
+## <a name="extensions"></a>Extensions
 
 ### <a name="how-do-i-delete-a-virtual-machine-scale-set-extension"></a>如何删除虚拟机规模集扩展？
 
@@ -378,46 +364,19 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 有关与 Azure Monitor 日志集成的虚拟机规模集模板示例，请参阅[部署 Azure Service Fabric 群集，并通过使用 Azure Monitor 日志来启用监视](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric)中的第二个示例。
 
-### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>扩展似乎在虚拟机规模集上并行运行。 这导致我的自定义脚本扩展失败。 如何进行修复？
-
-若要了解虚拟机规模集中的扩展排序，请参阅 [Extension sequencing in Azure virtual machine scale sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)（Azure 虚拟机规模集中的扩展排序）。
-
-### <a name="how-do-i-reset-the-password-for-vms-in-my-virtual-machine-scale-set"></a>如何对虚拟机规模集中的 VM 重置密码？
-
-更改规模集中 VM 密码的方式主要有两种。
-
-- 直接更改虚拟机规模集模型。 适用于 Compute API 2017-12-01 及更高版本。
-
-    直接更新规模集模型中的管理员凭据（例如，使用 Azure 资源浏览器、PowerShell 或 CLI）。 规模集完成更新后，所有新的 VM 将获得全新凭据。 现有 VM 只有被重置映像时才获得新凭据。
-
-- 使用 VM 访问扩展重置密码。
-
-    使用以下 PowerShell 示例：
-
-    ```powershell
-    $vmssName = "myvmss"
-    $vmssResourceGroup = "myvmssrg"
-    $publicConfig = @{"UserName" = "newuser"}
-    $privateConfig = @{"Password" = "********"}
-
-    $extName = "VMAccessAgent"
-    $publisher = "Microsoft.Compute"
-    $vmss = Get-AzVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
-    $vmss = Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
-    Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
-    ```
-
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>如何将扩展添加到虚拟机规模集中的所有 VM？
 
 如果更新策略设置为**自动**，使用新扩展属性重新部署模板可更新所有 VM。
 
 如果更新策略设置为“手动”，先更新扩展，然后手动更新 VM 中的所有实例。
 
-### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected-that-is-will-the-vms-not-match-the-virtual-machine-scale-set-model-or-are-they-ignored-when-an-existing-machine-is-service-healed-or-reimaged-are-the-scripts-that-are-currently-configured-on-the-virtual-machine-scale-set-executed-or-are-the-scripts-that-were-configured-when-the-vm-was-first-created-used"></a>如果更新与现有虚拟机规模集关联的扩展，是否会影响现有的 VM？ （即，VM 是否会不匹配虚拟机规模集模型？）或者，是否会忽略 VM？ 如果对现有计算机执行服务修复或重置映像操作，是否会执行当前在虚拟机规模集上配置的脚本，或者，是否会使用最初创建 VM 时配置的脚本？
+### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>如果更新与现有虚拟机规模集关联的扩展，是否会影响现有的 VM？
 
 如果更新虚拟机规模集模型中的扩展定义，且将 upgradePolicy 属性设置为“自动”，则会更新 VM。 如果 upgradePolicy 属性设置为“手动”，扩展会标记为不匹配模型。
 
-如果对现有 VM 执行服务修复，这种行为类似于重新启动，因此不会重新运行扩展。 如果重置映像，则类似于将 OS 驱动器替换为源映像。 在这种情况下，将运行最新模型中的任何专用设置（如扩展）。
+### <a name="are-extensions-run-again-when-an-existing-machine-is-service-healed-or-reimaged"></a>对现有的计算机进行服务修复或重置映像时，是否会再次运行扩展？
+
+如果对现有 VM 执行服务修复，这种行为类似于重新启动，因此不会重新运行扩展。 如果对 VM 重置映像，该过程类似于将 OS 驱动器替换为源映像。 在这种情况下，将重新运行最新模型中的任何专用设置（如扩展）。
 
 ### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-active-directory-domain"></a>如何将虚拟机规模集加入到 Active Directory 域？
 
@@ -450,7 +409,7 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 }
 ```
 
-### <a name="my-virtual-machine-scale-set-extension-is-trying-to-install-something-that-requires-a-reboot-for-example-commandtoexecute-powershellexe--executionpolicy-unrestricted-install-windowsfeature-name-fs-resource-manager-includemanagementtools"></a>虚拟机规模集扩展尝试安装需要重新启动的内容。 例如，"commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted Install-WindowsFeature –Name FS-Resource-Manager –IncludeManagementTools"
+### <a name="my-virtual-machine-scale-set-extension-is-trying-to-install-something-that-requires-a-reboot"></a>虚拟机规模集扩展尝试安装需要重新启动的内容。
 
 如果虚拟机规模集扩展尝试安装需要重新启动的内容，可以使用 Azure 自动化所需状态配置 (Automation DSC) 扩展。 如果操作系统为 Windows Server 2012 R2，Azure 将拉入 Windows Management Framework (WMF) 5.0 安装程序，重新启动，然后继续使用该配置。
 
@@ -473,15 +432,42 @@ Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "IaaSAntimalware" -Publi
 Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet $VMSS
 ```
 
-### <a name="i-need-to-execute-a-custom-script-thats-hosted-in-a-private-storage-account-the-script-runs-successfully-when-the-storage-is-public-but-when-i-try-to-use-a-shared-access-signature-sas-it-fails-this-message-is-displayed-missing-mandatory-parameters-for-valid-shared-access-signature-linksas-works-fine-from-my-local-browser"></a>我需要执行一个在专用存储帐户中托管的自定义脚本。 存储为公共存储时脚本成功运行，但尝试使用共享访问签名 (SAS) 时，脚本运行失败。 显示此消息：“缺少有效共享访问签名的必需参数”。 通过本地浏览器可以正常使用“链接+SAS”。
+### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>如何执行一个在专用存储帐户中托管的自定义脚本？
 
-若要执行在私有存储帐户中托管的自定义脚本，请通过存储帐户密钥和名称来设置受保护的设置。 有关详细信息，请参阅[适用于 Windows 的自定义脚本扩展](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings)。
+若要执行在私有存储帐户中托管的自定义脚本，请通过存储帐户密钥和名称来设置受保护的设置。 有关详细信息, 请参阅[自定义脚本扩展](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings)。
+
+## <a name="passwords"></a>密码
+
+### <a name="how-do-i-reset-the-password-for-vms-in-my-virtual-machine-scale-set"></a>如何对虚拟机规模集中的 VM 重置密码？
+
+更改规模集中 VM 密码的方式主要有两种。
+
+- 直接更改虚拟机规模集模型。 适用于 API 2017-12-01 及更高版本。
+
+    直接更新规模集模型中的管理员凭据（例如，使用 Azure 资源浏览器、PowerShell 或 CLI）。 规模集完成更新后，所有新的 VM 将获得全新凭据。 现有 VM 只有被重置映像时才获得新凭据。
+
+- 使用 VM 访问扩展重置密码。
+
+    使用以下 PowerShell 示例：
+
+    ```powershell
+    $vmssName = "myvmss"
+    $vmssResourceGroup = "myvmssrg"
+    $publicConfig = @{"UserName" = "newuser"}
+    $privateConfig = @{"Password" = "********"}
+
+    $extName = "VMAccessAgent"
+    $publisher = "Microsoft.Compute"
+    $vmss = Get-AzVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
+    $vmss = Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
+    Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
+    ```
 
 ## <a name="networking"></a>网络
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>是否可以将网络安全组 (NSG) 分配给规模集，以便将其应用于集中的所有 VM NIC？
 
-是的。 可通过在网络配置文件的 networkInterfaceConfigurations 部分中引用网络安全组，将其直接应用于规模集。 示例：
+是的。 可通过在网络配置文件的 networkInterfaceConfigurations 部分中引用网络安全组，将其直接应用于规模集。 例如：
 
 ```json
 "networkProfile": {
@@ -533,10 +519,6 @@ IP 地址是从指定的子网中选择的。
 
 要将虚拟机规模集部署到现有的 Azure 虚拟网络，请参阅[将虚拟机规模集部署到现有的 Azure 虚拟网络](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-existing-vnet)。
 
-### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>如何将虚拟机规模集中第一个 VM 的 IP 地址添加到模板的输出中？
-
-要将虚拟机规模集中第一个 VM 的 IP 地址添加到模板的输出中，请参阅 [Azure 资源管理器：获取虚拟机规模集的专用 IP](https://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips)。
-
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>能否将规模集与加速网络结合使用？
 
 是的。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如
@@ -558,7 +540,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>如何才能配置规模集使用的 DNS 服务器？
 
-若要创建具有自定义 DNS 配置的虚拟机规模集，请将 dnsSettings JSON 数据包添加到规模集的 networkInterfaceConfigurations 部分中。 示例：
+若要创建具有自定义 DNS 配置的虚拟机规模集，请将 dnsSettings JSON 数据包添加到规模集的 networkInterfaceConfigurations 部分中。 例如：
 ```json
     "dnsSettings":{
         "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -567,7 +549,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>如何才能将规模集配置为向每个 VM 分配公共 IP 地址？
 
-要创建向每个 VM 分配公共 IP 地址的虚拟机规模集，请确保 Microsoft.Compute/virtualMachineScaleSets 资源的 API 版本为 2017-03-30，并将 publicipaddressconfiguration JSON 数据包添加到规模集的 ipConfigurations 部分中。 示例：
+要创建向每个 VM 分配公共 IP 地址的虚拟机规模集，请确保 Microsoft.Compute/virtualMachineScaleSets 资源的 API 版本为 2017-03-30，并将 publicipaddressconfiguration JSON 数据包添加到规模集的 ipConfigurations 部分中。 例如：
 
 ```json
     "publicipaddressconfiguration": {
@@ -580,9 +562,9 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>能否配置与多个应用程序网关配合使用的规模集？
 
-是的。 可以将多个应用程序网关后端地址池的资源 ID 添加到规模集网络配置文件的 ipConfigurations 部分的 applicationGatewayBackendAddressPools 列表中。
+是的。 可将多个应用程序网关后端地址池的资源 ID 添加到规模集网络配置文件的 _ipConfigurations_ 部分的 _applicationGatewayBackendAddressPools_ 列表中。
 
-## <a name="scale"></a>缩放
+## <a name="scale"></a>调整
 
 ### <a name="in-what-case-would-i-create-a-virtual-machine-scale-set-with-fewer-than-two-vms"></a>在哪些情况下我会创建包含少于两个 VM 的虚拟机规模集？
 
@@ -592,7 +574,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-do-i-change-the-number-of-vms-in-a-virtual-machine-scale-set"></a>如何更改虚拟机规模集中的 VM 数目？
 
-若要在 Azure 门户中更改虚拟机规模集中的 VM 数，请从“虚拟机规模集属性”部分，单击“缩放”边栏选项卡，并使用滚动条。 有关更改实例计数的其他方法，请参阅[更改虚拟机规模集的实例计数](https://msftstack.wordpress.com/2016/05/13/change-the-instance-count-of-an-azure-vm-scale-set/)。
+若要在 Azure 门户中更改虚拟机规模集中的 VM 数，请从“虚拟机规模集属性”部分，单击“缩放”边栏选项卡，并使用滚动条。
 
 ### <a name="how-do-i-define-custom-alerts-for-when-certain-thresholds-are-reached"></a>如何定义达到特定阈值时触发的自定义警报？
 
@@ -623,7 +605,7 @@ IP 地址是从指定的子网中选择的。
                 },
                 "webhooks": [
                     {
-                        "serviceUri": "https://events.pagerduty.com/integration/0b75b57246814149b4d87fa6e1273687/enqueue",
+                        "serviceUri": "<service uri>",
                         "properties": {
                             "key1": "custommetric",
                             "key2": "scalevmss"
@@ -636,15 +618,14 @@ IP 地址是从指定的子网中选择的。
 }
 ```
 
-在此示例中，达到阈值时，警报将转到 Pagerduty.com。
 
 ## <a name="patching-and-operations"></a>修补和操作
 
-### <a name="how-do-i-create-a-scale-set-in-an-existing-resource-group"></a>如何在现有资源组中创建规模集？
+### <a name="can-i-create-a-scale-set-in-an-existing-resource-group"></a>能否在现有资源组中创建规模集？
 
-尚不能通过 Azure 门户在现有资源组中创建规模集，但从 Azure 资源管理器模板部署规模集时，可以指定现有资源组。 也可以在使用 Azure PowerShell 或 CLI 创建规模集时指定现有资源组。
+能，可以在现有资源组中创建规模集。
 
-### <a name="can-we-move-a-scale-set-to-another-resource-group"></a>可以将规模集移至另一个资源组吗？
+### <a name="can-i-move-a-scale-set-to-another-resource-group"></a>能否将规模集移到其他资源组？
 
 可以，可以将规模集资源移至新的订阅或资源组。
 
@@ -655,8 +636,6 @@ IP 地址是从指定的子网中选择的。
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>是否可以在不更改映像的情况下，使用重置映像操作来重置 VM？ （也就是说，将 VM 重置为出厂设置而不是重置为新映像）
 
 可以在不更改映像的情况下，使用重置映像操作来重置 VM。 但是，如果虚拟机规模集使用 `version = latest` 引用了平台映像，则调用 `reimage` 时，VM 可以更新为更高版本的 OS 映像。
-
-有关详细信息，请参阅[管理虚拟机规模集中的所有 VM](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set)。
 
 ### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>是否可以将规模集与 Azure Monitor 日志集成？
 
@@ -671,7 +650,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="how-do-i-turn-on-boot-diagnostics"></a>如何启用启动诊断？
 
@@ -722,25 +701,25 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
   - 出于这种方案，可能创建了自己的自动缩放引擎，并希望以更快的速度完成端到端缩放。
 - 虚拟机规模集未均匀分布在容错域或更新域。 这可能是由于有选择地删除了 VM，或者因为过度预配后，VM 被删除。 在虚拟机规模集上先运行 `stop deallocate`，然后运行 `start`，可以将 VM 均匀地分布到容错域或更新域。
 
-### <a name="how-do-i-take-a-snapshot-of-a-vmss-instance"></a>如何创建 VMSS 实例的快照？
-从 VMSS 实例创建快照。
+### <a name="how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance"></a>如何创建虚拟机规模集实例的快照？
+从虚拟机规模集实例创建快照。
 
 ```azurepowershell-interactive
 $rgname = "myResourceGroup"
 $vmssname = "myVMScaleSet"
 $Id = 0
 $location = "East US"
- 
+
 $vmss1 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceId $Id     
 $snapshotconfig = New-AzSnapshotConfig -Location $location -AccountType Standard_LRS -OsType Windows -CreateOption Copy -SourceUri $vmss1.StorageProfile.OsDisk.ManagedDisk.id
 New-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'mySnapshot' -Snapshot $snapshotconfig
-``` 
- 
+```
+
 从快照创建托管磁盘。
 
 ```azurepowershell-interactive
 $snapshotName = "myShapshot"
 $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName  
 $diskConfig = New-AzDiskConfig -AccountType Premium_LRS -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
-$osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk') 
+$osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk')
 ```

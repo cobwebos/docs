@@ -1,50 +1,50 @@
 ---
-title: 在 Azure 门户中管理 Azure Database for PostgreSQL 的只读副本
-description: 了解如何在 Azure 门户中管理 Azure Database for PostgreSQL 只读副本。
+title: 通过 Azure 门户管理 Azure Database for PostgreSQL（单一服务器）的只读副本
+description: 了解如何通过 Azure 门户管理 Azure Database for PostgreSQL（单一服务器）的只读副本。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/04/2019
+ms.openlocfilehash: 0ff6cd50a5a6cb1599a2248fbc61b0b6b307e791
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787657"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995458"
 ---
-# <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>在 Azure 门户中创建和管理只读副本
+# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>通过 Azure 门户创建和管理 Azure Database for PostgreSQL（单一服务器）中的只读副本
 
 本文介绍如何使用 Azure 门户在 Azure Database for PostgreSQL 中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 用作主服务器的 [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)。
 
 ## <a name="prepare-the-master-server"></a>准备主服务器
-必须使用以下步骤在“常规用途”和“内存优化”层中准备主服务器。 主服务器通过 azure.replication_support 参数设置为复制准备。 复制参数更改时，重新启动服务器是必需的更改才能生效。 在 Azure 门户中，这两个步骤都封装由一个按钮**启用复制支持**。
+必须使用以下步骤在“常规用途”和“内存优化”层中准备主服务器。 可以通过设置 azure.replication_support 参数对主服务器进行复制准备。 更改此复制参数后，需重启服务器才能使更改生效。 在 Azure 门户中，可以通过单个“启用复制支持”按钮执行这两个步骤。
 
 1. 在 Azure 门户中，选择用作主服务器的现有 Azure Database for PostgreSQL 服务器。
 
-2. 在服务器边栏中下,**设置**，选择**复制**。
+2. 在服务器边栏中的“设置”下，选择“复制”。
 
-3. 选择**启用复制支持**。 
+3. 选择“启用复制支持”。 
 
-   ![启用复制的支持](./media/howto-read-replicas-portal/enable-replication-support.png)
+   ![启用复制支持](./media/howto-read-replicas-portal/enable-replication-support.png)
 
-4. 确认你想要启用复制的支持。 此操作将重新启动主服务器。 
+4. 确认你需要启用复制支持。 此操作会重启主服务器。 
 
    ![确认启用复制支持](./media/howto-read-replicas-portal/confirm-enable-replication.png)
    
-5. 一旦完成该操作后，您将收到两个 Azure 门户通知。 没有用于更新服务器参数为一个通知。 没有立即遵循的服务器重新启动的另一条通知。
+5. 操作完成后，会收到两个 Azure 门户通知。 一个通知是关于更新服务器参数的。 另一个通知是关于随后立即进行的服务器重启的。
 
-   ![成功通知-启用](./media/howto-read-replicas-portal/success-notifications-enable.png)
+   ![成功通知 - 启用](./media/howto-read-replicas-portal/success-notifications-enable.png)
 
-6. 刷新 Azure 门户页以更新复制工具栏。 现在可以创建为此服务器的只读的副本。
+6. 刷新 Azure 门户页，更新“复制”工具栏。 现在可以为此服务器创建只读副本。
 
-   ![已更新的工具栏](./media/howto-read-replicas-portal/updated-toolbar.png)
+   ![更新的工具栏](./media/howto-read-replicas-portal/updated-toolbar.png)
    
-启用复制的支持是每个主服务器是一次性操作。 一个**禁用复制支持**按钮提供为方便起见。 我们不建议禁用复制支持，除非你确信您永远不会将此主服务器上创建副本。 无法在主服务器具有现有的副本时禁用复制支持。
+启用复制支持是在每个主服务器上进行的一次性操作。 提供“禁用复制支持”按钮是为了方便用户操作。 不建议禁用复制支持，除非你确定再也不会在此主服务器上创建副本。 如果主服务器有现有的副本，则不能禁用复制支持。
 
 
 ## <a name="create-a-read-replica"></a>创建只读副本
@@ -52,20 +52,29 @@ ms.locfileid: "59787657"
 
 1. 选择用作主服务器的现有 Azure Database for PostgreSQL 服务器。 
 
-2. 在服务器边栏中下,**设置**，选择**复制**。
+2. 在服务器边栏中的“设置”下，选择“复制”。
 
 3. 选择“添加副本”。
 
    ![添加副本](./media/howto-read-replicas-portal/add-replica.png)
 
-4. 输入只读副本的名称。 选择“确定”以确认创建该副本。
+4. 输入只读副本的名称。 
 
-   ![为副本命名](./media/howto-read-replicas-portal/name-replica.png) 
+    ![为副本命名](./media/howto-read-replicas-portal/name-replica.png)
 
-副本是使用与主服务器相同的服务器配置创建的。 创建副本后，可以独立于主服务器更改多项设置：计算代系、vCore 数、存储和备份保留期。 定价层也可以独立更改，但“基本”层除外。
+5. 选择副本的位置。 默认位置与主服务器的位置相同。
+
+    ![选择位置](./media/howto-read-replicas-portal/location-replica.png)
+
+   > [!NOTE]
+   > 若要了解有关可以在中创建副本的区域的详细信息，请访问[读取副本概念一文](concepts-read-replicas.md)。 
+
+6. 选择“确定”以确认创建该副本。
+
+使用与 master 相同的计算和存储设置创建副本。 创建副本后，可以独立于主服务器更改多项设置：计算代系、vCore 数、存储和备份保留期。 定价层也可以独立更改，但“基本”层除外。
 
 > [!IMPORTANT]
-> 将主服务器的配置更新为新值之前，请将副本配置更新为与这些新值相等或更大的值。 此操作可确保副本与主服务器发生的任何更改保持同步。
+> 将主服务器设置更新为新值之前，请将副本设置更新为一个相等或更大的值。 此操作可帮助副本保持对主副本所做的任何更改。
 
 创建只读副本后，可以在“复制”窗口中查看它：
 
@@ -169,4 +178,5 @@ ms.locfileid: "59787657"
 3. 对于“聚合”，请选择“最大”。 
  
 ## <a name="next-steps"></a>后续步骤
-详细了解 [Azure Database for PostgreSQL 中的只读副本](concepts-read-replicas.md)。
+* 详细了解 [Azure Database for PostgreSQL 中的只读副本](concepts-read-replicas.md)。
+* 了解如何[创建和管理 Azure CLI 和 REST API 中的读取副本](howto-read-replicas-cli.md)。

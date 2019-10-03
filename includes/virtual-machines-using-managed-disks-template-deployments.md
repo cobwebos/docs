@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: 6085eb2b520217c4e678a75032e8a1cb4b9343ec
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 904bd884bc09c1e2016f55ffc8e1e9f635974ac7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58261388"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172885"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中使用托管磁盘
 
@@ -202,7 +202,7 @@ ms.locfileid: "58261388"
 
 ### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>使用托管磁盘创建包含 VM 的托管可用性集
 
-若要使用托管磁盘创建包含 VM 的托管可用性集，请将 `sku` 对象添加到可用性集资源，并将 `name` 属性设置为 `Aligned`。 该属性可确保每个 VM 的磁盘彼此充分隔离，避免发生单点故障。 另请注意，可用性集资源的 `apiVersion` 设置为 `2017-03-30`。
+若要使用托管磁盘创建包含 VM 的托管可用性集，请将 `sku` 对象添加到可用性集资源，并将 `name` 属性设置为 `Aligned`。 该属性可确保每个 VM 的磁盘彼此充分隔离，避免发生单点故障。 另请注意，可用性集资源的 `apiVersion` 设置为 `2018-10-01`。
 
 ```json
 {
@@ -224,10 +224,10 @@ ms.locfileid: "58261388"
 
 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：
 
-* Microsoft.Compute 的 apiVersion 必须设置为 `2018-04-01`（或更高）
-* 将 managedDisk.storageAccountType 指定为 `StandardSSD_LRS`
+* Microsoft.Compute 的 apiVersion  必须设置为 `2018-04-01`（或更高）
+* 将 managedDisk.storageAccountType 指定为 `StandardSSD_LRS` 
 
-以下示例显示了使用标准 SSD 盘的 VM 的 properties.storageProfile.osDisk 部分：
+以下示例显示了使用标准 SSD 盘的 VM 的 properties.storageProfile.osDisk 部分  ：
 
 ```json
 "osDisk": {

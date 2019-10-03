@@ -4,23 +4,22 @@ description: 本文列出了一些关于 Microsoft Azure 云服务配置和管�
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259578"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154724"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
@@ -109,7 +108,7 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？
 
-此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息，请查看[此建议](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
+此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息, 请查看[此建议](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
 
 有关详细信息，请参阅以下文章：
 - [如何配置和运行云服务的启动任务](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
@@ -138,12 +137,12 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 
 有关详细信息，请参阅以下文档：
 * [在 Azure 存储中存储和查看诊断数据](cloud-services-dotnet-diagnostics-storage.md)
-* [IIS 日志停止写入云服务](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
+* [IIS 日志停止写入到云服务中](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>如何为云服务启用 WAD 日志记录？
 可以通过以下选项启用 Windows Azure 诊断 (WAD) 日志记录：
 1. [从 Visual Studio 启用](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [启用通过.NET 代码](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+2. [通过 .NET 代码启用](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 3. [通过 Powershell 启用](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
 若要获取云服务的当前 WAD 设置，可以使用 [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps cmd，也可以通过门户从“云服务 - > 扩展”边栏选项卡查看它。
@@ -208,7 +207,7 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 完成此过程后，可使用以下方法之一验证是否已启用 HTTP/2：
 
 - 在 IIS 日志中启用协议版本，并查看 IIS 日志。 日志中会显示 HTTP/2。 
-- 在 Internet Explorer/Microsoft Edge 中启用 F12 开发人员工具，并切换到“网络”选项卡来验证协议。 
+- 在 Internet Explorer 或 Microsoft Edge 中启用 F12 开发人员工具，并切换到 "网络" 选项卡来验证协议。 
 
 有关详细信息，请参阅 [IIS 上的 HTTP/2](https://blogs.iis.net/davidso/http2)。
 
@@ -231,7 +230,7 @@ Microsoft 遵循严格的流程，未经所有者或其被委派者书面许可�
 1. 右键单击下载的 RDP 文件，然后选择“编辑”。
 2. 在 username 前面添加“&#92;”作为前缀。 例如，使用 **.\username**，而不是 **username**。
 
-## <a name="scaling"></a>扩展
+## <a name="scaling"></a>缩放
 
 ### <a name="i-cannot-scale-beyond-x-instances"></a>无法扩展到 X 个实例以上
 Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用的核心，将无法进行扩展。 例如，如果限制为 100 个核心，则意味着云服务可以有 100 个 A1 大小的虚拟机实例或 50 个 A2 大小的虚拟机实例。
@@ -282,7 +281,7 @@ Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用�
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>云服务 VM 上的驱动器为何显示可用磁盘空间不足？
 这是预期行为，应不会导致任何应用程序问题。 Azure PaaS VM 中的 %approot% 驱动器的日记功能启用后，基本上会占用文件通常所用空间的两倍。 但是请注意以下几点，从根本上看，此问题无足轻重。
 
-%approot% 驱动器大小的计算方法是 <.cspkg 的大小 + 日记最大大小 + 备用可用空间> 或 1.5 GB 两者中较大的一个。 VM 的大小与此计算方法无关。 （VM 大小仅影响临时 C: 驱动器的大小） 
+% Approot% 驱动器大小的计算公式为\<： .cspkg + 最大日志大小 + 可用空间的边距 > 或 1.5 GB，取两者中较大者。 VM 的大小与此计算方法无关。 （VM 大小仅影响临时 C: 驱动器的大小） 
 
 不支持写入 %approot% 驱动器。 如果要写入 Azure VM，必须在临时 LocalStorage 资源（或其他选项，例如 Blob 存储、Azure 文件等）中执行此操作。 因此 %approot% 文件夹的可用空间没有意义。 如果不确定应用程序是否要写入 %approot% 驱动器，可以让服务持续运行几天，然后比较“之前”和“之后”的大小。 
 
@@ -297,7 +296,7 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 - [创建 PowerShell 启动任务](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
 - [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
-有关反恶意软件部署方案以及如何在门户中启用此类方案的详细信息，请参阅[反恶意软件部署方案](../security/azure-security-antimalware.md#antimalware-deployment-scenarios)。
+有关反恶意软件部署方案以及如何在门户中启用此类方案的详细信息，请参阅[反恶意软件部署方案](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)。
 
 ### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>如何为云服务启用服务器名称指示 (SNI)？
 
@@ -311,10 +310,10 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
     
 如[此文](https://technet.microsoft.com/library/ee790567.aspx)所述，$sslFlags 可为以下值之一：
 
-|值|含义|
+|ReplTest1|含义|
 ------|------
 |0|没有 SNI|
-|第|已启用 SNI |
+|1|已启用 SNI |
 |2 |使用中心证书存储的非 SNI 绑定|
 |3|使用中心证书存储的 SNI 绑定 |
  

@@ -12,14 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: aaf1d72a0c9c56e7d140fb615caf014507ebf263
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840556"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60928048"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [当前版本](transform-data-using-machine-learning.md)
 
@@ -66,7 +66,7 @@ Azure 数据工厂，可轻松地创建使用已发布的管道[Azure 机器学�
 
 请参阅[计算链接服务](compute-linked-services.md)一文，获取有关 JSON 定义中的属性的说明。
 
-Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验。 可以从数据工厂选择要使用的合适 Web 服务。 若要获取创建 Azure 机器学习链接服务所需的信息，请转到 https://services.azureml.net，其中列出了所有（新式）Web 服务和经典 Web 服务。 单击要访问的 Web 服务，然后单击“使用”页。 复制**主密钥**作为 **apiKey** 属性，复制**批处理请求**作为 **mlEndpoint** 属性。
+Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验。 可以从数据工厂选择要使用的合适 Web 服务。 若要获取创建 Azure 机器学习链接服务所需的信息，请转到 https://services.azureml.net ，其中列出了所有（新式）Web 服务和经典 Web 服务。 单击要访问的 Web 服务，然后单击“使用”  页。 复制**主密钥**作为 **apiKey** 属性，复制**批处理请求**作为 **mlEndpoint** 属性。
 
 ![Azure 机器学习 Web 服务](./media/transform-data-using-machine-learning/web-services.png)
 
@@ -128,7 +128,7 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 | :---------------- | :--------------------------------------- | :------- |
 | 名称              | 管道中活动的名称     | 是      |
 | description       | 描述活动用途的文本。  | 否       |
-| type              | 对于 Data Lake Analytics U-SQL 活动，活动类型是 AzureMLBatchExecution。 | 是      |
+| type              | 对于 Data Lake Analytics U-SQL 活动，活动类型是 AzureMLBatchExecution  。 | 是      |
 | linkedServiceName | Azure 机器学习链接服务的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
 | webServiceInputs  | 映射 Azure 机器学习 Web 服务输入名称的键/值对。 键必须与已发布 Azure 机器学习 Web 服务中定义的输入参数匹配。 值是 Azure 存储链接服务和指定输入 Blob 位置的 FilePath 属性对。 | 否       |
 | webServiceOutputs | 映射 Azure 机器学习 Web 服务输出名称的键/值对。 键必须与已发布 Azure 机器学习 Web 服务中定义的输出参数匹配。 值是 Azure 存储链接服务和指定输出 Blob 位置的 FilePath 属性对。 | 否       |

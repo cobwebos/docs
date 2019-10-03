@@ -8,18 +8,18 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/08/2018
-ms.openlocfilehash: 7e66f374a1f5f4fb050f366fdad0e787292101f8
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.date: 09/20/2019
+ms.openlocfilehash: 7a628eb02170346a826cab19498d6fdf40cebddd
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526735"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173384"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>使用 Yeoman 在 Azure 中创建 Terraform 基模板
 
 可以通过 [Terraform](https://docs.microsoft.com/azure/terraform/
-) 轻松地在 Azure 上创建基础结构。 [Yeoman](https://yeoman.io/) 提供卓越的最佳做法框架，大大简化了模块开发人员创建 Terraform 模块的工作。
+) 轻松地在 Azure 上创建基础结构。 [Yeoman](https://yeoman.io/) 提供卓越的最佳做法框架，大大简化了模块开发人员创建 Terraform 模块的工作。 
 
 本文介绍如何使用 Yeoman 模块生成器来创建 Terraform 基模板。 然后会介绍如何使用两种不同的方法测试新的 Terraform 模板：
 
@@ -93,14 +93,14 @@ Yeoman 模板在**当前目录**中生成文件。 由于此原因，需创建�
 
 1. 按照屏幕说明提供以下信息：
 
-    - Terraform 模块项目名称
+    -  Terraform 模块项目名称
 
         ![项目名称](media/terraform-vscode-module-generator/ymg-project-name.png)       
 
         >[!NOTE]
         >在此示例中，我们输入了 `doc-sample-module`。
 
-    - 是否要包括 Docker 映像文件？
+    -  是否要包括 Docker 映像文件？
 
         ![包括 Docker 映像文件？](media/terraform-vscode-module-generator/ymg-include-docker-image-file.png) 
 
@@ -115,7 +115,7 @@ Yeoman 模板在**当前目录**中生成文件。 由于此原因，需创建�
 
 1. 启动 Visual Studio Code
 
-1. 在菜单栏中选择“文件”>“打开文件夹”，然后选择已创建的文件夹。
+1. 在菜单栏中选择“文件”>“打开文件夹”，然后选择已创建的文件夹  。
 
     ![Visual Studio Code](media/terraform-vscode-module-generator/ymg-open-in-vscode.png)
 
@@ -174,7 +174,7 @@ Yeoman 模板在**当前目录**中生成文件。 由于此原因，需创建�
 
     `docker build --build-arg BUILD_ARM_SUBSCRIPTION_ID= --build-arg BUILD_ARM_CLIENT_ID= --build-arg BUILD_ARM_CLIENT_SECRET= --build-arg BUILD_ARM_TENANT_ID= -t terra-mod-example .`。
 
-    将会显示“已成功生成”消息。
+    将会显示“已成功生成”消息。 
 
     ![已成功生成](media/terraform-vscode-module-generator/ymg-successfully-built.png)
 
@@ -197,7 +197,7 @@ Yeoman 模板在**当前目录**中生成文件。 由于此原因，需创建�
 
 1. 输入 `bundle install` 。
 
-    等待“捆绑包完成”消息，然后继续下一步。
+    等待“捆绑包完成”消息，然后继续下一步。 
 
 1. 输入 `rake build` 。
 
@@ -207,7 +207,7 @@ Yeoman 模板在**当前目录**中生成文件。 由于此原因，需创建�
 
 1. 输入 `rake e2e` 。
 
-1. 片刻后，会显示“通过”消息。
+1. 片刻后，会显示“通过”消息。 
 
     ![通过](media/terraform-vscode-module-generator/ymg-pass.png)
 
@@ -229,14 +229,14 @@ Yeoman 模板在**当前目录**中生成文件。 由于此原因，需创建�
 
 1. 通过 [Azure 门户](https://portal.azure.com/)、[shell.azure.com](https://shell.azure.com) 或 [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)启动 Azure Cloud Shell 会话。
 
-1. 此时会打开“欢迎使用 Azure Cloud Shell”页面。 选择“Bash (Linux)”。 （不支持 Power Shell。）
+1. 此时会打开“欢迎使用 Azure Cloud Shell”页面。  选择“Bash (Linux)”。  （不支持 Power Shell。）
 
     ![欢迎使用 Azure Cloud Shell](media/terraform-vscode-module-generator/ymg-welcome-to-azure-cloud-shell.png)
 
     >[!NOTE]
     >在此示例中，选择了 Bash (Linux)。
 
-1. 如果尚未设置 Azure 存储帐户，则显示以下屏幕。 选择“创建存储”。
+1. 如果尚未设置 Azure 存储帐户，则显示以下屏幕。 选择“创建存储”。 
 
     ![尚未装载任何存储](media/terraform-vscode-module-generator/ymg-you-have-no-storage-mounted.png)
 
@@ -268,7 +268,7 @@ Yeoman 模板在**当前目录**中生成文件。 由于此原因，需创建�
 
 1. 输入 `bundle install`，安装依赖项。
 
-    等待“捆绑包完成”消息，然后继续下一步。
+    等待“捆绑包完成”消息，然后继续下一步。 
 
 1. 输入 `rake build`，生成模块。
 
@@ -276,7 +276,7 @@ Yeoman 模板在**当前目录**中生成文件。 由于此原因，需创建�
 
 1. 输入 `rake e2e`，运行端到端测试。
 
-1. 片刻后，会显示“通过”消息。
+1. 片刻后，会显示“通过”消息。 
 
     ![通过](media/terraform-vscode-module-generator/ymg-pass.png)
 

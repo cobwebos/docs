@@ -1,7 +1,6 @@
 ---
 title: 在 Azure 虚拟网络中设置 HBase 群集复制 - Azure HDInsight
 description: 了解如何设置从一个 HDInsight 版本到另一个版本的 HBase 复制，以实现负载均衡、高可用性、在不造成停机的情况下进行迁移和更新，以及灾难恢复。
-services: hdinsight,virtual-network
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: d50c3f4452dd00b5656b6cde5e671caebcb4bb7c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 34b9993482d1036570805af7caba29361b231426
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112528"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077182"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -22,7 +21,7 @@ ms.locfileid: "58112528"
 
 群集复制使用源推送方法。 HBase 群集可以是一个源或一个目标，也可以同时充当这两个角色。 复制是异步的。 复制的目标是保持最终一致性。 在启用复制的情况下，当源接收到对列系列的编辑时，该编辑将传播到所有目标群集。 当数据从一个群集复制到另一个群集，会跟踪源群集和所有已使用数据的群集，防止复制循环。
 
-本教程介绍如何设置源-目标复制。 对于其他群集拓扑，请参阅 [Apache HBase 参考指南](https://hbase.apache.org/book.html#_cluster_replication)。
+本文介绍如何设置源-目标复制。 对于其他群集拓扑，请参阅 [Apache HBase 参考指南](https://hbase.apache.org/book.html#_cluster_replication)。
 
 下面是单个虚拟网络的 HBase 复制用例：
 
@@ -39,8 +38,8 @@ ms.locfileid: "58112528"
 
 可以使用 [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) 中的[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)脚本复制群集。
 
-## <a name="prerequisites"></a>必备组件
-在开始学习本教程之前，必须有一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+## <a name="prerequisites"></a>先决条件
+在开始本文之前，必须有一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="set-up-the-environments"></a>设置环境
 
@@ -61,15 +60,15 @@ ms.locfileid: "58112528"
 
 若要使用模板在两个不同区域创建两个虚拟网络并在 VNet 之间创建 VPN 连接，请选择下面的“部署到 Azure”按钮。 模板定义存储在[公共 blob 存储](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json)中。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 模板中的某些硬编码值：
 
 **VNet 1**
 
-| 属性 | 值 |
+| 属性 | ReplTest1 |
 |----------|-------|
-| 位置 | 美国西部 |
+| Location | 美国西部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
 | 地址空间前缀 | 10.1.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -84,9 +83,9 @@ ms.locfileid: "58112528"
 
 **VNet 2**
 
-| 属性 | 值 |
+| 属性 | ReplTest1 |
 |----------|-------|
-| 位置 | 美国东部 |
+| Location | East US |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
 | 地址空间前缀 | 10.2.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -136,7 +135,7 @@ ms.locfileid: "58112528"
     sudo apt-get install bind9 -y
     ```
 
-3. 配置 Bind，以便将转发到你本地 DNS 服务器的名称解析请求。 为此，请使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
+3. 配置 Bind 以将名称解析请求转发到本地 DNS 服务器。 为此，请使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
 
     ```
     acl goodclients {
@@ -261,7 +260,7 @@ sudo service bind9 status
 使用以下配置在这两个虚拟网络的每一个中创建 [Apache HBase](https://hbase.apache.org/) 群集：
 
 - **资源组名称**：使用的资源组名称与创建虚拟网络时所用的相同。
-- **群集类型**：HBase
+- **群集类型**：Hbase
 - **版本**：HBase 1.1.2 (HDI 3.6)
 - **位置**：使用与虚拟网络相同的位置。  默认情况下，vnet1 为“美国西部”，vnet2 为“美国东部”。
 - **存储**：为群集创建新的存储帐户。
@@ -289,7 +288,7 @@ sudo service bind9 status
 5. 选择或输入以下信息：
 
    1. **名称**：输入“启用复制”。
-   2. **Bash 脚本 URL**：输入 **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**。
+   2. **Bash 脚本 URL**：输入 **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** 。
    3. **头**：确保已选定。 清除其他节点类型。
    4. **参数**：以下示例参数将对所有现有表启用复制，并将源群集中的所有数据复制到目标群集：
 
@@ -302,7 +301,7 @@ sudo service bind9 status
 
 必需参数：
 
-|名称|描述|
+|姓名|描述|
 |----|-----------|
 |-s、--src-cluster | 指定源 HBase 群集的 DNS 名称。 例如：-s hbsrccluster、--src-cluster=hbsrccluster |
 |-d、--dst-cluster | 指定目标（副本）HBase 群集的 DNS 名称。 例如：-s dsthbcluster、--src-cluster=dsthbcluster |
@@ -311,7 +310,7 @@ sudo service bind9 status
 
 可选参数：
 
-|名称|描述|
+|姓名|描述|
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
@@ -397,7 +396,7 @@ sudo service bind9 status
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何在一个虚拟网络内部或者在两个虚拟网络之间设置 Apache HBase 复制。 若要了解有关 HDInsight 和 Apache HBase 的详细信息，请参阅以下文章：
+本文介绍了如何在虚拟网络中或两个虚拟网络之间设置 Apache HBase 复制。 若要了解有关 HDInsight 和 Apache HBase 的详细信息，请参阅以下文章：
 
 * [HDInsight 中的 Apache HBase 入门](./apache-hbase-tutorial-get-started-linux.md)
 * [HDInsight Apache HBase 概述](./apache-hbase-overview.md)

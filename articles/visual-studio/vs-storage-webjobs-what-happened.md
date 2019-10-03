@@ -1,9 +1,9 @@
 ---
 title: 我的 WebJob 项目（Visual Studio Azure 存储连接服务）发生了什么情况？ | Microsoft Docs
-description: 描述发生了什么中 Azure web 作业项目连接到存储帐户使用 Visual Studio 连接服务后
+description: 介绍使用 Visual Studio 连接服务连接到存储帐户后 Azure WebJob 项目中发生的情况
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 36ae7ff7-c22c-47eb-b220-049d61618c74
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: fa152d8b88254a35d00b91537bf1001ea1130e57
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c54214e0b919ddaa60403a1c986a144100143577
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884636"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510470"
 ---
 # <a name="what-happened-to-my-webjob-project-visual-studio-azure-storage-connected-service"></a>我的 WebJob 项目（Visual Studio Azure 存储连接服务）发生了什么情况？
 ## <a name="references-added"></a>已添加引用

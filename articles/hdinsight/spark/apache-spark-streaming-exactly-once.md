@@ -1,19 +1,19 @@
 ---
-title: 创建支持“恰好一次”事件处理的 Spark 流作业 - Azure HDInsight
-description: 如何将 Spark 流设置为处理事件一次且只有一次。
-services: hdinsight
+title: 仅限一次事件处理的 Spark 流作业-Azure HDInsight
+description: 如何设置 Apache Spark 流式处理事件一次且仅处理一次。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 194e6091180fa1dd0eaaf999e970c0248ea99db9
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: 908c49a46fe7993bc20bcb63a3c15758e2de5343
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651769"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091023"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>使用“恰好一次”事件处理创建 Apache Spark 流式处理作业
 

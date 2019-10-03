@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536243"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60561670"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure 事件网格用于订阅的事件架构
 
@@ -236,29 +236,29 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
-| 数据 | 对象 | 订阅事件数据。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| topic | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 事件主题的发布者定义路径。 |
+| eventType | string | 此事件源的一个注册事件类型。 |
+| eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 事件的唯一标识符。 |
+| data | object | 订阅事件数据。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
 | 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| authorization | 对象 | 操作请求的授权。 |
-| 声明 | 对象 | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
-| correlationId | 字符串 | 用于故障排除的操作 ID。 |
-| httpRequest | 对象 | 操作的详细信息。 仅在更新现有资源或删除资源时才包含此对象。 |
-| resourceProvider | 字符串 | 操作的资源提供程序。 |
-| resourceUri | 字符串 | 操作中资源的 URI。 |
-| operationName | 字符串 | 执行的操作。 |
-| status | 字符串 | 操作状态。 |
-| subscriptionId | 字符串 | 资源的订阅 ID。 |
-| tenantId | 字符串 | 资源的租户 ID。 |
+| authorization | object | 操作请求的授权。 |
+| claims | object | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
+| correlationId | string | 用于故障排除的操作 ID。 |
+| httpRequest | object | 操作的详细信息。 仅在更新现有资源或删除资源时才包含此对象。 |
+| resourceProvider | string | 操作的资源提供程序。 |
+| resourceUri | string | 操作中资源的 URI。 |
+| operationName | string | 执行的操作。 |
+| status | string | 操作状态。 |
+| subscriptionId | string | 资源的订阅 ID。 |
+| tenantId | string | 资源的租户 ID。 |
 
 ## <a name="next-steps"></a>后续步骤
 

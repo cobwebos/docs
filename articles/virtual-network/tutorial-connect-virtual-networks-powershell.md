@@ -3,8 +3,8 @@ title: 使用虚拟网络对等互连连接虚拟网络 - PowerShell | Microsoft
 description: 在本文中，你将学习如何使用 Azure PowerShell 通过虚拟网络对等互连来连接虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 49a6c91587905a8f7086b46b275a5078197939eb
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: f5c90b7d79b31c321b00869c90b0261c0b4730d3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649945"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66727756"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>通过 PowerShell 使用虚拟网络对等互连连接虚拟网络
 
@@ -37,9 +37,9 @@ ms.locfileid: "56649945"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您选择本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块版本 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
@@ -59,7 +59,7 @@ $virtualNetwork1 = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-创建的子网配置[新建 AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)。 以下示例创建地址前缀为 10.0.0.0/24 的子网配置：
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建子网配置。 以下示例创建地址前缀为 10.0.0.0/24 的子网配置：
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -68,7 +68,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork1
 ```
 
-子网配置写入虚拟网络[集 AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork)，这将创建子网：
+使用 [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) 将子网配置写入虚拟网络，从而创建子网：
 
 ```azurepowershell-interactive
 $virtualNetwork1 | Set-AzVirtualNetwork
@@ -96,7 +96,7 @@ $virtualNetwork2 | Set-AzVirtualNetwork
 
 ## <a name="peer-virtual-networks"></a>将虚拟网络对等互连
 
-创建与对等互连[添加 AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)。 以下示例将 *myVirtualNetwork1* 对等互连到 *myVirtualNetwork2*。
+使用 [Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering) 创建对等互连。 以下示例将 *myVirtualNetwork1* 对等互连到 *myVirtualNetwork2*。
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkPeering `
@@ -114,7 +114,7 @@ Add-AzVirtualNetworkPeering `
   -RemoteVirtualNetworkId $virtualNetwork1.Id
 ```
 
-在上一个命令执行后返回的输出中，可以看到 **peeringState** 为 *Connected*。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为 *Connected*。 确认的对等互连状态*myVirtualNetwork1-myVirtualNetwork2*已更改为*已连接*与[Get AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering)。
+在上一个命令执行后返回的输出中，可以看到 **peeringState** 为 *Connected*。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为 *Connected*。 使用 [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) 确认 myVirtualNetwork1-myVirtualNetwork2 对等互连的对等互连状态是否已更改为“Connected”。
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkPeering `
@@ -200,7 +200,7 @@ ping 10.0.0.4
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要使用[删除 AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup)删除资源组和所有它包含的资源。
+如果不再需要资源组及其包含的所有资源，请使用 [Remove-AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup) 将其删除。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

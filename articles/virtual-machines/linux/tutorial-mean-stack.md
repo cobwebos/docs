@@ -4,24 +4,23 @@ description: 本教程介绍如何在 Azure 中的 Linux VM 上创建 MongoDB、
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: eac10cd735ae16cf1c7c6d6987a3b53060caa1cd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 856e3e41e624844f1d7cbf5bf4cd1611bc10ecbb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315821"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081522"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>教程：在 Azure 中的 Linux 虚拟机上创建 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈
 
@@ -328,7 +327,7 @@ sudo apt-get install -y nodejs
 
     ![书籍记录](media/tutorial-mean/meanstack-init.png)
 
-3. 在文本框中输入数据并单击“添加”。 例如：
+3. 在文本框中输入数据并单击“添加”。  例如：
 
     ![添加书籍记录](media/tutorial-mean/meanstack-add.png)
 
@@ -336,7 +335,7 @@ sudo apt-get install -y nodejs
 
     ![列出书籍记录](media/tutorial-mean/meanstack-list.png)
 
-5. 可以单击“删除”并从数据库中删除书籍记录。
+5. 可以单击“删除”并从数据库中删除书籍记录。 
 
 ## <a name="next-steps"></a>后续步骤
 

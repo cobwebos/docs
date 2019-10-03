@@ -1,22 +1,22 @@
 ---
-title: 添加意向
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 添加方法-LUIS
+titleSuffix: Azure Cognitive Services
 description: 向 LUIS 应用添加意向，识别具有相同意向的问题或命令组。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 04/01/2019
+ms.topic: conceptual
+ms.date: 07/29/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: ed180563ea6138b3b4bab6092b39eeacf9dbf840
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: eb90a902b8f7fe8b37b81c2825cbdfc25ef5dc0d
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521736"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932891"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>添加意向以确定用户的话语意向
 
@@ -42,22 +42,31 @@ ms.locfileid: "59521736"
 
     LUIS 会将所有话语转换为小写，并在连字符等标记的两侧添加空格。
 
-## <a name="intent-prediction-discrepancy-errors"></a>意向预测偏差错误 
+<a name="#intent-prediction-discrepancy-errors"></a>
 
-意向中的话语可能在所选意向和预测分数之间存在意向预测偏差。 LUIS 通过用红框围住示例话语行上的“已标记意向”来指示这种偏差。 
+## <a name="intent-prediction-errors"></a>意向预测错误 
 
-![意向详细信息页的屏幕截图，其中包含表述预测差异错误](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+意向中的示例话语可能会在示例话语当前表现出的意向和在训练过程中确定的预测意向之间存在意向预测错误。 
 
-在顶部导航栏中，选择“训练”。 预测偏差现已消失。
+若要找出并修复话语预测错误，请将“筛选器”选项的“评估”选项“不正确”和“不清楚”与“视图”选项“详细视图”配合使用。 
 
-> [!Note]
-> 在单词或短语中的示例查询文本下, 一条红线时[实体预测误差](luis-how-to-add-example-utterances.md#entity-status-predictions)已发生。 您需要更正它。 
+![若要找出并修复话语预测错误，请使用“筛选器”选项。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+
+应用筛选器和视图以后，如果示例话语出现错误，则示例话语列表会显示话语和问题。
+
+![![应用筛选器和视图以后，如果示例话语出现错误，则示例话语列表会显示话语和问题。](./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+
+每一行会显示当前训练的示例话语预测分数、最接近的对手的分数，以及这两个分数之间的差异。 
+
+### <a name="fixing-intents"></a>修复意向
+
+若要了解如何修复意向预测错误，请使用[摘要仪表板](luis-how-to-use-dashboard.md)。 摘要仪表板提供对活动版本的上一次训练的分析，并提供排名靠前的建议，用于修复模型。  
 
 ## <a name="add-a-custom-entity"></a>添加自定义实体
 
 将话语添加到意向后，可以选择话语内部的文本来创建自定义实体。 通过自定义实体可以标记要提取的文本，以及正确的意向。 
 
-请参阅[将实体添加到查询文本](luis-how-to-add-example-utterances.md)若要了解详细信息。
+请参阅[将实体添加到话语](luis-how-to-add-example-utterances.md)以了解更多信息。
 
 ## <a name="entity-prediction-discrepancy-errors"></a>实体预测偏差错误 
 
@@ -73,7 +82,7 @@ ms.locfileid: "59521736"
 
 ## <a name="using-the-contextual-toolbar"></a>使用上下文工具栏
 
-在列表中，选择一个或多个示例语音样本，应检查查询文本，左侧的框时会查询文本列表上方的工具栏可以执行以下操作：
+通过选中话语左侧的框在列表中选择一个或多个示例话语后，使用话语列表上方的工具栏可以执行以下操作：
 
 * 重新分配意向：将话语移到不同的意向
 * 删除话语

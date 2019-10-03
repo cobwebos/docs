@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 47a4b38d39c52992b51284776ec34cb9491020e7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264448"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65595408"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure FAQ
 
@@ -25,7 +25,7 @@ Avere vFXT for Azure 是高性能的文件系统，可在 Azure 计算中缓存�
 
 ### <a name="is-avere-vfxt-a-storage-solution"></a>Avere vFXT 是存储解决方案吗？
 
-不。 Avere vFXT 是文件系统“缓存”，它附加到 EMC 或 NetApp NAS 或 Azure Blob 容器等存储环境。 Avere vFXT 高效处理来自客户端的数据请求，并缓存它所服务的数据，以便随着时间推移大幅度提高性能。 Avere vFXT 本身不存储数据。 它没有关于其后所存储的数据量的信息。
+不。 Avere vFXT 是文件系统“缓存”，它附加到 EMC 或 NetApp NAS 或 Azure Blob 容器等存储环境  。 Avere vFXT 高效处理来自客户端的数据请求，并缓存它所服务的数据，以便随着时间推移大幅度提高性能。 Avere vFXT 本身不存储数据。 它没有关于其后所存储的数据量的信息。
 
 ### <a name="is-avere-vfxt-a-tiering-solution"></a>Avere vFXT 是分层的解决方案吗？
 
@@ -204,7 +204,7 @@ Avere vFXT 环境与任何其他 Azure VM 类似，因为它需要通过网络�
 
 一般情况下，根据需要可以在 vnet 上配置额外的安全，但某些限制可能会干扰群集操作。
 
-例如，从 vnet 限制出站 internet 访问权限会导致问题的群集除非您还将添加规则显式允许访问 AzureConnectors 和 AzureCloud。 这种情况下所述[GitHub 上的补充文档](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md)。
+例如，从 vnet 限制出站 internet 访问权限会导致问题的群集除非您还将添加显式允许访问 AzureCloud 的规则。 这种情况下所述[GitHub 上的补充文档](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md)。
 
 自定义安全的帮助，请联系支持部门中所述[获取有关您的系统的帮助](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)。
 

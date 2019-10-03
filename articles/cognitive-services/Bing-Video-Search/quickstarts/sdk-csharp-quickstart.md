@@ -3,30 +3,30 @@ title: 快速入门：使用适用于 C# 的必应视频搜索 SDK 来搜索视�
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门使用适用于 C# 的必应视频搜索 SDK 来发送视频搜索请求。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
-ms.author: rosh
-ms.openlocfilehash: f94db7a29827a80307f4a081d93744c5edc59edb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 06/26/2019
+ms.author: aahi
+ms.openlocfilehash: 3673f18ff38b2ae98180f470b9f76f1fc57ee8b6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867777"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442531"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-c"></a>快速入门：使用适用于 C# 的必应视频搜索 SDK 执行视频搜索
 
-使用本快速入门开始使用适用于 C# 的必应视频搜索 SDK 来搜索新闻。 虽然必应视频搜索具有与大多数编程语言兼容的 REST API，但该 SDK 提供了一种简单方法来将服务集成到应用程序中。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) 上找到此示例的源代码。 它包含更多注释和功能。
+使用本快速入门开始使用适用于 C# 的必应视频搜索 SDK 来搜索新闻。 虽然必应视频搜索具有与大多数编程语言兼容的 REST API，但该 SDK 提供了一种简单方法来将服务集成到应用程序中。 此示例的源代码可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) 上找到，其中包含其他注释和功能。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://visualstudio.microsoft.com/downloads/)。
 * Json.NET 框架，以 [NuGet 程序包](https://www.nuget.org/packages/Newtonsoft.Json/)的形式提供。
 
-若要向项目中添加必应视频搜索 SDK，请浏览到 Visual Studio 中的解决方案资源管理器中的 `Manage NuGet Packages` 选项。  添加 `Microsoft.Azure.CognitiveServices.Search.VideoSearch` 程序包。
+若要向项目中添加必应视频搜索 SDK，请在 Visual Studio 中的**解决方案资源管理器**中选择“管理 NuGet 包”  选项。 添加 `Microsoft.Azure.CognitiveServices.Search.VideoSearch` 程序包。
 
 安装 [[NuGet 视频搜索 SDK 程序包]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0)还将安装以下依赖项：
 

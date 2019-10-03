@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ca5a75ec61a0f75b3a008762561fed8231fce33d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 7b45f9950ef63bc29d23d78d20909f223cb30350
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453750"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998157"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>将数据移入和移出 Azure Blob 存储
 
@@ -27,7 +27,7 @@ ms.locfileid: "55453750"
 以下文章介绍了如何使用不同技术将数据移入和移出 Azure Blob 存储。
 
 * [Azure 存储资源管理器](move-data-to-azure-blob-using-azure-storage-explorer.md)
-* [AzCopy](move-data-to-azure-blob-using-azcopy.md)
+* [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
 * [Python](move-data-to-azure-blob-using-python.md)
 * [SSIS](move-data-to-azure-blob-using-ssis.md)
 

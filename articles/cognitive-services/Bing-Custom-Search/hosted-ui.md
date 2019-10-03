@@ -1,6 +1,6 @@
 ---
 title: 为必应自定义搜索配置托管 UI | Microsoft Docs
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 根据本文的说明为必应自定义搜索配置和集成托管 UI。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2cc89bf57167db75404c044f58d18ab48edfaf38
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084126"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854082"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>配置托管 UI 体验
 
@@ -78,7 +78,7 @@ ms.locfileid: "58084126"
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > 根据需要将以下查询参数添加到 URL。 有关这些参数的信息，请参阅[自定义搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) 参考。
+  > 根据需要将以下查询参数添加到 URL。 有关这些参数的信息，请参阅[自定义搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) 参考。
   >
   > - q
   > - mkt
@@ -165,5 +165,5 @@ ms.locfileid: "58084126"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用修饰标记来突出显示文本](./hit-highlighting.md)
+- [使用修饰标记来突出显示文本](../bing-web-search/hit-highlighting.md)
 - [网页](./page-webpages.md)

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
 ms.openlocfilehash: b7cd6bb1fd0377ca1440d9c667453df922aacbd4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698650"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60561449"
 ---
 # <a name="about-azure-devtest-labs"></a>关于 Azure 开发测试实验室
 Azure 开发测试实验室允许在团队的开发人员有效地自行管理虚拟机 (Vm) 和 PaaS 资源而无需等待审批。

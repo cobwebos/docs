@@ -3,7 +3,7 @@ title: Azure Service Fabric 中的 Reliable Collection 对象序列化 | Microso
 description: Azure Service Fabric Reliable Collections 对象序列化
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: masnider,rajak
 ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
-ms.author: aljo
-ms.openlocfilehash: ee19be45915b3ff1253ec721f4334fead19647b8
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.author: atsenthi
+ms.openlocfilehash: d5e7dfb84f6e8a8fbd029ccc0b15c17f68216c33
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522379"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599308"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric 中的 Reliable Collection 对象序列化
 Reliable Collections 通过复制和保留项目，确保这些项目在机器故障和电力中断时能够持久。
@@ -36,14 +36,14 @@ Reliable Collections 从可靠状态管理器获取与给定类型对应的串�
 可靠状态管理器拥有针对以下类型的内置串行化程序： 
 - Guid
 - bool
-- 字节
+- byte
 - sbyte
 - byte[]
 - char
-- 字符串
+- string
 - decimal
-- double
-- float
+- 双
+- 浮点数
 - int
 - uint
 - long
@@ -55,7 +55,7 @@ Reliable Collections 从可靠状态管理器获取与给定类型对应的串�
 
 自定义串行化程序通常用于提高性能，或用于在网络传输时以及在磁盘上加密数据。 自定义串行化程序通常比通用序列化程序更高效，因为它们不需要串行化有关类型的信息。 
 
-[IReliableStateManager.TryAddStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) 用于为给定类型 T 注册自定义串行化程序。此注册应在 StatefulServiceBase 构造内发生，以确保在开始恢复前，所有 Reliable Collections 都有权访问相关串行化程序来读取其保留的数据。
+[IReliableStateManager. ireliablestatemanager.tryaddstateserializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer)用于为给定的类型 t 注册自定义序列化程序。此注册应在 StatefulServiceBase 的构造中发生, 以确保在恢复开始之前, 所有可靠集合都有权访问相关的序列化程序来读取其持久性数据。
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,10 +73,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>如何实现自定义串行化程序
 
-自定义串行化程序需要实现 [IStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) 接口。
+自定义序列化程序需要实现[IStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1)接口。
 
 > [!NOTE]
-> IStateSerializer<T> 包含读取和写入重载，可接受名为基值的附加 T。 此 API 用于差分序列化。 当前未公开差分序列化功能。 因此，在公开和启用差分序列化前，不会调用这两个重载。
+> IStateSerializer\<T > 包含用于写入和读取的重载, 该重载采用名为基值的附加 T。 此 API 用于差分序列化。 当前未公开差分序列化功能。 因此，在公开和启用差分序列化前，不会调用这两个重载。
 
 以下是名为 OrderKey 的自定义类型示例，它包含四个属性
 
@@ -96,7 +96,7 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-以下是 IStateSerializer 的示例实现\<OrderKey >。
+下面是 IStateSerializer\<OrderKey> 的一个实现示例。
 请注意，接受 baseValue 的读取和写入重载调用各自的重载来实现向前兼容。
 
 ```csharp

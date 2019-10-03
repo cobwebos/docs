@@ -4,30 +4,33 @@ description: 使用 Visual Studio Code 开发、生成和调试使用 C#、Pytho
 services: iot-edge
 keywords: ''
 author: shizn
-manager: philmea
 ms.author: xshi
-ms.date: 02/20/2019
+ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9a7d83070caad86d7d66b62a9592dbb1e0017f97
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e5bfd2fc127774b9630e87ab4f51241e82ed7c87
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884233"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999070"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 模块
 
 可以将业务逻辑转变为用于 Azure IoT Edge 的模块。 本文展示了如何使用 Visual Studio Code 作为主要工具来开发和调试模块。
 
-## <a name="prerequisites"></a>必备组件
+可以使用两种方式在 Visual Studio Code 中调试用 C#、Node.js 或 Java 编写的模块：可在模块容器中附加一个进程，或在调试模式下启动模块代码。 若要调试用 Python 或 C 编写的模块，只能将其附加到 Linux amd64 容器中的进程。
 
-可以使用运行 Windows、macOS 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一台物理设备。
+如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[Debugging](https://code.visualstudio.com/Docs/editor/debugging)（调试）的信息。
 
-对于用 C#、Node.js 或 Java 编写的模块，有两种方法可以在 Visual Studio Code 中调试模块：可在模块容器中附加一个进程，或在调试模式下启动模块代码。 对于用 Python 或 C 编写的模块，只能通过附加到 Linux amd64 容器中的进程来调试。
+本文说明了如何以多种语言为多种体系结构开发和调试模块。 目前，Visual Studio Code 为用 C#、C、Python、Node.js 和 Java 编写的模块提供支持。 支持的设备体系结构为 X64 和 ARM32。 有关支持的操作系统、语言和体系结构的详细信息，请参阅[语言和体系结构支持](module-development.md#language-and-architecture-support)。
 
-> [!TIP]
-> 如果你不熟悉 Visual Studio Code 的调试功能，请阅读有关[Debugging](https://code.visualstudio.com/Docs/editor/debugging)（调试）的信息。
+>[!NOTE]
+>开发和调试对 Linux ARM64 设备的支持是[公开预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关详细信息，请参阅[在 Visual Studio Code（预览版）中开发和调试 ARM64 IoT Edge 模块](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
+
+## <a name="prerequisites"></a>先决条件
+
+可以使用运行 Windows、macOS 或 Linux 的计算机或虚拟机作为开发计算机。 在 Windows 计算机上，可以开发 Windows 或 Linux 模块。 若要开发 Windows 模块，请使用运行版本 1809/内部版本 17763 或更高版本的 Windows 计算机。 若要开发 Linux 模块，请使用符合 [Docker Desktop 要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 计算机。 
 
 首先安装 [Visual Studio Code](https://code.visualstudio.com/)，然后添加以下扩展：
 
@@ -43,11 +46,7 @@ ms.locfileid: "57884233"
 
 - C#，包括 Azure Functions：[.NET Core 2.1 SDK](https://www.microsoft.com/net/download)
 
-- Python:[Python](https://www.python.org/downloads/) 和 [Pip](https://pip.pypa.io/en/stable/installing/#installation)用于安装 Python 包（通常包含在 Python 安装中）。 安装 Pip 后，使用以下命令安装“Cookiecutter”包：
-
-    ```cmd/sh
-    pip install --upgrade --user cookiecutter
-    ```
+- Python:[Python](https://www.python.org/downloads/) 和 [Pip](https://pip.pypa.io/en/stable/installing/#installation)用于安装 Python 包（通常包含在 Python 安装中）。
 
 - Node.js：[Node.js](https://nodejs.org)。 还需要安装 [Yeoman](https://www.npmjs.com/package/yo) 和 [Azure IoT Edge Node.js 模块生成器](https://www.npmjs.com/package/generator-azure-iot-edge-module)。
 
@@ -62,14 +61,15 @@ ms.locfileid: "57884233"
     > [!TIP]
     > 对于原型和测试用途，可以使用本地 Docker 注册表，而不使用云注册表。
 
-除非使用 C 开发模块，否则还需要基于 Python 的 [Azure IoT EdgeHub 开发工具](https://pypi.org/project/iotedgehubdev/)，以便设置本地开发环境以调试、运行和测试 IoT Edge 解决方案。 如果尚未这样做，请安装 [Python (2.7/3.6) 和 Pip](https://www.python.org/)，然后在终端中运行此命令安装“iotedgehubdev”。
+除非使用 C 开发模块，否则还需要基于 Python 的 [Azure IoT EdgeHub 开发工具](https://pypi.org/project/iotedgehubdev/)，以便设置本地开发环境以调试、运行和测试 IoT Edge 解决方案。 如果尚未这样做，请在终端中运行以下命令，安装[Python （2.7/3.6 +）和 Pip](https://www.python.org/) ，然后安装**iotedgehubdev** 。
 
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
-
 > [!NOTE]
-> 若要在设备上测试模块，至少需要一个 IoT Edge 设备和一个活动的 IoT 中心。 若要将计算机用作 IoT Edge 设备，请按照 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 快速入门中的步骤操作。 如果正在开发计算机上运行 IoT Edge 守护程序，则可能需要先停止 EdgeHub 和 EdgeAgent，然后再继续下一步。
+> 如果有多个 Python，包括预安装的 python 2.7（例如，在 Ubuntu 或 macOS 上），请确保使用正确的 `pip` 或 `pip3` 来安装 **iotedgehubdev**
+
+若要在设备上测试模块，至少需要一个 IoT Edge 设备和一个活动的 IoT 中心。 若要将计算机用作 IoT Edge 设备，请按照 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 快速入门中的步骤操作。 如果正在开发计算机上运行 IoT Edge 守护程序，则可能需要先停止 EdgeHub 和 EdgeAgent，然后再继续下一步。
 
 ## <a name="create-a-new-solution-template"></a>创建新的解决方案模板
 
@@ -89,7 +89,7 @@ ms.locfileid: "57884233"
 
 1. 输入模块的名称。 选择容器注册表中唯一的名称。
 
-1. 提供模块的映像存储库的名称。 Visual Studio Code 使用“localhost:5000/<你的模块名称\>”自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：*\<注册表名称\>*.azurecr.io。 仅替换字符串的“localhost:5000”部分，以使最终结果看起来像*\<注册表名称\>.azurecr.io/\<你的模块名称\>***。
+1. 提供模块的映像存储库的名称。 Visual Studio Code 使用“localhost:5000/<你的模块名称\>”自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器类似于  **_\<注册表名称\>_ . azurecr.io**。 仅替换字符串中的**localhost： 5000**部分，使最终结果看起来像 **\<*注册表名称*\>。 azurecr.io/ _\<您的模块名称\>_** 。
 
    ![提供 Docker 映像存储库](./media/how-to-develop-csharp-module/repository.png)
 
@@ -99,18 +99,18 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 - 一个 .vscode 文件夹，包含调试配置。
 
-- 一个 modules 文件夹，包含每个模块的子文件夹。 现在，只有一个模块。 但是可以在命令面板中使用以下命令添加更多模块：“Azure IoT Edge: Add IoT Edge Module”。
+- 一个 modules 文件夹，包含每个模块的子文件夹。  在每个模块的文件夹中有一个 **module.json** 文件，用于控制模块的构建和部署方式。  需修改此文件，将模块部署容器注册表从 localhost 更改为远程注册表。 现在，只有一个模块。  但是可以在命令面板中使用以下命令添加更多模块：“Azure IoT Edge:Add IoT Edge Module”。
 
 - 一个 .env 文件，列出环境变量。 如果 Azure 容器注册表是注册表，则其中将包含 Azure 容器注册表用户名和密码。
 
   > [!NOTE]
   > 仅当为模块提供了映像存储库时，才会创建环境文件。 如果接受 localhost 默认值在本地进行测试和调试，则不需要声明环境变量。
 
-- 一个 deployment.template.json 文件，列出新模块以及模拟可用于测试的数据的示例 tempSensor 模块。 有关部署清单如何工作的详细信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。
+- 一个 deployment.template.json 文件，列出新模块以及模拟可用于测试的数据的示例 SimulatedTemperatureSensor 模块。 有关部署清单如何工作的详细信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。
 
 ## <a name="add-additional-modules"></a>添加其他模块
 
-若要向解决方案添加其他模块，请从命令面板运行命令“Azure IoT Edge：添加 IoT Edge 模块”**。 也可以右键单击 Visual Studio Code 资源管理器视图中的“模块”文件夹或 `deployment.template.json` 文件，然后选择“添加 IoT Edge 模块”。
+若要向解决方案添加其他模块，请从命令面板运行命令“Azure IoT Edge：添加 IoT Edge 模块”** 。 也可以右键单击 Visual Studio Code 资源管理器视图中的“模块”文件夹或 `deployment.template.json` 文件，然后选择“添加 IoT Edge 模块”。
 
 ## <a name="develop-your-module"></a>开发模块
 
@@ -123,7 +123,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 - Java：modules > &lt;你的模块名称&gt; > src > main > java > com > edgemodulemodules > App.java
 - C：modules > &lt;你的模块名称&gt; > main.c
 
-设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后部署到设备以开始测试而无需触及任何代码。 生成该模块仅为简单从源（在此示例中，为模拟数据的 tempSensor 模块）获取输入并通过管道将其传送到 IoT 中心。
+设置模块和 deployment.template.json 文件，以便可以生成解决方案，将其推送到容器注册表，然后部署到设备以开始测试而无需触及任何代码。 生成该模块仅为简单从源（在此示例中，为模拟数据的 SimulatedTemperatureSensor 模块）获取输入并通过管道将其传送到 IoT 中心。
 
 当你准备使用自己的代码自定义模板时，请使用 [Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) 生成模块，以满足 IoT 解决方案的关键需求（例如安全性、设备管理和可靠性）。
 
@@ -154,7 +154,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 1. 根据开发语言的要求准备环境以进行调试，在模块中设置断点，并选择要使用的调试配置：
    - **C#**
-     - 在 Visual Studio Code 集成终端中，将目录更改为***&lt;模块名称&gt;*** 文件夹，并运行以下命令以生成.NET Core 应用程序。
+     - 在 Visual Studio Code 集成终端中, 将目录更改为***&lt;你的模块名称&gt;*** 文件夹, 然后运行以下命令以生成 .net Core 应用程序。
 
        ```cmd
        dotnet build
@@ -165,7 +165,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
      - 通过选择“视图”>“调试”以导航到 Visual Studio Code 调试视图。 从下拉列表中选择调试配置“&lt;你的模块名称&gt; 本地调试(.NET Core)”。
 
         > [!NOTE]
-        > 如果在.NET Core`TargetFramework`与你的程序路径中不一致`launch.json`，将需要手动更新中的程序路径`launch.json`以匹配`TargetFramework`.csproj 文件，因此该 Visual Studio Code 可以成功启动此程序中程序。
+        > 如果你的 .net `TargetFramework` Core 与中`launch.json`的程序路径不一致, 你将需要手动更新中`launch.json`的程序路径以匹配 .csproj 文件`TargetFramework`中的, 以便 Visual Studio Code 能够成功启动此项目.
 
    - **Node.js**
      - 在 Visual Studio Code 集成终端中，将目录更改为“&lt;你的模块名称&gt;”文件夹，然后运行以下命令以安装节点包
@@ -226,7 +226,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 1. 在 Visual Studio Code 资源管理器视图中，右键单击解决方案的 `deployment.debug.template.json` 文件，然后选择“在模拟器中构建并运行 IoT Edge 解决方案”。 可以在同一窗口中监视所有模块容器日志。 还可以导航到 Docker 视图以监视容器状态。
 
-   ![监视变量](media/how-to-develop-csharp-module/view-log.png)
+   ![监视变量](media/how-to-vs-code-develop-module/view-log.png)
 
 1. 导航至 Visual Studio Code 调试视图，并选择模块的调试配置文件。 调试选项名称应类似于“&lt;你的模块名称&gt; 远程调试”
 
@@ -234,7 +234,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 1. 在 Visual Studio Code 调试视图中，将在左侧面板中看到变量。
 
-1. 若要停止调试会话，请先选择停止按钮或按“Shift + F5”，然后从命令面板中选择“Azure IoT Edge：停止 IoT Edge 模拟器”**。
+1. 若要停止调试会话，请先选择停止按钮或按“Shift + F5”，然后从命令面板中选择“Azure IoT Edge：停止 IoT Edge 模拟器”** 。
 
 > [!NOTE]
 > 上面的示例展示了如何调试容器上的 IoT Edge 模块。 它为模块的容器 `createOptions` 设置添加了公开的端口。 完成模块的调试后，建议为可用于生产的 IoT Edge 模块删除那些公开的端口。
@@ -269,26 +269,26 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
       ptvsd.break_into_debugger()
       ```
 
-     例如，如果要调试 `receive_message_callback` 方法，则应插入该行代码，如下所示：
+     例如，如果想要调试`receive_message_listener`函数，可以插入该行代码，如下所示：
 
       ```python
-      def receive_message_callback(message, hubManager):
+      def receive_message_listener(client):
           ptvsd.break_into_debugger()
-          global RECEIVE_CALLBACKS
-          message_buffer = message.get_bytearray()
-          size = len(message_buffer)
-          print ( "    Data: <<<%s>>> & Size=%d" % (message_buffer[:size].decode ('utf-8'), size) )
-          map_properties = message.properties()
-          key_value_pair = map_properties.get_internals()
-          print ( "    Properties: %s" % key_value_pair )
-          RECEIVE_CALLBACKS += 1
-          print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
-          hubManager.forward_event_to_output("output1", message, 0)
-          return IoTHubMessageDispositionResult.ACCEPTED
+          global RECEIVED_MESSAGES
+          while True:
+              message = client.receive_message_on_input("input1")   # blocking call
+              RECEIVED_MESSAGES += 1
+              print("Message received on input1")
+              print( "    Data: <<{}>>".format(message.data) )
+              print( "    Properties: {}".format(message.custom_properties))
+              print( "    Total calls received: {}".format(RECEIVED_MESSAGES))
+              print("Forwarding message to output1")
+              client.send_message_to_output(message, "output1")
+              print("Message successfully forwarded")
       ```
 
 1. 在 Visual Studio Code 命令面板中：
-   1. 运行“Azure IoT Edge: Build and Push IoT Edge solution”命令。
+   1. 运行“Azure IoT Edge:Build and Push IoT Edge solution”命令。
 
    1. 选择解决方案的 `deployment.debug.template.json` 文件。
 
@@ -338,8 +338,8 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 1. 打开开发语言的模块文件并添加断点：
 
-   - **Azure 函数 (C#)**：将断点添加到文件 `<your module name>.cs`。
-   - **C#**：将断点添加到文件 `Program.cs`。
+   - **Azure 函数 (C#)** ：将断点添加到文件 `<your module name>.cs`。
+   - **C#** ：将断点添加到文件 `Program.cs`。
    - **Node.js**：将断点添加到文件 `app.js`。
    - **Java**：将断点添加到文件 `App.java`。
    - **Python**：将断点添加到回叫方法（其中添加了 `ptvsd.break_into_debugger()` 行）中的文件 `main.py`。

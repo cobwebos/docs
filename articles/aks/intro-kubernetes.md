@@ -2,24 +2,24 @@
 title: Azure Kubernetes 服务简介
 description: 了解 Azure Kubernetes 服务的功能和优势，以便在 Azure 中部署和管理基于容器的应用程序。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: overview
-ms.date: 03/05/2019
-ms.author: iainfou
+ms.date: 05/06/2019
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: a147d95701af166c650411a91fb24e3448cfec09
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 5515951a9bde596935f4c603ffd9e088f74dee45
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995024"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67615163"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
 可以使用 Azure Kubernetes 服务 (AKS) 在 Azure 中轻松地部署托管的 Kubernetes 群集。 AKS 通过将大量管理工作量卸载到 Azure，来降低管理 Kubernetes 所产生的复杂性和操作开销。 作为一个托管 Kubernetes 服务，Azure 可以自动处理运行状况监视和维护等关键任务。 Kubernetes 主节点由 Azure 管理。 你只管理和维护代理节点。 作为托管型 Kubernetes 服务，AKS 是免费的 - 你只需支付群集中的代理节点费，不需支付主节点的费用。
 
-可以在 Azure 门户中使用 Azure CLI 或模板驱动型部署选项（例如资源管理器模板和 Terraform）来创建 AKS 群集。 当你部署 AKS 群集时，系统会为你部署和配置 Kubernetes 主节点和所有节点。 另外，也可在部署过程中配置其他功能，例如高级网络、Azure Active Directory 集成、监视。
+可以在 Azure 门户中使用 Azure CLI 或模板驱动型部署选项（例如资源管理器模板和 Terraform）来创建 AKS 群集。 当你部署 AKS 群集时，系统会为你部署和配置 Kubernetes 主节点和所有节点。 另外，也可在部署过程中配置其他功能，例如高级网络、Azure Active Directory 集成、监视。 Windows Server 容器支持目前正在 AKS 中以预览版提供。
 
 有关 Kubernetes 基础知识的详细信息，请参阅 [AKS 的 Kubernetes 核心概念][concepts-clusters-workloads]。
 
@@ -43,9 +43,9 @@ ms.locfileid: "59995024"
 
 有关详细信息，请参阅[监视 Azure Kubernetes 服务容器运行状况][container-health]。
 
-## <a name="cluster-and-node"></a>群集和节点
+## <a name="clusters-and-nodes"></a>群集和节点
 
-AKS 节点在 Azure 虚拟机上运行。 可以将存储连接到节点和 Pod、升级群集配置以及使用 GPU。
+AKS 节点在 Azure 虚拟机上运行。 可以将存储连接到节点和 Pod、升级群集配置以及使用 GPU。 AKS 支持运行多个节点池的 Kubernetes 群集，以支持混合操作系统和 Windows Server 容器（当前处于预览状态）。 Linux 节点运行自定义的 Ubuntu OS 映像，Windows Server 节点运行自定义的 Windows Server 2019 OS 映像。
 
 ### <a name="cluster-node-and-pod-scaling"></a>群集节点和 Pod 缩放
 
@@ -91,7 +91,7 @@ AKS 群集可以部署到现有的虚拟网络中。 在此配置中，群集中
 
 Kubernetes 有丰富的生态系统，其中包含各种开发和管理工具，例如 Helm、Draft 以及适用于 Visual Studio Code 的 Kubernetes 扩展。 这些工具可以与 AKS 无缝地配合使用。
 
-另外，Azure Dev Spaces 为团队提供快速、迭代的 Kubernetes 开发体验。 只需最少的配置，即可直接在 AKS 中运行和调试容器。 有关入门，请参阅 [Azure Dev Spaces][azure-dev-spaces]。
+另外，Azure Dev Spaces 为团队提供快速、迭代的 Kubernetes 开发体验。 只需最少的配置，即可直接在 AKS 中运行和调试容器。 若要开始使用，请参阅 [Azure Dev Spaces][azure-dev-spaces]。
 
 Azure DevOps 项目允许通过简单的解决方案将现有的代码和 Git 存储库带到 Azure 中。 DevOps 项目自动创建 Azure 资源（例如 AKS，Azure DevOps Services 中的一种发布管道，其中包括用于 CI 的生成管道），为 CD 设置发布管道，然后创建适用于监视的 Azure Application Insights 资源。
 
@@ -109,7 +109,7 @@ Azure Kubernetes 服务 (AKS) 已被 CNCF 认证为符合 Kubernetes 规范。
 
 ## <a name="regulatory-compliance"></a>法规符合性
 
-Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有关详细信息，请参阅 [Microsoft Azure 符合性概述][compliance-doc]。
+Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有关详细信息，请参阅 [Microsoft Azure 合规性概述][compliance-doc]。
 
 ## <a name="next-steps"></a>后续步骤
 

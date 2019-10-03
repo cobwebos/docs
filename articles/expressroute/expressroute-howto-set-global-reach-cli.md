@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/12/2018
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 28df8f59944ccac9d731e15a558d864beed2f3ae
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 89ada41c5f3c9cf1ca7a2ac707363f57080c361d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817688"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64869969"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute 全球覆盖
 
@@ -48,7 +48,7 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>确定用于配置的 ExpressRoute 线路
 
-可以在任意两条 ExpressRoute 线路之间启用 ExpressRoute Global Reach，前提是它们位于受支持的国家/地区并且是在不同的对等互连位置创建的。 如果你的订阅同时拥有这两条线路，则可以选择其中任一条线路运行配置，如本文稍后所述。 如果两条线路位于不同的 Azure 订阅中，则必须拥有来自一个 Azure 订阅的授权，并且在另一个 Azure 订阅中运行配置命令时必须传入授权密钥。
+您可以启用 ExpressRoute 全球覆盖之间任何两个 ExpressRoute 线路，只要它们位于支持的国家/地区和不同对等互连位置创建。 如果你的订阅同时拥有这两条线路，则可以选择其中任一条线路运行配置，如本文稍后所述。 如果两条线路位于不同的 Azure 订阅中，则必须拥有来自一个 Azure 订阅的授权，并且在另一个 Azure 订阅中运行配置命令时必须传入授权密钥。
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>启用本地网络之间的连接
 

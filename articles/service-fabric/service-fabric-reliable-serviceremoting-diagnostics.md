@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
-ms.author: suchiagicha
-ms.openlocfilehash: e4c698dc5aa8a07d09835adeac39db6ee35f720c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: chackdan
+ms.openlocfilehash: 4e9aa2bbb99cac2ffc2b57ccb9299bf4ee7a729e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666148"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876264"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting 的诊断和性能监视
 Reliable ServiceRemoting 运行时发出[性能计数器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 这些有助于深入了解 ServiceRemoting 的运行状况以及进行故障排除和性能监视。
@@ -47,9 +47,9 @@ Windows 操作系统中默认可用的 [Windows 性能监视器](https://technet
 
 *ServiceFabricPartitionID* 是与性能计数器实例相关联的 Service Fabric 分区 ID 的字符串表示。 分区 ID 是 GUID，并且其字符串表示是通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 方法生成的。
 
-ServiceReplicaOrInstanceId 是与性能计数器实例相关联的 Service Fabric 副本/实例 ID 的字符串表示形式。
+ServiceReplicaOrInstanceId 是与性能计数器实例相关联的 Service Fabric 副本/实例 ID 的字符串表示形式  。
 
-ServiceRuntimeInternalID 是由 Fabric 服务运行时生成的供内部使用的 64 位整数的字符串表示形式。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
+ServiceRuntimeInternalID 是由 Fabric 服务运行时生成的供内部使用的 64 位整数的字符串表示形式  。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
 
 下面的示例展示了属于 `Service Fabric Service` 类别的计数器的计数器实例名称：
 
@@ -62,15 +62,15 @@ ServiceRuntimeInternalID 是由 Fabric 服务运行时生成的供内部使用�
 
 `MethodName_ServiceRuntimeMethodId_ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-MethodName 是与性能计数器实例相关联的服务方法的名称。 方法名称的格式是根据 Fabric 服务运行时中的一些逻辑来确定的，该逻辑可以平衡名称的可读性和 Windows 上对性能计数器实例名称的最大长度的约束。
+MethodName 是与性能计数器实例相关联的服务方法的名称  。 方法名称的格式是根据 Fabric 服务运行时中的一些逻辑来确定的，该逻辑可以平衡名称的可读性和 Windows 上对性能计数器实例名称的最大长度的约束。
 
-ServiceRuntimeMethodId 是由 Fabric 服务运行时生成的供内部使用的 32 位整数的字符串表示形式。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
+ServiceRuntimeMethodId 是由 Fabric 服务运行时生成的供内部使用的 32 位整数的字符串表示形式  。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
 
 *ServiceFabricPartitionID* 是与性能计数器实例关联的 Service Fabric 分区 ID 的字符串表示。 分区 ID 是 GUID，并且其字符串表示是通过使用格式说明符“D”的 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 方法生成的。
 
-ServiceReplicaOrInstanceId 是与性能计数器实例相关联的 Service Fabric 副本/实例 ID 的字符串表示形式。
+ServiceReplicaOrInstanceId 是与性能计数器实例相关联的 Service Fabric 副本/实例 ID 的字符串表示形式  。
 
-ServiceRuntimeInternalID 是由 Fabric 服务运行时生成的供内部使用的 64 位整数的字符串表示形式。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
+ServiceRuntimeInternalID 是由 Fabric 服务运行时生成的供内部使用的 64 位整数的字符串表示形式  。 这包括在性能计数器实例名称中，以确保其唯一性并避免与其他性能计数器实例名称发生冲突。 用户不应尝试解释此部分的性能计数器实例名称。
 
 下面的示例展示了属于 `Service Fabric Service Method` 类别的计数器的计数器实例名称：
 
@@ -100,5 +100,5 @@ Reliable Service 运行时发布与执行服务方法相关的下列性能计数
 | Service Fabric 服务 |序列化响应的平均毫秒数 |将响应发送到客户端之前，在服务中序列化服务响应消息所用的时间（以毫秒为单位） |
 
 ## <a name="next-steps"></a>后续步骤
-* [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric&sort=0)
+* [代码示例](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [PerfView 中的 EventSource 提供程序](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

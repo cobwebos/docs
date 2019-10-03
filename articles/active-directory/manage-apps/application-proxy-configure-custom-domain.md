@@ -3,8 +3,8 @@ title: Azure AD 应用程序代理中的自定义域 | Microsoft 文档
 description: 管理 Azure AD 应用程序代理中的自定义域，使得无论用户在哪里访问应用，应用的 URL 都相同。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/31/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59663346fce415d73609f09345048ff321f1a234
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 8a1914b7cf79287831e0e94c19c50107c2ac216d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359818"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390793"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理中的自定义域
 
@@ -36,11 +36,11 @@ ms.locfileid: "58359818"
 
 ## <a name="configure-a-custom-domain"></a>配置自定义域
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 配置自定义域之前，请确保根据以下要求做好准备： 
 - 一个[已添加到 Azure Active Directory 的经验证的域](../fundamentals/add-custom-domain.md)。
-- 一个用于域的、采用 PFX 文件格式的自定义证书。 
+- 一个用于域的、采用 PFX 文件格式的自定义证书。
 - 一个[通过应用程序代理发布](application-proxy-add-on-premises-application.md)的本地应用。
 
 ### <a name="configure-your-custom-domain"></a>配置自定义域
@@ -61,7 +61,7 @@ ms.locfileid: "58359818"
 6. 上传 PFX 证书，并输入证书的密码。 
 7. 选择“保存”以保存更改。 
 8. 添加用于将新外部 URL 重定向到 msappproxy.net 域的 [DNS 记录](../../dns/dns-operations-recordsets-portal.md)。
-9. 检查通过使用正确配置的 DNS 记录[nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx)命令查看外部 URL 是可访问 msapproxy.net 域显示为一个别名。
+9. 使用[nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx)命令检查是否已正确配置 DNS 记录，以查看是否可以访问外部 URL，并将 msapproxy.net 域显示为别名。
 
 >[!TIP] 
 >只需为每个自定义域上传一个证书。 上传证书后，可以在发布新应用时选择自定义域，而无需执行除 DNS 记录以外的其他配置。 
@@ -71,7 +71,11 @@ ms.locfileid: "58359818"
 ### <a name="certificate-format"></a>证书格式
 证书签名方法没有限制。 椭圆曲线加密 (ECC)、使用者可选名称 (SAN) 和其他常见证书类型全部都受到支持。 
 
-只要通配符与所需的外部 URL 匹配，就可使用通配符证书。 
+只要通配符与所需的外部 URL 匹配，就可使用通配符证书。
+
+证书必须包含私钥。
+
+如果客户端设备上已安装证书链，则可以使用自己的公钥基础结构（PKI）颁发的证书。 Intune 可用于将这些证书部署到托管设备。 对于非托管设备，必须手动安装这些证书。
 
 ### <a name="changing-the-domain"></a>更改域
 所有已验证的域显示在应用程序的“外部 URL”下拉列表中。 若要更改域，只需更新应用程序的该字段。 如果所需的域不在列表中，请[将它添加为已验证的域](../fundamentals/add-custom-domain.md)。 如果选择一个尚无关联证书的域，请遵循步骤 5 - 7 添加证书。 然后，请务必更新从新的外部 URL 重定向的 DNS 记录。 
@@ -85,7 +89,7 @@ ms.locfileid: "58359818"
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 Azure AD 身份验证对已发布应用[启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)。
-* 对已发布应用[启用条件访问](application-proxy-integrate-with-sharepoint-server.md)。
+* [启用](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/technical-reference#cloud-apps-assignments)已发布应用的条件性访问。
 * [将自定义域名添加到 Azure AD](../fundamentals/add-custom-domain.md)
 
 

@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: de1263d68e96a23bd6b5eca4297e74b56ba22e40
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 20dd86a46ac1b50f5ce20da6ecf9dff251a8c0b0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021624"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839009"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-onprem-mysql-connector.md)
 > * [版本 2（当前版本）](../connector-mysql.md)
 
@@ -33,7 +33,7 @@ ms.locfileid: "54021624"
 
 可以将数据从本地 MySQL 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 MySQL 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 MySQL 数据存储。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 数据工厂服务支持使用数据管理网关连接到本地 MySQL 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
 
 即使 MySQL 数据库托管在 Azure IaaS 虚拟机 (VM) 中，仍需要网关。 只要网关能连接数据库，即可在与数据存储相同的 VM 上或不同的 VM 上安装网关。
@@ -50,14 +50,14 @@ ms.locfileid: "54021624"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 Cassandra 数据存储移动数据。 
 
-- 创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
-- 还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+- 创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。 
+- 还可以使用以下工具来创建管道：**Visual Studio**， **Azure PowerShell**， **Azure Resource Manager 模板**， **.NET API**，并且**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
+1. 创建链接服务可将输入和输出数据存储链接到数据工厂  。
+2. 创建数据集以表示复制操作的输入和输出数据  。 
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出  。 
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于从本地 MySQL 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 MySQL 复制到 Azure Blob](#json-example-copy-data-from-mysql-to-azure-blob) 部分。 
 
@@ -73,16 +73,16 @@ ms.locfileid: "54021624"
 | database |MySQL 数据库的名称。 |是 |
 | schema |数据库中架构的名称。 |否 |
 | authenticationType |用于连接 MySQL 数据库的身份验证类型。 可能的值为：`Basic` |是 |
-| username |指定用于连接到 MySQL 数据库的用户名。 |是 |
+| userName |指定用于连接到 MySQL 数据库的用户名。 |是 |
 | password |指定该用户帐户的密码。 |是 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 MySQL数据库。 |是 |
 
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 MySQL 数据集）的 typeProperties 部分具有以下属性
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息  。 **RelationalTable** 类型数据集（包括 MySQL 数据集）的 typeProperties 部分具有以下属性
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | tableName |链接服务引用的 MySQL 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
 
@@ -99,7 +99,7 @@ ms.locfileid: "54021624"
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON 示例：将数据从 MySQL 复制到 Azure Blob
-此示例提供示例 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 其中演示如何将数据从本地 MySQL 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+此示例提供示例 JSON 定义，可用于通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 其中演示如何将数据从本地 MySQL 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 > [!IMPORTANT]
 > 此示例提供 JSON 代码段。 它不包括创建数据工厂的分步说明。 请参阅文章[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)以获取分步说明。
@@ -182,7 +182,7 @@ ms.locfileid: "54021624"
 
 **Azure Blob 输出数据集：**
 
-数据每小时向新的 blob 写入一次（frequency：hour，interval：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
     {
@@ -301,45 +301,45 @@ ms.locfileid: "54021624"
 
 | MySQL 数据库类型 | .NET Framework 类型 |
 | --- | --- |
-| 无符号 bigint |小数 |
+| 无符号 bigint |Decimal |
 | bigint |Int64 |
-| bit |小数 |
+| bit |Decimal |
 | Blob |Byte[] |
 | bool |Boolean |
 | char |String |
-| 日期 |Datetime |
-| datetime |Datetime |
-| decimal |小数 |
-| 双精度 |Double |
+| date |Datetime |
+| DATETIME |Datetime |
+| decimal |Decimal |
+| double precision |Double |
 | double |Double |
-| 枚举 |String |
+| enum |String |
 | float |Single |
 | 无符号 int |Int64 |
 | int |Int32 |
 | 无符号 integer |Int64 |
 | integer |Int32 |
-| 长 varbinary |Byte[] |
-| 长 varchar |String |
+| long varbinary |Byte[] |
+| long varchar |String |
 | longblob |Byte[] |
 | longtext |String |
 | mediumblob |Byte[] |
 | 无符号 mediumint |Int64 |
 | mediumint |Int32 |
-| mediumtext |String |
-| numeric |小数 |
+| mediumtext |字符串 |
+| numeric |Decimal |
 | real |Double |
 | set |String |
 | 无符号 smallint |Int32 |
 | smallint |Int16 |
-| text |String |
+| text |字符串 |
 | time |TimeSpan |
 | timestamp |Datetime |
 | tinyblob |Byte[] |
 | 无符号 tinyint |Int16 |
 | tinyint |Int16 |
-| tinytext |String |
-| varchar |String |
-| year |int |
+| tinytext |字符串 |
+| varchar |字符串 |
+| year |Int |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

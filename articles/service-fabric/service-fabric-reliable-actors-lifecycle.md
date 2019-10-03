@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: f81fde441a2f0dc2504601f82e5b890eb6e216de
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660980"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62105286"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>执行组件生命周期、自动垃圾回收和手动删除
 当第一次调用执行组件的任何方法时即可激活该执行组件。 如果在可配置的一段时间内未使用执行组件，则此执行组件将停用（执行组件运行时对其进行垃圾回收）。 还可以在任何时候手动删除执行组件及其状态。
@@ -52,7 +52,7 @@ ms.locfileid: "58660980"
 * 正在调用的 `IRemindable.ReceiveReminderAsync` 方法（仅当执行组件使用提醒时该方法才可用）
 
 > [!NOTE]
-> 如果执行组件使用计时器，且计时器回调得到调用，则不计为“正在使用”。
+> 如果执行组件使用计时器，且计时器回调得到调用，则不  计为“正在使用”。
 >
 >
 

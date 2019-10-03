@@ -6,16 +6,15 @@ author: MS-Santi
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f242a16bc89e6b229efa42b88ebd20ca174e2516
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108199"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098069"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>灾难恢复和异地分发
 

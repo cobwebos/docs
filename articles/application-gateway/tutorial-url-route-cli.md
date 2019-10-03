@@ -1,27 +1,27 @@
 ---
-title: 教程 - 基于 URL 对 Web 流量进行路由 - Azure CLI
-description: 本教程介绍如何使用 Azure CLI 基于 URL 将 Web 流量路由到特定的可缩放服务器池。
+title: 基于 URL 对 Web 流量进行路由 - Azure CLI
+description: 本文介绍如何使用 Azure CLI 基于 URL 将 Web 流量路由到特定的可缩放服务器池。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: tutorial
-ms.date: 10/25/2018
+ms.topic: article
+ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4f0c93c41a468b62baf1ec50d030f235d36a8dd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006472"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688178"
 ---
-# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>教程：使用 Azure CLI 基于 URL 对 Web 流量进行路由
+# <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 基于 URL 对 Web 流量进行路由
 
-作为管理 Web 流量的 IT 管理员，你希望帮助客户或用户尽快获取其需要的信息。 若要优化其体验，一种方法是将不同类型的 Web 流量路由到不同的服务器资源。 本教程介绍如何使用 Azure CLI 为应用程序中的不同类型的流量设置和配置应用程序网关路由。 然后，路由会根据 URL 将流量定向到不同的服务器池。
+作为管理 Web 流量的 IT 管理员，你希望帮助客户或用户尽快获取其需要的信息。 若要优化其体验，一种方法是将不同类型的 Web 流量路由到不同的服务器资源。 本文介绍如何使用 Azure CLI 为应用程序中的不同类型的流量设置和配置应用程序网关路由。 然后，路由会根据 URL 将流量定向到不同的服务器池。
 
 ![URL 路由示例](./media/tutorial-url-route-cli/scenario.png)
 
-本教程介绍如何执行下列操作：
+在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 为所需的网络资源创建资源组
@@ -31,13 +31,13 @@ ms.locfileid: "58006472"
 > * 为每个池创建一个规模集，使池可以自动缩放
 > * 运行测试，以便验证不同类型的流量是否进入正确的池
 
-如果你愿意，可以使用 [Azure PowerShell](tutorial-url-route-powershell.md) 或 [Azure 门户](create-url-route-portal.md)完成本教程中的步骤。
+如果你愿意，可以使用 [Azure PowerShell](tutorial-url-route-powershell.md) 或 [Azure 门户](create-url-route-portal.md)完成本过程中的步骤。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -70,12 +70,14 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>使用 URL 映射创建应用网关
 
-使用 `az network application-gateway create` 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myAGPublicIPAddress*。
+使用 `az network application-gateway create` 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 应用程序网关分配给*myAGSubnet*和*myAGPublicIPAddress*。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -85,7 +87,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 80 \
   --http-settings-port 80 \
@@ -96,7 +98,7 @@ az network application-gateway create \
  创建应用程序网关可能需要几分钟时间。 创建应用程序网关后，可以看到以下新功能：
 
 
-|Feature  |说明  |
+|功能  |描述  |
 |---------|---------|
 |appGatewayBackendPool     |应用程序网关必须至少具有一个后端地址池。|
 |appGatewayBackendHttpSettings     |指定将端口 80 和 HTTP 协议用于通信。|
@@ -180,9 +182,9 @@ az network application-gateway rule create \
   --address-pool appGatewayBackendPool
 ```
 
-## <a name="create-vm-scale-sets"></a>创建 VM 规模集
+## <a name="create-virtual-machine-scale-sets"></a>创建虚拟机规模集
 
-在本教程中，你将创建三个虚拟机规模集以支持所创建的三个后端池。 你将创建名为 *myvmss1*、*myvmss2* 和 *myvmss3* 的规模集。 每个规模集都包含两个虚拟机实例，将在其上安装 NGINX。
+在本文中，你将创建三个虚拟机规模集以支持所创建的三个后端池。 你将创建名为 *myvmss1*、*myvmss2* 和 *myvmss3* 的规模集。 每个规模集都包含两个虚拟机实例，将在其上安装 NGINX。
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -246,11 +248,11 @@ az network public-ip show \
 
 ![在应用程序网关中测试基 URL](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-将 URL 更改为 http://&lt;ip-address&gt;:8080/images/test.html（请将 &lt;ip-address&gt; 替换为自己的 IP 地址），应会看到如以下示例所示的内容：
+将 URL 更改为 http://&lt;&gt;: 8080/images/test.html, 替换 ip&gt;地址的&lt;ip 地址, 你应看到类似于以下示例的内容:
 
 ![在应用程序网关中测试映像 URL](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-将 URL 更改为 http://&lt;ip-address&gt;:8080/video/test.html（请将 &lt;ip-address&gt; 替换为自己的 IP 地址），应会看到如以下示例所示的内容。
+将 URL 更改为 http://&lt;ip 地址&gt;: 8080/video/test.html, 替换 ip&gt;地址的&lt;ip 地址, 你应看到类似于以下示例的内容。
 
 ![在应用程序网关中测试视频 URL](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 
@@ -259,10 +261,9 @@ az network public-ip show \
 当不再需要资源组、应用程序网关以及所有相关资源时，请将其删除。
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [创建支持基于 URL 路径进行重定向的应用程序网关](./tutorial-url-redirect-cli.md)
+[创建支持基于 URL 路径进行重定向的应用程序网关](./tutorial-url-redirect-cli.md)

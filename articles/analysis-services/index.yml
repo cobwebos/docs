@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: Azure Analysis Services 文档
+summary: 了解如何在云中使用 Analysis Services 设置数据建模。 文档介绍了如何使用表格数据模型创建企业 BI 解决方案。
+metadata:
+  title: Azure Analysis Services 文档 - 概念、操作方法指南、教程、API 参考
+  description: Azure Analysis Services 是一个完全托管的平台即服务 (PaaS)，它在云中提供企业级的数据模型。
+  ms.service: analysis-services
+  ms.topic: landing-page
+  ms.collection: 
+  author: minewiskan
+  ms.author: owend
+  manager: mtillman
+  ms.date: 08/28/2019
+  ms.openlocfilehash: 5dfa0e502eb069a7d1a9dc4ef2310ae722ff4bb9
+  ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70143010"
+landingContent:
+- title: 关于 Azure Analysis Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Analysis Services？
+      url: analysis-services-overview.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建服务器 - 门户
+      url: analysis-services-create-server.md
+    - text: 创建服务器 - PowerShell
+      url: analysis-services-create-powershell.md
+    - text: 配置服务器防火墙 - 门户
+      url: analysis-services-qs-firewall.md
+- title: 了解
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 身份验证和用户权限
+      url: analysis-services-manage-users.md
+    - text: 使用服务主体进行自动化
+      url: analysis-services-service-principal.md
+    - text: 连接到本地数据源
+      url: analysis-services-gateway.md
+- title: 管理和连接
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 配置服务器管理员和用户角色
+      url: tutorials/analysis-services-tutorial-roles.md
+    - text: 从门户添加示例模型
+      url: analysis-services-create-sample-model.md
+    - text: 使用 Power BI Desktop 进行连接
+      url: tutorials/analysis-services-tutorial-pbid.md
+- title: 脚本和 API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: PowerShell
+      url: /azure/analysis-services/analysis-services-powershell
+    - text: REST API
+      url: /rest/api/analysisservices/
+    - text: 表格模型脚本语言 (TMSL)
+      url: /bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference

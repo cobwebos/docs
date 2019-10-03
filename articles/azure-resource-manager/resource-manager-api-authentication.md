@@ -1,23 +1,17 @@
 ---
 title: Azure Active Directory 身份验证和 Resource Manager | Microsoft Docs
 description: 指导开发人员使用 Azure 资源管理器 API 和 Azure Active Directory 进行身份验证，将应用集成到其他 Azure 订阅。
-services: azure-resource-manager,active-directory
-documentationcenter: na
 author: dushyantgill
-ms.assetid: 17b2b40d-bf42-4c7d-9a88-9938409c5088
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 04/05/2019
 ms.author: dugill
-ms.openlocfilehash: ae405d5dd99a0e2acced924ccccab292b4489cde
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3a8f9f1975530c846008b3b3def4f4d4a22716fd
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791904"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205450"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>使用 Resource Manager 身份验证 API 访问订阅
 

@@ -3,8 +3,8 @@ title: Azure 网络观察程序排查连接问题简介 | Microsoft Docs
 description: 此页概述了网络观察程序排查连接问题功能
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: jdial
-ms.openlocfilehash: 0268c7e54aa82df12243f98fd72de836fbc82070
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: HT
+ms.author: kumud
+ms.openlocfilehash: 9510905f67ee943b4b1dfa5a14c2753efac39da7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30833993"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64705815"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 网络观察程序中排查连接问题功能的简介
 
@@ -31,7 +31,7 @@ ms.locfileid: "30833993"
 
 下表显示了运行完连接问题故障排除后返回的属性。
 
-|属性  |说明  |
+|属性  |描述  |
 |---------|---------|
 |ConnectionStatus     | 连接检查的状态。 可能的结果为 **Reachable** 和 **Unreachable**。        |
 |AvgLatencyInMs     | 连接检查期间的平均延迟，以毫秒为单位。 （仅当检查状态为 reachable 时才显示）        |
@@ -48,7 +48,7 @@ ms.locfileid: "30833993"
 |Hops[].Issues | 在该跃点上检查期间遇到的问题集合。 如果未出现任何问题，则该值为空。|
 |Hops[].Issues[].Origin | 当前跃点上出现问题的位置。 可能的值包括：<br/> **Inbound** - 问题出现在从前一跃点到当前跃点的链接上<br/>**Outbound** - 问题出现在从当前跃点到下一跃点的链接上<br/>**Local** - 问题出现在当前跃点上。|
 |Hops[].Issues[].Severity | 检测到的问题的严重性。 可能的值为 **Error** 和 **Warning**。 |
-|Hops[].Issues[].Type |所发现问题的类型。 可能的值包括： <br/>**CPU**<br/>**内存**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops[].Issues[].Type |所发现问题的类型。 可能的值包括： <br/>CPU <br/>**内存**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Hops[].Issues[].Context |有关发现的问题的详细信息。|
 |Hops[].Issues[].Context[].key |返回的键值对中的键。|
 |Hops[].Issues[].Context[].value |返回的键值对中的值。|
@@ -74,7 +74,7 @@ ms.locfileid: "30833993"
 
 连接问题故障排除返回有关连接的错误类型。 下表提供了返回的当前错误类型的列表。
 
-|Type  |说明  |
+|Type  |描述  |
 |---------|---------|
 |CPU     | CPU 利用率较高。       |
 |内存     | 内存利用率较高。       |

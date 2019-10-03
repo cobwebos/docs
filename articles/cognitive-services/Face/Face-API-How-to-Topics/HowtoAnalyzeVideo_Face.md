@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 936c516385c88191428a46d22c14b3991885340b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e2166354fb45d24e117156e917f4da726ee8406f
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878148"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114349"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>示例：如何实时分析视频
 
@@ -36,7 +36,7 @@ ms.locfileid: "55878148"
 
 近实时分析系统的最简单设计是无限循环，在每次迭代中捕捉一个帧，对它进行分析，然后使用结果：
 
-```CSharp
+```csharp
 while (true)
 {
     Frame f = GrabFrame();
@@ -54,7 +54,7 @@ while (true)
 
 简单的单线程循环适用于轻量级客户端算法，但不适用于云 API 调用中涉及的延迟。 该问题的解决方案是允许长时间运行的 API 调用与帧捕捉并行执行。 在 C# 中，我们可以使用基于任务的并行来实现这一点，例如：
 
-```CSharp
+```csharp
 while (true)
 {
     Frame f = GrabFrame();
@@ -75,7 +75,7 @@ while (true)
 
 在最终的“生产者-使用者”系统中，我们有一个生产者线程，看起来与我们之前的无限循环类似。 但是，生产者只需将任务放入队列即可跟踪它们，而不必在分析结果可用时立即使用它们。
 
-```CSharp
+```csharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
      
@@ -112,7 +112,7 @@ while (true)
 
 我们还有一个使用者线程，它会将任务从队列中取出，等待它们完成，并显示结果或引发已引发的异常。 通过使用队列，我们​​可以保证按正确的顺序一次使用一个结果，而不限制系统的最大帧速率。
 
-```CSharp
+```csharp
 // Consumer thread. 
 while (true)
 {
@@ -144,7 +144,7 @@ while (true)
 
 为了说明一些可能性，下面例举了使用该库的两个示例应用。 第一个是简单的控制台应用，下面再现了它的简化版本。 它从默认网络摄像头捕捉帧，并将它们提交到人脸 API 进行人脸检测。
 
-```CSharp
+```csharp
 using System;
 using VideoFrameAnalyzer;
 using Microsoft.ProjectOxford.Face;
@@ -160,7 +160,9 @@ namespace VideoFrameConsoleApplication
             FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
             
             // Create Face API Client. Insert your Face API key here.
-            FaceServiceClient faceClient = new FaceServiceClient("<Subscription Key>");
+            private readonly IFaceClient faceClient = new FaceClient(
+            new ApiKeyServiceClientCredentials("<subscription key>"),
+            new System.Net.Http.DelegatingHandler[] { });
 
             // Set up our Face API call.
             grabber.AnalysisFunction = async frame => return await faceClient.DetectAsync(frame.Image.ToMemoryStream(".jpg"));
@@ -211,7 +213,7 @@ namespace VideoFrameConsoleApplication
     - 对于 LiveCameraSample，应将密钥输入应用的“设置”窗格。 它们将作为用户数据保留在各会话中。
         
 
-当准备好进行集成时，请从你自己的项目中引用 VideoFrameAnalyzer 库。 
+当准备好进行集成时，请从你自己的项目中引用 VideoFrameAnalyzer 库。  
 
 ## <a name="summary"></a>摘要
 

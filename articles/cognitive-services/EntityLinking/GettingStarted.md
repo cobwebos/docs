@@ -10,12 +10,13 @@ ms.subservice: entity-linking-intelligence
 ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: fc1bdd5c6ad4829e22af9922c6749e60f842abaf
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4b283103920230a0d2aae98c83f75fb03679a675
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594026"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706813"
 ---
 # <a name="tutorial-build-an-entity-linking-app-with-c"></a>教程：使用 C# 构建实体链接应用
 
@@ -37,29 +38,29 @@ Microsoft 实体链接是一款自然语言处理工具，可用于分析文本�
 
 ### <a name="step-2-create-a-new-project-in-visual-studio">步骤 2：在 Visual Studio 中新建项目</a>
 
-接下来，先在 Visual Studio 中新建项目。 首先，通过“开始”菜单启动 Visual Studio 2015。 然后，依次选择“已安装 → 模板 → Visual C# → Windows 通用 → 空白应用”作为项目模板，从而新建项目：
+接下来，先在 Visual Studio 中新建项目。 首先，通过“开始”菜单启动 Visual Studio 2015。 然后，依次选择“已安装 → 模板 → Visual C# → Windows 通用 → 空白应用”  作为项目模板，从而新建项目：
 
  ![创建通用应用](./Images/CreateUWP.png)
 
 ### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">步骤 3：向项目添加实体链接 NuGet 包</a>
 
 将认知服务的实体链接发布为 NuGet.org 包。必须先安装此包，然后才能使用它。
-若要将它添加到项目中，请转到“解决方案资源管理器”选项卡，右键单击项目，并选择“管理 Nuget 包”。
+若要将它添加到项目中，请转到“解决方案资源管理器”  选项卡，右键单击项目，并选择“管理 Nuget 包”  。
 
-首先，在“NuGet 包管理器”窗口中的右上角，选择“NuGet.org”作为“包源”。 选择左上角中的“浏览”，并在搜索框中键入“ProjectOxford.EntityLinking”。 选择“Microsoft.ProjectOxford.EntityLinking”NuGet 包，并单击“安装”。
+首先，在“NuGet 包管理器”  窗口中的右上角，选择“NuGet.org”作为“包源”  。 选择左上角中的“浏览”  ，并在搜索框中键入“ProjectOxford.EntityLinking”。 选择“Microsoft.ProjectOxford.EntityLinking”  NuGet 包，并单击“安装”  。
 
-接下来，搜索并安装“Newtonsoft.Json”。 如果系统提示查看更改，请单击“确定”。 如果看到 EntityLinking 许可条款，请单击“我接受”。
+接下来，搜索并安装“Newtonsoft.Json”。 如果系统提示查看更改，请单击“确定”  。 如果看到 EntityLinking 许可条款，请单击“我接受”  。
 
 实体链接现已安装为应用的一部分。 若要确认这一点，可检查解决方案资源管理器内的项目中是否显示 **Microsoft.ProjectOxford.EntityLinking** 参考。
 
  ![项目中包含的 nuget 库](./Images/NugetLibraryInProject.png)
  
 ### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">步骤 4：向应用的 XAML 添加输入和输出文本块</a>
-导航到“解决方案资源管理器”中的 MainPage.xaml，并双击此文件，在新窗口中打开它。 为方便起见，可以双击“设计器”选项卡中的“XAML”按钮，这会隐藏“可视化设计器”，并保留代码视图的所有空间。
+导航到“解决方案资源管理器”  中的 MainPage.xaml  ，并双击此文件，在新窗口中打开它。 为方便起见，可以双击“设计器”  选项卡中的“XAML”  按钮，这会隐藏“可视化设计器”  ，并保留代码视图的所有空间。
 
  ![项目中包含的 nuget 库](./Images/UWPMainPage.png)
  
-作为文本服务，功能可视化的最佳方法是，创建输入和输出文本块。 为此，请在“网格”中添加下列 XAML。 此代码添加以下三个组件：输入文本框、输出文本块和“开始”按钮。
+作为文本服务，功能可视化的最佳方法是，创建输入和输出文本块。 为此，请在“网格”  中添加下列 XAML。 此代码添加以下三个组件：输入文本框、输出文本块和“开始”按钮。
  
  ```XAML
  <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -76,13 +77,13 @@ Microsoft 实体链接是一款自然语言处理工具，可用于分析文本�
  
 ### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">步骤 5：继续添加实体链接智能服务</a>
  
-现已创建用户界面。 必须先添加按钮单击处理程序，然后才能使用实体链接服务。 在“解决方案资源管理器”中，打开“MainPage.xaml”。 在按钮末尾处添加 button_Click 处理程序。
+现已创建用户界面。 必须先添加按钮单击处理程序，然后才能使用实体链接服务。 在“解决方案资源管理器”  中，打开“MainPage.xaml”  。 在按钮末尾处添加 button_Click 处理程序。
  
  ```XAML
  <Button x:Name="button" Grid.Row="2" Content="Get Result" Click="button_Click" />
  ```
  
-必须在代码中实现按钮单击处理程序。 在“解决方案资源管理器”中，打开“MainPage.xaml.cs”，以实现按钮单击处理程序。 EntityLinkingServiceClient 是用于检索实体链接响应的包装器。 EntityLinkingServiceClient 的构造函数参数是认知服务订阅密钥。 粘贴在“第 1 步”中获取的订阅密钥，以调用实体链接服务。 
+必须在代码中实现按钮单击处理程序。 在“解决方案资源管理器”  中，打开“MainPage.xaml.cs”  ，以实现按钮单击处理程序。 EntityLinkingServiceClient 是用于检索实体链接响应的包装器。 EntityLinkingServiceClient 的构造函数参数是认知服务订阅密钥。 粘贴在“第 1 步”  中获取的订阅密钥，以调用实体链接服务。 
 
 下面的示例代码使用实体链接服务在响应中添加“wikipediaId”。 
  
@@ -97,7 +98,7 @@ Microsoft 实体链接是一款自然语言处理工具，可用于分析文本�
 }
  ```
  
-现在可运行你的首个自然语言处理实体链接应用。 按 F5 键编译和发布应用。 将文本片段或段落粘贴到输入框中。 按“获取结果”按钮，并观察输出块中确定的实体。
+现在可运行你的首个自然语言处理实体链接应用。 按 F5 键  编译和发布应用。 将文本片段或段落粘贴到输入框中。 按“获取结果”按钮，并观察输出块中确定的实体。
  
  ![UWP 示例结果](./Images/DemoCodeResult.png)
  

@@ -3,17 +3,18 @@ title: 快速入门 - 将 Docker 容器部署到 Azure 容器实例 - PowerShell
 description: 本快速入门将使用 Azure PowerShell 快速部署在隔离的 Azure 容器实例中运行的容器化 Web 应用
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8c50a3069ea8b1303e45c571425a6f4c9b4c0d5b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 7fe199d2ac228ddb0ccfd1e5bc980e680e160acf
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368182"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325828"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure 中部署容器实例
 
@@ -27,7 +28,7 @@ ms.locfileid: "58368182"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
@@ -35,7 +36,7 @@ ms.locfileid: "58368182"
 
 Azure 容器实例（例如所有 Azure 资源）都必须部署到资源组中。 使用资源组可以组织和管理相关的 Azure 资源。
 
-首先，使用以下 [New-AzResourceGroup][New-AzResourceGroup] 命令在 eastus 位置创建名为 myResourceGroup 的资源组：
+首先，使用以下 [New-AzResourceGroup][New-AzResourceGroup] 命令在 eastus 位置创建名为 myResourceGroup 的资源组   ：
 
  ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -91,7 +92,7 @@ Events                   : {}
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要容器，可使用 [Remove-AzContainerGroup][Remove-AzContainerGroup] cmdlet 将其删除：
+使用完容器后，可使用 [Remove-AzContainerGroup][Remove-AzContainerGroup] cmdlet 将其删除：
 
  ```azurepowershell-interactive
 Remove-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer

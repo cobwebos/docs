@@ -1,7 +1,6 @@
 ---
 title: 优化 Spark 作业的性能 - Azure HDInsight
-description: 介绍实现 Spark 群集最佳性能的常见策略。
-services: hdinsight
+description: 显示 Azure HDInsight 中 Apache Spark 群集的最佳性能的常见策略。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: b846b19d180bf19a0d023a9cd0b92393132f47d4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 64dfd26e02526664a4edb204521f7a47a4463a12
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283063"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181077"
 ---
-# <a name="optimize-apache-spark-jobs"></a>优化 Apache Spark 作业
+# <a name="optimize-apache-spark-jobs-in-hdinsight"></a>优化 HDInsight 中的 Apache Spark 作业
 
 了解如何为特定工作负荷优化 [Apache Spark](https://spark.apache.org/) 群集配置。  最常面临的难题是内存压力，这归因于不正确的配置（尤其是大小不合的执行程序）、长时间运行的操作以及导致笛卡尔操作的任务。 可通过以下方式为作业提速：使用适当的缓存，并允许[数据倾斜](#optimize-joins-and-shuffles)。 若要实现最佳性能，应监视和查看长时间运行并耗用资源的 Spark 作业执行。
 
@@ -24,7 +23,7 @@ ms.locfileid: "59283063"
 
 ## <a name="choose-the-data-abstraction"></a>选择数据抽象
 
-早期的 Spark 版本数据抽象化，Spark 1.3 使用 Rdd 和 1.6 引入了 Dataframe 和数据集，分别。 请仔细衡量下列优缺点：
+早期的 Spark 版本使用 Rdd 抽象数据、Spark 1.3 和1.6 分别引入 DataFrames 和数据集。 请仔细衡量下列优缺点：
 
 * **DataFrame**
     * 大多数情况下的最佳选择。
@@ -58,12 +57,12 @@ Spark 支持多种格式，比如 csv、json、xml、parquet、orc 和 avro。 S
 
 创建新的 Spark 群集时，可以选择将 Azure Blob 存储或 Azure Data Lake Storage 用作群集的默认存储。 这两个选项都能为暂时性群集提供长期存储，这样就不会在删除群集时自动删除数据。 用户可以重新创建暂时性群集，并且依然能访问数据。
 
-| 存储类型 | 文件系统 | Speed | 暂时性 | 用例 |
+| 存储类型 | 文件系统 | 极速效果色 | 暂时性 | 用例 |
 | --- | --- | --- | --- | --- |
-| Azure Blob 存储 | **wasb[s]:**//url/ | **标准** | 是 | 暂时性群集 |
-| Azure 数据湖存储第 2 代| **abfs[s]:**//url/ | **较快** | 是 | 暂时性群集 |
-| Azure Data Lake Storage Gen 1| **adl:**//url/ | **较快** | 是 | 暂时性群集 |
-| 本地 HDFS | **hdfs:**//url/ | **最快** | 否 | 全天候交互型群集 |
+| Azure Blob 存储 | **wasb:** //url/ | **标准** | 是 | 暂时性群集 |
+| Azure Data Lake Storage Gen 2| **abfs：** //url/ | **较快** | 是 | 暂时性群集 |
+| Azure Data Lake Storage Gen 1| **adl:** //url/ | **较快** | 是 | 暂时性群集 |
+| 本地 HDFS | **hdfs:** //url/ | **最快** | 否 | 全天候交互型群集 |
 
 ## <a name="use-the-cache"></a>使用缓存
 
@@ -97,7 +96,7 @@ Spark 在运行时会将数据放在内存中，因此，管理内存资源是�
 
 如果使用 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)，则 YARN 会控制每个 Spark 节点上的所有容器使用的最大内存总和。  下图展示了一些键对象及其关系。
 
-![YARN Spark 内存管理](./media/apache-spark-perf/yarn-spark-memory.png)
+![YARN Spark 内存管理](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
 若要解决显示“内存不足”消息的问题，请尝试：
 

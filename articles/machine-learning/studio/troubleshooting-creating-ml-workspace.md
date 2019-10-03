@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: 7cc825daa29a0398793f3c6fc5ce8ee426ad79e6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884183"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60193807"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-workspace"></a>故障排除指南：创建并连接到 Azure 机器学习工作室工作区
 本指南介绍了设置 Azure 机器学习工作室工作区时一些常见难题的解决方案。
@@ -32,7 +32,7 @@ ms.locfileid: "57884183"
 ## <a name="allowed-regions"></a>允许的区域
 机器学习当前只允许有限数量的区域。 如果订阅不包括这些区域之一，可能会看到错误消息，“你在允许的区域中没有订阅。”
 
-要请求将某区域添加到订阅，可从 Azure 门户创建新的 Microsoft 支持请求，将“计费”选为问题类型，然后按照提示提交请求。
+要请求将某区域添加到订阅，可从 Azure 门户创建新的 Microsoft 支持请求，将“计费”  选为问题类型，然后按照提示提交请求。
 
 ## <a name="storage-account"></a>存储帐户
 机器学习服务需要存储帐户以存储数据。 可以使用现有存储帐户，或者可以在创建新的机器学习工作室工作区时创建新的存储帐户（如果有创建新的存储帐户的配额）。
@@ -43,15 +43,15 @@ ms.locfileid: "57884183"
 
 **删除浏览器 cookie**
 
-1. 如果使用 Internet Explorer，请单击右上角的“工具”按钮，并选择“Internet 选项”。  
+1. 如果使用 Internet Explorer，请单击右上角的“工具”  按钮，并选择“Internet 选项”  。  
 
    ![Internet 选项](media/troubleshooting-creating-ml-workspace/screen4.png)
 
-2. 在“常规”选项卡下，单击“删除...”
+2. 在“常规”  选项卡下，单击“删除...” 
 
    ![“常规”选项卡](media/troubleshooting-creating-ml-workspace/screen5.png)
 
-3. 在“删除浏览历史记录”对话框中，确保已选中“Cookie 和网站数据”，并单击“删除”。
+3. 在“删除浏览历史记录”  对话框中，确保已选中“Cookie 和网站数据”  ，并单击“删除”  。
 
    ![删除 Cookie](media/troubleshooting-creating-ml-workspace/screen6.png)
 

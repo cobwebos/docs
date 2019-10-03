@@ -10,12 +10,13 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9e84b1ad37b3224ec5553d0a66ba0fc84bc88f55
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100473"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705071"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram 方法
 
@@ -30,14 +31,14 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 
 ## <a name="request-parameters"></a>请求参数
 
-名称  |值 | 必需？  |描述
+名称  |ReplTest1 | 必需?  |描述
 -----------|----------|--------|----------
 **expr**    |文本字符串 | 是  |指定计算哪些实体的直方图的查询表达式。
 **model** |文本字符串 | 否 |选择要查询的模型的名称。  默认值暂为“latest”。
 **attributes** | 文本字符串 | 否<br>默认值： | 指定响应中包含的属性值的逗号分隔列表。 属性名区分大小写。
-**count** |Number | 否<br>默认值：10 |要返回的结果数。
-**offset**  |Number | 否<br>默认值：0 |要返回的第一个结果的索引。
-timeout  |Number | 否<br>默认值：1000 |超时（以毫秒为单位）。 仅返回在超时之前找到的解释。
+**计数** |数量 | 否<br>默认：10 |要返回的结果数。
+**offset**  |数量 | 否<br>默认：0 |要返回的第一个结果的索引。
+**timeout**  |数量 | 否<br>默认：1000 |超时（以毫秒为单位）。 仅返回在超时之前找到的解释。
 
 ## <a name="response-json"></a>响应 (JSON)
 
@@ -56,7 +57,7 @@ timeout  |Number | 否<br>默认值：1000 |超时（以毫秒为单位）。 �
 **aborted** | 如果请求超时，则为 True。
 
 
-#### <a name="example"></a>示例：
+#### <a name="example"></a>例如：
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4
 ```

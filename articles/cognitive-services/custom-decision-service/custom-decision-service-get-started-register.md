@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
 ms.reviewer: marcozo
-ms.openlocfilehash: c56aef180f5e16d2ec1931caabe04295ef288ca9
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a8e4e91e768e3ad28ea9ff88c18515db4a40323
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980680"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704552"
 ---
 # <a name="register-your-application"></a>注册应用程序
 

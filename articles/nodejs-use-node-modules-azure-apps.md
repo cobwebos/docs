@@ -3,8 +3,8 @@ title: 使用 Node.js 模块
 description: 了解如何在使用 Azure 应用服务或云服务的同时使用 Node.js 模块。
 services: ''
 documentationcenter: nodejs
-author: TomArcher
-manager: routlaw
+author: rloutlaw
+manager: rloutlaw
 editor: ''
 ms.assetid: c0e6cd3d-932d-433e-b72d-e513e23b4eb6
 ms.service: multiple
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
-ms.author: tarcher
-ms.openlocfilehash: 045250f0b0f97cbefe05b36f1c8d4480244a172d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: HT
+ms.author: routlaw
+ms.openlocfilehash: 61be6bcd957a4e81147d5ef472b8f850e5605e41
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575841"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309274"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>将 Node.js 模块与 Azure 应用程序一起使用
 本文档提供有关将 Node.js 模块与托管在 Azure 中的应用程序一起使用的指南。 其中提供有关确保应用程序使用特定版本的模块以及对 Azure 使用本机模块的指南。
@@ -57,7 +57,7 @@ Azure 应用服务不支持部分本机模块，并且在编译具有特定先�
 
 可使用 **package.json** 文件来指定应用程序所需的顶级依赖项，以便托管平台能够安装这些依赖项，而不是要求在部署中包含 **node\_modules** 文件夹。 部署应用程序后，可使用 **npm install** 命令分析 **package.json** 文件并安装列出的所有依赖项。
 
-在开发期间，可以在安装模块时使用 **--save**、**--save-dev** 或 **--save-optional** 参数，自动将模块条目添加到 **package.json** 文件中。 有关详细信息，请参阅 [npm-install](https://docs.npmjs.com/cli/install)。
+在开发期间，可以在安装模块时使用 **--save**、 **--save-dev** 或 **--save-optional** 参数，自动将模块条目添加到 **package.json** 文件中。 有关详细信息，请参阅 [npm-install](https://docs.npmjs.com/cli/install)。
 
 package.json 文件的一个潜在问题是它仅指定顶级依赖项的版本。 安装的每个模块不一定会指定它所依赖的模块的版本，因此最终使用的依赖项链可能与开发过程中使用的不同。
 
@@ -87,7 +87,7 @@ package.json 文件的一个潜在问题是它仅指定顶级依赖项的版本�
 ## <a name="next-steps"></a>后续步骤
 了解如何将 Node.js 模块与 Azure 一起使用后，请学习如何[指定 Node.js 版本](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md)、[生成和部署 Node.js Web 应用](app-service/app-service-web-get-started-nodejs.md)，以及[如何使用适用于 Mac 和 Linux 的 Azure 命令行接口](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)。
 
-有关详细信息，请参阅 [Node.js 开发人员中心](/nodejs/azure/)。
+有关详细信息，请参阅 [Node.js 开发人员中心](/azure/javascript/)。
 
 [specify the Node.js version]: nodejs-specify-node-version-azure-apps.md
 [How to use the Azure Command-Line Interface for Mac and Linux]:cli-install-nodejs.md

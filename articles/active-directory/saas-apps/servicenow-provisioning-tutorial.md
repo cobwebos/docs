@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b3e4cc5ba4bc0173721947bd1e1a680ca7b3a3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 85783339c7d1348f598f924f14d9b40cd0c8cd22
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217694"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967168"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>教程：使用 Azure Active Directory 为 ServiceNow 配置自动用户预配
 
@@ -44,8 +44,7 @@ ms.locfileid: "56217694"
 测试本教程中的步骤应遵循以下建议：
 
 - 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
-
+- 如果没有 Azure AD 试用环境, 可以获取[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="assigning-users-to-servicenow"></a>将用户分配到 ServiceNow
 
@@ -57,6 +56,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 > [!IMPORTANT]
 >*   建议将单个 Azure AD 用户分配到 ServiceNow 以测试预配配置。 其他用户和/或组可以稍后分配。
 >*   将用户分配到 ServiceNow 时，必须选择有效用户角色。 “默认访问权限”角色不可用于预配。
+>*   有关如何在 Azure AD 中创建和配置角色的详细信息, 请参阅此[链接](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)
 
 ## <a name="enable-automated-user-provisioning"></a>启用自动化用户预配
 

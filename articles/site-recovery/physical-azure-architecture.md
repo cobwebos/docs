@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 99aec3be893693e523dffefbb3c422222ac19a2e
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: a5d3dfe6457c4b70f0b23c2d8aa7ac5e58e68dc7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616860"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814465"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理服务器到 Azure 的灾难恢复体系结构
 
@@ -25,7 +25,7 @@ ms.locfileid: "59616860"
 
 组件 | **要求** | **详细信息**
 --- | --- | ---
-**Azure** | 一个 Azure 订阅和 Azure 网络。 | 复制的数据从本地物理机存储在 Azure 中托管磁盘。 运行从本地到 Azure 的故障转移时，将使用复制的数据创建 Azure VM。 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
+**Azure** | Azure 订阅和 Azure 网络。 | 从本地物理计算机器复制的数据存储在 Azure 托管磁盘中。 运行从本地到 Azure 的故障转移时，将使用复制的数据创建 Azure VM。 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
 **配置服务器** | 需要部署单台本地物理机或 VMware VM 来运行所有非本地 Site Recovery 组件。 VM 运行配置服务器、进程服务器和主目标服务器。 | 配置服务器在本地和 Azure 之间协调通信并管理数据复制。
  **进程服务器**：  | 默认与配置服务器安装在一起。 | 充当复制网关。 接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure 存储。<br/><br/> 进程服务器还在要复制的服务器上安装移动服务。<br/><br/> 随着部署扩大，可以另外添加单独的进程服务器来处理更大的复制流量。
  **主目标服务器** | 默认与配置服务器安装在一起。 | 处理从 Azure 进行故障回复期间产生的复制数据。<br/><br/> 对于大型部署，可以另外添加一个单独的主目标服务器用于故障回复。

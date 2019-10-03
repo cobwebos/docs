@@ -14,18 +14,18 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 1ce9c5ddb08f3e81a0f0050048a8afef24e4c625
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: eba2c0aeb37f2bc2283e7afb108bb4578981120e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607528"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147221"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>如何通过 PHP 使用服务总线主题和订阅
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-本文说明如何使用服务总线主题和订阅。 示例采用 PHP 编写，且使用了 [Azure SDK for PHP](../php-download-sdk.md)。 涉及的方案包括：
+本文说明如何使用服务总线主题和订阅。 示例采用 PHP 编写，且使用了 [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php)。 涉及的方案包括：
 
 - 创建主题和订阅 
 - 创建订阅筛选器 
@@ -33,15 +33,15 @@ ms.locfileid: "59607528"
 - 从订阅接收消息
 - 删除主题和订阅
 
-## <a name="prerequisites"></a>必备组件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[Visual Studio 或 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照步骤[快速入门：使用 Azure 门户创建服务总线主题和订阅到主题](service-bus-quickstart-topics-subscriptions-portal.md)若要创建服务总线**命名空间**并获取**连接字符串**。
+## <a name="prerequisites"></a>先决条件
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 你可以[激活 Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或者注册[免费试用帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来创建服务总线**命名空间**并获取**连接字符串**。
 
     > [!NOTE]
-    > 您将创建**主题**和一个**订阅**使用主题**PHP**在本快速入门。 
+    > 在本快速入门中，你将使用 **PHP** 创建一个**主题**和对此主题的**订阅**。 
 
 ## <a name="create-a-php-application"></a>创建 PHP 应用程序
-创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码中引用 [Azure SDK for PHP](../php-download-sdk.md) 中的类。 可以使用任何开发工具或记事本创建应用程序。
+创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码中引用 [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 中的类。 可以使用任何开发工具或记事本创建应用程序。
 
 > [!NOTE]
 > PHP 安装还必须已安装并启用 [OpenSSL 扩展](https://php.net/openssl)。
@@ -51,13 +51,29 @@ ms.locfileid: "59607528"
 本文说明如何使用服务功能，这些功能可在 PHP 应用程序中本地调用，或通过在 Azure 的 Web 角色、辅助角色或网站中运行的代码调用。
 
 ## <a name="get-the-azure-client-libraries"></a>获取 Azure 客户端库
-[!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
+
+### <a name="install-via-composer"></a>通过 Composer 安装
+1. 在项目的根目录中创建名为 **composer.json** 的文件并向其添加以下代码：
+   
+    ```json
+    {
+      "require": {
+        "microsoft/windowsazure": "*"
+      }
+    }
+    ```
+2. 将 **[composer.phar][composer-phar]** 下载到项目根目录中。
+3. 打开命令提示符并在项目根目录中执行以下命令
+   
+    ```
+    php composer.phar install
+    ```
 
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
 使用服务总线 API：
 
 1. 使用 [require_once][require-once] 语句引用 autoloader 文件。
-2. 引用所用的任意类。
+2. 引用可使用的所有类。
 
 以下示例演示如何包含 autoloader 文件并引用 **ServiceBusService** 类。
 
@@ -67,7 +83,7 @@ ms.locfileid: "59607528"
 > 
 
 ```php
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
@@ -82,7 +98,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 其中，`Endpoint` 的格式通常为 `https://[yourNamespace].servicebus.windows.net`。
 
-若要创建任何 Azure 服务客户端，必须使用 `ServicesBuilder` 类。 可以：
+若要创建任何 Azure 服务客户端，必须使用 `ServicesBuilder` 类。 你可以：
 
 * 将连接字符串直接传递给它。
 * 使用 CloudConfigurationManager (CCM) 检查多个外部源以获取连接字符串：
@@ -168,7 +184,7 @@ catch(ServiceException $e){
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>创建具有筛选器的订阅
-还可以设置筛选器，以指定发送到主题的哪些消息应该在特定主题订阅中显示。 订阅支持的最灵活的一种筛选器是 [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关 SqlFilters 的详细信息，请参阅 [SqlFilter.SqlExpression 属性][sqlfilter]。
+还可以设置筛选器，以指定发送到主题的哪些消息应该在特定主题订阅中显示。 订阅支持的最灵活的一种筛选器是 [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)，它实现了一部分 SQL92 功能。 SQL 筛选器将对发布到主题的消息的属性进行操作。 有关 SqlFilter 的详细信息，请参阅 [SqlFilter.SqlExpression 属性][sqlfilter]。
 
 > [!NOTE]
 > 有关订阅的每个规则单独处理传入消息，并将其结果消息添加到订阅。 此外，每个新订阅的筛选器具有一个默认**规则**对象，该对象包含一个将主题中的所有消息添加到订阅的筛选器。 要仅接收与筛选器匹配的消息，必须删除默认规则。 可以使用 `ServiceBusRestProxy->deleteRule` 方法删除默认规则。
@@ -236,7 +252,7 @@ catch(ServiceException $e){
 }
 ```
 
-发送到服务总线主题的消息是 [BrokeredMessage][BrokeredMessage] 类的实例。 [BrokeredMessage][BrokeredMessage] 对象包含一组标准属性和方法以及用来保存自定义应用程序特定属性的属性。 以下示例演示如何向以前创建的 `mytopic` 主题发送五条测试消息。 `setProperty` 方法用于将自定义属性 (`MessageNumber`) 添加到每条消息。 `MessageNumber` 属性值在每条消息中都有所不同（你可以使用此值确定哪些订阅接收它，如[创建订阅](#create-a-subscription)部分中所示）：
+发送到服务总线主题的消息是 [BrokeredMessage][BrokeredMessage] 类的实例。 [BrokeredMessage][BrokeredMessage] 对象包含一组标准属性和方法以及可用来保存自定义应用程序特定属性的属性。 以下示例演示如何向以前创建的 `mytopic` 主题发送五条测试消息。 `setProperty` 方法用于将自定义属性 (`MessageNumber`) 添加到每条消息。 `MessageNumber` 属性值在每条消息中都有所不同（你可以使用此值确定哪些订阅接收它，如[创建订阅](#create-a-subscription)部分中所示）：
 
 ```php
 for($i = 0; $i < 5; $i++){
@@ -252,7 +268,7 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息容量为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个主题中包含的消息数量不受限制，但消息的总大小受限制。 主题大小的上限为 5 GB。 有关配额的详细信息，请参阅[服务总线配额][Service Bus quotas]。
+服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息容量为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个主题中包含的消息数量不受限制，但消息的总大小受限制。 主题大小的上限为 5 GB。 有关配额的详细信息，请参阅 [服务总线配额][Service Bus quotas]。
 
 ## <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
 从订阅接收消息的最佳方法是使用 `ServiceBusRestProxy->receiveSubscriptionMessage` 方法。 可在两种不同的模式下接收消息：[*ReceiveAndDelete* 和 *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)。 **PeekLock** 为默认设置。
@@ -343,6 +359,9 @@ catch(ServiceException $e){
 ```php
 $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 ```
+
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅[队列、主题和订阅][Queues, topics, and subscriptions]。

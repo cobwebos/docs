@@ -8,18 +8,17 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 67f72c5b396bc935f7bec34bc8a52f63131649b1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c37b81e08e5d9f150081a9dc12af51175e3f590c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904468"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084720"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -34,15 +33,15 @@ DSCForLinux 扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚�
 - 将自定义的 DSC 模块安装到 Linux VM (Install ExtensionAction)
 - 在 Linux VM 中删除自定义的 DSC 模块 (Remove ExtensionAction)
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
 DSC Linux 扩展支持所有[在 Azure 上认可的 Linux 分发版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)，除了以下这些：
 
-| 分发 | 版本 |
+| 分发组 | Version |
 |---|---|
 | Debian | 所有版本 |
 | Ubuntu| 18.04 |
@@ -63,11 +62,11 @@ DSCForLinux 扩展要求目标虚拟机已连接到 Internet。 例如，Registe
 * `NodeConfigurationName`：（可选，字符串）要应用的节点配置的名称。
 * `RefreshFrequencyMins`：（可选，整数）指定 DSC 尝试从提取服务器获取配置的频率（以分钟为单位）。 
        如果提取服务器上的配置不同于目标节点上的当前配置，则会将前者复制到挂起的存储并应用。
-* `ConfigurationMode`：（可选，字符串）指定 DSC 如何应用配置。 有效值是：ApplyOnly、ApplyAndMonitor 和 ApplyAndAutoCorrect。
+* `ConfigurationMode`：（可选，字符串）指定 DSC 如何应用配置。 有效值包括：ApplyOnly、ApplyAndMonitor 和 ApplyAndAutoCorrect。
 * `ConfigurationModeFrequencyMins`：（可选，整数）指定 DSC 确保配置处于所需状态的频率（以分钟为单位）。
 
 > [!NOTE]
-> 如果使用的版本小于 2.3，则 mode 参数与 ExtensionAction 相同。 模式似乎是一个重载的术语。 因此，为了避免混淆，从版本 2.3 开始使用了 ExtensionAction。 为了向后兼容，扩展支持 mode 和 ExtensionAction。 
+> 如果使用的版本小于 2.3，则 mode 参数与 ExtensionAction 相同。 Mode（模式）看上去像是一个重载的术语。 因此，为了避免混淆，从版本 2.3 开始使用了 ExtensionAction。 为了向后兼容，扩展支持 mode 和 ExtensionAction。 
 >
 
 ### <a name="12-protected-configuration"></a>1.2 受保护的配置

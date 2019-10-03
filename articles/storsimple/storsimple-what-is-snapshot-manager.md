@@ -1,5 +1,5 @@
 ---
-title: 什么是 StorSimple Snapshot Manager？ | Microsoft 文档
+title: 什么是 StorSimple Snapshot Manager？ | Microsoft Docs
 description: 介绍 StorSimple Snapshot Manager 及其体系结构和功能。
 services: storsimple
 documentationcenter: NA
@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: v-sharos
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 38c197c7bc57110b29b1d8cb789d5b7310823da2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 3f7436bb63f52c9c2b697c8e7031922ce89d786b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111465"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60789584"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager 简介
 
@@ -33,7 +33,7 @@ StorSimple Snapshot Manager 是一种 Microsoft 管理控制台 (MMC) 管理单�
 
 > [!NOTE]
 > * 不能使用 StorSimple Snapshot Manager 管理 Microsoft Azure StorSimple 虚拟数组（也称为 StorSimple 本地虚拟设备）。
-> * 如果计划在 StorSimple 设备上安装 StorSimple Update 2，请在安装 StorSimple Update 2 前，务必先下载并安装最新版本的 StorSimple Snapshot Manager。 最新版本的 StorSimple Snapshot Manager 向后兼容，并可与所有已发布的 Microsoft Azure StorSimple 版本一起使用。 如果使用的是旧版 StorSimple Snapshot Manager，则需要更新（安装新版本前，无需卸载旧版本）。
+> * 如果计划在 StorSimple 设备上安装 StorSimple Update 2，请在安装 StorSimple Update 2 前，  务必先下载并安装最新版本的 StorSimple Snapshot Manager。 最新版本的 StorSimple Snapshot Manager 向后兼容，并可与所有已发布的 Microsoft Azure StorSimple 版本一起使用。 如果使用的是旧版 StorSimple Snapshot Manager，则需要更新（安装新版本前，无需卸载旧版本）。
 > 
 > 
 
@@ -113,7 +113,7 @@ VSS 的 StorSimple Snapshot Manager 实现适用于 SQL Server 和通用 NTFS �
 可以使用 StorSimple Snapshot Manager 创建以下类型的备份：
 
 * **本地快照** — 本地快照是存储在 StorSimple 设备上的卷数据的时间点副本。 通常可以快速创建并还原此类型的备份。 可以像使用本地备份副本一样使用本地快照。
-* **云快照** — 云快照是存储在云中的卷数据的时间点副本。 云快照与在不同的场外存储系统上复制的快照等效。 在灾难恢复方案中，云快照特别有用。
+* **云快照** — 云快照是存储在云中的卷数据的时间点副本。 云快照等效于在不同的异地存储系统上复制的快照。 在灾难恢复方案中，云快照特别有用。
 
 ### <a name="on-demand-and-scheduled-backups"></a>按需和计划备份
 使用 StorSimple Snapshot Manager，可以立即开始创建一次性备份，也可以使用备份策略来计划定期备份操作。

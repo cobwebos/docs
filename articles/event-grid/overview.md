@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 04/04/2019
+ms.date: 05/25/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 8ceb3d2d97c63bd19333336314beb6c7444288e9
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: b262a06bc3d80bd1f8105c6629bbc07e6ccd34eb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578401"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077157"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -22,7 +22,7 @@ ms.locfileid: "59578401"
 
 可以使用筛选器将特定事件路由到不同的终结点，多播到多个终结点，并确保事件可靠传送。
 
-目前，Azure 事件网格可在所有公共区域中使用。 它尚未在 Azure 德国、Azure 中国世纪互联或 Azure 政府云中提供。
+部署 Azure 事件网格是为了通过本机分布在每个区域中的多个容错域和可用性区域（在支持它们的区域中）来最大限度地提高可用性。 目前，Azure 事件网格可在所有公共区域中使用。 它尚未在 Azure 德国、Azure 中国世纪互联或 Azure 政府云中提供。
 
 本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 
 
@@ -56,17 +56,18 @@ ms.locfileid: "59578401"
 * [逻辑应用](event-handlers.md#logic-apps)
 * [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [队列存储](event-handlers.md#queue-storage)
+* [服务总线](event-handlers.md#service-bus-queue-preview)（预览版）
 * [WebHook](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>概念
 
 在可以开始进行操作的 Azure 事件网格中有五个概念：
 
-* 事件 - 发生了什么。
+*  事件 - 发生了什么。
 * **事件源** - 事件发生的地点。
-* 主题 - 其中发布者发送事件的终结点。
+*  主题 - 其中发布者发送事件的终结点。
 * **事件订阅** - 用于路由事件，有时用于多个处理程序的终结点或内置机制。 订阅还用于处理程序，以便智能地筛选传入事件。
-* 事件处理程序 - 对事件作出反应的应用或服务。
+*  事件处理程序 - 对事件作出反应的应用或服务。
 
 有关这些概念的详细信息，请参阅 [Azure 事件网格中的概念](concepts.md)。
 
@@ -74,14 +75,14 @@ ms.locfileid: "59578401"
 
 下面是 Azure 事件网格中的一些主要功能：
 
-* 简洁性 - 指向并单击从 Azure 资源到任何事件处理程序或终结点的目标事件。
+*  简洁性 - 指向并单击从 Azure 资源到任何事件处理程序或终结点的目标事件。
 * **高级筛选** - 筛选事件类型或事件发布路径，以确保事件处理程序仅接收相关的事件。
 * **扇出** - 订阅到相同事件的多个终结点，以将该事件的副本发送到所需的所有位置。
 * **可靠性** - 使用指数退避算法在 24 小时内重试，以确保事件成功传送。
-* 按事件支付 - 仅支付事件网格的使用量。
-* 高吞吐量 - 通过对每秒数以百万计事件的支持，在事件网格上生成大量工作负荷。
-* 内置事件 - 使用资源定义的内置事件快速启动和运行。
-* 自定义事件 - 在应用中使用事件网格路由、筛选并可靠地传送自定义事件。
+*  按事件支付 - 仅支付事件网格的使用量。
+*  高吞吐量 - 通过对每秒数以百万计事件的支持，在事件网格上生成大量工作负荷。
+*  内置事件 - 使用资源定义的内置事件快速启动和运行。
+*  自定义事件 - 在应用中使用事件网格路由、筛选并可靠地传送自定义事件。
 
 有关事件网格、事件中心和服务总线之间的比较，请参阅[在传送消息的 Azure 服务之间进行选择](compare-messaging-services.md)。
 

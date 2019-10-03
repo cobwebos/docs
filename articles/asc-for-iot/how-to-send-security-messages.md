@@ -1,62 +1,61 @@
 ---
-title: 将你的安全消息发送到 Azure 安全中心，IoT 预览版 |Microsoft Docs
-description: 了解如何将 iot 使用 Azure 安全中心安全消息发送。
+title: 向 Azure 安全中心发送用于 IoT 的安全消息 |Microsoft Docs
+description: 了解如何使用 Azure 安全中心的 IoT 发送安全消息。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: c611bb5c-b503-487f-bef4-25d8a243803d
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: a9974fd15ae9c8c420992c3ae1084feebae0f57d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: c780eea15b9f064d3279c75ac2f967e8b6099ecb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797340"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596207"
 ---
 # <a name="send-security-messages-sdk"></a>发送安全消息 SDK
 
-> [!IMPORTANT]
-> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
-> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-本操作方法指南介绍 Azure 安全中心 (ASC) 的 IoT 服务功能，当你选择收集并将你的设备而无需为 IoT 代理使用 ASC 发送安全消息时，并说明如何执行此操作。  
+本操作方法指南介绍了在不使用用于 IoT 代理的 Azure 安全中心的情况下, 选择收集和发送设备安全消息时的 IoT 服务功能的 Azure 安全中心, 并说明如何执行此操作。  
 
 本指南介绍如何： 
 > [!div class="checklist"]
 > * 使用 API for C# 发送安全消息
 > * 使用 API for C 发送安全消息
 
-## <a name="asc-for-iot-capabilities"></a>针对 IoT 功能 ASC
+## <a name="azure-security-center-for-iot-capabilities"></a>用于 IoT 功能的 Azure 安全中心
 
-适用于 IoT 的 ASC 可以处理和分析任何类型的安全消息数据，只要发送的数据符合[ASC 为 IoT 架构](https://aka.ms/iot-security-schemas)消息被设置为一条安全消息。
+Azure 安全中心可以处理和分析任何类型的安全消息数据, 只要发送的数据符合[IoT 架构的 Azure 安全中心](https://aka.ms/iot-security-schemas), 并将该消息设置为安全消息即可。
 
 ## <a name="security-message"></a>安全消息
 
-适用于 IoT 的 ASC 定义一条安全消息，使用以下条件：
-- 如果使用 Azure IoT C 发送消息 /C# SDK
+用于 IoT 的 Azure 安全中心使用以下条件定义安全消息:
+- 如果消息是通过 Azure IoT C/C# SDK 发送的
 - 如果消息符合[安全消息架构](https://aka.ms/iot-security-schemas)
-- 如果消息已设置为一条安全消息在发送前
+- 如果在发送之前将消息设置为安全消息, 则为
 
-每个安全消息包括发件人的元数据，如`AgentId`， `AgentVersion`，`MessageSchemaVersion`和安全事件的列表。
-架构定义包括的事件类型的安全消息的有效和所需属性。
+每个安全消息都包含发件人的元`AgentId`数据`AgentVersion` `MessageSchemaVersion` , 如、和安全事件的列表。
+架构定义安全消息的有效属性和必需属性, 包括事件类型。
 
-[!NOTE]
+>[!Note]
 > 发送的消息如果不符合该架构，则将被忽略。 在开始发送数据之前，请务必验证架构，因为当前不会存储已忽略的消息。 
-> 发送消息的未设置为使用 Azure IoT C 的安全消息 /C# SDK 将不会路由到 ASC 为 IoT 管道
+
+>[!Note]
+> 使用 Azure IoT C/C# SDK 未设置为安全消息的已发送邮件将不会路由到 IoT 管道的 Azure 安全中心
 
 ## <a name="valid-message-example"></a>有效的消息示例
 
-下面的示例显示了有效的安全消息对象。 此示例包含消息元数据，另一个`ProcessCreate`安全事件。
+下面的示例显示了有效的安全消息对象。 该示例包含消息元数据和一个`ProcessCreate`安全事件。
 
-一次设置为一条安全消息，发送，此消息将由处理 ASC 对 IoT。
+一旦设置为安全消息并发送, 此消息将由 Azure 安全中心进行 IoT 处理。
 
 ```json
 "AgentVersion": "0.0.1",
@@ -75,11 +74,11 @@ ms.locfileid: "59797340"
         "Payload":
             [
                 {
-                    "Executable": "/usr/bin/echo",
+                    "Executable": "/usr/bin/myApp",
                     "ProcessId": 11750,
                     "ParentProcessId": 1593,
-                    "UserName": "nginx",
-                    "CommandLine": "./backup .htaccess"
+                    "UserName": "aUser",
+                    "CommandLine": "myApp -a -b"
                 }
             ]
     }
@@ -88,11 +87,11 @@ ms.locfileid: "59797340"
 
 ## <a name="send-security-messages"></a>发送安全消息 
 
-发送安全消息，而无需使用 IoT 代理使用 ASC [Azure IoTC#设备 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)或[的 Azure IoT C 设备 SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)。
+使用[Azure C# iot 设备 Sdk](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)或[azure iot C 设备 Sdk](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), 无需使用 azure 安全中心的 iot 代理发送安全消息。
 
-若要从设备发送设备消息以供 ASC for IoT 处理，请使用以下 API 之一来标记消息，以正确路由到 ASC for IoT 处理管道。 以这种方式发送的消息将会得到处理，并以安全见解的形式显示在 IoT 中心或 Azure 安全中心的 ASC for IoT 内。 
+若要从设备发送用于 IoT 的 Azure 安全中心处理设备数据, 请使用以下 Api 之一将消息标记为正确路由到 Azure 安全中心以进行 IoT 处理管道。 
 
-即使已使用正确的标头进行标记，发送的所有数据也必须符合 [ASC for IoT 消息架构](https://aka.ms/iot-security-schemas)。 
+即使标记为正确的标头, 发送的所有数据也必须符合[用于 IoT 消息架构的 Azure 安全中心](https://aka.ms/iot-security-schemas)。 
 
 ### <a name="send-security-message-api"></a>发送安全消息 API
 
@@ -157,8 +156,8 @@ static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* 
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 阅读适用于 IoT 的 ASC 服务[概述](overview.md)
-- 详细了解适用于 IoT 的 ASC [体系结构](architecture.md)
+- 阅读 Azure 安全中心以获取 IoT 服务[概述](overview.md)
+- 详细了解用于 IoT[体系结构](architecture.md)的 Azure 安全中心
 - 启用该[服务](quickstart-onboard-iot-hub.md)
 - 阅读[常见问题解答](resources-frequently-asked-questions.md)
 - 了解如何访问[原始安全数据](how-to-security-data-access.md)

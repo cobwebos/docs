@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
-ms.author: v-jamebr
-ms.openlocfilehash: 7f1b6f955dd3f59f6c17403b536cf99d666aab08
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: chackdan
+ms.openlocfilehash: 826e7e953bd713bb623ec469b45c56012601490b
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662051"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69030817"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>在 Azure Service Fabric 中设置和配置反向代理
 反向代理是一种可选的 Azure Service Fabric 服务，有助于在 Service Fabric 群集中运行的微服务发现包含 http 终结点的其他服务，并与之通信。 有关详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)。 本文介绍如何在群集中设置和配置反向代理。 
@@ -334,7 +333,7 @@ ms.locfileid: "58662051"
 
 有关更新 Azure 群集的结构设置的详细信息，请参阅[使用资源管理器模板自定义群集设置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，请参阅[自定义独立群集的群集设置](service-fabric-cluster-config-upgrade-windows-server.md)。 
 
-可通过多个结构设置在反向代理和服务之间建立安全通信。 有关这些设置的详细信息，请参阅[连接到安全服务使用反向代理](service-fabric-reverseproxy-configure-secure-communication.md)。
+可通过多个结构设置在反向代理和服务之间建立安全通信。 有关这些设置的详细信息，请参阅[使用反向代理连接到安全服务](service-fabric-reverseproxy-configure-secure-communication.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [设置使用反向代理转发到安全的 HTTP 服务](service-fabric-reverseproxy-configure-secure-communication.md)

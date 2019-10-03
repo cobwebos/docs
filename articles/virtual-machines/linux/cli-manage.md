@@ -4,23 +4,22 @@ description: 了解一些常用 Azure CLI 命令，以便开始在 Azure 资源�
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: cf031ad2-654d-46aa-9da6-af22d97df1b7
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 3051c865d03e49964d01c09516bc76ae5ec55d0e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: c5c75b6cc8a885ebd3b14d7efd48f903209d966a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998911"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083919"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>用于管理 Azure 资源的常用 Azure CLI 命令
 [!INCLUDE [virtual-machines-common-cli-manage](../../../includes/virtual-machines-common-cli-manage.md)]

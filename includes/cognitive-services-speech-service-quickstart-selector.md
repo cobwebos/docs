@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: d1750f89b2cf2be071f3474a27297759084cf86e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5a6912f2df3f82596dc8ba6ecdd413f4cdc136d1
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59011248"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465559"
 ---
 > [!div class="op_single_selector"]
 > - [C#：Windows 上的 .NET](~/articles/cognitive-services/speech-service/quickstart-csharp-dotnet-windows.md)
@@ -25,4 +25,5 @@ ms.locfileid: "59011248"
 > - [JavaScript：Node.js](~/articles/cognitive-services/speech-service/quickstart-js-node.md)
 > - [Objective-C：iOS](~/articles/cognitive-services/speech-service/quickstart-objectivec-ios.md)
 > - [Objective-C：macOS](~/articles/cognitive-services/speech-service/quickstart-objective-c-macos.md)
+> - [Swift：iOS](~/articles/cognitive-services/speech-service/quickstart-swift-ios.md)
 > - [Python](~/articles/cognitive-services/speech-service/quickstart-python.md)

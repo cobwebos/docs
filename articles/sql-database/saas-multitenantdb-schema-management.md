@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: c7c10608d90f7659b108d2d8c80038f59396de2d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: db6f471438324e984434704a2cab01d57c800ba5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878068"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570256"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>在使用分片多租户 SQL 数据库的 SaaS 应用程序中管理架构
 
@@ -31,7 +30,7 @@ ms.locfileid: "57878068"
 - 为所有租户部署引用数据更新。
 - 对包含引用数据的表格重新构建索引。
 
-使用 Azure SQL 数据库的[弹性作业](sql-database-elastic-jobs-overview.md)功能跨租户数据库执行这些操作。 此外，还要针对“模板”租户数据库运行作业。 在 Wingtip Tickets 示例应用中，将复制此模板数据库，用于预配新租户数据库。
+使用 Azure SQL 数据库的[弹性作业](elastic-jobs-overview.md)功能跨租户数据库执行这些操作。 此外，还要针对“模板”租户数据库运行作业。 在 Wingtip Tickets 示例应用中，将复制此模板数据库，用于预配新租户数据库。
 
 本教程介绍如何执行下列操作：
 
@@ -41,7 +40,7 @@ ms.locfileid: "57878068"
 > * 更新所有租户数据库中的引用数据。
 > * 在所有租户数据库中的表上创建索引。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 须已部署 Wingtip Tickets 多租户数据库应用：
     - 有关说明，请参阅第一篇教程，其中介绍了 Wingtip Tickets SaaS 多租户数据库应用：<br />[部署和浏览使用 Azure SQL 数据库的分片多租户应用程序](saas-multitenantdb-get-started-deploy.md)。
@@ -53,11 +52,11 @@ ms.locfileid: "57878068"
 - 必须已安装 Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
 > [!NOTE]
-> 本教程使用的是有限预览版（[弹性数据库作业](sql-database-elastic-database-client-library.md)）中 Azure SQL 数据库服务的功能。 如果你想要执行本教程中，将订阅 ID 提供给*SaaSFeedback\@microsoft.com*主题 = 弹性作业预览版。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，请联系*SaaSFeedback\@microsoft.com*相关的问题或者需要支持。
+> 本教程使用的是有限预览版（[弹性数据库作业](sql-database-elastic-database-client-library.md)）中 Azure SQL 数据库服务的功能。 若要执行本教程, 请将订阅 ID 提供给*SaaSFeedback\@microsoft.com* with subject = 弹性作业预览。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版受到限制, 请联系*SaaSFeedback\@microsoft.com*以获取相关问题或支持。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 架构管理模式简介
 
-此示例中使用的分片多租户数据库模型使租户数据库能够包含一个或多个租户。 此示例探索将多租户和单租户数据库混用，实现混合租户管理模式的潜在可能性。 管理这些数据库的更改可能会比较复杂。 [弹性作业](sql-database-elastic-jobs-overview.md)有利于大批量数据库的管理。 可以使用作业，以任务的形式安全可靠地针对一组租户数据库运行 T-SQL 脚本。 这些任务不需要用户交互或输入。 可以使用此方法跨应用程序中的所有租户部署对架构和常见引用数据所做的更改。 此外，还可以使用弹性作业来维护数据库的黄金模板副本。 该模板用于创建新租户，始终确保使用最新的架构和引用数据。
+此示例中使用的分片多租户数据库模型使租户数据库能够包含一个或多个租户。 此示例探索将多租户和单租户数据库混用，实现混合租户管理模式的潜在可能性。 管理这些数据库的更改可能会比较复杂。 [弹性作业](elastic-jobs-overview.md)有利于大批量数据库的管理。 可以使用作业，以任务的形式安全可靠地针对一组租户数据库运行 T-SQL 脚本。 这些任务不需要用户交互或输入。 可以使用此方法跨应用程序中的所有租户部署对架构和常见引用数据所做的更改。 此外，还可以使用弹性作业来维护数据库的黄金模板副本。 该模板用于创建新租户，始终确保使用最新的架构和引用数据。
 
 ![屏幕](media/saas-multitenantdb-schema-management/schema-management.png)
 
@@ -93,7 +92,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 
 
 
-#### <a name="steps"></a>Steps
+#### <a name="steps"></a>步骤
 
 现在请创建一个作业，以通过添加两个新的地点类型来更新每个租户数据库中的 **VenueTypes** 表。
 
@@ -161,8 +160,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 <!-- TODO: Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment (*Tutorial link to come*)
 (saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 -->
-* [管理扩大的云数据库](sql-database-elastic-jobs-overview.md)
-* [创建和管理扩大的云数据库](sql-database-elastic-jobs-create-and-manage.md)
+* [管理扩大的云数据库](elastic-jobs-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -173,5 +171,5 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 > * 更新所有租户数据库中的引用数据
 > * 在所有租户数据库中的表上创建索引
 
-接下来，请尝试[临时报表教程](saas-multitenantdb-adhoc-reporting.md)浏览跨租户数据库运行分布式的查询。
+接下来, 请尝试[即席报表教程](saas-multitenantdb-adhoc-reporting.md), 了解如何跨租户数据库运行分布式查询。
 

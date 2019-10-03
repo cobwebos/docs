@@ -1,19 +1,19 @@
 ---
 title: Azure Data Lake Storage Gen2 Hive 性能优化指南 | Microsoft Docs
 description: Azure Data Lake Storage Gen2 Hive 性能优化指南
-services: storage
-author: swums
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: stewu
-ms.openlocfilehash: 9e5570b937fe97cc9b6ccd9ac804a35ff8e07d6f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: 1290174fb87306b34be81ed7fa4fb5de3bfba43c
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883060"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847125"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Hive on HDInsight 和 Azure Data Lake Storage Gen2 性能优化指南
 
@@ -27,7 +27,7 @@ ms.locfileid: "55883060"
 * **在 HDInsight 上运行 Hive**。  若要了解有关在 HDInsight 上运行 Hive 作业的信息，请参阅[在 HDInsight 上使用 Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
 * **Data Lake Storage Gen2 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen2 性能优化指南](data-lake-storage-performance-tuning-guidance.md)
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>Parameters
 
 下面是为提高 Data Lake Storage Gen2 性能要优化的最重要设置：
 

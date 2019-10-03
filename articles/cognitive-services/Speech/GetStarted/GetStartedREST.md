@@ -3,20 +3,20 @@ title: 通过 REST 开始使用必应语音识别 API | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: 使用 REST 访问 Microsoft 认知服务中的语音识别 API，将语音转换为文本。
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: e962a12c6c27737f95e78e80036e51bac41147d5
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259935"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965787"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>快速入门：使用必应语音识别 REST API
 
@@ -24,7 +24,7 @@ ms.locfileid: "58259935"
 
 通过基于云的必应语音服务，可以使用 REST API 将语音转换为文本以开发应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>订阅语音 API，并获得免费试用的订阅密钥
 
@@ -67,13 +67,13 @@ https://speech.platform.bing.com/speech/recognition/<RECOGNITION_MODE>/cognitive
 | 识别模式  | 语言 | 输出格式 | 服务 URI |
 |---|---|---|---|
 | `interactive` | pt-BR | 默认 | https:\//speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| `conversation` | en-US | 详细信息 | https:\//speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
+| `conversation` | en-US | 详细 | https:\//speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
 | `dictation` | fr-FR | 简单 | https:\//speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
 > 仅在应用程序使用 REST API 调用语音识别服务时才需要服务 URI。 如果使用的是这些[客户端库](GetStartedClientLibraries.md)之一，则通常不需要知道使用的 URI。 客户端库可能使用不同的服务 URI，它们仅适用于特定客户端库。 有关详细信息，请参阅选定客户端库。
 
-### <a name="request-headers"></a>请求标头
+### <a name="request-headers"></a>请求头
 
 必须在请求标头中设置以下字段：
 

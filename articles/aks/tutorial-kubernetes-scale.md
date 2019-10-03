@@ -2,18 +2,18 @@
 title: Kubernetes on Azure 教程 - 缩放应用程序
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何缩放 Kubernetes 中的节点和 Pod，以及如何实施水平 Pod 自动缩放。
 services: container-service
-author: zr-msft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: zarhoads
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 2a962b5bdb6eeb139275ea6a7f585b36ff84b61f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4e36362fd42a147ee900005d84b0af1b4839aae1
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784111"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965138"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "59784111"
 
 ## <a name="before-you-begin"></a>开始之前
 
-上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，将应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请开始参阅[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
+上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
 
 此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -76,14 +76,15 @@ Kubernetes 支持[水平 Pod 自动缩放][kubernetes-hpa]以根据 CPU 利用�
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
 ```
 
-如果 AKS 群集的版本低于 *1.10*，请安装指标服务器，否则请跳过此步骤。 若要进行安装，请克隆 `metrics-server` GitHub 存储库并安装示例资源定义。 若要查看这些 YAML 定义的内容，请参阅[适用于 Kuberenetes 1.8+ 的指标服务器][metrics-server-github]。
+> [!NOTE]
+> 如果 AKS 群集小于 *1.10*，则不会自动安装指标服务器。 若要进行安装，请克隆 `metrics-server` GitHub 存储库并安装示例资源定义。 若要查看这些 YAML 定义的内容，请参阅[适用于 Kuberenetes 1.8+ 的指标服务器][metrics-server-github]。
+> 
+> ```console
+> git clone https://github.com/kubernetes-incubator/metrics-server.git
+> kubectl create -f metrics-server/deploy/1.8+/
+> ```
 
-```console
-git clone https://github.com/kubernetes-incubator/metrics-server.git
-kubectl create -f metrics-server/deploy/1.8+/
-```
-
-若要使用自动缩放程序，Pod 必须定义了 CPU 请求和限制。 在 `azure-vote-front` 部署中，前端容器已请求了 0.25 个 CPU，限制为 0.5 个 CPU。 这些资源请求和限制的定义方式如以下示例代码片段所示：
+若要使用自动缩放程序，你的 Pod 中的所有容器和你的 Pod 必须定义了 CPU 请求和限制。 在 `azure-vote-front` 部署中，前端容器已请求了 0.25 个 CPU，限制为 0.5 个 CPU。 这些资源请求和限制的定义方式如以下示例代码片段所示：
 
 ```yaml
 resources:
@@ -93,7 +94,7 @@ resources:
      cpu: 500m
 ```
 
-下面的示例使用 [kubectl autoscale][kubectl-autoscale] 命令自动缩放 *azure-vote-front* 部署中的 Pod 数。 如果 CPU 利用率超过 50%，则自动缩放程序会将 Pod 增加到最多 *10* 个实例。 为部署定义的最小实例数为 *3*：
+下面的示例使用 [kubectl autoscale][kubectl-autoscale] 命令自动缩放 *azure-vote-front* 部署中的 Pod 数。 如果所有 Pod 的平均 CPU 利用率超过其请求使用率的 50%，则自动缩放程序会将 Pod 增加到最多 *10* 个实例。 为部署定义的最小实例数为 *3*：
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
@@ -114,7 +115,7 @@ azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        
 
 如果在前面的教程中使用命令创建了 Kubernetes 群集，则它具有一个节点。 如果计划在群集上有更多或更少的容器工作负荷，则可以手动调整节点数。
 
-下面的示例将名为 myAKSCluster 的 Kubernetes 群集中的节点数增加到 3 个。 该命令需要几分钟时间完成。
+下面的示例将名为 myAKSCluster  的 Kubernetes 群集中的节点数增加到 3 个。 该命令需要几分钟时间完成。
 
 ```azurecli
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3

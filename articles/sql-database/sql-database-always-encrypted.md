@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
-manager: craigg
 ms.date: 03/08/2019
-ms.openlocfilehash: 5226ec05af95cf305008968cf945070532274ee5
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: e9aaa7cb022d4096ec8a175611d0b4c118007b40
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726934"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569567"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Windows 证书存储中
 
@@ -36,7 +35,7 @@ ms.locfileid: "57726934"
 * 创建一个数据库表并加密列。
 * 创建一个可以从已加密列插入、选择和显示数据的应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在本教程中，需要：
 
@@ -126,11 +125,11 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置** 
 
 可以现在就加密这些列，也可以保存 PowerShell 脚本供以后运行。 对于本教程，请选择“现在完成”，并单击“下一步”。
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>总结
 
 验证设置是否全都正确，并单击“完成”以完成“始终加密”的设置。
 
-![摘要](./media/sql-database-always-encrypted/summary.png)
+![总结](./media/sql-database-always-encrypted/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>验证向导的操作
 

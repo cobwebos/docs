@@ -4,15 +4,15 @@ ms.service: logic-apps
 ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
-ms.openlocfilehash: 48cd41d432c5969fc4128b055ca61fc86a57bdd2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.openlocfilehash: 6c905842778f43196ac463b99993a3cbcd436fa5
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134258"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036663"
 ---
 ### <a name="prerequisites"></a>先决条件
-* 一个 [OneDrive](http://OneDrive.com) 帐户 
+* 一个 [OneDrive](https://OneDrive.com) 帐户 
 
 可以在逻辑应用中使用 OneDrive for Business 帐户之前，必须先授权该逻辑应用可以连接到 OneDrive for Business 帐户。 好在，可以从 Azure 门户中的逻辑应用内轻松地执行此操作。 
 

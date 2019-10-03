@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
-ms.openlocfilehash: 35413d597c3b6b1c7600241a78572b63f982d175
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 9edc0b552f5c2f38e646bc4b44dd8df5c16b0457
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109635"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61408470"
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>使用已连接到 StorSimple 虚拟阵列的 StorSimple Device Manager 的“设备摘要”边栏选项卡
 
@@ -43,13 +43,13 @@ StorSimple Device Manager 设备边栏选项卡提供已注册到给定 StorSimp
 
 ## <a name="storsimple-device-summary"></a>StorSimple 设备概要
 
-* “警报”磁贴提供虚拟阵列的所有活动警报的快照，这些警报按警报严重性分组。 单击该磁贴可打开“警报”边栏选项卡，并单击单个警报可查看有关该警报的其他详细信息，包括任何建议的操作。 如果已解决此问题，还可清除警报。
+* “警报”  磁贴提供虚拟阵列的所有活动警报的快照，这些警报按警报严重性分组。 单击该磁贴可打开“警报”  边栏选项卡，并单击单个警报可查看有关该警报的其他详细信息，包括任何建议的操作。 如果已解决此问题，还可清除警报。
 
-* “容量”磁贴显示所预配的主存储，以及虚拟设备相对于可用于同一虚拟设备的总存储剩余的存储空间。 **已预配**是指已准备且已分配供使用的存储量，**剩余**是指可以在此设备上预配的剩余容量。 **剩余分层**容量是可以预配的可用容量（包括云），而**剩余本地**是附加到此虚拟阵列的磁盘上剩余的容量。
+* “容量”  磁贴显示所预配的主存储，以及虚拟设备相对于可用于同一虚拟设备的总存储剩余的存储空间。 **已预配**是指已准备且已分配供使用的存储量，**剩余**是指可以在此设备上预配的剩余容量。 **剩余分层**容量是可以预配的可用容量（包括云），而**剩余本地**是附加到此虚拟阵列的磁盘上剩余的容量。
 
-* 在“使用情况”图表中，可以查看在虚拟阵列上已使用的主存储，以及在过去 7 天（默认时间段）内已使用的云存储。 使用图表右上角的“编辑”选项可选择其他时间范围。
+* 在“使用情况”  图表中，可以查看在虚拟阵列上已使用的主存储，以及在过去 7 天（默认时间段）内已使用的云存储。 使用图表右上角的“编辑”  选项可选择其他时间范围。
 
-* “共享”或“卷”磁贴提供设备中共享或卷的数量的摘要，并按状态分组。 单击该磁贴可打开“共享”或“卷”列表边栏选项卡，然后单击单个共享或卷可查看或修改其属性。 有关详细信息，请参阅如何[管理共享](storsimple-virtual-array-manage-shares.md)或[管理卷](storsimple-virtual-array-manage-volumes.md)。
+* “共享”  或“卷”  磁贴提供设备中共享或卷的数量的摘要，并按状态分组。 单击该磁贴可打开“共享”  或“卷”  列表边栏选项卡，然后单击单个共享或卷可查看或修改其属性。 有关详细信息，请参阅如何[管理共享](storsimple-virtual-array-manage-shares.md)或[管理卷](storsimple-virtual-array-manage-volumes.md)。
 
 ## <a name="next-steps"></a>后续步骤
 了解如何：

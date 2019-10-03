@@ -3,20 +3,20 @@ title: Azure 流量管理器的性能注意事项 | Microsoft 文档
 description: 了解流量管理器的性能以及如何测试使用流量管理器时的网站性能
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: kumud
-ms.openlocfilehash: c2821890408e38d0d2be730da10b7926d77697d4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: allensu
+ms.openlocfilehash: 315165677bd3186bb3bdc87ed688c426776569fc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048293"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071056"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
 

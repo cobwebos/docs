@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 4059b0f979e7e6856905f1759129167d62d7b5f5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.openlocfilehash: 0776935215b608211ad4f6cd66112fb92e33a34b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274422"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570398"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>通过“每租户一个数据库”SaaS 应用程序还原单个租户
 
@@ -126,7 +125,7 @@ ms.locfileid: "53274422"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 将数据库还原为并行数据库（并行）。

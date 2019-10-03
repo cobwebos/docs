@@ -3,23 +3,18 @@ title: 生成 Node.js Express 应用并将其部署到 Azure 云服务
 description: 在 Node.js 中生成 Express.js 应用程序并将其部署到 Azure 云服务
 services: cloud-services
 documentationcenter: nodejs
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 24f8e7ef-e90d-4554-9b1e-a9b31d5824e5
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: jeconnoc
-ms.openlocfilehash: b212eaffb977846d40270a5f2abc76192aee4c0d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: gwallace
+ms.openlocfilehash: 080ec61df2042a4cf2eac9d5175c4681f98fd9df
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550614"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306778"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>使用 Express 在 Azure 云服务中生成并部署 Node.js Web 应用程序
 
@@ -98,7 +93,7 @@ Node.js 包含核心运行时中最小的一个功能集。
    
    ![index.jade 文件的内容。](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
    
-   Jade 是 Express 应用程序使用的默认视图引擎。 有关 Jade 视图引擎的详细信息，请参阅 [http://jade-lang.com][http://jade-lang.com]。
+   Jade 是 Express 应用程序使用的默认视图引擎。 有关 Index.jade 视图引擎的详细信息，请参阅[http://jade-lang.com][http://jade-lang.com]。
 2. 通过追加 **in Azure** 来修改最后一行文本。
    
    ![index.jade 文件，最后一行的内容为：p Welcome to \#{title} in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
@@ -119,7 +114,7 @@ Node.js 包含核心运行时中最小的一个功能集。
 ![Web 浏览器中显示 Express 页。 URL 指示它现在托管在 Azure 上。](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [Node.js 开发人员中心](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)。
+有关详细信息，请参阅 [Node.js 开发人员中心](https://docs.microsoft.com/azure/javascript/)。
 
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: https://expressjs.com/

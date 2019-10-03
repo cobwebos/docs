@@ -9,11 +9,11 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7673b115a3ad2e6ca7aec34b1cfabfb38d2a16f4
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191354"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60859173"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
 
@@ -23,7 +23,7 @@ Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/active-
 
 ![Azure Analysis Services 身份验证体系结构](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 所有客户端应用程序和工具都使用一个或多个 Analysis Services [客户端库](analysis-services-data-providers.md)（AMO、MSOLAP、ADOMD）连接到服务器。 
 
@@ -33,7 +33,7 @@ Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/active-
 
 根据使用的客户端应用程序或工具，身份验证类型和登录方式可能有所不同。 每个应用程序可能支持连接到云服务（如 Azure Analysis Services）的不同功能。
 
-Power BI Desktop、SSDT 和 SSMS 支持 Active Directory 通用身份验证，该通用身份验证是一种交互式方法，还支持 Azure 多重身份验证 (MFA)。 Azure MFA 可帮助保护对数据和应用程序的访问，同时提供简单的登录过程。 它利用一些验证选项提供强身份验证，这些选项包括电话、短信、含有 PIN 码的智能卡或移动应用通知。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。 建议使用通用身份验证。
+Power BI Desktop、SSDT 和 SSMS 支持 Active Directory 通用身份验证，该通用身份验证是一种交互式方法，还支持 Azure 多重身份验证 (MFA)。 Azure MFA 可帮助保护对数据和应用程序的访问，同时提供简单的登录过程。 它利用一些验证选项提供强身份验证，这些选项包括电话、短信、含有 PIN 码的智能卡或移动应用通知。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。 建议使用通用身份验证  。
 
 如果通过使用 Windows 帐户登录到 Azure，而未选中通用身份验证或通用身份验证不可用 (Excel)，则需要 [Active Directory 联合身份验证服务 (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)。 使用联合身份验证，Azure AD 和 Office 365 用户可使用本地凭据进行身份验证，并且可访问 Azure 资源。
 
@@ -61,11 +61,11 @@ Excel 用户可使用 Windows 帐户、组织 ID（电子邮件地址）或外�
 
 ## <a name="user-permissions"></a>用户权限
 
-服务器管理员特定于 Azure Analysis Services 服务器实例。 他们通过连接 Azure 门户、SSMS 和 SSDT 等工具，执行诸如添加数据库和管理用户角色等任务。 默认情况下，创建服务器的用户将被自动添加为 Analysis Services 服务器管理员。 可使用 Azure 门户或 SSMS 添加其他管理员。 在相同订阅中，服务器管理员必须具有 Azure AD 租户中的帐户。 若要了解详细信息，请参阅[管理服务器管理员](analysis-services-server-admins.md)。 
+服务器管理员特定于 Azure Analysis Services 服务器实例  。 他们通过连接 Azure 门户、SSMS 和 SSDT 等工具，执行诸如添加数据库和管理用户角色等任务。 默认情况下，创建服务器的用户将被自动添加为 Analysis Services 服务器管理员。 可使用 Azure 门户或 SSMS 添加其他管理员。 在相同订阅中，服务器管理员必须具有 Azure AD 租户中的帐户。 若要了解详细信息，请参阅[管理服务器管理员](analysis-services-server-admins.md)。 
 
-数据库用户通过使用 Excel 或 Power BI 等客户端应用程序，连接模型数据库。 必须将用户添加到数据库角色。 数据库角色为数据库确定管理员、进程或读取权限。 具有管理员权限的数据库用户与服务器管理员不同，请务必了解这一点。 但默认情况下，服务器管理员也是数据库管理员。 若要了解详细信息，请参阅[管理数据库角色和用户](analysis-services-database-users.md)。
+数据库用户通过使用 Excel 或 Power BI 等客户端应用程序，连接模型数据库  。 必须将用户添加到数据库角色。 数据库角色为数据库确定管理员、进程或读取权限。 具有管理员权限的数据库用户与服务器管理员不同，请务必了解这一点。 但默认情况下，服务器管理员也是数据库管理员。 若要了解详细信息，请参阅[管理数据库角色和用户](analysis-services-database-users.md)。
 
-Azure 资源所有者。 资源所有者管理 Azure 订阅的资源。 资源所有者可通过以下方式在订阅中向“所有者角色”或“参与者角色”添加 Azure AD 用户标识：在 Azure 门户中使用访问控制或使用 Azure 资源管理器模板。 
+Azure 资源所有者  。 资源所有者管理 Azure 订阅的资源。 资源所有者可通过以下方式在订阅中向“所有者角色”或“参与者角色”添加 Azure AD 用户标识：在 Azure 门户中使用访问控制或使用 Azure 资源管理器模板  。 
 
 ![Azure 门户中的访问控制](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 

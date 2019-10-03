@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 03/19/2019
-ms.openlocfilehash: 9d621905122ab7bf64432323d7d11cf8f1b50750
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.date: 09/20/2019
+ms.openlocfilehash: 637bb01bff625989e392d5d711ebd5cdef5c0e09
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223999"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169627"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>使用 Terratest 在 Azure 中测试 Terraform 模块
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: c2babb5a86d69881b6a76c6dceae80a24a891f6c
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ae423b6fb141cab4038e65ba85c6067f1c23aee0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549297"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320677"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的计算机组
 使用 Azure Monitor 中的计算机组可为一组特定的计算机设定[日志查询](../log-query/log-query-overview.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志查询中包括组时，结果仅限于与组中的计算机匹配的记录。
@@ -45,15 +45,15 @@ ms.locfileid: "59549297"
 
 在 Azure 门户中，可以使用以下过程从日志搜索创建计算机组。
 
-1. 在 Azure 门户中，单击“Azure Monitor”菜单中的“日志”。
+1. 在 Azure 门户中，单击“Azure Monitor”菜单中的“日志”。  
 1. 创建并运行一个查询，以返回组中所需的计算机。
-1. 单击屏幕顶部的“保存”。
-1. 将“另存为”更改为“函数”，然后选择“将此查询另存为计算机组”。
-1. 为表中所述计算机组的每个属性提供值，然后单击“保存”。
+1. 单击屏幕顶部的“保存”。 
+1. 将“另存为”更改为“函数”，然后选择“将此查询另存为计算机组”。   
+1. 为表中所述计算机组的每个属性提供值，然后单击“保存”。 
 
 下表介绍了用于定义计算机组的属性。
 
-| 属性 | 描述 |
+| 属性 | Description |
 |:---|:---|
 | 名称   | 要在门户中显示的查询名称。 |
 | 函数别名 | 查询中用于标识计算机组的唯一别名。 |
@@ -66,7 +66,7 @@ ms.locfileid: "59549297"
 > [!NOTE]
 > 导入的 Active Directory 组仅包含 Windows 计算机。
 
-通过 Azure 门户上 Log Analytics 工作区的“高级设置”配置 Azure Monitor，以导入 Active Directory 安全组。  依次选择“计算机组”、“Active Directory”和“从计算机导入 Active Directory 组成员身份”。  无需进一步的配置。
+通过 Azure 门户上 Log Analytics 工作区的“高级设置”配置 Azure Monitor，以导入 Active Directory 安全组。   依次选择“计算机组”、“Active Directory”和“从计算机导入 Active Directory 组成员身份”。     无需进一步的配置。
 
 ![Active Directory 中的计算机组](media/computer-groups/configure-activedirectory.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "59549297"
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
 将 Azure Monitor 配置为导入 WSUS 组成员身份时，它将使用 Log Analytics 代理分析任何计算机的目标组成员身份。  如果使用客户端目标，连接到 Azure Monitor 并且属于任意 WSUS 目标组的所有计算机的组成员身份会导入到 Azure Monitor。 如果使用服务器端目标，Log Analytics 代理应安装在 WSUS 服务器上，以便将组成员身份信息导入到 Azure Monitor。  此成员身份每 4 小时持续更新一次。 
 
-通过 Azure 门户上 Log Analytics 工作区的“高级设置”配置 Azure Monitor，以导入 WSUS 组。  依次选择“计算机组”、“WSUS”和“导入 WSUS 组成员身份”。  无需进一步的配置。
+通过 Azure 门户上 Log Analytics 工作区的“高级设置”配置 Azure Monitor，以导入 WSUS 组。   依次选择“计算机组”、“WSUS”和“导入 WSUS 组成员身份”。     无需进一步的配置。
 
 ![WSUS 中的计算机组](media/computer-groups/configure-wsus.png)
 
@@ -84,16 +84,16 @@ ms.locfileid: "59549297"
 ### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
 当配置 Azure Monitor 来导入 Configuration Manager 集合成员身份时，它将为每个集合创建计算机组。  每隔 3 小时会检索一次集合成员身份信息，以使计算机组保持最新。 
 
-必须[将 Configuration Manager 连接到 Azure Monitor](collect-sccm.md) 才能导入 Configuration Manager 集合。  然后，可以通过 Azure 门户上 Log Analytics 工作区的“高级设置”配置导入。  依次选择“计算机组”、“SCCM”、“导入 Configuration Manager 集合成员身份”。  无需进一步的配置。
+必须[将 Configuration Manager 连接到 Azure Monitor](collect-sccm.md) 才能导入 Configuration Manager 集合。  
 
 ![SCCM 中的计算机组](media/computer-groups/configure-sccm.png)
 
 导入集合后，菜单将列出具有检测到的组成员身份的计算机数以及导入的组数。  可以单击任一链接以返回包含此信息的 **ComputerGroup** 记录。
 
 ## <a name="managing-computer-groups"></a>管理计算机组
-可以查看通过日志查询或通过 Azure 门户上 Log Analytics 工作区“高级设置”中的日志搜索 API 创建的计算机组。  选择“计算机组”，然后选择“已保存的组”。  
+可以查看通过日志查询或通过 Azure 门户上 Log Analytics 工作区“高级设置”中的日志搜索 API 创建的计算机组。   选择“计算机组”，然后选择“已保存的组”。    
 
-单击“删除”列中的“x”可删除计算机组。  单击组的“查看成员”图标可运行返回其成员的组的日志搜索。  无法修改计算机组，而是必须删除该组，然后使用修改的设置重新创建它。
+单击“删除”  列中的“x”  可删除计算机组。  单击组的“查看成员”  图标可运行返回其成员的组的日志搜索。  无法修改计算机组，而是必须删除该组，然后使用修改的设置重新创建它。
 
 ![已保存的计算机组](media/computer-groups/configure-saved.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "59549297"
   `UpdateSummary | where Computer in (mycomputergroup)`
 
 
-导入的计算机组及其包含的计算机存储在 ComputerGroup 表中。  例如，以下查询会从 Active Directory 返回域计算机组中的计算机列表。 
+导入的计算机组及其包含的计算机存储在 ComputerGroup 表中  。  例如，以下查询会从 Active Directory 返回域计算机组中的计算机列表。 
 
   `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
 

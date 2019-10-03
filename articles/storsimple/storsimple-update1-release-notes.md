@@ -16,11 +16,11 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 11138857e33eec0f854ddb61956ea24c858c49a5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258980"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60531016"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>适用于 StorSimple 8000 系列设备的 Update 1.2 发行说明
 
@@ -64,10 +64,10 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
 ## <a name="issues-fixed-in-update-12"></a>在 Update 1.2 中修复的问题
 下表提供在 Update 1.2、1.1 和 1 中已修复问题的摘要。    
 
-| 不是。 | 功能 | 问题 | 更新中已修复 | 适用于物理设备 | 适用于虚拟设备 |
+| 不。 | Feature | 问题 | 更新中已修复 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
-| 1 |Windows PowerShell for StorSimple |用户远程使用 Windows PowerShell for StorSimple 访问 StorSimple 设备，再启动安装向导时，只要输入 Data 0 IP 就会发生崩溃。 这个 bug 现已在 Update 1 中修复。 |Update 1 |是 |是 |
-| 2 |恢复出厂设置 |在某些情况下，执行恢复出厂设置时，StorSimple 设备会卡住并显示此消息：**正在进行恢复出厂设置 (阶段 8)**。 如果在该 cmdlet 正在运行时按下 CTRL+C，就会发生这种情况。 这个 bug 现已修复。 |Update 1 |是 |否 |
+| 第 |Windows PowerShell for StorSimple |用户远程使用 Windows PowerShell for StorSimple 访问 StorSimple 设备，再启动安装向导时，只要输入 Data 0 IP 就会发生崩溃。 这个 bug 现已在 Update 1 中修复。 |Update 1 |是 |是 |
+| 2 |恢复出厂设置 |在某些情况下，执行恢复出厂设置时 StorSimple 设备会卡住并显示此消息：**重置为工厂正在进行 （阶段 8）** 。 如果在该 cmdlet 正在运行时按下 CTRL+C，就会发生这种情况。 这个 bug 现已修复。 |Update 1 |是 |否 |
 | 3 |恢复出厂设置 |双控制器恢复出厂设置失败后，允许继续进行设备注册。 这会导致不支持的系统配置。 在 Update 1 中，会显示一条错误消息并阻止在恢复出厂设置失败的设备上注册。 |Update 1 |是 |否 |
 | 4 |恢复出厂设置 |在某些情况下，会引发不匹配的误报。 在运行 Update 1 的设备上，不会再生成错误的不匹配警报。 |Update 1 |是 |否 |
 | 5 |恢复出厂设置 |如果恢复出厂设置在完成之前被中断，设备会进入恢复模式，并且不允许访问 Windows PowerShell for StorSimple。 这个 bug 现已修复。 |Update 1 |是 |否 |
@@ -82,9 +82,9 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
 ## <a name="known-issues-in-update-12"></a>Update 1.2 中的已知问题
 下表提供了此版本中已知问题的摘要。
 
-| 不是。 | 功能 | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
+| 不。 | Feature | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
-| 1 |磁盘仲裁 |在极少数情况下，如果 8600 设备的 EBOD 机箱中的大部分磁盘断开连接，导致没有磁盘仲裁，然后存储池会脱机。 即使磁盘重新连接，存储池也将保持脱机状态。 |需要重新启动设备。 如果问题仍然存在，请联系 Microsoft 支持部门以了解后续步骤。 |是 |否 |
+| 第 |磁盘仲裁 |在极少数情况下，如果 8600 设备的 EBOD 机箱中的大部分磁盘断开连接，导致没有磁盘仲裁，然后存储池会脱机。 即使磁盘重新连接，存储池也将保持脱机状态。 |需要重新启动设备。 如果问题仍然存在，请联系 Microsoft 支持部门以了解后续步骤。 |是 |否 |
 | 2 |控制器 ID 错误 |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。 在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |
 | 3 |存储帐户 |此版本不支持使用存储服务删除存储帐户， 否则会导致无法检索用户数据。 |是 |是 | |
 | 4 |设备故障转移 |不支持从同一源设备将某个卷容器多次故障转移到不同的目标设备。 当设备故障转移是从单个不活动的设备故障转移到多个设备时，会使第一个故障转移设备上卷容器丢失数据所有权。 进行此类故障转移后，在 Azure 经典门户中查看这些卷容器时，会发现它们的显示或表现有所不同。 | |是 |否 |
@@ -92,7 +92,7 @@ Update 1.2 可应用于任何运行 Release (GA)、Update 0.1、Update 0.2 或 U
 | 6 |Web 代理 |如果 Web 代理配置将 HTTPS 作为指定的协议，则设备到服务通信将受到影响，并且设备将进入脱机状态。 在此过程中会生成支持包，从而耗用设备上的大量资源。 |请确保 Web 代理 URL 将 HTTP 作为指定的协议。 有关详细信息，请转至[配置设备的 Web 代理](storsimple-configure-web-proxy.md)。 |是 |否 |
 | 7 |Web 代理 |如果在注册的设备上配置并启用 Web 代理，将需要重新启动设备上的主动控制器。 | |是 |否 |
 | 8 |云高延迟和高 I/O 工作负载 |当 StorSimple 设备同时遇到非常高的云延迟（秒级）和高 I/O 工作负载情况时，设备卷将进入降级状态，并且 I/O 可能会出现故障，发生“设备未就绪”错误。 |需要手动重新启动设备控制器或执行设备故障转移，才可以从这种情况中恢复。 |是 |否 |
-| 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |将该 cmdlet 放在括号中，如下所示：**(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
+| 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |使用括号包装该 cmdlet，如下所示： **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
 | 10 |迁移 |当传递多个卷容器进行迁移时，只有第一个卷容器的最新备份的 ETA 准确。 此外，在迁移第一个卷容器中的前 4 个备份后，将开始并行迁移。 |建议一次迁移一个卷容器。 |是 |否 |
 | 11 |迁移 |还原后，不会将卷添加到备份策略或虚拟磁盘组。 |需要将这些卷添加到备份策略以创建备份。 |是 |是 |
 | 12 |迁移 |迁移完成后，5000/7000 系列设备不得访问已迁移的数据容器。 |建议在迁移完成并提交之后删除迁移的数据容器。 |是 |否 |

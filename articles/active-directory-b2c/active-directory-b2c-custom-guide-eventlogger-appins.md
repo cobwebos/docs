@@ -2,26 +2,26 @@
 title: 通过 Azure Active Directory B2C 使用 Application Insights 中的事件跟踪用户行为 | Microsoft Docs
 description: 了解如何通过 Azure AD B2C 用户旅程使用自定义策略在 Application Insights 中启用事件日志（预览版）。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/12/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 51342a7544295b465d1f2dfc3e1b27d8285b3588
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: c02757fb4b48ebf1220a5826bc9699741faa5170
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403810"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066186"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-将 Azure Application Insights 与 Azure Active Directory (Azure AD) B2C 配合使用时，可以获得用户情况的详细自定义事件日志。 在本文中，学习如何：
+将 Azure Active Directory B2C （Azure AD B2C）与 Azure 应用程序 Insights 一起使用时，可以获取用户旅程的详细的自定义事件日志。 在本文中，学习如何：
 
 * 洞察用户行为。
 * 排查自己在开发或生产过程中的策略问题。
@@ -36,7 +36,7 @@ Azure AD B2C 中的标识体验框架包括提供程序 `Handler="Web.TPEngine.P
 
 Application Insights 可以使用关联 ID 来记录用户会话，以便统一事件。 Application Insights 可以在数秒内提供事件和会话，并提供许多可视化工具、导出工具和分析工具。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。 本文假设使用的是自定义策略初学者包。 但是，初学者包不是必需的。
 
@@ -45,7 +45,7 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 将 Azure AD B2C 与 Application Insights 配合使用时，只需创建资源并获取检测密钥。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure 订阅的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含订阅的目录。 此租户不是 Azure AD B2C 租户。
+2. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含你的订阅的目录，确保你正在使用包含你的 Azure 订阅的目录。 此租户不是 Azure AD B2C 租户。
 3. 选择 Azure 门户左上角的“创建资源”，然后搜索并选择“Application Insights”。
 4. 单击“创建”。
 5. 输入此资源的名称。
@@ -111,10 +111,10 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 
 | 技术配置文件 | 任务 |
 | ----------------- | -----|
-| AzureInsights-Common | 创建要在所有 Azure-Insights 技术配置文件中包括的通用参数集。 | 
-| AzureInsights-SignInRequest | 在收到登录请求后创建包含一组声明的 SignIn 事件。 | 
-| AzureInsights-UserSignup | 当用户在注册/登录旅程中触发注册选项时创建 UserSignup 事件。 | 
-| AzureInsights-SignInComplete | 在将令牌发送到信赖方应用程序后记录成功完成了身份验证。 | 
+| AzureInsights-Common | 创建要在所有 Azure-Insights 技术配置文件中包括的通用参数集。 |
+| AzureInsights-SignInRequest | 在收到登录请求后创建包含一组声明的 SignIn 事件。 |
+| AzureInsights-UserSignup | 当用户在注册/登录旅程中触发注册选项时创建 UserSignup 事件。 |
+| AzureInsights-SignInComplete | 在将令牌发送到信赖方应用程序后记录成功完成了身份验证。 |
 
 将配置文件添加到初学者包中的 TrustFrameworkExtensions.xml 文件。 将以下元素添加到 ClaimsProviders 元素：
 
@@ -166,7 +166,7 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 ```
 
 > [!IMPORTANT]
-> 将 `ApplicationInsights-Common` 技术配置文件中的检测密钥更改为 Application Insights 资源提供的 GUID。
+> 将 `AzureInsights-Common` 技术配置文件中的检测密钥更改为 Application Insights 资源提供的 GUID。
 
 ## <a name="add-the-technical-profiles-as-orchestration-steps"></a>添加技术配置文件，作为业务流程步骤
 
@@ -230,11 +230,11 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 
 ## <a name="next-steps"></a>后续步骤
 
-根据需要向用户旅程添加声明类型和事件。 可以使用[声明解析程序](claim-resolver-overview.md)或任何字符串声明类型，通过向 Application Insights 事件或 AzureInsights-Common 技术配置文件添加 Input Claim 元素来添加声明。 
+根据需要向用户旅程添加声明类型和事件。 可以使用[声明解析程序](claim-resolver-overview.md)或任何字符串声明类型，通过向 Application Insights 事件或 AzureInsights-Common 技术配置文件添加 Input Claim 元素来添加声明。
 
 - ClaimTypeReferenceId 是对声明类型的引用。
-- PartnerClaimType 是 Azure Insights 中显示的属性的名称。 使用语法 `{property:NAME}`，其中 `NAME` 是要添加到该事件的属性。 
-- DefaultValue 可使用任何字符串值或声明解析程序。 
+- PartnerClaimType 是 Azure Insights 中显示的属性的名称。 使用语法 `{property:NAME}`，其中 `NAME` 是要添加到该事件的属性。
+- DefaultValue 可使用任何字符串值或声明解析程序。
 
 ```XML
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />

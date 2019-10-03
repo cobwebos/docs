@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7db66f6f4efa5e48f2af9380115de8bcfb75cb86
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57864824"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67786671"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>将 Excel 中的分析信息迁移到 Azure 机器学习工作室
 
@@ -44,9 +44,9 @@ ms.locfileid: "57864824"
 我们已遵循以下步骤在工作室中创建了试验： 
 
 1. 将数据集以 csv 文件上传到工作室（非常小的文件）
-2. 创建新实验，并使用[数据集中的选择列][select-columns]模块，选择在 Excel 中使用的相同数据功能 
-3. 使用[拆分数据][split]模块（在*相对表达式*模式下），将数据分成相同的训练数据集（正如在 Excel 中所执行的操作） 
-4. 使用[线性回归][linear-regression]模块实验（仅默认选项）、记录，并将结果与我们的 Excel 回归模型进行比较
+2. 创建新实验, 并使用 "[选择数据集中的列][select-columns]" 模块来选择 Excel 中使用的相同数据功能 
+3. 使用[拆分数据][split]模块 (使用*相对表达式*模式) 将数据划分为与在 Excel 中所执行的相同定型数据集 
+4. 带有[线性回归][linear-regression]模块的 vspackage (仅限默认选项), 记录并将结果与我们的 Excel 回归模型进行比较
 
 ### <a name="review-initial-results"></a>查看初始结果
 起初，Excel 模型的性能明显优于工作室模型： 
@@ -54,14 +54,14 @@ ms.locfileid: "57864824"
 |  | Excel | 工作室 |
 | --- |:---:|:---:|
 | 性能 | | |
-| <ul style="list-style-type: none;"><li>调整 R 平方</li></ul> |0.96 |不适用 |
-| <ul style="list-style-type: none;"><li>决定 <br />系数</li></ul> |不适用 |0.78<br />（低准确性） |
+| <ul style="list-style-type: none;"><li>调整 R 平方</li></ul> |0.96 |不可用 |
+| <ul style="list-style-type: none;"><li>决定 <br />系数</li></ul> |不可用 |0.78<br />（低准确性） |
 | 平均绝对误差 |$9.5M |$ 19.4 M |
 | 平均绝对误差 (%) |6.03% |12.2% |
 
 当我们向机器学习团队的开发人员和数据科学家运行我们的过程和结果时，他们快速提供了一些有用的提示。 
 
-* 在工作室中使用[线性回归][linear-regression]模块时，有两种方法可供选择：
+* 当你在工作室中使用[线性回归][linear-regression]模块时, 将提供两种方法:
   * 在线梯度下降：可能更适合于大规模的问题
   * 普通最小二乘法：这是大多数人在听到线性回归时会想到的方法。 对于小型数据集，普通最小二乘法是较好的选择。
 * 考虑调整 L2 正则化权重参数，以提高性能。 默认情况下，其设置为 0.001，而对于我们的小型数据集，将其设置为 0.005 以提高性能。 
@@ -73,13 +73,13 @@ ms.locfileid: "57864824"
 | --- |:---:|:---:|:---:|
 | 有标签的值 |实际值（数值） |相同 |相同 |
 | 学习器 |Excel -> 数据分析 -> 回归 |线性回归。 |线性回归 |
-| 学习器选项 |不适用 |默认值 |普通最小二乘法<br />L2 = 0.005 |
+| 学习器选项 |不可用 |默认值 |普通最小二乘法<br />L2 = 0.005 |
 | 数据集 |26 行、3 个功能、1 个标签。 所有数字。 |相同 |相同 |
-| 拆分：定型 |Excel 在前 18 行进行训练，在最后 8 行进行测试。 |相同 |相同 |
+| 拆分：训练 |Excel 在前 18 行进行训练，在最后 8 行进行测试。 |相同 |相同 |
 | 拆分：测试 |Excel 回归公式应用于最后 8 行 |相同 |相同 |
 | **性能** | | | |
-| 调整 R 平方 |0.96 |不适用 | |
-| 决定系数 |不适用 |0.78 |0.952049 |
+| 调整 R 平方 |0.96 |不可用 | |
+| 决定系数 |不可用 |0.78 |0.952049 |
 | 平均绝对误差 |$9.5M |$ 19.4 M |$9.5M |
 | 平均绝对误差 (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
 
@@ -102,16 +102,16 @@ ms.locfileid: "57864824"
 
 *Web 服务仪表板*部分包括可下载的 Excel 工作簿。 该工作簿已使用 Web 服务 API 进行预格式化，并嵌入了架构信息。 单击“下载 Excel 工作簿”时，工作簿会打开，用户可以将其保存到本地计算机。 
 
-![从 Web 服务仪表板下载 Excel 工作簿](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
+![从 Web 服务面板下载 Excel 工作簿](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 在工作簿打开时，请将预定义的参数复制到蓝色的 Parameter 部分，如下所示。 一旦输入这些参数，Excel 即会调用机器学习 Web 服务，而且会在绿色预测值部分显示预测的评分标签。 该工作簿会根据在 Parameters 下输入的所有行项，继续根据训练模型创建预测。 有关如何使用此功能的详细信息，请参阅[从 Excel 使用 Azure 机器学习 Web 服务](consuming-from-excel.md)。 
 
 ![模板 Excel 工作簿连接到已部署的 web 服务](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>优化和进一步实验
-至此，我们已经有了一个使用 Excel 模型的基线，接下来我们对机器学习线性回归模型进行了优化。 我们使用了模块[基于筛选器的功能选择][filter-based-feature-selection]来改善所选的初始数据元素，并且它帮助我们实现了平均绝对误差 4.6% 的性能提升。 针对将来的项目中，我们将使用此功能，它可以节省我们周中循环访问数据属性以查找正确的要用于建模的功能集。 
+至此，我们已经有了一个使用 Excel 模型的基线，接下来我们对机器学习线性回归模型进行了优化。 我们使用基于模块[筛选器的特征选择][filter-based-feature-selection]来改进我们选择的初始数据元素, 并帮助我们实现 4.6% 平均绝对错误的性能改进。 对于将来的项目, 我们将使用此功能, 此功能可以节省循环访问数据属性的时间, 从而找到要用于建模的正确功能集。 
 
-接下来，我们计划在实验中包含其他算法，如[贝叶斯][bayesian-linear-regression]或[提升决策树][boosted-decision-tree-regression]，用于性能比较。 
+接下来, 我们计划在实验中包含其他算法, 如[Bayesian][bayesian-linear-regression]或[提升决策树][boosted-decision-tree-regression], 以比较性能。 
 
 如果要实验回归，能源效率回归示例数据集即是可用于尝试的好的数据集，其中包含很多数值属性。 数据集作为工作室中的示例数据集的一部分提供。 可以使用各种学习模块来预测加热负载或冷却负载。 下表是针对目标变量冷却负载预测的能源效率数据集的不同回归学习的性能比较： 
 
@@ -123,9 +123,9 @@ ms.locfileid: "57864824"
 | 线性回归（普通最小二乘法） |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
 ## <a name="key-takeaways"></a>要点
-通过从并行运行 Excel 回归和工作室试验，我们学到了很多。 在 Excel 中创建基线模型，并将它与使用机器学习[线性回归][linear-regression]的模型进行比较，帮助我们了解工作室，并且我们发现了改进数据选择和模型性能的机会。 
+通过从并行运行 Excel 回归和工作室试验，我们学到了很多。 在 Excel 中创建基线模型, 并将其与使用机器学习[线性回归][linear-regression]的模型进行比较, 帮助我们了解 Studio, 我们发现了改进数据选择和模型性能的机会。 
 
-我们还发现，最好使用[基于筛选器的功能选择][filter-based-feature-selection]以加快将来预测项目。 通过对数据应用功能选择，可以在工作室中创建改进的模型，以获得更好的总体性能。 
+我们还发现, 建议使用[基于筛选器的功能选择][filter-based-feature-selection]来加速未来的预测项目。 通过对数据应用功能选择，可以在工作室中创建改进的模型，以获得更好的总体性能。 
 
 将预测分析预测从工作室系统性地传输到 Excel 的能力，使得成功地为广泛业务用户受众提供结果的能力显著增加。 
 
@@ -133,7 +133,7 @@ ms.locfileid: "57864824"
 下面是一些可帮助用户处理回归的资源： 
 
 * Excel 中的回归。 如果从未尝试在 Excel 中使用回归，可参阅本教程轻松完成操作：[https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
-* 回归与预测。 Tyler Chessman 撰写的博客文章，介绍了如何在 Excel 中进行时间序列预测，其中包括适合初学者的线性回归描述。 [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
+* 回归与预测。 Tyler Chessman 撰写的博客文章，介绍了如何在 Excel 中进行时间序列预测，其中包括适合初学者的线性回归描述。 [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
 * 普通最小二乘法（线性回归）：缺陷、问题和陷阱。 有关回归的简介和讨论：[https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->

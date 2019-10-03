@@ -12,11 +12,11 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 00710183828892c81d3ea887e4394237288eb6bb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452509"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60303530"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期部署阶段
 
@@ -39,7 +39,7 @@ ms.locfileid: "55452509"
 ## <a name="how-to-do-it"></a>如何执行
 在此阶段中解决的主要任务：
 
-操作模型：将模型和管道部署到生产或类似生产的环境中供应用程序操作。
+操作模型  ：将模型和管道部署到生产或类似生产的环境中供应用程序操作。
 
 ### <a name="operationalize-a-model"></a>操作模型
 如果拥有一组运行良好的模型，则可操作这些模型，以供其他应用程序使用。 根据具体的业务需求，实时作出预测或基于批处理作出预测。 若要部署模型，请使用开放 API 接口公开模型。 通过该接口，各种应用程序可轻松使用模型，例如：

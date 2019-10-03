@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738719"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60499879"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>必应搜索 API 使用和显示要求
 
@@ -99,7 +99,7 @@ ms.locfileid: "56738719"
 ### <a name="notices-and-branding"></a>通知和品牌推广 
 请：
 
-- 在每个用户体验 (UX) 点（用户可输入搜索查询）附近，以醒目方式添加 [Microsoft 隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)功能性超链接。 将该超链接标记为 Microsoft 隐私声明。
+- 在每个用户体验 (UX) 点（用户可输入搜索查询）附近，以醒目方式添加 [Microsoft 隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)功能性超链接。 将该超链接标记为 Microsoft 隐私声明  。
 
 - 在每个用户体验点（用户可输入搜索查询）附近，以醒目方式显示必应品牌推广（应符合[必应商标使用准则](https://go.microsoft.com/fwlink/?linkid=833278)要求）。 此类品牌推广必须向用户明确表明 Microsoft 为该 Internet 搜索体验提供支持。
 

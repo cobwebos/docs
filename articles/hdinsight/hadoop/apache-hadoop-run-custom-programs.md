@@ -1,7 +1,6 @@
 ---
 title: 运行自定义 MapReduce 程序 - Azure HDInsight
-description: 何时以及如何在 HDInsight 中运行自定义的 MapReduce 程序。
-services: hdinsight
+description: 何时以及如何在 Azure HDInsight 群集上运行自定义的 Apache MapReduce 程序。
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: c9cbea913a86a681620eea4adc0a5c99cc84f920
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: 305eefbaa674e414ab8134986e6cd526abe8208e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433859"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810740"
 ---
 # <a name="run-custom-mapreduce-programs"></a>运行自定义 MapReduce 程序
 
@@ -38,7 +37,6 @@ ms.locfileid: "53433859"
 自定义映射/化简组件通常以 Java 编写。 Hadoop 提供一个流式处理接口，借助该接口可以使用以其他语言（例如 C#、F#、Visual Basic、Python 及 JavaScript）开发的组件。
 
 * 有关开发自定义 Java MapReduce 程序的演练，请参阅[开发适用于 HDInsight 上的 Hadoop 的 Java MapReduce 程序](apache-hadoop-develop-deploy-java-mapreduce-linux.md)。
-* 若要查看使用 Python 的示例，请参阅[开发适用于 HDInsight 的 Python 流式处理 MapReduce 程序](apache-hadoop-streaming-python.md)。
 
 对于以下情况，请考虑创建自己的映射和化简组件：
 
@@ -76,6 +74,5 @@ ms.locfileid: "53433859"
 
 * [在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 * [为 Apache Hadoop on HDInsight 开发 Java MapReduce 程序](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-* [为 HDInsight 开发 Python 流式处理 MapReduce 程序](apache-hadoop-streaming-python.md)
 * [使用 Azure Toolkit for Eclipse 为 HDInsight 群集创建 Apache Spark 应用程序](../spark/apache-spark-eclipse-tool-plugin.md)
 * [在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)](python-udf-hdinsight.md)

@@ -2,23 +2,19 @@
 title: 关于 Azure 密钥保管库密钥、机密和证书 - Azure 密钥保管库
 description: Azure Key Vault REST 接口概述以及密钥、机密和证书的开发人员详细信息。
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 01d9f763983da2415aba0f9bae81414017bc2f02
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cca4f794fd3f84b991c7882307f74bcfadf6835b
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842560"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241055"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 
@@ -29,9 +25,9 @@ ms.locfileid: "57842560"
 - 证书：支持基于密钥和机密并且添加了自动续订功能的证书。
 - Azure 存储：可以管理 Azure 存储帐户的密钥。 在内部，Key Vault 可以使用 Azure 存储帐户列出（同步）密钥，并定期重新生成（轮换）密钥。 
 
-有关 Key Vault 的更多常规信息，请参阅[什么是 Azure Key Vault？](/azure/key-vault/key-vault-whatis)
+有关 Key Vault 的更多常规信息，请参阅[什么是 Azure Key Vault？](/azure/key-vault/key-vault-overview)
 
-## <a name="azure-key-vault"></a>Azure 密钥保管库
+## <a name="azure-key-vault"></a>Azure Key Vault
 
 以下部分提供在实现 Key Vault 服务中可以用到的常规信息。
 
@@ -80,7 +76,7 @@ Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系�
 |`keyvault-name`|Microsoft Azure Key Vault 服务中的保管库名称。<br /><br /> Key Vault 名称由用户选择，并且全局唯一。<br /><br /> Key Vault 的名称必须是 3-24 个字符，且仅包含 0-9、a-z、A-Z 和 - 的字符串。|  
 |`object-type`|对象的类型，要么为“密钥”，要么为“机密”。|  
 |`object-name`|`object-name` 是用户提供名称，在 Key Vault 中必须保持唯一。 该名称必须是 1-127 个字符，且仅包含 0-9、a-z、A-Z 和 - 的字符串。|  
-|`object-version`|`object-version` 是系统生成的 32 个字符的字符串标识符，可以选择用来对某个对象的唯一版本进行寻址。|  
+|`object-version`|`object-version`是系统生成的32字符串标识符，可选择使用 * o 寻址对象的唯一版本。|  
 
 ## <a name="key-vault-keys"></a>Key Vault 密钥
 
@@ -89,7 +85,7 @@ Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系�
 Key Vault 中的加密密钥表示为 JSON Web 密钥 [JWK] 对象。 此外，还扩展了基本 JWK/JWA 规范，以启用对于 Key Vault 实现唯一的密钥类型。 例如，使用 HSM 供应商特定的包导入密钥，可以安全传输仅可在 Key Vault HSM 中使用的密钥。  
 
 - **“软”密钥**：由 Key Vault 在软件中处理，但使用 HSM 中的系统密钥进行静态加密的一种密钥。 客户端可以导入现有 RSA 或 EC（椭圆曲线）密钥，也可以请求 Key Vault 生成该密钥。
-- **“硬”密钥**：在 HSM（硬件安全模块）中处理的密钥。 这些密钥在一个 Key Vault HSM 安全体系中受到保护（按地理位置设置安全体系，以保持隔离）。 客户端可以采用软性形式或通过从兼容 HSM 设备导出的方式来导入 RSA 或 EC 密钥。 此外，客户端还可以请求 Key Vault 生成该密钥。 此密钥类型可以将 T 属性添加到获得的 JWK 以携带 HSM 密钥材料。
+- **“硬”密钥**：在 HSM（硬件安全模块）中处理的密钥。 这些密钥在一个 Key Vault HSM 安全体系中受到保护（按地理位置设置安全体系，以保持隔离）。 客户端可以采用软性形式或通过从兼容 HSM 设备导出的方式来导入 RSA 或 EC 密钥。 此外，客户端还可以请求 Key Vault 生成该密钥。 此密钥类型会将 key_hsm 属性添加到 JWK 获取来携带 HSM 密钥材料。
 
      有关地理边界的详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/privacy/)  
 
@@ -200,9 +196,9 @@ Key Vault 不支持“导出”操作。 在系统中设置密钥后，便无法
 
 ###  <a name="key-access-control"></a>密钥访问控制
 
-Key Vault 托管的密钥的访问控制是在充当密钥容器的 Key Vault 级别提供的。 在同一 Key Vault 中，密钥的访问控制策略不同于机密的访问控制策略。 用户可以创建一个或多个保管库来保存密钥，并且需要维护方案相应的密钥分段和管理。 密钥的访问控制与机密的访问控制无关。  
+Key Vault 托管的密钥的访问控制是在充当密钥容器的 Key Vault 级别提供的。 密钥的访问控制策略不同于同一 Key Vault 中机密的访问控制策略。 用户可以创建一个或多个保管库来保存密钥，并且需要维护方案相应的密钥分段和管理。 密钥的访问控制与机密的访问控制无关。  
 
-在保管库上的密钥访问控制条目中可以按用户/服务主体授予以下权限。 这些权限对密钥对象上允许的操作采取严密的镜像操作：  
+在保管库上的密钥访问控制条目中可以按用户/服务主体授予以下权限。 这些权限会密切镜像对密钥对象允许的操作。  向密钥保管库中的服务主体授予访问权限是一项一次性操作，对于所有 Azure 订阅，它将保持不变。 可以使用它部署所需的任意数量的证书。 
 
 - 针对密钥管理操作的权限
   - *get*：读取密钥的公共部分及其属性
@@ -316,7 +312,7 @@ Key Vault 中托管的机密的访问控制是在包含这些机密的 Key Vault
 
 除了证书元数据、可寻址密钥和可寻址机密外，Key Vault 证书还包含属性和标记。  
 
-#### <a name="attributes"></a>属性
+#### <a name="attributes"></a>特性
 
 证书属性将镜像到创建 KV 证书时创建的可寻址密钥和机密的属性。  
 
@@ -334,7 +330,7 @@ Key Vault 证书具有以下属性：
 > [!Note] 
 > 如果 Key Vault 证书过期，则它是可寻址密钥，机密会无法操作。  
 
-#### <a name="tags"></a>标记
+#### <a name="tags"></a>Tags
 
  客户端指定的键值对字典，类似于密钥和机密中的标记。  
 
@@ -367,14 +363,14 @@ Key Vault 证书具有以下属性：
 
 |X.509 密钥使用情况标记|Key Vault 密钥的操作|默认行为|
 |----------|--------|--------|
-|DataEncipherment|加密、解密| 不适用 |
-|DecipherOnly|解密| 不适用  |
+|DataEncipherment|加密、解密| 不可用 |
+|DecipherOnly|解密| 不可用  |
 |DigitalSignature|签名、验证| Key Vault 在创建证书时默认为无使用规范 | 
-|EncipherOnly|encrypt| 不适用 |
-|KeyCertSign|签名、验证|不适用|
+|EncipherOnly|encrypt| 不可用 |
+|KeyCertSign|签名、验证|不可用|
 |KeyEncipherment|包装密钥、解包密钥| Key Vault 在创建证书时默认为无使用规范 | 
-|NonRepudiation|签名、验证| 不适用 |
-|crlsign|签名、验证| 不适用 |
+|NonRepudiation|签名、验证| 不可用 |
+|crlsign|签名、验证| 不可用 |
 
 ### <a name="certificate-issuer"></a>证书颁发者
 
@@ -477,8 +473,7 @@ Key Vault 可以管理 Azure 存储帐户密钥：
 
 有关详细信息，请参阅 [Key Vault REST API 中的存储帐户操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [身份验证、请求和响应](authentication-requests-and-responses.md)
-- [Key Vault 版本](key-vault-versions.md)
 - [Key Vault 开发人员指南](/azure/key-vault/key-vault-developers-guide)

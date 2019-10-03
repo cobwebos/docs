@@ -5,15 +5,15 @@ author: ancav
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d52cb4d7b8e29838338baddd45a175661801b19b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287258"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844663"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
 
@@ -29,16 +29,16 @@ ms.locfileid: "58287258"
 
 将自定义指标发送到 Azure Monitor 时，报告的每个数据点或值必须包括以下信息。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 若要将自定义指标提交到 Azure Monitor，提交指标的实体需在请求的 **Bearer** 标头中提供有效的 Azure Active Directory (Azure AD) 令牌。 可通过几种支持的方法获取有效的持有者令牌：
 1. [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 为 Azure 资源本身（例如 VM）提供一个标识。 托管服务标识 (MSI) 旨在授予资源权限来执行特定的操作。 例如，允许资源发出有关其自身的指标。 可为某个资源或其 MSI 授予针对另一个资源的“监视指标发布者”权限。 获取此权限后，该 MSI 也能发出其他资源的指标。
 2. [Azure AD 服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。 在此方案中，可向某个 Azure AD 应用程序或服务分配发出有关 Azure 资源的指标的权限。
 为了对请求进行身份验证，Azure Monitor 将使用 Azure AD 公钥来验证应用程序令牌。 现有的“监视指标发布者”角色已拥有此权限。 可在 Azure 门户中使用此权限。 可以根据服务主体要发出哪些资源的自定义指标，在所需的范围为该服务主体授予“监视指标发布者”角色。 范围的示例包括订阅、资源组或特定资源。
 
 > [!NOTE]  
-> 请求用于发出自定义指标的 Azure AD 令牌时，请确保请求该令牌的受众或资源是 https://monitoring.azure.com/。 请务必包含尾部的“/”。
+> 请求用于发出自定义指标的 Azure AD 令牌时，请确保请求该令牌的受众或资源是 https://monitoring.azure.com/ 。 请务必包含尾部的“/”。
 
-### <a name="subject"></a>主题
+### <a name="subject"></a>使用者
 此属性捕获自定义指标报告的 Azure 资源 ID。 将在 API 调用的 URL 中为此信息编码。 每个 API 只能提交单个 Azure 资源的指标值。
 
 > [!NOTE]  
@@ -46,7 +46,7 @@ ms.locfileid: "58287258"
 >
 >
 
-### <a name="region"></a>区域
+### <a name="region"></a>地区
 此属性捕获针对其发出指标的资源所部署到的 Azure 区域。 必须将指标发出到资源部署区域所在的同一个 Azure Monitor 区域终结点。 例如，部署在美国西部的 VM 的自定义指标必须发送到美国西部区域 Azure Monitor 终结点。 区域信息也在 API 调用的 URL 中编码。
 
 > [!NOTE]  
@@ -54,18 +54,18 @@ ms.locfileid: "58287258"
 >
 >
 
-### <a name="timestamp"></a>Timestamp
+### <a name="timestamp"></a>时间戳
 发送到 Azure Monitor 的每个数据点必须带有时间戳标记。 此时间戳捕获测量或收集指标值的日期时间。 Azure Monitor 接受带有过去最多 20 分钟和将来最多 5 分钟时间戳的指标数据。 时间戳必须采用 ISO 8601 格式。
 
 ### <a name="namespace"></a>命名空间
 命名空间可将类似的指标分类或分组到一起。 使用命名空间能够在可收集不同见解或性能指标的指标组之间实现隔离。 例如，可以使用名为 **ContosoMemoryMetrics** 的命名空间来跟踪用于分析应用的内存用量指标， 并使用名为 **ContosoAppTransaction** 的另一个命名空间来跟踪有关应用程序中用户事务的所有指标。
 
-### <a name="name"></a>名称
+### <a name="name"></a>姓名
 “名称”是正在报告的指标的名称。 通常，该名称具有足够的自述性，可帮助识别所要测量的指标。 以测量给定 VM 上所用内存字节数的指标为例， 该指标可以使用类似于“已使用内存字节数”的名称。
 
 ### <a name="dimension-keys"></a>维度键
 维度是一个键/值对，帮助描述有关收集的指标的附加特征。 使用附加特征可以收集用于提供更深入见解的指标的详细信息。 例如，“已使用内存字节数”指标可以包含名为“进程”的维度键，用于捕获 VM 上的每个进程消耗的内存字节数。 使用此键可以筛选指标，以查看特定的进程使用了多少内存，或者识别内存用量最高的 5 个进程。
-维度是可选的并非所有指标可能都具有维度。 自定义指标可以有最多 10 个维度。
+维度是可选的，并非所有指标都可能包含维度。 一个自定义指标最多可以包含 10 个维度。
 
 ### <a name="dimension-values"></a>维度值
 报告指标数据点时，所报告的指标的每个维度键都有一个对应的维度值。 例如，可以报告 VM 上 ContosoApp 使用的内存：
@@ -75,7 +75,7 @@ ms.locfileid: "58287258"
 * 维度值是“ContosoApp.exe”。
 
 发布指标值时，只能为每个维度键指定一个维度值。 如果收集 VM 上多个进程的相同“内存使用率”指标，则可以报告该时间戳的多个指标值。 每个指标值将为“进程”维度键指定不同的维度值。
-维度是可选的并非所有指标可能都具有维度。 如果指标 post 定义了维度键，相应的维度值是必需的。
+维度是可选的，并非所有指标都可能包含维度。 如果指标帖子定义维度键，则相应的维度值是必需的。
 
 ### <a name="metric-values"></a>指标值
 Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在给定的分钟内，某个指标可能需要多次采样， 例如 CPU 利用率。 或者，可能需要针对多个离散事件进行测量， 例如登录事务延迟。 若要在 Azure Monitor 中限制发出和支付的原始值数目，可在本地预先聚合并发出值：
@@ -102,7 +102,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 * 最小值：12
 * 最大值：12
 * 总和：12
-* 计数：第
+* 计数：1
 
 使用此过程可以发出在给定的分钟内，相同指标与维度的组合的多个值。 然后，Azure Monitor 将会提取在给定分钟内发出的所有原始值，并将其聚合在一起。
 
@@ -168,15 +168,31 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 ## <a name="supported-regions"></a>支持的区域
 在公共预览期，发布自定义指标的功能只在一部分 Azure 区域中可用。 此限制意味着，只能发布某个受支持区域中的资源的指标。 下表列出了自定义指标支持的 Azure 区域。 另外还列出了这些区域中的资源的指标应发布到的相应终结点：
 
-|Azure 区域|区域终结点前缀|
+|Azure 区域 |区域终结点前缀|
 |---|---|
-|美国东部| https:\//eastus.monitoring.azure.com/ |
+| **美国和加拿大** | |
+|美国中西部 | https:\//westcentralus.monitoring.azure.com/ |
+|美国西部 2       | https:\//westus2.monitoring.azure.com/ |
+|美国中北部 | https：\//northcentralus.monitoring.azure.com
 |美国中南部| https:\//southcentralus.monitoring.azure.com/ |
-|美国中西部| https:\//westcentralus.monitoring.azure.com/ |
-|美国西部 2| https:\//westus2.monitoring.azure.com/ |
-|东南亚| https:\//southeastasia.monitoring.azure.com/ |
-|北欧| https:\//northeurope.monitoring.azure.com/ |
-|西欧| https:\//westeurope.monitoring.azure.com/ |
+|美国中部      | https：\//centralus.monitoring.azure.com |
+|加拿大中部 | https：\//canadacentral.monitoring.azure.comc
+|East US| https：\//eastus.monitoring.azure.com/ |
+| **欧洲** | |
+|北欧    | https：\//northeurope.monitoring.azure.com/ |
+|西欧     | https:\//westeurope.monitoring.azure.com/ |
+|英国南部 | https：\//uksouth.monitoring.azure.com
+|法国中部 | https：\//francecentral.monitoring.azure.com |
+| **非洲** | |
+|南非北部 | https：\//southafricanorth.monitoring.azure.com
+| **亚洲** | |
+|印度中部 | https：\//centralindia.monitoring.azure.com
+|澳大利亚东部 | https：\//australiaeast.monitoring.azure.com
+|日本东部 | https：\//japaneast.monitoring.azure.com
+|东南亚  | https：\//southeastasia.monitoring.azure.com |
+|东亚 | https：\//eastasia.monitoring.azure.com
+|韩国中部   | https：\//koreacentral.monitoring.azure.com
+
 
 ## <a name="quotas-and-limits"></a>配额和限制
 Azure Monitor 针对自定义指标实施以下用量限制：

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：分析远程图像 - REST、Node.js
+title: 快速入门：使用 REST API 和 Node.js 分析远程图像
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将使用计算机视觉 API 和 Node.js 分析图像。
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: 96a2e9f2f6e114c9a4b74111cd6a6d085022a4c8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: seodec18, seo-javascript-september2018
+ms.openlocfilehash: c9d2c28a1faa2bceafb2b45f1dac76356e0e8753
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57872664"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933943"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-with-nodejs-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Node.js 分析远程图像
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>快速入门：使用计算机视觉 REST API 和 Node.js 分析远程图像
 
 在本快速入门中，你将使用计算机视觉的 REST API 分析远程存储的图像以提取视觉特征。 使用[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法，可以根据图像内容提取视觉特征。
 
@@ -28,7 +28,7 @@ ms.locfileid: "57872664"
 
 - 必须安装有 [Node.js](https://nodejs.org) 4.x 或更高版本。
 - 必须安装有 [npm](https://www.npmjs.com/)。
-- 必须具有计算机视觉的订阅密钥。 要获取订阅密钥，请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
+- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
@@ -45,11 +45,8 @@ ms.locfileid: "57872664"
    1. 包安装成功后，关闭命令提示符窗口。
 
 1. 将以下代码复制到文本编辑器中。
-1. 必要时在代码中进行如下更改：
-    1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
-    1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法的终结点 URL。
-    1. （可选）将 `imageUrl` 的值替换为要分析的其他图像的 URL。
-    1. （可选）将 `language` 请求参数的值替换为其他语言。
+1. （可选）将 `imageUrl` 的值替换为要分析的其他图像的 URL。
+1. （可选）将 `language` 请求参数的值替换为其他语言。
 1. 将代码保存为以 `.js` 为扩展名的文件。 例如，`analyze-image.js`。
 1. 打开命令提示符窗口。
 1. 在提示符处，使用 `node` 命令运行文件。 例如，`node analyze-image.js`。
@@ -59,14 +56,11 @@ ms.locfileid: "57872664"
 
 const request = require('request');
 
-// Replace <Subscription Key> with your valid subscription key.
-const subscriptionKey = '<Subscription Key>';
+let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
+let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
+if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
 
-// You must use the same location in your REST call as you used to get your
-// subscription keys. For example, if you got your subscription keys from
-// westus, replace "westcentralus" in the URL below with "westus".
-const uriBase =
-    'https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze';
+var uriBase = endpoint + 'vision/v2.0/analyze';
 
 const imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg';

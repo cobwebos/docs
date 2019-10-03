@@ -1,19 +1,18 @@
 ---
-title: Azure 备份常见问题解答
+title: 有关 Azure 备份功能的常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.author: raynew
-ms.openlocfilehash: 0981f4d5d9d5fcb243fc7ead6f4b529c096935d0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 07/07/2019
+ms.author: dacurwin
+ms.openlocfilehash: 415a25dbe63b8942509827cd8434cc0f50fde87a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885870"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954813"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 本文回答有关 Azure 备份服务的常见问题。
@@ -26,21 +25,28 @@ ms.locfileid: "58885870"
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>可针对每个保管库注册的服务器/计算机数量是否有限制？
 每个保管库最多可以注册 1000 个 Azure 虚拟机。 如果使用 Microsoft Azure 备份代理，每个保管库最多可以注册 50 个 MAB 代理。 可以将 50 个 MAB 服务器/DPM 服务器注册到一个保管库。
 
+### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>保管库中可保护的数据源/项有多少？ 
+在保管库中的所有工作负荷 (IaaS VM、SQL、AFS 等) 上, 最多可以保护2000数据源/项。<br>  
+例如, 如果你已经在保管库中保护了 500 Vm 和400个 Azure 文件共享, 则只能1100保护其中的 SQL 数据库。 
+
+### <a name="how-many-policies-can-i-create-per-vault"></a>可以为每个保管库创建多少个策略？ 
+每个保管库最多只能有200个策略。
+
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>如果本组织有一个保管库，如何在还原数据时将数据与保管库中的其他服务器隔离？
 设置备份时，你想要一起恢复的服务器数据应使用相同密码。 如果要将恢复隔离到一个特定服务器或多个服务器，仅使用该服务器的密码。 例如，人力资源服务器可能使用一个加密通行短语，会计结算服务器使用另一个通行短语，而存储服务器使用第三个通行短语。
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>是否可以在订阅之间移动我的保管库？
-是的。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
+是的。 若要移动恢复服务保管库, 请参阅此[文](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>是否可以将备份数据移动到另一个保管库？
-不。 保管库中存储的备份数据无法移动到不同的保管库。
+否。 保管库中存储的备份数据无法移动到不同的保管库。
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>能否在备份后从 GRS 更改为 LRS？
-不。 仅在存储任何备份之后，恢复服务保管库才可更改存储选项。
+否。 仅在存储任何备份之后，恢复服务保管库才可更改存储选项。
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>是否可以对备份到恢复服务保管库的 VM 执行项级别还原 (ILR)？
-- 由 Azure VM 备份支持的 Azure VM 支持 ILR。 有关详细信息，请参见[文章](backup-azure-restore-files-from-vm.md)
-- ILR 不由 Azure 备份服务器或 System Center DPM 备份的在线恢复点的本地 Vm 的支持。
+- 由 Azure VM 备份支持的 Azure VM 支持 ILR。 有关详细信息, 请参阅[文章](backup-azure-restore-files-from-vm.md)
+- Azure 备份服务器或 System Center DPM 备份的本地 Vm 的在线恢复点不支持 ILR。
 
 
 ## <a name="azure-backup-agent"></a>Azure 备份代理
@@ -48,39 +54,8 @@ ms.locfileid: "58885870"
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>在哪里可以找到有关 Azure VM 备份的 Azure 备份代理的常见问题？
 
 - 有关在 Azure VM 上运行的代理，请阅读此[常见问题解答](backup-azure-vm-backup-faq.md)。
-- 有关用于备份 Azure 文件夹的代理，阅读此[常见问题解答](backup-azure-file-folder-backup-faq.md)。
+- 对于用于备份 Azure 文件文件夹的代理, 请阅读以下[常见问题解答](backup-azure-file-folder-backup-faq.md)。
 
-
-## <a name="vmware-and-hyper-v-backup"></a>VMware 和 Hyper-V 备份
-
-### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>是否可以将 VMware vCenter 服务器备份到 Azure？
-是的。 可以使用 Azure 备份服务器将 VMware vCenter Server 和 ESXi 主机备份到 Azure。
-
-- [详细了解](backup-mabs-protection-matrix.md)支持的版本。
-- [请按照下列步骤](backup-azure-backup-server-vmware.md)备份 VMware 服务器。
-
-### <a name="do-i-need-a-separate-license-to-recover-an-full-on-premises-vmwarehyper-v-cluster"></a>是否需要单独的许可证才能恢复完整的本地 VMware/Hyper-V 群集？
-不需要单独的 VMware/Hyper-V 保护许可。
-
-- 如果你是 System Center 客户，使用 System Center Data Protection Manager (DPM) 来保护 VMware VM。
-- 如果不是 System Center 客户，可以使用 Azure 备份服务器（即用即付）来保护 VMware VM。
-
-## <a name="dpm-and-azure-backup-server-backup"></a>DPM 和 Azure 备份服务器备份
-
-### <a name="which-dpm-versions-are-supported"></a>支持哪些 DPM 版本？
-支持的 DPM 版本在[支持矩阵](backup-azure-dpm-introduction.md#prerequisites-and-limitations)中进行了总结。 建议安装最新的 DPM 更新，并在 DPM 服务器上运行[最新版本](https://aka.ms/azurebackup_agent)的 Azure 备份代理。
-
-### <a name="can-i-register-the-server-to-multiple-vaults"></a>是否可以向多个保管库注册服务器？
-不。 一个 DPM 或 Azure 备份服务器只能注册到一个保管库。
-
-### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>是否可以使用 Azure 备份服务器为物理服务器创建裸机恢复 (BMR) 备份？ <br/>
-是的。
-
-### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>可以使用 DPM 来备份 Azure Stack 中的应用吗？
-不。 可以使用 Azure 备份来保护 Azure Stack，但 Azure 备份不支持使用 DPM 来备份 Azure Stack 中的应用。
-
-### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>如果已经安装 Azure 备份代理来保护我的文件和文件夹，是否可以安装 System Center DPM 将本地工作负载备份到 Azure？
-是的。 但应首先设置 DPM，然后再安装 Azure 备份代理。  按此顺序安装组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装代理。
 
 ## <a name="general-backup"></a>常规备份
 
@@ -101,7 +76,7 @@ Windows 8.1 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更�
 Windows 8 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更新。
 Windows 7 64 位 | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter | 计算机应运行最新服务包和更新。
 服务器 | |
-Windows Server 2019 64 bit | Standard、Datacenter、Essentials | 使用最新服务包/更新。
+Windows Server 2019 64 位 | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2016 64 位 | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2012 R2 64 位 | Standard、Datacenter、Foundation | 使用最新服务包/更新。
 Windows Server 2012 64 位 | Datacenter、Foundation、Standard | 使用最新服务包/更新。
@@ -118,7 +93,7 @@ Windows Server 2008 64 位 | Standard、Enterprise、Datacenter | 使用最新�
 大小限制如下所示：
 
 OS/计算机 | 数据源的大小限制
---- | --- 
+--- | ---
 Windows 8 或更高版本 | 54,400 GB
 Windows 7 |1700 GB
 Windows Server 2012 或更高版本 | 54,400 GB
@@ -130,7 +105,7 @@ Azure VM | 16 个数据磁盘<br/><br/> 数据磁盘最大为 4095 GB
 
 **数据源** | **详细信息**
 --- | ---
-数据量(Volume) |从正在备份的单个卷 VM 备份的数据量。
+卷 |从正在备份的单个卷 VM 备份的数据量。
 SQL Server 数据库 |正在备份的单个 SQL 数据库的大小。
 SharePoint | 正在备份的 SharePoint 场中内容和配置数据库的总和。
 Exchange |正在备份 Exchange 服务器中所有 Exchange 数据库的总和。
@@ -146,11 +121,11 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 不可以，Azure 备份不支持从存储的备份中删除或清除单个项。
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>如果在备份作业开始后取消，是否会删除已传输的备份数据？
-不。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。
+否。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。
 
 - Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。
 - 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。
-- 下一次备份作业将是以前备份的数据的增量。 增量备份仅传输新增或更改的数据，这相当于更好地利用带宽。
+- 下一次备份作业将是以前备份的数据的增量。 增量备份仅传输新数据或更改的数据, 这等同于更好地利用带宽。
 
 如果取消了 Azure VM 的备份作业，则已传输的数据会被忽略。 下次备份作业将传输上次成功的备份作业之后的增量数据。
 
@@ -163,33 +138,33 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 是的，可以自定义策略。 例如，可以配置每周和每日保留期要求，但不能配置每年和每月保留期要求。
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>是否可以对备份计划和保留策略使用不同时间？
-不。 只能在备份时间点应用保留策略。 例如，此图显示了中午 12 点和下午 6 点创建的备份保留策略。
+否。 只能在备份时间点应用保留策略。 例如, 此图显示了在12am 和下午6点创建的备份的保留策略。
 
 ![计划备份和保持](./media/backup-azure-backup-faq/Schedule.png)
 
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point-br"></a>如果备份保留了很长一段时间，是否需要更多时间才能恢复较旧的数据点？ <br/>
-不。 恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
+否。 恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>如果每个恢复点相当于完整的点，它会影响总体可计费备份存储吗？
 典型的长期保留点产品将备份数据存储为完整的点。
 
-    - 完整点的存储 *效率不高* ，但能使还原变得更方便和快速。
-    - 增量复制为高效存储，但要求还原数据链，这会影响恢复时间
+- 完整点的存储 *效率不高* ，但能使还原变得更方便和快速。
+- 增量复制为高效存储，但要求还原数据链，这会影响恢复时间
 
 Azure 备份存储体系结构提供这两个领域的最佳产品，它以最佳方式用于快速恢复的数据存储中，产生较低的存储成本。 这种方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 了解有关[增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)的更多信息。
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>可创建的恢复点数量是否有限制？
 最多可为单个受保护实例创建 9999 个恢复点。 受保护的实例包括计算机、服务器（物理或虚拟）或备份到 Azure 的工作负载。
 
-- 了解有关[备份和保留](./backup-introduction-to-azure-backup.md#backup-and-retention)的更多信息。
-- 了解[受保护的实例](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)？
+- 了解有关[备份和保留](./backup-overview.md#backup-and-retention)的更多信息。
 
-### <a name="how-many-times-can-i-recovery-data-thats-backed-up-to-azure"></a>我可以恢复多少次备份到 Azure 的数据？
+
+### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>可以在多长时间后恢复备份到 Azure 的数据？
 从 Azure 备份执行恢复的次数没有限制。
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>还原数据时，Azure 的出口流量是否需要付费？
-不。 恢复是免费的，不收取传出流量费。
+否。 恢复是免费的，不收取传出流量费。
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>如果更改备份策略，会发生什么情况？
 应用新策略时，将遵循新策略的计划和保留期。

@@ -1,22 +1,22 @@
 ---
-title: 常见问题：使用 Azure Site Recovery 进行 Azure 到 Azure 的灾难恢复 | Microsoft Docs
-description: 本文汇总了使用 Azure Site Recovery 设置将 Azure VM 灾难恢复到另一个 Azure 区域时出现的常见问题
+title: 有关如何使用 Azure Site Recovery 进行 Azure 到 Azure 灾难恢复的常见问题
+description: 本文回答了有关如何使用 Azure Site Recovery 将 Azure VM 灾难恢复到另一 Azure 区域的常见问题
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.date: 03/29/2019
+ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 52a5022b49bac990321c3cf8661aa2a04e93b39a
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: cd1c6cf0ff5a963720df7420a5d983d24e7b4d3e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149727"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861388"
 ---
-# <a name="common-questions-azure-to-azure-replication"></a>常见问题：Azure 到 Azure 的复制
+# <a name="common-questions-azure-to-azure-disaster-recovery"></a>常见问题：Azure 到 Azure 的灾难恢复
 
-本文提供使用 Azure Site Recovery 将 Azure VM 的灾难恢复 (DR) 部署到另一个 Azure 区域时可能遇到的常见问题的解答。 如果在阅读本文后有任何问题，请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)上发布问题。
+本文回答了有关如何使用 [Site Recovery](site-recovery-overview.md) 将 Azure VM 灾难恢复到另一 Azure 区域的常见问题。 
 
 
 ## <a name="general"></a>常规
@@ -28,20 +28,28 @@ ms.locfileid: "60149727"
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>在前 31 天的期限内，会产生其他 Azure 费用吗？
 是，尽管受保护实例的 Azure Site Recovery 在前 31 天内为免费，但你可能会产生 Azure 存储器、存储事务和数据传输的费用。 恢复后的虚拟机也可能会产生 Azure 计算费用。 可以在[此处](https://azure.microsoft.com/pricing/details/site-recovery)获取有关定价的完整详细信息
 
-### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>有关在 Azure VM 上配置 Site Recovery 的最佳做法是什么？
+### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>在哪里可以找到 Azure VM 灾难恢复的最佳做法？ 
 1. [了解 Azure 到 Azure 体系结构](azure-to-azure-architecture.md)
 2. [查看支持和不支持的配置](azure-to-azure-support-matrix.md)
 3. [为 Azure VM 设置灾难恢复](azure-to-azure-how-to-enable-replication.md)
 4. [运行测试故障转移](azure-to-azure-tutorial-dr-drill.md)
 5. [故障转移和故障回复到主要区域](azure-to-azure-tutorial-failover-failback.md)
 
-### <a name="how-is-capacity-guaranteed-in-target-region-for-azure-vms"></a>如何为容量保证目标区域中的 Azure Vm？
-Azure Site Recovery (ASR) 团队的工作方式与 Azure 的容量管理团队合作规划足够的基础结构容量，以试图确保 Vm 受 asr 保护的灾难恢复将成功部署在灾难恢复 (DR) 区域中，每当启动 ASR 故障转移操作。
+### <a name="how-is-capacity-guaranteed-in-the-target-region"></a>如何保证目标区域的容量？
+Site Recovery 团队会与 Azure 容量管理团队合作，规划足够的基础结构容量，并确保受 Site Recovery 保护的 VM 在启动故障转移时可以成功部署到目标区域。
 
 ## <a name="replication"></a>复制
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>是否可以复制通过 Azure 磁盘加密启用的 VM？
-是的，可以复制此类 VM。 请参阅[将启用了 Azure 磁盘加密的虚拟机复制到另一个 Azure 区域](azure-to-azure-how-to-enable-replication-ade-vms.md)。 目前，Azure Site Recovery 仅支持运行 Windows OS 且已使用 Azure Active Directory (Azure AD) 应用启用加密的 Azure VM。
+
+是的，Site Recovery 支持启用了 Azure 磁盘加密（ADE）的 Vm 的灾难恢复。 启用复制时，所有所需的磁盘加密密钥和机密都将从源区域复制到用户上下文中的目标区域。 如果你没有相应的权限，则可以将随时可用的脚本传递给安全管理员，以复制密钥和机密。
+
+- Site Recovery 支持运行 Windows 的 Azure Vm 的 ADE。
+- Site recovery 支持 ADE 版本0.1，其中架构使用 Azure Active Directory （AAD），版本1.1，无 AAD。 [了解详细信息](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)。
+- ADE 版本1.1，必须将 Windows Vm 用于托管磁盘。
+- [详细了解](azure-to-azure-how-to-enable-replication-ade-vms.md)如何为加密的 vm 启用复制。
+
+
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>是否可将 VM 复制到另一个订阅？
 是的，可将 Azure VM 复制到同一 Azure AD 租户中的不同订阅。
@@ -53,6 +61,16 @@ Azure Site Recovery (ASR) 团队的工作方式与 Azure 的容量管理团队�
 ### <a name="can-i-exclude-disks"></a>是否可以排除磁盘？
 
 是的，可以在保护时使用 PowerShell 排除磁盘。 有关详细信息，请参阅[此文章](azure-to-azure-exclude-disks.md)
+
+### <a name="can-i-add-new-disks-to-replicated-vms-and-enable-replication-for-them"></a>是否可以向复制的 VM 添加新磁盘并为这些磁盘启用复制？
+
+可以。使用托管磁盘的 Azure VM 允许这样做。 将新磁盘添加到启用了复制的 Azure VM 时, VM 的复制运行状况将显示警告, 并显示一个说明, 指出 VM 上的一个或多个磁盘可用于保护。 可以为添加的磁盘启用复制。
+- 如果为添加的磁盘启用保护，此警告会在初始复制后消失。
+- 如果选择不为磁盘启用复制，则可选择关闭此警告。
+- 对某个 VM 进行故障转移时，如果向其添加了磁盘并为该磁盘启用了复制，则复制点会显示可用于恢复的磁盘。 例如，如果 VM 有一个磁盘，你添加了一个新的磁盘，则在添加磁盘之前创建的复制点会显示复制点包含“1 个磁盘（共 2 个）”。
+
+Site Recovery 不支持复制的 VM 中的磁盘 "热删除"。 如果删除某个 VM 磁盘，则需先禁用该 VM 的复制，然后为其重新启用复制。
+
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
 将 Azure VM 复制到另一个 Azure 区域时，复制是持续性的。 有关详细信息，请参阅 [Azure 到 Azure 复制体系结构](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process)。
@@ -69,7 +87,7 @@ Azure Site Recovery (ASR) 团队的工作方式与 Azure 的容量管理团队�
 
 ### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>是否可以为不同的层复制具有不同资源组的应用程序？
 是的，你可以复制应用程序并且也在另一个资源组中保留灾难恢复配置。
-例如，如果你有一个应用程序，并且每层的应用、数据库和 Web 位于不同的资源组中，则必须三次单击[复制向导](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication)来保护所有层。 ASR 会将这三个层复制到三个不同的资源组中。
+例如，如果你有一个应用程序，并且每层的应用、数据库和 Web 位于不同的资源组中，则必须三次单击[复制向导](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication)来保护所有层。 Site Recovery 会将这三个层复制到三个不同的资源组中。
 
 ## <a name="replication-policy"></a>复制策略
 
@@ -97,7 +115,7 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。
 由于应用程序一致性恢复点会捕获内存中的以及正在处理的所有数据，因此它会要求框架（例如 Windows 上的 VSS）静止应用程序。 当工作负荷已经非常繁忙时，如果非常频繁地这样做，可能会影响性能。 对于非数据库工作负荷，通常建议不要对应用程序一致性恢复点使用低频率，即使对于数据库工作负荷，采用 1 小时的频率也足够了。
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>应用程序一致性恢复点生成的最低频率是多少？
-在 1 小时，site Recovery 可以使用的最小频率创建的应用程序一致的恢复点。
+Site Recovery 可以创建一个应用程序一致性恢复点，其最小频率为 1 小时。
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>如何生成和保存恢复点？
 若要了解 Site Recovery 如何生成恢复点，让我们查看一个复制策略的示例，其中，恢复点保留期为 24 小时，应用一致性快照的频率为 1 小时。
@@ -125,7 +143,7 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。 用户无法更�
 生成的第一个恢复点包含完整副本。 任何后续恢复点包含增量更改。
 
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>增大恢复点保留期是否会增加存储成本？
-可以。 如果将保留期从 24 小时增大到 72 小时，则 Site Recovery 将保存额外 48 小时的恢复点。 增加的时间会产生存储费用。 例如，如果单个恢复点包含 10 GB 的增量更改，每 GB 费用为 0.16 美元/月，则每月会产生 1.6 美元 * 48 的额外费用。
+是的。 如果将保留期从 24 小时增大到 72 小时，则 Site Recovery 将保存额外 48 小时的恢复点。 增加的时间会产生存储费用。 例如，如果单个恢复点包含 10 GB 的增量更改，每 GB 费用为 0.16 美元/月，则每月会产生 1.6 美元 * 48 的额外费用。
 
 ## <a name="multi-vm-consistency"></a>多 VM 一致性
 
@@ -133,7 +151,7 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。 用户无法更�
 多 VM 一致性可以确保恢复点在所有复制的虚拟机之间保持一致。
 Site Recovery 提供“多 VM 一致性”选项，选择该选项会创建一个复制组，该组中的所有虚拟机可一同复制。
 故障转移后，所有虚拟机将具有共享的崩溃一致性恢复点和应用一致性恢复点。
-请阅读有关[启用多 VM 一致性](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication)的整篇教程。
+请阅读有关[启用多 VM 一致性](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm)的整篇教程。
 
 ### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>是否可以故障转移多 VM 一致性复制组中的单个虚拟机？
 选择“多 VM 一致性”选项即表明应用程序依赖于组中的所有虚拟机。 因此，不允许故障转移单个虚拟机。
@@ -147,8 +165,8 @@ Site Recovery 提供“多 VM 一致性”选项，选择该选项会创建一�
 
 ## <a name="failover"></a>故障转移
 
-### <a name="how-is-capacity-guaranteed-in-target-region-for-azure-vms"></a>如何为容量保证目标区域中的 Azure Vm？
-Azure Site Recovery (ASR) 团队的工作方式与 Azure 的容量管理团队合作规划足够的基础结构容量，以试图确保 Vm 受 asr 保护的灾难恢复将成功部署在灾难恢复 (DR) 区域中，每当启动 ASR 故障转移操作。
+### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>如何保证 Azure VM 在目标区域的容量？
+Site Recovery 团队会与 Azure 容量管理团队合作，规划足够的基础结构容量，确保支持灾难恢复的 VM 在启动故障转移时可以成功部署到目标区域中。
 
 ### <a name="is-failover-automatic"></a>故障转移是自动发生的吗？
 
@@ -156,29 +174,33 @@ Azure Site Recovery (ASR) 团队的工作方式与 Azure 的容量管理团队�
 
 ### <a name="can-i-retain-a-public-ip-address-after-failover"></a>是否可以在故障转移后保留公共 IP 地址？
 
-故障转移时无法保留生产应用程序的公共 IP 地址。 必须为故障转移过程中启动的工作负载分配一个在目标区域中可用的 Azure 公共 IP 资源。 可以手动执行此步骤，也可以通过恢复计划自动执行。 若要使用恢复计划分配公共 IP 地址，请参阅[在故障转移后设置公共 IP 地址](https://docs.microsoft.com/azure/site-recovery/concepts-public-ip-address-with-site-recovery#public-ip-address-assignment-using-recovery-plan)。  
+无法在故障转移后保留生产应用程序的公共 IP 地址。
+- 必须为故障转移过程中启动的工作负载分配一个在目标区域中可用的 Azure 公共 IP 资源。
+- 可以手动执行此操作，也可以通过恢复计划自动执行它。
+- 了解如何[设置故障转移后的公共 IP 地址](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan)。  
 
 ### <a name="can-i-retain-a-private-ip-address-during-failover"></a>在故障转移期间是否可以保留专用 IP 地址？
-是的，可以保留专用 IP 地址。 默认情况下，为 Azure VM 启动灾难恢复时，Site Recovery 将根据源资源设置创建目标资源。 对于配置有静态 IP 地址的 Azure VM，Site Recovery 将尝试对目标 VM 预配相同的 IP 地址（如果未占用）。 若要在不同的条件下保留专用 IP 地址，请参阅[在故障转移期间保留 IP 地址](site-recovery-retain-ip-azure-vm-failover.md)。
+是的，可以保留专用 IP 地址。 默认情况下，为 Azure VM 启动灾难恢复时，Site Recovery 将根据源资源设置创建目标资源。 - 对于配置有静态 IP 地址的 Azure VM，Site Recovery 会尝试为目标 VM 预配同一 IP 地址（如果未占用）。
+了解如何[在故障转移期间保留 IP 地址](site-recovery-retain-ip-azure-vm-failover.md)。
 
-### <a name="after-failover-the-server-doesnt-have-the-same-ip-address-as-the-source-vm-why-is-it-assigned-a-new-ip-address"></a>故障转移后，服务器的 IP 地址与源 VM 不同。 为何要分配新的 IP 地址？
+### <a name="after-failover-why-is-the-server-assigned-a-new-ip-address"></a>故障转移之后，为何向服务器分配新 IP 地址？
 
 故障转移时，Site Recovery 会尽量提供 IP 地址。 如果该地址被另一个虚拟机占用，则 Site Recovery 会将下一个可用 IP 地址设为目标。
-有关 Site Recovery 如何处理寻址的完整介绍，请参阅[为虚拟网络设置网络映射和 IP 寻址](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-network-mapping#set-up-ip-addressing-for-target-vms)。
+详细了解如何[设置 VNet 的网络映射和 IP 寻址](azure-to-azure-network-mapping.md#set-up-ip-addressing-for-target-vms)。
 
 ### <a name="what-are-latest-lowest-rpo-recovery-points"></a>什么是**最新（最低 RPO）** 恢复点？
 “最新(最低 RPO)”选项首先处理已发送到 Site Recovery 服务的所有数据，为每个 VM 创建恢复点，然后将其故障转移到该恢复点。 此选项提供最低的恢复点目标 (RPO)，因为故障转移后创建的 VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
 
 ### <a name="do-latest-lowest-rpo-recovery-points-have-an-impact-on-failover-rto"></a>**最新（最低 RPO）** 恢复点是否影响故障转移 RTO？
-可以。 Site Recovery 在故障转移之前需要处理所有挂起的数据，因此，此选项的恢复时间目标 (RTO) 比其他选项更高。
+是的。 Site Recovery 在故障转移之前需要处理所有挂起的数据，因此，此选项的恢复时间目标 (RTO) 比其他选项更高。
 
 ### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>恢复点中的“最新处理”选项指的是什么？
 “最新处理”选项将计划中的所有 VM 故障转移到 Site Recovery 处理的最新恢复点。 若要查看特定 VM 的最新恢复点，请检查 VM 设置中的“最新恢复点”。 此选项提供低的 RTO，因为无需费时处理未经处理的数据。
 
-### <a name="if-im-replicating-between-two-azure-regions-what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>如果我在两个 Azure 区域之间进行复制，当我的主要区域发生意外的服务中断时，会出现什么情况？
+### <a name="what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>如果主要区域的服务意外中断，会出现什么情况？
 可以在服务中断后触发故障转移。 Site Recovery 不需要从主要区域建立连接即可执行故障转移。
 
-### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>什么是虚拟机故障转移的 RTO？
+### <a name="what-is-a-rto-of-a-vm-failover-"></a>什么是 VM 故障转移的 RTO？
 Site Recovery 的 [RTO SLA 为 2小时](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 但是，大多数情况下，Site Recovery 会在几分钟内对虚拟机进行故障转移。 可以转到故障转移作业来计算 RTO，该作业显示启动 VM 所需的时间。 有关恢复计划 RTO，请参阅以下部分。
 
 ## <a name="recovery-plans"></a>恢复计划
@@ -208,31 +230,33 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 ## <a name="reprotection-and-failback"></a>重新保护和故障回复
 
 ### <a name="after-a-failover-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>从主要区域故障转移到灾难恢复区域后，灾难恢复区域中的 VM 是否自动受到保护？
-不。 将 Azure VM 从一个区域[故障转移](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)到另一个区域后，VM 将在灾难恢复区域中启动，但处于不受保护状态。 若要将 VM 故障回复到主要区域，需要[重新保护](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)次要区域中的 VM。
+否。 将 Azure VM 从一个区域[故障转移](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)到另一个区域后，VM 将在灾难恢复区域中启动，但处于不受保护状态。 若要将 VM 故障回复到主要区域，需要[重新保护](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)次要区域中的 VM。
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>重新保护时，Site Recovery 是否将完整的数据从次要区域复制到主要区域？
 这取决于具体的情况。 例如，如果源区域 VM 存在，则只会同步源磁盘与目标磁盘之间的更改。 Site Recovery 将通过比较磁盘来计算差异，然后传输数据。 此过程通常需要几个小时。 有关重新保护期间所发生情况的详细信息，请参阅[在主要区域中重新保护已故障转移的 Azure VM]( https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection)。
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>故障回复需要多长时间？
-完成重新保护后，故障回复所需的时间通常类似于从主要区域故障转移到次要区域所需的时间。
+进行重新保护后，故障回复所需的时间通常类似于从主要区域故障转移到次要区域所需的时间。
 
-## <a name="capacity"></a>容量
+## <a name="capacity"></a>功能
 
-### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>如何为容量确保在目标区域中的 Azure Vm？
-Azure Site Recovery (ASR) 团队的工作方式与 Azure 的容量管理团队合作规划足够的基础结构容量，以试图确保 Vm 受 asr 保护的灾难恢复将成功部署在灾难恢复 (DR) 区域中，每当启动 ASR 故障转移操作。
+### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>如何保证 Azure VM 在目标区域的容量？
+Site Recovery 团队会与 Azure 容量管理团队合作，规划足够的基础结构容量，确保支持灾难恢复的 VM 在启动故障转移时可以成功部署到目标区域中。
 
-### <a name="does-site-recovery-work-with-reserved-instances"></a>Site Recovery 的工作与预订实例？
-是的可以购买[保留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)在 DR 区域和 ASR 故障转移操作将使用它们。 </br> 需要从客户无需额外配置。
+### <a name="does-site-recovery-work-with-reserved-instances"></a>Site Recovery 是否适用于预留实例？
+是的, 你可以在灾难恢复区域中购买[保留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/), Site Recovery 故障转移操作将使用它们。 </br> 不需要任何其他配置。
 
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
+
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>复制数据是否会发送到 Site Recovery 服务？
-否。Site Recovery 不会拦截复制的数据，也不包含虚拟机上运行的组件的任何相关信息。 只有协调复制与故障转移所需的元数据将发送到站点恢复服务。  
+不会。Site Recovery 不会拦截复制的数据，也没有 VM 上运行的组件的任何相关信息。 只有协调复制与故障转移所需的元数据将发送到站点恢复服务。  
 站点恢复已通过 ISO 27001:2013、27018、HIPAA、DPA 认证，目前正在接受 SOC2 和 FedRAMP JAB 评估。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>站点恢复是否将复制数据加密？
-是的，传输中加密和 [Azure 中加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)均受支持。
+是的，传输中加密和 [Azure 中的静态加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)均受支持。
 
 ## <a name="next-steps"></a>后续步骤
 * [查看](azure-to-azure-support-matrix.md)支持要求。
 * [设置](azure-to-azure-tutorial-enable-replication.md) Azure 到 Azure 的复制。
+- 如果在阅读本文后有任何问题，请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)上发布问题。

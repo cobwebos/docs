@@ -10,7 +10,7 @@
     - name: 部署和配置
       href: tutorial-firewall-deploy-portal.md
     - name: 在混合网络中部署
-      href: tutorial-hybrid-ps.md
+      href: tutorial-hybrid-portal.md
     - name: 使用 DNAT 筛选入站流量
       href: tutorial-firewall-dnat.md
     - name: 监视诊断日志
@@ -39,14 +39,24 @@
   items:
     - name: 使用 Azure PowerShell 进行部署
       href: deploy-ps.md
+    - name: 在混合网络中部署 - PowerShell
+      href: tutorial-hybrid-ps.md
+    - name: 使用 Azure CLI 进行部署
+      href: deploy-cli.md
     - name: 使用模板进行部署
       href: deploy-template.md
+    - name: 使用多个公共 IP 进行部署
+      href: deploy-multi-public-ip-powershell.md
+    - name: 使用可用性区域进行部署
+      href: deploy-availability-zone-powershell.md
     - name: 与负载均衡器集成
       href: integrate-lb.md
+    - name: 带有 SQL FQDN 的应用程序规则
+      href: sql-fqdn-filtering.md
 - name: 引用
   items:
     - name: Azure CLI
-      href: /cli/azure/network
+      href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
     - name: .NET

@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b402fa754105b734bfc7abbd2790a2a12afc6ff4
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 60938f26c27b9f94046b1be8e3d0cb6b247017c9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523352"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997778"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure AD 图形 API
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍如何使用 Windows 虚拟机 (VM) 系统分配的托管标识访问 Microsoft 图形 API，以检索其组成员身份。 Azure 资源的托管标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。  在本教程中，我们将在 Azure AD 组中查询 VM 标识的成员身份。 例如，授权决策中经常会使用组信息。 在幕后，VM 的托管标识由 Azure AD 中的**服务主体**表示。 在执行组查询之前，请将表示 VM 标识的服务主体添加到 Azure AD 中的某个组。 可以使用 Azure PowerShell、Azure AD PowerShell 或 Azure CLI 执行此操作。
+本教程介绍如何使用 Windows 虚拟机 (VM) 系统分配的托管标识访问 Azure AD 图形 API，以检索其组成员身份。 Azure 资源的托管标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。  在本教程中，我们将在 Azure AD 组中查询 VM 标识的成员身份。 例如，授权决策中经常会使用组信息。 在幕后，VM 的托管标识由 Azure AD 中的**服务主体**表示。 在执行组查询之前，请将表示 VM 标识的服务主体添加到 Azure AD 中的某个组。 可以使用 Azure PowerShell、Azure AD PowerShell 或 Azure CLI 执行此操作。
 
 > [!div class="checklist"]
 > * 连接到 Azure AD

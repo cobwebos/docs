@@ -7,25 +7,24 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: sahsan
+author: stevestein
+ms.author: sashan
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 04/11/2019
-ms.openlocfilehash: 363803e9276a8356b52438f251391378c54f1655
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 09/04/2019
+ms.openlocfilehash: de56e66046bb61ac31c1842ae6ce7a9c6720760d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678932"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934203"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
 
-通过 Azure SQL 数据库，可以以多种方式在相同或不同的服务器上创建现有 Azure SQL 数据库的事务一致性副本。 可以使用 Azure 门户、PowerShell 或 T-SQL 复制 SQL 数据库。 
+通过 Azure SQL 数据库，可以以多种方式在相同或不同的服务器上创建现有 Azure SQL 数据库（[单一数据库](sql-database-single-database.md)）的事务一致性副本。 可以使用 Azure 门户、PowerShell 或 T-SQL 复制 SQL 数据库。 
 
 ## <a name="overview"></a>概述
 
-数据库副本是源数据库截至复制请求发出时的快照。 可以选择在同一台服务器或另一台服务器。 此外可以选择要保留其服务层，并计算大小，或使用相同的服务层 （版本） 中的不同的计算大小。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 此时，可以升级或降级到任意版本。 登录名、用户和权限可单独进行管理。  
+数据库副本是源数据库截至复制请求发出时的快照。 你可以选择同一服务器或不同的服务器。 另外，你还可以选择保留其服务层级和计算大小，或在同一服务层级中使用不同的计算大小（版本）。 在完成该复制后，副本将成为能够完全行使功能的独立数据库。 此时，可以升级或降级到任意版本。 登录名、用户和权限可单独进行管理。 使用异地复制技术创建副本，一旦完成种子设定，就会自动终止异地复制链接。 使用异地复制的所有要求都适用于数据库复制操作。 有关详细信息，请参阅[活动异地复制概述](sql-database-active-geo-replication.md)。
 
 > [!NOTE]
 > 在创建数据库副本时，将用到[自动数据库备份](sql-database-automated-backups.md)。
@@ -49,8 +48,6 @@ ms.locfileid: "59678932"
 ## <a name="copy-a-database-by-using-powershell"></a>使用 PowerShell 复制数据库
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 若要使用 PowerShell 复制数据库，请使用 [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) cmdlet。 
 
@@ -64,6 +61,43 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 ```
 
 如需完整的示例脚本，请参阅[将数据库复制到新的服务器](scripts/sql-database-copy-database-to-new-server-powershell.md)。
+
+数据库复制是一个异步操作，但在接受请求后会立即创建目标数据库。 如果需要在仍在进行中时取消复制操作，请使用[AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) cmdlet 删除目标数据库。  
+
+## <a name="rbac-roles-to-manage-database-copy"></a>用于管理数据库副本的 RBAC 角色
+
+若要创建数据库副本，需要具有以下角色
+
+- “订阅所有者”或
+- SQL Server 参与者角色或
+- 具有以下权限的源数据库和目标数据库上的自定义角色：
+
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
+
+若要取消数据库副本，需要具有以下角色
+
+- “订阅所有者”或
+- SQL Server 参与者角色或
+- 具有以下权限的源数据库和目标数据库上的自定义角色：
+
+   Microsoft.Sql/servers/databases/read   
+   Microsoft.Sql/servers/databases/write   
+   
+若要使用 Azure 门户管理数据库复制，还需要以下权限：
+
+&nbsp;&nbsp; Microsoft.资源/&nbsp;订阅/资源/读取   
+&nbsp;&nbsp; Microsoft.资源/&nbsp;订阅/资源/写入   
+&nbsp;&nbsp; Microsoft.&nbsp;资源/部署/读取   
+&nbsp;&nbsp; Microsoft.&nbsp;资源/部署/写入   
+&nbsp;&nbsp; Microsoft.resources/&nbsp;部署/operationstatuses/读取    
+
+若要在门户上的资源组中查看部署下的操作，请在多个资源提供程序（包括 SQL 操作）之间进行操作，你将需要以下附加的 RBAC 角色： 
+
+&nbsp;&nbsp; Resourcegroups/&nbsp;部署/操作/读取   
+&nbsp;&nbsp; Resourcegroups/&nbsp;部署/operationstatuses/读取
+
+
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>使用 Transact-SQL 复制数据库
 
@@ -92,14 +126,14 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
     CREATE DATABASE Database2 AS COPY OF server1.Database1;
     
 > [!IMPORTANT]
-> 这两个服务器的防火墙必须配置为允许从客户端发出 T-SQL 的复制命令的 IP 的入站的连接。
+> 必须将两台服务器的防火墙都配置为允许来自发出 T-SQL COPY 命令的客户端 IP 的入站连接。
 
 ### <a name="copy-a-sql-database-to-a-different-subscription"></a>将 SQL 数据库复制到不同的订阅
 
-可以使用在上一节中的步骤 descrbed 将你的数据库复制到其他订阅中的 SQL 数据库服务器。 请确保使用源数据库的数据库所有者具有相同的名称和密码的登录名，并且它是 dbmanager 角色的成员或者是服务器级别主体登录名。 
+可以使用上一部分中描述的步骤将数据库复制到不同订阅中的 SQL 数据库服务器。 请确保你使用的登录名具有与源数据库的数据库所有者相同的名称和密码，并且它是 dbmanager 角色的成员或者是服务器级主体登录名。 
 
 > [!NOTE]
-> [Azure 门户](https://portal.azure.com)不支持复制到其他订阅，因为门户调用 ARM API，它使用的订阅证书访问这两个异地复制所涉及的服务器。  
+> [Azure 门户](https://portal.azure.com)不支持复制到其他订阅，因为门户调用 ARM API，并且它使用订阅证书来访问异地复制中涉及的两台服务器。  
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>监视复制操作的进度
 
@@ -110,6 +144,10 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 
 > [!NOTE]
 > 如果决定在复制过程中取消复制，请对新数据库执行 [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) 语句。 此外，对源数据库执行 DROP DATABASE 语句也将取消复制过程。
+
+> [!IMPORTANT]
+> 如果需要使用比源大得多的 SLO 创建副本，则目标数据库可能没有足够的资源来完成种子设定过程，并且可能会导致复制 operaion 失败。 在此方案中，使用异地还原请求在不同的服务器和/或不同的区域中创建副本。 有关详细信息，请参阅[使用数据库备份恢复 AZURE SQL 数据库](sql-database-recovery-using-backups.md#geo-restore)。
+
 
 ## <a name="resolve-logins"></a>解析登录名
 

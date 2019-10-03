@@ -16,27 +16,27 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9af969700f4f2dfbedc4833badd7e7349696302
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 70e3267792f27a170efa26cc4267d1b25045a099
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199725"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231240"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>混合 Azure AD 加入所需的配置后任务
 
 运行 Azure AD Connect 为组织配置混合 Azure AD 加入后，必须执行几个附加的步骤才能最终完成该设置。  请仅执行适用于自己设备的步骤。
 
 ## <a name="1-configure-controlled-rollout-optional"></a>1.配置受控的实施（可选）
-完成所有配置步骤后，运行 Windows 10 和 Windows Server 2016 的所有已加入域的设备会自动注册到 Azure AD。 如果你希望进行受控的实施而不是执行这种自动注册，可以使用组策略有选择地启用或禁用自动实施。  应在启动其他配置步骤之前设置此组策略：Azure AD
+完成所有配置步骤后，运行 Windows 10 和 Windows Server 2016 的所有已加入域的设备会自动注册到 Azure AD。 如果你希望进行受控的实施而不是执行这种自动注册，可以使用组策略有选择地启用或禁用自动实施。  在开始其他配置步骤之前, 应设置此组策略:
 * 在 Active Directory 中创建组策略对象。
 * 将其命名为 (ex- Hybrid Azure AD join)。
-* 编辑并转到：“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“设备注册”。
+* 编辑并继续:“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“设备注册”。
 
 >[!NOTE]
 >对于 2012R2，请通过“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“工作区加入”>“自动工作区加入客户端计算机”完成策略设置
 
-* 禁用此设置：“将已加入域的计算机注册为设备”。
+* 启用此设置:“将已加入域的计算机注册为设备”。
 * 依次单击“应用”、“确定”。
 * 将 GPO 链接到所选的位置（组织单位、安全组或所有设备的域）。
 
@@ -63,7 +63,7 @@ ms.locfileid: "56199725"
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6.为 Windows 下层设备启用 Azure AD 无缝 SSO
 
-如果组织使用密码哈希同步或直通身份验证登录到 Azure AD，请使用该登录方法启用 Azure AD 无缝 SSO，以便对 Windows 下层设备进行身份验证： https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso。 
+如果组织使用密码哈希同步或直通身份验证登录到 Azure AD，请使用该登录方法启用 Azure AD 无缝 SSO，以便对 Windows 下层设备进行身份验证： https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso 。 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7.为 Windows 下层设备设置 Azure AD 策略
 
@@ -82,7 +82,7 @@ ms.locfileid: "56199725"
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9.在 Windows 下层设备上安装 Microsoft 工作区加入
 
-安装程序会在设备系统上创建一个在用户上下文中运行的计划任务。 当用户登录到 Windows 时触发该任务。 使用 Windows 集成身份验证完成身份验证后，该任务将使用用户凭据以静默方式将设备联接到 Azure AD。 下载中心的网址为 https://www.microsoft.com/download/details.aspx?id=53554。 
+安装程序会在设备系统上创建一个在用户上下文中运行的计划任务。 当用户登录到 Windows 时触发该任务。 使用 Windows 集成身份验证完成身份验证后，该任务将使用用户凭据以静默方式将设备联接到 Azure AD。 下载中心的网址为 https://www.microsoft.com/download/details.aspx?id=53554 。 
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10.配置组策略以允许设备注册
 

@@ -1,33 +1,29 @@
 ---
 title: 通过 Azure 门户创建 Function App | Microsoft Docs
-description: 通过门户在 Azure 应用服务中创建新的 Function App。
-services: functions
-documentationcenter: na
+description: 通过门户在 Azure 中创建新的 function app。
 author: ggailey777
-manager: jeconnoc
-ms.assetid: ''
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: quickstart
-ms.date: 04/11/2017
+ms.topic: conceptual
+ms.date: 08/29/2019
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: a1d4af695807a6e2c5ef4ee74527083002bc6015
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: 93bce0404c9b3bf630416557726dca0c856528c3
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900760"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170791"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>通过 Azure 门户创建 Function App
 
-Azure Function App 使用 Azure 应用服务基础结构。 本主题演示如何在 Azure 门户中创建 Function App。 Function App 是托管各个函数执行的容器。 如果在应用服务托管计划中创建 Function App，则 Function App 可以使用应用服务的所有功能。
+本主题说明如何使用 Azure Functions 在 Azure 门户中创建函数应用。 Function App 是托管各个函数执行的容器。 
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
 
-创建 Function App 时，需提供有效的**应用名称**，其中只能包含字母、数字和连字符。 下划线 (**_**) 是不允许的字符。
+创建 Function App 时，需提供有效的**应用名称**，其中只能包含字母、数字和连字符。 下划线 ( **_** ) 是不允许的字符。
 
 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 存储帐户名称在 Azure 中必须是唯一的。 
 
@@ -35,15 +31,15 @@ Azure Function App 使用 Azure 应用服务基础结构。 本主题演示如�
 
 ## <a name="service-plans"></a>服务计划
 
-Azure Functions 有两个不同的服务计划：消耗量计划和应用服务计划。 消耗量计划会在代码运行时自动分配计算能力，根据处理负载的需要扩大规模，在代码不运行时缩小规模。 应用服务计划为 Function App 提供访问应用服务所有工具的权限。 创建 Function App 后，必须选择服务计划，该选项当前无法更改。 有关详细信息，请参阅[选择 Azure Functions 托管计划](functions-scale.md)。
+Azure Functions 具有三个不同的服务计划:消耗计划、高级计划和专用 (应用服务) 计划。 创建 function app 时, 必须选择服务计划, 并且以后无法更改它。 有关详细信息，请参阅[选择 Azure Functions 托管计划](functions-scale.md)。
 
-如果计划在应用服务计划上运行 JavaScript 函数，则应选择具有较少核心的计划。 有关详细信息，请参阅[函数的 JavaScript 参考](functions-reference-node.md#choose-single-vcpu-app-service-plans)。
+如果打算在专用 (应用服务) 计划上运行 JavaScript 函数, 则应选择具有较少核心的计划。 有关详细信息，请参阅[函数的 JavaScript 参考](functions-reference-node.md#choose-single-vcpu-app-service-plans)。
 
 <a name="storage-account-requirements"></a>
 
 ## <a name="storage-account-requirements"></a>存储帐户要求
 
-在应用服务中创建 Function App 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 Azure Functions 内部使用存储以进行管理触发器和记录函数执行等操作。 某些存储帐户不支持队列和表，例如仅限 blob 的存储帐户、Azure 高级存储和使用 ZRS 复制的常规用途的存储帐户。 创建 Function App 时，将从“存储帐户”边栏选项卡中筛选出这些帐户。
+创建 function app 时, 必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 Azure Functions 内部使用存储以进行管理触发器和记录函数执行等操作。 某些存储帐户不支持队列和表，例如仅限 blob 的存储帐户、Azure 高级存储和使用 ZRS 复制的常规用途的存储帐户。 创建 Function App 时，将从“存储帐户”边栏选项卡中筛选出这些帐户。
 
 >[!NOTE]
 >使用消耗托管计划时，函数代码和绑定配置文件存储在主存储帐户的 Azure 文件存储中。 删除主存储帐户时，此内容将随之删除且无法恢复。
@@ -52,4 +48,7 @@ Azure Functions 有两个不同的服务计划：消耗量计划和应用服务�
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
+虽然 Azure 门户可以轻松创建和试用 Functions，但我们建议[本地开发](functions-develop-local.md)。 在门户中创建函数应用后，仍然需要添加一个函数。 
+
+> [!div class="nextstepaction"]
+> [添加 HTTP 触发的函数](functions-create-first-azure-function.md#create-function)

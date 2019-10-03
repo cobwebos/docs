@@ -9,11 +9,11 @@ ms.date: 10/17/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c1b5560e16b68565c37365ac9c2cba217d9b1b90
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53443998"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172782"
 ---
 可使用“Get-AzureVNetConnection”cmdlet 来验证连接是否已成功。
 

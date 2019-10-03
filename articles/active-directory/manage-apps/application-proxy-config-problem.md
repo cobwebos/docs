@@ -3,8 +3,8 @@ title: 创建应用程序代理应用程序时出现问题 | Microsoft Docs
 description: 如何排查在 Azure AD 管理门户中创建应用程序代理应用程序时出现的问题
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7aad73331d06828a4bfe909dbb3b98350b1d0d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 104b98cba0948ec5d0896877e54eab1e7cd4049f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166635"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65825821"
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>创建应用程序代理应用程序时出现问题 
 

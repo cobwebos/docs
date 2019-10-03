@@ -3,8 +3,8 @@ title: 使用 Azure CLI 将数据磁盘添加到 Linux VM | Microsoft Docs
 description: 了解如何使用 Azure CLI 将持久性数据磁盘添加到 Linux VM
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 06/13/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 81805188c72bce6a7ea89496c8036743b29e9075
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c8d4d2b26b356c524523d73d53fd641eef5f3cb
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188218"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465836"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
 本文介绍了如何将持久性磁盘附加到 VM 以便持久保存数据 - 即使 VM 由于维护或调整大小而重新预配。
@@ -29,13 +29,13 @@ ms.locfileid: "60188218"
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>将新磁盘附加到 VM
 
-如果只需要在 VM 上添加新的空数据磁盘，请使用 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) 命令以及 `--new` 参数。 如果 VM 位于某个可用性区域中，则会自动在与 VM 相同的区域中创建磁盘。 有关详细信息，请参阅[可用性区域概述](../../availability-zones/az-overview.md)。 以下示例创建一个名为“myDataDisk”且大小为 50 GB 的磁盘：
+如果只需要在 VM 上添加新的空数据磁盘，请使用 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) 命令以及 `--new` 参数。 如果 VM 位于某个可用性区域中，则会自动在与 VM 相同的区域中创建磁盘。 有关详细信息，请参阅[可用性区域概述](../../availability-zones/az-overview.md)。 以下示例创建一个名为“myDataDisk”  且大小为 50 GB 的磁盘：
 
 ```azurecli
 az vm disk attach \
    -g myResourceGroup \
    --vm-name myVM \
-   --disk myDataDisk \
+   --name myDataDisk \
    --new \
    --size-gb 50
 ```
@@ -47,7 +47,7 @@ az vm disk attach \
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 
-az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
+az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 ```
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>连接到 Linux VM 以装入新磁盘
@@ -73,6 +73,9 @@ dmesg | grep SCSI
 [    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
+
+> [!NOTE]
+> 建议你使用最新版本的 fdisk 或 parted，可用的发行版。
 
 此处，*sdc* 是我们需要的磁盘。 使用 `parted` 对磁盘进行分区，如果磁盘大小为 2TiB 或更大，则必须使用 GPT 进行分区，如果小于 2TiB，则可以使用 MBR 或 GPT 进行分区。 如果使用 MBR 分区，则可以使用 `fdisk`。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
 
@@ -194,7 +197,7 @@ sudo blkid
 sudo vi /etc/fstab
 ```
 
-在此示例中，使用在之前的步骤中创建的 /dev/sdc1 设备的 UUID 值并使用装入点 /datadrive。 将以下行添加到 */etc/fstab* 文件的末尾：
+在此示例中，使用在之前的步骤中创建的 /dev/sdc1  设备的 UUID 值并使用装入点 /datadrive  。 将以下行添加到 */etc/fstab* 文件的末尾：
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
@@ -205,7 +208,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 >
 > 即使文件系统已损坏或磁盘在引导时不存在，*nofail* 选项也能确保 VM 启动。 如果不使用此选项，可能会遇到 [Cannot SSH to Linux VM due to FSTAB errors](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)（由于 FSTAB 错误而无法通过 SSH 连接到 Linux VM）中所述的行为
 >
-> Azure 虚拟机串行控制台可以用于对 VM 的控制台访问，如果修改 fstab 导致启动失败。 中提供了更多详细信息[串行控制台文档](https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/serial-console-linux)。
+> Azure 虚拟机串行控制台可以用于对 VM 的控制台访问，如果修改 fstab 导致启动失败。 中提供了更多详细信息[串行控制台文档](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)。
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Azure 中对 Linux 的 TRIM/UNMAP 支持
 某些 Linux 内核支持 TRIM/UNMAP 操作以放弃磁盘上未使用的块。 此功能主要用于标准存储中，如果你创建大型文件后又将其删除，则该功能将通知 Azure 已删除的页不再有效并且可以丢弃，可以节省成本。

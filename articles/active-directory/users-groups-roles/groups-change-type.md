@@ -16,11 +16,11 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dd753ca4994975302a0bc6fede61964f80196d7c
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199595"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60472036"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>在 Azure Active Directory 中将静态组成员资格更改为动态
 
@@ -34,23 +34,23 @@ ms.locfileid: "58199595"
 ## <a name="change-the-membership-type-for-a-group"></a>更改组的成员资格类型
 
 1. 登录到[Azure AD 管理中心](https://aad.portal.azure.com)是全局管理员或用户管理员在你的租户中的帐户。
-2. 选择“组”。
-3. 在“所有组”列表中，打开要更改的组。
-4. 选择“属性”。
-5. 在组的“属性”页中，选择“已分配(静态)”、“动态用户”或“动态设备”作为“成员身份类型”，具体取决于所需的成员身份类型。 对于动态成员资格，可以使用规则生成器来选择适用于简单规则的选项，也可以自行编写一项成员资格规则。 
+2. 选择“组”。 
+3. 在“所有组”  列表中，打开要更改的组。
+4. 选择“属性”  。
+5. 在组的“属性”页中，选择“已分配(静态)”、“动态用户”或“动态设备”作为“成员身份类型”，具体取决于所需的成员身份类型。   对于动态成员资格，可以使用规则生成器来选择适用于简单规则的选项，也可以自行编写一项成员资格规则。 
 
 以下步骤以示例的方式说明了如何将某个组的用户从静态成员身份更改为动态成员身份。
 
-1. 在所选组的“属性”页中，选择“动态用户”作为“成员身份类型”，然后在说明对组成员身份所做更改的对话框中选择“是”，以便继续操作。 
+1. 在所选组的“属性”页中，选择“动态用户”作为“成员身份类型”，然后在说明对组成员身份所做更改的对话框中选择“是”，以便继续操作。    
   
    ![选择“动态用户”作为“成员身份类型”](./media/groups-change-type/select-group-to-convert.png)
   
-2. 选择“添加动态查询”，然后提供规则。
+2. 选择“添加动态查询”，然后提供规则。 
   
    ![输入规则的动态组](./media/groups-change-type/enter-rule.png)
   
-3. 创建规则之后，选择页面底部的“添加查询”。
-4. 在组的“属性”页上选择“保存”，以便保存所做的更改。 组列表中组的“成员身份类型”会立即进行更新。
+3. 创建规则之后，选择页面底部的“添加查询”  。
+4. 在组的“属性”页上选择“保存”，以便保存所做的更改。   组列表中组的“成员身份类型”会立即进行更新。 
 
 > [!TIP]
 > 如果所输入的成员资格规则不正确，组转换操作可能会失败。 通知显示在门户的右上角；它包含系统无法接受规则的原因说明。 请仔细阅读，了解如何调整规则才能使其生效。 有关规则语法的示例以及成员资格规则支持的属性、运算符和值的完整列表，请参阅 [Azure Active Directory 中的组的动态成员资格规则](groups-dynamic-membership.md)。

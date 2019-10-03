@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: bcda6ac723101d6a907a10c5163ae1baf0ad2214
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 924ec20b9922d12da7291dc4f44b7413c68728c6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884165"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569577"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Azure Key Vault 中
 
@@ -36,11 +35,11 @@ ms.locfileid: "57884165"
 * 创建一个数据库表并加密列。
 * 创建一个可以从已加密列插入、选择和显示数据的应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 在本教程中，需要：
 
@@ -163,10 +162,10 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置**�
 ### <a name="validation"></a>验证
 可以现在就加密这些列，也可以保存 PowerShell 脚本供以后运行。 对于本教程，请选择“现在完成”，并单击“下一步”。
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>总结
 验证设置是否全都正确，并单击“完成”以完成“始终加密”的设置。
 
-![摘要](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
+![总结](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>验证向导的操作
 向导完成后，数据库就会设置为始终加密。 该向导执行以下操作：
@@ -185,7 +184,7 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置**�
 > 
 > 
 
-1. 打开 Visual Studio 并创建新的 C# **控制台应用程序**（Visual Studio 2015 和更低版本）或**控制台应用 (.NET Framework)**（Visual Studio 2017 和更高版本）。 确保将项目设置为 **.NET Framework 4.6** 或更高版本。
+1. 打开 Visual Studio 并创建新的 C# **控制台应用程序**（Visual Studio 2015 和更低版本）或**控制台应用 (.NET Framework)** （Visual Studio 2017 和更高版本）。 确保将项目设置为 **.NET Framework 4.6** 或更高版本。
 2. 将项目命名为 **AlwaysEncryptedConsoleAKVApp**，然后单击“确定”。
 3. 通过转到“工具” > “NuGet 包管理器” > “包管理器控制台”来安装以下 NuGet 包。
 
@@ -226,7 +225,7 @@ Always Encrypted 向导包括以下部分：**列选择**、**主密钥配置**�
 ## <a name="register-the-azure-key-vault-provider"></a>注册 Azure 密钥保管库提供程序
 下面的代码演示如何使用 ADO.NET 驱动程序注册 Azure 密钥保管库提供程序。
 
-```C#
+```csharp
     private static ClientCredential _clientCredential;
 
     static void InitializeAzureKeyVaultProvider()

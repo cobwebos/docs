@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 8ea3b3580cb70d0453a5ec6a38f6063788ebf7f4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: de9cbd9cfac766e2a67274684d3fb6b447e45200
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082018"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64572752"
 ---
 # <a name="configure-expressroute-global-reach"></a>配置 ExpressRoute Global Reach
 
@@ -39,7 +39,7 @@ ms.locfileid: "58082018"
 1. 若要开始配置，登录到你的 Azure 帐户并选择你想要使用的订阅。
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. 确定要使用 ExpressRoute 线路。 可以在任意两条 ExpressRoute 线路之间启用 ExpressRoute Global Reach，只要它们位于受支持的国家/地区并且是在不同的对等互连位置创建的。 
+2. 确定要使用 ExpressRoute 线路。 您可以启用 ExpressRoute 全球覆盖任何两个 ExpressRoute 线路之间，只要它们位于受支持的国家/地区，并在不同对等互连位置创建。 
 
    * 如果你的订阅同时拥有这两条线路，则可以选择其中任一条线路来运行以下各部分中的配置。
    * 如果两个线路位于不同的 Azure 订阅中，则你需要获得一个 Azure 订阅的授权。 然后，你在另一个 Azure 订阅中运行配置命令时传入授权密钥。

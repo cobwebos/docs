@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bda3df3ce869d7717f572f72c38472e7eae4a0ef
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1016a7800ddcfd4066ec3f6d6dce00d01ad83471
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437422"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839493"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure Cosmos DB
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-azure-documentdb-connector.md)
 > * [版本 2（当前版本）](../connector-azure-cosmos-db.md)
 
@@ -40,15 +40,15 @@ ms.locfileid: "57437422"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以将数据移入/移出 Azure Cosmos DB。
 
-创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-还可以使用以下工具来创建管道：Azure 门户、Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+还可以使用以下工具来创建管道：**Visual Studio**， **Azure PowerShell**， **Azure Resource Manager 模板**， **.NET API**，并且**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
+1. 创建链接服务可将输入和输出数据存储链接到数据工厂  。
+2. 创建数据集以表示复制操作的输入和输出数据  。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出  。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于向/从 Cosmos DB 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。
 
@@ -62,7 +62,7 @@ ms.locfileid: "57437422"
 | type |type 属性必须设置为：**DocumentDb** |是 |
 | connectionString |指定连接 Azure Cosmos DB 数据库所需的信息。 |是 |
 
-示例：
+例如：
 
 ```JSON
 {
@@ -85,7 +85,7 @@ ms.locfileid: "57437422"
 | --- | --- | --- |
 | collectionName |Cosmos DB 文档集合的名称。 |是 |
 
-示例：
+例如：
 
 ```JSON
 {
@@ -133,7 +133,7 @@ ms.locfileid: "57437422"
 | --- | --- | --- | --- |
 | nestingSeparator |源列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>在上述示例中：输出表中的 `Name.First` 在 Cosmos DB 文档中生成以下 JSON 结构：<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |用于分隔嵌套级别的字符。<br/><br/>默认值为 `.`（点）。 |用于分隔嵌套级别的字符。 <br/><br/>默认值为 `.`（点）。 |
 | writeBatchSize |向 Azure Cosmos DB 服务发送创建文档的并行请求数。<br/><br/>向/从 Cosmos DB 复制数据时，可使用此属性对性能进行微调。 当增加 writeBatchSize 时，由于会向 Cosmos DB 发送更多的并行请求，因此可以获得更好的性能。 但是，需要避免可能会引发以下错误消息的限制：“请求速率大”。<br/><br/>限制由多种因素决定，包括文档大小、文档中的术语数、目标集合的索引策略等。对于复制操作，可以使用更好的集合（例如 S3）以实现最大的吞吐量（2,500 请求单位/秒）。 |Integer |否（默认值：5） |
-| writeBatchTimeout |超时之前等待操作完成的时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
+| writeBatchTimeout |超时之前等待操作完成的时间。 |timespan<br/><br/> 例如：“00:30:00”（30 分钟）。 |否 |
 
 ## <a name="importexport-json-documents"></a>导入/导出 JSON 文档
 使用此 Cosmos DB 连接器，可以轻松地
@@ -143,13 +143,13 @@ ms.locfileid: "57437422"
 * 在两个 Cosmos DB 集合之间按原样迁移数据。
 
 若要实现此类“架构不可知”复制：
-* 使用复制向导时，选中“原样导出到 JSON 文件或 Cosmos DB 集合”选项。
+* 使用复制向导时，选中“原样导出到 JSON 文件或 Cosmos DB 集合”  选项。
 * 使用 JSON 编辑时，请勿指定 Cosmos DB 数据集中的“structure”节，也不要指定复制活动中 Cosmos DB 源/接收器的“nestingSeparator”属性。 若要导出到 JSON 文件或从此文件中导入，请在文件存储数据集中指定格式类型为“JsonFormat”，配置“filePattern”并跳过剩余格式设置，详情请参阅 [JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)部分。
 
 ## <a name="json-examples"></a>JSON 示例
-以下示例提供示例 JSON 定义，可使用该定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示了如何向/从 Azure Cosmos DB 和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+以下示例提供示例 JSON 定义，可用于通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 它们演示了如何向/从 Azure Cosmos DB 和 Azure Blob 存储复制数据。 但是，可使用 Azure 数据工厂中的复制活动将数据**直接**从任何源复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
-## <a name="example-copy-data-from-azure-cosmos-db-to-azure-blob"></a>示例：将数据从 Azure Cosmos DB 复制到 Azure Blob
+## <a name="example-copy-data-from-azure-cosmos-db-to-azure-blob"></a>例如：将数据从 Azure Cosmos DB 复制到 Azure Blob
 以下示例显示：
 
 1. [DocumentDb](#linked-service-properties) 类型的链接服务。
@@ -249,7 +249,7 @@ Cosmos DB 数据库中 Person 集合中的示例 JSON 文档：
 ```
 Cosmos DB 支持使用类似于 SQL 的语法在分层的 JSON 文档上查询文档。
 
-示例：
+例如：
 
 ```sql
 SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person
@@ -298,7 +298,7 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
   }
 }
 ```
-## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>示例：将数据从 Azure Blob 复制到 Azure Cosmos DB
+## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>例如：将数据从 Azure Blob 复制到 Azure Cosmos DB
 以下示例显示：
 
 1. DocumentDb 类型的链接服务。
@@ -484,16 +484,16 @@ Azure Cosmos DB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构
 ## <a name="appendix"></a>附录
 1. **问题：** 复制活动是否支持现有记录的更新？
 
-    **答：** 不是。
+    **答：** 否。
 2. **问题：** 复制到 Azure Cosmos DB 的重试操作如何处理已复制的记录？
 
     **答：** 记录具有一个“ID”字段，并且复制操作尝试插入具有相同 ID 的记录，则复制操作将引发错误。
 3. **问题：** 数据工厂是否支持[按范围分区或按基于哈希的数据分区](../../cosmos-db/sql-api-partition-data.md)？
 
-    **答：** 不是。
+    **答：** 否。
 4. **问题：** 是否可以为一个表指定多个 Azure Cosmos DB 集合？
 
-    **答：** 不是。 目前仅可以指定一个集合。
+    **答：** 否。 目前仅可以指定一个集合。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

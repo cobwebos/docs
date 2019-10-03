@@ -3,27 +3,24 @@ title: 从 Azure 数据工厂调用 Spark 程序 | Microsoft Docs
 description: 了解如何使用 MapReduce 活动从 Azure 数据工厂调用 Spark 程序。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 08aa1303aeaa0a80f0825f45e037109b98e9771e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015808"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135344"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>从 Azure 数据工厂管道调用 Spark 程序
 
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="转换活动"]
 > * [Hive 活动](data-factory-hive-activity.md)
 > * [Pig 活动](data-factory-pig-activity.md)
 > * [MapReduce 活动](data-factory-map-reduce.md)
@@ -38,7 +35,7 @@ ms.locfileid: "54015808"
 > [!NOTE]
 > 本文适用于 Azure 数据工厂第 1 版（即正式版）。 如果使用数据工厂服务的当前版本，请参阅[在数据工厂中使用 Apache Spark 活动转换数据](../transform-data-using-spark.md)。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-transformation-activities.md)之一。 此活动在 Azure HDInsight 中 Spark 群集上运行指定的 Spark 程序。 
 
 > [!IMPORTANT]
@@ -267,9 +264,10 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
     ![Jupyter 查询结果](media/data-factory-spark/jupyter-notebook-results.png)
 
-<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article --> 有关详细说明，请参阅[运行 Spark SQL 查询](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)部分。 
+<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
+有关详细说明，请参阅[运行 Spark SQL 查询](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)部分。 
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 由于 getDebugInfo 设置为 **Always**，因此 Blob 容器的 pyFiles 文件夹中会出现一个 log 子文件夹。 log 文件夹中的日志文件提供了更多信息。 当发生错误时，此日志文件尤其有用。 在生产环境中，可将其设置为 **Failure**。
 
 若要进一步故障排除，请执行以下步骤：
@@ -305,7 +303,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
                     "arguments": [ "arg1", "arg2" ],
                     "sparkConfig": {
                         "spark.python.worker.memory": "512m"
-                    }
+                    },
                     "getDebugInfo": "Always"
                 },
                 "outputs": [
@@ -326,9 +324,9 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 下表描述了 JSON 定义中使用的 JSON 属性。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必填 |
 | -------- | ----------- | -------- |
-| 名称 | 管道中活动的名称。 | 是 |
+| name | 管道中活动的名称。 | 是 |
 | description | 描述活动用途的文本。 | 否 |
 | type | 此属性必须设置为 HDInsightSpark。 | 是 |
 | linkedServiceName | 运行 Spark 程序的 HDInsight 链接服务的名称。 | 是 |
@@ -346,15 +344,15 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 在 HDInsight 链接服务引用的 Blob 存储中创建以下文件夹结构。 然后，将依赖文件上传到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 Python 文件上传到根文件夹的 pyFiles 子文件夹，将 jar 文件上传到根文件夹的 jars 子文件夹。 在运行时，数据工厂服务需要 Blob 存储中的以下文件夹结构： 
 
-| 路径 | Description | 必选 | 类型 |
+| Path | 描述 | 必填 | 类型 |
 | ---- | ----------- | -------- | ---- |
-| . | Spark 作业在存储链接服务中的根路径。 | 是 | Folder |
+| . | Spark 作业在存储链接服务中的根路径。 | 是 | 文件夹 |
 | &lt;用户定义&gt; | 指向 Spark 作业入口文件的路径。 | 是 | 文件 |
-| ./jars | 此文件夹下的所有文件将上传并放置在群集的 java 类路径中。 | 否 | Folder |
-| ./pyFiles | 此文件夹下的所有文件将上传并放置在群集的 PYTHONPATH 中。 | 否 | Folder |
+| ./jars | 此文件夹下的所有文件将上传并放置在群集的 java 类路径中。 | 否 | 文件夹 |
+| ./pyFiles | 此文件夹下的所有文件将上传并放置在群集的 PYTHONPATH 中。 | 否 | 文件夹 |
 | ./files | 此文件夹下的所有文件将上传并放置在执行器工作目录中。 | 否 | 文件夹 |
-| ./archives | 此文件夹下的所有文件未经压缩。 | 否 | Folder |
-| ./logs | 来自 Spark 群集的日志所存储到的文件夹。| 否 | Folder |
+| ./archives | 此文件夹下的所有文件未经压缩。 | 否 | 文件夹 |
+| ./logs | 来自 Spark 群集的日志所存储到的文件夹。| 否 | 文件夹 |
 
 以下存储示例在 HDInsight 链接服务引用的 Blob 存储中包含两个 Spark 作业文件。
 

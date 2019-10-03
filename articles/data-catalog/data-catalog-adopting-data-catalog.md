@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 62eb51e48ab688abcf39ba3c8d57aaccf6f47cb6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 08/01/2019
+ms.openlocfilehash: 38a9f3a7020e866ccb000ed0c54499258f5e651a
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003422"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734672"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>采用 Azure 数据目录的方法和过程
 
@@ -54,7 +54,7 @@ ms.locfileid: "60003422"
 
 下面是 Adventure Works 这家虚构公司的数据目录采用计划愿景声明示例：
 
-**Azure 数据目录**使 Adventure Works 财务团队合作创建关键的数据源，因此每个团队成员可以轻松地查找和使用数据它们需要可以与整个团队分享其知识。
+通过**Azure 数据目录**, 艾德公司的财务团队可以与关键数据源协作, 因此, 每个团队成员都可以轻松地查找并使用他们所需的数据, 并可以与整个团队分享他们的知识。
 
 拥有简洁的愿景声明后，应该找到适合数据目录使用的试运行项目。 一般而言，数据目录有好几个适用计划，因此下部分提供一些用于找到相关使用计划的提示。
 
@@ -91,7 +91,7 @@ ms.locfileid: "60003422"
 
 ### <a name="target-the-right-team"></a>锁定合适的团队
 
-在选择试运行项目时，请选择其计划最引人注目且能解决现有业务问题的团队。 例如，某位业务分析师要从 SQL Server 数据库创建报表。 问题在于，它们就以为已经知道数据源仅在几个同事交谈后。 最后，在浪费时间尝试查找要使用哪些数据源后, 它们找到一个 Excel 工作簿，其中包含每个数据源的说明。 尽管 Excel 工作簿已充分说明所需的表，它们就能快速找到这些数据源如果他们已注册，并且在中批注**Azure 数据目录**。
+在选择试运行项目时，请选择其计划最引人注目且能解决现有业务问题的团队。 例如，某位业务分析师要从 SQL Server 数据库创建报表。 问题在于, 只有在与多个同事通信后, 它们才会意识到数据源。 最后, 在浪费时间尝试查找要使用的数据源后, 它们就会发现 Excel 工作簿, 其中包含每个数据源的说明。 尽管 Excel 工作簿充分描述了所需的表, 但如果在**Azure 数据目录**中注册和批注了这些数据源, 他们很快就会发现这些数据源。
 
 ### <a name="identify-data-heroes"></a>识别数据英雄
 
@@ -101,7 +101,7 @@ ms.locfileid: "60003422"
 
 **数据使用者** 是具有使用数据来解决业务问题的专业人员。 例如，Nancy 是一位业务分析师，她使用 Adventure Works SQL Server 数据源来分析数据。
 
-**Azure 数据目录**解决的其中一个业务问题是将**数据生成者**连接到**数据使用者**。 其解决方式是作为企业数据源相关信息的中心存储库。 David 使用数据目录注册了 Adventure Works 和 SQL Server 数据源。 使用众包可发现此数据源的任何用户可以共享她对于数据，除了使用已发现的数据的意见。 例如，Nancy 在搜索目录后找到数据源，并分享其关于数据的专业知识。  现在，组织中的其他人可以通过搜索数据目录从所分享的知识获益。
+**Azure 数据目录**解决的其中一个业务问题是将**数据生成者**连接到**数据使用者**。 其解决方式是作为企业数据源相关信息的中心存储库。 David 使用数据目录注册了 Adventure Works 和 SQL Server 数据源。 使用众包任何发现此数据源的用户都可以在数据中共享其观点, 并使用已发现的数据。 例如，Nancy 在搜索目录后找到数据源，并分享其关于数据的专业知识。  现在，组织中的其他人可以通过搜索数据目录从所分享的知识获益。
 
 * 有关如何注册数据源的详细信息，请参阅 [Register data sources](data-catalog-get-started.md)（注册数据源）。
 * 有关如何发现数据源的详细信息，请参阅 [Search data sources](data-catalog-get-started.md)（搜索数据源）。
@@ -116,7 +116,7 @@ ms.locfileid: "60003422"
 
 ### <a name="an-example-project"></a>示例项目
 
-在本示例中，业务分析师 Nancy 使用 SQL Server Database 中的数据为其团队创建报告。 问题在于，它们就以为已经知道数据源仅在几个同事交谈后。 它们就能快速找到这些数据源如果他们已注册，如在一个中心位置进行批注**Azure 数据目录**。
+在本示例中，业务分析师 Nancy 使用 SQL Server Database 中的数据为其团队创建报告。 问题在于, 只有在与多个同事通信后, 它们才会意识到数据源。 如果这些数据源是在中心位置 (如**Azure 数据目录**) 中注册和批注的, 他们很快就会发现这些数据源。
 
 为了说明 Nancy 和她的团队可以多么轻松地找到高价值的数据，将使用数据源注册工具来为目录填充数据源的相关信息（元数据）。 通过这种方式，数据库的相关信息就可提供给团队和企业使用，而不只是少数个人。 在数据目录中注册数据源后，Nancy 及其团队便可以轻松使用这些数据源。 结果是更为全面且与她的团队和企业相关的数据目录。 当更多团队采用数据目录时，业务数据源就变得更容易找到和使用；因此，可以营造更多以数据为中心的文化，从数据中获得更多好处。
 

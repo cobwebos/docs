@@ -1,26 +1,25 @@
 ---
-title: 通过 Azure CLI 开始使用 Azure Data Lake Analytics
+title: 创建 & 查询 Azure Data Lake Analytics-Azure CLI
 description: 了解如何使用 Azure 命令行接口创建 Azure Data Lake Analytics 帐户，并提交 U-SQL 作业。
 ms.service: data-lake-analytics
-services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 9d9d5a7232529989901709013dcfac12f94afad0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 94399490453c6a2774f71ef527fd24d543e2a7e2
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433070"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316575"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>通过 Azure CLI 开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 本文介绍如何使用 Azure CLI 命令行接口创建 Azure Data Lake Analytics 帐户、提交 USQL 作业和目录。 此作业读取制表符分隔值 (TSV) 文件，并将其转换为逗号分隔值 (CSV) 文件。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在开始之前，需要以下项：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -66,7 +65,7 @@ az group create --name "<Resource Group Name>" --location "<Azure Location>"
 
 * **Data Lake Analytics 帐户名**。 每个 Data Lake Analytics 帐户都有一个名称。
 * **位置**。 使用支持 Data Lake Analytics 的 Azure 数据中心之一。
-* **默认 Data Lake Store 帐户**:每个 Data Lake Analytics 帐户都有默认的 Data Lake Store 帐户。
+* **默认 Data Lake Store 帐户**：每个 Data Lake Analytics 帐户都有默认的 Data Lake Store 帐户。
 
 若要列出现有的 Data Lake Store 帐户，请执行以下命令：
 
@@ -108,7 +107,7 @@ az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 Data Lake Analytics 还可以访问 Azure Blob 存储。  有关将数据上传到 Azure Blob 存储的详细信息，请参阅[将 Azure CLI 用于 Azure 存储](../storage/common/storage-azure-cli.md)。
 
 ## <a name="submit-data-lake-analytics-jobs"></a>提交 Data Lake Analytics 作业
-Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 U-SQL 的详细信息，请参阅 [U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)和 [U-SQL 语言参考](https://go.microsoft.com/fwlink/?LinkId=691348)。
+Data Lake Analytics 作业使用 U-SQL 语言编写而成。 若要了解有关 U-SQL 的详细信息，请参阅 [U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)和 [U-SQL 语言参考](https://docs.microsoft.com/u-sql/)。
 
 **创建 Data Lake Analytics 作业脚本**
 

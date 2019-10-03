@@ -3,7 +3,7 @@ title: Azure Cloud Shell 概述 | Microsoft Docs
 description: Azure Cloud Shell 的概述。
 services: ''
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -12,19 +12,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 5608b3e0f9b98db62d22245de5a864f757f48799
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: acdf52022d8498a186ed4cff90284cd6e299d6c0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243969"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240847"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
-Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。
-它使用户能够灵活选择最适合自己工作方式的 shell 体验。
-Linux 用户可以选择 Bash 体验，Windows 用户可以选择 PowerShell。
+Azure Cloud Shell 是一种交互式的经过身份验证的、经过身份验证的浏览器访问，用于管理 Azure 资源。
+它可以灵活地选择最适合自己工作方式的 shell 体验（Bash 或 PowerShell）。
 
 单击以下图标，前往 shell.azure.com 试用。
 
@@ -71,11 +70,9 @@ Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 * [Visual Studio Code Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>连接 Microsoft Azure 文件存储
-Cloud Shell 计算机是临时的，需要将新的或现有 Azure 文件共享装载为 `clouddrive` 才能持久保存文件。
+Cloud Shell 计算机是临时的，但文件通过以下两种方式持久保存：通过磁盘映像，并通过名为的已`clouddrive`装载文件共享。  首次启动时，Cloud Shell 会提示你代表你创建资源组、存储帐户和 Azure 文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将由 Cloud Shell 中的 Bash 和 PowerShell 使用。
 
-首次启动时，Cloud Shell 会提示代表你创建资源组、存储帐户和 Azure 文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将由 Cloud Shell 中的 Bash 和 PowerShell 使用。
-
-阅读更多信息，了解如何装载[新的或现有存储帐户](persisting-shell-storage.md)。
+详细了解如何装载[新的或现有的存储帐户](persisting-shell-storage.md)，或了解[Cloud Shell 中使用的持久性机制](persisting-shell-storage.md#how-cloud-shell-storage-works)。
 
 ## <a name="concepts"></a>概念
 * Cloud Shell 在按会话按用户提供的临时主机上运行

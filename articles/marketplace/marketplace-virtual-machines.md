@@ -2,24 +2,17 @@
 title: Azure 市场的“虚拟机”产品/服务发布指南
 description: 本文介绍发布要从市场部署的虚拟机和软件免费试用版的要求。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
-manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: eb49d0fe610a78b8d1a407644a206fddaba0a67a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ccb6fc9c522e8d05d0184fc5e248d070efb9921d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116209"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64937725"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>“虚拟机”产品/服务发布指南
 
@@ -60,7 +53,7 @@ ms.locfileid: "58116209"
 > 目前可针对 VM 的 Azure 使用情况，而非软件许可费用，使用与企业协议关联的货币承诺。  
 > 
 > [!NOTE]
-> 通过将映像和定价发布为“专有”产品/服务，可将 VM 的发现和部署限制为特定的一组客户。 “专有”产品/服务能够为关系最密切的客户提供专属优惠，并提供自定义软件和条款。 这些自定义条款可在一系列场景中提供助力，包括使用特殊定价和条款的现场导向型交易以及对限制性版本软件的早期访问。 “专有”产品/服务可让你通过创建包含这些细节的新 SKU，向有限的一组客户提供特定的定价或产品。  
+> 通过将映像和定价发布为“专有”套餐，可将 VM 的发现和部署限制为特定的一组客户。 “专有”产品/服务能够为关系最密切的客户提供专属优惠，并提供自定义软件和条款。 这些自定义条款可在一系列场景中提供助力，包括使用特殊定价和条款的现场导向型交易以及对限制性版本软件的早期访问。 “专有”套餐可让你通过创建包含这些细节的新 SKU，向有限的一组客户提供特定的定价或产品。  
 > *   有关专有产品/服务的详细信息，请访问“Azure 市场中的专有产品/服务”页 [azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)。  
 
 | 要求 | 详细信息 |  

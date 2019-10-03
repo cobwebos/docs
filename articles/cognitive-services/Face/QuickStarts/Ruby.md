@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 52faef37dbd9a3ce324db9665f04d6ac9b223d9c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e043d9bf0e87304868b2c573600578c911134856
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312389"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859179"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>快速入门：使用 REST API 和 Ruby 检测图像中的人脸
 
@@ -28,15 +28,13 @@ ms.locfileid: "56312389"
 
 ## <a name="write-the-script"></a>编写脚本
 
-创建一个新文件 (_faceDetection.rb_)，并添加以下代码。 这将根据给定的图像 URL 调用人脸 API。
+创建一个新文件 (_faceDetection.rb_)，并添加以下代码。 此代码将对给定的图像 URL 调用人脸 API。
 
 ```ruby
 require 'net/http'
 
-# You must use the same location in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from  westus,
-# replace "westcentralus" in the URL below with "westus".
-uri = URI('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect')
+# replace <My Endpoint String> in the URL below with the string from your endpoint.
+uri = URI('https://<My Endpoint String>.com/face/v1.0/detect')
 uri.query = URI.encode_www_form({
     # Request parameters
     'returnFaceId' => 'true',
@@ -62,7 +60,9 @@ end
 puts response.body
 ```
 
-需使用订阅密钥更新 `request['Ocp-Apim-Subscription-Key']` 值，并且可能需要更改 `uri` 字符串，使之包含正确的区域标识符（如需所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。 
+需使用订阅密钥更新 `request['Ocp-Apim-Subscription-Key']` 值，并更改 `uri` 字符串，使之包含正确的终结点。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 你可能还希望更改 `imageUri` 字段以指向自己的输入图像。 你还可能想要更改 `returnFaceAttributes` 字段，该字段指定要检索的人脸属性。
 
@@ -74,7 +74,7 @@ puts response.body
 ruby faceDetection.rb
 ```
 
-应该会看到输出到控制台的已检测到人脸数据的 JSON 字符串。 下面是成功的 JSON 响应的示例。
+应该会看到输出到控制台的已检测到人脸数据的 JSON 字符串。 以下文本是成功的 JSON 响应的示例。
 
 ```json
 [

@@ -1,22 +1,22 @@
 ---
 title: 快速入门：搜索图像 - 适用于 C# 的必应图像搜索 SDK
-description: 在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 这个简单的 C# 应用程序会发送图像搜索查询、分析 JSON 响应，并显示所返回的第一个图像的 URL。
 titleSuffix: Azure Cognitive Services
+description: 在本快速入门中，你将使用必应图像搜索 SDK（它是 API 的包装程序并包含相同的功能）创建你的第一个图像搜索。 这个简单的 C# 应用程序会发送图像搜索查询、分析 JSON 响应，并显示所返回的第一个图像的 URL。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9aa009ed99b2067b5a3cbde910a7265f42ea478f
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: ef5fe57610d4e97b2e382c1a476cd6a70eb7b1ad
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337442"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034437"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-c"></a>快速入门：通过适用于 C# 的必应图像搜索 SDK 搜索图像
 
@@ -25,10 +25,10 @@ ms.locfileid: "57337442"
 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) 上提供了此示例的源代码以及附加的错误处理和注释。
 
 ## <a name="prerequisites"></a>先决条件
-* 任何版本的 [Visual Studio 2017](https://visualstudio.microsoft.com/vs/whatsnew/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://visualstudio.microsoft.com/vs/whatsnew/)。
 * [认知图像搜索 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0)。
 
-要在 Visual Studio 中安装必应图像搜索 SDK，请在 Visual Studio 中使用解决方案资源管理器的 `Manage NuGet Packages` 选项。
+要在 Visual Studio 中安装必应图像搜索 SDK，请使用解决方案资源管理器中的“管理 NuGet 包”选项。  
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -101,4 +101,4 @@ if (imageResults != null)
 * [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Azure 认知服务 SDK 的 .NET 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
 * [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
-* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
-ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ede7e2fe3a2ab4c0dfd4efaea5ec789924968194
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.author: glenga
+ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
+ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750151"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876884"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 开发和部署 WebJobs - Azure 应用服务
 
@@ -27,7 +28,7 @@ ms.locfileid: "56750151"
 
 可将多个 WebJob 发布到单个 Web 应用。 请确保 Web 应用中的每个 WebJob 具有唯一的名称。
 
-[Azure WebJobs SDK](webjobs-sdk-how-to.md) 版本 3.x 可用于开发作为 .NET Core 应用运行的 WebJob，而版本 2.x 仅支持 .NET Framework。 部署 WebJob 项目的方式根据是该项目是 .NET Core 项目还是 .NET Framework 项目而有所不同。
+[Azure WebJobs SDK](webjobs-sdk-how-to.md) 版本 3.x 可用于开发作为 .NET Core 应用或 .NET Framework 应用运行的 WebJobs，而版本 2.x 仅支持 .NET Framework。 部署 WebJobs 项目的方式因该项目是 .NET Core 项目还是 .NET Framework 项目而有所不同。
 
 ## <a name="webjobs-as-net-core-console-apps"></a>用作 .NET Core 控制台应用的 WebJob
 
@@ -70,10 +71,7 @@ ms.locfileid: "56750151"
 
 ## <a name="webjobs-as-net-framework-console-apps"></a>用作 .NET Framework 控制台应用的 WebJob  
 
-当 Visual Studio 部署支持 WebJobs 的 .NET Framework 控制台应用程序项目时，会执行两个任务：
-
-* 将运行时文件复制到 Web 应用中的相应文件夹（对于连续运行的 WebJob，该文件夹为 *App_Data/jobs/continuous*，对于按计划运行或按需运行的 WebJob，该文件夹为 *App_Data/jobs/triggered*）。
-* 为已计划在特定时间运行的 Web 作业设置 [Azure 计划程序作业](https://docs.microsoft.com/azure/scheduler/)。 （无需为连续 Web 作业执行此操作。）
+当 Visual Studio 部署启用 WebJobs 的 .NET Framework 控制台应用程序项目时，它会将运行时文件复制到 Web 应用中的相应文件夹（对于连续运行的 WebJobs，该文件夹为 *App_Data/jobs/continuous*，对于按计划运行或按需运行的 WebJobs，该文件夹为 *App_Data/jobs/triggered*）。
 
 已启用 Web 作业的项目中添加了以下项：
 
@@ -88,11 +86,11 @@ ms.locfileid: "56750151"
 
 ![显示链接到 Web 项目的 Web 作业项目的插图](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 如果使用的是 Visual Studio 2015，请安装[用于 .NET 的 Azure SDK (Visual Studio 2015)](https://azure.microsoft.com/downloads/)。
 
-如果使用的是 Visual Studio 2017，请安装 [Azure 开发工作负荷](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads)。
+如果使用的是 Visual Studio 2017，请安装 [Azure 开发工作负荷](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)。
 
 ### <a id="convert"></a> 为现有控制台应用程序项目启用 WebJobs 部署
 
@@ -230,7 +228,7 @@ WebJobs 使用 *settings.job* 文件确定某个 WebJob 是否已运行。 使�
 
 ### <a name="cron-expressions"></a>CRON 表达式
 
-WebJobs 使用的 CRON 计划表达式与 Azure Functions 中的计时器触发器相同。 若要详细了解 CRON 支持，请参阅[计时器触发器参考文章](../azure-functions/functions-bindings-timer.md#cron-expressions)。
+WebJobs 使用的 CRON 计划表达式与 Azure Functions 中的计时器触发器相同。 若要详细了解 CRON 支持，请参阅[计时器触发器参考文章](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)。
 
 ### <a name="settingjob-reference"></a>setting.job 参考
 
@@ -238,10 +236,10 @@ WebJobs 支持以下设置：
 
 | **设置** | 类型  | **说明** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | All | 允许作业在原地运行，而无需首先将其复制到临时文件夹。 有关详细信息，请参阅 [WebJobs 工作目录](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory)。 |
+| `is_in_place` | 全部 | 允许作业在原地运行，而无需首先将其复制到临时文件夹。 有关详细信息，请参阅 [WebJobs 工作目录](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory)。 |
 | `is_singleton` | 连续 | 仅在横向扩展的单个实例上运行 WebJob。有关详细信息，请参阅[将连续作业设为单一实例](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)。 |
-| `schedule` | 触发 | 根据基于 CRON 的计划运行 WebJob。 有关详细信息，请参阅[计时器触发器参考文章](../azure-functions/functions-bindings-timer.md#cron-expressions)。 |
-| `stopping_wait_time`| All | 允许控制关闭行为。 有关详细信息，请参阅[正常关闭](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown)。 |
+| `schedule` | 触发 | 根据基于 CRON 的计划运行 WebJob。 有关详细信息，请参阅[计时器触发器参考文章](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)。 |
+| `stopping_wait_time`| 全部 | 允许控制关闭行为。 有关详细信息，请参阅[正常关闭](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown)。 |
 
 ## <a name="next-steps"></a>后续步骤
 

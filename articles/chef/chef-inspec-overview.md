@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.date: 03/19/2019
 ms.topic: article
 ms.openlocfilehash: bdfa30b48c79a8910d503bb9e54a42c30e5adba6
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293917"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60629792"
 ---
 # <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>使用 InSpec 实现 Azure 基础结构的符合性自动化
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: f5d3c1631e91eb7a131fbf0f5fb1934db6e28184
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52269006"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "67173198"
 ---
 > [!div class="op_single_selector"]
 > * [Android](../articles/notification-hubs/notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md)

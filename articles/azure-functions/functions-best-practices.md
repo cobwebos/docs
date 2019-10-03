@@ -8,17 +8,16 @@ manager: jeconnoc
 keywords: Azure Functions, 模式, 最佳做法, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30b187676f0c1fb03b7124d93b3991b0e32d61ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848943"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933052"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
@@ -37,7 +36,7 @@ ms.locfileid: "57848943"
 
 ### <a name="cross-function-communication"></a>跨函数通信
 
-[Durable Functions](durable/durable-functions-concepts.md) 和 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)用于管理状态转换以及多个函数之间的通信。
+[Durable Functions](durable/durable-functions-overview.md) 和 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)用于管理状态转换以及多个函数之间的通信。
 
 如果不使用 Durable Functions 或逻辑应用来集成多个函数，将存储队列用于跨函数通信通常是最佳做法。  主要原因是因为存储队列成本更低、更易预配。 
 
@@ -84,7 +83,7 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 请注意在生产 Function App 中加载的内容。 将内存平均分配给应用中的每个函数。
 
-如果有多个.NET 函数中引用的共享程序集，将其放在一个公用共享文件夹中。 如果使用 C# 脚本 (.csx)，请使用类似于以下示例的语句引用程序集： 
+如果在多个 .NET 函数中引用共享程序集，请将其放在常用的共享文件夹中。 如果使用 C# 脚本 (.csx)，请使用类似于以下示例的语句引用程序集： 
 
     #r "..\Shared\MyAssembly.dll". 
 

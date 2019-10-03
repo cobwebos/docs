@@ -3,20 +3,20 @@ title: 通过使用 C# 服务库开始使用 Microsoft 语音识别 API | Micros
 titlesuffix: Azure Cognitive Services
 description: 使用必应语音识别服务库将口语转换为文本。
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 0f445d1fff48ee7a04c0b1c1d64c808f87d824b7
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 71c3e471a8844eb6c6b70921e40c94338a084a8b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673156"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965844"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>快速入门：在 C# for .NET Windows 版中使用必应语音识别服务库
 
@@ -28,7 +28,7 @@ ms.locfileid: "56673156"
 
 以下部分介绍如何使用 C# 服务库安装、构建和运行 C# 示例应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="platform-requirements"></a>平台要求
 

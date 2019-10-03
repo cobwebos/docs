@@ -1,7 +1,6 @@
 ---
 title: 调试 Apache Hadoop：查看日志和解释错误消息 - Azure HDInsight
 description: 了解在使用 PowerShell 管理 HDInsight 时可能会收到的错误消息，以及恢复正常所需采取的步骤。
-services: hdinsight
 ms.reviewer: jasonh
 author: ashishthaps
 ms.service: hdinsight
@@ -9,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: a035789af08aa4c0d877a06295d9bd6fdedf6844
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449489"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059219"
 ---
-# <a name="analyze-apache-hadoop-logs"></a>分析 Apache Hadoop 日志
+# <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>在 Azure HDInsight 中分析 Apache Hadoop 日志
 
 Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件系统的 Azure 存储帐户。 该存储帐户称作默认存储帐户。 群集使用默认存储帐户上的 Azure 表存储和 Blob 存储来存储其日志。  若要了解群集的默认存储帐户，请参阅[在 HDInsight 中管理 Apache Hadoop 群集](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts)。 即使在删除群集以后，日志仍会保留在存储帐户中。
 
@@ -33,7 +32,7 @@ Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件�
 * ambariserverlog
 * ambariagentlog
 
-表的文件名为 **u<ClusterName>DDMonYYYYatHHMMSSsss<TableName>**。
+表文件名为 **u\<ClusterName>DDMonYYYYatHHMMSSsss\<TableName>** 。
 
 这些表包含以下字段：
 
@@ -45,7 +44,7 @@ Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件�
 * 消息
 * N
 * PreciseTimeStamp
-* 角色
+* Role
 * RowIndex
 * 租户
 * TIMESTAMP
@@ -74,10 +73,10 @@ Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件�
 5. 右键单击“导航器”窗格中的 hadoopservicelog 表，并选择“编辑”。 应看到四个列。 （可选）删除“分区键”、“行键”和“时间戳”列，方法是：选中这些项，并在功能区的选项中单击“删除列”。
 6. 单击“内容”列上的展开图标，选择要导入 Excel 电子表格中的列。 我选择了 TraceLevel 和 ComponentName 进行本次演示：这样我就可以大致知道哪些组件有问题。
    
-    ![HDInsight Hadoop 日志选择列](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png)
+    ![HDInsight Hadoop 日志选择列 excel](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png "HDInsight Hadoop 日志选择列 excel")
 7. 单击“确定”导入数据。
 8. 选择“TraceLevel”、“角色”和“ComponentName”列，并单击功能区中的“分组依据”控件。
-9. 单击“分组依据”对话框中的“确定” 
+9. 单击“分组依据”对话框中的“确定”
 10. 单击“应用并关闭”。
 
 现在可以根据需要使用 Excel 来筛选和排序。 你可能想要包括其他列（例如“消息”列），以便在出现问题时对其进行更深入的分析，但选择上述列并对其分组以后，已经可以基本了解 Hadoop 服务的情况。 setuplog 和 hadoopinstalllog 表也是如此。
@@ -94,7 +93,7 @@ Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件�
    
         TraceLevel eq 'ERROR'
    
-    ![HDInsight Hadoop 日志选择列](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png)
+    ![HDInsight Hadoop 日志选择列与](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png "HDInsight Hadoop 日志选择列与")
    
     有关构造筛选器的详细信息，请参阅[构造表设计器的筛选器字符串](../../vs-azure-tools-table-designer-construct-filter-strings.md)。
 
@@ -111,7 +110,7 @@ Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件�
 ### <a name="access-the-ambari-ui"></a>访问 Ambari UI
 在 Azure 门户中，单击某个 HDInsight 群集名称以打开群集窗格。 在群集窗格中，单击“仪表板”。
 
-![启动群集仪表板](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
+![HDInsight 启动群集仪表板](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
 
 ### <a name="access-the-yarn-ui"></a>访问 Yarn UI
@@ -121,9 +120,9 @@ Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件�
 
 * **获取群集状态**。 在左窗格中展开“群集”，并单击“关于”。 此时会显示群集状态详细信息，例如总分配内存、所用核心数、群集资源管理器状态、群集版本等。
   
-    ![启动群集仪表板](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png)
+    ![HDInsight 启动群集仪表板 yarn](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "HDInsight 启动群集仪表板 yarn")
 * **获取节点状态**。 在左窗格中展开“群集”，并单击“节点”。 此时会列出群集中的所有节点、每个节点的 HTTP 地址、分配给每个节点的资源等。
-* **监视作业状态**。 在左窗格中展开“群集”，并单击“应用程序”列出群集中的所有作业。 若要查看特定状态（例如“新”、“已提交”、“正在运行”等）的作业，请单击“应用程序”下的相应链接。 可以进一步单击作业名称，了解该作业的详细信息，例如输出、日志等。
+* **监视作业状态**。 在左窗格中展开“群集”，并单击“应用程序”列出群集中的所有作业。 若要查看特定状态（例如“新”、“已提交”、“正在运行”等）的作业，请单击“应用程序”下的相应链接。 可以进一步单击作业名称以查找该作业的详细信息，例如输出、日志等。
 
 ### <a name="access-the-hbase-ui"></a>访问 HBase UI
 在 Azure 门户中，单击某个 HDInsight HBase 群集名称以打开群集窗格。 在群集窗格中，单击“仪表板”。 出现提示时，输入群集管理员凭据。 在 Ambari 中，从服务列表中选择“HBase”。 在页面顶部选择“快速链接”，指向活动 Zookeeper 节点链接，并单击“HBase Master UI”。

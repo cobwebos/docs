@@ -7,18 +7,17 @@ author: manish-shukla01
 manager: manish-shukla01
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: manshuk
-ms.openlocfilehash: 376e057d2220559e0a77020de355945ac2b27abd
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
-ms.translationtype: HT
+ms.openlocfilehash: f4654aeca48347febc5533bef11e9696ed7d1d64
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495721"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082274"
 ---
 [!INCLUDE [virtual-machines-common-reserved-vm-instance-size-flexibility](../../../includes/virtual-machines-common-reserved-vm-instance-size-flexibility.md)]
 

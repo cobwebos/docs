@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227030"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172926"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 首先，必须了解在基础结构即服务 (IaaS) 资源上进行的数据平面操作和管理平面操作的差异。
 
-* “管理/控制平面”描述进入管理/控制平面或 API 来修改资源的调用。 例如，创建 VM、重启 VM 以及将虚拟网络更新成新子网等操作均可管理正在运行的资源。 它们并不直接影响到 VM 的连接。
-* “数据平面”（应用程序）描述应用程序本身的运行时，并涉及与不通过 Azure API 的实例的交互。 例如，访问网站或从运行中的 SQL Server 实例或 MongoDB 服务器拉取数据属于数据平面或应用程序交互。 其他示例包括：从存储帐户复制 Blob，以及访问公共 IP 地址，以便使用远程桌面协议 (RDP) 或安全外壳 (SSH) 连接到虚拟机。 这些操作可让应用程序继续跨计算、网络和存储运行。
+* “管理/控制平面”  描述进入管理/控制平面或 API 来修改资源的调用。 例如，创建 VM、重启 VM 以及将虚拟网络更新成新子网等操作均可管理正在运行的资源。 它们并不直接影响到 VM 的连接。
+* “数据平面”  （应用程序）描述应用程序本身的运行时，并涉及与不通过 Azure API 的实例的交互。 例如，访问网站或从运行中的 SQL Server 实例或 MongoDB 服务器拉取数据属于数据平面或应用程序交互。 其他示例包括：从存储帐户复制 Blob，以及访问公共 IP 地址，以便使用远程桌面协议 (RDP) 或安全外壳 (SSH) 连接到虚拟机。 这些操作可让应用程序继续跨计算、网络和存储运行。
 
 经典部署模型和资源管理器堆栈之间的数据平面是相同的。 区别在于，在迁移过程中，Microsoft 会将资源的表示方式从经典部署模型转换为资源管理器堆栈中的相应模型。 因此，需在资源管理器堆栈中使用新的工具、API 和 SDK 来管理资源。
 
@@ -138,11 +138,11 @@ ms.locfileid: "50227030"
 
 | 经典表示形式 | Resource Manager 表示形式 | 说明 |
 | --- | --- | --- |
-| 云服务名称 |DNS 名称 |在迁移期间，会以命名模式 `<cloudservicename>-migrated` 为每个云服务创建新的资源组。 此资源组包含用户的所有资源。 云服务名称会成为与公共 IP 地址关联的 DNS 名称。 |
+| 云服务名称 |DNS 名称 |在迁移期间，以命名模式 `<cloudservicename>-migrated` 为每个云服务创建新的资源组。 此资源组包含用户的所有资源。 云服务名称会成为与公共 IP 地址关联的 DNS 名称。 |
 | 虚拟机 |虚拟机 |VM 特定属性将原封不动地进行迁移。 某些 osProfile 信息（例如计算机名称）不会存储在经典部署模型中，因此迁移后会保留空白。 |
 | 附加到 VM 的磁盘资源 |附加到 VM 的隐式磁盘 |在 Resource Manager 部署模型中，磁盘不会建模为顶级资源。 这些磁盘将作为 VM 下的隐式磁盘进行迁移。 目前只支持附加到 VM 的磁盘。 资源管理器 VM 现在可以使用经典部署模型中的存储帐户轻松地迁移磁盘，不需任何更新。 |
 | VM 扩展 |VM 扩展 |除 XML 扩展以外的所有资源扩展都会从经典部署模型中迁移。 |
-| 虚拟机证书 |Azure 密钥保管库中的证书	 |如果云服务包含服务证书，迁移会为每个云服务创建新的 Azure Key Vault，并将证书移到该 Key Vault。 VM 将更新为引用该密钥保管库中的证书。 <br><br> 请勿删除该 Key Vault。 这可能导致 VM 进入故障状态。 |
+| 虚拟机证书 |Azure 密钥保管库中的证书 |如果云服务包含服务证书，迁移会为每个云服务创建新的 Azure Key Vault，并将证书移到该 Key Vault。 VM 将更新为引用该密钥保管库中的证书。 <br><br> 请勿删除该 Key Vault。 这可能导致 VM 进入故障状态。 |
 | WinRM 配置 |osProfile 下的 WinRM 配置 |Windows 远程管理配置在迁移过程中会原封不动地进行转移。 |
 | 可用性集属性 |可用性集资源 | 可用性集规范是经典部署模型中 VM 上的属性。 在迁移过程中，可用性集将成为顶级资源。 以下配置不受支持：每个云服务包含多个可用性集，或者在一个云服务中有一个或多个可用性集以及不在任何可用性集中的 VM。 |
 | VM 上的网络配置 |主网络接口 |在迁移后，VM 上的网络配置会表示为主网络接口资源。 对于不在虚拟网络中的 VM，内部 IP 地址在迁移期间会更改。 |

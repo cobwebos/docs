@@ -4,6 +4,8 @@
   items:
     - name: 什么是用于 MySQL 的 Azure DB？
       href: overview.md
+    - name: 我应选择哪个 MySQL 选项？
+      href: select-right-deployment-type.md
 - name: 快速入门
   expanded: true
   items:
@@ -79,20 +81,30 @@
           href: concepts-ssl-connection-security.md
         - name: 高级威胁防护
           href: concepts-data-access-and-security-threat-protection.md
-        - name: VNet
+        - name: 虚拟网络
           href: concepts-data-access-and-security-vnet.md
+        - name: 连接体系结构
+          href: concepts-connectivity-architecture.md
     - name: 业务连续性
       items:
         - name: 概述
           href: concepts-business-continuity.md
         - name: 备份和还原
           href: concepts-backup.md
-    - name: 监视
+    - name: 监视和优化
       items:
-        - name: 监视
+        - name: 监视和优化
           href: concepts-monitoring.md
-        - name: 服务器日志
+        - name: 慢查询日志
           href: concepts-server-logs.md
+        - name: 审核日志
+          href: concepts-audit-logs.md
+        - name: 查询存储
+          href: concepts-query-store.md
+        - name: 查询性能见解
+          href: concepts-query-performance-insight.md
+        - name: 性能建议
+          href: concepts-performance-recommendations.md
     - name: 开发
       items:
         - name: 驱动程序和工具兼容性
@@ -157,12 +169,24 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
-    - name: 访问服务器日志
+    - name: 自动增长存储
       items:
         - name: Azure 门户
-          href: howto-configure-server-logs-in-portal.md
+          href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
-          href: howto-configure-server-logs-in-cli.md
+          href: howto-auto-grow-storage-cli.md
+    - name: 访问服务器日志
+      items:
+        - name: 慢查询日志
+          items:
+            - name: Azure 门户
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-in-cli.md
+        - name: 审核日志
+          items:
+            - name: Azure 门户
+              href: howto-configure-audit-logs-portal.md
     - name: 监视
       items:
         - name: 针对指标创建警报
@@ -173,7 +197,7 @@
           href: howto-data-in-replication.md
         - name: 创建只读副本 Azure 门户
           href: howto-read-replicas-portal.md
-        - name: 创建只读副本 Azure CLI
+        - name: 使用 Azure CLI、REST API 创建只读副本
           href: howto-read-replicas-cli.md
     - name: 故障排除
       items:
@@ -207,8 +231,8 @@
       href: /rest/api/mysql
     - name: 资源管理器模板
       href: /azure/templates/microsoft.dbformysql/allversions
-    - name: 复制中数据存储过程
-      href: reference-data-in-stored-procedures.md
+    - name: Azure 存储过程
+      href: reference-stored-procedures.md
 - name: 资源
   items:
     - name: 部署模板
@@ -218,7 +242,7 @@
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
     - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL'
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMySQL'
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: 视频

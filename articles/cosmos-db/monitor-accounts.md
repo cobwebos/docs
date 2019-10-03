@@ -4,15 +4,15 @@ description: 了解如何监视 Azure Cosmos DB 帐户的性能指标（如请�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a12e0f567747b67c67f7bc825df1079d852e2f16
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d8e80594e0c56f57527d1703b0cf1323571cf351
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448232"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855711"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>监视 Azure Cosmos DB 中的性能和存储指标
 
@@ -48,6 +48,10 @@ ms.locfileid: "57448232"
 4. “指标”页显示有关请求总数的详细信息。 
 
 ## <a name="set-up-alerts-in-the-portal"></a>在门户中设置警报
+
+> [!NOTE]
+> Azure Monitor 中的经典警报即将停用。 Azure 门户提供[迁移工具](../azure-monitor/platform/alerts-using-migration-tool.md)来迁移经典警报规则。 但是, 并不是可以迁移 Azure Cosmos DB 度量值的所有经典警报, 但有一些例外情况, 请参阅[Azure monitor](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics)一文, 了解无法迁移的经典警报的列表。 
+
 1. 在 [Azure 门户](https://portal.azure.com/)中，依次单击“所有服务”、“Azure Cosmos DB”，并单击要设置性能指标警报的 Azure Cosmos DB 帐户的名称。
 2. 在资源菜单中，单击“警报规则”打开“警报规则”页。  
    ![所选的警报规则部件的屏幕截图](./media/monitor-accounts/madocdb10.5.png)

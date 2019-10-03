@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 09/14/2018
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a77d502182da8128624bfb5fc0481f2f8786ec37
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 62bc550a809d596b5378c03aa95877db5e15febb
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293628"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019510"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什么是 Azure Active Directory B2B 中的来宾用户访问权限？
 
@@ -40,18 +40,18 @@ ms.locfileid: "58293628"
 ## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>通过一个简单的邀请和兑换过程邀请来宾用户
 来宾用户可使用自己的工作、学校或社交标识登录应用和服务。 如果来宾用户没有 Microsoft 帐户或和 Azure AD 帐户，当他们在兑换邀请时，系统会为他们创建一个帐户。 
 - 邀请使用自选电子邮件标识的来宾用户。
-- 发送应用的直接链接，或发送登录来宾用户自己的访问面板的邀请。 
+- 发送应用的直接链接，或发送邀请至来宾用户自己的访问面板。 
 - 来宾用户遵循一些简单的兑换步骤登录。
 
 ![显示“查看权限”页的屏幕截图](media/what-is-b2b/consentscreen.png)
 
 ## <a name="use-policies-to-securely-share-your-apps-and-services"></a>使用策略安全地共享你的应用和服务
-可以使用授权策略保护企业内容。 可通过以下级别强制执行多重身份验证等条件访问策略：
+可以使用授权策略保护企业内容。 可在以下级别强制执行多重身份验证等条件访问策略：
 - 租户级别。
 - 应用程序级别。
 - 针对特定来宾用户，保护企业应用和数据。
 
-![显示“条件性访问”选项的屏幕截图](media/what-is-b2b/tutorial-mfa-policy-2.png)
+![显示“条件访问”选项的屏幕截图](media/what-is-b2b/tutorial-mfa-policy-2.png)
 
 
 ## <a name="easily-add-guest-users-in-the-azure-ad-portal"></a>在 Azure AD 门户中轻松添加来宾用户

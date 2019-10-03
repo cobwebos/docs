@@ -1,9 +1,9 @@
 ---
-title: 批准或拒绝对 PIM 的 Azure Active Directory 中的 Azure 资源角色请求 |Microsoft Docs
+title: 在 PIM 中批准或拒绝 Azure 资源角色的请求 - Azure Active Directory | Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中批准或拒绝 Azure 资源角色的请求。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f645b7077ef43dc7eb4d70261b6b601b5e4af1b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8b39434f8763e44a126f74ac9a19596e4413ae9c
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492152"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804276"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>在 PIM 中批准或拒绝 Azure 资源角色的请求
 
-使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM)，可以配置要用于激活、 需要批准的角色并选择一个或多个用户或组作为委派的审批者。 委派的审批者有 24 小时可以审批请求。 如果请求未在 24 小时内获得审批，则符合条件的用户必须重新提交新请求。 24 小时的审批时间范围不可供配置。
+利用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM)，可以将角色配置为需要审批才可激活，还可选择一个或多个用户或组作为委托的审批者。 委派的审批者有 24 小时可以审批请求。 如果请求未在 24 小时内获得审批，则符合条件的用户必须重新提交新请求。 24 小时的审批时间范围不可供配置。
 
 按照本文中的步骤，审批或拒绝 Azure 资源角色的请求。
 
@@ -38,15 +38,15 @@ ms.locfileid: "59492152"
 
 1. 单击“审批请求”。
 
-    ![Azure 资源 - 审批请求](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![显示要评审的请求的“审批请求 - Azure 资源”页](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
     在“请求激活角色”部分，将看到等待审批的请求列表。
 
 ## <a name="approve-requests"></a>审批请求
 
-1. 找到并单击要审批的请求。 此时显示审批窗格。
+1. 找到并单击要审批的请求。 此时将显示“批准或拒绝”窗格。
 
-    ![“审批请求”窗格](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![“审批请求 - 批准或拒绝”窗格，其中包含详细信息和“理由”框](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. 在“理由”框中，键入一个原因。
 
@@ -54,13 +54,13 @@ ms.locfileid: "59492152"
 
     审批后会出现一个通知。
 
-    ![批准通知](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![显示请求已批准的批准通知](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 
 ## <a name="deny-requests"></a>拒绝请求
 
-1. 找到并单击要拒绝的请求。 此时显示审批窗格。
+1. 找到并单击要拒绝的请求。 此时将显示“批准或拒绝”窗格。
 
-    ![“审批请求”窗格](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![“审批请求 - 批准或拒绝”窗格，其中包含详细信息和“理由”框](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. 在“理由”框中，键入一个原因。
 
@@ -84,4 +84,4 @@ ms.locfileid: "59492152"
 
 - [在 PIM 中扩展或续订 Azure 资源角色](pim-resource-roles-renew-extend.md)
 - [PIM 中的电子邮件通知](pim-email-notifications.md)
-- [批准或拒绝在 PIM 中的 Azure AD 角色的请求](azure-ad-pim-approval-workflow.md)
+- [在 PIM 中批准或拒绝 Azure AD 角色的请求](azure-ad-pim-approval-workflow.md)

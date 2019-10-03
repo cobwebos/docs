@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: 4ae995e69d1241d94584529572df3ffd3fe59144
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: MT
+ms.openlocfilehash: 4311cd2174500df51e5006ff8f274d0737cc74d1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "58115033"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173118"
 ---
 |  |
 |--|
-|用户分配的管理的标识是 Azure Active Directory 的预览版功能。 在开始之前，请确保已查看[已知问题](~/articles/active-directory/managed-identities-azure-resources/known-issues.md)。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+|用户分配的托管标识是 Azure Active Directory 的预览版功能。 在开始之前，请确保已查看[已知问题](~/articles/active-directory/managed-identities-azure-resources/known-issues.md)。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |
 
 

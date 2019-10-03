@@ -3,23 +3,22 @@ title: 为群集创建 Azure 负载均衡器规则
 description: 配置 Azure 负载均衡器，为 Azure Service Fabric 群集打开端口。
 services: service-fabric
 documentationcenter: na
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: aljo
-ms.openlocfilehash: d95d2802398a61b948ff6c59fb3eab0e1ddddbc5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: atsenthi
+ms.openlocfilehash: 2e730ae8ecf6f1fab12aff23cab0ac3aa246233a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786127"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173363"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>为 Service Fabric 群集打开端口
 
@@ -111,4 +110,4 @@ $lb | Set-AzLoadBalancer
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何[Service Fabric 中的网络](service-fabric-patterns-networking.md).rvice fabric 模式 networking.md)。
+详细了解 [Service Fabric 中的网络](service-fabric-patterns-networking.md)。

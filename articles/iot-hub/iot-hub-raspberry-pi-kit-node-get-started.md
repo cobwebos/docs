@@ -1,6 +1,6 @@
 ---
 title: 连接到云的 Raspberry Pi (Node.js) - 将 Raspberry Pi 连接到 Azure IoT 中心 | Microsoft Docs
-description: 了解如何设置和 Raspberry Pi 连接到 Azure IoT 中心的 Raspberry Pi 将在本教程中将数据发送到 Azure 云平台。
+description: 在本教程中了解如何设置 Raspberry Pi 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。
 author: wesmc7777
 manager: philmea
 keywords: Azure IoT Raspberry Pi, Raspberry Pi IoT 中心, Raspberry Pi 将数据发送到云, 连接到云的 Raspberry Pi
@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 04/11/2018
+ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: d1e9a6da399adcdca87c1d6dc30eaf425ec0541e
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 79e565668db661d02833d22d2ef619fc67708115
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609007"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266151"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
@@ -82,10 +82,6 @@ ms.locfileid: "59609007"
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>检索 IoT 中心的连接字符串
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
 ## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中心内注册新设备
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
@@ -98,10 +94,7 @@ ms.locfileid: "59609007"
 
 1. 下载 Raspbian。
 
-   a. [下载 Raspbian Stretch](https://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/)（.zip 文件）。
-
-   > [!WARNING]
-   > 请使用上面的链接来下载 `raspbian-2017-07-5` zip 映像。 Raspbian 映像的最新版本具有与接线 Pi 节点相关的已知问题，这可能会导致在接下来的步骤中发生故障。
+   a. [带桌面的 Raspbian Buster](https://www.raspberrypi.org/downloads/raspbian/)（.zip 文件）。
 
    b. 将 Raspbian 映像提取到计算机上的一个文件夹中。
 
@@ -123,7 +116,7 @@ ms.locfileid: "59609007"
 
 1. 将 Pi 连接到监视器、键盘和鼠标。
 
-2. 启动 Pi，然后使用登录到 Raspbian`pi`作为用户名和`raspberry`作为密码。
+2. 启动 Pi，然后使用 `pi` 作为用户名并使用 `raspberry` 作为密码来登录 Raspbian。
 
 3. 依次单击 Raspberry 图标 >“首选项” > “Raspberry Pi 配置”。
 
@@ -142,7 +135,7 @@ ms.locfileid: "59609007"
 
 ![Raspberry Pi 和传感器连接](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 
-BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云时，LED 将闪烁。 
+BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云时，LED 将闪烁。
 
 对于传感器引脚，请使用以下接线：
 
@@ -177,8 +170,8 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 1. 从主计算机使用以下 SSH 客户端之一连接到 Raspberry Pi：
 
    **Windows 用户**
-  
-   a. 下载并安装 [PuTTY](https://www.putty.org/) for Windows。 
+
+   a. 下载并安装 [PuTTY](https://www.putty.org/) for Windows。
 
    b. 将 Pi 的 IP 地址复制到主机名（或 IP 地址）部分，并选择 SSH 作为连接类型。
 
@@ -199,10 +192,10 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
    node -v
    ```
 
-   如果版本低于 4.x，或者 Pi 上没有任何 Node.js，请安装最新版本。
+   如果版本低于 10.x，或者 Pi 上没有 Node.js，请安装最新版本。
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
@@ -216,7 +209,7 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
-   sudo npm install
+   npm install
    ```
 
    > [!NOTE]
@@ -236,6 +229,8 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
    如果没有传感器，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建和使用模拟的传感器数据。
 
+   *注意：默认情况下，本教程中使用的0x77。根据你的配置，它也可能是0x76 的：如果遇到 i2c 错误，请尝试将此值更改为118，并查看其是否更好。若要查看传感器使用的地址，请在 raspberry `sudo i2cdetect -y 1` pi 上的 shell 中运行*
+
 2. 通过按“Control-O”>“Enter”>“Control-X”保存并退出。
 
 ### <a name="run-the-sample-application"></a>运行示例应用程序
@@ -253,11 +248,11 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
 ![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>读取中心收到的消息
+## <a name="read-the-messages-received-by-your-hub"></a>读取 IoT 中心收到的消息
 
-若要监视 IoT 中心从设备收到的消息的一种方法是使用用于 Visual Studio Code 的 Azure IoT 工具。 若要了解详细信息，请参阅[使用针对 Visual Studio Code 进行发送和接收消息在设备与 IoT 中心之间的 Azure IoT 工具](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+若要监视 IoT 中心从设备收到的消息，一种方法是使用适用于 Visual Studio Code 的 Azure IoT Tools。 若要了解详细信息，请参阅[使用适用于 Visual Studio Code 的 Azure IoT Tools 在设备和 IoT 中心之间发送和接收消息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
 
-有关更多方法来处理设备发送的数据，继续学习下一节。
+若要了解如何通过更多方式来处理设备发送的数据，请转到下一部分。
 
 ## <a name="next-steps"></a>后续步骤
 

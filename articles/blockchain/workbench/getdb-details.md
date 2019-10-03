@@ -1,25 +1,25 @@
 ---
-title: 获取 Azure Blockchain Workbench 数据库详细信息
-description: 了解如何获取 Azure Blockchain Workbench 数据库和数据库服务器信息。
+title: 获取 Azure 区块链工作台预览数据库详细信息
+description: 了解如何获取 Azure 区块链工作台预览版数据库和数据库服务器信息。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/14/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 0d806491c58c4b1881adc2fd830de7c7b9f0859d
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: f4a4eaab9a03aeed27e29eb645b6e22a028b243b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331922"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845079"
 ---
-# <a name="get-information-about-your-azure-blockchain-workbench-database"></a>获取有关 Azure Blockchain Workbench 数据库的信息
+# <a name="get-information-about-your-azure-blockchain-workbench-preview-database"></a>获取有关 Azure 区块链工作台预览数据库的信息
 
-本文展示了如何获取有关 Azure Blockchain Workbench 数据库的详细信息。
+本文介绍如何获取有关 Azure 区块链工作台预览数据库的详细信息。
 
 ## <a name="overview"></a>概述
 

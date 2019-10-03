@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/05/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 6f856aeae74ea285cd6a0326fd225e454a1cbe43
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 91dc386641c758c42f64afff387d0463d1445f1d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265825"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65969074"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>了解 Cloudyn 成本管理报表
 
@@ -73,7 +73,7 @@ ms.locfileid: "59265825"
 
    示例可能包括：
    - 成本中心
-   - 部门
+   - 系
    - 应用程序
    - 环境
    - 成本代码
@@ -112,7 +112,7 @@ ms.locfileid: "59265825"
        - 无需预付
        - 部分预付
        - 按需
-       - 保留
+       - 预留
        - 现付
      - **费用类型**
        - 选择保守或积极的费用类型（或者都选）。
@@ -144,7 +144,7 @@ ms.locfileid: "59265825"
 8. **解决方法**
 
     “解析度”用于选择所选日期范围内的时间解析度。 时间解析度将确定单位如何在报表中显示，并可以包括：
-    - 每日
+    - 每天
     - 每周
     - 每月
     - 每季度

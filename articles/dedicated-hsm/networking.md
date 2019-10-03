@@ -2,8 +2,8 @@
 title: 网络注意事项 - Azure 专用 HSM | Microsoft Docs
 description: 适用于 Azure 专用 HSM 部署的网络注意事项概述
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: barclayn
-ms.openlocfilehash: d6672827a87fbb949237d51310f1a9febc192ff2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: mbaldwin
+ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886331"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881281"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 专用 HSM 网络
 
@@ -60,7 +60,7 @@ Azure 专用 HSM 需要高度安全的网络环境。 无论是要 Azure 云连�
 
 ### <a name="site-to-site-vpn"></a>站点到站点 VPN
 
-使用站点到站点虚拟专用网络可在基于 Azure 的专用 HSM 与本地 IT 之间实现安全通信。 若要执行此操作的原因让一个备份工具，以便在 HSM 内部应用程序和需要两个用于运行备份之间的连接。
+使用站点到站点虚拟专用网络可在基于 Azure 的专用 HSM 与本地 IT 之间实现安全通信。 这样做的一个原因是，在本地有一个用于 HSM 的备份设备，并且需要两个连接才能运行备份。
 
 ## <a name="connecting-virtual-networks"></a>连接虚拟网络
 

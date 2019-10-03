@@ -1,19 +1,19 @@
 ---
 title: 使用 DistCp 将数据复制到 Azure Data Lake Storage Gen2 | Microsoft Docs
 description: 使用 DistCp 工具将数据复制到 Data Lake Storage Gen2 和从中复制数据
-services: storage
-author: seguler
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: seguler
-ms.openlocfilehash: 3b58dc8dabc55ba428ce6e35091a6947e5f4a824
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678371"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543669"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据
 
@@ -21,7 +21,7 @@ ms.locfileid: "59678371"
 
 DistCp 提供了各种命令行参数，强烈建议你阅读本文以优化对 DistCp 的使用。 本文介绍了基本功能，同时重点介绍了如何使用 DistCp 将数据复制到支持分层命名空间的帐户。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **未启用 Data Lake Storage Gen2 功能（分层命名空间）的现有 Azure 存储帐户**。
@@ -41,7 +41,7 @@ HDInsight 群集附带 DistCp 实用工具，该实用工具可用于从不同�
 
     输出应提供容器中内容的列表。
 
-3. 同样，验证是否可从此群集访问启用分层命名空间的存储帐户。 运行以下命令：
+3. 同样，验证是否可从此群集访问启用分层命名空间的存储帐户。 运行下面的命令：
 
         hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
 
@@ -65,7 +65,7 @@ HDInsight 群集附带 DistCp 实用工具，该实用工具可用于从不同�
 
 **示例**
 
-    hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder -m 100
+    hadoop distcp -m 100 wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>如何确定要使用的映射器数？
 

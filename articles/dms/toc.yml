@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是数据库迁移服务 (DMS)？
+    - name: 什么是 Azure 数据库迁移服务？
       href: dms-overview.md
 - name: 快速入门
   items:
@@ -10,50 +10,65 @@
       href: quickstart-create-data-migration-service-portal.md
 - name: 教程
   items:
-    - name: 以脱机方式将 SQL Server 迁移到 Azure SQL DB
+    - name: 将 SQL Server 脱机迁移到 Azure SQL DB 单一数据库
       href: tutorial-sql-server-to-azure-sql.md
-    - name: 以联机方式将 SQL Server 迁移到 Azure SQL DB
+    - name: 将 SQL Server 联机迁移到 Azure SQL DB 单一数据库
       href: tutorial-sql-server-azure-sql-online.md
-    - name: 以脱机方式将 SQL Server 迁移到 Azure SQL DB 托管实例
+    - name: 将 SQL Server 脱机迁移到 Azure SQL DB 托管实例
       href: tutorial-sql-server-to-managed-instance.md
-    - name: 以联机方式将 SQL Server 迁移到 Azure SQL DB 托管实例
+    - name: 将 SQL Server 联机迁移到 Azure SQL DB 托管实例
       href: tutorial-sql-server-managed-instance-online.md
-    - name: 以联机方式将 RDS SQL Server 迁移到 Azure SQL DB 或 Azure SQL DB 托管实例
+    - name: 将 RDS SQL Server 联机迁移到 Azure SQL DB 单一数据库或 Azure SQL DB 托管实例
       href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
     - name: 以联机方式将 MySQL 迁移到 Azure DB for MySQL
       href: tutorial-mysql-azure-mysql-online.md
-    - name: 以联机方式将 PostgreSQL 迁移到 Azure DB for PostgreSQL
+    - name: 以联机方式将 RDS MySQL 迁移到 Azure DB for MySQL
+      href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
+    - name: 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL 单一服务器
       href: tutorial-postgresql-azure-postgresql-online.md
+    - name: 将 RDS PostgreSQL 联机迁移到 Azure DB for PostgreSQL 单一服务器
+      href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - name: 以脱机方式将 MongoDB 迁移到 Azure Cosmos DB Mongo API
       href: tutorial-mongodb-cosmos-db.md
     - name: 以联机方式将 MongoDB 迁移到 Azure Cosmos DB Mongo API
       href: tutorial-mongodb-cosmos-db-online.md
+    - name: 将 Oracle 联机迁移到 Azure Database for PostgreSQL 单一服务器
+      href: tutorial-oracle-azure-postgresql-online.md
 - name: 操作指南
   items:
-    - name: 使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB
+    - name: 使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB 单一数据库
       href: howto-sql-server-to-azure-sql-powershell.md
-    - name: 使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB MI
+    - name: 使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB 托管实例
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: 监视迁移活动
       href: how-to-monitor-migration-activity.md
-    - name: 将 SSIS 包迁移到 Azure
+    - name: 将 SSIS 包重新部署到 Azure SQL 数据库单一数据库
       href: how-to-migrate-ssis-packages.md
+    - name: 将 SSIS 包重新部署到 Azure SQL 数据库托管实例
+      href: how-to-migrate-ssis-packages-managed-instance.md
 - name: 资源
+  expanded: true
   items:
     - name: 数据库迁移方案状态
       href: resource-scenario-status.md
     - name: 先决条件概述
       href: pre-reqs.md
-    - name: Azure SQL DB 托管实例迁移的网络拓扑
+    - name: 用于 Azure SQL DB 托管实例迁移的网络拓扑
       href: resource-network-topologies.md
-    - name: 已知问题
+    - name: 故障排除和已知问题
       items:
-        - name: 已知问题 - 联机迁移到 Azure SQL DB
+        - name: 排查源数据库连接问题
+          href: known-issues-troubleshooting-dms-source-connectivity.md
+        - name: 排查常见问题和错误
+          href: known-issues-troubleshooting-dms.md
+        - name: 已知问题 - 联机迁移到 Azure SQL DB 单一数据库
           href: known-issues-azure-sql-online.md
         - name: 已知问题 - 联机迁移到 Azure DB for MySQL
           href: known-issues-azure-mysql-online.md
-        - name: 已知问题 - 联机迁移到 Azure DB for PostgreSQL
+        - name: 已知问题 - 从 PostgreSQL 联机迁移到 Azure DB for PostgreSQL 单一服务器
           href: known-issues-azure-postgresql-online.md
+        - name: 已知问题 - 从 Oracle 联机迁移到 Azure DB for PostgreSQL 单一服务器
+          href: known-issues-oracle-azure-postgresql-online.md
     - name: 视频
       items:
         - name: 使用数据库迁移指南
@@ -76,7 +91,7 @@
       items:
         - name: 可用于数据迁移方案的服务和工具
           href: dms-tools-matrix.md
-        - name: 数据库迁移指南
+        - name: Azure 数据库迁移指南
           href: 'https://aka.ms/datamigration'
         - name: 数据迁移助手
           href: 'https://aka.ms/dma'
@@ -84,6 +99,8 @@
           href: 'https://aka.ms/ssma'
         - name: 数据库实验助手
           href: 'https://aka.ms/dea-docs'
+        - name: 数据访问迁移工具包
+          href: 'https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit'
     - name: 常见问题
       href: faq.md
     - name: User Voice 反馈

@@ -3,8 +3,8 @@ title: 如何配置应用程序代理应用程序以使用 PingAccess | Microsof
 description: 了解如何使用 PingAccess 将应用程序代理的优势扩展到使用基于标头的身份验证的应用程序
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a80d2fbf42cad333ba8779973be3a9710210646
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: d555aaf99470588bb3ed2b328adb3e99f6c4a50e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198263"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65783985"
 ---
 # <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>如何配置应用程序代理应用程序以使用 PingAccess
 

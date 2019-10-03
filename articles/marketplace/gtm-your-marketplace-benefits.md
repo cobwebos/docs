@@ -1,83 +1,112 @@
 ---
-title: 市场推广服务 - 市场权益 | Azure
+title: 市场推广服务-你的商业应用商店权益 |Microsoft
 description: 本部分介绍发布者可以使用的市场推广服务 - Microsoft 资源。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
+services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
-ms.date: 01/12/2019
-ms.author: ellacroi
-ms.openlocfilehash: 896e5a3f3b5c9f7d217340c396707718adf93dbb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/10/2019
+ms.author: v-qiwe
+ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788589"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962705"
 ---
-# <a name="your-marketplace-benefits"></a>市场权益
+# <a name="your-commercial-marketplace-benefits"></a>你的商业应用商店权益
 
-在发布旅程中，需要为套餐创建技术和营销资产。 因此，Azure 市场和 AppSource 发布者可以使用某些技术和营销权益来改善套餐的客户参与度。 你可能发现以下技术资源非常有用。
+你已发布到 marketplace，现在你想要了解你的产品/服务是否成功。 我们为你提供了权益–销售、技术和营销，你需要加速产品/服务的增长。
 
-## <a name="technical-resources-provided-by-microsoft"></a>Microsoft 提供的技术资源
+当你开始使用你的产品/服务时，Marketplace 奖励团队将与你合作，以了解你的合格权益。 Marketplace 收益权益基于你的商业应用商店参与和销售。 你的参与越多，返回的越多。
 
-创建套餐时，可以利用大量的 Microsoft 资源（咨询技术专家），或获取市场特定解决方案的测试支持。
+## <a name="marketplace-rewards"></a>Marketplace 奖励
 
-随时可以使用技术资源。  下表列出了权益：
+Marketplace 奖励旨在支持你在增长的特定阶段，从了解活动开始，帮助你获取第一个客户。 当你通过 marketplace 发展时，你将能够解锁旨在帮助你转换客户和结束交易的新权益。 
 
-![](./media/marketplace-publishers-guide/technical-benefit-table.png)
+该计划将创建一个积极的反馈循环：每个增长阶段的优势旨在使你前进到下一阶段，使你能够将你的业务发展到 Microsoft 客户、Microsoft 现场，以及通过利用商业市场作为平台。 
 
-## <a name="how-to-access-microsoft-resources"></a>如何访问 Microsoft 资源
+你的权益取决于你的产品/服务是[列表、试用还是](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)活动。
 
-最近发布了套餐的合作伙伴可以享受市场推广权益。 
+当你的产品/服务根据你的资格向现场时，奖励团队的成员会联系你。 
 
-1. 登记：[注册](https://azuremarketplace.microsoft.com/sell)后即可访问云合作伙伴门户和登记支持资源。
-2. Microsoft 市场咨询：利用此[免费咨询](https://support.microsoft.com/help/4010317/microsoft-marketplaces-consultation)服务来帮助规划市场中应用的体系结构。
-3. 市场论坛：在[市场论坛](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)直接向 Microsoft 员工和其他市场合作伙伴提问。
-4. 技术支持：使用[云合作伙伴门户](https://cloudpartner.azure.com/)中的“帮助”菜单获取市场相关支持问题的帮助。 
-5. 开发测试赞助：查看以下资格条件，并使用[注册表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3omd2bW7etLoEoufw2-vMdUNUkxSjQ5V0hJOEtZSks3ME45TDJNTkVUTi4u)提交赞助请求：
-    * 开发和测试赞助适用于向 Azure 市场发布套餐。
-    * 该基金不可用于任何其他目的。
-    * 奖励额度为 5,000 美元，可在 90 天内使用，从在分配的订阅中执行第一项操作开始算起。
-    * 所测试的应用必须在发放基金的最后一天之后的 30 天内，在 Azure 市场中上线：例如，如果在 12 月 1 日开始使用此笔基金，则应用必须在 3 月 31 日之前上线。
+对于业务合作伙伴，当你通过 marketplace 平台增加了计费的销售时，你可以为每个层解锁更多权益。 
 
-## <a name="go-to-market-gtm-benefits-in-the-marketplace"></a>市场中的市场推广 (GTM) 权益
+在商店中发布的最低要求是一个 MPNID，因此，所有合作伙伴都可以使用这些权益，而不考虑 MPN 的胜任度状态或合作伙伴类型。 每个合作伙伴都可以通过 marketplace 作为平台来拓展其业务。 
 
-Azure 市场和 AppSource 中的新商品都有资格通过 Microsoft GTM 服务团队接受免费的市场 GTM 权益。 此团队将帮助你优化商品，并提高解决方案在 Microsoft 市场中的关注度。
+你将获得对了解你的可用资源以及实现最佳方案的支持，你还可以在自己的中[查看](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)这些资源。 
 
-| 店面 | 提供的其他权益 |
-|:--- |:--- |
-| AppSource |  Microsoft 金牌合作伙伴 <br> 试用版应用 |
-| Azure 市场 | 事务处理产品/服务 <br> 试用版产品/服务 |
+[市场奖励计划](https://aka.ms/marketplacerewards)中有所有计划权益的详细说明。
 
-GTM 支持包括模板、Web 内容、培训以及用于推广业务的工具。
+入门步骤非常简单：
 
-若要享受这些权益，需要：
+1. 在 Microsoft AppSource 或 Azure Marketplace 中发布产品/服务。
+2. 团队可以访问每个 marketplace 产品的 "所有者" 或 "主要联系人"。 最佳做法是输入定期检查的个人或别名：发送给别名的消息（例如， info@company.com通常会丢失）。
 
-1. 在 Azure 市场或 AppSource 中发布套餐。
-2. 确保已在套餐的“联系信息”部分输入了营销联系人。 这应该是专用的营销资源，而不是统括式的别名。 （即，请避免使用“support\@”、“info\@”、“marketing\@”等。）
+>[!Note]
+>如果产品/服务的运行时间已超过四周并且尚未收到消息，请通过查看云合作伙伴门户或合作伙伴中心来查看你的组织中是否有该产品/服务的所有者。 它们应该具有通信和后续步骤。 <br> <br> 如果你无法确定所有者，或者所有者离开了你的公司，你可以在处 https://aka.ms/marketplacepublishersupport 提出一个支持票证。
 
-基于解决方案的状态，产品/服务列表、 试用版，或 Transact，您将收到包含自助资源的电子邮件或咨询调用与专用 Engagement 管理器的邀请。 你不需要做任何事就能发起呼叫 — 市场登记团队会根据你在[云合作伙伴门户](https://cloudpartner.azure.com/)中提供的信息与你取得联系。
+随着市场中套餐的不断增加，可用的活动范围也会不断扩大。 所有列表都接收基本级别的优化建议和促销活动，作为自助服务电子邮件的一部分，以及最佳做法。
 
-随着市场中套餐的不断增加，可用的活动范围也会不断扩大。 所有商品都会收到基本级别的优化建议和升级。  这些列表还有其他基于解决方案的状态 （列表、 试用版或 Transact） 选择 marketplace 和 Microsoft 合作伙伴的资格认证成就的市场营销权益资格。
+## <a name="list-trial-and-consulting-benefits"></a>列出、试用和咨询权益
 
-下表汇总了资格要求：
+如果发布试用或咨询概念证明、实现或研讨会，将为你分配一个订婚经理三个月的时间，他们将帮助指导你完成走向市场计划。 每次发布新产品/服务时，你可以重复此三个月的服务，以帮助你开始每个新产品/服务成功启动。
 
-![](./media/marketplace-publishers-guide/gtm-activities-table.png)
+下表总结了列出和试用产品/服务的资格要求：
 
-\* 需要银级或金级资质。 <br>
-\*\* 需要金级资质。 <br>
-\*\*\* 需要金级资格和合作伙伴编目中共同销售做好准备。 <br>
-^ 仅限事务处理，适用于 Azure 市场。
+![市场推广优势](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
+
+[市场奖励计划](https://aka.ms/marketplacerewards)中提供了所有这些优势的详细说明。
+
+## <a name="marketplace-rewards-for-transact-partners"></a>适用于交易合作伙伴的 Marketplace 奖励
+
+当你在 Azure Marketplace 或 Microsoft AppSource 中开始使用你的事务产品/服务时，你可以在通过商业市场增长计费的销售交易时，访问其他权益。 
+
+这些优势旨在为您提供营销、销售和技术活动，从而帮助您获得更多的访问者、获得更多的潜在客户，以及转换更多业务。
+
+所有具有现场产品/服务的合作伙伴均可与专用 engagement 经理合作，为你的 marketplace 产品/服务选择最高价值的活动。 此服务是每个产品的每个服务的长时间，这意味着您可以选择活动以及这些活动的时间，使之与公司更广泛的营销和销售策略的时间保持一致。 
+
+![市场营销权益](./media/marketplace-publishers-guide/marketing-benefit.png)
+
+![销售权益](./media/marketplace-publishers-guide/sales-benefit.png)
+
+![技术权益](./media/marketplace-publishers-guide/technical-benefit.png)
+
+[市场奖励计划](https://aka.ms/marketplacerewards)中提供了所有这些优势的详细说明。
+
+除了奖励权益外，已发布到 Microsoft AppSource 的业务应用程序合作伙伴可以通过[ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview)为其提供补充编程。 这包括专门满足业务应用程序合作伙伴需求的技术、营销和销售支持。
+
+## <a name="marketplace-rewards-requirements-and-restrictions"></a>Marketplace 奖励要求和限制
+
+### <a name="publisher-agreement"></a>发布者协议
+
+本页面上所述的所有活动都包含在[marketplace 发布者协议](https://docs.microsoft.com/legal/marketplace/terms)中，并遵循商业权益计划附录。
+
+### <a name="cancellation-policy"></a>取消策略
+
+[列表和试用](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)出版商可以选择加入或选择退出每个产品/服务发布的活动。 合作伙伴可以随时选择退出任何活动。 
+
+Microsoft 保留吊销和终止市场奖励权益的权利： 
+
+* 使用其 marketplace 列表参与非法活动。
+* 从商业应用商店中取消列出。 
+* 使用其产品/服务可显示违反版权或商标法律的营销或其他内容。
+* 违反[azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)的策略，包括但不限于使用 azure 赞助资金进行其自己的内部操作或 bitcoin 挖掘。 
+
+### <a name="offer-availability"></a>产品/服务可用性
+
+此产品/服务在 Azure Marketplace 或 Microsoft AppSource 中提供实时产品/服务的所有合作伙伴。
+
+验证为欺诈性的交易将不计入出版商的[帐单销售计划层](https://aka.ms/marketplacepublisherrewards)，如列[表、试用、咨询](#list-trial-and-consulting-benefits)部分、"[交易合作伙伴权益](#marketplace-rewards-for-transact-partners)" 部分和[详细的计划](https://aka.ms/marketplacepublisherrewards)中所述. 删除欺诈后，Microsoft 会根据其实际计费的销售，将合作伙伴分配到资格级别。 
 
 ## <a name="next-steps"></a>后续步骤
 
-登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，以便创建并配置套餐。
+如果在[云合作伙伴门户](https://cloudpartner.azure.com)中创建了产品/服务，请登录以创建或配置产品/服务。
+
+如果你在[合作伙伴中心](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)创建了你的产品/服务，请登录以创建或配置你的产品/服务。
+
+查看[可供你使用的自助服务资源](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
+
+注册[Microsoft AppSource 和 Azure Marketplace 社区论坛](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)，了解相关主题或加入讨论。
 
 ---

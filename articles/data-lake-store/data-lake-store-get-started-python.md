@@ -1,5 +1,5 @@
 ---
-title: Python:帐户管理操作在 Azure 数据湖存储 Gen1 |Microsoft Docs
+title: Python:Azure Data Lake Storage Gen1 上的帐户管理操作 |Microsoft Docs
 description: 了解如何使用 Python SDK 处理 Azure Data Lake Storage Gen1 帐户管理操作。
 services: data-lake-store
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b6ef5a5c12bb766fb7106d5c7a8189c4b92980d2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 494959e071fb5777f9a815b5bde4bd093cf10bd6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880196"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088784"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>使用 Python 对 Azure Data Lake Storage Gen1 进行的帐户管理操作
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "58880196"
 
 了解如何通过用于 Azure Data Lake Storage Gen1 的 Python SDK 执行基本的帐户管理操作，例如创建 Data Lake Storage Gen1 帐户、列出 Data Lake Storage Gen1 帐户，等等。若要了解如何使用 Python 在 Data Lake Storage Gen1 上执行文件系统操作，请参阅[在 Data Lake Storage Gen1 上使用 Python 进行的文件系统操作](data-lake-store-data-operations-python.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用的是 Python 3.6.2。
 
@@ -42,7 +42,7 @@ ms.locfileid: "58880196"
 若要通过 Python 使用 Data Lake Storage Gen1，需要安装三个模块。
 
 * `azure-mgmt-resource` 模块，包括用于 Active Directory 的 Azure 模块，等等。
-* `azure-mgmt-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 帐户管理操作。 有关此模块的详细信息，请参阅 [Azure Data Lake Storage Gen1 管理模块参考](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)。
+* `azure-mgmt-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 帐户管理操作。 有关此模块的详细信息，请参阅 [Azure Data Lake Storage Gen1 管理模块参考](/python/api/azure-mgmt-datalake-store/)。
 * `azure-datalake-store` 模块，包括 Azure Data Lake Storage Gen1 文件系统操作。 有关此模块的详细信息，请参阅 [azure-datalake-store 文件系统模块参考](https://azure-datalake-store.readthedocs.io/en/latest/)。
 
 使用以下命令安装这些模块。
@@ -86,7 +86,7 @@ pip install azure-datalake-store
 
 3. 将更改保存到 mysample.py。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 本部分介绍有关使用 Azure AD 进行身份验证的不同方式。 可用选项包括：
 
@@ -133,7 +133,7 @@ pip install azure-datalake-store
 ## <a name="next-steps"></a>后续步骤
 * [使用 Python 在 Data Lake Storage Gen1 上进行的文件系统操作](data-lake-store-data-operations-python.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [azure-datalake-store Python（文件系统）参考](https://azure-datalake-store.readthedocs.io/en/latest)
 * [与 Azure Data Lake Storage Gen1 兼容的开源大数据应用程序](data-lake-store-compatible-oss-other-applications.md)

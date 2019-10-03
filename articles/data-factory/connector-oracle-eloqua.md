@@ -10,23 +10,28 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: bb0e146ef32ba24c3911bae86806c84768c005ef
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 3c29ec0283caa2b20d7974ed11748080b3dc0339
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023781"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089989"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Oracle Eloqua 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Oracle Eloqua 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!IMPORTANT]
-> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
+> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 Oracle Eloqua 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 Oracle Eloqua 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -45,7 +50,7 @@ Oracle Eloqua 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Eloqua | 是 |
-| endpoint | Eloqua 服务器的终结点。 Eloqua 支持多个数据中心，用于确定终结点、使用凭据登录 https://login.eloqua.com，然后通过 `xxx.xxx.eloqua.com` 模式从重定向 URL 复制“基 URL”部分。 | 是 |
+| endpoint | Eloqua 服务器的终结点。 Eloqua 支持多个数据中心，用于确定终结点、使用凭据登录 https://login.eloqua.com ，然后通过 `xxx.xxx.eloqua.com` 模式从重定向 URL 复制“基 URL”部分。 | 是 |
 | username | Eloqua 帐户的站点名称和用户名采用以下格式：`SiteName\Username`，例如 `Eloqua\Alice`。  | 是 |
 | password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
@@ -89,11 +94,12 @@ Oracle Eloqua 链接服务支持以下属性：
     "name": "EloquaDataset",
     "properties": {
         "type": "EloquaObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Eloqua linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -104,7 +110,7 @@ Oracle Eloqua 链接服务支持以下属性：
 
 ### <a name="eloqua-as-source"></a>以 Eloqua 作为源
 
-要从 Oracle Eloqua 复制数据，请将复制活动中的源类型设置为“EloquaSource”。 复制活动源部分支持以下属性：
+要从 Oracle Eloqua 复制数据，请将复制活动中的源类型设置为“EloquaSource”。 复制活动**source**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -142,6 +148,11 @@ Oracle Eloqua 链接服务支持以下属性：
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂支持的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

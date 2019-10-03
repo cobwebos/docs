@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b1f02e01fef95bdd06930aa30479dd16d40675ce
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794432"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812554"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor 中的 Linux 代理上通过 CollectD 收集数据
 [CollectD](https://collectd.org/) 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集性能指标。 示例应用程序包括 Java 虚拟机 (JVM)、MySQL Server 和 Nginx。 本文介绍了如何在 Azure Monitor 中通过 CollectD 收集性能数据。
@@ -69,6 +69,8 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
       type filter_collectd
     </filter>
 
+> [!NOTE]
+> 默认情况下，CollectD 设置为以10秒的[间隔](https://collectd.org/wiki/index.php/Interval)读取值。 由于这会直接影响发送到 Azure Monitor 日志的数据量，因此您可能需要在 CollectD 配置中调整此时间间隔，以便在监视要求和相关成本与 Azure Monitor 日志的使用情况之间取得良好的平衡。
 
 ## <a name="versions-supported"></a>支持的版本
 - Azure Monitor 当前支持 CollectD 4.8 版及更高版本。
@@ -112,9 +114,9 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 
 | CollectD 指标字段 | Azure Monitor 字段 |
 |:--|:--|
-| `host` | Computer |
+| `host` | 计算机 |
 | `plugin` | 无 |
-| `plugin_instance` | Instance Name<br>如果 **plugin_instance** 为 null，则 InstanceName="_Total" |
+| `plugin_instance` | 实例名称<br>如果 **plugin_instance** 为 null，则 InstanceName="_Total" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>如果 **type_instance** 为 null，则 CounterName=**空白** |
 | `dsnames[]` | CounterName |

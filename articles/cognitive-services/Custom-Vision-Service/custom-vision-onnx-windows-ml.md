@@ -1,6 +1,6 @@
 ---
 title: 教程：结合使用 ONNX 模型和 Windows ML - 自定义视觉服务
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何创建使用从 Azure 认知服务导出的 ONNX 模型的 Windows UWP 应用。
 services: cognitive-services
 author: larryfr
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: larryfr
-ms.openlocfilehash: af1b96b4ab47053a6737893832b484372ed37e99
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 65956ab9fa182794b4cb9ac1fc1800198f2dcdaa
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351858"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561114"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>教程：结合使用自定义视觉服务 ONNX 模型和 Windows ML（预览版）
 
@@ -35,7 +35,7 @@ ms.locfileid: "58351858"
 
 * 适用于内部版本 17738 或更高版本的 Windows SDK
 
-* 启用了“通用 Windows 平台开发”工作负载的 Visual Studio 2017 版本 15.7 或更高版本。
+* 启用了“通用 Windows 平台开发”工作负载的 Visual Studio 2017 版本 15.7 或更高版本  。
 
 * 已启用的“开发人员模式”。 有关详细信息，请参阅[启用设备以用于开发](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)文档。
 
@@ -57,13 +57,13 @@ ms.locfileid: "58351858"
 
 要使用自己的模型，请按照以下步骤操作：
 
-1. 使用自定义视觉服务[创建和训练](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)一个分类器。 若要导出模型，请选择一个“压缩”域，例如“常规(压缩)”。 若要导出现有的分类器，请选择右上角的齿轮图标，将域转换为压缩域。 在“设置”中，选择一个压缩模型，进行保存，然后训练项目。  
+1. 使用自定义视觉服务[创建和训练](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)一个分类器。 若要导出模型，请选择一个“压缩”域，例如“常规(压缩)”。   若要导出现有的分类器，请选择右上角的齿轮图标，将域转换为压缩域。 在“设置”中，选择一个压缩模型，进行保存，然后训练项目。   
 
-1. 转到“性能”选项卡即可[导出模型](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)。选择一个使用压缩域训练的迭代，此时会显示“导出”按钮。 选择“导出”、“ONNX”、“ONNX1.2”，然后选择“导出”。 文件就绪以后，请选择“下载”按钮。
+1. 转到“性能”选项卡即可[导出模型](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)。选择一个使用压缩域训练的迭代，此时会显示“导出”按钮。 选择“导出”、“ONNX”、“ONNX1.2”，然后选择“导出”。     文件就绪以后，请选择“下载”按钮  。
 
 1. 将 ONNX 文件拖到项目的 __Assets__ 文件夹中。 
 
-1. 在解决方案资源管理器中，右键单击 Assets 文件夹，然后选择“添加现有项”。 选择 ONNX 文件。
+1. 在解决方案资源管理器中，右键单击 Assets 文件夹，然后选择“添加现有项”。  选择 ONNX 文件。
 
 1. 在解决方案资源管理器中，从 Assets 文件夹选择 ONNX 文件。 更改文件的以下属性：
 
@@ -85,4 +85,4 @@ ms.locfileid: "58351858"
 * [在 Swift iOS 应用中使用导出的 CoreML 模型](https://go.microsoft.com/fwlink/?linkid=857726)
 * [在带 Xamarin 的 iOS 应用程序中使用导出的 CoreML 模型](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
 
-有关结合使用 ONNX 模型和 Windows ML 的详细信息，请参阅[使用 Windows ML 将模型集成到应用](https://docs.microsoft.com/windows/uwp/machine-learning/integrate-model)文档。
+有关结合使用 ONNX 模型和 Windows ML 的详细信息，请参阅[使用 Windows ML 将模型集成到应用](/windows/ai/windows-ml/integrate-model)文档。

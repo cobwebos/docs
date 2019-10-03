@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: dc27ea0552c6135d01256586b1746219caac17f1
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 70d777fe2e939c1871bc318eed439214fd3e3f60
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539864"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155735"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用远程工具排查 Azure VM 问题
 
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!Note]
 >* 必须在位于同一 VNET 中的计算机上运行该命令。
->* 可以使用 DIP 或主机名替换\<计算机 >。
+>* 可以使用 DIP 或主机名来替换 \<computer>。
 >* -s 参数确保使用系统帐户（管理员权限）调用命令。
 >* PsExec 使用 TCP 端口 135 和 445。 因此，需要在防火墙中打开这两个端口。
 
@@ -91,7 +91,7 @@ Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccount
 
 ### <a name="for-v2-vms"></a>对于 V2 VM
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ```powershell
 #Setup the basic variables

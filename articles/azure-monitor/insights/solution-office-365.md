@@ -6,22 +6,30 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: ''
-ms.service: operations-management-suite
+ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58794013"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061598"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
 ![Office 365 徽标](media/solution-office-365/icon.png)
+
+
+> [!NOTE]
+> 安装和配置 Office 365 解决方案的建议方法是在[Azure Sentinel](../../sentinel/overview.md)中启用[office 365 连接器](../../sentinel/connect-office-365.md), 而不是使用本文中的步骤。 这是 Office 365 解决方案的更新版本, 具有改进的配置体验。 若要连接 Azure AD 日志, 可以使用[Azure Sentinel Azure AD 连接器](../../sentinel/connect-azure-active-directory.md)或[配置 Azure AD 诊断设置](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), 该设置可提供比 Office 365 管理日志更丰富的日志数据。 
+>
+> 载入[Azure Sentinel](../../sentinel/quickstart-onboard.md)时, 请指定要在其中安装 Office 365 解决方案的 Log Analytics 工作区。 启用连接器后, 该解决方案将在工作区中提供, 并使用与已安装的任何其他监视解决方案完全相同的。
+>
+> Azure 政府云的用户必须按照本文中的步骤安装 Office 365，因为 Azure Sentinel 在政府云中尚不可用。
 
 通过 Office 365 管理解决方案，可在 Azure Monitor 中监视 Office 365 环境。
 
@@ -31,9 +39,10 @@ ms.locfileid: "58794013"
 - 演示审核和符合性。 例如，可监视对机密文件的文件访问操作，这对审核和符合性进程有所帮助。
 - 通过对组织的 Office 365 活动数据使用[日志查询](../log-query/log-query-overview.md)，执行操作故障排除。
 
+
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 需要以下各项才能安装和配置此解决方案。
 
@@ -74,45 +83,46 @@ ms.locfileid: "58794013"
 
 1. 通过 [https://portal.azure.com](https://portal.azure.com/) 登录到 Azure 门户。
 1. 依次选择“Azure Active Directory”和“应用注册”。
-1. 单击“新建应用程序注册”。
+1. 单击 "**新建注册**"。
 
     ![添加应用注册](media/solution-office-365/add-app-registration.png)
-1. 输入应用程序名称和登录 URL。  名称应是描述性的。  使用`http://localhost`URL 和保持_Web 应用 / API_为**应用程序类型**
+1. 输入应用程序**名称**。 为**支持的帐户类型**选择**任何组织目录中的帐户 (任何 Azure AD Directory-多租户)** 。
     
     ![创建应用程序](media/solution-office-365/create-application.png)
-1. 单击“创建”并验证应用程序信息。
+1. 单击 "**注册**" 并验证应用程序信息。
 
     ![已注册的应用](media/solution-office-365/registered-app.png)
 
 ### <a name="configure-application-for-office-365"></a>为 Office 365 配置应用程序
 
-1. 单击“设置”以打开“设置”菜单。
-1. 选择“属性”。 将“多租户”更改为“是”。
+1. 选择 "**身份验证**", 并验证是否在 "**支持的帐户类型**" 下选择了**任何组织目录中的帐户 (任何 Azure AD directory-多租户)** 。
 
     ![设置多租户](media/solution-office-365/settings-multitenant.png)
 
-1. 在“设置”菜单中选择“所需权限”，然后单击“添加”。
-1. 单击“选择 API”，然后单击“Office 365 管理 API”。 单击“Office 365 管理 API”。 单击“选择”。
+1. 依次选择 " **API 权限**" 和 "**添加权限**"。
+1. 单击 " **Office 365 管理 api**"。 
 
     ![选择 API](media/solution-office-365/select-api.png)
 
-1. 在“选择权限”下，为“应用程序权限”和“委派的权限”选择以下选项：
+1. 在**应用程序所需的权限类型**下, 为**应用程序权限**和**委托权限**选择以下选项:
    - 读取组织的服务运行状况信息
    - 读取组织的活动数据
    - 读取组织的活动报表
 
-     ![选择 API](media/solution-office-365/select-permissions.png)
+     ![选择 API](media/solution-office-365/select-permissions-01.png)![选择 API](media/solution-office-365/select-permissions-02.png)
 
-1. 依次单击“选择”、“完成”。
-1. 单击“授予权限”，然后在要求确认时单击“是”。
+1. 单击“添加权限”。
+1. 单击 "**授予管理员许可**", 然后在要求验证时单击 **"是"** 。
 
-    ![授予权限](media/solution-office-365/grant-permissions.png)
 
-### <a name="add-a-key-for-the-application"></a>为应用程序添加密钥
+### <a name="add-a-secret-for-the-application"></a>为应用程序添加机密
 
-1. 在“设置”窗口中选择“密钥”。
+1. 选择**证书 & 机密**, 然后选择**新的客户端密码**。
+
+    ![密钥](media/solution-office-365/secret.png)
+ 
 1. 键入新密钥的说明和持续时间。
-1. 单击“保存”，然后复制生成的值。
+1. 单击 "**添加**", 然后复制生成的**值**。
 
     ![密钥](media/solution-office-365/keys.png)
 
@@ -173,7 +183,7 @@ ms.locfileid: "58794013"
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
     ```
 
-    示例：
+    例如：
 
     ```
     .\office365_consent.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631- yyyyyyyyyyyy'
@@ -363,7 +373,7 @@ ms.locfileid: "58794013"
     .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
     ```
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 如果应用程序已订阅此工作区或者此租户已订阅另一个工作区，则可能会看到以下错误。
 
@@ -560,14 +570,14 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 Active Directory 用户尝试登录时，将创建这些记录。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectoryAccountLogon |
-| Application | 触发帐户登录事件的应用程序，如 Office 15。 |
-| Client | 有关客户端设备、设备操作系统和用于帐户登录事件的设备浏览器的详细信息。 |
-| LoginStatus | 此属性直接从 OrgIdLogon.LoginStatus 获取。 可通过警报算法完成各种关注的登录失败的映射。 |
-| UserDomain | 租户标识信息 (TII)。 | 
+| `OfficeWorkload` | AzureActiveDirectory |
+| `RecordType`     | AzureActiveDirectoryAccountLogon |
+| `Application` | 触发帐户登录事件的应用程序，如 Office 15。 |
+| `Client` | 有关客户端设备、设备操作系统和用于帐户登录事件的设备浏览器的详细信息。 |
+| `LoginStatus` | 此属性直接从 OrgIdLogon.LoginStatus 获取。 可通过警报算法完成各种关注的登录失败的映射。 |
+| `UserDomain` | 租户标识信息 (TII)。 | 
 
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
@@ -734,7 +744,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | 查询 | 说明 |
 | --- | --- |
 |Office 365 订阅上所有操作的计数 |OfficeActivity &#124; summarize count() by Operation |
-|SharePoint 网站的使用情况|OfficeActivity&#124;其中 OfficeWorkload = ~"sharepoint"&#124;汇总 count （） by SiteUrl\|按计数升序排序|
+|SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|
 |文件访问操作数（按用户类型）|search in (OfficeActivity) OfficeWorkload =~ "azureactivedirectory" and "MyTest"|
 |使用特定关键字搜索|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
 |监视 Exchange 上的外部操作|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|

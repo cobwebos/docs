@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cdc37ace4687fe978030f528dcd5cbc87da596f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b22d461d327e595908ea8cc18dd0d507fdc83ecd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855931"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907714"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 和 Spark 展开数据科研
 本文介绍如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。 它将指导完成[数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)所需的任务：数据引入和浏览、可视化、特征工程、建模和模型使用。 本文中的模型包括逻辑和线性回归、随机林和梯度提升树 (GBT)，以及两个常见的监管式机器学习任务：
@@ -32,14 +32,14 @@ ms.locfileid: "57855931"
 
 [HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) 是 Azure 托管的开放源代码 Spark 产品。 它还包括对 Spark 群集上 Jupyter Scala 笔记本的支持，并且可运行 Spark SQL 交互式查询以便对存储在 Azure Blob 存储中的数据进行转换、筛选和可视化。 本文中的 Scala 代码片段提供解决方案，并显示相关图表，以可视化安装在 Spark 群集上的 Jupyter 笔记本中运行的数据。 这些主题中的建模步骤具有代码，显示每种类型模型的定型、评估、保存和使用方式。
 
-本文中的设置步骤和代码适用于 Azure HDInsight 3.4 Spark 1.6。 但是，本文和 [Scala Jupyter Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration%20Modeling%20and%20Scoring%20using%20Scala.ipynb)中的代码是通用的，应该可以在任何 Spark 群集上使用。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与本文中显示的稍有不同。
+本文中的设置步骤和代码适用于 Azure HDInsight 3.4 Spark 1.6。 但是，本文和 [Scala Jupyter Notebook](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)中的代码是通用的，应该可以在任何 Spark 群集上使用。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与本文中显示的稍有不同。
 
 > [!NOTE]
 > 有关演示如何使用 Python 而非 Scala 完成端到端数据科学过程任务的主题，请参阅[在 Azure HDInsight 上使用 Spark 展开数据科学](spark-overview.md)。
 > 
 > 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 * 必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 中的说明。 在“选择群集类型”菜单上设置群集类型和版本。
 

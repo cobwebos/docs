@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 56514f5dcf4bfe205ef46ee64dcf4dcf638d4f62
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888573"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173155"
 ---
 #### <a name="to-configure-and-register-the-device"></a>配置和注册设备
 
@@ -19,10 +19,10 @@ ms.locfileid: "55888573"
 
 3. 系统会提示选择要为设备设置的语言。 指定语言，并按 **Enter**。
 
-4. 在显示的串行控制台菜单中，选择选项 1“以完全访问权限登录”。
-     完成步骤 5-12 以配置设备的最低要求的网络设置。 **需要在该设备的主动控制器上执行这些配置步骤。**  串行控制台菜单指示标题消息中的控制器状态。 如果未连接到主动控制器，请断开连接，并连接到主动控制器。
+4. 在显示的串行控制台菜单中，选择选项 1“以完全访问权限登录”  。
+     完成步骤 5-12 以配置设备的最低要求的网络设置。 **需要在该设备的主动控制器上执行这些配置步骤。** 串行控制台菜单指示标题消息中的控制器状态。 如果未连接到主动控制器，请断开连接，然后连接到主动控制器。
 
-5. 在命令提示符处，键入密码。 默认设备密码为 **Password1**。
+5. 在命令提示符下键入密码。 默认设备密码为 **Password1**。
 
 6. 键入以下命令： `Invoke-HcsSetupWizard`。
 
@@ -84,7 +84,7 @@ ms.locfileid: "55888573"
         Administrator Password:********
         Confirm Administrator Password:********
     ```
-11. 安装向导中的最后一步向 StorSimple Device Manager 服务注册设备。 为此，将需要在步骤 2 中获取的服务注册密钥。 提供注册密钥后，可能需要等待 2-3 分钟，然后设备才会被注册。
+11. 安装向导中的最后一步向 StorSimple Device Manager 服务注册设备。 为此，将需要在步骤 2 中获取的服务注册密钥。 提供注册密钥后，可能需要等待 2-3 分钟，然后再注册设备。
     
     > [!NOTE]
     > 可以随时按 Ctrl+C 退出安装向导。 如果已输入所有网络设置（DATA 0 的 IP 地址、子网掩码和网关），将保留这些条目。
@@ -109,12 +109,12 @@ ms.locfileid: "55888573"
 14. 返回到 Azure 门户并完成以下步骤：
     
     1. 转到 StorSimple Device Manager 服务。
-    2. 单击“设备”。
-    3. 在设备的表格式列表中，通过查看状态验证该设备是否已成功连接到该服务。 设备状态应为“就绪可设置”。
+    2. 单击“设备”。 
+    3. 在设备的表格式列表中，通过查看状态验证该设备是否已成功连接到该服务。 设备状态应为“就绪可设置”  。
        
         ![StorSimple 设备页](./media/storsimple-8000-configure-and-register-device-u2/step3pssetup2.png)
        
-        可能需要等待几分钟时间，设备状态才会更改为“就绪可设置”。
+        可能需要等待几分钟时间，设备状态才会更改为“就绪可设置”。 
        
         如果设备没有显示在此列表中，则需要确保已按 [StorSimple 设备的网络要求](../articles/storsimple/storsimple-8000-system-requirements.md)中所述配置了防火墙网络。 确认端口 9354 已对出站通信打开，因为 StorSimple 设备管理器服务到设备之间通信的服务总线将使用此端口。
 

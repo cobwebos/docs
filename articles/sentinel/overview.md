@@ -1,32 +1,29 @@
 ---
-title: 什么是 Azure Sentinel 预览版？| Microsoft Docs
+title: 什么是 Azure Sentinel？| Microsoft Docs
 description: 了解 Azure Sentinel、其重要功能和工作原理。
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2859df94b1418cfa9fbfaa341e6bf08b257875bf
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245278"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261869"
 ---
-# <a name="what-is-azure-sentinel-preview"></a>什么是 Azure Sentinel 预览版？
-
-> [!IMPORTANT]
-> Azure Sentinel 目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="what-is-azure-sentinel"></a>什么是 Azure Sentinel？
 
 Microsoft Azure Sentinel 是可缩放的云原生**安全信息事件管理 (SIEM)** 和**安全业务流程自动响应 (SOAR)** 解决方案。 Azure Sentinel 在整个企业范围内提供智能安全分析和威胁智能，为警报检测、威胁可见性、主动搜寻和威胁响应提供单一解决方案。 
 
@@ -52,25 +49,17 @@ Azure Sentinel 基于现有的各种 Azure 服务，原生集成了经过证实�
 
 ![数据收集器](./media/collect-data/collect-data-page.png)
 
-## <a name="dashboards"></a>仪表板
+## <a name="workbooks"></a>工作簿
 
-连接数据源后，可以选择[创建的专业仪表板](quickstart-get-visibility.md#dashboards)库，从数据源中获取见解。 每个仪表板完全可自定义 - 可以添加自己的逻辑或修改查询，或者从头开始创建仪表板。
+ [将数据源连接](quickstart-onboard.md) 到 Azure Sentinel 后，可以使用 Azure Sentinel 与 Azure Monitor 工作簿的集成来监视数据，这在创建自定义工作簿方面提供了多功能性。 虽然工作簿在 Azure Sentinel 中的显示方式有所不同，但可能有助于你了解如何[使用 Azure Monitor 工作簿创建交互式报表](../azure-monitor/app/usage-workbooks.md)。 Azure Sentinel 可让你跨数据创建自定义工作簿，并且还附带了内置的工作簿模板，使你可以在连接数据源后快速获得对数据的见解。
 
-仪表板使用高级分析提供交互式可视化效果，帮助安全分析师更好地了解攻击期间发生的情况。 使用调查工具可以基于任何数据深入调查任何领域，以快速推测出威胁上下文。 
-
-![仪表板](./media/overview/dashboards.png)
+![仪表板](./media/tutorial-monitor-data/access-workbooks.png)
 
 ## <a name="analytics"></a>分析
 
-为了帮助降低干扰并尽量减少需要检查和调查的警报数目，Azure Sentinel [使用分析将警报关联到案例](tutorial-detect-threats.md)。 **案例**是相关警报的分组，它们共同创建了可以调查和解决的、可处理的可能威胁。 可以按原样使用内置的关联规则，也可以使用它们作为起点来生成自己的关联规则。 Azure Sentinel 还提供机器学习规则用于映射网络行为，然后查找不同资源中的异常。 这些分析通过将有关不同实体的低保真度警报合并成潜在的高保真度安全事件，来关联问题点。
+为了帮助降低干扰并尽量减少需要检查和调查的警报数目，Azure Sentinel [使用分析将警报关联到事件](tutorial-detect-threats-built-in.md)。 **事件**是相关警报的分组，它们共同创建了可以调查和解决的、可处理的可能威胁。 可以按原样使用内置的关联规则，也可以使用它们作为起点来生成自己的关联规则。 Azure Sentinel 还提供机器学习规则用于映射网络行为，然后查找不同资源中的异常。 这些分析通过将有关不同实体的低保真度警报合并成潜在的高保真度安全事件，来关联问题点。
 
-![案例](./media/overview/cases.png)
-
-## <a name="user-analytics"></a>用户分析
-
-利用原生集成的机器学习 (ML) 和[用户分析](user-analytics.md)，Azure Sentinel 可帮助快速检测威胁。 Azure Sentinel 与 Azure 高级威胁防护无缝集成，可以分析用户的行为，并根据用户警报以及 Azure Sentinel 和 Microsoft 365 中的可疑活动模式，来确定用户的调查优先级。
-
-![用户分析](./media/overview/user-analytics.png)
+![事故](./media/tutorial-investigate-cases/incident-severity.png)
 
 
 ## <a name="security-automation--orchestration"></a>安全自动化和业务流程
@@ -82,23 +71,22 @@ Azure Sentinel 基于现有的各种 Azure 服务，原生集成了经过证实�
 ![攻略](./media/tutorial-respond-threats-playbook/logic-app.png)
 
 
-
 ## <a name="investigation"></a>调查
 
-Azure Sentinel [深入调查](tutorial-investigate-cases.md)工具可帮助你了解潜在安全威胁的范围和根本原因。 可在交互式图形中选择一个实体以提出有关特定实体的问题，然后向下钻取到该实体及其连接，以获取威胁的根本原因。 
+目前以预览版提供的 Azure Sentinel [深入调查](tutorial-investigate-cases.md)工具可帮助你了解潜在安全威胁的范围并找到根本原因。 可在交互式图形中选择一个实体以提出有关特定实体的问题，然后向下钻取到该实体及其连接，以获取威胁的根本原因。 
 
-![调查](./media/overview/investigation.png)
+![调查](./media/tutorial-investigate-cases/map-timeline.png)
 
 
 ## <a name="hunting"></a>搜寻
 
-根据 MITRE 框架使用 Azure Sentinel 的[强大搜寻式搜索和查询工具](hunting.md)，可以在触发警报之前，主动搜寻组织的不同数据源中的安全威胁。 发现哪个搜寻式查询可以提供有关潜在攻击的宝贵见解后，还可以基于该查询创建自定义检测规则，并将这些见解作为警报传达给安全事件响应者。 搜寻时可为相关事件创建书签，以便将来可以回头调查这些事件、将其与他人共享，并将其与其他相关事件分组到一起，以创建典型案例供调查之用。
+根据 MITRE 框架使用 Azure Sentinel 的[强大搜寻式搜索和查询工具](hunting.md)，可以在触发警报之前，主动搜寻组织的不同数据源中的安全威胁。 发现哪个搜寻式查询可以提供有关潜在攻击的宝贵见解后，还可以基于该查询创建自定义检测规则，并将这些见解作为警报传达给安全事件响应者。 搜寻时可为相关事件创建书签，以便将来可以再次找到这些事件、将其与他人共享，并将其与其他相关事件分组到一起，以创建令人关注的事件方便调查。
 
 ![搜寻](./media/overview/hunting.png)
 
 ## <a name="community"></a>社区
 
-Azure Sentinel 社区提供有关威胁检测和自动化的强有力资源。 Microsoft 安全分析师会不断创建和添加新的仪表板、Playbook、搜寻式查询及其他资源，并将其发布到社区，供你在环境中使用。 可以从 GitHub [存储库](https://aka.ms/asicommunity)个人社区下载示例内容，以创建适用于 Azure Sentinel 的自定义仪表板、搜寻式查询、Notebook 和 Playbook。 
+Azure Sentinel 社区提供有关威胁检测和自动化的强有力资源。 Microsoft 安全分析师会不断创建和添加新的工作簿、Playbook、搜寻式查询及其他资源，并将其发布到社区，供你在环境中使用。 可以从个人社区 GitHub [存储库](https://aka.ms/asicommunity)下载示例内容，以创建适用于 Azure Sentinel 的自定义工作簿、搜寻式查询、Notebook 和 Playbook。 
 
 ![社区](./media/overview/community.png)
 

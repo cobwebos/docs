@@ -12,25 +12,25 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17a2661883dd069e8cb719672f6b92442f1a8a0a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312285"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60357490"
 ---
 # <a name="how-to-configure-password-writeback"></a>操作说明：配置密码写回服务
 
 若要执行以下步骤，需要已在环境中使用[快速](../hybrid/how-to-connect-install-express.md)或[自定义](../hybrid/how-to-connect-install-custom.md)设置配置了 Azure AD Connect。
 
-1. 若要配置和启用密码写回服务，请登录 Azure AD Connect 服务器，并启动“Azure AD Connect”配置向导。
-2. 在“欢迎”页上，选择“配置”。
-3. 在“其他任务”页上，依次选择“自定义同步选项”和“下一步”。
-4. 在“连接到 Azure AD”页上，输入全局管理员凭据，再选择“下一步”。
-5. 在“连接目录”和“域/组织单位”筛选页上，选择“下一步”。
-6. 在“可选功能”页上，选中“密码写回”旁边的框，并选择“下一步”。
+1. 若要配置和启用密码写回服务，请登录 Azure AD Connect 服务器，并启动“Azure AD Connect”  配置向导。
+2. 在“欢迎”  页上，选择“配置”  。
+3. 在“其他任务”  页上，依次选择“自定义同步选项”  和“下一步”  。
+4. 在“连接到 Azure AD”  页上，输入全局管理员凭据，再选择“下一步”  。
+5. 在“连接目录”  和“域/组织单位”  筛选页上，选择“下一步”  。
+6. 在“可选功能”  页上，选中“密码写回”  旁边的框，并选择“下一步”  。
    ![在 Azure AD Connect 中启用密码写回][Writeback]
-7. 在“已准备好进行配置”页上，选择“配置”，并等待进程完成。
-8. 在配置完成后，选择“退出”。
+7. 在“已准备好进行配置”  页上，选择“配置”  ，并等待进程完成。
+8. 在配置完成后，选择“退出”  。
 
 有关与密码写回服务相关的疑难解答任务，请参阅疑难解答文章中的[排查密码写回问题](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback)部分。
 
@@ -56,7 +56,7 @@ ms.locfileid: "58312285"
 * Microsoft 365 商业版
 
 > [!WARNING]
-> 独立 Office 365 许可计划不支持“通过本地写回实现自助密码重置/更改/解锁”，要使此功能正常工作，需要使用上述计划之一。
+> 独立 Office 365 许可计划不支持“通过本地写回实现自助密码重置/更改/解锁”  ，要使此功能正常工作，需要使用上述计划之一。
 >
 
 ## <a name="active-directory-permissions"></a>Active Directory 权限
@@ -65,13 +65,13 @@ ms.locfileid: "58312285"
 
 * **重置密码** 
 * **更改密码** 
-* 对 `lockoutTime` 的写入权限
-* 对 `pwdLastSet` 的写入权限
-* 对以下任一项的扩展权限：
-   * 相应林中各个域的根对象
+* 对 `lockoutTime` 的写入权限 
+* 对 `pwdLastSet` 的写入权限 
+* 对以下任一项的扩展权限  ：
+   * 相应林中各个域  的根对象
    * 要纳入 SSPR 范围的用户组织单位 (OU)
 
-如果不确定上述帐户指的是哪个帐户，请打开 Azure Active Directory Connect 配置 UI，并选择“查看当前配置”选项。 需要向其授予权限的帐户列在“已同步的目录”下。
+如果不确定上述帐户指的是哪个帐户，请打开 Azure Active Directory Connect 配置 UI，并选择“查看当前配置”选项  。 需要向其授予权限的帐户列在“已同步的目录”  下。
 
 设置这些权限后，每个林的 MA 服务帐户都可以代表相应林中的用户帐户管理密码。 
 
@@ -86,18 +86,18 @@ ms.locfileid: "58312285"
 若要设置密码写回服务正常运行所需的相应权限，请完成以下步骤：
 
 1. 使用具有适当域管理权限的帐户，打开“Active Directory 用户和计算机”。
-2. 在“视图”菜单中，确保“高级功能”处于启用状态。
-3. 在左侧面板中，右键单击表示域根的对象，并依次选择“属性” > “安全性” > “高级”。
-4. 在“权限”选项卡中，选择“添加”。
+2. 在“视图”  菜单中，确保“高级功能”  处于启用状态。
+3. 在左侧面板中，右键单击表示域根的对象，并依次选择“属性”   > “安全性”   > “高级”  。
+4. 在“权限”  选项卡中，选择“添加”  。
 5. 选取要将权限应用到的帐户（通过 Azure AD Connect 安装程序）。
-6. 在“应用到”下拉列表中，选择“后代用户对象”。
-7. 在“权限”下，选中以下选项所对应的框：
+6. 在“应用到”  下拉列表中，选择“后代用户对象”  。
+7. 在“权限”  下，选中以下选项所对应的框：
     * **更改密码**
     * **重置密码**
-8. 在“属性”下，选中以下选项所对应的框：
+8. 在“属性”  下，选中以下选项所对应的框：
     * **写入 lockoutTime**
     * **写入 pwdLastSet**
-9. 选择“应用”/“确定”以应用更改，并退出所有打开的对话框。
+9. 选择“应用”/“确定”  以应用更改，并退出所有打开的对话框。
 
 ## <a name="next-steps"></a>后续步骤
 

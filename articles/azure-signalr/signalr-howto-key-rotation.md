@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 15b0ff0bbb96e5fa96d81cfa265e83abf749cf85
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 133edc64ac2f858a397a4a184c24497dae8af333
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556659"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565733"
 ---
 # <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>如何为 Azure SignalR 服务轮换访问密钥
 
@@ -25,17 +25,17 @@ ms.locfileid: "57556659"
 
 1. 转到 [Azure 门户](https://portal.azure.com/)并使用自己的凭据登录。
 
-1. 在要重新生成其密钥的 Azure SignalR 服务实例中找到“密钥”部分。
+1. 在要重新生成其密钥的 Azure SignalR 服务实例中找到“密钥”部分。 
 
-1. 在导航菜单中选择“密钥”。
+1. 在导航菜单中选择“密钥”  。
 
-1. 选择“重新生成主密钥”或“重新生成辅助密钥”。
+1. 选择“重新生成主密钥”或“重新生成辅助密钥”。  
 
    此时将创建并显示新的密钥和相应的连接字符串。
 
    ![重新生成密钥](media/signalr-howto-key-rotation/regenerate-keys.png)
 
-还可以使用 [Azure CLI](/cli/azure/ext/signalr/signalr/key?view=azure-cli-latest#ext-signalr-az-signalr-key-renew) 重新生成密钥。
+还可以使用 [Azure CLI](/cli/azure/signalr/key?view=azure-cli-latest#az-signalr-key-renew) 重新生成密钥。
 
 ## <a name="update-configurations-with-new-connection-strings"></a>使用新的连接字符串更新配置
 

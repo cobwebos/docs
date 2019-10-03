@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: v-doglov
 ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540799"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60565185"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>排查 vCenter 发现故障
 
@@ -20,7 +20,7 @@ ms.locfileid: "58540799"
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>MaxSnapShots 属性中的非数字值
 
-9.20 之前版本中，在 vCenter 断开的连接检索属性的非数字值时`snapshot.maxSnapShots`VM 上的属性。
+9\.20 之前版本中，在 vCenter 断开的连接检索属性的非数字值时`snapshot.maxSnapShots`VM 上的属性。
 
 错误 ID 95126 由标识此问题。
 
@@ -46,13 +46,13 @@ vCenter 发现遵循通过系统用户配置的系统默认代理设置。 DRA �
 
 遇到此问题时，可能发生以下情况：
 
-- VCenter 服务器\<vCenter > 由于出现错误不可访问：远程服务器返回了错误：不可用 (503) 服务器
-- VCenter 服务器\<vCenter > 由于出现错误不可访问：远程服务器返回了错误：无法连接到远程服务器。
+- VCenter 服务器\<vCenter > 由于出现错误不可访问：远程服务器返回错误：不可用 (503) 服务器
+- VCenter 服务器\<vCenter > 由于出现错误不可访问：远程服务器返回错误：无法连接到远程服务器。
 - 无法连接到 vCenter/ESXi 服务器。
 
 若要解决问题，请执行以下操作：
 
-下载[PsExec 工具](https://aka.ms/PsExec)。 
+下载 [PsExec 工具](https://aka.ms/PsExec)。 
 
 使用 PsExec 工具访问系统用户上下文来确定是否为配置了代理地址。 然后可以使用以下过程在绕过列表到添加 vCenter。
 

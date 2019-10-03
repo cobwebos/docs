@@ -3,7 +3,7 @@ title: Xamarin.Forms 应用中的移动应用身份验证入门 | Microsoft Docs
 description: 了解如何使用移动应用通过各种标识提供者（包括 AAD、Google、Facebook、Twitter 和 Microsoft）对 Xamarin Forms 应用的用户进行身份验证。
 services: app-service\mobile
 documentationcenter: xamarin
-author: panarasi
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
@@ -12,23 +12,27 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: panarasi
-ms.openlocfilehash: d97c4689b40dd0bcf2ab083c688c547014a4de0b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011650"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "67446303"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>向 Xamarin Forms 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
+> [!NOTE]
+> Visual Studio App Center 正在为移动应用开发的新的和集成的服务进行投资。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后, 开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况, 并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务, 以便在云中持久保存和同步应用程序数据。 立即查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-users) 。
+>
+
 ## <a name="overview"></a>概述
 本主题演示如何从客户端应用程序对应用服务移动应用的用户进行身份验证。 在本教程中，使用应用服务支持的标识提供者向 Xamarin Forms 快速入门项目添加身份验证。 移动应用成功进行身份验证和授权后，会显示用户 ID 值，该用户能够访问受限制的表数据。
 
-## <a name="prerequisites"></a>必备组件
-为了使本教程达到最佳效果，建议用户先完成[创建 Xamarin.Forms 应用][1]教程。 完成此教程后，用户会获得一个 Xamarin Forms 项目，它是一个多平台 TodoList 应用。
+## <a name="prerequisites"></a>先决条件
+为了使本教程达到最佳效果，建议你先完成[创建 Xamarin Forms 应用][1]教程。 完成此教程后，用户会获得一个 Xamarin Forms 项目，它是一个多平台 TodoList 应用。
 
 如果不使用下载的快速入门服务器项目，必须将身份验证扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][2]。
 
@@ -39,21 +43,21 @@ ms.locfileid: "60011650"
 
 安全身份验证要求为应用定义新的 URL 方案。 此方案允许在完成身份验证过程后，身份验证系统重定向到应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，可以使用所选择的任何 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
 
-1. 在 [Azure 门户][8]中，选择应用服务。
+1. 在 [Azure 门户][8]中，选择“应用服务”。
 
 2. 单击“身份验证/授权”菜单选项。
 
 3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
-4. 单击“确定”。
+4. 单击 **“确定”** 。
 
-5. 单击“ **保存**”。
+5. 单击“保存”。
 
 ## <a name="restrict-permissions-to-authenticated-users"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>向可移植类库添加身份验证
-移动应用使用 [MobileServiceClient][4] 的 [LoginAsync][3] 扩展方法通过应用服务身份验证登录用户。 此示例使用服务器托管的身份验证流，在应用中显示提供程序的登录界面。 有关详细信息，请参阅[服务器托管的身份验证][5]。 若要在生产应用中提供更好的用户体验，应考虑改用[客户端托管的身份验证][6]。
+移动应用使用[MobileServiceClient][4]上的[LoginAsync][3]扩展方法通过应用服务身份验证登录用户。 此示例使用服务器托管的身份验证流，在应用中显示提供程序的登录界面。 有关详细信息，请参阅[服务器托管的身份验证][5]。 若要在生产应用中提供更好的用户体验, 应考虑改用[客户端托管的身份验证][6]。
 
 若要使用 Xamarin Forms 项目进行身份验证，请在可移植类库中为应用定义 **IAuthenticate** 接口。 然后将“登录”按钮添加到可移植类库中定义的用户界面，单击该按钮可开始身份验证。 身份验证成功后，将从移动应用后端加载数据。
 
@@ -188,7 +192,7 @@ ms.locfileid: "60011650"
     此代码可确保验证器在应用加载前进行初始化。
 8. 重新生成应用，运行它，使用所选的身份验证提供者登录，并验证是否能够以通过身份验证的用户身份访问数据。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 **应用程序崩溃并显示 `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
@@ -236,8 +240,9 @@ ms.locfileid: "60011650"
             }
 
             // Display the success or failure message.
-            UIAlertView avAlert = new UIAlertView("Sign-in result", message, null, "OK", null);
-            avAlert.Show();
+            UIAlertController avAlert = UIAlertController.Create("Sign-in result", message, UIAlertControllerStyle.Alert);
+            avAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+            UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(avAlert, true, null);
 
             return success;
         }
@@ -344,7 +349,7 @@ ms.locfileid: "60011650"
 
 * [向应用添加推送通知](app-service-mobile-xamarin-forms-get-started-push.md)
 
-   了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
+  了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
 * [为应用启用脱机同步](app-service-mobile-xamarin-forms-get-started-offline-data.md)
 
   了解如何使用移动应用后端向应用添加脱机支持。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。

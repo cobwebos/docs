@@ -1,78 +1,116 @@
 ---
-title: 调查情况下使用 Azure Sentinel 预览版 |Microsoft Docs
-description: 使用本教程，了解如何调查情况下使用 Azure Sentinel。
+title: 用 Azure Sentinel 调查事件 |Microsoft Docs
+description: 使用本教程了解如何使用 Azure Sentinel 调查事件。
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
-ms.assetid: a493cd67-dc70-4163-81b8-04a9bc0232ac
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6b3357ec06c89645b9c41e9efdb582a18af40672
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 026689b68244052c3ad7cb50cd90d7319b6760ef
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58074669"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229407"
 ---
-# <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>教程：调查情况下使用 Azure Sentinel 预览版
+# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教程：用 Azure Sentinel 调查事件
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 调查关系图目前为公共预览版。
+> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本教程帮助用户检测到威胁 Azure Sentinel。
 
-检查完[连接的数据源](quickstart-onboard.md)要向 Azure Sentinel，一些可疑发生时收到通知。 若要使您能够执行此操作，Azure Sentinel 的，您可以创建高级可以分配的情况下生成的警报的规则和使用进行深入地调查异常和环境中的威胁。 
+本教程帮助你通过 Azure Sentinel 调查事件。 将数据源连接到 Azure Sentinel 后，需要在出现可疑情况时收到通知。 为了使你能够执行此操作，Azure Sentinel 允许你创建高级警报规则，以生成可分配和调查的事件。
 
+本文包含以下内容：
 > [!div class="checklist"]
-> * 创建用例
-> * 调查案例
-> * 应对威胁
+> * 调查事件
+> * 使用调查图
+> * 响应威胁
 
-## <a name="investigate-cases"></a>调查案例
+事件可包含多个警报。 它是用于特定调查的所有相关证据的聚合。 事件是根据你在 "**分析**" 页中创建的分析规则创建的。 与警报相关的属性，例如严重性和状态，在事件级别设置。 让 Azure Sentinel 知道要查找的威胁种类以及如何找到它们后，可以通过调查事件来监视检测到的威胁。
 
-一种情况可以包含多个警报。 它是一个特定的调查相关的所有证据的聚合。 基于警报定义中创建一种情况**Analytics**页。 在事例级别设置，将发出警报严重性和状态等相关的属性。 让 Azure Sentinel 知道哪些类型的所需的威胁，以及如何找到它们后，可以监视通过调查情况下检测到的威胁。 
+## <a name="prerequisites"></a>先决条件
+如果在设置分析规则时使用了实体映射字段，则只能调查事件。 调查图要求您的原始事件包含实体。
 
-1. 选择**情况下**。 **情况下**页可让您知道有多少用例、 多少会打开，多少你已设置为**正在**，并且关闭了多少。 对于每种情况下，您可以看到它发生的时间和用例的状态。 看看严重地决定如何处理第一个。 在中**情况下**页上，单击**警报**选项卡以查看到用例相关的所有警报。 可以在中查看这种情况的一部分之前映射的实体**实体**选项卡。您可以筛选的情况下，根据需要例如按状态或严重性。 当您查看**情况下**选项卡上，你将看到包含触发检测规则中定义的警报的未结案例**分析**。 将在顶部看到活动的情况下，新的用例在进度情况。 此外可以按严重性查看所有事例的概述。
+## <a name="how-to-investigate-incidents"></a>如何调查事件
 
-   ![警报仪表板](./media/tutorial-investigate-cases/cases.png)
+1. 选择 " **事件**"。 使用 " **事件** " 页，您可以了解有多少事件、打开的事件数、已设置为 **正在进行**的事件数以及已关闭的事件数。 对于每个事件，可以查看其发生时间以及事件的状态。 查看严重性，决定要首先处理哪些事件。
 
-2. 若要开始调查，请单击特定的用例。 在右侧，可以看到这种情况，包括其严重性，所涉及实体的计数 （基于您的映射） 的详细的信息。 每种情况下都有唯一的 id。 根据最严重的警报包含在这种情况，确定用例的严重性。  
+    ![查看事件严重性](media/tutorial-investigate-cases/incident-severity.png)
 
-1. 若要在这种情况中查看有关警报以及实体的更多详细信息，请单击**查看完整的详细信息**在这种情况中页，并查看汇总的事例的信息的相关选项卡。  完整例视图将合并警报、 关联的警报和实体中的所有证据。
+1. 你可以根据需要筛选事件，例如按状态或严重性。
 
-1. 在中**警报**选项卡上，查看警报本身的其触发时和通过多少它超出了你设定的阈值。 可以查看有关警报 – 触发该警报，每个查询，并能够对警报运行 playbook 返回的结果数的查询的所有相关信息。 若要向下钻取向下进一步到用例中，单击命中次数。 这将打开生成结果以及触发该警报在 Log Analytics 中的结果的查询。
+1. 要开始调查，请选择特定的事件。 在右侧，可以查看事件的详细信息，包括其严重性、涉及的实体数、触发此事件的原始事件以及事件的唯一 ID。
 
-3. 在中**实体**选项卡上，您所见，映射的所有实体的警报规则定义的一部分。 
+1. 若要查看有关事件中的警报和实体的更多详细信息，请在 "事件" 页中选择 "**查看完整详细信息**"，并查看汇总事件信息的相关选项卡。 在 "**警报**" 选项卡中，查看警报本身。 您可以查看有关警报的所有相关信息-触发警报的查询、每个查询返回的结果数，以及对警报运行行动手册的能力。 若要深入了解事件，请选择**事件**数。 这会打开生成结果的查询以及触发警报的事件 Log Analytics。 在 "**实体**" 选项卡中，可以看到作为警报规则定义的一部分映射的所有实体。
 
-4. 如果主动要研究一种情况，则将事例的状态设置为一个好办法**正在进行中**状态，直到关闭它。 此外可以关闭这种情况，其中**关闭已解决**的状态指示已处理事件的情况下虽然**关闭已消除**不需要处理的情况下的状态。 需要说明用于关闭种情况下你原因说明。
+    ![查看警报详细信息](media/tutorial-investigate-cases/alert-details.png)
 
-5. 情况下可以分配给特定用户。 通过设置这种情况，可以将所有者分配每个用例**所有者**字段。 作为未分配的所有情况下启动。 可以转到用例并筛选名称以查看你拥有的所有情况。 
+1. 如果正在积极调查事件，最好将事件的状态设置为 **"正在进行**"，直到将其关闭。
 
-5. 单击**调查**查看调查图和安全违规的带有修正步骤的作用域。 
+1. 可以将事件分配给特定用户。 对于每个事件，可以通过设置 "**事件所有者**" 字段来分配一个所有者。 所有事件都作为 "未分配" 启动。 您还可以添加注释，以便其他分析师能够理解您调查的内容以及您对事件的关注。
 
+    ![将事件分配给用户](media/tutorial-investigate-cases/assign-incident-to-user.png)
 
+1. 选择 "**调查**" 查看调查地图。
 
-## <a name="respond-to-threats"></a>应对威胁
+## <a name="use-the-investigation-graph-to-deep-dive"></a>使用调查图深入探讨
 
-Azure Sentinel 提供两个主要选项用于响应使用 playbook 的威胁。 您可以设置触发警报，或可以手动在响应警报运行 playbook 时自动运行操作手册。
+调查关系图可让分析人员提出有关每个调查的正确问题。 调查关系图通过将相关数据与任何涉及的实体相关联，帮助你了解范围并确定潜在安全威胁的根本原因。 您可以通过选择关系图并在不同的扩展选项之间进行选择，深入了解并调查关系图中显示的任何实体。  
+  
+调查图为您提供了：
 
-- 您可以设置操作手册配置操作手册时触发警报时自动运行。 
+- **原始数据的可视化上下文**：实时可视化关系图显示自动从原始数据中提取的实体关系。 这使你可以轻松地查看跨不同数据源的连接。
 
-- 通过单击可以手动运行在该警报，请从 playbook**查看 playbook** ，然后选择 playbook 运行。
+- **完全调查范围发现**：使用内置的浏览查询展开调查范围，以显示破坏的全部范围。
 
+- **内置调查步骤**：使用预定义的浏览选项，以确保在面临威胁时询问正确的问题。
+
+使用调查图：
+
+1. 选择一个事件，然后选择 " **调查**"。 这会转到调查关系图。 Graph 提供直接连接到警报的实体的图示，以及每个关联的资源。
+
+   > [!IMPORTANT] 
+   > 如果在设置分析规则时使用了实体映射字段，则只能调查事件。 调查图要求您的原始事件包含实体。
+
+   ![查看地图](media/tutorial-investigate-cases/map1.png)
+
+1. 选择一个实体以打开 " **实体** " 窗格，以便您可以查看有关该实体的信息。
+
+    ![查看地图中的实体](media/tutorial-investigate-cases/map-entities.png)
+  
+1. 通过将鼠标悬停在每个实体上来展开调查，以显示由我们的安全专家和分析师设计的问题列表，以加深调查。 我们将这些选项称为**浏览查询**。
+
+    ![了解更多详细信息](media/tutorial-investigate-cases/exploration-cases.png)
+
+   例如，你可以在计算机上请求相关警报。 如果选择探索查询，则会将生成的证明添加回关系图。 在此示例中，选择 "**相关警报**" 会将以下警报返回到图形中：
+
+    ![查看相关警报](media/tutorial-investigate-cases/related-alerts.png)
+
+1. 对于每个浏览查询，可以通过选择 "**事件\>** " 来选择用于打开原始事件结果和 Log Analytics 中所使用的查询的选项。
+
+1. 为了理解事件，图形提供了一个并行时间线。
+
+    ![查看地图中的时间线](media/tutorial-investigate-cases/map-timeline.png)
+
+1. 将鼠标悬停在时间线上，以查看关系图上发生了哪些操作。
+
+    ![在地图中使用时间线来调查警报](media/tutorial-investigate-cases/use-timeline.png)
 
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，您学习了如何开始调查情况下使用 Azure Sentinel。 继续学习以下教程[如何响应使用自动化操作手册的威胁](tutorial-respond-threats-playbook.md)。
+在本教程中，已学习如何使用 Azure Sentinel 来调查事件。 继续学习有关[如何使用自动行动手册来响应威胁](tutorial-respond-threats-playbook.md)的教程。
 > [!div class="nextstepaction"]
-> [应对威胁](tutorial-respond-threats-playbook.md)来自动执行对威胁你做出响应。
+> [应对威胁](tutorial-respond-threats-playbook.md)以自动应对威胁。
 

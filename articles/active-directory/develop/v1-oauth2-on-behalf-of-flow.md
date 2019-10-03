@@ -1,10 +1,10 @@
 ---
-title: 使用 OAuth2.0 代理草案规范的 Azure Active Directory 服务到服务身份验证 | Microsoft Docs
+title: Azure AD 代表草案规范的服务到服务身份验证 OAuth 2.0 |Microsoft Docs
 description: 本文介绍如何通过 OAuth2.0 代理流使用 HTTP 消息实现服务到服务身份验证。
 services: active-directory
 documentationcenter: .net
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/06/2017
-ms.author: celested
+ms.topic: conceptual
+ms.date: 05/22/2019
+ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f8ec8a6833446663d7f142deefd595eed13136
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: accd14446ab8f4a70336e3bd6787cbd8c93ff21d
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116259"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891516"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>代理流中使用委托用户标识的服务到服务调用
 
@@ -38,7 +38,7 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
 
 在使用 [OAuth 2.0 授权代码授权流](v1-protocols-oauth-code.md)的应用程序上对用户进行身份验证后，启动 OBO 流。 此时，应用程序将访问令牌（令牌 A）发送到包含用户声明并同意访问 API A 的中间层 Web API (API A)。然后，API A 向下游 Web API (API B) 发出经过身份验证的请求。
 
-这些步骤构成了代理流：![OAuth2.0 代理流](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+这些步骤构成了代理流：![以 OAuth 2.0 代理流的顺序显示步骤](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. 客户端应用程序使用令牌 A 向 API A 发出请求。
 1. API A 向 Azure AD 令牌颁发终结点进行身份验证并请求访问 API B 的令牌。
@@ -58,31 +58,32 @@ OAuth 2.0 代理 (OBO) 流使调用服务或 Web API 的应用程序能够将用
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部栏中选择帐户，并在“目录”列表下为应用程序选择 Active Directory 租户。
 1. 在左窗格中，选择“更多服务”，然后选择“Azure Active Directory”。
-1. 依次选择“应用注册”和“新建应用程序注册”。
+1. 依次选择“应用注册”、“新建注册”。
 1. 输入应用程序的友好名称，并选择应用程序类型。
-    1. 根据应用程序类型，将登录 URL 或重定向 URL 设置为基 URL。
-    1. 选择“创建”以创建应用程序。
+1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
+1. 将重定向 URI 设置为基 URL。
+1. 选择“注册”以创建应用程序。
 1. 在退出 Azure 门户之前生成客户端密码。
-   1. 在 Azure 门户中，选择应用程序，然后选择“设置”。
-   1. 在“设置”菜单中选择“密钥”，然后添加密钥持续时间为一年或两年的密钥。
-   1. 保存此页面时，Azure 门户将显示密钥值。 将密钥值复制并保存在安全的位置。
+1. 在 Azure 门户中，选择应用程序，然后选择“证书和机密”。
+1. 选择“新建客户端密码”并添加持续时间为一年或两年的机密。
+1. 保存此页时，Azure 门户将显示机密值。 复制机密值并将其保存在安全位置。
 
-      > [!IMPORTANT]
-      > 在实现中配置应用程序设置时需要此秘钥。 此密钥值不会重新显示，也无法通过任何其他方式检索。 因此，当它在 Azure 门户中可见时请立即记录。
+> [!IMPORTANT]
+> 在实现中配置应用程序设置时需要此机密。 此机密值不会再次显示，并且无法通过任何其他方式检索。 因此，当它在 Azure 门户中可见时请立即记录。
 
 ### <a name="register-the-client-application"></a>注册客户端应用程序
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部栏中选择帐户，并在“目录”列表下为应用程序选择 Active Directory 租户。
 1. 在左窗格中，选择“更多服务”，然后选择“Azure Active Directory”。
-1. 依次选择“应用注册”和“新建应用程序注册”。
+1. 依次选择“应用注册”、“新建注册”。
 1. 输入应用程序的友好名称，并选择应用程序类型。
-   1. 根据应用程序类型，将登录 URL 或重定向 URL 设置为基 URL。
-   1. 选择“创建”以创建应用程序。
-1. 为应用程序配置权限。
-   1. 在“设置”菜单中，选择“所需权限”部分，然后选择“添加”和“选择 API”。
-   1. 在文本字段中键入中间层服务的名称。
-   1. 依次选择“选择权限”和“访问服务名称”。
+1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
+1. 将重定向 URI 设置为基 URL。
+1. 选择“注册”以创建应用程序。
+1. 为应用程序配置权限。 在“API 权限”中，依次选择“添加权限”、“我的 API”。
+1. 在文本字段中键入中间层服务的名称。
+1. 选择 "**选择权限**", 然后选择 "**访问\<服务名称 >** "。
 
 ### <a name="configure-known-client-applications"></a>配置已知的客户端应用程序
 
@@ -110,13 +111,13 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 | 参数 |  | 描述 |
 | --- | --- | --- |
-| grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JSON Web 令牌 (JWT)，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
-| assertion |必填 | 请求中使用的访问令牌值。 |
-| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称。 |
-| client_secret |必填 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
-| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录。 选择应用程序名称，选择“所有设置”，然后选择“属性”。 |
-| requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
-| 作用域 |必填 | 空格分隔的令牌请求范围的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
+| grant_type |必需 | 令牌请求的类型。 OBO 请求使用 JSON Web 令牌 (JWT)，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
+| assertion |必需 | 请求中使用的访问令牌值。 |
+| client_id |必需 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称。 |
+| client_secret |必需 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
+| 资源 |必需 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录。 选择应用程序名称，选择“所有设置”，然后选择“属性”。 |
+| requested_token_use |必需 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
+| 范围 |必需 | 空格分隔的令牌请求范围的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
 
 #### <a name="example"></a>示例
 
@@ -144,14 +145,14 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 | 参数 |  | 描述 |
 | --- | --- | --- |
-| grant_type |必填 | 令牌请求的类型。 OBO 请求使用 JWT 访问令牌，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
-| assertion |必填 | 请求中使用的令牌值。 |
-| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称。 |
-| client_assertion_type |必填 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |必填 | JSON Web 令牌使用作为凭据向应用程序注册的证书进行创建和签名。 请参阅[证书凭据](active-directory-certificate-credentials.md)了解断言格式以及如何注册证书。|
-| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录。 选择应用程序名称，选择“所有设置”，然后选择“属性”。 |
-| requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
-| 作用域 |必填 | 空格分隔的令牌请求范围的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
+| grant_type |必需 | 令牌请求的类型。 OBO 请求使用 JWT 访问令牌，因此值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
+| assertion |必需 | 请求中使用的令牌值。 |
+| client_id |必需 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称。 |
+| client_assertion_type |必需 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |必需 | JSON Web 令牌使用作为凭据向应用程序注册的证书进行创建和签名。 请参阅[证书凭据](active-directory-certificate-credentials.md)了解断言格式以及如何注册证书。|
+| 资源 |必需 | 接收服务（受保护资源）的应用 ID URI。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录。 选择应用程序名称，选择“所有设置”，然后选择“属性”。 |
+| requested_token_use |必需 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
+| 范围 |必需 | 空格分隔的令牌请求范围的列表。 对于 OpenID Connect，必须指定范围 **openid**。|
 
 这些参数与共享密钥请求几乎相同，只是 `client_secret parameter` 被以下两个参数替换：`client_assertion_type` 和 `client_assertion`。
 
@@ -183,10 +184,10 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | 参数 | 描述 |
 | --- | --- |
 | token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
-| 作用域 |令牌中授予的访问权限的范围。 |
+| 范围 |令牌中授予的访问权限的范围。 |
 | expires_in |访问令牌有效的时间长度（以秒为单位）。 |
 | expires_on |访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。 |
-| resource |接收服务（受保护资源）的应用 ID URI。 |
+| 资源 |接收服务（受保护资源）的应用 ID URI。 |
 | access_token |请求的访问令牌。 调用方服务可以使用此令牌向接收方服务进行身份验证。 |
 | id_token |请求的 ID 令牌。 调用服务可以使用此令牌验证用户的身份，并开始与用户建立会话。 |
 | refresh_token |所请求的访问令牌的刷新令牌。 当前访问令牌过期后，调用方服务可以使用此令牌请求另一个访问令牌。 |
@@ -195,7 +196,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 以下示例演示对 https://graph.windows.net Web API 的访问令牌请求的成功响应。
 
-```
+```json
 {
     "token_type":"Bearer",
     "scope":"User.Read",
@@ -212,9 +213,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 ### <a name="error-response-example"></a>错误响应示例
 
-Azure AD 令牌终结点在尝试获取使用条件访问策略（例如，多重身份验证）设置的下游 API 的访问令牌时，会返回错误响应。 中间层服务应向客户端应用程序显示此错误，以便客户端应用程序可以提供用户交互，以满足条件访问策略。
+Azure AD 令牌终结点在尝试获取通过条件访问策略 (例如多重身份验证) 设置的下游 API 的访问令牌时, 会返回错误响应。 中间层服务应向客户端应用程序呈现此错误, 以便客户端应用程序可以提供用户交互, 以满足条件访问策略。
 
-```
+```json
 {
     "error":"interaction_required",
     "error_description":"AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access 'bf8d80f9-9098-4972-b203-500f535113b1'.\r\nTrace ID: b72a68c3-0926-4b8e-bc35-3150069c2800\r\nCorrelation ID: 73d656cf-54b1-4eb2-b429-26d8165a52d7\r\nTimestamp: 2017-05-01 22:43:20Z",
@@ -254,13 +255,13 @@ SAML 断言的服务到服务请求包含以下参数：
 
 | 参数 |  | 描述 |
 | --- | --- | --- |
-| grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
-| assertion |必填 | 请求中使用的访问令牌值。|
-| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称。 |
-| client_secret |必填 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
-| resource |必填 | 接收服务（受保护资源）的应用 ID URI。 这是将成为 SAML 令牌受众的资源。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录。 选择应用程序名称，选择“所有设置”，然后选择“属性”。 |
-| requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
-| requested_token_type | 必填 | 指定请求令牌的类型。 值可以是 urn:ietf:params:oauth:token-type:saml2 或 urn:ietf:params:oauth:token-type:saml1，具体取决于访问资源的要求。 |
+| grant_type |必需 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
+| assertion |必需 | 请求中使用的访问令牌值。|
+| client_id |必需 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称。 |
+| client_secret |必需 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
+| 资源 |必需 | 接收服务（受保护资源）的应用 ID URI。 这是将成为 SAML 令牌受众的资源。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录。 选择应用程序名称，选择“所有设置”，然后选择“属性”。 |
+| requested_token_use |必需 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
+| requested_token_type | 必需 | 指定请求令牌的类型。 值可以是 urn:ietf:params:oauth:token-type:saml2 或 urn:ietf:params:oauth:token-type:saml1，具体取决于访问资源的要求。 |
 
 响应包含以 UTF8 和 Base64url 编码的 SAML 令牌。
 
@@ -274,14 +275,14 @@ SAML 断言的服务到服务请求包含以下参数：
 | 参数 | 描述 |
 | --- | --- |
 | token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 **Bearer**。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
-| 作用域 |令牌中授予的访问权限的范围。 |
+| 范围 |令牌中授予的访问权限的范围。 |
 | expires_in |访问令牌有效的时间长度（以秒为单位）。 |
 | expires_on |访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。 |
-| resource |接收服务（受保护资源）的应用 ID URI。 |
+| 资源 |接收服务（受保护资源）的应用 ID URI。 |
 | access_token |返回 SAML 断言的参数。 |
 | refresh_token |刷新令牌。 当前 SAML 断言过期后，调用方服务可以使用此令牌请求另一个访问令牌。 |
 
-- token_type：持有者
+- token_type：Bearer
 - expires_in：3296
 - ext_expires_in：0
 - expires_on：1529627844

@@ -4,7 +4,7 @@ description: 使用资源管理器部署模型和 Azure CLI 上传或复制自�
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 6483fa8737ee3de6a60c4e4646fefec30ae702b6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 026cab6a5749f556d6f748c80e492d1c920767d1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58006651"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708391"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>使用 Azure CLI 从自定义磁盘创建 Linux VM
 
@@ -90,7 +90,7 @@ Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-di
 
 在上传自定义磁盘和创建 VM 之前，需要使用 [az group create](/cli/azure/group#az-group-create) 创建一个资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli
 az group create \
@@ -174,7 +174,7 @@ az disk create \
 ```
 ## <a name="option-2-copy-an-existing-vm"></a>选项 2：复制现有的 VM
 
-也可以在 Azure 中创建自定义的 VM，然后复制 OS 磁盘并将其附加到新 VM 以创建另一个副本。 这种做法在测试中不会有任何问题，但若要将现有 Azure VM 作为多个新 VM 的模型，请改为创建映像。 有关从现有 Azure VM 创建映像的详细信息，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。
+也可以在 Azure 中创建自定义的 VM，然后复制 OS 磁盘并将其附加到新 VM 以创建另一个副本。 这种做法在测试中不会有任何问题，但若要将现有 Azure VM 作为多个新 VM 的模型，请改为创建映像。  有关从现有 Azure VM 创建映像的详细信息，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。
 
 ### <a name="create-a-snapshot"></a>创建快照
 

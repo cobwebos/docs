@@ -3,20 +3,20 @@ title: 快速入门：语音翻译 API Java
 titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，有助于快速开始使用语音翻译 API。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
-ms.author: v-jaswel
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: b9cf9a5e60ff5f66a3956170b4f5fb41d4b6d66c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bdf207fadd71d843e4ee72a645e787d3d50c12f5
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551035"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966426"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>快速入门：将语音翻译 API 与 Java 配合使用
 <a name="HOLTop"></a>
@@ -42,7 +42,7 @@ ms.locfileid: "57551035"
 
 将需要一个名为“speak.wav”的 .wav 文件，该文件与从以下代码编译的可执行文件位于同一文件夹中。 此 .wav 文件应采用标准 PCM、16 位、16 kHz 单声道格式。 可使用[文本转语音 API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) 获取此类 .wav 文件。
 
-必须创建一个具有 Microsoft 语音翻译 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
+必须创建一个具有 Microsoft 语音翻译 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)  。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
 
 ## <a name="translate-speech"></a>翻译语音
 

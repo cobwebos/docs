@@ -1,28 +1,22 @@
 ---
 title: 什么是 Azure Active Directory 中的企业状态漫游？ | Microsoft Docs
-description: 提供有关 Windows 设备中的企业状态漫游设置的信息。 企业状态漫游可跨 Windows 设备为用户提供统一体验，并减少配置新设备所需的时间。
+description: 企业状态漫游可跨 Windows 设备为用户提供统一体验，并减少配置新设备所需的时间。
 services: active-directory
-keywords: 什么是企业状态漫游, 企业同步, Windows 云
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: overview
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: 83b3b58f-94c1-4ab0-be05-20e01f5ae3f0
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
-ms.author: joflore
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3a2a81bd8aa3fc99d033564e8a8782c79261305
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: c5b60970592180a2353860369e637d4b9a9bb8f9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521595"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481913"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>什么是企业状态漫游？
 
@@ -34,7 +28,7 @@ ms.locfileid: "58521595"
 
 企业状态漫游可用于多个 Azure 区域。 可在 Azure Active Directory 下的“[Azure 服务（按区域）](https://azure.microsoft.com/regions/#services)”页找到更新的可用区域列表。
 
-| 文章 | 描述 |
+| 文章 | 说明 |
 | --- | --- |
 | [在 Azure Active Directory 中启用企业状态漫游](enterprise-state-roaming-enable.md) |企业状态漫游可供任何拥有高级 Azure Active Directory (Azure AD) 订阅的组织使用。 有关如何获取 Azure AD 订阅的更多详细信息，请参阅“[Azure AD 产品](https://azure.microsoft.com/services/active-directory)”页。 |
 | [Settings and data roaming FAQ](enterprise-state-roaming-faqs.md)（设置和数据漫游的常见问题） |本主题将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。 |

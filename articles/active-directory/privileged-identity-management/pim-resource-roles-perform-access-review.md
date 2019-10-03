@@ -1,9 +1,9 @@
 ---
-title: 在 PIM 的 Azure Active Directory 中执行我的 Azure 资源角色的访问评审 |Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中对 Azure 资源角色执行访问评审。
+title: 在 PIM 中评审 Azure 资源角色的访问权限 - Azure Active Directory | Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中评审 Azure 资源角色的访问权限。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 03/30/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc503e5c11f8e3a00fe9c258ad2a7cad5b6ade7e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 22c0ce1a5eee4b8d4cc40c47dadd4bcdc74d03ba
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575073"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804108"
 ---
-# <a name="perform-an-access-review-of-my-azure-resource-roles-in-pim"></a>在 PIM 中对 Azure 资源角色执行访问评审
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了企业管理对 Azure 中的资源特许访问权限。 
+# <a name="review-access-to-azure-resource-roles-in-pim"></a>在 PIM 中评审 Azure 资源角色的访问权限
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了企业对 Azure 中资源的特权访问管理。 
 
 如果已被分配到某个管理角色，组织中的特权角色管理员可能要求定期确认仍然需要使用该角色来完成工作。 可以通过你所收到的电子邮件中的链接，或者直接转到 [Azure 门户](https://portal.azure.com)来执行此操作。 请遵循本文中的步骤对分配的角色执行自我审查。
 
@@ -45,13 +45,13 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 1. 浏览到 Azure AD PIM 应用程序。
 2. 选择“审阅访问权限”边栏选项卡。
 
-   ![PIM 应用程序屏幕截图，选中了“审阅访问权限”边栏选项卡](media/azure-pim-resource-rbac/rbac-access-review-complete.png)
+   ![PIM 应用程序屏幕截图，选中了“审阅访问权限”边栏选项卡](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
 
 3. 选择想要完成的审查。 
 4. 选择“批准”或“拒绝”。 可能需要在“提供原因”文本框中提供做出该决定的原因。
 
-   ![“审阅详细信息”页的屏幕截图](media/azure-pim-resource-rbac/rbac-access-review-choice.png)
+   ![“审阅详细信息”页的屏幕截图](media/pim-resource-roles-perform-access-review/rbac-access-review-choice.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中执行我的 Azure AD 角色的访问评审](pim-how-to-perform-security-review.md)
+- [在 PIM 中对 Azure AD 角色执行访问评审](pim-how-to-perform-security-review.md)

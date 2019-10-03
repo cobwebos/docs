@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2018
-ms.author: erikre
-ms.openlocfilehash: d3db4166810da981ff0117536d8550a6b2203924
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 10/01/2019
+ms.author: banders
+ms.openlocfilehash: 334fb0f4df318b1984c1b6653845af564506230b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106182"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719630"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>使用 REST API 查看 Azure 资源使用情况
 
@@ -45,8 +45,8 @@ Authorization: Bearer
 
 |请求标头|说明|  
 |--------------------|-----------------|  
-|Content-Type：| 必需。 设置为 `application/json`。 |  
-|Authorization：| 必需。 设置为有效的 `Bearer` 令牌。 |
+|Content-Type： | 必需。 设置为 `application/json`。 |  
+|Authorization： | 必需。 设置为有效的 `Bearer` 令牌。 |
 
 在 HTTP 请求正文中配置报告的参数。 在以下示例中，报告设置为每日活动时生成，它是一个写入 Azure 存储 Blob 容器的 CSV 文件，包含资源组 `westus` 中所有资源的每小时成本信息。
 

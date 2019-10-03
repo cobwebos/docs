@@ -3,17 +3,17 @@ title: 在 Azure 上的 Linux VM 中创建 shell 脚本
 description: 本主题介绍如何使用“运行命令”在 Azure Linux 虚拟机中运行脚本
 services: automation
 ms.service: automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 10/25/2018
+author: bobbytreed
+ms.author: robreed
+ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e865d4e9cbad2c2064d961bc6e407440ce8556fc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: abf0f69ea70bae4102806214f0ef0fcfc25aad3a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158799"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477049"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>使用“运行命令”在 Linux VM 中运行 shell 脚本
 
@@ -54,16 +54,16 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 ## <a name="azure-portal"></a>Azure 门户
 
-导航到 [Azure](https://portal.azure.com) 中的某个 VM，然后在“操作”下选择“运行命令”。 将会显示可以在 VM 上运行的可用命令的列表。
+导航到 [Azure](https://portal.azure.com) 中的某个 VM，然后在“操作”下选择“运行命令”。   将会显示可以在 VM 上运行的可用命令的列表。
 
 ![运行命令列表](./media/run-command/run-command-list.png)
 
-选择要运行的命令。 某些命令可能有可选或必需的输入参数。 对于这些命令，参数将呈现为文本字段，你可以在其中提供输入值。 对于每个命令，可以通过展开“查看脚本”来查看所运行的脚本。 **RunShellScript** 不同于其他命令，因为它允许你提供自己的自定义脚本。
+选择要运行的命令。 某些命令可能有可选或必需的输入参数。 对于这些命令，参数将呈现为文本字段，你可以在其中提供输入值。 对于每个命令，可以通过展开“查看脚本”来查看所运行的脚本。  **RunShellScript** 不同于其他命令，因为它允许你提供自己的自定义脚本。
 
 > [!NOTE]
 > 内置命令不可编辑。
 
-选择命令后，单击“运行”来运行脚本。 脚本将运行，完成时，将在输出窗口中返回输出和任何错误。 下面的屏幕截图显示了运行 **ifconfig** 命令时的示例输出。
+选择命令后，单击“运行”  来运行脚本。 脚本将运行，完成时，将在输出窗口中返回输出和任何错误。 下面的屏幕截图显示了运行 **ifconfig** 命令时的示例输出。
 
 ![运行命令脚本输出](./media/run-command/run-command-script-output.png)
 
@@ -71,16 +71,16 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 下表显示了可用于 Linux VM 的命令的列表。 **RunShellScript** 命令可用来运行所需的任何自定义脚本。
 
-|**名称**|**说明**|
+|**Name**|**说明**|
 |---|---|
 |**RunShellScript**|执行 Linux shell 脚本。|
 |**ifconfig**| 获取所有网络接口的配置。|
 
 ## <a name="limiting-access-to-run-command"></a>限制对“运行命令”的访问
 
-列出“运行命令”或显示某个命令的详细信息需要 `Microsoft.Compute/locations/runCommands/read` 权限，内置的[读者](../../role-based-access-control/built-in-roles.md#reader)角色或更高角色具有此权限。
+列出“运行命令”或显示某个命令的详细信息需要订阅级别的 `Microsoft.Compute/locations/runCommands/read` 权限，内置的[读者](../../role-based-access-control/built-in-roles.md#reader)角色或更高角色具有此权限。
 
-运行某个命令需要 `Microsoft.Compute/virtualMachines/runCommand/action` 权限，[参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和更高角色具有此权限。
+运行某个命令需要订阅级别的 `Microsoft.Compute/virtualMachines/runCommand/action` 权限，[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和更高角色具有此权限。
 
 若要使用“运行命令”，可以使用[内置](../../role-based-access-control/built-in-roles.md)角色之一，也可以创建一个[自定义](../../role-based-access-control/custom-roles.md)角色。
 

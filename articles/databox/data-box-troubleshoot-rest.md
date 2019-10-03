@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: ee2820d78e95924e09a0219753f87d6910c0e736
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: c5ceeb2e6419cab7945454087edd4c821db28343
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013494"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65204221"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>对与 Azure 数据框 Blob 存储相关的问题进行故障排除
 
@@ -55,7 +55,7 @@ ms.locfileid: "60013494"
 |错误消息  |建议的操作 |
 |---------|---------|
 |其中一个 HTTP 标头的值不是正确的格式。 |安装用于 Python 的 Microsoft Azure 存储库的版本不支持的数据框。 请参阅受支持版本的 Azure 数据框 Blob 存储要求。|
-|… [SSL:CERTIFICATE_VERIFY_FAILED] …|运行 Python 之前, 将 REQUESTS_CA_BUNDLE 环境变量设置为 Base64 编码的 SSL 证书文件的路径 (请参阅如何[下载的证书]())。 <br>例如：<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>或者，将证书添加到系统的证书存储区，然后将此环境变量设置为该存储区的路径。 <br> 例如，在 Ubuntu 上： <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
+|… [SSL:CERTIFICATE_VERIFY_FAILED] …|运行 Python 之前, 将 REQUESTS_CA_BUNDLE 环境变量设置为 Base64 编码的 SSL 证书文件的路径 (请参阅如何[下载的证书](data-box-deploy-copy-data-via-rest.md#download-certificate))。 <br>例如：<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>或者，将证书添加到系统的证书存储区，然后将此环境变量设置为该存储区的路径。 <br> 例如，在 Ubuntu 上： <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
 
 
 ## <a name="common-errors"></a>常见错误

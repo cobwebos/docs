@@ -8,18 +8,17 @@ manager: craigg
 editor: monicar
 ms.assetid: 14b39cde-311c-4ddf-98f3-8694e01a7d3b
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 5b647af7925ceb81c524deb0accf90f9e895080e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7d6427e88960ec3ff550affb1624dd82e561a6bb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876983"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102177"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>配置一个或多个 Always On 可用性组侦听器 - Resource Manager
 本主题说明如何：
@@ -227,7 +226,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 
 * 如果要限制 Azure 网络安全组的访问权限，请确保“允许”规则包含后端 SQL Server VM IP 地址、可用性组侦听器的负载均衡器浮动 IP 地址、群集核心 IP 地址（如适用）。
 
-## <a name="for-more-information"></a>更多信息
+## <a name="for-more-information"></a>获取详细信息
 有关详细信息，请参阅[在 Azure VM 中手动配置 Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-tutorial.md)。
 
 ## <a name="powershell-cmdlets"></a>PowerShell cmdlet

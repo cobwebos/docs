@@ -1,19 +1,18 @@
 ---
 title: 使用 C++ 针对 Azure 文件进行开发 | Microsoft Docs
 description: 了解如何开发使用 Azure 文件来存储文件数据的 C++ 应用程序和服务。
-services: storage
-author: renashahmsft
+author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/19/2017
-ms.author: renashahmsft
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3432794c6b6d2323392f0b56b364400d05b10afc
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 97af40bd1f57acb5b26d3b6216984dfb8e3a5181
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649690"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699795"
 ---
 # <a name="develop-for-azure-files-with-c"></a>使用 C++ 针对 Azure 文件进行开发
 

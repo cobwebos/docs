@@ -3,9 +3,9 @@ title: 使用 Azure 通知中心向特定的 Android 应用程序用户推送通
 description: 了解如何使用 Azure 通知中心向特定用户推送通知。
 documentationcenter: android
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ae0e17a8-9d2b-496e-afd2-baa151370c25
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,15 +14,20 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: fc248292e2323d44a353473be87c2b0f1be8ea12
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 1b867d571e97209c4385c1f23b49fe5a03ab94d5
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091661"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212076"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定的 Android 应用程序用户推送通知
+# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging（已弃用）向特定的 Android 应用程序用户推送通知
+
+> [!WARNING]
+> 截至 2018 年 4 月 10 日，Google 已弃用 Google Cloud Messaging (GCM)。 GCM 服务器和客户端 API 已弃用，最快将于 2019 年 5 月 29 日移除。 有关详细信息，请参阅 [GCM 和 FCM 常见问题解答](https://developers.google.com/cloud-messaging/faq)。
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -141,7 +146,7 @@ ms.locfileid: "55091661"
     ```xml
     <string name="usernameHint">Username</string>
     <string name="passwordHint">Password</string>
-    <string name="loginButton">1. Log in</string>
+    <string name="loginButton">1. Sign in</string>
     <string name="send_button">2. Send Notification</string>
     <string name="notification_message_hint">Notification message</string>
     <string name="notification_message_tag_hint">Recipient username</string>
@@ -257,8 +262,8 @@ ms.locfileid: "55091661"
     }
     ```
 
-    此组件将实现所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。 它还会在本地存储通知中心创建的 *registrationIds*，如[从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。 它使用你在单击“登录”按钮时存储在本地存储中的授权令牌。
-4. 在你的类中，删除或注释掉针对 `NotificationHub` 的专用字段，并添加一个用于 `RegisterClient` 类的字段和一个用于 ASP.NET 后端终结点的字符串。 确保使用前面获取的实际后端终结点来替换 `<Enter Your Backend Endpoint>`。 例如，`http://mybackend.azurewebsites.net`。
+    此组件将实现所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。 它还会在本地存储通知中心创建的 *registrationIds*，如[从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。 它使用你在单击“登录”按钮时存储在本地存储中的授权令牌。 
+4. 在你的类中，删除或注释掉针对 `NotificationHub` 的专用字段，并添加一个用于 `RegisterClient` 类的字段和一个用于 ASP.NET 后端终结点的字符串。 确保使用前面获取的实际后端终结点来替换 `<Enter Your Backend Endpoint>`。 例如，`http://mybackend.azurewebsites.net` 。
 
     ```java
     //private NotificationHub hub;
@@ -319,7 +324,7 @@ ms.locfileid: "55091661"
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. 然后，添加以下方法，处理“登录”按钮的单击事件，并发送推送通知。
+9. 然后，添加以下方法，处理“登录”  按钮的单击事件，并发送推送通知。
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -401,7 +406,7 @@ ms.locfileid: "55091661"
     }
     ```
 
-    “登录”按钮的 `login` 处理程序生成在输入的用户名和密码上使用的基本身份验证令牌（代表身份验证方案使用的任何令牌），然后使用 `RegisterClient` 调用后端来注册。
+    “登录”按钮的 `login` 处理程序生成在输入的用户名和密码上使用的基本身份验证令牌（代表身份验证方案使用的任何令牌），然后使用 `RegisterClient` 调用后端来注册。 
 
     `sendPush` 方法调用后端来触发根据用户标记向用户发送安全通知。 `sendPush` 针对的平台通知服务取决于传入的 `pns` 字符串。
 
@@ -467,13 +472,13 @@ ms.locfileid: "55091661"
 
 1. 在设备或模拟器上使用 Android Studio 运行该应用程序。
 2. 在 Android 应用中，输入用户名和密码。 它们必须都是相同的字符串值，并且不能包含空格或特殊字符。
-3. 在 Android 应用中，单击“登录”。 等待指示“已登录并已注册”的 toast 消息。 它启用“发送通知”按钮。
+3. 在 Android 应用中，单击“登录”。  等待指示“已登录并已注册”的 toast 消息。  它启用“发送通知”按钮。 
 
     ![][A2]
 4. 单击切换按钮，以启用已在其中运行该应用并已注册用户的所有平台。
 5. 输入接收通知消息的用户的名称。 必须已在目标设备上为通知注册该用户。
 6. 为用户输入要接收为推送通知的消息。
-7. 单击“发送通知”。  已使用匹配的用户名标记注册的每个设备都会收到该推送通知。
+7. 单击“发送通知”。   已使用匹配的用户名标记注册的每个设备都会收到该推送通知。
 
 ## <a name="next-steps"></a>后续步骤
 

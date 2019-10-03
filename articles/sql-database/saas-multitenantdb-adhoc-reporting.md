@@ -8,16 +8,15 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
-ms.author: ayolubek
+ms.author: craigg
 ms.reviewer: sstein
-manager: craigg
 ms.date: 10/30/2018
-ms.openlocfilehash: d4c5a2ca88f982626c8c2a8b37e4a7d6dfdbe599
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0a6b45db3c8b4071b591ca2b5fc604b986598c0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076354"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570361"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>针对多个 Azure SQL 数据库运行即席分析查询
 
@@ -67,7 +66,7 @@ SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分�
 
 在 Wingtip Tickets SaaS 多租户数据库应用程序中，在混合租户管理模型下存储租户，租户数据存储在多租户数据库或单个租户数据库中，并且可以在这两个数据库之间移动。 当查询所有租户数据库时，弹性查询必须可将数据视为由租户分片的单个逻辑数据库的一部分。 
 
-为了实现此模式，所有租户表都包含一个 VenueId 列，用于标识数据所属的租户。 将 VenueId 计算为地点名称的哈希，但可以使用任何方法来引入此列的唯一值。 这种方法类似于在目录中计算租户密钥以进行使用的方式。 弹性查询使用包含 VenueId 的表来并行执行查询，并将其推送到相应的远程租户数据库。 这将显著减少返回的数据量，从而提高性能，尤其是在有多个租户的数据存储在单个租户数据库中时。
+为了实现此模式，所有租户表都包含一个 VenueId列，用于标识数据所属的租户。 将 VenueId 计算为地点名称的哈希，但可以使用任何方法来引入此列的唯一值。 这种方法类似于在目录中计算租户密钥以进行使用的方式。 弹性查询使用包含 VenueId 的表来并行执行查询，并将其推送到相应的远程租户数据库。 这将显著减少返回的数据量，从而提高性能，尤其是在有多个租户的数据存储在单个租户数据库中时。
 
 ## <a name="deploy-the-database-used-for-ad-hoc-distributed-queries"></a>部署用于即席分布式查询的数据库
 
@@ -96,7 +95,7 @@ SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分�
 
     ![创建外部数据源](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
-   引用租户表的外部表通过 DISTRIBUTION = SHARDED(VenueId) 定义。 这可将针对特定 VenueId 的查询路由到相应的数据库，并提升许多方案的性能，如下一节所示。
+   引用租户表的外部表通过 DISTRIBUTION = SHARDED(VenueId) 定义。 这可将针对特定 VenueId的查询路由到相应的数据库，并提升许多方案的性能，如下一节所示。
 
     ![创建外部表](media/saas-multitenantdb-adhoc-reporting/external-tables.png)
 
@@ -116,7 +115,7 @@ SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分�
 
 检查执行计划时，将鼠标悬停在计划图标上方可获取详细信息。 
 
-1. 在 SSMS 中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReportingQueries.sql*。
+1. 在 SSMS中打开 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReportingQueries.sql*。
 2. 确保已连接到 adhocanalytics 数据库。
 3. 选择“查询”菜单，然后单击“包括实际的执行计划”
 4. 突出显示“当前注册了哪些地点?”查询，然后按 F5。
@@ -131,7 +130,7 @@ SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分�
 
    此查询联接租户数据库和本地 VenueTypes 表（“本地”是因为它是 adhocreporting 数据库中的表）的数据。
 
-   检查计划会发现大部分成本是远程查询，因为我们查询每个租户的地点信息 (dbo.Venues)，然后与本地 VenueTypes 表进行快速本地联接，以显示友好名称。
+   检查计划会发现大部分成本是远程查询，因为我们查询每个租户的地点信息 (dbo.Venues)，然后与本地 VenueTypes表进行快速本地联接，以显示友好名称。
 
    ![远程和本地数据联接](media/saas-multitenantdb-adhoc-reporting/query2-plan.png)
 
@@ -139,7 +138,7 @@ SaaS 应用程序可分析大量集中存储在云中的租户数据。 此分�
 
    此查询执行稍微有些复杂的联接和聚合操作。 需要注意的是，大部分处理过程远程完成，并且再强调一次，我们只返回需要的行，即每天每个地点的总票证销售量仅返回一行内容。
 
-   ![query](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
+   ![查询](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
 
 
 ## <a name="next-steps"></a>后续步骤

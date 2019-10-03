@@ -9,12 +9,12 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 56e66f17e9ce1d2482463f619e82dfd29d48f191
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694093"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990297"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>从 Go（预览版）收集分布式跟踪
 
@@ -36,24 +36,26 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 首先，你需要创建一个 Application Insights 资源，该资源将生成一个检测密钥 (ikey)。 然后使用 ikey 配置本地转发器，以将 OpenCensus 检测应用程序中的分布式跟踪发送到 Application Insights。   
 
-1. 选择“创建资源” > “开发人员工具” > “Application Insights”。
+1. 选择“创建资源”   > “开发人员工具”   > “Application Insights”  。
 
    ![添加 Application Insights 资源](./media/opencensus-Go/0001-create-resource.png)
 
+ > [!NOTE]
+   >如果这是你首次创建 Application Insights 资源, 你可以访问[创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)一文了解详细信息。
+
    此时会显示配置对话框，请使用下表填写输入字段。
 
-    | 设置        | 值           | 说明  |
+    | 设置        | ReplTest1           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
-   | **应用程序类型** | 常规 | 所监视的应用的类型 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
-   | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
+   | **Location** | East US | 选择离你近的位置或离托管应用的位置近的位置 |
 
-2. 单击“创建”。
+2. 单击“创建”。 
 
 ## <a name="configure-local-forwarder"></a>配置本地转发器
 
-1. 选择“概述” > “概要”> 复制应用程序的**检测密钥**。
+1. 选择“概述”   > “概要”  > 复制应用程序的**检测密钥**。
 
    ![检测密钥的屏幕截图](./media/opencensus-Go/0003-instrumentation-key.png)
 
@@ -194,7 +196,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>开始在 Azure 门户中监视
 
-1. 现在可以在 Azure 门户中重新打开 Application Insights“概览”页，查看当前正在运行的应用程序的详细信息。 选择“实时指标流”。
+1. 现在可以在 Azure 门户中重新打开 Application Insights“概览”  页，查看当前正在运行的应用程序的详细信息。 选择“实时指标流”  。
 
    ![概览窗格的屏幕截图，其中的实时指标流在红框中呈选中状态。](./media/opencensus-go/0005-overview-live-metrics-stream.png)
 
@@ -202,7 +204,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
    ![实时指标流的屏幕截图，其中显示了性能数据](./media/opencensus-go/0006-stream.png)
 
-3. 导航回“概览”页，选择“应用程序映射”以获取应用程序组件之间依赖关系和调用时间的可视布局。
+3. 导航回“概览”页，选择“应用程序映射”以获取应用程序组件之间依赖关系和调用时间的可视布局。  
 
     ![基本应用程序映射的屏幕截图](./media/opencensus-go/0007-application-map.png)
 
@@ -210,11 +212,11 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
    ![应用程序地图](media/opencensus-go/application-map.png)
 
-4. 选择“调查性能”，执行详细的性能分析并确定性能减慢的根本原因。
+4. 选择“调查性能”，执行详细的性能分析并确定性能减慢的根本原因。 
 
     ![性能窗格的屏幕截图](./media/opencensus-go/0008-performance.png)
 
-5. 选择“示例”，然后单击显示在右窗格中的任意示例，这将启动端到端事务详细信息体验。 虽然我们的示例应用只会显示单个事件，但更复杂的应用程序会让你在探索端到端事务时，可以深入到单个事件的调用堆栈级别。
+5. 选择“示例”，然后单击显示在右窗格中的任意示例，这将启动端到端事务详细信息体验。  虽然我们的示例应用只会显示单个事件，但更复杂的应用程序会让你在探索端到端事务时，可以深入到单个事件的调用堆栈级别。
 
      ![端到端事务界面的屏幕截图](./media/opencensus-go/0009-end-to-end-transaction.png)
 

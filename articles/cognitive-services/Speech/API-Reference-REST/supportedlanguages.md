@@ -3,20 +3,20 @@ title: 必应语音支持的语言 | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: 必应语音支持的口述语言列表。
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 044c0355b6ec9f064cae74ffd5259d457cb49147
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: e53980482a2d355c0fb024658f8012d65354c7a5
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672383"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965957"
 ---
 # <a name="supported-languages"></a>支持的语言
 
@@ -29,7 +29,7 @@ Microsoft 语音识别 API 在 `interactive` 和 `dictation` 模式下支持以�
 |代码 | 语言 | 代码 | 语言 |
 |-----|-----|-----|-----|
 | ar-EG | 阿拉伯语(埃及)，现代标准 | hi-IN | 印地语(印度) |
-| ca-ES | 加泰罗尼亚语(西班牙) | it-IT | 意大利语(意大利)  |
+| ca-ES | 加泰罗尼亚语 | it-IT | 意大利语(意大利)  |
 | da-DK | 丹麦语(丹麦) | ja-JP | 日语(日本) |
 | de-DE | 德语(德国) |ko-KR | 韩语(韩国) |
 | en-AU | 英语(澳大利亚) |nb-NO | 书面挪威语(挪威)  |

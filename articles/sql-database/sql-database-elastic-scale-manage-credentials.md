@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: e6c7d682d9b16266208baeeff14168b3da157251
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: d89e83092775828016c2c47a96164319f5474c1e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54186613"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568424"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>用于访问弹性数据库客户端库的凭据
 
@@ -44,7 +43,7 @@ ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager(s
 "Server=<yourserver>.database.windows.net;Database=<yourdatabase>;User ID=<yourmgmtusername>;Password=<yourmgmtpassword>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;”
 ```
 
-请不要使用“username@server”格式的值 - 而只需使用“username”格式的值。  这是因为凭据必须同时适用于分片映射管理器数据库和各个分片，它们可能位于不同的服务器上。
+请勿使用 username@server 格式的值 - 只需使用“username”格式的值。  这是因为凭据必须同时适用于分片映射管理器数据库和各个分片，而它们可能位于不同的服务器上。
 
 ## <a name="access-credentials"></a>访问凭据
 
@@ -73,12 +72,12 @@ using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>(targetWarehouse, 
 
 与管理员凭据一样，请不要使用“username@server”格式的值， 而应使用“用户名”格式的值。  另请注意，连接字符串不包含服务器名称和数据库名称。 这是因为，**OpenConnectionForKey** 调用会自动根据键将连接定向到正确的分片。 因此，不需提供数据库名称和服务器名称。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)
 
 [保护 SQL 数据库](sql-database-security-overview.md)
 
-[弹性数据库作业入门](sql-database-elastic-jobs-getting-started.md)
+[弹性数据库作业](elastic-jobs-overview.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

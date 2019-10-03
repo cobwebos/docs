@@ -10,17 +10,16 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 10/01/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5702362add6a50f2f4525afbd3649f083f34b6fc
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: d2823158192ae9fc9182f3f60f82d5bd9c050b09
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671958"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811628"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
 
@@ -32,11 +31,20 @@ ms.locfileid: "56671958"
 
 ## <a name="enable-client-certificates"></a>启用客户端证书
 
-若要将应用设置为要求提供客户端证书，需要将应用的 `clientCertEnabled` 设置指定为 `true`。 若要指定设置，请运行以下命令[Cloud Shell](https://shell.azure.com)。
+若要将应用设置为要求提供客户端证书，需要将应用的 `clientCertEnabled` 设置指定为 `true`。 若要设置此设置，请在[Cloud Shell](https://shell.azure.com)中运行以下命令。
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
+
+## <a name="exclude-paths-from-requiring-authentication"></a>排除要求身份验证的路径
+
+为应用程序启用相互身份验证时，应用程序根目录下的所有路径都需要使用客户端证书进行访问。 若要允许某些路径保持打开状态以进行匿名访问，可以在应用程序配置中定义排除路径。
+
+可以通过选择 "**配置** > " "**常规设置**" 并定义排除路径来配置排除路径。 在此示例中，应用程序 `/public` 路径下的任何内容都不会请求客户端证书。
+
+![证书排除路径][exclusion-paths]
+
 
 ## <a name="access-client-certificate"></a>访问客户端证书
 
@@ -190,7 +198,7 @@ export class AuthorizationHandler {
             const incomingCert: pki.Certificate = pki.certificateFromPem(pem);
 
             // Validate certificate thumbprint
-            const fingerPrint = md.sha1.create().update(asn1.toDer((pki as any).certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
+            const fingerPrint = md.sha1.create().update(asn1.toDer(pki.certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
             if (fingerPrint.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
 
             // Validate time validity
@@ -214,3 +222,5 @@ export class AuthorizationHandler {
     }
 }
 ```
+
+[exclusion-paths]: ./media/app-service-web-configure-tls-mutual-auth/exclusion-paths.png

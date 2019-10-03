@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 903f2700ad127c9bcc69e69ee125ba62fccf52e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a3f441a0dd7f7b9f402390e853bd1c28f282f653
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051625"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66245096"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新训练和部署机器学习模型
 
@@ -48,10 +48,10 @@ ms.locfileid: "59051625"
 
     现在，将训练实验部署为重新训练 Web 服务，用于输出经过训练的模型和模型评估结果。
 
-1. 在实验画布的底部，单击“设置 Web 服务”。
-1. 选择“部署 Web 服务[新建]”。 Azure 机器学习 Web 服务门户可打开“部署 Web 服务”页。
+1. 在实验画布的底部，单击“设置 Web 服务”  。
+1. 选择“部署 Web 服务[新建]”  。 Azure 机器学习 Web 服务门户可打开“部署 Web 服务”  页。
 1. 为 Web 服务键入名称，选择一个付款计划。
-1. 选择“部署”。
+1. 选择“部署”。 
 
 ## <a name="retrain-the-model"></a>重新训练模型
 
@@ -59,7 +59,7 @@ ms.locfileid: "59051625"
 
 使用以下步骤来调用重新训练 API：
 
-1. 在 Visual Studio 中创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”。
+1. 在 Visual Studio 中创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”      。
 1. 登录“机器学习 Web 服务”门户。
 1. 单击正在使用的 Web 服务。
 1. 单击“**使用**”。
@@ -68,7 +68,7 @@ ms.locfileid: "59051625"
 
 按照注释中指定的方式添加 NuGet 包 Microsoft.AspNet.WebApi.Client。 要添加对 Microsoft.WindowsAzure.Storage.dll 的引用，可能需要安装 [Azure 存储服务的客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)。
 
-以下屏幕截图显示 Azure 机器学习 Web 服务门户中的“使用”页。
+以下屏幕截图显示 Azure 机器学习 Web 服务门户中的“使用”  页。
 
 ![使用页](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
@@ -78,21 +78,21 @@ ms.locfileid: "59051625"
 
     const string apiKey = "abc123"; // Replace this with the API key for the web service
 
-在“使用”页的“基本使用信息”部分中，找到主密钥，并将其复制到 **apikey** 声明。
+在“使用”  页的“基本使用信息”  部分中，找到主密钥，并将其复制到 **apikey** 声明。
 
 ### <a name="update-the-azure-storage-information"></a>更新 Azure 存储信息
 
 BES 示例代码将文件从本地驱动器（例如，“C:\temp\CensusInput.csv”）上传到 Azure 存储、对其进行处理，并将结果写回 Azure 存储。
 
 1. 登录到 Azure 门户
-1. 在左侧导航栏中，单击“更多服务”，搜索“存储帐户”，然后选择它。
+1. 在左侧导航栏中，单击“更多服务”  ，搜索“存储帐户”  ，然后选择它。
 1. 从存储帐户列表中，选择一个来存储重新训练模型。
-1. 在左侧导航栏中，单击“访问密钥”。
-1. 复制并保存“主访问密钥”。
-1. 在左侧导航栏中，单击“容器”。
+1. 在左侧导航栏中，单击“访问密钥”  。
+1. 复制并保存“主访问密钥”  。
+1. 在左侧的导航栏中，单击**Blob**。
 1. 选择现有容器或创建新的容器并保存名称。
 
-找到“StorageAccountName”、“StorageAccountKey”和“StorageContainerName”声明，然后更新从门户保存的值。
+找到“StorageAccountName”  、“StorageAccountKey”  和“StorageContainerName”  声明，然后更新从门户保存的值。
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key
@@ -132,7 +132,7 @@ BES 示例代码将文件从本地驱动器（例如，“C:\temp\CensusInput.cs
 
 ### <a name="sign-in-to-azure-resource-manager"></a>登录到 Azure 资源管理器
 
-首先，登录到 Azure 帐户从 PowerShell 环境中使用[Connect AzAccount](/powershell/module/az.profile/connect-azaccount) cmdlet。
+首先，登录到 Azure 帐户从 PowerShell 环境中使用[Connect AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet。
 
 ### <a name="get-the-web-service-definition-object"></a>获取 Web 服务定义对象
 

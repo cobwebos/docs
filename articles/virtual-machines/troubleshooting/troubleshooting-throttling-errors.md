@@ -4,21 +4,21 @@ description: Azure 计算中的限制错误、重试和回退。
 services: virtual-machines
 documentationcenter: ''
 author: changov
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: vashan, rajraj, changov
-ms.openlocfilehash: fa65b108f3aea79d4417e65d706d42f0bd819f54
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: changov
+ms.reviewer: vashan, rajraj
+ms.openlocfilehash: db1c6e8e4f1e98db08d5f7ff0ef218fa42d25860
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880706"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103303"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>排查 API 限制错误 
 
@@ -32,7 +32,7 @@ Azure 计算请求可能会根据订阅和区域进行限制，以便优化服�
 
 ## <a name="call-rate-informational-response-headers"></a>调用速率信息响应标头 
 
-| 标头                            | 值格式                           | 示例                               | 描述                                                                                                                                                                                               |
+| Header                            | 值格式                           | 示例                               | 描述                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | 限制策略（涵盖资源 Bucket 或操作组，包括此请求的目标）的剩余 API 调用计数                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | 针对此 HTTP 请求进行的调用计数计入相应策略的限制。 这通常为 1。 针对特殊情况（例如针对虚拟机规模集的缩放）的批请求可以有多个计数。 |
@@ -80,7 +80,7 @@ Content-Type: application/json; charset=utf-8
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>API 调用速率和限制错误分析器
 针对计算资源提供程序的 API 提供了故障排除功能的一个预览版版本。 这些 PowerShell cmdlet 按时间间隔按操作提供有关 API 请求速率的统计信息并且按操作组（策略）提供限制违规统计信息：
 -   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Export-AzLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequests)
+-   [Export-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
 使用此 API 调用统计信息可以很好地洞察订阅的客户端的行为，并轻松识别导致限制的调用模式。
 
@@ -89,7 +89,7 @@ Content-Type: application/json; charset=utf-8
 PowerShell cmdlet 使用 REST 服务 API，客户端可以轻松直接调用该 API（但是尚未提供正式支持）。 若要查看 HTTP 请求格式，请在使用 -Debug 开关的情况下运行 cmdlet 或者使用 Fiddler 探查其执行。
 
 
-## <a name="best-practices"></a>最佳做法 
+## <a name="best-practices"></a>最佳实践 
 
 - 请勿无条件地以及（或者）立即地重试 Azure 服务 API 错误。 遇到不可重试的错误时，常见的情况是客户端代码会进入快速的重试循环。 重试最终会耗光目标操作对应的组的允许调用限制，影响订阅的其他客户端。 
 - 在大容量 API 自动化示例中，如果目标操作组的可用调用计数掉到某个较低的阈值以下，则可考虑实施前摄性客户端自动限制。 

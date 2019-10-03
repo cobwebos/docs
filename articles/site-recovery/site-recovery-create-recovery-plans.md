@@ -1,19 +1,18 @@
 ---
-title: 使用 Azure Site Recovery 创建和自定义灾难恢复的恢复计划 | Microsoft Docs
+title: 使用 Azure Site Recovery 创建和自定义灾难恢复的恢复计划
 description: 了解如何使用 Azure Site Recovery 服务创建和自定义灾难恢复的恢复计划。
 author: rayne-wiselman
 manager: carmonm
-services: site-recovery
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: d52aa3b39a17c42c0f0e0cb669c69d336b41ba48
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
+ms.openlocfilehash: 2ca44ffd26e1b87dd201ed6f274791eadfeb0737
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973192"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814402"
 ---
 # <a name="create-and-customize-recovery-plans"></a>创建和自定义恢复计划
 
@@ -65,18 +64,21 @@ ms.locfileid: "53973192"
     **方案** | **故障转移** | **故障回复**
     --- | --- | --- 
     Azure 到 Azure  | Runbook | Runbook
-    VMware 到 Azure | Runbook | NA 
+    VMware 到 Azure | Runbook | 不可用 
     从包含 VMM 的 Hyper-V 到 Azure | Runbook | 脚本
-    Hyper-V 站点到 Azure | Runbook | NA
+    Hyper-V 站点到 Azure | Runbook | 不可用
     从 VMM 到辅助 VMM | 脚本 | 脚本
 
-1. 在恢复计划中，单击应当将操作添加到的步骤，并指定操作应在何时发生：a. 如果希望操作在故障转移后在组中的计算机启动之前发生，请选择“添加预操作”。
-    b. 如果希望操作在故障转移后在组中的计算机启动之后发生，请选择“添加后操作”。 若要移动操作的位置，请选择“上移”或“下移”按钮。
+1. 在恢复计划中，单击应当将操作添加到的步骤，并指定操作应在何时发生：
+    1. 如果希望操作在故障转移后在组中的计算机启动之前发生，请选择“添加预操作”。
+    1. 如果希望操作在故障转移后在组中的计算机启动之后发生，请选择“添加后操作”。 若要移动操作的位置，请选择“上移”或“下移”按钮。
 2. 在“插入操作”中，选择“脚本”或“手动操作”。
-3. 如果要添加手动操作，请执行以下操作。a. 为操作键入一个名称，然后键入操作说明。 运行故障转移的人员将会看到这些说明。
-    b. 指定是否要为所有类型的故障转移（测试、故障转移、计划内故障转移（如果相关））添加手动操作。 然后单击“确定”。
-4. 如果要添加脚本，请执行以下操作：a. 如果要添加 VMM 脚本，请选择“故障转移到 VMM 脚本”，并在“脚本路径”中键入共享的相对路径。 例如，如果共享位于 \\<VMMServerName>\MSSCVMMLibrary\RPScripts，请指定以下路径：\RPScripts\RPScript.PS1。
-    b. 如果要添加 Azure 自动化 Runbook，请指定该 Runbook 所在的 **Azure 自动化帐户**，并选择相应的 **Azure Runbook 脚本**。
+3. 如果要添加手动操作，请执行以下操作：
+    1. 为操作键入一个名称，然后键入操作说明。 运行故障转移的人员将会看到这些说明。
+    1. 指定是否要为所有类型的故障转移（测试、故障转移、计划内故障转移（如果相关））添加手动操作。 然后单击“确定”。
+4. 如果要添加脚本，请执行以下操作：
+    1. 如果要添加 VMM 脚本，请选择“故障转移到 VMM 脚本”，并在“脚本路径”中键入共享的相对路径。 例如，如果共享位于 \\\<VMMServerName>\MSSCVMMLibrary\RPScripts，请指定以下路径：\RPScripts\RPScript.PS1。
+    1. 如果要添加 Azure 自动化 Runbook，请指定该 Runbook 所在的 **Azure 自动化帐户**，并选择相应的 **Azure Runbook 脚本**。
 5. 运行恢复计划的测试故障转移，以确保脚本按预期运行。
 
 ## <a name="watch-a-video"></a>观看视频

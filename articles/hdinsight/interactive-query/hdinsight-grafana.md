@@ -1,22 +1,20 @@
 ---
 title: 在 Azure HDInsight 上使用 Grafana
-description: 了解如何在 Azure HDInsight 中访问 Grafana。
-services: hdinsight
-ms.service: hdinsight
+description: 了解如何使用 Azure HDInsight 中的 Apache Hadoop 群集访问 Grafana 仪表板
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 495c617f97b2a7f39182b7684c2c0e183c2002b1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cea0e9709afb65caa23d28be093c28498f2b82d0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867807"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122983"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中访问 Grafana
-
 
 [Grafana](https://grafana.com/) 是一个受欢迎的开源图形和仪表板生成器。 Grafana 功能丰富；它不仅可以让用户创建可自定义和可共享的仪表板，还可提供模板化/脚本化仪表板、LDAP 集成、多个数据源等。
 
@@ -28,9 +26,9 @@ ms.locfileid: "56867807"
 
 本部分介绍如何使用 Azure 资源管理器模板在 HDInsight 中创建 Interactive Query 群集。 学习本文不需要有资源管理器模板方面的经验。 
 
-1. 单击下面的“部署到 Azure”按钮以登录到 Azure，并在 Azure 门户中打开资源管理器模板。 
+1. 单击下面的“部署到 Azure”按钮以登录到 Azure，并在 Azure 门户中打开资源管理器模板。
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-grafana/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-grafana/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 2. 按以下屏幕截图所示输入或选择值：
 
@@ -52,22 +50,22 @@ ms.locfileid: "56867807"
     |**群集名称**     | 输入 Apache Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
     |**群集登录名和密码**     | 默认登录名为“admin”。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”。|
     |**SSH 用户名和密码**     | 默认用户名为“sshuser”。  可以重命名 SSH 用户名。  SSH 用户密码的要求与群集登录密码的要求相同。|
-       
+
     某些属性已在模板中硬编码。  可以通过模板配置这些值。 有关这些属性的详细说明，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 
 3. 依次选择“我同意上述条款和条件”、“固定到仪表板”，并选择“购买”。 门户仪表板上应会出现标题为“提交部署”的新磁贴。 创建群集大约需要 20 分钟时间。
 
-    ![模板部署进度](./media/hdinsight-grafana/deployment-progress-tile.png "Azure 模板部署进度")
+    ![Azure 模板部署进度](./media/hdinsight-grafana/deployment-progress-tile.png "Azure 模板部署进度")
 
-4. 创建群集后，该磁贴的标题将更改为指定的资源组名称。 该磁贴还列出了在资源组中创建的 HDInsight 群集。 
-   
+4. 创建群集后，该磁贴的标题将更改为指定的资源组名称。 该磁贴还列出了在资源组中创建的 HDInsight 群集。
+
     ![HDInsight Linux 入门资源组](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Azure HDInsight 群集资源组")
-    
+
 5. 该磁贴还列出了与群集关联的默认存储。 每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)或 [Azure Data Lake 帐户](../hdinsight-hadoop-use-data-lake-store.md)依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
     
 
 > [!NOTE]  
-> 如需其他群集创建方法或要了解本教程中使用的属性，请参阅 [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md)（创建 HDInsight 群集）。 
+> 有关其他群集创建方法以及了解本文中使用的属性，请参阅[创建 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。 
 
 ## <a name="access-the-grafana-dashboard"></a>访问 Grafana 仪表板
 
@@ -79,15 +77,13 @@ ms.locfileid: "56867807"
 
     ![HDInsight 群集仪表板门户](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "门户上的 HDInsight 群集仪表板")
 
-4. 从仪表板中，单击 **Grafana** 磁贴。 或者，浏览到群集 URL 的 `/grafana/` 路径。 例如，`https://<clustername>.azurehdinsight.net/grafana/`。
+4. 从仪表板中，单击 **Grafana** 磁贴。 或者，浏览到群集 URL 的 `/grafana/` 路径。 例如， `https://<clustername>.azurehdinsight.net/grafana/` 。
 
 5. 输入 Hadoop 群集用户凭据。
 
 6. 此时将显示 Grafana 仪表板，如下例所示：
 
-    ![HDInsight Grafana 仪表板](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana 仪表板")
-
-   
+    ![HDInsight Grafana web 仪表板](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana 仪表板")
 
 ## <a name="clean-up-resources"></a>清理资源
 完成本文后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 
@@ -99,7 +95,7 @@ ms.locfileid: "56867807"
 
 1. 返回到包含 Azure 门户的浏览器选项卡。 你应该在群集概览页上。 如果仅希望删除群集但保留默认的存储帐户，请选择“删除”。
 
-    ![删除 HDInsight 群集](./media/hdinsight-grafana/hdinsight-delete-cluster.png "删除 HDInsight 群集")
+    ![Azure 门户删除群集图标](./media/hdinsight-grafana/hdinsight-delete-cluster.png "删除 HDInsight 群集")
 
 2. 如果希望删除群集和默认存储帐户，请选择资源组名称（之前的屏幕截图中已突出显示），打开资源组页。
 
@@ -109,7 +105,7 @@ ms.locfileid: "56867807"
 本教程已介绍如何使用资源管理器模板创建基于 Linux 的 HDInsight 群集，以及如何执行基本 Apache Hive 查询。 下一篇文章将介绍如何使用 Hadoop on HDInsight 执行提取、转换和加载 (ETL) 操作。
 
 > [!div class="nextstepaction"]
->[使用 Apache Hive on HDInsight 提取、转换和加载数据](../hdinsight-analyze-flight-delay-data-linux.md)
+>[使用 HDInsight 上的交互式查询提取、转换和加载数据](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 
 如果已准备好开始处理自己的数据，并需要进一步了解 HDInsight 存储数据的方式或如何将数据导入 HDInsight，请参阅以下文章：
 

@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: aba6e57c9e6d51024390d629ebc088326dc4c64e
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 7ae005fe4bc822346e69d23c013cd597b7645c7e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652342"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137518"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-python-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Python 提取印刷体文本 (OCR)
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>快速入门：使用计算机视觉 REST API 和 Python 提取印刷体文本 (OCR)
 
 在本快速入门中，你将使用计算机视觉的 REST API，通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
 
@@ -31,52 +31,46 @@ ms.locfileid: "56652342"
 ## <a name="prerequisites"></a>先决条件
 
 - 如果想在本地运行此示例，必须安装 [Python](https://www.python.org/downloads/)。
-- 必须具有计算机视觉的订阅密钥。 要获取订阅密钥，请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
+- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
 要创建和运行示例，请执行以下步骤：
 
 1. 将以下代码复制到文本编辑器中。
-1. 必要时在代码中进行如下更改：
-    1. 将 `subscription_key` 的值替换为你的订阅密钥。
-    1. 如有必要，请将 `vision_base_url` 的值替换为获取的订阅密钥所在的 Azure 区域中的计算机视觉资源的终结点 URL。
-    1. （可选）将 `image_url` 的值替换为要从中提取印刷体文本的另一图像的 URL。
+1. （可选）将 `image_url` 的值替换为要从中提取印刷体文本的另一图像的 URL。
 1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`get-printed-text.py`。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `python` 命令运行示例。 例如，`python get-printed-text.py`。
+1. 在提示符处，使用 `python` 命令运行示例。 例如，`python get-printed-text.py` 。
 
 ```python
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
-#%matplotlib inline
+# %matplotlib inline
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 from PIL import Image
 from io import BytesIO
 
-# Replace <Subscription Key> with your valid subscription key.
-subscription_key = "<Subscription Key>"
-assert subscription_key
+# Add your Computer Vision subscription key and endpoint to your environment variables.
+if 'COMPUTER_VISION_SUBSCRIPTION_KEY' in os.environ:
+    subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
+else:
+    print("\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n**Restart your shell or IDE for changes to take effect.**")
+    sys.exit()
 
-# You must use the same region in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from
-# westus, replace "westcentralus" in the URI below with "westus".
-#
-# Free trial subscription keys are generated in the "westus" region.
-# If you use a free trial subscription key, you shouldn't need to change
-# this region.
-vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
+if 'COMPUTER_VISION_ENDPOINT' in os.environ:
+    endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-ocr_url = vision_base_url + "ocr"
+ocr_url = endpoint + "vision/v2.0/ocr"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" + \
     "Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png"
 
 headers = {'Ocp-Apim-Subscription-Key': subscription_key}
-params  = {'language': 'unk', 'detectOrientation': 'true'}
-data    = {'url': image_url}
+params = {'language': 'unk', 'detectOrientation': 'true'}
+data = {'url': image_url}
 response = requests.post(ocr_url, headers=headers, params=params, json=data)
 response.raise_for_status()
 
@@ -99,11 +93,27 @@ for word in word_infos:
     bbox = [int(num) for num in word["boundingBox"].split(",")]
     text = word["text"]
     origin = (bbox[0], bbox[1])
-    patch  = Rectangle(origin, bbox[2], bbox[3], fill=False, linewidth=2, color='y')
+    patch = Rectangle(origin, bbox[2], bbox[3],
+                      fill=False, linewidth=2, color='y')
     ax.axes.add_patch(patch)
     plt.text(origin[0], origin[1], text, fontsize=20, weight="bold", va="top")
 plt.axis("off")
 ```
+
+## <a name="upload-image-from-local-storage"></a>从本地存储上传图像
+
+如果要分析本地图像，请将 Content-Type 标头设置为“application/octet-stream”，并将请求正文设置为字节数组而不是 JSON 数据。
+
+```python
+image_path = "<path-to-local-image-file>"
+# Read the image into a byte array
+image_data = open(image_path, "rb").read()
+# Set Content-Type to octet-stream
+headers = {'Ocp-Apim-Subscription-Key': subscription_key, 'Content-Type': 'application/octet-stream'}
+# put the byte array into your post request
+response = requests.post(ocr_url, headers=headers, params=params, data = image_data)
+```
+
 
 ## <a name="examine-the-response"></a>检查响应
 

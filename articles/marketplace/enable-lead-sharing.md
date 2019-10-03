@@ -2,24 +2,18 @@
 title: 在 Azure 市场中启用潜在顾客共享 | Azure
 description: 了解如何为应用和服务发布者启用 Azure 市场和 AppSource 的潜在顾客共享。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3fea858f23c6b271a117f2edcc749e0c6b737e27
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
-ms.translationtype: HT
+ms.openlocfilehash: 9aecef81547131e6f843fdd55db259d2c4299c9c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159985"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64938669"
 ---
 # <a name="enable-lead-sharing"></a>启用潜在顾客共享
 确保在 [Azure 市场](https://azuremarketplace.microsoft.com)或 [Microsoft AppSource](https://appsource.microsoft.com) 中为你的列表启用了潜在顾客管理，可以帮助你获取以下受众的联系信息：

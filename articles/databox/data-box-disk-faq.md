@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258770"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098826"
 ---
-# <a name="what-is-azure-data-box-disk"></a>什么是 Azure Data Box 磁盘？
+# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk：常见问题
 
 使用 Microsoft Azure Data Box 磁盘云解决方案可以通过快速、经济、可靠的方式将 TB 量级的数据发送到 Azure。 本常见问题解答文章包含在 Azure 门户中使用 Data Box 磁盘时可能遇到的问题及其解答。 
 
@@ -56,6 +56,9 @@ A.  若要了解目前在哪些区域提供 Data Box Disk，请转到[区域可�
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>问： 使用 Data Box 磁盘可在哪些区域存储数据？
 A. 美国、加拿大、澳大利亚、西欧和北欧、韩国及日本的所有区域支持 Data Box Disk。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。
 
+### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>问： 我的 Data Box Disk 在运输过程中是否将跨越国家/地区边界？
+A. Data Box Disk 从其目的地所在的国家/地区发运，不会跨越任何国际边界。 唯一的例外是在欧盟 (EU) 的订单，磁盘可以在任何 EU 国家/地区之间寄送。
+
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>问： 如果 Data Box 磁盘出现任何问题，我应该与谁联系？
 A. 如果 Data Box Disk 出现任何问题，请联系 [Microsoft 支持部门](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)。
 
@@ -65,7 +68,7 @@ A. 如果 Data Box Disk 出现任何问题，请联系 [Microsoft 支持部门](
 A.  不是。 根据数据大小和磁盘的供货情况，你最多会收到 5 个 8 TB 磁盘。  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>问： 如何解锁 Data Box 磁盘？ 
-A.  在 Azure 门户中，转到自己的 Data Box 磁盘订单，并导航到“设备详细信息”。 复制支持密钥。 从 Azure 门户下载并提取适用于操作系统的 Data Box Disk 解锁工具。 在具有要复制到磁盘的数据的计算机上运行该工具。 提供支持密钥以解锁磁盘。 同一个支持密钥可解锁所有磁盘。 
+A.  在 Azure 门户中，转到自己的 Data Box 磁盘订单，并导航到“设备详细信息”。  复制支持密钥。 从 Azure 门户下载并提取适用于操作系统的 Data Box Disk 解锁工具。 在具有要复制到磁盘的数据的计算机上运行该工具。 提供支持密钥以解锁磁盘。 同一个支持密钥可解锁所有磁盘。 
 
 有关分步说明，请转至[在 Windows 客户端上解锁磁盘](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)或[在 Linux 客户端上解锁磁盘](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)。
 
@@ -84,7 +87,25 @@ A. 是的。 可将多个 Data Box 磁盘连接到同一主机来传输数据，
 A.  可以在 Azure 门户中跟踪 Data Box 磁盘的订单状态。 创建订单时，系统还会提示你提供通知电子邮件。 如果已提供，则在订单状态发生任何变化时，你都会收到电子邮件通知。 详细了解如何[配置通知电子邮件](data-box-portal-ui-admin.md#edit-notification-details)。
 
 ### <a name="q-how-do-i-return-the-disks"></a>问： 如何退回磁盘？ 
-A.  Microsoft 会在发货包装中连同 Data Box 磁盘一起提供一个发货标签。 在快递公司寄件时，请将该标签贴在包装箱上，并密封包装。 如果该标签已损坏或丢失，请转到“概述”>“下载发货标签”，并下载新的退货标签。
+A.  Microsoft 会在发货包装中连同 Data Box 磁盘一起提供一个发货标签。 在快递公司寄件时，请将该标签贴在包装箱上，并密封包装。 如果该标签已损坏或丢失，请转到“概述”>“下载发货标签”，并下载新的退货标签。 
+
+### <a name="can-i-pick-up-my-data-box-disk-order-myself-can-i-return-the-disks-via-a-carrier-that-i-choose"></a>我可以自己提取 Data Box Disk 订单吗？ 能否通过我选择的承运人退回磁盘？
+A. 是的。 Microsoft 还仅在 US Gov 区域提供自我管理的发货。 在下 Data Box Disk 订单时，可以选择“自我管理的发货”选项。 若要提取 Data Box Disk 订单，请执行以下步骤：
+    
+1. 下完订单后，将处理订单并准备好磁盘。 将通过电子邮件通知你订单已准备好进行提货。 
+2. 在订单准备好提货后，请在 Azure 门户中转到你的订单，并导航到“概述”边栏选项卡。 
+3. 你将在 Azure 门户中看到一个包含代码的通知。 向 [Azure Data Box 运营团队](mailto:adbops@microsoft.com)发送电子邮件，并向他们提供该代码。 该团队将提供位置并安排取货日期和时间。 你必须在收到电子邮件通知后 5 个工作日内致电该团队。
+
+数据复制和验证完成后，请执行以下步骤来退回磁盘：
+
+1. 数据验证完成后，请取出磁盘。 拔下连接线。
+2. 将磁盘和连接线包装在汽泡袋中，并在其放入包装箱。 如果缺少附件，我们可能会收取费用。
+
+    - 重复使用最初的发货包装。 我们建议使用加固的气泡袋包装磁盘。
+    - 确保填塞物贴合，以避免磁盘在包装箱中发生移动。
+3. 在 Azure 门户中转到订单的“概述”边栏选项卡  。 应会看到一个包含代码的通知。
+4. 使用该代码向 [Azure Data Box 运营团队](mailto:adbops@microsoft.com)发送电子邮件，并向他们提供该代码。 他们会为你提供有关何时何地放下磁盘的信息。
+
 
 ## <a name="migrate-data"></a>迁移数据
 
@@ -110,7 +131,7 @@ A.  若要加快复制过程：
 - 使用多个会话。
 - 不通过网络共享进行复制（否则可能受到网络速度的限制）可确保使数据驻留在磁盘所连接到计算机本地。
 - 在整个复制过程中，确保使用 USB 3.0 或更高版本。 下载并使用 [USBView 工具](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview)，以识别已连接到计算机的 USB 控制器和 USB 设备。
-- 为用于复制数据的计算机建立性能基准。 下载并使用 [Bluestop FIO 工具](https://bluestop.org/fio/)来建立服务器硬件的性能基准。
+- 为用于复制数据的计算机建立性能基准。 下载并使用 [Bluestop FIO 工具](https://ci.appveyor.com/project/axboe/fio)来建立服务器硬件的性能基准。 选择最新的 x86 或 x64 版本，选择“项目”  选项卡，然后下载 MSI。
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>问： 如果源数据包含小型文件（几个 KB 或 MB），如何加速数据复制？
 A.  若要加快复制过程：

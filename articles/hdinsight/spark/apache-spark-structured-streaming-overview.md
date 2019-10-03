@@ -1,20 +1,19 @@
 ---
 title: Azure HDInsight 中的 Spark 结构化流
 description: 如何在 HDInsight Spark 群集上使用 Spark 结构化流应用程序。
-services: hdinsight
-author: maxluk
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.author: maxluk
-ms.openlocfilehash: 8c37093b5369d2390942bc00c1531248bc4424c8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.author: hrasheed
+ms.openlocfilehash: 0aaca127fec82d35da0ba943e97221834c2e42ed
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869082"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441913"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark 结构化流的概述
 

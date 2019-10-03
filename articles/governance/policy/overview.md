@@ -7,14 +7,14 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0e66327a04d1390061580d82716b44b25139bf67
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0c2d8060756c23cc69325ab88803d0423ba45b9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59259450"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002296"
 ---
-# <a name="overview-of-the-azure-policy-service"></a>Azure 策略服务概述
+# <a name="overview-of-the-azure-policy-service"></a>Azure Policy 服务概述
 
 治理验证组织是否能够通过有效且高效地使用 IT 来实现其目标。 它通过详细说明业务目标和 IT 项目来满足这一需求。
 
@@ -26,9 +26,11 @@ Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理策略
 > [!IMPORTANT]
 > 现在，无论定价层如何，为所有分配都提供了 Azure Policy 的符合性评估。 如果分配未显示符合性数据，请确保已向 Microsoft.PolicyInsights 资源提供程序注册订阅。
 
+[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
+
 ## <a name="how-is-it-different-from-rbac"></a>策略与 RBAC 有什么不同？
 
-策略和基于角色的访问控制 (RBAC) 之间存在一些主要区别。 RBAC 关注不同范围内的用户操作。 你可能会被添加到资源组的参与者角色，可对该资源组做出更改。 策略关注部署期间的资源属性，以及现有资源。 Policy 控制属性，例如资源的类型或位置。 不同于 RBAC，Policy 是默认的允许和明确拒绝系统。
+Azure Policy 和基于角色的访问控制 (RBAC) 之间存在一些主要区别。 RBAC 关注不同范围内的用户操作。 你可能会被添加到资源组的参与者角色，可对该资源组做出更改。 Azure Policy 关注部署期间的资源属性，以及现有资源。 Azure Policy 控制各种属性，例如资源的类型或位置。 不同于 RBAC，Azure Policy 是默认的允许和明确拒绝系统。
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Azure Policy 中的 RBAC 权限
 
@@ -37,7 +39,7 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-许多内置角色可授予对 Azure Policy 资源的权限。 “资源策略参与者(预览版)”角色包括大多数 Policy 操作。 “所有者”具有完全权限。 “参与者”和“读者”都可以使用所有读取 Policy 操作，但“参与者”还可以触发修正。
+许多内置角色可授予对 Azure Policy 资源的权限。 “资源策略参与者(预览版)”角色包括大多数 Azure Policy 操作  。 “所有者”具有完全权限  。 “参与者”和“读者”都可以使用所有读取 Azure Policy 操作，但“参与者”还可以触发修正    。
 
 如果没有任何内置角色具有所需的权限，可创建[自定义角色](../../role-based-access-control/custom-roles.md)。
 
@@ -64,7 +66,7 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 
 ## <a name="policy-assignment"></a>策略分配
 
-策略分配是在特定作用域内发生的已分配的策略定义。 此作用域的范围是从[管理组](../management-groups/overview.md)到资源组。 术语“作用域”指分配到策略定义的所有资源组、订阅或管理组。 策略分配由所有子资源继承。 此设计意味着应用于资源组的策略也应用于该资源组中的资源。 但是，可以从策略分配中排除子作用域。
+策略分配是在特定作用域内发生的已分配的策略定义。 此作用域的范围是从[管理组](../management-groups/overview.md)到资源组。 术语“作用域”指分配到策略定义的所有资源组、订阅或管理组  。 策略分配由所有子资源继承。 此设计意味着应用于资源组的策略也应用于该资源组中的资源。 但是，可以从策略分配中排除子作用域。
 
 例如，可以在订阅作用域中分配阻止创建网络资源的策略。 可以排除订阅中用于网络基础结构的资源组。 然后可以向信任的用户授予此网络资源组的访问权限，包括创建网络资源。
 
@@ -76,46 +78,46 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 
 策略参数通过减少必须创建的策略定义数量来帮助简化策略管理。 在创建策略定义时可定义参数，以使其更为通用。 然后就可以为不同方案重复使用该策略定义。 要执行此操作，请在分配策略定义时传入不同的值。 例如，为订阅指定一组位置。
 
-在创建策略定义时定义参数。 在定义参数后，会为它指定一个名称，并且可选择为其提供一个值。 例如，可以为标题为“位置”的策略定义一个参数。 然后，可在分配策略时赋予其不同的值，如 EastUS 或 WestUS。
+在创建策略定义时定义参数。 在定义参数后，会为它指定一个名称，并且可选择为其提供一个值。 例如，可以为标题为“位置”的策略定义一个参数  。 然后，可在分配策略时赋予其不同的值，如 EastUS 或 WestUS   。
 
 有关策略参数的详细信息，请参阅[定义结构 - 参数](./concepts/definition-structure.md#parameters)。
 
 ## <a name="initiative-definition"></a>计划定义
 
-计划定义是策略定义的集合，专为实现一个单一的总体目标而量身定制。 计划定义可以简化管理和分配策略定义。 它们通过将一组策略组合为一个单独的项来实现简化。 例如，可以创建一个标题为“启用 Azure 安全中心中的监视”的计划，用于专门监视 Azure 安全中心中的所有可用的安全建议。
+计划定义是策略定义的集合，专为实现一个单一的总体目标而量身定制。 计划定义可以简化管理和分配策略定义。 它们通过将一组策略组合为一个单独的项来实现简化。 例如，可以创建一个标题为“启用 Azure 安全中心中的监视”  的计划，用于专门监视 Azure 安全中心中的所有可用的安全建议。
 
 在此计划中，将具有特定策略定义，例如：
 
-- 监视安全中心中未加密的 SQL 数据库 – 用于监视未加密的 SQL 数据库和服务器。
+-  监视安全中心中未加密的 SQL 数据库 – 用于监视未加密的 SQL 数据库和服务器。
 - **监视安全中心中的操作系统漏洞** - 用于监视不满足配置基线的服务器。
-- 监视安全中心中缺失的终结点保护 – 用于监视不具备已安装终结点保护代理的服务器。
+-  监视安全中心中缺失的终结点保护 – 用于监视不具备已安装终结点保护代理的服务器。
 
 ## <a name="initiative-assignment"></a>计划分配
 
 类似于策略分配，计划分配是分配给特定作用域的计划定义。 计划分配将减少为每个作用域生成多个计划定义的需要。 另外，此范围也是从管理组到资源组。
 
-每个计划都可以分配给不同的作用域。 可以将一个计划分配给 subscriptionA 和 subscriptionB。
+每个计划都可以分配给不同的作用域。 可以将一个计划分配给 subscriptionA 和 subscriptionB   。
 
 ## <a name="initiative-parameters"></a>计划参数
 
 类似于策略参数，计划参数通过减少冗余来帮助简化计划管理。 计划参数是计划内的策略定义正在使用的参数。
 
-例如，假设出现这样一种情况，有一个带有两个策略定义（**policyA** 和 **policyB**，每个都需要不同类型的参数）的计划定义 - initiativeC：
+例如，假设出现这样一种情况，有一个带有两个策略定义（**policyA** 和 **policyB**，每个都需要不同类型的参数）的计划定义 - initiativeC  ：
 
 | 策略 | 参数的名称 |参数的类型  |注意 |
 |---|---|---|---|
 | policyA | allowedLocations | 数组  |此参数要求将值设置为字符串列表，因为参数类型已定义为数组 |
 | policyB | allowedSingleLocation |字符串 |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
 
-在此情况下，定义 initiativeC 的计划参数时，有三个选项可供选择：
+在此情况下，定义 initiativeC  的计划参数时，有三个选项可供选择：
 
-- 使用此计划中的策略定义参数：在此示例中，allowedLocations 和 allowedSingleLocation 为 initiativeC 的计划参数。
-- 向此计划定义中策略定义的参数提供值。 在此示例中，可以向 policyA 的参数 – allowedLocations 和 policyB 的参数 – allowedSingleLocation 提供位置列表。 此外，也可在分配此计划时提供值。
-- 分配此计划时，提供可供使用的值列表选项。 在分配此计划时，从计划内的策略定义继承的参数只能具有此提供列表中的值。
+- 使用此计划中的策略定义参数：在此示例中，allowedLocations 和 allowedSingleLocation 为 initiativeC 的计划参数    。
+- 向此计划定义中策略定义的参数提供值。 在此示例中，可以向 policyA 的参数 – allowedLocations  和 policyB 的参数 – allowedSingleLocation  提供位置列表。 此外，也可在分配此计划时提供值。
+- 分配此计划时，提供可供使用的值  列表选项。 在分配此计划时，从计划内的策略定义继承的参数只能具有此提供列表中的值。
 
 在计划定义中创建值选项时，无法在计划分配期间输入其他值，因为它不属于列表。
 
-## <a name="maximum-count-of-policy-objects"></a>Policy 对象的最大计数
+## <a name="maximum-count-of-azure-policy-objects"></a>Azure Policy 对象的最大计数
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
@@ -128,7 +130,7 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 - 请在创建定义和分配时考虑组织的层次结构。 我们建议在更高级别创建定义，例如管理组或订阅级别。 然后，在下一子级别创建分配。 如果在管理组中创建定义，则可以将分配范围缩小到该管理组中的订阅或资源组。
 
 - 我们建议创建并分配计划定义，即使对于单个策略定义，也是如此。
-例如，你有策略定义 policyDefA 并在计划定义 initiativeDefC 下创建它。 如果稍后为 policyDefB 创建另一个策略定义，其目标类似于 policyDefA，则可以在 initiativeDefC 下添加它并一起跟踪它们。
+例如，你有策略定义 policyDefA 并在计划定义 initiativeDefC 下创建它   。 如果稍后为 policyDefB 创建另一个策略定义，其目标类似于 policyDefA，则可以在 initiativeDefC 下添加它并一起跟踪它们    。
 
 - 创建计划分配后，添加到该计划中的策略定义也将成为该计划分配的一部分。
 
@@ -142,10 +144,10 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已大致了解 Azure 策略以及一些关键概念，下面是建议的后续步骤：
+现在，你已大致了解 Azure Policy 以及一些关键概念，下面是建议的后续步骤：
 
-- [使用门户分配策略定义](assign-policy-portal.md)
-- [使用 Azure CLI 分配策略定义](assign-policy-azurecli.md)
-- [使用 PowerShell 分配策略定义](assign-policy-powershell.md)
-- 参阅[使用 Azure 管理组来组织资源](..//management-groups/overview.md)，了解什么是管理组
-- 观看第 9 频道的 [Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030)（通过 Azure Policy 治理 Azure 环境）
+- [使用门户分配策略定义](assign-policy-portal.md)。
+- [使用 Azure CLI 分配策略定义](assign-policy-azurecli.md)。
+- [使用 PowerShell 分配策略定义](assign-policy-powershell.md)。
+- 参阅[使用 Azure 管理组来组织资源](..//management-groups/overview.md)，了解什么是管理组。
+- 观看第 9 频道的 [Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030)（通过 Azure Policy 治理 Azure 环境）。

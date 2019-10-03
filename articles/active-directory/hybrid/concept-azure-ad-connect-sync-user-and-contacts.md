@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993374"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60245492"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同步：了解用户、组和联系人
 有几个不同的原因导致你会有多个 Active Directory 林，并且还有几个不同的部署拓扑。 常见的模型包括合并和收购之后的帐户-资源部署和 GAL 同步的林。 但即使有纯模型，混合模型也是常见的模型。 Azure AD Connect 同步中的默认配置不会假定任何特定模型，但具体取决于安装指南中如何选择用户匹配，可以观察到不同的行为。
@@ -47,13 +47,13 @@ ms.locfileid: "57993374"
 
     * 如果该组的 *proxyAddress* 属性为空，则其 *mail* 属性必须包含一个值
 
-    * 如果组的 *proxyAddress* 属性为非空，则必须至少包含一个 SMTP 代理地址值。 下面是一些示例：
+    * 如果组的 *proxyAddress* 属性为非空，则必须至少包含一个 SMTP 代理地址值。 下面是一些可能的恶意活动：
     
       * 其 proxyAddress 属性包含值 *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* 的 Active Directory 组在 Azure AD 中不会启用邮件。 它没有 SMTP 地址。
       
-      * 其 proxyAddress 属性包含值的 Active Directory 组 *{"X500:/0=contoso.com/ou=users/cn=testgroup","SMTP:johndoe\@contoso.com"}* 将启用邮件的 Azure AD 中。
+      * 其 proxyAddress 属性包含值 *{"X500:/0=contoso.com/ou=users/cn=testgroup","SMTP:johndoe\@contoso.com"}* 的 Active Directory 组在 Azure AD 中会启用邮件。
       
-      * 其 proxyAddress 属性包含值的 Active Directory 组 *{"X500:/0=contoso.com/ou=users/cn=testgroup"，"smtp:johndoe\@contoso.com"}* 也将启用邮件的 Azure AD 中。
+      * 其 proxyAddress 属性包含值 *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe\@contoso.com"}* 的 Active Directory 组在 Azure AD 中也会启用邮件。
 
 ## <a name="contacts"></a>联系人
 合并和收购之后，不同林中具有表示用户的联系人很常见，其中，GALSync 解决方案对两个或多个 Exchange 林桥接。 联系人对象始终使用邮件属性从连接器空间联接到 metaverse。 如果已存在具有相同邮件地址的联系人对象或用户对象，则会将这些对象联接在一起。 这在规则 **In from AD – Contact Join** 中进行配置。 另外，还有一条名为 **In from AD – Contact Common** 的规则，该规则具有到包含常量 **Contact** 的 metaverse 属性 **sourceObjectType** 的属性流。 如果将任何用户对象联接到相同的 metaverse 对象，则此规则的优先级非常低，并且 **In from AD – User Common** 规则会为此属性提供值 User。 在使用此规则的情况下，如果没有联接任何用户，此属性则会具有值 Contact，如果至少找到了一个用户，则会具有值 User。
@@ -71,7 +71,7 @@ ms.locfileid: "57993374"
 这里假设，如果找到已禁用的用户帐户，那么之后我们找不到另一个活动帐户，并且在找到 userPrincipalName 和 sourceAnchor 的情况下，对象会设置到 Azure AD。 如果另一个有效帐户联接到相同的 metaverse 对象，则会使用其 userPrincipalName 和 sourceAnchor。
 
 ## <a name="changing-sourceanchor"></a>更改 sourceAnchor
-当对象已导出到 Azure AD 时，则不再允许更改 sourceAnchor。 当已导出对象时，则采用 Azure AD 接受的 **sourceAnchor** 值设置 metaverse 属性 **cloudSourceAnchor**。 如果更改了 **sourceAnchor**，且不匹配 **cloudSourceAnchor**，规则 **Out to AAD – User Join** 将引发错误“sourceAnchor 属性已更改”。 在这种情况下，必须更正配置或数据，以便相同的 sourceAnchor 再次在 metaverse 中出现，才能再次同步对象。
+当对象已导出到 Azure AD 时，则不再允许更改 sourceAnchor。 当已导出对象时，则采用 Azure AD 接受的 **sourceAnchor** 值设置 metaverse 属性 **cloudSourceAnchor**。 如果更改了 **sourceAnchor**，且不匹配 **cloudSourceAnchor**，规则 **Out to AAD – User Join** 将引发错误“sourceAnchor 属性已更改”  。 在这种情况下，必须更正配置或数据，以便相同的 sourceAnchor 再次在 metaverse 中出现，才能再次同步对象。
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure AD Connect 同步：自定义同步选项](how-to-connect-sync-whatis.md)

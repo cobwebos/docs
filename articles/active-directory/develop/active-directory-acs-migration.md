@@ -3,26 +3,27 @@ title: 从 Azure 访问控制服务迁移 | Microsoft Docs
 description: 了解用于从 Azure 访问控制服务 (ACS) 迁移应用和服务的选项。
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
+ms.custom: aaddev
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f9fd062d445fb738842667cab0c24332c0e4cc8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 59a2cc971fbc1df967bc2655c672ab8f419eef71
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879237"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835518"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -148,12 +149,12 @@ https://<mynamespace>.accesscontrol.windows.net
 
 ### <a name="sharepoint-customers"></a>SharePoint 客户
 
-SharePoint 2013、 2016年和 SharePoint Online 客户都在云中、 在本地和混合方案中进行身份验证是使用 ACS。 有些 SharePoint 功能和用例会受 ACS 停用的影响，但有些则不会。 下表汇总了对利用 ACS 的某些最流行 SharePoint 功能进行迁移的指导：
+对于云、本地和混合方案, SharePoint 2013、2016和 SharePoint Online 客户使用 ACS 进行身份验证。 有些 SharePoint 功能和用例会受 ACS 停用的影响，但有些则不会。 下表汇总了对利用 ACS 的某些最流行 SharePoint 功能进行迁移的指导：
 
-| Feature | 指南 |
+| 功能 | 指南 |
 | ------- | -------- |
-| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，你可以[SharePoint 直接连接到 Azure AD 中使用 Azure AD 应用库 SharePoint 内部部署应用程序上](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)。 |
-| [应用身份验证和在本地 SharePoint 中的服务器到服务器身份验证](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | 不受 ACS 停用的影响；无需更改。 | 
+| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在, 你可以[使用本地应用 Azure AD 应用库 sharepoint 将 sharepoint 直接连接到 Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)。 |
+| [应用身份验证 & 本地 SharePoint 中的服务器到服务器身份验证](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | 不受 ACS 停用的影响；无需更改。 | 
 | [SharePoint 加载项的低信任授权（提供程序托管和 SharePoint 托管）](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | 不受 ACS 停用的影响；无需更改。 |
 | [SharePoint 云混合搜索](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | 不受 ACS 停用的影响；无需更改。 |
 
@@ -189,7 +190,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 大致看来，如果只允许用户使用 Microsoft 工作或学校帐户进行登录，那么迁移到 Azure Active Directory 或许是最佳选择。
 
-| 功能 | 访问控制支持 | Azure AD 支持 |
+| 能力 | 访问控制支持 | Azure AD 支持 |
 | ---------- | ----------- | ---------------- |
 | **帐户类型** | | |
 | Microsoft 工作或学校帐户 | 支持 | 支持 |
@@ -240,7 +241,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 下表对与 Web 应用程序相关的访问控制功能和 Azure AD B2C 中提供的功能进行了比较。 粗略来看，如果应用面向使用者或支持许多不同类型的帐户，那么正确选择可能是迁移到 Azure AD B2C。
 
-| 功能 | 访问控制支持 | Azure AD B2C 支持 |
+| 能力 | 访问控制支持 | Azure AD B2C 支持 |
 | ---------- | ----------- | ---------------- |
 | **帐户类型** | | |
 | Microsoft 工作或学校帐户 | 支持 | 支持（通过自定义策略）  |
@@ -283,10 +284,10 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 在这些情况下，可能需要考虑将 Web 应用程序迁移到另一个云身份验证服务。 建议了解以下选项。 以下每个选项都提供了与访问控制类似的功能：
 
-|     |     | 
+|     |     |
 | --- | --- |
-| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持许多与 ACS，相同的功能，PingFederate 是类似的内部部署标识产品，可提供更大的灵活性上。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
+| ![此图像显示 Auth0 徽标](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
+| ![此图显示了 Ping 标识徽标](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务, 它支持与 ACS 相同的许多功能, 而 PingFederate 是一种类似的本地标识产品, 可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
 
@@ -319,7 +320,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 也可使用 Azure AD 进行服务器间身份验证（通过使用 OAuth 客户端凭据授权的 Azure AD 实现）。 下表对服务器间身份验证中的访问控制功能和 Azure AD 中提供的功能进行了比较。
 
-| 功能 | 访问控制支持 | Azure AD 支持 |
+| 能力 | 访问控制支持 | Azure AD 支持 |
 | ---------- | ----------- | ---------------- |
 | 如何注册 Web 服务 | 在访问控制管理门户中创建信赖方 | 在 Azure 门户中创建 Azure AD Web 应用程序 |
 | 如何注册客户端 | 在访问控制管理门户中创建服务标识 | 在 Azure 门户中创建另一个 Azure AD Web 应用程序 |
@@ -345,10 +346,10 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 
 在这些情况下，可能要考虑将 Web 应用程序迁移到另一个云身份验证服务。 建议了解以下选项。 以下每个选项都提供了与访问控制类似的功能：
 
-|     |     | 
+|     |     |
 | --- | --- |
-| ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务，支持许多与 ACS，相同的功能，PingFederate 是类似的内部部署标识产品，可提供更大的灵活性上。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
+| ![此图像显示 Auth0 徽标](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) 是一种灵活的云标识服务，该服务创建了[针对访问控制客户的高级迁移指南](https://auth0.com/acs)，并且几乎支持 ACS 所支持的所有功能。 |
+| ![此图显示了 Ping 标识徽标](./media/active-directory-acs-migration/rsz_ping.png) | [Ping 标识](https://www.pingidentity.com)提供两种类似于 ACS 的解决方案。 PingOne 是一种云标识服务, 它支持与 ACS 相同的许多功能, 而 PingFederate 是一种类似的本地标识产品, 可提供更大的灵活性。 若要深入了解如何使用这些产品，请参阅 [Ping 的 ACS 停用指南](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)。 |
 
 使用 Ping 标识和 Auth0 是为了确保所有访问控制客户都拥有适用于其应用和服务的迁移途径，从而最大限度地减少从访问控制迁移所需的工作量。
 

@@ -1,20 +1,19 @@
 ---
 title: Azure 备份服务器可保护系统状态并还原为裸机
 description: 使用 Azure 备份服务器可备份系统状态并提供裸机恢复 (BMR) 保护。
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 keywords: ''
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: raynew
-ms.openlocfilehash: 35ab150670cdc27efcedca233928e0c2184aeca6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.author: dacurwin
+ms.openlocfilehash: 12412122ba116eedc592fadc57949f707e52c355
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880091"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639664"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>使用 Azure 备份服务器备份系统状态并还原为裸机
 
@@ -37,9 +36,9 @@ Azure 备份服务器可备份系统状态并提供裸机恢复 (BMR) 保护。
 |**文件数据**<br /><br />文件数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|服务器丢失（数据卷丢失）|Y|否|是（BMR，接下来是备份文件数据的常规恢复）|
 |**SharePoint 数据**：<br /><br />场数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|站点、列表、列表项、文档丢失|Y|N|N|
 |**SharePoint 数据**：<br /><br />场数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|操作系统丢失或损坏|N|Y|Y|
-|**SharePoint 数据**：<br /><br />场数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|灾难恢复|N|N|N|
-|Windows Server 2012 R2 Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />主机的 BMR/系统状态备份|VM 丢失|Y|N|N|
-|Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />主机的 BMR/系统状态备份|操作系统丢失或损坏|N|Y|Y|
+|SharePoint 数据：<br /><br />场数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|灾难恢复|N|N|N|
+|Windows Server 2012 R2 Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />主机的 BMR/系统状态备份|VM 丢失|Y|N|N|
+|Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />主机的 BMR/系统状态备份|丢失或损坏操作系统|N|Y|Y|
 |Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />主机的 BMR/系统状态备份|Hyper-V 主机丢失（VM 完整）|N|N|Y|
 |Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />主机的 BMR/系统状态备份|Hyper-V 主机丢失（VM 丢失）|N|N|Y<br /><br />BMR，接下来是常规 Azure 备份服务器恢复|
 |SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|应用数据丢失|Y|N|N|
@@ -123,7 +122,7 @@ Azure 备份服务器可备份系统状态并提供裸机恢复 (BMR) 保护。
     2. 对于“同步频率”，选择要对磁盘运行增量备份的频率。 如果不想设置备份间隔，则可以选中“恰好在恢复点之前”选项。 备份服务器会恰好在计划每个恢复点之前运行快速完整备份。
 
 6.  如果要将数据存储在磁带上以进行长期存储，则在“指定长期目标”页上，选择要保留磁带数据的时间长度（1-99 年）。 
-    1. 对于“备份频率”，选择应运行备份到磁带的频率。 频率取决于选择的保持期：
+    1. 有关**称繵瞯**，应运行选择何种频率备份到磁带。 频率取决于选择的保持期：
         * 保持期是 1-99 年时，可以选择每天、每周、每两周、每月、每季度、每半年或每年进行备份。
         * 保持期是 1-11 个月时，可以选择每天、每周、每两周或每月进行备份。
         * 保持期是 1-4 周时，可以选择每天或每周进行备份。

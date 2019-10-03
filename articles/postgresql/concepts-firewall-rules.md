@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL 服务器防火墙规则
-description: 本文介绍 Azure Database for PostgreSQL 服务器的防火墙规则。
+title: Azure Database for PostgreSQL - 单一服务器中的防火墙规则
+description: 本文介绍了 Azure Database for PostgreSQL - 单一服务器的防火墙规则。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 793a68ee829d87a8433d5bdd77fe7b43e2f3af19
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.date: 09/22/2019
+ms.openlocfilehash: a48e9e2583afbde584987e5a1ac61da9734058d1
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548827"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200136"
 ---
-# <a name="azure-database-for-postgresql-server-firewall-rules"></a>Azure Database for PostgreSQL 服务器防火墙规则
+# <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的防火墙规则
 在指定哪些计算机具有访问权限之前，Azure Database for PostgreSQL 服务器防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
 要配置防火墙，请创建防火墙规则，以指定可接受的 IP 地址的范围。 可以在服务器级别创建防火墙规则。
 
@@ -44,21 +44,23 @@ ms.locfileid: "53548827"
 除了 Azure 门户外，还可使用 Azure CLI 通过编程方式管理防火墙规则。
 另请参阅[使用 Azure CLI 创建和管理 Azure Database for PostgreSQL 防火墙规则](howto-manage-firewall-using-cli.md)
 
-## <a name="troubleshooting-the-database-server-firewall"></a>数据库服务器防火墙故障排除
+## <a name="troubleshooting-firewall-issues"></a>防火墙问题疑难解答
 在对 Microsoft Azure Database for PostgreSQL 服务器服务的访问与期望不符时，请考虑以下几点：
 
 * **对允许列表的更改尚未生效：** 对 Azure Database for PostgreSQL 防火墙配置所做的更改可能最多需要 5 分钟的延迟才可生效。
 
 * **登录名未授权或使用了错误的密码：** 如果某个登录名对 Azure Database for PostgreSQL 服务器没有权限或者使用的密码不正确，则与 Azure Database for PostgreSQL 服务器连接会被拒绝。 创建防火墙设置，仅向客户端提供尝试连接到服务器的机会；每个客户端必须提供必需的安全凭据。
 
-例如，使用 JDBC 客户端可能会出现以下错误。
-> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException:致命错误: 用户 "yourusername" 的密码验证失败
+   例如，使用 JDBC 客户端可能会出现以下错误。
+   > java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException:致命错误: 用户 "yourusername" 的密码验证失败
 
 * **动态 IP 地址：** 如果 Internet 连接使用动态 IP 寻址，并且在通过防火墙时遇到问题，则可以尝试以下解决方法之一：
 
-* 向 Internet 服务提供商 (ISP) 询问分配给客户端计算机、用于访问 Azure Database for PostgreSQL 服务器的 IP 地址范围，然后将该 IP 地址范围作为防火墙规则添加。
+   * 向 Internet 服务提供商 (ISP) 询问分配给客户端计算机、用于访问 Azure Database for PostgreSQL 服务器的 IP 地址范围，然后将该 IP 地址范围作为防火墙规则添加。
 
-* 改为获取客户端计算机的静态 IP 地址，然后将该静态 IP 地址作为防火墙规则添加。
+   * 改为获取客户端计算机的静态 IP 地址，然后将该静态 IP 地址作为防火墙规则添加。
+
+* **服务器的 IP 似乎是公共的：** 与 Azure Database for PostgreSQL 服务器的连接通过可公开访问的 Azure 网关进行路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请访问[连接体系结构一文](concepts-connectivity-architecture.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 有关如何创建服务器级和数据库级防火墙规则的文章，请参阅：

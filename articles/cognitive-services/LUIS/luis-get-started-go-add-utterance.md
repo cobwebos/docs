@@ -1,7 +1,7 @@
 ---
-title: 更改、训练应用，Go
+title: 快速入门：更改、训练应用，Go - LUIS
+titleSuffix: Azure Cognitive Services
 description: 在本 Go 语言快速入门中，你将向家庭自动化应用中添加示例话语并训练该应用。
-titleSuffix: Language Understanding - Microsoft Cognitive Services
 author: diberry
 manager: nitinme
 services: cognitive-services
@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/23/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 60594137306bfe58024877947959f2865fffe019
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 84704e000688c6681773b14542d80a1046228c3f
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961799"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307628"
 ---
 # <a name="quickstart-change-model-using-go"></a>快速入门：使用 Go 更改模型
 
-在本快速入门中，你将向 LUIS 终结点传递话语并返回意向和实体。
-
-[!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+[!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

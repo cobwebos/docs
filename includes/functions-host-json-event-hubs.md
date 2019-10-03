@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: b5d8f67a70961aab21312b6f241081dcb33f66fb
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133600"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172744"
 ---
 ```json
 {
@@ -21,8 +21,8 @@ ms.locfileid: "50133600"
 }
 ```
 
-|属性  |默认 | Description |
+|属性  |默认 | 描述 |
 |---------|---------|---------| 
 |maxBatchSize|64|每个接收循环收到的最大事件计数。|
 |prefetchCount|不适用|基础 EventProcessorHost 将要使用的默认 PrefetchCount。| 
-|batchCheckpointFrequency|1|创建 EventHub 游标检查点之前要处理的事件批数。| 
+|batchCheckpointFrequency|第|创建 EventHub 游标检查点之前要处理的事件批数。| 

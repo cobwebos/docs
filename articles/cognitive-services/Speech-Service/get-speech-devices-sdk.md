@@ -1,98 +1,40 @@
 ---
 title: 获取语音设备 SDK
 titleSuffix: Azure Cognitive Services
-description: 语音服务适用于多种设备和音频源。 现在，可以通过匹配的硬件和软件进一步利用语音应用程序。 本文介绍如何访问语音设备 SDK 并开始开发。
+description: “语音服务”适用于多种设备和音频源。 现在，可以通过匹配的硬件和软件进一步利用语音应用程序。 在本文中, 你将了解如何访问语音设备 SDK 并开始开发。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 3c5874625ee9d1932c401238c1586ad89d5d206d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b60c8735833c3012523c5cc0d7eea6a50e9d10b6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856716"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559693"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>获取认知服务语音设备 SDK
 
-语音设备 SDK 提供受限预览版，要求注册该计划。 目前，Microsoft 首选大型公司作为访问此产品的候选人。
+语音设备 SDK 是一种 pretuned 库, 旨在与专门构建的开发工具包和各种麦克风阵列配置配合使用。
 
-## <a name="request-access"></a>请求访问权限
+## <a name="choose-a-development-kit"></a>选择开发工具包
 
-获取语音设备 SDK 的访问权限：
-
-1. 转到 Microsoft 语音设备 SDK [注册表单](https://aka.ms/sdsdk-signup)。
-1. 阅读[许可协议](speech-devices-sdk-license.md)。
-1. 若同意此许可协议的条款，请选择“我同意”。
-1. 回答表单中的问题。
-1. 提交表单。
-1. 如果电子邮件地址不在 Azure Active Directory (Azure AD) 中，则会在批准访问权限后收到邀请电子邮件，如下示例所示。 如果电子邮件地址已在 Azure AD 中，批准访问权限后将收到 Microsoft 语音团队的电子邮件，可直接跳到[下载语音设备 SDK](#download-the-speech-devices-sdk)。
-
-## <a name="approval-e-mail"></a>批准电子邮件
-
-```
-From: Microsoft Speech Team from Microsoft (via Microsoft) <invites@microsoft.com>
-Subject: You're invited to the Microsoft organization
-```
-
-![电子邮件](media/speech-devices-sdk/get-sdk-1.png)
-
-## <a name="accept-access"></a>接受访问
-
-完成以下步骤，使用注册期间提供的电子邮件地址加入 Azure AD。 此过程可授予访问语音设备 SDK [下载站点](https://shares.datatransfer.microsoft.com/)的权限。
-
-1. 在收到的电子邮件中选择“开始”。 如果你所在组织已是 Office 365 客户，系统会提示登录，可直接跳到步骤 7。
-
-2. 在打开的浏览器窗口中，选择“下一步”。
-
-    ![身份验证窗口](media/speech-devices-sdk/get-sdk-2.png)
-
-3. 创建 Microsoft 帐户（如果还没有帐户）。 输入接收到邀请电子邮件的同一电子邮件地址。
-
-    ![创建 Microsoft 帐户](media/speech-devices-sdk/get-sdk-3.png)
-
-4. 选择“下一步”创建密码。
-
-5. 系统提示验证电子邮件时，请从收到的邀请电子邮件中获取验证码。
-
-7. 在对话框中粘贴或键入电子邮件中的安全代码。 此示例中，安全代码是 8406。 选择“**下一步**”。
-
-    ![验证电子邮件](media/speech-devices-sdk/get-sdk-6.png)
-
-8. 在浏览器中看到“访问面板应用程序”时，则可确认电子邮件地址已在 Azure AD 中。 现已获得语音设备 SDK 下载站点的访问权限。
+|设备|规格|描述|方案|
+|--|--|--|--|
+|[Roobo 智能音频开发工具包](https://ddk.roobo.com)</br>[安装](speech-devices-sdk-roobo-v1.md) / [快速](speech-devices-sdk-android-quickstart.md)入门Roobo![智能音频开发工具包](media/speech-devices-sdk/device-roobo-v1.jpg)|7 Mic Array、ARM SOC、WIFI、音频输出、IO。 </br>[Android](speech-devices-sdk-android-quickstart.md)|用于适应 Microsoft Mic Array 和 front 处理 SDK 的第一种语音设备 SDK, 用于开发高质量的脚本和语音方案|对话脚本, 智能发言人, 语音代理, 可穿戴|
+|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)</br>[设置](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / [快速](speech-devices-sdk-windows-quickstart.md)入门Azure![Kinect 深色](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 Mic Array RGB 和 Depth 相机。 </br>[Windows](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|具有高级人工智能 (AI) 传感器的开发人员工具包, 用于构建复杂的计算机视觉和语音模型。 它将同类最佳的空间麦克风阵列和深度相机与视频相机和方向传感器组合在一起, 这一切都在具有多种模式、选项和 Sdk 的一小设备中, 可容纳各种计算类型。|对话脚本, 自动机器人, 智能生成|
+|Roobo 智能音频开发工具包2![Roobo 智能音频开发工具包2](media/speech-devices-sdk/device-roobo-v2.jpg)|7麦克风阵列, ARM SOC, WIFI, 蓝牙, IO。 </br>Linux|第2代语音设备 SDK, 它在经济高效的参考设计中提供备选 OS 和更多功能。|对话脚本, 智能发言人, 语音代理, 可穿戴|
+|URbetter T11 开发板![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7麦克风阵列, ARM SOC, WIFI, 以太网, HDMI, USB 摄像机。 </br>Linux|一种可适应 Microsoft Mic 阵列并支持扩展 i/o (如 HDMI/以太网和更多 USB 外围设备) 的行业级语音设备 SDK|对话会议、教育、医院、机器人、OTT Box、语音代理、驱动器到|
 
 ## <a name="download-the-speech-devices-sdk"></a>下载语音设备 SDK
 
-转到[语音设备 SDK 下载站点](https://shares.datatransfer.microsoft.com/)。 使用前面创建的 Microsoft 帐户登录。
-
-![SDK 下载站点](media/speech-devices-sdk/get-sdk-7.png)
-
-下载语音设备 SDK、相关示例代码和参考材料：
-
-1. 按照浏览器中的提示，下载并安装 Aspera Connect 工具。
-
-    ![下载 Aspera Connect](media/speech-devices-sdk/get-sdk-8.png)
-
-1. 选择“是”，将应用切换到 Aspera Connect。
-
-    ![切换到 Aspera Connect](media/speech-devices-sdk/get-sdk-9.png)
-
-1. 选择“允许”，确认使用 Aspera Connect 下载文件。
-
-    ![使用 Aspera Connect 进行下载](media/speech-devices-sdk/get-sdk-10.png)
-
-1. 下载文件后，关闭 Aspera Connect 传输窗口。
-
-    ![Aspera Connect 传输窗口](media/speech-devices-sdk/get-sdk-11.png)
-
-默认情况下，文件会下载到“下载”文件夹。 现在可以退出此站点。
+下载[语音设备 SDK](https://aka.ms/sdsdk-download)。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [语音设备 SDK 入门](speech-devices-sdk-qsg.md)
+> [语音设备 SDK 入门](https://aka.ms/sdsdk-quickstart)

@@ -15,19 +15,19 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803413"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173128"
 ---
 ## <a name="test-your-code"></a>测试代码
 
-要在 Visual Studio 中运行项目，请选择 **F5**. 随即显示应用程序 MainWindow，如下所示：
+要在 Visual Studio 中运行项目，请选择 **F5**. 随即显示应用程序 MainWindow，如下所示： 
 
 ![测试应用程序](./media/active-directory-develop-guidedsetup-windesktop-test/samplescreenshot.png)
 
-首次运行该应用程序并选择“调用 Microsoft Graph API”按钮时，系统会提示登录。 使用 Azure Active Directory 帐户（工作或学校帐户）或 Microsoft 帐户（live.com、outlook.com）进行测试。
+首次运行该应用程序并选择“调用 Microsoft Graph API”按钮时，系统会提示登录。  使用 Azure Active Directory 帐户（工作或学校帐户）或 Microsoft 帐户（live.com、outlook.com）进行测试。
 
 ![登录应用程序](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
@@ -39,12 +39,12 @@ ms.locfileid: "59803413"
 
 ### <a name="view-application-results"></a>查看应用程序结果
 
-在登录后，应当会显示由 Microsoft Graph API 调用返回的用户配置文件信息。 结果会显示在“API 调用结果”框中。 有关通过调用 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 获取的令牌的基本信息，应当会在“令牌信息”框中显示。 结果包含以下属性：
+在登录后，应当会显示由 Microsoft Graph API 调用返回的用户配置文件信息。 结果会显示在“API 调用结果”框中  。 有关通过调用 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 获取的令牌的基本信息，应当会在“令牌信息”框中显示  。 结果包含以下属性：
 
-|属性  |格式  |描述 |
+|属性  |格式  |说明 |
 |---------|---------|---------|
 
-|**用户名** | <span> user@domain.com </span> |用于标识用户的用户名。 ||**令牌过期**|日期时间 |令牌到期的时间。 MSAL 通过续订令牌根据需要来延长到期日期。 |
+|**Username** |<span>user@domain.com</span> |用于标识用户的用户名。| |**令牌到期** |DateTime |令牌到期的时间。 MSAL 根据需要通过续订令牌来延长到期日期。|
 
 
 <!--start-collapse-->

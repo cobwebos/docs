@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 07cc83830fe2d467c611622bb66dfbb8c9429c2d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 82aab34a9815f080fe8abb8c1d8b6de66866806e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864870"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067578"
 ---
 # <a name="send-errors-to-stackify-for-logging"></a>将错误发送到 Stackify 进行日志记录
 

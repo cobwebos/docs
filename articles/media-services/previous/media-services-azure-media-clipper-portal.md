@@ -10,17 +10,17 @@ ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 8c88caefb0909da55de87116a23fa520c1679cc2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57990610"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61465811"
 ---
 # <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>在门户使用 Azure 媒体剪辑器创建剪辑  
 
-可以在门户中使用 Azure 媒体剪辑器通过媒体服务帐户中的资产来创建剪辑。 要开始，请在门户中导航到媒体服务帐户。 接下来，选择“子剪辑”选项卡。
+可以在门户中使用 Azure 媒体剪辑器通过媒体服务帐户中的资产来创建剪辑。 要开始，请在门户中导航到媒体服务帐户。 接下来，选择“子剪辑”选项卡  。
 
-在“子剪辑”选项卡上，即可以开始创作剪辑。 在门户中，剪辑器加载使用有效流式处理定位符发布的单比特率 MP4、多比特率 MP4 和实时存档。 不加载未发布的资产。
+在“子剪辑”选项卡上，即可以开始创作剪辑  。 在门户中，剪辑器加载使用有效流式处理定位符发布的单比特率 MP4、多比特率 MP4 和实时存档。 不加载未发布的资产。
 
 剪辑器目前处于公开预览状态。 若要在 Azure 门户中访问剪辑器，请转到此[公开预览页](https://portal.azure.com/?feature.subclipper=true)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "57990610"
 ## <a name="producing-dynamic-manifest-filters"></a>生成动态清单筛选器
 [动态清单筛选器](https://azure.microsoft.com/blog/dynamic-manifest/)介绍了一组基于清单属性和资产时间线的规则。 这些规则确定流式处理终结点如何操作输出播放列表（清单）。 该筛选器可用于更改要进行流式传输以供播放的段。 剪辑器生成的筛选器为本地筛选器，且特定于源资产。 不同于呈现的剪辑，筛选器不是新资产且不需要生成编码作业。 可以通过 [.NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-dynamic-manifest) 或 [REST API](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest) 快速创建筛选器，但这些只有 GOP 准确度。 通常，编码为流式处理的资产具有的 GOP 大小为两秒。
 
-若要创建动态清单筛选器，则导航到“资产”选项卡并选择所需资产。 选择顶部菜单的“子剪辑”按钮。 从高级设置菜单中选择动态清单筛选器作为剪辑模式。 然后可以按照相同的过程生成呈现的剪辑，创建筛选器。 筛选器只能从单个资产生成。
+若要创建动态清单筛选器，则导航到“资产”选项卡并选择所需资产  。 选择顶部菜单的“子剪辑”按钮  。 从高级设置菜单中选择动态清单筛选器作为剪辑模式。 然后可以按照相同的过程生成呈现的剪辑，创建筛选器。 筛选器只能从单个资产生成。
 
 下图介绍 Azure 门户中处于动态清单筛选器模式的剪辑器：![Azure 门户中处于动态清单筛选器模式的 Azure 媒体剪辑器](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-filter.PNG)
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 REST API 为 Azure 资源列出拒绝分配 - Azure | Microsoft Docs
-description: 了解如何使用 Azure 资源基于角色的访问控制 (RBAC) 和 REST API 来列出用户、组和应用程序的拒绝分配。
+description: 了解如何列出拒绝的用户、 组和 Azure 资源和 REST API 使用基于角色的访问控制 (RBAC) 的应用程序分配。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,22 +12,22 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0bc49456f5965846a2de542b4a063bab2d1838bf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998403"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118292"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>使用 REST API 列出 Azure 资源的拒绝分配
 
-即使角色分配向用户授予了访问权限，[拒绝分配](deny-assignments.md)也会阻止用户执行特定的 Azure 资源操作。 本文介绍如何使用 REST API 对列表拒绝分配。
+即使角色分配向用户授予了访问权限，[拒绝分配](deny-assignments.md)也会阻止用户执行特定的 Azure 资源操作。 本文介绍如何列出拒绝角色分配使用 REST API。
 
 > [!NOTE]
-> 在此期间，您可以添加自己的唯一方法拒绝分配是使用 Azure 蓝图。 有关详细信息，请参阅[保护 Azure 蓝图资源锁的新资源](../governance/blueprints/tutorials/protect-new-resources.md)。
+> 您不能直接创建您自己拒绝分配。 了解如何拒绝创建分配时，请参阅[拒绝分配](deny-assignments.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -43,15 +43,15 @@ ms.locfileid: "57998403"
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments/{deny-assignment-id}?api-version=2018-07-01-preview
     ```
 
-1. 在 URI 中，将 {scope} 替换为要列出拒绝分配的范围。
+1. 在 URI 中，将 {scope} 替换为要列出拒绝分配的范围  。
 
     | 范围 | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | 订阅 |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
-1. 将 {deny-assignment-id} 替换为要检索的拒绝分配标识符。
+1. 将 {deny-assignment-id} 替换为要检索的拒绝分配标识符  。
 
 ## <a name="list-multiple-deny-assignments"></a>列出多个拒绝分配
 
@@ -67,15 +67,15 @@ ms.locfileid: "57998403"
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter={filter}
     ```
 
-1. 在 URI 中，将 {scope} 替换为要列出拒绝分配的范围。
+1. 在 URI 中，将 {scope} 替换为要列出拒绝分配的范围  。
 
     | 范围 | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | 订阅 |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
-1. 将 {filter} 替换为筛选拒绝分配列表时要应用的条件。
+1. 将 {filter} 替换为筛选拒绝分配列表时要应用的条件  。
 
     | 筛选器 | 描述 |
     | --- | --- |
@@ -93,7 +93,7 @@ ms.locfileid: "57998403"
     GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter={filter}
     ```
 
-1. 将 {filter} 替换为筛选拒绝分配列表时要应用的条件。 需使用筛选器。
+1. 将 {filter} 替换为筛选拒绝分配列表时要应用的条件  。 需使用筛选器。
 
     | 筛选器 | 描述 |
     | --- | --- |

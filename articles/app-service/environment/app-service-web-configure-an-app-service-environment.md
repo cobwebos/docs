@@ -10,17 +10,16 @@ ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c0b4117f6e7b48dce1746ad6eb3dbe29c0d16af
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: b8a05b7e8466187202e6a4d11efce288238cc19b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723206"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069940"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>配置应用服务环境 v1
 
@@ -71,13 +70,13 @@ ms.locfileid: "53723206"
 
 自动缩放：可帮助管理计算资源消耗的工具之一。 可以针对前端或辅助角色池执行自动缩放。 可以执行以下操作：早上增加任何池类型的实例，而晚上减少实例。 或者，可以在辅助角色池中可用的辅助角色数目低于特定阈值时添加实例。
 
-如果想要设置有关计算资源池度量值的自动缩放规则，请记得考虑预配所需的时间。 有关自动调整应用服务环境规模的详细信息，请参阅[如何配置应用服务环境中的自动调整规模][ASEAutoscale]。
+如果想要设置有关计算资源池度量值的自动缩放规则，请记得考虑预配所需的时间。 有关自动缩放应用服务环境的更多详细信息, 请参阅[如何在应用服务环境中配置自动缩放][ASEAutoscale]。
 
 ### <a name="storage"></a>存储
-每个 ASE 配置了 500 GB 的存储空间。 此空间用于 ASE 中的所有应用。 此存储空间属于 ASE 的一部分，目前无法切换为使用存储空间。 如果调整虚拟网络路由或安全性，仍然需要允许访问 Azure 存储，否则 ASE 将无法正常工作。
+每个 ASE 配置了 500 GB 的存储空间。 此空间用于 ASE 中的所有应用。 此存储空间属于 ASE 的一部分，目前无法切换为使用存储空间。 如果调整虚拟网络路由或安全性，你仍然需要允许访问 Azure 存储，否则 ASE 无法正常工作。
 
 ### <a name="database"></a>数据库
-数据库会保存定义环境的信息，以及在其中运行的应用的详细信息。 这也是 Azure 保存的订阅的一部分。 但无法直接进行操作。 如果调整虚拟网络路由或安全性，仍然需要允许访问 SQL Azure，否则 ASE 将无法正常工作。
+数据库会保存定义环境的信息，以及在其中运行的应用的详细信息。 这也是 Azure 保存的订阅的一部分。 但无法直接进行操作。 如果调整虚拟网络路由或安全性，你仍然需要允许访问 SQL Azure，否则 ASE 无法正常工作。
 
 ### <a name="network"></a>网络
 与 ASE 配合使用的 VNet 可以是在创建 ASE 时创建的 VNet，也可以是现有的 VNet。 如果在创建 ASE 期间创建子网，会强制 ASE 位于与虚拟网络相同的资源组。 如果想要 ASE 所使用的资源组不同于 VNet 的资源组，那么需要使用 Resource Manager 模板创建 ASE。
@@ -89,7 +88,7 @@ ms.locfileid: "53723206"
 * 将某个子网用于托管 ASE 之后，无法更改该子网的地址范围。 因此，建议子网至少包含 64 个地址以适应将来的 ASE 增长。
 * 除了 ASE 以外，子网中不能有其他项目。
 
-不同于包含 ASE 的托管服务，[虚拟网络][virtualnetwork]和子网都在用户的控制之下。  可以通过虚拟网络 UI 或 PowerShell 管理虚拟网络。  ASE 可以部署在经典 VNet 或 Resource Manager VNet 中。  经典 VNet 与 Resource Manager VNet 之间的门户和 API 体验会稍有不同，但 ASE 体验相同。
+不同于包含 ASE 的托管服务,[虚拟网络][virtualnetwork]和子网受用户控制。  可以通过虚拟网络 UI 或 PowerShell 管理虚拟网络。  ASE 可以部署在经典 VNet 或 Resource Manager VNet 中。  经典 VNet 与 Resource Manager VNet 之间的门户和 API 体验会稍有不同，但 ASE 体验相同。
 
 用于托管 ASE 的 VNet 可以使用专用 RFC1918 IP 地址或使用公共 IP 地址。  如果想要使用 RFC1918（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16）未涵盖的 IP 范围，则必须在创建 ASE 之前，创建 VNet 和子网以供 ASE 使用。
 
@@ -97,14 +96,14 @@ ms.locfileid: "53723206"
 
 例如，可以使用 VNET 集成来与订阅中未连接到 ASE 所在虚拟网络的虚拟网络集成。 像平时一样，仍可使用混合连接来访问其他网络中的资源。  
 
-如果虚拟网络配置了 ExpressRoute VPN，则应注意 ASE 的某些路由要求。 某些用户定义的路由 (UDR) 配置与 ASE 不兼容。 有关使用 ExpressRoute 在虚拟网络中运行 ASE 的更多详细信息，请参阅[使用 ExpressRoute 在虚拟网络中运行应用服务环境][ExpressRoute]。
+如果虚拟网络配置了 ExpressRoute VPN，则应注意 ASE 的某些路由要求。 某些用户定义的路由 (UDR) 配置与 ASE 不兼容。 有关使用 ExpressRoute 在虚拟网络中运行 ASE 的更多详细信息, 请参阅[使用 expressroute 在虚拟网络中运行应用服务环境][ExpressRoute]。
 
 #### <a name="securing-inbound-traffic"></a>保护入站流量
 有两种主要方法可控制 ASE 的入站流量。  可以使用网络安全组 (NSG) 来控制哪些 IP 地址可以访问 ASE（请参阅[如何控制应用服务环境中的入站流量](app-service-app-service-environment-control-inbound-traffic.md)），也可以使用内部负载均衡器 (ILB) 配置 ASE。  如果要使用 NSG 限制对 ILB ASE 的访问，这些功能也可以一起使用。
 
 创建 ASE 时，它会在 VNet 中创建 VIP。  VIP 有两种类型：外部和内部。  创建具有外部 VIP 的 ASE 时，可以通过 Internet 可路由 IP 地址访问 ASE 中的应用。 如果选择内部 VIP，ASE 会使用 ILB 进行配置，并且无法通过 Internet 直接访问。  ILB ASE 仍需要外部 VIP，但它只用来进行 Azure 管理和维护访问。  
 
-在 ILB ASE 创建期间，需要提供 ILB ASE 所用的子域，而且必须针对你指定的子域管理自己的 DNS。  你设置了子域名称，所以也需要管理用于 HTTPS 访问的证书。  创建 ASE 之后，系统会提示提供证书。  若要了解有关创建和使用 ILB ASE 的详细信息，请参阅[在应用服务环境中使用内部负载均衡器][ILBASE]。 
+在 ILB ASE 创建期间，需要提供 ILB ASE 所用的子域，而且必须针对你指定的子域管理自己的 DNS。  你设置了子域名称，所以也需要管理用于 HTTPS 访问的证书。  创建 ASE 之后，系统会提示提供证书。  若要了解有关创建和使用 ILB ASE 的详细信息, 请参阅[使用带有应用服务环境的内部负载均衡器][ILBASE]。 
 
 ## <a name="portal"></a>门户
 可以使用 Azure 门户中的 UI 来管理和监视应用服务环境。 如果有 ASE，则可能会在边栏上看到应用服务符号。 此符号用于表示 Azure 门户中的应用服务环境：
@@ -137,7 +136,7 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”部分：
 
 ![“设置”边栏选项卡和“属性”][4]
 
-“设置” > “IP 地址”：在 ASE 中创建 IP 安全套接字层 (SSL) 应用时，需要有一个 IP SSL 地址。 要获取该地址，ASE 需要拥有一些可分配的 IP SSL 地址。 创建的 ASE 最初有一个 IP SSL 地址用于此目的，但可以添加更多地址。 额外的 IP SSL 地址需要付费，如[应用服务定价][AppServicePricing]（在有关 SSL 连接的一节中）所述。 额外的价格是 IP SSL 价格。
+“设置” > “IP 地址”：在 ASE 中创建 IP 安全套接字层 (SSL) 应用时，需要有一个 IP SSL 地址。 要获取该地址，ASE 需要拥有一些可分配的 IP SSL 地址。 创建的 ASE 最初有一个 IP SSL 地址用于此目的，但可以添加更多地址。 对于其他 IP SSL 地址收费, 如[应用服务定价][AppServicePricing]中所示 (在 SSL 连接部分中)。 额外的价格是 IP SSL 价格。
 
 “设置” > “前端池” / “辅助角色池”：其中的每个资源池边栏选项卡可让用户查看仅与该资源池有关的信息，并获得全面缩放该资源池所需的控制权。  
 

@@ -1,6 +1,6 @@
 ---
 title: 导出或删除工作区数据
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 门户、CLI、SDK 和经过身份验证的 REST API 导出或删除工作区。
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
-ms.date: 09/24/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f40606d5fae3b3784ac7f1fdcf4977b7fd9eb1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251769"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002842"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>导出或删除机器学习服务工作区数据 
 
@@ -27,9 +27,9 @@ ms.locfileid: "55251769"
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>控制工作区数据
-通过 Azure 门户、CLI、SDK 和经过身份验证的 REST API，可导出和删除 Azure 机器学习服务存储的产品内数据。 可通过 Azure 隐私门户访问遥测数据。 
+通过 Azure 门户、CLI、SDK 和通过身份验证的 REST Api，Azure 机器学习存储的产品内数据可用于导出和删除。 可通过 Azure 隐私门户访问遥测数据。 
 
-在 Azure 机器学习服务中，个人数据包括运行历史记录文档中的用户信息以及用户与服务之间的一些交互的遥测数据记录。
+在 Azure 机器学习中，个人数据包括运行历史记录文档中的用户信息以及用户与服务之间的一些交互的遥测数据记录。
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>使用 REST API 删除工作区数据 
 
@@ -231,3 +231,29 @@ ms.locfileid: "55251769"
 可以使用以下调用获取数据源：
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
+
+## <a name="delete-visual-interface-assets"></a>删除可视界面资产
+
+在创建试验的视觉对象界面中，删除各个资产：
+
+1. 在左侧，选择要删除的资产类型。
+
+    ![删除资产](media/how-to-export-delete-data.md/delete-experiment.png)
+
+1. 在列表中，选择要删除的单个资产。
+
+1. 在底部选择 "**删除**"。
+
+## <a name="export-visual-interface-data"></a>导出视觉对象接口数据
+
+在创建试验的视觉对象界面中，导出已添加的数据：
+
+1. 在左侧选择 "**数据**"。
+
+1. 在顶部，选择 "**我**的数据集" 或 "**示例**" 以找到要导出的数据。
+
+    ![下载数据](media/how-to-export-delete-data.md/download-data.png)
+
+1. 在列表中，选择要导出的单个数据集。
+
+1. 在底部选择 "**下载**"。

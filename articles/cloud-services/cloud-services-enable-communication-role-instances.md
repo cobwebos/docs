@@ -3,29 +3,24 @@ title: 云服务中的角色通信 | Microsoft Docs
 description: 云服务中的角色实例可以定义其终结点（http、https、tcp、udp），以便与外界通信或在其他角色实例之间进行通信。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 7008a083-acbe-4fb8-ae60-b837ef971ca1
+author: georgewallace
+manager: carmonm
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
-ms.author: jeconnoc
-ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: gwallace
+ms.openlocfilehash: 74ef5567becee27b4af837a6977119d7cf0f3e4b
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792465"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359089"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>为 Azure 中的角色实例启用通信
 云服务角色通过内部和外部连接进行通信。 外部连接称为**输入终结点**，内部连接称为**内部终结点**。 本主题介绍如何修改[服务定义](cloud-services-model-and-package.md#csdef)来创建终结点。
 
 ## <a name="input-endpoint"></a>输入终结点
-想要向外部公开某个端口时，使用输入终结点。 可以指定该终结点的协议类型和端口，这些指定值将同时应用到该终结点的外部和内部端口。 如果需要，用户可以使用 [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#InputEndpoint) 属性为终结点指定不同的内部端口。
+想要向外部公开某个端口时，使用输入终结点。 可以指定该终结点的协议类型和端口，这些指定值将同时应用到该终结点的外部和内部端口。 如果需要，用户可以使用 [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) 属性为终结点指定不同的内部端口。
 
 输入终结点可以使用以下协议：**http、https、tcp、udp**。
 

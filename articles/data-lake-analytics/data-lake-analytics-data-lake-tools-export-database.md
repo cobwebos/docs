@@ -1,5 +1,5 @@
 ---
-title: 使用针对 Visual Studio 的 Azure Data Lake 工具导出 U-SQL 数据库
+title: 导出 U-SQL 数据库-针对 Visual Studio 的 Azure Data Lake 工具
 description: 了解如何使用针对 Visual Studio 的 Azure Data Lake 工具导出 U-SQL 数据库并自动将其导入本地帐户。
 services: data-lake-analytics
 author: yanancai
@@ -9,12 +9,12 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e5a52de0342e864cb108d8d590583fe64f72e3b6
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496174"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315792"
 ---
 # <a name="export-a-u-sql-database"></a>导出 U-SQL 数据库
 
@@ -26,7 +26,7 @@ ms.locfileid: "59496174"
 
 ## <a name="export-steps"></a>导出步骤
 
-### <a name="step-1-export-the-database-in-server-explorer"></a>步骤 1：在服务器资源管理器中的将数据库导出
+### <a name="step-1-export-the-database-in-server-explorer"></a>步骤 1：导出数据库服务器资源管理器
 
 你有权访问的所有 Data Lake Analytics 帐户都列在服务器资源管理器中。 若要导出数据库，请执行以下操作：
 
@@ -37,7 +37,7 @@ ms.locfileid: "59496174"
 
      如果“导出”菜单选项不可用，需要[将工具更新到最新版本](https://aka.ms/adltoolsvs)。
 
-### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>步骤 2：配置你想要导出的对象
+### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>步骤 2：配置要导出的对象
 
 如果只需要某个大型数据库的一小部分，可以在导出向导中配置所要导出的对象子集。 
 

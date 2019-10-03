@@ -1,22 +1,21 @@
 ---
 title: 使用 SSH 隧道访问 Azure HDInsight
 description: 了解如何使用 SSH 隧道来安全浏览基于 Linux 的 HDInsight 节点上托管的 Web 资源。
-services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/15/2018
-ms.author: hrasheed
-ms.openlocfilehash: 03c86aa069300f88b61752ebd3223e424f6e9c96
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
+ms.date: 05/28/2019
+ms.openlocfilehash: d976826fe90946697a32c5b1edb9dd323b01cc1c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382609"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105470"
 ---
-# <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>使用 SSH 隧道访问 Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie 和其他 Web UI
+# <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>使用 SSH 隧道访问 Apache Ambari web UI、JobHistory、NameNode、Apache Oozie 和其他 Ui
 
 使用 HDInsight 群集可以通过 Internet 访问 Apache Ambari Web UI，但某些功能需要 SSH 隧道。 例如，如果没有 SSh 隧道，将无法通过 Internet 访问 Apache Oozie 服务的 Web UI。
 
@@ -43,7 +42,7 @@ Ambari 中的多个菜单仅通过 SSH 隧道工作。 这些菜单依赖于辅�
 
 ## <a name="prerequisites"></a>先决条件
 
-* SSH 客户端。 大多数操作系统通过 `ssh` 命令提供 SSH 客户端。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+* SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 * 可配置为使用 SOCKS5 代理的 Web 浏览器。
 
@@ -57,9 +56,9 @@ Ambari 中的多个菜单仅通过 SSH 隧道工作。 这些菜单依赖于辅�
 
 ## <a name="usessh"></a>使用 SSH 命令创建隧道
 
-使用以下 `ssh` 命令创建 SSH 隧道。 将 **sshuser** 替换为 HDInsight 群集的 SSH 用户，并将 **clustername** 替换为 HDInsight 群集的名称：
+使用以下 `ssh` 命令创建 SSH 隧道。 将 `sshuser` 替换为 HDInsight 群集的 SSH 用户，将 `clustername` 替换为 HDInsight 群集的名称：
 
-```bash
+```cmd
 ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 ```
 
@@ -82,31 +81,32 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 
 ### <a name="create-or-load-a-session"></a>创建或加载会话
 
-1. 打开 PuTTY，并确保在左侧菜单中选择“会话”。 如果你已保存了一个会话，请从“已保存的会话”列表中选择该会话名称并单击“加载”。
+1. 打开 PuTTY，并确保在左侧菜单中选择“会话”。 如果已保存了一个会话，请从“已保存的会话”列表中选择该会话名称并选择“加载”。
 
 1. 如果你没有已保存的会话，请输入你的连接信息：
     * **主机名(或 IP 地址)** - HDInsight 群集的 SSH 地址。 例如，**mycluster-ssh.azurehdinsight.net**
     * **端口** - 22
     * **连接类型** - SSH
-1. 单击“保存”
 
-    ![创建 SSH 会话](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
+1. 选择“保存”
 
-2. 在对话框左侧的“类别”部分中，依次展开“连接”和“SSH”，并选择“隧道”。
+    ![HDInsight 创建 putty 会话](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
-3. 提供以下有关“用于控制 SSH 端口转发的选项”窗体的信息：
-   
+1. 在对话框左侧的“类别”部分中，依次展开“连接”和“SSH”，并选择“隧道”。
+
+1. 提供以下有关“用于控制 SSH 端口转发的选项”窗体的信息：
+
    * **源端口** - 客户端上要转发的端口。 例如，**9876**。
 
    * **目标** - HDInsight 群集的 SSH 地址。 例如， **mycluster-ssh.azurehdinsight.net**。
 
    * **动态** - 启用动态 SOCKS 代理路由。
-     
-     ![隧道选项图像](./media/hdinsight-linux-ambari-ssh-tunnel/puttytunnel.png)
 
-4. 单击“添加”以添加设置，并单击“打开”以打开 SSH 连接。
+     ![PuTTY 配置隧道选项](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
 
-5. 出现提示时，登录到服务器。
+1. 选择“添加”以添加设置，并单击“打开”以打开 SSH 连接。
+
+1. 出现提示时，登录到服务器。
 
 ## <a name="use-the-tunnel-from-your-browser"></a>从浏览器使用隧道
 
@@ -114,9 +114,9 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 > 本部分中的步骤使用 Mozilla FireFox 浏览器，因为它在所有平台中提供相同的代理设置。 对于其他新式浏览器（如 Google Chrome），可能需要 FoxyProxy 等扩展才能使用隧道。
 
 1. 将浏览器配置为使用 **localhost**，并将创建隧道时使用的端口配置为 **SOCKS v5** 代理。 Firefox 中的设置如下所示。 如果使用的端口不是 9876，请将端口更改为所用的端口：
-   
-    ![Firefox 设置图像](./media/hdinsight-linux-ambari-ssh-tunnel/firefoxproxy.png)
-   
+
+    ![firefox 浏览器代理设置](./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png)
+
    > [!NOTE]  
    > 通过选择“远程 DNS”，可使用 HDInsight 群集解析域名系统 (DNS) 请求。 此设置使用群集的头节点解析 DNS。
 
@@ -126,36 +126,33 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 
 建立群集后，请通过以下步骤验证是否可以从 Ambari Web 访问服务 Web UI：
 
-1. 在浏览器中，转到 http\://headnodehost:8080。 `headnodehost` 地址通过隧道发送到群集，并解析为运行 Ambari 的头节点。 出现提示时，请输入群集的管理员用户名 (admin) 和密码。 Ambari Web UI 可能会再次出现提示。 如果出现，请重新输入信息。
+1. 在浏览器中转到 `http://headnodehost:8080`。 `headnodehost` 地址通过隧道发送到群集，并解析为运行 Ambari 的头节点。 出现提示时，请输入群集的管理员用户名 (admin) 和密码。 Ambari Web UI 可能会再次出现提示。 如果出现，请重新输入信息。
 
    > [!NOTE]  
-   > 如果使用 http\://headnodehost:8080 地址连接到群集，则将通过隧道进行连接。 通信的安全是通过使用 SSH 隧道而非 HTTPS 实现的。 若要使用 HTTPS 通过 Internet 进行连接，请使用 https\://clustername.azurehdinsight.net，其中“clustername”是群集的名称。
+   > 如果使用 `http://headnodehost:8080` 地址连接到群集，则将通过隧道进行连接。 通信的安全是通过使用 SSH 隧道而非 HTTPS 实现的。 若要使用 HTTPS 通过 Internet 进行连接，请使用 `https://clustername.azurehdinsight.net`，其中 `clustername` 是群集的名称。
 
 2. 在 Ambari Web UI 中，请选择页面左侧列表中的“HDFS”。
 
-    ![已选择“HDFS”的截图](./media/hdinsight-linux-ambari-ssh-tunnel/hdfsservice.png)
+    ![已选择 Apache Ambari hdfs 服务](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
 
 3. 显示 HDFS 服务信息时，请选择“快速链接”。 将显示群集头节点列表。 选择其中一个头节点，并选择“NameNode UI”。
 
-    ![已展开“快速链接”菜单的截图](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
+    ![已展开“快速链接”菜单的截图](./media/hdinsight-linux-ambari-ssh-tunnel/namenode-drop-down-menu.png)
 
-   > [!NOTE]  
-   > 选择“快速链接”时，可能会收到一个等待指示符。 如果 Internet 连接速度慢，则可能会出现此情况。 请等待一两分钟，让系统从服务器接收数据，然后再次尝试列出节点列表。
-   >
-   > “快速链接”菜单中的某些项可能会在屏幕右侧处被截去。 如果是这样，请使用鼠标展开菜单，然后使用向右键向右滚动屏幕，查看菜单的余下内容。
+    > [!NOTE]  
+    > 选择“快速链接”时，可能会收到一个等待指示符。 如果 Internet 连接速度慢，则可能会出现此情况。 请等待一两分钟，让系统从服务器接收数据，然后再次尝试列出节点列表。
+    >
+    > “快速链接”菜单中的某些项可能会在屏幕右侧处被截去。 如果是这样，请使用鼠标展开菜单，然后使用向右键向右滚动屏幕，查看菜单的余下内容。
 
 4. 会显示类似于下图的页面：
 
-    ![NameNode UI 的截图](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
+    ![Hadoop NameNode UI 的图像](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
 
-   > [!NOTE]  
-   > 请注意此页的 URL，它应类似于 http\://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster。 此 URL 使用了节点的内部完全限定的域名 (FQDN)，仅在使用 SSH 隧道时可以访问。
+    > [!NOTE]  
+    > 请注意此页的 URL;它应类似`http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`于。 此 URL 使用了节点的内部完全限定的域名 (FQDN)，仅在使用 SSH 隧道时可以访问。
 
 ## <a name="next-steps"></a>后续步骤
 
 现已了解如何创建和使用 SSH 隧道，请参阅以下文档，了解使用 Ambari 的其他方法：
 
 * [使用 Apache Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
-
-有关将 SSH 与 HDInsight 配合使用的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
-

@@ -8,27 +8,26 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 65dcceb2e55ec0927630b32670d2f915a01903bf
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ccd9e8323f6e0de7b81c7600e7828e4858c51201
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667941"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035863"
 ---
 # <a name="sfctl-store"></a>sfctl store
 针对群集映像存储执行基本文件级别操作。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
-| delete | 删除现有的映像存储内容。 |
+| 删除 | 删除现有的映像存储内容。 |
 | root-info | 获取映像存储根目录中的内容信息。 |
 | stat | 获取映像存储内容信息。 |
 

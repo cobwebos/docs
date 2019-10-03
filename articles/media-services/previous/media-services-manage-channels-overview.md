@@ -14,17 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a9d0daaacb046df7943202775adc77bc912cce11
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 5ab4a6b96df964497e20b2b93c59febb0e24393c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189506"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035894"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>使用媒体服务实时传送视频流概述
 
 > [!NOTE]
-> 自 2018 年 5 月 12 日起，实时频道将不再支持 RTP/MPEG-2 传输流引入协议。 请从 RTP/MPEG-2 迁移到 RTMP 或分段 MP4（平滑流式处理）引入协议。
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>概述
 
@@ -33,7 +33,7 @@ ms.locfileid: "58189506"
 * 一个用于广播事件的相机。
 * 一个将信号从相机转换为发送至实时流式处理服务的流的实时视频编码器。
 
-    （可选）多个实时同步编码器。 对于某些需要高可用性与优质体验的重要实时事件，建议使用带时间同步功能的主动-主动冗余编码器，以实现无缝故障转移，且不会丢失数据。
+    （可选）多个实时同步编码器。 对于某些需要高可用性与优质体验的重要直播活动，建议使用带时间同步功能的主动-主动冗余编码器，以实现无缝故障转移，且不会丢失数据。
 * 实时流式处理服务允许执行以下操作：
 
   * 使用多种实时流式处理协议（例如 RTMP 或平滑流式处理）引入实时内容
@@ -42,9 +42,14 @@ ms.locfileid: "58189506"
   * 记录和存储引入的内容，以便稍后进行流式处理（视频点播）
   * 直接通过常用流式处理协议（例如 MPEG DASH、Smooth、HLS）将内容传递给客户，或传递到内容分发网络 (CDN) 以供进一步分发。
 
-Microsoft Azure 媒体服务 (AMS) 提供了引入、编码、预览、存储和实时传送视频流内容的功能。
+**Microsoft Azure 媒体服务** (AMS) 提供了引入、编码、预览、存储和实时传送视频流内容的功能。
 
-将内容传送给客户时，目标是将优质视频传送到处于不同网络条件下的各种设备。 为此，可使用实时编码器将流编码为多比特率（自适应比特率）视频流。  为满足不同设备的流式处理要求，使用媒体服务 [动态打包](media-services-dynamic-packaging-overview.md) 将流动态地重新打包为不同的协议。 媒体服务支持以下自适应比特率流式处理技术的传送：HTTP Live Streaming (HLS)、平滑流式处理、MPEG DASH。
+借助媒体服务，可以利用[动态打包](media-services-dynamic-packaging-overview.md)，以便广播正在发送到服务的贡献源中采用 MPEG DASH、HLS 和平滑流式处理格式的实时传送流。 观看者可以使用任何与 HLS、DASH 或平滑流式处理兼容的播放器播放实时流。 可以使用 Web 应用程序或移动应用程序中的 Azure Media Player 传送采用上述任何协议的流。
+
+> [!NOTE]
+> 自 2018 年 5 月 12 日起，实时频道将不再支持 RTP/MPEG-2 传输流引入协议。 请从 RTP/MPEG-2 迁移到 RTMP 或分段 MP4（平滑流式处理）引入协议。
+
+## <a name="streaming-endpoints-channels-programs"></a>流式处理终结点、频道、节目
 
 在 Azure 媒体服务中，“频道”、“程序”和“流式处理终结点”处理所有实时传送视频流功能，包括引入、格式化、DVR、安全性、可伸缩性和冗余。
 
@@ -67,7 +72,7 @@ Microsoft Azure 媒体服务 (AMS) 提供了引入、编码、预览、存储和
 
 可以通过下表来了解媒体服务中支持的两种通道类型的比较情况
 
-| Feature | 直通通道 | 标准通道 |
+| 功能 | 直通通道 | 标准通道 |
 | --- | --- | --- |
 | 单比特率输入在云中被编码为多比特率 |否 |是 |
 | 最大分辨率，层数 |1080p，8 层，60+fps |720p，6 层，30 fps |
@@ -109,11 +114,11 @@ Microsoft Azure 媒体服务 (AMS) 提供了引入、编码、预览、存储和
 
 创建通道时，可以使用以下格式之一指定允许的 IP 地址：具有 4 个数字、CIDR 地址范围的 IpV4 地址。
 
-### <a name="program"></a>节目
+### <a name="program"></a>计划
 [节目](https://docs.microsoft.com/rest/api/media/operations/program)用于控制实时流中片段的发布和存储。 频道管理节目。 频道和节目的关系非常类似于传统媒体，频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。
 可以通过设置 **ArchiveWindowLength** 属性，指定希望保留多少小时的节目录制内容。 此值的设置范围是最短 5 分钟，最长 25 小时。
 
-ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，节目也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
+ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，节目也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的值还决定了客户端清单能够增加多长时间。
 
 每个节目都与某个资产关联。 若要发布节目，必须为关联的资产创建定位符。 创建此定位符后，可以生成提供给客户端的流 URL。
 
@@ -157,7 +162,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>相关主题
-[Azure 媒体服务分片 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
+[Azure 媒体服务分片 MP4 实时引入规范](../media-services-fmp4-live-ingest-overview.md)
 
 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)
 

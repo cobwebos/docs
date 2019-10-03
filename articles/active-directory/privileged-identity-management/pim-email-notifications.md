@@ -1,9 +1,9 @@
 ---
-title: 电子邮件在 PIM 的 Azure Active Directory 中的通知 |Microsoft Docs
+title: PIM 中的电子邮件通知 - Azure Active Directory | Microsoft Docs
 description: 介绍 Azure AD Privileged Identity Management (PIM) 中的电子邮件通知。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
@@ -12,29 +12,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 01/05/2019
-ms.author: rolyon
+ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f0db4828ef7a6d3392ce53b2f2f95b0f7f014d65
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576941"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804541"
 ---
 # <a name="email-notifications-in-pim"></a>PIM 中的电子邮件通知
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以了解重要的事件发生时，如分配或激活角色时。 PIM 向你和其他参与者发送电子邮件通知，以便随时了解状况。 这些电子邮件可能还包含指向相关任务的链接，比如激活或续订角色。 本文介绍了这些电子邮件的外观、何时发送电子邮件，以及接收人员。
+可以通过 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 了解重要事件何时发生，例如何时分配或激活角色。 PIM 向你和其他参与者发送电子邮件通知，以便随时了解状况。 这些电子邮件可能还包含指向相关任务的链接，比如激活或续订角色。 本文介绍了这些电子邮件的外观、何时发送电子邮件，以及接收人员。
 
 ## <a name="sender-email-address-and-subject-line"></a>发件人电子邮件地址和主题行
 
 针对 Azure AD 和 Azure 资源角色从 PIM 发送的电子邮件具有以下发件人电子邮件地址：
 
-- 电子邮件地址： **azure noreply\@microsoft.com**
+- 电子邮件地址：**azure-noreply\@microsoft.com**
 - 显示名称：Microsoft Azure
 
-这些电子邮件在主题行中包括 PIM 前缀。 下面是一个示例：
+这些电子邮件在主题行中包括 PIM 前缀。 以下是一个示例：
 
 - PIM：已为 Alain Charon 永久分配备份读取器角色
 
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以了
 | --- | --- | --- | --- |
 | 特权角色管理员</br>（激活/符合条件） | 是</br>（仅当未指定明确审批者） | 是* | 是 |
 | 安全管理员</br>（激活/符合条件） | 否 | 是* | 是 |
-| 全局管理员角色</br>（激活/符合条件） | 否 | 是* | 是 |
+| 全局管理员</br>（激活/符合条件） | 否 | 是* | 是 |
 
 \* 如果[“通知”设置](pim-how-to-change-default-settings.md#notifications)设置为“启用”。
 
@@ -68,7 +68,7 @@ Azure AD 角色的 PIM 摘要电子邮件将发送给启用了 PIM 的特权角�
 
 电子邮件包括四个磁贴：
 
-| 磁贴 | 描述 |
+| 平铺 | 描述 |
 | --- | --- |
 | **已激活的用户** | 用户在租户内激活其符合条件角色的次数。 |
 | **永久用户** | 用户符合资格的分配被设定为永久分配的次数。 |
@@ -102,4 +102,4 @@ Azure AD 角色的 PIM 摘要电子邮件将发送给启用了 PIM 的特权角�
 ## <a name="next-steps"></a>后续步骤
 
 - [在 PIM 中配置 Azure AD 角色设置](pim-how-to-change-default-settings.md)
-- [批准或拒绝在 PIM 中的 Azure AD 角色的请求](azure-ad-pim-approval-workflow.md)
+- [在 PIM 中批准或拒绝 Azure AD 角色的请求](azure-ad-pim-approval-workflow.md)

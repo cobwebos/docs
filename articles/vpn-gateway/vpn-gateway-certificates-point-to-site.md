@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: cherylmc
 ms.openlocfilehash: 74639dee6fb548e1c9067cae6fc22f6e3cc872c3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096225"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60763749"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>使用 PowerShell 为点到站点连接生成和导出证书
 
@@ -28,7 +28,7 @@ ms.locfileid: "58096225"
 使用 New-SelfSignedCertificate cmdlet 创建自签名根证书。 有关参数的其他信息，请参阅 [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)。
 
 1. 在运行 Windows 10 或 Windows Server 2016 的计算机上，使用提升的权限打开 Windows PowerShell 控制台。 这些示例在 Azure Cloud Shell“试用”中不起作用。 必须本地运行这些示例。
-2. 使用以下示例创建自签名根证书。 以下示例创建名为“P2SRootCert”、会自动安装在“Certificates-Current User\Personal\Certificates”中的自签名根证书。 打开“certmgr.msc”或“管理用户证书”，即可查看证书。
+2. 使用以下示例创建自签名根证书。 以下示例创建名为“P2SRootCert”、会自动安装在“Certificates-Current User\Personal\Certificates”中的自签名根证书。 打开“certmgr.msc”  或“管理用户证书”  ，即可查看证书。
 
    ```powershell
    $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `

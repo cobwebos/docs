@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 560c9c177bfa693580979101e5b9343fcff7fe40
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164667"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173146"
 ---
 ### <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>通过用于 StorSimple 的 Windows PowerShell 安装维护模式更新
 
@@ -19,7 +19,7 @@ ms.locfileid: "50164667"
 > * 在进入维护模式前，验证两个设备控制器是否在 Azure 门户中正常运行。 如果控制器未正常运行，请[联系 Microsoft 支持部门](../articles/storsimple/storsimple-8000-contact-microsoft-support.md)，以了解后续步骤。
 > * 处于维护模式下时，需要依次对两个控制器进行更新。
 
-1. 使用 PuTTY 连接到串行控制台。 遵循 [Use PuTTy to connect to the serial console](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)（使用 PuTTy 连接到串行控制台）中的详细说明。 在命令提示符下，按 **Enter**。 选择选项 1“以完全访问权限登录”。
+1. 使用 PuTTY 连接到串行控制台。 遵循 [Use PuTTy to connect to the serial console](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)（使用 PuTTy 连接到串行控制台）中的详细说明。 在命令提示符下，按 **Enter**。 选择选项 1“以完全访问权限登录”  。
 
 2. 若要将控制器置于维护模式，请键入：
     

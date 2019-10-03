@@ -10,19 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 588b8b11a02551a790145aafb013759699004267
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4e1d83d99f6df9407e24e2ae57af70f68858092d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009959"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012750"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
-通过使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的实时指标流探测实时和生产时的 Web 应用程序的信号。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 实时指标流与[探查器](../../azure-monitor/app/profiler.md)、[快照调试器](../../azure-monitor/app/snapshot-debugger.md)和[性能测试](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests)一同为实时网站提供了功能强大且非入侵性的诊断工具。
+通过使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的实时指标流探测实时和生产时的 Web 应用程序的信号。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 与 [Profiler](../../azure-monitor/app/profiler.md)、[Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md) 一起使用。 实时指标流为实时网站提供了功能强大的非侵入式诊断工具。
 
 使用实时指标流可实现以下操作：
 
@@ -36,7 +36,7 @@ ms.locfileid: "59009959"
 
 [![实时指标流视频](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
-实时指标当前支持的 ASP.NET、 ASP.NET Core、 Azure Functions、 Java 和 Node.js 应用。
+目前 ASP.NET、ASP.NET Core、Azure Functions、Java 和 Node.js 应用支持实时指标。
 
 ## <a name="get-started"></a>开始使用
 
@@ -50,10 +50,13 @@ ms.locfileid: "59009959"
 
 4. 如果可能在筛选器中使用客户名称等敏感数据，请[确保控制通道的安全](#secure-the-control-channel)。
 
+### <a name="nodejs"></a>Node.js
+
+要将实时指标与 Node.js 一起使用，必须更新到 SDK 的 1.30 版或更高版本。 默认情况下，Node.js SDK 中禁用了实时指标。 若要启用实时指标，请在初始化 SDK 时将 `setSendLiveMetrics(true)` 添加到[配置方法](https://github.com/Microsoft/ApplicationInsights-node.js#configuration)。
+
 ### <a name="no-data-check-your-server-firewall"></a>没有数据？ 请检查服务器的防火墙
 
 请检查[实时指标流的传出端口](../../azure-monitor/app/ip-addresses.md#outgoing-ports)是否在服务器的防火墙中为打开状态。 
-
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>实时指标流与指标资源管理器、Analytics 有何差异？
 
@@ -65,7 +68,6 @@ ms.locfileid: "59009959"
 |免费|实时流数据不收取费用|遵从[定价](../../azure-monitor/app/pricing.md)中的标准
 |采样|传输所有选择的指标和计数器。 对失败和堆栈跟踪进行采样。 不应用 TelemetryProcessors。|可能会对事件进行[采样](../../azure-monitor/app/api-filtering-sampling.md)|
 |控制通道|筛选器的控制信号会发送到 SDK。 建议确保此通道的安全。|通信为单向通信，即通向门户|
-
 
 ## <a name="select-and-filter-your-metrics"></a>选择和筛选指标
 
@@ -92,7 +94,7 @@ ms.locfileid: "59009959"
 
 ![自定义实时源](./media/live-stream/live-stream-events.png)
 
-请注意:目前，对于基于异常消息的条件，请使用外部异常消息。 在前面的示例中，若要筛选出具有内部异常消息“客户端已断开连接”（追随“<--”分隔符查找）的良性异常， 请使用不包含“读取请求内容时出错”条件的消息。
+注意:目前，对于基于异常消息的条件，请使用外部异常消息。 在前面的示例中，若要筛选出具有内部异常消息“客户端已断开连接”（追随“<--”分隔符查找）的良性异常， 请使用不包含“读取请求内容时出错”条件的消息。
 
 单击实时源中的某个项可查看其详细信息。 可以通过单击“暂停”、向下滚动或单击某个项来暂停源。 在实时源处于暂停状态时，滚回到顶部后，或者单击收集的项的计数器时，该实时源会恢复。
 
@@ -105,7 +107,12 @@ ms.locfileid: "59009959"
 ![采样的实时失败](./media/live-stream/live-stream-filter.png)
 
 ## <a name="sdk-requirements"></a>SDK 要求
+
+### <a name="net"></a>.NET
 自定义实时指标流适用于 2.4.0-beta2 或更高版本的 [Application Insights SDK for Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)。 请记得从 NuGet 包管理器中选择“包括预发行版”选项。
+
+### <a name="nodejs"></a>Node.js
+实时指标流适用于 node.js 的[APPLICATION INSIGHTS SDK](https://npmjs.com/package/applicationinsights)版本1.3.0 或更高版本。 在代码中`setSendLiveMetrics(true)`配置 SDK 时请务必使用。
 
 ## <a name="secure-the-control-channel"></a>确保控制通道的安全
 指定的自定义筛选器条件将发回到 Application Insights SDK 中的“实时指标”组件。 筛选器可能包含 customerID 等敏感信息。 可以使用机密 API 密钥以及检测密钥来保护通道的安全。
@@ -173,13 +180,13 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 首先添加
 
-``` C#
+```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 ```
 
 然后，在 ConfigureServices 方法内添加：
 
-``` C#
+```csharp
 services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
 
@@ -191,16 +198,7 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 >在筛选条件中输入 CustomerID 等潜在的敏感信息之前，我们强烈建议设置经过身份验证的通道。
 >
 
-## <a name="generating-a-performance-test-load"></a>生成性能测试负载
-
-若要监视负载增大的效果，请使用“性能测试”边栏选项卡。 可模拟多个用户同时发出的请求。 可运行单一 URL 的“手动测试”（ping 测试），或运行上传的[多步骤 Web 性能测试](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests)（方式与可用性测试相同）。
-
-> [!TIP]
-> 创建性能测试后，请在不同窗口中打开测试和“实时流”边栏选项卡。 可以看到排队的性能测试的启动时间，同时监视实时流。
->
-
-
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 没有数据？ 如果应用程序位于受保护的网络中：实时指标流使用不同于其他 Application Insights 遥测功能的 IP 地址。 请确保在防火墙中开放[这些 IP 地址](../../azure-monitor/app/ip-addresses.md)。
 

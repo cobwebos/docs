@@ -8,15 +8,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/10/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: 71abfdff629f36b278488851b546c7371353a4d9
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
+ms.openlocfilehash: cfe6dd63234a7750fe01614d6f1b38bb7cce1adb
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575284"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142444"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure 数据工厂中的设置变量活动
 
@@ -24,12 +25,12 @@ ms.locfileid: "57575284"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 需要
+属性 | 说明 | 必填
 -------- | ----------- | --------
-名称 | 管道中活动的名称 | 是
+name | 管道中活动的名称 | 是
 description | 描述活动用途的文本 | 否
 type | 活动类型为 SetVariable | 是
-值 | 用于设置指定变量的字符串文本或表达式对象值 | 是
+value | 用于设置指定变量的字符串文本或表达式对象值 | 是
 variableName | 此活动将设置的变量的名称 | 是
 
 

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用必应拼写检查 REST API 和 C# 检查拼写
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: 7a17c695482f2e9c8158c437c9c40c0abcb07e67
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: a2c121ed58882427022b716081b096c913d447f8
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616282"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423629"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>快速入门：使用必应拼写检查 REST API 和 C# 检查拼写
 
@@ -23,10 +23,10 @@ ms.locfileid: "59616282"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)。
 * 若要在 Visual Studio 中以 NuGet 包的形式安装 `Newtonsoft.Json`，请执行以下操作：
-    1. 在解决方案资源管理器中，右键单击解决方案文件。
-    1. 选择“管理解决方案的 NuGet 包”。
+    1. 在**解决方案资源管理器**中，右键单击解决方案文件。
+    1. 选择“管理解决方案的 NuGet 包”  。
     1. 搜索 `Newtonsoft.Json` 并安装该包。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
@@ -81,8 +81,9 @@ ms.locfileid: "59616282"
         HttpResponseMessage response = new HttpResponseMessage();
         // add the rest of the code snippets here (except for main())...
     }
+    ```
 
-2. Create the URI for your request by appending your host, path, and parameters.
+2. 通过追加你的主机、路径和参数为你的请求创建 URI。
     
     ```csharp
     string uri = host + path + params_;
@@ -187,4 +188,4 @@ static void Main(string[] args)
 > [创建单页 Web 应用](../tutorials/spellcheck.md)
 
 - [什么是必应拼写检查 API？](../overview.md)
-- [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+- [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

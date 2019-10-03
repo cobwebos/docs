@@ -9,11 +9,11 @@ ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 76e242adb07f4e6176bbdc6c03c75950e3732c2b
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622070"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66151588"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>在 Resource Manager 部署模型中获取 ARP 表
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ ARP 表示例：
 * 必须安装 Azure 的最新 PowerShell 模块（1.50 或更高版本）。
 
 > [!NOTE]
-> 如果服务提供商提供第 3 层且 ARP 表为空门户/下面的输出中，刷新线路配置在门户上使用刷新按钮。 此操作会将正确的线路配置应用到你的线路。 
+> 如果服务提供商提供第 3 层且 ARP 表在下面的门户/输出中为空，请使用门户中的刷新按钮来刷新线路配置。 此操作会将正确的线路配置应用到你的线路。 
 >
 >
 

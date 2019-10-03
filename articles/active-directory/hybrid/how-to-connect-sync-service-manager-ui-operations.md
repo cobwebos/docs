@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195288"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60381370"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>使用“Sync Service Manager 操作”选项卡
 
@@ -33,7 +33,7 @@ ms.locfileid: "56195288"
 ## <a name="understand-the-information-visible-in-the-operations-tab"></a>了解“操作”选项卡中显示的信息
 上半部分按时间顺序显示所有运行。 默认情况下，操作日志保留最后七天的相关信息，但可以使用[计划程序](how-to-connect-sync-feature-scheduler.md)来更改此设置。 想要查找所有未显示成功状态的运行。 可以单击标题来更改排序。
 
-“状态”列是最重要的信息，并显示最严重的运行问题。 下面是按调查优先级顺序显示的最常见状态的快速摘要（其中 * 表示多个可能的错误字符串）。
+“状态”列是最重要的信息，并显示最严重的运行问题。  下面是按调查优先级顺序显示的最常见状态的快速摘要（其中 * 表示多个可能的错误字符串）。
 
 | 状态 | 注释 |
 | --- | --- |
@@ -43,11 +43,11 @@ ms.locfileid: "56195288"
 | completed-\*-warnings |运行已完成，但某些数据并未处于预期的状态。 如果遇到错误，则此消息通常只是一种征兆。 在解决错误之前，不应该调查警告。 |
 | 成功 |没有问题。 |
 
-选择某一行时，底部将更新以显示该运行的详细信息。 在底部的最左边，可能会有一份显示“步骤编号”的列表。 仅当林中有多个域，而且每个域都以一个步骤表示时，才会显示此列表。 可以在“分区”标题下方找到域名。 在“同步统计信息”下方，可以找到有关已处理更改次数的详细信息。 可以单击链接获取已更改对象的列表。 如果有对象发生错误，这些错误会显示在“同步错误”下方。
+选择某一行时，底部将更新以显示该运行的详细信息。 在底部的最左边，可能会有一份显示“步骤编号”的列表。  仅当林中有多个域，而且每个域都以一个步骤表示时，才会显示此列表。 可以在“分区”标题下方找到域名  。 在“同步统计信息”下方，可以找到有关已处理更改次数的详细信息。  可以单击链接获取已更改对象的列表。 如果有对象发生错误，这些错误会显示在“同步错误”下方。 
 
 有关详细信息，请参阅[排查对象不同步的问题](tshoot-connect-object-not-syncing.md)。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

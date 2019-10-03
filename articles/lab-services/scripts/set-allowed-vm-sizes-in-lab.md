@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 0c82e304d3e3d8df1206c7c05883399b74229af7
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192184"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66160544"
 ---
 # <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>使用 PowerShell 在 Azure 实验室服务中设置允许的 VM 大小
 
@@ -28,7 +28,7 @@ ms.locfileid: "57192184"
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>必备组件
-* 实验室。 此脚本要求拥有现有的实验室。 
+* 实验室  。 此脚本要求拥有现有的实验室。 
 
 ## <a name="sample-script"></a>示例脚本
 

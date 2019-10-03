@@ -8,16 +8,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 83a866b20d2802b7d49363b7c6451356e938eac1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8017f02e694f5c9e2cd677c7b1f28c5de973d077
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838912"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932570"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>适用于 SQL API 的 Azure Cosmos DB .NET SDK：下载和发行说明
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
+> * [.NET](sql-api-sdk-dotnet-standard.md)
 > * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
@@ -27,26 +28,50 @@ ms.locfileid: "57838912"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**SDK 下载**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
 |**API 文档**|[ 参考文档](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**示例**|[.NET代码示例](sql-api-dotnet-samples.md)|
+|**示例**|[.NET代码示例](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
 |**入门**|[Azure Cosmos DB .NET SDK 入门](sql-api-get-started.md)|
 |**Web 应用教程**|[使用 Azure Cosmos DB 进行 Web 应用程序开发](sql-api-dotnet-application.md)|
 |**当前受支持的框架**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>发行说明
 
-### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-preview
-* .NET SDK [版本 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 的预览版 1（公共预览版）。
-* 适用于 .NET Standard，.NET Standard 支持 .NET Framework 4.6.1+ 和 .NET Core 2.0+
-* 新对象模型，使用顶级 CosmosClient 和方法拆分成相关的 CosmosDatabases、CosmosContainers 和 CosmosItems 类。 
-* 支持流。 
-* 对来自服务器的 CosmosResponseMessage 进行了更新以返回状态代码，并且仅在未返回响应时引发异常。 
+> [!NOTE]
+> 如果你正在使用 .NET Framework, 请参阅面向 .NET Standard 的[.NET SDK](sql-api-sdk-dotnet-standard.md)的最新版本1.x。 
+
+### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
+
+* 已将 PortReusePolicy 添加到 ConnectionPolicy
+* Fixed ntdll.dll！在 UWP 应用中使用 SDK 时出现 RtlGetVersion TypeLoadException 问题
+
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* SDK 的系统 .Net 版本现在与 NuGet 包中定义的版本匹配。
+* 如果原始的请求失败, 则允许写入请求回退到另一个区域。
+* 为写入请求添加会话重试策略。
+
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+
+* 修复导致空页的查询的跟踪争用条件
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+
+* 增加了 LINQ 查询的十进制精度大小。
+* 添加了新的类 CompositePath、CompositePathSortOrder、SpatialSpec、SpatialType 和 PartitionKeyDefinitionVersion
+* 已将 TimeToLivePropertyPath 添加到 DocumentCollection
+* 将 CompositeIndexes 和 SpatialIndexes 添加到 IndexPolicy
+* 向 PartitionKeyDefinition 添加了版本
+* 无添加到 PartitionKey
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+
+ * 已将 IdleTcpConnectionTimeout、OpenTcpConnectionTimeout、MaxRequestsPerTcpConnection 和 MaxTcpConnectionsPerEndpoint 添加到 ConnectionPolicy。
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
@@ -208,7 +233,7 @@ ms.locfileid: "57838912"
 * 修复了对字符串字段进行排序时跨分区按查询条件排序不正常工作的问题。
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。 请参阅[聚合支持](how-to-sql-query.md#Aggregates)。
+* 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。 请参阅[聚合支持](sql-query-aggregates.md)。
 * 将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
 
 ### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4
@@ -292,7 +317,7 @@ ms.locfileid: "57838912"
 * 扩展了 LINQ 支持，包括用于分页、条件表达式和范围比较的新运算符。
   * Take 运算符在 LINQ 中启用 SELECT TOP 行为
   * CompareTo 运算符使能够进行字符串范围比较
-  * Conditional (?) 和 coalesce 运算符 (??)
+  * 条件 （？） 和将合并运算符 （？？）
 * **[已修复]** 合并模型投影与 LINQ 查询中的 Where-In 时引发 ArgumentOutOfRangeException。 [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
@@ -323,7 +348,7 @@ ms.locfileid: "57838912"
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 * 现已开始支持修改索引策略。
   * DocumentClient 中的新 ReplaceDocumentCollectionAsync 方法
-  * ResourceResponse 中的新 IndexTransformationProgress 属性<T>，用于跟踪索引策略更改的百分比进度
+  * ResourceResponse\<T > 中的新 IndexTransformationProgress 属性, 用于跟踪索引策略更改的进度百分比
   * DocumentCollection.IndexingPolicy 现在是可变的
 * 现已开始支持空间索引和查询。
   * 用于序列化/反序列化空间类型（如点和多边形）的新 Microsoft.Azure.Documents.Spatial 命名空间
@@ -334,7 +359,7 @@ ms.locfileid: "57838912"
 * 添加了对 Newtonsoft.Json v5.0.7 的依赖关系。
 * 更改为支持 OrderBy：
   
-  * LINQ 提供程序支持 OrderBy() 或 OrderByDescending() 
+  * LINQ 提供程序支持 OrderBy() 或 OrderByDescending()
   * 支持 Order By 的 IndexingPolicy 
     
     **可能推出的重大更改** 
@@ -357,11 +382,20 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 使用已停用的 SDK 对 Azure Cosmos DB 发出的任何请求都会遭服务拒绝。
 
+> [!WARNING]
+> .NET SDK for SQL **API 的所有版本 1.x**将于**2020 年8月30日**停用。
+> 
+>
 <br/>
 
-| 版本 | 发布日期 | 停用日期 |
+| Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [2.2.3](#2.2.3) |2019 年 2 月 11日日 |--- |
+| [2.6.0](#2.6.0) |2019年8月30日 |--- |
+| [2.5.1](#2.5.1) |2019年7月 |--- |
+| [2.4.1](#2.4.1) |2019年6月20日 |--- |
+| [2.4.0](#2.4.0) |5月5日, 2019 |--- |
+| [2.3.0](#2.3.0) |2019年4月 |--- |
+| [2.2.3](#2.2.3) |2019年2月11日 |--- |
 | [2.2.2](#2.2.2) |2019 年 2 月 6 日 |--- |
 | [2.2.1](#2.2.1) |2018 年 12 月 24 日 |--- |
 | [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
@@ -370,57 +404,57 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 | [2.1.1](#2.1.1) |2018 年 9 月 27 日 |--- |
 | [2.1.0](#2.1.0) |2018 年 9 月 21 日 |--- |
 | [2.0.0](#2.0.0) |2018 年 9 月 7 日 |--- |
-| [1.22.0](#1.22.0) |2018 年 4 月 19 日 |--- |
-| [1.21.1](#1.20.1) |2018 年 3 月 9 日 |--- |
-| [1.20.2](#1.20.1) |2018 年 2 月 21 日 |--- |
-| [1.20.1](#1.20.1) |2018 年 2 月 5 日 |--- |
-| [1.19.1](#1.19.1) |2017 年 11 月 16 日 |--- |
-| [1.19.0](#1.19.0) |2017 年 11 月 10 日 |--- |
-| [1.18.1](#1.18.1) |2017 年 11 月 7 日 |--- |
-| [1.18.0](#1.18.0) |2017 年 10 月 17 日 |--- |
-| [1.17.0](#1.17.0) |2017 年 8 月 10 日 |--- |
-| [1.16.1](#1.16.1) |2017 年 8 月 7 日 |--- |
-| [1.16.0](#1.16.0) |2017 年 8 月 2 日 |--- |
-| [1.15.0](#1.15.0) |2017 年 6 月 30 日 |--- |
-| [1.14.1](#1.14.1) |2017 年 5 月 23 日 |--- |
-| [1.14.0](#1.14.0) |2017 年 5 月 10 日 |--- |
-| [1.13.4](#1.13.4) |2017 年 5 月 9 日 |--- |
-| [1.13.3](#1.13.3) |2017 年 5 月 6 日 |--- |
-| [1.13.2](#1.13.2) |2017 年 4 月 19 日 |--- |
-| [1.13.1](#1.13.1) |2017 年 3 月 29 日 |--- |
-| [1.13.0](#1.13.0) |2017 年 3 月 24 日 |--- |
-| [1.12.2](#1.12.2) |2017 年 3 月 20 日 |--- |
-| [1.12.1](#1.12.1) |2017 年 3 月 14 日 |--- |
-| [1.12.0](#1.12.0) |2017 年 2 月 15 日 |--- |
-| [1.11.4](#1.11.4) |2017 年 2 月 6 日 |--- |
-| [1.11.3](#1.11.3) |2017 年 1 月 26 日 |--- |
-| [1.11.1](#1.11.1) |2016 年 12 月 21 日 |--- |
-| [1.11.0](#1.11.0) |2016 年 12 月 08 日 |--- |
-| [1.10.0](#1.10.0) |2016 年 9 月 27 日 |--- |
-| [1.9.5](#1.9.5) |2016 年 9 月 1 日 |--- |
-| [1.9.4](#1.9.4) |2016 年 8 月 24 日 |--- |
-| [1.9.3](#1.9.3) |2016 年 8 月 15 日 |--- |
-| [1.9.2](#1.9.2) |2016 年 7 月 23 日 |--- |
-| [1.8.0](#1.8.0) |2016 年 6 月 14 日 |--- |
-| [1.7.1](#1.7.1) |2016 年 5 月 6 日 |--- |
-| [1.7.0](#1.7.0) |2016 年 4 月 26 日 |--- |
-| [1.6.3](#1.6.3) |2016 年 4 月 8 日 |--- |
-| [1.6.2](#1.6.2) |2016 年 3 月 29 日 |--- |
-| [1.5.3](#1.5.3) |2016 年 2 月 19 日 |--- |
-| [1.5.2](#1.5.2) |2015 年 12 月 14 日 |--- |
-| [1.5.1](#1.5.1) |2015 年 11 月 23 日 |--- |
-| [1.5.0](#1.5.0) |2015 年 10 月 5 日 |--- |
-| [1.4.1](#1.4.1) |2015 年 8 月 25 日 |--- |
-| [1.4.0](#1.4.0) |2015 年 8 月 13 日 |--- |
-| [1.3.0](#1.3.0) |2015 年 8 月 5 日 |--- |
-| [1.2.0](#1.2.0) |2015 年 7 月 6 日 |--- |
-| [1.1.0](#1.1.0) |2015 年 4 月 30 日 |--- |
-| [1.0.0](#1.0.0) |2015 年 4 月 8 日 |--- |
+| [1.22.0](#1.22.0) |2018 年 4 月 19 日 | 2020年8月30日 |
+| [1.21.1](#1.20.1) |2018 年 3 月 9 日 |2020年8月30日 |
+| [1.20.2](#1.20.1) |2018 年 2 月 21 日 |2020年8月30日 |
+| [1.20.1](#1.20.1) |2018 年 2 月 5 日 |2020年8月30日 |
+| [1.19.1](#1.19.1) |2017 年 11 月 16 日 |2020年8月30日 |
+| [1.19.0](#1.19.0) |2017 年 11 月 10 日 |2020年8月30日 |
+| [1.18.1](#1.18.1) |2017 年 11 月 7 日 |2020年8月30日 |
+| [1.18.0](#1.18.0) |2017 年 10 月 17 日 |2020年8月30日 |
+| [1.17.0](#1.17.0) |2017 年 8 月 10 日 |2020年8月30日 |
+| [1.16.1](#1.16.1) |2017 年 8 月 7 日 |2020年8月30日 |
+| [1.16.0](#1.16.0) |2017 年 8 月 2 日 |2020年8月30日 |
+| [1.15.0](#1.15.0) |2017 年 6 月 30 日 |2020年8月30日 |
+| [1.14.1](#1.14.1) |2017 年 5 月 23 日 |2020年8月30日 |
+| [1.14.0](#1.14.0) |2017 年 5 月 10 日 |2020年8月30日 |
+| [1.13.4](#1.13.4) |2017 年 5 月 9 日 |2020年8月30日 |
+| [1.13.3](#1.13.3) |2017 年 5 月 6 日 |2020年8月30日 |
+| [1.13.2](#1.13.2) |2017 年 4 月 19 日 |2020年8月30日 |
+| [1.13.1](#1.13.1) |2017 年 3 月 29 日 |2020年8月30日 |
+| [1.13.0](#1.13.0) |2017 年 3 月 24 日 |2020年8月30日 |
+| [1.12.2](#1.12.2) |2017 年 3 月 20 日 |2020年8月30日 |
+| [1.12.1](#1.12.1) |2017 年 3 月 14 日 |2020年8月30日 |
+| [1.12.0](#1.12.0) |2017 年 2 月 15 日 |2020年8月30日 |
+| [1.11.4](#1.11.4) |2017 年 2 月 6 日 |2020年8月30日 |
+| [1.11.3](#1.11.3) |2017 年 1 月 26 日 |2020年8月30日 |
+| [1.11.1](#1.11.1) |2016 年 12 月 21 日 |2020年8月30日 |
+| [1.11.0](#1.11.0) |2016 年 12 月 08 日 |2020年8月30日 |
+| [1.10.0](#1.10.0) |2016 年 9 月 27 日 |2020年8月30日 |
+| [1.9.5](#1.9.5) |2016 年 9 月 1 日 |2020年8月30日 |
+| [1.9.4](#1.9.4) |2016 年 8 月 24 日 |2020年8月30日 |
+| [1.9.3](#1.9.3) |2016 年 8 月 15 日 |2020年8月30日 |
+| [1.9.2](#1.9.2) |2016 年 7 月 23 日 |2020年8月30日 |
+| [1.8.0](#1.8.0) |2016 年 6 月 14 日 |2020年8月30日 |
+| [1.7.1](#1.7.1) |2016 年 5 月 6 日 |2020年8月30日 |
+| [1.7.0](#1.7.0) |2016 年 4 月 26 日 |2020年8月30日 |
+| [1.6.3](#1.6.3) |2016 年 4 月 8 日 |2020年8月30日 |
+| [1.6.2](#1.6.2) |2016 年 3 月 29 日 |2020年8月30日 |
+| [1.5.3](#1.5.3) |2016 年 2 月 19 日 |2020年8月30日 |
+| [1.5.2](#1.5.2) |2015 年 12 月 14 日 |2020年8月30日 |
+| [1.5.1](#1.5.1) |2015 年 11 月 23 日 |2020年8月30日 |
+| [1.5.0](#1.5.0) |2015 年 10 月 5 日 |2020年8月30日 |
+| [1.4.1](#1.4.1) |2015 年 8 月 25 日 |2020年8月30日 |
+| [1.4.0](#1.4.0) |2015 年 8 月 13 日 |2020年8月30日 |
+| [1.3.0](#1.3.0) |2015 年 8 月 5 日 |2020年8月30日 |
+| [1.2.0](#1.2.0) |2015 年 7 月 6 日 |2020年8月30日 |
+| [1.1.0](#1.1.0) |2015 年 4 月 30 日 |2020年8月30日 |
+| [1.0.0](#1.0.0) |2015 年 4 月 8 日 | 2020年8月30日 |
 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。 
 

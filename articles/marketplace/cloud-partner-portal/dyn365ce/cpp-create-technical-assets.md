@@ -1,25 +1,18 @@
 ---
-title: 创建 Dynamics 365 for Customer Engagement 技术资产 - Azure 市场 | Microsoft Docs
+title: 创建 Dynamics 365 for Customer Engagement 技术资产 |Azure Marketplace
 description: 创建 Dynamics 365 for Customer Engagement 应用程序产品/服务的技术资产。
 services: Dynamics 365 for Customer Engagement, Azure, Marketplace, Cloud Partner Portal, AppSource
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/29/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 50c4fd512206cdf17ebb555acb88de2a3f74c2bd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: eff175264677d6b8ffb885229b5e68b306424335
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081602"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943112"
 ---
 # <a name="create-technical-assets-for-azure-application-offer"></a>为 Azure 应用程序产品/服务创建技术资产
 

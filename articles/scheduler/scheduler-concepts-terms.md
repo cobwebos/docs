@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: d701fba39685d781d1a4c2d8a6cf194ca7eb2908
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683046"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300954"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure 计划程序的概念、术语和实体
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换即将停用的 Azure 计划程序。 若要计划作业，请[改用 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
 
 ## <a name="entity-hierarchy"></a>实体层次结构
 
@@ -55,7 +55,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>作业历史记录管理
 
-支持用于获取 60 天的作业执行历史记录（例如，作业已用时间和作业执行结果）的 GET 操作。 包含基于状态进行筛选的查询字符串参数支持。 有关详细信息，请参阅[计划程序 REST API - 作业 - 列出作业历史记录](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory)。 下面是此操作的 URI 地址：
+支持用于获取 60 天的作业执行历史记录（例如，作业已用时间和作业执行结果）的 GET 操作。 包含基于状态进行筛选的查询字符串参数支持。 有关详细信息，请参阅[计划程序 REST API - 作业 - 列出作业历史记录](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory)。 下面是该操作的 URI 地址：
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -81,7 +81,7 @@ Azure 计划程序支持多个作业类型：
 
 作业还包括系统提供的数据，例如，作业的下一次计划运行时间。 作业的代码定义是一个 JavaScript 对象表示法 (JSON) 格式的对象，包括以下元素：
 
-| 元素 | 需要 | 描述 | 
+| 元素 | 必填 | 描述 | 
 |---------|----------|-------------| 
 | [**startTime**](#start-time) | 否 | 作业的开始时间，时区偏移量为 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**action**](#action) | 是 | 主操作的详细信息，可以包含 errorAction 对象 | 
@@ -147,7 +147,7 @@ Azure 计划程序支持多个作业类型：
 
 <a name="action"></a>
 
-## <a name="action"></a>action
+## <a name="action"></a>操作
 
 计划程序作业基于指定的计划运行主操作。 计划程序支持 HTTP、存储队列、服务总线队列和服务总线主题操作。 如果主操作失败，计划程序可以运行辅助 [**errorAction**](#erroraction) 处理该错误。 操作对象描述了以下元素：
 
@@ -227,7 +227,7 @@ Azure 计划程序支持多个作业类型：
 
 <a name="recurrence"></a>
 
-## <a name="recurrence"></a>recurrence
+## <a name="recurrence"></a>重复周期
 
 如果作业的 JSON 定义包含 recurrence 对象，则作业定期发生，例如：
 
@@ -245,17 +245,17 @@ Azure 计划程序支持多个作业类型：
 },
 ```
 
-| 属性 | 需要 | Value | 描述 | 
+| 属性 | 必填 | Value | 描述 | 
 |----------|----------|-------|-------------| 
 | **frequency** | 是，使用 recurrence 时 | Minute、Hour、Day、Week、Month、Year | 两次作业之间的时间单位 | 
 | **interval** | 否 | 1 - 1000（包含） | 一个正整数，根据频率确定两次作业之间的时间单位数 | 
 | **schedule** | 否 | 多种多样 | 更复杂和更高级计划的详细信息。 请参阅 hours、minutes、weekDays、months 和 monthDays | 
 | **小时数** | 否 | 1 - 24 | 一个带有小时标记的数组，用于指示何时运行作业 | 
-| **分钟数** | 否 | 0-59 | 一个带有分钟标记的数组，用于指示何时运行作业 | 
+| **分钟数** | 否 | 0 到 59 | 一个带有分钟标记的数组，用于指示何时运行作业 | 
 | **months** | 否 | 1 - 12 | 一个带有月份标记的数组，用于指示何时运行作业 | 
 | **monthDays** | 否 | 多种多样 | 一个带有月份天数标记的数组，用于指示何时运行作业 | 
 | **工作日** | 否 | Monday、Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday | 一个带有星期的天数标记的数组，用于指示何时运行作业 | 
-| **count** | 否 | <无> | 重复周期的次数。 默认为无限重复。 不能同时使用 count 和 endTime，但首先完成的规则优先。 | 
+| **计数** | 否 | <无> | 重复周期的次数。 默认为无限重复。 不能同时使用 count 和 endTime，但首先完成的规则优先。 | 
 | **endTime** | 否 | <无> | 停止重复周期的日期和时间。 默认为无限重复。 不能同时使用 count 和 endTime，但首先完成的规则优先。 | 
 ||||
 
@@ -275,7 +275,7 @@ Azure 计划程序支持多个作业类型：
 },
 ```
 
-| 属性 | 需要 | Value | 描述 | 
+| 属性 | 必填 | Value | 描述 | 
 |----------|----------|-------|-------------| 
 | **retryType** | 是 | **Fixed** **None** | 确定是否指定重试策略（固定）或（无）。 | 
 | **retryInterval** | 否 | PT30S | 指定每次重试尝试之间的间隔和频率（[ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)）。 最小值为 15 秒，最大值为 18 个月。 | 
@@ -297,7 +297,7 @@ Azure 计划程序支持多个作业类型：
 
 <a name="status"></a>
 
-## <a name="status"></a>status
+## <a name="status"></a>状态
 
 作业启动后，计划程序通过 status 对象返回作业状态的相关信息，它仅由计划程序控制。 不过，可以在 job 对象内找到 status 对象。 下面是作业的状态包含的信息：
 
@@ -319,7 +319,7 @@ Azure 计划程序支持多个作业类型：
 }
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [什么是 Azure 计划程序？](scheduler-intro.md)
 * [概念、术语和实体层次结构](scheduler-concepts-terms.md)

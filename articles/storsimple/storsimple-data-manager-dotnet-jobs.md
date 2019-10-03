@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 80f01a926b94deebab59f8ef91bfc36a4600b5f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885044"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60632260"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用.NET SDK 启动数据转换
 
@@ -70,11 +70,11 @@ ms.locfileid: "57885044"
 3. 使用 Visual Studio 2012、2013 或 2015 创建 C# .NET 控制台应用程序。
 
     1. 启动 **Visual Studio 2012/2013/2015**。
-    1. 选择“文件”>“新建”>“项目”。
+    1. 选择“文件”>“新建”>“项目”  。
 
         ![创建项目 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
-    2. 选择“已安装”>“模板”>“Visual C#”>“控制台应用程序”。
-    3. 对于**名称**，输入“DataTransformationApp”。
+    2. 选择“已安装”>“模板”>“Visual C#”>“控制台应用程序”  。
+    3. 对于**名称**，输入“DataTransformationApp”  。
     4. 对于**位置**，选择 **C:\DataTransformation**。
     6. 单击“确定”以创建该项目  。
 
@@ -82,12 +82,12 @@ ms.locfileid: "57885044"
 
 4. 现在，将 [dlls 文件夹](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)中存在的所有 dll 添加为已创建的项目中的**引用**。 若要添加 dll 文件，请执行以下操作：
 
-   1. 在 Visual Studio 中，转到“视图”>“解决方案资源管理器”。
-   2. 单击“数据转换应用”项目左侧的箭头。 单击“引用”，并右键单击“添加引用”。
+   1. 在 Visual Studio 中，转到“视图”>“解决方案资源管理器”  。
+   2. 单击“数据转换应用”项目左侧的箭头。 单击“引用”  ，并右键单击“添加引用”  。
     
        ![添加 dll 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-   3. 浏览到包文件夹的位置，选择所有 dll，单击“添加”，然后单击“确定”。
+   3. 浏览到包文件夹的位置，选择所有 dll，单击“添加”  ，然后单击“确定”  。
 
        ![添加 dll 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 

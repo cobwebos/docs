@@ -3,7 +3,7 @@ title: 管理 Azure Service Fabric 群集中的证书 | Microsoft Docs
 description: 介绍如何向 Service Fabric 群集添加新的证书、滚动更新证书和从群集中删除证书。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chakdan
 editor: ''
 ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
-ms.author: aljo
-ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: atsenthi
+ms.openlocfilehash: d84525e869d47fc609ee8aac7feb7feda36a5f23
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050231"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68599954"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
 
-Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日期最远的已定义证书，而不管其主要或次要配置定义如何。 回退到的经典行为是非推荐的高级的操作，需要将"UseSecondaryIfNewer"设置参数值设置为 false Fabric.Code 配置中。
+Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日期最远的已定义证书，而不管其主要或次要配置定义如何。 回退到经典行为是一种不推荐的高级操作, 需要在构造中将 "UseSecondaryIfNewer" 设置参数值设置为 false。
 
 在创建群集期间配置证书安全性时，Service Fabric 允许指定两个群集证书（主要证书和辅助证书）以及客户端证书。 请参阅[通过门户创建 Azure 群集](service-fabric-cluster-creation-via-portal.md)或[通过 Azure 资源管理器创建 Azure 群集](service-fabric-cluster-creation-via-arm.md)，了解在创建时进行相关设置的详细信息。 如果创建时只指定了一个群集证书，将使用该证书作为主要证书。 在创建群集后，可以添加一个新证书作为辅助证书。
 
@@ -48,7 +48,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>使用 Resource Manager Powershell 添加辅助证书
 > [!TIP]
-> 更好、 更轻松地添加辅助证书使用现已[添加 AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet。 无需执行本部分中的其余步骤。  此外，不需要最初用于创建和部署群集时使用的模板[添加 AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet。
+> 现在, 使用[AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet 可以更好地添加辅助证书。 无需执行本部分中的其余步骤。  此外, 在使用[AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet 时, 不需要最初用于创建和部署群集的模板。
 
 执行这些步骤的前提是，熟悉资源管理器的工作原理，并已使用资源管理器模板至少部署了一个 Service Fabric 群集，同时已准备好在设置此群集时使用的模板。 此外，还有一个前提就是，可以熟练使用 JSON。
 
@@ -195,7 +195,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 ### <a name="deploy-the-template-to-azure"></a>将模板部署到 Azure
 
 - 现在，可以将模板部署到 Azure。 请打开 Azure PS 版本 1（或更高版本）的命令提示符。
-- 登录到 Azure 帐户，选择特定的 Azure 订阅。 对于有权访问多个 Azure 订阅的用户而言，这是一个重要步骤。
+- 登录到 Azure 帐户, 选择特定的 azure 订阅。 对于有权访问多个 Azure 订阅的用户而言，这是一个重要步骤。
 
 ```powershell
 Connect-AzAccount
@@ -210,7 +210,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 
 ```
 
-将模板部署到该资源组。 使用群集当前部署到的同一个资源组。 运行新建 AzResourceGroupDeployment 命令。 无需指定模式，因为默认值为 **incremental**。
+将模板部署到该资源组。 使用群集当前部署到的同一个资源组。 运行 AzResourceGroupDeployment 命令。 无需指定模式，因为默认值为 **incremental**。
 
 > [!NOTE]
 > 如果将 Mode 设置为 Complete，可能会无意中删除不在模板中的资源。 因此请不要在此方案中使用该模式。

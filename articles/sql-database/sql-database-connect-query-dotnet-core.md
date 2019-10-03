@@ -7,21 +7,23 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: dotnet
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-manager: craigg
-ms.date: 03/25/2019
-ms.openlocfilehash: 460f79eb0679dc7d71bc929e4e790b68bd0f6774
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.date: 07/29/2019
+ms.openlocfilehash: 1c6fdc6f6d2e642db8b57745573260c819c6c307
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447392"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640925"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>快速入门：使用 .NET Core (C#) 查询 Azure SQL 数据库
 
 在本快速入门中，将使用 [.NET Core](https://www.microsoft.com/net/) 和 C# 代码连接到 Azure SQL 数据库。 然后，将运行 Transact-SQL 语句来查询数据。
+
+> [!TIP]
+> 以下 Microsoft Learn 模块可帮助你免费学习如何[开发和配置可查询 Azure SQL 数据库的 ASP.NET 应用程序](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +48,7 @@ ms.locfileid: "58447392"
 - 已安装[适用于操作系统的 .NET Core](https://www.microsoft.com/net/core)。
 
 > [!NOTE]
-> 本快速入门使用 mySampleDatabase 数据库。 若要使用其他数据库，需更改数据库引用并修改 C# 代码中的 `SELECT` 查询。
+> 本快速入门使用 mySampleDatabase 数据库  。 若要使用其他数据库，需更改数据库引用并修改 C# 代码中的 `SELECT` 查询。
 
 ## <a name="get-sql-server-connection-information"></a>获取 SQL Server 连接信息
 
@@ -54,30 +56,30 @@ ms.locfileid: "58447392"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 导航到“SQL 数据库”或“SQL 托管实例”页。
+2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 
-3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标。
+3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称    。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标  。
 
 ## <a name="get-adonet-connection-information-optional"></a>获取 ADO.NET 连接信息（可选）
 
-1. 导航到“mySampleDatabase”页，并在“设置”下选择“连接字符串”。
+1. 导航到“mySampleDatabase”页，并在“设置”下选择“连接字符串”    。
 
-2. 查看完整的 ADO.NET 连接字符串。
+2. 查看完整的 ADO.NET  连接字符串。
 
     ![ADO.NET 连接字符串](./media/sql-database-connect-query-dotnet/adonet-connection-string2.png)
 
-3. 如果想要使用 ADO.NET 连接字符串，请复制它。
+3. 如果想要使用 ADO.NET 连接字符串，请复制它  。
   
 ## <a name="create-a-new-net-core-project"></a>创建新的 .NET Core 项目
 
-1. 打开命令提示符，然后创建一个名为 sqltest 的文件夹。 导航到此文件夹，并运行以下命令。
+1. 打开命令提示符，然后创建一个名为 sqltest 的文件夹  。 导航到此文件夹，并运行以下命令。
 
     ```cmd
     dotnet new console
     ```
     此命令将创建新的应用项目文件，包括初始 C# 代码文件 (**Program.cs**)、XML 配置文件 (**sqltest.csproj**) 和所需的二进制文件。
 
-2. 在文本编辑器中，打开 sqltest.csproj 并在 `<Project>` 标记之间粘贴以下 XML。 此 XML 会添加 `System.Data.SqlClient` 作为依赖项。
+2. 在文本编辑器中，打开 sqltest.csproj 并在 `<Project>` 标记之间粘贴以下 XML  。 此 XML 会添加 `System.Data.SqlClient` 作为依赖项。
 
     ```xml
     <ItemGroup>
@@ -87,7 +89,7 @@ ms.locfileid: "58447392"
 
 ## <a name="insert-code-to-query-sql-database"></a>插入用于查询 SQL 数据库的代码
 
-1. 在文本编辑器中打开 Program.cs 文件。
+1. 在文本编辑器中打开 Program.cs 文件  。
 
 2. 将内容替换为以下代码，为服务器、数据库、用户名和密码添加相应的值。
 
@@ -190,7 +192,7 @@ namespace sqltest
 
    Done. Press enter.
    ```
-3. 选择 Enter 关闭应用程序窗口。
+3. 选择 Enter 关闭应用程序窗口  。
 
 ## <a name="next-steps"></a>后续步骤
 

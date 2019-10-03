@@ -1,33 +1,30 @@
 ---
 title: 什么是 Apache Storm - Azure HDInsight
 description: Apache Storm 用于实时处理数据流。 可以通过 Azure HDInsight 轻松地在 Azure 云中创建 Storm 群集。 使用 Visual Studio 时，可以通过 C# 创建 Storm 解决方案，然后将其部署到 HDInsight Storm 群集。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 keywords: apache storm 用例,storm 群集,什么是 apache storm
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
-ms.date: 02/27/2018
+ms.topic: overview
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: b9c66216411f42e46cc7c7be486f6103db9c7208
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 0540d8a83a8dc1da9bc763bce0b30463889cfe90
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894591"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915050"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
 [Apache Storm](https://storm.apache.org/) 是一种容错的分布式开源计算系统。 若要实时处理数据流，可以将 Storm 与 [Apache Hadoop](https://hadoop.apache.org/) 配合使用。 Storm 解决方案还提供有保障的数据处理功能，能够重播第一次未成功处理的数据。
 
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
-
 ## <a name="why-use-apache-storm-on-hdinsight"></a>为何使用 Apache Storm on HDInsight？
 
 Storm on HDInsight 提供以下功能：
 
-* __针对 Storm 运行时间的 99% 服务级别协议 (SLA)__：有关详细信息，请参阅 [HDInsight 的 SLA 信息](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/)文档。
+* __针对 Storm 运行时间的 99% 服务级别协议 (SLA)__ ：有关详细信息，请参阅 [HDInsight 的 SLA 信息](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/)文档。
 
 * 支持在 Storm 群集创建期间或者创建之后，通过针对该群集运行脚本轻松进行自定义。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-linux.md)。
 
@@ -39,8 +36,7 @@ Storm on HDInsight 提供以下功能：
 
 * **动态缩放**：可以在不影响 Storm 拓扑运行的情况下添加或删除辅助角色节点。
 
-    > [!NOTE]  
-    > 若要利用通过缩放操作添加的新节点，必须停用运行的拓扑，然后再将其重新激活。
+    * 若要利用通过缩放操作添加的新节点，必须停用运行的拓扑，然后再将其重新激活。
 
 * **使用多个 Azure 服务创建流式处理管道**：Storm on HDInsight 集成其他 Azure 服务，例如事件中心、SQL 数据库、Azure 存储、Azure Data Lake Storage。
 
@@ -48,7 +44,7 @@ Storm on HDInsight 提供以下功能：
 
 有关在实时分析解决方案中使用 Apache Storm 的公司的列表，请参阅[使用 Apache Storm 的公司](https://storm.apache.org/documentation/Powered-By.html)。
 
-若要开始使用 Storm，请参阅[开始使用 Apache Storm on HDInsight][gettingstarted]。
+若要开始使用 Storm，请参阅[在 Azure HDInsight 中创建和监视 Apache Storm 拓扑](apache-storm-quickstart.md)。
 
 ## <a name="how-does-apache-storm-work"></a>Apache Storm 如何工作
 
@@ -68,11 +64,11 @@ Nimbus 节点提供的功能与 Apache Hadoop JobTracker 类似，它通过 [Apa
 
 Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 上的 Storm 提供两个 Nimbus 节点。 如果主节点出现故障，Storm 群集将切换到辅助节点，同时主节点会恢复。 下图说明了 Storm on HDInsight 的任务流配置：
 
-![nimbus、zookeeper 和 supervisor 示意图](./media/apache-storm-overview/nimbus.png)
+![nimbus、zookeeper 和 supervisor 示意图](./media/apache-storm-overview/storm-diagram-nimbus.png)
 
 ## <a name="ease-of-creation"></a>容易创建
 
-只需数分钟即可在 HDInsight 上创建新的 Storm 群集。 有关创建 Storm 群集的信息，请参阅 [Storm on HDInsight 入门](apache-storm-tutorial-get-started-linux.md)。
+只需数分钟即可在 HDInsight 上创建新的 Storm 群集。 有关创建 Storm 群集的详细信息，请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="ease-of-use"></a>易于使用
 
@@ -86,7 +82,7 @@ Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 
 
 * __Azure PowerShell 和 Azure 经典 CLI__：PowerShell 和经典 CLI 都提供命令行实用工具，可在客户端系统中使用这些工具来操作 HDInsight 和其他 Azure 服务。
 
-* __Visual Studio 集成__：用于 Visual Studio 的 azure Data Lake 工具包含用于创建项目模板C#使用 SCP.NET 框架 Storm 拓扑。 Data Lake 工具还提供用于通过 Storm on HDInsight 部署、监视和管理解决方案的工具。
+* __Visual Studio 集成__：针对 Visual Studio 的 Azure Data Lake 工具包含用于通过 SCP.NET Framework 创建 C# Storm 拓扑的项目模板。 Data Lake 工具还提供用于通过 Storm on HDInsight 部署、监视和管理解决方案的工具。
 
   有关详细信息，请参阅 [Develop C# Storm topologies with the HDInsight Tools for Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)（使用用于 Visual Studio 的 HDInsight 工具开发 C# Storm 拓扑）。
 
@@ -142,7 +138,7 @@ Apache Storm 可以提供不同级别的有保证的消息处理。 例如，基
 
 ### <a name="ibasicbolt"></a>IBasicBolt
 
-读取输入元组，发出零个或多个元组和然后确认在执行方法结束时立即输入元组模式很常见。 Storm 提供 [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) 接口来自动执行这种模式。
+读取输入元组，发出零个或更多元组，并在执行方法结束时立即确认输入元组，这种模式很普通。 Storm 提供 [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) 接口来自动执行这种模式。
 
 ### <a name="joins"></a>联接
 
@@ -150,7 +146,9 @@ Apache Storm 可以提供不同级别的有保证的消息处理。 例如，基
 
 在以下 Java 实例中，fieldsGrouping 用于将来自组件“1”、“2”和“3”的元组路由至 MyJoiner bolt：
 
-    builder.setBolt("join", new MyJoiner(), parallelism) .fieldsGrouping("1", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("2", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("3", new Fields("joinfield1", "joinfield2"));
+```java
+builder.setBolt("join", new MyJoiner(), parallelism) .fieldsGrouping("1", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("2", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("3", new Fields("joinfield1", "joinfield2"));
+```
 
 ### <a name="batches"></a>批处理
 
@@ -178,10 +176,5 @@ Storm 使用 [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) 来记录�
 
 了解有关使用 Apache Storm on HDInsight 构建实时分析解决方案的详细信息：
 
-* [HDInsight 上的 Apache Storm 入门][gettingstarted]
+* [在 Azure HDInsight 中创建和监视 Apache Storm 拓扑](apache-storm-quickstart.md)
 * [HDInsight 上的 Apache Storm 的示例拓扑](apache-storm-example-topology.md)
-
-[stormtrident]: https://storm.apache.org/documentation/Trident-API-Overview.html
-[samoa]: https://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
-[apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
-[gettingstarted]: apache-storm-tutorial-get-started-linux.md

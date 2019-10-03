@@ -2,27 +2,20 @@
 title: 什么是云服务模型和包 | Microsoft Docs
 description: 描述 Azure 中的云服务模型（.csdef、.cscfg）和包 (.cspkg)
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 4ce2feb5-0437-496c-98da-1fb6dcb7f59e
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 9c9f7dfd9ecbf085da19fc010e497caef8c18629
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: gwallace
+ms.openlocfilehash: 47d031e339b3677e0bf6ddcbad9456041c53c6e2
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917305"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359556"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什么是云服务模型以及如何将其打包？
-云服务由以下三个组件创建：服务定义 *(.csdef)*、服务配置 *(.cscfg)* 和服务包 *(.cspkg)*。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 文件都基于 XML，同时介绍云服务的结构及其配置方式；统称为模型。 **ServicePackage.cspkg** 是基于 **ServiceDefinition.csdef** 和其他文件生成的 zip 文件，它包含所有必需的基于二进制的依赖项。 Azure 可从 **ServicePackage.cspkg** 和 **ServiceConfig.cscfg** 两者创建云服务。
+云服务由以下三个组件创建：服务定义 *(.csdef)* 、服务配置 *(.cscfg)* 和服务包 *(.cspkg)* 。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 文件都基于 XML，同时介绍云服务的结构及其配置方式；统称为模型。 **ServicePackage.cspkg** 是基于 **ServiceDefinition.csdef** 和其他文件生成的 zip 文件，它包含所有必需的基于二进制的依赖项。 Azure 可从 **ServicePackage.cspkg** 和 **ServiceConfig.cscfg** 两者创建云服务。
 
 云服务在 Azure 中开始运行后，可以通 **ServiceConfig.cscfg** 文件重新进行配置，但不能更改定义。
 
@@ -34,7 +27,7 @@ ms.locfileid: "58917305"
   * [创建云服务][vs_create]
   * [重新配置现有云服务][vs_reconfigure]
   * [部署云服务项目][vs_deploy]
-  * [通过远程桌面连接到云服务实例][remotedesktop]
+  * [远程桌面登录到云服务实例][remotedesktop]
 
 <a name="csdef"></a>
 
@@ -186,7 +179,7 @@ Azure 仅允许 Web 角色有一个入口点。 即所有通信都通过一个 I
   </Site>
   <Site name="MailSite" packageDir="MailSite">
     <Bindings>
-      <Binding name="mail" endpointName="HttpIn" hostheader="mail.mysite.cloudapp.net" />
+      <Binding name="mail" endpointName="HttpIn" hostHeader="mail.mysite.cloudapp.net" />
     </Bindings>
     <VirtualDirectory name="artifacts" />
     <VirtualApplication name="storageproxy">
@@ -266,7 +259,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 
 其中变量如下所示定义：
 
-| 变量 | 值 |
+| 变量 | ReplTest1 |
 | --- | --- |
 | \[DirectoryName\] |包含 Azure 项目 .csdef 文件的根项目目录下的子目录。 |
 | \[ServiceDefinition\] |服务定义文件的名称。 默认情况下，此文件名为 ServiceDefinition.csdef。 |

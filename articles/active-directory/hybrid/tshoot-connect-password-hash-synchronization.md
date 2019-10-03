@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793316"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60383003"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步解决密码哈希同步问题
 
@@ -58,19 +58,19 @@ ms.locfileid: "58793316"
 
 排查未同步任何密码的问题：
 
-1. 使用“以管理员身份运行”选项，在 Azure AD Connect 服务器上打开一个新的 Windows PowerShell 会话。
+1. 使用“以管理员身份运行”选项，在 Azure AD Connect 服务器上打开一个新的 Windows PowerShell 会话  。
 
 2. 运行 `Set-ExecutionPolicy RemoteSigned` 或 `Set-ExecutionPolicy Unrestricted`。
 
 3. 启动 Azure AD Connect 向导。
 
-4. 导航到“其他任务”页面，选择“故障排除”，然后单击“下一步”。
+4. 导航到“其他任务”页面，选择“故障排除”，然后单击“下一步”。   
 
-5. 在“故障排除”页上，单击“启动”以在 PowerShell 中启动故障排除菜单。
+5. 在“故障排除”页上，单击“启动”以在 PowerShell 中启动故障排除菜单。 
 
-6. 在主菜单中，选择“排查密码哈希同步问题”。
+6. 在主菜单中，选择“排查密码哈希同步问题”。 
 
-7. 在子菜单中，选择“密码哈希同步根本不工作”。
+7. 在子菜单中，选择“密码哈希同步根本不工作”  。
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>了解故障排除任务的结果
 
@@ -141,19 +141,19 @@ ms.locfileid: "58793316"
 
 排查特定用户对象的问题：
 
-1. 使用“以管理员身份运行”选项，在 Azure AD Connect 服务器上打开一个新的 Windows PowerShell 会话。
+1. 使用“以管理员身份运行”选项，在 Azure AD Connect 服务器上打开一个新的 Windows PowerShell 会话  。
 
 2. 运行 `Set-ExecutionPolicy RemoteSigned` 或 `Set-ExecutionPolicy Unrestricted`。
 
 3. 启动 Azure AD Connect 向导。
 
-4. 导航到“其他任务”页面，选择“故障排除”，然后单击“下一步”。
+4. 导航到“其他任务”页面，选择“故障排除”，然后单击“下一步”。   
 
-5. 在“故障排除”页上，单击“启动”以在 PowerShell 中启动故障排除菜单。
+5. 在“故障排除”页上，单击“启动”以在 PowerShell 中启动故障排除菜单。 
 
-6. 在主菜单中，选择“排查密码哈希同步问题”。
+6. 在主菜单中，选择“排查密码哈希同步问题”。 
 
-7. 在子菜单中，选择“特定用户帐户的密码未同步”。
+7. 在子菜单中，选择“特定用户帐户的密码未同步”。 
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>了解故障排除任务的结果
 
@@ -179,7 +179,7 @@ ms.locfileid: "58793316"
 
 #### <a name="user-has-a-temporary-password"></a>用户拥有临时密码
 
-当前，Azure AD Connect 不支持同步 Azure AD 的临时密码。 如果在本地 Active Directory 用户中设置了“下次登录时更改密码”选项，则会将密码视为临时密码。 返回以下错误：
+当前，Azure AD Connect 不支持同步 Azure AD 的临时密码。 如果在本地 Active Directory 用户中设置了“下次登录时更改密码”选项，则会将密码视为临时密码  。 返回以下错误：
 
 ![未导出临时密码](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
 
@@ -202,7 +202,7 @@ ms.locfileid: "58793316"
 
 排查未同步任何密码的问题：
 
-1. 使用“以管理员身份运行”选项，在 Azure AD Connect 服务器上打开一个新的 Windows PowerShell 会话。
+1. 使用“以管理员身份运行”选项，在 Azure AD Connect 服务器上打开一个新的 Windows PowerShell 会话  。
 
 2. 运行 `Set-ExecutionPolicy RemoteSigned` 或 `Set-ExecutionPolicy Unrestricted`。
 
@@ -223,7 +223,7 @@ ms.locfileid: "58793316"
 
 排查没有为用户同步任何密码的问题：
 
-1. 使用“以管理员身份运行”选项，在 Azure AD Connect 服务器上打开一个新的 Windows PowerShell 会话。
+1. 使用“以管理员身份运行”选项，在 Azure AD Connect 服务器上打开一个新的 Windows PowerShell 会话  。
 
 2. 运行 `Set-ExecutionPolicy RemoteSigned` 或 `Set-ExecutionPolicy Unrestricted`。
 
@@ -253,7 +253,7 @@ ms.locfileid: "58793316"
 
     ![PowerShell 脚本从密码同步设置中返回的输出](./media/tshoot-connect-password-hash-synchronization/psverifyconfig.png)  
 
-3. 如果未在 Azure AD 中启用该功能，或者未启用同步通道状态，请运行 Connect 安装向导。 选择“自定义同步选项”并取消选择密码同步。此项更改会暂时禁用该功能。 然后再次运行向导并重新启用密码同步。再次运行脚本，验证配置是否正确。
+3. 如果未在 Azure AD 中启用该功能，或者未启用同步通道状态，请运行 Connect 安装向导。 选择“自定义同步选项”并取消选择密码同步  。此项更改会暂时禁用该功能。 然后再次运行向导并重新启用密码同步。再次运行脚本，验证配置是否正确。
 
 4. 查看事件日志，查找错误。 查找以下事件，这些事件将指示问题：
     * 源：“目录同步”ID：0、611、652、655 如果看到这些事件，则表示有连接问题。 事件日志消息包含有问题的林信息。 有关详细信息，请参阅[连接问题](#connectivity problem)。
@@ -270,28 +270,28 @@ ms.locfileid: "58793316"
 
 如果使用自定义安装，请按照以下步骤手动设置权限：
     
-1. 若要查找 Active Directory 连接器使用的帐户，请启动 Synchronization Service Manager。 
+1. 若要查找 Active Directory 连接器使用的帐户，请启动 Synchronization Service Manager  。 
  
-2. 转到“连接器”，并搜索正在排查的本地 Active Directory 林。 
+2. 转到“连接器”，并搜索正在排查的本地 Active Directory 林  。 
  
-3. 选择连接器，然后单击“属性”。 
+3. 选择连接器，然后单击“属性”  。 
  
-4. 转到“连接到 Active Directory 林”。  
+4. 转到“连接到 Active Directory 林”。   
     
     ![Active Directory 连接器使用的帐户](./media/tshoot-connect-password-hash-synchronization/connectoraccount.png)  
     记下用户名和帐户所处的域。
     
-5. 打开“Active Directory 用户和计算机”，然后验证之前找到的帐户是否在林中所有域的根目录中设置了以下权限：
+5. 打开“Active Directory 用户和计算机”，然后验证之前找到的帐户是否在林中所有域的根目录中设置了以下权限： 
     * 复制目录更改
     * 复制所有目录更改
 
-6. Azure AD Connect 是否可以访问域控制器？ 如果 Connect 服务器无法连接到所有域控制器，请配置“仅使用首选的域控制器”。  
+6. Azure AD Connect 是否可以访问域控制器？ 如果 Connect 服务器无法连接到所有域控制器，请配置“仅使用首选的域控制器”  。  
     
     ![Active Directory 连接器使用的域控制器](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
     
-7. 返回到“Synchronization Service Manager”和“配置目录分区”。 
+7. 返回到“Synchronization Service Manager”  和“配置目录分区”  。 
  
-8. 在“选择目录分区”中选择域，选中“仅使用首选的域控制器”复选框，然后单击“配置”。 
+8. 在“选择目录分区”中选择域，选中“仅使用首选的域控制器”复选框，然后单击“配置”    。 
 
 9. 在列表中，输入应由 Connect 用于密码同步的域控制器。同一列表也用于导入和导出。 对所有域执行这些步骤。
 
@@ -301,7 +301,7 @@ ms.locfileid: "58793316"
 
 可以通过检查对象的状态，轻松排查密码哈希同步问题。
 
-1. 在“Active Directory 用户和计算机”中搜索用户，然后验证是否清除了“用户必须在下次登录时更改密码”复选框。  
+1. 在“Active Directory 用户和计算机”中搜索用户，然后验证是否清除了“用户必须在下次登录时更改密码”复选框   。  
 
     ![Active Directory 效率密码](./media/tshoot-connect-password-hash-synchronization/adprodpassword.png)  
 
@@ -311,39 +311,39 @@ ms.locfileid: "58793316"
 
     a. 启动 [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md)。
 
-    b. 单击“连接器”。
+    b. 单击“连接器”  。
 
-    c. 选择用户所在的 Active Directory 连接器。
+    c. 选择用户所在的 Active Directory 连接器  。
 
-    d.单击“下一步”。 选择“搜索连接器空间”。
+    d.单击“下一步”。 选择“搜索连接器空间”  。
 
-    e. 在“作用域”框中，选择“DN 或定位点”，然后输入要排查的用户的完整 DN。
+    e. 在“作用域”框中，选择“DN 或定位点”，然后输入要排查的用户的完整 DN   。
 
     ![在连接器空间中使用 DN 搜索用户](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
 
-    f. 找到正在查找的用户，然后单击“属性”查看所有特性。 如果用户不在搜索结果中，请验证[筛选规则](how-to-connect-sync-configure-filtering.md)，并确保运行[应用并验证更改](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes)以在 Connect 中显示用户。
+    f. 找到正在查找的用户，然后单击“属性”查看所有特性  。 如果用户不在搜索结果中，请验证[筛选规则](how-to-connect-sync-configure-filtering.md)，并确保运行[应用并验证更改](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes)以在 Connect 中显示用户。
 
-    g. 若要查看对象在过去一周的密码同步详细信息，请单击“日志”。  
+    g. 若要查看对象在过去一周的密码同步详细信息，请单击“日志”  。  
 
     ![对象日志详细信息](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    如果对象日志为空，则 Azure AD Connect 无法从 Active Directory 读取密码哈希。 继续进行针对连接错误的故障排除。 如果看到除“成功”外的任何其他值，请参阅[密码同步日志](#password-sync-log)中的表。
+    如果对象日志为空，则 Azure AD Connect 无法从 Active Directory 读取密码哈希。 继续进行针对连接错误的故障排除。 如果看到除“成功”外的任何其他值，请参阅[密码同步日志](#password-sync-log)中的表  。
 
-    h. 选择“沿袭”选项卡，确保至少有一个同步规则的“密码同步”列设置为“True”。 在默认配置中，同步规则的名称为“In from AD - User AccountEnabled”。  
+    h. 选择“沿袭”选项卡，确保至少有一个同步规则的“密码同步”列设置为“True”    。 在默认配置中，同步规则的名称为“In from AD - User AccountEnabled”  。  
 
     ![有关用户的沿袭信息](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
 
-    i. 单击“Metaverse 对象属性”，显示用户特性列表。  
+    i. 单击“Metaverse 对象属性”，显示用户特性列表  。  
 
     ![Metaverse 信息](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
-    验证 cloudFiltered 属性不存在。 确保域属性（domainFQDN 和 domainNetBios）具有所需值。
+    验证 cloudFiltered 属性不存在  。 确保域属性（domainFQDN 和 domainNetBios）具有所需值。
 
-    j. 单击“连接器”选项卡。请确保同时看到本地 Active Directory 和 Azure AD 的连接器。
+    j. 单击“连接器”选项卡  。请确保同时看到本地 Active Directory 和 Azure AD 的连接器。
 
     ![Metaverse 信息](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
-    k. 选择表示 Azure AD 的行，单击“属性”，然后单击“沿袭”选项卡。连接器空间对象应存在一个“密码同步”列设置为“True”的出站规则。 在默认配置中，同步规则的名称为 **Out to AAD - User Join**。  
+    k. 选择表示 Azure AD 的行，单击“属性”，然后单击“沿袭”选项卡   。连接器空间对象应存在一个“密码同步”列设置为“True”的出站规则   。 在默认配置中，同步规则的名称为 **Out to AAD - User Join**。  
 
     ![连接器空间对象属性对话框](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
@@ -354,7 +354,7 @@ ms.locfileid: "58793316"
 | 状态 | 说明 |
 | --- | --- |
 | 成功 |已成功同步密码。 |
-| FilteredByTarget |密码设置为“用户在下次登录时必须更改密码”。 未同步密码。 |
+| FilteredByTarget |密码设置为“用户在下次登录时必须更改密码”  。 未同步密码。 |
 | NoTargetConnection |Metaverse 或 Azure AD 连接器空间中没有任何对象。 |
 | SourceConnectorNotPresent |在本地 Active Directory 连接器空间中找不到任何对象。 |
 | TargetNotExportedToDirectory |尚未导出 Azure AD 连接器空间中的对象。 |

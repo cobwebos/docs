@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: e82abd6a7915123a94b4355e24cb94f13f9693c8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667712"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550390"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>将 Web 角色和辅助角色转换成 Service Fabric 无状态服务的指南
 本文说明如何将云服务的 Web 角色和辅助角色迁移到 Service Fabric 无状态服务。 对于整体体系结构大致保持相同的应用程序来说，这是最简单的云服务到 Service Fabric 迁移路径。
@@ -32,7 +32,7 @@ ms.locfileid: "58667712"
 ![Service Fabric 与云服务项目的比较][3]
 
 ## <a name="worker-role-to-stateless-service"></a>辅助角色到无状态服务
-从概念上讲，辅助角色代表无状态的工作负荷，这意味着工作负荷的每个实例都是相同的，随时可将请求路由到任何实例。 每个实例不需要记住前一个请求。 工作负荷的运行状态由外部状态存储（例如 Azure 表存储或 Azure Document DB）管理。 在 Service Fabric 中，此类工作负荷以无状态服务来表示。 将辅助角色迁移到 Service Fabric 的最简单方法是将辅助角色代码转换成无状态服务。
+从概念上讲，辅助角色代表无状态的工作负荷，这意味着工作负荷的每个实例都是相同的，随时可将请求路由到任何实例。 每个实例不需要记住前一个请求。 对工作负荷进行操作的状态由外部状态存储，例如 Azure 表存储或 Azure Cosmos DB 管理。 在 Service Fabric 中，此类工作负荷以无状态服务来表示。 将辅助角色迁移到 Service Fabric 的最简单方法是将辅助角色代码转换成无状态服务。
 
 ![辅助角色到无状态服务][4]
 

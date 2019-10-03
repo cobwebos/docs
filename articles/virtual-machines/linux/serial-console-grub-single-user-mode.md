@@ -4,22 +4,21 @@ description: 在 Azure 虚拟机中使用 grub 串行控制台。
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: a249cf96981957de2c445079c0172b9c0c2ce543
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cce4e558331cad0045772f53f7fc3c78aeed2bb7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111882"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082201"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
 GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以实现启动进入单用户模式等功能。
@@ -55,7 +54,7 @@ GRUB 指的是 GRand Unified Bootloader。 从 GRUB 可以修改启动配置以�
 ### <a name="grub-access-in-rhel"></a>在 RHEL 中访问 GRUB 访问
 RHEL 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo reboot` 重新启动 VM，然后按任意键。 此时会显示 GRUB 屏幕。
 
-> 注意：Red Hat 也提供了有关启动进入急救模式、紧急模式、调试模式以及重置 root 密码的文档。 [单击此处访问文档](https://aka.ms/rhel7grubterminal)。
+> 注意:Red Hat 也提供了有关启动进入急救模式、紧急模式、调试模式以及重置 root 密码的文档。 [单击此处访问文档](https://aka.ms/rhel7grubterminal)。
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>在 RHEL 中为单用户模式设置 root 访问权限
 RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如果需要启用单用户模式，请遵照以下说明：
@@ -89,7 +88,7 @@ RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如�
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>未在 RHEL 中启用 root 帐户的情况下进入单用户模式
 如果未遵循上述步骤启用 root 用户，仍可以重置 root 密码。 请遵照以下说明：
 
-> 注意：如果使用 SELinux，请确保在重置 root 密码时，执行[此处](https://aka.ms/rhel7grubterminal) Red Hat 文档中所述的附加步骤。
+> 注意:如果使用 SELinux，请确保在重置 root 密码时，执行[此处](https://aka.ms/rhel7grubterminal) Red Hat 文档中所述的附加步骤。
 
 1. 在重启 VM 时按“Esc”进入 GRUB
 1. 在 GRUB 中，按“e”编辑你要启动进入的选定 OS（通常是第一行）
@@ -103,7 +102,7 @@ RHEL 中的单用户模式要求启用 root 用户（默认已禁用）。 如�
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> 注意：遵照上面的整个说明会置于紧急 shell 中，因此还可以执行编辑 `fstab` 之类的任务。 但是，用户普遍接受的建议是重置 root 密码，并使用该密码进入单用户模式。 
+> 注意:遵照上面的整个说明会置于紧急 shell 中，因此还可以执行编辑 `fstab` 之类的任务。 但是，用户普遍接受的建议是重置 root 密码，并使用该密码进入单用户模式。 
 
 
 ## <a name="access-for-centos"></a>在 CentOS 中访问

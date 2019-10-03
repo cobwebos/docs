@@ -2,18 +2,18 @@
 title: Azure 上的 Kubernetes 教程 - 部署群集
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何创建 AKS 群集并使用 kubectl 连接到 Kubernetes 主节点。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 54872a1c5a40cdb3f51c17362daed93c3892001e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: bd3f31f4247a9d80615634a64fee0c6eb3297fe5
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754551"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147244"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教程：部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -29,7 +29,7 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 使用 AKS 可
 
 ## <a name="before-you-begin"></a>开始之前
 
-在以前的教程中，已创建容器映像并上传到 Azure 容器注册表实例。 如果尚未完成这些步骤，并且想要逐一完成，请开始参阅[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
+在以前的教程中，已创建容器映像并上传到 Azure 容器注册表实例。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
 此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -83,13 +83,16 @@ AKS 群集可以使用 Kubernetes 基于角色的访问控制 (RBAC)。 可以�
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --node-count 1 \
+    --node-count 2 \
     --service-principal <appId> \
     --client-secret <password> \
     --generate-ssh-keys
 ```
 
 几分钟后，部署完成并返回有关 AKS 部署的 JSON 格式信息。
+
+> [!NOTE]
+> 若要确保群集能够可靠运行，应至少运行 2（两个）节点。
 
 ## <a name="install-the-kubernetes-cli"></a>安装 Kubernetes CLI
 
@@ -103,7 +106,7 @@ az aks install-cli
 
 ## <a name="connect-to-cluster-using-kubectl"></a>使用 kubectl 连接到群集
 
-若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][] 命令。 以下示例获取 myResourceGroup 中名为“myAKSCluster”的 AKS 群集的凭据：
+若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][] 命令。 以下示例获取 myResourceGroup  中名为“myAKSCluster”  的 AKS 群集的凭据：
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -114,8 +117,8 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 $ kubectl get nodes
 
-NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-28993262-0   Ready    agent   3m18s   v1.9.11
+NAME                       STATUS   ROLES   AGE   VERSION
+aks-nodepool1-12345678-0   Ready    agent   32m   v1.13.10
 ```
 
 ## <a name="next-steps"></a>后续步骤

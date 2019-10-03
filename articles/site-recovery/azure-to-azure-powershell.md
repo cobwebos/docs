@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: d11ebad3eaa629a1b03d22c6548f3b7ad591cf5b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: fe74080387f76b858f60c5285a98c9b67f051449
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003796"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671890"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复
 
@@ -39,21 +39,21 @@ ms.locfileid: "60003796"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 开始之前：
 - 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
 - 查看所有组件的[支持要求](azure-to-azure-support-matrix.md)。
-- 已将 Azure PowerShell`Az`模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azure/install-az-ps)。
+- 设置 Azure PowerShell `Az` 模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azure/install-az-ps)。
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>登录到 Microsoft Azure 订阅
 
-登录到 Azure 订阅使用 Connect AzAccount cmdlet
+使用 Connect-AzAccount cmdlet 登录到 Azure 订阅
 
 ```azurepowershell
 Connect-AzAccount
 ```
-选择 Azure 订阅。 使用 Get AzSubscription cmdlet 有权访问的有 Azure 订阅的列表。 选择要与选择 AzSubscription cmdlet 配合使用的 Azure 订阅。
+选择 Azure 订阅。 使用 Get-AzSubscription cmdlet 获取你有权访问的 Azure 订阅的列表。 使用 Select-AzSubscription cmdlet 选择要使用的 Azure 订阅。
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -135,19 +135,12 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 ## <a name="set-the-vault-context"></a>设置保管库上下文
 
-> [!TIP]
-> Azure Site Recovery PowerShell 模块 （Az.RecoveryServices 模块） 附带了易于使用的大多数 cmdlet 的别名。 模块中的 cmdlet 采用*\<操作 >-**AzRecoveryServicesAsr**\<对象 >* 并具有采用以下形式的等效别名 *\<操作 >-**ASR**\<对象 >*。 本文使用 cmdlet 别名以便阅读。
 
-设置 PowerShell 会话中使用的保管库上下文。 为此，请下载保管库设置文件，并将下载的文件导入 PowerShell 会话以设置保管库上下文。
-
-设置后，PowerShell 会话中的后续 Azure Site Recovery 操作将在所选保管库的上下文中执行。
+设置 PowerShell 会话中使用的保管库上下文。 设置后，PowerShell 会话中的后续 Azure Site Recovery 操作将在所选保管库的上下文中执行。
 
  ```azurepowershell
-#Download the vault settings file for the vault.
-$Vaultsettingsfile = Get-AzRecoveryServicesVaultSettingsFile -Vault $vault -SiteRecovery -Path C:\users\user\Documents\
-
-#Import the downloaded vault settings file to set the vault context for the PowerShell session.
-Import-AzRecoveryServicesAsrVaultSettingsFile -Path $Vaultsettingsfile.FilePath
+#Setting the vault context.
+Set-AsrVaultSettings -Vault $vault
 
 ```
 ```
@@ -160,6 +153,16 @@ a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults
 #Delete the downloaded vault settings file
 Remove-Item -Path $Vaultsettingsfile.FilePath
 ```
+
+为 Azure 到 Azure 迁移，可以为新创建的保管库设置保管库上下文： 
+
+```azurepowershell
+
+#Set the vault context for the PowerShell session.
+Set-AzRecoveryServicesAsrVaultContext -Vault $vault
+
+```
+
 ## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>准备保管库以开始复制 Azure 虚拟机
 
 ### <a name="create-a-site-recovery-fabric-object-to-represent-the-primary-source-region"></a>创建用于表示主要（源）区域的 Site Recovery 结构对象
@@ -408,11 +411,11 @@ $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationC
 
 # Data disk
 $datadiskId1  = $vm.StorageProfile.DataDisks[0].ManagedDisk.id
-$RecoveryReplicaDiskAccountType =  $vm.StorageProfile.DataDisks[0]. StorageAccountType
-$RecoveryTargetDiskAccountType = $vm.StorageProfile.DataDisks[0]. StorageAccountType
+$RecoveryReplicaDiskAccountType =  $vm.StorageProfile.DataDisks[0].StorageAccountType
+$RecoveryTargetDiskAccountType = $vm.StorageProfile.DataDisks[0].StorageAccountType
 
 $DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $CacheStorageAccount.Id `
-         -DiskId $datadiskId1 -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+         -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 
 #Create a list of disk replication configuration objects for the disks of the virtual machine that are to be replicated.
@@ -593,7 +596,7 @@ Errors           : {}
 
 ## <a name="reprotect-and-failback-to-source-region"></a>重新保护和故障回复到源区域
 
-故障转移后，当准备好返回到原始区域，开始使用更新 AzRecoveryServicesAsrProtectionDirection cmdlet 复制保护项的反向复制。
+故障转移后，准备好恢复到原始区域时，请使用 Update-AzRecoveryServicesAsrProtectionDirection cmdlet 对复制保护项启动反向复制。
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
@@ -608,5 +611,13 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 
 重新保护完成后，可以启动反方向 （到美国东部的美国西部） 和故障回复到源区域中的故障转移。
 
+## <a name="disable-replication"></a>禁用复制
+
+可以使用删除 ASRReplicationProtectedItem cmdlet 来禁用复制。
+
+```azurepowershell
+Remove-ASRReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
+```
+
 ## <a name="next-steps"></a>后续步骤
-视图[Azure Site Recovery PowerShell 参考](https://docs.microsoft.com/powershell/module/az.RecoveryServices)若要了解如何执行其他任务，如创建恢复计划和测试通过 PowerShell 恢复计划的故障转移。
+查看 [Azure Site Recovery PowerShell 参考](https://docs.microsoft.com/powershell/module/az.RecoveryServices)来了解如何通过 PowerShell 执行其他任务，例如创建恢复计划，以及对恢复计划执行测试性故障转移。

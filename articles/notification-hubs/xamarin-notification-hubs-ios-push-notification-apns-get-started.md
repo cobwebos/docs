@@ -4,9 +4,9 @@ description: 本教程介绍如何使用 Azure 通知中心将推送通知发送
 services: notification-hubs
 keywords: ios 推送通知, 推送消息, 推送通知, 推送消息
 documentationcenter: xamarin
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 4d4dfd42-c5a5-4360-9d70-7812f96924d2
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,14 +14,16 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 94268d47eaf23e1bac54bb9791ec149bb5cccacb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/23/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 05/23/2019
+ms.openlocfilehash: 7427421719b44839e766234194640817ea686e3c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855650"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213578"
 ---
 # <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Xamarin.iOS 应用推送通知
 
@@ -57,44 +59,25 @@ ms.locfileid: "57855650"
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
-## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>针对 iOS 推送通知配置通知中心
-
-本部分介绍如何执行相关步骤，以便使用以前创建的 **.p12** 推送证书创建新的通知中心并配置 APNs 身份验证。 如果想要使用已创建的通知中心，可以跳到步骤 5。
-
-[!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
-
-### <a name="configure-ios-settings-for-the-notification-hub"></a>针对 iOS 设置配置通知中心
-
-1. 在“通知设置”组中选择“Apple (APNS)”。
-2. 选择“证书”，单击文件图标，然后选择此前导出的 **.p12** 文件。
-3. 指定证书的密码。
-4. 选择“沙盒”模式。 仅当希望将推送通知发送给从应用商店购买应用的用户时，才应使用“生产”模式。
-
-    ![在 Azure 门户中配置 APNs][6]
-
-    ![在 Azure 门户中配置 APNs 证书][7]
-
-通知中心现在已配置为使用 APNs，并且你有连接字符串用于注册应用和发送推送通知。
-
 ## <a name="connect-your-app-to-the-notification-hub"></a>将应用连接到通知中心
 
 ### <a name="create-a-new-project"></a>创建新项目
 
-1. 在 Visual Studio 中创建新的 iOS 项目并选择“单视图应用”模板，然后单击“下一步”
+1. 在 Visual Studio 中创建新的 iOS 项目并选择“单视图应用”模板，然后单击“下一步”  
 
      ![Visual Studio - 选择应用程序类型][31]
 
-2. 输入应用名称和组织标识符，然后单击“下一步”和“创建”。
+2. 输入应用名称和组织标识符，然后单击“下一步”和“创建”。  
 
-3. 在“解决方案”视图中双击“Info.plist”，确保“标识”下的捆绑标识符与创建预配配置文件时使用的相符。 在“签名”下，确保选中开发人员帐户；在“团队”下，确保选中“自动管理签名”。这样就会自动选中签名证书和预配配置文件。
+3. 在“解决方案”视图中双击“Info.plist”，  确保“标识”下  的捆绑标识符与创建预配配置文件时使用的相符。 在“签名”下，确保  选中开发人员帐户；在“团队”下，确保选中“自动管理签名”。这样就会自动选中签名证书和预配配置文件。 
 
     ![Visual Studio- iOS 应用配置][32]
 
-4. 在“解决方案”视图中双击 `Entitlements.plist`，确保选中“启用推送通知”。**
+4. 在“解决方案”视图中双击 `Entitlements.plist`，确保选中“启用推送通知”。 
 
     ![Visual Studio - iOS 授权配置][33]
 
-5. 添加 Azure 消息传送包。 在“解决方案”视图中右键单击项目，然后选择“添加” > “添加 NuGet 包”。 搜索 **Xamarin.Azure.NotificationHubs.iOS**，向项目添加该包。
+5. 添加 Azure 消息传送包。 在“解决方案”视图中右键单击项目，然后选择“添加”   >   “添加 NuGet 包”。 搜索 **Xamarin.Azure.NotificationHubs.iOS**，向项目添加该包。
 
 6. 向类添加新文件，将其命名为 `Constants.cs`，然后添加以下变量，将字符串文本占位符替换为此前记下的 `hubname` 和 `DefaultListenSharedAccessSignature`。
 
@@ -108,6 +91,7 @@ ms.locfileid: "57855650"
 
     ```csharp
     using WindowsAzure.Messaging;
+    using UserNotifications
     ```
 
 8. 声明 `SBNotificationHub` 的实例：
@@ -123,7 +107,7 @@ ms.locfileid: "57855650"
     {
         if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
         {
-            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound | UNAuthorizationOptions.Sound,
+            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound,
                                                                     (granted, error) =>
             {
                 if (granted)
@@ -222,7 +206,7 @@ ms.locfileid: "57855650"
 
 ## <a name="send-test-push-notifications"></a>发送测试推送通知
 
-可以在 [Azure 门户]中使用“测试性发送”选项，在应用中测试通知的发送。 它会向设备发送测试性的推送通知。
+ 可以在 [Azure 门户]中使用“测试性发送”选项，在应用中测试通知的发送。 它会向设备发送测试性的推送通知。
 
 ![Azure 门户 - 测试性发送][30]
 

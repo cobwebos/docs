@@ -11,18 +11,18 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9a49c4af474d7f0618bf0cff1a093e5cbb62fe2d
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295600"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66390125"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>如何使用排名显示必应 Web 搜索 API 结果  
 
-每个搜索响应均包括一个 [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) 答案，它指定搜索结果的显示方式。 排名响应按传统搜索结果页的主线内容和边栏内容对结果进行分组。 如果不以传统主线和边栏格式显示结果，必须以比边栏内容更高的可见度提供主线内容。  
+每个搜索响应均包括一个 [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) 答案，它指定搜索结果的显示方式。 排名响应按传统搜索结果页的主线内容和边栏内容对结果进行分组。 如果不以传统主线和边栏格式显示结果，必须以比边栏内容更高的可见度提供主线内容。  
 
-在每个组（主线或边栏）中，[项](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items)数组标识了内容必须出现的顺序。 每个项提供以下两种方法来标识答案中的结果。  
+在每个组（主线或边栏）中，[项](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items)数组标识了内容必须出现的顺序。 每个项提供以下两种方法来标识答案中的结果。  
 
 -   `answerType` 和 `resultIndex` - `answerType` 字段标识答案（例如，网页或新闻），`resultIndex` 标识答案中的结果（例如某篇新闻文章）。 索引从零开始。  
 
@@ -30,11 +30,11 @@ ms.locfileid: "58295600"
 
 使用 ID 更简单，因为你只需要将排名 ID 与答案或其结果之一的 ID 进行匹配。 如果答案对象包含 `id` 字段，则同时显示答案的所有结果。 例如，如果 `News` 对象包含 `id` 字段，则同时显示所有新闻文章。 如果 `News` 对象不包含 `id` 字段，则每个新闻文章均包含 `id` 字段，排名响应会将新闻文章与其他答案的结果混合。  
 
-使用 `answerType` 和 `resultIndex` 会稍微复杂一些。 使用 `answerType` 来标识包含要显示的结果的答案。 然后，使用 `resultIndex` 对答案的所有结果进行索引，以获取要显示的结果。 （`answerType` 值是 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) 对象中字段的名称。）如果不应一起显示答案的所有结果，则排名响应项不应包含 `resultIndex` 字段。  
+使用 `answerType` 和 `resultIndex` 会稍微复杂一些。 使用 `answerType` 来标识包含要显示的结果的答案。 然后，使用 `resultIndex` 对答案的所有结果进行索引，以获取要显示的结果。 （`answerType` 值是 [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) 对象中字段的名称。）如果不应一起显示答案的所有结果，则排名响应项不应包含 `resultIndex` 字段。  
 
 ## <a name="ranking-response-example"></a>排名响应示例
 
-下面展示了一个示例 [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)。 由于 Web 答案不包含 `id` 字段，因此你将根据排名单独显示所有网页（每个网页包含 `id` 字段）。 由于图像、视频和相关搜索答案都包含 `id` 字段，因此你可以根据排名将其中每个答案的结果显示在一起。
+下面展示了一个示例 [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)。 由于 Web 答案不包含 `id` 字段，因此你将根据排名单独显示所有网页（每个网页包含 `id` 字段）。 由于图像、视频和相关搜索答案都包含 `id` 字段，因此你可以根据排名将其中每个答案的结果显示在一起。
 
 ```json
 {  

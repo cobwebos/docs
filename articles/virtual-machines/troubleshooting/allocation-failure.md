@@ -13,11 +13,11 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
 ms.openlocfilehash: 72fbdbcfcd94dd41a67bb81314802dd7314ae463
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316620"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60505782"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中创建、重启 VM 或重设其大小时排查分配失败
 
@@ -25,7 +25,7 @@ ms.locfileid: "58316620"
 
 **错误代码**：AllocationFailed 或 ZonalAllocationFailed
 
-**错误消息**：“分配失败。 对于此区域中请求的 VM 大小，我们的容量不够。 阅读有关在 https 分配成功的可能性的详细信息：\//aka.ms/allocation-guidance"
+**错误消息**：“分配失败。 对于此区域中请求的 VM 大小，我们的容量不够。 在 https:\//aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
 
 本文说明一些常见分配故障的原因，并建议可能的补救方法。
 

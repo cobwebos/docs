@@ -1,18 +1,18 @@
 ---
 title: 适用于 Async Java 的 Azure Cosmos DB 性能提示
-description: 了解用于提高 Azure Cosmos DB 数据库性能的客户端配置选项
+description: 了解用于提高 Azure Cosmos 数据库性能的客户端配置选项
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 03/27/2018
+ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 07da7f8905d7b8952db852d3da1dab12884de509
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 7a470193110fda0bb675e56e17a8f5647ebda5ab
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041792"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614970"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>适用于 Azure Cosmos DB 和 Async Java 的性能提示
 
@@ -30,7 +30,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
    <a id="same-region"></a>
 1. **性能的（位于相同的 Azure 区域内）并置客户端**
 
-    如果可能，请将任何调用 Azure Cosmos DB 的应用程序放在与 Azure Cosmos DB 数据库所在的相同区域中。 通过大致的比较发现，在同一区域中对 Azure Cosmos DB 的调用可在 1-2 毫秒内完成，而美国西海岸和美国东海岸之间的延迟则大于 50 毫秒。 根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅[ Azure Regions（Azure 区域）](https://azure.microsoft.com/regions/#services)。
+    如果可能, 请将任何调用 Azure Cosmos DB 的应用程序放在与 Azure Cosmos 数据库相同的区域中。 通过大致的比较发现，在同一区域中对 Azure Cosmos DB 的调用可在 1-2 毫秒内完成，而美国西海岸和美国东海岸之间的延迟则大于 50 毫秒。 根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅[ Azure Regions（Azure 区域）](https://azure.microsoft.com/regions/#services)。
 
     ![Azure Cosmos DB 连接策略演示](./media/performance-tips/same-region.png)
 
@@ -162,7 +162,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     <dependency>
       <groupId>io.netty</groupId>
       <artifactId>netty-tcnative</artifactId>
-      <version>2.0.7.Final</version>
+      <version>2.0.20.Final</version>
       <classifier>linux-x86_64</classifier>
     </dependency>
     ```
@@ -187,7 +187,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     有关详细信息，请参阅 [Azure Cosmos DB 索引策略](indexing-policies.md)。
 
-## <a name="throughput"></a>Throughput
+## <a name="throughput"></a>吞吐量
 <a id="measure-rus"></a>
 
 1. **测量和优化较低的每秒请求单位使用量**
@@ -198,7 +198,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     查询的复杂性会影响操作使用的请求单位数量。 谓词数、谓词性质、UDF 数目和源数据集的大小都会影响查询操作的成本。
 
-    若要测量任何操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 标头来测量这些操作占用的请求单位数。 也可以在 ResourceResponse<T> 或 FeedResponse<T> 中找到等效的 RequestCharge 属性。
+    若要测量任何操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 标头来测量这些操作占用的请求单位数。 还可以查看 ResourceResponse\<t > 或 FeedResponse\<T > 中等效的 RequestCharge 属性。
 
     ```Java
     ResourceResponse<Document> response = asyncClient.createDocument(collectionLink, documentDefinition, null,

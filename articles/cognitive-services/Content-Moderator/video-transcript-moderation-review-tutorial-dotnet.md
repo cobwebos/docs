@@ -1,6 +1,6 @@
 ---
 title: 教程：在 .NET 中审查视频和脚本 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 本教程可帮助你了解如何使用机器辅助审查和人工介入评论创建，来生成完整的视频和脚本审查解决方案。
 services: cognitive-services
 author: PatrickFarley
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e1c3d3d95261b959a7540aab73faf12f92801d4c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522071"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564279"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教程：视频和脚本审查
 
@@ -37,22 +37,22 @@ ms.locfileid: "58522071"
 - 在[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)网站上注册并创建自定义标记。 执行此步骤时如需帮助，请参阅[使用标记](Review-Tool-User-Guide/tags.md)。
 
     ![屏幕截图：视频审查自定义标记](images/video-tutorial-custom-tags.png)
-- 若要运行示例应用程序，需要有 Azure 帐户、Azure 媒体服务帐户、Azure 内容审查器资源，以及 Azure Active Directory 凭据。 有关如何获取这些项的说明，请查看[视频审查 API](video-moderation-api.md) 指南。
+- 若要运行示例应用程序，需要有 Azure 帐户、Azure 媒体服务帐户、Azure 内容审查器资源，以及 Azure Active Directory 凭据。 有关如何获取这些资源的说明，请查看[视频审查 API](video-moderation-api.md) 指南。
 - 从 GitHub 下载[视频审查控制台应用程序](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp)。
 
 ## <a name="enter-credentials"></a>输入凭据
 
 编辑文件 `App.config` 并添加 Active Directory 租户名称、服务终结点和用 `#####` 表示的订阅密钥。 你需要以下信息：
 
-    |密钥|说明|
-    |-|-|
-    |`AzureMediaServiceRestApiEndpoint`|Azure 媒体服务 (AMS) API 的终结点|
-    |`ClientSecret`|Azure 媒体服务的订阅密钥|
-    |`ClientId`|Azure 媒体服务的客户端 ID|
-    |`AzureAdTenantName`|表示组织的 Active Directory 租户名称|
-    |`ContentModeratorReviewApiSubscriptionKey`|内容审查器评论 API 的订阅密钥|
-    |`ContentModeratorApiEndpoint`|内容审查器 API 的终结点|
-    |`ContentModeratorTeamId`|内容审查器团队 ID|
+|密钥|说明|
+|-|-|
+|`AzureMediaServiceRestApiEndpoint`|Azure 媒体服务 (AMS) API 的终结点|
+|`ClientSecret`|Azure 媒体服务的订阅密钥|
+|`ClientId`|Azure 媒体服务的客户端 ID|
+|`AzureAdTenantName`|表示组织的 Active Directory 租户名称|
+|`ContentModeratorReviewApiSubscriptionKey`|内容审查器评论 API 的订阅密钥|
+|`ContentModeratorApiEndpoint`|内容审查器 API 的终结点|
+|`ContentModeratorTeamId`|内容审查器团队 ID|
 
 ## <a name="examine-the-main-code"></a>检查主代码
 
@@ -225,7 +225,7 @@ ms.locfileid: "58522071"
 > [!NOTE]
 > 控制台应用程序使用 [Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 根据上传视频的音频轨道生成脚本。结果以 WebVTT 格式提供。 有关此格式的详细信息，请参阅 [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)（Web 视频文本轨道格式）。
 
-## <a name="create-a-the-human-in-the-loop-review"></a>创建人为介入评论
+## <a name="create-a-human-review"></a>创建人工评审
 
 审查过程会从视频返回一个关键帧列表，以及其音频轨道的脚本。 下一步是在内容审查器评论工具中为人工审查器创建评论。 回到 `Program.cs` 中的 `ProcessVideo()` 方法，你会看到对 `CreateVideoReviewInContentModerator()` 方法的调用。 此方法位于 `videoReviewApi` 类中，该类位于 `VideoReviewAPI.cs` 中，如下所示。
 

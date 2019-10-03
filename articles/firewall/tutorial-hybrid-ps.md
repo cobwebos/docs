@@ -1,35 +1,35 @@
 ---
-title: 教程：使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
-description: 本教程介绍如何使用 Azure PowerShell 部署和配置 Azure 防火墙。
+title: 使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
+description: 本文介绍如何使用 Azure PowerShell 部署和配置 Azure 防火墙。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
-ms.date: 3/18/2019
+ms.topic: article
+ms.date: 5/3/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7beb3d986b016688c4ee0a512b9406dbf3dfbb40
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: a9987808feb895276f3f9e62fe66c1b353b52e72
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051693"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073074"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>教程：使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
+# <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>使用 Azure PowerShell 在混合网络中部署和配置 Azure 防火墙
 
 将本地网络连接到 Azure 虚拟网络以创建混合网络时，必须能够控制对 Azure 网络资源的访问，这是整体安全计划的重要部分。
 
 可以使用 Azure 防火墙通过规则来定义允许的和拒绝的网络流量，以便控制混合网络中的网络访问。
 
-在本教程中，请创建三个虚拟网络：
+本文将创建三个虚拟网络:
 
 - **VNet-Hub** - 防火墙在此虚拟网络中。
 - **VNet-Spoke** - 分支虚拟网络代表 Azure 中的工作负荷。
-- **VNet-Onprem** - 本地虚拟网络代表本地网络。 在实际部署中，可以使用 VPN 或 ExpressRoute 来连接它。 为简单起见，本教程将使用 VPN 网关连接，并使用 Azure 中的某个虚拟网络来代表本地网络。
+- **VNet-Onprem** - 本地虚拟网络代表本地网络。 在实际部署中，可以使用 VPN 或 ExpressRoute 来连接它。 为简单起见, 本文使用 VPN 网关连接, 而使用 Azure 的虚拟网络表示本地网络。
 
 ![混合网络中的防火墙](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-本教程介绍如何执行下列操作：
+在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 声明变量
@@ -43,12 +43,13 @@ ms.locfileid: "59051693"
 > * 创建虚拟机
 > * 测试防火墙
 
+如果要使用 Azure 门户而不是完成本教程, 请参阅[教程:使用 Azure 门户](tutorial-hybrid-portal.md)在混合网络中部署和配置 Azure 防火墙。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
+本文要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 验证 PowerShell 版本以后，请运行 `Login-AzAccount`，以便创建与 Azure 的连接。
 
 若要正常开展此方案，必须符合三项关键要求：
 
@@ -58,12 +59,12 @@ ms.locfileid: "59051693"
    无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
 - 在 VNet-Hub 与 VNet-Spoke 之间建立对等互连时，请务必设置 **AllowGatewayTransit**；在 VNet-Spoke 与 VNet-Hub 之间建立对等互连时，请务必设置 **UseRemoteGateways**。
 
-请参阅本教程的[创建路由](#create-the-routes)部分了解如何创建这些路由。
+请参阅本文中的[创建路由](#create-the-routes)部分, 了解如何创建这些路由。
 
 >[!NOTE]
->Azure 防火墙必须具有直接的 Internet 连接。 默认情况下，AzureFirewallSubnet 只允许使用其 NextHopType 值设置为 Internet 的 UDR 0.0.0.0/0。
+>Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接。 默认情况下，Azure 防火墙不支持强制的安全加密链路连接到本地网络。
 >
->如果已通过 ExpressRoute 或应用程序网关启用到本地的强制隧道，可能需要显式配置 UDR 0.0.0.0/0，并将 NextHopType 值设置为 Internet，然后将其与 AzureFirewallSubnet 关联。 如果组织需要 Azure 防火墙流量的强制隧道，请联系支持人员，以便我们将你的订阅列入允许列表，并确保保留所需的防火墙 Internet 连接。
+>但是，如果你的配置要求强制的安全加密链路连接到本地网络，Microsoft 将基于具体的情况提供支持。 请联系支持人员，以便我们可以查看你的情况。 如果接受，我们会将你的订阅添加到白名单，确保保持所需的防火墙 Internet 连接。
 
 >[!NOTE]
 >即使 UDR 指向作为默认网关的 Azure 防火墙，也会直接路由直接对等互连 VNet 之间的流量。 若要在此方案中将子网到子网流量发送到防火墙，UDR 必须在这两个子网上显式地包含目标子网网络前缀。
@@ -74,7 +75,7 @@ ms.locfileid: "59051693"
 
 ## <a name="declare-the-variables"></a>声明变量
 
-以下示例使用本教程中的值来声明变量。 在某些情况下，可能需要根据订阅情况将某些值替换为你自己的值。 根据需要修改变量，然后将变量复制并粘贴到 PowerShell 控制台中。
+下面的示例使用此项目的值来声明变量。 在某些情况下，可能需要根据订阅情况将某些值替换为你自己的值。 根据需要修改变量，然后将变量复制并粘贴到 PowerShell 控制台中。
 
 ```azurepowershell
 $RG1 = "FW-Hybrid-Test"
@@ -118,7 +119,7 @@ $SNnameGW = "GatewaySubnet"
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>创建防火墙中心虚拟网络
 
-首先，创建用于存储本教程资源的资源组：
+首先, 创建资源组以包含本文所述的资源:
 
 ```azurepowershell
   New-AzResourceGroup -Name $RG1 -Location $Location1
@@ -138,7 +139,7 @@ $VNetHub = New-AzVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-请求一个要分配到为虚拟网络创建的 VPN 网关的公共 IP 地址。 请注意，*AllocationMethod* 为 **Dynamic**（动态）。 无法指定要使用的 IP 地址。 该 IP 地址会动态分配到 VPN 网关。 
+请求一个要分配到为虚拟网络创建的 VPN 网关的公共 IP 地址。 请注意，*AllocationMethod* 为 **Dynamic**（动态）。 无法指定要使用的 IP 地址。 该 IP 地址会动态分配到 VPN 网关。
 
   ```azurepowershell
   $gwpip1 = New-AzPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
@@ -177,7 +178,7 @@ $VNetOnprem = New-AzVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-请求一个要分配到为虚拟网络创建的网关的公共 IP 地址。 请注意，*AllocationMethod* 为 **Dynamic**（动态）。 无法指定要使用的 IP 地址。 它动态分配到网关。 
+请求一个要分配到为虚拟网络创建的网关的公共 IP 地址。 请注意，*AllocationMethod* 为 **Dynamic**（动态）。 无法指定要使用的 IP 地址。 它动态分配到网关。
 
   ```azurepowershell
   $gwOnprempip = New-AzPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
@@ -292,7 +293,7 @@ New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupNam
 
 #### <a name="verify-the-connection"></a>验证连接
 
-可以验证连接是否成功，方法是使用 *Get-AzVirtualNetworkGatewayConnection* cmdlet，带或不带 *-Debug*。 使用以下 cmdlet 示例，配置符合自己需要的值。 如果出现提示，请选择“A”（表示“所有”）。 在此示例中，*-Name* 是指要测试的连接的名称。
+可以验证连接是否成功，方法是使用 *Get-AzVirtualNetworkGatewayConnection* cmdlet，带或不带 *-Debug*。 使用以下 cmdlet 示例，配置符合自己需要的值。 如果出现提示，请选择“A”（表示“所有”）。 在此示例中， *-Name* 是指要测试的连接的名称。
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1
@@ -496,5 +497,4 @@ Set-AzFirewall -AzureFirewall $azfw
 
 接下来，可以监视 Azure 防火墙日志。
 
-> [!div class="nextstepaction"]
-> [教程：监视 Azure 防火墙日志](./tutorial-diagnostics.md)
+[教程：监视 Azure 防火墙日志](./tutorial-diagnostics.md)

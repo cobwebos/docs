@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: dcfa9bb7931cf3b682bacf722b67acd6d4a370c0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860722"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60814105"
 ---
 # <a name="evaluate-method"></a>evaluate 方法
 
-evaluate 方法根据索引数据，计算并返回结构化查询表达式的输出。
+evaluate  方法根据索引数据，计算并返回结构化查询表达式的输出。
 
 表达式通常是通过响应 interpret 方法获得。  不过，也可以自己编写查询表达式（请参阅[结构化查询表达式](Expressions.md)）。  
 
@@ -27,28 +27,28 @@ evaluate 方法根据索引数据，计算并返回结构化查询表达式的�
 
 `http://<host>/evaluate?expr=<expr>&attributes=<attrs>[&<options>]`   
 
-Name|值|说明
+名称|值|描述
 ----|----|----
 expr       | 文本字符串 | 选择索引实体子集的结构化查询表达式。
 attributes | 文本字符串 | 要在响应中包含的属性的逗号分隔列表。
 计数      | 数字（默认值为 10） | 要返回的结果数上限。
 offset     | 数字（默认值为 0） | 要返回的第一个结果的索引。
-orderby |   文本字符串 | 用于对结果排序的属性的属性名，后跟可选排序顺序（默认值为 asc）：“attrname[:(asc&#124;desc)]”。  如果未指定，返回按自然对数概率降序排列的结果。
+orderby |   文本字符串 | 用于对结果排序的属性的属性名，后跟可选排序顺序（默认值为 asc）：“attrname  [:(asc&#124;desc)]”。  如果未指定，返回按自然对数概率降序排列的结果。
 timeout  | 数字（默认值为 1000） | 超时（以毫秒为单位）。 仅返回在超时前计算出的结果。
 
-使用 count 和 offset 参数，可以通过多个请求以递增方式获取大量结果。
+使用 count  和 offset  参数，可以通过多个请求以递增方式获取大量结果。
   
 ## <a name="response-json"></a>响应 (JSON)
-JSONPath|说明
+JSONPath|描述
 ----|----
-$.expr | 请求中的 expr 参数。
+$.expr | 请求中的 expr  参数。
 $.entities | 一组与结构化查询表达式匹配的 0 个或多个对象实体。 
 $.aborted | 如果请求超时，则为 True。
 
-每个实体都包含 logprob 值，以及请求获取的属性值。
+每个实体都包含 logprob  值，以及请求获取的属性值。
 
 ## <a name="example"></a>示例
-在学术出版物示例中，下面的请求传递结构化查询表达式（可能来自 interpret 请求输出），并检索前 2 个匹配实体的几个属性：
+在学术出版物示例中，下面的请求传递结构化查询表达式（可能来自 interpret  请求输出），并检索前 2 个匹配实体的几个属性：
 
 `http://<host>/evaluate?expr=Composite(Author.Name=='jaime teevan')&attributes=Title,Y,Author.Name,Author.Id&count=2`
 

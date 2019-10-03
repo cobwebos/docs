@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: cdd2b24e6f833ee0acb229a37c7cd3b8b6f36339
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682043"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66427566"
 ---
 # <a name="deploy-a-new-simulated-device"></a>部署新的模拟设备
 
@@ -88,13 +88,14 @@ ms.locfileid: "59682043"
 1. 将容器中的现有设备模型文件复制到新位置。 首先，找到设备模拟容器的容器 ID：
 
     ```sh
-    docker ps
+    sudo docker ps
     ```
 
     然后将设备模型文件复制到虚拟机中的 tmp 文件夹。 以下命令假定容器 ID 为 c378d6878407，将此值替换为你的设备模拟容器 ID：
 
     ```sh
-    docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
+    sudo docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
+    sudo chown -R azureuser /tmp/devicemodels/
     ```
 
     使 bash 窗口和 SSH 会话处于打开状态。
@@ -116,13 +117,13 @@ ms.locfileid: "59682043"
     如果要查看正在运行的 Docker 容器的状态及其容器 ID，请使用以下命令：
 
     ```sh
-    docker ps
+    sudo docker ps
     ```
 
     如果要查看设备模拟容器中的日志，请运行以下命令。 将容器 ID 替换为你的设备模拟容器的 ID：
 
     ```sh
-    docker logs -f 5d3f3e78822e
+    sudo docker logs -f 5d3f3e78822e
     ```
 
 ## <a name="run-simulation"></a>运行模拟

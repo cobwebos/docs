@@ -7,17 +7,18 @@ author: ika-microsoft
 manager: femila
 editor: ''
 ms.service: media-services
+ms.subservice: video-indexer
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: e98cf44db01de1f99836e247066ba01006eac97b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a9b75c3454c67112b0e00c7ea4b4e8c676ebcc97
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733293"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65949469"
 ---
 # <a name="manage-multiple-tenants"></a>管理多个租户
 
@@ -67,7 +68,7 @@ ms.locfileid: "56733293"
 
 ## <a name="azure-subscription-per-tenant"></a>每个租户都有 Azure 订阅 
 
-使用此体系结构时，每个租户有其自身的 Azure 订阅。 对于每个用户，需在租户订阅中创建新的视频索引器帐户。
+在使用此体系结构，每个租户将具有其自己的 Azure 订阅。 对于每个用户，需在租户订阅中创建新的视频索引器帐户。
 
 ![每个租户都有 Azure 订阅](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 

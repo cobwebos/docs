@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Analytics U-SQL 语言入门
-description: 了解有关 Azure Data Lake Analytics 中 U-SQL 语言的基础知识。
+description: 了解有关 Azure Data Lake Analytics 中 U-SQL 语言的基础知识。 使用变量编写你的第一个查询、转换行集和聚合数据。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,12 +9,12 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8130679dcc519cecd25abf43902c003ad8047df3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59488705"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672820"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics U-SQL 入门
 U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处理任何规模的数据。 通过 U-SQL 的可缩放分布式查询功能，可以跨关系存储（如 Azure SQL 数据库）高效分析其中的数据。 使用 U-SQL，可以通过在读取和插入自定义逻辑和 UDF 时应用架构来处理非结构化数据。 此外，U-SQL 还提供可扩展性，可更精细地控制大规模执行的方式。 
@@ -22,12 +22,12 @@ U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处�
 ## <a name="learning-resources"></a>学习资源
 
 * [U-SQL 教程](https://aka.ms/usqltutorial)提供大部分 U-SQL 语言的指导性演练。 对于要了解 U-SQL 的所有开发人员，建议阅读本文档。
-* 有关 **U-SQL 语言语法**的详细信息，请参阅 [U-SQL 语言参考](https://go.microsoft.com/fwlink/p/?LinkId=691348)。
+* 有关 **U-SQL 语言语法**的详细信息，请参阅 [U-SQL 语言参考](https://docs.microsoft.com/u-sql/)。
 * 若要了解 **U-SQL 设计理念**，请参阅 Visual Studio 博客文章 [U-SQL（使大数据处理更轻松的语言）简介](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-完成本文档中的 U-SQL 示例之前，阅读并完成[教程：开发 U-SQL 脚本使用 Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)。 该教程介绍了将 U-SQL 与针对 Visual Studio 的 Azure Data Lake 工具结合使用的机制。
+在完成本文档中的 U-SQL 示例之前，请阅读并完成 [Tutorial：使用适用于 Visual Studio @ no__t 的 Data Lake 工具开发 SQL 脚本。 该教程介绍了将 U-SQL 与针对 Visual Studio 的 Azure Data Lake 工具结合使用的机制。
 
 ## <a name="your-first-u-sql-script"></a>第一个 U-SQL 脚本
 
@@ -55,7 +55,7 @@ OUTPUT @searchlog
 请注意 `Duration` 字段中数据类型旁边的问号。 它表示 `Duration` 字段可以为 null。
 
 ### <a name="key-concepts"></a>关键概念
-* **行集变量**:每个生成的行集的查询表达式可以分配给一个变量。 在脚本中，U-SQL 遵循 T-SQL 变量命名模式（例如 `@searchlog`）。
+* **行集变量**：可以将生成行集的每个查询表达式分配给一个变量。 在脚本中，U-SQL 遵循 T-SQL 变量命名模式（例如 `@searchlog`）。
 * **EXTRACT** 关键字从文件中读取数据，并在读取时定义架构。 `Extractors.Tsv` 是用于制表符分隔值文件的内置 U-SQL 提取程序。 可以开发自定义提程序。
 * **OUTPUT** 将行集中的数据写入到文件。 `Outputters.Csv()` 是用于创建逗号分隔值文件的内置 U-SQL 输出器。 可以开发自定义输出器。
 

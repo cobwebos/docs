@@ -3,25 +3,23 @@ title: 使用 SSL 终端创建应用程序网关 - Azure CLI
 description: 了解如何使用 Azure CLI 创建应用程序网关并为 SSL 终端添加证书。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.topic: article
+ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8689918bf33b0efdd9bbfabc6d3751672959c6bb
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: d6df504d46a829298d0fff8d69b05019c26baa75
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753072"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688133"
 ---
-# <a name="tutorial-create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>教程：通过 Azure CLI 使用 SSL 终端创建应用程序网关
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>通过 Azure CLI 使用 SSL 终端创建应用程序网关
 
-可通过 Azure CLI 使用 [SSL 终端](ssl-overview.md)的证书创建使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)作为后端服务器的[应用程序网关](overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
+可以使用 Azure CLI 创建具有[SSL 终止](ssl-overview.md)证书的[应用程序网关](overview.md)。 对于后端服务器, 可以使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。 在此示例中，规模集包含两个添加到应用程序网关的默认后端池的虚拟机实例。
 
-本教程介绍如何执行下列操作：
+在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 创建自签名证书
@@ -29,17 +27,17 @@ ms.locfileid: "55753072"
 > * 使用证书创建应用程序网关
 > * 使用默认后端池创建虚拟机规模集
 
-如果需要，可以使用 [Azure PowerShell](tutorial-ssl-powershell.md) 完成本教程中的步骤。
+如果需要，可以使用 [Azure PowerShell](tutorial-ssl-powershell.md) 完成此过程。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
-为供生产使用，应导入由受信任的提供程序签名的有效证书。 对于本教程，请使用 openssl 命令创建自签名证书和 pfx 文件。
+为供生产使用，应导入由受信任的提供程序签名的有效证书。 对于本文中的情况，请使用 openssl 命令创建自签名证书和 pfx 文件。
 
 ```azurecli-interactive
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
@@ -84,7 +82,9 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-the-application-gateway"></a>创建应用程序网关
@@ -101,7 +101,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 443 \
   --http-settings-port 80 \
@@ -165,7 +165,7 @@ az network public-ip show \
   --output tsv
 ```
 
-复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 就此示例来说，URL 为 **https://52.170.203.149**。
+复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 就此示例来说，URL 为 **https://52.170.203.149** 。
 
 ![安全警告](./media/tutorial-ssl-cli/application-gateway-secure.png)
 
@@ -183,5 +183,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [创建托管多个网站的应用程序网关](./tutorial-multiple-sites-cli.md)
+[创建托管多个网站的应用程序网关](./tutorial-multiple-sites-cli.md)

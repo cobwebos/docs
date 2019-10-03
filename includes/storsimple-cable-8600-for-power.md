@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9b9922602218280d58331a755ed0dfed7df96f40
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889811"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172986"
 ---
 #### <a name="to-cable-your-device-for-power"></a>为设备进行电源布线
 > [!NOTE]
@@ -37,9 +37,9 @@ ms.locfileid: "55889811"
     
     **电源布线**
     
-    | Label | 说明 |
+    | Label | 描述 |
     |:--- |:--- |
-    | 1 |主机箱 |
+    | 第 |主机箱 |
     | 2 |PCM 0 |
     | 3 |PCM 1 |
     | 4 |控制器 0 |

@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 08/12/2019
 ms.author: alinast
-ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
-ms.translationtype: HT
+ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994805"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013940"
 ---
 # <a name="egress-and-endpoints"></a>出口和终结点
 
@@ -47,16 +47,16 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| 属性 | 类型 | 说明 |
+| 特性 | 类型 | 描述 |
 | --- | --- | --- |
-| id | 字符串 | 事件的唯一标识符。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| data | 对象 | 特定于资源提供程序的事件数据。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
-| topic | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| id | string | 事件的唯一标识符。 |
+| subject | string | 事件主题的发布者定义路径。 |
+| data | object | 特定于资源提供程序的事件数据。 |
+| eventType | string | 此事件源的一个注册事件类型。 |
+| eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| topic | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 
 有关事件网格事件架构的详细信息：
 
@@ -79,24 +79,24 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 
 **TopologyOperation** 适用于图形更改。 **subject** 属性指定受影响的对象类型。 以下类型的对象可能会触发此事件：
 
-- Device
+- 设备
 - DeviceBlobMetadata
 - DeviceExtendedProperty
 - ExtendedPropertyKey
 - ExtendedType
 - KeyStore
-- Report
+- 报告
 - RoleDefinition
-- Sensor
+- 传感器
 - SensorBlobMetadata
 - SensorExtendedProperty
-- Space
+- 空格
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
 - SpaceRoleAssignment
-- System
-- User
+- 系统
+- 用户
 - UserBlobMetadata
 - UserExtendedProperty
 
@@ -122,7 +122,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| 值 | 替换为 |
+| ReplTest1 | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -153,7 +153,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| 值 | 替换为 |
+| ReplTest1 | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -188,7 +188,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| 值 | 替换为 |
+| ReplTest1 | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -223,7 +223,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| 值 | 替换为 |
+| ReplTest1 | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -246,7 +246,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 >[!IMPORTANT]
 > 请特别注意 **eventTypes** 属性。 它定义终结点处理哪些事件类型并确定其路由。
 
-针对以下项发出的经过身份验证的 HTTP POST 请求
+经过身份验证的 HTTP POST 请求:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/endpoints
@@ -268,7 +268,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | 值 | 替换为 |
+    | ReplTest1 | 替换为 |
     | --- | --- |
     | YOUR_NAMESPACE | 终结点的命名空间 |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串 |
@@ -291,7 +291,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | 值 | 替换为 |
+    | ReplTest1 | 替换为 |
     | --- | --- |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串|
     | YOUR_SECONDARY_KEY | 用于进行身份验证的次要连接字符串 |
@@ -313,7 +313,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | 值 | 替换为 |
+    | ReplTest1 | 替换为 |
     | --- | --- |
     | YOUR_NAMESPACE | 终结点的命名空间 |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串 |
@@ -334,7 +334,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | 值 | 替换为 |
+    | ReplTest1 | 替换为 |
     | --- | --- |
     | YOUR_NAMESPACE | 终结点的命名空间 |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串 |

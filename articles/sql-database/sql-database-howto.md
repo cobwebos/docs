@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7db9c6400ac7d235153a59965e34e30d9b809a81
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 98c522f3d2718691e32b4e78180027b69f28289f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359686"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568011"
 ---
 # <a name="how-to-use-azure-sql-database"></a>如何使用 Azure SQL 数据库
 
@@ -25,7 +24,7 @@ ms.locfileid: "59359686"
 
 ## <a name="load-data"></a>加载数据
 
-- [在 Azure 中复制单一数据库或入池数据库](sql-database-copy.md)
+- [在 Azure 中复制单一数据库或共用数据库](sql-database-copy.md)
 - [从 BACPAC 导入 DB](sql-database-import.md)
 - [将 DB 导出到 BACPAC](sql-database-export.md)
 - [使用 BCP 加载数据](sql-database-load-from-csv-with-bcp.md)

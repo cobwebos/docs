@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 5aff7e93dcfaa5320be0d6f7d427abcdc88c69e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a8c50f492c28bf1e009d15d6332e939959190a49
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995825"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568500"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
 
@@ -33,7 +32,7 @@ ms.locfileid: "57995825"
 
 文件放置在名为 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目录中，其中 *x.x.xxx.x* 表示版本号。 拆分/合并服务文件可在 **content\splitmerge\service** 子目录中找到；拆分/合并 PowerShell 脚本（和所需的客户端 dll）可在 **content\splitmerge\powershell** 子目录中找到。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 1. 创建将用作拆分/合并状态数据库的 Azure SQL DB。 转到 [Azure 门户](https://portal.azure.com)。 创建新的 **SQL** 数据库。 为数据库指定一个名称，并创建一个新的管理员和密码。 确保记录该名称和密码以供日后使用。
 2. 确保 Azure SQL DB 服务器允许 Azure 服务与其连接。 在门户上的“防火墙设置”中，确保“允许访问 Azure 服务”设置设为“打开”。 单击“保存”图标。
 3. 创建用于诊断输出的 Azure 存储帐户。
@@ -147,7 +146,7 @@ ms.locfileid: "57995825"
 
 ## <a name="test-the-service-deployment"></a>测试服务部署
 ### <a name="connect-with-a-web-browser"></a>使用 Web 浏览器建立连接
-确定拆分/合并服务的 Web 终结点。 可以在门户中找到此终结点，方法是转到云服务的“概述”并在右侧的“站点 URL”下查找。 由于默认的安全设置将禁用 HTTP 终结点，因此请将 **http://** 替换为 **https://**。 将此 URL 的页面加载到浏览器中。
+确定拆分/合并服务的 Web 终结点。 可以在门户中找到此终结点，方法是转到云服务的“概述”并在右侧的“站点 URL”下查找。 由于默认的安全设置将禁用 HTTP 终结点，因此请将 **http://** 替换为 **https://** 。 将此 URL 的页面加载到浏览器中。
 
 ### <a name="test-with-powershell-scripts"></a>使用 PowerShell 脚本进行测试
 可以通过运行包含的示例 PowerShell 脚本测试部署和环境。
@@ -163,7 +162,7 @@ ms.locfileid: "57995825"
    <table style="width:100%">
      <tr>
        <th>PowerShell 文件</th>
-       <th>Steps</th>
+       <th>步骤</th>
      </tr>
      <tr>
        <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
@@ -185,7 +184,7 @@ ms.locfileid: "57995825"
    <table style="width:100%">
      <tr>
        <th>PowerShell 文件</th>
-       <th>Steps</th>
+       <th>步骤</th>
      </tr>
    <tr>
        <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
@@ -204,7 +203,7 @@ ms.locfileid: "57995825"
    
 ## <a name="use-powershell-to-verify-your-deployment"></a>使用 PowerShell 验证部署
 1. 打开新的 PowerShell 窗口并导航到下载拆分/合并包的目录，并导航到“powershell”目录中。
-2. 创建一个将在其中创建分片映射管理器和分片的 Azure SQL 数据库服务器（或选择现有服务器）。
+2. 创建一个将要在其中创建分片映射管理器和分片的 Azure SQL 数据库服务器（或选择现有服务器）。
    
    > [!NOTE]
    > 在默认情况下，SetupSampleSplitMergeEnvironment.ps1 脚本会在相同的服务器上创建所有这些数据库以简化脚本。 这并不表示拆分/合并服务本身存在限制。
@@ -311,7 +310,7 @@ ms.locfileid: "57995825"
 
 拆分/合并服务不会为用户创建目标数据库（或为数据库中的任何表创建架构）。 在将请求发送到服务之前，必须预先创建它们。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 在运行示例 powershell 脚本时，可能会看到下面的消息：
 
    ```

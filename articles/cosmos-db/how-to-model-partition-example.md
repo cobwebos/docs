@@ -3,15 +3,15 @@ title: 如何使用真实示例为 Azure Cosmos DB 中的数据建模和分区
 description: 了解如何使用 Azure Cosmos DB Core API 为某个真实示例建模和分区
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 3/27/2019
+ms.topic: conceptual
+ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: ac1b94de4b439aab202d53b23b0d0da616a9f851
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: HT
+ms.openlocfilehash: 55290b88fedabe59417ea49f1cd3c3bc9961678d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58919890"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093410"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用真实示例为 Azure Cosmos DB 中的数据建模和分区
 
@@ -124,7 +124,7 @@ ms.locfileid: "58919890"
 
 ![将单个项写入用户容器](./media/how-to-model-partition-example/V1-C1.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 7 毫秒 | 5.71 RU | ✅ |
 
@@ -134,17 +134,17 @@ ms.locfileid: "58919890"
 
 ![从用户容器检索单个项](./media/how-to-model-partition-example/V1-Q1.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 2 毫秒 | 1 RU | ✅ |
 
 ### <a name="c2-createedit-a-post"></a>[C2] 创建/编辑帖子
 
-类似于 **[C1]**，我们只需写入到 `posts` 容器。
+类似于 **[C1]** ，我们只需写入到 `posts` 容器。
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 9 毫秒 | 8.76 RU | ✅ |
 
@@ -156,7 +156,7 @@ ms.locfileid: "58919890"
 
 每个附加查询根据相应容器的分区键进行筛选，而我们恰好需要使用分区来最大化性能和可伸缩性。 但是，我们最终需要执行四个操作才能返回一个帖子，因此，我们将在下一次迭代中改进此方法。
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 9 毫秒 | 19.54 RU | ⚠ |
 
@@ -171,7 +171,7 @@ ms.locfileid: "58919890"
 - 必须针对第一个查询返回的每个帖子，发出用于聚合评论数和点赞数的查询；
 - 主查询不会根据 `posts` 容器的分区键进行筛选，导致扇出并在整个容器中进行分区扫描。
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 130 毫秒 | 619.41 RU | ⚠ |
 
@@ -181,7 +181,7 @@ ms.locfileid: "58919890"
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 7 毫秒 | 8.57 RU | ✅ |
 
@@ -193,27 +193,27 @@ ms.locfileid: "58919890"
 
 尽管主查询会根据容器的分区键进行筛选，但单独聚合用户名会降低总体性能。 稍后我们将会改进。
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 23 毫秒 | 27.72 RU | ⚠ |
 
 ### <a name="c4-like-a-post"></a>[C4] 为帖子点赞
 
-类似于 **[C3]**，我们将在 `posts` 容器中创建相应的项。
+类似于 **[C3]** ，我们将在 `posts` 容器中创建相应的项。
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 6 毫秒 | 7.05 RU | ✅ |
 
 ### <a name="q5-list-a-posts-likes"></a>[Q5] 列出帖子的点赞数
 
-类似于 **[Q4]**，我们将查询该帖子的点赞数，然后聚合点赞者的用户名。
+类似于 **[Q4]** ，我们将查询该帖子的点赞数，然后聚合点赞者的用户名。
 
 ![检索帖子的所有点赞并聚合其附加数据](./media/how-to-model-partition-example/V1-Q5.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 59 毫秒 | 58.92 RU | ⚠ |
 
@@ -225,7 +225,7 @@ ms.locfileid: "58919890"
 
 同样，我们的初始查询不会根据 `posts` 容器的分区键进行筛选，这会触发高开销的扇出。但这一次情况更糟，因为我们的目标是一个大得多的结果集，并要使用 `ORDER BY` 子句将结果排序，因此会消耗更多的请求单位。
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 306 毫秒 | 2063.54 RU | ⚠ |
 
@@ -282,7 +282,7 @@ ms.locfileid: "58919890"
 
 我们要实现的目的是，每次添加评论或点赞时，都会递增相应帖子中的 `commentCount` 或 `likeCount`。 由于 `posts` 容器已按 `postId` 分区，新项（评论或点赞）及其相应帖子将位于同一个逻辑分区中。 因此，我们可以使用某个[存储过程](stored-procedures-triggers-udfs.md)来执行该操作。
 
-现在，在创建评论 (**[C3]**) 时，我们不仅需要在 `posts` 容器中添加新项，而且还要针对该容器调用以下存储过程：
+现在，在创建评论 ( **[C3]** ) 时，我们不仅需要在 `posts` 容器中添加新项，而且还要针对该容器调用以下存储过程：
 
 ```javascript
 function createComment(postId, comment) {
@@ -370,7 +370,7 @@ function updateUsernames(userId, username) {
 
 ![从帖子容器检索单个项](./media/how-to-model-partition-example/V2-Q2.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 2 毫秒 | 1 RU | ✅ |
 
@@ -380,7 +380,7 @@ function updateUsernames(userId, username) {
 
 ![检索帖子的所有评论](./media/how-to-model-partition-example/V2-Q4.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 4 毫秒 | 7.72 RU | ✅ |
 
@@ -390,13 +390,13 @@ function updateUsernames(userId, username) {
 
 ![检索帖子的所有点赞](./media/how-to-model-partition-example/V2-Q5.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 4 毫秒 | 8.92 RU | ✅ |
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3：确保所有请求都可缩放
 
-分析我们的总体性能改进，可以发现仍有两个请求未得到完全优化：**[Q3]** 和 **[Q6]**。 这些请求涉及到不根据其所针对的容器的分区键进行筛选的查询。
+分析我们的总体性能改进，可以发现仍有两个请求未得到完全优化： **[Q3]** 和 **[Q6]** 。 这些请求涉及到不根据其所针对的容器的分区键进行筛选的查询。
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>[Q3] 以短格式列出用户的帖子
 
@@ -450,7 +450,7 @@ function updateUsernames(userId, username) {
 
 ![检索用户的所有帖子](./media/how-to-model-partition-example/V3-Q3.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 4 毫秒 | 6.46 RU | ✅ |
 
@@ -534,7 +534,7 @@ function truncateFeed() {
 
 ![检索最近的帖子](./media/how-to-model-partition-example/V3-Q6.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 9 毫秒 | 16.97 RU | ✅ |
 
@@ -561,7 +561,7 @@ function truncateFeed() {
 
 这种方案是合理的，因为博客平台（类似于大多数社交应用）是读取密集型的，这意味着，它需要服务的读取请求数量往往比写入请求数量要高几个数量级。 因此，提高所要执行的写入请求的开销是有利的，这可以降低读取请求的开销，并提高其性能。
 
-执行极端优化后我们发现，**[Q6]** 的开销已从 2000 多个 RU 降到了 17 个 RU；这种改进是通过反规范化帖子实现的，每个项的开销大约为 10 RU。 由于我们要服务的源请求比帖子创建或更新请求要多得多，在考虑到总体节省的情况下，这种反规范化带来的开销可以忽略不计。
+执行极端优化后我们发现， **[Q6]** 的开销已从 2000 多个 RU 降到了 17 个 RU；这种改进是通过反规范化帖子实现的，每个项的开销大约为 10 RU。 由于我们要服务的源请求比帖子创建或更新请求要多得多，在考虑到总体节省的情况下，这种反规范化带来的开销可以忽略不计。
 
 ### <a name="denormalization-can-be-applied-incrementally"></a>可以增量方式应用反规范化
 

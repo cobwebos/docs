@@ -2,18 +2,18 @@
 title: Azure 上的 Kubernetes 教程 - 升级群集
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何将现有 AKS 群集升级到最新可用的 Kubernetes 版本。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: f64ff611516b972d9440e212309ee22e1a12a928
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9fe02c9b563259abb51a1a768c7facdf1bf601f7
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719432"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898836"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中升级 Kubernetes
 
@@ -28,7 +28,7 @@ ms.locfileid: "53719432"
 
 ## <a name="before-you-begin"></a>开始之前
 
-上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请开始参阅[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
+上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
 
 本教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -40,12 +40,12 @@ ms.locfileid: "53719432"
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-在以下示例中，当前版本为 1.9.11，可用的版本显示在“升级”列下。
+在以下示例中，当前版本为 1.13.10，可用的版本显示在“升级”列下   。
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 -------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.9.11           1.9.11             1.10.8, 1.10.9
+default  myResourceGroup  1.13.10          1.13.10            1.14.5, 1.14.6
 ```
 
 ## <a name="upgrade-a-cluster"></a>升级群集
@@ -58,16 +58,16 @@ default  myResourceGroup  1.9.11           1.9.11             1.10.8, 1.10.9
 1. 准备好新节点并将其加入群集后，Kubernetes 计划程序开始在该群集上运行 Pod。
 1. 删除旧节点，群集的下一个节点随即开始隔离和排空进程。
 
-使用 [az aks upgrade][] 命令升级 AKS 群集。 以下示例将群集升级到 Kubernetes 版本 1.10.9。
+使用 [az aks upgrade][] 命令升级 AKS 群集。 以下示例将群集升级到 Kubernetes 版本 1.14.6  。
 
 > [!NOTE]
-> 一次只能升级一个次要版本。 例如，可以从 1.9.11 升级到 1.10.9，但不能从 1.9.6 直接升级到 1.11.x。 若要从 1.9.11 升级到 1.11.x，请先从 1.9.11 升级到 1.10.x，然后再执行一次升级从 1.10.x 升级到 1.11.x。
+> 一次只能升级一个次要版本。 例如，可以从 1.12.x 升级到 1.13.x，但不能从 1.12.x 直接升级到 1.14.x     。 若要从 1.12.x 升级到 1.14.x，请先从 1.12.x 升级到 1.13.x，然后再执行一次升级从 1.13.x 升级到 1.14.x       。
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.10.9
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.6
 ```
 
-以下浓缩版的示例输出显示 kubernetesVersion 现在报告 1.10.9：
+以下精简示例输出显示 kubernetesVersion 现在报告 1.14.6   ：
 
 ```json
 {
@@ -85,7 +85,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.10.9",
+  "kubernetesVersion": "1.14.6",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -100,12 +100,12 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-以下示例输出显示 AKS 群集运行 KubernetesVersion 1.10.9：
+以下示例输出显示 AKS 群集运行 KubernetesVersion 1.14.6  ：
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.10.9               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.14.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>删除群集

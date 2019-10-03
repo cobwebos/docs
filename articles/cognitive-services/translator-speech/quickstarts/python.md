@@ -3,20 +3,20 @@ title: 快速入门：语音翻译 API Python
 titlesuffix: Azure Cognitive Services
 description: 获取信息和代码示例，有助于快速开始使用语音翻译 API。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 07/17/2018
-ms.author: v-jaswel
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 9a6afc4dfb25a2a5f6e778fbda877a93269a96eb
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 7189563ebbcc5ae1a167f99ff8704aff16d0feac
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673269"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966479"
 ---
 # <a name="quickstart-translator-speech-api-with-python"></a>快速入门：将语音翻译 API 与 Python 配合使用
 <a name="HOLTop"></a>
@@ -33,7 +33,7 @@ ms.locfileid: "56673269"
 
 将需要一个名为“speak.wav”的 .wav 文件，该文件与从以下代码编译的可执行文件位于同一文件夹中。 此 .wav 文件应采用标准 PCM、16 位、16 kHz 单声道格式。
 
-必须创建一个具有 Microsoft 语音翻译 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
+必须创建一个具有 Microsoft 语音翻译 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)  。 需要一个来自 [Azure 仪表板](https://portal.azure.com/#create/Microsoft.CognitiveServices)的付费订阅密钥。
 
 ## <a name="translate-speech"></a>翻译语音
 
@@ -59,53 +59,58 @@ import websocket
 key = 'ENTER KEY HERE'
 
 host = 'wss://dev.microsofttranslator.com'
-path = '/speech/translate';
+path = '/speech/translate'
 params = '?api-version=1.0&from=en-US&to=it-IT&features=texttospeech&voice=it-IT-Elsa'
 uri = host + path + params
 
 input_file = 'speak.wav'
 output_file = 'speak2.wav'
 
-output = bytearray ()
+output = bytearray()
 
-def on_open (client):
-    print ("Connected.")
+
+def on_open(client):
+    print("Connected.")
 
 # r = read. b = binary.
-    with open (input_file, mode='rb') as file:
+    with open(input_file, mode='rb') as file:
         data = file.read()
 
-    print ("Sending audio.")
-    client.send (data, websocket.ABNF.OPCODE_BINARY)
+    print("Sending audio.")
+    client.send(data, websocket.ABNF.OPCODE_BINARY)
 # Make sure the audio file is followed by silence.
 # This lets the service know that the audio input is finished.
-    print ("Sending silence.")
-    client.send (bytearray (32000), websocket.ABNF.OPCODE_BINARY)
+    print("Sending silence.")
+    client.send(bytearray(32000), websocket.ABNF.OPCODE_BINARY)
 
-def on_data (client, message, message_type, is_last):
+
+def on_data(client, message, message_type, is_last):
     global output
     if (websocket.ABNF.OPCODE_TEXT == message_type):
-        print ("Received text data.")
-        print (message)
+        print("Received text data.")
+        print(message)
 # For some reason, we receive the data as type websocket.ABNF.OPCODE_CONT.
     elif (websocket.ABNF.OPCODE_BINARY == message_type or websocket.ABNF.OPCODE_CONT == message_type):
-        print ("Received binary data.")
-        print ("Is last? " + str(is_last))
+        print("Received binary data.")
+        print("Is last? " + str(is_last))
         output = output + message
         if (True == is_last):
-# w = write. b = binary.
-            with open (output_file, mode='wb') as file:
-                file.write (output)
-                print ("Wrote data to output file.")
-            client.close ()
+            # w = write. b = binary.
+            with open(output_file, mode='wb') as file:
+                file.write(output)
+                print("Wrote data to output file.")
+            client.close()
     else:
-        print ("Received data of type: " + str (message_type))
+        print("Received data of type: " + str(message_type))
 
-def on_error (client, error):
-    print ("Connection error: " + str (error))
 
-def on_close (client):
-    print ("Connection closed.")
+def on_error(client, error):
+    print("Connection error: " + str(error))
+
+
+def on_close(client):
+    print("Connection closed.")
+
 
 client = websocket.WebSocketApp(
     uri,
@@ -118,7 +123,7 @@ client = websocket.WebSocketApp(
     on_close=on_close
 )
 
-print ("Connecting...")
+print("Connecting...")
 client.run_forever()
 ```
 

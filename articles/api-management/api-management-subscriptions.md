@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 6f577530c42952c6340a15110bcd37383a5fca57
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526582"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073420"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的订阅
 
@@ -42,7 +41,7 @@ ms.locfileid: "59526582"
 
 ### <a name="subscriptions-for-a-product"></a>产品的订阅
 
-传统上，API 管理中的订阅始终与单个 [API 产品](api-management-terminology.md)范围相关联。 开发人员在开发人员门户上找到产品列表。 然后，它们将提交对要使用的产品的订阅请求。 在订阅请求获得批准后（不管是自动批准还是由 API 发布者批准），开发人员可以使用其中的密钥来访问产品中的所有 API。
+传统上，API 管理中的订阅始终与单个 [API 产品](api-management-terminology.md)范围相关联。 开发人员在开发人员门户上找到产品列表。 然后，它们将提交对要使用的产品的订阅请求。 在订阅请求获得批准后（不管是自动批准还是由 API 发布者批准），开发人员可以使用其中的密钥来访问产品中的所有 API。目前，开发人员门户仅在“用户配置文件”部分下显示产品范围订阅。 
 
 ![产品订阅](./media/api-management-subscriptions/product-subscription.png)
 

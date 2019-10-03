@@ -1,74 +1,167 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 数据库迁移服务文档
+summary: 使用 Azure 数据库迁移服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 该服务使用数据迁移助手生成评估报告，这些报告提供建议以指导你在执行迁移之前完成所需的更改。 当你准备好开始该迁移过程时，Azure 数据库迁移服务会执行所有必需步骤。
 metadata:
-  document_id: 83ceabb5-fb4f-a709-3fd2-37d024409f31
-  title: Azure 数据库迁移服务文档 - 教程 | Microsoft Docs
-  meta.description: Learn how to enable seamless migrations from multiple database sources to Azure Data platforms with minimal downtime by using Azure Database Migration Service.
-  services: functions
+  description: " 了解如何使用 Azure 数据库迁移服务以停机时间最短的方式从多个数据库源无缝迁移到 Azure 数据平台。"
   author: HJToland3
   ms.author: jtoland
-  manager: craigg
-  ms.reviewer: craigg
+  ms.date: 10/02/2019
   ms.service: dms
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 03/12/2019
-abstract:
-  description: 使用 Azure 数据库迁移服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 该服务使用数据迁移助手生成评估报告，这些报告提供建议以指导你在执行迁移之前完成所需的更改。 准备好开始迁移过程时，Azure 数据库迁移服务会执行所有必需步骤。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/video-thumb-intro2dms.png
-      width: 250
-    title: 'Azure DMS 简介 (1:30)'
-    href: 'https://www.microsoft.com/en-us/videoplayer/embed/RE2IqVu'
-    width: 250
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何使用数据库迁移服务将本地 SQL Server 迁移到 Azure SQL 数据库：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure 门户
-            href: /azure/dms/quickstart-create-data-migration-service-portal
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用数据库迁移服务迁移数据库：
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库托管实例</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例</a>
-          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">使用 DMS 将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例</a>
-          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL</a>
-          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">使用 DMS 以联机方式将 PostgreSQL 迁移到 Azure Database for PostgreSQL</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB Mongo API</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB Mongo API</a>
-  - title: 示例
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-powershell">使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL DB</a>
-          - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-mi-powershell">使用 Azure PowerShell 将本地 SQL Server 迁移到 Azure SQL DB 托管实例</a>
-  - title: 引用
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/dms/resource-scenario-status">Azure 数据库迁移服务支持的迁移方案的状态</a>
-          - html: <a href="/azure/dms/pre-reqs">使用 Azure 数据库迁移服务的先决条件概述</a>
-          - html: <a href="/azure/dms/faq">有关使用 Azure 数据库迁移服务的常见问题解答</a>
-          - html: <a href="/azure/dms/known-issues-azure-sql-online">联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制</a>
-          - html: <a href="/azure/dms/dms-tools-matrix">用于数据迁移方案的服务和工具</a>
+  ms.openlocfilehash: e3688c4795590fa2b74421055a6cf6f80d2d2d17
+  ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/02/2019
+  ms.locfileid: "71802147"
+landingContent:
+- title: 关于 Azure 数据库迁移服务
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 数据库迁移服务？
+      url: dms-overview.md
+  - linkListType: get-started
+    links:
+    - text: 数据库迁移方案状态
+      url: resource-scenario-status.md
+    - text: 先决条件概述
+      url: pre-reqs.md
+  - linkListType: quickstart
+    links:
+    - text: 创建服务 - 门户
+      url: quickstart-create-data-migration-service-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: 监视迁移活动
+      url: how-to-monitor-migration-activity.md
+    - text: 排查常见问题和错误
+      url: known-issues-troubleshooting-dms.md
+    - text: 排查源数据库连接问题
+      url: known-issues-troubleshooting-dms-source-connectivity.md
+  - linkListType: video
+    links:
+    - text: Azure 数据迁移服务简介
+      url: https://www.microsoft.com/videoplayer/embed/RE2IqVu
+    - text: 使用数据库迁移指南
+      url: https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/
+    - text: 迁移过程和建议的工具/服务
+      url: https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/
+    - text: 满足先决条件并创建 DMS 实例
+      url: https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/
+    - text: 监视联机迁移并执行直接转换
+      url: https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/
+  - linkListType: whats-new
+    links:
+    - text: 查看我们的博客
+      url: https://techcommunity.microsoft.com/t5/Microsoft-Data-Migration/bg-p/MicrosoftDataMigration
+- title: 将 SQL Server 迁移到 Azure SQL 数据库单一数据库
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将 SQL Server 联机迁移到 Azure SQL DB 单一数据库
+      url: tutorial-sql-server-azure-sql-online.md
+    - text: 将 SQL Server 脱机迁移到 Azure SQL DB 单一数据库
+      url: tutorial-sql-server-to-azure-sql.md
+    - text: 将 RDS SQL Server 联机迁移到 Azure SQL DB 单一数据库或 Azure SQL DB 托管实例
+      url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB 单一数据库
+      url: howto-sql-server-to-azure-sql-powershell.md
+    - text: 将 SSIS 包重新部署到 Azure SQL 数据库单一数据库
+      url: how-to-migrate-ssis-packages.md
+  - linkListType: concept
+    links:
+    - text: 已知问题 - 联机迁移到 Azure SQL DB 单一数据库
+      url: known-issues-azure-sql-online.md
+- title: 将 SQL Server 迁移到 Azure SQL 数据库托管实例
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将 SQL Server 联机迁移到 Azure SQL DB 托管实例
+      url: tutorial-sql-server-managed-instance-online.md
+    - text: 将 SQL Server 脱机迁移到 Azure SQL DB 托管实例
+      url: tutorial-sql-server-to-managed-instance.md
+    - text: 将 RDS SQL Server 联机迁移到 Azure SQL DB 单一数据库或 Azure SQL DB 托管实例
+      url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB 托管实例
+      url: howto-sql-server-to-azure-sql-mi-powershell.md
+    - text: 将 SSIS 包重新部署到 Azure SQL 数据库托管实例
+      url: how-to-migrate-ssis-packages-managed-instance.md
+  - linkListType: concept
+    links:
+    - text: 用于 Azure SQL DB 托管实例迁移的网络拓扑
+      url: resource-network-topologies.md
+  - linkListType: video
+    links:
+    - text: 将 SQL Server 2008 迁移到 Azure SQL 数据库托管实例
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
+- title: 将 PostgreSQL 迁移到 Azure Database for PostgreSQL 单一服务器
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL 单一服务器
+      url: tutorial-postgresql-azure-postgresql-online.md
+    - text: 将 RDS PostgreSQL 联机迁移到 Azure Database for PostgreSQL 单一服务器
+      url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
+  - linkListType: concept
+    links:
+    - text: 已知问题 - 联机迁移到 Azure DB for PostgreSQL 单一服务器
+      url: known-issues-azure-postgresql-online.md
+  - linkListType: video
+    links:
+    - text: 将 PostgreSQL 迁移到 Azure Database for PostgreSQL
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
+- title: 将 MySQL 迁移到 Azure Database for MySQL
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 以联机方式将 MySQL 迁移到 Azure DB for MySQL
+      url: tutorial-mysql-azure-mysql-online.md
+    - text: 以联机方式将 RDS MySQL 迁移到 Azure DB for MySQL
+      url: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
+  - linkListType: concept
+    links:
+    - text: 已知问题 - 联机迁移到 Azure DB for MySQL
+      url: known-issues-azure-mysql-online.md
+- title: 将 MongoDB 迁移到 Azure Cosmos DB
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将 MongoDB 联机迁移到 Azure Cosmos DB
+      url: tutorial-mongodb-cosmos-db-online.md
+    - text: 将 MongoDB 脱机迁移到 Azure Cosmos DB
+      url: tutorial-mongodb-cosmos-db.md
+  - linkListType: video
+    links:
+    - text: 将 MongoDB 迁移到 Azure Cosmos DB
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/
+- title: 将 Oracle 迁移到 Azure
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将 Oracle 联机迁移到 Azure DB for PostgreSQL 单一服务器
+      url: tutorial-oracle-azure-postgresql-online.md
+  - linkListType: video
+    links:
+    - text: 将 Oracle 迁移到 Azure SQL 数据库单一数据库
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/
+- title: 工具和指南
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 可用于数据迁移方案的服务和工具
+      url: dms-tools-matrix.md
+    - text: 数据库迁移指南
+      url: https://datamigration.microsoft.com/
+    - text: 数据迁移助手
+      url: https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017
+    - text: SQL Server 迁移助手
+      url: https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017
+    - text: 数据库实验助手
+      url: https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
+    - text: 数据访问迁移工具包
+      url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit

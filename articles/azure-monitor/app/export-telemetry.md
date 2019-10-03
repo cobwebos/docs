@@ -10,21 +10,21 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 71e70962a8c55d397b6261571cfef4a126d3e8b4
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3238abcbcbc4d776e3736b13d5b32149c642649c
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307813"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516948"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
-想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
+想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 你可以从此处下载数据, 并编写处理该数据所需的任何代码。  
 
 在设置连续导出之前，请考虑一些备选方法：
 
-* 通过指标或搜索边栏选项卡顶部的“导出”按钮，可将表格和图表发送到 Excel 电子表格。
+* "度量值" 或 "搜索" 选项卡顶部的 "导出" 按钮允许您将表和图表传输到 Excel 电子表格。
 
 * [Analytics](../../azure-monitor/app/analytics.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
 * 如果想要[在 Power BI 中浏览数据](../../azure-monitor/app/export-power-bi.md )，无需使用连续导出也可以做到。
@@ -33,31 +33,30 @@ ms.locfileid: "57307813"
 
 连续导出将数据复制到存储后（数据可在其中保存任意长的时间），在正常[保留期](../../azure-monitor/app/data-retention-privacy.md)内，这些数据仍可在 Application Insights 中使用。
 
-## <a name="continuous-export-advanced-storage-configuration"></a>连续导出高级的存储配置
+## <a name="continuous-export-advanced-storage-configuration"></a>连续导出高级存储配置
 
 连续导出**不支持**以下 Azure 存储功能/配置：
 
-* 利用[VNET/Azure 存储防火墙](https://docs.microsoft.com/azure/storage/common/storage-network-security)结合使用 Azure Blob 存储。
+* 将 [VNET/Azure 存储防火墙](https://docs.microsoft.com/azure/storage/common/storage-network-security)与 Azure Blob 存储结合使用。
 
-* [不可变存储](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)适用于 Azure Blob 存储。
+* Azure Blob 存储的[不可变存储](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)。
 
-* [Azure 数据湖存储第 2 代](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
+* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
 
 ## <a name="setup"></a> 创建连续导出
-1. 在应用的 Application Insights 资源中，打开“连续导出”，并选择“添加”：
+
+1. 在应用的 "Application Insights 资源" 下的 "配置" 下, 打开 "连续导出" 并选择 "**添加**":
 
 2. 选择要导出的遥测数据类型。
 
-3. 创建或选择要用于存储数据的 [Azure 存储帐户](../../storage/common/storage-introduction.md)。 有关存储定价选项的详细信息，请访问[官方定价页面](https://azure.microsoft.com/pricing/details/storage/)。
+3. 创建或选择要用于存储数据的 [Azure 存储帐户](../../storage/common/storage-introduction.md)。 有关存储定价选项的详细信息, 请访问[官方定价页](https://azure.microsoft.com/pricing/details/storage/)。
+
+     单击 "添加"、"导出目标"、"存储帐户", 然后创建新的存储或选择现有存储。
 
     > [!Warning]
     > 默认情况下，存储位置将设置为与 Application Insights 资源相同的地理区域。 如果存储在不同的区域中，则可能会产生传输费用。
 
-    ![单击“添加”、“导出目标”、“存储帐户”，并创建新存储或选择现有存储](./media/export-telemetry/02-add.png)
-
-4. 在存储中创建或选择一个容器：
-
-    ![单击“选择事件类型”](./media/export-telemetry/create-container.png)
+4. 在存储中创建或选择一个容器。
 
 创建导出之后，将开始导出数据。 只能获取创建导出后到达的数据。
 
@@ -65,9 +64,7 @@ ms.locfileid: "57307813"
 
 ### <a name="to-edit-continuous-export"></a>编辑连续导出
 
-如果以后想要更改事件类型，只需编辑导出：
-
-![单击“选择事件类型”](./media/export-telemetry/05-edit.png)
+单击 "连续导出", 然后选择要编辑的存储帐户。
 
 ### <a name="to-stop-continuous-export"></a>停止连续导出
 
@@ -76,10 +73,10 @@ ms.locfileid: "57307813"
 要永久停止导出，请将其删除。 这样做不会将数据从存储中删除。
 
 ### <a name="cant-add-or-change-an-export"></a>无法添加或更改导出？
-* 若要添加或更改导出，需要“所有者”、“参与者”或“Application Insights 参与者”访问权限。 [了解角色][roles]。
+* 若要添加或更改导出, 需要所有者、参与者或 Application Insights 参与者访问权限。 [了解角色][roles]。
 
 ## <a name="analyze"></a> 获取哪些事件？
-导出的数据是从应用程序接收的原始遥测数据，只不过我们添加了从客户端 IP 地址计算的位置数据。
+导出的数据是我们从应用程序接收的原始遥测数据, 只不过我们添加了从客户端 IP 地址计算的位置数据。
 
 被[采样](../../azure-monitor/app/sampling.md)丢弃的数据不会包含在导出的数据中。
 
@@ -93,7 +90,7 @@ ms.locfileid: "57307813"
 >
 
 ## <a name="get"></a> 检查数据
-可以直接在门户中检查存储。 单击“浏览”、选择存储帐户，然后打开“容器”。
+可以直接在门户中检查存储。 单击最左侧菜单中的 "主页", 顶部显示 "Azure 服务", 选择 "Azure 服务 **", 选择**存储帐户名称, 在 "概述" 页上选择 "服务" 下的 " **blob** ", 最后选择容器名称。
 
 若要在 Visual Studio 中检查 Azure 存储，请依次打开“视图”、“Cloud Explorer”。 （如果没有此菜单命令，则需要安装 Azure SDK：打开“新建项目”对话框，展开 Visual C#/云/并选择“用于 .NET 的 Microsoft Azure SDK”。）
 
@@ -150,14 +147,12 @@ ms.locfileid: "57307813"
 如需更详细的代码示例，请参阅[使用辅助角色][exportasa]。
 
 ## <a name="delete"></a>删除旧数据
-你负责管理存储容量和删除旧数据，如有必要。
+要负责管理存储容量，以及在必要时删除旧数据。
 
 ## <a name="if-you-regenerate-your-storage-key"></a>如果重新生成存储密钥...
 如果更改存储密钥，连续导出将停止运行。 Azure 帐户中会显示通知。
 
-打开“连续导出”边栏选项卡并编辑导出。 编辑“导出目标”，只保留选定的同一存储。 单击“确定”以确认。
-
-![编辑连续导出，打开并关闭导出目标。](./media/export-telemetry/07-resetstore.png)
+打开 "连续导出" 选项卡, 然后编辑导出。 编辑“导出目标”，只保留选定的同一存储。 单击“确定”以确认。
 
 连续导出将重新开始。
 
@@ -171,7 +166,7 @@ ms.locfileid: "57307813"
 ## <a name="q--a"></a>问题解答
 * *我想要一次性下载某个图表。*  
 
-    没问题，可以这样做。 请在边栏选项卡顶部单击“导出数据”。
+    没问题，可以这样做。 在选项卡顶部, 单击 "**导出数据**"。
 * *我设置了导出，但存储中没有数据。*
 
     自设置导出之后，Application Insights 是否从应用程序收到了任何遥测数据？ 只会收到新数据。
@@ -183,14 +178,14 @@ ms.locfileid: "57307813"
     很抱歉，不可以。 我们的导出引擎目前仅适用于 Azure 存储。  
 * *放置在存储中的数据量是否有任何限制？*
 
-    不是。 我们将持续推送数据，直到删除了导出。 如果达到 Blob 存储的外在限制，推送会停止，但那个限制极大。 可以自行控制使用的存储量。  
+    否。 我们将持续推送数据，直到删除了导出。 如果达到 Blob 存储的外在限制，推送会停止，但那个限制极大。 可以自行控制使用的存储量。  
 * *存储中应会出现多少个 Blob？*
 
   * 对于选择要导出的每种数据类型，将每隔分钟创建一个新 Blob（如果有可用的数据）。
-  * 此外，对于高流量应用程序，将分配额外的分区单元。 在这种情况下，每个单元创建一个 blob 每隔一分钟。
+  * 此外，对于高流量应用程序，将分配额外的分区单元。 在此情况下，每个单元每隔一分钟创建一个 Blob。
 * *我为存储重新生成了密钥或更改了容器的名称，但现在导出不能正常进行。*
 
-    请编辑导出并打开导出目标边栏选项卡。 像以前一样保留选择相同的存储，并单击“确定”以确认。 导出将重新开始。 如果更改是在最近几天内做出的，则不会丢失数据。
+    编辑导出并打开 "导出目标" 选项卡。像以前一样保留选择相同的存储，并单击“确定”以确认。 导出将重新开始。 如果更改是在最近几天内做出的，则不会丢失数据。
 * *是否可以暂停导出？*
 
     是的。 单击“禁用”即可。

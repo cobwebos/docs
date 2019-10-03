@@ -3,20 +3,20 @@ title: 必应语音 WebSocket 协议 | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: 必应语音 WebSockets 协议文档
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e7f51d49624d5019bec058a2d12f6ca2f1366938
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076184"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966887"
 ---
 # <a name="bing-speech-websocket-protocol"></a>必应语音 WebSocket 协议
 
@@ -61,7 +61,7 @@ Date: Wed, 17 Aug 2016 15:03:52 GMT
 
 语音服务要求所有客户端都包含唯一 ID，用于标识连接。 客户端在启动 WebSocket 握手时必须包含 X-ConnectionId 标头。 X-ConnectionId 标头必须是[通用唯一标识符](https://en.wikipedia.org/wiki/Universally_unique_identifier) (UUID) 值。 WebSocket 升级请求出现这些情况时，将被服务拒绝并返回 HTTP `400 Bad Request` 响应：未包含 X-ConnectionId、未给 X-ConnectionId 标头指定值，或未包含有效的 UUID 值。
 
-### <a name="authorization"></a>授权
+### <a name="authorization"></a>Authorization
 
 除了标准 WebSocket 握手标头之外，语音请求还需要 Authorization 标头。 无此标头的连接请求将被服务拒绝并返回 HTTP `403 Forbidden` 响应。
 
@@ -78,9 +78,9 @@ Content-Length: 0
 
 令牌访问需要以下标头信息。
 
-| 名称 | 格式 | 描述 |
+| 姓名 | 格式 | 描述 |
 |----|----|----|
-| Ocp-Apim-Subscription-Key | ASCII | 订阅密钥 |
+| Ocp-Apim-Subscription-Key | ASCII | 你的订阅密钥 |
 
 令牌服务将 JWT 访问令牌返回为 `text/plain`。 然后将 JWT 作为 `Base64 access_token` 传递给握手，作为以 `Bearer` 为前缀字符串的 Authorization 标头。 例如：
 
@@ -98,9 +98,9 @@ Content-Length: 0
 
 客户端必须使用语音服务的适当终结点。 终结点基于识别模式和语言。 下表展示了一些示例。
 
-| Mode | 路径 | 服务 URI |
+| 模式 | Path | 服务 URI |
 | -----|-----|-----|
-| 交互 | /speech/recognition/interactive/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
+| 交互式 | /speech/recognition/interactive/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | 对话 | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
 | 听写 | /speech/recognition/dictation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
@@ -150,9 +150,9 @@ Content-Length: 0
 
 所有客户端发起的消息都需要以下标头。
 
-| 标头 | 值 |
+| Header | ReplTest1 |
 |----|----|
-| 路径 | 本文档中指定的消息路径 |
+| Path | 本文档中指定的消息路径 |
 | X-RequestId | 采用“无连字符”格式的 UUID |
 | X-Timestamp | 采用 ISO 8601 格式的客户端 UTC 时钟时间戳 |
 
@@ -179,9 +179,9 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 
 #### <a name="required-message-headers"></a>必需的消息标头
 
-| 标头名称 | 值 |
+| 标头名称 | ReplTest1 |
 |----|----|
-| 路径 | `speech.config` |
+| Path | `speech.config` |
 | X-Timestamp | 采用 ISO 8601 格式的客户端 UTC 时钟时间戳 |
 | Content-Type | application/json; charset=utf-8 |
 
@@ -217,19 +217,19 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 
 ##### <a name="os-element"></a>操作系统元素
 
-| 字段 | 描述 | 使用情况 |
+| 字段 | 描述 | 用法 |
 |-|-|-|
-| os.platform | 承载应用程序的操作系统平台，例如 Windows、Android、iOS 或 Linux |需要 |
-| os.name | 操作系统产品名称，例如 Debian 或 Windows 10 | 需要 |
-| os.version | 操作系统的版本，格式为 major.minor.build.branch | 需要 |
+| os.platform | 承载应用程序的操作系统平台，例如 Windows、Android、iOS 或 Linux |必填 |
+| os.name | 操作系统产品名称，例如 Debian 或 Windows 10 | 必填 |
+| os.version | 操作系统的版本，格式为 major.minor.build.branch | 必填 |
 
 ##### <a name="device-element"></a>设备元素
 
-| 字段 | 描述 | 使用情况 |
+| 字段 | 描述 | 用法 |
 |-|-|-|
-| device.manufacturer | 设备硬件制造商 | 需要 |
-| device.model | 设备型号 | 需要 |
-| device.version | 设备制造商提供的设备软件版本。 此值指定制造商可跟踪的设备版本。 | 需要 |
+| device.manufacturer | 设备硬件制造商 | 必填 |
+| device.model | 设备型号 | 必填 |
+| device.version | 设备制造商提供的设备软件版本。 此值指定制造商可跟踪的设备版本。 | 必填 |
 
 ### <a name="message-audio"></a>消息 `audio`
 
@@ -243,16 +243,16 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 
 | 字段 | 描述 |
 |-------------|----------------|
-| WebSocket 消息编码 | 二进制 |
+| WebSocket 消息编码 | Binary |
 | Body | 音频区块的二进制数据。 最大大小为 8,192 字节。 |
 
 #### <a name="required-message-headers"></a>必需的消息标头
 
 所有 `audio` 消息都需要以下标头。
 
-| 标头         |  值     |
+| Header         |  ReplTest1     |
 | ------------- | ---------------- |
-| 路径 | `audio` |
+| Path | `audio` |
 | X-RequestId | 采用“无连字符”格式的 UUID |
 | X-Timestamp | 采用 ISO 8601 格式的客户端 UTC 时钟时间戳 |
 | Content-Type | 音频内容类型。 类型必须是 audio/x-wav (PCM) 或 audio/silk (SILK)。 |
@@ -308,7 +308,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
-| 路径 | `telemetry` |
+| Path | `telemetry` |
 | X-Timestamp | 采用 ISO 8601 格式的客户端 UTC 时钟时间戳 |
 | Content-Type | `application/json` |
 | Body | 包含有关轮次的客户端信息的 JSON 结构 |
@@ -330,7 +330,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
-| 路径 | `speech.startDetected` |
+| Path | `speech.startDetected` |
 | Content-Type | application/json; charset=utf-8 |
 | Body | JSON 结构，包含检测到语音开始时的条件信息。 此结构中的 Offset 字段指定在音频流中检测到语音时的位置相对于流开始位置的偏移（以 100 纳秒为单位）。 |
 
@@ -355,7 +355,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
-| 路径 | `speech.hypothesis` |
+| Path | `speech.hypothesis` |
 | X-RequestId | 采用“无连字符”格式的 UUID |
 | Content-Type | application/json |
 | Body | 语音假设 JSON 结构 |
@@ -387,7 +387,7 @@ Duration 元素指定该语音短语的持续时间（以 100 纳秒为单位）
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
-| 路径 | `speech.phrase` |
+| Path | `speech.phrase` |
 | Content-Type | application/json |
 | Body | 语音短语 JSON 结构 |
 
@@ -415,7 +415,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
-| 路径 | `speech.endDetected` |
+| Path | `speech.endDetected` |
 | Body | 包含检测到语音结束时的偏移的 JSON 结构。 偏移从用于识别的音频开始位置计算，以 100 纳秒为单位表示。 |
 | Content-Type | application/json; charset=utf-8 |
 
@@ -440,7 +440,7 @@ Offset 元素指定识别出短语时的位置相对于音频流开头位置的�
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
-| 路径 | `turn.start` |
+| Path | `turn.start` |
 | Content-Type | application/json; charset=utf-8 |
 | Body | JSON 结构 |
 
@@ -467,8 +467,8 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | 字段 | 描述 |
 | ------------- | ---------------- |
 | WebSocket 消息编码 | 文本 |
-| 路径 | `turn.end` |
-| Body | 无 |
+| Path | `turn.end` |
+| Body | None |
 
 #### <a name="sample-message"></a>示例消息
 
@@ -498,7 +498,7 @@ telemetry 消息的正文是 JSON 结构，其中包含有关轮次或尝试连�
 
 客户端必须通过在 JSON 正文中包含这些消息的时间戳来确认已收到服务发出的所有消息。 如果客户端未能确认收到消息，则该服务可能会终止连接。
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 
 客户端必须包含有关请求生命周期内发生的事件信息。 支持以下指标：`Connection`、`Microphone` 和 `ListeningTrigger`。
 
@@ -506,24 +506,24 @@ telemetry 消息的正文是 JSON 结构，其中包含有关轮次或尝试连�
 
 `Connection` 指标指定客户端连接尝试的详细信息。 该指标必须包括 WebSocket 连接开始和完成时的时间戳。 仅在第一次连接时需要 `Connection` 指标。 后续轮次不需要包含此信息。 如果客户端在建立连接之前进行多次连接尝试，则应包括有关所有连接尝试的信息。 有关详细信息，请参阅[连接失败遥测](#connection-failure-telemetry)。
 
-| 字段 | 描述 | 使用情况 |
+| 字段 | 描述 | 用法 |
 | ----- | ----------- | ----- |
-| 名称 | `Connection` | 需要 |
-| ID | 此连接请求的 X-ConnectionId 标头中使用的连接标识符值 | 需要 |
-| 开始 | 客户端发出连接请求的时间 | 需要 |
-| 结束 | 客户端收到成功建立连接的通知时间，或出错时收到拒绝、弃用或失败的通知时间 | 需要 |
-| 错误 | 已发生错误的描述（如有）。 如果连接成功，客户端应省略此字段。 此字段的最大长度为 50 个字符。 | 出错时必填，否则省略 |
+| 姓名 | `Connection` | 必填 |
+| Id | 此连接请求的 X-ConnectionId 标头中使用的连接标识符值 | 必填 |
+| Start | 客户端发出连接请求的时间 | 必填 |
+| 结束 | 客户端收到成功建立连接的通知时间，或出错时收到拒绝、弃用或失败的通知时间 | 必填 |
+| Error | 已发生错误的描述（如有）。 如果连接成功，客户端应省略此字段。 此字段的最大长度为 50 个字符。 | 出错时必填，否则省略 |
 
 错误描述最多可填 50 个字符，理想情况下应填入下表中列出的值之一。 如果下表中没有能够匹配错误条件的值，则客户端可使用无空格的 [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) 格式填写错误条件的简短描述。 发送 telemetry 消息需要连接到服务，因此只能在 telemetry 消息中报告暂时或临时错误条件。 永久阻止客户端建立与服务的连接的错误条件会阻止客户端向服务发送任何消息，包括 telemetry 消息。
 
-| 错误 | 使用情况 |
+| Error | 用法 |
 | ----- | ----- |
 | DNSfailure | 由于网络堆栈中的 DNS 故障，客户端无法连接到该服务。 |
 | NoNetwork | 客户端尝试连接，但网络堆栈报告无可用的物理网络。 |
 | NoAuthorization | 尝试获取连接的授权令牌时，客户端连接失败。 |
 | NoResources | 尝试建立连接时，客户端耗尽了一些本地资源（例如内存）。 |
-| 禁止 | 客户端无法连接到该服务，因为该服务在 WebSocket 升级请求上返回了 HTTP `403 Forbidden` 状态代码。 |
-| 未授权 | 客户端无法连接到该服务，因为该服务在 WebSocket 升级请求上返回了 HTTP `401 Unauthorized` 状态代码。 |
+| 不可用 | 客户端无法连接到该服务，因为该服务在 WebSocket 升级请求上返回了 HTTP `403 Forbidden` 状态代码。 |
+| 未经授权 | 客户端无法连接到该服务，因为该服务在 WebSocket 升级请求上返回了 HTTP `401 Unauthorized` 状态代码。 |
 | BadRequest | 客户端无法连接到该服务，因为该服务在 WebSocket 升级请求上返回了 HTTP `400 Bad Request` 状态代码。 |
 | ServerUnavailable | 客户端无法连接到该服务，因为该服务在 WebSocket 升级请求上返回了 HTTP `503 Server Unavailable` 状态代码。 |
 | ServerError | 客户端无法连接到该服务，因为该服务在 WebSocket 升级请求上返回了 `HTTP 500` 内部错误状态代码。 |
@@ -546,17 +546,17 @@ telemetry 消息的正文是 JSON 结构，其中包含有关轮次或尝试连�
 
 `Microphone` 指标的结束时间值记录客户端应用程序停止流式传输音频时的时间。 在大多数情况下，此事件在客户端从服务收到 `speech.endDetected` 消息后随即发生。 客户端应用程序可通过确保 `Microphone` 指标的结束时间值晚于 `speech.endDetected` 消息的接收时间值来验证它们是否正确符合协议。 并且，由于在一个轮次的结束和另一个轮次的开始之间往往存在延迟，因此客户端也可通过以下方法来验证是否符合协议：确保任何后续轮次 `Microphone` 指标的开始时间正确记录了客户端开始使用麦克风将音频输入流式传输到服务时的时间。
 
-| 字段 | 描述 | 使用情况 |
+| 字段 | 描述 | 用法 |
 | ----- | ----------- | ----- |
-| 名称 | 麦克风 | 需要 |
-| 开始 | 客户端开始使用来自麦克风或其他音频流的音频输入或从关键字监视器收到触发时的时间 | 需要 |
-| 结束 | 客户端停止使用麦克风或音频流时的时间 | 需要 |
-| 错误 | 已发生错误的描述（如有）。 如果麦克风操作成功，客户端应省略此字段。 此字段的最大长度为 50 个字符。 | 出错时必填，否则省略 |
+| 姓名 | 麦克风 | 必填 |
+| Start | 客户端开始使用来自麦克风或其他音频流的音频输入或从关键字监视器收到触发时的时间 | 必填 |
+| 结束 | 客户端停止使用麦克风或音频流时的时间 | 必填 |
+| Error | 已发生错误的描述（如有）。 如果麦克风操作成功，客户端应省略此字段。 此字段的最大长度为 50 个字符。 | 出错时必填，否则省略 |
 
 ### <a name="metric-listeningtrigger"></a>指标 `ListeningTrigger`
 `ListeningTrigger` 指标测量用户执行启动语音输入的操作时的时间。 `ListeningTrigger` 指标是可选的，但建议可提供此指标的客户端执行此操作。
 
-使用以下示例作为在客户端应用程序中记录  *指标的开始和结束时间值的准则*`ListeningTrigger`。
+使用以下示例作为在客户端应用程序中记录  指标的开始和结束时间值的准则`ListeningTrigger`。
 
 * 客户端应用程序要求用户必须通过按下物理按钮来启动麦克风。 此指标的开始值记录按钮按下时的时间。 结束值记录按钮按下完成时的时间。
 
@@ -566,12 +566,12 @@ telemetry 消息的正文是 JSON 结构，其中包含有关轮次或尝试连�
 
 * 客户端应用程序正在处理多轮次请求的第二个轮次，并收到服务响应消息通知打开麦克风以收集第二轮输入。 客户端应用程序本轮次不应包含 `ListeningTrigger` 指标。
 
-| 字段 | 描述 | 使用情况 |
+| 字段 | 描述 | 用法 |
 | ----- | ----------- | ----- |
-| 名称 | ListeningTrigger | 可选 |
-| 开始 | 客户端侦听触发开始时的时间 | 需要 |
-| 结束 | 客户端侦听触发完成时的时间 | 需要 |
-| 错误 | 已发生错误的描述（如有）。 如果触发操作成功，客户端应省略此字段。 此字段的最大长度为 50 个字符。 | 出错时必填，否则省略 |
+| 姓名 | ListeningTrigger | 可选 |
+| Start | 客户端侦听触发开始时的时间 | 必填 |
+| 结束 | 客户端侦听触发完成时的时间 | 必填 |
+| Error | 已发生错误的描述（如有）。 如果触发操作成功，客户端应省略此字段。 此字段的最大长度为 50 个字符。 | 出错时必填，否则省略 |
 
 #### <a name="sample-message"></a>示例消息
 
@@ -611,7 +611,7 @@ X-Timestamp: 2016-08-16T15:03:54.183Z
 }
 ```
 
-## <a name="error-handling"></a>错误处理。
+## <a name="error-handling"></a>错误处理
 
 本节介绍应用程序需要处理的错误消息和错误条件的类型。
 
@@ -687,7 +687,7 @@ X-Timestamp: 2016-08-16T15:03:54.183Z
 
 ### <a name="http-status-codes"></a>HTTP 状态代码
 
-| HTTP 状态代码 | 描述 | 故障排除 |
+| HTTP 状态代码 | 描述 | 疑难解答 |
 | - | - | - |
 | 400 错误请求 | 客户端发送的 WebSocket 连接请求不正确。 | 请检查是否提供了所有必需的参数和 HTTP 标头，值是否正确。 |
 | 401 未授权 | 客户端未包含所需的授权信息。 | 请检查是否在 WebSocket 连接中发送了 Authorization 标头。 |
@@ -698,7 +698,7 @@ X-Timestamp: 2016-08-16T15:03:54.183Z
 
 ### <a name="websocket-error-codes"></a>WebSocket 错误代码
 
-| WebSocketsStatus 代码 | 描述 | 故障排除 |
+| WebSocketsStatus 代码 | 描述 | 疑难解答 |
 | - | - | - |
 | 1000 正常关闭 | 该服务关闭了 WebSocket 连接并且没有发生错误。 | 如果 WebSocket 意外关闭，请重新阅读文档，确保已了解服务终止 WebSocket 连接的方式和时间点。 |
 | 1002 协议错误 | 客户端未遵守协议要求。 | 请确保已了解协议文档并明确要求。 阅读之前有关错误原因的文档，查看是否违反了协议要求。 |

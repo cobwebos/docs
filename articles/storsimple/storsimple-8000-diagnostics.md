@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 5cce4337e3ef95c6407d46d9b8b6401fe4f6600b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497734"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60576180"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 诊断工具排查 8000 系列设备的问题
 
@@ -414,7 +414,7 @@ Controller0>
 
 下表描述了系统信息中 Windows PowerShell 参数的含义。 
 
-| PowerShell 参数    | 说明  |
+| PowerShell 参数    | 描述  |
 |-------------------------|------------------|
 | 实例 ID             | 每个控制器都有一个关联的唯一标识符或 GUID。|
 | Name                    | 在部署设备期间通过 Azure 门户配置的设备友好名称。 默认的友好名称为设备序列号。 |

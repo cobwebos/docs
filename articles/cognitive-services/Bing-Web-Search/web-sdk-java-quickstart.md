@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 07/25/2019
 ms.author: aahi
-ms.openlocfilehash: 7209df902f03a7055e142dcbbb7743b6832958b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 64d1ce1aa6435d9d1716364cb16f8fee7ca09ebb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863774"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597804"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>快速入门：使用用于 Java 的必应 Web 搜索 SDK
 
@@ -300,4 +300,4 @@ mvn compile exec:java
 
 ## <a name="see-also"></a>另请参阅
 
-* [Azure Java SDK 参考](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch)
+* [Azure Java SDK 参考](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)

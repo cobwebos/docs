@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: mbullwin
 ms.openlocfilehash: 61215adc2aee5cef3693d119bf0efb36526d748b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855140"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60904256"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用逻辑应用自动执行 Application Insights 过程
 
-是否发现自己曾对遥测数据重复运行相同的查询以检查服务是否正常运行？ 是否希望自动执行这些查询以查找趋势和异常，然后针对这些信息构建你自己的工作流？ Azure Application Insights 连接器为逻辑应用是合适的工具实现此目的。
+是否发现自己曾对遥测数据重复运行相同的查询以检查服务是否正常运行？ 是否希望自动执行这些查询以查找趋势和异常，然后针对这些信息构建你自己的工作流？ 用于逻辑应用的 Azure Application Insights 连接器是适用于此用途的合适工具。
 
 通过这种集成，无需编写任何代码就可以自动执行许多过程。 可以使用 Application Insights 连接器创建逻辑应用，快速自动执行任何 Application Insights 过程。 
 
@@ -32,25 +32,25 @@ ms.locfileid: "57855140"
 
 ### <a name="step-1-create-a-logic-app"></a>步骤 1：创建逻辑应用
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 单击“创建资源”，选择“Web + 移动”，然后选择“逻辑应用”。
+1. 单击“创建资源”  ，选择“Web + 移动”  ，然后选择“逻辑应用”  。
 
     ![新建逻辑应用窗口](./media/automate-with-logic-apps/1createlogicapp.png)
 
 ### <a name="step-2-create-a-trigger-for-your-logic-app"></a>步骤 2：为逻辑应用创建触发器
-1. 在“逻辑应用设计器”窗口中的“首先使用常用触发器”下，选择“重复周期”。
+1. 在“逻辑应用设计器”  窗口中的“首先使用常用触发器”  下，选择“重复周期”  。
 
     ![“逻辑应用设计器”窗口](./media/automate-with-logic-apps/2logicappdesigner.png)
 
-1. 在中**间隔**框中，键入**1** ，然后**频率**框中，选择**天**。
+1. 在“间隔”  框中键入 **1**，然后在“频率”  框中选择“天”  。
 
     ![逻辑应用设计器“重复周期”窗口](./media/automate-with-logic-apps/3recurrence.png)
 
 ### <a name="step-3-add-an-application-insights-action"></a>步骤 3：添加 Application Insights 操作
-1. 单击**新步骤**。
+1. 单击“新建步骤”  。
 
-1. 在“选择操作”搜索框中，键入“Azure Application Insights”。
+1. 在“选择操作”  搜索框中，键入“Azure Application Insights”  。
 
-1. 下**操作**，单击**Azure Application Insights-可视化分析查询**。
+1. 在“操作”  下，单击“Azure Application Insights - 将 Analytics 查询可视化”  。
 
     ![逻辑应用设计器“选择操作”窗口](./media/automate-with-logic-apps/4visualize.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "57855140"
 
 创建自己的查询时，请在将其添加到流之前，验证它们是否可在 Analytics 中正常运行。
 
-1. 在“查询”框中，添加以下 Analytics 查询：
+1. 在“查询”  框中，添加以下 Analytics 查询：
 
     ```
     requests
@@ -84,29 +84,29 @@ ms.locfileid: "57855140"
     | evaluate autocluster()
     ```
 
-1. 在“图表类型”框中，选择“Html 表”。
+1. 在“图表类型”  框中，选择“Html 表”  。
 
     ![Analytics 查询配置窗口](./media/automate-with-logic-apps/8query.png)
 
 ### <a name="step-6-configure-the-logic-app-to-send-email"></a>步骤 6：配置逻辑应用以发送电子邮件
 
-1. 单击**新步骤**。
+1. 单击“新建步骤”  。
 
-1. 在搜索框中键入 Office 365 Outlook。
+1. 在搜索框中键入 Office 365 Outlook  。
 
-1. 单击“Office 365 Outlook - 发送电子邮件”。
+1. 单击“Office 365 Outlook - 发送电子邮件”  。
 
     ![Office 365 Outlook 选择](./media/automate-with-logic-apps/9sendemail.png)
 
-1. 在“发送电子邮件”窗口中，执行以下操作：
+1. 在“发送电子邮件”  窗口中，执行以下操作：
 
    a. 键入收件人的电子邮件地址。
 
    b. 键入电子邮件的主题。
 
-   c. 单击“正文”框中的任意位置，然后在右侧打开的动态内容菜单中选择“正文”。
+   c. 单击“正文”  框中的任意位置，然后在右侧打开的动态内容菜单中选择“正文”  。
     
-   d. 单击**添加新参数**下拉列表中，选择附件和是否为 HTML。
+   d. 单击“添加新参数”  下拉列表，然后选择“附件”和“是 HTML”。
 
       ![Office 365 Outlook 配置](./media/automate-with-logic-apps/10emailbody.png)
 
@@ -114,18 +114,18 @@ ms.locfileid: "57855140"
 
 1. 在动态内容菜单上执行以下操作：
 
-    a. 选择“附件名称”。
+    a. 选择“附件名称”  。
 
-    b. 选择“附件内容”。
+    b. 选择“附件内容”  。
     
-    c. 在“是否为 HTML”框中选择“是”。
+    c. 在“是否为 HTML”  框中选择“是”  。
 
       ![“Office 365 电子邮件配置”屏幕](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>步骤 7：保存并测试逻辑应用
-* 单击“保存”以保存更改。
+* 单击“保存”  以保存更改。
 
-可以等待触发器运行逻辑应用，也可以通过选择“运行”立即运行逻辑应用。
+可以等待触发器运行逻辑应用，也可以通过选择“运行”  立即运行逻辑应用。
 
 ![逻辑应用创建屏幕](./media/automate-with-logic-apps/13save.png)
 

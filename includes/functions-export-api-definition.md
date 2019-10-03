@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 49ac1a7585ddf2a6500c7e9382880109c3f7f431
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133912"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534274"
 ---
 ## <a name="export-an-api-definition"></a>导出 API 定义
 [为函数创建 OpenAPI 定义](../articles/azure-functions/functions-openapi-definition.md)中已为函数创建了一个 OpenAPI 定义。 此过程的下一步是导出 API 定义，以便 PowerApps 和 Microsoft Flow 可以在自定义 API 中使用它。
@@ -27,7 +27,7 @@ ms.locfileid: "50133912"
 
 1. 在右侧窗格中，使用表中指定的设置。
 
-    |设置|Description|
+    |设置|描述|
     |--------|------------|
     |**导出模式**|选择“快速”自动生成自定义 API。 选择“手动”导出 API 定义，但之后必选手动将其导入到 PowerApps 和 Microsoft Flow。 有关详细信息，请参阅[导出到 PowerApps 和 Microsoft Flow](../articles/azure-functions/app-service-export-api-to-powerapps-and-flow.md)。|
     |**环境**|选择自定义 API 应保存到的环境。 有关详细信息，请参阅[环境概述 (PowerApps)](https://powerapps.microsoft.com/tutorials/environments-overview/) 或[环境概述 (Microsoft Flow)](https://us.flow.microsoft.com/documentation/environments-overview-admin/)。|
@@ -36,4 +36,4 @@ ms.locfileid: "50133912"
  
     ![导出到 PowerApps 和 Microsoft Flow](media/functions-export-api-definition/export-api-2.png)
 
-1. 单击“确定”。 现在自定义 API 已生成并添加到了指定的环境中。
+1. 单击 **“确定”** 。 现在自定义 API 已生成并添加到了指定的环境中。

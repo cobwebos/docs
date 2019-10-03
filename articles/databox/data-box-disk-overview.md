@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 01/09/2019
+ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 96ff843ada9d9043d2c10f479d488617ae56da41
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497714"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204769"
 ---
 # <a name="what-is-azure-data-box-disk"></a>什么是 Azure Data Box 磁盘？
 
@@ -89,20 +89,7 @@ Data Box 磁盘旨在将大量数据移到 Azure，且不影响网络。 该解�
 
 ## <a name="region-availability"></a>上市区域
 
-目前，Data Box Disk 可将数据传输到以下 Azure 区域：
-
-
-|Azure 区域  |Azure 区域  |
-|---------|---------|
-|美国中西部     |加拿大中部       |        
-|美国西部 2     |加拿大东部         |     
-|美国西部     | 西欧        |      
-|美国中南部   |北欧     |         
-|美国中部     |澳大利亚东部|
-|美国中北部  |澳大利亚东南部   |
-|美国东部      |澳大利亚中部 |
-|美国东部 2     |澳大利亚中部 2|
-|日本东部     |韩国中部 |
+有关适用地区的信息，请转到 [Azure 可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 Data Box Disk 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。
 
 
 ## <a name="pricing"></a>定价

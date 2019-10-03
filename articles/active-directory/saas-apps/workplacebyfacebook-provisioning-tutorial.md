@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72c2e23b0d60ca242549ebf2c058ea8f44f2b1c8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: f040ff4c8e59f764676aa6fdd9460ec94641684a
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187791"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881799"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
@@ -97,6 +97,9 @@ Azure AD 支持将已分配的用户的帐户详细信息自动同步到 Workpla
 有关如何配置自动预配的详细信息，请参阅 [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
 
 现可创建测试帐户。 等待最多 20 分钟即可验证该帐户是否已同步到 Workplace by Facebook。
+
+> [!NOTE]
+> 我们正在与 Workplace by Facebook 团队紧密合作，以确保 Azure AD 的应用程序获得批准并满足其新指导原则。   
 
 ## <a name="additional-resources"></a>其他资源
 

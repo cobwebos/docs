@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 9e50caeac5c52b9f2309448e2bb0b760f533fb6c
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632079"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172667"
 ---
 ## <a name="delete-anchors"></a>删除定位点
 

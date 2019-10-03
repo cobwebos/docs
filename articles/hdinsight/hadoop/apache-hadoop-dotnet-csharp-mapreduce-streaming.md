@@ -1,7 +1,6 @@
 ---
 title: 在 HDInsight 中的 Hadoop 上将 C# 与 MapReduce 配合使用 - Azure
 description: 了解如何在 Azure HDInsight 中通过 Apache Hadoop 使用 C# 创建 MapReduce 解决方案。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0c3525b73560d3edee5bffa7a391fcedeaaa1e48
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 5784fb4f4ab0f46d2db7e5e8cfe9deeafabb4e90
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545088"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066945"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
@@ -153,7 +152,7 @@ namespace reducer
 
 4. 展开要将此应用程序部署到的 HDInsight 群集。 列出带有文本“（默认存储帐户）”的条目。
 
-    ![显示群集存储帐户的服务器资源管理器](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/storage.png)
+    ![显示群集存储帐户的服务器资源管理器](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
 
     * 如果此条目可以展开，则在使用 __Azure 存储帐户__作为该群集的默认存储。 要查看该群集的默认存储上的文件，请展开该条目，并双击“（默认容器）”。
 
@@ -163,7 +162,7 @@ namespace reducer
 
    * 如果使用的是 __Azure 存储帐户__，请单击“上传”图标，并浏览到“mapper” 项目的“bin\debug”文件夹。 最后，选择“mapper.exe”文件，并单击“确定”。
 
-       ![上传图标](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
+        ![映射器的 HDInsight 上传图标](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
     
    * 如果使用的是 __Azure Data Lake Storage__，请右键单击文件列表中的空白区域，并选择“上传”。 最后，选择“mapper.exe”文件，并单击“打开”。
 

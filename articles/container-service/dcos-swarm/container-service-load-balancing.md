@@ -10,11 +10,11 @@ ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: 1e4c978a8767154fb6a1f9a822cb0dd8d1b8796e
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331021"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66148881"
 ---
 # <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>（已弃用）在 Azure 容器服务 DC/OS 群集中对容器进行负载均衡
 
@@ -37,9 +37,9 @@ ms.locfileid: "54331021"
 
 Azure 容器服务 DC/OS 群集中存在两个负载均衡层： 
 
-Azure 负载均衡器提供公用入口点，最终用户将访问这些入口点。 Azure LB 由 Azure 容器服务自动提供，默认配置为公开端口 80、443 和 8080。
+Azure 负载均衡器提供公用入口点，最终用户将访问这些入口点  。 Azure LB 由 Azure 容器服务自动提供，默认配置为公开端口 80、443 和 8080。
 
-Marathon 负载均衡器 (marathon-lb) 将入站请求路由到容纳这些请求的容器实例。 当缩放提供 Web 服务的容器时，marathon-lb 会进行动态调整。 默认情况下，容器服务中不提供此负载均衡器，但它安装简单。
+Marathon 负载均衡器 (marathon-lb) 将入站请求路由到容纳这些请求的容器实例  。 当缩放提供 Web 服务的容器时，marathon-lb 会进行动态调整。 默认情况下，容器服务中不提供此负载均衡器，但它安装简单。
 
 ## <a name="configure-marathon-load-balancer"></a>配置 Marathon 负载均衡器
 
@@ -61,7 +61,7 @@ dcos package install marathon-lb
 az acs list --resource-group myResourceGroup --query "[0].agentPoolProfiles[0].fqdn" --output tsv
 ```
 
-然后，创建命名为“hello-web.json”的文件并将以下内容复制到其中。 `HAPROXY_0_VHOST` 标签需要更新为 DC/OS 代理的 FQDN。 
+然后，创建命名为“hello-web.json”的文件并将以下内容复制到其中  。 `HAPROXY_0_VHOST` 标签需要更新为 DC/OS 代理的 FQDN。 
 
 ```json
 {

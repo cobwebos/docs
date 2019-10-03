@@ -2,27 +2,21 @@
 title: Windows 10 漫游设置参考 | Microsoft Docs
 description: 将在 Windows 10 中漫游或备份的所有设置的完整列表。
 services: active-directory
-keywords: 企业状态漫游, Windows 云
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/30/2019
-ms.author: joflore
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6c80ee5d2a4d72be131c6a781cf793d1981e780
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9489228b6ba81ae8d09e0f6880634532d0c836c6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521068"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481812"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 漫游设置参考
 以下为会在 Windows 10 中漫游或备份的所有设置的完整列表。 
@@ -30,7 +24,7 @@ ms.locfileid: "58521068"
 ## <a name="devices-and-endpoints"></a>设备和终结点
 请参阅下表大概了解 Windows 10 中同步、备份和还原框架支持的设备和帐户类型。
 
-| 帐户类型和操作 | 桌面型 | 移动 |
+| 帐户类型和操作 | 桌面型 | 移动电话 |
 | --- | --- | --- |
 | Azure Active Directory：同步 |是 |否 |
 | Azure Active Directory：备份/还原 |否 |否 |
@@ -67,7 +61,7 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 “设置组”列中的“内部”项是指设置和应用，它们只能通过应用本身内的同步进行禁用，或使用移动设备管理 (MDM) 或“组策略”设置来禁用整个设备的同步进行禁用。
 不漫游或同步的设置不属于某个组。
 
-| 设置 | 桌面 | 移动型 | 组合 |
+| 设置 | 桌面型 | 移动型 | 组 |
 | --- | --- | --- | --- |
 | **帐户**：帐户图片 |sync |X |主题 |
 | **帐户**：其他帐户设置 |X |X | |
@@ -76,19 +70,19 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **应用列表**：已安装应用的列表 |X |backup |其他 |
 | **蓝牙**：所有蓝牙设置 |X |X | |
 | **命令提示符**：命令提示符“Defaults”设置 |sync |X |内部 |
-| **凭据**：凭据保险箱 |sync |sync |密码 |
-| **日期、时间和区域**：自动时间（Internet 时间同步） |sync |sync |语言 |
-| **日期、时间和区域**：24 小时制 |sync |X |语言 |
-| **日期、时间和区域**：日期和时间 |sync |X |语言 |
-| **日期、时间和区域**：时区 | |X |语言 |
-| **日期、时间和区域**：夏令时 |sync |X |语言 |
-| **日期、时间和区域**：国家/地区 |sync |X |语言 |
-| **日期、时间和区域**：每周的第一天 |sync |X |语言 |
-| **日期、时间和区域**：区域格式（区域设置） |sync |X |语言 |
-| **日期、时间和区域**：简短日期 |sync |X |语言 |
-| **日期、时间和区域**：完整日期 |sync |X |语言 |
+| **凭据**：凭据保险箱 |sync |sync |password |
+| **日期、时间和区域**：自动时间（Internet 时间同步） |sync |sync |language |
+| **日期、时间和区域**：24 小时制 |sync |X |language |
+| **日期、时间和区域**：日期和时间 |sync |X |language |
+| **日期、时间和区域**：时区 | |X |language |
+| **日期、时间和区域**：夏令时 |sync |X |language |
+| **日期、时间和区域**：国家/地区 |sync |X |language |
+| **日期、时间和区域**：每周的第一天 |sync |X |language |
+| **日期、时间和区域**：区域格式（区域设置） |sync |X |language |
+| **日期、时间和区域**：简短日期 |sync |X |language |
+| **日期、时间和区域**：完整日期 |sync |X |language |
 | **日期、时间和区域**：简短时间 |sync |X |语言 |
-| **日期、时间和区域**：完整时间 |sync |X |语言 |
+| **日期、时间和区域**：完整时间 |sync |X |language |
 | **桌面个性化**：桌面主题（背景、系统颜色、默认系统声音、屏幕保护） |sync |X |主题 |
 | **桌面个性化**：幻灯片放映壁纸 |sync |X |主题 |
 | **桌面个性化**：任务栏设置（位置、自动隐藏等） |sync |X |主题 |
@@ -145,25 +139,25 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **语言**：拼写检查功能 - 自动更正并突出显示拼写错误 |sync |backup |语言 |
 | **语言**：键盘列表 |sync |backup |语言 |
 | **屏幕锁定**：所有屏幕锁定设置 |X |X | |
-| **放大镜**：打开或关闭（主切换） |X |X |辅助功能 |
-| **放大镜**：打开或关闭反转颜色（默认为关闭） |sync |X |辅助功能 |
-| **放大镜**：跟踪功能 - 跟随键盘焦点 |sync |X |辅助功能 |
-| **放大镜**：跟踪功能 - 跟随鼠标焦点 |sync |X |辅助功能 |
-| **放大镜**：用户登录时启动（默认为关闭） |sync |X |辅助功能 |
+| **放大镜**：打开或关闭（主切换） |X |X |轻松访问 |
+| **放大镜**：打开或关闭反转颜色（默认为关闭） |sync |X |轻松访问 |
+| **放大镜**：跟踪功能 - 跟随键盘焦点 |sync |X |轻松访问 |
+| **放大镜**：跟踪功能 - 跟随鼠标焦点 |sync |X |轻松访问 |
+| **放大镜**：用户登录时启动（默认为关闭） |sync |X |轻松访问 |
 | **鼠标**：更改鼠标光标大小 |sync |X |其他 |
 | **鼠标**：更改鼠标光标颜色 |sync |X |其他 |
 | **鼠标**：所有其他设置 |X |X | |
-| **讲述人**：快速启动 |sync |X |辅助功能 |
-| **讲述人**：用户可更改“讲述人”音调 |sync |X |辅助功能 |
-| **讲述人**：用户可打开或关闭关于常见项的“讲述人”读取提示（默认为开启） |sync |X |辅助功能 |
-| **讲述人**：用户可打开或关闭是否收听键入的字符（默认为开启） |sync |X |辅助功能 |
-| **讲述人**：用户可打开或关闭是否收听键入的词语（默认为开启） |sync |X |辅助功能 |
+| **讲述人**：快速启动 |sync |X |轻松访问 |
+| **讲述人**：用户可更改“讲述人”音调 |sync |X |轻松访问 |
+| **讲述人**：用户可打开或关闭关于常见项的“讲述人”读取提示（默认为开启） |sync |X |轻松访问 |
+| **讲述人**：用户可打开或关闭是否收听键入的字符（默认为开启） |sync |X |轻松访问 |
+| **讲述人**：用户可打开或关闭是否收听键入的词语（默认为开启） |sync |X |轻松访问 |
 | **讲述人**：“讲述人”后跟插入光标（默认为开启） |sync |X |轻松访问 |
-| **讲述人**：启用“讲述人”光标视觉突出显示（默认为开启） |sync |X |辅助功能 |
-| **讲述人**：播放音频提示（默认为开启） |sync |X |辅助功能 |
-| **讲述人**：举起手指时激活触控键盘上的键（默认为关闭） |sync |X |辅助功能 |
-| **轻松访问**：设置闪烁光标的粗细 |sync |X |辅助功能 |
-| **轻松访问**：删除背景图像（默认为关闭） |sync |X |辅助功能 |
+| **讲述人**：启用“讲述人”光标视觉突出显示（默认为开启） |sync |X |轻松访问 |
+| **讲述人**：播放音频提示（默认为开启） |sync |X |轻松访问 |
+| **讲述人**：举起手指时激活触控键盘上的键（默认为关闭） |sync |X |轻松访问 |
+| **轻松访问**：设置闪烁光标的粗细 |sync |X |轻松访问 |
+| **轻松访问**：删除背景图像（默认为关闭） |sync |X |轻松访问 |
 | **电源和睡眠**：所有设置 |X |X | |
 | **启动屏幕个性化**：主题色（仅限电话） |X |sync |主题 |
 | **键入**：拼写字典 |sync |backup |语言 |
@@ -184,4 +178,3 @@ Windows Creators 更新（内部版本 15063）受支持的最低 OS 版本。
 ## <a name="next-steps"></a>后续步骤
 
 有关概述，请参阅[企业状态漫游概述](enterprise-state-roaming-overview.md)。
-

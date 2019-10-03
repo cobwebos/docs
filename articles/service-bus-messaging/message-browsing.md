@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 425cf262b80e83a4d06074a567a2921eee12f9c2
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855935"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60402745"
 ---
 # <a name="message-browsing"></a>消息浏览
 
@@ -40,7 +40,7 @@ Peek 还会返回锁定的消息，以及当前由其他接收程序处理但尚
 
 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) 可以检索多个消息，并以枚举形式返回它们。 如果没有消息可返回，枚举对象为空，而不是 NULL。
 
-也可以使用表示开始位置的 [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) 播种方法重载，再调用无参数方法重载来进一步枚举。 PeekBatch 的运作方式基本相同，不同之处在于它是一次性检索一组消息。
+也可以使用表示开始位置的 [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) 播种方法重载，再调用无参数方法重载来进一步枚举。 PeekBatch  的运作方式基本相同，不同之处在于它是一次性检索一组消息。
 
 ## <a name="next-steps"></a>后续步骤
 

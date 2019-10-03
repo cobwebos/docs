@@ -1,96 +1,85 @@
-items:
 - name: “Azure 上的 Terraform”文档
   href: index.yml
 - name: 概述
   items:
-  - name: 关于 Azure 上的 Terraform
-    href: terraform-overview.md
+    - name: 关于 Azure 上的 Terraform
+      href: terraform-overview.md
 - name: 快速入门
-  items:
-  - name: 创建多服务应用程序
-    href: terrafom-quickstart.md
-  - name: 安装和配置 Terraform
-    href: /azure/virtual-machines/linux/terraform-install-configure
-    maintainContext: true
-  - name: 创建 Linux VM
-    href: /azure/virtual-machines/linux/terraform-create-complete-vm
-    maintainContext: true
   expanded: true
+  items:
+    - name: 安装和配置 Terraform
+      href: /azure/virtual-machines/linux/terraform-install-configure
+      maintainContext: true
+    - name: 创建多服务应用程序
+      href: terrafom-quickstart.md
+    - name: 创建 Linux VM
+      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      maintainContext: true
 - name: 教程
   items:
-  - name: 应用服务
-    items:
-    - name: Terraform 和 Azure 提供程序部署槽位
-      href: terraform-slot-walkthru.md
-  - name: 容器
-    items:
-    - name: 使用 AKS 创建 Kubernetes 群集
-      href: terraform-create-k8s-cluster-with-tf-and-aks.md
-    - name: 将 AKS 与作为入口控制器的应用程序网关配合使用来创建 Kubernetes 群集
-      href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
-  - name: 基础结构
-    items:
-    - name: 创建启用了 MSI 的 Terraform VM
-      href: terraform-vm-msi.md
-    - name: 使用 Terraform 模块创建 VM 群集
-      href: terraform-create-vm-cluster-module.md
-    - name: 使用 Terraform 和 HCL 创建 VM 群集
-      href: terraform-create-vm-cluster-with-infrastructure.md
-    - name: 为 VM 规模集预配基础结构
-      href: terraform-create-vm-scaleset-network-disks-hcl.md
-    - name: 从 Packer 自定义映像预配 VM 规模集
-      href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
-  - name: 网络
-    items:
-    - name: 中心和辐射拓扑
+    - name: 应用服务
       items:
-      - name: 1. 创建中心和辐射拓扑
-        href: terraform-hub-spoke-introduction.md
-      - name: 2. 创建本地虚拟网络
-        href: terraform-hub-spoke-on-prem.md
-      - name: 3. 创建中心虚拟网络
-        href: terraform-hub-spoke-hub-network.md
-      - name: 4. 创建中心虚拟网络设备
-        href: terraform-hub-spoke-hub-nva.md
-      - name: 5. 创建辐射网络
-        href: terraform-hub-spoke-spoke-network.md
-      - name: 6. 验证网络拓扑连接
-        href: terraform-hub-spoke-validation.md
-  - name: 工具
-    items:
-    - name: 安装 Terraform Visual Studio Code 扩展
-      href: terraform-vscode-extension.md
-    - name: 使用 Yeoman 创建 Terraform 基模板
-      href: terraform-vscode-module-generator.md
-    - name: 使用 Terratest 测试 Terraform 模块
-      href: terratest-in-terraform-modules.md
+        - name: Terraform 和 Azure 提供程序部署槽位
+          href: terraform-slot-walkthru.md
+    - name: 容器
+      items:
+        - name: 使用 AKS 创建 Kubernetes 群集
+          href: terraform-create-k8s-cluster-with-tf-and-aks.md
+        - name: 将 AKS 与作为入口控制器的应用程序网关配合使用来创建 Kubernetes 群集
+          href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
+    - name: 基础结构
+      items:
+        - name: 创建启用了 MSI 的 Terraform VM
+          href: terraform-vm-msi.md
+        - name: 使用 Terraform 模块创建 VM 群集
+          href: terraform-create-vm-cluster-module.md
+        - name: 使用 Terraform 和 HCL 创建 VM 群集
+          href: terraform-create-vm-cluster-with-infrastructure.md
+        - name: 为 VM 规模集预配基础结构
+          href: terraform-create-vm-scaleset-network-disks-hcl.md
+        - name: 从 Packer 自定义映像预配 VM 规模集
+          href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+    - name: 网络
+      items:
+        - name: 中心和辐射拓扑
+          items:
+            - name: 1. 创建中心和辐射拓扑
+              href: terraform-hub-spoke-introduction.md
+            - name: 2. 创建本地虚拟网络
+              href: terraform-hub-spoke-on-prem.md
+            - name: 3. 创建中心虚拟网络
+              href: terraform-hub-spoke-hub-network.md
+            - name: 4. 创建中心虚拟网络设备
+              href: terraform-hub-spoke-hub-nva.md
+            - name: 5. 创建辐射网络
+              href: terraform-hub-spoke-spoke-network.md
+            - name: 6. 验证网络拓扑连接
+              href: terraform-hub-spoke-validation.md
+    - name: 工具
+      items:
+        - name: 安装 Terraform Visual Studio Code 扩展
+          href: terraform-vscode-extension.md
+        - name: 使用 Yeoman 创建 Terraform 基模板
+          href: terraform-vscode-module-generator.md
+        - name: 使用 Terratest 测试 Terraform 模块
+          href: terratest-in-terraform-modules.md
 - name: 示例
   items:
-  - name: 配置模板
-    href: https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples
-- name: 概念
-  items:
-  - name: Azure Cloud Shell 集成
-    href: terraform-cloud-shell.md
+    - name: 配置模板
+      href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
 - name: 操作指南
   items:
-  - name: 在 Azure 存储中存储状态
-    href: terraform-backend.md
+    - name: 在 Azure 存储中存储状态
+      href: terraform-backend.md
 - name: 引用
   items:
-  - name: Azure 模块注册表
-    href: https://registry.terraform.io/modules/Azure
-  - name: Terraform 参考
-    href: https://aka.ms/terraform
+    - name: Azure 模块注册表
+      href: 'https://registry.terraform.io/modules/Azure'
+    - name: Terraform Azure 提供程序
+      href: 'https://aka.ms/terraform'
 - name: 资源
   items:
-  - name: Azure 与 Terraform
-    href: https://azure.microsoft.com/solutions/devops/terraform/
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: d83e1cbd4f3cd5d8a0a9ec167e197b53f20e0630
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999445"
+    - name: Azure 与 Terraform
+      href: 'https://azure.microsoft.com/solutions/devops/terraform/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'

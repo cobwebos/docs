@@ -1,5 +1,5 @@
 ---
-title: 预生成意向
+title: 为语言理解预生成意向
 titleSuffix: Azure Cognitive Services
 description: LUIS 提供了一组预生成意向，用以快速添加常用的对话式用户方案。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/24/2019
+ms.topic: conceptual
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8e11b6d5a9c9df10e789c8e0be3a90d94ecf3d23
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 4b14d9f39ef5bb0806cfe0720dbaa2fe95b32421
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874388"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932613"
 ---
 # <a name="add-prebuilt-intents-for-common-intents"></a>为常用意向添加预生成意向 
 

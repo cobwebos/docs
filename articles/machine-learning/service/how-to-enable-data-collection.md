@@ -1,6 +1,6 @@
 ---
 title: 在生产模型上收集数据
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure Blob 存储中收集 Azure 机器学习输入模型数据。
 services: machine-learning
 ms.service: machine-learning
@@ -9,21 +9,24 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 12/3/2018
+ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: a127a211157edb0b26d0495bc2ed05dd79323111
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c747f25b92d9f165bfeb4468a0e263f102976f9
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842628"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350572"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
 
-在本文中，你可以了解如何将已部署到 Azure Kubernetes 群集 (AKS) 的 Azure 机器学习服务中的输入模型数据收集到 Azure Blob 存储中。 
+>[!IMPORTANT]
+> 此 SDK 即将停用，并将用 Application Insights 简化[数据监视](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)。 
+
+在本文中，可以了解如何从已部署到 azure Kubernetes 群集（AKS）的 Azure 机器学习收集输入模型数据到 Azure Blob 存储。 
 
 启用后，收集的这些数据可帮助你：
-* 监视生产数据进入模型时的数据偏移
+* [监视数据偏离](how-to-monitor-data-drift.md), 因为生产数据进入你的模型
 
 * 更好地决定何时重新训练或优化模型
 
@@ -48,11 +51,11 @@ Blob 中输出数据的路径遵循以下语法：
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+- 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
-- 一个 Azure 机器学习服务工作区、一个包含脚本的本地目录，以及所安装的用于 Python 的 Azure 机器学习 SDK。 了解如何通过[如何配置开发环境](how-to-configure-environment.md)一文满足这些先决条件。
+- 已安装 Azure 机器学习工作区、一个包含脚本的本地目录以及用于 Python 的 Azure 机器学习 SDK。 了解如何使用[如何配置开发环境](how-to-configure-environment.md)文档来获得这些先决条件。
 
 - 要部署到 Azure Kubernetes 服务 (AKS) 的经过训练的机器学习模型。 如果没有模型，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程。
 
@@ -61,7 +64,7 @@ Blob 中输出数据的路径遵循以下语法：
 - [设置环境](how-to-configure-environment.md)并安装[监视 SDK](https://aka.ms/aml-monitoring-sdk)。
 
 ## <a name="enable-data-collection"></a>启用数据收集
-无论通过 Azure 机器学习服务或其他工具部署的模型如何，都可以启用数据收集。 
+无论通过 Azure 机器学习或其他工具部署的模型是什么，都可以启用数据收集。 
 
 若要启用数据收集，需要执行以下操作：
 
@@ -109,7 +112,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 如果已在环境文件和评分文件中安装了带有依赖项的服务，请通过以下方式启用数据收集：
 
-1. 转到 [Azure 门户](https://portal.azure.com)。
+1. 请参阅[Azure 门户](https://portal.azure.com)。
 
 1. 打开你的工作区。
 
@@ -144,6 +147,8 @@ Blob 中输出数据的路径遵循以下语法：
 
   1. 选择“更新”以应用更改。
 
+  你还可以在[工作区登陆页面（预览版）](https://ml.azure.com)中访问这些设置。
+
 + 选项 2 - 使用 Python 禁用数据收集：
 
   ```python 
@@ -172,7 +177,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 ### <a name="analyzing-model-data-through-power-bi"></a>通过 Power BI 分析模型数据
 
-1. 下载并打开 [PowerBi Desktop](https://www.powerbi.com)
+1. 下载并打开[Power BI Desktop](https://www.powerbi.com)
 
 1. 选择“获取数据”，然后单击“[Azure Blob 存储](https://docs.microsoft.com/power-bi/desktop-data-sources)”。
 

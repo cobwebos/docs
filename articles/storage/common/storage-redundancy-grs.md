@@ -2,18 +2,19 @@
 title: Azure 存储中用于实现跨区域持续性的异地冗余存储 (GRS) | Microsoft Docs
 description: 异地冗余存储 (GRS) 在相距数百英里的两个区域之间复制数据。 GRS 针对数据中心内的硬件故障以及区域性灾难提供保护。
 services: storage
-author: tolandmike
+author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/20/2018
-ms.author: jeking
+ms.author: tamram
+ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2dc409743ce94ecb73e351b839a5a2fb09eadab2
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: 16a5f214495025d16d10ee01a7b2a40b78f7a17a
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512095"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670810"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>异地冗余存储 (GRS)：适用于 Azure 存储的跨区域复制
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
@@ -44,7 +45,7 @@ ms.locfileid: "55512095"
 ## <a name="paired-regions"></a>配对区域 
 创建存储帐户时，可以为帐户选择主要区域。 配对的次要区域是根据主要区域确定的且无法更改。 有关 Azure 支持区域的最新信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../../best-practices-availability-paired-regions.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 - [Azure 存储复制](storage-redundancy.md)
 - [本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](storage-redundancy-lrs.md)
 - [区域冗余存储 (ZRS)：高度可用的 Azure 存储应用程序](storage-redundancy-zrs.md)

@@ -3,8 +3,8 @@ title: Azure 网络观察程序中的数据包捕获简介 | Microsoft 文档
 description: 此页概述了网络观察程序数据包捕获功能
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 152cc8fb61aa6115c7b5863e4d798db9e7aa5b7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.author: kumud
+ms.openlocfilehash: 8ef9da86377ac6f1b012cb0ebfd9d6866bc0c620
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23036832"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061596"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Azure 网络观察程序中的可变数据包捕获简介
 
@@ -34,7 +34,7 @@ ms.locfileid: "23036832"
 
 **捕获配置**
 
-|属性|说明|
+|属性|描述|
 |---|---|
 |**每个数据包的最大字节数（字节）** | 从每个数据包捕获的字节数，如果留空，将捕获所有字节。 从每个数据包捕获的字节数，如果留空，将捕获所有字节。 如果仅需要 IPv4 标头 - 请在此处指示 34 |
 |**每个会话的最大字节数（字节）** | 达到会话结束值后，该会话中捕获的字节总数。|
@@ -42,9 +42,9 @@ ms.locfileid: "23036832"
 
 **筛选（可选）**
 
-|属性|说明|
+|属性|描述|
 |---|---|
-|**协议** | 要筛选的数据包捕获协议。 可用值为 TCP、UDP 和 All。|
+|协议  | 要筛选的数据包捕获协议。 可用值为 TCP、UDP 和 All。|
 |**本地 IP 地址** | 此值将数据包捕获筛选为本地 IP 地址与此筛选器值匹配的数据包。|
 |**本地端口** | 此值将数据包捕获筛选为本地端口与此筛选器值匹配的数据包。|
 |**远程 IP 地址** | 此值将数据包捕获筛选为远程 IP 与此筛选器值匹配的数据包。|

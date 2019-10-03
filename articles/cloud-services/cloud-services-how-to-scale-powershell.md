@@ -2,24 +2,17 @@
 title: 在 Windows PowerShell 中缩放 Azure 云服务 | Microsoft Docs
 description: （经典）了解如何使用 PowerShell 在 Azure 中缩放 web 角色或辅助角色。
 services: cloud-services
-documentationcenter: ''
 author: mmccrory
-manager: timlt
-editor: ''
-ms.assetid: ee37dd8c-6714-4c61-adb8-03d6bbf76c9a
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
-ms.author: mmccrory
-ms.openlocfilehash: a7ae8ff202d403dff19b8c9a6a09492235db27ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.author: memccror
+ms.openlocfilehash: a1945aad12eb34bad1b593878779e1ceb0dae686
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22998002"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359038"
 ---
 # <a name="how-to-scale-a-cloud-service-in-powershell"></a>如何在 PowerShell 中缩放云服务
 
@@ -59,13 +52,13 @@ Get-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>'
 
 ## <a name="scale-out-the-role-by-adding-more-instances"></a>通过添加更多实例来扩展角色
 
-要扩展角色，请将所需的实例数作为 **Count** 参数传递给 **Set-AzureRole** cmdlet：
+若要扩展角色，请将所需的实例数作为 Count 参数传递给 Set-AzureRole cmdlet：
 
 ```powershell
 Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -Slot <target_slot> -Count <desired_instances>
 ```
 
-当预配并启动新实例时，此 cmdlet 将立即阻止。 在此期间，如果打开一个新的 PowerShell 窗口，然后调用 **Get-AzureRole**（如前面所示），将看到新的目标实例计数。 如果在门户中查看角色状态，应看到新实例正在启动：
+当预配并启动新实例时，此 cmdlet 将立即阻止。 在此期间，如果打开一个新的 PowerShell 窗口，并调用 **Get-AzureRole** （如前面所示），将看到新的目标实例计数。 如果在门户中查看角色状态，应看到新实例正在启动：
 
 ![VM 实例正在门户中启动](./media/cloud-services-how-to-scale-powershell/role-instance-starting.png)
 
@@ -75,7 +68,7 @@ Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -S
 
 ## <a name="scale-in-the-role-by-removing-instances"></a>通过删除实例缩小角色
 
-同样，可通过删除实例缩小角色。 将 **Set-AzureRole** 中的 **Count** 参数设置为缩小操作完成后所需的实例数。
+同样，可通过删除实例缩小角色。 将 Set-AzureRole 中的 Count 参数设置为缩小操作完成后所需的实例数。
 
 ## <a name="next-steps"></a>后续步骤
 

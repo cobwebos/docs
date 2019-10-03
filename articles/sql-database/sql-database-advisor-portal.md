@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: d80581aae56fc9d65d6f24d21f2c582cb74b3f2d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b6bcb2650cd11ed97b6e81fda6aaafe7fca61202
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58863196"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569586"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 
@@ -35,7 +34,7 @@ ms.locfileid: "58863196"
 
 性能建议会显示在类似于下图所示的表中：
 
-![建议](./media/sql-database-advisor-portal/recommendations.png)
+![推荐](./media/sql-database-advisor-portal/recommendations.png)
 
 按其对性能的潜在影响将建议分为以下几个类别：
 
@@ -134,7 +133,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 | 执行 |正在应用建议。 |
 | 正在验证 |已成功应用建议，并且该服务正在衡量优点。 |
 | Success |已成功应用建议并已衡量优点。 |
-| 错误 |在应用建议的过程期间发生了错误。 这可能是暂时性问题，或可能是表的架构更改所致，并且脚本不再有效。 |
+| Error |在应用建议的过程期间发生了错误。 这可能是暂时性问题，或可能是表的架构更改所致，并且脚本不再有效。 |
 | 还原 |已应用建议，但该建议被认为是非性能的且正在被自动还原。 |
 | 已还原 |已还原建议。 |
 
@@ -155,7 +154,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 
 ![监视性能影响](./media/sql-database-advisor-portal/query-insights.png)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 Azure SQL 数据库提供了提高 SQL 数据库性能的建议。 通过提供 T-SQL 脚本，可以获得帮助来优化数据库并最终提升查询性能。
 
 ## <a name="next-steps"></a>后续步骤

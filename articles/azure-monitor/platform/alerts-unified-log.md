@@ -1,19 +1,19 @@
 ---
 title: Azure Monitor 中的日志警报
 description: 当满足指定的分析查询条件时，Azure 警报会触发电子邮件、通知、调用网站 URL (Webhook) 或自动化。
-author: msvijayn
+author: yanivlavi
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 2/20/2019
-ms.author: vinagara
+ms.date: 5/31/2019
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 194fba3296359f5f7d29a37425a938fe08f1332b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f78f7c37fafd7f0b29f76220206b9adfb62f52c9
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452876"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677753"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 
@@ -33,7 +33,7 @@ ms.locfileid: "56452876"
 
 - **日志查询**。  这是每次触发预警规则时都会运行的查询。  此查询返回的记录用于确定是否将触发某个警报。 分析查询可以针对特定的 Log Analytics 工作区或 Application Insights 应用，如果用户有权访问和查询所有资源，则分析查询甚至可以跨[多个 Log Analytics 和 Application Insights 资源](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)。 
     > [!IMPORTANT]
-    > 出于安全原因，日志警报**不**支持使用[函数](../log-query/functions.md)。 另外，[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)仅支持 Application Insights 的日志警报和[使用 scheduledQueryRules API 配置的 Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) 的日志警报。
+    > [跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights)仅支持 Application Insights 的日志警报和[使用 scheduledQueryRules API 配置的 Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) 的日志警报。
 
     某些分析命令和组合不适合在日志警报中使用；有关更详细的视图，请参阅 [Azure Monitor 中的日志警报查询](../../azure-monitor/platform/alerts-log-query.md)。
 
@@ -45,8 +45,8 @@ ms.locfileid: "56452876"
 
 针对 [Azure Monitor 日志](../../azure-monitor/learn/tutorial-viewdata.md)或 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 的日志搜索规则可以分为两种类型。 这些类型中的每一种都在随后的相应部分进行了详细介绍。
 
-- **[结果数](#number-of-results-alert-rules)**。 当日志搜索返回的记录数超出指定数目时，将创建单个警报。
-- **[指标度量值](#metric-measurement-alert-rules)**。  为日志搜索结果中其值超出指定阈值的每个对象创建警报。
+- **[结果数](#number-of-results-alert-rules)** 。 当日志搜索返回的记录数超出指定数目时，将创建单个警报。
+- **[指标度量值](#metric-measurement-alert-rules)** 。  为日志搜索结果中其值超出指定阈值的每个对象创建警报。
 
 警报规则类型之间的差异如下所示。
 
@@ -76,7 +76,7 @@ ms.locfileid: "56452876"
 
 ### <a name="metric-measurement-alert-rules"></a>指标度量警报规则
 
-“指标度量”警报规则为查询中其值超出指定阈值的每个对象创建一个警报。  这些规则具有下述不同于“结果数”警报规则的差异。
+“指标度量”警报规则为查询中其值超出指定阈值和指定触发条件的每个对象创建一个警报。 与“结果数”警报规则不同，当分析结果提供了时序时，“指标度量”警报规则将会运行。 这些规则具有下述不同于“结果数”警报规则的差异。
 
 - **聚合函数**：确定要执行的计算以及可能要聚合的数字字段。  例如，**count()** 返回查询中的记录数，**avg(CounterValue)** 返回 CounterValue 字段在特定时间间隔内的平均值。 查询中的聚合函数必须名为：AggregatedValue 并提供数值。 
 
@@ -102,13 +102,13 @@ ms.locfileid: "56452876"
 - **时间段：** 30 分钟<br>
 - **警报频率：** 五分钟<br>
 - **警报逻辑 - 条件和阈值：** 大于 90<br>
-- **组字段(聚合)：** Computer
+- **组字段(聚合)：** 计算机
 - **触发警报的条件：** 总违规次数大于 2 次<br>
 
 查询将按 5 分钟的时间间隔为每台计算机创建一个平均值。  对于在前 30 分钟 内收集的数据，此查询将每隔 5 分钟运行一次。 由于所选“组字段(聚合)”为纵栏式“计算机”，因此针对“计算机”的各种值对 AggregatedValue 进行了拆分，而每个计算机的平均处理器利用率在 5 分钟的时间段内是确定的。  例如，三台计算机的查询结果示例将如下所示。
 
 
-|TimeGenerated [UTC] |Computer  |AggregatedValue  |
+|TimeGenerated [UTC] |计算机  |AggregatedValue  |
 |---------|---------|---------|
 |20xx-xx-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
 |20xx-xx-xxT01:00:00Z     |   srv02.contoso.com      |    91     |
@@ -127,16 +127,16 @@ ms.locfileid: "56452876"
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>日志搜索警报规则 - 触发和状态
 
-日志搜索警报规则在特定逻辑上运行，该逻辑是由用户根据配置和所使用的自定义分析查询断言的。 警报规则触发的具体条件或原因的逻辑封装在分析查询中，而分析查询在每个日志警报规则中可能有所不同。 当日志搜索警报规则的阈值条件满足或超过时，Azure 警报包含的有关日志结果中的特定潜在根本原因的信息很少。 因此，日志警报称为无状态警报，每次日志搜索结果足以超出日志警报（其条件类型为“结果数”或“指标度量”）中指定的阈值时就会触发。 只要所提供的自定义分析查询的结果符合警报条件，且警报未得到解决，日志警报规则就会持续保持触发状态。 由于监视失败的具体根本原因的逻辑在用户提供的分析查询中处于屏蔽状态，因此 Azure Alerts 无法确切地推断日志搜索结果不满足阈值是否就表明问题已解决。
+日志搜索警报规则在特定逻辑上运行，该逻辑是由用户根据配置和所使用的自定义分析查询断言的。 由于监视逻辑（包括警报规则的具体触发条件或原因）封装在分析查询中，每个日志警报规则可能有所不同。 当达到或超过日志搜索警报规则的阈值条件时，Azure 警报包含的有关具体根本原因（或）情景的信息很少。 因此，日志警报被称为无状态警报。 只要所提供的自定义分析查询的结果符合警报条件，日志警报规则就会保持触发状态。 如果每个警报未得到解决，监视失败的确切根本原因的逻辑将屏蔽在用户提供的分析查询内部。 目前，Azure Monitor 警报不提供任何机制来最终推断所要解决的根本原因。
 
-现在，假设我们有一条名为 *Contoso-Log-Alert* 的日志警报规则，该规则符合[针对“结果数”类型的日志警报提供的示例](#example-of-number-of-records-type-log-alert)中的配置。 
-- 在下午 1:05 的时候，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果生成 0 个记录，这低于阈值，因此不触发警报。 
-- 下一个迭代发生在下午 1:10，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果提供了 5 个记录，这超出了阈值，因此在触发关联的[操作组](../../azure-monitor/platform/action-groups.md)后很快又触发了警报。 
-- 在下午 1:15 时，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果提供了 2 个记录，这超出了阈值，因此在触发关联的[操作组](../../azure-monitor/platform/action-groups.md)后很快又触发了警报。
-- 现在，下一个迭代发生在下午 1:20 的时候，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果再次提供 0 个记录，这低于阈值，因此不触发警报。
+让我们通过一个实际示例来了解上述原理。 假设我们有一条名为 *Contoso-Log-Alert* 的日志警报规则，该规则符合[针对“结果数”类型的日志警报提供的示例](#example-of-number-of-records-type-log-alert)中的配置 - 其中，自定义日志查询旨在查找日志中的 500 结果代码。
 
-但在上面列出的示例中，在下午 1:15 时，Azure 警报无法确定在 1:10 看到的根本问题是否仍然存在，以及是否存在全新的故障，因为用户提供的查询可能考虑到了以前的记录 - Azure 警报可以确定这一点。 因此，为谨慎起见，在下午 1:15 执行 Contoso-Log-Alert 时，将再次触发已配置的[操作组](../../azure-monitor/platform/action-groups.md)。 现在，在下午 1:20 的时候，已经看不到记录 - Azure 警报无法确定记录问题得到解决的原因，因此 Contoso-Log-Alert 的状态不会在 Azure 警报仪表板中更改为“已解决”，也不会发送通知，指出警报已消除。
+- 在下午 1:05，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果生成了 0 条包含结果代码 500 的记录。 由于 0 低于阈值，因此不会激发警报。
+- 下一次迭代发生在下午 1:10，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果提供了 5 条包含结果代码 500 的记录。 由于 5 超出了阈值，因此激发了警报，同时触发了关联的操作。
+- 在下午 1:15，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果提供了 2 条包含 500 结果代码的记录。 由于 2 超出了阈值，因此激发了警报，同时触发了关联的操作。
+- 现在，下一次迭代发生在下午 1:20，Azure 警报执行了 Contoso-Log-Alert，日志搜索结果再次提供了 0 条包含 500 结果代码的记录。 由于 0 低于阈值，因此不会激发警报。
 
+但在上面列出的案例中，在下午 1:15，Azure 警报无法确定在 1:10 出现的根本问题是否仍然存在，以及是否存在新的错误。 由于用户提供的查询可能考虑到了以前的记录 - Azure 警报可以确定这一点。 由于警报逻辑封装在警报查询中 - 因此，在下午 1:15 出现的 2 条包含 500 结果代码的记录不一定已在下午 1:10 出现。 因此，为谨慎起见，在下午 1:15 执行 Contoso-Log-Alert 时，再次触发了已配置的操作。 在下午 1:20，当出现 0 条包含 500 结果代码的记录时，Azure 警报无法确定在下午 1:10 和 1:15 出现 500 结果代码的原因现在是否已得到解决，而 Azure Monitor 警报可以自信地推断，500 错误问题不会再次出于相同的原因发生。 因此 Contoso-Log-Alert 的状态不会在 Azure 警报仪表板中更改为“已解决”，并且/或者不会发出通知来指出警报已解决。 了解分析查询中嵌入逻辑的确切条件或原因的用户可以根据需要[将警报标记为已关闭](alerts-managing-alert-states.md)。
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>日志警报的定价和计费
 
@@ -154,6 +154,8 @@ ms.locfileid: "56452876"
 
 - 用户可以[在 Log Analytics 工作区上切换警报规则的 API 首选项](../../azure-monitor/platform/alerts-log-api-switch.md)，并且可以切换到 Azure 资源管理器兼容的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 而不丢失其警报规则或监视功能。 因此，这不需要创建用于计费的隐藏伪警报规则。
 - 或者，如果用户不希望切换 API 首选项，则用户将需要使用[旧 Log Analytics API](api-alerts.md) **删除**原始计划和警报操作，或者[在 Azure 门户中删除原始日志警报规则](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)
+
+此外，对于使用[旧版 Log Analytics API](api-alerts.md) 为警报规则计费创建的隐藏 scheduleQueryRules 资源，任何修改操作（例如 PUT）将会失败。 作为 `microsoft.insights/scheduledqueryrules` 类型，伪规则可以满足使用[旧版 Log Analytics API](api-alerts.md) 创建的警报规则的计费目的。 应该使用[旧版 Log Analytics API](api-alerts.md) 进行任何警报规则修改，（或者）用户可以[切换警报规则的 API 首选项](../../azure-monitor/platform/alerts-log-api-switch.md)，以改用 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,71 +11,125 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: conceptual
-ms.date: 09/15/2018
+ms.topic: tutorial
+ms.date: 05/14/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e1ea3d822c8b032617b7f202f1c176aeb966210
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: f31e014cf242675577bedd29a3a79332ede32bf5
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436772"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304239"
 ---
-# <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Azure 服务总线到 Azure 事件网格集成示例
-
-本文介绍如何设置 Azure 函数和逻辑应用，以便根据从 Azure 事件网格接收事件的情况来接收消息。 可以执行以下操作：
+# <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应
+本教程介绍如何使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应。 你将执行以下操作：
  
-* 创建一个简单的测试 Azure 函数，以便调试并查看从事件网格发出的初始事件流。 执行此步骤，不管是否执行其他步骤。
-* 创建一个根据事件网格事件接收和处理 Azure 服务总线消息的 Azure 函数。
-* 利用 Azure 应用服务的逻辑应用功能。
+- 创建一个测试 Azure 函数，用于调试和查看从事件网格发出的初始事件流。
+- 创建一个根据事件网格事件接收和处理 Azure 服务总线消息的 Azure 函数。
+- 创建一个逻辑应用，用于对事件网格事件做出响应
 
-创建的示例假定服务总线主题有两个订阅。 示例还假定，创建事件网格订阅的目的是只为一个服务总线订阅发送事件。 
+创建服务总线、事件网格、Azure Functions 和逻辑应用项目后，将执行以下操作： 
 
-在示例中，你将消息发送到服务总线主题，然后验证是否已为此服务总线订阅生成事件。 函数或逻辑应用先从服务总线订阅接收消息，然后将其完成。
+1. 向服务总线主题发送消息。 
+2. 验证主题的订阅是否收到了这些消息
+3. 验证订阅事件的函数或逻辑应用是否收到了事件。 
 
-## <a name="prerequisites"></a>必备组件
-开始之前，请确保已完成后续两个部分中的步骤。
+## <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
+请遵照以下教程中的说明：[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
 
-### <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
+- 创建一个**高级**服务总线命名空间。 
+- 获取连接字符串。 
+- 创建服务总线主题。
+- 创建主题的两个订阅。 
 
-创建一个服务总线高级命名空间，然后创建一个服务总线主题，其中包含两个订阅。
-
-### <a name="send-a-message-to-the-service-bus-topic"></a>向服务总线主题发送消息
-
-可以使用任何方法向服务总线主题发送消息。 此过程末尾的示例代码假定你使用 Visual Studio 2017。
+## <a name="prepare-a-sample-application-to-send-messages"></a>准备用于发送消息的示例应用程序
+可以使用任何方法向服务总线主题发送消息。 此过程末尾的示例代码假设使用的是 Visual Studio 2017。
 
 1. 克隆 [GitHub azure-service-bus 存储库](https://github.com/Azure/azure-service-bus/)。
-
-1. 在 Visual Studio 中转到 *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* 文件夹，然后打开 *SBEventGridIntegration.sln* 文件。
-
-1. 转到 **MessageSender** 项目，然后选择 **Program.cs**。
-
-   ![8][]
-
-1. 填充主题名称和连接字符串，然后执行以下控制台应用程序代码：
+2. 在 Visual Studio 中转到 *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* 文件夹，然后打开 *SBEventGridIntegration.sln* 文件。
+3. 转到 **MessageSender** 项目，然后选择 **Program.cs**。
+4. 填写服务总线主题名称，以及在上一步骤中获取的连接字符串：
 
     ```CSharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     const string TopicName = "YOUR TOPIC NAME";
     ```
+5. 生成并运行程序，以将测试消息发送到服务总线主题。 
 
-## <a name="set-up-a-test-function"></a>设置测试函数
+## <a name="set-up-a-test-function-on-azure"></a>在 Azure 上设置测试函数 
+在处理整个方案之前，请至少设置一个小型测试函数，用于调试和观察流动的事件。 遵照[在 Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)一文中的说明执行以下任务： 
 
-在完成整个方案之前，请设置至少一个小型测试函数，以便调试和观察流动的具体事件。
+1. 创建函数应用。
+2. 创建 HTTP 触发的函数。 
 
-1. 在 Azure 门户中创建新的 Azure Functions 应用程序。 若要了解 Azure Functions 的基础知识，请参阅 [Azure Functions 文档](https://docs.microsoft.com/azure/azure-functions/)。
+然后执行以下步骤： 
 
-1. 在新创建的函数中，选择加号 (+) 即可添加 HTTP 触发器函数：
 
-    ![2][]
+# <a name="azure-functions-v2tabv2"></a>[Azure Functions V2](#tab/v2)
+
+1. 在树视图中展开“函数”，并选择你的函数。  将函数代码替换为以下代码： 
+
+    ```CSharp
+    #r "Newtonsoft.Json"
     
-    此时会打开“预制函数快速入门”窗口。
+    using System.Net;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Primitives;
+    using Newtonsoft.Json;
+    
+    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+        var content = req.Body;
+        string jsonContent = await new StreamReader(content).ReadToEndAsync();
+        log.LogInformation($"Received Event with payload: {jsonContent}");
+    
+        IEnumerable<string> headerValues;
+        headerValues = req.Headers.GetCommaSeparatedValues("Aeg-Event-Type");
+    
+        if (headerValues.Count() != 0)
+        {
+            var validationHeaderValue = headerValues.FirstOrDefault();
+            if(validationHeaderValue == "SubscriptionValidation")
+            {
+                var events = JsonConvert.DeserializeObject<GridEvent[]>(jsonContent);
+                var code = events[0].Data["validationCode"];
+                log.LogInformation("Validation code: {code}");
+                return (ActionResult) new OkObjectResult(new { validationResponse = code });
+            }
+        }
+    
+        return jsonContent == null
+            ? new BadRequestObjectResult("Please pass a name on the query string or in the request body")
+            : (ActionResult)new OkObjectResult($"Hello, {jsonContent}");
+    }
+    
+    public class GridEvent
+    {
+        public string Id { get; set; }
+        public string EventType { get; set; }
+        public string Subject { get; set; }
+        public DateTime EventTime { get; set; }
+        public Dictionary<string, string> Data { get; set; }
+        public string Topic { get; set; }
+    }
+    
+    ```
+2. 选择“保存并运行”  。
 
-    ![3][]
+    ![函数应用输出](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+3. 选择“获取函数 URL”并记下 URL。  
 
-1. 依次选择“Webhook + API”按钮、“CSharp”、“创建此函数”。
- 
-1. 将以下代码粘贴到函数中：
+    ![获取函数 URL](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+
+# <a name="azure-functions-v1tabv1"></a>[Azure Functions V1](#tab/v1)
+
+1. 将函数配置为使用 **V1** 版本： 
+    1. 在树视图中选择你的函数应用，然后选择“函数应用设置”。  
+
+        ![函数应用设置]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
+    2. 为“运行时版本”选择“~1”。   
+2. 在树视图中展开“函数”，并选择你的函数。  将函数代码替换为以下代码： 
 
     ```CSharp
     #r "Newtonsoft.Json"
@@ -92,18 +146,18 @@ ms.locfileid: "58436772"
         string jsonContent = await content.ReadAsStringAsync(); 
         log.Info($"Received Event with payload: {jsonContent}");
     
-    IEnumerable<string> headerValues;
-    if (req.Headers.TryGetValues("Aeg-Event-Type", out headerValues))
-    {
-    var validationHeaderValue = headerValues.FirstOrDefault();
-    if(validationHeaderValue == "SubscriptionValidation")
-    {
-    var events = JsonConvert.DeserializeObject<GridEvent[]>(jsonContent);
-         var code = events[0].Data["validationCode"];
-         return req.CreateResponse(HttpStatusCode.OK,
-         new { validationResponse = code });
-    }
-    }
+        IEnumerable<string> headerValues;
+        if (req.Headers.TryGetValues("Aeg-Event-Type", out headerValues))
+        {
+            var validationHeaderValue = headerValues.FirstOrDefault();
+            if(validationHeaderValue == "SubscriptionValidation")
+            {
+            var events = JsonConvert.DeserializeObject<GridEvent[]>(jsonContent);
+                 var code = events[0].Data["validationCode"];
+                 return req.CreateResponse(HttpStatusCode.OK,
+                 new { validationResponse = code });
+            }
+        }
     
         return jsonContent == null
         ? req.CreateResponse(HttpStatusCode.BadRequest, "Pass a name on the query string or in the request body")
@@ -120,102 +174,143 @@ ms.locfileid: "58436772"
         public string Topic { get; set; }
     }
     ```
+4. 选择“保存并运行”  。
 
-1. 选择“保存并运行”。
+    ![函数应用输出](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+4. 选择“获取函数 URL”并记下 URL。  
+
+    ![获取函数 URL](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+
+---
 
 ## <a name="connect-the-function-and-namespace-via-event-grid"></a>通过事件网格连接函数和命名空间
-
-此部分将函数和服务总线命名空间绑定在一起。 就此示例来说，请使用 Azure 门户。 若要了解如何使用 PowerShell 或 Azure CLI 来完成此过程，请参阅 [Azure 服务总线到 Azure 事件网格集成概述](service-bus-to-event-grid-integration-concept.md)。
+在本部分，你要使用 Azure 门户将函数和服务总线命名空间绑定在一起。 
 
 若要创建 Azure 事件网格订阅，请执行以下操作：
-1. 在 Azure 门户中转到自己的命名空间，然后在左窗格中选择“事件网格”。  
-    此时会打开命名空间窗口，两个事件网格订阅显示在右窗格中。
 
-    ![20][]
+1. 在 Azure 门户中转到你的命名空间，然后在左窗格中选择“事件”。  此时会打开命名空间窗口，两个事件网格订阅显示在右窗格中。 
+    
+    ![服务总线 - 事件页](./media/service-bus-to-event-grid-integration-example/service-bus-events-page.png)
+2. 在工具栏上选择“+ 事件订阅”。  
+3. 在“创建事件订阅”页中执行以下步骤： 
+    1. 输入订阅的**名称**。 
+    2. 为“终结点类型”选择“Web Hook”。   
 
-1. 选择“事件订阅”。  
-    此时会打开“事件订阅”窗口。 下图显示了一个窗体，用于订阅 Azure 函数或 Webhook 而不需应用筛选器。
+        ![服务总线 - 事件网格订阅](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
+    3. 选择“选择终结点”，粘贴函数 URL，然后选择“确认选择”。   
 
-    ![21][]
+        ![函数 - 选择终结点](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
+    4. 切换到“筛选器”选项卡，输入前面创建的**第一个**服务总线主题订阅的名称，然后选择“创建”按钮。   
 
-1. 完成如图所示的窗体，然后记住在“后缀筛选器”框中输入相关筛选器。
+        ![事件订阅筛选器](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
+4. 确认在列表中看到了该事件订阅。
 
-1. 选择“创建”。
+    ![列表中的事件订阅](./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png)
 
-1. 如“先决条件”部分所述，向服务总线主题发送一条消息，然后通过 Azure Functions 的“监视”功能验证事件是否正在流动。
+## <a name="send-messages-to-the-service-bus-topic"></a>向服务总线主题发送消息
+1. 运行向服务总线主题发送消息的 .NET C# 应用程序。 
 
-下一步是将函数和服务总线命名空间绑定在一起。 就此示例来说，请使用 Azure 门户。 若要了解如何使用 PowerShell 或 Azure CLI 来执行此步骤，请参阅 [Azure 服务总线到 Azure 事件网格集成概述](service-bus-to-event-grid-integration-concept.md)。
+    ![控制台应用输出](./media/service-bus-to-event-grid-integration-example/console-app-output.png)
+1. 在 Azure 函数应用的页面上，依次展开“函数”、你的**函数**，然后选择“监视”。   
 
-![9][]
+    ![监视函数](./media/service-bus-to-event-grid-integration-example/function-monitor.png)
 
-### <a name="receive-messages-by-using-azure-functions"></a>使用 Azure Functions 接收消息
-
+## <a name="receive-messages-by-using-azure-functions"></a>使用 Azure Functions 接收消息
 上一部分观察了一个简单的测试和调试方案，确保了事件在流动。 
 
 此部分将介绍如何在收到事件后接收和处理消息。
 
-之所以按以下示例中的方式添加 Azure 函数，是因为 Azure Functions 中的服务总线函数本来就不支持新的事件网格集成。
-
-1. 在先决条件中已打开的同一 Visual Studio 解决方案中，选择 **ReceiveMessagesOnEvent.cs**。 
-
-    ![10][]
-
-1. 在以下代码中输入连接字符串：
+### <a name="publish-a-function-from-visual-studio"></a>从 Visual Studio 发布函数
+1. 在打开的同一个 Visual Studio 解决方案 (**SBEventGridIntegration**) 中，选择 **SBEventGridIntegration** 项目中的 **ReceiveMessagesOnEvent.cs**。 
+2. 在以下代码中输入服务总线连接字符串：
 
     ```Csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     ```
+3. 下载函数的**发布配置文件**：
+    1. 选择你的函数应用。 
+    2. 选择“概述”选项卡（如果尚未选择）。  
+    3. 在工具栏上选择“获取发布配置文件”。  
 
-1. 在 Azure 门户中下载 Azure 函数的发布配置文件，该函数是在“设置测试函数”部分创建的。
+        ![获取函数的发布配置文件](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
+    4. 将文件保存到项目的文件夹中。 
+4. 在 Visual Studio 中右键单击“SBEventGridIntegration”，然后选择“发布”。   
+5. 在“发布”页上选择“启动”。   
+6. 在“选取发布目标”页上执行以下步骤，并选择“导入配置文件”。   
 
-    ![11][]
+    ![Visual Studio -“导入配置文件”按钮](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
+7. 选择前面下载的**发布配置文件**。 
+8. 在“发布”页上选择“发布”。   
 
-1. 在 Visual Studio 中右键单击“SBEventGridIntegration”，然后选择“发布”。 
+    ![Visual Studio - 发布](./media/service-bus-to-event-grid-integration-example/select-publish.png)
+9. 确认看到了新的 Azure 函数 **ReceiveMessagesOnEvent**。 根据需要刷新页面。 
 
-1. 在以前下载的发布配置文件所对应的“发布”窗格中，选择“导入配置文件”，然后选择“发布”。
+    ![确认已创建新函数](./media/service-bus-to-event-grid-integration-example/function-receive-messages.png)
+10. 获取并记下新函数的 URL。 
 
-    ![12][]
+### <a name="event-grid-subscription"></a>事件网格订阅
 
-1. 发布新的 Azure 函数以后，请创建新的 Azure 事件网格订阅，使之指向新的 Azure 函数。  
-    在“结尾为”框中，确保应用正确的筛选器，该筛选器应该是服务总线订阅名称。
+1. 删除现有的事件网格订阅：
+    1. 在“服务总线命名空间”页上，选择左侧菜单中的“事件”。   
+    2. 选择现有的事件订阅。 
+    3. 在“事件订阅”页上选择“删除”。  
+2. 遵照[通过事件网格连接函数和命名空间](#connect-the-function-and-namespace-via-event-grid)部分的说明，使用新函数 URL 创建事件网格订阅。
+3. 遵照[向服务总线主题发送消息](#send-messages-to-the-service-bus-topic)部分的说明，向主题发送消息并监视函数。 
 
-1. 向以前创建的 Azure 服务总线主题发送一条消息，然后在 Azure 门户中监视 Azure Functions 日志，确保事件正在流动且消息正在进行接收。
+## <a name="receive-messages-by-using-logic-apps"></a>使用逻辑应用接收消息
+执行以下步骤，将逻辑应用与 Azure 服务总线和 Azure 事件网格连接到一起：
 
-    ![12-1][]
+1. 在 Azure 门户中创建逻辑应用。
+    1. 依次选择“+ 创建资源”、“集成”、“逻辑应用”。    
+    2. 在“逻辑应用 - 创建”页上，输入逻辑应用的**名称**。 
+    3. 选择 **Azure 订阅**。 
+    4. 为“资源组”选择“使用现有项”，然后选择以前创建的、用于其他资源（例如 Azure 函数、服务总线命名空间）的资源组。   
+    5. 选择逻辑应用的**位置**。 
+    6. 选择“创建”以创建逻辑应用。  
+2. 在“逻辑应用设计器”页上，选择“模板”下的“空白逻辑应用”。    
+3. 在设计器中执行以下步骤：
+    1. 搜索“事件网格”。  
+    2. 选择“当资源事件发生时(预览) - Azure 事件网格”。  
 
-### <a name="receive-messages-by-using-logic-apps"></a>使用逻辑应用接收消息
+        ![逻辑应用设计器 - 选择事件网格触发器](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
+4. 选择“登录”，输入 Azure 凭据，然后选择“允许访问”。   
+5. 在“当资源事件发生时”页上执行以下步骤： 
+    1. 选择 Azure 订阅。 
+    2. 对于“资源类型”，请选择“Microsoft.ServiceBus.Namespaces”。   
+    3. 对于“资源名称”，请选择你的服务总线命名空间。  
+    4. 选择“添加新参数”，然后选择“后缀筛选器”。   
+    5. 对于“后缀筛选器”，请输入第二个服务总线主题订阅的名称。  
+        ![逻辑应用设计器 - 配置事件](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
+6. 在设计器中选择“+ 新建步骤”，然后执行以下步骤： 
+    1. 搜索“服务总线”。 
+    2. 在列表中选择“服务总线”。  
+    3. 在“操作”列表中选择“获取消息”。   
+    4. 选择“从主题订阅中获取消息(扫视锁定)”。  
 
-通过执行以下操作，将逻辑应用与 Azure 服务总线及 Azure 事件网格连接到一起：
+        ![逻辑应用设计器 - 获取消息操作](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
+    5. 输入**连接的名称**。 例如：**从主题订阅中获取消息**，并选择服务总线命名空间。 
 
-1. 在 Azure 门户中创建新的逻辑应用，然后选择“事件网格”作为启动操作。
+        ![逻辑应用设计器 - 选择服务总线命名空间](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
+    6. 选择“RootManageSharedAccessKey”。 
 
-    ![13][]
+        ![逻辑应用设计器 - 选择共享访问密钥](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
+    7. 选择“创建”  。 
+    8. 选择你的主题和订阅。 
+    
+        ![逻辑应用设计器 - 选择你的服务总线主题和订阅](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
+7. 选择“+ 新建步骤”，然后执行以下步骤：  
+    1. 选择“服务总线”  。
+    2. 在操作列表中选择“完成主题订阅中的消息”。  
+    3. 选择你的服务总线**主题**。
+    4. 选择主题的第二个**订阅**。
+    5. 对于“消息的锁定标记”，请从“动态内容”中选择“锁定标记”。    
 
-    此时会打开“逻辑应用设计器”窗口。
+        ![逻辑应用设计器 - 选择你的服务总线主题和订阅](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
+8. 在逻辑应用设计器的工具栏上选择“保存”以保存逻辑应用。  
+9. 遵照[向服务总线主题发送消息](#send-messages-to-the-service-bus-topic)部分的说明向主题发送消息。 
+10. 切换到逻辑应用的“概述”页。  “运行历史记录”中会显示已发送的消息的逻辑应用运行。 
 
-    ![14][]
-
-1. 若要添加信息，请执行以下操作：
-
-    a. 在“资源名称”框中，输入自己的命名空间名称。 
-
-    b. 在“高级选项”下的“后缀筛选器”框中，输入订阅的筛选器。
-
-1. 添加服务总线“接收”操作，以便从主题订阅接收消息。  
-    下图显示了最终操作：
-
-    ![15][]
-
-1. 添加一个完整事件，如下图所示：
-
-    ![16][]
-
-1. 保存逻辑应用并向服务总线主题发送消息，如“先决条件”部分所述。  
-    观察逻辑应用的执行情况。 若要查看执行的更多数据，请选择“概览”，然后查看“运行历史记录”下的数据。
-
-    ![17][]
-
-    ![18][]
+    ![逻辑应用设计器 - 逻辑应用运行](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
 ## <a name="next-steps"></a>后续步骤
 

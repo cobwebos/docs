@@ -10,16 +10,15 @@ ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 23b8e4e7e88f5b993f9b0f9981bbae6b884e2818
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b28ed58159545bca10ec89375b82b9c97ae38630
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880001"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098244"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>使用模板创建 Web 应用和 Azure Redis 缓存
 
@@ -86,7 +85,7 @@ ms.locfileid: "57880001"
 ### <a name="web-app"></a>Web 应用
 使用 **webSiteName** 变量中指定的名称创建 Web 应用。
 
-请注意，在 Web 应用中配置的应用设置属性使其可与 Azure Redis 缓存配合工作。 这些设置，将动态创建的应用程序基于在部署过程中提供的值。
+请注意，在 Web 应用中配置的应用设置属性使其可与 Azure Redis 缓存配合工作。 这些应用设置是根据部署期间提供的值动态创建的。
 
     {
       "apiVersion": "2015-08-01",

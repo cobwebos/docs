@@ -9,14 +9,15 @@ ms.service: cognitive-services
 ms.subservice: personality-chat
 ms.topic: overview
 ms.date: 05/07/2018
-ms.author: nolachar
+ms.author: nitinme
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: c7f7a8c65717acd5a19e92b7e0437dc4b8628909
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: 101f87230ee64e7f281f337189e18d09d93abed3
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867080"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257785"
 ---
 # <a name="what-is-project-personality-chat"></a>什么是项目个性聊天？
 

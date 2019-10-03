@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: d2cb0ef904935d1736c23aeaf23030da99e41a71
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 9d7a277db7550c1850ec0c9d555553064ab19f7c
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665944"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730271"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教程：为 Web 应用在自定义域中创建 DNS 记录 
 
@@ -41,7 +41,7 @@ ms.locfileid: "58665944"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -63,11 +63,11 @@ A 记录可用于将名称映射到其 IP 地址。 在下面的示例中，使�
 
 ### <a name="get-the-ipv4-address"></a>获取 IPv4 地址
 
-在 Azure 门户中，在应用服务页的左侧导航窗格中，选择“自定义域”。 
+在 Azure 门户中，在应用服务页的左侧导航窗格中，选择“自定义域”  。 
 
 ![自定义域菜单](../app-service/./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在“自定义域”页中，复制应用的 IPv4 地址：
+在“自定义域”  页中，复制应用的 IPv4 地址：
 
 ![在门户中导航到 Azure 应用](../app-service/./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 

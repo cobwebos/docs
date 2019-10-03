@@ -5,101 +5,113 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.openlocfilehash: e4bbfdbcf7a295089570d4c8b77b07fd7270b3fd
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 05/02/2019
+ms.openlocfilehash: d6d31506a13656a954c48dfee00f14d8ab381fd5
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998254"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173243"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
-本文介绍 Azure Stream Analytics 中的兼容性级别选项。 Stream Analytics 是托管的服务，与定期进行功能更新和性能改进。 大多数服务的运行时更新将自动供最终用户。 
+本文介绍 Azure 流分析中的兼容性级别选项。 流分析是一个托管服务，它会定期进行功能更新和性能改进。 该服务的大多数运行时更新会自动提供给最终用户。 
 
-但是，在服务中的一些新功能可能会带来了重大更改，如更改行为的一个现有作业，或更改数据的方式占用中正在运行的作业。 你可以保留现有 Stream Analytics 作业离开降低安全设置的兼容性级别，而不进行主要更改正在运行。 有关最新的运行时行为准备就绪后，可以选择在通过提高兼容性级别。 
+但是，该服务中的某些新功能可能会引入重大更改，例如，现有作业的行为更改，或正在运行的作业中使用数据的方式更改。 可以通过降低兼容性级别设置，使现有流分析作业保持运行状态而不会发生重大更改。 如果已准备使用最新的运行时行为，可以选择提高兼容性级别。 
 
 ## <a name="choose-a-compatibility-level"></a>选择兼容性级别
 
 兼容性级别控制流分析作业的运行时行为。 
 
-Azure Stream Analytics 当前支持三种兼容性级别：
+Azure 流分析目前支持三种兼容性级别：
 
-* 1.0-默认级别
-* 1.1-当前版本行为
-* 1.2 （预览版）-在计算中的最新改进的最新行为
+* 1.0 - 以前的行为
+* 1.1 - 默认行为
+* 1.2（预览版）- 最新的行为，提供最新的改进措施供评估
 
-在公开上市的 Azure Stream Analytics 几年前引入了原始 1.0 兼容性级别。
+最初的 1.0 兼容性级别是多年前在正式推出 Azure 流分析期间引入的。
 
-当创建新的 Stream Analytics 作业时，它是最好使用最新的兼容性级别创建。 启动作业设计依赖于最新的行为，以避免添加的变更和复杂程度更高版本上。
+创建新的流分析作业时，最佳做法是使用最新的兼容性级别来创建它。 依赖于最新的行为着手作业设计，以免将来添加更改和增大复杂性。
 
-## <a name="set-the-compatibility-level"></a>将兼容级别设置
+## <a name="set-the-compatibility-level"></a>设置兼容性级别
 
-在 Azure 门户或通过使用，可以设置 Stream Analytics 作业的兼容性级别[创建作业 REST API 调用](/rest/api/streamanalytics/stream-analytics-job)。
+可以使用 Azure 门户或[创建作业 REST API 调用](/rest/api/streamanalytics/stream-analytics-job)来设置流分析作业的兼容性级别。
 
-若要更新在 Azure 门户中作业的兼容性级别：
+若要在 Azure 门户中更新作业的兼容性级别：
 
-1. 使用[Azure 门户](https://portal.azure.com)以定位到 Stream Analytics 作业。
-2. **停止**更新兼容级别之前，该作业。 如果作业处于运行状态，则无法更新兼容性级别。
-3. 下**配置**标题下方，选择**兼容性级别**。
+1. 使用 [Azure 门户](https://portal.azure.com)定位到你的流分析作业。
+2. **停止**该作业，然后更新兼容性级别。 如果作业处于运行状态，则无法更新兼容性级别。
+3. 在“配置”标题下，选择“兼容性级别”。
 4. 选择所需的兼容性级别值。
-5. 选择**保存**页的底部。
+5. 选择页面底部的“保存”。
 
 ![Azure 门户中的流分析兼容性级别](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
 在更新兼容性级别时，T-SQL 编译器会使用与所选兼容性级别相对应的语法来验证作业。
 
-## <a name="compatibility-level-12"></a>兼容级别 1.2
+## <a name="compatibility-level-12-preview"></a>兼容性级别 1.2（预览版）
 
-在兼容级别 1.2 中引入了以下重大更改：
+在兼容性级别 1.2 中引入了以下重大更改：
 
 ### <a name="geospatial-functions"></a>地理空间函数
 
-**上一级别：** 使用 azure Stream Analytics 的地理计算。
+**以前的级别：** Azure 流分析使用地理计算。
 
-**1.2 级别：** Azure Stream Analytics，可计算几何投影的地理坐标。 没有任何更改的地理空间函数签名中。 但是，它们的语义是稍有不同，从而允许比之前的更精确计算。
+**1.2 级别：** Azure 流分析允许计算几何投影的地理坐标。 地理空间函数的签名没有变化。 但是，其语义略有不同，与以往相比可以提高计算精度。
 
-Azure Stream Analytics 支持地理空间引用数据编制索引。 包含地理空间元素的引用数据创建索引的速度更快的联接计算。
+Azure 流分析支持地理空间参考数据索引编制。 可为包含地理空间元素的参考数据编制索引，以加快联接计算的速度。
 
-已更新的地理空间函数自带熟知文本 (WKT) 地理空间信息格式的完整的表现力。 您可以使用 GeoJson 指定以前不支持其他地理空间信息组件。
+更新的地理空间函数提供已知文本 (WKT) 地理空间格式的完整表达能力。 可以指定以前在 GeoJson 中所不支持的其他地理空间组件。
 
-有关详细信息，请参阅[更新到 Azure Stream Analytics – 云和 IoT Edge 中的地理空间功能](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/)。
+有关详细信息, 请参阅[Azure 流分析中的地理空间功能更新-云和 IoT Edge](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/)。
 
-### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>具有多个分区的输入源的并行查询执行
+### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>针对使用多个分区的输入源的并行执行查询
 
-**上一级别：** Azure Stream Analytics 查询需要使用 PARTITION BY 子句在输入的源分区并行查询处理的数据。
+**以前的级别：** Azure 流分析查询要求使用 PARTITION BY 子句在不同的输入源分区之间并行化查询处理。
 
-**1.2 级别：** 如果在输入的源分区，可以并行化查询逻辑，Azure Stream Analytics 创建单独的查询实例，并在并行运行计算。
+**1.2 级别：** 如果查询逻辑可在不同的输入源分区之间并行化，则 Azure 流分析会创建独立的查询实例，并且并行运行计算。
 
-### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>CosmosDB 输出与本机大容量 API 集成
+### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>与 CosmosDB 输出的本机批量 API 集成
 
-**上一级别：** Upsert 行为*插入或合并*。
+**以前的级别：** 更新插入行为是“插入或合并”。
 
-**1.2 级别：** CosmosDB 输出与本机大容量 API 集成最大化吞吐量，并有效地处理限制请求。 有关详细信息，请参阅[Azure Stream Analytics 输出到 Azure Cosmos DB 页](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)。
+**1.2 级别：** 与 CosmosDB 输出的本机批量 API 集成可以最大程度地提高吞吐量，并有效地处理限制请求。 有关详细信息，请参阅[从 Azure 流分析输出到 Azure Cosmos DB](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12) 页。
 
-Upsert 行为*插入或替换*。
+更新插入行为是“插入或替换”。
 
-### <a name="datetimeoffset-when-writing-to-sql-output"></a>DateTimeOffset 时写入到 SQL 输出
+### <a name="datetimeoffset-when-writing-to-sql-output"></a>写入到 SQL 输出时的 DateTimeOffset
 
-**上一级别：**[DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017)类型已调整为 UTC。
+**以前的级别：** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) 类型已调整为 UTC。
 
-**1.2 级别：** DateTimeOffset 无法再进行调整。
+**1.2 级别：** 不再调整 DateTimeOffset。
 
-### <a name="strict-validation-of-prefix-of-functions"></a>严格的验证函数的前缀
+### <a name="long-when-writing-to-sql-output"></a>写入到 SQL 输出时的 Long
 
-**上一级别：** 没有函数前缀严格验证。
+**以前的级别：** 根据目标类型截断值。
 
-**1.2 级别：** Azure Stream Analytics 具有严格的验证函数的前缀。 将前缀添加到内置函数将导致错误。 例如，`myprefix.ABS(…)`不受支持。
+**1.2 级别：** 不符合目标类型的值将根据输出错误策略进行处理。
 
-将前缀添加到内置聚合还会导致错误。 例如，`myprefix.SUM(…)`不受支持。
+### <a name="record-and-array-serialization-when-writing-to-sql-output"></a>写入到 SQL 输出时的记录和数组序列化
 
-使用前缀"system"的任何用户定义的函数将导致错误。
+**以前的级别：** 记录以“记录”的形式编写，数组以“数组”的形式编写。
 
-### <a name="disallow-array-and-object-as-key-properties-in-cosmos-db-output-adapter"></a>禁止为 Cosmos DB 输出适配器中的键属性的数组和对象
+**1.2 级别：** 记录和数组以 JSON 格式进行序列化。
 
-**上一级别：** 数组和对象类型支持为键属性。
+### <a name="strict-validation-of-prefix-of-functions"></a>严格验证函数的前缀
 
-**1.2 级别：** 为键属性不再支持数组和对象类型。
+**以前的级别：** 不对函数前缀执行严格验证。
+
+**1.2 级别：** Azure 流分析严格验证函数前缀。 将前缀添加到内置函数会导致出错。 例如，`myprefix.ABS(…)` 不受支持。
+
+将前缀添加到内置聚合也会导致出错。 例如，`myprefix.SUM(…)` 不受支持。
+
+对用户定义的任何函数使用前缀“system”会导致出错。
+
+### <a name="disallow-array-and-object-as-key-properties-in-cosmos-db-output-adapter"></a>不允许在 Cosmos DB 输出适配器中使用数组和对象作为键属性
+
+**以前的级别：** 支持使用数组和对象类型作为键属性。
+
+**1.2 级别：** 不再支持使用数组和对象类型作为键属性。
 
 ## <a name="compatibility-level-11"></a>兼容性级别 1.1
 
@@ -113,11 +125,11 @@ Upsert 行为*插入或替换*。
 
 **1.1 级别：** 消息内容只包含流，没有其他的标记。 例如： `{ "SensorId":"1", "Temperature":64}`
 
-### <a name="persisting-case-sensitivity-for-field-names"></a>字段名称保留区分大小写
+### <a name="persisting-case-sensitivity-for-field-names"></a>对字段名称保留区分大小写
 
 **1.0 级别：** 在由 Azure 流分析引擎处理时，字段名称更改为小写。
 
-**1.1 级别：** Azure Stream Analytics 引擎处理它们时要保留字段名称区分大小写。
+**1.1 级别：** 由 Azure 流分析引擎处理字段名称时，对字段名称保留区分大小写。
 
 > [!NOTE]
 > 保留区分大小写尚不适用于使用 Edge 环境托管的流分析作业。 因此，如果在 Edge 上托管作业，所有字段名称都将转换为小写。
@@ -128,13 +140,13 @@ Upsert 行为*插入或替换*。
 
 **1.1 级别：** CREATE TABLE 允许指定强架构。 流分析引擎验证数据是否符合此架构。 使用这一模型，该命令可以通过 NaN 值筛选事件。
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>禁用自动向上转换为 json 格式的日期时间字符串
+### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>对 JSON 格式的日期/时间字符串禁用自动向上转换
 
-**1.0 级别：** JSON 分析器会自动将包含日期/时间/时区信息的字符串值向上转换为日期/时间类型，然后转换为 UTC。 此行为会导致丢失时区信息。
+**1.0 级别：** JSON 分析器会自动将包含日期/时间/时区信息的字符串值向上转换为日期/时间类型，然后转换为 UTC。 此行为导致了丢失时区信息。
 
 **1.1 级别：** 不再将包含日期/时间/时区信息的字符串值自动向上转换为日期/时间类型。 因此会保留时区信息。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析输入的故障排除](stream-analytics-troubleshoot-input.md)
-* [Stream Analytics 资源运行状况](stream-analytics-resource-health.md)
+* [流分析资源运行状况](stream-analytics-resource-health.md)

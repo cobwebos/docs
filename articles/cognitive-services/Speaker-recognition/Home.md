@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speaker-recognition
 ms.topic: overview
 ms.date: 10/01/2018
-ms.author: dwlin
-ms.openlocfilehash: 86162b4d4e752bc11c0d739f6e343c7a357ea0af
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9cdfd5d09451968487bafbcad643e179ffe82aa7
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873710"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707165"
 ---
 # <a name="speaker-recognition-api"></a>说话人识别 API
 
@@ -42,9 +43,9 @@ ms.locfileid: "55873710"
 
 ## <a name="speaker-identification"></a>说话人识别
 
-说话人辨识 API 可以自动识别音频文件中的说话人（来自一组给定的预测说话人）。 将把输入音频与提供的一组说话人进行配对。如果发现匹配，就会返回说话人的身份。
+说话人识别 API 可以自动识别音频文件中的说话人（来自一组给定的预测说话人）。 将把输入音频与提供的一组说话人进行配对。如果发现匹配，就会返回说话人的身份。
 
-所有说话人都应先完成注册过程，才能将语音注册到系统中，并创建语音打印。
+所有说话人都应先完成注册过程，才能将语音注册到系统中，并创建声纹。
 
 
 ### <a name="enrollment"></a>注册

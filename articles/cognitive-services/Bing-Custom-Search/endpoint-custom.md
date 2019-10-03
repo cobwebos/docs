@@ -1,21 +1,21 @@
 ---
 title: 必应自定义搜索终结点
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 总结了必应自定义搜索 API 终结点。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.author: v-gedod
-ms.openlocfilehash: d01f863f0c42754e2dcc36f6cab1bed1f3dc3b6c
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.author: aahi
+ms.openlocfilehash: e3b544d8d655b653383cc999de233e2163433d85
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337798"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405073"
 ---
 # <a name="custom-search"></a>自定义搜索
 借助必应自定义搜索，可以为关注的主题创建定制的搜索体验。 用户会看到根据他们关注的内容定制的搜索结果，无需浏览包含无关内容的搜索结果。
@@ -28,10 +28,10 @@ ms.locfileid: "57337798"
  GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search  
 ```
 
-有关如何设置自定义搜索源的示例，请参阅[教程](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page)。 若要详细了解标头、参数、市场代码、响应对象、错误等，请参阅[必应自定义搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference) 参考。
+有关如何设置自定义搜索源的示例，请参阅[教程](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page)。 若要详细了解标头、参数、市场代码、响应对象、错误等，请参阅[必应自定义搜索 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference) 参考。
 
 ## <a name="custom-search-response-json"></a>自定义搜索响应 JSON
-自定义搜索请求将结果作为 JSON 对象返回，请参阅[响应对象](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#response-objects)。 
+自定义搜索请求将结果作为 JSON 对象返回，请参阅[响应对象](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#response-objects)。 
 
 ## <a name="custom-autosuggest"></a>自定义自动建议
 通过自定义自动建议 API，可向必应发送部分搜索查询词，并返回用户可配置的建议查询列表。 借助自定义建议，可添加 API 返回的建议，并选择性地指定是否要包含必应生成的建议。

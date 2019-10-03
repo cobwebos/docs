@@ -1,74 +1,63 @@
 ---
-title: B2B 企业集成概述 - Azure 逻辑应用 | Microsoft Docs
-description: 使用 Azure 逻辑应用和 Enterprise Integration Pack 为企业集成解决方案构建自动化 B2B 工作流
+title: B2B 企业集成 - Azure 逻辑应用
+description: 了解如何使用 Azure 逻辑应用和 Enterprise Integration Pack 为企业集成构建自动化 B2B 工作流
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
-ms.topic: article
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
+ms.topic: overview
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
-ms.date: 09/08/2016
-ms.openlocfilehash: 8c0e47f5bed0799b8536cecb38a85ed76185d0cd
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
-ms.translationtype: MT
+ms.date: 08/01/2019
+ms.openlocfilehash: 54d665d6a4fd9aa0216d9eccf821f5af539a3636
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194922"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087562"
 ---
-# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>概述：带有 Enterprise Integration Pack 的 Azure 逻辑应用中的 B2B 企业集成方案
+# <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 的 B2B 企业集成解决方案
 
-为了实现企业到企业 (B2B) 工作流和与 Azure 逻辑应用的无缝通信，可以使用 Microsoft 的基于云的解决方案（Enterprise Integration Pack）启用企业集成方案。 组织可以电子方式交换消息，即使它们使用不同的协议和格式，也是如此。 该包将不同的格式转换为组织的系统可以解释和处理的格式。 组织可以通过行业标准协议（包括 [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md)）交换消息。 还可以使用加密和数字签名保护消息。
+若要构建企业到企业 (B2B) 解决方案并在组织之间无缝通信，可以结合 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)使用 Enterprise Integration Pack (EIP) 来构建自动化的可缩放企业集成工作流。 尽管组织使用不同的协议和格式，但它们仍可以通过电子方式交换消息。 EIP 会将不同的格式转换为组织系统可以处理的格式，并支持 [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md) 等行业标准协议。 还可以使用加密和数字签名保护消息。 EIP 支持以下[企业集成连接器](../connectors/apis-list.md#integration-account-connectors)和行业标准：
 
-如果熟悉 BizTalk Server 或 Microsoft Azure BizTalk 服务，则可轻松地使用企业集成功能，因为大多数概念是类似的。 一个主要区别是企业集成使用集成帐户来简化 B2B 通信中使用的项目的存储和管理。 
+* 电子数据交换 (EDI)
+* 企业应用程序集成 (EAI)
 
-在体系结构上，Enterprise Integration Pack 基于“集成帐户”。 这些帐户是基于云的容器，存储所有项目，例如架构、合作伙伴、证书、映射和协议。 可以使用这些项目设计、部署和维护 B2B 应用以及为逻辑应用构建 B2B 工作流。 但在使用这些项目之前，必须先将集成帐户链接到逻辑应用。 之后，逻辑应用便可以访问集成帐户的项目。
+如果你熟悉 Microsoft BizTalk Server 或 Azure BizTalk 服务，则也会熟悉 EIP 的概念，因此可以轻松地使用其功能。 不过，一个重要差别在于，EIP 在体系结构上基于“集成帐户”，可以简化 B2B 通信中使用的项目的存储和管理。 这些帐户是基于云的容器，用于存储所有项目，例如合作伙伴、协议、架构、映射和证书。 
 
-## <a name="why-should-you-use-enterprise-integration"></a>为什么应使用企业集成？
+## <a name="why-use-the-enterprise-integration-pack"></a>为何使用 Enterprise Integration Pack？
 
-* 通过企业集成，可以将所有项目存储在一个位置，即集成帐户。
-* 可以使用 Azure 逻辑应用引擎及其所有连接器来构建 B2B 工作流并将其与第三方软件即服务 (SaaS) 应用、本地应用以及自定义应用集成。
+* 使用 EIP 可将所有项目存储在一个位置，即集成帐户。
+
+* 可以使用 Azure 逻辑应用和连接器来构建 B2B 工作流并将其与第三方软件即服务 (SaaS) 应用、本地应用以及自定义应用集成。
+
 * 可以使用 Azure 函数为逻辑应用创建自定义代码。
 
-## <a name="how-to-get-started-with-enterprise-integration"></a>如何开始使用企业集成？
+## <a name="how-do-i-get-started"></a>如何入门？
 
-可以通过 **Azure 门户**中的逻辑应用设计器来使用 Enterprise Integration Pack 构建和管理 B2B 应用。 还可以使用 [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp) 来管理逻辑应用。
+在使用 EIP 开始构建 B2B 逻辑应用工作流之前，需要准备好以下各项：
 
-以下是在 Azure 门户中创建应用前必须先执行的高级步骤：
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-![概述映像](media/logic-apps-enterprise-integration-overview/overview-0.png)  
+* 包含要使用的项目的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-## <a name="what-are-some-common-scenarios"></a>一些常见方案有哪些？
+* 若要创建映射和架构，可以使用[适用于 Visual Studio 2015 的 Microsoft Azure 逻辑应用企业集成工具 2.0](https://aka.ms/vsmapsandschemas) 和 Visual Studio 2015。
 
-企业集成支持以下这些行业标准：
+创建集成帐户并添加项目后，可以通过在 Azure 门户中创建一个逻辑应用，开始使用这些项目构建 B2B 工作流。 如果你不熟悉逻辑应用，请尝试[创建一个简单的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用这些项目，请确保先将集成帐户链接到逻辑应用。 之后，逻辑应用便可以访问集成帐户。 还可以使用 Visual Studio 或 [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp) 来创建、管理和部署逻辑应用。
 
-* EDI - 电子数据交换
-* EAI - 企业应用程序集成
+下面是开始构建 B2B 逻辑应用的概要步骤：
 
-## <a name="heres-what-you-need-to-get-started"></a>以下是开始使用需要满足的条件
+![创建 B2B 逻辑应用的先决条件](./media/logic-apps-enterprise-integration-overview/overview.png)  
 
-* 具有集成帐户的 Azure 订阅
-* Visual Studio 2015，用于创建映射和架构
-* [Visual Studio 2015 2.0 的 Microsoft Azure 逻辑应用企业集成工具](https://aka.ms/vsmapsandschemas)  
+## <a name="try-now"></a>立即试用
 
-## <a name="try-it-now"></a>立即试用
+[部署一个用于发送和接收 AS2 消息的完全正常运行的示例逻辑应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
 
-[部署使用 Azure 逻辑应用 B2B 功能的完全正常运行的示例 AS2 发送和接收逻辑应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)。
+## <a name="next-steps"></a>后续步骤
 
-## <a name="learn-more"></a>了解详细信息
-* [协议](../logic-apps/logic-apps-enterprise-integration-agreements.md "了解企业集成协议")
-* [企业到企业 (B2B) 方案](../logic-apps/logic-apps-enterprise-integration-b2b.md "了解如何使用 B2B 功能创建逻辑应用")  
-* [证书](logic-apps-enterprise-integration-certificates.md "了解企业集成证书")
-* [平面文件编码/解码](logic-apps-enterprise-integration-flatfile.md "了解如何对平面文件内容进行编码和解码")  
-* [集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "了解集成帐户")
-* [映射](../logic-apps/logic-apps-enterprise-integration-maps.md "了解企业集成映射")
-* [合作伙伴](logic-apps-enterprise-integration-partners.md "了解企业集成合作伙伴")
-* [架构](logic-apps-enterprise-integration-schemas.md "了解企业集成架构")
-* [XML 消息验证](logic-apps-enterprise-integration-xml.md "了解如何使用逻辑应用验证 XML 消息")
-* [XML 转换](logic-apps-enterprise-integration-transform.md "了解企业集成映射")
-* [企业集成连接器](../connectors/apis-list.md "了解 Enterprise Integration Pack 连接器")
-* [集成帐户元数据](../logic-apps/logic-apps-enterprise-integration-metadata.md "了解集成帐户元数据")
-* [监视 B2B 消息](logic-apps-monitor-b2b-message.md "深入了解 B2B 消息")
-* [Azure Monitor 日志中跟踪 B2B 消息](logic-apps-track-b2b-messages-omsportal.md "了解有关 Azure Monitor 日志中跟踪 B2B 消息的详细信息")
-
+* [创建贸易合作伙伴](logic-apps-enterprise-integration-partners.md)
+* [创建协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)
+* [添加架构](logic-apps-enterprise-integration-schemas.md)
+* [添加映射](../logic-apps/logic-apps-enterprise-integration-maps.md)
+* [从 BizTalk 服务迁移](../logic-apps/logic-apps-move-from-mabs.md)

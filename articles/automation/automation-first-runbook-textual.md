@@ -5,17 +5,17 @@ keywords: powershell 工作流, powershell 工作流示例, 工作流 powershell
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1697f479cf013f2ef94dd5a8a2fc637d72e6e18a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 010c6b00161c7a0a004932528fa4f608aa7c5e23
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549230"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850686"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>我的第一个 PowerShell 工作流 Runbook
 
@@ -27,7 +27,7 @@ ms.locfileid: "59549230"
 
 本教程指导在 Azure 自动化中创建 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 从一个简单的 Runbook 开始，将测试和发布该 Runbook，同时介绍如何跟踪 Runbook 作业的状态。 然后，通过修改 Runbook 来实际管理 Azure 资源，这种情况下会启动 Azure 虚拟机。 最后，通过添加 Runbook 参数使此 Runbook 更稳健。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要以下各项：
 
@@ -47,7 +47,7 @@ ms.locfileid: "59549230"
 1. 通过单击“+ 添加 Runbook”按钮，并单击“创建新 Runbook”，创建一个新 Runbook。
 1. 将该 Runbook 命名为 *MyFirstRunbook-Workflow*。
 1. 在本例中，将要创建一个 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)，因此请选择“Powershell 工作流”作为“Runbook 类型”。
-1. 单击“创建”以创建 Runbook 并打开文本编辑器  。
+1. 单击“创建”以创建 Runbook 并打开文本编辑器 。
 
 ## <a name="step-2---add-code-to-the-runbook"></a>步骤 2 - 将代码添加到 Runbook
 
@@ -70,17 +70,17 @@ ms.locfileid: "59549230"
    }
    ```
 
-1. 通过单击“保存” 保存 Runbook。
+1. 通过单击“保存”保存 Runbook。
 
 ## <a name="step-3---test-the-runbook"></a>步骤 3 - 测试 Runbook
 
 在发布 Runbook 使其可在生产中使用之前，需对其进行测试以确保其能正常工作。 测试 Runbook 时，可以运行其“草稿”版本并以交互方式查看其输出。
 
-1. 单击“测试窗格”  打开测试窗格。
-1. 单击“启动”以启动测试  。 此选项应该是唯一的已启用选项。
+1. 单击“测试窗格” 打开测试窗格。
+1. 单击“启动”以启动测试 。 此选项应该是唯一的已启用选项。
 1. 将创建一个 [Runbook 作业](automation-runbook-execution.md) 并显示其状态。
 
-   作业状态初始为“排队”，该值指示它正在等待云中的 Runbook 辅助角色可用。 在某个辅助角色认领此作业后，作业状态将变为“正在启动”，然后当 Runbook 实际开始运行时，此状态将变为“正在运行”。  
+   作业状态初始为“排队”，该值指示它正在等待云中的 Runbook 辅助角色可用。 在某个辅助角色认领此作业后，作业状态将变为“正在启动”，然后当 Runbook 实际开始运行时，此状态将变为“正在运行”。
 
 1. Runbook 作业完成后，会显示其输出。 在此示例中，应会显示 Hello World。
 
@@ -94,7 +94,7 @@ ms.locfileid: "59549230"
 
 1. 单击“发布”以发布该 Runbook，并在出现提示时单击“是”。
 1. 如果向左滚动以在“Runbook”窗格中查看该 Runbook，它会显示“已发布”的“创作状态”。
-1. 向右滚动查看 **MyFirstRunbook-Workflow**的窗格。  
+1. 向右滚动查看 **MyFirstRunbook-Workflow**的窗格。
    顶部的选项允许我们启动 Runbook，计划其在将来的某个时刻启动，或创建 [webhook](automation-webhooks.md) 以使其可以通过 HTTP 调用启动。
 1. 由于只想要启动 Runbook，因此请单击“启动”，并在出现提示时单击“是”。
 
@@ -107,7 +107,7 @@ ms.locfileid: "59549230"
 
 1. 一旦此 Runbook 状态显示“已完成”，单击“输出”。 “输出”窗格打开后，可以看到 Hello World。
 
-   ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)  
+   ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
 1. 关闭“输出”窗格。
 1. 单击“所有日志”打开 Runbook 作业的“流”窗格。 应该只会在输出流中看到 *Hello World*，但此视图也可以显示 Runbook 作业的其他流，例如，“详细”和“错误”（如果 Runbook 向其写入）。
@@ -117,7 +117,7 @@ ms.locfileid: "59549230"
 1. 关闭“流”页和“作业”页，以便返回到“MyFirstRunbook”页。
 1. 单击“作业”打开此 Runbook 的“作业”页。 此页列出此 runbook 创建的所有作业。 由于只运行该作业一次，应该只会看到一个列出的作业。
 
-   ![作业](media/automation-first-runbook-textual/runbook-control-job-tile.png)
+   ![作业(Job)](media/automation-first-runbook-textual/runbook-control-job-tile.png)
 
 1. 可以单击此作业，打开在启动 Runbook 时查看过的同一“作业”页。 这样便可以回溯并查看为特定 runbook 创建的任何作业的详细信息。
 
@@ -148,15 +148,15 @@ ms.locfileid: "59549230"
 > 即使刚刚创建了一个新的自动化帐户，也可能需要[更新模块](automation-update-azure-modules.md)。
 
 1. 单击“测试”窗格，以便测试 Runbook。
-1. 单击“启动”以启动测试  。 完成后，你会收到类似于以下内容的输出，显示帐户中的基本信息。 此操作是对凭据有效的确认。
+1. 单击“启动”以启动测试 。 完成后，你会收到类似于以下内容的输出，显示帐户中的基本信息。 此操作是对凭据有效的确认。
 
-   ![身份验证](media/automation-first-runbook-textual/runbook-auth-output.png)
+   ![验证](media/automation-first-runbook-textual/runbook-auth-output.png)
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>步骤 6 – 添加用于启动虚拟机的代码
 
 现在 Runbook 正在向 Azure 订阅进行身份验证，你可以管理资源。 将添加一个命令，用于启动虚拟机。 可以在 Azure 订阅中选取任何虚拟机。而现在，需将该名称硬编码到 Runbook。 如果要跨多个订阅管理资源，需要使用 -AzureRmContext 参数以及 [Get-AzureRmContext](/powershell/module/azurerm.profile/get-azurermcontext)。
 
-1. 在 Connect-AzureRmAccount 后面键入 Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'（提供要启动的虚拟机的名称和资源组名称）。  
+1. 在 Connect-AzureRmAccount 后面键入 Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'（提供要启动的虚拟机的名称和资源组名称）。
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow
@@ -174,7 +174,7 @@ ms.locfileid: "59549230"
    ```
 
 1. 保存 Runbook，并单击“测试”窗格，以便可以测试 Runbook。
-1. 单击“启动”以启动测试  。 一旦测试完成后，检查已启动的虚拟机。
+1. 单击“启动”以启动测试 。 一旦测试完成后，检查已启动的虚拟机。
 
 ## <a name="step-7---add-an-input-parameter-to-the-runbook"></a>步骤 7 - 将输入参数添加到 Runbook
 
@@ -188,7 +188,7 @@ Runbook 当前会启动你在 Runbook 中硬编码的虚拟机，但如果可以
     Param(
      [string]$VMName,
      [string]$ResourceGroupName
-    )  
+    )
    # Ensures you do not inherit an AzureRMContext in your runbook
    Disable-AzureRmContextAutosave –Scope Process
 
@@ -200,16 +200,17 @@ Runbook 当前会启动你在 Runbook 中硬编码的虚拟机，但如果可以
 
 2. 保存 Runbook 并打开“测试”窗格。 现在可以为测试中使用的两个输入变量提供值。
 3. 关闭“测试”窗格。
-4. 单击“发布”以发布 Runbook 的新版本  。
+4. 单击“发布”以发布 Runbook 的新版本 。
 5. 停止在上一步中启动的虚拟机。
 6. 单击“启动”以启动 Runbook **ResourceGroupName** 。 键入要启动的虚拟机的 **VMName** 和 **ResourceGroupName**。
 
    ![启动 Runbook](media/automation-first-runbook-textual/automation-pass-params.png)
 
-7. 一旦 Runbook 完成后，检查已启动的虚拟机。  
+7. 一旦 Runbook 完成后，检查已启动的虚拟机。
 
 ## <a name="next-steps"></a>后续步骤
 
+* 有关 PowerShell 的详细信息, 包括语言参考和学习模块, 请参阅[Powershell 文档](https://docs.microsoft.com/en-us/powershell/scripting/overview)。
 * 若要开始使用图形 Runbook，请参阅 [我的第一个图形 Runbook](automation-first-runbook-graphical.md)
 * 若要开始使用 PowerShell Runbook，请参阅 [My first PowerShell runbook](automation-first-runbook-textual-powershell.md)
 * 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure Automation runbook types](automation-runbook-types.md)

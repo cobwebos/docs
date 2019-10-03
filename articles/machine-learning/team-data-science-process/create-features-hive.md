@@ -12,11 +12,11 @@ ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a491f923d7755513d84adfe765d595a3a7a80715
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524899"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60399330"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>使用 Hive 查询创建用于 Hadoop 群集中数据的功能
 本文档将演示如何使用 Hive 查询创建用于 Hadoop 群集中数据的功能。 这些 Hive 查询使用嵌入式 Hive 用户的定义函数 (UDF) 以及为其提供的脚本。
@@ -27,7 +27,7 @@ ms.locfileid: "59524899"
 
 此任务是[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)
@@ -89,14 +89,14 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-此 Hive 查询假定*\<日期时间字段 >* 是默认日期时间格式。
+此 Hive 查询假定 *\<日期时间字段 >* 是默认日期时间格式。
 
 如果日期时间字段并未使用默认格式，则需要先将日期时间字段转换为 Unix 时间戳，然后将 Unix 时间戳转换为默认格式的日期时间字符串。 如果日期时间使用默认格式，那么用户可以应用嵌入的日期时间 UDF 以提取功能。
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-在此查询中，如果*\<日期时间字段 >* 的模式类似于*03/26/2015年 12:04:39*，则*\<模式的日期时间字段 >* 应为`'MM/dd/yyyy HH:mm:ss'`。 若要对其进行测试，用户可以运行
+在此查询中，如果 *\<日期时间字段 >* 的模式类似于*03/26/2015年 12:04:39*，则 *\<模式的日期时间字段 >* 应为`'MM/dd/yyyy HH:mm:ss'`。 若要对其进行测试，用户可以运行
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
@@ -139,7 +139,7 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
 ## <a name="tuning"></a>高级主题：优化 Hive 参数以加快查询速度
 Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查询的数据。 在本部分中，讨论用户可对其进行优化以改进 Hive 查询性能的某些参数。 用户需要在查询处理数据之前，先添加优化查询参数。
 
-1. **Java 堆空间**：对于涉及联接大数据集或处理长记录的查询，常见的一个错误为“堆空间不足”。 可以通过将参数 mapreduce.map.java.opts 和 mapreduce.task.io.sort.mb 设置为所需的值来避免此错误。 下面是一个示例：
+1. **Java 堆空间**：对于涉及联接大数据集或处理长记录的查询，常见的一个错误为“堆空间不足”  。 可以通过将参数 mapreduce.map.java.opts 和 mapreduce.task.io.sort.mb 设置为所需的值来避免此错误   。 下面是一个示例：
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
@@ -155,19 +155,19 @@ Hive 群集的默认参数设置可能不适合 Hive 查询以及正在处理查
    
        set hive.auto.convert.join=true;
 
-3. **将映射器数指定为 Hive**：虽然 Hadoop 允许用户设置归约器数量，但是映射器数量通常不由用户设置。 允许对此数量在一定程度进行控制的技巧是，选择 Hadoop 变量 mapred.min.split.size 和 mapred.max.split.size，因为每个映射任务的大小由以下内容决定：
+3. **将映射器数指定为 Hive**：虽然 Hadoop 允许用户设置归约器数量，但是映射器数量通常不由用户设置。 允许对此数量在一定程度进行控制的技巧是，选择 Hadoop 变量 mapred.min.split.size 和 mapred.max.split.size，因为每个映射任务的大小由以下内容决定：  
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    
     通常而言：
     
-   - mapred.min.split.size 的默认值为 0，
-   - mapred.max.split.size 的默认值为 Long.MAX， 
-   - dfs.block.size 的默认值为 64 MB。
+   - mapred.min.split.size 的默认值为 0  ，
+   - mapred.max.split.size 的默认值为 Long.MAX   ， 
+   - dfs.block.size 的默认值为 64 MB  。
 
      如我们所见，根据数据大小，通过对其进行“设置”允许对使用的映射器数量进行优化，可优化这些参数。
 
-4. 以下是用于优化 Hive 性能的一些其他高级选项。 这些选项可用于设置分配到映射和归纳任务的内存，并可用于调节性能。 请记住，mapreduce.reduce.memory.mb 不能大于 Hadoop 群集中每个辅助角色节点的物理内存大小。
+4. 以下是用于优化 Hive 性能的一些其他高级选项  。 这些选项可用于设置分配到映射和归纳任务的内存，并可用于调节性能。 请记住，mapreduce.reduce.memory.mb 不能大于 Hadoop 群集中每个辅助角色节点的物理内存大小  。
    
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;

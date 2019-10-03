@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 80776f9284752e8554486cb458096ccc9319949e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f6ece10c43c2c4a6bea92d14a8bf6fbdb49fd318
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112307"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261364"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 
@@ -74,13 +74,13 @@ ms.locfileid: "58112307"
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>为逻辑应用启用诊断日志记录
 
-对于更丰富的调试与运行时详细信息和事件，您可以设置诊断与日志记录[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)。 Azure Monitor 是监视你的云，并在本地环境，有助于保持其可用性和性能的 Azure 中的服务。 
+若要在运行时详细信息和事件中进行更丰富的调试, 可以设置[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)的诊断日志记录。 Azure Monitor 是 Azure 中的一个服务，用于监视云和本地环境，帮助使其保持较高的可用性和性能。 
 
 在开始之前，需要具有一个 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“逻辑应用”。 
 
-2. 在逻辑应用边栏选项卡菜单下**监视**，选择**诊断** > **诊断设置**。
+2. 在 "逻辑应用" 边栏选项卡上的 "**监视**" 下, 选择 "**诊断** > **诊断设置**"。
 
    ![依次转到“监视”、“诊断”、“诊断设置”](media/logic-apps-monitor-your-logic-apps/logic-app-diagnostics.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "58112307"
 
    ![输入搜索字符串](media/logic-apps-monitor-your-logic-apps/oms-start-query.png)
 
-   详细了解如何[如何在 Azure Monitor 日志中查找数据](../log-analytics/log-analytics-log-searches.md)。
+   详细了解[如何查找 Azure Monitor 日志中的数据](../log-analytics/log-analytics-log-searches.md)。
 
 5. 在结果页的左侧栏中，选择要查看的时间范围。
 若要通过添加筛选器优化查询，请选择“+添加”。
@@ -137,7 +137,7 @@ ms.locfileid: "58112307"
 6. 在“添加筛选器”下，输入筛选器名称，以便查找所需的筛选器。 选择筛选器，然后选择“+添加”。
 
    本示例使用“status”一词在“AzureDiagnostics”下查找失败的事件。
-   此处已选中 status_s 的筛选器。
+   此处已选中 status_s的筛选器。
 
    ![选择筛选器](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
@@ -155,10 +155,10 @@ ms.locfileid: "58112307"
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>扩展将诊断数据用于其他服务的方式和位置
 
-Azure Monitor 日志，以及可以扩展如何使用逻辑应用的诊断数据与其他 Azure 服务，例如： 
+结合使用 Azure Monitor 日志后，可以扩展将逻辑应用的诊断数据用于其他 Azure 服务的方式，例如： 
 
 * [在 Azure 存储中存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
+* [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
 然后，可通过使用其他服务（如 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)和 [Power BI](../azure-monitor/platform/powerbi.md)）的遥测数据和分析来进行实时监视。 例如：
 
@@ -178,7 +178,7 @@ Azure Monitor 日志，以及可以扩展如何使用逻辑应用的诊断数据
 
 要监视逻辑应用的特定指标或超出的阈值，请[在 Azure 中设置警报](../azure-monitor/platform/alerts-overview.md)。 了解 [Azure 中的指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。 
 
-若要设置警报，而无需[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)，请执行以下步骤。 有关更高级的警报条件和操作，[设置 Azure Monitor 日志](#azure-diagnostics)过。
+若要设置警报而不[Azure Monitor 日志](../log-analytics/log-analytics-overview.md), 请执行以下步骤。 有关更高级的警报条件和操作，也可以[设置 Azure Monitor 日志](#azure-diagnostics)。
 
 1. 在“逻辑应用”边栏选项卡菜单的“监视”下，选择“诊断” > “警报规则” > “添加警报”，如下所示：
 
@@ -270,9 +270,29 @@ Azure Monitor 日志，以及可以扩展如何使用逻辑应用的诊断数据
     }
   }
   ```
+  下面是使用“初始化变量”操作的另一个示例。 该示例从操作的输入添加跟踪的属性，其中输入是数组，而不是记录。  
+
+  ``` json
+  "actions": { 
+   "Initialize_variable": { 
+      "inputs": { 
+         "variables": [{ 
+            "name": "ConnectorName", 
+            "type": "String", 
+            "value": "SFTP-SSH" 
+         }]
+      },
+      "runAfter": {},
+      "trackedProperties": { 
+         "Track1": "@action().inputs.variables[0].value"
+      },
+      "type": "InitializeVariable"
+   } 
+  }
+  ```
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建模板以用于逻辑应用部署和版本管理](../logic-apps/logic-apps-create-deploy-template.md)
+* [自动完成逻辑应用部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [具有 Enterprise Integration Pack 的 B2B 方案](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [监视 B2B 消息](../logic-apps/logic-apps-monitor-b2b-message.md)

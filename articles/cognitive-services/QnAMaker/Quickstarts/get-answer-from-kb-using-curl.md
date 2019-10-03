@@ -7,23 +7,23 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 04/16/2019
+ms.topic: quickstart
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: ad4b40d649d4e4cbc17d6aec5d8bc7308012b927
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: b698b40546ee1655ebbef3980692ede6b51fc7f1
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677419"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803027"
 ---
 # <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>快速入门：使用 cURL 从知识库获取答案
 
 此基于 cURL 的快速入门详细介绍如何从知识库获取答案。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 最新的 [cURL](https://curl.haxx.se/)。
+* 最新的 [  cURL](https://curl.haxx.se/)。
 * 必须拥有 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)，并拥有[包含问题和答案的知识库](../Tutorials/create-publish-query-in-portal.md)。
 
 ## <a name="publish-to-get-endpoint"></a>通过发布来获取终结点
@@ -32,7 +32,7 @@ ms.locfileid: "59677419"
 
 ## <a name="use-production-endpoint-with-curl"></a>通过 cURL 使用生产终结点
 
-发布知识库后，“发布”页将显示 HTTP 请求设置以生成答案。 “CURL”选项卡显示了从命令行工具 [CURL](https://www.getpostman.com) 生成答案所需的设置。
+发布知识库后，“发布”页将显示 HTTP 请求设置以生成答案  。  “CURL”选项卡显示了从命令行工具 [CURL](https://www.getpostman.com) 生成答案所需的设置。
 
 [![发布结果](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 
@@ -52,7 +52,7 @@ ms.locfileid: "59677419"
           "questions": [
             "How do I programmatically update my Knowledge Base?"
           ],
-          "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600",
+          "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update",
           "score": 100.0,
           "id": 18,
           "source": "Custom Editorial",
@@ -69,7 +69,7 @@ ms.locfileid: "59677419"
 
 ## <a name="use-staging-endpoint-with-curl"></a>与 cURL 配合使用临时终结点
 
-如果你想要从过渡终结点中获得答案，使用`isTest`正文属性。
+如果想要从暂存终结点获取答案，请使用 `isTest` 正文属性。
 
 ```json
 isTest:true

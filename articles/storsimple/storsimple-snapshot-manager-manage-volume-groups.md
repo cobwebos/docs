@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: 6067a88cd42d29c3d2f4b74580095424de77561e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: HT
+ms.openlocfilehash: e84bc790ac577796e91be010deecc8c5cea1b010
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23109845"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64699713"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>使用 StorSimple Snapshot Manager 创建和管理卷组
 ## <a name="overview"></a>概述
@@ -33,7 +33,7 @@ ms.locfileid: "23109845"
 
 ![卷组节点](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Volume_groups.png)
 
-**图 1：StorSimple Snapshot Manager 卷组节点** 
+图 1：**StorSimple Snapshot Manager 卷组节点** 
 
 本教程介绍如何使用 StorSimple Snapshot Manager 执行以下操作：
 
@@ -48,15 +48,15 @@ ms.locfileid: "23109845"
 ## <a name="view-volume-groups"></a>查看卷组
 如果单击“**卷组**”节点，“**结果**”窗格会显示有关每个卷组的以下信息，具体取决于所选择的列。 （“**结果**”窗格中的列是可以配置的。 右键单击“**卷**”节点，选择“**查看**”，并选择“**添加/删除列**”。）
 
-| 结果列 | 说明 |
+| 结果列 | 描述 |
 |:--- |:--- |
-| 名称 |“**名称**”列包含卷组的名称。 |
-| Application |“**应用程序**”列显示在 Windows 主机上当前已安装且正在运行的 VSS 编写器的数目。 |
+| Name |“**名称**”列包含卷组的名称。 |
+| 应用程序 |“**应用程序**”列显示在 Windows 主机上当前已安装且正在运行的 VSS 编写器的数目。 |
 | 选定 |“**选定**”列显示卷组中包含的卷数。 零 (0) 表示没有任何应用程序与卷组中的卷相关联。 |
-| 已导入 |“**已导入**”列显示已导入卷数。 设置为“True”时，此列指示卷组是从 Azure 门户导入的，而不是在 StorSimple Snapshot Manager 中创建的。 |
+| 已导入 |“**已导入**”列显示已导入卷数。 设置为“True”  时，此列指示卷组是从 Azure 门户导入的，而不是在 StorSimple Snapshot Manager 中创建的。 |
 
 > [!NOTE]
-> StorSimple Snapshot Manager 卷组还会显示在 Azure 门户中的“备份策略”选项卡上。
+> StorSimple Snapshot Manager 卷组还会显示在 Azure 门户中的“备份策略”  选项卡上。
 > 
 > 
 

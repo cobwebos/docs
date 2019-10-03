@@ -4,23 +4,22 @@ description: 本文逐步讲解如何使用 Azure CLI 对资源进行平台支�
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d6f5a877-05b6-4127-a545-3f5bede4e479
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 34dad39e3784dd0bc73e3be108d6b31d4f479a1e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7af101b036e8e40a14ad5d9931cc897cb1758ea0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543264"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082784"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型
 以下步骤演示如何使用 Azure 命令行接口 (CLI) 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure 资源管理器部署模型。 本文中的操作需要 [Azure 经典 CLI](../../cli-install-nodejs.md)。 由于 Azure CLI 仅适用于 Azure 资源管理器资源，因此它不能用于此迁移。
@@ -62,7 +61,7 @@ ms.locfileid: "57543264"
 > [!NOTE]
 > 注册是一次性步骤，但必须在尝试迁移之前完成。 如果不注册，会看到以下错误消息 
 > 
-> *BadRequest:Subscription is not registered for migration.*（BadRequest：订阅尚未注册迁移。） 
+> *BadRequest:Subscription is not registered for migration.* （BadRequest：订阅尚未注册迁移。） 
 > 
 > 
 
@@ -96,7 +95,7 @@ azure vm list-usage -l "<Your VNET or Deployment's Azure region"
     azure config mode asm
 
 
-## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>步骤 4：选项 1-迁移云服务中的虚拟机
+## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>步骤 4：选项 1 - 迁移云服务中的虚拟机
 使用以下命令获取云服务列表，并选取要迁移的云服务。 请注意，如果云服务中的 VM 在虚拟网络中或者具有 Web/辅助角色，会收到错误消息。
 
     azure service list
@@ -135,7 +134,7 @@ azure service deployment validate-migration <serviceName> <deploymentName> new "
 
 
 
-## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>步骤 4：选项 2-迁移虚拟网络中的虚拟机
+## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>步骤 4：选项 2 - 迁移虚拟网络中的虚拟机
 选取要迁移的虚拟网络。 请注意，如果虚拟网络包含的 Web/辅助角色或 VM 的配置不受支持，会收到验证错误消息。
 
 使用以下命令获取订阅中的所有虚拟网络。
@@ -146,7 +145,7 @@ azure service deployment validate-migration <serviceName> <deploymentName> new "
 
 ![命令行屏幕截图，其中整个虚拟网络名称已突出显示。](../media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
 
-在上面的示例中，**virtualNetworkName** 是完整名称 **"Group classicubuntu16 classicubuntu16"**。
+在上面的示例中，**virtualNetworkName** 是完整名称 **"Group classicubuntu16 classicubuntu16"** 。
 
 首先，请使用以下命令验证用户是否可以迁移虚拟网络：
 

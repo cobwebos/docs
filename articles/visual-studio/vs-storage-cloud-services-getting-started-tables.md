@@ -3,7 +3,7 @@ title: 开始使用表存储和 Visual Studio 连接服务（云服务）| Micro
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的云服务项目中使用 Azure 表存储
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: a3a11ed8-ba7f-4193-912b-e555f5b72184
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: cec8ab9d678ff559176580fa8eccc261f449f4c5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5e8c1a92e79eea61e2807c7007ccaea5819e8529
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012879"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510717"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure 表存储和 Visual Studio 连接服务（云服务项目）
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -29,7 +29,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 
 若要开始，首先需要在存储帐户中创建表。 我们将展示如何使用代码创建 Azure 表，以及如何执行基本的表和实体操作，例如添加、修改、读取和删除表实体。 示例是使用 C\# 代码编写的并使用了[适用于 .NET 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
 
-**注意：** 一些执行调出 Azure 存储的 Api 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](https://msdn.microsoft.com/library/hh191443.aspx)。 下面的代码假定正在使用异步编程方法。
+**注意：** 执行 Azure 存储调用的一些 Api 是异步的。 有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](https://msdn.microsoft.com/library/hh191443.aspx)。 下面的代码假定正在使用异步编程方法。
 
 * 有关以编程方式操作表的详细信息，请参阅 [Get started with Azure Table storage using .NET](../storage/storage-dotnet-how-to-use-tables.md)（通过 .NET 开始使用 Azure 表存储）。
 * 有关 Azure 存储的常规信息，请参阅[存储文档](https://azure.microsoft.com/documentation/services/storage/)。

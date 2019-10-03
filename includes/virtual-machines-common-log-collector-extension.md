@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505711"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172974"
 ---
 若要诊断 Microsoft Azure 云服务的问题，需要在问题发生时收集虚拟机上该服务的日志文件。 可以使用 AzureLogCollector 扩展按需从一个或多个云服务 VM（通过 Web 角色和辅助角色）执行一次性日志收集，并将收集到的文件传输到 Azure 存储帐户 - 所有这些操作都无需远程登录到任何 VM。
 
 > [!NOTE]
-> 有关大多数记录的信息的说明，请参阅 http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp。
+> 有关大多数记录的信息的说明，请参阅 http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp 。
 > 
 > 
 
 有两种收集模式，其使用取决于要收集的文件的类型。
 
-* **仅 Azure 来宾代理日志 (GA)**。 此收集模式包括与 Azure 来宾代理以及其他 Azure 组件相关的所有日志。
-* **所有日志（完整）**。 此收集模式会收集 GA 模式下的所有文件以及：
+* **仅 Azure 来宾代理日志 (GA)** 。 此收集模式包括与 Azure 来宾代理以及其他 Azure 组件相关的所有日志。
+* **所有日志（完整）** 。 此收集模式会收集 GA 模式下的所有文件以及：
   
   * 系统和应用程序事件日志
   * HTTP 错误日志
@@ -41,7 +41,7 @@ ms.locfileid: "58505711"
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 * 有一个用于扩展的存储帐户，保存生成的 zip 文件。
-* Azure PowerShell。 请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)] 有关安装说明。
+* Azure PowerShell。 有关安装说明，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 ## <a name="add-the-extension"></a>添加扩展
 可以使用 [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) cmdlet 或[服务管理 REST API](https://msdn.microsoft.com/library/ee460799.aspx) 添加 AzureLogCollector 扩展。

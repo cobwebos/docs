@@ -4,7 +4,7 @@ description: 使用 Azure CLI 捕获 Azure VM 的映像以用于批量部署。
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 5022d765b5dfa4f1f973b7fb4370d5314bb887b8
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 328748b9dd81834b9c69f81bc0bda60c9ad12cb0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731931"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879956"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的映像
 
@@ -30,7 +30,9 @@ ms.locfileid: "55731931"
 
 若要创建一份现有 Linux VM 的副本以用于备份或调试，或从本地 VM 上传专用 Linux VHD，请参阅[上传自定义磁盘映像并根据该映像创建 Linux VM](upload-vhd.md)。  
 
-还可使用“Packer”创建自定义配置。 有关详细信息，请参阅[如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像](build-image-with-packer.md)。
+你可以使用**AZURE VM 映像生成器 (公共预览版)** 服务构建自定义映像, 无需了解任何工具或安装生成管道, 只需提供映像配置, 映像生成器就会创建映像。 有关详细信息, 请参阅[通过 AZURE VM 映像生成器入门](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
+
+另外, 请使用**Packer**创建自定义配置。 有关详细信息，请参阅[如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像](build-image-with-packer.md)。
 
 创建映像前需要以下项：
 
@@ -38,9 +40,9 @@ ms.locfileid: "55731931"
 
 * 安装了最新版 [Azure CLI](/cli/azure/install-az-cli2)，并已使用 [az login](/cli/azure/reference-index#az-login) 登录 Azure 帐户。
 
-## <a name="quick-commands"></a>快速命令
+## <a name="prefer-a-tutorial-instead"></a>要改用教程吗？
 
-有关本文的用于测试、评估或了解 Azure 中的 VM 的简化版本，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。
+有关本文的用于测试、评估或了解 Azure 中的 VM 的简化版本，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。  否则, 请继续阅读此处以获取完整的图片。
 
 
 ## <a name="step-1-deprovision-the-vm"></a>步骤 1：取消设置 VM
@@ -56,18 +58,20 @@ ms.locfileid: "55731931"
    > 仅在将捕获为映像的 VM 上运行此命令。 此命令无法保证映像中的所有敏感信息均已清除，或该映像适合再分发。 `+user` 参数还会删除上次预配的用户帐户。 要保留 VM 中的用户帐户凭据，请仅使用 `-deprovision`。
  
 3. 按 **y** 继续。 添加 `-force` 参数即可免除此确认步骤。
-4. 该命令完成后，请输入“退出”以关闭 SSH 客户端。
+4. 该命令完成后，请输入“退出”以关闭 SSH 客户端。  VM 将在此时仍在运行。
 
 ## <a name="step-2-create-vm-image"></a>步骤 2：创建 VM 映像
 使用 Azure CLI 将 VM 标记为通用化并捕获映像。 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
-1. 对使用 [az vm deallocate](/cli/azure/vm) 取消设置的 VM 解除分配。 以下示例在名为 myResourceGroup 的资源组中释放名为 myVM 的 VM。
+1. 对使用 [az vm deallocate](/cli/azure/vm) 取消设置的 VM 解除分配。 以下示例在名为 myResourceGroup 的资源组中释放名为 myVM 的 VM。  
    
     ```azurecli
     az vm deallocate \
       --resource-group myResourceGroup \
       --name myVM
     ```
+    
+    等待 VM 完全解除分配, 然后再继续。 完成此命令可能需要几分钟。  虚拟机在解除分配期间关闭。
 
 2. 使用 [az vm generalize](/cli/azure/vm) 将 VM 标记为通用化。 以下示例将名为 myResourceGroup 的资源组中名为 myVM 的 VM 标记为通用化。
    
@@ -76,6 +80,8 @@ ms.locfileid: "55731931"
       --resource-group myResourceGroup \
       --name myVM
     ```
+
+    已通用化的 VM 无法再重新启动。
 
 3. 使用 [az image create](/cli/azure/image#az-image-create) 创建 VM 资源的映像。 以下示例使用名为 myVM 的 VM 资源在名为 myResourceGroup 的资源组中创建名为 myImage 的映像。
    
@@ -89,6 +95,8 @@ ms.locfileid: "55731931"
    > 该映像在与源 VM 相同的资源组中创建。 可以在订阅内的任何资源组中从此映像创建虚拟机。 从管理角度来看，你可能希望为 VM 资源和映像创建特定的资源组。
    >
    > 如果希望将映像存储在具有区域复原能力的存储中，需要在支持[可用性区域](../../availability-zones/az-overview.md)的区域中创建该快照并包括 `--zone-resilient true` 参数。
+   
+此命令返回描述 VM 映像的 JSON。 保存此输出以供日后参考。
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>步骤 3：从捕获的映像创建 VM
 使用通过 [az vm create](/cli/azure/vm) 创建的映像来创建 VM。 以下示例从名为 myImage 的映像创建名为 myVMDeployed 的 VM。

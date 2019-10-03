@@ -10,31 +10,30 @@ ms.topic: conceptual
 author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
-manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: f71fe4ff14e5a6f5fd6b91713970a097e4e56fb9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9fa3444244cbd51c3f14abcfef5212a366cadbd2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844120"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68550555"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>迁移到新的弹性数据库作业
 
 现已提供升级版本的[弹性数据库作业](elastic-jobs-overview.md)。
 
-如果有现有的客户托管版本[弹性数据库作业](sql-database-elastic-jobs-overview.md)，提供的迁移 cmdlet 和脚本有助于轻松迁移到最新版本。
+如果你有现有的客户托管版本的弹性数据库作业, 则将提供迁移 cmdlet 和脚本, 以便轻松地迁移到最新版本。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 弹性数据库作业的升级版本有一组新的 PowerShell cmdlet，可在迁移期间使用。 这些新的 cmdlet 将所有现有的作业凭据、目标（包括数据库、服务器、自定义集合）、作业触发器、作业计划、作业内容和作业转移到新的弹性作业代理。
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>安装最新的弹性作业 cmdlet
 
-如果还没有 Azure 订阅，请在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果还没有 Azure 订阅, 请在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-安装**Az.Sql** 1.1.1-preview 模块，若要获取最新的弹性作业 cmdlet。 以管理员访问权限在 PowerShell 中运行以下命令。
+安装 **Az.Sql** 1.1.1-preview 模块以获得最新弹性作业 cmdlet。 以管理员访问权限在 PowerShell 中运行以下命令。
 
 ```powershell
 # Installs the latest PackageManagement powershell package which PowerShellGet v1.6.5 is dependent on
@@ -93,7 +92,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 现在旧的和新的弹性作业 cmdlet 都已初始化，可将作业凭据、目标和作业迁移到新的作业数据库。
 
-### <a name="setup"></a>设置
+### <a name="setup"></a>安装
 
 ```powershell
 $ErrorActionPreference = "Stop";

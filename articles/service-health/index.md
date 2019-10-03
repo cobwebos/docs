@@ -5,28 +5,48 @@ author: stephbaron
 layout: LandingPage
 ms.service: service-health
 ms.topic: landing-page
-ms.date: 03/4/2019
+ms.date: 06/05/2019
 ms.author: stbaron
-ms.openlocfilehash: cf7084b569e2c90337e475beb9f49563214941d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05ea33076f329a6244d4259bf3f973b88bf1f2b5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506868"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073397"
 ---
 # <a name="azure-service-health-documentation"></a>Azure 服务运行状况文档
 
-Azure 提供了一系列的体验，以便你随时了解有关云资源运行状况的最新信息，包括当前和将来的问题，例如影响服务的事件、计划内维护以及其他可能影响可用性的更改。
+Azure 服务运行状况是一个体验套件，在你受到 Azure 服务中的问题影响时提供个性化指导和支持。 Azure 服务运行状况会通知你、帮助你了解问题影响，并在问题得以解决时告知你。 此外，Azure 服务运行状况还帮助你对可能会影响资源可用性的定期维护和更改做好准备。
 
-你可能熟悉 **[Azure 状态页](https://status.azure.com)**（所有 Azure 区域的所有 Azure 服务的运行状况的全局视图）。 对于具有广泛影响的事件而言，该状态页是一个很好的参考，但我们强烈建议当前的 Azure 用户利用 **Azure 服务运行状况**随时了解 Azure 事件和维护的相关信息。
+Azure 服务运行状况由以下部分组成：
 
-**[Azure 服务运行状况](service-health-overview.md)** 提供正在使用的 Azure 服务和区域的运行状况的个性化视图。 这是查找有关停机、计划内维护活动以及其他运行状况建议等影响服务的信息的最佳地方，因为已经过身份验证的 Azure 服务运行状况体验知道你当前使用哪些服务和资源。 使用服务运行状况的最佳方法是，设置服务运行状况警报，以便在服务问题、计划内维护或其他更改可能会影响你使用的 Azure 服务和区域时通过你首选的通信通道通知你。
-
-**[Azure 资源运行状况](resource-health-overview.md)** 提供有关单个云资源（例如特定虚拟机实例）运行状况的信息。 使用 Azure Monitor，还可以配置警报以通知你有关云资源可用性更改的信息。 Azure 资源运行状况将随 Azure Monitor 通知一起，帮助你更好地随时了解资源可用性并快速评估问题是由于你方导致还是与 Azure 平台事件相关。
+ * **Azure 状态** - Azure 服务运行状况的全局视图
+ * **服务运行状况** - Azure 服务运行状况的个性化视图
+ * **资源运行状况** - Azure 服务预配给你的各个资源的运行状况的更深入视图
 
 同时，这些体验在与你最相关的粒度上提供 Azure 运行状况的综合视图。
 
+有关每项服务的更多深度信息，请参阅[服务运行状况概述](overview.md)
+
 <ul class="panelContent cardsFTitle">
+    <li>
+        <a href="https://www.microsoft.com/en-us/videoplayer/embed/RE2OgX6">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>观看有关服务运行状况的视频介绍</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
     <li>
         <a href="/azure/service-health/azure-status-overview">
         <div class="cardSize">
@@ -75,24 +95,6 @@ Azure 提供了一系列的体验，以便你随时了解有关云资源运行�
                     </div>
                     <div class="cardText">
                         <h3>了解有关资源运行状况的详细信息</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://azure.microsoft.com/resources/videos/announcing-azure-service-health/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>查看有关服务运行状况的视频介绍</h3>
                     </div>
                 </div>
             </div>

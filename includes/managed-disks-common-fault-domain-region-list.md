@@ -4,18 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ee40c3ad692deccbc185fa7f8e51dd25eeaf95d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
+ms.openlocfilehash: 40f0a667ffa23010ef00ed105454ab305171cc19
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52439991"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812491"
 ---
 ### <a name="number-of-fault-domains-per-region"></a>每个区域的容错域数
 
 | 区域              | 最大容错域数  |
 |---------------------|-------------------------|
-| 美国东部             | 3                       |
+| East US             | 3                       |
 | 美国东部 2           | 3                       |
 | 美国西部             | 3                       |
 | 美国西部 2           | 2                       |
@@ -40,9 +40,12 @@ ms.locfileid: "52439991"
 | 印度西部          | 2                       |
 | 韩国中部       | 2                       |
 | 韩国南部         | 2                       |
+| 阿拉伯联合酋长国北部           | 2                       |
 |                     |                         |
 | 澳大利亚东部      | 2                       |
 | 澳大利亚东南部 | 2                       |
+| 澳大利亚中部   | 2                       |
+| 澳大利亚中部 2 | 2                       |
 |                     |                         |
 | 巴西南部        | 2                       |
 |                     |                         |

@@ -3,23 +3,22 @@ title: 通过 PowerShell 开始使用 Azure 安全中心和保护你的网络 | 
 description: 本文档将指导你完成通过 PowerShell cmdlet 开始使用 Azure 安全中心的过程。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e400fcbf-f0a8-4e10-b571-5a0d0c3d0c67
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/2/2018
-ms.author: rkarlin
-ms.openlocfilehash: 73043680ea7b8b63a329d0a457449b635b7b80f2
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.date: 10/02/2018
+ms.author: memildin
+ms.openlocfilehash: 8e2f7b87efe89166175748cec310f24575b7f102
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223744"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201221"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>使用 PowerShell 自动载入 Azure 安全中心
 
@@ -42,7 +41,7 @@ ms.locfileid: "58223744"
 
 6. 分配安全中心的[默认安全策略](tutorial-security-policy.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 这些步骤应在运行安全中心 cmdlet 前执行：
 
@@ -98,10 +97,10 @@ ms.locfileid: "58223744"
 
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 若要详细了解如何通过 PowerShell 来自动开始使用安全中心，请参阅以下文章：
 
-* [Az.Security](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Security/Commands.Security/help/Az.Security.md)。
+* [Az.Security](https://docs.microsoft.com/powershell/module/az.security)。
 
 若要详细了解安全中心，请参阅以下文章：
 

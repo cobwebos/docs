@@ -6,14 +6,14 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/03/2019
-ms.author: dwalthermsft
-ms.openlocfilehash: cc873ad441c93a7fce54c275e9f7d52f0b044319
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
-ms.translationtype: HT
+ms.date: 07/29/2019
+ms.author: dwalther
+ms.openlocfilehash: d182a4aea00581b044b5734a5b7d6831f9e55c45
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302419"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638475"
 ---
 # <a name="public-preview-service-limits"></a>公共预览版服务限制
 

@@ -1,6 +1,6 @@
 ---
 title: H264 多比特率 1080p Audio 5.1 | Microsoft 文档
-description: 本主题概述“H264 多比特率 1080p Audio 5.1”任务预设。
+description: 本主题概述“H264 多比特率 1080p Audio 5.1”任务预设  。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 53ea54406969d246845018191960b13b8ee9a08a
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201545"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61129757"
 ---
 # <a name="h264-multiple-bitrate-1080p-audio-51"></a>H264 多比特率 1080p Audio 5.1 
 

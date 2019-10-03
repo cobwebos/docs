@@ -3,17 +3,17 @@ title: 在 Azure Maps 中管理身份验证 | Microsoft Docs
 description: 可以使用 Azure 门户管理 Azure Maps 中的身份验证。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 414ca7156fd59ec1dc08e45c73e9eb30835078d4
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 1dc63a2c2350ad4f1d02d0c1b22050293d7b866c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259918"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67837820"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
 
@@ -59,19 +59,19 @@ ms.locfileid: "58259918"
 
 ## <a name="grant-rbac-to-azure-maps"></a>向 Azure Maps 授予 RBAC
 
-你将 Azure Maps 帐户与 Azure AD 租户相关联后，您可以通过将用户或应用程序到一个或多个 Azure Maps 访问控制角色分配授予访问控制。
+你将 Azure Maps 帐户与 Azure AD 租户相关联后，您可以通过将用户、 组或应用程序到一个或多个 Azure Maps 访问控制角色分配授予访问控制。
 
-1. 转到**访问控制 (IAM)**，选择**角色分配**，然后选择**添加角色分配**。
+1. 转到**访问控制 (IAM)** ，选择**角色分配**，然后选择**添加角色分配**。
 
     ![授予 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在中**添加的角色分配**窗口下**角色**，选择**Azure Maps 日期读取器 （预览版）**。 在“分配访问权限至”下，选择“Azure AD 用户、组或服务主体”。 下**选择**，选择用户或应用程序。 选择“保存”。
+2. 在中**添加的角色分配**窗口下**角色**，选择**Azure Maps 日期读取器 （预览版）** 。 在“分配访问权限至”下，选择“Azure AD 用户、组或服务主体”   。 下**选择**，选择用户或应用程序。 选择**保存**。
 
     ![添加角色分配](./media/how-to-manage-authentication/add-role-assignment.png)
 
 ## <a name="view-available-azure-maps-rbac-roles"></a>查看可用 Azure Maps RBAC 角色
 
-若要查看 Azure 地图提供的基于角色的访问控制 (RBAC) 角色，请转到**访问控制 (IAM)**，选择**角色**，然后搜索角色从和**Azure Maps**. 这些是可以授予访问权限的角色。
+若要查看 Azure 地图提供的基于角色的访问控制 (RBAC) 角色，请转到**访问控制 (IAM)** ，选择**角色**，然后搜索角色从和**Azure Maps**. 这些是可以授予访问权限的角色。
 
 ![查看可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "58259918"
 
 RBAC 提供精细的访问控制。
 
-若要查看用户和已被授予 Azure 地图的 RBAC 的应用，请转到**访问控制 (IAM)**，选择**角色分配**，然后筛选**Azure Maps**。
+若要查看用户和已被授予 Azure 地图的 RBAC 的应用，请转到**访问控制 (IAM)** ，选择**角色分配**，然后筛选**Azure Maps**。
 
 ![查看用户和应用程序授予 RBAC](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
@@ -98,4 +98,8 @@ RBAC 提供精细的访问控制。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关 Azure AD 身份验证和 Azure Maps Web SDK 的详细信息，请参阅 [Azure AD 和 Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。
+若要了解有关 Azure AD 身份验证和 Azure Maps Web SDK 的详细信息，请参阅 [Azure AD 和 Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。
+
+了解如何查看 Azure Maps 帐户的 API 使用情况指标：
+> [!div class="nextstepaction"] 
+> [查看使用情况指标](how-to-view-api-usage.md)

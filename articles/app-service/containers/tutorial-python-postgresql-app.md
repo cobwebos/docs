@@ -1,43 +1,43 @@
 ---
-title: 在 Linux 上将 Python (Django) 与 PostgreSQL 配合使用 - Azure 应用服务 | Microsoft Docs
-description: 了解如何在 Azure 中运行可以连接到 PostgreSQL 数据库的数据驱动型 Python 应用。 本教程中使用 Django。
+title: 在 Linux 上将 Python (Django) Web 应用与 PostgreSQL 配合使用 - Azure 应用服务 | Microsoft Docs
+description: 了解如何在 Azure 中运行可以连接到 PostgreSQL 数据库的数据驱动型 Python (Django) Web 应用。
 services: app-service\web
 documentationcenter: python
 author: cephalin
-manager: jeconnoc
+manager: gwallace
 ms.service: app-service-web
 ms.workload: web
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: beverst;cephalin
+ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b3d262a33ecbc35ada278019ee0998486bc92efe
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 1fc322cf7e425e35751369ab8daf1ef1809d5f07
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678915"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203261"
 ---
-# <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>在 Azure 应用服务中生成 Python 和 PostgreSQL 应用
+# <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>在 Azure 应用服务中使用 PostgreSQL 生成 Python (Django) Web 应用
 
-[Linux 应用服务](app-service-linux-intro.md)提供高度可缩放、自修补的 Web 托管服务。 本教程介绍如何创建一个数据驱动型 Python 应用，使用 PostgreSQL 作为数据库后端。 完成后，会有一个在 Linux 上的应用服务中运行的 Django 应用程序。
+[Linux 应用服务](app-service-linux-intro.md)提供高度可缩放、自修补的 Web 托管服务。 本教程介绍如何创建一个数据驱动型 Python (Django) Web 应用，使用 PostgreSQL 作为数据库后端。 完成后，会有一个在 Linux 上的 Azure 应用服务中运行的 Django Web 应用程序。
 
-![Linux 应用服务中的 Python Django 应用](./media/tutorial-python-postgresql-app/django-admin-azure.png)
+![Linux 应用服务中的 Python Django Web 应用](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 PostgreSQL 数据库
-> * 将 Python 应用连接到 PostgreSQL
-> * 将应用部署到 Azure
+> * 将 Python Web 应用连接到 PostgreSQL
+> * 将 Python Web 应用部署到 Azure
 > * 查看诊断日志
-> * 在 Azure 门户中管理应用
+> * 在 Azure 门户中管理 Python Web 应用
 
 > [!NOTE]
 > 在创建 Azure Database for PostgreSQL 之前，请检查[你所在地区中可用的计算代系](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores)。
 
-可以在 macOS 中执行本文中的步骤。 Linux 和 Windows 指令在大多数情况下相同，本教程中并未详述差异。
+可以在 macOS 上执行本文中的步骤，Linux 和 Windows 说明在大多数情况下相同，本教程中并未详述差异。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -65,7 +65,7 @@ psql postgres
 
 如果连接成功，则表示 PostgreSQL 数据库已在运行。 否则，请确保按照[下载 - PostgreSQL Core Distribution](https://www.postgresql.org/download/) 中针对操作系统的说明启动本地 PostgresQL 数据库。
 
-创建一个名为 pollsdb 的数据库，并设置一个名为 manager 的单独数据库用户，将其密码设置为supersecretpass。
+创建一个名为 pollsdb 的数据库，并设置一个名为 manager 的单独数据库用户，将其密码设置为supersecretpass    。
 
 ```sql
 CREATE DATABASE pollsdb;
@@ -92,7 +92,7 @@ git clone https://github.com/Azure-Samples/djangoapp.git
 cd djangoapp
 ```
 
-此示例存储库包含一个 [Django](https://www.djangoproject.com/) 应用程序。 它是你通过 [Django 文档中的入门教程](https://docs.djangoproject.com/en/2.1/intro/tutorial01/)获取的同一数据驱动型应用。 本教程不讲述 Django，而是介绍如何将 Django 应用（或其他数据驱动型 Python 用于）部署到应用服务，然后再运行它。
+此示例存储库包含一个 [Django](https://www.djangoproject.com/) 应用程序。 它是你通过 [Django 文档中的入门教程](https://docs.djangoproject.com/en/2.1/intro/tutorial01/)获取的同一数据驱动型应用。 本教程不讲述 Django，而是介绍如何将 Django Web 应用（或其他数据驱动型 Python 应用）部署到 Azure 应用服务，然后再运行它。
 
 ### <a name="configure-environment"></a>配置环境
 
@@ -128,7 +128,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-当应用完全加载后，将看到以下类似消息：
+当 Django Web 应用完全加载后，将看到以下类似消息：
 
 ```bash
 Performing system checks...
@@ -140,13 +140,13 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-在浏览器中导航至 `http://localhost:8000` 。 应该看到消息 `No polls are available.`。 
+在浏览器中转到 `http://localhost:8000`。 应该看到消息 `No polls are available.`。 
 
-导航到 `http://localhost:8000/admin`，使用在上一步创建的管理员用户登录。 单击“问题”旁边的“添加”，创建一个包含一些选项的轮询问题。
+转到 `http://localhost:8000/admin`，使用在上一步创建的管理员用户登录。 选择“问题”旁边的“添加”，创建一个包含一些选项的轮询问题。  
 
 ![在本地运行的 Python Django 应用程序](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-再次导航到 `http://localhost:8000`，此时会看到轮询问题已显示。
+再次转到 `http://localhost:8000`，此时会看到该轮询问题已显示。
 
 Django 示例应用程序在数据库中存储用户数据。 如果成功添加轮询问题，应用会将数据写入本地 PostgreSQL 数据库。
 
@@ -215,7 +215,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 
 ## <a name="connect-python-app-to-production-database"></a>将 Python 应用连接到生产数据库
 
-此步骤将 Django 示例应用连接到已创建的 Azure Database for PostgreSQL 服务器。
+此步骤将 Django Web 应用连接到已创建的 Azure Database for PostgreSQL 服务器。
 
 ### <a name="create-empty-database-and-user-access"></a>创建空数据库和用户访问权限
 
@@ -236,7 +236,7 @@ GRANT ALL PRIVILEGES ON DATABASE pollsdb TO manager;
 键入 `\q` 退出 PostgreSQL 客户端。
 
 > [!NOTE]
-> 最佳做法是使用特定应用程序的受限权限而不是管理员用户来创建数据库用户。 在此示例中，`manager` 用户只具有 `pollsdb` 数据库的完整权限。
+> 最佳做法是使用特定应用程序的受限权限而不是管理员用户来创建数据库用户。 在此示例中，`manager` 用户只具有 `pollsdb` 数据库的完整权限。 
 
 ### <a name="test-app-connectivity-to-production-database"></a>测试从应用到生产数据库的连接
 
@@ -269,13 +269,13 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-再次导航到 `http://localhost:8000`。 应该会再次看到消息 `No polls are available.`。 
+再次转到 `http://localhost:8000`。 应该会再次看到消息 `No polls are available.`。 
 
-导航到 `http://localhost:8000/admin`，使用已创建的管理员用户登录，然后像以前一样创建轮询问题。
+转到 `http://localhost:8000/admin`，使用已创建的管理员用户登录，然后像以前一样创建轮询问题。
 
 ![在本地运行的 Python Django 应用程序](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-再次导航到 `http://localhost:8000`，此时会看到轮询问题已显示。 现在，应用正将数据写入 Azure 中的数据库。
+再次转到 `http://localhost:8000`，此时会看到该轮询问题已显示。 现在，应用正将数据写入 Azure 中的数据库。
 
 ## <a name="deploy-to-azure"></a>“部署到 Azure”
 
@@ -283,7 +283,7 @@ python manage.py runserver
 
 ### <a name="configure-repository"></a>配置存储库
 
-Django 会验证传入请求中的 `HTTP_HOST` 标头。 若要在应用服务中运行 Django 应用，需要将应用的完全限定域名添加到允许的主机中。 打开 _azuresite/settings.py_，找到 `ALLOWED_HOSTS` 设置。 将行更改为：
+Django 会验证传入请求中的 `HTTP_HOST` 标头。 若要在应用服务中运行 Django Web 应用，需要将应用的完全限定域名添加到允许的主机中。 打开 _azuresite/settings.py_，找到 `ALLOWED_HOSTS` 设置。 将行更改为：
 
 ```python
 ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
@@ -336,7 +336,7 @@ git commit -am "configure for App Service"
 
 在本教程的前面部分，你已定义用于连接到 PostgreSQL 数据库的环境变量。
 
-在应用服务的 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置。
+在应用服务的 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置  。
 
 以下示例将数据库连接详细信息指定为应用设置。 
 
@@ -384,13 +384,13 @@ http://<app-name>.azurewebsites.net
 
 你应该会看到此前创建的轮询问题。 
 
-应用服务会检测存储库中的 Django 项目，其方式是在每个由 `manage.py startproject` 默认创建的子目录中查找 _wsgi.py_。 找到该文件后，就会加载 Django 应用。 若要详细了解应用服务如何加载 Python 应用，请参阅[配置内置的 Python 映像](how-to-configure-python.md)。
+应用服务会检测存储库中的 Django 项目，其方式是在每个由 `manage.py startproject` 默认创建的子目录中查找 _wsgi.py_。 找到该文件后，就会加载 Django Web 应用。 若要详细了解应用服务如何加载 Python 应用，请参阅[配置内置的 Python 映像](how-to-configure-python.md)。
 
-导航到 `<app-name>.azurewebsites.net`，使用已创建的同一管理员用户登录。 可以根据需要尝试创建更多的轮询问题。
+转到 `<app-name>.azurewebsites.net`，使用已创建的同一管理员用户登录。 可以根据需要尝试创建更多的轮询问题。
 
 ![在本地运行的 Python Django 应用程序](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
-**祝贺你！** 你已在 Linux 的应用服务中运行 Python 应用。
+祝贺你！  你已在 Linux 的 Azure 应用服务中运行 Python (Django) Web 应用。
 
 ## <a name="stream-diagnostic-logs"></a>流式传输诊断日志
 
@@ -398,13 +398,13 @@ http://<app-name>.azurewebsites.net
 
 ## <a name="manage-your-app-in-the-azure-portal"></a>在 Azure 门户中管理应用
 
-转到 [Azure 门户](https://portal.azure.com)查看已创建的应用。
+转到 [Azure 门户](https://portal.azure.com)查看创建的应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。
+从左侧菜单中选择“应用程序服务”，并选择 Azure 应用的名称。 
 
 ![在门户中导航到 Azure 应用](./media/tutorial-python-postgresql-app/app-resource.png)
 
-默认情况下，门户将显示应用的“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+默认情况下，门户将显示应用的  “概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
 ![Azure 门户中的应用服务页](./media/tutorial-python-postgresql-app/app-mgmt.png)
 
@@ -416,10 +416,10 @@ http://<app-name>.azurewebsites.net
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 PostgreSQL 数据库
-> * 将 Python 应用连接到 PostgreSQL
-> * 将应用部署到 Azure
+> * 将 Python Web 应用连接到 PostgreSQL
+> * 将 Python Web 应用部署到 Azure
 > * 查看诊断日志
-> * 在 Azure 门户中管理应用
+> * 在 Azure 门户中管理 Python Web 应用
 
 继续学习下一篇教程，了解如何将自定义 DNS 名称映射到应用。
 

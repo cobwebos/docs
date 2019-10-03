@@ -1,5 +1,5 @@
 ---
-title: B2B 协作用户的 Azure Active Directory 条件性访问 |Microsoft Docs
+title: B2B 协作用户的条件性访问-Azure Active Directory |Microsoft Docs
 description: Azure Active Directory B2B 协作支持多重身份验证 (MFA)，以便对公司应用程序进行选择性访问
 services: active-directory
 ms.service: active-directory
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5234443e234d232a9711274bea2f73427266f6e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5a54e5006a268347148945fbe7fc5f18cfa41036
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113480"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357115"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B 协作用户的条件性访问
 
 ## <a name="multi-factor-authentication-for-b2b-users"></a>针对 B2B 用户的多重身份验证
 通过 Azure AD B2B 协作，组织可以针对 B2B 用户强制实施多重身份验证 (MFA) 策略。 可以在租户、应用或个人用户级别强制实施这些策略，与针对全职员工和组织成员启用这些策略的方式相同。 资源组织中强制实施 MFA 策略。
 
-示例：
+例如：
 1. 公司 A 中的管理员或信息工作者邀请公司 B 中的用户加入公司 A 中的应用程序 Foo。
 2. 公司 A 中的应用程序 *Foo* 配置为在访问时需要进行 MFA。
 3. 公司 B 中的用户尝试访问公司 A 租户中的应用 Foo 时，会要求其完成 MFA 质询。
@@ -63,7 +63,7 @@ ms.locfileid: "58113480"
    Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
    ```
 
-3. 重置特定用户的 MFA 方法，以要求该 B2B 协作用户再次设置身份验证方法。 示例：
+3. 重置特定用户的 MFA 方法，以要求该 B2B 协作用户再次设置身份验证方法。 例如：
 
    ```
    Reset-MsolStrongAuthenticationMethodByUpn -UserPrincipalName gsamoogle_gmail.com#EXT#@ WoodGroveAzureAD.onmicrosoft.com
@@ -89,13 +89,17 @@ ms.locfileid: "58113480"
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>B2B 用户基于设备、位置和风险的条件性访问
 
-Contoso 为其公司数据启用基于设备的条件访问策略时，会阻止从不受 Contoso 管理并且不符合 Contoso 设备策略的设备进行访问。
+当 Contoso 为其公司数据启用基于设备的条件性访问策略时, 将阻止不受 Contoso 管理并且不符合 Contoso 设备策略的设备进行访问。
 
-如果 B2B 用户的设备不受 Contoso 管理，则在强制实施这些策略的任何上下文中，合作伙伴组织中的 B2B 用户进行的访问都将被阻止。 但是，Contoso 可以创建包含特定合作伙伴用户的排除列表，将其排除在基于设备的条件访问策略之外。
+如果 B2B 用户的设备不受 Contoso 管理，则在强制实施这些策略的任何上下文中，合作伙伴组织中的 B2B 用户进行的访问都将被阻止。 但是, Contoso 可以创建包含特定合作伙伴用户的排除列表, 将其从基于设备的条件访问策略中排除。
+
+#### <a name="mobile-application-management-policies-for-b2b"></a>B2B 的移动应用程序管理策略
+
+由于邀请的组织无法查看 B2B 用户的本组织, 因此无法将条件访问应用保护策略应用于 B2B 用户。
 
 #### <a name="location-based-conditional-access-for-b2b"></a>针对 B2B 的基于位置的条件性访问
 
-如果发出邀请的组织能够创建定义其合作伙伴组织的受信任 IP 地址范围，则可以针对 B2B 用户强制实施基于位置的条件访问策略。
+如果邀请的组织能够创建定义其合作伙伴组织的受信任 IP 地址范围, 则可以对 B2B 用户强制实施基于位置的条件性访问策略。
 
 #### <a name="risk-based-conditional-access-for-b2b"></a>针对 B2B 的基于风险的条件性访问
 

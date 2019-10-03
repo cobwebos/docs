@@ -1,25 +1,18 @@
 ---
-title: Azure IoT Edge 模块套餐发布概述 | Microsoft Docs
+title: Azure IoT Edge 模块产品/服务发布概述 |Azure Marketplace
 description: 在 Azure 市场中发布 IoT Edge 模块套餐的过程概述。
 services: Azure, Marketplace, Cloud Partner Portal
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 5b4d4471d9c77b5d13dfd5f8c2e9394b1c2d2a87
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 319031ec99d449ea5866bb5234cc617145954173
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242547"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942617"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge 模块套餐发布概述
 

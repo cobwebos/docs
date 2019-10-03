@@ -1,6 +1,6 @@
 ---
 title: 改进分类器 - 自定义影像服务
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何提高分类器的质量。
 services: cognitive-services
 author: PatrickFarley
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 35f83832b0ceb7507b39095e9cc974d82a480c69
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d71c750185589fd488df70b63fd48e9e674ee3dc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883067"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561041"
 ---
 # <a name="how-to-improve-your-classifier"></a>如何改进分类器
 
@@ -29,7 +29,7 @@ ms.locfileid: "58883067"
 1. 使用新图像来测试预测
 1. 根据预测结果修改现有的训练数据
 
-## <a name="prevent-overfitting"></a>防止过度拟合
+## <a name="prevent-overfitting"></a>阻止过度拟合
 
 有时，分类器将会根据图像中共有的任意特征来学习预测。 例如，创建苹果与柑橘的分类器时，如果使用了手中的苹果和白盘中的柑橘的图像，则分类器可能会过分注重于手与白盘，而不是苹果与柑橘。
 
@@ -39,7 +39,7 @@ ms.locfileid: "58883067"
 
 ## <a name="data-quantity"></a>数据数量
 
-训练图像的数目是最重要的因素。 我们建议使用至少 50 个图像每个标签作为起始点。 使用更少的图像时，过度拟合的风险会提高，同时，性能数字可能会指出质量良好，但模型可能很难处理实际数据。 
+训练图像的数目是最重要的因素。 建议为每个标签使用至少50映像作为起点。 使用更少的图像时，过度拟合的风险会提高，同时，性能数字可能会指出质量良好，但模型可能很难处理实际数据。 
 
 ## <a name="data-balance"></a>数据平衡
 
@@ -73,7 +73,7 @@ ms.locfileid: "58883067"
 
     ![样式图像示例](./media/getting-started-improving-your-classifier/style.png)
 
-## <a name="negative-images"></a>底片图像
+## <a name="negative-images"></a>负片图像
 
 在项目中，有时可能需要添加负示例来使分类器更准确。 负示例是与任何其他标记不匹配的示例。 上传这些图像时，请向其添加特殊的负标签。
 

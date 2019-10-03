@@ -1,63 +1,53 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: 4428bf710df5eae3b06c8abd38eb85d6128a574d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959419"
-documentType: LandingData
-title: 机器学习工作室文档
+### YamlMime:Landing
+title: Azure 机器学习工作室文档
+summary: 机器学习工作室是一个拖放式工具，可用于生成、测试和部署预测分析解决方案。
 metadata:
-  title: Azure 机器学习工作室文档 - 教程和参考 | Microsoft Docs
-  description: 机器学习工作室是一个协作型拖放式工具，可用于根据数据生成、测试和部署预测分析解决方案。 教程、视频和示例模型演示了如何使用工作室来生成及部署机器学习模型。
+  title: 机器学习工作室文档 - Azure
+  description: 机器学习工作室是一个拖放式工具，可用于生成、测试和部署预测分析解决方案。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: studio
   ms.topic: landing-page
+  ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.date: 02/24/2019
-abstract:
-  description: Azure 机器学习工作室是一个协作型拖放式工具，用于根据数据生成、测试和部署预测分析解决方案。 教程、视频和示例模型演示了如何使用工作室来生成及部署机器学习模型。
-sections:
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 按照指导你完成创建和部署模型的扩展教程执行操作：
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="create-experiment">创建你的第一个工作室试验</a>
-    - html: <a href="tutorial-part1-credit-risk">为信用风险创建和部署预测性解决方案</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: 命令行
-      html: <p><a href="powershell-module">PowerShell 模块</a></p>
-    - title: 模块
-      html: <p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">算法和模块参考</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/machinelearning/">REST 管理 API</a></p><p><a href="web-service-error-codes">Web 服务错误代码</a></p>
-- title: 更多 Azure 机器学习技术
-  items:
-  - type: paragraph
-    text: Azure 机器学习中可用的其他技术：
-  - type: list
-    style: cards
-    className: cardsFTitle
-    items:
-    - title: Azure 机器学习服务
-      href: /azure/machine-learning/service/
-      image:
-        src: media/index/i_machine-learning.svg
-        href: /azure/machine-learning/service/
-    - title: 数据科学虚拟机
-      href: /azure/machine-learning/data-science-virtual-machine/
-      image:
-        src: media/index/virtual-machines.svg
-        href: /azure/machine-learning/data-science-virtual-machine/
+  ms.date: 09/04/2019
+  ms.openlocfilehash: b6c9013d61df1a0076817af5baab0e0af6375083
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70309185"
+landingContent:
+- title: 工作室入门
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 什么是工作室？
+      url: what-is-ml-studio.md
+    - text: 创建第一个 ML 试验
+      url: create-experiment.md
+    - text: 创建预测解决方案
+      url: tutorial-part1-credit-risk.md
+- title: 浏览参考内容
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: PowerShell 模块
+      url: powershell-module.md
+    - text: 算法和模块
+      url: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/index
+    - text: REST 管理 API
+      url: https://docs.microsoft.com/rest/api/machinelearning/
+    - text: Web 服务错误代码
+      url: web-service-error-codes.md
+- title: 更多 Azure ML 技术
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure 机器学习服务
+      url: /azure/machine-learning/
+    - text: 数据科学虚拟机
+      url: /azure/machine-learning/data-science-virtual-machine
+    - text: 比较我们的 ML 产品
+      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

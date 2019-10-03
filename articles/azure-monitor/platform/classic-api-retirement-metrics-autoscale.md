@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: robb
 ms.openlocfilehash: ce54b63aa7831ed40a8592d536c43fc83fdc5567
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433080"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60709977"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor 即将停用指标和自动缩放的经典部署模型 API
 
@@ -38,7 +38,7 @@ ms.locfileid: "53433080"
 
 如果不确定代码或定制工具是否调用经典 API，请查看以下内容：
 
-- 查看代码或工具中引用的 URI。 经典 API 使用 URI https://management.core.windows.net。 应使用基于资源管理器的 API 的较新 URI，它以 https://management.azure.com/ 开头。
+- 查看代码或工具中引用的 URI。 经典 API 使用 URI https://management.core.windows.net 。 应使用基于资源管理器的 API 的较新 URI，它以 https://management.azure.com/ 开头。
 
 - 比较计算机上的程序集名称。 旧版经典程序集位于 https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ 中。
 
@@ -75,9 +75,9 @@ ms.locfileid: "53433080"
 
 对前面所列的经典 API 发出任何调用将会失败，并返回如下所示的错误消息：
 
-对于自动缩放：“此 API 已弃用。请使用 Azure 门户、Azure Monitor SDK、PowerShell、CLI 或资源管理器模板管理自动缩放设置。”  
+对于自动缩放：“此 API 已弃用。  请使用 Azure 门户、Azure Monitor SDK、PowerShell、CLI 或资源管理器模板管理自动缩放设置。”  
 
-对于指标：“此 API 已弃用。请使用 Azure 门户、Azure Monitor SDK、PowerShell 或 CLI 查询指标。”
+对于指标：“此 API 已弃用。  请使用 Azure 门户、Azure Monitor SDK、PowerShell 或 CLI 查询指标。”
 
 ## <a name="email-notifications"></a>电子邮件通知
 

@@ -16,11 +16,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852947"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62096108"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -28,7 +28,7 @@ ms.locfileid: "57852947"
 ## <a name="general-questions"></a>一般问题
 **问：我要管理多个 Azure AD 目录。如何切换到包含 Azure Active Directory Premium 的 Azure AD 目录？**
 
-要切换 Azure AD 租户，可以在右上角选择当前登录的**用户名**，并选择相应的帐户。 如果此处未列出该帐户，可选择“注销”，并使用已启用 Azure Active Directory Premium 的目录的全局管理员凭据来登录。
+要切换 Azure AD 租户，可以在右上角选择当前登录的**用户名**，并选择相应的帐户。 如果此处未列出该帐户，可选择“注销”  ，并使用已启用 Azure Active Directory Premium 的目录的全局管理员凭据来登录。
 
 **问：Azure AD Connect Health 支持哪个版本的标识角色？**
 
@@ -37,7 +37,7 @@ ms.locfileid: "57852947"
 |角色| 操作系统/版本|
 |--|--|
 |Active Directory 联合身份验证服务 (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
-|Azure AD Connect | 版本 1.0.9125 或更高版本|
+|具有 Azure AD Connect | 版本 1.0.9125 或更高版本|
 |Active Directory 域服务 (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
 请注意，该服务提供的功能可能因角色和操作系统而有所不同。 换言之，并非所有功能都适用于所有操作系统版本。 有关详细信息，请参阅功能说明。
@@ -95,7 +95,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：在 Azure AD Connect Health 代理安装期间，是否必须重启我的服务器？**
 
-不是。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
+不。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
 例如，在 Windows Server 2008 R2 上安装 .NET 4.5 Framework 需要重新启动服务器。
 
@@ -106,13 +106,13 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 如果要在代理注册过程中配置代理，可能需要事先修改 Internet Explorer 代理设置。
 
-1. 打开“Internet Explorer”>“设置” > “Internet 选项” > “连接” > “LAN 设置”。
-2. 选择“为 LAN 使用代理服务器”。
-3. 如果针对 HTTP 和 HTTPS/Secure 设置不同的代理端口，请选择“高级”。
+1. 打开“Internet Explorer”>“设置”   > “Internet 选项”   > “连接”   > “LAN 设置”  。
+2. 选择“为 LAN 使用代理服务器”  。
+3. 如果针对 HTTP 和 HTTPS/Secure 设置不同的代理端口，请选择“高级”  。
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 
-不是。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
+不。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
 
 **问：若要确保 Azure AD Connect Health 代理正常使用，需要打开哪些防火墙端口？**
 

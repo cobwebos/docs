@@ -2,14 +2,14 @@
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 08/12/2019
 ms.author: cephalin
-ms.openlocfilehash: 7aa0d232cf53eef9bd28c36b66e8fdae22a28db9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 4f3236c0a167a2b6f7586c6cb5fea8e30f55a86c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488053"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954058"
 ---
 ## <a name="rest"></a>使用 REST API 部署 ZIP 文件 
 
@@ -33,22 +33,21 @@ curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deploymen
 
 ### <a name="with-powershell"></a>使用 PowerShell
 
-以下示例使用 [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) 发送包含 .zip 文件的请求。 替换占位符 `<deployment_user>`、`<deployment_password>`、`<zip_file_path>` 和 `<app_name>`。
+下面的示例使用[AzWebapp](/powershell/module/az.websites/publish-azwebapp)上传 .zip 文件。 替换占位符 `<group-name>`、`<app-name>` 和 `<zip-file-path>`。
 
 ```powershell
-#PowerShell
-$username = "<deployment_user>"
-$password = "<deployment_password>"
-$filePath = "<zip_file_path>"
-$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/zipdeploy"
-$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
-$userAgent = "powershell/1.0"
-Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -UserAgent $userAgent -Method POST -InFile $filePath -ContentType "multipart/form-data"
+Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <zip-file-path>
 ```
 
-此请求从已上传的 .zip 文件触发推送部署。 若要查看当前和之前的部署，请运行以下命令。 同样，请替换 `<app_name>` 占位符。
+此请求从已上传的 .zip 文件触发推送部署。 
+
+若要查看当前和之前的部署，请运行以下命令。 再次替换`<deployment-user>`、 `<deployment-password>`和`<app-name>`占位符。
 
 ```bash
-$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/deployments"
+$username = "<deployment-user>"
+$password = "<deployment-password>"
+$apiUrl = "https://<app-name>.scm.azurewebsites.net/api/deployments"
+$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
+$userAgent = "powershell/1.0"
 Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -UserAgent $userAgent -Method GET
 ```

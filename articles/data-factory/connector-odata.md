@@ -10,24 +10,29 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: eeab0311519d7e3410ddb625c1801101ad63ad18
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f3afccd2414ae4acbd31452d989e9540d36d512d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550410"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090000"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-odata-connector.md)
 > * [当前版本](connector-odata.md)
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 OData 源复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 OData 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 OData 源复制到任何支持的接收器数据存储。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 
@@ -36,7 +41,11 @@ ms.locfileid: "57550410"
 - OData 3.0 和 4.0 版。
 - 使用以下某种身份验证复制数据：**匿名**、**基本**、**Windows**、**AAD 服务主体**和 **Azure 资源的托管标识**。
 
-## <a name="get-started"></a>入门
+## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
+## <a name="get-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -58,9 +67,9 @@ OData 链接的服务支持以下属性：
 | servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | servicePrincipalEmbeddedCert | 指定 Azure Active Directory 中注册的应用程序的 base64 编码证书。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | servicePrincipalEmbeddedCertPassword | 如果使用密码保护证书，请指定证书的密码。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。  | 否|
-| tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 否 |
+| 租户 | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 否 |
 | aadResourceId | 指定你请求授权的 AAD 资源。| 否 |
-| connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 可选择 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例 1：使用匿名身份验证**
 
@@ -198,7 +207,7 @@ OData 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 ODataResource。 | 是 |
-| 路径 | OData 资源的路径。 | 是 |
+| path | OData 资源的路径。 | 是 |
 
 **示例**
 
@@ -208,6 +217,7 @@ OData 链接的服务支持以下属性：
     "properties":
     {
         "type": "ODataResource",
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<OData linked service name>",
             "type": "LinkedServiceReference"
@@ -228,12 +238,12 @@ OData 链接的服务支持以下属性：
 
 ### <a name="odata-as-source"></a>以 OData 作为源
 
-要从 OData 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动 **source** 节支持以下属性：
+若要从 OData 复制数据，复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为 RelationalSource。 | 是 |
-| query | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：OData 连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| type | 复制活动源的**type**属性必须设置为**ODataSource**。 | 是 |
+| query | 用于筛选数据的 OData 查询选项。 例如：`"$select=Name,Description&$top=5"`。<br/><br/>**注意**：OData 连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
 
 **示例**
 
@@ -256,8 +266,8 @@ OData 链接的服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
-                "query": "?$select=Name,Description&$top=5"
+                "type": "ODataSource",
+                "query": "$select=Name,Description&$top=5"
             },
             "sink": {
                 "type": "<sink type>"
@@ -266,6 +276,8 @@ OData 链接的服务支持以下属性：
     }
 ]
 ```
+
+如果使用`RelationalSource`的是类型化的源，则仍支持原样，但建议使用新的源。
 
 ## <a name="data-type-mapping-for-odata"></a>OData 的数据类型映射
 
@@ -292,6 +304,10 @@ OData 链接的服务支持以下属性：
 > [!NOTE]
 > 不支持 OData 复杂数据类型，例如对象。
 
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

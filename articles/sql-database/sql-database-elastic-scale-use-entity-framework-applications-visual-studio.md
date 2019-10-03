@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/04/2019
-ms.openlocfilehash: 54890aef8dabfa019a5181c155b6668b1c07cf2c
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 8ae264f7da84336d5f786d2ff060aa89bbe75837
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755928"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568298"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>将弹性数据库客户端库与实体框架配合使用
 
@@ -45,8 +44,8 @@ ms.locfileid: "55755928"
 
 实体框架开发人员依靠以下四个工作流之一构建应用程序并确保应用程序对象的持久性：
 
-* **Code First（新数据库）**：EF 开发人员在应用程序代码中创建模型，然后 EF 从中生成数据库。 
-* **Code First（现有数据库）**：开发人员让 EF 从现有数据库生成模型的应用程序代码。
+* **Code First（新数据库）** ：EF 开发人员在应用程序代码中创建模型，然后 EF 从中生成数据库。 
+* **Code First（现有数据库）** ：开发人员让 EF 从现有数据库生成模型的应用程序代码。
 * **Model First**：开发人员在 EF 设计器中创建模型，EF 从该模型创建数据库。
 * **Database First**：开发人员使用 EF 工具从现有数据库推断模型。 
 

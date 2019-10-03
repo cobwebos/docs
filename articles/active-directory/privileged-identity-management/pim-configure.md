@@ -3,7 +3,7 @@ title: 什么是 Privileged Identity Management？ - Azure Active Directory | Mi
 description: 概述 Azure AD Privileged Identity Management (PIM)。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8b9fe027a023cec6c816fa641beb41e5849741
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 5009310dd4ea4e99e1da2871085ee2d2d99a6eab
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496072"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804508"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -42,23 +42,14 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 是用于
 - 开展**访问评审**，以确保用户仍然需要角色
 - 下载**审核历史记录**进行内部或外部审核
 
-## <a name="prerequisites"></a>先决条件
-
-若要使用 PIM，必须拥有以下付费或试用许可证之一。 有关详细信息，请参阅[什么是 Azure Active Directory？](../fundamentals/active-directory-whatis.md)。
-
-- Azure AD Premium P2
-- 企业移动性 + 安全性 (EMS) E5
-
-有关用户许可证的信息，请参阅[使用 PIM 所要满足的许可证要求](subscription-requirements.md)。
-
 ## <a name="terminology"></a>术语
 
 为了更好地理解 PIM 及其文档，应查看以下术语。
 
 | 术语或概念 | 角色分配类别 | 说明 |
 | --- | --- | --- |
-| 符合条件 | Type | 要求用户在使用角色之前执行一项或多项操作的角色分配。 如果用户符合某个角色的条件，则意味着他们在需要执行特权任务时可以激活该角色。 用户无论具有永久角色分配还是合格角色分配，获得的访问权限并无差异。 唯一的差异在于，有些用户并不是一直需要该访问权限。 |
-| 活动 | Type | 不要求用户在使用角色之前执行任何操作的角色分配。 分配为“活动”的用户拥有分配给该角色的特权。 |
+| 符合条件 | 类型 | 要求用户在使用角色之前执行一项或多项操作的角色分配。 如果用户符合某个角色的条件，则意味着他们在需要执行特权任务时可以激活该角色。 用户无论具有永久角色分配还是合格角色分配，获得的访问权限并无差异。 唯一的差异在于，有些用户并不是一直需要该访问权限。 |
+| 活动 | 类型 | 不要求用户在使用角色之前执行任何操作的角色分配。 分配为“活动”的用户拥有分配给该角色的特权。 |
 | 激活 |  | 合格用户在使用角色之前执行一项或多项操作的过程。 操作可能包括执行多重身份验证 (MFA) 检查、提供业务理由或请求获得指定审批者的批准。 |
 | 已分配 | 状态 | 具有活动角色分配的用户。 |
 | 已激活 | 状态 | 具有符合条件的角色分配、已执行激活角色的操作且现在处于活动状态的用户。  激活后，用户即可使用该角色，使用期限是预先配置的，过期之后需重新激活。 |
@@ -71,7 +62,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 是用于
 
 ## <a name="what-does-pim-look-like"></a>PIM 的布局是怎样的？
 
-设置 PIM 时，左侧导航菜单中会显示“任务”、“管理”和“活动”选项。 管理员可以选择管理 **Azure AD 角色**或 **Azure 资源**角色。 选择要管理的角色类型时，会看到该角色类型适用的一组类似选项。
+设置 PIM 时，左侧导航菜单中会显示“任务”、“管理”和“活动”选项。    管理员可以选择管理 **Azure AD 角色**或 **Azure 资源**角色。 选择要管理的角色类型时，会看到该角色类型适用的一组类似选项。
 
 ![Azure 门户中的 PIM 屏幕截图](./media/pim-configure/pim-overview.png)
 
@@ -104,6 +95,12 @@ PIM 支持以下方案：
 - 请求激活需要审批的角色
 - 查看要激活的请求的状态
 - 批准激活后，在 Azure AD 中完成任务
+
+## <a name="license-requirements"></a>许可要求
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+有关用户许可证的信息，请参阅[使用 PIM 所要满足的许可证要求](subscription-requirements.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

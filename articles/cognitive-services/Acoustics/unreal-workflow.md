@@ -3,19 +3,20 @@ title: 项目音响效果 Unreal 设计教程
 titlesuffix: Azure Cognitive Services
 description: 本教程介绍了在 Unreal 和 Wwise 中项目音响效果的设计工作流。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: kegodin
-ms.openlocfilehash: 38276757d0472582c3cf5035e1f52d34158a7e38
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: noelc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 817a11171c5b4b4ef205e5fbb04f9b6d6d85b248
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784670"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854246"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>项目音响效果 Unreal/Wwise 设计教程
 本教程介绍了在 Unreal 和 Wwise 中项目音响效果的设计设置和工作流。
@@ -122,6 +123,11 @@ Wwise 声笼曲线会影响隔离的干声电平，但项目音响效果使用�
 必须先设置磁贴大小，才能调用“强制加载”磁贴。 例如，可以执行以下操作来加载 ACE 文件、设置磁贴大小以及在区域中流式传输：
 
 ![Unreal 中流式处理设置选项的屏幕截图](media/streaming-setup.png)
+
+本例中使用的加载声学数据蓝图函数具有以下参数：
+
+* **目标：** AcousticsSpace 执行组件。
+* **新建烘培：** 要加载的声学数据资产。 将此项留空/将其设置为 NULL 将卸载当前烘焙，而不是加载新烘焙。
 
 ### <a name="optionally-query-for-surface-proximity"></a>（可选）查询曲面接近度
 如果要查看围绕侦听器的特定方向上的曲面的接近程度，可以使用“查询距离”功能。 此功能可用于驱动定向延迟反射，或用于由曲面接近度驱动的其他游戏逻辑。 查询比光线投射更经济实惠，因为结果是从音响效果查找表中提取的。

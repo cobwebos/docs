@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用必应拼写检查 REST API 和 PHP 检查拼写
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 开始使用必应拼写检查 API 检查拼写和语法。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: dcec06113c418b6df6beb5473a282f5ffdc2faee
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 15a550321c28703c7bb4d8155ffeb7791eafedc6
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533606"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423495"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>快速入门：使用必应拼写检查 REST API 和 PHP 检查拼写
 
@@ -137,4 +137,4 @@ echo $json;
 > [创建单页 Web 应用](../tutorials/spellcheck.md)
 
 - [什么是必应拼写检查 API？](../overview.md)
-- [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+- [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

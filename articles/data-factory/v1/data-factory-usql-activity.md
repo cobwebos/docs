@@ -14,14 +14,14 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777288"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61248141"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](data-factory-usql-activity.md)
 > * [版本 2（当前版本）](../transform-data-using-data-lake-analytics.md)
 
@@ -46,9 +46,9 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 
 下表介绍了 JSON 定义中使用的一般属性。 可以进一步选择服务主体身份验证，还是用户凭据身份验证。
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| type |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
+| **type** |类型属性应设置为：  AzureDataLakeAnalytics。 |是 |
 | **accountName** |Azure Data Lake Analytics 帐户名。 |是 |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |否 |
 | **subscriptionId** |Azure 订阅 ID |否（如果未指定，则使用数据工厂的订阅）。 |
@@ -90,9 +90,9 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 ### <a name="user-credential-authentication"></a>用户凭据身份验证
 也可以指定下列属性，对 Data Lake Analytics 使用用户凭据身份验证：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| **authorization** | 单击数据工厂编辑器中的“授权”按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
+| **authorization** | 单击数据工厂编辑器中的“授权”  按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
 | **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
 
 示例：**用户凭据身份验证**
@@ -114,14 +114,14 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 ```
 
 #### <a name="token-expiration"></a>令牌过期
-使用“授权”按钮生成的授权代码在一段时间后便会过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时，可能会看到以下错误消息：凭据操作错误：invalid_grant - AADSTS70002：验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID：d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID：fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳：2015-12-15 21:09:31Z
+使用“授权”  按钮生成的授权代码在一段时间后便会过期。 请参阅下表，了解不同类型用户帐户的过期时间。 身份验证**令牌过期**时，可能会看到以下错误消息：凭据操作错误：invalid_grant - AADSTS70002：验证凭据时出错。 AADSTS70008：提供的访问权限已过期或已被吊销。 跟踪 ID：d18629e8-af88-43c5-88e3-d8419eb1fca1 相关 ID：fac30a0c-6be6-4e02-8d69-a776d2ffefd7 时间戳：2015-12-15 21:09:31Z
 
 | 用户类型 | 过期时间 |
 |:--- |:--- |
 | 不由 Azure Active Directory 管理的用户帐户（@hotmail.com、@live.com，等等） |12 小时 |
 | 由 Azure Active Directory (AAD) 管理的用户帐户 |最后一次运行切片后的 14 天。 <br/><br/>如果以基于 OAuth 的链接服务为基础的切片每 14 天至少运行一次，则为 90 天。 |
 
-若要避免/解决此错误，**令牌过期**时，使用“授权”按钮重新授权，并重新部署链接服务。 还可以使用下列代码，以编程方式生成 sessionId 和 authorization 属性值：
+若要避免/解决此错误，**令牌过期**时，使用“授权”  按钮重新授权，并重新部署链接服务。 还可以使用下列代码，以编程方式生成 sessionId  和 authorization  属性值：
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -317,7 +317,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-值**\@中**并**\@出**参数在 U-SQL 脚本中的使用动态传递 adf parameters 部分。 请参阅管道定义中的“parameters”部分。
+值 **\@中**并 **\@出**参数在 U-SQL 脚本中的使用动态传递 adf parameters 部分。 请参阅管道定义中的“parameters”部分。
 
 也可在 Azure Data Lake Analytics 服务上运行的作业的管道定义中指定其他属性，如 degreeOfParallelism 和 priority。
 

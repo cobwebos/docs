@@ -10,21 +10,20 @@ ms.assetid: 47da4bb2-426e-4e53-8fa7-214ee2e3ab37
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: c70e88a572bc261ad9d25f9a742b1987d0c19b44
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 93681062b325756f720f6fe8280ee6b874fea284
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540833"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072264"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API 管理中的问题模板
-通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
+通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
   
- 本部分中的模板可用于自定义开发人员门户中问题页面的内容。  
+ 本部分中的模板可用于自定义开发人员门户中的问题页面的内容。  
   
 -   [问题列表](#IssueList)  
   
@@ -36,7 +35,7 @@ ms.locfileid: "58540833"
 ##  <a name="IssueList"></a> 问题列表  
  **问题列表**模板可用于自定义开发人员门户中问题列表页的正文。  
   
- ![问题列表 - 开发人员门户](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 问题列表 - 开发人员门户")  
+ ![问题列表开发人员门户](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 问题列表开发人员门户")  
   
 ### <a name="default-template"></a>默认模板  
   
@@ -90,7 +89,7 @@ ms.locfileid: "58540833"
 </div>
 ```
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控件  
  `Issue list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
@@ -101,9 +100,9 @@ ms.locfileid: "58540833"
 |--------------|----------|-----------------|  
 |`Issues`|[问题](api-management-template-data-model-reference.md#Issue)实体的集合。|对当前用户可见的问题。|  
 |`Paging`|[分页](api-management-template-data-model-reference.md#Paging)实体。|应用程序集合的分页信息。|  
-|`IsAuthenticated`|布尔|当前用户是否登录到开发人员门户。|  
-|`CanReportIssues`|布尔|当前用户是否有权提出问题。|  
-|`Search`|字符串|此属性已弃用，不应使用。|  
+|`IsAuthenticated`|boolean|当前用户是否登录到开发人员门户。|  
+|`CanReportIssues`|boolean|当前用户是否有权提出问题。|  
+|`Search`|string|此属性已弃用，不应使用。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

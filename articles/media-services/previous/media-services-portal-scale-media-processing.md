@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: c840764dc978a8dacb3450c0aca5e5d93284b8a6
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260105"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61127475"
 ---
 # <a name="change-the-reserved-unit-type"></a>更改预留单位类型
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "58260105"
 
 媒体服务帐户与预留单位类型关联，后者决定了编码处理任务的处理速度。 可以在以下预留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 预留单位类型相比，使用 **S2** 预留单位类型时，同一编码作业运行速度更快。
 
-除了指定预留单位类型，还可以指定为帐户预配预留单位 (RU)。 预配的 RU 数决定了给定帐户中可并发处理的媒体任务数。
+除了指定预留单位类型，还可以指定为帐户预配预留单位  (RU)。 预配的 RU 数决定了给定帐户中可并发处理的媒体任务数。
 
 >[!NOTE]
 >RU 可用于并行化所有媒体处理，包括使用 Azure Media Indexer 为作业编制索引。 但是，与编码不同，索引作业使用更快的预留单位并不能更快地完成处理。
@@ -49,11 +49,11 @@ ms.locfileid: "58260105"
 若要更改预留单位类型和预留单位数目，请执行以下操作：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 在“设置”窗口中，选择“媒体预留单位”。
+2. 在“设置”  窗口中，选择“媒体预留单位”  。
    
-    若要更改所选预留单位类型的预留单位数，请使用屏幕顶部的“媒体预留单位”滑块。
+    若要更改所选预留单位类型的预留单位数，请使用屏幕顶部的“媒体预留单位”  滑块。
    
-    若要更改“预留单位类型”，请单击“预留处理单位的速度”栏。 然后，选择所需的定价层：S1、S2 或 S3。
+    若要更改“预留单位类型”  ，请单击“预留处理单位的速度”  栏。 然后，选择所需的定价层：S1、S2 或 S3。
    
 3. 按“保存”按钮保存更改。
    

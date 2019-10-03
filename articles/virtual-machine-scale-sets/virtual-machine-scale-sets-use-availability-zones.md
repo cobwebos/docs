@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7fa903f65a6c7d244ff424eae4a0def258b50bbc
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 0a31ed174c7a5986594f7c07b7ce00b1649413c8
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994701"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907982"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 
@@ -34,11 +34,11 @@ ms.locfileid: "59994701"
 
 使用“最大分布”时，无论 VM 实际分布到多少个容错域，在规模集 VM 实例视图和实例元数据中都只能看到一个容错域。 每个区域中的分布是隐式的。
 
-要使用“最大分布”，请将“platformFaultDomainCount”设置为 1。 要使用“静态 5 容错域分布”，请将“platformFaultDomainCount”设置为 5。 在 API 版本 2017-12-01 中，单区域规模集和跨区域规模集的“platformFaultDomainCount”默认设置为 1。 目前，区域性规模集仅支持“静态 5 容错域分布”。
+要使用“最大分布”，请将“platformFaultDomainCount”设置为 1。 要使用“静态 5 容错域分布”，请将“platformFaultDomainCount”设置为 5。 在 API 版本 2017-12-01 中，单区域规模集和跨区域规模集的“platformFaultDomainCount”默认设置为 1。 目前, 区域 (非区域性) 规模集仅支持静态五容错域分配。
 
 ### <a name="placement-groups"></a>放置组
 
-部署规模集时，还可以选择为每个可用性区域部署单个[放置组](./virtual-machine-scale-sets-placement-groups.md)或多个放置组。 对于区域性规模集，可选择在区域中包含单个放置组或多个放置组。 对于大多数工作负荷，建议使用多个放置组，这样可以增大规模。 在 API 版本 2017-12-01 中，单区域和跨区域规模集默认为多个放置组，但区域性规模集则默认为单个放置组。
+部署规模集时，还可以选择为每个可用性区域部署单个[放置组](./virtual-machine-scale-sets-placement-groups.md)或多个放置组。 对于区域 (非区域性) 规模集, 选择是在区域中使用单个放置组, 或在区域中包含多个放置组。 对于大多数工作负荷，建议使用多个放置组，这样可以增大规模。 在 API 版本*2017-12-01*中, 规模集默认为单区域和跨区域规模集的多个放置组, 但对于区域 (非区域性) 规模集, 它们默认为单个放置组。
 
 > [!NOTE]
 > 如果使用“最大分布”，则必须使用多个放置组。
@@ -215,7 +215,7 @@ New-AzVmss `
 }
 ```
 
-如果创建公共 IP 地址或负载均衡器，则指定 "sku": { "name": "Standard" }" 属性以创建区域冗余网络资源。 还需要创建网络安全组和规则以允许任意流量。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-standard-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
+如果创建公共 IP 地址或负载均衡器，则指定 "sku": { "name":"Standard" }" 属性以创建区域冗余网络资源。 还需要创建网络安全组和规则以允许任意流量。 有关详细信息，请参阅 [Azure 负载均衡器标准概述](../load-balancer/load-balancer-standard-overview.md)和[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)。
 
 有关区域冗余规模集和网络资源的完整示例，请参阅[此示例资源管理器模板](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

@@ -11,11 +11,11 @@ author: swinarko
 ms.author: sawinark
 manager: craigg
 ms.openlocfilehash: a2d53ddb9f55942cd6ad396d42cc926f20c2d396
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57574708"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66166356"
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell 脚本 - 部署 Azure-SSIS 集成运行时
 

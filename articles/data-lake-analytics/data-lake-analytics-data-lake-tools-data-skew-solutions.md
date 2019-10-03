@@ -1,5 +1,5 @@
 ---
-title: 通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题
+title: 解决数据歪斜-针对 Visual Studio 的 Azure Data Lake 工具
 description: 通过用于 Visual Studio 的 Azure Data Lake 工具排查潜在解决方案的数据倾斜问题。
 services: data-lake-analytics
 author: yanancai
@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: af55c161944447f2e6e2245fbb920803779984ca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9ff7ba5f04a8c1862f8ef136f8f3f6900f00a431
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496177"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802556"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>通过用于 Visual Studio 的 Azure Data Lake 工具解决数据倾斜问题
 
@@ -28,25 +28,25 @@ ms.locfileid: "59496177"
 
 用于 Visual Studio 的 Azure Data Lake 工具可以帮助检测作业中是否存在数据倾斜问题。 如果存在问题，可以尝试用本部分的解决方案来解决。
 
-## <a name="solution-1-improve-table-partitioning"></a>解决方法 1:改善表分区
+## <a name="solution-1-improve-table-partitioning"></a>解决方案1：改善表分区
 
-### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>选项 1：提前筛选偏斜的键值
+### <a name="option-1-filter-the-skewed-key-value-in-advance"></a>选项 1：提前筛选歪斜的密钥值
 
 如果不影响业务逻辑的话，可以提前筛选高频值。 例如，如果在 GUID 列中有大量的 000-000-000，则可能不需要聚合该值。 在聚合之前，可以编写“WHERE GUID != “000-000-000””来筛选高频值。
 
-### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>选项 2：选择一个不同的分区或分布键
+### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>选项 2：选择不同的分区或分布键
 
-在前面的示例中，如果只需检查全国的税务审核工作负荷，则可选择 ID 号作为键来改进数据分布。 有时，选择不同的分区或分布键可以更均衡地分配数据，但需确保该选择不会影响业务逻辑。 例如，若要计算每个州的税收总额，则可能需指定 _State_ 作为分区键。 如果仍遇到此问题，请尝试使用选项 3。
+在上述示例中，如果只想要检查整个国家/地区的税务审核工作负荷，则可以通过选择 ID 号作为密钥来改善数据分布。 有时，选择不同的分区或分布键可以更均衡地分配数据，但需确保该选择不会影响业务逻辑。 例如，若要计算每个州的税收总额，则可能需指定 _State_ 作为分区键。 如果仍遇到此问题，请尝试使用选项 3。
 
-### <a name="option-3-add-more-partition-or-distribution-keys"></a>选项 3：添加更多的分区或分布键
+### <a name="option-3-add-more-partition-or-distribution-keys"></a>选项 3：添加更多分区或分发密钥
 
 可以使用多个键进行分区，而不是仅使用 _State_ 作为分区键。 例如，可以考虑添加 _ZIP Code_ 作为额外的分区键，减小数据分区大小，使数据分布更均衡。
 
 ### <a name="option-4-use-round-robin-distribution"></a>选项 4：使用轮循机制分布
 
-如果找不到适当的分区和分布键，可以尝试使用轮循机制分布。 轮循机制分布可以均匀处理所有行，并将其随机放入相应的桶中。 数据将均匀分布，但会丢失位置信息，因此也会在某些操作中降低作业性能，这是其缺点。 此外，如果仍要对倾斜的键执行聚合，则还会出现数据倾斜问题。 若要了解有关轮循机制分布的详细信息，请参阅中的 U-SQL 表分布部分[CREATE TABLE (U-SQL):使用架构创建表](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch)。
+如果找不到适当的分区和分布键，可以尝试使用轮循机制分布。 轮循机制分布可以均匀处理所有行，并将其随机放入相应的桶中。 数据将均匀分布，但会丢失位置信息，因此也会在某些操作中降低作业性能，这是其缺点。 此外，如果仍要对倾斜的键执行聚合，则还会出现数据倾斜问题。 若要了解有关轮循机制分布的详细信息，请参阅中[的 "u-sql 表分布" 一节 CREATE TABLE （U sql）：创建具有架构](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch)的表。
 
-## <a name="solution-2-improve-the-query-plan"></a>解决方案 2:改进查询计划
+## <a name="solution-2-improve-the-query-plan"></a>解决方案2：改进查询计划
 
 ### <a name="option-1-use-the-create-statistics-statement"></a>选项 1：使用 CREATE STATISTICS 语句
 
@@ -122,11 +122,11 @@ U-SQL 提供针对表的 CREATE STATISTICS 语句。 此语句为查询优化器
                 INNER JOIN @Small ON Sessions.Client == @Small.Client
                 ;
 
-## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>解决方案 3:改进的用户定义的化简器和组合器
+## <a name="solution-3-improve-the-user-defined-reducer-and-combiner"></a>解决方案3：改进用户定义的化简器和合并器
 
 有时，可以编写用户定义的运算符来处理复杂的过程逻辑，精心编写的化简器和组合器在某些情况下可以缓解数据倾斜问题。
 
-### <a name="option-1-use-a-recursive-reducer-if-possible"></a>选项 1：如有可能使用递归化简器
+### <a name="option-1-use-a-recursive-reducer-if-possible"></a>选项 1：如果可能，请使用递归化简器
 
 默认情况下，用户定义的化简器以非递归模式运行，这意味着，键的化简工作将分布到单个顶点。 但如果数据倾斜，则巨型数据集可能会在单个顶点中处理并长时间运行。
 
@@ -150,7 +150,7 @@ U-SQL 提供针对表的 CREATE STATISTICS 语句。 此语句为查询优化器
         }
     }
 
-### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>选项 2：如有可能使用行级组合器模式
+### <a name="option-2-use-row-level-combiner-mode-if-possible"></a>选项 2：如果可能，请使用行级合并器模式
 
 类似于特定倾斜键联接案例中的 ROWCOUNT 提示，组合器模式会尝试将巨型倾斜键值集分配到多个顶点，使工作可以并发执行。 组合器模式不能解决数据倾斜问题，而只能针对巨型倾斜键值集提供一定的辅助。
 
@@ -165,13 +165,13 @@ U-SQL 提供针对表的 CREATE STATISTICS 语句。 此语句为查询优化器
 
 组合器模式的属性：
 
-- [SqlUserDefinedCombiner(Mode=CombinerMode.Full)]: Every output row potentially depends on all the input rows from left and right with the same key value.
+- SqlUserDefinedCombiner （Mode = CombinerMode）：每个输出行可能依赖于左侧和右侧具有相同密钥值的所有输入行。
 
-- SqlUserDefinedCombiner(Mode=CombinerMode.Left):每个输出行依赖于左侧 （和可能于右侧具有相同键值的所有行） 的单个输入行。
+- SqlUserDefinedCombiner （Mode = CombinerMode）：每个输出行依赖于左侧的单个输入行（并且可能具有相同键值的所有行）。
 
-- qlUserDefinedCombiner(Mode=CombinerMode.Right):每个输出行依赖于右侧 （和可能于左侧具有相同键值的所有行） 的单个输入行。
+- qlUserDefinedCombiner （Mode = CombinerMode）：每个输出行依赖于右侧的单个输入行（可能是左侧具有相同键值的所有行）。
 
-- SqlUserDefinedCombiner(Mode=CombinerMode.Inner):每个输出行依赖于左侧和右侧具有相同值的单个输入行。
+- SqlUserDefinedCombiner （Mode = CombinerMode）：每个输出行依赖于左侧的单个输入行和具有相同值的权限。
 
 代码示例：
 

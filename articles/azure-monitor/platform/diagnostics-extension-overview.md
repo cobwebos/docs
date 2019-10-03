@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 8a287f118c126967d2cf8cad77a434cfecc098eb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e0325a3bda912c95d8d27646bc1e80fff5ce10a8
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078533"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639427"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>什么是 Azure 诊断扩展
 Azure 诊断扩展是 Azure 中可对部署的应用程序启用诊断数据收集的代理。 可以使用于自许多不同源的诊断扩展。 目前支持 Azure 云服务（经典）Web 和辅助角色、虚拟机、虚拟机规模集，以及 Service Fabric。 其他 Azure 服务具有不同的诊断方法。 请参阅 [Azure 中的监控概述](../../azure-monitor/overview.md)。
@@ -52,7 +52,7 @@ Azure 诊断扩展可收集以下类型的数据：
 若要详细了解如何配置此接收器，请参阅 [Azure 诊断架构文档](diagnostics-extension-schema-1dot3.md)。
 
 ## <a name="costs"></a>成本
-每个以上的选项可能会产生成本。 请务必研究它们以避免预期之外的费用。  Application Insights 中，事件中心和 Azure 存储具有与引入相关联的单独成本和存储的时间。 具体而言，Azure 存储将保存任何数据永远因此你可能想要在某段时间内以使成本保持后清除旧数据。    
+上述每个选项都可能产生费用。 一定要研究它们，以避免意外的账单。  Application Insights、事件中心和 Azure 存储具有与引入和存储时间相关联的单独成本。 特别是，Azure 存储将永久保存任何数据，因此你可能希望在一段时间后清除旧数据以降低成本。    
 
 ## <a name="versioning-and-configuration-schema"></a>版本控制和配置架构
 请参阅 [Azure 诊断版本历史记录和架构](diagnostics-extension-schema.md)。
@@ -74,7 +74,7 @@ Azure 诊断扩展可收集以下类型的数据：
 
 ## <a name="virtual-machines"></a>虚拟机
 * 如果使用 Visual Studio，请参阅[使用 Visual Studio 跟踪 Azure 虚拟机](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines)帮助自己入门。 否则，请参阅
-* [在 Azure 虚拟机上设置 Azure 诊断](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
+* [在 Azure 虚拟机上设置 Azure 诊断](/azure/virtual-machines/extensions/diagnostics-windows)
 
 有关更高级主题，请参阅
 

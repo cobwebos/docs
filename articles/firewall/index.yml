@@ -1,47 +1,57 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 防火墙文档
+summary: 了解如何部署 Azure 防火墙（一种基于云的网络安全服务）。
 metadata:
-  title: Azure 防火墙文档 - 教程和 API 参考
-  meta.description: 'Learn how to create Azure Firewalls. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
+  title: Azure 防火墙文档
+  description: 了解如何部署 Azure 防火墙（一种基于云的网络安全服务）。
   services: firewall
-  author: vhorne
   ms.service: firewall
   ms.topic: landing-page
-  ms.date: 9/24/2018
+  author: vhorne
   ms.author: victorh
-abstract:
-  description: 了解如何部署 Azure 防火墙（一种基于云的网络安全服务）。 教程、API 参考和其他文档介绍了如何设置应用程序级策略和网络级策略以保护 Azure 虚拟网络资源。
-sections:
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何部署 Azure 防火墙
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/firewall/tutorial-firewall-deploy-portal">使用 Azure 门户部署和配置 Azure 防火墙</a>
-          - html: <a href="/azure/firewall/tutorial-hybrid-ps">在混合网络中部署</a>
-          - html: <a href="/azure/firewall/tutorial-firewall-dnat">使用 DNAT 筛选入站流量</a>
-          - html: <a href="/azure/firewall/tutorial-diagnostics">监视 Azure 防火墙日志</a>
-  - title: 示例
-    items:
-      - type: paragraph
-        text: 常见任务的脚本示例。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/firewall/sample-powershell">Azure PowerShell</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/powershell/module/az.network/new-azfirewall">Azure PowerShell</a></p><p><a href="/cli/azure/ext/azure-firewall/network/firewall">Azure CLI</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/firewall/">计算 REST API 参考</a></p>'
+  ms.date: 08/30/2019
+  ms.openlocfilehash: aba20908401cba2c1b740570f62593b5afb92dc5
+  ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70147319"
+landingContent:
+- title: 了解 Azure 防火墙
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 防火墙？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Azure 防火墙规则处理逻辑
+      url: rule-processing.md
+    - text: 常见问题
+      url: firewall-faq.md
+- title: 部署 Azure 防火墙
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用 Azure 门户部署
+      url: tutorial-firewall-deploy-portal.md
+    - text: 在混合网络中部署
+      url: tutorial-hybrid-portal.md
+    - text: 筛选入站流量
+      url: tutorial-firewall-dnat.md
+- title: 与负载均衡器集成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 将 Azure 防火墙与 Azure 标准负载均衡器相集成
+      url: integrate-lb.md
+- title: 监视 Azure 防火墙
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 防火墙日志和指标
+      url: logs-and-metrics.md
+  - linkListType: tutorial
+    links:
+    - text: 监视 Azure 防火墙日志和指标
+      url: tutorial-diagnostics.md

@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;cenkd;anilmur
-ms.openlocfilehash: adacce5c8307f3be972920bd3aef6d8ea912eb30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: 0e793a5aa7d619b0bb7a1d3efcdf665ea400c555
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992002"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69016742"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>使用 NewTek TriCaster 编码器发送单比特率实时流  
 > [!div class="op_single_selector"]
@@ -30,16 +31,16 @@ ms.locfileid: "57992002"
 >
 >
 
-本文说明如何配置 [NewTek TriCaster](http://newtek.com/products/tricaster-40.html) 实时编码器，以便将单比特率流发送到 AMS 频道进行实时编码。 有关详细信息，请参阅 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
+本文说明如何配置 [NewTek TriCaster](https://newtek.com/products/tricaster-40.html) 实时编码器，以便将单比特率流发送到 AMS 频道进行实时编码。 有关详细信息，请参阅 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
 
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
 > [!NOTE]
-> 使用 Tricaster 将贡献源发送到已启用实时编码的 AMS 通道时，如果使用了 Tricaster 的某些功能（例如，在源之间快速剪切，或者切入/切出静态图像），则实时事件可能会出现视频/音频抖动。 AMS 团队正在努力解决这些问题，在此之前，不建议使用这些功能。
+> 使用 Tricaster 将贡献源发送到已启用实时编码的 AMS 频道时，如果使用了 Tricaster 的某些功能（例如，在源之间快速剪切，或者切入/切出静态图像），直播活动可能会出现视频/音频抖动。 AMS 团队正在努力解决这些问题，在此之前，不建议使用这些功能。
 >
 >
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
 * 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
@@ -52,7 +53,7 @@ ms.locfileid: "57992002"
 * 在确定带宽要求时，可以认为它就是将流式处理比特率翻倍。 虽然此要求不是强制性要求，但它可以减轻网络拥塞的影响。
 * 使用基于软件的编码器时，请关闭任何不需要的程序。
 
-## <a name="create-a-channel"></a>创建通道
+## <a name="create-a-channel"></a>创建频道
 
 1. 在 AMSE 工具中，导航到“实时”选项卡，并右键单击频道区域。 从菜单中选择“创建频道…” 从菜单中。
 
@@ -78,7 +79,7 @@ ms.locfileid: "57992002"
 >
 >
 
-## <a name="a-idconfiguretricasterrtmpconfigure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>配置 NewTek TriCaster 编码器
+## <a name="a-idconfigure_tricaster_rtmpconfigure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>配置 NewTek TriCaster 编码器
 
 在本教程中，将使用以下输出设置。 本部分的其余内容介绍更详细的配置步骤。
 
@@ -105,7 +106,7 @@ ms.locfileid: "57992002"
 3. 菜单打开以后，单击“连接”标题下的“新建”。 当系统提示输入连接类型时，请选择“Adobe Flash”。
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster4.png)
-4. 单击“确定”。
+4. 单击 **“确定”** 。
 5. 现在，可以单击“流式处理配置文件”下的下拉箭头并导航到“浏览”，以便导入 FMLE 配置文件。
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster5.png)
@@ -122,7 +123,7 @@ ms.locfileid: "57992002"
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster6.png)
 9. 在 Tricaster 项目中，将此信息粘贴到“闪存服务器”下的“位置”字段。 另请在“流 ID”字段中指定一个流名称。
 
-    如果流信息已添加到 FMLE 配置文件，则也可以通过一下方式将其导入此部分：单击“导入设置” ，导航到已保存的 FMLE 配置文件，然后单击“确定” 。 相关的“闪存服务器”字段应使用 FMLE 中的信息进行填充。
+    如果流信息已添加到 FMLE 配置文件，则也可以通过一下方式将其导入此部分：单击“导入设置”，导航到已保存的 FMLE 配置文件，然后单击“确定”。 相关的“闪存服务器”字段应使用 FMLE 中的信息进行填充。
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster7.png)
 10. 完成后，单击屏幕底部的“确定”。 当输入到 Tricaster 中的视频和音频已就绪时，则可单击“流”按钮开始将其流式传输到 AMS。
@@ -152,7 +153,7 @@ ms.locfileid: "57992002"
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
 2. 为节目命名，并根据需要调整“存档时段长度”（默认为 4 小时）。 还可以指定存储位置，也可以将其保留为默认值。  
 3. 选中“立即启动节目”框。
-4. 单击“创建节目” 。  
+4. 单击“创建节目”。  
 
     >[!NOTE]
     >创建节目需要的时间比创建频道需要的时间少。
@@ -162,7 +163,7 @@ ms.locfileid: "57992002"
 
 现在可以将流嵌入到播放器中，也可将其分发给受众进行实时观看。  
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 有关指南，请参阅[故障排除](media-services-troubleshooting-live-streaming.md)一文。
 

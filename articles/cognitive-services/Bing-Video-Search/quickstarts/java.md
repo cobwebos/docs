@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用必应视频搜索 REST API 和 Java 来搜索视频
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 参考本快速入门使用 Java 向必应视频搜索 REST API 发送视频搜索请求
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 06/19/2019
 ms.author: aahi
-ms.openlocfilehash: 3b0060b189dd941a8705d7e9815f69db8ea035e8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0823c115f47bb6bff0396cd154164183cf46d8e4
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863306"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500702"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>快速入门：使用必应视频搜索 REST API 和 Java 来搜索视频
 

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: a49d30d3058a6cf3ce82d56076f348861ad631ff
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4ea5d6c734659d36822f62237a42a8fbe332c996
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438597"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567104"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>手动优化 Azure SQL 数据库中的查询性能
 
@@ -26,19 +25,19 @@ ms.locfileid: "57438597"
 - 优化应用程序，并应用一些可以提升性能的最佳做法。
 - 通过更改索引和查询来优化数据库，以便更有效地处理数据。
 
-本文假定你已完成了 Azure SQL 数据库[数据库顾问建议](sql-database-advisor.md)和 Azure SQL 数据库[自动优化建议](sql-database-automatic-tuning.md)。 它还假定你已查看了[监视和优化概述](sql-database-monitor-tune-overview.md)以及与性能问题故障排除相关的文章。 此外，本文还假定你没有 CPU 资源，与运行相关的性能问题可以通过提升计算大小或服务层来向数据库提供更多资源来解决。
+本文假定你已完成了 Azure SQL 数据库[数据库顾问建议](sql-database-advisor.md)和 Azure SQL 数据库[自动优化建议](sql-database-automatic-tuning.md)。 它还假定你已查看了[监视和优化概述](sql-database-monitor-tune-overview.md)以及与性能问题故障排除相关的文章。 此外，本文还假定你没有 CPU 资源，与运行相关的性能问题可以通过提升计算大小或服务层级来向数据库提供更多资源来解决。
 
 ## <a name="tune-your-application"></a>优化应用程序
 
-在传统的本地 SQL Server 中，初始容量规划的过程通常与在生产环境中运行应用程序的过程分离。 首先，购买硬件和产品许可证，然后完成性能优化。 当使用 Azure SQL 数据库时，最好混杂运行和调整应用程序的过程。 使用按需支付容量的模型，可以优化应用程序以使用目前所需的最少资源，而不是靠推测应用程序的未来增长计划过度预配硬件（这通常是不正确的做法）。 有些客户可能选择不优化应用程序，而是选择过度配置硬件资源。 如果不想在繁忙期更改关键应用程序，这个方法可能是一个不错的主意。 但是，在使用 Azure SQL 数据库中的服务层时，优化应用程序可以使资源需求降至最低并减少每月的费用。
+在传统的本地 SQL Server 中，初始容量规划的过程通常与在生产环境中运行应用程序的过程分离。 首先，购买硬件和产品许可证，然后完成性能优化。 当使用 Azure SQL 数据库时，最好混杂运行和调整应用程序的过程。 使用按需支付容量的模型，可以优化应用程序以使用目前所需的最少资源，而不是靠推测应用程序的未来增长计划过度预配硬件（这通常是不正确的做法）。 有些客户可能选择不优化应用程序，而是选择过度配置硬件资源。 如果不想在繁忙期更改关键应用程序，这个方法可能是一个不错的主意。 但是，在使用 Azure SQL 数据库中的服务层级时，优化应用程序可以使资源需求降至最低并减少每月的费用。
 
 ### <a name="application-characteristics"></a>应用程序特征
 
-尽管 Azure SQL 数据库服务层旨在提高应用程序的性能稳定性和可预测性，但一些最佳做法可以帮助你优化应用程序，以便更好地利用某一计算大小的资源。 虽然许多应用程序只需通过切换到更大的计算大小或服务层便会显著提升性能，但某些应用程序需要进一步优化，才能受益于更高级别的服务。 为了提高性能，请考虑对具有以下特征的应用程序进行进一步的应用程序优化：
+尽管 Azure SQL 数据库服务层级旨在提高应用程序的性能稳定性和可预测性，但一些最佳做法可以帮助你优化应用程序，以便更好地利用某一计算大小的资源。 虽然许多应用程序只需通过切换到更大的计算大小或服务层级便会显著提升性能，但某些应用程序需要进一步优化，才能受益于更高级别的服务。 为了提高性能，请考虑对具有以下特征的应用程序进行进一步的应用程序优化：
 
 - **因“闲聊”行为而性能变慢的应用程序**
 
-  闲聊应用程序会进行过多的对网络延迟敏感的数据访问操作。 可能需要修改这些类型的应用程序，以减少对 SQL 数据库进行的数据访问操作的数量。 例如，可使用批处理即席查询或将查询移到存储过程等技术来提高应用程序的性能。 有关详细信息，请参阅[批处理查询](#batch-queries)。
+  闲聊应用程序会进行过多的对网络延迟敏感的数据访问操作。 可能需要修改这些类型的应用程序，以减少对 SQL 数据库进行的数据访问操作的数量。 例如，可使用将即席查询成批处理或将查询移至存储过程等方法，提高应用程序性能。 有关详细信息，请参阅[批处理查询](#batch-queries)。
 
 - **具有不受整台计算机支持的密集型工作负荷的数据库**
 
@@ -121,7 +120,7 @@ CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] ([col2])
 
 ![已更正索引的查询计划](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-重要见解是共享商用系统的 IO 容量会比专用服务器计算机的容量受到更多限制。 客观上鼓励将不必要 IO 降至最低，最大限度地在 Azure SQL 数据库服务层的每个计算大小 DTU 范围内利用系统。 选择适当的物理数据库设计方式可显著缩短单个查询的延迟、提高按缩放单元处理的并发请求的吞吐量，以及将满足查询所需的成本降至最低。 有关缺少索引 DMV 的详细信息，请参阅 [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx)。
+重要见解是共享商用系统的 IO 容量会比专用服务器计算机的容量受到更多限制。 客观上鼓励将不必要 IO 降至最低，最大限度地在 Azure SQL 数据库服务层级的每个计算大小 DTU 范围内利用系统。 选择适当的物理数据库设计方式可显著缩短单个查询的延迟、提高按缩放单元处理的并发请求的吞吐量，以及将满足查询所需的成本降至最低。 有关缺少索引 DMV 的详细信息，请参阅 [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx)。
 
 ### <a name="query-tuning-and-hinting"></a>查询优化和提示
 
@@ -262,7 +261,7 @@ SQL Server 用户经常将许多功能集中在单一数据库内。 例如，�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关基于 DTU 的服务层的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)。
-- 有关基于 vCore 的服务层的详细信息，请参阅[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
+- 有关基于 DTU 的服务层级的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)。
+- 有关基于 vCore 的服务层级的详细信息，请参阅[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 - 有关弹性池的详细信息，请参阅[什么是 Azure 弹性池？](sql-database-elastic-pool.md)
 - 有关性能和弹性池的信息，请参阅[何时考虑弹性池](sql-database-elastic-pool-guidance.md)

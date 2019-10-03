@@ -1,5 +1,5 @@
 ---
-title: 用于语言理解的预生成域
+title: 为语言理解预生成的域
 titleSuffix: Azure Cognitive Services
 description: LUIS 提供了一组预生成域，用以快速添加常用的对话式用户方案。
 services: cognitive-services
@@ -8,15 +8,15 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/24/2019
+ms.topic: conceptual
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: e1b99396c4739dc6f1b7a4da0164553d4c25ef3c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: e5d5de6a6f348fa3708b1e39fe2bdd3aa8693dee
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867097"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932659"
 ---
 # <a name="add-prebuilt-domains-for-common-usage-scenarios"></a>为常用使用方案添加预生成域 
 

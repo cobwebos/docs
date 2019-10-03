@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 6757a038a945bf153cb62662bee8c715c87baf19
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 6960c21091e0bc01c198e713c0c276984566ac41
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237734"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65786084"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Azure Redis 缓存高级层简介
 Azure Redis 缓存是一种分布式托管缓存，可提供对数据的超快访问，有助于生成高度可缩放且响应速度快的应用程序。 
@@ -63,9 +63,9 @@ Azure Redis 缓存是一种分布式托管缓存，可提供对数据的超快�
 可以根据需要通过高级层重新启动缓存的一个或多个节点。 这可以测试应用程序在故障时的还原能力。 可以重新启动下列节点。
 
 * 缓存的主节点
-* 缓存的从节点
-* 缓存的主节点和从节点
-* 使用高级缓存来执行群集功能时，可以针对缓存中的各个分片重新启动主节点和/或从节点
+* 缓存的辅助节点
+* 缓存的主要和辅助节点
+* 当使用高级缓存的群集，可以重新启动主、 辅助数据库或在缓存中的各个分片这两个节点
 
 有关详细信息，请参阅[重新启动](cache-administration.md#reboot)和[重新启动常见问题](cache-administration.md#reboot-faq)。
 
@@ -75,7 +75,7 @@ Azure Redis 缓存是一种分布式托管缓存，可提供对数据的超快�
 >
 
 ## <a name="schedule-updates"></a>计划更新
-可以通过计划更新功能指定缓存的维护时段。 指定维护时段后，会在此时段内进行任何 Redis 服务器更新。 要指定维护时段，请选择合适的日期，并指定每天的维护时段开始时间。 请注意，维护时段使用 UTC 时间。 
+可以通过计划更新功能指定缓存的维护时段。 指定维护时段后，会在此时段内进行任何 Redis 服务器更新。 如果要指定维护时段，请选择合适的日期，并指定每天的维护时段开始时间。 请注意，维护时段使用 UTC 时间。 
 
 有关详细信息，请参阅[计划更新](cache-administration.md#schedule-updates)和[计划更新常见问题](cache-administration.md#schedule-updates-faq)。
 
@@ -86,13 +86,13 @@ Azure Redis 缓存是一种分布式托管缓存，可提供对数据的超快�
 
 ## <a name="geo-replication"></a>异地复制
 
-“异地复制”提供一种用于链接两个高级层 Azure Redis 缓存实例的机制。 一个缓存指定为主链接缓存，另一个缓存指定为辅助链接缓存。 辅助链接缓存将变为只读，写入主缓存的数据将复制到辅助链接缓存。 此功能可用于跨 Azure 区域复制缓存。
+“异地复制”提供一种用于链接两个高级层 Azure Redis 缓存实例的机制  。 一个缓存指定为主链接缓存，另一个缓存指定为辅助链接缓存。 辅助链接缓存将变为只读，写入主缓存的数据将复制到辅助链接缓存。 此功能可用于跨 Azure 区域复制缓存。
 
 有关详细信息，请参阅[如何为 Azure Redis 缓存配置异地复制功能](cache-how-to-geo-replication.md)。
 
 
 ## <a name="to-scale-to-the-premium-tier"></a>伸缩到高级层
-若要伸缩到高级层，请直接在“更改定价层”边栏选项卡中选择一个高级层。 也可使用 PowerShell 和 CLI 将缓存伸缩到高级层。 有关分步说明，请参阅[如何缩放 Azure Redis 缓存](cache-how-to-scale.md)和[如何自动执行缩放操作](cache-how-to-scale.md#how-to-automate-a-scaling-operation)。
+若要伸缩到高级层，请直接在“更改定价层”  边栏选项卡中选择一个高级层。 也可使用 PowerShell 和 CLI 将缓存伸缩到高级层。 有关分步说明，请参阅[如何缩放 Azure Redis 缓存](cache-how-to-scale.md)和[如何自动执行缩放操作](cache-how-to-scale.md#how-to-automate-a-scaling-operation)。
 
 ## <a name="next-steps"></a>后续步骤
 创建缓存并探索高级层的新功能。

@@ -3,9 +3,8 @@ title: Azure 安全中心数据安全性 | Microsoft Docs
 description: 本文档介绍如何在 Azure 安全中心管理数据和确保数据安全性。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 33f2c9f4-21aa-4f0c-9e5e-4cd1223e39d7
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 7a327c963f32d6bf5b0cf7751557c61327fd26e9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: memildin
+ms.openlocfilehash: 30f4358bea2670cfa8d825bf1ef75feeba7ea851
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902784"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202337"
 ---
 # <a name="azure-security-center-data-security"></a>Azure 安全中心数据安全性
 为了帮助客户防止、检测和应对威胁，Azure 安全中心将收集和处理安全相关的数据，包括配置信息、元数据、事件日志、故障转储文件，等等。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。
@@ -46,12 +45,18 @@ Azure 安全中心将分析以下源中的数据，提供安全状态视图、�
 
 **工作区**：为以下地区指定工作区，并且从 Azure 虚拟机收集的数据（包括故障转储和某些类型的警报数据）都存储在最近的工作区中。
 
-| VM 地区                        | 工作区地区 |
-|-------------------------------|---------------|
-| 美国、巴西、加拿大 | 美国 |
-| 欧洲、英国        | 欧洲        |
-| 亚太、日本、印度    | 亚太区  |
-| 澳大利亚                     | 澳大利亚     |
+| VM 地区                              | 工作区地区 |
+|-------------------------------------|---------------|
+| 美国、巴西、南非 | 美国 |
+| 加拿大                              | 加拿大        |
+| 欧洲（英国除外）   | 欧洲        |
+| 英国                      | 英国 |
+| 亚洲（印度、日本、韩国、中国除外）   | 亚太  |
+| 韩国                              | 亚太  |
+| 印度                               | 印度         |
+| 日本                               | 日本         |
+| 中国                               | 中国         |
+| 澳大利亚                           | 澳大利亚     |
 
 
 VM 磁盘快照存储在 VM 磁盘所在的同一存储帐户中。
@@ -76,13 +81,13 @@ Microsoft Monitoring Agent 扫描各种安全相关配置和事件，并将其�
 客户可以使用与安全中心相关的数据，这些数据来自不同的数据流，如下所示：
 
 * **Azure 活动**：所有安全警报、经审核的安全中心[实时](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)请求，以及由[自适应应用程序控件](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)生成的所有警报。
-* **Azure Monitor 日志**： 所有安全警报。
+* **Azure Monitor 日志**：所有安全警报。
 
 
 > [!NOTE]
 > 也可通过 REST API 使用安全建议。 有关详细信息，请阅读 [Security Resource Provider REST API Reference](https://msdn.microsoft.com/library/mt704034(Azure.100).aspx)（安全资源提供程序 REST API 参考）。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 本文档介绍如何在 Azure 安全中心管理数据和确保数据安全性。 若要详细了解 Azure 安全中心，请参阅：
 
 * [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) （Azure 安全中心规划和操作指南）- 了解如何规划并理解设计注意事项，以便采用 Azure 安全中心。

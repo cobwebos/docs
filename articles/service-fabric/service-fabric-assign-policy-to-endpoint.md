@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: 3e892e443f5e3309add48f939f26ba14eaf5a51b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670398"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60614188"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>为 HTTP 和 HTTPS 终结点分配安全访问策略
-如果将运行方式策略应用到服务，且服务清单声明使用 HTTP 协议的终结点资源，则必须指定 SecurityAccessPolicy。  SecurityAccessPolicy 会确保分配给这些终结点的端口已正确限制为运行该服务所用的用户帐户。 否则，**http.sys** 将无权访问服务，并且将无法从客户端调用。 以下示例将 Customer1 帐户应用于名为“EndpointName”的终结点，并向它授予完全访问权限。
+如果将运行方式策略应用到服务，且服务清单声明使用 HTTP 协议的终结点资源，则必须指定 SecurityAccessPolicy  。  SecurityAccessPolicy 会确保分配给这些终结点的端口已正确限制为运行该服务所用的用户帐户  。 否则，**http.sys** 将无权访问服务，并且将无法从客户端调用。 以下示例将 Customer1 帐户应用于名为“EndpointName”  的终结点，并向它授予完全访问权限。
 
 ```xml
 <Policies>
@@ -32,7 +32,7 @@ ms.locfileid: "58670398"
 </Policies>
 ```
 
-针对 HTTPS 终结点，还要指出要返回给客户端的证书名称。 使用 EndpointBindingPolicy 引用证书。  应用程序清单的“证书”部分中定义了证书。
+针对 HTTPS 终结点，还要指出要返回给客户端的证书名称。 使用 EndpointBindingPolicy 引用证书  。  应用程序清单的“证书”部分中定义了证书  。
 
 ```xml
 <Policies>

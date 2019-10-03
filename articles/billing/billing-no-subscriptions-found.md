@@ -4,7 +4,7 @@ description: 提供针对登录 Azure 门户或 Azure 帐户中心时出现“�
 services: ''
 documentationcenter: ''
 author: genlin
-manager: adpick
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.assetid: d1545298-99db-4941-8e97-f24a06bb7cb6
@@ -16,12 +16,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 094d79026a55e651a1f67a5047dff20c769c359a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 19a30a99b9df23358aafd88c55bde08c73a3be72
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881106"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121543"
 ---
 # <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>在 Azure 门户或 Azure 帐户中心注册时出现“找不到任何订阅”错误
 
@@ -51,9 +51,9 @@ ms.locfileid: "57881106"
 请检查使用的帐户是否是帐户管理员。 要验证谁是帐户管理员，请执行下列步骤：
 
 1. 登录到 [Azure 门户中的订阅视图](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 选择要检查的订阅，并关注“设置”下的信息。
-1. 选择“属性”。 订阅的帐户管理员会显示在“帐户管理员”框中。  
+1. 选择要检查的订阅，并关注“设置”  下的信息。
+1. 选择“属性”。  订阅的帐户管理员会显示在“帐户管理员”框中。   
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

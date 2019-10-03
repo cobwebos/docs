@@ -8,15 +8,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/25/2018
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: b62cbe75730da8c5764839d41887deb7e6cd0e90
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: b84ea0b9859e69eaf45cd9a89b2443cf42949f79
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576322"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141080"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
@@ -36,14 +36,14 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGr
 该 cmdlet 返回不同类型的集成运行时的不同信息。 本文解释每种类型的集成运行时的属性和状态。  
 
 ## <a name="azure-integration-runtime"></a>Azure 集成运行时
-Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管理。 下表提供了返回的属性的说明**Get AzDataFactoryV2IntegrationRuntime**命令：
+Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管理。 下表提供了 **Get-AzDataFactoryV2IntegrationRuntime** 命令返回的属性的说明：
 
 ### <a name="properties"></a>属性
 下表说明该 cmdlet 针对 Azure 集成运行时返回的属性：
 
-| 属性 | 描述 |
+| 属性 | Description |
 -------- | ------------- | 
-| 名称 | Azure 集成运行时的名称。 |  
+| Name | Azure 集成运行时的名称。 |  
 | State | Azure 集成运行时的状态。 | 
 | Location | Azure 集成运行时的位置。 有关 Azure 集成运行时位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。 |
 | DataFactoryName | Azure 集成运行时所属的数据工厂的名称。 | 
@@ -59,7 +59,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 | 脱机 | 由于内部错误，Azure 集成运行时处于脱机状态。 |
 
 ## <a name="self-hosted-integration-runtime"></a>自承载集成运行时
-本部分提供有关 Get AzDataFactoryV2IntegrationRuntime cmdlet 返回的属性的说明。 
+以下部分提供了 Get-AzDataFactoryV2IntegrationRuntime cmdlet 返回的属性的说明。 
 
 > [!NOTE] 
 > 返回的属性和状态包含有关整个自承载集成运行时和运行时中每个节点的信息。  
@@ -68,16 +68,16 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 
 下表提供了**每个节点**的监视属性的说明：
 
-| 属性 | 描述 | 
+| 属性 | Description | 
 | -------- | ----------- | 
-| 名称 | 自承载集成运行时的名称及其关联的节点。 节点是装有自承载集成运行时的本地 Windows 计算机。 |  
-| 状态 | 整个自承载集成运行时和每个节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅下一个部分。 | 
-| 版本 | 自承载集成运行时和每个节点的版本。 自承载集成运行时的版本根据组中多数节点的版本确定。 如果自承载集成运行时设置中包含不同版本的节点，则只有与逻辑自承载集成运行时的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 | 
+| 姓名 | 自承载集成运行时的名称及其关联的节点。 节点是装有自承载集成运行时的本地 Windows 计算机。 |  
+| 状态 | 整个自承载集成运行时和每个节点的状态。 例如：联机/脱机/受限等。有关这些状态的信息，请参阅下一个部分。 | 
+| Version | 自承载集成运行时和每个节点的版本。 自承载集成运行时的版本根据组中多数节点的版本确定。 如果自承载集成运行时设置中包含不同版本的节点，则只有与逻辑自承载集成运行时的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 | 
 | 可用内存 | 自承载集成运行时节点上的可用内存。 此值为近实时快照。 | 
 | CPU 使用率 | 自承载集成运行时节点的 CPU 利用率。 此值为近实时快照。 |
 | 网络（进/出） | 自承载集成运行时节点的网络利用率。 此值为近实时快照。 | 
 | 并发作业数（运行中/上限） | **正在运行**。 每个节点上运行的作业或任务数。 此值为近实时快照。 <br/><br/>**上限**。 上限表示每个节点的最大并发作业数。 此值根据计算机大小定义而来。 在 CPU、内存或网络未充分利用但活动即将超时的高级方案中，可提高上限来增强并发作业执行。 此功能也适用于单节点自承载集成运行时。 |
-| 角色 | 多节点自承载集成运行时中有两种角色 – 调度程序和辅助角色。 所有节点均为辅助角色，表示它们可用于执行作业。 只有一个调度程序节点，用于从云服务中拉取任务/作业，并将其调度到不同的辅助角色节点。 调度程序节点也是一个辅助角色节点。 |
+| Role | 多节点自承载集成运行时中有两种角色 – 调度程序和辅助角色。 所有节点均为辅助角色，表示它们可用于执行作业。 只有一个调度程序节点，用于从云服务中拉取任务/作业，并将其调度到不同的辅助角色节点。 调度程序节点也是一个辅助角色节点。 |
 
 属性的某些设置更适用于自承载集成运行时中包含两个或两个以上节点的情况（即，在横向扩展方案中）。
 
@@ -87,18 +87,18 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 
 可以通过增加节点数进行横向扩展。 增加节点数时，并发作业限制为所有可用节点的并发作业限制值的总和。  例如，如果一个节点允许运行最多 12 个并发作业，那么再添加三个类似节点将允许运行最多 48 个并发作业（即 4 x 12）。 建议仅在以下情况下提高并发作业限制：在每个节点上使用默认值时，资源使用率较低。
 
-可以在 Azure 门户中覆盖计算得出的默认值。 选择“创建者”>“连接”>“集成运行时”>“编辑”>“节点”>“修改每个节点的并发作业值”。 此外可以使用 PowerShell[更新 Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples)命令。
+可以在 Azure 门户中覆盖计算得出的默认值。 选择“创建者”>“连接”>“集成运行时”>“编辑”>“节点”>“修改每个节点的并发作业值”。 也可以使用 PowerShell [update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) 命令。
   
 ### <a name="status-per-node"></a>状态（每个节点）
 下表提供了自承载集成运行时节点的可能状态：
 
 | 状态 | 描述 |
 | ------ | ------------------ | 
-| 联机 | 节点已连接到数据工厂服务。 |
+| Online | 节点已连接到数据工厂服务。 |
 | 脱机 | 节点处于脱机状态。 |
 | 正在升级 | 节点正在进行自动更新。 |
-| 受限制 | 由于连接问题而受限。 可能的原因包括 HTTP 端口 8050 问题、服务总线连接问题或凭据同步问题。 |
-| 非活动 | 节点的配置与其他多数节点的配置不同。 |
+| 受限 | 由于连接问题而受限。 可能的原因包括 HTTP 端口 8050 问题、服务总线连接问题或凭据同步问题。 |
+| 未激活 | 节点的配置与其他多数节点的配置不同。 |
 
 节点在无法与其他节点连接时可能处于非活动状态。
 
@@ -108,11 +108,11 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 | 状态 | 描述 |
 | ------ | ----------- | 
 | 需要注册 | 尚未将任何节点注册到此自承载集成运行时。 |
-| 联机 | 所有节点处于联机状态。 |
+| Online | 所有节点处于联机状态。 |
 | 脱机 | 没有任何节点处于联机状态。 |
-| 受限制 | 此自承载集成运行时中的所有节点并非全都处于正常状态。 此状态是一种警告，表示某些节点可能已关闭。 此状态的可能原因是调度程序/辅助角色节点上出现凭据同步问题。 |
+| 受限 | 此自承载集成运行时中的所有节点并非全都处于正常状态。 此状态是一种警告，表示某些节点可能已关闭。 此状态的可能原因是调度程序/辅助角色节点上出现凭据同步问题。 |
 
-使用**Get AzDataFactoryV2IntegrationRuntimeMetric** cmdlet 来提取 JSON 有效负载包含详细自承载集成运行时属性和快照的 cmdlet 执行的时间内的值。
+使用 **Get-AzDataFactoryV2IntegrationRuntimeMetric** cmdlet 提取包含详细自承载集成运行时属性，以及执行该 cmdlet 期间这些属性的快照值的 JSON 有效负载。
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
@@ -160,11 +160,11 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | 属性/状态 | 描述 |
 | --------------- | ----------- |
 | CreateTime | Azure-SSIS 集成运行时的创建时间（UTC 时间）。 |
-| Nodes | Azure-SSIS 集成运行时的已分配/可用节点、特定于节点的状态 (starting/available/recycling/unavailable) 和可采取措施的错误。 |
+| 节点 | Azure-SSIS 集成运行时的已分配/可用节点、特定于节点的状态 (starting/available/recycling/unavailable) 和可采取措施的错误。 |
 | OtherErrors | Azure-SSIS 集成运行时中发生的非特定于节点且可采取措施的错误。 |
 | LastOperation | 上次对 Azure-SSIS 集成运行时执行的启动/停止操作的结果，以及可采取措施的错误（如果操作失败）。 |
 | 状态 | Azure-SSIS 集成运行时的总体状态 (initial/starting/started/stopping/stopped)。 |
-| 位置 | Azure-SSIS 集成运行时的位置。 |
+| Location | Azure-SSIS 集成运行时的位置。 |
 | NodeSize | Azure-SSIS 集成运行时的每个节点的大小。 |
 | NodeCount | Azure-SSIS 集成运行时中的节点数目。 |
 | MaxParallelExecutionsPerNode | Azure-SSIS 集成运行时中每个节点的并行执行数。 |
@@ -173,12 +173,12 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | CatalogAdminPassword | 现有 Azure SQL 数据库/托管实例服务器的管理员密码。 |
 | CatalogPricingTier | 现有 Azure SQL 数据库服务器托管的 SSISDB 的定价层。  不适用于使用 Azure SQL 数据库托管实例来托管 SSISDB。 |
 | VNetId | Azure-SSIS 集成运行时要加入的虚拟网络资源 ID。 |
-| 子网 | Azure-SSIS 集成运行时要加入的子网名称。 |
-| ID | Azure-SSIS 集成运行时的资源 ID。 |
-| Type | Azure-SSIS 集成运行时的类型 (Managed/Self-Hosted)。 |
+| Subnet | Azure-SSIS 集成运行时要加入的子网名称。 |
+| id | Azure-SSIS 集成运行时的资源 ID。 |
+| 类型 | Azure-SSIS 集成运行时的类型 (Managed/Self-Hosted)。 |
 | ResourceGroupName | 在其中创建了数据工厂和 Azure-SSIS 集成运行时的 Azure 资源组的名称。 |
 | DataFactoryName | Azure 数据工厂的名称。 |
-| 名称 | Azure-SSIS 集成运行时的名称。 |
+| Name | Azure-SSIS 集成运行时的名称。 |
 | 描述 | Azure-SSIS 集成运行时的说明。 |
 
   
@@ -193,11 +193,11 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>状态（整个 Azure-SSIS 集成运行时）
 
-| 总体状态 | 描述 | 
+| 整体状态 | 描述 | 
 | -------------- | ----------- | 
 | Initial | 尚未分配/准备 Azure-SSIS 集成运行时的节点。 | 
 | 正在启动 | 正在分配/准备 Azure-SSIS 集成运行时的节点，计费已开始。 |
-| 已启动 | 已分配/准备 Azure-SSIS 集成运行时的节点，并可以在其中部署/执行 SSIS 包。 |
+| 已开始 | 已分配/准备 Azure-SSIS 集成运行时的节点，并可以在其中部署/执行 SSIS 包。 |
 | 正在停止  | 正在释放 Azure-SSIS 集成运行时的节点。 |
 | 已停止 | 已释放 Azure-SSIS 集成运行时的节点，计费已停止。 |
 

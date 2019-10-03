@@ -1,25 +1,17 @@
 ---
 title: 链接 Azure 部署的模板 | Microsoft 文档
 description: 介绍如何使用 Azure 资源管理器模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: 27d8c4b2-1e24-45fe-88fd-8cf98a6bb2d2
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/18/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: d4ecccf8787e369b9a3270eab2d01a01ce7ae0c7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b48988c04f6b387a8124a812a836e2b92a9d3ada
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58174301"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194378"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -73,11 +65,12 @@ ms.locfileid: "58174301"
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2018-07-01",
+            "apiVersion": "2019-04-01",
             "name": "[variables('storageName')]",
             "location": "West US",
-            "properties": {
-              "accountType": "Standard_LRS"
+            "kind": "StorageV2",
+            "sku": {
+                "name": "Standard_LRS"
             }
           }
         ]
@@ -90,14 +83,14 @@ ms.locfileid: "58174301"
 > [!NOTE]
 > 对于嵌套模板，不能使用嵌套模板中定义的参数或变量。 可以使用主模板中的参数和变量。 在前面的示例中，`[variables('storageName')]` 从主模板（而不是嵌套模板）中检索值。 此限制不适用于外部模版。
 >
-> 两个资源内定义的嵌套模板和一个资源依赖于其他，依赖项的值是只需依赖的资源的名称：
+> 如果在嵌套模板内定义了两个资源并且一个资源依赖于另一个资源，则依赖项的值就是依赖资源的名称：
 > ```json
 > "dependsOn": [
 >   "[variables('storageAccountName')]"
 > ],
 > ```
 >
-> 不能在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
+> 对于已在嵌套模板中部署的资源，不能在嵌套模板的 outputs 节使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
 
 嵌套模板需要与标准模板[相同的属性](resource-group-authoring-templates.md)。
 
@@ -150,6 +143,51 @@ ms.locfileid: "58174301"
           "StorageAccountName":{"value": "[parameters('StorageAccountName')]"}
         }
      }
+  }
+]
+```
+
+## <a name="using-copy"></a>使用复制
+
+若要使用嵌套的模板创建资源的多个实例，请在 **Microsoft.Resources/deployments** 资源的级别添加副本元素。
+
+以下示例模板展示了如何将副本与嵌套的模板配合使用。
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2018-05-01",
+    "name": "[concat('nestedTemplate', copyIndex())]",
+    // yes, copy works here
+    "copy":{
+      "name": "storagecopy",
+      "count": 2
+    },
+    "properties": {
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "resources": [
+          {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "name": "[concat(variables('storageName'), copyIndex())]",
+            "location": "West US",
+            "kind": "StorageV2",
+            "sku": {
+              "name": "Standard_LRS"
+            }
+            // no, copy doesn't work here
+            //"copy":{
+            //  "name": "storagecopy",
+            //  "count": 2
+            //}
+          }
+        ]
+      }
+    }
   }
 ]
 ```
@@ -441,6 +479,8 @@ done
 尽管链接模板必须可从外部使用，但它无需向公众正式发布。 可以将模板添加到只有存储帐户所有者可以访问的专用存储帐户。 然后，在部署期间创建共享访问签名 (SAS) 令牌来启用访问。 将该 SAS 令牌添加到链接模板的 URI。 即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也将记录在部署操作中。 若要限制公开，请设置令牌的到期时间。
 
 也可将参数文件限制为通过 SAS 令牌进行访问。
+
+目前, 无法链接到位于[Azure 存储防火墙](../storage/common/storage-network-security.md)后面的存储帐户中的模板。
 
 以下示例演示在链接到模板时如何传递 SAS 令牌：
 

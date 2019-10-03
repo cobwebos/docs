@@ -1,74 +1,76 @@
 ---
 title: 从 Azure IoT Central 规则运行多个操作 |Microsoft Docs
-description: 从一个 IoT 中心的规则，运行多个操作并创建可重复使用可以从多个规则运行的操作组。
+description: 从单个 IoT Central 规则运行多个操作, 并创建可从多个规则运行的可重复使用的操作组。
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/19/2019
+ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: 857d747fa691d1ec2b386d5931a7edea08b7e609
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: ad5f660ff72eceecbb6db2e9557b023ed2c6ea99
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522888"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875812"
 ---
-# <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>若要从一个或多个规则运行的多个操作进行分组
+# <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>将多个操作分组, 以从一个或多个规则运行
 
 *本文适用于构建者和管理员。*
 
-在 Azure IoT Central 创建规则，以满足某个条件时运行的操作。 规则基于设备遥测数据或事件。 例如，可以在设备温度超过阈值时通知操作员。 本文介绍如何使用[Azure Monitor](../azure-monitor/overview.md) *操作组*将附加到 IoT 中心规则的多个操作。 可以将操作组附加到多个规则。 [操作组](../azure-monitor/platform/action-groups.md)是由 Azure 订阅的所有者定义的通知首选项的集合。
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-## <a name="prerequisites"></a>必备组件
+在 Azure IoT Central 中, 可以创建规则以在满足条件时运行操作。 规则基于设备遥测或事件。 例如, 当设备温度超过阈值时, 可以通知操作员。 本文介绍如何使用[Azure Monitor](../azure-monitor/overview.md) *操作组*将多个操作附加到 IoT Central 规则。 可以将操作组附加到多个规则。 [操作组](../azure-monitor/platform/action-groups.md)是 Azure 订阅的所有者定义的通知首选项的集合。
+
+## <a name="prerequisites"></a>先决条件
 
 - 即用即付应用程序
-- Azure 帐户和订阅来创建和管理 Azure Monitor 操作组
+- 用于创建和管理 Azure Monitor 操作组的 Azure 帐户和订阅
 
 ## <a name="create-action-groups"></a>创建操作组
 
-你可以[创建和管理在 Azure 门户中的操作组](../azure-monitor/platform/action-groups.md)或使用[Azure 资源管理器模板](../azure-monitor/platform/action-groups-create-resource-manager-template.md)。
+可以在 Azure 门户中或使用[Azure 资源管理器模板](../azure-monitor/platform/action-groups-create-resource-manager-template.md)来[创建和管理操作组](../azure-monitor/platform/action-groups.md)。
 
-操作组可以：
+操作组可以:
 
-- 发送通知，如电子邮件、 短信，或进行语音呼叫。
-- 运行操作，例如调用 webhook。
+- 发送电子邮件通知, 如电子邮件、短信或呼叫。
+- 运行操作, 如调用 webhook。
 
-下面的屏幕截图显示了一个操作组发送电子邮件和短信通知和调用 webhook:
+以下屏幕截图显示了一个操作组, 它将发送电子邮件和短信通知并调用 webhook:
 
 ![操作组](media/howto-use-action-groups/actiongroup.png)
 
-若要在 IoT Central 规则中使用操作组，IoT Central 应用程序与同一 Azure 订阅中必须是操作组。
+若要在 IoT Central 规则中使用操作组, 操作组必须与 IoT Central 应用程序位于同一 Azure 订阅中。
 
 ## <a name="use-an-action-group"></a>使用操作组
 
-若要在 IoT Central 应用程序中使用操作组，首先创建一个遥测数据或事件规则。 在将操作添加到规则中，选择**Azure 监视器操作组**:
+若要在 IoT Central 应用程序中使用操作组, 请首先创建遥测或事件规则。 向规则添加操作时, 请选择**Azure Monitor 操作组**:
 
 ![选择操作](media/howto-use-action-groups/chooseaction.png)
 
-从你的 Azure 订阅中选择一个操作组：
+从 Azure 订阅中选择操作组:
 
 ![选择操作组](media/howto-use-action-groups/chooseactiongroup.png)
 
-选择“其他安全性验证” 。 操作组现在显示在运行时触发此规则的操作列表中：
+选择**保存**。 操作组现在显示在触发规则时要运行的操作的列表中:
 
-![保存操作组](media/howto-use-action-groups/savedactiongroup.png)
+![保存的操作组](media/howto-use-action-groups/savedactiongroup.png)
 
-下表总结了发送给支持的操作类型的信息：
+下表总结了发送到支持的操作类型的信息:
 
 | 操作类型 | 输出格式 |
 | ----------- | -------------- |
-| 电子邮件       | 标准 IoT 中心电子邮件模板 |
-| 短信         | Azure IoT Central 警报: ${applicationName} 的"${ruleName}"上"${deviceName}"${triggerDate} ${triggerTime} 在触发 |
-| 语音       | Azure I.O.T Central 警报： 应用程序 ${applicationName} 中的规则"${ruleName}"${triggerDate} ${triggerTime} 的设备"${deviceName}"上触发 |
-| Webhook     | {"schemaId":"AzureIoTCentralRuleWebhook"，"数据": {[正则 webhook 有效负载](#payload)}} |
+| Email       | 标准 IoT Central 电子邮件模板 |
+| 短信         | Azure IoT Central 警报: $ {applicationName}-"$ {ruleName}" 在 $ {triggerDate} $ {triggerTime} 的 "$ {deviceName}" 上触发 |
+| 语音       | Azure i-o Central 警报: 在应用程序 $ {applicationName} 的 $ {triggerDate} $ {triggerTime} 上, 在设备 "$ {deviceName}" 上触发的规则 "$ {ruleName}" |
+| Webhook     | { "schemaId" :"AzureIoTCentralRuleWebhook", "data": {[常规 webhook 负载](#payload)}} |
 
-以下文本是示例短信操作组中：
+以下文本是操作组中的一个示例 SMS 消息:
 
 `iotcentral: Azure IoT Central alert: Sample Contoso 22xu4spxjve - "Low pressure alert" triggered on "Refrigerator 2" at March 20, 2019 10:12 UTC`
 
-<a id="payload"></a> 以下 JSON 显示了示例 webhook 操作有效负载：
+<a id="payload"></a>以下 JSON 显示了一个示例 webhook 操作有效负载:
 
 ```json
 {
@@ -111,4 +113,4 @@ ms.locfileid: "58522888"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已了解如何使用规则操作组，建议下一步是了解如何[管理设备](howto-manage-devices.md)。
+现在, 你已了解如何结合使用操作组和规则, 接下来是了解如何[管理你的设备](howto-manage-devices.md)。

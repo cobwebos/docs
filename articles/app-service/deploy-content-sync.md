@@ -9,17 +9,17 @@ ms.assetid: 88d3a670-303a-4fa2-9de9-715cc904acec
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2018
-ms.author: cephalin;dariagrigoriu
+ms.author: cephalin
+ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 65f372196671e95f7d9af7f47011e9ca1f9de316
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 033a9adfd81dc52858ab58e3170e69af6f56c323
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550752"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070631"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>将内容从云文件夹同步到 Azure 应用服务
 本文介绍如何将内容同步到 Dropbox 和 OneDrive 上的 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)。 

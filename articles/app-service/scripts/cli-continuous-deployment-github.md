@@ -13,21 +13,21 @@ ms.workload: web
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 12/11/2017
+ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 43c070513f23564bd4679531e20b411f178920ac
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 02853186a1f28d8c6db6b5421c6ebba0640461cb
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629095"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "71057887"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>使用 CLI 从 GitHub 通过持续部署创建应用服务应用
 
 此示例脚本使用其相关资源在应用服务中创建应用，并从 GitHub 存储库设置持续部署。 有关不进行持续部署的 GitHub 部署，请参阅[从 GitHub 创建应用并部署代码](cli-deploy-github.md)。 在此示例中，需要以下项：
 
-* 包含应用程序代码且你对其拥有管理权限的 GitHub 存储库。
+* 包含应用程序代码且你对其拥有管理权限的 GitHub 存储库。 若要获得自动生成，请根据[准备存储库](../deploy-continuous-deployment.md#prepare-your-repository)表构建存储库。
 * GitHub 帐户的[个人访问令牌(PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

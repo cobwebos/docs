@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 565e1bf7a4972e230b3cf56232ebd24519fcab5c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007899"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60525850"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器概念
 
@@ -41,10 +41,10 @@ Azure Database for MySQL 服务器：
 |     |     |
 | :-- | :-- |
 | **身份验证和授权** | Azure Database for MySQL 服务器支持本机 MySQL 身份验证。 可使用服务器的管理员登录名连接到服务器并进行身份验证。 |
-| 协议 | 该服务支持 MySQL 使用的基于消息的协议。 |
-| TCP/IP | 通过 TCP/IP 和 Unix 域套接字支持该协议。 |
+| 协议  | 该服务支持 MySQL 使用的基于消息的协议。 |
+| TCP/IP  | 通过 TCP/IP 和 Unix 域套接字支持该协议。 |
 | **防火墙** | 为了帮助保护数据，在用户指定具有访问权限的计算机之前，防火墙规则将禁止所有对数据库服务器的访问。 请参阅 [Azure Database for MySQL 服务器防火墙规则](./concepts-firewall-rules.md)。 |
-| SSL | 该服务支持在应用程序和数据库服务器之间强制进行 SSL 连接。  请参阅[配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL](./howto-configure-ssl.md)。 |
+| SSL  | 该服务支持在应用程序和数据库服务器之间强制进行 SSL 连接。  请参阅[配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL](./howto-configure-ssl.md)。 |
 
 ## <a name="how-do-i-manage-a-server"></a>如何管理服务器？
 
@@ -53,5 +53,5 @@ Azure Database for MySQL 服务器：
 ## <a name="next-steps"></a>后续步骤
 
 - 有关该服务的概述，请参阅 [Azure Database for MySQL 概述](./overview.md)
-- 有关基于服务层的具体资源配额和限制的信息，请参阅[服务层](./concepts-service-tiers.md)
+- 有关基于服务层级  的具体资源配额和限制的信息，请参阅[服务层级](./concepts-service-tiers.md)
 - 有关连接到服务的信息，请参阅 [Azure Database for MySQL 的连接库](./concepts-connection-libraries.md)。

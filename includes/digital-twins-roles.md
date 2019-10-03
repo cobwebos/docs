@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/20/2018
-ms.author: adgera
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 7e4760990229433b2ea40fadd0d17de0b52fcb36
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: 10161d6b1d944857aa45d5152c77e107a208d98d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53795880"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012047"
 ---
 下表介绍了 Azure 数字孪生中可用的角色：
 

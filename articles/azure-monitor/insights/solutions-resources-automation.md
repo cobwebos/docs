@@ -15,11 +15,11 @@ ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1c9b13f44dae068597cb82a0aa803283ad5e67bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763600"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62110355"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>将 Azure 自动化资源添加到管理解决方案（预览版）
 > [!NOTE]
@@ -282,7 +282,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 | 数据类型 | 描述 | 示例 | 解析为 |
 |:--|:--|:--|:--|
 | string   | 将值括在双引号中。  | “\"Hello world\"” | “Hello world” |
-| numeric  | 用单引号将数字值括起来。| “64” | 64 |
+| numeric  | 用单引号将数字值括起来。| "64" | 64 |
 | boolean  | 引号中的“true”或“false”。  请注意，此值必须为小写。 | "true" | true |
 | datetime | 序列化日期值。<br>可以在 PowerShell 中使用 ConvertTo-Json cmdlet 为特定日期生成此值。<br>示例：get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 

@@ -1,5 +1,5 @@
 ---
-title: 创建可复原的访问控制管理策略的 Azure Active Directory
+title: 创建弹性访问控制管理策略-Azure Active Directory
 description: 本文档为组织提供了策略方面的指导，组织可采用这些策略来提供复原能力，以降低意外中断期间的锁定风险
 services: active-directory
 author: martincoetzer
@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
-ms.author: martincoetzer
+ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886074"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125110"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -37,8 +37,8 @@ ms.locfileid: "58886074"
 本文档有四个要点：
 
 * 使用紧急访问帐户避免管理员锁定。
-* 使用条件访问 (CA) 实施 MFA，而不是实施每用户 MFA。
-* 通过使用多种条件访问 (CA) 控制来缓解用户锁定风险。
+* 使用条件性访问 (CA) 而不是按用户 MFA 实现 MFA。
+* 通过使用多个条件访问 (CA) 控件来缓解用户锁定。
 * 通过为每个用户预配多种身份验证方法或等效项来缓解用户锁定风险。
 
 ## <a name="before-a-disruption"></a>中断前
@@ -58,16 +58,16 @@ ms.locfileid: "58886074"
 
 ### <a name="mitigating-user-lockout"></a>缓解用户锁定风险
 
- 若要缓解用户锁定风险，请使用包含多种控制的条件访问策略，以便用户可以选择如何访问应用和资源。 通过为用户提供多种选择，例如，使用 MFA 登录**或**从受管理设备登录**或**从公司网络登录，用户可以在其中一种访问控制不可用时，使用其他选项来继续工作。
+ 若要降低用户锁定的风险, 请使用具有多个控件的条件性访问策略, 使用户能够选择如何访问应用和资源。 通过为用户提供多种选择，例如，使用 MFA 登录**或**从受管理设备登录**或**从公司网络登录，用户可以在其中一种访问控制不可用时，使用其他选项来继续工作。
 
 #### <a name="microsoft-recommendations"></a>Microsoft 的建议
 
-在组织的现有条件访问策略中加入以下访问控制机制：
+在组织现有的条件性访问策略中合并以下访问控制:
 
 1. 为每个用户预配依赖于不同信道的多种身份验证方法，例如基于 Internet 的 Microsoft Authenticator 应用、在设备上生成的 OATH 令牌和手机短信。
 2. 在 Windows 10 设备上部署 Windows Hello for Business，以便直接通过设备登录满足 MFA 要求。
 3. 通过 [Azure AD 混合联接](https://docs.microsoft.com/azure/active-directory/devices/overview)或 [Microsoft Intune 受管理设备](https://docs.microsoft.com/intune/planning-guide)使用受信任的设备。 受信任的设备将改善用户体验，因为受信任的设备本身就能满足策略的强身份验证要求，无需向用户发出 MFA 质询。 而在注册新设备以及从不受信任的设备访问应用或资源时，需使用 MFA。
-4. 当用户或登录面临风险时，使用 Azure AD Identity Protection 基于风险的策略来阻止访问，而不是使用固定的 MFA 策略。
+4. 当用户或登录面临风险时，使用“Azure AD 标识保护”基于风险的策略来阻止访问，而不是使用固定的 MFA 策略。
 
 >[!NOTE]
 > 基于风险的策略需要 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 许可证。
@@ -81,7 +81,7 @@ ms.locfileid: "58886074"
   * 用户和组：包括所有用户。 排除 AppUsers、CoreAdmins 和 EmergencyAccess
   * 云应用：包括所有应用
   * 条件：（无）
-  * 授予控制权：街区
+  * 授予控制权：阻止
 * 策略 2：向要求执行 MFA 或使用受信任设备的 AppUsers 授予访问权限。
   * 用户和组：包括 AppUsers。 排除 CoreAdmins 和 EmergencyAccess
   * 云应用：包括所有应用
@@ -109,7 +109,7 @@ ms.locfileid: "58886074"
 
 #### <a name="microsoft-recommendations"></a>Microsoft 的建议
 
-应急条件访问策略是一种**被禁用的策略**，它会忽略 Azure MFA、第三方 MFA、基于风险或基于设备的控制。 当组织决定激活你的应急计划时，管理员可以启用该策略并禁用基于控制的常规策略。
+应急条件性访问策略是一个**禁用的策略**, 该策略忽略 Azure MFA、第三方 MFA、基于风险的控件或基于设备的控件。 当组织决定激活你的应急计划时，管理员可以启用该策略并禁用基于控制的常规策略。
 
 >[!IMPORTANT]
 > 启用应急计划时，禁用对用户强制执行安全措施的策略（即使只是暂时的）会对你的安全状况造成威胁。
@@ -151,21 +151,21 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * 用户和组：包括所有用户。 排除 CoreAdmins 和 EmergencyAccess
   * 云应用：Exchange Online 和 SharePoint Online
   * 条件：设备平台包括所有平台，不包括 Windows
-  * 授予控制权：街区
+  * 授予控制权：阻止
   * 状态：已禁用
 * 策略 3：阻止 CorpNetwork 以外的网络
   * 姓名：EM003 - 在紧急情况下启用：MFA 中断 [3/4] - Exchange SharePoint - 阻止非企业网络的访问
   * 用户和组：包括所有用户。 排除 CoreAdmins 和 EmergencyAccess
   * 云应用：Exchange Online 和 SharePoint Online
   * 条件：位置包括任意位置，不包括 CorpNetwork
-  * 授予控制权：街区
+  * 授予控制权：阻止
   * 状态：已禁用
 * 策略 4：显式阻止 EAS
   * 姓名：EM004 - 在紧急情况下启用：MFA 中断 [4/4] - Exchange - 阻止所有用户的 EAS
   * 用户和组：包括所有用户
   * 云应用：包括 Exchange Online
   * 条件：客户端应用：Exchange ActiveSync
-  * 授予控制权：街区
+  * 授予控制权：阻止
   * 状态：已禁用
 
 激活顺序：
@@ -185,15 +185,15 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * 姓名：EM001 - 在紧急情况下启用：设备合规性中断 [1/2] - Salesforce - 阻止除 SalesforceContingency 以外的所有用户
   * 用户和组：包括所有用户。 排除 SalesAdmins 和 SalesforceContingency
   * 云应用：Salesforce。
-  * 条件：无
-  * 授予控制权：街区
+  * 条件：None
+  * 授予控制权：阻止
   * 状态：已禁用
 * 策略 2：阻止销售团队从移动设备以外的任何平台进行访问（以缩小受攻击面）
   * 姓名：EM002 - 在紧急情况下启用：设备合规性中断 [2/2] - Salesforce - 阻止除 iOS 和 Android 以外的所有平台
   * 用户和组：包括 SalesforceContingency。 排除 SalesAdmins
   * 云应用：Salesforce
   * 条件：设备平台包括所有平台，不包括 iOS 和 Android
-  * 授予控制权：街区
+  * 授予控制权：阻止
   * 状态：已禁用
 
 激活顺序：
@@ -210,7 +210,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 - 组织使用包含直通身份验证或联合身份验证的混合标识解决方案。
 - 本地标识系统（如 Active Directory、AD FS 或某个从属组件）不可用。 
  
-若要提高复原能力，你的组织应[启用密码哈希同步](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)，因为它能让你在本地标识系统关闭的情况下[切换为使用密码哈希同步](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin)。
+若要提高复原能力，你的组织应[启用密码哈希同步](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)，因为它能让你在本地标识系统关闭的情况下[切换为使用密码哈希同步](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin)。
 
 #### <a name="microsoft-recommendations"></a>Microsoft 的建议
  无论你的组织使用联合身份验证还是直通身份验证，都可以使用 Azure AD Connect 向导启用密码哈希同步。
@@ -232,7 +232,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 1. 作为变更控制策略的一部分，记录每项变更和之前的状态，以便在访问控制完全正常运行后立即回滚你实施的所有应急计划。
 2. 假设恶意参与者在你禁用 MFA 时试图通过密码喷射或网络钓鱼攻击来获取密码。 此外，不良参与者可能已经拥有以前未授权访问任何资源，但可能在此时段试图访问这些资源的密码。 对于高级管理人员等关键用户，可以在为其禁用 MFA 之前重置密码，从而在一定程度上缓解此风险。
 3. 存档所有登录活动，以确定在 MFA 被禁用期间，哪些人访问了哪些内容。
-4. 对此时段[报告的所有风险事件进行会审](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
+4. 会审此窗口期间[报告的所有风险检测](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
 
 ## <a name="after-a-disruption"></a>中断后
 
@@ -242,24 +242,24 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 2. 禁用应急策略。 
 3. 回滚在中断期间所做的并进行了记录的任何其他更改。
 4. 如果使用了紧急访问帐户，请记住重新生成凭据并以物理方式保护新凭据的详细信息，以作为紧急访问帐户过程的一部分。
-5. 继续对中断后就可疑活动[报告的所有风险事件进行会审](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
+5. 继续会审发生可疑活动中断后[报告的所有风险检测](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
 6. 撤销[使用 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) 针对一组用户颁发的所有刷新令牌。 撤销所有刷新令牌对于在中断期间使用的特权帐户非常重要，这样做将迫使它们重新进行身份验证并满足已还原策略的控制要求。
 
 ## <a name="emergency-options"></a>紧急选项
 
- 在出现紧急情况时，如果组织以前未实施任何缓解或应急计划，但他们已经使用条件访问策略来强制执行 MFA，则按照[用户锁定应急计划](#contingencies-for-user-lockout)部分中的建议操作。
+ 在紧急情况下, 如果你的组织以前未实施缓解或应变计划, 请在 "[用户锁定的紧急](#contingencies-for-user-lockout)情况" 部分中执行建议, 前提是他们已使用条件性访问策略来强制执行 MFA。
 如果你的组织使用的是每用户 MFA 旧策略，则可以考虑以下替代方法：
 
 1. 如果有公司网络出站 IP 地址，则可以将它们添加为受信任的 IP，以便仅对公司网络启用身份验证。
    1. 如果没有出站 IP 地址清单，或需要在公司网络内外均启用访问，则可通过指定 0.0.0.0/1 和 128.0.0.0/1 将整个 IPv4 地址空间添加为可信 IP。
 
 >[!IMPORTANT]
- > 如果通过扩大受信任 IP 地址的范围来取消阻止访问，则不会生成与 IP 地址关联的风险事件（例如，无法实现的行程或不熟悉的位置）。
+ > 如果你放宽了受信任的 IP 地址以取消阻止访问, 将不会生成与 IP 地址 (例如, 不可能的旅行或不熟悉的位置) 关联的风险检测。
 
 >[!NOTE]
  > 只有使用 [Azure AD Premium 许可证](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)才能为 Azure MFA 配置[受信任的 IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings)。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解详情
 
 * [Azure AD 身份验证文档](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [在 Azure AD 中管理紧急访问管理账户](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)

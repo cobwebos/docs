@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: 墨迹识别器 API 文档
+summary: 了解如何使用墨迹识别器 API 为你的应用和服务带来数字墨迹识别功能。 该 API 是一项基于云的服务，它使用机器学习来识别任何上下文中的手写形状和文本。
+metadata:
+  title: 墨迹识别器 API - 教程、快速入门和 API 参考
+  titleSuffix: Azure Cognitive Services
+  description: 数字墨迹是以数字形式表示手写和绘制等输入内容的技术。 随着设备中不断推出丰富的数字墨迹书写体验，可以通过人工智能和机器学习来识别任意上下文中的书写形状和文本。 墨迹识别器 API 是基于云的服务，可用于发送墨迹笔划及获取其详细信息。
+  services: cognitive-services
+  author: aahill
+  manager: nitinme
+  layout: LandingPage
+  ms.service: cognitive-services
+  ms.subservice: ink-recognizer
+  ms.topic: landing-page
+  ms.date: 09/23/2019
+  ms.author: aahi
+  ms.openlocfilehash: 985cdb6492445c89462e79cc2931d28bc34abb58
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71219526"
+landingContent:
+- title: 关于墨迹识别器 API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是墨迹识别器 API？
+      url: overview.md
+- title: 识别数字墨迹笔划
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 C#
+      url: quickstarts/csharp.md
+    - text: 使用 Java
+      url: quickstarts/java.md
+    - text: 使用 JavaScript
+      url: quickstarts/javascript.md
+  - linkListType: concept
+    links:
+    - text: 将墨迹笔划数据发送到 API
+      url: concepts/send-ink-data.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://go.microsoft.com/fwlink/?linkid=2089907
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+- title: 示例
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: C# 和通用 Windows 平台 (UWP)
+      url: https://go.microsoft.com/fwlink/?linkid=2089803
+    - text: C# 和 Windows Presentation Foundation (WPF)
+      url: https://go.microsoft.com/fwlink/?linkid=2089804
+    - text: Javascript Web 浏览器应用
+      url: https://go.microsoft.com/fwlink/?linkid=2089908
+    - text: Java 和 Android 移动应用
+      url: https://go.microsoft.com/fwlink/?linkid=2089906
+    - text: Swift 和 iOS 移动应用
+      url: https://go.microsoft.com/fwlink/?linkid=2089805

@@ -3,8 +3,8 @@ title: 在 Azure 网络观察程序中进行资源故障排除简介 | Microsoft
 description: 此页概述了网络观察程序资源故障排除功能
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: jdial
-ms.openlocfilehash: aa7fce21228d4413dc4964d6e828bf60478aee27
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: kumud
+ms.openlocfilehash: 65ce9e7d298131486ae4e5f3584c7975ca81e1ab
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901825"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64684242"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
@@ -86,13 +86,13 @@ ms.locfileid: "57901825"
 
 |  |  |
 |---------|---------|
-|网关类型   |         |
+|网关类型    |         |
 |VPN      | 支持        |
 |ExpressRoute | 不支持 |
-|VPN 类型 | |
+|VPN 类型  | |
 |基于路由 | 支持|
 |基于策略 | 不支持|
-|连接类型||
+|连接类型 ||
 |IPSec| 支持|
 |VNet2Vnet| 支持|
 |ExpressRoute| 不支持|

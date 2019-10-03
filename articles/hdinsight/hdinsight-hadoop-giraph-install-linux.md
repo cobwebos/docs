@@ -1,27 +1,22 @@
 ---
-title: 在 HDInsight (Hadoop) 上安装并使用 Giraph — Azure
-description: 了解如何使用脚本操作在基于 Linux 的 HDInsight 群集上安装 Giraph。 脚本操作可让你通过更改群集配置或安装服务和实用工具，在创建期间自定义群集。
-services: hdinsight
+title: 在 Azure HDInsight 上安装并使用 Giraph
+description: 了解如何使用脚本操作在 HDInsight 群集上安装 Giraph。 可以使用 Giraph 在 Azure 云中 Apache Hadoop 执行图形处理。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: hrasheed
-ms.openlocfilehash: a2f964915efda6ce83439c3c1970de58b0467456
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 04/22/2019
+ms.openlocfilehash: f1ca536ffa2166df4ef6cf51654b7b410e72ea66
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201715"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962071"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>在 HDInsight Hadoop 群集上安装 Apache Giraph 并使用 Giraph 处理大型图形
 
 了解如何在 HDInsight 群集上安装 Apache Giraph。 HDInsight 的脚本操作功能允许通过运行 bash 脚本来自定义群集。 可以在创建群集期间或之后使用脚本来自定义群集。
-
-> [!IMPORTANT]  
-> 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="whatis"></a>什么是 Giraph
 
@@ -58,7 +53,7 @@ ms.locfileid: "58201715"
 > [!NOTE]  
 > 可以通过下列任一方法应用脚本操作：
 > * Azure PowerShell
-> * Azure 经典 CLI
+> * Azure CLI
 > * HDInsight .NET SDK
 > * Azure 资源管理器模板
 > 
@@ -116,7 +111,7 @@ ms.locfileid: "58201715"
 
     使用表示对象间距离的值（或权重）绘制图形后，上述数据看起来可能与下图类似：
 
-    ![tiny_graph.txt 中的对象绘制为圆圈，线条表示对象之间的不同距离](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph.png)
+    ![tiny_graph.txt 中的对象绘制为圆圈，线条表示对象之间的不同距离](./media/hdinsight-hadoop-giraph-install-linux/hdinsight-giraph-graph.png)
 
 3. 要保存文件，请使用 **Ctrl+X**，然后输入“Y”，最后按 **Enter** 以接受文件名。
 
@@ -148,7 +143,7 @@ ms.locfileid: "58201715"
 
     有关这些参数以及与 Giraph 示例搭配使用的其他参数的详细信息，请参阅 [Giraph 快速入门](https://giraph.apache.org/quick_start.html)。
 
-6. 完成该作业后，结果将存储在 **/example/out/shotestpaths** 目录中。 创建的输出文件名称以 **part-m-** 开头，结尾的数字表示第一个文件、第二个文件，依此类推。 使用以下命令查看输出：
+6. 完成该作业后，结果将存储在 **/example/out/shortestpaths**目录中。 输出文件的名称以 **part-m-** 开头，结尾的数字表示第一个文件、第二个文件，依此类推。 使用以下命令查看输出：
 
     ```bash
     hdfs dfs -text /example/output/shortestpaths/*
@@ -166,7 +161,7 @@ ms.locfileid: "58201715"
 
     在可视化此数据的情况下，你可以通过体验 ID 1 与所有其他对象之间的最短路径来验证结果。 ID 1 和 ID 4 之间的最短路径为 5。 这是从 <span style="color:orange">ID 1 到 ID 3</span>，再从 <span style="color:red">ID 3 到 ID 4</span> 的总距离。
 
-    ![将对象绘制为圆圈，并绘制对象之间的最短路径](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph-out.png)
+    ![将对象绘制为圆圈，并绘制对象之间的最短路径](./media/hdinsight-hadoop-giraph-install-linux/hdinsight-giraph-graph-out.png)
 
 ## <a name="next-steps"></a>后续步骤
 

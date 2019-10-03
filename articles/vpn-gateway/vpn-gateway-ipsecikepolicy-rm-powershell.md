@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 72c597a6258fbe43e718714ab346d3e10cb97463
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: d04d62d66b4ba22437e6d854566f8bbf5536a6fc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417255"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66121132"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略
 
@@ -63,7 +63,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 下表列出了支持的加密算法和密钥强度，客户可自行配置：
 
-| IPsec/IKEv2  | 选项    |
+|  IPsec/IKEv2  |  选项    |
 | ---  | --- 
 | IKEv2 加密 | AES256、AES192、AES128、DES3、DES  
 | IKEv2 完整性  | SHA384、SHA256、SHA1、MD5  |
@@ -71,7 +71,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 | IPsec 加密 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、无    |
 | IPsec 完整性  | GCMASE256、GCMAES192、GCMAES128、SHA256、SHA1、MD5 |
 | PFS 组        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、无 
-| QM SA 生存期   | （**可选**：如果未指定，则使用默认值）<br>秒（整数；至少为 300 秒/默认为 27000 秒）<br>KB（整数；至少为 1024 KB/默认为 102400000 KB）   |
+| QM SA 生存期   | （**可选**：如果未指定，则使用默认值）<br>秒（整数；  至少为 300 秒/默认为 27000 秒）<br>KB（整数；  至少为 1024 KB/默认为 102400000 KB）   |
 | 流量选择器 | UsePolicyBasedTrafficSelectors**（$True/$False; **可选**，如果未指定，则使用默认值 $False）    |
 |  |  |
 
@@ -93,7 +93,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 >    * DH 组指定在主模式或阶段 1 中使用的 Diffie-Hellmen 组
 >    * PFS 组指定在快速模式或阶段 2 中使用的 Diffie-Hellmen 组
 > 4. 在 Azure VPN 网关上，IKEv2 主模式 SA 生存期固定为 28,800 秒
-> 5. 对于连接，将“UsePolicyBasedTrafficSelectors”设置为 $True，此时会配置 Azure VPN 网关，以连接到基于策略的本地 VPN 防火墙。 如果启用 PolicyBasedTrafficSelectors，则需确保对于本地网络（本地网关）前缀与 Azure 虚拟网络前缀的所有组合，VPN 设备都定义了与之匹配的流量选择器（而不是任意到任意）。 例如，如果本地网络前缀为 10.1.0.0/16 和 10.2.0.0/16，虚拟网络前缀为 192.168.0.0/16 和 172.16.0.0/16，则需指定以下流量选择器：
+> 5. 对于连接，将“UsePolicyBasedTrafficSelectors”设置为 $True，此时会配置 Azure VPN 网关，以连接到基于策略的本地 VPN 防火墙。 如果启用 PolicyBasedTrafficSelectors，则需确保对于本地网络（本地网关）前缀与 Azure 虚拟网络前缀的所有组合，VPN 设备都定义了与之匹配的（而不是任意到任意）流量选择器。 例如，如果本地网络前缀为 10.1.0.0/16 和 10.2.0.0/16，虚拟网络前缀为 192.168.0.0/16 和 172.16.0.0/16，则需指定以下流量选择器：
 >    * 10.1.0.0/16 <====> 192.168.0.0/16
 >    * 10.1.0.0/16 <====> 172.16.0.0/16
 >    * 10.2.0.0/16 <====> 192.168.0.0/16
@@ -103,18 +103,18 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 下表列出了自定义策略支持的相应 Diffie-Hellman 组：
 
-| **Diffie-Hellman 组**  | **DHGroup**              | **PFSGroup** | 密钥长度 |
+| **Diffie-Hellman 组**  | **DHGroup**              | **PFSGroup** | 密钥长度  |
 | --- | --- | --- | --- |
-| 1                         | DHGroup1                 | PFS1         | 768 位 MODP   |
+| 第                         | DHGroup1                 | PFS1         | 768 位 MODP   |
 | 2                         | DHGroup2                 | PFS2         | 1024 位 MODP  |
 | 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048 位 MODP  |
 | 19                        | ECP256                   | ECP256       | 256 位 ECP    |
 | 20                        | ECP384                   | ECP284       | 384 位 ECP    |
 | 24                        | DHGroup24                | PFS24        | 2048 位 MODP  |
 
-如需更多详细信息，请参阅 [RFC3526](https://tools.ietf.org/html/rfc3526) 和 [RFC5114](https://tools.ietf.org/html/rfc5114)。
+有关更多详细信息，请参阅 [RFC3526](https://tools.ietf.org/html/rfc3526) 和 [RFC5114](https://tools.ietf.org/html/rfc5114)。
 
-## <a name ="crossprem"></a>第 3 部分 - 创建采用 IPsec/IKE 策略的 S2S VPN 连接
+## <a name ="crossprem"></a>第 3 部分 - 新建采用 IPsec/IKE 策略的 S2S VPN 连接
 
 本部分将逐步介绍如何创建采用 IPsec/IKE 策略的 S2S VPN 连接。 下面的步骤将创建如图所示的连接：
 
@@ -160,9 +160,9 @@ $LNGIP6        = "131.107.72.22"
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2.连接到订阅并创建新资源组
 
-确保切换到 PowerShell 模式，以便使用Resource Manager cmdlet。 有关详细信息，请参阅[将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+确保切换到 PowerShell 模式，以便使用Resource Manager cmdlet。 有关详细信息，请参阅[将 Windows PowerShell 与资源管理器配合使用](../powershell-azure-resource-manager.md)。
 
-打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助你连接：
+打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助连接：
 
 ```powershell
 Connect-AzAccount
@@ -235,7 +235,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG
 
 #### <a name="1-declare-your-variables"></a>1.声明变量
 
-请务必将值替换为用于配置的值。
+请务必将值替换为要用于配置的值。
 
 ```powershell
 $RG2          = "TestPolicyRG2"
@@ -322,7 +322,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 同样的步骤适用于 S2S 和 VNet 到 VNet 的连接。
 
 > [!IMPORTANT]
-> IPsec/IKE 策略仅受标准 VPN 网关和基于路由的高性能 VPN 网关支持。 它不适用于基本网关 SKU 或基于策略的 VPN 网关。
+> IPsec/IKE 策略仅受标准 VPN 网关和基于路由的高性能 VPN 网关支持   。 它不适用于基本网关 SKU 或基于策略的 VPN 网关。
 
 #### <a name="1-show-the-ipsecike-policy-of-a-connection"></a>1.显示连接的 IPsec/IKE 策略
 

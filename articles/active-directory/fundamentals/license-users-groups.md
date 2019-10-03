@@ -2,7 +2,7 @@
 title: 分配或删除许可证 - Azure Active Directory | Microsoft Docs
 description: 关于如何对用户或组分配或删除 Azure Active Directory 许可证的说明。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
@@ -10,16 +10,16 @@ ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 9f76e766d0aedae88eb11dd244f71f130f77c57e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286850"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561656"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户分配或删除许可证 | Microsoft Docs
 许多 Azure Active Directory (Azure AD) 服务要求激活 Azure AD 产品并且针对该产品向每个用户或组（以及关联成员）授予许可。 只有具有活动许可证的用户才能访问和使用已许可的 Azure AD 服务。
@@ -27,9 +27,9 @@ ms.locfileid: "58286850"
 ## <a name="available-product-editions"></a>可用产品版本
 有多个版本可用于 Azure AD 产品。
 
-- Azure AD Free
+- Azure AD 免费版
 
-- Azure AD Basic
+- Azure AD 基本版
 
 - Azure AD Premium 1 (Azure AD P1)
 
@@ -47,7 +47,7 @@ ms.locfileid: "58286850"
 
     “许可证”页随即出现。
 
-    ![许可证页上，与已购买的产品和已分配的许可证的数量](media/license-users-groups/license-details-blade.png)
+    ![许可证页, 其中包含已购买产品的数量和分配的许可证](media/license-users-groups/license-details-blade.png)
     
 3. 选择“已购买产品”链接可查看“产品”页，以及查看每个特定产品版本的“已分配”、“可用”和“即将过期”详细信息。
 
@@ -76,7 +76,7 @@ ms.locfileid: "58286850"
 
 4. 选择“分配选项”，确保打开了相应的许可证选项，然后选择“确定”。
 
-    ![许可证选项页上，使用相应版本中提供的所有选项](media/license-users-groups/license-option-blade-assignments.png)
+    ![许可证选项页, 其中包含版本中提供的所有选项](media/license-users-groups/license-option-blade-assignments.png)
 
     “分配许可证”页会进行更新，以显示选择了用户并且配置了分配。
 
@@ -102,7 +102,7 @@ ms.locfileid: "58286850"
 
 4. 选择“分配选项”，确保打开了相应的许可证选项，然后选择“确定”。
 
-    ![许可证选项页上，使用相应版本中提供的所有选项](media/license-users-groups/license-option-blade-group-assignments.png)
+    ![许可证选项页, 其中包含版本中提供的所有选项](media/license-users-groups/license-option-blade-group-assignments.png)
 
     “分配许可证”页会进行更新，以显示选择了用户并且配置了分配。
 

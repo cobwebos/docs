@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 了解如何使用 Azure 门户创建带有区域前端的标准负载均衡器
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.custom: seodec18
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
-ms.author: kumud
-ms.openlocfilehash: c81ff5ea330c4c0ba26a92a3b5399cfa961e4b2b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: allensu
+ms.openlocfilehash: 9a260c267febb3dc851fe0a8ca8a8e351124116b
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57856852"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275141"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>使用 Azure 门户创建具有区域性前端的标准负载均衡器
 
@@ -38,16 +38,16 @@ ms.locfileid: "57856852"
 
 1. 从浏览器导航到 Azure 门户：[https://portal.azure.com](https://portal.azure.com) 并使用 Azure 帐户登录。
 2. 在屏幕的左上方，选择**创建资源** > **网络** > **负载均衡器**。
-3. 在“创建负载均衡器”页面中，在“名称”下，键入 **myLoadBalancer**。
-4. 在“类型”下，选择“公共”。
-5. 在“SKU”下，选择“标准”。
-6. 依次单击“选择公用 IP 地址”、“新建”，在“创建公用 IP 地址”页上，在“名称”下键入**myPublicIPZonal**，对于 SKU，选择“标准”，对于可用性区域，选择 **1**。
+3. 在“创建负载均衡器”  页面中，在“名称”  下，键入 **myLoadBalancer**。
+4. 在“类型”  下，选择“公共”  。
+5. 在“SKU”下，选择“标准”  。
+6. 依次单击“选择公用 IP 地址”  、“新建”  ，在“创建公用 IP 地址”  页上，在“名称”下键入**myPublicIPZonal**，对于 SKU，选择“标准”  ，对于可用性区域，选择 **1**。
     
 >[!NOTE] 
 > 默认情况下，在此步骤中创建的公用 IP 是标准 SKU。
 
-1. 对于“资源组”，单击“新建”，然后键入 **myResourceGroupZLB** 作为资源组的名称。
-1. 对于“位置”，选择“西欧”，然后单击“确定”。 然后，负载均衡器将开始部署，成功完成部署需要几分钟的时间。
+1. 对于“资源组”  ，单击“新建”  ，然后键入 **myResourceGroupZLB** 作为资源组的名称。
+1. 对于“位置”  ，选择“西欧”  ，然后单击“确定”。  然后，负载均衡器将开始部署，成功完成部署需要几分钟的时间。
 
     ![使用 Azure 门户创建区域冗余的标准负载均衡器](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
 

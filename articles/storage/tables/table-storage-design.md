@@ -9,11 +9,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 8387e41d57edfa0e54ac930c9462714aca571f2a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472552"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60848276"
 ---
 # <a name="design-scalable-and-performant-tables"></a>设计可伸缩的高性能表
 
@@ -50,7 +50,7 @@ ms.locfileid: "55472552"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -70,7 +70,7 @@ ms.locfileid: "55472552"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -82,7 +82,7 @@ ms.locfileid: "55472552"
 </tr>
 <tr>
 <td>Marketing</td>
-<td>部门</td>
+<td>系</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
 <table>
@@ -107,7 +107,7 @@ ms.locfileid: "55472552"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>电子邮件</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -135,7 +135,7 @@ ms.locfileid: "55472552"
 有关表服务的内部细节（特别是服务管理分区的方式）的详细信息，请参阅文章 [Microsoft Azure 存储：具有非常一致性的高可用云存储服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)。  
 
 ## <a name="entity-group-transactions"></a>实体组事务
-在表服务中，实体组事务 (EGT) 是唯一内置机制，用于对多个实体执行原子更新。 EGT 有时也被称为“批处理事务”。 EGT 只能对存储在同一分区中的实体（也就是说，在给定的表中共享同一分区键）执行操作。 因此，任何时候需要实现跨多个实体的原子事务行为时，必须确保那些实体位于同一分区中。 这通常是将多个实体类型保存在同一个表（和分区）中，而不是对不同实体类型使用多个表的原因。 单个 EGT 最多可应用于 100 个实体。  若要提交多个并发 EGT 进行处理，请务必确保不在 EGT 共用实体上操作这些 EGT，否则会造成延迟处理。
+在表服务中，实体组事务 (EGT) 是唯一内置机制，用于对多个实体执行原子更新。 EGT 有时也被称为“批处理事务”  。 EGT 只能对存储在同一分区中的实体（也就是说，在给定的表中共享同一分区键）执行操作。 因此，任何时候需要实现跨多个实体的原子事务行为时，必须确保那些实体位于同一分区中。 这通常是将多个实体类型保存在同一个表（和分区）中，而不是对不同实体类型使用多个表的原因。 单个 EGT 最多可应用于 100 个实体。  若要提交多个并发 EGT 进行处理，请务必确保不在 EGT 共用实体上操作这些 EGT，否则会造成延迟处理。
 
 EGT 还引入了一个在设计时需要评估的潜在权衡。 那就是，使用更多分区会提高应用程序的可伸缩性，因为 Azure 可以有更多的机会在各个节点之间对请求进行负载均衡。 但是，使用更多分区可能会限制应用程序执行原子事务以及保持数据的强一致性的能力。 而且，在分区级别还有特定的可伸缩性目标，这些目标可能会限制预期单个节点可以实现的事务吞吐量。 有关 Azure 存储帐户和表服务的可伸缩性目标的详细信息，请参阅 [Azure 存储可伸缩性和性能目标](../../storage/common/storage-scalability-targets.md)。   
 
@@ -152,7 +152,7 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 那就是，使
 | **RowKey** 的大小 |大小最大为 1 KB 的字符串 |
 | 实体组事务的大小 |一个事务最多可包含 100 个实体，并且负载大小必须小于 4 MB。 EGT 只能更新一次实体。 |
 
-有关详细信息，请参阅 [Understanding the Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx)（了解表服务数据模型）。  
+有关详细信息，请参阅 [了解表服务数据模型](https://msdn.microsoft.com/library/azure/dd179338.aspx)。  
 
 ## <a name="cost-considerations"></a>成本注意事项
 表存储的价格相对便宜，但在评估任何表服务解决方案时，应同时针对容量使用情况和事务数量进行成本估算。 但是，在许多情况下，为提高解决方案的性能或可伸缩性，存储非规范化或重复的数据是一种有效方法。 有关定价的详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。  

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2019
+ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 29af70a2713e7b4aebf611d8f2b547e38c6c5d3d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 8b7a72c03d41d54aa80505e781b6f6d32cd2a2c0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546359"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991364"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>对实验室中的项目失败进行诊断 
 创建项目后，可检查其为成功还是失败。 Azure 开发测试实验室中的项目日志提供了可用于诊断项目失败的信息。 可通过几个选项查看 Windows VM 的项目日志信息：
@@ -52,7 +52,8 @@ ms.locfileid: "59546359"
 
 3. 打开状态文件。
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+有关在**Linux** VM 上查找日志文件的说明, 请参阅以下文章:[将 Azure 自定义脚本扩展版本2用于 Linux 虚拟机](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
+
 
 ## <a name="related-blog-posts"></a>相关的博客文章
 * [使用开发测试实验室中的资源管理器模板将 VM 加入到现有 Active Directory 域中](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)

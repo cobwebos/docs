@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure AD SSPR-Azure Active Directory 的本地密码写回集成
+title: 本地密码写回与 Azure AD SSPR-Azure Active Directory 的集成
 description: 将云密码写回到本地 AD 基础结构
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/16/2019
+ms.date: 05/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcf2ef10cbc8f6f54a65e596ea003a98f410a7b
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 07069d22d57540c6a16472bc7278821e14f1f18e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313288"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561291"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -42,9 +42,8 @@ ms.locfileid: "58313288"
 * **支持当管理员在 Azure 门户中重置密码时写回密码**：每当管理员在 [Azure 门户](https://portal.azure.com)中重置用户密码时，如果该用户是联合用户或密码哈希同步用户，则密码会写回到本地。 Office 管理门户暂不支持此功能。
 * **不需要任何入站防火墙规则**：密码写回服务使用 Azure 服务总线中继作为基础信道。 所有通信都是通过端口 443 进行的出站通信。
 
-> [!Note]
-> 密码写回不适用于本地 Active Directory 中受保护组内的用户帐户。 本地 AD 中受保护组内的管理员帐户可与密码写回一起使用。 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://technet.microsoft.com/library/dn535499.aspx)。
->
+> [!NOTE]
+> 本地 AD 中受保护组内的管理员帐户可与密码写回一起使用。 管理员可以在云中更改其密码, 但不能使用密码重置重置忘记的密码。 有关受保护组的详细信息，请参阅 [Active Directory 中的受保护帐户和组](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)。
 
 ## <a name="licensing-requirements-for-password-writeback"></a>密码写回的许可要求
 
@@ -63,7 +62,6 @@ ms.locfileid: "58313288"
 
 > [!WARNING]
 > 独立 Office 365 许可计划不支持“通过本地写回实现自助密码重置/更改/解锁”，要使此功能正常工作，需要使用上述计划之一。
->
 
 ## <a name="how-password-writeback-works"></a>密码写回的工作原理
 
@@ -86,14 +84,10 @@ ms.locfileid: "58313288"
    
    当云中有调用发出时，同步引擎使用 cloudAnchor 属性，查找 Azure Active Directory 连接器空间对象。 然后，它依次链接回 MV 对象和 Active Directory 对象。 由于同一用户可能有多个 Active Directory 对象（多林），因此同步引擎依赖 `Microsoft.InfromADUserAccountEnabled.xxx` 链接选取正确的对象。
 
-   > [!Note]
-   > 鉴于有此逻辑，Azure AD Connect 必须能够与主域控制器 (PDC) 仿真器进行通信，这样密码写回服务才能正常运行。 如果需要手动启用此通信，可以将 Azure AD Connect 连接到 PDC 仿真器。 右键单击 Active Directory 同步连接器的“属性”，再选择“配置目录分区”。 随后，查找“域控制器连接设置”部分，并选中“仅使用首选域控制器”框。 即使首选域控制器不是 PDC 仿真器，Azure AD Connect 也会尝试连接到 PDC 来执行密码写回。
-
 1. 找到用户帐户后，将尝试直接在相应的 Active Directory 林中重置密码。
 1. 如果密码设置操作成功，将告知用户其密码已更改。
    > [!NOTE]
    > 如果用户密码哈希已使用密码哈希同步功能同步到 Azure AD，本地密码策略可能会弱于云密码策略。 在这种情况下，将实施本地策略。 此策略可确保在云中强制实施本地策略，无论使用密码哈希同步还是联合身份验证来提供单一登录，都不例外。
-   >
 
 1. 如果密码设置操作失败，错误消息会提示用户重试。 操作失败的可能原因如下：
     * 服务已关闭。
@@ -166,8 +160,11 @@ ms.locfileid: "58313288"
 * **不支持的最终用户操作**
    * 任何最终用户使用 PowerShell 版本 1、版本 2 或 Azure AD 图形 API 重置自己的密码
 * **不支持的管理员操作**
-   * 任何管理员通过 [Office 管理门户](https://portal.office.com)发起的任何最终用户密码重置操作
    * 任何管理员发起的最终用户密码重置操作（使用 PowerShell 版本 1、版本 2 或 Azure AD 图形 API）
+   * 管理员从[Microsoft 365 管理中心](https://admin.microsoft.com)发起的任何最终用户密码重置
+
+> [!WARNING]
+> 使用 "用户在下次登录时必须更改密码 Active Directory" 这一复选框不支持 Active Directory 用户和计算机或 Active Directory 管理中心等管理工具。 更改本地密码时, 请不要选中此选项。
 
 ## <a name="next-steps"></a>后续步骤
 

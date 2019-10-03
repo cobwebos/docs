@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用适用于 Python 的自定义视觉 SDK 创建图像分类项目
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用 Python SDK 创建项目、添加标记、上传图像、训练项目以及进行预测。
 services: cognitive-services
 author: areddish
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 47e2f2a03c08ae1e44dcba35b440880ce06f6f95
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 87c504fa936d89707020f1bf3ac9a0ccd4f81946
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484455"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946094"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>快速入门：使用自定义视觉 Python SDK 创建图像分类项目
 
-本文提供信息和示例代码，以帮助你开始通过 Python 使用自定义视觉 SDK 来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Python 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，请改为查看[基于浏览器的指南](getting-started-build-a-classifier.md)。
+本文提供信息和示例代码，以帮助你开始通过 Python 使用自定义视觉 SDK 来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Python 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，  请改为查看[基于浏览器的指南](getting-started-build-a-classifier.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 ### <a name="create-the-custom-vision-service-project"></a>创建自定义视觉服务项目
 
-将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。
+将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。 请查看 [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) 方法，以在创建项目时指定其他选项（在[生成分类器](getting-started-build-a-classifier.md) Web 门户指南中进行了说明）。   
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
@@ -79,7 +79,7 @@ cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 
 ### <a name="upload-and-tag-images"></a>上传和标记图像
 
-要将示例图像添加到项目，请在创建标记后插入以下代码。 此代码会上传具有相应标记的每个图像。 需根据下载认知服务 Python SDK 示例项目的位置输入基本的图像 URL 路径。
+要将示例图像添加到项目，请在创建标记后插入以下代码。 此代码会上传具有相应标记的每个图像。 最多可以在单个批次中上传 64 个图像。
 
 > [!NOTE]
 > 需根据此前下载认知服务 Python SDK 示例项目的位置更改图像的路径。
@@ -139,11 +139,13 @@ from azure.cognitiveservices.vision.customvision.prediction import CustomVisionP
 predictor = CustomVisionPredictionClient(prediction_key, endpoint=ENDPOINT)
 
 with open(base_image_url + "images/Test/test_image.jpg", "rb") as image_contents:
-    results = predictor.classify_image(project.id, publish_iteration_name, image_contents.read())
+    results = predictor.classify_image(
+        project.id, publish_iteration_name, image_contents.read())
 
     # Display the results.
     for prediction in results.predictions:
-        print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100))
+        print("\t" + prediction.tag_name +
+              ": {0:.2f}%".format(prediction.probability * 100))
 ```
 
 ## <a name="run-the-application"></a>运行应用程序

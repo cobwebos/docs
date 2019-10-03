@@ -1,34 +1,34 @@
 ---
-title: 添加实体
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: 创建实体来从用户语言理解 (LUIS) 应用中的查询文本中提取关键数据。
+title: 添加实体-LUIS
+titleSuffix: Azure Cognitive Services
+description: 创建实体，以便从语言理解 (LUIS) 应用的用户话语中提取关键数据。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 04/01/2019
+ms.topic: conceptual
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 0044cbc9e6142989a57e79de5fd1e78e999bb5e1
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 80e1052cb7acbdcec2dcb94f1667cae3c554d18e
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522344"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932921"
 ---
 # <a name="create-entities-without-utterances"></a>创建不包含话语的实体
 
-实体表示要提取的话语中的字词或短语。 实体表示包括一系列类似对象 （位置、 内容、 人员、 事件或概念） 的类。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 （之前或之后） 中添加查询文本转意向或间隔时，可以创建实体添加到意向的语音样本。
+实体表示要提取的话语中的字词或短语。 实体表示包含类似对象 (地点、内容、人员、事件或概念) 集合的类。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 在将话语添加到意向或将话语添加到意向之外（之前或之后）时，可以创建实体。
 
 可在 LUIS 应用中通过“实体”页上的“实体列表”来编辑或删除实体。 LUIS 提供两种主要的实体类型：[预生成实体](luis-reference-prebuilt-entities.md)和自己的[自定义实体](luis-concept-entity-types.md#types-of-entities)。
 
-创建机器学习的内容的实体时，需要将标记该实体中的所有意图的所有示例查询文本中。
+创建了机器学习实体后，需要在该实例所在的所有意向的所有示例话语中标记该实体。
 
 <a name="add-prebuilt-entity"></a>
 
-## <a name="add-a-prebuilt-entity-to-your-app"></a>将预生成的实体添加到您的应用程序
+## <a name="add-a-prebuilt-entity-to-your-app"></a>将预生成实体添加到应用
 
 添加到应用程序的常见预生成实体为 number 和 datetimeV2。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "59522344"
 
 <a name="add-simple-entities"></a>
 
-## <a name="add-simple-entities-for-single-concepts"></a>添加单个概念的简单实体
+## <a name="add-simple-entities-for-single-concepts"></a>为单一概念添加简单实体
 
 简单实体描述单一概念。 使用以下过程创建一个实体，用于提取“人力资源”或“运营”等公司部门名称。   
 
@@ -56,7 +56,7 @@ ms.locfileid: "59522344"
 
 <a name="add-regular-expression-entities"></a>
 
-## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>添加高度结构化概念的正则表达式实体
+## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>为高度结构化概念添加正则表达式实体
 
 基于提供的正则表达式，正则表达式实体用来从话语中拉取数据。 
 
@@ -64,34 +64,11 @@ ms.locfileid: "59522344"
 
 1. 在弹出对话框中，在“实体名称”框中输入 `Human resources form name`，从“实体类型”列表中选择“正则表达式”，输入正则表达式 `hrf-[0-9]{6}`，然后选择“完成”。 
 
-    此正则表达式匹配的原义字符`hrf-`，然后使用 6 位数来表示窗体号人力资源窗体。
-
-## <a name="add-hierarchical-entities"></a>添加分层实体
-
-分层实体是根据上下文学习的一类概念相关实体。 在以下示例中，该实体包含出发地和目的地。 
-
-在表述 `Move John Smith from Seattle to Cairo` 中，Seattle 是出发地，Cairo 是目的地。 每个位置因上下文而异，是从表述中的单词顺序和单词选择学习到的。
-
-若要添加分层实体，请完成以下步骤： 
-
-1. 在应用中，从左侧导航栏选择“实体”，然后选择“创建新实体”。
-
-1. 在弹出对话框中，在“实体名称”框中键入 `Location`，然后从“实体类型”列表选择“分层”。
-
-    ![添加分层的实体](./media/add-entities/hier-location-entity-creation.png)
-
-1. 选择“添加子级”，然后在“子级 #1”框中输入 `Origin`。 
-
-1. 选择“添加子级”，然后在“子级 #2”框中输入 `Destination`。 选择“完成”。
-
-    >[!CAUTION]
-    >子实体名称在单个应用的所有实体中必须唯一。 两个不同的分层实体不得包含同一名称的子实体。 
-
-    创建此实体后，转到包含该实体的示例话语所在的所有意向。 选择示例话语中的文本，并将文本标记为实体。 
+    此正则表达式与文本字符 `hrf-` 匹配，后接 6 位数来表示“人力资源”表单的表单编号。
 
 <a name="add-composite-entities"></a>
 
-## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>添加复合实体分组到父-子关系
+## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>添加复合实体以分组到父子关系中
 
 可以通过创建复合实体定义不同类型的实体之间的关系。 在以下示例中，实体包含正则表达式和预生成的名称实体。  
 
@@ -115,7 +92,7 @@ ms.locfileid: "59522344"
 
 <a name="add-pattern-any-entities"></a>
 
-## <a name="add-patternany-entities-to-capture-free-form-entities"></a>添加 Pattern.any 捕获自由格式的实体的实体
+## <a name="add-patternany-entities-to-capture-free-form-entities"></a>添加 Pattern.any 实体以捕获自由格式实体
 
 [Pattern.any](luis-concept-entity-types.md) 实体仅在[模式](luis-how-to-model-intent-pattern.md)中有效，在意向中无效。 此类实体有助于 LUIS 查找不同长度和字词选择的实体结尾。 由于此实体会在模式中使用，因此，LUIS 可识别实体末尾在话语模板中的位置。
 
@@ -133,19 +110,17 @@ ms.locfileid: "59522344"
 
 <a name="add-a-role-to-pattern-based-entity"></a>
 
-## <a name="add-a-role-to-distinguish-different-contexts"></a>添加角色来区分不同的上下文
+## <a name="add-a-role-to-distinguish-different-contexts"></a>添加角色以区分不同的上下文
 
-角色是基于上下文在命名子类型。 它现已推出包括预先生成和机器学习实体的所有实体。 
+角色是基于上下文的命名子类型。 它在所有实体中提供，包括预生成的和非机器学习到的实体。 
 
-使用出发地和目的地城市的分层实体的相同示例，区别在于角色是命名的出发地，而不是分层子级。 
-
-角色的语法为 **{Entityname:Rolename}**，即，实体名称后接冒号再后接角色名称。 例如，`Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`。
+角色的语法为 **`{Entityname:Rolename}`** ，即，实体名称后接冒号再后接角色名称。 例如， `Move {personName} from {Location:Origin} to {Location:Destination}` 。
 
 1. 在“生成”部分的左侧面板中选择“实体”。
 
-1. 选择“创建新实体”。 输入 `LocationUsingRoles` 名称。 选择类型“简单”，然后选择“完成”。 
+1. 选择“创建新实体”。 输入 `Location` 名称。 选择类型“简单”，然后选择“完成”。 
 
-1. 在左侧面板中选择“实体”，然后选择在前一步骤中创建的新实体 **LocationUsingRoles**。
+1. 从左侧面板中选择 "**实体**", 然后选择在上一步中创建的新实体**位置**。
 
 1. 在“角色名称”文本框中，输入角色 `Origin` 的名称并按 Enter。 添加 `Destination` 的第二个角色名。 
 
@@ -153,7 +128,7 @@ ms.locfileid: "59522344"
 
 <a name="add-list-entities"></a>
 
-## <a name="add-list-entities-for-exact-matches"></a>添加列表实体的完全匹配项
+## <a name="add-list-entities-for-exact-matches"></a>添加列表实体以进行完全匹配
 
 列表实体表示一组固定、封闭的相关单词。 
 
@@ -198,13 +173,13 @@ ms.locfileid: "59522344"
 
 <a name="change-entity-type"></a>
 
-## <a name="do-not-change-entity-type"></a>不能更改实体类型
+## <a name="do-not-change-entity-type"></a>不要更改实体类型
 
 LUIS 不允许更改实体类型，因为它不知道构造该实体要添加或删除的内容。 若要更改类型，最好创建一个名称稍微不同的、类型正确的新实体。 实体创建后，在每句话语中，删除旧标记实体名称并添加新的实体名称。 重新标记所有话语后，即可删除旧实体。 
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
-## <a name="create-a-pattern-from-an-example-utterance"></a>创建示例查询文本从一种模式
+## <a name="create-a-pattern-from-an-example-utterance"></a>从示例话语创建模式
 
 请参阅[在意向或实体页上通过现有表述添加模式](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page)。
 

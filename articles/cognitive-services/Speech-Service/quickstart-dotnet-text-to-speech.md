@@ -7,23 +7,23 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: conceptual
-ms.date: 03/13/2019
+ms.topic: quickstart
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 5ae63b1738824095073ac6b9e1071f6b4a3e5ae1
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: a4c514cab274c395fbe3cbf0b2ff1cd9eb3d5134
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518841"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554029"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>快速入门：使用 .NET Core 将文本转换为语音
 
 本快速入门介绍如何使用 .NET Core 和文本转语音 REST API 将文本转换为语音。 本指南中包含的示例文本以[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 的形式构造，这样你就可以选择响应的语音和语言。
 
-本快速入门需要[Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)与语音服务资源。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
+此快速入门需要包含语音服务资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要：
 
@@ -48,7 +48,7 @@ cd tts-sample
 
 打开项目，然后打开 `tts-sample.csproj`。 确保将 `LangVersion` 设置为 7.1 或更高版本。 如果没有用于语言版本的属性组，请添加以下行：
 
-```csharp
+```xml
 <PropertyGroup>
    <LangVersion>7.1</LangVersion>
 </PropertyGroup>
@@ -70,9 +70,9 @@ using System.Threading.Tasks;
 
 ## <a name="create-a-class-for-token-exchange"></a>创建用于令牌交换的类
 
-文本转语音 REST API 需要访问令牌来进行身份验证。 若要获取访问令牌，需要进行交换。 此示例交换访问令牌使用语音服务的订阅密钥`issueToken`终结点。
+文本转语音 REST API 需要访问令牌来进行身份验证。 若要获取访问令牌，需要进行交换。 此示例通过 `issueToken` 终结点使用语音服务订阅密钥来交换访问令牌。
 
-此示例假定您的语音服务的订阅已在美国西部区域中。 如果使用其他区域，请更新 `FetchTokenUri` 的值。 如需完整的列表，请参阅[区域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)。
+此示例假定语音服务订阅位于“美国西部”区域。 如果使用其他区域，请更新 `FetchTokenUri` 的值。 如需完整的列表，请参阅[区域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)。
 
 ```csharp
 public class Authentication

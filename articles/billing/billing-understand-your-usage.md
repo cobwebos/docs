@@ -1,93 +1,141 @@
 ---
-title: 了解 Azure 的详细使用情况| Microsoft Docs
-description: 了解如何阅读并理解 Azure 订阅的详细使用情况 CSV 部分
-services: ''
-documentationcenter: ''
+title: 了解详细的使用情况和费用 | Microsoft Docs
+description: 介绍如何阅读并了解详细的使用情况和费用
 author: bandersmsft
-manager: alherz
-editor: ''
+manager: micflan
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: a143fc6d9dbd78ae365f943a00ac9f8492d5e51c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 1842d32a838470d9b2af3a778c44c37464d32294
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897140"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "68954342"
 ---
-# <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>了解 Microsoft Azure 详细使用费条款 
+# <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用情况和费用文件中的术语
 
-详细使用费 CSV 文件包含当前计费周期的每日和测定仪级使用费。 
+详细的使用情况和费用文件包含指定时段的基于协商费率的每日额定使用量、购买（例如预留、市场费用）以及退款。
+费用不包括额度、税费或者其他费用或折扣。
+下表介绍每个帐户类型涉及的费用。
 
-若要获取详细使用情况文件，请参阅[如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)。
-它以逗号分隔值 (.csv) 文件格式提供，可以在电子表格应用程序中打开它。 如果看到两个版本可用，请下载版本 2。 这是最新的文件格式。
+帐户类型 | Azure 使用情况 | 市场使用情况 | 购买 | 退款
+--- | --- | --- | --- | ---
+企业协议 (EA) | 是 | 是 | 是 | 否
+Microsoft 客户协议 (MCA) | 是 | 是 | 是 | 是
+即用即付 (PAYG) | 是 | 是 | 否 | 否
 
-使用费是订阅的总“月度”费用。 使用费不考虑任何信用额度或折扣。
+若要详细了解市场订单（也称外部服务），请参阅[了解 Azure 外部服务费用](billing-understand-your-azure-marketplace-charges.md)。
 
->[!VIDEO https://www.youtube.com/embed/p13S350M2Vk]
+有关下载说明，请参阅[如何获取 Azure 账单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)。
+可以在 Microsoft Excel 或其他电子表格应用程序中打开使用情况和费用 CSV 文件。
 
-## <a name="detailed-terms-and-descriptions-of-your-detailed-usage-file"></a>详细使用情况文件的详细条款和说明
+## <a name="list-of-terms-and-descriptions"></a>术语和说明列表
 
-以下部分介绍版本 2 的详细使用情况文件中显示的重要条款。
+下表介绍在最新版 Azure 使用情况和费用文件中使用的重要术语。
+此列表涵盖即用即付 (PAYG)、企业协议 (EA) 和 Microsoft 客户协议 (MCA) 帐户。
 
-### <a name="statement"></a>语句
+术语 | 帐户类型 | 说明
+--- | --- | ---
+AccountName | EA、PAYG | 显示 EA 注册帐户或 PAYG 计费帐户的名称。
+AccountOwnerId<sup>1</sup> | EA、PAYG | EA 注册帐户或 PAYG 计费帐户的唯一标识符。
+AdditionalInfo | All | 服务特定的元数据。 例如，虚拟机的映像类型。
+BillingAccountId<sup>1</sup> | All | 根计费帐户的唯一标识符。
+BillingAccountName | All | 计费帐户的名称。
+BillingCurrency | All | 与计费帐户关联的货币。
+BillingPeriod | EA、PAYG | 费用的计费周期。
+BillingPeriodEndDate | All | 计费周期的结束日期。
+BillingPeriodStartDate | All | 计费周期的开始日期。
+BillingProfileId<sup>1</sup> | All | EA 注册、PAYG 订阅、MCA 计费对象信息或 AWS 合并帐户的唯一标识符。
+BillingProfileName | All | EA 注册、PAYG 订阅、MCA 计费对象信息或 AWS 合并帐户的名称。
+ChargeType | All | 指示费用表示使用情况 (**Usage**)、购买 (**Purchase**) 还是退款 (**Refund**)。
+ConsumedService | All | 与费用相关联的服务的名称。
+CostCenter<sup>1</sup> | EA、MCA | 为订阅定义的用于跟踪成本的成本中心（仅在启用计费周期适用于 MCA 帐户）。
+成本 | EA、PAYG | 参见 CostInBillingCurrency。
+CostInBillingCurrency | MCA | 在应用额度或税款之前按计费货币计算的费用成本。
+CostInPricingCurrency | MCA | 在应用额度或税款之前按定价货币计算的费用成本。
+货币 | EA、PAYG | 参见 BillingCurrency。
+日期<sup>1</sup> | All | 费用项目的使用或购买日期。
+EffectivePrice | All | 计费周期的混合单价。 混合价格以求平均值的方式消除了单价中出现的任何波动，例如，使用渐变分层时，某段时间的价格会随数量的增加而降低。
+ExchangeRateDate | MCA | 确定汇率的日期。
+ExchangeRatePricingToBilling | MCA | 将以定价货币计算的成本转换为以计费货币计算的成本时所使用的汇率。
+频率 | All | 指示某项费用是否会重复收取。 费用可以一次性收取 (**OneTime**)、按月或按年重复收取 (**Recurring**)，或者按使用情况收取 (**UsageBased**)。
+InvoiceId | PAYG、MCA | 在发票 PDF 上列出的唯一单据 ID。
+InvoiceSection | MCA | 参见 InvoiceSectionName。
+InvoiceSectionId<sup>1</sup> | EA、MCA | EA 部门或 MCA 发票科目的唯一标识符。
+InvoiceSectionName | EA、MCA | EA 部门或 MCA 发票科目的名称。
+IsAzureCreditEligible | All | 指示是否可以使用 Azure 额度来支付此费用（值：True、False）。
+位置 | MCA | 资源运行时所在的数据中心位置。
+MeterCategory | All | 计量的分类类别的名称。 例如，“云服务”和“网络”。  
+MeterId<sup>1</sup> | All | 计量的唯一标识符。
+MeterName | All | 计量的名称。
+MeterRegion | All | 按位置定价的服务的数据中心位置的名称。 参见“位置”。
+MeterSubCategory | All | 计量子分类类别的名称。
+OfferId<sup>1</sup> | All | 购买的套餐的名称。
+PartNumber<sup>1</sup> | EA、PAYG | 用于获取特定计量定价的标识符。
+PlanName | EA、PAYG | 市场计划名称。
+PreviousInvoiceId | MCA | 如果此行项为退款，则指原始发票。
+PricingCurrency | MCA | 基于协商价格进行定价时所使用的货币。
+Products | All | 产品的名称。
+ProductId<sup>1</sup> | MCA | 产品的唯一标识符。
+ProductOrderId | All | 产品订单的唯一标识符。
+ProductOrderName | All | 产品订单的唯一名称。
+PublisherName | All | 市场服务的发布者。
+PublisherType | All | 发布者的类型（值：**Azure**、**AWS**、**Marketplace**）。
+数量 | All | 购买或消耗的单位数。
+预订 ID | EA、MCA | 购买的预留实例的唯一标识符。
+ReservationName | EA、MCA | 购买的预留实例的名称。
+resourceGroup | All | 资源所在的[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的名称。
+ResourceId<sup>1</sup> | All | [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/resources)资源的唯一标识符。
+ResourceLocation | All | 资源运行时所在的数据中心位置。 参见“位置”。
+ResourceName | EA、PAYG | 资源的名称。
+ResourceType | MCA | 资源实例的类型。
+ServiceFamily | MCA | 服务所属的服务系列。
+ServiceInfo1 | All | 服务特定的元数据。
+ServiceInfo2 | All | 旧字段，具有可选的特定于服务的元数据。
+ServicePeriodEndDate | MCA | 定价周期的结束日期，该周期定义和锁定了所使用的或购买的服务的价格。
+ServicePeriodStartDate | MCA | 定价周期的开始日期，该周期定义和锁定了所使用的或购买的服务的价格。
+SubscriptionId<sup>1</sup> | All | Azure 订阅的唯一标识符。
+SubscriptionName | All | Azure 订阅的名称。
+标记<sup>1</sup> | All | 分配给资源的标记。 不包括资源组标记。 可以用来将内部退款的成本进行分组或分发。 有关详细信息，请参阅[使用标记来组织 Azure 资源](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)。
+术语 | All | 显示套餐的有效期限。 例如：在使用预留实例时，它显示的“期限”为 12 个月。 对于一次性购买或定期购买，“期限”为 1 个月（SaaS、市场支持）。 这不适用于 Azure 消耗。
+UnitOfMeasure | All | 用于服务计费的度量单位。 例如，计算服务按小时计费。
+UnitPrice | EA、PAYG | 费用的单价。
 
-详细使用情况 CSV 文件的顶部显示了你在这个月的计费周期期间使用的服务。 下表列出了此部份中显示的条款和说明。
+_<sup>**1**</sup>_ 用于生成单个成本记录的唯一 ID 的字段。
 
-| 术语 | 描述 |
-| --- | --- |
-|计费周期 |使用测定仪时的计费周期 |
-|测定仪类别 |标识该次使用的最上层服务 |
-|测定仪子类别 |定义 Azure 服务类型，该类型可能会影响费率 |
-|测定仪名称 |标识已使用计量的度量单位 |
-|测定仪区域 |标识某些服务的数据中心的位置，这些服务根据数据中心位置进行定价 |
-|SKU |指明每个 Azure 测定仪的唯一系统标识符 |
-|单位 |指明服务的计价单位。 例如，GB、小时、10,000 秒。 |
-|已耗用数量 |计费周期期间使用的计量的量 |
-|附送数量 |当前计费周期中免费附送的计量的量 |
-|超额数量 |显示已耗用数量和已包含数量之间的差异。 将根据此数量对你计费。 对于不附送任何数量的即用即付产品/服务，此总数与已耗用数量相同。 |
-|在承诺额范围内 |显示从与你的 6 或 12 个月产品/服务关联的承诺金额中减去的测定仪费用。 按时间顺序减去测定仪费用。 |
-|货币 |当前计费期间内使用的货币 |
-|超额 |显示超过与你的 6 或 12 个月产品/服务关联的承诺金额的测定仪费用 |
-|承诺费率 |显示基于与你的 6 或 12 个月产品/服务关联的总承诺金额的承诺费率 |
-|费率 |为每个可付费单位支付的费率 |
-|值 |显示将“超额数量”列与“费率”列相乘的结果。 如果已耗用数量未超过已包含数量，则此列中没有费用。 |
+请注意，某些字段的帐户类型之间可能存在大小写和间距差异。
+旧版即用即付使用情况文件通过不同的部分来说明报表和每日使用情况。
 
-### <a name="daily-usage"></a>每日使用情况
+### <a name="list-of-terms-from-older-apis"></a>旧版 API 中的术语列表
+下表将旧版 API 中使用的术语映射到了新术语。 有关说明，请参阅上表。
 
-该 CSV 文件的“每日使用情况”部分显示影响计费费率的使用详细信息。 下表列出了此部份中显示的条款和说明。
+旧术语 | 新术语
+--- | ---
+ConsumedQuantity | 数量
+IncludedQuantity | 不适用
+InstanceId | ResourceId
+费率 | EffectivePrice
+单位 | UnitOfMeasure
+UsageDate | Date
+UsageEnd | Date
+UsageStart | Date
 
-| 术语 | 描述 |
-| --- | --- |
-|使用日期 |使用测定仪时的日期 |
-|测定仪类别 |标识该次使用所属的最上层服务 |
-|测定仪 ID |用于计算用量费用的费用计量标识符 |
-|测定仪子类别 |定义 Azure 服务类型，该类型可能会影响费率 |
-|测定仪名称 |标识已使用计量的度量单位 |
-|测定仪区域 |标识某些服务的数据中心的位置，这些服务根据数据中心位置进行定价 |
-|单位 |指明测定仪的计价单位。 例如，GB、小时、10,000 秒。 |
-|已耗用数量 |当日已耗用的测定仪量 |
-|资源位置 |指明测定仪正在其中运行的数据中心 |
-|已耗用的服务 |你使用的 Azure 平台服务 |
-|资源组 |部署的测定仪正在其中运行的资源组。 <br/><br/>有关详细信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 |
-|实例 ID | 测定仪的标识符。 <br/><br/> 此标识符包含你在测定仪创建时为其指定的名称。 它是资源的名称或完全限定的资源 ID。 有关详细信息，请参阅 [Azure 资源管理器 API](https://docs.microsoft.com/rest/api/resources/resources)。 |
-|标记 | 分配给测定仪的标记。 使用标记对计费记录进行分组。<br/><br/>例如，可以使用标记按使用测定仪的部门分配费用。 支持发出标记的服务包括虚拟机、存储和使用 [Azure 资源管理器 API](https://docs.microsoft.com/rest/api/resources/resources) 预配的网络服务。 有关详细信息，请参阅[使用标记来组织 Azure 资源](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)。 |
-|其他信息 |服务特定的元数据。 例如，虚拟机的映像类型。 |
-|服务信息 1 |订阅上服务所属的项目名称 |
-|服务信息 2 |旧字段，用于捕获可选的服务特定元数据 |
 
-## <a name="how-do-i-make-sure-that-the-charges-in-my-detailed-usage-file-are-correct"></a>如何确保详细使用情况文件中的费用是正确的？
-如果详细使用情况文件上具有你想要获取有关其详细信息的费用，请参阅[了解你的 Microsoft Azure 帐单](./billing-understand-your-bill.md)。
+## <a name="ensure-charges-are-correct"></a>确保费用正确
 
-## <a name="external"></a>外部服务如何收费？
-外部服务（也称为市场订单）由独立的服务供应商提供，需要单独计费。 Azure 发票上不会记录该费用。 若要了解详细信息，请参阅[了解 Azure 外部服务收费](billing-understand-your-azure-marketplace-charges.md)。
+若要深入了解详细的使用情况和费用，请阅读介绍如何了解[即用即付](./billing-understand-your-bill.md)或 [Microsoft 客户协议](billing-mca-understand-your-bill.md)发票的文档。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+
+## <a name="next-steps"></a>后续步骤
+
+- [查看和下载 Microsoft Azure 发票](billing-download-azure-invoice.md)
+- [查看和下载 Microsoft Azure 使用情况与费用](billing-download-azure-daily-usage.md)

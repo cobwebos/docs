@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: 393441e7ff620f3795e42c2cb376f99f8763f25b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59044855"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "60193153"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>教程：监视 Azure 防火墙日志和指标
 
@@ -44,24 +44,24 @@ ms.locfileid: "59044855"
 完成此过程以启用诊断日志记录后，可能需要经过几分钟的时间，数据才会显示在日志中。 如果一开始未看到任何内容，请在几分钟后重新查看。
 
 1. 在 Azure 门户中，打开防火墙资源组并单击防火墙。
-2. 在“监视”下面，单击“诊断设置”。
+2. 在“监视”下面，单击“诊断设置”。  
 
    Azure 防火墙有两个特定于服务的日志：
 
    * AzureFirewallApplicationRule
    * AzureFirewallNetworkRule
 
-3. 若要开始收集数据，请单击“启用诊断”。
-4. “诊断设置”页提供用于诊断日志的设置。 
-5. 在此示例中，Azure Monitor 日志存储日志，因此请键入“防火墙日志分析”作为名称。
-6. 单击“发送到 Log Analytics”以配置工作区。 也可使用事件中心和存储帐户保存诊断日志。
-7. 在“Log Analytics”下面，单击“配置”。
-8. 在“Log Analytics 工作区”页中，单击“创建新工作区”。
-9. 在“Log Analytics 工作区”页中，键入 **firewall-oms** 作为新 **Log Analytics 工作区**的名称。
-10. 选择订阅，使用现有的防火墙资源组 (**Test-FW-RG**)，选择“美国东部”作为位置，然后选择“免费”定价层。
-11. 单击“确定”。
+3. 若要开始收集数据，请单击“启用诊断”  。
+4. “诊断设置”  页提供用于诊断日志的设置。 
+5. 在此示例中，Azure Monitor 日志存储日志，因此请键入“防火墙日志分析”作为名称  。
+6. 单击“发送到 Log Analytics”以配置工作区。  也可使用事件中心和存储帐户保存诊断日志。
+7. 在“Log Analytics”下面  ，单击“配置”  。
+8. 在“Log Analytics 工作区”页中，单击“创建新工作区”。 
+9. 在“Log Analytics 工作区”页中，键入 **firewall-oms** 作为新 **Log Analytics 工作区**的名称。 
+10. 选择订阅，使用现有的防火墙资源组 (**Test-FW-RG**)，选择“美国东部”作为位置，然后选择“免费”定价层。  
+11. 单击“确定”。 
    ![启动配置过程][1] OMS 工作区现在称为 Log Analytics 工作区。  
-12. 在“日志”下面，单击“AzureFirewallApplicationRule”和“AzureFirewallNetworkRule”收集应用程序和网络规则的日志。
+12. 在“日志”下面，单击“AzureFirewallApplicationRule”和“AzureFirewallNetworkRule”收集应用程序和网络规则的日志。   
    ![保存诊断设置][2]
 13. 单击“ **保存**”。
 
@@ -71,11 +71,11 @@ ms.locfileid: "59044855"
 
 若要启用诊断日志记录，请使用以下步骤：
 
-1. 记下存储日志数据的存储帐户资源 ID。 此值采用以下格式：*/subscriptions/\<订阅 ID\>/resourceGroups/\<资源组名称\>/providers/Microsoft.Storage/storageAccounts/\<存储帐户名称\>*。
+1. 记下存储日志数据的存储帐户资源 ID。 此值采用以下格式： */subscriptions/\<订阅 ID\>/resourceGroups/\<资源组名称\>/providers/Microsoft.Storage/storageAccounts/\<存储帐户名称\>* 。
 
-   订阅中的所有存储帐户均可使用。 可使用 Azure 门户查找此信息。 此信息位于资源的“属性”页中。
+   订阅中的所有存储帐户均可使用。 可使用 Azure 门户查找此信息。 此信息位于资源的“属性”页中。 
 
-2. 记下为其启用了日志记录的防火墙的资源 ID。 此值采用以下格式：*/subscriptions/\<订阅 ID\>/resourceGroups/\<资源组名称\>/providers/Microsoft.Network/azureFirewalls/\<防火墙名称\>*。
+2. 记下为其启用了日志记录的防火墙的资源 ID。 此值采用以下格式： */subscriptions/\<订阅 ID\>/resourceGroups/\<资源组名称\>/providers/Microsoft.Network/azureFirewalls/\<防火墙名称\>* 。
 
    可使用门户查找此信息。
 
@@ -109,7 +109,7 @@ ms.locfileid: "59044855"
 > 如果熟悉 Visual Studio 和更改 C# 中的常量和变量值的基本概念，则可以使用 GitHub 提供的[日志转换器工具](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
 
 ## <a name="view-metrics"></a>查看指标
-浏览到 Azure 防火墙，并在“监视”下单击“指标”。 若要查看可用值，请选择“指标”下拉列表。
+浏览到 Azure 防火墙，并在“监视”下单击“指标”   。 若要查看可用值，请选择“指标”下拉列表  。
 
 ## <a name="next-steps"></a>后续步骤
 

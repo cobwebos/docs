@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 37a06b19285c1196b5d87830ea176d4bd0d4eade
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033649"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60894005"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>从 Azure Databricks 访问 Azure Cosmos DB Cassandra API 数据
 
 本文详细介绍了如何在 [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) 上通过 Spark 使用 Azure Cosmos DB Cassandra API。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * [预配 Azure Cosmos DB Cassandra API 帐户](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -45,11 +45,11 @@ ms.locfileid: "54033649"
 
 ## <a name="add-the-required-dependencies"></a>添加必需的依赖项
 
-* Cassandra Spark 连接器：- 要将 Azure Cosmos DB Cassandra API 与 Spark 集成，Cassandra 连接器应附加到 Azure Databricks 群集。 若要附加群集：
+*  Cassandra Spark 连接器：- 要将 Azure Cosmos DB Cassandra API 与 Spark 集成，Cassandra 连接器应附加到 Azure Databricks 群集。 若要附加群集：
 
   * 查看 Databricks 运行时版本，即 Spark 版本。 然后找到与 Cassandra Spark 连接器兼容的 [maven 坐标](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector)，并将其附加到群集。 请参阅[“上传 Maven 包或 Spark 包”](https://docs.databricks.com/user-guide/libraries.html)一文，将连接器库附加到群集。 例如，“Databricks Runtime 版本 4.3”、“Spark 2.3.1”和“Scala 2.11”的 maven 坐标为 `spark-cassandra-connector_2.11-2.3.1`
 
-* Azure Cosmos DB Cassandra API 特定的库：- 需要自定义连接工厂才能将重试策略从 Cassandra Spark 连接器配置到 Azure Cosmos DB Cassandra API。 添加 `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`[maven 坐标](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar)将库附加到群集。
+*  Azure Cosmos DB Cassandra API 特定的库：- 需要自定义连接工厂才能将重试策略从 Cassandra Spark 连接器配置到 Azure Cosmos DB Cassandra API。 添加 `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`[maven 坐标](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar)将库附加到群集。
 
 ## <a name="sample-notebooks"></a>示例笔记本
 

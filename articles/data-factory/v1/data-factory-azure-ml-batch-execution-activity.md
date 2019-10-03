@@ -3,26 +3,24 @@ title: 使用 Azure 数据工厂创建预测数据管道 | Microsoft Docs
 description: 描述如何使用 Azure 数据工厂和 Azure 机器学习创建预测管道
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 4fad8445-4e96-4ce0-aa23-9b88e5ec1965
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 4093febd19d71512e3c80704e88f9d5cf669d7d9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e7c48c1d91ae08be29531f4a99ea75ab7a928f34
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122057"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140489"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="转换活动"]
 > * [Hive 活动](data-factory-hive-activity.md)
 > * [Pig 活动](data-factory-pig-activity.md)
 > * [MapReduce 活动](data-factory-map-reduce.md)
@@ -54,7 +52,7 @@ ms.locfileid: "58122057"
 有关 Azure 数据工厂服务的快速入门，请参阅文章 [Azure 数据工厂简介](data-factory-introduction.md)和[生成第一个管道](data-factory-build-your-first-pipeline.md)。
 
 ### <a name="data-factory-and-machine-learning-together"></a>结合数据工厂和机器学习
-借助 Azure 数据工厂，可轻松创建相关管道，利用已发布的 [Azure 机器学习 Web 服务进行预测分析][azure-machine-learning]。 使用 Azure 数据工厂管道中的**批处理执行活动**，可以调用 Azure 机器学习工作室 Web 服务成批对数据进行预测。 有关详细信息，请参阅使用批处理执行活动调用 Azure 机器学习工作室 Web 服务部分。
+使用 Azure 数据工厂, 可轻松创建使用已发布的[Azure 机器学习][azure-machine-learning]web 服务进行预测分析的管道。 使用 Azure 数据工厂管道中的**批处理执行活动**，可以调用 Azure 机器学习工作室 Web 服务成批对数据进行预测。 有关详细信息，请参阅使用批处理执行活动调用 Azure 机器学习工作室 Web 服务部分。
 
 随着时间推移，需要使用新的输入数据集重新训练 Azure 机器学习工作室评分实验中的预测模型。 可以通过执行以下步骤重新训练数据工厂管道中的 Azure 机器学习工作室模型：
 
@@ -137,7 +135,7 @@ ms.locfileid: "58122057"
 ### <a name="example"></a>示例
 本示例使用 Azure 存储保留输入和输出数据。
 
-建议先浏览[使用数据工厂生成第一个管道][adf-build-1st-pipeline]教程，再浏览本示例。 本示例使用数据工厂编辑器创建数据工厂项目（链接服务、数据集、管道）。
+在此示例中, 我们建议你完成[使用数据工厂生成第一个管道][adf-build-1st-pipeline]教程。 本示例使用数据工厂编辑器创建数据工厂项目（链接服务、数据集、管道）。
 
 1. 为 **Azure 存储**创建**链接服务**。 如果输入和输出文件位于不同的存储帐户，需使用两个链接服务。 下面是 JSON 示例：
 
@@ -629,7 +627,7 @@ Azure SDK 和 Azure PowerShell 的 2015 年 8 月版中引入了 AzureMLBatchExe
 >
 >
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure 博客文章：Azure 数据工厂和 Azure 机器学习入门](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
 
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md

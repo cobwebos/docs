@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 598168285ee67921ab17ab8c2ce780753c562f81
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622189"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072347"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -60,12 +59,13 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 访问指标：
 
-1. 在靠近页面底部的菜单中选择“指标”。
+1. 在靠近页面底部的菜单中选择“指标”。 
 
     ![指标](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. 从下拉列表中选择所需的指标。 例如，**成功的网关请求数**。 也可向图表添加更多指标。
-3. 图表显示成功的 API 调用的总数。
+1. 从下拉列表中选择所需的指标。 例如，“请求”  。 
+1. 该图显示 API 调用总数。
+1. 可以使用**请求**指标的维度来筛选该图表。 例如，单击“添加筛选器”  ，选择“后端响应代码”  ，输入 500 作为值。 现在，该图表显示了 API 后端中失败的请求数。   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>针对未经授权的请求设置警报规则
 
@@ -77,18 +77,18 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 配置警报：
 
-1. 在靠近页面底部的菜单栏中选择“警报”。
+1. 在靠近页面底部的菜单栏中选择“警报”。 
 
     ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. 对于此警报，请单击“新建警报规则”。
-3. 单击“添加条件”。
-4. 在“信号类型”下拉列表中选择“指标”。
-5. 选择“未经授权的网关请求”作为要监视的信号。
+2. 对于此警报，请单击“新建警报规则”。 
+3. 单击“添加条件”。 
+4. 在“信号类型”下拉列表中选择“指标”。 
+5. 选择“未经授权的网关请求”作为要监视的信号。 
 
     ![alerts](./media/api-management-azure-monitor/signal-type.png)
 
-6. 在“配置信号逻辑”视图中指定触发警报的阈值，然后单击“完成”。
+6. 在“配置信号逻辑”视图中指定触发警报的阈值，然后单击“完成”。  
 
     ![alerts](./media/api-management-azure-monitor/threshold.png)
 
@@ -97,7 +97,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
     ![alerts](./media/api-management-azure-monitor/action-details.png)
 
 8. 提供警报规则的名称和说明，然后选择严重级别。 
-9. 按“创建警报规则”。
+9. 按“创建警报规则”。 
 10. 现在，尝试在不使用 API 密钥的情况下调用会议 API。 将会触发警报，向管理员发送电子邮件。 
 
 ## <a name="activity-logs"></a>活动日志
@@ -114,11 +114,11 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 要查看活动日志，请执行以下操作：
 
 1. 选择 APIM 服务实例。
-2. 单击“活动日志”。
+2. 单击“活动日志”  。
 
     ![活动日志](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
 
-3. 选择所需的筛选范围，然后单击“应用”。
+3. 选择所需的筛选范围，然后单击“应用”  。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
@@ -127,11 +127,11 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 若要配置诊断日志，请执行以下操作：
 
 1. 选择 APIM 服务实例。
-2. 单击“诊断设置”。
+2. 单击“诊断设置”。 
 
     ![诊断日志](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. 单击“启用诊断”。 可以将诊断日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 
+3. 单击“启用诊断”  。 可以将诊断日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 
 
 “API 管理”当前提供有关单个 API 请求的诊断日志（每小时进行批处理），其中每个条目具有以下架构：
 
@@ -180,7 +180,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 }  
 ```
 
-| 属性  | Type | 说明 |
+| properties  | Type | 说明 |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | 布尔值 | 如果 HTTP 请求完成时，响应状态代码在 2xx 或 3xx 范围内，则为 true |
 | time | 日期时间 | 网关接收 HTTP 请求的时间戳 |
@@ -189,11 +189,11 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 | durationMs | integer | 从网关收到请求到响应全部发送出去经过的时间（毫秒） |
 | callerIpAddress | 字符串 | 直接网关调用方（可以是中介）的 IP 地址 |
 | correlationId | 字符串 | 由 API 管理分配的唯一 http 请求标识符 |
-| 位置 | 字符串 | 处理请求的网关所在 Azure 区域的名称 |
+| location | 字符串 | 处理请求的网关所在 Azure 区域的名称 |
 | httpStatusCodeCategory | 字符串 | http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
 | resourceId | 字符串 | API 管理资源 /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> 的 ID |
-| 属性 | 对象 | 当前请求的属性 |
-| 方法 | 字符串 | 传入请求的 HTTP 方法 |
+| properties | 对象 | 当前请求的属性 |
+| method | 字符串 | 传入请求的 HTTP 方法 |
 | url | 字符串 | 传入请求的 URL |
 | clientProtocol | 字符串 | 传入请求的 HTTP 协议版本 |
 | responseCode | integer | 发送到客户端的 HTTP 响应的状态代码 |
@@ -213,12 +213,12 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 | userId | 字符串 | 当前请求的用户实体标识符 | 
 | apimSubscriptionId | 字符串 | 当前请求的订阅实体标识符 | 
 | backendId | 字符串 | 当前请求的后端实体标识符 | 
-| LastError | 对象 | 上一个请求处理错误 | 
-| 已用时间 | integer | 从网关收到请求到发生错误经过的时间（毫秒） | 
-| 源 | 字符串 | 导致错误的策略或内部处理程序的名称 | 
-| 作用域 | 字符串 | 导致错误的策略所在策略文档的范围 | 
+| lastError | 对象 | 上一个请求处理错误 | 
+| elapsed | integer | 从网关收到请求到发生错误经过的时间（毫秒） | 
+| source | 字符串 | 导致错误的策略或内部处理程序的名称 | 
+| scope | 字符串 | 导致错误的策略所在策略文档的范围 | 
 | section | 字符串 | 导致错误的策略所在策略文档的节 | 
-| 原因 | 字符串 | 错误原因 | 
+| reason | 字符串 | 错误原因 | 
 | message | 字符串 | 错误消息 | 
 
 ## <a name="next-steps"></a>后续步骤

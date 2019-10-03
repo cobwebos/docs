@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34455cac61dd3b1f1251d4bc2003bd8b029de031
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d16699729e62953cb2369f39ecfe759aab663caf
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014968"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382645"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>有关将帐户添加到 Microsoft Authenticator 应用的概述
 
@@ -25,7 +25,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 
 > [!Important]
 > Microsoft Authenticator 应用可用于使用双重验证的任何应用以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户。
-> 
+>
 > 此内容适用于用户。 如果你是管理员，可以在 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory)中查找有关如何设置和管理 Azure Active Directory (Azure AD) 环境的详细信息。
 
 可通过多种方式使用 Microsoft Authenticator 应用，包括：
@@ -35,22 +35,19 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 - 使用用户名和移动设备并结合指纹、人脸或 PIN 来提供登录，而无需输入密码。
 
 ## <a name="what-account-types-can-i-add"></a>可以添加的帐户类型
+
 可为日常使用的多个帐户启用双重验证。这些帐户包括：
 
-|帐户类型|说明|
-|------------|-----------|
-|工作或学校帐户|由工作单位或学校提供给你的帐户，例如 alain@contoso.com。|
-|个人帐户|个人建立的 Microsoft 和非 Microsoft 帐户，例如，在 Outlook.com、Xbox LIVE、Google、Facebook 等服务中创建的帐户。|
+| 帐户类型 | 说明 |
+| ------------ | ----------- |
+| 工作或学校帐户 | 由工作单位或学校提供给你的帐户，例如 alain@contoso.com。 |
+| 个人帐户 | 个人建立的 Microsoft 和非 Microsoft 帐户，例如，在 Outlook.com、Xbox LIVE、Google、Facebook 等服务中创建的帐户。 |
 
 ## <a name="in-this-section"></a>本节内容
 
-|文章 |说明 |
-|------|------------|
-|[添加工作或学校帐户](user-help-auth-app-add-work-school-account.md)|介绍如何将工作或学校帐户添加到 Microsoft Authenticator 应用以进行双重验证。|
-|[添加 Microsoft 个人帐户](user-help-auth-app-add-personal-ms-account.md)|介绍如何添加 Microsoft 个人帐户以进行双重验证和手机登录（也称为无密码登录）。|
-|[添加非 Microsoft 帐户](user-help-auth-app-add-non-ms-account.md)|介绍如何添加非 Microsoft 个人帐户以进行双重验证。|
-|[手动添加帐户](user-help-auth-app-add-account-manual.md)|介绍在相机无法捕获 QR 码的情况下，如何手动将帐户添加到 Microsoft Authenticator 应用。|
-
-
-
-
+| 文章 |说明 |
+| ------|------------|
+| [添加工作或学校帐户](user-help-auth-app-add-work-school-account.md) | 介绍如何将工作或学校帐户添加到 Microsoft Authenticator 应用以进行双重验证。 |
+| [添加 Microsoft 个人帐户](user-help-auth-app-add-personal-ms-account.md) | 介绍如何添加 Microsoft 个人帐户以进行双重验证和手机登录（也称为无密码登录）。 |
+| [添加非 Microsoft 帐户](user-help-auth-app-add-non-ms-account.md) | 介绍如何添加非 Microsoft 个人帐户以进行双重验证。 |
+| [手动添加帐户](user-help-auth-app-add-account-manual.md) | 介绍在相机无法捕获 QR 码的情况下，如何手动将帐户添加到 Microsoft Authenticator 应用。 |

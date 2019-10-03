@@ -18,17 +18,17 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 494ccc3b90b8c249ee935087dcf0f0b5264b02ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172244"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60386735"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory 传递身份验证：升级身份验证代理预览版
 
 ## <a name="overview"></a>概述
 
-本文面向通过预览版使用 Azure AD 直通身份验证的客户。 我们最近升级了身份验证代理软件（并重新设计了品牌）。 需要手动升级本地服务器上安装的预览身份验证代理。 此手动升级是一次性的操作。 将来对身份验证代理的所有更新都会自动应用。 升级的原因如下：
+本文面向通过预览版使用 Azure AD 直通身份验证的客户。 我们最近升级了身份验证代理软件（并重新设计了品牌）。 需要手动升级本地服务器上安装的预览身份验证代理。  此手动升级是一次性的操作。 将来对身份验证代理的所有更新都会自动应用。 升级的原因如下：
 
 - 身份验证代理预览版不会进一步接收任何安全修复或 bug 修复。
 -   为了保持高可用性，无法在其他服务器上安装身份验证代理预览版。
@@ -40,9 +40,9 @@ ms.locfileid: "56172244"
 遵循以下步骤检查身份验证代理的安装位置：
 
 1. 使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
-2. 在左侧导航栏中，选择“Azure Active Directory”。
-3. 选择“Azure AD Connect”。 
-4. 选择“直通身份验证”。 此边栏选项卡列出了安装身份验证代理的服务器。
+2. 在左侧导航栏中，选择“Azure Active Directory”  。
+3. 选择“Azure AD Connect”  。 
+4. 选择“直通身份验证”  。 此边栏选项卡列出了安装身份验证代理的服务器。
 
 ![Azure Active Directory 管理中心 - 传递身份验证边栏选项卡](./media/how-to-connect-pta-upgrade-preview-authentication-agents/pta8.png)
 
@@ -50,9 +50,9 @@ ms.locfileid: "56172244"
 
 若要检查上一步骤中识别的每台服务器上的身份验证代理版本，请遵照以下说明操作：
 
-1. 在本地服务器上转到“控制面板”->“程序”->“程序和功能”。
-2. 如果“Microsoft Azure AD Connect 身份验证代理”存在对应的条目，则不需要在此服务器上执行任何操作。
-3. 如果“Microsoft Azure AD 应用程序代理连接器”存在对应的条目，则需要在此服务器上手动升级。
+1. 在本地服务器上转到“控制面板”->“程序”->“程序和功能”。 
+2. 如果“Microsoft Azure AD Connect 身份验证代理”存在对应的条目，则不需要在此服务器上执行任何操作。 
+3. 如果“Microsoft Azure AD 应用程序代理连接器”存在对应的条目，则需要在此服务器上手动升级。 
 
 ![身份验证代理预览版](./media/how-to-connect-pta-upgrade-preview-authentication-agents/pta6.png)
 
@@ -69,24 +69,24 @@ ms.locfileid: "56172244"
 
 1. **升级 Azure AD Connect**：遵循此[文](how-to-upgrade-previous-version.md)升级到最新版本的 Azure AD Connect。
 2. **卸载身份验证代理预览版**：下载[此 PowerShell 脚本](https://aka.ms/rmpreviewagent)，并在服务器上以管理员身份运行该脚本。
-3. **下载最新版本的身份验证代理（版本 1.5.389.0 或更高版本）**：使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。 选择“Azure Active Directory”->“Azure AD Connect”->“直通身份验证”->“下载代理”。 接受[服务条款](https://aka.ms/authagenteula)并下载最新版本的身份验证代理。 也可以从[此处](https://aka.ms/getauthagent)下载身份验证代理。
+3. **下载最新版本的身份验证代理（版本 1.5.389.0 或更高版本）** ：使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。 选择“Azure Active Directory”->“Azure AD Connect”->“直通身份验证”->“下载代理”。  接受[服务条款](https://aka.ms/authagenteula)并下载最新版本的身份验证代理。 也可以从[此处](https://aka.ms/getauthagent)下载身份验证代理。
 4. **安装最新版本的身份验证代理**：运行步骤 3 中下载的可执行文件。 出现提示时，提供租户的全局管理员凭据。
-5. **验证是否已安装最新版本**：如前所述转到“控制面板”->“程序”->“程序和功能”，检查“Microsoft Azure AD Connect 身份验证代理”是否存在对应的条目。
+5. **验证是否已安装最新版本**：如前所述转到“控制面板”->“程序”->“程序和功能”，检查“Microsoft Azure AD Connect 身份验证代理”是否存在对应的条目   。
 
 >[!NOTE]
->如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“传递身份验证”边栏选项卡，将看到每个服务器上有两个身份验证代理条目，一个条目显示身份验证代理处于“活动”状态，另一个显示它处于“非活动”状态。 这是正常情况。 几天后自动删除表示“非活动”的条目。
+>如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“传递身份验证”边栏选项卡，将看到每个服务器上有两个身份验证代理条目，一个条目显示身份验证代理处于“活动”状态  ，另一个显示它处于“非活动”状态  。 这是正常情况  。 几天后自动删除表示“非活动”的条目  。
 
 ## <a name="upgrading-the-authentication-agent-on-other-servers"></a>升级其他服务器上的身份验证代理
 
 遵循以下步骤升级其他服务器（未安装 Azure AD Connect）上的身份验证代理：
 
 1. **卸载身份验证代理预览版**：下载[此 PowerShell 脚本](https://aka.ms/rmpreviewagent)，并在服务器上以管理员身份运行该脚本。
-2. **下载最新版本的身份验证代理（版本 1.5.389.0 或更高版本）**：使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。 选择“Azure Active Directory”->“Azure AD Connect”->“直通身份验证”->“下载代理”。 接受服务条款并下载最新版本。
+2. **下载最新版本的身份验证代理（版本 1.5.389.0 或更高版本）** ：使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。 选择“Azure Active Directory”->“Azure AD Connect”->“直通身份验证”->“下载代理”。  接受服务条款并下载最新版本。
 3. **安装最新版本的身份验证代理**：运行步骤 2 中下载的可执行文件。 出现提示时，提供租户的全局管理员凭据。
-4. **验证是否已安装最新版本**：如前所述转到“控制面板”->“程序”->“程序和功能”，检查是否存在名为“Microsoft Azure AD Connect 身份验证代理”的条目。
+4. **验证是否已安装最新版本**：如前所述转到“控制面板”->“程序”->“程序和功能”，检查是否存在名为“Microsoft Azure AD Connect 身份验证代理”的条目   。
 
 >[!NOTE]
->如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“传递身份验证”边栏选项卡，将看到每个服务器上有两个身份验证代理条目，一个条目显示身份验证代理处于“活动”状态，另一个显示它处于“非活动”状态。 这是正常情况。 几天后自动删除表示“非活动”的条目。
+>如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“传递身份验证”边栏选项卡，将看到每个服务器上有两个身份验证代理条目，一个条目显示身份验证代理处于“活动”状态  ，另一个显示它处于“非活动”状态  。 这是正常情况  。 几天后自动删除表示“非活动”的条目  。
 
 ## <a name="next-steps"></a>后续步骤
-- [故障排除](tshoot-connect-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。
+- [故障排除  ](tshoot-connect-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。

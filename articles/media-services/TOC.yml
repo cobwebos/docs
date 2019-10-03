@@ -6,7 +6,21 @@
 - name: Azure 媒体服务视频索引器
   href: video-indexer/
 - name: Azure Media Player
-  href: 'http://amp.azure.net/libs/amp/latest/docs/index.html'
+  href: 'https://amp.azure.net/libs/amp/latest/docs/index.html'
+- name: 规范
+  items:
+    - name: 超时元数据
+      items:
+        - name: RTMP 和平滑流式处理
+          href: media-services-specifications-live-timed-metadata.md
+    - name: 协议
+      items:
+        - name: 平滑流式处理 (MS-SSTR)
+          items:
+            - name: HEVC 支持
+              href: media-services-specifications-ms-sstr-amendment-hevc.md
+            - name: 平滑流式处理引入
+              href: media-services-fmp4-live-ingest-overview.md
 - name: 资源
   items:
     - name: Azure 路线图

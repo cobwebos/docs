@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 07/03/2013
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 689764543f5d927273f92deecbfd43e282fc028c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ee655dc39fbe7d0e3eb5cb41b091aea24d8dbea3
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961359"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131283"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-function-app"></a>将自定义 SSL 证书绑定到 Function App
 
@@ -27,7 +27,7 @@ ms.locfileid: "46961359"
 * 要上传和绑定的 SSL 证书的有效 .PFX 文件及其密码。
 * 已在自定义域中配置了一个指向 Web 应用的默认域名的 A 记录。 有关详细信息，请参阅[适用于 Azure 应用服务的映射自定义域说明](https://aka.ms/appservicecustomdns)。
 
-若要绑定 SSL 证书，必须在应用服务计划（而不是消耗计划）中创建 Function App。
+若要绑定 SSL 证书，必须在高级计划或应用服务计划（而不是消耗计划）中创建 Function App。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

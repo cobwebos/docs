@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1c2c5cbee91ddaee5f1f6af8ec17c48326f68e84
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f9d49d143b31b0b9e73d8a147605935cd88d412b
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755056"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "65073974"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>保护 Azure Kubernetes 服务 (AKS) 中的 Pod 的最佳做法
 
@@ -31,17 +31,19 @@ ms.locfileid: "58755056"
 
 **最佳做法指南** - 要作为其他用户或组运行，并限制对基础节点进程和服务的访问权限，请定义 Pod 安全性上下文设置。 请分配所需的最少权限。
 
-为使应用程序正常运行，Pod 应作为已定义的用户或组运行，而不是根用户或组。 通过 Pod 或容器的 `securityContext`，可定义 runAsUser 或 fsGroup 等设置，以承担相应权限。 仅分配所需的用户或组权限，不要使用安全性上下文来承担其他权限。 作为非根用户运行时，容器无法绑定到 1024 下的特权端口。 此时可使用 Kubernetes 服务掩盖应用程序正在特定端口上运行这一事实。
+为使应用程序正常运行，Pod 应作为已定义的用户或组运行，而不是根用户或组  。 通过 Pod 或容器的 `securityContext`，可定义 runAsUser 或 fsGroup 等设置，以承担相应权限   。 仅分配所需的用户或组权限，不要使用安全性上下文来承担其他权限。 *RunAsUser*，权限提升和其他 Linux 功能设置仅适用于 Linux 节点和 pod。
+
+作为非根用户运行时，容器无法绑定到 1024 下的特权端口。 此时可使用 Kubernetes 服务掩盖应用程序正在特定端口上运行这一事实。
 
 Pod 安全性上下文还可定义用于访问进程和服务的其他功能或权限。 可设置以下常见安全性上下文定义：
 
-* allowPrivilegeEscalation 定义 Pod 是否可承担根特权。 设计应用程序，将此设置始终设为 false。
-* Linux 功能可使 Pod 访问基础节点进程。 请小心分配这些功能。 请分配所需的最少权限。 有关详细信息，请参阅 [Linux 功能][linux-capabilities]。
-* SELinux 标签是一个 Linux 内核安全模块，允许你定义服务、进程和文件系统访问权限的访问策略。 同样，请分配所需的最少权限。 有关详细信息，请参阅 [Kubernetes 中的 SELinux 选项][selinux-labels]
+* allowPrivilegeEscalation 定义 Pod 是否可承担根特权   。 设计应用程序，将此设置始终设为 false  。
+* Linux 功能可使 Pod 访问基础节点进程  。 请小心分配这些功能。 请分配所需的最少权限。 有关详细信息，请参阅 [Linux 功能][linux-capabilities]。
+* SELinux 标签是一个 Linux 内核安全模块，允许你定义服务、进程和文件系统访问权限的访问策略  。 同样，请分配所需的最少权限。 有关详细信息，请参阅 [Kubernetes 中的 SELinux 选项][selinux-labels]
 
 以下示例 Pod YAML 清单设置了安全性上下文设置，给出了以下定义：
 
-* Pod 以 ID 为 1000 的用户身份和 ID 为 2000 的部分组运行
+* Pod 以 ID 为 1000 的用户身份和 ID 为 2000 的部分组运行  
 * 无法提升特权，无法使用 `root`
 * 允许 Linux 功能访问网络接口和主机的实时（硬件）时钟
 
@@ -66,7 +68,7 @@ spec:
 
 ## <a name="limit-credential-exposure"></a>避免凭据暴露
 
-**最佳操作指南** - 不要在应用程序代码中定义凭据。 使用 Azure 资源的托管标识，让 Pod 请求访问其他资源。 还应使用数字保管库（如 Azure Key Vault）来存储和检索数字密钥和凭据。
+**最佳操作指南** - 不要在应用程序代码中定义凭据。 使用 Azure 资源的托管标识，让 Pod 请求访问其他资源。 还应使用数字保管库（如 Azure Key Vault）来存储和检索数字密钥和凭据。 Pod 托管标识打算用于 Linux pod 和仅容器映像。
 
 要避免凭据在应用程序代码中暴露，请勿使用固定或共享凭据。 不应直接在代码中包含凭证或密钥。 如果凭据暴露，则需更新并重新部署应用程序。 更好的做法是，为 Pod 提供自己的标识，让它自行进行身份验证，或自动从数字保管库中检索凭据。
 
@@ -75,7 +77,7 @@ spec:
 * Azure 资源的托管标识，以及
 * Azure Key Vault FlexVol 驱动程序
 
-关联的 AKS 开放源代码项目不受 Azure 技术支持。 它们旨在从我们的社区收集反馈和 bug。 这些项目不建议用于生产环境中。
+Azure 技术支持不为关联的 AKS 开放源代码项目提供支持。 提供这些项目是为了从我们的社区收集反馈和 bug。 建议不要将这些项目用于生产。
 
 ### <a name="use-pod-managed-identities"></a>使用 Pod 托管标识
 
@@ -96,6 +98,8 @@ Azure 资源的托管标识允许 Pod 针对支持的 Azure 服务（如存储�
 ![使用 Pod 托管标识从 Key Vault 检索凭据的简化工作流](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
 
 使用 Key Vault，可存储并定期轮换凭据、存储帐户密钥或证书等机密。 可使用 FlexVolume 将 Azure Key Vault 与 AKS 群集集成。 FlexVolume 驱动程序允许 AKS 群集以本机方式检索 Key Vault 中的凭据，并仅将其安全地提供给发出请求的 Pod。 与群集操作员一起将 Key Vault FlexVol 驱动程序部署到 AKS 节点上。 可使用 Pod 托管标识来请求访问 Key Vault，并通过 FlexVolume 驱动程序检索所需凭据。
+
+FlexVol 的 azure 密钥保管库用于应用程序和 Linux pod 和节点上运行的服务。
 
 ## <a name="next-steps"></a>后续步骤
 

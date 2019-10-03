@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 3b2b472407175df307c569704d4c7611737c4ea1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 1416cbdc29d355e2ed83737140b46306de734127
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040364"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568571"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
 
@@ -32,7 +31,7 @@ ms.locfileid: "54040364"
 ## <a name="prerequisites"></a>先决条件
 
 * 使用弹性数据库客户端库创建分片映射。 [分片映射管理](sql-database-elastic-scale-shard-map-management.md)。 或者使用[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)中的示例应用程序。
-* 也可以参阅[将现有数据库迁移到扩展数据库](sql-database-elastic-convert-to-use-elastic-tools.md)。
+* 另外，也可以参阅[将现有数据库迁移到横向扩展的数据库](sql-database-elastic-convert-to-use-elastic-tools.md)。
 * 用户必须拥有 ALTER ANY EXTERNAL DATA SOURCE 权限。 此权限包含在 ALTER DATABASE 权限中。
 * 引用基础数据源需要 ALTER ANY EXTERNAL DATA SOURCE 权限。
 
@@ -139,7 +138,7 @@ ms.locfileid: "54040364"
 
 DATA\_SOURCE 子句定义了用于外部表的外部数据源（分片映射）。  
 
-SCHEMA\_NAME 和 OBJECT\_NAME 子句将外部表定义映射到不同架构的表。 如果省略，则假定远程对象的架构是“dbo”，并假定其名称与所定义的外部表名称相同。 如果远程表的名称已在要在其中创建外部表的数据库中使用，那么该做法很有用。 例如，希望定义一个外部表，用于获取扩展数据层上目录视图或 DMV 的聚合视图。 由于目录视图和 DMV 已在本地存在，因此不能在外部表定义中使用其名称。 而是改用不同名称，并在 SCHEMA\_NAME 和/或 OBJECT\_NAME 子句中使用目录视图或 DMV 的名称。 （请参阅下面的示例。）
+SCHEMA\_NAME 和 OBJECT\_NAME 子句将外部表定义映射到不同架构的表。 如果省略，则假定远程对象的架构是“dbo”，并假定其名称与所定义的外部表名称相同。 如果远程表的名称已在要在其中创建外部表的数据库中使用，那么该做法很有用。 例如，你想要定义外部表以在横向扩展的数据层上获取目录视图或 DMV 的聚合视图。 由于目录视图和 DMV 已在本地存在，因此不能在外部表定义中使用其名称。 而是改用不同名称，并在 SCHEMA\_NAME 和/或 OBJECT\_NAME 子句中使用目录视图或 DMV 的名称。 （请参阅下面的示例。）
 
 DISTRIBUTION 子句指定用于此表的数据分布。 查询处理器利用 DISTRIBUTION 子句中提供的信息来构建最有效的查询计划。
 
@@ -187,7 +186,7 @@ DISTRIBUTION 子句指定用于此表的数据分布。 查询处理器利用 DI
 
 Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到分片映射管理器数据库和远程数据库。  
 
-示例：
+例如：
 
 ```sql
     EXEC sp_execute_remote
@@ -199,7 +198,7 @@ Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 
 可以使用常规 SQL Server 连接字符串将应用程序、BI 和数据集成工具连接到具有外部表定义的数据库。 请确保支持将 SQL Server 用作工具的数据源。 然后，引用弹性查询数据库，就像引用连接到工具的其他任何 SQL Server 数据库一样，并从工具或应用程序使用外部表，就像使用本地表一样。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 * 确保已向弹性查询终结点数据库授予通过 SQL 数据库防火墙访问分片映射数据库和所有分片的权限。  
 * 验证或强制执行由外部表定义的数据分布。 如果实际的数据分布不同于表定义中指定的分布，查询可能会产生意外的结果。

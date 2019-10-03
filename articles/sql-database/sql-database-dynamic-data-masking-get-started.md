@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/04/2019
-ms.openlocfilehash: 2be1f7bb6417834196da03b7cba22387744f8c19
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 366b9437aab134985c73611fa8b46c6fbd3d309c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876538"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568768"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>SQL 数据库动态数据掩码
 
@@ -43,7 +42,7 @@ Azure SQL 数据库管理员、服务器管理员或 [SQL 安全管理员](https
 
 | 屏蔽函数 | 屏蔽逻辑 |
 | --- | --- |
-| **默认** |**根据指定字段的数据类型完全屏蔽**<br/><br/>对于字符串数据类型（nchar、ntext、nvarchar），使用 XXXX；如果字段大小小于 4 个字符，则使用更少的 X。<br/>• 对于数字数据类型（bigint、bit、decimal、int、money、numeric、smallint、smallmoney、tinyint、float、real），使用零值。<br/>对于日期/时间数据类型（date、datetime2、datetime、datetimeoffset、smalldatetime、time），将使用 1900-01-01。<br/>• 对于 SQL 变量，使用当前类型的默认值。<br/>• 对于 XML，使用文档 <masked/>。<br/>• 对于特殊数据类型（timestamp、table、hierarchyid、GUID、binary、image、varbinary 空间类型），将使用空值。 |
+| **默认** |**根据指定字段的数据类型完全屏蔽**<br/><br/>对于字符串数据类型（nchar、ntext、nvarchar），使用 XXXX；如果字段大小小于 4 个字符，则使用更少的 X。<br/>• 对于数字数据类型（bigint、bit、decimal、int、money、numeric、smallint、smallmoney、tinyint、float、real），使用零值。<br/>对于日期/时间数据类型（date、datetime2、datetime、datetimeoffset、smalldatetime、time），将使用 1900-01-01。<br/>• 对于 SQL 变量，将使用当前类型的默认值。<br/>•对于 XML, 将\<使用文档屏蔽/>。<br/>• 对于特殊数据类型（timestamp、table、hierarchyid、GUID、binary、image、varbinary 空间类型），将使用空值。 |
 | **信用卡** |**此屏蔽方法公开指定字段的最后四位数**，并添加一个信用卡格式的常量字符串作为前缀。<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **电子邮件** |**此屏蔽方法公开第一个字母并将域替换为 XXX.com**，并使用一个电子邮件地址格式的常量字符串作为前缀。<br/><br/>aXX@XXXX.com |
 | **随机数** |**此屏蔽方法根据选定边界和实际数据类型生成随机数**。 如果指定的边界相等，则屏蔽函数将是常数。<br/><br/>![导航窗格](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
@@ -55,7 +54,7 @@ Azure SQL 数据库管理员、服务器管理员或 [SQL 安全管理员](https
 
 DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段，可以考虑对这些字段进行屏蔽。 在门户的“动态数据屏蔽”边栏选项卡中，会看到针对数据库建议的列。 只需针对一个或多个列单击“添加屏蔽”，并单击“保存”，即可对这些字段应用屏蔽。
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>设置动态数据屏蔽使用 PowerShell cmdlet 为数据库
+## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>使用 PowerShell cmdlet 为数据库设置动态数据掩码
 
 请参阅 [Azure SQL 数据库 Cmdlet](https://docs.microsoft.com/powershell/module/az.sql)。
 

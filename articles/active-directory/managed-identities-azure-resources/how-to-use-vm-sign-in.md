@@ -16,11 +16,11 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43aa0859fa67cc6b2f5c5974f072e7b6d4b29527
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58442131"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66112962"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure VM 上使用 Azure 资源的托管标识进行登录 
 
@@ -86,13 +86,13 @@ Azure 资源的托管标识提供一个[服务主体对象](../develop/developer
 
 如下所示的响应可能表示未正确配置 VM 的 Azure 资源的托管标识：
 
-- PowerShell：Invoke-WebRequest：无法连接到远程服务器
+- PowerShell：Invoke-WebRequest：  无法连接到远程服务器
 - CLI：MSI：*无法检索从令牌`http://localhost:50342/oauth2/token`出现错误 ' HTTPConnectionPool (主机 = 'localhost'，端口 = 50342)* 
 
 如果收到以下错误之一，请在 [Azure 门户](https://portal.azure.com)中返回到 Azure VM 并执行以下操作：
 
-- 转到“标识”页面，确保“系统分配的”已设置为“是”。
-- 转到“扩展”页面，确保已成功部署 Azure 资源扩展的托管标识（计划在 2019 年 1 月弃用）。
+- 转到“标识”页面，确保“系统分配的”已设置为“是”   。
+- 转到“扩展”页面，确保已成功部署 Azure 资源扩展的托管标识（计划在 2019 年 1 月弃用）   。
 
 如果有任何一项不正确，可能都需要在资源上再次重新部署 Azure 资源的托管标识，或排查部署故障。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)。
 

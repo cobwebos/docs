@@ -1,7 +1,6 @@
 ---
 title: 使用 Visual Studio 和 C# 的 Apache Storm 拓扑 - Azure HDInsight
 description: 了解如何用 C# 创建 Storm 拓扑。 在 Visual Studio 中使用针对 Visual Studio 的 Hadoop 工具创建简单的字数统计拓扑。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1bcb50829dca59f8a467c2c1d2381b5463ef9471
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 828ec2b925535df3f925093466556447e703cd76
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437388"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003825"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
 
@@ -29,7 +28,7 @@ ms.locfileid: "57437388"
 
 | HDInsight 版本 | Apache Storm 版本 | SCP.NET 版本 | 默认 Mono 版本 |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
-| 3.3 |0.10.x |0.10.x.x</br>（仅在基于 Windows 的 HDInsight 上） | NA |
+| 3.3 |0.10.x |0.10.x.x</br>（仅在基于 Windows 的 HDInsight 上） | 不可用 |
 | 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
 | 3.5 | 1.0.2.x | 1.0.0.x | 4.2.1 |
 | 3.6 | 1.1.0.x | 1.0.0.x | 4.2.8 |
@@ -136,7 +135,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
 
 2. 在“新建项目”窗口中，展开“已安装” > “模板”，然后选择“Azure Data Lake”。 从模板列表中，选择“Storm 应用程序”。 在屏幕底部，输入 WordCount 作为应用程序名称。
 
-    ![“新建项目”窗口的屏幕截图](./media/apache-storm-develop-csharp-visual-studio-topology/new-project.png)
+    ![“新建项目”窗口的屏幕截图](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
 3. 创建项目后，应有以下文件：
 
@@ -156,7 +155,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
 
    * **NextTuple**：允许 Spout 发出新的元组时由 Storm 调用。
 
-   * **Ack**（仅限事务拓扑）：针对从 Spout 发送的元组，处理拓扑中其他组件所发起的确认。 确认元组可让 Spout 知了解下游组件已成功处理元组。
+   * **Ack**（仅限事务拓扑）：处理由 spout 发送的元组的拓扑中的其他组件所发起的确认。 确认元组可让 Spout 知了解下游组件已成功处理元组。
 
    * **Fail**（仅限事务拓扑）：处理无法处理拓扑中其他组件的元组。 实现失败方法可以重新发出元组，以便可以再次处理。
 
@@ -339,7 +338,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
 
 Spout 和 Bolt 以图形方式排列，用于定义数据在组件之间的流动方式。 此拓扑的图形如下：
 
-![组件的排列方式关系图](./media/apache-storm-develop-csharp-visual-studio-topology/wordcount-topology.png)
+![组件的排列方式关系图](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
 
 句子从 Spout 发出，分布到 Splitter Bolt 的实例。 Splitter Bolt 将句子分割成多个单词，并将这些单词分布到 Counter Bolt。
 
@@ -433,7 +432,7 @@ return topologyBuilder;
 
 * **元数据缓存**：Spout 必须存储所发出数据的相关元数据，只有这样，才能在失败时重新检索和发出数据。 此示例所发出的数据较少，因此将每个元组的原始数据存储在字典中以便重播。
 
-* **Ack**：拓扑中的每个 Bolt 都可以调用 `this.ctx.Ack(tuple)` 来确认它已成功处理元组。 所有 bolt 都已都确认元组时,`Ack`会调用 spout 的方法。 `Ack` 方法可让 Spout 删除为重播缓存的数据。
+* **Ack**：拓扑中的每个 Bolt 都可以调用 `this.ctx.Ack(tuple)` 来确认它已成功处理元组。 所有 Bolt 都已确认 Tuple 之后，即会调用 Spout 的 `Ack` 方法。 `Ack` 方法可让 Spout 删除为重播缓存的数据。
 
 * **Fail**：每个 Bolt 都可以调用 `this.ctx.Fail(tuple)`，指出元组的处理失败。 这项失败会传播到 Spout 的 `Fail` 方法，在其中，可以使用缓存的元数据来重放 Tuple。
 
@@ -461,7 +460,6 @@ return topologyBuilder;
 
   > [!NOTE]  
   > 此版本还演示了如何使用文本文件中的 clojure 代码作为 Java 组件。
-
 
 若要切换在提交项目时使用的拓扑，请将 `[Active(true)]` 语句移到要在提交给群集之前使用的拓扑。
 
@@ -536,7 +534,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 > 如果项目是通过未使用 NuGet 的旧版 SCP.NET 创建的，则必须执行以下步骤以更新到更新版本：
 >
 > 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“管理 NuGet 包”。
-> 2. 使用“搜索”字段搜索 Microsoft.SCP.Net.SDK，然后将其添加到项目中。
+> 2. 使用“搜索”字段搜索Microsoft.SCP.Net.SDK，然后将其添加到项目中。
 
 ## <a name="troubleshoot-common-issues-with-topologies"></a>排查使用拓扑的常见问题
 
@@ -560,27 +558,27 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 ### <a name="test-a-topology-locally"></a>在本地测试拓扑
 
-虽然很容易就可以将拓扑部署到群集，但是，在某些情况下，可能需要在本地测试拓扑。 使用以下步骤，在开发环境上本地执行和测试本教程中的示例拓扑。
+虽然很容易就可以将拓扑部署到群集，但是，在某些情况下，可能需要在本地测试拓扑。 使用以下步骤在开发环境中本地运行和测试本文中的示例拓扑。
 
 > [!WARNING]  
 > 本地测试只适用于仅限 C# 的基本拓扑。 不能将本地测试用于混合拓扑或使用多个流的拓扑。
 
 1. 在“解决方案资源管理器”中，右键单击项目，并选择“属性”。 在项目属性中，将“输出类型”更改为“控制台应用程序”。
 
-    ![突出显示“输出类型”的项目属性屏幕截图](./media/apache-storm-develop-csharp-visual-studio-topology/outputtype.png)
+    ![突出显示“输出类型”的项目属性屏幕截图](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
    > 将拓扑部署到群集之前，请记得将“输出类型”改回“类库”。
 
-2. 在“解决方案资源管理器”中，右键单击项目，然后选择“添加” > “新建项”。 选择“类”，并输入 **LocalTest.cs** 作为类名。 最后，单击“添加”。
+1. 在“解决方案资源管理器”中，右键单击项目，然后选择“添加” > “新建项”。 选择“类”，并输入 **LocalTest.cs** 作为类名。 最后，单击“添加”。
 
-3. 打开 **LocalTest.cs**，在顶部添加以下 **using** 语句：
+1. 打开 **LocalTest.cs**，在顶部添加以下 **using** 语句：
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-4. 使用以下代码作为 **LocalTest** 类的内容：
+1. 使用以下代码作为 **LocalTest** 类的内容：
 
     ```csharp
     // Drives the topology components
@@ -682,9 +680,9 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
     Console.ReadKey();
     ```
 
-2. 保存更改，然后单击“F5”，或选择“调试” > “开始调试”以启动项目。 随后应会出现一个控制台窗口，并记录测试进行的状态。 出现“测试已完成”后，请按任意键关闭窗口。
+1. 保存更改，然后单击“F5”，或选择“调试” > “开始调试”以启动项目。 随后应会出现一个控制台窗口，并记录测试进行的状态。 出现“测试已完成”后，请按任意键关闭窗口。
 
-3. 使用“Windows 资源管理器”找到包含项目的目录。 例如：**C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**。 在此目录中打开 **Bin**，并单击“调试”。 应可看到运行测试时生成的文本文件：sentences.txt、counter.txt 和 splitter.txt。 打开每个文本文件并检查数据。
+1. 使用“Windows 资源管理器”找到包含项目的目录。 例如：**C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**。 在此目录中打开 **Bin**，并单击“调试”。 应可看到运行测试时生成的文本文件：sentences.txt、counter.txt 和 splitter.txt。 打开每个文本文件并检查数据。
 
    > [!NOTE]  
    > 字符串数据保存为这些文件中的十进制值数组。 例如，**splitter.txt** 文件中的 \[[97,103,111]] 是单词 *and*。
@@ -713,7 +711,7 @@ Context.Logger.Info("Component started");
 
 2. 对于 **Spout** 和 **Bolt**，“上一错误”列包含有关上次发生的错误的信息。
 
-3. 选择发生错误的组件的“Spout ID”或“Bolt ID”。 在显示的详细信息页面上，页面底部的“错误”部分中列出了其他错误信息。
+3. 为包含已列出错误的组件选择**SPOUT id**或**螺栓 id** 。 在显示的详细信息页面上，页面底部的“错误”部分中列出了其他错误信息。
 
 4. 若要获取详细信息，请从页面的“执行程序”部分中选择“端口”，查看最后几分钟的 Storm 工作进程日志。
 

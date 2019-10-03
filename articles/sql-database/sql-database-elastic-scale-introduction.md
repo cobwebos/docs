@@ -10,21 +10,20 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 9f61748a489987bf6c3f38e8ebfdab660198e10a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: e5ae56b2050243831f10863bbb4184a9e89f5911
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463015"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568399"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>扩大 Azure SQL 数据库
 可以使用**弹性数据库**工具轻松扩大 Azure SQL 数据库。 借助这些工具和功能，可以使用 Azure SQL 数据库中的数据库资源来为事务工作负荷，尤其是服务型软件 (SaaS) 应用程序创建解决方案。 弹性数据库包括：
 
 * [弹性数据库客户端库](sql-database-elastic-database-client-library.md)：客户端库是一项功能，可用于创建和维护分片数据库。  请参阅[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)。
 * [弹性数据库拆分/合并工具](sql-database-elastic-scale-overview-split-and-merge.md)：在分片数据库之间移动数据。 此工具对于将数据从多租户数据库移动到单租户数据库很有用（反之亦然）。 请参阅[弹性数据库拆分/合并工具教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。
-* [弹性数据库作业](sql-database-elastic-jobs-overview.md)（预览版）：使用作业来管理大量的 Azure SQL 数据库。 轻松执行管理操作，例如，使用作业更改架构、管理凭据、更新引用数据、收集性能数据，或收集租户（客户）遥测数据。
+* [弹性数据库作业](elastic-jobs-overview.md):使用作业来管理大量的 Azure SQL 数据库。 轻松执行管理操作，例如，使用作业更改架构、管理凭据、更新引用数据、收集性能数据，或收集租户（客户）遥测数据。
 * [弹性数据库查询](sql-database-elastic-query-overview.md)（预览版）：可跨多个数据库运行 Transact-SQL 查询。 这样，便可以连接到 Excel、Power BI、Tableau 等报表工具。
 * [弹性事务](sql-database-elastic-transactions-overview.md)：使用此功能可在 Azure SQL 数据库中跨多个数据库运行事务。 弹性数据库事务适用于使用 ADO .NET 的 .NET 应用程序，并且与熟悉的使用 [System.Transaction 类](https://msdn.microsoft.com/library/system.transactions.aspx)的编程体验相集成。
 
@@ -62,7 +61,7 @@ VM 和 blob 存储可以轻松实现云应用程序的弹性和缩放需求 - �
 大多数云规模的数据库应用程序都使用这两种策略的组合。 例如，软件即服务应用程序可能使用横向缩放来预配新的最终客户，并使用纵向缩放来允许每个最终客户的数据库根据工作负荷的需要扩展或缩减资源。
 
 * 可以使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)来管理水平缩放。
-* 可以通过使用 Azure PowerShell cmdlet 更改服务层或者通过将数据库放入弹性池中，来实现纵向缩放。
+* 可以通过使用 Azure PowerShell cmdlet 更改服务层级或者通过将数据库放入弹性池中，来实现纵向缩放。
 
 ## <a name="sharding"></a>分片
 分片是一项可跨许多独立数据库、分发大量相同结构数据的技术。 这项技术尤其受到最终客户或企业创建软件即服务 (SAAS) 产品的云开发人员的欢迎。 这些最终客户通常称为“租户”。 需要分片的原因有很多：  

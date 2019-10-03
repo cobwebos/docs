@@ -15,24 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: cc74bfe9bf9e5f33b7cf05ebb19b44ab8b3bea43
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 442ceab68851dc108d327cdf212dcf58d5b31084
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864637"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71008564"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件
-使用 Azure 事件中心，可以按指定的时间间隔或大小差异在所选的 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) 帐户中自动捕获事件中心的流式处理数据。 设置捕获极其简单，无需管理费用即可运行它，并且可以使用事件中心[吞吐量单位](event-hubs-features.md#throughput-units)自动进行缩放。 事件中心捕获是在 Azure 中加载流式处理数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
+使用 Azure 事件中心，可以按指定的时间间隔或大小差异在所选的 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) 帐户中自动捕获事件中心的流式处理数据。 设置捕获极其简单，无需管理费用即可运行它，并且可以使用事件中心[吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 事件中心捕获是在 Azure 中加载流式处理数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
 
 事件中心捕获可让用户在同一个流上处理实时和基于批处理的管道。 这意味着可以构建随着时间的推移随用户的需要增长的解决方案。 无论用户现在正在构建基于批处理的系统并着眼于将来进行实时处理，还是要将高效的冷路径添加到现有的实时解决方案，事件中心捕获都可以使流式处理数据处理更加简单。
 
-> [!NOTE]
-> 目前，事件中心捕获功能支持仅 Gen 1 的 Azure Data Lake Store，不第 2 代。 
-
 ## <a name="how-event-hubs-capture-works"></a>Azure 事件中心捕获的工作原理
 
-事件中心是遥测数据入口的时间保留持久缓冲区，类似于分布式日志。 缩小事件中心的关键在于[分区使用者模式](event-hubs-features.md#partitions)。 每个分区是独立的数据段，并单独使用。 根据可配置的保留期，随着时间的推移此数据会过时。 因此，给定的事件中心永远不会装得“太满”。
+事件中心是遥测数据入口的时间保留持久缓冲区，类似于分布式日志。 缩小事件中心的关键在于[分区使用者模式](event-hubs-scalability.md#partitions)。 每个分区是独立的数据段，并单独使用。 根据可配置的保留期，随着时间的推移此数据会过时。 因此，给定的事件中心永远不会装得“太满”。
 
 使用事件中心捕获，用户可以指定自己的 Azure Blob 存储帐户和容器或 Azure Data Lake Store（用于存储已捕获数据）。 这些帐户可以与事件中心在同一区域中，也可以在另一个区域中，从而增加了事件中心捕获功能的灵活性。
 
@@ -52,9 +49,11 @@ ms.locfileid: "57864637"
 https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhub/0/2017/12/08/03/03/17.avro
 ```
 
+如果 Azure 存储 blob 暂时不可用，事件中心捕获将在事件中心上配置的数据保留期内保留数据，并在存储帐户再次可用后重新填充数据。
+
 ### <a name="scaling-to-throughput-units"></a>缩放到吞吐量单位
 
-事件中心流量由[吞吐量单位](event-hubs-features.md#throughput-units)控制。 单个吞吐量单位允许 1 MB/秒或 1000 个事件/秒的入口量以及两倍的出口量。 标准事件中心可以配置 1 到 20 个吞吐量单位，可以使用增加配额[支持请求][support request]来购买更多吞吐量单位。 使用在超出购买的吞吐量单位时会受到限制。 事件中心捕获直接从内部事件中心存储复制数据，从而绕过吞吐量单位出口配额，为流分析或 Spark 等其他处理读取器节省了出口量。
+事件中心流量由[吞吐量单位](event-hubs-scalability.md#throughput-units)控制。 单个吞吐量单位允许 1 MB/秒或 1000 个入口事件/秒（是出口事件量的两倍）。 标准事件中心可以配置 1 到 20 个吞吐量单位，可以使用增加配额[支持请求][support request]来购买更多吞吐量单位。 使用在超出购买的吞吐量单位时会受到限制。 事件中心捕获直接从内部事件中心存储复制数据，从而绕过吞吐量单位出口配额，为流分析或 Spark 等其他处理读取器节省了出口量。
 
 配置后，用户发送第一个事件时，事件中心捕获会自动运行，并持续保持运行状态。 为了让下游处理更便于了解该进程正在运行，事件中心会在没有数据时写入空文件。 此进程提供了可预测的频率以及可以供给批处理处理器的标记。
 
@@ -74,7 +73,7 @@ https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhu
 
 ![Avro 架构][3]
 
-浏览 Avro 文件的简单方法是使用 Apache 中的 [Avro 工具][Avro Tools] jar。 还可以使用 [Apache Drill][Apache Drill] 实现轻量级 SQL 驱动的体验或者使用 [Apache Spark][Apache Spark] 对引入的数据执行复杂的分布式处理。 
+浏览 Avro 文件的简单方法是使用 Apache 中的 [Avro 工具][Avro Tools] jar。 你还可以使用[Apache 钻取][Apache Drill]轻型 SQL 驱动的体验或[Apache Spark][Apache Spark]来对引入数据执行复杂的分布式处理。 
 
 ### <a name="use-apache-drill"></a>使用 Apache Drill
 
@@ -101,10 +100,10 @@ https://github.com/yorek/apache-drill-azure-blob
 
 ### <a name="use-avro-tools"></a>使用 Avro 工具
 
-[Avro 工具][Avro Tools]是作为 jar 程序包提供的。 下载此 jar 文件后，可以运行以下命令来查看特定 Avro 文件的架构：
+[Avro 工具][Avro Tools]以 jar 包的形式提供。 下载此 jar 文件后，可以运行以下命令来查看特定 Avro 文件的架构：
 
 ```shell
-java -jar avro-tools-1.8.2.jar getschema <name of capture file>
+java -jar avro-tools-1.9.1.jar getschema <name of capture file>
 ```
 
 此命令返回
@@ -136,6 +135,8 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 
 事件中心捕获的计量方式与吞吐量单位类似：按小时收费。 费用直接与为命名空间购买的吞吐量单位数成正比。 随着吞吐量单位增加和减少，事件中心捕获计量也相应地增加和减少以提供匹配的性能。 相继进行计量。 有关定价的详细信息，请参见[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。 
 
+请注意，捕获不会消耗出口配额，因为它是单独计费的。 
+
 ## <a name="integration-with-event-grid"></a>事件网格集成 
 
 可以创建 Azure 事件网格订阅，其中事件中心命名空间作为其源。 以下教程介绍如何创建事件网格订阅，其中事件中心作为源，Azure Functions 应用作为接收器：[使用事件网格和 Azure Functions 处理捕获的事件中心数据并将其迁移到 SQL 数据仓库](store-captured-data-data-warehouse.md)。
@@ -155,11 +156,11 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
-[Avro Tools]: https://www-us.apache.org/dist/avro/avro-1.8.2/java/avro-tools-1.8.2.jar
+[Avro Tools]: https://www.apache.org/dist/avro/stable/java/avro-tools-1.9.1.jar
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage#address-files-in-azure-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
-[大规模流式处理：事件中心捕获]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture
+[大规模流式处理：事件中心捕获]: https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

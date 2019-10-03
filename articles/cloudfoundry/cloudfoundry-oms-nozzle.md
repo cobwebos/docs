@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111457"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60199391"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry 系统
 
@@ -60,15 +60,15 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 #### <a name="to-create-the-workspace-manually"></a>手动创建工作区：
 
 1. 在 Azure 门户中，在 Azure Marketplace 中搜索的服务列表，然后选择 Log Analytics 工作区。
-2. 选择“创建”，然后为以下各项选择选项：
+2. 选择“创建”  ，然后为以下各项选择选项：
 
    * **Log Analytics 工作区**：键入工作区的名称。
    * **订阅**：如果有多个订阅，请选择与 CF 部署相同的订阅。
    * **资源组**：可以新建资源组，也可以使用与 CF 部署相同的资源组。
    * **位置**：输入位置。
-   * **定价层**：选择“确定”完成相关操作。
+   * **定价层**：选择“确定”完成相关操作  。
 
-有关详细信息，请参阅[开始使用 Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)。
+有关详细信息，请参阅 [Azure Monitor 日志入门](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)。
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>若要通过 Azure 市场中的监测模板创建 Log Analytics 工作区：
 
@@ -184,11 +184,11 @@ cf apps
 
 ### <a name="1-import-the-oms-view"></a>1.导入 OMS 视图
 
-在 OMS 门户中，浏览到“视图设计器” > “导入” > “浏览”，选择一个 omsview 文件。 例如，选择“Cloud Foundry.omsview”，并保存该视图。 此时，“概述”页上会显示一个磁贴。 选择此磁贴可查看可视化的指标。
+在 OMS 门户中，浏览到“视图设计器” > “导入” > “浏览”，选择一个 omsview 文件。    例如，选择“Cloud Foundry.omsview”，并保存该视图。  此时，“概述”页上会显示一个磁贴  。 选择此磁贴可查看可视化的指标。
 
-可以通过“视图设计器”自定义这些视图或新建视图。
+可以通过“视图设计器”  自定义这些视图或新建视图。
 
-“Cloud Foundry.omsview”是预览版的 Cloud Foundry OMS 视图模板。 这是一个完全配置的默认模板。 如有模板相关的建议或反馈，请在[问题部分](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues)中发送。
+“Cloud Foundry.omsview”是预览版的 Cloud Foundry OMS 视图模板。  这是一个完全配置的默认模板。 如有模板相关的建议或反馈，请在[问题部分](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues)中发送。
 
 ### <a name="2-create-alert-rules"></a>2.创建警报规则
 
@@ -227,7 +227,7 @@ Loggregator 发送 **LGR** 日志消息，指示日志记录进程存在的问�
 ### <a name="remove-the-nozzle-from-ops-manager"></a>通过 Ops Manager 删除 Nozzle
 
 1. 登录到 Ops Manager
-2. 找到“适用于 PCF 的 Microsoft Azure Log Analytics Nozzle”磁贴。
+2. 找到“适用于 PCF 的 Microsoft Azure Log Analytics Nozzle”磁贴。 
 3. 选择垃圾桶图标并确认删除。
 
 ### <a name="remove-the-nozzle-from-your-development-computer"></a>通过开发计算机删除 Nozzle

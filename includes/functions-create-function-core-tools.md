@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 10/20/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 26789a12053fa6275b09836e706c391e181c8efd
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 83f3def8f4972f35df25dc98f4b818e703801d2e
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429918"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949986"
 ---
 ## <a name="create-a-function"></a>创建函数
 
 以下命令创建一个名为 `MyHttpTrigger` 的 HTTP 触发的函数。
 
-```bash
+```command
 func new --name MyHttpTrigger --template "HttpTrigger"
 ```
 

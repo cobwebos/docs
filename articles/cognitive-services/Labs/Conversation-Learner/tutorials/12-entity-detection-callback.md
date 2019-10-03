@@ -3,19 +3,20 @@ title: 如何通过对话学习器实体使用实体检测回调 - Microsoft 认
 titleSuffix: Azure
 description: 了解如何通过对话学习器模型使用实体检测回调。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 576dc6bd44360f73c4133907233e59e5f51837b1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3f6094da7b103f1c99e9bb3fa9313354fcb2a8bc
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212515"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703989"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>如何使用实体检测回调
 
@@ -33,7 +34,7 @@ ms.locfileid: "55212515"
 ## <a name="details"></a>详细信息
 使用实体检测回调，可以通过代码修改实体识别行为以及对实体进行操作。 我们将通过完整介绍一个典型的实体检测回调设计模式来展示此功能。 例如，将“大苹果”解析为“纽约”。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 ### <a name="create-the-model"></a>创建模型
 

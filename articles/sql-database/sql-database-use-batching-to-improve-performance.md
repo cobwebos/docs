@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: e76b5ecd3d6401c317f6500ec376fc25d3fa55b8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3d18f5b77d08a55bd06656a72cbc02c040b6f127
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997690"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566245"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>如何使用批处理来改善 SQL 数据库应用程序的性能
 
@@ -42,7 +41,7 @@ ms.locfileid: "57997690"
 ### <a name="note-about-timing-results-in-this-article"></a>请注意本文中的执行时间结果
 
 > [!NOTE]
-> 结果并不是基准，而是用于显示**相对性能**。 计时基于至少运行 10 次测试后的平均值。 操作将插入空表。 这些测试会在 V12 以前的版本中测量，不一定对应于在使用新 [DTU 服务层](sql-database-service-tiers-dtu.md)或 [vCore 服务层](sql-database-service-tiers-vcore.md)的 V12 数据库中可能获得的吞吐量。 批处理技术的相对优势应该类似。
+> 结果并不是基准，而是用于显示**相对性能**。 计时基于至少运行 10 次测试后的平均值。 操作将插入空表。 这些测试会在 V12 以前的版本中测量，不一定对应于在使用新 [DTU 服务层级](sql-database-service-tiers-dtu.md)或 [vCore 服务层级](sql-database-service-tiers-vcore.md)的 V12 数据库中可能获得的吞吐量。 批处理技术的相对优势应该类似。
 
 ### <a name="transactions"></a>事务
 
@@ -94,22 +93,22 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 事务实际在这两个示例中都用到了。 在第一个示例中，每个单个调用就是一个隐式事务。 在第二个示例中，用一个显式事务包装了所有调用。 按照[预写事务日志](https://msdn.microsoft.com/library/ms186259.aspx)的文档中所述，在事务提交时将日志记录刷新到磁盘。 因此通过在事务中包含更多调用，写入事务日志可能延迟，直到提交事务。 实际上，正在为写入服务器的事务日志启用批处理。
 
-下表显示一些即席测试结果。 这些测试执行具有事务和不具有事务的相同的顺序插入。 为了更具对比性，第一组测试是从笔记本电脑针对 Microsoft Azure 中的数据库远程运行的。 第二组测试是从位于同一 Microsoft Azure 数据中心（美国西部）内的云服务和数据库运行的。 下表显示具有和不具有事务的一系列顺序插入所用的时间（毫秒）。
+下表显示了一些即席测试结果。 这些测试执行具有事务和不具有事务的相同的顺序插入。 为了更具对比性，第一组测试是从笔记本电脑针对 Microsoft Azure 中的数据库远程运行的。 第二组测试是从位于同一 Microsoft Azure 数据中心（美国西部）内的云服务和数据库运行的。 下表显示具有和不具有事务的一系列顺序插入所用的时间（毫秒）。
 
 **本地到 Azure**：
 
 | 操作 | 无事务（毫秒） | 事务（毫秒） |
 | --- | --- | --- |
-| 第 |130 |402 |
+| 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure 到 Azure（同一数据中心）**：
+**Azure 到 Azure（同一数据中心）** ：
 
 | 操作 | 无事务（毫秒） | 事务（毫秒） |
 | --- | --- | --- |
-| 第 |21 |26 |
+| 1 |21 |26 |
 | 10 |220 |56 |
 | 100 |2145 |341 |
 | 1000 |21479 |2756 |
@@ -168,7 +167,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-在上一示例中， **SqlCommand**对象将行插入表值参数 **\@TestTvp**。 使用 **SqlCommand.Parameters.Add** 方法以前创建的 **DataTable** 对象分配到此参数。 对一个调用中的插入进行批处理将显著提高顺序插入的性能。
+在前一示例中，**SqlCommand** 对象从表值参数 **\@TestTvp** 插入行。 使用 **SqlCommand.Parameters.Add** 方法以前创建的 **DataTable** 对象分配到此参数。 对一个调用中的插入进行批处理将显著提高顺序插入的性能。
 
 若要进一步改进前一个示例，请使用存储过程来替代基于文本的命令。 以下 Transact-SQL 命令创建一个采用 **SimpleTestTableType** 表值参数的存储过程。
 
@@ -192,11 +191,11 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 在大多数情况下，表值参数具有与其他批处理方法等效或更高的性能。 人们通常使用表值参数，因为它们比其他选项更灵活。 例如，其他方法（如 SQL 大容量复制）仅允许插入新行。 但是使用表值参数，可以在存储过程中使用逻辑来决定更新哪些行和插入哪些行。 还可以修改表类型来包含“操作”列，该列指示指定的行应插入、更新还是删除。
 
-下表显示使用表值参数的即席测试结果以毫秒为单位。
+下表显示使用表值参数的即席测试结果（毫秒）。
 
 | 操作 | 本地到 Azure（毫秒） | 同一 Azure 数据中心（毫秒） |
 | --- | --- | --- |
-| 第 |124 |32 |
+| 1 |124 |32 |
 | 10 |131 |25 |
 | 100 |338 |51 |
 | 1000 |2615 |382 |
@@ -232,11 +231,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 在某些情况下，批量复制的效果好于表值参数。 请参阅文章[表值参数](https://msdn.microsoft.com/library/bb510489.aspx)中“表值参数与 BULK INSERT 操作的对比表”。
 
-以下即席测试结果显示的批处理性能**SqlBulkCopy**以毫秒为单位。
+以下即席测试结果显示具有 **SqlBulkCopy** 的批处理性能（毫秒）。
 
 | 操作 | 本地到 Azure（毫秒） | 同一 Azure 数据中心（毫秒） |
 | --- | --- | --- |
-| 第 |433 |57 |
+| 1 |433 |57 |
 | 10 |441 |32 |
 | 100 |636 |53 |
 | 1000 |2535 |341 |
@@ -277,11 +276,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 此示例用于演示基本概念。 一个更现实的方案是对所需的实体执行循环，以同时构造查询字符串和命令参数。 最多可使用 2100 个查询参数，因此这限制了可以此方式处理的总行数。
 
-以下即席测试结果以毫秒为单位显示此类型的 insert 语句的性能。
+以下即席测试结果显示此类插入语句的性能（毫秒）。
 
 | 操作 | 表值参数（毫秒） | 单语句 INSERT（毫秒） |
 | --- | --- | --- |
-| 第 |32 |20 |
+| 1 |32 |20 |
 | 10 |30 |25 |
 | 100 |33 |51 |
 
@@ -328,7 +327,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 | 批大小 | 迭代 | 表值参数（毫秒） |
 | --- | --- | --- |
-| 1000 |第 |347 |
+| 1000 |1 |347 |
 | 500 |2 |355 |
 | 100 |10 |465 |
 | 50 |20 |630 |

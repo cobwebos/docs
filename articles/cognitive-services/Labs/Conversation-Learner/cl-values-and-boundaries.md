@@ -3,19 +3,20 @@ title: 对话学习器默认配置 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
 description: 了解默认对话学习器配置。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 8050008bbae4a23f09b5fa94874a6315e798b448
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: aaef6f5498e5a8da65d1c829feae8b3e85dba0fd
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211281"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705296"
 ---
 # <a name="default-values-and-boundaries"></a>默认值和边界
 

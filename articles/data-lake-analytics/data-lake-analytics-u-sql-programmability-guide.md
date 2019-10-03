@@ -10,11 +10,11 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489650"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60811597"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可编程性指南
 
@@ -1067,11 +1067,11 @@ U-SQL 可让你定义自定义可编程性对象，此类对象称为用户定�
 ## <a name="use-user-defined-extractors"></a>使用用户定义的提取器
 U-SQL 允许通过使用 EXTRACT 语句导入外部数据。 EXTRACT 语句可以使用内置 UDO 提取器：  
 
-* *Extractors.Text()*：提供从不同编码的带分隔符的文本文件中进行的提取。
+* *Extractors.Text()* ：提供从不同编码的带分隔符的文本文件中进行的提取。
 
-* *Extractors.Csv()*：提供从不同编码的逗号分隔值 (CSV) 文件中进行的提取。
+* *Extractors.Csv()* ：提供从不同编码的逗号分隔值 (CSV) 文件中进行的提取。
 
-* *Extractors.Tsv()*：提供从不同编码的制表符分隔值 (TSV) 文件中进行的提取。
+* *Extractors.Tsv()* ：提供从不同编码的制表符分隔值 (TSV) 文件中进行的提取。
 
 它可用于开发自定义提取器。 可在数据导入期间借助此语句执行以下任何任务：
 
@@ -1102,7 +1102,7 @@ SqlUserDefinedExtractor 是 UDE 定义的可选特性。 用于定义 UDE 对象
 * **true** = 指示此提取器需要原子输入文件（JSON、XML 等）
 * **false** = 指示此提取器可以处理拆分文件/分布式文件（CSV、SEQ 等）
 
-主要 UDE 可编程性对象包括输入和输出。 输入对象用于将输入数据枚举为 `IUnstructuredReader`。 输出对象用于将输出数据设置为提取器活动的结果。
+主要 UDE 可编程性对象包括输入  和输出  。 输入对象用于将输入数据枚举为 `IUnstructuredReader`。 输出对象用于将输出数据设置为提取器活动的结果。
 
 可通过 `System.IO.Stream` 和 `System.IO.StreamReader` 访问输入数据。
 
@@ -1219,9 +1219,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>使用用户定义的输出器
 用户定义的输出器是另一种 U-SQL UDO，允许扩展内置 U-SQL 功能。 与提取程序类似，内置输出器也有几种。
 
-* *Outputters.Text()*：将数据写入不同编码的带分隔符的文本文件中。
-* *Outputters.Csv()*：将数据写入不同编码的逗号分隔值 (CSV) 文件中。
-* *Outputters.Tsv()*：将数据写入不同编码的制表符分隔值 (CSV) 文件中。
+* *Outputters.Text()* ：将数据写入不同编码的带分隔符的文本文件中。
+* *Outputters.Csv()* ：将数据写入不同编码的逗号分隔值 (CSV) 文件中。
+* *Outputters.Tsv()* ：将数据写入不同编码的制表符分隔值 (CSV) 文件中。
 
 自定义输出器允许以自定义格式编写数据。 这有助于完成以下任务：
 
@@ -1280,7 +1280,7 @@ SqlUserDefinedOutputter 是用户定义的输出器定义的可选属性。 用�
 * **true** = 指示此输出器需要原子输出文件（JSON、XML 等）
 * **false** = 指示此输出器可以处理拆分文件/分布式文件（CSV、SEQ 等）
 
-主要可编程性对象是行和输出。 **row** 对象用于将输出数据枚举为 `IRow` 接口。 **Output** 用于将输出数据设置为目标文件。
+主要可编程性对象是行  和输出  。 **row** 对象用于将输出数据枚举为 `IRow` 接口。 **Output** 用于将输出数据设置为目标文件。
 
 可通过 `IRow` 接口访问输出数据。 一次将输出数据传递到一行。
 
@@ -1518,7 +1518,7 @@ public override IRow Process(IRow input, IUpdatableRow output)
 
 SqlUserDefinedProcessor 属性对于 UDP 定义是**可选**的。
 
-主要可编程性对象是输入和输出。 输入对象用于枚举输入列，输出对象用于将输出数据设置为处理器活动的结果。
+主要可编程性对象是输入  和输出  。 输入对象用于枚举输入列，输出对象用于将输出数据设置为处理器活动的结果。
 
 对于输入列枚举，此处使用 `input.Get` 方法。
 
@@ -1873,7 +1873,7 @@ CombinerMode 枚举可采用以下值：
         IUpdatableRow output
 ```
 
-输入行集作为左侧和右侧 `IRowset` 类型的接口进行传递。 必须同时枚举这两个行集以进行处理。 由于只能枚举每个接口一次，因此必须在必要时对其进行枚举和缓存。
+输入行集作为左侧  和右侧  `IRowset` 类型的接口进行传递。 必须同时枚举这两个行集以进行处理。 由于只能枚举每个接口一次，因此必须在必要时对其进行枚举和缓存。
 
 为进行缓存，可创建 List\<T\> 类型的内存结构，作为 LINQ 查询执行的结果，具体而言就是 List<`IRow`>。 还可在枚举期间使用匿名数据类型。
 
@@ -2113,7 +2113,7 @@ public class EmptyUserReducer : IReducer
 * bool     IsRecursive    
 * **true** = 指示此化简器是否关联和可交换
 
-主要可编程性对象是输入和输出。 input 对象用于枚举输入行。 Output 用于将输出行设置为化简活动的结果。
+主要可编程性对象是输入  和输出  。 input 对象用于枚举输入行。 Output 用于将输出行设置为化简活动的结果。
 
 对于输入行枚举，需使用 `Row.Get` 方法。
 

@@ -1,41 +1,41 @@
 ---
-title: 与 Azure 逻辑应用的企业集成 | Microsoft Docs
-description: 本概述文章介绍如何生成企业基础解决方案，方法是：通过自动完成任务、工作流和业务流程，跨企业和组织集成应用、数据、服务和系统。 创建适用于数据集成、系统集成、企业应用程序集成 (EAI) 和业务流程方案的解决方案。
+title: 企业与 Azure 逻辑应用的集成
+description: 有关如何通过自动执行和协调跨企业和组织集成应用、数据、服务和系统的任务、工作流和业务流程来构建企业集成解决方案的概述。 创建适用于数据集成、系统集成、企业应用程序集成 (EAI) 和业务流程方案的解决方案。
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+manager: carmonm
+ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 6/29/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d9f3bb33ab0638fddfcf64e61642c236a03d6293
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f25ade0e984c98b9cbc8c4efa93f300c3ed93b14
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065255"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385481"
 ---
 # <a name="what-is-azure-logic-apps"></a>什么是 Azure 逻辑应用？
 
-[Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps)是一项云服务，用于在需要跨企业或组织集成应用、数据、系统和服务时自动执行和协调任务、业务流程和[工作流](#logic-app-concepts)。 逻辑应用可简化可缩放解决方案的设计和生成方式，适用于应用[集成](https://azure.microsoft.com/product-categories/integration/)、数据集成、系统集成、企业应用程序集成 (EAI) 和企业到企业 (B2B) 通信，不管是在云中还是在本地。
+[Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps)是一项云服务，用于在需要跨企业或组织集成应用、数据、系统和服务时计划、自动执行和协调任务、业务流程和[工作流](#logic-app-concepts)。 逻辑应用可简化可缩放解决方案的设计和生成方式，适用于应用[集成](https://azure.microsoft.com/product-categories/integration/)、数据集成、系统集成、企业应用程序集成 (EAI) 和企业到企业 (B2B) 通信，不管是在云中还是在本地。
 
 例如，下面就是一些可以通过逻辑应用自动完成的工作负荷：
 
 * 跨本地系统和云服务处理并路由订单。
-* 当各种系统、应用和服务中发生事件时，使用 Office 365 发送电子邮件通知。
+* 当各种系统、应用和服务中发生活动时，使用 Office 365 发送电子邮件通知。
 * 将上传的文件从 SFTP 或 FTP 服务器移至 Azure 存储。 
 * 监视推文中的特定主题，分析观点，针对需要查看的项目创建警报或任务。
 
-若要使用 Azure 逻辑应用生成企业集成解决方案，可以从一个不断扩充的库中进行选择。该库包含 [200 多个连接器](../connectors/apis-list.md)，包括各种服务，例如 Azure 服务总线、Functions、存储；SQL、Office 365、Dynamics、Salesforce、BizTalk、SAP、Oracle DB、文件共享，等等。 [连接器](#logic-app-concepts)提供[触发器](#logic-app-concepts)和/或[操作](#logic-app-concepts)，所创建的逻辑应用可以安全地对数据进行实时访问和处理。
+若要使用 Azure 逻辑应用生成企业集成解决方案，可以从一个不断扩充的库中进行选择。该库包含[上百个可使用的连接器](../connectors/apis-list.md)，包括各种服务，例如 Azure 服务总线、Functions 和存储；SQL、Office 365、Dynamics、Salesforce、BizTalk、SAP、Oracle DB、文件共享等。 [连接器](#logic-app-concepts)提供[触发器](#logic-app-concepts)和/或[操作](#logic-app-concepts)，所创建的逻辑应用可以安全地对数据进行实时访问和处理。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
 ## <a name="how-does-logic-apps-work"></a>逻辑应用的工作原理 
 
-每个逻辑应用工作流都从触发器开始，在发生特定事件或新的可用数据符合特定条件的情况下触发。 许多触发器包括基本的计划功能，用于指定工作负荷的运行频率。 若要获取更多自定义计划方案，请使用计划触发器启动工作流。 详细了解[如何生成基于计划的工作流](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)。
+每个逻辑应用工作流都从触发器开始，在发生特定事件或新的可用数据符合特定条件的情况下触发。 逻辑应用中的连接器提供的许多触发器都包含基本的计划功能，方便你设置工作负荷的运行频率。 对于更复杂的计划或高级重复周期，你可以使用重复触发器作为任何工作流的第一步。 详细了解[基于计划的工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
 
 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例来运行工作流中的操作。 这些操作也可包括数据转换和流控制，如条件语句、开关语句、循环和分支。 例如，以下逻辑应用通过 Dynamics 365 触发器启动，带有内置的条件“当更新记录时”。 触发器在检测到与此条件匹配的事件时，会触发并运行工作流的操作。 在这里，这些操作包括 XML 转换、数据更新、决策分支和电子邮件通知。
 
@@ -96,7 +96,7 @@ ms.locfileid: "54065255"
 
 ### <a name="write-once-reuse-often"></a>编写一次即可多次重复使用
 
-将逻辑应用作为模板创建，然后即可跨多个环境和区域[部署和重新配置应用](../logic-apps/logic-apps-create-deploy-template.md)。
+将逻辑应用创建为 Azure 资源管理器模板，以便可以跨多个环境和区域[自动执行逻辑应用部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
 
 ### <a name="built-in-extensibility"></a>内置的扩展性
 
@@ -132,14 +132,9 @@ ms.locfileid: "54065255"
 
 ## <a name="get-started"></a>入门 
 
-逻辑应用是托管在 Microsoft Azure 上的许多服务之一。 因此在开始之前，你需要一个 Azure 订阅。 如果没有订阅，可以<a href="https://azure.microsoft.com/free/" target="_blank">注册免费的 Azure 帐户</a>。 
+逻辑应用是托管在 Microsoft Azure 上的许多服务之一。 因此在开始之前，你需要一个 Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 如果有 Azure 订阅，可以尝试此[创建第一个逻辑应用的快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)。该逻辑应用通过 RSS 源监视网站上的新内容，在新内容出现时发送电子邮件。
-
-## <a name="support-and-feedback"></a>支持和反馈
-
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

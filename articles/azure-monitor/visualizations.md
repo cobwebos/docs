@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 4e9bb9bd86e22efa5dd514e742481911b09c5e17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 6390384220830d473b56f4082a98dfaa8aa686d1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796040"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984192"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -32,11 +32,11 @@ ms.locfileid: "59796040"
 ![仪表板](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>优点
-- 深度集成到 Azure 中。 可视化效果可以从多个包括指标资源管理器、 Log Analytics 和 Application Insights 的 Azure 页面固定到仪表板。
+- 深度集成到 Azure 中。 可视化效果可以固定到多个 Azure 页面的仪表板，包括指标资源管理器、Log Analytics 和 Application Insights。
 - 支持指标和日志。
-- 合并来自多个源包括来自输出的数据[指标资源管理器](platform/metrics-charts.md)，[记录查询](log-query/log-query-overview.md)，并[映射](app/app-map.md)和 Application Insights 中的可用性。
+- 合并来自多个源的数据，包括[指标资源管理器](platform/metrics-charts.md)、[日志查询](log-query/log-query-overview.md)以及 Application Insights 中的[映射](app/app-map.md)和可用性的输出。
 - 包含个人或共享仪表板的选项。 与 Azure [基于角色的身份验证 (RBAC)](../role-based-access-control/overview.md) 集成。
-- 自动刷新。 指标刷新的时间范围至少为 5 分钟。 日志以 1 分钟为间隔刷新。
+- 自动刷新。 指标刷新的时间范围至少为 5 分钟。 日志每小时刷新一次，并通过单击给定视觉对象上的 "刷新" 图标或通过刷新整个仪表板，按需手动刷新选项。
 - 带有时间戳和自定义参数的参数化指标仪表板。
 - 灵活的布局选项。
 - 全屏模式。
@@ -53,7 +53,7 @@ ms.locfileid: "59796040"
 ## <a name="azure-monitor-views"></a>Azure Monitor 视图
 借助 [Azure Monitor 中的视图](platform/view-designer.md)，可以使用日志数据创建自定义可视化效果。 它们由[监视解决方案](insights/solutions.md)用于呈现所收集的数据。
 
-![查看](media/visualizations/view.png)
+![视图](media/visualizations/view.png)
 
 ### <a name="advantages"></a>优点
 - 为日志数据提供了丰富的可视化效果。
@@ -140,7 +140,7 @@ ms.locfileid: "59796040"
 - 了解[由 Azure Monitor 收集的数据](platform/data-platform.md)。
 - 了解 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
 - 了解 [Azure Monitor 中的视图](platform/view-designer.md)。
-- 了解如何[工作簿](../azure-monitor/app/usage-workbooks.md)。
+- 了解[工作簿](../azure-monitor/app/usage-workbooks.md)。
 - 了解如何[将日志数据导入 Power BI](../azure-monitor/platform/powerbi.md)。
 - 了解 [Grafana Azure Monitor 数据源插件](../azure-monitor/platform/grafana-plugin.md)。
 

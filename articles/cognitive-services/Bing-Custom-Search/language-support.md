@@ -3,31 +3,31 @@ title: 语言支持 - 必应自定义搜索 API
 titleSuffix: Azure Cognitive Services
 description: 必应自定义搜索 API 支持的语言和区域列表。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: v-gedod
-ms.openlocfilehash: e395fc96c560c6c6c1671e472840ba0f2a316d98
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006771"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66388565"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>必应自定义搜索 API 的语言和区域支持
 
 必应自定义搜索 API 支持超过 36 个国家/地区，其中很多具有多种语言。
 
-尽管是可选的，但请求应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#mkt) 查询参数，它确定你希望结果源自其中的市场。 对于可选查询参数列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)
+尽管是可选的，但请求应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) 查询参数，它确定你希望结果源自其中的市场。 对于可选查询参数列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
 
-可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言。
+可以使用 `cc` 查询参数指定国家/地区。 如果指定了国家/地区，还必须使用 `Accept-Language` 标头指定一个或多个语言代码。 支持的语言因国家/地区而异；“市场”表中提供了每个国家/地区适用的语言  。
 
-`Accept-Language` 标头和 `setLang` 查询参数相互排斥，不可同时指定两者。 有关详细信息，请参阅 [Accept-language](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage)。
+`Accept-Language` 标头和 `setLang` 查询参数相互排斥，不可同时指定两者。 有关详细信息，请参阅 [Accept-language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage)。
 
-## <a name="countries"></a>国家/地区
+## <a name="countriesregions"></a>国家/地区
 
 |国家/地区|代码|
 |-------|----|

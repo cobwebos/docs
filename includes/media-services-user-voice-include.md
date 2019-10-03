@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 5c7686d8501baf17a63a5317f0d136adb6ac7812
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: HT
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52269000"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014687"
 ---
 使用 [用户之声](https://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) 论坛提供反馈意见，并提出有关如何改进 Azure 媒体服务的建议。 还可以直接转到以下类别之一：
 

@@ -1,7 +1,6 @@
 ---
 title: 使数据分析管道可操作化 - Azure
 description: 设置和运行由新数据触发的示例数据管道并生成简明结果。
-services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: b5e7864eae56a6f066590191373d35cb57693f37
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 122840614aede3ee112f8fd68cf6dabfa91fa225
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311673"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105517"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使数据分析管道可操作化
 
@@ -26,15 +25,15 @@ ms.locfileid: "58311673"
 
 | 年 | 月 | DAY_OF_MONTH | 承运商 |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2017 | 第 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
-| 2017 | 第 | 3 | AS | 9.435449 | 5.482143 | 572289 |
-| 2017 | 第 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
+| 2017 | 1 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
+| 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
+| 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
 示例管道等待一个新时间段的航班数据到达，然后将详细航班信息存储到 Apache Hive 数据仓库，用于长期分析。 管道还创建一个较小的数据集，用于汇总每日航班数据。 此每日航班汇总数据发送到 SQL 数据库，为网站等提供报表。
 
 下图展示了此示例管道。
 
-![航班数据管道](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
+![HDI 航班示例数据管道概述](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
 
 ## <a name="apache-oozie-solution-overview"></a>Apache Oozie 解决方案概述
 
@@ -44,7 +43,7 @@ Oozie 根据操作、工作流和协调器对管道进行描述。 操作决定�
 
 下图展示此示例 Oozie 管道的高级设计。
 
-![Oozie 航班数据管道](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+![Oozie 航班示例数据管道](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
 
 ### <a name="provision-azure-resources"></a>预配 Azure 资源
 
@@ -56,23 +55,23 @@ Oozie 根据操作、工作流和协调器对管道进行描述。 操作决定�
 2. 在此 `oozie` 资源组中，预配置 Azure SQL Server 和数据库。 不需要大于 S1 标准定价层的数据库。
 3. 使用 Azure 门户，导航到新部署的 SQL 数据库 的窗格，并选择“工具”。
 
-    ![工具按钮](./media/hdinsight-operationalize-data-pipeline/sql-db-tools.png)
+    ![HDInsight sql db 工具按钮图标](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-tools-button.png)
 
 4. 选择“查询编辑器”。
 
-    ![查询编辑器按钮](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor.png)
+    ![工具 sql 数据库查询编辑器预览](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor1.png)
 
 5. 在“查询编辑器”窗格中，选择“登录”。
 
-    ![“登录”按钮](./media/hdinsight-operationalize-data-pipeline/sql-db-login1.png)
+    ![查询编辑器 sql db 登录窗口](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window1.png)
 
 6. 输入 SQL 数据库凭据并选择“确定”。
 
-   ![登录窗体](./media/hdinsight-operationalize-data-pipeline/sql-db-login2.png)
+   ![查询编辑器 sql db 登录参数](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window2.png)
 
 7. 在“查询编辑器”文本区域中，输入以下 SQL 语句以创建 `dailyflights` 表，用于存储每次管道运行后的汇总数据。
 
-    ```
+    ```sql
     CREATE TABLE dailyflights
     (
         YEAR INT,
@@ -91,7 +90,7 @@ Oozie 根据操作、工作流和协调器对管道进行描述。 操作决定�
 
 8. 选择“运行”以执行 SQL 语句。
 
-    ![“运行”按钮](./media/hdinsight-operationalize-data-pipeline/sql-db-run.png)
+    ![HDInsight sql db "执行" 按钮](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-run-button.png)
 
 Azure SQL 数据库现已准备就绪。
 
@@ -101,36 +100,36 @@ Azure SQL 数据库现已准备就绪。
 2. 选择“创建”。
 3. 在“基础知识”窗格上，为群集提供一个唯一的名称并选择 Azure 订阅。
 
-    ![HDInsight 群集名称和订阅](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)
+    ![HDInsight 群集名称和订阅](./media/hdinsight-operationalize-data-pipeline/cluster-name-subscription.png)
 
 4. 在“群集类型”窗格中，选择“Hadoop”群集类型、“Linux”操作系统和最新版本的 HDInsight 群集。 将“群集层”保留为“标准”。
 
-    ![HDInsight 群集类型](./media/hdinsight-operationalize-data-pipeline/hdi-cluster-type.png)
+    ![Azure 门户群集配置类型](./media/hdinsight-operationalize-data-pipeline/hdinsight-cluster-type.png)
 
 5. 选择“选择”以应用群集类型选择。
 6. 通过提供登录密码并从列表选择 `oozie` 资源组，完成“基础知识”窗格，然后选择“下一步”。
 
-    ![HDInsight 基础知识窗格](./media/hdinsight-operationalize-data-pipeline/hdi-basics.png)
+    ![Azure 门户创建群集基础知识 "窗格](./media/hdinsight-operationalize-data-pipeline/hdinsight-basics-pane.png)
 
 7. 在“存储”窗格中，将主存储类型保留设置为“Azure 存储”，选择“新建”并为新帐户提供名称。
 
-    ![HDInsight 存储帐户设置](./media/hdinsight-operationalize-data-pipeline/hdi-storage.png)
+    ![HDInsight 存储帐户设置](./media/hdinsight-operationalize-data-pipeline/storage-account-settings.png)
 
 8. 对于“元存储设置”，在“为 Hive 选择 SQL 数据库”下选择之前创建的数据库。
 
-    ![HDInsight Hive 元存储设置](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-hive.png)
+    ![HDInsight Hive 元存储设置](./media/hdinsight-operationalize-data-pipeline/hive-metastore-settings.png)
 
 9. 选择“SQL 数据库身份验证”。
 
     ![HDInsight Hive 元存储身份验证](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
 
-10. 输入 SQL 数据库用户名和密码，然后选择“选择”。 
+10. 输入 SQL 数据库用户名和密码，然后选择“选择”。
 
        ![HDInsight Hive 元存储身份验证登录](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
 
-11. 回到“元存储设置”窗格，选择用于 Oozie 元数据存储的数据库，并按以往方式进行身份验证。 
+11. 回到“元存储设置”窗格，选择用于 Oozie 元数据存储的数据库，并按以往方式进行身份验证。
 
-       ![HDInsight 元存储设置](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
+       ![Azure 门户元存储设置](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
 12. 选择“**下一步**”。
 13. 在“摘要”窗格上，选择“创建”以部署群集。
@@ -176,18 +175,19 @@ Azure SQL 数据库现已准备就绪。
 
 示例数据现在可用。 但是，管道需要两个用于处理的 Hive 表，一个用于传入数据 (`rawFlights`)，一个用于汇总数据 (`flights`)。 在 Ambari 中创建这些表，如下所示。
 
-1. 通过导航到 http 登录到 Ambari:\//headnodehost:8080。
+1. 通过导航到 http:\//headnodehost:8080 登录 Ambari。
+
 2. 从服务列表选择“Hive”。
 
-    ![在 Ambari 中选择 Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    ![Apache Ambari services 列表选择 Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
 3. 选择 Hive 视图 2.0 标签旁的“转到视图”。
 
-    ![在 Ambari 中选择 Hive 视图](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    ![Ambari Apache Apache Hive 摘要列表](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
-4. 在查询文本区域中，粘贴以下语句以创建 `rawFlights` 表。 `rawFlights` 表在 Azure 存储的 `/example/data/flights` 文件夹内为 CSV 文件提供读取时架构。 
+4. 在查询文本区域中，粘贴以下语句以创建 `rawFlights` 表。 `rawFlights` 表在 Azure 存储的 `/example/data/flights` 文件夹内为 CSV 文件提供读取时架构。
 
-    ```
+    ```sql
     CREATE EXTERNAL TABLE IF NOT EXISTS rawflights (
         YEAR INT,
         MONTH INT,
@@ -212,7 +212,7 @@ Azure SQL 数据库现已准备就绪。
 
 5. 选择“执行”以创建表。
 
-    ![Ambari 中的 Hive 查询](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    ![hdi ambari services hive 查询](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
 6. 若要创建 `flights` 表，请使用以下语句替换查询文本区域中的文本。 `flights` 表是 Hive 托管的表格，表中将加载到其中的数据按年、月和月份日期进行分区。 此表将包含全部历史航班数据，其中原始数据的呈现采用最小粒度，达到每个航班一行数据。
 
@@ -464,7 +464,7 @@ day=03
 
 7. 使用 Oozie Web 控制台观察状态。 从 Ambari 内部，依次选择“Oozie”、“快速链接”和“Oozie Web 控制台”。 在“工作流作业”选项卡下，选择“所有作业”。
 
-    ![Oozie Web 控制台工作流](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    ![hdi oozie web 控制台工作流](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
 8. 当状态为 SUCCEEDED（成功）时，查询 SQL 数据库表以查看插入行。 使用 Azure 端口，导航到 SQL 数据库的窗格，选择“工具”，然后打开“查询编辑器”。
 
@@ -476,7 +476,7 @@ day=03
 
 若要将此工作流计划为每日运行（或者是一段日期范围内的所有日期），可以使用协调器。 协调器由 XML 文件定义，例如 `coordinator.xml`：
 
-```
+```xml
 <coordinator-app name="daily_export" start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" timezone="UTC" xmlns="uri:oozie:coordinator:0.4">
     <datasets>
         <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -555,7 +555,7 @@ day=03
 
 * 第 2 点：在工作流的日期范围内，`dataset` 元素指定 HDFS 中查找特定日期范围的数据的位置，并配置 Oozie 如何确定数据是否还可进行处理。
 
-    ```
+    ```xml
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
         <uri-template>${sourceDataFolder}${YEAR}-${MONTH}-FlightData.csv</uri-template>
         <done-flag></done-flag>
@@ -568,7 +568,7 @@ day=03
 
 * 第 3 点：`data-in` 元素指定在 `uri-template` 中替换关联数据集的值时，要用作名义时间的特定时间戳。
 
-    ```
+    ```xml
     <data-in name="event_input1" dataset="ds_input1">
         <instance>${coord:current(0)}</instance>
     </data-in>

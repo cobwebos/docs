@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c6ad222110081cd8f8838208da407e0e1d50f75
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: 8be34a85cb1a1863ee8a78c7b97af66627612fea
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851260"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444748"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含主题、订阅和规则的服务总线命名空间
 
@@ -27,9 +27,9 @@ ms.locfileid: "54851260"
 
 有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。
 
-有关 Azure 资源命名约定的实践和模式的详细信息，请参阅 [Azure 资源的建议命名约定][Recommended naming conventions for Azure resources]。
+有关 Azure 资源命名约定的实践和模式的更多信息，请参阅[Azure 资源的建议命名约定][Recommended naming conventions for Azure resources]。
 
-有关完整的模板，请参阅[包含主题、订阅和规则的服务总线命名空间][Service Bus namespace with topic, subscription, and rule]模板。
+有关完整的模板，请参阅[服务总线命名空间包含主题、 订阅和规则][Service Bus namespace with topic, subscription, and rule]模板。
 
 > [!NOTE]
 > 以下 Azure 资源管理器模板可供下载和部署。
@@ -47,7 +47,7 @@ ms.locfileid: "54851260"
 
 使用此模板，将部署包含主题、订阅和规则（筛选器）的服务总线命名空间。
 
-[服务总线主题和订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”模式提供一对多的通信形式。 使用主题和订阅时，分布式应用程序的组件之间不会直接通信，它们会通过用作中介的主题来交换消息。主题订阅类似于虚拟队列，接收发送至该主题的消息副本。 通过订阅中的筛选器，可以指定发送到主题的哪些消息应该在特定主题订阅中显示。
+[服务总线主题和订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”  模式提供一对多的通信形式。 使用主题和订阅时，分布式应用程序的组件之间不会直接通信，它们会通过用作中介的主题来交换消息。主题订阅类似于虚拟队列，接收发送至该主题的消息副本。 通过订阅中的筛选器，可以指定发送到主题的哪些消息应该在特定主题订阅中显示。
 
 ## <a name="what-are-rules-filters"></a>什么是规则（筛选器）？
 
@@ -179,7 +179,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，已使用 Azure 资源管理器创建并部署了资源，请通过查看以下文章了解如何管理这些资源：
+请参阅以下主题演示如何创建订阅筛选器：[包含主题、 订阅和规则使用 Azure 资源管理器模板创建服务总线命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
+
+了解如何管理这些资源，通过查看以下文章：
 
 * [管理 Azure 服务总线](service-bus-management-libraries.md)
 * [使用 PowerShell 管理服务总线](service-bus-manage-with-ps.md)

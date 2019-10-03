@@ -11,17 +11,16 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ab04d1288eb3a851774128b8aaaae03868c2ffa7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3118be297caabbd4b829344e42361fa6b7602aad
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729954"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066733"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 
@@ -32,14 +31,13 @@ ms.locfileid: "53729954"
 - 区域（美国西部、美国东部，等等）
 - VM 实例数
 - VM 实例大小（“小型”、“中型”、“大型”）
-- 定价层（“免费”、“共享”、“基本”、“标准”、“高级”、“高级 V2”、“隔离”、“消耗”）
+- 定价层 (免费、共享、基本、标准、高级、PremiumV2、独立)
 
 应用服务计划的定价层确定了所提供的应用服务功能和计划费用。 定价层有以下几个类别：
 
 - **共享计算**：“免费”和“共享”，这两个基本层在其他应用服务应用（包括其他客户的应用）所在的同一个 Azure VM 上运行应用。 这些层为共享资源中运行的每个应用分配 CPU 配额，且资源不可横向扩展。
 - **专用计算**：“基本”、“标准”、“高级”和“高级 V2”层在专用的 Azure VM 上运行应用。 只有同一应用服务计划中的应用可以共享相同的计算资源。 层越高，可用于横向扩展的 VM 实例就越多。
-- **隔离**：此层在专用的 Azure 虚拟网络中运行专用 Azure VM，从而在计算隔离的基础上，为应用提供网络隔离。 此层提供最大的横向扩展能力。
-- **消耗**：此层仅适用于[函数应用](../azure-functions/functions-overview.md)。 它根据工作负荷动态缩放函数。 有关详细信息，请参阅 [Azure Functions 托管计划的比较](../azure-functions/functions-scale.md)。
+- **隔离**：此层在专用的 Azure 虚拟网络上运行专用的 Azure Vm。 它在计算隔离之上为应用提供网络隔离。 此层提供最大的横向扩展能力。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -79,9 +77,8 @@ ms.locfileid: "53729954"
 除“免费”层外，应用服务计划会根据所用的计算资源量产生小时费用。
 
 - 在“共享”层中，每个应用遵循 CPU 分钟配额，因此，每个应用会根据 CPU 配额产生小时费用。
-- 在专用计算层（“基本”、“标准”、“高级”、“高级 V2”）中，应用服务计划定义了应用可缩放到的 VM 实例数，因此，应用服务计划中的每个 VM 实例会产生小时费用。 不管这些 VM 实例上运行了多少个应用，其计费方式都是相同的。 为了避免意外的费用，请参阅[清理应用服务计划](app-service-plan-manage.md#delete)。
-- 在“隔离”层中，应用服务环境定义了运行应用的隔离辅助角色数目，每个辅助角色按小时计费。 此外，运行应用服务环境本身也会产生一笔基本的小时费用。 
-- （仅限 Azure Functions）“消耗”层动态分配 VM 实例来为函数应用的工作负荷提供服务，由 Azure 每秒动态计费。 有关详细信息，请参阅 [Azure Functions 定价](https://azure.microsoft.com/pricing/details/functions/)。
+- 在专用计算层 ("**基本**"、"**标准**"、"**高级**"、" **PremiumV2**") 中, 应用服务计划定义了应用扩展到的 vm 实例数, 因此, 应用服务计划中的_每个 vm 实例_都按小时计费。 不管这些 VM 实例上运行了多少个应用，其计费方式都是相同的。 为了避免意外的费用，请参阅[清理应用服务计划](app-service-plan-manage.md#delete)。
+- 在“隔离”层中，应用服务环境定义了运行应用的隔离辅助角色数目，每个辅助角色按小时计费。 此外，运行应用服务环境本身也会产生一笔基本的小时费用。
 
 使用随附的应用服务功能（配置自定义域、SSL 证书、部署槽位、备份等）不会产生费用。 例外情况包括：
 
@@ -102,7 +99,7 @@ ms.locfileid: "53729954"
 
 反之亦然。 如果觉得自己不再需要较高层的功能，可以降低到更低的层，从而节省资金。
 
-有关提高应用服务计划的信息，请参阅[纵向扩展 Azure 中的应用](web-sites-scale.md)。
+有关提高应用服务计划的信息，请参阅[纵向扩展 Azure 中的应用](manage-scale-up.md)。
 
 如果你的应用与其他应用在同一个应用服务计划中，可以通过隔离计算资源来提高你的应用的性能。 为此，可将应用移到单独的应用服务计划中。 有关详细信息，请参阅[将应用移到另一个应用服务计划](app-service-plan-manage.md#move)。
 
@@ -113,7 +110,7 @@ ms.locfileid: "53729954"
 在以下情况下，请将应用隔离到新应用服务计划中：
 
 - 该应用占用大量资源。
-- 想要独立于现有计划中的其他应用缩放该应用。
+- 你想要独立于现有计划中的其他应用缩放应用。
 - 该应用需要其他地理区域中的资源。
 
 这样一来，可以为应用分配新的资源集，并更好地控制应用。

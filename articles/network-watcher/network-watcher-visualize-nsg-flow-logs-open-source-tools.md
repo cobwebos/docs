@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
 ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098995"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60859997"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用开源工具可视化 Azure 网络观察程序 NSG 流日志
 
@@ -205,7 +205,7 @@ sudo /etc/init.d/logstash start
 
 下载[仪表板文件](https://aka.ms/networkwatchernsgflowlogdashboard)、[可视化效果文件](https://aka.ms/networkwatchernsgflowlogvisualizations)和[已保存的搜索文件](https://aka.ms/networkwatchernsgflowlogsearch)。
 
-在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。 然后，可从“仪表板”选项卡打开并加载示例仪表板。
+在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。   然后，可从“仪表板”  选项卡打开并加载示例仪表板。
 
 还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.elastic.co/guide/en/kibana/current/visualize.html)，详细了解如何创建 Kibana 可视化效果。
 

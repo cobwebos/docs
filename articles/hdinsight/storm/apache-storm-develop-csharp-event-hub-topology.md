@@ -1,7 +1,6 @@
 ---
 title: 使用 Storm 从事件中心处理事件 - Azure HDInsight
 description: 了解如何使用用于 Visual Studio 的 HDInsight 工具，通过 Visual Studio 中创建的 C# Storm 拓扑处理来自 Azure 事件中心的数据。
-services: hdinsight,notification hubs
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 85d95354d24a3f107fc518b367ab1187da43269d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: 53399fbdeba44b184ef4e76c89affefd29dbc413
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633753"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915317"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)
 
@@ -39,7 +38,7 @@ HDInsight 3.4 及更高版本使用 Mono 运行 C# 拓扑。 本文档中使用�
 > [!IMPORTANT]  
 > 本文档中的示例需要 HDInsight 3.5 或 3.6 群集。
 >
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
+> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 
 
 C# 拓扑还必须针对 .NET 4.5 运行。
 
@@ -104,11 +103,11 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="download-the-completed-project"></a>下载已完成的项目
 
-可从 [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) 下载本教程中所创建的项目的完整版本。 不过，仍然必须根据本教程中的步骤提供配置设置。
+可以从 [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) 下载本文中创建的项目的完整版本。 但是，仍然需要按照本文中的步骤提供配置设置。
 
 ### <a name="prerequisites"></a>先决条件
 
-* [Apache Storm on HDInsight 3.5 或 3.6 版群集](apache-storm-tutorial-get-started-linux.md)。
+* HDInsight 上的 Apache Storm 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择 **Storm** 作为**群集类型**。
 
     > [!WARNING]  
     > 本文档中使用的示例需要 Storm on HDInsight 3.5 或 3.6 版。 由于重大类名更改，此示例不适用于旧版 HDInsight。 如需适用于旧式群集的示例版本，请参阅 [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases)。
@@ -136,12 +135,12 @@ topologyBuilder.SetJavaBolt(
 
 1. 创建事件中心后，在 Azure 门户中查看“事件中心”设置，选择“共享访问策略”。 选择“+ 添加”添加以下策略：
 
-   | 名称 | 权限 |
+   | 姓名 | 权限 |
    | --- | --- |
    | writer |发送 |
    | reader |侦听 |
 
-    ![“共享访问策略”窗口的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
+    ![“共享访问策略”窗口的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
 2. 选择“读取器”和“写入器”策略。 复制并保存两个策略的主密钥值，因为稍后将使用这些值。
 
@@ -149,11 +148,11 @@ topologyBuilder.SetJavaBolt(
 
 1. 如果尚未安装最新版本的用于 Visual Studio 的 HDInsight 工具，请参阅[开始使用用于 Visual Studio 的 HDInsight 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
-2. 从 [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) 下载解决方案。
+2. 从 [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)下载解决方案。
 
-3. 在 **EventHubWriter** 项目中，打开 **App.config** 文件。 使用前面在事件中心配置的信息填写以下键的值：
+3. 在 **EventHubWriter** 项目中，打开 **App.config** 文件。 使用此前配置的事件中心提供的信息，填充以下项的值：
 
-   | 密钥 | 值 |
+   | Key | ReplTest1 |
    | --- | --- |
    | EventHubPolicyName |写入器（如果对具有“发送”权限的策略使用不同名称，则改用它。） |
    | EventHubPolicyKey |写入者策略的密钥。 |
@@ -169,7 +168,7 @@ topologyBuilder.SetJavaBolt(
 
 2. 打开 **EventHubReader** 的 **App.config** 文件。 使用前面在事件中心配置的信息填写以下键的值：
 
-   | 密钥 | 值 |
+   | Key | ReplTest1 |
    | --- | --- |
    | EventHubPolicyName |读取器（如果对具有“侦听”权限的策略使用不同名称，则改用它。） |
    | EventHubPolicyKey |读取者策略的密钥。 |
@@ -183,15 +182,15 @@ topologyBuilder.SetJavaBolt(
 
 1. 在“解决方案资源管理器”中，右键单击 **EventHubReader** 项目，并选择“提交到 Storm on HDInsight”。
 
-    ![解决方案资源管理器的屏幕截图，其中突出显示了“提交到 Storm on HDInsight”](./media/apache-storm-develop-csharp-event-hub-topology/submittostorm.png)
+    ![解决方案资源管理器的屏幕截图，其中突出显示了“提交到 Storm on HDInsight”](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
 
 2. 在“提交拓扑”对话框中，选择“Storm 群集”。 展开“其他配置”，选择“Java 文件路径”，选择“...”，选择前面下载的 JAR 文件所在的目录。 最后，单击“提交”。
 
-    ![“提交拓扑”对话框的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/submit.png)
+    ![“提交拓扑”对话框的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
 
-3. 提交拓扑之后，会出现“Storm 拓扑查看器”。 若要查看有关拓扑的信息，请选择左窗格中的 **EventHubReader** 拓扑。
+3. 提交拓扑之后，会出现“Storm 拓扑查看器”。 **EventHubReader** 拓扑。
 
-    ![“Storm 拓扑查看器”的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/topologyviewer.png)
+    ![“Storm 拓扑查看器”的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
 
 4. 在“解决方案资源管理器”中，右键单击 **EventHubWriter** 项目，并选择“提交到 Storm on HDInsight”。
 
@@ -213,7 +212,7 @@ topologyBuilder.SetJavaBolt(
 
 要停止拓扑，请在“Storm 拓扑查看器”中选择每个拓扑，并单击“终止”。
 
-![“Storm 拓扑查看器”的屏幕截图，其中突出显示了“终止”按钮](./media/apache-storm-develop-csharp-event-hub-topology/killtopology.png)
+![“Storm 拓扑查看器”的屏幕截图，其中突出显示了“终止”按钮](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
 
 ## <a name="delete-your-cluster"></a>删除群集
 

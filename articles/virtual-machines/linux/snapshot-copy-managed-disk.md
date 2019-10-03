@@ -2,8 +2,8 @@
 title: 在 Azure 中创建 VHD 快照 | Microsoft Docs
 description: 了解如何在 Azure 中创建 VHD 的副本作为备份或用于解决问题。
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/11/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 37b77847fc55d2aa90b313d6746d82b402f42ae6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 9f2f3ac3668f0e48716fc30fb69cd1782dbd4e56
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460737"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64706976"
 ---
 # <a name="create-a-snapshot"></a>创建快照 
 
@@ -64,13 +64,13 @@ az snapshot list \
 ## <a name="use-azure-portal"></a>使用 Azure 门户 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 首先在左上角单击“创建资源”并搜索“快照”。 从搜索结果中选择“快照”。
-3. 在“快照”边栏选项卡中，单击“创建”。
-4. 输入快照的“名称”。
+2. 首先在左上角单击“创建资源”  并搜索“快照”  。 从搜索结果中选择“快照”  。
+3. 在“快照”边栏选项卡中，单击“创建”   。
+4. 输入快照的“名称”  。
 5. 选择现有的资源组，或键入新资源组的名称。 
 7. 对于**源磁盘**，选择要获取其快照的托管磁盘。
-8. 选择用于存储快照的“帐户类型”。 使用 **Standard HDD**，除非需要将其存储在高性能 SSD 上。
-9. 单击“创建”。
+8. 选择用于存储快照的“帐户类型”  。 使用 **Standard HDD**，除非需要将其存储在高性能 SSD 上。
+9. 单击**创建**。
 
 
 ## <a name="next-steps"></a>后续步骤

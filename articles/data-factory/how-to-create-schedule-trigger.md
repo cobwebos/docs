@@ -3,21 +3,20 @@ title: 在 Azure 数据工厂中创建计划触发器 | Microsoft Docs
 description: 了解如何在 Azure 数据工厂中创建按计划运行管道的触发器。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: shlo
-ms.openlocfilehash: 62c9a8e6375f6ac7db86ae81cdd4e5c9eb445770
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f693b04cb2a7166436497239dc7a874bdc5cbf46
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432815"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141624"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
 本文提供有关计划触发器和创建、启动和监视计划触发器的步骤的信息。 有关其他类型的触发器，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
@@ -111,31 +110,31 @@ ms.locfileid: "57432815"
     - 触发器与 **Adfv2QuickStartPipeline** 管道相关联。 若要将多个管道与某个触发器相关联，请添加多个 **pipelineReference** 节。
     - 快速入门中的管道采用两个**参数**值：**inputPath** 和 **outputPath**。 因此，可以通过触发器传递这些参数的值。
 
-2. 通过创建触发器**集 AzDataFactoryV2Trigger** cmdlet:
+2. 使用 **Set-AzDataFactoryV2Trigger** cmdlet 创建一个触发器：
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. 确认触发器的状态是否**已停止**通过使用**Get AzDataFactoryV2Trigger** cmdlet:
+3. 使用 **Get-AzDataFactoryV2Trigger** cmdlet 确认触发器的状态为 **Stopped**：
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. 通过使用启动触发器**开始 AzDataFactoryV2Trigger** cmdlet:
+4. 使用 **Start-AzDataFactoryV2Trigger** cmdlet 启动触发器：
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. 确认触发器的状态是否**Started**通过使用**Get AzDataFactoryV2Trigger** cmdlet:
+5. 使用 **Get-AzDataFactoryV2Trigger** cmdlet 确认触发器的状态为 **Started**：
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  获取触发器运行在 Azure PowerShell 中使用**Get AzDataFactoryV2TriggerRun** cmdlet。 若要获取有关触发器运行的信息，请定期执行以下命令。 更新 **TriggerRunStartedAfter** 和 **TriggerRunStartedBefore** 值以匹配触发器定义中的值：
+6.  使用 **Get-AzDataFactoryV2TriggerRun** cmdlet 在 Azure PowerShell 中获取触发器运行。 若要获取有关触发器运行的信息，请定期执行以下命令。 更新 **TriggerRunStartedAfter** 和 **TriggerRunStartedBefore** 值以匹配触发器定义中的值：
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
@@ -254,9 +253,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 "parameters": {
     "scheduledRunTime": "@trigger().scheduledTime"
 }
-```    
-
-有关详细信息，请参阅[如何读取或写入分区的数据](how-to-read-write-partitioned-data.md)中的说明。
+```
 
 ## <a name="json-schema"></a>JSON 架构
 以下 JSON 定义演示如何创建一个带有计划和重复周期的计划触发器：
@@ -274,7 +271,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
         "timeZone": "UTC"
         "schedule": {                    // Optional (advanced scheduling specifics)
           "hours": [<<0-23>>],
-          "weekDays": : [<<Monday-Sunday>>],
+          "weekDays": [<<Monday-Sunday>>],
           "minutes": [<<0-59>>],
           "monthDays": [<<1-31>>],
           "monthlyOccurrences": [
@@ -325,13 +322,13 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 
 ### <a name="schema-defaults-limits-and-examples"></a>架构默认值、限制和示例
 
-| JSON 属性 | Type | 需要 | 默认值 | 有效值 | 示例 |
+| JSON 属性 | 类型 | 必填 | 默认值 | 有效值 | 示例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | String | 是 | 无 | ISO-8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | 对象 | 是 | 无 | Recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | Number | 否 | 第 | 1 到 1,000 | `"interval":10` |
+| **recurrence** | Object | 是 | 无 | Recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | Number | 否 | 1 | 1 到 1,000 | `"interval":10` |
 | **endTime** | String | 是 | 无 | 代表将来某个时间的日期/时间值。 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | 对象 | 否 | 无 | Schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **schedule** | Object | 否 | 无 | Schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime 属性
 下表说明了 **startTime** 属性如何控制触发器运行：
@@ -361,10 +358,10 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 
 | JSON 元素 | 描述 | 有效值 |
 |:--- |:--- |:--- |
-| **分钟数** | 运行触发器的小时中的分钟。 | <ul><li>Integer</li><li>整数数组</li></ul>
-| **小时数** | 运行触发器的日期中的小时。 | <ul><li>Integer</li><li>整数数组</li></ul> |
+| **分钟数** | 运行触发器的小时中的分钟。 | <ul><li>整数</li><li>整数数组</li></ul>
+| **小时数** | 运行触发器的日期中的小时。 | <ul><li>整数</li><li>整数数组</li></ul> |
 | **工作日** | 运行触发器的工作日。 此值只能使用与星期相关的频率来指定。 | <ul><li>星期一、星期二、星期三、星期四、星期五、星期六、星期日</li><li>星期值的数组（最大数组值为 7）</li><li>星期值不区分大小写</li></ul> |
-| **monthlyOccurrences** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 | <ul><li>MonthlyOccurrence 对象的数组：`{ "day": day,  "occurrence": occurrence }`。</li><li>**day** 属性表示运行触发器那天为星期几。 例如，如果 **monthlyOccurrences** 属性的 **day** 值为 `{Sunday}`，则表示在当月的每个星期日运行触发器。 **day** 属性是必需的。</li><li>**occurrence** 属性是指定的 **day** 在当月的匹配项。 例如，如果 **monthlyOccurrences** 属性的 **day** 和 **occurrence** 值为 `{Sunday, -1}`，则表示在当月的最后一个星期日运行触发器。 **occurrence** 属性是可选的。</li></ul> |
+| **monthlyOccurrences** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 | <ul><li>MonthlyOccurrence对象的数组：`{ "day": day,  "occurrence": occurrence }`。</li><li>**day** 属性表示运行触发器那天为星期几。 例如，如果 **monthlyOccurrences** 属性的 **day** 值为 `{Sunday}`，则表示在当月的每个星期日运行触发器。 **day** 属性是必需的。</li><li>**occurrence** 属性是指定的 **day** 在当月的匹配项。 例如，如果 **monthlyOccurrences** 属性的 **day** 和 **occurrence** 值为 `{Sunday, -1}`，则表示在当月的最后一个星期日运行触发器。 **occurrence** 属性是可选的。</li></ul> |
 | **monthDays** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 | <ul><li><= -1 且 >= -31 的任何值</li><li>>= 1 且 <= 31 的任何值</li><li>值组成的数组</li></ul> |
 
 

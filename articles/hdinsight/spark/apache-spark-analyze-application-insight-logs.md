@@ -1,7 +1,6 @@
 ---
 title: 使用 Spark 分析 Application Insight 日志 - Azure HDInsight
 description: 了解如何将 Application Insight 日志导出到 Blob 存储，并使用 HDInsight 上的 Spark 分析这些日志。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 806e5b6f764797d2e038cc7ed58ec1d04f678e2b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 737b049aa94ede2ffb0c1035b4cadfbed32d7dc4
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120370"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145595"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>使用 HDInsight 上的 Apache Spark 分析 Application Insights 遥测日志
 
@@ -28,14 +27,11 @@ ms.locfileid: "54120370"
 
 * 熟悉基于 Linux 的 HDInsight 群集的创建过程。 有关详细信息，请参阅[在 HDInsight 上创建 Apache Spark](apache-spark-jupyter-spark-sql.md)。
 
-  > [!IMPORTANT]  
-  > 本文档中的步骤需要使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
-
 * Web 浏览器。
 
 开发和测试本文档时使用了以下资源：
 
-* 使用[配置为使用 Application Insights 的 Node.js Web 应用](../../azure-monitor/app/nodejs.md)生成的 Application Insights 遥测数据。
+* [配置为使用 Application Insights 的 Node.js Web 应用](../../azure-monitor/app/nodejs.md)，用于生成 Application Insights 遥测数据。
 
 * HDInsight 群集上基于 Linux 的 Spark 版本 3.5 用于分析数据。
 
@@ -43,7 +39,7 @@ ms.locfileid: "54120370"
 
 下图演示了本示例的服务体系结构：
 
-![演示数据从 Application Insights 流向 Blob 存储，并使用 HDInsight 上的 Spark 进行处理的示意图](./media/apache-spark-analyze-application-insight-logs/appinsightshdinsight.png)
+![数据从 Application Insights 流动到 blob 存储，然后是 Spark](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
 ### <a name="azure-storage"></a>Azure 存储
 
@@ -76,7 +72,7 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集上的 Spark。 在“快速链接”部分中，选择“群集仪表板”，并从“群集仪表板”部分中选择“Jupyter Notebook”。
 
-    ![群集仪表板](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
+    ![Azure 门户群集仪表板 pyspark](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
 
 2. 在 Jupyter 页面右上角选择“新建”，并选择“PySpark”。 此时会打开新浏览器选项卡，其中包含基于 Python 的 Jupyter 笔记本。
 
@@ -104,12 +100,12 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
    hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
-    使用 **Shift+Enter** 执行此单元格中的命令。 将显示类似于以下文本的结果：
+    使用 **Shift+Enter** 执行此单元格中的命令。 可看到类似于以下文本的结果：
 
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    返回的 wasb 路径是 Application Insights 遥测数据的位置。 将单元格中的 `hdfs dfs -ls` 行更改为使用返回的 WASB 路径，然后再次使用 **Shift+Enter** 执行单元格中的命令。 这一次，结果应显示包含遥测数据的目录。
+    返回的 wasb 路径是 Application Insights 遥测数据的位置。 将单元格中的 `hdfs dfs -ls` 行更改为使用返回的 wasb 路径，再次使用 **SHIFT + ENTER** 执行单元格中的命令。 这一次，结果应显示包含遥测数据的目录。
 
    > [!NOTE]  
    > 本部分中的余下步骤使用了 `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` 目录。 目录结构可能会有所不同。
@@ -219,7 +215,8 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择 HDInsight 群集上的 Spark。 在“快速链接”部分中，选择“群集仪表板”，并从“群集仪表板”部分中选择“Jupyter Notebook”。
 
-    ![群集仪表板](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
+    ![Azure 门户群集仪表板 Scala](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+
 2. 在 Jupyter 页面右上角选择“新建”，并选择“Scala”。 此时会打开新浏览器选项卡，其中包含基于 Scala 的 Jupyter Notebook。
 3. 在页面上的第一个字段（称为“单元格”）中输入以下文本：
 
@@ -245,12 +242,12 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
    hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
-    使用 **Shift+Enter** 执行此单元格中的命令。 将显示类似于以下文本的结果：
+    使用 **Shift+Enter** 执行此单元格中的命令。 可看到类似于以下文本的结果：
 
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    返回的 wasb 路径是 Application Insights 遥测数据的位置。 将单元格中的 `hdfs dfs -ls` 行更改为使用返回的 WASB 路径，然后再次使用 **Shift+Enter** 执行单元格中的命令。 这一次，结果应显示包含遥测数据的目录。
+    返回的 wasb 路径是 Application Insights 遥测数据的位置。 将单元格中的 `hdfs dfs -ls` 行更改为使用返回的 wasb 路径，再次使用 **SHIFT + ENTER** 执行单元格中的命令。 这一次，结果应显示包含遥测数据的目录。
 
    > [!NOTE]  
    > 本部分中的余下步骤使用了 `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` 目录。 除非遥测数据用于 Web 应用，否则此目录可能并不存在。

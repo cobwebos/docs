@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/12/2017
+ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291b3d506993cfea89be072684835c0d4efe75f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095443"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64571316"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>后续步骤以及如何管理 Azure AD Connect
 使用本文中介绍的操作流程，根据组织的需要和要求自定义 Azure Active Directory (Azure AD) Connect。  
@@ -35,10 +35,10 @@ ms.locfileid: "58095443"
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>分配 Azure AD Premium 或企业移动套件许可证
 
 1. 以管理员身份登录 Azure 门户。
-2. 在左侧选择“Active Directory”。
-3. 在“Active Directory”页上，双击要设置的用户所在的目录。
-4. 在“目录”页的顶部，选择“许可证”。
-5. 在“许可证”页上，选择“Active Directory Premium”或“企业移动套件”，并单击“分配”。
+2. 在左侧选择“Active Directory”。 
+3. 在“Active Directory”  页上，双击要设置的用户所在的目录。
+4. 在“目录”页的顶部，选择“许可证”。 
+5. 在“许可证”  页上，选择“Active Directory Premium”  或“企业移动套件”  ，并单击“分配”  。
 6. 在对话框中，选择要向其分配许可证的用户，并单击复选标记图标以保存更改。
 
 ## <a name="verify-the-scheduled-synchronization-task"></a>验证计划的同步任务
@@ -46,21 +46,22 @@ ms.locfileid: "58095443"
 
 ### <a name="to-verify-the-scheduled-synchronization-task"></a>验证计划的同步任务
 1. 以管理员身份登录 Azure 门户。
-2. 在左侧选择“Active Directory”。
-3. 在“Active Directory”页上，双击要设置的用户所在的目录。
-4. 在“目录”页的顶部，选择“目录集成”。
-5. 在“与本地 Active Directory 集成”的下方，注意上次同步时间。
+2. 在左侧选择“Active Directory”。 
+3. 在左侧选择“Azure AD Connect” 
+4. 在页面顶部，记下最后一次同步。
 
-<center>
-
-![目录同步时间](./media/how-to-connect-post-installation/verify.png)</center>
+![目录同步时间](./media/how-to-connect-post-installation/verify2.png)
 
 ## <a name="start-a-scheduled-synchronization-task"></a>启动计划的同步任务
-如果需要运行同步任务，可以通过再次运行 Azure AD Connect 向导来执行此操作。  需要提供 Azure AD 凭据。  在向导中，选择“自定义同步选项”任务，并一直单击“下一步”直到完成向导。 最后，请确保已选中“初始配置完成后立即开始同步过程”框。
+如果需要运行同步任务，可以通过以下方式执行此操作：
 
-<center>
-
-![启动同步](./media/how-to-connect-post-installation/startsynch.png)</center>
+1. 双击 Azure AD Connect 桌面快捷方式以启动向导。
+2. 单击 **“配置”** 。
+3. 在任务屏幕上，选择“自定义同步选项”  ，然后单击“下一步”  。
+4. 输入 Azure AD 凭据
+5. 单击“下一步”。  单击“下一步”  。  单击“下一步”。 
+5.  在“已准备好进行配置”屏幕上，确保已选中“配置完成后启动同步过程”复选框。  
+6.  单击 **“配置”** 。
 
 有关 Azure AD Connect 同步计划程序的详细信息，请参阅 [Azure AD Connect 计划程序](how-to-connect-sync-feature-scheduler.md)。
 
@@ -69,13 +70,19 @@ ms.locfileid: "58095443"
 
 下表提供了这些任务的摘要以及各个任务的简要描述。
 
-![其他任务列表](./media/how-to-connect-post-installation/addtasks.png)
+![其他任务列表](./media/how-to-connect-post-installation/addtasks2.png)
 
 | 其他任务 | 描述 |
 | --- | --- |
-| **查看所选方案** |查看当前的 Azure AD Connect 解决方案。  包括常规设置、同步的目录和同步设置等。 |
+|**隐私设置**|查看正在与 Microsoft 共享的遥测数据。|
+|**查看当前配置**|查看当前的 Azure AD Connect 解决方案。  包括常规设置、同步的目录和同步设置等。 |
 | **自定义同步选项** |更改当前配置，包括在配置中添加其他 Active Directory 林，或启用同步选项（如用户、组、设备或密码回写）。 |
-| **启用暂存模式** |对不会立即同步且不会导出到 Azure AD 或本地 Active Directory 的信息进行同步。  使用此功能可在同步前进行预览。 |
+|**配置设备选项**|可用于同步的设备选项|
+|**刷新目录架构**|允许你为同步添加新的本地目录对象|
+|**配置暂存模式** |对不会立即同步且不会导出到 Azure AD 或本地 Active Directory 的信息进行同步。  使用此功能可在同步前进行预览。 |
+|**更改用户登录**|更改用户用来登录的身份验证方法|
+|**管理联合身份验证服务**|管理 AD FS 基础结构，续订证书，以及添加 AD FS 服务器|
+|**故障排除**|有关排除 Azure AD Connect 问题的帮助信息|
 
 ## <a name="next-steps"></a>后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

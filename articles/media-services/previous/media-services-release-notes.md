@@ -11,43 +11,64 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: ea5a6a70372571daf82e7639fc31c125d69fa44f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 7684acbd26848bbccb09416df44a9669965dcfe9
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621424"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720141"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
 这些 Azure 媒体服务发行说明汇总了与以前版本相比的变更之处和已知的问题。
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>签出的最新版本[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 我们希望能够倾听客户的心声，以便努力解决对客户造成影响的问题。 要报告问题或提出问题，请将在 [Azure 媒体服务 MSDN 论坛]提交问题。 
 
-## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>当前已知的问题
-### <a name="a-idgeneralissuesmedia-services-general-issues"></a><a id="general_issues"/>媒体服务一般问题
+## <a name="a-idissuesknown-issues"></a><a id="issues"/>已知问题
+### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>媒体服务一般问题
 
 | 问题 | 描述 |
 | --- | --- |
 | REST API 中未提供几种常见的 HTTP 标头。 |如果使用 REST API 来开发媒体服务应用程序，将发现一些常见的 HTTP 标头字段（包括 CLIENT-REQUEST-ID、REQUEST-ID 和 RETURN-CLIENT-REQUEST-ID）不受支持。 未来的更新将增加这些标头。 |
 | 不允许使用百分号编码。 |为流内容构建 URL 时，媒体服务使用 IAssetFile.Name 属性的值（例如，`http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`）。 出于这个原因，不允许使用百分号编码。 Name 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!* '();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。 |
-| Azure 存储 SDK 版本 3.x 中的 ListBlobs 方法会失败。 |媒体服务基于 [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) 版本生成 SAS URL。 如果希望使用存储 SDK 来列出 BLOB 容器中的 BLOB，请使用存储 SDK 版本 2.x 中的 [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) 方法。 |
+| Azure 存储 SDK 版本 3.x 中的 ListBlobs 方法会失败。 |媒体服务基于 [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) 版本生成 SAS URL。 如果希望使用存储 SDK 来列出 BLOB 容器中的 BLOB，请使用存储 SDK 版本 2.x 中的 [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) 方法。 |
 | 媒体服务限制机制会限制那些发出过多服务请求的应用程序的资源使用情况。 该服务可能返回“服务不可用” 503 HTTP 状态代码。 |有关详细信息，请参阅[媒体服务错误代码](media-services-encoding-error-codes.md)中的 503 HTTP 状态代码说明。 |
 | 查询实体时，一次返回的实体数限制为 1,000 个，因为公共 REST 第 2 版将查询结果数限制为 1,000 个。 |使用[此 .NET 示例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)和[此 REST API 示例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)中所述的 Skip 和 Take (.NET)/ top (REST)。 |
 | 某些客户端可能会在平滑流式处理清单中碰到重复标记问题。 |有关详细信息，请参阅[此部分](media-services-deliver-content-overview.md#known-issues)。 |
 | 媒体服务 .NET SDK 对象无法序列化，因此无法与 Azure Redis 缓存配合使用。 |如果尝试对 SDK AssetCollection 对象进行序列化以将其添加到 Azure Redis 缓存，则会引发异常。 |
+|尝试获取资产或帐户级别筛选器时，REST API 会以一条错误消息做出响应，指出“此版本的 REST API 无法访问筛选器”。|该筛选器是使用比尝试获取该筛选器所使用的 API 版本更高的 API 版本创建或修改的。 如果客户使用的代码或工具正在使用两个 API 版本，则可能会发生这种情况。  此处的最佳解决方案是升级代码或工具，以使用较新版本或两个 API 版本。|
 
-## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
+## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
+
+## <a name="september-2019"></a>2019 年 9 月
+
+### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
+
+我们将宣布弃用*Azure Media Indexer*和*Azure Media Indexer 2 预览版*。 [Azure Media Indexer](media-services-index-content.md)媒体处理器将在2020年10月1日停用。 [Azure Media Indexer 2 预览版](media-services-process-content-with-indexer2.md)媒体处理器将于2020年1月1日停用。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
+
+有关详细信息，请参阅[从 Azure Media Indexer 迁移和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
+
+## <a name="august-2019"></a>2019 年 8 月
+
+### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
+
+我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器，这两个处理器将于 2019 年 11 月 30 日停用。
+
+有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) 和[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
+
+## <a name="march-2019"></a>2019 年 3 月
+
+Azure 媒体服务的 Media Hyperlapse 预览功能已弃用。
 
 ## <a name="december-2018"></a>2018 年 12 月
 
-很快将停用 Azure 媒体服务的媒体 Hyperlapse 预览功能。 从 2018 年 12 月 19 日起，媒体服务不再对 Media Hyperlapse 进行更改或改进。 在 2019 年 3 月 29 日，它将停用并不再可用。
+Azure 媒体服务的 Media Hyperlapse 预览功能即将停用。 从 2018 年 12 月 19 日起，媒体服务不再对 Media Hyperlapse 进行更改或改进。 在 2019 年 3 月 29 日，它将停用并不再可用。
 
 ## <a name="october-2018"></a>2018 年 10 月
 
@@ -132,7 +153,7 @@ Azure 媒体编修器正式发布：此媒体处理器通过模糊选定个体�
 
  现可使用媒体服务访问其服务的遥测/指标数据。 可使用当前版本的媒体服务收集实时通道、流式处理终结点和存档实体的遥测数据。 有关详细信息，请参阅[媒体服务遥测](media-services-telemetry-overview.md)。
 
-## <a name="a-idjulychanges16july-2016-release"></a><a id="july_changes16"/>2016 年 7 月版本
+## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>2016 年 7 月版本
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>编码任务所生成清单文件 (*.ISM) 的更新
 将某个编码任务提交到 Media Encoder Standard 或 Media Encoder Premium 后，该编码任务会在输出资产中生成[流式处理清单文件](media-services-deliver-content-overview.md) (*.ism)。 最新的服务版本已更新此流式处理清单文件的语法。
 
@@ -200,8 +221,8 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 ## <a id="oct_changes_15"></a>2015 年 10 月版本
 媒体服务现在位于以下数据中心：巴西南部、印度西部、印度南部和印度中部。 现在可以使用 Azure 门户[创建媒体服务帐户](media-services-portal-create-account.md)，以及执行[媒体服务文档网页](https://azure.microsoft.com/documentation/services/media-services/)中所述的各项任务。 这些数据中心未启用实时编码。 此外，并非所有类型的编码预留单位都可用于这些数据中心。
 
-* 巴西南部：                                        只可以使用标准和基本编码保留单位。
-* 印度西部、印度南部和印度中部：           只可以使用基本编码保留单位。
+* 巴西南部：                                        只可以使用标准和基本编码预留单位。
+* 印度西部、印度南部和印度中部：           只可以使用基本编码预留单位。
 
 ## <a id="september_changes_15"></a>2015 年 9 月版本
 媒体服务现在提供通过 Widevine 模块化 DRM 技术保护点播视频和实时流的功能。 可以通过以下交付服务合作伙伴来交付 Widevine 许可证：
@@ -321,10 +342,6 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 * 当前，无法通过 SSL 连接摄取 RTMP 实时流。
 * 仅当要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的情况下，才可通过 SSL 流式传输内容。 如果流式处理 URL 是基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含“origin.mediaservices.windows.net”（旧格式）的流式处理 URL 不支持 SSL。 如果 URL 采用旧格式，并且希望通过 SSL 流式传输内容，请[创建新的流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。 若要通过 SSL 流式传输内容，请使用基于新流式处理终结点的 URL。
 
-## <a id="october_changes_14"></a>2014 年 10 月版本
-### <a id="new_encoder_release"></a>媒体服务编码器版本
- 宣布推出新版媒体服务 Azure 媒体编码器。 使用最新 Media Encoder，仅针对输出 GB 数进行收费。 除此之外，新版编码器的功能与旧版编码器兼容。 有关详细信息，请参阅[媒体服务定价详细信息]。
-
 ### <a id="oct_sdk"></a>媒体服务 .NET SDK
 适用于 .NET 的媒体服务 SDK 扩展当前版本为 2.0.0.3。
 
@@ -397,17 +414,9 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 
 有关详细信息，请参阅[适用于 .NET 的媒体服务 SDK 中的重试逻辑]。
 
-## <a id="april_changes_14"></a>2014 年 4 月编码器版本
-### <a name="april_14_enocer_changes"></a>媒体服务编码器更新
-* 添加了对引入使用 Grass Valley EDIUS 非线性编辑器创作的 AVI 文件的支持。 在此过程中，使用 Grass Valley HQ/HQX 编解码器轻微压缩了视频。 有关详细信息，请参阅 [Grass Valley 宣布通过云对 EDIUS 7 进行流式处理]。
-*  添加了对指定媒体服务编码器所生成文件命名约定的支持。 有关详细信息，请参阅[控制媒体服务编码器输出文件名](https://msdn.microsoft.com/library/azure/dn303341.aspx)。
-*  增加了对视频和/或音频覆盖的支持。 有关详细信息，请参阅[创建覆盖层](https://msdn.microsoft.com/library/azure/dn640496.aspx)。
-*  增加了对拼接多个视频片段的支持。 有关详细信息，请参阅[拼结视频片段](https://msdn.microsoft.com/library/azure/dn640504.aspx)。
-* 修复了与转码 MP4 时以 MPEG-1 音频层 3（也称为 MP3）格式编码音频相关的 bug。
-
 ## <a id="jan_feb_changes_14"></a>2014 年 1/2 月版本
 ### <a name="jan_fab_14_donnet_changes"></a>媒体服务 .NET SDK 3.0.0.1、3.0.0.2 和 3.0.0.3
-3.0.0.1 和 3.0.0.2 中的更改包括：
+3\.0.0.1 和 3.0.0.2 中的更改包括：
 
 * 修复了与具有 OrderBy 语句的 LINQ 查询的使用相关的问题。
 * 将 [GitHub] 中的测试解决方案拆分为了基于单位的测试和基于方案的测试。
@@ -417,12 +426,12 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 版本 3.0.0.3 中进行了以下更改：
 
 * Azure 存储依赖项已升级为使用版本 3.0.3.0。
-* 修复了 3.0.*.* 的后向兼容性问题 版本的向后兼容性问题。
+* 修复了 3.0. *.* 的后向兼容性问题 版本的向后兼容性问题。
 
 ## <a id="december_changes_13"></a>2013 年 12 月版本
 ### <a name="dec_13_donnet_changes"></a>媒体服务 .NET SDK 3.0.0.0
 > [!NOTE]
-> 3.0.x.x 版本不后向兼容 2.4.x.x 版本。
+> 3\.0.x.x 版本不后向兼容 2.4.x.x 版本。
 > 
 > 
 
@@ -556,7 +565,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 <!--- URLs. --->
 [Azure 媒体服务 MSDN 论坛]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Azure 媒体服务 REST API 参考]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
-[媒体服务定价详细信息]: https://azure.microsoft.com/pricing/details/media-services/
+[Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [输入元数据]: https://msdn.microsoft.com/library/azure/dn783120.aspx
 [输出元数据]: https://msdn.microsoft.com/library/azure/dn783217.aspx
 [Deliver content]: https://msdn.microsoft.com/library/azure/hh973618.aspx
@@ -573,7 +582,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: https://msdn.microsoft.com/library/azure/dn189154.aspx
 [适用于 .NET 的媒体服务 SDK 中的重试逻辑]: https://msdn.microsoft.com/library/azure/dn745650.aspx
-[Grass Valley 宣布通过云对 EDIUS 7 进行流式处理]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
+[Grass Valley announces EDIUS 7 streaming through the cloud]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: https://msdn.microsoft.com/library/azure/dn303341.aspx
 [Create overlays]: https://msdn.microsoft.com/library/azure/dn640496.aspx
 [Stitch video segments]: https://msdn.microsoft.com/library/azure/dn640504.aspx

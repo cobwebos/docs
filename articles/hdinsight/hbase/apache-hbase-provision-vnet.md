@@ -1,7 +1,6 @@
 ---
 title: 在虚拟网络中创建 HBase 群集 - Azure
 description: 开始在 Azure HDInsight 中使用 HBase。 了解如何在 Azure 虚拟网络上创建 HDInsight HBase 群集。
-services: hdinsight,virtual-network
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,15 +8,15 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 73ac2072a087f0931b6c9c776d3ad0bfedb4320b
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 60a7afb6e610294ccaa535eaa7371ff8d5015db3
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199522"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077205"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>在 Azure 虚拟网络中的 HDInsight 上创建 Apache HBase 群集
-了解如何在 [Azure 虚拟网络][1]中创建 Azure HDInsight Apache HBase 群集。
+了解如何在[Azure 虚拟网络][1]中创建 Azure HDInsight Apache HBase 群集。
 
 通过虚拟网络集成，可以将 Apache HBase 群集部署到应用程序所在的虚拟网络，以便应用程序直接与 HBase 进行通信。 优点包括：
 
@@ -25,10 +24,10 @@ ms.locfileid: "58199522"
 * 提高性能，因为流量不必通过多个网关和负载均衡器。
 * 能够以更安全的方式处理敏感信息，而无需公开公共终结点。
 
-### <a name="prerequisites"></a>必备组件
-要阅读本教程，必须具备以下项：
+### <a name="prerequisites"></a>先决条件
+在开始阅读本文前，必须具有以下项目：
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* **Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **配备 Azure PowerShell 的工作站**。 请参阅 [Install and use Azure PowerShell](https://azure.microsoft.com/documentation/videos/install-and-use-azure-powershell/)（安装并使用 Azure PowerShell）。
 
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>在虚拟网络中创建 Apache HBase 群集
@@ -47,12 +46,11 @@ ms.locfileid: "58199522"
 > * **子网地址范围**：10.0.0.0/24
 >
 > &lt;群集名称> 会替换为使用模板时提供的群集名称。
->
->
 
-1. 单击下面的图像即可在 Azure 门户中打开该模板。 模板位于[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)。
+1. 单击下面的图像即可在 Azure 门户中打开该模板。 该模板位于 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)中。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+
 2. 在“自定义部署”边栏选项卡中输入以下属性：
 
    * **订阅**：选择用来创建 HDInsight 群集的 Azure 订阅、相关存储帐户和 Azure 虚拟网络。
@@ -64,7 +62,7 @@ ms.locfileid: "58199522"
    * **我同意上述条款和条件**：（选择）
 3. 单击“购买”。 创建群集大约需要 20 分钟时间。 创建群集之后，便可以在门户中单击群集边栏选项卡以打开它。
 
-完成教程之后，可能要删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Apache Hadoop 群集](../hdinsight-administer-use-portal-linux.md#delete-clusters)。
+完成文章后，你可能想要删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 有关删除群集的说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Apache Hadoop 群集](../hdinsight-administer-use-portal-linux.md#delete-clusters)。
 
 要开始处理新 HBase 群集，可以按照[开始在 HDInsight 中将 Apache HBase 与 Apache Hadoop 配合使用](./apache-hbase-tutorial-get-started-linux.md)中的步骤进行操作。
 
@@ -216,7 +214,7 @@ ms.locfileid: "58199522"
     3. Expand **Computer Configuration**, expand **Administrative Templates**, expand **Network**, and then click **DNS Client**.
     - Set **Primary DNS Suffix** to the value obtained in step 2:
 
-        ![hdinsight.hbase.primary.dns.suffix](./media/apache-hbase-provision-vnet/PrimaryDNSSuffix.png)
+        ![hdinsight.hbase.primary.dns.suffix](./media/apache-hbase-provision-vnet/hdi-primary-dns-suffix.png)
     4. Click **OK**.
     5. Reboot the virtual machine.
 -->
@@ -234,7 +232,7 @@ ms.locfileid: "58199522"
 > 有关 Azure 虚拟网络中的名称解析的详细信息，包括如何使用自己的 DNS 服务器，请参阅[名称解析 (DNS)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已学习了如何创建 Apache HBase 群集。 若要了解更多信息，请参阅以下文章：
+本文介绍了如何创建 Apache HBase 群集。 若要了解更多信息，请参阅以下文章：
 
 * [HDInsight 入门](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [在 HDInsight 中使用空边缘节点](../hdinsight-apps-use-edge-node.md)

@@ -3,27 +3,26 @@ title: Azure AD 应用开发人员的支持和帮助选项 | Microsoft Docs
 description: 了解在创建与 Microsoft 标识（Azure Active Directory 和 Microsoft 帐户）集成的应用程序时，如何获取所遇到的开发相关问题的帮助和支持
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
-editor: ''
+author: rwike77
+manager: CelesteDG
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2019
-ms.author: celested
-ms.reviewer: jmprieur, dadobali
+ms.date: 05/23/2019
+ms.author: ryanwi
+ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de9b3e3535253724d068f806b219736f6889477
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501580"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66235337"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
@@ -48,11 +47,11 @@ ms.locfileid: "59501580"
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
 ```
 
-其中，*{Your Search Terms}* 对应于搜索关键字。
+其中， *{Your Search Terms}* 对应于搜索关键字。
 
 ## <a name="use-the-development-support-tools"></a>使用开发支持工具
 
-| 工具  | 描述  |
+| Tool  | 描述  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | 粘贴 ID 或访问令牌来解码声明名称和值。 |
 | [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)| 用于针对 Microsoft Graph API 发出请求和查看响应的工具。 |
@@ -82,10 +81,10 @@ Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代�
 
 如果发现了与库相关的 Bug 或问题，请在 GitHub 存储库中提出问题。 由于我们的库是开源的，因此也可提交拉取请求。
 
-若要查看库及其 GitHub 存储库的列表，请参阅以下文章：
+库和其 GitHub 存储库的列表，请参阅：
 
 * [ADAL](active-directory-authentication-libraries.md) 库和 GitHub 存储库
-* [MSAL](reference-v2-libraries.md) 库和 GitHub 存储库
+* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md)， [MSAL。Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)，并[MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc)库和 GitHub 存储库
 
 ## <a name="open-a-support-request"></a>提出支持请求
 

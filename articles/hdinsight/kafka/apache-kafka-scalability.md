@@ -1,20 +1,19 @@
 ---
 title: Apache Kafka 增加可伸缩性 - Azure HDInsight
 description: 了解如何在 Azure HDInsight 上为 Apache Kafka 群集配置托管磁盘以提高可伸缩性。
-services: hdinsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: ab80dd86e544127fc3f40f5459ef9a587c7cd511
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: HT
+ms.openlocfilehash: ef32a5d3a1439cded6cd092f076e7b26c178cb7a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581489"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122110"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上为 Apache Kafka 配置存储和可伸缩性
 
@@ -24,7 +23,7 @@ Kafka on HDInsight 在 HDInsight 群集中使用虚拟机的本地磁盘。 由�
 
 下图提供不带托管磁盘的 Kafka on HDInsight 与带托管磁盘的 Kafka on HDInsight 之间的比较：
 
-![显示每 VM 使用单个 VHD 与每 VM 使用多个托管磁盘的 Kafka on HDInsight 的图表](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
+![具有托管磁盘体系结构的 kafka](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
 ## <a name="configure-managed-disks-azure-portal"></a>配置托管磁盘：Azure 门户
 
@@ -35,7 +34,7 @@ Kafka on HDInsight 在 HDInsight 群集中使用虚拟机的本地磁盘。 由�
     > [!NOTE]  
     > 托管磁盘的类型可以为“标准”(HDD) 或“高级”(SSD)。 高级磁盘可与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
 
-    ![“群集大小”部分的图像，其中突出显示了每个工作节点的磁盘数](./media/apache-kafka-scalability/set-managed-disks-portal.png)
+    !["群集大小" 部分，其中突出显示了每个工作节点的磁盘](./media/apache-kafka-scalability/set-managed-disks-portal.png)
 
 ## <a name="configure-managed-disks-resource-manager-template"></a>配置托管磁盘：资源管理器模板
 

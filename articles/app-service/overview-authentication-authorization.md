@@ -4,28 +4,28 @@ description: 概念性参考和概述：Azure 应用服务的身份验证/授权
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: gwallace
 editor: ''
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 08/24/2018
-ms.author: mahender,cephalin
+ms.date: 08/12/2019
+ms.author: cephalin
+ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d914e3ad3043b2671e154d1616c6800f34415c11
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: e308b44fffff451daa92cbf19209a1bcbfd4bff6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402739"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087982"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 
 > [!NOTE]
-> 在此期间，AAD V2 （包括 MSAL） 不支持为 Azure 应用服务和 Azure Functions。 请记得回头检查更新。
+> 目前, 不支持 AAD V2 (包括 MSAL) Azure 应用服务和 Azure Functions。 请查看是否有更新。
 >
 
 Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应用、RESTful API、移动后端和 [Azure Functions](../azure-functions/functions-overview.md) 中编写少量的代码或根本无需编写代码，就能让用户登录和访问数据。 本文介绍应用服务如何帮助简化应用的身份验证和授权。 
@@ -55,7 +55,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ### <a name="user-claims"></a>用户声明
 
-对于所有语言框架，应用服务通过将用户声明注入请求标头，向代码提供这些声明。 对于 ASP.NET 4.6 应用，应用服务会在 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) 中填充经过身份验证的用户声明，使你能够遵循标准的 .NET 代码模式（包括 `[Authorize]` 属性）。 同样，对于 PHP 应用，应用服务会填充 `_SERVER['REMOTE_USER']` 变量。
+对于所有语言框架，应用服务通过将用户声明注入请求标头，向代码提供这些声明。 对于 ASP.NET 4.6 应用，应用服务会在 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) 中填充经过身份验证的用户声明，使你能够遵循标准的 .NET 代码模式（包括 `[Authorize]` 属性）。 同样，对于 PHP 应用，应用服务会填充 `_SERVER['REMOTE_USER']` 变量。 对于 Java 应用,[可从 Tomcat servlet 访问](containers/configure-language-java.md#authenticate-users-easy-auth)声明。
 
 对于 [Azure Functions](../azure-functions/functions-overview.md)，.NET 代码的 `ClaimsPrincipal.Current` 不会解冻，但仍可以在请求标头中找到用户声明。
 
@@ -82,7 +82,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 应用服务使用[联合标识](https://en.wikipedia.org/wiki/Federated_identity)，在其中，第三方标识提供者会自动管理用户标识和身份验证流。 默认提供五个标识提供者： 
 
-| 提供程序 | 登录终结点 |
+| 提供商 | 登录终结点 |
 | - | - |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
 | [Microsoft 帐户](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
@@ -90,7 +90,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 | [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
 
-对其中一个提供程序启用身份验证和授权时，其登录终结点可用于用户身份验证，以及验证来自提供程序的身份验证令牌。 可以轻松为用户提供其中任意数量的登录选项。 还可以集成其他标识提供者或[自己的自定义标识解决方案][custom-auth]。
+对其中一个提供程序启用身份验证和授权时，其登录终结点可用于用户身份验证，以及验证来自提供程序的身份验证令牌。 可以轻松为用户提供其中任意数量的登录选项。 你还可以集成其他标识提供程序或[你自己的自定义标识解决方案][custom-auth]。
 
 ## <a name="authentication-flow"></a>身份验证流
 
@@ -118,17 +118,17 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ## <a name="authorization-behavior"></a>授权行为
 
-在 [Azure 门户](https://portal.azure.com)中，可以使用多种行为配置应用服务授权。
+在[Azure 门户](https://portal.azure.com)中, 当传入请求未经过身份验证时, 你可以使用多种行为配置应用服务授权。
 
 ![](media/app-service-authentication-overview/authorization-flow.png)
 
 以下标题介绍了选项。
 
-### <a name="allow-all-requests-default"></a>允许所有请求（默认设置）
+### <a name="allow-anonymous-requests-no-action"></a>允许匿名请求 (无操作)
 
-身份验证和授权不由应用服务管理（禁用）。 
+此选项会将未经身份验证的流量授权到你的应用程序代码。 对于经过身份验证的请求，应用服务还会在 HTTP 标头中一起传递身份验证信息。 
 
-如果不需要身份验证和授权，或者想要编写自己的身份验证和授权代码，请选择此选项。
+使用此选项可以更灵活地处理匿名请求。 例如，可以向用户[提供多个登录提供程序](app-service-authentication-how-to.md#use-multiple-sign-in-providers)。 但是，必须编写代码。 
 
 ### <a name="allow-only-authenticated-requests"></a>仅允许经过身份验证的请求
 
@@ -136,11 +136,8 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 使用此选项不需要在应用中编写任何身份验证代码。 可以通过检查用户的声明来处理精细授权，例如角色特定的授权（请参阅[访问用户声明](app-service-authentication-how-to.md#access-user-claims)）。
 
-### <a name="allow-all-requests-but-validate-authenticated-requests"></a>允许所有请求，但验证已经过身份验证的请求
-
-选项为“允许匿名请求”。 此选项将在应用服务中启用身份验证和授权，但会推迟对应用程序代码所做的授权决策。 对于经过身份验证的请求，应用服务还会在 HTTP 标头中一起传递身份验证信息。 
-
-使用此选项可以更灵活地处理匿名请求。 例如，可以向用户[提供多个登录提供程序](app-service-authentication-how-to.md#use-multiple-sign-in-providers)。 但是，必须编写代码。 
+> [!CAUTION]
+> 以这种方式限制访问权限适用于对应用的所有调用, 对于需要公开提供的主页的应用, 与在许多单页应用程序中一样。
 
 ## <a name="more-resources"></a>更多资源
 

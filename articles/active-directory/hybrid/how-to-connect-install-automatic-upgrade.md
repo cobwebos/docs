@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003912"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60349808"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
 此功能是随内部版本 [1.1.105.0（于 2016 年 2 月发布）](reference-connect-version-history.md#111050)一起推出的。  此功能已在[内部版本 1.1.561](reference-connect-version-history.md#115610) 中更新，现在支持以前不支持的其他方案。
@@ -43,7 +43,7 @@ ms.locfileid: "58003912"
 | 已挂起 |只能由系统设置。 系统**目前没有**资格接收自动升级。 |
 | 已禁用 |自动升级已禁用。 |
 
-可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。 应该只有系统才能设置“暂停”状态。  之前 1.1.750.0 Set-adsyncautoupgrade cmdlet 将阻止自动升级如果自动升级状态已设置为 Suspended。 此功能现在已更改，因此它不会阻止自动升级。
+可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。   应该只有系统才能设置“暂停”状态。   在 1.1.750.0 之前，如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 会阻止自动升级。 此功能现已更改，不阻止自动升级。
 
 自动升级使用 Azure AD Connect Health 作为升级基础结构。 为使自动升级正常工作，请确保根据 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述，在代理服务器中打开 **Azure AD Connect Health** 的 URL。
 
@@ -98,7 +98,7 @@ ms.locfileid: "58003912"
 | UpgradeNotSupportedMultiForestSetup |正在连接到多个林。 快速安装只会连接到一个林。 |
 | UpgradeNotSupportedNonLocalDbInstall |使用的不是 SQL Server Express LocalDB 数据库。 |
 | UpgradeNotSupportedNonMsolAccount |[AD DS 连接器帐户](reference-connect-accounts-permissions.md#ad-ds-connector-account)不再是默认的 MSOL_ 帐户。 |
-| UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。 |
+| UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。  |
 | UpgradeNotSupportedPtaSignInMethod | 已选择“直通身份验证”作为登录方法。 |
 | UpgradeNotSupportedStagingModeEnabled |服务器已设置为[过渡模式](how-to-connect-sync-staging-server.md)。 |
 | UpgradeNotSupportedUserWritebackEnabled |已启用[用户写回](how-to-connect-preview.md#user-writeback)功能。 |

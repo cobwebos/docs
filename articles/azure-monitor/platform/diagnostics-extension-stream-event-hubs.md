@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: c2d577bd4c89046136a3465ff554e9662dd0ce19
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478121"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "64922831"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>使用事件中心流式处理热路径中的 Azure 诊断数据
 Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) 的指标和日志，并将结果传输到 Azure 存储。 从 2016 年 3 月 (SDK 2.9) 这一时间范围开始，可以将诊断发送到自定义数据源，并使用 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)在数秒内传输热路径数据。
@@ -45,7 +45,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 * 根据文章[事件中心入门](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)预配的事件中心命名空间
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>将 Azure 诊断连接到事件中心接收器
-默认情况下，Azure 诊断始终将日志和指标发送到 Azure 存储帐户。 应用程序也可以将数据发送到事件中心，方法是在 *.wadcfgx* 文件的 **PublicConfig** / **WadCfg** 元素下添加一个新的 **Sinks** 节。 在 Visual Studio 中，.wadcfgx 文件存储在以下路径中：“云服务项目” > “角色” > “(RoleName)” > “diagnostics.wadcfgx”文件。
+默认情况下，Azure 诊断始终将日志和指标发送到 Azure 存储帐户。 应用程序也可以将数据发送到事件中心，方法是在 *.wadcfgx* 文件的 **PublicConfig** / **WadCfg** 元素下添加一个新的 **Sinks** 节。 在 Visual Studio 中，.wadcfgx  文件存储在以下路径中：“云服务项目”   > “角色”   > “(RoleName)”   > “diagnostics.wadcfgx”  文件。
 
 ```xml
 <SinksConfig>
@@ -72,10 +72,10 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 
 事件中心 URL 在 [Azure 门户](https://go.microsoft.com/fwlink/?LinkID=213885)中的“事件中心”仪表板上显示。  
 
-“接收器”名称可以设置为任何有效的字符串，前提是在整个配置文件中一致地使用相同的值。
+“接收器”  名称可以设置为任何有效的字符串，前提是在整个配置文件中一致地使用相同的值。
 
 > [!NOTE]
-> 该部分中可能配置了其他接收器，例如 *applicationInsights*。 如果 **PrivateConfig** 部分中还对每个接收器进行了声明，Azure 诊断将允许定义一个或多个接收器。  
+> 该部分中可能配置了其他接收器，例如 *applicationInsights*。 Azure 诊断允许定义一个或多个接收器，前提是每个接收器也已在 **PrivateConfig** 节中声明。  
 >
 >
 
@@ -100,10 +100,10 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 }
 ```
 
-`SharedAccessKeyName` 值必须与已在**事件中心**命名空间中定义的共享访问签名 (SAS) 密钥和策略匹配。 浏览到 [Azure 门户](https://portal.azure.com)中的“事件中心”仪表板，单击“配置”选项卡，并设置具有“发送”权限的命名策略（例如“SendRule”）。 **StorageAccount** 也已在 **PrivateConfig** 中声明。 如果这里的值有效，就不需要更改。 在本示例中，我们将值保留为空，这表示下游资产将设置这些值。 例如，*ServiceConfiguration.Cloud.cscfg* 环境配置文件会设置适合环境的名称和密钥。  
+`SharedAccessKeyName` 值必须与已在**事件中心**命名空间中定义的共享访问签名 (SAS) 密钥和策略匹配。 浏览到 [Azure 门户](https://portal.azure.com)中的“事件中心”仪表板，单击“配置”  选项卡，并设置具有“发送”  权限的命名策略（例如“SendRule”）。 **StorageAccount** 也已在 **PrivateConfig** 中声明。 如果这里的值有效，就不需要更改。 在本示例中，我们将值保留为空，这表示下游资产将设置这些值。 例如，*ServiceConfiguration.Cloud.cscfg* 环境配置文件会设置适合环境的名称和密钥。  
 
 > [!WARNING]
-> 事件中心 SAS 密钥以纯文本形式存储在 *.wadcfgx* 文件中。 通常，系统会将此密钥签入源代码管理，或作为生成服务器中的资产提供，因此应该适当地保护它。 建议在此处使用具有“仅发送”权限的 SAS 密钥，使恶意用户只能写入事件中心，而无法侦听或进行管理。
+> 事件中心 SAS 密钥以纯文本形式存储在 *.wadcfgx* 文件中。 通常，系统会将此密钥签入源代码管理，或作为生成服务器中的资产提供，因此应该适当地保护它。 建议在此处使用具有“仅发送”  权限的 SAS 密钥，使恶意用户只能写入事件中心，而无法侦听或进行管理。
 >
 >
 
@@ -142,7 +142,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 }
 ```
 
-在以上示例中，接收器将应用到层次结构中的父级 PerformanceCounters 节点，这意味着所有子级 PerformanceCounters 将发送到事件中心。  
+在以上示例中，接收器将应用到层次结构中的父级 PerformanceCounters 节点，这意味着所有子级 PerformanceCounters 将发送到事件中心   。  
 
 ```xml
 <PerformanceCounters scheduledTransferPeriod="PT1M">
@@ -184,7 +184,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 }
 ```
 
-在上面的示例中，接收器仅应用于三个计数器：“已排队的请求数”、“拒绝的请求数”和“处理器时间百分比”。  
+在上面的示例中，接收器仅应用于三个计数器：“已排队的请求数”  、“拒绝的请求数”  和“处理器时间百分比”  。  
 
 以下示例演示开发人员如何限制发送的数据量，这些数据将作为此服务运行状况的关键指标。  
 
@@ -202,7 +202,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 在此示例中，接收器已应用到日志，并且只筛选为错误级别跟踪。
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>部署和更新云服务应用程序与诊断配置
-Visual Studio 提供最简单的路径供你部署应用程序和事件中心接收器配置。 要查看和编辑文件，请在 Visual Studio 中打开 *.wadcfgx* 文件，然后编辑并保存它。 路径为“云服务项目” > “角色” > “(RoleName)”“ > diagnostics.wadcfgx”。  
+Visual Studio 提供最简单的路径供你部署应用程序和事件中心接收器配置。 要查看和编辑文件，请在 Visual Studio 中打开 *.wadcfgx* 文件，然后编辑并保存它。 路径为“云服务项目”   > “角色”   > “(RoleName)”“   > diagnostics.wadcfgx”  。  
 
 此时，Visual Studio、Visual Studio Team System 中的所有部署和部署更新操作，以及所有基于 MSBuild 并使用 **/t:publish** 目标的命令或脚本，都会在打包过程中纳入 *.wadcfgx*。 此外，部署和更新会使用 VM 上适当的 Azure 诊断代理扩展将文件部署到 Azure。
 
@@ -286,10 +286,10 @@ namespace EventHubListener
     {
         static void Main(string[] args)
         {
-            string eventHubConnectionString = "Endpoint= <your connection string>”;
+            string eventHubConnectionString = "Endpoint= <your connection string>";
             string eventHubName = "<Event hub name>";
             string storageAccountName = "<Storage account name>";
-            string storageAccountKey = "<Storage account key>”;
+            string storageAccountKey = "<Storage account key>";
             string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccountName, storageAccountKey);
 
             string eventProcessorHostName = Guid.NewGuid().ToString();
@@ -310,7 +310,7 @@ namespace EventHubListener
 ## <a name="troubleshoot-event-hubs-sinks"></a>排查事件中心接收器问题
 * 事件中心不按预期显示传入或传出事件活动。
 
-    检查是否已成功预配事件中心。 *.wadcfgx* 中 **PrivateConfig** 部分的所有连接信息必须与门户中显示的资源值匹配。 请确保已在门户中定义 SAS 策略（本示例中为“SendRule”），并为其授予“发送”权限。  
+    检查是否已成功预配事件中心。 *.wadcfgx* 中 **PrivateConfig** 部分的所有连接信息必须与门户中显示的资源值匹配。 请确保已在门户中定义 SAS 策略（本示例中为“SendRule”），并为其授予“发送”  权限。  
 * 进行更新后，事件中心不再显示传入或传出事件活动。
 
     首先，确保事件中心和配置信息如先前所述的那样准确无误。 有时，系统会在部署更新时重置 **PrivateConfig**。 建议的解决方法是在项目中对 *.wadcfgx* 进行所有更改，并推送完整的应用程序更新。 如果不可行，请确保诊断更新推送完整的 **PrivateConfig**，包括 SAS 密钥。  

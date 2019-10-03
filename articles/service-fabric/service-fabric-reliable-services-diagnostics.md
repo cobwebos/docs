@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527044"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60772952"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>有状态 Reliable Services 的诊断功能
 Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件，这些事件可用于调试服务、提供对运行时运行方式的深入了解，以及帮助进行故障排除。
@@ -29,10 +29,10 @@ Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出
 
 可帮助收集和/或查看 EventSource 事件的工具和技术的示例包括：[PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)和 [Microsoft TraceEvent 库](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)。
 
-## <a name="events"></a>活动
+## <a name="events"></a>Events
 | 事件名称 | 事件 ID | 级别 | 事件说明 |
 | --- | --- | --- | --- |
-| StatefulRunAsyncInvocation |1 |信息性 |在服务 RunAsync 任务启动时发出 |
+| StatefulRunAsyncInvocation |第 |信息性 |在服务 RunAsync 任务启动时发出 |
 | StatefulRunAsyncCancellation |2 |信息性 |在服务 RunAsync 任务取消时发出 |
 | StatefulRunAsyncCompletion |3 |信息性 |在服务 RunAsync 任务完成时发出 |
 | StatefulRunAsyncSlowCancellation |4 |警告 |在服务 RunAsync 任务完成取消所用时间过长时发出 |

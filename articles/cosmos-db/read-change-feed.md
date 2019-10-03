@@ -4,14 +4,14 @@ description: 本文介绍了可用来读取和访问 Azure Cosmos DB 中的更�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: 459ed4b6f16d3cfe5bb792be7f063a1253a3006e
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 3d52ba1abc22aae6121ea6a36f943851dfcca7a0
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242033"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467672"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>读取 Azure Cosmos DB 更改源
 
@@ -23,7 +23,7 @@ ms.locfileid: "56242033"
 
 ## <a name="using-azure-functions"></a>使用 Azure Functions
 
-Azure Functions 是最简单且建议使用的选项。 在 Azure Functions 应用程序中创建 Azure Cosmos DB 触发器时，可以选择要连接的容器，每当该容器发生更改时，都会触发 Azure Function。 可在 Azure Functions 门户、Azure Cosmos DB 门户中或以编程方式使用 SDK 创建触发器。 Visual Studio 和 VS Code 支持编写 Azure 函数，你甚至可以使用 Azure Functions CLI 进行跨平台开发。 可以在桌面上编写和调试代码，然后单击一下鼠标部署函数。 若要了解详细信息，请参阅[使用 Azure Functions 进行无服务器数据库计算](serverless-computing-database.md)和[将更改源与 Azure Functions 配合使用](change-feed-functions.md)。
+Azure Functions 是最简单且建议使用的选项。 为 Cosmos DB 创建 Azure Functions 触发器时, 可以选择要连接的容器, 并在容器发生更改时触发 Azure 函数。 可在 Azure Functions 门户、Azure Cosmos DB 门户中或以编程方式使用 SDK 创建触发器。 Visual Studio 和 VS Code 支持编写 Azure 函数，你甚至可以使用 Azure Functions CLI 进行跨平台开发。 可以在桌面上编写和调试代码，然后单击一下鼠标部署函数。 若要了解详细信息，请参阅[使用 Azure Functions 进行无服务器数据库计算](serverless-computing-database.md)和[将更改源与 Azure Functions 配合使用](change-feed-functions.md)。
 
 ## <a name="using-the-change-feed-processor-library"></a>使用更改源处理器库
 

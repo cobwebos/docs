@@ -3,21 +3,22 @@ title: 教程 - 在云中生成容器映像 - Azure 容器注册表任务
 description: 本教程介绍如何使用 Azure 容器注册表任务（ACR 任务）在 Azure 中生成 Docker 容器映像，然后将其部署到 Azure 容器实例。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893701"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057491"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
 
-**ACR 任务**是 Azure 容器注册表中的功能套件，用于在 Azure 中以简化、高效的方式生成 Docker 容器映像。 本文介绍如何使用 ACR 任务的快速任务功能。
+**ACR 任务**是 Azure 容器注册表中的功能套件，用于在 Azure 中以简化、高效的方式生成 Docker 容器映像。 本文介绍如何使用 ACR 任务的快速任务功能  。
 
 “内部循环”开发周期是指编写代码、生成和测试应用程序，然后提交到源代码管理的迭代过程。 快速任务可将内部循环扩展到云中，同时提供成功生成验证并自动将成功生成的映像推送到容器注册表。 映像将在云中本机生成，其位置靠近注册表，可加快部署。
 
@@ -54,7 +55,7 @@ ms.locfileid: "58893701"
 
 创建存储库分支后，克隆分支然后输入包含本地克隆的目录。
 
-使用 `git` 克隆存储库，将“\<your-github-username\>”替换为你的 GitHub 用户名：
+使用 `git` 克隆存储库，将“\<your-github-username\>”替换为你的 GitHub 用户名  ：
 
 ```azurecli-interactive
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
@@ -74,7 +75,7 @@ cd acr-build-helloworld-node
 
 现已将源代码拉取到计算机中，请执行以下步骤来创建容器注册表并使用 ACR 任务生成容器映像。
 
-为使执行示例命令更轻松，本系列教程使用 shell 环境变量。 执行以下命令来设置 `ACR_NAME` 变量。 将“\<registry-name\>”替换为新容器注册表的唯一名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 本教程中创建的其他资源都基于该名称，因此仅需要修改该第一个变量。
+为使执行示例命令更轻松，本系列教程使用 shell 环境变量。 执行以下命令来设置 `ACR_NAME` 变量。 将“\<registry-name\>”替换为新容器注册表的唯一名称  。 注册表名称在 Azure 中必须唯一，仅包含小写字母，并且包含 5-50 个字母数字字符。 本教程中创建的其他资源都基于该名称，因此仅需要修改该第一个变量。
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>
@@ -89,7 +90,7 @@ az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-创建注册表后，使用 ACR 任务从示例代码生成容器映像。 执行 [az acr build][az-acr-build] 命令以执行快速任务：
+创建注册表后，使用 ACR 任务从示例代码生成容器映像。 执行 [az acr build][az-acr-build] 命令以执行快速任务  ：
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
@@ -191,7 +192,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 现在需要创建服务主体，并将其凭据存储在 Key Vault 中。
 
-请使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令创建服务主体，使用 [az keyvault secret set][az-keyvault-secret-set] 将服务主体的密码存储在保管库中：
+请使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令创建服务主体，使用 [az keyvault secret set][az-keyvault-secret-set] 将服务主体的**密码**存储在保管库中：
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)
@@ -206,9 +207,9 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-上述命令中的 `--role` 参数使用“acrpull”角色配置服务主体，该角色授予其对注册表的只拉取访问权限。 若要同时授予推送和拉取访问权限，请将 `--role` 参数更改为“acrpush”。
+上述命令中的 `--role` 参数使用“acrpull”  角色配置服务主体，该角色授予其对注册表的只拉取访问权限。 若要同时授予推送和拉取访问权限，请将 `--role` 参数更改为“acrpush”  。
 
-接下来，将服务主体的 appId（传递给 Azure 容器注册表用于身份验证的“用户名”）存储在保管库中：
+接下来，将服务主体的 appId（传递给 Azure 容器注册表用于身份验证的“用户名”）存储在保管库中   ：
 
 ```azurecli-interactive
 # Store service principal ID in AKV (the registry *username*)
@@ -266,7 +267,7 @@ acr-tasks-myregistry.eastus.azurecontainer.io
 
 ### <a name="verify-the-deployment"></a>验证部署
 
-若要观看容器的启动过程，请使用 [az container attach][az-container-attach] 命令：
+若要查看容器的启动过程，请使用 [az container attach][az-container-attach] 命令：
 
 ```azurecli-interactive
 az container attach --resource-group $RES_GROUP --name acr-tasks
@@ -300,7 +301,7 @@ Server running at http://localhost:80
 az container delete --resource-group $RES_GROUP --name acr-tasks
 ```
 
-若要删除本教程中创建的所有资源，包括容器注册表、密钥保管库和服务主体，请运行以下命令。 但是，本系列的[下一个教程](container-registry-tutorial-build-task.md)也会使用这些资源，因此，如果直接前往下一个教程，则可以保留这些资源。
+若要删除本教程中创建的所有资源，包括容器注册表、密钥保管库和服务主体，请运行以下命令  。 但是，本系列的[下一个教程](container-registry-tutorial-build-task.md)也会使用这些资源，因此，如果直接前往下一个教程，则可以保留这些资源。
 
 ```azurecli-interactive
 az group delete --resource-group $RES_GROUP
@@ -309,7 +310,7 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 ## <a name="next-steps"></a>后续步骤
 
-使用快速任务测试内部循环后，请配置一个生成任务，以便在将源代码提交到 Git 存储库时触发容器映像生成：
+使用快速任务测试内部循环后，请配置一个生成任务，以便在将源代码提交到 Git 存储库时触发容器映像生成  ：
 
 > [!div class="nextstepaction"]
 > [使用任务触发自动生成](container-registry-tutorial-build-task.md)

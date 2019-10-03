@@ -1,43 +1,87 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure AD 身份验证文档
+### YamlMime:Landing
+title: Azure Active Directory 身份验证文档
+summary: 了解如何管理和部署 Azure Active Directory 自助服务密码重置、多重身份验证、自定义禁止密码列表和智能锁定。
 metadata:
-  document_id: null
   title: Azure Active Directory 身份验证文档
   description: 了解如何管理和部署 Azure Active Directory 自助服务密码重置、多重身份验证、自定义禁止密码列表和智能锁定。
   services: active-directory
-  ms.subservice: authentication
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: authentication
   ms.topic: landing-page
-  ms.date: 07/19/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 了解如何部署和管理 Azure Active Directory 自助服务密码重置、多重身份验证、自定义禁止密码列表和智能锁定。 这些功能结合在一起，使用一系列的验证方法，在提供简单登录过程的同时实现增强的身份验证。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何启用自助服务密码重置，以减少用户致电支持人员的次数。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_protect.png
-            text: 启用自助服务密码重置
-            href: 'https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr'
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何为组织启用简单、安全的登录过程。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/authentication/tutorial-sspr-pilot">启用自助服务密码重置试点</a>
-          - html: <a href="/azure/active-directory/authentication/tutorial-mfa-applications">要求对 Azure 门户进行 MFA</a>
-          - html: <a href="/azure/active-directory/authentication/tutorial-enable-writeback">启用自助服务密码重置本地集成</a>
-          - html: <a href="/azure/active-directory/authentication/tutorial-sspr-windows">启用 Windows 10 密码重置</a>
-          - html: <a href="/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa">与 Azure Identity Protection 集成</a>
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: a9c893f8549562c4628220cbd674eea9986e5cbb
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70124856"
+landingContent:
+- title: 关于身份验证
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是身份验证？
+      url: overview-authentication.md
+    - text: 有哪些身份验证方法？
+      url: concept-authentication-methods.md
+    - text: 安全信息注册
+      url: concept-registration-mfa-sspr-combined.md
+    - text: 什么是无密码？
+      url: concept-authentication-passwordless.md
+- title: 部署自助密码重置
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 自助式密码重置的工作原理
+      url: concept-sspr-howitworks.md
+    - text: 密码写回
+      url: concept-sspr-writeback.md
+  - linkListType: quickstart
+    links:
+    - text: 自助式密码重置快速入门
+      url: quickstart-sspr.md
+  - linkListType: deploy
+    links:
+    - text: 部署 Azure AD 自助式密码重置
+      url: howto-sspr-deployment.md
+    - text: 启用密码写回
+      url: howto-sspr-writeback.md
+    - text: 从 Windows 登录屏幕启用密码重置
+      url: howto-sspr-windows.md
+- title: 启用 Azure 多重身份验证
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 多重身份验证的工作原理
+      url: concept-mfa-howitworks.md
+  - linkListType: tutorial
+    links:
+    - text: 针对特定应用程序试点 Azure MFA
+      url: tutorial-mfa-applications.md
+    - text: 使用风险检测触发多重身份验证和密码更改
+      url: tutorial-risk-based-sspr-mfa.md
+  - linkListType: deploy
+    links:
+    - text: 部署 Azure 多重身份验证
+      url: howto-mfa-getstarted.md
+    - text: 使用 NPS 扩展集成本地应用程序
+      url: howto-mfa-nps-extension.md
+- title: 部署 Azure AD 密码保护
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 在云中消除弱密码
+      url: concept-password-ban-bad.md
+    - text: 在本地消除弱密码
+      url: concept-password-ban-bad-on-premises.md
+  - linkListType: get-started
+    links:
+    - text: 配置禁止的密码列表
+      url: howto-password-ban-bad-configure.md
+  - linkListType: how-to-guide
+    links:
+    - text: 部署 Azure AD 密码保护
+      url: howto-password-ban-bad-on-premises-deploy.md

@@ -3,24 +3,26 @@ title: Azure 数据工厂中的 Web 活动 | Microsoft Docs
 description: 了解如何使用 Web 活动（数据工厂支持的控制流活动之一）从管道调用 REST 终结点。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.author: shlo
-ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
-ms.translationtype: HT
+ms.openlocfilehash: 73770e559af8a999c17fff5ea1aa6ee53ac17e83
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214294"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141587"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
 Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
+
+> [!NOTE]
+> Web 活动只能调用公开显示的 Url。 专用虚拟网络中承载的 Url 不支持此方法。
 
 ## <a name="syntax"></a>语法
 
@@ -61,15 +63,15 @@ Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必填
 -------- | ----------- | -------------- | --------
-名称 | Web 活动的名称 | String | 是
+name | Web 活动的名称 | String | 是
 type | 必须设置为 **WebActivity**。 | String | 是
-方法 | 目标终结点的 Rest API 方法。 | 字符串。 <br/><br/>支持的类型：“GET”、“POST”、“PUT” | 是
+method | 目标终结点的 Rest API 方法。 | 字符串。 <br/><br/>支持的类型：“GET”、“POST”、“PUT” | 是
 url | 目标终结点和路径 | 字符串（或带有 resultType 字符串的表达式）。 如果活动在 1 分钟内未收到终结点的响应，则会超时并显示错误。 | 是
 headers | 发送到请求的标头。 例如，若要在请求中设置语言和类型：`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 字符串（或带有 resultType 字符串的表达式） | 是，需要内容类型标头。 `"headers":{ "Content-Type":"application/json"}`
-body | 表示要发送到终结点的有效负载。  | 字符串（或带有 resultType 字符串的表达式）。 <br/><br/>请参阅[请求有效负载架构](#request-payload-schema)部分中的请求有效负载架构。 | POST/PUT 方法所必需。
-authentication | 用于调用该终结点的身份验证方法。 支持的类型为“Basic”或“ClientCertificate”。 有关详细信息，请参阅[身份验证](#authentication)部分。 如果不需要身份验证，则排除此属性。 | 字符串（或带有 resultType 字符串的表达式） | 否
+正文 | 表示要发送到终结点的有效负载。  | 字符串（或带有 resultType 字符串的表达式）。 <br/><br/>请参阅[请求有效负载架构](#request-payload-schema)部分中的请求有效负载架构。 | POST/PUT 方法所必需。
+身份验证 | 用于调用该终结点的身份验证方法。 支持的类型为“Basic”或“ClientCertificate”。 有关详细信息，请参阅[身份验证](#authentication)部分。 如果不需要身份验证，则排除此属性。 | 字符串（或带有 resultType 字符串的表达式） | 否
 datasets | 传递给终结点的数据集列表。 | 数据集引用数组。 可以是空数组。 | 是
 linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用数组。 可以是空数组。 | 是
 
@@ -81,7 +83,7 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 | 值类型 | 请求正文 | 响应正文 |
 |---|---|---|
 |JSON 对象 | 支持 | 支持 |
-|JSON 数组 | 支持 <br/>（目前，JSON 数组不作为错误结果使用。 正在运行修补程序。） | 不支持 |
+|JSON 阵列 | 支持 <br/>（目前，JSON 数组不作为错误结果使用。 正在运行修补程序。） | 不支持 |
 | JSON 值 | 支持 | 不支持 |
 | 非 JSON 类型 | 不支持 | 不支持 |
 ||||

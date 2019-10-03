@@ -1,5 +1,5 @@
 ---
-title: 在用户定义的 C# 代码中调试失败的 Azure Data Lake U-SQL 作业
+title: Azure Data Lake C# U-SQL 作业的调试代码
 description: 本文介绍如何使用针对 Visual Studio 的 Azure Data Lake 工具调试 U-SQL 失败顶点。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 5417f66696191cebadc2af9c6d634419a0eb8e5b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 72239fc1679d2ebbfd9c9b5be6b79b58efb760cb
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526446"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315813"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>调试失败 U-SQL 作业的用户定义 C# 代码
 
@@ -28,7 +28,7 @@ U-SQL 使用 C# 提供扩展性模型。 在 U-SQL 脚本中，可以轻松调�
 >
 
 > [!IMPORTANT]
-> Visual Studio 使用此功能需要以下两个更新：[Microsoft Visual C++ 2015 Redistributable 更新 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840)并[Windows 通用 C 运行时](https://www.microsoft.com/download/details.aspx?id=50410)。
+> Visual Studio 需要以下两个更新才能使用此功能：[Microsoft Visual C++ 2015 可再发行更新 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840)和[适用于 Windows 的通用 C 运行时](https://www.microsoft.com/download/details.aspx?id=50410)。
 >
 
 ## <a name="download-failed-vertex-to-local-machine"></a>将失败顶点下载到本地计算机
@@ -80,7 +80,7 @@ U-SQL 使用 C# 提供扩展性模型。 在 U-SQL 脚本中，可以轻松调�
 
 2. 获取 **FailedVertexDebugHost** 项目的项目文件夹路径。 
 
-3. 右键单击添加的程序集源代码项目，选择“属性”，选择左侧的“生成”选项卡，将复制的以 \bin\debug 结尾的路径粘贴为“输出”中的“输出路径”。 最终输出路径就像`<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`。
+3. 右键单击添加的程序集源代码项目，选择“属性”，选择左侧的“生成”选项卡，将复制的以 \bin\debug 结尾的路径粘贴为“输出”中的“输出路径”。 最终输出路径类似于`<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`。
 
     ![Azure Data Lake Analytics U-SQL调试设置 pdb 路径](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 

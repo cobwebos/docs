@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 6b1029c5532e106c269b47e6e184b9c93faf8d09
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 93efd6e53470fb78bb6d823652437e7a37c33732
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681414"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640572"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>针对 Azure IoT 中心设备管理，使用适用于 Azure CLI 的 IoT 扩展
 
@@ -23,7 +23,7 @@ ms.locfileid: "59681414"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)是一个新的开放源代码 IoT 扩展，它增强了 [Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) 的功能。 Azure CLI 包含用于与 Azure 资源管理器和管理终结点进行交互的命令。 例如，可使用 Azure CLI 创建 Azure VM 或 IoT 中心。 CLI 扩展使 Azure 服务能够扩展 Azure CLI，从而可访问其他特定于服务的功能。 IoT 扩展为 IoT 开发人员提供了面向所有 IoT 中心、IoT Edge 和 IoT 中心设备预配服务功能的命令行访问。
+[Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)是一个新的开源 IoT 扩展, 它将添加到[Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)的功能中。 Azure CLI 包含用于与 Azure 资源管理器和管理终结点进行交互的命令。 例如，可使用 Azure CLI 创建 Azure VM 或 IoT 中心。 CLI 扩展使 Azure 服务能够扩展 Azure CLI，从而可访问其他特定于服务的功能。 IoT 扩展为 IoT 开发人员提供了对所有 IoT 中心、IoT Edge 和 IoT 中心设备预配服务功能的命令行访问。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -33,7 +33,7 @@ ms.locfileid: "59681414"
 | 孪生所需属性    | 让设备进入特定状态，例如将 LED 设置为绿色，或将遥测发送间隔设置为 30 分钟。         |
 | 孪生报告属性   | 获取报告的设备状态。 例如，设备报告 LED 现在正在闪烁。                                    |
 | 孪生标记                  | 将设备特定的元数据存储在云中。 例如，存储在自动售货机的部署位置。                         |
-| 设备孪生查询        | 查询所有设备孪生以检索符合任意条件的设备孪生，例如确定可供使用的设备。 |
+| 设备孪生查询        | 查询所有设备孪生, 以使用任意条件检索这些孪生, 如确定可供使用的设备。 |
 
 有关这些选项的差异和使用指导的更详细说明，请参阅[设备到云通信指南](iot-hub-devguide-d2c-guidance.md)和[云到设备通信指南](iot-hub-devguide-c2d-guidance.md)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "59681414"
 
 ## <a name="what-you-learn"></a>学习内容
 
-了解在开发计算机上通过各种管理选项使用适用于 Azure CLI 的 IoT 扩展。
+你将了解如何将 IoT 扩展用于适用于你的开发计算机上的各种管理选项的 Azure CLI。
 
 ## <a name="what-you-do"></a>准备工作
 
@@ -49,7 +49,7 @@ ms.locfileid: "59681414"
 
 ## <a name="what-you-need"></a>所需条件
 
-* 完成[Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程中; 例如， [Raspberry Pi 与 node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这些涵盖以下要求::
+* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这些项涵盖以下要求:
 
   - 一个有效的 Azure 订阅。
   - 已在订阅中创建一个 Azure IoT 中心。
@@ -59,11 +59,14 @@ ms.locfileid: "59681414"
 
 * [Python 2.7x 或 Python 3.x](https://www.python.org/downloads/)
 
-* Azure CLI。 如需进行安装，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 Azure CLI 版本必须至少是 2.0.24 或更高版本。 请使用 `az –version` 验证版本。 
+<!-- I'm not sure we need all this info, so comment out this include for now. Robin 7.26.2019
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)] -->
+
+* Azure CLI。 如需进行安装，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 Azure CLI 版本必须至少是 2.0.24 或更高版本。 请使用 `az –version` 验证版本。
 
 * 安装 IoT 扩展。 最简单的方法是运行 `az extension add --name azure-cli-iot-ext`。 [IoT 扩展自述文件](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md)介绍了该扩展的多种安装方法。
 
-## <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
+## <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
 
 通过运行以下命令登录到 Azure 帐户：
 
@@ -99,7 +102,7 @@ az iot hub device-twin update -n <your hub name> \
 az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
-其中一个孪生报告属性为 $metadata.$lastUpdated，它显示设备应用上次更新其报告属性集的时间。
+其中一个克隆的已报告属性是 $metadata。 $lastUpdated, 它显示设备应用程序更新其报告属性集的最后时间。
 
 ## <a name="device-twin-tags"></a>设备孪生标记
 

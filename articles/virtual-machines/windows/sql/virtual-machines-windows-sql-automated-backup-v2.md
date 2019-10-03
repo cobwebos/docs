@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 540acd1735eb539ecaac468e74511ba5f751278f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 066c154c0ba3e62ac4f441e268c657dd5e991220
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780008"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102122"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>适用于 Azure 虚拟机（资源管理器）的自动备份 v2
 
@@ -32,7 +31,7 @@ ms.locfileid: "57780008"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要使用自动备份 v2，请查看以下先决条件：
 
 **操作系统**：
@@ -52,7 +51,7 @@ ms.locfileid: "57780008"
 
 - 目标数据库必须使用完整恢复模式。 有关对备份使用完整恢复模型产生的影响的详细信息，请参阅 [Backup Under the Full Recovery Model](https://technet.microsoft.com/library/ms190217.aspx)（使用完整恢复模型的备份）。
 - 系统数据库不需要使用完整恢复模型。 但是，如果需要为模型或 MSDB 创建日志备份，则必须使用完整恢复模型。
-- 目标数据库必须位于任一默认 SQL Server 实例上，或[正确安装](virtual-machines-windows-sql-server-iaas-faq.md#administration)命名实例。 
+- 目标数据库必须位于默认 SQL Server 实例上，或者位于[正确安装的](virtual-machines-windows-sql-server-iaas-faq.md#administration)命名实例上。 
 
 > [!NOTE]
 > 自动备份依赖于 **SQL Server IaaS 代理扩展**。 当前的 SQL 虚拟机库映像默认添加此扩展。 有关详细信息，请参阅 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。
@@ -67,7 +66,7 @@ ms.locfileid: "57780008"
 | **自动备份** | 启用/禁用（已禁用） | 为运行 SQL Server 2016/2017 Developer、Standard 或 Enterprise 的 Azure VM 启用或禁用自动备份。 |
 | **保留期** | 1-30 天（30 天） | 保留备份的天数。 |
 | **存储帐户** | Azure 存储帐户 | 用于在 Blob 存储中存储自动备份文件的 Azure 存储帐户。 在此位置创建容器，用于存储所有备份文件。 备份文件命名约定包括日期、时间和数据库 GUID。 |
-| **加密** |启用/禁用（已禁用） | 启用或禁用加密。 启用加密时，用于还原备份的证书位于指定的存储帐户中。 该证书与命令约定使用同一个“自动备份”容器。 如果密码发生更改，将使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
+| **加密** |启用/禁用（已禁用） | 启用或禁用加密。 启用加密时，用于还原备份的证书位于指定的存储帐户中。 该证书使用具有相同命名约定的相同**自动备份**容器。 如果密码发生更改，将使用该密码生成新证书，但旧证书在备份之前仍会还原。 |
 | **密码** |密码文本 | 加密密钥的密码。 仅当启用了加密时才需要此设置。 若要还原加密的备份，必须具有创建该备份时使用的正确密码和相关证书。 |
 
 ### <a name="advanced-settings"></a>高级设置
@@ -89,7 +88,7 @@ ms.locfileid: "57780008"
 
 在星期一，用户使用以下设置启用了自动备份 v2：
 
-- 备份计划：**手动**
+- 备份计划：**Manual**
 - 完整备份频率：每周
 - 完整备份开始时间：01:00
 - 完整备份时段：1 小时
@@ -108,7 +107,7 @@ ms.locfileid: "57780008"
 在星期一，用户使用以下设置启用了自动备份 v2：
 
 - 备份计划：手动
-- 完整备份频率：每日
+- 完整备份频率：每天
 - 完整备份开始时间：22:00
 - 完整备份时段：6 小时
 
@@ -127,7 +126,7 @@ ms.locfileid: "57780008"
 
 在资源管理器部署模型中创建新的 SQL Server 2016 或 2017 虚拟机时，使用 Azure 门户配置自动备份 v2。
 
-在“SQL Server 设置”窗格中，选择“自动备份”。 下面的 Azure 门户屏幕截图显示了“SQL 自动备份”设置。
+在“SQL Server 设置”选项卡中，选择“自动备份”下的“启用”。 下面的 Azure 门户屏幕截图显示了“SQL 自动备份”设置。
 
 ![Azure 门户中的 SQL 自动备份配置](./media/virtual-machines-windows-sql-automated-backup-v2/automated-backup-blade.png)
 
@@ -136,15 +135,14 @@ ms.locfileid: "57780008"
 
 ## <a name="configure-existing-vms"></a>配置现有 VM
 
-对于现有的 SQL Server 虚拟机，请选择 SQL Server 虚拟机。 然后选择 VM“设置”的“SQL Server 配置”部分。
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+对于现有 SQL Server 虚拟机, 请导航到[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource), 然后选择 "**备份**" 以配置自动备份。
 
 ![现有 VM 的 SQL 自动备份](./media/virtual-machines-windows-sql-automated-backup-v2/sql-server-configuration.png)
 
-在“SQL Server 配置”设置的“自动备份”部分，单击“编辑”按钮。
 
-![为现有 VM 配置 SQL 自动备份](./media/virtual-machines-windows-sql-automated-backup-v2/sql-server-configuration-edit.png)
-
-完成后，单击“SQL Server 配置”设置底部的“确定”按钮保存更改。
+完成后, 单击 "**备份**设置" 页底部的 "**应用**" 按钮保存所做的更改。
 
 首次启用自动备份时，Azure 会在后台配置 SQL Server IaaS 代理。 在此期间，Azure 门户可能不会显示自动备份已配置。 请等待几分钟，以便安装和配置代理。 之后，Azure 门户将反映出新设置。
 
@@ -169,7 +167,7 @@ $resourcegroupname = "resourcegroupname"
 
 如果已安装 SQL Server IaaS 代理扩展，应会看到列出的“SqlIaaSAgent”或“SQLIaaSExtension”。 此外，该扩展的 **ProvisioningState** 应显示“Succeeded”。 
 
-如果未安装或未能预配该扩展，可使用以下命令来安装。 除了 VM 名称和资源组以外，还必须指定 VM 所在的区域 (**$region**)。
+如果未安装或未能预配该扩展，可使用以下命令来安装。 除了 VM 名称和资源组以外，还必须指定 VM 所在的区域 ( **$region**)。
 
 ```powershell
 $region = “EASTUS2”
@@ -321,7 +319,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 可通过两种主要方式监视 SQL Server 2016/2017 上的自动备份。 由于自动备份使用 SQL Server 托管备份功能，同样的监视方法对两者均适用。
 
-首先，可通过调用 [msdb.managed_backup.sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql) 轮询状态。 或查询 [msdb.managed_backup.fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) 表值函数。
+首先，可通过调用 [msdb.managed_backup.sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql) 轮询状态。 或查询[managed_backup. fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql)表值函数。
 
 另一种方式是利用内置的数据库邮件功能进行通知。
 

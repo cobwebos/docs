@@ -4,24 +4,23 @@ description: 本教程介绍如何通过 Azure CLI 使用 Azure Key Vault 中存
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7d372dfa845459a63de8ccc1b81e7b1319f47e34
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 6b6a5651bde0666b224be04d62aeb8b2dfc9c193
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524356"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081485"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>教程：在 Azure 中使用 Key Vault 中存储的 SSL 证书保护 Linux 虚拟机上的 Web 服务器
 若要保护 Web 服务器，可以使用安全套接字层 (SSL) 证书来加密 Web 流量。 这些 SSL 证书可存储在 Azure Key Vault 中，并可安全部署到 Azure 中的 Linux 虚拟机 (VM)。 本教程介绍如何执行下列操作：
@@ -78,13 +77,13 @@ secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm secret format --secrets "$secret")
+vm_secret=$(az vm secret format --secrets "$secret" -g myResourceGroupSecureWeb --keyvault $keyvault_name)
 ```
 
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>创建 cloud-init 配置以保护 NGINX
 [Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 在初始启动期间运行 cloud-init 时，无需额外的步骤且无需代理来应用配置。
 
-创建 VM 时，证书和密钥都将存储在受保护的 /var/lib/waagent/ 目录中。 若要自动将证书添加到 VM 并配置 Web 服务器，请使用 cloud-init。 本示例会安装并配置 NGINX Web 服务器。 可以使用相同的过程来安装和配置 Apache。 
+创建 VM 时，证书和密钥都将存储在受保护的 /var/lib/waagent/  目录中。 若要自动将证书添加到 VM 并配置 Web 服务器，请使用 cloud-init。 本示例会安装并配置 NGINX Web 服务器。 可以使用相同的过程来安装和配置 Apache。 
 
 创建名为 *cloud-init-web-server.txt* 的文件并粘贴以下配置：
 
@@ -137,7 +136,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>测试 Web 应用是否安全
-现在可以打开 Web 浏览器，并在地址栏中输入“https:\/\/\<publicIpAddress>”。 在 VM 创建过程中提供自己的公共 IP 地址。 若使用自签名的证书，请接受安全警告：
+现在可以打开 Web 浏览器，并在地址栏中输入“https:\/\/\<publicIpAddress>”  。 在 VM 创建过程中提供自己的公共 IP 地址。 若使用自签名的证书，请接受安全警告：
 
 ![接受 Web 浏览器安全警告](./media/tutorial-secure-web-server/browser-warning.png)
 

@@ -13,27 +13,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: willzhan, dwgeo
-ms.openlocfilehash: 55d59871ee72f755fcd881e4f89e56e6d6d1d84e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: willzhan
+ms.reviewer: dwgeo
+ms.openlocfilehash: 694cdf054f74db50bcf1781e60df0f93810ae60c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995313"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875191"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>适用于 Android 的脱机 Widevine 流式处理  
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="选择你使用的媒体服务的版本:"]
 > * [第 3 版](../latest/offline-widevine-for-android.md)
 > * [第 2 版](offline-widevine-for-android.md)
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 除了保护联机流式处理的内容之外，媒体内容订阅和租赁服务还提供可下载的内容，供用户在未连接到 Internet 时使用。 可以将内容下载到手机或平板电脑上，以便在飞行中与网络断开连接时，在飞行模式下播放。 可能需要下载内容的其他情况包括：
 
-- 某些内容提供程序可能不允许在某个国家/地区边界之外进行 DRM 许可证传送。 如果用户想在国外旅行期间查看内容，需要脱机下载。
-- 在某些国家/地区，Internet 可用性和/或宽带受到限制。 为获得满意的观看体验，用户可以选择下载观看高分辨率的内容。
+- 某些内容提供商可能不允许 DRM 许可证交付超出国家/地区的边框。 如果用户想在国外旅行期间查看内容，需要脱机下载。
+- 在某些国家/地区, Internet 可用性和/或带宽受到限制。 为获得满意的观看体验，用户可以选择下载观看高分辨率的内容。
 
 本文讨论如何在 Android 设备上实现受 Widevine 保护的 DASH 内容的脱机模式播放。 脱机 DRM 可用于为内容提供订阅、出租和购买模型，让使用用户服务的客户能够在与 Internet 断开连接时轻松获取内容。
 
@@ -68,9 +69,9 @@ ms.locfileid: "59995313"
 2. ContentKeyAuthorizationPolicyRestriction，指定在许可证传送服务中授权内容密钥传送的方式（开放授权或令牌授权）
 3. DRM (Widevine) 许可证模板
 
-若要为 Widevine 许可证启用“脱机”模式，需要配置 [Widevine 许可证模板](media-services-widevine-license-template-overview.md)。 在 policy_overrides 对象中，将 can_persist 属性设置为 true（默认值为 false）。 
+若要为 Widevine 许可证启用“脱机”  模式，需要配置 [Widevine 许可证模板](media-services-widevine-license-template-overview.md)。 在 policy_overrides 对象中，将 can_persist 属性设置为 true（默认值为 false）    。 
 
-下面的代码示例使用 .NET 来为 Widevine 许可证启用“脱机”模式。 此代码基于 [Using PlayReady and/or Widevine Dynamic Common Encryption with .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)（将 PlayReady 和/或 Widevine 动态通用加密与 .NET 结合使用）示例。 
+下面的代码示例使用 .NET 来为 Widevine 许可证启用“脱机”模式  。 此代码基于 [Using PlayReady and/or Widevine Dynamic Common Encryption with .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)（将 PlayReady 和/或 Widevine 动态通用加密与 .NET 结合使用）示例。 
 
 ```
 private static string ConfigureWidevineLicenseTemplateOffline(Uri keyDeliveryUrl)
@@ -128,9 +129,9 @@ ExoPlayer 2.6 和更高版本包括许多支持脱机 Widevine DRM 播放的类�
 
 ### <a name="working-with-older-android-devices"></a>使用较旧的 Android 设备
 
-对于某些较旧的 Android 设备，必须设置以下 policy_overrides 属性（在 [Widevine 许可证模板](media-services-widevine-license-template-overview.md) 中定义）的值：rental_duration_seconds、playback_duration_seconds 和license_duration_seconds。 此外，也可以将它们设置为零，表示无限/无限制的持续时间。  
+对于某些较旧的 Android 设备，必须设置以下 policy_overrides 属性（在 [Widevine 许可证模板](media-services-widevine-license-template-overview.md) 中定义）的值：rental_duration_seconds、playback_duration_seconds 和license_duration_seconds     。 此外，也可以将它们设置为零，表示无限/无限制的持续时间。  
 
-值的设置须避免整数溢出 bug。 有关此问题的详细说明，请参阅 https://github.com/google/ExoPlayer/issues/3150 和 https://github.com/google/ExoPlayer/issues/3112。 <br/>如果未对值进行显式设置，则会向 PlaybackDurationRemaining 和 LicenseDurationRemaining 分配非常大的值（例如 9223372036854775807，即 64 位整数的最大正值）。 结果，Widevine 许可证显示为过期，因此不会进行解密。 
+值的设置须避免整数溢出 bug。 有关此问题的详细说明，请参阅 https://github.com/google/ExoPlayer/issues/3150 和 https://github.com/google/ExoPlayer/issues/3112 。 <br/>如果未对值进行显式设置，则会向 PlaybackDurationRemaining 和 LicenseDurationRemaining 分配非常大的值（例如 9223372036854775807，即 64 位整数的最大正值）   。 结果，Widevine 许可证显示为过期，因此不会进行解密。 
 
 Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.0 是首个旨在完全支持 ARMv8（[高级 RISC 计算机](https://en.wikipedia.org/wiki/ARM_architecture)）和 64 位平台的 Android 版本，而 Android 4.4 KitKat 最初设计用于支持 ARMv7 和 32 位平台，与其他较旧的 Android 版本相同。
 
@@ -156,7 +157,7 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 
 上面的开源 PWA 应用是在 Node.js 中编写的。 如果希望在 Ubuntu 服务器上托管自己的版本，请注意以下可能会阻止播放的常见问题：
 
-1. CORS 问题：示例应用中的示例视频托管在 https://storage.googleapis.com/biograf-video-files/videos/ 中。 Google 已为其托管在 Google 云存储桶中的所有测试示例设置了 CORS。 它们会使用 CORS 标头，显式指定 CORS 条目： https://biograf-155113.appspot.com（google 托管其示例的域），从而阻止任何其他站点的访问。 如果尝试访问，将看到以下 HTTP 错误：无法加载 https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: 请求的资源中没有出现“Access-Control-Allow-Origin”标头。 原点 https:\//13.85.80.81:8080 因此不允许访问。 如果非跳转响应可满足需求，请将请求的模式设置为“no-cors”，以便在禁用 CORS 的情况下提取资源。
+1. CORS 问题：示例应用中的示例视频托管在 https://storage.googleapis.com/biograf-video-files/videos/ 中。 Google 已为其托管在 Google 云存储桶中的所有测试示例设置了 CORS。 它们会使用 CORS 标头，显式指定 CORS 条目： https://biograf-155113.appspot.com （google 托管其示例的域），从而阻止任何其他站点的访问。 如果尝试访问，将看到以下 HTTP 错误：无法加载 https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: 请求的资源中没有出现“Access-Control-Allow-Origin”标头。 因此, 不允许\/使用源 "https:/13.85.80.81: 8080"。 如果非跳转响应可满足需求，请将请求的模式设置为“no-cors”，以便在禁用 CORS 的情况下提取资源。
 2. 证书问题：从 Chrome v 58 开始，EME for Widevine 需要 HTTPS。 因此，需要使用 X509 证书通过 HTTPS 来托管示例应用。 由于以下要求，常用的测试证书不起作用：需要获得符合以下最低要求的证书：
     - Chrome 和 Firefox 要求证书中具备 SAN 使用者可选名称设置
     - 证书必须具备受信任的 CA，自签名开发证书无法使用
@@ -219,6 +220,6 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
     1.  客户端控制：播放器应用自动选择要下载的视频质量层和音轨，或由用户选择；
     2.  服务控制：可使用 Azure 媒体服务中的动态清单功能创建（全局）筛选器，将 HLS 播放列表或 DASH MPD 限制为单个视频质量层和所选音轨。 然后，向最终用户呈现的下载 URL 会包括此筛选器。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文讨论了如何在 Android 设备上实现受 Widevine 保护的 DASH 内容的脱机模式播放。  本文还回答了与对受 Widevine 保护的内容进行脱机流式处理相关的一些常见问题。

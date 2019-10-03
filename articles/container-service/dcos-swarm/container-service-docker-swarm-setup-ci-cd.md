@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: f28ea3dd2837a241c538057bd118409d4f5b858a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8990f1f8e4cda5a6cc8b8d3197b843662b1397a5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096259"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598537"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>（已弃用）用于通过 Azure DevOps Services 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
 
@@ -41,7 +41,7 @@ ms.locfileid: "58096259"
 1. 群集上的 Docker Swarm 提取最新的映像版本 
 1. 使用 Docker Compose 部署应用程序的新版本 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 在开始本教程之前，需要完成以下任务：
 
@@ -225,4 +225,4 @@ Microsoft 提供一个 Azure DevOps Services 扩展用于在 Azure Pipelines 流
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用 Azure DevOps Services 实现 CI/CD 的详细信息，请参阅 [Azure DevOps Services 生成概述](https://www.visualstudio.com/docs/build/overview)。
+* 有关与 Azure DevOps Services 的 CI/CD 的详细信息, 请参阅[Azure Pipelines 文档](/azure/devops/pipelines/?view=azure-devops)文章。

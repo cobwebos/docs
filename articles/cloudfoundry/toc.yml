@@ -11,8 +11,6 @@
       href: /azure/cloudfoundry/create-cloud-foundry-on-azure
     - name: 将 CF 应用部署到 Azure
       href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
-    - name: 将 OSBA 与 PCF 上的应用配合使用
-      href: /azure/cloudfoundry/use-osba-pcf-app
     - name: Azure 上的 CloudFoundry
       href: /azure/virtual-machines/linux/cloudfoundry-get-started
     - name: 部署 CF OMS Nozzle

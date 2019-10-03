@@ -11,12 +11,12 @@ ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: be3dbc386b0ac89a85bc1719081df944523c28ce
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244923"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997838"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>使用证书保护 B2B 消息
 
@@ -50,7 +50,7 @@ ms.locfileid: "56244923"
    | 属性 | 值 | 说明 | 
    |----------|-------|-------------|
    | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“publicCert” | 
-   | **证书类型** | 公共 | 你的证书的类型 |
+   | **证书类型** | 公开 | 你的证书的类型 |
    | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。 |
    ||||
 
@@ -90,7 +90,7 @@ ms.locfileid: "56244923"
    |----------|-------|-------------|
    | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“privateCert” | 
    | **证书类型** | 专用 | 你的证书的类型 |
-   | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。 | 
+   | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。 为私钥使用 key vault 时, 上传的文件将是公共证书。 | 
    | **资源组** | <*集成帐户资源组*> | 你的集成帐户的资源组，在本例中为“MyResourceGroup” | 
    | **Key Vault** | <*密钥保管库名称*> | 你的 Azure 密钥保管库的名称 |
    | **密钥名称** | <*key-name*> | 你的密钥的名称 |

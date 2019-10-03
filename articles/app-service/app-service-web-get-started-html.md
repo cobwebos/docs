@@ -10,17 +10,16 @@ ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/20/2018
+ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 064466b73e03e9648b78c32b7e6ffcd83defd607
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: ac0fe7a77496a0dae8606e4599bcb262a191196c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079352"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067309"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
@@ -96,7 +95,7 @@ az webapp up --location westeurope --name <app_name>
 
 ![示例应用主页](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-祝贺你！ 现已将第一个 HTML 应用部署到应用服务。
+祝贺你！  现已将第一个 HTML 应用部署到应用服务。
 
 ## <a name="update-and-redeploy-the-app"></a>更新并重新部署应用
 
@@ -120,7 +119,7 @@ az webapp up --location westeurope --name <app_name>
 
 转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理创建的 Web 应用。
 
-在左侧菜单中单击“应用程序服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击**应用程序服务**，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-get-started-html/portal1.png)
 
@@ -138,7 +137,7 @@ az webapp up --location westeurope --name <app_name>
 az group delete --name appsvc_rg_Windows_westeurope
 ```
 
-此命令可能需要花费一分钟时间运行。
+此命令可能需要花费一点时间运行。
 
 ## <a name="next-steps"></a>后续步骤
 

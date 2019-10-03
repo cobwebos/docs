@@ -9,11 +9,11 @@ ms.date: 07/07/2017
 ms.author: rajram
 ms.subservice: autoscale
 ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469485"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "60788446"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
 本文介绍如何在 Microsoft Azure 门户中为资源指定自动缩放设置。
@@ -23,7 +23,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>了解订阅中的自动缩放设置
 可在 Azure Monitor 中查找自动缩放功能适用的所有资源。 按下列步骤进行分步演练：
 
-1. 打开 [Azure 门户。][1]
+1. 打开 [Azure 门户][1]。
 1. 单击左窗格中的“Azure Monitor”图标。
   ![打开 Azure Monitor][2]
 1. 单击“自动缩放”以查看自动缩放适用的所有资源及其当前的自动缩放状态。
@@ -58,7 +58,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
    现在应已创建一个可以根据 CPU 使用率进行扩展/缩减的缩放设置。
    ![基于 CPU 进行缩放][8]
-1. 单击“ **保存**”。
+1. 单击“保存”。
 
 祝贺你！ 现已成功创建第一个缩放设置，用于根据 CPU 使用率自动缩放 Web 应用。
 

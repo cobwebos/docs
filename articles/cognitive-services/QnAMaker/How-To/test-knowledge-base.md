@@ -1,22 +1,22 @@
 ---
 title: 如何测试知识库 - QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 测试 QnA Maker 知识库是迭代过程的重要部分，可以提高返回响应的准确性。 可以通过增强的聊天界面测试知识库，该界面还允许你进行编辑。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 12/17/2018
-ms.author: tulasim
+ms.topic: conceptual
+ms.date: 05/08/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 20ebcb502e03f2d817fe18624d8c790e920c667f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 2b9c6f96cc351831bb784bb89db1bce76b01190b
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861226"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966667"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>在 QnA Maker 中以交互方式测试知识库
 
@@ -24,28 +24,24 @@ ms.locfileid: "55861226"
 
 ## <a name="test-answer-matching"></a>测试答案匹配
 
-1.  通过在“我的知识库” **** 页上选择知识库名称来访问知识库。
-2.  若要访问“测试”滑出面板，请在应用程序的顶部面板中选择“测试” **** 。
-
-    ![访问测试面板](../media/qnamaker-how-to-test-kb/access-test.png)
-
-3.  在文本框中输入查询，然后选择 Enter。
-
-4.  知识库中最匹配的答案将作为响应返回。
+1. 通过在“我的知识库”页上选择知识库名称来访问知识库。
+1. 若要访问“测试”滑出面板，请在应用程序的顶部面板中选择“测试”。
+1. 在文本框中输入查询，然后选择 Enter。
+1. 知识库中最匹配的答案将作为响应返回。
 
 ## <a name="clear-test-panel"></a>清除测试面板
 
-若要从测试控制台中清除所有输入的测试查询及其结果，请选择“测试”面板左上角的“重新开始” **** 。
+若要从测试控制台中清除所有输入的测试查询及其结果，请选择“测试”面板左上角的“重新开始”。
 
 ## <a name="close-test-panel"></a>关闭测试面板
 
-若要关闭“测试”面板，请再次选择“测试” **** 按钮。 当“测试”面板处于打开状态时，无法编辑知识库内容。
+若要关闭“测试”面板，请再次选择“测试”按钮。 当“测试”面板处于打开状态时，无法编辑知识库内容。
 
 ## <a name="inspect-score"></a>检查分数
 
 在“检查”面板中检查测试结果的详细信息。
 
-1.  打开“测试”滑出面板后，选择“检查” **** 以获取有关该响应的更多详细信息。
+1.  打开“测试”滑出面板后，选择“检查”以获取有关该响应的更多详细信息。
 
     ![检查响应](../media/qnamaker-how-to-test-kb/inspect.png)
 
@@ -65,14 +61,20 @@ ms.locfileid: "55861226"
 
 ## <a name="add-a-new-answer"></a>添加新答案
 
-如果匹配的任何现有答案不正确或知识库中不存在答案（在知识库中找不到良好匹配），则可以添加新答案。 在文本框中输入当前问题的新答案，然后按 Enter 将其添加。 
+如果匹配的任何现有答案不正确或知识库中不存在答案（在知识库中找不到良好匹配），则可以添加新答案。 
 
-选择“保存并训练”保存此答案。 现在，新的问答对已添加到知识库中。
+在 "答案" 列表的底部, 使用文本框输入新答案并按 enter 添加新答案。 
 
-![添加新的问答对](../media/qnamaker-how-to-test-kb/add-answer.png)
+选择“保存并训练”保存此答案。 现在，新的问答对已添加到知识库中。 
 
 > [!NOTE]
 > 只有在按下“保存并训练”按钮时，才会保存对知识库的所有编辑。
+
+## <a name="test-the-published-knowledge-base"></a>测试已发布的知识库
+
+您可以在 "测试" 窗格中测试知识库的已发布版本。 发布知识库后, 选择 "**已发布的 kb** " 框, 并发送一个查询以从发布的 kb 获取结果。
+
+![针对发布的 KB 进行测试](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
 ## <a name="next-steps"></a>后续步骤
 

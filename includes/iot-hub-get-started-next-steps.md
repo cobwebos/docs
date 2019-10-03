@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 9f7f71f47fadd7cfe2364acf1a8505e1967a78e5
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: fc4b613eb9e77acef4568ef93b7606fb43568f82
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333961"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66476016"
 ---
 若要继续了解 Azure IoT 中心入门知识并浏览所有扩展的 IoT 方案，请参阅：
 
@@ -25,7 +25,7 @@ ms.locfileid: "56333961"
 
 - [使用 Power BI 可视化 IoT 中心的实时传感器数据](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)
 
-- [使用 Azure 应用服务的 Web 应用功能可视化 IoT 中心的实时传感器数据](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
+- [使用 web 应用可视化 IoT 中心的实时传感器数据](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
 
 - [在 Azure 机器学习中使用 IoT 中心的传感器数据来预报天气](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)
 

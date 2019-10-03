@@ -1,77 +1,77 @@
 ---
 title: Azure HDInsight 虚拟网络体系结构
-description: 在 Azure 虚拟网络中创建的 HDInsight 群集时，请了解可用的资源。
+description: 了解在 Azure 虚拟网络中创建 HDInsight 群集时可用的资源。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6d92273298c0448d7377acab6f3b8ea1cc1ed908
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 340974201d62f97669db442f4a95439a6ac90a5e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762916"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960622"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虚拟网络体系结构
 
-本文介绍了在部署到自定义的 Azure 虚拟网络的 HDInsight 群集时存在的资源。 此信息将帮助你的本地资源连接到 Azure 中的 HDInsight 群集。 有关 Azure 虚拟网络的详细信息，请参阅[什么是 Azure 虚拟网络？](../virtual-network/virtual-networks-overview.md)。
+本文介绍在将 HDInsight 群集部署到自定义的 Azure 虚拟网络中时提供的资源。 此信息可帮助你将本地资源连接到 Azure 中的 HDInsight 群集。 有关 Azure 虚拟网络的详细信息，请参阅[什么是 Azure 虚拟网络？](../virtual-network/virtual-networks-overview.md)。
 
-## <a name="resource-types-in-azure-hdinsight-clusters"></a>在 Azure HDInsight 群集中的资源类型
+## <a name="resource-types-in-azure-hdinsight-clusters"></a>Azure HDInsight 群集中的资源类型
 
-Azure HDInsight 群集具有不同类型的虚拟机或节点。 每个节点类型系统的操作中起作用。 下表总结了这些节点类型和群集中的其角色。
+Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节点类型对于系统的正常运行发挥着相应的作用。 下表汇总了这些节点类型及其在群集中的作用。
 
-| Type | 描述 |
+| 类型 | 描述 |
 | --- | --- |
-| 头节点 |  除了 Apache Storm 的所有群集类型，头节点都托管的管理的分布式应用程序执行的进程。 头节点是还可以通过 ssh 连接到的节点，并执行应用程序，然后进行协调以运行跨群集资源。 头节点的数目被固定的两个用于所有群集类型。 |
-| ZooKeeper 节点 | Zookeeper 协调执行数据处理的节点之间的任务。 它还 does 头节点、 群首选举并跟踪哪个头节点正在运行特定的主服务。 ZooKeeper 节点数被固定的两个。 |
-| 工作节点 | 表示支持数据处理功能的节点。 可以添加或从群集缩放的计算能力和管理成本中删除辅助角色节点。 |
-| R Server 边缘节点 | R Server 边缘节点表示你可以通过 ssh 连接到的节点，并执行应用程序，然后进行协调以运行跨群集资源。 边缘节点不参与群集内的数据分析。 此节点还承载 R Studio Server，使你能够运行 R 应用程序使用浏览器。 |
-| 区域节点 | 对于 HBase 群集类型，区域服务器在运行 （也称为数据节点） 的区域节点。 区域服务器提供服务和管理 HBase 管理的数据的一部分。 可以添加或从要缩放的计算能力和管理成本的群集删除区域节点。|
-| Nimbus 节点 | 对于 Storm 群集类型，Nimbus 节点提供类似于头节点的功能。 Nimbus 节点将任务分配给通过 Zookeeper，协调的 Storm 拓扑运行的群集中的其他节点。 |
-| 监督器节点 | 对于 Storm 群集类型，在监督器节点执行到执行所需的处理的 Nimbus 节点提供的说明。 |
+| 头节点 |  对于除 Apache Storm 以外的所有群集类型，头节点托管用于管理分布式应用程序的执行的进程。 头节点也是可以通过 SSH 连接到其中并执行应用程序的节点。连接后，系统会协调这些应用程序，使其可在不同的群集资源上运行。 所有群集类型的头节点数目固定为 2 个。 |
+| ZooKeeper 节点 | ZooKeeper 协调执行数据处理的节点之间的任务。 它还执行头节点的主控选择，并跟踪哪个头节点正在运行特定的主服务。 ZooKeeper 节点数目固定为 3 个。 |
+| 工作器节点 | 表示支持数据处理功能的节点。 可以在群集中添加或删除工作器节点，以缩放计算能力和控制成本。 |
+| R Server 边缘节点 | R Server 边缘节点是可以通过 SSH 连接到其中并执行应用程序的节点。连接后，系统会协调这些应用程序，使其可在不同的群集资源上运行。 边缘节点不参与群集内部的数据分析。 此节点还托管 R Studio Server，使你能够使用浏览器运行 R 应用程序。 |
+| 区域节点 | 对于 HBase 群集类型，区域节点（也称为数据节点）将运行区域服务器。 区域服务器为 HBase 管理的一部分数据提供服务，并对其进行管理。 可以在群集中添加或删除区域节点，以缩放计算能力和控制成本。|
+| Nimbus 节点 | 对于 Storm 群集类型，Nimbus 节点提供类似于头节点的功能。 Nimbus 节点通过 Zookeeper 将任务分配给群集中的其他节点，Zookeeper 协调 Storm 拓扑的运行。 |
+| 监督器节点 | 对于 Storm 群集类型，监督器节点执行 Nimbus 节点所提供的、执行所需处理的指令。 |
 
 ## <a name="basic-virtual-network-resources"></a>基本虚拟网络资源
 
-下图显示了 Azure 中的 HDInsight 节点和网络资源的位置。
+下图显示了 HDInsight 节点和网络资源在 Azure 中的位置。
 
-![创建自定义 Azure VNET 中的 HDInsight 实体的关系图](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
+![在 Azure 自定义 VNET 中创建的 HDInsight 实体示意图](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
-HDInsight 部署到 Azure 虚拟网络时存在的默认资源包括上表中，以及支持之间的虚拟网络和外部网络进行通信的网络设备中所述的群集节点类型。
+将 HDInsight 部署到 Azure 虚拟网络时提供的默认资源包括上表中所述的群集节点类型，以及用于支持在虚拟网络与外部网络之间进行通信的网络设备。
 
-下表总结了 HDInsight 部署到自定义的 Azure 虚拟网络时，会创建 9 个群集节点。
+下表汇总了将 HDInsight 部署到自定义 Azure 虚拟网络时创建的 9 个群集节点。
 
-| 资源类型 | 数量 | 详细信息 |
+| 资源类型 | 提供的数量 | 详细信息 |
 | --- | --- | --- |
-|头节点 | two |    |
-|Zookeeper 节点 | three | |
-|工作节点 | two | 此数字可以差异取决于群集配置和缩放。 Apache Kafka 需要三个辅助角色节点的最小值。  |
-|网关节点 | two | 网关节点是 Azure 虚拟机的创建在 Azure 上，但不会显示在你的订阅。 如果您需要重新启动这些节点，请联系支持部门。 |
+|头节点 | 2 |    |
+|Zookeeper 节点 | 3 | |
+|工作器节点 | 2 | 此数字根据群集的配置和规模而异。 Apache Kafka 至少需要 3 个工作器节点。  |
+|网关节点 | 2 | 网关节点是在 Azure 中创建的、但不会在订阅中显示的 Azure 虚拟机。 如果需要重新启动这些节点，请联系支持人员。 |
 
-在与 HDInsight 一起使用的虚拟网络中自动创建存在的以下网络资源：
+在与 HDInsight 配合使用的虚拟网络中，会自动创建以下网络资源：
 
-| 网络资源 | 数量 | 详细信息 |
+| 网络资源 | 提供的数量 | 详细信息 |
 | --- | --- | --- |
-|负载均衡 | three | |
-|网络接口 | 9 | 此值基于标准群集，其中每个节点都有其自己的网络接口。 在两个头节点、 三个 zookeeper 节点、 两个辅助角色节点，和上一个表中提到的两个网关节点是九个接口。 |
-|公共 IP 地址 | two |    |
+|负载均衡器 | 3 | |
+|网络接口 | 9 个 | 此值基于普通群集，在此类群集中，每个节点具有自身的网络接口。 9 个接口分别用于上表中所述的 2 个头节点、3 个 ZooKeeper 节点、2 个工作器节点和 2 个网关节点。 |
+|公共 IP 地址 | 2 |    |
 
-## <a name="endpoints-for-connecting-to-hdinsight"></a>用于连接到 HDInsight 的终结点
+## <a name="endpoints-for-connecting-to-hdinsight"></a>用于连接 HDInsight 的终结点
 
-您可以访问以下三种方式在 HDInsight 群集：
+可通过三种方式访问 HDInsight 群集：
 
-- HTTPS 终结点在虚拟网络外部`CLUSTERNAME.azurehdinsight.net`。
-- 直接连接到在头节点的 SSH 终结点`CLUSTERNAME-ssh.azurehdinsight.net`。
-- 虚拟网络中的 HTTPS 终结点`CLUSTERNAME-int.azurehdinsight.net`。 请注意，"-int"在此 URL。 此终结点将解析为该虚拟网络内的专用 IP 并不是可从公共 internet 访问。
+- 虚拟网络 (`CLUSTERNAME.azurehdinsight.net`) 外部的 HTTPS 终结点。
+- 直接连接到位于 `CLUSTERNAME-ssh.azurehdinsight.net` 中的头节点的 SSH 终结点。
+- 虚拟网络 (`CLUSTERNAME-int.azurehdinsight.net`) 内部的 HTTPS 终结点。 请注意此 URL 中的“-int”。 此终结点将解析为该虚拟网络中的专用 IP，无法从公共 Internet 访问。
 
-每个分配的负载均衡器这些三个终结点。
+在这 3 个终结点中，每个终结点分配有一个负载均衡器。
 
-公共 IP 地址也将提供给允许从虚拟网络外部的连接的两个终结点。
+此外，将为 2 个终结点提供公共 IP 地址，以便从虚拟网络外部进行连接。
 
-1. 一个公共 IP 分配给负载均衡器的完全限定的域名 (FQDN) 从 internet 连接到群集时要使用`CLUSTERNAME.azurehdinsight.net`。
-1. 第二个公共 IP 地址用于 SSH 的唯一域名`CLUSTERNAME-ssh.azurehdinsight.net`。
+1. 将为负载均衡器分配 1 个公共 IP，以便从 Internet `CLUSTERNAME.azurehdinsight.net` 连接到群集时使用完全限定的域名 (FQDN)。
+1. 第二个公共 IP 地址用于仅限 SSH 的域名 `CLUSTERNAME-ssh.azurehdinsight.net`。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [保护传入流量发往专用终结点的虚拟网络中的 HDInsight 群集](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+* [使用专用终结点保护传入虚拟网络中 HDInsight 群集的流量](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)

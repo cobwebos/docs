@@ -5,18 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/09/2019
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: 96ea8142e2f7794d3c15c6efb436eafa585bc8fd
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 6e23cc583c9b403619ad2e47f2085ef7c0149bd2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575607"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142373"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>在 Azure 数据工厂中复制或克隆数据工厂
 
@@ -36,7 +36,7 @@ ms.locfileid: "57575607"
 
 1. 作为先决条件，你需要从 Azure 门户创建目标数据工厂。
 
-1. 如果必须在源工厂 SelfHosted IntegrationRuntime，需要预先它创建具有相同目标工厂中的名称。 如果你想要共享 SelfHosted IRs 之间不同的工厂，可以使用已发布的模式[此处](author-visually.md#best-practices-for-git-integration)。
+1. 如果源工厂中有 SelfHosted IntegrationRuntime，则需要在目标工厂中使用相同的名称预先创建它。 如果要在不同工厂之间共享 SelfHosted IRs, 可以使用[此处](source-control.md#best-practices-for-git-integration)发布的模式。
 
 1. 如果你处于 GIT 模式下，则每次从门户发布时，工厂的资源管理器模板都会保存到存储库的 adf_publish 分支中的 GIT 中。
 

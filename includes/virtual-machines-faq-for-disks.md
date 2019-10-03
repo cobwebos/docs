@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/28/2018
+ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 61f65340c3b683674be195f1d30788494b6855a7
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671898"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266868"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -103,11 +103,11 @@ ms.locfileid: "58671898"
 
 是否可以在同一 VM 上归置非托管和托管磁盘？
 
-不是。
+否。
 
-**如果我创建一个 128 GB 的磁盘，然后将大小增加到 130 gibibyte 计算的 (GiB) 收费的下一步的磁盘大小 (256 GiB)？**
+**如果创建 128 GB 磁盘，然后将该大小增加到 130 GiB，是否会针对下一磁盘大小 (256 GiB) 进行收费？**
 
-是的。
+是。
 
 是否可以创建本地冗余存储、异地冗余存储和区域冗余存储托管磁盘？
 
@@ -141,6 +141,69 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 GPT 分区仅可在数据磁盘上使用，而不可在操作系统磁盘上使用。 操作系统磁盘必须使用 MBR 分区样式。
 
+**哪些磁盘类型支持快照？**
+
+高级 SSD、标准 SSD 和标准 HDD 支持快照。 对于这三种磁盘类型，所有磁盘大小（包括最大为 32 TiB 的磁盘）都支持快照。 超磁盘不支持快照。
+
+## <a name="ultra-disks"></a>超磁盘
+
+**哪些区域当前支持超磁盘？**
+- 美国东部 2
+- 东南亚
+- 北欧
+
+**什么 VM 系列当前支持超磁盘？**
+- ESv3
+- DSv3
+
+**我应该如何将我的 ultra 磁盘吞吐量设置为？**
+如果不确定如何将磁盘吞吐量设置为，则建议首先假定 IO 大小为 16 KiB，并在监视应用程序时调整性能。 公式为：以 MBps 为单位的吞吐量 = IOPS * 16/1000。
+
+**我将我的磁盘配置为 40000 IOPS，但只看到 12800 IOPS，为何我看不到磁盘的性能？**
+除了磁盘限制外，还会在 VM 级别施加 IO 限制。 请确保所使用的 VM 大小能够支持磁盘上配置的级别。 有关 VM 施加的 IO 限制的详细信息，请参阅[Azure 中 Windows 虚拟机的大小](../articles/virtual-machines/windows/sizes.md)。
+
+**是否可以对超磁盘使用缓存级别？**
+不能，超磁盘不支持其他磁盘类型支持的不同缓存方法。 将磁盘缓存设置为 "无"。
+
+**是否可以将超磁盘附加到现有 VM？**
+也许，你的 VM 必须位于支持 Ultra 磁盘的区域和可用性区域对中。 有关详细信息，请参阅[超磁盘](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md)入门。
+
+**能否使用超磁盘作为 VM 的 OS 磁盘？**
+不能，仅支持将专用磁盘作为数据磁盘，并且仅支持为4K 本地磁盘。
+
+**是否可以将现有磁盘转换为超磁盘？**
+不可以，但你可以将数据从现有磁盘迁移到超磁盘。 若要将现有磁盘迁移到超磁盘，请将这两个磁盘附加到同一个 VM，并将磁盘的数据从一个磁盘复制到另一个磁盘或利用第三方解决方案进行数据迁移。
+
+**能否为超磁盘创建快照？**
+不，快照尚不可用。
+
+**Azure 备份是否可用于超磁盘？**
+不，Azure 备份支持尚不可用。
+
+**是否可以将超磁盘附加到在可用性集中运行的 VM？**
+不能，目前尚不支持。
+
+**是否可以使用超磁盘为 Vm 启用 Azure Site Recovery？**
+不，对于超磁盘，尚不支持 Azure Site Recovery。
+
+## <a name="uploading-to-a-managed-disk"></a>上传到托管磁盘
+
+**是否可将数据上传到现有的托管磁盘？**
+
+不可以。只能在创建 **ReadyToUpload** 状态的新空磁盘期间使用上传。
+
+**如何实现上传到托管磁盘？**
+
+创建一个将[createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption)属性设置为 "上传[" 的托管](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata)磁盘，然后将数据上传到该磁盘。
+
+**是否可将处于上传状态的磁盘附加到 VM？**
+
+否。
+
+**是否可以创建处于上传状态的托管磁盘的快照？**
+
+否。
+
 ## <a name="standard-ssd-disks"></a>标准 SSD 盘
 
 Azure 标准 SSD 盘是什么？
@@ -153,7 +216,7 @@ Azure 标准 SSD 盘是什么？
 是的，Azure 备份现已可用。
 
 如何创建标准 SSD 盘？
-你可以创建标准 SSD 磁盘使用 Azure 资源管理器模板、 SDK、 PowerShell 或 CLI。 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：
+可以使用 Azure 资源管理器模板、SDK、PowerShell 或 CLI 创建标准 SSD 盘。 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：
 
 * Microsoft.Compute 的 apiVersion 必须设置为 `2018-04-01`（或更高）
 * 将 managedDisk.storageAccountType 指定为 `StandardSSD_LRS`
@@ -179,7 +242,7 @@ Azure 标准 SSD 盘是什么？
 -AccountType StandardSSD_LRS
 
 **使用标准 SSD 盘而不使用 HDD 的好处是什么？**
-标准 SSD 磁盘提供更好的延迟、 一致性、 可用性和相比 HDD 磁盘可靠性。 因此，应用程序工作负荷可以更平稳地在标准 SSD 上运行。 注意，高级 SSD 盘是适用于大多数 IO 密集型生产工作负荷的建议解决方案。
+与 HDD 磁盘相比，标准 SSD 盘可以提供更好的延迟、一致性、可用性和可靠性。 因此，应用程序工作负荷可以更平稳地在标准 SSD 上运行。 注意，高级 SSD 盘是适用于大多数 IO 密集型生产工作负荷的建议解决方案。
 
 是否可将标准 SSD 用作非托管磁盘？
 不可以，标准 SSD 盘仅可用作托管磁盘。
@@ -191,7 +254,7 @@ Azure 标准 SSD 盘是什么？
 
 **迁移对托管磁盘性能是否有影响？**
 
-迁移涉及将磁盘从一个存储位置移动到另一个存储位置。 这安排通过后台数据副本，这可能需要几个小时才能完成，通常小于 24 小时，具体取决于磁盘中的数据量。 在此期间，由于一些读取可能被重定向到原始位置，所以应用程序可能会经历比平常更高的读取延迟，并且可能需要花费更长时间才能完成。 在此期间，对写入延迟没有影响。  
+迁移涉及将磁盘从一个存储位置移动到另一个存储位置。 这是通过在后台复制数据来安排的，可能需要花费数小时才能完成，通常少于 24 小时，具体取决于磁盘中的数据量。 在此期间，由于一些读取可能被重定向到原始位置，所以应用程序可能会经历比平常更高的读取延迟，并且可能需要花费更长时间才能完成。 在此期间，对写入延迟没有影响。  
 
 迁移到托管磁盘之前/之后，需要在现有的 Azure 备份服务配置中进行哪些更改？
 
@@ -205,9 +268,9 @@ Azure 标准 SSD 盘是什么？
 
 不需要进行任何更改。
 
-**自动的迁移现有的虚拟机规模集的设置从非托管磁盘为支持托管磁盘？**
+**是否支持将现有虚拟机规模集从非托管磁盘自动迁移到托管磁盘？**
 
-不是。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
+否。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
 
 是否可以通过迁移到托管磁盘之前创建的页 Blob 快照创建托管磁盘？
 
@@ -219,7 +282,7 @@ Azure 标准 SSD 盘是什么？
 
 迁移是否影响 Azure Site Recovery 通过 Azure 到 Azure 复制保护的 Azure VM？
 
-是的。 目前，Azure 站点恢复 Azure 到 Azure 保护的 Vm 使用托管磁盘现推出 GA 服务。
+否。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
 
 是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？
 
@@ -300,7 +363,7 @@ DS 系列的缓存和本地 SSD 合并限制是每个核心 4,000 IOPS，以及�
 
 **操作系统和数据磁盘支持的最大托管磁盘大小是多少？**
 
-Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统磁盘的最大大小为 2 TiB。 Azure 支持最多 32 TiB 的全局 Azure，Azure 主权云 4 TiB 中的托管的数据磁盘。
+Azure 支持的操作系统磁盘的分区类型是主启动记录 (MBR)。 MBR 格式支持的磁盘最大大小为 2 TiB。 Azure 支持的操作系统磁盘的最大大小为 2 TiB。 在 Azure 主权云中，azure 最多支持 32 TiB，适用于全球 Azure 中的托管数据磁盘，4 TiB。
 
 **操作系统和数据磁盘支持的最大非托管磁盘大小是多少？**
 
@@ -333,29 +396,29 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 
 你可以拍摄小磁盘的快照，然后创建磁盘以自动根据预配大小将定价层切换到 P4 或 P6。
 
-**可以您重设大小现有托管磁盘大小从少于 4 tib 的) 为最多 32 TiB 的新新引入的磁盘大小？**
+**是否可以将托管磁盘的大小从小于 4 TiB 调整到最新引入的磁盘大小（最大大小为 32 TiB）？**
 
-是的。
+是。
 
-**什么是 Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小？**
+**Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小是多少？**
 
-Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小为 4 TiB。 将很快增加对多达 32 TiB 更大的磁盘支持。
+Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小为 4 TiB。 目前尚不支持高达 32 TiB 的大型磁盘。
 
-**什么是建议的 VM 大小更大的磁盘大小 (> 4 TiB) 标准 SSD 和 HDD 标准磁盘，以实现优化磁盘 IOPS 和带宽？**
+**标准 SSD 和标准 HDD 大型磁盘大小 (>4 TiB) 用于实现优化磁盘 IOPS 和带宽建议的 VM 大小是多少？**
 
-若要实现标准的 SSD 和 HDD 标准大型磁盘大小的磁盘吞吐量 (> 4 TiB) 超出 500 IOPS 和 60 MiB/秒，我们建议部署新的 VM 从一个以下 VM 大小以优化性能：B 系列、 DSv2 系列、 Dsv3 系列，ESv3 系列、 Fs 系列 Fsv2 系列 M 系列、 GS 系列，NCv2 系列，NCv3 系列或 Ls 系列 Vm。 将较大的磁盘附加到现有 Vm 或 Vm 未使用上述建议的大小可能会遇到较低的性能。
+要使标准 SSD 和标准 HDD 大型磁盘 (>4 TiB) 的磁盘吞吐量超过 500 IOPS 和 60 MiB/秒，我们建议部署下列 VM 大小之一的新 VM 来优化性能：B 系列、DSv2 系列、Dsv3、ESv3 系列、Fs 系列、Fsv2 系列、M 系列、GS 系列、NCv2 系列、NCv3 系列或 Ls 系列 Vm。 将大型磁盘附加到现有 VM 或者不使用上述建议大小的 VM 可能会遇到性能下降的问题。
 
-**如何升级我的磁盘 (> 4 TiB) 的已部署在更大的磁盘大小预览期间为了在正式版推出后获得更高的 IOPS 和带宽？**
+**如何升级在大型磁盘预览期部署的磁盘 (> 4 TiB)，以便在正式版中获得更高的 IOPS 和带宽？**
 
-你可以停止和启动磁盘附加到 VM 或，分离并重新附加磁盘。 为高级 Ssd 和标准 Ssd 发行时增加了更大的磁盘大小的性能目标
+可以停止然后启动该磁盘附加到 VM，或者分离然后重新附加磁盘。 在正式版中，高级 SSD 和标准 SSD 大型磁盘的性能目标已提高。
 
-**有哪些区域？ 8 TiB、 16 TiB 和 32 TiB 中支持的托管的磁盘大小**
+**哪些区域支持大于 8 TiB、16 TiB 和 32 TiB 的托管磁盘大小？**
 
-在全局 Azure 下的所有区域中支持 8 TiB、 16 TiB 和 32 TiB 磁盘 Sku。 对 Microsoft Azure 政府和 Azure 中国的 21Vianet 的支持尚不可用。
+Azure 全球、 Microsoft Azure 政府和 Azure 中国世纪互联涵盖的所有区域都支持 8 TiB、16 TiB 和 32 TiB 磁盘 SKU。
 
-**我们是否支持启用缓存主机上所有磁盘大小？**
+**是否支持在所有磁盘大小上启用主机缓存？**
 
-我们支持 ReadOnly 主机缓存和读/写磁盘大小小于 4 TiB。 对于超过 4 TiB 的磁盘大小，除提供“无”选项外，我们并不支持设置缓存选项。 建议利用较小磁盘大小的缓存，以便通过缓存到 VM 的数据观察到明显的性能提升。
+我们支持在小于 4 TiB 的磁盘大小上启用只读和读/写主机缓存。 对于超过 4 TiB 的磁盘大小，除提供“无”选项外，我们并不支持设置缓存选项。 建议利用较小磁盘大小的缓存，以便通过缓存到 VM 的数据观察到明显的性能提升。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 

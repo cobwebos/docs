@@ -1,55 +1,48 @@
 ---
-title: 管理云合作伙伴门户的 Azure Marketplace 上的帐户的先决条件 |Microsoft Docs
-description: 管理云合作伙伴门户上的 Azure Marketplace 帐户的先决条件。
+title: 管理云合作伙伴门户上的帐户的先决条件 |Azure Marketplace
+description: 在云合作伙伴门户上管理 Azure Marketplace 帐户的先决条件。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.author: pbutlerm
-ms.openlocfilehash: c2733cd7f2460babaffdf049c5839389f61b31e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794211"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720068"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>管理云合作伙伴门户上的帐户的先决条件 
 
-可以使用之前[云合作伙伴门户](https://cloudpartner.azure.com/)任何函数，包括管理帐户，你必须遵循的一系列步骤来为 Microsoft 云发布服务器注册自身和其组织。
+在将[云合作伙伴门户](https://cloudpartner.azure.com/)用于任何函数（包括管理帐户）之前，必须执行一系列步骤以将自身及其组织注册为 Microsoft 云发布者。
 
 
 ## <a name="account-terms-and-guidelines"></a>帐户条款和指导原则
 
-请仔细查看您的权利和责任下的[Microsoft 服务协议](https://www.microsoft.com/servicesagreement)并[Microsoft 使用条款](https://www.microsoft.com/legal/intellectualproperty/copyright)之前创建帐户。  
+在创建帐户之前，请仔细查看[Microsoft 服务协议](https://www.microsoft.com/servicesagreement)和[Microsoft 使用条款](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright)下的权利和责任。  
 
-请仔细选择你的帐户名称。  它表示您的组织，因此它不应包含任何受版权保护或争用资源的单词。  例如，Microsoft 禁止受版权保护条款的约束，例如"Azure"和"Microsoft"帐户名称中使用。  有关详细信息，请参阅[的 Azure Marketplace 准则](../../guidelines.md)
+请仔细选择你的帐户名称。  它代表您的组织，因此不应包含任何版权或争用资源的词。  例如，Microsoft 禁止使用其版权条款，如 "Azure" 和 "Microsoft"。  有关详细信息，请参阅[Azure Marketplace 指南](https://docs.microsoft.com/azure/marketplace/guidelines)
 
 
 ## <a name="registration-steps"></a>注册步骤
 
-下表列出了完全注册为 Microsoft 云发布服务器所需的步骤。  有关完整说明，请参阅[成为云 Marketplace 发布者](../../become-publisher.md)。 
+下表列出了完全注册为 Microsoft 云发布者所需的步骤。  有关完整说明，请参阅[成为云 Marketplace 发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)。 
 
 
-|                   步骤                   |  生成注册或资源                     |
+|                   步骤                   |  生成的注册或资源                     |
 |                  ------                  |  -----------------------------------                    |
-| 1.在 Microsoft 合作伙伴网络中注册 |  Microsoft 合作伙伴网络 ID 为你的组织的 |
-| 2.创建 Microsoft 帐户 *           |  一个已验证的 Microsoft 帐户，以结尾@outlook.com， @live.com，等等。 |
+| 1.在 Microsoft 合作伙伴网络中注册 |  组织的 Microsoft 合作伙伴网络 ID |
+| 2.创建 Microsoft 帐户 *           |  验证的 Microsoft 帐户，以@outlook.com、 @live.com等结束。 |
 | 3.提交市场注册表 | 云合作伙伴门户上的发布者帐户      |
-| 4.登录到云合作伙伴门户        | 颁发机构来创建和发布产品/服务，管理用户、 收集 marketplace 指标，等等。 |
-| 5.注册在 Microsoft 开发人员中心 * | 已验证的开发人员中心帐户;颁发机构进行 marketplace 事务  |
+| 4.登录到云合作伙伴门户        | 创建和发布产品/服务、管理用户、收集 marketplace 指标等的权限。 |
+| 5.注册到 Microsoft 开发人员中心 * | 经验证的开发人员中心帐户;开展 marketplace 交易的授权  |
 |   |   |
 
-\* 这些步骤是所需的 Azure Marketplace transact 产品/服务，但强烈建议使用的所有产品/服务。  建立一个 Microsoft 帐户并注册为 Microsoft 开发人员，您可以访问更多的 Microsoft 客户和开发人员资源，以及可选的合作伙伴产品/服务。  
+\*Azure Marketplace 服务产品/服务的这些步骤是必需的，但强烈建议用于所有产品/服务。  建立 Microsoft 帐户并将其注册为 Microsoft 开发人员后，便可以访问其他 Microsoft 客户和开发人员资源，以及可选的合作伙伴产品/服务。  
 
 
 ## <a name="next-steps"></a>后续步骤
 
-完成注册步骤后，您应能够登录[云合作伙伴门户](https://cloudpartner.azure.com/)。  可以使用此门户和管理发布者配置文件和管理用户帐户。
+完成注册步骤后，应该能够登录[云合作伙伴门户](https://cloudpartner.azure.com/)。  你可以使用此门户来管理发布者配置文件和管理用户帐户。

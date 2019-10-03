@@ -3,6 +3,7 @@ title: Azure SQL 数据库机器学习服务 （预览版） 的主要区别
 description: 本主题介绍 Azure SQL 数据库机器学习服务（使用 R）和 SQL Server 机器学习服务之间的主要差异。
 services: sql-database
 ms.service: sql-database
+ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,19 +12,19 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: 57ea52c179376e8378680f436d396ffaf9357f68
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ee92b598625b1346cf87c661d1867cc1cb012b60
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771844"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485990"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Azure SQL 数据库 （预览版） 中的机器学习服务和 SQL Server 之间的主要差异
 
 （使用 R) 的 Azure SQL 数据库机器学习服务 （预览版） 中的功能是类似于[SQL Server 机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)。 以下是一些重要差异。
 
 > [!IMPORTANT]
-> Azure SQL 数据库机器学习服务当前处于公共预览状态。
+> Azure SQL 数据库机器学习服务当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -43,12 +44,15 @@ SQL 数据库和 SQL Server 之间的 R 程序包管理和安装工作存在差�
 - 程序包无法执行出站网络调用。 这一限制是类似于[机器学习服务的默认防火墙规则](https://docs.microsoft.com//sql/advanced-analytics/security/firewall-configuration)在 SQL Server 中，但不能更改 SQL 数据库中。
 - 不支持依赖于外部运行时（例如 Java）的程序包，也不支持需要访问 OS API 才能安装或使用的程序包。
 
+## <a name="writing-to-a-temporary-table"></a>写入到临时表
+
+如果在 Azure SQL 数据库中，使用 RODBC 则不能写入到临时表，无论它创建的内部或外部`sp_execute_external_script`会话。 解决方法是使用[RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata)并[rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (覆盖 = FALSE 和追加 ="行") 将写入之前创建的全局临时表`sp_execute_external_script`查询。
+
 ## <a name="resource-governance"></a>资源调控
 
 无法通过 [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) 和外部资源池限制 R 资源。
 
 公共预览期间 R 资源设置为最多 20%的 SQL 数据库资源，并取决于你选择哪个服务层。 有关详细信息，请参阅 [Azure SQL 数据库购买模型](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers)。
-
 ### <a name="insufficient-memory-error"></a>内存不足错误
 
 如果没有适用于 R 的内存不足，将获取一条错误消息。 常见错误消息如下：
@@ -61,6 +65,6 @@ SQL 数据库和 SQL Server 之间的 R 程序包管理和安装工作存在差�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关一般信息，请参阅 [SQL Server 机器学习服务](https://docs.microsoft.com/sql/advanced-analytics)文档
-- 如需了解如何在 Azure SQL 数据库中使用机器学习服务（使用 R），请参阅[快速入门指南](sql-database-connect-query-r.md)。
-- 有关详细信息，请参阅 [SQL Server R 语言教程](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sql-server-r-tutorials)
+- 概述，请参阅[使用 R （预览版） 的 Azure SQL 数据库机器学习服务](sql-database-machine-learning-services-overview.md)。
+- 若要了解如何使用 R 来查询 Azure SQL 数据库机器学习服务 （预览版），请参阅[快速入门指南](sql-database-connect-query-r.md)。
+- 若要开始使用一些简单的 R 脚本，请参阅[创建并运行的 Azure SQL 数据库机器学习服务 （预览版） 中的简单 R 脚本](sql-database-quickstart-r-create-script.md)。

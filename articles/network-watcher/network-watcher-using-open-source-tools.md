@@ -3,8 +3,8 @@ title: 使用 Azure 网络观察程序和开源工具可视化网络流量模式
 description: 本页介绍如何使用网络观察程序数据包捕获与 Capanalysis 来可视化传入和传出 VM 的流量模式。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 936d881b-49f9-4798-8e45-d7185ec9fe89
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 7b1e1383e8e244a7cdb30be1e08514a6a4dd7b14
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
-ms.translationtype: HT
+ms.author: kumud
+ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302227"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64936011"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用开源工具将传入和传出 VM 的网络流量模式可视化
 
@@ -33,7 +33,7 @@ Azure 网络观察程序允许在网络中执行数据包捕获，提供捕获�
 
 ![方案][1]
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 ### <a name="install-capanalysis"></a>安装 CapAnalysis
 
@@ -49,7 +49,7 @@ Azure 网络观察程序允许在网络中执行数据包捕获，提供捕获�
 
 向 CapAnalysis 提供链接时，请务必在存储 Blob URL 的后面追加 SAS 令牌。  为此，请从存储帐户导航到“共享访问签名”，指定允许的权限，按“生成 SAS”按钮创建令牌。 然后，可将此 SAS 令牌追加到数据包捕获存储 Blob URL 的后面。
 
-生成的 URL 应如以下 URL 所示：http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+生成的 URL 应如以下 URL 所示： http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
 
 
 ### <a name="analyzing-packet-captures"></a>分析数据包捕获
@@ -76,7 +76,7 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 
 1. Geomap
 
-    此窗格提供网络流量的地图视图，其中使用颜色来按比例显示来自每个国家/地区的流量。 选择突出显示的国家/地区可以查看更多流统计数据，例如，该国家/地区的 IP 发送和接收的数据比例。
+    使用颜色缩放到的流量从每个国家/地区中，此窗格提供您的网络流量的地图视图。 您可以选择突出显示国家/地区/区域，以查看更多流统计信息，例如发送和接收来自 Ip 的国家/地区中的数据的组成部分。
 
     ![Geomap][8]
 
@@ -96,8 +96,8 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 
 若要详细了解 NSG 流日志，请访问 [NSG 流日志](network-watcher-nsg-flow-logging-overview.md)
 
-访问[使用 Power BI 将 NSG 流日志可视化](network-watcher-visualize-nsg-flow-logs-power-bi.md)
-<!--Image references-->，了解如何使用 Power BI 将 NSG 流日志可视化
+访问 [Visualize NSG flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)（使用 Power BI 可视化 NSG 流日志），了解如何使用 Power BI 可视化 NSG 流日志
+<!--Image references-->
 
 [1]: ./media/network-watcher-using-open-source-tools/figure1.png
 [2]: ./media/network-watcher-using-open-source-tools/figure2.png

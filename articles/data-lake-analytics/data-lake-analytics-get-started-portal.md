@@ -1,7 +1,6 @@
 ---
-title: 通过 Azure 门户开始使用 Azure Data Lake Analytics
+title: 创建 & 查询 Azure Data Lake Analytics-Azure 门户
 description: 使用 Azure 门户创建 Azure Data Lake Analytics 帐户，并提交 U-SQL 作业。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 1e6c71a68c4357d82d086f3e2ca098e4039def5a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: 46da3750e4d0ac78c5fd9df91ae37670e541302d
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295744"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315753"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -32,7 +31,7 @@ ms.locfileid: "46295744"
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击“创建资源” >  “数据 + 分析” > “Data Lake Analytics”。
 3. 为以下项选择值：
-   * **名称**：为 Data Lake Analytics 帐户命名（只允许小写字母和数字）。
+   * **名称**：为 Data Lake Analytics 帐户命名（仅允许使用小写字母和数字）。
    * **订阅**：选择用于 Analytics 帐户的 Azure 订阅。
    * **资源组**。 选择现有的 Azure 资源组或创建新的资源组。
    * **位置**。 为 Data Lake Analytics 帐户选择 Azure 数据中心。

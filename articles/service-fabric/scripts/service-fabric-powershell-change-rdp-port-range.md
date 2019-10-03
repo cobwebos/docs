@@ -3,24 +3,23 @@ title: Azure PowerShell 脚本示例 - 更改 RDP 端口范围 | Microsoft Docs
 description: Azure PowerShell 脚本示例 - 更改已部署群集的 RDP 端口范围。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/19/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 871fe502a40b4c22f3e57a2f357e940c7f659314
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4ca7b4085a3978dc3218480c5c8a42679d80de23
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663921"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035663"
 ---
 # <a name="update-the-rdp-port-range-values"></a>更新 RDP 端口范围值
 

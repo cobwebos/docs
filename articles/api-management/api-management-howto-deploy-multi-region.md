@@ -9,34 +9,33 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: d22da92355616c208c7616b4b0e8c26b7f9e7006
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7cd0533dcbc9b367fa9a1e138b1aa1257989a3d7
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793617"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072430"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何将 Azure API 管理服务实例部署到多个 Azure 区域
 
-Azure API 管理多区域部署，该部署可使 API 发布者在任意数量的所需 Azure 区域中分配单个 Azure API 管理服务。 这有助于减少地理上分散的 API 使用者所感知的请求延迟，并且还改善其中一个区域处于离线状态时的服务可用性。
+Azure API 管理支持多区域部署, 该部署可使 API 发布者在任意数量的受支持的 Azure 区域之间分发单个 Azure API 管理服务。 多区域功能可帮助减少地理上分散的 API 使用者发现的请求延迟, 并提高在一个区域脱机时的服务可用性。
 
-新的 Azure API 管理服务最初只在一个 Azure 区域（主要区域）中包含一个[单元][unit]。 可通过 Azure 门户轻松添加其他区域。 API 管理网关服务器部署到每个区域，调用流量将路由到最近的网关，以减小延迟。 如果一个区域处于离线状态，则传入流量自动重定向到下一个最近的网关。
+新的 Azure API 管理服务最初仅包含单个 Azure 区域 (主要区域) 中的一个[单元][unit]。 可以向主要区域或次要区域添加其他区域。 API 管理网关组件将部署到每个选定的主要区域和次要区域。 传入的 API 请求会自动定向到最近的区域。 如果某个区域处于脱机状态, 则 API 请求会自动路由到下一个最近的网关。
 
 > [!NOTE]
-> Azure API 管理仅复制跨区域的 API 网关组件。 服务管理组件仅托管在主要区域中。 如果主要区域发生服务中断，则无法向 Azure API 管理服务实例应用配置更改 - 包括设置或策略更新。
+> 仅 API 管理的网关组件部署到所有区域。 仅在主要区域中托管服务管理组件和开发人员门户。 因此, 在主要区域发生中断时, 访问开发人员门户和更改配置 (例如, 添加 Api、应用策略) 的能力会受到影响, 直到主要区域恢复联机状态。 当主要区域脱机可用时, 辅助区域将继续使用可用的最新配置为 API 通信提供服务。
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
 ## <a name="add-region"> </a>将 API 管理服务实例部署到新区域
 
 > [!NOTE]
-> 如果尚未创建 API 管理服务实例，请参阅[创建 API 管理服务实例][Create an API Management service instance]。
+> 如果尚未创建 API 管理服务实例，请参阅[创建 API 管理服务实例][create an api management service instance]。
 
-在 Azure 门户中，导航到 API 管理服务实例的“规模和定价”页。 
+在 Azure 门户中，导航到 API 管理服务实例的“规模和定价”页。
 
 ![“缩放”选项卡][api-management-scale-service]
 
@@ -48,13 +47,13 @@ Azure API 管理多区域部署，该部署可使 API 发布者在任意数量�
 
 ![指定单位][api-management-select-location-units]
 
-单击“添加”将选择放置在“位置”表中。 
+单击“添加”将选择放置在“位置”表中。
 
 重复此过程，直到配置所有位置，并单击工具栏中的“保存”，启动部署过程。
 
 ## <a name="remove-region"> </a>从位置中删除 API 管理服务实例
 
-在 Azure 门户中，导航到 API 管理服务实例的“规模和定价”页。 
+在 Azure 门户中，导航到 API 管理服务实例的“规模和定价”页。
 
 ![“缩放”选项卡][api-management-scale-service]
 
@@ -119,19 +118,14 @@ API 管理根据[最低延迟](../traffic-manager/traffic-manager-routing-method
 1. [在流量管理器中配置 API 管理区域状态终结点](../traffic-manager/traffic-manager-monitoring.md)。 区域状态终结点遵循 `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef` URL 模式，例如 `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`。
 1. 指定流量管理器的[路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
 
-
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
-
 [api-management-scale-service]: ./media/api-management-howto-deploy-multi-region/api-management-scale-service.png
 [api-management-add-region]: ./media/api-management-howto-deploy-multi-region/api-management-add-region.png
 [api-management-select-location-units]: ./media/api-management-howto-deploy-multi-region/api-management-select-location-units.png
 [api-management-remove-region]: ./media/api-management-howto-deploy-multi-region/api-management-remove-region.png
-
-[Create an API Management service instance]: get-started-create-service-instance.md
-[Get started with Azure API Management]: get-started-create-service-instance.md
-
-[Deploy an API Management service instance to a new region]: #add-region
-[Delete an API Management service instance from a region]: #remove-region
-
+[create an api management service instance]: get-started-create-service-instance.md
+[get started with azure api management]: get-started-create-service-instance.md
+[deploy an api management service instance to a new region]: #add-region
+[delete an api management service instance from a region]: #remove-region
 [unit]: https://azure.microsoft.com/pricing/details/api-management/
-[Premium]: https://azure.microsoft.com/pricing/details/api-management/
+[premium]: https://azure.microsoft.com/pricing/details/api-management/

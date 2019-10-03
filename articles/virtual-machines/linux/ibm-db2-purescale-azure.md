@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
-ms.author: njray
-ms.openlocfilehash: 1622de0cccdbc8fee0681e209e756b30da292d3c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: edprice
+ms.openlocfilehash: c597bb47ba6d075523b2eb2ca4d146fa22a97a2e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003507"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083080"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上的 IBM DB2 pureScale
 

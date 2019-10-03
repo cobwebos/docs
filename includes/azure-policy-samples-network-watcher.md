@@ -9,11 +9,11 @@ ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
 ms.openlocfilehash: 53ff9eb5bd0b862ca66d0fdc93aabdc14e933296
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318166"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173101"
 ---
 ### <a name="network-watchers"></a>网络观察程序
 

@@ -1,7 +1,6 @@
 ---
 title: 使用 psql 将数据批量载入 Apache Phoenix - Azure HDInsight
-description: 使用 psql 工具将数据批量载入 Phoenix 表。
-services: hdinsight
+description: 使用 psql 工具将数据批量加载到 Azure HDInsight 中的 Apache Phoenix 表中
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 5faea45a55d69cece56137d70862d80dfe335971
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 43465a1c31b953620c45dfe759de7b6e1b4dc3c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342450"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917270"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>使用 psql 将数据批量加载到 Apache Phoenix
 
@@ -30,7 +29,7 @@ ms.locfileid: "56342450"
 
 在开始加载数据之前，请先确认是否已启用 Phoenix，并且查询超时设置是否符合预期。  请访问 HDInsight 群集的 [Apache Ambari](https://ambari.apache.org/) 仪表板，然后依次选择“HBase”和“配置”选项卡。向下滚动，确认 Apache Phoenix 是否已设置为 `enabled`，如下所示：
 
-![Apache Phoenix HDInsight 群集设置](./media/apache-hbase-phoenix-psql/ambari-phoenix.png)
+![Apache Phoenix HDInsight 群集设置](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
 ### <a name="use-psql-to-bulk-load-tables"></a>使用 `psql` 批量加载表
 

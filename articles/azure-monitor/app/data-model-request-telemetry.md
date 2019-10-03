@@ -13,11 +13,11 @@ ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884114"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60900509"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "57884114"
 
 请求遥测使用自定义的 `properties` 和 `measurements` 支持标准可扩展性模型。
 
-## <a name="name"></a>名称
+## <a name="name"></a>Name
 
 请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `id` 值的 `GET /values/{id}`。
 
@@ -45,7 +45,7 @@ ms.locfileid: "57884114"
 
 最大长度：2048 个字符
 
-## <a name="source"></a>源
+## <a name="source"></a>source
 
 请求的源。 示例包括调用方的检测密钥或调用方的 IP 地址。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
 

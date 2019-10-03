@@ -10,11 +10,11 @@ ms.workload: storage-backup-recovery
 ms.date: 03/04/2019
 ms.author: mayg
 ms.openlocfilehash: 2156ee6cf27ecfa32b19ad5bbef7549e99c3f7ef
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492849"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61280599"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>解决将 VMware VM 或物理计算机故障转移到 Azure 时出现的错误
 
@@ -74,19 +74,19 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>由于虚拟机上的“连接”按钮已灰显，无法连接/通过 RDP/SSH 连接到已故障转移的虚拟机
 
-如果 Azure 中已故障转移的 VM 的“连接”按钮灰显，并且你未通过快速路由或站点到站点 VPN 连接来连接到 Azure，则执行以下操作：
+如果 Azure 中已故障转移的 VM 的“连接”按钮灰显，并且你未通过快速路由或站点到站点 VPN 连接来连接到 Azure，则执行以下操作： 
 
-1. 转到“虚拟机” > “网络”，单击所需网络接口的名称。  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. 导航到“IP 配置”，然后单击所需 IP 配置的名称字段。 ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. 若要启用公共 IP 地址，请单击“启用”。 ![启用 IP](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. 单击“配置所需设置” > “新建”。 ![新建](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. 输入公共地址的名称，选择“SKU”和“分配”的默认选项，然后单击“确定”。
-6. 现在，单击“保存”以保存所做的更改。
-7. 关闭面板并导航到虚拟机的“概述”部分以进行连接/通过 RDP 连接。
+1. 转到“虚拟机”   > “网络”  ，单击所需网络接口的名称。  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. 导航到“IP 配置”  ，然后单击所需 IP 配置的名称字段。 ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+3. 若要启用公共 IP 地址，请单击“启用”  。 ![启用 IP](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
+4. 单击“配置所需设置”   > “新建”  。 ![新建](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+5. 输入公共地址的名称，选择“SKU”  和“分配”  的默认选项，然后单击“确定”  。
+6. 现在，单击“保存”  以保存所做的更改。
+7. 关闭面板并导航到虚拟机的“概述”  部分以进行连接/通过 RDP 连接。
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>无法连接/RDP/SSH - VM 的“连接”按钮可用
 
-如果 Azure 中已故障转移的 VM 的“连接”按钮可用（未灰显），则请检查虚拟机上的“启动诊断”，查看是否有[此文](../virtual-machines/windows/boot-diagnostics.md)中所列的错误。
+如果 Azure 中已故障转移的 VM 的“连接”按钮可用（未灰显），则请检查虚拟机上的“启动诊断”，查看是否有[此文](../virtual-machines/windows/boot-diagnostics.md)中所列的错误。  
 
 1. 如果虚拟机尚未启动，请尝试故障转移到以前的恢复点。
 2. 如果虚拟机中的应用程序未启动，请尝试故障转移到应用一致的恢复点。
@@ -110,27 +110,27 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 
 在故障转移后启动 Windows VM 时，如果在恢复的 VM 上收到一条有关意外关闭的消息，则表明在用于故障转移的恢复点中未捕获 VM 关闭状态。 如果恢复到某个点，在这个点 VM 尚未完全关闭，则会发生这种情况。
 
-对于计划外故障转移，这通常不需要担心，通常可以忽略。 如果计划在故障转移，确保 VM 在故障转移之前正确关闭，并提供足够的时间挂起的复制在本地数据发送到 Azure。 然后使用[“故障转移”屏幕](site-recovery-failover.md#run-a-failover)上的“最新”选项，将 Azure 上的任何待处理数据处理到一个恢复点中，随后用于 VM 故障转移。
+对于计划外故障转移，这通常不需要担心，通常可以忽略。 如果故障转移是计划内的，请确保 VM 在故障转移前正确关闭，并留出足够的时间供用来将挂起的本地复制数据发送到 Azure。 然后使用  [“故障转移”屏幕](site-recovery-failover.md#run-a-failover)上的“最新”选项，将 Azure 上的任何待处理数据处理到一个恢复点中，随后用于 VM 故障转移。
 
-## <a name="unable-to-select-the-datastore"></a>无法选择的数据存储
+## <a name="unable-to-select-the-datastore"></a>无法选择数据存储
 
-无法尝试遇到故障转移虚拟机重新保护时看到的数据存储在 Azure 门户时，指示此问题。 这是因为主目标未被识别为虚拟机添加到 Azure Site Recovery 的 Vcenter 下。
+如果在尝试重新保护已经历故障转移的虚拟机时在 Azure 门户中看不到数据存储，则表明存在此问题。 这是因为主目标在添加到 Azure Site Recovery 的 vCenter 下未被视为虚拟机。
 
-重新保护虚拟机的详细信息，请参阅[重新保护和机故障回复到本地站点故障转移到 Azure 后](vmware-azure-reprotect.md)。
+若要详细了解如何重新保护虚拟机，请参阅[故障转移到 Azure 后，将计算机重新保护并故障回复到本地站点](vmware-azure-reprotect.md)。
 
 若要解决问题，请执行以下操作：
 
-手动创建主目标在 vCenter，用于管理源计算机。 下一步的 vCenter 发现和刷新结构操作后，数据存储将可用。
+在用于管理源计算机的 vCenter 中手动创建主目标。 在完成下一个 vCenter 发现和刷新结构操作后，数据存储会变得可用。
 
 > [!Note]
 > 
-> 发现和刷新结构操作可能需要 30 分钟才能完成。 
+> 这些发现和刷新结构操作可能需要长达 30 分钟的时间才能完成。 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>使用 CS Linux 主目标注册失败并出现 SSL 错误 35 
+## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Linux 主目标注册到 CS 失败，出现 SSL 错误 35 
 
-与配置服务器的 Azure Site Recovery 主目标注册主目标上启用身份验证代理导致失败。 
+由于在主目标上启用了代理身份验证，将 Azure Site Recovery 主目标注册到配置服务器的操作失败。 
  
-此错误指示通过安装日志中的以下字符串： 
+在安装日志中出现以下字符串表明存在该错误： 
 
 ```
 RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
@@ -138,23 +138,23 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 若要解决问题，请执行以下操作：
  
-1. 在配置服务器 VM 上，打开命令提示符并验证的代理设置，使用以下命令：
+1. 在配置服务器 VM 上打开命令提示符，使用以下命令验证代理设置：
 
     cat /etc/environment echo $http_proxy 回显 $https_proxy 
 
-2. 如果上一命令的输出所示定义 http_proxy 或 https_proxy 设置，使用以下方法之一来取消阻止与配置服务器的主目标通信：
+2. 如果上述命令的输出表明 http_proxy 或 https_proxy 设置已定义，请使用下述方法之一来取消阻止主目标与配置服务器的通信：
    
-   - 下载[PsExec 工具](https://aka.ms/PsExec)。
-   - 使用工具来访问系统用户上下文并确定是否为配置了代理地址。 
-   - 如果配置代理，则打开 IE 在系统用户上下文中使用的 PsExec 工具。
+   - 下载 [PsExec 工具](https://aka.ms/PsExec)。
+   - 使用此工具访问系统用户上下文，确定是否已配置代理地址。 
+   - 如果代理已配置，请使用 PsExec 工具在系统用户上下文中打开 IE。
   
      **psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"**
 
-   - 若要确保主目标服务器可以与配置服务器通信：
+   - 若要确保主目标服务器能够与配置服务器通信，请执行以下操作：
   
-     - 修改在 Internet Explorer 中绕过主目标服务器的 IP 地址通过代理的代理设置。   
+     - 在 Internet Explorer 中修改代理设置，通过代理绕过主目标服务器 IP 地址。   
      或
-     - 禁用主目标服务器上的代理。 
+     - 在主目标服务器上禁用代理。 
 
 
 ## <a name="next-steps"></a>后续步骤

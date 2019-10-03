@@ -160,7 +160,7 @@ chmod +x ./svcat
 ./svcat get classes
 ```
 
-最后，列出所有可用的服务计划。 服务计划是 Azure 托管服务的服务层。 例如，对于 Azure Database for MySQL，计划范围为 `basic50`（具有 50 个数据传输单位 (DTU) 的基本层）到 `standard800`（具有 800 个 DTU 的标准层）。
+最后，列出所有可用的服务计划。 服务计划是 Azure 托管服务的服务层级。 例如，对于 Azure Database for MySQL，计划范围为 `basic50`（具有 50 个数据传输单位 (DTU) 的基本层）到 `standard800`（具有 800 个 DTU 的标准层）。
 
 ```azurecli-interactive
 ./svcat get plans

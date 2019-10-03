@@ -8,26 +8,36 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 06/06/2019
 ms.author: yluiu
-ms.openlocfilehash: 8502d643986392ba846d509819c6d8f63f931c07
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: a7667f94d3f4dea2901c4b4b0e2b2c893b9f535e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544544"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074098"
 ---
 # <a name="face-api-release-notes"></a>人脸 API 发行说明
 
 本文适用于人脸 API 服务 1.0 版。
 
+### <a name="release-changes-in-june-2019"></a>2019 年 6 月版本更改
+
+* 添加新的人脸检测模型，小、 端视图、 封闭的像素和模糊的人脸上的改进准确度。 使用它通过[人脸-检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)， [FaceList-添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)，[大型人脸列表-添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)， [person Group 人员-添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)和[大型人物组人员-添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)通过指定新的人脸检测模型名称`detection_02`中`detectionModel`参数。 中的更多详细信息[如何指定检测模型](Face-API-How-to-Topics/specify-detection-model.md)。
+
+### <a name="release-changes-in-april-2019"></a>2019 年 4 月版本更改
+
+* 提高了 `age` 和 `headPose` 属性的总体准确性。 此外还更新了 `headPose` 属性，`pitch` 值现已启用。 使用这些属性的方法是在[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` 参数的 `returnFaceAttributes` 参数中指定它们。 
+
+* 提高了[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[FaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、[LargeFaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、[PersonGroup 人员 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)和 [LargePersonGroup 人员 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)的速度。
+
 ### <a name="release-changes-in-march-2019"></a>2019 年 3 月版本更改
 
-* 添加新的人脸识别模型更加准确。 使用它通过[人脸-检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)， [FaceList-创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)，[大型人脸列表-创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)， [person Group-创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)和[大型人物组-创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)通过指定新的人脸识别模型名称`recognition_02`中`recognitionModel`参数。 中的更多详细信息[如何指定一个认证模型](Face-API-How-to-Topics/specify-recognition-model.md)。
+* 添加了新的人脸识别模型，提高了准确度。 通过[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[FaceList - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)、[LargeFaceList - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)、[PersonGroup - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)和 [LargePersonGroup - 创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)来使用它，只需在 `recognitionModel` 参数中指定新的人脸识别模型名称 `recognition_02` 即可。 [如何指定识别模型](Face-API-How-to-Topics/specify-recognition-model.md)中提供了更多详细信息。
 
 ### <a name="release-changes-in-january-2019"></a>2019 年 1 月的发布更改
 
-* 添加了快照功能以支持跨订阅的数据迁移：[快照](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get)。 中的更多详细信息[如何将人脸数据迁移到不同的人脸订阅](Face-API-How-to-Topics/how-to-migrate-face-data.md)。
+* 添加了快照功能以支持跨订阅的数据迁移：[快照](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get)。 如需更多详细信息，请参阅[如何将人脸数据迁移到其他人脸订阅](Face-API-How-to-Topics/how-to-migrate-face-data.md)。
 
 ### <a name="release-changes-in-october-2018"></a>2018 年 10 月的发布更改
 

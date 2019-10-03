@@ -29,6 +29,10 @@
           href: container-instances-multi-container-yaml.md
         - name: 部署容器组 - 资源管理器
           href: container-instances-multi-container-group.md
+    - name: 与 Azure 服务集成
+      items:
+        - name: 使用 Azure Functions 触发
+          href: container-instances-tutorial-azure-function-trigger.md
 - name: 示例
   items:
     - name: 代码示例
@@ -45,6 +49,8 @@
       href: container-instances-region-availability.md
     - name: 与协调器的关系
       href: container-instances-orchestrator-relationship.md
+    - name: 安全注意事项
+      href: container-instances-image-security.md
 - name: 操作指南
   items:
     - name: 部署
@@ -59,7 +65,7 @@
           href: container-instances-restart-policy.md
         - name: 设置环境变量 (env)
           href: container-instances-environment-variables.md
-        - name: 替代容器入口点
+        - name: 设置容器启动命令（入口点）
           href: container-instances-start-command.md
         - name: 执行命令 (exec)
           href: container-instances-exec.md
@@ -69,6 +75,8 @@
           href: container-instances-managed-identity.md
         - name: 使用 GPU 资源（预览版）
           href: container-instances-gpu.md
+        - name: 启用 SSL 终结点
+          href: container-instances-container-group-ssl.md
     - name: 装载数据卷
       items:
         - name: Azure 文件共享
@@ -93,7 +101,7 @@
           href: container-instances-monitor.md
         - name: 获取容器日志和事件
           href: container-instances-get-logs.md
-        - name: 使用 Azure Log Analytics 进行日志记录
+        - name: 使用 Azure Monitor 日志进行日志记录
           href: container-instances-log-analytics.md
     - name: 故障排除
       items:
@@ -117,6 +125,10 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: 资源管理器模板
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: YAML
+      href: container-instances-reference-yaml.md
+    - name: 连接器
+      href: /connectors/aci
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能
@@ -133,3 +145,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+    - name: 常见问题解答
+      href: container-instances-faq.md

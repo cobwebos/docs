@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
-ms.openlocfilehash: bf0173f9c9802be689f7f3a893d381a251a2b16a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: 794e797e504d6064c13ffe0a4ed131e668d86e97
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701130"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64699393"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>中继混合连接 Node API 概述
 
@@ -131,7 +131,7 @@ var wss = new server(
 - `server`（必需）- 要侦听的混合连接名称的完全限定 URI，通常使用 WebSocket.createRelayListenUri() 帮助程序方法构造。
 - `token`（必需）- 此参数可以保留以前颁发的令牌字符串，也可以保留为获得此类令牌字符串而调用的回调函数。 在启用令牌续订时，首选回调选项。
 
-#### <a name="events"></a>活动
+#### <a name="events"></a>Events
 
 `RelayedServer` 实例将发出三个事件，使你能够处理传入的请求、建立连接，以及检测错误条件。 订阅 `connect` 事件后才能处理消息。 
 
@@ -158,7 +158,7 @@ function(socket)
 function(error)
 ```
 
-如果基础服务器发出错误，将转发到此处。  
+如果基础服务器发出错误，则会转发到此处。  
 
 #### <a name="helpers"></a>帮助程序
 

@@ -1,23 +1,22 @@
 ---
-title: 使用 Azure Site Recovery 将 VMM 云中的 Hyper-V VM 灾难恢复到辅助站点时的支持矩阵 | Microsoft Docs
+title: 使用 Azure Site Recovery 在 VMM 云中将 Hyper-v Vm 灾难恢复到辅助站点的支持矩阵
 description: 汇总了对使用 Azure Site Recovery 将 VMM 云中的 Hyper-V VM 复制到辅助站点的支持。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9c3a19d44a4ac0fba37f4815b65b17c26d257dbc
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360791"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813626"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>将 Hyper-V VM 灾难恢复到辅助站点时的支持矩阵
 
-本文汇总了使用时支持的功能[Azure Site Recovery](site-recovery-overview.md)服务，以将 HYPER-V Vm 复制到辅助站点的 System Center Virtual Machine Manager (VMM) 云中托管。 如果要将 Hyper-V VM 复制到 Azure，请查看[此支持矩阵](hyper-v-azure-support-matrix.md)。
+本文汇总了使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 System Center Virtual Machine Manager (VMM) 云中托管的 Hyper-V VM 复制到辅助站点时所支持的内容。 如果要将 Hyper-V VM 复制到 Azure，请查看[此支持矩阵](hyper-v-azure-support-matrix.md)。
 
 > [!NOTE]
 > Hyper-V 主机在 VMM 云中托管时，只能复制到辅助站点。
@@ -72,7 +71,7 @@ Windows Server 2012 R2 | Windows Server 2012 R2 上的[Hyper-V 支持](https://d
 
 **存储（主机）** | **支持**
 --- | --- 
-NFS | 不适用
+NFS | 不可用
 SMB 3.0 |  是
 SAN (ISCSI) | 是
 多路径 (MPIO) | 是
@@ -81,15 +80,15 @@ SAN (ISCSI) | 是
 
 **配置** | **支持**
 --- | --- | 
-VMDK |  不适用
+VMDK |  不可用
 VHD/VHDX | 是（最多 16 个磁盘）
 第 2 代 VM | 是
 共享群集磁盘 | 否
 加密磁盘 | 否
-UEFI| 不适用
+UEFI| 不可用
 NFS | 否
 SMB 3.0 | 否
-RDM | 不适用
+RDM | 不可用
 磁盘 > 1 TB | 是
 包含条带化磁盘的卷 > 1 TB<br/><br/> LVM | 是
 存储空间 | 是

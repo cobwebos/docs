@@ -1,41 +1,33 @@
 ---
-title: Azure Active Directory (Azure AD) Identity Protection 安全概览 | Microsoft Docs
+title: Azure Active Directory (Azure AD) 标识保护安全概览 | Microsoft Docs
 description: 了解如何通过“安全概览”深入了解组织的安全状态。
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 610668768c7baca13cb60caf1d810cced31ebec3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b894f7020083dd6ca46c394ec2930a3da36bc76d
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516427"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335201"
 ---
-# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - 安全概览
+# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory 标识保护 - 安全概览
 
 通过[安全概览](https://aka.ms/IdentityProtectionRefresh)，可以深入了解组织的安全状态。 它有助于发现潜在攻击，并了解策略有效性。
 
 “安全概览”大致分为以下两部分：
 
 - 趋势：位于左侧，呈现组织的风险时间线。
-
 - 磁贴：位于右侧，突出显示组织中正在发生的关键问题，并建议如何快速采取措施。
 
-
-![安全性概述](./media/security-overview/01.png)
+![安全概述](./media/security-overview/01.png)
   
 ## <a name="trends"></a>趋势
 
@@ -53,30 +45,24 @@ ms.locfileid: "58516427"
 
 “高风险用户”磁贴显示标识遭入侵可能性高的用户的最新计数。 应最优先调查这些用户。 单击“高风险用户”磁贴会重定向到“有风险用户”报告的筛选后视图，其中只显示高风险级别用户。 使用此报告，可以了解详细信息，并通过重置密码来修正这些用户。
 
-![安全性概述](./media/security-overview/02.png)
-
+![安全概述](./media/security-overview/02.png)
 
 ### <a name="medium-risk-users"></a>中等风险用户
 “中等风险用户”磁贴显示标识遭入侵可能性中等的用户的最新计数。 单击“中等风险用户”磁贴会重定向到“有风险用户”报告的筛选后视图，其中只显示中等风险级别用户。 使用此报告，可以进一步调查，并修正这些用户。
 
 ### <a name="unprotected-risky-sign-ins"></a>未保护的有风险登录
 
-“未保护的有风险登录”磁贴显示上周成功实时有风险登录数，这些登录既没有遭阻止，也没有受到条件访问策略、Identity Protection 风险策略或每用户 MFA 的 MFA 质询。 这些是成功但没有接受 MFA 质询的潜在遭入侵登录。 为了今后保护此类登录，请应用登录风险策略。 单击“未保护的有风险登录”磁贴会重定向到“登录风险策略配置”边栏选项卡，在其中可以将登录风险策略配置为，必须对指定风险级别的登录进行 MFA。
-
+“未保护的有风险登录”磁贴显示上周成功实时有风险登录数，这些登录既没有遭阻止，也没有受到条件访问策略、标识保护风险策略或每用户 MFA 的 MFA 质询。 这些是成功但没有接受 MFA 质询的潜在遭入侵登录。 为了今后保护此类登录，请应用登录风险策略。 单击“未保护的有风险登录”磁贴会重定向到“登录风险策略配置”边栏选项卡，在其中可以将登录风险策略配置为，必须对指定风险级别的登录进行 MFA。
 
 ### <a name="legacy-authentication"></a>旧身份验证
 
 “旧身份验证”磁贴显示上周组织中的旧身份验证数。 旧身份验证协议不支持 MFA 等新式安全方法。 为了防止使用旧身份验证，可以应用条件访问策略。 单击“旧身份验证”磁贴会重定向到“标识安全功能分数”。
 
-
-### <a name="identity-secure-score"></a>标识安全评分
+### <a name="identity-secure-score"></a>标识安全功能分数
 
 “标识安全功能分数”衡量并比较你的安全状态与行业模式。 单击“标识安全功能分数(预览版)”磁贴会重定向到“标识安全功能分数(预览版)”边栏选项卡，在其中可以详细了解如何提升安全状态。
 
-
 ## <a name="next-steps"></a>后续步骤
 
-- [第 9 频道：Azure AD 和标识展示：Identity Protection 预览版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
-
-- [启用 Azure Active Directory Identity Protection](enable.md)
-
+- [第 9 频道：Azure AD 和标识展示：“标识保护”预览版](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+- [启用 Azure Active Directory 标识保护](enable.md)

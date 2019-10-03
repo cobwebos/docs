@@ -4,17 +4,17 @@ description: 变量资产是可供 Azure 自动化中的所有 Runbook 和 DSC �
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
-ms.date: 04/01/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc26c0357dcb071c4c75e8684fe47144a04177e4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3fe008d20ab43636b59861bcc5a7914ba0fca17e
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58806774"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910067"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
 
@@ -28,7 +28,7 @@ ms.locfileid: "58806774"
 
 由于自动化变量将会持久保存，即使 Runbook 或 DSC 配置失败，它们也仍然可用。 此行为允许一个 Runbook 设置的值随后由另一个 Runbook 使用，或由同一 Runbook 或 DSC 配置在下次运行时使用。
 
-创建变量时，可以指定将其加密存储。 加密的变量安全地存储在 Azure 自动化中并且不能从 Azure PowerShell 模块随附的 [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) cmdlet 检索变量值。 可以检索加密值的唯一方法是从 Runbook 或 DSC 配置中的 **Get-AutomationVariable** 活动进行检索。
+创建变量时，可以指定将其加密存储。 加密的变量安全地存储在 Azure 自动化中并且不能从 Azure PowerShell 模块随附的 [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) cmdlet 检索变量值。 可以检索加密值的唯一方法是从 Runbook 或 DSC 配置中的 **Get-AutomationVariable** 活动进行检索。 若要将已加密的变量更改为未加密，必须删除该变量并将其重新创建为未加密的变量。
 
 >[!NOTE]
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在系统托管的密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。 此过程由 Azure 自动化管理。
@@ -42,7 +42,7 @@ ms.locfileid: "58806774"
 以下列出自动化中的可用变量类型：
 
 * String
-* Integer
+* 整数
 * DateTime
 * Boolean
 * Null
@@ -58,11 +58,11 @@ ms.locfileid: "58806774"
 |[Remove-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationVariable)|删除现有变量。|
 |[Set-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable)|设置现有变量的值。|
 
-## <a name="activities"></a>活动
+## <a name="activities"></a>activities
 
-下表中的活动用于在 Runbook 和 DSC 配置中访问凭据。
+下表中的活动用于在 runbook 和 DSC 配置中访问变量。 Get-azurermautomationvariable 和 Get-automationvariable cmdlet 之间的区别在本文开头的阐述。
 
-| 活动 | 描述 |
+| activities | 描述 |
 |:---|:---|
 |Get-AutomationVariable|检索现有变量的值。|
 |Set-AutomationVariable|设置现有变量的值。|
@@ -135,45 +135,6 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
     Write-Output "$i`: $SampleMessage"
 }
 Set-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
-```
-
-#### <a name="setting-and-retrieving-a-complex-object-in-a-variable"></a>设置和检索变量中的复杂对象
-
-下面的示例代码演示如何更新文本 Runbook 中具有复杂值的变量。 在此示例中，使用 **Get-AzureVM** 检索到一个 Azure 虚拟机并保存到一个现有的自动化变量。  如[变量类型](#variable-types)中所述，该对象存储为一个 PSCustomObject。
-
-```powershell
-$vm = Get-AzureVM -ServiceName "MyVM" -Name "MyVM"
-Set-AutomationVariable -Name "MyComplexVariable" -Value $vm
-```
-
-在下面的代码中，从该变量检索值并将其用于启动虚拟机。
-
-```powershell
-$vmObject = Get-AutomationVariable -Name "MyComplexVariable"
-if ($vmObject.PowerState -eq 'Stopped') {
-    Start-AzureVM -ServiceName $vmObject.ServiceName -Name $vmObject.Name
-}
-```
-
-#### <a name="setting-and-retrieving-a-collection-in-a-variable"></a>设置和检索变量中的集合
-
-下面的示例代码演示如何使用文本 Runbook 中包含一组复杂值的变量。 在此示例中，使用 **Get-AzureVM** 检索到多个 Azure 虚拟机并将它们保存到一个现有的自动化变量。 如[变量类型](#variable-types)中所述，变量存储为一组 PSCustomObject。
-
-```powershell
-$vms = Get-AzureVM | Where -FilterScript {$_.Name -match "my"}
-Set-AutomationVariable -Name 'MyComplexVariable' -Value $vms
-```
-
-在下面的代码中，从该变量检索此集合并用于启动每个虚拟机。
-
-```powershell
-$vmValues = Get-AutomationVariable -Name "MyComplexVariable"
-ForEach ($vmValue in $vmValues)
-{
-    if ($vmValue.PowerState -eq 'Stopped') {
-        Start-AzureVM -ServiceName $vmValue.ServiceName -Name $vmValue.Name
-    }
-}
 ```
 
 #### <a name="setting-and-retrieving-a-variable-in-python2"></a>在 Python2 中设置和检索变量

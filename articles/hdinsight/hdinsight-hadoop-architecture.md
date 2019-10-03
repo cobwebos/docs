@@ -1,20 +1,19 @@
 ---
 title: Apache Hadoop 体系结构 - Azure HDInsight
-description: 介绍 HDInsight 群集上的 Apache Hadoop 存储和处理。
-services: hdinsight
+description: 介绍如何在 Azure HDInsight 群集上 Apache Hadoop 存储和处理。
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 9f45b1603fe0e34bfdf6192fd85ecaf27311ae32
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.date: 05/27/2019
+ms.openlocfilehash: 3767ea10d777a0ea7ad88a2ffa4793e866ffbe6c
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718071"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091484"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 体系结构
 
@@ -46,7 +45,7 @@ NodeManagers 先运行应用程序包含的任务，然后将其进度和状态�
 
 所有 HDInsight 群集类型都部署 YARN。 ResourceManager 在进行高可用性部署时会使用一个主实例和一个辅助实例，二者分别运行在群集的第一个头节点和第二个头节点上。 一次只有一个 ResourceManager 实例处于活动状态。 NodeManager 实例跨群集的可用工作节点运行。
 
-![YARN on HDInsight](./media/hdinsight-hadoop-architecture/yarn-on-hdinsight.png)
+![Azure HDInsight 上的 Apache YARN](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
 
 ## <a name="next-steps"></a>后续步骤
 

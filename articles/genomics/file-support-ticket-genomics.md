@@ -1,5 +1,5 @@
 ---
-title: Microsoft 基因组学：如何提交支持请求 | Microsoft Docs
+title: Microsoft 基因组学：如何提出支持请求 |Microsoft Docs
 titleSuffix: Azure
 description: 本概述介绍如何创建支持请求以与 Microsoft 基因组学联系。 这可能在无法使用疑难解答指南或 FAQ 解决问题时十分有用。
 keywords: 故障排除, 错误, 调试, 支持
@@ -10,12 +10,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 05/23/2018
-ms.openlocfilehash: d5e33f5b22012b297cdceacbe38425934f0f65b4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: ed37d42d8ec1692cc5edb62b68536803f47205f5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734363"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60721202"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>如何与 Microsoft 基因组学联系以获取支持
 本概述介绍如何创建支持请求以与 Microsoft 基因组学联系。 这可能在无法使用[故障排除指南](troubleshooting-guide-genomics.md)或[常见问题](frequently-asked-questions-genomics.md)解决问题时十分有用。 

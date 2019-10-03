@@ -8,14 +8,14 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 12/17/2018
+ms.date: 08/16/2019
 ms.author: alinast
-ms.openlocfilehash: 4c41fbaa00dc3460df3f94433428c448a7b41250
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 40a98f915bc11ad17eae27596519cc78539fb2bb
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089688"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640289"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>快速入门：通过 Azure 数字孪生查找可用房间
 
@@ -72,6 +72,7 @@ ms.locfileid: "58089688"
 空间图使用 [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) 文件进行预配。
 
 1. 运行 `dotnet run ProvisionSample`。
+
     >[!NOTE]
     >请使用设备登录 Azure CLI 工具向 Azure AD 进行用户身份验证。 用户必须使用 [Microsoft 登录](https://microsoft.com/devicelogin)页输入一个给定的用于身份验证的代码。 输入代码以后，请按步骤进行身份验证。 运行工具时，用户必须进行身份验证。
 
@@ -80,11 +81,11 @@ ms.locfileid: "58089688"
 
 1. 预配步骤可能需要数分钟。 此外还会在数字孪生实例中预配 IoT 中心， 并且会一直循环下去，直至 IoT 中心的状态为 `Running`。
 
-    ![预配示例][4]
+    [![预配示例](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png#lightbox)
 
 1. 在执行结束时，请复制设备的 `ConnectionString`，以便在设备模拟器示例中使用。 仅复制下图所示的字符串。
 
-    ![预配示例][1]
+    [![复制连接字符串](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
 
     >[!TIP]
     > 可以使用 [Azure 数字孪生图形查看器](https://github.com/Azure/azure-digital-twins-graph-viewer)查看和修改空间图。
@@ -99,7 +100,7 @@ ms.locfileid: "58089688"
 1. 编辑 [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json)，使用上面的 `ConnectionString` 更新 **DeviceConnectionString**。
 1. 运行 `dotnet run`，开始发送传感器数据。 可以看到数据会被发送到数字孪生，如下图所示。
 
-     ![设备连接性][2]
+     [![设备连接性](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
 
 1. 让此模拟器运行，这样就可以同时查看结果和下一步操作。 此窗口会显示发送到数字孪生的模拟传感器数据， 而下一步则会进行实时查询，以便查找空气清新的可用房间。
 
@@ -118,7 +119,7 @@ ms.locfileid: "58089688"
    - 房间可用且空气清新。
    - 房间已占用或空气质量差。
 
-     ![获取空气清新的可用空间][3]
+     [![获取空气清新的可用空间](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
 
 若要了解本快速入门中的情况以及所调用的 API，请打开 [Visual Studio Code](https://code.visualstudio.com/Download)，其中的代码工作区项目位于 digital-twins-samples-csharp 中。 请使用以下命令：
 
@@ -149,7 +150,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 若要继续学习这些教程，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请删除通过本快速入门创建的所有资源。
 
 1. 删除下载示例存储库时创建的文件夹。
-1. 在 [Azure 门户](https://portal.azure.com)左侧的菜单中，选择“所有资源”。 然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”。
+1. 在 [Azure 门户](https://portal.azure.com)左侧的菜单中，选择“所有资源”。  然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”   。
 
     > [!TIP]
     > 如果在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。
@@ -160,9 +161,3 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 >[!div class="nextstepaction"]
 >[教程：部署 Azure 数字孪生并配置空间图](tutorial-facilities-setup.md)
-
-<!-- Images -->
-[1]: media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png
-[2]: media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png
-[3]: media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png
-[4]: media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png

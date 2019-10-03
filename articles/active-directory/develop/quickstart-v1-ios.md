@@ -1,10 +1,10 @@
 ---
-title: 生成一个 iOS 应用，使其与 Azure AD 集成以方便登录，并使用 OAuth 2.0 调用受保护的 API | Microsoft Docs
+title: 构建与 Azure AD 集成的 iOS 应用，以便使用 OAuth 2.0 登录 | Microsoft Docs
 description: 了解如何从 iOS 应用将用户登录并调用 Microsoft Graph API。
 services: active-directory
 documentationcenter: ios
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 42303177-9566-48ed-8abb-279fcf1e6ddb
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: celested
+ms.date: 05/21/2019
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d986ccbf92192c1fb7375e9db1fb398ed86a829
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8a82a7cad9b9176589824b6febb5cfdde89fce8a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879958"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380874"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>快速入门：从 iOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -54,7 +54,7 @@ ms.locfileid: "58879958"
 
 ## <a name="step-1-determine-what-your-redirect-uri-is-for-ios"></a>步骤 1：确定用于 iOS 的重定向 URI
 
-若要安全地在特定 SSO 方案中启动应用程序，必须以特定格式创建重定向 URI。 重定向 URI 用于确保将令牌返回给需要它们的正确应用程序。
+若要安全地在特定 SSO 方案中启动应用程序，必须以特定格式创建重定向 URI  。 重定向 URI 用于确保将令牌返回给需要它们的正确应用程序。
 
 重定向 URI 的 iOS 格式为：
 
@@ -63,7 +63,7 @@ ms.locfileid: "58879958"
 ```
 
 * **app-scheme** - 在 XCode 项目中注册的，它是其他应用程序的调用方式。 可以在 **Info.plist > URL types > URL Identifier** 下找到 app-scheme。 如果尚未配置一个或多个 app-scheme，请创建一个。
-* **bundle-id** - 是捆绑标识符，位于 XCode 项目设置中的“标识符”下。
+* **bundle-id** - 是捆绑标识符，位于 XCode 项目设置中的“标识符”下。 
 
 此快速入门代码的示例：
 
@@ -74,14 +74,15 @@ ms.locfileid: "58879958"
 若要设置应用来获取令牌，需要在 Azure AD 租户中注册该应用，并授予其访问 Azure AD 图形 API 的权限：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在顶部栏中选择帐户。 在“目录”列表下选择要注册应用程序的 Active Directory 租户。
-3. 在最左侧的导航窗格中选择“所有服务”，并选择“Azure Active Directory”。
-4. 选择“应用注册”，并选择“添加”。
-5. 根据提示创建新的“本机”客户端应用程序。
+2. 在顶部栏中选择帐户。 在“目录”  列表下选择要注册应用程序的 Active Directory 租户。
+3. 在最左侧的导航窗格中选择“所有服务”，并选择“Azure Active Directory”。  
+4. 选择“应用注册”，然后选择“新建注册”   。
+5. 根据提示创建新的客户端应用程序。
     * **名称**是应用程序名称，它向最终用户描述该应用程序。
-    * **重定向 URI** 是 Azure AD 用来返回令牌响应的方案与字符串组合。 请输入特定于应用程序并基于之前的重定向 URI 信息的一个值。
+    * **重定向 URI** 是 Azure AD 用来返回令牌响应的方案与字符串组合。 请输入特定于应用程序并基于之前的重定向 URI 信息的一个值。 另外，请从下拉列表中选择“公共客户端(移动和桌面)”  。
 6. 完成注册后，Azure AD 将为应用分配一个唯一的应用程序 ID。 在后面的部分中会用到此值，因此，请从应用程序选项卡中复制此值。
-7. 从“设置”页上，选择“所需权限”>“添加”>“Microsoft Graph”，然后在“委派的权限”下添加“读取目录数据”权限。 此权限将应用程序设置为在 Azure AD Graph API 中查询用户。
+7. 在“API 权限”  页面上，选择“添加权限”  。 在“选择 API”中选择“Microsoft Graph”  。
+8. 在“委托的权限”  下，选择 **User.Read** 权限，然后点击“添加”  以保存。 此权限将应用程序设置为在 Azure AD Graph API 中查询用户。
 
 ## <a name="step-3-install-and-configure-adal"></a>步骤 3：安装并配置 ADAL
 
@@ -99,7 +100,7 @@ ms.locfileid: "58879958"
     link_with ['QuickStart']
     xcodeproj 'QuickStart'
 
-    pod 'ADALiOS'
+    pod 'ADAL'
     ```
 
 1. 使用 CocoaPods 加载 podfile。 此步骤将创建你加载的新 XCode 工作区。

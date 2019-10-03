@@ -3,7 +3,7 @@ title: Azure 使用情况 API 概述 | Microsoft Docs
 description: 了解如何通过 Azure 使用情况 API 以编程方式访问 Azure 资源的成本和使用情况数据。
 services: billing
 documentationcenter: ''
-author: Erikre
+author: bandersmsft
 manager: dougeby
 editor: ''
 tags: billing
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 6/07/2018
-ms.author: erikre
-ms.openlocfilehash: 88b7909e78f8bd36ce456eee60587acbbb94b6cd
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.date: 10/01/2019
+ms.author: banders
+ms.openlocfilehash: f867cc954bcdf8cb2fc7ebf37ff19e52db485376
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286742"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719759"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure 使用情况 API 概述 
 
@@ -45,7 +45,7 @@ Azure 使用情况 API 允许访问以下内容：
 该 API 包括：
 
 -   **计量级别使用情况数据** - 查看各种数据，包括使用情况成本、发出费用的计量，以及与费用相关的 Azure 资源。 所有使用情况详细信息记录都映射到每日 Bucket。
--   Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
+-    Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
 -   **筛选** - 使用以下筛选器将 API 结果集裁剪成较小的一组使用情况详细信息记录：
     - 使用结束/使用开始
     - 资源组
@@ -62,7 +62,7 @@ Azure 使用情况 API 允许访问以下内容：
 该 API 包括：
 
 -   **计量级别使用情况数据** - 查看各种数据，包括市场使用情况成本、发出费用的计量，以及与费用相关的资源。 所有使用情况详细信息记录都映射到每日 Bucket。
--   Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
+-    Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
 -   **筛选** - 使用以下筛选器将 API 结果集裁剪成较小的一组市场记录：
     - 使用开始/使用结束
     - 资源组
@@ -77,7 +77,7 @@ Azure 使用情况 API 允许访问以下内容：
 
 该 API 包括：
 
--   Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
+-    Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
 -   **仅企业客户** - 此 API 只供 EA 客户使用。 
     - 客户必须具有企业管理员权限才能调用此 API 
 
@@ -89,7 +89,7 @@ Azure 使用情况 API 允许访问以下内容：
 
 该 API 包括：
 
--   Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
+-    Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
 -   **仅企业客户** - 此 API 只供 EA 客户使用。
 -   **可配置的通知** - 指定预算超额时要通知的用户。
 -   **基于使用情况或成本的预算** - 根据方案所需的使用情况或成本创建预算。
@@ -107,7 +107,7 @@ Azure 使用情况 API 允许访问以下内容：
 
 该 API 包括：
 
--   Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
+-    Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
 -   **筛选** - 使用以下筛选器调整建议结果：
     - 范围
     - 回溯期间
@@ -121,7 +121,7 @@ Azure 使用情况 API 允许访问以下内容：
 
 该 API 包括：
 
--   Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
+-    Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
 -   **筛选** - 使用以下筛选器将 API 结果集裁剪成较小的一组预留：
     - 日期范围
 -   **不同产品/服务类型的预留信息** - 预留信息目前可供企业和 Web Direct 客户使用。
@@ -134,7 +134,7 @@ Azure 使用情况 API 允许访问以下内容：
 
 该 API 包括：
 
--   Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
+-    Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
 -   **筛选** - 将每日粒度与以下筛选器配合使用，以便调整结果：
     - 使用日期
 -   **不同产品/服务类型的预留信息** - 预留信息目前可供企业和 Web Direct 客户使用。
@@ -147,7 +147,7 @@ Azure 使用情况 API 允许访问以下内容：
 
 该 API 包括：
 
--   Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
+-    Azure 基于角色的访问控制 - 在 [Azure 门户](https://portal.azure.com)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview) 上配置访问策略，指定哪些用户或应用程序有权访问订阅的使用情况数据。 调用方必须使用标准 Azure Active Directory 令牌进行身份验证。 将调用方添加到计费读取者、读取者、所有者或参与者角色，以访问特定 Azure 订阅的用量数据。 
 -   **仅企业客户** - 此 API 只供 EA 客户使用。 Web Direct 客户应使用 RateCard API 来获取定价。 
 
 有关详细信息，请参阅[价目表 API](https://docs.microsoft.com/rest/api/consumption/pricesheet) 的技术规范。

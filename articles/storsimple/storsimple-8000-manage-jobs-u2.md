@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: bf8038b7171053b75eeb9aed88bff4246e65a8a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 462f8dafdffa7ee01e6ccf7945a1abfdff90db42
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108185"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64720694"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>使用 StorSimple 设备管理器服务查看和管理作业（Update 3 和更高版本）
 
 ## <a name="overview"></a>概述
-“作业”边栏选项卡提供了一个中央门户，用于查看和管理在连接到 StorSimple 设备管理器服务的设备上启动的作业。 可以针对多个设备查看计划的、正在运行的、已完成的、已取消的和失败的作业。 结果以表格形式呈现。
+“作业”边栏选项卡提供了一个中央门户，用于查看和管理在连接到 StorSimple 设备管理器服务的设备上启动的作业。  可以针对多个设备查看计划的、正在运行的、已完成的、已取消的和失败的作业。 结果以表格形式呈现。
 
 ![“作业”边栏选项卡](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
@@ -55,9 +55,9 @@ ms.locfileid: "23108185"
 执行以下步骤，查看任意作业的详细信息。
 
 #### <a name="to-view-job-details"></a>查看作业详细信息
-1. 转到 StorSimple 设备管理器服务，单击“作业”。
+1. 转到 StorSimple 设备管理器服务，单击“作业”。 
 
-2. 在“作业”边栏选项卡中，通过适当的筛选器运行查询，显示所需的作业。 可以搜索已完成的、正在运行的或已取消的作业。
+2. 在“作业”  边栏选项卡中，通过适当的筛选器运行查询，显示所需的作业。 可以搜索已完成的、正在运行的或已取消的作业。
 
     ![“作业”边栏选项卡](./media/storsimple-8000-manage-jobs-u2/jobs1.png)
 
@@ -77,13 +77,13 @@ ms.locfileid: "23108185"
 
 
 ### <a name="to-cancel-a-job"></a>取消作业
-1. 在“作业”页上，通过适当的筛选器运行查询，显示要取消的正在运行的作业。 选择作业。
+1. 在“作业”页上，通过适当的筛选器运行查询，显示要取消的正在运行的作业。  选择作业。
 
-2. 右键单击选定的作业调用上下文菜单，单击“取消”。
+2. 右键单击选定的作业调用上下文菜单，单击“取消”。 
 
     ![作业详细信息](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
-3. 出现确认提示时，单击“是”。 现在已取消此作业。
+3. 出现确认提示时，单击“是”  。 现在已取消此作业。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[管理 StorSimple 备份策略](storsimple-8000-manage-backup-policies-u2.md)。

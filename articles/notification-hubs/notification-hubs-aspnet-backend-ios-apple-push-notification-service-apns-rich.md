@@ -3,9 +3,9 @@ title: Azure 通知中心富推送
 description: 了解如何从 Azure 将富推送通知发送到 iOS 应用。 代码示例是使用 .Objective-C 和 C# 编写的。
 documentationcenter: ios
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 590304df-c0a4-46c5-8ef5-6a6486bb3340
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: dd808a04dff77388248bf7309f5ff804e6dd065c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447746"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212195"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure 通知中心富推送
 
@@ -50,12 +52,12 @@ ms.locfileid: "54447746"
     ![][IOS2]
 5. 在 `Notifications.cs` 中，添加以下 using 语句：
 
-    ```c#
+    ```csharp
     using System.Reflection;
     ```
 6. 使用以下代码更新整个 `Notifications` 类。 请确保将占位符替换为通知中心凭据和图像文件名。
 
-    ```c#
+    ```csharp
     public class Notification {
         public int Id { get; set; }
         // Initial notification message to display to users
@@ -105,7 +107,7 @@ ms.locfileid: "54447746"
 
 7. 在 `NotificationsController.cs` 中，使用以下代码片段重新定义 `NotificationsController。 这会将初始无提示的富通知 ID 发送到设备，并允许客户端对图像进行检索：
 
-    ```c#
+    ```csharp
     // Return http response with image binary
     public HttpResponseMessage Get(int id) {
         var stream = Notifications.Instance.ReadImage(id);
@@ -135,11 +137,11 @@ ms.locfileid: "54447746"
     }
     ```
 8. 现在，我们将此应用重新部署到 Azure 网站，以便可以从所有设备对其进行访问。 右键单击 **AppBackend** 项目，并选择“发布”。
-9. 选择 Azure 网站作为发布目标。 使用 Azure 帐户登录，选择现有或新的网站，并记下“连接”选项卡中的**目标 URL** 属性。在本教程后面的部分中，会将此 URL 称为“后端终结点”。 单击“发布” 。
+9. 选择 Azure 网站作为发布目标。 使用 Azure 帐户登录，选择现有或新的网站，并记下“连接”选项卡中的**目标 URL** 属性。在本教程后面的部分中，会将此 URL 称为“后端终结点”。 单击“发布”。
 
 ## <a name="modify-the-ios-project"></a>修改 iOS 项目
 
-已将应用后端修改为只发送通知的 *ID*，将更改 iOS 应用以处理该 ID，并从后端检索丰富的消息。
+已将应用后端修改为只发送通知的 *ID*，将更改 iOS 应用以处理该 ID，并从后端检索富消息。
 
 1. 打开 iOS 项目，并转到“目标”部分的主应用目标来启用远程通知。
 2. 单击“功能”，开启“背景模式”，并选中“远程通知”复选框。
@@ -150,9 +152,9 @@ ms.locfileid: "54447746"
 5. 将**视图控制器**添加到情节提要并添加**映像视图**。 用户单击此通知选择了解详细信息后，会看到此页面。 Storyboard 应类似于：
 
     ![][IOS4]
-6. 单击情节提要中的“主页视图控制器”，并确保它将 **homeViewController** 作为其“自定义类”和标识检查器下方的“情节提要 ID”。
+6. 单击情节提要中的“主页视图控制器”，并确保它将 homeViewController 作为其“自定义类”和标识检查器下方的“情节提要 ID”。
 7. 为映像视图控制器执行同样的操作，确保 **imageViewController** 充当相应的内容。
-8. 然后，创建一个名为 **imageViewController** 的新视图控制器类来处理刚创建的 UI。
+8. 然后，新建标题为 **imageViewController** 的视图控制器类来处理用户刚才创建的 UI。
 9. 在 **imageViewController.h** 中，将以下代码添加到控制器的接口声明中。 请务必按住 Ctrl 键并从情节提要图像视图拖动到这些属性中，以链接两者：
 
     ```objc
@@ -373,8 +375,8 @@ ms.locfileid: "54447746"
 
 1. 在 XCode 中，在物理 iOS 设备上运行此应用（推送通知将无法在模拟器中正常工作）。
 2. 在 iOS 应用 UI 中，输入相同值的用户名和密码进行身份验证，并单击“登录”。
-3. 单击“发送推送”，应看到应用内警报。 如果单击“详细信息”，会转到选择要包括在应用后端中的映像。
-4. 也可以单击“发送推送”并立即按下设备的主页按钮。 几分钟后会收到推送通知。 如果点击推送通知或单击“详细信息”，会转到应用和富图像内容。
+3. 单击“发送推送”，应看到应用内警报。 如果单击“详细信息”，则会转到你选择要包括在应用后端中的图像。
+4. 也可以单击“发送推送”并立即按下设备的主页按钮。 几分钟后会收到推送通知。 如果点击推送通知或单击“详细信息”，则会转到你的应用和富图像内容。
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png

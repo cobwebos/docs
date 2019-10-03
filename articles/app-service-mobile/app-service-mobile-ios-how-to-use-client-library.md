@@ -3,7 +3,7 @@ title: 如何使用适用于 Azure 移动应用的 iOS SDK
 description: 如何使用适用于 Azure 移动应用的 iOS SDK
 services: app-service\mobile
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 editor: ''
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
 ms.service: app-service-mobile
@@ -11,19 +11,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: b6f93cc3c35ab18ecd50ccd6b3090985497baabf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 898bf082874a1e9bf26dd094a6a0fe55417c9d8e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121764"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851066"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 iOS 客户端库
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> Visual Studio App Center 正在为移动应用开发的新的和集成的服务进行投资。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后, 开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况, 并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务, 以便在云中持久保存和同步应用程序数据。 立即查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=/app-service-mobile-ios-how-to-use-client-library) 。
+>
+
+## <a name="overview"></a>概述
 本指南介绍如何使用最新的 [Azure 移动应用 iOS SDK][1] 执行常见任务。 对于 Azure 移动应用的新手，请先完成 [Azure 移动应用快速入门]，创建后端、创建表并下载预先生成的 iOS Xcode 项目。 本指南侧重于客户端 iOS SDK。 有关用于后端的服务器端 SDK，请参阅 Server SDK 操作方法。
 
 ## <a name="reference-documentation"></a>参考文档
@@ -35,7 +40,7 @@ iOS 客户端 SDK 的参考文档位于此处：[Azure 移动应用 iOS 客户�
 对于 iOS 8.0 版本或更高版本，iOS SDK 支持 Objective-C 项目、Swift 2.2 项目和 Swift 2.3 项目。
 
 “服务器流”身份验证使用 WebView 显示 UI。  如果设备无法显示 WebView UI，则需要产品范围以外的另一种身份验证方法。  
-因此，此 SDK 不适用于手表类型或类似的受限设备。
+因此这个 SDK 不适用于监视类型或同样受限制的设备。
 
 ## <a name="Setup"></a>安装与先决条件
 
@@ -282,7 +287,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 
 ## <a name="inserting"></a>如何：插入数据
 
-若要插入新的表行，请创建 `NSDictionary` 并调用 `table insert`。 如果启用[动态架构]，Azure 应用服务移动后端会根据 `NSDictionary` 自动生成新列。
+若要插入新的表行，请创建 `NSDictionary` 并调用 `table insert`。 如果启用[动态架构]，Azure App Service 移动后端将根据 `NSDictionary` 自动生成新列。
 
 如果未提供 `id`，后端会自动生成新的唯一 ID。 提供自己的 `id`，以使用电子邮件地址、用户名或自己的自定义值作为 ID。 提供自己的 ID 可以让联接和业务导向型数据库逻辑变得更容易。
 
@@ -433,7 +438,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 ## <a name="customapi"></a>如何：调用自定义 API
 
-使用自定义 API 可以公开任何后端功能。 无需映射到表操作。 不仅能进一步控制消息，甚至还可以读取或设置标头，并更改响应正文格式。 若要了解如何在后端上创建自定义 API，请阅读[自定义 API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
+使用自定义 API 可以公开任何后端功能。 无需映射到表操作。 不仅能进一步控制消息，甚至还可以读取或设置标头，并更改响应正文格式。
 
 若要调用自定义 API，请调用 `MSClient.invokeAPI`。 请求和响应内容被视为 JSON。 若要使用其他媒体类型，[请使用 `invokeAPI` 的其他重载][5]。  要发出 `GET` 请求而不是 `POST` 请求，请将参数 `HTTPMethod` 设置为 `"GET"`，将参数 `body` 设置为 `nil`（因为 GET 请求没有消息正文）。如果自定义 API 支持其他 HTTP 谓词，请相应地更改 `HTTPMethod`。
 
@@ -510,7 +515,7 @@ NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"aler
 let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 ```
 
-出于安全性考虑，将去除所有请求的标记。  要将标记添加到安装或安装中的模板，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][4]。  若要使用这些注册的模板发送通知，请参阅[通知中心 API][3]。
+出于安全性考虑，将去除所有请求的标记。  若要将标记添加到安装或安装中的模板，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][4]。  若要使用这些注册的模板发送通知，请参阅[通知中心 API][3]。
 
 ## <a name="errors"></a>如何：处理错误
 
@@ -562,10 +567,10 @@ if (error.code == MSErrorPreconditionFailed) {
 3. 使用终端，从包含项目的目录运行 `pod install`，并打开生成的 Xcode 工作区（而不是项目）。
 4. 根据使用的语言，将以下代码添加到应用程序。 在每个应用程序中，进行以下替换：
 
-   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com。 可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。
+   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com 。 可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。
    * 将 **INSERT-RESOURCE-ID-HERE** 替换移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”下面的“高级”选项卡获取此客户端 ID。
    * 将 **INSERT-CLIENT-ID-HERE** 替换为从本机客户端应用程序复制的客户端 ID。
-   * 使用 HTTPS 方案将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done*。
+   * 使用 HTTPS 方案将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done* 。
 
 **Objective-C**：
 
@@ -635,8 +640,8 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 
 可以使用 Facebook SDK for iOS 以用户的身份登录到使用 Facebook 的应用程序。  使用客户端流身份验证会优先使用 `loginWithProvider:completion:` 方法。  客户端流身份验证提供更直观的 UX 风格，并允许进行其他自定义。
 
-1. 根据[如何为 Facebook 登录配置应用服务][9] 教程的说明，为 Facebook 登录配置移动应用后端。
-2. 根据 [Facebook SDK for iOS - 入门][10] 文档中的说明，安装 Facebook SDK for iOS。 不需创建应用，可以将 iOS 平台添加到现有注册。
+1. 按照[如何为 facebook 登录配置应用服务][9]教程的说明, 为 facebook 登录配置移动应用后端。
+2. 遵循[适用于 ios 的 FACEBOOK sdk-入门][10]文档, 安装 facebook Sdk for ios。 不需创建应用，可以将 iOS 平台添加到现有注册。
 3. Facebook 的文档包括 App Delegate 中的一些 Objective-C 代码。 如果使用 **Swift**，则可以使用以下 AppDelegate.swift 的转换：
 
     ```swift

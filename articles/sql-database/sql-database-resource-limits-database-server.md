@@ -7,28 +7,27 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-manager: craigg
 ms.date: 04/18/2019
-ms.openlocfilehash: 04a5b98daf94275c6a95503c518248abeaeaeaa6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 175f694cbe46f871349136c9ce91888b6de48d21
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998271"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566853"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL 数据库服务器的 SQL 数据库资源限制
 
-本文概述了管理单一数据库和弹性池的 SQL 数据库服务器的 SQL 数据库服务器资源限制。 它还提供了有关在达到或超过这些资源限制时会发生什么情况的信息。
+本文概述了管理单一数据库和弹性池的 SQL 数据库服务器的 SQL 数据库资源限制。 它还提供了有关在达到或超过这些资源限制时会发生什么情况的信息。
 
 > [!NOTE]
 > 有关托管实例限制，请参阅[托管实例的 SQL 数据库资源限制](sql-database-managed-instance-resource-limits.md)。
 
 ## <a name="maximum-resource-limits"></a>最大资源限制
 
-| 资源 | 限制 |
+| Resource | 限制 |
 | :--- | :--- |
 | 每个服务器的数据库数 | 5000 |
 | 任意区域中每个订阅的服务器默认数量 | 20 |
@@ -44,6 +43,9 @@ ms.locfileid: "59998271"
 > 随着数据库的数量接近每个 SQL 数据库服务器的限制，可能出现以下情况：
 > - 对主数据库运行查询的延迟增加。  这包括资源利用率统计信息的视图，如 sys.resource_stats。
 > - 管理操作和呈现门户视点（涉及枚举服务器中的数据库）的延迟增加。
+
+### <a name="storage-size"></a>存储大小
+- 对于单一数据库 rources, 请参阅[基于 DTU 的资源限制](sql-database-dtu-resource-limits-single-databases.md)或[基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md), 了解每个定价层的存储大小限制。
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>如果达到数据库资源限制，会发生什么？
 
@@ -67,15 +69,15 @@ ms.locfileid: "59998271"
 
 ### <a name="sessions-and-workers-requests"></a>会话和辅助角色（请求）
 
-会话和辅助角色的数目上限由服务层和计算大小（DTU 和 eDTU）决定。 当到达会话或辅助角色上限时，新的请求将被拒绝，客户端将收到错误消息。 虽然应用程序可以轻松地控制可用的连接数，但并行辅助角色数通常更难以估计和控制。 在负荷高峰期，当数据库资源达到上限，辅助角色由于较长时间运行查询而堆积时，这种情况尤其突出。
+会话和辅助角色的数目上限由服务层级和计算大小（DTU 和 eDTU）决定。 当到达会话或辅助角色上限时，新的请求将被拒绝，客户端将收到错误消息。 虽然应用程序可以轻松地控制可用的连接数，但并行辅助角色数通常更难以估计和控制。 在负荷高峰期，当数据库资源达到上限，辅助角色由于较长时间运行查询而堆积时，这种情况尤其突出。
 
 会话或辅助角色使用率变高时，风险缓解选项包括：
 
-- 提高数据库或弹性池的服务层或计算大小。 请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。
+- 提高数据库或弹性池的服务层级或计算大小。 请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。
 - 如果争用计算资源造成了辅助角色使用率上升，请优化查询，以降低每项查询的资源使用率。 有关详细信息，请参阅[查询优化/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
 
 ## <a name="transaction-log-rate-governance"></a>事务日志速率调控 
-事务日志速率调控是 Azure SQL 数据库中的一个进程，用于限制批量插入、SELECT INTO 和索引生成等工作负荷的高引入速率。 无论针对数据文件发出多少 IO，系统都会对日志记录生成速率跟踪并实施这些限制，使其保持在亚秒级以下，并限制吞吐量。  事务日志生成速率当前增加而呈线性增长到依赖于硬件的点，与最大日志速率允许正在使用的购买模型的 vCore 96 MB/秒。 
+事务日志速率调控是 Azure SQL 数据库中的一个进程，用于限制批量插入、SELECT INTO 和索引生成等工作负荷的高引入速率。 无论针对数据文件发出多少 IO，系统都会对日志记录生成速率跟踪并实施这些限制，使其保持在亚秒级以下，并限制吞吐量。  目前，事务日志生成速率会线性提高到与硬件相关的临界点，在 vCore 购买模型中，允许的最大日志速率为 96 MB/秒。 
 
 > [!NOTE]
 > 向事务日志文件发出的实际物理 IO 不会受到调控或限制。 
@@ -98,7 +100,7 @@ ms.locfileid: "59998271"
 |||
 
 当日志速率限制阻碍实现所需的可伸缩性时，请考虑以下选项：
-- 为了获得最大的 96 MB/s 日志速率增加到更大的层。 
+- 纵向扩展到更高的层，以获得 96 MB/秒的最大日志速率。 
 - 如果加载的数据是暂时性的（即 ETL 过程中的暂存数据），可将其载入 tempdb（记录最少量的数据）。 
 - 对于分析方案，可将数据载入聚集列存储涵盖的表中。 这样，可以通过压缩来降低所需的日志速率。 此方法确实会增大 CPU 利用率，并且仅适用于可从聚集列存储索引受益的数据集。 
 

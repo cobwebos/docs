@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 4b1c829a417d050b4d931611d9f2952e01582f04
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 38da6d39d095ce27cdd26719d9b8b752d2921bc0
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089465"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164772"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>开发用于实现云一致性的 Azure 资源管理器模板
 
@@ -47,7 +47,7 @@ Microsoft 在很多位置提供了面向企业的智能云服务，其中包括�
 * 请确保使用的模板参数适用于目标云。
 * 验证特定于资源的属性在目标云中是否可用。
 
-有关 Azure 资源管理器模板的简介，请参阅[模板部署](resource-group-overview.md#template-deployment)。
+有关 Azure 资源管理器模板的简介，请参阅[模板部署](template-deployment-overview.md)。
 
 ## <a name="ensure-template-functions-work"></a>确保模板函数可用
 
@@ -154,7 +154,7 @@ Azure 资源管理器在运行时评估主要模板并检索和评估每个嵌�
 
 `_artifactsLocation` 参数的默认值通过上述方式使用。 如果需要从其他位置检索链接模板，则参数输入在部署时可用于重写默认值 - 无需更改模板本身。
 
-### <a name="use-artifactslocation-instead-of-hardcoding-links"></a>使用 _artifactsLocation 取代硬编码链接
+### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>使用 _artifactsLocation 取代硬编码链接
 
 `_artifactsLocation` 参数中的 URL 除了用于嵌套模板，还可用作部署模板的所有相关项目的基。 某些 VM 扩展包含存储在模板外的脚本的链接。 对于这些扩展，不应对链接进行硬编码。 例如，自定义脚本和 PowerShell DSC 扩展可能链接到 GitHub 上的外部脚本，如下所示： 
 
@@ -443,7 +443,7 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 * 存储帐户（blob、队列、表和文件）
 * 连接字符串（MySql、SQLServer、SQLAzure、Custom、NotificationHub、ServiceBus、EventHub、ApiHub、DocDb、RedisCache、PostgreSQL）
-* 流量管理器
+* 通信管理器
 * 公共 IP 地址的 domainNameLabel
 * 云服务
 
@@ -485,7 +485,7 @@ Azure Stack 环境中的特定资源具有独特属性，必须在模板中考�
 
 ### <a name="ensure-vm-images-are-available"></a>确保 VM 映像可用
 
-Azure 提供丰富的精选 VM 映像。 这些映像已创建好，准备供 Microsoft 和合作伙伴部署。 这些映像构成平台上 VM 的基础。 但云一致模板应该仅引用可用的参数 - 尤其是可用于全球 Azure、Azure 主权云或 Azure Stack 的 VM 映像的发布服务器、产品和 SKU。
+Azure 提供丰富的精选 VM 映像。 这些映像已创建好，准备供 Microsoft 和合作伙伴部署。 这些映像构成平台上 VM 的基础。 但云一致模板应该仅引用可用的参数 - 尤其是可用于全球 Azure、Azure 主权云或 Azure Stack 的 VM 映像的发布服务器、套餐和 SKU。
 
 要检索位置中的可用 VM 映像列表，请运行以下 Azure CLI 命令：
 
@@ -673,5 +673,5 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 资源管理器模板注意事项](../azure-stack/user/azure-stack-develop-templates.md)
+* [Azure 资源管理器模板注意事项](/azure-stack/user/azure-stack-develop-templates)
 * [Azure 资源管理器模板的最佳做法](resource-group-authoring-templates.md)

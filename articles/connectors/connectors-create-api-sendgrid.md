@@ -11,12 +11,12 @@ ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
 ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 7eecd3908883b195b52755d03e70872afe9180bb
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 4f5efd73ef2a08069e3b9f2c7d60be99c209ddca
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50228850"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050808"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 SendGrid 中发送电子邮件以及管理邮件列表
 
@@ -33,7 +33,7 @@ ms.locfileid: "50228850"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * 一个 [SendGrid 帐户](https://www.sendgrid.com/)和一个 [SendGrid API 密钥](https://sendgrid.com/docs/ui/account-and-settings/api-keys/)
 
@@ -53,10 +53,10 @@ ms.locfileid: "50228850"
 
    * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
 
-     -或-
+     或
 
    * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 在搜索框中，输入“sendgrid”作为筛选器。 在操作列表下，选择所需的操作。
 

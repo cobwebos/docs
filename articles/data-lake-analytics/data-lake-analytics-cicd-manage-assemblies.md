@@ -1,21 +1,17 @@
 ---
-title: 在 Azure Data Lake 的 CI/CD 管道中管理 U-SQL 程序集的最佳做法
+title: 在 CI/CD 管道中管理 U SQL 程序集-Azure Data Lake
 description: 了解使用 Azure DevOps 在 CI/CD 管道中管理 U-SQL C# 程序集的最佳做法。
-services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
-ms.reviewer: ''
-ms.assetid: ''
 ms.service: data-lake-analytics
 ms.topic: conceptual
-ms.workload: big-data
 ms.date: 10/30/2018
-ms.openlocfilehash: 27a873fac8bf2b53ee06780b8a348eaaa5c94e97
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e6de10ed712688e4ee9dccc22176e81ad5e574ca
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768019"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315853"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>在 CI/CD 管道中管理 U-SQL 程序集的最佳做法
 
@@ -58,7 +54,7 @@ U-SQL 数据库项目可引用类库（对于 U-SQL 应用程序）项目。 可
 
 7. 添加“托管的依赖项”和“其他文件”（若有）。 添加其他文件时，该工具会使用相对路径来确保它稍后可在本地计算机和生成计算机上找到程序集。
 
-**\@_DeployTempDirectory**在编辑器中在底部窗口是一个预定义的变量，该工具指向生成输出文件夹。 在生成输出文件夹下，每个程序集都有按程序集名称命名的子文件夹。 此子文件夹中包含所有 DLL 和其他文件。
+位于底部编辑器窗口中的 _DeployTempDirectory 是预定义的变量，它将工具指向生成输出文件夹。  **\@** 在生成输出文件夹下，每个程序集都有按程序集名称命名的子文件夹。 此子文件夹中包含所有 DLL 和其他文件。
 
 ## <a name="build-a-u-sql-database-project"></a>生成 U-SQL 数据库项目
 

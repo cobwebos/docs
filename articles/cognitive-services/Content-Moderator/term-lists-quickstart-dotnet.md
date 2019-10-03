@@ -1,23 +1,23 @@
 ---
 title: 对照以 C# 编写的自定义术语列表检查文本 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 如何通过自定义术语列表使用适用于 C# 的内容审查器 SDK 对文本进行审查。
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: da8ad71ccf8b58ddf3ef7cc6a2f9e9c732913caa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 144137109f97a8c2049430ed1e05117ea6c95d7f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858393"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564418"
 ---
-# <a name="quickstart-check-text-against-a-custom-term-list-in-c"></a>快速入门：对照以 C# 编写的自定义术语列表检查文本
+# <a name="check-text-against-a-custom-term-list-in-c"></a>对照以 C# 编写的自定义术语列表检查文本
 
 Azure 内容审查器中的默认全局术语列表足以满足大多数内容审查需求。 但是，可能需要屏蔽特定于组织的术语。 例如，可能需要标记竞争对手的名称作进一步审查。 
 
@@ -373,7 +373,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="putting-it-all-together"></a>汇总
+## <a name="compose-the-main-method"></a>编写 Main 方法
 
 将 **Main** 方法定义添加到 **TermLists** 命名空间中的 **Program** 类。 最后，关闭 **Program** 类和 **TermLists** 命名空间。
 
@@ -415,9 +415,9 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>运行应用程序以查看输出
 
-输出将类似以下行，但数据可能不同。
+控制台输出将如下所示：
 
-```
+```console
 Creating term list.
 Term list created. ID: 252.
 Updating information for term list with ID 252.

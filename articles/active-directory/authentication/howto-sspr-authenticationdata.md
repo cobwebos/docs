@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371360"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60358017"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>在无需最终用户注册的情况下部署密码重置
 
@@ -25,7 +25,7 @@ ms.locfileid: "58371360"
 * 在本地目录中正确设置数据的格式。
 * [使用快速设置配置 Azure AD Connect](../hybrid/how-to-connect-install-express.md)。
 
-若要正常工作，电话号码必须采用“+国家/地区代码 电话号码”格式，例如，+1 4255551234。
+若要正常工作，电话号码必须采用“+国家/地区代码 电话号码”格式  ，例如，+1 4255551234。
 
 > [!NOTE]
 > 在国家/地区代码和电话号码之间需要有一个空格。
@@ -69,7 +69,7 @@ ms.locfileid: "58371360"
 * **身份验证电子邮件**
 * **安全问题和答案**
 
-如果提供了“移动电话”或“备用电子邮件”的值，用户可以立即使用这些值重置密码，即使他们尚未注册该服务。 此外，用户在首次注册时会看到这些值，并可随意进行修改。 成功注册之后，这些值将分别保存在“身份验证电话”和“身份验证电子邮件”字段中。
+如果提供了“移动电话”或“备用电子邮件”的值，用户可以立即使用这些值重置密码，即使他们尚未注册该服务。   此外，用户在首次注册时会看到这些值，并可随意进行修改。 成功注册之后，这些值将分别保存在“身份验证电话”和“身份验证电子邮件”字段中。  
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>通过 PowerShell 设置和读取身份验证数据
 

@@ -3,19 +3,20 @@ title: 如何通过对话学习器模型使用实体 - Microsoft 认知服务 | 
 titleSuffix: Azure
 description: 了解如何通过 Conversation Learner 模型使用实体。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: a42a2ec36d9ce4fb9c139dfddcde0fe0c188c888
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: cba12b6c09c1bdbf4e8f7841676a609c34109d93
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210346"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707336"
 ---
 # <a name="introduction-to-entities"></a>实体简介
 
@@ -40,7 +41,7 @@ ms.locfileid: "55210346"
 
 本教程重点介绍自定义实体。 预先训练的、多值、可否定的实体和编程实体在其他教程中进行介绍。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 ### <a name="create-the-model"></a>创建模型
 

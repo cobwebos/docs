@@ -1,9 +1,9 @@
 ---
-title: 在 PIM 的 Azure Active Directory 中配置 Azure AD 角色的安全警报 |Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中配置 Azure AD 角色的安全警报。
+title: 在 PIM 中为 Azure AD 角色配置安全警报 - Azure Active Directory | Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中为 Azure AD 角色配置安全警报。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3984d3276590357866c824d01ea8c51cf5b28fd7
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496703"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804387"
 ---
-# <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>在 PIM 中配置 Azure AD 角色的安全警报
+# <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>在 PIM 中为 Azure AD 角色配置安全警报
 
-你的环境中存在可疑活动或不安全活动时，azure Active Directory (Azure AD) Privileged Identity Management (PIM) 将生成警报。 触发警报时，它显示在 PIM 仪表板上。 选择警报以查看列出了已触发该警报的用户或角色的报告。
+如果环境中有可疑活动或不安全的活动，Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 将生成警报。 触发警报时，它显示在 PIM 仪表板上。 选择警报以查看列出了已触发该警报的用户或角色的报告。
 
-![PIM 安全警报 - 屏幕截图](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![列出警报和严重性的“Azure AD 角色 - 警报”窗格](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>安全警报
 
-本部分列出了 Azure AD 角色，以及如何修复错误和如何阻止的所有安全警报。 严重性的含义如下：
+本部分列出 Azure AD 角色的所有安全警报，以及如何修复和防止这些警报。 严重性的含义如下：
 
 * **高**：因策略违反需要立即采取措施。
 * **中**：不需要立即采取措施但指示潜在的策略违反。
@@ -39,7 +39,7 @@ ms.locfileid: "59496703"
 
 | | |
 | --- | --- |
-| **严重性** | 低 |
+| **Severity** | 低 |
 | **为何收到此警报？** | 为用户分配他们不需要的特权角色会增大受攻击的可能性。 攻击者更容易忽略不经常使用的帐户。 |
 | **如何修复？** | 检查列表中的用户，并将其从不需要的特权角色中删除。 |
 | **预防** | 仅将特权角色分配给有业务需要的用户。 </br>安排定期的[访问评审](pim-how-to-start-security-review.md)，以确认用户是否仍需要访问权限。 |
@@ -51,7 +51,7 @@ ms.locfileid: "59496703"
 
 | | |
 | --- | --- |
-| **严重性** | 低 |
+| **Severity** | 低 |
 | **为何收到此警报？** | 如果不执行 MFA，则遭到入侵的用户可以激活特权角色。 |
 | **如何修复？** | 检查角色列表，并针对每个角色[要求执行 MFA](pim-how-to-change-default-settings.md)。 |
 | **预防** | 针对每个角色[要求执行 MFA](pim-how-to-change-default-settings.md)。  |
@@ -61,7 +61,7 @@ ms.locfileid: "59496703"
 
 | | |
 | --- | --- |
-| **严重性** | 低 |
+| **Severity** | 低 |
 | **为何收到此警报？** | 当前租户没有 Azure AD Premium P2。 |
 | **如何修复？** | 查看有关 [Azure AD 版本](../fundamentals/active-directory-whatis.md)的信息。 升级到 Azure AD Premium P2。 |
 
@@ -69,7 +69,7 @@ ms.locfileid: "59496703"
 
 | | |
 | --- | --- |
-| **严重性** | 中型 |
+| **Severity** | 中型 |
 | **为何收到此警报？** | 具有特权角色但在过去 90 天内未更改密码的帐户。 这些帐户可能是未维护且易受攻击者攻击的服务帐户或共享帐户。 |
 | **如何修复？** | 请检查列表中的帐户。 如果它们不再需要访问权限，请将其从特权角色中删除。 |
 | **预防** | 确保当知道密码的用户有变化时，共享的帐户会轮换使用强密码。 </br>使用[访问评审](pim-how-to-start-security-review.md)定期审查具有特权角色的帐户，并删除不再需要的角色分配。 |
@@ -80,7 +80,7 @@ ms.locfileid: "59496703"
 
 | | |
 | --- | --- |
-| **严重性** | 高 |
+| **Severity** | 高 |
 | **为何收到此警报？** | 在 PIM 外部进行的特权角色分配未受到正确的监视，可能表示正遭到攻击。 |
 | **如何修复？** | 检查列表中的用户，并将其从 PIM 外部分配的特权角色中删除。 |
 | **预防** | 调查在 PIM 外部的哪个位置为用户分配了特权角色，并禁止将来在该位置分配角色。 |
@@ -90,7 +90,7 @@ ms.locfileid: "59496703"
 
 | | |
 | --- | --- |
-| **严重性** | 低 |
+| **Severity** | 低 |
 | **为何收到此警报？** | 全局管理员是特权最高的角色。 如果全局管理员遭到入侵，则攻击者可以获取其所有访问权限，使整个系统面临风险。 |
 | **如何修复？** | 检查列表中的用户，并删除不是绝对需要全局管理员角色的所有用户。 </br>为这些用户分配特权更低的角色。 |
 | **预防** | 为用户分配他们所需的最低特权角色。 |
@@ -103,11 +103,11 @@ ms.locfileid: "59496703"
 
 | | |
 | --- | --- |
-| **严重性** | 低 |
+| **Severity** | 低 |
 | **为何收到此警报？** | 同一用户多次激活同一特权角色是受到攻击的迹象。 |
 | **如何修复？** | 检查列表中的用户，并确保用户特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使他们能够执行任务。 |
 | **预防** | 确保特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使用户能够执行其任务。</br>针对其帐户由多个管理员共享的特权角色[要求执行 MFA](pim-how-to-change-default-settings.md)。 |
-| **门户中的缓解措施** | 不适用 |
+| **门户中的缓解措施** | 不可用 |
 | **触发器** | 如果用户在指定期限内多次激活同一特权角色，将触发此警报。 可以同时配置时间段和激活次数。 |
 | **激活续订时间范围** | 此设置以天、小时、分钟和秒为单位指定要用于跟踪可疑续订的时间段。 |
 | **激活续订次数** | 此设置在所选时间范围内指定你认为值得发送警报的激活次数（2 到 100）。 可通过移动滑块或在文本框中键入数字更改此设置。 |
@@ -122,11 +122,11 @@ ms.locfileid: "59496703"
 
 1. 依次单击“设置”、“警报”。
 
-    ![导航到安全警报设置](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
+    ![选中了“警报”的 Azure AD 角色 - 设置](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
 
 1. 单击警报名称以配置该警报的设置。
 
-    ![安全警报设置](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
+    ![对于所选警报，显示的安全警报设置窗格](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 ## <a name="next-steps"></a>后续步骤
 

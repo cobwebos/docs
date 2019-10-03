@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
-ms.openlocfilehash: eac699a68558f0a8c9f94f0a8b75aabee561ebb3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 488f7bc4cb715e9cdb99b7a7c79407b9bbc0d29c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005978"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593597"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>按缩写列出的 Azure CDN POP 位置
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "60005978"
 > 
 
 
-本文列出了 Verizon 的 Azure CDN 的 POP 位置（按 POP 缩写排序）。
+本文列出了 Verizon 的 Azure CDN 的 POP 位置（按 POP 缩写排序）  。
 
 缩写 | Location | 区域
 | --- | --- | --- |
@@ -41,7 +41,7 @@ AMS | 荷兰阿姆斯特丹 | 欧洲
 ARN | 瑞典斯德哥尔摩 | 欧洲
 ATL | 美国佐治亚州亚特兰大市 | 北美地区：美国东海岸。
 BAQ | 哥伦比亚巴兰基亚 | 拉丁美洲
-BLR | 印度班加罗尔 | 亚洲
+BLR | Bengaluru （班加罗尔） 印度 | 亚洲
 BNJ | 美国新泽西州纽瓦克市 | 北美地区：美国东海岸。
 BOS | 美国马萨诸塞州波士顿市 | 北美地区：美国东海岸。
 BTH | 印度尼西亚巴淡岛 | 亚洲

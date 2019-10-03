@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
 ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271061"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60409868"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>规划 Avere vFXT 系统
 
@@ -42,7 +42,7 @@ ms.locfileid: "59271061"
 
 * 群集创建模板可以创建该群集，包括资源组、 虚拟网络、 子网，以及存储帐户的所需的基础结构资源的大多数。 如果你想要使用已存在的资源，请确保它们满足此表中的要求。 
 
-  | 资源 | 使用现有？ | 要求 |
+  | Resource | 使用现有？ | 要求 |
   |----------|-----------|----------|
   | 资源组 | 是的如果为空 | 必须为空| 
   | 存储帐户 | 如果创建群集后连接的现有 Blob 容器是 <br/>  如果在群集创建过程中创建新的 Blob 容器否 | 现有的 Blob 容器必须为空 <br/> &nbsp; |

@@ -4,29 +4,28 @@ description: 在 Azure 环境中快速建立 Oracle Golden Gate 并运行。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 1d0905900b81a0c7775011774b55565217d13b71
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011553"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309604"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详述了如何使用 Azure CLI 通过 Azure 市场库映像部署 Oracle 12c 数据库。 
 
-本文档逐步演示如何在 Azure VM 上创建、安装和配置 Oracle Golden Gate。
+本文档逐步演示如何在 Azure VM 上创建、安装和配置 Oracle Golden Gate。 在本教程中，将在单个区域中的可用性集中设置两个虚拟机。 同一教程可用于为单个 Azure 区域中不同可用性区域的 Vm 或两个不同区域中的 Vm 设置 OracleGolden 入口。
 
 在开始之前，请确保已安装 Azure CLI。 有关详细信息，请参阅 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
@@ -261,7 +260,6 @@ export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 
 ### <a name="start-oracle-listener"></a>启动 Oracle 侦听器
 ```bash
-$ sudo su - oracle
 $ lsnrctl start
 ```
 

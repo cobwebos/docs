@@ -4,23 +4,22 @@ description: 本文列出了一些关于 Microsoft Azure 云服务连接性和�
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 2a46879a6882e6d45e4a7ccce59e4a02feea9005
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805580"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154870"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的连接和网络问题：常见问题 (FAQ)
 
@@ -65,14 +64,14 @@ Azure 实现多层网络安全性，以保护其平台服务免受分布式拒�
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>如何将发往云服务的默认 URL 的传入流量重定向到自定义 URL？
 
-可以使用 IIS 的 URL 重写模块将传入到云服务的默认 URL（例如 \*.cloudapp.net）的流量重定向到某个自定义 DNS 名称/URL。 由于 URL 重写模块 web 角色上启用默认情况下，并且其规则在应用程序的 web.config 中配置，都始终可用而不考虑重新启动/重置映像 VM 上。有关详细信息，请参阅：
+可以使用 IIS 的 URL 重写模块将传入到云服务的默认 URL（例如 \*.cloudapp.net）的流量重定向到某个自定义 DNS 名称/URL。 由于 URL 重写模块默认在 web 角色上启用并且其规则是在应用程序的 web.config 中配置的，因此，无论是否重新启动/重置映像，它在 VM 上始终可用。有关详细信息，请参阅：
 
 - [为 URL 重写模块创建重写规则](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [删除默认链接](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>如何阻止/禁用发往云服务的默认 URL 的传入流量？
 
-可以阻止发往云服务的默认 URL/名称（例如 \*）的传入流量。 在云服务定义 (*.csdef) 文件中的站点绑定配置下将主机标头设置为自定义 DNS 名称（例如 www.MyCloudService.com）。
+可以阻止发往云服务的默认 URL/名称（例如 \*）的传入流量。 按照如下所示，将主机标头设置为云服务定义\.（* MyCloudService.com）文件中的 "站点绑定配置" 下的自定义 DNS 名称（例如 www）：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -104,13 +103,13 @@ Azure 实现多层网络安全性，以保护其平台服务免受分布式拒�
 - [保留现有云服务的 IP 地址](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
 - [使用服务配置文件将保留 IP 关联到云服务](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-如果为你的角色有多个实例，将 RIP 与云服务关联不应导致任何停机时间。另外，还可以在 Azure 数据中心 IP 范围加入允许列表。您可以找到在所有 Azure IP 范围[Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=41653)。
+只要有多个实例用于你的角色，将 RIP 与云服务进行关联就应该不会导致任何停机时间。 或者，可以将 Azure 数据中心的 IP 范围添加到允许列表。 可以在 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=41653)找到所有 Azure IP 范围。
 
 此文件包含 Azure 数据中心使用的 IP 地址范围（包括计算、SQL 和存储范围）。 每周都将发布更新的文件，反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 请每周下载新的 xml 文件，并在网站上执行必要的更改以正确地标识 Azure 中运行的服务。 Azure ExpressRoute 用户可能会注意到，此文件用于在每个月第一周更新 Azure 空间的 BGP 播发。
 
 ## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>如何将 Azure 资源管理器虚拟网络与云服务一起使用？
 
-不能将云服务置于 Azure 资源管理器虚拟网络中。 可以通过对等互连将 Azure 资源管理器虚拟网络与经典部署虚拟网络连接起来。  有关详细信息，请参阅[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
+不能将云服务置于 Azure 资源管理器虚拟网络中。 可以通过对等互连将 Azure 资源管理器虚拟网络与经典部署虚拟网络连接起来。 有关详细信息，请参阅[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
 
 
 ## <a name="how-can-i-get-the-list-of-public-ips-used-by-my-cloud-services"></a>如何获取云服务使用的公共 IP 列表？

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: 48f439a566a8067e153aab4fb789937d2f91268d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: be761f0a2e59878139ae54dba62634a53b172711
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109965"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64715279"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>使用 StorSimple Snapshot Manager 中的 MMC 菜单操作
 
@@ -30,7 +30,7 @@ ms.locfileid: "23109965"
 * 从此处新建窗口 
 * 刷新 
 * 导出列表 
-* 帮助 
+* Help 
 
 这些操作是 Microsoft 管理控制台 (MMC) 的组成部分，而非特定于 StorSimple Snapshot Manager。 本教程介绍了这些操作，并阐述了如何在 StorSimple Snapshot Manager 中使用其中的每一个操作。
 
@@ -87,11 +87,11 @@ ms.locfileid: "23109965"
    1. 在“**文件名**”框中，键入 CSV 文件的名称或者单击箭头在下拉列表中选择。
    2. 在“**保存类型**”框中，单击箭头在下拉列表中选择一种文件类型。
    3. 要只保存已选定的项，则选定相应的行并单击“**只保存选定行**”复选框。 若要保存导出的所有列表，则清除“**只保存选定行**”复选框。
-   4. 单击“保存” 。
+   4. 单击“ **保存**”。
       
       ![将列表导出为逗号分隔值文件](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
-## <a name="help"></a>帮助
+## <a name="help"></a>Help
 可以使用“**帮助**”菜单查看针对 StorSimple Snapshot Manager 和 MMC 的可用联机帮助。
 
 #### <a name="to-view-available-online-help"></a>查看可用的联机帮助

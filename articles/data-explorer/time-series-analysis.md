@@ -1,18 +1,18 @@
 ---
-title: 分析时序数据使用 Azure 数据资源管理器
-description: 了解如何分析时序数据在云中使用 Azure 数据资源管理器。
+title: 使用 Azure 数据资源管理器分析时序数据
+description: 了解如何使用 Azure 数据资源管理器分析云中的时序数据。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7415e13a445a73af197362c6cfbd3a865a2fea02
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273067"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65604050"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure 数据资源管理器中的时序分析
 
@@ -72,7 +72,7 @@ demo_make_series1
 在本部分，我们将执行典型的时序处理函数。
 创建一组时序后，ADX 支持使用[时序文档](/azure/kusto/query/machine-learning-and-tsa)中所述的一系列函数（该列表不断扩充）来处理和分析这些时序。 下面将介绍几个用于处理和分析时序的有代表性函数。
 
-### <a name="filtering"></a>筛选
+### <a name="filtering"></a>Filtering
 
 在信号处理中，筛选是常见的活动，可用于完成时序处理任务（例如，平滑化干扰信号、变化检测）。
 - 有两个泛型筛选函数：
@@ -144,7 +144,7 @@ demo_series3
 | --- | --- | --- | --- |
 |   | periods | 评分 | days |
 |   | 84 | 0.820622786055595 | 7 |
-|   | 12 | 0.764601405803502 | 1 |
+|   | 12 | 0.764601405803502 | 第 |
 
 该函数会检测每日和每周季节性。 每日评分小于每周评分，因为周末的天数不同于工作日天数。
 
@@ -260,3 +260,8 @@ demo_many_series1
 在不到两分钟的时间内，ADX 分析了接近 20,000 个时序并检测到了读取计数骤然下降的两个异常时序。
 
 将这些高级功能与 ADX 的高速性能相结合，可为时序分析提供独特且强大的解决方案。
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解如何[时间时序异常检测和预测](/azure/data-explorer/anomaly-detection)在 Azure 数据资源管理器。
+* 了解如何[机器学习功能](/azure/data-explorer/machine-learning-clustering)在 Azure 数据资源管理器。

@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 37de2de18656f0f8ba85495b3fd72315e0bd885b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3becf5ef579acdc52a51f9ad618e37460491c2ec
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113072"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146746"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>使用 Azure Application Insights 数据自动化自定义报表
 
@@ -93,6 +93,11 @@ availabilityResults
    ![“创建新函数”屏幕截图](./media/automate-custom-reports/function-app-03.png)
 
 5. 选择“Application Insights 计划的摘要模板”。
+
+     > [!NOTE]
+     > 默认情况下，使用运行时版本 2.x 创建函数应用。 必须以[Azure Functions 运行时版本1.x 为目标](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **，才能**使用 Application Insights 计划摘要模板。  ![运行时屏幕快照](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+
+
 
    ![“新建函数 Application Insights 模板”屏幕截图](./media/automate-custom-reports/function-app-04.png)
 

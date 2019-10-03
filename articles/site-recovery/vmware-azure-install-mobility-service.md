@@ -1,19 +1,19 @@
 ---
-title: 准备源计算机来安装移动服务通过推送安装的 VMware Vm 灾难恢复和物理服务器到 Azure |Microsoft Docs
-description: 了解如何准备你的服务器安装移动代理通过推送安装的 VMware Vm 灾难恢复和物理服务器到 Azure 中使用 Azure Site Recovery 服务。
+title: 准备源计算机以通过推送安装安装移动服务, 以便将 VMware Vm 和物理服务器灾难恢复到 Azure |Microsoft Docs
+description: 了解如何准备服务器以通过推送安装安装移动代理, 以便使用 Azure Site Recovery 服务将 VMware Vm 和物理服务器灾难恢复到 Azure。
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 628be573d03d42ec62a358071074facfe228852d
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: f1a96302d180f3b4b179f42013232f3b48d4e2b0
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418663"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016368"
 ---
-# <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>准备推送安装移动代理的源计算机
+# <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>为移动代理的推送安装准备源计算机
 
 在使用 [Azure Site Recovery](site-recovery-overview.md) 设置 VMware VM 和物理服务器的灾难恢复时，可在每个本地 VMware VM 和物理服务器上安装 [Site Recovery 移动服务](vmware-physical-mobility-service-overview.md)。  移动服务可以捕获计算机上的数据写入，并将其转发到 Site Recovery 进程服务器。
 
@@ -66,6 +66,6 @@ ms.locfileid: "58418663"
 
 ## <a name="next-steps"></a>后续步骤
 
-安装移动服务后，在 Azure 门户中选择“+复制”以开始保护这些 VM。 详细了解如何为 [VMware VM(vmware-azure-enable-replication.md) 和[物理服务器](physical-azure-disaster-recovery.md#enable-replication)启用复制。
+安装移动服务后，在 Azure 门户中选择“+复制”以开始保护这些 VM。 详细了解如何为[VMware vm](vmware-azure-enable-replication.md)和[物理服务器](physical-azure-disaster-recovery.md#enable-replication)启用复制。
 
 

@@ -3,23 +3,22 @@ title: 载入到 Azure 安全中心标准层以增强安全性 | Microsoft Docs
 description: " 了解如何载入到 Azure 安全中心标准层以增强安全性。 "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 19/02/2019
-ms.author: monhaber
-ms.openlocfilehash: ef6b476e2c85715e86ef4c1cfe1194bb25cade28
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 02/19/2019
+ms.author: memildin
+ms.openlocfilehash: 7448516e464a379e27abd45834b31760fca3fedd
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665485"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201851"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>载入到 Azure 安全中心标准层以增强安全性
 升级到安全中心标准层后，可以将增强的安全管理和威胁防护功能用于混合云工作负载。  可以免费试用标准层。 请参阅安全中心[定价页](https://azure.microsoft.com/pricing/details/security-center/)了解详细信息。
@@ -33,7 +32,7 @@ ms.locfileid: "58665485"
 ## <a name="detecting-unprotected-resources"></a>检测未受保护的资源     
 安全中心将自动检测未启用安全中心标准层的所有 Azure 订阅或工作区。 其中包括使用安全中心免费层的 Azure 订阅和未启用安全解决方案的工作区。
 
-您可以升级到标准层中，这样的订阅中所有受支持的资源继承此将整个 Azure 订阅。 将标准层应用到工作区层适用于向工作区报告的所有资源。
+你可以将整个 Azure 订阅升级到标准层，这会由订阅中所有受支持的资源继承。 将标准层应用到工作区适用于向工作区报告的所有资源。
 
 > [!NOTE]
 > 你可能希望管理成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。 [解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)使用户可以向解决方案应用一个范围，并可将目标设定为工作区中的一个计算机子集。  如果使用解决方案目标功能，安全中心会将工作区列为没有解决方案。
@@ -53,7 +52,7 @@ ms.locfileid: "58665485"
 
 
    > [!NOTE]
-   > 安全中心免费层功能将仅应用于你的 Azure Vm 和 VMSS。 免费层功能不会应用到非 Azure 计算机。 如果选择标准层，标准功能将应用到所有 Azure Vm、 VM 规模集和非 Azure 计算机向工作区报告。 建议应用标准层，以便为 Azure 和非 Azure 资源提供高级安全功能。
+   > 安全中心的免费功能仅适用于 Azure Vm 和 VMSS。 免费层功能不会应用到非 Azure 计算机。 如果选择 "标准"，则标准功能将应用于向工作区报告的所有 Azure Vm、VM 规模集和非 Azure 计算机。 建议应用标准层，以便为 Azure 和非 Azure 资源提供高级安全功能。
    >
    >
 

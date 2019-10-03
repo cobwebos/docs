@@ -13,22 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: willzhan, dwgeo
-ms.openlocfilehash: 31da745727d567e1b3b85b3508df368d78ad84a0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: willzhan
+ms.reviewer: dwgeo
+ms.openlocfilehash: 228b00a19bac9c773fce8e502d302314821fbf39
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002657"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871642"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming 
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="选择你使用的媒体服务的版本:"]
 > * [第 3 版](../latest/offline-fairplay-for-ios.md)
 > * [第 2 版](media-services-protect-hls-with-offline-fairplay.md)
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒体服务提供一套设计良好的[内容保护服务](https://azure.microsoft.com/services/media-services/content-protection/)，包括：
 
@@ -42,8 +43,8 @@ Azure 媒体服务提供一套设计良好的[内容保护服务](https://azure.
 除通过各种流式处理协议对联机流式处理的内容提供保护外，通常还要求提供受保护内容的脱机模式功能。 以下情况需要脱机模式支持：
 
 * 在 Internet 连接不可用（如旅行期间）时播放。
-* 某些内容提供程序可能不允许在某个国家/地区边界之外进行 DRM 许可证传送。 如果用户想在国外旅行期间查看内容，需要脱机下载。
-* 在某些国家/地区，Internet 可用性和/或宽带仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，Over-the-Top (OTT)/联机视频平台 (OVP) 提供商会请求脱机模式支持。
+* 某些内容提供商可能不允许 DRM 许可证交付超出国家/地区的边框。 如果用户想要在国家/地区之外观看内容, 则需要脱机下载。
+* 在某些国家/地区, internet 可用性和/或带宽仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，Over-the-Top (OTT)/联机视频平台 (OVP) 提供商会请求脱机模式支持。
 
 本文介绍 FairPlay Streaming (FPS) 脱机模式支持，适用于运行 iOS 10 或更高版本的设备。 此功能不支持其他 Apple 平台，例如 watchOS、tvOS 或 macOS 上的 Safari。
 
@@ -205,9 +206,9 @@ func requestApplicationCertificate() throws -> Data {
 
 - **为什么在脱机模式期间只播放音频而不播放视频？** 此行为似乎是示例应用专门设计的。 存在备用音频曲目时（这适用于 HLS），在脱机模式期间，iOS 10 和 iOS 11 都默认播放备用音频曲目。为了补偿 FPS 脱机模式的此行为，需要从流删除备用音频曲目。 若要在媒体服务中完成此操作，请添加动态清单筛选器“audio-only=false”。 换言之，HLS URL 将以 .ism/manifest(format=m3u8-aapl,audio-only=false) 结尾。 
 - **为什么添加 audio-only=false 之后，在脱机模式期间仍只播放音频而不播放视频？** 根据内容分发网络 (CDN) 缓存键的设计，可能会缓存该内容。 请清除缓存。
-- **除 iOS 10 之外，iOS 11 是否也支持 FPS 脱机模式？** 可以。 iOS 10 和 iOS 11 支持 FPS 脱机模式。
+- **除 iOS 10 之外，iOS 11 是否也支持 FPS 脱机模式？** 是的。 iOS 10 和 iOS 11 支持 FPS 脱机模式。
 - **为什么在 FPS Server SDK 中，无法使用 FairPlay Streaming 和 HTTP Live Streaming 找到文档“脱机播放”？** 从 FPS Server SDK 版本 4 开始，此文档已合并到“FairPlay Streaming 编程指南”。
-- **FPS 脱机模式的以下 API 中最后一个参数代表什么？**
+- **FPS 脱机模式的以下 API 中最后一个参数代表什么？** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     有关此 API 的文档，请参阅 [FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration 方法](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)。 该参数代表脱机租赁的持续时间（以小时为单位）。
@@ -244,7 +245,7 @@ func requestApplicationCertificate() throws -> Data {
 </HLSMoviePackage>
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 本文档包含以下步骤，并提供了可用于实现 FPS 脱机模式的信息：
 
 * 通过媒体服务 .NET API 的媒体服务内容保护配置在媒体服务中配置动态 FairPlay 加密和 FairPlay 许可证传送。

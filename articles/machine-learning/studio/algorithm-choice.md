@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
 ms.openlocfilehash: 3bb88f2f9546ec25433061a0704bd144730bd34c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894625"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60752834"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>如何选择 Azure 机器学习工作室算法
 
@@ -27,7 +27,7 @@ ms.locfileid: "57894625"
 
 ## <a name="the-machine-learning-algorithm-cheat-sheet"></a>机器学习算法备忘单
 
- **[Microsoft Azure 机器学习 Studio 算法备忘单](algorithm-cheat-sheet.md)** 可帮助选择正确的机器学习算法的预测分析解决方案从 Azure 机器学习Studio 算法库。
+**[Microsoft Azure 机器学习 Studio 算法备忘单](algorithm-cheat-sheet.md)** 可帮助选择正确的机器学习算法的预测分析解决方案从 Azure 机器学习Studio 算法库。
 本文逐步讲解如何使用此备忘单。
 
 > [!NOTE]
@@ -41,7 +41,7 @@ ms.locfileid: "57894625"
 
 ### <a name="how-to-use-the-cheat-sheet"></a>如何使用备忘单
 
-读取图表上的路径和算法标签为“为&lt;路径标签&gt;使用&lt;算法&gt;。” 例如，“为速度使用双类逻辑回归。” 有时会应用多个分支。
+读取图表上的路径和算法标签为“为&lt;路径标签&gt;  使用&lt;算法&gt;  。” 例如，“为速度  使用双类逻辑回归  。” 有时会应用多个分支。
 有时，它们都不是最佳选择。 它们本是根据经验法则提出的建议，因此并非十分精确。
 我们讨论了与所述的多个数据科学家找到最佳算法唯一确定方法就是尝试所有这些。
 
@@ -90,11 +90,11 @@ ms.locfileid: "57894625"
 
 ![非线性类边界](./media/algorithm-choice/image1.png)
 
-***非线性类边界*** - 依赖于线性分类算法会导致较低的准确性
+***非线性类边界*** - 依赖于线性分类算法会导致较低的准确性 
 
 ![非线性趋势数据](./media/algorithm-choice/image2.png)
 
-***非线性趋势数据*** - 使用线性回归方法会生成比必要的更大的错误
+***非线性趋势数据*** - 使用线性回归方法会生成比必要的更大的错误 
 
 尽管其危险，线性算法作为攻击的第一线仍然非常受欢迎。 它们往往算法简单且可快速定型。
 
@@ -114,7 +114,7 @@ ms.locfileid: "57894625"
 
 一些学习算法会对数据的结构或期望的结果做出特定假设。 如果找到符合需求的算法，它可以提供更有用的结果、更准确的预测或更快的定型时间。
 
-| **算法** | **准确性** | **定型时间** | **线性** | **参数** | **说明** |
+| **算法** | **准确性** | **定型时间** | **线性** | **Parameters** | **说明** |
 | --- |:---:|:---:|:---:|:---:| --- |
 | **双类分类** | | | | | |
 | [逻辑回归](/azure/machine-learning/studio-module-reference/two-class-logistic-regression) | |● |● |5 | |
@@ -168,7 +168,7 @@ ms.locfileid: "57894625"
 
 ![逻辑回归到仅具有一个特征的双类数据](./media/algorithm-choice/image4.png)
 
-***逻辑回归到仅具有一个特征的双类数据*** - 类边界是逻辑曲线与两个类都接近的点
+***逻辑回归到仅具有一个特征的双类数据*** - 类边界是逻辑曲线与两个类都接近的点 
 
 ### <a name="trees-forests-and-jungles"></a>树、林和森林
 
@@ -227,7 +227,7 @@ Microsoft Research 的另一个产品[双类局部深层 SVM](/azure/machine-lea
 
 ![基于 PCA 的异常情况检测](./media/algorithm-choice/image8.png)
 
-***基于 PCA 的异常情况检测*** - 大多数数据是模式化分布；明显偏离该分布的点都是值得怀疑的
+***基于 PCA 的异常情况检测*** - 大多数数据是模式化分布；明显偏离该分布的点都是值得怀疑的 
 
 ![使用 K-means 分组的数据集](./media/algorithm-choice/image9.png)
 

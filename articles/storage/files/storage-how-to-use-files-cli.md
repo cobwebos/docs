@@ -1,19 +1,18 @@
 ---
 title: 快速入门：使用 Azure CLI 管理 Azure 文件共享
 description: 通过本快速入门了解如何使用 Azure CLI 来管理 Azure 文件。
-services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/26/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f18b2cbf31b50b27c1ae8a6d4fa4a6510781cb12
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 93baf275e93c28283836a92c71eb9b24151392fc
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886477"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699596"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>快速入门：使用 Azure CLI 创建和管理 Azure 文件共享
 本指南介绍通过 Azure CLI 来使用 [Azure 文件共享](storage-files-introduction.md)的基本知识。 Azure 文件共享与其他文件共享一样，只不过是存储在云中并由 Azure 平台提供支持。 Azure 文件共享支持行业标准 SMB 协议，可以跨多个计算机、应用程序和实例进行文件共享。 
@@ -36,7 +35,7 @@ az login
 ## <a name="create-a-resource-group"></a>创建资源组
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 如果还没有 Azure 资源组，可以使用 [az group create](/cli/azure/group) 命令创建一个。 
 
-以下示例在“美国东部”位置创建名为“myResourceGroup”的资源组：
+以下示例在“美国东部”  位置创建名为“myResourceGroup”  的资源组：
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -45,7 +44,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-storage-account"></a>创建存储帐户
 存储帐户是一个存储共享池，在其中可以部署 Azure 文件共享或其他存储资源，例如 Blob 或队列。 一个存储帐户可以包含无数个文件共享。 一个共享可以存储无数个文件，直到达到存储帐户的容量限制为止。
 
-以下示例使用 [az storage account create](/cli/azure/storage/account) 命令创建名为 mystorageaccount\<随机数字\> 的存储帐户，然后将该存储帐户的名称置于 `$STORAGEACCT` 变量中。 存储帐户名称必须是唯一的，因此请确保将“mystorageacct”替换为唯一名称。
+以下示例使用 [az storage account create](/cli/azure/storage/account) 命令创建名为  mystorageaccount\<随机数字\> 的存储帐户，然后将该存储帐户的名称置于 `$STORAGEACCT` 变量中。 存储帐户名称必须是唯一的，因此请确保将“mystorageacct”替换为唯一名称。
 
 ```azurecli-interactive 
 STORAGEACCT=$(az storage account create \

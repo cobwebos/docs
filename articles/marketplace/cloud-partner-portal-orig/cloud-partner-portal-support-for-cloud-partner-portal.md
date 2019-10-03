@@ -1,25 +1,18 @@
 ---
-title: 对云合作伙伴门户的支持 | Microsoft Docs
+title: 对云合作伙伴门户的支持 |Azure Marketplace
 description: 在云合作伙伴门户中获取支持。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 54ceb8768ed641beac8ab812a9d90936c4c911f5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: pabutler
+ms.openlocfilehash: 35a5a4c4cfdbfa26ea00f0f4d76f91f9f76a1ca5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085348"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935373"
 ---
 # <a name="get-support-for-cloud-partner-portal"></a>获取对云合作伙伴门户的支持
 
@@ -34,7 +27,7 @@ Microsoft 支持各种产品和服务。
 
 1. 转到 [云合作伙伴门户](https://cloudpartner.azure.com/)和使用工作或学校帐户登录。
 
-2. 在页面右侧的上方菜单中，选择“帮助”图标，然后选择“支持”。
+2. 在页面右侧的上方菜单中，选择“帮助”  图标，然后选择“支持”  。
 
 ![support1](./media/cloud-partner-portal-support-for-cloud-partner-portal/support1.png)
 
@@ -45,13 +38,13 @@ Microsoft 支持各种产品和服务。
 ![support2](./media/cloud-partner-portal-support-for-cloud-partner-portal/support2.png)
 
 
-1. 选择“开始请求”。
+1. 选择“开始请求”  。
 
 1. 提供联系人信息并描述问题。 尽可能完整地描述问题。 提供可能有助于解决问题的任何文件（例如，屏幕截图、错误说明或网络跟踪）。
 
 ![support3](./media/cloud-partner-portal-support-for-cloud-partner-portal/support3.png)
 
-1. 选择“提交”以创建票证。
+1. 选择“提交”  以创建票证。
 
 ### <a name="support-followup"></a>支持跟进
 

@@ -2,18 +2,18 @@
 title: 在 Power BI 工作区集合中在报表的查看和编辑模式之间切换 | Microsoft Docs
 description: 了解在 Power BI 工作区集合中如何在报表的查看和编辑模式之间切换。
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+ms.service: power-bi-embedded
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 38824c40db1f4fb3de9a0a124f74b71eb1ee2f17
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 327f2fdcd4d1bc9e71e3aabb3541c6fd30f02811
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517124"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672366"
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中在报表的查看和编辑模式之间切换
 
@@ -27,7 +27,7 @@ ms.locfileid: "58517124"
 需要创建一个访问令牌，令牌可授予你查看和编辑报表的能力。 要编辑并保存报表，需要 **Report.ReadWrite** 令牌权限。 有关详细信息，请参阅[在 Power BI 工作区集合中进行身份验证和授权](app-token-flow.md)。
 
 > [!NOTE]
-> 这可以让你编辑现有报表并保存更改。 如果还需要支持“另存为”的功能，则需要提供额外的权限。 有关详细信息，请参阅[范围](app-token-flow.md#scopes)。
+> 这可以让你编辑现有报表并保存更改。 如果还需要支持“另存为”  的功能，则需要提供额外的权限。 有关详细信息，请参阅[作用域](app-token-flow.md#scopes)。
 
 ```csharp
 using Microsoft.PowerBI.Security;
@@ -41,7 +41,7 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="embed-configuration"></a>嵌入配置
 
-为了在编辑模式下看到“保存”按钮，需要提供权限和 viewMode。 有关详细信息，请参阅 [Embed 配置详细信息](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details)。
+为了在编辑模式下看到“保存”按钮，需要提供权限和 viewMode。 有关详细信息，请参阅[嵌入配置详细信息](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details)。
 
 例如，在 JavaScript 中：
 
@@ -77,7 +77,7 @@ var token = embedToken.Generate("{access key}");
     </script>
 ```
 
-这表示会根据设置为 models.ViewMode.View 的 viewMode 在查看模式下嵌入报表。
+这表示会根据设置为 models.ViewMode.View  的 viewMode  在查看模式下嵌入报表。
 
 ## <a name="view-mode"></a>查看模式
 
@@ -111,7 +111,7 @@ report.switchMode("edit");
 
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [示例入门](get-started-sample.md)  
 [嵌入报表](embed-report.md)  
@@ -121,4 +121,4 @@ report.switchMode("edit");
 [PowerBI-CSharp Git 存储库](https://github.com/Microsoft/PowerBI-CSharp)  
 [PowerBI-Node Git 存储库](https://github.com/Microsoft/PowerBI-Node)  
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

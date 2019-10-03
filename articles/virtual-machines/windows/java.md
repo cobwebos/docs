@@ -4,23 +4,22 @@ description: 使用 Java 和 Azure 资源管理器部署虚拟机及其所有支
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 816233368c2274e34d2acdd712aed270a5e3bfa5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fa6c5115663d770f561764356129448af878668b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010907"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103020"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
@@ -113,7 +112,7 @@ ms.locfileid: "58010907"
     </dependency>
     ```
 
-3. 保存文件。
+3. 保存该文件。
 
 ## <a name="create-credentials"></a>创建凭据
 
@@ -136,7 +135,7 @@ ms.locfileid: "58010907"
 
     将 &lt;subscription-id&gt; 替换为订阅标识符，&lt;application-id&gt; 替换为 Active Directory 应用程序标识符，&lt;authentication-key&gt; 替换为授权密钥，&lt;tenant-id&gt; 替换为租户标识符。
 
-2. 保存文件。
+2. 保存该文件。
 3. 在 shell 中将包含完整路径的环境变量 AZURE_AUTH_LOCATION 设置为身份验证文件。
 
 ### <a name="create-the-management-client"></a>创建管理客户端

@@ -1,27 +1,27 @@
 ---
-title: Azure Active Directory B2C 中的验证形式的 REST API 声明交换 | Microsoft Docs
-description: 有关 Azure Active Directory B2C 自定义策略的主题。
+title: REST API 声明交换作为 Azure Active Directory B2C 中的验证
+description: 用于创建与 RESTful services 交互的 Azure AD B2C 用户旅程的演练。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/24/2017
-ms.author: davidmu
+ms.date: 08/21/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b08c5e6f2bc7d7970c47e14db84f4172e92eb820
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 45fad1fab419c448febb3f3b760996fba278e154
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203651"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644973"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架 (IEF) 可让标识开发人员在用户旅程中将某种交互与 RESTful API 集成。  
+构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架 (IEF) 可让标识开发人员在用户旅程中将某种交互与 RESTful API 集成。
 
 完成本演练后，就可以创建与 RESTful 服务交互的 Azure AD B2C 用户旅程了。
 
@@ -91,8 +91,10 @@ IEF 需要 Azure 函数返回的 `userMessage` 声明。 如果验证失败，�
             <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
             <Metadata>
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
-                <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+                <Item Key="AuthenticationType">None</Item>
+                <!-- REMOVE the following line in production environments -->
                 <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
@@ -110,6 +112,8 @@ IEF 需要 Azure 函数返回的 `userMessage` 声明。 如果验证失败，�
 ```
 
 `InputClaims` 元素定义要从 IEF 发送到 REST 服务的声明。 在本示例中，声明 `givenName` 的内容将以 `playerTag` 的形式发送到 REST 服务。 本示例中，IEF 不需要返回的声明。 相反，它等待来自 REST 服务的响应并根据所接收的状态代码执行操作。
+
+上述`AuthenticationType`注释并`AllowInsecureAuthInProduction`指定移动到生产环境时应进行的更改。 若要了解如何保护用于生产的 RESTful Api, 请参阅通过[证书身份验证](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)实现基本身份验证和安全 RESTful Api[安全 RESTful api](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) 。
 
 ## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>步骤 3：在要验证用户输入的自我断言技术配置文件中包含 RESTful 服务声明交换
 
@@ -132,3 +136,10 @@ IEF 需要 Azure 函数返回的 `userMessage` 声明。 如果验证失败，�
 [修改配置文件编辑和用户注册以便收集用户的其他信息](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
 [演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换](active-directory-b2c-rest-api-step-custom.md)
+
+[参考：RESTful 技术配置文件](restful-technical-profile.md)
+
+若要了解如何保护 Api, 请参阅以下文章:
+
+* [使用基本身份验证（用户名和密码）保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+* [使用客户端证书保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

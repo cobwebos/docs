@@ -4,22 +4,21 @@ description: Azure IaaS 中 Linux 虚拟机的名称解析方案，包括提供�
 services: virtual-machines
 documentationcenter: na
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: ae8315b2a484cddc500b5c2dd02a019cb4f46d8e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 16dc7d16b3e8f2a4c95e93f9b85c74027291ce19
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819138"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084044"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的 DNS 名称解析选项
 Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。 在 Azure 托管的虚拟机上配置自己的 DNS 服务，即可实现自己的 DNS 名称解析解决方案。 以下方案有助于选择适合的解决方案。
@@ -72,7 +71,7 @@ Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。
 Ubuntu（使用 resolvconf）
   * 安装 dnsmasq 包（“sudo apt-get install dnsmasq”）。
 
-**SUSE（使用 netconf）**：
+**SUSE（使用 netconf）** ：
 1. 安装 dnsmasq 包（“sudo zypper install dnsmasq”）。
 2. 启用 dnsmasq 服务（“systemctl enable dnsmasq.service”）。
 3. 启动 dnsmasq 服务（“systemctl start dnsmasq.service”）。

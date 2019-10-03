@@ -1,10 +1,10 @@
 ---
 title: 如何配置应用程序代理应用程序 | Microsoft Docs
-description: 了解如何通过简单几步创建并配置一个应用程序代理应用程序
+description: 了解如何创建和配置应用程序代理应用程序在几个简单步骤
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f22f064043467bf52c23cab547a7e6c8ba2205
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 7aaf2eb282bc3fd0b9f3853ce493c479a3d3c3a9
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172308"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807853"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>如何配置应用程序代理应用程序
 
-本文帮助了解如何在 Azure AD 内配置应用程序代理应用程序，以将本地应用程序公开到云。
+本文可帮助你了解如何配置应用程序代理应用程序 Azure AD 中公开你的本地应用程序到云。
 
-## <a name="recommended-documents"></a>建议的文档 
+## <a name="recommended-documents"></a>建议的文档
 
 若要了解通过管理门户对应用程序代理应用程序进行初始配置和创建，请遵循[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)。
 
@@ -39,19 +39,15 @@ ms.locfileid: "56172308"
 
 如果按照[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)文档中的步骤操作，但在创建应用程序时出错，请参阅错误详细信息以获取有关如何修复应用程序的信息和建议。 大多数的错误消息都包含建议的修复方法。 为避免常见的错误，请验证：
 
--   是有权创建应用程序代理应用程序的管理员
+- 是有权创建应用程序代理应用程序的管理员
+- 内部 URL 唯一
+- 外部 URL 唯一
+- URL 以 http 或 https 开头，以“/”结尾
+- URL 应为域名，而非 IP 地址
 
--   内部 URL 唯一
+创建应用程序时，应在右上角中显示的错误消息。 还可以选择通知图标以查看错误消息。
 
--   外部 URL 唯一
-
--   URL 以 http 或 https 开头，以“/”结尾
-
--   URL 应为域名，而非 IP 地址
-
-在创建应用程序时，错误消息应显示在右上角。 还可以选择通知图标以查看错误消息。
-
-   ![通知提示](./media/application-proxy-config-how-to/error-message.png)
+![显示在 Azure 门户中找到的通知提示的位置](./media/application-proxy-config-how-to/error-message.png)
 
 ## <a name="configure-connectorsconnector-groups"></a>配置连接器/连接器组
 
@@ -61,19 +57,16 @@ ms.locfileid: "56172308"
 
 ## <a name="upload-certificates-for-custom-domains"></a>上传自定义域证书
 
-自定义域允许指定外部 URL 的域。 若要使用自定义域，需上传该域的证书。 有关使用自定义域和证书的详细信息，请参阅[在 Azure AD 应用程序代理中使用自定义域](application-proxy-configure-custom-domain.md)。 
+自定义域允许指定外部 URL 的域。 若要使用自定义域，需上传该域的证书。 有关使用自定义域和证书的详细信息，请参阅[在 Azure AD 应用程序代理中使用自定义域](application-proxy-configure-custom-domain.md)。
 
 如果在上传证书时遇到问题，请在门户中查找错误消息，以获取证书问题的其他信息。 常见的证书问题包括：
 
--   证书已过期
+- 证书已过期
+- 证书自签名
+- 证书缺少私钥
 
--   证书自签名
-
--   证书缺少私钥
-
-尝试上传证书时，右上角显示错误消息。 还可以选择通知图标以查看错误消息。
-
-   ![通知提示](./media/application-proxy-config-how-to/error-message2.png)
+当您尝试上传的证书，则将显示错误消息中右上角。 还可以选择通知图标以查看错误消息。
 
 ## <a name="next-steps"></a>后续步骤
+
 [使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)

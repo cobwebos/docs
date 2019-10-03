@@ -4,17 +4,17 @@ description: 本文提供了有关对更改跟踪进行故障排除的信息
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a6610b5cb3f01fc70b1737fc4492e09d9a7637b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: beb0b89bdbf143c89a83c0813313a8bbda7235d4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507328"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564850"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>对更改跟踪和清单进行故障排除
 
@@ -35,7 +35,7 @@ ms.locfileid: "55507328"
 3. 用于更改跟踪的管理包未下载。
 4. 正在加入的 VM 可能来自未在安装 Microsoft Monitoring Agent 的情况下进行系统准备的克隆计算机。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解决
 
 1. 验证 **Microsoft Monitoring Agent** (HealthService.exe) 是否正在计算机上运行。
 1. 检查计算机上的**事件查看器**并查看包含 `changetracking` 一词的任何事件。
@@ -51,7 +51,7 @@ ms.locfileid: "55507328"
 在代理计算机上，导航到 `C:\Program Files\Microsoft Monitoring Agent\Agent\Tools` 并运行以下命令：
 
 ```cmd
-set stop healthservice
+net stop healthservice
 StopTracing.cmd
 StartTracing.cmd VER
 net start healthservice

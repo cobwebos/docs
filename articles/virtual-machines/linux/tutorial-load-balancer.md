@@ -4,7 +4,7 @@ description: 本教程介绍如何使用 Azure CLI 创建负载均衡器，以�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1fce6292ffd7307ff0a294c6fa25412962acd1cc
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b813a197266db37bde961e079f5d5d5e92353db1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752834"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708510"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>教程：在 Azure 中使用 Azure CLI 均衡 Linux 虚拟机负载以创建高可用性应用程序
 
@@ -53,14 +53,14 @@ Azure 负载均衡器是位于第 4 层（TCP、UDP）的负载均衡器，通�
 
 
 ## <a name="create-azure-load-balancer"></a>创建 Azure 负载均衡器
-本部分详细介绍如何创建和配置负载均衡器的每个组件。 创建负载均衡器之前，需使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroupLoadBalancer”的资源组：
+本部分详细介绍如何创建和配置负载均衡器的每个组件。 创建负载均衡器之前，需使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroupLoadBalancer”  的资源组：
 
 ```azurecli-interactive 
 az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 
 ### <a name="create-a-public-ip-address"></a>创建公共 IP 地址
-若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 使用 [az network public-ip create](/cli/azure/network/public-ip) 创建公共 IP 地址。 以下示例在“myResourceGroupLoadBalancer”资源组中创建名为“myPublicIP”的公共 IP 地址：
+若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 使用 [az network public-ip create](/cli/azure/network/public-ip) 创建公共 IP 地址。 以下示例在“myResourceGroupLoadBalancer”  资源组中创建名为“myPublicIP”  的公共 IP 地址：
 
 ```azurecli-interactive 
 az network public-ip create \
@@ -69,7 +69,7 @@ az network public-ip create \
 ```
 
 ### <a name="create-a-load-balancer"></a>创建负载均衡器
-使用 [az network lb create](/cli/azure/network/lb) 创建负载均衡器。 以下示例创建名为“myLoadBalancer”的负载均衡器，并将“myPublicIP”地址分配到前端 IP 配置：
+使用 [az network lb create](/cli/azure/network/lb) 创建负载均衡器。 以下示例创建名为“myLoadBalancer”  的负载均衡器，并将“myPublicIP”  地址分配到前端 IP 配置：
 
 ```azurecli-interactive 
 az network lb create \
@@ -83,9 +83,9 @@ az network lb create \
 ### <a name="create-a-health-probe"></a>创建运行状况探测器
 若要允许负载均衡器监视应用的状态，可以使用运行状况探测器。 运行状况探测器基于其对运行状况检查的响应，从负载均衡器中动态添加或删除 VM。 默认情况下，在 15 秒时间间隔内发生两次连续的故障后，将从负载均衡器分布中删除 VM。 可以为应用创建基于协议或特定运行状况检查页面的运行状况探测器。 
 
-以下示例创建一个 TCP 探测。 还可创建自定义 HTTP 探测，以便执行更精细的运行状况检查。 使用自定义 HTTP 探测时，必须创建运行状况检查页，例如 healthcheck.js。 探测必须为负载均衡器返回 HTTP 200 OK 响应，以保持主机处于旋转状态。
+以下示例创建一个 TCP 探测。 还可创建自定义 HTTP 探测，以便执行更精细的运行状况检查。 使用自定义 HTTP 探测时，必须创建运行状况检查页，例如 healthcheck.js  。 探测必须为负载均衡器返回 HTTP 200 OK  响应，以保持主机处于旋转状态。
 
-若要创建 TCP 运行状况探测，请使用 [az network lb probe create](/cli/azure/network/lb/probe)。 以下示例创建名为“myHealthProbe”的运行状况探测：
+若要创建 TCP 运行状况探测，请使用 [az network lb probe create](/cli/azure/network/lb/probe)。 以下示例创建名为“myHealthProbe”  的运行状况探测：
 
 ```azurecli-interactive 
 az network lb probe create \
@@ -99,7 +99,7 @@ az network lb probe create \
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 负载均衡器规则用于定义将流量分配给 VM 的方式。 定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需源和目标端口。 若要确保仅正常运行的 VM 接收流量，还需定义要使用的运行状况探测。
 
-使用 [az network lb rule create](/cli/azure/network/lb/rule) 创建负载均衡器规则。 以下示例创建名为“myLoadBalancerRule”的规则、使用“myHealthProbe”运行状况探测并平衡端口 80 上的流量：
+使用 [az network lb rule create](/cli/azure/network/lb/rule) 创建负载均衡器规则。 以下示例创建名为“myLoadBalancerRule”  的规则、使用“myHealthProbe”  运行状况探测并平衡端口 80  上的流量：
 
 ```azurecli-interactive 
 az network lb rule create \
@@ -119,7 +119,7 @@ az network lb rule create \
 需要先创建支持的虚拟网络资源，才能部署某些 VM 和测试均衡器。 有关虚拟网络的详细信息，请参阅[管理 Azure 虚拟网络](tutorial-virtual-network.md)教程。
 
 ### <a name="create-network-resources"></a>创建网络资源
-使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 以下示例创建名为“myVnet”的虚拟网络和一个名为“mySubnet”的子网：
+使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 以下示例创建名为“myVnet”  的虚拟网络和一个名为“mySubnet”  的子网：
 
 ```azurecli-interactive 
 az network vnet create \
@@ -128,7 +128,7 @@ az network vnet create \
     --subnet-name mySubnet
 ```
 
-若要添加网络安全组，请使用 [az network nsg create](/cli/azure/network/nsg)。 以下示例创建名为“myNetworkSecurityGroup”的网络安全组：
+若要添加网络安全组，请使用 [az network nsg create](/cli/azure/network/nsg)。 以下示例创建名为“myNetworkSecurityGroup”  的网络安全组：
 
 ```azurecli-interactive 
 az network nsg create \
@@ -136,7 +136,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 创建网络安全组规则。 以下示例创建名为“myNetworkSecurityGroupRule”的网络安全组规则：
+使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 创建网络安全组规则。 以下示例创建名为“myNetworkSecurityGroupRule”  的网络安全组规则：
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -171,7 +171,7 @@ done
 ### <a name="create-cloud-init-config"></a>创建 cloud-init 配置
 在有关[如何在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)的上一个教程中，已了解如何使用 cloud-init 自动执行 VM 自定义。 在下一步骤中，可使用同一个 cloud-init 配置文件安装 NGINX 并运行简单的“Hello World”Node.js 应用。 若要查看负载均衡器的工作方式，完成本教程时，可以在 Web 浏览器中访问这个简单的应用。
 
-在当前 shell 中，创建名为“cloud-init.txt”的文件并粘贴下面的配置。 例如，在不处于本地计算机上的 Cloud Shell 中创建文件。 输入 `sensible-editor cloud-init.txt` 以创建文件并查看可用编辑器的列表。 请确保已正确复制整个 cloud-init 文件，尤其是第一行：
+在当前 shell 中，创建名为“cloud-init.txt”  的文件并粘贴下面的配置。 例如，在不处于本地计算机上的 Cloud Shell 中创建文件。 输入 `sensible-editor cloud-init.txt` 以创建文件并查看可用编辑器的列表。 请确保已正确复制整个 cloud-init 文件，尤其是第一行：
 
 ```yaml
 #cloud-config
@@ -218,7 +218,7 @@ runcmd:
 ### <a name="create-virtual-machines"></a>创建虚拟机
 要提高应用的高可用性，请将 VM 放置在可用性集中。 有关可用性集的详细信息，请参阅前面的[如何创建高可用性虚拟机](tutorial-availability-sets.md)教程。
 
-使用 [az vm availability-set create](/cli/azure/vm/availability-set) 创建可用性集。 以下示例创建名为“myAvailabilitySet”的可用性集：
+使用 [az vm availability-set create](/cli/azure/vm/availability-set) 创建可用性集。 以下示例创建名为“myAvailabilitySet”  的可用性集：
 
 ```azurecli-interactive 
 az vm availability-set create \
@@ -247,7 +247,7 @@ done
 
 
 ## <a name="test-load-balancer"></a>测试负载均衡器
-使用 [az network public-ip show](/cli/azure/network/public-ip) 获取负载均衡器的公共 IP 地址。 以下示例获取前面创建的“myPublicIP”的 IP 地址：
+使用 [az network public-ip show](/cli/azure/network/public-ip) 获取负载均衡器的公共 IP 地址。 以下示例获取前面创建的“myPublicIP”  的 IP 地址：
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -268,7 +268,7 @@ az network public-ip show \
 建议对运行应用的 VM 执行维护，例如安装 OS 更新。 若要应对应用增加的流量，建议添加更多 VM。 本部分演示了如何在负载均衡器中删除或添加 VM。
 
 ### <a name="remove-a-vm-from-the-load-balancer"></a>从负载均衡器中删除 VM
-可使用 [az network nic ip-config address-pool remove](/cli/azure/network/nic/ip-config/address-pool) 从后端地址池中删除 VM。 以下示例从“myLoadBalancer”中删除“myVM2”的虚拟 NIC：
+可使用 [az network nic ip-config address-pool remove](/cli/azure/network/nic/ip-config/address-pool) 从后端地址池中删除 VM。 以下示例从“myLoadBalancer”  中删除“myVM2”  的虚拟 NIC：
 
 ```azurecli-interactive 
 az network nic ip-config address-pool remove \
@@ -300,7 +300,7 @@ az network lb address-pool show \
 ```
 
 ### <a name="add-a-vm-to-the-load-balancer"></a>将 VM 添加到负载均衡器
-执行 VM 维护后，或者如果需要扩展容量，可使用 [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool) 将 VM 添加到后端地址池。 以下示例将“myVM2”的虚拟 NIC 添加到“myLoadBalancer”：
+执行 VM 维护后，或者如果需要扩展容量，可使用 [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool) 将 VM 添加到后端地址池。 以下示例将“myVM2”  的虚拟 NIC 添加到“myLoadBalancer”  ：
 
 ```azurecli-interactive 
 az network nic ip-config address-pool add \

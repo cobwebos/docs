@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
-ms.author: hkanna
-ms.openlocfilehash: e7659cca9081834d41f64ef0fbd8ea3686044bfd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: matd
+ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012009"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "67875305"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>用作备份目标的 StorSimple 与 Veeam 的集成
 
@@ -104,7 +104,7 @@ StorSimple 提供以下优势：
 | 备份方案  | 本地存储容量  | 云存储容量  |
 |---|---|---|
 | 主备份  | 最近的备份存储在本地存储中以加快恢复速度，满足恢复点目标 (RPO)。 | 备份历史记录 (RPO) 占用云容量 |
-| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 不适用  |
+| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 不可用  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>用作主备份目标的 StorSimple
 
@@ -189,7 +189,7 @@ StorSimple 提供以下优势：
 | 部署本地 StorSimple 设备。 | 支持的版本：Update 3 和更高版本。 |
 | 打开备份目标。 | 使用以下命令打开或关闭备份目标模式并获取状态。 有关详细信息，请参阅[远程连接到 StorSimple 设备](storsimple-remote-connect.md)。</br> 打开备份模式：`Set-HCSBackupApplianceMode -enable`。 </br> 关闭备份模式：`Set-HCSBackupApplianceMode -disable`。 </br> 获取备份模式设置的当前状态：`Get-HCSBackupApplianceMode`。 |
 | 为存储备份数据的卷创建通用卷容器。 卷容器中的所有数据都已删除重复数据。 | StorSimple 卷容器定义重复数据删除域。  |
-| 创建 StorSimple 卷。 | 创建大小尽量接近预期用量的卷，因为卷大小会影响云快照持续时间。 有关如何调整卷大小的信息，请阅读[保留策略](#retention-policies)。</br> </br> 使用 StorSimple 分层卷，并选中“将此卷用于不常访问的存档数据”复选框。 </br> 不能只使用本地固定卷。 |
+| 创建 StorSimple 卷。 | 创建大小尽量接近预期用量的卷，因为卷大小会影响云快照持续时间。 有关如何调整卷大小的信息，请阅读[保留策略](#retention-policies)。</br> </br> 使用 StorSimple 分层卷，并选中“将此卷用于不常访问的存档数据”复选框。  </br> 不能只使用本地固定卷。 |
 | 为所有备份目标卷创建唯一的 StorSimple 备份策略。 | StorSimple 备份策略定义卷一致性组。 |
 | 快照过期时禁用计划。 | 快照将作为后处理操作触发。 |
 
@@ -237,10 +237,10 @@ StorSimple 提供以下优势：
 -   确保打开并行处理。
 -   关闭压缩。
 -   关闭备份作业中的重复数据删除。
--   将优化选项设置为“LAN 目标”。
--   打开“创建活动的完整备份”（每隔 2 周）。
--   在备份存储库中，设置“使用每个 VM 的备份文件”。
--   将“为每个作业使用多个上传流”设置为 **8**（最多允许 16 个）。 根据 StorSimple 设备上的 CPU 利用率调大或调小此数字。
+-   将优化选项设置为“LAN 目标”。 
+-   打开“创建活动的完整备份”（每隔 2 周）。 
+-   在备份存储库中，设置“使用每个 VM 的备份文件”。 
+-   将“为每个作业使用多个上传流”设置为 **8**（最多允许 16 个）。  根据 StorSimple 设备上的 CPU 利用率调大或调小此数字。
 
 ## <a name="retention-policies"></a>保留策略
 
@@ -257,12 +257,12 @@ StorSimple 提供以下优势：
 
 根据前面的假设，将为每月和每年完整备份创建 26-TiB 的 StorSimple 分层卷。 将为每个每日增量备份创建 5-TiB 的 StorSimple 分层卷。
 
-| 每种备份类型的保留期 | 大小 (TiB) | GFS 乘数\* | 总容量 (TiB)  |
+| 每种备份类型的保留期 | 大小(TiB) | GFS 乘数\* | 总容量 (TiB)  |
 |---|---|---|---|
-| 每周完整备份 | 第 | 4  | 4 |
+| 每周完整备份 | 1 | 4  | 4 |
 | 每日增量备份 | 0.5 | 20（周期等于每月周数） | 12（使用 2 个以提高配额） |
-| 每月完整备份 | 第 | 12 | 12 |
-| 每年完整备份 | 第  | 10 | 10 |
+| 每月完整备份 | 1 | 12 | 12 |
+| 每年完整备份 | 1  | 10 | 10 |
 | GFS 要求 |   | 38 |   |
 | 提高的配额  | 4  |   | 总共 42，满足 GFS 要求  |
 
@@ -272,32 +272,32 @@ StorSimple 提供以下优势：
 
 ### <a name="to-set-up-veeam-storage"></a>设置 Veeam 存储
 
-1.  在 Veeam 备份和复制控制台上的“存储库工具”中，转到“备份基础结构”。 右键单击“备份存储库”，并选择“添加备份存储库”。
+1.  在 Veeam 备份和复制控制台上的“存储库工具”中，转到“备份基础结构”。   右键单击“备份存储库”，并选择“添加备份存储库”。  
 
     ![Veeam 管理控制台，备份存储库页](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  在“新建备份存储库”对话框中，输入存储库的名称和说明。 选择“**下一步**”。
+2.  在“新建备份存储库”对话框中，输入存储库的名称和说明。  选择“**下一步**”。
 
     ![Veeam 管理控制台，名称和说明页](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  对于“类型”，请选择“Microsoft Windows 服务器”。 选择 Veeam 服务器。 选择“**下一步**”。
+3.  对于“类型”，请选择“Microsoft Windows 服务器”。  选择 Veeam 服务器。 选择“**下一步**”。
 
     ![Veeam 管理控制台，选择备份存储库的类型](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
-4.  要指定“位置”，请浏览到所需的卷并将其选中。 选中“将最大并发任务数限制为:”复选框，并将值设置为 **4**。 这可以确保在处理每个虚拟机 (VM) 时，只会并行处理四个虚拟磁盘。 选择“高级”按钮。
+4.  要指定“位置”，请浏览到所需的卷并将其选中。  选中“将最大并发任务数限制为:”复选框，并将值设置为 **4**。  这可以确保在处理每个虚拟机 (VM) 时，只会并行处理四个虚拟磁盘。 选择“高级”按钮。 
 
     ![Veeam 管理控制台，选择卷](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
 
 
-5.  在“存储兼容性设置”对话框中，选中“使用每个 VM 的备份文件”复选框。
+5.  在“存储兼容性设置”对话框中，选中“使用每个 VM 的备份文件”复选框。  
 
     ![Veeam 管理控制台，存储兼容性设置](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  在“新建备份存储库”对话框中，选中“在装载服务器上启用 vPower NFS 服务(建议)”复选框。 选择“**下一步**”。
+6.  在“新建备份存储库”对话框中，选中“在装载服务器上启用 vPower NFS 服务(建议)”复选框。   选择“**下一步**”。
 
     ![Veeam 管理控制台，备份存储库页](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
-7.  检查设置，并选择“下一步”。
+7.  检查设置，并选择“下一步”。 
 
     ![Veeam 管理控制台，备份存储库页](./media/storsimple-configure-backup-target-using-veeam/veeamimage7.png)
 
@@ -329,11 +329,11 @@ StorSimple 提供以下优势：
 
 #### <a name="to-assign-storsimple-volumes-to-a-veeam-backup-job"></a>将 StorSimple 卷分配到 Veeam 备份作业
 
-1.  在 Veeam 备份和复制控制台中，选择“备份和复制”。 单击右键“备份”，并根据环境选择“VMware”或“Hyper-V”。
+1.  在 Veeam 备份和复制控制台中，选择“备份和复制”。  单击右键“备份”，并根据环境选择“VMware”或“Hyper-V”。   
 
     ![Veeam 管理控制台，新建备份作业](./media/storsimple-configure-backup-target-using-veeam/veeamimage8.png)
 
-2.  在“新建备份作业”对话框中，输入每日备份作业的名称和说明。
+2.  在“新建备份作业”对话框中，输入每日备份作业的名称和说明。 
 
     ![Veeam 管理控制台，新建备份作业页](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
 
@@ -341,21 +341,21 @@ StorSimple 提供以下优势：
 
     ![Veeam 管理控制台，新建备份作业页](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
-4.  为“备份代理”和“备份存储库”选择所需的值。 在本地附加存储中根据环境的 RPO 和 RTO 定义，选择“要在磁盘上保留的还原点”的值。 选择“高级”。
+4.  为“备份代理”和“备份存储库”选择所需的值。   在本地附加存储中根据环境的 RPO 和 RTO 定义，选择“要在磁盘上保留的还原点”的值。  选择“高级”。 
 
     ![Veeam 管理控制台，新建备份作业页](./media/storsimple-configure-backup-target-using-veeam/veeamimage11.png)
 
-5. 在“高级设置”对话框中的“备份”选项卡上，选择“增量”。 确保已清除“定期创建合成完整备份”复选框。 选中“定期创建活动的完整备份”复选框。 在“活动的完整备份”下面，选中“星期六”对应的“每周的选定星期日期”。
+5. 在“高级设置”对话框中的“备份”选项卡上，选择“增量”。    确保已清除“定期创建合成完整备份”复选框。  选中“定期创建活动的完整备份”复选框。  在“活动的完整备份”下面，选中“星期六”对应的“每周的选定星期日期”。  
 
     ![Veeam 管理控制台，新建备份作业 - 高级设置页](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. 在“存储”选项卡中，确保已清除“启用内联重复数据删除”复选框。 选中“排除交换文件块”复选框，并选中“排除已删除的文件块”复选框。 将“压缩级别”设置为“无”。 为实现性能均衡并删除重复数据，请将“存储优化”设置为“LAN 目标”。 选择“确定”。
+6. 在“存储”选项卡中，确保已清除“启用内联重复数据删除”复选框。   选中“排除交换文件块”复选框，并选中“排除已删除的文件块”复选框。   将“压缩级别”设置为“无”。   为实现性能均衡并删除重复数据，请将“存储优化”设置为“LAN 目标”。   选择“确定”  。
 
     ![Veeam 管理控制台，新建备份作业 - 高级设置页](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
     有关 Veeam 重复数据删除和压缩设置的信息，请参阅 [Data Compression and Deduplication](https://helpcenter.veeam.com/backup/vsphere/compression_deduplication.html)（数据压缩和重复数据删除）。
 
-7.  在“编辑备份作业”对话框中，可以选中“启用应用程序感知处理”复选框（可选）。
+7.  在“编辑备份作业”对话框中，可以选中“启用应用程序感知处理”复选框（可选）。  
 
     ![Veeam 管理控制台，新建备份作业 - 来宾处理页](./media/storsimple-configure-backup-target-using-veeam/veeamimage14.png)
 
@@ -380,10 +380,10 @@ StorSimple 提供以下优势：
 
 | 备份类型和保留期 | 配置的存储 | 大小 (TiB) | GFS 乘数 | 总容量\* (TiB) |
 |---|---|---|---|---|
-| 第 1 周（完整和增量） |本地磁盘（短期）| 第 | 1 | 第 |
-| StorSimple（第 2-4 周） |StorSimple 磁盘（长期） | 第 | 4 | 4 |
-| 每月完整备份 |StorSimple 磁盘（长期） | 第 | 12 | 12 |
-| 每年完整备份 |StorSimple 磁盘（长期） | 第 | 1 | 第 |
+| 第 1 周（完整和增量） |本地磁盘（短期）| 1 | 1 | 1 |
+| StorSimple（第 2-4 周） |StorSimple 磁盘（长期） | 1 | 4 | 4 |
+| 每月完整备份 |StorSimple 磁盘（长期） | 1 | 12 | 12 |
+| 每年完整备份 |StorSimple 磁盘（长期） | 1 | 1 | 1 |
 |GFS 卷大小要求 |  |  |  | 18*|
 
 \* 总容量包括 17 TiB 的 StorSimple 磁盘和 1 TiB 的本地 RAID 卷。
@@ -406,11 +406,11 @@ StorSimple 提供以下优势：
 
 #### <a name="to-assign-storsimple-volumes-to-a-veeam-copy-job"></a>将 StorSimple 卷分配到 Veeam 复制作业
 
-1.  在 Veeam 备份和复制控制台中，选择“备份和复制”。 单击右键“备份”，并根据环境选择“VMware”或“Hyper-V”。
+1.  在 Veeam 备份和复制控制台中，选择“备份和复制”。  单击右键“备份”，并根据环境选择“VMware”或“Hyper-V”。   
 
     ![Veeam 管理控制台，新建备份复制作业页](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
 
-2.  在“新建备份复制作业”对话框中，输入作业的名称和说明。
+2.  在“新建备份复制作业”对话框中，输入作业的名称和说明。 
 
     ![Veeam 管理控制台，新建备份复制作业页](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
 
@@ -420,17 +420,17 @@ StorSimple 提供以下优势：
 
 4.  根据需要，从备份复制作业中排除对象。
 
-5.  选择备份存储库，并设置“要保留的还原点”的值。 请务必选中“保留以下还原点用于存档”复选框。 定义备份频率，并选择“高级”。
+5.  选择备份存储库，并设置“要保留的还原点”的值。  请务必选中“保留以下还原点用于存档”复选框。  定义备份频率，并选择“高级”。 
 
     ![Veeam 管理控制台，新建备份复制作业页](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
 
 6.  指定以下高级设置：
 
-    * 在“维护”选项卡上，关闭存储级损坏保护。
+    * 在“维护”选项卡上，关闭存储级损坏保护。 
 
     ![Veeam 管理控制台，新建备份复制作业 - 高级设置页](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
 
-    * 在“存储”选项卡上，确保已关闭重复数据删除和压缩。
+    * 在“存储”选项卡上，确保已关闭重复数据删除和压缩。 
 
     ![Veeam 管理控制台，新建备份复制作业 - 高级设置页](./media/storsimple-configure-backup-target-using-veeam/veeamimage21.png)
 
@@ -500,14 +500,14 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 灾难的发生可能会出于多种因素。 下表列出了常见的灾难恢复方案。
 
-| 场景 | 影响 | 如何恢复 | 说明 |
+| 应用场景 | 影响 | 如何恢复 | 说明 |
 |---|---|---|---|
 | StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
 | Veeam 服务器故障 | 备份和还原操作会中断。 | 重新构建备份服务器，并根据 [Veeam 帮助中心（技术文档）](https://www.veeam.com/documentation-guides-datasheets.html)中的详述执行数据库还原。  | 必须在灾难恢复站点重建或还原 Veeam 服务器。 将数据库还原到最近的时间点。 如果还原的 Veeam 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |
 | 站点发生故障，导致备份服务器和 StorSimple 丢失 | 备份和还原操作会中断。 | 首先还原 StorSimple，然后还原 Veeam。 | 首先还原 StorSimple，然后还原 Veeam。 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 |
 
 
-## <a name="references"></a>参考
+## <a name="references"></a>参考资料
 
 本文参考了以下文档：
 

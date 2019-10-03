@@ -1,6 +1,6 @@
 ---
-title: DatetimeV2 预生成实体
-titleSuffix: Azure
+title: DatetimeV2 预生成实体 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 本文包含语言理解 (LUIS) 中的 datetimeV2 预生成实体信息。
 services: cognitive-services
 author: diberry
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 02/28/2019
+ms.topic: conceptual
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 6b4c3f7445d18ab1548fd63b1f4d12c5901cf949
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 4f46efaeddb0bfe789ef752abdd133c14da514da
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339515"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677692"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 DatetimeV2 预生成实体
 
@@ -31,16 +31,16 @@ ms.locfileid: "57339515"
 ```json
 "entities": [
   {
-    "entity": "8am on may 2nd 2017",
+    "entity": "8am on may 2nd 2019",
     "type": "builtin.datetimeV2.datetime",
     "startIndex": 0,
     "endIndex": 18,
     "resolution": {
       "values": [
         {
-          "timex": "2017-05-02T08",
+          "timex": "2019-05-02T08",
           "type": "datetime",
-          "value": "2017-05-02 08:00:00"
+          "value": "2019-05-02 08:00:00"
         }
       ]
     }
@@ -50,14 +50,14 @@ ms.locfileid: "57339515"
 
 ## <a name="json-property-descriptions"></a>JSON 属性说明
 
-|属性名称 |属性类型和说明|
+|属性名 |属性类型和说明|
 |---|---|
 |实体|**string** - 从类型为日期、时间、日期范围或时间范围的陈述中提取的文本。|
 |type|**string** - [datetimeV2 的子类型](#subtypes-of-datetimev2)之一
 |startIndex|**int** - 陈述中实体开始处的索引。|
 |endIndex|**int** - 陈述中实体结束处的索引。|
 |resolution|包含一个 `values` 数组，其中包含 1 个、2 个或 4 个[解析值](#values-of-resolution)。|
-|end|时间或日期范围的结束值，格式与 `value` 相同。 仅当 `type` 为 `daterange`、`timerange` 或 `datetimerange` 时才使用|
+|结束|时间或日期范围的结束值，格式与 `value` 相同。 仅当 `type` 为 `daterange`、`timerange` 或 `datetimerange` 时才使用|
 
 ## <a name="subtypes-of-datetimev2"></a>datetimeV2 的子类型
 
@@ -79,17 +79,17 @@ ms.locfileid: "57339515"
 
 `values` 数组的每个元素可以包含以下字段： 
 
-|属性名称|属性说明|
+|属性名|属性说明|
 |--|--|
 |timex|遵循 [ISO 8601 标准](https://en.wikipedia.org/wiki/ISO_8601)的、以 TIMEX 格式表示的时间、日期或日期范围，以及使用 TimeML 语言的注释的 TIMEX3 属性。 [TIMEX 准则](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)中描述了此注释。|
-|type|子类型，可以是以下项之一：datetime、date、time、daterange、timerange、datetimerange、duration、set。|
-|值|**可选。** 采用 yyyy:MM:dd（日期）、HH:mm:ss（时间）、yyyy:MM:dd HH:mm:ss（日期时间）格式的日期时间对象。 如果 `type` 为 `duration`，则值是秒数（持续时间） <br/> 仅当 `type` 为 `datetime`、`date`、`time` 或 `duration 时才使用。|
+|type|子类型，可以是下述项目之一：`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set`。|
+|value|**可选。** 采用 yyyy:MM:dd（日期）、HH:mm:ss（时间）、yyyy:MM:dd HH:mm:ss（日期时间）格式的日期时间对象。 如果 `type` 为 `duration`，则值是秒数（持续时间） <br/> 仅当 `type` 为 `datetime`、`date`、`time` 或 `duration 时才使用。|
 
 ## <a name="valid-date-values"></a>有效日期值
 
 **datetimeV2** 支持以下范围内的日期：
 
-| Min | Max |
+| 最小值 | 最大 |
 |----------|-------------|
 | 1900 年 1 月 1 日   | 2099 年 12 月 31 日 |
 
@@ -116,12 +116,12 @@ ms.locfileid: "57339515"
           {
             "timex": "XXXX-05-02",
             "type": "date",
-            "value": "2017-05-02"
+            "value": "2019-05-02"
           },
           {
             "timex": "XXXX-05-02",
             "type": "date",
-            "value": "2018-05-02"
+            "value": "2020-05-02"
           }
         ]
       }
@@ -145,14 +145,8 @@ ms.locfileid: "57339515"
           {
             "timex": "(XXXX-05-02,XXXX-05-05,P3D)",
             "type": "daterange",
-            "start": "2017-05-02",
-            "end": "2017-05-05"
-          },
-          {
-            "timex": "(XXXX-05-02,XXXX-05-05,P3D)",
-            "type": "daterange",
-            "start": "2018-05-02",
-            "end": "2018-05-05"
+            "start": "2019-05-02",
+            "end": "2019-05-05"
           }
         ]
       }
@@ -176,14 +170,8 @@ ms.locfileid: "57339515"
           {
             "timex": "(XXXX-WXX-2,XXXX-WXX-4,P2D)",
             "type": "daterange",
-            "start": "2017-06-13",
-            "end": "2017-06-15"
-          },
-          {
-            "timex": "(XXXX-WXX-2,XXXX-WXX-4,P2D)",
-            "type": "daterange",
-            "start": "2017-06-20",
-            "end": "2017-06-22"
+            "start": "2019-04-30",
+            "end": "2019-05-02"
           }
         ]
       }
@@ -196,6 +184,8 @@ ms.locfileid: "57339515"
 ## <a name="time-range-resolution-example"></a>时间范围解析示例
 
 以下示例演示 LUIS 如何使用 **datetimeV2** 来解析包含时间范围的陈述。
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
 
 ```json
   "entities": [
@@ -218,6 +208,92 @@ ms.locfileid: "57339515"
   ]
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+
+DatetimeV2 JSON 响应在 API V3 中已更改。 
+
+自 API V2 以来的更改：
+* `datetimeV2.timex.type` 属性不再返回，因为它在父级别 `datetimev2.type` 返回。 
+* `datetimeV2.timex` 属性已重名为 `datetimeV2.value`。
+
+对于话语 `8am on may 2nd 2017`，DatetimeV2 的 V3 版本为：
+
+```JSON
+{
+    "query": "8am on may 2nd 2017",
+    "prediction": {
+        "normalizedQuery": "8am on may 2nd 2017",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.6826963
+            }
+        },
+        "entities": {
+            "datetimeV2": [
+                {
+                    "type": "datetime",
+                    "values": [
+                        {
+                            "timex": "2017-05-02T08",
+                            "value": "2017-05-02 08:00:00"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+```
+
+以下 JSON 的 `verbose` 参数设置为 `false`：
+
+```json
+{
+    "query": "8am on may 2nd 2017",
+    "prediction": {
+        "normalizedQuery": "8am on may 2nd 2017",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.6826963
+            }
+        },
+        "entities": {
+            "datetimeV2": [
+                {
+                    "type": "datetime",
+                    "values": [
+                        {
+                            "timex": "2017-05-02T08",
+                            "value": "2017-05-02 08:00:00"
+                        }
+                    ]
+                }
+            ],
+            "$instance": {
+                "datetimeV2": [
+                    {
+                        "type": "builtin.datetimeV2.datetime",
+                        "text": "8am on may 2nd 2017",
+                        "startIndex": 0,
+                        "length": 19,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+
+* * * 
+
 ## <a name="deprecated-prebuilt-datetime"></a>已弃用的预生成日期时间
 
 `datetime` 预生成实体已弃用，已由 datetimeV2 取代。 
@@ -230,6 +306,8 @@ ms.locfileid: "57339515"
 4. 选择“datetimeV2”并单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
+
+了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
 
 了解[维度](luis-reference-prebuilt-dimension.md)、[电子邮件](luis-reference-prebuilt-email.md)实体和[数字](luis-reference-prebuilt-number.md)。 
 

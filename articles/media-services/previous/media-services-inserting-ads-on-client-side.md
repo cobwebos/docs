@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8b0f5cdcf5a24513b89a2523be71dd74a1a2859b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 49c836f5e9189104ba77e8f3d865f4db199c4060
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484825"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66002975"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
 本文包含有关如何在客户端上插入各种类型的广告的信息。
@@ -160,7 +160,7 @@ VAST 文件指定要显示的广告。 以下 XML 是线性广告 VAST 文件的
     </Creative>
 ```
 
-<**NonLinearAds**> 元素可以包含一个或多个 <**NonLinear**> 元素，其中每一个均可描述一个非线性广告。 <**NonLinear**> 元素指定非线性广告的资源。 资源可以是 <**StaticResource**>、<**IFrameResource**> 或 <**HTMLResource**>。 <**StaticResource**> 描述非 HTML 资源，并定义指定资源显示方式的 creativeType 属性：
+<**NonLinearAds**> 元素可以包含一个或多个 <**NonLinear**> 元素，其中每一个均可描述一个非线性广告。 <**NonLinear**> 元素指定非线性广告的资源。 资源可以是 <**StaticResource**>、<**IFrameResource**> 或 <**HTMLResource**>。 \<**StaticResource**> 描述非 HTML 资源，并定义指定资源显示方式的 creativeType 属性：
 
 Image/gif、image/jpeg、image/png - 资源显示在 HTML <**img**> 标记中。
 
@@ -170,7 +170,7 @@ Application/x-shockwave-flash – 资源显示在 Flash Player 中。
 
 **IFrameResource** 描述可以在 IFrame 中显示的 HTML 资源。 **HTMLResource** 描述可以插入网页的一段 HTML 代码。 **TrackingEvents** 指定跟踪事件以及事件发生时请求的 URI。 在此示例中，跟踪了 acceptInvitation 事件和折叠事件。 有关 **NonLinearAds** 元素及其子元素的详细信息，请参阅 IAB.NET/VAST。 请注意，**TrackingEvents** 元素位于**NonLinearAds** 元素而非 **NonLinear** 元素内。
 
-在 `<CompanionAds>` 元素内定义伴随广告。 `<CompanionAds>` 元素可以包含一个或多个 `<Companion>` 元素。 每个 `<Companion>` 元素均描述一个伴随广告，并且可以包含以与非线性广告相同的方式定义的 `<StaticResource>``<IFrameResource>` 或 `<HTMLResource>`。 VAST 文件可以包含多个伴随广告，播放器应用程序可以选择最适合显示的广告。 有关 VAST 的详细信息，请参阅 [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)。
+在 `<CompanionAds>` 元素内定义伴随广告。 `<CompanionAds>` 元素可以包含一个或多个 `<Companion>` 元素。 每个 `<Companion>` 元素均描述一个伴随广告，并且可以包含以与非线性广告相同的方式定义的 `<StaticResource>``<IFrameResource>` 或 `<HTMLResource>`。 VAST 文件可以包含多个伴随广告，播放器应用程序可以选择最适合显示的广告。 有关 VAST 的详细信息，请参阅 [VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)。
 
 ### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>使用数字视频多广告播放列表 (VMAP) 文件
 VMAP 文件允许指定何时发生广告中断、每次中断的时长、在中断期间可以显示多少广告，以及在此期间可以显示多少种类型的广告。 以下是定义单次广告中断的示例 VMAP 文件：
@@ -243,7 +243,7 @@ VMAP 文件以 `<VMAP>` 元素开头，该元素包含一个或多个 `<AdBreak>
 * `<AdTagURI>` 引用另一个系统中的广告响应的 URI
 * `<CustomAdData>` 表示非 VAST 响应的任意字符串
 
-在此示例中，线内广告响应是使用包含 VAST 广告响应的 `<VASTAdData>` 元素指定的。 有关其他元素的详细信息，请参阅 [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)。
+在此示例中，线内广告响应是使用包含 VAST 广告响应的 `<VASTAdData>` 元素指定的。 有关其他元素的详细信息，请参阅 [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)。
 
 <**AdBreak**> 元素还可以包含一个 <**TrackingEvents**> 元素。 <**TrackingEvents**> 元素允许跟踪广告中断的开始或结束时间，或广告中断期间是否发生了错误。 <**TrackingEvents**> 元素包含一个或多个 <**Tracking**> 元素，其中每一个均指定一个跟踪事件和一个跟踪 URI。 可能的跟踪事件是：
 
@@ -276,7 +276,7 @@ VMAP 文件以 `<VMAP>` 元素开头，该元素包含一个或多个 `<AdBreak>
     </vmap:VMAP>
 ```
 
-有关 <TrackingEvents> 元素及其子元素的详细信息，请参阅 http://iab.net/VMAP.pdf
+有关 <TrackingEvents> 元素及其子元素的详细信息，请参阅 http://iab.net/VMAP.pdf 
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>使用媒体摘要排序模板 (MAST) 文件
 MAST 文件允许指定定义何时显示广告的触发器。 以下是一个示例 MAST 文件，它包含前置式广告、中置式广告和后置式广告的触发器。
@@ -363,7 +363,7 @@ VPAID 是用于使可执行广告单元能够与视频播放器进行通信的 A
     </MediaFiles>
 ```
 
-可以使用 VAST 响应中 `<Linear>` 或 `<NonLinear>` 元素内的 `<AdParameters>` 元素来初始化可执行广告。 有关 `<AdParameters>` 元素的详细信息，请参阅 [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)。 有关 VPAID API 的详细信息，请参阅 [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
+可以使用 VAST 响应中 `<Linear>` 或 `<NonLinear>` 元素内的 `<AdParameters>` 元素来初始化可执行广告。 有关 `<AdParameters>` 元素的详细信息，请参阅 [VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)。 有关 VPAID API 的详细信息，请参阅 [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>实现带有支持广告的 Windows 或 Windows Phone 8 播放器
 Microsoft 媒体平台：适用于 Windows 8 和 Windows Phone 8 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架来实现视频播放器应用程序。 可以从[适用于 Windows 8 和 Windows Phone 8 的播放器框架](https://playerframework.codeplex.com)下载播放器框架和示例。

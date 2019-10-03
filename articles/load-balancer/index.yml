@@ -1,106 +1,94 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: 负载均衡器
+### YamlMime:Landing
+title: 负载均衡器文档
+summary: 了解如何使用 Azure 负载均衡器。 快速入门、教程、示例等介绍了如何部署负载均衡器，以及如何对传入和传出虚拟机、云资源和跨界虚拟网络的流量进行负载均衡。
 metadata:
-  document_id: null
   title: 负载均衡器
-  meta.description: 'Learn how to use Azure Load Balancer. Quickstarts, tutorials, samples, and more, show you how to deploy a load balancer and load balance traffic to and from virtual machines and cloud resources, and in cross-premises virtual networks.'
-  services: load-balancer
-  author: KumudD
-  manager: twooley
-  ms.service: load-balancer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 11/14/2018
-  ms.author: kumud
-abstract:
   description: 了解如何使用 Azure 负载均衡器。 快速入门、教程、示例等介绍了如何部署负载均衡器，以及如何对传入和传出虚拟机、云资源和跨界虚拟网络的流量进行负载均衡。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何创建负载均衡器，如何创建充当后端服务器的虚拟机，如何在虚拟机上安装自定义 Web 应用，然后如何在虚拟机之间对 Web 应用进行负载均衡。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure 门户
-            href: /azure/load-balancer/quickstart-create-basic-load-balancer-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/load-balancer/quickstart-create-basic-load-balancer-powershell
-          - image:
-              src: 'https://docs.microsoft.com/media/common/cli.svg'
-            text: Azure CLI
-            href: /azure/load-balancer/quickstart-create-basic-load-balancer-cli
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何创建负载均衡器并跨 VM 对服务进行负载均衡。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-manage-portal">对传入 VM 的 Internet 流量进行负载均衡</a>
-          - html: <a href="/azure/load-balancer/tutorial-load-balancer-basic-internal-portal">对传入 VM 的内部流量进行负载均衡</a>
-          - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal">跨可用性区域对 VM 进行负载均衡</a>
-          - html: <a href="/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal">在特定的可用性区域中对 VM 进行负载均衡</a>
-          - html: <a href="/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal">在负载均衡器中配置端口转发</a>
-  - title: 利用 Microsoft Learn 掌握技能
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 使虚拟机高度可用
-            href: /learn/modules/intro-to-azure-virtual-machines/5-high-availability
-            image:
-              src: /learn/achievements/make-your-virtual-machines-highly-available.svg
-              href: /learn/modules/intro-to-azure-virtual-machines/5-high-availability
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-virtual-machines">更多交互式学习...</a>
-  - title: 免费 Pluralsight 视频培训
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 管理员
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-          - title: Azure 解决方案架构师
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-          - title: 面向 AWS 管理员的 Azure 管理
-            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-  - title: 示例
-    items:
-      - type: paragraph
-        text: 常见任务的脚本示例。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/load-balancer/cli-samples">Azure CLI</a>
-          - html: <a href="/azure/load-balancer/powershell-samples">PowerShell</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: '<p><a href="/powershell/module/az.network#load_balancer">PowerShell</a></p><p><a href="/cli/azure/network/lb">Azure CLI</a></p>'
-          - title: Languages
-            html: '<p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.network.v2017_10_01.models.LoadBalancer">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure.mgmt.network.v2015_06_15.operations.loadbalancersoperations">Python</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/load-balancer/">REST API 参考</a></p>
+  services: load-balancer
+  ms.service: load-balancer
+  ms.topic: landing-page
+  ms.collection: collection
+  author: asudbring
+  ms.author: allensu
+  ms.date: 08/20/2019
+  ms.openlocfilehash: cb6ecdf9c717602cb3309107bc0ac24805be5d0a
+  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70061879"
+landingContent:
+- title: 关于负载均衡器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是负载均衡器？
+      url: load-balancer-overview.md
+    - text: 什么是标准负载均衡器？
+      url: load-balancer-standard-overview.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建基本负载均衡器
+      url: quickstart-create-basic-load-balancer-portal.md
+    - text: 创建标准负载均衡器以对 VM 进行负载均衡
+      url: quickstart-load-balancer-standard-public-portal.md
+  - linkListType: tutorial
+    links:
+    - text: 对传入 VM 的 Internet 流量进行负载均衡
+      url: tutorial-load-balancer-standard-manage-portal.md
+    - text: 通过基本负载均衡器对内部流量负载进行均衡
+      url: tutorial-load-balancer-basic-internal-portal.md
+    - text: 在 Azure 负载均衡器中配置端口转发
+      url: tutorial-load-balancer-port-forwarding-portal.md
+- title: 管理功能和选项
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 负载均衡器运行状况探测
+      url: load-balancer-custom-probe-overview.md
+    - text: Azure 中的出站连接
+      url: load-balancer-outbound-connections.md
+    - text: Azure 负载均衡器的多个前端
+      url: load-balancer-multivip-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则
+      url: configure-load-balancer-outbound-cli.md
+    - text: 使用 PowerShell 创建支持 IPv6 的面向 Internet 的负载均衡器
+      url: load-balancer-ipv6-internet-ps.md
+    - text: 配置分布模式
+      url: load-balancer-distribution-mode.md
+- title: 部署
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 标准负载均衡器和可用性区域
+      url: load-balancer-standard-availability-zones.md
+    - text: 负载均衡器空闲情况下的 TCP 重置（公共预览版）
+      url: load-balancer-tcp-reset.md
+  - linkListType: how-to-guide
+    links:
+    - text: 通过区域冗余的前端创建标准负载均衡器
+      url: load-balancer-get-started-internet-az-portal.md
+    - text: 通过区域的前端创建标准负载均衡器
+      url: load-balancer-get-started-internet-availability-zones-zonal-portal.md
+    - text: 在多个 IP 配置上进行负载均衡
+      url: load-balancer-multiple-ip.md
+- title: 故障排除
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 通过指标、警报和资源运行状况进行标准负载均衡器诊断
+      url: load-balancer-standard-diagnostics.md
+    - text: 排查 Azure 负载均衡器问题
+      url: load-balancer-troubleshoot.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.network/?view=azps-2.5.0#load_balancer
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest

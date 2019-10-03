@@ -4,22 +4,21 @@ description: Windows 虚拟机的时间同步。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1a2e75dcffe32c6f1aeaba8646b96bbc1500ffdf
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 04b2eb70a9e304fb50f4f6cb94daf0a0dda86d63
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546907"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100261"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的时间同步
 
@@ -39,7 +38,7 @@ Azure 现在由运行 Windows Server 2016 的基础结构提供支持。 Windows
 
 Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Microsoft 拥有的带 GPS 天线的 Stratum 1 设备获取时间。 Azure 中的虚拟机可以依赖其主机将准确时间（主机时间）传递给 VM，也可以直接从时间服务器中获取时间，或结合使用这两种方式。 
 
-虚拟机与主机的交互也会影响时钟。 在[内存保留维护](maintenance-and-updates.md#maintenance-not-requiring-a-reboot)期间，VM 最多暂停 30 秒。 例如，在维护开始之前，VM 时钟显示上午 10:00:00 并持续 28 秒。 VM 恢复后，VM 上的时钟仍显示上午 10:00:00，也就是差了 28 秒。 为了校正这种情况，VMICTimeSync 服务会监视主机上发生的情况，并提示在 VM 上进行更改以进行补偿。
+虚拟机与主机的交互也会影响时钟。 在[内存保留维护](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)期间，VM 最多暂停 30 秒。 例如，在维护开始之前，VM 时钟显示上午 10:00:00 并持续 28 秒。 VM 恢复后，VM 上的时钟仍显示上午 10:00:00，也就是差了 28 秒。 为了校正这种情况，VMICTimeSync 服务会监视主机上发生的情况，并提示在 VM 上进行更改以进行补偿。
 
 VMICTimeSync 服务以采样或同步模式运行，只会影响时钟前进。 在需要运行 W32time 的采样模式下，VMICTimeSync 服务每 5 秒轮询主机一次并向 W32time 提供时间样本。 W32time 服务大约每隔 30 秒就会抽取一次最新的时间样本并使用它来影响来宾的时钟。 如果来宾已被恢复，或者来宾的时钟比主机时钟慢 5 秒以上，则将激活同步模式。 在 W32time 服务正常运行的情况下，后一种情况应永远不会发生。
 

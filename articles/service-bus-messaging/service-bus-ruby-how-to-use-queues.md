@@ -14,28 +14,28 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 6c42fbffd0b4569a9b04dede94061e716c48ecf1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 48f60b7c07cc16b4d9994d5644069fdcb4881e0a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786019"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65991883"
 ---
 # <a name="how-to-use-service-bus-queues-with-ruby"></a>如何通过 Ruby 使用服务总线队列
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-在本教程中，您将学习如何创建 Ruby 应用程序将消息发送到和从服务总线队列接收消息。 相关示例通过 Ruby 编写并使用 Azure gem。
+本教程介绍如何创建 Ruby 应用程序，以便向服务总线队列发送消息以及从中接收消息。 相关示例通过 Ruby 编写并使用 Azure gem。
 
 ## <a name="prerequisites"></a>必备组件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照步骤[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文。
-    1. 阅读快速**概述**的服务总线**队列**。 
-    2. 创建服务总线**命名空间**。 
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文中的步骤操作。
+    1. 阅读服务总线**队列**的快速**概述**。 
+    2. 创建一个服务总线**命名空间**。 
     3. 获取**连接字符串**。 
 
         > [!NOTE]
-        > 您将创建**队列**本教程中使用 Ruby 在服务总线命名空间中。 
+        > 在本教程中，需使用 Ruby 在服务总线命名空间中创建一个**队列**。 
 
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
@@ -51,7 +51,7 @@ rescue
 end
 ```
 
-还可以通过其他选项传递 Azure::ServiceBus::Queue 对象，从而能够替代默认队列设置，如消息生存时间或最大队列大小。 以下示例演示如何将最大队列大小设置为 5 GB，将生存时间设置为 1 分钟：
+还可以通过其他选项传递 Azure::ServiceBus::Queue 对象，从而能够替代默认队列设置，如消息生存时间或最大队列大小  。 以下示例演示如何将最大队列大小设置为 5 GB，将生存时间设置为 1 分钟：
 
 ```ruby
 queue = Azure::ServiceBus::Queue.new("test-queue")
@@ -62,7 +62,7 @@ queue = azure_service_bus_service.create_queue(queue)
 ```
 
 ## <a name="how-to-send-messages-to-a-queue"></a>如何向队列发送消息
-要向服务总线队列发送消息，应用程序需对 Azure::ServiceBusService 对象调用 `send_queue_message()` 方法。 发往服务总线队列的消息以及从服务总线队列接收的消息是 Azure::ServiceBus::BrokeredMessage 对象，它们具有一组标准属性（如 `label` 和 `time_to_live`）、一个用于保存自定义的特定于应用程序的属性的字典和一段任意应用程序数据的正文。 应用程序可以通过将字符串值作为消息传送设置消息正文，任何必需的标准属性会用默认值填充。
+要向服务总线队列发送消息，应用程序需对 Azure::ServiceBusService 对象调用 `send_queue_message()` 方法  。 发往服务总线队列的消息以及从服务总线队列接收的消息是 Azure::ServiceBus::BrokeredMessage 对象，它们具有一组标准属性（如 `label` 和 `time_to_live`）、一个用于保存自定义的特定于应用程序的属性的字典和一段任意应用程序数据的正文  。 应用程序可以通过将字符串值作为消息传送设置消息正文，任何必需的标准属性会用默认值填充。
 
 以下示例演示如何使用 `send_queue_message()` 向名为 `test-queue` 的队列发送一条测试消息：
 
@@ -75,13 +75,13 @@ azure_service_bus_service.send_queue_message("test-queue", message)
 服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 此队列大小是在创建时定义的，上限为 5 GB。
 
 ## <a name="how-to-receive-messages-from-a-queue"></a>如何从队列接收消息
-对 Azure::ServiceBusService 对象使用 `receive_queue_message()` 方法可从队列接收消息。 默认情况下，消息在被读取的同时会被锁定，从而无法从队列中删除。 但是，可以通过将 `:peek_lock` 选项设置为“false”，在读取消息时将其从队列中删除。
+对 Azure::ServiceBusService 对象使用 `receive_queue_message()` 方法可从队列接收消息  。 默认情况下，消息在被读取的同时会被锁定，从而无法从队列中删除。 但是，可以通过将 `:peek_lock` 选项设置为“false”，在读取消息时将其从队列中删除  。
 
 默认行为使读取和删除变成一个两阶段操作，从而也有可能支持不允许遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序处理完该消息（或将它可靠地存储起来留待将来处理）后，通过调用 `delete_queue_message()` 方法并提供要删除的消息作为参数，完成接收过程的第二阶段。 `delete_queue_message()` 方法会将消息标记为已使用，并从队列中将其删除。
 
 如果`:peek_lock`参数设置为**false**、 读取和删除消息将是最简单的模式，并且最适合于在其中应用程序可以容忍不处理消息的出现故障时的方案。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线已将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
 
-以下示例演示如何使用 `receive_queue_message()` 接收和处理消息。 该示例先通过将 `:peek_lock` 设置为“false”接收并删除一条消息，然后再接收另一条消息，最后使用 `delete_queue_message()` 删除该消息：
+以下示例演示如何使用 `receive_queue_message()` 接收和处理消息。 该示例先通过将 `:peek_lock` 设置为“false”接收并删除一条消息，然后再接收另一条消息，最后使用 `delete_queue_message()` 删除该消息  ：
 
 ```ruby
 message = azure_service_bus_service.receive_queue_message("test-queue",
@@ -91,11 +91,14 @@ azure_service_bus_service.delete_queue_message(message)
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则它可以对 Azure::ServiceBusService 对象调用 `unlock_queue_message()` 方法。 此调用会导致服务总线解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
+服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则它可以对 Azure::ServiceBusService 对象调用 `unlock_queue_message()` 方法  。 此调用会导致服务总线解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
 
 还存在与队列中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁该消息并使它可再次被接收。
 
-如果应用程序在处理消息之后，但在调用 `delete_queue_message()` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此过程通常称作“至少处理一次”，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可通过使用消息的 `message_id` 属性实现，该属性在多次传送尝试中保持不变。
+如果应用程序在处理消息之后，但在调用 `delete_queue_message()` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此过程通常称作“至少处理一次”，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送  。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可通过使用消息的 `message_id` 属性实现，该属性在多次传送尝试中保持不变。
+
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 现在，已了解有关 Service Bus 队列的基础知识，单击下面的链接可了解更多信息。

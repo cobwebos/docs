@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: d227e3618c138e6661cc4be7caa2b9a3ba1af3f1
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.author: christoc
+ms.reviewer: xpouyat; juliako
+ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523828"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69016716"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高级媒体编码器高级工作流教程
 ## <a name="overview"></a>概述
@@ -760,7 +761,7 @@ Hello world 日志输出
 
 记录生成的剪辑列表
 
-执行测试回合以查看视频和音频流剪辑的情况。 但是，随着你使用不同的值针对修剪点执行多个测试回合，会发现并未考虑到这些因素！ 这是因为设计器不同于 Azure 运行时，不会在每次执行时重写剪辑列表 XML。 这意味着，只有在第一次设置和输出点时，将导致 xml 转换，所有其他情况下，临界子句 (如果 (`clipListXML.indexOf("<trim>") == -1`)) 将阻止工作流时已包含一个存在添加另一个修剪元素。
+执行测试回合以查看视频和音频流剪辑的情况。 但是，随着你使用不同的值针对修剪点执行多个测试回合，会发现并未考虑到这些因素！ 这是因为设计器不同于 Azure 运行时，不会在每次执行时重写剪辑列表 XML。 这意味着, 只有首次设置了 in 和 out 点时, 才会导致 xml 转换, 而在其他所有情况下, 我们的 guard 子句 (if (`clipListXML.indexOf("<trim>") == -1`)) 将阻止工作流添加另一个修整元素 (如果已存在)。
 
 为了让工作流方便在本地测试，我们最好添加一些监护代码，用于检查是否已经存在修剪元素。 如果是的话，我们可以在继续之前，将 XML 修改为新的值来将它删除。 不要使用纯文本字符串操作，通过实际的 XML 对象模型分析执行此操作可能更安全。
 

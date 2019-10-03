@@ -3,8 +3,8 @@ title: Azure 的预留软件成本 | Microsoft Docs
 description: 了解 Azure 虚拟机预留实例成本中不包含哪些软件计量。
 services: billing
 documentationcenter: ''
-author: manish-shukla01
-manager: manshuk
+author: yashar
+manager: yashar
 editor: ''
 tags: billing
 ms.service: billing
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 340cba65a1faac247678cd187f106157ba566f3e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e74765ec09fb9cd2d219ceb3d784b4030c83e028
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918716"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719641"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure 虚拟机预留实例未包含的软件成本
 
-如果没有 Azure 混合权益保留的虚拟机实例上，你进行计费的下一节中列出的软件计量。
+虚拟机预留实例和 SQL 保留容量折扣仅适用于基础结构成本，而不适用于软件成本。 如果你使用 Windows VM，并且对虚拟机预留实例没有 Azure 混合权益，则会针对以下部分中列出的软件计量向你收取费用。 对于 SQL PaaS 部署，如果未选择 Azure 混合权益，则将继续使用单独的计量器收取 IP 成本。
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>预留成本中未包括的 Windows 软件计量
 
@@ -69,15 +69,15 @@ ms.locfileid: "58918716"
 可以通过 Azure RateCard API 来获取上述每个计量的成本。 有关如何获取 azure 计量的费率的信息，请参阅[获取 Azure 订阅中使用的资源的价格和元数据信息](/previous-versions/azure/reference/mt219004(v=azure.100))。
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关 Azure 的保留项的详细信息，请参阅以下文章：
+若要详细了解 Azure 预留，请参阅以下文章：
 
-- [什么是 Azure 的保留项？](billing-save-compute-costs-reservations.md)
+- [什么是 Azure 预留？](billing-save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [管理 Azure 的保留项](billing-manage-reserved-vm-instance.md)
+- [管理 Azure 预留](billing-manage-reserved-vm-instance.md)
 - [了解预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
 - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

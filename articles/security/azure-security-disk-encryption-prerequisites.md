@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1da35b55a458ad73689f51c49e73855fd33ee45f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bd51e70122a5457c8dcf1bd8f2061fe25943e87f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496244"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224511"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure 磁盘加密先决条件
 
@@ -26,28 +26,83 @@ ms.locfileid: "59496244"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="bkmk_OSs"></a>支持的操作系统
-以下操作系统支持 Azure 磁盘加密：
+## <a name="supported-vm-sizes"></a>支持的 VM 大小
 
-- Windows Server 版本：Windows Server 2008 R2、 Windows Server 2012、 Windows Server 2012 R2、 Windows Server 2016、 Windows Server 2012 R2 Server Core 和 Windows Server 2016 Server core。
-对于 Windows Server 2008 R2，必须安装 .NET Framework 4.5 才能在 Azure 中启用加密。 从 Windows 更新的可选更新适用于 Windows Server 2008 R2 的基于 x64 的系统 (KB2901983) 的 Microsoft.NET Framework 4.5.2 中安装它。
-- Windows Server 2012 R2 Core 和 Windows Server 2016 Core 支持 Azure 磁盘加密后 bdehdcfg 组件安装在 VM 上。
-- Windows 客户端版本：Windows 8 客户端和 Windows 10 客户端。
-- 仅基于特定 Azure 库的 Linux 服务器分发和版本支持 Azure 磁盘加密。 有关当前受支持版本的列表，请参阅 [Azure 磁盘加密常见问题解答](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)。 请参阅[认可的 Azure 上的 Linux 分发版](../virtual-machines/linux/endorsed-distros.md)有关由 Microsoft 和所支持的映像列表[哪些 Linux 分发版 does Azure 磁盘加密支持？](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)中[Azure磁盘加密常见问题解答](azure-security-disk-encryption-faq.md)基于认可的映像分发版上的当前支持版本的列表。
+Azure 磁盘加密不适用于[基本的 A 系列 vm](https://azure.microsoft.com/pricing/details/virtual-machines/series/)。 Azure 磁盘加密在满足以下最低内存要求的其他虚拟机上可用：
+
+| 虚拟机 | 最低内存要求 |
+|--|--|
+| Windows VM | 2 GB |
+| Linux VM（仅当加密数据卷时）| 2 GB |
+| Linux VM（加密数据卷和 OS 卷，并且根 (/) 文件系统占用的空间为 4GB 或更少） | 8 GB |
+| Linux VM（加密数据卷和 OS 卷，并且根 (/) 文件系统占用的空间大于 4GB） | 根文件系统空间占用量 * 2。 例如，如果根文件系统的空间占用量为 16 GB，则至少需要 32GB RAM |
+
+在 Linux 虚拟机上完成 OS 磁盘加密过程后，可将 VM 配置为以更少的内存运行。 
+
+> [!NOTE]
+> Linux OS 磁盘加密不适用于[虚拟机规模集](../virtual-machine-scale-sets/index.yml)。
+
+Azure 磁盘加密还可用于使用高级存储的 VM。 
+
+## <a name="supported-operating-systems"></a>支持的操作系统
+
+### <a name="windows"></a>Windows
+
+- Windows 客户端：Windows 8 和更高版本。
+- Windows Server：Windows Server 2008 R2 和更高版本。  
+ 
+> [!NOTE]
+> Windows Server 2008 R2 要求安装 .NET Framework 4.5 以支持加密；请从 Windows 更新安装此组件，并安装适用于 Windows Server 2008 R2 基于 x64 的系统的 Microsoft .NET Framework 4.5.2 可选更新 ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983))。  
+>  
+> Windows Server 2012 R2 Core 和 Windows Server 2016 Core 要求在 VM 安装 bdehdcfg 组件以支持加密。
+
+
+### <a name="linux"></a>Linux 
+
+有一部分 [Azure 认可的 Linux 分发版](../virtual-machines/linux/endorsed-distros.md)（其本身是所有可能的 Linux 服务器分发版的一部分）支持 Azure 磁盘加密。
+
+![支持 Azure 磁盘加密的 Linux 服务器分发版文氏图](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
+
+未经 Azure 认可的 Linux 服务器分发版不支持 Azure 磁盘加密，而在已认可的分发版中，只有以下分发版和版本支持 Azure 磁盘加密：
+
+| Linux 分发版 | Version | 支持加密的卷类型|
+| --- | --- |--- |
+| Ubuntu | 18.04| OS 和数据磁盘 |
+| Ubuntu | 16.04| OS 和数据磁盘 |
+| Ubuntu | 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS 和数据磁盘 |
+| RHEL | 7.6 | OS 和数据磁盘（参阅下面的注释） |
+| RHEL | 7.5 | OS 和数据磁盘（参阅下面的注释） |
+| RHEL | 7.4 | OS 和数据磁盘（参阅下面的注释） |
+| RHEL | 7.3 | OS 和数据磁盘（参阅下面的注释） |
+| RHEL | 7.2 | OS 和数据磁盘（参阅下面的注释） |
+| RHEL | 6.8 | 数据磁盘（参阅下面的注释） |
+| RHEL | 6.7 | 数据磁盘（参阅下面的注释） |
+| CentOS | 7.6 | OS 和数据磁盘 |
+| CentOS | 7.5 | OS 和数据磁盘 |
+| CentOS | 7.4 | OS 和数据磁盘 |
+| CentOS | 7.3 | OS 和数据磁盘 |
+| CentOS | 7.2n | OS 和数据磁盘 |
+| CentOS | 6.8 | 数据磁盘 |
+| openSUSE | 42.3 | 数据磁盘 |
+| SLES | 12-SP4 | 数据磁盘 |
+| SLES | 12-SP3 | 数据磁盘 |
+
+> [!NOTE]
+> 新的 ADE 实现支持 RHEL OS 和 RHEL7 即用即付映像的数据磁盘。 ADE 目前不支持 RHEL 自带订阅 (BYOS) 映像。 有关详细信息，请参阅适用于[Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)。
+
 - Azure 磁盘加密要求 Key Vault 和 VM 位于同一 Azure 区域和订阅。 在不同区域中配置资源会导致启用 Azure 磁盘加密功能失败。
 
-## <a name="bkmk_LinuxPrereq"></a>适用于 Linux IaaS VM 的其他先决条件 
+#### <a name="additional-prerequisites-for-linux-iaas-vms"></a>适用于 Linux IaaS VM 的其他先决条件 
 
-- 要在[支持的映像](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)中启用 OS 磁盘加密，适用于 Linux 的 Azure 磁盘加密要求 VM 上有 7 GB RAM。 完成 OS 磁盘加密过程后，可将 VM 配置为以更少的内存运行。
-- Azure 磁盘加密要求 vfat 模块在系统上显示。  删除或禁用此模块的默认映像将阻止系统无法读取密钥的卷并获取解锁的磁盘上后续的重新启动所需的密钥。 从系统中删除 vfat 模块的系统强化步骤不使用 Azure 磁盘加密兼容。 
+- Azure 磁盘加密要求系统上存在 dm-dm-crypt 和 vfat 模块。 在默认映像中删除或禁用 vfat 会阻止系统读取密钥卷，以及在后续重新启动时获取用于解锁磁盘的密钥。 从系统中删除 vfat 模块的系统强化步骤与 Azure 磁盘加密不兼容。 
 - 在启用加密之前，要加密的数据磁盘需在 /etc/fstab 中正确列出。 为此条目使用永久性块设备名，因为每次重新启动后，不能依赖于使用“/dev/sdX”格式的设备名来与同一磁盘相关联，尤其是应用加密后。 有关此行为的更多详细信息，请参阅：[排查 Linux VM 设备名称更改问题](../virtual-machines/linux/troubleshoot-device-names-problems.md)
 - 确保正确配置用于装载的 /etc/fstab 设置。 若要配置这些设置，请运行 mount -a 命令，或重新启动 VM 并以这种方法触发重新装载。 装载完成后，检查 lsblk 命令的输出，以验证驱动器是否仍已装载。 
   - 如果在启用加密之前 /etc/fstab 文件未正确装载该驱动器，则 Azure 磁盘加密无法将其正确装载。
   - 在加密过程中，Azure 磁盘加密进程会将装载信息移出 /etc/fstab，并移入其自身的配置文件中。 数据驱动器加密完成后，如果看到 /etc/fstab 中缺少条目，请不要担心。
-  -  重新启动后，Azure 磁盘加密进程需要花费一段时间来装载新加密的磁盘。 重新启动后，这些磁盘并不是立即可用。 该进程需要一段时间来启动、解锁然后装载加密的驱动器，然后，这些驱动器才可供其他进程访问。 重新启动后，此进程可能需要一分钟以上的时间，具体时间取决于系统特征。
+  - 在开始加密之前，请务必停止可能正在向装载的数据磁盘写入数据的所有服务和进程并将其禁用，使其不会在重新引导后自动重启。 这可能会使文件在这些分区上保持打开状态，从而阻止加密过程重新装载这些分区，导致加密失败。 
+  - 重新启动后，Azure 磁盘加密进程需要花费一段时间来装载新加密的磁盘。 重新启动后，这些磁盘并不是立即可用。 该进程需要一段时间来启动、解锁然后装载加密的驱动器，然后，这些驱动器才可供其他进程访问。 重新启动后，此进程可能需要一分钟以上的时间，具体时间取决于系统特征。
 
 在[此脚本文件的第 244-248 行](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248)可以找到用于装载数据磁盘和创建所需 /etc/fstab 条目的命令示例。 
-
 
 ## <a name="bkmk_GPO"></a>网络和组策略
 
@@ -59,11 +114,11 @@ ms.locfileid: "59496244"
 
 
 **组策略：**
- - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关“在没有兼容 TPM 的情况下允许 BitLocker”的组策略信息，请参阅 [BitLocker 组策略参考](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#a-href-idbkmk-unlockpol1arequire-additional-authentication-at-startup)。
+ - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关“在没有兼容 TPM 的情况下允许 BitLocker”的组策略信息，请参阅 [BitLocker 组策略参考](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
 
--  具有自定义组策略的已加入域虚拟机上的 BitLocker 策略必须包含以下设置：[配置 bitlocker 恢复信息的用户存储 -> 允许 256 位恢复密钥](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密将会失败。 在没有正确策略设置的计算机上，应用新策略，强制更新新策略 (gpupdate.exe /force)，然后可能需要重启。
+-  具有自定义组策略的已加入域虚拟机上的 BitLocker 策略必须包含以下设置：[配置 BitLocker 恢复信息的用户存储 -> 允许 256 位恢复密钥](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密将会失败。 在没有正确策略设置的计算机上，应用新策略，强制更新新策略 (gpupdate.exe /force)，然后可能需要重启。
 
-- 如果域级组策略阻止 Bitlocker 使用 AES-CBC 算法，azure 磁盘加密将失败。
+- 如果域级组策略阻止了 BitLocker 使用的 AES-CBC 算法，Azure 磁盘加密将会失败。
 
 
 ## <a name="bkmk_PSH"></a>Azure PowerShell
@@ -72,16 +127,16 @@ ms.locfileid: "59496244"
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>安装在本地计算机上使用的 Azure PowerShell（可选）： 
 1. 遵照适用于操作系统的链接中的说明，然后继续完成下面的剩余步骤。      
    - [安装和配置 Azure PowerShell](/powershell/azure/install-az-ps)。 
-     - 安装 PowerShellGet，Azure PowerShell，并加载 Az 模块。 
+     - 安装 PowerShellGet、Azure PowerShell，并加载 Az 模块。 
 
-2. 验证已安装的 Az 模块版本。 如果需要，请[更新 Azure PowerShell 模块](/powershell/azure/install-az-ps#update-the-azure-powershell-module)。
+2. 验证安装的 Az 模块版本。 如果需要，请[更新 Azure PowerShell 模块](/powershell/azure/install-az-ps#update-the-azure-powershell-module)。
     建议使用最新的 Az 模块版本。
 
      ```powershell
      Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
      ```
 
-3. 登录到 Azure 中使用[Connect AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet。
+3. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 登录到 Azure。
      
      ```azurepowershell-interactive
      Connect-AzAccount
@@ -126,7 +181,7 @@ ms.locfileid: "59496244"
 
 
 ## <a name="prerequisite-workflow-for-key-vault"></a>Key Vault 的先决条件工作流
-如果你已熟悉进行 Azure 磁盘加密时的 Key Vault 和 Azure AD 先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关使用先决条件脚本的详细信息，请参阅[加密 VM 快速入门](quick-encrypt-vm-powershell.md)和 [Azure 磁盘加密附录](azure-security-disk-encryption-appendix.md#bkmk_prereq-script)。 
+如果你已熟悉进行 Azure 磁盘加密时的 Key Vault 和 Azure AD 先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关使用先决条件脚本的详细信息，请参阅[加密 VM 快速入门](azure-disk-encryption-linux-powershell-quickstart.md)和 [Azure 磁盘加密附录](azure-security-disk-encryption-appendix.md#bkmk_prereq-script)。 
 
 1. 如果需要，请创建资源组。
 2. 创建密钥保管库。 
@@ -145,17 +200,17 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
 
 ### <a name="bkmk_KVPSH"></a>使用 PowerShell 创建 Key Vault
 
-可以使用 Azure PowerShell 创建 key vault[新建 AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault) cmdlet。 有关密钥保管库的更多 cmdlet，请参阅[Az.KeyVault](/powershell/module/az.keyvault/)。 
+可以在 Azure PowerShell 中使用 [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault) cmdlet 创建 Key Vault。 有关适用于 Key Vault 的更多 cmdlet，请参阅 [Az.KeyVault](/powershell/module/az.keyvault/)。 
 
 1. 根据需要[连接到 Azure 订阅](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH)。 
-2. 如果需要创建新的资源组，使用[新建 AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup)。  若要列出数据中心位置，请使用[Get AzLocation](/powershell/module/az.resources/get-azlocation)。 
+2. 根据需要，使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 创建新资源组。  若要列出数据中心位置，请使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation)。 
      
      ```azurepowershell-interactive
      # Get-AzLocation 
      New-AzResourceGroup –Name 'MyKeyVaultResourceGroup' –Location 'East US'
      ```
 
-3. 创建新的密钥保管库使用[新建 AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault)
+3. 使用 [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault) 创建新的 Key Vault
     
       ```azurepowershell-interactive
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
@@ -195,7 +250,7 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
 Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些密钥和机密可供 VM 用来启动和解密卷。 对 Key Vault 启用磁盘加密，否则部署将会失败。  
 
 ### <a name="bkmk_KVperPSH"></a>使用 Azure PowerShell 设置 Key Vault 高级访问策略
- 使用密钥保管库 PowerShell cmdlet[集 AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)启用磁盘加密的密钥保管库。
+ 使用 Key Vault PowerShell cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) 为 Key Vault 启用磁盘加密。
 
   - **为磁盘加密启用 Key Vault：** 若要启用 Azure 磁盘加密，需要使用 EnabledForDiskEncryption。
       
@@ -241,15 +296,15 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 1. 选择 Key Vault，转到“访问策略”，然后选择“单击此处可显示高级访问策略”。
 2. 选中标有“启用对 Azure 磁盘加密的访问以进行卷加密”的框。
 3. 根据需要选择“启用对 Azure 虚拟机的访问以进行部署”和/或“启用对 Azure 资源管理器的访问以进行模板部署”。 
-4. 单击“ **保存**”。
+4. 单击“保存”。
 
-![Azure Key Vault 高级访问策略](./media/azure-security-disk-encryption/keyvault-portal-fig4.png)
+    ![Azure Key Vault 高级访问策略](./media/azure-security-disk-encryption/keyvault-portal-fig4.png)
 
 
 ## <a name="bkmk_KEK"></a>设置密钥加密密钥（可选）
-若要使用密钥加密密钥 (KEK) 来为加密密钥提供附加的安全层，请将 KEK 添加到 Key Vault。 使用[添加 AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 在密钥保管库中创建的密钥加密密钥。 还可从本地密钥管理 HSM 导入 KEK。 有关详细信息，请参阅 [Key Vault 文档](../key-vault/key-vault-hsm-protected-keys.md)。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。
+若要使用密钥加密密钥 (KEK) 来为加密密钥提供附加的安全层，请将 KEK 添加到 Key Vault。 使用 [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 在 Key Vault 中创建密钥加密密钥。 还可从本地密钥管理 HSM 导入 KEK。 有关详细信息，请参阅 [Key Vault 文档](../key-vault/key-vault-hsm-protected-keys.md)。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。
 
-* 当生成的密钥，使用 RSA 密钥类型。 Azure 磁盘加密尚不支持使用椭圆曲线密钥。
+* 生成密钥时，请使用 RSA 密钥类型。 Azure 磁盘加密暂不支持使用椭圆曲线密钥。
 
 * Key Vault 机密和 KEK URL 必须已设置版本。 Azure 会强制实施这项版本控制限制。 有关有效的机密和 KEK URL，请参阅以下示例：
 
@@ -287,7 +342,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
      # Fill in 'MyKeyEncryptionKey' with your value.
      
      $keyEncryptionKeyName = 'MyKeyEncryptionKey';
-     Add-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName -Destination 'Software';
+     Add-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName -Destination 'HSM';
      $keyEncryptionKeyUrl = (Get-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName).Key.kid;
      
  #Step 4: Encrypt the disks of an existing IaaS VM

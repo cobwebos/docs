@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务流式传输视频文件 - .NET | Microsoft Docs
-description: 按照此快速入门的步骤，创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
+description: 按照本教程的步骤，创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,23 +9,23 @@ editor: ''
 keywords: Azure 媒体服务, 流式传输
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/20/2019
+ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3a50d78645630e499b11f012da122b12b026ae6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7f997865ba33a51c3e3aa7a4c7e990037be9e534
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857855"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637334"
 ---
-# <a name="quickstart-stream-video-files---net"></a>快速入门：流式处理视频文件 - .NET
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - .NET
 
-本快速入门展示了使用 Azure 媒体服务在各种浏览器和设备上对视频进行编码和流式处理有多轻松。 可以使用 HTTPS、URL、SAS URL 或位于 Azure Blob 存储中的文件路径来指定输入内容。
+本教程展示了使用 Azure 媒体服务在各种浏览器和设备上对视频进行编码和流式处理有多轻松。 可以使用 HTTPS、URL、SAS URL 或位于 Azure Blob 存储中的文件路径来指定输入内容。
 本主题中的示例对可通过 HTTPS URL 访问的内容进行编码。 请注意，目前，AMS v3 不支持基于 HTTPS URL 的块传输编码。
 
-完成本快速入门后即可对视频进行流式处理。  
+完成本教程后即可对视频进行流式处理。  
 
 ![播放视频](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -65,8 +65,8 @@ ms.locfileid: "57857855"
 
 运行应用时，显示使用不同协议播放视频的 URL。 
 
-1. 按 Ctrl+F5 运行 EncodeAndStreamFiles 应用程序。
-2. 选择 Apple 的“HLS”协议（以 manifest(format=m3u8-aapl) 结束），并从控制台复制流式处理 URL。
+1. 按 Ctrl+F5 运行 EncodeAndStreamFiles 应用程序  。
+2. 选择 Apple 的“HLS”协议（以 manifest(format=m3u8-aapl) 结束），并从控制台复制流式处理 URL   。
 
 ![输出](./media/stream-files-tutorial-with-api/output.png)
 
@@ -80,16 +80,16 @@ ms.locfileid: "57857855"
 > 如果播放器在 Https 站点上进行托管，请确保将 URL 更新为“https”。
 
 1. 打开 Web 浏览器并导航到 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在“URL:”框中，粘贴运行应用程序时获取的某个流式处理 URL 值。 
+2. 在“URL:”框中，粘贴运行应用程序时获取的某个流式处理 URL 值  。 
  
      可以粘贴 HLS、Dash 或 Smooth 格式的 URL，Azure Media Player将切换到适当的流协议，以便在你的设备上自动播放。
-3. 按“更新播放器”。
+3. 按“更新播放器”  。
 
 Azure Media Player 可用于测试，但不可在生产环境中使用。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要你的资源组中的任何一个资源（包括使用本快速入门创建的媒体服务和存储帐户），请删除该资源组。
+如果不再需要你的资源组中的任何一个资源（包括为本教程创建的媒体服务和存储帐户），请删除该资源组。
 
 执行以下 CLI 命令：
 

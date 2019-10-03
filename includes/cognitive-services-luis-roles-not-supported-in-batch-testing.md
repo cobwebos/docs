@@ -11,13 +11,13 @@ ms.custom: include file
 ms.date: 03/29/2019
 ms.author: diberry
 ms.openlocfilehash: edfbd8a803404b32be0624fd14165d25061d14b7
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528503"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173260"
 ---
-## <a name="roles-in-batch-testing"></a>在 batch 测试的角色
+## <a name="roles-in-batch-testing"></a>批处理测试中的角色
 
 > [!CAUTION]
-> 在 batch 测试不支持实体角色。
+> 批处理测试中不支持实体角色。

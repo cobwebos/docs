@@ -9,11 +9,11 @@ ms.date: 1/15/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 6116212ae81eb334386eebab057af967309370d6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451166"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478532"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>使用 Azure 导入/导出工具（经典部署模型）
 

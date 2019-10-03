@@ -1,27 +1,24 @@
 ---
 title: Azure Durable Functions 单元测试
 description: 了解如何进行 Durable Functions 单元测试。
-services: functions
-author: kadimitr
-manager: jeconnoc
-keywords: ''
+author: ggailey777
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: kadimitr
-ms.openlocfilehash: 69cf91f1448e36353f83de7a271abb3b53858bb0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: glenga
+ms.openlocfilehash: 0080365853e7a9c74d3ba0e5efb06ce5a3af2a21
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094069"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967102"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions 单元测试
 
 单元测试是现代软件开发实践中的重要组成部分。 单元测试可验证业务逻辑行为，防止将来引入无法察觉的中断性变更。 Durable Functions 的复杂性很容易增大，因此，引入单元测试有助于避免中断性变更。 以下部分介绍如何对三种函数类型执行单元测试 - 业务流程客户端、业务流程协调程序和活动函数。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 学习本文中的示例需要了解以下概念和框架：
 
@@ -91,11 +88,11 @@ ms.locfileid: "58094069"
         });
 ```
 
-另外还要模拟 `TraceWriter`：
+另外还要模拟 `ILogger`：
 
 ```csharp
-    // Mock TraceWriter
-    var traceWriterMock = new Mock<TraceWriter>(TraceLevel.Info);
+    // Mock ILogger
+    var loggerMock = new Mock<ILogger>();
 
 ```  
 
@@ -111,7 +108,7 @@ ms.locfileid: "58094069"
         },
         durableOrchestrationClientBaseMock.Object,
         functionName,
-        traceWriterMock.Object);
+        loggerMock.Object);
  ```
 
  最后一步是将输出与预期值进行比较：

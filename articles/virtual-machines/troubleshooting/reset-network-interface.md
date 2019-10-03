@@ -4,7 +4,7 @@ description: 介绍如何为 Azure Windows VM 重置网络接口
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 3a8e005f8678deef9fc4aebd2d620619fe6074bc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: afb8335d3206a76b8f9bc47733e9816126e80af0
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982873"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058463"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>如何为 Azure Windows VM 重置网络接口 
 
@@ -84,7 +84,7 @@ ms.locfileid: "55982873"
 4.  选择“IP 地址”。
 5.  如果“专用 IP 分配”不是“静态”，则将其更改为“静态”。
 6.  将“IP 地址”更改为子网中可用的其他 IP 地址。
-7.  选择“保存”。
+7.  选择**保存**。
 8.  虚拟机将重新启动以将新的 NIC 初始化到系统。
 9.  尝试通过远程桌面协议连接到计算机。 如果成功，可以选择将专用 IP 地址重新还原为原始 IP 地址。  
 

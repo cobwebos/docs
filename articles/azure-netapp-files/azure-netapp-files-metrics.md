@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 08/07/2019
 ms.author: b-juche
-ms.openlocfilehash: 1563b60ef26ac5e4d40f45095d0109dd9dd71570
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 7cf382f511d2ba8452d77bf207f36b749cb31e94
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672570"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848793"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp 文件的指标
 
@@ -27,23 +27,42 @@ Azure NetApp 文件提供有关已分配的存储、实际存储使用情况、�
 
 ## <a name="capacity_pools"></a>容量池的使用情况指标
 
-- *卷池分配大小*  
-    这是预配的容量池的大小 (GiB)。  
+<!-- 
+- *Volume pool allocated size*  
+    The size (GiB) of the provisioned capacity pool  
+--> 
 - *卷池已用分配容量*  
-    这是给定容量池中的卷配额总和 (GiB)（即，容量池中卷的预配大小的总和）。 这是创建卷期间选择的大小。  
+    给定容量池中的卷配额 (GiB) 总数 (即容量池中的卷预配大小总计)  
+    这是创建卷期间选择的大小。  
 - *卷池总逻辑大小*  
-    这是容量池中各个卷已使用的逻辑空间 (GiB) 的总和。  
-- *卷池总快照大小*  
-    这是快照使用的增量逻辑空间的总和。  
+    容量池中的所有卷使用的逻辑空间 (GiB) 总数  
+<!-- 
+- *Volume pool total snapshot size*  
+    The total of incremental logical space used by the snapshots  
+-->
 
 ## <a name="volumes"></a>卷的使用情况指标
 
-- *卷分配大小*   
-    这是以 GiB 为单位的预配的卷大小（配额）。  
+<!-- 
+- *Volume allocated size*   
+    The volume size (quota) provisioned in GiB  
+--> 
 - *卷逻辑大小*   
-    这是卷中已使用的总逻辑空间 (GiB)。 此大小包括活动文件系统和快照使用的逻辑空间。  
+    卷中使用的总逻辑空间 (GiB)  
+    此大小包括活动文件系统和快照使用的逻辑空间。  
 - *卷快照大小*   
-    这是卷中的快照使用的增量逻辑空间。  
+   卷中的快照使用的增量逻辑空间  
+
+## <a name="performance-metrics-for-volumes"></a>卷的性能指标
+
+- *AverageReadLatency*   
+    从卷读取的平均时间 (以毫秒为单位)
+- *AverageWriteLatency*   
+    从卷写入的平均时间 (以毫秒为单位)
+- *ReadIops*   
+    每秒读取到卷的次数
+- *WriteIops*   
+    每秒写入卷的次数
 
 ## <a name="next-steps"></a>后续步骤
 

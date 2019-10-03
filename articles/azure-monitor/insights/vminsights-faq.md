@@ -10,39 +10,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: ade12225a470b64278b9d27676ceab768f64d904
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 420ba9d74532095c2d028fef8f549d532e5dfa05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698260"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65522211"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>用于 VM 的 Azure Monitor（预览版）常见问题解答
 本 Microsoft 常见问题解答列出了用于 VM 的 Azure Monitor 的常见问题。 如果对该解决方案还有其他任何问题，请访问[论坛](https://feedback.azure.com/forums/34192--general-feedback)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
 ## <a name="can-i-onboard-to-an-existing-workspace"></a>是否可以载入到现有工作区？
-如果虚拟机已连接到 Log Analytics 工作区，则在载入到用于 VM 的 Azure Monitor 时，可以继续使用该工作区，前提是该工作区位于[此处](vminsights-onboard.md#prerequisites)所列的某个受支持区域中。
+如果虚拟机已连接到 Log Analytics 工作区，则在载入到用于 VM 的 Azure Monitor 时，可以继续使用该工作区，前提是该工作区位于[此处](vminsights-enable-overview.md#prerequisites)所列的某个受支持区域中。
 
 载入时，我们将配置该工作区的性能计数器，使得向该工作区报告数据的所有 VM 都会开始收集此信息，以便在用于 VM 的 Azure Monitor 中进行显示和分析。  因此，你会看到与所选工作区连接的所有 VM 发出的性能数据。  只会为指定载入的 VM 启用“运行状况”和“映射”功能。
 
-有关要启用哪些性能计数器的详细信息，请参阅[载入](vminsights-onboard.md)一文。
+有关启用对哪些性能计数器的详细信息，请参阅我们[启用概述](vminsights-enable-overview.md#performance-counters-enabled)一文。
 
 ## <a name="can-i-onboard-to-a-new-workspace"></a>是否可以载入到新工作区？ 
-如果 VM 当前未连接到现有的 Log Analytics 工作区，则你需要创建一个新工作区来存储数据。  如果通过 Azure 门户为用于 VM 的 Azure Monitor 配置了单个 Azure VM，则系统会自动创建新的默认工作区。
+如果 VM 当前未连接到现有的 Log Analytics 工作区，则你需要创建一个新工作区来存储数据。 如果通过 Azure 门户为用于 VM 的 Azure Monitor 配置了单个 Azure VM，则系统会自动创建新的默认工作区。
 
-如果选择使用基于脚本的方法，请参阅[载入](vminsights-onboard.md)一文中所述的步骤。 
+如果您选择使用基于脚本的方法，在介绍这些步骤[启用 Azure Monitor 的 Vm （预览版） 使用 Azure PowerShell 或 Resource Manager 模板](vminsights-enable-at-scale-powershell.md)一文。 
 
 ## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>如果 VM 已开始向现有工作区报告，我该怎么做？
 如果你已开始从虚拟机收集数据，则可能已将虚拟机配置为向现有的 Log Analytics 工作区报告数据。  只要该工作区在某个受支持区域中，就可以在该现有工作区中启用用于 VM 的 Azure Monitor。  如果使用的工作区不在受支持的区域中，则目前无法载入到用于 VM 的 Azure Monitor。  我们将力求支持更多的区域。
 
 >[!NOTE]
->对于影响到向工作区报告的 VM 的工作区，我们将配置性能计数器，不管你是否选择将这些 VM 载入到用于 VM 的 Azure Monitor。 有关如何为工作区配置性能计数器的详细信息，请参阅我们的[文档](../../azure-monitor/platform/data-sources-performance-counters.md)。 有关为用于 VM 的 Azure Monitor 配置的计数器的信息，请参阅[载入文档](vminsights-onboard.md#performance-counters-enabled)。  
+>对于影响到向工作区报告的 VM 的工作区，我们将配置性能计数器，不管你是否选择将这些 VM 载入到用于 VM 的 Azure Monitor。 有关如何为工作区配置性能计数器的详细信息，请参阅我们的[文档](../../azure-monitor/platform/data-sources-performance-counters.md)。 有关为虚拟机的 Azure Monitor 配置的计数器信息，请访问我们[为 Vm 启用 Azure Monitor](vminsights-enable-overview.md#performance-counters-enabled)一文。  
 
 ## <a name="why-did-my-vm-fail-to-onboard"></a>为何我的 VM 无法载入？
 从 Azure 门户载入 Azure VM 时，将执行以下步骤：
 
 * 创建默认的 Log Analytics 工作区（如果已选择该选项）。
-* 为选定的工作区配置性能计数器。 如果此步骤失败，你会发现，某些性能图表和表不会显示所载入 VM 的数据。 可以运行[此处](vminsights-onboard.md#enable-with-powershell)所述的 PowerShell 脚本来解决此问题。
+* 为选定的工作区配置性能计数器。 如果此步骤失败，你会发现，某些性能图表和表不会显示所载入 VM 的数据。 可以运行[此处](vminsights-enable-at-scale-powershell.md#enable-performance-counters)所述的 PowerShell 脚本来解决此问题。
 * 使用 VM 扩展在 Azure VM 上安装 Log Analytics 代理（如果确定有必要）。  
 * 使用某个扩展在 Azure VM 上安装用于 VM 的 Azure Monitor 映射依赖项代理（如果确定有必要）。  
 * 根据需要配置支持“运行状况”功能的 Azure Monitor 组件，并将 VM 配置为报告运行状况数据。
@@ -70,7 +70,7 @@ ms.locfileid: "59698260"
 不会，Windows 不包含单个处理器和逻辑处理器级别运行状况条件，仅默认监视 CPU 的总使用率，以根据 Azure VM 可用的逻辑 CPU 总数评估 CPU 压力。 
 
 ## <a name="are-all-health-criteria-thresholds-configurable"></a>是否所有运行状况条件阈值均可配置？  
-针对 Windows VM 的运行状况条件的阈值不可修改，因为其运行状况状态已设置为“正在运行”或“可用”。 从[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 查询运行状态时，如果出现以下情况，则会服务或实例的 **LessThan** 或 **GreaterThan** 的 *comparisonOperator* 值，以及阈值 **4**：
+针对 Windows VM 的运行状况条件的阈值不可修改，因为其运行状况状态已设置为“正在运行”或“可用”   。 从[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 查询运行状态时，如果出现以下情况，则会服务或实例的 **LessThan** 或 **GreaterThan** 的 *comparisonOperator* 值，以及阈值 **4**： 
    - DNS 客户端服务运行状况 - 服务未运行。 
    - DHCP 客户端服务运行状况 - 服务未运行。 
    - RPC 服务运行状况 - 服务未运行。 
@@ -80,16 +80,16 @@ ms.locfileid: "59698260"
    - Windows 远程管理服务运行状况 - 服务未运行。 
    - 文件系统错误或损坏 - 逻辑磁盘不可用。
 
-以下 Linux 运行状况条件的阈值不可修改，因为其运行状态已设置为 *true*。 从实体的工作负荷监视 API 查询时，运行状态会显示带有值 **LessThan** 的 *comparisonOperator* 以及阈值 **1**，具体取决于上下文：
+以下 Linux 运行状况条件的阈值不可修改，因为其运行状态已设置为 *true*。 从实体的工作负荷监视 API 查询时，运行状态会显示带有值 **LessThan** 的 *comparisonOperator* 以及阈值 **1**，具体取决于上下文： 
    - 逻辑磁盘状态 - 逻辑磁盘未联机/不可用
    - 磁盘状态 - 磁盘未联机/不可用
    - 网络适配器状态 - 网络适配器已禁用
 
 ## <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>如何修改运行状况功能附带的警报？
-为每个运行状况条件定义的警报规则不会在 Azure 门户中显示。 只能在[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 中启用或禁用运行状况警报规则。 此外，也无法在 Azure 门户中为运行状况警报分配 [Azure Monitor 操作组](../../azure-monitor/platform/action-groups.md)。 只能使用通知设置 API 来配置在任何时候触发运行状况警报时要触发的操作组。 目前，可以针对 VM 分配操作组，以便针对 VM 激发的所有运行状况警报都会触发相同的操作组。 如传统的 Azure 警报不同，每个运行状况警报规则没有单独的操作组概念。 此外，触发运行状况警报时，仅支持配置为提供电子邮件或短信通知的操作组。 
+为每个运行状况条件定义的警报规则不会在 Azure 门户中显示。 只能在[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 中启用或禁用运行状况警报规则。 此外，也无法在 Azure 门户中为运行状况警报分配 [Azure Monitor 操作组](../../azure-monitor/platform/action-groups.md)。 只能使用通知设置 API 来配置在任何时候触发运行状况警报时要触发的操作组。 目前，可以针对 VM 分配操作组，以便针对 VM 激发的所有运行状况警报都会触发相同的操作组  。 如传统的 Azure 警报不同，每个运行状况警报规则没有单独的操作组概念。 此外，触发运行状况警报时，仅支持配置为提供电子邮件或短信通知的操作组。 
 
 ## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>我的 VM 性能图表中未显示某些数据，或未显示任何数据
-如果在磁盘表或某些性能图表中未看到性能数据，则原因可能是未在工作区中配置性能计数器。 若要解决此问题，请运行以下 [PowerShell 脚本](vminsights-onboard.md#enable-with-powershell)。
+如果在磁盘表或某些性能图表中未看到性能数据，则原因可能是未在工作区中配置性能计数器。 若要解决此问题，请运行以下 [PowerShell 脚本](vminsights-enable-at-scale-powershell.md#enable-with-powershell)。
 
 ## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>用于 VM 的 Azure Monitor 映射功能与服务映射有何不同？
 用于 VM 的 Azure Monitor 映射功能基于服务映射，但存在以下差异：
@@ -111,7 +111,7 @@ ms.locfileid: "59698260"
 是，一旦安装依赖项代理，我们就会从 VM 中收集信息，以根据订阅、资源组、虚拟机规模集和云服务显示组。  如果你一直在使用服务映射并创建了计算机组，则也会显示这些组。  如果你为正在查看的工作区创建了计算机组，那么这些组也会显示在组筛选器中。 
 
 ## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>如何查看聚合性能图表中驱动第 95 百分位线条的详细信息？
-默认情况下，列表已经过排序，会显示所选指标的第 95 百分位值最大的 VM，但“可用内存”图表除外，其中显示第 5 百分位值最小的计算机。  单击图表会打开“前 N 项列表”视图，其中已选择相应的指标。
+默认情况下，列表已经过排序，会显示所选指标的第 95 百分位值最大的 VM，但“可用内存”图表除外，其中显示第 5 百分位值最小的计算机。  单击图表会打开“前 N 项列表”视图，其中已选择相应的指标。 
 
 ## <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>“映射”功能如何处理不同 VNet 和子网中的重复 IP？
 如果跨子网和 VNet 复制 VM 或 Azure 虚拟机规模集的 IP 范围，可能导致用于 VM 的 Azure Monitor 映射显示错误的信息。 这是一个已知问题，我们正在研究可改进此体验的选项。
@@ -135,7 +135,7 @@ Azure VM 的概述页基于来宾 VM 中的活动的主机度量值显示图表�
 ## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>如果我使用的是 Log Analytics 免费定价计划，它们有何限制？
 如果已经为 Azure Monitor 配置了使用*免费*定价层的 Log Analytics 工作区，则用于 VM 的 Azure Monitor 的映射功能将仅支持已连接到工作区的五台计算机。 如果已有五台 VM 连接到免费工作区，你断开了其中一台 VM 的连接，然后连接到一台新的 VM，则新的 VM 将不受监视并且不会反映在“映射”页上。  
 
-在这种情况下，在你打开 VM 并从左侧窗格中选择“见解(预览版)”时，甚至在 VM 上安装它后，都将通过“立即尝试”选项向你发出提示。  但是，如果此 VM 未加入到用于 VM 的 Azure Monitor，则不会像通常情况下那样通过选项向你发出提示。 
+在这种情况下，在你打开 VM 并从左侧窗格中选择“见解(预览版)”  时，甚至在 VM 上安装它后，都将通过“立即尝试”  选项向你发出提示。  但是，如果此 VM 未加入到用于 VM 的 Azure Monitor，则不会像通常情况下那样通过选项向你发出提示。 
 
 ## <a name="next-steps"></a>后续步骤
-查看[载入用于 VM 的 Azure Monitor](vminsights-onboard.md)，以了解启用虚拟机监视的要求和方法。
+审阅[启用 Vm 的 Azure Monitor](vminsights-enable-overview.md)了解要求和方法，以启用监视的虚拟机。

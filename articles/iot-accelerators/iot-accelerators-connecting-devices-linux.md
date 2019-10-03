@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: dobett
 ms.openlocfilehash: 91d4eda566c8b534daa10c62637db28ccb01bbb6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628317"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61454483"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>将设备连接到远程监视解决方案加速器 (Linux)
 
@@ -25,7 +25,7 @@ ms.locfileid: "53628317"
 
 如果更喜欢模拟某个设备，请参阅[创建和测试新的模拟设备](iot-accelerators-remote-monitoring-create-simulated-device.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 要完成该操作指南中的步骤，你需要一台运行 Ubuntu 版本 15.04 或更高版本的设备。 继续操作之前，请[设置 Linux 开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)。
 
@@ -37,17 +37,17 @@ ms.locfileid: "53628317"
 
 若要准备项目，请从 GitHub 克隆或下载 [Azure IoT C SDK 存储库](https://github.com/Azure/azure-iot-sdk-c)。
 
-该示例位于 samples/solutions/remote_monitoring_client 文件夹中。
+该示例位于 samples/solutions/remote_monitoring_client  文件夹中。
 
-在文本编辑器中打开 samples/solutions/remote_monitoring_client 文件夹中的 remote_monitoring.c 文件。
+在文本编辑器中打开  samples/solutions/remote_monitoring_client 文件夹中的  remote_monitoring.c 文件。
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-application"></a>构建并运行应用程序
 
-以下步骤描述如何使用 CMake 生成客户端应用程序。 远程监视客户端应用程序是在构建 SDK 的过程中构建的。
+以下步骤描述如何使用 CMake  生成客户端应用程序。 远程监视客户端应用程序是在构建 SDK 的过程中构建的。
 
-1. 编辑 remote_monitoring.c 文件，使用本操作指南开头在将设备添加到解决方案加速器时记下的设备连接字符串替换 `<connectionstring>`。
+1. 编辑 remote_monitoring.c  文件，使用本操作指南开头在将设备添加到解决方案加速器时记下的设备连接字符串替换 `<connectionstring>`。
 
 1. 导航到 [Azure IoT C SDK 存储库](https://github.com/Azure/azure-iot-sdk-c)的克隆副本的根目录，然后运行以下命令来生成客户端应用程序：
 

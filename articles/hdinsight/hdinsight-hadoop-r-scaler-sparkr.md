@@ -1,19 +1,19 @@
 ---
 title: 将 ScaleR 和 SparkR 与 Azure HDInsight 配合使用
-description: 将 ScaleR 和 SparkR 与 ML Services on HDInsight 配合使用
-services: hdinsight
+description: 使用 ScaleR 和 SparkR 在 Azure HDInsight 上通过 ML 服务进行数据操作和模型开发
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: c92a55ec1d56b83457167fc2db0bd7897a447852
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
+ms.openlocfilehash: 9fa18550a3c27ce38599b9a0d47abdc38524d9c2
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974839"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077087"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
 
@@ -194,7 +194,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>将航班和天气数据导入 Spark DataFrames
 
-现在，使用 SparkR [read.df()](https://docs.databricks.com/spark/1.6/sparkr/functions/read.df.html#read-df) 函数将天气和航班数据导入 Spark DataFrame。 与其他许多 Spark 方法一样，此函数是延迟执行的，也就是说，它会排入执行队列，但只在需要时才会执行。
+现在，使用 SparkR [read.df()](https://spark.apache.org/docs/latest/api/R/read.df.html) 函数将天气和航班数据导入 Spark DataFrame。 与其他许多 Spark 方法一样，此函数是延迟执行的，也就是说，它会排入执行队列，但只在需要时才会执行。
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -267,7 +267,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>联接天气和航班数据
 
-现在，使用 SparkR [join()](https://docs.databricks.com/spark/1.6/sparkr/functions/join.html#join) 函数根据出发地 AirportID 和日期时间，针对航班数据和天气数据执行左外部联接。 使用外部联接可以保留所有航班数据记录，即使没有匹配的天气数据。 联接后，删除一些多余的列，并重命名保留的列，以删除联接时传入的 DataFrame 前缀。
+现在，使用 SparkR [join()](https://spark.apache.org/docs/latest/api/R/join.html) 函数根据出发地 AirportID 和日期时间，针对航班数据和天气数据执行左外部联接。 使用外部联接可以保留所有航班数据记录，即使没有匹配的天气数据。 联接后，删除一些多余的列，并重命名保留的列，以删除联接时传入的 DataFrame 前缀。
 
 ```
 logmsg('Join airline data with weather at Origin Airport')
@@ -331,7 +331,7 @@ joinedDF5 <- rename(joinedDF4,
 
 ## <a name="save-results-to-csv-for-exchange-with-scaler"></a>将结果保存到 CSV 以便与 ScaleR 交换
 
-需要使用 SparkR 执行的联接操作到此完成。 将最终的 Spark DataFrame“joinedDF5”中的数据保存到 CSV 以便输入到 ScaleR，然后关闭 SparkR 会话。 需要明确告知 SparkR 要在 80 个不同的分区中保存生成的 CSV，以便在 ScaleR 处理过程中实现足够的并行度：
+至此，我们已完成了需要通过 SparkR 执行的联接。 将数据从最终的 Spark DataFrame“joinedDF5”保存到 CSV 以便输入到 ScaleR，并关闭 SparkR 会话。 需要明确告知 SparkR 要在 80 个不同的分区中保存生成的 CSV，以便在 ScaleR 处理过程中实现足够的并行度：
 
 ```
 logmsg('output the joined data from Spark to CSV') 
@@ -529,7 +529,7 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文说明了如何在 Hadoop Spark 中将用于数据处理的 SparkR 与用于模型开发的 ScaleR 结合使用。 此方案要求保留单独的 Spark 会话，一次只运行一个会话，并通过 CSV 文件交换数据。 尽管此过程现已相当简单直接，但在将来的 ML Services 版本中还会得到进一步简化，因为到时 SparkR 和 ScaleR 可以共享 Spark 会话，因而也能共享 Spark DataFrame。
 
@@ -537,9 +537,7 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 - 有关使用 Apache Spark 上 ML Server 的详细信息，请参阅[入门指南](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)。
 
-- 有关 ML Server 的常规信息，请参阅 [R 入门](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node)一文。
-
-- 有关 HDInsight 上的 ML Services 的信息，请参阅 [HDInsight 上的 ML Services 概述](r-server/r-server-overview.md)和 [Azure HDInsight 上的 ML Services 入门](r-server/r-server-get-started.md)。
+- 有关 HDInsight 上的 ML 服务的信息，请参阅[hdinsight 上的 Ml 服务概述](r-server/r-server-overview.md)。
 
 有关 SparkR 用法的详细信息，请参阅：
 

@@ -2,26 +2,26 @@
 title: 在 Azure Active Directory B2C 中使用自定义策略管理单一登录会话 | Microsoft Docs
 description: 了解如何使用 Azure AD B2C 中的自定义策略管理 SSO 会话。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d1d76e3ac995d4ee63e36ac3560d20f473d3ea2d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 5ae30b316133b7479b66a69a3467497a7151dbc8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187210"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065383"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的单一登录会话管理
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-使用 Azure Active Directory (Azure AD) B2C 中的单一登录 (SSO) 会话管理，管理员可在用户已通过身份验证之后控制与用户的交互。 例如，管理员可以控制是否显示所选的标识提供者，或是否需要再次输入本地帐户详细信息。 本文介绍如何配置 Azure AD B2C SSO 的设置。
+Azure Active Directory B2C （Azure AD B2C）中的单一登录（SSO）会话管理使管理员能够在用户已经过身份验证后控制与用户的交互。 例如，管理员可以控制是否显示所选的标识提供者，或是否需要再次输入本地帐户详细信息。 本文介绍如何配置 Azure AD B2C SSO 的设置。
 
 SSO 会话管理包括两个部分。 第一个部分处理用户与 Azure AD B2C 之间的直接交互，另一个部分处理用户与外部参与方（例如 Facebook）之间的交互。 Azure AD B2C 不会重写或绕过外部参与方可能保留的 SSO 会话。 通过 Azure AD B2C 转到外部参与方的路由将被“记住”，因此无需重新提示用户选择其社交或企业标识提供者。 最终的 SSO 决策仍由外部参与方做出。
 
@@ -63,7 +63,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 ## <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
-此提供程序用于抑制“选择标识提供者”屏幕。 它通常在针对外部标识提供者（例如 Facebook）配置的技术配置文件中引用。 
+此提供程序用于抑制“选择标识提供者”屏幕。 它通常在针对外部标识提供者（例如 Facebook）配置的技术配置文件中引用。
 
 ```XML
 <TechnicalProfile Id="SM-SocialLogin">
@@ -89,10 +89,10 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 技术配置文件中有两个元数据项：
 
-| Item | 默认值 | 可能的值 | 说明
+| 项 | Default Value | 可能的值 | 描述
 | --- | --- | --- | --- |
-| IncludeSessionIndex | true | true/false | 向提供程序指出应存储会话索引。 |
-| RegisterServiceProviders | true | true/false | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 |
+| IncludeSessionIndex | 真 | true/false | 向提供程序指出应存储会话索引。 |
+| RegisterServiceProviders | 真 | true/false | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 |
 
 使用提供程序存储 SAML 标识提供者会话时，上述项应该均为 false。 使用提供程序存储 B2C SAML 会话时，上述项应为 true 或被省略，因为默认值为 true。 需要 `SessionIndex` 和 `NameID` 才能完成 SAML 会话注销。
 

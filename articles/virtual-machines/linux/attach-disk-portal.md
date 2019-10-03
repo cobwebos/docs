@@ -4,24 +4,23 @@ description: 使用门户将新的或现有数据磁盘附加到 Linux VM。
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: d5dd916f7e4434640db6dae6f8c5a73d1ff2d3e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f63648f63d6154b89f641cdc4d2657e0396a8c66
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60187881"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036365"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
 本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
@@ -35,7 +34,7 @@ ms.locfileid: "60187881"
 
 ## <a name="find-the-virtual-machine"></a>查找虚拟机
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击左侧菜单中的“虚拟机” 。
+2. 单击左侧菜单中的“虚拟机”。
 3. 从列表中选择虚拟机。
 4. 在“虚拟机”页的“概要”中，单击“磁盘”。
    
@@ -57,7 +56,7 @@ ms.locfileid: "60187881"
 
    ![保存新的 Azure 托管磁盘](./media/attach-disk-portal/confirm-create-new-md.png)
 
-5. 在 Azure 创建磁盘并将磁盘附加到虚拟机之后，新磁盘出现在“数据磁盘” 下的虚拟机磁盘设置中。 托管磁盘是顶级资源，因此磁盘会显示在资源组的根部：
+5. 在 Azure 创建磁盘并将磁盘附加到虚拟机之后，新磁盘出现在“数据磁盘”下的虚拟机磁盘设置中。 托管磁盘是顶级资源，因此磁盘会显示在资源组的根部：
 
    ![资源组中的 Azure 托管磁盘](./media/attach-disk-portal/view-md-resource-group.png)
 
@@ -100,6 +99,9 @@ dmesg | grep SCSI
 
 ### <a name="partition-a-new-disk"></a>对新磁盘进行分区
 如果使用包含数据的现有磁盘，请跳到装载磁盘。 如果附加新磁盘，需要对磁盘进行分区。
+
+> [!NOTE]
+> 建议你使用适用于你的发行版的最新版 fdisk 或 parted。
 
 使用 `fdisk` 对磁盘进行分区。 如果磁盘大小为 2 太字节 (TiB) 或更大，则必须使用 GPT 分区；可以使用 `parted` 来执行 GPT 分区。 如果磁盘大小在 2 TiB 以下，则可以使用 MBR 或 GPT 分区。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
 
@@ -222,7 +224,7 @@ sudo vi /etc/fstab
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
-
+完成后，保存 */etc/fstab*文件，然后重新启动系统。
 > [!NOTE]
 > 之后，在不编辑 fstab 的情况下删除数据磁盘可能会导致 VM 无法启动。 大多数分发版都提供 *nofail* 和/或 *nobootwait* fstab 选项。 这些选项使系统在磁盘无法装载的情况下也能启动。 有关这些参数的详细信息，请查阅分发文档。
 > 

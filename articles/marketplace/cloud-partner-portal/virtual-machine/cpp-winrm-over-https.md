@@ -1,31 +1,24 @@
 ---
-title: 针对 Azure 的基于 HTTPS 的 Windows 远程管理 | Microsoft Docs
-description: .
+title: Windows 通过 HTTPS 适用于 Azure 的远程管理 |Azure Marketplace
+description: 介绍如何配置 Azure 托管的、 基于 Windows 的 VM，以便可以使用 PowerShell 远程管理。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 99c41dc010ae589cc43c093646fd1c05c1333f7e
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: fb661a2705d437d1f40ceebcad7e759c2a78540f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265118"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64938231"
 ---
 # <a name="windows-remote-management-over-https"></a>基于 HTTPS 的 Windows 远程管理
 
 本节介绍如何配置 Azure 托管的基于 Windows 的 VM，以便可以使用 PowerShell 对其进行远程管理和部署。  要启用 PowerShell 远程处理，目标 VM 必须公开 Windows 远程管理 (WinRM) HTTPS 终结点。  有关 PowerShell 远程处理的详细信息，请参阅[运行远程命令](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6)。  有关 WinRM 的详细信息，请参阅 [Windows 远程管理](https://docs.microsoft.com/windows/desktop/WinRM/portal)。
 
-如果使用“经典”Azure 方法之一 - Azure 服务管理器门户或弃用的 [Azure 服务管理 API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)) - 来创建 VM，会自动为其配置 WinRM 终结点。  但是，如果使用以下任何“新式”Azure 方法创建 VM，则 VM 不会配置为通过 HTTPS 实现 WinRM。  
+如果使用“经典”Azure 方法之一 - Azure 服务管理器门户或弃用的 [Azure 服务管理 API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)) - 来创建 VM，会自动为其配置 WinRM 终结点。  但是，如果使用以下任何“新式”Azure 方法创建 VM，则 VM 不会配置为通过 HTTPS 实现 WinRM  。  
 
 - 使用 [Azure 门户](https://portal.azure.com/)，通常需要通过批准的基础映像来实现，如[创建与 Azure 兼容的 VHD](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)部分所述
 - [使用 Azure 资源管理器模板](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)

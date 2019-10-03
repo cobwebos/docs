@@ -10,16 +10,15 @@ ms.assetid: 740f6a27-8323-474d-ade2-828ae0c75e7a
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 76a87d539e19acc30944a6a896cb0e01f431fa37
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577010"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073564"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
 
@@ -40,7 +39,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 > [!NOTE]
 > 内部缓存在 Azure API 管理的“消耗”层中不可用。 可以改为[使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成本教程：
 
@@ -89,7 +88,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 6. 按“发送”。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关缓存策略的详细信息，请参阅 [API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
+* 有关缓存策略的详细信息, 请参阅[API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
 * 有关使用策略表达式按密钥缓存项目的信息，请参阅 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
 * 有关使用外部 Azure Redis 缓存的详细信息，请参阅[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)。
 

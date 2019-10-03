@@ -5,50 +5,99 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/25/2018
+ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 1d3bfb7bc8a5432392dba3b0c5019902b3e59773
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
-ms.translationtype: HT
+ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39514011"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440224"
 ---
-1. 单击“应用服务”按钮，然后依次选择移动应用后端、“快速入门”、客户端平台（iOS、Android、Xamarin、Cordova）。
+1. 下载以下平台的客户端 SDK 快速入门：
+    
+    [iOS (Objective-C)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS)  
+    [iOS (Swift)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS-Swift)  
+    [Android (Java)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/android)  
+    [Xamarin.iOS](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.iOS)  
+    [Xamarin.Android](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.android)  
+    [Xamarin.Forms](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.forms)  
+    [Cordova](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/cordova)  
+    [Windows (C#)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/windows-uwp-cs)  
 
-    ![突出显示移动应用快速启动的 Azure 门户][quickstart]
+    > [!NOTE]
+    > 如果使用 iOS 项目，则需从[最新 GitHub 版本](https://github.com/Azure/azure-mobile-apps-ios-client/releases/latest)中下载“azuresdk-iOS-\*.zip”。 将 `MicrosoftAzureMobile.framework` 文件解压缩并添加到项目的根目录中。
+    >
 
-1. 如果未配置数据库连接，请创建一个，方法是执行以下操作：
+2. 需要添加数据库连接，或者连接到现有的连接。 首先，确定是要创建数据存储，还是使用现有的数据存储。
 
-    ![Azure 门户：移动应用：连接到数据库][connect]
+    - **创建新的数据存储**：若要创建数据存储，请使用以下快速入门：
 
-    a. 新建 SQL 数据库和服务器。 可能需要将连接字符串名称字段保留为默认值 MS_TableConnectionString，然后才能完成下面的步骤 3。
+        [快速入门：开始使用 Azure SQL 数据库中的单一数据库](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-quickstart-guide)
 
-    ![Azure 门户：移动应用：新建数据库和服务器][server]
+    - **现有数据源**：若要使用现有的数据库连接，请按以下说明操作
 
-    b. 等到成功创建数据连接。
+        1. SQL 数据库连接字符串格式 - `Data Source=tcp:{your_SQLServer},{port};Initial Catalog={your_catalogue};User ID={your_username};Password={your_password}`
 
-    ![成功创建数据连接的 Azure 门户通知][notification]
+           **{your_SQLServer}** ：服务器的名称，此项可以在数据库的概览页中找到，通常采用“server_name.database.windows.net”格式。
+            **{port}** ：通常为 1433。
+            **{your_catalogue}** ：数据库的名称。
+            **{your_username}** ：用于访问数据库的用户名。
+            **{your_password}** ：用于访问数据库的密码。
 
-    c. 数据连接必须成功。
+            [详细了解 SQL 连接字符串格式](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings)
 
-    ![Azure 门户通知“你已经有一个数据连接”][already-connection]
+        2. 向**移动应用**添加连接字符串。可以在应用服务中管理应用程序的连接字符串，方法是使用菜单中的“配置”选项。 
 
-1. 在“2. 定义警报详细信息“下，创建表 API”下，为“后端语言”选择“Node.js”。
+            若要添加连接字符串，请执行以下操作：
 
-1. 接受确认，然后选择“创建 TodoItem 表”。
-    此操作会在数据库中创建一个新的代办事项表。
+            1. 单击“应用程序设置”  选项卡。
 
-    >[!IMPORTANT]
-    > 将现有的后端切换到 Node.js 会覆盖所有内容。 若改为创建 .NET 后端，请参阅[使用适用于移动应用的 .NET 后端服务器][instructions]。
+            2. 单击“[+] 新建连接字符串”。 
 
-<!-- Images. -->
-[quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png
-[connect]: ./media/app-service-mobile-configure-new-backend/connect-to-bd.png
-[notification]: ./media/app-service-mobile-configure-new-backend/notification-data-connection-create.png
-[server]: ./media/app-service-mobile-configure-new-backend/create-new-server.png
-[already-connection]: ./media/app-service-mobile-configure-new-backend/already-connection.png
+            3. 需为连接字符串提供“名称”、“值”和“类型”。   
 
-<!-- URLs -->
-[instructions]: ../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app
+            4. 键入 `MS_TableConnectionString` 作为“名称” 
+
+            5. “值”应该是在前面的步骤中生成的连接字符串。
+
+            6. 如果向 SQL Azure 数据库添加连接字符串，请在“类型”下选择“SQLAzure”。  
+
+3. Azure 移动应用有适用于 .NET 和 Node.js 后端的 SDK。
+
+   - **Node.js 后端**
+    
+     若要使用 Node.js 快速入门应用，请按以下说明操作。
+
+     1. 在 Azure 门户中转到“简易表”即可看到以下屏幕。 
+      
+        ![Node 简易表](./media/app-service-mobile-configure-new-backend/node-easy-tables.png)
+
+     2. 确保已在“配置”选项卡中添加 SQL 连接字符串。  然后勾选“我已了解此操作会覆盖所有站点内容”框，并单击“创建 TodoItem 表”按钮   。
+     
+        ![Node 简易表的“配置”](./media/app-service-mobile-configure-new-backend/node-easy-tables-configuration.png)
+
+     3. 在“简易表”中单击“+ 添加”按钮。  
+    
+        ![Node 简易表的“添加”按钮](./media/app-service-mobile-configure-new-backend/node-easy-tables-add.png)
+
+     4. 创建允许匿名访问的 `TodoItem` 表。
+      
+        ![Node 简易表的“添加表”](./media/app-service-mobile-configure-new-backend/node-easy-tables-table-add.png)
+
+   - **.NET 后端**
+    
+        若要使用 .NET 快速入门应用，请按以下说明操作。
+
+        1. 从 [azure-mobile-apps-quickstarts 存储库](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/backend/dotnet/Quickstart)下载 Azure 移动应用 .NET 服务器项目。
+
+        2. 在 Visual Studio 中以本地方式生成 .NET 服务器项目。
+
+        3. 在 Visual Studio 中打开解决方案资源管理器，右键单击 `ZUMOAPPNAMEService` 项目，单击“发布”，  此时会出现“`Publish to App Service`”窗口。 如果在 Mac 上工作，请单击[此处](https://docs.microsoft.com/azure/app-service/deploy-local-git)了解部署应用的其他方式。
+        
+           ![Visual Studio 发布](./media/app-service-mobile-configure-new-backend/visual-studio-publish.png)
+
+        4. 选择“应用服务”  作为发布目标，接着单击“选择现有”，然后单击窗口底部的“发布”按钮。  
+
+        5. 首先需通过 Azure 订阅登录 Visual Studio。 选择 `Subscription`、`Resource Group`，然后选择应用的名称。 准备就绪后，单击“确定”，这样就会将本地的 .NET 服务器项目部署到应用服务后端。  部署完成后，系统会在浏览器中将你重定向到 `http://{zumoappname}.azurewebsites.net/`。                   

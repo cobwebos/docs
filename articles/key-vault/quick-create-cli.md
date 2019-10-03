@@ -1,24 +1,21 @@
 ---
-title: Azure 快速入门 - 使用 Azure CLI 在 Key Vault 中设置和检索机密 | Microsoft Docs
+title: 快速入门：在 Azure Key Vault 中设置和检索机密
 description: 快速入门介绍如何使用 Azure CLI 在 Azure Key Vault 中设置和检索机密
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: 4acc894f-fee0-4c2f-988e-bc0eceea5eda
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 01/08/2019
-ms.author: barclayn
-ms.openlocfilehash: 8065f670da6614db8c3524fd351a31ad095f8257
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.custom: mvc, seo-javascript-september2019
+ms.date: 09/03/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 70c450304c13a5c4b453226140ae699e0cabda19
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113033"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744772"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索机密
 
@@ -26,7 +23,7 @@ Azure Key Vault 是一项云服务，用作安全的机密存储。 可以安全
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果选择在本地安装并使用 CLI，本快速入门要求 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -36,11 +33,11 @@ Azure Key Vault 是一项云服务，用作安全的机密存储。 可以安全
 az login
 ```
 
-若要详细了解通过 CLI 使用的登录选项，请参阅[使用 Azure CLI 登录](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+若要详细了解通过 CLI 使用的登录选项，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“eastus”位置创建名为“ContosoResourceGroup”的资源组。
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“eastus”位置创建名为“ContosoResourceGroup”的资源组。  
 
 ```azurecli
 az group create --name "ContosoResourceGroup" --location eastus
@@ -52,7 +49,7 @@ az group create --name "ContosoResourceGroup" --location eastus
 
 - 对于本快速入门，请使用 **Contoso-vault2**。 必须在测试中提供唯一名称。
 - 资源组名称 **ContosoResourceGroup**。
-- 位置“美国东部”。
+- 位置“美国东部”  。
 
 ```azurecli
 az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGroup" --location eastus
@@ -61,7 +58,7 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 此 cmdlet 的输出显示新创建的 Key Vault 的属性。 请记下下面列出的两个属性：
 
 - **保管库名称**：在本示例中，此项为 **Contoso-Vault2**。 将在其他 Key Vault 命令中使用此名称。
-- **保管库 URI**：在本示例中，此项为 https://contoso-vault2.vault.azure.net/。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
+- **保管库 URI**：在本示例中，此项为 https://contoso-vault2.vault.azure.net/ 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 目前，只有你的 Azure 帐户才有权对这个新保管库执行任何操作。
 
@@ -96,7 +93,9 @@ az group delete --name ContosoResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建 Key Vault 并在其中存储了一个机密。 若要详细了解 Key Vault 以及如何将它与应用程序配合使用，请继续学习有关如何将 Web 应用程序与 Key Vault 配合使用的教程。
+在本快速入门中，你创建了 Key Vault 并在其中存储了一个机密。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
 
-> [!div class="nextstepaction"]
-> 若要了解如何使用 Web 应用程序通过 Azure 资源的托管标识从 Key Vault 读取机密，请继续学习以下教程：[将 Azure Web 应用程序配置为从 Key Vault 读取机密](quick-create-net.md)
+- 阅读 [Azure Key Vault 概述](key-vault-overview.md)
+- 请参阅 [Azure CLI az keyvault 命令](/cli/azure/keyvault?view=azure-cli-latest)参考
+- 了解[密钥、机密和证书](about-keys-secrets-and-certificates.md)
+- 查看 [Azure Key Vault 最佳做法](key-vault-best-practices.md)

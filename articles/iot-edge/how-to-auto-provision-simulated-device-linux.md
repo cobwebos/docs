@@ -1,5 +1,5 @@
 ---
-title: 自动预配 Linux 设备与分发点-Azure IoT Edge |Microsoft Docs
+title: 使用 DPS 自动预配 Linux 设备 - Azure IoT Edge | Microsoft Docs
 description: 使用 Linux VM 上的模拟 TPM 来测试 Azure IoT Edge 的 Azure 设备预配服务
 author: kgremban
 manager: philmea
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9a549221a9e1864e1b7565f35139cb4c2a6ca65e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b48455b6ea9c1cd74e94c10d8f9f938c20512c02
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093120"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414573"
 ---
-# <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>创建和预配 Linux 虚拟机上的虚拟 TPM 的 IoT Edge 设备
+# <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>使用 Linux 虚拟机上的虚拟 TPM 创建和预配 IoT Edge 设备
 
-Azure IoT Edge 设备可以自动预配使用[设备预配服务](../iot-dps/index.yml)。 如果不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。 
+可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备。 如果不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。 
 
-本文介绍如何测试自动预配模拟的 IoT Edge 设备，通过执行以下步骤： 
+本文介绍如何使用以下步骤，在模拟的 IoT Edge 设备上测试自动预配： 
 
 * 使用用于确保硬件安全性的模拟受信任平台模块 (TPM) 在 Hyper-V 中创建 Linux 虚拟机 (VM)。
 * 创建 IoT 中心设备预配服务 (DPS) 的实例。
@@ -29,20 +29,20 @@ Azure IoT Edge 设备可以自动预配使用[设备预配服务](../iot-dps/ind
 
 本文中的步骤仅用于测试目的。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [已启用 Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 的 Windows 开发计算机。 本文使用运行 Ubuntu Server VM 的 Windows 10。 
 * 活动的 IoT 中心。 
 
 ## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>创建包含虚拟 TPM 的 Linux 虚拟机
 
-在本部分中，在 HYPER-V 上创建新的 Linux 虚拟机。 以便可以将它用于使用 IoT Edge 测试自动预配的工作原理，请使用模拟的 TPM 配置此虚拟机。 
+在本部分，我们将在 Hyper-V 上创建新的 Linux 虚拟机。 然后，我们将使用模拟 TPM 配置此虚拟机，以便可以使用它来测试如何在 IoT Edge 中使用自动预配。 
 
 ### <a name="create-a-virtual-switch"></a>创建虚拟交换机
 
 使用虚拟交换机可将虚拟机连接到物理网络。
 
-1. 在 Windows 计算机上打开 Hyper-v 管理器。 
+1. 在 Windows 计算机上打开 Hyper-V 管理器。 
 
 2. 在“操作”菜单中，选择“虚拟交换机管理器”。 
 
@@ -58,23 +58,23 @@ Azure IoT Edge 设备可以自动预配使用[设备预配服务](../iot-dps/ind
 
 1. 下载虚拟机使用的磁盘映像文件，并将其保存在本地。 例如 [Ubuntu 服务器](https://www.ubuntu.com/download/server)。 
 
-2. 在 Hyper-v 管理器中，选择**新建** > **虚拟机**中**操作**菜单。
+2. 返回 Hyper-V 管理器，在“操作”菜单中选择“新建” > “虚拟机”。
 
 3. 使用以下特定配置完成“新建虚拟机向导”：
 
-   1. **指定代系**：选择“第 2 代”。 第 2 代虚拟机具有嵌套虚拟化启用，这是虚拟机上运行 IoT Edge 的要求。
+   1. **指定代系**：选择“第 2 代”。 第 2 代虚拟机已启用嵌套虚拟化，在虚拟机上运行 IoT Edge 必须启用此功能。
    2. **配置网络**：设置“连接”的值设置为在上一部分创建的虚拟交换机。 
    3. **安装选项**：选择“从可启动映像文件安装操作系统”，并浏览到本地保存的磁盘映像文件。
 
-4. 选择**完成**向导以创建虚拟机中。
+4. 在向导中选择“完成”以创建虚拟机。
 
 创建新的 VM 可能需要几分钟。 
 
 ### <a name="enable-virtual-tpm"></a>启用虚拟 TPM
 
-创建 VM 后，打开其设置以启用虚拟受信任的平台模块 (TPM)，可用于 autoprovision 设备。 
+创建 VM 后，打开其设置以启用虚拟受信任平台模块 (TPM) 来自动预配设备。 
 
-1. 选择虚拟机，然后打开其**设置**。
+1. 选择该虚拟机，然后打开其“设置”。
 
 2. 导航到“安全性”。 
 
@@ -82,20 +82,20 @@ Azure IoT Edge 设备可以自动预配使用[设备预配服务](../iot-dps/ind
 
 4. 选中“启用受信任的平台模块”。 
 
-5. 单击“确定”。  
+5. 单击 **“确定”** 。  
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>启动虚拟机并收集 TPM 数据
 
 在虚拟机中，生成一个可用于检索设备“注册 ID”和“认可密钥”的 C SDK 工具。 
 
-1. 启动虚拟机并连接到它。
+1. 启动并连接到虚拟机。
 
-2. 按照提示进行操作以完成安装过程并重新启动计算机在虚拟机中。 
+2. 遵照虚拟机中的提示完成安装过程，然后重新启动虚拟机。 
 
-3. 登录到 VM，然后按照中的步骤[设置 Linux 开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)来安装并生成 Azure IoT 设备 SDK 的 c。 
+3. 登录到 VM，然后遵循[设置 Linux 开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)中的步骤安装并生成适用于 C 的 Azure IoT 设备 SDK。 
 
    >[!TIP]
-   >在本文中，过程中将复制到和从虚拟机中，粘贴这并不容易通过 Hyper-v 管理器连接应用程序。 您可能想要通过连接到虚拟机的 HYPER-V 管理器一次来检索其 IP 地址： `ifconfig`。 然后，可以使用的 IP 地址通过 SSH 进行连接： `ssh <username>@<ipaddress>`。
+   >在本文中，我们将在虚拟机中进行复制和粘贴，而在 Hyper-V 管理器连接应用程序中难以执行此类操作。 可以通过 Hyper-V 管理器连接到虚拟机一次，以检索其 IP 地址：`ifconfig`。 然后，可以使用该 IP 地址通过 SSH 进行连接：`ssh <username>@<ipaddress>`。
 
 4. 运行以下命令，生成用于检索设备预配信息的 C SDK 工具。 
 
@@ -106,6 +106,8 @@ Azure IoT Edge 设备可以自动预配使用[设备预配服务](../iot-dps/ind
    make
    sudo ./tpm_device_provision
    ```
+   >[!TIP]
+   >如果要使用 TPM 模拟器进行测试，则需要放置一个额外的参数 `-Duse_tpm_simulator:BOOL=ON` 来启用它。 完整命令将为 `cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..`。
 
 5. 复制“注册 ID”和“认可密钥”的值。 稍后要使用这些值在 DPS 中为设备创建个人注册。 
 
@@ -121,7 +123,6 @@ Azure IoT Edge 设备可以自动预配使用[设备预配服务](../iot-dps/ind
 
 在 DPS 中创建注册时，可以声明“初始设备孪生状态”。 在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-monitor.md)。 
 
-
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 IoT 中心设备预配服务的实例。 
 
 2. 在“设置”下，选择“管理注册”。 
@@ -130,13 +131,13 @@ Azure IoT Edge 设备可以自动预配使用[设备预配服务](../iot-dps/ind
 
    1. 对于“机制”，请选择“TPM”。 
    
-   2. 提供**认可密钥**并**注册 ID**从你的虚拟机复制。
+   2. 提供从虚拟机中复制的“认可密钥”和“注册 ID”。
    
-   3. 选择 **，则返回 True**来声明此虚拟机是 IoT Edge 设备。 
+   3. 选择“True”，以声明此虚拟机是 IoT Edge 设备。 
    
-   4. 选择要将设备连接到的链接“IoT 中心”。 可以选择多个中心，并且设备将分配给其中一个根据所选的分配策略。 
+   4. 选择要将设备连接到的链接“IoT 中心”。 可以选择多个中心，设备将根据所选的分配策略分配到其中的一个中心。 
    
-   5. 根据需要，为设备提供一个 ID。 可以使用设备 ID 将单个设备指定为模块部署的目标。 如果未提供设备 ID，将使用注册 ID。
+   5. 根据需要，为设备提供一个 ID。 可以使用设备 ID 将单个设备指定为模块部署的目标。 如果未提供设备 ID，则会使用注册 ID。
    
    6. 根据需要，将标记值添加到“初始设备孪生状态”。 可以使用标记将设备组指定为模块部署的目标。 例如： 
 
@@ -151,9 +152,9 @@ Azure IoT Edge 设备可以自动预配使用[设备预配服务](../iot-dps/ind
       }
       ```
 
-   7. 选择“保存”。 
+   7. 选择**保存**。 
 
-现在，注册此设备已存在，IoT Edge 运行时可以自动预配设备在安装过程。 
+既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 
 
 ## <a name="install-the-iot-edge-runtime"></a>安装 IoT Edge 运行时
 
@@ -161,8 +162,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 在开始学习本文之前，请了解与设备类型匹配的 DPS“ID 范围”和设备“注册 ID”。 如果已安装示例 Ubuntu 服务器，请使用 **x64** 说明。 确保将 IoT Edge 运行时配置为自动预配而不是手动预配。 
 
-* [在 Linux (x64) 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)
-* [在 Linux (ARM32v7/armhf) 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux-arm.md)
+[在 Linux 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>向 IoT Edge 授予 TPM 的访问权限
 
@@ -290,7 +290,7 @@ journalctl -u iotedge --no-pager --no-full
 iotedge list
 ```
 
-你可以验证已使用设备预配服务中创建单个注册。 导航到 Azure 门户中的设备预配服务实例。 打开创建单个注册的注册详细信息。 请注意，在注册的状态是**分配**和设备 ID 列。 
+可以验证是否使用了在设备预配服务中创建的个人注册。 在 Azure 门户中导航到设备预配服务实例。 打开创建的个人注册的注册详细信息。 注意注册状态是否为“已分配”并且设备 ID 已列出。 
 
 ## <a name="next-steps"></a>后续步骤
 

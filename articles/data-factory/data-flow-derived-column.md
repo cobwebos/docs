@@ -1,29 +1,34 @@
 ---
-title: Azure 数据工厂数据流派生列转换
-description: Azure 数据工厂数据流派生列转换
+title: 派生列转换映射数据在流中的 Azure 数据工厂 |Microsoft Docs
+description: 了解如何在 Azure 数据工厂中使用映射数据流派生列转换的大规模转换数据。
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: 1335b86431bcf345f452ead0c95926d295ae185f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 941c629fd8359edc7fc1cf364a6735314044d95e
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728754"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312195"
 ---
-# <a name="azure-data-factory-data-flow-derived-column-transformation"></a>Azure 数据工厂数据流派生列转换
+# <a name="derived-column-transformation-in-mapping-data-flow"></a>在映射数据流中的派生的列转换
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 使用派生列转换在数据流中生成新列或修改现有字段。
 
-![派生列](media/data-flow/dc1.png "Derived Column")
+## <a name="derived-column-settings"></a>派生的列设置
 
-可以在单个派生列转换中执行多个派生列操作。 单击“添加列”可在单个转换步骤中转换多个列。
+若要覆盖现有列，请通过列下拉列表中选择它。 否则，使用列选择字段作为文本框中，键入新列的名称。 若要生成派生的列的表达式，单击输入表达式框以打开[流数据的表达式生成器](concepts-data-flow-expression-builder.md)。
 
-在列字段中，可以选择新派生值要覆盖的现有列，或者单击“新建列”生成具有新派生值的新列。
+![派生列设置](media/data-flow/dc1.png "派生的列设置")
 
-表达式文本框将打开表达式生成器，可以在其中使用表达式函数为派生列生成表达式。
+若要添加其他派生的列，悬停在某个现有派生列，然后单击 +。 然后，选择添加列或添加列模式。 列模式可能会派上用场如果列名称将从你的源的变量。 有关详细信息，请参阅[列模式](concepts-data-flow-column-pattern.md)。
+
+![新建派生列选择](media/data-flow/columnpattern.png "新建派生列选择")
+
+## <a name="next-steps"></a>后续步骤
+
+- 详细了解如何[映射数据流表达式语言](data-flow-expression-functions.md)。

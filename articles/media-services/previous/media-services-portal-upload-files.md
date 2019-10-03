@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 3ebeb3c601dd3f734265d49d60728056561928be
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58803200"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61127801"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>在 Azure 门户中将文件上传到媒体服务帐户 
 
@@ -40,20 +40,20 @@ ms.locfileid: "58803200"
 
 ## <a name="upload-files"></a>上传文件
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 选择“设置” > “资产”。 然后选择“上传”按钮。
+2. 选择“设置”   > “资产”  。 然后选择“上传”按钮  。
    
     ![上传文件](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
-    此时会显示“上传视频资产”窗口。
+    此时会显示“上传视频资产”窗口  。
    
    > [!NOTE]
    > 媒体服务不会限制上传视频的文件大小。
  
-3. 在计算机上，转到要上传的视频。 选择视频，然后选择“确定”。  
+3. 在计算机上，转到要上传的视频。 选择视频，然后选择“确定”  。  
    
     上传开始。 可以在文件名下看到进度。  
 
-上传完成后，新资产列在“资产”窗格中。 
+上传完成后，新资产列在“资产”  窗格中。 
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

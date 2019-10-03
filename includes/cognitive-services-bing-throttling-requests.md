@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: 1d8340054ace25a0cdc36eef9c3d5b4238a6f99b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571835"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173234"
 ---
 服务和订阅类型决定了每秒可以发出的查询数 (QPS)。 请确保应用程序包含防止超出配额限制的逻辑。 如果达到或超出 QPS 限制，则请求会失败，系统会返回 HTTP 429 状态代码。 响应包含 `Retry-After` 标头，该标头指示需等待多久才能发送另一请求。
 

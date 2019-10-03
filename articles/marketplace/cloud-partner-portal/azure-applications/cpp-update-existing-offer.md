@@ -1,25 +1,18 @@
 ---
-title: 更新现有的 Azure 应用程序产品/服务 | Microsoft Docs
+title: 更新现有的 Azure 应用程序产品/服务 |Azure Marketplace
 description: 如何更新 Azure 市场中的现有 Azure 应用程序产品/服务。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 1019c06afbdab0a6b0e172133da316aea01a5504
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.author: pabutler
+ms.openlocfilehash: a36df757e3a2682af641101ed82583a0cd293e0a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216882"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942823"
 ---
 # <a name="update-an-existing-azure-application-offer"></a>更新现有的 Azure 应用程序产品/服务
 
@@ -31,7 +24,7 @@ ms.locfileid: "57216882"
 - 添加新的 SKU。
 - 更新套餐或单个 SKU 的市场元数据。
 
-为了帮助你进行这些修改，门户中提供了“比较”和“历史记录”功能。
+为了帮助你进行这些修改，门户中提供了“比较”和“历史记录”功能。  
 
 ## <a name="unpermitted-changes-to-an-azure-application-offer-or-sku"></a>Azure 应用程序产品/服务或 SKU 的未经许可更改
 
@@ -51,30 +44,30 @@ ms.locfileid: "57216882"
 我们经常会使用安全修补程序、其他功能等定期更新映像。 在这种情况下，需要使用以下步骤来更新 SKU 引用的映像：
 
 1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
-2. 在“所有套餐”下，找到要更新的套餐。
-3. 在“SKU”选项卡中，选择与要更新的映像关联的 SKU。
-4. 选择“+ 新建映像版本”以添加新的映像。
+2. 在“所有套餐”下，找到要更新的套餐。 
+3. 在“SKU”选项卡中，选择与要更新的映像关联的 SKU  。
+4. 选择“+ 新建映像版本”以添加新的映像  。
 5. 提供新的映像版本。 映像版本需要遵循与以前版本相同的标记准则。 版本标记应采用 X.Y.Z 格式，其中 X、Y 和 Z 是整数。 检查提供的新版本是否高于以前的所有版本。
-6. 选择“发布”以启动将新映像版本发布到 Azure 市场的工作流。
+6. 选择“发布”以启动将新映像版本发布到 Azure 市场的工作流。 
 
 ### <a name="add-a-new-sku"></a>添加新 SKU
 
 使用以下步骤使新 SKU 可用于套餐：
 
 1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
-2. 在“所有套餐”下，找到要更新的套餐。
-3. 在“SKU”选项卡下，选择“添加新 SKU”并在弹出窗口中提供一个 **SKU ID**。
+2. 在“所有套餐”下，找到要更新的套餐。 
+3. 在“SKU”选项卡下，选择“添加新 SKU”并在弹出窗口中提供一个 **SKU ID**。  
 4. 使用[发布 Azure 应用程序产品/服务](./cpp-publish-offer.md)中描述的步骤重新发布产品/服务。
-5. 选择“发布”，启动发布新 SKU 的工作流。
+5. 选择“发布”，启动发布新 SKU 的工作流。 
 
 ### <a name="update-offer-marketplace-metadata"></a>更新套餐市场元数据
 
 使用以下步骤更新与套餐关联的市场元数据。 （例如：公司名称、徽标等）
 
 1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
-2. 在“所有产品/服务”下，找到要更新的产品/服务。
-3. 转到“市场”选项卡。使用[发布 Azure 应用程序产品/服务](./cpp-publish-offer.md)中的说明进行元数据更改。
-4. 选择“发布”，启动发布更改的工作流。
+2. 在“所有产品/服务”下，找到要更新的产品/服务。 
+3. 转到“市场”选项卡。  使用[发布 Azure 应用程序产品/服务](./cpp-publish-offer.md)中的说明进行元数据更改。
+4. 选择“发布”，启动发布更改的工作流。 
  
 >[!Note]
 >云解决方案提供商 (CSP) 合作伙伴通道参加现已推出。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)营销通过 Microsoft CSP 产品/服务的详细信息的合作伙伴渠道。
@@ -99,7 +92,7 @@ ms.locfileid: "57216882"
 
 ## <a name="history-of-publishing-actions"></a>发布操作的历史记录
 
-若要查看历史发布活动，请选择云合作伙伴门户左侧导航菜单栏中的“历史记录”选项卡。 可以看到在 Azure 市场套餐生存期内执行的带时间戳的操作。
+若要查看历史发布活动，请选择云合作伙伴门户左侧导航菜单栏中的“历史记录”选项卡。  可以看到在 Azure 市场套餐生存期内执行的带时间戳的操作。
 
 ## <a name="next-steps"></a>后续步骤
 

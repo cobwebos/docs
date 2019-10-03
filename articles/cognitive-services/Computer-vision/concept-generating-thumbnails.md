@@ -1,5 +1,5 @@
 ---
-title: 生成缩略图 - 计算机视觉
+title: 智能裁剪缩略图-计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 使用计算机视觉 API 生成图像的缩略图的相关概念。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cea8522a9f3eb8fa98821c1cb08d92a9524d5ce4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876793"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945230"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>使用计算机视觉生成智能裁剪的缩略图
 
@@ -38,15 +38,15 @@ ms.locfileid: "57876793"
 
 生成的缩略图可能会根据指定的高度、宽度和智能裁剪的不同而有很大差异，如下图所示。
 
-![缩略图](./Images/thumbnail-demo.png)
+![各种裁剪配置旁边的一个山脉图像](./Images/thumbnail-demo.png)
 
 下表说明了计算机视觉为示例图像生成的典型缩略图。 生成缩略图的指定目标高度和宽度为 50 像素，并且启用了智能裁剪。
 
-| 映像 | 缩略图 |
+| 图像 | 缩略图 |
 |-------|-----------|
-|![日落时站在山岩上的人](./Images/mountain_vista.png) | ![户外山脉缩略图](./Images/mountain_vista_thumbnail.png) |
+|![日落时户外的大山以及人的轮廓](./Images/mountain_vista.png) | ![日落时户外的大山以及人的轮廓的缩略图](./Images/mountain_vista_thumbnail.png) |
 |![具有绿色背景的白色花卉](./Images/flower.png) | ![视觉分析花缩略图](./Images/flower_thumbnail.png) |
-|![在公寓楼顶上的一个女人](./Images/woman_roof.png) | ![女士屋顶缩略图](./Images/woman_roof_thumbnail.png) |
+|![在公寓楼顶上的一个女人](./Images/woman_roof.png) | ![在公寓楼顶上的一个女人的缩略图](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>后续步骤
 

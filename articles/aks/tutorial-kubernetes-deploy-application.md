@@ -2,18 +2,18 @@
 title: Azure 上的 Kubernetes 教程 - 部署应用程序
 description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请使用存储在 Azure 容器注册表中的自定义映像将多容器应用程序部署到群集。
 services: container-service
-author: zr-msft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: zarhoads
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 42437130d30a405af47289ae16d9851fb506a598
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 85471323a7f8918d80b7c0944fe5c255e9fa836a
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756269"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "69018922"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中运行应用程序
 
@@ -32,7 +32,7 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 你生成自�
 
 在前面的教程中，我们已将应用程度打包到容器映像中，将此映像上传到 Azure 容器注册表，并创建了 Kubernetes 群集。
 
-必须先预创建 `azure-vote-all-in-one-redis.yaml` Kubernetes 清单文件，然后才能完成本教程。 此文件是在上一教程中与应用程序源代码一同下载。 验证是否已克隆存储库，并且是否已将目录更改为克隆的存储库。 如果尚未完成这些步骤，并且想要逐一完成，请开始参阅[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
+必须先预创建 `azure-vote-all-in-one-redis.yaml` Kubernetes 清单文件，然后才能完成本教程。 此文件是在上一教程中与应用程序源代码一同下载。 验证是否已克隆存储库，并且是否已将目录更改为克隆的存储库。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
 
 此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -52,7 +52,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-将 *microsoft* 替换为 ACR 登录服务器名称。 映像名称位于清单文件的第 47 行。 以下示例展示了默认映像名称：
+将 *microsoft* 替换为 ACR 登录服务器名称。 映像名称位于清单文件的第 51 行。 以下示例展示了默认映像名称：
 
 ```yaml
 containers:
@@ -102,13 +102,13 @@ kubectl get service azure-vote-front --watch
 最初，*azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending*：
 
 ```
-azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
+azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
 当 *EXTERNAL-IP* 地址从 *pending* 更改为实际公共 IP 地址时，请使用 `CTRL-C` 停止 `kubectl` 监视进程。 以下示例输出显示向服务分配了有效的公共 IP 地址：
 
 ```
-azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
+azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 若要查看应用程序的实际效果，请打开 Web 浏览器，以转到服务的外部 IP 地址：

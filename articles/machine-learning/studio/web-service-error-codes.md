@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
 ms.openlocfilehash: 8e91d0cd68997dee9bb00cceeaa6b697f6644ee5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100949"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736558"
 ---
 # <a name="azure-machine-learning-studio-rest-api-error-codes"></a>Azure 机器学习工作室 REST API 错误代码
  

@@ -1,25 +1,18 @@
 ---
-title: Seller Insights 定义 | Microsoft Docs
+title: Seller Insights 定义
 description: 提供的许多您将在卖方 Insights 中找到的术语的定义
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cc90ee0506203433a61fe68d97055ea32f061f11
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.author: pabutler
+ms.openlocfilehash: 8b3447b8094eb95bd2f61baed7371bf718fdf730
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240637"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65606901"
 ---
 <a name="seller-insights-definitions"></a>Seller Insights 定义
 =======================
@@ -44,7 +37,7 @@ ms.locfileid: "57240637"
 | **客户城市**  | 提供由客户的城市名称。 这可能是不同于客户的 Azure 订阅中的城市。  |
 | **客户通信语言**        | 客户的首选通信语言。                                  |
 | **客户公司名称**                  | 提供由客户的公司名称。 这可能是不同于客户的 Azure 订阅中的城市。                                  |
-| **客户所在国家/地区**                       | 由客户提供的国家/地区名称。  这可能是不同于客户的 Azure 订阅中的国家/地区。                               |
+| **客户所在国家/地区**                       | 由客户提供的国家/地区名称。  这可能是不同于客户的 Azure 订阅中的国家/地区/区域。                               |
 | **客户货币 (CC)**                 | 客户首选的定价和计费货币。                            |
 | **客户电子邮件**                         | 提供最终客户的电子邮件地址。  这可能是不同于客户的 Azure 订阅中的电子邮件地址。                   |
 | **客户名字**                              | 由客户提供的第一个名称。  这可能是不同于客户的 Azure 订阅中提供的名称。                    |
@@ -88,7 +81,7 @@ ms.locfileid: "57240637"
 | **付款状态：即将到来的付款**                   | 交易已做好付款的准备，将包含在下一次应付款计算中。                      |
 | **价格 (CC)**                                   | 给定 SKU 的一个使用单位的价格（采用客户的货币）。                                                                  |
 | **提供程序的电子邮件**                                 | Microsoft 和最终客户之间的关系中涉及的提供程序的电子邮件地址。 如果客户是通过经销商的企业，它将为该分销商。  如果涉及到云解决方案提供商 (CSP)，它将为 CSP。                                                                 |
-| 提供者名称                                 | Microsoft 和最终客户之间的关系中涉及的提供程序的名称。 如果客户是通过经销商的企业，它将为该分销商。  如果涉及到云解决方案提供商 (CSP)，它将为 CSP。                                                                 |
+| 提供者名称                                  | Microsoft 和最终客户之间的关系中涉及的提供程序的名称。 如果客户是通过经销商的企业，它将为该分销商。  如果涉及到云解决方案提供商 (CSP)，它将为 CSP。                                                                 |
 | **资源 URI**                                  | 其中已部署的部署项目的路径。                                            |
 | **SKU**                                           | 在发布过程中定义的 SKU 名称。 产品/服务可能有多个 Sku，但 SKU 只能与单个产品/服务相关联。              |
 | **SKU 计费类型**                                 | SKU 的计费方法。                                                                                                             |

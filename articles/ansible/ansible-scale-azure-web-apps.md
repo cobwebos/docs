@@ -1,34 +1,52 @@
 ---
-title: 使用 Ansible 缩放 Azure 应用服务 Web 应用
-description: 了解如何使用 Ansible 在 Linux 上的应用服务中创建采用 Java 8 和 Tomcat 容器运行时的 Web 应用
-ms.service: azure
+title: 教程 - 使用 Ansible 在 Azure 应用服务中缩放应用 | Microsoft Docs
+description: 了解如何在 Azure 应用服务中纵向扩展应用
 keywords: ansible, azure, devops, bash, playbook, Azure 应用服务, Web 应用, 缩放, Java
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 12/08/2018
-ms.openlocfilehash: 2bafb73afa35c7670ac45f7027545277c70075ef
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: d63708cd87afa426f2712da6d0fcb11c84590798
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792270"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230943"
 ---
-# <a name="scale-azure-app-service-web-apps-by-using-ansible"></a>使用 Ansible 缩放 Azure 应用服务 Web 应用
-[Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/overview)（简称 Web 应用）可托管 Web 应用程序、REST API 和移动后端。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。
+# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>教程：使用 Ansible 在 Azure 应用服务中缩放应用
 
-使用 Ansible 可以在环境中自动部署和配置资源。 本文介绍了如何使用 Ansible 在 Azure 应用服务中缩放应用。
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-app-service.md](../../includes/open-source-devops-intro-app-service.md)]
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * 获取现有的应用服务计划的事实
+> * 将应用服务计划纵向扩展为具有三个辅助角色的 S2
 
 ## <a name="prerequisites"></a>先决条件
-- **Azure 订阅** - 如果没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-- **Azure 应用服务 Web 应用** - 如果还没有 Azure 应用服务 Web 应用，则可以[使用 Ansible 创建 Azure Web 应用](ansible-create-configure-azure-web-apps.md)。
 
-## <a name="scale-up-an-app-in-app-service"></a>纵向扩展应用服务中的应用
-可以通过更改应用所属的应用服务计划的定价层来进行纵向扩展。 本部分提供了一个示例 Ansible playbook，它定义了以下操作：
-- 获取现有的应用服务计划的事实
-- 将应用服务计划更新为具有三个辅助角色的 S2
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+- **Azure 应用服务应用** - 如果没有 Azure 应用服务应用，则请[使用 Ansible 在 Azure 应用服务中配置应用](ansible-create-configure-azure-web-apps.md)。
+
+## <a name="scale-up-an-app"></a>纵向扩展应用
+
+有两个工作流可用于缩放、纵向扩展和横向扩展。
+
+**纵向扩展：** 纵向扩展意味着要获得更多资源。 这些资源包括 CPU、内存、磁盘空间、VM 等。 可通过更改应用所属的应用服务计划的定价层来纵向扩展应用。 
+**横向扩展：** 横向扩展意味着要增加运行应用的 VM 实例数量。 根据应用服务计划定价层，可横向扩展到多达 20 个实例。 借助[自动缩放](/azure/azure-monitor/platform/autoscale-get-started)，可以根据预定义的规则和计划自动横向扩展实例计数。
+
+本部分中的 playbook 代码定义以下操作：
+
+* 获取现有的应用服务计划的事实
+* 将应用服务计划更新为具有三个辅助角色的 S2
+
+将以下 playbook 保存为 `webapp_scaleup.yml`：
 
 ```yml
 - hosts: localhost
@@ -66,26 +84,26 @@ ms.locfileid: "57792270"
       var: facts.appserviceplans[0].sku
 ```
 
-将此 playbook 保存为 *webapp_scaleup.yml*。
+使用 `ansible-playbook` 命令运行 playbook：
 
-若要运行此 playbook，请使用 **ansible-playbook** 命令，如下所示：
 ```bash
 ansible-playbook webapp_scaleup.yml
 ```
 
-运行 playbook 后，类似于以下示例的输出显示应用服务计划已成功更新为具有三个辅助角色的 S2：
-```Output
-PLAY [localhost] **************************************************************
+运行 playbook 后，可看到类似于以下结果的输出：
 
-TASK [Gathering Facts] ********************************************************
+```Output
+PLAY [localhost] 
+
+TASK [Gathering Facts] 
 ok: [localhost]
 
-TASK [Get facts of existing App service plan] **********************************************************
+TASK [Get facts of existing App service plan] 
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 ok: [localhost]
 
-TASK [debug] ******************************************************************
+TASK [debug] 
 ok: [localhost] => {
     "facts.appserviceplans[0].sku": {
         "capacity": 1,
@@ -96,13 +114,13 @@ ok: [localhost] => {
     }
 }
 
-TASK [Scale up the App service plan] *******************************************
+TASK [Scale up the App service plan] 
 changed: [localhost]
 
-TASK [Get facts] ***************************************************************
+TASK [Get facts] 
 ok: [localhost]
 
-TASK [debug] *******************************************************************
+TASK [debug] 
 ok: [localhost] => {
     "facts.appserviceplans[0].sku": {
         "capacity": 3,
@@ -113,10 +131,11 @@ ok: [localhost] => {
     }
 }
 
-PLAY RECAP **********************************************************************
+PLAY RECAP 
 localhost                  : ok=6    changed=1    unreachable=0    failed=0 
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 > [!div class="nextstepaction"] 
-> [Azure 上的 Ansible](https://docs.microsoft.com/azure/ansible/)
+> [Azure 上的 Ansible](/azure/ansible/)

@@ -1,16 +1,16 @@
 ---
 author: garyericson
 ms.service: sql-database
-ms.component: machine-learning
+ms.subservice: machine-learning
 ms.topic: include
 ms.date: 04/10/2019
 ms.author: garye
-ms.openlocfilehash: de3cbf4411c2b10c0a5a06c4e220f3a245f5bdc3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 841157d92b4b9564a74dfbfee8de6edf83e75d3c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011956"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608082"
 ---
 > [!IMPORTANT]
 > Azure SQL 数据库机器学习服务当前为公共预览版。

@@ -10,17 +10,16 @@ ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e8bebdb3f54ac59ec19ef798cc3e794473bbec0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 519cf5388b095c7ca6e0ae7d978608f0824dc3a2
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721455"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066517"
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中还原应用
 本文将演示如何在 [Azure 应用服务](../app-service/overview.md) 中还原已事先备份的应用（请参阅[在 Azure 中备份应用](manage-backup.md)）。 可以根据需要将应用及其链接的数据库还原到以前的状态，或者基于原始应用的备份之一创建新的应用。 Azure 应用服务支持用于备份和还原的以下数据库：
@@ -29,7 +28,7 @@ ms.locfileid: "53721455"
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
 - [MySQL 应用内产品](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
-从备份还原适用于在**标准**和**高级**层中运行的应用。 有关向上缩放应用的信息，请参阅[在 Azure 中向上缩放应用](web-sites-scale.md)。 相比于**标准**层，**高级**层允许执行更多的每日备份量。
+从备份还原适用于在**标准**和**高级**层中运行的应用。 有关向上缩放应用的信息，请参阅[在 Azure 中向上缩放应用](manage-scale-up.md)。 相比于**标准**层，**高级**层允许执行更多的每日备份量。
 
 <a name="PreviousBackup"></a>
 
@@ -49,7 +48,7 @@ ms.locfileid: "53721455"
     ![](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
-   > 如果选择“覆盖”，将清除并覆盖当前应用中所有的现有数据。 在单击“确定”之前，请确保该操作正是想要执行的操作。
+   > 如果选择“覆盖”，则会清除并覆盖当前应用中所有的现有数据。 在单击“确定”之前，请确保该操作正是想要执行的操作。
    > 
    > 
    
@@ -60,7 +59,7 @@ ms.locfileid: "53721455"
    
     可选择“现有应用”将应用备份还原到同一资源组中的其他应用。 使用此选项之前，应已使用应用备份中定义的镜像数据库配置在资源组中创建了其他应用。 还可以创建“新”应用来将内容还原到其中。
 
-4. 单击“确定”。
+4. 单击 **“确定”** 。
 
 <a name="StorageAccount"></a>
 

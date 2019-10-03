@@ -9,11 +9,11 @@ ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 069baf627c0230b6a4727c375494352ab3e6a803
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500672"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172884"
 ---
 若要为资源组添加两个标记，请使用 [Set-AzResourceGroup](/powershell/module/az.resources/set-azresourcegroup) 命令：
 

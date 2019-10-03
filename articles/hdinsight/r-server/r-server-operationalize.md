@@ -1,20 +1,19 @@
 ---
 title: 操作 HDInsight 上的 ML Services - Azure
-description: 了解如何操作 Azure HDInsight 中的 ML Services。
-services: hdinsight
-ms.service: hdinsight
+description: 了解如何操作数据模型，以便在 Azure HDInsight 中通过 ML 服务进行预测。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: d0cae4210fa313c5d6e1f33987422e7b0d53e76a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579951"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123568"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
 
@@ -22,9 +21,9 @@ ms.locfileid: "53579951"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **HDInsight 上的 ML Services 群集**：有关说明，请参阅 [HDInsight 上的 ML Services 入门](r-server-get-started.md)。
+* HDInsight 上的机器学习服务群集。 参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“机器学习服务”作为“群集类型”。
 
-* **安全外壳 (SSH) 客户端**：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+* 安全外壳（SSH）客户端：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>使用单机配置操作 ML Services 群集
 
@@ -51,31 +50,31 @@ ms.locfileid: "53579951"
 
 1. 将提供选项供你选择。 选择第一个选项（如以下屏幕截图所示）“配置 ML Server 的操作化”。
 
-    ![单机操作](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![R server 管理实用工具选择](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. 现在将提供选项供你选择要操作 ML Server 的方式。 输入 **A** 从提供的选项中选择第一项。
 
-    ![单机操作](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![R server 管理实用工具操作](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. 出现提示时，输入然后再次输入本地管理员用户的密码。
 
 1. 应看到提示操作成功的输出。 系统还会提示你从菜单中选择另一个选项。 选择 E 以返回到主菜单。
 
-    ![单机操作](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![R server 管理实用工具成功](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. （可选）通过运行诊断测试来执行诊断检查，如下所示：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从主菜单中，选择 **6** 运行诊断测试。
+    a. 从主菜单中，选择 **6** 运行诊断测试。
 
-    ![单机操作](./media/r-server-operationalize/diagnostic-1.png)
+    ![R server 管理实用工具诊断](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
     b. 从“诊断测试”菜单中选择 **A**。出现提示时，输入为本地管理员用户提供的密码。
 
-    ![单机操作](./media/r-server-operationalize/diagnostic-2.png)
+    ![R server 管理实用工具测试](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. 验证输出是否显示总体运行状况通过测试。
 
-    ![单机操作](./media/r-server-operationalize/diagnostic-3.png)
+    ![R server 管理实用工具通过](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. 从显示的菜单选项中，输入 **E** 返回到主菜单，然后输入 **8** 退出管理员实用程序。
 
@@ -149,7 +148,7 @@ ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 
 1. 单击“操作” > “所选主机” > “主机” > “打开维护模式”。 例如，下图中，选择了对 wn3 和 wn4 解除授权。  
 
-   ![解除辅助节点的授权](./media/r-server-operationalize/get-started-operationalization.png)  
+   ![Apache Ambari 启用维护模式](./media/r-server-operationalize/get-started-operationalization.png)  
 
 * 选择“操作” > “所选主机” > “DataNodes”> 单击“解除授权”。
 * 选择“操作” > “所选主机” > “NodeManagers”> 单击“解除授权”。

@@ -2,16 +2,17 @@
 title: Azure HDInsight：.NET 示例
 description: 针对用于 .NET 的 HDInsight SDK，请在 GitHub 上查找有关使用它的常见任务的 C# .NET 示例。
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 04/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: f589c5e23be105086d2908fb7db72e69c781e726
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: c1365b39385a3dfb684628214765269ea3a225e9
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678252"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076877"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight：.NET 示例
 

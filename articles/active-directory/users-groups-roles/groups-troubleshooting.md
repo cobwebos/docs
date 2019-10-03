@@ -14,17 +14,17 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0eededcc180d7652fd52c79b85ca3c34f65a22a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791537"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60469695"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>排查和解决组问题
 
 ## <a name="troubleshooting-group-creation-issues"></a>组创建问题疑难解答
 
-**我已禁用 Azure 门户中创建的安全组，但仍可以通过 Powershell 创建组****用户可以在 Azure 门户中创建安全组**设置在 Azure 门户的控件中是否非管理员用户可以在访问面板或 Azure 门户中创建安全组。 它不会控制通过 Powershell 创建安全组。
+**我已禁用 Azure 门户中创建的安全组，但仍可以通过 Powershell 创建组** **用户可以在 Azure 门户中创建安全组** 设置在 Azure 门户的控件中是否非管理员用户可以在访问面板或 Azure 门户中创建安全组。 它不会控制通过 Powershell 创建安全组。
 
 若要禁用组创建有关在 Powershell 中的非管理员用户：
 1. 验证是否允许非管理员用户创建组：

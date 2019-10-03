@@ -10,28 +10,29 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 485775660ecfdf2291365ab98c9188295ea2cbde
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ROBOTS: NOINDEX
+ms.openlocfilehash: 596ce35a0d744691edd75d6071d4758691e0031b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183486"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705020"
 ---
 # <a name="entity-attributes"></a>实体属性
 
-Academic Graph 包含 7 类实体。 所有实体会都将一个实体 ID 和实体类型。
+Academic Graph 包含 7 类实体。 所有实体都具有实体 ID 和实体类型。
 
 ## <a name="common-entity-attributes"></a>常见实体属性
-名称    |描述                |Type       | 操作
+名称    |描述                |类型       | 操作
 ------- | ------------------------- | --------- | ----------------------------
-ID      |实体 ID                  |Int64      |等于
-Ty      |实体类型                |枚举   |等于
+Id      |实体 ID                  |Int64      |等于
+Ty      |实体类型                |enum   |等于
 
 ## <a name="entity-type-enum"></a>实体类型枚举
-名称                                                            |值
+名称                                                            |value
 ----------------------------------------------------------------|-----
 [论文](PaperEntityAttributes.md)                               |0
-[作者](AuthorEntityAttributes.md)                             |第
+[作者](AuthorEntityAttributes.md)                             |1
 [期刊](JournalEntityAttributes.md)                           |2
 [会议录](JournalEntityAttributes.md)                 |3
 [会议实例](ConferenceInstanceEntityAttributes.md)    |4

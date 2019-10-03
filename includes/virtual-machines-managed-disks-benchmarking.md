@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890949"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673240"
 ---
-预热缓存  
+预热缓存   
 启用 ReadOnly 主机缓存的磁盘能够提供比磁盘限制更高的 IOPS。 若要通过主机缓存来实现此最大读取性能，首先必须对此磁盘的缓存进行预热。 这样可确保需要通过基准测试工具在 CacheReads 卷上实现的读取 IO 实际上可以直接命中缓存而不是磁盘。 命中缓存导致单个启用缓存的磁盘可以实现额外的 IOPS。
 
 > [!IMPORTANT]
@@ -25,7 +25,7 @@ ms.locfileid: "56890949"
 
 ### <a name="iometer"></a>Iometer
 
-在 VM 上[下载 Iometer 工具](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download)。
+在 VM 上[下载 Iometer 工具](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download)。
 
 #### <a name="test-file"></a>测试文件
 
@@ -68,12 +68,12 @@ Iometer 使用一个测试文件，该文件存储在运行基准测试的卷上
    | RandomReads\_1MB |1 MB |100 |100 |
 1. 运行 Iometer 测试，以便使用以下参数初始化缓存磁盘。 针对目标卷使用三个工作线程，队列深度为 128。 在“测试设置”选项卡上将测试的“运行时间”持续时间设置为 2 小时。
 
-   | 场景 | 目标卷 | 名称 | Duration |
+   | 应用场景 | 目标卷 | 名称 | Duration |
    | --- | --- | --- | --- |
    | 初始化缓存磁盘 |CacheReads |RandomWrites\_1MB |2 小时 |
 1. 运行 Iometer 测试，以便使用以下参数预热缓存磁盘。 针对目标卷使用三个工作线程，队列深度为 128。 在“测试设置”选项卡上将测试的“运行时间”持续时间设置为 2 小时。
 
-   | 场景 | 目标卷 | 名称 | 持续时间 |
+   | 应用场景 | 目标卷 | 名称 | 持续时间 |
    | --- | --- | --- | --- |
    | 预热缓存磁盘 |CacheReads |RandomReads\_1MB |2 小时 |
 
@@ -102,7 +102,7 @@ Iometer 使用一个测试文件，该文件存储在运行基准测试的卷上
 
 ### <a name="fio"></a>FIO
 
-FIO 是一种常用工具，可以在 Linux VM 上对存储进行基准测试。 它可以灵活地选择不同的 IO 大小、顺序或随机读取和写入。 它生成的工作线程或进程可以执行指定的 I/O 操作。 可以使用作业文件指定每个工作线程必须执行的 I/O 操作类型。 我们根据以下示例所描述的方案创建了一个作业文件。 可以更改这些作业文件中的规范，以便对在高级存储上运行的不同工作负荷进行基准测试。 在这些示例中，我们将使用运行 **Ubuntu** 的标准 DS 14 VM。 运行基准测试之前，请将缓存中使用相同的安装程序中的基准测试部分开头所述和感兴趣。
+FIO 是一种常用工具，可以在 Linux VM 上对存储进行基准测试。 它可以灵活地选择不同的 IO 大小、顺序或随机读取和写入。 它生成的工作线程或进程可以执行指定的 I/O 操作。 可以使用作业文件指定每个工作线程必须执行的 I/O 操作类型。 我们根据以下示例所描述的方案创建了一个作业文件。 可以更改这些作业文件中的规范，以便对在高级存储上运行的不同工作负荷进行基准测试。 在这些示例中，我们将使用运行 **Ubuntu** 的标准 DS 14 VM。 运行基准测试之前，请使用基准测试部分开头所述的相同设置来预热缓存。
 
 开始之前，请[下载 FIO](https://github.com/axboe/fio) 并将其安装在虚拟机上。
 

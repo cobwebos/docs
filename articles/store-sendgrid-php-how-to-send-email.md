@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
-ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: db3333aa52782ceb949ef3f46a903b618f6e3f2f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.author: erikre
+ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
+ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693018"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870913"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>如何通过 PHP 使用 SendGrid 电子邮件服务
 
@@ -52,7 +53,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 
 ### <a name="smtp-api"></a>SMTP API
 
-若要使用 SendGrid SMTP API 发送电子邮件，请使用 Swift Mailer，这是用于从 PHP 应用程序中发送电子邮件的基于组件的库。 可以下载 [Swift Mailer 库](https://swiftmailer.symfony.com/) v5.3.0（使用 [编辑器] 安装 Swift Mailer）。 利用库发送电子邮件涉及创建 `Swift\_SmtpTransport`、`Swift\_Mailer` 和 `Swift\_Message` 类的实例，设置适当的属性以及调用 `Swift\_Mailer::send` 方法。
+若要使用 SendGrid SMTP API 发送电子邮件，请使用 Swift Mailer  ，这是用于从 PHP 应用程序中发送电子邮件的基于组件的库。 可以下载 [Swift Mailer 库](https://swiftmailer.symfony.com/) v5.3.0（使用 [编辑器] 安装 Swift Mailer）。 利用库发送电子邮件涉及创建 `Swift\_SmtpTransport`、`Swift\_Mailer` 和 `Swift\_Message` 类的实例，设置适当的属性以及调用 `Swift\_Mailer::send` 方法。
 
 ```php
 <?php
@@ -117,7 +118,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 ```
 
 ### <a name="web-api"></a>Web API
-使用 PHP 的 [curl 函数][curl function]来通过 SendGrid Web API 发送电子邮件。
+使用 PHP 的[卷函数][curl function]通过 SENDGRID Web API 发送电子邮件。
 
 ```php
 <?php
@@ -298,7 +299,7 @@ SendGrid 的 Web API 与 REST API 非常相似，尽管它不是真正的 RESTfu
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>如何：使用筛选器启用页脚、跟踪和分析
 
-SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些设置添加到电子邮件以启用特定功能（例如启用单击跟踪、Google 分析、订阅跟踪等）。
+SendGrid 可通过使用筛选器  提供其他电子邮件功能。 可将这些设置添加到电子邮件以启用特定功能（例如启用单击跟踪、Google 分析、订阅跟踪等）。
 
 可使用 filters 属性将筛选器应用于邮件。 每个筛选器均由一个包含特定于筛选器的设置的哈希指定。 下面的示例将启用页脚筛选器并指定将追加到电子邮件底部的短信。 在此示例中，我们将使用 [sendgrid-php 库]。
 

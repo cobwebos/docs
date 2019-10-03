@@ -10,18 +10,18 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 16efb97569aabbea28065b03e9944d6881c39eee
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886819"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66390167"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>必应拼写检查 API 的语言和区域支持
 
 必应拼写检查 API 支持以下语言（仅在 `spell` 模式有效）。
 
-请注意，要以 `en-US` 以外的任何语言工作，应将 `mkt` 设置为 `Accept-Language`或将 `setLang` 设置为 [拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)中所述的值
+请注意，要以 `en-US` 以外的任何语言工作，应将 `mkt` 设置为 `Accept-Language`或将 `setLang` 设置为 [拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)中所述的值
 
 | 语言    | 语言代码 |
 |:----------- |:-------------:|

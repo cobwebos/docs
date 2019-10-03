@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户的本地编码器实时传送流 |Microsoft Docs
+title: 在 Azure 门户中使用本地编码器实时传送流 | Microsoft Docs
 description: 本教程指导完成相关步骤，以便创建经配置后可以进行直通传递的“通道”。
 services: media-services
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802807"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61463253"
 ---
-# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>使用 Azure 门户中使用的本地编码器实时传送视频
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>在 Azure 门户中使用本地编码器实时传送流
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -49,7 +49,7 @@ ms.locfileid: "58802807"
 
 ## <a id="scenario"></a>常见实时流式处理方案
 
-以下步骤说明了在创建常用的实时传送视频流应用程序时涉及的任务，这些应用程序使用的通道经配置后可以进行直通传递。 本教程说明了如何创建和管理直通通道和实时事件。
+以下步骤说明了在创建常用的实时传送视频流应用程序时涉及的任务，这些应用程序使用的通道经配置后可以进行直通传递。 本教程说明了如何创建和管理直通通道和直播活动。
 
 > [!NOTE]
 > 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。 
@@ -65,9 +65,9 @@ ms.locfileid: "58802807"
 1. 检索频道预览 URL。 
    
     使用此 URL 来验证频道是否正常接收实时流。
-1. 创建实时事件/节目。 
+1. 创建直播活动/节目。 
    
-    使用 Azure 门户时，创建实时事件的同时还会创建资产。 
+    使用 Azure 门户时，创建直播活动的同时还会创建资产。 
 
 1. 在准备好开始流式传输和存档时，启动事件/节目。
 1. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
@@ -93,7 +93,7 @@ ms.locfileid: "58802807"
 
 一个通道最多支持三个并发运行的事件，因此可以为同一传入流创建多个存档。 这样，便可以根据需要发布和存档事件的不同部分。 例如，业务要求是存档 6 小时的节目，但只广播过去 10 分钟的内容。 为了实现此目的，需要创建两个同时运行的节目。 一个节目设置为存档 6 小时的事件但不发布该节目。 另一个节目设置为存档 10 分钟的事件，并且要发布该节目。
 
-不应重复使用现有的实时事件。 与之相反，应针对每个事件创建并启动新事件。
+不应重复使用现有的直播活动。 与之相反，应针对每个事件创建并启动新事件。
 
 在准备好开始流式传输和存档时，启动事件。 在要停止对事件进行流式传输和存档时，停止节目。 
 
@@ -104,7 +104,7 @@ ms.locfileid: "58802807"
 如果希望保留已存档的内容但不希望其可供流式传输，请删除流式传输定位符。
 
 ### <a name="to-use-the-portal-to-create-a-channel"></a>使用门户来创建通道
-本部分演示如何使用“快速创建”  选项来创建直通通道。
+本部分演示如何使用“快速创建” 选项来创建直通通道。
 
 有关直通通道的详细信息，请参阅[使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)。
 
@@ -113,17 +113,17 @@ ms.locfileid: "58802807"
    
     ![入门](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
-    此时会显示“实时传送视频流”  窗口。
-3. 单击“快速创建”  ，即可使用 RTMP 引入协议创建直通通道。
+    此时会显示“实时传送视频流” 窗口。
+3. 单击“快速创建” ，即可使用 RTMP 引入协议创建直通通道。
    
-    此时会显示“创建新通道”  窗口。
-4. 为新通道命名，并单击“创建” 。 
+    此时会显示“创建新通道” 窗口。
+4. 为新通道命名，并单击“创建”。 
    
     此时会使用 RTMP 引入协议创建直通通道。
 
 ## <a name="create-events"></a>创建事件
 1. 选择要添加事件的通道。
-2. 按“实时事件”  按钮。
+2. 按“直播活动”按钮。
 
 ![事件](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "58802807"
 ![已创建](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>观看事件
-要观看事件，请在 Azure 门户中单击“观看”  ，或者先复制流式处理 URL，并使用选择的播放器进行播放。 
+要观看事件，请在 Azure 门户中单击“观看” ，或者先复制流式处理 URL，并使用选择的播放器进行播放。 
 
 ![已创建](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
@@ -143,7 +143,7 @@ ms.locfileid: "58802807"
 有关直通通道的详细信息，请参阅[使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)。
 
 * 只有当频道中的所有事件/节目都已停止时，才能停止频道。  通道停止后，不会产生任何费用。 当需要重新启动它时，它会采用相同的引入 URL，因此，无需重新配置编码器。
-* 只有当频道中的所有实时事件都已删除时，才能删除频道。
+* 只有当频道中的所有直播活动都已删除时，才能删除频道。
 
 ## <a name="view-archived-content"></a>查看存档的内容
 即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 

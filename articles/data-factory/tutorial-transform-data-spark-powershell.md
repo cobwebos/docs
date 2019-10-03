@@ -11,12 +11,12 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: f273237431373aa69423ba244d4e7c509ffe7bfe
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 7c7b2b75bdf8aa2be0ea9dd2b60453c2480fc1d2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57577103"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813433"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 本教程使用 Azure PowerShell 创建一个数据工厂管道，该管道可以使用 Spark 活动和按需 HDInsight 链接服务转换数据。 在本教程中执行以下步骤：
@@ -137,7 +137,7 @@ ms.locfileid: "57577103"
 
 - **hostSubscriptionId**。 将 &lt;subscriptionID&gt; 替换为 Azure 订阅的 ID。 按需 HDInsight 群集在此 Azure 订阅中创建。 
 - **tenant**。 将 &lt;tenantID&gt; 替换为 Azure 租户的 ID。 
-- **servicePrincipalId**、**servicePrincipalKey**。 将 &lt;servicePrincipalID&gt; 和 &lt;servicePrincipalKey&gt; 分别替换为 Azure Active Directory 中服务主体的 ID 和密钥。 此服务主体需是订阅“参与者”角色的成员，或创建群集的资源组的成员。 有关详细信息，请参阅[创建 Azure Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。 
+- **servicePrincipalId**、**servicePrincipalKey**。 将 &lt;servicePrincipalID&gt; 和 &lt;servicePrincipalKey&gt; 分别替换为 Azure Active Directory 中服务主体的 ID 和密钥。 此服务主体需是订阅“参与者”角色的成员，或创建群集的资源组的成员。 有关详细信息，请参阅[创建 Azure Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。 服务主体 ID 等效于应用程序 ID，服务主体密钥等效于客户端密码的值     。
 - **clusterResourceGroup**。 将 &lt;resourceGroupOfHDICluster&gt; 替换为需要在其中创建资源组的 HDInsight 群集的名称。 
 
 > [!NOTE]
@@ -201,7 +201,7 @@ ms.locfileid: "57577103"
     ```powershell
     $pipelineName = "MySparkOnDemandPipeline" # Name of the pipeline
     ```
-2. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+2. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
     运行以下命令并输入用于登录 Azure 门户的用户名和密码：
         

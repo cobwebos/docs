@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0dd55a3b0e27c87f9ab5d4aa4a3ce89446ee0519
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: ad8aa9f5e37ab4d3df730cbb58fec0994bcbd509
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54027085"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66255963"
 ---
 # <a name="sdk-release-notes---application-insights"></a>SDK 发行说明 - Application Insights
 以下是 SDK 的详细发行说明和更新说明：
@@ -28,7 +28,6 @@ ms.locfileid: "54027085"
 * [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)
 * [Java](https://github.com/Microsoft/ApplicationInsights-Java)
 * [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/commits/master)
-* [Visual Studio 工具](release-notes-vsix.md)
 * [其他平台](https://github.com/Microsoft/ApplicationInsights-Home)
 
 此外，请阅读我们的[博客](https://azure.microsoft.com/blog/tag/application-insights/)和[服务更新](https://azure.microsoft.com/updates/?service=application-insights)，它从整体上概括了 Application Insights 服务中的重大改进。

@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/22/2019
+ms.date: 05/23/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 72d9ec52732a78e39f6481e2cb2d40f17f86f028
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 7b9b30f1598f7e50d25b15aaf2fda896ee9e5012
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58494988"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66248929"
 ---
 # <a name="enable-write-accelerator"></a>启用写入加速器
 
@@ -48,13 +48,14 @@ ms.locfileid: "58494988"
 
 | VM SKU | 写入加速器磁盘数 | 每个 VM 的写入加速器磁盘 IOPS |
 | --- | --- | --- |
+| M208ms_v2, M208s_v2| 8 | 10000 |
 | M128ms、128s | 16 | 20000 |
 | M64ms、M64ls、M64s | 8 | 10000 |
 | M32ms、M32ls、M32ts、M32s | 4 | 5000 |
 | M16ms、M16s | 2 | 2500 |
 | M8ms、M8s | 第 | 1250 |
 
-IOPS 限制是针对每个 VM 而不是每个磁盘。 对于每个 VM，所有写入加速器磁盘具有相同的 IOPS 限制。
+IOPS 限制是针对每个 VM 而不是每个磁盘  。 对于每个 VM，所有写入加速器磁盘具有相同的 IOPS 限制。
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>在特定磁盘上启用写入加速器
 
@@ -87,7 +88,7 @@ Azure PowerShell 模块 5.5.0 和更高版本对相关的 cmdlet 做了更改，
 
 默认情况下，不指定该参数会将属性设置为 false，并且会返回不利用写入加速器的磁盘。
 
-已将新的可选布尔参数（不可为 null）**-OsDiskWriteAccelerator** 添加到以下 cmdlet：
+已将新的可选布尔参数（不可为 null） **-OsDiskWriteAccelerator** 添加到以下 cmdlet：
 
 - [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
 - [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)

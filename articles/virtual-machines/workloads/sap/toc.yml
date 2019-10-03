@@ -86,6 +86,8 @@
       href: cal-s4h.md
     - name: Azure 上的 SAP HANA 基础结构配置和操作
       href: hana-vm-operations.md
+    - name: SAP HANA Azure 虚拟机存储配置
+      href: hana-vm-operations-storage.md
     - name: Azure 虚拟机中的 SAP HANA 可用性
       items:
         - name: Azure SAP HANA 可用性概述
@@ -126,6 +128,8 @@
           href: dbms_guide_ibm.md
         - name: SUSE Linux Enterprise Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
           href: dbms-guide-ha-ibm.md
+        - name: Red Hat Enterprise Linux Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
+          href: high-availability-guide-rhel-ibm-db2-luw.md
         - name: 适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
           href: dbms_guide_sapase.md
         - name: Azure 上的 SAP MaxDB、liveCache 和内容服务器部署
@@ -166,6 +170,8 @@
               href: high-availability-guide-suse-netapp-files.md
             - name: 在 Red Hat Enterprise Linux 上为 (A)SCS 实例提供 HA
               href: high-availability-guide-rhel.md
+            - name: 通过 Azure NetApp 文件实现用于 (A)SCS 实例的 Red Hat Enterprise Linux 上的 HA
+              href: high-availability-guide-rhel-netapp-files.md
         - name: Azure 基础结构准备
           items:
             - name: Windows 以及用于 (A)SCS 实例的共享磁盘
@@ -192,6 +198,8 @@
               href: high-availability-guide-suse-netapp-files.md
             - name: Red Hat Enterprise Linux 上的 SAP NetWeaver 的高可用性
               href: high-availability-guide-rhel.md
+            - name: 将用于 (A)SCS 实例的 Red Hat Enterprise Linux 与 Azure NetApp 文件配合使用
+              href: high-availability-guide-rhel-netapp-files.md
         - name: SAP 多 SID
           items:
             - name: Windows 以及用于 (A)SCS 实例的共享磁盘
@@ -200,6 +208,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
     - name: 使用 Azure Site Recovery 进行 SAP 灾难恢复
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+    - name: 用于最大程度地降低 SAP 应用程序网络延迟的 Azure 邻近放置组
+      href: sap-proximity-placement-scenarios.md
 - name: AAD SAP 标识集成和单一登录
   items:
     - name: 与 SAP 云集成

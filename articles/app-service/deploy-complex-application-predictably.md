@@ -10,17 +10,16 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e6d18222e15f62f12592362827b6dbc4a3d7dfbc
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b13bc43595c09b3700798935f70c401c9311651c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820308"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070881"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
 本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure App Service](https://azure.microsoft.com/services/app-service/) 中将由[微服务](https://en.wikipedia.org/wiki/Microservices)构成的应用程序设置并部署为单个单元。 
@@ -97,8 +96,8 @@ ms.locfileid: "56820308"
 
 我不打算介绍 JSON 格式的每个细节，但[更多资源](#resources)部分包含可用于学习资源组模板语言的链接。 在这里，我只打算向你展示有趣的功能，可帮助你开始制作自己的自定义模板来部署应用。
 
-### <a name="parameters"></a>parameters
-看一看参数部分，你会看到这些参数大都是“部署到 Azure”  按钮提示你输入的内容。 “部署到 Azure” 按钮背后的站点使用 azuredeploy.json 中定义的参数填充输入 UI。 这些参数用于整个资源定义，例如资源名称、属性值等。
+### <a name="parameters"></a>Parameters
+看一看参数部分，你会看到这些参数大都是“部署到 Azure” 按钮提示你输入的内容。 “部署到 Azure”按钮背后的站点使用 azuredeploy.json 中定义的参数填充输入 UI。 这些参数用于整个资源定义，例如资源名称、属性值等。
 
 ### <a name="resources"></a>资源
 在资源节点中，可以看到定义了 4 个顶级资源，包括一个 SQL Server 实例、一个应用服务计划和两个应用。 
@@ -190,7 +189,7 @@ ms.locfileid: "56820308"
 再次重申，嵌套资源的层次结构应非常类似于 JSON 模板文件中的层次结构，并且应看到应用设置、连接字符串等正确反映在 JSON 窗格中。 如果此处的设置不存在，则可能指示 JSON 文件存在问题，可借此排查 JSON 模板文件的问题。
 
 ## <a name="deploy-the-resource-group-template-yourself"></a>自己部署资源组模板
- “部署到 Azure”按钮太好用了，但是只有当你已将 azuredeploy.json 推送到 GitHub 时，它才允许你部署 azuredeploy.json 中的资源组模板。 Azure.NET SDK 还提供了工具，使你能够直接从本地计算机部署任何 JSON 模板文件。 为此，请执行以下步骤：
+“部署到 Azure”按钮太好用了，但是只有当你已将 azuredeploy.json 推送到 GitHub 时，它才允许你部署 azuredeploy.json 中的资源组模板。 Azure.NET SDK 还提供了工具，使你能够直接从本地计算机部署任何 JSON 模板文件。 为此，请执行以下步骤：
 
 1. 在 Visual Studio 中，单击“文件” > “新建” > “项目”。
 2. 单击“Visual C#” > “云” > “Azure 资源组”，并单击“确定”。
@@ -254,7 +253,7 @@ ms.locfileid: "56820308"
 
 最后一个 cmdlet，`New-AzureResourceGroup`，实际执行了该操作。 所有这一切向你展示了，借助工具可相对简单地以可预见的方式部署云应用程序。 每使用相同的参数文件在相同的模板上运行该 cmdlet 时，都会获得相同的结果。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 在 DevOps 中，可重复性和可预见性对成功部署由微服务构成的高扩展性应用程序至关重要。 在本教程中，已经通过使用 Azure 资源管理器模板将一个由两个微服务构成的应用程序作为单个资源组部署到 Azure。 但愿这已提供所需的知识，使你能够在 Azure 中开始将应用程序转换为模板，并且能够以可预见的方式设置和部署它。 
 
 <a name="resources"></a>

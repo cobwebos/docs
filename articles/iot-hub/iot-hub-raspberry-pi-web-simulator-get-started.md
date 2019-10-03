@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: 42c2c0d1a015baf4b846c86ed22e8383e21028b6
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 9af2f0860c415ddb701e24ed8a698fae36d42e1f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607563"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838707"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 联机模拟器连接到 Azure IoT 中心 (Node.js)
 
@@ -71,11 +71,11 @@ Web 模拟器中有三个区域。
 
 3. 集成控制台窗口 - 显示代码输出。 在此窗口的顶部，有三个按钮。
 
-   * 运行 - 在编码区域运行应用程序。
+   * 运行 - 在编码区域运行应用程序  。
 
-   * 重置 - 将编码区域重置为默认示例应用程序。
+   * 重置 - 将编码区域重置为默认示例应用程序  。
 
-   * 折叠/展开 - 可使用右侧的按钮折叠/展开控制台窗口。
+   * 折叠/展开 - 可使用右侧的按钮折叠/展开控制台窗口  。
 
 > [!NOTE]
 > 目前 Raspberry Pi Web 模拟器在预览版中可用。 请通过 [Gitter Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator) 向我们提供意见和建议。 源代码在 [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator) 上是公开的。
@@ -85,10 +85,6 @@ Web 模拟器中有三个区域。
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
-
-### <a name="retrieve-connection-string-for-iot-hub"></a>检索 IoT 中心的连接字符串
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
 ## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中心内注册新设备
 
@@ -100,15 +96,15 @@ Web 模拟器中有三个区域。
 1. 
    ![设备连接字符串替换为](media/iot-hub-raspberry-pi-web-simulator/1-connectionstring.png)
 
-2. 选择**运行**或类型`npm start`运行该应用程序。
+2. 选择“运行”，或键入 `npm start`，即可运行应用程序  。
 
 应看到以下输出，该输出显示传感器数据和发送到 IoT 中心的消息![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>读取中心收到的消息
+## <a name="read-the-messages-received-by-your-hub"></a>读取 IoT 中心收到的消息
 
-若要监视从模拟设备在 IoT 中心接收的消息的一种方法是使用用于 Visual Studio Code 的 Azure IoT 工具。 若要了解详细信息，请参阅[使用针对 Visual Studio Code 进行发送和接收消息在设备与 IoT 中心之间的 Azure IoT 工具](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+若要监视 IoT 中心从模拟设备收到的消息，一种方法是使用适用于 Visual Studio Code 的 Azure IoT Tools。 若要了解详细信息，请参阅[使用适用于 Visual Studio Code 的 Azure IoT Tools 在设备和 IoT 中心之间发送和接收消息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
 
-有关更多方法来处理设备发送的数据，继续学习下一节。
+若要了解如何通过更多方式来处理设备发送的数据，请转到下一部分。
 
 ## <a name="next-steps"></a>后续步骤
 

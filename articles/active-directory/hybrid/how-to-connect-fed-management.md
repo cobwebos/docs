@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870935"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085232"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自定义 Active Directory 联合身份验证服务
 本文介绍如何使用 Azure Active Directory (Azure AD) Connect 管理和自定义 Active Directory 联合身份验证服务 (AD FS)。 另外，还介绍了可能需要针对完整的 AD FS 场配置执行的其他常见 AD FS 任务。
@@ -64,7 +64,7 @@ ms.locfileid: "56870935"
 
     “已准备好配置”页会显示为修复信任而将要执行的操作列表。
 
-    ![已准备好配置](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![已准备好进行配置](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. 单击“安装”修复信任。
 
@@ -178,7 +178,7 @@ ms.locfileid: "56870935"
 
 5. 单击“下一步”。 “已准备好配置”页会显示 Azure AD Connect 将要执行的操作列表。 单击“安装”完成配置。
 
-   ![已准备好配置](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
+   ![已准备好进行配置](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
 > [!NOTE]
 > 已添加的联合域中的用户必须在同步之后才能登录到 Azure AD。
@@ -231,7 +231,7 @@ AD FS 支持丰富的声明语言，可用于创建自定义声明规则。 有�
 **规则 3：如果存在，则将 ms-ds-consistencyguid 作为不可变 ID 发出**
 
     c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
-    => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c.Value);
+    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
 
 这是隐式的 **Exist** 检查。 如果声明的值存在，则将其作为不可变 ID 发布。 之前的示例使用 **nameidentifier** 声明。 需要将其更改为环境中不可变 ID 的适当声明类型。
 
@@ -239,7 +239,7 @@ AD FS 支持丰富的声明语言，可用于创建自定义声明规则。 有�
 
     c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
     && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
-    => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c2.Value);
+    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
 
 在此规则中，只检查临时标志 **idflag**。 根据该标志的值决定是否发出声明。
 

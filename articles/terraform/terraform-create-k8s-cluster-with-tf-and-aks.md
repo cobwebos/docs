@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 12/04/2018
-ms.openlocfilehash: d8438f5ddbbb3744811448aeb563be602b04516d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: d7e6b5c5b9b36e093986aa96a6ad9b401175deb2
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009097"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173498"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>使用 Azure Kubernetes 服务和 Terraform 创建 Kubernetes 群集
 [Azure Kubernetes 服务 (AKS)](/azure/aks/) 管理托管的 Kubernetes 环境，使用户无需具备容器业务流程专业知识即可快速、轻松地部署和管理容器化的应用程序。 它还通过按需预配、升级和缩放资源，消除了正在进行的操作和维护的负担，而无需使应用程序脱机。
@@ -32,14 +32,14 @@ ms.locfileid: "58009097"
 
 - **配置 Terraform**：遵循[安装 Terraform 并配置对 Azure 的访问权限](/azure/virtual-machines/linux/terraform-install-configure)一文中的指导
 
-- **Azure 服务主体**：遵循[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)一文的“创建服务主体”部分中的指导。 记下 appId、displayName、password 和 tenant 的值。
+- **Azure 服务主体**：遵循[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)一文的“创建服务主体”部分中的指导  。 记下 appId、displayName、password 和 tenant 的值。
 
 ## <a name="create-the-directory-structure"></a>创建目录结构
 首先，创建包含 Terraform 配置文件的目录用于练习。
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)。
 
-1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。
+1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。 
 
     ![Cloud Shell 提示符](./media/terraform-create-k8s-cluster-with-tf-and-aks/azure-portal-cloud-shell-button-min.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "58009097"
 
 1. 在编辑器中粘贴以下代码：
 
-    ```JSON
+    ```hcl
     provider "azurerm" {
         version = "~>1.5"
     }
@@ -105,14 +105,19 @@ ms.locfileid: "58009097"
 
 1. 在编辑器中粘贴以下代码：
 
-    ```JSON
+    ```hcl
     resource "azurerm_resource_group" "k8s" {
         name     = "${var.resource_group_name}"
         location = "${var.location}"
     }
+    
+    resource "random_id" "log_analytics_workspace_name_suffix" {
+        byte_length = 8
+    }
 
     resource "azurerm_log_analytics_workspace" "test" {
-        name                = "${var.log_analytics_workspace_name}"
+        # The WorkSpace name has to be unique across the whole of azure, not just the current subscription/tenant.
+        name                = "${var.log_analytics_workspace_name}-${random_id.log_analytics_workspace_name_suffix.dec}"
         location            = "${var.log_analytics_workspace_location}"
         resource_group_name = "${azurerm_resource_group.k8s.name}"
         sku                 = "${var.log_analytics_workspace_sku}"
@@ -165,7 +170,7 @@ ms.locfileid: "58009097"
             }
         }
 
-        tags {
+        tags = {
             Environment = "Development"
         }
     }
@@ -197,7 +202,7 @@ ms.locfileid: "58009097"
 
 1. 在编辑器中粘贴以下代码：
 
-    ```JSON
+    ```hcl
     variable "client_id" {}
     variable "client_secret" {}
 
@@ -261,7 +266,7 @@ ms.locfileid: "58009097"
 
 1. 在编辑器中粘贴以下代码：
 
-    ```JSON
+    ```hcl
     output "client_key" {
         value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_key}"
     }
@@ -302,23 +307,23 @@ ms.locfileid: "58009097"
 ## <a name="set-up-azure-storage-to-store-terraform-state"></a>将 Azure 存储设置为存储 Terraform 状态
 Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户环境中，此模式非常合适。 但是，在更常见的多用户环境中，需要利用 [Azure 存储](/azure/storage/)来跟踪服务器上的状态。 在本部分，我们将检索所需的存储帐户信息（帐户名称和帐户密钥），并创建用于存储 Terraform 状态信息的存储容器。
 
-1. 在 Azure 门户的左侧菜单中，选择“所有服务”。
+1. 在 Azure 门户的左侧菜单中，选择“所有服务”。 
 
-1. 选择“存储帐户”。
+1. 选择“存储帐户”。 
 
-1. 在“存储帐户”选项卡上，选择用于存储 Terraform 状态信息的存储帐户名称。 例如，可以使用首次打开 Cloud Shell 时创建的存储帐户。  Cloud Shell 创建的存储帐户名称通常以 `cs` 开头，后接由数字和字母组成的随机字符串。 **请记住选择的存储帐户名称，因为稍后需要用到。**
+1. 在“存储帐户”选项卡上，选择用于存储 Terraform 状态信息的存储帐户名称。  例如，可以使用首次打开 Cloud Shell 时创建的存储帐户。  Cloud Shell 创建的存储帐户名称通常以 `cs` 开头，后接由数字和字母组成的随机字符串。 **请记住选择的存储帐户名称，因为稍后需要用到。**
 
-1. 在存储帐户选项卡上，选择“访问密钥”。
+1. 在存储帐户选项卡上，选择“访问密钥”。 
 
     ![存储帐户菜单](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account.png)
 
-1. 记下“密钥 1”密钥值。 （选择密钥右侧的图标将值复制到剪贴板。）
+1. 记下“密钥 1”密钥值。   （选择密钥右侧的图标将值复制到剪贴板。）
 
     ![存储帐户访问密钥](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
 
 1. 在 Cloud Shell 中，在 Azure 存储帐户内创建一个容器（请将 &lt;YourAzureStorageAccountName> 和 &lt;YourAzureStorageAccountAccessKey> 占位符替换为 Azure 存储帐户的相应值）。
 
-    ```bash
+    ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
     ```
 
@@ -362,7 +367,7 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
 
     ![“Terraform apply”结果示例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. 在 Azure 门户中，在左侧菜单中选择“所有服务”，查看为新 Kubernetes 群集创建的资源。
+1. 在 Azure 门户中，在左侧菜单中选择“所有服务”，查看为新 Kubernetes 群集创建的资源。 
 
     ![Cloud Shell 提示符](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 
@@ -404,7 +409,7 @@ Terraform 在本地通过 `terraform.tfstate` 文件跟踪状态。 在单用户
     kubectl get nodes
     ```
 
-    应会看到工作节点的详细信息，并且这些节点的状态为“就绪”，如下图所示：
+    应会看到工作节点的详细信息，并且这些节点的状态为“就绪”，如下图所示： 
 
     ![使用 kubectl 工具可以验证 Kubernetes 群集的运行状况](./media/terraform-create-k8s-cluster-with-tf-and-aks/kubectl-get-nodes.png)
 

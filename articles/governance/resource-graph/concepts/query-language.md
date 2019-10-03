@@ -1,19 +1,18 @@
 ---
 title: 理解查询语言
-description: 介绍可用 Kusto 运算符和函数可用于 Azure 资源的图形。
+description: 介绍可用于 Azure 资源关系图的可用 Kusto 运算符和函数。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/11/2018
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 08e4f09665a3501073f55b7f5b82bf51cf508ea9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c6e35d688581d0839e12806117e63c7d71fbc459
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276671"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231510"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -25,7 +24,7 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每项工作�
 
 下面是 Resource Graph 中支持的表格运算符列表：
 
-- [count](/azure/kusto/query/countoperator)
+- [计数](/azure/kusto/query/countoperator)
 - [distinct](/azure/kusto/query/distinctoperator)
 - [extend](/azure/kusto/query/extendoperator)
 - [limit](/azure/kusto/query/limitoperator)
@@ -52,6 +51,38 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每项工作�
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)
 - [tostring()](/azure/kusto/query/tostringfunction)
 - [zip()](/azure/kusto/query/zipfunction)
+
+## <a name="escape-characters"></a>转义字符
+
+某些属性名称 (如包含`.`或`$`的属性名称) 在查询中必须进行包装或转义, 或者属性名称解释错误, 不提供预期结果。
+
+- `.`-包装属性名称, 如下所示:`['propertyname.withaperiod']`
+  
+  包装属性 odata 的示例查询 _。键入_:
+
+  ```kusto
+  where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
+  ```
+
+- `$`-对属性名称中的字符进行转义。 使用的转义字符取决于从运行的 shell 资源关系图。
+
+  - **狂欢** - `\`
+
+    在 bash 中对属性 _\$类型_进行转义的示例查询:
+
+    ```kusto
+    where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
+    ```
+
+  - **cmd** -不要转义`$`字符。
+
+  - **PowerShell** - ``` ` ```
+
+    在 PowerShell 中对属性 _\$类型_进行转义的示例查询:
+
+    ```kusto
+    where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

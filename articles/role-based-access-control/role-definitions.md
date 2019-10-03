@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7855c2bd45ba35ecb0ede5c60268e6446f37ed5a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1cd5325be7def4bc631d994f8811734e6c3cf545
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58804524"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996436"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>了解 Azure 资源的角色定义
 
@@ -52,7 +52,8 @@ AssignableScopes []
 | ------------------- | ------------------- |
 | `*` | 通配符授予对与字符串匹配的所有操作的访问权限。 |
 | `read` | 允许读取操作 (GET)。 |
-| `write` | 允许写入操作（PUT、POST 和 PATCH）。 |
+| `write` | 允许写入操作（PUT 或 PATCH）。 |
+| `action` | 允许自定义操作，如重启虚拟机 (POST)。 |
 | `delete` | 允许删除操作 (DELETE)。 |
 
 下面是 JSON 格式的[参与者](built-in-roles.md#contributor)角色定义。 `Actions` 下的通配符 (`*`) 操作表示分配给此角色的主体可以执行所有操作，换句话说，它可以管理所有内容。 这包括将来定义的操作，因为 Azure 会添加新的资源类型。 `NotActions` 下的操作会从 `Actions` 中减去。 就[参与者](built-in-roles.md#contributor)角色而言，`NotActions` 去除了此角色管理资源访问权限以及分配资源访问权限的能力。
@@ -79,7 +80,7 @@ AssignableScopes []
 }
 ```
 
-## <a name="management-and-data-operations-preview"></a>管理和数据操作（预览版）
+## <a name="management-and-data-operations"></a>管理和数据操作
 
 管理操作的基于角色的访问控制在角色定义的 `Actions` 和 `NotActions` 属性中指定。 下面是 Azure 中管理操作的一些示例：
 
@@ -87,9 +88,9 @@ AssignableScopes []
 - 创建、更新或删除 blob 容器
 - 删除资源组及其所有资源
 
-数据不会继承管理访问权限。 此分隔可防止带通配符 (`*`) 的角色无限制地访问数据。 例如，如果用户对订阅具有[读取者](built-in-roles.md#reader)角色，则他们可以查看存储帐户，但他们默认无法查看基础数据。
+如果将容器身份验证方法设置为 "Azure AD 用户帐户" 而不是 "访问密钥"，则不会继承数据的管理访问权限。 此分隔可防止带通配符 (`*`) 的角色无限制地访问数据。 例如，如果用户对订阅具有[读取者](built-in-roles.md#reader)角色，则他们可以查看存储帐户，但他们默认无法查看基础数据。
 
-以前，基于角色的访问控制不用于数据操作。 数据操作的授权根据资源提供程序的不同而异。 用于管理操作的同一基于角色的访问控制授权模型已扩展到数据操作（当前为预览版）。
+以前，基于角色的访问控制不用于数据操作。 数据操作的授权根据资源提供程序的不同而异。 用于管理操作的同一基于角色的访问控制授权模型已扩展到数据操作。
 
 为了支持数据操作，已将新的数据属性添加到角色定义结构。 数据操作在 `DataActions` 和 `NotDataActions` 属性中指定。 通过添加这些数据属性，可在管理与数据之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `DataActions` 和 `NotDataActions` 中指定的一些数据操作：
 
@@ -97,7 +98,7 @@ AssignableScopes []
 - 在容器中写入存储 Blob
 - 删除队列中的消息
 
-下面是[存储 Blob 数据读取器](built-in-roles.md#storage-blob-data-reader)角色定义，其中包括在这种操作`Actions`和`DataActions`属性。 使用此角色可以读取 Blob 容器以及基础 Blob 数据。
+下面是[存储 Blob 数据读取者](built-in-roles.md#storage-blob-data-reader)角色定义，其中包含 `Actions` 和 `DataActions` 属性中的操作。 使用此角色可以读取 Blob 容器以及基础 Blob 数据。
 
 ```json
 {
@@ -125,11 +126,11 @@ AssignableScopes []
 
 ### <a name="data-operations-example"></a>数据操作示例
 
-为了更好地了解管理和数据操作的工作原理，让我们考虑一个具体的示例。 在订阅范围为 Alice 分配了[所有者](built-in-roles.md#owner)角色。 已分配 Bob[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)在存储帐户范围内的角色。 下图演示了此示例。
+为了更好地了解管理和数据操作的工作原理，让我们考虑一个具体的示例。 在订阅范围为 Alice 分配了[所有者](built-in-roles.md#owner)角色。 在存储帐户范围为 Bob 分配了[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色。 下图演示了此示例。
 
 ![基于角色的访问控制已得到扩展，支持管理和数据操作](./media/role-definitions/rbac-management-data.png)
 
-[所有者](built-in-roles.md#owner)Alice 的角色和[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)Bob 的角色具有以下操作：
+Alice 的[所有者](built-in-roles.md#owner)角色和 Bob 的[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色具有以下操作：
 
 所有者
 
@@ -147,9 +148,9 @@ AssignableScopes []
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-由于 Alice 具有订阅范围的通配符 (`*`) 操作，她的权限将向下继承，使她可以执行所有管理操作。 Alice 可以读取、写入和删除容器。 但是，Alice 在不采取其他步骤的情况下无法执行数据操作。 例如，默认情况下，Alice 无法读取容器内的 blob。 若要读取 blob，Alice 必须检索存储访问密钥并使用它们来访问 blob。
+由于 Alice 具有订阅范围的通配符 (`*`) 操作，其权限将向下继承，使其可以执行所有管理操作。 Alice 可以读取、写入和删除容器。 但是，Alice 在不采取其他步骤的情况下无法执行数据操作。 例如，默认情况下，Alice 无法读取容器内的 blob。 若要读取 blob，Alice 必须检索存储访问密钥并使用它们来访问 blob。
 
-Bob 的权限仅限于只`Actions`并`DataActions`中指定[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色。 Bob 可以基于角色执行管理和数据操作。 例如，Bob 可以读取、写入和删除指定存储帐户中的容器，并可以读取、写入和删除 Blob。
+Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色中指定的 `Actions` 和 `DataActions`。 Bob 可以基于角色执行管理和数据操作。 例如，Bob 可以读取、写入和删除指定存储帐户中的容器，并可以读取、写入和删除 Blob。
 
 有关存储的管理和数据平面安全性的详细信息，请参阅 [Azure 存储安全指南](../storage/common/storage-security-guide.md)。
 
@@ -157,25 +158,21 @@ Bob 的权限仅限于只`Actions`并`DataActions`中指定[存储 Blob 数据�
 
 若要查看和处理数据操作，必须安装正确版本的工具或 SDK：
 
-| 工具  | 版本  |
+| Tool  | Version  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 或更高版本 |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 或更高版本 |
 | [Azure for .NET](/dotnet/azure/) | 2.8.0-preview 或更高版本 |
-| [Azure SDK for Go](/go/azure/azure-sdk-go-install) | 15.0.0 或更高版本 |
+| [Azure SDK for Go](/azure/go/azure-sdk-go-install) | 15.0.0 或更高版本 |
 | [Azure for Java](/java/azure/) | 1.9.0 或更高版本 |
-| [Azure for Python](/python/azure) | 0.40.0 或更高版本 |
+| [Azure for Python](/azure/python/) | 0.40.0 或更高版本 |
 | [用于 Ruby 的 Azure SDK](https://rubygems.org/gems/azure_sdk) | 0.17.1 或更高版本 |
 
 若要查看和使用 REST API 中的数据操作，必须将 **api-version** 参数设置为以下版本或更高版本：
 
-- 2018-01-01-preview
+- 2018-07-01
 
-Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 Blob 容器的内容。 若要查看和管理队列或 Blob 容器的内容，请单击“存储帐户概述”上的“使用 Azure AD 预览版浏览数据”。
-
-![使用 Azure AD 预览版探索队列和 Blob 容器](./media/role-definitions/rbac-dataactions-browsing.png)
-
-## <a name="actions"></a>操作
+## <a name="actions"></a>个操作
 
 `Actions` 权限指定该角色允许执行的管理操作。 它是操作字符串的集合，可标识 Azure 资源提供程序的安全对象操作。 下面是一些可以在 `Actions` 中使用的管理操作的示例。
 
@@ -195,7 +192,7 @@ Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 
 > 如果用户分配到的一个角色排除了 `NotActions` 中的一个操作，而分配到的第二个角色向同一操作授予访问权限，则用户可以执行该操作。 `NotActions` 不是拒绝规则 - 它只是一个简便方法，可在需要排除特定操作时创建一组允许的操作。
 >
 
-## <a name="dataactions-preview"></a>DataActions（预览版）
+## <a name="dataactions"></a>DataActions
 
 `DataActions` 权限指定此角色允许对该对象中的数据执行的数据操作。 例如，如果某个用户对某个存储帐户拥有读取 Blob 数据的访问权限，则该用户可以读取该存储帐户中的 Blob。 下面是可在 `DataActions` 中使用的一些数据操作的示例。
 
@@ -206,7 +203,7 @@ Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | 返回消息。 |
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | 返回消息，或返回写入或删除消息的结果。 |
 
-## <a name="notdataactions-preview"></a>NotDataActions（预览版）
+## <a name="notdataactions"></a>NotDataActions
 
 `NotDataActions` 权限指定从允许的 `DataActions` 中排除的数据操作。 通过从 `DataActions` 操作中减去 `NotDataActions` 操作可以计算出角色授予的访问权限（有效权限）。 每个资源提供程序提供相应的一组 API 用于实现数据操作。
 
@@ -216,16 +213,18 @@ Azure 门户还允许用户通过 Azure AD 预览体验浏览和管理队列和 
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes` 属性指定角色可供分配的范围（订阅、资源组或资源）。 可以让角色只在需要它的订阅或资源组中进行分配，而不影响其他订阅或资源组的用户体验。 必须使用至少一个订阅、资源组或资源 ID。
+`AssignableScopes`属性指定具有此角色定义的作用域（管理组、订阅、资源组或资源）。 可以仅在需要此角色的管理组、订阅或资源组中进行分配。 必须使用至少一个管理组、订阅、资源组或资源 ID。
 
 内置角色已将 `AssignableScopes` 设置为根范围 (`"/"`)。 根范围指示角色可供在所有范围中进行分配。 有效的可分配范围的示例包括：
 
-| 场景 | 示例 |
+| 角色可用于分配 | 示例 |
 |----------|---------|
-| 角色可供在单个订阅中进行分配 | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
-| 角色可供在两个订阅中进行分配 | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
-| 角色只能在网络资源组中进行分配 | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| 角色可供在所有范围中进行分配 | `"/"` |
+| 一个订阅 | `"/subscriptions/{subscriptionId1}"` |
+| 两个订阅 | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
+| 网络资源组 | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
+| 一个管理组 | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
+| 管理组和订阅 | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
+| 所有范围（仅适用于内置角色） | `"/"` |
 
 有关自定义角色的 `AssignableScopes` 的信息，请参阅 [Azure 资源的自定义角色](custom-roles.md)。
 

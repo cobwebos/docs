@@ -8,13 +8,13 @@ author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 435ee13de28fb1591a5579761ecc7ad5bf9f9d76
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 98c7c2450b4aa828f544ecab4c1e320eb74bab45
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000838"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169780"
 ---
 # <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>教程：在 Azure 中使用 Terraform 创建本地虚拟网络
 
@@ -38,7 +38,7 @@ ms.locfileid: "58000838"
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)。
 
-1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。
+1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。 
 
     ![Cloud Shell 提示符](./media/terraform-common/azure-portal-cloud-shell-button-min.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "58000838"
 
 1. 在编辑器中粘贴以下代码：
 
-    ```JSON
+    ```hcl
     locals {
       onprem-location       = "SouthCentralUS"
       onprem-resource-group = "onprem-vnet-rg"

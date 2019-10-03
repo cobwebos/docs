@@ -10,14 +10,13 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: d1123affa79f401b5142af604adbd757bdfb7d73
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523760"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641041"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
@@ -178,7 +177,7 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 - $(job_execution_create_time)
 - $(target_group_name)
 
-例如，若要将同一作业执行操作的所有结果组合到一起，请使用 *$(job_execution_id)*，如以下命令所示：
+例如，若要将同一作业执行操作的所有结果组合到一起，请使用 *$(job_execution_id)* ，如以下命令所示：
 
 
 ```sql
@@ -193,7 +192,7 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 默认情况下，作业代理将查找创建表以存储返回的结果。 因此，与用于输出凭据的凭据相关联的登录将需要具有足够的权限来执行此操作。 如果要提前手动创建表，则需要具有以下属性：
 1. 具有结果集的正确名称和数据类型的列。
 2. 数据类型为 uniqueidentifier 的 internal_execution_id 的其他列。
-3. 名为非聚集索引`IX_<TableName>_Internal_Execution_ID`internal_execution_id 列上。
+3. internal_execution_id 列上名为 `IX_<TableName>_Internal_Execution_ID` 的非聚集索引。
 
 连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
@@ -426,7 +425,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 
 
-### <a name="spaddjob"></a>sp_add_job
+### <a name="sp_add_job"></a>sp_add_job
 
 添加新的作业。 
   
@@ -456,7 +455,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 [ **\@enabled =** ] enabled  
 作业的计划是否已启用。 enabled 为 bit，默认值为 0（禁用）。 如果为 0，则作业未启用，不会按计划运行，但可手动运行。 如果为 1，则作业会按计划运行，也可手动运行。
 
-[ **\@schedule_interval_type =**] schedule_interval_type  
+[ **\@schedule_interval_type =** ] schedule_interval_type  
 其值指示何时会执行作业。 schedule_interval_type 为 nvarchar(50)，默认值为 Once，可以是下述值之一：
 - 'Once'；
 - 'Minutes'；
@@ -492,7 +491,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 若要详细了解这些角色的权限，请参阅本文档中的“权限”部分。 仅 sysadmin 的成员可以使用此存储过程来编辑其他用户拥有的作业的属性。
 
-### <a name="spupdatejob"></a>sp_update_job
+### <a name="sp_update_job"></a>sp_update_job
 
 更新现有的作业。
 
@@ -555,7 +554,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 
 
-### <a name="spdeletejob"></a>sp_delete_job
+### <a name="sp_delete_job"></a>sp_delete_job
 
 删除现有的作业。
 
@@ -587,7 +586,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 
 
-### <a name="spaddjobstep"></a>sp_add_jobstep
+### <a name="sp_add_jobstep"></a>sp_add_jobstep
 
 向作业添加步骤。
 
@@ -713,7 +712,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 
 
-### <a name="spupdatejobstep"></a>sp_update_jobstep
+### <a name="sp_update_jobstep"></a>sp_update_jobstep
 
 更新作业步骤。
 
@@ -838,7 +837,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 
 
-### <a name="spdeletejobstep"></a>sp_delete_jobstep
+### <a name="sp_delete_jobstep"></a>sp_delete_jobstep
 
 从作业中删除作业步骤。
 
@@ -884,7 +883,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 
 
-### <a name="spstartjob"></a>sp_start_job
+### <a name="sp_start_job"></a>sp_start_job
 
 开始执行作业。
 
@@ -915,7 +914,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 若要详细了解这些角色的权限，请参阅本文档中的“权限”部分。 仅 sysadmin 的成员可以使用此存储过程来编辑其他用户拥有的作业的属性。
 
-### <a name="spstopjob"></a>sp_stop_job
+### <a name="sp_stop_job"></a>sp_stop_job
 
 停止作业的执行。
 
@@ -944,7 +943,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 若要详细了解这些角色的权限，请参阅本文档中的“权限”部分。 仅 sysadmin 的成员可以使用此存储过程来编辑其他用户拥有的作业的属性。
 
 
-### <a name="spaddtargetgroup"></a>sp_add_target_group
+### <a name="sp_add_target_group"></a>sp_add_target_group
 
 添加目标组。
 
@@ -975,7 +974,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 若要详细了解这些角色的权限，请参阅本文档中的“权限”部分。 仅 sysadmin 的成员可以使用此存储过程来编辑其他用户拥有的作业的属性。
 
-### <a name="spdeletetargetgroup"></a>sp_delete_target_group
+### <a name="sp_delete_target_group"></a>sp_delete_target_group
 
 删除目标组。
 
@@ -1003,7 +1002,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 若要详细了解这些角色的权限，请参阅本文档中的“权限”部分。 仅 sysadmin 的成员可以使用此存储过程来编辑其他用户拥有的作业的属性。
 
-### <a name="spaddtargetgroupmember"></a>sp_add_target_group_member
+### <a name="sp_add_target_group_member"></a>sp_add_target_group_member
 
 向目标组添加一个或一组数据库。
 
@@ -1092,7 +1091,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name= N'Servers Mai
 GO
 ```
 
-### <a name="spdeletetargetgroupmember"></a>sp_delete_target_group_member
+### <a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
 
 从目标组中删除目标组成员。
 
@@ -1143,7 +1142,7 @@ EXEC jobs.sp_delete_target_group_member
 GO
 ```
 
-### <a name="sppurgejobhistory"></a>sp_purge_jobhistory
+### <a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
 
 删除作业的历史记录。
 
@@ -1195,7 +1194,7 @@ GO
 
 |查看  |描述  |
 |---------|---------|
-|[jobs_executions](#jobs_executions-view)     |  显示作业执行历史记录。      |
+|[job_executions](#job_executions-view)     |  显示作业执行历史记录。      |
 |[jobs](#jobs-view)     |   显示所有作业。      |
 |[job_versions](#job_versions-view)     |   显示所有作业版本。      |
 |[jobsteps](#jobsteps-view)     |     显示每项作业的当前版本中的所有步骤。    |
@@ -1204,14 +1203,14 @@ GO
 |[target_group_members](#target_groups_members-view)     |   显示所有目标组的所有成员。      |
 
 
-### <a name="jobsexecutions-view"></a>jobs_executions 视图
+### <a name="job_executions-view"></a>job_executions 视图
 
-[jobs].[jobs_executions]
+[作业]。[job_executions]
 
 显示作业执行历史记录。
 
 
-|列名称|   数据类型   |描述|
+|列名|   数据类型   |描述|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  一个作业执行操作实例的唯一 ID。
 |**job_name**   |nvarchar(128)  |作业的名称。
@@ -1239,25 +1238,25 @@ GO
 
 显示所有作业。
 
-|列名称|   数据类型|  描述|
+|列名|   数据类型|  描述|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
 |**job_version**    |int    |作业的版本（每次修改作业时自动更新）。|
-|**说明**    |nvarchar(512)| 作业的说明。 enabled 为 bit    指示作业是已启用还是已禁用。 1 指示作业已启用，0 指示作业已禁用。|
+|**description**    |nvarchar(512)| 作业的说明。 enabled 为 bit    指示作业是已启用还是已禁用。 1 指示作业已启用，0 指示作业已禁用。|
 |**schedule_interval_type** |nvarchar(50)   |指示何时执行作业的值：'Once'、'Minutes'、'Hours'、'Days'、'Weeks'、'Months'
 |**schedule_interval_count**|   int|    每次执行作业时，其间会出现的 schedule_interval_type 期间数。|
 |**schedule_start_time**    |datetime2(7)|  作业上次开始执行的日期和时间。|
 |**schedule_end_time**| datetime2(7)|   作业上次完成执行的日期和时间。|
 
 
-### <a name="jobversions-view"></a>job_versions 视图
+### <a name="job_versions-view"></a>job_versions 视图
 
 [jobs].[job_versions]
 
 显示所有作业版本。
 
-|列名称|   数据类型|  描述|
+|列名|   数据类型|  描述|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
@@ -1270,7 +1269,7 @@ GO
 
 显示每项作业的当前版本中的所有步骤。
 
-|列名称    |数据类型| 描述|
+|列名    |数据类型| 描述|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| 作业的名称。|
 |**job_id** |uniqueidentifier   |作业的唯一 ID。|
@@ -1299,30 +1298,30 @@ GO
 |**max_parallelism**|   int|    每次在弹性池的数据库上执行此作业步骤时，该弹性池允许的最大数据库数。 默认值为 NULL，这意味着没有限制。 |
 
 
-### <a name="jobstepversions-view"></a>jobstep_versions 视图
+### <a name="jobstep_versions-view"></a>jobstep_versions 视图
 
 [jobs].[jobstep_versions]
 
 显示每项作业的所有版本中的所有步骤。 架构与 [jobsteps](#jobsteps-view) 相同。
 
-### <a name="targetgroups-view"></a>target_groups 视图
+### <a name="target_groups-view"></a>target_groups 视图
 
 [jobs].[target_groups]
 
 列出所有目标组。
 
-|列名称|数据类型| 描述|
+|列名|数据类型| 描述|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |目标组（数据库集合）的名称。 
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。
 
-### <a name="targetgroupsmembers-view"></a>target_groups_members 视图
+### <a name="target_groups_members-view"></a>target_groups_members 视图
 
 [jobs].[target_groups_members]
 
 显示所有目标组的所有成员。
 
-|列名称|数据类型| 描述|
+|列名|数据类型| 描述|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128|目标组（数据库集合）的名称。 |
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。|
@@ -1330,7 +1329,7 @@ GO
 |**target_type**    |nvarchar(128)| 目标数据库或数据库集合的类型，其中包括一个服务器中的所有数据库、一个弹性池中的所有数据库，或者单个数据库。 target_type 的有效值为 ‘SqlServer’、‘SqlElasticPool’、‘SqlDatabase’ 或 ‘SqlShardMap’。|
 |**target_id**  |uniqueidentifier|  目标组成员的唯一 ID。|
 |**refresh_credential_name**    |nvarchar(128)  |用于连接到目标组成员的数据库范围的凭据的名称。|
-|subscription_id    |uniqueidentifier|  订阅的唯一 ID。|
+|**subscription_id**    |uniqueidentifier|  订阅的唯一 ID。|
 |**resource_group_name**    |nvarchar(128)| 目标组成员所在资源组的名称。|
 |**server_name**    |nvarchar(128)  |包含在目标组中的 SQL 数据库服务器的名称。 仅当 target_type 为 ‘SqlServer’ 时指定。 |
 |**database_name**  |nvarchar(128)  |包含在目标组中的数据库的名称。 仅当 target_type 为 ‘SqlDatabase’ 时指定。|
@@ -1340,7 +1339,7 @@ GO
 
 ## <a name="resources"></a>资源
 
- - ![主题链接图标](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "主题链接图标") [Transact-SQL 语法约定](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+ - ![主题链接图标](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "主题链接图标") [TRANSACT-SQL 语法约定](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
 ## <a name="next-steps"></a>后续步骤

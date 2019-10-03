@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用必应拼写检查 REST API 和 Java 进行拼写检查
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 开始使用必应拼写检查 REST API 检查拼写和语法。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: a139d0558565114725c6198f64e139e5a5019c75
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 47b47a91b0cd223a17d6779d7f0db7cdb7c88a0b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616689"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123303"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>快速入门：使用必应拼写检查 REST API 和 Java 进行拼写检查
 
@@ -101,15 +101,16 @@ ms.locfileid: "59616689"
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(json);
     }
+    ```
 
-1. Create a `BufferedReader` and read the response from the API. Print it to the console.
+1. 创建 `BufferedReader` 并读取来自该 API 的响应。 打印到控制台。
     
     ```java
     BufferedReader in = new BufferedReader(
     new InputStreamReader(connection.getInputStream()));
     String line;
     while ((line = in.readLine()) != null) {
-        System.out.println(prettify(line);
+        System.out.println(prettify(line));
     }
     in.close();
     ```
@@ -117,17 +118,16 @@ ms.locfileid: "59616689"
 ## <a name="call-the-api"></a>调用 API
 
 在应用程序的主函数中，调用上面创建的 check() 方法。
-
-    ```java
-    public static void main(String[] args) {
-        try {
-            check();
+```java
+        public static void main(String[] args) {
+            try {
+                check();
+            }
+            catch (Exception e) {
+                System.out.println (e);
+            }
         }
-        catch (Exception e) {
-            System.out.println (e);
-        }
-    }
-    ```
+```
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -193,4 +193,4 @@ java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
 > [创建单页 Web 应用](../tutorials/spellcheck.md)
 
 - [什么是必应拼写检查 API？](../overview.md)
-- [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+- [必应拼写检查 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

@@ -1,25 +1,19 @@
 ---
-title: 应用程序管理的先决条件 | Microsoft Docs
+title: 应用程序管理的先决条件
 description: 应用程序管理的先决条件列表。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: a4596b711cd90610051faee0d09501c075548062
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: pabutler
+ms.openlocfilehash: 0219d7e8a94dd6710c553f2133442867e39f6870
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57991871"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935540"
 ---
 # <a name="prerequisites-for-application-curation"></a>应用程序管理的先决条件
 

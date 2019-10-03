@@ -1,5 +1,5 @@
 ---
-title: 创建 Azure 应用程序网关-Azure 经典 CLI
+title: 创建 Azure 应用程序网关 - Azure 经典 CLI
 description: 了解如何在资源管理器中使用 Azure 经典 CLI 创建应用程序网关
 services: application-gateway
 author: vhorne
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
 ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608449"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62095976"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>使用 Azure CLI 创建应用程序网关
 
-Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序传递功能：HTTP 负载均衡、 基于 cookie 的会话相关性和安全套接字层 (SSL) 卸载、 自定义运行状况探测，并支持多站点。
+Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有下述与应用程序传送功能：HTTP 负载均衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
 
 ## <a name="prerequisite-install-the-azure-cli"></a>先决条件：安装 Azure CLI
 
-若要执行本文中的步骤，需要[安装 Azure CLI](../xplat-cli-install.md) ，因此需要[在 Azure 登录](/cli/azure/authenticate-azure-cli)。 
+若要执行本文中的步骤，需[安装 Azure CLI](../xplat-cli-install.md) 并[登录 Azure](/cli/azure/authenticate-azure-cli)。 
 
 > [!NOTE]
 > 如果没有 Azure 帐户，则需要注册一个。 可以[在此处注册免费试用帐户](../active-directory/fundamentals/sign-up-organization.md)。
@@ -50,7 +50,7 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 az login
 ```
 
-键入前述示例后，将提供代码。 导航到 https://aka.ms/devicelogin在浏览器中在过程上继续登录。
+键入前述示例后，将提供代码。 在浏览器中导航到 https://aka.ms/devicelogin ，继续登录过程。
 
 ![显示设备登录信息的 cmd][1]
 
@@ -104,7 +104,7 @@ azure network vnet subnet create \
 
 ## <a name="create-the-application-gateway"></a>创建应用程序网关
 
-创建虚拟网络和子网后，即已满足应用程序网关的先决条件。 此外之前导出的.pfx 证书和证书的密码时需要以下步骤：用于后端的 IP 地址是后端服务器的 IP 地址。 这些值可以是虚拟网络中的专用 IP、公共 IP 或后端服务器的完全限定域名。
+创建虚拟网络和子网后，即已满足应用程序网关的先决条件。 此外，以下步骤还需要之前导出的 .pfx 证书和证书密码：用于后端的 IP 地址是后端服务器的 IP 地址。 这些值可以是虚拟网络中的专用 IP、公共 IP 或后端服务器的完全限定域名。
 
 ```azurecli-interactive
 azure network application-gateway create \

@@ -3,25 +3,24 @@ title: 使用 Azure 数据工厂更新机器学习模型 | Microsoft 文档
 description: 描述如何使用 Azure 数据工厂和 Azure 机器学习创建预测管道
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 0c0e0e3983344bba76f5f305ecaf73f91110f3bc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: a980f269c8b88618ffa3311c05310a88ade379ed
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020075"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140471"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>使用更新资源活动更新 Azure 机器学习模型
 
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="转换活动"]
 > * [Hive 活动](data-factory-hive-activity.md) 
 > * [Pig 活动](data-factory-pig-activity.md)
 > * [MapReduce 活动](data-factory-map-reduce.md)
@@ -261,7 +260,7 @@ Azure 机器学习更新资源活动不会生成任何输出。 但是，Azure �
 ```
 
 ### <a name="pipeline"></a>管道
-管道具有两个活动：AzureMLBatchExecution 和 AzureMLUpdateResource。 Azure 机器学习批处理执行活动采用定型数据作为输入，并生成 iLearner 文件作为输出。 活动会通过输入定型数据调用定型 Web 服务（作为 Web 服务公开的训练实验），并从 Web 服务接收 ilearner 文件。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
+管道具有两个活动：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Azure 机器学习批处理执行活动采用定型数据作为输入，并生成 iLearner 文件作为输出。 活动会通过输入定型数据调用定型 Web 服务（作为 Web 服务公开的训练实验），并从 Web 服务接收 ilearner 文件。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
 
 ![管道关系图](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

@@ -1,26 +1,25 @@
 ---
-title: 在灾难恢复中将恢复计划与 Azure Site Recovery 配合使用 | Microsoft Docs
+title: 在灾难恢复中使用 Azure Site Recovery 恢复计划
 description: 了解如何通过 Azure Site Recovery 服务使用恢复计划进行灾难恢复。
 author: rayne-wiselman
 manager: carmonm
 services: site-recovery
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/18/2019
+ms.topic: conceptual
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 520f30b5fabebf299b5407a502b76d7d30850bfd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 8502e08db48700aefe51a6e4f0e79d1b08f6ca79
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797389"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814440"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
 
 本文介绍了 [Azure Site Recovery](site-recovery-overview.md) 中的恢复计划。
 
-恢复计划将计算机汇集到恢复组中。 可以通过向计划中添加顺序、说明和任务来自定义计划。 在定义计划后，可以根据它运行故障转移。
-
+恢复计划将计算机汇集到恢复组中。 可以通过向计划中添加顺序、说明和任务来自定义计划。 在定义计划后，可以根据它运行故障转移。  可以在多个恢复计划中引用计算机，如果先前已通过其他恢复计划部署了计划，则后续计划将跳过计算机的部署/启动。
 
 
 ## <a name="why-use-a-recovery-plan"></a>为何使用恢复计划？
@@ -37,10 +36,10 @@ ms.locfileid: "59797389"
 
 可以规划并创建一个恢复组来捕获特定于应用的属性。 例如，让我们考虑一个典型的三层应用程序，该应用程序具有 SQL Server 后端、中间件和 Web 前端。 通常，你将自定义恢复计划，以便使每层中的计算机在故障转移后按正确顺序启动。
 
-    - SQL 后端应首先启动，接下来是中间件，最后是 Web 前端。
-    - 此启动顺序可以确保应用在最后的计算机启动之前一直保持工作。
-    - 此顺序可以确保当中间件启动并尝试连接到 SQL Server 层时，SQL Server 层已在运行。 
-    - 此顺序还可帮助确保前端服务器最后启动，从而确保在所有组件已启动并运行并且应用已准备好接受请求之前，最终用户不会连接到应用 URL。
+- SQL 后端应首先启动，接下来是中间件，最后是 Web 前端。
+- 此启动顺序可以确保应用在最后的计算机启动之前一直保持工作。
+- 此顺序可以确保当中间件启动并尝试连接到 SQL Server 层时，SQL Server 层已在运行。 
+- 此顺序还可帮助确保前端服务器最后启动，从而确保在所有组件已启动并运行并且应用已准备好接受请求之前，最终用户不会连接到应用 URL。
 
 若要创建此顺序，请向恢复组中添加组，然后向组中添加计算机。
 - 如果指定了顺序，则会使用序列。 操作会根据情况并行运行，从而改进应用程序恢复 RTO。
@@ -84,7 +83,7 @@ ms.locfileid: "59797389"
 
 ## <a name="watch-the-video"></a>观看视频
 
-观看演示两层 WordPress 应用的上单击故障转移的快速示例视频。
+观看快速示例视频，其中显示了针对两层 WordPress 应用的单击故障转移。
     
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 

@@ -1,23 +1,23 @@
 ---
-title: 快速入门：在 C# 中针对自定义列表检查图像 - 内容审查器
-titlesuffix: Azure Cognitive Services
+title: 在 C# 中针对自定义列表检查图像 - 内容审查器
+titleSuffix: Azure Cognitive Services
 description: 如何通过适用于 C# 的内容审查器 SDK 使用自定义图像列表进行图像审查。
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: ded5b097e7c8feab56e2d82cb44f92e3127519e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 915b308b0129d714e51ac50b4230d8447b5c933a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881785"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564477"
 ---
-# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>快速入门：在 C# 中通过自定义图像列表进行审查
+# <a name="moderate-with-custom-image-lists-in-c"></a>在 C# 中通过自定义图像列表进行审查
 
 本文中的信息和代码示例可帮助你快速开始使用[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)来执行下列操作：
 - 创建自定义图像列表
@@ -32,7 +32,7 @@ ms.locfileid: "55881785"
 > [!NOTE]
 > 最多只能使用 5 个图像列表，每个列表中的图像数不得超过 10,000 张。
 
-针对本快速入门的控制台应用程序模拟了部分可使用图像列表 API 执行的任务。
+本指南的控制台应用程序模拟了一些可使用图像列表 API 执行的任务。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
@@ -303,7 +303,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>创建一个方法来向列表添加图像集合
 
-将以下方法添加到 **Program** 类。 本快速入门不演示如何将标记应用到列表中的图像。 
+将以下方法添加到 **Program** 类。 本指南不演示如何将标记应用到列表中的图像。 
 
 ```csharp
 /// <summary>

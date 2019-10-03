@@ -8,25 +8,24 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: d4fec5d8131d269d3df229360066452c37a92430
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5d9728db919f15eda49602f2619f1c27fbb42b57
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665536"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036544"
 ---
 # <a name="sfctl-application"></a>sfctl application
 创建、删除和管理应用程序及应用程序类型。
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
 | create | 使用指定说明创建 Service Fabric 应用程序。 |
 | delete | 删除现有 Service Fabric 应用程序。 |
@@ -43,7 +42,7 @@ ms.locfileid: "58665536"
 | type | 获取 Service Fabric 群集中与指定名称完全匹配的应用程序类型的列表。 |
 | type-list | 获取 Service Fabric 群集中应用程序类型的列表。 |
 | unprovision | 从群集中删除或注销 Service Fabric 应用程序类型。 |
-| 升级 | 开始升级 Service Fabric 群集中的应用程序。 |
+| upgrade | 开始升级 Service Fabric 群集中的应用程序。 |
 | upgrade-resume | 继续升级 Service Fabric 群集中的应用程序。 |
 | upgrade-rollback | 开始回滚 Service Fabric 群集中当前正在进行的应用程序升级。 |
 | upgrade-status | 获取对此应用程序执行的最近一次升级的详细信息。 |

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：C# SDK 查询预测终结点
+title: 快速入门：C# SDK 查询预测终结点 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用 C# SDK 向 LUIS 发送用户话语并接收预测。
 author: diberry
@@ -8,14 +8,14 @@ ms.service: cognitive-services
 services: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 086f55094474d4c06e52001d77630932cd04213c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c0b534848232d60929722e2036f69f4b6e670a4a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404087"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563160"
 ---
 # <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>快速入门：使用 C# .NET SDK 查询预测终结点
 
@@ -58,14 +58,14 @@ az cognitiveservices account create \
 在 Visual Studio Community 2017 中创建 .NET Core 控制台项目。
 
 1. 打开 Visual Studio Community 2017。
-1. 创建新项目，从“Visual C#”部分选择“控制台应用(.NET Core)”。
-1. 输入项目名称 `QueryPrediction`，保留剩余的默认值，然后选择“确定”。
+1. 创建新项目，从“Visual C#”部分选择“控制台应用(.NET Core)”。  
+1. 输入项目名称 `QueryPrediction`，保留剩余的默认值，然后选择“确定”。 
     这样会使用名为 **Program.cs** 的主代码文件创建简单的项目。
 
 ## <a name="add-sdk-with-nuget"></a>添加包含 NuGet 的 SDK
 
-1. 在**解决方案资源管理器**的名为 **QueryPrediction** 的树视图中选择“项目”，然后进行右键单击。 在菜单中选择“管理 NuGet 包...”。
-1. 选择“浏览”，然后输入 `Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime`。 显示包信息以后，选择“安装”，将包安装到项目中。 
+1. 在**解决方案资源管理器**的名为 **QueryPrediction** 的树视图中选择“项目”，然后进行右键单击。 在菜单中选择“管理 NuGet 包...”。 
+1. 选择“浏览”，然后输入 `Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime`。  显示包信息以后，选择“安装”，将包安装到项目中。  
 1. 将以下 _using_ 语句添加到 **Program.cs** 顶部。 请勿删除 `System` 的现有 _using_ 语句。 
 
 ```csharp

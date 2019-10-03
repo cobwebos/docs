@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: d49104c1d1402969917de63e22bd41e7489a08c7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 641f9150d1135f4f214038150b95b6691a37ecc0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046285"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60393248"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>使用 Microsoft Azure 诊断的事件聚合和集合
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 收集日志的第一个步骤是将诊断扩展部署在 Service Fabric 群集中的每个虚拟机规模集节点上。 诊断扩展将收集每个 VM 上的日志，并将它们上传到指定的存储帐户。 以下步骤概述了如何通过 Azure 门户和 Azure 资源管理器模板为新的和现有的群集完成此操作。
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>在通过 Azure 门户创建群集过程中部署诊断扩展
-创建群集时，在群集配置步骤中，展开可选设置并确保将“诊断”设置为“打开”（默认设置）。
+创建群集时，在群集配置步骤中，展开可选设置并确保将“诊断”设置为“打开”  （默认设置）。
 
 ![门户中有关创建群集的 Azure 诊断设置](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics-new.png)
 
@@ -83,14 +83,15 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 
 ```json
 {
-  "apiVersion": "2015-05-01-preview",
-  "type": "Microsoft.Storage/storageAccounts",
-  "name": "[parameters('applicationDiagnosticsStorageAccountName')]",
-  "location": "[parameters('computeLocation')]",
-  "sku": {
-    "accountType": "[parameters('applicationDiagnosticsStorageAccountType')]"
+    "apiVersion": "2018-07-01",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[parameters('applicationDiagnosticsStorageAccountName')]",
+    "location": "[parameters('computeLocation')]",
+    "sku": {
+    "name": "[parameters('applicationDiagnosticsStorageAccountType')]"
+    "tier": "standard"
   },
-  "tags": {
+    "tags": {
     "resourceType": "Service Fabric",
     "clusterName": "[parameters('clusterName')]"
   }
@@ -179,7 +180,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 如上所述修改 template.json 文件后，请重新发布 Resource Manager 模板。 如果已导出模板，则运行 deploy.ps1 文件会重新发布模板。 部署后，请确保 **ProvisioningState** 为 **Succeeded**。
 
 > [!TIP]
-> 如果要将容器部署到群集，可通过将此代码添加到“WadCfg > DiagnosticMonitorConfiguration”节，启用 WAD 来选取 docker 统计信息。
+> 如果要将容器部署到群集，可通过将此代码添加到“WadCfg > DiagnosticMonitorConfiguration”  节，启用 WAD 来选取 docker 统计信息。
 >
 >```json
 >"DockerSources": {
@@ -228,7 +229,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 >此通道包含非常大量的事件，从详细通道启用事件收集会导致快速生成大量跟踪并可能会消耗存储容量。 请只有在绝对必要的情况下才启用此项。
 
 
-若要启用“基本操作通道”（建议启用以获得干扰最少的全面日志记录），模板的 `WadCfg` 中的 `EtwManifestProviderConfiguration` 将如下所示：
+若要启用“基本操作通道”（建议启用以获得干扰最少的全面日志记录），模板的 `WadCfg` 中的 `EtwManifestProviderConfiguration` 将如下所示  ：
 
 ```json
   "WadCfg": {

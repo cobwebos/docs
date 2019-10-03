@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
+manager: dcscontentpm
 ms.author: daleche
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d278fd6ed06b58db052154e632e565de36853e77
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: cd0ab6d89d88c594d283dc0718c0f58ebb98bf43
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464885"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090799"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>排查 Azure SQL 数据库的连接问题
 
@@ -48,7 +48,7 @@ ms.locfileid: "55464885"
 
 ## <a name="troubleshoot-transient-errors"></a>对暂时性错误进行故障排除
 
-当应用程序连接到 Azure SQL 数据库时，将收到以下错误消息：
+当应用程序连接到 Azure SQL 数据库时，你会收到以下错误消息：
 
 ```
 Error code 40613: "Database <x> on server <y> is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of <z>"
@@ -88,5 +88,5 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 ## <a name="additional-resources"></a>其他资源
 * [SQL 数据库开发概述](sql-database-develop-overview.md)
 * [暂时性错误处理的一般指南](../best-practices-retry-general.md)
-* [用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
+* [SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
 

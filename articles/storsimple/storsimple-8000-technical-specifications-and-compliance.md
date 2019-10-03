@@ -14,16 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 855ea6c34082b859bb5b5b6e69b3e3f2fa54eb4a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
-ms.translationtype: HT
+ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056457"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965286"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
 
 ## <a name="overview"></a>概述
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 Microsoft Azure StorSimple 设备的硬件组件遵循本文中概述的技术规格和法规标准。 此技术规格介绍电源和散热模块 (PCM)、磁盘驱动器、存储容量和机箱。 符合性信息涉及国际标准、安全与发射以及缆线等内容。
 
@@ -37,12 +39,12 @@ EBOD 机箱使用 580 W PCM，而主机箱使用 764 W PCM。 下表列出了与
 | --- | --- | --- |
 | 最大输出功率 |580 W |764 |
 | 频率 |50/60 Hz |50/60 Hz |
-| 电压范围选择 |自动范围：90 – 264 V 交流，47/63 Hz |自动范围：90 – 264 V 交流，47/63 Hz |
+| 电压范围选择 |自动范围:90– 264 V AC, 47/63 Hz |自动范围:90-264 V AC、47/63 Hz |
 | 最大浪涌电流 |20 A |20 A |
 | 功率因数校正 |>95% 标称输入电压 |>95% 标称输入电压 |
 | 谐波 |符合 EN61000-3-2 |符合 EN61000-3-2 |
-| 输出 |5V 备用电压 \@ 2.0 A |5V 备用电压 \@ 2.7 A |
-| + 5V \@ 42 A |+5V \@ 40 A | |
+| Output |5V 备用电压 \@ 2.0 A |5V 备用电压 \@ 2.7 A |
+| \+ 5V \@ 42 A |+5V \@ 40 A | |
 | +12V \@ 38 A |+12V \@ 38 A | |
 | 可热插拔 |是 |是 |
 | 开关和 LED |交流 ON/OFF 开关和四个状态指示器 LED |交流 ON/OFF 开关和六个状态指示器 LED |
@@ -149,8 +151,8 @@ Microsoft Azure StorSimple 设备符合以下国际标准：
 
 Microsoft Azure StorSimple 设备满足以下安全评级要求：
 
-* 系统产品类型审批：UL、cUL、CE
-* 安全符合性：UL 60950、IEC 60950、EN 60950
+* 系统产品类型批准:UL、cUL、CE
+* 安全符合性:UL 60950、IEC 60950、EN 60950
 
 ## <a name="emc-compliance"></a>EMC 符合性
 
@@ -160,8 +162,8 @@ Microsoft Azure StorSimple 设备满足以下 EMC 评级要求。
 
 该设备符合 EMC 标准的传导和辐射发射水平。
 
-* 传导发射限值：CFR 47 第 15B 部分 A 类 EN55022 A 类 CISPR A类
-* 辐射发射限值：CFR 47 第 15B 部分 A 类 EN55022 A 类 CISPR A类
+* 已执行发射限制级别:CFR 47 Part 15B Class A EN55022 A 类 a CISPR A 类 a
+* 辐射发射限制级别:CFR 47 Part 15B Class A EN55022 A 类 a CISPR A 类 a
 
 ### <a name="harmonics-and-flicker"></a>谐波和闪烁
 
@@ -173,7 +175,7 @@ Microsoft Azure StorSimple 设备满足以下 EMC 评级要求。
 
 ## <a name="ac-power-cord-compliance"></a>交流电源线符合性
 
-插头和整个电源线组件必须符合适用于设备所在国家/地区的标准，并且必须具有该国家/地区可接受的安全许可。 下表列出了美国和欧洲的标准。
+插头和完整电源线组装人员必须满足使用设备的国家/地区的标准, 并且必须具有该国家/地区可接受的安全审批。 下表列出了美国和欧洲的标准。
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>交流电源线 - 美国（必须在 NRTL 登记）
 
@@ -188,7 +190,7 @@ Microsoft Azure StorSimple 设备满足以下 EMC 评级要求。
 | 组件 | 规格 |
 | --- | --- |
 | 电源线类型 |谐振线，H05-VVF-3G1.0 |
-| 插座 |IEC 320 C-13，250 V，10 A |
+| 套接字 |IEC 320 C-13，250 V，10 A |
 
 ## <a name="supported-network-cables"></a>支持的网络电缆
 

@@ -3,9 +3,9 @@ title: Azure 通知中心：常见问题解答 (FAQ) | Microsoft Docs
 description: 关于设计/实现有关通知中心的解决方案的常见问题
 services: notification-hubs
 documentationcenter: mobile
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 keywords: 推送通知, 推送通知, iOS 推送通知, android 推送通知, ios 推送, android 推送
 ms.assetid: 7b385713-ef3b-4f01-8b1f-ffe3690bbd40
 ms.service: notification-hubs
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
-ms.author: jowargo
-ms.openlocfilehash: 642e586371a0ce6abe362f8b10b54bfd8baff678
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 5de8c9523e05411a4751766c836b8e99ebb977c1
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998917"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213145"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 
@@ -56,7 +58,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>如何将中心升级或降级到不同层的命名空间？
 
-转到 **[Azure 门户]** > **通知中心命名空间**或**通知中心**。 选择要更新的资源，转到“定价层”。 请注意以下要求：
+转到 **[Azure 门户]**  > **通知中心命名空间**或**通知中心**。 选择要更新的资源，转到“定价层”。 请注意以下要求：
 
 * 更新的定价层将应用到正在使用的命名空间中的*所有*中心。
 * 如果设备计数超出所要降级到的层的限制，则需要删除设备才能降级。
@@ -69,13 +71,13 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 ### <a name="which-client-platforms-do-you-support"></a>支持哪些客户端平台？
 
-[iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、[Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、[Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、[Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、[Kindle](notification-hubs-kindle-amazon-adm-push-notification.md)、[Android China（通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin（[iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和 Android）、[Chrome 应用](notification-hubs-chrome-push-notifications-get-started.md)和 [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari) 支持推送通知。 有关详细信息，请转到[通知中心入门教程]页。
+[IOS](notification-hubs-ios-apple-push-notification-apns-get-started.md)、 [Android](notification-hubs-android-push-notification-google-fcm-get-started.md)、 [Windows 通用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)、 [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md)、 [Android China （通过百度）](notification-hubs-baidu-china-android-notifications-get-started.md)、Xamarin （[iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md)和 Android）和[Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)支持推送通知。 有关详细信息，请转到[通知中心入门教程]页。
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>是否支持短信、电子邮件或 Web 通知？
 
 通知中心主用于将通知发送到移动应用。 它不提供电子邮件或短信功能。 但是，提供这些功能的第三方平台可与通知中心集成，使用[移动应用]发送原生推送通知。
 
-通知中心也不提供现成的浏览器内推送通知传递服务。 客户可以在支持的服务器端平台上使用 SignalR 实现此功能。 如果想要在 Chrome 沙盒中将通知发送到浏览器应用，请参阅 [Chrome 应用教程]。
+通知中心也不提供现成的浏览器内推送通知传递服务。 客户可以在支持的服务器端平台上使用 SignalR 实现此功能。 
 
 ### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>移动应用与 Azure 通知中心之间的关系如何？它们各自适用于什么场合？
 
@@ -85,7 +87,7 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 有关支持的设备数目的详细信息，请参阅[通知中心定价]页。
 
-如果需要支持 1000 万台以上的已注册设备，请直接[与我们联系](https://azure.microsoft.com/overview/contact-us/)，我们将帮你扩展解决方案。
+如果需要支持超过 1000 万个注册设备，则必须将设备分布到多个中心。
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>我可以发送多少推送通知？
 
@@ -183,7 +185,7 @@ Azure 通知中心使用基于[共享访问签名](../storage/common/storage-dot
 
 ### <a name="is-there-audit-log-capability"></a>是否有审核日志功能？
 
-可以。 所有通知中心管理操作都会更新 [Azure 门户]中公开的 Azure 活动日志。 Azure 活动日志可使用户了解对订阅中的资源执行的操作。 通过活动日志，可确定对订阅中的资源进行的任何写入操作（PUT、POST、DELETE）的内容、执行者和时间。 还可以了解操作和其他相关属性的状态。 但是， 活动日志不包括读取 (GET) 操作。
+是。 所有通知中心管理操作都会更新 [Azure 门户]中公开的 Azure 活动日志。 Azure 活动日志可使用户了解对订阅中的资源执行的操作。 通过活动日志，可确定对订阅中的资源进行的任何写入操作（PUT、POST、DELETE）的内容、执行者和时间。 还可以了解操作和其他相关属性的状态。 但是， 活动日志不包括读取 (GET) 操作。
 
 ## <a name="monitoring-and-troubleshooting"></a>监视和故障排除
 
@@ -195,9 +197,9 @@ Azure 通知中心提供多项可用于故障排除的功能，尤其是针对�
 
 Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通知中心指标]页上找到有关可用指标的详细信息。
 
-您可以以编程方式访问度量值。 有关详细信息，请参阅以下文章：
+您还可以通过编程方式访问度量值。 有关详细信息，请参阅以下文章：
 
-- [检索与.NET 的 Azure Monitor 指标](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。 此示例使用用户名和密码。 若要使用的证书，重载 FromServicePrincipal 方法提供的证书，如中所示[本例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)。 
+- [通过 .Net 检索 Azure Monitor 指标](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。 此示例使用用户名和密码。 若要使用证书，请重载 FromServicePrincipal 方法以提供证书，如[本示例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)中所示。 
 - [获取资源的指标和活动日志](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
 - [Azure 监视 REST API 演练](../azure-monitor/platform/rest-api-walkthrough.md)
 
@@ -210,7 +212,6 @@ Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [通知中心 REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [通知中心入门教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-[Chrome 应用教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [后端注册指南]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [后端注册指南 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
@@ -218,7 +219,7 @@ Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通
 [通知中心安全推送教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [通知中心故障排除]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [通知中心指标]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[注册信息导出/导入]: https://docs.microsoft.com/en-us/azure/notification-hubs/export-modify-registrations-bulk
+[注册信息导出/导入]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
 [Azure 门户]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [移动应用]: https://azure.microsoft.com/services/app-service/mobile/

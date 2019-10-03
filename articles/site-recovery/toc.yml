@@ -23,7 +23,7 @@
           href: azure-to-azure-tutorial-failover-failback.md
         - name: 运行故障回复
           href: azure-to-azure-tutorial-failback.md
-    - name: 移动 Azure VM
+    - name: 移动
       items:
         - name: 将 Azure VM 移动到另一区域
           href: azure-to-azure-tutorial-migrate.md
@@ -31,6 +31,8 @@
           href: move-Azure-VMs-AVset-Azone.md
         - name: 在“政府”区域和“公用”区域之间移动 Azure VM
           href: region-move-cross-geos.md
+        - name: 将保管库移动到不同的区域
+          href: move-vaults-across-regions.md
     - name: VMware VM 灾难恢复到 Azure
       items:
         - name: 准备 Azure
@@ -95,7 +97,9 @@
           href: vmware-azure-common-questions.md
         - name: VMware/物理服务器到 Azure 支持矩阵
           href: vmware-physical-azure-support-matrix.md
-        - name: 配置服务器部署的支持要求
+        - name: 关于 Site Recovery 组件（配置/进程/主目标服务器）
+          href: vmware-physical-azure-config-process-server-overview.md
+        - name: 配置和进程服务器的支持要求
           href: vmware-azure-configuration-server-requirements.md
         - name: VMware 到 Azure 体系结构
           href: vmware-azure-architecture.md
@@ -151,6 +155,8 @@
           items:
             - name: 准备网络以进行 Azure VM 灾难恢复
               href: azure-to-azure-about-networking.md
+            - name: 自定义目标 Azure VM 的网络配置
+              href: azure-to-azure-customize-networking.md
             - name: 设置网络映射并在故障转移后保留 IP 地址
               href: azure-to-azure-network-mapping.md
             - name: 有关故障转移后保留 IP 地址的示例
@@ -165,6 +171,8 @@
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
             - name: 为 S2D VM 启用 Azure 到 Azure 复制
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
+            - name: 为添加的磁盘启用复制
+              href: azure-to-azure-enable-replication-added-disk.md
             - name: 排除磁盘
               href: azure-to-azure-exclude-disks.md
             - name: 故障转移后重新保护 Azure VM
@@ -175,7 +183,7 @@
           items:
             - name: 更新 Azure VM 的移动服务
               href: azure-to-azure-autoupdate.md
-            - name: Azure Site Recovery 中的更新
+            - name: 管理 Site Recovery 更新
               href: service-updates-how-to.md
             - name: 删除服务器并禁用保护
               href: site-recovery-manage-registration-and-protection.md
@@ -183,6 +191,8 @@
               href: delete-vault.md
     - name: VMware 到 Azure 的灾难恢复
       items:
+        - name: 设置大规模灾难恢复
+          href: vmware-physical-large-deployment.md
         - name: 设置网络
           items:
             - name: 管理用于本地到 Azure 复制的网络接口
@@ -197,6 +207,8 @@
               items:
                 - name: 概述与先决条件
                   href: site-recovery-deployment-planner.md
+                - name: 部署规划器版本历史记录
+                  href: site-recovery-deployment-planner-history.md
                 - name: 运行部署规划器工具
                   href: site-recovery-vmware-deployment-planner-run.md
                 - name: 分析生成的报告
@@ -255,7 +267,7 @@
               href: vmware-azure-manage-process-server.md
             - name: 管理 vCenter 服务器
               href: vmware-azure-manage-vcenter.md
-            - name: Azure Site Recovery 中的更新
+            - name: 管理 Site Recovery 更新
               href: service-updates-how-to.md
             - name: 删除服务器并禁用保护
               href: site-recovery-manage-registration-and-protection.md
@@ -263,6 +275,8 @@
               href: delete-vault.md
     - name: 物理机到 Azure 的灾难恢复
       items:
+        - name: 设置大规模灾难恢复
+          href: vmware-physical-large-deployment.md
         - name: 设置网络
           items:
             - name: 管理用于本地到 Azure 复制的网络接口
@@ -271,6 +285,8 @@
               href: concepts-on-premises-to-azure-networking.md
         - name: 设置灾难恢复
           items:
+            - name: 演练 - 设置灾难恢复
+              href: physical-azure-disaster-recovery.md
             - name: 设置源环境
               href: physical-azure-set-up-source.md
             - name: 设置目标环境
@@ -283,8 +299,6 @@
                   href: vmware-azure-install-mobility-service.md
                 - name: 使用 System Center Configuration Manager 部署移动服务
                   href: vmware-azure-mobility-install-configuration-mgr.md
-                - name: 演练 - 设置灾难恢复
-                  href: physical-azure-disaster-recovery.md
         - name: 运行故障转移和故障回复
           href: physical-to-azure-failover-failback.md
         - name: 管理
@@ -297,7 +311,7 @@
               href: vmware-azure-manage-process-server.md
             - name: 删除服务器并禁用保护
               href: site-recovery-manage-registration-and-protection.md
-            - name: Azure Site Recovery 中的更新
+            - name: 管理 Site Recovery 更新
               href: service-updates-how-to.md
             - name: 删除保管库
               href: delete-vault.md
@@ -319,6 +333,8 @@
               items:
                 - name: 概述与先决条件
                   href: hyper-v-deployment-planner-overview.md
+                - name: 部署规划器版本历史记录
+                  href: site-recovery-deployment-planner-history.md
                 - name: 运行部署规划器工具
                   href: hyper-v-deployment-planner-run.md
                 - name: 分析生成的报告
@@ -349,7 +365,7 @@
               href: upgrade-2012R2-to-2016.md
             - name: 删除服务器并禁用保护
               href: site-recovery-manage-registration-and-protection.md
-            - name: Azure Site Recovery 中的更新
+            - name: 管理 Site Recovery 更新
               href: service-updates-how-to.md
             - name: 删除保管库
               href: delete-vault.md
@@ -409,37 +425,49 @@
       href: hyper-v-azure-powershell-resource-manager.md
     - name: 使用 PowerShell 设置 Hyper-V VM（带 VMM）到 Azure 的灾难恢复
       href: hyper-v-vmm-powershell-resource-manager.md
-    - name: 将 Azure 自动化 Runbook 添加到恢复计划以安排故障转移
+    - name: 将自动化 Runbook 添加到恢复计划
       href: site-recovery-runbook-automation.md
-- name: 监视和故障排除
+- name: 监视
   items:
-    - name: 监视 Azure Site Recovery
+    - name: 有关监视的常见问题
+      href: monitoring-common-questions.md
+    - name: 监视 Site Recovery
       href: site-recovery-monitor-and-troubleshoot.md
-    - name: Azure VM
+    - name: 使用 Azure Monitor 日志监视 Site Recovery
+      href: monitor-log-analytics.md
+    - name: 监视进程服务器
+      href: vmware-physical-azure-monitor-process-server.md
+- name: 故障排除
+  items:
+    - name: 排查 Azure VM 问题
       items:
-        - name: 排查 Azure VM 的复制错误
+        - name: 排查 Azure VM 复制问题
           href: azure-to-azure-troubleshoot-errors.md
-        - name: 排查 Azure VM 正在进行的复制的问题
+        - name: 排查 Azure VM 连接性问题
+          href: azure-to-azure-troubleshoot-network-connectivity.md
+        - name: 排查正在进行的复制的问题
           href: azure-to-azure-troubleshoot-replication.md
-        - name: 排查 Azure VM 的移动服务问题
+        - name: 排查出行服务问题
           href: site-recovery-extension-troubleshoot.md
-    - name: VMware/物理服务器
+    - name: 排查 VMware VM/物理服务器问题
       items:
-        - name: 排查 VMware 到 Azure 复制的问题
+        - name: 排查 VMware VM/物理服务器复制问题
           href: vmware-azure-troubleshoot-replication.md
         - name: 排查配置服务器问题
           href: vmware-azure-troubleshoot-configuration-server.md
-        - name: 排查 VMware VM/物理服务器的移动服务推送安装问题
+        - name: 排查进程服务器问题
+          href: vmware-physical-azure-troubleshoot-process-server.md
+        - name: 排查出行服务的推送安装问题
           href: vmware-azure-troubleshoot-push-install.md
         - name: 排查故障转移到 Azure 的问题
           href: site-recovery-failover-to-azure-troubleshoot.md
         - name: 排查对 VMware VM 进行重新保护和故障回复的问题
           href: vmware-azure-troubleshoot-failback-reprotect.md
-        - name: 排查 Microsoft Azure Site Recovery 提供程序升级故障
+        - name: 排查提供程序升级失败问题
           href: vmware-azure-troubleshoot-upgrade-failures.md
         - name: 排查 vCenter 发现故障
           href: vmware-azure-troubleshoot-vcenter-discovery-failures.md
-    - name: Hyper-V
+    - name: 排查 Hyper-V 问题
       items:
         - name: 排查 Hyper-V 复制问题
           href: hyper-v-azure-troubleshoot.md

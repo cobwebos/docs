@@ -3,9 +3,9 @@ title: 使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到特
 description: 了解如何使用通知中心通过 Azure 通知中心和 Google Cloud Messaging 将通知推送到特定的 Android 设备。
 services: notification-hubs
 documentationcenter: android
-author: jwargo
-manager: patniko
-editor: spelluru'
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,15 +14,20 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 1c777f705d9b2d3df713642349fe4dbd413e48e1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 4a369b72d5c19a63c65f8d693d131b2c10ff2023
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57872856"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212817"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到特定的 Android 设备
+# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging（已弃用）将通知推送到特定的 Android 设备
+
+> [!WARNING]
+> 截至 2018 年 4 月 10 日，Google 已弃用 Google Cloud Messaging (GCM)。 GCM 服务器和客户端 API 已弃用，最快将于 2019 年 5 月 29 日移除。 有关详细信息，请参阅 [GCM 和 FCM 常见问题解答](https://developers.google.com/cloud-messaging/faq)。
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -42,7 +47,7 @@ ms.locfileid: "57872856"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程基于在[教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备][get-started]中创建的应用。 在开始本教程之前，请完成[教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备][get-started]。
+本教程基于在[教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备][get-started]中创建的 Android 应用程序。 在开始本教程之前，请完成[教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备][get-started]中创建的 Android 应用程序。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
 

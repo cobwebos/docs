@@ -1,9 +1,9 @@
 ---
-title: 解释 Azure Monitor（预览版）中的 Azure Active Directory 审核日志架构 | Microsoft Docs
-description: 介绍在 Azure Monitor（预览版）中使用的 Azure AD 审核日志架构
+title: 解释 Azure Monitor 中的 Azure Active Directory 审核日志架构 | Microsoft Docs
+description: 介绍了在 Azure Monitor 中使用的 Azure AD 审核日志架构
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/14/2018
-ms.author: markvi
+ms.date: 04/18/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4832776dee7c478996bcfc2a903a6d8e2a3c4426
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7f75af14e388626a9ebbb54d43079f30dcfdd98a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436959"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987945"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>解释 Azure Monitor 中的 Azure AD 审核日志架构（预览版）
 
@@ -147,9 +147,9 @@ ms.locfileid: "58436959"
 
 ## <a name="field-and-property-descriptions"></a>字段和属性说明
 
-| 字段名 | 描述 |
+| 字段名称 | 描述 |
 |------------|-------------|
-| time       | 日期和时间 (UTC)。 |
+| 时间       | 日期和时间 (UTC)。 |
 | operationName | 操作的名称。 |
 | operationVersion | 客户端请求的 REST API 版本。 |
 | category | 目前，“审核”是唯一支持的值。 |
@@ -161,13 +161,13 @@ ms.locfileid: "58436959"
 | callerIpAddress | 发出请求的客户端的 IP 地址。 | 
 | correlationId | 客户端所传递的可选 GUID。 它可以帮助将客户端操作与服务器端操作相关联，并且在跟踪跨服务的日志时非常有用。 |
 | identity | 发出请求时提供的令牌中的标识。 标识可以是用户帐户、系统帐户或服务主体。 |
-| 级别 | 消息类型。 对于审核日志，此级别始终为“信息”。 |
-| 位置 | 数据中心的位置。 |
-| 属性 | 列出与审核日志相关的受支持属性。 有关详细信息，请参阅下一个表格。 | 
+| level | 消息类型。 对于审核日志，此级别始终为“信息”。 |
+| location | 数据中心的位置。 |
+| properties | 列出与审核日志相关的受支持属性。 有关详细信息，请参阅下一个表格。 | 
 
 <br>
 
-| 属性名称 | 描述 |
+| 属性名 | 描述 |
 |---------------|-------------|
 | AuditEventCategory | 审核事件的类型。 它可以是“用户管理”、“应用程序管理”或其他类型。|
 | 标识类型 | 类型可以是“应用程序”或“用户”。 |

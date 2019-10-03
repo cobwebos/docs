@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 0974e2ed78e557168357c51b5c77a94de2f56dc5
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618072"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722104"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成
 
@@ -104,22 +104,22 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 
 #### <a name="spoke-to-hub"></a>分支到中心
 
-**Direction** | **设置** | **State**
+**Direction** | **设置** | **状态**
 --- | --- | ---
-分支到中心 | 允许虚拟网络地址 | 已启用
-分支到中心 | 允许转发流量 | 已启用
+分支到中心 | 允许虚拟网络地址 | Enabled
+分支到中心 | 允许转发的通信 | Enabled
 分支到中心 | 允许网关传输 | 已禁用
-分支到中心 | 使用删除网关 | 已启用
+分支到中心 | 使用删除网关 | Enabled
 
  ![分支到中心对等互连配置](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
 #### <a name="hub-to-spoke"></a>中心到分支
 
-**Direction** | **设置** | **State**
+**Direction** | **设置** | **状态**
 --- | --- | ---
-中心到分支 | 允许虚拟网络地址 | 已启用
-中心到分支 | 允许转发流量 | 已启用
-中心到分支 | 允许网关传输 | 已启用
+中心到分支 | 允许虚拟网络地址 | Enabled
+中心到分支 | 允许转发的通信 | Enabled
+中心到分支 | 允许网关传输 | Enabled
 中心到分支 | 使用删除网关 | 已禁用
 
  ![中心到分支对等互连配置](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
@@ -166,7 +166,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 
 在此配置中，只有一条 Expressroute 线路。 虽然在某条线路出现故障的情况下，线路具有冗余连接，但如果对等互连区域发生故障，则单条路由线路将无法提供恢复能力。 请注意：
 
-- 可以将 Azure VM 复制到[相同地理位置](azure-to-azure-support-matrix.md#region-support)中的任何 Azure 区域。 如果目标 Azure 区域与源不在同一位置，并且使用的是单条 ExpressRoute 线路，则需要启用 ExpressRoute 高级版。 请了解 [ExpressRoute 位置](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region)和 [ExpressRoute 定价](https://azure.microsoft.com/pricing/details/expressroute/)。
+- 可以将 Azure VM 复制到[相同地理位置](azure-to-azure-support-matrix.md#region-support)中的任何 Azure 区域。 如果目标 Azure 区域与源不在同一位置，并且使用的是单条 ExpressRoute 线路，则需要启用 ExpressRoute 高级版。 请了解 [ExpressRoute 位置](../expressroute/expressroute-locations.md)和 [ExpressRoute 定价](https://azure.microsoft.com/pricing/details/expressroute/)。
 - 如果在目标区域上使用了相同的 IP 地址空间，则无法将源和目标 vNet 同时连接到线路。 在本方案中：    
     -  断开源侧连接，然后建立目标侧连接。 可在 Site Recovery 恢复计划中编写此连接变更的脚本。 请注意：
         - 在发生区域故障时，如果主要区域不可访问，则断开连接操作可能失败。 这可能会影响到目标区域的连接创建。

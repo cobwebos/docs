@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 71d2d542d71977f9d8dfe07370dffd7fe508bc92
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 996d4e2ba62c06992b0433fd255800ba8cea0af3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314953"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570172"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
 
-[弹性数据库工具](sql-database-elastic-scale-get-started.md)和[行级别安全性 (RLS)][rls] 一起使用时，可通过 Azure SQL 数据库缩放多租户应用程序的数据层。 将这些技术综合在一起，即可生成数据层高度可缩放的应用程序。 该数据层支持多租户分片，并使用 **ADO.NET SqlClient** 或**实体框架**。 有关详细信息，请参阅[具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
+[弹性数据库工具](sql-database-elastic-scale-get-started.md)和[行级安全性 (RLS)][rls]合作, 可以使用 Azure SQL 数据库缩放多租户应用程序的数据层。 将这些技术综合在一起，即可生成数据层高度可缩放的应用程序。 该数据层支持多租户分片，并使用 **ADO.NET SqlClient** 或**实体框架**。 有关详细信息，请参阅[具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
 
 - **弹性数据库工具**可让开发人员使用 .NET 库和 Azure 服务模板通过标准分片做法横向扩展数据层。 使用[弹性数据库客户端库][s-d-elastic-database-client-library]管理分片有助于自动化和简化通常与分片关联的许多基础结构任务。
 - **行级安全性**允许开发人员将多个租户的数据安全地存储在同一数据库中。 RLS 安全策略筛选掉不属于执行查询的租户的行。 将筛选逻辑集中在数据库中可简化维护过程，降低发生安全错误的风险。 替代方法是依赖所有客户端代码来强制实施安全措施，这是很危险的。
@@ -37,7 +36,7 @@ ms.locfileid: "57314953"
 
 ## <a name="download-the-sample-project"></a>下载示例项目
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 - 使用 Visual Studio（2012 或更高版本）
 - 创建三个 Azure SQL 数据库
@@ -46,7 +45,7 @@ ms.locfileid: "57314953"
 
 此项目通过添加对多租户分片数据库的支持，扩展了 [Azure SQL 的弹性数据库工具 - 实体框架集成](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)中所述的项目。 此项目生成一个简单的控制台应用程序，用于创建博客和文章。 此项目包括四个租户，以及两个多租户分片数据库。 上图说明了此配置。
 
-构建并运行应用程序。 此运行会引导弹性数据库工具的分片映射管理器，并进行以下测试：
+生成并运行应用程序。 此运行会引导弹性数据库工具的分片映射管理器，并进行以下测试：
 
 1. 使用实体框架和 LINQ 创建新博客，并显示每个租户的所有博客文章
 2. 使用 ADO.NET SqlClient 显示租户的所有博客文章
@@ -228,7 +227,7 @@ RLS 在 Transact-SQL 中实现。 用户定义的函数用于定义访问逻辑�
     - BLOCK 谓词阻止系统对不符合筛选器条件的行执行 INSERT 或 UPDATE 操作。
     - 如果未设置 SESSION\_CONTEXT，此函数会返回 NULL，将无法查看或插入任何行。
 
-若要在所有分片上启用 RLS，请执行以下 T-SQL，只需使用项目中包括的 Visual Studio (SSDT)、SSMS 或 PowerShell 脚本即可。 或者，如果使用[弹性数据库作业](sql-database-elastic-jobs-overview.md)，则可自动在所有分片上执行此 T-SQL。
+若要在所有分片上启用 RLS，请执行以下 T-SQL，只需使用项目中包括的 Visual Studio (SSDT)、SSMS 或 PowerShell 脚本即可。 或者，如果使用[弹性数据库作业](elastic-jobs-overview.md)，则可自动在所有分片上执行此 T-SQL。
 
 ```sql
 CREATE SCHEMA rls; -- Separate schema to organize RLS objects.
@@ -344,7 +343,7 @@ GO
 - **添加新分片**：对所有新分片执行 T-SQL 脚本以启用 RLS，否则不会筛选针对这些分片的查询。
 - **添加新表**：每次创建新表时，将 FILTER 和 BLOCK 谓词添加到所有分片上的安全策略。 否则不会筛选对新表的查询。 根据 [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx)（自动向新建的表应用行级安全性）（博客）中所述，此添加操作可以使用 DDL 触发器来自动完成。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 可将弹性数据库工具和行级安全性一起使用，以扩大支持多租户和单租户分片的应用程序的数据层。 可以使用多租户分片来提高数据存储效率。 如果大量的租户只有几行数据，则此效率提升很显著。 单租户分片可以支持其性能和隔离要求更严格的高级租户。 有关详细信息，请参阅[行级安全性参考][rls]。
 

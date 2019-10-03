@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823852"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60325419"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
 Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 另请参阅：
 
-* [Microsoft Azure 和 Amazon Web Services](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) - Azure 服务及其 AWS 对等项的定义。<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
+* [Microsoft Azure 和 Amazon Web Services](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) -定义的 Azure 服务和及其 AWS 对等项。<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
 * [云计算术语](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 常规行业云术语。
 
 ## <a name="account"></a>帐户
@@ -69,7 +69,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 请参阅 [Azure SQL 数据库的活动异地复制](sql-database/sql-database-geo-replication-overview.md)
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
-## <a name="image"></a>图像
+## <a name="image"></a>image
 包含操作系统和应用程序配置的文件，可用于创建任意数目的虚拟机。 Azure 中有两种类型的映像：VM 映像和 OS 映像。 VM 映像包括在创建该映像时附加到虚拟机的操作系统和所有磁盘。 OS 映像仅包含通用化操作系统，而不包含任何数据磁盘配置。  
 请参阅[使用 PowerShell 或 CLI 在 Azure 中导航和选择 Windows 虚拟机映像](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
@@ -91,7 +91,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 用于部署和管理 Azure 服务的安全 Web 门户。
 
 ## <a name="region"></a>region
-某个地区内不跨国界且包含一个或多个数据中心的区域。 定价、区域性服务和优惠类型在区域级别公开。 一个区域通常与另一个区域配对，两者距离最多可达数百英里。 区域对可用作灾难恢复和高可用性方案的机制。 也称为位置。  
+某个地区内不跨国界且包含一个或多个数据中心的区域。 定价、区域性服务和套餐类型在区域级别公开。 一个区域通常与另一个区域配对，两者距离最多可达数百英里。 区域对可用作灾难恢复和高可用性方案的机制。 也称为位置。  
 请参阅 [Azure 区域](best-practices-availability-paired-regions.md)
 
 ## <a name="resource"></a>resource

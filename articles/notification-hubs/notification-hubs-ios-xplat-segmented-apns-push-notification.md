@@ -3,23 +3,25 @@ title: 使用 Azure 通知中心向特定 iOS 设备推送通知 | Microsoft Doc
 description: 在本教程中，将了解如何使用 Azure 通知中心向特定 iOS 设备推送通知。
 services: notification-hubs
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 6ead4169-deff-4947-858c-8c6cf03cc3b2
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: dd625dba0e125ccf993af524a0ab0c0cc66555fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 07/28/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 07/28/2019
+ms.openlocfilehash: 8299725cf6977ca309d57b40f4792ff9b074a8cb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834210"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213223"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 设备推送通知
 
@@ -39,9 +41,9 @@ ms.locfileid: "57834210"
 > * 从设备发送通知
 > * 运行应用并生成通知
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-本主题基于以下教程中创建的应用：[教程：使用 Azure 通知中心将通知推送到 iOS 应用][get-started]。 在开始学习本教程之前，必须已完成[教程：使用 Azure 通知中心将通知推送到 iOS 应用][get-started]。
+本主题基于以下教程中创建的应用：[教程：使用 Azure 通知中心][get-started]将通知推送到 iOS 应用。 在开始学习本教程之前，必须已完成[教程：使用 Azure 通知中心][get-started]将通知推送到 iOS 应用。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
 
@@ -174,10 +176,10 @@ ms.locfileid: "57834210"
 
     此时，`didRegisterForRemoteNotificationsWithDeviceToken` 方法中不应有任何代码。
 
-10. 完成[通知中心入门][get-started]教程后，以下方法应已存在于 `AppDelegate.m` 中。 否则，请添加这些方法。
+10. 完成[通知中心入门][get-started]教程后，中`AppDelegate.m`已提供了以下方法。 否则，请添加这些方法。
 
     ```objc
-    -(void)MessageBox:(NSString *)title message:(NSString *)messageText
+    - (void)MessageBox:(NSString *)title message:(NSString *)messageText
     {
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
@@ -185,7 +187,7 @@ ms.locfileid: "57834210"
         [alert show];
     }
 
-    * (void)application:(UIApplication *)application didReceiveRemoteNotification:
+    - (void)application:(UIApplication *)application didReceiveRemoteNotification:
        (NSDictionary *)userInfo {
        NSLog(@"%@", userInfo);
        [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
@@ -212,7 +214,9 @@ ms.locfileid: "57834210"
 
     [notifications storeCategoriesAndSubscribeWithCategories:categories completion: ^(NSError* error) {
         if (!error) {
-            [(AppDelegate*)[[UIApplication sharedApplication]delegate] MessageBox:@"Notification" message:@"Subscribed!"];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:"Notification" message:"Subscribed" delegate:self
+            cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
         } else {
             NSLog(@"Error subscribing: %@", error);
         }
@@ -248,7 +252,7 @@ ms.locfileid: "57834210"
 
 ## <a name="optional-send-notifications-from-the-device"></a>（可选）从设备发送通知
 
-通常，通知由后端服务发送，但你也可以直接从应用发送突发新闻通知。 为此，需更新[通知中心入门][get-started]教程中定义的 `SendNotificationRESTAPI` 方法。
+通常，通知由后端服务发送，但你也可以直接从应用发送突发新闻通知。 为此，请更新`SendNotificationRESTAPI` [通知中心入门][get-started]教程中定义的方法。
 
 1. 在 `ViewController.m` 中，按如下所示更新 `SendNotificationRESTAPI` 方法，使其接受类别标记的参数并发送适当的[模板](notification-hubs-templates-cross-platform-push-messages.md)通知。
 

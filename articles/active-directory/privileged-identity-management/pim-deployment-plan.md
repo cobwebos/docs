@@ -1,9 +1,9 @@
 ---
-title: 部署 Privileged 的 Identity Management (PIM)-Azure Active Directory |Microsoft Docs
+title: 部署 Privileged Identity Management (PIM) - Azure Active Directory | Microsoft Docs
 description: 介绍如何规划 Azure AD Privileged Identity Management (PIM) 的部署。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 02/08/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 4ff46a693766ab12b53baba1ad8e4a56e174a076
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578183"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804487"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
-本循序渐进指南介绍如何规划部署的 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 中，你的组织中。
+本分步指南介绍如何在组织中规划 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 的部署。
 
 > [!TIP]
 > 本文档中有许多带有以下标记的项：
@@ -79,7 +79,7 @@ Azure AD Privileged Identity Management (PIM) 可帮助跨 Azure AD、Azure 资�
 
 ### <a name="roles-that-can-be-managed-by-pim"></a>可以使用 PIM 管理的角色
 
-**Azure AD 角色**– 这些角色都在 Azure Active Directory （如全局管理员、 Exchange 管理员和安全管理员）。 可通过 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)，了解更多有关角色及其功能的信息。 如需帮助来确定向管理员分配哪个角色，请参阅[按任务划分的最小特权角色](../users-groups-roles/roles-delegate-by-task.md)。
+**Azure AD 角色**–这些角色都在 Azure Active Directory （例如全局管理员、Exchange 管理员和安全管理员）中。 可通过 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)，了解更多有关角色及其功能的信息。 如需帮助来确定向管理员分配哪个角色，请参阅[按任务划分的最小特权角色](../users-groups-roles/roles-delegate-by-task.md)。
 
 Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或管理组。 PIM 同时提供对内置角色（如所有者、用户访问管理员和参与者）和[自定义角色](../../role-based-access-control/custom-roles.md)的实时访问。 有关 Azure 资源角色的详细信息，请阅读[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md)。
 
@@ -99,7 +99,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 #### <a name="stakeholders-pim-for-azure-ad-roles"></a>利益干系人：适用于 Azure AD 角色的 PIM
 
-| 名称 | 角色 | 操作 |
+| 姓名 | Role | 操作 |
 | --- | --- | --- |
 | 姓名和电子邮件 | **标识架构师或 Azure 全局管理员**<br/>标识管理团队的一位代表，负责定义如何根据组织中的核心标识管理基础结构实施此更改。 | SO/R/I |
 | 姓名和电子邮件 | **服务所有者/线路管理器**<br/>某项服务或一组服务的 IT 所有者的代表。 他们在制定决策和帮助推出团队 PIM 中发挥关键作用。 | SO/R/I |
@@ -109,7 +109,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 #### <a name="stakeholders-pim-for-azure-resource-roles"></a>利益干系人：用于 Azure 资源角色 的 PIM
 
-| 名称 | 角色 | 操作 |
+| 姓名 | Role | 操作 |
 | --- | --- | --- |
 | 姓名和电子邮件 | **订阅/资源所有者**<br/>要为其部署 PIM 的每个订阅或资源的 IT 所有者的代表 | SO/R/I |
 | 姓名和电子邮件 | **安全所有者**<br/>安全团队的代表，可以签署确认计划符合组织的安全要求。 | SO/R |
@@ -120,7 +120,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 作为规划过程的一部分，须按照[开始使用 PIM 文档](pim-getting-started.md)中所述，先同意并启用 PIM。 通过启用 PIM，可以访问专为帮助部署而设计的某些功能。
 
-如果目标是为 Azure 资源部署 PIM，则应按照[发现要在 PIM 文档中管理的 Azure 资源](pim-resource-roles-discover-resources.md)中所述操作。 只有每个资源、资源组和订阅的所有者才能够在 PIM 中发现它们。 如果你是全局管理员尝试部署的 Azure 资源的 PIM，则可[提升访问权限来管理所有 Azure 订阅](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)以允许您自己的目录中的所有 Azure 资源的访问发现。 但是，建议在使用 PIM 管理其资源之前先获取每个订阅所有者的批准。
+如果目标是为 Azure 资源部署 PIM，则应按照[发现要在 PIM 文档中管理的 Azure 资源](pim-resource-roles-discover-resources.md)中所述操作。 只有每个资源、资源组和订阅的所有者才能够在 PIM 中发现它们。 如果你是全局管理员并尝试为 Azure 资源部署 PIM，可以[提升访问权限以管理所有 Azure 订阅](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)，从而让自己访问目录中的所有 Azure 资源以进行发现。 但是，建议在使用 PIM 管理其资源之前先获取每个订阅所有者的批准。
 
 ### <a name="enforce-principle-of-least-privilege"></a>强制执行最低权限原则
 
@@ -143,7 +143,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 1. 列出组织中有特权角色的人员。 可以使用 [PIM 向导](pim-security-wizard.md#run-the-wizard)来转到类似以下的页。
 
-    ![发现特权角色](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![“发现特权角色”窗格，其中显示具有特权角色的人员](./media/pim-deployment-plan/discover-privileged-roles-users.png)
 
 1. 对于组织中的所有全局管理员，找出他们需要该角色的原因。 基于之前的文档，如果一个人员的工作可由一个或多个权限更为细化的管理员角色来执行，则应删除该人员的全局管理员角色，并在 Azure Active Directory 中实施相应更为细化的角色分配（参考信息：Microsoft 目前只有 10 个管理员拥有全局管理员角色。 通过 [Microsoft 如何使用 PIM](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)，了解详细信息）。
 
@@ -151,7 +151,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 若要自动执行步骤 3 和 4，可以利用 PIM 中的访问评审函数。 按照[为 PIM 中的 Azure AD 启动访问评审](pim-how-to-start-security-review.md)中的步骤操作，可以为每一个拥有一个或多个成员的 Azure AD 角色设置访问评审。
 
-![创建访问评审](./media/pim-deployment-plan/create-access-review.png)
+![“为 Azure AD 角色创建访问评审”窗格](./media/pim-deployment-plan/create-access-review.png)
 
 应将审阅者设置为“成员(自我)”。 执行此操作后，系统会向该角色中的所有成员发送一封电子邮件，确认其是否需要相关访问权限。 还应在高级设置中启用“需提供批准理由”，以便用户可以描述其需要该角色的原因。 基于此信息，可将用户从不必要的角色中删除，如果该角色是全局管理员，则可以委派更细化的管理员角色。
 
@@ -161,7 +161,7 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 
 对于 Azure 订阅和资源，可以设置类似的访问评审流程，用于评审每个订阅或资源中的角色。 此过程的目标是最大程度地减少附加到每个订阅或资源的所有者和用户访问管理员分配量，以及删除不必要的分配。 但是，组织通常会将此类任务委派给每个订阅或资源的所有者，因为他们对特定角色（尤其是自定义角色）有更深入的了解。
 
-如果你是具有全局管理员角色的 IT 管理员尝试部署你的组织中的 Azure 资源的 PIM，则可[提升访问权限来管理所有 Azure 订阅](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)以获取每个订阅的访问权限。 然后可以找到每个订阅的所有者，与其协作，删除不必要的分配，最大程度减少所有者角色分配量。
+如果你是具有全局管理员角色的 IT 管理员，且尝试为组织中的 Azure 资源部署 PIM，则可以[提升访问权限以管理所有 Azure 订阅](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)，从而获取每个订阅的访问权限。 然后可以找到每个订阅的所有者，与其协作，删除不必要的分配，最大程度减少所有者角色分配量。
 
 具有 Azure 订阅的所有者角色的用户还可以利用 [Azure 资源的访问评审](pim-resource-roles-start-access-review.md)来审核和删除不必要的角色分配，此过程类似于之前用于 Azure AD 角色的过程。
 
@@ -183,9 +183,9 @@ Azure 资源角色 - 这些角色链接到 Azure 资源、资源组、订阅或�
 1. Exchange 管理员
 1. SharePoint 管理员
 1. Intune 管理员
-1. 安全读取者
+1. 安全读者
 1. 服务管理员
-1. 计费管理员
+1. 帐务管理员
 1. Skype for Business 管理员
 
 > [!TIP]
@@ -240,25 +240,25 @@ Azure 资源的 PIM 支持时限服务帐户。 应以对待常规用户帐户�
 
 #### <a name="pim-settings-for-azure-ad-roles"></a>Azure AD 角色的 PIM 设置
 
-| 角色 | 要求 MFA | 通知 | 事件工单 | 需要审批 | 审批者 | 激活持续时间 | 永久管理员 |
+| Role | 要求 MFA | 通知 | 事件工单 | 需要审批 | 审批者 | 激活持续时间 | 永久管理员 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 全局管理员角色 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 其他全局管理员 | 1 小时 | 紧急访问帐户 |
-| Exchange 管理员 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | 无 | 2 小时 | 无 |
+| 全局管理员 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 其他全局管理员 | 1 小时 | 紧急访问帐户 |
+| Exchange 管理员 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | None | 2 小时 | None |
 | 支持管理员 | :x: | :x: | :heavy_check_mark: | :x: | 无 | 8 小时 | 无 |
 
 #### <a name="pim-settings-for-azure-resource-roles"></a>Azure 资源角色的 PIM 设置
 
-| 角色 | 要求 MFA | 通知 | 需要审批 | 审批者 | 激活持续时间 | 活动管理员 | 活动期限 | 合格期限 |
+| Role | 要求 MFA | 通知 | 需要审批 | 审批者 | 激活持续时间 | 活动管理员 | 活动期限 | 合格期限 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 关键订阅的所有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 订阅的其他所有者 | 1 小时 | 无 | 不适用 | 3 个月 |
-| 次要订阅的用户访问管理员 | :heavy_check_mark: | :heavy_check_mark: | :x: | 无 | 1 小时 | 无 | 不适用 | 3 个月 |
-| 虚拟机参与者 | :x: | :heavy_check_mark: | :x: | 无 | 3 个小时 | 无 | 不适用 | 6 个月 |
+| 关键订阅的所有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 订阅的其他所有者 | 1 小时 | None | 不适用 | 3 个月 |
+| 次要订阅的用户访问管理员 | :heavy_check_mark: | :heavy_check_mark: | :x: | 无 | 1 小时 | None | 不适用 | 3 个月 |
+| 虚拟机参与者 | :x: | :heavy_check_mark: | :x: | None | 3 个小时 | 无 | 不适用 | 6 个月 |
 
 下表说明了每个设置。
 
 | 设置 | 描述 |
 | --- | --- |
-| 角色 | 要为其定义设置的角色的名称。 |
+| Role | 要为其定义设置的角色的名称。 |
 | 要求 MFA | 符合条件的用户是否需要在激活角色之前执行 MFA。<br/><br/> :heavy_check_mark:Microsoft 建议为所有管理员角色强制执行 MFA，尤其是在角色含有来宾用户的情况下。 |
 | 通知 | 如果设置为 true，当符合条件的用户激活角色时，组织中的全局管理员、特权角色管理员和安全管理员会收到电子邮件通知。<br/><br/>**注意：** 某些组织没有向管理员帐户绑定电子邮件地址来获取这些电子邮件通知，应该设置一个备用电子邮件地址，以便管理员收到这些电子邮件。 |
 | 事件工单 | 激活角色时符合条件的用户需要记录事件工单号。 此设置可帮助组织使用内部事件编号识别每次激活，以减少无效激活的次数。<br/><br/> :heavy_check_mark:Microsoft 建议利用事件工单号将 PIM 绑定到内部系统。 这对于需要激活操作上下文的审批者而言特别有用。 |
@@ -283,7 +283,7 @@ Azure 资源的 PIM 支持时限服务帐户。 应以对待常规用户帐户�
 
 在此表中，标识测试用户，这些用户将验证每个角色的设置是否有效。
 
-| 角色名称 | 测试用户 |
+| 角色名 | 测试用户 |
 | --- | --- |
 | &lt;角色名称&gt; | &lt;要测试角色的用户&gt; |
 | &lt;角色名称&gt; | &lt;要测试角色的用户&gt; |
@@ -294,7 +294,7 @@ Azure 资源的 PIM 支持时限服务帐户。 应以对待常规用户帐户�
 
 #### <a name="configure-pim-for-azure-ad-roles"></a>为 Azure AD 角色配置 PIM
 
-1. [配置 Azure AD 角色设置](pim-how-to-change-default-settings.md)基于您的计划。
+1. 基于计划[配置 Azure AD 角色设置](pim-how-to-change-default-settings.md)。
 
 1. 导航到“Azure AD 角色”，单击“角色”，然后选择刚配置的角色。
 
@@ -318,9 +318,9 @@ Azure 资源的 PIM 支持时限服务帐户。 应以对待常规用户帐户�
 
 应运用此阶段来验证为角色设置的所有配置是否均正常工作。 使用下表来记录测试。 应运用此阶段来优化与受影响用户之间的通信。
 
-| 角色 | 激活期间的预期行为 | 实际结果 |
+| Role | 激活期间的预期行为 | 实际结果 |
 | --- | --- | --- |
-| 全局管理员角色 | (1) 要求 MFA<br/>(2) 需要审批<br/>(3) 审批者收到通知，并且可以批准<br/>(4) 角色在预设时间后过期 |  |
+| 全局管理员 | (1) 要求 MFA<br/>(2) 需要审批<br/>(3) 审批者收到通知，并且可以批准<br/>(4) 角色在预设时间后过期 |  |
 | 订阅所有者 X | (1) 要求 MFA<br/>(2) 分配的合格角色将在配置的时间段后过期 |  |
 
 ### <a name="communicate-pim-to-affected-stakeholders"></a>与受影响的利益干系人就 PIM 进行沟通

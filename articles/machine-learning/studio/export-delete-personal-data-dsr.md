@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
 ms.openlocfilehash: 827714fea9618724ef058e1f76dc099f692482bc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850524"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60750088"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>从 Azure 机器学习工作室中导出和删除产品内用户数据
 
@@ -65,7 +65,7 @@ ms.locfileid: "57850524"
 
 用户也可以删除其整个工作区：
 - 付费工作区：通过 Azure 门户进行删除。
-- 免费工作区：使用“设置”窗格中的“删除”按钮。
+- 免费工作区：使用“设置”窗格中的“删除”按钮  。
 
 ![删除机器学习工作室中的免费工作区](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  

@@ -4,21 +4,20 @@ description: 了解如何解决由于 DHCP 客户端服务在 Microsoft Azure �
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ef44931cc3b36bcab64a2de840d9264c1b8fdedb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652274"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058020"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>由于 DHCP 客户端服务被禁用，因此无法对 Azure 虚拟机进行 RDP
 
@@ -33,10 +32,10 @@ ms.locfileid: "58652274"
 **源**：服务控制管理器 </br>
 **日期**：12/16/2015 11:19:36 AM </br>
 **事件 ID**：7022 </br>
-**任务类别**：无 </br>
-**级别**：错误 </br>
+**任务类别**：None </br>
+**级别**：Error </br>
 **关键字**：经典</br>
-**用户**：不适用 </br>
+**用户**：不可用 </br>
 **计算机**: myvm.cosotos.com</br>
 **说明**：DHCP 客户端服务在启动时挂起。</br>
 
@@ -77,7 +76,7 @@ DHCP 客户端服务未在 VM 上运行。
     尝试连接到 VM 并查看问题是否得以解决。
 5. 如果服务未启动，请根据所接收到的错误消息，使用以下适当的解决方案：
 
-    | 错误  |  解决方案 |
+    | Error  |  解决方案 |
     |---|---|
     | 5- 访问被拒绝  | 请参阅 [DHCP 客户端服务由于访问被拒绝错误而停止](#dhcp-client-service-is-stopped-because-of-an-access-denied-error)。  |
     |1053 - ERROR_SERVICE_REQUEST_TIMEOUT   | 请参阅 [DHCP 客户端服务崩溃或挂起](#dhcp-client-service-crashes-or-hangs)。  |
@@ -124,7 +123,7 @@ DHCP 客户端服务未在 VM 上运行。
 
     1. [将数据磁盘附加到 VM](../windows/attach-managed-disk-portal.md
 )。
-    2. 使用串行控制台可将文件复制到新驱动器。 例如，`copy C:\temp\ProcMonTrace.PML F:\`。 在此命令中，F 是附加的数据磁盘的驱动程序号。 使用正确的值适当地替换该字母。
+    2. 使用串行控制台可将文件复制到新驱动器。 例如， `copy C:\temp\ProcMonTrace.PML F:\` 。 在此命令中，F 是附加的数据磁盘的驱动程序号。 使用正确的值适当地替换该字母。
     3. 分离数据驱动器，然后将其附加到已安装进程监视器 ubstakke 的正常 VM。
 
 6. 在正常的 VM 上使用进程监视器打开 ProcMonTrace.PML。 然后按“结果为‘访问被拒绝’”进行筛选，如以下屏幕截图所示 **：**

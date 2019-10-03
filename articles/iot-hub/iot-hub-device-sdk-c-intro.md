@@ -1,19 +1,19 @@
 ---
 title: 适用于 C 语言的 Azure IoT 设备 SDK | Microsoft Docs
 description: 开始使用适用于 C 语言的 Azure IoT 设备 SDK，并了解如何创建与 IoT 中心通信的设备应用。
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 08/25/2017
-ms.author: yizhon
-ms.openlocfilehash: a0099fa085e21c381b74dc2690ffcf0870345f21
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 05/17/2019
+ms.author: robinsh
+ms.openlocfilehash: dd12f974b9b02d919752dcb932c9ce1709d7315b
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992351"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813793"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>适用于 C 的 Azure IoT 设备 SDK
 
@@ -126,7 +126,7 @@ Windows 版本的 **iothub_client\_samples\_iothub_convenience_sample** 应用�
   ![Visual Studio 解决方案资源管理器](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
 > [!NOTE]
-> 如果在 Visual Studio 2017 中打开此项目，请接受提示，以便将项目重新定位到最新版本。
+> 如果 Visual Studio 要求你将项目重新定位到最新版本，请接受提示。
 
 此解决方案只包含一个项目。 此解决方案中安装了四个 NuGet 包：
 
@@ -217,7 +217,7 @@ do
 static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
 {
     EVENT_INSTANCE* eventInstance = (EVENT_INSTANCE*)userContextCallback;
-    (void)printf("Confirmation[%d] received for message tracking id = %zu with result = %s\r\n", callbackCounter, eventInstance->messageTrackingId, ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
+    (void)printf("Confirmation[%d] received for message tracking id = %zu with result = %s\r\n", callbackCounter, eventInstance->messageTrackingId, MU_ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
     /* Some device specific action code goes here... */
     callbackCounter++;
     IoTHubMessage_Destroy(eventInstance->messageHandle);
@@ -339,7 +339,7 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
   ![mqtt 示例的 Visual Studio 解决方案](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
 > [!NOTE]
-> 如果在 Visual Studio 2017 中打开此项目，请接受提示，以便将项目重新定位到最新版本。
+> 如果 Visual Studio 要求你将项目重新定位到最新版本，请接受提示。
 
 如同前面的示例，此示例也包含多个 NuGet 包：
 
@@ -351,7 +351,7 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
 
 其中的大多数包已在前面的示例中出现过，但 **Microsoft.Azure.IoTHub.Serializer** 是新的。 使用**序列化程序**库时需要此包。
 
-您可以找到示例应用程序中实现**iothub_client\_示例\_iothub_convenience_sample**文件。
+可以在 **iothub_client\_samples\_iothub_convenience_sample** 文件中找到示例应用程序的实现。
 
 以下部分将演练本示例的重要组成部分。
 
@@ -475,7 +475,7 @@ void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCal
 
     (void)printf("Message Id: %u Received.\r\n", messageTrackingId);
 
-    (void)printf("Result Call Back Called! Result is: %s \r\n", ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
+    (void)printf("Result Call Back Called! Result is: %s \r\n", MU_ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
 }
 ```
 

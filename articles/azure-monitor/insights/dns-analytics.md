@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 6dd5872d5ec3e79e3c76b1807aea946015fb0eac
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: ad61743751ace9ca0c7eba12ffcea5f15e1157d5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521017"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316181"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -64,7 +64,7 @@ DNS Analytics 可帮助：
 
 在解决方案仪表板上，单击“配置”打开 DNS Analytics 配置页面。 可进行两种类型的配置更改：
 
-- **列入允许列表的域名**。 解决方案不会处理所有查找查询。 这样可保留域名后缀允许列表。 查找查询会解析为匹配此允许列表中域名后缀的域名，但不由解决方案处理。 不处理列入允许列表的域名有助于优化发送到 Azure Monitor 的数据。 默认允许列表包括常用的公共域名，例如 www.google.com 和 www.facebook.com。 可以滚动查看完整的默认列表。
+- **列入允许列表的域名**。 解决方案不会处理所有查找查询。 这样可保留域名后缀允许列表。 查找查询会解析为匹配此允许列表中域名后缀的域名，但不由解决方案处理。 不处理列入允许列表的域名有助于优化发送到 Azure Monitor 的数据。 默认允许列表包括常用的公共域名，例如 www.google.com 和 www.facebook.com 。 可以滚动查看完整的默认列表。
 
   可以修改列表，添加任何想要查看的域名后缀，从而查看查找见解。 还可以删除任何不感兴趣的域名后缀，从而查看查找见解。
 
@@ -179,13 +179,16 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 1. 在“搜索查询”框中，键入 `DnsInventory`，查看由该解决方案托管的 DNS 服务器中所有与 DNS 清单相关数据。 结果中列出 DNS 服务器的日志数据、DNS 区域和资源记录。
 
     ![DnsInventory 日志搜索](./media/dns-analytics/log-search-dnsinventory.png)
+    
+## <a name="troubleshooting"></a>疑难解答
+
+常见的故障排除步骤：
+
+1. 缺少 DNS 查找数据-若要解决此问题，请尝试重置配置，或在门户中仅加载一次配置页面。 若要重置，只需将设置更改为其他值，然后将其更改回原始值，并保存配置。
 
 ## <a name="feedback"></a>反馈
 
-可通过两种方式提供反馈：
-
-- **UserVoice**。 发布有关 DNS Analytics 功能的建议。 访问 [Log Analytics UserVoice 页](https://aka.ms/dnsanalyticsuservoice)。
-- **加入我们的队列**。 我们始终欢迎新客户加入我们的队列，提前访问新功能，并帮助我们改进 DNS Analytics。 如有兴趣加入我们的队列，请填写[此快速调查](https://aka.ms/dnsanalyticssurvey)。
+若要提供反馈，请访问[Log Analytics UserVoice 页面](https://aka.ms/dnsanalyticsuservoice)，发布用于处理 DNS Analytics 功能的想法。 
 
 ## <a name="next-steps"></a>后续步骤
 

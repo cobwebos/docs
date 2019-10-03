@@ -4,16 +4,16 @@ description: Azure 空间的定位点若要了解如何与支持团队提出请�
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c372b86861452c48b2114073419d4ed709ff115c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1930d5fc9dafe7d480302ded9b4e5a86f55a7669
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109876"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65964531"
 ---
 # <a name="azure-spatial-anchors-support-options"></a>Azure 空间的定位点支持选项
 
@@ -32,7 +32,7 @@ ms.locfileid: "58109876"
 1. 完成后的支持票证字段： 
 
 - 问题类型：技术方面
-- 服务：空间的定位点
+- 服务：空间定位点
 
 ![Azure 门户支持票证字段](./media/spatial-anchor-support3.png)
 

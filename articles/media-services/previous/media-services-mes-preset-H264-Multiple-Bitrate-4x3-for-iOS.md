@@ -1,6 +1,6 @@
 ---
 title: H264 多比特率 4x3 (iOS) | Microsoft 文档
-description: 本主题概述了“H264 多比特率 4x3 (iOS)”任务预设。
+description: 本主题概述了“H264 多比特率 4x3 (iOS)”任务预设  。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 45dbaea4e2c6f8cdbe3d33df5d3b82b9df519ff2
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58187993"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61463644"
 ---
 # <a name="h264-multiple-bitrate-4x3-for-ios"></a>H264 多比特率 4x3 (iOS)
 `Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  

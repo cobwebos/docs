@@ -3,19 +3,20 @@ title: 如何使用 Conversation Learner 操作的“预期实体”属性 - Mic
 titleSuffix: Azure
 description: 了解如何使用 Conversation Learner 模型的“预期实体”属性。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 01d991cff9b7f7a66740f86e537833ffe4e862c7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5fbe4f09d377b9f157368184ab26341782e9aed1
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226262"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707320"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>如何使用操作的“预期实体”属性
 
@@ -39,7 +40,7 @@ ms.locfileid: "55226262"
 2. 如果找不到实体，则会基于启发法将整个用户话语分配给 $entity
 3. 调用 `EntityDetectionCallback`，然后继续选择操作。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 ### <a name="create-the-model"></a>创建模型
 

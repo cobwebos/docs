@@ -1,5 +1,5 @@
 ---
-title: 语言支持
+title: 语言支持 - LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS 在服务中具有多种功能。 并非所有功能都会同等地以各种语言提供。 请确保你所定位的语言文化支持你感兴趣的功能。 LUIS 应用特定于区域性，一旦设置即无法更改。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/19/2019
+ms.topic: conceptual
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 10fe5d90e7a7a59a1b543209a37b998376fdda1e
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757655"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316349"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -34,17 +34,18 @@ LUIS 理解以下语言：
 |--|--|:--:|:--:|:--:|:--:|
 | 美国英语 |`en-US` | ✔ | ✔  |✔|✔|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| 荷兰语 |`nl-NL` |-|  -   |-|✔|
-| 法语(法国) |`fr-FR` |-| ✔ |✔ |✔|
+| 荷兰语 |`nl-NL` |✔|  -   |-|✔|
+| 法语(法国) |`fr-FR` |✔| ✔ |✔ |✔|
 | 法语(加拿大) |`fr-CA` |-|   -   |-|✔|
-| 德语 |`de-DE` |-| ✔ |✔ |✔|
-| 意大利语 |`it-IT` |-| ✔ |✔|✔|
-| *[日语](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|仅关键短语|
-| 韩语 |`ko-KR` |-|   -   |-|仅关键短语|
-| 葡萄牙语(巴西) |`pt-BR` |-| ✔ |✔ |并非所有亚区域性|
-| 西班牙语(西班牙) |`es-ES` |-| ✔ |✔|✔|
+| 德语 |`de-DE` |✔| ✔ |✔ |✔|
+| 印地语 | `hi-IN`|-|-|-|-|
+| 意大利语 |`it-IT` |✔| ✔ |✔|✔|
+| *[日语](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|仅关键短语|
+| 朝鲜语 |`ko-KR` |✔|   -   |-|仅关键短语|
+| 葡萄牙语(巴西) |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
+| 西班牙语(西班牙) |`es-ES` |✔| ✔ |✔|✔|
 | 西班牙语(墨西哥)|`es-MX` |-|  -   |✔|✔|
-| 土耳其语 | `tr-TR` |-|-|-|仅情绪|
+| 土耳其语 | `tr-TR` |✔|-|-|仅情绪|
 
 
 [预生成实体](luis-reference-prebuilt-entities.md)和[预生成域](luis-reference-prebuilt-domains.md)具有不同的语言支持。
@@ -53,7 +54,7 @@ LUIS 理解以下语言：
 
  - 在 `zh-cn` 区域性中，LUIS 要求简体中文字符集，而不是繁体字符集。
  - 意向、实体、功能和正则表达式的名称可采用中文或罗马字符。
- - 请参阅[预生成的域引用](luis-reference-prebuilt-domains.md)有关中支持预生成的域的信息`zh-cn`区域性。
+ - 请参阅[预生成域参考](luis-reference-prebuilt-domains.md)，了解 `zh-cn` 区域性支持的预生成域。
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>*日语支持说明
@@ -88,23 +89,24 @@ LUIS 理解以下语言：
 |法语 (fr-FR)|✔||||
 |法语 (fr-CA)|✔||||
 |德语|||✔|✔|
+| 印地语 |✔|-|-|-|-|
 |意大利语|✔||||
 |日语||||✔|
-|韩语||✔||✔|
+|朝鲜语||✔||✔|
 |葡萄牙语(巴西)|✔||||
 |西班牙语 (es-ES)|✔||||
 |西班牙语 (es-MX)|✔||||
 
-### <a name="custom-tokenizer-versions"></a>自定义标记器版本
+### <a name="custom-tokenizer-versions"></a>自定义 tokenizer 版本
 
-以下区域性具有自定义标记器版本：
+以下区域性具有自定义 tokenizer 版本：
 
-|环境|版本|目的|
+|区域性|Version|用途|
 |--|--|--|
-|德语<br>`de-de`|1.0.0|基于单词拆分使用机器学习基于标记化器尝试分解复合单词按其单个组件对其进行标记。<br>如果用户输入`Ich fahre einen krankenwagen`作为查询文本，它诉诸于`Ich fahre einen kranken wagen`。 允许的标记`kranken`和`wagen`独立地为不同的实体。|
-|德语<br>`de-de`|1.0.1|基于字词的拆分在空间上进行标记。<br> 如果用户输入`Ich fahre einen krankenwagen`作为查询文本，它将保持的单个标记。 因此`krankenwagen`标记作为单个实体。 |
+|德语<br>`de-de`|1.0.0|通过使用基于机器学习的 tokenizer 将单词拆分，尝试将复合单词分解为它们的单个组件，从而对单词进行标记。<br>如果用户输入 `Ich fahre einen krankenwagen` 作为话语，它将转换为 `Ich fahre einen kranken wagen`。 允许将 `kranken` 和 `wagen` 分别标记为不同的实体。|
+|德语<br>`de-de`|1.0.2|通过基于空格拆分单词来标记单词。<br> 如果用户输入 `Ich fahre einen krankenwagen` 作为话语，则它仍然是单个标记。 因此 `krankenwagen` 标记为单个实体。 |
 
-### <a name="migrating-between-tokenizer-versions"></a>标记器版本之间进行迁移
+### <a name="migrating-between-tokenizer-versions"></a>在 tokenizer 版本之间迁移
 <!--
 Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
 
@@ -207,6 +209,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-在应用级别发生词汇切分。 没有支持的版本级别词汇切分。 
+在应用级别进行词汇切分。 不支持版本级别的词汇切分。 
 
-[导入该文件作为新的应用程序](luis-how-to-start-new-app.md#import-an-app-from-file)，而不是版本。 此操作的含义，新应用程序具有不同的应用 ID，但使用的文件中指定的标记器版本。 
+[将文件导入为新应用](luis-how-to-start-new-app.md#import-an-app-from-file)，而不是版本。 此操作意味着新应用具有不同的应用 ID，但使用文件中指定的 tokenizer 版本。 

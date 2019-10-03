@@ -1,5 +1,5 @@
 ---
-title: 将 Node.js MongoDB 应用连接到 Azure Cosmos DB
+title: 快速入门：将 Node.js MongoDB 应用连接到 Azure Cosmos DB
 description: 本快速入门演示如何将以 Node.js 编写的现有 MongoDB 应用连接到 Azure Cosmos DB。
 author: rimman
 ms.author: rimman
@@ -7,13 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 12/06/2018
-ms.openlocfilehash: 99f6de4d0441594c09e5e8c29834b90aeb1d43a6
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.date: 05/21/2019
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: 7fd74e31b0527b256f6bb9f17029a02aaf41568b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586472"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931808"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>快速入门：将现有的 MongoDB Node.js Web 应用迁移到 Azure Cosmos DB 
 
@@ -100,7 +101,7 @@ az login
 
 以下示例在西欧区域中创建资源组。 选择资源组的唯一名称。
 
-如果使用 Azure Cloud Shell，请单击“试用”，按照屏幕提示登录，然后将命令复制到命令提示符中。
+如果使用 Azure Cloud Shell，请选择“试用”  ，按照屏幕提示登录，然后将命令复制到命令提示符中。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "West Europe"
@@ -204,7 +205,7 @@ npm start
 
 此时应会显示一条控制台消息，告知开发环境已启动并运行。 
 
-在浏览器中导航至 `http://localhost:3000` 。 在顶部菜单中单击“注册”，并尝试创建两个虚构的用户。 
+在浏览器中转到 `http://localhost:3000`。 在顶部菜单中选择“注册”，并尝试创建两个虚拟用户。  
 
 MEAN.js 示例应用程序将用户数据存储在数据库中。 如果上述操作成功并且 MEAN.js 可自动登录到已创建的用户，则表示 Azure Cosmos DB 连接可正常工作。 
 
@@ -216,7 +217,7 @@ Cosmos 数据库中存储的数据可用于在 Azure 门户中查看和查询。
 
 若要查看、查询和处理在上一步骤中创建的用户数据，请在 Web 浏览器中登录到 [Azure 门户](https://portal.azure.com)。
 
-在顶部搜索框中，键入“Azure Cosmos DB”。 打开 Cosmos 帐户边栏选项卡后，请选择 Cosmos 帐户。 在左侧导航栏中，单击“数据资源管理器”。 在“集合”窗格中展开你的集合，即可查看该集合中的文档，查询数据，甚至可以创建和运行存储过程、触发器与 UDF。 
+在顶部搜索框中，输入 **Azure Cosmos DB**。 打开 Cosmos 帐户边栏选项卡后，请选择 Cosmos 帐户。 在左侧导航栏中，选择“数据资源管理器”  。 在“集合”窗格中展开你的集合，即可查看该集合中的文档，查询数据，甚至可以创建和运行存储过程、触发器与 UDF。 
 
 ![Azure 门户中的数据资源管理器](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
 

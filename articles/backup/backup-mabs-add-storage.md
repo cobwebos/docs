@@ -1,19 +1,19 @@
 ---
 title: 将新式备份存储与 Azure 备份服务器一起使用
 description: 了解 Azure 备份服务器中的新功能。 本文介绍如何升级备份服务器安装。
-services: backup
-author: rayne-wiselman
+ms.reviewer: adigan
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: adigan
-ms.openlocfilehash: 621d071f98701ff3a949f4172fef1d13819d7192
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: dacurwin
+ms.openlocfilehash: 48d58ac303a843c627067c9a0287628c35b65f66
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852847"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019069"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>将存储添加到 Azure 备份服务器
 
@@ -75,13 +75,13 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-可以使用 PowerShell cmdlet Update-dpmdiskstorage，更新 Azure 备份服务器上存储池中卷的属性来设置负载感知存储。 
+可以使用 PowerShell cmdlet Update-DPMDiskStorage（它可更新 Azure 备份服务器上存储池中的卷的属性）设置可感知工作负荷的存储。 
 
 语法：
 
 `Parameter Set: Volume`
 
-```
+```powershell
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
 下面的屏幕截图显示 PowerShell 窗口中的 Update-DPMDiskStorage cmdlet。
@@ -102,9 +102,9 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
    ![停止保护成员](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. 在“从组中删除”对话框中，检查存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联保留策略过期。 单击“确定”。
+2. 在“从组中删除”对话框中，检查存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联保留策略过期。 单击 **“确定”** 。
 
-   如果要立即将已用磁盘空间返回到可用存储池，则选中“删除磁盘上的副本”复选框以删除与成员关联的备份数据（和恢复点）。
+   如果你想要立即返回到可用存储池的使用的磁盘空间，选择**埃合盒**复选框以删除备份数据 （和恢复点） 与该成员相关联。
 
    ![“从组中删除”对话框](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 

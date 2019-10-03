@@ -1,8 +1,7 @@
 ---
 title: 使用 PowerShell 在 Azure 中设置 Application Insights | Microsoft Docs
-description: 自动配置 Azure 诊断，通过管道发送到 Application Insights。
+description: 自动将 Azure 诊断配置为管道数据 Application Insights。
 services: application-insights
-documentationcenter: .net
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 4ac803a8-f424-4c0c-b18f-4b9c189a64a5
@@ -10,18 +9,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/17/2015
+ms.date: 08/06/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3c0decaa89b4ecc503157a32fcb1e5b4d249ccfb
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0c963e4cd7befffe69fef159542eabd29059e3d9
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317775"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035188"
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>使用 PowerShell 为 Azure Web 应用设置 Application Insights
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>使用 PowerShell 为 Azure 云服务设置 Application Insights
 
 可以将 [Microsoft Azure](https://azure.com) 配置为向 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)[发送 Azure 诊断](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)。 该诊断与 Azure Cloud Service 和 Azure VM 有关。 它们是对使用 Application Insights SDK 从应用内发送的遥测的补充。 作为在 Azure 中自动处理新建资源过程的一部分，可以使用 PowerShell 配置诊断。
 
@@ -136,7 +133,7 @@ ms.locfileid: "57317775"
 ```
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [使用 Application Insights 监视 Azure Cloud Service 应用](../../azure-monitor/app/cloudservices.md)
 * [将 Azure 诊断发送到 Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [自动配置警报](powershell-alerts.md)

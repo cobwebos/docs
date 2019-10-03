@@ -3,20 +3,20 @@ title: 开始使用 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 了解如何注册文本翻译 API 并获取订阅密钥。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: erhopf
+ms.date: 06/04/2019
+ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 6bd7a014e765d32349951d99d3027c90f61f7eb7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e51e6875681618b5f558d5c52ed5a2b14095b079
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726127"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434968"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>如何注册文本翻译 API
 
@@ -29,20 +29,20 @@ ms.locfileid: "56726127"
 
 登录到门户后，可以创建文本翻译 API 的订阅，如下所示：
 
-1. 选择“+ 创建资源”。
-1. 在“搜索市场”搜索框中，输入“文本翻译”，然后从结果中选择它。
-1. 选择“创建”，定义该订阅的详细信息。
-1. 从“定价层”列表中，选择最适合需要的定价层。
+1. 选择“+ 创建资源”。 
+1. 在“搜索市场”搜索框中，输入“文本翻译”，然后从结果中选择它   。
+1. 选择“创建”，定义该订阅的详细信息  。
+1. 从“定价层”列表中，选择最适合需要的定价层  。
     1. 每个订阅都有一个免费层。 免费层具有与付费计划相同的特征和功能，并且不会过期。
     1. 帐户只能有一个免费订阅。
-1. 选择“创建”完成创建订阅。
+1. 选择“创建”完成创建订阅  。
 
 ## <a name="authentication-key"></a>身份验证密钥
 
 注册文本翻译时，将获得订阅所特有的个性化访问密钥。 每次调用文本翻译 API 时都需要此密钥。
 
 1. 通过先选择相应的订阅检索身份验证密钥。
-1. 在订阅详细信息的“资源管理”部分中选择“密钥”。
+1. 在订阅详细信息的“资源管理”部分中选择“密钥”   。
 1. 复制订阅所列出的任一密钥。
 
 ## <a name="learn-test-and-get-support"></a>了解、测试和获取支持

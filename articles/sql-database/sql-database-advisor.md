@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: d09adbfa7cb2782d710ef3116cbd7bc68ee247b7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 08def3ac2fd94f01586bc690d867c04758b8856b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787794"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569531"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL 数据库性能建议
 
@@ -79,7 +78,7 @@ SQL 数据库持续监视正在运行的查询，并发现可以提升性能的�
 
 | SQL 错误代码 | 消息 |
 | --- | --- |
-| 201 |过程或函数“*”需要参数“*”，但未提供该参数。 |
+| 201 |过程或函数“ *”需要参数“* ”，但未提供该参数。 |
 | 207 |列名称“*”无效。 |
 | 208 |对象名“*”无效。 |
 | 213 |列名或所提供值的数目与表定义不匹配。 |

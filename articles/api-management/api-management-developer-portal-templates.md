@@ -10,24 +10,23 @@ ms.assetid: a195675b-f7d0-4fc9-90bf-860e6f17ccf7
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 00d5e3df78e85d19a519786dad1a1b176ad7fa08
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: a8b250c45716146c505a803046b18bf5d05cf116
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733053"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073773"
 ---
-# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API Management 开发人员门户
+# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API 管理开发人员门户
 
 在 Azure API 管理中自定义开发人员门户有三种基本方法：
 
 * [编辑静态页面内容和页面布局元素][modify-content-layout]
 * [跨开发人员门户更新页面元素所用的样式][customize-styles]
-* [修改门户生成的页面所用的模板][portal-templates]（在本指南中说明）
+* [修改门户生成的页面所用的模板][portal-templates](本指南中所述)
 
 模板用于自定义系统生成的开发人员门户页的内容（例如，API 文档、产品、用户身份验证等）。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和一组提供的本地化字符串资源、图标和页面控件，可根据需要非常灵活地配置页面内容。
 
@@ -167,9 +166,9 @@ ms.locfileid: "55733053"
 还原操作完成后，模板的以前发布的版本在开发人员门户中生效。
 
 ## <a name="to-restore-a-template-to-the-default-version"></a>将模板还原到默认版本
-将模板还原到其默认版本的过程分为两步。 首先必须还原模板，然后必须发布已还原的版本。
+将模板还原到其默认版本的过程分为两步。 首先，必须还原模板，然后必须发布还原后的版本。
 
-要将单个模板还原到默认版本，请在模板编辑器中单击“还原”。
+若要将单个模板还原到默认版本，请在模板编辑器中单击“还原”。
 
 ![还原模板][api-management-reset-template]
 
@@ -177,7 +176,7 @@ ms.locfileid: "55733053"
 
 ![确认][api-management-reset-template-confirm]
 
-要将所有模板还原到其默认版本，请单击模板列表中的“还原默认模板”。
+若要将所有模板还原到其默认版本，请单击模板列表中的“还原默认模板”。
 
 ![还原模板][api-management-restore-templates]
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: b4b7759d1dc23c1a1b3a9b5aeb2a181923e14d40
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5997526098980220014d9bb2d47efe6c9aedee3d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670654"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66752333"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric 独立群集概述
 
@@ -51,7 +51,7 @@ Service Fabric 还支持使用访问控制限制对不同用户组的某些群�
 
 有关详细信息，请阅读[基于角色的访问控制 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)。
 
-## <a name="scaling"></a>扩展
+## <a name="scaling"></a>缩放
 
 应用程序的需求会不断变化。 可能需要增加群集资源来满足更多的应用程序工作负荷或网络流量，或者在需求下降时减少群集资源。 创建 Service Fabric 群集后，可以群集横向缩放（更改节点数）或纵向缩放（更改节点资源）该群集。 随时可以缩放群集，即使该群集上正在运行工作负荷。 在缩放群集的同时，应用程序也会随之自动缩放。
 
@@ -68,6 +68,7 @@ Service Fabric 还支持使用访问控制限制对不同用户组的某些群�
 
 * Windows Server 2012 R2
 * Windows Server 2016 
+* Windows Server 2019
 
 ## <a name="next-steps"></a>后续步骤
 详细了解如何[保护](service-fabric-cluster-security.md)、[缩放](service-fabric-cluster-scaling-standalone.md)和[升级](service-fabric-cluster-upgrade-standalone.md)独立群集。

@@ -3,7 +3,7 @@ title: 安装 Azure AD Power BI 内容包 | Microsoft Docs
 description: 了解如何安装 Azure AD Power BI 内容包
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: fd5604eb-1334-4bd8-bfb5-41280883e2b5
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69a69732d8cb42c248fa954ef9047e5876f40837
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: f088c8b49fa6485a21b630738149078b7ff45b7d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437418"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988109"
 ---
 # <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>快速入门：安装 Azure Active Directory Power BI 内容包
 
@@ -46,11 +46,11 @@ ms.locfileid: "58437418"
 
 1. 使用你的 Power BI 帐户登录到 [Power BI](https://app.powerbi.com/groups/me/getdata/services)。 这是与你的 O365 或 Azure AD 帐户相同的帐户。
 
-2. 在“应用”页面中搜索 **Azure Active Directory 活动日志**并选择“立即获取”。 
+2. 在“应用”页面中搜索 **Azure Active Directory 活动日志**并选择“立即获取”。   
 
    ![Azure Active Directory Power BI 内容包](./media/quickstart-install-power-bi-content-pack/getitnow.png) 
     
-3. 在弹出窗口中，键入你的 Azure AD 租户 ID，输入 **7** 作为天数，然后选择“下一步”。
+3. 在弹出窗口中，键入你的 Azure AD 租户 ID，输入 **7** 作为天数，然后选择“下一步”。 
     
    ![Azure Active Directory Power BI 内容包](./media/quickstart-install-power-bi-content-pack/connect.png) 
 

@@ -3,7 +3,7 @@ title: 开始使用队列存储和 Visual Studio 连接服务 (ASP.NET Core) | M
 description: 如何开始在 Visual Studio 中的 ASP.NET Core 项目中使用 Azure 队列存储
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 04977069-5b2d-4cba-84ae-9fb2f5eb1006
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 8a91614e7dfb804e6a902967ce60f898ed0e54ad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8e370c6f7c59da8522bb4fb1403b6107a9c9c41
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999769"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510984"
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>开始使用队列存储和 Visual Studio 连接服务 (ASP.NET Core)
 
@@ -66,7 +66,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 
 ### <a name="create-a-queue-in-code"></a>使用代码创建队列
 
-若要在代码中创建 Azure 队列，调用`CreateIfNotExistsAsync`:
+若要在代码中创建 Azure 队列, `CreateIfNotExistsAsync`请调用:
 
 ```cs
 // Create the CloudQueue if it does not exist.

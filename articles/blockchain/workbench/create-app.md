@@ -1,21 +1,21 @@
 ---
 title: 在 Azure Blockchain Workbench 中创建区块链应用程序
-description: 教程：如何在 Azure Blockchain Workbench 中创建区块链应用程序。
+description: 有关如何在 Azure Blockchain Workbench 预览版中创建区块链应用程序的教程。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: d9f736b0b976ac6ec0da45a672d2e992405625cd
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: adc47ecb06c0e2dbfcae7b85aeec284027315e5b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578784"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845153"
 ---
 # <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>教程：在 Azure Blockchain Workbench 中创建区块链应用程序
 
@@ -39,9 +39,10 @@ ms.locfileid: "59578784"
 
 ## <a name="hello-blockchain"></a>你好，Blockchain！
 
-让我们生成一个基本的应用程序，其中的请求方发送请求，响应方发送对请求的响应。 例如，请求可以是“你好吗？”，而响应可以是“我很好！”。 请求和响应都记录在底层区块链中。 
+让我们生成一个基本的应用程序，其中的请求方发送请求，响应方发送对请求的响应。
+例如，请求可以是“你好吗？”，而响应可以是“我很好！”。 请求和响应都记录在底层区块链中。
 
-按照创建应用程序文件的步骤进行操作，也可以[从 GitHub 下载示例](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain)。 
+按照创建应用程序文件的步骤进行操作，也可以[从 GitHub 下载示例](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain)。
 
 ## <a name="configuration-file"></a>配置文件
 
@@ -215,7 +216,7 @@ ms.locfileid: "59578784"
 
 ### <a name="workflows"></a>工作流
 
-工作流定义合约的一个或多个阶段与操作。 在请求-响应方案中，工作流的第一个阶段（状态）是请求方（角色）执行某个操作（转换）以发送请求（函数）。 下一个阶段（状态）是响应方（角色）执行某个操作（转换）以发送响应（函数）。 应用程序的工作流可能涉及到描述合同流所需的属性、函数和状态。 
+工作流定义合约的一个或多个阶段与操作。 在请求-响应方案中，工作流的第一个阶段（状态）是请求方（角色）执行某个操作（转换）以发送请求（函数）。 下一个阶段（状态）是响应方（角色）执行某个操作（转换）以发送响应（函数）。 应用程序的工作流可能涉及到描述合同流所需的属性、函数和状态。
 
 有关配置文件内容的详细信息，请参阅 [Azure 区块链工作流配置参考](configuration.md)。
 
@@ -229,24 +230,23 @@ Solidity 中的智能合约类似于面向对象的语言中的类。 每个合�
 
 ### <a name="version-pragma"></a>版本杂注
 
-最佳做法是指定 Solidity 目标版本。 指定版本有助于避免与将来的 Solidity 版本不兼容。 
+最佳做法是指定 Solidity 目标版本。 指定版本有助于避免与将来的 Solidity 版本不兼容。
 
 在 `HelloBlockchain.sol` 智能合约代码文件的顶部添加以下版本杂注。
 
-
-  ``` solidity
-  pragma solidity ^0.4.20;
-  ```
+``` solidity
+pragma solidity >=0.4.25 <0.6.0;
+```
 
 ### <a name="configuration-and-smart-contract-code-relationship"></a>配置与智能合约代码之间的关系
 
-Blockchain Workbench 使用配置文件和智能合约代码文件创建区块链应用程序。 配置中定义的内容与智能合约中的代码之间存在某种关系。 合同详细信息、函数、参数和类型需要匹配才能创建应用程序。 Blockchain Workbench 在创建应用程序之前会验证文件。 
+Blockchain Workbench 使用配置文件和智能合约代码文件创建区块链应用程序。 配置中定义的内容与智能合约中的代码之间存在某种关系。 合同详细信息、函数、参数和类型需要匹配才能创建应用程序。 Blockchain Workbench 在创建应用程序之前会验证文件。
 
 ### <a name="contract"></a>合约
 
 将 **contract** 标头添加到 `HelloBlockchain.sol` 智能合约代码文件。
 
-```
+``` solidity
 contract HelloBlockchain {
 ```
 
@@ -254,32 +254,32 @@ contract HelloBlockchain {
 
 状态变量存储每个合同实例的状态值。 合约中的状态变量必须与配置文件中定义的工作流属性匹配。
 
-将状态变量添加到 `HelloBlockchain.sol` 智能合约代码文件中的合约。 
+将状态变量添加到 `HelloBlockchain.sol` 智能合约代码文件中的合约。
 
-```
+``` solidity
     //Set of States
     enum StateType { Request, Respond}
-    
+
     //List of properties
     StateType public  State;
     address public  Requestor;
     address public  Responder;
-    
+
     string public RequestMessage;
     string public ResponseMessage;
 ```
 
 ### <a name="constructor"></a>构造函数
 
-构造函数定义工作流的新智能合约实例的输入参数。 构造函数声明为与合同同名的函数。 构造函数的所需参数定义为配置文件中的构造函数参数。 两个文件中的参数数目、顺序和类型必须匹配。
+构造函数定义工作流的新智能合约实例的输入参数。 构造函数的所需参数定义为配置文件中的构造函数参数。 两个文件中的参数数目、顺序和类型必须匹配。
 
 创建合同之前，请在构造函数中编写想要执行的任何业务逻辑。 例如，使用起始值初始化状态变量。
 
-将构造函数添加到 `HelloBlockchain.sol` 智能合约代码文件中的合约。 
+将构造函数添加到 `HelloBlockchain.sol` 智能合约代码文件中的合约。
 
-```
+``` solidity
     // constructor function
-    constructor(string message) public
+    constructor(string memory message) public
     {
         Requestor = msg.sender;
         RequestMessage = message;
@@ -293,22 +293,23 @@ contract HelloBlockchain {
 
 在函数中编写想要执行的任何业务逻辑。 例如，修改状态变量的值。
 
-1. 将以下函数添加到 `HelloBlockchain.sol` 智能合约代码文件中的合约。 
+1. 将以下函数添加到 `HelloBlockchain.sol` 智能合约代码文件中的合约。
 
-    ```
+    ``` solidity
         // call this function to send a request
-        function SendRequest(string requestMessage) public
+        function SendRequest(string memory requestMessage) public
         {
             if (Requestor != msg.sender)
             {
                 revert();
             }
+    
             RequestMessage = requestMessage;
             State = StateType.Request;
         }
     
         // call this function to send a response
-        function SendResponse(string responseMessage) public
+        function SendResponse(string memory responseMessage) public
         {
             Responder = msg.sender;
     
@@ -326,28 +327,28 @@ contract HelloBlockchain {
 
 1. 在 Web 浏览器中，导航到 Blockchain Workbench 的 Web 地址。 例如 `https://{workbench URL}.azurewebsites.net/`。该 Web 应用程序是部署 Blockchain Workbench 时创建的。 有关如何查找 Blockchain Workbench Web 地址的信息，请参阅 [Blockchain Workbench Web URL](deploy.md#blockchain-workbench-web-url)
 2. 以 [Blockchain Workbench 管理员](manage-users.md#manage-blockchain-workbench-administrators)身份登录。
-3. 选择“应用程序” > “新建”。 此时会显示“新建应用程序”窗格。
-4. 选择“上传合约配置” > “浏览”，找到创建的 **HelloBlockchain.json** 配置文件。 系统会自动验证该配置文件。 选择“显示”链接以显示验证错误。 请在部署应用程序之前修复验证错误。
-5. 选择“上传合约代码”  >  “浏览”，找到 HelloBlockchain.sol 智能合约代码文件。 系统会自动验证该代码文件。 选择“显示”链接以显示验证错误。 请在部署应用程序之前修复验证错误。
-6. 选择“部署”，根据配置和智能合同文件创建区块链应用程序。
+3. 选择“应用程序” > “新建”。   此时会显示“新建应用程序”窗格。 
+4. 选择“上传合约配置” > “浏览”，找到创建的 **HelloBlockchain.json** 配置文件。   系统会自动验证该配置文件。 选择“显示”链接以显示验证错误。  请在部署应用程序之前修复验证错误。
+5. 选择“上传合约代码”  >  “浏览”，找到 HelloBlockchain.sol 智能合约代码文件。    系统会自动验证该代码文件。 选择“显示”链接以显示验证错误。  请在部署应用程序之前修复验证错误。
+6. 选择“部署”，根据配置和智能合同文件创建区块链应用程序。 
 
-部署区块链应用程序需要几分钟时间。 完成部署后，新应用程序会显示在“应用程序”中。 
+部署区块链应用程序需要几分钟时间。 完成部署后，新应用程序会显示在“应用程序”中。  
 
 > [!NOTE]
-> 也可以使用 [Azure Blockchain Workbench REST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench) 创建区块链应用程序。 
+> 也可以使用 [Azure Blockchain Workbench REST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench) 创建区块链应用程序。
 
 ## <a name="add-blockchain-application-members"></a>添加区块链应用程序成员
 
 将应用程序成员添加到应用程序，以启动合同并对其执行操作。 只有 [Blockchain Workbench 管理员](manage-users.md#manage-blockchain-workbench-administrators)才能添加应用程序成员。
 
-1. 选择“应用程序” > “Hello, Blockchain!”。
+1. 选择“应用程序” > “Hello, Blockchain!”。  
 2. 页面右上角会显示与应用程序关联的成员数。 对于新应用程序，成员数为零。
-3. 选择页面右上角的“成员”链接。 此时会显示应用程序的当前成员列表。
-4. 在成员身份列表中，选择“添加成员”。
+3. 选择页面右上角的“成员”链接。  此时会显示应用程序的当前成员列表。
+4. 在成员身份列表中，选择“添加成员”。 
 5. 选择或输入要添加的成员名称。 只会列出 Blockchain Workbench 租户中存在的 Azure AD 用户。 如果找不到用户，则需要[添加 Azure AD 用户](manage-users.md#add-azure-ad-users)。
-6. 选择成员的“角色”。 对于第一个成员，请选择“请求方”作为角色。
-7. 选择“添加”，将具有关联角色的成员添加到应用程序。
-8. 将具有“响应方”角色的另一个成员添加到应用程序。
+6. 选择成员的“角色”。  对于第一个成员，请选择“请求方”作为角色。 
+7. 选择“添加”，将具有关联角色的成员添加到应用程序。 
+8. 将具有“响应方”角色的另一个成员添加到应用程序。 
 
 有关在 Blockchain Workbench 中管理用户的详细信息，请参阅[在 Azure Blockchain Workbench 中管理用户](manage-users.md)
 

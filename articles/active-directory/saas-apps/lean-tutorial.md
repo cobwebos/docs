@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: ab4a36fa117793724a897de4f6d8f03d7f46504e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b194133bf1778e2edc826bae6c2dfecae65436f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276297"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098388"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lean"></a>教程：Azure Active Directory 与 Lean 集成
 
@@ -44,9 +44,9 @@ ms.locfileid: "59276297"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Lean 支持“SP”发起的 SSO
+* Lean 支持“SP”发起的 SSO 
 
-* Lean 支持“实时”用户预配
+* Lean 支持“实时”用户预配 
 
 ## <a name="adding-lean-from-the-gallery"></a>从库中添加 Lean
 
@@ -54,25 +54,25 @@ ms.locfileid: "59276297"
 
 **要从库中添加 Lean，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Lean”，在结果面板中选择“Lean”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“Lean”，在结果面板中选择“Lean”，然后单击“添加”按钮添加该应用程序。   
 
      ![结果列表中的 Lean](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于一个名为“Britta Simon”的测试用户配置和测试 Lean 的 Azure AD 单一登录。
+在本部分中，将基于一个名为“Britta Simon”的测试用户配置和测试 Lean 的 Azure AD 单一登录  。
 要运行单一登录，需要在 Azure AD 用户与 Lean 相关用户之间建立链接关系。
 
 要配置和测试 Lean 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -90,7 +90,7 @@ ms.locfileid: "59276297"
 
 要配置 Lean 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Lean”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Lean”应用程序集成页上，选择“单一登录”   。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,26 +98,26 @@ ms.locfileid: "59276297"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![Lean 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.goodpractice.net/api/gpsso`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.goodpractice.net/api/gpsso` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`bloom-goodpractice-<SUBDOMAIN>`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`bloom-goodpractice-<SUBDOMAIN>` 
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Lean 客户端支持团队](mailto:support@goodpractice.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Lean 客户端支持团队](mailto:support@goodpractice.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Lean”部分，根据要求复制相应 URL。
+6. 在“设置 Lean”部分，根据要求复制相应 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -129,17 +129,17 @@ ms.locfileid: "59276297"
 
 ### <a name="configure-lean-single-sign-on"></a>配置 Lean 单一登录
 
-要在“Lean”端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Lean 支持团队](mailto:support@goodpractice.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+要在“Lean”端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Lean 支持团队](mailto:support@goodpractice.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -147,40 +147,40 @@ ms.locfileid: "59276297"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Lean 的权限，以支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Lean”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Lean”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Lean”。
+2. 在应用程序列表中，选择“Lean”。 
 
     ![应用程序列表中的 Lean 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-lean-test-user"></a>创建 Lean 测试用户
 

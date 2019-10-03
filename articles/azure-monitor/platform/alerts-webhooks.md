@@ -9,11 +9,11 @@ ms.date: 04/03/2017
 ms.author: snmuvva
 ms.subservice: alerts
 ms.openlocfilehash: 264f3eb042a3c29523ed93df93dfa6d45c00ae87
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465660"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60345766"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>使用 Webhook 让经典指标警报通知非 Azure 系统
 可以使用 Webhook 将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 Webhook，以将警报路由到可以发送短信的服务，以记录 Bug、通过聊天/消息服务通知团队，或进行各种其他操作。 
@@ -23,7 +23,7 @@ ms.locfileid: "54465660"
 Azure 警报使用 HTTP POST 将警报内容以 JSON 格式发送到创建警报时提供的 Webhook URI。 本文中稍后将定义架构。 此 URI 必须是有效的 HTTP 或 HTTPS 终结点。 激活警报时，Azure 会针对每个请求发布一个条目。
 
 ## <a name="configure-webhooks-via-the-azure-portal"></a>通过 Azure 门户配置 Webhook
-若要添加或更新 Webhook URI，请在 [Azure 门户](https://portal.azure.com/)中转到“创建/更新警报”。
+若要添加或更新 Webhook URI，请在 [Azure 门户](https://portal.azure.com/)中转到“创建/更新警报”  。
 
 ![“添加警报规则”窗格](./media/alerts-webhooks/Alertwebhook.png)
 
@@ -72,17 +72,17 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 | 字段 | 必需 | 一组固定值 | 说明 |
 |:--- |:--- |:--- |:--- |
 | status |Y |Activated, Resolved |基于设置的条件的警报的状态。 |
-| 上下文 |Y | |警报上下文。 |
+| context |Y | |警报上下文。 |
 | timestamp |Y | |触发警报的时间。 |
 | id |Y | |每个警报规则都有一个唯一 ID。 |
-| 名称 |Y | |警报名称。 |
+| name |Y | |警报名称。 |
 | description |Y | |警报的说明。 |
 | conditionType |Y |“Metric”、“Event” |支持两种类型的警报：指标和事件。 指标警报基于指标条件。 事件警报基于活动日志中的事件。 使用此值可检查警报是基于指标还是基于事件。 |
-| 条件 |Y | |要基于 **conditionType** 值检查的特定字段。 |
+| condition |Y | |要基于 **conditionType** 值检查的特定字段。 |
 | metricName |用于指标警报 | |定义规则监视对象的指标的名称。 |
 | metricUnit |用于指标警报 |“Bytes”、“BytesPerSecond”、“Count”、“CountPerSecond”、“Percent”、“Seconds” |指标中允许使用的单位。 请参阅[允许的值](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx)。 |
 | metricValue |用于指标警报 | |导致警报的实际度量值。 |
-| 阈值 |用于指标警报 | |会激活警报的阈值。 |
+| threshold |用于指标警报 | |会激活警报的阈值。 |
 | windowSize |用于指标警报 | |用于根据阈值监视警报活动的时间段。 此值必须介于 5 分钟到 1 天之间。 此值必须采用 ISO 8601 持续时间格式。 |
 | timeAggregation |用于指标警报 |“Average”、“Last”、“Maximum”、“Minimum”、“None”、“Total” |随着时间推移，收集的数据应如何组合。 默认值为 Average。 请参阅[允许的值](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx)。 |
 | operator |用于指标警报 | |用于将当前指标数据与所设阈值进行比较的运算符。 |
@@ -93,10 +93,10 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 | resourceId |Y | |受影响资源的资源 ID。 |
 | resourceRegion |Y | |受影响资源的区域或位置。 |
 | portalLink |Y | |指向门户资源摘要页的直接链接。 |
-| 属性 |N |可选 |包含有关事件的详细信息的一组键/值对。 例如，`Dictionary<String, String>`。 properties 字段是可选的。 在自定义 UI 或基于逻辑应用的工作流中，用户可以输入键/值对，该键/值对可通过有效负载进行传递。 将自定义属性传递回 Webhook 的替代方法是通过 Webhook URI 本身（作为查询参数）。 |
+| properties |N |可选 |包含有关事件的详细信息的一组键/值对。 例如，`Dictionary<String, String>`。 properties 字段是可选的。 在自定义 UI 或基于逻辑应用的工作流中，用户可以输入键/值对，该键/值对可通过有效负载进行传递。 将自定义属性传递回 Webhook 的替代方法是通过 Webhook URI 本身（作为查询参数）。 |
 
 > [!NOTE]
-> 只能使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) 设置“属性”字段。
+> 只能使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) 设置“属性”  字段。
 >
 >
 

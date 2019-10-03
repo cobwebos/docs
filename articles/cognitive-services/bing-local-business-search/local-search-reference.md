@@ -1,24 +1,25 @@
 ---
-title: 必应当地企业搜索 API v7 参考 | Microsoft Docs
-description: 介绍必应当地企业搜索 API 的编程元素。
+title: 必应本地业务搜索 API v7 引用
 titleSuffix: Azure Cognitive Services
+description: 介绍必应当地企业搜索 API 的编程元素。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.subservice: bing-local-business
+ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: bc38b4457179c11f9d6b2656aacb8aa66848c444
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: rosh
+ms.openlocfilehash: c9ebaeb66bc46132160c77c09f93fc2921dc8961
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992474"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906350"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>必应当地企业搜索 API v7 参考
 
-当地企业搜索 API 向必应发送搜索查询，以获取包含餐厅、酒店或其他当地企业的结果。 对于地点，查询可以指定当地企业名称或类别（例如，我附近的餐厅）。 实体结果包括人员、位置或事物。 此上下文中的地点是企业实体、州/省、国家/地区，等等。  
+当地企业搜索 API 向必应发送搜索查询，以获取包含餐厅、酒店或其他当地企业的结果。 对于地点，查询可以指定当地企业名称或类别（例如，我附近的餐厅）。 实体结果包括人员、位置或事物。 此环境中的位置是业务实体、省/市/自治区、国家/地区等。  
 
 本部分提供有关影响搜索结果的响应对象、查询参数和标头的技术详细信息。 有关演示如何发出请求的示例，请参阅[当地企业搜索 C# 快速入门](quickstarts/local-quickstart.md)或[当地企业搜索 Java 快速入门](quickstarts/local-search-java-quickstart.md)。 
   
@@ -49,9 +50,9 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ## <a name="headers"></a>标头  
 下面是请求和响应可能包含的标头。  
   
-|标头|描述|  
+|Header|描述|  
 |------------|-----------------|  
-|Accept|可选请求标头。<br /><br /> 默认的媒体类型为“application/json”。 若要指定响应使用 [JSON-LD](https://json-ld.org/)，请将 Accept 标头设置为“application/ld+json”。|  
+|接受|可选请求标头。<br /><br /> 默认的媒体类型为“application/json”。 若要指定响应使用 [JSON-LD](https://json-ld.org/)，请将 Accept 标头设置为“application/ld+json”。|  
 |<a name="acceptlanguage" />Accept-Language|可选请求标头。<br /><br /> 以逗号分隔的语言列表，用于用户界面字符串。 此列表以降序方式显示首选项。 有关详细信息，包括预期格式，请参阅 [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)。<br /><br /> 此标头和 [setLang](#setlang) 查询参数相互排斥&mdash;不可同时指定两者。<br /><br /> 如果设置此标头，则还必须指定 cc 查询参数。 为了确定针对哪个市场返回结果，必应使用从列表中找到的第一个受支持语言并将其与 `cc` 参数值相结合。 如果列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场，或将聚合或默认市场用于结果。 若要确定必应使用的市场，请查看 BingAPIs-Market 标头。<br /><br /> 仅当指定多个语言时，才可使用此标头和 `cc` 查询参数。 否则，请使用 [mkt](#mkt) 和 [setLang](#setlang) 查询参数。<br /><br /> 用户界面字符串是用作用户界面中标签的字符串。 JSON 响应对象中有几个用户界面字符串。 响应对象中 Bing.com 属性的任何链接均将应用指定的语言。|  
 |<a name="market" />BingAPIs-Market|响应标头。<br /><br /> 请求使用的市场。 形式为 \<languageCode\>-\<countryCode\>。 例如，en-US。|  
 |<a name="traceid" />BingAPIs-TraceId|响应标头。<br /><br /> 包含请求详细信息的日志条目 ID。 发生错误时，捕获此 ID。 如果无法确定并解决问题，请纳入此 ID 以及提供给支持团队的其他信息。|  
@@ -70,12 +71,12 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。  
   
   
-|名称|值|Type|需要|  
+|姓名|ReplTest1|type|必填|  
 |----------|-----------|----------|--------------|
-|<a name="count" />count|若要返回，从开始索引指定的结果数`offset`参数。|String|否|   
+|<a name="count" />count|要返回的结果数, 从`offset`参数指定的索引开始。|String|否|   
 |<a name="localCategories" />localCategories|按企业类别定义搜索的选项列表。  请参阅[当地企业类别搜索](local-categories.md)|String|否|  
 |<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需获取可能的市场值列表，请参阅“市场代码”。<br /><br /> **注意：** 当地企业搜索 API 目前仅支持 en-us（美国英语）市场和语言。<br /><br />|String|是|
-|<a name="offset"/>offset|开始返回结果的索引位置，由 `count` 参数指定。|Integer|否|  
+|<a name="offset"/>offset|开始返回结果的索引位置，由 `count` 参数指定。|整数|否|  
 |<a name="query" />q|用户的搜索词。|String|否|  
 |<a name="responseformat" />responseFormat|可用于响应的媒体类型。 下面是可能的不区分大小写的值。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 默认值为 JSON。 若要了解响应应包含的 JSON 对象，请参阅[响应对象](#response-objects)。<br /><br />  如果指定 JsonLd，则响应正文会包含 JSON-LD 对象，后者包含搜索结果。 有关 JSON-LD 的信息，请参阅 [JSON-LD](https://json-ld.org/)。|String|否|  
 |<a name="safesearch" />safeSearch|用于筛选成人内容的筛选器。 下面是可能的不区分大小写的筛选值。<br /><ul><li>关闭&mdash;返回包含成人文本、图像或视频的网页。<br /><br/></li><li>中等&mdash;返回包含成人文本但不包含成人图像或视频的网页。<br /><br/></li><li>严格&mdash;不返回包含成人文本、图像或视频的网页。</li></ul><br /> 默认级别为“中等”。<br /><br /> **注意：** 如果请求来自必应成人策略要求将 `safeSearch` 设置为“严格”的某一市场，必应会忽略 `safeSearch` 值并使用“严格”。<br/><br/>**注意：** 如果使用 `site:` 查询运算符，则不管 `safeSearch` 查询参数设置如何，仍有可能出现响应中包含成人内容的情况。 只有在知道网站内容且方案允许使用成人内容的情况下，才应使用 `site:`。 |String|否|  
@@ -86,15 +87,15 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 以下是响应中可以包含的 JSON 响应对象。 如果请求成功，则响应中的顶级对象是 [SearchResponse](#searchresponse) 对象。 如果请求失败，则顶级对象为 [ErrorResponse](#errorresponse) 对象。
 
 
-|对象|描述|  
+|Object|描述|  
 |------------|-----------------|  
 |[Place](#place)|定义有关餐厅或酒店等当地企业的信息。|  
 
   
-### <a name="error"></a>错误  
+### <a name="error"></a>Error  
 定义已发生的错误。  
   
-|元素|描述|Type|  
+|元素|描述|类型|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />code|用于标识错误类别的错误代码。 如需可能的代码的列表，请参阅[错误代码](#error-codes)。|String|  
 |<a name="error-message" />message|对错误的说明。|String|  
@@ -107,7 +108,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="errorresponse"></a>ErrorResponse  
 请求失败时响应包含的顶级对象。  
   
-|名称|值|Type|  
+|姓名|ReplTest1|类型|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
 |<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[Error](#error)[]|  
@@ -117,16 +118,16 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="license"></a>许可证  
 定义文本或照片的使用许可证。  
   
-|名称|值|Type|  
+|姓名|ReplTest1|类型|  
 |----------|-----------|----------|  
-|名称|许可证的名称。|String|  
+|name|许可证的名称。|String|  
 |url|为用户提供许可证详细信息的网站的 URL。<br /><br /> 使用名称和 URL 创建超链接。|String|  
 
 
 ### <a name="link"></a>链接  
 定义超链接的组件。  
   
-|名称|值|Type|  
+|姓名|ReplTest1|类型|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
 |text|显示文本。|String|  
@@ -140,9 +141,9 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 注意，发布者可能提供其名称和/或网站。  
   
-|名称|值|Type|  
+|姓名|ReplTest1|类型|  
 |----------|-----------|----------|  
-|名称|发布者名称。|String|  
+|name|发布者名称。|String|  
 |url|发布者网站的 URL。<br /><br /> 请注意，发布者可能未提供网站。|String|  
   
   
@@ -150,12 +151,12 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="place"></a>位置  
 定义有关餐厅或酒店等当地企业的信息。  
   
-|名称|值|Type|  
+|姓名|ReplTest1|类型|  
 |----------|-----------|----------|  
 |_type|类型提示，可设置为以下值之一：<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>餐厅</ul><li>|String|  
 |地址|实体所在位置的邮政地址。|PostalAddress|  
 |entityPresentationInfo|有关实体的其他信息，例如，可用于确定实体类型的提示。 例如，该实体是餐厅还是酒店。 `entityScenario` 字段设置为 ListItem。|EntityPresentationInfo|  
-|名称|实体的名称。|String|  
+|name|实体的名称。|String|  
 |telephone|实体的电话号码。|String|  
 |url|实体网站的 URL。<br /><br /> 将此 URL 与实体名称结合使用可以创建一个超链接，单击该链接会将用户转到实体网站。|String|  
 |webSearchUrl|此地点的必应搜索结果的 URL。|String| 
@@ -164,7 +165,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="querycontext"></a>QueryContext  
 定义必应用于请求的查询上下文。  
   
-|元素|描述|Type|  
+|元素|描述|类型|  
 |-------------|-----------------|----------|  
 |adultIntent|一个布尔值，表示指定的查询是否有成人意向。 如果查询有成人意向，则此值为 **true**，否则为 **false**。|Boolean|  
 |alterationOverrideQuery|一个查询字符串，用于强制必应使用原始字符串。 例如，如果查询字符串为 *saling downwind*，则替代查询字符串为 *+saling downwind*。 记住将查询字符串编码，编码后的字符串为 *%2Bsaling+downwind*。<br /><br /> 只有在原始查询字符串包含拼写错误的情况下，才会包含此字段。|String|  
@@ -174,31 +175,31 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 ### <a name="identifiable"></a>Identifiable
 
-|名称|值|Type|  
+|姓名|ReplTest1|类型|  
 |-------------|-----------------|----------|
 |id|一个资源标识符|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 定义搜索结果组，例如 mainline。
 
-|名称|值|Type|  
+|姓名|ReplTest1|类型|  
 |-------------|-----------------|----------|
-|items|要显示在组中的搜索结果的列表。|RankingItem|
+|项目|要显示在组中的搜索结果的列表。|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 定义要显示的搜索结果项。
 
-|名称|值|Type|  
+|姓名|ReplTest1|类型|  
 |-------------|-----------------|----------|
-|resultIndex|要显示答案中的项的从零开始的索引。 如果项不包含此字段，则显示答案中的所有项。 例如，显示“新闻”答案中的所有新闻文章。|Integer|
+|resultIndex|要显示答案中的项的从零开始的索引。 如果项不包含此字段，则显示答案中的所有项。 例如，显示“新闻”答案中的所有新闻文章。|整数|
 |answerType|一个答案，包含要显示的项。 例如，新闻。<br /><br />使用此类型查找 SearchResponse 对象中的答案。 此类型是 SearchResponse 字段的名称。<br /><br /> 不过，只有在此对象包含值字段的情况下，才使用答案类型；否则，请忽略它。|String|
 |textualIndex|textualAnswers 中要显示的答案的索引。| 无符号整数|
-|值|一个 ID，用于标识要显示的答案或要显示的答案的项。 如果此 ID 标识某个答案，则显示该答案的所有项。|Identifiable|
+|value|一个 ID，用于标识要显示的答案或要显示的答案的项。 如果此 ID 标识某个答案，则显示该答案的所有项。|Identifiable|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 定义应将内容置于搜索结果页的何处以及应采用什么顺序。  
   
-|名称|值|  
+|姓名|ReplTest1|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|要显示在主线中的搜索结果。|  
 |<a name="ranking-pole" />pole|要获得最明显的处理（例如，显示在主线和边栏上方）的搜索结果。|  
@@ -209,7 +210,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 请注意，如果该服务怀疑存在拒绝服务攻击，则请求会成功（HTTP 状态代码为“200 正常”），但响应正文将为空。  
   
-|名称|值|Type|  
+|姓名|ReplTest1|类型|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 SearchResponse。|String|  
 |places|与搜索查询相关的实体列表。|JSON 对象|  
@@ -263,7 +264,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |代码|SubCode|描述
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP 状态代码为 500。
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，则 HTTP 状态代码为 400。<br/><br/>如果使用 HTTP 协议而不是 HTTPS 协议，则必应会返回 HttpNotAllowed，且 HTTP 状态代码为 410。
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，则 HTTP 状态代码为 400。<br/><br/>如果使用 HTTP 协议而不是 HTTPS 协议，则必应会返回 HttpNotAllowed，且 HTTP 状态代码为 410。
 |RateLimitExceeded|无子代码|每当超过每秒查询数 (QPS) 或每月查询数 (QPM) 配额时，必应都会返回 RateLimitExceeded。<br/><br/>如果超过 QPS，则必应会回 HTTP 状态代码 429；如果超过 QPM，则必应会返回 403。
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|当必应无法验证调用方身份时，必应会返回 InvalidAuthorization。 例如，缺少 `Ocp-Apim-Subscription-Key` 头或订阅密钥无效。<br/><br/>如果指定多个身份验证方法，便会发生冗余。<br/><br/>如果错误是 InvalidAuthorization，HTTP 状态代码为 401。
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|当调用方无权访问资源时，必应会返回 InsufficientAuthorization。 如果订阅密钥已遭禁用或到期，就会发生此类错误。 <br/><br/>如果错误是 InsufficientAuthorization，HTTP 状态代码为 403。

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58435585"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60386918"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect：如何从 LocalDB 10 GB 的限制恢复
 Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可以使用随 Azure AD Connect 一起安装的默认 SQL Server 2012 Express LocalDB，也可以使用自己的完整 SQL。 SQL Server Express 存在 10 GB 的大小限制。 使用 LocalDB 并达到此限制后，Azure AD Connect Synchronization Service 将无法正常启动或同步。 本文提供了恢复步骤。
@@ -29,9 +29,9 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 ## <a name="symptoms"></a>症状
 有两种常见的症状：
 
-* Azure AD Connect Synchronization Service **可以运行**但无法同步，并出现“stopped-database-disk-full”错误。
+* Azure AD Connect Synchronization Service **可以运行**但无法同步，并出现“stopped-database-disk-full”  错误。
 
-* Azure AD Connect Synchronization Service **无法启动**。 尝试启动该服务时失败且出现事件 6323 和错误消息“服务器遇到错误，因为 SQL Server 磁盘空间不足”。
+* Azure AD Connect Synchronization Service **无法启动**。 尝试启动该服务时失败且出现事件 6323 和错误消息“服务器遇到错误，因为 SQL Server 磁盘空间不足”。 
 
 ## <a name="short-term-recovery-steps"></a>短期恢复步骤
 本部分提供的步骤用于回收 DB 空间，该空间是 Azure AD Connect Synchronization Service 恢复运行所必需的。 步骤包括：
@@ -45,7 +45,7 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 
 1. 以管理员身份登录到 Azure AD Connect 服务器。
 
-2. 转到“服务控制管理器”。
+2. 转到“服务控制管理器”  。
 
 3. 检查 **Microsoft Azure AD Sync** 的状态。
 
@@ -83,11 +83,11 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。 可�
 
 1. 转到“开始”→ Synchronization Service，以便启动 **Synchronization Service Manager**。
 
-2. 转到“操作”选项卡。
+2. 转到“操作”  选项卡。
 
-3. 在“操作”下面，选择“清除运行…”
+3. 在“操作”下面，选择“清除运行…”  
 
-4. 您可以选择**清除所有运行**或**之前都清除运行...\<日期 >** 选项。 建议一开始清除超过两天的运行历史记录数据。 如果仍遇到 DB 大小问题，则选择“清除所有运行”选项。
+4. 可以选择“清除所有运行”或“清除 \<date> 之前的运行…”选项。   建议一开始清除超过两天的运行历史记录数据。 如果仍遇到 DB 大小问题，则选择“清除所有运行”选项。 
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>缩短运行历史记录数据的保留期
 此步骤是为了在多次同步周期后降低遇到 10 GB 限制问题的可能性。

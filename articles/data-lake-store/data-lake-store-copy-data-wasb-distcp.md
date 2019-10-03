@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fbefe233ce0d2477982faf0a9f38a73062e0c7a1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884459"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60878794"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>使用 Distcp 在 Azure 存储 Blob 与 Data Lake Storage Gen1 之间复制数据
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "58884459"
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
-* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
+* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集  。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>从 HDInsight Linux 群集使用 Distcp
 
@@ -56,13 +56,13 @@ HDInsight 群集附带 Distcp 实用工具，该实用工具可用于从不同�
 
         hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/myfolder
 
-    该命令会将 WASB 中 /example/data/gutenberg/ 文件夹的内容复制到 Data Lake Storage Gen1 帐户中的 /myfolder。
+    该命令会将 WASB 中 /example/data/gutenberg/ 文件夹的内容复制到 Data Lake Storage Gen1 帐户中的 /myfolder   。
 
 5. 同样，使用 Distcp 将数据从 Data Lake Storage Gen1 帐户复制到 WASB。
 
         hadoop distcp adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/myfolder wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg
 
-    该命令会将 Data Lake Storage Gen1 帐户中 /myfolder 的内容复制到 WASB 中的 /example/data/gutenberg/ 文件夹。
+    该命令会将 Data Lake Storage Gen1 帐户中 /myfolder 的内容复制到 WASB 中的 /example/data/gutenberg/ 文件夹   。
 
 ## <a name="performance-considerations-while-using-distcp"></a>使用 DistCp 时的性能注意事项
 
@@ -78,7 +78,7 @@ HDInsight 群集附带 Distcp 实用工具，该实用工具可用于从不同�
 
 * **步骤 1：确定总 YARN 内存** - 第一步是确定可供运行 DistCp 作业的群集使用的 YARN 内存。 可在与群集关联的 Ambari 门户中获取此信息。 导航到 YARN 并查看“配置”选项卡可看到 YARN 内存。 要获取总 YARN 内存，可将每个节点的 YARN 内存与你在群集中拥有的节点数相乘。
 
-* **步骤 2：计算映射器数** - m 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小的信息也可在 Ambari 门户中找到。 导航到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于得到映射器数 (**m**) 的公式是
+* **步骤 2：计算映射器数** - m  的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小的信息也可在 Ambari 门户中找到。 导航到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于得到映射器数 (**m**) 的公式是
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 

@@ -4,28 +4,27 @@ description: 了解如何创建和上传包含 Oracle Linux 操作系统的 Azur
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
 ms.assetid: dd96f771-26eb-4391-9a89-8c8b6d691822
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: ecd30d30434d91893102ce6ec0df21daa84b677c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ede12520fc6db089aea2d22b02dc32e72496830c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276826"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082454"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>为 Azure 准备 Oracle Linux 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 本文假定你已在虚拟硬盘中安装了 Oracle Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 ### <a name="oracle-linux-installation-notes"></a>Oracle Linux 安装说明
@@ -37,7 +36,7 @@ ms.locfileid: "59276826"
 * 由于低于 2.6.37 的 Linux 内核版本中的 bug，更大的 VM 不支持 NUMA。 此问题主要影响使用上游 Red Hat 2.6.32 内核的分发。 手动安装的 Azure Linux 代理 (waagent) 将自动在 Linux 内核的 GRUB 配置中禁用 NUMA。 可以在下面的步骤中找到有关此内容的详细信息。
 * 不要在操作系统磁盘上配置交换分区。 可以配置 Linux 代理，以在临时资源磁盘上创建交换文件。  可以在下面的步骤中找到有关此内容的详细信息。
 * Azure 上的所有 VHD 必须已将虚拟大小调整为 1MB。 从原始磁盘转换为 VHD 时，必须确保在转换前原始磁盘大小是 1MB 的倍数。 有关详细信息，请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)。
-* 请确保已启用 `Addons` 存储库。 编辑文件`/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) 或`/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7)，并更改行`enabled=0`到`enabled=1`下 **[ol6_addons]** 或 **[ol7_addons]** 此文件中。
+* 请确保已启用 `Addons` 存储库。 编辑文件 `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) 或 `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7)，并在此文件中 **[ol6_addons]** 或 **[ol7_addons]** 下将行 `enabled=0` 更改为 `enabled=1`。
 
 ## <a name="oracle-linux-64"></a>Oracle Linux 6.4+
 你必须在操作系统中完成特定的配置步骤才能使虚拟机在 Azure 中运行。
@@ -107,7 +106,7 @@ ms.locfileid: "59276826"
         # logout
 14. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
-- - -
+---
 ## <a name="oracle-linux-70"></a>Oracle Linux 7.0+
 **Oracle Linux 7 中的更改**
 

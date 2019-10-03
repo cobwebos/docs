@@ -3,7 +3,7 @@ title: 创建 Azure Service Fabric 群集模板 | Microsoft Docs
 description: 了解如何为 Service Fabric 群集创建资源管理器模板。 为客户端身份验证配置安全性、Azure Key Vault 和 Azure Active Directory (Azure AD)。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: chackdan
 ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
-ms.author: aljo
-ms.openlocfilehash: 2fdea1f088dd6eabdf7d72342c837d976133a1bc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: atsenthi
+ms.openlocfilehash: 9030a1d9d0b1e3f9b84f6636b0d3d758ab4cfa3b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046168"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599987"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>创建 Service Fabric 群集 Resource Manager 模板
 
 [Azure Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组联网的虚拟机，可在其中部署和管理微服务。 在 Azure 中运行的 Service Fabric 群集是一种 Azure 资源，它是使用资源管理器进行部署、管理和监视的。  本文介绍了如何为在 Azure 中运行的 Service Fabric 群集创建资源管理器模板。  在模板完成后，可以[在 Azure 上部署群集](service-fabric-cluster-creation-via-arm.md)。
 
-群集安全性是在首次设置群集时配置的，以后无法更改。 在设置群集之前，请先阅读 [Service Fabric 群集安全性方案][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 证书来保护群集及其终结点，对客户端进行身份验证以及对数据进行加密。 另外，还建议使用 Azure Active Directory 来保护对管理终结点的访问。 在创建群集之前，必须先创建 Azure AD 租户和用户。  有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
+群集安全性是在首次设置群集时配置的，以后无法更改。 在设置群集之前, 请阅读[Service Fabric 群集安全方案][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 证书来保护群集及其终结点，对客户端进行身份验证以及对数据进行加密。 另外，还建议使用 Azure Active Directory 来保护对管理终结点的访问。 在创建群集之前，必须先创建 Azure AD 租户和用户。  有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
 
 在部署生产群集来运行生产工作负荷之前，请务必首先阅读[生产就绪情况核对清单](service-fabric-production-readiness-checklist.md)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "59046168"
 ## <a name="create-the-resource-manager-template"></a>创建 资源管理器模板
 [GitHub 上的 Azure 示例](https://github.com/Azure-Samples/service-fabric-cluster-templates)中提供了示例资源管理器模板。 这些模板可用作群集模板的起点。
 
-本文使用了[五节点安全群集][service-fabric-secure-cluster-5-node-1-nodetype]示例模板和模板参数。 将 *azuredeploy.json* 和 *azuredeploy.parameters.json* 下载到计算机并在你喜欢使用的文本编辑器中打开这两个文件。
+本文使用[5 节点安全群集][service-fabric-secure-cluster-5-node-1-nodetype]示例模板和模板参数。 将 *azuredeploy.json* 和 *azuredeploy.parameters.json* 下载到计算机并在你喜欢使用的文本编辑器中打开这两个文件。
 
 > [!NOTE]
 > 对于国家/地区云（Azure 政府、Azure 中国、Azure 德国），还应将以下 `fabricSettings` 添加到模板：`AADLoginEndpoint`、`AADTokenEndpointFormat` 和 `AADCertEndpointFormat`。

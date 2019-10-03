@@ -3,9 +3,8 @@ title: 在 Azure 安全中心内实现租户级公开范围 | Microsoft Docs
 description: 了解如何在 Azure 安全中心内实现租户级公开范围。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: b85c0e93-9982-48ad-b23f-53b367f22b10
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
-ms.author: rkarlin
-ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: memildin
+ms.openlocfilehash: 730ccd7c64ac9ca87fb6da5add130feb3b6ce502
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045758"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201952"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
 本文介绍了如何执行一些操作来最大限度地利用 Azure 安全中心提供的优势，从而帮助读者入门。 执行这些操作，可以在所有与 Azure Active Directory 租户相关联的 Azure 订阅中实现公开范围，并能以聚合方式跨多个订阅应用安全策略，从而大规模、有效地管理组织的安全状态。
@@ -54,7 +53,7 @@ ms.locfileid: "59045758"
 5.  选择“保存”
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>在 Azure 门户中查看管理组
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 若要查看管理组，请选择 Azure 主菜单下的“所有服务”。
 3. 选择“通用”下的“管理组”。
 
@@ -145,16 +144,16 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
 2. 请确保在订阅选择器中选择了要在安全中心内查看的所有订阅。
 
-    ![订阅选择器屏幕截图](./media/security-center-management-groups/subscription-selector.png)
+    ![订阅选择器屏幕快照](./media/security-center-management-groups/subscription-selector.png)
 
 1. 在 Azure 主菜单下，依次选择“所有服务”和“安全中心”。
 2. 在“概述”中，没有订阅覆盖率图表。
 
-    ![订阅覆盖范围图屏幕截图](./media/security-center-management-groups/security-center-subscription-coverage.png)
+    ![订阅覆盖率图表屏幕快照](./media/security-center-management-groups/security-center-subscription-coverage.png)
 
 3. 单击“覆盖率”，查看所覆盖的订阅列表。 
 
-    ![订阅覆盖范围列表屏幕快照](./media/security-center-management-groups/security-center-coverage.png)
+    ![订阅覆盖率列表屏幕快照](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>撤消提升的访问权限 
 向用户分配 RBAC 角色后，租户管理员应将自己从用户访问管理员角色中删除。

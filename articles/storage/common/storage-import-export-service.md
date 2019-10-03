@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58164920"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65603112"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
 
@@ -74,9 +74,9 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 8. 该中心会使用快递商帐户将驱动器寄送到在导入作业中提供的回寄地址。
 
 > [!NOTE]
-> 对于本地（在数据中心所在国家/地区内）装运，请共享国内承运人帐户 
+> 为本地 （在数据中心国家/地区） 交付件，请共享国内承运人帐户 
 >
-> （外部数据中心所在国家/地区） 在国外发货，请共享国际承运人帐户
+> （外部数据中心国家/地区） 在国外发货，请共享国际承运人帐户
 
  ![图 1：导入作业流](./media/storage-import-export-service/importjob.png)
 
@@ -104,9 +104,9 @@ Azure“导入/导出”服务通过创建作业，将数据传输到 Azure Blob
 10. 该中心会使用快递商帐户将驱动器寄送到在导入作业中提供的回寄地址。
 
 > [!NOTE]
-> 对于本地（在数据中心所在国家/地区内）装运，请共享国内承运人帐户 
+> 为本地 （在数据中心国家/地区） 交付件，请共享国内承运人帐户 
 >
-> （外部数据中心所在国家/地区） 在国外发货，请共享国际承运人帐户
+> （外部数据中心国家/地区） 在国外发货，请共享国际承运人帐户
   
  ![图 2：导出作业流](./media/storage-import-export-service/exportjob.png)
 
@@ -138,9 +138,9 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 对于导入作业，驱动器有两种加密方式。  
 
 
-- 在运行 WAImportExport 工具准备驱动器时，使用 dataset.csv 文件指定该选项。 
+- 在运行 WAImportExport 工具准备驱动器时，使用 dataset.csv 文件指定该选项  。 
 
-- 手动对驱动器启用 BitLocker 加密。 在驱动器准备期间运行 WAImportExport 命令行工具时，在 driveset.csv 文件中指定加密密钥。
+- 手动对驱动器启用 BitLocker 加密。 在驱动器准备期间运行 WAImportExport 命令行工具时，在 driveset.csv 文件中指定加密密钥  。
 
 
 对于导出作业，在将数据复制到驱动器以后，此服务会使用 BitLocker 加密驱动器，然后再将驱动器寄回给你。 加密密钥是通过 Azure 门户提供的。
@@ -160,7 +160,7 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 
 **事务成本**
 
-将数据导入 Azure 存储时，除标准存储事务成本外没有任何事务成本。 将数据从 Blob 存储导出时，需支付标准的传出费用。 有关事务费用的更多信息，请参阅[数据传输定价。](https://azure.microsoft.com/pricing/details/data-transfers/)
+[标准存储事务费用](https://azure.microsoft.com/pricing/details/storage/)在导入，以及将数据导出过程中应用。 从 Azure 存储导出数据时，都还存储事务费用以及适用标准的传出费用。 数据传出费用的详细信息，请参阅[数据传输定价。](https://azure.microsoft.com/pricing/details/data-transfers/)。
 
 
 

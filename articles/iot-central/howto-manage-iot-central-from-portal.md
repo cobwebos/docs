@@ -5,45 +5,50 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/14/2019
+ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: f58d06cd191166f47d864241564bc57019b59132
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a8a2ff5e98948030609328a3de33399ede154a3d
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316568"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815688"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>通过 Azure 门户管理 IoT Central
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-如果不从 IoT Central [应用程序管理器](https://aka.ms/iotcentral)页面创建和管理 IoT Central 应用程序，可以使用 [Azure 门户](https://portal.azure.com) 来管理应用程序。
+你可以使用[Azure 门户](https://portal.azure.com)来管理你的应用程序，而不是在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建和管理 IoT Central 应用程序。
 
 ## <a name="create-iot-central-applications"></a>创建 IoT Central 应用程序
 
-若要创建的应用程序，导航到[Azure 门户](https://ms.portal.azure.com)，然后选择**创建资源**在左侧主导航菜单中。
+若要创建应用程序, 请导航到[Azure 门户](https://ms.portal.azure.com), 然后选择左侧导航菜单中的 "**创建资源**"。
 
 ![管理门户：导航菜单](media/howto-manage-iot-central-from-portal/image0.png)
 
 在搜索栏中，键入“IoT Central”。
 
-![管理门户：搜索](media/howto-manage-iot-central-from-portal/image0a.png)
+![管理门户：搜索](media/howto-manage-iot-central-from-portal/image0a1.png)
 
-选择**IoT 中心的应用程序**在搜索结果中的行项。
+在搜索结果中选择 " **IoT Central 应用程序**" 行项。
 
-![管理门户：搜索结果](media/howto-manage-iot-central-from-portal/image0b.png)
+![管理门户：搜索结果](media/howto-manage-iot-central-from-portal/image0b1.png)
 
 现在选择“创建”。
 
-![管理门户：IoT Central 资源](media/howto-manage-iot-central-from-portal/image0c.png)
+![管理门户：IoT Central 资源](media/howto-manage-iot-central-from-portal/image0c1.png)
 
-填写窗体中的所有字段。 此窗体与在 IoT Central [应用程序管理器](https://aka.ms/iotcentral)页创建应用程序时需要填写的窗体类似。 有关详细信息，请参阅[创建 IoT Central 应用程序](quick-deploy-iot-central.md)快速入门。
+填写窗体中的所有字段。 此窗体类似于你填写在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建应用程序的窗体。 有关详细信息，请参阅[创建 IoT Central 应用程序](quick-deploy-iot-central.md)快速入门。
 
-![管理门户：创建 IoT Central 资源](media/howto-manage-iot-central-from-portal/image1.png)  
+**Location**是要在其中创建应用程序的物理位置或[地理](https://azure.microsoft.com/global-infrastructure/geographies/)位置。 通常，应选择在物理上离设备最近的位置，以获得最佳性能。 可以在[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central)页面上查看提供 Azure IoT Central 的区域。 选择某个位置后，就不能再将应用程序移到其他位置。
 
-填写所有字段，然后选择**创建**。
+> [!NOTE]
+> **预览应用程序**模板当前仅在 "**北欧**" 和 "**美国中部**" 区域提供。
+
+![管理门户：创建 IoT Central 资源](media/howto-manage-iot-central-from-portal/image1a.png)  
+
+填写所有字段后, 选择 "**创建**"。
 
 ## <a name="manage-existing-iot-central-applications"></a>管理现有 IoT Central 应用程序
 
@@ -52,21 +57,21 @@ ms.locfileid: "57316568"
 > [!NOTE]
 > Azure 门户中不会显示试用版应用程序，因为它们与订阅无关。
 
-若要开始，选择**的所有资源**在左侧主导航菜单中。 在搜索框中键入应用程序的名称以在资源列表中将其找到。 然后选择你想要管理的 IoT Central 应用程序。
+若要开始, 请选择左侧导航菜单中的 "**所有资源**"。 在搜索框中键入应用程序的名称以在资源列表中将其找到。 然后选择要管理的 IoT Central 应用程序。
 
-![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image2.png)
+![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image2a.png)
 
-若要导航到应用程序，请选择 IoT Central 应用程序 URL。
+若要导航到应用程序, 请选择 "IoT Central 应用程序 URL"。
 
 ![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image3.png)
 
-若要移动到不同的资源组应用程序，选择**更改**旁边的资源组。 在“移动资源”页上，选取要将此应用程序迁移到其中的资源组。
+若要将应用程序移动到其他资源组, 请选择资源组旁边的 "**更改**"。 在“移动资源”页上，选取要将此应用程序迁移到其中的资源组。
 
-![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image4.png)
+![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image4a.png)
 
-若要移动到其他订阅的应用程序，选择**更改**订阅旁边的链接。 在显示的对话框中，选取要将此应用程序迁移到其中的订阅。
+若要将应用程序移动到其他订阅, 请选择订阅旁边的 "**更改**" 链接。 在显示的对话框中，选取要将此应用程序迁移到其中的订阅。
 
-![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image5.png)
+![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image5a.png)
 
 ## <a name="next-steps"></a>后续步骤
 

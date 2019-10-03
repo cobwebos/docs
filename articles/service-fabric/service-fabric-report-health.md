@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280547"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60723437"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>添加自定义 Service Fabric 运行状况报告
 Azure Service Fabric 引入了[运行状况模型](service-fabric-health-introduction.md)，用于在特定实体上标记不正常的群集和应用程序状态。 运行状况模型使用**运行状况报告器**（系统组件和监视器）。 其目标是实现轻松快捷的诊断和修复。 服务编写器必须预先考虑到运行状况。 应报告任何可能会影响运行状况的条件，尤其是如果它有助于标记出接近根源的问题。 运行状况信息可节省调试和调查的时间和精力。 该服务在云端（私有云或 Azure 云）大规模启动并运行后，好处格外明显。
@@ -151,7 +151,7 @@ GatewayInformation   : {
 确定监视器详细信息后，应该确定可唯一标识它的源 ID。 如果多个相同类型的监视器存留于群集中，它们必须报告不同的实体，如果它们报告相同的实体，请使用不同的源 ID 或属性。 如此报告才可并存。 运行状况报告的属性应捕获受监视的条件。 （对于上述示例，属性可以是 **ShareSize**。）如果多个报告应用于同一条件，该属性应包含一些动态信息，才可让报告共存。 例如，如果需要监视多个共享，属性名称可以是 **ShareSize-sharename**。
 
 > [!NOTE]
-> 请勿将运行状况存储用于保存状态信息。 只有与运行状况相关的信息才应作为运行状况进行报告，即影响实体运行状况评估的信息。 运行状况存储并非设计作为一般用途的存储。 它使用运行状况评估逻辑将所有数据聚合到运行状况中。 发送与运行状况无关的信息（例如，报告运行状况为“正常”的状态）不会影响聚合的运行状况，但可能对运行状况存储的性能造成负面影响。
+> 请勿将运行状况存储用于保存状态信息  。 只有与运行状况相关的信息才应作为运行状况进行报告，即影响实体运行状况评估的信息。 运行状况存储并非设计作为一般用途的存储。 它使用运行状况评估逻辑将所有数据聚合到运行状况中。 发送与运行状况无关的信息（例如，报告运行状况为“正常”的状态）不会影响聚合的运行状况，但可能对运行状况存储的性能造成负面影响。
 > 
 > 
 
@@ -254,7 +254,7 @@ HealthEvents          :
                         Transitions           : ->Warning = 4/21/2015 9:01:21 PM
 ```
 
-以下示例会在副本上报告暂时性警告。 它先获取分区 ID，再获取所需服务的副本 ID。 然后，从 PowershellWatcher 发送关于 ResourceDependency 属性的报表。 此报告只需存在 2 分钟，就从存储中自动删除。
+以下示例会在副本上报告暂时性警告。 它先获取分区 ID，再获取所需服务的副本 ID。 然后，从 PowershellWatcher 发送关于 ResourceDependency 属性的报表   。 此报告只需存在 2 分钟，就从存储中自动删除。
 
 ```powershell
 PS C:\> $partitionId = (Get-ServiceFabricPartition -ServiceName fabric:/WordCount/WordCount.Service).PartitionId

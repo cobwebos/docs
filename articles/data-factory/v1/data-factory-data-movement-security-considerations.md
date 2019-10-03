@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 083770c24a6c8939f8d1ff9f0efd5d18aff9dcb0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b425db761375c705d3c810002234a937bac46d78
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539609"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610166"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
 
@@ -50,7 +50,7 @@ ms.locfileid: "57539609"
 
 ## <a name="cloud-scenarios"></a>云方案
 ### <a name="securing-data-store-credentials"></a>保护数据存储凭据
-Azure 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密，从而为这些凭据提供保护。 这些证书每两年轮换一次（包括证书的续订和凭据的迁移）。 这些加密凭据安全地存储在由 Azure 数据工厂管理服务管理的 Azure 存储中。 有关 Azure 存储安全的详细信息，请参阅 [Azure 存储安全概述](../../security/security-storage-overview.md)。
+Azure 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密，从而为这些凭据提供保护。 这些证书每两年轮换一次（包括证书的续订和凭据的迁移）。 这些加密凭据安全地存储在由 Azure 数据工厂管理服务管理的 Azure 存储中。 有关 Azure 存储安全的详细信息，请参阅 [Azure 存储安全概述](../../security/fundamentals/storage-overview.md)。
 
 ### <a name="data-encryption-in-transit"></a>传输中的数据加密
 如果云数据存储支持 HTTPS 或 TLS，则数据工厂中数据移动服务与云数据存储之间的所有数据传输均通过安全通道 HTTPS 或 TLS 进行。
@@ -95,7 +95,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 - 从 Azure 门户/复制向导通过 HTTPS 使用纯文本（较不安全）。 凭据以纯文本形式传递到本地网关。
 - 使用复制向导中的 JavaScript 加密库。
 - 使用一键式凭据管理器应用。 一键式应用程序在有权访问网关的本地计算机上执行，并为数据存储设置凭据。 此选项与下一选项是最安全的选项。 默认情况下，凭据管理器应用在计算机上使用端口 8050，借助网关确保安全通信。  
-- 使用[新建 AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 可以使用此 cmdlet 返回的加密的凭据并将其添加到**EncryptedCredential**的元素**connectionString**与使用的 JSON 文件中[新 AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) cmdlet 或 JSON 代码段中在门户中的数据工厂编辑器中。 此选项与一键式应用程序是最安全的选项。 
+- 使用[AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) PowerShell cmdlet 来加密凭据。 此 cmdlet 使用的证书是配置网关加密凭据所用的证书。 你可以使用此 cmdlet 返回的加密凭据, 并将其添加到 JSON 文件中**connectionString**的**EncryptedCredential**元素中, 该文件与[AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) cmdlet 一起使用, 或在门户中的数据工厂编辑器。 此选项与一键式应用程序是最安全的选项。 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>基于 JavaScript 加密库的加密
 可以使用[复制向导](data-factory-copy-wizard.md)中的 [JavaScript 加密库](https://www.microsoft.com/download/details.aspx?id=52439)对数据存储凭据加密。 选择此选项时，复制向导将检索网关的公共密钥，并将其用于加密数据存储凭据。 凭据由网关计算机解密，并受 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 保护。
@@ -103,7 +103,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 **支持的浏览器：** IE8、IE9、IE10、IE11、Microsoft Edge 以及最新的 Firefox、Chrome、Opera、Safari 浏览器。 
 
 #### <a name="click-once-credentials-manager-app"></a>一键式凭据管理器应用
-创作管道时，可以从 Azure 门户/复制向导启动一键式凭据管理器应用。 此应用程序确保凭据不会通过网络以纯文本形式传输。 默认情况下，该应用程序在计算机上使用端口 8050 ，借助网关确保安全通信。 如有必要，可以更改此端口。  
+创作管道时，可以从 Azure 门户/复制向导启动一键式凭据管理器应用。 此应用程序确保凭据不会通过网络以纯文本形式传输。 默认情况下，该应用程序在计算机上使用端口 8050，借助网关确保安全通信。 如有必要，可以更改此端口。  
   
 ![网关的 HTTPS 端口](media/data-factory-data-movement-security-considerations/https-port-for-gateway.png)
 
@@ -119,7 +119,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
   
 
 ### <a name="encryption-in-transit"></a>传输中加密
-所有数据传输都是通过 HTTPS 和 TLS over TCP 安全通道进行的，可防止与 Azure 服务通信期间发生中间人攻击。
+所有数据传输都是通过 HTTPS和 TLS over TCP安全通道进行的，可防止与 Azure 服务通信期间发生中间人攻击。
  
 还可以使用 [IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) 或 [快速路由](../../expressroute/expressroute-introduction.md) 进一步保护本地网络和 Azure 之间的通信信道。
 
@@ -127,7 +127,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 
 下表基于混合数据移动的源和目标位置的不同组合，总结了相关的网络和网关配置建议。
 
-| 源 | 目标 | 网络配置 | 网关设置 |
+| Source | 目标 | 网络配置 | 网关设置 |
 | ------ | ----------- | --------------------- | ------------- | 
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 网关可以安装在本地或 VNet 中的 Azure 虚拟机 (VM) 上 | 
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（私有对等互连） | 网关可以安装在本地或 VNet 中的 Azure VM 上 | 

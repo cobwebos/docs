@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b99c5c68c2dc01537a0c4360286b922130e64bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: db00e0b6ea14e956fc75c2c7cff5d018d9c6bb84
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887877"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106484"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-awardspring"></a>教程：Azure Active Directory 与 AwardSpring 集成
 
@@ -54,25 +54,25 @@ ms.locfileid: "57887877"
 
 **若要从库添加 AwardSpring，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“AwardSpring”，在结果面板中选择“AwardSpring”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“AwardSpring”，在结果面板中选择“AwardSpring”，然后单击“添加”按钮添加该应用程序    。
 
     ![结果列表中的 AwardSpring](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为“Britta Simon”的测试用户，配置和测试 AwardSpring 的 Azure AD 单一登录。
+在本部分中，基于一个名为“Britta Simon”的测试用户，配置和测试 AwardSpring 的 Azure AD 单一登录。 
 若要使单一登录有效，需要在 Azure AD 用户与 AwardSpring 相关用户之间建立链接关系。
 
 若要配置和测试 AwardSpring 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -90,7 +90,7 @@ ms.locfileid: "57887877"
 
 若要配置 AwardSpring 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“AwardSpring”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“AwardSpring”应用程序集成页上，选择“单一登录”。  
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,34 +98,34 @@ ms.locfileid: "57887877"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
 
     ![AwardSpring 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.awardspring.com/SignIn/SamlMetaData`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.awardspring.com/SignIn/SamlMetaData`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.awardspring.com/SignIn/SamlAcs`
+    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.awardspring.com/SignIn/SamlAcs`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![AwardSpring 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.awardspring.com/`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.awardspring.com/`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [AwardSpring 客户端支持团队](mailto:support@awardspring.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [AwardSpring 客户端支持团队](mailto:support@awardspring.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-6. AwardSpring 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
+6. AwardSpring 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
-7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ：
 
-    |  Name | 源属性 |
+    |  名称 | 源属性 |
     | ---------------| --------------- |    
     | 名字 | user.givenname |
     | 姓氏 | user.surname |
@@ -136,29 +136,29 @@ ms.locfileid: "57887877"
     > [!NOTE]
     > StudentID 属性映射需传回声明的实际学生 ID。 请联系 [AwardSpring 客户端支持团队](mailto:support@awardspring.com)获取此值。
 
-    a. 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
     ![图像](common/new-save-attribute.png)
 
     ![图像](common/new-attribute-details.png)
 
-    b. 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
-    c. 将“命名空间”留空。
+    c. 将“命名空间”留空  。
 
-    d. 选择“源”作为“属性”。
+    d. 选择“源”作为“属性”  。
 
-    e. 在“源属性”列表中，键入为该行显示的属性值。
+    e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“确定”
+    f. 单击“确定” 
 
     g. 单击“ **保存**”。
 
-8. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+8. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-9. 在“设置 AwardSpring”部分，根据要求复制相应的 URL。
+9. 在“设置 AwardSpring”部分，根据要求复制相应的 URL  。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -176,11 +176,11 @@ ms.locfileid: "57887877"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -188,40 +188,40 @@ ms.locfileid: "57887877"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予 AwardSpring 的访问权限，使之能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“AwardSpring”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“AwardSpring”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“AwardSpring”。
+2. 在应用程序列表中，选择“AwardSpring”  。
 
     ![应用程序列表中的 AwardSpring 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-awardspring-test-user"></a>创建 AwardSpring 测试用户
 

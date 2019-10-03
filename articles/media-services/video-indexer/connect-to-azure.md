@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/12/2019
+ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: affa6f9a808543401b7d57812c7d2bef4324a83c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 0f67b2e37e264febf11f3fa55b4469d392c59712
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796539"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815666"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
@@ -22,7 +23,7 @@ ms.locfileid: "59796539"
 
 本文介绍如何创建链接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户。 本主题提供使用自动（默认）流连接 Azure 的步骤。 它还演示如何手动连接到 Azure（高级）。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 * Azure 订阅。
 
@@ -32,7 +33,7 @@ ms.locfileid: "59796539"
 
     如果没有 Azure AD 域，请使用 Azure 订阅创建此域。 有关详细信息，请参阅[管理 Azure Active Directory 中的自定义域名](../../active-directory/users-groups-roles/domains-manage.md)
 
-* Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时，将要使用此成员。
+* 具有**应用程序管理员**角色的 Azure AD 域中的用户。 将视频索引器帐户连接到 Azure 时，将要使用此成员。
 
     此用户应为使用工作或学校帐户而非个人帐户（例如 outlook.com、live.com 或 hotmail.com）的 Azure AD 用户。
 
@@ -58,9 +59,12 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
 ## <a name="connect-to-azure"></a>连接到 Azure
 
+> [!NOTE]
+> 如果你的 Azure 订阅使用基于证书的多重身份验证, 则必须在安装了所需证书的设备上执行以下步骤。
+
 1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
 
-2. 单击**创建新帐户**按钮：
+2. 单击 "**创建新帐户**" 按钮:
 
     ![连接到 Azure](./media/create-account/connect-to-azure.png)
 
@@ -90,7 +94,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
     ![新帐户](./media/create-account/new-account.png)
 
-7. 浏览到新帐户
+7. 浏览到你的新帐户
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>手动连接到 Azure（高级选项）
 
@@ -103,7 +107,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
 1. 使用 [Azure](https://portal.azure.com/) 门户创建 Azure 媒体服务帐户，如[创建帐户](../previous/media-services-portal-create-account.md)中所述。
 
-    创建媒体服务帐户的存储帐户时，选择“StorageV2”作为帐户类型并在复制字段中选择“异地冗余(RGS)”。
+    为媒体服务帐户创建存储帐户时, 为 "复制" 字段选择 " **StorageV2** " 作为 "帐户类型" 和 "**异地冗余 (GRS)** "。
 
     ![新建 AMS 帐户](./media/create-account/create-ams-account1.png)
 

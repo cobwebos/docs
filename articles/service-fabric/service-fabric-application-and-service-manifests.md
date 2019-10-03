@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/19/2018
+ms.date: 8/12/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5e93bb3b206fbef6beb09b7aca6df0742a80ccf1
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: a5e452bf3dc9f35c345a5f27af829904b4839ece
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662136"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977125"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric 应用程序和服务清单
 本文介绍如何使用 ApplicationManifest.xml 和 ServiceManifest.xml 文件定义 Service Fabric 应用程序和服务并对其进行版本控制。  有关更多详细示例，请参阅[应用程序和服务清单示例](service-fabric-manifest-examples.md)。  这些清单文件的 XML 架构记录在 [ServiceFabricServiceModel.xsd 架构文档](service-fabric-service-model-schema.md)中。
@@ -96,8 +96,12 @@ ms.locfileid: "58662136"
 </Settings>
 ```
 
-Service Fabric 服务终结点是 Service Fabric 资源的示例；Service Fabric 资源可以进行声明/更改，而无需更改已编译的代码。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定 Service Fabric 资源的访问。 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 详细了解[指定或替代终结点资源](service-fabric-service-manifest-resources.md)。
+Service Fabric 服务“终结点”是 Service Fabric 资源的一个示例。 无需更改已编译的代码，即可声明/更改 Service Fabric 资源。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定 Service Fabric 资源的访问。 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 详细了解[指定或替代终结点资源](service-fabric-service-manifest-resources.md)。
 
+ 
+> [!WARNING]
+> 设计静态端口不应与 Clustermanifest.xml 中指定的应用程序端口范围重叠。 如果指定静态端口, 请将其分配到应用程序端口范围外, 否则将导致端口冲突。 使用 release 6.5 CU2, 我们将在检测到此类冲突时发出**运行状况警告**, 但允许部署与发货6.5 行为保持同步。 但是, 我们可能会阻止应用程序在下一个主要版本中进行部署。
+>
 
 <!--
 For more information about other features supported by service manifests, refer to the following articles:
@@ -147,6 +151,7 @@ For more information about other features supported by service manifests, refer 
     <Service Name="VotingWeb" ServicePackageActivationMode="ExclusiveProcess">
       <StatelessService ServiceTypeName="VotingWebType" InstanceCount="[VotingWeb_InstanceCount]">
         <SingletonPartition />
+         <PlacementConstraints>(NodeType==NodeType0)</PlacementConstraints
       </StatelessService>
     </Service>
   </DefaultServices>
@@ -163,7 +168,13 @@ For more information about other features supported by service manifests, refer 
 
 **Certificates**（上一示例中未设置），声明用于[设置 HTTPS 终结点](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service)或用于[加密应用程序清单中的机密](service-fabric-application-secret-management.md)的证书。
 
-**Policies**（上一示例中未设置），描述要在应用程序级别设置的策略（日志集合、[默认运行方式](service-fabric-application-runas-security.md)、[运行状况](service-fabric-health-introduction.md#health-policies)和[安全访问](service-fabric-application-runas-security.md)）。
+**放置约束**是定义服务运行位置的语句。 这些语句附加到您为一个或多个节点属性选择的各个服务。 有关详细信息, 请参阅[放置约束和节点属性语法](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)
+
+**Policies**（在前面的示例中未设置）描述要在应用程序级别设置的日志收集、[默认运行方式帐户](service-fabric-application-runas-security.md)、[运行状况](service-fabric-health-introduction.md#health-policies)和[安全访问](service-fabric-application-runas-security.md)策略，包括服务是否可以访问 Service Fabric 运行时。
+
+> [!NOTE] 
+> 默认情况下，Service Fabric 应用程序可以通过以下形式访问 Service Fabric 运行时：终结点（接受应用程序特定请求）和环境变量（指向包含 Fabric 和应用程序特定文件的主机上的文件路径）。 在应用程序托管不受信任的代码（即其出处未知或应用程序所有者知道其执行起来不安全）时，请考虑禁止进行此访问。 有关详细信息，请参阅 [Service Fabric 中的安全最佳做法](service-fabric-best-practices-security.md#platform-isolation)。 
+>
 
 **Principals**（上一示例中未设置），描述[运行服务并确保服务资源安全](service-fabric-application-runas-security.md)所需的安全主体（用户或组）。  Policies 部分中会引用 Principals。
 

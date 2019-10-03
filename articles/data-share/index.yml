@@ -1,0 +1,61 @@
+### YamlMime:Landing
+title: Azure Data Share（预览版）文档
+summary: Azure Data Share 预览版是一种安全、可靠的服务，用于与第三方组织共享数据。
+metadata:
+  title: Azure Data Share（预览版）
+  description: Azure Data Share（预览版）是一种安全、可靠的服务，用于与第三方组织共享数据。
+  services: data-share
+  ms.service: data-share
+  ms.subservice: subservice
+  ms.topic: landing-page
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: d75af1eea77bea89f3facf782b836a26fcdabdde
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71218015"
+landingContent:
+- title: 关于 Azure Data Share
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Data Share？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Data Share 概念
+      url: terminology.md
+    - text: Azure Data Share 的角色和要求
+      url: concepts-roles-permissions.md
+- title: 共享数据
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用 Azure Data Share 共享数据
+      url: share-your-data.md
+    - text: 使用 Azure Data Share 接受和接收数据
+      url: subscribe-to-data-share.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置数据集映射
+      url: how-to-configure-mapping.md
+    - text: 添加数据集
+      url: how-to-add-datasets.md
+- title: 监视和管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 监视 Azure Data Share
+      url: how-to-monitor.md
+    - text: 排查常见问题
+      url: data-share-troubleshoot.md
+    - text: 添加数据集
+      url: how-to-add-datasets.md
+    - text: 删除邀请
+      url: how-to-delete-invitation.md
+    - text: 撤销共享订阅
+      url: how-to-revoke-share-subscription.md

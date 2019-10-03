@@ -1,28 +1,27 @@
 ---
 title: 大规模提取、转换和加载 (ETL) - Azure HDInsight
-description: 了解如何通过 Apache Hadoop 在 HDInsight 中使用 ETL。
-services: hdinsight
+description: 了解如何在 HDInsight 中使用 Apache Hadoop 进行提取、转换和加载。
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
+ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: c200ca98f2a5ea32886ec12d3e732af6598254f7
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337606"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066941"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
 
-提取、转换和加载 (ETL) 是从各种源获取数据、将数据收集到标准位置、进行清理和处理，最终将其载入数据存储供查询的过程。 传统的 ETL 过程是导入数据、就地清理该数据，然后将其存储在关系数据引擎中。 使用 HDInsight 时，各种 Apache Hadoop 生态系统组件都支持大规模执行 ETL。 
+提取、转换和加载 (ETL) 是从各种源获取数据、将数据收集到标准位置、进行清理和处理，最终将其载入数据存储供查询的过程。 传统的 ETL 过程是导入数据、就地清理该数据，然后将其存储在关系数据引擎中。 使用 HDInsight 时，各种 Apache Hadoop 生态系统组件都支持大规模执行 ETL。
 
 在 ETL 过程中使用 HDInsight 可以通过以下管道来总结：
 
-![HDInsight ETL 概述](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+![可扩展的 HDInsight ETL 概述](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
 
 以下部分探讨每个 ETL 阶段及其关联的组件。
 
@@ -36,11 +35,11 @@ ms.locfileid: "58337606"
 
 Apache Oozie 是一个管理 Hadoop 作业的工作流协调系统。 Oozie 在 HDInsight 群集中运行，并与 Hadoop 堆栈集成。 Oozie 支持 Apache Hadoop MapReduce、Apache Pig、Apache Hive 和 Apache Sqoop 的 Hadoop 作业。 Oozie 还可用于安排特定于某系统的作业，例如 Java 程序或 shell 脚本。
 
-有关详细信息，请参阅[在 HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。如需深入演示如何使用 Oozie 驱动端到端管道，请参阅[操作数据管道](../hdinsight-operationalize-data-pipeline.md)。 
+有关详细信息，请参阅[在 HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。如需深入演示如何使用 Oozie 驱动端到端管道，请参阅[操作数据管道](../hdinsight-operationalize-data-pipeline.md)。
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
 
-Azure 数据工厂以平台即服务的形式提供业务流程功能。 它是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 
+Azure 数据工厂以平台即服务的形式提供业务流程功能。 它是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。
 
 使用 Azure 数据工厂可以：
 
@@ -66,7 +65,7 @@ Azure 存储还为 Blob 存储提供一个 WebHDFS API 层。  HDInsight 中的�
 
 通常使用 PowerShell、Azure 存储 SDK 或 AZCopy 将数据引入 Azure 存储。
 
-### <a name="azure-data-lake-storage"></a>Azure Data Lake 存储
+### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
 Azure Data Lake Storage (ADLS) 是一个托管的超大规模存储库，用于分析与 HDFS 兼容的数据。  ADLS 使用类似于 HDFS 的设计范例，并在总容量及单个文件的大小方面提供无限可伸缩性。 ADLS 非常适合与大型文件配合运行，因为大型文件可以跨多个节点存储。  ADLS 中的数据分区在幕后执行。  通过数以千计的并发执行程序，可高效读取和写入数百 TB 的数据，从而可获得极大的吞吐量来运行分析作业。
 
@@ -128,7 +127,7 @@ Sqoop 使用 MapReduce 导入和导出数据，可提供并行操作和容错。
 
 Apache Flume 是分布式、可靠且高度可用的服务，能够有效地收集、聚合与移动大量日志数据。 Flume 采用基于流式传输数据流的简单弹性体系结构。 Flume 既可靠又能容错，提供可优化的可靠性机制和许多故障转移与恢复机制。 Flume 使用一个允许联机分析应用程序的简单可扩展数据模型。
 
-Apache Flume 无法与 Azure HDInsight 配合使用。  本地 Hadoop 安装可以使用 Flume 将数据发送到 Azure 存储 Blob 或 Azure Data Lake Storage。  有关详细信息，请参阅[将 Apache Flume 与 HDInsight 配合使用](https://web.archive.org/web/20190217104751/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)。
+Apache Flume 无法与 Azure HDInsight 配合使用。  本地 Hadoop 安装可以使用 Flume 将数据发送到 Azure 存储 Blob 或 Azure Data Lake Storage。  有关详细信息，请参阅[将 Apache Flume 与 HDInsight 配合使用](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)。
 
 ## <a name="transform"></a>转换
 

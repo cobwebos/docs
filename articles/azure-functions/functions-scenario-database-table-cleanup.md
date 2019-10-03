@@ -7,20 +7,19 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 10/02/2019
 ms.author: glenga
-ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.openlocfilehash: 469e0149a3b9dce22f0590240a053ee3b183c7b9
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608573"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815979"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 
-本文介绍如何使用 Azure Functions 创建连接到 Azure SQL 数据库实例的计划作业。 该函数代码用于清除数据库表中的行。 根据 Visual Studio 2017 中预定义的计时器触发器模板新建 C# 函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 该方案使用针对数据库的大容量操作。 
+本文介绍如何使用 Azure Functions 创建连接到 Azure SQL 数据库或 Azure SQL 托管实例的计划作业。 该函数代码用于清除数据库表中的行。 根据 Visual Studio 2019 中预定义的计时器触发器模板新建 C# 函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 对于 Azure SQL 托管实例需要[启用公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)才能从 Azure Functions 进行连接。 该方案使用针对数据库的大容量操作。 
 
 如果首次使用 C# 函数，则应阅读 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)。
 
@@ -40,7 +39,7 @@ ms.locfileid: "53608573"
 
 1. 选择左侧菜单中的“SQL 数据库”，然后在“SQL 数据库”页面上选择数据库。
 
-1. 选择“设置”下的“连接字符串”，并复制完整的 ADO.NET 连接字符串。
+1. 选择“设置”下的“连接字符串”，并复制完整的 ADO.NET 连接字符串。 对于 Azure SQL 托管实例为公用终结点复制连接字符串。
 
     ![复制 ADO.NET 连接字符串。](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
@@ -64,7 +63,7 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 你需要添加包含 SqlClient 库的 NuGet 包。 需要此数据访问库以连接到 SQL 数据库。
 
-1. 在 Visual Studio 2017 中打开本地函数应用项目。
+1. 在 Visual Studio 2019 中打开本地函数应用项目。
 
 1. 在“解决方案资源管理器”中，右键单击函数应用项目，并选择“管理 NuGet 包”。
 
@@ -127,7 +126,7 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
     在第一次执行时，应更新 32 行数据。 以下运行不更新任何数据行，除非对 SalesOrderHeader 表数据进行更改，以便 `UPDATE` 语句选择更多行。
 
-如果打算[发布此函数](functions-develop-vs.md#publish-to-azure)，请记得将 `TimerTrigger` 属性更改为比每 15 秒计划更合理的[cron 计划](functions-bindings-timer.md#cron-expressions)。
+如果打算[发布此函数](functions-develop-vs.md#publish-to-azure)，请记得将 `TimerTrigger` 属性更改为比每 15 秒计划更合理的[cron 计划](functions-bindings-timer.md#ncrontab-expressions)。
 
 ## <a name="next-steps"></a>后续步骤
 

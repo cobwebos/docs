@@ -2,27 +2,27 @@
 title: 复制表的设计指南 - Azure SQL 数据仓库 | Microsoft Docs
 description: 在 Azure SQL 数据仓库架构中设计复制表的建议。 
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 03/19/2019
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: acea42f7f4ab986e9828000ab7cfc9e302ed92a3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c622edc6c3a37b2bc71323cf0e2c155f7aec6e33
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885445"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479314"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中使用复制表的设计指南
 本文提供在 SQL 数据仓库架构中设计复制表的建议。 使用这些建议，可减少数据移动并降低查询复杂性，从而提高查询性能。
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 本文假设读者熟悉 SQL 数据仓库中的数据分布和数据移动概念。  有关详细信息，请参阅[体系结构](massively-parallel-processing-mpp-architecture.md)一文。 
 
 在设计表的过程中，尽可能多地了解数据以及数据查询方式。  例如，考虑以下问题：
@@ -48,7 +48,7 @@ ms.locfileid: "58885445"
 在以下情况下，复制表可能无法实现最好的查询性能：
 
 - 对表进行频繁的插入、更新和删除操作。 这些数据操作语言 (DML) 操作需要重新生成复制表。 经常重新生成可能会降低性能。
-- 数据仓库缩放频繁。 缩放数据仓库会更改计算节点数，这会导致重新生成复制的表。
+- 数据仓库缩放频繁。 缩放数据仓库会更改计算节点的数目, 这会导致重新生成复制的表。
 - 表中包含大量列，但数据操作通常只访问少量列。 在这种情况下，与复制整个表相比，将表分发，然后对经常访问的列创建索引可能更为高效。 当查询需要进行数据移动时，SQL 数据仓库仅移动所请求列中的数据。 
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>对简单查询谓词使用复制表

@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: eec99bde0ea73a99a9dc1345f938b821a95a7c05
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111831"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736271"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door 如何匹配请求与传递规则
 
@@ -28,9 +28,9 @@ Front Door 传递规则配置由两个主要部分组成：“左侧”和“右
 ### <a name="incoming-match-left-hand-side"></a>传入的匹配项（左侧）
 以下属性确定传入的请求是否与传递规则（或左侧）匹配：
 
-* HTTP 协议 (HTTP/HTTPS)
+*  HTTP 协议 (HTTP/HTTPS)
 * **主机**(例如，www\.foo.com， \*。 bar.com)
-* 路径（例如，/\*、/users/\*/file.gif）
+*  路径（例如，/\*、/users/\*/file.gif）
 
 这些属性会在内部扩展，因此协议/主机/路径的每种组合都是潜在的匹配集。
 
@@ -38,7 +38,7 @@ Front Door 传递规则配置由两个主要部分组成：“左侧”和“右
 决定如何处理请求取决于是否为特定路由启用了缓存。 因此，如果没有针对请求的缓存应答，我们会将请求转发到配置的后端池中的相应后端。
 
 ## <a name="route-matching"></a>路由匹配
-本节将重点介绍我们如何匹配给定的 Front Door 传递规则。 基本概念是始终优先匹配最具体的匹配项，仅查看“左侧”。  首先基于 HTTP 协议匹配，接下来是前端主机，然后是路径。
+本节将重点介绍我们如何匹配给定的 Front Door 传递规则。 基本概念是始终优先匹配最具体的匹配项，仅查看“左侧”  。  首先基于 HTTP 协议匹配，接下来是前端主机，然后是路径。
 
 ### <a name="frontend-host-matching"></a>前端主机匹配
 在匹配前端主机时，使用如下逻辑：

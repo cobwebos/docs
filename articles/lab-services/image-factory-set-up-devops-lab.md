@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: abb85d568e26e4b6f85b960a2560aae570daf201
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149174"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61320179"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>从 Azure DevOps 运行映像工厂
 本文介绍如何从 Azure DevOps (以前称为 Visual Studio Team Services) 中运行映像工厂所需的所有准备工作。
@@ -44,7 +44,7 @@ Azure DevOps 让你存储的源代码，请在一个位置中运行 Azure PowerS
 
 如果你有现有的 DevOps 帐户或你想要改为使用的项目，请跳过此步骤。
 
-若要开始，请在 Azure DevOps 中创建一个免费帐户。 请访问 https://www.visualstudio.com/，然后选择**免费试用**下**Azure DevOps** (以前称为 VSTS)。 你将需要选择一个唯一的帐户的名称，请确保选择来管理使用 Git 的代码。 这创建后，将 URL 保存到你的团队项目。 下面是示例 URL: `https://<accountname>.visualstudio.com/MyFirstProject`。
+若要开始，请在 Azure DevOps 中创建一个免费帐户。 请访问 https://www.visualstudio.com/ ，然后选择**免费试用**下**Azure DevOps** (以前称为 VSTS)。 你将需要选择一个唯一的帐户的名称，请确保选择来管理使用 Git 的代码。 这创建后，将 URL 保存到你的团队项目。 下面是示例 URL: `https://<accountname>.visualstudio.com/MyFirstProject`。
 
 ## <a name="check-in-the-image-factory-to-git"></a>签入到 Git 的图像工厂
 所有 PowerShell、 模板和映像工厂的配置中的都位置[公共开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)。 获取代码到新的团队项目的最快方法是导入存储库。 这将拉在整个开发测试实验室存储库中 （所以您会收到额外的文档和示例）。
@@ -52,7 +52,7 @@ Azure DevOps 让你存储的源代码，请在一个位置中运行 Azure PowerS
 1. 请访问上一步中创建的 Azure DevOps 项目 (URL 如下所示**https:\//\<accountname >.visualstudio.com/MyFirstProject**)。
 2. 选择**导入存储库**。
 3. 输入**克隆 URL**开发测试实验室存储库： `https://github.com/Azure/azure-devtestlab`。
-4. 选择“导入”。
+4. 选择“导入”  。
 
     ![导入 Git 存储库](./media/set-up-devops-lab/import-git-repo.png)
 
@@ -78,11 +78,11 @@ Azure DevOps 让你存储的源代码，请在一个位置中运行 Azure PowerS
 若要简化的命令行参数，封装到一组生成变量驱动器映像工厂的键值。 选择**变量**选项卡，将看到几个默认变量的列表。 下面是将输入到 Azure DevOps 中的变量的列表：
 
 
-| 变量名 | Value | 说明 |
+| 变量名 | 值 | 说明 |
 | ------------- | ----- | ----- |
 | ConfigurationLocation | /Scripts/ImageFactory/Configuration | 这是到存储库中的完整路径**配置**文件夹。 如果您导入更高版本的整个存储库，左侧的值正确。 否则，更新以指向配置位置。 |
 | DevTestLabName | MyImageFactory | 实验室中 Azure 开发测试实验室作为工厂用于生成映像的名称。 如果你没有帐户，创建一个。 请确保实验室服务终结点有权访问位于同一订阅中。 |
-| ImageRetention | 1 | 你想要保存的每种类型的映像数量。 设置默认值为 1。 |
+| ImageRetention | 第 | 你想要保存的每种类型的映像数量。 设置默认值为 1。 |
 | MachinePassword | ******* | 虚拟机内置管理员帐户密码。 这是暂时性的帐户，因此请确保它是安全。 选择位于右侧，以确保它是一个安全字符串的小锁定图标。 |
 | MachineUserName | ImageFactoryUser | 内置管理员帐户的用户名为虚拟机。 这是暂时性的帐户。 |
 | StandardTimeoutMinutes | 30 | 我们应等待常规 Azure 操作超时。 |

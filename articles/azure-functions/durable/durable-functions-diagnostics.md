@@ -2,20 +2,19 @@
 title: Durable Functions 中的诊断 - Azure
 description: 了解如何使用 Azure Functions 的 Durable Functions 扩展诊断问题。
 services: functions
-author: ggailey777
+author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 167f697d4928d88114a30739a1d39a576c87ac84
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: d2badee3eaa5a9af48e89adc1b59beacc1571792
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608472"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933503"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure Durable Functions 中的诊断
 
@@ -33,7 +32,7 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
 
 * **hubName**：运行业务流程的任务中心的名称。
 * **appName**：函数应用的名称。 当有多个函数应用共享同一个 Application Insights 实例时，此字段非常有用。
-* **slotName**：当前函数应用在其中运行的[部署槽位](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/)。 利用部署槽位控制业务流程的版本时，此字段非常有用。
+* **slotName**：当前函数应用在其中运行的[部署槽位](../functions-deployment-slots.md)。 利用部署槽位控制业务流程的版本时，此字段非常有用。
 * **functionName**：业务流程协调程序或活动函数的名称。
 * **functionType**：函数的类型，例如 **Orchestrator** 或 **Activity**。
 * **instanceId**：业务流程实例的唯一 ID。
@@ -159,9 +158,26 @@ traces
 
 直接从业务流程协调程序函数写入日志时，必须注意业务流程协调程序的重播行为。 例如，考虑以下业务流程协调程序函数：
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>预编译 C#
 
-```cs
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+### <a name="c-script"></a>C# 脚本
+
+```csharp
 public static async Task Run(
     DurableOrchestrationContext context,
     ILogger log)
@@ -212,6 +228,23 @@ Done!
 
 如果只想针对非重播执行记录日志，可以编写一个条件表达式，规定仅当 `IsReplaying` 为 `false` 时才记录日志。 沿用上面的示例，不过这一次要执行重播检查。
 
+#### <a name="precompiled-c"></a>预编译 C#
+
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    if (!context.IsReplaying) log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    if (!context.IsReplaying) log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    if (!context.IsReplaying) log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
 #### <a name="c"></a>C#
 
 ```cs
@@ -258,7 +291,7 @@ Done!
 
 使用自定义业务流程状态，可以为业务流程协调程序函数设置自定义状态值。 此状态是通过 HTTP 状态查询 API 或 `DurableOrchestrationClient.GetStatusAsync` API 提供的。 自定义业务流程状态为业务流程协调程序函数实现了更丰富的监视。 例如，业务流程协调程序函数代码可以包括 `DurableOrchestrationContext.SetCustomStatus` 调用来更新长时间运行的操作的进度。 然后，客户端（例如网页或其他外部系统）可以定期查询 HTTP 状态查询 API 以获得更丰富的进度信息。 下面提供了使用 `DurableOrchestrationContext.SetCustomStatus` 的示例：
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>预编译 C#
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
@@ -316,18 +349,19 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 Azure Functions 支持直接调试函数代码，Durable Functions 承袭了这项支持，不管它是在 Azure 中还是在本地运行。 但是，调试时需注意几种行为：
 
-* **重播**：收到新输入时，业务流程协调程序函数会定期重播。 这意味着，业务流程协调程序函数的单次逻辑执行可能导致多次命中同一断点，尤其是事先已在函数代码中设置了该断点时。
-* **等待**：每当遇到 `await`，该函数就会将控制权出让回到 Durable Task Framework 调度程序。 如果这是首次遇到特定的 `await`，则关联的任务永远不可恢复。 由于任务永远不可恢复，实际上也就无法跳过等待（在 Visual Studio 中按 F10）。 仅当任务正在重播时，才能跳过。
-* **消息超时**：Durable Functions 在内部使用队列消息来驱动业务流程协调程序函数和活动函数的执行。 在多 VM 环境中，长时间中断调试可能会使另一个 VM 拾取消息，从而导致重复执行。 正则队列触发器函数也存在此行为，但必须在此上下文中指出，因为队列属于实现细节。
+* **重播**：当收到新输入时，Orchestrator 函数会定期[重播](durable-functions-orchestrations.md#reliability)。 这意味着，业务流程协调程序函数的单次逻辑执行可能导致多次命中同一断点，尤其是事先已在函数代码中设置了该断点时。
+* **等待**：每当在`await`业务流程协调程序函数中遇到时，它都会向持久任务框架调度程序返回控制权。 如果这是首次遇到特定的 `await`，则关联的任务永远不可恢复。 由于任务永远不可恢复，实际上也就无法跳过等待（在 Visual Studio 中按 F10）。 仅当任务正在重播时，才能跳过。
+* **消息超时**：Durable Functions 在内部使用队列消息来驱动 orchestrator、活动和实体函数的执行。 在多 VM 环境中，长时间中断调试可能会使另一个 VM 拾取消息，从而导致重复执行。 正则队列触发器函数也存在此行为，但必须在此上下文中指出，因为队列属于实现细节。
+* **停止和启动**：持久函数中的消息在调试会话之间保持不变。 如果在执行持久函数时停止调试并终止本地主机进程，则该函数可能会在将来的调试会话中自动重新执行。 如果不需要，这可能会造成混淆。 在调试会话之间从[内部存储队列](durable-functions-perf-and-scale.md#internal-queue-triggers)中清除所有消息是一种避免此行为的方法。
 
 > [!TIP]
-> 设置断点时，如果只想要中断非重播执行，可以设置一个条件断点，规定仅当 `IsReplaying` 为 `false` 时才中断。
+> 在业务流程协调程序函数中设置断点时，如果只想在非重播执行时中断，则可以设置仅当`IsReplaying`为时`false`中断的条件断点。
 
 ## <a name="storage"></a>存储
 
 默认情况下，Durable Functions 在 Azure 存储中存储状态。 这意味着，可以使用 [Microsoft Azure 存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)等工具检查业务流程的状态。
 
-![Azure 存储资源管理器屏幕截图](./media/durable-functions-diagnostics/storage-explorer.png)
+![Azure 存储资源管理器屏幕快照](./media/durable-functions-diagnostics/storage-explorer.png)
 
 此工具非常适合用于调试，因为可以看到业务流程所处的确切状态。 此外，还可以检查队列中的消息，了解哪项工作处于挂起状态（或停滞在某种状态）。
 
@@ -337,4 +371,4 @@ Azure Functions 支持直接调试函数代码，Durable Functions 承袭了这�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解如何使用持久计时器](durable-functions-timers.md)
+> [详细了解 Azure Functions 中的监视](../functions-monitoring.md)

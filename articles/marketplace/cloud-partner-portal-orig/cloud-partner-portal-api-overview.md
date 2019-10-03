@@ -1,25 +1,18 @@
 ---
-title: 云合作伙伴门户 API 参考 | Microsoft Docs
+title: 云合作伙伴门户的 API 参考 |Azure Marketplace
 description: 市场 API 操作的说明、要使用的先决条件和列表。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 116eb48330381c7560c55ea9535b3c1b7c6a6a70
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 9626fdb5dbdf720a65217421565fc559a0cee684
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805679"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935478"
 ---
 <a name="cloud-partner-portal-api-reference"></a>云合作伙伴门户 API 参考
 ==================================

@@ -7,18 +7,18 @@ manager: jhubbard
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 3a7eaacc4c234ec7d1d3d88455bd423256a07e90
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: cf8b917b72362465c3273f80db61b681ffd0c4d7
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005823"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610373"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>对 Azure Database for MySQL 使用虚拟网络服务终结点和规则
 
 “虚拟网络规则”是一种防火墙安全功能，用于控制是否允许 Azure Database for MySQL 服务器接受从虚拟网络中的特定子网发送的通信。 本文说明了为何有时候最好选择虚拟网络规则功能来安全地允许与 Azure Database for MySQL 服务器的通信。
 
-若要创建虚拟网络规则，首先必须存在可供规则引用的[虚拟网络][vm-virtual-network-overview] (VNet) 和[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]。 下图说明了虚拟网络服务终结点如何与 Azure Database for MySQL 配合使用：
+若要创建虚拟网络规则, 必须先有一个[虚拟网络][vm-virtual-network-overview](VNet) 和一个[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d], 该规则才能引用。 下图说明了虚拟网络服务终结点如何与 Azure Database for MySQL 配合使用：
 
 ![VNet 服务终结点的工作原理示例](media/concepts-data-access-and-security-vnet/vnet-concept.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "60005823"
 
 **子网：** 虚拟网络包含**子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
-**虚拟网络服务终结点：**[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for MySQL 和 PostgreSQL 服务。 务必要注意的一点是，将 **Microsoft.Sql** 服务标记应用到 VNet 服务终结点时，它将为子网上的所有 Azure SQL 数据库、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务器配置服务终结点流量。 
+**虚拟网络服务终结点：** [虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure Database for MySQL 和 PostgreSQL 服务。 务必要注意的一点是，将 **Microsoft.Sql** 服务标记应用到 VNet 服务终结点时，它将为子网上的所有 Azure SQL 数据库、Azure Database for MySQL 和 Azure Database for PostgreSQL 服务器配置服务终结点流量。 
 
 **虚拟网络规则：** 适用于 Azure Database for MySQL 服务器的虚拟网络规则是一个子网，该子网列在 Azure Database for MySQL 服务器的访问控制列表 (ACL) 中。 该子网必须包含 **Microsoft.Sql** 类型名称才会列在 Azure Database for MySQL 服务器的 ACL 中。
 
@@ -60,7 +60,7 @@ ms.locfileid: "60005823"
 
 可以通过 Azure Database for MySQL 防火墙指定 IP 地址范围，处于该范围内的通信允许进入 Azure Database for MySQL 数据库。 此方法适用于 Azure 专用网络外部的稳定 IP 地址。 但是，Azure 专用网络内部的许多节点都配置了动态 IP 地址。 某些情况下（例如重启 VM 时），动态 IP 地址可能会变化。 处于生产环境中时，在防火墙规则中指定一个动态 IP 地址并不明智。
 
-可以通过获取 VM 的静态 IP 地址，对 IP 选项进行“补救”。 有关详细信息，请参阅[使用 Azure 门户为虚拟机配置专用 IP 地址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
+可以通过获取 VM 的静态 IP 地址，对 IP 选项进行“补救”。 有关详细信息, 请参阅[使用 Azure 门户为虚拟机配置专用 IP 地址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。
 
 但是，静态 IP 方法可能会变得难以管理，在规模大时操作成本高。 虚拟网络规则更易于制定和管理。
 
@@ -90,19 +90,20 @@ ms.locfileid: "60005823"
 
 在管理虚拟网络服务终结点时，安全角色是分开的。 下述每个角色都需要进行操作：
 
-- **网络管理员：**&nbsp; 启用终结点。
-- **数据库管理员：**&nbsp; 更新访问控制列表 (ACL)，将给定的子网添加到 Azure Database for MySQL 服务器。
+- **网络管理员：** &nbsp; 启用终结点。
+- **数据库管理员：** &nbsp; 更新访问控制列表 (ACL)，将给定的子网添加到 Azure Database for MySQL 服务器。
 
 RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
-可以选择在 Azure 中使用[基于角色的访问控制 (RBAC)][rbac-what-is-813s]，创建一个只有部分必需权限的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
+你可以选择在 Azure 中使用[基于角色的访问控制 (RBAC)][rbac-what-is-813s]来创建只具有必要的功能子集的单个自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
 
 > [!NOTE]
 > 在某些情况下，Azure Database for MySQL 和 VNet 子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
 > - 两个订阅都必须属于同一 Azure Active Directory 租户。
 > - 用户具有启动操作所需的权限，例如启用服务终结点，以及向给定服务器添加 VNet-子网。
+> - 请确保这两个订阅都注册了**Microsoft .sql**资源提供程序。 有关详细信息, 请参阅[资源管理器-注册][resource-manager-portal]
 
 ## <a name="limitations"></a>限制
 
@@ -114,19 +115,19 @@ RBAC 备用：
 
 - 对于任何给定的虚拟网络，每个 Azure Database for MySQL 服务器最多可以有 128 个 ACL 条目。
 
-- 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][arm-deployment-model-568f]网络。
+- 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络;而非[经典部署模型][arm-deployment-model-568f]网络。
 
 - 使用 **Microsoft.Sql** 服务标记为 Azure Database for MySQL 启用虚拟网络服务终结点也会为以下所有 Azure 数据库服务启用终结点：Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL 数据库和 Azure SQL 数据仓库。
 
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
 - 在防火墙上，IP 地址范围适用于以下网络项，但虚拟网络规则并不适用：
-    - [站点到站点 (S2S) 虚拟专用网络 (VPN)][vpn-gateway-indexmd-608y]
-    - 通过 [Expressroute][expressroute-indexmd-744v] 进行的本地连接
+    - [站点到站点 (S2S) 虚拟专用网 (VPN)][vpn-gateway-indexmd-608y]
+    - 通过[ExpressRoute][expressroute-indexmd-744v]本地
 
 ## <a name="expressroute"></a>ExpressRoute
 
-如果网络通过使用 [ ExpressRoute ][expressroute-indexmd-744v] 连接到 Azure 网络，则每个线路在 Microsoft Edge 配置有两个公共 IP 地址。 这两个 IP 地址用于通过使用 Azure 公共对等互连连接到 Azure 存储等 Microsoft 服务。
+如果网络通过使用[ExpressRoute][expressroute-indexmd-744v]连接到 Azure 网络, 则每个线路都配置有两个公共 IP 地址。 这两个 IP 地址用于通过使用 Azure 公共对等互连连接到 Azure 存储等 Microsoft 服务。
 
 若要允许从线路到 Azure Database for MySQL 的通信，必须为线路的公共 IP 地址创建 IP 网络规则。 为查找 ExpressRoute 线路的公共 IP 地址，请使用 Azure 门户开具 ExpressRoute 支持票证。
 
@@ -159,3 +160,5 @@ RBAC 备用：
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 
 [expressroute-indexmd-744v]: ../expressroute/index.yml
+
+[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md

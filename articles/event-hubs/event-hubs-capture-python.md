@@ -16,11 +16,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 639bc4ff9c69bca3d5f8bca6967bfc3e8e6a13d4
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100537"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60822415"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>事件中心捕获演练：Python
 
@@ -36,25 +36,25 @@ ms.locfileid: "56100537"
 4. 使用 Python 脚本将数据发送到事件中心。
 5. 使用另一个 Python 脚本从捕获中读取文件并处理这些文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Python 2.7.x
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 - 活动的[事件中心命名空间和事件中心](event-hubs-create.md)。 
-- 按照以下说明为事件中心启用捕获功能：[通过 Azure 门户启用事件中心捕获](event-hubs-capture-enable-through-portal.md)
+- 按照以下说明为事件中心启用捕获功能  ：[通过 Azure 门户启用事件中心捕获](event-hubs-capture-enable-through-portal.md)
 
 ## <a name="create-an-azure-blob-storage-account"></a>创建 Azure Blob 存储帐户
 1. 登录到 [Azure 门户][Azure portal]。
-2. 在门户的左窗格中，选择“新建” > “存储” > “存储帐户”。
-3. 在“创建存储帐户”窗格中完成选择，然后选择“创建”。
+2. 在门户的左窗格中，选择“新建” > “存储” > “存储帐户”。   
+3. 在“创建存储帐户”  窗格中完成选择，然后选择“创建”  。
    
    ![“创建存储帐户”窗格][1]
-4. 看到“部署成功”消息后，选择新存储帐户名，并在“概要”窗格中选择“Blob”。 “Blob 服务”窗格打开时，选择顶部的“+ 容器”。 将容器命名为“capture”，然后关闭“Blob 服务”窗格。
-5. 选择左侧窗格中的“访问密钥”，复制存储帐户名称和 **key1** 的值。 将这些值保存到记事本或其他临时位置。
+4. 看到“部署成功”  消息后，选择新存储帐户名，并在“概要”  窗格中选择“Blob”  。 “Blob 服务”  窗格打开时，选择顶部的“+ 容器”  。 将容器命名为“capture”  ，然后关闭“Blob 服务”  窗格。
+5. 选择左侧窗格中的“访问密钥”  ，复制存储帐户名称和 **key1** 的值。 将这些值保存到记事本或其他临时位置。
 
 ## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>创建用于将事件发送到事件中心的 Python 脚本
 1. 打开常用的 Python 编辑器，如 [Visual Studio Code][Visual Studio Code]。
-2. 创建名为 **sender.py** 的脚本。 此脚本将向事件中心发送 200 个事件。 它们是以 JSON 格式发送的简单环境读数。
+2. 创建名为 **sender.py**的脚本。 此脚本将向事件中心发送 200 个事件。 它们是以 JSON 格式发送的简单环境读数。
 3. 将以下代码粘贴到 sender.py 中：
    
    ```python
@@ -80,8 +80,8 @@ ms.locfileid: "56100537"
 
 ## <a name="create-a-python-script-to-read-your-capture-files"></a>创建用于读取捕获文件的 Python 脚本
 
-1. 填写该窗格并选择“创建”。
-2. 创建名为 capturereader.py 的脚本。 此脚本读取捕获的文件，并为每个设备创建一个文件，用于仅写入该设备的数据。
+1. 填写该窗格并选择“创建”  。
+2. 创建名为 capturereader.py  的脚本。 此脚本读取捕获的文件，并为每个设备创建一个文件，用于仅写入该设备的数据。
 3. 将以下代码粘贴到 capturereader.py 中：
    
    ```python
@@ -138,7 +138,7 @@ ms.locfileid: "56100537"
    pip install avro
    ```
    
-   如果使用的是早期版本的 Azure 存储或 Azure，可能需要使用“--upgrade”选项。
+   如果使用的是早期版本的 Azure 存储或 Azure，可能需要使用“--upgrade”选项    。
    
    还可能需要运行以下命令（在大多数系统上不必要）：
    

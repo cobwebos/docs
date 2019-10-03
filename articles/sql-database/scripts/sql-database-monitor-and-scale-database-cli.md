@@ -10,14 +10,13 @@ ms.topic: sample
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: eeb932123e57dcb10fce3baf9670d8c1ae961fb8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/25/2019
+ms.openlocfilehash: 9468f5d631dd713c9e131c63de824c5e552178e3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361605"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569917"
 ---
 # <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>使用 CLI 监视和缩放单一 SQL 数据库
 
@@ -41,7 +40,7 @@ ms.locfileid: "59361605"
 使用以下命令删除资源组及其相关的所有资源。
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name $resourceGroupName
 ```
 
 ## <a name="script-explanation"></a>脚本说明
@@ -52,8 +51,8 @@ az group delete --name myResourceGroup
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
-| [az sql db show-usage](https://docs.microsoft.com/cli/azure/sql#az-sql-show-usage) | 显示单一数据库或入池数据库的大小使用情况信息。 |
-| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | 更新数据库属性（如服务层或计算大小），或者将数据库移入、移出弹性池或在弹性池之间移动。 |
+| [az sql db show-usage](https://docs.microsoft.com/cli/azure/sql#az-sql-show-usage) | 显示单一数据库或共用数据库的大小使用情况信息。 |
+| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | 更新数据库属性（如服务层级或计算大小），或者将数据库移入、移出弹性池或在弹性池之间移动。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 删除资源组，包括所有嵌套的资源。 |
 |||
 

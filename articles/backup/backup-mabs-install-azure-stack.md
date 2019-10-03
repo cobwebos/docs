@@ -1,21 +1,20 @@
 ---
 title: 在 Azure Stack 上安装 Azure 备份服务器 | Microsoft Docs
 description: 使用 Azure 备份服务器保护或备份 Azure Stack 中的工作负荷。
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: raynew
-ms.openlocfilehash: d3a2ffdedda7f541fb1a3f37a8b40bc7af3dcb57
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: dacurwin
+ms.openlocfilehash: da941d0234fe78791f9a1c2f2a7d01122247534c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996503"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639857"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安装 Azure 备份服务器
 
@@ -77,7 +76,7 @@ Azure备份服务器将备份数据存储在附加到虚拟机的 Azure 磁盘�
   - 卸载数据 - 将旧数据发送到 Azure，并仅保留附加到 Azure 备份服务器的存储上的最新数据。
   - 横向扩展 - 添加更多 Azure 备份服务器来保护工作负荷。
 
-### <a name="net-framework"></a>.NET framework
+### <a name="net-framework"></a>.NET Framework
 
 必须在虚拟机上安装 .NET Framework 3.5 SP1 或更高版本。
 
@@ -324,9 +323,9 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 | 连接状态 | Azure 订阅 | 备份到 Azure | 备份到磁盘 | 从 Azure 还原 | 从磁盘还原 |
 | --- | --- | --- | --- | --- | --- |
 | 已连接 |活动 |允许 |允许 |允许 |允许 |
-| 连续 |已过期 |已停止 |已停止 |允许 |允许 |
-| 连续 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
-| 连接断开超过 15 天 |活动 |已停止 |已停止 |允许 |允许 |
+| 已连接 |已过期 |已停止 |已停止 |允许 |允许 |
+| 已连接 |已解除设置 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
+| 连接断开超过 15 天 |活跃 |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |Expired |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 
@@ -349,7 +348,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 - 订阅处于“已取消预配”状态时，会失去功能。 将订阅还原到“活动”状态可以挽回备份/还原功能。 如果以够长的保留期来保存本地磁盘上的备份数据，则可以检索这些备份数据。 但是，一旦订阅进入“已取消预配”状态，Azure 中的备份数据便会丢失且不可检索。
 - 订阅处于“已过期”状态时，会失去功能。 当订阅处于“已过期”状态时，计划的备份不会运行。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果 Microsoft Azure 备份服务器在安装阶段（或者备份或还原时）失败并出现错误，请参阅[错误代码文档](https://support.microsoft.com/kb/3041338)。
 此外，还可以参考 [Azure 备份相关的常见问题](backup-azure-backup-faq.md)

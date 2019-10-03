@@ -4,24 +4,23 @@ description: 了解如何在 Azure 中的 Linux 上配置 LVM。
 services: virtual-machines-linux
 documentationcenter: na
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
 ms.assetid: 7f533725-1484-479d-9472-6b3098d0aecc
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
 ms.subservice: disks
-ms.openlocfilehash: 08f98775360b8c0a82f68f322053cb71f0e79af3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 1ab545edf9b45e37082509452a858a154b361251
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457320"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083823"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>在 Azure 中的 Linux VM 上配置 LVM
 本文介绍如何在 Azure 虚拟机中配置逻辑卷管理器 (LVM)。 LVM 可以在 Azure VM 中的 OS 磁盘或数据磁盘上使用，但是，默认情况下，大多数云映像都不会在 OS 磁盘上配置 LVM。 以下步骤将重点介绍如何为数据磁盘配置 LVM。

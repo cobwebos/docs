@@ -1,5 +1,5 @@
 ---
-title: 快速入门：了解如何将 Azure Redis 缓存与 Node.js 配合使用 | Microsoft Docs
+title: 快速入门：将 Azure Redis 缓存与 Node.js 配合使用
 description: 本快速入门介绍如何将 Azure Redis 缓存与 Node.js 和 node_redis 配合使用。
 services: cache
 documentationcenter: ''
@@ -14,36 +14,24 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 739f0bd6381e872b5f989f9ecb4dd97fdbdb52c9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.custom: mvc, seo-javascript-september2019
+ms.openlocfilehash: f46a4771f1db5e4040cb23b1a9236c91699b6ad5
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238090"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057868"
 ---
-# <a name="quickstart-how-to-use-azure-cache-for-redis-with-nodejs"></a>快速入门：如何将 Azure Redis 缓存与 Node.js 配合使用
+# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>快速入门：将 Azure Redis 缓存与 Node.js 配合使用
 
-
-
-Azure Redis 缓存提供对 Microsoft 所管理的安全、专用的 Azure Redis 缓存的访问权限。 可从 Microsoft Azure 内部的任何应用程序访问缓存。
-
-本主题说明如何将 Azure Redis 缓存与 Node.js 配合使用。 
-
-可使用任何代码编辑器来完成本快速入门中的步骤。 但是，[Visual Studio Code](https://code.visualstudio.com/) 是一个很好的选项，可用于 Windows、macOS 和 Linux 平台。
-
-![已完成的缓存应用](./media/cache-nodejs-get-started/cache-app-complete.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+在本快速入门中，会将 Azure Redis 缓存合并到 Node.js 应用中，以便能够访问 Azure 中的任何应用程序都可以访问的安全专用缓存。
 
 ## <a name="prerequisites"></a>先决条件
-安装 [node_redis](https://github.com/mranney/node_redis)：
 
-    npm install redis
+- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+- [node_redis](https://github.com/mranney/node_redis)，可以使用命令 `npm install redis` 安装。 
 
-本教程使用的是 [node_redis](https://github.com/mranney/node_redis)。 有关使用其他 Node.js 客户端的示例，请参阅 [Node.js Redis 客户端](https://redis.io/clients#nodejs)中所列的适用于 Node.js 客户端的各个文档。
-
+有关使用其他 Node.js 客户端的示例，请参阅 [Node.js Redis 客户端](https://redis.io/clients#nodejs)中所列的适用于 Node.js 客户端的各个文档。
 
 ## <a name="create-a-cache"></a>创建缓存
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -57,7 +45,6 @@ Azure Redis 缓存提供对 Microsoft 所管理的安全、专用的 Azure Redis
 set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
-
 
 ## <a name="connect-to-the-cache"></a>连接到缓存
 
@@ -128,7 +115,6 @@ node redistest.js
 
 ![已完成的缓存应用](./media/cache-nodejs-get-started/cache-app-complete.png)
 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 如果想要继续学习下一篇教程，可以保留本快速入门中创建的资源，以便重复使用。
@@ -139,17 +125,15 @@ node redistest.js
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
 >
 
-登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
 
-在“按名称筛选...”文本框中键入资源组的名称。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”。
+在“按名称筛选”文本框中，输入资源组的名称  。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，选择“...”，然后选择“删除资源组”   。
 
 ![删除](./media/cache-nodejs-get-started/cache-delete-resource-group.png)
 
-系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”。
+系统会要求确认是否删除资源组。 重新键入资源组的名称进行确认，然后选择“删除”  。
 
 片刻之后，将会删除该资源组及其包含的所有资源。
-
-
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -157,6 +141,3 @@ node redistest.js
 
 > [!div class="nextstepaction"]
 > [创建使用 Azure Redis 缓存的 ASP.NET Web 应用。](./cache-web-app-howto.md)
-
-
-

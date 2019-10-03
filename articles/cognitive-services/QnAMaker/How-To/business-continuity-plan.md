@@ -3,19 +3,19 @@ title: 业务连续性计划 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 业务连续性计划的主要目标是创建弹性知识库终结点，确保机器人或应用程序使用该终结点时不会发生停机。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 01/14/2019
-ms.author: tulasim
-ms.openlocfilehash: ad4f10b3b59e71ca31f1b27879c4b60157f0a46c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 08/20/2019
+ms.author: diberry
+ms.openlocfilehash: 84f13f7e1d83f1ead00303b694b617d3ba1c8931
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881352"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876646"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>为 QnA Maker 服务创建业务连续性计划
 

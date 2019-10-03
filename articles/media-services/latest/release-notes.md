@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: de5432c4e04fb0cfaf0517426fe9ee9da2a57b37
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266981"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801388"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -34,15 +34,83 @@ ms.locfileid: "59266981"
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
 
+## <a name="september-2019"></a>2019年9月
+
+媒体服务 v3 宣布推出实时事件实时线性编码的24小时 x 365 天的预览。
+ 
+## <a name="august-2019"></a>2019 年 8 月
+
+### <a name="south-africa-regional-pair-is-open-for-media-services"></a>已为 Media Services 打开了南非区域对 
+
+媒体服务现已在南部北部和南非非洲地区推出。
+
+有关详细信息，请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
+
+## <a name="july-2019"></a>2019 年 7 月
+
+### <a name="content-protection"></a>内容保护
+
+当流式处理使用令牌限制保护的内容时，最终用户需要获取作为密钥传递请求的一部分发送的令牌。 使用*令牌重播防护*功能，媒体服务客户可以设置一个限制，该限制可用于请求密钥或许可证。 有关详细信息，请参阅[令牌重播防护](content-protection-overview.md#token-replay-prevention)。
+
+此功能目前已在美国中部和美国西部中部提供。
+
+## <a name="june-2019"></a>2019 年 7 月
+
+### <a name="video-subclipping"></a>视频子剪辑
+
+你现在可以在使用[作业](https://docs.microsoft.com/rest/api/media/jobs)对视频进行编码时剪裁或子剪辑视频。 
+
+此功能适用于使用[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)预设或[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms)。 
+
+请参阅示例：
+
+* [使用 .NET 子剪辑视频](subclip-video-dotnet-howto.md)
+* [使用 REST 子剪辑视频](subclip-video-rest-howto.md)
+
+## <a name="may-2019"></a>2019 年 5 月
+
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>媒体服务诊断日志和指标 Azure Monitor 支持
+
+你现在可以使用 Azure Monitor 查看媒体服务 emmited 的遥测数据。
+
+* 使用 Azure Monitor 诊断日志来监视 Media Services 密钥传送终结点发送的请求。 
+* 监视媒体服务[流式处理终结点](streaming-endpoint-concept.md)发出的指标。   
+
+有关详细信息，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
+
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>动态打包中的多音频跟踪支持 
+
+当使用多个编解码器和语言的多个音频轨迹流式传输资产时，[动态打包](dynamic-packaging-overview.md)现在支持 HLS 输出的多个音频轨迹（版本4或更高版本）。
+
+### <a name="korea-regional-pair-is-open-for-media-services"></a>韩国区域对为 Media Services 开放 
+
+媒体服务现已在韩国中部和韩国南部区域推出。 
+
+有关详细信息，请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
+
+### <a name="performance-improvements"></a>性能提升
+
+添加了更新，其中包括媒体服务性能改进。
+
+* 已更新处理所支持的最大文件大小。 请参阅、[配额和限制](limits-quotas-constraints.md)。
+* [编码加快了提高](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
+
+## <a name="april-2019"></a>2019 年 4 月
+
+### <a name="new-presets"></a>新预设
+
+* 已将[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)添加到内置分析器预设。
+* 已将[ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)添加到内置编码器预设。 有关详细信息，请参阅[内容感知编码](cae-experimental.md)。 
+
 ## <a name="march-2019"></a>2019 年 3 月
 
-动态打包现在支持 Dolby Atmos. 有关详细信息，请参阅[音频编解码器支持的动态打包](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)。
+动态打包现在支持杜比 Atmos。 有关详细信息，请参阅[动态打包支持的音频编解码器](dynamic-packaging-overview.md#audio-codecs)。
 
-现在可以指定将适用于你的流式处理定位符的资产或帐户筛选器的列表。 有关详细信息，请参阅[流式处理定位符相关联的筛选器](filters-concept.md#associate-filters-with-streaming-locator)。
+你现在可以指定将应用于流式处理定位符的资产或帐户筛选器的列表。 有关详细信息，请参阅[将筛选器与流式处理定位符相关联](filters-concept.md#associating-filters-with-streaming-locator)。
 
 ## <a name="february-2019"></a>2019 年 2 月
 
-媒体服务 v3 现在支持在 Azure 的国家/地区云。 目前，并非所有功能在所有云中都可用。 有关详细信息，请参阅[存在 Azure 媒体服务 v3 的云和区域](azure-clouds-regions.md)。
+媒体服务 v3 现在在 Azure 国内云中受支持。 目前，并非所有功能在所有云中都可用。 有关详细信息，请参阅[存在 Azure 媒体服务 v3 的云和区域](azure-clouds-regions.md)。
 
 [Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) 事件已添加到媒体服务的 Azure 事件网格架构中。
 
@@ -79,7 +147,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 - [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - 用于管理媒体保留单位。 有关详细信息，请参阅[缩放媒体保留单位](media-reserved-units-cli-how-to.md)。
+- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - 用于管理媒体预留单位。 有关详细信息，请参阅[缩放媒体预留单位](media-reserved-units-cli-how-to.md)。
 
 ### <a name="new-features-and-breaking-changes"></a>新功能和重大更改
 
@@ -123,7 +191,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 
 对 Azure 资源管理的支持实现了统一的管理和操作 API（现在所有功能已整合在一起）。
 
-从此版本开始，可以使用资源管理器模板创建实时事件。
+从此版本开始，可以使用资源管理器模板创建直播活动。
 
 #### <a name="improvement-of-asset-operations"></a>改善资产操作 
 
@@ -139,7 +207,7 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 
 #### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory 身份验证和 RBAC
 
-Azure AD 身份验证和基于角色的访问控制 (RBAC) 通过 Azure AD 中的角色或用户启用安全转换、实时事件、内容密钥策略或资产。
+Azure AD 身份验证和基于角色的访问控制 (RBAC) 通过 Azure AD 中的角色或用户启用安全转换、直播活动、内容密钥策略或资产。
 
 #### <a name="client-sdks"></a>客户端 SDK  
 
@@ -153,7 +221,7 @@ Azure AD 身份验证和基于角色的访问控制 (RBAC) 通过 Azure AD 中�
 - 改进的 RTMP 支持（提高了稳定性并提供了更多的源编码器支持）。
 - RTMPS 安全引入。
 
-    创建实时事件时，现在会得到 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。 
+    创建直播活动时，现在会得到 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。 
 - 24 小时转码支持。 
 - 通过 SCTE35 改进了 RTMP 中的广告信号支持。
 
@@ -188,18 +256,22 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 ### <a name="net-sdk"></a>.NET SDK
 
-以下功能是.NET SDK 中：
+.NET SDK 中提供了以下功能：
 
 * 转换和作业，用于对媒体内容来进行编码或分析。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
 * **流式处理定位符**，用于发布内容并将其流式传输到最终用户设备
 * **流式处理策略**和**内容密钥策略**，用于在传送内容时配置密钥传递和内容保护 (DRM)。
-* **实时事件**和**实时输出**，用于配置实时传送视频流内容的引入和归档。
+* **直播活动**和**实时输出**，用于配置实时传送视频流内容的引入和归档。
 * 资产，用于在 Azure 存储中存储和发布媒体内容。 
 * **流式处理终结点**，用于配置和缩放实时和点播媒体内容的动态打包、加密和流式处理。
 
 ### <a name="known-issues"></a>已知问题
 
 * 提交作业时，可以指定使用 HTTPS URL、SAS URL 或位于 Azure Blob 存储中的文件路径引入源视频。 目前，AMS v3 不支持基于 HTTPS URL 的块传输编码。
+
+## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
+
+查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
 ## <a name="next-steps"></a>后续步骤
 

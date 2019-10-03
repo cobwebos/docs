@@ -1,65 +1,52 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: 6acffc5056f916f2e05c7a0fd3eb325fd89a9e4b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117045"
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 专用 HSM 文档
+summary: 了解如何使用 Azure 专用 HSM 来创建及维护用于访问和加密云资源、应用和解决方案的密钥。 教程、API 参考和其他资源。
 metadata:
-  title: Azure 专用 HSM 文档 - 教程和 API 参考 | Microsoft Docs
-  meta.description: Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.
+  title: Azure 专用 HSM 文档
+  description: 了解如何使用 Azure 专用 HSM 来创建及维护用于访问和加密云资源、应用和解决方案的密钥。 教程、API 参考和其他资源。
   services: dedicated-hsm
-  author: barclayn
-  manager: barbkess
-  layout: LandingPage
-  ms.assetid: 
   ms.service: dedicated-hsm
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/21/2018
-  ms.author: barclayn
-abstract:
-  description: 了解专用 HSM 功能以及它是否适用于你的环境。
-sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
-    items:
-    - href: /azure/dedicated-hsm/overview
-      html: <p>了解有关 Azure 专用 HSM 的所有信息。</p>
-      image:
-        src: media/index/hsm.svg
-      title: Azure 专用 HSM 概述
-    - href: /azure/dedicated-hsm/faq
-      html: <p>使用专用 HSM 时的设计注意事项</p>
-      image:
-        src: media/index/guide.svg
-      title: 决定部署体系结构
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: ''
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/cli.svg
-      text: Azure CLI
-      href: /azure/dedicated-hsm/tutorial-deploy-hsm-cli
-    - image:
-        src: media/index/logo_powershell.svg
-      text: PowerShell
-      href: /azure/dedicated-hsm/tutorial-deploy-hsm-powershell
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: 常见问题解答
-      html: <p><a href="/azure/dedicated-hsm/faq/">常见问题</a></p>
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 9e592fdb5fa87487f131bb0aca0c6176175e5385
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71300101"
+landingContent:
+- title: 关于专用 HSM
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是专用 HSM？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 高可用性
+      url: high-availability.md
+    - text: 物理安全性
+      url: physical-security.md
+    - text: 网络
+      url: networking.md
+    - text: 可支持性
+      url: supportability.md
+    - text: 监视
+      url: monitoring.md
+- title: 入门
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 通过 Azure CLI 部署到虚拟网络
+      url: tutorial-deploy-hsm-cli.md
+    - text: 通过 Azure PowerShell 部署到虚拟网络
+      url: tutorial-deploy-hsm-powershell.md
+- title: 方案
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Azure 专用 HSM 部署体系结构
+      url: deployment-architecture.md

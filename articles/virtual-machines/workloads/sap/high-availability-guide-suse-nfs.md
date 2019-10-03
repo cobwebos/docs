@@ -4,23 +4,22 @@ description: SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: da465fb9fe51b2be5ec90df1ac75c50271db87a9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7af5663b399556d66f86213310858780369215af
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992063"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101058"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 
@@ -28,15 +27,15 @@ ms.locfileid: "57992063"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2205917]:https://launchpad.support.sap.com/#/notes/2205917
-[1944799]:https://launchpad.support.sap.com/#/notes/1944799
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2205917]: https://launchpad.support.sap.com/#/notes/2205917
+[1944799]: https://launchpad.support.sap.com/#/notes/1944799
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1984787]: https://launchpad.support.sap.com/#/notes/1984787
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -52,7 +51,7 @@ ms.locfileid: "57992063"
 [sap-hana-ha]:sap-hana-high-availability.md
 
 本文介绍了如何部署虚拟机、配置虚拟机、安装群集框架，以及安装可用来存储高度可用的 SAP 系统的共享数据的高度可用的 NFS 服务器。
-本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的高度可用的 NFS 服务器。 示例中的资源名称（例如虚拟机、虚拟网络）假设你将 [SAP 文件服务器模板][template-file-server]与资源前缀 **prod** 配合使用。
+本指南介绍了如何设置供两个 SAP 系统（NW1 和 NW2）使用的高度可用的 NFS 服务器。 示例中的资源名称 (例如虚拟机、虚拟网络) 假设你已将[SAP 文件服务器模板][template-file-server]用于资源前缀 "**生产**"。
 
 请先阅读以下 SAP 说明和文档
 
@@ -71,12 +70,12 @@ ms.locfileid: "57992063"
 * SAP 说明 [1984787] 包含有关 SUSE Linux Enterprise Server 12 的一般信息。
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
-* [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
-* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署（本文）][deployment-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机部署 (本文)][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
-* [SUSE Linux Enterprise 高可用性扩展 12 SP3 最佳做法指南][sles-hae-guides]
+* [SUSE Linux Enterprise High Availability Extension 12 SP3 最佳实践指南][sles-hae-guides]
   * 使用 DRBD 和 Pacemaker 的高度可用 NFS 存储
-* [SUSE Linux Enterprise Server for SAP Applications 12 SP3 最佳做法指南][sles-for-sap-bp]
+* [SAP 应用程序的 SUSE Linux Enterprise Server 12 SP3 最佳做法指南][sles-for-sap-bp]
 * [SUSE 高可用性扩展 12 SP3 发行说明][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>概述
@@ -110,7 +109,7 @@ NFS 服务器为使用此 NFS 服务器的每个 SAP 系统使用专用的虚拟
 Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications 12 的映像，可以用于部署新的虚拟机。
 可以使用 GitHub 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
 
-1. 在 Azure 门户中打开 [SAP 文件服务器模板][template-file-server]   
+1. 在 Azure 门户中打开[SAP 文件服务器模板][template-file-server]   
 1. 输入以下参数
    1. 资源前缀  
       输入想要使用的前缀。 此值将用作所要部署的资源的前缀。
@@ -179,6 +178,9 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
          * 为 NW2 针对端口 2049 和 TCP 重复上述步骤
       1. NW2 的 2049 UDP
          * 为 NW2 针对端口 2049 和 UDP 重复上述步骤
+
+> [!IMPORTANT]
+> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.tcp _timestamps**设置为**0**。 有关详细信息, 请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 
@@ -540,4 +542,4 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 * [适用于 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * 若要了解如何建立高可用性以及针对 Azure 上的 SAP HANA（大型实例）规划灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
-* 若要了解如何在 Azure VM 上建立 SAP HANA 高可用性以及规划灾难恢复，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性并规划 Azure Vm 上 SAP HANA 的灾难恢复, 请参阅[Azure 虚拟机 (vm) 上的 SAP HANA 的高可用性][sap-hana-ha]

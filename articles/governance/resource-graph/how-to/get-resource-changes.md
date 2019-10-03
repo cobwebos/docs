@@ -4,24 +4,24 @@ description: 了解如何查找资源已更改时，并获取更改的属性的�
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/20/2019
+ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f4618e945db443e8d7cf9fdcc49e20e5a09ebd39
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: b6ef57a3f39c82be30d92aef72c1bbe03b653768
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013488"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66236509"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
 资源获取通过每日使用、 重新配置，以及甚至重新部署的更改。
 更改可以来自个人或通过自动化过程。 大多数更改是设计使然，但有时不是。 与过去 14 天的更改历史记录，Azure 资源图形，可以：
 
-- 在 Azure 资源管理器属性上检测到更改时，发现。
-- 请参阅属性更改为该更改事件的一部分。
+- 查找在 Azure 资源管理器属性上检测到更改的时间。
+- 了解在更改事件中已更改的属性。
 
 更改检测和详细信息很有价值的以下示例方案：
 
@@ -29,7 +29,7 @@ ms.locfileid: "60013488"
 - 保持配置管理数据库，称为 CMDB，保持最新状态。 而不是刷新所有资源和其完整的属性组的计划的频率，只能获取更改的内容。
 - 了解哪些其他属性可能已更改时某个资源更改符合性状态。 这些附加属性的计算可以深入了解可能需要管理通过 Azure 策略定义其他属性。
 
-本文介绍如何收集此信息通过资源关系图的 SDK。 若要查看此信息在 Azure 门户中的，请参阅 Azure 策略[更改历史记录](../../policy/how-to/determine-non-compliance.md#change-history-preview)。
+本文介绍如何收集此信息通过资源关系图的 SDK。 若要查看此信息在 Azure 门户中的，请参阅 Azure 策略[更改历史记录](../../policy/how-to/determine-non-compliance.md#change-history-preview)或 Azure 活动日志[更改历史记录](../../../azure-monitor/platform/activity-log-view.md#azure-portal)。
 
 > [!NOTE]
 > 在资源图表中的更改详细信息适用于资源管理器属性。 有关跟踪虚拟机内部的更改，请参阅 Azure 自动化[更改跟踪](../../../automation/automation-change-tracking.md)或 Azure 策略[Vm 的来宾配置](../../policy/concepts/guest-configuration.md)。
@@ -39,12 +39,12 @@ ms.locfileid: "60013488"
 
 ## <a name="find-when-changes-were-detected"></a>查找时检测到更改
 
-查看资源更改的内容的第一步是时间的要查找与该资源的时间段内相关的更改事件。 通过完成此步骤[resourceChanges](/rest/api/azureresourcegraph/resourceChanges) REST 终结点。
+查看资源更改的内容的第一步是时间的要查找与该资源的时间段内相关的更改事件。 通过完成此步骤**resourceChanges** REST 终结点。
 
 **ResourceChanges**终结点需要在请求正文中的两个参数：
 
 - **resourceId**:要查找的更改的 Azure 资源。
-- **间隔**:具有的属性_启动_并_最终_针对何时检查更改事件使用的日期**Zulu 时区 (Z)**。
+- **间隔**:具有的属性_启动_并_最终_针对何时检查更改事件使用的日期**Zulu 时区 (Z)** 。
 
 示例请求正文：
 
@@ -69,7 +69,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 ```json
 {
     "changes": [{
-            "changeId": "2db0ad2d-f6f0-4f46-b529-5c4e8c494648",
+            "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}",
             "beforeSnapshot": {
                 "timestamp": "2019-03-29T01:32:05.993Z"
             },
@@ -95,7 +95,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 
 ## <a name="see-what-properties-changed"></a>查看属性的更改
 
-与**changeId**从**resourceChanges**终结点， [resourceChangeDetails](/rest/api/azureresourcegraph/resourceChangeDetails) REST 终结点，然后用于获取更改事件的详细信息。
+与**changeId**从**resourceChanges**终结点， **resourceChangeDetails** REST 终结点，然后用于获取更改事件的详细信息。
 
 **ResourceChangeDetails**终结点需要在请求正文中的两个参数：
 
@@ -107,8 +107,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 ```json
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
-    "changeId": "53dc0515-b86b-4bc2-979b-e4694ab4a556"
-    }
+    "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}"
 }
 ```
 
@@ -122,7 +121,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 
 ```json
 {
-    "changeId": "53dc0515-b86b-4bc2-979b-e4694ab4a556",
+    "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}",
     "beforeSnapshot": {
         "timestamp": "2019-03-29T01:32:05.993Z",
         "content": {

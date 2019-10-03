@@ -3,7 +3,7 @@ title: 使用 Azure 应用服务向 Xamarin.iOS 应用添加推送通知
 description: 了解如何使用 Azure 应用服务将推送通知发送到 Xamarin iOS 应用
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
@@ -12,26 +12,30 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/12/2016
-ms.author: crdun
-ms.openlocfilehash: 32a8c36d223e2b0c12f5d82ec748af66ae841b01
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 9edd5e755b4a42fe881a0863bb284039299ec713
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819016"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446267"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加推送通知
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-ios-get-started-push)今天。
+>
+
 ## <a name="overview"></a>概述
 
 本教程介绍如何向 [Xamarin iOS 快速入门](app-service-mobile-xamarin-ios-get-started.md)项目添加推送通知，以便每次插入一条记录时，向设备发送一条推送通知。
 
-如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
+如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅 [使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) 。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 完成 [Xamarin.iOS 快速入门](app-service-mobile-xamarin-ios-get-started.md)教程。
 * 物理 iOS 设备。 iOS 模拟器不支持推送通知。
@@ -140,15 +144,15 @@ ms.locfileid: "42819016"
 
 应用现已更新，可支持推送通知。
 
-## <a name="test"></a>在应用中测试推送通知
+## <a name="test"></a>在应用程序中测试推送通知
 
-1. 在支持 iOS 的设备中按“运行”按钮，生成项目并启动应用，并单击“确定”接受推送通知。
+1. 在支持 iOS 的设备中按“运行”  按钮，生成项目并启动应用，并单击“确定”  接受推送通知。
 
    > [!NOTE]
    > 必须显式接受来自应用程序的推送通知。 此请求只会在首次运行应用程序时出现。
 
-2. 在应用中，键入一项任务，并单击加号 (**+**) 图标。
-3. 检查是否已收到通知，并单击“确定”取消通知。
-4. 重复步骤 2 并立即关闭应用，然后验证是否显示通知。
+2. 在应用中，键入一项任务，然后单击加号 ( **+** ) 图标。
+3. 检查是否已收到通知，并单击“确定”  取消通知。
+4. 重复步骤 2 并立即关闭应用，并检查是否已显示通知。
 
 已成功完成本教程。

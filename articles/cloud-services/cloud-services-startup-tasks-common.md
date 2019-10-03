@@ -3,23 +3,17 @@ title: 云服务的常见启动任务 |Microsoft Docs
 description: 提供你可能想要以云服务 web 角色或辅助角色执行的一些常见启动任务的示例。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: a7095dad-1ee7-4141-bc6a-ef19a6e570f1
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: gwallace
+ms.openlocfilehash: 2eb299ad841444a3100eac207b225d5377959f85
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916645"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358954"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常见的云服务启动任务
 本文提供了一些可能需要在云服务中执行的常见启动任务示例。 在角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。 
@@ -73,7 +67,7 @@ ms.locfileid: "58916645"
 ### <a name="example-of-managing-the-error-level"></a>管理错误级别的示例
 此示例将 JSON 的压缩节和压缩条目添加到 Web.config 文件，其中包含错误处理和日志记录。
 
-此处显示了 [ServiceDefinition.csdef] 文件的相关节，其中包括将 [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#Task) 属性设为 `elevated` 以为 AppCmd.exe 提供足够的权限来更改 *Web.config* 文件中的设置：
+此处显示了 [ServiceDefinition.csdef] 文件的相关节，其中包括将 [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) 属性设为 `elevated` 以为 AppCmd.exe 提供足够的权限来更改 *Web.config* 文件中的设置：
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -306,7 +300,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 
 可以通过在 [ServiceDefinition.csdef] 文件中创建一个环境变量来实现在计算模拟器中和云中执行不同操作的能力。 然后，会在启动任务中测试该环境变量的值。
 
-若要创建环境变量，请添加 [变量]/[RoleInstanceValue] 元素并创建 `/RoleEnvironment/Deployment/@emulated` 的 XPath 值。 在计算模拟器中运行时，**%ComputeEmulatorRunning%** 环境变量的值为 `true`，而在云中运行时，该值为 `false`。
+若要创建环境变量，请添加 [变量]/[RoleInstanceValue] 元素并创建 `/RoleEnvironment/Deployment/@emulated` 的 XPath 值。 在计算模拟器中运行时， **%ComputeEmulatorRunning%** 环境变量的值为 `true`，而在云中运行时，该值为 `false`。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -391,7 +385,7 @@ Visual Studio 未提供用于单步调试批处理文件的调试器，因此最
 
 你可能会发现在每个启动任务的末尾都使用 `>> "%TEMP%\StartupLog.txt" 2>&1` 很是恼人。 可以通过创建一个包装器来处理日志记录以强制执行任务日志记录。 此包装器调用要运行的实际批处理文件。 来自目标批处理文件的任何输出都会重定向到 *Startuplog.txt* 文件。
 
-以下示例展示了如何重定向来自某个启动批处理文件的所有输出。 在此示例中，ServerDefinition.csdef 文件将创建调用 logwrap.cmd 的启动任务。 logwrap.cmd 调用 Startup2.cmd，并将所有输出都重定向到 %TEMP%**\\StartupLog.txt**。
+以下示例展示了如何重定向来自某个启动批处理文件的所有输出。 在此示例中，ServerDefinition.csdef 文件将创建调用 logwrap.cmd 的启动任务。 logwrap.cmd 调用 Startup2.cmd，并将所有输出都重定向到 %TEMP% **\\StartupLog.txt**。
 
 ServiceDefinition.cmd：
 

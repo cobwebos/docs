@@ -1,25 +1,18 @@
 ---
-title: Azure 容器映像产品/服务 | Microsoft Docs
+title: Azure 容器映像产品/服务 |Azure Marketplace
 description: 概述了在 Azure 市场中发布容器产品/服务的过程。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/02/2018
-ms.author: pbutlerm
-ms.openlocfilehash: e40e83e16ab2bfd43c3bb5fa38e52a778694e90e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 9617380822f5814d1cbd2bd2b69eac72722fe813
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980205"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942753"
 ---
 # <a name="containers"></a>容器
 
@@ -37,7 +30,7 @@ ms.locfileid: "50980205"
 
 ## <a name="container-publishing-process"></a>容器发布过程
 
-下图演示了发布 VM 产品/服务中的概要步骤。
+下图演示了发布 VM 套餐中的概要步骤。
 ![发布产品/服务的步骤](./media/containers-offer-process.png)
 
 概括而言，发布容器产品/服务的步骤如下：

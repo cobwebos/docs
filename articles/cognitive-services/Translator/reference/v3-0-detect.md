@@ -1,23 +1,23 @@
 ---
 title: 文本翻译 API 检测方法
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用文本翻译 API 检测方法。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: fa618c5c623a631e7a88f8235a0b7b16fcb2bc88
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.author: swmachan
+ms.openlocfilehash: ba73b75e30639dd3f5cf5523124c926ea3442fa1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578651"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932022"
 ---
-# <a name="translator-text-api-30-detect"></a>文本翻译 API 3.0：Detect
+# <a name="translator-text-api-30-detect"></a>文本翻译 API 3.0：检测
 
 标识一段文本的语言。
 
@@ -122,7 +122,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 ]
 ```
 
-## <a name="response-headers"></a>响应标头
+## <a name="response-headers"></a>响应头
 
 <table width="100%">
   <th width="20%">标头</th>
@@ -150,7 +150,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
   <tr>
     <td>401</td>
-    <td>无法对请求进行身份验证。 请确保凭据已指定且有效。</td>
+    <td>无法验证该请求。 请确保凭据已指定且有效。</td>
   </tr>
   <tr>
     <td>403</td>
@@ -158,11 +158,11 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>调用方发送的请求过多。</td>
+    <td>由于客户端已超出请求限制，服务器拒绝了请求。</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>发生意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
@@ -176,10 +176,6 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 以下示例演示如何检索文本翻译支持的语言。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"
 ```
-
----

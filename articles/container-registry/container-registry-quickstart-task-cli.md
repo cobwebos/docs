@@ -3,17 +3,18 @@ title: 快速入门 - 在 Azure 容器注册表中生成和运行容器映像
 description: 使用 Azure 容器注册表快速运行任务，以便在云中按需生成和运行容器映像。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 61a17842158326c927f049af893a00818f3acc55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e5e02d8194f9164a03bb27d932df45d91486c518
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793380"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310630"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入门：使用 Azure 容器注册表任务生成和运行容器映像
 
@@ -21,7 +22,7 @@ ms.locfileid: "59793380"
 
 完成本快速入门后，请探索 ACR 任务的更高级功能。 ACR 任务可以基于代码提交或基础映像更新自动生成映像，或者同时测试多个容器，此外还支持其他一些方案。 
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户][azure-account]。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][azure-account]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -29,9 +30,9 @@ ms.locfileid: "59793380"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-如果没有容器注册表，请先使用 [az group create][az-group-create] 命令创建一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+如果还没有容器注册表，请先使用 [az group create][az-group-create] 命令创建一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -45,14 +46,14 @@ az group create --name myResourceGroup --location eastus
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-此示例创建一个基本注册表，该注册表已针对成本进行优化，可让开发人员了解 Azure 容器注册表。 有关可用服务层的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
+此示例创建一个基本注册表，该注册表已针对成本进行优化，可让开发人员了解 Azure 容器注册表。  有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
 
 ## <a name="build-an-image-from-a-dockerfile"></a>基于 Dockerfile 生成映像
 
 现在，请使用 Azure 容器注册表来生成映像。 首先创建一个工作目录，然后创建包含以下内容的名为 *Dockerfile* 的 Dockerfile。 这是一个用于演示如何生成 Linux 容器映像的简单示例，你可以创建自己的标准 Dockerfile，并生成适用于其他平台的映像。
 
 ```bash
-echo "FROM hello-world" > Dockerfile
+echo FROM hello-world > Dockerfile
 ```
 
 运行 [az acr build][az-acr-build] 命令生成映像。 成功生成后，映像将推送到注册表。 以下示例推送 `sample/hello-world:v1` 映像。 命令末尾处的 `.` 设置 Dockerfile 的位置（在本例中为当前目录）。

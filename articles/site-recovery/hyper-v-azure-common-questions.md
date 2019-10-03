@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 04/08/2019
+ms.date: 08/07/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: ce4a6ab24aaa5ed693f8d64782fb025a2ca9ce30
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a6d38a9196d640ebc823b4f25e089cc04193212b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357991"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845754"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常见问题 - Hyper-V 到 Azure 的灾难恢复
 
@@ -26,6 +26,10 @@ ms.locfileid: "59357991"
 
 ### <a name="how-do-i-pay-for-azure-vms"></a>Azure VM 如何计费？
 在复制期间，数据将复制到 Azure 存储，因此，VM 不会产生任何费用。 故障转移到 Azure 时，Site Recovery 会自动创建 Azure IaaS 虚拟机。 然后，在 Azure 中使用的计算资源会产生费用。
+
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>复制到常规用途 v2 存储帐户时, 开销是否有任何变化？
+
+你通常会发现, GPv2 存储帐户产生的事务成本会增加, 因为 Azure Site Recovery 的事务量很高。 [阅读更多](../storage/common/storage-account-upgrade.md#pricing-and-billing)以估算更改。
 
 ## <a name="azure"></a>Azure
 
@@ -68,7 +72,7 @@ ms.locfileid: "59357991"
 
 站点恢复已通过 ISO 27001:2013、27018、HIPAA、DPA 认证，目前正在接受 SOC2 和 FedRAMP JAB 评估。
 
-### <a name="can-we-keep-on-premises-metadata-within-a-geographic-region"></a>我们可以在某个地理区域内保留在本地元数据？
+### <a name="can-we-keep-on-premises-metadata-within-a-geographic-region"></a>是否可将本地元数据保留在某个地理区域中？
 是的。 当你在某个区域中创建保管库时，我们会确保 Site Recovery 使用的所有元数据保留在该区域的地理边界内。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>站点恢复是否将复制数据加密？
@@ -100,7 +104,7 @@ ms.locfileid: "59357991"
 - 群集的所有节点应注册到同一保管库。
 - 如果不使用 VMM，则应将群集中的所有 Hyper-V 主机添加到同一 Hyper-V 站点。
 - 在群集中每个 Hyper-V 主机上安装 Azure Site Recovery 提供程序和恢复服务代理，并将每个主机添加到 Hyper-V 站点。
-- 不需要在群集上执行任何特定的步骤。
+- 无需在群集上执行任何特定步骤。
 - 如果对 Hyper-V 运行部署规划器工具，此工具会从正在运行且其中运行此 VM 的节点收集配置文件数据。 该工具不会从已关闭的节点中收集任何数据，但会跟踪该节点。 该节点启用和运行后，此工具开始从其中收集 VM 配置文件数据（如果此 VM 是配置文件 VM 列表的一部分且在该节点上运行）。
 - 如果 Site Recovery 保管库中的 Hyper-V 主机上的某个 VM 迁移到同一群集中的其他 Hyper-V 主机或迁移到独立主机，则该 VM 的复制不受影响。 Hyper-V 主机必须满足[先决条件](hyper-v-azure-support-matrix.md#on-premises-servers)，且必须在 Site Recovery 保管库中进行配置。 
 
@@ -152,7 +156,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
 
-当复制到 Azure 时，复制流量会进入 Azure 存储帐户的公共终结点。 因此您可以仅复制到通过公共 internet 与 ExpressRoute （公共对等互连），并且不能使用 VPN。 
+复制到 Azure 时，复制流量将到达 Azure 存储帐户的公共终结点。 因此，只能使用 ExpressRoute（公共对等互连）通过公共 Internet 进行复制，VPN 不起作用。 
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>复制的 VM 要满足哪些要求？
 
@@ -176,7 +180,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute 公共对等互连将�
 
 
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 ### <a name="what-access-does-site-recovery-need-to-hyper-v-hosts"></a>Site Recovery 需要对 Hyper-V 主机拥有哪些访问权限？
 
@@ -212,7 +216,7 @@ Site Recovery 不会在启用复制的 Hyper-V VM 上显式安装任何内容。
 Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到辅助 Azure 数据中心。 发生故障转移时，我们会确保元数据和保管库保留在为保管库选择的同一地理区域中。
 
 ### <a name="is-failover-automatic"></a>故障转移是自动发生的吗？
-[故障转移](site-recovery-failover.md)不是自动的。 启动在门户中，单击一下故障转移，也可以使用[PowerShell](/powershell/module/az.recoveryservices)触发故障转移。
+[故障转移](site-recovery-failover.md)不是自动的。 可以在门户中单击一下鼠标来启动故障转移，也可以使用 [PowerShell](/powershell/module/az.recoveryservices) 来触发故障转移。
 
 ### <a name="how-do-i-fail-back"></a>如何故障回复？
 
@@ -224,7 +228,7 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到
     - 完整下载：使用此选项可在故障转移期间同步数据。 此选项会下载整个磁盘。 该操作更快，因为不计算校验和，但停机时间会增加。 如果运行副本 Azure VM 已有一段时间，或者如果本地 VM 已删除，请使用此选项。
 
 2. 可选择故障回复到同一 VM 或备用 VM。 如果 VM 尚不存在，可指定 Site Recovery 应创建 VM。
-3. 初始数据同步完成后，选择完成故障转移。 完成后，你可以登录到本地 VM 以验证一切按预期方式。 在 Azure 门户中，可以看到 Azure VM 均已停止。
+3. 初始数据同步完成后，选择完成故障转移。 该操作完成后，可以登录到本地 VM 验证一切是否按预期运行。 在 Azure 门户中，可以看到 Azure VM 均已停止。
 4. 完成故障转移的提交，并重新开始从本地 VM 访问工作负载。
 5. 在工作负载进行故障回复后，启用反向复制，以便本地 VM 重新复制到 Azure。
 

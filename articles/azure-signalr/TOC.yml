@@ -9,12 +9,16 @@
   items:
     - name: 'ASP.NET Core - C#'
       href: signalr-quickstart-dotnet-core.md
+    - name: 'ASP.NET - C#'
+      href: signalr-quickstart-dotnet.md
     - name: Azure Functions - JavaScript
       href: signalr-quickstart-azure-functions-javascript.md
     - name: 'Azure Functions - C#'
       href: signalr-quickstart-azure-functions-csharp.md
     - name: Azure Functions - Java
       href: signalr-quickstart-azure-functions-java.md
+    - name: Azure Functions - Python
+      href: signalr-quickstart-azure-functions-python.md
     - name: REST API
       href: signalr-quickstart-rest-api.md
 - name: 教程
@@ -51,6 +55,8 @@
       href: signalr-concept-performance.md
     - name: Authentication
       href: signalr-concept-authenticate-oauth.md
+    - name: 事件处理
+      href: signalr-concept-event-grid-integration.md
 - name: 操作指南
   items:
     - name: 缩放
@@ -65,6 +71,8 @@
       items:
         - name: Azure Functions 绑定
           href: signalr-concept-azure-functions.md
+        - name: 事件网格集成
+          href: signalr-howto-event-grid-integration.md
 - name: 参考
   items:
     - name: Azure CLI

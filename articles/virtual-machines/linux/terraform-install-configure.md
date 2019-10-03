@@ -1,28 +1,27 @@
 ---
-title: 安装并配置 Terraform 以与 Azure 配合使用 | Microsoft Docs
+title: 安装和配置 Terraform 以预配 Azure 资源 |Microsoft Docs
 description: 了解如何安装和配置用于创建 Azure 资源的 Terraform
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: echuvyrov
-manager: jeconnoc
+author: tomarchermsft
+manager: gwallace
 editor: na
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/19/2018
-ms.author: echuvyrov
-ms.openlocfilehash: 71cf07b227a75e53119f2f35e79ccd7926b551e7
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.date: 09/20/2019
+ms.author: tarcher
+ms.openlocfilehash: cd3c8d7d862788f626356b4cfcdccccca36227b3
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200694"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168732"
 ---
-# <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>安装和配置 Terraform 以在 Azure 中预配 VM 和其他基础结构
+# <a name="install-and-configure-terraform-to-provision-azure-resources"></a>安装和配置 Terraform 以预配 Azure 资源
  
 借助 Terraform，可以轻松使用[简单模板语言](https://www.terraform.io/docs/configuration/syntax.html)来定义、预览和部署云基础结构。 本文介绍使用 Terraform 在 Azure 中预配资源的必要步骤。
 
@@ -38,7 +37,7 @@ ms.locfileid: "54200694"
 
 使用 `terraform` 目录验证路径配置。 将显示可用 Terraform 选项的列表，如以下示例输出所示：
 
-```bash
+```console
 azureuser@Azure:~$ terraform
 Usage: terraform [--version] [--help] <command> [args]
 ```
@@ -47,10 +46,10 @@ Usage: terraform [--version] [--help] <command> [args]
 
 要使 Terraform 能够将资源预配到 Azure，请创建 [Azure AD 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。 服务主体允许你的 Terraform 脚本在 Azure 订阅中预配资源。
 
-如果有多个 Azure 订阅，请先使用 [az account show](/cli/azure/account#az-account-show) 查询帐户，以获取订阅 ID 和租户 ID 值列表：
+如果有多个 Azure 订阅，请首先使用[az account list](/cli/azure/account#az-account-list)查询帐户，以获取订阅 id 和租户 id 值的列表：
 
 ```azurecli-interactive
-az account show --query "{subscriptionId:id, tenantId:tenantId}"
+az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
 若要使用所选订阅，请使用 [az account set](/cli/azure/account#az-account-set) 为此会话设置订阅。 设置 `SUBSCRIPTION_ID` 环境变量，用于保存从要使用的订阅返回的 `id` 字段值：
@@ -95,7 +94,7 @@ export ARM_ENVIRONMENT=public
 
 在空白目录下创建文件 `test.tf`，并粘贴到以下脚本中。
 
-```tf
+```hcl
 provider "azurerm" {
 }
 resource "azurerm_resource_group" "rg" {
@@ -112,7 +111,7 @@ terraform init
 
 输出类似于以下示例：
 
-```bash
+```console
 * provider.azurerm: version = "~> 0.3"
 
 Terraform has been successfully initialized!
@@ -126,7 +125,7 @@ terraform apply
 
 输出类似于以下示例：
 
-```bash
+```console
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
   + create

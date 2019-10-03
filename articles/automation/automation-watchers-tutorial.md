@@ -8,12 +8,12 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: bee414ada61e2cfcf7609b02ef1da7323a0fe0e3
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 75341fa2df6972dbf05542577d56ab35315919e6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59606916"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989236"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>创建 Azure 自动化观察程序任务来跟踪本地计算机上的文件更改
 
@@ -29,7 +29,7 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务来监视事件
 > * 触发观察程序
 > * 检查输出
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成本教程需要以下各项：
 
@@ -38,11 +38,18 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务来监视事件
 * 一个[混合 runbook 辅助角色](automation-hybrid-runbook-worker.md)，观察程序任务在其中运行。
 
 > [!NOTE]
-> 在 Azure 中国区不支持观察程序任务。
+> Azure 中国区不支持观察程序任务。
 
 ## <a name="import-a-watcher-runbook"></a>导入观察程序 runbook
 
-本教程使用名为 **Watch-NewFile** 的观察程序 runbook 查找某个目录中的新文件。 该观察程序 runbook 检索文件夹中的文件的最后已知写入时间，并查找比该水印更新的任何文件。 在此步骤中，你将此 runbook 导入到你的自动化帐户中。
+本教程使用名为 **Watch-NewFile** 的观察程序 runbook 查找某个目录中的新文件。 该观察程序 runbook 检索文件夹中的文件的最后已知写入时间，并查找比该水印更新的任何文件。
+
+可以通过[PowerShell 库](https://www.powershellgallery.com)完成此导入过程。
+
+1. 导航到[Watch-NewFile](https://gallery.technet.microsoft.com/scriptcenter/Watcher-runbook-that-looks-36fc82cd)的库页面。
+2. 在 " **Azure 自动化**" 选项卡下, 单击 "**部署到 Azure 自动化**"。
+
+还可以使用以下步骤将此 runbook 从门户导入到自动化帐户中。
 
 1. 打开你的自动化帐户，然后单击“Runbook”页。
 2. 单击“浏览库”按钮。
@@ -62,7 +69,14 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务来监视事件
 
 ## <a name="create-an-action-runbook"></a>创建操作 runbook
 
-在观察程序任务中，操作 runbook 用来对从观察程序 runbook 传递给它的数据执行操作。 观察程序任务不支持 PowerShell 工作流 Runbook，必须使用 PowerShell Runbook。 在此步骤中，你将更新一个名为“Process-NewFile”的预定义的操作 runbook。
+在观察程序任务中，操作 runbook 用来对从观察程序 runbook 传递给它的数据执行操作。 观察程序任务不支持 PowerShell 工作流 Runbook，必须使用 PowerShell Runbook。 必须导入名为**Process-NewFile**的预定义操作 runbook。
+
+可以通过[PowerShell 库](https://www.powershellgallery.com)完成此导入过程。
+
+1. 导航到[Process-NewFile](https://gallery.technet.microsoft.com/scriptcenter/Watcher-action-that-b4ff7cdf)的库页面。
+2. 在 " **Azure 自动化**" 选项卡下, 单击 "**部署到 Azure 自动化**"。
+
+还可以使用以下步骤将此 runbook 从门户导入到自动化帐户中。
 
 1. 导航到你的自动化帐户，从“流程自动化”类别下选择“Runbook”。
 1. 单击“浏览库”按钮。
@@ -92,7 +106,7 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务来监视事件
 1. 选择“配置操作”，然后选择“Process-NewFile”runbook。
 1. 输入以下参数值：
 
-   * **事件数据** - 保留为空。 从观察程序 runbook 传入数据。  
+   * **事件数据** - 保留为空。 从观察程序 runbook 传入数据。
    * **运行设置** - 当此 runbook 在自动化服务中运行时保留为 Azure。
 
 1. 单击“确定”，然后选择返回到观察程序页。
@@ -105,7 +119,7 @@ Azure 自动化通过 PowerShell Runbook 使用观察程序任务来监视事件
 若要测试观察程序是否按预期工作，需要创建一个测试文件。
 
 远程登录到混合辅助角色。 打开 **PowerShell** 并在文件夹中创建一个测试文件。
-  
+
 ```azurepowerShell-interactive
 New-Item -Name ExampleFile1.txt
 ```
@@ -142,7 +156,7 @@ Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 导入观察程序 runbook

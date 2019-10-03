@@ -3,20 +3,20 @@ title: 如何分块传输音频流 | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: 如何利用分块传输向必应语音服务发送音频流
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d9796cf60e2695c21d781131c935d24891401efa
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 60428a7a5e28b7c9d6cd76f31374f24df48423a6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671891"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966485"
 ---
 # <a name="chunked-transfer-encoding"></a>分块传输编码
 

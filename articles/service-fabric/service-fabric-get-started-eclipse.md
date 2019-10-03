@@ -14,18 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: c33ecce5610dbef0dce13aa95f04ae4f0620603b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: c15ca6d68512bc79ce4e5a27f5ce4f7ea6bc3080
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666930"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035439"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序
 Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一。 本文介绍如何设置适用于 Azure Service Fabric 的 Eclipse 开发环境。 了解如何安装 Service Fabric 插件、创建 Service Fabric 应用程序，以及将 Service Fabric 应用程序部署到 Eclipse 中的本地或远程 Service Fabric 群集。 
 
 > [!NOTE]
 > Windows 当前不支持 Eclipse 插件。 
+
+> [!IMPORTANT]
+> 请确保系统上安装了 JDK 8 并在 Eclipse 中选择了。
 
 ## <a name="install-or-update-the-service-fabric-plug-in-in-eclipse"></a>在 Eclipse 中安装或更新 Service Fabric 插件
 可在 Eclipse 中安装 Service Fabric 插件。 该插件可帮助简化生成和部署 Java 服务的过程。
@@ -41,7 +44,7 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 -   若要检查并安装 Eclipse 的更新，请转到“帮助” > “检查更新”。
 
 若要安装 Service Fabric 插件，请在 Eclipse 中转到“帮助” > “安装新软件”。
-1. 在中**处理**框中，输入 https:\//dl.microsoft.com/eclipse。
+1. 在 "**使用**" 框中, 输入 https\/:/dl.microsoft.com/eclipse。
 2. 单击“添加”。
 
    ![适用于 Eclipse 的 Service Fabric 插件][sf-eclipse-plugin-install]
@@ -54,7 +57,7 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 3. 更新 Service Fabric 插件后，还需刷新 Gradle 项目。  右键单击 **build.gradle**，然后选择“刷新”。
 
 > [!NOTE]
-> 如果安装或更新 Service Fabric 插件时运行缓慢，原因可能是 Eclipse 设置有问题。 Eclipse 将收集有关所有更改的元数据，以更新已注册到 Eclipse 实例的站点。 若要加速 Service Fabric 插件更新的检查和安装过程，请转到“可用软件站点”。 清除除指向 Service Fabric 插件位置的所有站点对应的复选框 (https:\//dl.microsoft.com/eclipse/azure/servicefabric)。
+> 如果安装或更新 Service Fabric 插件时运行缓慢，原因可能是 Eclipse 设置有问题。 Eclipse 将收集有关所有更改的元数据，以更新已注册到 Eclipse 实例的站点。 若要加速 Service Fabric 插件更新的检查和安装过程，请转到“可用软件站点”。 清除除指向 Service Fabric 插件位置 (https:\//dl.microsoft.com/eclipse/azure/servicefabric) 之外的所有站点的复选框。
 
 > [!NOTE]
 >如果 Eclipse 在 Mac 上未按预期方式工作，或者需要你以超级用户身份运行，请转到 ECLIPSE_INSTALLATION_PATH 文件夹，然后导航到子文件夹 Eclipse.app/Contents/MacOS。 运行 `./eclipse` 启动 Eclipse。
@@ -219,7 +222,7 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 
 1.  转到“运行” > “运行配置”。 在左窗格中，单击“Gradle 项目”左侧的小箭头。
 2.  右键单击“ServiceFabricDeployer”，然后选择“复制”。 输入此配置的新名称，例如 **ServiceFabricUpgrader**。
-3.  在右侧面板中的“参数”选项卡上，将 **-Pconfig='deploy'** 更改为 **-Pconfig='upgrade'**，然后单击“应用”。
+3.  在右侧面板中的“参数”选项卡上，将 **-Pconfig='deploy'** 更改为 **-Pconfig='upgrade'** ，然后单击“应用”。
 
 此过程会创建并保存随时可用于升级应用程序的运行配置配置文件。 此过程还会从应用程序清单文件中获取最近更新的应用程序类型版本。
 

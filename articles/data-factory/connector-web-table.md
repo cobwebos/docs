@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: e578b3a6b3905569567b568b0130c1ed1b90d915
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 164b61d624efbe1ed6127f1ed974b221f4e4d304
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019379"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089173"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-web-table-connector.md)
 > * [当前版本](connector-web-table.md)
 
@@ -33,6 +33,11 @@ ms.locfileid: "54019379"
 - **HTTP 连接器**是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 Web 表连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 Web 表数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -56,7 +61,7 @@ Web 表链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Web** |是 |
 | url | Web 源的 URL |是 |
-| authenticationType | 允许的值为：**匿名**。 |是 |
+| authenticationType | 允许的值为：**Anonymous**。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
 **示例：**
@@ -80,14 +85,14 @@ Web 表链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅数据集一文。 本部分提供 Web 表数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Web 表数据集支持的属性列表。
 
 要从 Web 表复制数据，请将数据集的 type 属性设置为“WebTable”。 支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**WebTable** | 是 |
-| 路径 |包含表的资源的相对 URL。 |不是。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
+| path |包含表的资源的相对 URL。 |否。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
 | index |资源中表的索引。 请参阅[获取 HTML 页中表的索引](#get-index-of-a-table-in-an-html-page)，了解获取 HTML 页中表的索引的步骤。 |是 |
 
 **示例：**
@@ -97,13 +102,14 @@ Web 表链接的服务支持以下属性：
     "name": "WebTableInput",
     "properties": {
         "type": "WebTable",
-        "linkedServiceName": {
-            "referenceName": "<Web linked service name>",
-            "type": "LinkedServiceReference"
-        },
         "typeProperties": {
             "index": 1,
             "path": "AFI's_100_Years...100_Movies"
+        },
+        "schema": [],
+        "linkedServiceName": {
+            "referenceName": "<Web linked service name>",
+            "type": "LinkedServiceReference"
         }
     }
 }
@@ -156,7 +162,7 @@ Web 表链接的服务支持以下属性：
 2. 单击工具栏中的“新建查询”，指向“从其他源”，并单击“从 Web”。
 
     ![Power Query 菜单](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 **URL**（例如： https://en.wikipedia.org/wiki/)）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”。
+3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 **URL**（例如： https://en.wikipedia.org/wiki/) ）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”。
 
     ![“从 Web”对话框](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
@@ -176,6 +182,10 @@ Web 表链接的服务支持以下属性：
 
 如果使用的是 Excel 2013，请使用 [Microsoft Power Query for Excel](https://www.microsoft.com/download/details.aspx?id=39379) 获取索引。 有关详细信息，请参阅[连接到网页](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8)一文。 如果使用的是 [Microsoft Power BI for Desktop](https://powerbi.microsoft.com/desktop/)，步骤与之类似。
 
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883541"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60877458"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>使用 Java SDK 对 Azure Data Lake Storage Gen1 执行的文件系统操作
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ ms.locfileid: "58883541"
 
 1. 在命令行使用 [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) 或通过 IDE 创建一个 Maven 项目。 有关如何使用 IntelliJ 创建 Java 项目的说明，请参阅[此文](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html)。 有关如何使用 Eclipse 创建项目的说明，请参阅[此文](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm)。 
 
-2. 将以下依赖项添加到 Maven pom.xml 文件。 在 \</project> 标记前添加以下代码片段：
+2. 将以下依赖项添加到 Maven pom.xml  文件。 在 \</project> 标记前添加以下代码片段  ：
    
         <dependencies>
           <dependency>
@@ -58,7 +58,7 @@ ms.locfileid: "58883541"
           </dependency>
         </dependencies>
    
-    第一个依赖项从 maven 存储库使用 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 使用 [slf4j](https://www.slf4j.org/) 日志记录体系，允许用户从多种流行的记录框架（如 log4j、Java 日志记录、logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定。 若要在应用中使用其他日志记录选项，请参阅[此文](https://www.slf4j.org/manual.html#projectDep)。
+    第一个依赖项从 maven 存储库使用 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 使用 [slf4j](https://www.slf4j.org/) 日志记录体系，允许用户从多种流行的记录框架（如 log4j、Java 日志记录、logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定  。 若要在应用中使用其他日志记录选项，请参阅[此文](https://www.slf4j.org/manual.html#projectDep)。
 
 3. 将以下导入语句添加到应用程序。
 
@@ -79,12 +79,12 @@ ms.locfileid: "58883541"
 * 若要了解应用程序的服务到服务身份验证，请参阅[使用 Java 通过 Data Lake Storage Gen1 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-java.md)。
 
 ## <a name="create-a-data-lake-storage-gen1-client"></a>创建 Data Lake Storage Gen1 客户端
-创建 [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) 对象需要指定 Data Lake Storage Gen1 帐户名和令牌提供程序，这是在通过 Data Lake Storage Gen1 进行身份验证（参见[身份验证](#authentication)部分）时生成的。 Data Lake Storage Gen1 帐户名需是完全限定的域名。 例如，可将“FILL-IN-HERE”替换为类似于“mydatalakestoragegen1.azuredatalakestore.net”的内容。
+创建 [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) 对象需要指定 Data Lake Storage Gen1 帐户名和令牌提供程序，这是在通过 Data Lake Storage Gen1 进行身份验证（参见[身份验证](#authentication)部分）时生成的。 Data Lake Storage Gen1 帐户名需是完全限定的域名。 例如，可将“FILL-IN-HERE”替换为类似于“mydatalakestoragegen1.azuredatalakestore.net”的内容   。
 
     private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
     ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 
-以下部分的代码片段包含某些常用文件系统操作的示例。 可以参阅 ADLStoreClient 对象的完整 [Data Lake Storage Gen1 Java SDK API 文档](https://azure.github.io/azure-data-lake-store-java/javadoc/)来查看其他操作的示例代码。
+以下部分的代码片段包含某些常用文件系统操作的示例。 可以参阅 ADLStoreClient 对象的完整 [Data Lake Storage Gen1 Java SDK API 文档](https://azure.github.io/azure-data-lake-store-java/javadoc/)来查看其他操作的示例代码  。
 
 ## <a name="create-a-directory"></a>创建目录
 
@@ -205,7 +205,7 @@ ms.locfileid: "58883541"
     promptEnterKey();
 
 ## <a name="build-and-run-the-application"></a>构建并运行应用程序
-1. 若要从 IDE 内部运行，请找到并按下“运行”按钮。 若要从 Maven 运行，请使用 [exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html)。
+1. 若要从 IDE 内部运行，请找到并按下“运行”按钮。  若要从 Maven 运行，请使用 [exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html)。
 2. 若要生成一个可从命令行运行的独立 jar，请使用 [Maven 程序集插件](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html)生成包含所有依赖项的 jar。 [GitHub 上的示例源代码](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)中的 pom.xml 列举了相关示例。
 
 ## <a name="next-steps"></a>后续步骤

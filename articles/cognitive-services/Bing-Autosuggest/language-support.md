@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011001"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60547330"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>必应自动推荐 API 的语言和区域支持
 

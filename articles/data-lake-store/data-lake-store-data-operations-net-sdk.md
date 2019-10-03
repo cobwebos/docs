@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 02091f1b650e3e9932f9924bf36a5841861d3b1e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0771c9c5311e264fb996bbac1c540f9ed11873cb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876949"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65908069"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 对 Azure Data Lake Storage Gen1 进行的文件系统操作
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "58876949"
 若要了解如何使用 .NET SDK 对 Data Lake Storage Gen1 执行帐户管理操作，请参阅[使用 .NET SDK 对 Data Lake Storage Gen1 进行的帐户管理操作](data-lake-store-get-started-net-sdk.md)。
 
 ## <a name="prerequisites"></a>必备组件
-* **Visual Studio 2013、2015 或 2017**。 以下说明使用的是 Visual Studio 2017。
+* **Visual Studio 2013 或更高版本**。 以下说明使用 Visual Studio 2019。
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -41,30 +41,22 @@ ms.locfileid: "58876949"
 ## <a name="create-a-net-application"></a>创建 .NET 应用程序
 [GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) 上的代码示例逐步讲解了在存储中创建文件、连接文件、下载文件以及在存储中删除某些文件的过程。 本文的此部分演练代码的主要组成部分。
 
-1. 打开 Visual Studio，创建一个控制台应用程序。
-2. 在“文件”菜单中，单击“新建”，并单击“项目”。
-3. 在“新建项目”中，键入或选择以下值 ：
+1. 在 Visual Studio 中，选择**文件**菜单中，**新建**，然后**项目**。
+2. 选择**控制台应用 (.NET Framework)** ，然后选择**下一步**。
+3. 在中**项目名称**，输入`CreateADLApplication`，然后选择**创建**。
 
-   | 属性 | 值 |
-   | --- | --- |
-   | 类别 |模板/Visual C#/Windows |
-   | 模板 |控制台应用程序 |
-   | 名称 |CreateADLApplication |
+4. 将 NuGet 包添加到项目。
 
-4. 单击“确定”以创建该项目  。
-
-5. 将 NuGet 包添加到项目。
-
-   1. 在解决方案资源管理器中右键单击项目名称，单击“管理 NuGet 包” 。
-   2. 在“NuGet 包管理器”选项卡上，确保“包源”设置为“nuget.org”，“包含预发行版”复选框处于选中状态。
+   1. 在解决方案资源管理器中右键单击项目名称，单击“管理 NuGet 包”  。
+   2. 在“NuGet 包管理器”选项卡上，确保“包源”设置为“nuget.org”，“包含预发行版”复选框处于选中状态。    
    3. 搜索并安装以下 NuGet 包：
 
       * `Microsoft.Azure.DataLake.Store` - 本教程使用 v1.0.0。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.3.1。
     
-      关闭“NuGet 包管理器”。
+      关闭“NuGet 包管理器”  。
 
-6. 打开“Program.cs” ，删除现有代码，并包含以下语句，添加对命名空间的引用。
+5. 打开“Program.cs”  ，删除现有代码，并包含以下语句，添加对命名空间的引用。
 
         using System;
         using System.IO;using System.Threading;
@@ -78,7 +70,7 @@ ms.locfileid: "58876949"
         using Microsoft.Azure.DataLake.Store;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-7. 声明变量（如下所示），并提供占位符的值。 此外，确保计算机中存在此处提供的本地路径和文件名。
+6. 声明变量（如下所示），并提供占位符的值。 此外，确保计算机中存在此处提供的本地路径和文件名。
 
         namespace SdkSample
         {

@@ -1,22 +1,21 @@
 ---
 title: 监视群集性能 - Azure HDInsight
-description: 如何监视 HDInsight 群集的容量和性能。
-services: hdinsight
-author: maxluk
+description: 如何监视 Azure HDInsight 中 Apache Hadoop 群集的运行状况和性能。
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: arindamc
-ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 05/29/2019
+ms.openlocfilehash: 7a7544ef9fe5724d1f6c11918411a76461d908e5
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742467"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104396"
 ---
-# <a name="monitor-cluster-performance"></a>监视群集性能
+# <a name="monitor-cluster-performance-in-azure-hdinsight"></a>监视 Azure HDInsight 中的群集性能
 
 监视 HDInsight 群集的运行状况和性能对于维持最佳性能和资源利用率来说至关重要。 监视还可以帮助你检测并解决群集配置错误和用户代码问题。
 
@@ -28,20 +27,20 @@ ms.locfileid: "53742467"
 
 若要概括地查看群集的节点及其负载，请登录到 [Ambari Web UI](hdinsight-hadoop-manage-ambari.md)，然后选择“主机”选项卡。将按主机完全限定域名列出主机。 每个主机的运行状态由一个彩色运行状况指示器进行显示：
 
-| 颜色 | Description |
+| 颜色 | 描述 |
 | --- | --- |
 | 红色 | 主机上至少有一个主组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
-| 橙色 | 主机上至少有一个从属组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
+| 橙色 | 主机上至少有一个辅助组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
 | 黄色 | Ambari 服务器已超过 3 分钟没有接收到来自主机的检测信号。 |
 | 绿色 | 正常运行状态。 |
 
 此外还将看到列，显示每个主机的内核数及 RAM 量、磁盘使用情况和平均负载。
 
-![“主机选”项卡](./media/hdinsight-key-scenarios-to-monitor/hosts-tab.png)
+![Apache Ambari 主机选项卡概述](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
 
 选择任意主机名，详细了解在该主机上运行的组件及其指标。 查看 CPU 使用情况、负载、磁盘使用情况、内存使用情况、网络使用情况和进程数的可选时间线，了解这些指标。
 
-![主机详细信息](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
+![Apache Ambari 主机详细信息概述](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
 
 有关设置警报和查看指标的详细信息，请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
 
@@ -57,7 +56,7 @@ YARN 将 JobTracker、资源管理和作业计划/监视的两种责任划分为
 
 YARN 允许我们将资源分配给这些队列，并显示是否已分配所有可用资源。 若要查看有关队列的信息，请登录到 Ambari Web UI，然后从顶部菜单选择“YARN 队列管理器”。
 
-![YARN 队列管理器](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
+![Apache Ambari YARN 队列管理器](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
 
 YARN 队列管理器页的左侧显示队列的列表，以及分配给每个队列的容量百分比。
 
@@ -65,11 +64,11 @@ YARN 队列管理器页的左侧显示队列的列表，以及分配给每个队
 
 若要更加详细地查看队列，在 Ambari 仪表板中，从左侧列表选择“YARN”服务。 然后，在“快速链接”下拉菜单下，选择活动节点下的“资源管理器 UI”。
 
-![“资源管理器 UI”菜单链接](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![资源管理器 UI 菜单链接](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
 在资源管理器 UI 中，从左侧菜单中选择“计划程序”。 “应用程序队列”下将显示队列的列表。 此处可看到用于每个队列的容量、作业在队列之间的分布情况，以及作业是否受资源约束。
 
-![“资源管理器 UI”菜单链接](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Apache HAdoop 资源管理器 UI 菜单](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
 ## <a name="storage-throttling"></a>存储限制
 

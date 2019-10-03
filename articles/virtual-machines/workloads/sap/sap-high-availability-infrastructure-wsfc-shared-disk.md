@@ -4,25 +4,24 @@ description: 了解如何针对 SAP ASCS/SCS 实例使用 Windows 故障转移�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: ec976257-396b-42a0-8ea1-01c97f820fa6
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b729327187a52f36d50f8a754f5521527bb07ac6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 63a2a3a68adaa2e389cc2af173c8f75a18fbc36d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848291"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078695"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>针对 SAP ASCS/SCS 使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构
 
@@ -33,7 +32,7 @@ ms.locfileid: "58848291"
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 [sap-installation-guides]:http://service.sap.com/instguides
-[tuning-failover-cluster-network-thresholds]:https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/
+[tuning-failover-cluster-network-thresholds]:https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834
 
 [azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
 [azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
@@ -165,11 +164,11 @@ ms.locfileid: "58848291"
 
 本文介绍使用群集共享磁盘作为群集化 SAP ASCS 实例的选项，在 Windows 故障转移群集上安装和配置高可用性 SAP 系统之前准备 Azure 基础结构所要执行的步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在开始安装之前，请查看以下文章：
 
-* [体系结构指南：使用群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例的群集][sap-high-availability-guide-wsfc-shared-disk]
+* [体系结构指南：使用群集共享磁盘在 Windows 故障转移群集上群集 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-shared-disk]
 
 ## <a name="prepare-the-infrastructure-for-architectural-template-1"></a>准备体系结构模板 1 的基础结构
 适用于 SAP 的 Azure 资源管理器模板有助于简化所需资源的部署。
@@ -204,7 +203,7 @@ _**图 1：** 设置 SAP 高可用性 Azure 资源管理器参数_
     * \<SAPSystemSID\>-nic-ascs-\<Number\>
     * \<SAPSystemSID\>-nic-db-\<Number\>
 
-  * **Azure 存储帐户（仅限非托管磁盘）**：
+  * **Azure 存储帐户（仅限非托管磁盘）** ：
 
   * 以下组件的**可用性组**：
     * SAP Application Server 虚拟机：\<SAPSystemSID\>-avset-di
@@ -224,7 +223,7 @@ _**图 1：** 设置 SAP 高可用性 Azure 资源管理器参数_
 >
 
 ## <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>部署带有公司网络连接的虚拟机（跨界）以在生产中使用
-对于生产 SAP 系统，使用 Azure VPN 网关或 Azure ExpressRoute 部署具有[企业网络连接（跨界）][planning-guide-2.2]的 Azure 虚拟机。
+对于生产 SAP 系统, 使用 Azure VPN 网关或 Azure ExpressRoute 部署具有[企业网络连接 (跨界)][planning-guide-2.2]的 Azure 虚拟机。
 
 > [!NOTE]
 > 可使用 Azure 虚拟网络实例。 已创建并准备好虚拟网络与子网。
@@ -279,7 +278,7 @@ _**图 1：** 设置 SAP 高可用性 Azure 资源管理器参数_
 
 ## <a name="prepare-the-infrastructure-for-architectural-template-3"></a>准备体系结构模板 3 的基础结构
 
-可以准备基础结构并在 SAP 中配置多 SID。 例如，将附加的 SAP ASCS/SCS 实例添加到*现有*群集配置。 有关详细信息，请参阅[为现有的群集配置配置附加的 SAP ASCS/SCS 实例以便在 Azure 资源管理器中创建 SAP 多 SID 配置][sap-ha-multi-sid-guide]。
+可以准备基础结构并在 SAP 中配置多 SID。 例如，将附加的 SAP ASCS/SCS 实例添加到*现有*群集配置。 有关详细信息, 请参阅为[现有群集配置配置附加的 SAP ASCS/SCS 实例, 以在 Azure 中创建 SAP 多 SID 配置资源管理器][sap-ha-multi-sid-guide]。
 
 若要新建多 SID 群集，可以使用 [GitHub 上的多 SID 快速入门模板](https://github.com/Azure/azure-quickstart-templates)。
 
@@ -295,7 +294,7 @@ _**图 1：** 设置 SAP 高可用性 Azure 资源管理器参数_
 
 ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于托管多个 ASCS/SCS 实例的 Windows Server 故障转移群集。
 
-若要设置 ASCS/SCS 多 SID 模板，请在 [ASCS/SCS 多 SID 模板][sap-templates-3-tier-multisid-xscs-marketplace-image]或[使用托管磁盘的 ASCS/SCS 多 SID 模板][sap-templates-3-tier-multisid-xscs-marketplace-image-md]中，输入以下参数的值：
+若要设置 ASCS/SCS 多 SID 模板, 请在[ASCS/scs 多][sap-templates-3-tier-multisid-xscs-marketplace-image]sid 模板或[使用托管磁盘的 ASCS/scs 多 sid 模板][sap-templates-3-tier-multisid-xscs-marketplace-image-md]中, 输入以下参数的值:
 
 - **资源前缀**：设置资源前缀，用于给部署期间创建的所有资源添加前缀。 由于资源不只属于一个 SAP 系统，因此资源的前缀并不是某个 SAP 系统的 SID。  前缀的长度必须为 3 到 6 个字符。
 - **堆栈类型**：选择 SAP 系统的堆栈类型。 根据堆栈类型，Azure 负载均衡器将为每个 SAP 系统提供一个（ABAP 或仅限 Java）或两个 (ABAP + Java) 专用 IP 地址。
@@ -333,7 +332,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 数据库模板部署一个或两个虚拟机，可以使用这些虚拟机来为一个 SAP 系统安装关系数据库管理系统 (RDBMS)。 例如，如果为 5 个 SAP 系统部署 ASCS/SCS 模板，则需要部署此模板 5 次。
 
-若要设置数据库多 SID 模板，请在[数据库多 SID 模板][sap-templates-3-tier-multisid-db-marketplace-image]或[使用托管磁盘的数据库多 SID 模板][sap-templates-3-tier-multisid-db-marketplace-image-md]中，输入以下参数的值：
+若要设置数据库多 SID 模板, 请在[数据库多][sap-templates-3-tier-multisid-db-marketplace-image]sid 模板或[使用托管磁盘的数据库多 sid 模板][sap-templates-3-tier-multisid-db-marketplace-image-md]中, 输入以下参数的值:
 
 - **SAP 系统 ID**：输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
 - **OS 类型**：选择虚拟机的操作系统。
@@ -350,7 +349,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 应用程序服务器模板部署两个或更多个虚拟机，可将这些虚拟机用作一个 SAP 系统的 SAP 应用程序服务器实例。 例如，如果为 5 个 SAP 系统部署 ASCS/SCS 模板，则需要部署此模板 5 次。
 
-若要设置应用程序服务器多 SID 模板，请在[应用程序服务器多 SID 模板][sap-templates-3-tier-multisid-apps-marketplace-image]或[使用托管磁盘的应用程序服务器多 SID 模板][sap-templates-3-tier-multisid-apps-marketplace-image-md]中，输入以下参数的值：
+若要设置应用程序服务器多 SID 模板, 请在[应用程序服务器多][sap-templates-3-tier-multisid-apps-marketplace-image]sid 模板或[使用托管磁盘的应用程序服务器多 sid 模板][sap-templates-3-tier-multisid-apps-marketplace-image-md]中, 输入以下参数的值:
 
   -  **SAP 系统 ID**：输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
   -  **OS 类型**：选择虚拟机的操作系统。
@@ -374,7 +373,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 1. 在 Azure 门户上的“DNS 服务器”窗格中，确保虚拟网络的“DNS 服务器”选项设置为“自定义 DNS”。
 2. 根据使用的网络类型选择设置。 有关详细信息，请参阅以下资源：
-   * [企业网络连接（跨界）][planning-guide-2.2]：添加本地 DNS 服务器的 IP 地址。  
+   * [企业网络连接 (跨界)][planning-guide-2.2]:添加本地 DNS 服务器的 IP 地址。  
    可将本地 DNS 服务器扩展到正在 Azure 中运行的虚拟机。 在该情况下，可添加运行 DNS 服务器的 Azure 虚拟机的 IP 地址。
    * 对于在 Azure 中隔离的 VM 部署：在充当 DNS 服务器的同一虚拟网络实例中部署其他虚拟机。 添加已设置为运行 DNS 服务的 Azure 虚拟机的 IP 地址。
 
@@ -404,11 +403,11 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 | SAP ASCS/SCS 实例虚拟主机名 |pr1-ascs-sap |10.0.0.43 |
 | SAP DBMS 第二个群集虚拟主机名（群集管理） |pr1-dbms-vir |10.0.0.32 |
 
-创建群集时，请创建虚拟主机名 pr1-ascs-vir 和 pr1-dbms-vir 以及管理群集本身的关联 IP 地址。 有关如何执行此操作的信息，请参阅[收集群集配置中的群集节点][sap-high-availability-infrastructure-wsfc-shared-disk-collect-cluster-config]。
+创建群集时，请创建虚拟主机名 pr1-ascs-vir 和 pr1-dbms-vir 以及管理群集本身的关联 IP 地址。 有关如何执行此操作的信息, 请参阅[在群集配置中收集群集节点][sap-high-availability-infrastructure-wsfc-shared-disk-collect-cluster-config]。
 
-可以在 DNS 服务器上手动创建另外两个虚拟主机 pr1-ascs-sap 和 pr1-dbms-sap 以及关联的 IP 地址。 群集 SAP ASCS/SCS 实例和群集 DBMS 实例使用以下资源。 有关如何执行此操作的信息，请参阅[为 SAP ASCS/SCS 群集实例创建虚拟主机名][sap-ha-guide-9.1.1]。
+可以在 DNS 服务器上手动创建另外两个虚拟主机 pr1-ascs-sap 和 pr1-dbms-sap 以及关联的 IP 地址。 群集 SAP ASCS/SCS 实例和群集 DBMS 实例使用以下资源。 有关如何执行此操作的信息, 请参阅为[群集 SAP ASCS/SCS 实例创建虚拟主机名][sap-ha-guide-9.1.1]。
 
-## <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> 设置 SAP 虚拟机的静态 IP 地址
+## <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>设置 SAP 虚拟机的静态 IP 地址
 部署要在群集中使用的虚拟机之后，需要为所有虚拟机设置静态 IP 地址。 请在 Azure 虚拟网络配置中而不是来宾操作系统中执行此操作。
 
 1. 在 Azure 门户中，选择“资源组” > “网卡” > “设置” > “IP 地址”。
@@ -522,11 +521,11 @@ _**图 5：** Azure 内部负载均衡器的默认 ASCS/SCS 负载均衡规则_
 
 如果想要将其他编号用于 SAP ASCS 或 SCS 实例，必须更改这些实例的名称和默认值。
 
-1. 在 Azure 门户中，转到“**\<SID\>-lb-ascs 负载均衡器”** > “负载均衡规则”。
+1. 在 Azure 门户中，转到“ **\<SID\>-lb-ascs 负载均衡器”**  > “负载均衡规则”。
 2. 对于属于 SAP ASCS 或 SCS 实例的所有负载均衡规则，请更改以下值：
 
-   * 名称
-   * 端口
+   * 姓名
+   * Port
    * 后端端口
 
    例如，如果要将默认 ASCS 实例编号从 00 更改为 31，需要为表 1 中列出的所有端口进行更改。
@@ -551,22 +550,22 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
 若要在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项，请先在 SAP ASCS/SCS 的两个 Windows 群集节点上添加以下 Windows 注册表项：
 
-| 路径 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 变量名称 |`KeepAliveTime` |
 | 变量类型 |REG_DWORD（十进制） |
-| 值 |120000 |
+| ReplTest1 |120000 |
 | 文档链接 |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 **表 3：** 更改第一个 TCP/IP 参数
 
 然后，在 SAP ASCS/SCS 的两个 Windows 群集节点上添加以下 Windows 注册表项：
 
-| 路径 | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 变量名称 |`KeepAliveInterval` |
 | 变量类型 |REG_DWORD（十进制） |
-| 值 |120000 |
+| ReplTest1 |120000 |
 | 文档链接 |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 **表 4：** 更改第二个 TCP/IP 参数
@@ -650,9 +649,9 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
    ![图 18：请勿选中该复选框][sap-ha-guide-figure-3017]
 
-   _**图 18：***请勿* 选中该复选框_
+   _**图 18：** *请勿* 选中该复选框_
 
-   可以忽略关于仲裁和磁盘的警告。 将在稍后设置仲裁和共享磁盘，如[为 SAP ASCS/SCS 群集共享磁盘安装 SIOS DataKeeper Cluster Edition][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios] 中所述。
+   可以忽略关于仲裁和磁盘的警告。 稍后将设置仲裁并共享磁盘, 如为[SAP ASCS/SCS 群集共享磁盘安装 SIOS DataKeeper Cluster Edition][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios]中所述。
 
    ![图 19：忽略关于磁盘仲裁的警告][sap-ha-guide-figure-3018]
 
@@ -737,10 +736,11 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
    _**图 28：** 确认已重新配置群集_
 
-成功安装 Windows 故障转移群集后，需要更改某些阈值，以使故障转移检测适合 Azure 中的情况。 博客文章 [Tuning failover cluster network thresholds][tuning-failover-cluster-network-thresholds]（调整故障转移群集网络阈值）中阐述了要更改的参数。 假设构成 ASCS/SCS 的 Windows 群集配置的两个 VM 位于同一子网中，则需要将以下参数更改为这些值：
+成功安装 Windows 故障转移群集后，需要更改某些阈值，以使故障转移检测适合 Azure 中的情况。 [优化故障转移群集网络阈值][tuning-failover-cluster-network-thresholds]中记录了要更改的参数。 假设构成 ASCS/SCS 的 Windows 群集配置的两个 VM 位于同一子网中，则需要将以下参数更改为这些值：
 
-- SameSubNetDelay = 2
+- SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
+- RoutingHistoryLength = 30
 
 这些设置已经过客户测试，可以提供合理的折衷。 它们不仅具有足够的弹性，而且在发生 SAP 软件、节点或 VM 故障时，在实际出错情况下，这些设置的故障转移速度够快。
 

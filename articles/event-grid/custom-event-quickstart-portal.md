@@ -9,12 +9,12 @@ ms.date: 03/27/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 0861c47ef9f9649dfe223d8abeb51310a87ea4a9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: afb53ed013af6cd1db2f6ff3d25c350aa2b4f1e8
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549961"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638566"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>快速入门：使用 Azure 门户和事件网格将自定义事件路由到 Web 终结点
 
@@ -35,35 +35,35 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 事件网格主题提供用户定义的终结点，可向其发布事件。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在左侧导航菜单中选择“所有服务”，搜索“事件网格”，然后选择“事件网格主题”。 
+2. 在左侧导航菜单中选择“所有服务”，搜索“事件网格”，然后选择“事件网格主题”。    
 
     ![选择“事件网格主题”](./media/custom-event-quickstart-portal/select-event-grid-topics.png)
-3. 在“事件网格主题”页上的工具栏中选择“添加”。 
+3. 在“事件网格主题”页上的工具栏中选择“添加”。   
 
     ![“添加事件网格主题”按钮](./media/custom-event-quickstart-portal/add-event-grid-topic-button.png)
-4. 在“创建主题”页上执行以下步骤：
+4. 在“创建主题”页上执行以下步骤： 
     1. 为自定义主题提供唯一的**名称**。 主题名称必须唯一，因为它由 DNS 条目表示。 请不要使用图中所示的名称。 而是创建自己的名称 - 它必须介于 3 到 50 个字符之间，并且只包含值 a-z、A-Z、0-9 和“-”。
     2. 选择 **Azure 订阅**。
-    3. 选择现有的资源组，或者选择“新建”并输入**资源组**的**名称**。
+    3. 选择现有的资源组，或者选择“新建”并输入**资源组**的**名称**。 
     4. 选择事件网格主题的**位置**。
-    5. 在“事件架构”字段中，保留默认值“事件网格架构”。 
+    5. 在“事件架构”字段中，保留默认值“事件网格架构”。   
 
        ![“创建主题”页](./media/custom-event-quickstart-portal/create-custom-topic.png)
-    6. 选择“创建”。 
-5. 创建自定义主题后，将会看到成功通知。 选择“转到资源组”。 
+    6. 选择“创建”  。 
+5. 创建自定义主题后，将会看到成功通知。 选择“转到资源组”。  
 
    ![看到成功通知](./media/custom-event-quickstart-portal/success-notification.png)
-6. 在“资源组”页上，选择事件网格主题。 
+6. 在“资源组”页上，选择事件网格主题。  
 
    ![选择事件网格主题资源](./media/custom-event-quickstart-portal/select-event-grid-topic.png)
-7. 此时会显示事件网格的“事件网格主题”页。 请将此页保持打开状态， 稍后在本快速入门中需要使用此页。 
+7. 此时会显示事件网格的“事件网格主题”页。  请将此页保持打开状态， 稍后在本快速入门中需要使用此页。 
 
     ![“事件网格主题”主页](./media/custom-event-quickstart-portal/event-grid-topic-home-page.png)
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 在为自定义主题创建订阅之前，请先创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 为了简化此快速入门，将部署用于显示事件消息的[预建的 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
-1. 在项目页中，选择“部署到 Azure”以将解决方案部署到订阅。 在 Azure 门户中，为参数提供值。
+1. 在项目页中，选择“部署到 Azure”以将解决方案部署到订阅。  在 Azure 门户中，为参数提供值。
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 1. 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
@@ -75,19 +75,19 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 
 订阅事件网格主题，以告知事件网格要跟踪哪些事件，以及要将事件发送到何处。
 
-1. 现在，请在自定义主题的“事件网格主题”页上的工具栏中，选择“+ 事件订阅”。
+1. 现在，请在自定义主题的“事件网格主题”页上的工具栏中，选择“+ 事件订阅”。  
 
    ![添加事件订阅](./media/custom-event-quickstart-portal/new-event-subscription.png)
-2. 在“创建事件订阅”页上执行以下步骤：
-    1. 输入事件订阅的“名称”。
-    3. 对于“终结点类型”，请选择“Web Hook”。 
-    4. 选择“选择终结点”。 
+2. 在“创建事件订阅”页上执行以下步骤： 
+    1. 输入事件订阅的“名称”  。
+    3. 对于“终结点类型”，请选择“Web Hook”。   
+    4. 选择“选择终结点”。  
 
        ![提供事件订阅值](./media/custom-event-quickstart-portal/provide-subscription-values.png)
-    5. 对于 Webhook 终结点，请提供你的 Web 应用的 URL，并将 `api/updates` 添加到主页 URL。 选择“确认所选内容”。
+    5. 对于 Webhook 终结点，请提供你的 Web 应用的 URL，并将 `api/updates` 添加到主页 URL。 选择“确认所选内容”  。
 
        ![提供终结点 URL](./media/custom-event-quickstart-portal/provide-endpoint.png)
-    6. 返回“创建事件订阅”页，选择“创建”。
+    6. 返回“创建事件订阅”页，选择“创建”。  
 
 3. 再次查看 Web 应用，并注意现已向该应用发送了订阅验证事件。 选择眼睛图标以展开事件数据。 事件网格发送验证事件，以便终结点可以验证它是否想要接收事件数据。 Web 应用包含用于验证订阅的代码。
 
@@ -101,7 +101,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 
 
 ### <a name="azure-cli"></a>Azure CLI
-1. 在 Azure 门户中选择“Cloud Shell”。 在 Cloud Shell 窗口的左上角选择“Bash”。 
+1. 在 Azure 门户中选择“Cloud Shell”。  在 Cloud Shell 窗口的左上角选择“Bash”。  
 
     ![Cloud Shell - Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
 1. 运行以下命令以获取主题的**终结点**：复制并粘贴该命令后，更新**主题名称**和**资源组名称**，然后运行该命令。 
@@ -128,20 +128,22 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 ### <a name="azure-powershell"></a>Azure PowerShell
 第二个示例使用 PowerShell，执行的步骤类似。
 
-1. 在 Azure 门户中选择“Cloud Shell”。 在 Cloud Shell 窗口的左上角选择“PowerShell”。 参阅“Azure CLI”部分的示例 **Cloud Shell** 窗口图像。 
-2. 运行以下命令以获取主题的**终结点**：复制并粘贴该命令后，更新**主题名称**和**资源组名称**，然后运行该命令。 
+1. 在 Azure 门户中选择“Cloud Shell”（或者转到 https://shell.azure.com/) 。  在 Cloud Shell 窗口的左上角选择“PowerShell”。  参阅“Azure CLI”部分的示例 **Cloud Shell** 窗口图像。
+2. 设置以下变量。 复制并粘贴每个命令后，更新**主题名称**和**资源组名称**，然后运行该命令：
 
     ```powershell
-    $endpoint = (Get-AzEventGridTopic -ResourceGroupName <resource group name> -Name <topic name>).Endpoint
+    $resourceGroupName = <resource group name>
+    $topicName = <topic name>
     ```
-3. 运行以下命令以获取自定义主题的**密钥**：复制并粘贴该命令后，更新**主题名称**和**资源组名称**，然后运行该命令。
+3. 运行以下命令以获取主题的**终结点**和**密钥**：
 
     ```powershell
-    $keys = Get-AzEventGridTopicKey -ResourceGroupName gridResourceGroup -Name <topic name>
+    $endpoint = (Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName).Endpoint
+    $keys = Get-AzEventGridTopicKey -ResourceGroupName $resourceGroupName -Name $topicName
     ```
 4. 准备事件。 在 Cloud Shell 窗口中复制并运行这些语句。 
 
-    ```azurepowershell
+    ```powershell
     $eventID = Get-Random 99999
 
     #Date format should be SortableDateTimePattern (ISO 8601)
@@ -192,10 +194,10 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 ## <a name="clean-up-resources"></a>清理资源
 如果打算继续处理此事件，请不要清除本文中创建的资源。 否则，请删除本文中创建的资源。
 
-1. 在左侧菜单中选择“资源组”。 如果左侧菜单中未显示此选项，请在左侧菜单中选择“所有服务”，然后选择“资源组”。 
-2. 选择资源组以启动“资源组”页。 
-3. 在工具栏中选择“删除资源组”。 
-4. 输入资源组的名称以确认删除，然后选择“删除”。 
+1. 在左侧菜单中选择“资源组”。  如果左侧菜单中未显示此选项，请在左侧菜单中选择“所有服务”，然后选择“资源组”。   
+2. 选择资源组以启动“资源组”页。  
+3. 在工具栏中选择“删除资源组”。  
+4. 输入资源组的名称以确认删除，然后选择“删除”。  
 
     ![资源组](./media/custom-event-quickstart-portal/delete-resource-groups.png)
 

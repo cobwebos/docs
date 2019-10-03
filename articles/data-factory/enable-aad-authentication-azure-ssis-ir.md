@@ -8,26 +8,30 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 3/11/2019
+ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: 58bdc0e698fc28929c2080b1737770275b1164ad
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 51f67667caa9e0e564709de40c145b107c619b59
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848722"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016007"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
 
-本文介绍如何启用 Azure Active Directory (Azure AD) 身份验证托管标识在 Azure 数据工厂 (ADF) 并使用它而不是 SQL 身份验证来创建将反过来预配 Azure SSIS 集成运行时 (IR)SSIS 目录数据库 (SSISDB) 中 Azure SQL 数据库服务器/托管实例代表用户。
+本文介绍如何使用 Azure 数据工厂 (ADF) 的托管标识启用 Azure Active Directory (Azure AD) 身份验证, 并使用它 (而不是传统的身份验证方法 (如 SQL 身份验证)) 执行以下操作:
 
-有关在 ADF 的托管标识的详细信息，请参阅[数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)。
+- 创建一个 Azure-SSIS Integration Runtime (IR), 它将以你的名义预配 Azure SQL 数据库服务器/托管实例中的 SSIS 目录数据库 (SSISDB)。
+
+- 在 Azure 上运行 SSIS 包时连接到各种 Azure 资源-SSIS IR。
+
+有关 ADF 的托管标识的详细信息，请参阅[数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)。
 
 > [!NOTE]
->-  在此方案中，在创建仅使用托管标识为在 ADF 的 Azure AD 身份验证和后续的起始操作，将在 SSIS IR 的启用预配和连接到 SSISDB。 为 SSIS 包执行将 SSIS IR 仍会将连接到 SSISDB 与完全托管的 SSISDB 预配期间创建的帐户使用 SQL 身份验证。
->-  如果已创建将 SSIS IR 使用 SQL 身份验证，不可以重新配置它以在此期间，使用 PowerShell 通过 Azure AD 身份验证，但可以通过 Azure 门户/ADF 应用进行操作。 
+>-  在此方案中，使用 ADF 的托管标识的 Azure AD 身份验证仅用于创建和随后启动 SSIS IR 的操作，而 SSIS IR 又将预配并连接到 SSISDB。 对于 SSIS 包执行，SSIS IR 仍然将通过 SQL 身份验证使用在 SSISDB 预配期间创建的完全托管帐户连接到 SSISDB。
+>-  如果已使用 SQL 身份验证创建了 SSIS IR，则此时不能通过 PowerShell 将其重新配置为使用 Azure AD 身份验证，但你可以通过 Azure 门户/ADF 应用执行此操作。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -60,7 +64,7 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  将 ADF 的托管标识添加到该组。 可以按照本文[数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)获取主体的服务标识 ID (例如 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc，但请不要用于此目的的服务标识应用程序 ID)。
+3.  将 ADF 的托管标识添加到该组。 可以按照文章[数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)获取主体托管标识对象 ID（例如，765ad4ab-XXXX-XXXX-XXXX-51ed985819dc，但不要将托管标识应用程序 ID 用于此目的）。
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -84,7 +88,7 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
 
 4.  在命令栏中，选择“设置管理员”。
 
-5.  选择 Azure AD 用户帐户进行的服务器的管理员，然后选择**选择。**
+5.  选择要设为服务器管理员的 Azure AD 用户帐户，然后选择“选择”。
 
 6.  在命令栏中，选择“保存”。
 
@@ -94,19 +98,19 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
 
 1. 启动 SSMS。
 
-2. 在中**连接到服务器**对话框中，输入您的 Azure SQL 数据库服务器名称**服务器名称**字段。
+2. 在“连接到服务器”对话框的“服务器名称”字段中，输入 Azure SQL 数据库服务器名称。
 
-3. 在中**身份验证**字段中，选择**Active Directory-通用且具有 MFA 支持**(您还可以使用其他两个 Active Directory 身份验证类型，请参阅[配置和管理Azure AD 身份验证与 SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure))。
+3. 在“身份验证”字段中，选择“Active Directory - 通用且具有 MFA 支持”（还可以使用其他两种 Active Directory 身份验证类型，请参阅[使用 SQL 配置和管理 Azure AD 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)）。
 
-4. 在中**用户名**字段中，输入作为服务器管理员，例如设置的 Azure AD 帐户的名称testuser@xxxonline.com。
+4. 在“用户名”字段中，输入已设为服务器管理员的 Azure AD 帐户的名称，例如 testuser@xxxonline.com。
 
-5. 选择**Connect**并完成登录过程。
+5. 选择“连接”并完成登录过程。
 
 6. 在“对象资源管理器”中，展开“数据库” -> “系统数据库”文件夹。
 
 7. 右键单击 master 数据库并选择“新建查询”。
 
-8. 在查询窗口中，输入以下 T-SQL 命令，并选择**Execute**工具栏上。
+8. 在查询窗口中，输入以下 T-SQL 命令，然后在工具栏中选择“执行”。
 
    ```sql
    CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
@@ -122,9 +126,9 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
 
    命令应会成功完成，并授予该内含用户创建数据库的权限 (SSISDB)。
 
-10. 如果你 SSISDB 使用 SQL 身份验证创建并且想要切换到使用 Azure SSIS ir 的 Azure AD 身份验证来访问它，右键单击**SSISDB**数据库并选择**新查询**。
+10. 如果 SSISDB 是使用 SQL 身份验证创建的，并且希望切换为 Azure-SSIS IR 使用 Azure AD 身份验证来访问它，请右键单击“SSISDB”数据库并选择“新建查询”。
 
-11. 在查询窗口中，输入以下 T-SQL 命令，并选择**Execute**工具栏上。
+11. 在查询窗口中，输入以下 T-SQL 命令，然后在工具栏中选择“执行”。
 
     ```sql
     CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
@@ -146,17 +150,7 @@ Azure SQL 数据库托管实例支持直接使用 ADF 的托管标识创建数�
 
 ### <a name="configure-azure-ad-authentication-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置 Azure AD 身份验证
 
-1.   在 Azure 门户中，从左侧导航栏中选择“所有服务” -> “SQL 服务器”。
-
-2.   选择要使用 Azure AD 身份验证配置的托管实例。
-
-3.   在边栏选项卡的“设置”部分中，选择“Active Directory 管理员”。
-
-4.   在命令栏中，选择“设置管理员”。
-
-5.   选择要设为服务器管理员的 Azure AD 用户帐户，然后选择“选择”。
-
-6.   在命令栏中，选择“保存”。
+按照[为托管实例预配 Azure Active Directory 管理员](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance)中的步骤进行操作。
 
 ### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例中以用户身份添加 ADF 的托管标识
 
@@ -164,40 +158,29 @@ Azure SQL 数据库托管实例支持直接使用 ADF 的托管标识创建数�
 
 1.  启动 SSMS。
 
-2.  使用 SQL/Active Directory 管理员帐户连接到托管实例。
+2.  使用名为 **sysadmin** 的 SQL Server 帐户连接到托管实例。 这是一个临时限制，Azure SQL 数据库托管实例的 Azure AD 服务器主体（登录名）变为 GA 后，就会去除该限制。 如果尝试使用 Azure AD 管理员帐户创建登录名，将会看到以下错误：消息 15247、级别 16、状态 1、行 1 用户无权执行此操作。
 
 3.  在“对象资源管理器”中，展开“数据库” -> “系统数据库”文件夹。
 
 4.  右键单击 master 数据库并选择“新建查询”。
 
-5.  获取 ADF 的托管标识。 可以按照本文[数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)到获取主体的服务标识应用程序 ID （但请不要用于此目的的服务标识 ID）。
-
-6.  在查询窗口中，执行以下 T-SQL 脚本，将 ADF 的托管标识转换为二进制类型：
+5.  在查询窗口中, 执行以下 T-sql 脚本, 以用户身份添加 ADF 的托管标识
 
     ```sql
-    DECLARE @applicationId uniqueidentifier = '{your SERVICE IDENTITY APPLICATION ID}'
-    select CAST(@applicationId AS varbinary)
-    ```
-    
-    命令应会成功完成，并以二进制形式显示 ADF 的托管标识。
-
-7.  清除查询窗口，执行以下 T-SQL 脚本，以用户身份添加 ADF 的托管标识
-
-    ```sql
-    CREATE LOGIN [{a name for the managed identity}] FROM EXTERNAL PROVIDER with SID = {your SERVICE IDENTITY APPLICATION ID as binary}, TYPE = E
-    ALTER SERVER ROLE [dbcreator] ADD MEMBER [{the managed identity name}]
-    ALTER SERVER ROLE [securityadmin] ADD MEMBER [{the managed identity name}]
+    CREATE LOGIN [{your ADF name}] FROM EXTERNAL PROVIDER
+    ALTER SERVER ROLE [dbcreator] ADD MEMBER [{your ADF name}]
+    ALTER SERVER ROLE [securityadmin] ADD MEMBER [{your ADF name}]
     ```
     
     命令应会成功完成，并授予 ADF 的托管标识创建数据库的权限 (SSISDB)。
 
-8.  如果你 SSISDB 使用 SQL 身份验证创建并且想要切换到使用 Azure SSIS ir 的 Azure AD 身份验证来访问它，右键单击**SSISDB**数据库并选择**新查询**。
+6.  如果 SSISDB 是使用 SQL 身份验证创建的，并且希望切换为 Azure-SSIS IR 使用 Azure AD 身份验证来访问它，请右键单击“SSISDB”数据库并选择“新建查询”。
 
-9.  在查询窗口中，输入以下 T-SQL 命令，并选择**Execute**工具栏上。
+7.  在查询窗口中，输入以下 T-SQL 命令，然后在工具栏中选择“执行”。
 
     ```sql
-    CREATE USER [{the managed identity name}] FOR LOGIN [{the managed identity name}] WITH DEFAULT_SCHEMA = dbo
-    ALTER ROLE db_owner ADD MEMBER [{the managed identity name}]
+    CREATE USER [{your ADF name}] FOR LOGIN [{your ADF name}] WITH DEFAULT_SCHEMA = dbo
+    ALTER ROLE db_owner ADD MEMBER [{your ADF name}]
     ```
 
     命令应会成功完成，并授予 ADF 的托管标识访问 (SSISDB) 的权限。
@@ -235,4 +218,14 @@ Azure SQL 数据库托管实例支持直接使用 ADF 的托管标识创建数�
     Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                                  -DataFactoryName $DataFactoryName `
                                                  -Name $AzureSSISName
-   ```
+    ```
+
+## <a name="run-ssis-packages-with-managed-identity-authentication"></a>运行具有托管标识身份验证的 SSIS 包
+
+在 Azure-SSIS IR 上运行 SSIS 包时, 可以使用托管标识身份验证连接到不同的 Azure 资源。 目前, 我们已在以下连接管理器中支持托管标识身份验证。
+
+- [OLE DB 连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [ADO.NET 连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [Azure 存储连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)

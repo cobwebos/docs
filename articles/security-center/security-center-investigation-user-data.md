@@ -3,26 +3,25 @@ title: 管理在 Azure 安全中心调查中找到的用户数据 | Microsoft Do
 description: " 了解如何管理在 Azure 安全中心调查功能中找到的用户数据。 "
 services: operations-management-suite
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
-ms.service: operations-management-suite
+ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
-ms.author: rkarlin
-ms.openlocfilehash: bec9be627937913c268d65bb6cdadcf68c7a3fb4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.author: memildin
+ms.openlocfilehash: 8b6bde69f233fee9fe20b260e392966298f13a9a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244292"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202035"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>管理在 Azure 安全中心调查中找到的用户数据
-本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)和安全中心中显示一次。 管理用户数据包括导出或删除数据的能力。
+本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)中，并在安全中心公开。 管理用户数据包括导出或删除数据的能力。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
@@ -58,4 +57,4 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 ## <a name="next-steps"></a>后续步骤
 有关管理用户数据的详细信息，请参阅[管理 Azure 安全中心的用户数据](security-center-privacy.md)。
-若要了解有关删除 Azure Monitor 日志中的专用数据的详细信息，请参阅[如何导出和删除专用数据](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)。
+若要了解有关在 Azure Monitor 日志中删除私有数据的详细信息，请参阅[如何导出和删除私有数据](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)。

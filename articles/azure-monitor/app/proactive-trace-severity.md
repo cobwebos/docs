@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: mbullwin
 ms.openlocfilehash: 10b909fd5239546047aa4696a1f6a68a703778c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001231"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60306388"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>跟踪严重性比下降（预览）
 
-跟踪广泛应用于应用程序，因为它们可以告知幕后发生的事情。 出现错误时，跟踪可保证导致不理想状态事件序列的关键可见性。 虽然跟踪通常为非结构化，但通过跟踪可以具体了解到一件事情，即严重性级别。 在应用程序稳定状态下，“良好”跟踪（Info 和 Verbose）和“错误”跟踪（Warning、Error 和 Critical）之间的比率应保持稳定。 假设情况是不管出于什么情况（例如暂时性网络故障），在一定的程度都会定期发生“错误”跟踪。 但当一个真正的问题日益严重时，这通常表现为“错误”跟踪和“良好”跟踪之间的相关比率增大。 Application Insights 智能检测自动分析应用程序记录的跟踪，并在跟踪遥测的严重性级别出现异常时发出警告。
+跟踪广泛应用于应用程序，因为它们可以告知幕后发生的事情。 出现错误时，跟踪可保证导致不理想状态事件序列的关键可见性。 虽然跟踪通常为非结构化，但通过跟踪可以具体了解到一件事情，即严重性级别。 在应用程序稳定状态下，“良好”跟踪（Info 和 Verbose）和“错误”跟踪（Warning、Error 和 Critical）之间的比率应保持稳定      。 假设情况是不管出于什么情况（例如暂时性网络故障），在一定的程度都会定期发生“错误”跟踪。 但当一个真正的问题日益严重时，这通常表现为“错误”跟踪和“良好”跟踪之间的相关比率增大。 Application Insights 智能检测自动分析应用程序记录的跟踪，并在跟踪遥测的严重性级别出现异常时发出警告。
 
 此功能需要为应用配置跟踪日志（请参见如何为 [.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) 或 [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs) 配置跟踪日志侦听器），除此之外，不需要其他特殊步骤。 在应用生成足够多的异常遥测数据后，此功能会激活。
 

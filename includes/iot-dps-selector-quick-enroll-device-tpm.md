@@ -8,12 +8,12 @@ ms.date: 02/07/2018
 ms.topic: include
 ms.service: iot-dps
 ms.custom: include file
-ms.openlocfilehash: 3dfd7cae2ba5f3654eea1a8fe3822de7e933cab4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a843269a321c15e7a2550ab7b7934c18e9609de0
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29402800"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173071"
 ---
 > [!div class="op_single_selector"]
 > * [Java](../articles/iot-dps/quick-enroll-device-tpm-java.md)

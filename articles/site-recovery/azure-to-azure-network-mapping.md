@@ -7,22 +7,22 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: d08715b1b3e0db4dfcf31bb4c020ab44ed3916e1
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 8c24352fdbc6b81e7d263ac8c511b7c61792e6ae
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549002"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907868"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>设置 VNet 的网络映射和 IP 寻址
 
-本文介绍如何映射不同 Azure 区域中的两个 Azure 虚拟网络 (VNet) 实例，以及如何设置网络之间的 IP 寻址。 网络映射提供了用于在启用复制的时间基于源网络的目标网络选择的默认行为。
+本文介绍如何映射不同 Azure 区域中的两个 Azure 虚拟网络 (VNet) 实例，以及如何设置网络之间的 IP 寻址。 启用复制时，网络映射为基于源网络的目标网络选择提供了默认行为。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在映射网络之前，应在源和目标 Azure 区域中创建 [Azure VNet](../virtual-network/virtual-networks-overview.md)。 
 
-## <a name="set-up-network-mapping-manually-optional"></a>设置网络映射手动 （可选）
+## <a name="set-up-network-mapping-manually-optional"></a>手动设置网络映射（可选）
 
 按如下所述映射网络：
 
@@ -44,13 +44,13 @@ ms.locfileid: "59549002"
 
 - Site Recovery 根据选择的目标，自动创建从源到目标区域以及从目标到源区域的网络映射。
 - 默认情况下，Site Recovery 会在目标区域中创建与源网络相同的网络。 Site Recovery 将 **-asr** 作为后缀添加到源网络名称。 可以自定义目标网络。
-- 如果已经存在到源网络的网络映射，映射的目标网络时启用更多虚拟机的复制将始终为默认值。 您可以选择通过从下拉列表中选择其他可用选项来更改目标虚拟网络。 
-- 若要更改新复制的默认目标虚拟网络，你需要修改现有的网络映射。
-- 如果你想要修改从区域 A 到区域 B 的网络映射，请确保你首先删除网络映射从区域 B 到区域 a。反向映射删除后，修改从区域 A 到区域 B 的网络映射，然后创建相关的反向映射。
+- 如果已经对源网络进行了网络映射，则在为更多 VM 启用复制时，映射的目标网络将始终是默认值。 可以通过从下拉列表中选择其他可用选项来选择更改目标虚拟网络。 
+- 若要更改用于新复制的默认目标虚拟网络，需要修改现有网络映射。
+- 若要修改从区域 A 到区域 B 的网络映射，请确保首先删除从区域 B 到区域 A 的网络映射。在删除反向映射后，修改从区域 A 到区域 B 的网络映射，然后创建相关的反向映射。
 
 >[!NOTE]
->* 修改网络映射只会更改新的 VM 复制的默认值。 它不会影响现有的复制的目标虚拟网络选择。 
->* 如果你想要修改目标网络中的现有复制，请转到计算和网络设置的复制的项。
+>* 修改网络映射仅会更改新 VM 复制的默认值， 它不会影响现有复制的目标虚拟网络选择。 
+>* 如果要修改现有复制的目标网络，请转到复制项的“计算和网络设置”。
 
 ## <a name="specify-a-subnet"></a>指定子网
 
@@ -58,7 +58,7 @@ ms.locfileid: "59549002"
 
 - 如果可在目标网络中找到与源 VM 子网同名的子网，则为目标 VM 设置该子网。
 - 如果目标网络中没有同名的子网，则按字母顺序设置第一个子网作为目标子网。
-- 可以在 VM 的“计算和网络”设置中修改此设置。
+- 可以在 VM 的“计算和网络”设置中修改目标子网。
 
     ![计算和网络计算属性窗口](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "59549002"
 **目标网络** | **详细信息**
 --- | ---
 目标网络是故障转移 VNet | - 目标 IP 地址是静态的，但不是为故障转移保留的同一 IP 地址。<br/><br/>  - 分配的地址是子网范围末段的下一个可用地址。<br/><br/> 例如：如果源 IP 地址是 10.0.0.19，故障转移网络使用范围 10.0.0.0/24，则分配给目标 VM 的下一个 IP 地址是 10.0.0.254。
-目标网络不是故障转移 VNet | - 目标 IP 地址是静态的，与为故障转移保留的 IP 地址相同。<br/><br/>  -如果已分配相同的 IP 地址，IP 地址是子网范围的结尾处提供的下一个。<br/><br/> 例如：如果源静态 IP 地址是 10.0.0.19，故障转移在范围为 10.0.0.0/24 的非故障转移网络中发生，则目标静态 IP 地址将是 10.0.0.0.19（如果该地址可用，否则是 10.0.0.254）。
+目标网络不是故障转移 VNet | - 目标 IP 地址是静态的，与为故障转移保留的 IP 地址相同。<br/><br/>  - 如果已分配相同的 IP 地址，则 IP 地址是子网范围末尾的下一个可用 IP 地址。<br/><br/> 例如：如果源静态 IP 地址是 10.0.0.19，故障转移在范围为 10.0.0.0/24 的非故障转移网络中发生，则目标静态 IP 地址将是 10.0.0.0.19（如果该地址可用，否则是 10.0.0.254）。
 
 - 故障转移 VNet 是设置灾难恢复时选择的目标网络。
 - 我们建议始终使用非生产网络进行测试故障转移。
@@ -97,5 +97,3 @@ ms.locfileid: "59549002"
 
 - 查看 Azure VM 灾难恢复的[网络指导](site-recovery-azure-to-azure-networking-guidance.md)。
 - [详细了解](site-recovery-retain-ip-azure-vm-failover.md)如何在故障转移后保留 IP 地址。
-
-选择的目标网络是故障转移 VNet，但第 2 点指出“如果所选目标网络不同于故障转移 VNet，但子网范围与故障转移 VNet 相同”

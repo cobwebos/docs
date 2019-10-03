@@ -1,25 +1,18 @@
 ---
-title: 发布 Power BI 应用产品/服务 - Azure 市场 | Microsoft Docs
+title: 发布 Power BI 应用产品/服务 |Azure Marketplace
 description: 发布 Microsoft AppSource marketplace 上的 Power BI 应用产品/服务。
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 0e82041dab1932ed7c129b598740b2441aa59315
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.author: pabutler
+ms.openlocfilehash: aae23feaf1cc5887de061414af985ef16070546b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822746"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943185"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>发布 Power BI 应用产品/服务
 
@@ -34,7 +27,7 @@ ms.locfileid: "56822746"
 
 此表介绍每个步骤，并提供其估计的完成时间：
 
-|   发布步骤            |   时间     |   描述                                                                  |
+|   发布步骤            |   Time     |   描述                                                                  |
 | --------------------         |------------| ----------------                                                               |
 | 验证先决条件       | 15 分钟     | 验证套餐信息和套餐设置。                            |
 | 认证                | 1-7 天   | Power BI 认证团队分析产品/服务。 团队通过手动验证测试中运行你的 Power BI 应用，通过安装应用程序通过提供的安装 URL。 主验证 （在本文档后面所述） 应用认证过程的一部分执行。         |

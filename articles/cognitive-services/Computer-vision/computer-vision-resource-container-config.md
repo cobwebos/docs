@@ -1,26 +1,26 @@
 ---
 title: 配置容器 - 计算机视觉
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 在计算机视觉中为识别文本容器配置各种设置。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
+ms.date: 09/18/2019
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 42c08864c6908e92a7ecea336f8b1bd0606760db
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: aba846ade9e2b5e19304df87ea3e29713aacf4ba
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678677"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129964"
 ---
-# <a name="configure-recognize-text-docker-containers"></a>配置“识别文本”Docker 容器
+# <a name="configure-computer-vision-docker-containers"></a>配置计算机视觉 Docker 容器
 
-“识别文本”容器运行时环境是使用 `docker run` 命令参数配置。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
+使用`docker run`命令参数配置计算机视觉容器的运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
 ## <a name="configuration-settings"></a>配置设置
 
@@ -31,11 +31,11 @@ ms.locfileid: "59678677"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey`设置指定 Azure`Cognitive Services`用于跟踪容器的计费信息的资源键。 必须为 ApiKey 指定一个值，该值必须为有效的密钥_认知服务_为指定的资源[ `Billing` ](#billing-configuration-setting)配置设置。
+此`ApiKey`设置指定用于跟踪`Cognitive Services`容器的计费信息的 Azure 资源密钥。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“认知服务”资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**资源管理下**密钥**
+* Azure 门户：**认知服务**“资源管理”部分的“密钥”下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -43,17 +43,17 @@ ms.locfileid: "59678677"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing`设置指定的终结点 URI 的_认知服务_使用在 Azure 上的资源要计数的容器的计费信息。 必须指定此配置设置，一个值，该值必须是有效的终结点 URI 对于_认知服务_在 Azure 上的资源。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“认知服务”资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
 * Azure 门户：**认知服务**概述，标记为 `Endpoint`
 
-请记住添加`vision/v1.0`路由到终结点 URI 下, 表中所示。 
+请记住将`vision/v1.0`路由添加到终结点 URI, 如下表所示。 
 
-|需要| 名称 | 数据类型 | 描述 |
+|必填| 姓名 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|是| `Billing` | String | 账单终结点 URI<br><br>例如：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -63,9 +63,9 @@ ms.locfileid: "59678677"
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Http 代理凭据设置
+## <a name="http-proxy-credentials-settings"></a>HTTP 代理凭据设置
 
-[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+[!INCLUDE [Container shared configuration HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>日志记录设置
  
@@ -79,56 +79,85 @@ ms.locfileid: "59678677"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](computer-vision-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| 名称 | 数据类型 | 描述 |
+|可选| 姓名 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | “计算机视觉”容器不使用此项。|
-|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>例如：<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Docker 运行命令示例 
+## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 
 以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。  运行后，容器将继续运行，直到[停止](computer-vision-how-to-install-containers.md#stop-the-container)它。
 
 * **行继续符**：以下各部分中的 Docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
 * **参数顺序**：除非很熟悉 Docker 容器，否则不要更改参数顺序。
 
-请记住添加`vision/v1.0`路由到终结点 URI 下, 表中所示。 
-
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | 值 | 格式或示例 |
+| 占位符 | ReplTest1 | 格式或示例 |
 |-------------|-------|---|
-|{BILLING_KEY} | 认知服务资源终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | 包括区域的账单终结点值。|`https://westcentralus.api.cognitive.microsoft.com/vision/v1.0`|
+| **{API_KEY}** | `Computer Vision` Azure`Computer Vision`密钥页上的资源的终结点键。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Azure `Computer Vision`“概览”页面上提供了账单终结点值。| 有关显式示例，请参阅[收集所需的参数](computer-vision-how-to-install-containers.md#gathering-required-parameters)。 |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](computer-vision-how-to-install-containers.md#billing)。
-> ApiKey 当值**键**从 Azure`Cognitive Services`资源密钥页。 
+> ApiKey 值是来自 Azure `Cognitive Services`“资源密钥”页的“密钥”。
 
-## <a name="recognize-text-container-docker-examples"></a>“识别文本”容器 Docker 示例
+## <a name="container-docker-examples"></a>容器 Docker 示例
 
-下面是“识别文本”容器 Docker 示例。 
+#### <a name="readtabread"></a>[读取](#tab/read)
 
-### <a name="basic-example"></a>基本示例 
+以下 Docker 示例适用于读取容器。
+
+### <a name="basic-example"></a>基本示例
 
   ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY} 
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
   ```
 
 ### <a name="logging-example"></a>日志记录示例 
 
   ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY} \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
 
+#### <a name="recognize-texttabrecognize-text"></a>[识别文本](#tab/recognize-text)
+
+以下 Docker 示例适用于识别文本容器。
+
+### <a name="basic-example"></a>基本示例
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  Eula=accept \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
+  ```
+
+### <a name="logging-example"></a>日志记录示例
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  Eula=accept \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} \
+  Logging:Console:LogLevel:Default=Information
+  ```
+
+***
+
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[如何安装和运行容器](computer-vision-how-to-install-containers.md)
+* 查看[如何安装和运行容器](computer-vision-how-to-install-containers.md)。

@@ -1,7 +1,6 @@
 ---
 title: Phoenix Query Server REST SDK - Azure HDInsight
 description: 在 Azure HDInsight 中安装并使用适用于 Phoenix Query Server 的 REST SDK。
-services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.openlocfilehash: b7c94fd2372f1d995c50439b2bd5eaefb237e175
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: HT
+ms.openlocfilehash: 1f468cac29579d8748f61a47b548a67d36ff8279
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651395"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64695956"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix 查询服务器 REST SDK
 
@@ -72,7 +71,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 下面是一些相关属性：
 
-| 属性 | Description |
+| 属性 | 描述 |
 | -- | -- |
 | AutoCommit | 一个布尔值，表示是否为 Phoenix 事务启用 `autoCommit`。 |
 | ReadOnly | 一个布尔值，表示连接是否为只读。 |
@@ -83,10 +82,10 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 下面是 `TransactionIsolation` 值：
 
-| 隔离值 | Description |
+| 隔离值 | 描述 |
 | -- | -- |
 | 0 | 事务不受支持。 |
-| 1 | 可能出现脏读、不可重复读和幻读。 |
+| 第 | 可能出现脏读、不可重复读和幻读。 |
 | 2 | 可以防止脏读，但会出现不可重复读和幻读。 |
 | 4 | 可以防止脏读和不可重复读，但会出现幻读。 |
 | 8 | 脏读、不可重复读和幻读都可以防止。 |

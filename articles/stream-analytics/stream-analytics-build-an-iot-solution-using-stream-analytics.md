@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 4b250a5e14ab37553d93453d05f8ff388bf1ba84
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321562"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620518"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 本解决方案演示如何使用 Azure 流分析从数据获得实时见解。 开发人员可以轻松将数据流（例如点击流、日志和设备生成的时间）与历史记录或参考数据结合起来，获取业务信息。 由 Microsoft Azure 托管的 Azure 流分析是可完全管理的实时流计算服务，它提供内置冗余、低延迟及伸缩性，可让用户在几分钟之内就立刻上手。
 
 完成后此解决方案，你将可以：
@@ -47,19 +47,19 @@ ms.locfileid: "54321562"
 | TollID | EntryTime | LicensePlate | 状态 | 制造商 | 模型 | VehicleType | VehicleWeight | 收费站 | 标记 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
-| 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
+| 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |第 |0 |4 |123456789 |
 | 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Taurus |1 |0 |5 |456789123 |
 | 2 |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
 | 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |CRV |1 |0 |5 |789123456 |
-| 2 |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1 |0 |6 |321987654 |
+| 2 |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |第 |0 |6 |321987654 |
 
 下面是每个列的简短说明：
 
-| 列 | Description |
+| 列 | 描述 |
 | --- | --- |
 | TollID |唯一标识收费亭的收费亭 ID |
 | EntryTime |汽车进入收费亭的日期和时间（世界协调时） |
-| LicensePlate |汽车的牌照号码 |
+| LicensePlate |车辆的牌照号码 |
 | 状态 |美国的某个州 |
 | 制造商 |汽车制造商 |
 | 模型 |汽车型号 |
@@ -82,7 +82,7 @@ ms.locfileid: "54321562"
 
 下面是每个列的简短说明：
 
-| 列 | Description |
+| 列 | 描述 |
 | --- | --- |
 | TollID |唯一标识收费亭的收费亭 ID |
 | ExitTime |汽车离开收费亭的日期和时间（世界协调时） |
@@ -93,7 +93,7 @@ ms.locfileid: "54321562"
 
 | LicensePlate | RegistrationId | Expired |
 | --- | --- | --- |
-| SVT 6023 |285429838 |1 |
+| SVT 6023 |285429838 |第 |
 | XLZ 3463 |362715656 |0 |
 | BAC 1005 |876133137 |1 |
 | RIV 8632 |992711956 |0 |
@@ -102,7 +102,7 @@ ms.locfileid: "54321562"
 
 下面是每个列的简短说明：
 
-| 列 | Description |
+| 列 | 描述 |
 | --- | --- |
 | LicensePlate |汽车的牌照号码 |
 | RegistrationId |汽车的注册 ID |
@@ -127,17 +127,18 @@ ms.locfileid: "54321562"
 
 5. 选择 Azure 位置。
 
-6. 在“间隔”中指定若干秒。 此值将在示例 Web 应用中使用，指定将数据发送到事件中心的频率。
+6. 在“间隔”中指定若干秒。  此值将在示例 Web 应用中使用，指定将数据发送到事件中心的频率。
 
 7. **选中**表示同意条款和条件的复选框。
 
-8. 选择“固定到仪表板”，以便稍后可以轻松找到资源。
+8. 选择“固定到仪表板”，以便稍后可以轻松找到资源。 
 
-9. 选择“购买”以部署示例模板。
+9. 选择“购买”以部署示例模板。 
 
 10. 片刻之后，将会显示一条通知来确认**部署成功**。
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>查看 Azure 流分析 TollApp 资源
+
 1. 登录到 Azure 门户
 
 2. 找到在上一部分命名的资源组。
@@ -152,7 +153,7 @@ ms.locfileid: "54321562"
 ## <a name="examine-the-sample-tollapp-job"></a>检查示例 TollApp 作业
 1. 从上一部分创建的资源组着手，选择以名称 **tollapp** 开头的流分析流式处理作业（名称包含随机字符，以确保唯一性）。
 
-2. 在该作业的“概述”页上，观察“查询”框以查看查询语法。
+2. 在该作业的“概述”页上，观察“查询”框以查看查询语法。  
 
    ```sql
    SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count
@@ -163,7 +164,7 @@ ms.locfileid: "54321562"
 
    为了解释查询的意图，我们假设需要统计进入某个收费亭的汽车数目。 由于进入高速公路收费亭的车流是连续性的，这些入口事件类似于永不停止的流。 若要量化流，必须定义要不断度量的“时间段”。 我们进一步将问题具体化为“每三分钟有多少汽车进入收费亭？” 这通常称为轮转计数。
 
-   如你所见，Azure 流分析使用类似 SQL 的查询语言，并且添加了一些扩展以指定查询与时间相关的方面。  有关详细信息，请参阅[时间管理](https://msdn.microsoft.com/library/azure/mt582045.aspx)和查询中所用的[开窗](https://msdn.microsoft.com/library/azure/dn835019.aspx)构造。
+   如你所见，Azure 流分析使用类似 SQL 的查询语言，并且添加了一些扩展以指定查询与时间相关的方面。  有关详细信息，请参阅[时间管理](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)和查询中所用的[开窗](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)构造。
 
 3. 检查 TollApp 示例作业的输入。 当前查询中仅使用了 EntryStream 输入。
    - **EntryStream** 输入是一个事件中心连接，它将代表每次汽车进入高速公路收费亭的事件数据排队。 示例中包含的 Web 应用将会创建事件，而这些数据将在此事件中心排队。 请注意，此输入在流式处理查询的 FROM 子句中查询。
@@ -171,25 +172,25 @@ ms.locfileid: "54321562"
    - **Registration** 输入是一个 Azure Blob 存储连接，指向按需用于查找的静态 registration.json 文件。 此参考数据输入在稍后的查询语法变体中使用。
 
 4. 检查 TollApp 示例作业的输出。
-   - **Cosmos DB** 输出是接收输出接收器事件的 Cosmos 数据库集合。 请注意，此输出在流式处理查询的 INTO 子句中使用。
+   - **Cosmos DB**输出是接收输出接收器事件的 Cosmos 数据库容器。 请注意，此输出在流式处理查询的 INTO 子句中使用。
 
 ## <a name="start-the-tollapp-streaming-job"></a>启动 TollApp 流式处理作业
 遵循以下步骤启动流式处理作业：
 
-1. 在作业的“概述”页上选择“启动”。
+1. 在作业的“概述”页上选择“启动”。  
 
-2. 在“启动作业”窗格中选择“立即”。
+2. 在“启动作业”窗格中选择“立即”。  
 
-3. 等待片刻，作业运行后，请在流式处理作业的“概述”页上查看“监视”图表。 此图应显示数千个输入事件和数十个输出事件。
+3. 等待片刻，作业运行后，请在流式处理作业的“概述”页上查看“监视”图表。   此图应显示数千个输入事件和数十个输出事件。
 
 ## <a name="review-the-cosmosdb-output-data"></a>查看 CosmosDB 输出数据
 1. 找到包含 TollApp 资源的资源组。
 
 2. 选择名称模式为 **tollapp\<random\>-cosmos** 的 Azure Cosmos DB 帐户。
 
-3. 选择“数据资源管理器”标题打开“数据资源管理器”页。
+3. 选择“数据资源管理器”标题打开“数据资源管理器”页。 
 
-4. 展开“tollAppDatabase” > “tollAppCollection” > “文档”。
+4. 展开“tollAppDatabase” > “tollAppCollection” > “文档”。   
 
 5. 提供输出后，ID 列表中会显示多个文档。
 
@@ -214,19 +215,19 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 ### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>更新 TollApp 流式处理作业查询语法：
 
-1. 在作业的“概述”页上选择“停止”。
+1. 在作业的“概述”页上选择“停止”。  
 
 2. 片刻之后，将出现作业已停止的通知。
 
-3. 在“作业拓扑”标题下，选择“< > 查询”
+3. 在“作业拓扑”标题下，选择“< > 查询” 
 
 4. 粘贴调整后的流式处理 SQL 查询。
 
-5. 选择“保存”以保存查询。 选择“是”确认保存更改。
+5. 选择“保存”以保存查询。  选择“是”确认保存更改。 
 
-6. 在作业的“概述”页上选择“启动”。
+6. 在作业的“概述”页上选择“启动”。  
 
-7. 在“启动作业”窗格中选择“立即”。
+7. 在“启动作业”窗格中选择“立即”。  
 
 ### <a name="review-the-total-time-in-the-output"></a>查看输出中的总时间
 重复前一部分所述的步骤，查看流式处理作业返回的 CosmosDB 输出数据。 查看最新的 JSON 文档。
@@ -299,27 +300,27 @@ GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 1. **停止**当前作业。
 
-2. 在“< > 查询”页中更新查询语法，然后保存更改。
+2. 在“< > 查询”页中更新查询语法，然后保存更改。 
 
-3. 在流式处理作业的“配置”标题下，选择“缩放”。
+3. 在流式处理作业的“配置”标题下，选择“缩放”。 
 
-4. 将“流单元”滑块从 1 滑到 6。 流单元定义作业能够接收的计算能力大小。 选择“保存”。
+4. 将“流单元”滑块从 1 滑到 6。  流单元定义作业能够接收的计算能力大小。 选择**保存**。
 
 5. **启动**流式处理作业，以演示其他缩放操作。 Azure 流分析可在更多的计算资源之间分配工作，并可以使用 PARTITION BY 子句中指定的列将不同资源中的工作分区，从而提高吞吐量。
 
 ## <a name="monitor-the-job"></a>监视作业
-“监视器”区域包含正在运行的作业的相关统计信息。 需要完成首次配置，才能使用同一区域中的存储帐户（按本文档其余部分命名收费站）。
+“监视器”  区域包含正在运行的作业的相关统计信息。 需要完成首次配置，才能使用同一区域中的存储帐户（按本文档其余部分命名收费站）。
 
 ![Azure 流分析作业监视](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 
-还可通过作业仪表板的“设置”区域访问“活动日志”。
+还可通过作业仪表板的“设置”区域访问“活动日志”   。
 
 ## <a name="clean-up-the-tollapp-resources"></a>清理 TollApp 资源
 1. 请在 Azure 门户中停止流分析作业。
 
 2. 找到包含与 TollApp 模板相关的八个资源的资源组。
 
-3. 选择“删除资源组”。 键入资源组名称以确认删除。
+3. 选择“删除资源组”  。 键入资源组名称以确认删除。
 
 ## <a name="conclusion"></a>结束语
 本解决方案介绍了 Azure 流分析服务。 它演示了如何为流分析作业配置输入和输出。 本解决方案还使用收费站数据场景来解释在数据空间不断变化时所引发的常见问题类型，以及如何在 Azure 流分析中使用类似于 SQL 的简单查询来解决这些问题。 本解决方案介绍了用于处理时态数据的 SQL 扩展构造。 它演示了如何联接不同的数据流、如何使用静态引用数据来扩充数据流以及如何扩大查询以达成更高的吞吐量。

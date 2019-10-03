@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 11b6553fe8aceef0d3d15977998dd870c275128a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532739"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61294215"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>启用 Azure 开发测试实验室中自己的实验室中的已授权映像
 
@@ -30,17 +30,17 @@ ms.locfileid: "57532739"
 
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
+1. 选择“所有服务”  ，并从列表中选择“开发测试实验室”  。
 
 1. 从实验室列表，选择所需的实验室。  
 
-1. 在左侧面板的“设置”下，选择“配置和策略”。
+1. 在左侧面板的“设置”  下，选择“配置和策略”  。
 
-1. 在左侧面板的“虚拟机基础映像”下，选择“市场映像”。 
+1. 在左侧面板的“虚拟机基础映像”下  ，选择“市场映像”  。 
 
     ![市场映像菜单项](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-marketplace-images.png)
 
-    将显示所有可用市场映像的列表，包括每个映像的“产品/服务状态”。
+    将显示所有可用市场映像的列表，包括每个映像的“产品/服务状态”  。
 
     ![显示每个映像的产品/服务状态的市场映像列表](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-offer-status.png)
 
@@ -54,9 +54,9 @@ ms.locfileid: "57532739"
 
 可通过执行以下步骤来启用已授权映像的编程部署：
 
-1. 在 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)中，转到市场映像列表。
+1. 在 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)中，转到市场映像列表  。
 
-1. 确定你希望用户可以访问但尚未接受其条款的已授权映像。 例如，你可能会看到显示“已接受条款”或“需要评审条款”状态的数据科学虚拟机。
+1. 确定你希望用户可以访问但尚未接受其条款的已授权映像。 例如，你可能会看到显示“已接受条款”  或“需要评审条款”  状态的数据科学虚拟机。
 
     ![配置编程部署窗口](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
@@ -65,9 +65,9 @@ ms.locfileid: "57532739"
    >
    >
 
-1. 在映像的“产品/服务状态”列中，选择“需要评审条款”。
+1. 在映像的“产品/服务状态”  列中，选择“需要评审条款”  。
 
-1. 在“配置编程部署”窗口中，选择“启用”。
+1. 在“配置编程部署”窗口中，选择“启用”  。
 
     ![配置编程部署窗口](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-enable-programmatic-deployment.png)
 
@@ -77,9 +77,9 @@ ms.locfileid: "57532739"
    >
 
 
-1. 选择“保存”。 
+1. 选择“保存”。  
 
-    在市场映像列表中，该映像现在显示“已接受条款”且可供用户用于创建虚拟机。
+    在市场映像列表中，该映像现在显示“已接受条款”  且可供用户用于创建虚拟机。
 
 > [!NOTE]
 > 用户可从已许可的映像中创建自定义映像。 有关详细信息，请参阅[从 VHD 文件创建自定义映像](devtest-lab-create-template.md)。

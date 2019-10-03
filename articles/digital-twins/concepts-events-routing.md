@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: b7ace0718ea0fad0b746a40c90acff487ae314d5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: 81f2cc32ee10e891ffab127d6ecd7909eb75abd6
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035689"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177082"
 ---
 # <a name="routing-events-and-messages"></a>路由事件和消息
 
@@ -21,7 +21,7 @@ IoT 解决方案通常将多种强大的服务（包括存储和分析等）结�
 
 ## <a name="route-types"></a>路由类型  
 
-Azure 数字孪生提供两种方法用于将 IoT 事件集成到其他 Azure 服务或商业应用程序：
+Azure 数字孪生提供了两种连接 IoT 事件与其他 Azure 服务或业务应用程序的方式：
 
 * **路由 Azure 数字孪生事件**：当空间图中的对象发生更改、收到遥测数据或用户定义的函数根据预定义的条件创建通知时，可以触发 Azure 数字孪生事件。 用户可以将这些事件发送到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)、[Azure 服务总线主题](https://azure.microsoft.com/services/service-bus/)或 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)以进一步进行处理。
 
@@ -29,7 +29,7 @@ Azure 数字孪生提供两种方法用于将 IoT 事件集成到其他 Azure �
 
 用户可以指定一个或多个出口终结点来发送事件或转发消息。 事件和消息将根据这些预定义的路由首选项发送到终结点。 换句话说，用户可以指定特定的终结点来接收图形操作事件，指定另一个终结点来接收设备遥测事件等。
 
-![Azure 数字孪生事件路由][1]
+[![Azure 数字孪生事件路由](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
 到事件中心的路由保持遥测消息的发送顺序。 因此，消息将按照最初接收的相同顺序抵达终结点。 事件网格和服务总线不保证终结点按照事件的发生顺序接收事件。 但是，事件架构包含时间戳，可用于确定事件到达终结点后的顺序。
 
@@ -67,6 +67,3 @@ Azure 数字孪生当前支持以下将发送到所选终结点的 EventTypes：
 - 若要了解 Azure 数字孪生预览版的限制，请参阅[公共预览版服务的限制](concepts-service-limits.md)。
 
 - 若要尝试 Azure 数字孪生示例，请参阅[查找可用房间的快速入门](quickstart-view-occupancy-dotnet.md)。
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-events-routing.png

@@ -1,22 +1,21 @@
 ---
 title: Apache Kafka on HDInsight 简介 - Azure
 description: 了解 Apache Kafka on HDInsight：了解它的涵义和用途以及在何处可找到示例和入门信息。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 04/11/2018
-ms.openlocfilehash: 4d054542d600f2569170f40b8f6c053e005fc8af
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 06/13/2019
+ms.openlocfilehash: 7cf83af52d5bedee5b4d57ee1b4dda2fb34d1b3f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889182"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960093"
 ---
-# <a name="what-is-apache-kafka-on-hdinsight"></a>什么是 Apache Kafka on HDInsight？
+# <a name="what-is-apache-kafka-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Kafka
 
 [Apache Kafka](https://kafka.apache.org) 是一个分布式流式处理平台，以开源方式提供，可用于构建实时流式处理数据管道和应用程序。 Kafka 还提供了类似于消息队列的消息中转站，可在其中发布和订阅命名数据流。 
 
@@ -46,15 +45,15 @@ Kafka on HDInsight 的具体特征如下：
 
 下图显示了一个典型的 Kafka 配置，该配置利用使用者组、分区和复制提供带容错功能的事件并行读取：
 
-![Kafka 群集配置关系图](./media/apache-kafka-introduction/kafka-cluster.png)
+![Kafka 群集配置关系图](./media/apache-kafka-introduction/kafka-cluster-diagram.png)
 
 Apache ZooKeeper 管理 Kafka 群集的状态。 Zookeeper 专用于并发、可复原和低延迟事务。 
 
-Kafka 将记录（数据）存储在主题中。 记录由生成者生成，由使用者使用。 生成者将记录发送到 Kafka 代理。 HDInsight 群集中的每个辅助角色节点都是 Kafka 代理。 
+Kafka 将记录（数据）存储在主题中  。 记录由生成者  生成，由使用者  使用。 生成者将记录发送到 Kafka 代理  。 HDInsight 群集中的每个辅助角色节点都是 Kafka 代理。 
 
 主题跨代理对记录进行分区。 在使用记录时，每个分区最多可使用一个使用者来实现数据并行处理。
 
-利用复制功能将分区复制到各个节点上，以防止发生节点（代理）服务中断。 关系图中用 (L) 表示的分区是给定分区的前导者。 生成方流量将根据由 ZooKeeper 管理的状态路由到每个节点的前导者。
+利用复制功能将分区复制到各个节点上，以防止发生节点（代理）服务中断。 关系图中用 (L) 表示的分区是给定分区的前导者  。 生成方流量将根据由 ZooKeeper 管理的状态路由到每个节点的前导者。
 
 ## <a name="why-use-apache-kafka-on-hdinsight"></a>为何使用 Apache Kafka on HDInsight？
 

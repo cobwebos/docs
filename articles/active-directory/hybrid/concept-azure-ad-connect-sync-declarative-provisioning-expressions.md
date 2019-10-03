@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181977"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60245505"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解声明性设置表达式
 Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的声明式预配。 使用该功能可以实现完整的标识集成业务逻辑，而无需编写已编译的代码。
@@ -42,7 +42,7 @@ Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的
 * 内置常量和文本仅使用其名称表示：NULL、CRLF、IgnoreThisFlow
 
 ### <a name="functions"></a>函数
-声明性预配使用许多函数来实现转换属性值的可能性。 这些函数可以嵌套，因此，一个函数的结果将传递到另一个函数。
+声明性预配使用许多函数来实现转换属性值的可能性。 这些函数可以嵌套，因此，一个函数的结果会传递到另一个函数。
 
 `Function1(Function2(Function3()))`
 
@@ -88,8 +88,8 @@ Active Directory 连接器为入站同步规则提供以下参数：
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` 查找 SIP 地址并从值中删除该地址。
 
 ## <a name="next-steps"></a>后续步骤
-* 在 [Understanding Declarative Provisioning](concept-azure-ad-connect-sync-declarative-provisioning.md)（了解声明性预配）中了解有关配置模型的详细信息。
-* 在 [Understanding the default configuration](concept-azure-ad-connect-sync-default-configuration.md)（了解默认配置）中了解如何现成地使用声明式预配。
+* 在[了解声明性预配](concept-azure-ad-connect-sync-declarative-provisioning.md)中阅读有关配置模型的详细信息。
+* 在[了解默认配置](concept-azure-ad-connect-sync-default-configuration.md)中了解如何现成使用声明性设置。
 * 在 [How to make a change to the default configuration](how-to-connect-sync-change-the-configuration.md)（如何对默认配置进行更改）中了解如何使用声明性预配进行实际更改。
 
 **概述主题**

@@ -2,23 +2,23 @@
 title: 还原或永久删除最近删除的用户 - Azure Active Directory | Microsoft Docs
 description: 如何使用 Azure Active Directory 查看可还原的用户、还原已删除的用户或永久删除用户。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d69bd931f2f8c72fd1e6fc79c16662ea367617d6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9864634020ad115a48bdb70a6736733919d0f0d3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802008"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561669"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>使用 Azure Active Directory 还原或删除最近删除的用户
 删除用户后，帐户将保持挂起状态 30 天。 在此 30 天期间，可以还原用户帐户及其所有属性。 30 天期限过后，将自动且永久删除用户。
@@ -33,9 +33,9 @@ ms.locfileid: "58802008"
 
 - 全局管理员
 
-- 合作伙伴一线支持人员
+- 合作伙伴层级 1 支持
 
-- 合作伙伴二线支持人员
+- 合作伙伴层级 2 支持
 
 - 用户管理员
 

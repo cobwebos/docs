@@ -1,47 +1,57 @@
 ---
-title: 配置 Azure 存储的连接字符串 | Microsoft Docs
-description: 配置 Azure 存储帐户的连接字符串。 连接字符串包含在运行时从应用程序访问 Azure 存储帐户所需的授权信息。
+title: 为 Azure 存储配置连接字符串
+description: 配置 Azure 存储帐户的连接字符串。 连接字符串包含在运行时使用共享密钥授权从应用程序访问存储帐户所需的信息。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 06/20/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 26670a739bca03a2c9bbe6617cf433c730a7489e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: d1106865b3a2ea3164090896c5b90ab08f996f3d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473810"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640494"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>配置 Azure 存储连接字符串
 
-连接字符串包含应用程序在运行时访问 Azure 存储帐户中数据所需的身份验证信息。 可以将连接字符串配置为：
+连接字符串包含应用程序在运行时使用共享密钥授权访问 Azure 存储帐户中的数据所需的授权信息。 可以将连接字符串配置为：
 
 * 连接到 Azure 存储模拟器。
 * 在 Azure 中访问存储帐户。
 * 通过共享访问签名 (SAS) 访问 Azure 中的指定资源。
 
+[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
+
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-## <a name="storing-your-connection-string"></a>存储连接字符串
+## <a name="view-and-copy-a-connection-string"></a>查看和复制连接字符串
+
+[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
+
+## <a name="store-a-connection-string"></a>存储连接字符串
+
 应用程序需要在运行时访问连接字符串，才能授权对 Azure 存储发出的请求。 可以通过几个选项来存储连接字符串：
 
+* 可以将连接字符串存储在环境变量中。
 * 在桌面或设备上运行的应用程序可以在 **app.config** 文件或 **web.config** 文件中存储连接字符串。 将连接字符串添加到这些文件的 **AppSettings** 部分。
 * 在 Azure 云服务中运行的应用程序可以在 [Azure service configuration schema (.cscfg) file](https://msdn.microsoft.com/library/ee758710.aspx)（Azure 服务配置架构 (.cscfg) 文件）中存储连接字符串。 将连接字符串添加到服务配置文件的 **ConfigurationSettings** 部分。
-* 可以直接在代码中使用连接字符串。 但是，在大部分情况下，建议在配置文件中存储连接字符串。
 
 在一个配置文件中存储连接字符串可以轻松地更新连接字符串，从而在存储模拟器和云中的 Azure 存储帐户之间切换。 只需编辑连接字符串，使其指向目标环境。
 
-可以使用 [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) 在运行时访问连接字符串，而不考虑应用程序在何处运行。
+可以使用 [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) 在运行时访问连接字符串，而不考虑应用程序在何处运行。
 
-## <a name="create-a-connection-string-for-the-storage-emulator"></a>创建存储模拟器的连接字符串
+## <a name="configure-a-connection-string-for-the-storage-emulator"></a>为存储模拟器配置连接字符串
+
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
 有关存储模拟器的详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](storage-use-emulator.md)。
 
-## <a name="create-a-connection-string-for-an-azure-storage-account"></a>创建 Azure 存储帐户的连接字符串
+## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>为 Azure 存储帐户配置连接字符串
+
 若要创建 Azure 存储帐户的连接字符串，请使用下面的格式。 指示要通过 HTTPS（建议）还是 HTTP 连接到存储帐户，将 `myAccountName` 替换为存储帐户的名称，将 `myAccountKey` 替换为帐户访问密钥：
 
 `DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey`
@@ -57,9 +67,11 @@ ms.locfileid: "55473810"
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>使用共享访问签名创建连接字符串
+
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
 ## <a name="create-a-connection-string-for-an-explicit-storage-endpoint"></a>创建显式存储终结点的连接字符串
+
 可以在连接字符串中显式指定服务终结点，而不使用默认终结点。 若要创建指定显式终结点的连接字符串，请使用以下格式为每个服务指定完整的服务终结点，包括协议规范（HTTPS（建议）或 HTTP）：
 
 ```
@@ -106,7 +118,8 @@ AccountKey=<account-key>
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>创建含终结点后缀的连接字符串
-若要针对具有不同终结点后缀的地区或实例内的存储服务创建一个连接字符串，例如针对 Azure 中国或 Azure 政府，请使用以下连接字符串格式。 指出是通过 HTTPS（推荐）还是 HTTP 连接到存储帐户，将 `myAccountName` 替换为存储帐户的名称，将 `myAccountKey` 替换为帐户访问密钥，并将 `mySuffix` 替换为 URI 后缀：
+
+若要针对具有不同终结点后缀的区域或实例内的存储服务创建连接字符串，例如针对 Azure 中国世纪互联或 Azure 政府，请使用以下连接字符串格式。 指出是通过 HTTPS（推荐）还是 HTTP 连接到存储帐户，将 `myAccountName` 替换为存储帐户的名称，将 `myAccountKey` 替换为帐户访问密钥，并将 `mySuffix` 替换为 URI 后缀：
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -115,7 +128,7 @@ AccountKey=myAccountKey;
 EndpointSuffix=mySuffix;
 ```
 
-下面是 Azure 中国中存储服务的连接字符串示例：
+下面是 Azure 中国世纪互联的存储服务的示例连接字符串：
 
 ```
 DefaultEndpointsProtocol=https;
@@ -125,10 +138,11 @@ EndpointSuffix=core.chinacloudapi.cn;
 ```
 
 ## <a name="parsing-a-connection-string"></a>分析连接字符串
+
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
 * [使用 Azure 存储模拟器进行开发和测试](storage-use-emulator.md)
 * [Azure 存储资源管理器](storage-explorers.md)
-* [使用共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md)
-
+* [使用共享访问签名 (SAS)](storage-sas-overview.md)

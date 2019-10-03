@@ -2,18 +2,19 @@
 title: 结合使用 Azure 经典 CLI 与 Azure 存储 | Microsoft 文档
 description: 了解如何结合使用 Azure 经典命令行接口 (CLI) 与 Azure 存储，以便创建和管理存储帐户并处理 Azure blob 和文件。
 services: storage
-author: seguler
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 01/30/2017
-ms.author: seguler
+ms.author: tamram
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 211051254e08d69c06afd4242599c909048e7e17
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 88f713c5695e2453edc58d072899aa417f0514af
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464834"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65147042"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>结合使用 Azure 经典 CLI 与 Azure 存储
 
@@ -46,7 +47,7 @@ Azure 经典 CLI 提供了一组开源且跨平台的命令，可结合 Azure �
 
     ![Azure 命令输出](./media/storage-azure-cli/azure_command.png)   
 3. 在命令行接口中，键入 `azure storage` 即可列出所有 Azure 存储命令，并初步了解经典 CLI 提供的功能。 可以键入带 **-h** 参数的命令名称（例如，`azure storage share create -h`），了解命令语法的详细信息。
-4. 现在，我们将提供一个简单的脚本，演示用于访问 Azure 存储的基本经典 CLI 命令。 该脚本会首先要求针对存储帐户和密钥设置两个变量。 然后，该脚本会在此新存储帐户中创建新容器，并将现有图像文件 (Blob) 上传到该容器。 脚本在列出该容器中的所有 Blob 后，就会将图像文件下载到本地计算机上的目标目录。
+4. 现在，我们将提供一个简单的脚本，演示用于访问 Azure 存储的基本经典 CLI 命令。 该脚本会首先要求针对存储帐户和密钥设置两个变量。 然后，该脚本将在此新存储帐户中创建新容器，并将现有图像文件 (Blob) 上传到该容器。 脚本在列出该容器中的所有 Blob 后，就会将图像文件下载到本地计算机上的目标目录。
 
     ```azurecli
     #!/bin/bash
@@ -78,11 +79,11 @@ Azure 经典 CLI 提供了一组开源且跨平台的命令，可结合 Azure �
 5. 在本地计算机中，打开首选的文本编辑器（例如 vim）。 在文本编辑器中键入上述脚本。
 6. 现在，需要基于配置设置更新脚本变量。
 
-   * **<storage_account_name>**：使用脚本中给定的名称，或输入存储帐户的新名称。 **重要提示：** 在 Azure 中，存储帐户名必须是唯一的。 它还必须为小写！
-   * **<storage_account_key>**：存储帐户的访问密钥。
-   * **<container_name>**：使用脚本中给定的名称，或输入容器的新名称。
-   * **<image_to_upload>**：输入本地计算机上图片的路径，例如：“~/images/HelloWorld.png”。
-   * **<destination_folder>**：输入用于存储从 Azure 存储下载的文件的本地目录路径，例如：“~/downloadImages”。
+   * **<storage_account_name>** ：使用脚本中给定的名称，或输入存储帐户的新名称。 **重要提示：** 在 Azure 中，存储帐户名必须是唯一的。 它还必须为小写！
+   * **<storage_account_key>** ：存储帐户的访问密钥。
+   * **<container_name>** ：使用脚本中给定的名称，或输入容器的新名称。
+   * <image_to_upload>  ：输入本地计算机上图片的路径，例如：“~/images/HelloWorld.png”。
+   * **<destination_folder>** ：输入用于存储从 Azure 存储下载的文件的本地目录路径，例如：“~/downloadImages”。
 7. 在 vim 中更新完必需的变量以后，按组合键 `ESC`、`:`、`wq!` 保存脚本。
 8. 若要运行此脚本，在 bash 控制台中键入脚本文件名即可。 运行此脚本后，应会创建包含已下载图像文件的本地目标文件夹。 以下屏幕截图显示了示例输出：
 
@@ -132,12 +133,12 @@ azure storage container create mycontainer
 ```
 
 > [!NOTE]
-> 有三种级别的匿名读取访问：“关”、“Blob”和“容器”。 要防止对 Blob 进行匿名访问，请将 Permission 参数设置为 **Off**。 默认情况下，新容器是专用容器，只能由帐户所有者访问。 要允许对 Blob 资源进行匿名公共读取访问，但不允许访问容器元数据或容器中的 Blob 列表，请将 Permission 参数设置为 **Blob**。 要允许对 Blob 资源、容器元数据和容器中的 Blob 列表进行完全公开读取访问，请将 Permission 参数设置为 **Container**。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)。
+> 有三种级别的匿名读取访问：“关”  、“Blob”  和“容器”  。 要防止对 Blob 进行匿名访问，请将 Permission 参数设置为 **Off**。 默认情况下，新容器是专用容器，只能由帐户所有者访问。 要允许对 Blob 资源进行匿名公共读取访问，但不允许访问容器元数据或容器中的 Blob 列表，请将 Permission 参数设置为 **Blob**。 要允许对 Blob 资源、容器元数据和容器中的 Blob 列表进行完全公开读取访问，请将 Permission 参数设置为 **Container**。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)。
 >
 >
 
 ### <a name="upload-a-blob-into-a-container"></a>将 Blob 上传到容器中
-Azure Blob 存储支持块 Blob 和页 Blob。 有关详细信息，请参阅 [Understanding Block Blobs, Append Blobs, and Page Blobs](https://msdn.microsoft.com/library/azure/ee691964.aspx)（了解块 Blob、追加 Blob 和页 Blob）。
+Azure Blob 存储支持块 Blob 和页 Blob。 有关详细信息，请参阅 [了解块 Blob、追加 Blob 和页 Blob](https://msdn.microsoft.com/library/azure/ee691964.aspx)。
 
 要将 blob 上传到容器，可使用 `azure storage blob upload`。 默认情况下，此命令会将本地文件上传到块 Blob。 若要指定 Blob 的类型，可以使用 `--blobtype` 参数。
 
@@ -193,10 +194,10 @@ azure storage share create myshare
 azure storage directory create myshare myDir
 ```
 
-请注意，目录路径可以包括多个级别，*例如* **a/b**。 但是，必须确保所有父目录都存在。 例如，对于路径 **a/b**，必须先创建目录 **a**，然后创建目录 **b**。
+请注意，目录路径可以包括多个级别， *例如***a/b**。 但是，必须确保所有父目录都存在。 例如，对于路径 a/b  ，必须先创建目录 a  ，然后创建目录 b  。
 
 ### <a name="upload-a-local-file-to-directory"></a>将本地文件上传到目录
-以下示例将文件从 **~/temp/samplefile.txt** 上传到 **myDir** 目录。 请编辑文件路径，使其指向本地计算机上的有效文件：
+以下示例将文件从 ~/temp/samplefile.txt  上传到 myDir  目录。 请编辑文件路径，使其指向本地计算机上的有效文件：
 
 ```azurecli
 azure storage file upload '~/temp/samplefile.txt' myshare myDir

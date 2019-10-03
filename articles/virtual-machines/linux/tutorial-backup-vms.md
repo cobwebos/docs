@@ -4,24 +4,23 @@ description: 本教程介绍如何在 Azure 门户中使用 Azure 备份保护 L
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c91e2b1380e5048fa1dfb7a0e028c88e589cbaa4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 890d4ab0dcbaa814b4ce3365025e4c35e4ba4c6b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190549"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103539"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>教程：在 Azure 中备份和还原 Linux 虚拟机的文件
 
@@ -45,15 +44,15 @@ ms.locfileid: "32190549"
 在恢复服务保管库中创建计划每日备份：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在左侧菜单中选择“虚拟机”。 
+2. 在左侧菜单中选择“虚拟机”。  
 3. 从列表中选择要备份的 VM。
-4. 在 VM 边栏选项卡上的“设置”部分中，单击“备份”。 此时会打开“启用备份”边栏选项卡。
-5. 在“恢复服务保管库”中，单击“新建”并为新保管库提供名称。 将在与虚拟机相同的资源组和位置中创建新保管库。
-6. 单击“备份策略”。 对于本示例，请保留默认值，并单击“确定”。
-7. 在“启用备份”边栏选项卡中，单击“启用备份”。 这会根据默认的计划创建每日备份。
-10. 若要创建初始恢复点，请在“备份”边栏选项卡中单击“立即备份”。
-11. 在“立即备份”边栏选项卡中单击日历图标，使用日历控件选择保留此恢复点的最后一天，并单击“备份”。
-12. 在 VM 的“备份”边栏选项卡中，可以看到已完成的恢复点数。
+4. 在 VM 边栏选项卡上的“设置”部分中，单击“备份”。   此时会打开“启用备份”边栏选项卡。 
+5. 在“恢复服务保管库”中，单击“新建”并为新保管库提供名称。   将在与虚拟机相同的资源组和位置中创建新保管库。
+6. 单击“备份策略”。  对于本示例，请保留默认值，并单击“确定”。 
+7. 在“启用备份”边栏选项卡中，单击“启用备份”。   这会根据默认的计划创建每日备份。
+10. 若要创建初始恢复点，请在“备份”边栏选项卡中单击“立即备份”。  
+11. 在“立即备份”边栏选项卡中单击日历图标，使用日历控件选择保留此恢复点的最后一天，并单击“备份”。  
+12. 在 VM 的“备份”边栏选项卡中，可以看到已完成的恢复点数。 
 
     ![恢复点](./media/tutorial-backup-vms/backup-complete.png)
 
@@ -90,13 +89,13 @@ ms.locfileid: "32190549"
     ![默认的 nginx 网页](./media/tutorial-backup-vms/nginx-broken.png)
     
 1. 在本地计算机上登录到 [Azure 门户](https://portal.azure.com/)。
-6. 在左侧菜单中选择“虚拟机”。 
+6. 在左侧菜单中选择“虚拟机”。  
 7. 从列表中选择 VM。
-8. 在 VM 边栏选项卡上的“设置”部分中，单击“备份”。 此时会打开“备份”边栏选项卡。 
-9. 在边栏选项卡顶部的菜单中，选择“文件恢复”。 此时会打开“文件恢复”边栏选项卡。
-10. 在“步骤 1: 选择恢复点”中，从下拉列表中选择恢复点。
-11. 在“步骤 2: 下载脚本以浏览并恢复文件”中，单击“下载可执行文件”按钮。 将下载的文件保存到本地计算机。
-7. 单击“下载脚本”在本地下载脚本文件。
+8. 在 VM 边栏选项卡上的“设置”部分中，单击“备份”。   此时会打开“备份”边栏选项卡。  
+9. 在边栏选项卡顶部的菜单中，选择“文件恢复”。  此时会打开“文件恢复”边栏选项卡。 
+10. 在**步骤 1：选择恢复点**中，从下拉列表中选择恢复点。
+11. 在**步骤 2：下载脚本以浏览并恢复文件”中，单击“下载可执行文件”按钮**  。 将下载的文件保存到本地计算机。
+7. 单击“下载脚本”在本地下载脚本文件。 
 8. 打开 Bash 提示符并键入以下命令。请将 *Linux_myVM_05 05 2017.sh* 替换为下载的脚本的正确路径和文件名，将 *azureuser* 替换为 VM 的用户名，将 *13.69.75.209* 替换为 VM 的公共 IP 地址。
     
     ```bash
@@ -156,7 +155,7 @@ ms.locfileid: "32190549"
 
     ![默认的 nginx 网页](./media/tutorial-backup-vms/nginx-working.png)
 
-18. 在本地计算机上，返回到 Azure 门户的浏览器选项卡，并在“步骤 3: 恢复后卸载磁盘”中单击“卸载磁盘”按钮。 如果忘记执行此步骤，与装入点的连接会在 12 小时后自动关闭。 在这 12 个小时后，若要创建新的装入点，需要下载新脚本。
+18. 在本地计算机上，返回 Azure 门户的浏览器选项卡，在**步骤 3：恢复后卸载磁盘**中，单击“卸载磁盘”按钮  。 如果忘记执行此步骤，与装入点的连接会在 12 小时后自动关闭。 在这 12 个小时后，若要创建新的装入点，需要下载新脚本。
 
 
 ## <a name="next-steps"></a>后续步骤

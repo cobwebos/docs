@@ -14,11 +14,11 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: e02400ef940efdf42370fbdc1da75bdc7062a8ef
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243699"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127355"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure 开发测试实验室基础结构的监管 - 公司策略与合规性
 本文提供有关监管 Azure 开发测试实验室基础结构的公司策略与合规性的指导。 
@@ -44,7 +44,7 @@ ms.locfileid: "56243699"
 作为组织总体监管和配置管理策略的一部分，我们建议使用集中式存储库。 使用多个存储库时，它们可能会逐渐变成孤立的非托管软件。 使用中心存储库时，多个团队可对其项目使用此存储库中的项目。 此方法强制实施标准化、安全性和易管理性方面的措施，并消除了重复工作。 在集中化过程中，建议采取以下措施来实现长期管理和可持续性：
 
 - 将 Azure Repos 与 Azure 订阅用于身份验证和授权的同一 Azure Active Directory 租户相关联。
-- 在 Azure Active Directory 中创建名为“所有开发测试实验室开发人员”的集中管理的组。 应将参与项目开发的任何开发人员置于此组中。
+- 在 Azure Active Directory 中创建名为“所有开发测试实验室开发人员”的集中管理的组。  应将参与项目开发的任何开发人员置于此组中。
 - 可使用同一个 Azure Active Directory 组来提供对 Azure Repos 存储库和实验室的访问。
 - 在 Azure Repos 中，应使用分支或分叉将开发中存储库与主要生产存储库相隔离。 在正确完成代码评审后，使用拉取请求将内容仅添加到主分支。 代码评审员批准更改后，负责主分支维护工作的开发人员主管合并更新的代码。 
 

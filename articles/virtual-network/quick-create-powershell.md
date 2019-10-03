@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: 本快速入门介绍如何使用 Azure 门户创建虚拟网络。 虚拟网络能让 Azure 资源（例如虚拟机）彼此之间私下通信以及与 Internet 进行通信。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
+author: KumudD
 tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
-ms.author: jdial
-ms.openlocfilehash: 57c3b5099c24151794b27f4aeec7845495a4630a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.author: kumud
+ms.openlocfilehash: 3a21bff9e4c696063458d5734a579fc7c37258a7
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670395"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730079"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>快速入门：使用 PowerShell 创建虚拟网络
 
@@ -27,7 +27,7 @@ ms.locfileid: "56670395"
 
 如果还没有 Azure 订阅，请现在就创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果决定在本地安装并使用 PowerShell，则本快速入门需要使用 Azure PowerShell 模块 1.0.0 版本或更高版本。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)，获取安装和升级信息。
 
@@ -39,7 +39,7 @@ ms.locfileid: "56670395"
 
 ### <a name="create-the-resource-group"></a>创建资源组
 
-在创建虚拟网络之前，必须创建一个资源组用于托管该虚拟网络。 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 此示例在 eastus 位置中创建一个名为 myResourceGroup 的资源组：
+在创建虚拟网络之前，必须创建一个资源组用于托管该虚拟网络。 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 此示例在 eastus  位置中创建一个名为 myResourceGroup  的资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -47,7 +47,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ### <a name="create-the-virtual-network"></a>创建虚拟网络
 
-使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 此示例在 EastUS  位置创建名为 myVirtualNetwork 的默认虚拟网络：
+使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 此示例在 EastUS  位置创建名为 myVirtualNetwork  的默认虚拟网络：
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -59,7 +59,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>添加子网
 
-Azure 将资源部署到虚拟网络中的子网，因此需要创建子网。 使用 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 创建名为“default”的子网配置：
+Azure 将资源部署到虚拟网络中的子网，因此需要创建子网。 使用 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 创建名为“default”  的子网配置：
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -123,7 +123,7 @@ New-AzVm `
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 返回 VM 的公共 IP 地址。 此示例返回 myVm1 VM 的公共 IP 地址：
+使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 返回 VM 的公共 IP 地址。 此示例返回 myVm1  VM 的公共 IP 地址：
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -140,23 +140,20 @@ Get-AzPublicIpAddress `
 ```cmd
 mstsc /v:<publicIpAddress>
 ```
-
-将远程桌面协议 (.rdp) 文件下载到计算机后，随即会打开一个远程桌面。
-
-1. 出现提示时，选择“连接”。
+1. 出现提示时，选择“连接”  。
 
 1. 输入在创建 VM 时指定的用户名和密码。
 
     > [!NOTE]
-    > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据。
+    > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据   。
 
-1. 选择“确定”。
+1. 选择“确定”  。
 
-1. 可能会收到证书警告。 如果收到证书警告，选择“确定”或“继续”。
+1. 可能会收到证书警告。 如果收到证书警告，选择“确定”或“继续”   。
 
 ## <a name="communicate-between-vms"></a>VM 之间进行通信
 
-1. 在 myVm1 远程桌面中，打开 PowerShell。
+1. 在 myVm1 远程桌面中，打开 PowerShell  。
 
 1. 输入 `ping myVm2` 。
 
@@ -177,7 +174,7 @@ mstsc /v:<publicIpAddress>
 
     由于使用 Internet 控制消息协议 (ICMP)，执行 ping 操作失败。 默认情况下，不允许 ICMP 通过 Windows 防火墙。
 
-1. 要允许 myVm2 在后面的步骤中对 myVm1 执行 ping 操作，请输入以下命令：
+1. 要允许 myVm2  在后面的步骤中对 myVm1 执行 ping 操作  ，请输入以下命令：
 
     ```powershell
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
@@ -187,7 +184,7 @@ mstsc /v:<publicIpAddress>
 
 1. 关闭与 *myVm1* 的远程桌面连接。
 
-1. 重复[从 Internet 连接到 VM](#connect-to-a-vm-from-the-internet) 中的步骤。 这一次，连接到 myVm2。
+1. 重复[从 Internet 连接到 VM](#connect-to-a-vm-from-the-internet) 中的步骤。 这一次，连接到 myVm2  。
 
 1. 在 *myVm2* VM上的命令提示符处，输入 `ping myvm1`。
 

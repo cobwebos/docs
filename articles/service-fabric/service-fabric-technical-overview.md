@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: 085d5e560eec090ab76c263f8f93140786f2d734
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 82672114722db843fcb5d0bdff28cf14cddb1aef
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668428"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68811925"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
 Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。  可以[在任何位置托管 Service Fabric 群集](service-fabric-deploy-anywhere.md)：Azure、本地数据中心或任何云提供程序。  Service Fabric 是支持 [Azure Service Fabric 网格](/azure/service-fabric-mesh)的业务流程协调程序。 可以使用任何框架编写服务，并从多个环境选项中选择运行应用程序的位置。 本文详细介绍 Service Fabric 所使用的术语，帮助了解文档中使用的术语。
@@ -142,7 +142,7 @@ Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，�
 
 **容器**：Service Fabric 支持在 Linux 上部署 Docker 容器，在 Windows Server 2016 上部署 Windows Server 容器，同时支持 Hyper-V 隔离模式。 在 Service Fabric [应用程序模型](service-fabric-application-model.md)中，容器表示放置多个服务副本的应用程序主机。 Service Fabric 可运行任何容器，该方案类似于来宾可执行的方案，可在容器内打包现有应用程序。 此外，也可[在容器内运行 Service Fabric 服务](service-fabric-services-inside-containers.md)。
 
-**来宾可执行文件**：可以在 Azure Service Fabric 中运行任何类型的代码（如 Node.js、Java 或 C++）作为服务。 Service Fabric 将这些类型的服务称为来宾可执行文件，视其为无状态服务。 在 Service Fabric 群集中运行来宾可执行文件的优点包括高可用性、运行状况监视、应用程序生命周期管理、高密度和可发现性。
+**来宾可执行文件**：可以在 Azure 中运行任何类型的代码 (如 node.js、Python、Java 或C++作为服务) Service Fabric。 Service Fabric 将这些类型的服务称为来宾可执行文件，视其为无状态服务。 在 Service Fabric 群集中运行来宾可执行文件的优点包括高可用性、运行状况监视、应用程序生命周期管理、高密度和可发现性。
 
 有关详细信息，请阅读[为服务选择编程模型](service-fabric-choose-framework.md)一文。
 
@@ -164,13 +164,13 @@ Service Fabric 是一种开放源平台技术，多种不同的服务和产品�
 | 应用程序类型 | 介绍依据 | Azure Service Fabric 网格 | Azure Service Fabric 群集（任何 OS）| 本地群集 | 独立群集 |
 |---|---|---|---|---|---|
 | Service Fabric 网格应用程序 | 资源模型（YAML 和 JSON） | 支持 |不支持 | Windows - 支持，Linux 和 Mac - 不支持 | Windows - 不支持 |
-|Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | 不支持| 支持|支持|Windows - 支持|
+|Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | 不受支持| 支持|支持|Windows - 支持|
 
 下表介绍了不同的应用模型以及针对 Service Fabric 为它们提供的工具。
 
 | 应用程序类型 | 介绍依据 | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
 |---|---|---|---|---|---|---|
-| Service Fabric 网格应用程序 | 资源模型（YAML 和 JSON） | VS 2017 |不支持 |不支持 | 支持 - 仅网格环境 | 不支持|
+| Service Fabric 网格应用程序 | 资源模型（YAML 和 JSON） | VS 2017 |不支持 |不支持 | 支持 - 仅网格环境 | 不受支持|
 |Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | VS 2017 和 VS 2015| 支持|支持|支持|支持|
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->

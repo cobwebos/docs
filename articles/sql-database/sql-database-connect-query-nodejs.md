@@ -1,22 +1,22 @@
 ---
-title: 使用 Node.js 查询 Azure SQL 数据库 | Microsoft Docs
+title: 快速入门：使用 Node.js 查询 Azure SQL 数据库
 description: 如何使用 Node.js 创建连接到 Azure SQL 数据库的程序并使用 T-SQL 语句对其进行查询。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.devlang: nodejs
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: v-masebo
-manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: cd0435ffc27402299da85434693dcdf32a4083ca
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: b865bca5db11c4a34a1be4deb2e3145d73599e81
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444704"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059277"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>快速入门：使用 Node.js 查询 Azure SQL 数据库
 
@@ -26,7 +26,7 @@ ms.locfileid: "58444704"
 
 若要完成此示例，请确保具备以下先决条件：
 
-- Azure SQL 数据库。 可以根据下述快速入门中的一个的说明在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+- Azure SQL 数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
   || 单一数据库 | 托管实例 |
   |:--- |:--- |:---|
@@ -57,13 +57,13 @@ ms.locfileid: "58444704"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 导航到“SQL 数据库”或“SQL 托管实例”页。
+2. 转到“SQL 数据库”或“SQL 托管实例”页。  
 
-3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标。 
+3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称    。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标  。 
 
 ## <a name="create-the-project"></a>创建项目
 
-打开命令提示符，然后创建一个名为 sqltest 的文件夹。 导航到已创建的文件夹，并运行以下命令：
+打开命令提示符，然后创建一个名为 sqltest 的文件夹  。 打开已创建的文件夹，并运行以下命令：
 
   ```bash
   npm init -y

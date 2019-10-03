@@ -10,20 +10,25 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 05bd4fdd220b47b11dfed9857dbc8dbe25b236df
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 39c03058970a412a9bc312f99c239377898e5073
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529787"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092104"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory-preview"></a>使用 Azure 数据工厂从 Dynamics AX 中复制数据（预览版）
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Dynamics AX 源复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此 Dynamics AX 连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 Dynamics AX 复制到任何受支持的接收器数据存储。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 
@@ -32,13 +37,13 @@ ms.locfileid: "57529787"
 >[!TIP]
 >还可以使用此连接器从 **Dynamics 365 Finance and Operations** 复制数据。 请参阅 Dynamics 365 的 [OData 支持](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata)和[身份验证方法](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication)。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Dynamics AX 连接器的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要使用服务主体身份验证，请执行以下步骤：
 
@@ -60,7 +65,7 @@ Dynamics AX 链接的服务支持以下属性：
 | url | Dynamics AX（或 Dynamics 365 Finance and Operations）实例 OData 终结点。 |是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
-| tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
+| 租户 | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
 | aadResourceId | 指定你请求授权的 AAD 资源。 例如，如果动态 URL 为 `https://sampledynamics.sandbox.operations.dynamics.com/data/`，则相应的 AAD 资源通常为 `https://sampledynamics.sandbox.operations.dynamics.com`。 | 是 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 可选择 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
@@ -101,7 +106,7 @@ Dynamics AX 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **DynamicsAXResource**。 | 是 |
-| 路径 | Dynamics AX OData 实体的路径。 | 是 |
+| path | Dynamics AX OData 实体的路径。 | 是 |
 
 **示例**
 
@@ -113,6 +118,7 @@ Dynamics AX 链接的服务支持以下属性：
         "typeProperties": {
             "path": "<entity path e.g. dd04tentitySet>"
         },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Dynamics AX linked service name>",
             "type": "LinkedServiceReference"
@@ -134,7 +140,7 @@ Dynamics AX 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **DynamicsAXSource**。 | 是 |
-| query | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| query | 用于筛选数据的 OData 查询选项。 例如：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
 
 **示例**
 
@@ -167,6 +173,11 @@ Dynamics AX 链接的服务支持以下属性：
     }
 ]
 ```
+
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

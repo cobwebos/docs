@@ -1,7 +1,6 @@
 ---
 title: 在 HDInsight 上为 Apache Hadoop 服务启用堆转储 - Azure
 description: 为基于 Linux 的 HDInsight 群集中的 Apache Hadoop 服务启用堆转储，以便进行调试和分析。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,21 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: d4245ce35cfc1e3aa0ba9ee9307315c9a999b5ff
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 5df6ab47c45a64077a39974a30c65fe13f3c851d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722033"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091497"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
 堆转储包含应用程序的内存快照，其中包括创建转储时各变量的值。 因此，它们在诊断发生在运行时的问题时很有用。
-
-> [!IMPORTANT]  
-> 本文档中的步骤仅适用于使用 Linux 的 HDInsight 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ## <a name="whichServices"></a>服务
 
@@ -57,7 +53,7 @@ ms.locfileid: "53722033"
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-+ 指示是否启用了此选项。 默认为禁用。
+**+** 指示是否启用了此选项。 默认为禁用。
 
 > [!WARNING]  
 > 默认情况下，在 HDInsight 上不为 Hadoop 服务启用堆转储，因为转储文件可能很大。 如果启用了堆转储来进行故障诊断，请记住在重现问题并收集转储文件后禁用堆转储。
@@ -85,7 +81,7 @@ ms.locfileid: "53722033"
 
 若要修改服务配置，请使用以下步骤：
 
-1. 打开群集的 Ambari Web UI。 该 URL 为 https://YOURCLUSTERNAME.azurehdinsight.net。
+1. 打开群集的 Ambari Web UI。 该 URL 为 https://YOURCLUSTERNAME.azurehdinsight.net 。
 
     出现提示时，在该站点中使用群集的 HTTP 帐户名（默认为 admin）和密码进行身份验证。
 
@@ -94,15 +90,15 @@ ms.locfileid: "53722033"
 
 2. 使用左侧的列表，选择你想要修改的服务区。 例如，**HDFS**。 在中心区域，选择“配置”选项卡。
 
-    ![“HDFS 配置”选项卡已选定的 Ambari 网站的图像](./media/hdinsight-hadoop-heap-dump-linux/serviceconfig.png)
+    ![“HDFS 配置”选项卡已选定的 Ambari 网站的图像](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
 
 3. 使用“筛选...”条目，输入“opts”。 仅显示包含此文本的项。
 
-    ![筛选的列表](./media/hdinsight-hadoop-heap-dump-linux/filter.png)
+    ![Apache Ambari config 筛选列表](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
 4. 查找需为其启用堆转储的服务的 **\*\_OPTS** 条目，并添加希望启用的选项。 在下图中，已将 `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` 添加到 **HADOOP\_NAMENODE\_OPTS** 条目：
 
-    ![HADOOP_NAMENODE_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
+    ![Apache Ambari hadoop-namenode](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 
    > [!NOTE]  
    > 为映射或化简子进程启用堆转储时，需查找名为 **mapreduce.admin.map.child.java.opts** 和 **mapreduce.admin.reduce.child.java.opts** 的字段。
@@ -111,15 +107,15 @@ ms.locfileid: "53722033"
 
 5. 一旦应用了所做的更改，“需要重启”图标会显示在一个或多个服务旁边。
 
-    ![需要重新启动图标和重新启动按钮](./media/hdinsight-hadoop-heap-dump-linux/restartrequiredicon.png)
+    ![需要重新启动图标和重新启动按钮](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
 
 6. 选择需要重启的每个服务，并使用“服务操作”按钮以“打开维护模式”。 维护模式可以防止重启服务时从该服务生成警报。
 
-    ![打开维护模式菜单](./media/hdinsight-hadoop-heap-dump-linux/maintenancemode.png)
+    ![打开 hdi 维护模式菜单](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
 
 7. 一旦启用维护模式，使用服务的“重启”按钮即可“重启所有受影响的服务”
 
-    ![重新启动受影响的所有条目](./media/hdinsight-hadoop-heap-dump-linux/restartbutton.png)
+    ![Apache Ambari 重新启动所有受影响的条目](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
 
    > [!NOTE]  
    > 其他服务的“重启”按钮条目可能会有所不同。

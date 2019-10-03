@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 12/14/2018
 ms.author: jgao
 ms.openlocfilehash: eb46966c3a28b3fa4c2b23668109b7c5d23a609b
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53414337"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60390862"
 ---
 # <a name="provide-post-deployment-configurations-by-using-extensions"></a>使用扩展提供部署后配置
 
@@ -33,7 +33,7 @@ ms.locfileid: "53414337"
 - [Microsoft.Sql servers/databases/extensions](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) 
 - [Microsoft.Web/sites/siteextensions](https://docs.microsoft.com/azure/templates/microsoft.web/2016-08-01/sites/siteextensions)
 
-若要找出可用的扩展，请浏览到[模板参考](https://docs.microsoft.com/azure/templates/)。 在“按标题筛选”中，输入“扩展”。
+若要找出可用的扩展，请浏览到[模板参考](https://docs.microsoft.com/azure/templates/)。 在“按标题筛选”  中，输入“扩展”  。
 
 若要了解如何使用这些扩展，请参阅：
 

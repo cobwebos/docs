@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 8c1e50064491032d78e467496f0c53300dd6acd1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 24a723bd32cb40807da1757b3fffb925d4ba1fef
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892783"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65799189"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>查看和编辑视频索引器见解
 
@@ -22,7 +23,7 @@ ms.locfileid: "58892783"
 
 1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
 2. 找到需从其创建视频索引器见解的视频。 有关详细信息，请参阅[在视频中查找确切的时刻](video-indexer-search.md)。
-3. 按“播放”。
+3. 按“播放”。 
 
     页面会显示视频的汇总见解。 
 
@@ -36,7 +37,7 @@ ms.locfileid: "58892783"
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解如何根据一些其他的视频创建你自己的视频索引器见解](video-indexer-create-new.md)。
+[使用视频的深入见解](use-editor-create-project.md)
 
 ## <a name="see-also"></a>另请参阅
 

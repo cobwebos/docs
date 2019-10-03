@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: spelluru
 ms.openlocfilehash: 4d2ba11181977f1976b5ae933e8b93a92424fa96
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56809160"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60695265"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>使用教室实验室进行培训
 您可以设置为培训实验室。 Azure 实验室服务的教室实验室，可创建您的培训实验室其中每个学员都用于定型的相同和隔绝的环境。 可应用策略以确保为每个学员提供培训环境（需要时）并包含培训所需的足够资源（例如虚拟机）。 

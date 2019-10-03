@@ -2,26 +2,26 @@
 title: 如何在类别层次结构中实现分面导航 - Azure 搜索
 description: 将分面导航添加到与 Azure 搜索（Microsoft Azure 上的一项云托管的搜索服务）集成的应用程序。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3b31e796b07bea8c11bccb3f2bb306a4279f2ca3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 8e325abf1f58458d2fa035c8c8f081173efb0e65
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523709"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649898"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实现分面导航
 分面导航是一种筛选机制，用于在搜索应用程序中提供自定向的深化导航。 术语“分面导航”可能让人觉得陌生，但我们以前也许用过它。 如以下示例所示，分面导航就是用于筛选结果的类别。
 
- ![Azure 搜索作业门户演示][1]
+ ![Azure 搜索作业门户演示](media/search-faceted-navigation/azure-search-faceting-example.png "Azure 搜索作业门户演示")
 
-分面导航是一个备用的搜索入口点。 它可以方便地替代手动键入复杂的搜索表达式。 分面可帮助你查找所需的内容，同时确保获取相关结果。 作为开发人员，分面允许公开用于导航搜索库的最有用的搜索条件。 在在线零售应用程序中，分面导航通常基于品牌、分类（童鞋）、尺寸、价格、受欢迎程度和评级生成。 
+分面导航是一个备用的搜索入口点。 它可以方便地替代手动键入复杂的搜索表达式。 分面可帮助你查找所需的内容，同时确保获取相关结果。 作为开发人员，分面允许公开用于导航搜索索引的最有用的搜索条件。 在在线零售应用程序中，分面导航通常基于品牌、分类（童鞋）、尺寸、价格、受欢迎程度和评级生成。 
 
 搜索技术不同，分面导航的实现也不同。 在 Azure 搜索中，分面导航在查询时生成，使用之前在架构中特性化的字段。
 
@@ -34,7 +34,7 @@ ms.locfileid: "59523709"
 ## <a name="sample-code-and-demo"></a>代码示例和演示
 本文使用作业搜索门户作为示例。 该示例作为 ASP.NET MVC 应用程序实现。
 
--   请参阅并测试 [Azure 搜索作业门户演示](http://azjobsdemo.azurewebsites.net/)中的在线实践演示。
+-   请参阅并测试 [Azure 搜索作业门户演示](https://azjobsdemo.azurewebsites.net/)中的在线实践演示。
 
 -   从 [GitHub 上的 Azure 示例存储库](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)中下载代码。
 
@@ -321,7 +321,7 @@ if (businessTitleFacet != "")
 
 由于分片体系结构，分面计数可能不准确。 每个搜索索引具有多个分片，每个分片报告按记录计数排序的前 N 个分面，并合并到单个结果中。 如果某些分片具有大量匹配值，而其他分片的值很少，你可能会发现某些分面值丢失或未计入结果中。
 
-尽管此行为可能随时更改，如果现在遇到此行为，您可以解决它的人为地都计数：\<数 > 为大型数字以强制从每个分片进行完整报告。 如果 count: 的值大于或等于字段中唯一值的数目，可保证获得准确结果。 但是，如果记录计数较高，性能可能会受到负面影响，因此请谨慎使用此选项。
+尽管此行为可能随时更改，但如果现在遇到此行为，可通过以下方式解决它：人为地将 count:\<number> 扩大到较大的值，以强制从每个分片进行完整报告。 如果 count: 的值大于或等于字段中唯一值的数目，可保证获得准确结果。 但是，如果记录计数较高，性能可能会受到负面影响，因此请谨慎使用此选项。
 
 ### <a name="user-interface-tips"></a>用户界面提示
 **为分面导航中的每个字段添加标签**
@@ -341,7 +341,7 @@ Azure 搜索通过提供两种用于计算范围的方法，简化范围构造�
 **方法 2：使用值列表**  
 对于数值数据，可以使用值列表。  考虑 `listPrice` 字段的分面范围，如下所示：
 
-  ![示例值列表][5]
+  ![示例值列表](media/search-faceted-navigation/Facet-5-Prices.PNG "示例值列表")
 
 若要根据上面的屏幕截图中所示指定分面范围，请使用值列表：
 
@@ -352,7 +352,7 @@ Azure 搜索通过提供两种用于计算范围的方法，简化范围构造�
 ### <a name="build-a-filter-for-a-range"></a>针对范围生成筛选器
 若要根据所选的范围筛选文档，可以在包含两个部分的表达式中使用 `"ge"` 和 `"lt"` 筛选器运算符，该表达式可定义范围的终结点。 例如，如果为 `listPrice` 字段选择范围 10-25，筛选器将为 `$filter=listPrice ge 10 and listPrice lt 25`。 在示例代码中，筛选器表达式使用 **priceFrom** 和 **priceTo** 参数设置终结点。 
 
-  ![查询值的范围][6]
+  ![查询值的范围](media/search-faceted-navigation/Facet-6-buildfilter.PNG "查询值的范围")
 
 <a name="geofacets"></a> 
 
@@ -379,63 +379,27 @@ Azure 搜索作业门户演示包含本文中参考的示例。
 
 1. 若要使用该演示应用的地图功能，请从[必应地图开发人员中心](https://www.bingmapsportal.com/)获取必应地图密钥。 请粘贴该密钥并覆盖 `index.cshtml` 页面中的现有密钥。 不使用 `Web.config` 文件中的 `BingApiKey` 设置。 
 
-2. 运行应用程序。 学习可选的教程，或关闭该对话框。
+2. 运行该应用程序。 学习可选的教程，或关闭该对话框。
    
 3. 输入搜索词（例如“分析师”），并单击“搜索”图标。 快速执行查询。
    
    分面导航结构也与搜索结果一起返回。 在搜索结果页面中，分面导航结构包括每个分面结果的计数。 未选择任何分面，因此将返回所有匹配的结果。
    
-   ![在选择分面之前搜索结果][11]
+   ![在选择分面之前搜索结果](media/search-faceted-navigation/faceted-search-before-facets.png "在选择分面之前搜索结果")
 
 4. 单击某个职称、工位或最低薪水。 分面在初始搜索时为 null，但当对它们设置值时，将从搜索结果中剪裁掉不再匹配的项。
    
-   ![在选择分面之后搜索结果][12]
+   ![在选择分面之后搜索结果](media/search-faceted-navigation/faceted-search-after-facets.png "在选择分面之后搜索结果")
 
 5. 若要清除分面查询以便可以尝试不同的查询行为，请单击所选分面后面的 `[X]` 来清除分面。
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解详情
 观看 [Azure 搜索深入研究](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)。 在 45:25，演示了如何实现分面。
 
 有关分面导航设计准则的更多见解，建议查看以下链接：
 
-* [针对分面搜索进行设计](http://www.uie.com/articles/faceted_search/)
 * [设计模式：分面导航](https://alistapart.com/article/design-patterns-faceted-navigation)
-
-
-<!--Anchors-->
-[How to build it]: #howtobuildit
-[Build the presentation layer]: #presentationlayer
-[Build the index]: #buildindex
-[Check for data quality]: #checkdata
-[Build the query]: #buildquery
-[Tips on how to control faceted navigation]: #tips
-[Faceted navigation based on range values]: #rangefacets
-[Faceted navigation based on GeoPoints]: #geofacets
-[Try it out]: #tryitout
-
-<!--Image references-->
-[1]: ./media/search-faceted-navigation/azure-search-faceting-example.PNG
-[2]: ./media/search-faceted-navigation/Facet-2-CSHTML.PNG
-[3]: ./media/search-faceted-navigation/Facet-3-schema.PNG
-[4]: ./media/search-faceted-navigation/Facet-4-SearchMethod.PNG
-[5]: ./media/search-faceted-navigation/Facet-5-Prices.PNG
-[6]: ./media/search-faceted-navigation/Facet-6-buildfilter.PNG
-[7]: ./media/search-faceted-navigation/Facet-7-appstart.png
-[8]: ./media/search-faceted-navigation/Facet-8-appbike.png
-[9]: ./media/search-faceted-navigation/Facet-9-appbikefaceted.png
-[10]: ./media/search-faceted-navigation/Facet-10-appTitle.png
-[11]: ./media/search-faceted-navigation/faceted-search-before-facets.png
-[12]: ./media/search-faceted-navigation/faceted-search-after-facets.png
-
-<!--Link references-->
-[Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
-[Design Patterns: Faceted Navigation]: https://alistapart.com/article/design-patterns-faceted-navigation
-[Create your first application]: search-create-first-solution.md
-[OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
-[Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
-[https://www.odata.org/documentation/odata-version-2-0/overview/]: https://www.odata.org/documentation/odata-version-2-0/overview/ 
-[Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
-[Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
+* [实现分面搜索时的前端问题–第1部分](https://articles.uie.com/faceted_search2/)
 

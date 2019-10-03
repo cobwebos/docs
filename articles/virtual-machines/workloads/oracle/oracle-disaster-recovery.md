@@ -4,23 +4,22 @@ description: 在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复方
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 9f525e68502e32a3f9c7e7cebe6d45627f9077c3
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
-ms.translationtype: HT
+ms.openlocfilehash: f6f678f91e74ea9b0b68127c1786fee745508b99
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495003"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101463"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复
 
@@ -52,13 +51,13 @@ ms.locfileid: "39495003"
 
 ![“DR 拓扑”页屏幕截图](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
-## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>方案 2：本地主站点和 Azure 上的 DR 站点
+## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>方案 2：主站点本地和 Azure 上的 DR 站点
 
 客户在本地安装了 Oracle 数据库（主站点）。 DR 站点位于 Azure 上。 使用 Oracle Data Guard 在这些站点间进行快速恢复。 主站点还拥有用于报告等其他用途的辅助数据库。 
 
 安装方式有两种。
 
-### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>方式 1：在本地和 Azure 之间直接连接，要求在防火墙上开启 TCP 端口 
+### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>方法 1:在本地与 Azure 之间直接连接, 要求在防火墙上打开 TCP 端口 
 
 不建议进行直接连接，因为这会向外部公开 TCP 端口。
 
@@ -78,7 +77,7 @@ ms.locfileid: "39495003"
 
 ![“DR 拓扑”页屏幕截图](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="approach-2-site-to-site-vpn"></a>方式 2：站点到站点 VPN
+### <a name="approach-2-site-to-site-vpn"></a>方法 2:站点到站点 VPN
 使用站点到站点 VPN 是一个比较好的做法。 有关安装 VPN 的详细信息，请参阅[使用 CLI 创建具有站点到站点 VPN 连接的虚拟网络](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)。
 
 #### <a name="topology"></a>拓扑
@@ -106,5 +105,5 @@ ms.locfileid: "39495003"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：创建具有高可用性的 VM](../../linux/create-cli-complete.md)
+- [教程：创建高度可用的 VM](../../linux/create-cli-complete.md)
 - [浏览 VM 部署 Azure CLI 示例](../../linux/cli-samples.md)

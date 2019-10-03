@@ -6,15 +6,15 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 08/12/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 7208f96d99127247b51510e0c43c1733bb327dfb
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: 8a39a79f4b3aeacd267a0c4b9351d2400f11d1ff
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076240"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336906"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中创建用户定义函数
 
@@ -67,7 +67,7 @@ YOUR_MANAGEMENT_API_URL/matchers
 }
 ```
 
-| 值 | 替换为 |
+| ReplTest1 | 替换为 |
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | 托管实例的服务器区域 |
 
@@ -107,7 +107,7 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| 值 | 替换为 |
+| ReplTest1 | 替换为 |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | 多部分内容边界名称 |
 | YOUR_SPACE_IDENTIFIER | 空间标识符  |
@@ -197,7 +197,7 @@ function process(telemetry, executionContext) {
 
 创建角色分配，以便用户定义函数依据其运行。 如果用户定义的函数不存在角色分配，则它将没有与管理 API 交互的适当权限，也没有对图形对象执行操作的权限。 用户定义的函数可以执行的操作是通过 Azure 数字孪生管理 API 中基于角色的访问控制来指定和定义的。 例如，用户定义函数可通过指定特定角色或特定访问控制路径来限制这些操作的范围。 有关详细信息，请参阅[基于角色的访问控制](./security-role-based-access-control.md)文档。
 
-1. [查询所有角色的系统 API](./security-create-manage-role-assignments.md#all) 以获取要分配给用户定义函数的角色 ID。 可通过发出经过身份验证的 HTTP GET 请求执行此操作，以便：
+1. [查询所有角色的系统 API](./security-create-manage-role-assignments.md#retrieve-all-roles) 以获取要分配给用户定义函数的角色 ID。 可通过发出经过身份验证的 HTTP GET 请求执行此操作，以便：
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
@@ -212,7 +212,7 @@ function process(telemetry, executionContext) {
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | 值 | 替换为 |
+    | ReplTest1 | 替换为 |
     | --- | --- |
     | YOUR_SPACE_NAME | 要使用的空间名称 |
 
@@ -232,7 +232,7 @@ function process(telemetry, executionContext) {
     }
     ```
 
-    | 值 | 替换为 |
+    | ReplTest1 | 替换为 |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | 所需角色的标识符 |
     | YOUR_USER_DEFINED_FUNCTION_ID | 要使用的用户定义的函数 ID |

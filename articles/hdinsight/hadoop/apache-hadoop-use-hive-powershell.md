@@ -1,7 +1,6 @@
 ---
 title: 在 HDInsight 中将 Apache Hive 与 PowerShell 配合使用 - Azure
-description: 使用 PowerShell 在 HDInsight 上的 Apache Hadoop 中运行 Hive 查询。
-services: hdinsight
+description: 使用 PowerShell 在 Azure HDInsight 的 Apache Hadoop 中运行 Apache Hive 查询
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 77d2d0b5b9f994668abdd02640a9c6d5f463e137
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 89fa7976b922ba0e40e97b72de5d4eb9a02f0dfd
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360752"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736067"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>使用 PowerShell 运行 Apache Hive 查询
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -24,14 +23,11 @@ ms.locfileid: "58360752"
 > [!NOTE]  
 > 本文档未详细描述示例中使用的 HiveQL 语句的作用。 有关此示例中使用的 HiveQL 的信息，请参阅[将 Apache Hive 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-hive.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * 基于 Linux 的 Apache Hadoop on HDInsight 群集版本 3.4 或更高版本。
-
-  > [!IMPORTANT]  
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 * 具有 Azure PowerShell 的客户端。
 
@@ -61,7 +57,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 
         .\hivejob.ps1
 
-    脚本运行时，系统会提示输入群集名称和 HTTPS/群集管理员帐户凭据。 可能还会提示登录到 Azure 订阅。
+    脚本运行时，系统会提示输入群集名称和 HTTPS/群集管理员帐户凭据。 还可能会提示登录到 Azure 订阅。
 
 3. 作业完成时，它会返回类似以下文本的信息：
 
@@ -87,7 +83,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
    >
    > 有关 **Here-Strings** 的详细信息，请参阅<a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">使用 Windows PowerShell Here-Strings</a>。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果作业完成时未返回任何信息，请查看错误日志。 若要查看此作业的错误信息，请将以下内容添加到 `hivejob.ps1` 文件的末尾，保存并重新运行该文件。
 
@@ -102,7 +98,7 @@ Get-AzHDInsightJobOutput `
 
 作业处理期间，此 cmdlet 返回写入到 STDERR 中的信息。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 如你所见，Azure PowerShell 提供了简单的方法让你在 HDInsight 群集上运行 Hive 查询，监视作业状态，以及检索输出。
 

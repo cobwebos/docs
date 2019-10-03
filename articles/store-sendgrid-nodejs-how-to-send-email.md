@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421277"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60931698"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>如何使用 SendGrid 从 Node.js 发送电子邮件
 
@@ -188,7 +188,7 @@ sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>如何：更新电子邮件属性
 
-可使用 setProperty 替代一些电子邮件属性，或使用 addProperty 追加一些电子邮件属性。 例如，可使用以下命令添加更多收件人：
+可使用 setProperty 替代一些电子邮件属性，或使用 addProperty 追加一些电子邮件属性   。 例如，可使用以下命令添加更多收件人：
 
 ```javascript
 email.addTo('jeff@contoso.com');

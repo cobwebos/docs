@@ -9,19 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 542505c5a6c3af91669ebe28287ae6e1477e214d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: f74f9ba55f3593ed31994b83bb9bda1501445e0a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487170"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100668"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>在位于不同区域的 Azure 虚拟机上配置 Always On 可用性组
 
@@ -145,7 +144,7 @@ ms.locfileid: "58487170"
 
 最好是通过更新客户端连接字符串来设置 `MultiSubnetFailover=Yes`。 请参阅[使用 MultiSubnetFailover 连接](https://msdn.microsoft.com/library/gg471494#Anchor_0)。
 
-如果无法修改连接字符串，则可以配置名称解析缓存。 请参阅[多子网可用性组中的连接超时](https://blogs.msdn.microsoft.com/alwaysonpro/2014/06/03/connection-timeouts-in-multi-subnet-availability-group/)。
+如果无法修改连接字符串，则可以配置名称解析缓存。 请参阅[出现超时错误并且在多子网环境中无法连接到 SQL Server 2012 AlwaysOn 可用性组侦听程序](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)。
 
 ## <a name="fail-over-to-remote-region"></a>故障转移到远程区域
 
@@ -165,7 +164,7 @@ ms.locfileid: "58487170"
 
 测试连接性之后，将主副本移回主数据中心，并将可用性模式设置回其正常运行设置。 下表显示了本文档所述体系结构的正常运行设置：
 
-| 位置 | 服务器实例 | 角色 | 可用性模式 | 故障转移模式
+| Location | 服务器实例 | Role | 可用性模式 | 故障转移模式
 | ----- | ----- | ----- | ----- | -----
 | 主数据中心 | SQL-1 | 主要 | 同步 | 自动
 | 主数据中心 | SQL-2 | 辅助 | 同步 | 自动
@@ -174,7 +173,7 @@ ms.locfileid: "58487170"
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>有关计划和强制的手动故障转移的详细信息
 
-相关详细信息，请参阅以下主题：
+有关详细信息，请参阅下列主题：
 
 - [对可用性组执行计划的手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [对可用性组执行强制的手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)

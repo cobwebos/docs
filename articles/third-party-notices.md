@@ -1,13 +1,16 @@
 ---
+title: 法律声明
+author: SyntaxC4
+ms.author: cfowler
 ms.service: azure
 ms.topic: conceptual
 ms.date: 03/08/2019
-ms.openlocfilehash: 2b1fc99fe179187c6431d9a999628db76885e553
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 14f78c9c7e5f43fb28557933b9a89cfb5c2cb5db
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57789667"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543879"
 ---
 # <a name="legal-notices"></a>法律声明
 

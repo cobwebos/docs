@@ -4,17 +4,16 @@ description: 将分析器分配到索引中的可搜索文本字段，以将默�
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/08/2019
 ms.author: heidist
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
-ms.custom: seodec2018
-ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 387248b2dac7c10ec0e96454f26964ca7f15c56e
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651815"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649995"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>用于 Azure 搜索中文本处理的分析器
 
@@ -31,7 +30,7 @@ ms.locfileid: "58651815"
 
 ## <a name="default-analyzer"></a>默认分析器  
 
-Azure 搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)，该分析器按照[“Unicode 文本分段”](https://unicode.org/reports/tr29/)规则将文本分解成多个元素。 此外，标准分析器将所有字符转换为其小写形式。 已编入索引的文档和搜索词在索引和查询处理期间完成分析。  
+Azure 搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)，该分析器按照[“Unicode 文本分段”](https://unicode.org/reports/tr29/)规则将文本分解成多个元素。 此外，标准分析器将所有字符转换为其小写形式。 已编入索引的文档和搜索词在索引和查询处理期间完成分析。  
 
 将会针对每个可搜索字段使用此分析器。 你可以逐字段替代默认值。 替代的分析器可以是[语言分析器](index-add-language-analyzers.md)、[自定义分析器](index-add-custom-analyzers.md)，也可以是[可用分析器列表](index-add-custom-analyzers.md#AnalyzerTable)中的预定义分析器。
 
@@ -42,7 +41,7 @@ Azure 搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https
 
 | 类别 | 描述 |
 |----------|-------------|
-| [标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
+| [标准 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
 | 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
 |[自定义分析器](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 称为结合了现有元素的用户定义配置，由一个 tokenizer（必需）和可选的筛选器（字符或词元）组成。|
 
@@ -58,7 +57,7 @@ Azure 搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https
 
 不允许将 **analyzer** 或 **indexAnalyzer** 分配到实际已创建的字段。 如有任何疑问，请查看下表，其中列出了需要重新生成的操作详情以及原因。
  
- | 场景 | 影响 | Steps |
+ | 应用场景 | 影响 | 步骤 |
  |----------|--------|-------|
  | 添加新字段 | 轻微 | 如果字段尚不存在于架构中，则不需要进行任何字段修订，因为索引中尚不存在字段的物理形式。 可以使用 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) 将新字段添加到现有索引，使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 来填充字段。|
  | 将 **analyzer** 或 **indexAnalyzer** 添加到现有的已编制索引的字段。 | [rebuild](search-howto-reindex.md) | 该字段的倒排索引必须从头开始重新创建，并且必须对这些字段的内容重新编制索引。 <br/> <br/>对于正在开发中的索引，[删除](https://docs.microsoft.com/rest/api/searchservice/delete-index)并[创建](https://docs.microsoft.com/rest/api/searchservice/create-index)索引，以获得新的字段定义。 <br/> <br/>对于生产环境中的索引，可以创建一个新字段来提供修改后的定义并开始使用该字段取代旧字段，以推迟重新生成。 使用 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) 合并新字段，使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 填充该字段。 之后在计划索引服务中，可清除索引以删除过时字段。 |
@@ -92,10 +91,6 @@ Azure 搜索允许通过附加的 **indexAnalyzer** 和 **searchAnalyzer** 字�
 ### <a name="inspect-tokenized-terms"></a>检查已标记的词语
 
 如果搜索未能返回所需的结果，最有可能的情况是查询上的词语输入和索引中已标记的词语之间存在标记差异。 如果标记不同，匹配则无法具体化。 若要检查 tokenizer 输出，建议将 [Analyze API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) 用作调查工具。 响应包含令牌，由特定分析器生成。
-
-### <a name="compare-english-analyzers"></a>比较英语分析器
-
-[搜索分析器演示](https://alice.unearth.ai/)是第三方演示应用，它演示了对标准 Lucene 分析器、Lucene 英语分析器和 Microsoft 英语自然语言处理器的并排比较。 索引是固定的；它包含常见情景中的文本。 对于提供的每个搜索输入，每个分析器的结果将显示在相邻窗格中，使你了解每个分析器是如何处理同一个字符串的。 
 
 <a name="examples"></a>
 
@@ -276,22 +271,22 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
   }
 ~~~~
 
-## <a name="c-examples"></a>C#示例
+## <a name="c-examples"></a>C# 示例
 
-如果使用.NET SDK 代码示例，可以将附加这些示例以使用或配置分析器。
+如果使用 .NET SDK 代码示例，则可追加这些示例，以便使用或配置分析器。
 
 + [分配内置分析器](#Assign-a-language-analyzer)
 + [配置分析器](#Define-a-custom-analyzer)
 
 <a name="Assign-a-language-analyzer"></a>
 
-### <a name="assign-a-language-analyzer"></a>将指定语言分析器
+### <a name="assign-a-language-analyzer"></a>分配语言分析器
 
-用作任何分析器的是，而无需配置，为字段定义中指定。 不没有用于创建分析器构造任何要求。 
+任何按原样使用且没有任何配置的分析器都是在字段定义中指定的。 没有创建分析器构造的要求。 
 
-此示例将 Microsoft 英语和法语分析器分配到描述字段。 它是从更大的 hotels 索引，创建的 hotels.cs 文件中使用酒店类定义的代码段[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)示例。
+此示例将 Microsoft 英语和法语分析器分配给说明字段。 它是从更大的酒店索引定义中提取的代码片段，使用 [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) 示例的 hotels.cs 文件中的酒店类进行创建。
 
-调用[分析器](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)，并指定[AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)提供一个文本分析器，Azure 搜索支持的类型。
+调用[分析器](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)，指定 [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) 类型，提供在 Azure 搜索中受支持的文本分析器。
 
 ```csharp
     public partial class Hotel
@@ -315,9 +310,9 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 ### <a name="define-a-custom-analyzer"></a>定义自定义分析器
 
-当需要自定义或配置时，需要将分析器构造添加到索引。 你如何定义，您可以将它添加的字段定义中前面的示例所示。
+如果需要自定义或配置，则需向索引添加分析器构造。 定义以后，即可将其添加到字段定义，如上一示例所示。
 
-创建[CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet)对象。 有关更多示例，请参阅[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs)。
+创建 [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) 对象。 如需更多示例，请参阅 [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs)。
 
 ```csharp
 {
@@ -349,9 +344,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 + [配置自定义分析器](index-add-custom-analyzers.md)，针对单个字段尽量简化处理或者进行专门处理。
 
-+ 在此演示网站的相邻窗格中[比较标准和英语分析器](https://alice.unearth.ai/)。 
-
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
  [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 

@@ -1,28 +1,30 @@
 ---
-title: 在 Azure 中设置进程服务器，以便在使用 Azure Site Recovery 进行 VMware VM 和物理服务器灾难恢复期间进行故障回复 | Microsoft Docs
-description: 本文介绍如何在 Azure 中设置进程服务器，以便在 VMware VM 和物理服务器灾难恢复期间从 Azure 故障回复到本地。
+title: 在使用 Azure Site Recovery 的 VMware Vm 和物理服务器灾难恢复过程中设置横向扩展进程服务器 |Microsoft Docs
+description: 本文介绍如何在 VMware VM 和物理服务器的灾难恢复期间设置横向扩展进程服务器。
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/23/2019
 ms.author: ramamill
-ms.openlocfilehash: 6849ffb6fa46365aa775b9410067cb0874c70ef8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59362155"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64925476"
 ---
-# <a name="scale-for-failback-with-additional-process-servers"></a>为故障回复使用更多进程服务器进行扩展
+# <a name="scale-with-additional-process-servers"></a>使用额外的进程服务器进行扩展
 
-默认情况下，当使用 [Site Recovery](site-recovery-overview.md) 将 VMware VM 或物理服务器复制到 Azure 时，进程服务器将安装在配置服务器计算机上，并且将用于协调 Site Recovery 和本地基础结构之间的数据传输。 若要增加容量并横向扩展复制部署，可以添加额外的独立进程服务器。 本文介绍如何执行此操作。
+默认情况下，当使用 [Site Recovery](site-recovery-overview.md) 将 VMware VM 或物理服务器复制到 Azure 时，进程服务器将安装在配置服务器计算机上，并且将用于协调 Site Recovery 和本地基础结构之间的数据传输。 若要增加容量并横向扩展复制部署，可以添加额外的独立进程服务器。 本文介绍如何设置横向扩展进程服务器。
 
 ## <a name="before-you-start"></a>开始之前
 
 ### <a name="capacity-planning"></a>容量计划
 
 请确保已执行[容量规划](site-recovery-plan-capacity-vmware.md)以进行 VMware 复制。 这可帮助你确定如何以及何时应部署额外的进程服务器。
+
+从 9.24 版本开始，在选择用于新复制的进程服务器时添加了指导。 根据特定条件，进程服务器将标记为“正常”、“警告”和“严重”。 若要了解可能影响进程服务器状态的不同场景，请查看[进程服务器警报](vmware-physical-azure-monitor-process-server.md#process-server-alerts)。
 
 > [!NOTE]
 > 不支持使用克隆的进程服务器组件。 按照本文中的步骤横向扩展每个 PS。
@@ -45,19 +47,17 @@ ms.locfileid: "59362155"
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
-
-
 ## <a name="download-installation-file"></a>下载安装文件
 
 下载进程服务器的安装文件，如下所示：
 
-1. 登录到 Azure 门户中，并浏览到恢复服务保管库。
-2. 打开“Site Recovery 基础结构” > “VMWare 和物理计算机” > “配置服务器”（在“针对 VMware 和物理计算机”下面）。
-3. 选择配置服务器以向下钻取到配置服务器详细信息。 然后单击“+ 进程服务器”。
-4. 在“添加进程服务器” >  “选择要部署进程服务器的位置”中，选择“在本地部署横向扩展进程服务器”。
+1. 登录到 Azure 门户，并浏览到恢复服务保管库。
+2. 打开“Site Recovery 基础结构”   > “VMWare 和物理计算机”   > “配置服务器”  （在“针对 VMware 和物理计算机”下面）。
+3. 选择配置服务器以向下钻取到配置服务器详细信息。 然后单击“+ 进程服务器”  。
+4. 在“添加进程服务器”   >  “选择要部署进程服务器的位置”  中，选择“在本地部署横向扩展进程服务器”  。
 
    ![添加服务器页](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
-1. 单击“下载 Microsoft Azure Site Recovery 统一安装程序”。 这会下载最新版本的安装文件。
+1. 单击“下载 Microsoft Azure Site Recovery 统一安装程序”  。 这会下载最新版本的安装文件。
 
    > [!WARNING]
    > 进程服务器安装版本应低于所运行的配置服务器版本或与之相同。 确保版本兼容性的一种简单方法是使用最近用来安装或更新配置服务器的同一安装程序。

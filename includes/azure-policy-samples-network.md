@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 9205e1654b5376845c9164658be8f819096c5519
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9884557d8002d0babbc43722aeb1fb11d647f1e2
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47003623"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173099"
 ---
 ## <a name="network"></a>网络
 

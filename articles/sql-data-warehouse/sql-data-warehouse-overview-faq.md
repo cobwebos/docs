@@ -2,20 +2,20 @@
 title: Azure SQL 数据仓库常见问题解答 | Microsoft Docs
 description: 本文列出客户和开发人员提出的 Azure SQL 数据仓库常见问题
 services: sql-data-warehouse
-author: acomet
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: acomet
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 596ed857b39cf106ed2e37ad81c5fe9e939cca61
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4679a3bb1935e9f3e2bc90c9bc9ef1247b7ecb30
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001431"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66515874"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL 数据仓库常见问题解答
 
@@ -31,7 +31,7 @@ A. 请访问 [Microsoft 符合性]页面，查明产品（如 SOC 和 ISO）的�
 
 问： 是否可以连接 PowerBI？
 
-A.  能！ 尽管 PowerBI 支持使用 SQL DW 进行直接查询，但不适合大量用户或实时数据。 要将 PowerBI 用于生产用途，建议基于 Azure Analysis Services 或 Analysis Service IaaS 使用 PowerBI。 
+A. 能！ 尽管 PowerBI 支持使用 SQL DW 进行直接查询，但不适合大量用户或实时数据。 要将 PowerBI 用于生产用途，建议基于 Azure Analysis Services 或 Analysis Service IaaS 使用 PowerBI。 
 
 问： SQL 数据仓库容量限制有哪些？
 

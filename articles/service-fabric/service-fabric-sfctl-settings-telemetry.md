@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 42a82ab0be37f260a48a1da6cecab5120c24d293
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cf5ebbeb4d9b4757e0c55eeb1a9268065efb2c7c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669259"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035208"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
 配置此 sfctl 实例的本地遥测设置。
@@ -28,7 +27,7 @@ Sfctl 遥测收集未提供参数的命令名称或其值、sfctl 版本、OS �
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|描述|
 | --- | --- |
 | set-telemetry | 启用或禁用遥测。 |
 

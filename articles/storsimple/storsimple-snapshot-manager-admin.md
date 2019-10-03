@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: v-sharos
 ms.openlocfilehash: bc72da98800ef85ef14be0882ba856fbf01386b9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872177"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60630013"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>使用 StorSimple Snapshot Manager 管理 StorSimple 解决方案
 
@@ -51,7 +51,7 @@ StorSimple Snapshot Manager 可用于监视和管理当前、 计划和已完成
 | 了解有关 StorSimple Snapshot Manager 的详细信息 |[什么是 StorSimple Snapshot Manager？](storsimple-what-is-snapshot-manager.md) |
 | 安装 StorSimple Snapshot Manager<br>重新安装 StorSimple Snapshot Manager<br>删除 StorSimple Snapshot Manager |[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md) |
 | 使用 StorSimple Snapshot Manager 菜单和功能：<ul><li>菜单栏</li><li>工具栏</li><li>作用域窗格</li><li>“结果”窗格</li><li>“操作”窗格</li><li>键盘导航和快捷键</li></ul> |[StorSimple Snapshot Manager 用户界面](storsimple-use-snapshot-manager.md) |
-| 使用包含在 StorSimple Snapshot Manager 中的常见 MMC 功能：<ul><li>查看</li><li>从此处新建窗口</li><li>刷新</li><li>导出列表</li><li>帮助</li></ul> |[使用 StorSimple Snapshot Manager 中的 MMC 菜单操作](storsimple-snapshot-manager-mmc-menu.md) |
+| 使用包含在 StorSimple Snapshot Manager 中的常见 MMC 功能：<ul><li>查看</li><li>从此处新建窗口</li><li>刷新</li><li>导出列表</li><li>Help</li></ul> |[使用 StorSimple Snapshot Manager 中的 MMC 菜单操作](storsimple-snapshot-manager-mmc-menu.md) |
 | 添加或替换设备<br>连接一个设备<br>验证导入的卷组<br>刷新连接的设备<br>对设备进行身份验证<br>查看设备详细信息<br>删除设备配置<br>更改设备密码<br>替换发生故障的设备<br> |[使用 StorSimple Snapshot Manager 连接和管理 StorSimple 设备](storsimple-snapshot-manager-manage-devices.md) |
 | 装载卷<br>查看有关卷的信息<br>删除卷<br>重新扫描卷<br>配置和备份基本卷<br>配置和备份动态镜像卷 |[使用 StorSimple Snapshot Manager 查看和管理卷](storsimple-snapshot-manager-manage-volumes.md) |
 | 查看卷组<br>创建卷组<br>备份卷组<br>编辑卷组<br>删除卷组 |[使用 StorSimple Snapshot Manager 创建和管理卷组](storsimple-snapshot-manager-manage-volume-groups.md) |

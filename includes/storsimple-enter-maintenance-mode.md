@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: d35f0ef783a2c48f8211657bc8829635c19495aa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889000"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172977"
 ---
 #### <a name="to-enter-maintenance-mode"></a>进入维护模式
-1. 在串行控制台菜单中，选择选项 1“使用完全访问权限登录”。
+1. 在串行控制台菜单中，选择选项 1“使用完全访问权限登录”  。
 2. 键入密码。 默认密码为 **Password1**。
 3. 在命令提示符处，键入
    

@@ -3,20 +3,19 @@ title: 容器工作负载 - Azure Batch | Microsoft Docs
 description: 了解如何在 Azure Batch 上从容器映像中运行应用程序。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 11/19/2018
+ms.date: 08/09/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 51037e66ec649fc275a746c9f5316b91d82e186a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: c9e24924472e0bb8dbd0e529b739263469b631fb
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454821"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090755"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 
@@ -90,7 +89,7 @@ ms.locfileid: "55454821"
 
 ## <a name="container-configuration-for-batch-pool"></a>批处理池的容器配置
 
-若要启用运行容器工作负荷的 Batch 池，必须在池的 [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 对象中指定 [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) 设置。 （本文已提供 Batch .NET API 参考文章的链接。 [Batch Python](/python/api/azure.batch) API 中提供了相应的设置。）
+若要启用运行容器工作负荷的 Batch 池，必须在池的 [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 对象中指定 [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) 设置。 （本文已提供 Batch .NET API 参考文章的链接。 [Batch Python](/python/api/overview/azure/batch) API 中提供了相应的设置。）
 
 可以创建启用容器的池，可以带或不带预提取容器映像，如以下示例所示。 可以通过拉取（或预提取）过程从 Docker 中心预加载容器映像，或在 Internet 上预加载另一个容器注册表。 为获得最佳性能，请使用 Batch 帐户所在的同一区域中的 [Azure 容器注册表](../container-registry/container-registry-intro.md)。
 
@@ -104,10 +103,10 @@ ms.locfileid: "55454821"
 
 ```python
 image_ref_to_use = batch.models.ImageReference(
-        publisher='microsoft-azure-batch',
-        offer='ubuntu-server-container',
-        sku='16-04-lts',
-        version='latest')
+    publisher='microsoft-azure-batch',
+    offer='ubuntu-server-container',
+    sku='16-04-lts',
+    version='latest')
 
 """
 Specify container configuration. This is required even though there are no prefetched images.
@@ -116,13 +115,13 @@ Specify container configuration. This is required even though there are no prefe
 container_conf = batch.models.ContainerConfiguration()
 
 new_pool = batch.models.PoolAddParameter(
-        id=pool_id,
-        virtual_machine_configuration=batch.models.VirtualMachineConfiguration(
-            image_reference=image_ref_to_use,
-            container_configuration=container_conf,
-            node_agent_sku_id='batch.node.ubuntu 16.04'),
-        vm_size='STANDARD_D1_V2',
-        target_dedicated_nodes=1)
+    id=pool_id,
+    virtual_machine_configuration=batch.models.VirtualMachineConfiguration(
+        image_reference=image_ref_to_use,
+        container_configuration=container_conf,
+        node_agent_sku_id='batch.node.ubuntu 16.04'),
+    vm_size='STANDARD_D1_V2',
+    target_dedicated_nodes=1)
 ...
 ```
 
@@ -144,7 +143,8 @@ image_ref_to_use = batch.models.ImageReference(
 Specify container configuration, fetching the official Ubuntu container image from Docker Hub. 
 """
 
-container_conf = batch.models.ContainerConfiguration(container_image_names=['ubuntu'])
+container_conf = batch.models.ContainerConfiguration(
+    container_image_names=['ubuntu'])
 
 new_pool = batch.models.PoolAddParameter(
     id=pool_id,
@@ -227,7 +227,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 若要在启用了容器的池上运行容器任务，请指定特定于容器的设置。 设置包括要使用的映像、注册表和容器运行选项。
 
-* 使用任务类中的 `ContainerSettings` 属性来配置特定于容器的设置。 这些设置由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 类定义。
+* 使用任务类中的 `ContainerSettings` 属性来配置特定于容器的设置。 这些设置由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 类定义。 请注意， `--rm`容器选项不需要其他`--runtime`选项，因为它是按批处理进行处理的。 
 
 * 如果在容器映像上运行任务，[云任务](/dotnet/api/microsoft.azure.batch.cloudtask)和[作业管理器任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)将需要容器设置。 但是，[启动任务](/dotnet/api/microsoft.azure.batch.starttask)、[作业准备任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作业发布任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)都不需要容器设置（即，它们可以在容器上下文中或直接在节点上运行）。
 
@@ -274,14 +274,13 @@ Batch 容器任务在容器的工作目录中执行，该目录与 Batch 为常�
 ```python
 task_id = 'sampletask'
 task_container_settings = batch.models.TaskContainerSettings(
-    image_name='myimage', 
+    image_name='myimage',
     container_run_options='--rm --workdir /')
 task = batch.models.TaskAddParameter(
     id=task_id,
     command_line='/bin/sh -c \"echo \'hello world\' > $AZ_BATCH_TASK_WORKING_DIR/output.txt\"',
     container_settings=task_container_settings
 )
-
 ```
 
 以下 C# 示例演示某个云任务的基本容器设置：

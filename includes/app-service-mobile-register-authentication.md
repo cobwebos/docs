@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: d5557ce1dda7bb36b8b0a6a44fcaca50e0667bb7
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: HT
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429919"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "67173442"
 ---
 首先，需要在标识提供者站点上注册应用，然后在移动应用后端设置提供者生成的凭据。
 

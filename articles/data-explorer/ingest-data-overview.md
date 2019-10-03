@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 891d2acc42f8d6f03976f0553e2e3127bc6d16f7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: be77ae932ec72239bea04fce298d7f1b84e5e4d8
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011229"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240652"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
 
@@ -52,7 +52,7 @@ Azure 数据资源管理器目前支持：
 
 ### <a name="ingestion-using-integration-services"></a>使用集成服务的引入
 
-* Azure 数据工厂 (ADF)，一个完全托管的数据集成服务，在 Azure 中，若要向 / 从 Azure 数据资源管理器使用复制数据的分析工作负荷[支持的数据存储和格式](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)。 有关详细信息，请参阅[将数据从 Azure 数据工厂复制到 Azure 数据资源管理器](/azure/data-explorer/data-factory-load-data)。
+* Azure 数据工厂 (ADF) 是 Azure 中分析工作负荷的完全托管数据集成服务，可使用[支持的数据存储和格式](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)向/从 Azure 数据资源管理器复制数据。 有关详细信息，请参阅[将数据从 Azure 数据工厂复制到 Azure 数据资源管理器](/azure/data-explorer/data-factory-load-data)。
 
 ### <a name="programmatic-ingestion"></a>编程引入
 
@@ -80,7 +80,7 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 
 * 直接将数据引入到 Azure 数据资源管理器引擎（最适合用于探索和原型制作）：
 
-  * **内联引入**： 包含带内数据的控制命令 （.ingest 内联） 用于即席测试目的。
+  * **内联引入**：包含带内数据的控制命令 (.ingest inline) 用于临时测试目的。
 
   * **从查询引入**：指向查询结果的控制命令 (.set、.set-or-append、.set-or-replace) 用于生成报表或小型临时表。
 
@@ -88,7 +88,7 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 
 **不同方法的延迟情况**：
 
-| 方法 | Latency |
+| 方法 | 延迟 |
 | --- | --- |
 | **内联引入** | 即时 |
 | **从查询引入** | 查询时间 + 处理时间 |
@@ -113,13 +113,13 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 * 有哪些延迟要求？ 
 * 可以使用现有的托管引入管道吗？ 
 
-对于具有基于事件中心等消息传递服务的现有基础结构的组织，使用连接器可能是最合适的解决方案。 排队引入适合大数据量。
+对于具有基于消息服务（如事件中心和 IoT 中心）的现有基础结构的组织，使用连接器可能是最合适的解决方案。 排队引入适合大数据量。
 
 ## <a name="supported-data-formats"></a>受支持的数据格式
 
 对于“从查询引入”以外的所有引入方法，请设置适当的数据格式，使 Azure 数据资源管理器能够对其进行分析。 支持的数据格式包括：
 
-* CSV、TSV、PSV、SCSV、SOH
+* CSV、TSV、TSVE、PSV、SCSV、SOH
 * JSON（行分隔，多行）、Avro
 * ZIP 和 GZIP 
 

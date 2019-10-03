@@ -3,24 +3,23 @@ title: Azure PowerShell 脚本示例 - 创建 Service Fabric 群集 | Microsoft 
 description: Azure PowerShell 脚本示例 - 创建 Service Fabric 群集。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: 0f9c8bc5-3789-4eb3-8deb-ae6e2200795a
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 01/19/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: ae43ab6cb8236d2e438eb107491126756325bb5d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ac57778f83a9e7c07360e6ff496186ae78a95dbd
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666607"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035576"
 ---
 # <a name="create-a-service-fabric-cluster"></a>创建 Service Fabric 群集
 

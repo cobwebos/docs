@@ -1,25 +1,18 @@
 ---
-title: Azure 市场的审核历史记录页面 | Microsoft Docs
-description: .
+title: Azure Marketplace 的审核历史记录页
+description: Azure Marketplace 的云合作伙伴门户中的审核历史记录页的概述。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 6dffc7a24bb0c6b006d06a1018364f08abaaee41
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: a579008aa0954507a130bef65dc60254f9e12c03
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266201"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943475"
 ---
 # <a name="audit-history-page"></a>审核历史记录页面
 

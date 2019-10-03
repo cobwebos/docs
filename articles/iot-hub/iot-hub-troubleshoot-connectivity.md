@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: a107689796c58b17c445e7a9cf7c6f0402ef6005
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.openlocfilehash: 3904c6390cfe8de197bae470c4ae32d22605ae6a
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571046"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801426"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>检测和排查 Azure IoT 中心的连接断开问题
 
@@ -43,9 +43,9 @@ ms.locfileid: "59571046"
 
 有关详细信息，请参阅[监视 Azure IoT 中心的运行状况并快速诊断问题](iot-hub-monitor-resource-health.md)。
 
-### <a name="set-up-alerts-for-the-connected-devices-count-metric"></a>针对“联网设备”计数指标设置警报
+### <a name="set-up-alerts-for-the-_connected-devices_-count-metric"></a>针对“联网设备”计数指标设置警报
 
-若要获取警报，当设备断开连接时，请在配置警报**连接的设备 （预览版）** 指标。
+若要在设备断开连接时获取警报，请针对“联网设备(预览版)”指标配置警报。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -53,11 +53,11 @@ ms.locfileid: "59571046"
 
 3. 选择“**警报**”。
 
-4. 选择**新的警报规则**。
+4. 选择“新建警报规则”。
 
-5. 选择**添加条件**，然后选择"连接的设备 （预览）"。
+5. 选择“添加条件”，然后选择“联网设备(预览版)”。
 
-6. 完成设置所需阈值和警报选项按以下提示操作。
+6. 按提示操作，完成对所需阈值和警报选项的设置。
 
 有关详细信息，请参阅 [Microsoft Azure 中的经典警报是什么？](../azure-monitor/platform/alerts-overview.md)。
 
@@ -67,11 +67,11 @@ ms.locfileid: "59571046"
 
 1. 在 Azure 门户中转到 Log Analytics 的工作区。
 
-2. 选择 **“日志搜索”**。
+2. 选择 **“日志搜索”** 。
 
 3. 若要隔离 IoT 中心的连接错误日志，请输入以下查询，然后选择“运行”：
 
-    ```
+    ```kusto
     search *
     | where ( Type == "AzureDiagnostics" and ResourceType == "IOTHUBS")
     | where ( Category == "Connections" and Level == "Error")
@@ -83,7 +83,7 @@ ms.locfileid: "59571046"
 
 2. 使用下表来了解和解决常见错误。
 
-    | 错误 | 根本原因 | 解决方法 |
+    | Error | 根本原因 | 分辨率 |
     |-------|------------|------------|
     | 404104 DeviceConnectionClosedRemotely | 设备关闭了连接，但 IoT 中心不知道原因。 常见原因包括 MQTT/AMQP 超时和 Internet 连接断开。 | 通过[测试连接](tutorial-connectivity.md)，确保设备能够连接到 IoT 中心。 如果连接正常，但设备间歇性断开连接，请确保为所选的协议 (MQTT/AMPQ) 实现正确的保持活动状态设备逻辑。 |
     | 401003 IoTHubUnauthorized | IoT 中心无法对连接进行身份验证。 | 确保所用的 SAS 或其他安全令牌未过期。 [Azure IoT SDK](iot-hub-devguide-sdks.md) 无需特殊的配置即可自动生成令牌。 |

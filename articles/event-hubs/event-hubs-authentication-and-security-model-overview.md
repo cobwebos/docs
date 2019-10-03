@@ -16,11 +16,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 19b347423c28b4c615f90f325ead462b9d3e8e9e
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990028"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60822584"
 ---
 # <a name="azure-event-hubs---authentication-and-security-model"></a>Azure 事件中心 - 身份验证和安全模型
 
@@ -44,7 +44,7 @@ Azure 事件中心安全模型满足以下要求：
 
 ### <a name="create-the-sas-key"></a>创建 SAS 密钥
 
-创建事件中心命名空间时，此服务自动生成名为 RootManageSharedAccessKey 的 256 位 SAS 密钥。 此规则具有关联的主密钥对和辅助密钥对，可用于向命名空间授予发送、侦听和管理权限。 还可创建其他密钥。 建议生成一个密钥，用于授予对特定事件中心的发送权限。 对于本主题的其余部分，假设将此密钥命名为 **EventHubSendKey**。
+创建事件中心命名空间时，此服务自动生成名为 RootManageSharedAccessKey 的 256 位 SAS 密钥  。 此规则具有关联的主密钥对和辅助密钥对，可用于向命名空间授予发送、侦听和管理权限。 还可创建其他密钥。 建议生成一个密钥，用于授予对特定事件中心的发送权限。 对于本主题的其余部分，假设将此密钥命名为 **EventHubSendKey**。
 
 在创建事件中心时，以下示例将创建一个仅限发送的密钥：
 
@@ -68,7 +68,7 @@ nm.CreateEventHub(ed);
 
 ### <a name="generate-tokens"></a>生成令牌
 
-可以使用 SAS 密钥生成令牌。 对于每个客户端只能生成一个令牌。 然后，可以使用以下方法生成令牌。 所有令牌都使用 **EventHubSendKey** 密钥生成。 将为每个令牌分配一个唯一 URI。 Resource 参数对应于服务 （在本例中为事件中心） 的 URI 终结点。
+可以使用 SAS 密钥生成令牌。 对于每个客户端只能生成一个令牌。 然后，可以使用以下方法生成令牌。 所有令牌都使用 **EventHubSendKey** 密钥生成。 将为每个令牌分配一个唯一 URI。 'resource' 参数对应于服务（在此示例中为事件中心）的 URI 终结点。
 
 ```csharp
 public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)

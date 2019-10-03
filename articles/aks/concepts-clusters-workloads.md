@@ -2,17 +2,17 @@
 title: 概念 - Azure Kubernetes Service (AKS) 中 Kubernetes 的核心概念
 description: 了解 Kubernetes 的基本群集和工作负荷组件以及它们与 Azure Kubernetes 服务 (AKS) 中各个功能的关系
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: bababa723e70cdc5268fb04f1104cca9e254984d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 06/03/2019
+ms.author: mlearned
+ms.openlocfilehash: 3792eed170d3e3e1cdd267c0c88d2d2d6c520733
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678780"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672814"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -28,7 +28,7 @@ Kubernetes 是一个快速发展的平台，用于管理基于容器的应用程
 
 作为开放平台，Kubernetes 可使用首选的编程语言、OS、库或消息总线生成应用程序。 现有的持续集成和持续交付 (CI/CD) 工具可以与 Kubernetes 集成，以计划和部署版本。
 
-Azure Kubernetes 服务 (AKS) 提供托管 Kubernetes 服务，可简化部署和核心管理任务，包括协调升级。 Azure 平台可托管 AKS 群集主机，你只需为运行应用程序的 AKS 节点付费。 AKS 基于开源 Azure Kubernetes 服务引擎 ([aks 引擎][aks-engine])。
+Azure Kubernetes 服务 (AKS) 提供托管 Kubernetes 服务，可简化部署和核心管理任务，包括协调升级。 Azure 平台可托管 AKS 群集主机，你只需为运行应用程序的 AKS 节点付费。 AKS 建立在开放源代码 Azure Kubernetes 服务引擎 ([aks-engine][aks-engine]) 的基础之上。
 
 ## <a name="kubernetes-cluster-architecture"></a>Kubernetes 群集体系结构
 
@@ -56,7 +56,7 @@ AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你�
 
 如果需要以特定方式配置群集主机或直接对其进行访问，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。
 
-有关相关的最佳做法，请参阅[AKS 中的安全性和升级最佳做法][operator-best-practices-cluster-security]。
+如需相关的最佳做法，请参阅 [AKS 中群集安全性和升级的最佳做法][operator-best-practices-cluster-security]。
 
 ## <a name="nodes-and-node-pools"></a>节点和节点池
 
@@ -70,38 +70,75 @@ AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你�
 
 节点的 Azure VM 大小定义了 CPU 数量、内存大小以及可用存储的大小和类型（如高性能 SSD 或常规 HDD）。 如果预计需要使用大量 CPU 和内存或高性能存储的应用程序，则相应地规划节点大小。 还可以纵向扩展 AKS 群集中的节点数以满足需求。
 
-在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需任何手动配置。
+在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需任何手动配置。 代理节点按标准虚拟机计费，因此会自动应用你所使用的 VM 大小（包括[Azure 预订][reservation-discounts]）的任何折扣。
 
-如果需要使用不同的主机 OS、容器运行时或包含自定义程序包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 会发布功能并提供配置选项，且这一操作会在 AKS 群集中支持这些操作和选项之前实施。 例如，如果想要使用 Windows 容器或容器运行时而不是 Moby，可以使用`aks-engine`配置和部署满足当前需求的 Kubernetes 群集。
+如果需要使用不同的主机 OS、容器运行时或包含自定义包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 会发布功能并提供配置选项，且这一操作会在 AKS 群集中支持这些操作和选项之前实施。 例如，如果你想要使用小鲸鱼以外的容器运行时，则可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
 
 ### <a name="resource-reservations"></a>资源预留
 
-你不需要在每个节点上管理核心 Kubernetes 组件（例如 *kubelet*、*kube-proxy* 和 *kube-dns*），但它们确实消耗某些可用的计算资源。 为保持节点性能和功能，每个节点上会预留以下计算资源：
+AKS 使用节点资源将节点函数作为群集的一部分。 当在 AKS 中使用时，这会在节点的总资源和资源 allocatable 之间创建 discrepency。 在为用户部署的 pod 设置请求和限制时，必须注意这一点。
 
-- **CPU** - 60 ms
-- **内存** - 20%，最多 4 GiB
+若要查找节点的 allocatable 资源运行，请执行以下操作：
+```kubectl
+kubectl describe node [NODE_NAME]
+
+```
+
+为维护节点的性能和功能，AKS 将在每个节点上保留资源。 随着节点在资源中的增长，资源预留量会增长，因为需要管理的用户数更多。
+
+>[!NOTE]
+> 使用 OMS 等外接程序将使用其他节点资源。
+
+- **Cpu**预留 cpu 依赖于节点类型和群集配置，这可能会由于运行其他功能而导致 CPU allocatable
+
+| 主机上的 CPU 内核数 | 1 | 2 | 4 | 8 | 16 | 32|64|
+|---|---|---|---|---|---|---|---|
+|Kube （millicores）|60|100|140|180|260|420|740|
+
+- **内存保留**的内存按累进速率
+  - 前 4 GB 内存的 25%
+  - 下 4 GB 内存的 20% （最多 8 GB）
+  - 下 8 GB 内存的 10% （高达 16 GB）
+  - 下一个 112 GB 内存的 6% （最大为 128 GB）
+  - 超过 128 GB 的任何内存的 2%
 
 这些预留意味着你的应用程序的可用 CPU 和内存量可能显示为少于节点本身包含的数量。 如果由于你运行的应用程序数太多而存在资源约束，则这些预留可以确保 CPU 和内存保持可供核心 Kubernetes 组件使用。 资源预留无法更改。
 
-例如：
-
-- **标准 DS2 v2** 节点大小包含 2 个 vCPU 和 7 GiB 内存
-    - 7 GiB 内存的 20% = 1.4 GiB
-    - 总共有 *(7 - 1.4) = 5.6 GiB* 内存可供节点使用
-    
-- **标准 E4s v3** 节点大小包含 4 个 vCPU 和 32 GiB 内存
-    - 32 GiB 内存的 20% = 6.4 GiB，但 AKS 最多仅保留 4 GiB
-    - 总共有 *(32 - 4) = 28 GiB* 内存可供节点使用
-    
 基础节点 OS 还需要一定量的 CPU 和内存资源来完成其自己的核心功能。
 
-有关相关的最佳做法，请参阅[在 AKS 中的基本计划程序功能的最佳做法][operator-best-practices-scheduler]。
+如需相关的最佳做法，请参阅 [AKS 中适用于基本计划程序功能的最佳做法][operator-best-practices-scheduler]。
 
 ### <a name="node-pools"></a>节点池
 
-具有相同配置的节点将统一合并成节点池。 Kubernetes 群集包含一个或多个节点池。 创建 AKS 群集时会定义初始节点数和大小，从而创建默认节点池。 AKS 中的此默认节点池包含运行代理节点的基础 VM。
+具有相同配置的节点将统一合并成节点池。 Kubernetes 群集包含一个或多个节点池。 创建 AKS 群集时会定义初始节点数和大小，从而创建默认节点池。 AKS 中的此默认节点池包含运行代理节点的基础 VM。 AKS 中目前有多个节点池支持。
 
-缩放或升级 AKS 群集时，将对默认节点池执行操作。 对于升级操作，将在节点池中的其他节点上计划运行的容器，直到成功升级所有节点。
+> [!NOTE]
+> 若要确保群集能够可靠运行，应在默认节点池中至少运行2个节点。
+
+缩放或升级 AKS 群集时，将对默认节点池执行操作。 你还可以选择缩放或升级特定节点池。 对于升级操作，将在节点池中的其他节点上计划运行的容器，直到成功升级所有节点。
+
+有关如何在 AKS 中使用多个节点池的详细信息，请参阅[在 AKS 中为群集创建和管理多个节点池][use-multiple-node-pools]。
+
+### <a name="node-selectors"></a>节点选择器
+
+在包含多个节点池的 AKS 群集中，可能需要告知 Kubernetes 计划程序要将哪个节点池用于给定的资源。 例如，入口控制器不应在 Windows Server 节点上运行（当前在 AKS 中为预览版）。 节点选择器允许您定义各种参数（如节点 OS），以控制应将 pod 安排到何处。
+
+以下基本示例使用节点选择器 *"beta.kubernetes.io/os"* 在 linux 节点上计划 NGINX 实例： Linux：
+
+```yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx:1.15.12
+  nodeSelector:
+    "beta.kubernetes.io/os": linux
+```
+
+有关如何控制 pod 的计划的详细信息，请参阅[AKS 中高级计划程序功能的最佳实践][operator-best-practices-advanced-scheduler]。
 
 ## <a name="pods"></a>Pod
 
@@ -162,7 +199,7 @@ spec:
 
 在 Kubernetes 中管理应用程序的常用方法是使用 [Helm][helm]。 可以生成和使用包含应用程序代码打包版本和 Kubernetes YAML 清单的现有公共 Helm chart 来部署资源。 这些 Helm chart 可以存储在本地，通常也可以存储在远程存储库中，例如 [Azure 容器注册表 Helm chart 存储库][acr-helm]。
 
-为使用 Helm，Kubernetes 群集中会安装名为 Tiller 的服务器组件。 Tiller 管理群集中群集的安装。 Helm 客户端自身本地安装在计算机上，也可以在 [Azure Cloud Shell][azure-cloud-shell] 中使用。 可以使用客户端搜索或创建 Helm 图表，然后将其安装到 Kubernetes 群集。
+为使用 Helm，Kubernetes 群集中会安装名为 Tiller 的服务器组件。 Tiller 管理群集中群集的安装。 Helm 客户端本身安装在本地计算机上，也可在[Azure Cloud Shell][azure-cloud-shell]中使用。 可以使用客户端搜索或创建 Helm 图表，然后将其安装到 Kubernetes 群集。
 
 ![Helm 包括客户端组件和服务器端 Tiller 组件，用于在 Kubernetes 群集内创建资源](media/concepts-clusters-workloads/use-helm.png)
 
@@ -198,7 +235,7 @@ spec:
 有关详细信息，请参阅 [Kubernetes DaemonSet][kubernetes-daemonset]。
 
 > [!NOTE]
-> 如果使用[虚拟节点外接程序](virtual-nodes-cli.md#enable-virtual-nodes-addon)，Daemonset 不会在虚拟节点创建 pod。
+> 如果使用[虚拟节点外接程序](virtual-nodes-cli.md#enable-virtual-nodes-addon)，daemonset 将不会在虚拟节点上创建 pod。
 
 ## <a name="namespaces"></a>命名空间
 
@@ -245,3 +282,6 @@ Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中�
 [aks-helm]: kubernetes-helm.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
+[use-multiple-node-pools]: use-multiple-node-pools.md
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md

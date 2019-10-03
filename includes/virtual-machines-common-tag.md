@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226815"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67172890"
 ---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>通过模板标记虚拟机
-首先，让我们看一下通过模板进行标记。 [此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags)将标记放置在以下资源中：计算（虚拟机）、存储（存储帐户）和网络（公共 IP 地址、虚拟网络和网络接口）。 此模板适用于 Windows VM，但经过改造后也可用于 Linux VM。
+首先，让我们看一下通过模板进行标记。 [此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags)将标记放置在以下资源上:计算 (虚拟机)、存储 (存储帐户) 和网络 (公共 IP 地址、虚拟网络和网络接口)。 此模板适用于 Windows VM，但经过改造后也可用于 Linux VM。
 
 单击 [模板链接](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) 中的 **部署至 Azure** 按钮。 此操作将导航到 [Azure 门户](https://portal.azure.com/)，可在其中部署此模板。
 
 ![使用标记进行简单部署](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
-此模板包括以下标记：*Department*、*Application* 和 *Created By*。 如果想要不同的标记名称，则可以直接在模板中添加/编辑这些标记。
+此模板包括以下标记:*由创建的* *部门*、*应用程序*和。 如果想要不同的标记名称，则可以直接在模板中添加/编辑这些标记。
 
 ![模板中的 Azure 标记](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
 

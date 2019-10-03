@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: gwallace
-ms.openlocfilehash: 115efe8a3a98c502931765f67489ded0fa15b7b6
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 145b5a686b2707b6e60a481c08f187164d788580
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648950"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66121239"
 ---
 # <a name="load-balance-multiple-websites"></a>对多个网站进行负载均衡
 

@@ -3,25 +3,25 @@ title: 是试验性预设识别内容的编码-Azure |Microsoft Docs
 description: 本文介绍 Azure 媒体服务中的内容识别的编码
 services: media-services
 documentationcenter: ''
-author: sethmanheim
+author: Juliako
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 04/05/2019
-ms.author: sethm
+ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 3c50502a8b873503ee937914fac5f2d92cb23a2b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ddb7bfd2437af806c8db75068c50545e69867ea0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59288376"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65151010"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>实验性识别内容的编码预设
 
-若要准备传送的内容[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，视频需要经过编码的多个比特率 （从高到低）。 为了确保妥善降级的质量，如降低比特率，因此是视频的分辨率。 这导致所谓的编码阶梯 – 表的分辨率和比特率，你可以看到在一些我们固定的编码预设，如[H264MultipleBitrate1080p](../previous/media-services-mes-preset-h264-multiple-bitrate-1080p.md)。
+若要准备传送的内容[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)，视频需要经过编码的多个比特率 （从高到低）。 为了确保妥善降级的质量，如降低比特率，因此是视频的分辨率。 这会导致所谓的编码阶梯 – 的分辨率和比特率; 表请参阅 Media Services[内置的编码预设](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。
 
 ## <a name="overview"></a>概述
 
@@ -43,11 +43,11 @@ ms.locfileid: "59288376"
 
 ![使用 PSNR RD 曲线](media/cae-experimental/msrv3.png)
 
-图 3：**（在 1080p) 的低质量输入使用 PSNR RD 曲线**
+图 3： **（在 1080p) 的低质量输入使用 PSNR RD 曲线**
 
 ![使用 VMAF RD 曲线](media/cae-experimental/msrv4.png)
 
-图 4：**（在 1080p) 的低质量输入使用 VMAF RD 曲线**
+图 4： **（在 1080p) 的低质量输入使用 VMAF RD 曲线**
 
 ## <a name="use-the-experimental-preset"></a>使用实验性预设
 

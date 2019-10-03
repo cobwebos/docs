@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: 88fdaec9e19c082a6fe981dc4d9a0e015335f1e2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 0960862da9e65cff4d957e97a7488dc7a245651a
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818612"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742125"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>如何通过 Python 应用程序使用 Azure 事件中心
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关详细信息，请参阅[事件中心简介](event-hubs-what-is-event-hubs.md)。 
@@ -94,7 +94,8 @@ pip install azure-eventhub
 client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
 
 # Add a receiver to the client
-receiver = client.add_receiver(CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
+receiver = client.add_receiver(
+    CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
 
 # Run the Event Hubs client
 client.run()
@@ -156,13 +157,12 @@ def startProcessing(accountName, key, container):
             os.remove(cleanName)
         block_blob_service.delete_blob(container, blob.name)
 startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
-
 ```
 
 有关如何从使用 Python 编写的应用程序中读取 Azure Blob 存储中捕获的事件中心数据的完成教程，请参阅[本文](event-hubs-capture-python.md)
 
 ## <a name="github-samples"></a>GitHub 示例
-可在 [azure-event-hubs-python Git 存储库](https://github.com/Azure/azure-event-hubs-python/) 中找到更多 Python 示例。
+可在 [azure-event-hubs-python Git 存储库](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs) 中找到更多 Python 示例。
 
 ## <a name="next-steps"></a>后续步骤
 阅读“概念”部分中的文章，从[事件中心功能概述](event-hubs-features.md)开始。

@@ -3,8 +3,8 @@ title: 计划 Azure 虚拟网络 | Microsoft Docs
 description: 了解如何基于隔离、连接性和位置需求来计划虚拟网络。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
-ms.author: jdial
-ms.openlocfilehash: acd7a88acb31b9d3bd3ba714387561e91b3524a6
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.author: kumud
+ms.openlocfilehash: 0a80630ffa363d2b633667d8104cc0326c4afa2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339510"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66478595"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -77,7 +77,7 @@ ms.locfileid: "56339510"
 - 如果子网中不同 VM 需要应用不同的安全规则，则可将 VM 中的网络接口与一个或多个应用程序安全组相关联。 安全规则可以在其源和/或目标中指定应用程序安全组。 该规则仅适用于属于应用程序安全组成员的网络接口。 详细了解[网络安全组](security-overview.md)和[应用程序安全组](security-overview.md#application-security-groups)。
 - Azure 在每个网络安全组中创建了多个默认安全规则。 其中一个默认规则允许所有流量在虚拟网络中的所有资源之间流动。 若要替代此行为，可使用网络安全组和/或自定义路由将流量路由到 NVA。 建议熟悉 Azure 的所有[默认安全规则](security-overview.md#default-security-rules)，并了解网络安全组规则如何应用于资源。
 
-可查看使用 [NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) 或[网络安全组](virtual-networks-dmz-nsg.md)在 Azure 和 Internet 之间实施 DMZ 的示例设计。
+您可以查看示例设计用于实现外围网络 (也称为 DMZ) Azure 与 internet 使用之间[NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json)。
 
 ### <a name="traffic-routing"></a>流量路由
 
@@ -111,7 +111,7 @@ Azure 对资源使用[基于角色的访问控制](../role-based-access-control/
 
 ## <a name="policy"></a>策略
 
-通过 Azure Policy，可创建、分配和管理策略定义。 策略定义将在整个资源中强制实施不同的规则，以便资源符合组织标准和服务级别协议。 Azure 策略对资源进行评估，扫描并找到与所定义策略不相符的资源。 例如，可以定义和应用仅在特定资源组或区域中允许创建虚拟网络的策略。 另一个策略可能要求每个子网都有一个与之关联的网络安全组。 然后，在创建和更新资源时评估此策略。
+通过 Azure Policy，可创建、分配和管理策略定义。 策略定义将在整个资源中强制实施不同的规则，以便资源符合组织标准和服务级别协议。 Azure Policy 对资源进行评估，扫描并找到与所定义策略不相符的资源。 例如，可以定义和应用仅在特定资源组或区域中允许创建虚拟网络的策略。 另一个策略可能要求每个子网都有一个与之关联的网络安全组。 然后，在创建和更新资源时评估此策略。
 
 策略应用于以下层次结构：订阅、管理组和资源组。 了解有关 [Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或部署某些虚拟网络[策略模板](policy-samples.md)示例的详细信息。
 

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
-manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 4dbf53df4d3f34e80757f9575981b4b053587d97
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2e6b18e53358cad1bfe89e8c0ae7fbacec24d179
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012673"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570211"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的独立单租户应用程序
 
@@ -25,9 +24,9 @@ ms.locfileid: "58012673"
 
 独立应用程序或每租户应用模式将为每个租户部署应用程序实例。  为特定租户配置了每个应用程序并在单独的 Azure 资源组中部署了这些应用程序。 预配了应用程序的多个实例，提供多租户解决方案。 租户数较少且最需要优先考虑租户隔离时，最适合采用此模式。 Azure 具有合作伙伴计划，这些计划允许将资源部署到租户的订阅中，由服务提供商代表租户进行管理。 
 
-在本教程中，三个租户的三个独立应用程序将会部署到 Azure 订阅中。  用户具有完全访问权限，可以浏览并处理各个应用程序组件。
+在本教程中, 将三个租户的三个独立应用程序部署到 Azure 订阅中。  用户具有完全访问权限，可以浏览并处理各个应用程序组件。
 
-[WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub 存储库提供了应用程序源代码和管理脚本。 该应用程序是使用 Visual Studio 2015 创建的，无法在不更新的情况下在 Visual Studio 2017 中成功打开和编译。
+[WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub 存储库提供了应用程序源代码和管理脚本。 该应用程序是使用 Visual Studio 2015 创建的, 并且不会在 Visual Studio 2019 中成功打开和编译, 而无需进行更新。
 
 
 本教程介绍以下内容：
@@ -37,7 +36,7 @@ ms.locfileid: "58012673"
 > * 获取应用程序源代码和管理脚本的位置。
 > * 关于构成该应用的服务器和数据库。
 
-我们将发布更多教程。 参考这些教程可以探索基于此应用程序模式的一系列管理方案。   
+我们将发布更多教程。 它们将允许你探索基于此应用程序模式的一系列管理方案。   
 
 ## <a name="deploy-the-wingtip-tickets-saas-standalone-application"></a>部署 Wingtip 票证 SaaS 独立应用程序
 
@@ -55,8 +54,8 @@ ms.locfileid: "58012673"
     > [!IMPORTANT]
     > 出于演示目的，某些身份验证和服务器防火墙已有意取消保护。 为每个应用程序部署创建新的资源组。  不要使用现有资源组。 不要使用该应用程序及其创建的任何资源进行生产。 使用完该应用程序时请删除所有资源组，停止相关计费。
 
-    最好在资源名称中仅使用小写字母、数字和连字符。
-    * 对于“资源组”，请选择“新建”，然后为资源组提供一个小写的名称。 **wingtip-sa-\<venueName\>-\<user\>** 是建议的模式。  对于 \<venueName\>，请替换为场所名称，不留空格。 对于 \<user\>，请替换为以下的用户值。  使用此模式，资源组名称可能是 wingtip-sa-contosoconcerthall-af1、wingtip-sa-dogwooddojo-af1、wingtip-sa-fabrikamjazzclub-af1。
+    最好只在资源名称中使用小写字母、数字和连字符。
+    * 对于“资源组”，请选择“新建”，然后为资源组提供一个小写的名称。 **wingtip-sa-\<venueName\>-\<user\>** 是建议的模式。  对于\<venueName\>, 请将地点名称替换为空格。 对于\<"\>用户", 请替换下面的 "用户" 值。  使用此模式，资源组名称可能是 wingtip-sa-contosoconcerthall-af1、wingtip-sa-dogwooddojo-af1、wingtip-sa-fabrikamjazzclub-af1。
     * 从下拉列表中选择一个**位置**。
 
     * 对于“用户”，建议使用较短的用户值，例如在缩写后加上数字：af1。
@@ -76,16 +75,16 @@ ms.locfileid: "58012673"
 
 1. 在不同的浏览器选项卡中打开三个租户各自的活动页面：
 
-   - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-   - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-   - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt ;user&gt;.trafficmanager.net
+   - http://events.dogwooddojo.&lt ;user&gt;.trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt ;user&gt;.trafficmanager.net
 
      （在每个 URL 中，请将 &lt;user&gt; 替换为自己的部署 user 值。）
 
-   ![活动](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![事件](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 该应用使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)来控制传入请求的分配。 每个租户特定的应用实例将租户名称用作 URL 中域名的一部分。 所有租户 URL 包含特定的 **User** 值。 URL 采用以下格式：
-- http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
+- http://events.&lt ;venuename&gt;.&lt; user&gt;.trafficmanager.net
 
 每个租户的数据库**位置**包含在部署的相应应用的应用设置中。
 
@@ -107,7 +106,7 @@ ms.locfileid: "58012673"
 <!--
 * Additional [tutorials that build on the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * To learn about elastic pools, see [*What is an Azure SQL elastic pool*](sql-database-elastic-pool.md)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](sql-database-elastic-jobs-overview.md)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](elastic-jobs-overview.md)
 -->
 
 - 若要了解多租户 SaaS 应用程序，请参阅[多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
@@ -126,6 +125,6 @@ ms.locfileid: "58012673"
 > * 关于构成该应用的服务器和数据库。
 > * 如何删除示例资源以停止相关计费。
 
-接下来，请尝试[预配和目录](saas-standaloneapp-provision-and-catalog.md)教程，你将在其中了解租户目录的用途，该目录可实现大量跨租户方案，如架构管理和租户分析。
+接下来, 请尝试[预配和目录](saas-standaloneapp-provision-and-catalog.md)教程, 你将在其中探索用于启用各种跨租户方案 (如架构管理和租户分析) 的租户目录。
  
 

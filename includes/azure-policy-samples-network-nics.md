@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 841b95e3e1cff09a15b4158bc55d46f782d32d41
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f189843e865863d9b4088363e691ebc42ad9f2a9
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47003581"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173096"
 ---
 ### <a name="network-interfaces"></a>网络接口
 

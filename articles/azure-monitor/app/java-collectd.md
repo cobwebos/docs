@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/24/2016
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 783cef6ff4e107838bb3ff7502fb4a8e9189ec3d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c6e947dfed3169f346f43ab08225056815e8b487
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011191"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061200"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 性能指标
 
@@ -91,7 +91,7 @@ ms.locfileid: "58011191"
 根据其[手册](https://collectd.org/wiki/index.php/First_steps)重启 collectd。
 
 ## <a name="view-the-data-in-application-insights"></a>查看 Application Insights 中的数据
-在 Application Insights 资源中，打开[度量值和添加图表][metrics]，选择你想要从自定义类别查看的度量值。
+在 Application Insights 资源中，打开[指标和添加图表][metrics]，选择要从“自定义”类别查看的指标。
 
 默认情况下，会从收集指标的所有主机中聚合指标。 要查看每个主机的指标，在“图表”详细信息边栏选项卡中，打开“分组”，并选择按 CollectD-Host 分组。
 

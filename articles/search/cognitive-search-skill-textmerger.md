@@ -2,21 +2,19 @@
 title: 文本合并认知搜索技能 - Azure 搜索
 description: 将字段集合中的文本合并到合并字段中。 在 Azure 搜索扩充管道中使用此认知技能。
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: ceda22394aab27f27740bb999b36e2cc46a6bd06
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 1e88fcc13d97d92cf9b35616ecb7d71c2d24db1f
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568870"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265259"
 ---
 #    <a name="text-merge-cognitive-skill"></a>文本合并认知技能
 
@@ -78,7 +76,7 @@ Microsoft.Skills.Text.MergeSkill
 
 使用文本合并的一个常见场景是将图像的文本表示形式（OCR 技能中的文本或图像的描述文字）合并到文档的内容字段中。 
 
-以下示例技能使用 OCR 技能从文档中嵌入的图像中提取文本。 接下来，它会创建 merged_text 字段以包含每个图像的原始和 OCRed 文本。 可在[此处](https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-ocr)了解有关 OCR 技能的详细信息。
+以下示例技能使用 OCR 技能从文档中嵌入的图像中提取文本。 接下来，它会创建 merged_text 字段以包含每个图像的原始和 OCRed 文本。 可在[此处](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)了解有关 OCR 技能的详细信息。
 
 ```json
 {
@@ -143,7 +141,7 @@ Microsoft.Skills.Text.MergeSkill
 }
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [预定义技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)

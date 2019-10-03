@@ -10,17 +10,16 @@ ms.assetid: 091decb6-b0de-42a1-9f2f-c18d9b2e67df
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 862887e1e530bfdca4359e914b9a81c9360ac4dd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107372"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070432"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>如何使用 Azure 资源管理器模板创建 ILB ASE
 
@@ -40,7 +39,7 @@ ms.locfileid: "56107372"
 3. 上传的 SSL 证书显式分配给 ILB ASE 作为其“默认”SSL 证书。  如果应用使用分配给 ASE 的一般根域（例如 https://someapp.mycustomrootcomain.com) 来寻址，此 SSL 证书用于 ILB ASE 上应用的 SSL 流量
 
 ## <a name="creating-the-base-ilb-ase"></a>创建基础 ILB ASE
-GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器模板示例及其相关联的参数文件。
+[GitHub 上][quickstartilbasecreate]提供了一个示例 Azure 资源管理器模板及其关联的参数文件。
 
 *azuredeploy.parameters.json* 文件中的大部分参数通用于创建 ILB ASE 以及绑定到公用 VIP 的 ASE。  创建 ILB ASE 时，以下列表会调出特殊注释的参数或唯一的参数：
 
@@ -69,7 +68,7 @@ GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器�
 
 然后需要将生成的 .pfx 文件转换为 base64 字符串，因为会使用 Azure 资源管理器模板上传 SSL 证书。  Azure 资源管理器模板是文本文件，因此必须将 .pfx 文件转换为 base64 字符串，才能纳入为模板的参数。
 
-以下 Powershell 代码片段显示生成自签名证书、将证书导出为 .pfx 文件、将 .pfx 文件转换为 base64 编码字符串，然后将 base64 编码字符串保存到一个单独文件的示例。  base64 编码的 Powershell 代码改写自 [Powershell 脚本博客][examplebase64encoding]。
+以下 Powershell 代码片段显示生成自签名证书、将证书导出为 .pfx 文件、将 .pfx 文件转换为 base64 编码字符串，然后将 base64 编码字符串保存到一个单独文件的示例。  Base64 编码的 Powershell 代码是从[Powershell 脚本博客][examplebase64encoding]中改编而来的。
 
     $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
@@ -83,7 +82,7 @@ GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器�
     $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
     $fileContentEncoded | set-content ($fileName + ".b64")
 
-成功生成 SSL 证书并转换为 base64 编码字符串后，GitHub 上的示例 Azure 资源管理器模板即可用于[配置默认 SSL 证书][configuringDefaultSSLCertificate]。
+成功生成 SSL 证书并转换为 base64 编码字符串后，可以使用 GitHub 上的示例 Azure 资源管理器模板来[配置默认 SSL 证书][configuringDefaultSSLCertificate]。
 
 *azuredeploy.parameters.json* 文件中的参数如下所列：
 

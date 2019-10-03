@@ -4,25 +4,24 @@ description: Azure 平台上 SAP 的当前配置和认证的更新列表。
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 05/15/2019
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: de282041066e18a52d596f051def598eef3d458d
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
-ms.translationtype: HT
+ms.openlocfilehash: 38e63d8ca7d9db5247bd5fe07fbe59452a106cf6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287211"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098670"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>在 Microsoft Azure 上运行的 SAP 认证和配置
 
@@ -37,10 +36,10 @@ SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴�
 | --- | --- | --- |
 | SAP HANA Developer Edition（包括由 SQLODBC、ODBO（仅限 Windows）、ODBC 和 JDBC 驱动程序组成的 HANA Client 软件）、HANA Studio 和 HANA 数据库 | Red Hat Enterprise Linux、SUSE Linux Enterprise | D 系列 VM 系列 |
 | HANA 上的 Business One | SUSE Linux Enterprise | DS14_v2、M32ts、M32ls、M64ls、M64s <br /> [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
-| SAP S/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | 可控制的 GS5 可用性。 完全支持 M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts， <br /> Azure 上的 SAP HANA（大型实例）[SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
-| Suite on HANA、OLTP | Red Hat Enterprise Linux、SUSE Linux Enterprise | M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、Azure 上的 SAP HANA（大型实例） <br /> [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
-| 适用于 BW 和 OLAP 的 HANA 企业版 | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts， <br /> Azure 上的 SAP HANA（大型实例）[SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
-| SAP BW/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts， <br /> Azure 上的 SAP HANA（大型实例） <br /> [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| SAP S/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | 可控制的 GS5 可用性。 完全支持 M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2、 <br /> Azure 上的 SAP HANA（大型实例）[SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| Suite on HANA、OLTP | Red Hat Enterprise Linux、SUSE Linux Enterprise | M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2、SAP HANA on Azure (大型实例) <br /> [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| 适用于 BW 和 OLAP 的 HANA 企业版 | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2、 <br /> Azure 上的 SAP HANA（大型实例）[SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
+| SAP BW/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2、 <br /> Azure 上的 SAP HANA（大型实例） <br /> [经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 
 请注意，SAP 在[经 SAP HANA 认证的 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中使用术语“群集”作为“横向扩展”的同义词，而不是高可用性“群集”的同义词
 
@@ -48,15 +47,15 @@ SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴�
 在 Microsoft 和 SAP 的全面支持下，Microsoft Azure 已针对以下 SAP 产品进行认证。
 引用：
 
-- [1928533 - Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型](https://launchpad.support.sap.com/#/notes/1928533)，适用于所有基于 SAP NetWeaver 的应用程序，包括 SAP TREX、SAP LiveCache 和 SAP 内容服务器。 以及所有数据库，但 SAP HANA 除外。
+- [1928533-Azure 上的 SAP 应用程序:适用于所有基于 sap NetWeaver](https://launchpad.support.sap.com/#/notes/1928533)的应用程序 (包括 sap TREX、sap LiveCache 和 sap 内容服务器) 的支持的产品和 Azure VM 类型。 以及所有数据库，但 SAP HANA 除外。
 
 
 | SAP 产品 | 来宾 OS | RDBMS | 虚拟机类型 |
 | --- | --- | --- | --- |
-| SAP 业务套件软件 | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、D2s_v3 到 D64s_v3、E2s_v3 到 E64s_v3、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts |
-| 多合一 SAP 业务软件 | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、D2s_v3 到 D64s_v3、E2s_v3 到 E64s_v3、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts |
-| SAP BusinessObjects BI | Windows |不适用 |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、D2s_v3 到 D64s_v3、E2s_v3 到 E64s_v3、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts |
-| SAP NetWeaver | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、D2s_v3 到 D64s_v3、E2s_v3 到 E64s_v3、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts |
+| SAP 业务套件软件 | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、D2s_v3 到 D64s_v3、E2s_v3 到 E64s_v3、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2 |
+| 多合一 SAP 业务软件 | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、D2s_v3 到 D64s_v3、E2s_v3 到 E64s_v3、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2 |
+| SAP BusinessObjects BI | Windows |不可用 |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、D2s_v3 到 D64s_v3、E2s_v3 到 E64s_v3、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2 |
+| SAP NetWeaver | Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、D2s_v3 到 D64s_v3、E2s_v3 到 E64s_v3、M64s、M64ms、M128s、M128ms、M64ls、M32ls、M32ts、M208s_v2、M208ms_v2 |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>在 Azure 上支持的其他 SAP 工作负荷
 

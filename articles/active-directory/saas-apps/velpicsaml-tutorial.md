@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc8431e2c45cc3bfdfa08dd0078220ab2d290309
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 883620d6aa25f71a454c7add6d60e38b4974facf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565710"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087668"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>教程：Azure Active Directory 与 Velpic SAML 的集成
 
@@ -54,19 +54,19 @@ ms.locfileid: "59565710"
 
 **若要从库中添加 Velpic SAML，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Velpic SAML**，在结果面板中选择“Velpic SAML”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入 **Velpic SAML**，在结果面板中选择“Velpic SAML”，然后单击“添加”按钮添加该应用程序。  
 
     ![结果列表中的“Velpic SAML”](common/search-new-app.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "59565710"
 
 若要配置 Velpic SAML 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Velpic SAML”应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Velpic SAML”应用程序集成页上，选择“单一登录”。  
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,26 +98,26 @@ ms.locfileid: "59565710"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![Velpic SAML 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.velpicsaml.net`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.velpicsaml.net` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://auth.velpic.com/saml/v2/<entity-id>/login`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://auth.velpic.com/saml/v2/<entity-id>/login` 
 
     > [!NOTE]
     > 请注意，“登录 URL”由 Velpic SAML 团队提供，而“标识符”值会在完成 Velpic SAML 侧的 SSO 插件配置后可供使用。 需要从 Velpic SAML 应用程序页复制该值，将其粘贴到此处。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Velpic SAML”部分，根据要求复制相应的 URL。
+6. 在“设置 Velpic SAML”部分，根据要求复制相应的 URL。 
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -131,19 +131,19 @@ ms.locfileid: "59565710"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Velpic SAML 公司站点。
 
-2. 单击“管理”选项卡，转到“集成”部分，在这里需单击“插件”按钮，创建用于登录的新插件。
+2. 单击“管理”选项卡，  转到“集成”部分，  在这里需单击“插件”按钮，创建用于登录的新插件。 
 
     ![插件](./media/velpicsaml-tutorial/velpic_1.png)
 
-3. 单击“添加插件”按钮。
+3. 单击“添加插件”按钮。 
     
     ![插件](./media/velpicsaml-tutorial/velpic_2.png)
 
-4. 单击“添加插件”页中的“SAML”磁贴。
+4. 单击“添加插件”页中的“SAML”  磁贴。
     
     ![插件](./media/velpicsaml-tutorial/velpic_3.png)
 
-5. 输入新 SAML 插件的名称，并单击“添加”按钮。
+5. 输入新 SAML 插件的名称，并单击“添加”  按钮。
 
     ![插件](./media/velpicsaml-tutorial/velpic_4.png)
 
@@ -151,15 +151,15 @@ ms.locfileid: "59565710"
 
     ![插件](./media/velpicsaml-tutorial/velpic_5.png)
 
-    a. 在“名称”文本框中，键入 SAML 插件的名称。
+    a. 在“名称”  文本框中，键入 SAML 插件的名称。
 
-    b. 在“颁发者 URL”文本框中，粘贴从 Azure 门户的“配置登录”窗口复制的“Azure AD 标识符”。
+    b. 在“颁发者 URL”文本框中，粘贴从 Azure 门户的“配置登录”窗口复制的“Azure AD 标识符”。   
 
-    c. 在“提供程序元数据配置”中，上传从 Azure 门户下载的元数据 XML 文件。
+    c. 在“提供程序元数据配置”中，上传从 Azure 门户下载的元数据 XML 文件。 
 
-    d. 也可通过启用“自动创建新用户”复选框，来选择启用 SAML 实时预配。 如果用户不存在于 Velpic 中且该标记未启用，则从 Azure 登录会失败。 如果该标记已启用，则用户会在登录时自动预配到 Velpic 中。 
+    d. 也可通过启用“自动创建新用户”复选框，来选择启用 SAML 实时预配。  如果用户不存在于 Velpic 中且该标记未启用，则从 Azure 登录会失败。 如果该标记已启用，则用户会在登录时自动预配到 Velpic 中。 
 
-    e. 从文本框复制“单一登录 URL”，然后将其粘贴到 Azure 门户中。
+    e. 从文本框复制“单一登录 URL”，然后将其粘贴到 Azure 门户中。 
     
     f. 单击“ **保存**”。
 
@@ -167,11 +167,11 @@ ms.locfileid: "59565710"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -179,39 +179,39 @@ ms.locfileid: "59565710"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 Britta Simon 访问 Velpic SAML 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Velpic SAML”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Velpic SAML”。   
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Velpic SAML”。
+2. 在应用程序列表中，选择“Velpic SAML”  。
 
     ![“应用程序”列表中的“Velpic SAML”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-velpic-saml-test-user"></a>创建 Velpic SAML 测试用户
 
@@ -223,31 +223,31 @@ ms.locfileid: "59565710"
 
     ![添加用户](./media/velpicsaml-tutorial/velpic_7.png)
 
-2. 在“新建用户”对话框页中，执行以下步骤。
+2. 在“新建用户”对话框页中，执行以下步骤。 
 
     ![user](./media/velpicsaml-tutorial/velpic_8.png)
     
-    a. 在“名字”文本框中键入名字 Britta。
+    a. 在“名字”文本框中键入名字 Britta。 
 
-    b. 在“姓氏”文本框键入姓氏 Simon。
+    b. 在“姓氏”文本框键入姓氏 Simon。 
 
-    c. 在“用户名”文本框中，键入 Britta Simon 的用户名。
+    c. 在“用户名”  文本框中，键入 Britta Simon 的用户名。
 
-    d. 在“电子邮件”文本框中，键入 Brittasimon@contoso.com 帐户的电子邮件地址。
+    d. 在“电子邮件”文本框中，键入 Brittasimon@contoso.com 帐户的电子邮件地址  。
 
     e. 其余信息为可选，可根据需要填写。
     
-    f. 单击“保存”。
+    f. 单击“保存”  。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-1. 单击访问面板中的 Velpic SAML 磁贴时，应显示 Velpic SAML 应用程序的登录页。 应该在登录页上显示“使用 Azure AD 登录”按钮。
+1. 单击访问面板中的 Velpic SAML 磁贴时，应显示 Velpic SAML 应用程序的登录页。 应该在登录页上显示“使用 Azure AD 登录”按钮。 
 
     ![插件](./media/velpicsaml-tutorial/velpic_6.png)
 
-1. 单击“使用 Azure AD 登录”按钮，使用 Azure AD 帐户登录到 Velpic。
+1. 单击“使用 Azure AD 登录”按钮，使用 Azure AD 帐户登录到 Velpic。 
 
 ## <a name="additional-resources"></a>其他资源
 

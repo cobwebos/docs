@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 042c3c2925e9d537847f16f02d841d793456fb03
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58172812"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309522"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT 解决方案加速器是什么？
 
@@ -42,7 +42,7 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 
 ### <a name="connected-factory"></a>互连工厂
 
-使用[连接工厂解决方案加速器](iot-accelerators-connected-factory-sample-walkthrough.md)可以从配备了 [OPC 统一体系结构](https://opcfoundation.org/about/opc-technologies/opc-ua/)接口的工业资产收集遥测数据，以及控制这些资产。 工业资产可能包括工厂生产线上的组装和测试工位。
+使用[连接工厂解决方案加速器](iot-accelerators-connected-factory-features.md)可以从配备了 [OPC 统一体系结构](https://opcfoundation.org/about/opc-technologies/opc-ua/)接口的工业资产收集遥测数据，以及控制这些资产。 工业资产可能包括工厂生产线上的组装和测试工位。
 
 可以使用互联工厂仪表板来监视和管理工业设备：
 
@@ -85,7 +85,7 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 | 互连工厂      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | 设备模拟      | 微服务 | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-若要了解有关微服务体系结构的详细信息，请参阅 [Azure IoT 参考体系结构简介](iot-accelerators-architecture-overview.md)。
+若要了解有关微服务体系结构的详细信息，请参阅 [Azure IoT 参考体系结构简介](https://docs.microsoft.com/azure/architecture/reference-architectures/iot/)。
 
 ## <a name="deployment-options"></a>部署选项
 

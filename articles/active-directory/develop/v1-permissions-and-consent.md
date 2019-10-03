@@ -3,8 +3,8 @@ title: Azure Active Directory 中的权限 | Microsoft docs
 description: 了解 Azure Active Directory 中的权限及其用法。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 6c0dc122-2cd8-4d70-be5a-3943459d308e
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ee58c2a3bed7544ff68e7d6ec756c35bee1d05b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6fb4342e024d826c65ed33184aaf33012d09190a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103156"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65545195"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 终结点中的权限和许可
 
@@ -31,7 +31,7 @@ ms.locfileid: "58103156"
 
 Azure Active Directory (Azure AD) 对 OAuth 和 OpenID Connect (OIDC) 流广泛使用权限。 当应用从 Azure AD 接收访问令牌时，访问令牌将包含声明，这些声明描述了应用对特定资源的权限。
 
-利用权限（也称为作用域），资源可以轻松进行授权，因为资源只需要检查令牌是否包含对应用要调用的 API 的合适权限。
+利用权限（也称为作用域），资源可以轻松进行授权，因为资源只需要检查令牌是否包含对应用要调用的 API 的合适权限   。
 
 ## <a name="types-of-permissions"></a>权限的类型
 

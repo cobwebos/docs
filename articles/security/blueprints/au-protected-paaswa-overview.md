@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: c17f16ce796c9f296facd69c18de4effc7ff5258
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6d1b84894439010e5297ce010b2ece6dea8f3e56
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440975"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257608"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure 安全性与合规性蓝图 - 符合 Australia PROTECTED 的 PaaS Web 应用程序
 
@@ -52,7 +52,7 @@ ms.locfileid: "57440975"
 - Azure 应用程序服务环境 v2
 - Azure 自动化
 - Azure DNS
-- Azure 密钥保管库
+- Azure Key Vault
 - Azure 负载均衡器
 - Azure Monitor
 - Azure 资源管理器
@@ -78,9 +78,9 @@ ms.locfileid: "57440975"
 **守护主机**：守护主机是允许用户访问此环境中已部署资源的单一入口点。 守护主机通过仅允许来自安全列表上的公共 IP 地址的远程流量来提供到已部署资源的安全连接。 要允许远程桌面 (RDP) 流量，需要在网络安全组中定义流量的源。
 
 此解决方案使用以下配置将虚拟机创建为已加入域的守护主机：
--   [反恶意软件扩展](https://docs.microsoft.com/azure/security/azure-security-antimalware)
--   [Azure 诊断扩展](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
--   使用 Azure Key Vault 的 [Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
+-   [反恶意软件扩展](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+-   [Azure 诊断扩展](../../virtual-machines/windows/extensions-diagnostics-template.md)
+-   使用 Azure Key Vault 的 [Azure 磁盘加密](../azure-security-disk-encryption-overview.md)
 -   [自动关闭策略](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)，在不使用虚拟机时可减少其资源消耗量
 
 **应用服务环境 v2**：[Azure 应用服务环境](https://docs.microsoft.com/azure/app-service/environment/intro)是一项应用服务功能，可提供完全隔离和专用的环境，以便高度安全地运行应用服务应用程序。
@@ -93,19 +93,19 @@ ms.locfileid: "57440975"
     - 为不同分类的应用程序配置不同的应用服务环境
 - 托管在受保护的 Azure 虚拟网络中并受网络安全规则保护
 - 使用自签名内部负载均衡器证书配置的、用于 HTTPS 通信的应用服务环境。 作为最佳做法，Microsoft 建议使用受信任的证书颁发机构来增强安全性。
-- [内部负载均衡模式](https://docs.microsoft.com/azure/app-service-web/app-service-environment-with-internal-load-balancer)（模式 3）
-- 禁用 [TLS v1.0 和 v1.1](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
-- 更改 [TLS 密码](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
-- 控制[入站流量 N/W 端口](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-control-inbound-traffic)
-- [Web 应用程序防火墙 - 限制数据](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
-- 允许 [Azure SQL 数据库流量](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
+- [内部负载均衡模式](../../app-service/environment/app-service-environment-with-internal-load-balancer.md)（模式 3）
+- 禁用 [TLS v1.0 和 v1.1](../../app-service/environment/app-service-app-service-environment-custom-settings.md)
+- 更改 [TLS 密码](../../app-service/environment/app-service-app-service-environment-custom-settings.md)
+- 控制[入站流量 N/W 端口](../../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)
+- [Web 应用程序防火墙 - 限制数据](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md)
+- 允许 [Azure SQL 数据库流量](../../app-service/environment/app-service-app-service-environment-network-architecture-overview.md)
 
 **Azure Web 应用**：[Azure 应用服务](https://docs.microsoft.com/azure/app-service/)让客户可以采用所选编程语言构建和托管 Web 应用程序，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps Services 或任何 Git 存储库进行自动部署。
 
 ### <a name="virtual-network"></a>虚拟网络
 体系结构定义了一个地址空间为 10.200.0.0/16 的专用虚拟网络。
 
-**网络安全组**：[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)包含允许或拒绝虚拟网络中流量的访问控制列表。 网络安全组可用于在子网或单个虚拟机级别保护流量。 存在以下网络安全组：
+**网络安全组**：[网络安全组](../../virtual-network/virtual-network-vnet-plan-design-arm.md)包含允许或拒绝虚拟网络中流量的访问控制列表。 网络安全组可用于在子网或单个虚拟机级别保护流量。 存在以下网络安全组：
 - 应用程序网关有 1 个网络安全组
 - 应用服务环境有 1 个网络安全组
 - Azure SQL 数据库有 1 个网络安全组
@@ -114,7 +114,7 @@ ms.locfileid: "57440975"
 每个网络安全组打开了特定的端口和协议，使解决方案能够安全正确地工作。 此外，为每个网络安全组启用了以下配置：
 
   - [诊断日志和事件](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)已启用并存储在存储帐户中
-  - Azure Monitor 日志连接到[的网络安全组诊断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+  - Azure Monitor 日志连接到[网络安全组的诊断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
 **子网**：每个子网与其对应的网络安全组相关联。
 
@@ -127,36 +127,36 @@ ms.locfileid: "57440975"
 
 对于从客户自有网络传输的“受保护”数据，该体系结构将使用 Internet，或者将 ExpressRoute 与配置有 IPSEC 的 VPN 网关配合使用。
 
-此外，通过 HTTPS 利用 TLS v1.2 发生到 Azure 通过 Azure 管理门户的所有事务。
+此外，通过 Azure 管理门户对 Azure 进行的所有事务都通过使用 TLS v1.0 的 HTTPS 进行。
 
 ### <a name="data-at-rest"></a>静态数据
 该体系结构通过加密、数据库审核和其他措施保护静态数据。
 
-**Azure 存储**：为了满足静态数据加密要求，所有 [Azure 存储](https://azure.microsoft.com/services/storage/)都使用[存储服务加密](https://docs.microsoft.com/azure/storage/storage-service-encryption)。 这有助于保护数据，以支持澳大利亚政府 ISM 规定的组织安全承诺与合规性要求。
+**Azure 存储**：为了满足静态数据加密要求，所有 [Azure 存储](https://azure.microsoft.com/services/storage/)都使用[存储服务加密](../../storage/common/storage-service-encryption.md)。 这有助于保护数据，以支持澳大利亚政府 ISM 规定的组织安全承诺与合规性要求。
 
-**Azure 磁盘加密**：[Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)利用 Windows 的 BitLocker 功能，为数据磁盘提供卷加密。 此解决方案与 Azure Key Vault 集成，可帮助控制和管理磁盘加密密钥。
+**Azure 磁盘加密**：[Azure 磁盘加密](../azure-security-disk-encryption-overview.md)利用 Windows 的 BitLocker 功能，为数据磁盘提供卷加密。 此解决方案与 Azure Key Vault 集成，可帮助控制和管理磁盘加密密钥。
 
 **Azure SQL 数据库**：Azure SQL 数据库实例使用以下数据库安全措施：
 -   使用 [Active Directory 身份验证和授权](https://docs.microsoft.com/azure/sql-database/sql-database-AAD-authentication)可在一个中心位置集中管理数据库用户和其他 Microsoft 服务的标识。
--   [SQL 数据库审核](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started)跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。
+-   [SQL 数据库审核](../../sql-database/sql-database-auditing.md)跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。
 -   Azure SQL 数据库配置为使用[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)，它对数据库、相关备份和事务日志文件进行实时加密和解密，以保护静态信息。 透明数据加密可确保存储的数据免遭他人未经授权的访问。
 -   在授予相应的权限前，[防火墙规则](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)会阻止对数据库服务器的所有访问。 防火墙基于每个请求的起始 IP 地址授予数据库访问权限。
--   [SQL 威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started)可以通过为可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问模式提供安全警报，在发生潜在威胁时进行检测和响应。 SQL 威胁检测将警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，其中包含可疑活动的详细信息以及如何调查和缓解威胁的建议操作。
+-   [SQL 威胁检测](../../sql-database/sql-database-threat-detection.md)可以通过为可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问模式提供安全警报，在发生潜在威胁时进行检测和响应。 SQL 威胁检测将警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，其中包含可疑活动的详细信息以及如何调查和缓解威胁的建议操作。
 -   [Always Encrypted 列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)可以确保敏感数据永远不会在数据库系统中以明文形式显示。 启用数据加密后，只有具有密钥访问权限的客户端应用程序或应用程序服务器才能访问明文数据。
 - [SQL 数据库动态数据掩码](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)通过对非特权用户或应用程序模糊化敏感数据来限制此类数据的泄漏。 动态数据掩码可以自动发现潜在的敏感数据，并建议应用合适的掩码。 这有助于减少访问活动，并避免敏感数据通过未经授权的访问离开数据库。 客户将需要调整动态数据掩码设置，使之遵循其数据库架构。
 
 ### <a name="identity-management"></a>身份管理
-客户可以使用本地 Active Directory 联合身份验证服务来与 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)（Microsoft 的多租户基于云的目录和标识管理服务）联合。 [Azure Active Directory Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) 可将本地目录与 Azure Active Directory 集成。 此解决方案中的所有用户（包括访问 Azure SQL 数据库的用户）需要 Azure Active Directory 帐户。 使用联合登录时，用户可以使用本地凭据登录到 Azure Active Directory 并对 Azure 资源进行身份验证。
+客户可以使用本地 Active Directory 联合身份验证服务来与 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)（Microsoft 的多租户基于云的目录和标识管理服务）联合。 [Azure Active Directory Connect](../../active-directory/hybrid/whatis-hybrid-identity.md) 可将本地目录与 Azure Active Directory 集成。 此解决方案中的所有用户（包括访问 Azure SQL 数据库的用户）需要 Azure Active Directory 帐户。 使用联合登录时，用户可以使用本地凭据登录到 Azure Active Directory 并对 Azure 资源进行身份验证。
 
 此外，以下 Azure Active Directory 功能有助于管理对 Azure 环境中数据的访问：
-- 使用 Azure Active Directory 对应用程序执行身份验证。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)。 此外，数据库列加密使用 Azure Active Directory 对访问 Azure SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅如何[保护 Azure SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
-- [Azure 基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)使管理员能够定义细粒度的访问权限，以仅授予用户执行作业所需的访问量。 无需向每个用户授予 Azure 资源的不受限权限，管理员可以只允许使用特定的操作来访问数据。 订阅访问仅限于订阅管理员。
-- [Azure Active Directory Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) 使客户能够最大限度地减少有权访问特定信息的用户数量。 管理员可以使用 Azure Active Directory Privileged Identity Management 来发现、限制和监视特权标识及其对资源的访问。 还可以根据需要，使用此功能来实施按需、实时的管理访问。
-- [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 可以检测会影响组织标识的潜在漏洞，配置自动化的措施来应对所检测到的与组织标识相关的可疑操作，调查可疑的事件以采取相应的措施予以解决。
+- 使用 Azure Active Directory 对应用程序执行身份验证。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)。 此外，数据库列加密使用 Azure Active Directory 对访问 Azure SQL 数据库的应用程序进行身份验证。 有关详细信息，请参阅如何[保护 Azure SQL 数据库中的敏感数据](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)。
+- [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)使管理员能够定义细粒度的访问权限，以仅授予用户执行作业所需的访问量。 无需向每个用户授予 Azure 资源的不受限权限，管理员可以只允许使用特定的操作来访问数据。 订阅访问仅限于订阅管理员。
+- [Azure Active Directory Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md) 使客户能够最大限度地减少有权访问特定信息的用户数量。 管理员可以使用 Azure Active Directory Privileged Identity Management 来发现、限制和监视特权标识及其对资源的访问。 还可以根据需要，使用此功能来实施按需、实时的管理访问。
+- [Azure Active Directory 标识保护](../../active-directory/identity-protection/overview.md)会检测到影响组织标识的潜在漏洞，配置自动化的措施来应对所检测到的与组织标识相关的可疑操作，调查可疑的事件以采取相应的措施予以解决。
 
 **Azure 多重身份验证**：为保护标识，应实施多重身份验证。 [Azure 多重身份验证](https://azure.microsoft.com/services/multi-factor-authentication/)是一种易于使用、可缩放且可靠的解决方案，用于提供第二种身份验证方法来保护用户。 Azure 多重身份验证使用云的强大功能，并与本地 Active Directory 和自定义应用相集成。 这种保护可以延伸到高事务量的任务关键型方案。
 
-### <a name="security"></a>安全
+### <a name="security"></a>安全性
 **机密管理**：此解决方案使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 管理密钥和机密。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 以下 Azure Key Vault 功能可帮助客户保护数据：
 - 根据需要配置高级访问权限策略。
 - 使用对密钥和机密所需的最低权限来定义 Key Vault 访问策略。
@@ -175,29 +175,29 @@ Azure 安全中心提供区分优先级的安全警报和事件，让客户更�
 **应用程序网关**：体系结构在启用 Web 应用程序防火墙和 OWASP 规则集的情况下使用应用程序网关，可降低安全漏洞风险。 其他功能包括：
 
 - [端到端 SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
-- 启用 [SSL 卸载](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)
+- 启用 [SSL 卸载](../../application-gateway/create-ssl-portal.md)
 - 禁用 [TLS v1.0 和 v1.1](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
-- [Web 应用程序防火墙](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview)（预防模式）
+- [Web 应用程序防火墙](../../application-gateway/waf-overview.md)（预防模式）
 - 结合 OWASP 3.0 规则集的[保护模式](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal)
 - 启用[诊断日志记录](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)
-- [自定义运行状况探测](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-gateway-portal)
+- [自定义运行状况探测](../../application-gateway/quick-create-portal.md)
 - [Azure 安全中心](https://azure.microsoft.com/services/security-center)和 [Azure 顾问](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations)提供额外的保护和通知。 Azure 安全中心还提供信誉系统。
 
 ### <a name="logging-and-auditing"></a>日志记录和审核
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
-- **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。
+- **活动日志**：[活动日志](../../azure-monitor/platform/activity-logs-overview.md)提供对订阅中资源执行的操作的深入信息。 活动日志可帮助确定操作的发起方、发生的时间和状态。
+- **诊断日志**：[诊断日志](../../azure-monitor/platform/resource-logs-overview.md)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。
 
-**Azure Monitor 日志**：这些日志合并在[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)进行处理、 存储和仪表板报告。 收集以后，数据会按数据类型整理到不同的表中，这样就可以对所有数据进行集中分析，不管其最初来源是什么。 此外，Azure 安全中心与 Azure Monitor 日志允许客户使用 Kusto 查询来访问其安全事件数据并将其与其他服务中的数据集成。
+**Azure Monitor 日志**：这些日志合并到[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)中，以便进行处理、存储和仪表板报告。 收集以后，数据会按数据类型整理到不同的表中，这样就可以对所有数据进行集中分析，不管其最初来源是什么。 此外，Azure 安全中心与 Azure Monitor 日志集成，使客户可以使用 Kusto 查询访问其安全事件数据，并将其与其他服务中的数据合并。
 
-以下 Azure[监视解决方案](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)作为此体系结构的一部分包括在内：
--   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署的服务器基础结构的优先建议列表。
-- [SQL 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署的服务器基础结构的优先建议列表。
-- [代理运行状况](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
--   [Activity Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
+以下 Azure[监视解决方案](../../monitoring/monitoring-solutions.md)包括在此体系结构中：
+-   [Active Directory 评估](../../azure-monitor/insights/ad-assessment.md)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署的服务器基础结构的优先建议列表。
+- [SQL 评估](../../azure-monitor/insights/sql-assessment.md)：SQL 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并为客户提供特定于部署的服务器基础结构的优先建议列表。
+- [代理运行状况](../../monitoring/monitoring-solution-agenthealth.md)：代理运行状况解决方案报告已部署代理的数量及其地理分布，以及无响应的代理数量和提交操作数据的代理数量。
+-   [Activity Log Analytics](../../azure-monitor/platform/collect-activity-logs.md)：Activity Log Analytics 解决方案可帮助分析客户的所有 Azure 订阅的 Azure 活动日志。
 
-**Azure 自动化**：[Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)可以存储、运行和管理 Runbook。 在此解决方案中，Runbook 可帮助从 Azure SQL 数据库收集日志。 自动化[更改跟踪](https://docs.microsoft.com/azure/automation/automation-change-tracking)解决方案使得客户能够轻松识别环境中的更改。
+**Azure 自动化**：[Azure 自动化](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)可以存储、运行和管理 Runbook。 在此解决方案中，Runbook 可帮助从 Azure SQL 数据库收集日志。 自动化[更改跟踪](../../automation/change-tracking.md)解决方案使得客户能够轻松识别环境中的更改。
 
 **Azure Monitor**：[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 通过使组织能够审核、创建警报和存档数据（包括在用户的 Azure 资源中跟踪 API 调用），帮助用户跟踪性能、维护安全性和确定趋势。
 
@@ -237,17 +237,17 @@ Azure 网络观察程序：[Azure 网络观察程序](https://docs.microsoft.com
 请查看[此处](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)提供的 VPN 设备配置选项和 IPSec/ IKE 参数。
 
 ### <a name="azure-active-directory-setup"></a>Azure Active Directory 设置
-[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 对于管理部署以及预配与环境交互的人员的访问至关重要。 只需[单击四下](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express)，即可将现有 Windows Server Active Directory 与 Azure Active Directory 集成。
+[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 对于管理部署以及预配与环境交互的人员的访问至关重要。 只需[单击四下](../../active-directory/hybrid/how-to-connect-install-express.md)，即可将现有 Windows Server Active Directory 与 Azure Active Directory 集成。
 
-此外，[Azure Active Directory Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) 可让客户配置与本地 [Active Directory 联合身份验证服务]( https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-azure-adfs)和 Azure Active Directory 的联合。 通过联合登录，客户可让用户在企业网络中使用本地密码登录到基于 Azure Active Directory 的服务，而无需再次输入密码。 使用 Active Directory 联合身份验证服务的联合选项，可以部署 Active Directory 联合身份验证服务的新安装，或者在 Windows Server 2012 R2 场中指定现有安装。
+此外，[Azure Active Directory Connect](../../active-directory/hybrid/whatis-hybrid-identity.md) 可让客户配置与本地 [Active Directory 联合身份验证服务]( ../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)和 Azure Active Directory 的联合。 通过联合登录，客户可让用户在企业网络中使用本地密码登录到基于 Azure Active Directory 的服务，而无需再次输入密码。 使用 Active Directory 联合身份验证服务的联合选项，可以部署 Active Directory 联合身份验证服务的新安装，或者在 Windows Server 2012 R2 场中指定现有安装。
 
 若要防止分类数据同步到 Azure Active Directory，客户可以通过在 Azure Active Directory Connect 中应用以下设置，来限制要复制到 Azure Active Directory 的属性：
 
-- [启用筛选](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-configure-filtering)
-- [禁用密码哈希同步](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)
+- [启用筛选](../../active-directory/hybrid/how-to-connect-sync-configure-filtering.md)
+- [禁用密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)
 -   [禁用密码写回](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
--   [禁用设备写回](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-feature-device-writeback)
--   保留[防止意外删除](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-prevent-accidental-deletes)和[自动升级](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-feature-automatic-upgrade)的默认设置
+-   [禁用设备写回](../../active-directory/hybrid/how-to-connect-device-writeback.md)
+-   保留[防止意外删除](../../active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes.md)和[自动升级](../../active-directory/hybrid/how-to-connect-install-automatic-upgrade.md)的默认设置
 
 
 ## <a name="disclaimer"></a>免责声明

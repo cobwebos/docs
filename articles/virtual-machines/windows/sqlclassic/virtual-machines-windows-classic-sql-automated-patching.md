@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 737b2f65-08b9-4f54-b867-e987730265a8
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aa912e3eb76d72e7a79c83d7e51d493310bd36b3
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: 9fabccd477883750c1aecb5493fdb64ddf5ab2c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331310"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100298"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>在 Azure 虚拟机（经典）中对 SQL Server 进行自动修补
 > [!div class="op_single_selector"]
@@ -30,7 +29,7 @@ ms.locfileid: "54331310"
 > 
 > 
 
-自动修补将为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。 只能在此维护时段内安装自动更新。 对于 SQL Server，这可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。 
+自动修补为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。 只能在此维护时段内安装自动更新。 对于 SQL Server，这可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。 
 
 > [!IMPORTANT]
 > 仅安装标记为“重要”的 Windows 更新。 必须手动安装其他 SQL Server 更新，如累积更新。 
@@ -66,7 +65,7 @@ ms.locfileid: "54331310"
 ## <a name="settings"></a>设置
 下表描述了可为自动修补配置的选项。 对于经典 VM，必须使用 PowerShell 配置以下设置。
 
-| 设置 | 可能的值 | Description |
+| 设置 | 可能的值 | 描述 |
 | --- | --- | --- |
 | **自动修补** |启用/禁用（已禁用） |为 Azure 虚拟机启用或禁用自动修补。 |
 | **维护计划** |每天、星期一、星期二、星期三、星期四、星期五、星期六、星期日 |为虚拟机下载和安装 Windows、SQL Server 和 Microsoft 更新的计划。 |
@@ -75,7 +74,7 @@ ms.locfileid: "54331310"
 | **修补程序类别** |重要说明 |要下载并安装的更新类别。 |
 
 ## <a name="configuration-with-powershell"></a>使用 PowerShell 进行配置
-以下示例使用 PowerShell 在现有的 SQL Server VM 上配置自动修补。 **New-AzureVMSqlServerAutoPatchingConfig** 命令将为自动更新配置新的维护时段。
+以下示例使用 PowerShell 在现有的 SQL Server VM 上配置自动修补。 **New-AzureVMSqlServerAutoPatchingConfig** 命令可为自动更新配置新的维护时段。
 
     $aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
 

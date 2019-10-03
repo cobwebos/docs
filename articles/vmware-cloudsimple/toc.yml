@@ -1,0 +1,176 @@
+- name: CloudSimple 提供的 VMware 解决方案
+  href: /azure/vmware-cloudsimple
+  items:
+    - name: 概述
+      items:
+        - name: CloudSimple 提供的 VMware 解决方案是什么
+          href: cloudsimple-vmware-solutions-overview.md
+        - name: 有关管理的关键概念
+          href: key-concepts.md
+    - name: 快速入门
+      expanded: true
+      items:
+        - name: 网络规划
+          href: cloudsimple-network-checklist.md
+        - name: 初始化和预配容量
+          href: quickstart-create-cloudsimple-service.md
+        - name: 配置私有云环境
+          href: quickstart-create-private-cloud.md
+        - name: 在私有云上创建 VMware VM
+          href: quickstart-create-private-cloud-vmware-virtual-machine.md
+        - name: 使用 Azure 上的 VMware VM
+          href: quickstart-create-vmware-virtual-machine.md
+    - name: 概念
+      items:
+        - name: 服务
+          href: cloudsimple-service.md
+        - name: Nodes
+          href: cloudsimple-node.md
+        - name: 私有云
+          href: cloudsimple-private-cloud.md
+        - name: 虚拟机
+          href: cloudsimple-virtual-machines.md
+        - name: VLAN 和子网
+          href: cloudsimple-vlans-subnets.md
+        - name: 防火墙表
+          href: cloudsimple-firewall-tables.md
+        - name: VPN 网关
+          href: cloudsimple-vpn-gateways.md
+        - name: 公共 IP
+          href: cloudsimple-public-ip-address.md
+        - name: Azure 网络连接
+          href: cloudsimple-azure-network-connection.md
+        - name: 帐户管理
+          href: cloudsimple-account.md
+        - name: 活动管理
+          href: cloudsimple-activity.md
+        - name: 私有云上的 VMware
+          href: vmware-components.md
+        - name: 安全概述
+          href: cloudsimple-security.md
+        - name: 节点配额
+          href: node-quota.md
+        - name: 维护和更新
+          href: cloudsimple-maintenance-updates.md
+        - name: 常见问题解答
+          href: cloudsimple-faq.md
+    - name: 教程
+      items:
+        - name: 创建 CloudSimple 服务
+          href: create-cloudsimple-service.md
+        - name: 访问 CloudSimple 门户
+          href: access-cloudsimple-portal.md
+        - name: 本地防火墙配置
+          href: on-premises-firewall-configuration.md
+        - name: 访问 vSphere 客户端
+          href: vcenter-access.md
+        - name: 管理节点
+          items:
+            - name: 预配节点
+              href: create-nodes.md
+            - name: 删除节点
+              href: delete-nodes.md
+        - name: 管理私有云资源
+          items:
+            - name: 创建私有云
+              href: create-private-cloud.md
+            - name: 管理私有云
+              href: manage-private-cloud.md
+            - name: 扩展私有云
+              href: expand-private-cloud.md
+            - name: 收缩私有云
+              href: shrink-private-cloud.md
+            - name: 映射 Azure 订阅
+              href: azure-subscription-mapping.md
+            - name: 提升特权
+              href: escalate-private-cloud-privileges.md
+            - name: 删除私有云
+              href: delete-private-cloud.md
+        - name: 监视 CloudSimple 活动
+          href: monitor-activity.md
+        - name: 设置私有云网络
+          items:
+            - name: 创建并管理 VLAN 和子网
+              href: create-vlan-subnet.md
+            - name: 设置防火墙表和规则
+              href: firewall.md
+            - name: 分配公共 IP 地址
+              href: public-ips.md
+            - name: 设置 VPN 连接
+              href: vpn-gateway.md
+            - name: 与 CloudSimple 的虚拟网络连接
+              href: virtual-network-connection.md
+        - name: 管理 CloudSimple 门户帐户
+          items:
+            - name: 查看帐户摘要
+              href: account.md
+            - name: 查看用户列表
+              href: users.md
+        - name: 设置 CloudSimple 虚拟机
+          items:
+            - name: 在 Azure 中创建 CloudSimple VM
+              href: azure-create-vm.md
+            - name: 在 Azure 中管理 CloudSimple VM
+              href: azure-manage-vm.md
+    - name: 操作指南
+      items:
+        - name: 保护环境
+          href: private-cloud-secure.md
+        - name: 私有云管理
+          items:
+            - name: 提升私有云权限
+              href: escalate-privileges.md
+            - name: 工作负荷 DNS 和 DHCP 设置
+              href: dns-dhcp-setup.md
+            - name: 使用第 2 层外延式网络迁移工作负荷
+              href: migration-layer-2-vpn.md
+        - name: 私有云网络
+          items:
+            - name: 与私有云的 VPN 连接
+              href: set-up-vpn.md
+            - name: 通过 ExpressRoute 进行的本地网络连接
+              href: on-premises-connection.md
+            - name: 通过 ExpressRoute 进行的 Azure 虚拟网络连接
+              href: azure-expressroute-connection.md
+            - name: 配置 DNS 名称解析
+              href: on-premises-dns-setup.md
+        - name: VMware 平台
+          items:
+            - name: 了解私有云权限模型
+              href: learn-private-cloud-permissions.md
+            - name: vCenter 标识源
+              href: set-vcenter-identity.md
+            - name: 将 Azure 应用程序网关与 VMware VM 配合使用
+              href: azure-application-gateway.md
+            - name: 将私有云 vCenter 服务器配置为 vRealize 自动化终结点
+              href: configure-server-vrealize-automation-endpoint.md
+            - name: 将工作负荷 VM 迁移到私有云
+              href: migrate-workloads.md
+            - name: 使用 Azure Data Box 迁移
+              href: migration-using-azure-data-box.md
+            - name: 确保应用程序在 Azure 上的 VMware 中的高可用性
+              href: ensuring-high-availability.md
+            - name: 选择负载均衡解决方案
+              href: load-balancers.md
+        - name: VMware 生态系统
+          items:
+            - name: 备份工作负荷虚拟机
+              href: backup-workloads-veeam.md
+            - name: 使用 Zerto 将私有云配置为灾难恢复站点
+              href: disaster-recovery-zerto.md
+            - name: 使用 VMware SRM 将私有云配置为灾难恢复站点
+              href: disaster-recovery-site-recovery-manager.md
+            - name: VMware Horizon 解决方案指南
+              href: horizon-guide.md
+            - name: 为私有云配置 vSAN 加密
+              href: vsan-encryption.md
+            - name: 为 Oracle RAC 优化私有云
+              href: oracle-real-application-clusters.md
+        - name: Azure 核心集成
+          items:
+            - name: 私有云 vCenter 上的 Azure AD 标识源
+              href: azure-ad.md
+            - name: 通过 ExpressRoute 进行的本地网络连接
+              href: on-premises-connection.md
+            - name: 通过 ExpressRoute 进行的 Azure 虚拟网络连接
+              href: azure-expressroute-connection.md

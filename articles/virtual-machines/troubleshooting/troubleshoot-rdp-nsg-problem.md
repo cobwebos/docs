@@ -4,21 +4,20 @@ description: 了解如何在 Azure 门户中解决 RDP 因为 NSG 配置而失�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: 5f95b42fd17aec4e3ec6b7b8fac1965772fefa67
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52954606"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162595"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>因为没有在 NSG 中启用 RDP 端口而无法远程连接到 VM
 
@@ -43,13 +42,12 @@ ms.locfileid: "52954606"
 4. 在“入站端口规则”中，检查是否正确设置了 RDP 的端口。 下面是一个配置示例： 
 
     **优先级**：300 </br>
-    **端口**：3389 </br>
     **名称**：Port_3389 </br>
-    **端口**：3389 </br>
+    **端口（目标）** ：3389 </br>
     **协议**：TCP </br>
     **源**：任意 </br>
     **目标**：任意 </br>
-    **操作**：允许 </br>
+    **操作**：Allow </br>
 
 如果你指定了源 IP 地址，则此设置仅允许来自特定 IP 地址或 IP 地址范围的流量连接到 VM。 请确保你用来启动 RDP 会话的计算机在该范围内。
 

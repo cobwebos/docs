@@ -4,22 +4,21 @@ description: 如何在 Azure Windows VM 中通过 SAC 使用 CMD 和 PowerShell 
 services: virtual-machines-windows
 documentationcenter: ''
 author: alsin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 55b7e45bb9e600267e1dad0e36e9a97eca9a7d40
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a106984bc60d0ccfe29a1956213aec6f87ad30dd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58074992"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090169"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
 
@@ -118,7 +117,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="disable-windows-firewall"></a>禁用 Windows 防火墙
 `netsh advfirewall set allprofiles state off`
 
-故障排除时，可以使用此命令暂时排除 Windows 防火墙。 它将启用下次重新启动或使用以下命令将其启用。 不要通过停止 Windows 防火墙服务 (MPSSVC) 或基本筛选引擎 (BFE) 服务来排除 Windows 防火墙。 停止 MPSSVC 或 BFE 会导致所有连接被阻止。
+故障排除时，可以使用此命令暂时排除 Windows 防火墙。 它将在下一次重新启动时或使用以下命令启用它时启用。 不要通过停止 Windows 防火墙服务 (MPSSVC) 或基本筛选引擎 (BFE) 服务来排除 Windows 防火墙。 停止 MPSSVC 或 BFE 会导致所有连接被阻止。
 ### <a name="enable-windows-firewall"></a>启用 Windows 防火墙
 `netsh advfirewall set allprofiles state on`
 ## <a name="manage-users-and-groups"></a>管理用户和组
@@ -241,7 +240,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="detect-safe-mode-boot"></a>检测安全模式启动
 `bcdedit /enum | find /i "safeboot"` 
 
-# <a name="windows-commands---powershell"></a>Windows 命令 - PowerShell
+## <a name="windows-commands---powershell"></a>Windows 命令 - PowerShell
 
 若要在 SAC 中运行 PowerShell，请在打开 CMD 提示符后键入：
 

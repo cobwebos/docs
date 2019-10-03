@@ -4,23 +4,22 @@ description: 了解如何在 Azure 中的 Linux 虚拟机上安装和配置 Post
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 1a747363-0cc5-4ba3-9be7-084dfeb04651
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 76f1ddeebb173bf19b15753d12e4374e6365bf8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7fc8cb7c07dd27cd42dc4c6a7e0a576f0efe04e0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998984"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091722"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
 PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库。 它包含许多企业级功能，比如完整的 ACID 合规性、可靠的事务处理和多版本并发控制。 它还支持 ANSI SQL 和 SQL/MED（包括 Oracle、MySQL、MongoDB 等等的外来数据包装器）等标准。 它具有高度的可扩展性，支持超过 12 种程序语言，并支持 GIN 和 GiST 索引、空间数据，以及面向 JSON 或基于键值的应用程序的多款类似于 NoSQL 的功能。
@@ -126,7 +125,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
    
     你应该会收到以下输出：
 
-![图像](./media/postgresql-install/no1.png)
+![image](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>设置 PostgreSQL
 <!--    [postgres@ test ~]$ exit -->
@@ -137,13 +136,13 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
     # cp linux /etc/init.d/postgresql
 
-修改 /etc/init.d/postgresql 文件中的两个变量。 前缀设置为 PostgreSQL 的安装路径：**/opt/pgsql**。 PGDATA 设置为 PostgreSQL 的数据存储路径：**/opt/pgsql_data**。
+修改 /etc/init.d/postgresql 文件中的两个变量。 前缀设置为 PostgreSQL 的安装路径： **/opt/pgsql**。 PGDATA 设置为 PostgreSQL 的数据存储路径： **/opt/pgsql_data**。
 
     # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
     # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 
-![图像](./media/postgresql-install/no2.png)
+![image](./media/postgresql-install/no2.png)
 
 更改文件以使其成为可执行文件：
 
@@ -159,7 +158,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 你应该会看到以下输出：
 
-![图像](./media/postgresql-install/no3.png)
+![image](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>连接到 Postgres 数据库
 再次切换成 postgres 用户：
@@ -190,11 +189,11 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 如果成功创建了表，应该会看到以下内容：
 
-![图像](./media/postgresql-install/no4.png)
+![image](./media/postgresql-install/no4.png)
 
 你还可以使用以下命令检查表结构：
 
-![图像](./media/postgresql-install/no5.png)
+![image](./media/postgresql-install/no5.png)
 
 ### <a name="add-data-to-a-table"></a>向表中添加数据
 首先，将信息插入某一行：
@@ -220,7 +219,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 输出为：
 
-![图像](./media/postgresql-install/no7.png)
+![image](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>删除表中的数据
 使用以下命令来删除表中的数据：
@@ -229,10 +228,10 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
 这将删除“John”行中的所有信息。 输出为：
 
-![图像](./media/postgresql-install/no8.png)
+![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>更新表中的数据
-使用以下命令来更新表中的数据。 在此示例中，Sandy 已经确认将出席活动，因此我们将她的回复从“N”更改为“Y”：
+使用以下命令来更新表中的数据。 在此示例中，Sandy 已经确认将参加该活动，因此我们将 RSVP 从“N”更改为“Y”：
 
      UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 

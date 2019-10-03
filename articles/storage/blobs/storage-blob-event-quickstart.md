@@ -1,20 +1,19 @@
 ---
 title: 将 Azure Blob 存储事件发送到 Web 终结点 - Azure CLI | Microsoft Docs
 description: 使用 Azure 事件网格订阅 Blob 存储事件。 将事件发送到 WebHook。 处理 Web 应用程序中的事件。
-services: storage,event-grid
-author: cbrooksmsft
-ms.author: cbrooks
+author: normesta
+ms.author: normesta
+ms.reviewer: cbrooks
 ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: blobs
-ms.custom: seodec18
-ms.openlocfilehash: f38c6fec7ff98e7d5c46661741ff036edb791673
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: dc8ed420fdb04d04c02c91f2fa90939562b91645
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756370"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845612"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>快速入门：使用 Azure CLI 将存储事件路由到 Web 终结点
 
@@ -25,7 +24,6 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 完成本文所述步骤后，即可看到事件数据已发送到 Web 应用。
 
 ![查看订阅事件](./media/storage-blob-event-quickstart/view-results.png)
-
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,7 +39,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 使用 [az group create](/cli/azure/group) 命令创建资源组。 
 
-下面的示例在 westcentralus 位置创建了一个名为 `<resource_group_name>` 的资源组。  将 `<resource_group_name>` 替换为资源组的唯一名称。
+下面的示例在 westcentralus 位置创建了一个名为 `<resource_group_name>` 的资源组  。  将 `<resource_group_name>` 替换为资源组的唯一名称。
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westcentralus
@@ -49,7 +47,7 @@ az group create --name <resource_group_name> --location westcentralus
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-可在常规用途 v2 存储帐户和 Blob 存储帐户中使用 Blob 存储事件。 常规用途 v2 存储帐户支持所有存储服务（包括 Blob、文件、队列和表）的所有功能。 Blob 存储帐户是一个专用存储帐户，用于将非结构化数据作为 Blob（对象）存储到 Azure 存储中。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
+可在常规用途 v2 存储帐户和 Blob 存储帐户中使用 Blob 存储事件。 常规用途 v2 存储帐户支持所有存储服务（包括 Blob、文件、队列和表）的所有功能  。 Blob 存储帐户是一个专用存储帐户，用于将非结构化数据作为 Blob（对象）存储到 Azure 存储中  。 Blob 存储帐户类似于常规用途存储帐户，并且具有现在使用的所有卓越的耐用性、可用性、伸缩性和性能功能，包括用于块 blob 和追加 blob 的 100% API 一致性。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
 
 将 `<storage_account_name>` 替换为存储帐户的唯一名称，将 `<resource_group_name>` 替换为此前创建的资源组。
 

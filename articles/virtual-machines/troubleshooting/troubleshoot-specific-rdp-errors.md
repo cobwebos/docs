@@ -5,33 +5,32 @@ keywords: 远程桌面错误,远程桌面连接错误,无法连接到 VM,远程�
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 5feb1d64-ee6f-4907-949a-a7cffcbc6153
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f4d733e29d2ba8213e1832f2c604b726283ab3e1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417389"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088175"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure 中 Windows VM 特定 RDP 错误消息故障排除
-在使用远程桌面与 Azure 中 Windows 虚拟机 (VM) 的连接时，可能会收到特定错误消息。 本文详细介绍了一些遇到的更常见错误消息以及解决错误的故障排除步骤。 如果在使用 RDP 连接到 VM 时出现问题，但没有收到特定错误消息，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md)。
+使用远程桌面连接到 Azure 中的 Windows 虚拟机 (VM) 时，可能会收到特定错误消息。 本文详细介绍了一些遇到的更常见错误消息以及解决错误的故障排除步骤。 如果在使用 RDP 连接到 VM 时出现问题，但没有收到特定错误消息，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md)。
 
 有关特定错误消息的信息，请参阅以下内容：
 
 * [由于没有可用于提供许可证的远程桌面许可证服务器，远程会话已断开连接](#rdplicense)。
 * [远程桌面找不到计算机“名称”](#rdpname)。
 * [身份验证出错。无法联系本地安全机构](#rdpauth)。
-* [Windows 安全性错误：凭据无效](#wincred)。
+* [Windows 安全性错误：凭据不起作用](#wincred)。
 * [此计算机无法连接到远程计算机](#rdpconnect)。
 
 <a id="rdplicense"></a>
@@ -50,7 +49,7 @@ ms.locfileid: "50417389"
 <a id="rdpname"></a>
 
 ## <a name="remote-desktop-cant-find-the-computer-name"></a>远程桌面找不到计算机“名称”。
-原因：计算机的远程桌面客户端无法解析 RDP 文件设置中的计算机名称。
+原因：计算机上的远程桌面客户端无法解析 RDP 文件设置中的计算机名称。
 
 可能的解决方法：
 
@@ -68,9 +67,9 @@ ms.locfileid: "50417389"
 <a id="rdpauth"></a>
 
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>发生身份验证错误。 无法联系本地安全机构。
-原因：目标 VM 在凭据的用户名部分找不到安全机构。
+原因：目标 VM 在凭据的用户名部分中找不到安全机构。
 
-如果用户名格式为 *SecurityAuthority*\\*UserName*（例如：CORP\User1），则 *SecurityAuthority* 部分是 VM 的计算机名（表示本地安全机构）或 Active Directory 域名。
+如果用户名格式为 SecurityAuthority\\UserName（例如：CORP\User1），则 SecurityAuthority 部分是 VM 的计算机名（表示本地安全机构）或 Active Directory 域名。
 
 可能的解决方法：
 
@@ -80,13 +79,13 @@ ms.locfileid: "50417389"
 
 <a id="wincred"></a>
 
-## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows 安全性错误：凭据无效。
+## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows 安全性错误：你的凭据无效。
 原因：目标 VM 无法验证帐户名和密码。
 
 基于 Windows 的计算机可以验证本地帐户或域帐户的凭据。
 
-* 对于本地帐户，请使用 *ComputerName*\\*UserName* 语法（例如：SQL1\Admin4798）。
-* 对于域帐户，请使用 *DomainName*\\*UserName* 语法（例如：CONTOSO\peterodmane）。
+* 对于本地帐户，请使用 ComputerName\\UserName 语法（例如：SQL1\Admin4798）。
+* 对于域帐户，请使用 DomainName\\UserName 语法（例如：CONTOSO\peterodman）。
 
 如果已将 VM 提升为新的 Active Directory 林中的域控制器，则会将用于登录的本地管理员帐户转换为新的林和域中具有相同密码的等效帐户。 然后，将删除本地帐户。
 

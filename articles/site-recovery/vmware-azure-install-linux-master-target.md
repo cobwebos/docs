@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099046"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904403"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -29,7 +29,7 @@ ms.locfileid: "58099046"
 
 请在本文末尾或者在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)中发表任何评论或问题。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 若要选择用于部署主目标的主机，请确定是要故障回复到现有的本地虚拟机还是新的虚拟机。 
     * 对于现有虚拟机，主目标的主机应有权访问虚拟机的数据存储。
@@ -46,7 +46,7 @@ ms.locfileid: "58099046"
 - **保留驱动器的附加磁盘大小**：1 TB
 - **CPU 核心数**：4 个核心或更多
 
-支持以下受支持的 Ubuntu 内核。
+支持以下 Ubuntu 内核:
 
 
 |内核系列  |最高支持  |
@@ -62,12 +62,12 @@ ms.locfileid: "58099046"
 
 按下列步骤安装 Ubuntu 16.04.2 64 位操作系统。
 
-1.   转到[下载链接](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)、 选择最接近的镜像和下载 Ubuntu 16.04.2 最简版 64 位 ISO。
+1.   转至[下载链接](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)，选择最接近的镜像，从中下载 Ubuntu 16.04.2 最简版 64 位 ISO。
 将 Ubuntu 16.04.2 最简版 64 位 ISO 保存在 DVD 驱动器中，并启动系统。
 
 1.  选择“英语”作为首选语言，再按 Enter。
     
-    ![选择一种语言](./media/vmware-azure-install-linux-master-target/image1.png)
+    ![选择语言](./media/vmware-azure-install-linux-master-target/image1.png)
 1. 选择“安装 Ubuntu 服务器”，再按 Enter。
 
     ![选择“安装 Ubuntu 服务器”](./media/vmware-azure-install-linux-master-target/image2.png)
@@ -83,7 +83,7 @@ ms.locfileid: "58099046"
 1. 选择“否”（默认选项），然后按 Enter。
 
      ![配置键盘](./media/vmware-azure-install-linux-master-target/image5.png)
-1. 选择“英语(美国)”作为键盘原产地语言，再按 Enter。
+1. 选择 "**英语 (美国)** " 作为键盘的源国家/地区, 然后选择**Enter**。
 
 1. 选择“英语(美国)”作为键盘布局，再按 Enter。
 
@@ -214,12 +214,11 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
 ### <a name="apply-custom-configuration-changes"></a>应用自定义配置更改
 
-若要应用自定义配置更改，请使用以下步骤：
-
+若要应用自定义配置更改, 请使用以下步骤作为根用户:
 
 1. 运行以下命令解压缩二进制文件。
 
-    `tar -zxvf latestlinuxmobsvc.tar.gz`
+    `tar -xvf latestlinuxmobsvc.tar.gz`
 
     ![要运行的命令的屏幕截图](./media/vmware-azure-install-linux-master-target/image16.png)
 
@@ -245,7 +244,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
     ![多路径 ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. 格式化驱动器，然后在新驱动器上创建文件系统：mkfs.ext4 /dev/mapper/<保留磁盘的多路径 id>。
+3. 格式化驱动器, 然后在新驱动器上创建文件系统: **mkfs\<. ext4/dev/mapper/保留磁盘的多路径 id >** 。
     
     ![文件系统](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -262,7 +261,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
     
     按 Insert 开始编辑文件。 创建新行并插入以下文本。 根据前一命令中突出显示的多路径 ID 编辑磁盘多路径 ID。
 
-    **/dev/mapper/<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
+    **/dev/mapper/\<保留磁盘多路径 ID> /mnt/retention ext4 rw 0 0**
 
     按 Esc，键入 :wq（写入并退出）来关闭编辑器窗口。
 
@@ -279,7 +278,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
     `echo <passphrase> >passphrase.txt`
 
-    示例： 
+    例如： 
 
        `echo itUx70I47uxDuUVY >passphrase.txt`
     
@@ -290,7 +289,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
     ```
 
-    示例： 
+    例如： 
     
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
@@ -321,7 +320,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
     ./install -q -d /usr/local/ASR -r MT -v VmWare
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
     ```
-    示例： 
+    例如： 
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt

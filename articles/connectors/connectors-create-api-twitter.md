@@ -11,12 +11,12 @@ ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 22b75b2d2b47dbd496eda06c09b418ae66f6403a
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230652"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050692"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Twitter
 
@@ -29,7 +29,7 @@ ms.locfileid: "50230652"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * Twitter 帐户和用户凭据
 
@@ -50,16 +50,16 @@ ms.locfileid: "50230652"
    * 对于空白逻辑应用，请在搜索框中输入“twitter”作为筛选器。 
    在触发器列表下，选择所需的触发器。 
 
-     -或-
+     或
 
    * 对于现有逻辑应用： 
    
      * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
 
-       -或-
+       或
 
      * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-     选择出现的加号 (**+**)，然后选择“添加操作”。
+     选择出现的加号 ( **+** )，然后选择“添加操作”。
      
        在搜索框中，输入“twitter”作为筛选器。 
        在操作列表下，选择所需的操作。
@@ -70,15 +70,15 @@ ms.locfileid: "50230652"
 
 ## <a name="examples"></a>示例
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter 触发器：发布新推文时
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter 触发器:发布新推文时
 
 当触发器检测到新推文（例如带有井号标签 #Seattle）时，触发器会启动一个逻辑应用工作流。 因此，例如，当发现这些推文时，你可以向存储中添加一个包含推文内容的文件，例如使用 Dropbox 连接器添加到 Dropbox 帐户中。 
 
 （可选）可以包括一个条件来规定合格的推文必须来自至少具有指定数量的关注者的用户。
 
-**企业示例**：可以使用此触发器监视有关你的公司的推文并将推文的内容上传到 SQL 数据库。
+**企业示例**：此触发器可用于监视有关公司的推文并将推文的内容上传到 SQL 数据库。
 
-### <a name="twitter-action-post-a-tweet"></a>Twitter 操作：发布推文
+### <a name="twitter-action-post-a-tweet"></a>Twitter 操作:发布推文
 
 此操作发布一篇推文，但你可以设置操作，使该推文包含前面所述的触发器发现的推文中的内容。 
 

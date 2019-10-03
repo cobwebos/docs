@@ -1,19 +1,18 @@
 ---
 title: 管理 Azure 恢复服务保管库和服务器
 description: 在 Azure 恢复服务保管库中管理作业和警报。
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/21/2018
-ms.author: raynew
-ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.date: 07/08/2019
+ms.author: dacurwin
+ms.openlocfilehash: 7e7312f942103125217c1f61ae8fe8007a49529b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268866"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954766"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
 
@@ -85,7 +84,7 @@ ms.locfileid: "56268866"
 
 | 警报级别 | 生成警报的事件 |
 | ----------- | ----------- |
-| 严重 | 出现以下情况时，会收到严重警报：备份作业失败、恢复作业失败，以及在服务器上停止保护但保留了数据时。|
+| 关键 | 出现以下情况时，会收到严重警报：备份作业失败、恢复作业失败，以及在服务器上停止保护但保留了数据时。|
 | 警告 | 出现以下情况时，会收到警告性警报：备份作业完成但出现警告，例如，由于出现损坏问题，有 100 个以下的文件未备份；或者成功备份了 1,000,000 个以上的文件。 |
 | 信息性 | 目前未使用信息性警报。 |
 
@@ -100,7 +99,7 @@ ms.locfileid: "56268866"
 * 警报
 * 备份项
 * 受保护的服务器
-* 严重性
+* Severity
 * Duration
 * 创建时间
 * 状态
@@ -156,7 +155,7 @@ ms.locfileid: "56268866"
 
 ## <a name="manage-backup-items"></a>管理备份项
 
-恢复服务保管库保存许多类型的备份数据。 有关备份类型的完整列表，请参阅[可以备份的应用程序和工作负荷](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use)。 若要管理各种服务器、计算机、数据库和工作负荷，请单击“备份项”磁贴查看保管库的内容。
+恢复服务保管库保存许多类型的备份数据。 [详细了解](backup-overview.md#what-can-i-back-up)可以备份的内容。 若要管理各种服务器、计算机、数据库和工作负荷，请单击“备份项”磁贴查看保管库的内容。
 
 ![备份项磁贴](./media/backup-azure-manage-windows-server/backup-items.png)
 
@@ -176,7 +175,7 @@ ms.locfileid: "56268866"
 
 保管库仪表板中的“备份作业”磁贴显示过去 24 小时“正在进行”或“失败”的作业数。 磁贴提供“备份作业”菜单的概览。
 
-![设置中的备份项](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
+![从设置备份项](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
 
 若要查看有关作业的其他详细信息，请单击“正在进行”或“失败”，打开根据该状态筛选的“备份作业”菜单。
 
@@ -186,11 +185,11 @@ ms.locfileid: "56268866"
 
 若要打开“备份作业”菜单，请在保管库的主菜单中单击“备份作业”。
 
-![设置中的备份项](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
+![从设置备份项](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
 此时会打开备份作业的列表。
 
-![设置中的备份项](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
+![从设置备份项](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
 
 “备份作业”菜单显示过去 24 小时针对所有备份类型执行的所有操作的状态。 使用“筛选器”可更改筛选器。 后续部分将介绍筛选器。
 
@@ -198,11 +197,11 @@ ms.locfileid: "56268866"
 
 1. 在保管库的“备份作业”菜单中单击“筛选器”。
 
-   ![设置中的备份项](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
+   ![从设置备份项](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
 
     此时会打开“筛选器”菜单。
 
-   ![设置中的备份项](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
+   ![从设置备份项](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
 
 2. 选择筛选器设置，并单击“完成”。 筛选的列表会根据新设置刷新。
 
@@ -216,7 +215,7 @@ ms.locfileid: "56268866"
 * Azure 存储
 * Azure 工作负荷
 
-#### <a name="operation"></a>Operation
+#### <a name="operation"></a>操作
 
 可以查看一个操作或所有操作。 不能选择两个或三个操作。 可用的操作包括：
 
@@ -234,10 +233,10 @@ ms.locfileid: "56268866"
 
 * 所有状态
 * 已完成
-* 正在进行
+* 进行中
 * 已失败
 * 已取消
-* 已完成但出现警告
+* 已完成，包含警告
 
 #### <a name="start-time"></a>开始时间
 
@@ -261,26 +260,11 @@ ms.locfileid: "56268866"
 * 与保管库关联的 Cloud GRS 存储使用情况
 
 
-## <a name="frequently-asked-questions"></a>常见问题
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>多长时间后，门户中会反映 Azure 备份代理作业状态？
-最长可能需要 15 分钟，Azure 门户才会反映 Azure 备份代理作业状态。
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>备份作业失败后，需要多长时间才会引发警报？
-Azure 备份失败后，会在 20 分钟内引发警报。
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>是否存在配置了通知却不发送电子邮件的情况？
-是的。 在以下情况下，不会发送通知：
-
-* 已将通知配置为每小时发送，并且在一小时内引发并解决了警报
-* 取消了作业
-* 由于原始备份作业正在进行，另一个备份作业失败
-
 ## <a name="troubleshooting-monitoring-issues"></a>监视问题疑难解答
 
 **问题：** Azure 备份代理的作业和/或警报未在门户中出现。
 
-**故障排除步骤：**```OBRecoveryServicesManagementAgent``` 进程将作业和警报数据发送到 Azure 备份服务。 此进程偶尔会被阻塞或关闭。
+**故障排除步骤：** ```OBRecoveryServicesManagementAgent``` 进程将作业和警报数据发送到 Azure 备份服务。 此进程偶尔会被阻塞或关闭。
 
 1. 若要验证此进程是否未运行，请打开“任务管理器”并检查 ```OBRecoveryServicesManagementAgent``` 是否正在运行。
 

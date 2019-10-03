@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
 ms.openlocfilehash: 1d7a18f3f46cec73d70389b82eed5a85e440d340
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418595"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62119072"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>如何使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
 
 | 属性 | 开关 | 描述 |
 | --- | --- | --- |
-| 名称 |-n, --name |Azure Redis 缓存的名称。 |
+| name |-n, --name |Azure Redis 缓存的名称。 |
 | 资源组 |-g, --resource-group |资源的名称。 |
 | 位置 |-l, --location |要创建缓存的位置。 |
 | size |-z, --size |Azure Redis 缓存的大小。 有效的值: [C0、C1、C2、C3、C4、C5、C6、P1、P2、P3、P4] |

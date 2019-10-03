@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 9dcfbd4b5fcc8462c88b16f585424166ecd3d499
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088229"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61361873"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure 流分析作业中的检查点和重播概念
 本文介绍 Azure 流分析中内部检查点和重播的概念及其对作业恢复的影响。 每当运行流分析作业时，都会在内部维护状态信息。 该状态信息定期保存在检查点中。 在某些情况下，如果发生作业失败或升级，则会使用检查点信息进行作业恢复。 在另一些情况下，检查点无法用于恢复，而必须使用重播。

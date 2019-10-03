@@ -2,22 +2,19 @@
 title: Azure 云服务文档 - 教程和 API 参考 | Microsoft 文档
 description: 教程、API 参考和其他文档介绍了如何使用云服务来托管和运行高度可用、可缩放的云应用程序和 API。
 services: cloud-services
-author: czeumault
-manager: carolz
+author: georgewallace
+manager: gwallace
 layout: LandingPage
-ms.assetid: ''
 ms.service: cloud-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 300762cd98f66af80dd6fd7079005ef17ece2ade
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.author: gwallace
+ms.openlocfilehash: f30032ff2d7189e45075c74152bb6903128217ad
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24101876"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609718"
 ---
 # <a name="cloud-services-documentation"></a>云服务文档
 
@@ -100,14 +97,14 @@ ms.locfileid: "24101876"
 
 ---
 
-<h2>参考</h2>
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>语言</h3>
+                        <h3>Languages</h3>
                         <p><a href="/azure/cloud-services/schema-csdef-file">.csdef XML 架构</a></p>
                         <p><a href="/azure/cloud-services/schema-csdef-loadbalancerprobe">LoadBalancerProbe 架构</a></p>
                         <p><a href="/azure/cloud-services/schema-csdef-webrole">WebRole 架构</a></p>

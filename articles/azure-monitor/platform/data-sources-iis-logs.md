@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 402cd4723791c0bc33db22c8857d1b785862f596
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: cc0fcbb2005ce2aaa70c9e1d2a9993d341169209
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797836"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814219"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure Monitor 中收集 IIS 日志
 Internet 信息服务 (IIS) 会将用户活动存储在日志文件中，并可通过 Azure Monitor 进行收集并将其存储为[日志数据](data-platform.md)。
@@ -34,7 +34,7 @@ Azure Monitor 仅支持以 W3C 格式存储的 IIS 日志文件，不支持自�
 
 
 ## <a name="data-collection"></a>数据收集
-每次关闭日志并创建新日志时，Azure Monitor 都会从每个代理收集 IIS 日志条目。 此频率由 IIS 站点的**日志文件滚动更新计划**设置控制，默认情况下为每天一次。 例如，如果此设置为“每小时”，则 Azure Monitor 将每小时收集一次日志。  例如，如果此设置为“每日”，则 Azure Monitor 将每 24 小时收集一次日志。
+每次日志时间戳更改时, Azure Monitor 从每个代理收集 IIS 日志条目。 日志每**5 分钟**读取一次。 如果出于任何原因, IIS 在创建新文件的滚动时间之前不会更新时间戳, 则会在创建新文件后收集条目。 创建新文件的频率由 IIS 站点的 "**日志文件滚动更新计划**" 设置控制, 默认情况下每天一次。 如果设置为 "**每小时**", 则 Azure Monitor 每小时收集一次日志。 如果设置为 "**每日**", Azure Monitor 每24小时收集一次日志。
 
 
 ## <a name="iis-log-record-properties"></a>IIS 日志记录属性
@@ -42,7 +42,7 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 
 | 属性 | 描述 |
 |:--- |:--- |
-| Computer |从中收集事件的计算机的名称。 |
+| 计算机 |从中收集事件的计算机的名称。 |
 | cIP |客户端的 IP 地址。 |
 | csMethod |请求的方法，如 GET 或 POST。 |
 | csReferer |用户通过链接转到当前站点的来源站点。 |
@@ -67,12 +67,12 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 ## <a name="log-queries-with-iis-logs"></a>使用 IIS 日志的日志查询
 下表提供了检索 IIS 日志记录的日志查询的不同示例。
 
-| Query | 描述 |
+| 查询 | 描述 |
 |:--- |:--- |
 | W3CIISLog |所有 IIS 日志记录。 |
 | W3CIISLog &#124; where scStatus==500 |返回状态为 500 的所有 IIS 日志记录。 |
 | W3CIISLog &#124; summarize count() by cIP |按客户端 IP 地址的 IIS 日志条目计数。 |
-| W3CIISLog &#124; where csHost=="www\.contoso.com" &#124; summarize count() by csUriStem |计数的 IIS 日志条目由 URL 主机 www\.contoso.com。 |
+| W3CIISLog &#124; where csHost=="www\.contoso.com" &#124; summarize count() by csUriStem |按主机的 URL www\.contoso.com 统计的 IIS 日志条目的计数。 |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |每台 IIS 计算机接收的总字节数。 |
 
 ## <a name="next-steps"></a>后续步骤

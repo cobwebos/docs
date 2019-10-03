@@ -1,21 +1,22 @@
 ---
-title: 使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 Java SDK 生成控制台应用
+title: 快速入门：使用 Azure API for Mongo DB 和 Java SDK 生成 Web 应用 - Azure Cosmos DB
 description: 演示一个 Java 代码示例，可以参考该示例使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行连接和查询。
 author: rimman
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 12/26/2017
+ms.date: 12/26/2018
 ms.author: rimman
-ms.openlocfilehash: 2fcd5f9e68d7f8bfa15cd596407c78af7fc8976b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 7129819b6cec068420b0b265d878078622721812
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587253"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965390"
 ---
-# <a name="quickstart-build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-java-sdk"></a>快速入门：使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 Java SDK 生成 Web 应用
+# <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>快速入门：在 Azure Cosmos DB 中使用 Java 和 MongoDB API 创建控制台应用
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -26,14 +27,14 @@ ms.locfileid: "56587253"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的全球分布和水平缩放功能。 
+在本快速入门中，将使用用于 Mongo DB 的 Azure Cosmos DB API 和 Java SDK 来创建控制台 Web 应用。 使用 Azure Cosmos DB 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的全球分布和水平缩放功能。
 
 本快速入门演示如何使用 [Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md) 创建 Cosmos 帐户。 然后生成并部署使用 [MongoDB Java 驱动程序](https://docs.mongodb.com/ecosystem/drivers/java/)构建的控制台应用。 
 
 ## <a name="prerequisites"></a>先决条件
 
 在运行此示例之前，必须具备以下先决条件：
-* JDK 1.7+（如果没有 JDK，请运行 `apt-get install default-jdk`）
+* [安装适用于 Azure 的 JDK 和 Azure Stack JDK 版本 8](https://aka.ms/azure-jdks)
 * Maven（如果没有 Maven，请运行 `apt-get install maven`）
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -113,7 +114,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 从帐户中选择“快速启动”，选择 Java，然后将连接字符串复制到剪贴板
+1. 从帐户中选择“快速启动”   ，选择 Java，然后将连接字符串复制到剪贴板。
 
 2. 打开 `Program.java` 文件，将 MongoClientURI 构造函数的参数替换为该连接字符串。 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
     

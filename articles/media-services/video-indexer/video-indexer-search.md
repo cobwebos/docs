@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 07b3c806dc5df5f93bee3206cbca53485675e7dd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 93376059dac2a8336e581269d8289d893779b291
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872397"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65799093"
 ---
 # <a name="find-exact-moments-within-videos"></a>在视频中查找确切的时刻
 
@@ -28,7 +29,7 @@ ms.locfileid: "56872397"
     ![搜索](./media/video-indexer-search/video-indexer-search01.png)
 3. 搜索视频的汇总见解。
 
-    然后即可单击视频中的“播放”，在视频中进行搜索。 再然后，可以选择“选择”选项卡，在视频中进行搜索。 
+    然后即可单击视频中的“播放”，在视频中进行搜索。  再然后，可以选择“选择”选项卡，在视频中进行搜索。  
 
     在以下示例中，我们搜索"安全"内所选的视频。
 
@@ -49,7 +50,7 @@ ms.locfileid: "56872397"
 
 找到要处理的视频以后，即可根据下述某个主题中的说明继续处理该视频： 
 
-- [根据现有视频创建新的视频见解](video-indexer-create-new.md)
+- [使用视频的深入见解](use-editor-create-project.md)
 - [使用视频索引器 REST API 处理内容](video-indexer-use-apis.md)
 - [将视觉小组件嵌入应用程序](video-indexer-embed-widgets.md)
 

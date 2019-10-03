@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: celested
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d361a40e2efa80a677255c02c7e9cf155af09ffb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 523f1adc94870f79d198366059f33ad52f5dad68
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496295"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293071"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 
@@ -42,7 +42,7 @@ ms.locfileid: "59496295"
 邀请方组织执行多重身份验证。 邀请方组织必须确保为其使用多重身份验证的 B2B 用户提供足够的许可证。
 
 ### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>如果合作伙伴组织已设置多重身份验证会怎样？ 我们是否可以信任他们的多重身份验证，而不使用我们自己的多重身份验证？
-计划在将来的版本中推出此功能，这样一来就可以选择要从（邀请方组织的）多重身份验证中排除的特定合作伙伴。
+当前不支持此功能。 如果你的组织资源的访问权限需要多重身份验证，合作伙伴组织将需要多重身份验证中注册你 （邀请） 组织。
 
 ### <a name="how-can-i-use-delayed-invitations"></a>如何使用延迟的邀请？
 某家组织想要添加 B2B 协作用户，根据需要将这些用户预配到应用程序中，然后发送邀请。 可以使用 B2B 协作邀请 API 自定义载入工作流。
@@ -57,13 +57,13 @@ ms.locfileid: "59496295"
 用户被分配的受限制的管理员角色，除非 B2B 协作用户不需要对 Azure 门户的访问。 但是，分配有受限制的管理员角色的 B2B 协作用户可以访问门户。 另外，如果未被分配这些管理员角色之一的来宾用户访问门户，该用户可以访问某些部分的体验。 来宾用户角色具有目录中的某些权限。
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>我能否阻止来宾用户访问 Azure 门户？
- 能！ 配置此策略时请小心，避免意外阻止成员和管理员的访问。
-若要阻止来宾用户访问 [Azure 门户](https://portal.azure.com)，可以在 Windows Azure 经典部署模型 API 中使用条件访问策略：
-1. 修改“所有用户”组，使其仅包含成员。
+能！ 配置此策略时请小心，避免意外阻止成员和管理员的访问。
+若要阻止来宾用户的访问[Azure 门户](https://portal.azure.com)，在 Windows Azure 经典部署模型 API 中使用条件性访问策略：
+1. 修改“所有用户”组，使其仅包含成员。 
    ![显示所有用户组 UserType 不等于来宾的屏幕截图](media/faq/modify-all-users-group.png)
 2. 创建包含来宾用户的动态组。
    ![显示新的所有来宾用户组的屏幕截图](media/faq/group-with-guest-users.png)
-3. 设置条件访问策略以阻止来宾用户访问门户，如以下视频中所示：
+3. 设置条件性访问策略以阻止来宾用户访问门户，如以下视频中所示：
   
    > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
 
@@ -111,7 +111,7 @@ Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样�
 所有 Azure AD 集成应用程序可以支持 Azure B2B 来宾用户，但它们必须使用终结点将设置为租户来宾用户进行身份验证。 可能还需要在来宾用户对应用进行身份验证时颁发的 SAML 令牌中[自定义声明](claims-mapping.md)。 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>如果合作伙伴未启用多重身份验证，我们是否可以强制 B2B 来宾用户使用多重身份验证？
-是的。 有关详细信息，请参阅 [B2B 协作用户的条件访问](conditional-access.md)。
+是的。 有关详细信息，请参阅[B2B 协作用户的条件性访问](conditional-access.md)。
 
 ### <a name="in-sharepoint-you-can-define-an-allow-or-deny-list-for-external-users-can-we-do-this-in-azure"></a>在 SharePoint 中，可以为外部用户定义“允许”和“拒绝”列表。 在 Azure 中是否可以执行此操作？
 是的。 Azure AD B2B 协作支持允许列表和拒绝列表。 

@@ -1,25 +1,19 @@
 ---
-title: 数据实体 | Microsoft Docs
+title: 数据实体
 description: 数据实体的概述。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 579856ab87aaf8d051f2e3c161bb2d0e2f693ed5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: a382f9b3ce08bba266311c2cc1d5f868f1bc3143
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446572"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64934928"
 ---
 # <a name="data-entities"></a>数据实体
 

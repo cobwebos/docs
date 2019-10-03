@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: f22311af277f860c1501287b5be0f5dc149880b9
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 84091a91321f3d42c5c75aa11d12abf10c5545d7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317710"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089303"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Square 复制数据
 
@@ -27,6 +27,12 @@ ms.locfileid: "58317710"
 > 此连接器目前提供预览版。 欢迎试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持此方形连接器：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
+
 
 可以将数据从 Square 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -48,7 +54,7 @@ Square 链接的服务支持以下属性：
 | host | Square 实例的 URL。 （即 mystore.mysquare.com）  | 是 |
 | clientId | 与 Square 应用程序关联的客户端 ID。  | 是 |
 | clientSecret | 与 Square 应用程序关联的客户端密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
-| redirectUri | 在 Square 应用程序仪表板中分配重定向 URL。 (即 http:\//localhost:2500)  | 是 |
+| redirectUri | 在 Square 应用程序仪表板中分配重定向 URL。 （即，http:\//localhost:2500）  | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
@@ -91,11 +97,12 @@ Square 链接的服务支持以下属性：
     "name": "SquareDataset",
     "properties": {
         "type": "SquareObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Square linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -106,7 +113,7 @@ Square 链接的服务支持以下属性：
 
 ### <a name="square-as-source"></a>Square 作为源
 
-要从 Square 复制数据，请将复制活动中的源类型设置为“SquareSource”。 复制活动源部分支持以下属性：
+要从 Square 复制数据，请将复制活动中的源类型设置为“SquareSource”。 复制活动**source**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -144,6 +151,10 @@ Square 链接的服务支持以下属性：
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

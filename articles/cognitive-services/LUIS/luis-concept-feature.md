@@ -1,6 +1,6 @@
 ---
-title: 功能
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 功能-LUIS
+titleSuffix: Azure Cognitive Services
 description: 将特征添加到语言模型，提供有关如何识别需要标记或分类的输入的提示。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7889f223b607912fd88c798b31ec028f97dfbbd6
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 829054064a21b2fb8da2bd975501bfcd0840e7eb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522847"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624572"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUIS 应用中的短语列表特征
 
@@ -35,7 +35,7 @@ ms.locfileid: "59522847"
 
 ## <a name="how-to-use-phrase-lists"></a>如何使用短语列表
 
-创建短语列表的情况为，应用有对应用重要的字词或短语，如：
+当你的应用程序包含对应用程序很重要的词或短语 (如) 时, 请[创建短语](luis-how-to-add-features.md)列表:
 
 * 行业术语
 * 俚语
@@ -46,7 +46,7 @@ ms.locfileid: "59522847"
 
 输入几个字词或短语后，立即使用“建议”功能来查找相关值。 先检查相关值，再添加到短语列表值。
 
-|列表类型|目的|
+|列表类型|用途|
 |--|--|
 |可互换|将其更换为列表中的其他字词后具有相同意向和实体提取的同义词或字词。|
 |不可互换|相对于该语言中的其他通用字词，更特定于应用的应用词汇。|
@@ -69,7 +69,7 @@ ms.locfileid: "59522847"
 
 ### <a name="non-interchangeable-lists"></a>不可交换列表
 
-不可交换短语列表是增强 LUIS 检测的信号。 短语列表代表比其他字词更重要的字词或短语。 这有助于确定意向和实体检测。 例如，假设有全局主题域（即跨区域性，但仍为一种语言），如旅行。 虽有对应用重要的字词和短语，但它们不是同义词。 
+不可交换短语列表是增强 LUIS 检测的信号。 短语列表指示的字词或短语比其他单词更重要。 这有助于确定意向和实体检测。 例如，假设有全局主题域（即跨区域性，但仍为一种语言），如旅行。 虽有对应用重要的字词和短语，但它们不是同义词。 
 
 再比如，对罕见词、专有词和外来词使用不可交换短语列表。 LUIS 可能无法识别罕见词、专有词以及外来词（在应用区域性以外）。 不可互换设置指示罕见字词集组成 LUIS 应学会识别的类，但它们不是同义词，也不能彼此互换。
 
@@ -88,19 +88,19 @@ ms.locfileid: "59522847"
 添加短语列表是将更多示例表述添加到意向的替代方法。 
 
 ## <a name="when-to-use-phrase-lists-versus-list-entities"></a>何时使用短语列表与列表实体
-尽管短语列表和列表实体都可以影响所有意向中的表述，但各自实现的方式不同。 短语列表用于影响意向预测评分。 列表实体用于影响完全文本匹配的实体提取。 
+尽管短语列表和[列表实体](reference-entity-list.md)都可能会影响最谈话, 但每个实体都以不同的方式进行。 短语列表用于影响意向预测评分。 列表实体用于影响完全文本匹配的实体提取。 
 
 ### <a name="use-a-phrase-list"></a>使用短语列表
 有了短语列表，LUIS 仍可以考虑上下文并进行归纳，从而标识与列表项相似但并非完全匹配的项。 如果需要 LUIS 应用能够归纳和识别分类中的新项，请使用短语列表。 
 
-当你想要能够识别的实体，类似的会议计划程序应识别新的联系人或应识别新产品的库存应用的名称的新实例时使用另一种类型的机器学习的内容的实体，例如简单实体。 然后，创建字词和短语的短语列表，有助于 LUIS 查找与实体相似的其他字词。 此列表通过增加这些字词的价值来指导 LUIS 识别实体的示例。 
+如果想要能够识别实体的新实例（例如：应识别新联系人姓名的会议计划程序、应识别新产品的库存应用），请使用另一类型的机器学习到的实体，例如简单实体。 然后，创建字词和短语的短语列表，有助于 LUIS 查找与实体相似的其他字词。 此列表通过增加这些字词的价值来指导 LUIS 识别实体的示例。 
 
 短语列表就像特定域的词汇表，有助于提高意向和实体的理解质量。 短语列表的常见用法是专有名词，例如城市名。 城市名称可以是包括连字符或撇号的多个字词。
  
 ### <a name="dont-use-a-phrase-list"></a>请勿使用短语列表 
 列表实体显式定义实体可以采用的每个值，并仅标识完全匹配的值。 列表实体可能适用于其中某实体的所有实例已知且不常更改的应用。 例如餐厅菜单上不常更改的菜品项。 如果需要实体的完全文本匹配，请勿使用短语列表。 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 了解[最佳实践](luis-concept-best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤

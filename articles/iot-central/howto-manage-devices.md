@@ -3,19 +3,21 @@ title: 在 Azure IoT Central 应用程序中管理设备 | Microsoft Docs
 description: 如何以操作员的身份在 Azure IoT Central 应用程序中管理设备。
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/30/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a723ca6d69d45613636c7659e6566cec19b31d65
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 364bd4dd0781c5fd74d0e4bdbfe3b4372a3d3ca0
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679020"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876018"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理设备
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 本文介绍如何以操作员的身份在 Azure IoT Central 应用程序中管理设备。 操作员可以：
 
@@ -66,7 +68,7 @@ ms.locfileid: "59679020"
 
 1. 选择“导入”。
 
-    ![导入操作](./media/howto-manage-devices/BulkImport1.png)
+    ![导入操作](./media/howto-manage-devices/bulkimport1a.png)
 
 1. 选择包含要导入的设备 ID 列表的 CSV 文件。
 
@@ -74,7 +76,7 @@ ms.locfileid: "59679020"
 
 1. 导入完成后，设备网格上会显示成功消息。
 
-    ![导入成功](./media/howto-manage-devices/BulkImport3.png)
+    ![导入成功](./media/howto-manage-devices/bulkimport3a.png)
 
 如果设备导入操作失败，将在设备网格上看到错误消息。 系统会生成一个捕获所有错误的可下载的日志文件。
 
@@ -86,15 +88,15 @@ ms.locfileid: "59679020"
 
 1. 在左面板中，选择“未关联的设备”：
 
-    ![未关联的设备](./media/howto-manage-devices/UnassociatedDevices1.png)
+    ![未关联的设备](./media/howto-manage-devices/unassociateddevices1a.png)
 
 1. 选择想要与模板关联的设备：
 
-1. 选择**相关联**:
+1. 选择**关联**:
 
-    ![关联设备](./media/howto-manage-devices/UnassociatedDevices2.png)
+    ![关联设备](./media/howto-manage-devices/unassociateddevices2a.png)
 
-1. 从可用模板列表中选择该模板，然后选择**相关联**。
+1. 从可用模板列表中选择模板, 然后选择 "**关联**"。
 
 1. 所选设备与所选设备模板相关联。
 
@@ -103,7 +105,7 @@ ms.locfileid: "59679020"
 
 ## <a name="export-devices"></a>导出设备
 
-若要将真实设备连接到 IoT Central，需要其连接字符串。 您可以导出大容量以获取你需要创建设备的连接字符串信息中的设备详细信息。 导出过程中使用设备标识、 设备名称和所有所选设备的密钥创建的 CSV 文件。
+若要将真实设备连接到 IoT Central，需要其连接字符串。 你可以批量导出设备详细信息, 以获取创建设备连接字符串所需的信息。 导出过程将创建一个 CSV 文件, 其中包含所有选定设备的设备标识、设备名称和密钥。
 
 从应用程序中批量导出设备：
 
@@ -111,17 +113,17 @@ ms.locfileid: "59679020"
 
 1. 在左面板中，选择要从中导出设备的设备模板。
 
-1. 选择你想要导出，然后选择的设备**导出**操作。
+1. 选择要导出的设备, 然后选择**导出**操作。
 
-    ![导出](./media/howto-manage-devices/Export1.png)
+    ![导出](./media/howto-manage-devices/export1a.png)
 
 1. 导出过程开始。 可以在网格顶部跟踪状态。
 
 1. 导出完成后，将显示一条成功消息，并提供一个用来下载生成文件的链接。
 
-1. 选择**条成功消息**若要将文件下载到磁盘上的本地文件夹。
+1. 选择 "**成功" 消息**以将文件下载到磁盘上的本地文件夹。
 
-    ![导出成功](./media/howto-manage-devices/Export2.png)
+    ![导出成功](./media/howto-manage-devices/export2a.png)
 
 1. 导出的 CSV 文件包含以下列：设备 ID、设备名称、设备密钥和 X509 证书指纹：
 
@@ -132,7 +134,7 @@ ms.locfileid: "59679020"
     * IOTC_X509THUMBPRINT_PRIMARY
     * IOTC_X509THUMBPRINT_SECONDARY
 
-请参阅[在 Azure IoT 中心的设备连接性](concepts-connectivity.md)，有关连接字符串和连接到 IoT 中心应用程序的实际设备的详细信息。
+有关连接字符串以及将实际设备连接到 IoT Central 应用程序的详细信息, 请参阅[Azure IoT Central 中的设备连接](concepts-connectivity.md)。
 
 ## <a name="delete-a-device"></a>删除设备
 

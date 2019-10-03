@@ -4,30 +4,31 @@ description: 了解如何在 Azure Active Directory 中为企业应用程序配�
 services: active-directory
 documentationcenter: ''
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: eb2b3741-3cde-45c8-b639-a636f3df3b74
 ms.service: active-directory
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/21/2019
+ms.topic: conceptual
+ms.date: 04/22/2019
 ms.author: jeedes
-ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a354fdf8ea75d9446c2a5e5ee6a70489cf9dbfb5
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990504"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207188"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
 可以使用 Azure Active Directory (Azure AD) 为完成应用授权后收到的响应令牌中的角色声明自定义声明类型。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 安装了目录的 Azure AD 订阅。
 - 启用了单一登录 (SSO) 的订阅。 必须使用应用程序配置 SSO。
@@ -58,7 +59,7 @@ ms.locfileid: "56990504"
 
     ![“属性”页](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. 在另一个窗口中打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)，然后执行以下步骤：
+6. 在另一个窗口中打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer), 然后执行以下步骤:
 
     a. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
@@ -97,7 +98,7 @@ ms.locfileid: "56990504"
       ![appRoles 属性的详细信息](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
       > [!Note]
-      > 如果使用自定义应用（而不是 Azure Marketplace 应用），则会看到两个默认角色：user 和 msiam_access。 对于 Marketplace 应用，msiam_access 是唯一的默认角色。 不需对默认角色进行任何更改。
+      > 如果使用自定义应用（而不是 Azure 市场应用），则会看到两个默认角色：user 和 msiam_access。 对于 Marketplace 应用，msiam_access 是唯一的默认角色。 不需对默认角色进行任何更改。
 
     h. 为应用程序生成新角色。
 
@@ -152,20 +153,20 @@ ms.locfileid: "56990504"
 
 8. 更新“属性”表以定义角色声明的自定义映射。
 
-9. 在“单一登录”对话框的“用户属性和声明”部分中，按图中所示配置 SAML 令牌属性，然后执行以下步骤。
+9. 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 属性名称 | 属性值 |
+    | 属性名 | 属性值 |
     | -------------- | ----------------|
-    | 角色名称  | user.assignedroles |
+    | 角色名  | user.assignedroles |
 
     >[!NOTE]
-    >如果角色声明值为 null，然后 Azure AD 不会发送此值在令牌中，这是根据设计默认值。
+    >如果角色声明值为 null, 则 Azure AD 将不会在令牌中发送此值, 这是默认设置。
 
-    a. 单击“编辑”按钮以打开“用户属性”对话框。
+    a. 单击 "**编辑**" 图标, 打开 "& 声明" 对话框中的 "**用户属性**"。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b. 选择“添加属性”以打开“管理用户声明”窗格。
+    b. 在 "**管理用户声明**" 对话框中, 单击 "**添加新声明**" 添加 "SAML 令牌" 属性。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
@@ -177,7 +178,7 @@ ms.locfileid: "56990504"
 
     e. 在“源属性”列表中，键入为该行显示的属性值。
 
-    f. 选择“保存”。
+    f. 选择**保存**。
 
 10. 若要在标识提供者启动的单一登录中测试应用程序，请登录到[访问面板](https://myapps.microsoft.com)，然后选择应用程序磁贴。 在 SAML 令牌中，应该会看到具有所提供的声明名称的用户的所有已分配角色。
 
@@ -185,7 +186,7 @@ ms.locfileid: "56990504"
 
 若要更新现有角色，请执行以下步骤：
 
-1. 打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。
+1. 打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)"。
 
 2. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
@@ -223,7 +224,7 @@ ms.locfileid: "56990504"
 
 若要删除现有角色，请执行以下步骤：
 
-1. 在另一个窗口中打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。
+1. 在另一个窗口中打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
 
 2. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 

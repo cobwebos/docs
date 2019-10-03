@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879775"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61281404"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>为多层 Dynamics AX 应用程序设置灾难恢复   
 
@@ -90,7 +90,7 @@ ms.locfileid: "56879775"
 
 * 对于应用程序对象服务器，选择正确的可用性集。
 
-* 如果使用静态 IP，请在“目标 IP”文本框中指定希望 VM 采用的 IP。
+* 如果使用静态 IP，请在“目标 IP”文本框中指定希望 VM 采用的 IP  。
 
     ![网络设置](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
@@ -99,11 +99,11 @@ ms.locfileid: "56879775"
 
 可以在 Site Recovery 中创建恢复计划，将故障转移过程自动化。 在恢复计划中添加应用层和 Web 层。 在不同的组中将它们排序，以便先关闭前端，再关闭应用层。
 
-1. 在订阅中选择 Site Recovery 保管库，并选择“恢复计划”磁贴。
+1. 在订阅中选择 Site Recovery 保管库，并选择“恢复计划”  磁贴。
 
-2. 选择“+ 恢复计划”并指定名称。
+2. 选择“+ 恢复计划”  并指定名称。
 
-3. 选择“源”和“目标”。 目标可以是 Azure 或辅助站点。 如果选择 Azure，则必须指定部署模型。
+3. 选择“源”  和“目标”  。 目标可以是 Azure 或辅助站点。 如果选择 Azure，则必须指定部署模型。
 
     ![创建恢复计划](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
 
@@ -139,13 +139,13 @@ ms.locfileid: "56879775"
 
 2. 选择针对 Dynamics AX 创建的恢复计划。
 
-3. 选择“测试故障转移”。
+3. 选择“测试故障转移”  。
 
 4. 选择虚拟网络开始测试故障转移过程。
 
 5. 辅助环境启动后，可以执行验证。
 
-6. 完成验证后，选择“验证完成”，随后将清理测试故障转移环境。
+6. 完成验证后，选择“验证完成”  ，随后将清理测试故障转移环境。
 
 有关执行测试故障转移的详细信息，请参阅[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)。
 
@@ -155,9 +155,9 @@ ms.locfileid: "56879775"
 
 2. 选择针对 Dynamics AX 创建的恢复计划。
 
-3. 选择“故障转移”，然后选择“故障转移”。
+3. 选择“故障转移”  ，然后选择“故障转移”  。
 
-4. 选择目标网络，并选择 ✓ 开始故障转移过程。
+4. 选择目标网络，并选择 ✓  开始故障转移过程。
 
 有关执行故障转移的详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。
 
@@ -169,13 +169,13 @@ ms.locfileid: "56879775"
 
 2. 选择针对 Dynamics AX 创建的恢复计划。
 
-3. 选择“故障转移”，然后选择“故障转移”。
+3. 选择“故障转移”  ，然后选择“故障转移”  。
 
-4. 选择“更改方向”。
+4. 选择“更改方向”。 
 
 5. 选择适当的选项：数据同步和 VM 创建。
 
-6. 选择 ✓ 开始执行故障回复过程。
+6. 选择 ✓  开始执行故障回复过程。
 
 
 有关执行故障回复的详细信息，请参阅[将 VMware VM 从 Azure 故障回复到本地](site-recovery-failback-azure-to-vmware.md)。

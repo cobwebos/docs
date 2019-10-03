@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 81ef669b62c822e10d8bf5c45e58dd769c5dbeb9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: ddb9dd49af4557e6ff8d38110de4a99a9cf6fed7
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888383"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687003"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Redis 缓存
 本主题介绍如何为 Azure Redis 缓存实例执行管理任务，如[重启](#reboot)和[计划更新](#schedule-updates)。
@@ -31,7 +31,7 @@ ms.locfileid: "56888383"
 
 ![重新启动](./media/cache-administration/redis-cache-administration-reboot.png)
 
-选择要重新启动的节点，并单击“重新启动” 。
+选择要重新启动的节点，并单击“重新启动”。
 
 ![重新启动](./media/cache-administration/redis-cache-reboot.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "56888383"
 > 
 
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>如果我执行重新启动，是否会丢失缓存中的数据？
-如果同时重新启动**主**并**从属**节点，所有数据缓存中 （或如果您使用的高级缓存启用了群集功能该分片中） 可能都会丢失，但这不保证任何一个。 如果已配置 [数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时会还原最新备份，但在进行该备份后发生的所有缓存写入都将丢失。
+如果同时重新启动**主**节点和**从属**节点，则缓存中或该分片中（如果用户使用的是已启用群集的高级缓存）的所有数据都可能会丢失，但这种情况也不一定会发生。 如果已配置 [数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时会还原最新备份，但在进行该备份后发生的所有缓存写入都将丢失。
 
 如果只重新启动其中一个节点，数据通常不会丢失，但仍然存在丢失的可能。 例如，如果重新启动主节点时正在进行缓存写入，则缓存写入的数据会丢失。 发生数据丢失的另一种情况是，重新启动一个节点时，另一个节点恰巧因故障而关闭。 有关数据丢失的可能原因的详细信息，请参阅 [What happened to my data in Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)（Redis 中的数据发生了什么情况？）
 
@@ -101,7 +101,6 @@ ms.locfileid: "56888383"
 * [如果不使用计划更新功能，何时进行更新？](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)
 * [在计划的维护时段进行哪种类型的更新？](#what-type-of-updates-are-made-during-the-scheduled-maintenance-window)
 * [能否使用 PowerShell、CLI 或其他管理工具管理计划的更新？](#can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools)
-* [哪些定价层可以使用计划更新功能？](#what-pricing-tiers-can-use-the-schedule-updates-functionality)
 
 ### <a name="when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature"></a>如果我不使用计划更新功能，何时进行更新？
 如果未指定维护时段，可以随时进行更新。
@@ -116,9 +115,6 @@ ms.locfileid: "56888383"
 * [New-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/new-azrediscachepatchschedule)
 * [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry)
 * [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
-
-### <a name="what-pricing-tiers-can-use-the-schedule-updates-functionality"></a>哪些定价层可以使用计划更新功能？
-**计划更新**功能仅在高级定价层中可用。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解更多 [Azure Redis 缓存高级层](cache-premium-tier-intro.md)功能。

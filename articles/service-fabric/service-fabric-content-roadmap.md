@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: adbe101455bc200bc6be439920736b756f08b695
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 1227871f2003ded7b9cb92eaf32bd9a984958f9f
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667984"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537809"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -27,16 +27,18 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 ## <a name="core-concepts"></a>核心概念
 此处介绍基础知识，有关详细概念和介绍，可参阅 [Service Fabric 术语](service-fabric-technical-overview.md)、[应用程序模型](service-fabric-application-model.md)和[支持的编程模型](service-fabric-choose-framework.md)。
 
-### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>设计时：应用程序类型、服务类型，应用程序包和清单、服务包和清单
-应用程序类型是分配给服务类型集合的名称/版本。 这在 ApplicationManifest.xml 文件中定义，该文件嵌入到应用程序包目录中。 然后将应用程序包复制到 Service Fabric 群集的映像存储。 然后，可基于此应用程序类型，创建在群集内运行的命名应用程序。 
+### <a name="design-time-service-type-service-package-and-manifest-application-type-application-package-and-manifest"></a>设计时： 服务类型、 服务包和清单、 应用程序类型、 应用程序包和清单
+服务类型是分配给服务的代码包、数据包、配置包的名称/版本。 这在 ServiceManifest.xml 文件中定义。 服务类型组成的可执行代码和服务配置设置，在运行时加载，并供该服务的静态数据。
 
-服务类型是分配给服务的代码包、数据包、配置包的名称/版本。 这在 ServiceManifest.xml 文件中定义，该文件嵌入到服务包目录中。 然后，服务包目录由应用程序包的 *ApplicationManifest.xml* 文件引用。 在群集中创建命名应用程序后，可以从应用程序类型的服务类型之一创建命名服务。 服务类型由其 ServiceManifest.xml 文件描述。 服务类型由在运行时加载的可执行代码服务配置设置和服务使用的静态数据组成。
+服务包是一个磁盘目录，其中包含服务类型的 ServiceManifest.xml 文件，该文件引用服务类型的代码、静态数据和配置包。 例如，服务包可能引用构成数据库服务的代码、静态数据和配置包。
+
+应用程序类型是分配给服务类型集合的名称/版本。 这在 ApplicationManifest.xml 文件中定义。
 
 ![Service Fabric 应用程序类型和服务类型][cluster-imagestore-apptypes]
 
-应用程序包是一个磁盘目录，其中包含应用程序类型的 ApplicationManifest.xml 文件，该文件引用构成应用程序类型的每种服务类型的服务包。 例如，电子邮件应用程序类型的应用程序包可能包含对队列服务包、前端服务包和数据库服务包的引用。 应用程序包目录中的文件会复制到 Service Fabric 群集的映像存储中。 
+应用程序包是一个磁盘目录，其中包含应用程序类型的 ApplicationManifest.xml 文件引用构成应用程序类型的每个服务类型的服务包。 例如，电子邮件应用程序类型的应用程序包可能包含对队列服务包、前端服务包和数据库服务包的引用。  
 
-服务包是一个磁盘目录，其中包含服务类型的 ServiceManifest.xml 文件，该文件引用服务类型的代码、静态数据和配置包。 应用程序类型的 ApplicationManifest.xml 文件引用服务包目录中的文件。 例如，服务包可能引用构成数据库服务的代码、静态数据和配置包。
+应用程序包目录中的文件将复制到 Service Fabric 群集的映像存储。 然后，可基于此应用程序类型，创建在群集内运行的命名应用程序。 创建命名的程序后，可以从一个应用程序类型的服务类型创建命名的服务。 
 
 ### <a name="run-time-clusters-and-nodes-named-applications-named-services-partitions-and-replicas"></a>运行时：群集和节点、命名的应用程序、命名的服务、分区和副本
 [Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 群集可以扩展到成千上万台计算机。
@@ -65,7 +67,7 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>无状态和有状态 Service Fabric 微服务
 使用 Service Fabric，可以生成包含微服务或容器的应用程序。 无状态微服务（例如网关、Web 代理）不维护除请求及其来自服务的响应之外任何可变状态。 Azure 云服务辅助角色是无状态服务的一个示例。 有状态微服务（例如，用户帐户、数据库、设备、购物车、队列）维护除请求及其响应之外的可变、授权状态。 当今的 Internet 规模应用程序包含无状态和有状态微服务的组合。 
 
-Service Fabric 的关键区别是构建有状态服务，使用它的重点[内置编程模型](service-fabric-choose-framework.md)或容器化有状态服务。 [应用程序方案](service-fabric-application-scenarios.md)介绍了可使用有状态服务的方案。
+Service Fabric 的关键区别在于，大力注重使用[内置编程模型](service-fabric-choose-framework.md)或容器化有状态服务生成有状态服务。 [应用程序方案](service-fabric-application-scenarios.md)介绍了可使用有状态服务的方案。
 
 为何要将有状态和无状态的微服务一同使用？ 有以下两个主要原因：
 
@@ -119,7 +121,7 @@ Service Fabric 与 [ASP.NET Core](service-fabric-reliable-services-communication
 可在运行 Windows Server 或 Linux 的虚拟机或物理计算机上创建 Service Fabric 群集。 可在包含一组互连 Windows Server 或 Linux 计算机（本地计算机、Microsoft Azure 计算机或任何云提供商的计算机）的任何环境中部署和运行 Service Fabric 应用程序。
 
 ### <a name="clusters-on-azure"></a>Azure 上的群集
-在 Azure 上运行 Service Fabric 群集可提供与其他 Azure 功能和服务的集成，这样可使群集的操作和管理更容易且更可靠。 群集是 Azure 资源管理器资源，因此可以像 Azure 中的其他资源一样对群集进行建模。 Resource Manager 还可以轻松管理群集作为单个单元使用的所有资源。 使用 Azure 诊断集成在 Azure 上的群集和 Azure Monitor 日志。 群集节点类型是[虚拟机规模集](/azure/virtual-machine-scale-sets/index)，因此自动缩放功能是内置的。
+在 Azure 上运行 Service Fabric 群集可提供与其他 Azure 功能和服务的集成，这样可使群集的操作和管理更容易且更可靠。 群集是 Azure 资源管理器资源，因此可以像 Azure 中的其他资源一样对群集进行建模。 Resource Manager 还可以轻松管理群集作为单个单元使用的所有资源。 Azure 上的群集已集成了 Azure 诊断和 Azure Monitor 日志。 群集节点类型是[虚拟机规模集](/azure/virtual-machine-scale-sets/index)，因此自动缩放功能是内置的。
 
 可以通过 [Azure 门户](service-fabric-cluster-creation-via-portal.md)、[模板](service-fabric-cluster-creation-via-arm.md)或 [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md) 在 Azure 上创建群集。
 
@@ -144,7 +146,7 @@ Service Fabric 提供一个安装包，用于在本地或者任何云提供程�
 
 有关详细信息，请阅读[保护群集](service-fabric-cluster-security.md)。
 
-### <a name="scaling"></a>扩展
+### <a name="scaling"></a>缩放
 如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡分区副本和实例。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本和实例以更加充分利用每个节点上的硬件。 可以在 Azure 上[手动](service-fabric-cluster-scale-up-down.md)或[以编程方式](service-fabric-cluster-programmatic-scaling.md)扩展群集。 可以[手动](service-fabric-cluster-windows-server-add-remove-nodes.md)扩展独立群集。
 
 ### <a name="cluster-upgrades"></a>群集升级
@@ -165,7 +167,7 @@ Service Fabric 报告器可监视感兴趣的已标识条件。 它们会根据�
 * 在 Service Fabric 节点上运行，但未以 Service Fabric 服务形式实现的内部监视器。
 * 从 Service Fabric 群集外探测资源的外部监视器（例如，诸如 Gomez 之类的监视服务）。
 
-Service Fabric 组件报告包含群集中所有实体的运行状况。 [系统运行状况报告](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)提供有关群集和应用程序功能的可见性，并且通过运行状况标记问题。 对于应用程序和服务，系统运行状况报告从 Service Fabric 运行时的角度验证实体得到实现并且正常运行。 报告不对服务的业务逻辑进行任何运行状况监视，也不检测暂停的进程。 若要添加特定于服务逻辑的运行状况信息，请在服务中[执行自定义运行状况报告](service-fabric-report-health.md)。
+Service Fabric 组件报告包含群集中所有实体的运行状况。 [系统运行状况报告](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)提供有关群集和应用程序功能的可见性，并且通过运行状况标记问题。 对于应用程序和服务，系统运行状况报告从 Service Fabric 运行时的角度验证实体得到实现并且正常运行。 报告不对服务的业务逻辑进行任何运行状况监视，也不检测已停止响应的进程。 若要添加特定于服务逻辑的运行状况信息，请在服务中[执行自定义运行状况报告](service-fabric-report-health.md)。
 
 Service Fabric 提供了多种方式查看在运行状况存储中聚合的[运行状况报告](service-fabric-view-entities-aggregated-health.md)：
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 或其他可视化工具。

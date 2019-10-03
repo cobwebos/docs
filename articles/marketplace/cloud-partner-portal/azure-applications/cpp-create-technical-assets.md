@@ -1,25 +1,18 @@
 ---
-title: 创建 Azure 应用程序技术资产 | Microsoft Docs
+title: 创建 Azure 应用程序技术资产 |Azure Marketplace
 description: 为 Azure 应用程序产品/服务创建技术资产。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a498fb2bc3efcc3a081a0ab854df107135a4e008
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: pabutler
+ms.openlocfilehash: cbe1b8c8f1159d90fbf97eeae272c1c50ec9b9bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104686"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64942985"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>准备 Azure 应用程序技术资产
 

@@ -6,17 +6,16 @@ ms.service: sql-database
 ms.subservice: development
 ms.devlang: php
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: v-masebo
-manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: 4a53d733b30c06cb48fe2a57f7be232d914dc79c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: a7da65438ffd7db6c43cf2ede7cc52378af056f1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448960"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569212"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>快速入门：使用 PHP 查询 Azure SQL 数据库
 
@@ -56,13 +55,13 @@ ms.locfileid: "58448960"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 导航到“SQL 数据库”或“SQL 托管实例”页。
+2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 
-3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标。
+3. 在“概览”页中，查看单一数据库的“服务器名称”旁边的完全限定的服务器名称，或者托管实例的“主机”旁边的完全限定的服务器名称    。 若要复制服务器名称或主机名称，请将鼠标悬停在其上方，然后选择“复制”图标  。
 
 ## <a name="add-code-to-query-database"></a>添加用于查询数据库的代码
 
-1. 在喜欢的文本编辑器中，创建新文件 sqltest.php。  
+1. 在喜欢的文本编辑器中，创建新文件 sqltest.php  。  
 
 1. 将其内容替换为以下代码。 然后，为服务器、数据库、用户和密码添加相应的值。
 

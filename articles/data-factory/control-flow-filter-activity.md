@@ -3,21 +3,20 @@ title: Azure 数据工厂中的 Filter 活动 | Microsoft Docs
 description: Filter 活动将筛选输入。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.author: shlo
-ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: c0f5d3264d953498af61c6e8d36dadee7dd61931
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021826"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915513"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Filter 活动
 可以在管道中使用 Filter 活动将筛选器表达式应用到输入数组。 
@@ -37,16 +36,16 @@ ms.locfileid: "54021826"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必填
 -------- | ----------- | -------------- | --------
-名称 | `Filter` 活动的名称。 | String | 是
+name | `Filter` 活动的名称。 | String | 是
 type | 必须设置为“filter”。 | String | 是
-条件 | 要用于筛选输入的条件。 | 表达式 | 是
-items | 应该应用筛选器的输入数组。 | 表达式 | 是
+condition | 要用于筛选输入的条件。 | 表达式 | 是
+项目 | 应该应用筛选器的输入数组。 | 表达式 | 是
 
 ## <a name="example"></a>示例
 
-在此示例中，管道包含两个活动：**Filter** 和 **ForEach**。 Filter 活动配置为筛选输入数组中值大于 3 的项。 然后，ForEach 活动会循环访问筛选的值，并等待当前值所指定的秒数。
+在此示例中，管道包含两个活动：**Filter** 和 **ForEach**。 Filter 活动配置为筛选输入数组中值大于 3 的项。 然后，ForEach 活动会遍历筛选值并将变量**测试**设置为当前值。
 
 ```json
 {
@@ -61,32 +60,53 @@ items | 应该应用筛选器的输入数组。 | 表达式 | 是
                 }
             },
             {
-                "name": "MyForEach",
-                "type": "ForEach",
-                "typeProperties": {
-                    "isSequential": "false",
-                    "batchCount": 1,
-                    "items": "@activity('MyFilterActivity').output.value",
-                    "activities": [{
-                        "type": "Wait",
-                        "typeProperties": {
-                            "waitTimeInSeconds": "@item()"
-                        },
-                        "name": "MyWaitActivity"
-                    }]
-                },
-                "dependsOn": [{
+            "name": "MyForEach",
+            "type": "ForEach",
+            "dependsOn": [
+                {
                     "activity": "MyFilterActivity",
-                    "dependencyConditions": ["Succeeded"]
-                }]
+                    "dependencyConditions": [
+                        "Succeeded"
+                    ]
+                }
+            ],
+            "userProperties": [],
+            "typeProperties": {
+                "items": {
+                    "value": "@activity('MyFilterActivity').output.value",
+                    "type": "Expression"
+                },
+                "isSequential": "false",
+                "batchCount": 1,
+                "activities": [
+                    {
+                        "name": "Set Variable1",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "test",
+                            "value": {
+                                "value": "@string(item())",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ]
             }
-        ],
+        }],
         "parameters": {
             "inputs": {
                 "type": "Array",
                 "defaultValue": [1, 2, 3, 4, 5, 6]
             }
-        }
+        },
+        "variables": {
+            "test": {
+                "type": "String"
+            }
+        },
+        "annotations": []
     }
 }
 ```

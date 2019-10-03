@@ -1,25 +1,25 @@
 ---
-title: 教程 - 将标识提供程序添加到应用程序 - Azure Active Directory B2C | Microsoft Docs
+title: 教程-将标识提供程序添加到应用程序-Azure Active Directory B2C
 description: 了解如何使用 Azure 门户向 Azure Active Directory B2C 应用程序添加标识提供程序。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 02/01/2019
-ms.author: davidmu
+ms.date: 07/08/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ef264622be1e66c98f8c7f17cf3e04b3239e8553
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: bc7828b7926ea6e7f2d6bc3891ee231972ae3208
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338269"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063248"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教程：将标识提供程序添加到 Azure Active Directory B2C 应用程序
 
-在应用程序中，不妨允许用户使用不同的标识提供程序登录。 标识提供程序创建、维护和管理标识信息，同时向应用程序提供身份验证服务。 可使用 Azure 门户向[用户流](active-directory-b2c-reference-policies.md)添加 Azure Active Directory (Azure AD) B2C 支持的标识提供程序。
+在应用程序中，不妨允许用户使用不同的标识提供程序登录。 标识提供程序创建、维护和管理标识信息，同时向应用程序提供身份验证服务。 可以使用 Azure 门户将 Azure Active Directory B2C （Azure AD B2C）支持的标识提供者添加到[用户流](active-directory-b2c-reference-policies.md)。
 
 在本文中，学习如何：
 
@@ -28,13 +28,13 @@ ms.locfileid: "58338269"
 > * 向租户添加标识提供程序
 > * 向用户流添加标识提供程序
 
-通常在应用程序中只使用一个标识提供程序，但可以视需要添加更多标识提供程序。 本教程介绍了如何将 Azure AD 标识提供程序和 Facebook 标识提供程序添加到应用程序。 视需要将这两个标识提供程序添加到应用程序。 也可以添加其他标识提供程序，如 [Amazon](active-directory-b2c-setup-amzn-app.md)、[Github](active-directory-b2c-setup-github-app.md)、[Google](active-directory-b2c-setup-goog-app.md)、[LinkedIn](active-directory-b2c-setup-li-app.md)、[Microsoft](active-directory-b2c-setup-msa-app.md) 或 [Twitter](active-directory-b2c-setup-twitter-app.md)。 
+通常在应用程序中只使用一个标识提供程序，但可以视需要添加更多标识提供程序。 本教程介绍了如何将 Azure AD 标识提供程序和 Facebook 标识提供程序添加到应用程序。 视需要将这两个标识提供程序添加到应用程序。 你还可以添加其他标识提供程序，如[Amazon](active-directory-b2c-setup-amzn-app.md)、 [GitHub](active-directory-b2c-setup-github-app.md)、 [Google](active-directory-b2c-setup-goog-app.md)、 [LinkedIn](active-directory-b2c-setup-li-app.md)、 [Microsoft](active-directory-b2c-setup-msa-app.md)或[Twitter](active-directory-b2c-setup-twitter-app.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-[创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。 
+[创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
 
 ## <a name="create-applications"></a>创建应用程序
 
@@ -45,45 +45,48 @@ ms.locfileid: "58338269"
 若要让用户从 Azure AD 登录，需要在 Azure AD 租户中注册应用程序。 Azure AD 租户与 Azure AD B2C 租户不同。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请务必使用包含 Azure AD 租户的目录，具体方法是：单击顶部菜单中的“目录和订阅筛选器”，再选择包含 Azure AD 租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”。
-4. 选择“新建应用程序注册”。
-5. 输入应用程序的名称。 例如，`Azure AD B2C App`。
-6. 对于“应用程序类型”，选择 `Web app / API`。
-7. 对于“登录 URL”，输入以下 URL（全部为小写字母），并将 `your-B2C-tenant-name` 替换为你的 Azure AD B2C 租户的名称。
+1. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器并选择包含 Azure AD 租户的目录，确保使用的是包含 Azure AD 租户的目录。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”。
+1. 选择“新注册”。
+1. 输入应用程序的名称。 例如， `Azure AD B2C App` 。
+1. 对于此应用程序，接受选择“仅此组织目录中的帐户”。
+1. 对于 "**重定向 URI**"，接受 " **Web** " 的值，并以所有小写字母输入以下`your-B2C-tenant-name` URL，并将替换为 Azure AD B2C 租户的名称。
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
-    
-    例如，`https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
-    
+
+    例如， `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` 。
+
     现在，所有 URL 都应使用 [b2clogin.com](b2clogin.md)。
 
-8. 单击“创建”。 复制“应用程序 ID”供后续使用。
-9. 选择应用程序，然后选择“设置”。
-10. 选择“密钥”，输入密钥说明，选择持续时间，然后单击“保存”。 复制密钥值，以便稍后在本教程中使用。
+1. 选择 "**注册**"，并记录稍后步骤中使用的**应用程序（客户端） ID** 。
+1. 在 "**管理**" 下的 "应用程序" 菜单中，选择 "**证书 & 密码**"，然后选择 "**新建客户端密钥**
+1. 输入客户端密码的**说明**。 例如， `Azure AD B2C App Secret` 。
+1. 选择到期期限。 对于此应用程序，接受选项“1 年内”。
+1. 选择 "**添加**"，然后记录在稍后的步骤中使用的新客户端密码的值。
 
 ### <a name="create-a-facebook-application"></a>创建 Facebook 应用程序
 
 必须创建 Facebook 应用程序，才能将 Facebook 帐户用作 Azure AD B2C 中的标识提供程序。 如果还没有 Facebook 帐户，可以在 [https://www.facebook.com/](https://www.facebook.com/) 获取。
 
 1. 使用 Facebook 帐户凭据登录 [Facebook 开发人员](https://developers.facebook.com/)。
-2. 如果以前没有登录过，需要以 Facebook 开发人员身份注册。 若要注册，请选择页面右上角的“注册”，接受 Facebook 策略，并完成注册步骤。
-3. 选择“我的应用”，然后单击“添加新应用”。 
-4. 输入“显示名称”和有效的“联系人电子邮件”。
-5. 单击“创建应用程序 ID”。 系统可能要求你接受 Facebook 平台策略，并完成联机安全检查。
-6. 选择“设置” > “基本”。
-7. 选择“类别”，例如 `Business and Pages`。 此值是 Facebook 必需的，但不用于 Azure AD B2C。
-8. 在页面底部，选择“添加平台”，然后选择“网站”。
-9. 在“站点 URL”中，输入 `https://your-tenant-name.b2clogin.com/`，将 `your-tenant-name` 替换为你的租户名称。 为“隐私策略 URL”输入一个 URL，例如 `http://www.contoso.com`。 策略 URL 是继续提供应用程序的隐私信息的页面。
-10. 选择“保存更改”。
-11. 在页面的顶部，复制“应用 ID”的值。 
-12. 单击“显示”，并复制“应用程序密码”的值。 使用这两个值将 Facebook 配置为租户中的标识提供者。 “应用程序密码”是一个非常重要的安全凭据。
-13. 选择“产品”，然后在“Facebook 登录”下选择“设置”。
-14. 在“Facebook 登录”下选择“设置”。
-15. 在“有效的 OAuth 重定向 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称。 单击页面底部的“保存更改”。
-16. 若要让 Facebook 应用程序对 Azure AD B2C 可用，请单击页面右上角的“状态”选择器，并将它设置为“开”。 单击“确认”。 此时，“状态”应从“开发”变为“实时”。
+1. 如果以前没有登录过，需要以 Facebook 开发人员身份注册。 为此，请选择页面右上角的 "**入门**"，接受 Facebook 的策略，并完成注册步骤。
+1. 选择 **"我的应用"** ，然后**创建应用**。
+1. 输入“显示名称”和有效的“联系人电子邮件”。
+1. 单击“创建应用程序 ID”。 这会要求接受 Facebook 平台策略并完成在线安全检查。
+1. 选择“设置” > “基本”。
+1. 选择“类别”，例如 `Business and Pages`。 此值是 Facebook 必需的，但 Azure AD B2C 未使用该值。
+1. 在页面底部，选择“添加平台”，然后选择“网站”。
+1. 在“站点 URL”中，输入 `https://your-tenant-name.b2clogin.com/`，将 `your-tenant-name` 替换为你的租户名称。
+1. 为“隐私策略 URL”输入一个 URL，例如 `http://www.contoso.com/`。 隐私策略 URL 是你维护的页面，用于为你的应用程序提供隐私信息。
+1. 选择“保存更改”。
+1. 在页面顶部，记录 "**应用 ID**" 的值。
+1. 在 "**应用密钥**" 旁边，选择 "**显示**并记录其值"。 使用应用 ID 和应用机密将 Facebook 配置为租户中的标识提供者。 **应用密码**是应安全存储的重要安全凭据。
+1. 选择 "**产品**" 旁边的加号，然后在 " **Facebook 登录**" 下，选择 "**设置**"。
+1. 在左侧菜单中的 " **Facebook 登录**" 下，选择 "**设置**"。
+1. 在“有效的 OAuth 重定向 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称。 选择页面底部的 "**保存更改**"。
+1. 若要使 Facebook 应用程序可用于 Azure AD B2C，请单击页面右上角的**状态**选择器，**将其打开**，使应用程序成为公共应用程序，然后单击 "**确认**"。 此时，“状态”应从“开发”变为“实时”。
 
 ## <a name="add-the-identity-providers"></a>添加标识提供程序
 
@@ -91,40 +94,39 @@ ms.locfileid: "58338269"
 
 ### <a name="add-the-azure-active-directory-identity-provider"></a>添加 Azure Active Directory 标识提供程序
 
-1. 请务必使用包含 Azure AD B2C 租户的目录，具体方法是单击顶部菜单中的“目录和订阅筛选器”，再选择包含 Azure AD B2C 租户的目录。
-2. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-3. 选择“标识提供者”，然后选择“添加”。
-4. 输入“名称”。 例如，输入“Contoso Azure AD”。
-5. 选择“标识提供者类型”，选择“Open ID 连接(预览版)”并单击“确定”。
-6. 单击“设置此标识提供者”
-7. 对于“元数据 URL”，输入以下 URL，并将 `your-AD-tenant-domain` 替换为 Azure AD 租户的域名。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
+1. 选择“标识提供者”，然后选择“新建 OpenID Connect 提供程序”。
+1. 输入“名称”。 例如，输入“Contoso Azure AD”。
+1. 对于“元数据 URL”，请输入以下 URL，将 `your-AD-tenant-domain` 替换为 Azure AD 租户的域名：
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
     ```
 
-    例如，`https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`。
+    例如， `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration` 。
 
-8. 对于“客户端 ID”，输入先前记录的应用程序 ID；对于“客户端密码”，输入先前记录的密钥值。
-9. （可选）输入 Domain_hint 的值。 例如，`ContosoAD`。 
-10. 单击“确定”。
-11. 选择“映射此标识提供者的声明”并设置以下声明：
-    
-    - 在“用户 ID”中输入 `oid`。
-    - 在“显示名称”中输入 `name`。
-    - 在“名字”中输入 `given_name`。
-    - 在“姓氏”中输入 `family_name`。
-    - 在“电子邮件”中输入 `unique_name`。
+1. 对于“客户端 ID”，请输入之前记录的应用程序 ID。
+1. 对于“客户端机密”，请输入之前记录的客户端机密。
+1. 保留“范围”、“响应类型”和“响应模式”的默认值。
+1. （可选）输入Domain_hint 的值。 例如，*ContosoAD*。 [域提示](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)是应用程序的身份验证请求中包含的指令。 它们可用于加速将用户转到其联合的 IdP 登录页。 或者可由多租户应用程序用来帮助用户更快地直接转到其租户的品牌 Azure AD 登录页。
+1. 在“标识提供者声明映射”下，输入以下声明映射值：
 
-12. 单击“确定”，并单击“创建”保存配置。
+    * **用户 ID**：*oid*
+    * **显示名称**：*name*
+    * **名字**：*given_name*
+    * **姓氏**：*family_name*
+    * **电子邮件**：*unique_name*
+
+1. 选择**保存**。
 
 ### <a name="add-the-facebook-identity-provider"></a>添加 Facebook 标识提供程序
 
-1. 选择“标识提供者”，然后选择“添加”。
-2. 输入“名称”。 例如，输入“Facebook”。
-3. 选择“标识提供者类型”，选择“Facebook”，并单击“确定”。
-4. 选择“创建此标识提供程序”，并输入先前记录为“客户端 ID”的应用程序 ID。 输入先前记录为“客户端密码”的应用程序密码。
-5. 单击“确定”，并单击“创建”以保存 Facebook 配置。
+1. 选择 "**标识提供者**"，然后选择 " **Facebook**"。
+1. 输入“名称”。 例如*Facebook*。
+1. 对于 "**客户端 ID**"，请输入之前创建的 Facebook 应用程序的应用 ID。
+1. 对于**客户端密码**，输入你记录的应用机密。
+1. 选择**保存**。
 
 ## <a name="update-the-user-flow"></a>更新用户流
 
@@ -132,14 +134,38 @@ ms.locfileid: "58338269"
 
 1. 依次选择“用户流(策略)”和“B2C_1_signupsignin1”用户流。
 2. 依次选择“标识提供程序”和所添加的“Facebook”和“Contoso Azure AD”标识提供程序。
-3. 选择“保存”。
+3. 选择**保存**。
 
-### <a name="test-the-user-flow"></a>测试用户流
+## <a name="test-the-user-flow"></a>测试用户流
 
 1. 在创建的用户流的“概述”页上，选择“运行用户流”。
-2. 对于“应用程序”，请选择前面已注册的名为 *webapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
-3. 单击“运行用户流”，再使用前面添加的标识提供程序登录。
-4. 对添加的其他标识提供程序重复执行第 1 步到第 3 步。
+1. 对于“应用程序”，请选择前面已注册的名为 *webapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择 "**运行用户流**"，然后使用之前添加的标识提供者登录。
+1. 对添加的其他标识提供程序重复执行第 1 步到第 3 步。
+
+如果登录操作成功，则会重定向到`https://jwt.ms`显示已解码令牌的，如下所示：
+
+```json
+{
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid": "<key-ID>"
+}.{
+  "exp": 1562346892,
+  "nbf": 1562343292,
+  "ver": "1.0",
+  "iss": "https://your-b2c-tenant.b2clogin.com/10000000-0000-0000-0000-000000000000/v2.0/",
+  "sub": "20000000-0000-0000-0000-000000000000",
+  "aud": "30000000-0000-0000-0000-000000000000",
+  "nonce": "defaultNonce",
+  "iat": 1562343292,
+  "auth_time": 1562343292,
+  "name": "User Name",
+  "idp": "facebook.com",
+  "postalCode": "12345",
+  "tfp": "B2C_1_signupsignin1"
+}.[Signature]
+```
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -149,6 +175,8 @@ ms.locfileid: "58338269"
 > * 创建标识提供程序应用程序
 > * 向租户添加标识提供程序
 > * 向用户流添加标识提供程序
+
+接下来，了解如何自定义在应用程序中显示给用户的页面的 UI：
 
 > [!div class="nextstepaction"]
 > [在 Azure Active Directory B2C 中自定义应用程序的用户界面](tutorial-customize-ui.md)

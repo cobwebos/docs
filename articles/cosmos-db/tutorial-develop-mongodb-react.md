@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 09/05/2017
+ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.openlocfilehash: ef245c2ef5da2b3dc9780e772a71e8ef896e1aff
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959793"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614111"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>通过 React 和 Azure Cosmos DB 创建 MongoDB 应用  
 
@@ -69,7 +69,7 @@ ms.locfileid: "56959793"
 
 ## <a name="read-and-create-heroes-in-the-app"></a>在应用中读取和创建 hero
 
-此视频介绍如何在 Cosmos DB 数据库中读取 hero 和创建 hero，以及如何使用 Postman 和 React UI 测试这些方法。 
+此视频介绍如何在 Cosmos 数据库中读取 hero 和创建 hero，以及如何使用 Postman 和 React UI 测试这些方法。 
 
 > [!VIDEO https://www.youtube.com/embed/AQK9n_8fsQI] 
 
@@ -89,8 +89,8 @@ ms.locfileid: "56959793"
 
 如果不打算继续使用此应用，请使用以下步骤删除本教程在 Azure 门户中创建的所有资源。 
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，并单击已创建资源的名称。 
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。  
 
 ## <a name="next-steps"></a>后续步骤
 

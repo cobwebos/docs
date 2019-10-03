@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e783181e737a235a83149b1f22d699fe0aef0bfb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8b762b712d9a68cb75f9642d93b899a4990ae129
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848654"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141394"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Go 分析远程图像
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-go"></a>快速入门：使用计算机视觉 REST API 和 Go 分析远程图像
 
 在本快速入门中，你将使用计算机视觉的 REST API 分析远程存储的图像以提取视觉特征。 使用[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法，可以根据图像内容提取视觉特征。
 
@@ -27,21 +27,18 @@ ms.locfileid: "57848654"
 ## <a name="prerequisites"></a>先决条件
 
 - 必须安装有 [Go](https://golang.org/dl/)。
-- 必须具有计算机视觉的订阅密钥。 要获取订阅密钥，请参阅[获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md)。
+- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
 要创建和运行示例，请执行以下步骤：
 
 1. 将以下代码复制到文本编辑器中。
-1. 必要时在代码中进行如下更改：
-    1. 将 `subscriptionKey` 的值替换为你的订阅密钥。
-    1. 如有必要，请将 `uriBase` 的值替换为获取的订阅密钥所在的 Azure 区域中的[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)方法的终结点 URL。
-    1. （可选）将 `imageUrl` 的值替换为要分析的其他图像的 URL。
+1. （可选）将 `imageUrl` 的值替换为要分析的其他图像的 URL。
 1. 将代码保存为以 `.go` 为扩展名的文件。 例如，`analyze-image.go`。
 1. 打开命令提示符窗口。
-1. 在提示符处运行 `go build` 命令，对文件中的包进行编译。 例如，`go build analyze-image.go`。
-1. 在提示符处，运行所编译的包。 例如，`analyze-image`。
+1. 在提示符处运行 `go build` 命令，对文件中的包进行编译。 例如，`go build analyze-image.go` 。
+1. 在提示符处，运行所编译的包。 例如，`analyze-image` 。
 
 ```go
 package main
@@ -56,19 +53,18 @@ import (
 )
 
 func main() {
-    // Replace <Subscription Key> with your valid subscription key.
-    const subscriptionKey = "<Subscription Key>"
+    // Add your Computer Vision subscription key and endpoint to your environment variables.
+    subscriptionKey := os.Getenv("COMPUTER_VISION_SUBSCRIPTION_KEY")
+    if (subscriptionKey == "") {
+        log.Fatal("\n\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n" +
+            "**Restart your shell or IDE for changes to take effect.**\n")
 
-    // You must use the same Azure region in your REST API method as you used to
-    // get your subscription keys. For example, if you got your subscription keys
-    // from the West US region, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westus" region.
-    // If you use a free trial subscription key, you shouldn't need to change
-    // this region.
-    const uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze"
+    endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
+    if ("" == endpoint) {
+        log.Fatal("\n\nSet the COMPUTER_VISION_ENDPOINT environment variable.\n" +
+            "**Restart your shell or IDE for changes to take effect.**")
+    }
+    const uriBase = endpoint + "vision/v2.0/analyze"
     const imageUrl =
         "https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg"
 

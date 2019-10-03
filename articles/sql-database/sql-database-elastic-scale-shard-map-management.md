@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: a9c857ab9e9a3cfc0d1314600b612c4e6293173d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 3e7e2294938179da83fb5ad03db177c1142ad096
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476785"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568342"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分片映射管理器扩大数据库
 
@@ -54,12 +53,12 @@ ms.locfileid: "55476785"
 
 | .NET | Java |
 | --- | --- |
-| integer |integer |
+| 整数 |整数 |
 | long |long |
 | guid |uuid |
 | byte[]  |byte[] |
-| datetime | timestamp |
-| timespan | duration|
+| DATETIME | timestamp |
+| timespan | 持续时间|
 | datetimeoffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>列表和范围分片映射
@@ -70,7 +69,7 @@ ms.locfileid: "55476785"
 
 **分片**包含 **shardlet**，shardlet 到分片的映射由分片映射维护。 **列表分片映射**是可标识 shardlet 的单独键值和可用作分片的数据库之间的关联项。  “列表映射”是可以映射到同一个数据库的显式且不同的键值。 例如，键值 1 映射到数据库 A，键值 3 和 6 都映射到数据库 B。
 
-| 密钥 | 分片位置 |
+| Key | 分片位置 |
 | --- | --- |
 | 1 |Database_A |
 | 3 |Database_B |
@@ -82,9 +81,9 @@ ms.locfileid: "55476785"
 
 在**范围分片映射**中，键范围由 **[Low Value, High Value)** 对描述，其中 *Low Value* 是范围中的最小键，而 *High Value* 是第一个大于范围的值。
 
-例如，**[0, 100)** 包括所有大于或等于 0 且小于 100 的整数。 请注意，多个范围可指向同一数据库，并且支持多个不连续的范围（例如，在下面的示例中，[100,200) 和 [400,600) 可同时指向数据库 C。）
+例如， **[0, 100)** 包括所有大于或等于 0 且小于 100 的整数。 请注意，多个范围可指向同一数据库，并且支持多个不连续的范围（例如，在下面的示例中，[100,200) 和 [400,600) 可同时指向数据库 C。）
 
-| 密钥 | 分片位置 |
+| Key | 分片位置 |
 | --- | --- |
 | [1,50) |Database_A |
 | [50,100) |Database_B |
@@ -98,8 +97,8 @@ ms.locfileid: "55476785"
 
 在客户端库中，分片映射管理器是分片映射的集合。 由 **ShardMapManager** 实例管理的数据保存在以下三个位置中：
 
-1. **全局分片映射 (GSM)**：指定一个数据库以用作它的所有分片映射和映射的存储库。 将自动创建特殊的表和存储过程以管理信息。 这通常是小型数据库且可轻松进行访问，但不应用于满足应用程序的其他需求。 这些表位于名为 **__ShardManagement** 的特殊架构中。
-2. **局部分片映射 (LSM)**：修改指定为分片的每个数据库，以包含多个小表和特殊存储过程，其中包括特定于该分片的分片映射信息并对其进行管理。 对于 GSM 中的信息而言，该信息是冗余的，但应用程序通过该信息可验证缓存的分片映射信息，而无需将所有负载置于 GSM 上；应用程序可使用 LSM 确定缓存的映射是否仍然有效。 与每个分片上的 LSM 对应的表也位于架构 **__ShardManagement** 中。
+1. **全局分片映射 (GSM)** ：指定一个数据库以用作它的所有分片映射和映射的存储库。 将自动创建特殊的表和存储过程以管理信息。 这通常是小型数据库且可轻松进行访问，但不应用于满足应用程序的其他需求。 这些表位于名为 **__ShardManagement** 的特殊架构中。
+2. **局部分片映射 (LSM)** ：修改指定为分片的每个数据库，以包含多个小表和特殊存储过程，其中包括特定于该分片的分片映射信息并对其进行管理。 对于 GSM 中的信息而言，该信息是冗余的，但应用程序通过该信息可验证缓存的分片映射信息，而无需将所有负载置于 GSM 上；应用程序可使用 LSM 确定缓存的映射是否仍然有效。 与每个分片上的 LSM 对应的表也位于架构 **__ShardManagement** 中。
 3. **应用程序缓存**：每个用于访问 **ShardMapManager** 对象的应用程序实例都可维护其映射的本地内存中缓存。 它存储最近检索到的路由信息。
 
 ## <a name="constructing-a-shardmapmanager"></a>构造 ShardMapManager
@@ -227,7 +226,7 @@ public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shard
 
 分片映射管理器主要由需要数据库连接的应用程序用来执行特定于应用的数据操作。 这些连接必须与正确的数据库关联。 这称为**数据相关的路由**。 对于这些应用程序，通过使用在 GSM 数据库上具有只读访问权限的凭据，实例化来自工厂的分片映射管理器对象。 以后，单独的连接请求将提供连接相应分片数据库时所需的凭据。
 
-请注意，这些应用程序（使用具有只读权限的凭据打开的 **ShardMapManager**）将无法对映射进行更改。 为了满足这些需求，请创建特定于管理的应用程序或 PowerShell 脚本，以提供如前所述的更高级别权限的凭据。 请参阅[用于访问弹性数据库客户端库的凭据](sql-database-elastic-scale-manage-credentials.md)。
+请注意，这些应用程序（使用具有只读权限的凭据打开的 ShardMapManager）无法对映射进行更改。 为了满足这些需求，请创建特定于管理的应用程序或 PowerShell 脚本，以提供如前所述的更高级别权限的凭据。 请参阅[用于访问弹性数据库客户端库的凭据](sql-database-elastic-scale-manage-credentials.md)。
 
 有关详细信息，请参阅[数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)。
 

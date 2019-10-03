@@ -4,7 +4,7 @@ description: 了解如何在 Azure 中使用内部负载均衡器和应用服务
 services: vpn-gateway
 documentationCenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: vpn-gateway
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: ad52d2b1df458d04a1ca9bd52a99bab38ddabef1
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308573"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121952"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>未使用内部负载均衡器和应用服务环境将应用程序网关的后端服务器证书加入允许列表。
 
@@ -38,7 +38,7 @@ ms.locfileid: "56308573"
 - **后端池：** IP 地址或 FQDN
 - **IP 地址：** 10.1.5.11
 - **HTTP 设置：** HTTPS
-- **端口：**:443
+- **端口：** :443
 - **自定义探测：** 主机名 - test.appgwtestase.com
 - **身份验证证书：** test.appgwtestase.com 的 .cer 证书
 - **后端运行状况：** 不正常 - 未将应用程序网关的后端服务器证书加入允许列表。

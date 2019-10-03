@@ -1,6 +1,6 @@
 ---
-title: 创建、发布、回答
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: 教程：创建、发布、回答 - QnA Maker
+titleSuffix: Azure Cognitive Services
 description: 此基于 REST 的教程详细介绍如何以编程方式创建和发布知识库，然后通过知识库来回答问题。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: d209d73d67af96e99589dddcb71b6b50214356ee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e5b8cd01a64274e58927a5647897b1f9d86f7c24
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877272"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390866"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>教程：使用 C# 创建知识库并回答问题
 
@@ -30,21 +30,21 @@ ms.locfileid: "58877272"
 > * 使用 Curl 查询知识库
 
 
-本快速入门调用了 QnA Maker API：
+本快速入门调用了 QnA Maker REST API：
 
-* [创建知识库 (KB)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
-* [获取操作详细信息](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
-* [获取知识库详细信息](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 
-* [获取知识库终结点](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys)
-* [发布](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 
+* [创建知识库 (KB)](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [获取操作详细信息](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+* [获取知识库详细信息](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/getdetails) 
+* [获取知识库终结点](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/endpointkeys/getkeys)
+* [发布](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) 
 
 ## <a name="prerequisites"></a>先决条件
 
 * 最新的 [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/)。
-* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。 
+* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥，请在仪表板的“资源管理”下选择“密钥”。   
 
 > [!NOTE] 
-> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-csharp GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)获得。
+> 完整的解决方案文件可从 [Azure-Samples/cognitive-services-qnamaker-csharp GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)获得  。
 
 ## <a name="create-a-knowledge-base-project"></a>创建知识库项目
 
@@ -146,7 +146,7 @@ ms.locfileid: "58877272"
 对于任何其他响应，该响应将原样返回，不做任何更改。
 
 ## <a name="generating-an-answer"></a>生成答案
-为了访问 KB 以发送问题并接收最佳答案，程序需要 KB 详细信息 API 中提供的终结点主机，以及终结点 API 中提供的主终结点密钥。 这些方法与用于生成答案的方法一起位于以下部分。 
+为了访问 KB 以发送问题并接收最佳答案，程序需要 KB 详细信息 API 中提供的终结点主机，  以及终结点 API 中提供的主终结点密钥。  这些方法与用于生成答案的方法一起位于以下部分。 
 
 下表介绍了如何使用此数据来构造 URI：
 
@@ -154,7 +154,7 @@ ms.locfileid: "58877272"
 |--|
 |https://**HOSTNAME**.azurewebsites.net/qnamaker/knowledgebases/**KBID**/generateAnswer|
 
-主终结点作为标头传递，以便对请求进行身份验证，从而生成答案：
+主终结点  作为标头传递，以便对请求进行身份验证，从而生成答案：
 
 |标头名称|标头值|
 |--|--|
@@ -185,7 +185,7 @@ ms.locfileid: "58877272"
   "name": "QnA Maker FAQ from quickstart",
   "userId": "AAAc3841df0b42cdb00f53a49d51a89c",
   "urls": [
-    "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",
+    "https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",
     "https://docs.microsoft.com/bot-framework/resources-bot-framework-faq"
   ],
   "sources": [
@@ -224,10 +224,10 @@ ms.locfileid: "58877272"
       "questions": [
         "Does QnA Maker support non-English languages?"
       ],
-      "answer": "See more details about [supported languages](https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/overview/languages-supported).\n\n\nIf you have content from multiple languages, be sure to create a separate service for each language.",
+      "answer": "See more details about [supported languages](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/languages-supported).\n\n\nIf you have content from multiple languages, be sure to create a separate service for each language.",
       "score": 82.19,
       "id": 11,
-      "source": "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",
+      "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",
       "metadata": []
     }
   ]
@@ -248,4 +248,4 @@ main 方法显示创建、发布和生成答案所需的同步调用。
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)

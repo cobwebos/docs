@@ -2,36 +2,35 @@
 title: 使用 PowerShell 和 Azure HDInsight 运行 Apache Sqoop 作业
 description: 了解如何从工作站使用 Azure PowerShell 在 Apache Hadoop 群集和 Azure SQL 数据库之间运行 Apache Sqoop 导入和导出。
 ms.reviewer: jasonh
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: hrasheed
-ms.openlocfilehash: fb15a6389577e8d132b9c5a895a9995a9f7da208
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: f178d07666eda3552c18f581a926305e76ecb697
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607349"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450130"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>使用 HDInsight 中用于 Apache Hadoop 的 Azure PowerShell 运行 Apache Sqoop 作业
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-了解如何使用 Azure PowerShell 在 Azure HDInsight 导入和导出数据的 HDInsight 群集和 Azure SQL 数据库或 SQL Server 数据库之间运行 Apache Sqoop 作业。 此示例将数据从导出`/tutorials/usesqoop/data/sample.log`从默认存储帐户，然后导入到表名为`log4jlogs`SQL Server 数据库中。 本文是的延续[使用 HDInsight 中的 Hadoop 使用 Apache Sqoop](./hdinsight-use-sqoop.md)。
+了解如何使用 Azure PowerShell 运行 Azure HDInsight 中的 Apache Sqoop 作业，以便在 HDInsight 群集与 Azure SQL 数据库或 SQL Server 数据库之间导入和导出数据。 此示例从默认存储帐户中的 `/tutorials/usesqoop/data/sample.log` 导出数据，然后将其导入到 SQL Server 数据库中名为 `log4jlogs` 的表中。 本文是[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)的续篇。
 
 ## <a name="prerequisites"></a>必备组件
 
-开始学习本教程之前，必须做好以下准备：
+在开始阅读本文前，必须具有以下项目：
 
-* 使用 Azure PowerShell 的工作站[AZ 模块](https://docs.microsoft.com/powershell/azure/overview)安装。
+* 安装有 Azure PowerShell [AZ 模块](https://docs.microsoft.com/powershell/azure/overview)的工作站。
 
-* 完成[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)从[使用 HDInsight 中的 Hadoop 使用 Apache Sqoop](./hdinsight-use-sqoop.md)。
+* 从[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)中完成[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 
 
 ## <a name="run-apache-sqoop-by-using-powershell"></a>使用 PowerShell 运行 Apache Sqoop
-以下 PowerShell 脚本预处理源文件，然后将其导出到 Azure SQL 数据库表`log4jlogs`。 替换`CLUSTERNAME`， `CLUSTERPASSWORD`，和`SQLPASSWORD`的必要条件中使用的值。
+下面的 PowerShell 脚本预处理源文件，然后将它导出到 Azure SQL 数据库中的 `log4jlogs` 表中。 将 `CLUSTERNAME`、`CLUSTERPASSWORD` 和 `SQLPASSWORD` 替换为你在先决条件中使用的值。
 
 ```powershell 
 <#------ BEGIN USER INPUT ------#>

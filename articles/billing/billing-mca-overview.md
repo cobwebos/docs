@@ -1,98 +1,94 @@
 ---
-title: 开始使用您的计费帐户的 Microsoft 客户协议-Azure |Microsoft Docs
-description: 了解 Microsoft 客户协议的计费帐户
-services: billing
-documentationcenter: ''
-author: amberbhargava
+title: Microsoft 客户协议计费帐户入门 - Azure
+description: 了解 Microsoft 客户协议计费帐户
+author: bandersmsft
 manager: amberbhargava
-editor: banders
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 09/10/2019
 ms.author: banders
-ms.openlocfilehash: ea625a61ed600dbaa22fef85987e9570a6fb7dbc
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
-ms.translationtype: MT
+ms.openlocfilehash: 835686d639679cca7e9a83b5297b365953835e47
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337407"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880737"
 ---
-# <a name="get-started-with-your-billing-account-for-a-microsoft-customer-agreement"></a>开始使用您的计费帐户的 Microsoft 客户协议
+# <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Microsoft 客户协议计费帐户入门
 
-为每个协议，则使用签署 Microsoft 使用 Azure 创建计费帐户。 使用您的计费帐户来管理帐单和跟踪成本。 可以具有多个计费帐户的访问权限。 例如，你可能已注册 Azure 为您个人的项目。 也可以通过组织的企业协议或 Microsoft 客户协议的 Azure 访问权。 对于每种方案，必须具有单独的计费帐户。
+当你注册使用 Azure 时，系统将为你创建计费帐户。 可以使用计费帐户管理发票、付款并跟踪成本。 可以访问多个计费帐户。 例如，可以为个人项目注册 Azure。 也可通过组织的企业协议或 Microsoft 客户协议访问 Azure。 每个这样的方案都会有单独的计费帐户。
 
-本文适用于 Microsoft 客户协议向计费帐户。 [检查是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
+本文适用于 Microsoft 客户协议的计费帐户。 [检查你是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
 
-## <a name="understand-billing-account"></a>了解计费帐户
+## <a name="your-billing-account"></a>你的计费帐户
 
-您的 Microsoft 客户协议的计费帐户包含一个或多个计费的配置文件让你管理你的发票和付款方法。 每个计费的配置文件包含一个或多个发票部分，可以将组织计费配置文件的发票上的成本。
+Microsoft 客户协议的计费帐户包含一个或多个计费对象信息，用于管理发票和付款方式。 每项计费对象信息包含一个或多个发票科目，用于在计费对象信息的发票上组织成本。
 
-下图显示了计费帐户、 计费配置文件和发票部分之间的关系。
+下图显示了计费帐户、计费对象信息与发票科目之间的关系。
 
-![显示 Microsoft 客户协议的计费层次结构的关系图](./media/billing-mca-overview/mca-billing-hierarchy.png)
+![显示 Microsoft 客户协议计费层次结构的关系图](./media/billing-mca-overview/mca-billing-hierarchy.png)
 
-计费帐户上的角色具有最高级别的权限。 默认情况下，只有全局管理员在贵组织的 Azure Active Directory 获取计费帐户的访问权限。 应将这些角色分配给用户需要查看发票，并跟踪类似于财务和 IT 经理在整个组织的成本。 有关详细信息，请参阅[计费帐户角色和任务](billing-understand-mca-roles.md#billing-account-roles-and-tasks)。
+计费帐户上的角色具有最高级别的权限。 默认情况下，仅注册 Azure 的用户可以访问计费帐户。 这些角色应该分配给那些需要查看发票并跟踪整个组织的成本的用户，例如财务或 IT 管理员。 有关详细信息，请参阅[计费帐户角色和任务](billing-understand-mca-roles.md#billing-account-roles-and-tasks)。
 
-## <a name="understand-billing-profiles"></a>了解计费的配置文件
+## <a name="billing-profiles"></a>计费对象信息
 
-使用计费的配置文件来管理你的发票和付款方法。 每月发票为 Azure 订阅和计费配置文件使用购买其他产品生成。 使用的付款方法按发票。
+使用计费对象信息可以管理发票和付款方式。 每月发票是在当月开始时针对帐户中的每项计费对象信息生成的。 发票包含上月的所有 Azure 订阅和其他购买项目的相应费用。
 
-自动为您的计费帐户创建计费的配置文件。 您可以创建新的计费配置文件来设置其他发票。 例如，可能想为每个部门或项目不同的发票中你的组织。
+将为计费帐户自动创建一项计费对象信息。 它默认包含一个发票科目。 无论是按项目、部门还是按开发环境，你都可根据需求创建额外的科目来轻松跟踪和组织成本。 你会看到此计费对象信息发票上的这些科目反映了你分配给它们的每个订阅和购买项的使用情况。
 
-此外可以创建发票的分区来组织计费配置文件的发票上的成本。 在部分显示 Azure 订阅和发票部分所购买产品的费用。 计费配置文件的发票包括所有发票部分费用。
+计费对象信息上的角色有权查看和管理发票和付款方式。 将这些角色分配给为发票付款的用户，例如组织中会计团队的成员。 有关详细信息，请参阅[计费对象信息角色和任务](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)。
 
-计费的配置文件上的角色有权查看和管理发票和付款方法。 将这些角色分配给你的组织中支付发票等记帐团队的成员的用户。 有关详细信息，请参阅[计费的配置文件角色和任务](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)。
+### <a name="each-billing-profile-gets-a-monthly-invoice"></a>每项计费对象信息都有每月发票
 
-### <a name="monthly-invoice-generated-for-each-billing-profile"></a>为每个计费的配置文件生成的每月发票
+每月发票是在当月开始时针对每项计费对象信息生成的。 该发票包含上个月的所有费用。
 
-每月的发票上计费的每个配置文件在发票日期生成。 发票上个月包含所有费用。
+可以在 Azure 门户中查看发票、下载单据以及更改设置，以便通过电子邮件获取未来的发票。 有关详细信息，请参阅[下载 Microsoft 客户协议的发票](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement)。
 
-可以查看发票、 下载的文档和更改设置，以通过电子邮件，在 Azure 门户中获取未来的发票。 有关详细信息，请参阅[下载发票的 Microsoft 客户协议](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement)。
+### <a name="invoice-payment-methods"></a>发票付款方式
 
-### <a name="invoices-paid-through-payment-methods"></a>通过付款方式已付款的发票
+每项计费对象信息都自带付款方式，用于发票付款。 支持以下付款方式：
 
-每个计费的配置文件具有其自己使用支付其发票的付款方法。 支持以下的付款方法：
-
-| Type             | 定义  |
+| 类型             | 定义  |
 |------------------|-------------|
-|Azure 额度    |  信用额度将自动应用于您计算需要支付的金额的发票上计费总金额。 有关详细信息，请参阅[跟踪你计费的配置文件的 Azure 信用额度余额](billing-mca-check-azure-credits-balance.md)。 |
-|支票或电汇 | 您可以支付应付金额的发票，可以通过检查或网络传输。 在发票上给予了付款说明 |
+|Azure 额度    |  额度自动应用到发票上符合条件的费用，降低你需要支付的金额。 有关详细信息，请参阅[跟踪计费对象信息的 Azure 剩余额度](billing-mca-check-azure-credits-balance.md)。 |
+|支票/电汇 | 如果你的帐户获准通过支票/电汇来付款， 则可通过支票/电汇来支付发票的应付金额。 发票上提供了付款说明。 |
+|信用卡 | 通过 Azure 网站注册 Azure 的客户可以通过信用卡付款。 |
 
-### <a name="control-azure-marketplace-and-reservation-purchases-by-applying-policies"></a>通过应用策略来控制 Azure Marketplace 和预订购买
+### <a name="apply-policies-to-control-purchases"></a>应用策略来控制购买
 
-应用策略来控制使用计费的配置文件的购买。 可以设置策略以禁用购买 Azure 保留项和 Marketplace 产品。 策略时，对于计费的配置文件中的发票部分创建的订阅不能用于购买 Azure 保留和 Marketplace 产品。
+应用策略，通过计费对象信息来控制 Azure 市场和预留项购买。 可以设置策略来禁止购买 Azure 预留项和市场产品。 应用策略以后，就不能使用那些按计费对象信息计费的订阅进行这些购买。
 
-### <a name="allow-users-to-create-azure-subscriptions-by-enabling-azure-plans"></a>允许用户通过启用 Azure 计划创建 Azure 订阅
+### <a name="azure-plans-determine-pricing-and-service-level-agreement-for-subscriptions"></a>Azure 计划决定了订阅的定价和服务级别协议
 
-创建计费的配置文件时，会自动启用 azure 计划。 计费的配置文件中的所有发票部分都有权访问这些计划。 用户有权访问发票部分使用计划创建 Azure 订阅。 除非为计费的配置文件启用了 Azure 计划，它们不能创建 Azure 订阅。 中的 Microsoft 客户协议计费帐户支持以下 Azure 计划：
+Azure 计划决定了 Azure 订阅的定价和服务级别协议。 它们是在你创建计费对象信息时自动启用的。 所有与计费对象信息关联的发票科目都可以使用这些计划。 可以访问此发票科目的用户使用这些计划来创建 Azure 订阅。 Microsoft 客户协议的计费帐户支持以下 Azure 计划：
 
 | 计划             | 定义  |
 |------------------|-------------|
-|Microsoft Azure 计划   | 允许用户创建订阅，可以运行任何工作负荷。 有关详细信息，请参阅[Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g/) |
-|用于开发/测试的 Microsoft Azure 计划 | 允许 Visual Studio 订阅服务器创建订阅的且限制用于开发或测试工作负荷。 这些订阅在 Azure 门户中获取权益，例如较低费率并可以访问独占的虚拟机映像。 有关详细信息，请参阅[Microsoft Azure 开发测试的计划](https://azure.microsoft.com/offers/ms-azr-0148g/)|
+|Microsoft Azure 计划   | 允许用户创建能够运行任何工作负荷的订阅。  |
+|适用于开发/测试的 Microsoft Azure 计划 | 允许 Visual Studio 订户创建局限于开发或测试工作负荷的订阅。 这些订阅可以获得多种权益，例如费率较低，并且能够访问 Azure 门户中的专用虚拟机映像。 |
 
-## <a name="understand-invoice-sections"></a>了解发票部分
+## <a name="invoice-sections"></a>发票科目
 
-创建发票的分区来组织计费配置文件的发票上的成本。 例如，您可能需要一张发票为你的组织但是想要将组织部门、 团队或项目的成本。 对于此方案中，您必须单一计费配置文件在其中创建每个部门、 团队或项目的发票节。
+创建发票科目即可组织发票中的成本。 例如，你可能需要适用于组织的单个发票，但同时需要按部门、团队或项目组织成本。 对于这种情况，可以设置单项计费对象信息，在其中为每个部门、团队或项目创建发票科目。
 
-创建发票部分时，可以创建部分中的 Azure 订阅的权限授予其他人。 然后，任何使用费用和购买的订阅将反映在发票的相应部分。
+创建发票科目以后，即可授予其他人创建向该科目计费的 Azure 订阅的权限。 然后，对订阅的任何使用费和购买费都将记入该科目。
 
-上的发票部分的角色有权控制将创建 Azure 订阅。 将这些角色分配到用户设置 Azure 环境中我们的工程主管和技术架构师等组织团队。 有关详细信息，请参阅[发票部分角色和任务](billing-understand-mca-roles.md#invoice-section-roles-and-tasks)。
+发票科目的角色有权控制谁来创建 Azure 订阅。 将这些角色分配给在组织中为团队设置 Azure 环境的用户，例如工程主管和技术架构师。 有关详细信息，请参阅[发票科目角色和任务](billing-understand-mca-roles.md#invoice-section-roles-and-tasks)。
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 
 如果需要帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下文章，了解有关您的计费帐户信息：
+请参阅以下文章，了解计费帐户：
 
-- [了解 Microsoft 客户协议在 Azure 中的管理角色](billing-understand-mca-roles.md)
+- [了解 Azure 中的 Microsoft 客户协议管理角色](billing-understand-mca-roles.md)
 - [为 Microsoft 客户协议创建其他 Azure 订阅](billing-mca-create-subscription.md)
-- [在你开发票来组织你的成本创建部分](billing-mca-section-invoice.md)
+- [在发票上创建科目以管理成本](billing-mca-section-invoice.md)

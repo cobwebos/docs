@@ -1,6 +1,6 @@
 ---
-title: 更正拼写错误的单词
-titleSuffix: Azure
+title: 更正拼写错误的单词-LUIS
+titleSuffix: Azure Cognitive Services
 description: 通过将必应拼写检查 API V7 添加到 LUIS 终结点查询来更正表述中拼写错误的字词。
 services: cognitive-services
 author: diberry
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/04/2019
+ms.topic: conceptual
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 1e5536b08b3b78f35426207369f444e6eb21c87d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 3bde609c83425d660c867939e034247d7e6898c5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341778"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300276"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用必应拼写检查更正拼写错误的字词
 
@@ -89,7 +89,13 @@ LUIS 中有两个位置需使用该密钥。 第一个位置是[测试面板](lu
 ```
 
 ## <a name="ignore-spelling-mistakes"></a>忽略拼写错误
-如果不想使用必应拼写检查 API v7 服务，可以对包含拼写错误的表述添加标记，以便 LUIS 可以识别正确拼写和错误拼写。 使用此选项比使用拼写检查器需要更多标记操作。
+
+如果不想使用必应拼写检查 API v7 服务，则需要添加正确且不正确的拼写。 
+
+两种解决方案是：
+
+* 标签示例最谈话，其中包含所有不同的拼写，以便 LUIS 可以了解正确的拼写和打字错误。 使用此选项比使用拼写检查器需要更多标记操作。
+* 创建一个短语列表，其中包含该词的所有变体。 利用此解决方案，无需在示例最谈话中标记词变体。 
 
 ## <a name="publishing-page"></a>发布页面
 [发布](luis-how-to-publish-app.md)页面包含一个“启用必应拼写检查器”复选框。 这便于创建密钥和了解终结点 URL 的更改。 为更正每个表述中的拼写，则仍必须使用正确的终结点参数。 

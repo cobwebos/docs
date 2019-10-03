@@ -3,22 +3,23 @@ title: 排查 Azure 数据工厂问题
 description: 了解如何排查 Azure 数据工厂使用问题。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: douglasl
+author: djpmsft
+ms.author: daperlov
+ms.reviewer: maghan
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 5b9e0a30658e1cb8fe0f83d55c04f120637babaf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d729fd11f355650b1476e6864a6d70219bf37e12
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549198"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135134"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>排查数据工厂问题
 > [!NOTE]
@@ -47,9 +48,9 @@ ms.locfileid: "57549198"
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>问题：运行数据工厂 cmdlet 时出现未授权错误
 可能未在 Azure PowerShell 中使用正确的 Azure 帐户或订阅。 使用以下 cmdlet 选择要在 Azure PowerShell 中使用的正确 Azure 帐户和订阅。
 
-1. 连接 AzAccount-使用正确的用户 ID 和密码
-2. Get-AzSubscription-查看帐户的所有订阅。
-3. 选择 AzSubscription&lt;订阅名称&gt;-选择正确的订阅。 使用在 Azure 门户中创建数据工厂时所用的同一个订阅。
+1. AzAccount-使用正确的用户 ID 和密码
+2. AzSubscription-查看帐户的所有订阅。
+3. AzSubscription &lt;订阅名称&gt; -选择正确的订阅。 使用在 Azure 门户中创建数据工厂时所用的同一个订阅。
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>问题：无法从 Azure 门户启动数据管理网关快速安装
 快速安装数据管理网关需要使用 Internet Explorer 或者与 Microsoft ClickOnce 兼容的 Web 浏览器。 如果快速安装无法启动，请执行以下操作之一：
@@ -118,14 +119,14 @@ Failed to create cluster. Exception: Unable to complete the cluster create opera
 
 ## <a name="use-azure-portal-to-troubleshoot"></a>使用 Azure 门户进行故障排除
 ### <a name="using-portal-blades"></a>使用门户边栏选项卡
-有关步骤，请参阅[监视管道](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline)。
+有关步骤，请参阅[监视管道](data-factory-monitor-manage-pipelines.md)。
 
 ### <a name="using-monitor-and-manage-app"></a>使用监视和管理应用
 有关详细信息，请参阅[使用监视和管理应用监视和管理数据工厂管道](data-factory-monitor-manage-app.md)。
 
 ## <a name="use-azure-powershell-to-troubleshoot"></a>使用 Azure PowerShell 进行故障排除
 ### <a name="use-azure-powershell-to-troubleshoot-an-error"></a>使用 Azure PowerShell 排查错误
-有关详细信息，请参阅[使用 Azure PowerShell 监视数据工厂管道](data-factory-build-your-first-pipeline-using-powershell.md#monitor-pipeline)。
+有关详细信息，请参阅[使用 Azure PowerShell 监视数据工厂管道](data-factory-monitor-manage-pipelines.md)。
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md

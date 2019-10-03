@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 25a100a224984b0d5608ba933b7a4fa024c22c9d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 06/03/2019
+ms.openlocfilehash: df9390c00c34fce82de8cc17efb5cc3bce2e4e3d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481155"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569447"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 
@@ -27,7 +26,7 @@ SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>自动发送有关自动优化建议的电子邮件通知
 
@@ -59,14 +58,9 @@ SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal
 
 ## <a name="update-azure-automation-modules"></a>更新 Azure 自动化模块
 
-若要检索自动优化建议的 PowerShell 脚本使用[Get AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource)并[Get AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction)版本 4 的更新版本的 Azure 模块的命令和更高版本是必需的。
+用于检索自动优化建议的 PowerShell 脚本使用[AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource)和[AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction)命令, 该命令适用于所需的 Azure 模块版本4及更高版本。
 
-请按照以下步骤更新 Azure PowerShell 模块：
-
-- 访问“自动化应用”窗格，并选择左侧菜单上的“模块”（向下滚动，因为此菜单项位于“共享资源”下）。
-- 在“模块”窗格中，单击顶部的“更新 Azure 模块”，然后等待，直到显示“Azure 模块已更新”的消息。 此过程可能需要几分钟才能完成。
-
-![更新 Azure 自动化模块](./media/sql-database-automatic-tuning-email-notifications/howto-email-02.png)
+- 如果需要更新 Azure 模块, 请参阅[Azure 自动化中的 Az module 支持](../automation/az-modules.md)。
 
 ## <a name="create-azure-automation-runbook"></a>创建 Azure 自动化 Runbook
 

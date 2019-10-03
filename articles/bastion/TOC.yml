@@ -1,0 +1,38 @@
+- name: Bastion 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure Bastion
+      href: bastion-overview.md
+- name: 操作指南
+  items:
+    - name: 创建 Bastion 主机
+      href: bastion-create-host-portal.md
+    - name: 连接到虚拟机
+      items:
+        - name: SSH (Linux)
+          href: bastion-connect-vm-ssh.md
+        - name: RDP (Windows)
+          href: bastion-connect-vm-rdp.md
+    - name: 用于虚拟机会话
+      items:
+        - name: 复制和粘贴
+          href: bastion-vm-copy-paste.md
+        - name: 全屏视图
+          href: bastion-vm-full-screen.md
+    - name: 使用 NSG
+      href: bastion-nsg.md
+- name: 资源
+  items:
+    - name: Bastion 常见问题解答
+      href: bastion-faq.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: 博客
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: 预览版 SLA
+      href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

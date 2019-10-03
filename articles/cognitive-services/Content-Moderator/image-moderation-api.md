@@ -1,6 +1,6 @@
 ---
 title: 图像审查 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用内容审查器的机器辅助图像审查和人工循环评审工具来调整具有成人和猥亵内容的图像。
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9f1df23d1f0f24787bb9267064ffd647eda2cb74
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 8b3449edb539ab56fcf206a367f9b81e43290733
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756050"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564907"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解图像审查概念
 
@@ -66,7 +66,7 @@ ms.locfileid: "58756050"
 
 ## <a name="detecting-faces"></a>检测人脸
 
-检测人脸有助于检测图像中的个人数据，例如人脸。 可以检测每个图像中的潜在人脸和潜在人脸的数量。
+检测人脸有助于检测个人数据，例如图像中的人脸。 可以检测每个图像中的潜在人脸和潜在人脸的数量。
 
 响应包括以下信息：
 

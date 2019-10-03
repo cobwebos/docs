@@ -1,21 +1,21 @@
 ---
-title: Azure Database for PostgreSQL 中的查询存储
-description: 本文介绍 Azure Database for PostgreSQL 中的查询存储功能。
+title: Azure Database for PostgreSQL - 单一服务器中的查询存储
+description: 本文介绍了 Azure Database for PostgreSQL - 单一服务器中的查询存储功能。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: c904b6e6cd7a4dc0f9d5a442e20738e43595b369
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 08/21/2019
+ms.openlocfilehash: deab527d44713bffed1f430ec283592d0e4232ee
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485911"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764418"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 
-**适用于：** Azure Database for PostgreSQL 9.6 和 10
+**适用于：** Azure Database for PostgreSQL-单服务器版本9.6、10、11
 
 Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时间内跟踪查询性能的方法。 通过帮助快速查找运行时间最长且资源最密集的查询，查询存储可简化性能故障排除。 查询存储自动捕获查询和运行时统计信息的历史记录，并保留它们以供查看。 它按时间范围分隔数据，以便可以查看数据库使用模式。 所有用户、数据库和查询的数据都存储在 Azure Database for PostgreSQL 实例中的名为 azure_sys 的数据库中。
 
@@ -29,14 +29,14 @@ Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时�
 1. 登录到 Azure 门户，选择 Azure Database for PostgreSQL 服务器。
 2. 在菜单的“设置”部分中选择“服务器参数”。
 3. 搜索 `pg_qs.query_capture_mode` 参数。
-4. 将值设置为`TOP`并**保存**。
+4. 将值设置为 `TOP` 并**保存**。
 
-若要启用查询存储中的等待统计信息： 
+若要在查询存储中启用等待统计信息，请执行以下操作： 
 1. 搜索 `pgms_wait_sampling.query_capture_mode` 参数。
-1. 将值设置为`ALL`并**保存**。
+1. 将值设置为 `ALL` 并**保存**。
 
 
-或者，您可以设置这些参数使用 Azure CLI。
+或者，可使用 Azure CLI 设置这些参数。
 ```azurecli-interactive
 az postgres server configuration set --name pg_qs.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value TOP
 az postgres server configuration set --name pgms_wait_sampling.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value ALL
@@ -89,7 +89,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 | pg_qs.query_capture_mode | 设置跟踪哪些语句。 | 无 | none, top, all |
 | pg_qs.max_query_text_length | 设置可保存的最大查询长度。 将截断较长的查询。 | 6000 | 100 - 10K |
 | pg_qs.retention_period_in_days | 设置保持期。 | 7 | 1 - 30 |
-| pg_qs.track_utility | 设置是否跟踪实用程序命令 | on | on, off |
+| pg_qs.track_utility | 设置是否跟踪实用程序命令 | 开 | on, off |
 
 以下选项专用于等待统计信息。
 
@@ -109,7 +109,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 删除文本和常数后，通过查看查询的结构来规范化查询。 如果除文本值之外两个查询相同，则它们将具有相同的哈希值。
 
-### <a name="querystoreqsview"></a>query_store.qs_view
+### <a name="query_storeqs_view"></a>query_store.qs_view
 此视图返回查询存储中的所有数据。 每个不同的数据库 ID、用户 ID 和查询 ID 都有一行。 
 
 |**名称**   |类型 | **参考**  | **说明**|
@@ -122,12 +122,12 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |plan_id    |bigint |   |与此查询对应的计划 ID，尚不可用|
 |start_time |timestamp  ||  查询按时段聚合 - 默认情况下，存储桶的时间跨度为 15 分钟。 这是与此条目的时段相对应的开始时间。|
 |end_time   |timestamp  ||  对应于此条目的时段的结束时间。|
-|calls  |bigint  || 执行查询的次数|
-|total_time |双精度   ||  总查询执行时间（毫秒）|
-|min_time   |双精度   ||  最小查询执行时间（毫秒）|
-|max_time   |双精度   ||  最大查询执行时间（毫秒）|
-|mean_time  |双精度   ||  平均查询执行时间（毫秒）|
-|stddev_time|   双精度    ||  查询执行时间的标准偏差（毫秒） |
+|调用  |bigint  || 执行查询的次数|
+|total_time |double precision   ||  总查询执行时间（毫秒）|
+|min_time   |double precision   ||  最小查询执行时间（毫秒）|
+|max_time   |double precision   ||  最大查询执行时间（毫秒）|
+|mean_time  |double precision   ||  平均查询执行时间（毫秒）|
+|stddev_time|   double precision    ||  查询执行时间的标准偏差（毫秒） |
 |行   |bigint ||  由语句检索或影响的总行数|
 |shared_blks_hit|   bigint  ||  语句的共享块缓存命中总数|
 |shared_blks_read|  bigint  ||  由语句读取的共享块总数|
@@ -139,10 +139,10 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |local_blks_written|    bigint  ||  由语句编写的本地块总数|
 |temp_blks_read |bigint  || 由语句读取的临时块总数|
 |temp_blks_written| bigint   || 由语句编写的临时块总数|
-|blk_read_time  |双精度    || 语句读取块所花费的总时间（以毫秒为单位）（如果启用了 track_io_timing，否则为零）|
-|blk_write_time |双精度    || 语句写入块所花费的总时间（以毫秒为单位）（如果启用了 track_io_timing，否则为零）|
+|blk_read_time  |double precision    || 语句读取块所花费的总时间（以毫秒为单位）（如果启用了 track_io_timing，否则为零）|
+|blk_write_time |double precision    || 语句写入块所花费的总时间（以毫秒为单位）（如果启用了 track_io_timing，否则为零）|
     
-### <a name="querystorequerytextsview"></a>query_store.query_texts_view
+### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 此视图返回查询存储中的查询文本数据。 每个不同的 query_text 都有一行。
 
 |**名称**|  类型|   **说明**|
@@ -150,7 +150,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |query_text_id  |bigint     |query_texts 表的 ID|
 |query_sql_text |Varchar(10000)     |代表语句的文本。 具有相同结构的不同查询聚集在一起；此文本是群集中第一个查询的文本。|
 
-### <a name="querystorepgmswaitsamplingview"></a>query_store.pgms_wait_sampling_view
+### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有一行。
 
 |**名称**|  类型|   **参考**| **说明**|
@@ -159,8 +159,8 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |db_id  |oid    |pg_database.oid    |在其中执行语句的数据库的 OID|
 |query_id   |bigint     ||根据语句的分析树计算的内部哈希代码|
 |event_type |text       ||后端正在等待的事件类型|
-|event  |text       ||后端当前正在等待的等待事件名称|
-|calls  |Integer        ||捕获的相同事件的数量|
+|事件  |text       ||后端当前正在等待的等待事件名称|
+|调用  |整数        ||捕获的相同事件的数量|
 
 
 ### <a name="functions"></a>函数
@@ -175,6 +175,7 @@ Query_store.staging_data_reset() 返回无效值
 ## <a name="limitations-and-known-issues"></a>限制和已知问题
 - 如果 PostgreSQL 服务器具有参数 default_transaction_read_only，则查询存储无法捕获数据。
 - 如果遇到较长的 Unicode 查询（> = 6000 个字节），查询存储功能可能会中断。
+- [读取副本](concepts-read-replicas.md)从主服务器查询存储的数据复制。 这意味着读取副本的查询存储不提供有关在读取副本上运行的查询的统计信息。
 
 
 ## <a name="next-steps"></a>后续步骤

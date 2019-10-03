@@ -1,6 +1,6 @@
 ---
-title: 如何在用于 VM 的 Azure Monitor（预览版）中禁用监视 | Microsoft Docs
-description: 本文介绍如何在用于 VM 的 Azure Monitor 中停止监视虚拟机。
+title: 禁用监视 Azure Monitor 中为 Vm （预览版） |Microsoft Docs
+description: 本文介绍如何停止监视 Vm 的 Azure Monitor 中的虚拟机。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,61 +13,66 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: c6a8322998b391b9021292a3a7213ded56b67feb
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: eb667486a6e3279cb78fefe02723f14d9f7c9b4f
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263350"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155687"
 ---
-# <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>如何在用于 VM 的 Azure Monitor（预览版）中禁用虚拟机监视
+# <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>禁用监视的 Azure Monitor 中的 Vm 的 Vm （预览版）
 
-在启用虚拟机监视后，如果你决定不再使用用于 VM 的 Azure Monitor 对其进行监视，可以禁用监视。 本文介绍如何针对一个或多个 VM 实现此目的。  
+启用监视的虚拟机 (Vm) 后，您可以更高版本选择禁用对虚拟机的 Azure Monitor 中监视。 本文介绍如何禁用对一个或多个 Vm 的监视。  
 
-目前，用于 VM 的 Azure Monitor 不支持有选择性地禁用 VM 监视。 如果 Log Analytics 工作区配置为支持此解决方案和其他解决方案，并支持收集其他监视数据，则在继续操作之前，必须了解下面所述的影响和方法。
+目前，Azure 监视的 Vm 不支持选择性禁用 VM 监视。 Log Analytics 工作区可能的 Vm 和其他解决方案支持 Azure Monitor。 它还可能收集其他监视数据。 如果你的 Log Analytics 工作区提供了这些服务，您需要了解的效果和禁用监视在开始之前的方法。
 
 用于 VM 的 Azure Monitor 依赖于以下组件来提供其体验：
 
-* Log Analytics 工作区，用于存储从 VM 和其他源收集的监视数据。
-* 性能计数器的收集在工作区中配置，此项配置会更新已连接到该工作区的所有 VM 上的监视配置。
-* 工作区中配置了两个监视解决方案 - **InfrastructureInsights** 和 **ServiceMap**，此项配置会更新已连接到该工作区的所有 VM 上的监视配置。
-* 两个 Azure 虚拟机扩展 - **MicrosoftMonitoringAgent** 和 **DependencyAgent**，用于收集数据并将其发送到工作区。
+* Log Analytics 工作区，其中存储虚拟机和其他源中的监视数据。
+* 配置工作区中的性能计数器的集合。 集合更新连接到工作区的所有 Vm 上的监视配置。
+* `InfrastructureInsights` 和`ServiceMap`，这监视工作区中已配置的解决方案。 这些解决方案更新连接到工作区的所有 Vm 上的监视配置。
+* `MicrosoftMonitoringAgent` 和`DependencyAgent`，这是 Azure VM 扩展。 这些扩展收集，并将数据发送到工作区。
 
-准备在用于 VM 的 Azure Monitor 中禁用虚拟机监视时，请考虑以下问题：
+准备要禁用监视的 Vm，请记住以下注意事项：
 
-* 如果你正在使用单个 VM 进行评估，并接受了预先选择的默认 Log Analytics 工作区，则可以通过在 VM 中卸载依赖项代理，并从此工作区断开 Log Analytics 代理的连接，来禁用监视。 如果你打算将此 VM 用于其他目的，后来决定将它重新连接到不同的工作区，则适合使用此方法。
-* 如果使用 Log Analytics 工作区来支持其他监视解决方案以及从其他源收集数据，则可以从工作区中删除用于 VM 的 Azure Monitor 解决方案组件，而不会给工作区造成中断或影响。  
-
->[!NOTE]
-> 从工作区中删除解决方案组件后，可以继续查看 Azure VM 的运行状况；具体而言，在门户中导航到任一视图时，可以查看性能和映射数据。 一段时间后，数据最终会在“性能”和“映射”视图中停止显示；但是，“运行状况”视图将继续显示 VM 的运行状况。 所选 Azure VM 中会提供“立即试用”选项，让你在将来重新启用监视。  
-
-## <a name="complete-removal-of-azure-monitor-for-vms"></a>完全删除用于 VM 的 Azure Monitor
-
-以下步骤说明在仍然需要 Log Analytics 工作区的情况下，如何完全删除用于 VM 的 Azure Monitor。 要从工作区中删除 **InfrastructureInsights** 和 **ServiceMap** 解决方案。  
+* 如果使用单个 VM 计算和使用的预先选择的默认 Log Analytics 工作区，则可以禁用通过从 VM 中卸载依赖关系代理，然后断开与此工作区的连接 Log Analytics 代理监视。 如果你想要将 VM 用于其他目的，并决定更高版本以将其重新连接到不同的工作区，这种方法适合。
+* 如果选择预先存在的 Log Analytics 工作区，它支持其他监视解决方案和其他来源的数据收集，可以从工作区移除解决方案组件，不会中断或影响你的工作区。  
 
 >[!NOTE]
->如果以前使用了服务映射监视解决方案来启用用于 VM 的 Azure Monitor，并且现在仍依赖于该解决方案，请不要按以下步骤 6 中所述删除该解决方案。  
+> 从你的工作区中删除解决方案组件后, 可能会继续查看从 Azure Vm; 的运行状况状态具体而言，将看到性能，并将数据映射时转到门户中的任一视图。 最终，数据将不再出现于**性能**并**映射**视图。 但**运行状况**视图将继续显示为您的 Vm 的运行状况状态。 **立即试用**选项将可用于从所选的 Azure VM，因此你可以重新启用在将来监视。  
+
+## <a name="remove-azure-monitor-for-vms-completely"></a>将 Azure Monitor 完全删除的 Vm
+
+如果您仍需要 Log Analytics 工作区，请按照下列步骤以完全删除的 Vm 的 Azure Monitor。 将删除`InfrastructureInsights`和`ServiceMap`从工作区的解决方案。  
+
+>[!NOTE]
+>如果使用服务映射监视解决方案，为 Vm 启用 Azure Monitor 并仍依赖于它之前，不删除该解决方案，如下面的过程的最后一步中所述。  
 >
 
-1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入 Log Analytics。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
-3. 在 Log Analytics 工作区列表中，选择载入用于 VM 的 Azure Monitor 时所选的工作区。
-4. 在左窗格中，选择“解决方案”。  
-5. 在解决方案列表中选择“InfrastructureInsights(工作区名称)”，然后在解决方案的“概述”页上，单击“删除”。  出现确认提示时，请单击“是”。  
-6. 在解决方案列表中选择“ServiceMap(工作区名称)”，然后在解决方案的“概述”页上，单击“删除”。  出现确认提示时，请单击“是”。  
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在 Azure 门户中，选择“所有服务”。  在资源列表中，键入“Log Analytics”  。 开始键入时，建议根据输入筛选器列表。 选择“Log Analytics”  。
+3. 在 Log Analytics 工作区列表中，选择工作区选择时为 Vm 启用 Azure Monitor。
+4. 在左侧，选择**解决方案**。  
+5. 在解决方案的列表中选择**InfrastructureInsights （工作区名称）** 。 上**概述**的解决方案，选择页面**删除**。 当系统提示你确认，则选择**是**。  
+6. 在解决方案的列表中选择**ServiceMap （工作区名称）** 。 上**概述**的解决方案，选择页面**删除**。 当系统提示你确认，则选择**是**。  
 
-如果在载入用于 VM 的 Azure Monitor 之前，未为工作区中基于 Windows 或 Linux 的 VM [启用性能计数器收集](vminsights-onboard.md?toc=/azure/azure-monitor/toc.json#performance-counters-enabled)，则需要遵循[此处](../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json#configuring-performance-counters)所述的适用于 Windows 和 Linux 的步骤，来禁用这些规则。
+如果没有记下为虚拟机，启用 Azure Monitor 之前[收集性能计数器](vminsights-enable-overview.md#performance-counters-enabled)工作区中的基于 Windows 的或基于 Linux 的 vm[禁用这些规则](../platform/data-sources-performance-counters.md#configuring-performance-counters)Windows 和 Linux。
 
-## <a name="disable-monitoring-for-an-azure-vm-and-retain-workspace"></a>禁用 Azure VM 的监视并保留工作区  
+## <a name="disable-monitoring-and-keep-the-workspace"></a>禁用监视并保留工作区  
 
-以下步骤说明如何禁用为了评估用于 VM 的 Azure Monitor 而启用的虚拟机监视。但是，仍需使用 Log Analytics 工作区来支持从其他源进行监视。 如果这是一个 Azure VM，则需要直接从 VM 中删除适用于 Windows/Linux 的依赖项代理 VM 扩展和 Log Analytics 代理 VM 扩展。 
+如果你的 Log Analytics 工作区仍需要支持从其他源，执行以下这些步骤来禁用用于评估 Vm 的 Azure Monitor 的虚拟机上监视的监视。 对于 Azure Vm，你将依赖关系代理 VM 扩展和 Log Analytics 代理 VM 扩展适用于 Windows 或 Linux 直接从 VM 中删除。 
 
 >[!NOTE]
->如果虚拟机受 Azure 自动化的管理并用于协调过程、管理配置或管理更新，或者受 Azure 安全中心的管理并用于安全管理和威胁检测，则不应删除 Log Analytics 代理。 否则，会阻止这些服务和解决方案主动管理你的 VM。 
+>如果不删除 Log Analytics 代理： 
+>
+> * Azure 自动化管理 VM 安排进程或管理配置或更新。 
+> * Azure 安全中心管理安全和威胁检测的 VM。 
+>
+> 如果你删除 Log Analytics 代理，则将阻止这些服务和解决方案主动管理你的 VM。 
 
-1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。 
-2. 在 Azure 门户中，选择“虚拟机”。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
+2. 在 Azure 门户中，选择“虚拟机”  。 
 3. 从列表中选择一个虚拟机。 
-4. 在左窗格中选择“扩展”，然后在“扩展”页中选择“DependencyAgent”。
-5. 在“扩展属性”页中，单击“卸载”。
-6. 在“扩展”页中选择“MicrosoftMonitoringAgent”，然后在“扩展属性”页中单击“卸载”。  
+4. 在左侧，选择**扩展**。 上**扩展**页上，选择**DependencyAgent**。
+5. 在扩展属性页上选择**卸载**。
+6. 上**扩展**页上，选择**MicrosoftMonitoringAgent**。 在扩展属性页上选择**卸载**。  

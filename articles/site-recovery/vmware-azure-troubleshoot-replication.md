@@ -5,187 +5,39 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 1aaf13f01c7e7197001f3099fabd4b8be8545f0d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54686a96385532e17fe0ac6e59058b91b40c1342
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094695"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742567"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
-使用 Azure Site Recovery 保护 VMware 虚拟机或物理服务器时，可能会收到特定的错误消息。 本文介绍在使用 [Site Recovery](site-recovery-overview.md) 将本地 VMware VM 和物理服务器复制到 Azure 时可能遇到的一些常见问题。
+本文介绍在使用 [Site Recovery](site-recovery-overview.md) 将本地 VMware VM 和物理服务器复制到 Azure 时可能遇到的一些常见问题和具体错误。
 
-## <a name="monitor-process-server-health-to-avoid-replication-issues"></a>监视进程服务器运行状况以避免出现复制问题
+## <a name="step-1-monitor-process-server-health"></a>步骤 1：监视进程服务器运行状况
 
-建议在门户中监视进程服务器 (PS) 运行状况，以确保关联的源计算机的复制正常进行。 在保管库中，转到“管理”>“Site Recovery 基础结构”>“配置服务器”。 在“配置服务器”边栏选项卡上，单击“关联的服务器”下的“进程服务器”。 此时会打开“进程服务器”边栏选项卡，其中显示了进程服务器的运行状况统计信息。 可以跟踪 CPU 利用率、内存使用率、用于复制的 PS 服务的状态、证书过期日期和可用空间。 所有统计信息的状态应显示为绿色。 
+Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-server-overview.md#process-server)接收和优化复制的数据，并将其发送到 Azure。
 
-**建议将内存和 CPU 使用率保持在 70% 以下，将可用空间保持在 25% 以上**。 可用空间是指进程服务器中的缓存磁盘空间，在将源计算机中的复制数据上传到 Azure 之前，这些空间用于存储这些数据。 如果可用空间降到 20% 以下，所有关联源计算机的复制将受到限制。 遵循[容量指南](./site-recovery-plan-capacity-vmware.md#capacity-considerations)了解复制源计算机所需的配置。
+我们建议在门户中监视进程服务器的运行状况，以确保它们已连接并正常运行，且正在对进程服务器关联的源计算机进行复制。
 
-确保以下服务正在 PS 计算机上运行。 启动或重启未运行的任何服务。
+- [了解](vmware-physical-azure-monitor-process-server.md)如何监视进程服务器。
+- [查看最佳实践](vmware-physical-azure-troubleshoot-process-server.md#best-practices-for-process-server-deployment)
+- [排查](vmware-physical-azure-troubleshoot-process-server.md#check-process-server-health)进程服务器运行状况问题。
 
-**内置进程服务器**
+## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>步骤 2：排查连接和复制问题
 
-* ProcessServer
-* ProcessServerMonitor
-* cxprocessserver
-* InMage PushInstall
-* 日志上传服务 (LogUpload)
-* InMage Scout 应用程序服务
-* Microsoft Azure 恢复服务代理 (obengine)
-* InMage Scout VX 代理 – Sentinel/Outpost (svagents)
-* tmansvc
-* 万维网发布服务 (W3SVC)
-* MySQL
-* Microsoft Azure Site Recovery 服务 (dra)
+初始和进行中的复制失败往往是源服务器与进程服务器或者进程服务器与 Azure 之间的连接问题造成的。 
 
-**横向扩展进程服务器**
+若要解决这些问题，请[排查连接和复制问题](vmware-physical-azure-troubleshoot-process-server.md#check-connectivity-and-replication)。
 
-* ProcessServer
-* ProcessServerMonitor
-* cxprocessserver
-* InMage PushInstall
-* 日志上传服务 (LogUpload)
-* InMage Scout 应用程序服务
-* Microsoft Azure 恢复服务代理 (obengine)
-* InMage Scout VX 代理 – Sentinel/Outpost (svagents)
-* tmansvc
 
-**Azure 中用于故障回复的进程服务器**
 
-* ProcessServer
-* ProcessServerMonitor
-* cxprocessserver
-* InMage PushInstall
-* 日志上传服务 (LogUpload)
 
-确保所有服务的启动类型设置为“自动”或“自动(延迟启动)”。 不需要按上面所述为 Microsoft Azure 恢复服务代理 (obengine) 服务设置启动类型。
-
-## <a name="replication-issues"></a>复制问题
-
-初始和正在进行的复制故障通常是由源服务器和进程服务器之间或进程服务器与 Azure 之间的连接问题引起。 大多数情况下，完成以下部分中的步骤可以排查这些问题。
-
->[!Note]
->请确保：
->1. 系统保持同步是受保护的项的日期时间。
->2. 没有防病毒软件正在阻止 Azure Site Recovery。 了解[详细](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)上所需的 Azure Site Recovery 的文件夹排除项。
-
-### <a name="check-the-source-machine-for-connectivity-issues"></a>检查源计算机的连接问题
-
-你可以检查源计算机以下列表显示方式。
-
-*  在源服务器上的命令行中运行以下命令，使用 Telnet 通过 HTTPS 端口对进程服务器执行 ping 操作。 进程服务器默认使用 HTTPS 端口 9443 发送和接收复制流量。 在注册时可以修改此端口。 以下命令检查网络连接问题或者阻止防火墙端口的问题。
-
-
-   `telnet <process server IP address> <port>`
-
-
-   > [!NOTE]
-   > 使用 Telnet 测试连接。 请不要使用 `ping`。 如果未安装 Telnet，请完成[安装 Telnet 客户端](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx)中列出的步骤。
-
-   如果 telnet 能够成功连接到 PS 端口，则会显示一个空白屏幕。
-
-   如果无法连接到进程服务器，请在进程服务器上允许入站端口 9443。 例如，如果网络包含外围网络或屏蔽子网，可能需要在进程服务器上允许入站端口 9443。 然后，检查是否仍出现此问题。
-
-*  如果 telnet 成功但源计算机报告 PS 不可访问，请在源计算机上打开 Web 浏览器，并检查是否可以访问地址 https://<PS IP>:<PS 数据端口>/。
-
-    接入此地址时，预期会发生 HTTPS 证书错误。 忽略证书错误并继续操作会出现“400 – 错误的请求”，表示服务器无法为浏览器的请求提供服务，但与服务器建立的标准 HTTPS 连接可正常工作。
-
-    如果连接不成功，浏览器上有关错误消息的详细信息会提供指导。 例如，如果代理身份验证不正确，则代理服务器会返回“407 – 需要代理身份验证”，并在错误消息中指明所需的操作。 
-
-*  发生与网络上传相关的错误时，请检查源 VM 上的以下日志：
-
-       C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\svagents*.log 
-
-### <a name="check-the-process-server-for-connectivity-issues"></a>检查进程服务器上的连接问题
-
-以下列表显示了检查进程服务器的方式：
-
-> [!NOTE]
-> 进程服务器必须有一个静态 IPv4 地址，不应在其上配置 NAT IP。
-
-* **检查源计算机与进程服务器之间的连接**
-* 如果可以从源计算机执行 telnet 但无法从源访问 PS，请在源 VM 上运行 cxpsclient 工具，使用 cxprocessserver 检查端到端连接：
-
-      <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
-
-   有关相应错误的详细信息，请在 PS 上检查以下目录中生成的日志：
-
-      C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err
-      and
-      C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
-* 检查 PS 上的以下日志，如果没有检测信号从 ps。 这由**错误代码 806**门户上。
-
-      C:\ProgramData\ASR\home\svsystems\eventmanager*.log
-      and
-      C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
-
-* **检查进程服务器是否主动将数据推送到 Azure**。
-
-  1. 在进程服务器上打开任务管理器（按 Ctrl+Shift+Esc）。
-  2. 选择“性能”选项卡，然后选择“打开资源监视器”链接。 
-  3. 在“资源监视器”页上，选择“网络”选项卡。在“网络活动的进程”下，检查 **cbengine.exe** 是否正在主动发送大量数据。
-
-       ![显示“网络活动的进程”下的卷的屏幕截图](./media/vmware-azure-troubleshoot-replication/cbengine.png)
-
-  如果 cbengine.exe 未发送大量数据，请完成以下部分中的步骤。
-
-* **检查进程服务器可以连接到 Azure Blob 存储**。
-
-  选择“cbengine.exe”。 在“TCP 连接”下，检查进程服务器与 Azure Blob 存储 URL 之间是否建立了连接。
-
-  ![显示 cbengine.exe 与 Azure Blob 存储 URL 之间的连接的屏幕截图](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
-
-  进程服务器与 Azure Blob 存储 URL 之间未建立连接，请在控制面板中选择“服务”。 检查以下服务是否正在运行：
-
-  *  cxprocessserver
-  *  InMage Scout VX Agent – Sentinel/Outpost
-  *  Microsoft Azure 恢复服务代理
-  *  Microsoft Azure Site Recovery 服务
-  *  tmansvc
-
-  启动或重启未运行的任何服务。 检查是否仍出现此问题。
-
-* **检查进程服务器是否可以使用端口 443 连接到 Azure 公共 IP 地址**。
-
-  在 %programfiles%\Microsoft Azure Recovery Services Agent\Temp 中，打开最新的 CBEngineCurr.errlog 文件。 在该文件中，搜索 **443** 或字符串 **connection attempt failed**。
-
-  ![显示 Temp 文件夹中错误日志的屏幕截图](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
-
-  如果找到问题，请在进程服务器上的命令行中，使用 Telnet 来 ping Azure 公共 IP 地址（在上图中，IP 地址已掩码）。 可以使用端口 443 在 CBEngineCurr.currLog 文件查找 Azure 公共 IP 地址：
-
-  `telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443`
-
-  如果无法连接，请检查访问问题是否由防火墙或代理设置所导致，如下一步骤中所述。
-
-* **检查进程服务器上的基于 IP 地址的防火墙是否阻止了访问**。
-
-  如果在服务器上使用基于 IP 地址的防火墙规则，请下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)的完整列表。 将 IP 地址范围添加到防火墙配置，以确保防火墙允许与 Azure（以及默认的 HTTPS 端口 443）通信。 允许订阅的 Azure 区域的 IP 地址范围以及 Azure 美国西部区域的 IP 地址范围（用于访问控制和标识管理）。
-
-* **检查进程服务器上的基于 URL 的防火墙是否阻止了访问**。
-
-  如果在服务器上使用基于 URL 的防火墙规则，请将下表中列出的 URL 添加到防火墙配置：
-
-[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
-
-*  **检查进程服务器上的代理设置是否阻止了访问**。
-
-   如果使用代理服务器，请确保代理服务器名称由 DNS 服务器解析。 若要检查设置配置服务器时提供的值，请转到注册表项 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings**。
-
-   接下来，确保 Azure Site Recovery 代理使用相同的设置发送数据： 
-      
-   1. 搜索“Microsoft Azure 备份”。 
-   2. 打开“Microsoft Azure 备份”，然后选择“操作” > “更改属性”。 
-   3. 在“代理配置”选项卡上，应会看到代理地址。 代理地址应与注册表设置中显示的代理地址相同。 如果不同，请将其更改为相同的地址。
-
-*  **检查进程服务器上的限制带宽是否受约束**。
-
-   增加带宽，然后检查问题是否仍然出现。
-
-
-## <a name="source-machine-isnt-listed-in-the-azure-portal"></a>源计算机未在 Azure 门户中列出。
+## <a name="step-3-troubleshoot-source-machines-that-arent-available-for-replication"></a>步骤 3：排查不可用于复制的源计算机的问题
 
 尝试选择源计算机来通过 Site Recovery 启用复制时，计算机可能由于以下原因之一而不可用：
 
@@ -199,99 +51,151 @@ ms.locfileid: "58094695"
 * **正在等待重新启动**：如果虚拟机正在等待重新启动，则你无法在 Azure 门户中选择该虚拟机。 请务必完成等待中的重新启动活动，并[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。 然后，虚拟机将列在门户中。
 * **找不到 IP**：如果虚拟机没有关联有效的 IP 地址，则你无法在 Azure 门户中选择该虚拟机。 请务必将有效的 IP 地址分配到虚拟机，并[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。 然后，虚拟机将列在门户中。
 
-## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>受保护的虚拟机在门户中处于灰显状态
+### <a name="troubleshoot-protected-virtual-machines-greyed-out-in-the-portal"></a>排查在门户中灰显的受保护虚拟机的问题
 
 如果系统中存在重复的条目，则在 Site Recovery 下复制的虚拟机将不会显示在 Azure 门户中。 若要了解如何删除过时的条目和解决此问题，请参阅[使用 Azure Site Recovery 进行 VMware 到 Azure 的复制：如何清除重复或过时的条目](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx)。
 
-## <a name="common-errors-and-recommended-steps-for-resolution"></a>解决常见错误和建议的步骤
+## <a name="common-errors-and-solutions"></a>常见错误和解决方法
 
-### <a name="initial-replication-issues-error-78169"></a>初始复制问题 [Error 78169]
+### <a name="initial-replication-issues-error-78169"></a>初始复制问题 [错误 78169]
 
-通过更高版本，确保有无连接、 带宽或时间同步相关的问题，请确保：
+反复确认不存在连接、带宽或时间同步相关的问题后，请确保：
 
-- 没有防病毒软件正在阻止 Azure Site Recovery。 了解[详细](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)上所需的 Azure Site Recovery 的文件夹排除项。
+- 没有任何防病毒软件正在阻止 Azure Site Recovery。 [了解详细](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) Azure Site Recovery 要求排除的文件夹。
 
-### <a name="application-consistency-recovery-point-missing-error-78144"></a>缺少 [Error 78144] 应用程序一致性恢复点
+### <a name="missing-app-consistent-recovery-points-error-78144"></a>缺少应用一致性恢复点 [错误 78144]
 
- 由于卷影复制服务 (VSS) 问题而发生这种情况。 若要解决问题，请执行以下操作： 
+ 此错误是卷影复制服务 (VSS) 问题造成的。 若要解决问题，请执行以下操作： 
  
-- 验证安装的 Azure Site Recovery 代理版本至少 9.22.2。 
-- 验证为 Windows 服务中的服务安装 VSS 提供程序，同时还要验证组件服务 MMC 来检查列出了 Azure Site Recovery VSS 提供程序。
-- 如果未安装 VSS 提供程序，请参阅[安装故障故障排除文章](vmware-azure-troubleshoot-push-install.md#vss-installation-failures)。
+- 确认安装的 Azure Site Recovery 代理版本至少为 9.22.2。 
+- 确认 VSS 提供程序已在 Windows 服务中作为一个服务安装，并在“组件服务”MMC 中检查 Azure Site Recovery VSS 提供程序是否已列出。
+- 如果未安装 VSS 提供程序，请参阅[安装故障排除文章](vmware-azure-troubleshoot-push-install.md#vss-installation-failures)。
 
-- 如果禁用了 VSS，
-    - 验证 VSS 提供程序服务的启动类型设置为**自动**。
+- 如果已禁用 VSS：
+    - 确认 VSS 提供程序服务的启动类型是否设置为“自动”。
     - 重启以下服务：
         - VSS 服务
         - Azure Site Recovery VSS 提供程序
         - VDS 服务
 
-### <a name="high-churn-on-source-machine-error-78188"></a>源计算机 [Error 78188] 上的高变动量
+- 如果运行的是 SQL 或 Exchange 工作负荷, 请检查这些应用程序编写器的日志中的失败情况。 以下文章中捕获了经常发生的错误和解决方法:
+    -  [SQL Server 数据库的 "自动关闭" 选项设置为 TRUE](https://support.microsoft.com/help/4504104)
+    - [SQL Server 2008 R2 引发不可重试的错误](https://support.microsoft.com/help/4504103)
+    - [SQL Server 2016 和2017中的已知问题](https://support.microsoft.com/help/4493364)
+    - [Exchange Server 2013 和2016常见问题](https://support.microsoft.com/help/4037535)
+
+
+### <a name="source-machines-with-high-churn-error-78188"></a>源计算机的变动率较高 [错误 78188]
 
 可能的原因：
-- 列出的磁盘的虚拟机上的数据更改率 （写入字节数/秒） 是多个[Azure Site Recovery 支持的限制](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits)复制目标存储帐户类型。
-- 变动率中没有突增的高数据量因处于挂起状态进行上传。
+- 虚拟机的所列磁盘中的数据更改率（每秒写入字节数）超过了复制目标存储帐户类型的 [Azure Site Recovery 支持限制](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits)。
+- 有大量的数据等待上传，使变动率出现突发性的高峰。
 
 若要解决问题，请执行以下操作：
-- 请确保目标存储帐户类型 （标准或高级） 根据流失率要求在源设置。
-- 如果观察到的变动量是暂时性的等待挂起的数据上传来保持同步，并创建恢复点的几个小时。
-- 如果问题仍然存在，使用 ASR[部署规划器](site-recovery-deployment-planner.md#overview)来帮助规划复制。
+- 确保根据源中的变动率要求预配目标存储帐户类型（“标准”或“高级”）。
+- 如果已复制到高级托管磁盘 (asrseeddisk 类型), 请确保磁盘大小支持根据 Site Recovery 限制观察到的变动率。 如果需要, 可以增加 asrseeddisk 的大小。 请按照以下步骤操作：
+    - 导航到受影响的复制计算机的 "磁盘" 边栏选项卡, 并复制副本磁盘名称
+    - 导航到此副本托管磁盘
+    - 你可能会在概述边栏选项卡上看到一个横幅, 指出已生成 SAS URL。 单击此标语并取消导出。 如果看不到横幅, 请忽略此步骤。
+    - 一旦将 SAS URL 吊销, 请在托管磁盘中转到 "配置" 边栏选项卡, 增加大小, 以便 ASR 支持在源磁盘上观察到的变动率
+- 如果观测到的变动率是暂时性的，请等待几个小时，让等待中的数据跟上上传进度并创建恢复点。
+- 如果磁盘包含非关键数据 (如临时日志、测试数据等), 请考虑将此数据移到其他位置, 或者从复制中完全排除此磁盘
+- 如果问题持续出现，请使用 Site Recovery [部署规划器](site-recovery-deployment-planner.md#overview)来帮助规划复制。
 
-### <a name="no-heartbeat-from-source-machine-error-78174"></a>没有来自源计算机 [Error 78174] 检测信号
+### <a name="source-machines-with-no-heartbeat-error-78174"></a>源计算机无检测信号 [错误 78174]
 
-发生这种情况是当源计算机上的 Azure Site Recovery 移动代理通信不时与配置服务器 (CS)。
+如果源计算机上的 Azure Site Recovery 移动代理与配置服务器 (CS) 不通信，则会发生此错误。
 
-若要解决此问题，使用以下步骤来验证来自源 VM 网络连接到配置服务器：
+若要解决此问题，请使用以下步骤来验证源 VM 与配置服务器之间的网络连接：
 
-1. 验证源计算机正在运行。
-2. 登录到源计算机使用具有管理员权限的帐户。
-3. 验证以下服务是否正在运行，如果不重新启动服务：
-   - Svagents （InMage Scout VX 代理）
+1. 确认源计算机正在运行。
+2. 使用拥有管理员特权的帐户登录到源计算机。
+3. 确认以下服务正在运行，如果未运行，请重启以下服务：
+   - Svagents（InMage Scout VX 代理）
    - InMage Scout 应用程序服务
-4. 源计算机上检查错误详细信息的位置的日志：
+4. 在源计算机上，检查位于以下位置的日志以查看错误详细信息：
 
        C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
     
-### <a name="no-heartbeat-from-process-server-error-806"></a>从进程服务器 [错误 806] 无检测信号
-如果没有任何检测信号从进程服务器 (PS)，请检查：
-1. PS VM 已启动并运行
-2. 检查错误详细信息的 PS 上的以下日志：
+### <a name="process-server-with-no-heartbeat-error-806"></a>进程服务器无检测信号 [错误 806]
+如果进程服务器 (PS) 未发出检测信号，请检查：
+1. PS VM 已启动并正在运行
+2. 检查 PS 上的以下日志以查看错误详细信息：
 
        C:\ProgramData\ASR\home\svsystems\eventmanager*.log
        and
        C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
 
-### <a name="no-heartbeat-from-master-target-error-78022"></a>从主目标 [Error 78022] 无检测信号
+### <a name="master-target-server-with-no-heartbeat-error-78022"></a>主目标服务器无检测信号 [错误 78022]
 
-在主目标上的 Azure Site Recovery 移动代理未与配置服务器通信时，将发生这种情况。
+如果主目标上的 Azure Site Recovery 移动代理与配置服务器不通信，则会发生此错误。
 
-若要解决此问题，使用以下步骤来验证服务状态：
+若要解决此问题，请使用以下步骤验证服务状态：
 
-1. 验证主目标 VM 正在运行。
-2. 登录到主目标 VM，使用具有管理员权限的帐户。
-    - 验证 svagents 服务正在运行。 如果正在运行，重新启动服务
-    - 检查错误详细信息的位置的日志：
+1. 确认主目标 VM 正在运行。
+2. 使用拥有管理员特权的帐户登录到主目标 VM。
+    - 确认 svagents 服务正在运行。 如果它正在运行，请重启服务
+    - 检查位于以下位置的日志以查看错误详细信息：
         
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
 
-### <a name="process-server-is-not-reachable-from-the-source-machine-error-78186"></a>进程服务器不可访问源计算机 [Error 78186]
+## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>错误 ID 78144-最近 "XXX" 分钟内没有适用于 VM 的应用一致恢复点
 
-如果未解决未生成的应用程序和崩溃一致点会导致此错误。 若要解决此问题，请执行以下故障排除的链接：
-1. 确保[PS 服务是否正在运行](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues)
-2. [检查源计算机的连接问题](vmware-azure-troubleshoot-replication.md#check-the-source-machine-for-connectivity-issues)
-3. [检查进程服务器的连接问题](vmware-azure-troubleshoot-replication.md#check-the-process-server-for-connectivity-issues)并遵循为提供的指南：
-    - 检查与源的连接
-    - 防火墙和代理问题
+下面列出了其中的一些最常见
 
-### <a name="data-upload-blocked-from-source-machine-to-process-server-error-78028"></a>数据上传到进程服务器 [Error 78028] 被阻止的源计算机
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>原因 1：SQL Server 2008/2008 R2 中的已知问题 
+**如何解决**：SQL Server 2008/2008 R2 有一个已知问题。 请参阅此知识库文章：[托管 SQL Server 2008 R2 的服务器的 Azure Site Recovery 代理或其他非组件 VSS 备份失败](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-如果未解决未生成的应用程序和崩溃一致点会导致此错误。 若要解决此问题，请执行以下故障排除的链接：
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>原因 2：在使用 AUTO_CLOSE DB 托管任何版本的 SQL Server 实例的服务器上，Azure Site Recovery 作业失败 
+**如何解决**：请参阅知识库[文章](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
 
-1. 确保[PS 服务是否正在运行](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues)
-2. [检查源计算机的连接问题](vmware-azure-troubleshoot-replication.md#check-the-source-machine-for-connectivity-issues)
-3. [检查进程服务器的连接问题](vmware-azure-troubleshoot-replication.md#check-the-process-server-for-connectivity-issues)并遵循为提供的指南：
-    - 检查与源的连接
-    - 防火墙和代理问题
+
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因 3：SQL Server 2016 和 2017 中的已知问题
+**如何解决**：请参阅知识库[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+
+
+### <a name="more-causes-due-to-vss-related-issues"></a>更多 VSS 相关问题原因：
+
+若要进一步排查问题，请查看源计算机上的文件，获取故障的具体错误代码：
+    
+    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+
+如何在文件中查找错误？
+在编辑器中打开 vacp.log 文件，搜索字符串“vacpError”
+        
+    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+
+在上面的示例中，**2147754994** 是介绍故障情况的错误代码，如下所示
+
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS 编写器未安装 - 错误 2147221164 
+
+*如何解决*：若要生成应用程序一致性标记, Azure Site Recovery 使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务未安装，则应用程序一致性快照创建会失败，并出现 ID 为 0x80040154 的错误“类未注册”。 </br>
+请参阅[有关 VSS 编写器安装故障排除的文章](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
+
+#### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS 编写器已禁用 - 错误 2147943458
+
+**如何解决**：若要生成应用程序一致性标记, Azure Site Recovery 使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务已禁用，则应用程序一致性快照创建会失败，并出现 错误“指定的服务已禁用，无法启动(0x80070422)”。 </br>
+
+- 如果已禁用 VSS：
+    - 确认 VSS 提供程序服务的启动类型是否设置为“自动”。
+    - 重启以下服务：
+        - VSS 服务
+        - Azure Site Recovery VSS 提供程序
+        - VDS 服务
+
+####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS 提供程序未注册 - 错误 2147754756
+
+**如何解决**：若要生成应用程序一致性标记, Azure Site Recovery 使用 Microsoft 卷影复制服务 (VSS)。 检查 Azure Site Recovery VSS 提供程序服务是否已安装。 </br>
+
+- 使用以下命令重试提供程序安装：
+- 卸载现有的提供程序：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
+- 重新安装：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
+ 
+确认 VSS 提供程序服务的启动类型是否设置为“自动”。
+    - 重启以下服务：
+        - VSS 服务
+        - Azure Site Recovery VSS 提供程序
+        - VDS 服务
 
 ## <a name="next-steps"></a>后续步骤
 

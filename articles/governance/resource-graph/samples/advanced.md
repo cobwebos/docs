@@ -1,19 +1,18 @@
 ---
 title: 高级查询示例
-description: 使用 Azure 资源图来运行一些高级查询，包括 VMSS 容量、列出所有使用的标记以及使用正则表达式匹配虚拟机。
+description: 使用 Azure Resource Graph 来运行一些高级查询，包括虚拟机规模集容量、列出所有使用的标记以及使用正则表达式匹配虚拟机。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 9a243dd236a8c499602a9070a7dd61e69541d58d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 33c67f77a26e2a4fc97d7f5483aad53c121e117b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256815"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239015"
 ---
 # <a name="advanced-resource-graph-queries"></a>高级资源图表查询
 
@@ -22,13 +21,12 @@ ms.locfileid: "59256815"
 我们将逐步介绍以下高级查询：
 
 > [!div class="checklist"]
-> - [获取 VMSS 容量和大小](#vmss-capacity)
+> - [获取虚拟机规模集容量和大小](#vmss-capacity)
 > - [列出所有标记名称](#list-all-tags)
 > - [由正则表达式匹配的虚拟机](#vm-regex)
+> - [使用 DisplayNames 包括租户和订阅名称](#displaynames)
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="language-support"></a>语言支持
 
@@ -38,7 +36,7 @@ Azure CLI（通过扩展）和 Azure PowerShell（通过模块）支持 Azure �
 
 此查询将查找虚拟机规模集资源，并获取各种详细信息，包括规模集的虚拟机大小和容量。 此查询使用 `toint()` 函数将容量强制转换为数字以供排序。 最后会将列重命名为自定义命名属性。
 
-```Query
+```kusto
 where type=~ 'microsoft.compute/virtualmachinescalesets'
 | where name contains 'contoso'
 | project subscriptionId, name, location, resourceGroup, Capacity = toint(sku.capacity), Tier = sku.name
@@ -57,7 +55,7 @@ Search-AzGraph -Query "where type=~ 'microsoft.compute/virtualmachinescalesets' 
 
 此查询以标记开头，并生成一个 JSON 对象，列出所有唯一标记名称及其对应的类型。
 
-```Query
+```kusto
 project tags
 | summarize buildschema(tags)
 ```
@@ -72,8 +70,8 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 
 ## <a name="vm-regex"></a>由正则表达式匹配的虚拟机
 
-此查询查找与某个[正则表达式](/dotnet/standard/base-types/regular-expression-language-quick-reference)（称为 _regex_）匹配的虚拟机。
-可以使用 **matches regex \@** 定义要匹配的正则表达式，即 `^Contoso(.*)[0-9]+$`。 该 regex 定义说明如下：
+此查询查找与某个[正则表达式](/dotnet/standard/base-types/regular-expression-language-quick-reference)（称为 _regex_）匹配的虚拟机。 可以使用 **matches regex \@** 定义要匹配的正则表达式，即 `^Contoso(.*)[0-9]+$`。
+该 regex 定义说明如下：
 
 - `^` - 匹配项必须以该字符串的开头开头。
 - `Contoso` - 区分大小写的字符串。
@@ -86,7 +84,7 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 
 按名称进行匹配后，查询将对名称进行投影并按名称升序排序。
 
-```Query
+```kusto
 where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$'
 | project name
 | order by name asc
@@ -99,6 +97,22 @@ az graph query -q "where type =~ 'microsoft.compute/virtualmachines' and name ma
 ```azurepowershell-interactive
 Search-AzGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
 ```
+
+## <a name="displaynames"></a>使用 DisplayNames 包括租户和订阅名称
+
+此查询使用新的 **Include** 参数和选项 _DisplayNames_ 将 **subscriptionDisplayName** 和 **tenantDisplayName** 添加到结果中。 此参数仅可用于 Azure CLI 和 Azure PowerShell。
+
+```azurecli-interactive
+az graph query -q "limit 1" --include displayNames
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "limit 1" -Include DisplayNames
+```
+
+> [!NOTE]
+> 如果查询未使用 **project** 指定返回的属性，则 **subscriptionDisplayName** 和 **tenantDisplayName** 将自动包括在结果中。
+> 如果查询确实使用了 **project**，则每个 _DisplayName_ 字段必须显式包含在 **project** 中，否则它们将不会在结果中返回，即使使用了 **Include** 参数也是如此。
 
 ## <a name="next-steps"></a>后续步骤
 

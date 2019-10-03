@@ -5,25 +5,29 @@ services: app-service\mobile
 documentationcenter: android
 manager: crdun
 editor: ''
-author: conceptdev
+author: elamalani
 ms.assetid: 9058ed6d-e871-4179-86af-0092d0ca09d3
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 11/17/2017
-ms.author: crdun
-ms.openlocfilehash: 557f6f6a6d4925ec167760455dfc67449582c05c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 529aa8327d31cdda044178b6d03035b602744db2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811664"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443655"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>向 Android 应用添加推送通知
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
+
+> [!NOTE]
+> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-push)今天。
+>
 
 ## <a name="overview"></a>概述
 
@@ -31,7 +35,7 @@ ms.locfileid: "42811664"
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 需要满足以下条件：
 
@@ -66,7 +70,7 @@ ms.locfileid: "42811664"
 
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-下一步就是安装 Google Play Services。 Firebase Cloud Messaging 针对开发和测试有一些最低的 API 级别要求，清单中的 minSdkVersion 属性必须符合这些要求。
+下一步就是安装 Google Play Services。 Firebase Cloud Messaging 针对开发和测试有一些最低的 API 级别要求，清单中的 minSdkVersion  属性必须符合这些要求。
 
 如果要测试一台较旧的设备，请查阅[将 Firebase 添加到 Android 项目]，以确定此值可设置到的最小值，并相应地进行设置。
 
@@ -93,4 +97,4 @@ ms.locfileid: "42811664"
 
 <!-- URLs -->
 [Android 快速入门]: app-service-mobile-android-get-started.md
-[将 Firebase 添加到 Android 项目]:https://firebase.google.com/docs/android/setup
+[将 Firebase 添加到 Android 项目]: https://firebase.google.com/docs/android/setup

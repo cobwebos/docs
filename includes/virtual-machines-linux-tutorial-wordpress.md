@@ -4,12 +4,12 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 5df1f7ff44a1603dd03d1d803ae9960dc124781e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 76a080d40721fa78ad703f77f6dbe7a3363ab77e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226552"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857321"
 ---
 ## <a name="install-wordpress"></a>安装 WordPress
 
@@ -45,7 +45,6 @@ GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER
 ON wordpress.*
 TO wordpress@localhost
 IDENTIFIED BY 'yourPassword';
-FLUSH PRIVILEGES;
 ```
 
 若要创建数据库，请运行以下命令：

@@ -10,18 +10,17 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: b3cfc33f435c6ddaabe8358c344b1944f7c271f6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c759567e4d8c183452eccbbdca8459c8993d1361
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500509"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092424"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 
@@ -37,7 +36,7 @@ Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到
 
 本文提供有关两种方案的信息：使用 DSC 扩展进行自动化加入，以及使用 DSC 扩展作为工具，通过 Azure SDK 将配置分配给 VM。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - **本地计算机**：若要与 Azure VM 扩展交互，必须使用 Azure 门户或 Azure PowerShell SDK。
 - **来宾代理**：使用 DSC 配置进行配置的 Azure VM 必须采用支持 Windows Management Framework (WMF) 4.0 或更高版本的 OS。 有关支持的 OS 版本的完整列表，请参阅 [DSC 扩展版本历史记录](/powershell/dsc/azuredscexthistory)。
@@ -81,8 +80,8 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-对于节点配置名称，请确保使用“节点配置”而不是“配置”的名称。
-配置在用于[编译节点配置（MOF 文件）](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile)的脚本中定义。
+对于节点配置名称，请确保在 Azure State Configuration 中存在节点配置。  如果不存在，扩展部署将返回失败。  另外，请确保使用“节点配置”的名称而不是“配置”的名称。
+配置在用于[编译节点配置（MOF 文件）](https://docs.microsoft.com/azure/automation/automation-dsc-compile)的脚本中定义。
 该名称始终为 Configuration 后接句点 `.` 以及 `localhost` 或特定计算机名。
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>资源管理器模板中的 DSC 扩展
@@ -136,7 +135,6 @@ configuration IISInstall
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
-$location = 'westus'
 $vmName = 'myVM'
 $storageName = 'demostorage'
 #Publish the configuration script to user storage

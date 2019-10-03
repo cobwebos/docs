@@ -3,7 +3,7 @@ title: 向通用 Windows 平台 (UWP) 应用添加推送通知 | Microsoft Docs
 description: 了解如何使用 Azure 应用服务移动应用和 Azure 通知中心将推送通知发送到通用 Windows 平台 (UWP) 应用。
 services: app-service\mobile,notification-hubs
 documentationcenter: windows
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
@@ -12,18 +12,22 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/12/2016
-ms.author: crdun
-ms.openlocfilehash: 7efd853e7b66933cac811625d7510139864f41f3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 7455ad33660a0af004a3a3ad982e929fc4b3031e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001854"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851124"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>向 Windows 应用添加推送通知
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
+
+> [!NOTE]
+> Visual Studio App Center 正在为移动应用开发的新的和集成的服务进行投资。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后, 开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况, 并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务, 以便在云中持久保存和同步应用程序数据。 立即查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-push) 。
+>
 
 ## <a name="overview"></a>概述
 
@@ -115,7 +119,7 @@ ms.locfileid: "53001854"
 4. 重新发布服务器项目。
 
 ### <a name="nodejs"></a>Node.js 后端项目
-1. 如果尚未执行此操作，请[下载快速入门项目](app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)或使用 [Azure 门户中的在线编辑器](app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。
+1. 设置后端项目。
 2. 将 todoitem.js 文件中的现有代码替换为以下内容：
 
     ```javascript
@@ -164,7 +168,7 @@ ms.locfileid: "53001854"
 
 3. 编辑本地计算机上的文件时，重新发布服务器项目。
 
-## <a id="update-app"></a>向应用添加推送通知
+## <a id="update-app"></a>向应用程序添加推送通知
 下一步，应用必须在启动时注册推送通知。 已启用身份验证时，请确保用户先登录，再尝试注册推送通知。
 
 1. 打开 **App.xaml.cs** 项目文件并添加以下 `using` 语句：
@@ -205,7 +209,7 @@ ms.locfileid: "53001854"
 
 4. 重新生成 UWP 应用项目。 应用现在已能够接收 toast 通知。
 
-## <a id="test"></a>在应用中测试推送通知
+## <a id="test"></a>在应用程序中测试推送通知
 
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 

@@ -4,38 +4,37 @@ services: cloud-services
 description: 使用 Visual Studio 探查器调查云服务中的性能问题
 documentationcenter: ''
 author: mikejo
-manager: douge
+manager: jillfra
 editor: ''
 tags: ''
 ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: 40ba5814bce08037b9e4d0787defbab4d02e58df
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 21270d3c7143ce063ffe30d939368b9813e9072e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546241"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094101"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>在 Azure 计算模拟器中使用 Visual Studio 探查器来本地测试云服务的性能
 可通过各种工具和技术来测试云服务的性能。
-在将云服务发布到 Azure 后，可以让 Visual Studio 收集分析数据，并在本地进行分析，如 [分析 Azure 应用程序][1]中所述。
-也可以使用诊断来跟踪各种性能计数器，如[在 Azure 中使用性能计数器][2]中所述。
+将云服务发布到 Azure 时, 可以让 Visual Studio 收集分析数据, 然后在本地对其进行分析, 如[分析 Azure 应用程序][1]中所述。
+你还可以使用诊断来跟踪各种性能计数器, 如在[Azure 中使用性能计数器][2]中所述。
 此外，在将应用程序部署到云之前，可能需要在计算模拟器中本地分析应用程序。
 
 本文包含了 CPU 采样分析方法，可在模拟器中本地执行该方法。 CPU 采样是一种干预性不是很强的分析方法。 探查器将按照指定的采样时间间隔拍摄调用堆栈的快照。 将收集一段时间内的数据并将其显示在报告中。 此分析方法倾向于指示在具有大量计算的应用程序中执行大多数 CPU 工作的位置。  这使你能够侧重于应用程序在其上花费最多时间的“热路径”。
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1:配置 Visual Studio 以进行分析
-首先，提供了几个 Visual Studio 配置选项，这些选项在分析时可能会有用。 为便于理解分析报表，需要应用程序的符号（.pdb 文件）与系统库的符号。 需确保引用可用的符号服务器。 为此，请在 Visual Studio 中的“**工具**”菜单上，依次选择“**选项**”、“**调试**”和“**符号**”。 确保**符号文件 (.pdb) 位置**下方列出了 Microsoft 符号服务器。  还可以引用 https://referencesource.microsoft.com/symbols，它可能具有附加的符号文件。
+首先，提供了几个 Visual Studio 配置选项，这些选项在分析时可能会有用。 为便于理解分析报表，需要应用程序的符号（.pdb 文件）与系统库的符号。 需确保引用可用的符号服务器。 为此，请在 Visual Studio 中的“**工具**”菜单上，依次选择“**选项**”、“**调试**”和“**符号**”。 确保**符号文件 (.pdb) 位置**下方列出了 Microsoft 符号服务器。  还可以引用 https://referencesource.microsoft.com/symbols ，它可能具有附加的符号文件。
 
 ![“符号”选项][4]
 
-如果需要，可通过设置“仅我的代码”来简化探查器生成的报告。 通过启用“仅我的代码”，可简化函数调用堆栈，以便从报告中隐藏对库和 .NET Framework 的完全内部调用。 在“**工具**”菜单上，选择“**选项**”。 然后展开“性能工具”节点，并选择“常规”。 选中“**为探查器报告启用‘仅我的代码’**”的复选框。
+如果需要，可通过设置“仅我的代码”来简化探查器生成的报告。 通过启用“仅我的代码”，可简化函数调用堆栈，以便从报告中隐藏对库和 .NET Framework 的完全内部调用。 在“**工具**”菜单上，选择“**选项**”。 然后展开“性能工具”节点，并选择“常规”。 选中“**为探查器报告启用‘仅我的代码’** ”的复选框。
 
 ![“仅我的代码”选项][17]
 
@@ -156,16 +155,16 @@ public static string Concatenate(int number)
 
 祝贺你！ 已开始使用探查器。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 * 请确保正在分析 Release 生成，并在不调试的情况下启动。
 * 如果未在“探查器”菜单上启用“附加/分离”选项，请运行性能向导。
 * 使用计算模拟器 UI 来查看应用程序的状态。 
 * 如果在模拟器中启动应用程序时或附加探查器时出现问题，请关闭并重新启动计算模拟器。 如果这样做无法解决问题，请尝试重新启动。 如果使用计算模拟器挂起或删除正在运行的部署，则会出现此问题。
 * 如果已从命令行使用任一分析命令（尤其是全局设置），请确保已调用 VSPerfClrEnv /globaloff 并已关闭 VsPerfMon.exe。
-* 如果采样时看到消息"PRF0025:未收集数据”，请检查附加的进程是否有 CPU 活动。 未执行任何计算工作的应用程序将无法生成任何采样数据。  此外，在执行任何采样前可能会退出进程。 查看以验证正在分析的角色的 Run 方法是否已终止。
+* 如果采样, 则会看到消息 "PRF0025:未收集数据”，请检查附加的进程是否有 CPU 活动。 未执行任何计算工作的应用程序将无法生成任何采样数据。  此外，在执行任何采样前可能会退出进程。 查看以验证正在分析的角色的 Run 方法是否已终止。
 
 ## <a name="next-steps"></a>后续步骤
-Visual Studio 探查器不支持在模拟器中检测 Azure 二进制文件，但要测试内存分配，可以在分析时选择该选项。 此外，可以选择并发分析，这有助于确定线程是否正在浪费时间竞争锁；也可以选择层交互分析，这有助于跟踪在应用程序的各个层之间（最常见的是数据层和辅助角色之间）进行交互时的性能问题。  可以查看应用程序生成的数据库查询并使用分析数据来改进对数据库的使用。 有关层交互分析的信息，请参阅博客文章[演练：在 Visual Studio 中使用层交互 Profiler Team System 2010][3]。
+Visual Studio 探查器不支持在模拟器中检测 Azure 二进制文件，但要测试内存分配，可以在分析时选择该选项。 此外，可以选择并发分析，这有助于确定线程是否正在浪费时间竞争锁；也可以选择层交互分析，这有助于跟踪在应用程序的各个层之间（最常见的是数据层和辅助角色之间）进行交互时的性能问题。  可以查看应用程序生成的数据库查询并使用分析数据来改进对数据库的使用。 有关层交互分析的信息, 请参阅博客文章[演练:在 Visual Studio Team System 2010][3]中使用层交互探查器。
 
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
 [2]: https://msdn.microsoft.com/library/azure/hh411542.aspx

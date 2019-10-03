@@ -3,19 +3,19 @@ title: 快速入门：使用适用于 Node.js 的必应视频搜索 SDK 来搜�
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门使用适用于 Node.js 的必应视频搜索 SDK 来发送视频搜索请求
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
-ms.author: rosh
-ms.openlocfilehash: ffd03a900ec304a930dfc64e7860e28e0374da55
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 07/18/2019
+ms.author: aahi
+ms.openlocfilehash: 12eafca9c673d95813eefcd58d2b3f9ba7b54fd3
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863749"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358887"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>快速入门：使用适用于 Node.js 的必应视频搜索 SDK 执行视频搜索
 
@@ -58,13 +58,6 @@ ms.locfileid: "55863749"
         throw err;
     });
     ```
-
-<!-- Remove until the response can be replace with a sanitized version.
-The code prints `result.value` items to the console without parsing any text. The results will be:
-- _type: 'VideoObjectElementType'
-
-![Video results](media/video-search-sdk-node-results.png)
--->
 
 ## <a name="next-steps"></a>后续步骤
 

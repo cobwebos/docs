@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c419ee1eec9e451cad835d8b4a56818101dc853a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: bee8c1d2a1cd313c7fe59d8e53379dc57554e98c
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856207"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618568"
 ---
 # <a name="duplicate-detection"></a>重复检测
 
@@ -35,6 +35,9 @@ ms.locfileid: "54856207"
 如果业务流程是在处理某应用程序上下文的过程中发送多个消息，MessageId 可能会复合应用程序级上下文标识符，如采购订单号和消息主题；例如，12345.2017/payment。
 
 虽然 MessageId 可以始终是某 GUID，但将标识符绑定到业务流程可以预测重复消息，这更有利于有效使用重复检测功能。
+
+> [!NOTE]
+> 如果启用了重复检测, 并且未设置会话 ID 或分区键, 则使用消息 ID 作为分区键。 如果还未设置消息 ID, .NET 和 AMQP 库会自动生成消息的消息 ID。 有关详细信息, 请参阅[分区键的使用](service-bus-partitioning.md#use-of-partition-keys)。
 
 ## <a name="enable-duplicate-detection"></a>启用重复检测
 

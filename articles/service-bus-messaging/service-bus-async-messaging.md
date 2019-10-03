@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 50778ae742c1ec66857a6c2fa6250dc3d67e5601
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301564"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60531111"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>异步消息传送模式和高可用性
 
@@ -34,7 +34,7 @@ ms.locfileid: "56301564"
 * 无法管理实体（创建、检索、更新或删除实体）。
 * 无法与服务取得联系。
 
-对于以上每种故障，存在不同的故障模式，从而使应用程序能够在某种程度功能缩减的情况下继续执行工作。 例如，可以发送消息但无法接收消息的系统仍可以从客户接收指令，但无法处理这些指令。 本主题讨论可能发生的潜在问题以及如何缓解这些问题。 服务总线引入了许多必须采用的缓解措施。此外本主题还将讨论管理使用这些加入的缓解措施的规则。
+对于以上每种故障，存在不同的故障模式，从而使应用程序能够在某种程度功能缩减的情况下继续执行工作。 例如，可以发送消息但无法接收消息的系统仍可以从客户接收指令，但无法处理这些指令。 本主题讨论可能发生的潜在问题以及如何缓解这些问题。 服务总线引入了必须选择加入的大量缓解措施，本主题还介绍了管理这些选择性加入缓解措施的规则。
 
 ## <a name="reliability-in-service-bus"></a>服务总线可靠性
 可通过多种方式来处理消息和实体问题，有一套对这些缓解措施的恰当使用进行管理的准则。 要了解这些准则，必须先了解服务总线中可能出现的故障。 由于 Azure 系统的设计，所有这些故障往往都是短期的。 在高级别中，引起不可用的各种原因如下所示：
@@ -45,7 +45,7 @@ ms.locfileid: "56301564"
 * Azure 数据中心内的服务总线故障。 这是“灾难性故障”，无论故障时间是数分钟还是几小时，在此期间都无法访问系统。
 
 > [!NOTE]
-> “存储”这一术语既能表示 Azure 存储又能表示 SQL Azure。
+> “存储”  这一术语既能表示 Azure 存储又能表示 SQL Azure。
 > 
 > 
 

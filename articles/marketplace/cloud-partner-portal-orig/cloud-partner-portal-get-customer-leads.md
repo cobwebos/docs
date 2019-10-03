@@ -1,25 +1,18 @@
 ---
-title: 配置潜在顾客 | Microsoft Docs
+title: 配置潜在客户 |Azure Marketplace
 description: 在云合作伙伴门户中配置潜在顾客。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2a425e607ea7dac394ab90a3fed4d4026056bbc1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: pabutler
+ms.openlocfilehash: c3e483a33d986eff767b3529e30208319ad90b23
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118572"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64934989"
 ---
 <a name="get-customer-leads"></a>获取潜在客户
 ==================
@@ -92,7 +85,7 @@ ms.locfileid: "58118572"
 - FirstName:John
 - LastName:Smith
 - 电子邮件：jsmith\@microsoft.com
-- 电话:1234567890
+- 电话：1234567890
 - 国家/地区:美国
 - 公司：Microsoft
 - 标题：CTO

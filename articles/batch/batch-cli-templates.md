@@ -3,21 +3,20 @@ title: 使用模板端到端运行作业 - Azure Batch | Microsoft Docs
 description: 使用模板文件和 Azure CLI 创建 Batch 池、作业和任务。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 5e592845f96cb0734daf3c9e07d60005de260386
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 4733cf1a83bec472baae42f2ac29636bff5fc324
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547671"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095308"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 模板和文件传输
 
@@ -67,7 +66,7 @@ az extension add --name azure-batch-cli-extensions
 
 Azure Batch 模板在功能和语法上非常类似于 Azure 资源管理器模板。 它们是包含项属性名称和值的 JSON 文件，但添加了以下主要概念：
 
--   **参数**
+-   **Parameters**
 
     -   允许在正文部分中指定属性值，使用模板时，仅需提供参数值。 例如，池的完整定义应放入正文且仅定义池 id 的一个参数；因此仅需提供一个池 ID 字符串来创建池。
         
@@ -285,7 +284,7 @@ az batch file download --file-group ffmpeg-output --local-path
 
 通过池和作业模板，可将存储在文件组中的文件指定为复制到池节点或离开池节点返回到文件组。 例如，在之前指定的作业模板中，为任务工厂指定文件组 ffmpeg-input ，作为复制到节点以供转码的源视频文件的位置。 文件组 ffmpeg-output 是从运行每个任务的节点复制已转码输出文件的位置。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 目前仅对 Azure CLI 添加了模板和文件传输支持。 其目的在于，将可以使用 Batch 的受众扩大到无需使用 Batch API 开发代码的用户，例如研究人员和 IT 用户。 了解 Azure、Batch 和 Batch 运行的应用程序的用户无需编码即可创建模板以创建池和作业。 通过模板参数，对 Batch 和应用程序没有深入了解的用户也可使用这些模板。
 

@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: dccb91c782408a5fed5c3ef1b68f9918823ce402
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 804a913d17c3151d07a1ecf229e2db148dc45558
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38544017"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050768"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>通过 Azure 逻辑应用连接到 SQL Server 或 Azure SQL 数据库
 
@@ -24,7 +24,7 @@ ms.locfileid: "38544017"
 
 可以创建在受 SQL 数据库或其他系统（例如 Dynamics CRM Online）中的事件触发时运行的逻辑应用。 逻辑应用也可获取、插入或删除数据，以及执行 SQL 查询或存储过程。 例如，可以生成一个逻辑应用，让其自动检查 Dynamics CRM Online 中是否存在新记录，在存在新记录的情况下向 SQL 数据库添加相应的项，然后发送电子邮件警报。
 
-如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 如需特定于连接器的技术信息，请参阅 <a href="https://docs.microsoft.com/connectors/sql/" target="blank">SQL Server 连接器参考</a>。
+如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 如需特定于连接器的技术信息，请参阅 [SQL Server 连接器参考](https://docs.microsoft.com/connectors/sql/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,7 +56,7 @@ ms.locfileid: "38544017"
 
 2. 在搜索框中，输入“sql server”作为筛选器。 在触发器列表中，选择所需的 SQL 触发器。 
 
-   对于此示例，请选择此触发器：**SQL Server - 创建项时**
+   对于此示例，请选择以下触发器：**SQL Server - 创建项时**
 
    ![选择“SQL Server - 创建项时”触发器](./media/connectors-create-api-sqlazure/sql-server-trigger.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "38544017"
    例如，若要查看表中的新项，可以添加其他操作（例如创建一个文件，其字段来自表），然后发送电子邮件警报。 
    若要了解此连接器或其他连接器的其他操作，请参阅[逻辑应用连接器](../connectors/apis-list.md)。
 
-5. 完成后，请在设计器工具栏上选择“保存”。 
+5. 完成后, 请在设计器工具栏上选择 "**保存**"。 
 
    此步骤自动在 Azure 中实时启用和发布逻辑应用。 
 
@@ -85,12 +85,12 @@ ms.locfileid: "38544017"
 
 1. 在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 此示例使用 Azure 门户。
 
-2. 在逻辑应用设计器的触发器或操作下，选择“新建步骤” > “添加操作”。
+2. 在逻辑应用设计器中的触发器或操作下, 选择 "**新建步骤** > " "**添加操作**"。
 
-   ![选择“新建步骤”>“添加操作”](./media/connectors-create-api-sqlazure/add-action.png)
+   ![选择 "新建步骤"、"添加操作"](./media/connectors-create-api-sqlazure/add-action.png)
    
    若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 
-   选择出现的加号 (**+**)，然后选择“添加操作”。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 2. 在搜索框中，输入“sql server”作为筛选器。 从操作列表中，选择所需的任意 SQL 操作。 
 
@@ -106,33 +106,36 @@ ms.locfileid: "38544017"
    此示例仅从选定表返回一个行，不返回其他。 
    若要查看此行中的数据，可以添加其他操作，以便使用行中的字段创建一个供以后查看的文件，然后将该文件存储在云存储帐户中。 若要了解此连接器或其他连接器中的其他操作，请参阅[逻辑应用连接器](../connectors/apis-list.md)。
 
-4. 完成后，请在设计器工具栏上选择“保存”。 
+4. 完成后, 请在设计器工具栏上选择 "**保存**"。 
 
 <a name="create-connection"></a>
 
-## <a name="connect-to-your-database"></a>连接到数据库
+## <a name="connect-to-your-database"></a>连接到你的数据库
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
 [!INCLUDE [Create a connection to SQL Server or Azure SQL Database](../../includes/connectors-create-api-sqlazure.md)]
 
-## <a name="process-data-in-bulk"></a>批量处理数据
+## <a name="handle-bulk-data"></a>处理批量数据
 
-如果处理的结果集很大，以致连接器无法一次性返回所有结果，或者需要更好地控制结果集的大小和结构，则可使用分页，以较小的集来管理这些结果。 
+有时，你可能必须处理大到连接器不能同时返回所有结果的结果集，或者你希望更好地控制结果集的大小和结构。 以下是处理如此大的结果集的一些方法：
 
-[!INCLUDE [Set up pagination for results exceeding default page size](../../includes/connectors-pagination-bulk-data-transfer.md)]
+* 为了帮助你将结果作为较小的集进行管理，请启用“分页”。 有关详细信息，请参阅[使用分页获取批量数据、记录和项](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)。
 
-### <a name="create-a-stored-procedure"></a>创建存储过程
+* 创建按所需方式组织结果的存储过程。
 
-获取或插入多个行时，逻辑应用可以在这些[限制](../logic-apps/logic-apps-limits-and-config.md)中使用 [*until loop*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) 来循环访问这些项。 但是，有时候逻辑应用需要处理的记录集很大（例如行的数目达到数千或数百万的地步），需要尽量减少针对数据库的调用的成本。 
+  获取或插入多个行时，逻辑应用可以在这些[限制](../logic-apps/logic-apps-limits-and-config.md)中使用 [*until loop*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) 来循环访问这些行。 
+  但是，当逻辑应用必须处理非常大的记录（例如，数千或数百万行）时，你希望将调用数据库的成本降到最低。
 
-可以改为创建一个<a href="https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine" target="blank">*存储过程*</a>，该过程在 SQL 实例中运行，并使用 **SELECT - ORDER BY** 语句按你所需要的方式来组织结果。 此解决方案可以更好地控制结果的大小和结构。 逻辑应用可以使用 SQL Server 连接器的“执行存储过程”操作调用存储过程。 
+  若要按所需方式组织结果，可以创建在 SQL 实例中运行并使用 **SELECT - ORDER BY** 语句的[*存储过程*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine)。 
+  此解决方案可以更好地控制结果的大小和结构。 
+  逻辑应用可以使用 SQL Server 连接器的“执行存储过程”操作调用存储过程。
 
-如需解决方案详细信息，请参阅以下文章：
+  如需解决方案详细信息，请参阅以下文章：
 
-* <a href="https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx" target="_blank">SQL Pagination for bulk data transfer with Logic Apps</a>（通过 SQL 分页使用逻辑应用进行批量数据传输）
+  * [SQL Pagination for bulk data transfer with Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)（通过 SQL 分页使用逻辑应用进行批量数据传输）
 
-* <a href="https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql" target="_blank">SELECT - ORDER BY 子句</a>
+  * [SELECT - ORDER BY 子句](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 

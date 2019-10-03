@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 17bb5f5d8fe7ee407caf0ea5c34dc5380dbd79b0
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5e5260a2001d9cb0a38f4182e923a5416f76712b
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670296"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384992"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>教程：在 Service Fabric 独立群集上部署应用程序
 
@@ -38,7 +38,7 @@ Service Fabric 独立群集为你提供选择自己的环境的选项，并创�
 
 在开始学习本教程之前：
 
-* [安装 Visual Studio 2017](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
+* [安装 Visual Studio 2019](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
 * [安装 Service Fabric SDK](service-fabric-get-started.md)
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
@@ -55,13 +55,13 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 1. 打开 Visual Studio
 
-2. 选择“文件” > “打开”
+2. 选择“文件”   >   “打开”
 
 3. 导航到将 git 存储库克隆到的文件夹，然后选择 Voting.sln
 
-4. 在解决方案资源管理器中右键单击 `Voting` 应用程序项目，选择“发布”
+4. 在解决方案资源管理器中右键单击 `Voting` 应用程序项目，选择“发布” 
 
-5. 选择**连接终结点**的下拉列表，并输入群集中某个节点的公共 DNS 名称。  例如： `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`
+5. 选择**连接终结点**的下拉列表，并输入群集中某个节点的公共 DNS 名称。  例如，`ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 。 请注意，在 Azure 中，不会自动提供完全限定的域名 (FQDN)，但可以[在“VM 概述”页中轻松设置](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)。
 
 6. 打开首选浏览器并键入群集地址（连接终结点，此应用在端口 8080 上部署 - 例如，ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080）。
 

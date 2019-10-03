@@ -2,7 +2,6 @@
 title: 将 Azure Toolkit for IntelliJ 与 Hortonworks 沙盒配合使用
 description: 了解如何将用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具与 Hortonworks 沙盒配合使用。
 keywords: hadoop 工具,hive 查询,intellij,hortonworks 沙盒,用于 intellij 的 azure 工具包
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 98f22f531ca15bf88cd7d0a9add2851651e2eec7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 783d7fc8bc26ce2c715c774e63ecf60c5b75a439
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118317"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076259"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用
 
@@ -23,9 +22,9 @@ ms.locfileid: "58118317"
 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) 是一种 Java 集成开发环境 (IDE)，用于开发计算机软件。 在 Hortonworks 沙盒上开发并测试应用程序以后，即可将应用程序移至 [Azure HDInsight](apache-hadoop-introduction.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-开始学习本教程之前，必须做好以下准备：
+在开始阅读本文前，必须具有以下项目：
 
 - 基于 Hortonworks 沙盒的 Hortonworks 数据平台 (HDP) 2.4，运行在本地计算机中。 若要设置 HDP，请参阅[通过虚拟机上的 Hadoop 沙盒了解 Apache Hadoop 生态系统](apache-hadoop-emulator-get-started.md)。 
     > [!NOTE]
@@ -56,7 +55,7 @@ ms.locfileid: "58118317"
       * **Maven**：用于支持 Scala 项目创建向导。
       * **SBT**：用于管理依赖项和生成 Scala 项目。
 
-   ![“新建项目”对话框](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
+   ![Intellij 新建 scala 项目](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
 2. 选择“**下一步**”。
 3. 在接下来显示的“新建项目”对话框中，完成以下步骤：
@@ -143,9 +142,9 @@ ms.locfileid: "58118317"
 2. 完成以下步骤：
 
     1. 在“Spark 群集(仅 Linux)”下拉列表中，选择本地 Hortonworks 沙盒。
-    2. 在“主类名”框中，选择或输入主类名。 对于本教程，该名称为 **GroupByTest**。
+    2. 在“主类名”框中，选择或输入主类名。 对于本文，名称为**GroupByTest**。
 
-3. 选择“提交”。 作业提交日志显示在“Spark”提交工具窗口。
+3. 选择**提交**。 作业提交日志显示在“Spark”提交工具窗口。
 
 ## <a name="next-steps"></a>后续步骤
 

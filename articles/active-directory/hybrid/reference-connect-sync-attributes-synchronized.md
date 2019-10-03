@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7010ec16592fea2f530329916e00056ca03a70
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 2dca71023cbed34ef3661ca980cf1eac4ca620c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176384"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65784291"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步：与 Azure Active Directory 同步的属性
 本主题列出通过 Azure AD Connect 同步进行同步的属性。  
@@ -48,7 +48,7 @@ ms.locfileid: "56176384"
 | pwdLastSet |X |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 |samAccountName|X| |
 | sourceAnchor |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
-| usageLocation |X |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |
+| usageLocation |X |机械属性。 用户的国家/地区。 用于进行许可证分配。 |
 | userPrincipalName |X |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 
 ## <a name="exchange-online"></a>Exchange Online
@@ -158,7 +158,6 @@ ms.locfileid: "56176384"
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码同步和联合使用。 |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| securityEnabled | | |X |派生自 groupType |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
 | 号 |X |X | | |
@@ -169,7 +168,7 @@ ms.locfileid: "56176384"
 | thumbnailphoto |X |X | | |
 | title |X |X | | |
 | unauthOrig |X |X |X | |
-| usageLocation |X | | |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |
+| usageLocation |X | | |机械属性。 用户的国家/地区。 用于进行许可证分配。 |
 | userCertificate |X |X | | |
 | userPrincipalName |X | | |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 | userSMIMECertificates |X |X | | |
@@ -214,7 +213,7 @@ ms.locfileid: "56176384"
 | ipPhone |X |X | | |
 | l |X |X | | |
 | mail |X |X |X | |
-| mailnickname |X |X |X | |
+| mailNickname |X |X |X | |
 | managedBy | | |X | |
 | manager |X |X | | |
 | member | | |X | |
@@ -241,7 +240,6 @@ ms.locfileid: "56176384"
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| securityEnabled | | |X |派生自 groupType |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
 | 号 |X |X | | |
@@ -253,11 +251,12 @@ ms.locfileid: "56176384"
 | title |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
-| usageLocation |X | | |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |
+| usageLocation |X | | |机械属性。 用户的国家/地区
+. 用于进行许可证分配。 |
 | userPrincipalName |X | | |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 | wWWHomePage |X |X | | |
 
-## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online（后来称为“Skype for Business”）
+## <a name="teams-and-skype-for-business-online"></a>团队和 Skype for Business Online
 | 属性名称 | 用户 | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
@@ -294,7 +293,6 @@ ms.locfileid: "56176384"
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
-| securityEnabled | | |X |派生自 groupType |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
 | 号 |X |X | | |
@@ -302,7 +300,7 @@ ms.locfileid: "56176384"
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
 | title |X |X | | |
-| usageLocation |X | | |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |
+| usageLocation |X | | |机械属性。 用户的国家/地区。 用于进行许可证分配。 |
 | userPrincipalName |X | | |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 | wWWHomePage |X |X | | |
 
@@ -317,9 +315,8 @@ ms.locfileid: "56176384"
 | objectSID |X | |X |机械属性。 用于维护 Azure AD 和 AD 之间的同步的 AD 用户标识符。 |
 | proxyAddresses |X |X |X |机械属性。 通过 Azure AD 使用。 包含用户的所有辅助电子邮件地址。 |
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 |
-| securityEnabled | | |X |派生自 groupType。 |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
-| usageLocation |X | | |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |
+| usageLocation |X | | |机械属性。 用户的国家/地区。 用于进行许可证分配。 |
 | userPrincipalName |X | | |此 UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 
 ## <a name="intune"></a>Intune
@@ -331,14 +328,13 @@ ms.locfileid: "56176384"
 | description |X |X |X | |
 | displayName |X |X |X | |
 | mail |X |X |X | |
-| mailnickname |X |X |X | |
+| mailNickname |X |X |X | |
 | member | | |X | |
 | objectSID |X | |X |机械属性。 用于维护 Azure AD 和 AD 之间的同步的 AD 用户标识符。 |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
-| securityEnabled | | |X |派生自 groupType |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
-| usageLocation |X | | |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |
+| usageLocation |X | | |机械属性。 用户的国家/地区。 用于进行许可证分配。 |
 | userPrincipalName |X | | |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
@@ -364,14 +360,13 @@ ms.locfileid: "56176384"
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
-| securityEnabled | | |X |派生自 groupType |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
 | 号 |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | title |X |X | | |
-| usageLocation |X | | |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |
+| usageLocation |X | | |机械属性。 用户的国家/地区。 用于进行许可证分配。 |
 | userPrincipalName |X | | |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 
 ## <a name="3rd-party-applications"></a>第三方应用程序
@@ -387,6 +382,7 @@ ms.locfileid: "56176384"
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
 | cn |X | |X | |
 | displayName |X |X |X | |
+| employeeID |X |  |  | |
 | givenName |X |X | | |
 | mail |X | |X | |
 | managedBy | | |X | |
@@ -397,7 +393,7 @@ ms.locfileid: "56176384"
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
-| usageLocation |X | | |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |
+| usageLocation |X | | |机械属性。 用户的国家/地区。 用于进行许可证分配。 |
 | userPrincipalName |X | | |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 
 ## <a name="windows-10"></a>Windows 10
@@ -424,9 +420,9 @@ ms.locfileid: "56176384"
 | msDS-KeyCredentialLink |X |在用户已注册 Windows Hello for Business 后。 | 
 
 ## <a name="exchange-hybrid-writeback"></a>Exchange 混合写回
-选择启用 **Exchange 混合**部署时，这些属性将从 Azure AD 写回到本地 Active Directory。 根据 Exchange 版本，可能会同步更少的属性。
+选择启用 **Exchange 混合**部署时，这些属性从 Azure AD 写回到本地 Active Directory。 根据 Exchange 版本，可能会同步更少的属性。
 
-| 属性名称（连接 UI） |属性名称（本地 AD） | 用户 | 联系人 | 组 | 注释 |
+| 属性名称（本地 AD） | 属性名称（连接 UI） | 用户 | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |派生自 Azure AD 中的 cloudAnchor。 此属性是 Exchange 2016 和 Windows Server 2016 AD 中的新增属性。 |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |联机存档：使客户能够存档邮件。 |
@@ -439,7 +435,7 @@ ms.locfileid: "56176384"
 | publicDelegates| ms-Exch-Public-Delegates  |X | | |允许向拥有本地 Exchange 邮箱的用户授予 Exchange Online 邮箱的 SendOnBehalfTo 权限。 需要 Azure AD Connect 内部版本 1.1.552.0 或更高版本。 |
 
 ## <a name="exchange-mail-public-folder"></a>Exchange 邮件公用文件夹
-如果选择启用 Exchange 邮件公用文件夹，这些属性将从本地 Active Directory 同步到 Azure AD。
+如果选择启用 Exchange 邮件公用文件夹  ，这些属性将从本地 Active Directory 同步到 Azure AD。
 
 | 属性名称 | PublicFolder | 注释 |
 | --- | :---:| --- |
@@ -477,4 +473,4 @@ ms.locfileid: "56176384"
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

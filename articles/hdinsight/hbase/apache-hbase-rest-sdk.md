@@ -1,7 +1,6 @@
 ---
 title: 使用 HBase .NET SDK - Azure HDInsight
 description: 使用 HBase .NET SDK 创建和删除表，以及读取和写入数据。
-services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: 27a013bee98447de591d373917c2cbaae7ca08b3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d998ff44804a2dcd2b3282679a9cb53f893991e3
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857651"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077169"
 ---
-# <a name="use-the-net-sdk-for-apache-hbase"></a>使用适用于 Apache HBase.NET SDK
+# <a name="use-the-net-sdk-for-apache-hbase"></a>使用 .NET SDK for Apache HBase
 
 [Apache HBase](apache-hbase-overview.md) 提供了两个用于处理数据的主要选项：[Apache Hive 查询和调用 HBase 的 RESTful API](apache-hbase-tutorial-get-started-linux.md)。 可以通过 `curl` 命令或类似的实用工具直接使用 REST API。
 
@@ -39,11 +38,11 @@ client = new HBaseClient(credentials);
 
 将 CLUSTERNAME 替换为 HDInsight HBase 群集名称，将 USERNAME 和 PASSWORD 替换为在创建群集时指定的 Apache Hadoop 凭据。 默认的 Hadoop 用户名为 **admin**。
 
-## <a name="create-a-new-table"></a>创建新表
+## <a name="create-a-new-table"></a>新建表
 
 HBase 在表中存储数据。 表包含 *Rowkey*、主键以及一个或多个名为“列系列”的列组。 每个表中的数据按 Rowkey 范围水平分布到多个区域。 每个区域都有一个开始键和结束键。 一个表可以有一个或多个区域。 随着表中数据的增长，HBase 会将大区域拆分为较小的区域。 区域存储在区域服务器中，一个区域服务器可以存储多个区域。
 
-数据以物理方式存储在 *HFile* 中。 单个 HFile 包含的数据适用于一个表、一个区域和一个列系列。 HFile 中的行在存储时按 Rowkey 排序。 每个 HFile 都有一个 B+ 树索引，用于快速检索行。
+数据以物理方式存储在 *HFile* 中。 单个 HFile 包含的数据适用于一个表、一个区域和一个列系列。 HFile 中的行在存储时按 Rowkey 排序。 每个 HFile 都有一个B+ 树索引，用于快速检索行。
 
 若要创建新表，请指定 `TableSchema` 和列。 以下代码检查“RestSDKTable”表是否已存在 - 如果不存在，则会创建该表。
 
@@ -115,7 +114,7 @@ await client.StoreCellsAsync("RestSDKTable", set);
 
 HBase 可实现 [Cloud BigTable](https://cloud.google.com/bigtable/)，因此数据格式如下所示：
 
-![具有“群集用户”角色的用户](./media/apache-hbase-rest-sdk/table.png)
+![Apache HBase 示例数据输出](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
 ## <a name="select-data"></a>选择数据
 

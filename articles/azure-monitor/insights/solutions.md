@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: b66d9cf15aaeaca975b60f24601b8ad7f555f458
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 6932f9f302bf1816842d78a662f01ebaafed8686
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887550"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989207"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 监视解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。
@@ -65,11 +65,11 @@ ms.locfileid: "56887550"
 ## <a name="install-a-monitoring-solution"></a>安装监视解决方案
 [Azure 市场](https://azuremarketplace.microsoft.com)中提供了 Microsoft 和合作伙伴提供的监视解决方案。 可以搜索可用的解决方案，并使用以下过程进行安装。 安装解决方案时，必须选择要在其中安装该解决方案的 [Log Analytics 工作区](../platform/manage-access.md)，以及要将解决方案数据收集到的位置。
 
-1. 在[订阅的解决方案列表](#list-installed-monitoring-solutions)中，单击“添加”。 
-1. 在“管理解决方案”的右侧，单击“更多”。 
+1. 在[订阅的解决方案列表](#list-installed-monitoring-solutions)中，单击“添加”。
+1. 浏览或搜索解决方案。 你还可以从此[搜索链接](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions)浏览解决方案。
 1. 找到所需的监视解决方案并阅读其说明。
 1. 单击“创建”以启动安装进程。
-1. 安装过程开始后，系统会提示提供所需的配置（根据每个解决方案而异）。
+1. 当安装过程开始时, 系统将提示你指定 Log Analytics 工作区, 并为解决方案提供所需的任何配置。
 
 ![安装解决方案](media/solutions/install-solution.png)
 

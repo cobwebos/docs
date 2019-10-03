@@ -1,32 +1,25 @@
-items:
 - name: Azure 存储文档
   href: index.yml
 - name: 概述
-  items:
-  - name: 介绍
-    href: ./common/storage-introduction.md
-  - name: 选择 Blob、文件或磁盘
-    href: ./common/storage-decide-blobs-files-disks.md
   expanded: true
+  items:
+    - name: 介绍
+      href: ./common/storage-introduction.md
+    - name: 选择 Blob、文件或磁盘
+      href: ./common/storage-decide-blobs-files-disks.md
 - name: Blob
-  href: ./blobs/storage-blobs-overview.md
+  href: ./blobs/index.yml?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - name: Data Lake Storage Gen2
-  href: ./blobs/data-lake-storage-introduction.md
+  href: ./blobs/index.yml?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - name: 文件
-  href: ./files/storage-files-introduction.md
+  href: ./files/index.yml?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 - name: 队列
-  href: ./queues/storage-queues-introduction.md
+  href: ./queues/index.yml?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: 表
   href: ./tables/table-storage-overview.md
 - name: 磁盘
   items:
-  - name: Windows
-    href: ../virtual-machines/windows/managed-disks-overview.md
-  - name: Linux
-    href: ../virtual-machines/linux/managed-disks-overview.md
-ms.openlocfilehash: 44904cb09b3865da6040fa581cf43dccf722db20
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329825"
+    - name: Windows
+      href: ../virtual-machines/windows/managed-disks-overview.md
+    - name: Linux
+      href: ../virtual-machines/linux/managed-disks-overview.md

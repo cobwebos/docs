@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a652e157ec0e7e33c8dce7be2f4af2c240edac9e
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081825"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839916"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-onprem-postgresql-connector.md)
 > * [版本 2（当前版本）](../connector-postgresql.md)
 
@@ -33,7 +33,7 @@ ms.locfileid: "58081825"
 
 可以将数据从本地 PostgreSQL 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持用作接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 数据工厂当前支持将数据从 PostgreSQL 数据库移至其他数据存储，而不支持将数据从其他数据存储移至 PostgreSQL 数据库。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 数据工厂服务支持使用数据管理网关连接到本地 PostgreSQL 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
 
@@ -48,9 +48,8 @@ ms.locfileid: "58081825"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从本地 PostgreSQL 数据存储移动数据。
 
-- 创建管道的最简单方法是使用复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+- 创建管道的最简单方法是使用  复制向导。 有关分步说明，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 - 还可以使用以下工具来创建管道：
-  - Azure 门户
   - Visual Studio
   - Azure PowerShell
   - Azure 资源管理器模板
@@ -61,9 +60,9 @@ ms.locfileid: "58081825"
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
+1. 创建链接服务可将输入和输出数据存储链接到数据工厂  。
+2. 创建数据集以表示复制操作的输入和输出数据  。
+3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出  。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于从本地 PostgreSQL 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 PostgreSQL 复制到 Azure Blob](#json-example-copy-data-from-postgresql-to-azure-blob) 部分。
 
@@ -79,7 +78,7 @@ ms.locfileid: "58081825"
 | database |PostgreSQL 数据库的名称。 |是 |
 | schema |数据库中架构的名称。 架构名称区分大小写。 |否 |
 | authenticationType |用于连接到 PostgreSQL 数据库的身份验证类型。 可能的值包括：Anonymous、Basic 和 Windows。 |是 |
-| username |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
+| userName |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 PostgreSQL 数据库。 |是 |
 
@@ -111,7 +110,7 @@ ms.locfileid: "58081825"
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
 ## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON 示例：将数据从 PostgreSQL 复制到 Azure Blob
-此示例提供示例 JSON 定义，可使用这些定义通过 [Azure 门户](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 创建管道。 它们演示如何将数据从 PostgreSQL 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+此示例提供示例 JSON 定义，可用于通过使用创建的管道[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 它们演示如何将数据从 PostgreSQL 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 > [!IMPORTANT]
 > 此示例提供 JSON 代码段。 它不包括创建数据工厂的分步说明。 请参阅文章[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)以获取分步说明。
@@ -251,7 +250,7 @@ ms.locfileid: "58081825"
 
 **包含复制活动的管道：**
 
-管道包含配置为使用输入和输出数据集，且计划每小时运行一次的复制活动。 在管道 JSON 定义中， **源** 类型设置为 **RelationalSource****接收器** 类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询从 PostgreSQL 数据库的 public.usstates 表中选择数据。
+管道包含配置为使用输入和输出数据集，且计划每小时运行一次的复制活动。 在管道 JSON 定义中， **源** 类型设置为 **RelationalSource** **接收器** 类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询从 PostgreSQL 数据库的 public.usstates 表中选择数据。
 
 ```json
 {
@@ -311,33 +310,33 @@ ms.locfileid: "58081825"
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte[], String |
 | bit varying [ (n) ] |varbit |Byte[], String |
-| 布尔值 |bool |Boolean |
+| boolean |bool |Boolean |
 | box | |Byte[], String |
 | bytea | |Byte[], String |
 | character [(n)] |char [(n)] |String |
-| character varying [(n)] |varchar [(n)] |String |
+| character varying [(n)] |varchar [(n)] |字符串 |
 | cid | |String |
 | cidr | |String |
 | circle | |Byte[], String |
-| 日期 | |Datetime |
+| date | |Datetime |
 | daterange | |String |
-| 双精度 |float8 |Double |
+| double precision |float8 |Double |
 | inet | |Byte[], String |
-| intarry | |String |
-| int4range | |String |
+| intarry | |字符串 |
+| int4range | |字符串 |
 | int8range | |String |
 | integer |int, int4 |Int32 |
 | interval [fields] [(p)] | |Timespan |
-| json | |String |
+| json | |字符串 |
 | jsonb | |Byte[] |
-| 折线图 | |Byte[], String |
+| line | |Byte[], String |
 | lseg | |Byte[], String |
 | macaddr | |Byte[], String |
 | money | |Decimal |
 | numeric [(p, s)] |decimal [(p, s)] |Decimal |
-| numrange | |String |
+| numrange | |字符串 |
 | oid | |Int32 |
-| 路径 | |Byte[], String |
+| path | |Byte[], String |
 | pg_lsn | |Int64 |
 | point | |Byte[], String |
 | polygon | |Byte[], String |

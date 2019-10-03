@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 本文介绍 Azure 如何让云服务与公共 Internet 服务通信。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
-ms.author: kumud
-ms.openlocfilehash: 3267d79387586f5ca8475d7ac0ed0f86d3f64f0d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.author: allensu
+ms.openlocfilehash: 10af3b4838aae1565bac1d996997c117a74cedbc
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876936"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274669"
 ---
 # <a name="outbound-connections-classic"></a>出站连接（经典）
 
@@ -37,7 +37,7 @@ Azure 使用源网络地址转换 (SNAT) 来执行此功能。 当多个专用 I
 
 Azure 提供三种不同的方法来实现出站连接经典部署。  并非所有经典部署都可使用这三种方案：
 
-| 场景 | 方法 | IP 协议 | 描述 | Web 辅助角色 | IaaS | 
+| 应用场景 | 方法 | IP 协议 | 描述 | Web 辅助角色 | IaaS | 
 | --- | --- | --- | --- | --- | --- |
 | [1.具有实例级公共 IP 地址的 VM](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配了公共 IP 的虚拟机。 此实例具有所有可用的临时端口。 | 否 | 是 |
 | [2. 公共负载均衡终结点](#publiclbendpoint) | 使用端口伪装 (PAT) 通过 SNAT 连接到公共终结点 | TCP、UDP | Azure 与多个专用终结点共享公共 IP 地址公共终结点。 Azure 使用公共终结点的临时端口进行 PAT。 | 是 | 是 |

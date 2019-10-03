@@ -1,20 +1,20 @@
 ---
-title: 使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略 - Azure
-description: 了解如何使用企业安全性套餐为 Azure HDInsight 中的 HBase 配置 Apache Ranger 策略。
-services: hdinsight
+title: 教程 - 使用企业安全性套餐配置 Apache HBase - Azure
+description: 教程 - 了解如何使用企业安全性套餐为 Azure HDInsight 中的 HBase 配置 Apache Ranger 策略。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 02/01/2019
-ms.openlocfilehash: 1421b142fbca83d2de46f52f8390d0c25f22780c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/04/2019
+ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117279"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037271"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略（预览）
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>教程：使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略
 
 了解如何为企业安全性套餐 (ESP) Apache HBase 群集配置 Apache Ranger 策略。 将 ESP 群集连接到域，可允许用户使用域凭据进行身份验证。 本教程将创建两个 Ranger 策略来限制对 HBase 表中不同列系列的访问。
 
@@ -88,21 +88,22 @@ ms.locfileid: "58117279"
     ```hbaseshell
     scan 'Contacts'
     ```
-    ![HDInsight Hadoop HBase shell](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+
+    ![HDInsight Hadoop HBase shell 输出](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>创建 Ranger 策略
 
 为 **sales_user1** 和 **marketing_user1** 创建 Ranger 策略。
 
-1. 打开“Ranger 管理 UI”。 单击“HBase”下的“\<群集名称 >_hbase”。
+1. 打开“Ranger 管理 UI”  。 单击“HBase”下的“\<群集名称 >_hbase”。  
 
-   ![Apache Ranger 管理 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![HDInsight Apache Ranger 管理 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
-2. “策略列表”屏幕将显示针对此群集创建的所有 Ranger 策略。 可以列出一个预先配置的策略。 单击“添加新策略”。
+2. “策略列表”屏幕将显示针对此群集创建的所有 Ranger 策略。  可以列出一个预先配置的策略。 单击“添加新策略”。 
 
-    ![Apache Ranger 管理 UI 创建策略](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Apache Ranger HBase 策略列表](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
-3. 在“创建策略”屏幕上输入以下值：
+3. 在“创建策略”屏幕上输入以下值  ：
 
    |**设置**  |**建议的值**  |
    |---------|---------|
@@ -119,14 +120,14 @@ ms.locfileid: "58117279"
    * `*` 表示字符出现零次或多次。
    * `?` 表示单个字符。
 
-   ![Apache Ranger 管理 UI 创建策略](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![Apache Ranger 策略创建 sales](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
-   >如果“选择用户”中未自动填充域用户，请等待片刻时间让 Ranger 与 Azure AD 同步。
+   >如果“选择用户”  中未自动填充域用户，请等待片刻时间让 Ranger 与 Azure AD 同步。
 
-4. 单击“添加”保存策略。
+4. 单击“添加”保存策略。 
 
-5. 单击“添加新策略”，然后输入以下值：
+5. 单击“添加新策略”  ，然后输入以下值：
 
    |**设置**  |**建议的值**  |
    |---------|---------|
@@ -138,15 +139,15 @@ ms.locfileid: "58117279"
    |选择用户  | marketing_user1 |
    |权限  | 读取 |
 
-   ![Apache Ranger 管理 UI 创建策略](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![Apache Ranger 策略创建 marketing](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
-6. 单击“添加”保存策略。
+6. 单击“添加”保存策略。 
 
 ## <a name="test-the-ranger-policies"></a>测试 Ranger 策略
 
 根据配置的 Ranger 策略，**sales_user1** 可以查看 `Name` 和 `Contact` 列系列中的列的所有数据。 **marketing_user1** 只能查看 `Contact` 列系列中的数据。
 
-### <a name="access-data-as-salesuser1"></a>以 sales_user1 的身份访问数据
+### <a name="access-data-as-sales_user1"></a>以 sales_user1 的身份访问数据
 
 1. 打开与群集的新 SSH 连接。 使用以下命令登录到群集：
 
@@ -160,7 +161,7 @@ ms.locfileid: "58117279"
    kinit sales_user1
    ```
 
-2. 打开 hbase shell，并扫描表 `Customers`。
+2. 打开 HBase shell，并扫描表 `Customers`。
 
    ```hbaseshell
    hbase shell
@@ -188,7 +189,7 @@ ms.locfileid: "58117279"
     2 row(s) in 0.1000 seconds
     ```
 
-### <a name="access-data-as-marketinguser1"></a>以 marketing_user1 的身份访问数据
+### <a name="access-data-as-marketing_user1"></a>以 marketing_user1 的身份访问数据
 
 1. 打开与群集的新 SSH 连接。 使用以下命令以 **marketing_user1** 身份登录：
 
@@ -202,14 +203,14 @@ ms.locfileid: "58117279"
    kinit marketing_user1
    ```
 
-2. 打开 hbase shell，并扫描表 `Customers`：
+1. 打开 HBase shell，并扫描表 `Customers`：
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-3. 请注意，marketing 用户只能查看 `Contact` 列系列的五个列。
+1. 请注意，marketing 用户只能查看 `Contact` 列系列的五个列。
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -226,19 +227,19 @@ ms.locfileid: "58117279"
     2 row(s) in 0.0730 seconds
     ```
 
-9. 从 Ranger UI 查看审核访问事件。
+1. 从 Ranger UI 查看审核访问事件。
 
-   ![Ranger UI 策略审核](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![HDInsight Ranger UI 策略审核](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的 HBase 群集：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在顶部的“搜索”框中，键入 **HDInsight**。 
-1. 选择“服务”下的“HDInsight 群集”。
-1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。 
-1. 单击“删除” 。 单击 **“是”**。
+2. 在顶部的“搜索”框中，键入 **HDInsight**。  
+1. 选择“服务”下的“HDInsight 群集”   。
+1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。  
+1. 单击“删除”  。 单击 **“是”** 。
 
 ## <a name="next-steps"></a>后续步骤
 

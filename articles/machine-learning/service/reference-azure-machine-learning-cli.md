@@ -1,7 +1,7 @@
 ---
 title: 机器学习 CLI 扩展
-titleSuffix: Azure Machine Learning service
-description: 了解适用于 Azure CLI 的 Azure 机器学习的机器学习 CLI 扩展。 Azure CLI 是一个跨平台命令行实用工具，可让你使用 Azure 云中的资源。 借助该机器学习扩展可以使用 Azure 机器学习服务。
+titleSuffix: Azure Machine Learning
+description: 了解适用于 Azure CLI 的 Azure 机器学习的机器学习 CLI 扩展。 Azure CLI 是一个跨平台命令行实用工具，可让你使用 Azure 云中的资源。 机器学习扩展使你能够使用 Azure 机器学习。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 12/04/2018
+ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2504ca9cb785529a9eab321c2521db46390632b7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 85ebcc36d32b86ec2640ce7ce02190deaab19d6b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789167"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997082"
 ---
-# <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>将 CLI 扩展用于 Azure 机器学习服务
+# <a name="use-the-cli-extension-for-azure-machine-learning"></a>使用 CLI 扩展进行 Azure 机器学习
 
-Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)（适用于 Azure 平台的跨平台命令行接口）的一个扩展。 借助此扩展提供的命令，可以从命令行使用 Azure 机器学习服务。 它允许创建用于自动化机器学习工作流的脚本。 例如，可以创建用于执行以下操作的脚本：
+Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)（适用于 Azure 平台的跨平台命令行接口）的一个扩展。 此扩展提供用于处理 Azure 机器学习的命令。 它允许您自动执行机器学习活动。 以下列表提供了一些可以通过 CLI 扩展执行的示例操作：
 
 + 运行试验以创建机器学习模型
 
@@ -28,32 +28,28 @@ Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?vie
 
 + 打包、部署和跟踪机器学习模型的生命周期
 
-CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工具，可以处理高度参数化的任务，例如：
+CLI 不能取代 Azure 机器学习 SDK。 它是一种补充工具，经过优化，可处理高度参数化的任务，这些任务非常适合自动化。
 
-* 创建计算资源
+## <a name="prerequisites"></a>先决条件
 
-* 参数化试验提交
-
-* 模型的注册
-
-* 映像创建
-
-* 服务部署
-
-## <a name="prerequisites"></a>必备组件
-
-
-* 若要使用 CLI，必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
+* 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
+
+## <a name="full-reference-docs"></a>完整参考文档
+
+查找[Azure CLI 的 azure cli ml 扩展的完整参考文档](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest)。
 
 ## <a name="install-the-extension"></a>安装扩展
 
 若要安装机器学习 CLI 扩展，请使用以下命令：
 
 ```azurecli-interactive
-az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-1.0.10-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
+az extension add -n azure-cli-ml
 ```
+
+> [!TIP]
+> 可在[此处](https://aka.ms/azml-deploy-cloud)找到可用于以下命令的示例文件。
 
 出现提示时，选择 `y` 安装该扩展。
 
@@ -63,8 +59,14 @@ az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-
 az ml -h
 ```
 
-> [!TIP]
-> 若要更新该扩展，必须先将其__删除__，然后再__安装__。 这会安装最新版本。
+## <a name="update-the-extension"></a>更新扩展
+
+若要更新机器学习 CLI 扩展，请使用以下命令：
+
+```azurecli-interactive
+az extension update -n azure-cli-ml
+```
+
 
 ## <a name="remove-the-extension"></a>删除扩展
 
@@ -78,197 +80,177 @@ az extension remove -n azure-cli-ml
 
 以下命令演示如何使用 CLI 来管理 Azure 机器学习所用的资源。
 
-
-+ 创建 Azure 机器学习服务工作区：
-
-    ```azurecli-interactive
-    az ml workspace create -n myworkspace -g myresourcegroup
-    ```
-
-+ 设置默认工作区：
++ 如果还没有资源组，请创建一个资源组：
 
     ```azurecli-interactive
-    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
+    az group create -n myresourcegroup -l westus2
     ```
-    
-+ 附加 AKS 群集
+
++ 创建 Azure 机器学习工作区：
 
     ```azurecli-interactive
-    az ml computetarget attach aks -n myaks -i myaksresourceid -g myrg -w myworkspace
+    az ml workspace create -w myworkspace -g myresourcegroup
     ```
 
-## <a name="experiments"></a>试验
+    有关详细信息，请参阅[az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)。
 
-以下命令演示如何通过 CLI 使用试验：
-
-* 提交试验之前附加项目（运行配置）：
++ 将工作区配置附加到文件夹，以启用 CLI 上下文感知。
 
     ```azurecli-interactive
-    az ml project attach --experiment-name myhistory
+    az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-* 开始运行试验。 使用此命令时，请指定包含运行配置的 runconfig 文件的名称。 计算目标使用运行配置来为模型创建训练环境。 在此示例中，运行配置是从 `./aml_config/myrunconfig.runconfig` 文件加载的。
+    此命令创建一个`.azureml`子目录, 其中包含 .runconfig 和 conda 环境文件示例。 它还包含`config.json`用于与 Azure 机器学习工作区进行通信的文件。
+
+    有关详细信息, 请参阅[az ml folder attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach)。
+
++ 将 Azure blob 容器附加为数据存储。
 
     ```azurecli-interactive
-    az ml run submit -c myrunconfig train.py
+    az ml datastore attach-blob  -n datastorename -a accountname -c containername
     ```
 
-    有关 runconfig 文件的详细信息，请参阅 [RunConfig](#runconfig) 部分。
+    有关详细信息，请参阅[az ml 数据存储附加 blob](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-attach-blob)。
 
-* 查看提交的试验列表：
++ 将文件上传到数据存储。
 
     ```azurecli-interactive
-    az ml history list
+    az ml datastore upload  -n datastorename -p sourcepath
     ```
 
-## <a name="model-registration-image-creation--deployment"></a>模型注册、映像创建和部署
+    有关详细信息，请参阅[az ml 数据存储上传](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/datastore?view=azure-cli-latest#ext-azure-cli-ml-az-ml-datastore-upload)。
+
++ 将 AKS 群集附加为计算目标。
+
+    ```azurecli-interactive
+    az ml computetarget attach aks -n myaks -i myaksresourceid -g myresourcegroup -w myworkspace
+    ```
+
+    有关详细信息，请参阅[az ml computetarget attach aks](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks)
+
++ 创建新的 AMLcompute 目标。
+
+    ```azurecli-interactive
+    az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
+    ```
+
+    有关详细信息，请参阅[az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)。
+
+## <a id="experiments"></a>运行试验
+
+* 开始运行试验。 使用此命令时, 请指定 .runconfig 文件的名称 (如果正在查看文件\*系统, 则为 .runconfig)。
+
+    ```azurecli-interactive
+    az ml run submit-script -c sklearn -e testexperiment train.py
+    ```
+
+    > [!TIP]
+    > 命令创建一个`.azureml`子目录，其中包含两个示例 .runconfig 文件。 `az ml folder attach` 
+    >
+    > 如果你的 Python 脚本以编程方式创建运行配置对象, 则可以使用[.runconfig ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-)将其另存为 .runconfig 文件。
+    >
+    > 有关 .runconfig 文件的更多示例[https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml), 请参阅。
+
+    有关详细信息, 请参阅[az ml run 提交脚本](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
+
+* 查看实验列表：
+
+    ```azurecli-interactive
+    az ml experiment list
+    ```
+
+    有关详细信息, 请参阅[az ml 实验列表](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list)。
+
+## <a name="environment-management"></a>环境管理
+
+以下命令演示了如何创建、注册和列出工作区 Azure 机器学习[环境](how-to-configure-environment.md)：
+
++ 为环境创建基架文件：
+
+    ```azurecli-interactive
+    az ml environment scaffold -n myenv -d myenvdirectory
+    ```
+
+    有关详细信息，请参阅[az ml 环境基架](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-scaffold)。
+
++ 注册环境：
+
+    ```azurecli-interactive
+    az ml environment register -d myenvdirectory
+    ```
+
+    有关详细信息，请参阅[az ml 环境 register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-register)。
+
++ 列出注册环境：
+
+    ```azurecli-interactive
+    az ml environment list
+    ```
+
+    有关详细信息，请参阅[az ml 环境 list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-list)。
+
++ 下载已注册的环境：
+
+    ```azurecli-interactive
+    az ml environment download -n myenv -d downloaddirectory
+    ```
+
+    有关详细信息，请参阅[az ml 环境下载](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/environment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-environment-download)。
+
+## <a name="model-registration-profiling-deployment"></a>模型注册，分析，部署
 
 以下命令演示如何注册已训练的模型，然后将其部署为生产服务：
 
 + 将模型注册到 Azure 机器学习：
 
-  ```azurecli-interactive
-  az ml model register -n mymodel -m sklearn_regression_model.pkl
-  ```
+    ```azurecli-interactive
+    az ml model register -n mymodel -p sklearn_regression_model.pkl
+    ```
 
-+ 创建包含机器学习模型和依赖项的映像： 
+    有关详细信息，请参阅[az ml model register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register)。
 
-  ```azurecli-interactive
-  az ml image create container -n myimage -r python -m mymodel:1 -f score.py -c myenv.yml
-  ```
++ **可选**分析模型，获取部署的最佳 CPU 和内存值。
+    ```azurecli-interactive
+    az ml model profile -n myprofile -m mymodel:1 --ic inferenceconfig.json -d "{\"data\": [[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}" -t myprofileresult.json
+    ```
 
-+ 将映像部署到计算目标：
+    有关详细信息，请参阅[az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)。
 
-  ```azurecli-interactive
-  az ml service create aci -n myaciservice --image-id myimage:1
-  ```
++ 将模型部署到 AKS
+    ```azurecli-interactive
+    az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget
+    ```
+    
+    有关推理配置文件架构的详细信息，请参阅[推理配置架构](#inferenceconfig)。
+    
+    有关部署配置文件架构的详细信息，请参阅[部署配置架构](#deploymentconfig)。
 
-## <a id="runconfig"></a> Runconfig 文件
+    有关详细信息，请参阅[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)。
 
-运行配置用于配置训练模型时所使用的训练环境。 可以使用 SDK 在内存中创建此配置，也可以从 runconfig 文件加载此配置。
+<a id="inferenceconfig"></a>
 
-Runconfig 文件是一个描述训练环境配置的文本文档。 例如，它列出了训练脚本的名称，以及包含训练模型所需的 conda 依赖项的文件。
+## <a name="inference-configuration-schema"></a>推理配置架构
 
-使用 `az ml project attach` 命令附加项目时，Azure 机器学习 CLI 会创建两个默认的 `.runconfig` 文件，名为 `docker.runconfig` 和 `local.runconfig`。 
+[!INCLUDE [inferenceconfig](../../../includes/machine-learning-service-inference-config.md)]
 
-如果拥有可使用 [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) 类创建运行配置的代码，则可使用 `save()` 方法将其保存到 `.runconfig` 文件。
+<a id="deploymentconfig"></a>
 
-以下是 `.runconfig` 文件的内容示例：
+## <a name="deployment-configuration-schema"></a>部署配置架构
 
-```text
-# The script to run.
-script: train.py
-# The arguments to the script file.
-arguments: []
-# The name of the compute target to use for this run.
-target: local
-# Framework to execute inside. Allowed values are "Python" ,  "PySpark", "CNTK",  "TensorFlow", and "PyTorch".
-framework: PySpark
-# Communicator for the given framework. Allowed values are "None" ,  "ParameterServer", "OpenMpi", and "IntelMpi".
-communicator: None
-# Automatically prepare the run environment as part of the run itself.
-autoPrepareEnvironment: true
-# Maximum allowed duration for the run.
-maxRunDurationSeconds:
-# Number of nodes to use for running job.
-nodeCount: 1
-# Environment details.
-environment:
-# Environment variables set for the run.
-  environmentVariables:
-    EXAMPLE_ENV_VAR: EXAMPLE_VALUE
-# Python details
-  python:
-# user_managed_dependencies=True indicates that the environmentwill be user managed. False indicates that AzureML willmanage the user environment.
-    userManagedDependencies: false
-# The python interpreter path
-    interpreterPath: python
-# Path to the conda dependencies file to use for this run. If a project
-# contains multiple programs with different sets of dependencies, it may be
-# convenient to manage those environments with separate files.
-    condaDependenciesFile: aml_config/conda_dependencies.yml
-# Docker details
-  docker:
-# Set True to perform this run inside a Docker container.
-    enabled: true
-# Base image used for Docker-based runs.
-    baseImage: mcr.microsoft.com/azureml/base:0.2.4
-# Set False if necessary to work around shared volume bugs.
-    sharedVolumes: true
-# Run with NVidia Docker extension to support GPUs.
-    gpuSupport: false
-# Extra arguments to the Docker run command.
-    arguments: []
-# Image registry that contains the base image.
-    baseImageRegistry:
-# DNS name or IP address of azure container registry(ACR)
-      address:
-# The username for ACR
-      username:
-# The password for ACR
-      password:
-# Spark details
-  spark:
-# List of spark repositories.
-    repositories:
-    - https://mmlspark.azureedge.net/maven
-    packages:
-    - group: com.microsoft.ml.spark
-      artifact: mmlspark_2.11
-      version: '0.12'
-    precachePackages: true
-# Databricks details
-  databricks:
-# List of maven libraries.
-    mavenLibraries: []
-# List of PyPi libraries
-    pypiLibraries: []
-# List of RCran libraries
-    rcranLibraries: []
-# List of JAR libraries
-    jarLibraries: []
-# List of Egg libraries
-    eggLibraries: []
-# History details.
-history:
-# Enable history tracking -- this allows status, logs, metrics, and outputs
-# to be collected for a run.
-  outputCollection: true
-# whether to take snapshots for history.
-  snapshotProject: true
-# Spark configuration details.
-spark:
-  configuration:
-    spark.app.name: Azure ML Experiment
-    spark.yarn.maxAppAttempts: 1
-# HDI details.
-hdi:
-# Yarn deploy mode. Options are cluster and client.
-  yarnDeployMode: cluster
-# Tensorflow details.
-tensorflow:
-# The number of worker tasks.
-  workerCount: 1
-# The number of parameter server tasks.
-  parameterServerCount: 1
-# Mpi details.
-mpi:
-# When using MPI, number of processes per node.
-  processCountPerNode: 1
-# data reference configuration details
-dataReferences: {}
-# Project share datastore reference.
-sourceDirectoryDataStore:
-# AmlCompute details.
-amlcompute:
-# VM size of the Cluster to be created.Allowed values are Azure vm sizes. The list of vm sizes is available in 'https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs
-  vmSize:
-# VM priority of the Cluster to be created.Allowed values are "dedicated" , "lowpriority".
-  vmPriority:
-# A bool that indicates if the cluster has to be retained after job completion.
-  retainCluster: false
-# Name of the cluster to be created. If not specified, runId will be used as cluster name.
-  name:
-# Maximum number of nodes in the AmlCompute cluster to be created. Minimum number of nodes will always be set to 0.
-  clusterMaxNodeCount: 1
-```
+### <a name="local-deployment-configuration-schema"></a>本地部署配置架构
+
+[!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-local-deploy-config.md)]
+
+### <a name="azure-container-instance-deployment-configuration-schema"></a>Azure 容器实例部署配置架构 
+
+[!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aci-deploy-config.md)]
+
+### <a name="azure-kubernetes-service-deployment-configuration-schema"></a>Azure Kubernetes 服务部署配置架构
+
+[!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aks-deploy-config.md)]
+
+## <a name="next-steps"></a>后续步骤
+
+* [机器学习 CLI 扩展的命令参考](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest)。
+
+* [使用 Azure Pipelines 训练和部署机器学习模型](/azure/devops/pipelines/targets/azure-machine-learning)

@@ -1,49 +1,46 @@
 ---
-title: 查看税务文档的 Microsoft 客户协议-Azure |Microsoft Docs
-description: 了解如何查看和下载你的 Microsoft 客户协议计费配置文件的税务回执。
-services: ''
-documentationcenter: ''
-author: jureid
+title: 在 Azure 中查看 Microsoft 客户协议税单
+description: 了解如何查看和下载 Microsoft 客户协议计费对象信息的税务收据。
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 82b568d5a6abae1f061166afc1c80ef639df036c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
-ms.translationtype: MT
+ms.openlocfilehash: 66d47ad1d67c963d70fb40e43eb077222ad8b360
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57250204"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709805"
 ---
-# <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>为 Microsoft 客户协议查看税务文档
+# <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>查看 Microsoft 客户协议税单
 
-本文适用于 Microsoft 客户协议向计费帐户。 [检查是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
+本文适用于 Microsoft 客户协议的计费帐户。 [检查是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
 
-## <a name="view-and-download-tax-documents"></a>查看和下载税务文档
+## <a name="view-and-download-tax-documents"></a>查看和下载税单
 
-您必须是所有者、 参与者、 读取器或计费的配置文件的发票管理器查看和下载税务文档。 若要了解 Microsoft 客户协议计费角色的详细信息，请参阅[计费的配置文件角色和任务](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)。
-<!-- TO DO: add link to manage access doc for MCA -->
+必须是计费对象信息的所有者、参与者、读者或发票管理者，才能查看和下载税单。 若要详细了解 Microsoft 客户协议的计费角色，请参阅[计费对象信息角色和任务](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)。
 
-1. 在“成本管理 + 计费”中进行搜索。
-2. 选择计费的配置文件。
-3. 选择“发票”。
-4. 在发票网格中，查找你想要下载的税务文档相对应的发票。
-5. 单击省略号 (`...`) 的行的末尾。
-6. 选择**税务文档**。 具体取决于你计费的配置文件的国家/地区，可能会看到多个每张发票的税务文档。
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 搜索“成本管理 + 计费”  。
+1. 选择计费对象信息。
+1. 选择“发票”  。
+1. 在发票网格中，找到与要下载的税单对应的发票行。
+1. 单击行末尾的省略号 (`...`)。
+7. 选择“税单”  。 根据计费对象信息的国家/地区，可能会看到每个发票有多个税单。
+
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-- [查看你组织的 Azure 定价](billing-ea-pricing.md)
 - [查看和下载 Microsoft Azure 发票](billing-download-azure-invoice.md)
-- [查看和下载你的 Microsoft Azure 使用情况和费用](billing-download-azure-daily-usage.md)
-- [了解计费配置文件的发票上的费用](billing-mca-understand-your-bill.md)。
+- [查看和下载 Microsoft Azure 使用情况与费用](billing-download-azure-daily-usage.md)
+- [了解计费对象信息的发票上的费用](billing-mca-understand-your-bill.md)。

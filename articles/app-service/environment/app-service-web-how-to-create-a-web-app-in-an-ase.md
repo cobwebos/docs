@@ -10,17 +10,16 @@ ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3e7db670a125f3c5f308107aabfbbab9301b7561
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: cc40c2296e583ab93a7c34d709cfbf1334ae3926
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718089"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069847"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在应用服务环境 v1 中创建 Web 应用
 
@@ -84,7 +83,7 @@ ms.locfileid: "53718089"
     ![][3]
 
 ### <a name="selecting-a-worker-pool"></a>选择辅助角色池
-通常，在 Azure App Service 中和应用服务环境外，根据所选专用定价计划的不同，共有 3 种计算大小可用。  同理，对于 ASE，最多可以定义 3 个辅助角色池，并指定用于该辅助角色池的计算实例大小。  对 ASE 的租户来说，这意味着他们不是根据应用服务计划的计算实例大小来选择定价计划，而是选择所谓的辅助角色池。  
+通常，在 Azure 应用服务中和应用服务环境外，根据所选专用定价计划的不同，共有 3 种计算大小可用。  同理，对于 ASE，最多可以定义 3 个辅助角色池，并指定用于该辅助角色池的计算实例大小。  对 ASE 的租户来说，这意味着他们不是根据应用服务计划的计算实例大小来选择定价计划，而是选择所谓的辅助角色池。  
 
 辅助角色池选择项 UI 会在名称下方显示用于该辅助角色池的计算实例大小。  可用数量是指该池中可用的计算实例数。  此值仅指未被占用的实例数量，而总池实际上可能具有比此数值更多的实例。  如需调整应用服务环境以添加更多计算资源，请参阅[配置应用服务环境](app-service-web-configure-an-app-service-environment.md)。
 

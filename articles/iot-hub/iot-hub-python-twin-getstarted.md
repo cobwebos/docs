@@ -1,20 +1,19 @@
 ---
 title: Azure IoT 中心设备孪生入门 (Python) | Microsoft Docs
 description: 如何使用 Azure IoT 中心设备孪生添加标记，并使用 IoT 中心查询。 使用用于 Python 的 Azure IoT SDK 来实现一个模拟设备应用，并实现可添加标记和运行 IoT 中心查询的一个服务应用。
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: kgremban
-ms.openlocfilehash: 3e703c999d57cf62064291cf91059a17a959a2c3
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.date: 08/26/2019
+ms.author: robinsh
+ms.openlocfilehash: 565330528638bb6c8e0458a9761e2cf9fa4e3d2a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608395"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001486"
 ---
 # <a name="get-started-with-device-twins-python"></a>设备孪生入门 (Python)
 
@@ -26,42 +25,39 @@ ms.locfileid: "59608395"
 
 * **ReportConnectivity.py**，这是一个 .Python 应用，用于模拟使用早先创建的设备标识连接到 IoT 中心的设备，并报告其连接状况。
 
-> [!NOTE]
-> [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文介绍了可用于构建设备和后端应用的 Azure IoT SDK。
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-要完成本教程，需要以下各项：
+## <a name="prerequisites"></a>先决条件
 
-* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
-
-* 如果使用 Windows OS，则请安装 [Visual C++ 可再发行组件包](https://www.microsoft.com/download/confirmation.aspx?id=48145)，以便使用 Python 中的本机 DLL。
-
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
-
-> [!NOTE]
-> 适用于 `azure-iothub-service-client` 和 `azure-iothub-device-client` 的 pip 包目前仅供 Windows OS 使用。 对于 Linux/Mac OS，请参阅于 Linux 和 Mac OS 特定部分，在[准备开发环境以便使用 Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)发布。
->
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>检索 IoT 中心的连接字符串
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
 ## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中心内注册新设备
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
+## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
+
+[!INCLUDE [iot-hub-howto-twin-shared-access-policy-text](../../includes/iot-hub-howto-twin-shared-access-policy-text.md)]
+
+[!INCLUDE [iot-hub-include-find-custom-connection-string](../../includes/iot-hub-include-find-custom-connection-string.md)]
+
 ## <a name="create-the-service-app"></a>创建服务应用
 
-在本部分中，您可以创建一个 Python 控制台应用，将位置元数据添加到关联的设备孪生你 **{Device ID}**。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
+在本部分中，将创建一个 Python 控制台应用，用于将位置元数据添加到与 **{DEVICE ID}** 关联的设备克隆中。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
 
-1. 打开命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。 在安装 SDK 之后关闭命令提示符。
+1. 在工作目录中，打开命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。
 
-   ```
+   ```cmd/sh
    pip install azure-iothub-service-client
    ```
+
+   > [!NOTE]
+   > 适用于 azure iothub 的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac 操作系统，请参阅[准备适用于 Python 的开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)一文中特定于 Linux 和 Mac 操作系统的部分。
+   >
 
 2. 使用文本编辑器，新建一个 **AddTagsAndQuery.py** 文件。
 
@@ -74,7 +70,7 @@ ms.locfileid: "59608395"
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. 将占位符替换为以下代码添加`[IoTHub Connection String]`和`[Device Id]`使用 IoT 中心和在前面几节中创建的设备 ID 的连接字符串。
+4. 添加以下代码。 将`[IoTHub Connection String]`替换为在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。 将`[Device Id]`替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -88,7 +84,7 @@ ms.locfileid: "59608395"
 
 5. 将以下代码添加到 **AddTagsAndQuery.py** 文件：
 
-     ```python
+    ```python
     def iothub_service_sample_run():
         try:
             iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
@@ -151,91 +147,68 @@ ms.locfileid: "59608395"
 
     在查询位于 **Redmond43** 的所有设备的查询结果中，应该会看到一个设备，而在将结果限制为使用蜂窝网络的设备的查询结果中没有任何设备。
 
-    ![Redmond 中显示所有设备的第一个查询](./media/iot-hub-python-twin-getstarted/1-device-twins-python-service-sample.png)
+    ![第一个显示 Redmond 中所有设备的查询](./media/iot-hub-python-twin-getstarted/service-1.png)
 
 在下一部分中，创建的设备应用将报告连接信息，并更改上一部分中查询的结果。
 
 ## <a name="create-the-device-app"></a>创建设备应用
 
-在本部分中，您可以创建一个 Python 控制台应用，连接到作为中心你 **{Device ID}**，然后更新设备孪生的报告属性，以包含它已连接移动电话网络使用的信息。
+在本部分中，将创建一个 Python 控制台应用，用于连接到你的中心作为 **{设备 ID}** ，然后更新其设备克隆的报告属性，以包含使用蜂窝网络连接的信息。
 
-1. 打开命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。 在安装 SDK 之后关闭命令提示符。
+1. 在工作目录中的命令提示符下，安装**适用于 Python 的 Azure IoT 中心设备 SDK**：
 
-    ```
-    pip install azure-iothub-device-client
+    ```cmd/sh
+    pip install azure-iot-device
     ```
 
 2. 使用文本编辑器，新建一个 **ReportConnectivity.py** 文件。
 
-3. 添加以下代码，从服务 SDK 导入所需模块：
+3. 添加以下代码，从设备 SDK 导入所需模块：
 
     ```python
     import time
-    import iothub_client
-    from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
+    import threading
+    from azure.iot.device import IoTHubModuleClient
     ```
 
-4. 添加以下代码，将 `[IoTHub Device Connection String]` 的占位符替换为在前面的部分中创建的 IoT 中心设备的连接字符串。
+4. 添加以下代码。 将占位符值替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。 `[IoTHub Device Connection String]`
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
-
-    # choose HTTP, AMQP, AMQP_WS or MQTT as transport protocol
-    PROTOCOL = IoTHubTransportProvider.MQTT
-
-    TIMER_COUNT = 5
-    TWIN_CONTEXT = 0
-    SEND_REPORTED_STATE_CONTEXT = 0
     ```
 
 5. 将以下代码添加到 **ReportConnectivity.py** 文件以实现设备孪生功能：
 
     ```python
-    def device_twin_callback(update_state, payload, user_context):
-        print ( "" )
-        print ( "Twin callback called with:" )
-        print ( "    updateStatus: %s" % update_state )
-        print ( "    payload: %s" % payload )
-
-    def send_reported_state_callback(status_code, user_context):
-        print ( "" )
-        print ( "Confirmation for reported state called with:" )
-        print ( "    status_code: %d" % status_code )
+    def twin_update_listener(client):
+        while True:
+            patch = client.receive_twin_desired_properties_patch()  # blocking call
+            print("Twin patch received:")
+            print(patch)
 
     def iothub_client_init():
-        client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-
-        if client.protocol == IoTHubTransportProvider.MQTT or client.protocol == IoTHubTransportProvider.MQTT_WS:
-            client.set_device_twin_callback(
-                device_twin_callback, TWIN_CONTEXT)
-
+        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
         return client
 
     def iothub_client_sample_run():
         try:
             client = iothub_client_init()
 
-            if client.protocol == IoTHubTransportProvider.MQTT:
-                print ( "Sending data as reported property..." )
+            twin_update_listener_thread = threading.Thread(target=twin_update_listener, args=(client,))
+            twin_update_listener_thread.daemon = True
+            twin_update_listener_thread.start()
 
-                reported_state = "{\"connectivity\":\"cellular\"}"
-
-                client.send_reported_state(reported_state, len(reported_state), send_reported_state_callback, SEND_REPORTED_STATE_CONTEXT)
+            # Send reported 
+            print ( "Sending data as reported property..." )
+            reported_patch = {"connectivity": "cellular"}
+            client.patch_twin_reported_properties(reported_patch)
+            print ( "Reported properties updated" )
 
             while True:
-                print ( "Press Ctrl-C to exit" )
-
-                status_counter = 0
-                while status_counter <= TIMER_COUNT:
-                    status = client.get_send_status()
-                    time.sleep(10)
-                    status_counter += 1 
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error %s from IoTHub" % iothub_error )
-            return
+                time.sleep(1000000)
         except KeyboardInterrupt:
             print ( "IoTHubClient sample stopped" )
-     ```
+    ```
 
     **Client** 对象公开从该设备与设备孪生交互所需的所有方法。 上面的代码首先初始化 **Client** 对象，然后检索你的设备的设备孪生，并使用连接信息更新其报告属性。
 
@@ -244,6 +217,7 @@ ms.locfileid: "59608395"
     ```python
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Device Twins Python client sample..." )
+        print ( "IoTHubModuleClient waiting for commands, press Ctrl-C to exit" )
 
         iothub_client_sample_run()
     ```
@@ -256,7 +230,7 @@ ms.locfileid: "59608395"
 
     应当会看到关于设备孪生已更新的确认。
 
-    ![更新孪生](./media/iot-hub-python-twin-getstarted/2-python-client-sample.png)
+    ![更新孪生](./media/iot-hub-python-twin-getstarted/device-1.png)
 
 8. 既然设备报告其连接的信息，该信息应显示在两个查询中。 回过头来再次运行查询：
 
@@ -264,9 +238,9 @@ ms.locfileid: "59608395"
     python AddTagsAndQuery.py
     ```
 
-    这一次你 **{Device ID}** 应出现在两个查询结果。
+    这一次，两个查询结果中应当都会显示你的 **{Device ID}** 。
 
-    ![第二个查询](./media/iot-hub-python-twin-getstarted/3-device-twins-python-service-sample.png)
+    ![第二个查询](./media/iot-hub-python-twin-getstarted/service-2.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -276,6 +250,6 @@ ms.locfileid: "59608395"
 
 * 通过 [IoT 中心入门](quickstart-send-telemetry-python.md)教程学习如何从设备发送遥测数据。
 
-* 配置设备使用设备孪生的所需的属性与[使用所需属性配置设备](tutorial-device-twins.md)教程。
+* 使用[所需属性配置设备](tutorial-device-twins.md)教程，使用设备克隆的所需属性配置设备。
 
-* 控制设备以交互方式 （例如打开风扇从用户控制的应用），与[使用直接方法](quickstart-control-device-python.md)教程。
+* 通过[使用直接方法](quickstart-control-device-python.md)教程学习如何以交互方式控制设备（例如从用户控制的应用打开风扇）。

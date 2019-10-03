@@ -3,8 +3,8 @@ title: 诊断虚拟机网络路由问题 - Azure PowerShell | Microsoft 文档
 description: 本教程介绍如何使用 Azure 网络观察程序的“下一个跃点”功能来诊断虚拟机网络路由问题。
 services: network-watcher
 documentationcenter: network-watcher
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 6624ded670ef506dfef225a8b595da2e5ea19427
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 08d273ce6e6ecb1b10d3c39a0954d430a3cb674a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794391"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66730755"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>诊断虚拟机网络路由问题 - Azure PowerShell
 
@@ -32,9 +32,9 @@ ms.locfileid: "59794391"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您选择本地安装并使用 PowerShell，则本文需要 Azure PowerShell`Az`模块。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell `Az` 模块。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 
 
@@ -110,7 +110,7 @@ Get-AzNetworkWatcherNextHop `
 
 ## <a name="view-details-of-a-route"></a>查看路由详细信息
 
-若要分析进一步路由，请查看与该网络接口的有效路由[Get AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)命令：
+若要进一步分析路由情况，请使用 [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) 命令查看网络接口的有效路由：
 
 ```azurepowershell-interactive
 Get-AzEffectiveRouteTable `

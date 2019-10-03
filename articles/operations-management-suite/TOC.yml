@@ -74,8 +74,6 @@
               items:
                 - name: 用途
                   href: ../azure-monitor/insights/service-map.md
-                - name: 配置
-                  href: ../azure-monitor/insights/service-map-configure.md
                 - name: 与 Operations Manager 集成
                   href: ../azure-monitor/insights/service-map-scom.md
             - name: SQL 评估

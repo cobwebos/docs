@@ -3,19 +3,19 @@ title: 快速入门：通过适用于 C# 的必应实体搜索 SDK 来搜索实�
 titleSuffix: Azure Cognitive Services
 description: 使用本快速入门通过适用于 C# 的必应实体搜索 SDK 来搜索实体。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
-ms.author: v-gedod
-ms.openlocfilehash: 99b7f05304b48b7d885a80705d05fbe24854150f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 07/15/2019
+ms.author: aahi
+ms.openlocfilehash: 20f76c0adfcbd756c71769979214ea975cb5d6d9
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080635"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360585"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>通过适用于 C# 的必应实体搜索 SDK 来发送搜索请求
 
@@ -24,7 +24,7 @@ ms.locfileid: "58080635"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)。
 * [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 * [必应新闻搜索 SDK NuGet 程序包](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0)。 安装此程序包还会安装以下项：
@@ -32,7 +32,7 @@ ms.locfileid: "58080635"
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
 
-若要向 Visual Studio 项目中添加必应实体搜索 SDK，请使用解决方案资源管理器中的 `Manage NuGet Packages` 选项并添加 `Microsoft.Azure.CognitiveServices.Search.EntitySearch` 包。
+若要向 Visual Studio 项目中添加必应实体搜索 SDK，请使用**解决方案资源管理器**中的“管理 NuGet 包”  选项并添加 `Microsoft.Azure.CognitiveServices.Search.EntitySearch` 包。
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]

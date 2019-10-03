@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d02ec23e7e6ce936fdbcce63d1394e3a8681c65b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3c4eab02ed0c7c09fe9b5893bbaaf7cbe1c8028f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268630"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090908"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>教程：Azure Active Directory 与 Silverback 的集成
 
@@ -53,25 +53,25 @@ ms.locfileid: "59268630"
 
 **若要从库中添加 Silverback，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项。
+2. 转到“企业应用”，并选择“所有应用”选项   。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“Silverback”，在结果面板中选择“Silverback”，然后单击“添加”按钮添加应用程序。
+4. 在搜索框中键入“Silverback”，在结果面板中选择“Silverback”，然后单击“添加”按钮添加应用程序    。
 
      ![结果列表中的 Silverback](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，我们基于名为“Britta Simon”的测试用户为 Silverback 配置和测试 Azure AD 单一登录。
+在本部分中，我们基于名为“Britta Simon”的测试用户为 Silverback 配置和测试 Azure AD 单一登录。 
 若要使单一登录有效，需要在 Azure AD 用户与 Silverback 相关用户之间建立关联。
 
 若要配置和测试 Silverback 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -89,7 +89,7 @@ ms.locfileid: "59268630"
 
 要为 Silverback 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 **Silverback** 应用程序集成页上，选择“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 **Silverback** 应用程序集成页上，选择“单一登录”。 
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,24 +97,24 @@ ms.locfileid: "59268630"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
     ![Silverback 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YOURSILVERBACKURL>.com/ssp`。
+    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOURSILVERBACKURL>.com/ssp`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`<YOURSILVERBACKURL>.com`
+    b. 在“标识符”框中，使用以下模式键入 URL：`<YOURSILVERBACKURL>.com` 
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<YOURSILVERBACKURL>.com/sts/authorize/login`
+    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Silverback 客户端支持团队](mailto:helpdesk@matrix42.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Silverback 客户端支持团队](mailto:helpdesk@matrix42.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+5. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -122,27 +122,27 @@ ms.locfileid: "59268630"
 
 1. 在另一 Web 浏览器中，以管理员身份登录 Silverback 服务器。
 
-2. 导航到“管理员” > “验证提供程序”。
+2. 导航到“管理员” > “验证提供程序”   。
 
-3. 在“验证提供程序设置”页上，执行以下步骤：
+3. 在“验证提供程序设置”页上，执行以下步骤  ：
 
     ![管理员](./media/silverback-tutorial/tutorial_silverback_admin.png)
 
-    a.  单击“从 URL 导入”。
+    a.  单击“从 URL 导入”  。
 
-    b.  粘贴复制的元数据 URL 并单击“确定”。
+    b.  粘贴复制的元数据 URL 并单击“确定”  。
 
-    c.  使用“确定”进行确认，值随后会自动填充。
+    c.  使用“确定”进行确认，值随后会自动填充  。
 
-    d.  启用“在登录页上显示”。
+    d.  启用“在登录页上显示”  。
 
-    e.  如果想要按 Azure AD 授权用户自动添加（可选），请启用“动态用户创建”。
+    e.  如果想要按 Azure AD 授权用户自动添加（可选），请启用“动态用户创建”  。
 
-    f.  为自助服务门户上的按钮创建“标题”。
+    f.  为自助服务门户上的按钮创建“标题”  。
 
-    g.  单击“选择文件”来上传“图标”。
+    g.  单击“选择文件”来上传“图标”   。
 
-    h.  为按钮选择背景“颜色”。
+    h.  为按钮选择背景“颜色”  。
 
     i.  单击“ **保存**”。
 
@@ -150,11 +150,11 @@ ms.locfileid: "59268630"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”。
+2. 选择屏幕顶部的“新建用户”  。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -162,40 +162,40 @@ ms.locfileid: "59268630"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
+    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。
+    d. 单击“创建”。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，你将通过授予 Britta Simon 访问 Silverback 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Silverback”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Silverback”    。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Silverback”。
+2. 在应用程序列表中，选择“Silverback”  。
 
     ![应用程序列表中的 Silverback 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”。
+3. 在左侧菜单中，选择“用户和组”  。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
-7. 在“添加分配”对话框中，单击“分配”按钮。
+7. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-silverback-test-user"></a>创建 Silverback 测试用户
 
@@ -205,28 +205,28 @@ ms.locfileid: "59268630"
 
 1. 以管理员身份登录 Silverback 服务器。
 
-2. 导航到“用户”，然后“添加新设备用户”。
+2. 导航到“用户”，然后“添加新设备用户”   。
 
-3. 在“基本”页上，执行以下步骤：
+3. 在“基本”页上，执行以下步骤  ：
 
     ![用户](./media/silverback-tutorial/tutorial_silverback_user.png)
 
-    a. 在“用户名”文本框中，输入用户的名字，例如 **Britta**。
+    a. 在“用户名”文本框中，输入用户的名字，例如 **Britta**  。
 
-    b. 在“名字”文本框中，输入用户的名字，如 Britta。
+    b. 在“名字”文本框中，输入用户的名字，如 Britta   。
 
-    c. 在“姓氏”文本框中，输入用户的名字，如 Simon。
+    c. 在“姓氏”文本框中，输入用户的名字，如 Simon   。
 
-    d. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 **Brittasimon@contoso.com**。
+    d. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 **Brittasimon@contoso.com**  。
 
-    e. 在“密码”文本框中，输入密码。
+    e. 在“密码”文本框中，输入密码  。
 
-    f. 在“确认密码”文本框中，重新输入密码并确认。
+    f. 在“确认密码”文本框中，重新输入密码并确认  。
 
     g. 单击“ **保存**”。
 
 > [!NOTE]
-> 如果不想手动创建每个用户，请启用“管理员” > “验证提供程序”下的“动态用户创建”复选框。
+> 如果不想手动创建每个用户，请启用“管理员” > “验证提供程序”下的“动态用户创建”复选框    。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

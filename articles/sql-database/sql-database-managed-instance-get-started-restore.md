@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
-manager: craigg
 ms.date: 12/14/2018
-ms.openlocfilehash: 5cf9046a26edae3e6076ee1effe32930f15f4569
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2aae0ce7bbf5c8804dcaab90fcb60a66dfe59cf0
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59356841"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744409"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>快速入门：将数据库还原到托管实例
 
@@ -38,6 +37,7 @@ ms.locfileid: "59356841"
 - 要求使用 SSMS 连接到托管实例。 有关连接方法，请参阅以下快速入门：
   - [从 Azure VM 连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-configure-vm.md)
   - [配置从本地到 Azure SQL 数据库托管实例的点到站点连接](sql-database-managed-instance-configure-p2s.md)。
+- 要求使用具有 `rw` 权限的 SAS 凭据保护的公共 IP 上具有 Azure Blob 存储帐户（例如 Standard_LRS V2）   。 当前不支持[通过防火墙保护的 Blob 存储的专用 IP](https://docs.microsoft.com/azure/storage/common/storage-network-security) 和 Azure Blob 存储服务终结点。
 
 > [!NOTE]
 > 有关使用 Azure Blob 存储与[共享访问签名 (SAS) 密钥](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)备份和还原 SQL Server 数据库的详细信息，请参阅[将 SQL Server 备份到 URL](sql-database-managed-instance-get-started-restore.md)。
@@ -47,7 +47,7 @@ ms.locfileid: "59356841"
 在 SSMS 中，遵循以下步骤将 Wide World Importers 数据库还原到托管实例。 数据库备份文件存储在预配置的 Azure Blob 存储帐户中。
 
 1. 打开 SMSS 并连接到托管实例。
-2. 在左侧菜单中，右键单击托管实例，并选择“新建查询”打开新的查询窗口。
+2. 在左侧菜单中，右键单击托管实例，并选择“新建查询”打开新的查询窗口。 
 3. 运行以下 SQL 脚本。该脚本使用预配置的存储帐户和 SAS 密钥在托管实例中[创建凭据](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql)。
 
    ```sql

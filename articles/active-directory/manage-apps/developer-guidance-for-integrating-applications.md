@@ -3,28 +3,28 @@ title: 注册应用程序以使用 Azure Active Directory | Microsoft Docs
 description: 本文专门为 IT 专业人员编写，提供有关将 Azure 应用程序与 Active Directory 集成的指导。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: celested
+ms.author: mimart
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 341d7667f039a7272a7ad3fec80a445aa95b619d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: ba54f8042c20a00f8d559ddce28e007a93afaace
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202683"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108278"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>为 Azure Active Directory 开发业务线应用
 本指南提供开发用于 Azure Active Directory (AD) 的业务线 (LoB) 应用程序的概述，目标受众为 Active Directory/Office 365 全局管理员。
 
 ## <a name="overview"></a>概述
-构建集成 Azure AD 的应用程序可让组织的用户使用 Office 365 单一登录。 在 Azure AD 中拥有应用程序可让用户控制应用程序的身份验证策略。 若要详细了解条件访问以及如何使用多重身份验证 (MFA) 保护应用，请参阅 [Configuring access rules](../conditional-access/app-based-mfa.md)（配置访问规则）。
+构建集成 Azure AD 的应用程序可让组织的用户使用 Office 365 单一登录。 在 Azure AD 中拥有应用程序可让用户控制应用程序的身份验证策略。 若要了解有关条件性访问以及如何使用多重身份验证 (MFA)，请参阅保护应用的详细信息[配置访问规则](../conditional-access/app-based-mfa.md)。
 
 注册应用程序以使用 Azure Active Directory。 注册应用程序意味着开发人员可以使用 Azure AD 对用户进行身份验证并请求访问用户资源（如电子邮件、日历和文档）。
 

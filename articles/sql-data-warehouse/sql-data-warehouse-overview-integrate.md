@@ -2,20 +2,20 @@
 title: 使用 SQL 数据仓库构建集成解决方案 | Microsoft 文档
 description: '用于集成 SQL 数据仓库的工具以及提供相应解决方案的合作伙伴。 '
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: integration
 ms.date: 04/17/2018
-ms.author: kavithaj
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d2fcdd4aa28a7d3b1a8e50629e5be1d88046a12b
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 43a714ae175e0d60f20b5e7ad79e1fa90125b0f8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621203"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65873340"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>使用 SQL 数据仓库集成其他服务
 除了本身的核心功能以外，SQL 数据仓库还允许用户集成 Azure 中的其他许多服务。 这些服务包括：

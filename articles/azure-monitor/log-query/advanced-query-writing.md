@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
 ms.openlocfilehash: 65713ed9c2d0635e776a7a7e5f205b6d55438ed4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451614"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60589590"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>在 Azure Monitor 中编写高级查询
 
@@ -101,7 +101,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 | summarize avg(usage_percent) by bin(TimeGenerated, 1h)
 ```
 
-创建查找表时，Datatable 构造也非常有用。 例如，要将表数据（如事件 ID）从 SecurityEvent 表映射到其他位置列出的事件类型，请使用 `datatable` 创建包含事件类型的查找表，并将此数据表与 SecurityEvent 数据联接：
+创建查找表时，Datatable 构造也非常有用。 例如，要将表数据（如事件 ID）从 SecurityEvent 表映射到其他位置列出的事件类型，请使用 `datatable` 创建包含事件类型的查找表，并将此数据表与 SecurityEvent 数据联接   ：
 
 ```Kusto
 let eventCodes = datatable (EventID: int, EventType:string)

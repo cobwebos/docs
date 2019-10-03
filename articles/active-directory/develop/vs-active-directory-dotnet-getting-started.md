@@ -1,11 +1,10 @@
 ---
 title: 开始在 Visual Studio .NET MVC 项目中使用 Azure AD
 description: 通过 Visual Studio 连接服务连接到或创建 Azure AD 之后，如何在 .NET MVC 项目中开始使用 Azure Active Directory
-services: active-directory
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 1c8b6a58-5144-4965-a905-625b9ee7b22b
-ms.prod: visual-studio-dev15
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bbbef3f48eb55c863fdd286113297d79f9b9e02
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 806961dce41fbdf07572b3d0ab8b79bc9fb682da
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208497"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852022"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Azure Active Directory（ASP.NET MVC 项目）入门
 

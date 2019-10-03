@@ -3,25 +3,24 @@ title: 使用 Hadoop 流式处理活动转换数据 - Azure | Microsoft Docs
 description: 了解如何使用 Azure 数据工厂中的 Hadoop 流式处理活动通过运行 Hadoop 流式处理程序在按需的/自己的 HDInsight 群集上转换数据。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: dd00c0a2998009ce6c39ca19abb25a2548682cee
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: fd9512f4ede8d9b8b1a8fd69b7120303fe6a0ad5
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523216"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139544"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="转换活动"]
 > * [Hive 活动](data-factory-hive-activity.md) 
 > * [Pig 活动](data-factory-pig-activity.md)
 > * [MapReduce 活动](data-factory-map-reduce.md)
@@ -114,7 +113,7 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
 ## <a name="example"></a>示例
 此演练中的管道在 Azure HDInsight 群集上运行字数统计流式处理 Map/Reduce 程序。 
 
-### <a name="linked-services"></a>链接服务
+### <a name="linked-services"></a>链接的服务
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 首先，创建一个链接服务，将 Azure HDInsight 群集使用的 Azure 存储链接到 Azure 数据工厂。 如果要复制/粘贴以下代码，请记住将帐户名和帐户密钥替换为自己的 Azure 存储的名称和密钥。 
 
@@ -223,7 +222,7 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
     }
 }
 ```
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Hive 活动](data-factory-hive-activity.md)
 * [Pig 活动](data-factory-pig-activity.md)
 * [MapReduce 活动](data-factory-map-reduce.md)

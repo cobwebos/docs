@@ -1,6 +1,6 @@
 ---
-title: 不错的示例话语
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 好示例最谈话-LUIS
+titleSuffix: Azure Cognitive Services
 description: 话语是应用需要解释的用户输入。 收集你认为用户会输入的短语。 包括意思相同但在单词长度和单词位置上以不同方式构造的陈述。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2fd3416824189007bfdbe55d30907d9cb56f87ca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3c3c54faa882a38fb6c55c9fc0476a569f25cb98
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792532"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638327"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
 
@@ -74,13 +74,51 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 最好先从几个陈述开始，然后[审查终结点陈述](luis-how-to-review-endpoint-utterances.md)以进行正确的意向预测和实体提取。
 
-## <a name="punctuation-marks"></a>标点符号
+## <a name="utterance-normalization"></a>话语规范化
 
-默认情况下，LUIS 不会忽略标点符号，因为某些客户端应用程序可能会对这些标记赋予含义。 确保示例话语使用“标点”和“无标点”，以便两种样式都返回相同的相对分数。 如果标点在你的客户端应用程序中没有特定含义，请考虑使用模式[忽略标点](#ignoring-words-and-punctuation)。 
+话语规范化是指在训练和预测期间忽略标点和音调符号的影响这一过程。
 
-## <a name="ignoring-words-and-punctuation"></a>忽略单词和标点
+## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>音调符号和标点的话语规范化
 
-如果想要忽略示例陈述中的特定单词或标点符号，请在 _ignore_ 语法中使用[模式](luis-concept-patterns.md#pattern-syntax)。 
+话语规范化是在你创建或导入应用时定义的，因为它是应用 JSON 文件中的设置。 话语规范化设置默认关闭。 
+
+音调符号是文本中的标记或符号，例如： 
+
+```
+İ ı Ş Ğ ş ğ ö ü
+```
+
+如果应用打开规范化，则对于使用音调符号或标点的所有话语来说，“测试”窗格、批量测试和终结点查询中的分数会变化。 
+
+在 `settings` 参数中针对 LUIS JSON 应用文件的音调符号或标点打开话语规范化。
+
+```JSON
+"settings": [
+    {"name": "NormalizePunctuation", "value": "true"},
+    {"name": "NormalizeDiacritics", "value": "true"}
+] 
+```
+
+规范化**标点**是指在训练模型和预测终结点查询之前，从话语中删除标点。 
+
+规范化**音调符号**是指将话语中带音调符号的字符替换为常规字符。 例如：`Je parle français` 变成了 `Je parle francais`。 
+
+规范化不是指不会在示例话语或预测响应中看到标点和音调符号，而是指在训练和预测过程中会将其忽略。
+
+
+### <a name="punctuation-marks"></a>标点符号
+
+标点是 LUIS 中单独的标记。 在末尾包含句号的话语与末尾不包含句号的话语是两个单独话语并可能得到两种不同预测。 
+
+如果标点未规范化，则默认情况下，LUIS 不会忽略标点符号，因为某些客户端应用程序可能会对这些标记赋予含义。 确保示例话语使用“标点”和“无标点”，以便两种样式都返回相同的相对分数。 
+
+请确保模型在[示例话语](luis-concept-utterance.md)（有标点和没有标点）或在更容易使用特殊语法忽略标点的[模式](luis-concept-patterns.md)中处理标点：`I am applying for the {Job} position[.]`
+
+如果标点在客户端应用程序中没有特定含义，请考虑通过规范化标点来[忽略标点](#utterance-normalization)。 
+
+### <a name="ignoring-words-and-punctuation"></a>忽略单词和标点
+
+若要忽略模式中的特定单词或标点，请将 [pattern](luis-concept-patterns.md#pattern-syntax) 与方括号 `[]` 的 _ignore_ 语法配合使用。 
 
 ## <a name="training-utterances"></a>训练陈述
 
@@ -94,7 +132,7 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 在模型经过训练、发布并接收[终结点](luis-glossary.md#endpoint)查询后，请[审查 LUIS 建议的陈述](luis-how-to-review-endpoint-utterances.md)。 LUIS 会选择意向或实体得分较低的终结点陈述。 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 查看[最佳做法](luis-concept-best-practices.md)并将其应用为常规创作周期的一部分。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: v-sharos
-ms.openlocfilehash: 2c0b211bced99d272a73a7b018a22f99d8d58aa9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 260dfdd4b8fe7c277358fa5773029ea9a532740a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111715"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61077436"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>使用 StorSimple Snapshot Manager 查看和管理卷
 ## <a name="overview"></a>概述
@@ -91,9 +91,9 @@ ms.locfileid: "23111715"
    
     ![配置列](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | 结果列 | 说明 |
+   | 结果列 | 描述 |
    |:--- |:--- |
-   |  名称 |“**名称**”列包含分配给每个发现的卷的驱动器号。 |
+   |  Name |“**名称**”列包含分配给每个发现的卷的驱动器号。 |
    |  设备 |“**设备**”列包含连接到主计算机的设备 IP 地址。 |
    |  设备卷名称 |“**设备卷名称**”列包含选定的卷所属的设备卷的名称。 这是在 Azure 门户中针对特定卷定义的卷名称。 |
    |  访问路径 |“**访问路径**”列显示该卷的访问路径。 这是在主计算机上可以访问该卷的驱动器号或装入点。 |
@@ -130,7 +130,7 @@ ms.locfileid: "23111715"
 ## <a name="configure-and-back-up-a-basic-volume"></a>配置和备份基本卷
 使用以下过程配置基本卷的备份，并立即开始备份或创建已计划备份的策略。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 开始之前：
 
 * 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](storsimple-deployment-walkthrough-u2.md)。
@@ -158,7 +158,7 @@ ms.locfileid: "23111715"
 * 步骤 1：使用磁盘管理创建动态镜像的卷。 
 * 步骤 2：使用 StorSimple Snapshot Manager 配置备份。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 开始之前：
 
 * 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)。
@@ -183,7 +183,7 @@ ms.locfileid: "23111715"
 6. 在“**分配驱动器号或路径**”页上，接受默认值，并单击“**下一步**”。 
 7. 在“**格式化卷**”页上的“**分配单元大小**”框中，选择“**64K**”。 选择“**执行快速格式化**”复选框，并单击“**下一步**”。 
 8. 在“**正在完成新建镜像卷**”页上，查看设置，然后单击“**完成**”。 
-9. 此时会出现一条消息，指示基本磁盘将转换为动态磁盘。 单击 **“是”**。
+9. 此时会出现一条消息，指示基本磁盘将转换为动态磁盘。 单击 **“是”** 。
    
     ![动态磁盘转换消息](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
 10. 在“磁盘管理”中，验证磁盘 1 和磁盘 2 是否显示为动态镜像卷。 （“**动态**”应出现在状态列中，而且容量条颜色应变为红色，即表示镜像卷。） 

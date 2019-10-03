@@ -1,21 +1,21 @@
 ---
 title: 使用 .NET 创建视频评审 - 内容审查器
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 本文提供了信息和代码示例，可帮助你快速开始结合使用内容审查器 SDK 和 C# 来创建视频审查。
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: e4dd7299907168bb50ac8ebdf90b381c0bac01f2
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 6ec258bc52513772716fa8fe1078653575c923f3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527364"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882020"
 ---
 # <a name="create-video-reviews-using-net"></a>使用 .NET 创建视频审查
 
@@ -29,7 +29,7 @@ ms.locfileid: "59527364"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 登录或在内容审查器上创建一个帐户[审阅工具](https://contentmoderator.cognitive.microsoft.com/)站点。
+- 登录或创建内容审查器[审核工具](https://contentmoderator.cognitive.microsoft.com/)站点上的帐户。
 - 本文假定[已审查视频（请见快速入门）](video-moderation-api.md)并已获取响应数据。 你需要它来为人工审查器创建基于帧的审查。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>确保 API 密钥可以调用评审 API 以创建评审
@@ -166,7 +166,7 @@ public static ContentModeratorClient NewClient()
 **CreateVideoReviews** 具有以下必需参数：
 1. 一个字符串，包含应为“application/json”的 MIME 类型。 
 1. 内容审查器团队名称。
-1. **IList\<CreateVideoReviewsBodyItem >** 对象。 每个 CreateVideoReviewsBodyItem  对象表示一次视频审查。 本快速入门一次创建一条评论。
+1. **IList\<CreateVideoReviewsBodyItem >** 对象。 每个 CreateVideoReviewsBodyItem 对象表示一次视频审查。 本快速入门一次创建一条评论。
 
 **CreateVideoReviewsBodyItem** 具有多个属性。 至少应设置以下属性：
 - Content。 要评论的视频的 URL。
@@ -174,7 +174,7 @@ public static ContentModeratorClient NewClient()
 - Status。 将该值设置为“未发布”。 如果未进行设置，则默认为“挂起”，这意味着视频评论已发布并且正在等待人工评论。 视频评论发布后，就无法再向其中添加视频帧、脚本或脚本审查结果。
 
 > [!NOTE]
-> **CreateVideoReviews** 返回 IList<string>。 这些字符串中的每一个都包含视频评论 ID。 这些 ID 是 GUID，与 **ContentId** 属性的值不同。 
+> **CreateVideoReviews**返回 > 的\<IList 字符串。 这些字符串中的每一个都包含视频评论 ID。 这些 ID 是 GUID，与 **ContentId** 属性的值不同。 
 
 添加下列方法定义到命名空间 VideoReviews、类程序。
 

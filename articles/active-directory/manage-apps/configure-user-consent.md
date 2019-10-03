@@ -2,22 +2,22 @@
 title: 配置应用程序的用户许可 - Azure Active Directory | Microsoft Docs
 description: 了解如何管理用户许可应用程序权限的方式。 可以通过授予管理员许可来来简化用户体验。 这些方法适用于 Azure Active Directory (Azure AD) 租户中的所有最终用户。
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d35f8b440fe748f91c9e01003fe83a3a5343c8df
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6bd746e79bc9d70be23771f97b1757f090f6375f
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203720"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709267"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>配置最终用户对 Azure Active Directory 中应用程序的许可方式
 了解如何配置用户许可应用程序权限的方式。 可以通过授予管理员许可来来简化用户体验。 本文提供配置用户许可的不同方式。 这些方法适用于 Azure Active Directory (Azure AD) 租户中的所有最终用户。 
@@ -38,9 +38,10 @@ ms.locfileid: "56203720"
 2. 在左侧导航菜单的顶部单击“所有服务”。 此时会打开“Azure Active Directory 扩展”。
 3. 在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项。
 4. 在导航菜单中，单击“企业应用程序”。
-5. 单击“授予管理员许可”。 系统将提示你登录以管理应用程序。
-6. 使用有权授予对应用程序的管理员许可的帐户登录。 
-7. 许可应用程序权限。
+5. 选择要同意的应用程序。
+6. 选择 "**权限**"，然后单击 "**授予管理员许可**"。 系统将提示你登录以管理应用程序。
+7. 使用有权授予对应用程序的管理员许可的帐户登录。 
+8. 许可应用程序权限。
 
 仅当应用程序符合以下条件时，此选项才起作用： 
 
@@ -54,21 +55,22 @@ ms.locfileid: "56203720"
 1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到“应用注册”边栏选项卡。
 3. 选择要许可的应用程序。
-4. 选择“所需的权限”。
-5. 单击边栏选项卡顶部的“授予权限”。
+4. 选择“API 权限”。
+5. 单击 "**授予管理员许可**"。
 
 
 ## <a name="grant-admin-consent-through-a-url-request"></a>通过 URL 请求授予管理员许可
 
 通过 URL 请求授予管理员许可：
 
-1. 使用应用程序配置向 *login.microsoftonline.com* 构造请求，并将其追加到 `&prompt=admin_consent` 中。 
+1. 使用应用程序配置向 *login.microsoftonline.com* 构造请求，并将其追加到 `&prompt=admin_consent` 中。 此 URL 将如下所示： `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=admin_consent`
 2. 使用管理员凭据登录后，该应用即已授予所有用户的同意。
 
 
 ## <a name="force-user-consent-through-a-url-request"></a>通过 URL 请求强制用户许可
 
 若要强制要求最终用户在每次身份验证时都要许可应用程序，请将 `&prompt=consent` 追加到身份验证请求 URL。
+此 URL 将如下所示： `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=consent`
 
 ## <a name="next-steps"></a>后续步骤
 

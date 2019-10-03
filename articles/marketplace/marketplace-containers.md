@@ -2,24 +2,18 @@
 title: Azure 市场的“容器”产品/服务发布指南
 description: 本文介绍在市场中发布容器的要求
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
 manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: e81f2b42e725e50473c09622a486586fb6721ad5
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 41a09be36262ff09c383b8ccb64a94230a11d3f1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214837"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64937912"
 ---
 # <a name="containers-offer-publishing-guide"></a>“容器”产品/服务发布指南
 

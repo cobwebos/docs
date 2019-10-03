@@ -1,20 +1,19 @@
 ---
 title: Apache Spark 是什么 - Azure HDInsight
 description: 本文介绍了 HDInsight 中的 Spark，以及可以在 HDInsight 中使用 Spark 群集的不同方案。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: overview
-ms.date: 01/28/2019
+ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 264faaf0168d1604668e3358b1d99bc169d7e2f0
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: e325618ed1cdec6149ac31771c8bd67ecea7d559
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985166"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993796"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 是什么
 
@@ -26,7 +25,7 @@ Apache Spark 是并行处理框架，支持使用内存中处理来提升大数�
 
 Spark 提供了用于内存中群集计算的基元。 Spark 作业可以将数据加载和缓存到内存中并重复地对其进行查询。 内存中计算比基于磁盘的应用程序（例如通过 Hadoop 分布式文件系统 (HDFS) 共享数据的 Hadoop）快速得多。 Spark 还集成到 Scala 编程语言中，让你可以像处理本地集合一样处理分布式数据集。 无需将所有内容构造为映射和化简操作。
 
-![传统 MapReduce 与Spark](./media/apache-spark-overview/mapreduce-vs-spark.png)
+![传统 MapReduce 与Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
 
 HDInsight 中的 Spark 群集提供完全托管的 Spark 服务。 下面列出了在 HDInsight 中创建 Spark 群集的优势。
 
@@ -37,8 +36,8 @@ HDInsight 中的 Spark 群集提供完全托管的 Spark 服务。 下面列出�
 | REST API |HDInsight 中的 Spark 群集包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)，它是基于 REST-API 的 Spark 作业服务器，用于远程提交和监视作业。 请参阅[使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集](apache-spark-livy-rest-interface.md)。|
 | 支持 Azure Data Lake Storage | HDInsight 中的 Spark 群集可使用 Azure Data Lake Storage 作为主存储或附加存储。 有关 Data Lake Storage 的详细信息，请参阅 [Azure Data Lake Storage 概述](../../data-lake-store/data-lake-store-overview.md)。 |
 | 与 Azure 服务集成 |HDInsight 中的 Spark 群集随附了 Azure 事件中心的连接器。 除了 Spark 中提供的 [Apache Kafka](https://kafka.apache.org/) 之外，还可以使用事件中心来生成流式处理应用程序。 |
-| 对 ML Server 的支持 | HDInsight 中对 ML Server 的支持是作为 **ML Services** 群集类型提供的。 可以将 ML Services 群集设置为以 Spark 群集承诺的速度运行分布式 R 计算。 有关详细信息，请参阅[开始使用 HDInsight 中的 ML Server](../r-server/r-server-get-started.md)。 |
-| 与第三方 IDE 集成 | HDInsight 提供多个 IDE 插件，这些插件可用于创建应用程序，并将应用程序提交到 HDInsight Spark 群集。 有关详细信息，请参阅[使用用于 IntelliJ IDEA 的 Azure 工具包](apache-spark-intellij-tool-plugin.md)、[将 HDInsight 用于 VSCode](../hdinsight-for-vscode.md) 和[使用用于 Eclipse 的 Azure 工具包](apache-spark-eclipse-tool-plugin.md)。|
+| 对 ML Server 的支持 | HDInsight 中对 ML Server 的支持是作为 **ML Services** 群集类型提供的。 可以将 ML Services 群集设置为以 Spark 群集承诺的速度运行分布式 R 计算。 有关详细信息，请参阅[什么是 Azure HDInsight 中的 ML Services？](../r-server/r-server-overview.md)。 |
+| 与第三方 IDE 集成 | HDInsight 提供多个 IDE 插件，这些插件可用于创建应用程序，并将应用程序提交到 HDInsight Spark 群集。 有关详细信息，请参阅[使用 Azure Toolkit for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)、[使用用于 VSCode 的 Spark 和 Hive 工具](../hdinsight-for-vscode.md)和[使用 Azure Toolkit for Eclipse](apache-spark-eclipse-tool-plugin.md)。|
 | 并发查询 |HDInsight 中的 Spark 群集支持并发查询。 此功能允许一个用户运行多个查询，或者不同的用户运行多个查询，以及让应用程序共享相同的群集资源。 |
 | SSD 缓存 |可以选择将数据缓存在内存中，或缓存在已附加到群集节点的 SSD 中。 内存缓存提供最佳的查询性能，但可能费用不菲。 SSD 缓存是改善查询性能的绝佳选项，而且不需要根据内存中的整个数据集创建满足其需求的群集规模。 |
 | 与 BI 工具集成 |HDInsight 中的 Spark 群集提供 BI 工具（如 [Power BI](https://www.powerbi.com/)）的连接器，用于数据分析。 |
@@ -58,7 +57,7 @@ HDInsight 中的 Spark 群集还提供 [ODBC 驱动程序](https://go.microsoft.
 
 ## <a name="spark-cluster-architecture"></a>Spark 群集体系结构
 
-![HDInsight Spark 的体系结构](./media/apache-spark-overview/spark-architecture.png)
+![HDInsight Spark 的体系结构](./media/apache-spark-overview/hdi-spark-architecture.png)
 
 了解 Spark 在 HDInsight 群集上的运行方式后，即可轻松了解 Spark 的组件。
 
@@ -79,12 +78,14 @@ HDInsight 中的 Spark 群集适用于以下主要方案：
     HDInsight 中的 Apache Spark 将数据存储在 Azure 存储或 Azure Data Lake Storage 中。 商务专家和重要决策者可以利用这些数据来进行分析和创建报告，并使用 Microsoft Power BI 来根据分析数据生成交互式报告。 分析师可以从群集存储内的非结构化/半结构化数据着手，使用 Notebook 来定义数据的架构，并使用 Microsoft Power BI 生成数据模型。 HDInsight 中的 Spark 群集还支持 Tableau 等多种第三方 BI 工具，可让数据分析师、商务专家和重要决策者更轻松地工作。
 
     [教程：使用 Power BI 可视化 Spark 数据](apache-spark-use-bi-tools.md)
+
 - Spark 机器学习
 
     Apache Spark 随附 [MLlib](https://spark.apache.org/mllib/) - 构建在 Spark（可以从 HDInsight 中的 Spark 群集使用）基础之上的机器学习库。 HDInsight 中的 Spark 群集还包含 Anaconda - 为机器学习提供各种包的 Python 发行版。 结合内置的 Jupyter 和 Zeppelin 笔记本支持，即可拥有机器学习应用程序创建环境。
 
     [教程：使用 HVAC 数据预测建筑物温度](apache-spark-ipython-notebook-machine-learning.md)  
-    [教程：预测食品检测结果](apache-spark-machine-learning-mllib-ipython.md)    
+    [教程：预测食品检测结果](apache-spark-machine-learning-mllib-ipython.md)
+
 - Spark 流式处理和实时数据分析
 
     HDInsight 中的 Spark 群集提供丰富的支持，供你生成实时分析解决方案。 尽管 Spark 已随附从 Kafka、Flume、Twitter、ZeroMQ 或 TCP 套接字等众多来源引入数据的连接器，但 HDInsight 中的 Spark 增加了一流的支持，供你从 Azure 事件中心引入数据。 事件中心是 Azure 上最广泛使用的队列服务。 拥有立即可用的事件中心支持，让 HDInsight 中的 Spark 群集成为生成实时分析管道的理想平台。

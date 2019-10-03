@@ -5,7 +5,7 @@ description: 排查 Azure 负载均衡器方面的已知问题
 services: load-balancer
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 ms.custom: seodoc18
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: c5f92d564a93823fd9c0f932fa95f20d4e827761
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4e0e3cf6067467947bcb799a915a93d1bb342ea1
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108825"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154923"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>排查 Azure 负载均衡器问题
 
@@ -77,7 +77,7 @@ ms.locfileid: "58108825"
     - 在目标后端池 VM 中同时运行一个 Netsh 跟踪，再运行一个来自相同 VNet 的测试 VM。 现在，运行一段时间的 PsPing 测试，收集一些网络跟踪信息，然后停止测试。 
     - 分析网络捕获，查看是否同时存在与 ping 查询相关的传入和传出数据包。 
         - 如果在后端池 VM 中未观察到传入数据包，可能是某个网络安全组或 UDR 错误配置阻止了流量。 
-        - 如果没有传出数据包在后端池 VM 上观察到，VM 需要将检查是否为任何不相关的问题 （例如，应用程序阻止探测端口）。 
+        - 如果在后端池 VM 中未观察到传出数据包，需检查 VM 是否存在任何不相关的问题（例如，应用程序阻止探测端口）。 
     - 验证在到达负载均衡器之前，探测数据包是否强制发送到其他目标（可能通过 UDR 设置发送）。 这将使流量永远无法达到后端 VM。 
 * 更改探测类型（例如从 HTTP 到 TCP），并在网络安全组 ACL 和防火墙中配置相应端口，以验证问题是否与探测响应的配置有关。 有关运行状况探测配置的详细信息，请参阅[终结点负载均衡运行状况探测配置](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/)。
 

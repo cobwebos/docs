@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 873549442284ede2e9f020bd90879f721b9c1a18
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 588aa260f2ece543445bfd4da7ef4682dab8334c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38760348"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172871"
 ---
 ## <a name="scenario"></a>场景
 为了更好地说明如何创建 NSG，本文档使用以下方案：

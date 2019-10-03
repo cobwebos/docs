@@ -2,24 +2,18 @@
 title: 在 Azure 市场中生成登陆页 | Azure
 description: 了解如何在 Azure 市场和 Microsoft AppSource 中为应用和服务发布者创建登陆页。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: d3af6484a2c62a0ffa0a21e2df277ef3255ada84
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
-ms.translationtype: HT
+ms.openlocfilehash: 1b3f987ff54a4b5eeeb1034d1e99302d0d6d43d6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160852"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935614"
 ---
 # <a name="build-your-landing-page"></a>生成登陆页
 
@@ -30,7 +24,7 @@ ms.locfileid: "39160852"
 *   立即获取解决方案
 
 可以通过多种市场营销策略引用登陆页。 可以使用以下市场营销策略： 
-*   活动
+*   Events
 *   网络广播
 *   社交媒体
 *   白皮书

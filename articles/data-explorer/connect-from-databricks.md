@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.openlocfilehash: 55257d441916971b505432247f28033d6222c3be
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789936"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60861195"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>使用 Python 从 Azure Databricks 连接到 Azure 数据资源管理器
 
@@ -21,7 +21,7 @@ ms.locfileid: "59789936"
 ## <a name="prerequisites"></a>必备组件
 
 - [创建 Azure 数据资源管理器群集和数据库](/azure/data-explorer/create-cluster-database-portal)。
-- [创建 Azure Databricks 工作区](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)。 在“Azure Databricks 服务”下的“定价层”下拉列表中，选择“高级”。 选择此项可以使用 Azure Databricks 机密来存储凭据并在笔记本和作业中引用它们。
+- [创建 Azure Databricks 工作区](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)。 在“Azure Databricks 服务”下的“定价层”下拉列表中，选择“高级”。    选择此项可以使用 Azure Databricks 机密来存储凭据并在笔记本和作业中引用它们。
 
 - 在 Azure Databricks 中[创建群集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)，其规格如下（运行示例笔记本所需的最低设置）：
 
@@ -62,7 +62,7 @@ Azure 数据资源管理器使用 Azure AD 租户 ID，以对应用程序进行�
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-例如，如果域名为 contoso.com，则该 URL 将是：[https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/)。 选择此 URL 以查看结果。 第一行如下所示： 
+例如，如果域名为 contoso.com，则该 URL 将是：[https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/)  。 选择此 URL 以查看结果。 第一行如下所示： 
 
 ```
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"

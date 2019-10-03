@@ -3,8 +3,8 @@ title: 使用 Azure 网络观察程序管理网络安全组流日志 - REST API 
 description: 此页说明如何在 Azure 网络观察程序中使用 REST API 管理网络安全组流日志
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 2ab25379-0fd3-4bfe-9d82-425dfc7ad6bb
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 4569ea0ff43993c4605c55c529dbcb951ef502ca
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.author: kumud
+ms.openlocfilehash: 88173b24ecfca72e05d6f930b45d732aefad0e56
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485011"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563415"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>使用 REST API 配置网络安全组流日志
 
@@ -40,7 +40,7 @@ ms.locfileid: "58485011"
 > [!Important]
 > 对于网络观察程序 REST API 调用来说，请求 URI 中的资源组名称是包含网络观察程序的资源组，而不是要对其执行诊断操作的资源。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>应用场景
 
 本文中介绍的方案演示了如何使用 REST API 启用、禁用和查询流日志。 若要了解有关网络安全组流日志记录的详细信息，请访问[网络安全组流日志记录 - 概述](network-watcher-nsg-flow-logging-overview.md)。
 
@@ -216,6 +216,9 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
+
+> [!IMPORTANT]
+> 目前存在一个问题: 网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)不会根据保留策略设置从 Blob 存储中自动删除。 如果你有现有的非零保留策略, 我们建议你定期删除超出保留期的存储 blob, 以避免产生任何费用。 有关如何删除 NSG 流日志存储的详细信息, 请参阅[删除 NSG 流日志存储 blob](network-watcher-delete-nsg-flow-log-blobs.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 6714beae690e23c686fc08b88e93044ae3901c89
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: willzhan
+ms.reviewer: Mingfeiy;rajputam;Juliako
+ms.openlocfilehash: 4d4823e8dcce0d1296ebe39a0b7a7c4bbc180317
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839485"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69015432"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务 
 > [!div class="op_single_selector"]
@@ -175,7 +176,7 @@ Axinom Widevine 许可证服务器
         return key_id;
     }
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 由于最近在 Azure 媒体服务内容保护和 Azure Media Player 中增加了 Widevine 支持，因此我们能够实现对 DASH + Multi-native-DRM (PlayReady + Widevine) 的流式处理，这既适用于 AMS 中的 PlayReady 许可证服务，也适用于 Axinom 提供的 Widevine 许可证服务器，面向以下现代浏览器：
 
 * Chrome

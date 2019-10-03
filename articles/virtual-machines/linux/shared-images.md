@@ -1,29 +1,29 @@
 ---
-title: 使用 Azure CLI 创建共享 VM 映像 | Microsoft Docs
+title: 创建具有 Azure CLI 的共享映像库 |Microsoft Docs
 description: 在本文中，你将了解如何使用 Azure CLI 在 Azure 中创建 VM 的共享映像。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: axayjo
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/19/2018
-ms.author: akjosh; cynthn
+ms.date: 05/06/2019
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 08c7e84a27a4c8e9527083360dbd08296bd86775
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: ea884b80698fb257106ef68d293f350b2f55dc06
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190039"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103554"
 ---
-# <a name="preview-create-a-shared-image-gallery-with-the-azure-cli"></a>预览版：使用 Azure CLI 创建共享映像库
+# <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>使用 Azure CLI 创建共享映像库
 
 [共享映像库](shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动配置，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
@@ -33,7 +33,7 @@ ms.locfileid: "54190039"
 
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
-| 资源 | Description|
+| Resource | 描述|
 |----------|------------|
 | **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
@@ -46,21 +46,25 @@ ms.locfileid: "54190039"
 
 ## <a name="create-a-vm"></a>创建 VM
 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 基于映像版本创建 VM。
+使用 [az vm create](/cli/azure/vm#az-vm-create) 基于最新映像版本创建 VM。
 
 ```azurecli-interactive 
 az vm create\
-   -g myGalleryRG \
-   -n myVM \
-   --image "/subscriptions/<subscription-ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0" \
+   --resource-group myGalleryRG \
+   --name myVM \
+   --image "/subscriptions/subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
    --generate-ssh-keys
 ```
 
+也可以通过使用 `--image` 参数的映像版本 ID 来使用特定版本。 例如，若要使用映像版本 *1.0.0*，请键入：`--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`。
+
 [!INCLUDE [virtual-machines-common-gallery-list-cli](../../../includes/virtual-machines-common-gallery-list-cli.md)]
 
-
+[!INCLUDE [virtual-machines-common-shared-images-update-delete-cli](../../../includes/virtual-machines-common-shared-images-update-delete-cli.md)]
 
 ## <a name="next-steps"></a>后续步骤
+[Azure 映像生成器 (预览版)](image-builder-overview.md)可帮助自动创建映像版本, 甚至还可以使用它来更新[现有映像版本并创建新的映像版本](image-builder-gallery-update-image-version.md)。 
+
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)

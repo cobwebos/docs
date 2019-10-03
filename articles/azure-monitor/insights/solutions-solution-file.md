@@ -15,11 +15,11 @@ ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526361"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60595772"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
 > [!NOTE]
@@ -68,7 +68,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 下表描述了参数属性。
 
-| 属性 | 描述 |
+| 特性 | 描述 |
 |:--- |:--- |
 | type |参数的数据类型。 向用户显示的输入控件取决于数据类型。<br><br>bool - 下拉框<br>string - 文本框<br>int - 文本框<br>securestring - 密码字段<br> |
 | category |参数的可选类别。  相同类别中的参数分到一组。 |
@@ -85,12 +85,12 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 | 参数 | Type | 描述 |
 |:--- |:--- |:--- |
-| accountName |字符串 |Azure 自动化帐户名称。 |
-| pricingTier |字符串 |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
-| regionId |字符串 |Azure 自动化帐户的区域。 |
-| solutionName |字符串 |解决方案名称。  如果要通过快速入门模板部署解决方案，则应将 solutionName 定义为参数，以便能够定义字符串，而无需用户指定一个字符串。 |
-| workspaceName |字符串 |Log Analytics 工作区名称。 |
-| workspaceRegionId |字符串 |Log Analytics 工作区的区域。 |
+| accountName |string |Azure 自动化帐户名称。 |
+| pricingTier |string |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
+| regionId |string |Azure 自动化帐户的区域。 |
+| solutionName |string |解决方案名称。  如果要通过快速入门模板部署解决方案，则应将 solutionName 定义为参数，以便能够定义字符串，而无需用户指定一个字符串。 |
+| workspaceName |string |Log Analytics 工作区名称。 |
+| workspaceRegionId |string |Log Analytics 工作区的区域。 |
 
 
 以下是可以复制并粘贴到解决方案文件的标准参数的结构。  
@@ -144,7 +144,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
         "AutomationApiVersion": "2015-10-31"
     },
 
-引用整个解决方案中的变量值时的语法为 **variables('variable name')** 的变量值。  例如，若要访问 SolutionName 变量，需使用 **variables('SolutionName')**。
+引用整个解决方案中的变量值时的语法为 **variables('variable name')** 的变量值。  例如，若要访问 SolutionName 变量，需使用 **variables('SolutionName')** 。
 
 还可定义包含多组值的复杂变量。  这些复杂变量对以下管理解决方案特别有用：为不同类型的资源定义多个属性。  例如，可将如上所示的解决方案变量重构到以下内容。
 
@@ -213,7 +213,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 | 属性 | 描述 |
 |:--- |:--- |
-| workspaceResourceId |在窗体中的 Log Analytics 工作区 ID *\<资源组 ID > /providers/Microsoft.OperationalInsights/workspaces/\<工作区名称\>*。 |
+| workspaceResourceId |在窗体中的 Log Analytics 工作区 ID *\<资源组 ID > /providers/Microsoft.OperationalInsights/workspaces/\<工作区名称\>* 。 |
 | referencedResources |解决方案中不应随解决方案一起删除的资源的列表。 |
 | containedResources |解决方案中应随解决方案一起删除的资源的列表。 |
 
@@ -224,10 +224,10 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 | 属性 | 描述 |
 |:--- |:--- |
-| 名称 |解决方案名称。 |
-| 版本 |由作者确定的解决方案版本。 |
+| name |解决方案名称。 |
+| version |由作者确定的解决方案版本。 |
 | product |标识解决方案的唯一字符串。 |
-| 发布者 |解决方案发布者。 |
+| publisher |解决方案发布者。 |
 
 
 

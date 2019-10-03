@@ -1,5 +1,5 @@
 ---
-title: 编程指南 - Azure 事件中心 | Microsoft Docs
+title: .NET 编程指南-Azure 事件中心 |Microsoft Docs
 description: 本文介绍如何使用 Azure .NET SDK 为 Azure 事件中心编写代码。
 services: event-hubs
 documentationcenter: na
@@ -7,25 +7,25 @@ author: ShubhaVijayasarathy
 ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 09/25/2019
 ms.author: shvija
-ms.openlocfilehash: 29814cb8aef09a8ead30d6daa615554dd55135dd
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: c2e23c38abbec5fd0e6010bdfc0feca882a6180d
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678575"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309817"
 ---
-# <a name="programming-guide-for-azure-event-hubs"></a>Azure 事件中心编程指南
+# <a name="net-programming-guide-for-azure-event-hubs"></a>Azure 事件中心的 .NET 编程指南
 本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 它假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](event-hubs-what-is-event-hubs.md)。
 
 ## <a name="event-publishers"></a>事件发布者
 
 使用 HTTP POST 或通过 AMQP 1.0 连接将事件发送到事件中心。 何时使用哪种方式的选择取决于要解决的特定方案。 AMQP 1.0 连接计量为服务总线中的中转连接计量，对于经常要以较高的消息量和较低的延迟传送消息的方案，适合选择此方式，因为它们提供持久的消息传递通道。
 
-使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient][] 和 [EventData][] 类。 [EventHubClient][] 提供 AMQP 信道，事件将通过该信道发送到事件中心。 [EventData][] 类表示一个事件，用于将消息发布到事件中心。 此类包括正文、一些元数据和有关事件的标头信息。 其他属性将在 [EventData][] 对象通过事件中心时添加到该对象。
+使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient][] 和 [EventData][] 类。 [EventHubClient][] 提供 AMQP 信道，事件将通过该信道发送到事件中心。 [EventData][] 类表示一个事件，用于将消息发布到事件中心。 此类包括正文、一些元数据（属性）和有关事件的标头信息（SystemProperties）。 其他属性会在通过事件中心传递时添加到 [EventData][] 对象。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 支持事件中心的 .NET 类在 [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet 包中提供。 可以通过 Visual Studio 解决方案资源管理器进行安装，也可以使用 Visual Studio 中的[包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)来进行。 为此，请在 [“Package Manager Console”](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) 窗口中发出以下命令：
 
 ```shell
@@ -56,7 +56,7 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 可通过以下方式将事件发送到事件中心：创建一个 [EventHubClient][] 实例并通过 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 方法异步发送该实例。 此方法采用单个 [EventData][] 实例参数，并以异步方式将其发送至事件中心。
 
-## <a name="event-serialization"></a>事件序列化
+## <a name="event-serialization"></a>活动序列化
 
 [EventData][] 类具有[两个重载构造函数](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor)，这些构造函数采用各种参数、字节或字节数组来表示事件数据有效负载。 将 JSON 与 [EventData][]类结合使用时，可以使用 **Encoding.UTF8.GetBytes()** 来检索 JSON 编码字符串的字节数组。 例如：
 
@@ -70,6 +70,9 @@ for (var i = 0; i < numMessagesToSend; i++)
 ```
 
 ## <a name="partition-key"></a>分区键
+
+> [!NOTE]
+> 如果你不熟悉分区，请参阅[此文](event-hubs-features.md#partitions)。 
 
 发送事件数据时，可以指定一个在经哈希处理后生成分区分配的值。 请使用 [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) 属性指定分区。 但是，决定使用分区意味着在可用性和一致性之间进行选择。 
 
@@ -127,7 +130,7 @@ var eventProcessorHost = new EventProcessorHost(
 await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 ```
 
-此时，主机将尝试使用“贪婪”算法获取事件中心内每个分区上的租约。 这些租用只在指定的时间段内有效，之后必须续订。 当新节点（本例中的工作线程实例）进入联机状态时，它们将保留租约，以后每次尝试获取更多租约时，负载会在节点之间转移。
+此时，主机将尝试使用“贪婪”算法获取事件中心内每个分区上的租约。 这些租用只在指定的时间段内有效，之后必须续订。 当新节点（本例中的工作线程实例）进入联机状态时，它们将预留租约，以后每次尝试获取更多租约时，负载会在节点之间转移。
 
 ![事件处理程序主机](./media/event-hubs-programming-guide/IC759863.png)
 
@@ -137,7 +140,10 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
 ## <a name="publisher-revocation"></a>发布者吊销
 
-除了 [EventProcessorHost][] 的高级运行时功能外，事件中心还支持吊销发布者，以阻止特定发布者向事件中心发送事件。 当发布者令牌已泄露，或者软件更新导致发布者行为不当时，这些功能很有用。 在这些情况下，可以阻止发布者的标识（其 SAS 令牌的一部分）发布事件。
+除了事件处理器主机的高级运行时功能外，事件中心服务还支持[发布服务器吊销](/rest/api/eventhub/revoke-publisher)，以便阻止特定发布服务器将事件发送到事件中心。 当发布者令牌已泄露，或者软件更新导致发布者行为不当时，这些功能很有用。 在这些情况下，可以阻止发布者的标识（其 SAS 令牌的一部分）发布事件。
+
+> [!NOTE]
+> 目前，只有 REST API 支持此功能（[发行者吊销](/rest/api/eventhub/revoke-publisher)）。
 
 有关发布者吊销以及如何以发布者身份向事件中心发送事件的详细信息，请参阅 [Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)（事件中心大规模安全发布）示例。
 

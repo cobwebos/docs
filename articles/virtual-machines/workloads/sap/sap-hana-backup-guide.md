@@ -4,21 +4,20 @@ description: SAP HANA 备份指南介绍适用于 Azure 虚拟机上的 SAP HANA
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 89896fab7b1c359007ed23d4f9d9771e366ca68a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05a4b8e8034e1c354a4209244694aeb2fc2c6007
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013345"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078749"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP HANA 备份指南
 
@@ -90,7 +89,7 @@ SAP 不会在 HANA 备份与存储快照之间做出优先选择， 而是列出
 
 在 Azure 上，请注意这样一个事实：Azure Blob 快照功能无法保证文件系统一致性（请参阅[通过 PowerShell 使用 Blob 快照](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)）。 下一部分_创建存储快照时保持 SAP HANA 数据一致性_介绍了有关此功能的一些注意事项。
 
-此外，必须了解对计费产生影响时经常使用 blob 快照在本文中所述：[了解快照如何产生费用](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)— 它并不是&#39;t 明显，使用 Azure 虚拟磁盘。
+此外, 还必须了解本文中所述的 blob 快照经常使用的计费含义:[了解快照如何产生费用](/rest/api/storageservices/understanding-how-snapshots-accrue-charges),&#39;与使用 Azure 虚拟磁盘一样明显。
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>创建存储快照时保持 SAP HANA 数据一致性
 
@@ -207,7 +206,7 @@ Azure 备份服务可以处理加密的 VM/磁盘（请参阅[如何使用 Azure
 
 使用 HANA Studio 备份控制台可以限制 HANA 备份文件的最大文件大小。 在示例环境中，使用该功能可能会导致生成多个较小的备份文件，而不是一个 230-GB 的备份文件。 较小的文件大小会对性能造成明显的影响（请参阅相关文章[文件级别的 SAP HANA Azure 备份](sap-hana-backup-file-level.md)）。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 下表根据测试结果显示了用于备份 Azure 虚拟机上运行的 SAP HANA 数据库的解决方案的优点和缺点。
 

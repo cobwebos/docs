@@ -10,12 +10,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: 1a72225ce29b7a94f2fc402488f6b998cde0a0fb
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: 2ccac3bf9a882dc021c6c969946ad9d439a7cf5d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494539"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069689"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 顾问简介
 
@@ -29,7 +29,7 @@ ms.locfileid: "55494539"
 * 提高资源的性能、安全性和高可用性，同时确定机会减少总体 Azure 支出。
 * 通过提议的内联操作获取建议。
 
-可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录到[门户](https://portal.azure.com)，在导航菜单中查找“顾问”，或在“所有服务”菜单中搜索它。
+可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录到[门户](https://portal.azure.com)，在导航菜单中查找“顾问”，或在“所有服务”菜单中搜索它   。
 
 顾问仪表板显示针对所有订阅的个性化建议。  可为特定的订阅和资源类型应用筛选器，以显示相关建议。  建议分为四类： 
 
@@ -51,21 +51,23 @@ ms.locfileid: "55494539"
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="how-do-i-access-advisor"></a>如何访问顾问？
-可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录到[门户](https://portal.azure.com)，在导航菜单中查找“顾问”，或在“所有服务”菜单中搜索它。
+可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录到[门户](https://portal.azure.com)，在导航菜单中查找“顾问”，或在“所有服务”菜单中搜索它   。
 
 还可通过虚拟机资源接口查看顾问建议。 选择虚拟机，并滚动到菜单中的顾问建议。 
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>需要哪些权限才能访问顾问？
  
-可以访问订阅的所有者、参与者或读者身份访问顾问建议。
+可以访问订阅的所有者、参与者或读者身份访问顾问建议    。
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>顾问为哪些资源提供建议？
 
-顾问可提供有关虚拟机、可用性集、应用程序网关、应用服务、SQL 服务器和用于 Redis 的 Azure 缓存的建议。
+顾问提供有关应用程序网关，应用服务建议可用性集，Azure 缓存，Azure 数据工厂，Azure Database for MySQL、 Azure Database for PostgreSQL、 Azure Database for MariaDB、 Azure ExpressRoute、 Azure Cosmos DB，Azure 公共IP 地址、 SQL 数据仓库、 SQL 服务器、 存储帐户、 流量管理器配置文件和虚拟机。
+
+Azure 顾问还包括从建议[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-recommendations)其中可能包括对其他资源类型的建议。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>是否可以推迟或消除建议？
 
-若要推迟或消除建议，请单击“推迟”链接。 可以指定推迟时间段，或选择“从不”以消除该建议。
+若要推迟或消除建议，请单击“推迟”链接  。 可以指定推迟时间段，或选择“从不”  以消除该建议。
 
 ## <a name="next-steps"></a>后续步骤
 

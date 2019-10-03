@@ -3,21 +3,20 @@ title: 在经济高效低优先级的 VM 上运行工作负荷 - Azure Batch | M
 description: 了解如何预配低优先级 VM，以降低 Azure Batch 工作负载的成本。
 services: batch
 author: mscurrell
-manager: jeconnoc
+manager: gwallace
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
 ms.custom: seodec18
-ms.openlocfilehash: 17668470be3e997c215aacc4cc2c32c80de2dd81
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: 33d448bc95f4cb12f5a06232cbab168a43d522c1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546787"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095200"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>将低优先级 VM 与 Batch 配合使用
 

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 C# 调用必应自定义搜索终结点 | Microsoft Docs
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 参考本快速入门开始从必应自定义搜索实例请求 C# 搜索结果。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 05/07/2018
+ms.date: 07/15/2019
 ms.author: maheshb
-ms.openlocfilehash: a775c1c864a8a5513be546195da5c0891f8bb1f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c1b118ec08e00705ad3eab9141d116fb9e6ef257
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849391"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405185"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>快速入门：使用 C# 调用必应自定义搜索终结点 
 
@@ -25,10 +25,10 @@ ms.locfileid: "57849391"
 
 - 必应自定义搜索实例。 请参阅[快速入门：创建第一个必应自定义搜索实例](quick-start.md)，了解详细信息。
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- 任何版本的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+- 任何版本的 [Visual Studio 2019 或更高版本](https://www.visualstudio.com/downloads/)
 - 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
-- 已安装 [NuGet 自定义搜索](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0)包。 
-    - 在 Visual Studio 中的解决方案资源管理器中，右键单击项目并从菜单中选择 `Manage NuGet Packages`。 安装 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` 包。 安装 NuGet 自定义搜索包还会安装以下程序集：
+- [必应自定义搜索](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) NuGet 包。 
+    - 在 Visual Studio 中的**解决方案资源管理器**内，右键单击你的项目，并从菜单中选择“管理 NuGet 包”。  安装 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` 包。 安装 NuGet 自定义搜索包还会安装以下程序集：
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -104,7 +104,7 @@ ms.locfileid: "57849391"
     ```
    ## <a name="process-and-view-the-results"></a>处理和查看结果
 
-1. 循环访问响应对象以显示有关每条搜索结果的信息，包括其名称、URL 和上次网页爬网的日期。
+3. 循环访问响应对象以显示有关每条搜索结果的信息，包括其名称、URL 和上次网页爬网的日期。
 
     ```csharp
     for(int i = 0; i < response.webPages.value.Length; i++) {                

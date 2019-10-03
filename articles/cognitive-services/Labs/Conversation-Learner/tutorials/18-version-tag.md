@@ -1,21 +1,22 @@
 ---
-title: 如何对 Conversation Learner 模型使用版本标记 - Microsoft 认知服务 | Microsoft Docs
+title: 如何在 Conversation Learner 模型中使用版本标记-Azure 认知服务 |Microsoft Docs
 titleSuffix: Azure
 description: 了解如何通过对话学习器模型使用版本控制和标记。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 5073d3ab967c4c4e1b90636c247839875a6aa0d7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0279363c039e3ec3c2deac3bc7f71c32c547e9d1
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086303"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703382"
 ---
 # <a name="how-to-use-version-tagging"></a>如何使用版本标记
 
@@ -34,7 +35,7 @@ ms.locfileid: "58086303"
 
 机器人将使用已选为“实时”版本的模型版本，但是，仅当“编辑标记”设置为“主”时，才能查看该机器人所进行的任何聊天。 如果模型的“编辑标记”属性未设置为“主”，则只能查看该模型的快照，而不能以任何方式对其进行更改。
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 ### <a name="install-the-bot-framework-emulator"></a>安装 Bot Framework Emulator
 
@@ -109,4 +110,4 @@ ms.locfileid: "58086303"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [演示 - 密码重置](./demo-password-reset.md)
+> [枚举实体和设置实体操作](./tutorial-enum-set-entity.md)

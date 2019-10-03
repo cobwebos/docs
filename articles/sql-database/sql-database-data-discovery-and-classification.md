@@ -1,37 +1,37 @@
 ---
-title: Azure SQL 数据库和 SQL 数据仓库数据发现和分类 |Microsoft Docs
-description: Azure SQL 数据库和数据发现和分类
+title: Azure SQL 数据库和 SQL 数据仓库数据发现和分类 | Microsoft Docs
+description: Azure SQL 数据库数据发现和分类
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: ronitr
-ms.author: ronitr
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-manager: craigg
-ms.date: 03/22/2019
-ms.openlocfilehash: 74bd3af3e1ffd126f8cb4f2347e4566cc4708e25
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.date: 08/22/2019
+ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58495980"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009995"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL 数据库和 SQL 数据仓库数据发现和分类
 
-数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 & 
+数据发现 & 分类提供了内置于 Azure SQL 数据库的高级**功能，用于** & **发现**、**分类**、**保护**数据库中的敏感数据。
+
 发现最敏感的数据（业务、财务、医疗保健、个人身份数据 (PII)，等等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
 
 - 帮助满足数据隐私标准和法规符合性要求。
 - 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报。
 - 控制对包含高度敏感数据的数据库的访问并强化其安全性。
 
-数据发现和分类是组成部分[高级数据安全](sql-database-advanced-data-security.md)(ADS) 产品/服务，它是统一的高级 SQL 安全功能包。 可通过中心 SQL ADS 门户访问和管理数据发现和分类。
+数据发现和分类包含在[高级数据安全](sql-database-advanced-data-security.md) (ADS) 产品/服务中，该产品是高级 SQL 安全功能统一软件包。 可通过中心 SQL ADS 门户访问和管理数据发现和分类。
 
 > [!NOTE]
-> 本文档与 Azure SQL 数据库和 Azure SQL 数据仓库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 SQL Server （本地），请参阅[SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
+> 本文档是关于 Azure SQL 数据库和 Azure SQL 数据仓库的。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 对于 SQL Server（本地），请参阅 [SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
 
 ## <a id="subheading-1"></a>什么是数据发现和分类
 
@@ -77,7 +77,7 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-2. 导航到 Azure SQL 数据库窗格“安全”标题下的“高级数据安全”。 单击以启用“高级数据安全”，然后单击“数据发现和分类(预览)”卡。
+2. 导航到 Azure SQL 数据库窗格“安全”标题下的“高级数据安全”。 单击 "启用高级数据安全性"，然后单击 "**数据发现" & 分类**卡 "。
 
    ![扫描数据库](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -123,11 +123,11 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 ## <a id="subheading-3"></a>审核对敏感数据的访问
 
-信息保护范例的一个重要方面是能够监视对敏感数据的访问。 [Azure SQL 数据库审核](sql-database-auditing.md) 已经过增强，在审核日志中加入了名为 data_sensitivity_information 的新字段，该字段会记录查询返回的实际数据的敏感度分类（标签）。
+信息保护范例的一个重要方面是能够监视对敏感数据的访问。 [Azure SQL 数据库审核](sql-database-auditing.md) 已经过增强，在审核日志中包含了名为 data_sensitivity_information 的新字段，该字段会记录查询返回的实际数据的敏感度分类（标签）。
 
 ![审核日志](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>自动化/编程分类
+## <a id="subheading-4"></a>使用 T-SQL 管理数据分类
 
 可以使用 T-SQL 添加/删除列分类，以及检索整个数据库的所有分类。
 
@@ -138,20 +138,44 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 - 删除一列或多列分类：[删除敏感度分类](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - 查看数据库上的所有分类：[sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
+### <a name="manage-classifications-using-rest-apis"></a>使用 Rest Api 管理分类
+
 此外，还可以使用 REST API 通过编程方式管理分类。 已发布的 REST API 支持以下操作：
 
-- [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) - 创建或更新给定列的敏感度标签
+- [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate)-创建或更新给定列的敏感度标签
 - [删除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) - 删除给定列的敏感度标签
+- [禁用建议](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation)-对给定列禁用敏感性建议
+- [启用建议](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation)-对给定列启用敏感性建议（默认情况下，对所有列启用建议）
 - [获取](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) - 获取给定列的敏感度标签
 - [按数据库列出当前项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 获取给定数据库的当前敏感度标签
+
 - [按数据库列出建议项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 获取给定数据库的建议敏感度标签
 
+## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>使用 Azure PowerShell 管理数据发现和分类
+
+可以使用 PowerShell 获取 Azure SQL 数据库和托管实例中所有建议的列。
+
+### <a name="powershell-cmdlets-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 PowerShell Cmdlet
+
+- [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
+- [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
+- [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
+- [Get-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
+
+### <a name="powershell-cmdlets-for-managed-instance"></a>托管实例的 PowerShell Cmdlet
+
+- [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
+- [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
+- [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
+- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
+
 ## <a name="permissions"></a>权限
-以下内置角色可以读取的 Azure SQL 数据库的数据分类： `Owner`， `Reader`， `Contributor`，`SQL Security Manager`和`User Access Administrator`。
 
-以下内置角色可以修改 Azure SQL 数据库的数据分类： `Owner`， `Contributor`， `SQL Security Manager`。
+以下内置角色可以读取 Azure SQL 数据库的数据分类：`Owner`、`Reader`、`Contributor`、`SQL Security Manager`、`User Access Administrator`。
 
-详细了解[用于 Azure 资源的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+以下内置角色可以修改 Azure SQL 数据库的数据分类：`Owner`、`Contributor`、`SQL Security Manager`。
+
+详细了解 [Azure 资源的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 ## <a id="subheading-5"></a>后续步骤
 

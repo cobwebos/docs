@@ -1,20 +1,21 @@
 ---
-title: 使用地理边界筛选必应当地企业搜索 API 的结果 | Microsoft Docs
+title: 使用地理边界筛选必应本地业务搜索 API 的结果
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何筛选必应当地企业搜索 API 的搜索结果。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.subservice: bing-local-business
+ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 193d0b25276b90f6047943ded83f2000dd4d3436
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: rosh
+ms.openlocfilehash: 213457bc583494bbe039269b96b25990f7d0a961
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775707"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906248"
 ---
 # <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>使用地理边界筛选必应本地业务搜索 API 的结果
 

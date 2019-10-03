@@ -11,12 +11,12 @@ ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: fab52236c701f10c8e8e23ac398362ca4583ea06
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 09d4a6acf93f5fb01c70f9e9bd935c404c5abf50
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50228833"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050705"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Twilio 中的消息
 
@@ -24,7 +24,7 @@ ms.locfileid: "50228833"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * 从 [Twilio](https://www.twilio.com/) 中： 
 
@@ -51,10 +51,10 @@ ms.locfileid: "50228833"
 
      * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
 
-       -或-
+       或
 
      * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-     选择出现的加号 (**+**)，然后选择“添加操作”。
+     选择出现的加号 ( **+** )，然后选择“添加操作”。
      
        在搜索框中，输入“twilio”作为筛选器。 
        在操作列表下，选择所需的操作。

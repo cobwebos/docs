@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 用户、组、许可和角色
+    - name: Azure AD 用户、组、许可和角色
       href: directory-overview-user-model.md
 - name: 快速入门
   items:
@@ -10,6 +10,8 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 将许可证分配给用户
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 授权执行无限次应用注册
+      href: roles-quickstart-app-registration-limits.md
     - name: 设置组过期策略
       href: groups-quickstart-expiration.md
     - name: 设置组命名策略
@@ -34,16 +36,26 @@
   items:
     - name: 管理用户
       items:
-        - name: 将新用户添加到 Azure AD
+        - name: 创建用户
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 批量创建用户（预览版）
+          href: users-bulk-add.md
         - name: 管理用户个人资料
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 下载用户信息（预览版）
+          href: users-bulk-download.md
         - name: 共享用户帐户
           href: users-sharing-accounts.md
         - name: 将用户分配到管理员角色
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 批量删除用户（预览版）
+          href: users-bulk-delete.md
         - name: 还原已删除的用户
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 批量还原用户（预览版）
+          href: users-bulk-restore.md
+        - name: 关闭非托管目录下的帐户
+          href: users-close-account.md
         - name: 添加 B2B 用户
           href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 向 B2B 用户分配角色
@@ -70,16 +82,26 @@
       items:
         - name: 使用组管理访问权限
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: 在 Azure 门户中管理组
+        - name: 搜索组和成员列表（预览版）
+          href: groups-members-owners-search.md
+        - name: 创建组（Azure 门户）
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 管理组 - 用于 Graph 的 PowerShell (v2)
           href: groups-settings-v2-cmdlets.md
         - name: 管理组 - PowerShell MSOnline
           href: groups-settings-cmdlets.md
-        - name: 管理组成员
+        - name: 添加或删除组成员
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 批量添加成员（预览版）
+          href: groups-bulk-import-members.md
+        - name: 批量删除成员（预览版）
+          href: groups-bulk-remove-members.md
+        - name: 批量下载成员列表（预览版）
+          href: groups-bulk-download-members.md
         - name: 管理组所有者
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 批量下载组列表（预览版）
+          href: groups-bulk-download.md
         - name: 管理组中的组
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 添加对 SaaS 应用的组访问权限
@@ -98,7 +120,9 @@
           items:
             - name: 创建动态组
               href: groups-create-rule.md
-            - name: 动态组规则
+            - name: 更新成员身份规则
+              href: groups-update-rule.md
+            - name: 动态组规则和语法
               href: groups-dynamic-membership.md
             - name: 更改组成员身份类型
               href: groups-change-type.md
@@ -114,7 +138,7 @@
           href: licensing-groups-change-licenses.md
         - name: 其他方案
           href: licensing-group-advanced.md
-        - name: 使用 PowerShell 进行基于组的许可
+        - name: 使用 PowerShell 和 Graph 进行组许可
           href: licensing-ps-examples.md
         - name: 用于许可的服务计划 ID
           href: licensing-service-plan-reference.md
@@ -124,10 +148,22 @@
           href: directory-assign-admin-roles.md
         - name: 查看和分配角色
           href: directory-manage-roles-portal.md
-        - name: 使用 PowerShell 分配角色
-          href: roles-assign-powershell.md
-        - name: 委托应用管理角色
-          href: roles-delegate-app-roles.md
+        - name: 自定义角色预览版
+          items:
+            - name: 自定义角色预览版
+              href: roles-custom-overview.md
+            - name: 创建自定义角色
+              href: roles-create-custom.md
+            - name: 查看自定义角色分配
+              href: roles-view-assignments.md
+            - name: 在 Azure AD 管理中心分配角色
+              href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+            - name: 使用 PowerShell 分配自定义角色
+              href: roles-assign-powershell.md
+            - name: 自定义角色预览权限
+              href: roles-custom-available-permissions.md
+            - name: 委托应用管理权限
+              href: roles-delegate-app-roles.md
         - name: 按任务分配的最低权限角色
           href: roles-delegate-by-task.md
         - name: Microsoft 365 角色

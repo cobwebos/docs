@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: be66fd51b37c0e62b2b757a88ee1db9319b2093a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879805"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60878817"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>将数据从 Azure 存储 Blob 复制到 Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
@@ -52,13 +52,13 @@ Azure Data Lake Storage Gen1 提供的命令行工具 [AdlCopy](https://aka.ms/d
 
 语法中的参数如下所述：
 
-| 选项 | 描述 |
+| Option | 描述 |
 | --- | --- |
-| 源 |指定 Azure 存储 blob 中源数据的位置。 源可以是 Blob 容器、Blob 或另一 Data Lake Storage Gen1 帐户。 |
+| source |指定 Azure 存储 blob 中源数据的位置。 源可以是 Blob 容器、Blob 或另一 Data Lake Storage Gen1 帐户。 |
 | 目标 |指定要复制到的 Data Lake Storage Gen1 目标。 |
 | SourceKey |指定 Azure 存储 blob 源的存储访问密钥。 仅在源是 blob 容器或 blob 时必选此项。 |
 | 帐户 |**可选**。 如要使用 Azure Data Lake Analytics 帐户运行复制作业，请使用此选项。 如果在语法中使用 /Account 选项但不指定 Data Lake Analytics 帐户，AdlCopy 会使用默认帐户来运行作业。 此外，如果使用此选项，必须添加源（Azure 存储 Blob）和目标 (Azure Data Lake Storage Gen1)，将其作为 Data Lake Analytics 帐户的数据源。 |
-| 单位 |指定要用于复制作业的 Data Lake Analytics 单位的数量。 如果使用“/Account”选项指定 Data Lake Analytics 帐户，此选项为必选。 |
+| 单位 |指定要用于复制作业的 Data Lake Analytics 单位的数量。 如果使用“/Account”  选项指定 Data Lake Analytics 帐户，此选项为必选。 |
 | 模式 |指定 regex 模式，它指示要复制哪些 blob 或文件。 AdlCopy 使用区分大小写匹配。 未指定模式时，使用的默认模式会复制所有项。 不支持指定多个文件模式。 |
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-an-azure-storage-blob"></a>使用 AdlCopy（以独立模式）从 Azure 存储 blob 复制数据

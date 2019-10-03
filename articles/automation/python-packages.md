@@ -4,17 +4,17 @@ description: 本文介绍如何在 Azure 自动化中管理 Python 2 包。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 02/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b53e07d6086f2a02fd1bbd158ffc09dc95b0c377
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: f98b1454ff59eae62bcab7792fd7fd742babfb23
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796373"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478214"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>在 Azure 自动化中管理 Python 2 包
 
@@ -22,15 +22,15 @@ ms.locfileid: "59796373"
 
 ## <a name="import-packages"></a>导入包
 
-在自动化帐户中，选择“共享资源”下的“Python 2 包”。 单击“+ 添加 Python 2 包”。
+在自动化帐户中，选择“共享资源”下的“Python 2 包”   。 单击“+ 添加 Python 2 包”  。
 
 ![添加 Python 包](media/python-packages/add-python-package.png)
 
-在“添加 Python 包”页中，选择要上传的本地包。 包可以是 `.whl` 文件或 `.tar.gz` 文件。 选择后，单击“确定”以上传包。
+在“添加 Python 包”页中，选择要上传的本地包  。 包可以是 `.whl` 文件或 `.tar.gz` 文件。 选择后，单击“确定”以上传包  。
 
 ![添加 Python 包](media/python-packages/upload-package.png)
 
-导入包之后，该包将在自动化帐户中的“Python 2 包”页中列出。 如果需要删除包，请选择包，然后在包页面中选择“删除”。
+导入包之后，该包将在自动化帐户中的“Python 2 包”页中列出  。 如果需要删除包，请选择包，然后在包页面中选择“删除”  。
 
 ![包列表](media/python-packages/package-list.png)
 

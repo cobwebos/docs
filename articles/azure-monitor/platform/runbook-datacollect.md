@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
 ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102578"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60453910"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>使用 Azure 自动化 runbook 收集 Log Analytics 中的数据
 
@@ -43,16 +43,16 @@ ms.locfileid: "58102578"
 ## <a name="1-install-data-collector-api-module"></a>1.安装数据收集器 API 模块
 每个[来自 HTTP 数据收集器的 API 请求](../../azure-monitor/platform/data-collector-api.md#create-a-request)必须进行适当的格式设置，且包含授权标头。 可以在 runbook 中执行此操作，但可通过使用简化此过程的模块，减少所需的代码量。 一个可用的模块是 PowerShell 库中的 [OMSIngestionAPI 模块](https://www.powershellgallery.com/packages/OMSIngestionAPI)。
 
-若要在 runbook 中使用一个[模块](../../automation/automation-integration-modules.md)，则该模块必须安装在自动化帐户中。  之后同一帐户中的任何 runbook 便可使用模块中的函数。 通过在自动化帐户中选择“资产” > “模块” > “添加模块”，安装新的模块。
+若要在 runbook 中使用一个[模块](../../automation/automation-integration-modules.md)，则该模块必须安装在自动化帐户中。  之后同一帐户中的任何 runbook 便可使用模块中的函数。 通过在自动化帐户中选择“资产” > “模块” > “添加模块”，安装新的模块    。
 
 而 PowerShell 库会提供一个快速选项，用于将模块直接部署到自动化帐户，因此可在本教程中使用该选项。
 
 ![OMSIngestionAPI 模块](media/runbook-datacollect/OMSIngestionAPI.png)
 
 1. 转到 [PowerShell 库](https://www.powershellgallery.com/)。
-2. 搜索“OMSIngestionAPI”。
-3. 单击“部署到 Azure 自动化”按钮。
-4. 选择自动化帐户并单击“确定”，以安装模块。
+2. 搜索“OMSIngestionAPI”  。
+3. 单击“部署到 Azure 自动化”按钮  。
+4. 选择自动化帐户并单击“确定”，以安装模块  。
 
 ## <a name="2-create-automation-variables"></a>2.创建自动化变量
 [自动化变量](../../automation/automation-variables.md)保存可由自动化帐户中所有 runbook 使用的值。 这些变量允许更改这些值，而无需编辑实际的 runbook，这样可使 runbook 更为灵活。 来自 HTTP 数据收集器 API 的每个请求都需要 Log Analytics 工作区的 ID 和密钥，并且变量资产是存储此信息的理想之选。
@@ -60,12 +60,12 @@ ms.locfileid: "58102578"
 ![变量](media/runbook-datacollect/variables.png)
 
 1. 在 Azure 门户中，导航到自动化帐户。
-2. 在“共享资源”下选择“变量”。
-2. 单击“添加变量”，在下表中创建两个变量。
+2. 在“共享资源”下选择“变量”   。
+2. 单击“添加变量”，在下表中创建两个变量  。
 
 | 属性 | 工作区 ID 值 | 工作区密钥值 |
 |:--|:--|:--|
-| 名称 | WorkspaceId | WorkspaceKey |
+| Name | WorkspaceId | WorkspaceKey |
 | Type | String | String |
 | 值 | 粘贴在 Log Analytics 工作区的“工作区 ID”中。 | 粘贴在 Log Analytics 工作区的“主密钥”或“辅助密钥”中。 |
 | 加密 | 否 | 是 |
@@ -77,9 +77,9 @@ Azure 自动化在门户中具有编辑器，可在其中编辑和测试 runbook
 ![编辑 runbook](media/runbook-datacollect/edit-runbook.png)
 
 1. 导航到自动化帐户。
-2. 单击“Runbook” > “添加 runbook” > “新建 runbook”。
-3. 对于 runbook 名称，键入“Collect-Automation-jobs”。 对于 runbook 类型，选择“PowerShell”。
-4. 单击“创建”，创建 runbook 并启动编辑器。
+2. 单击“Runbook” > “添加 runbook” > “新建 runbook”    。
+3. 对于 runbook 名称，键入“Collect-Automation-jobs”  。 对于 runbook 类型，选择“PowerShell”  。
+4. 单击“创建”，创建 runbook 并启动编辑器  。
 5. 将以下代码复制并粘贴到 runbook 中。 有关代码的解释，请参考脚本中的注释。
     ```
     # Get information required for the automation account from parameter values when the runbook is started.
@@ -131,11 +131,11 @@ Azure 自动化包含用于[测试 runbook](../../automation/automation-testing-
 
 ![测试 runbook](media/runbook-datacollect/test-runbook.png)
 
-1. 单击“保存”保存 runbook。
-1. 单击“测试窗格”，在测试环境中打开 runbook。
+1. 单击“保存”保存 runbook  。
+1. 单击“测试窗格”，在测试环境中打开 runbook  。
 1. 由于 runbook 具有参数，所以系统会提示输入这些参数的值。 输入将从其中收集作业信息的的资源组的名称和自动化帐户。
-1. 单击“启动”以启动 runbook。
-1. runbook 启动时的状态为“已排队”，之后变为“正在运行”状态。
+1. 单击“启动”以启动 runbook  。
+1. runbook 启动时的状态为“已排队”，之后变为“正在运行”状态   。
 1. runbook 应显示详细输出以及以 json 格式收集的作业。 如果未列出任何作业，则可能在过去一个小时内尚未在自动化帐户中创建任何作业。 尝试启动自动化帐户中的任何 runbook，然后再次执行测试。
 1. 确保所得输出未在对 Log Analytics 的 post 命令中显示任何错误。 应看到类似于下面的消息。
 
@@ -147,7 +147,7 @@ Azure 自动化包含用于[测试 runbook](../../automation/automation-testing-
 ![日志输出](media/runbook-datacollect/log-output.png)
 
 1. 在 Azure 门户中，选择 Log Analytics 工作区。
-2. 单击“日志搜索”。
+2. 单击“日志搜索”  。
 3. 键入后列命令 `Type=AutomationJob_CL`，然后单击“搜索”按钮。 请注意记录类型包括未在脚本中指定的 _CL。 该后缀自动追加到日志类型，以指示它是自定义日志类型。
 4. 应看到返回一条或多条记录，指示 runbook 正在按预期工作。
 
@@ -157,17 +157,17 @@ Azure 自动化包含用于[测试 runbook](../../automation/automation-testing-
 ![发布 runbook](media/runbook-datacollect/publish-runbook.png)
 
 1. 返回到自动化帐户。
-2. 单击“Runbook”，选择“Collect-Automation-jobs”。
-3. 单击“编辑”，然后单击“发布”。
-4. 当系统要求确认覆盖先前发布的版本时，单击“是”。
+2. 单击“Runbook”，选择“Collect-Automation-jobs”   。
+3. 单击“编辑”，然后单击“发布”   。
+4. 当系统要求确认覆盖先前发布的版本时，单击“是”  。
 
 ## <a name="7-set-logging-options"></a>7.设置日志记录选项
 对于测试，可以查看[详细输出](../../automation/automation-runbook-output-and-messages.md#message-streams)，因为已在脚本中设置 $VerbosePreference 变量。 对于生产环境，若要查看详细输出，需要设置 runbook 的日志记录属性。 对于本教程中使用的 runbook，这会显示发送到 Log Analytics 的 json 数据。
 
 ![日志记录和跟踪](media/runbook-datacollect/logging.png)
 
-1. 在 runbook 的属性中，在“Runbook 设置”下选择“日志记录和跟踪”。
-2. 将“日志详细记录”的设置更改为“开”。
+1. 在 runbook 的属性中，在“Runbook 设置”下选择“日志记录和跟踪”   。
+2. 将“日志详细记录”的设置更改为“开”   。
 3. 单击“ **保存**”。
 
 ## <a name="8-schedule-runbook"></a>8.计划 Runbook
@@ -175,33 +175,33 @@ Azure 自动化包含用于[测试 runbook](../../automation/automation-testing-
 
 ![计划 Runbook](media/runbook-datacollect/schedule-runbook.png)
 
-1. 在 runbook 的属性中，在“资源”下选择“计划”。
-2. 单击“添加计划” > “将计划链接到 runbook” > “创建新计划”。
-5. 为计划键入下列值，然后单击“创建”。
+1. 在 runbook 的属性中，在“资源”下选择“计划”   。
+2. 单击“添加计划” > “将计划链接到 runbook” > “创建新计划”    。
+5. 为计划键入下列值，然后单击“创建”  。
 
 | 属性 | 值 |
 |:--|:--|
 | 名称 | AutomationJobs-Hourly |
 | 启动 | 选择至少晚于当前时间 5 分钟的任何时间。 |
 | 定期 | 重复执行 |
-| 执行间隔 | 1 小时	 |
+| 执行间隔 | 1 小时 |
 | 设置到期时间 | 否 |
 
 创建计划后，需要设置参数值，此计划每次启动 runbook 时都要使用此参数值。
 
-1. 单击“配置参数和运行设置”。
-1. 填写“ResourceGroupName”和“AutomationAccountName”的值。
-1. 单击“确定”。
+1. 单击“配置参数和运行设置”  。
+1. 填写“ResourceGroupName”和“AutomationAccountName”的值   。
+1. 单击“确定”。 
 
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9.验证 runbook 是否按计划启动
 每次启动 runbook 时，都会[创建一个作业](../../automation/automation-runbook-execution.md)并记录任何输出。 实际上，这些正是 runbook 在收集的作业。 通过在计划启动时间已过去后，检查 runbook 作业，可以验证 runbook 是否按预期启动。
 
 ![作业](media/runbook-datacollect/jobs.png)
 
-1. 在 runbook 的属性中，在“资源”下选择“作业”。
+1. 在 runbook 的属性中，在“资源”下选择“作业”   。
 2. 应看到每次启动 runbook 时的作业列表。
 3. 单击其中一个作业，查看其详细信息。
-4. 单击“所有日志”，查看 runbook 的日志和输出。
+4. 单击“所有日志”，查看 runbook 的日志和输出  。
 5. 滚动到底部，查找类似于下图的项。<br>![详细](media/runbook-datacollect/verbose.png)
 6. 单击此项可查看已发送到 Log Analytics 的详细 json 数据。
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: f7f4f9ae6a80052e06b2cafa68cb5c11dfa1333a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233840"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62097923"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "56233840"
 
 有关经典部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署：了解部署模型和资源状态](../azure-resource-manager/resource-manager-deployment-model.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 如果已安装 Azure PowerShell，则必须确保安装的是 Azure PowerShell 版本 1.0.0 或更高版本。 可以使用此命令在 Azure PowerShell 命令提示符下查看已安装的 Azure PowerShell 版本。
 
     Get-Module Az | format-table version
@@ -125,24 +125,24 @@ ms.locfileid: "56233840"
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Azure Redis 缓存 PowerShell 使用的属性
 下表包含使用 Azure PowerShell 创建和管理 Azure Redis 缓存实例时常用的参数的属性和说明。
 
-| 参数 | 说明 | 默认 |
+| 参数 | 描述 | 默认 |
 | --- | --- | --- |
-| 名称 |缓存的名称 | |
-| 位置 |缓存的位置 | |
+| Name |缓存的名称 | |
+| Location |缓存的位置 | |
 | ResourceGroupName |将在其中创建缓存的资源组名称 | |
-| 大小 |缓存的大小。 有效值是：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
+| Size |缓存的大小。 有效值是：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
 | ShardCount |在启用群集的情况下创建高级缓存时要创建的分片数目。 有效值是：1、2、3、4、5、6、7、8、9、10 | |
 | SKU |指定缓存的 SKU。 有效值是：基本、标准、高级 |标准 |
 | RedisConfiguration |指定 Redis 配置设置。 有关每个设置的详细信息，请参阅以下 [RedisConfiguration 属性](#redisconfiguration-properties)表。 | |
 | EnableNonSslPort |指出是否启用非 SSL 端口。 |False |
 | MaxMemoryPolicy |此参数已弃用 - 请改用 RedisConfiguration。 | |
 | StaticIP |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中选择一个。 | |
-| 子网 |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 | |
+| Subnet |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 | |
 | VirtualNetwork |在 VNET 中托管缓存时，指定要在其中部署缓存的 VNET 的资源 ID。 | |
 | KeyType |指定续订访问密钥时要重新生成哪个访问密钥。 有效值是：Primary、Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration 属性
-| 属性 | 说明 | 定价层 |
+| 属性 | 描述 | 定价层 |
 | --- | --- | --- |
 | rdb-backup-enabled |是否已启用 [Redis 数据暂留](cache-how-to-premium-persistence.md) |仅限高级版 |
 | rdb-storage-connection-string |[Redis 数据暂留](cache-how-to-premium-persistence.md)存储帐户的连接字符串 |仅限高级版 |
@@ -155,7 +155,7 @@ ms.locfileid: "56233840"
 | set-max-intset-entries |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准版和高级版 |
 | zset-max-ziplist-entries |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准版和高级版 |
 | zset-max-ziplist-value |为较小的聚合数据类型配置[内存优化](https://redis.io/topics/memory-optimization) |标准版和高级版 |
-| 数据库 |配置数据库的数目。 该属性只能在创建缓存时配置。 |标准版和高级版 |
+| databses |配置数据库的数目。 该属性只能在创建缓存时配置。 |标准版和高级版 |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>创建 Azure Redis 缓存
 可以使用 [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) cmdlet 创建新的 Azure Redis 缓存实例。
@@ -340,7 +340,7 @@ ms.locfileid: "56233840"
 > * 不能从**标准**缓存向下缩放到**基本**缓存。
 > * 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
 > * 不能从**基本**缓存直接缩放到**高级**缓存。 必须在一个缩放操作中从**基本**缩放到**标准**，并在后续的缩放操作中从**标准**缩放到**高级**。
-> * 不能从较大的大小减小为 **C0 (250 MB)**。
+> * 不能从较大的大小减小为 **C0 (250 MB)** 。
 > 
 > 有关详细信息，请参阅[如何缩放 Azure Redis 缓存](cache-how-to-scale.md)。
 > 
@@ -726,7 +726,7 @@ ms.locfileid: "56233840"
 > 
 > 
 
-若要查看 `Reset-AzRedisCache` 的可用参数列表及其说明，请运行以下命令。
+若要查看 `Reset-AzRedisCache`的可用参数列表及其说明，请运行以下命令。
 
     PS C:\> Get-Help Reset-AzRedisCache -detailed
 

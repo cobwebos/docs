@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
 ms.openlocfilehash: 1218408bee067d6edb274fdcbf4fae62b8245a01
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455048"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66160665"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>使用 PowerShell 创建用于将数据从本地复制到 Azure 的数据工厂管道
 
@@ -28,12 +28,12 @@ ms.locfileid: "57455048"
 
 ## <a name="prerequisites"></a>必备组件
 
-- **SQL Server**。 在本示例中，将本地 SQL Server 数据库用作源数据存储。
-- **Azure 存储帐户**。 本示例使用 Azure Blob 存储作为“目标/接收器”数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
-- 自承载集成运行时。 从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 文件，在计算机上安装自承载集成运行时。  
+- **SQL Server**。 在本示例中，将本地 SQL Server 数据库用作源数据存储。 
+- **Azure 存储帐户**。 本示例使用 Azure Blob 存储作为“目标/接收器”数据存储。  如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
+- 自承载集成运行时。  从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 文件，在计算机上安装自承载集成运行时。  
 
 ### <a name="create-sample-database-in-sql-server"></a>在 SQL Server 中创建示例数据库
-1. 在本地 SQL Server 数据库中，使用以下 SQL 脚本创建名为“emp”的表： 
+1. 在本地 SQL Server 数据库中，使用以下 SQL 脚本创建名为“emp”的表：  
 
    ```sql   
      CREATE TABLE dbo.emp

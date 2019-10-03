@@ -12,11 +12,11 @@ ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d26bc6044ca106b0f081cee5a39405b4b78ce7ac
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523998"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60303820"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 Azure HDInsight Hadoop 群集
 本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](https://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
@@ -75,7 +75,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 2. [为高级分析过程和技术自定义 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)。 此步骤将创建一个在所有节点上都安装有 64 位 Anaconda Python 2.7 的 HDInsight Hadoop 群集。 自定义 HDInsight 群集时需牢记两个重要步骤。
    
    * 创建 HDInsight 群集时，请记住将其与步骤 1 中创建的存储帐户相链接。 此存储帐户访问在该群集中处理的数据。
-   * 创建群集后，启用对其头节点的远程访问。 浏览到“配置”选项卡，并选择“启用远程”。 此步骤指定用于远程登录的用户凭据。
+   * 创建群集后，启用对其头节点的远程访问。 浏览到“配置”  选项卡，并选择“启用远程”  。 此步骤指定用于远程登录的用户凭据。
 3. [创建 Azure 机器学习工作区](../studio/create-workspace.md)：此工作区用于生成机器学习模型。 使用 HDInsight 群集完成初始数据探索并进行下采样后，此任务将得到解决。
 
 ## <a name="getdata"></a>从公共源获取数据
@@ -92,7 +92,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹称为*\<路径\_到\_unzipped_data\_文件\>* 在下文中。
+1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹称为 *\<路径\_到\_unzipped_data\_文件\>* 在下文中。
 
 ## <a name="upload"></a>将数据上传到 HDInsight Hadoop 群集的默认容器
 > [!NOTE]
@@ -721,7 +721,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 下面是有关[导入数据][import-data]模块的一些详细信息和要输入的参数：
 
-**HCatalog 服务器 URI**：如果群集名称为“abc123”，则其 URI 即为： https://abc123.azurehdinsight.net。
+**HCatalog 服务器 URI**：如果群集名称为“abc123”，则其 URI 即为： https://abc123.azurehdinsight.net  。
 
 **Hadoop 用户帐户名**：为群集选择的用户名（不是远程访问用户名）。
 

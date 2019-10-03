@@ -3,20 +3,20 @@ title: Azure 流量管理器 - 常见问题解答
 description: 本文提供有关流量管理器的常见问题解答
 services: traffic-manager
 documentationcenter: ''
-author: KumudD
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: kumud
-ms.openlocfilehash: 6086c182763885b62f28ab093be2a7f3f8282b8a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: allensu
+ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788421"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69511022"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -31,8 +31,7 @@ ms.locfileid: "59788421"
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>可以使用流量管理器路由什么类型的流量？
 如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器终结点可以是任何面向 Internet 的 Azure 内部或外部托管的服务。 因此，流量管理器可以将源自公共 Internet 的流量路由到一组也面向 Internet 的终结点。 如果终结点位于专用网络内部（例如 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md#internalloadbalancer)的内部版本），或用户从此类内部网络发出 DNS 请求，则无法使用流量管理器来路由此流量。
 
-
-### <a name="does-traffic-manager-support-sticky-sessions"></a>流量管理器是否支持“粘滞”会话？
+### <a name="does-traffic-manager-support-sticky-sessions"></a>流量管理器是否支持 "粘滞" 会话？
 
 如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 它使用 DNS 响应将客户端引导到相应的服务终结点。 客户端直接连接到服务终结点，而不是通过流量管理器连接。 因此，流量管理器看不到客户端与服务器之间的 HTTP 流量。
 
@@ -58,16 +57,19 @@ ms.locfileid: "59788421"
 
 如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 完成 DNS 查找以后，客户端会直接连接到应用程序终结点，不通过流量管理器进行连接。 因此，连接可以使用任何应用程序协议。 如果选择 TCP 作为监视协议，则无需使用任何应用程序协议，就可以完成对流量管理器终结点运行状况的监视。 如果选择使用应用程序协议来验证运行状况，则要求终结点能够响应 HTTP 或 HTTPS GET 请求。
 
-### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>是否可以对“裸”域名使用流量管理器？
-是的。 若要了解如何创建域名称顶点处以引用 Azure 流量管理器配置文件的别名记录，请参阅[配置以支持顶点域名使用流量管理器的别名记录](../dns/tutorial-alias-tm.md)。
+### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>是否可以使用流量管理器和 "裸" 域名？
+
+是的。 若要了解如何创建域名顶点的别名记录以引用 Azure 流量管理器配置文件, 请参阅[使用流量管理器配置别名记录以支持顶点域名](../dns/tutorial-alias-tm.md)。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>处理 DNS 查询时流量管理器是否会考虑客户端子网地址？ 
+
 会，除了其收到的 DNS 查询的源 IP 地址（通常是 DNS 解析器的 IP 地址）以外，在执行地理、性能和子网路由方法的查找时，流量管理器还会考虑客户端子网地址（如果它通过代表最终用户发起请求的解析器包含在查询中）。  
 具体而言，是 [RFC 7871 – DNS 查询中的客户端子网](https://tools.ietf.org/html/rfc7871)，它提供[ DNS (EDNS0) 的扩展机制](https://tools.ietf.org/html/rfc2671)，可以从支持该机制的解析器传递客户端子网地址。
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>什么是 DNS TTL，它如何影响我的用户？
 
 当 DNS 查询到达流量管理器时，它将在响应中设置一个名为生存时间 (TTL) 的值。 这个值以秒为单位，向下游 DNS 解析器指示缓存此响应的时间。 尽管 DNS 解析器不保证缓存此结果，但通过缓存，DNS 解析器可对任何离开缓存的后续查询做出响应，而无需这些查询进入流量管理器 DNS 服务器。 这会对响应产生如下影响：
+
 - TTL 越高，到达流量管理器 DNS 服务器的查询越少，而这又可降低客户成本，因为会按使用了服务的查询数进行计费。
 - 较高的 TTL 还可能降低执行 DNS 查找所需的时间。
 - 较高的 TTL 还意味着数据不会反应最新的运行状况信息，流量管理器已通过其探测代理获取了该信息。
@@ -77,46 +79,50 @@ ms.locfileid: "59788421"
 在每个配置文件级别，可将 DNS TTL 设置为最低 0 秒，最高 2,147,483,647 秒（最大范围符合 [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt )）。 TTL 为 0 表示下游 DNS 解析器不缓存查询响应，所有查询到应进入流量管理器 DNS 服务器进行解析。
 
 ### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>如何了解传入到我的配置文件的查询数量？ 
+
 流量管理器提供的指标之一是由配置文件响应的查询数。 可以在配置文件聚合级别获取此信息，也可以进一步对其进行拆分来查看返回了特定终结点的查询数量。 此外，还可以设置警报，以便在查询响应数量越过了设置的条件时向你发出通知。 有关更多详细信息，请参阅[流量管理器指标和警报](traffic-manager-metrics-alerts.md)。
 
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>流量管理器的“地理”流量路由方法
 
-### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>可以在哪些情况下使用地理路由？ 
+### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>可以在哪些情况下使用地理路由？
+
 只要 Azure 客户需要根据地理区域辨识其用户，即可使用地理路由类型。 例如，通过使用地理流量路由方法可为特定区域的用户提供不同于其他区域的用户体验。 又比如，根据本地数据自主性的规定，只能由同一区域的终结点为用户提供数据。
 
-### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>如何决定我应当使用性能路由方法还是应当使用地理路由方法？ 
+### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>如何决定我应当使用性能路由方法还是应当使用地理路由方法？
+
 这两种常用路由方法的主要区别为，在性能路由方法中，主要目标是将流量发送到可以为调用方提供最低延迟的终结点，但是，在地理路由中，主要目标是针对调用方实施地理围栏，以便可以特意将它们路由到特定终结点。 因为地理接近与延迟更低之间存在关联，所以这两种路由方法可能会存在重叠，但是并非始终会重叠。 如果另一地理位置中的终结点可以为调用方提供更好的延迟体验，在这种情况下，性能路由会将用户发送到该终结点，但地理路由始终将用户发送到你为其地理区域映射的终结点。 为了说得更明白一点，请考虑以下示例 - 使用地理路由，你可以进行不常见映射，例如，将来自亚洲的所有流量发送到美国的终结点，将美国的所有流量发送到亚洲的终结点。 在这种情况下，地理路由将特意执行你为其配置的要执行的确切操作，性能优化不是一个考虑因素。 
 >[!NOTE]
 >在某些场景中，你可能同时需要性能和地理路由功能，对于这些场景，嵌套式配置文件可能是不错的选择。 例如，你可以设置一个采用地理路由的父配置文件，用以将来自北美的所有流量发送到一个嵌套的配置文件，该配置文件包含美国的终结点并使用性能路由将那些流量发送到该终结点集合中最合适的终结点。 
 
-### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>进行地理路由时，流量管理器支持哪些区域？ 
+### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>进行地理路由时，流量管理器支持哪些区域？
+
 可在[此处](traffic-manager-geographic-regions.md)查找流量管理器使用的国家/地区层次结构。 更改会在此页进行更新，但也可以通过 [Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 以编程方式检索相同的信息。 
 
-### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>流量管理器如何确定用户从何处进行查询？ 
+### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>流量管理器如何确定用户从何处进行查询？
+
 流量管理器会查看查询的源 IP（很可能是本地 DNS 解析器在代表用户执行查询），并使用内部 IP 通过区域映射的方式确定位置。 该映射会随时更新，以反映 Internet 中的变化。 
 
 ### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>是否可以保证流量管理器在每种情况下都可正确确定用户的确切地理位置？
-不可以；流量管理器无法保证我们根据 DNS 查询的源 IP 地址推断出的地理区域始终对应用户的位置，原因如下： 
+
+不可以；流量管理器无法保证我们根据 DNS 查询的源 IP 地址推断出的地理区域始终对应用户的位置，原因如下：
 
 - 首先，如之前常见问题解答中所述，我们所见的源 IP 地址是代表用户执行查询的 DNS 解析器的 IP 地址。 虽然 DNS 解析器的地理位置很好地反映了用户的地理位置，但根据 DNS 解析器服务的足迹和用户选择使用的特定 DNS 解析器服务而有所不同。 举例来说，位于马来西亚的客户可能在其设备设置中指定使用一种 DNS 解析器服务，但可能会选取该服务在新加坡的 DNS 服务器来处理此用户/设备的查询解析。 这种情况下，流量管理器仅可显示对应于新加坡位置的解析器的 IP 地址。 另请参阅本页面上之前有关客户端子网地址支持的常见问题解答。
 
 - 其次，流量管理器使用内部映射来执行 IP 地址到地理区域的转换。 尽管此映射会经过不断验证和更新来提高其准确性和阐释 Internet 的演变，但是我们的信息仍有可能不能确切反应所有 IP 地址的地理位置。
 
+###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>是否需将终结点与进行地理路由时用来进行配置的终结点置于同一区域？
 
-###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>是否需将终结点与进行地理路由时用来进行配置的终结点置于同一区域？ 
 否。终结点的位置不会限制可以向其映射哪些区域。 例如，可以将印度的所有用户定向到 US-Central Azure 区域的某个终结点。
 
-### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>是否可以将地理区域分配给某个配置文件中的终结点，而该配置文件尚未进行地理路由所需的配置？ 
+### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>是否可以将地理区域分配给某个配置文件中的终结点，而该配置文件尚未进行地理路由所需的配置？
 
 可以；如果某个配置文件的路由方法不是地理路由，则可使用 [Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 将地理区域分配给该配置文件中的终结点。 如果是非地理路由类型的配置文件，则会忽略该配置。 如果在以后将此类配置文件更改为地理路由类型，流量管理器会使用相应的映射。
 
-
 ### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>为什么在尝试将现有配置文件的路由方法更改为地理路由时会出现错误？
 
-使用地理路由时，配置文件中的所有终结点都至少需要将一个区域映射到其中。 要将现有配置文件转换为地理路由类型，首先需使用 [Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 将地理区域关联到所有终结点，然后再将路由类型更改为地理路由。 如果使用门户，请先删除终结点，将配置文件的路由方法更改为地理路由，然后再添加终结点及其地理区域映射。 
+使用地理路由时，配置文件中的所有终结点都至少需要将一个区域映射到其中。 要将现有配置文件转换为地理路由类型，首先需使用 [Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 将地理区域关联到所有终结点，然后再将路由类型更改为地理路由。 如果使用门户，请先删除终结点，将配置文件的路由方法更改为地理路由，然后再添加终结点及其地理区域映射。
 
-
-###  <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>为何强烈建议客户创建嵌套式配置文件，而不是将终结点直接置于启用了地理路由的配置文件中？ 
+### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>为何强烈建议客户创建嵌套式配置文件，而不是将终结点直接置于启用了地理路由的配置文件中？
 
 如果使用地理路由方法，则只能将一个区域分配给配置文件中的一个终结点。 如果该终结点不是附加了子配置文件的嵌套类型，则当该终结点不正常时，流量管理器仍会继续向其发送流量，因为不发送流量也不会有任何改善。 流量管理器不会故障转移到其他终结点，即使所分配的区域是分配给不正常终结点的区域的“父”区域（例如，如果终结点的“西班牙”区域不正常，不会故障转移到为其分配了“欧洲”区域的另一终结点）。 这样做是为了确保流量管理器遵守客户在其配置文件中设置的地理边界。 为了确保在某个终结点不正常时能够故障转移到其他终结点，建议为地理区域分配包含多个终结点（而不是单个终结点）的嵌套式配置文件。 这样一来，如果嵌套式子配置文件中的某个终结点故障，则可将流量故障转移到同一嵌套式子配置文件中的其他终结点。
 
@@ -127,101 +133,131 @@ ms.locfileid: "59788421"
 ## <a name="traffic-manager-subnet-traffic-routing-method"></a>流量管理器子网流量路由方法
 
 ### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>可以在哪些情况下使用子网路由？
+
 针对按 DNS 请求 IP 地址的源 IP 标识的特定用户组，子网路由可以为其提供不同的体验。 如果用户从公司总部连接到网站，则会显示不同的内容。 另一种情况是限制来自某些 ISP 的用户，使其只能访问仅支持 IPv4 连接的终结点（针对在使用 IPv6 时性能不佳的 ISP）。
 使用子网路由方法的另一个原因是其能与嵌套配置文件集中的其他配置文件配合使用。 例如，如果要使用地理路由方法对用户进行地域隔离，但想要对特定 ISP 使用不同的路由方法，则可以将具有子网路由方法的配置文件作为父级配置文件，并覆盖该 ISP 以使用特定的子级配置文件，并为其他所有人提供标准的地理配置文件。
 
 ### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>流量管理器如何获取最终用户的 IP 地址？
+
 最终用户设备通常使用 DNS 解析器来代表他们执行 DNS 查找。 流量管理器将此类解析器的传出 IP 视为源 IP。 此外，子网路由方法还会查看是否存在随请求一起传递的 EDNS0 扩展客户端子网 (ECS) 信息。 如果存在 ECS 信息，则将该地址用于确定路由。 如果缺少 ECS 信息，则将查询的源 IP 用于路由。
 
 ### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>使用子网路由时如何指定 IP 地址？
+
 可以通过两种方式指定与终结点相关联的 IP 地址。 首先，可以使用带有起始和结束地址的四分点十进制八位字节表示法来指定范围（例如，1.2.3.4-5.6.7.8 或 3.4.5.6-3.4.5.6）。 其次，可以使用 CIDR 表示法来指定范围（例如 1.2.3.0/24）。 可以指定多个范围，并且可以在范围集中使用这两种表示法类型。 存在一些限制。
+
 -   由于每个 IP 必须映射到单个终结点，因此地址范围不能重叠
 -   起始地址不能超过结束地址
 -   在CIDR表示法的下，“/”之前的 IP 地址应该是该范围的起始地址（例如 1.2.3.0/24 有效但 1.2.3.4.4/24 无效）
 
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>使用子网路由时如何指定回退终结点？
+
 在具有子网路由的配置文件中，如果没有子网映射到某个终结点，则所有与其他终结点不匹配的请求都将定向到此终结点。 强烈建议在配置文件中配置这样一个回退终结点，因为如果请求进入并且未映射到任何终结点或者如果它映射到终结点但该终结点存在问题，流量管理器将返回 NXDOMAIN 响应。
 
 ### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>如果在子网路由类型配置文件中禁用终结点会发生什么？
+
 在具有子网路由的配置文件中，如果终结点已禁用，则流量管理器会像该终结点及其子网映射不存在一样运行。 如果收到与其 IP 地址映射匹配的查询且终结点已禁用，则流量管理器将返回回退终结点（没有映射的终结点），或者如果不存在回退终结点，将返回 NXDOMAIN 响应。
 
 ## <a name="traffic-manager-multivalue-traffic-routing-method"></a>流量管理器的多值流量路由方法
 
 ### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>可以在哪些情况下使用多值路由？
+
 多值路由在单个查询响应中返回多个运行正常的终结点。 此方法的主要优势在于，如果某个终结点运行不正常，则客户端有多个选项可以进行重试，而无需另外进行 DNS 调用（这样做可能会从上游缓存返回相同的值）。 这适用于希望最大程度地减少停机时间、对可用性敏感的应用程序。
 另一种可以使用多值路由方法的情况是：终结点“双归属”于 IPv4 和 IPv6 地址，且你想在调用方启动与该终结点的连接时为其提供这两个选项。
 
 ### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>使用多值路由会返回多少终结点？
+
 可以指定返回的最大终结点数，当收到查询时，多值路由将返回不超过该指定数量的正常运行的终结点。 此配置的最大值为 10。
 
 ### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>使用多值路由时，会收到一组相同的终结点吗？
+
 我们无法保证在每个查询中都会返回相同的一组终结点。 此结果也受终结点的运行状况影响，在响应中不包括某些终结点时，说明它们可能存在问题
 
 ## <a name="real-user-measurements"></a>真实用户度量
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>使用真实用户度量的好处是什么？
+
 使用性能路由方法时，流量管理器通过检查源 IP 和 EDNS 客户端子网（如果传入）并在服务维护的网络延迟智能中对其检查以便为最终用户选取连接的最佳 Azure 区域。 真实用户度量通过为此延迟表贡献最终用户群的使用体验并确保此表充分覆盖最终用户连接到 Azure 所在的最终用户网络来增强这一功能。 这可以提高最终用户路由的准确性。
 
 ### <a name="can-i-use-real-user-measurements-with-non-azure-regions"></a>是否可以在非 Azure 区域使用真实用户度量？
+
 真实用户度量仅度量和报告到达 Azure 区域的延迟。 如果将基于性能的路由与在非 Azure 区域中托管的终结点结合使用，仍能从该功能中受益，因为可以获得更多有关已选的与该终结点相关联的代表 Azure 区域的延迟信息。
 
 ### <a name="which-routing-method-benefits-from-real-user-measurements"></a>哪种路由方法受益于真实用户度量？
+
 通过真实用户度量获取的其他信息仅适用于使用性能路由方法的配置文件。 从 Azure 门户查看真实用户度量链接时，该链接对所有配置文件可用。
 
 ### <a name="do-i-need-to-enable-real-user-measurements-each-profile-separately"></a>是否需要单独启用每个配置文件的真实用户度量？
+
 不，每个订阅只需对其启用一次，度量和报告的所有延迟信息即可用于所有配置文件。
 
 ### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>如何关闭我的订阅的真实用户度量？
+
 停止从你的客户端应用程序收集和发回延迟度量值时，即可停止产生与真实用户度量相关的费用。 例如，当度量 JavaScript 嵌入在网页时，可以通过删除 JavaScript 或在页面呈现时关闭其调用来停止使用此功能。
 
 也可通过删除密钥来关闭真实用户度量。 一旦删除密钥，使用该密钥发送到流量管理器的任何度量都将被弃用。
 
 ### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>除了 Web 页面以外，是否可以在客户端应用程序中使用真实用户度量？
+
 是的，真实用户度量旨在引入通过不同类型的最终用户客户端收集的数据。 此常见问题解答将在新的客户端应用程序类型受支持后进行更新。
 
 ### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>每次呈现启用真实用户度量的 Web 页面会生成多少度量？
+
 当真实用户度量与提供的度量 JavaScript 结合使用时，呈现的每个页面会生成 6 个度量。 然后将这些度量报告回流量管理器服务。 将根据报告给流量管理器服务的度量数对此功能计费。 例如，如果用户在正在生成度量但尚未进行报告之前离开你的网页，则不会对这些度量计费。
 
 ### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>真实用户度量脚本在我的网页中运行之前是否有延迟？
+
 不，在调用脚本前不会有设定的延迟。
 
 ### <a name="can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>是否可以只在想要度量的 Azure 区域使用真实用户度量？
+
 不，每次调用真实用户度量脚本时，该脚本都将度量由服务确定的 6 个 Azure 区域集。 该集在不同的调用之间变化，当出现大量此类调用时，度量范围将涵盖不同的 Azure 区域。
 
 ### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>是否可以将执行的度量数限制在一个特定数值内？
+
 度量 JavaScript 嵌入在你的网页中，你可以完全控制何时对其启用和停用。 只要流量管理器服务收到要度量的 Azure 区域列表的请求，即返回区域集。
 
 ### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>是否可以查看我的客户端应用程序作为真实用户度量的一部分所执行的度量？
+
 因为度量逻辑通过客户端应用程序运行，所以你可以掌握一切情况，包括查看延迟度量值。 流量管理器不会报告与订阅链接的密钥下收到的度量的聚合视图。
 
 ### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>是否可以修改流量管理器提供的度量脚本？
+
 尽管你能完全控制嵌入在你网页中的内容，我们强烈建议不要对度量脚本进行任何修改，以确保其正确地度量和报告延迟。
 
 ### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>其他人是否有可能看到我的真实用户度量的钥？
+
 将度量脚本嵌入网页时，其他人有可能看到脚本和你的真实用户度量 (RUM) 密钥。 但需要了解的重要一点是，该密钥不同于你的订阅 ID，它由流量管理器生成，仅用于此目的。 知道 RUM 密钥并不会危及 Azure 帐户的安全。
 
 ### <a name="can-others-abuse-my-rum-key"></a>其他人是否可以滥用我的 RUM 密钥？
+
 尽管其他人有可能使用你的密钥向 Azure 发送错误信息，但几个错误的度量并不会更改路由选择，因为它与我们收到的所有其他度量一起纳入考虑对象。 如需更改你的密钥，可以在旧密钥被弃用后重新生成密钥。
 
-###  <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>是否需要将度量 JavaScript 放入我的所有网页中？
+### <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>是否需要将度量 JavaScript 放入我的所有网页中？
+
 随着度量数的增加，真实用户度量将传递更多的价值。 然而，由你决定是否需要将其放入你的所有网页或选择放入几个网页。 但我们的建议是先将其放入你最常访问的页面，用户在这些页面预期会停留五秒或更长的时间。
 
 ### <a name="can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements"></a>如果我使用真实用户度量，有关我的最终用户的信息是否会被流量管理器识别？
-使用提供的度量 JavaScript 时，流量管理器将可以看到最终用户的客户端 IP 地址以及他们所使用的本地 DNS 解析器的源 IP 地址。 流量管理器仅在将客户端 IP 地址截断为无法识别发送度量的特定最终用户后使用该地址。 
+
+使用提供的度量 JavaScript 时，流量管理器将可以看到最终用户的客户端 IP 地址以及他们所使用的本地 DNS 解析器的源 IP 地址。 流量管理器仅在将客户端 IP 地址截断为无法识别发送度量的特定最终用户后使用该地址。
 
 ### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>测量真实用户度量的网页是否需要使用流量器以供路由使用？
+
 不，它无需使用流量管理器。 流量管理器的路由端从真实用户度量部分单独运行，尽管使其都在同一 Web 属性中运行是一个很好的方法，但无需执行此操作。
 
 ### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>是否需要在 Azure 区域托管任何服务才能使用真实用户度量？
+
 不需要在 Azure 上托管任何服务器端组件即可使用真实用户度量。 度量 JavaScript 下载的单像素图像和在不同 Azure 区域运行它的服务是由 Azure 托管和管理的。 
 
 ### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>使用真实用户度量时，我的 Azure 带宽使用率是否会增加？
+
 如之前的答案中所述，真实用户度量的服务器端组件是由 Azure 所拥有和管理的。 这意味着，Azure 带宽使用率并不会因为你使用真实用户度量而增加。 这不包括 Azure 计费范围以外的任何带宽使用量。 我们通过仅下载单像素图像度量 Azure 区域的延迟来最大程度地减少带宽的使用率。 
 
 ## <a name="traffic-view"></a>流量视图
 
 ### <a name="what-does-traffic-view-do"></a>流量视图有什么作用？
+
 流量视图是流量管理器的一项功能，它可帮助你更深入地了解你的用户以及他们的体验。 它使用流量管理器接收的查询和服务维护的网络延迟智能表提供以下信息：
+
 - 用户在 Azure 中连接到终结点所在的区域。
 - 从这些区域进行连接的用户量。
 - 用户被传送到的 Azure 区域。
@@ -256,7 +292,8 @@ Azure 流量管理器提供的 DNS 查询考虑了 ECS 信息以提高路由的�
 >[!NOTE]
 >如果预览期间在订阅级别启用了流量视图，则现在需要为该订阅下的每个配置文件重新启用流量视图。
  
-### <a name="how-can-i-turn-off-traffic-view"></a>如何关闭流量视图？ 
+### <a name="how-can-i-turn-off-traffic-view"></a>如何关闭流量视图？
+
 可使用门户或 REST API 关闭任何配置文件的流量视图。 
 
 ### <a name="how-does-traffic-view-billing-work"></a>流量视图计费如何工作？
@@ -271,26 +308,25 @@ Azure 流量管理器提供的 DNS 查询考虑了 ECS 信息以提高路由的�
 
 对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure Resource Manager 基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。
 
-
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>能否将流量管理器用于云服务的“过渡”槽？
 
-是的。 可以在流量管理器中将云服务的“过渡”槽配置为“外部”终结点。 运行状况检查仍按 Azure 终结点费率计费。 由于使用的是“外部”终结点类型，系统不会自动拾取对基础服务所做的更改。 使用外部终结点时，流量管理器无法检测停止或删除云服务的时间。 因此，在禁用或删除终结点之前，流量管理器会一直对运行状况检查计费。
+是的。 可以在流量管理器中将云服务的“过渡”槽配置为“外部”终结点。 运行状况检查仍按 Azure 终结点费率计费。
 
 ### <a name="does-traffic-manager-support-ipv6-endpoints"></a>流量管理器是否支持 IPv6 终结点？
 
 流量管理器当前不提供 IPv6 可寻址的名称服务器。 但是，IPv6 客户端仍可使用流量管理器连接到 IPv6 终结点。 客户端不会直接向流量管理器发出 DNS 请求， 而是使用递归 DNS 服务。 仅使用 IPv6 的客户端通过 IPv6 向递归 DNS 服务发送请求。 然后，该递归服务应该能够使用 IPv4 联系流量管理器名称服务器。
 
-流量管理器使用终结点的 DNS 名称或 IP 地址做出响应。 要支持 IPv6 终结点，有两个选择。 可将终结点添加为与 AAAA 记录相关联的 DNS 名称，流量管理器将对该终结点进行运行状况检查，并会在查询响应中将其作为 CNAME 记录类型返回。 还可以使用 IPv6 地址直接添加该终结点，流量管理器将在查询响应中返回 AAAA 类型记录。 
+流量管理器使用终结点的 DNS 名称或 IP 地址做出响应。 要支持 IPv6 终结点，有两个选择。 可将终结点添加为与 AAAA 记录相关联的 DNS 名称，流量管理器将对该终结点进行运行状况检查，并会在查询响应中将其作为 CNAME 记录类型返回。 还可以使用 IPv6 地址直接添加该终结点，流量管理器将在查询响应中返回 AAAA 类型记录。
 
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>流量管理器是否可用于同一区域中的多个 Web 应用？
 
 通常情况下，流量管理器用于将流量引导到部署在不同区域中的应用程序。 不过，流量管理器也可用于一个应用程序在同一区域中存在多个部署的情形。 流量管理器 Azure 终结点不允许将同一 Azure 区域中的多个 Web 应用终结点添加到同一流量管理器配置文件。
 
-### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>如何将流量管理器配置文件的 Azure 终结点移动到其他资源组？
+### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription"></a>如何实现将流量管理器配置文件的 Azure 终结点移动到其他资源组或订阅中？
 
-与流量管理器配置文件关联的 Azure 终结点使用其资源 ID 进行跟踪。 如果 Azure 资源作为终结点（例如公共 IP、经典云服务、WebApp 或以嵌套方式使用的另一流量管理器配置文件）使用，当其移动到其他资源组时，Azure 资源的 ID 会发生更改。 对于这种情况，目前必须删除流量管理器配置文件，方法是先删除这些终结点，然后再将其添加回配置文件。 
+与流量管理器配置文件关联的 Azure 终结点使用其资源 ID 进行跟踪。 当用作终结点的 Azure 资源 (例如, 公共 IP、经典云服务、WebApp 或以嵌套方式使用的其他流量管理器配置文件) 移到不同的资源组或订阅时, 其资源 ID 会发生更改。 对于这种情况，目前必须删除流量管理器配置文件，方法是先删除这些终结点，然后再将其添加回配置文件。
 
-##  <a name="traffic-manager-endpoint-monitoring"></a>流量管理器终结点监视
+## <a name="traffic-manager-endpoint-monitoring"></a>流量管理器终结点监视
 
 ### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>流量管理器能否灵活应对 Azure 区域故障？
 
@@ -320,23 +356,28 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 流量管理器无法提供任何证书验证，包括：
 
 * 不验证服务器端证书
-* 不支持 SNI 服务器端证书
+* 不验证 SNI 服务器端证书
 * 不支持客户端证书
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>添加终结点时是否使用 IP 地址或 DNS 名称？
+
 流量管理器支持使用三种方式添加终结点：DNS 名称、IPv4 地址和 IPv6 地址。 如果将终结点添加为 IPv4 或 IPv6 地址，查询响应将分别为记录类型 A 或 AAAA。 如果终结点已添加为 DNS 名称，则查询响应将为记录类型 CNAME。 仅在终结点的类型为“外部”时，才允许将终结点添加为 IPv4 或 IPv6 地址。
 三种终结点寻址类型支持所有路由方法和监视设置。
 
 ### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>添加终结点时可以使用哪些类型的 IP 地址？
+
 流量管理器可使用 IPv4 或 IPv6 地址指定终结点。 下面列出了一些限制：
+
 - 不允许使用与保留的私有网络 IP 地址空间对应的地址。 其中包括 RFC 1918、RFC 6890、RFC 5737、RFC 3068、RFC 2544 和 RFC 5771 中包括地址
-- 地址不能包含任何端口号（可在配置文件配置设置中指定要使用的端口） 
+- 地址不能包含任何端口号（可在配置文件配置设置中指定要使用的端口）
 - 同一配置文件中的两个终结点不能具有相同的目标 IP 地址
 
 ### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>可以在单个配置文件中使用不同的终结点寻址类型吗？
+
 不能，流量管理器不允许在单个配置文件中混合使用不同的终结点寻址类型（多值路由类型的配置文件除外，可在其中混合使用 IPv4 和 IPv6 寻址类型）
 
 ### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>当传入查询的记录类型与与终结点寻址类型关联的记录类型不同时，会出现什么情况？
+
 当收到针对配置文件的查询时，流量管理器首先会根据指定的路由方法和终结点的运行状况查找需要返回的终结点。 然后，在根据下表返回响应之前，它会查看传入查询中请求的记录类型以及与终结点关联的记录类型。
 
 对于使用多值路由以外的任何路由方法的配置文件：
@@ -362,12 +403,12 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 |CNAME |    混合 A 和 AAAA | 无数据 |
 
 ### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>可以在嵌套配置文件中使用终结点采用 IPv4/IPv6 地址的配置文件吗？
+
 可以，有一种例外情况：多值类型的配置文件无法成为嵌套配置文件中的父级配置文件。
 
+### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>我在流量管理器配置文件中停止了 Web 应用程序终结点，但即使重启后，也未收到任何流量。 如何解决此问题？
 
-### <a name="i-stopped-an-azure-cloud-service--web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>我在流量管理器配置文件中停止了 Azure 云服务/Web 应用程序终结点，但即使重启，也仍未收到任何流量。 如何解决此问题？
-
-当 Azure 云服务/Web 应用程序终结点停止时，流量管理器会停止检查其运行状况，仅当检测到终结点已重启时，才重新开始运行状况检查。 若要防止这种延迟，请在流量管理器配置文件中禁用该终结点，然后在重启该终结点后将其重新启用。   
+当 Azure Web 应用程序终结点停止时，流量管理器会停止检查其运行状况，仅在检测到终结点已重启后，才重新开始运行状况检查。 若要防止这种延迟，请在流量管理器配置文件中禁用该终结点，然后在重启该终结点后将其重新启用。
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>如果应用程序不支持 HTTP 或 HTTPS，是否仍可使用流量管理器？
 
@@ -380,6 +421,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 ### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>流量管理器将用户从不正常的终结点移走的速度有多快？
 
 流量管理器提供了多种设置，帮助用户控制流量管理器配置文件的故障转移行为，如下所示：
+
 - 可通过将探测间隔设置为 10 秒，提高流量管理器探测终结点的频率。 这可确保尽快检测到任何不正常的终结点。 
 - 可以指定运行状况检查请求超时之前的等待时间（最低值为 5 秒）。
 - 可以指定将终结点标记为不正常之前的失败次数。 此值最低可以为 0，此时，只要第一次运行状况检查失败，就将该终结点标记为不正常。 但是，如果将容许的失败次数设置为最低值 0，则探测期间发生的任何暂时性问题都可能导致终结点被视为不正常。
@@ -392,12 +434,13 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 流量管理器监视设置是在每个配置文件级别设置的。 如果只需对一个终结点使用不同的监视设置，可将该终结点作为一个[嵌套式配置文件](traffic-manager-nested-profiles.md)，它的监视设置不同于父配置文件。
 
 ### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>如何将 HTTP 标头分配给终结点的流量管理器运行状况检查？
+
 可以在流量管理器对终结点启动的 HTTP(S) 运行状况检查中指定自定义标头。 若要指定自定义标头，可在配置文件级别（适用于所有终结点）指定，也可在终结点级别指定。 如果在两个级别定义了标头，则在终结点级别指定的标头将覆盖在配置文件级别指定的标头。
 一个常见的用例是指定主机头，以便流量管理器请求可以正确地路由到多租户环境中托管的终结点。 另一个用例是从终结点的 HTTP(S) 请求日志中识别流量管理器请求
 
-## <a name="what-host-header-do-endpoint-health-checks-use"></a>终结点运行状况检查使用什么主机头？
-如果未提供自定义主机头设置，流量管理器使用的主机头则为配置文件中配置的终结点目标的 DNS 名称（如果可用）。 
+### <a name="what-host-header-do-endpoint-health-checks-use"></a>终结点运行状况检查使用什么主机头？
 
+如果未提供自定义主机头设置，流量管理器使用的主机头则为配置文件中配置的终结点目标的 DNS 名称（如果可用）。
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>运行状况检查从哪些 IP 地址发起？
 
@@ -406,10 +449,12 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>流量管理器可以对终结点进行多少次运行状况检查？
 
 到达终结点的流量管理器运行状况检查次数取决于以下条件：
+
 - 为监视间隔设置的值（在任意给定时期内，间隔越小意味着到达终结点的请求越多）。
 - 发起运行状况检查的位置数（在前面的常见问题解答中，列出了可发起这些检查的 IP 地址）。
 
-### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>如果我的终结点发生故障，我如何得到通知？ 
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>如果我的终结点发生故障，我如何得到通知？
+
 流量管理器提供的指标之一是配置文件中的终结点的运行状况状态。 可以将此指标作为配置文件中所有终结点的聚合进行查看（例如，75% 的终结点正常运行），也可以在每终结点级别查看此指标。 流量管理器指标是通过 Azure Monitor 公开的，并且，当终结点的运行状况状态发生更改时，你可以使用其[警报功能](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)获得通知。 有关更多详细信息，请参阅[流量管理器指标和警报](traffic-manager-metrics-alerts.md)。  
 
 ## <a name="traffic-manager-nested-profiles"></a>流量管理器嵌套式配置文件
@@ -439,7 +484,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>嵌套式配置文件是否会造成性能影响？
 
-不。 使用嵌套式配置文件不会造成性能影响。
+否。 使用嵌套式配置文件不会造成性能影响。
 
 在处理每个 DNS 查询时，流量管理器名称服务器会在内部遍历配置文件层次结构。 对父配置文件执行 DNS 查询可能会收到终结点来自子配置文件的 DNS 响应。 不管使用的是单个配置文件还是嵌套式配置文件，都只使用一条 CNAME 记录。 不需要在层次结构中为每个配置文件创建一条 CNAME 记录。
 
@@ -457,6 +502,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 | 正在检查终结点。 至少一个子配置文件终结点处于“正在检查终结点”状态。 没有任何终结点处于“联机”或“已降级”状态 |同上。 | |
 | 非活动。 所有子配置文件终结点都处于“Disabled”或“Stopped”状态，除非这是没有终结点的配置文件。 |已停止 | |
 
-## <a name="next-steps"></a>后续步骤：
+## <a name="next-steps"></a>后续步骤:
+
 - 详细了解流量管理器[终结点监视和自动故障转移](../traffic-manager/traffic-manager-monitoring.md)。
 - 详细了解流量管理器[流量路由方法](../traffic-manager/traffic-manager-routing-methods.md)。

@@ -1,120 +1,133 @@
-items:
 - name: Azure Data Box 文档 - 联机传输
   href: /azure/databox-online/
   expanded: true
 - name: Data Box Gateway
   items:
-  - name: 概述
-    items:
-    - name: 什么是 Data Box Gateway？
-      href: data-box-gateway-overview.md
-  - name: 教程
-    items:
-    - name: 1 - 准备
-      href: data-box-gateway-deploy-prep.md
-    - name: 2A - 在 Hyper-V 中预配
-      href: data-box-gateway-deploy-provision-hyperv.md
-    - name: 2B - 在 VMware 中预配
-      href: data-box-gateway-deploy-provision-vmware.md
-    - name: 3 - 连接、设置、激活
-      href: data-box-gateway-deploy-connect-setup-activate.md
-    - name: 4 - 添加、连接到共享
-      href: data-box-gateway-deploy-add-shares.md
-  - name: 概念
-    items:
-    - name: 审查要求
-      href: data-box-gateway-system-requirements.md
-    - name: 了解限制
-      href: data-box-gateway-limits.md
-    - name: 安全概述
-      href: data-box-gateway-security.md
-    - name: 查看用例
-      href: data-box-gateway-use-cases.md
-  - name: 如何
-    items:
-    - name: 管理
+    - name: 概述
       items:
-      - name: 共享
-        href: data-box-gateway-manage-shares.md
-      - name: 用户
-        href: data-box-gateway-manage-users.md
-      - name: 带宽计划
-        href: data-box-gateway-manage-bandwidth-schedules.md
-      - name: 访问、开/关、连接
-        href: data-box-gateway-manage-access-power-connectivity-mode.md
-      - name: 通过 PowerShell
-        href: data-box-gateway-connect-powershell-interface.md
-    - name: 监视
-      href: data-box-gateway-monitor.md
-    - name: 故障排除
-      href: data-box-gateway-troubleshoot.md
-  - name: 发行说明
-    items:
-    - name: 正式版
-      href: data-box-gateway-release-notes.md
+        - name: 什么是 Data Box Gateway？
+          href: data-box-gateway-overview.md
+    - name: 教程
+      items:
+        - name: 1 - 准备
+          href: data-box-gateway-deploy-prep.md
+        - name: 2A - 在 Hyper-V 中预配
+          href: data-box-gateway-deploy-provision-hyperv.md
+        - name: 2B - 在 VMware 中预配
+          href: data-box-gateway-deploy-provision-vmware.md
+        - name: 3 - 连接、设置、激活
+          href: data-box-gateway-deploy-connect-setup-activate.md
+        - name: 4 - 添加、连接到共享
+          href: data-box-gateway-deploy-add-shares.md
+    - name: 概念
+      items:
+        - name: 审查要求
+          href: data-box-gateway-system-requirements.md
+        - name: 了解限制
+          href: data-box-gateway-limits.md
+        - name: 安全概述
+          href: data-box-gateway-security.md
+        - name: 查看用例
+          href: data-box-gateway-use-cases.md
+    - name: 如何
+      items:
+        - name: 管理
+          items:
+            - name: 共享
+              href: data-box-gateway-manage-shares.md
+            - name: 用户
+              href: data-box-gateway-manage-users.md
+            - name: 带宽计划
+              href: data-box-gateway-manage-bandwidth-schedules.md
+            - name: 访问、开/关、连接
+              href: data-box-gateway-manage-access-power-connectivity-mode.md
+            - name: 通过 PowerShell
+              href: data-box-gateway-connect-powershell-interface.md
+        - name: 监视
+          href: data-box-gateway-monitor.md
+        - name: 故障排除
+          href: data-box-gateway-troubleshoot.md
+        - name: 联系 Microsoft 支持部门
+          href: data-box-edge-contact-microsoft-support.md
+    - name: 发行说明
+      items:
+        - name: 1906 - 最新
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: 正式发布版 (GA)
+          href: data-box-gateway-release-notes.md
 - name: Data Box Edge
   items:
-  - name: 概述
-    items:
-    - name: 什么是 Azure Data Box Edge？
-      href: data-box-edge-overview.md
-  - name: 教程
-    items:
-    - name: 1 - 准备
-      href: data-box-edge-deploy-prep.md
-    - name: 2 - 安装
-      href: data-box-edge-deploy-install.md
-    - name: 3 - 连接、设置、激活
-      href: data-box-edge-deploy-connect-setup-activate.md
-    - name: 4 - 添加、连接到共享
-      href: data-box-edge-deploy-add-shares.md
-    - name: 5 - 配置计算
-      href: data-box-edge-deploy-configure-compute.md
-  - name: 概念
-    items:
-    - name: 审查要求
-      href: data-box-edge-system-requirements.md
-    - name: 了解限制
-      href: data-box-edge-limits.md
-    - name: 安全概述
-      href: data-box-edge-security.md
-    - name: 查看规范
-      href: data-box-edge-technical-specifications-compliance.md
-  - name: 如何
-    items:
-    - name: 管理计算
-      href: data-box-edge-manage-compute.md
-    - name: 开发 C# 模块
-      href: data-box-edge-create-iot-edge-module.md
-    - name: 管理共享
-      href: data-box-edge-manage-shares.md
-    - name: 管理用户
-      href: data-box-edge-manage-users.md
-    - name: 管理带宽计划
-      href: data-box-edge-manage-bandwidth-schedules.md
-    - name: 管理电源、访问权限和连接
-      href: data-box-edge-manage-access-power-connectivity-mode.md
-    - name: 通过 PowerShell 进行管理
-      href: data-box-edge-connect-powershell-interface.md
-    - name: 故障排除
-      href: data-box-edge-troubleshoot.md
-    - name: 监视
-      href: data-box-edge-monitor.md
-  - name: 发行说明
-    items:
-    - name: 正式版
-      href: data-box-gateway-release-notes.md
+    - name: 概述
+      items:
+        - name: 什么是 Azure Data Box Edge？
+          href: data-box-edge-overview.md
+    - name: 教程
+      items:
+        - name: 1 - 准备
+          href: data-box-edge-deploy-prep.md
+        - name: 2 - 安装
+          href: data-box-edge-deploy-install.md
+        - name: 3 - 连接、设置、激活
+          href: data-box-edge-deploy-connect-setup-activate.md
+        - name: 4 - 添加、连接到共享
+          href: data-box-edge-deploy-add-shares.md
+        - name: 5A - 配置计算（简单）
+          href: data-box-edge-deploy-configure-compute.md
+        - name: 5B - 配置计算（高级）
+          href: data-box-edge-deploy-configure-compute-advanced.md
+    - name: 概念
+      items:
+        - name: 审查要求
+          href: data-box-edge-system-requirements.md
+        - name: 了解限制
+          href: data-box-edge-limits.md
+        - name: 安全概述
+          href: data-box-edge-security.md
+        - name: 查看规范
+          href: data-box-edge-technical-specifications-compliance.md
+    - name: 如何
+      items:
+        - name: '开发 C# 模块'
+          href: data-box-edge-create-iot-edge-module.md
+        - name: 管理
+          items:
+            - name: Edge 计算
+              href: data-box-edge-manage-compute.md
+            - name: Edge 计算网络
+              href: data-box-edge-extend-compute-access-modules.md
+            - name: 共享
+              href: data-box-edge-manage-shares.md
+            - name: 用户
+              href: data-box-edge-manage-users.md
+            - name: 带宽计划
+              href: data-box-edge-manage-bandwidth-schedules.md
+            - name: 电源、访问权限和连接
+              href: data-box-edge-manage-access-power-connectivity-mode.md
+            - name: 通过 PowerShell
+              href: data-box-edge-connect-powershell-interface.md
+        - name: 故障排除
+          href: data-box-edge-troubleshoot.md
+        - name: 联系 Microsoft 支持部门
+          href: data-box-edge-contact-microsoft-support.md
+        - name: 监视
+          href: data-box-edge-monitor.md
+        - name: 返回或替换设备
+          href: data-box-edge-return-device.md
+    - name: 发行说明
+      items:
+        - name: 1906 - 最新
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: 正式发布版 (GA)
+          href: data-box-gateway-release-notes.md
 - name: 资源
   items:
-  - name: Data Box Edge C# 模块示例 (.NET)
-    href: https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/
-  - name: Data Box Edge/Gateway 产品
-    href: https://azure.microsoft.com/services/storage/databox/edge/
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/storage/databox/edge/
-ms.openlocfilehash: f601de8c731354c6d01cfdc6de60115904a37d07
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679612"
+    - name: 'Data Box Edge C# 模块示例 (.NET)'
+      href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
+    - name: Data Box Edge/Gateway 产品
+      href: 'https://azure.microsoft.com/services/storage/databox/edge/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

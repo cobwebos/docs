@@ -8,18 +8,17 @@ manager: craigg
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 3b90ae3e9808b22b6d6c41e3ac11bec0293bd4bf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c9c8379787619608421256120139f07c8dbd8d14
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107876"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102241"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>在 Azure 中为 Always On 可用性组配置负载均衡器
 本文说明如何在使用 Azure 资源管理器运行的 Azure 虚拟机中为 SQL Server Always On 可用性组创建负载均衡器。 当 SQL Server 实例位于 Azure 虚拟机上时，AlwaysOn 可用性组需要负载均衡器。 负载均衡器存储可用性组侦听器的 IP 地址。 如果可用性组跨多个区域，则每个区域都需要一个负载均衡器。
@@ -63,7 +62,7 @@ ms.locfileid: "58107876"
 
 5. 在“创建负载均衡器”对话框中配置负载均衡器，如下所示：
 
-   | 设置 | 值 |
+   | 设置 | ReplTest1 |
    | --- | --- |
    | **名称** |表示负载均衡器的文本名称。 例如 **sqlLB**。 |
    | 类型 |**内部**：大多数实施方案使用内部负载均衡器，它可让同一虚拟网络中的应用程序连接到可用性组。  </br> **外部**：可让应用程序通过公共 Internet 连接连接到可用性组。 |
@@ -73,7 +72,7 @@ ms.locfileid: "58107876"
    | **专用 IP 地址** |指定子网中的某个可用 IP 地址。 在群集上创建侦听器时，请使用此 IP 地址。 本文稍后的 PowerShell 脚本会将此地址用于 `$ILBIP` 变量。 |
    | **订阅** |如果有多个订阅，可能会显示此字段。 选择要与此资源关联的订阅。 它通常是与可用性组的所有资源相同的订阅。 |
    | **资源组** |选择 SQL Server 实例所在的资源组。 |
-   | **位置** |选择 SQL Server 实例所在的 Azure 位置。 |
+   | **Location** |选择 SQL Server 实例所在的 Azure 位置。 |
 
 6. 单击“创建”。 
 
@@ -109,7 +108,7 @@ Azure 将更新后端地址池的设置。 现在，可用性集具有包含两�
 
 3. 在“添加探测”边栏选项卡上配置探测。 使用以下值配置探测：
 
-   | 设置 | 值 |
+   | 设置 | ReplTest1 |
    | --- | --- |
    | **名称** |表示探测的文本名称。 例如 **SQLAlwaysOnEndPointProbe**。 |
    | **协议** |**TCP** |
@@ -117,7 +116,7 @@ Azure 将更新后端地址池的设置。 现在，可用性集具有包含两�
    | **间隔** |*5* |
    | **不正常阈值** |*2* |
 
-4.  单击“确定”。 
+4.  单击 **“确定”** 。 
 
 > [!NOTE]
 > 确保指定的端口已在两个 SQL Server 实例的防火墙上打开。 这两个实例需要所用 TCP 端口的入站规则。 有关详细信息，请参阅 [Add or Edit Firewall Rule](https://technet.microsoft.com/library/cc753558.aspx)（添加或编辑防火墙规则）。 
@@ -135,7 +134,7 @@ Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用�
 
 3. 使用“添加负载均衡规则”边栏选项卡配置负载均衡规则。 使用以下设置： 
 
-   | 设置 | 值 |
+   | 设置 | ReplTest1 |
    | --- | --- |
    | **名称** |表示负载均衡规则的文本名称。 例如 **SQLAlwaysOnEndPointListener**。 |
    | 协议 |**TCP** |
@@ -150,7 +149,7 @@ Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用�
    > 可能需要在边栏选项卡中向下滚动才能查看所有设置。
    > 
 
-4. 单击“确定”。 
+4. 单击 **“确定”** 。 
 5. Azure 将配置负载均衡规则。 负载均衡器现已配置为将流量路由到托管可用性组侦听器的 SQL Server 实例。 
 
 此时，资源组有一个连接到这两个 SQL Server 计算机的负载均衡器。 负载均衡器还包含 SQL Server Always On 可用性组侦听器的 IP 地址，以便任一计算机可以响应针对可用性组的请求。
@@ -221,7 +220,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 
 7. 使用以下设置添加运行状况探测：
 
-   |设置 |值
+   |设置 |ReplTest1
    |:-----|:----
    |**名称** |用于标识探测的名称。
    |协议 |TCP
@@ -235,7 +234,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 
 10. 使用以下设置配置新的负载均衡规则：
 
-    |设置 |值
+    |设置 |ReplTest1
     |:-----|:----
     |**名称** |用于标识负载均衡规则的名称。 
     |“前端 IP 地址” |选择所创建的 IP 地址。 
@@ -246,7 +245,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
     |运行状况探测 |选择所创建的探测。
     |**会话持久性** |无
     |**空闲超时(分钟)** |默认值 (4)
-    |**浮动 IP (直接服务器返回)** | 已启用
+    |**浮动 IP (直接服务器返回)** | Enabled
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>将可用性组配置为使用新 IP 地址
 
@@ -284,7 +283,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 
 1. 通过以下设置创建负载均衡规则：
 
-   |设置 |值
+   |设置 |ReplTest1
    |:-----|:----
    |**名称** |用于定义分布式可用性组的负载均衡规则的名称。 
    |“前端 IP 地址” |与可用性组使用相同的前端 IP 地址。
@@ -295,7 +294,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
    |运行状况探测 |选择所创建的探测。
    |**会话持久性** |无
    |**空闲超时(分钟)** |默认值 (4)
-   |**浮动 IP (直接服务器返回)** | 已启用
+   |**浮动 IP (直接服务器返回)** | Enabled
 
 在参与到分布式可用性组的其他可用性组上，针对负载均衡器重复这些步骤。
 

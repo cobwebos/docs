@@ -4,23 +4,22 @@ description: 使用 Azure CLI 和 Azure 门户下载 Linux VHD。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: f72d49a3ab204ce64eb89d0f05630b640c138e0a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: ed79df03a42c1558b975cd1c21c79716d50d4616
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329245"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083485"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>从 Azure 下载 Linux VHD
 
@@ -58,9 +57,9 @@ ms.locfileid: "56329245"
 若要使用 VHD 作为现有 VM 的新实例的磁盘或数据磁盘，请完成以下步骤：
 
 1.  登录到 [Azure 门户](https://portal.azure.com/)。
-2.  在“中心”菜单中，单击“虚拟机” 。
+2.  在左侧菜单中，选择“虚拟机”。
 3.  从列表中选择 VM。
-4.  在 VM 的边栏选项卡上，单击“停止”。
+4.  在 VM 的页面上, 选择 "**停止**"。
 
     ![停止 VM](./media/download-vhd/export-stop.png)
 
@@ -68,21 +67,21 @@ ms.locfileid: "56329245"
 
 若要下载 VHD 文件，需要生成[共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL。 生成 URL 时，将为 URL 分配到期时间。
 
-1.  在 VM 的边栏选项卡的菜单上，单击“磁盘”。
-2.  为 VM 选择操作系统磁盘，然后单击“导出”。
-3.  单击“生成 URL”。
+1.  在 VM 页面的菜单上, 选择 "**磁盘**"。
+2.  为 VM 选择操作系统磁盘, 并选择 "**磁盘导出**"。
+3.  选择 "**生成 URL**"。
 
     ![生成 URL](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>下载 VHD
 
-1.  在生成的 URL 下，单击“下载 VHD 文件”。
-
+1.  在生成的 URL 下, 选择 **"下载 VHD 文件**"。
+**
     ![下载 VHD](./media/download-vhd/export-download.png)
 
-2.  可能需要单击浏览器中的“保存”以开始下载。 VHD 文件的默认名称为 *abcd*。
+2.  你可能需要在浏览器中选择 "**保存**" 以开始下载。 VHD 文件的默认名称为 *abcd*。
 
-    ![单击浏览器中的“保存”](./media/download-vhd/export-save.png)
+    ![在浏览器中选择 "保存"](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>后续步骤
 

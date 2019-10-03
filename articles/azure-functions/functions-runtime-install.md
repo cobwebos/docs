@@ -6,16 +6,15 @@ author: apwestgarth
 manager: stefsch
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: aae6bc41f3c2fc2c5f8cf63d07f6b4d79bb3564a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 0fbc76f3cb3fea84347ef55e40e1b2bed9b98152
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547533"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085499"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>安装 Azure Functions 运行时预览版 2
 
@@ -104,13 +103,13 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
 
 在 Azure Functions 运行时预览版中创建第一个函数
 
-1. 浏览到**Azure Functions 运行时门户**作为`https://<machinename>.<domain>`例如`https://mycomputer.mydomain.com`。
+1. 以 `https://<machinename>.<domain>` 的形式浏览到 **Azure Functions 运行时门户**，例如 `https://mycomputer.mydomain.com`。
 
 1. 系统会提示**登录**。如果是在域中部署的，请使用帐户用户名和密码登录；否则，请使用本地帐户用户名和密码登录到门户。
 
     ![Azure Functions 运行时预览版门户登录][14]
 
-1. 若要创建函数应用，必须创建订阅。  在门户的左上角，单击**+** 的订阅旁边的选项。
+1. 若要创建函数应用，必须创建订阅。  在门户的左上角，单击订阅旁边的 **+** 选项。
 
     ![Azure Functions 运行时预览版门户订阅][15]
 

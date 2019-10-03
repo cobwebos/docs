@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 712cc5ce62225987f8cc3ea13b5e4fd10a7d5eaf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172703"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825777"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>教程：为 Salesforce 配置自动用户预配
 
@@ -111,6 +111,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 17. 若要为 Salesforce 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
 18. 单击“保存”。
+
+> [!NOTE]
+> 在 Salesforce 应用程序中设置用户后, 管理员需要为其配置特定于语言的设置。 有关语言配置的更多详细信息, 请参阅[此](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)文。
 
 这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Salesforce。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Salesforce 应用执行的所有操作。
 

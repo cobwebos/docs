@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 15b986d4e7567be48c582e4a39b727ab110de2be
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ecb704253597bf4eb5672fe924a0dafc4c1b3fd1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181497"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64726550"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>使用 Azure AD 身份验证可通过 .NET 访问 Azure 媒体服务 API
+
+> [!NOTE]
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 从 windowsazure.mediaservices 4.0.0.4 开始，Azure 媒体服务支持基于 Azure Active Directory (Azure AD) 的身份验证。 本主题介绍了如何使用 Azure AD 身份验证通过 Microsoft .NET 访问 Azure 媒体服务 API。
 
@@ -47,25 +50,25 @@ ms.locfileid: "58181497"
 
 如果不使用 Azure 媒体服务 .NET SDK，我们建议使用 [Azure AD 身份验证库](../../active-directory/develop/active-directory-authentication-libraries.md)。 要获取用于 Azure AD 身份验证库所需的参数的值，请参阅[使用 Azure 门户访问 Azure AD 身份验证设置](media-services-portal-get-started-with-aad.md)。
 
-还可以选择将 AzureAdTokenProvider 的默认实现方式替换为你自己的实现方式。
+还可以选择将 AzureAdTokenProvider  的默认实现方式替换为你自己的实现方式。
 
 ## <a name="install-and-configure-azure-media-services-net-sdk"></a>安装和配置 Azure 媒体服务 .NET SDK
 
 >[!NOTE] 
->要将 Azure AD 身份验证用于媒体服务 .NET SDK，需要有最新的 [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) 程序包。 此外，将引用添加到 Microsoft.IdentityModel.Clients.ActiveDirectory 程序集。 如果你使用的是现有应用，则加入 Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll 程序集。 
+>要将 Azure AD 身份验证用于媒体服务 .NET SDK，需要有最新的 [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) 程序包。 此外，将引用添加到 Microsoft.IdentityModel.Clients.ActiveDirectory  程序集。 如果你使用的是现有应用，则加入 Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll  程序集。 
 
 1. 在 Visual Studio 中创建新的 C# 控制台应用程序。
-2. 使用 [windowsazure.mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet 程序包安装 Azure 媒体服务 .NET SDK。 
+2. 使用 [windowsazure.mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet 程序包安装 Azure 媒体服务 .NET SDK  。 
 
-    若要使用 NuGet 添加引用，请执行以下步骤：在“解决方案资源管理器”中，右键单击项目名称，然后选择“管理 NuGet 程序包”。 然后，搜索 windowsazure.mediaservices，并选择“安装”。
+    若要使用 NuGet 添加引用，请执行以下步骤：在“解决方案资源管理器”  中，右键单击项目名称，然后选择“管理 NuGet 程序包”  。 然后，搜索 windowsazure.mediaservices  ，并选择“安装”  。
     
     -或-
 
-    在 Visual Studio 的程序包管理器控制台中运行以下命令。
+    在 Visual Studio 的程序包管理器控制台  中运行以下命令。
 
         Install-Package windowsazure.mediaservices -Version 4.0.0.4
 
-3. 将 using 添加到源代码中。
+3. 将 using  添加到源代码中。
 
         using Microsoft.WindowsAzure.MediaServices.Client; 
 
@@ -78,20 +81,20 @@ ms.locfileid: "58181497"
 - 媒体服务（本机）应用程序客户端 ID。 
 - 媒体服务（本机）应用程序重定向 URI。 
 
-这些参数的值可在 AzureEnvironments.AzureCloudEnvironment 中找到。 AzureEnvironments.AzureCloudEnvironment 常量是 .NET SDK 中的一个帮助程序，可以为公共 Azure 数据中心获取正确的环境变量设置。 
+这些参数的值可在 AzureEnvironments.AzureCloudEnvironment  中找到。 AzureEnvironments.AzureCloudEnvironment  常量是 .NET SDK 中的一个帮助程序，可以为公共 Azure 数据中心获取正确的环境变量设置。 
 
-它包含预定义的环境设置，从而仅允许访问公共数据中心中的媒体服务。 对于 sovereign 云或政府云区域，可以分别使用“AzureChinaCloudEnvironment”、“AzureUsGovernmentEnvironment”或“AzureGermanCloudEnvironment”。
+它包含预定义的环境设置，从而仅允许访问公共数据中心中的媒体服务。 对于 sovereign 云或政府云区域，可以分别使用“AzureChinaCloudEnvironment”、“AzureUsGovernmentEnvironment”或“AzureGermanCloudEnvironment”    。
 
 以下示例代码创建一个令牌：
     
     var tokenCredentials = new AzureAdTokenCredentials("microsoft.onmicrosoft.com", AzureEnvironments.AzureCloudEnvironment);
     var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
   
-若要开始针对媒体服务编程，需要创建一个代表服务器上下文的 CloudMediaContext 实例。 **CloudMediaContext** 包括对各种重要集合的引用，这些集合包括作业、资产、文件、访问策略和定位符。 
+若要开始针对媒体服务编程，需要创建一个代表服务器上下文的 CloudMediaContext  实例。 **CloudMediaContext** 包括对各种重要集合的引用，这些集合包括作业、资产、文件、访问策略和定位符。 
 
-此外，还需要将媒体 REST 服务的资源 URI 传递到 CloudMediaContext 构造函数。 要获取媒体 REST 服务的资源 URI，请登录到 Azure 门户，选择 Azure 媒体服务帐户，然后依次选择“API 访问权限”、“通过用户身份验证连接到 Azure 媒体服务”。 
+此外，还需要将媒体 REST 服务的资源 URI  传递到 CloudMediaContext  构造函数。 要获取媒体 REST 服务的资源 URI，请登录到 Azure 门户，选择 Azure 媒体服务帐户，然后依次选择“API 访问权限”  、“通过用户身份验证连接到 Azure 媒体服务”  。 
 
-下面的代码示例创建 CloudMediaContext 实例：
+下面的代码示例创建 CloudMediaContext  实例：
 
     CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
 
@@ -130,11 +133,11 @@ ms.locfileid: "58181497"
 
 - Azure AD 租户终结点。 可以在 Azure 门户中检索租户信息。 将鼠标悬停在右上角的已登录用户上。
 - 媒体服务资源 URI。
-- Azure AD 应用程序值：客户端 ID和客户端密码。
+- Azure AD 应用程序值：客户端 ID  和客户端密码  。
 
-客户端 ID 和客户端密码参数的值都可以在 Azure 门户中找到。 有关详细信息，请参阅[使用 Azure 门户进行 Azure AD 身份验证入门](media-services-portal-get-started-with-aad.md)。
+客户端 ID  和客户端密码  参数的值都可以在 Azure 门户中找到。 有关详细信息，请参阅[使用 Azure 门户进行 Azure AD 身份验证入门](media-services-portal-get-started-with-aad.md)。
 
-以下代码示例使用将 AzureAdClientSymmetricKey 作为参数的 AzureAdTokenCredentials 构造函数创建令牌： 
+以下代码示例使用将 AzureAdClientSymmetricKey  作为参数的 AzureAdTokenCredentials  构造函数创建令牌： 
     
     var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", 
                                 new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"), 
@@ -142,7 +145,7 @@ ms.locfileid: "58181497"
 
     var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
-你还可以指定将 AzureAdClientCertificate 作为参数的 AzureAdTokenCredentials 构造函数。 
+你还可以指定将 AzureAdClientCertificate  作为参数的 AzureAdTokenCredentials  构造函数。 
 
 有关如何在表单中创建和配置可由 Azure AD 使用的证书的说明，请参阅[使用证书在守护程序应用中对 Azure AD 进行身份验证 - 手动配置步骤](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md)。
 
@@ -150,9 +153,9 @@ ms.locfileid: "58181497"
                                 new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"), 
                                 AzureEnvironments.AzureCloudEnvironment);
 
-若要开始针对媒体服务编程，需要创建一个代表服务器上下文的 CloudMediaContext 实例。 此外，还需要将媒体 REST 服务的资源 URI 传递到 CloudMediaContext 构造函数。 你也可以从 Azure 门户获取媒体 REST 服务的资源 URI 值。
+若要开始针对媒体服务编程，需要创建一个代表服务器上下文的 CloudMediaContext  实例。 此外，还需要将媒体 REST 服务的资源 URI  传递到 CloudMediaContext  构造函数。 你也可以从 Azure 门户获取媒体 REST 服务的资源 URI 值  。
 
-下面的代码示例创建 CloudMediaContext 实例：
+下面的代码示例创建 CloudMediaContext  实例：
 
     CloudMediaContext context = new CloudMediaContext(new Uri("YOUR REST API ENDPOINT HERE"), tokenProvider);
     

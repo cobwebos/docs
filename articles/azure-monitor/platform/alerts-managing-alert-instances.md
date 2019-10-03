@@ -1,46 +1,58 @@
 ---
-title: 管理警报实例
+title: 管理 Azure Monitor 中的警报实例
 description: 管理整个 Azure 中的警报实例
 author: anantr
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: cb93f38c05156d7ab5acb89ffff810949583e507
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 91a770b522011f3955ae0956e289886eb204cf47
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089397"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702910"
 ---
-# <a name="manage-alert-instances"></a>管理警报实例
-使用 Azure Monitor 中的[统一警报体验](https://aka.ms/azure-alerts-overview)，现在可以看到你在 Azure 中的所有不同类型的警报，这些警报来自多个订阅，显示在单个窗格中。 本文分步介绍了如何查看警报实例，以及如何深入门户来查找特定的警报实例以进行故障排除。
+# <a name="manage-alert-instances-with-unified-alerts"></a>用统一警报管理警报实例
+随着 Azure Monitor 的[统一警报体验](https://aka.ms/azure-alerts-overview)，你可以在 Azure 上查看所有不同类型的警报。 这跨多个订阅，在一个窗格中。 本文介绍如何查看警报实例，以及如何查找特定的警报实例进行故障排除。
 
-1. 有三种方式可登陆到“警报”页面
+> [!NOTE]
+   >  只能访问在过去30天内生成的警报。
 
-   + 在[门户](https://portal.azure.com/)中选择“监视器”，然后在“监视器”部分下选择“警报”。  
-     ![监视](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
+## <a name="go-to-the-alerts-page"></a>请参阅 "警报" 页
+
+可以通过以下任一方式来切换到 "警报" 页：
+
+   + 在[Azure 门户](https://portal.azure.com/)中，选择 "**监视** > **警报**"。  
+     ![监视器警报的屏幕截图](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   
-   + 可以从特定**资源**的上下文中导航到“警报”。 打开某个资源后，在其目录中导航到“监视”部分，选择“警报”，登陆页面将针对该特定资源的警报进行预先筛选。
+   + 使用特定资源的上下文。 打开资源，中转到 "**监视**" 部分，然后选择 "**警报**"。 预先筛选登陆页面，查找特定资源的警报。
    
-     ![监视](media/alerts-managing-alert-instances/alert-resource.JPG)
+     ![资源监视警报的屏幕截图](media/alerts-managing-alert-instances/alert-resource.JPG)
     
-   + 可以从特定**资源组**的上下文中导航到“警报”。 打开某个资源组后，在其目录中导航到“监视”部分，选择“警报”，登陆页面将针对该特定资源组的警报进行预先筛选。    
+   + 使用特定资源组的上下文。 打开资源组，中转到 "**监视**" 部分，然后选择 "**警报**"。 预先筛选登陆页面，查找特定资源组中的警报。    
    
-     ![监视](media/alerts-managing-alert-instances/alert-rg.JPG)
+     ![资源组监视警报的屏幕截图](media/alerts-managing-alert-instances/alert-rg.JPG)
 
-1. 你将登陆到“警报摘要”页面，该页面提供了你在整个 Azure 中的所有警报实例的概述。 可以通过选择**多个订阅**（最多 5 个）或通过在**资源组**、特定**资源**或**时间范围**中进行筛选来修改摘要视图。 单击“警报总数”或严重性区段可以转到警报的列表视图。     
-   ![警报摘要](media/alerts-managing-alert-instances/alerts-summary.jpg)
+## <a name="find-alert-instances"></a>查找警报实例
+
+"**警报摘要**" 页面提供了跨 Azure 的所有警报实例的概述。 您可以通过选择**多个订阅**（最多为5个），或通过跨**资源组**、特定**资源**或**时间范围**进行筛选来修改 "摘要" 视图。 选择 "**警报总数**" 或任何 "严重性" 带区，以跳到警报的列表视图。     
+   !["警报摘要" 页的屏幕截图](media/alerts-managing-alert-instances/alerts-summary.jpg)
  
-1. 你将登陆到“所有警报”页面，其中列出了整个 Azure 中的所有警报实例。如果是从警报通知进入到门户中，则可以使用可用的筛选器在该特定的警报实例上收缩范围。 （**注意**：如果是通过单击任何严重性区段进入的页面，则在你登陆时，列表将针对该严重性进行预先筛选）。 除了上一页面上可用的筛选器之外，你现在还可以基于监视服务（例如指标的平台）、监视条件（已触发或已解决）、严重性、警报状态（新的/已确认/已关闭）或智能组 ID 进行筛选。
+在 "**所有警报**" 页上，将列出所有 Azure 上的警报实例。 如果是从警报通知进入到门户中，则可以使用可用的筛选器在该特定的警报实例上收缩范围。
 
-   ![所有警报](media/alerts-managing-alert-instances/all-alerts.jpg)
+> [!NOTE]
+>  如果通过选择任何严重性区段进入了页面，则会为该严重性预筛选列表。
+
+除了上一页提供的筛选器外，还可以根据监视服务的基础进行筛选（例如，用于指标的平台）、监视条件（已触发或已解决）、严重性、警报状态（新的/已确认/已关闭）或智能组 ID。
+
+   !["所有警报" 页的屏幕截图](media/alerts-managing-alert-instances/all-alerts.jpg)
 
    > [!NOTE]
-   >  如果是通过单击任何严重性区段进入的页面，则在你登陆到此页面时，列表将针对该严重性进行预先筛选。
+   >  如果通过选择任何严重性区段进入了页面，则会为该严重性预筛选列表。
  
-1. 单击任何警报实例都会打开“警报详细信息”页面，可以在其中深入了解该特定警报实例的信息。   
-   ![警报详细信息](media/alerts-managing-alert-instances/alert-details.jpg)  
+选择任何警报实例将打开 "**警报详细信息**" 页，使您可以查看有关该特定警报实例的更多详细信息。   
+   ![警报详细信息页的屏幕截图](media/alerts-managing-alert-instances/alert-details.jpg)  
 

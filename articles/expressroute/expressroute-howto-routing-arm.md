@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 04/24/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: bb1e71c4a665a25fa9b936c8777cf8fa0d5cd3e6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e2f38671910be2c7300f39fcbca32e8a1ccd9891
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091913"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64716131"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路的对等互连
 
@@ -177,7 +177,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    Install-Module Az
    ```
 
-   导入所有 Az.\*已知语义版本范围内的模块。
+   导入已知语义版本范围内的所有 Az.\* 模块。
 
    ```azurepowershell-interactive
    Import-Module Az
@@ -302,6 +302,10 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
 
+> [!Note]
+> Azure 公共对等互连不推荐使用适用于新线路。 有关详细信息，请参阅[ExpressRoute 对等互连](expressroute-circuit-peerings.md)。
+>
+
 ### <a name="to-create-azure-public-peering"></a>创建 Azure 公共对等互连
 
 1. 为 ExpressRoute 导入 PowerShell 模块。
@@ -312,7 +316,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    Install-Module Az
    ```
 
-   导入所有 Az.\*已知语义版本范围内的模块。
+   导入已知语义版本范围内的所有 Az.\* 模块。
 
    ```azurepowershell-interactive
    Import-Module Az

@@ -13,28 +13,60 @@
       href: quickstart.md
 - name: 教程
   items:
-    - name: 使用 Azure Functions 筛选数据
-      href: tutorial-deploy-function.md
-    - name: 使用 ASA 查找平均值
-      href: tutorial-deploy-stream-analytics.md
-    - name: 使用 Azure 机器学习服务对数据进行评分
-      href: tutorial-deploy-machine-learning.md
-    - name: 使用自定义视觉对图像进行分类
-      href: tutorial-deploy-custom-vision.md
-    - name: 使用 SQL 在本地存储数据
-      href: tutorial-store-data-sql-server.md
-    - name: 开发自定义代码模块
+    - name: 1. 设置开发环境
       items:
+        - name: 针对 Linux 设备进行开发
+          href: tutorial-develop-for-linux.md
+        - name: 针对 Windows 设备进行开发
+          href: tutorial-develop-for-windows.md
+    - name: 2. 开发自定义代码模块
+      items:
+        - name: C
+          items:
+            - name: 适用于 Linux 设备的 C 模块
+              href: tutorial-c-module.md
+            - name: 适用于 Windows 设备的 C 模块
+              href: tutorial-c-module-windows.md
         - name: 'C#'
-          href: tutorial-csharp-module.md
-        - name: Python
-          href: tutorial-python-module.md
-        - name: Node.js
-          href: tutorial-node-module.md
+          items:
+            - name: '适用于 Linux 设备的 C# 模块'
+              href: tutorial-csharp-module.md
+            - name: '适用于 Windows 设备的 C# 模块'
+              href: tutorial-csharp-module-windows.md
         - name: Java
           href: tutorial-java-module.md
-        - name: C
-          href: tutorial-c-module.md
+        - name: Node.js
+          href: tutorial-node-module.md
+        - name: Python
+          href: tutorial-python-module.md
+    - name: 3. 将 Azure 服务部署为模块
+      items:
+        - name: 使用 Azure Functions 筛选数据
+          href: tutorial-deploy-function.md
+        - name: 使用 Azure 流分析查找平均值
+          href: tutorial-deploy-stream-analytics.md
+        - name: 使用 Azure 机器学习服务对数据进行评分
+          href: tutorial-deploy-machine-learning.md
+        - name: 使用自定义视觉对图像进行分类
+          href: tutorial-deploy-custom-vision.md
+        - name: 使用 SQL 在本地存储数据
+          href: tutorial-store-data-sql-server.md
+    - name: 4. 边缘机器学习的端到端示例
+      items:
+        - name: 介绍
+          href: tutorial-machine-learning-edge-01-intro.md
+        - name: 设置开发计算机和 Azure 服务
+          href: tutorial-machine-learning-edge-02-prepare-environment.md
+        - name: 生成模拟设备数据
+          href: tutorial-machine-learning-edge-03-generate-data.md
+        - name: 训练和部署 Azure 机器学习模型
+          href: tutorial-machine-learning-edge-04-train-model.md
+        - name: 配置透明网关
+          href: tutorial-machine-learning-edge-05-configure-edge-device.md
+        - name: 创建并部署 IoT Edge 模块
+          href: tutorial-machine-learning-edge-06-custom-modules.md
+        - name: 通过透明网关将数据发送到 IoT 中心
+          href: tutorial-machine-learning-edge-07-send-data-to-hub.md
 - name: 概念
   items:
     - name: IoT Edge 运行时
@@ -43,7 +75,7 @@
       items:
         - name: 了解 Azure IoT Edge 模块
           href: iot-edge-modules.md
-        - name: Edge 代理和中心属性
+        - name: IoT Edge 代理和中心属性
           href: module-edgeagent-edgehub.md
     - name: 开发
       items:
@@ -77,7 +109,7 @@
       href: iot-edge-glossary.md
 - name: 操作指南
   items:
-    - name: 注册 Edge 设备
+    - name: 注册 IoT Edge 设备
       items:
         - name: Azure 门户
           href: how-to-register-device-portal.md
@@ -87,25 +119,33 @@
           href: how-to-register-device-vscode.md
     - name: 安装和管理 IoT Edge
       items:
-        - name: Linux X64
+        - name: Linux
           href: how-to-install-iot-edge-linux.md
-        - name: Linux ARM32
-          href: how-to-install-iot-edge-linux-arm.md
-        - name: Windows X64
+        - name: Windows
           href: how-to-install-iot-edge-windows.md
+        - name: Windows 上的 Linux 容器
+          href: how-to-install-iot-edge-windows-with-linux.md
+        - name: Windows Server VM
+          href: how-to-install-iot-edge-windows-server-vm.md
         - name: Ubuntu VM
           href: how-to-install-iot-edge-ubuntuvm.md
+        - name: Kubernetes
+          href: how-to-install-iot-edge-kubernetes.md
         - name: 更新运行时版本
           href: how-to-update-iot-edge.md
     - name: 使用 DPS 进行自动预配
       items:
-        - name: Linux
-          href: how-to-auto-provision-simulated-device-linux.md
-        - name: Windows
-          href: how-to-auto-provision-simulated-device-windows.md
+        - name: 对称密钥证明
+          href: how-to-auto-provision-symmetric-keys.md
+        - name: TPM 证明
+          items:
+            - name: Linux
+              href: how-to-auto-provision-simulated-device-linux.md
+            - name: Windows
+              href: how-to-auto-provision-simulated-device-windows.md
     - name: 开发和调试自定义模块
       items:
-        - name: Visual Studio 2017
+        - name: Visual Studio 2019
           href: how-to-visual-studio-develop-module.md
         - name: Visual Studio Code
           href: how-to-vs-code-develop-module.md
@@ -123,10 +163,12 @@
           href: how-to-deploy-monitor.md
         - name: Azure CLI
           href: how-to-deploy-monitor-cli.md
-    - name: 使用 Edge 设备作为网关
+    - name: 使用 IoT Edge 设备作为网关
       items:
         - name: 配置透明网关
           href: how-to-create-transparent-gateway.md
+        - name: 对下游设备进行身份验证
+          href: how-to-authenticate-downstream-device.md
         - name: 连接下游设备
           href: how-to-connect-downstream-device.md
         - name: Modbus 协议网关
@@ -137,6 +179,8 @@
       items:
         - name: IoT Edge 上的 Azure Blob 存储
           href: how-to-store-data-blob.md
+        - name: 部署 blob 存储模块
+          href: how-to-deploy-blob.md
     - name: 使用 DevOps 工具进行管理
       items:
         - name: Azure DevOps Projects
@@ -151,25 +195,27 @@
   items:
     - name: 解决方案
       items:
-        - name: IoT 解决方案加速器
-          href: /azure/iot-suite
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT 解决方案加速器
+          href: /azure/iot-accelerators
     - name: 平台服务
       items:
         - name: IoT 中心
           href: /azure/iot-hub
+        - name: IoT 即插即用
+          href: /azure/iot-pnp
         - name: IoT 中心设备预配服务
           href: /azure/iot-dps
+        - name: IoT 服务 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: 地图
           href: /azure/azure-maps
-        - name: 服务 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: 时序见解
           href: /azure/time-series-insights
-    - name: Microsoft Edge
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: IoT 设备 SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

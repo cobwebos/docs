@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 908ae768ae471ab6f49452c99323c31d34772d45
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 750b49e149907f204b8b15f0b5728ab25f917743
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201835"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844516"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 
@@ -33,11 +33,11 @@ ms.locfileid: "58201835"
 2. 选择“Azure Active Directory”。
 3. 选择“自定义域名”。
   
-   ![打开用户管理页](./media/domains-manage/add-custom-domain.png)
+   ![打开用户管理页面](./media/domains-manage/add-custom-domain.png)
 4. 选择你希望设为主域的域名。
 5. 选择“设置主域”命令。 出现提示时确认所做的选择。
   
-   ![使域命名主](./media/domains-manage/make-primary-domain.png)
+   ![将域名设为主域名](./media/domains-manage/make-primary-domain.png)
 
 可以将目录的主域名更改为任何未联合的已验证自定义域。 更改目录的主域不会更改任何现有用户的用户名。
 
@@ -90,7 +90,7 @@ ms.locfileid: "58201835"
 **问：为何域删除操作失败，并显示错误“此域名包含 Exchange 主控的组”？** <br>
 **答:** 目前，某些组（例如，支持邮件的安全组和分发列表）由 Exchange 预配，需要手动在 [Exchange 管理中心 (EAC)](https://outlook.office365.com/ecp/) 清理这些组。 可能有遗留的 ProxyAddresses 依赖于自定义域名，需要手动将其更新为另一个域名。 
 
-**问：我以管理员身份登录\@contoso.com，但我不能删除域名称"contoso.com"？**<br>
+**问：我是以管理员\@身份登录 contoso.com，但我无法删除域名 "contoso.com"？**<br>
 **答:** 无法引用你尝试在用户帐户名中删除的自定义域名。 请确保全局管理员帐户使用初始默认域名 (.onmicrosoft.com)，例如 admin@contoso.onmicrosoft.com。 使用不同的全局管理员帐户（例如 admin@contoso.onmicrosoft.com），或帐户为 admin@fabrikam.com 的另一个自定义域名（例如“fabrikam.com”）登录。
 
 **问：我单击了“删除域”按钮，但看到删除操作的状态为 `In Progress`。需要多长时间？如果该操作失败，会发生什么情况？**<br>
@@ -106,7 +106,7 @@ ms.locfileid: "58201835"
 
 针对 Azure Active Directory 中域名的大多数管理任务也可以使用 Microsoft PowerShell 或者使用 Azure AD 图形 API 以编程方式来完成。
 
-* [使用 PowerShell 管理 Azure AD 中的域名](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
+* [使用 PowerShell 管理 Azure AD 中的域名](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
 * [使用图形 API 管理 Azure AD 中的域名](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
 ## <a name="next-steps"></a>后续步骤

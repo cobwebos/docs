@@ -1,25 +1,19 @@
 ---
-title: Dynamics 365 解决方案准备 | Microsoft Docs
+title: Dynamics 365 解决方案准备
 description: 用于打包、安装和卸载组件的框架
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricarod.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2ea62a826b9f99e264cb1b2242f8d8108453d8e7
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 919feb39c9cd84f8da0ef89827ad3e83e0eb9bc5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448757"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935256"
 ---
 # <a name="dynamics-365-solution-preparation"></a>Dynamics 365 解决方案准备
 

@@ -1,107 +1,23 @@
 ---
-title: 应用发布步骤 | Microsoft Docs
-description: .
+title: 应用发布步骤 |Azure Marketplace
+description: 不推荐使用，并链接到相应的 PC 文章;是将应用程序发布到 Azure Marketplace 的步骤。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+author: ChJenk
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/18/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 0fc82229e158ed35b97203b11d08841c683c45ce
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.date: 09/18/2019
+ms.author: pabutler
+ms.openlocfilehash: f53accc0b165f6e1d853c332eb57652184027935
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805699"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105198"
 ---
-<a name="app-publishing-steps"></a>应用发布步骤
-====================
+# <a name="app-publishing-steps"></a>应用发布步骤
 
-若要启动“发布”过程，请在“编辑器”选项卡下单击“发布”。
+[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持创建和管理 Dynamics 365 Business Central 产品/服务。 相反, 此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[创建新的 Dynamics 365 Business Central 产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)。
 
-![CPP“发布应用”按钮](./media/d365-financials/image014.jpg)
+## <a name="next-steps"></a>后续步骤
 
-
-在“状态”选项卡下，你会看到“发布步骤”，其中指明了你的产品/服务的发布进度。 在发布过程中，还可以随时登录，单击“所有产品/服务”选项卡即可查看任何产品/服务的最新状态。 可以直接单击产品/服务的状态，查看有关产品/服务发布进度的详细信息。
-
-让我们演练一下每个发布步骤，讨论每个步骤发生的情况，你应当估算一下每一步所需的时间。
-
-![发布过程图表](./media/d365-financials/image017.png)
-
-
-**验证先决条件**
-
-单击“发布”时，系统会进行自动检查，确保已填充了产品/服务的所有必填字段。 如果有字段未填充，则会在该字段旁边显示警告。需要准确填充该字段，并再次单击“发布”。
-
-正确完成此步骤以后，会显示一个弹出窗口，要求提供一个电子邮件地址，这将用来向你发送发布通知。 提交电子邮件地址以后，此步骤即告完成。
-
-
-**自动化应用程序验证**
-
-在此步骤中，我们的自动认证服务会检查随产品/服务提供的应用程序扩展，这些扩展的内容应当与产品/服务元数据保持一致。 请始终确保你的应用名称、版本、发布者和 ID 与名为 `app.json` 的扩展清单中提供的这些项匹配。
-
-
-**体验版验证**
-
-如果已选择了设置体验版，则在此阶段中将验证你的体验版设置。
-
-
-**潜在顾客管理验证和注册**
-
-在此阶段中，如果配置了“潜在顾客开发”功能，我们会向 CRM 发送一位测试性潜在顾客，验证 CRM 集成是否正常工作。 此步骤完成以后，会看到一个记录，在 CRM 或 Azure 表中填充了假数据。 关于“潜在顾客开发”的所有文档都在这里。
-
-
-**AppSource 打包**
-
-将检查你的店面详细信息项目并生成 AppSource 预览版程序包。
-
-
-**发布者注销**
-
-在此阶段中，“推出”按钮将被激活。 现在，你还将得到用于预览你的产品/服务的一个链接（包含你的 hidekey）。 对预览版的样子感到满意后，单击“推出”按钮。
-请记住，此请求不会使你的应用在 AppSource 中推出，而是会触发我们的内部验证流程。
-
-
-**市场营销和技术性应用程序验证**
-
-在此步骤中，将并行开展市场营销和技术性方面的验证。 有关强制性要求和建议，请参阅[提交应用时的核对清单](https://aka.ms/CheckBeforeYouSubmit)和[为 Dynamics 365 for Finance and Operations 开发应用白皮书](https://go.microsoft.com/fwlink/?linkid=841518)指导文档。 在验证过程中，我们将：
--  与你合作解决任何悬而未决的问题和事项。  
-- 为你提供一个应用发布日期，并在你的应用发布时向你发送通知。 
-- 在 5-7 个工作日内向你提供关于技术性和市场营销验证的第一次反馈。
-
-这些步骤通常要花费一周时间，你不需要不断登录到云合作伙伴门户。
-
-
-**通过服务发布应用程序**
-
-你的产品/服务将进行一些最终处理。 你的应用已通过市场营销和技术性验证，但是现在必须进行一些最终处理以使其做好在 AppSource 上推出的准备。
-
-
-**推出**
-
-你的产品/服务现已在 AppSource 上推出，客户将能够查看并在其 Microsoft Dynamics 365 Business Central 订阅中部署你的应用。 你将收到我们的电子邮件，通知你你的应用已在 AppSource 上公开发布。 可以随时单击“所有产品/服务”选项卡，查看在右侧栏中列出的所有产品/服务的状态。 单击状态即可详细查看产品/服务的发布流状态。
-
-
-<a name="error-handling"></a>错误处理
---------------
-
-在发布过程中，可能会遇到错误。 如果遇到错误，会收到通知电子邮件，告知你出现错误，并提供后续步骤的指导。 在此过程中，也可以随时单击“状态”选项卡来查看错误。可以查看错误发生在此过程的什么时候，并且可以通过错误消息大致了解需要解决什么问题。
-
-如果在发布过程中遇到错误，则需纠正这些错误，并单击“发布”，重新启动发布过程。 纠正错误以后，如果需要重新发布，必须从头开始发布步骤，即从“验证先决条件”开始。
-
-如果解决不了错误，则应提出支持请求，从我们的支持工程师处获取帮助。
-
-
-<a name="canceling-the-publishing-request"></a>取消发布请求
---------------------------------
-
-在开始发布过程以后，可能需要取消发布请求。 只有在发布请求到达“发布者签收”这一步后，才能取消发布请求。 若要取消，请单击“取消发布”。 发布状态将重置为“步骤 1”。要再次发布，应单击“发布”并执行状态中显示的步骤。
-
-![“取消发布”按钮](./media/d365-financials/image013.png)
+在创建新的 Dynamics 365 业务中心产品/服务之前，应阅读[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然后在选中 "**概述**" 页的情况下打开 "[商业市场" 仪表板](https://partner.microsoft.com/dashboard/directory)。 按照[创建新的 Dynamics 365 Business Central 产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)中的说明创建产品/服务。

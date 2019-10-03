@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 8124f2236b37f72741c16dad8f1649d08963542e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: bfbe3d6aac6e97f3568c3c0ce3643bb215726a0b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316654"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376175"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>快速入门：使用 Azure 模板创建 Windows 虚拟机规模集
 
@@ -29,13 +29,13 @@ ms.locfileid: "58316654"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
 ## <a name="define-a-scale-set-in-a-template"></a>在模板中定义规模集
 Azure 资源管理器模板允许部署成组的相关资源。 模板以 JavaScript 对象表示法 (JSON) 编写，可以为应用程序定义整个 Azure 基础结构环境。 在单个模板中，可以创建虚拟机规模集、安装应用程序，以及配置自动缩放规则。 在借助变量和参数的情况下，可以重复使用此模板来更新现有的规模集，或者创建更多的规模集。 可通过 Azure 门户、Azure CLI、Azure PowerShell 或持续集成/持续交付 (CI/CD) 管道部署模板。
 
-有关模板的详细信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)。 有关 JSON 语法和属性，请参阅 [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) 模板参考。
+有关模板的详细信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)。 有关 JSON 语法和属性，请参阅 [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) 模板参考。
 
 模板用于定义每个资源类型的配置。 虚拟机规模集资源类型类似于单个 VM。 虚拟机规模集资源类型的核心部件包括：
 
@@ -43,7 +43,7 @@ Azure 资源管理器模板允许部署成组的相关资源。 模板以 JavaSc
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | 要创建的 Azure 资源类型                            | Microsoft.Compute/virtualMachineScaleSets |
 | 名称                         | 规模集名称                                       | myScaleSet                                |
-| 位置                     | 要创建规模集的位置                     | 美国东部                                   |
+| location                     | 要创建规模集的位置                     | 美国东部                                   |
 | sku.name                     | 每个规模集实例的 VM 大小                  | Standard_A1                               |
 | sku.capacity                 | 一开始需要创建的 VM 实例数           | 2                                         |
 | upgradePolicy.mode           | 更改发生时的 VM 实例升级模式              | 自动                                 |
@@ -105,7 +105,7 @@ Azure 资源管理器模板允许部署成组的相关资源。 模板以 JavaSc
 
 [基于 Windows 的 ASP.NET 应用程序](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)示例模板使用 PowerShell DSC 扩展来安装在 IIS 中运行的 ASP.NET MVC 应用。 
 
-安装脚本从 url 中定义的 GitHub 下载。 扩展然后运行 *IISInstall.ps1* 脚本中的 *InstallIIS*（在 *function* 和 *Script* 中定义）。 ASP.NET 应用本身作为 Web 部署包提供，该包也从 *WebDeployPackagePath* 中定义的 GitHub 下载：
+安装脚本从 url 中定义的 GitHub 下载。  扩展然后运行 *IISInstall.ps1* 脚本中的 *InstallIIS*（在 *function* 和 *Script* 中定义）。 ASP.NET 应用本身作为 Web 部署包提供，该包也从 *WebDeployPackagePath* 中定义的 GitHub 下载：
 
 ```json
 "extensionProfile": {
@@ -136,7 +136,7 @@ Azure 资源管理器模板允许部署成组的相关资源。 模板以 JavaSc
 ```
 
 ## <a name="deploy-the-template"></a>部署模板
-可以通过下面的“部署到 Azure”按钮部署[基于 Windows 的 ASP.NET MVC 应用程序](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)模板。 此按钮可打开 Azure 门户、加载完整的模板，以及提示输入一些参数，例如规模集名称、实例计数和管理员凭据。
+可以通过下面的“部署到 Azure”按钮部署[基于 Windows 的 ASP.NET MVC 应用程序](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)模板。  此按钮可打开 Azure 门户、加载完整的模板，以及提示输入一些参数，例如规模集名称、实例计数和管理员凭据。
 
 [![将模板部署到 Azure](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
 
@@ -149,7 +149,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 # Deploy template into resource group
 New-AzResourceGroupDeployment `
     -ResourceGroupName myResourceGroup `
-    -TemplateFile https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json
+    -TemplateURI https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json
 
 # Update the scale set and apply the extension
 Update-AzVmss `
@@ -168,7 +168,7 @@ Update-AzVmss `
 Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-以“http:\//publicIpAddress/MyApp”格式将负载均衡器的公共 IP 地址输入到 Web 浏览器中。 负载均衡器将流量分发到某个 VM 实例，如以下示例所示：
+以“http:\//publicIpAddress/MyApp”  格式将负载均衡器的公共 IP 地址输入到 Web 浏览器中。 负载均衡器将流量分发到某个 VM 实例，如以下示例所示：
 
 ![运行 IIS 网站](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
 

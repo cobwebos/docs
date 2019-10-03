@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 144476fb11b7049d835e8ebd07742bf9be21eed9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 215011403d8cc5979daeb84db501af30a2944d60
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661983"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035839"
 ---
 # <a name="sfctl-settings"></a>sfctl settings
 配置此 sfctl 实例的本地设置。

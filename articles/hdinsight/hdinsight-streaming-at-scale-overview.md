@@ -1,29 +1,27 @@
 ---
 title: Azure HDInsight 中的大规模流式处理
-description: 如何对可缩放的 HDInsight 群集使用数据流式处理。
-services: hdinsight
+description: 如何在 Azure HDInsight 中通过可缩放的 Apache 群集使用数据流。
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: fd2614c258aff146397e24e688eae18d84d3cfa6
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201154"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105331"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight 中的大规模流式处理
 
-实时大数据解决方案可以处理在移动的数据。 通常，这些数据在抵达时的作用最大。 如果传入的数据流比当时可处理的大小更大，则可能需要限制资源。 或者，可以按需添加节点，根据流式处理解决方案的需要纵向扩展 HDInsight 群集。
-
+实时大数据解决方案对正在进行的数据进行操作。 通常，这些数据在抵达时的作用最大。 如果传入的数据流比当时可处理的大小更大，则可能需要限制资源。 或者，可以按需添加节点，根据流式处理解决方案的需要纵向扩展 HDInsight 群集。
 
 在流式处理应用程序中，一个或多个数据源会生成事件（有时达到每秒几百万个事件），此时，需要在不丢弃任何有用信息的情况下快速引入这些事件。 [Apache Kafka](kafka/apache-kafka-introduction.md) 或[事件中心](https://azure.microsoft.com/services/event-hubs/)等服务使用流缓冲（也称为事件队列）来处理传入的事件。 收集事件后，可以使用流处理层中的实时分析系统（例如 [Apache Storm](storm/apache-storm-overview.md) 或 [Apache Spark Streaming](spark/apache-spark-streaming-overview.md)）来分析数据。 处理的数据可存储在长期存储系统（例如 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)）中，并实时显示在商业智能仪表板（例如 [Power BI](https://powerbi.microsoft.com)、Tableau）或自定义的网页上。
 
-
-![HDInsight Streaming 模式](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+![Azure HDInsight 流式处理模式](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
@@ -65,7 +63,7 @@ Apache Spark 根据应用程序的要求使用三个关键参数来配置其环�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [HDInsight 上的 Apache Storm 入门](storm/apache-storm-tutorial-get-started-linux.md)
+* [在 Azure HDInsight 中创建和监视 Apache Storm 拓扑](storm/apache-storm-quickstart.md)
 * [HDInsight 上的 Apache Storm 的示例拓扑](storm/apache-storm-example-topology.md)
 * [HDInsight 上的 Apache Spark 简介](spark/apache-spark-overview.md)
 * [HDInsight 上的 Apache Kafka 入门](kafka/apache-kafka-get-started.md)

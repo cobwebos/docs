@@ -1,256 +1,235 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Microsoft 标识平台（针对开发人员的 Azure Active Directory）
+### YamlMime:Landing
+title: Microsoft 标识平台（以前称为面向开发人员的 Azure Active Directory）
+summary: Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台演变而来。 开发人员可以通过它来生成应用程序，从而可以采用所有 Microsoft 标识登录，以及获取令牌来调用 Microsoft Graph 等 Microsoft API 或开发人员生成的 API。 它是一个全功能的平台，包含 OAuth 2.0 以及符合 OpenID Connect 标准的身份验证服务、开源库、应用程序注册和配置、可靠的概念和参考文档、快速入门示例、代码示例、教程以及操作方法指南。
 metadata:
-  title: Microsoft 标识平台（针对开发人员的 Azure Active Directory）
-  description: 了解如何才能使用 Microsoft 标识平台来生成应用，以便采用所有 Microsoft 标识安全地进行用户登录，以及获取令牌来调用 Microsoft Graph、其他 Microsoft API 或者开发人员生成的 API。
-  services: active-directory
+  ms.topic: landing-page
+  ms.date: 06/22/2019
   author: CelesteDG
-  manager: mtillman
   ms.service: active-directory
   ms.subservice: develop
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 09/24/2018
-  ms.author: celested
-abstract:
-  description: Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开发人员平台的一种演变。 开发人员可以通过它来生成应用程序，从而可以采用所有 Microsoft 标识登录，以及获取令牌来调用 Microsoft Graph 等 Microsoft API 或开发人员生成的 API。 它是一个全功能的平台，包含符合 OAuth 2.0 和 OpenID Connect 标准的身份验证服务、开放源代码库、应用程序注册和配置、可靠概念和参考文档、“快速入门示例”、代码示例、教程和操作方法指南。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/video-featured.png
-      width: 250
-    title: '生成带身份验证的 Web 应用解决方案 (9:31)'
-    href: 'https://www.youtube.com/watch?v=QWh5HZK9vRA'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/active-directory/develop/about-microsoft-identity-platform
-            html: <p>详细了解 Microsoft 标识平台及其特性和功能。</p>
-            image:
-              src: ./media/index/i_get-started.svg
-            title: 关于 Microsoft 标识平台
-          - href: /azure/active-directory/develop/azure-ad-developers-guide/
-            html: <p>使用 Azure AD 身份验证库 (ADAL)、Azure 门户和 Azure AD Graph API，通过从 Azure AD v1.0 终结点请求令牌，对 Azure AD 标识（工作和学校帐户）进行身份验证。</p>
-            image:
-              src: ./media/index/i_advanced.svg
-            title: v1.0
-          - href: /azure/active-directory/develop/v2-overview
-            html: <p>使用 Microsoft 身份验证库 (MSAL)、Azure 门户和 Microsoft Graph API，通过称为 Azure AD v2.0 终结点的终结点对一系列更广泛的 Microsoft 标识进行身份验证。</p>
-            image:
-              src: ./media/index/i_investigate.svg
-            title: v2.0
-  - title: 快速入门
-    items:
-      - type: paragraph
-        text: 按照这些快速入门的说明快速生成应用并添加功能，例如获取令牌、刷新令牌、进行用户登录、显示某些用户信息，等等。
-      - type: paragraph
-        text: <b>单页应用</b>
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/angularjs-shield.svg
-            title: AngularJS
-          - image:
-              src: ./media/index/logo_js.svg
-            title: JavaScript
-        rows:
-          - title: v1.0
-            values:
-              - href: quickstart-v1-angularjs-spa.md
-              - href: 'https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi'
-          - title: v2.0
-            values:
-              - href: null
-              - href: quickstart-v2-javascript.md
-      - type: paragraph
-        text: <b>Web 应用</b>
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_NET.svg
-            title: ASP .NET
-          - image:
-              src: ./media/index/logo_NETcore.svg
-            title: ASP .NET Core
-          - image:
-              src: ./media/index/logo_java.svg
-            title: Java
-          - image:
-              src: ./media/index/logo_nodejs.svg
-            title: NodeJS
-          - image:
-              src: ./media/index/logo_python.svg
-            title: Python
-        rows:
-          - title: v1.0
-            values:
-              - href: quickstart-v1-aspnet-webapp.md
-              - href: null
-              - href: 'https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect'
-              - href: quickstart-v1-openid-connect-code.md
-              - href: 'https://github.com/Azure-Samples/active-directory-python-webapp-graphapi'
-          - title: v2.0
-            values:
-              - href: quickstart-v2-aspnet-webapp.md
-              - href: quickstart-v2-aspnet-core-webapp.md
-              - href: null
-              - href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
-              - href: null
-      - type: paragraph
-        text: <b>Web API</b>
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_NET.svg
-            title: ASP .NET
-          - image:
-              src: ./media/index/logo_NETcore.svg
-            title: ASP .NET Core
-          - image:
-              src: ./media/index/logo_nodejs.svg
-            title: NodeJS
-        rows:
-          - title: v1.0
-            values:
-              - href: quickstart-v1-dotnet-webapi.md
-              - href: null
-              - href: quickstart-v1-nodejs-webapi.md
-          - title: v2.0
-            values:
-              - href: 'https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet'
-              - href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
-              - href: null
-      - type: paragraph
-        text: <b>移动应用和桌面应用</b>
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_android.svg
-            title: Android
-          - image:
-              src: ./media/index/logo_ios.svg
-            title: iOS
-          - image:
-              src: ./media/index/logo_Windows.svg
-            title: 通用 Windows 平台
-          - image:
-              src: ./media/index/logo_Windows.svg
-            title: Windows 桌面 .NET
-          - image:
-              src: ./media/index/logo_xamarin.svg
-            title: Xamarin
-        rows:
-          - title: v1.0
-            values:
-              - href: quickstart-v1-android.md
-              - href: quickstart-v1-ios.md
-              - href: null
-              - href: quickstart-v1-dotnet.md
-              - href: quickstart-v1-xamarin.md
-          - title: v2.0
-            values:
-              - href: quickstart-v2-android.md
-              - href: quickstart-v2-ios.md
-              - href: quickstart-v2-uwp.md
-              - href: quickstart-v2-windows-desktop.md
-              - href: null
-      - type: paragraph
-        text: <b>服务到服务和守护程序应用</b>
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_NET.svg
-            title: .NET
-        rows:
-          - title: v1.0
-            values:
-              - href: sample-v1-code.md
-          - title: v2.0
-            values:
-              - href: quickstart-v2-netcore-daemon.md
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 使用 Microsoft 标识平台，按照深入的基于方案的过程来完成顶级身份验证开发人员任务，例如获取访问令牌、通过 Microsoft 实现登录，等等。
-      - type: paragraph
-        text: <b>单页应用</b>
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_js.svg
-            title: JavaScript
-        rows:
-          - title: v1.0
-            values:
-              - href: null
-          - title: v2.0
-            values:
-              - href: tutorial-v2-javascript-spa.md
-      - type: paragraph
-        text: <b>Web 应用</b>
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_NET.svg
-            title: ASP .NET
-        rows:
-          - title: v1.0
-            values:
-              - href: null
-          - title: v2.0
-            values:
-              - href: tutorial-v2-asp-webapp.md
-      - type: paragraph
-        text: <b>移动应用和桌面应用</b>
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_android.svg
-            title: Android
-          - image:
-              src: ./media/index/logo_ios.svg
-            title: iOS
-          - image:
-              src: ./media/index/logo_Windows.svg
-            title: 通用 Windows 平台
-          - image:
-              src: ./media/index/logo_Windows.svg
-            title: Windows 桌面 .NET
-        rows:
-          - title: v1.0
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: v2.0
-            values:
-              - href: tutorial-v2-android.md
-              - href: tutorial-v2-ios.md
-              - href: tutorial-v2-windows-uwp.md
-              - href: tutorial-v2-windows-desktop.md
-  - title: 示例
-    items:
-      - type: paragraph
-        text: 根据要开发的应用的类型、平台以及所使用的 API 来查找代码示例。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/develop/sample-v1-code">按方案分类的 v1.0 代码示例</a>
-          - html: <a href="/azure/active-directory/develop/sample-v2-code">按方案分类的 v2.0 代码示例</a>
+  ms.workload: identity
+  ms.openlocfilehash: a558bbd114bdaa2046bd0bfb8ffd846d0804b9a3
+  ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/10/2019
+  ms.locfileid: "67785607"
+landingContent:
+- title: 关于 Microsoft 标识平台
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Microsoft 标识平台的发展
+      url: about-microsoft-identity-platform.md
+    - text: Microsoft 标识平台 (v2.0)
+      url: v2-overview.md
+    - text: 面向开发人员的 Azure Active Directory (v1.0)
+      url: v1-overview.md
+  - linkListType: learn
+    links:
+    - text: 一分钟开发 - Microsoft 标识平台
+      url: https://youtu.be/y_fgJAatVhk
+- title: 构建单页应用
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 方案概述
+      url: scenario-spa-overview.md
+  - linkListType: quickstart
+    links:
+    - text: JavaScript
+      url: quickstart-v2-javascript.md
+  - linkListType: tutorial
+    links:
+    - text: JavaScript
+      url: tutorial-v2-javascript-spa.md
+  - linkListType: deploy
+    links:
+    - text: 测试应用集成
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: 示例 - JavaScript、Angular
+      url: sample-v2-code.md#single-page-applications
+    - text: 示例 - 将 SPA 与 Azure AD B2C 配合使用
+      url: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
+- title: 构建用于让用户登录的 Web 应用
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 方案概述
+      url: scenario-web-app-sign-user-overview.md
+  - linkListType: quickstart
+    links:
+    - text: ASP.NET Core
+      url: quickstart-v2-aspnet-core-webapp.md
+    - text: ASP.NET
+      url: quickstart-v2-aspnet-webapp.md
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET Core
+      url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2
+  - linkListType: deploy
+    links:
+    - text: 测试应用集成
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: 示例 - ASP.NET Core、ASP.NET
+      url: sample-v2-code.md#web-applications
+- title: 构建用于调用 Web API 的 Web 应用
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 方案概述
+      url: scenario-web-app-call-api-overview.md
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET Core
+      url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2#scope-of-this-tutorial
+  - linkListType: deploy
+    links:
+    - text: 测试应用集成
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: 示例 - ASP.NET Core、ASP.NET、Node.js、Ruby
+      url: sample-v2-code.md#web-applications
+- title: 构建受保护的 Web API
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 方案概述
+      url: scenario-protected-web-api-overview.md
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET Core Web API
+      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
+  - linkListType: deploy
+    links:
+    - text: 测试应用集成
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: 示例 - ASP.NET
+      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
+- title: 用于调用 Web API 的 Web API
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 方案概述
+      url: scenario-web-api-call-api-overview.md
+  - linkListType: tutorial
+    links:
+    - text: 用于调用 Microsoft Graph 的 ASP.NET Core Web API
+      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph
+  - linkListType: deploy
+    links:
+    - text: 测试应用集成
+      url: identity-platform-integration-checklist.md
+- title: 构建用于调用 Web API 的桌面应用
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 方案概述
+      url: scenario-desktop-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 获取令牌并调用 Microsoft Graph API（Windows 桌面）
+      url: quickstart-v2-windows-desktop.md
+    - text: 获取令牌并调用 Microsoft Graph API (UWP)
+      url: quickstart-v2-uwp.md
+  - linkListType: tutorial
+    links:
+    - text: 调用 Microsoft Graph API（Windows 桌面）
+      url: tutorial-v2-windows-desktop.md
+    - text: 调用 Microsoft Graph API (UWP)
+      url: tutorial-v2-windows-uwp.md
+  - linkListType: deploy
+    links:
+    - text: 测试应用集成
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: 示例 - .NET、.NET Core
+      url: sample-v2-code.md#desktop-and-mobile-public-client-apps
+- title: 构建用于调用 Web API 的守护程序应用
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 方案概述
+      url: scenario-daemon-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 获取令牌并调用 Microsoft Graph API（.NET Core 控制台）
+      url: quickstart-v2-netcore-daemon.md
+    - text: 获取令牌并调用 Microsoft Graph API（ASP.NET Web 应用）
+      url: https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp
+  - linkListType: deploy
+    links:
+    - text: 测试应用集成
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: 示例 - ASP.NET 控制台、ASP.NET Web
+      url: sample-v2-code.md#daemon-applications
+- title: 构建用于调用 Web API 的移动应用
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 方案概述
+      url: scenario-mobile-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 获取令牌并调用 Microsoft Graph API (Android)
+      url: quickstart-v2-android.md
+    - text: 获取令牌并调用 Microsoft Graph API (iOS)
+      url: quickstart-v2-ios.md
+    - text: 获取令牌并调用 Microsoft Graph API（Xamarin iOS 和 Android）
+      url: https://github.com/Azure-Samples/active-directory-xamarin-native-v2
+  - linkListType: tutorial
+    links:
+    - text: 使用户登录并调用 Microsoft Graph API (Android)
+      url: tutorial-v2-android.md
+    - text: 使用户登录并调用 Microsoft Graph API (iOS)
+      url: tutorial-v2-ios.md
+  - linkListType: deploy
+    links:
+    - text: 测试应用集成
+      url: identity-platform-integration-checklist.md
+  - linkListType: download
+    links:
+    - text: 示例 - Android、iOS、Xamarin
+      url: sample-v2-code.md#desktop-and-mobile-public-client-apps
+- title: 调用 Microsoft Graph API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于 Microsoft Graph
+      url: https://docs.microsoft.com/graph/overview
+  - linkListType: quickstart
+    links:
+    - text: 在 3 分钟内启动并运行
+      url: https://developer.microsoft.com/graph/get-started
+  - linkListType: learn
+    links:
+    - text: 使用 API
+      url: https://docs.microsoft.com/graph/use-the-api
+    - text: Microsoft Graph REST API v1.0
+      url: https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-1.0
+    - text: Microsoft Graph REST API Beta
+      url: https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-beta
+  - linkListType: deploy
+    links:
+    - text: Graph 浏览器
+      url: https://developer.microsoft.com/graph/graph-explorer/
+- title: 构建允许使用社交和本地标识登录的面向客户的应用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于 Azure AD B2C
+      url: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
+  - linkListType: tutorial
+    links:
+    - text: 将标识提供程序添加到 Azure AD B2C 中的应用
+      url: https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers

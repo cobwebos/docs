@@ -10,17 +10,16 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: b108814caaace83cd417dc8858e27ed01d54c39e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901779"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066770"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure 应用服务上的操作系统功能
 本文介绍了可供在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)上运行的所有 Windows 应用使用的常见基准操作系统功能。 这些功能包括文件、网络和注册表访问以及诊断日志和事件。 
@@ -65,7 +64,7 @@ ms.locfileid: "54901779"
 
 - 应用可能会引发错误，指示磁盘上没有足够的空间。
 - 浏览到 Kudu 控制台时，可能会看到磁盘错误。
-- 从 VSTS 或 Visual Studio 进行部署可能会失败并显示 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`。
+- 从 Azure DevOps 或 Visual Studio 进行部署可能会失败并显示 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`。
 - 你的应用可能会出现性能下降。
 
 <a id="NetworkDrives"></a>
@@ -96,7 +95,7 @@ ms.locfileid: "54901779"
 <a id="NetworkAccess"></a>
 
 ## <a name="network-access"></a>网络访问
-应用程序代码可以使用基于 TCP/IP 和 UDP 的协议建立与公开外部服务的 Internet 可访问终结点的出站网络连接。 应用可以使用这些相同协议连接到 Azure 内的服务&#151;例如，建立与 SQL 数据库的 HTTPS 连接即可实现此目的。
+应用程序代码可以使用基于 TCP/IP 和 UDP 的协议建立与公开外部服务的 Internet 可访问终结点的出站网络连接。 应用可以使用这些相同协议连接到 Azure 中的服务；例如，建立与 SQL 数据库的 HTTPS 连接即是如此。
 
 还有有限容量以便为应用建立一个本地环回连接，并且让应用侦听该本地环回套接字。 此功能存在主要是为了实现作为其功能的一部分侦听本地环回套接字的应用。 每个应用监视一个“专用”环回连接。 应用“A”无法侦听应用“B”创建的本地环回套接字。
 

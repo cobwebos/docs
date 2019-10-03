@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 65dd47ab21ca4b1c50e0f17b73e7bc4eae8a96e8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665774"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60725731"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors 状态管理
 Reliable Actors 是可封装逻辑与状态的单线程对象。 由于执行组件在 Reliable Services 上运行，因此，它们可以使用相同的持久性和复制机制可靠地维护状态。 这样，执行组件就不会在发生故障之后、在内存回收后重新激活时或者由于资源平衡和升级的原因而在群集中的节点之间移动时丢失其状态。
@@ -83,7 +83,7 @@ class MyActorImpl extends FabricActor implements MyActor
 ### <a name="defaults-and-generated-settings"></a>默认值和生成的设置
 如果使用 `StatePersistence` 属性，在执行组件服务启动时，系统会在运行时自动为你选择状态提供程序。 但是，副本计数会在编译时由 Visual Studio 执行组件构建工具设置。 构建工具在 ApplicationManifest.xml 中自动为执行组件服务生成*默认服务*。 参数是针对**副本集大小下限**和**目标副本集大小**创建的。
 
-可手动更改这些参数。 但是，每当 `StatePersistence` 属性更改时，参数将设置为所选 `StatePersistence` 属性的默认副本集大小值，并覆盖所有旧值。 换言之，更改 `StatePersistence` 属性值时，在 ServiceManifest.xml 中设置的值将仅在生成时被覆盖。
+可手动更改这些参数。 但是，每当 `StatePersistence` 属性更改时，参数将设置为所选 `StatePersistence` 属性的默认副本集大小值，并覆盖所有旧值。 换言之，更改 `StatePersistence` 属性值时，在 ServiceManifest.xml 中设置的值将仅  在生成时被覆盖。
 
 ```xml
 <ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">

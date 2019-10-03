@@ -12,20 +12,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/11/2019
+ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ccdd234f951327aeb5baa6aabcac4314b9de7b34
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088700"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517105"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple 虚拟阵列 - 准备 Azure 门户
 
 ![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
+
+
 ## <a name="overview"></a>概述
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 这是此系列部署教程的第一篇文章，是使用 Resource Manager 模型将虚拟阵列完全部署为文件服务器或 iSCSI 服务器所必读的。 本文介绍在预配虚拟阵列之前创建和配置 StorSimple Device Manager 服务所需进行的准备。 本文还提供了部署配置清单和配置先决条件的链接。
 
@@ -33,7 +37,7 @@ ms.locfileid: "58088700"
 
 本文发布的信息适用于在 Azure 门户和 Microsoft Azure 政府云中部署 StorSimple 虚拟阵列的情况。
 
-### <a name="get-started"></a>入门
+### <a name="get-started"></a>开始使用
 部署工作流包括：准备门户、在虚拟化环境中预配虚拟阵列，以及完成设置。 开始将 StorSimple 虚拟阵列部署为文件服务器或 iSCSI 服务器之前，需参阅下述表格形式的资源。
 
 #### <a name="deployment-articles"></a>部署文章
@@ -55,7 +59,7 @@ ms.locfileid: "58088700"
 * 下载 [StorSimple 虚拟阵列文件服务器配置清单](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)。
 * 下载 [StorSimple 虚拟阵列 iSCSI 服务器配置清单](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 下面是 StorSimple Device Manager 服务、StorSimple 虚拟阵列以及数据中心网络的配置先决条件。
 

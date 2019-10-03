@@ -7,25 +7,26 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 74be21629a884313e74a824bb34fb5b66f5db61d
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 548f37d6a0d4390fb98ceaee7b59314400debb38
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005975"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986550"
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
 Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助开发人员构建安全的应用程序：
 
-- 所有写入 Azure 存储的数据，使用[存储服务加密 (SSE)](storage-service-encryption.md) 进行自动加密。 有关详细信息，请参阅[宣布推出针对 Azure Blob、文件、表和队列存储的默认加密](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
+- 所有写入 Azure 存储的数据（包括元数据），都使用[存储服务加密 (SSE)](storage-service-encryption.md) 进行自动加密。 有关详细信息，请参阅[宣布推出针对 Azure Blob、文件、表和队列存储的默认加密](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
 - Azure 存储支持使用 Azure Active Directory (Azure AD) 和基于角色的访问控制 (RBAC) 进行资源管理操作和数据操作，如下所示：   
     - 可以将作用域为存储帐户的 RBAC 角色分配给安全主体，并使用 Azure AD 为密钥管理之类的资源管理操作授权。
-    - Azure AD 的集成支持的 blob 和队列数据操作。 可以将范围为订阅、资源组、存储帐户或单个容器或队列的 RBAC 角色分配给 Azure 资源的某个安全主体或托管标识。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。   
+    - 支持通过 Azure AD 集成执行 blob 和队列数据操作。 可以将范围为订阅、资源组、存储帐户或单个容器或队列的 RBAC 角色分配给 Azure 资源的某个安全主体或托管标识。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。   
 - 在应用程序和 Azure 之间传输数据时，可使用[客户端加密](../storage-client-side-encryption.md)、HTTPS 或 SMB 3.0 保护数据。  
-- Azure 虚拟机使用的 OS 和数据磁盘可使用 [Azure 磁盘加密](../../security/azure-security-disk-encryption.md)进行加密。 
-- 在 Azure 存储中，可以使用[共享访问签名](../storage-dotnet-shared-access-signature-part-1.md)授予数据对象的委派访问权限。
+- Azure 虚拟机使用的 OS 和数据磁盘可使用 [Azure 磁盘加密](../../security/azure-security-disk-encryption.md)进行加密。
+- 可以使用共享访问签名来授予对 Azure 存储中数据对象的委派访问权限。 有关详细信息, 请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)。
 
 本文概述其中每项可配合 Azure 存储使用的安全功能。 提供的文章链接提供每项功能的详细信息，让你轻松地进一步探讨每个主题。
 
@@ -237,14 +238,8 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
     此文提供有关使用服务级别 SAS 配合 Blob、队列、表范围和文件的示例。
   * [Constructing a Service SAS](https://msdn.microsoft.com/library/dn140255.aspx)（构造服务 SAS）
   * [Constructing an account SAS](https://msdn.microsoft.com/library/mt584140.aspx)（构造帐户 SAS）
-* 这些教程介绍了如何使用 .NET 客户端库创建共享访问签名和存储访问策略。
 
-  * [使用共享访问签名 (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
-  * [共享访问签名，第 2 部分：创建 SAS 并将其用于 Blob 服务](../blobs/storage-dotnet-shared-access-signature-part-2.md)
-
-    此文包含 SAS 模型的说明、共享访问签名的示例，以及 SAS 用法最佳实践的建议。 此外介绍了如何吊销授予的权限。
-
-* Authentication
+* 身份验证
 
   * [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx)（Azure 存储服务的身份验证）
 * 共享访问签名入门教程
@@ -302,7 +297,7 @@ SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azur
   本文介绍了客户端加密，并通过示例解释了如何使用存储客户端库加密和解密 4 个存储服务中的资源。 此外介绍了 Azure 密钥保管库。
 
 ### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>使用 Azure 磁盘加密来加密虚拟机所用的磁盘
-Azure 磁盘加密可加密 OS 磁盘和 IaaS 虚拟机使用的数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这会与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。
+Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。 对于 Windows，驱动器是使用行业标准 BitLocker 加密技术加密的。 对于 Linux，磁盘是使用 DM-Crypt 技术加密的。 这会与 Azure 密钥保管库集成，可让你控制和管理磁盘加密密钥。
 
 在 Microsoft Azure 中启用 IaaS VM 时，该解决方案支持以下 IaaS VM 方案：
 
@@ -374,7 +369,7 @@ SSE 由 Azure 存储管理。 SSE 不是针对传输中数据安全性提供的�
 
 可以在存储分析日志中看到的另一部分数据是其他人访问存储时使用的身份验证方法。 例如，使用 Blob 存储，可以看到他们使用的是否为共享访问签名或存储帐户密钥，或者访问的 Blob 是否为公共的。
 
-如果要严密监视存储的访问，这很有用。 例如，在 Blob 存储中，可以将所有容器设置为专用，并通过应用程序实现 SAS 服务的用法。 然后可以定期检查日志，以了解你的 Blob 是否是使用存储帐户密钥访问的（这可能表示出现安全违规），或者 Blob 是公共的但它们不应该是公共的。
+如果要严密监视存储的访问，这很有用。 例如，在 Blob 存储中，可以将所有容器设置为专用，并通过应用程序实现 SAS 服务的用法。 然后可以定期检查日志，以了解 Blob 是否是使用存储帐户密钥访问的（这可能表示出现安全违规），或者 Blob 是公共的但它们不应该是公共的。
 
 #### <a name="what-do-the-logs-look-like"></a>日志的外观
 通过 Azure 门户启用存储帐户指标和日志记录后，分析数据会开始快速累积。 每个服务的日志记录与指标是分开的；只有在该存储帐户中有活动时才将写入日志，而根据设置指标的方式，会每分钟、每小时或每天记录指标。
@@ -432,7 +427,7 @@ SSE 由 Azure 存储管理。 SSE 不是针对传输中数据安全性提供的�
 
   本文提供 Microsoft Message Analyzer 的参考信息，包括教程、快速入门和功能摘要的链接。
 
-## <a name="cross-origin-resource-sharing-cors"></a>跨源资源共享 (CORS)
+## <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享(CORS)
 ### <a name="cross-domain-access-of-resources"></a>跨域访问资源
 在某一个域中运行的 Web 浏览器对来自不同域的资源发出 HTTP 请求称为跨域 HTTP 请求。 例如，contoso.com 中的 HTML 页面将对 fabrikam.blob.core.windows.net 上托管的 jpeg 发出请求。 出于安全原因，浏览器将限制从脚本（例如 JavaScript）中初始化的跨域 HTTP 请求。 这意味着，如果 contoso.com 的页面上有一些 JavaScript 代码请求 fabrikam.blob.core.windows.net 上的该 jpeg，浏览器将拒绝此请求。
 

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 82f9d7090d7283e0b00b36e0928fffb3395ca4c0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8bbb486b0dbf1a5e25f5ee4d1f8e5e01b999a8ba
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102629"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067391"
 ---
 # <a name="classroom-labs-concepts"></a>教室实验室概念
 以下列表包含密钥的实验室服务概念和定义：
 
 ## <a name="quota"></a>Quota
-配额是一名教师可以设置时间限制 （以小时为单位） 的一名学生，若要使用实验室 VM。 它可以设置为 0，不受限制或特定的小时数。 如果配额设置为 0，一名学生只能使用虚拟机计划运行时或教师手动打开时在虚拟机上的学生。
+配额是一名教师可以设置时间限制 （以小时为单位） 的一名学生，若要使用实验室 VM。 它可以设置为 0 或特定的小时数。 如果配额设置为 0，一名学生只能使用虚拟机计划运行时或教师手动打开时在虚拟机上的学生。
  
 ## <a name="schedules"></a>计划
 计划是一名教师可以为类创建的时间段 （一次或重复）。 在实验室中的所有虚拟机自动都启动到日程安排开始处，并计划结束时停止。 当某个计划正在运行时不使用配额小时数。

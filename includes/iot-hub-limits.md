@@ -4,16 +4,16 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 1bdf73dc6a4edf0c170b51e70fca2128d22e0eb8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 689322614e2cea4e59a5a573b72bfeb2aafda847
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803422"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71148370"
 ---
-下表列出了与不同服务层 S1、 S2、 S3 和 F1 关联的限制。 有关每个成本有关的信息*单元*在每个层中，请参阅[Azure IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
+下表列出了与不同服务层 S1、S2、S3 和 F1 关联的限制。 有关每个层中每个*单位*的成本的信息，请参阅[Azure IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
-| 资源 | S1 标准 | S2 标准 | S3 标准 | F1 免费 |
+| Resource | S1 标准 | S2 标准 | S3 标准 | F1 免费 |
 | --- | --- | --- | --- | --- |
 | 消息/天 |400,000 |6,000,000 |300,000,000 |8,000 |
 | 最大单位数 |200 |200 |10 |1 |
@@ -25,7 +25,7 @@ ms.locfileid: "59803422"
 
 下表列出了适用于 IoT 中心资源的限制。
 
-| 资源 | 限制 |
+| Resource | 限制 |
 | --- | --- |
 | 每个 Azure 订阅的付费 IoT 中心数上限 |50 |
 | 每个 Azure 订阅的免费 IoT 中心数上限 |1 |
@@ -38,11 +38,12 @@ ms.locfileid: "59803422"
 | 云到设备的消息数上限 |64 KB |
 | 云到设备消息的最大 TTL |2 天 |
 | 云到设备消息的最大传送计数 <br/> 计数 |100 |
+| 每台设备的最大云到设备队列深度 |50 |
 | 反馈消息的最大传送计数 <br/> （响应云到设备消息时） |100 |
 | 反馈消息的最大 TTL <br/> （响应云到设备消息时） |2 天 |
-| 设备孪生的最大大小 <br/> （标记、报告的属性和所需属性） | 8 KB |
+| [设备克隆的最大大小](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> （标记、报告的属性和所需属性） | 8 KB |
 | 设备孪生字符串值的最大大小 | 4 KB |
-| 设备孪生中对象的最大深度 | 5 |
+| [设备中对象的最大深度](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 5 |
 | 直接方法有效负载的最大大小 | 128 KB |
 | 作业历史记录最长保留期 | 30 天 |
 | 最大并发作业数 | 10（适用于 S3）、5（适用于 S2）、1（适用于 S1） |
@@ -51,10 +52,8 @@ ms.locfileid: "59803422"
 | 最大并发连接设备流数 | 50（仅适用于 S1、S2、S3 和 F1） |
 | 最大设备流数据传输 | 300 MB/天（仅适用于 S1、S2、S3 和 F1） |
 
-
 > [!NOTE]
-> 如果需要 50 多个 Azure 订阅中的付费的 IoT 中心，请联系 Microsoft 支持部门。
-
+> 如果 Azure 订阅中需要50个以上的付费 IoT 中心，请联系 Microsoft 支持部门。
 
 > [!NOTE]
 > 目前，可以连接到单个 IoT 中心的设备的最大数目是 1,000,000。 如果想要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。

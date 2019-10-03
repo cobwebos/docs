@@ -1,0 +1,97 @@
+### YamlMime:Landing
+title: Azure 区块链服务文档
+summary: 了解如何创建区块链应用程序。 教程、API 参考和其他文档介绍了如何使用 Azure 区块链服务在 Azure 上创建、开发和管理区块链应用程序。
+metadata:
+  title: Azure 区块链服务文档 - 教程和 API 参考
+  description: 了解如何创建区块链应用程序。 教程、API 参考和其他文档介绍了如何使用 Azure 区块链服务在 Azure 上创建、开发和管理区块链应用程序。
+  services: azure-blockchain
+  ms.service: azure-blockchain
+  ms.topic: landing-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 09/18/2019
+  ms.openlocfilehash: f0abf5d3c81f7bd81c4fef6a15f34f753c1e1a24
+  ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/02/2019
+  ms.locfileid: "71718553"
+landingContent:
+- title: 关于 Azure 区块链服务
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 区块链服务？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 私有联盟区块链网络
+      url: consortium.md
+    - text: 数据访问和安全性
+      url: data-security.md
+    - text: 开发工具
+      url: develop.md
+- title: 入门
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 创建区块链成员 - 门户
+      url: create-member.md
+    - text: 创建区块链成员 - CLI
+      url: create-member-cli.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 Visual Studio Code 连接到联盟网络
+      url: connect-vscode.md
+    - text: 使用 MetaMask 进行连接并使用 Remix 部署智能合约
+      url: connect-metamask.md
+    - text: 使用 Geth 连接到事务节点
+      url: connect-geth.md
+    - text: 使用 Truffle 连接到事务节点
+      url: connect-truffle.md
+  - linkListType: tutorial
+    links:
+    - text: 使用 Visual Studio Code 创建、生成和部署智能合约
+      url: send-transaction.md
+  - linkListType: video
+    links:
+    - text: 部署并配置网络
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+    - text: 使用 VS Code 编写并测试智能合约
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+    - text: 将数据发送到账本
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-III-Send-data-to-the-ledger
+    - text: 发布事件和账本数据
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-IV-Publish-events-and-ledger-data
+- title: 集成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure 逻辑应用集成区块链
+      url: ethereum-logic-app.md
+  - linkListType: video
+    links:
+    - text: 将 Ethereum 区块链连接器与 Azure 逻辑应用配合使用
+      url: https://channel9.msdn.com/Shows/Blocktalk/Logic-Apps-Connector-to-Ethereum-Blockchain-Networks?term=logic%20apps%20blockchain&lang-en=true
+    - text: 使用 Azure 逻辑应用连接区块链的常见方案
+      url: https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true
+    - text: 从智能合同生成 Web 服务
+      url: https://channel9.msdn.com/Shows/Blocktalk/Generating-Web-Services-from-Smart-Contracts-Based-on-Logic-Apps-Flows-and-Azure-Functions?term=logic%20apps%20blockchain&lang-en=true
+    - text: 将智能合同事件发布到 Azure 事件网格或 Azure 服务总线
+      url: https://channel9.msdn.com/Shows/Blocktalk/Generate-Logic-Apps-and-Flows-to-Publish-Smart-Contract-Events-to-Event-Grid-and-Service-Bus?term=logic%20apps%20blockchain&lang-en=true
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理区块链成员 - CLI
+      url: manage-cli.md
+    - text: 管理联盟成员 - PowerShell
+      url: manage-consortium-powershell.md
+    - text: 配置事务节点
+      url: configure-transaction-nodes.md
+    - text: 配置 Active Directory 访问权限
+      url: configure-aad.md
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/blockchain

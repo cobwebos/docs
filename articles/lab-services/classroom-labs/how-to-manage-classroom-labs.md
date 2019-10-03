@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 06/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 332f899f3502f34e46b4f158a6980dc96248140e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 1f9cb82abd5bc0823f5e7bc23fe437007bccc8e0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544018"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873573"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和删除教室实验室。 它还说明如何查看实验室帐户中的所有教室实验室。 
@@ -28,19 +28,19 @@ ms.locfileid: "59544018"
 
 ## <a name="create-a-classroom-lab"></a>创建课堂实验室
 
-1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 请注意尚不支持 Internet Explorer 11。 
+1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 请注意，尚不支持 Internet Explorer 11。 
 2. 选择“登录”。 选择或输入属于实验室帐户中“实验室创建者”角色成员的“用户 ID”，然后输入密码。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
 3. 在“新建实验室”窗口中，执行以下操作：： 
     1. 指定实验室的**名称**。 
     2. 在实验室中指定最大**虚拟机数**。 以后可以增加或减少实验室中的虚拟机数。 
-    6. 选择“保存”。
+    6. 选择**保存**。
 
         ![创建课堂实验室](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. 在“选择虚拟机规范”页上执行以下步骤：
-    1. 选择在实验室中创建的虚拟机 (VM) 的**大小**。 目前，允许**小型**、**中型**、**大型**和 **GPU** 大小。
-    2. 选择要在其中创建 VM 的**区域**。 
-    3. 选择用于在实验室中创建 VM 的 **VM 映像**。 如果选择 Linux 映像，可以看到一个用来为该映像启用远程桌面连接的选项。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
-    4. 选择“**下一步**”。
+    1. 选择在实验室中创建的虚拟机 (VM) 的**大小**。 目前，允许**小型**、**中型**、**中型(虚拟化)** 、**大型**和 **GPU** 大小。 有关详细信息，请参阅[VM 大小](#vm-sizes)部分。
+    1. 选择要在其中创建 VM 的**区域**。 
+    1. 选择用于在实验室中创建 VM 的 **VM 映像**。 如果选择 Linux 映像，可以看到一个用来为该映像启用远程桌面连接的选项。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
+    1. 选择“**下一步**”。
 
         ![指定 VM 规范](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
 5. 在“设置凭据”页上，指定实验室中所有 VM 的默认凭据。 
@@ -49,7 +49,10 @@ ms.locfileid: "59544018"
 
         > [!IMPORTANT]
         > 记下用户名和密码。 这些信息不会再次显示。
-    3. 选择“创建”。 
+    3. 如果你希望学生设置自己的密码，则禁用 "**为所有虚拟机使用相同的密码**" 选项。 此步骤是**可选的**。 
+
+        教师可以选择对实验室中的所有 Vm 使用相同的密码，或允许学生为其 Vm 设置密码。 默认情况下，所有 Windows 和 Linux 映像（Ubuntu 除外）都启用此设置。 选择**Ubuntu** VM 时，此设置会被禁用，因此在首次登录时，会提示学生设置密码。
+    1. 选择“创建”。 
 
         ![设置凭据](../media/tutorial-setup-classroom-lab/set-credentials.png)
 6. 在“配置模板”页上，查看实验室创建过程的状态。 在实验室中创建模板最长需要 20 分钟时间。 实验室中的模板是基础虚拟机映像，用户的所有虚拟机均依据其创建。 设置模板虚拟机，为其准确配置需要提供给实验室用户的内容。  
@@ -59,13 +62,11 @@ ms.locfileid: "59544018"
 
     ![完成配置后的“配置模板”页](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. 在本教程中，以下步骤是可选步骤： 
-    1. 选择“启动”来启动模板 VM。
     2. 选择“连接”以连接到模板 VM。 如果它是 Linux 模板 VM，请选择是要使用 SSH 还是 RDP（如果已启用 RDP）来建立连接。
-    3. 在模板 VM 上安装并配置软件。 
-    4. **停止** VM。  
-    5. 输入模板的**说明**
-
-        ![“配置模板”页上的“下一步”](../media/tutorial-setup-classroom-lab/configure-template-next.png)
+    1. 选择“重置密码”以重置 VM 的密码。 
+    1. 在模板 VM 上安装并配置软件。 
+    1. **停止** VM。  
+    1. 输入模板的**说明**
 9. 在模板页上选择“下一步”。 
 10. 在“发布模板”页上执行以下操作。 
     1. 若要立即发布模板，请选中“我了解发布后无法修改模板。此过程只能执行一次，最长可能需要一小时”对应的复选框，然后选择“发布”。  发布此模板，让模板 VM 的实例可供实验室用户使用。
@@ -88,6 +89,17 @@ ms.locfileid: "59544018"
 
     ![处于已停止状态的虚拟机](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
+### <a name="vm-sizes"></a>VM 大小  
+
+| Size | 内核 | RAM | 描述 | 
+| ---- | ----- | --- | ----------- | 
+| 小 | 2 | 3.5 GB | 此大小最适用于命令行、打开 web 浏览器、低流量 web 服务器、小到中型数据库。 |
+| 中型 | 4 | 7 GB | 此大小最适合用于关系数据库、内存中缓存和分析 | 
+| 中（嵌套虚拟化） | 4 | 16 GB | 此大小最适合用于关系数据库、内存中缓存和分析。 此大小还支持嵌套虚拟化。 <p>如果每个学生都需要多个 Vm，则可以使用此大小。 教师可以使用嵌套虚拟化在虚拟机中设置几个小大小的嵌套虚拟机。 </p> |
+| 大型 | 8 | 32 GB | 此大小最适用于需要更快的 Cpu、更好的本地磁盘性能、大型数据库、大内存缓存的应用程序。 此大小还支持嵌套虚拟化 |  
+| 小型 GPU （可视化效果） | 6 | 56 GB | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏、编码。 | 
+| 小型 GPU （计算） | 6 | 56 GB | 此大小最适用于计算密集型和网络密集型应用程序，如人工智能和深度学习应用程序。 | 
+| 中等 GPU （可视化效果） | 12 | 112 GB | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏、编码。 | 
 
 ## <a name="view-all-classroom-labs"></a>查看所有教室实验室
 1. 导航到 [Azure 实验室服务门户](https://labs.azure.com)。

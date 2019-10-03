@@ -1,10 +1,10 @@
 ---
-title: 使用访问评审管理用户从条件性访问策略-Azure Active Directory 中排除 |Microsoft Docs
-description: 了解如何使用 Azure Active Directory (Azure AD) 访问评审管理用户已从条件性访问策略中排除
+title: 使用访问评审来管理从条件访问策略中排除的用户-Azure Active Directory |Microsoft Docs
+description: 了解如何使用 Azure Active Directory (Azure AD) 访问评审来管理已从条件访问策略中排除的用户
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/25/2018
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7675441316e42c7f0a220abe77bc8c62158ef918
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 246503fec6436bf49dcd5fb89c2dc0ed345a43ca
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577113"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499917"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>使用 Azure AD 访问评审管理用户从条件性访问策略中排除
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>使用 Azure AD 访问评审来管理从条件访问策略中排除的用户
 
 在理想情况下，所有用户都会遵循访问策略来保护对组织资源的访问。 但是，有时，某些业务案例要求例外处理。 本文介绍可能需要创建排除项的某些示例，以及 IT 管理员如何管理此任务，以避免监督策略例外项，并向审核员证明已使用 Azure Active Directory (Azure AD) 定期评审这些例外项。
 
@@ -32,27 +32,27 @@ ms.locfileid: "58577113"
 
 ## <a name="why-would-you-exclude-users-from-policies"></a>为何要从策略中排除用户？
 
-作为 IT 管理员，你可能会使用 [Azure AD 条件访问](../conditional-access/overview.md)来要求用户执行多重身份验证 (MFA)，或者从受信任的网络或设备登录。 在部署规划期间，你发现并非所有用户都能满足其中的某些要求。 例如，在远程办公室工作的用户不在你的内部网络中，或者主管使用不受支持的旧式手机。 企业要求允许这些用户登录并完成其工作，因此，需将他们排除在条件访问策略之外。
+作为 IT 管理员, 你可以使用[Azure AD 条件性访问](../conditional-access/overview.md), 要求用户使用多重身份验证 (MFA) 进行身份验证, 或者从受信任的网络或设备登录。 在部署规划期间，你发现并非所有用户都能满足其中的某些要求。 例如，在远程办公室工作的用户不在你的内部网络中，或者主管使用不受支持的旧式手机。 企业要求这些用户登录并执行其作业, 因此从条件访问策略中排除了这些用户。
 
-另举一例，你可能在条件访问中使用[命名位置](../conditional-access/location-condition.md)来配置一组国家和地区，你不希望其中的用户访问他们的租户。
+作为另一个示例, 你可以使用条件性访问中的[命名位置](../conditional-access/location-condition.md)来配置一组不希望允许用户访问其租户的一组县和区域。
 
-![命名位置](./media/conditional-access-exclusion/named-locations.png)
+![条件访问中的命名位置](./media/conditional-access-exclusion/named-locations.png)
 
-但在某些情况下，用户可能有合法的理由需要从这些受禁的国家/地区登录。 例如，用户可能因公或因私外出旅行。 在此示例中，阻止这些国家/地区的条件访问策略可以针对排除在策略之外的用户创建一个专用的云安全组。 在旅行期间需要进行访问的用户可以使用 [Azure AD 自助服务组管理](../users-groups-roles/groups-self-service-management.md)将自己添加到该组。
+但是, 在某些情况下, 用户可能会出于合法原因而从这些被阻止的国家/地区进行登录。 例如，用户可能因公或因私外出旅行。 在此示例中, 用于阻止这些国家/地区的条件性访问策略可以为从策略中排除的用户提供专用的云安全组。 在旅行期间需要进行访问的用户可以使用 [Azure AD 自助服务组管理](../users-groups-roles/groups-self-service-management.md)将自己添加到该组。
 
-另举一例，某个条件访问策略可能会[阻止大多数用户的旧式身份验证](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/)。 Microsoft 强烈建议在租户中阻止使用旧式协议，以提高安全状态。 但是，如果某些用户绝对需要使用旧式身份验证方法通过 Office 2010 或基于 IMAP/SMTP/POP 的客户端来访问你的资源，则你可以从阻止旧式身份验证方法的策略中排除这些用户。
+另一个示例是, 你有一个条件性访问策略, 该策略会[阻止大多数用户使用旧身份验证](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/)。 Microsoft 强烈建议在租户中阻止使用旧式协议，以提高安全状态。 但是，如果某些用户绝对需要使用旧式身份验证方法通过 Office 2010 或基于 IMAP/SMTP/POP 的客户端来访问你的资源，则你可以从阻止旧式身份验证方法的策略中排除这些用户。
 
 ## <a name="why-are-exclusions-challenging"></a>为何排除项会带来挑战？
 
-在 Azure AD 中，可将条件访问策略限定为一组用户。 你还可以通过选择 Azure AD 角色、 单个用户或来宾用户排除这些用户的一些。 请务必记住，配置这些排除项时，不能针对这些用户强制实施策略意图。 如果将这些排除项配置为包含各个用户的列表，或通过旧式本地安全组进行配置，则此策略会限制此排除列表的可见性（用户可能不知道它的存在），以及 IT 管理员对它的控制力（用户可能会加入安全组以绕过策略）。 此外，在某个时间符合排除条件的用户可能不再需要它或者后来不符合条件。
+在 Azure AD 中, 可以将条件性访问策略的范围限定为一组用户。 你还可以通过选择 Azure AD 角色、单个用户或用户的来宾来排除其中一些用户。 请务必记住，配置这些排除项时，不能针对这些用户强制实施策略意图。 如果将这些排除项配置为包含各个用户的列表，或通过旧式本地安全组进行配置，则此策略会限制此排除列表的可见性（用户可能不知道它的存在），以及 IT 管理员对它的控制力（用户可能会加入安全组以绕过策略）。 此外，在某个时间符合排除条件的用户可能不再需要它或者后来不符合条件。
 
 排除项的开头包含跳过策略的用户的简短列表。 随着排除的用户越来越多，该列表会不断增大。 在某些时候，需要审查该列表，并确认是否仍然应该排除其中的每个用户。 从技术角度讲，管理列表可能相对容易，但谁是业务决策人，以及如何确保该列表完全可审核？
 
-但是，如果使用 Azure AD 组配置条件访问策略的排除项，则可以使用访问评审作为互补性的控制措施来提高可见性，并减少例外处理的用户数量。
+但是, 如果使用 Azure AD 组将排除配置为条件访问策略, 则可以使用访问评审作为补偿控制来驱动可见性, 并减少出现异常的用户的数量。
 
-## <a name="how-to-create-an-exclusion-group-in-a-conditional-access-policy"></a>如何在条件访问策略中创建排除组
+## <a name="how-to-create-an-exclusion-group-in-a-conditional-access-policy"></a>如何在条件性访问策略中创建排除组
 
-请遵循以下步骤创建新的 Azure AD 组，以及不会应用到该组的条件访问策略。
+按照以下步骤创建新的 Azure AD 组和不应用于该组的条件性访问策略。
 
 ### <a name="create-an-exclusion-group"></a>创建排除组
 
@@ -68,13 +68,13 @@ ms.locfileid: "58577113"
 
 1. 选择应包含在此排除组中的用户，然后单击“创建”。
 
-    ![“新建组”窗格](./media/conditional-access-exclusion/new-group.png)
+    ![Azure Active Directory 中的新组窗格](./media/conditional-access-exclusion/new-group.png)
 
-### <a name="create-a-conditional-access-policy-that-excludes-the-group"></a>创建排除该组的条件访问策略
+### <a name="create-a-conditional-access-policy-that-excludes-the-group"></a>创建排除组的条件性访问策略
 
-现在，可以创建使用此排除组的条件访问策略。
+现在可以创建使用此排除组的条件性访问策略。
 
-1. 在左侧导航栏中单击“Azure Active Directory”，然后单击“条件访问”打开“策略”边栏选项卡。
+1. 在左侧导航栏中, 依次单击 " **Azure Active Directory** " 和 "**条件访问**", 打开 "**策略**" 边栏选项卡。
 
 1. 单击“新建策略”打开“新建”窗格。
 
@@ -91,18 +91,18 @@ ms.locfileid: "58577113"
     > [!NOTE]
     > 作为最佳做法，我们建议在测试时至少从策略中排除一个管理员帐户，以确保不会将你锁在租户之外。
 
-1. 根据组织的要求继续设置条件访问策略。
+1. 继续根据组织要求设置条件性访问策略。
 
-    ![选择排除的用户](./media/conditional-access-exclusion/select-excluded-users.png)
+    ![在条件访问中选择 "排除的用户" 窗格](./media/conditional-access-exclusion/select-excluded-users.png)
 
-让我们通过两个示例来了解可在哪种情况下使用访问评审管理条件访问策略中的排除项。
+我们介绍两个示例, 可在其中使用访问评审来管理条件访问策略中的排除项。
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>示例 1：对从受阻止国家/地区访问的用户进行访问评审
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>示例 1:从阻止的国家/地区访问的用户访问评审
 
-假设某个条件访问策略会阻止来自特定国家/地区的访问。 该策略排除了某个组。 下面是评审该组成员的建议访问评审方法。
+假设你有一个条件性访问策略, 该策略阻止了某些国家/地区的访问。 该策略排除了某个组。 下面是评审该组成员的建议访问评审方法。
 
 > [!NOTE]
-> 创建访问评审需全局管理员或用户管理员角色。
+> 需要 "全局管理员" 或 "用户管理员" 角色才能创建访问评审。
 
 1. 评审每隔一周重复进行。
 
@@ -110,17 +110,17 @@ ms.locfileid: "58577113"
 
 3. 此组的所有成员在评审范围内。
 
-4. 每个用户必须自我证明他们仍需从这些受禁国家/地区进行访问，因此他们仍需是该组的成员。
+4. 每个用户都必须对这些被阻止的国家/地区拥有访问权限, 因此他们仍需要成为组的成员。
 
-5. 如果用户未对评审请求作出响应，则会自动将他们从该组中删除，因此，在这些国家/地区旅行时，他们不再能够访问租户。
+5. 如果用户未响应审核请求, 则会自动从组中删除这些请求, 因此, 在旅行到这些国家/地区时, 不能再访问该租户。
 
 6. 启用邮件通知，让用户知道访问评审的开始和完成时间。
 
-    ![创建访问评审](./media/conditional-access-exclusion/create-access-review-1.png)
+    ![创建访问评审窗格 (例如 1)](./media/conditional-access-exclusion/create-access-review-1.png)
 
 ## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>示例 2：对使用旧式身份验证进行访问的用户进行访问评审
 
-假设某个条件访问策略会阻止使用旧式身份验证和旧客户端版本的用户进行访问。 该策略排除了某个组。 下面是评审该组成员的建议访问评审方法。
+假设你有一个条件性访问策略, 该策略阻止用户使用旧身份验证和较旧的客户端版本进行访问。 该策略排除了某个组。 下面是评审该组成员的建议访问评审方法。
 
 1. 此项评审需是定期评审。
 
@@ -134,13 +134,13 @@ ms.locfileid: "58577113"
 
 6. 启用邮件通知，让用户知道访问评审的开始和完成时间。
 
-    ![创建访问评审](./media/conditional-access-exclusion/create-access-review-2.png)
+    ![创建访问评审窗格, 例如2](./media/conditional-access-exclusion/create-access-review-2.png)
 
 **专业提示**：如果你有许多的排除组，因此需要创建多个访问评审，现在可以使用 Microsoft Graph 测试版终结点中的某个 API 以编程方式创建和管理访问评审。 若要开始，请参阅 [Azure AD 访问评审 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root)和[通过 Microsoft Graph 检索 Azure AD 访问评审的示例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096)。
 
 ## <a name="access-review-results-and-audit-logs"></a>访问评审结果和审核日志
 
-做好组、条件访问策略和访问评审方面的一切准备工作后，可以监视和跟踪这些评审的结果。
+现在, 你已准备好所有内容、组、条件性访问策略和访问评审, 接下来可以监视和跟踪这些评审的结果。
 
 1. 在 Azure 门户中，打开“访问评审”边栏选项卡。
 
@@ -148,11 +148,11 @@ ms.locfileid: "58577113"
 
 1. 单击“结果”查看已批准哪些人保留在该列表中，以及删除了哪些人。
 
-    ![访问评审结果](./media/conditional-access-exclusion/access-reviews-results.png)
+    ![访问评审结果显示谁已获批准](./media/conditional-access-exclusion/access-reviews-results.png)
 
 1. 然后单击“审核日志”查看评审期间执行的操作。
 
-    ![访问评审审核日志](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
+    ![访问评审审核日志列表操作](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
 
 IT 管理员知道，管理策略的排除组有时不可避免。 但是，如果使用 Azure AD 访问评审，则业务主管或用户自己可以更轻松维护这些组、定期评审这些组以及审核所做的更改。
 

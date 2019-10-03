@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 116a465a0ddc913e342e0ffcc1fb29f5bf969419
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: a6a87f90586dc4392dc1304a83349bc386590ee4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464154"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568584"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>跨数据库查询（纵向分区）入门（预览）
 
@@ -105,7 +104,7 @@ ms.locfileid: "55464154"
     INNER JOIN CustomerInformation
     ON CustomerInformation.CustomerID = OrderInformation.CustomerID
 
-## <a name="cost"></a>成本
+## <a name="cost"></a>开销
 
 目前，弹性数据库查询功能包含在 Azure SQL 数据库的成本中。  
 

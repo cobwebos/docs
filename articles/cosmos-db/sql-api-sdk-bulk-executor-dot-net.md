@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 4f2d8b3246901f139695998224dfe036cccb9833
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 447f52a08c9e833808508852c4619f6ce1d947e1
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855778"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703373"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
 
@@ -33,14 +33,26 @@ ms.locfileid: "57855778"
 
 | |  |
 |---|---|
-| **说明**| 批量执行程序库允许客户端应用程序在 Azure Cosmos DB 帐户中执行批量操作。 批量执行程序库提供了 BulkImport、BulkUpdate 和 BulkDelete 命名空间。 BulkImport 模块可以批量以优化方式引入文档，以便最大程度地使用为集合配置的吞吐量。 BulkUpdate 模块可以作为修补程序批量更新 Azure Cosmos DB 容器中的现有数据。 BulkDelete 模块可以批量以优化方式删除文档，以便最大程度地使用为集合配置的吞吐量。|
+| **说明**| .Net 批量执行器库允许客户端应用程序对 Azure Cosmos DB 帐户执行批量操作。 此库提供了 BulkImport、BulkUpdate 和 BulkDelete 命名空间。 BulkImport 模块可以批量以优化方式引入文档，以便最大程度地使用为集合配置的吞吐量。 BulkUpdate 模块可以作为修补程序批量更新 Azure Cosmos 容器中的现有数据。 BulkDelete 模块可以批量以优化方式删除文档，以便最大程度地使用为集合配置的吞吐量。|
 |**SDK 下载**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
-| **GitHub 中的 BulkExecutor 库**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
+| **GitHub 中的批量执行程序库**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API 文档**|[ 参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**入门**|[批量执行程序库 .NET SDK 入门](bulk-executor-dot-net.md)|
 | **当前受支持的框架**| Microsoft .NET Framework 4.5.2、4.6.1 和 .NET Standard 2.0 |
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
+
+* 添加了对 graph 大容量执行程序的支持，以接受顶点和边缘上的 ttl
+
+### <a name="a-name220-preview2220-preview2"></a><a name="2.2.0-preview2"/>2.2.0-preview2
+
+* 修复了一个问题：在网关模式下运行时，在弹性缩放 Azure Cosmos DB 期间导致异常。 此修补程序使其在功能上等效于1.4.1 版本。
+
+### <a name="a-name210-preview2210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
+
+* 添加了对 SQL API 帐户的 BulkDelete 支持，以接受分区键、要删除的文档 id 元组。 此更改使其在功能上等效于1.4.0 版本。
 
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
@@ -48,17 +60,37 @@ ms.locfileid: "57855778"
 
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
 
-* 添加了 .NET Standard 2.0 作为受支持的目标框架之一，以使 BulkExecutor 库与 .NET Core 应用程序一起工作。
+* 添加了 .NET Standard 2.0 作为受支持的目标框架之一，使批量执行器库可用于 .NET Core 应用程序。
+
+### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
+
+* 修复了在某些情况下 CPU 消耗较高的情况。
+* 跟踪现在使用 TraceSource。 用户可以为 `BulkExecutorTrace` 源定义侦听器。
+* 修复了在发送文档大小接近2Mb 时可能导致锁定的罕见情况。
+
+### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
+
+* 已将批量执行程序更新为现在使用最新版本的 Azure Cosmos DB .NET SDK （2.4.0）
+
+### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
+
+* 添加了对 graph 大容量执行程序的支持，以接受顶点和边缘上的 ttl
+
+### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
+
+* 修复了一个问题：在网关模式下运行时，在弹性缩放 Azure Cosmos DB 期间导致异常。
+
+### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
+
+* 添加了对 SQL API 帐户的 BulkDelete 支持，以接受分区键、要删除的文档 id 元组。
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-* 增加了对 SQL API 帐户的 BulkDelete 操作的重载，以接受要删除的分区键、文档 ID 元组。
-* 增加了对 SQL API 帐户的 BulkDelete 操作的重载以接受包含分区键值的 RequestOptions，并且还在输入查询中使用它作为筛选器来指定要删除的文档。
-* 修复了一个问题，该问题导致 BulkExecutor 使用的用户代理出现格式设置问题。
+* 修复了一个问题，该问题导致大容量执行程序使用的用户代理中出现格式问题。
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 
-* 改进了 BulkExecutor 导入和更新 API，使其在存储超出了当前容量且未引发异常时以透明方式适应 Cosmos DB 容器的弹性缩放。
+* 在存储超过当前容量而不引发异常时，对批量执行器导入和更新 Api 进行了改进，以透明地适应 Cosmos 容器的弹性缩放。
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
@@ -66,7 +98,7 @@ ms.locfileid: "57855778"
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 
-* 修复了一个问题，该问题导致 BulkExecutor 在导入到固定集合时引发 JSRT 错误。
+* 修复了一个问题，该问题导致大容量执行程序在导入到固定集合时引发 JSRT 错误。
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 

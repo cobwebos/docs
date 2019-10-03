@@ -2,24 +2,18 @@
 title: 使用 Azure Active Directory 启用 Microsoft AppSource 和 Azure 市场列表 | Azure
 description: 在 Azure 市场和 AppSource 中使用 Azure Active Directory 为应用和服务发布者启用列表类型。
 services: Azure, AppSource, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: qianw211
-ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 0b68687a2bbaa817f2776757ccab9571638c0fd5
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732322"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876003"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>使用 Azure Active Directory 启用 AppSource 和市场列表
 
@@ -41,12 +35,12 @@ AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://
 | **产品/服务类型**    | **是否需要 Azure AD SSO？**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | 与我联系 | 试用 | 体验版 | 事务处理 |
-| 虚拟机 | 不适用 | 否 | 否 | 否 |
-| Azure 应用（解决方案模板）  | 不适用 | 不适用 | 不适用 | 不适用 |
-| 托管应用  | 不适用 | 不适用 | 不适用 | 否 |
+| 虚拟机 | 不可用 | 否 | 否 | 否 |
+| Azure 应用（解决方案模板）  | 不可用 | 不可用 | 不可用 | 不可用 |
+| 托管应用  | 不可用 | 不可用 | 不可用 | 否 |
 | SaaS  | 否 | 是 | 是 | 是 |
-| 容器  | 不适用 | 不适用 | 不适用 | 否 |
-| 咨询服务  | 否 | 不适用 | 不适用 | 不适用 |
+| 容器  | 不可用 | 不可用 | 不可用 | 否 |
+| 咨询服务  | 否 | 不可用 | 不可用 | 不可用 |
 
 有关 SaaS 技术需求的详细信息，请参阅 [SaaS 应用程序产品/服务发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)。
 
@@ -88,11 +82,11 @@ AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://
 使用 Azure AD 支持以下操作之一：
 
 - 使用 [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) 将访客用户添加到目录。
-- 使用“与我联系”发布选项手动为客户设置试用版。
+- 使用“与我联系”发布选项手动为客户设置试用版  。
 - 开发针对每个用户的体验版。
 - 生成使用 SSO 的多租户示例演示应用。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 确保[已在 Azure 市场中注册](https://azuremarketplace.microsoft.com/sell)。
-- 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)创建或完成套餐。
+- 有关如何创建或完成产品/服务的详细信息, 请参阅[如何创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。

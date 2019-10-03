@@ -7,21 +7,20 @@ ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 3eaa12b5ba735d1e2aa0e074054328942a3041eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/20/2019
+ms.openlocfilehash: ca098eba8e0cbad0d0240bd7819a401c502a869d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900092"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568031"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>快速入门：将 BACPAC 文件导入 Azure SQL 数据库中的数据库
 
-可以使用 [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 文件将 SQL Server 数据库导入 Azure SQL 数据库中的数据库。 可以从 Azure Blob 存储（仅限标准存储）中存储的 `BACPAC` 文件或从本地位置中的本地存储导入数据。 若要通过提供更多且更快的资源将导入速度最大化，请在导入过程中将数据库扩展到更高的服务层和更大的计算大小。 然后，可以在导入成功后减少其值。
+可以使用 [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 文件将 SQL Server 数据库导入 Azure SQL 数据库中的数据库。 可以从 Azure Blob 存储（仅限标准存储）中存储的 `BACPAC` 文件或从本地位置中的本地存储导入数据。 若要通过提供更多且更快的资源将导入速度最大化，请在导入过程中将数据库扩展到更高的服务层级和更大的计算大小。 然后，可以在导入成功后减少其值。
 
 > [!NOTE]
 > 导入的数据库的兼容性级别基于源数据库的兼容性级别。
@@ -32,9 +31,11 @@ ms.locfileid: "57900092"
 
 [Azure 门户](https://portal.azure.com)仅支持在 Azure SQL 数据库中创建单个数据库，并且仅从存储在 Azure Blob 存储中的 BACPAC 文件中创建。
 
-> [!NOTE]
-> [托管实例](sql-database-managed-instance.md)当前不支持使用 Azure 门户从 BACPAC 文件将数据库迁移到实例数据库。 若要导入托管实例，请使用 SQL Server Management Studio 或 SQLPackage。
+当前不支持使用 Azure PowerShell 从 BACPAC 文件将数据库迁移到[托管实例](sql-database-managed-instance.md)。 请改用 SQL Server Management Studio 或 SQLPackage。
 
+> [!NOTE]
+> 处理通过 Azure 门户或 PowerShell 提交的导入/导出请求的计算机需要存储 BACPAC 文件以及由数据层应用程序框架 (DacFX) 生成的临时文件。 所需的磁盘空间在大小相同的数据库之间发生了重大变化, 并且需要磁盘空间的大小最多可达数据库大小的3倍。 运行导入/导出请求的计算机仅具有450GB 的本地磁盘空间。 因此, 某些请求可能会失败并出现错误`There is not enough space on the disk`。 在这种情况下, 解决方法是在具有足够的本地磁盘空间的计算机上运行 sqlpackage。 我们鼓励使用[SqlPackage](#import-from-a-bacpac-file-using-sqlpackage)导入/导出大于 150 gb 的数据库, 以避免此问题。
+ 
 1. 若要使用 Azure 门户从 BACPAC 文件导入新的单个数据库，请打开相应的数据库服务器页面，然后在工具栏上选择“导入数据库”。  
 
    ![数据库 import1](./media/sql-database-import/import1.png)
@@ -44,7 +45,7 @@ ms.locfileid: "57900092"
 
    ![数据库 import2](./media/sql-database-import/import2.png)
 
-4. 单击“确定”。
+4. 单击 **“确定”** 。
 
 5. 若要监视导入的进度，请打开数据库的服务器页，然后在“设置”下，选择“导入/导出历史记录”。 成功导入后，状态为“已完成”。
 
@@ -60,7 +61,7 @@ ms.locfileid: "57900092"
 
 在大多数生产环境中，建议使用 SqlPackage 来实现缩放和性能。 有关 SQL Server 客户咨询团队使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
 
-以下 SqlPackage 命令可将 AdventureWorks2008R2 数据库从本地存储导入到名为 mynewserver20170403 的 Azure SQL 数据库服务器。 它将创建名为 myMigratedDatabase 的新数据库，其中包含高级服务层和 P6 服务目标。 根据你的环境更改这些值。
+以下 SqlPackage 命令可将 AdventureWorks2008R2 数据库从本地存储导入到名为 mynewserver20170403 的 Azure SQL 数据库服务器。 它将创建名为 myMigratedDatabase 的新数据库，其中包含“高级”服务层级和 P6 服务目标。 根据你的环境更改这些值。
 
 ```cmd
 SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.net;Initial Catalog=myMigratedDatabase;User Id=<your_server_admin_account_user_id>;Password=<your_server_admin_account_password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -79,14 +80,16 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 ## <a name="import-into-a-single-database-from-a-bacpac-file-using-powershell"></a>使用 PowerShell 从 BACPAC 文件导入单个数据库
 
 > [!NOTE]
-> [托管的实例](sql-database-managed-instance.md)目前不支持将数据库迁移到使用 Azure PowerShell 将 BACPAC 文件从实例数据库。 若要导入托管实例，请使用 SQL Server Management Studio 或 SQLPackage。
+> [托管实例](sql-database-managed-instance.md)当前不支持使用 AZURE POWERSHELL 从 BACPAC 文件将数据库迁移到实例数据库中。 若要导入托管实例，请使用 SQL Server Management Studio 或 SQLPackage。
 
+> [!NOTE]
+> 处理通过门户或 Powershell 提交的导入/导出请求的计算机需要存储 bacpac 文件以及由数据层应用程序框架 (DacFX) 生成的临时文件。 所需的磁盘空间在大小相同的数据库之间发生了重大变化, 并且最多可能需要3倍的数据库大小。 运行导入/导出请求的计算机仅具有450GB 的本地磁盘空间。 因此, 某些请求可能会失败, 出现 "磁盘空间不足" 错误。 在这种情况下, 解决方法是在具有足够的本地磁盘空间的计算机上运行 sqlpackage。 导入/导出大于 150 GB 的数据库时, 请使用[SqlPackage](#import-from-a-bacpac-file-using-sqlpackage)来避免此问题。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
-使用[新建 AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) cmdlet 提交到 Azure SQL 数据库服务将导入数据库请求。 根据数据库大小，导入操作可能需要一些时间才能完成。
+使用 [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) cmdlet 向 Azure SQL 数据库服务提交导入数据库请求。 根据数据库大小，导入操作可能需要一些时间才能完成。
 
  ```powershell
  $importRequest = New-AzSqlDatabaseImport 
@@ -104,7 +107,7 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 
  ```
 
- 可以使用[Get AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet 来检查导入的进度。 如果在提交请求后立即运行此 cmdlet，通常会返回“状态: 正在进行”。 显示“状态: 成功”时，表示导入完毕。
+ 可以使用 [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) cmdlet 检查导入的进度。 如果在提交请求后立即运行此 cmdlet，通常会返回“状态: 正在进行”。 显示“状态: 成功”时，表示导入完毕。
 
 ```powershell
 $importStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $importRequest.OperationStatusLink

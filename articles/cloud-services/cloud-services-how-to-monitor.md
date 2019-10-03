@@ -3,23 +3,17 @@ title: 监视 Azure 云服务 | Microsoft Docs
 description: 介绍监视 Azure 云服务需要涉及到哪些操作，以及可以选择哪些选项。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: ''
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: jeconnoc
-ms.openlocfilehash: 844fef9a87c1db06c6415c59d4be26caf928382b
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.author: gwallace
+ms.openlocfilehash: ac0ea7557774f0e59cb6a6eca1fc739592ab971d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789460"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359114"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
 

@@ -7,14 +7,16 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: d727ed62f5a869f6eb67400281d2660607756abf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9456d975ffb6d7726166f9badbcb8fe0ccbe5256
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802688"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965358"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple 与 Azure 文件同步和 Data Box Edge 数据传输选项的比较 
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
  
 本文档概述用于将本地数据传输到 Azure 的选项，并在 Data Box Edge、Azure 文件同步与 StorSimple 8000 系列之间进行比较。
 

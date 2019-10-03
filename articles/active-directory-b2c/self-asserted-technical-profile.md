@@ -2,28 +2,28 @@
 title: 定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件 | Microsoft Docs
 description: 定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dcc94daeb19174b85fface05222f8842e9544adf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 4fec742766cebeb5b1d82655e09af77a888c375c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188858"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063693"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在 Azure Active Directory (Azure AD) B2C 中用户需要提供输入的所有交互都属于自我断言技术配置文件。 例如，注册页面、登录页面或密码重置页面。
+需要用户提供输入的 Azure Active Directory B2C （Azure AD B2C）中的所有交互均为自断言技术配置文件。 例如，注册页面、登录页面或密码重置页面。
 
-## <a name="protocol"></a>协议
+## <a name="protocol"></a>Protocol
 
 “Protocol”元素的“Name”属性必须设置为 `Proprietary`。 “handler”属性必须包含 Azure AD B2C 用来自断言的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
@@ -34,7 +34,7 @@ ms.locfileid: "55188858"
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
 ```
- 
+
 ## <a name="input-claims"></a>输入声明
 
 在自断言技术配置文件中，你可以使用“InputClaims”和“InputClaimsTransformations”元素预填充自断言页面上出现的声明的值（输出声明）。 例如，在编辑配置文件策略中，用户旅程首先从 Azure AD B2C 目录服务读取用户配置文件，然后自断言技术配置文件使用用户配置文件中存储的用户数据设置输入声明。 这些声明是从用户配置文件中收集的，然后呈现给可以编辑现有数据的用户。
@@ -55,7 +55,7 @@ ms.locfileid: "55188858"
 
 “OutputClaims”元素包含要呈现以从用户处收集数据的声明列表。 若要使用某些值预填充输出声明，请使用前面描述的输入声明。 另外，此元素还可能包含默认值。 “OutputClaims”中的声明顺序将控制 Azure AD B2C 将声明呈现在屏幕上的顺序。 “DefaultValue”属性只有在从未设置过声明时才会生效。 但是，如果之前在上一业务流程步骤中设置过，即使用户将值留空，默认值也不会生效。 若要强制使用默认值，请将“AlwaysUseDefaultValue”属性设置为 `true`。 若要强制用户提供特定输出声明的值，请将“OutputClaims”元素的“Required”属性设置为 `true`。
 
-“OutputClaims”集合中的“ClaimType”元素需要将“UserInputType”元素设置为 Azure AD B2C 支持的任意用户输入类型，例如 `TextBox` 或 `DropdownSingleSelect`。 或者“OutputClaim”元素必须设置“DefaultValue”。  
+“OutputClaims”集合中的“ClaimType”元素需要将“UserInputType”元素设置为 Azure AD B2C 支持的任意用户输入类型，例如 `TextBox` 或 `DropdownSingleSelect`。 或者“OutputClaim”元素必须设置“DefaultValue”。
 
 “OutputClaimsTransformations”元素可能包含用于修改输出声明或生成新声明的“OutputClaimsTransformation”元素的一个集合。
 
@@ -119,7 +119,7 @@ ms.locfileid: "55188858"
 
 ## <a name="validation-technical-profiles"></a>验证技术配置文件
 
-验证技术配置文件用于验证部分或所有引用技术配置文件的输出声明。 验证技术配置文件的输入声明必须出现在自断言技术配置文件的输出声明中。 验证技术配置文件将验证用户输入，并可以向用户返回错误。 
+验证技术配置文件用于验证部分或所有引用技术配置文件的输出声明。 验证技术配置文件的输入声明必须出现在自断言技术配置文件的输出声明中。 验证技术配置文件将验证用户输入，并可以向用户返回错误。
 
 验证技术配置文件可以是策略中的任何技术配置文件，例如 [Azure Active Directory](active-directory-technical-profile.md) 或 [REST API](restful-technical-profile.md) 技术配置文件。 在上一示例中，`LocalAccountSignUpWithLogonEmail` 技术配置文件会验证 signinName 是否存在于目录中。 如果不存在，验证技术配置文件会创建一个本地帐户，并返回 objectId、authenticationSource、newUser。 `SelfAsserted-LocalAccountSignin-Email` 技术配置文件调用 `login-NonInteractive` 验证技术配置文件来验证用户凭据。
 
@@ -127,13 +127,13 @@ ms.locfileid: "55188858"
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | 说明 |
+| 特性 | 必填 | 描述 |
 | --------- | -------- | ----------- |
 | setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.showCancelButton | 否 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.operatingMode | 否 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。 |
 | ContentDefinitionReferenceId | 是 | 与此技术配置文件关联的[内容定义](contentdefinitions.md)的标识符。 |
-| EnforceEmailVerification | 否 | 对于注册或配置文件编辑，强制实施电子邮件验证。 可能的值为 `true`（默认）或 `false`。 | 
+| EnforceEmailVerification | 否 | 对于注册或配置文件编辑，强制实施电子邮件验证。 可能的值为 `true`（默认）或 `false`。 |
 | setting.showSignupLink | 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.retryLimit | 否 | 控制用户可以尝试提供数据的次数，所提供数据将根据验证技术配置文件进行检查。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
 | SignUpTarget | 否 | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |

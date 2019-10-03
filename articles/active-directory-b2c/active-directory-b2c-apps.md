@@ -1,32 +1,32 @@
 ---
-title: 可在 Azure Active Directory B2C 中使用的应用程序类型 | Microsoft Docs
-description: 了解有关可在 Azure Active Directory B2C 中使用的应用程序类型。
+title: 可在 Azure Active Directory B2C 中使用的应用程序类型
+description: 了解可与 Azure Active Directory B2C 配合使用的应用程序类型。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/11/2019
-ms.author: davidmu
+ms.date: 07/24/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5324f1ed92ae4513dcd877853cb6fa2f4c7dd8f3
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: b0472b10de3641f1575f7f9a5c223ab5032f0e16
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497952"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066144"
 ---
-# <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
+# <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
 
-Azure Active Directory (Azure AD) B2C 支持各种新式应用程序体系结构的身份验证。 所有这些体系结构都以行业标准协议 [OAuth 2.0](active-directory-b2c-reference-protocols.md) 或 [OpenID Connect](active-directory-b2c-reference-protocols.md) 为基础。 本文档介绍了独立于首选语言或平台可构建的应用程序类型。 在开始构建应用程序之前，不妨从中了解一些高级方案。
+Azure Active Directory B2C （Azure AD B2C）支持多种新式应用程序体系结构的身份验证。 所有这些体系结构都以行业标准协议 [OAuth 2.0](active-directory-b2c-reference-protocols.md) 或 [OpenID Connect](active-directory-b2c-reference-protocols.md) 为基础。 本文介绍可独立于首选语言或平台构建的应用程序类型。 在开始构建应用程序之前，不妨从中了解一些高级方案。
 
 必须通过 [Azure 门户](https://portal.azure.com/)将使用 Azure AD B2C 的每个应用程序注册到 [Azure AD B2C 租户](active-directory-b2c-get-started.md)中。 应用程序注册过程将收集和分配一些值，例如：
 
 * 用于唯一标识应用程序的应用程序 ID。
 * 可用于将响应定向回应用程序的**回复 URL**。
 
-发送到 Azure AD B2C 的每个请求都指定了一个用户流，这个用户流是一个策略，用于控制 Azure AD 的行为。 也可以使用这些终结点来创建一系列高度可自定义的用户体验。 我们提供一组用户流，以便帮助用户设置常见策略，包括注册、登录和配置文件编辑策略。 但用户也可以创建自己的自定义策略。 如果不熟悉策略，请先了解 Azure AD B2C 的 [可扩展策略框架](active-directory-b2c-reference-policies.md) ，再继续下一步。
+发送到 Azure AD B2C 的每个请求都指定了**用户流**（内置策略）或用于控制 Azure AD B2C 行为的**自定义策略**。 两种策略类型都可以用来创建一系列自定义程度很高的用户体验。
 
 每个应用程序的交互遵循类似的高级模式：
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) B2C 支持各种新式应用程序体系结构
 
 对于托管在服务器中通过浏览器访问的 Web 应用程序（包括 .NET、PHP、Java、Ruby、Python 和 Node.js），Azure AD B2C 支持使用 [OpenID Connect](active-directory-b2c-reference-protocols.md) 实现所有用户体验。 在 OpenID Connect 的 Azure AD B2C 实现中，Web 应用程序通过向 Azure AD 发出身份验证请求，来发起用户体验。 请求的结果是 `id_token`。 此安全令牌代表用户的标识。 它还以声明形式提供用户的相关信息：
 
-```
+```json
 // Partial raw id_token
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
@@ -98,7 +98,7 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 6. `access_token` 和 `refresh_token` 返回到 Web 服务器。
 7. 使用授权标头中的 `access_token` 调用 Web API。
 8. Web API 对令牌进行验证。
-9. 安全数据返回到 Web 服务器。
+9. 安全数据将返回给 Web 应用程序。
 
 有关授权代码、刷新令牌的详细信息和获取令牌的步骤，请参阅 [OAuth 2.0 protocol](active-directory-b2c-reference-oauth-code.md)（OAuth 2.0 协议）。
 
@@ -106,19 +106,19 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 
 ## <a name="mobile-and-native-applications"></a>移动和本机应用程序
 
-安装在设备中的应用程序（例如移动和桌面应用程序）通常需要代表用户访问后端服务或 Web API。 可将自定义的标识管理体验添加到本机应用程序，使用 Azure AD B2C 和 [OAuth 2.0 授权代码流](active-directory-b2c-reference-oauth-code.md)安全调用后端服务。  
+安装在设备中的应用程序（例如移动和桌面应用程序）通常需要代表用户访问后端服务或 Web API。 可将自定义的标识管理体验添加到本机应用程序，使用 Azure AD B2C 和 [OAuth 2.0 授权代码流](active-directory-b2c-reference-oauth-code.md)安全调用后端服务。
 
 在此流中，应用程序执行[策略](active-directory-b2c-reference-policies.md)，在用户完成策略之后，从 Azure AD 接收 `authorization_code`。 `authorization_code` 表示应用程序有权代表当前登录的用户调用后端服务。 然后，该应用程序即可在后台将 `authorization_code` 交换成 `access_token` 和 `refresh_token`。  应用程序可以在 HTTP 请求中使用 `access_token` 向后端 Web API 进行身份验证。 它还可以使用 `refresh_token` 获取新的 `access_token`（如果旧令牌已过期）。
 
 ## <a name="current-limitations"></a>当前限制
 
-### <a name="application-not-supported"></a>不支持的应用程序 
+### <a name="unsupported-application-types"></a>不受支持的应用程序类型
 
 #### <a name="daemonsserver-side-applications"></a>守护程序/服务器端应用程序
 
 包含长时运行进程或不需要用户操作的应用程序还需要通过其他方法访问受保护的资源，例如 Web API。 这些应用程序可使用应用程序的标识（而不是用户的委派标识）并使用 OAuth 2.0 客户端凭据流来进行身份验证和获取令牌。 客户端凭据流与代表流不同，代表流不会应用于服务器到服务器的身份验证。
 
-虽然 Azure AD B2C 当前不支持客户端凭据流，但可使用 Azure AD 设置客户端凭据流。 Azure AD B2C 租户与 Azure AD 企业租户共享某些功能。  使用 Azure AD B2C 租户的 Azure AD 功能支持客户端凭据流。 
+虽然 Azure AD B2C 当前不支持客户端凭据流，但可使用 Azure AD 设置客户端凭据流。 Azure AD B2C 租户与 Azure AD 企业租户共享某些功能。  使用 Azure AD B2C 租户的 Azure AD 功能支持客户端凭据流。
 
 若要设置客户端凭据流，请参阅 [Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds)。 如 [Azure AD 令牌参考](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)中所述，身份验证成功后会收到格式化的令牌，以便 Azure AD 可使用它。
 
@@ -132,10 +132,13 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 
 请勿以这些方式编辑 Azure AD B2C 应用程序：
 
-- 在其他应用程序管理门户（如 [应用程序注册门户](https://apps.dev.microsoft.com/)）中编辑。
+- 在其他应用程序管理门户（如 [应用程序注册门户](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)）中编辑。
 - 使用图形 API 或 PowerShell 编辑。
 
 如果在 Azure 门户外部编辑 Azure AD B2C 应用程序，它将成为出错的应用程序，并且不再可用于 Azure AD B2C。 删除应用程序，然后重新创建它。
 
-若要删除应用程序，请转到[应用程序注册门户](https://apps.dev.microsoft.com/)并在该处删除应用程序。 若要使应用程序可见，须为该应用程序的所有者（而不仅仅是租户管理员）。
+若要删除应用程序，请转到[应用程序注册门户](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)并在该处删除应用程序。 若要使应用程序可见，须为该应用程序的所有者（而不仅仅是租户管理员）。
 
+## <a name="next-steps"></a>后续步骤
+
+详细了解 [Azure Active Directory B2C 中的用户流](active-directory-b2c-reference-policies.md)提供的内置策略。

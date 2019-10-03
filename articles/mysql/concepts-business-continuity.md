@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.openlocfilehash: a09c1934ecb34518b191a8e730a72efecc85aa2f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692700"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60525440"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>有关使用 Azure Database for MySQL 确保业务连续性的概述
 
@@ -29,7 +29,7 @@ Azure Database for MySQL 提供了业务连续性功能，这包括自动备份�
 | 从异地复制的备份执行异地还原 | 不支持 | ERT < 12 小时<br/>RPO < 1 小时 | ERT < 12 小时<br/>RPO < 1 小时 |
 
 > [!IMPORTANT]
-> 删除的服务器无法还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。
+> 删除的服务器无法还原  。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在发生用户或应用程序错误之后恢复服务器
 

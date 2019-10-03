@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: b1e952d9af474e2318ef91a6bdcc2605a3c30018
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 9dae1e3864f5f1cf745bfe9b0872f15f61471a1c
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497918"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014501"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>控制和授予对 SQL 数据库和 SQL 数据仓库的数据库访问权限
 
@@ -46,7 +45,7 @@ ms.locfileid: "58497918"
 
   也可以将某个 Azure Active Directory 帐户（个人帐户或安全组帐户）配置为管理员。 配置 Azure AD 管理员是选择性的，但如果需要使用 Azure AD 帐户连接到 SQL 数据库，则必须配置 Azure AD 管理员。 有关配置 Azure Active Directory 访问权限的详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)和 [SQL 数据库和 SQL 数据仓库针对 Azure AD MFA 的 SSMS 支持](sql-database-ssms-mfa-authentication.md)。
 
-**服务器管理员**和 **Azure AD 管理员**帐户具有以下特征：
+**服务器管理员**和**Azure AD 管理员**帐户具有以下特征:
 
 - 只有这些帐户才能自动连接到服务器上的任何 SQL 数据库。 （其他帐户若要连接到用户数据库，它们必须是数据库的所有者，或者在用户数据库中具有相应的用户帐户。）
 - 这些帐户将以 `dbo` 用户的身份进入用户数据库，在用户数据库中拥有所有权限。 （用户数据库的所有者也以 `dbo` 用户的身份进入数据库。） 
@@ -64,7 +63,7 @@ ms.locfileid: "58497918"
 
 适当地配置服务器级防火墙后，**SQL 服务器管理员**和 **Azure Active Directory 管理员**可以使用 SQL Server Management Studio 或 SQL Server Data Tools 等客户端工具进行连接。 仅最新工具提供所有的特性和功能。 下图显示了这两个管理员帐户的典型配置。
 
-![管理员访问路径](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
+![两个管理帐户的配置](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
 
 使用服务器级防火墙中的开放端口时，管理员可以连接到任何 SQL 数据库。
 
@@ -205,7 +204,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
   GO
   ```
   
-  相反，使用以下 TRANSACT-SQL 语句：
+  请改用以下 Transact-SQL 语句：
   
   ```sql
   DROP DATABASE IF EXISTS [database_name]

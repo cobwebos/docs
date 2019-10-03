@@ -1,5 +1,5 @@
 ---
-title: 快速入门：翻译语音，C# (.NET Core Windows)
+title: 快速入门：翻译语音，C# (.NET Core Windows) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本快速入门中，你将创建一个简单的 .NET Core 应用程序来捕获用户语音，将其翻译为另一种语言，并将文本输出到命令行。 本指南适用于 Windows 用户。
 services: cognitive-services
@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: b0b0c256db3cc93e515b38bf7daad72b082d2d3d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 81e652e6456b049c2f4fca938d02d1b0724f2ffd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850252"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609671"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>快速入门：使用适用于 .NET Core 的语音 SDK 翻译语音
 
-在本快速入门中，你将创建一个简单的 .NET Core 应用程序，该应用程序从计算机的麦克风中捕获用户语音，翻译语音，并将翻译后的文本实时转录到命令行。 此应用程序设计为在 64 位 Windows 上运行，并使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017 构建。
+针对[语音转文本](quickstart-csharp-dotnet-windows.md)和[文本转语音](quickstart-text-to-speech-dotnetcore.md)也提供了快速入门。
+
+在本快速入门中，你将创建一个简单的 .NET Core 应用程序，该应用程序从计算机的麦克风中捕获用户语音，翻译语音，并将翻译后的文本实时转录到命令行。 此应用程序设计为在 64 位 Windows 上运行，它是使用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)和 Microsoft Visual Studio 2017 或更高版本生成的。
 
 有关可用于语音翻译的语言的完整列表，请参阅[语言支持](language-support.md)。
 
@@ -28,7 +30,7 @@ ms.locfileid: "57850252"
 本快速入门需要：
 
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 或更高版本
 * 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
@@ -49,11 +51,11 @@ ms.locfileid: "57850252"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-1. 构建应用程序。 从菜单栏中，选择“构建” > “构建解决方案”。 编译代码时应不会出错。
+1. 构建应用程序。 从菜单栏中，选择“构建” > “构建解决方案”   。 编译代码时应不会出错。
 
     ![Visual Studio 应用程序的屏幕截图，其中突出显示了“生成解决方案”选项](media/sdk/qs-csharp-dotnetcore-windows-05-build.png "成功生成")
 
-1. 启动应用程序。 在菜单栏中，选择“调试” > “开始调试”，或按 F5。
+1. 启动应用程序。 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
 
     ![Visual Studio 应用程序的屏幕截图，其中突出显示了“启动调试”选项](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "启动应用进入调试")
 

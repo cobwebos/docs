@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 06591af2115675f531fbd6a85b53b432e011d179
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: e2c045501b54b5536ebe7440030676c965a52849
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805125"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172860"
 ---
 > [!div class="op_single_selector"]
 > * [Azure 门户](../articles/virtual-network/virtual-networks-static-private-ip-arm-pportal.md)

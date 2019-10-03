@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996741"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60756539"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure 数据框边缘系统要求
 
@@ -48,7 +48,7 @@ Data Box Edge 的系统要求包括：
 
 ### <a name="port-requirements-for-data-box-edge"></a>Data Box Edge 的端口要求
 
-下表列出了需要在防火墙中打开以允许 SMB、云或管理流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 “传出”或“出站”表示 Data Box Edge 设备从外部（超出部署范围）发送数据的方向：例如，向 Internet 发送出站数据。
+下表列出了需要在防火墙中打开以允许 SMB、云或管理流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 “传出”或“出站”表示 Data Box Edge 设备从外部（超出部署范围）发送数据的方向：例如，向 Internet 发送出站数据。  
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
@@ -58,7 +58,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 对托管 Azure IoT Edge 运行时的服务器使用下表中的端口配置：
 
-| 端口号。 | 入或出 | 端口范围 | 需要 | 指南 |
+| 端口号。 | 入或出 | 端口范围 | 必选 | 指南 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。|
 

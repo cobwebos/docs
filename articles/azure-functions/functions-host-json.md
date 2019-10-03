@@ -6,20 +6,19 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: 5a4bc05e0a0b0b6a2c1b859caea2aadc12b8e0e0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331211"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096400"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x 的 host.json 参考  
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="选择要使用的 Azure Functions 运行时的版本： "]
 > * [版本 1](functions-host-json-v1.md)
 > * [第 2 版](functions-host-json.md)
 
@@ -30,12 +29,11 @@ ms.locfileid: "54331211"
 
 其他函数应用配置选项是在你的[应用设置](functions-app-settings.md)中管理的。
 
-某些 host.json 设置只有在本地运行时才会在 [local.settings.json](functions-run-local.md#local-settings-file) 文件中使用。
+[local.settings.json](functions-run-local.md#local-settings-file) 文件中的某些 host.json 设置仅在本地运行时才使用。
 
 ## <a name="sample-hostjson-file"></a>示例 host.json 文件
 
 以下示例 *host.json* 文件指定了所有可能的选项。
-
 
 ```json
 {
@@ -82,7 +80,10 @@ ms.locfileid: "54331211"
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 
@@ -112,9 +113,9 @@ ms.locfileid: "54331211"
 > [!NOTE]
 > 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。
 
-|属性  |默认 | Description |
+|属性  |默认 | 描述 |
 |---------|---------|---------| 
-|isEnabled|true|启用或禁用采样。| 
+|isEnabled|真|启用或禁用采样。| 
 |maxTelemetryItemsPerSecond|5|开始采样所要达到的阈值。| 
 
 ## <a name="cosmosdb"></a>CosmosDB
@@ -133,9 +134,9 @@ ms.locfileid: "54331211"
 
 该属性返回一个对象，其中包含所有特定于绑定的设置，例如 [http](#http) 和 [eventHub](#eventhub)。
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>函数
 
-作业宿主运行的函数的列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 中的函数应用中，你应当改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤来禁用特定函数，而不是使用此设置。
+作业主机运行的函数列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 的函数应用中，应改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤禁用特定函数，而不是使用此设置。
 
 ```json
 {
@@ -145,7 +146,10 @@ ms.locfileid: "54331211"
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-指示所有函数的超时持续时间。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。 在应用服务计划中，没有总体限制，默认值取决于运行时版本。 在版本 2.x 中，适用于应用服务计划的默认值为 30 分钟。 在版本 1.x 中，它是 *null*，表示无超时。
+指示所有函数的超时持续时间。 它遵循 timespan 字符串格式。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。  
+在专用 (应用服务) 计划中, 没有整体限制, 默认值取决于运行时版本: 
++ 版本 1.x: 默认值为*null*, 表示没有超时。   
++ 版本 2.x: 默认值为30分钟。 值为`-1`指示未绑定的执行。
 
 ```json
 {
@@ -169,9 +173,9 @@ ms.locfileid: "54331211"
 }
 ```
 
-|属性  |默认 | Description |
+|属性  |默认 | 描述 |
 |---------|---------|---------| 
-|已启用|true|指定是否启用此功能。 | 
+|enabled|真|指定是否已启用该功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 
@@ -194,20 +198,23 @@ ms.locfileid: "54331211"
       "Function.MyFunction": "Information",
       "default": "None"
     },
+    "console": {
+        ...
+    },
     "applicationInsights": {
         ...
     }
 }
 ```
 
-|属性  |默认 | Description |
+|属性  |默认 | 描述 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
 |logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本 2.x 遵循 ASP.NET Core 布局进行日志类别筛选。 这允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
-|console|不适用| [控制台](#console)日志记录设置。 |
+|控制台|不适用| [console](#console)日志记录设置。 |
 |applicationInsights|不适用| [applicationInsights](#applicationinsights) 设置。 |
 
-## <a name="console"></a>console
+## <a name="console"></a>控制台
 
 此设置是[日志记录](#logging)的子项。 它在未处于调试模式时控制控制台日志记录。
 
@@ -223,9 +230,9 @@ ms.locfileid: "54331211"
 }
 ```
 
-|属性  |默认 | Description |
+|属性  |默认 | 描述 |
 |---------|---------|---------| 
-|isEnabled|false|启用或禁用控制台日志记录。| 
+|isEnabled|假|启用或禁用控制台日志记录。| 
 
 ## <a name="queues"></a>queues
 
@@ -255,7 +262,7 @@ ms.locfileid: "54331211"
 }
 ```
 
-|属性  |默认 | Description |
+|属性  |默认 | 描述 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 
@@ -263,7 +270,7 @@ ms.locfileid: "54331211"
 |lockAcquisitionTimeout|00:01:00|运行时尝试获取锁的最长时间。| 
 |lockAcquisitionPollingInterval|不适用|尝试获取锁的间隔时间。| 
 
-## <a name="version"></a>版本
+## <a name="version"></a>version
 
 对于面向 v2 运行时的函数应用，版本字符串 `"version": "2.0"` 是必需的。
 
@@ -274,6 +281,18 @@ ms.locfileid: "54331211"
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="manageddependency"></a>managedDependency
+
+托管依赖项是当前仅支持基于 PowerShell 的函数的预览功能。 它允许服务自动管理依赖项。 如果 enabled 属性设置为 true, 则将处理[psd1](functions-reference-powershell.md#dependency-management)文件。 发布任何次要版本时, 将更新依赖项。
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 

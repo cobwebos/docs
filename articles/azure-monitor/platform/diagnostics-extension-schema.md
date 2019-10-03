@@ -6,15 +6,15 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 09/20/2018
+ms.date: 09/04/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: e8ea8ea749243821e5382fc285e3c38f05d4c6b5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526329"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735091"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure 诊断扩展配置架构版本和历史记录
 此页为 Microsoft Azure SDK 附带的 Azure 诊断扩展架构版本编制了索引。  
@@ -29,7 +29,7 @@ ms.locfileid: "59526329"
 >
 > 在使用以下某个服务时，才需要参阅此页。
 
-Azure 诊断扩展可与 Azure Monitor，其中包括 Application Insights 和 Log Analytics 等其他 Microsoft 诊断产品。 有关详细信息，请参阅 [Microsoft 监视工具概述](../../azure-monitor/overview.md)。
+Azure 诊断扩展与其他 Microsoft 诊断产品（如 Azure Monitor）结合使用，其中包括 Application Insights 和 Log Analytics。 有关详细信息，请参阅 [Microsoft 监视工具概述](../../azure-monitor/overview.md)。
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK 和诊断版本随附图  
 
@@ -54,13 +54,7 @@ Azure 诊断扩展可与 Azure Monitor，其中包括 Application Insights 和 L
  从 SDK 2.5（诊断版本 1.2）开始，Azure 诊断随附于扩展模型中。 使用新功能的工具仅在较新版本的 Azure SDK 中可用，但使用 Azure 诊断的任何服务都将直接从 Azure 选取最新的附带版本。 例如，仍在使用 SDK 2.5 的任何用户在使用较新功能时都将加载上表中显示的最新版本。  
 
 ## <a name="schemas-index"></a>架构索引  
-不同版本的 Azure 诊断使用不同的配置架构。
-
-[诊断 1.0 配置架构](diagnostics-extension-schema-1dot0.md)  
-
-[诊断 1.2 配置架构](diagnostics-extension-schema-1dot2.md)  
-
-[诊断 1.3 及更高版本的配置架构](diagnostics-extension-schema-1dot3.md)  
+不同版本的 Azure 诊断使用不同的配置架构。 架构1.0 和1.2 已弃用。 有关版本1.3 及更高版本的详细信息，请参阅[诊断1.3 和更高版本配置架构](diagnostics-extension-schema-1dot3.md)  
 
 ## <a name="version-history"></a>版本历史记录
 
@@ -187,7 +181,7 @@ Azure 诊断扩展可与 Azure Monitor，其中包括 Application Insights 和 L
 
 * 在 Azure SDK 2.4 及更早版本中，诊断插件在运行时使用连接字符串获取用于传输诊断日志的存储帐户信息。
 * 在 Azure SDK 2.6 及更高版本中，Visual Studio 在发布过程中通过诊断连接字符串使用相应的存储帐户信息来配置诊断扩展。 连接字符串让你为 Visual Studio 会在发布时使用的不同服务配置定义不同的存储帐户。 但是，因为诊断插件已不再可用（在 Azure SDK 2.5 之后），.cscfg 文件本身不能启用诊断扩展。 必须通过工具（如 Visual Studio 或 PowerShell）单独启用扩展。
-* 为了简化使用 PowerShell 配置诊断扩展的过程，Visual Studio 的程序包输出还包含每个角色的诊断扩展的公共配置 XML。 Visual Studio 使用诊断连接字符串来填充公共配置中存在的存储帐户信息。 公共配置文件在 Extensions 文件夹中创建，并遵循模式`PaaSDiagnostics.<RoleName>.PubConfig.xml`。 任何基于 PowerShell 的部署都可以使用此模式将每个配置映射到角色。
+* 为了简化使用 PowerShell 配置诊断扩展的过程，Visual Studio 的程序包输出还包含每个角色的诊断扩展的公共配置 XML。 Visual Studio 使用诊断连接字符串来填充公共配置中存在的存储帐户信息。 公共配置文件在“扩展”文件夹中创建，并遵循模式 `PaaSDiagnostics.<RoleName>.PubConfig.xml`。 任何基于 PowerShell 的部署都可以使用此模式将每个配置映射到角色。
 * .cscfg 文件中的连接字符串还由 Azure 门户用于访问诊断数据，使这些数据可以显示在“监视”选项卡中。需要连接字符串才能配置服务以在门户中显示详细监视数据。
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>将项目迁移到 Azure SDK 2.6 和更高版本

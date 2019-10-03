@@ -2,19 +2,19 @@
 title: 查看系统测试结果和部署 - 自定义翻译
 titleSuffix: Azure Cognitive Services
 description: 训练成功后，可以审查系统测试以分析训练结果。 如果对训练结果感到满意，可以针对训练的模型下达部署请求。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ccd31a0e8b91bc95ac364fe5bc0ec0ecdfaa4618
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: f5e1a21f24fdd2458d4803d6ed1675455fa5037d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438608"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595598"
 ---
 # <a name="view-system-test-results"></a>查看系统测试结果
 
@@ -26,7 +26,7 @@ ms.locfileid: "58438608"
 
 “测试”选项卡显示：
 
-1.  **系统测试结果：** 在培训中测试过程的结果。 测试过程生成 BLEU 评分。
+1.  **系统测试结果:** 培训过程中测试过程的结果。 测试过程生成 BLEU 评分。
 
     **句子计数：** 在测试集中使用了多少个并行句子。
 
@@ -80,7 +80,7 @@ ms.locfileid: "58438608"
 5.  可在“状态”列中查看模型的状态。
 
 >[!Note]
->自定义转换器支持时间中的任何位置工作区中的 10 个已部署的模型。
+>自定义转换器在任一时间点在工作区中支持10个已部署的模型。
 
 ## <a name="update-deployment-settings"></a>更新部署设置
 

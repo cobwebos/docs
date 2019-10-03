@@ -22,8 +22,6 @@
       items:
         - name: 复制向导
           href: data-factory-copy-data-wizard-tutorial.md
-        - name: Azure 门户
-          href: data-factory-copy-activity-tutorial-using-azure-portal.md
         - name: Visual Studio
           href: data-factory-copy-activity-tutorial-using-visual-studio.md
         - name: Azure PowerShell

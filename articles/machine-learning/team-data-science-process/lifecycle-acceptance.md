@@ -12,11 +12,11 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 91d645e6120040870c7c1696c7bfd8f68509cb35
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451897"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60303564"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期的客户验收阶段
 
@@ -45,7 +45,7 @@ ms.locfileid: "55451897"
 客户应验证系统是否满足自己的业务需求，且能否准确回答问题，以便将系统部署到生产环境中，供客户端应用程序使用。 最终确定所有文档，并进行评审。 已将项目提交到负责操作的实体。 例如，此实体可能是 IT、客户数据科学团队或负责在生产中运行系统的客户代理。 
 
 ## <a name="artifacts"></a>项目
-在此最后阶段中生成的主要项目是“客户项目退出报表”。 此技术报表包含对于了解如何操作系统有帮助的所有项目细节。 TDSP 提供[退出报表](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md)模板。 可按原样使用该模板，也可以根据特定客户需求对其进行自定义。 
+在此最后阶段中生成的主要项目是“客户项目退出报表”  。 此技术报表包含对于了解如何操作系统有帮助的所有项目细节。 TDSP 提供[退出报表](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md)模板。 可按原样使用该模板，也可以根据特定客户需求对其进行自定义。 
 
 
 ## <a name="next-steps"></a>后续步骤

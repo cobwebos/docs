@@ -10,20 +10,21 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 5c373505cd381108366206c21ff09f25516d7969
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a1045be62f3bdbf75f399c894f825fa99f8e671
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884277"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706893"
 ---
 # <a name="quickstart-url-preview-with-nodejs"></a>快速入门：通过 Node.js 使用 URL 预览 
 
-以下 Node 示例创建 SwiftKey 网站的 URL 预览： https://swiftkey.com/en。
+以下 Node 示例创建 SwiftKey 网站的 URL 预览： https://swiftkey.com/en 。
 
 ## <a name="prerequisites"></a>先决条件
 
-获取[认知服务实验室](https://aka.ms/answersearchsubscription)免费试用版的访问密钥
+获取[认知服务实验室](https://labs.cognitive.microsoft.com/en-us/project-answer-search)免费试用版的访问密钥
 
 ## <a name="code-scenario"></a>代码方案 
 
@@ -32,7 +33,7 @@ ms.locfileid: "55884277"
 1. 声明变量，以按主机和路径指定终结点。
 2. 指定要预览的查询 URL，然后添加查询参数。  
 3. 为响应创建处理程序函数。
-4. 定义搜索函数，用以创建请求并添加 Ocp-Apim-Subscription-Key 标头。
+4. 定义搜索函数，用以创建请求并添加 Ocp-Apim-Subscription-Key 标头  。
 5. 运行“搜索”函数。 
 
 本演示的完整代码如下：

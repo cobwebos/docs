@@ -11,12 +11,12 @@ ms.topic: article
 ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 663363d05c1875d22a0ecc0478abcf7e0ec89c99
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: fe571209d28fe098ce9b507cb67b0a9a5abd25a3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230363"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050863"
 ---
 # <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Project Online 项目、任务和资源
 
@@ -31,7 +31,7 @@ Project Online 提供了强大的项目管理功能，可以帮助你规划、�
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * Project Online，可通过 [Office 365 帐户](https://www.office.com/)获得 
 
@@ -50,7 +50,7 @@ Project Online 提供了强大的项目管理功能，可以帮助你规划、�
    * 对于空白逻辑应用，请在搜索框中输入“Project Online”作为筛选器。 
    在触发器列表下，选择所需的触发器。 
 
-     -或-
+     或
 
    * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”。 在搜索框中输入“Project Online”作为筛选器。 在操作列表下，选择所需的操作。
 

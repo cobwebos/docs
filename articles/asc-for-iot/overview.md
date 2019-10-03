@@ -1,64 +1,61 @@
 ---
-title: 什么是 IoT 预览版的 Azure 安全中心 |Microsoft Docs
-description: 了解 Azure 安全中心针对 IoT 功能和服务。
+title: 什么是用于 IoT 的 Azure 安全中心 |Microsoft Docs
+description: 了解 Azure 安全中心的 IoT 功能和服务。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/18/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: adb1b840fd733353e449224c9ac752e94329bde6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58863026"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326732"
 ---
-# <a name="introducing-azure-security-center-for-iot"></a>Azure 安全中心简介 iot
+# <a name="introducing-azure-security-center-for-iot"></a>适用于 IoT 的 Azure 安全中心简介
 
-> [!IMPORTANT]
-> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+统一安全管理，并跨混合云工作负荷和 Azure IoT 解决方案实现端到端的威胁检测和分析。 
 
-## <a name="secure-your-azure-iot-solution"></a>保护 Azure IoT 解决方案 
+## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>保护从 IoT 设备到 Azure 云的整个 IoT 解决方案。
 
-统一安全管理和跨混合云工作负荷和 Azure IoT 解决方案中启用端到端威胁分析和保护。 
+从无缝的无代理解决方案中进行选择，或者利用基于代理的全面安全性，适用于 IoT 的 Azure 安全中心在 IoT 资产上为每个设备、IoT Edge 和 IoT 中心提供威胁防护和分析。
 
-## <a name="protect-iot-and-hybrid-cloud-workloads-against-evolving-cyber-attacks"></a>保护针对不断演变的网络攻击的 IoT 和混合云工作负荷
+由于数十亿的新设备已连接到 internet，并集成到我们的日常生活和我们的业务中，安全操作团队必须确保其安全策略的发展速度足以涵盖每个新的攻击面。 与任何其他系统一样，若要全面保护 IoT 解决方案，它在实现的每个阶段都需要保护。 
 
-物联网正在迅速改变我们的世界。 来自连接的设备和后端系统能够为发现见解，现在可以转换这些强大的应用程序和服务来帮助组织实现前所未有的操作和业务的见解性能。 但是，如数十亿台新设备连接到 internet，并将其集成到我们在日常生活和公司业务;你的安全操作团队需要确保，足够快的速度发展其安全策略以覆盖这些新的攻击面。 如任何其他系统，保护 IoT 解决方案需要在每个阶段的实施的保护。 
+用于 IoT 的 Azure 安全中心通过在边缘、本地、Azure 和其他中运行的工作负荷提供统一的可见性和控制、自适应威胁防护以及智能威胁检测和响应，简化混合工作负荷保护云彩. 
 
-适用于 IoT 的 azure 安全中心 (ASC) 通过跨工作负荷在边缘上，运行在本地，在 Azure 中，并在提供统一的可见性和控制、 自适应威胁防护和智能威胁检测和响应，简化了混合工作负荷保护其他云。 
-
-![ASC 为 IoT 体系结构的](./media/architecture/asc-for-iot-architecture.png)
+![适用于 IoT 的 Azure 安全中心体系结构](./media/architecture/azure-iot-security-architecture.png)
 
 ### <a name="unified-visibility-and-control"></a>统一的可见性和控制
 
-安全的全面了解跨所有本地和云工作负荷，包括 Azure IoT 解决方案。 自动发现并载入新设备和各种工作负荷 （叶设备，边缘设备，IOT 中心），以确保符合性应用安全策略，具有安全标准。
+跨所有本地和云工作负载（包括 Azure IoT 解决方案）获得统一的安全视图。 载入新设备，并跨工作负荷（叶设备、Microsoft Edge 设备、IoT 中心）应用安全策略，确保符合安全标准和改进的安全状况。 
 
 ### <a name="adaptive-threat-prevention"></a>自适应威胁防护
 
-使用适用于 IoT 的 ASC 持续监控计算机、 网络和 Azure 服务，包括 Azure IoT 解决方案从边缘设备对应用程序的安全性。 您可以选择使用来自数百个内置安全评估或创建自己的 IoT 中心仪表板中心 ASC 中。 优化您的安全设置，并提高虚拟机、 网络、 应用和数据安全分数与可行的建议。 使用新添加的 IoT 功能，现在可以为你的 Azure IoT 解决方案减少受攻击面并可被利用前修复问题。
+使用适用于 IoT 的 Azure 安全中心持续监视计算机、网络和 Azure 服务的安全性。 从数百个内置安全评估中进行选择，或在用于 IoT 中心的中央 Azure 安全中心仪表板中创建自己的。 利用跨虚拟机、网络、应用和数据的可操作建议优化安全设置并提高安全分数。 利用新添加的 IoT 功能，你现在可以减少 Azure IoT 解决方案的受攻击面，并修正问题，然后才能利用它们。
 
 ### <a name="intelligent-threat-detection-and-response"></a>智能威胁检测和响应
 
-使用高级的分析和 Microsoft Intelligent Security Graph，获得针对不断演变的网络攻击。 内置行为分析和机器学习识别攻击和零时差攻击。 监视你的 IoT 解决方案的传入攻击和入侵后的活动。 简化设备的调查和修正与交互式工具和上下文威胁智能。
+使用高级分析和 Microsoft Intelligent Security Graph 来获得对不断演变的网络攻击的优势。 内置行为分析和机器学习识别攻击和零天攻击。 监视 IoT 解决方案中即将发生的攻击和信息泄露后进行的活动。 通过交互式工具和上下文威胁智能简化设备调查和修正。
 
 ## <a name="next-steps"></a>后续步骤
 
-在此概述中，您学习了有关功能和服务的 ASC 对 IoT。 若要详细了解 ASC 的 IoT 体系结构，系统必备组件，并了解如何开始，请参阅以下文章：
+本概述介绍了适用于 IoT 的 Azure 安全中心的功能和服务。 若要详细了解 IoT 体系结构的 Azure 安全中心、先决条件以及如何开始学习，请参阅以下文章：
 
 - [体系结构](architecture.md)
-- [服务的先决条件](service-prerequisites.md)
+- [服务先决条件](service-prerequisites.md)
 - [入门](getting-started.md)
-- [定义你的解决方案](quickstart-configure-your-solution.md)
-- [ASC iot 常见问题](resources-frequently-asked-questions.md)
-- [ASC 为 IoT 警报的](concept-security-alerts.md)
+- [定义解决方案](quickstart-configure-your-solution.md)
+- [Azure 安全中心的 IoT 常见问题](resources-frequently-asked-questions.md)
+- [用于 IoT 警报的 Azure 安全中心](concept-security-alerts.md)
 

@@ -3,19 +3,19 @@ title: Azure 快速入门 - 运行 Batch 作业 - Python
 description: 使用 Batch Python 客户端库快速运行 Batch 作业和任务。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 9ede1b48d1b69c738e335676f10233af72e8564e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 77ccfc1a67fabca7fde47edac9094c6a68191f0f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754415"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090766"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>快速入门：使用 Python API 运行你的第一个 Batch 作业
 
@@ -43,11 +43,11 @@ ms.locfileid: "55754415"
 
 从 GitHub [下载或克隆示例应用](https://github.com/Azure-Samples/batch-python-quickstart)。 若要使用 Git 客户端克隆示例应用存储库，请使用以下命令：
 
-```
+```bash
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-导航到包含 Python 脚本 `python_quickstart_client.py` 的目录。
+转到包含 Python 脚本 `python_quickstart_client.py` 的目录。
 
 在 Python 开发环境中使用 `pip` 安装所需的包。
 
@@ -69,7 +69,7 @@ _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB
 
 若要查看操作中的 Batch 工作流，请运行脚本：
 
-```
+```bash
 python python_quickstart_client.py
 ```
 
@@ -77,7 +77,7 @@ python python_quickstart_client.py
 
 运行示例应用程序时，控制台输出如下所示。 在执行期间启动池的计算节点时，会遇到暂停并看到`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...`。 任务会排队，在第一个计算节点运行后马上运行。 转到 [Azure 门户](https://portal.azure.com)中的 Batch 帐户，监视 Batch 帐户中的池、计算节点、作业和任务。
 
-```
+```output
 Sample start: 11/26/2018 4:02:54 PM
 
 Container [input] created.
@@ -92,7 +92,7 @@ Monitoring all tasks for 'Completed' state, timeout in 00:30:00...
 
 任务完成后，会看到每个任务的输出，如下所示：
 
-```
+```output
 Printing task output...
 Task: Task0
 Node: tvm-2850684224_3-20171205t000401z
@@ -116,7 +116,7 @@ Batch processing began with mainframe computers and punch cards. Today it still 
 
 ### <a name="preliminaries"></a>初步操作
 
-为了与存储帐户交互，应用使用 [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) 包来创建 [BlockBlobService](/python/api/azure.storage.blob.blockblobservice.blockblobservice) 对象。
+为了与存储帐户交互，应用使用 [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) 包来创建 [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice) 对象。
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -124,12 +124,12 @@ blob_client = azureblob.BlockBlobService(
     account_key=config._STORAGE_ACCOUNT_KEY)
 ```
 
-应用使用 `blob_client` 引用在存储帐户中创建容器，然后将数据文件上传到该容器。 存储中的文件定义为 Batch [ResourceFile](/python/api/azure.batch.models.resourcefile) 对象，Batch 随后可以将这些对象下载到计算节点。
+应用使用 `blob_client` 引用在存储帐户中创建容器，然后将数据文件上传到该容器。 存储中的文件定义为 Batch [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) 对象，Batch 随后可以将这些对象下载到计算节点。
 
 ```python
-input_file_paths =  [os.path.join(sys.path[0], 'taskdata0.txt'),
-                     os.path.join(sys.path[0], 'taskdata1.txt'),
-                     os.path.join(sys.path[0], 'taskdata2.txt')]
+input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
+                    os.path.join(sys.path[0], 'taskdata1.txt'),
+                    os.path.join(sys.path[0], 'taskdata2.txt')]
 
 input_files = [
     upload_file_to_container(blob_client, input_container_name, file_path)
@@ -140,20 +140,20 @@ input_files = [
 
 ```python
 credentials = batch_auth.SharedKeyCredentials(config._BATCH_ACCOUNT_NAME,
-    config._BATCH_ACCOUNT_KEY)
+                                              config._BATCH_ACCOUNT_KEY)
 
 batch_client = batch.BatchServiceClient(
     credentials,
-    base_url=config._BATCH_ACCOUNT_URL)
+    batch_url=config._BATCH_ACCOUNT_URL)
 ```
 
 ### <a name="create-a-pool-of-compute-nodes"></a>创建计算节点池
 
-为了创建 Batch 池，此应用使用 [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) 类来设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Ubuntu Server 18.04 LTS 映像的 [ImageReference](/python/api/azure.batch.models.imagereference)。 Batch 支持 Azure 市场中的各种 Linux 和 Windows Server 映像以及自定义 VM 映像。
+为了创建 Batch 池，此应用使用 [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) 类来设置节点数、VM 大小和池配置。 在这里，[VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) 对象指定对 Azure 市场中发布的 Ubuntu Server 18.04 LTS 映像的 [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference)。 Batch 支持 Azure 市场中的各种 Linux 和 Windows Server 映像以及自定义 VM 映像。
 
 节点数 (`_POOL_NODE_COUNT`) 和 VM 大小 (`_POOL_VM_SIZE`) 是定义的常数。 此示例默认创建的池包含 2 个大小为 *Standard_A1_v2* 的节点。 就此快速示例来说，建议的大小在性能和成本之间达成了很好的平衡。
 
-[pool.add](/python/api/azure.batch.operations.pooloperations) 方法将池提交到 Batch 服务。
+[pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) 方法将池提交到 Batch 服务。
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -164,7 +164,7 @@ new_pool = batch.models.PoolAddParameter(
             offer="UbuntuServer",
             sku="18.04-LTS",
             version="latest"
-            ),
+        ),
         node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=config._POOL_VM_SIZE,
     target_dedicated_nodes=config._POOL_NODE_COUNT
@@ -174,7 +174,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>创建 Batch 作业
 
-Batch 作业是对一个或多个任务进行逻辑分组。 作业包含任务的公用设置，例如优先级以及运行任务的池。 此应用使用 [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) 类在池中创建作业。 [job.add](/python/api/azure.batch.operations.joboperations) 方法将池提交到 Batch 服务。 作业一开始没有任务。
+Batch 作业是对一个或多个任务进行逻辑分组。 作业包含任务的公用设置，例如优先级以及运行任务的池。 此应用使用 [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) 类在池中创建作业。 [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) 方法将作业添加到指定的 Batch 帐户。 作业一开始没有任务。
 
 ```python
 job = batch.models.JobAddParameter(
@@ -185,21 +185,21 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>创建任务
 
-此应用使用 [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter) 类创建任务对象的列表。 每个任务都使用 `command_line` 参数来处理输入 `resource_files` 对象。 在示例中，命令行运行 Bash shell `cat` 命令来显示文本文件。 此命令是一个用于演示的简单示例。 使用 Batch 时，可以在命令行中指定应用或脚本。 Batch 提供多种将应用和脚本部署到计算节点的方式。
+此应用使用 [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) 类创建任务对象的列表。 每个任务都使用 `command_line` 参数来处理输入 `resource_files` 对象。 在示例中，命令行运行 Bash shell `cat` 命令来显示文本文件。 此命令是一个用于演示的简单示例。 使用 Batch 时，可以在命令行中指定应用或脚本。 Batch 提供多种将应用和脚本部署到计算节点的方式。
 
-然后，应用使用 [task.add_collection](/python/api/azure.batch.operations.taskoperations) 方法将任务添加到作业，使任务按顺序在计算节点上运行。 
+然后，应用使用 [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) 方法将任务添加到作业，使任务按顺序在计算节点上运行。 
 
 ```python
 tasks = list()
 
-for idx, input_file in enumerate(input_files): 
+for idx, input_file in enumerate(input_files):
     command = "/bin/bash -c \"cat {}\"".format(input_file.file_path)
     tasks.append(batch.models.TaskAddParameter(
         id='Task{}'.format(idx),
         command_line=command,
         resource_files=[input_file]
     )
-)
+    )
 batch_service_client.task.add_collection(job_id, tasks)
 ```
 
@@ -211,12 +211,13 @@ batch_service_client.task.add_collection(job_id, tasks)
 tasks = batch_service_client.task.list(job_id)
 
 for task in tasks:
-    
+
     node_id = batch_service_client.task.get(job_id, task.id).node_info.node_id
     print("Task: {}".format(task.id))
     print("Node: {}".format(node_id))
 
-    stream = batch_service_client.file.get_from_task(job_id, task.id, config._STANDARD_OUT_FILE_NAME)
+    stream = batch_service_client.file.get_from_task(
+        job_id, task.id, config._STANDARD_OUT_FILE_NAME)
 
     file_text = _read_stream_as_string(
         stream,
@@ -229,7 +230,7 @@ for task in tasks:
 
 应用自动删除所创建的存储容器，并允许你选择是否删除 Batch 池和作业。 只要有节点在运行，就会对池收费，即使没有计划作业。 不再需要池时，请将其删除。 删除池时会删除节点上的所有任务输出。 
 
-若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。
+若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后选择“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,19 +1,19 @@
 ---
 title: 对 Azure 存储进行监视、诊断和故障排除 | Microsoft Docs
 description: 使用存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储相关的问题。
-services: storage
-author: fhryo-msft
+author: normesta
 ms.service: storage
-ms.topic: article
-ms.date: 05/11/2017
-ms.author: fhryo-msft
+ms.topic: conceptual
+ms.date: 09/23/2019
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 34aa4ff6c54b34acf865af0b57c3dfa7945a637c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351909"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212832"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>对 Microsoft Azure 存储进行监视、诊断和故障排除
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -102,6 +102,8 @@ ms.locfileid: "58351909"
 
 可以选择要在 [Azure 门户](https://portal.azure.com)中显示哪些每小时度量值，并配置规则以便在每小时度量值超过特定阈值时，通过电子邮件通知管理员。 有关详细信息，请参阅[接收警报通知](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)。
 
+建议查看存储（预览版） [Azure Monitor](../../azure-monitor/insights/storage-insights-overview.md) 。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 它不要求你启用或配置任何内容，你可以立即从预定义的交互式图表和包含的其他可视化效果中查看这些度量值。
+
 存储服务将尽最大努力收集度量值，但可能无法记录每个存储操作。
 
 在 Azure 门户中，可以查看存储帐户的度量值，如可用性、请求总数和平均延迟数。 也已设置通知规则，以便在可用性下降到低于某个级别时向管理员发出警报。 通过查看此数据，一个可能的调查方面是表服务成功百分比低于 100%（有关详细信息，请参阅“[度量值显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作]”一节）。
@@ -123,7 +125,7 @@ ms.locfileid: "58351909"
 可以使用 [Azure 门户](https://portal.azure.com)查看全球所有 Azure 区域中存储服务（及其他 Azure 服务）的运行状况。 通过监视功能可以立即了解是否有不受你控制的问题正在影响应用程序所使用的区域中的存储服务。
 
 此外，[Azure 门户](https://portal.azure.com)还可以提供影响各种 Azure 服务的事件的通知。
-注意：此信息以前已在 [Azure 服务仪表板](https://status.azure.com)上与历史数据一起提供。
+注意:此信息以前已在 [Azure 服务仪表板](https://status.azure.com)上与历史数据一起提供。
 
 虽然 [Azure 门户](https://portal.azure.com)从 Azure 数据中心内部收集运行状况信息（由内而外监视），但你也可以考虑采用由外而内的方法来生成定期从多个位置访问 Azure 托管的 Web 应用程序的综合事务。 [Dynatrace](https://www.dynatrace.com/en/synthetic-monitoring) 和 Application Insights for Azure DevOps 提供的服务是此方法的示例。 有关 Application Insights for Azure DevOps 的详细信息，请参阅附录“[附录 5：使用 Application Insights for Azure DevOps 进行监视](#appendix-5)”。
 
@@ -138,7 +140,7 @@ ms.locfileid: "58351909"
 若要帮助估算各种存储对象（如 Blob）的大小，请参阅博客文章[了解 Microsoft Azure 存储计费 - 带宽、事务和容量](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)。
 
 ### <a name="monitoring-availability"></a>监视可用性
-应通过监视以下每小时或每分钟度量值表中的“可用性”列中的值来监视存储帐户中存储服务的可用性：**$MetricsHourPrimaryTransactionsBlob**、**$MetricsHourPrimaryTransactionsTable**、**$MetricsHourPrimaryTransactionsQueue**、**$MetricsMinutePrimaryTransactionsBlob**、**$MetricsMinutePrimaryTransactionsTable**、**$MetricsMinutePrimaryTransactionsQueue**、**$MetricsCapacityBlob**。 **可用性**列包含一个百分比值，指示该服务的可用性或该行所表示的 API 操作的可用性（**RowKey** 显示行是包含整体服务的度量值还是包含特定 API 操作的度量值）。
+应通过监视以下每小时或每分钟度量值表中的“可用性”列中的值来监视存储帐户中存储服务的可用性： **$MetricsHourPrimaryTransactionsBlob**、 **$MetricsHourPrimaryTransactionsTable**、 **$MetricsHourPrimaryTransactionsQueue**、 **$MetricsMinutePrimaryTransactionsBlob**、 **$MetricsMinutePrimaryTransactionsTable**、 **$MetricsMinutePrimaryTransactionsQueue**、 **$MetricsCapacityBlob**。 **可用性**列包含一个百分比值，指示该服务的可用性或该行所表示的 API 操作的可用性（**RowKey** 显示行是包含整体服务的度量值还是包含特定 API 操作的度量值）。
 
 任何小于 100% 的值指示某些存储请求会失败。 可以通过检查度量值数据中显示具有不同错误类型（如 **ServerTimeoutError**）的请求数的其他列来了解失败原因。 由于以下原因，应该会看到“可用性”暂时低于 100%：比如在该服务移动分区以更好地负载均衡请求时，出现暂时性服务器超时；客户端应用程序中的重试逻辑应处理此类间歇性情况。 [Storage Analytics Logged Operations and Status Messages](https://msdn.microsoft.com/library/azure/hh343260.aspx)（存储分析记录的操作和状态消息）一文列出了存储度量值纳入其“可用性”计算中的事务类型。
 
@@ -213,7 +215,7 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 使用 .NET 存储客户端库可以收集与应用程序执行的存储操作相关的客户端日志数据。 有关详细信息，请参阅 [Client-side Logging with the .NET Storage Client Library](https://go.microsoft.com/fwlink/?LinkId=510868)（使用 .NET 存储客户端库的客户端日志记录）。
 
 > [!NOTE]
-> 在某些情况下（如 SAS 授权失败），用户可能会报告一个错误，而你可能在服务器端存储日志中找不到该错误所对应的请求数据。 可以使用存储客户端库的日志记录功能来调查该问题的原因是否出在客户端上，或者使用网络监视工具来调查网络。
+> 在某些情况下（如 SAS 授权失败），用户可能会报告一个错误，而你可能在服务器端存储日志中未找到该错误所对应的请求数据。 可以使用存储客户端库的日志记录功能来调查该问题的原因是否出在客户端上，或者使用网络监视工具来调查网络。
 >
 >
 
@@ -246,7 +248,7 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 >
 
 ### <a name="server-request-id"></a>服务器请求 ID
-存储服务会自动生成的服务器请求 Id。
+存储服务会自动生成服务器请求 ID。
 
 * 在服务器端存储日志记录日志中，服务器请求 ID 显示在“请求 ID 标头”列中。
 * 在网络跟踪（如 Fiddler 捕获的跟踪）中，服务器请求 ID 在响应消息中显示为 x-ms-request-id HTTP 标头值。
@@ -425,7 +427,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 通常在存储请求数增加时，或者在最初对应用程序进行负载测试时，会出现 **PercentThrottlingError** 增加的情况。 这也可能表现为在客户端中进行存储操作时出现“503 服务器忙”或“500 操作超时”HTTP 状态消息。
 
 #### <a name="transient-increase-in-PercentThrottlingError"></a>PercentThrottlingError 暂时增加
-如果看到 **PercentThrottlingError** 的值达到峰值的时间与应用程序活动的高峰期保持一致，则应在客户端中对重试实施指数（而非线性）回退策略。 回退重试会减少分区上的即时负载，并帮助应用程序消除流量峰值。 有关如何使用存储客户端库实现重试策略的详细信息，请参阅 [Microsoft.WindowsAzure.Storage.RetryPolicies Namespace](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.retrypolicies.aspx)（Microsoft.WindowsAzure.Storage.RetryPolicies 命名空间）。
+如果看到 **PercentThrottlingError** 的值达到峰值的时间与应用程序活动的高峰期保持一致，则应在客户端中对重试实施指数（而非线性）回退策略。 回退重试会减少分区上的即时负载，并帮助应用程序消除流量峰值。 有关如何使用存储客户端库实现重试策略的详细信息，请参阅 [Microsoft.Azure.Storage.RetryPolicies 命名空间](/dotnet/api/microsoft.azure.storage.retrypolicies)。
 
 > [!NOTE]
 > 可能也会看到 **PercentThrottlingError** 的值达到峰值的时间与应用程序活动的高峰期不一致：出现此情况最可能的原因是存储服务正在移动分区以改进负载均衡。
@@ -466,17 +468,17 @@ PercentTimeoutError 度量值是以下指标的度量值：ClientTimeoutError、
 ### <a name="the-client-is-receiving-403-messages"></a>客户端正在接收“HTTP 403 (禁止访问)”消息
 如果客户端应用程序引发“HTTP 403 (禁止访问)”错误，则可能的原因是客户端在发送存储请求时使用了过期的共享访问签名 (SAS)（虽然其他可能的原因包括时钟偏差、无效密钥和空标头）。 如果已过期的 SAS 密钥是原因，则你不会在服务器端存储日志记录日志数据中看到任何条目。 下表显示了存储客户端库生成的客户端日志的示例，它说明了如何出现此问题：
 
-| 源 | 详细程度 | 详细程度 | 客户端请求 ID | 操作文本 |
+| Source | 详细程度 | Verbosity | 客户端请求 ID | 操作文本 |
 | --- | --- | --- | --- | --- |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab-... |正在按位置模式 PrimaryOnly 使用主位置启动操作。 |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |开始发出同步请求到 <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |正在等待响应。 |
-| Microsoft.WindowsAzure.Storage |警告 |2 |85d077ab -… |等待响应时引发异常：远程服务器返回错误：(403) 禁止访问。 |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |收到响应。 状态代码 = 403，请求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d，Content-MD5 =，ETag = 。 |
-| Microsoft.WindowsAzure.Storage |警告 |2 |85d077ab -… |操作过程中引发异常：远程服务器返回错误：(403) 禁止访问。 |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |正在检查是否应重试该操作。 重试次数 = 0，HTTP 状态代码 = 403，异常 = 远程服务器返回了一个错误：(403) 禁止访问。 |
-| Microsoft.WindowsAzure.Storage |信息 |3 |85d077ab -… |已根据位置模式将下一个位置设为主位置。 |
-| Microsoft.WindowsAzure.Storage |错误 |第 |85d077ab -… |重试策略不允许重试。 操作失败，远程服务器返回了一个错误：(403) 禁止访问。 |
+| Microsoft.Azure.Storage |Information |3 |85d077ab-... |正在按位置模式 PrimaryOnly 使用主位置启动操作。 |
+| Microsoft.Azure.Storage |Information |3 |85d077ab -… |开始将同步请求发送到 <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft.Azure.Storage |Information |3 |85d077ab -… |正在等待响应。 |
+| Microsoft.Azure.Storage |警告 |2 |85d077ab -… |等待响应时引发异常：远程服务器返回错误：(403) 禁止访问。 |
+| Microsoft.Azure.Storage |Information |3 |85d077ab -… |收到响应。 状态代码 = 403，请求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d，Content-MD5 =，ETag = 。 |
+| Microsoft.Azure.Storage |警告 |2 |85d077ab -… |操作过程中引发异常：远程服务器返回错误：(403) 禁止访问。 |
+| Microsoft.Azure.Storage |Information |3 |85d077ab -… |正在检查是否应重试该操作。 重试次数 = 0，HTTP 状态代码 = 403，异常 = 远程服务器返回了一个错误：(403) 禁止访问。 |
+| Microsoft.Azure.Storage |Information |3 |85d077ab -… |已根据位置模式将下一个位置设为主位置。 |
+| Microsoft.Azure.Storage |Error |1 |85d077ab -… |重试策略不允许重试。 操作失败，远程服务器返回了一个错误：(403) 禁止访问。 |
 
 在此方案中，应调查在客户端将该令牌发送到服务器之前 SAS 令牌即将到期的原因：
 
@@ -504,7 +506,7 @@ PercentTimeoutError 度量值是以下指标的度量值：ClientTimeoutError、
 
 存储客户端库生成的以下客户端日志说明了客户端找不到它创建的 Blob 的容器时的问题。 此日志包含以下存储操作的详细信息：
 
-| 请求 ID | Operation |
+| 请求 ID | 操作 |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** 方法，用于删除 blob 容器。 请注意，此操作包括 **HEAD** 请求以检查该容器是否存在。 |
 | e2d06d78-... |**CreateIfNotExists** 方法，用于创建 blob 容器。 请注意，此操作包括 **HEAD** 请求，用于检查该容器是否存在。 **HEAD** 返回了 404 消息，但将继续执行。 |
@@ -534,7 +536,7 @@ PercentTimeoutError 度量值是以下指标的度量值：ClientTimeoutError、
 | de8b1c3c-... |开始向 https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt 发出同步请求。 |
 | de8b1c3c-... |StringToSign = PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |正在准备写入请求数据。 |
-| e2d06d78-... |等待响应时引发异常：远程服务器返回错误：(404) 未找到.. |
+| e2d06d78-... |等待响应时引发异常：远程服务器返回错误：(404) 未找到. |
 | e2d06d78-... |收到响应。 状态代码 = 404，请求 ID = 353ae3bc-...，Content-MD5 = ，ETag = 。 |
 | e2d06d78-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | e2d06d78-... |正在下载响应正文。 |
@@ -544,14 +546,14 @@ PercentTimeoutError 度量值是以下指标的度量值：ClientTimeoutError、
 | e2d06d78-... |正在等待响应。 |
 | de8b1c3c-... |正在写入请求数据。 |
 | de8b1c3c-... |正在等待响应。 |
-| e2d06d78-... |等待响应时引发异常：远程服务器返回错误：(409) 冲突.. |
+| e2d06d78-... |等待响应时引发异常：远程服务器返回错误：(409) 冲突. |
 | e2d06d78-... |收到响应。 状态代码 = 409，请求 ID = c27da20e-...，Content-MD5 = ，ETag = 。 |
 | e2d06d78-... |正在下载错误响应正文。 |
-| de8b1c3c-... |等待响应时引发异常：远程服务器返回错误：(404) 未找到.. |
+| de8b1c3c-... |等待响应时引发异常：远程服务器返回错误：(404) 未找到. |
 | de8b1c3c-... |收到响应。 状态代码 = 404，请求 ID = 0eaeab3e-...，Content-MD5 = ，ETag = 。 |
-| de8b1c3c-... |操作过程中引发异常：远程服务器返回错误：(404) 未找到.. |
-| de8b1c3c-... |重试策略不允许重试。 操作失败，远程服务器返回了一个错误：(404) 未找到.. |
-| e2d06d78-... |重试策略不允许重试。 操作失败，远程服务器返回了一个错误：(409) 冲突.. |
+| de8b1c3c-... |操作过程中引发异常：远程服务器返回错误：(404) 未找到. |
+| de8b1c3c-... |重试策略不允许重试。 操作失败，远程服务器返回了一个错误：(404) 未找到. |
+| e2d06d78-... |重试策略不允许重试。 操作失败，远程服务器返回了一个错误：(409) 冲突. |
 
 在此示例中，该日志显示客户端正在交错执行 **CreateIfNotExists** 方法发出的请求（请求 ID e2d06d78…）与 **UploadFromStream** 方法发出的请求 (de8b1c3c-...)。之所以发生此交错执行是因为客户端应用程序正在以异步方式调用这两个方法。 应修改客户端中的异步代码，以确保客户端在尝试将任何数据上传到该容器中的 Blob 之前已创建该容器。 理想情况下，应该提前创建所有容器。
 
@@ -560,7 +562,7 @@ PercentTimeoutError 度量值是以下指标的度量值：ClientTimeoutError、
 
 下表显示了存储日志记录日志文件中的示例服务器端日志消息：
 
-| 名称 | 值 |
+| 姓名 | ReplTest1 |
 | --- | --- |
 | 请求开始时间 | 2014-05-30T06:17:48.4473697Z |
 | 操作类型     | GetBlobProperties            |
@@ -625,7 +627,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-409-messages"></a>客户端正在接收“HTTP 409 (冲突)”消息
 下表显示了两个客户端操作的服务器端日志的摘录：DeleteIfExists，后面紧跟使用相同 blob 容器名称的 CreateIfNotExists。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
 
-| Timestamp | Operation | 结果 | 容器名称 | 客户端请求 ID |
+| 时间戳 | 操作 | 结果 | 容器名 | 客户端请求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |
@@ -650,7 +652,7 @@ client.SetServiceProperties(sp);
 ### <a name="capacity-metrics-show-an-unexpected-increase"></a>容量指标显示存储容量使用量意外增加
 如果发现存储帐户中的容量使用量意外突变，可调查其原因，具体方法是先查看可用性指标；例如，失败的删除请求数增加可能导致所用的 Blob 存储量增加，本来希望应用程序特定的清理操作可释放一些空间，但却未按预期工作（例如，因为用于释放空间的 SAS 令牌已过期）。
 
-### <a name="your-issue-arises-from-using-the-storage-emulator">该问题是由于使用存储模拟器进行开发或测试而导致</a>
+### <a name="your-issue-arises-from-using-the-storage-emulator"></a>该问题是由于使用存储模拟器进行开发或测试而导致
 通常，在开发和测试过程中使用存储模拟器以避免需要 Azure 存储帐户。 使用存储模拟器时可能发生的常见问题包括：
 
 * [功能“X”在存储模拟器中无法正常工作]
@@ -809,11 +811,11 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 
 ## <a name="next-steps"></a>后续步骤
 
-有关在 Azure 存储中的分析的详细信息，请参阅以下资源：
+有关 Azure 存储中的分析的详细信息，请参阅以下资源：
 
 * [在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)
 * [存储分析](storage-analytics.md)
-* [存储分析度量值](storage-analytics-metrics.md)
+* [存储分析指标](storage-analytics-metrics.md)
 * [存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [存储分析日志](storage-analytics-logging.md)
 * [存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)

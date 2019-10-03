@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: f030ac07dc1615c435c1a110836d7a03ab8a8546
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: 3865fbc4fbc39da0860218565b0a8956b2dad8ee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295602"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62105865"
 ---
 # <a name="get-started-with-the-office-365-users-connector"></a>Office 365 用户连接器入门
 连接到 Office 365 用户，获取配置文件、搜索用户等。 通过 Office 365 用户，可以：

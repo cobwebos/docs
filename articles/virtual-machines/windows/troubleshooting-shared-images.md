@@ -4,24 +4,24 @@ description: 了解如何排查共享映像库的问题。
 services: virtual-machine-windows
 documentationcenter: virtual-machine-scale-sets
 author: axayjo
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 09/20/2018
-ms.author: akjosh; cynthn
+ms.date: 04/25/2019
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: fa9c6cf1977c6648b9d5f7be6e63844b3a57f928
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 6ea90291c25a89c0a62bfbad2f0d48369ccd0746
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669741"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101749"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>排查共享映像库问题
 

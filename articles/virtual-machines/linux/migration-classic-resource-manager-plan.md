@@ -4,23 +4,22 @@ description: 规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: de2279d7f24400142f9d47ecf25378e7e4c47f9e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3cf262f2c2f14ea66a40facfd5b32139fc648e47
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111967"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165321"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 尽管 Azure Resource Manager 提供了大量令人惊叹的功能，但规划好迁移过程以确保一切顺利仍至关重要。 花时间进行规划可确保执行迁移活动时不会遇到问题。 
@@ -108,14 +107,14 @@ ms.locfileid: "58111967"
 
 - **Web/辅助角色部署** - 包含 Web 和辅助角色的云服务无法迁移到 Azure 资源管理器。 必须先从虚拟网络中删除 Web/辅助角色，才能开始迁移。  典型的解决方案只是将 Web/辅助角色实例移到单独的经典虚拟网络中，该网络也链接到了 ExpressRoute 回路，或者将代码迁移到较新的 PaaS 应用服务（此讨论已超出本文范围）中。 在前一个重新部署用例中，创建了新的经典虚拟网络，将该 Web/辅助角色移动/重新部署到该新虚拟网络，然后从正在删除的虚拟网络中删除这些部署。 无需更改代码。 新的[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)功能可以用来使包含 Web/辅助角色的经典虚拟网络和同一 Azure 区域中的其他虚拟网络（如正在迁移的虚拟网络）通力合作（**虚拟网络迁移完成后，对等虚拟网络无法迁移**），从而提供没有性能损失和延迟/带宽损失的相同功能。 鉴于增加了[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)，现可轻易缓解 Web/辅助角色部署，且不会阻止到 Azure 资源管理器的迁移。
 
-- **Azure 资源管理器配额** - 对于经典部署模型和 Azure 资源管理器部署模型，Azure 区域都有单独的配额/限制。 即使在不使用新硬件的迁移方案中 *（我们正在将现有的 VM 从经典部署模型切换到 Azure 资源管理器部署模型）*，Azure 资源管理器配额仍需处于容量充足的位置，才能开始迁移。 下面列出了我们已知的导致问题的主要限制。  开具配额支持票证来提高限制。 
+- **Azure 资源管理器配额** - 对于经典部署模型和 Azure 资源管理器部署模型，Azure 区域都有单独的配额/限制。 即使在不使用新硬件的迁移方案中 *（我们正在将现有的 VM 从经典部署模型切换到 Azure 资源管理器部署模型）* ，Azure 资源管理器配额仍需处于容量充足的位置，才能开始迁移。 下面列出了我们已知的导致问题的主要限制。  开具配额支持票证来提高限制。 
 
     > [!NOTE]
     > 需要在与要迁移的当前环境相同的区域中提高这些限制。
     >
 
   - 网络接口
-  - 负载均衡器
+  - 负载平衡器
   - 公共 IP
   - 静态公共 IP
   - 核心数
@@ -193,7 +192,7 @@ ms.locfileid: "58111967"
 对现在想要在 Azure 资源管理器中启用哪些服务具有目的性。  许多客户找到以下关于其 Azure 环境令人关注的事实：
 
 - [基于角色的访问控制](../../role-based-access-control/overview.md)。
-- [使用 Azure 资源管理器模板以更轻松、更可控的方式完成部署](../../azure-resource-manager/resource-group-overview.md#template-deployment)。
+- [使用 Azure 资源管理器模板以更轻松、更可控的方式完成部署](../../azure-resource-manager/template-deployment-overview.md)。
 - [标记](../../azure-resource-manager/resource-group-using-tags.md)。
 - [活动控制](../../azure-resource-manager/resource-group-audit.md)
 - [Azure 策略](../../governance/policy/overview.md)

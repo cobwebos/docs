@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3a1497211cc42c702537cbbdfea32ff71a400c7c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541921"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836683"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](data-factory-amazon-redshift-connector.md)
 > * [版本 2（当前版本）](../connector-amazon-redshift.md)
 
@@ -35,7 +35,7 @@ ms.locfileid: "57541921"
 > [!TIP]
 > 若要在从 Amazon Redshift 复制大量数据时获得最佳性能，请考虑通过 Amazon 简单存储服务 (Amazon S3) 使用内置的 Redshift **UNLOAD** 命令。 有关详细信息，请参阅[使用 UNLOAD 从Amazon Redshift 复制数据](#use-unload-to-copy-data-from-amazon-redshift)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 * 如果要将数据移到本地数据存储，请在本地计算机上安装[数据管理网关](data-factory-data-management-gateway.md)。 使用本地计算机 IP 地址授予网关对 Amazon Redshift 群集的访问权限。 有关说明，请参阅[授予对群集的访问权限](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)。
 * 若要将数据移动到 Azure 数据存储，请参阅[计算 Microsoft Azure 数据中心使用的 IP 地址和 SQL 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "57541921"
 
 创建管道的最简单方法是使用 Azure 数据工厂复制向导。 有关使用复制数据向导创建管道的快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-也可以使用 Azure 门户、Visual Studio、Azure PowerShell 或其他工具创建管道。 也可以使用 Azure 资源管理器模板、.NET API 或 REST API 创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+此外可以通过使用 Visual Studio、 Azure PowerShell 或其他工具创建的管道。 也可以使用 Azure 资源管理器模板、.NET API 或 REST API 创建管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -60,9 +60,9 @@ ms.locfileid: "57541921"
 
 下表提供了特定于 Amazon Redshift 链接服务的 JSON 元素的说明。
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| type |该属性必须设置为 **AmazonRedshift**。 |是 |
+| **type** |该属性必须设置为 **AmazonRedshift**。 |是 |
 | **server** |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
 | **port** |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否（默认值为 5439） |
 | **database** |Amazon Redshift 数据库的名称。 |是 |
@@ -81,11 +81,11 @@ ms.locfileid: "57541921"
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 属性可用于所有类型的活动。 typeProperties 节中可用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
+有关可用于定义活动的各部分和属性的列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 **name**、**description**、**inputs** 表、**outputs** 表和 **policy** 属性可用于所有类型的活动。 typeProperties  节中可用的属性因每个活动的类型而异。 对于复制活动，其属性因数据源和接收器的类型而异。
 
 对于复制活动，当源的类型为 **AmazonRedshiftSource** 时，则可在 **typeProperties** 部分中使用以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | --- | --- | --- |
 | **query** | 使用自定义查询读取数据。 |否（如果指定了数据集的 **tableName** 属性） |
 | **redshiftUnloadSettings** | 使用 Redshift **UNLOAD** 命令时包含属性组。 | 否 |
@@ -94,7 +94,7 @@ ms.locfileid: "57541921"
 
 或者，也可将类型 **RelationalSource**（包括 Amazon Redshift）与 **typeProperties** 节中的以下属性配合使用。 请注意，此源类型不支持 Redshift **UNLOAD** 命令。
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必填 |
 | --- | --- | --- |
 | **query** |使用自定义查询读取数据。 | 否（如果指定了数据集的 **tableName** 属性） |
 

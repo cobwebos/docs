@@ -2,19 +2,19 @@
 title: 如何管理对资源的并发写入 - Azure 搜索
 description: 使用乐观并发，避免在更新或删除 Azure 搜索索引、索引器及数据源的过程中出现冲突。
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4599498918b7a01a1207f20135c26924c6758eb8
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 67f2dad016d3958dc10ba87e785d31694a1c94f5
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499419"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656719"
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>如何管理 Azure 搜索中的并发
 
@@ -170,7 +170,7 @@ ms.locfileid: "58499419"
 
 用于实现乐观并发的设计模式应包含一个循环用于重试访问条件检查，包含一个访问条件测试，并在尝试重新应用更改前选择性地检索更新后的资源。
 
-此代码片段演示如何向已有的索引添加 synonymMap。 此代码摘自[同义词 （预览版） C# Azure 搜索的示例](search-synonyms-tutorial-sdk.md)。
+此代码片段演示如何向已有的索引添加 synonymMap。 此代码来自 [Azure 搜索的同义词 C# 示例](search-synonyms-tutorial-sdk.md)。
 
 代码片段获取“hotels”索引，检查更新操作上的对象版本，在条件失败时引发异常，然后重试该操作（最多三次），从服务器开始索引检索以获取最新版本。
 
@@ -215,7 +215,7 @@ ms.locfileid: "58499419"
 + [GitHub 上的 REST API 示例](https://github.com/Azure-Samples/search-rest-api-getting-started)
 + [GitHub 上的 .NET SDK 示例](https://github.com/Azure-Samples/search-dotnet-getting-started)。 此解决方案包括“DotNetEtagsExplainer”项目，后者包含本文所示的代码。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [常见的 HTTP 请求和响应标头](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
 [HTTP 状态代码](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)

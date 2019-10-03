@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9be062ec42f054832225c17a65b06e47dbcbe990
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607273"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734339"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
@@ -42,7 +41,7 @@ ms.locfileid: "59607273"
 
 此示例涉及到使用 Weather Underground API 来检查某个地点的当前天气状况。
 
-首先需要创建一个 Weather Underground 帐户。 可以通过 [https://www.wunderground.com/signup](https://www.wunderground.com/signup) 免费创建一个帐户。 创建帐户后，需要获取 API 密钥。 可以访问 [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api)，然后选择“密钥设置”来获取此密钥。 Stratus Developer 计划是免费的，足以用于运行此示例。
+首先需要创建一个 Weather Underground 帐户。 可以通过 [https://www.wunderground.com/signup](https://www.wunderground.com/signup) 免费创建一个帐户。 创建帐户后，需要获取 API 密钥。 可以访问 [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)，然后选择“密钥设置”来获取此密钥。 Stratus Developer 计划是免费的，足以用于运行此示例。
 
 获取 API 密钥后，将以下**应用设置**添加到函数应用。
 
@@ -68,7 +67,7 @@ ms.locfileid: "59607273"
 
 实现该函数的代码如下：
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# 脚本
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
@@ -89,7 +88,8 @@ ms.locfileid: "59607273"
 
 ## <a name="strongly-typed-data-transfer-net-only"></a>强类型数据传输（仅限 .NET）
 
-业务流程协调程序需要多个数据片断，因此，在 C# 和 C# 脚本中对强类型数据传输使用了[共享 POCO 对象](../functions-reference-csharp.md#reusing-csx-code)：[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+Orchestrator 需要多个数据段，以便在和C# C#脚本中使用共享的[POCO 对象](../functions-reference-csharp.md#reusing-csx-code)进行强类型的数据传输：  
+[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
 
@@ -103,7 +103,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 实现如下。 与用于数据传输的 POCO 一样，用于处理 API 调用和分析响应 JSON 的逻辑已抽象化为 C# 中的共享类。 可以在 [Visual Studio 示例代码](#run-the-sample)中找到此逻辑。
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# 脚本
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
@@ -117,7 +117,7 @@ JavaScript 示例使用正则 JSON 对象作为参数。
 
 下面是发送短信的代码：
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# 脚本
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 

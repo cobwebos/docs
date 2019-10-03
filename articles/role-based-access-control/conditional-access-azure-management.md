@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Active Directory 中的条件访问管理对 Azure 管理的访问
-description: 了解如何使用 Azure AD 中的条件访问管理对 Azure 管理的访问。
+title: 使用 Azure Active Directory 中的条件访问管理对 Azure 管理的访问权限
+description: 了解如何使用 Azure AD 中的条件访问来管理对 Azure 管理的访问。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,29 +12,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: b824d122a5d26c17c41a0e2ea1c595c9e2dd7206
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.openlocfilehash: e4b7ce0701349cae3ef501213d0f822ee8d150d0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354342"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142830"
 ---
-# <a name="manage-access-to-azure-management-with-conditional-access"></a>使用条件访问管理对 Azure 管理的访问
+# <a name="manage-access-to-azure-management-with-conditional-access"></a>使用条件性访问管理对 Azure 管理的访问
 
-Azure Active Directory (Azure AD) 中的条件访问基于指定的特定条件控制对云应用的访问权限。 若要允许访问，可创建基于是否满足策略中的要求允许或阻止访问的条件访问策略。 
+> [!CAUTION]
+> 在设置策略以管理对 Azure 管理的访问权限之前, 请务必了解条件访问的工作原理。 请确保不创建可能会阻止自己访问门户的条件。
 
-通常，使用条件访问来控制对云应用的访问权限。 此外，还可以设置策略来基于某些条件（如登录风险、位置或设备）控制对 Azure 管理的访问权限并强制实施多重身份验证等要求。
+Azure Active Directory (Azure AD) 中的条件性访问根据你指定的特定条件控制对云应用的访问。 若要允许访问, 你可以创建条件性访问策略, 根据是否满足策略中的要求, 允许或阻止访问。 
+
+通常, 使用条件访问来控制对云应用的访问。 此外，还可以设置策略来基于某些条件（如登录风险、位置或设备）控制对 Azure 管理的访问权限并强制实施多重身份验证等要求。
 
 若要创建用于 Azure 管理的策略，请在选择要应用该策略的应用时，选择“云应用”下的“Microsoft Azure 管理”。
 
 ![用于 Azure 管理的条件访问](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-创建的策略适用于所有 Azure 管理终结点，包括 Azure 门户、Azure 资源管理器提供程序、经典服务管理 API、Azure PowerShell 和 Visual Studio 订阅管理员门户。 请注意，该策略适用于调用 Azure 资源管理器 API 的 Azure PowerShell。 它不适用于调用 Microsoft Graph 的 [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。
+创建的策略适用于所有 Azure 管理终结点, 包括以下各项:
 
-> [!CAUTION]
-> 在设置策略以管理对 Azure 管理的访问之前，请确保了解条件访问的工作原理。 请确保不创建可能会阻止自己访问门户的条件。
+- Azure 门户
+- Azure 资源管理器提供程序
+- 经典服务管理 Api
+- Azure PowerShell
+- Visual Studio 订阅管理员门户
+- Azure DevOps
+- Azure 数据工厂门户
 
-有关如何设置和使用条件访问的详细信息，请参阅 [Azure Active Directory 中的条件访问](../active-directory/active-directory-conditional-access-azure-portal.md)。
+请注意，该策略适用于调用 Azure 资源管理器 API 的 Azure PowerShell。 它不适用于调用 Microsoft Graph 的 [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)。
+
+
+有关如何设置和使用条件性访问的详细信息, 请参阅[Azure Active Directory 中的条件访问](../active-directory/active-directory-conditional-access-azure-portal.md)。

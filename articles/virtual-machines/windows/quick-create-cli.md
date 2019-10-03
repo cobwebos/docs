@@ -1,27 +1,26 @@
 ---
-title: 快速入门 - 使用 Azure PowerShell 创建 Windows VM | Microsoft Docs
-description: 本快速入门介绍了如何使用 Azure PowerShell 创建 Windows 虚拟机
+title: 快速入门 - 使用 Azure CLI 创建 Windows VM | Microsoft Docs
+description: 本快速入门介绍如何使用 Azure CLI 创建 Windows 虚拟机
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/24/2018
+ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8ce1383717b59cc7b7a43ca707fbe5ebba897f20
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e6709a6efff80df01d7504db8b39f8ff5c2c5e49
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730316"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088843"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Windows 虚拟机
 
@@ -29,13 +28,15 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
+
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。  
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -43,7 +44,10 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](/cli/azure/vm) 创建 VM。 以下示例创建一个名为 *myVM* 的 VM。 此示例使用 *azureuser* 作为管理用户名，使用 *myPassword12* 作为密码。 更新这些值，使其适用于环境。 连接到 VM 时需要这些值。
+使用 [az vm create](/cli/azure/vm) 创建 VM。 以下示例创建一个名为 *myVM* 的 VM。 此示例使用 azureuser  作为管理用户名。 
+
+必须更改 `--admin-password` 的值，否则它将失败。 将其更改为符合 [Azure VM 的密码要求](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+)的密码。 用户名和密码将在以后连接到 VM 时使用。
 
 ```azurecli-interactive
 az vm create \
@@ -51,7 +55,7 @@ az vm create \
     --name myVM \
     --image win2016datacenter \
     --admin-username azureuser \
-    --admin-password myPassword12
+    --admin-password myPassword
 ```
 
 创建 VM 和支持资源需要几分钟时间。 以下示例输出表明 VM 创建操作已成功。
@@ -99,7 +103,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-web-server-in-action"></a>查看运行中的 Web 服务器
 
-IIS 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 可以使用所选的 Web 浏览器查看默认的 IIS 欢迎页。 使用上一步中获取的 VM 的公用 IP 地址。 以下示例展示了默认 IIS 网站：
+如果 IIS 已安装，并且 VM 上的端口 80 已对 Internet 开放， 则可以使用所选的 Web 浏览器查看默认的 IIS 欢迎页。 使用上一步中获取的 VM 的公用 IP 地址。 以下示例展示了默认 IIS 网站：
 
 ![IIS 默认站点](./media/quick-create-powershell/default-iis-website.png)
 

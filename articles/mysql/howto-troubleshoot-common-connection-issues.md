@@ -8,11 +8,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.openlocfilehash: faf378a81a6db24acc676bed82fe495cfb108612
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855514"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61421836"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>排查 Azure Databases for MySQL 的连接问题
 
@@ -24,7 +24,7 @@ ms.locfileid: "57855514"
 * 某些 Azure Database for MySQL 资源达到了最大限制
 * 服务的基础结构出现问题
 * 正在服务中执行维护
-* 通过缩放 vCore 数目或移到不同的服务层更改了服务器的计算资源分配
+* 通过缩放 vCore 数目或移到不同的服务层级更改了服务器的计算资源分配
 
 通常，Azure Database for MySQL 的连接问题可按如下方式分类：
 
@@ -33,7 +33,7 @@ ms.locfileid: "57855514"
 
 ## <a name="troubleshoot-transient-errors"></a>对暂时性错误进行故障排除
 
-在执行维护、系统遇到硬件或软件错误，或更改服务器的 vCore 数目或服务层时，会发生暂时性错误。 Azure Database for MySQL 服务具有内置的高可用性，可以自动缓解此类问题。 但是，应用程序会短暂地与服务器断开连接，通常不会超过 60 秒。 某些事件偶尔可能需要更长的时间才能缓解，例如，当某个大型事务导致恢复长时间运行时。
+在执行维护、系统遇到硬件或软件错误，或更改服务器的 vCore 数目或服务层级时，会发生暂时性错误。 Azure Database for MySQL 服务具有内置的高可用性，可以自动缓解此类问题。 但是，应用程序会短暂地与服务器断开连接，通常不会超过 60 秒。 某些事件偶尔可能需要更长的时间才能缓解，例如，当某个大型事务导致恢复长时间运行时。
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>解决暂时性连接问题的步骤
 
@@ -48,7 +48,7 @@ ms.locfileid: "57855514"
 
 * 服务器防火墙配置：请确保 Azure Database for MySQL 服务器防火墙配置为允许来自客户端（包括代理服务器和网关）的连接。
 * 客户端防火墙配置：客户端的防火墙必须允许连接到数据库服务器。 不能访问的服务器的 IP 地址和端口以及一些防火墙中的应用程序名称（如 MySQL）必须被允许。
-* 用户错误：您可能没有正确输入连接参数，如服务器名称中的连接字符串或缺少 *\@servername*中的用户名称后缀。
+* 用户错误：例如，你可能错误键入了连接参数（例如，在连接字符串中键入了服务器名称，或者在用户名中遗漏了 *\@servername* 后缀）。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 

@@ -2,7 +2,7 @@
 title: 在 Azure 流量管理器中启用诊断日志记录
 description: 了解如何为你的流量管理器配置文件启用诊断日志记录并访问作为结果创建的日志文件。
 services: traffic-manager
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: kumud
-ms.openlocfilehash: a7d6893c42028790ec565961f2a2cb54035aefa1
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.author: allensu
+ms.openlocfilehash: b2ebeb41e69b7edfd43c38cc3b828069a1b3401a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106455"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071229"
 ---
 # <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>在 Azure 流量管理器中启用诊断日志记录
 
@@ -57,8 +57,8 @@ ms.locfileid: "56106455"
 ## <a name="access-log-files"></a>访问日志文件
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
 1. 在门户中导航到你的 Azure 存储帐户。
-2. 在你的 Azure 存储帐户的“概述”页面上，在“服务”下选择“Blob”。
-3. 对于“容器”，选择“insights-logs-probehealthstatusevents”，向下导航到 PT1H.json 文件并单击“下载”以下载并保存此日志文件的副本。
+2. 在你的 Azure 存储帐户的“概述”  页面上，在“服务”  下选择“Blob”  。
+3. 对于“容器”  ，选择“insights-logs-probehealthstatusevents”  ，向下导航到 PT1H.json 文件并单击“下载”  以下载并保存此日志文件的副本。
 
     ![从 blob 存储访问流量管理器配置文件的日志文件](./media/traffic-manager-logs/traffic-manager-logs.png)
 

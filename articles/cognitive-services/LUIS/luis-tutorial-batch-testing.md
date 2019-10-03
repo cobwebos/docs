@@ -1,5 +1,5 @@
 ---
-title: 批处理测试
+title: 教程：批处理测试 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本教程演示如何使用批处理测试在应用中查找话语预测问题并进行修复。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/29/2019
+ms.topic: tutorial
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 391a5386a5ecc144b15c35a85d501dfb5ce2d172
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: a0aa4d334dc5a42da8a3a8f269f70c874c9ad54d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523131"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375518"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>教程：成批测试数据集
 
@@ -28,9 +28,9 @@ ms.locfileid: "59523131"
 
 * 每个测试的最大话语量为 1000 个。 
 * 没有重复项。 
-* 允许的实体类型：仅简单、层次（仅父级）和复合的机器学习实体。 批处理测试仅适用于机器学习意向和实体。
+* 允许的实体类型：仅简单和复合的机器学习实体。 批处理测试仅适用于机器学习意向和实体。
 
-使用本教程以外的应用时，请不要使用已经添加到意向的示例话语。 
+使用本教程以外的应用时，请不要使用已经添加到意向的示例话语  。 
 
 **本教程介绍如何执行下列操作：**
 
@@ -55,7 +55,7 @@ ms.locfileid: "59523131"
 
 2. 将 JSON 导入到新应用中。
 
-3. 在“管理”部分的“版本”选项卡上，克隆版本并将其命名为 `batchtest`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。 
+3. 在“管理”  部分的“版本”  选项卡上，克隆版本并将其命名为 `batchtest`。 克隆非常适合用于演练各种 LUIS 功能，且不会影响原始版本。 由于版本名称用作 URL 路由的一部分，因此该名称不能包含任何在 URL 中无效的字符。 
 
 4. 将应用定型。
 
@@ -63,31 +63,31 @@ ms.locfileid: "59523131"
 
 1. 在文本编辑器中创建 `HumanResources-jobs-batch.json` 或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json)它。 
 
-2. 在 JSON 格式的批处理文件中，使用想要在测试中预测的意向添加话语。 
+2. 在 JSON 格式的批处理文件中，使用想要在测试中预测的意向添加话语  。 
 
    [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
 ## <a name="run-the-batch"></a>运行批处理
 
-1. 选择顶部导航栏的“测试”。 
+1. 选择顶部导航栏的“测试”  。 
 
-2. 选择右侧面板中的“批处理测试面板”。 
+2. 选择右侧面板中的“批处理测试面板”  。 
 
     [![LUIS 应用的屏幕截图，其中突出显示了“批处理测试面板”](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png)](./media/luis-tutorial-batch-testing/hr-batch-testing-panel-link.png#lightbox)
 
-3. 选择“导入数据集”。
+3. 选择“导入数据集”  。
 
     [![LUIS 应用的屏幕截图，其中突出显示了“导入数据集”](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
 
 4. 选择 `HumanResources-jobs-batch.json` 文件的文件位置。
 
-5. 命名数据集 `intents only`，然后选择“完成”。
+5. 命名数据集 `intents only`，然后选择“完成”  。
 
     ![选择文件](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
-6. 选择“运行”按钮。 
+6. 选择“运行”按钮。  
 
-7. 选择“查看结果”。
+7. 选择“查看结果”  。
 
 8. 查看图和图例中的结果。
 
@@ -95,45 +95,45 @@ ms.locfileid: "59523131"
 
 ## <a name="review-batch-results"></a>查看批处理结果
 
-批处理图表将结果显示在四个象限中。 在图表右侧是一个筛选器。 默认情况下，筛选器设置为列表中的第一个意向。 筛选器包含所有意向，并且仅包含简单、分层（仅父级）和复合实体。 选择[图表的一个部分](luis-concept-batch-test.md#batch-test-results)或图表中的一个点时，关联的话语显示在图表下方。 
+批处理图表将结果显示在四个象限中。 在图表右侧是一个筛选器。 筛选器包含意向和实体。 选择[图表的一个部分](luis-concept-batch-test.md#batch-test-results)或图表中的一个点时，关联的话语显示在图表下方。 
 
 鼠标悬停在图表上时，鼠标滚轮可以放大或缩小图表中的显示。 当图表上有许多点紧密地聚集在一起时，这是非常有用的。 
 
-图表分为四个象限，其中两个部分以红色显示。 这些是要关注的部分。 
+图表分为四个象限，其中两个部分以红色显示。 这些是要关注的部分  。 
 
 ### <a name="getjobinformation-test-results"></a>GetJobInformation 测试结果
 
-显示在筛选器中的 GetJobInformation 测试结果显示四种预测中有 2 种是成功的。 选择右上象限上方的名称“误报”，查看图表下方的话语。 
+显示在筛选器中的 GetJobInformation 测试结果显示四种预测中有 2 种是成功的  。 选择左象限底部的名称“误报”，查看图表下方的话语  。 
 
-![LUIS 批处理测试话语](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
+使用键盘“Ctrl + E”键切换到标签视图，以查看用户话语的确切文本。 
 
-为什么两个话语被预测为 ApplyForJob，而不是正确的意向 GetJobInformation？ 两个意向在字词的选择和排列方式方面密切相关。 在复合实体中包装此外，ApplyForJob 的示例几乎是 GetJobInformation 的三倍。 示例话语的这种不平衡对 ApplyForJob 意向有利。 
+话语 `Is there a database position open in Los Colinas?` 标记为 GetJobInformation  ，但是当前模型将话语预测为 ApplyForJob  。 
+
+ApplyForJob 的示例几乎是 GetJobInformation 的三倍   。 示例话语的这种不平衡对 ApplyForJob 意向有利  ，从而导致预测不正确。 
 
 请注意，这两个意向都有相同的错误计数。 一个意向中的错误预测也会影响另一个意向。 由于错误地预测了一个意向的话语，也错误地未预测另一个意向，因此二者都有错误。 
 
-![LUIS 批处理测试筛选器错误](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
+<a name="fix-the-app"></a>
 
-对应于“误报”部分中顶点的话语为 `Can I apply for any database jobs with this resume?` 和 `Can I apply for any database jobs with this resume?`。 对于第一个话语，单词 `resume` 仅在 ApplyForJob 中使用过。 对于第二个话语，单词 `apply` 仅在 ApplyForJob 意向中使用过。
+## <a name="how-to-fix-the-app"></a>如何修复应用
 
-## <a name="fix-the-app"></a>修复应用
-
-本部分的目标是通过修复应用，正确预测 GetJobInformation 的所有话语。 
+本部分的目标是通过修复应用，正确预测 GetJobInformation 的所有话语  。 
 
 一个看似快速的解决方法是将这些批处理文件话语添加到正确的意向。 但这不是你想要做的。 你想让 LUIS 正确地预测这些话语，而无需将其添加为示例。 
 
-可能还想知道如何从 ApplyForJob 中删除话语，直到话语数量与 GetJobInformation 中相同。 这可能会修复测试结果，但会阻碍 LUIS 下一次准确地预测该意向。 
+可能还想知道如何从 ApplyForJob 中删除话语，直到话语数量与 GetJobInformation 中相同   。 这可能会修复测试结果，但会阻碍 LUIS 下一次准确地预测该意向。 
 
-第一个解决方法是向 GetJobInformation 添加更多话语。 第二个解决方法是减少针对 ApplyForJob 意向的单词（如 `resume` 和 `apply`）的权重。 
+解决方法是向 GetJobInformation 添加更多话语  。 请记得改变话语长度、字词选择和字词排列，同时仍以查找作业信息的意图为目标  ，而不是针对作业应用。
 
 ### <a name="add-more-utterances"></a>添加更多话语
 
-1. 选择顶部导航面板中的“测试”按钮，关闭批处理测试面板。 
+1. 选择顶部导航面板中的“测试”按钮，关闭批处理测试面板  。 
 
-2. 从意向列表中选择“GetJobInformation”。 
+2. 从意向列表中选择“GetJobInformation”  。 
 
 3. 添加更多长度、字词选择和排列方式不同的话语，确保包含术语 `resume`、`c.v.` 和 `apply`：
 
-    |GetJobInformation 意向的示例话语|
+    |GetJobInformation 意向的示例话语 |
     |--|
     |仓库中新的存货管理员工作是否要求通过简历申请？|
     |目前哪里有屋顶工作？|
@@ -151,69 +151,64 @@ ms.locfileid: "59523131"
     |我有图书馆和档案管理硕士学位。 是否有任何新职位？|
     |今天城市中有照顾 13 岁儿童的保姆工作吗？|
 
-    不要在话语中标记“工作”实体。 本教程的本部分仅侧重于意向预测。
+    不要在话语中标记“工作”实体  。 本教程的本部分仅侧重于意向预测。
 
-4. 通过选择右上角导航中的“定型”来定型应用。
+4. 通过选择右上角导航中的“定型”来定型应用  。
 
 ## <a name="verify-the-new-model"></a>验证新模型
 
 为了验证批处理测试中的话语是否被正确地预测，请再次运行批处理测试。
 
-1. 选择顶部导航栏的“测试”。 如果批处理结果仍处于打开状态，请选择“返回到列表”。  
+1. 选择顶部导航栏的“测试”  。 如果批处理结果仍处于打开状态，请选择“返回到列表”  。  
 
-2. 选择批处理名称右侧的省略号 (...) 按钮，然后选择“运行数据集”。 请等待批处理测试完成。 请注意，“查看结果”按钮现在为绿色。 这意味着整个批处理已成功运行。
+1. 选择批处理名称右侧的省略号 (...) 按钮，然后选择“运行”  。 请等待批处理测试完成。 请注意，“查看结果”按钮现在为绿色  。 这意味着整个批处理已成功运行。
 
-3. 选择“查看结果”。 所有意向的名称左侧都应有绿色图标。 
-
-    ![LUIS 的屏幕截图，其中已突出显示“批处理结果”按钮](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
+1. 选择“查看结果”  。 所有意向的名称左侧都应有绿色图标。 
 
 ## <a name="create-batch-file-with-entities"></a>使用实体创建批处理文件 
 
-若要验证批处理测试中的实体，需要在批处理 JSON 文件中标记实体。 仅使用机器学习实体：简单、分层（仅父级）和复合实体。 不要添加非机器学习实体，因为它们总是通过正则表达式或显式文本匹配找到的。
+若要验证批处理测试中的实体，需要在批处理 JSON 文件中标记实体。 
 
 总字（[令牌](luis-glossary.md#token)）计数的实体的变化会影响预测质量。 请确保提供给具有标记话语的意向的定型数据包括各种长度的实体。 
 
-首次编写和测试批处理文件时，最好从知道有用的一些话语和实体以及认为可能错误预测的一些话语和实体开始。 这有助于快速专注于问题区域。 使用未预测的几个不同的“工作”名称测试 GetJobInformation 和 ApplyForJob 意向之后，开发了此批处理测试文件，用于查看“工作”实体的某些值是否存在预测问题。 
+首次编写和测试批处理文件时，最好从知道有用的一些话语和实体以及认为可能错误预测的一些话语和实体开始。 这有助于快速专注于问题区域。 使用未预测的几个不同的“工作”名称测试 GetJobInformation 和 ApplyForJob 意向之后，开发了此批处理测试文件，用于查看“工作”实体的某些值是否存在预测问题    。 
 
-测试话语中提供的“工作”实体的值通常是一个或两个词，其中有几个示例有更多词。 如果自己的人力资源应用通常有多个词的工作名称，该应用中带有“工作”实体标记的示例话语将无法正常工作。
+测试话语中提供的“工作”实体的值通常是一个或两个词，其中有几个示例有更多词  。 如果自己的人力资源应用通常有多个词的工作名称，该应用中带有“工作”实体标记的示例话语将无法正常工作   。
 
 1. 在文本编辑器（如 [VSCode](https://code.visualstudio.com/)）中创建 `HumanResources-entities-batch.json`，或[下载](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json)它。
 
-
-2. 在 JSON 格式的批处理文件中，添加一个对象数组，其中包含具有想要在测试中预测的意向的话语以及话语中任何实体的位置。 由于实体是基于令牌的，因此请确保启动和停止字符上的每个实体。 不要以空格开始或结束话语。 这会导致批处理文件导入过程中出现错误。  
+2. 在 JSON 格式的批处理文件中，添加一个对象数组，其中包含具有想要在测试中预测的意向的话语以及话语中任何实体的位置  。 由于实体是基于令牌的，因此请确保启动和停止字符上的每个实体。 不要以空格开始或结束话语。 这会导致批处理文件导入过程中出现错误。  
 
    [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
 
 
 ## <a name="run-the-batch-with-entities"></a>使用实体运行批处理
 
-1. 选择顶部导航栏的“测试”。 
+1. 选择顶部导航栏的“测试”  。 
 
-2. 选择右侧面板中的“批处理测试面板”。 
+2. 选择右侧面板中的“批处理测试面板”  。 
 
-3. 选择“导入数据集”。
+3. 选择“导入数据集”  。
 
 4. 选择 `HumanResources-entities-batch.json` 文件的文件系统位置。
 
-5. 命名数据集 `entities`，然后选择“完成”。
+5. 命名数据集 `entities`，然后选择“完成”  。
 
-6. 选择“运行”按钮。 请等待测试完成。
+6. 选择“运行”按钮。  请等待测试完成。
 
-7. 选择“查看结果”。
-
-[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
+7. 选择“查看结果”  。
 
 ## <a name="review-entity-batch-results"></a>查看实体批处理结果
 
-图表打开，所有意向都已正确预测。 在右侧筛选器中向下滚动，查找错误的实体预测。 
+图表打开，所有意向都已正确预测。 在右侧筛选器中向下滚动，查找存在错误的实体预测。 
 
-1. 在筛选器中选择“工作”实体。
+1. 在筛选器中选择“工作”实体  。
 
     ![筛选器中的错误实体预测](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
 
     图表更改以显示实体预测。 
 
-2. 选择图表左下象限的“漏报”。 然后使用组合键 control + E 切换到令牌视图。 
+2. 选择图表左下象限的“漏报”  。 然后使用组合键 control + E 切换到令牌视图。 
 
     [![实体预测的令牌视图](./media/luis-tutorial-batch-testing/token-view-entities.png)](./media/luis-tutorial-batch-testing/token-view-entities.png#lightbox)
     

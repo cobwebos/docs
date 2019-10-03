@@ -13,14 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7763338a5c2d5ccb58fe912d9989ab5bb57d5932
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 8d5683cb060b63aebad7c68672c78f5b350a25d3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258490"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073585"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>使用 Apple FairPlay 或 Microsoft PlayReady 保护 HLS 内容
+
+> [!NOTE]
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。   > 无新特性或功能将被添加到媒体服务 v2。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+>
+
 使用 Azure 媒体服务，可使用以下格式动态加密 HTTP Live Streaming (HLS) 内容：  
 
 * **AES-128 信封明文密钥**
@@ -54,7 +59,7 @@ ms.locfileid: "58258490"
 
 必须在媒体服务密钥传送端上设置以下各项：
 
-  * **应用证书 (AC)**：这是一个包含私钥的 .pfx 文件。 创建此文件，并使用密码对其进行加密。
+  * **应用证书 (AC)** ：这是一个包含私钥的 .pfx 文件。 创建此文件，并使用密码对其进行加密。
 
        配置密钥传送策略时，必须提供该密码和 Base64 格式的 .pfx 文件。
 
@@ -77,7 +82,7 @@ ms.locfileid: "58258490"
 
 以下事项必须通过 FPS 客户端来设置：
 
-  * **应用证书 (AC)**：这是一个包含公钥的 .cer/.der 文件，操作系统使用它来加密某些有效负载。 媒体服务需要了解它，因为播放器需要它。 密钥传送服务使用相应的私钥对其进行解密。
+  * **应用证书 (AC)** ：这是一个包含公钥的 .cer/.der 文件，操作系统使用它来加密某些有效负载。 媒体服务需要了解它，因为播放器需要它。 密钥传送服务使用相应的私钥对其进行解密。
 
 要播放 FairPlay 加密的流，需要先获取实际 ASK，然后生成实际证书。 该过程将创建所有三个部分：
 
@@ -85,7 +90,7 @@ ms.locfileid: "58258490"
   * .pfx 文件
   * .pfx 的密码
 
-以下客户端支持使用 AES-128 CBC 加密的 HLS：OS X 上的 Safari、Apple TV、iOS。
+以下客户端支持使用 AES-128 CBC 加密的 HLS  ：OS X 上的 Safari、Apple TV、iOS。
 
 ## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>配置 FairPlay 动态加密和许可证传送服务
 下面是使用 FairPlay 保护资产的常规步骤，这些步骤使用媒体服务许可证传送服务，也使用动态加密。
@@ -508,7 +513,7 @@ namespace DynamicEncryptionWithFairPlay
             // Get a reference to the streaming manifest file from the  
             // collection of files in the asset.
 
-            var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+            var assetFile = asset.AssetFiles.LoList().Where(f => f.Name.ToLower().
                          EndsWith(".ism")).
                          FirstOrDefault();
 

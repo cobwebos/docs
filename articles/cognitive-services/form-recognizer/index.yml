@@ -1,0 +1,78 @@
+### YamlMime:Landing
+title: 表单识别器文档
+summary: Azure 表单识别器是一个认知服务，它使用机器学习技术从表与表单中识别和提取键值对。 然后，它会输出包含原始文件中的关系的结构化数据。 非监督式学习可让模型了解字段与项之间的布局和关系，而无需手动标记数据，或者进行繁琐的编程和维护。
+metadata:
+  title: 表单识别器文档
+  description: Azure 表单识别器是一个认知服务，它使用机器学习技术从表与表单中识别和提取键值对。 然后，它会输出包含原始文件中的关系的结构化数据。 非监督式学习可让模型了解字段与项之间的布局和关系，而无需手动标记数据，或者进行繁琐的编程和维护。
+  services: cognitive-services
+  ms.service: cognitive-services
+  ms.subservice: form-recognizer
+  ms.topic: landing-page
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 09/05/2019
+  ms.openlocfilehash: 0c450a79c0dbdd19732488af927c3c29df263a23
+  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70931830"
+landingContent:
+- title: 关于表单识别器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是表单识别器？
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: 通过表单识别器实现 AI 支持的流程自动化
+      url: https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer
+- title: 训练自定义模型并提取数据
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/dotnet-sdk.md
+    - text: 使用 REST API (Python)
+      url: quickstarts/python-train-extract.md
+    - text: 使用 REST API (cURL)
+      url: quickstarts/curl-train-extract.md
+- title: 从收据提取数据
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/dotnet-sdk.md
+- title: 生成训练数据集
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 生成训练数据集
+      url: build-training-data-set.md
+- title: 使用容器
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 安装并运行容器
+      url: form-recognizer-container-howto.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置容器
+      url: form-recognizer-container-configuration.md
+  - linkListType: deploy
+    links:
+    - text: 使用容器实例
+      url: deploy-form-recognizer-on-container-instances.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 表单识别器 API
+      url: https://aka.ms/form-recognizer/api
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure 命令行界面 (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list

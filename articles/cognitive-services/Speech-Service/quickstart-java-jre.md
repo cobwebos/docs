@@ -1,5 +1,5 @@
 ---
-title: 快速入门：识别语音，Java (Windows, Linux) - 语音服务
+title: 快速入门：识别语音，Java（Windows、Linux）- 语音服务
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何创建一个简单的 Java 应用程序，用于从计算机的麦克风中捕获和转录用户语音。
 services: cognitive-services
@@ -8,20 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 498e41b08133113be9789ef49291b8e2bb0f3705
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009393"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554103"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>快速入门：使用适用于 Java 的语音 SDK 识别语音
 
+针对[语音转语音翻译](quickstart-translate-speech-java-jre.md)和[语音优先虚拟助手](quickstart-virtual-assistant-java-jre.md)也提供了快速入门。
+
+如果需要，请选择不同的编程语言和/或环境：<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-在本文中，你将使用[语音 SDK](speech-sdk.md) 创建一个 Java 控制台应用程序。 可以通过电脑的麦克风实时将语音转录为文本。 此应用程序是使用语音 SDK Maven 程序包和 Eclipse Java IDE (v4.8) 在 64 位 Windows、64 位 Ubuntu Linux 16.04/18.04 或 macOS 10.13 或更高版本上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
+在本文中，你将使用[语音 SDK](speech-sdk.md) 创建一个 Java 控制台应用程序。 可以通过电脑的麦克风实时将语音转录为文本。 此应用程序是使用语音 SDK Maven 程序包和 Eclipse Java IDE (v4.8) 在 64 位 Windows、64 位 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9）或 macOS 10.13 或更高版本上生成的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
 > [!NOTE]
 > 对于语音设备 SDK 和 Roobo 设备，请参阅[语音设备 SDK](speech-devices-sdk.md)。
@@ -30,21 +33,29 @@ ms.locfileid: "59009393"
 
 本快速入门需要：
 
-* 操作系统：Windows（64 位）、Ubuntu Linux 16.04/18.04（64 位）或 MacOS 10.13 或更高版本
+* 操作系统：64 位 Windows、64 位 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9）或 macOS 10.13 或更高版本
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
 
-如果运行 Ubuntu 16.04/18.04，请确保在启动 Eclipse 之前安装这些依赖项。
+如果运行 Linux，请确保在启动 Eclipse 之前安装这些依赖项。
 
-```console
-sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-```
+* 在 Ubuntu 上：
 
-如果运行的是 Windows（64 位），请确保已安装了适用于平台的 Microsoft Visual C++ Redistributable。
-* [下载 Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+  ```sh
+  sudo apt-get update
+  sudo apt-get install libssl1.0.0 libasound2
+  ```
 
+* 在 Debian 9 上：
+
+  ```sh
+  sudo apt-get update
+  sudo apt-get install libssl1.0.2 libasound2
+  ```
+
+如果运行 Windows（64 位），请确保已安装适用于平台的 Microsoft Visual C++ Redistributable。
+* [下载 Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 ## <a name="create-and-configure-project"></a>创建并配置项目
 
@@ -52,9 +63,9 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 
 ## <a name="add-sample-code"></a>添加示例代码
 
-1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。
+1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。   
 
-1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。
+1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。   
 
    ![“新建 Java 类”窗口的屏幕截图](media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -70,7 +81,7 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-按 F11，或选择“运行” > “调试”。
+按 F11，或选择“运行” > “调试”。  
 接下来的 15 秒，通过麦克风提供的语音输入将被识别并记录到控制台窗口中。
 
 ![成功识别后的控制台输出的屏幕截图](media/sdk/qs-java-jre-07-console-output.png)

@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: d1dcd7895025ea608e5f6c4db5e0967817934f2a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 3c6147cc24f285fc32dce145e594f743c9633c20
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803404"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68857329"
 ---
 选择与后端项目类型 &mdash;[.NET 后端](#dotnet)或 [Node.js 后端](#nodejs)匹配的过程。
 
@@ -23,7 +23,7 @@ ms.locfileid: "59803404"
     using Microsoft.Azure.NotificationHubs;
     ```
 
-3. 将 `PostTodoItem`方法替换为以下代码：  
+3. 将 `PostTodoItem` 方法替换为以下代码：  
 
     ```csharp
     public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
@@ -69,7 +69,7 @@ ms.locfileid: "59803404"
 
 ### <a name="nodejs"></a>Node.js 后端项目
 
-1. 如果尚未执行此操作，请[下载快速入门项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)或使用 [Azure 门户中的在线编辑器](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor)。
+1. 设置后端项目。
 2. 将 todoitem.js 文件中的现有代码替换为以下内容：
 
     ```javascript

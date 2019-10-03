@@ -3,7 +3,7 @@ title: 开始使用队列存储和 Visual Studio 连接服务（WebJob 项目）
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始使用 WebJob 项目中的 Azure 队列存储
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999550"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510793"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -44,7 +44,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 除了 string 以外，参数还可以是字节数组、CloudQueueMessage 对象或定义的 POCO。
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
 在下面的示例中，队列消息包含 **BlobInformation** 对象的 JSON，该对象包含一个 **BlobName** 属性。 SDK 会自动反序列化该对象。
 
 ```csharp
@@ -190,7 +190,7 @@ public static void GracefulShutdownDemo(
 若要编写创建新队列消息的函数，请使用 **Queue** 属性。 与 **QueueTrigger** 一样，可以传入字符串形式的队列名称，还可以[动态设置队列名称](#how-to-set-configuration-options)。
 
 ### <a name="string-queue-messages"></a>字符串队列消息
-下面的非异步代码示例在名为“outputqueue”的队列中创建新的队列消息，该消息的内容与名为“inputqueue”的队列中收到的队列消息相同。 （对于异步函数，请按照本部分稍后将介绍的方法使用 IAsyncCollector<T>。）
+下面的非异步代码示例在名为“outputqueue”的队列中创建新的队列消息，该消息的内容与名为“inputqueue”的队列中收到的队列消息相同。 (对于异步函数, 请使用 **\<IAsyncCollector T >** , 如本节后面部分所示。)
 
 ```csharp
 public static void CreateQueueMessage(
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
 要创建包含 POCO（而不是字符串）的队列消息，请将 POCO 类型作为输出参数传递给 **Queue** 属性构造函数。
 
 ```csharp
@@ -216,7 +216,7 @@ public static void CreateQueueMessage(
 SDK 会自动将对象序列化为 JSON。 即使对象为 null，也始终会创建队列消息。
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>在异步函数中创建多个消息
-若要创建多个消息，请设置输出队列 **ICollector<T>** 或 **IAsyncCollector<T>** 的参数类型，如以下示例所示。
+若要创建多个消息, 请设置输出队列的参数**类型\<ICollector t >** 或 **\<IAsyncCollector t >** , 如下面的示例中所示。
 
 ```csharp
 public static void CreateQueueMessages(
@@ -236,7 +236,7 @@ public static void CreateQueueMessages(
 可对以下参数类型使用 **Queue** 属性：
 
 * **out string**（如果函数结束时参数值非 null，则创建队列消息）
-* **out byte[]**（用法类似于 **string**）
+* **out byte[]** （用法类似于 **string**）
 * **out CloudQueueMessage**（用法类似于 **string**）
 * **out POCO**（一种可序列化类型，如果函数结束时参数为 null，则创建一条包含 null 对象的消息）
 * **ICollector**
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
 对于队列消息中存储为 JSON 的 POCO，可以在 **Queue** 属性的 **blobPath** 参数中使用占位符来指定对象的属性。 还可以将队列元数据属性名称用作占位符。 请参阅[获取队列或队列消息元数据](#get-queue-or-queue-message-metadata)。
 
 下面的示例将 Blob 复制到具有不同扩展名的新 Blob。 队列消息是一个 **BlobInformation** 对象，其中包括 **BlobName** 和 **BlobNameWithoutExtension** 属性。 属性名称用作 **Blob** 属性的 blob 路径中的占位符。
@@ -342,7 +342,7 @@ logQueue.AddMessage(queueMessage);
 ### <a name="automatic-poison-message-handling"></a>自动处理有害消息
 SDK 在处理一个队列消息时最多会调用某个函数 5 次。 如果第五次尝试失败，消息将移到有害队列。 有关如何配置最大重试次数的信息，请参阅[如何设置配置选项](#how-to-set-configuration-options)。
 
-病毒队列的名称为 *{originalqueuename}*-poison。 可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
+病毒队列的名称为 *{originalqueuename}* -poison。 可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
 
 在下面的示例中，如果队列消息包含不存在的 blob 名称，则 **CopyBlob** 函数会失败。 在这种情况，消息将从 copyBlobqueue 队列移到 copyBlobqueue-poison 队列。 然后，**ProcessPoisonMessage** 记录有害消息。
 
@@ -544,7 +544,7 @@ public static void WriteLog(
 
 ![切换输出](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-在连续的 WebJob 中，应用程序日志显示在 Web 应用文件系统的 /data/jobs/continuous/*{webjobname}*/job_log.txt 中。
+在连续的 WebJob 中，应用程序日志显示在 Web 应用文件系统的 /data/jobs/continuous/ *{webjobname}* /job_log.txt 中。
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

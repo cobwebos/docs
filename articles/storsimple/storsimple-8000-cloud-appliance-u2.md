@@ -14,14 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763157"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965726"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>在 Azure 中部署和管理 StorSimple 云设备（Update 3 及更高版本）
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概述
 
@@ -40,7 +42,7 @@ StorSimple 8000 系列云设备是 Microsoft Azure StorSimple 解决方案附带
 
 StorSimple 云设备以两种型号提供：标准 8010（前身为 1100）和高级 8020（在 Update 2 引入的）。 下表提供了这两种型号的对比。
 
-| 设备型号 | 8010<sup>1</sup> | 8020 |
+| 设备模型 | 8010<sup>1</sup> | 8020 |
 | --- | --- | --- |
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3（4 核，7 GB 内存）| Standard_DS3（4 核，14 GB 内存）|
@@ -62,7 +64,7 @@ StorSimple 云设备是软件形式的 StorSimple，在 Microsoft Azure 虚拟�
 
 |  | 物理设备 | 云设备 |
 | --- | --- | --- |
-| **位置** |驻留在数据中心。 |在 Azure 中运行。 |
+| **Location** |驻留在数据中心。 |在 Azure 中运行。 |
 | **网络接口** |有六个网络接口：DATA 0 到 DATA 5。 |只有一个网络接口：DATA 0。 |
 | **注册** |在初始配置步骤中注册的。 |注册是一个单独的任务。 |
 | **服务数据加密密钥** |在物理设备上重新生成，并使用新密钥更新云设备。 |无法从云设备重新生成。 |

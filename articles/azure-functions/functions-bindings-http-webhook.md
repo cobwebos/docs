@@ -4,19 +4,18 @@ description: 了解如何在 Azure Functions 中使用 HTTP 触发器和绑定�
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构, HTTP, API, REST
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: a1d66cf4506e3b8f58572576db908812f4e2be07
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 983cf250f3a7188741c41386aac256bfdb28749b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490404"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097331"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 触发器和绑定
 
@@ -308,6 +307,7 @@ function.json 文件如下所示：
 import logging
 import azure.functions as func
 
+
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
@@ -559,7 +559,7 @@ public static Task<IActionResult> Run(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| 类型 | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
+| **type** | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
 | direction | 不适用| 必需 - 必须设置为 `in`。 |
 | name | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
@@ -666,7 +666,7 @@ module.exports = function (context, req) {
 
 还可从绑定数据中读取此信息。 此功能仅可用于 Functions 2.x 运行时， 而且它目前仅可用于 .NET 语言。
 
-在 .NET 语言中，此信息以 [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
+在 .NET 语言中，此信息以 [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
 
 ```csharp
 using System.Net;
@@ -707,7 +707,7 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 > 虽然密钥可以帮助你在开发过程中对 HTTP 终结点进行模糊处理，它们不应作为一种方法来保护生产环境中的 HTTP 触发器。 若要了解详细信息，请参阅[在生产环境中保护 HTTP 终结点](#secure-an-http-endpoint-in-production)。
 
 > [!NOTE]
-> 在 Functions 1.x 运行时中，Webhook 提供程序可以使用密钥以多种方式对请求授权，具体取决于提供程序支持何种方式。 [Webhook 和密钥](#webhooks-and-keys)对此进行了说明。 2.x 版运行时不包括对 Webhook 提供程序的内置支持。
+> 在 Functions 1.x 运行时中，Webhook 提供程序可以使用密钥以多种方式对请求授权，具体取决于提供程序支持何种方式。 [Webhook 和密钥](#webhooks-and-keys)对此进行了说明。 2\.x 版运行时不包括对 Webhook 提供程序的内置支持。
 
 有两种类型的密钥：
 
@@ -727,7 +727,7 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 
 ![在门户中管理函数密钥。](./media/functions-bindings-http-webhook/manage-function-keys.png)
 
-没有任何受支持的 API 可用于以编程方式获取函数密钥。
+你可以使用[密钥管理 API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)以编程方式获取功能键。
 
 ### <a name="api-key-authorization"></a>API 密钥的授权
 
@@ -756,7 +756,7 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 
 在使用这些函数应用级别的安全方法之一时，应将 HTTP 触发函数身份验证级别设置为 `anonymous`。
 
-### <a name="webhooks"></a>Webhook
+### <a name="webhooks"></a>Webhooks
 
 > [!NOTE]
 > Webhook 模式仅适用于 1.x 版 Functions 运行时。 进行此更改是为了提高 2.x 版中 HTTP 触发器的性能。
@@ -784,7 +784,7 @@ Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机
 
 HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限制为 4 KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)的 `httpRuntime` 元素指定。
 
-如果使用 HTTP 触发器的函数未在大约 2.5 分钟内完成，网关将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#consumption-plan)。
+如果使用 HTTP 触发器的函数未在大约 2.5 分钟内完成，网关将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
 
 ## <a name="trigger---hostjson-properties"></a>触发器 - host.json 属性
 
@@ -802,8 +802,8 @@ HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限
 
 |属性  |说明  |
 |---------|---------|
-| type |必须设置为 `http`。 |
-| direction | 必须设置为 `out`。 |
+| **type** |必须设置为 `http`。 |
+| **direction** | 必须设置为 `out`。 |
 |name | 在响应的函数代码中使用的变量名称，或者 `$return` 以使用返回值。 |
 
 ## <a name="output---usage"></a>输出 - 用法

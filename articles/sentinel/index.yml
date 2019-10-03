@@ -1,68 +1,91 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: 5f1d6005dd94bc700682e749f08c47356fcdc829
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993327"
-documentType: LandingData
-title: Azure Sentinel 预览版文档
+### YamlMime:Landing
+title: Azure Sentinel 文档
+summary: 本文提供了开始使用 Azure Sentinel 的用例。 利用针对现代世界而彻底改造的 SIEM，在威胁造成损害前预测并阻止威胁。 Azure Sentinel 有助于全方位查看企业。
 metadata:
-  title: Azure Sentinel 预览版文档 - 教程和快速入门 |Microsoft Doc
-  meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
+  title: Azure Sentinel 文档
+  description: 本文提供了开始使用 Azure Sentinel 的用例和方案。 利用针对现代世界而彻底改造的 SIEM，在威胁造成损害前预测并阻止威胁。 Azure Sentinel 有助于全方位查看企业。# 必需；显示在搜索结果中的文章说明。 < 160 个字符。
   services: sentinel
-  author: cmcclister
-  manager: carolz
   ms.service: sentinel
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: azure-sentinel
   ms.topic: landing-page
-  ms.date: 02/28/19
-  ms.author: cmcclister
-abstract:
-  description: Azure Sentinel 预览版是一种云原生 SIEM，它以云规模为整个企业提供智能安全性分析。 获得无限制的云速度和规模，以便帮助专注于真正重要的内容。 轻松地从所有自己的云或本地资产、Office 365、Azure 资源和其他云收集数据。 使用 Microsoft 安全分析专家提供的内置机器学习功能有效检测威胁。 使用内置的协调和自动化 playbook 自动做出威胁响应。
-sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何将数据载入到 Azure Sentinel，以及如何清晰了解数据和潜在的威胁。
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/deploy.svg
-      text: 载入 Azure Sentinel
-      href: /azure/sentinel/quickstart-onboard
-    - image:
-        src: media/index/get-started.svg
-      text: Azure Sentinel 入门
-      href: /azure/sentinel/quickstart-get-visibility
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何定义安全策略，如何保护资源免受恶意活动侵害，以及如何响应安全警报和事件。
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="/azure/sentinel/tutorial-detect-threats">使用 Azure Sentinel 检测威胁</a>
-    - html: <a href="/azure/sentinel/tutorial-respond-threats-playbook">设置自动的威胁响应</a>
-- title: 利用 Microsoft Learn 掌握技能
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
-    items:
-    - title: Azure 安全性简介
-      href: https://docs.microsoft.com/learn/azure
-      image:
-        src: media/index/tutorial.svg
-        href: https://docs.microsoft.com/learn/azure
-  - type: paragraph
-    text: <a href="/learn/browse/?term=security">更多交互式学习...</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - html: <a href="https://azure.microsoft.com/updates/?product=sentinel">服务更新</a>
+  ms.collection: collection
+  author: rkarlin
+  ms.author: rkarlin
+  ms.date: 25/09/2019
+  ms.openlocfilehash: 8f8815645b7dfcdcc5e1ed5212ecd1ec298f8644
+  ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71316481"
+landingContent:
+- title: 关于 Azure Sentinel
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Sentinel 是什么？
+      url: overview.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 载入 Azure Sentinel
+      url: quickstart-onboard.md
+    - text: 了解警报
+      url: quickstart-get-visibility.md
+  - linkListType: how-to-guide
+    links:
+    - text: 将数据连接到 Azure Sentinel
+      url: connect-data-sources.md
+- title: 连接其他数据源
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 连接 Azure AD
+      url: connect-azure-active-directory.md
+    - text: 连接 Azure 信息保护
+      url: connect-azure-information-protection.md
+    - text: 连接 AWS
+      url: connect-aws.md
+    - text: 连接 Palo Alto Networks
+      url: connect-paloalto.md
+    - text: 连接威胁智能
+      url: connect-threat-intelligence.md
+- title: 与多个租户一起工作
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何在 Azure Sentinel 中启用多租户支持
+      url: multiple-tenants-service-providers.md
+- title: 了解所在环境中发生的情况
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 监视数据
+      url: tutorial-monitor-your-data.md
+    - text: 调查事件
+      url: tutorial-investigate-cases.md
+- title: 检测威胁
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用内置分析来检测威胁
+      url: tutorial-detect-threats-built-in.md
+    - text: 创建自定义检测规则
+      url: tutorial-detect-threats-custom.md
+- title: 自动防御威胁
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 自动响应威胁
+      url: tutorial-respond-threats-playbook.md
+    - text: 使用 Jupyter 笔记本搜寻安全威胁
+      url: notebooks.md
+- title: 主动进行威胁检测
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 连接威胁智能
+      url: connect-threat-intelligence.md
+    - text: 寻找威胁
+      url: hunting.md

@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
 ms.openlocfilehash: 4d6dce952eca3d528a310685106a017dd7e3b80f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699952"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66166033"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>在 Azure VM 上安装 Elastic Stack
 
@@ -43,7 +43,7 @@ ms.locfileid: "55699952"
 
 使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
-以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -226,11 +226,11 @@ sudo systemctl start kibana.service
 az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 ```
 
-打开 Kibana 控制台并选择“创建”，根据之前发送给 Elasticsearch 的 syslog 数据生成默认索引。 
+打开 Kibana 控制台并选择“创建”，根据之前发送给 Elasticsearch 的 syslog 数据生成默认索引  。 
 
 ![浏览 Kibana 中的 Syslog 事件](media/elasticsearch-install/kibana-index.png)
 
-在 Kibana 控制台上选择“发现”，搜索、浏览和筛选 syslog 事件。
+在 Kibana 控制台上选择“发现”，搜索、浏览和筛选 syslog 事件  。
 
 ![浏览 Kibana 中的 Syslog 事件](media/elasticsearch-install/kibana-search-filter.png)
 

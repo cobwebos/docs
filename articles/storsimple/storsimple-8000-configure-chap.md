@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58095154"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60362702"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>为 StorSimple 设备配置 CHAP
 
@@ -45,10 +45,10 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
 
 #### <a name="to-configure-your-device-for-one-way-authentication"></a>配置设备的单向身份验证
 
-1. 在 Azure 门户中，转到“StorSimple Device Manager”服务。 单击“设备”，然后选择并单击要配置 CHAP 的设备。 转到“设备设置”>“安全性”。 在“安全设置”边栏选项卡中，单击“CHAP”。
+1. 在 Azure 门户中，转到“StorSimple Device Manager”服务。 单击“设备”  ，然后选择并单击要配置 CHAP 的设备。 转到“设备设置”>“安全性”  。 在“安全设置”  边栏选项卡中，单击“CHAP”  。
    
     ![CHAP 发起程序](./media/storsimple-8000-configure-chap/configure-chap5.png)
-2. 在“CHAP”边栏选项卡的“CHAP 发起程序”部分中：
+2. 在“CHAP”  边栏选项卡的“CHAP 发起程序”  部分中：
    
    1. 提供 CHAP 发起程序的用户名。
    2. 提供 CHAP 发起程序的密码。
@@ -63,27 +63,27 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>在 Windows 主机服务器上配置单向身份验证
 1. 在 Windows 主机服务器上，启动 iSCSI 发起程序。
-2. 在“iSCSI 发起程序属性”窗口中，执行以下步骤：
+2. 在“iSCSI 发起程序属性”窗口中，执行以下步骤： 
    
-   1. 单击“发现”选项卡。
+   1. 单击“发现”选项卡。 
       
        ![iSCSI 发起程序属性](./media/storsimple-configure-chap/IC740944.png)
-   2. 单击“发现门户”。
-3. 在“发现目标门户”对话框中执行以下操作：
+   2. 单击“发现门户”。 
+3. 在“发现目标门户”对话框中执行以下操作： 
    
    1. 指定设备的 IP 地址。
-   2. 单击“高级”。
+   2. 单击“高级”。 
       
        ![发现目标门户](./media/storsimple-configure-chap/IC740945.png)
-4. 在“高级设置”对话框中执行以下操作：
+4. 在“高级设置”对话框中执行以下操作： 
    
-   1. 选中“启用 CHAP 登录”复选框。
-   2. 在“名称”字段中，提供在 Azure 门户中为 CHAP 发起程序指定的用户名。
-   3. 在“目标机密”字段中，提供在 Azure 门户中为 CHAP 发起程序指定的密码。
-   4. 单击“确定”。
+   1. 选中“启用 CHAP 登录”复选框。 
+   2. 在“名称”  字段中，提供在 Azure 门户中为 CHAP 发起程序指定的用户名。
+   3. 在“目标机密”  字段中，提供在 Azure 门户中为 CHAP 发起程序指定的密码。
+   4. 单击“确定”。 
       
        ![高级设置常规](./media/storsimple-configure-chap/IC740946.png)
-5. 在“iSCSI 发起程序属性”窗口的“目标”选项卡中，设备状态应显示为“已连接”。 如果使用的是 StorSimple 1200 设备，则会将每个卷装载为 iSCSI 目标。 因此，需为每个卷重复步骤 3-4。
+5. 在“iSCSI 发起程序属性”窗口的“目标”选项卡中，设备状态应显示为“已连接”。    如果使用的是 StorSimple 1200 设备，则会将每个卷装载为 iSCSI 目标。 因此，需为每个卷重复步骤 3-4。
    
     ![装载为独立目标的卷](./media/storsimple-configure-chap/chap4.png)
    
@@ -98,18 +98,18 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
 
 #### <a name="to-configure-your-device-for-mutual-authentication"></a>配置设备的相互身份验证
 
-1. 在 Azure 门户中，转到“StorSimple Device Manager”服务。 单击“设备”，然后选择并单击要配置 CHAP 的设备。 转到“设备设置”>“安全性”。 在“安全设置”边栏选项卡中，单击“CHAP”。
+1. 在 Azure 门户中，转到“StorSimple Device Manager”服务。 单击“设备”  ，然后选择并单击要配置 CHAP 的设备。 转到“设备设置”>“安全性”  。 在“安全设置”  边栏选项卡中，单击“CHAP”  。
    
     ![CHAP 目标](./media/storsimple-8000-configure-chap/configure-chap5.png)
-2. 在此页上向下滚动，并在“CHAP 目标”部分执行以下操作：
+2. 在此页上向下滚动，并在“CHAP 目标”部分执行以下操作： 
    
-   1. 提供设备的“反向 CHAP 用户名”。
-   2. 提供设备的“反向 CHAP 密码”。
+   1. 提供设备的“反向 CHAP 用户名”。 
+   2. 提供设备的“反向 CHAP 密码”。 
    3. 确认该密码。
-3. 在“CHAP 发起程序”部分执行以下操作：
+3. 在“CHAP 发起程序”部分执行以下操作： 
    
-   1. 提供设备的“用户名”。
-   2. 提供设备的“密码”。
+   1. 提供设备的“用户名”。 
+   2. 提供设备的“密码”。 
    3. 确认该密码。
 
        ![CHAP 发起程序](./media/storsimple-8000-configure-chap/configure-chap11.png)
@@ -118,52 +118,52 @@ CHAP 表示质询握手身份验证协议。 它是服务器用于验证远程�
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>在 Windows 主机服务器上配置双向身份验证
 
 1. 在 Windows 主机服务器上，启动 iSCSI 发起程序。
-2. 在“iSCSI 发起程序属性”窗口中，单击“配置”选项卡。
-3. 单击“CHAP”。
-4. 在“iSCSI 发起程序相互 CHAP 机密”对话框中执行以下操作：
+2. 在“iSCSI 发起程序属性”窗口中，单击“配置”选项卡。  
+3. 单击“CHAP”。 
+4. 在“iSCSI 发起程序相互 CHAP 机密”对话框中执行以下操作： 
    
-   1. 键入在 Azure 门户中配置的“反向 CHAP 密码”。
-   2. 单击“确定”。
+   1. 键入在 Azure 门户中配置的“反向 CHAP 密码”。 
+   2. 单击“确定”。 
       
        ![iSCSI 发起程序相互 CHAP 机密](./media/storsimple-configure-chap/IC740949.png)
-5. 单击“目标”选项卡。
-6. 单击“连接”按钮。 
-7. 在“连接到目标”对话框中，单击“高级”。
-8. 在“高级属性”对话框中执行以下操作：
+5. 单击“目标”选项卡。 
+6. 单击“连接”按钮。  
+7. 在“连接到目标”对话框中，单击“高级”。  
+8. 在“高级属性”对话框中执行以下操作： 
    
-   1. 选中“启用 CHAP 登录”复选框。
-   2. 在“名称”字段中，提供在 Azure 门户中为 CHAP 发起程序指定的用户名。
-   3. 在“目标机密”字段中，提供在 Azure 门户中为 CHAP 发起程序指定的密码。
-   4. 选择“执行相互身份验证”复选框。
+   1. 选中“启用 CHAP 登录”复选框。 
+   2. 在“名称”  字段中，提供在 Azure 门户中为 CHAP 发起程序指定的用户名。
+   3. 在“目标机密”  字段中，提供在 Azure 门户中为 CHAP 发起程序指定的密码。
+   4. 选择“执行相互身份验证”复选框。 
       
        ![高级设置相互身份验证](./media/storsimple-configure-chap/IC740950.png)
-   5. 单击“确定”完成 CHAP 配置
+   5. 单击“确定”完成 CHAP 配置 
 
 有关在 Windows 主机服务器上配置 CHAP 的详细信息，请转到[其他注意事项](#additional-considerations)。
 
 ## <a name="additional-considerations"></a>其他注意事项
 
-“快速连接”功能不支持启用了 CHAP 的连接。 启用 CHAP 时，请确保使用“目标”选项卡上提供的“连接”按钮连接到目标。
+“快速连接”功能不支持启用了 CHAP 的连接。  启用 CHAP 时，请确保使用“目标”选项卡上提供的“连接”按钮连接到目标。  
 
 ![连接到目标](./media/storsimple-configure-chap/IC740947.png)
 
-在显示的“连接到目标”对话框中，选中“将此连接添加到收藏目标列表”复选框。 选中此项可确保每次重启计算机时，都会尝试还原到 iSCSI 收藏目标的连接。
+在显示的“连接到目标”对话框中，选中“将此连接添加到收藏目标列表”复选框。   选中此项可确保每次重启计算机时，都会尝试还原到 iSCSI 收藏目标的连接。
 
 ## <a name="errors-during-configuration"></a>配置期间的错误
 
-如果 CHAP 配置不正确，可能会出现错误消息“身份验证失败”。
+如果 CHAP 配置不正确，可能会出现错误消息“身份验证失败”。 
 
 ## <a name="verification-of-chap-configuration"></a>验证 CHAP 配置
 
 可通过以下步骤验证是否正在使用 CHAP。
 
 #### <a name="to-verify-your-chap-configuration"></a>验证 CHAP 配置
-1. 单击“收藏目标”。
+1. 单击“收藏目标”。 
 2. 选择为其启用了身份验证的目标。
-3. 单击“详细信息”。
+3. 单击“详细信息”。 
    
     ![iSCSI 发起程序属性收藏目标](./media/storsimple-configure-chap/IC740951.png)
-4. 在“收藏目标详细信息”对话框中，记下“身份验证”字段中的条目。 如果配置成功，则会显示“CHAP”。
+4. 在“收藏目标详细信息”对话框中，记下“身份验证”字段中的条目。   如果配置成功，则会显示“CHAP”。 
    
     ![收藏目标详细信息](./media/storsimple-configure-chap/IC740952.png)
 

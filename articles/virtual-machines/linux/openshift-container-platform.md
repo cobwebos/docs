@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 39eea84cc9301263381533e03e8f783e0a73ea19
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 48c462edf6c7b17c3a538b6ce0cb28609628d75f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999954"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091783"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>在 Azure 中部署 OpenShift 容器平台
 
@@ -38,15 +37,15 @@ ms.locfileid: "59999954"
 
 ### <a name="private-clusters"></a>专用群集
 
-部署 OpenShift 的专用群集群集需要多个只是不具有公共 IP 关联到主负载均衡器 （web 控制台） 或基础结构负载均衡器 （路由器）。  专用群集通常使用自定义 DNS 服务器 （不是默认 Azure DNS）、 自定义域名 （例如 contoso.com) 和预定义的虚拟网络。  对于专用群集，需要提前使用所有相应的子网和 DNS 服务器设置配置虚拟网络。  然后，使用**existingMasterSubnetReference**， **existingInfraSubnetReference**， **existingCnsSubnetReference**，和**existingNodeSubnetReference**指定由群集使用的现有子网。
+部署私有 OpenShift 群集只需使用与主负载均衡器 (web 控制台) 关联的公共 IP, 或将其部署到基础负载平衡器 (路由器)。  专用群集通常使用自定义 DNS 服务器 (而非默认 Azure DNS)、自定义域名 (如 contoso.com) 和预定义虚拟网络。  对于专用群集, 需要事先为虚拟网络配置所有适当的子网和 DNS 服务器设置。  然后, 使用**existingMasterSubnetReference**、 **existingInfraSubnetReference**、 **existingCnsSubnetReference**和**existingNodeSubnetReference**指定群集使用的现有子网。
 
-如果选择了专用的母版 (**masterClusterType**= 私有)，需要指定的静态专用 IP **masterPrivateClusterIp**。  此 IP 将分配给主负载均衡器的前端。  IP 必须在主机子网且未使用的 CIDR。  **masterClusterDnsType**必须设置为"自定义"和 DNS 名称必须为提供的主机**masterClusterDns**。  DNS 名称必须映射到静态专用 IP 和将用于访问主节点上的控制台。
+如果选择了 "私有主机" (**masterClusterType**= private), 则需要为**masterPrivateClusterIp**指定静态专用 IP。  此 IP 将分配给主负载均衡器的前端。  IP 必须在子网的 CIDR 内且不在使用中。  必须将**masterClusterDnsType**设置为 "custom", 并且必须为**MASTERCLUSTERDNS**提供主 DNS 名称。  DNS 名称必须映射到静态专用 IP, 并将用于访问主节点上的控制台。
 
-如果选择专用路由器 (**routerClusterType**= 私有)，需要指定的静态专用 IP **routerPrivateClusterIp**。  此 IP 将分配到前端的基础结构负载均衡器。  IP 地址必须为 CIDR 中基础结构的子网且未被使用。  **routingSubDomainType**必须设置为"自定义"和通配符 DNS 名称中，路由必须提供用于对**routingSubDomain**。  
+如果选择了专用路由器 (**routerClusterType**= private), 则需要为**routerPrivateClusterIp**指定静态专用 IP。  此 IP 将分配给基础负载均衡器的前端。  IP 必须在子网的 CIDR 内且不在使用中。  必须将**routingSubDomainType**设置为 "custom", 并且必须为**routingSubDomain**提供用于路由的通配符 DNS 名称。  
 
-如果选择了专用的主机和专用路由器，在自定义域名，还必须为输入**domainName**
+如果选择了 "专用主机" 和 "专用路由器", 则还必须为**domainName**输入自定义域名
 
-成功部署后，堡垒节点是可以使用 ssh 到公共 ip 的唯一节点。  即使主节点配置进行公共访问，它们不公开的 ssh 访问。
+成功部署后, 堡垒节点是具有可通过 ssh 连接到的公共 IP 的唯一节点。  即使主节点配置为公共访问权限, 它们也不会公开用于 ssh 访问。
 
 若要使用资源管理器模板进行部署，需要使用参数文件提供输入参数。 若要进一步自定义部署，请将 GitHub 存储库进行分支并更改相应的项。
 
@@ -66,7 +65,7 @@ ms.locfileid: "59999954"
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "_artifactsLocation": {
@@ -247,66 +246,66 @@ ms.locfileid: "59999954"
 
 不同的版本可能具有不同的参数，因此，请验证所用分支的必要参数。
 
-### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy。Parameters.json 文件解释
+### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy.json.已解释的参数 json 文件
 
-| 属性 | 描述 | 有效选项 | 默认值 |
+| 属性 | 描述 | 有效选项 | Default Value |
 |----------|-------------|---------------|---------------|
-| `_artifactsLocation`  | 项目 （json、 脚本等） 的 URL |  |  https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
-| `location` | 要将资源部署到 azure 区域 |  |  |
-| `masterVmSize` | 主 VM 的大小。 从选择一种允许在 azuredeploy.json 文件中列出的 VM 大小 |  | Standard_E2s_v3 |
-| `infraVmSize` | 大小的基础结构 VM。 从选择一种允许在 azuredeploy.json 文件中列出的 VM 大小 |  | Standard_D4s_v3 |
-| `nodeVmSize` | 应用程序节点 VM 的大小。 从选择一种允许在 azuredeploy.json 文件中列出的 VM 大小 |  | Standard_D4s_v3 |
-| `cnsVmSize` | 容器 (CN) 的本机存储节点 VM 的大小。 从选择一种允许在 azuredeploy.json 文件中列出的 VM 大小 |  | Standard_E4s_v3 |
-| `osImageType` | 要使用的 RHEL 映像。 defaultgallery:按需;marketplace： 第三方映像 | defaultgallery <br> 市场 | defaultgallery |
-| `marketplaceOsImage` | 如果`osImageType`marketplace，则为 publisher、 产品/服务、 sku、 版本 marketplace 产品/服务的输入适当的值。 此参数是一个对象类型 |  |  |
-| `storageKind` | 要使用存储的类型  | 托管式<br> 非托管 | 托管式 |
-| `openshiftClusterPrefix` | 群集用于配置的所有节点的主机名的前缀。  介于 1 到 20 个字符之间 |  | mycluster |
-| `minoVersion` | OpenShift 容器平台 3.11 部署次要版本 |  | 69 |
-| `masterInstanceCount` | 要部署的主机节点的数目 | 1, 3, 5 | 3 |
-| `infraInstanceCount` | 数字的基础结构要部署节点 | 1, 2, 3 | 3 |
-| `nodeInstanceCount` | 要部署的节点数 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 | 2 |
-| `cnsInstanceCount` | 若要部署的 CN 节点数 | 3, 4 | 3 |
-| `osDiskSize` | （以 gb 为单位） VM 的 OS 磁盘的大小 | 64, 128, 256, 512, 1024, 2048 | 64 |
-| `dataDiskSize` | 数据磁盘附加到节点 （以 gb 为单位） 的 Docker 卷的大小 | 32, 64, 128, 256, 512, 1024, 2048 | 64 |
-| `cnsGlusterDiskSize` | 数据磁盘附加到 CNS 节点以便使用由 glusterfs （以 gb 为单位的大小 | 32, 64, 128, 256, 512, 1024, 2048 | 128 |
+| `_artifactsLocation`  | 项目的 URL (json、脚本等) |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
+| `location` | 要将资源部署到的 Azure 区域 |  |  |
+| `masterVmSize` | 主 VM 的大小。 选择 azuredeploy.json 文件中列出的允许 VM 大小之一 |  | Standard_E2s_v3 |
+| `infraVmSize` | 基础 VM 的大小。 选择 azuredeploy.json 文件中列出的允许 VM 大小之一 |  | Standard_D4s_v3 |
+| `nodeVmSize` | 应用节点 VM 的大小。 选择 azuredeploy.json 文件中列出的允许 VM 大小之一 |  | Standard_D4s_v3 |
+| `cnsVmSize` | 容器本机存储 (CNS) 节点 VM 的大小。 选择 azuredeploy.json 文件中列出的允许 VM 大小之一 |  | Standard_E4s_v3 |
+| `osImageType` | 要使用的 RHEL 映像。 defaultgallery:按需;marketplace: 第三方映像 | defaultgallery <br> 市场 | defaultgallery |
+| `marketplaceOsImage` | 如果`osImageType`是 marketplace, 则输入 marketplace 产品/服务的 "发布者"、"产品/服务"、"sku" 和 "版本" 的相应值。 此参数是对象类型 |  |  |
+| `storageKind` | 要使用的存储类型  | 托管式<br> 无 | 托管式 |
+| `openshiftClusterPrefix` | 用于配置所有节点的主机名的群集前缀。  介于1到20个字符之间 |  | mycluster |
+| `minoVersion` | 要部署的 OpenShift 容器平台3.11 的次版本 |  | 69 |
+| `masterInstanceCount` | 要部署的主控节点数 | 1、3、5 | 3 |
+| `infraInstanceCount` | 要部署的基础节点数 | 1, 2, 3 | 3 |
+| `nodeInstanceCount` | 要部署的节点数 | 1、2、3、4、5、6、7、8、9、10、11、12、13、14、15、16、17、18、19、20、21、22、23、24、25、26、27、28、29、30 | 2 |
+| `cnsInstanceCount` | 要部署的 CNS 节点数 | 3、4 | 3 |
+| `osDiskSize` | VM 的 OS 磁盘大小 (GB) | 64、128、256、512、1024、2048 | 64 |
+| `dataDiskSize` | 要附加到 Docker 卷的节点的数据磁盘大小 (以 GB 为限) | 32、64、128、256、512、1024、2048 | 64 |
+| `cnsGlusterDiskSize` | 要附加到 CNS 节点以供 glusterfs 使用的数据磁盘的大小 (GB | 32、64、128、256、512、1024、2048 | 128 |
 | `adminUsername` | OS (VM) 登录名和初始 OpenShift 用户的管理员用户名 |  | ocpadmin |
-| `enableMetrics` | 启用指标。 指标则需要更多资源为基础结构 VM 因此选择适当大小 | true <br> false | false |
-| `enableLogging` | 启用日志记录。 elasticsearch pod 需要 8 GB RAM 因此选择适当大小的基础结构 VM | true <br> false | false |
-| `enableCNS` | 启用容器本机存储 | true <br> false | false |
-| `rhsmUsernameOrOrgId` | Red Hat 订阅管理员用户名或组织 ID |  |  |
-| `rhsmPoolId` | 包含计算节点的 OpenShift 授权的 Red Hat 订阅管理器池 ID |  |  |
-| `rhsmBrokerPoolId` | 包含节点的 OpenShift 授权主服务器和基础结构的 Red Hat 订阅管理器池 ID。 如果不具有不同的池 Id，输入与 rhsmPoolId 相同的池 ID |  |
-| `sshPublicKey` | 在 SSH 公钥复制此处 |  |  |
-| `keyVaultSubscriptionId` | 包含密钥保管库的订阅的订阅 ID |  |  |
-| `keyVaultResourceGroup` | 包含密钥保管库的资源组的名称 |  |  |
-| `keyVaultName` | 您创建的密钥保管库的名称 |  |  |
-| `enableAzure` | 启用 Azure 云提供程序 | true <br> false | true |
-| `aadClientId` | 也称为应用程序 ID 为服务主体的 azure Active Directory 客户端 ID |  |  |
-| `domainName` | 若要使用 （如果适用） 的自定义域名的名称。 设置为"none"如果不是部署的完全专用群集 |  | 无 |
-| `masterClusterDnsType` | OpenShift web 控制台的域类型。 default 将基础结构使用的主 DNS 标签的公共 IP。 自定义允许你定义你自己的名称 | default <br> 自定义 | default |
-| `masterClusterDns` | 要用于访问 OpenShift web 控制台中，如果选择了自定义的自定义 DNS 名称 `masterClusterDnsType` |  | console.contoso.com |
-| `routingSubDomainType` | 如果设置为 nipio`routingSubDomain`将使用 nip.io。  如果你有自己想要使用的路由的域，请使用自定义 | nipio <br> 自定义 | nipio |
-| `routingSubDomain` | 你想要用于路由如果选择了自定义作为通配符 DNS 名称 `routingSubDomainType` |  | apps.contoso.com |
-| `virtualNetworkNewOrExisting` | 选择是否要使用现有的虚拟网络或创建新的虚拟网络 | 现有 <br> 新的 | 新的 |
-| `virtualNetworkResourceGroupName` | 如果为 new 选择新的虚拟网络的资源组的名称 `virtualNetworkNewOrExisting` |  | resourceGroup().name |
-| `virtualNetworkName` | 如果为 new 选择创建新虚拟网络的名称 `virtualNetworkNewOrExisting` |  | openshiftvnet |
-| `addressPrefixes` | 新的虚拟网络的地址前缀 |  | 10.0.0.0/14 |
-| `masterSubnetName` | 主子网的名称 |  | mastersubnet |
-| `masterSubnetPrefix` | 用于主子网的 CIDR 需要的 addressPrefix 子集 |  | 10.1.0.0/16 |
-| `infraSubnetName` | 名称的基础结构的子网 |  | infrasubnet |
-| `infraSubnetPrefix` | 使用 CIDR 子网-必须是子集 addressPrefix 基础结构 |  | 10.2.0.0/16 |
-| `nodeSubnetName` | 节点的子网的名称 |  | nodesubnet |
-| `nodeSubnetPrefix` | 用于节点的子网的 CIDR 需要的 addressPrefix 子集 |  | 10.3.0.0/16 |
-| `existingMasterSubnetReference` | 对现有子网用于主节点的完整引用。 不需要创建新的 vNet / 子网 |  |  |
-| `existingInfraSubnetReference` | 完整的现有子网对引用的基础结构节点。 不需要创建新的 vNet / 子网 |  |  |
-| `existingCnsSubnetReference` | 对现有子网的 CN 节点的完整引用。 不需要创建新的 vNet / 子网 |  |  |
-| `existingNodeSubnetReference` | 对计算节点的现有子网的完整引用。 不需要创建新的 vNet / 子网 |  |  |
-| `masterClusterType` | 指定是否在群集使用专用或公用的主节点。 如果选择专用，则不会向公共 IP 通过 Internet 公开的主节点。 相反，它将使用中指定的专用 IP `masterPrivateClusterIp` | 公共 <br> 专用 | 公共 |
-| `masterPrivateClusterIp` | 如果选择了专用的主节点，然后将专用 IP 地址必须指定用于通过主节点的内部负载均衡器。 此静态 IP 必须在主机子网和尚不存在正在使用的 CIDR 块。 如果选择了公共的主节点，不会使用此值，但是仍必须指定 |  | 10.1.0.200 |
-| `routerClusterType` | 指定是否在群集使用专用或公共基础结构节点。 如果选择专用，则基础结构节点不会暴露在 Internet 通过公共 IP。 相反，它将使用中指定的专用 IP `routerPrivateClusterIp` | 公共 <br> 专用 | 公共 |
-| `routerPrivateClusterIp` | 如果是私有的基础结构选择节点，则必须为指定的专用 IP 地址通过使用内部负载均衡器基础结构节点。 此静态 IP 必须在主机子网和尚不存在正在使用的 CIDR 块。 如果公钥基础结构选择节点，不会使用此值，但是仍必须指定 |  | 10.2.0.200 |
-| `routingCertType` | 自定义证书用于路由域或默认自签名的证书-按照中的说明进行操作**自定义证书**部分 | selfsigned <br> 自定义 | selfsigned |
-| `masterCertType` | 自定义证书用于主机的域或默认自签名的证书-按照中的说明进行操作**自定义证书**部分 | selfsigned <br> 自定义 | selfsigned |
+| `enableMetrics` | 启用指标。 指标需要更多的资源, 因此请为基础 VM 选择合适的大小 | 真 <br> 假 | 假 |
+| `enableLogging` | 启用日志记录。 elasticsearch pod 需要 8 GB RAM, 因此请为基础 VM 选择合适的大小 | 真 <br> 假 | 假 |
+| `enableCNS` | 启用容器本机存储 | 真 <br> 假 | 假 |
+| `rhsmUsernameOrOrgId` | Red Hat 订阅管理器用户名或组织 ID |  |  |
+| `rhsmPoolId` | 包含计算节点 OpenShift 权利的 Red Hat 订阅管理器池 ID |  |  |
+| `rhsmBrokerPoolId` | Red Hat 订阅管理器池 ID, 其中包含用于主机和基础节点的 OpenShift 权利。 如果没有其他池 Id, 请输入与 "rhsmPoolId" 相同的池 ID |  |
+| `sshPublicKey` | 在此处复制 SSH 公钥 |  |  |
+| `keyVaultSubscriptionId` | 包含 Key Vault 的订阅的订阅 ID |  |  |
+| `keyVaultResourceGroup` | 包含 Key Vault 的资源组的名称 |  |  |
+| `keyVaultName` | 创建的 Key Vault 的名称 |  |  |
+| `enableAzure` | 启用 Azure 云提供程序 | 真 <br> 假 | 真 |
+| `aadClientId` | Azure Active Directory 客户端 ID 也称为服务主体的应用程序 ID |  |  |
+| `domainName` | 要使用的自定义域名的名称 (如果适用)。 如果不部署完全专用群集, 则设置为 "无" |  | 无 |
+| `masterClusterDnsType` | OpenShift web 控制台的域类型。 "默认" 将使用主基础公共 IP 的 DNS 标签。 "自定义" 允许您定义自己的名称 | 默认 <br> 自定义 | 默认 |
+| `masterClusterDns` | 如果选择了 "自定义", 则用于访问 OpenShift web 控制台的自定义 DNS 名称`masterClusterDnsType` |  | console.contoso.com |
+| `routingSubDomainType` | 如果设置为 "nipio", `routingSubDomain`将使用 nip.io。  如果你有要用于路由的自己的域, 请使用 "自定义" | nipio <br> 自定义 | nipio |
+| `routingSubDomain` | 如果选择了 "自定义", 则要用于路由的通配符 DNS 名称`routingSubDomainType` |  | apps.contoso.com |
+| `virtualNetworkNewOrExisting` | 选择是使用现有虚拟网络还是新建虚拟网络 | 现存 <br> 新资源 | 新资源 |
+| `virtualNetworkResourceGroupName` | 如果为其选择了 "新建", 则为新虚拟网络的资源组名称`virtualNetworkNewOrExisting` |  | resourceGroup (). 名称 |
+| `virtualNetworkName` | 如果为其选择了 "新建", 要创建的新虚拟网络的名称`virtualNetworkNewOrExisting` |  | openshiftvnet |
+| `addressPrefixes` | 新虚拟网络的地址前缀 |  | 10.0.0.0/14 |
+| `masterSubnetName` | 子网的名称 |  | mastersubnet |
+| `masterSubnetPrefix` | 用于子网的 CIDR-需要是 addressPrefix 的子集 |  | 10.1.0.0/16 |
+| `infraSubnetName` | 基础子网的名称 |  | infrasubnet |
+| `infraSubnetPrefix` | 用于基础子网的 CIDR-需要是 addressPrefix 的子集 |  | 10.2.0.0/16 |
+| `nodeSubnetName` | 节点子网的名称 |  | nodesubnet |
+| `nodeSubnetPrefix` | 用于节点子网的 CIDR-需要是 addressPrefix 的子集 |  | 10.3.0.0/16 |
+| `existingMasterSubnetReference` | 主节点的现有子网的完整引用。 如果创建新的 vNet/子网, 则不需要 |  |  |
+| `existingInfraSubnetReference` | 对基础节点的现有子网的完整引用。 如果创建新的 vNet/子网, 则不需要 |  |  |
+| `existingCnsSubnetReference` | 对 CNS 节点的现有子网的完整引用。 如果创建新的 vNet/子网, 则不需要 |  |  |
+| `existingNodeSubnetReference` | 完全引用计算节点的现有子网。 如果创建新的 vNet/子网, 则不需要 |  |  |
+| `masterClusterType` | 指定群集是使用专用还是公用主节点。 如果选择了 "专用", 则不会通过公共 IP 向 Internet 公开主节点。 相反, 它将使用`masterPrivateClusterIp` | public <br> private | public |
+| `masterPrivateClusterIp` | 如果选择了 "专用主节点", 则必须指定专用 IP 地址以供主节点的内部负载均衡器使用。 此静态 IP 必须在子网的 CIDR 块中, 但尚未使用。 如果选择了公共主节点, 则不会使用此值, 但仍必须指定该值 |  | 10.1.0.200 |
+| `routerClusterType` | 指定群集是使用专用节点还是公共基础节点。 如果选择 "专用", 则不会通过公共 IP 向 Internet 公开基础节点。 相反, 它将使用`routerPrivateClusterIp` | public <br> private | public |
+| `routerPrivateClusterIp` | 如果选择了 "专用" 基础节点, 则必须指定专用 IP 地址以供基础节点的内部负载均衡器使用。 此静态 IP 必须在子网的 CIDR 块中, 但尚未使用。 如果选择了公共基础节点, 则不会使用此值, 但仍必须指定。 |  | 10.2.0.200 |
+| `routingCertType` | 使用自定义证书来路由域或默认的自签名证书-按照 "**自定义证书**" 部分中的说明操作 | selfsigned <br> 自定义 | selfsigned |
+| `masterCertType` | 为主域或默认的自签名证书使用自定义证书-按照**自定义证书**部分中的说明进行操作 | selfsigned <br> 自定义 | selfsigned |
 
 <br>
 
@@ -323,7 +322,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-该部署需要至少 60 分钟才能完成，根据部署的节点和配置选项的总数。 部署完成时，终端上会输出 OpenShift 控制台的守护主机 DNS FQDN 和 URL。
+部署至少需要60分钟才能完成, 具体取决于部署的节点总数和配置的选项。 部署完成时，终端上会输出 OpenShift 控制台的守护主机 DNS FQDN 和 URL。
 
 ```json
 {
@@ -336,7 +335,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
 
 ## <a name="connect-to-the-openshift-cluster"></a>连接到 OpenShift 群集
 
-部署完成后，从部署输出部分检索连接。 使用连接到 OpenShift 控制台中使用浏览器**OpenShift 控制台 URL**。 此外可以将 SSH 到堡垒主机。 在以下示例中，管理员用户名为 clusteradmin，守护主机的公共 IP DNS FQDN 为 bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com：
+部署完成后，从部署输出部分检索连接。 使用**OpenShift 控制台 URL**, 通过浏览器连接到 OpenShift 控制台。 还可以通过 SSH 连接到堡垒主机。 在以下示例中，管理员用户名为 clusteradmin，守护主机的公共 IP DNS FQDN 为 bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com：
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com

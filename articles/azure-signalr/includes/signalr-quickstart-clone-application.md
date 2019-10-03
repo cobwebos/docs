@@ -8,11 +8,11 @@ ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: bef803de6cf8d6fdba05950a502d7d70f0da9581
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262741"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173319"
 ---
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 

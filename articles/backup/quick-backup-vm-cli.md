@@ -1,22 +1,21 @@
 ---
 title: Azure 快速入门 - 使用 Azure CLI 备份 VM
 description: 了解如何使用 Azure CLI 备份虚拟机
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
-ms.author: raynew
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: d3ed9370726d35f67edfbcf32dfd25e74d7865e5
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 0a0718387962f677184df85ef95d303a128d9166
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621560"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874695"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>使用 CLI 在 Azure 中备份虚拟机
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点可存储在异地冗余的恢复保管库中。 本文详细介绍如何使用 Azure CLI 在 Azure 中备份虚拟机 (VM)。 也可以使用 [Azure PowerShell](quick-backup-vm-powershell.md) 或 [Azure 门户](quick-backup-vm-portal.md)执行这些步骤。
@@ -33,9 +32,9 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 可以通�
 
 使用 [az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault#az-backup-vault-create) 创建恢复服务保管库。 指定与想要保护的 VM 相同的资源组和位置。 如果使用过 [VM 快速入门](../virtual-machines/linux/quick-create-cli.md)，则已创建：
 
-- 名为 myResourceGroup 的资源组；
-- 名为 myVM 的 VM；
-- “eastus”位置的资源。
+- 名为 myResourceGroup 的资源组； 
+- 名为 myVM 的 VM  ；
+- “eastus”位置的资源。 
 
 ```azurecli-interactive 
 az backup vault create --resource-group myResourceGroup \
@@ -75,6 +74,9 @@ az backup protection enable-for-vm \
     --policy-name DefaultPolicy
 ```
 
+> [!IMPORTANT]
+> 使用 CLI 一次为多个 VM 启用备份时，请确保单个策略关联的 VM 不超过 100 个。 这是[建议的最佳做法](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy)。 目前，如果有超过 100 个 VM，PS 客户端不会显式阻止，但计划在将来添加检查。
+
 ## <a name="start-a-backup-job"></a>启动备份作业
 若要立即开始备份而不是等待默认策略根据计划的时间运行作业，请使用 [az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now)。 第一个备份作业会创建一个完整恢复点。 此初始备份后的每个备份作业会创建增量恢复点。 增量恢复点有利于存储并具有时效性，因为它们仅传输自上次备份以来所做的更改。
 
@@ -106,16 +108,16 @@ az backup job list \
     --output table
 ```
 
-输出如以下示例所示，其中显示备份作业的状态为“正在进行”：
+输出如以下示例所示，其中显示备份作业的状态为“正在进行”： 
 
-```
+```output
 Name      Operation        Status      Item Name    Start Time UTC       Duration
 --------  ---------------  ----------  -----------  -------------------  --------------
 a0a8e5e6  Backup           InProgress  myvm         2017-09-19T03:09:21  0:00:48.718366
 fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31.191807
 ```
 
-当备份作业的“状态”报告为“已完成”时，表示 VM 已受恢复服务的保护，并且已存储完整的恢复点。
+当备份作业的“状态”报告为“已完成”时，表示 VM 已受恢复服务的保护，并且已存储完整的恢复点。  
 
 
 ## <a name="clean-up-deployment"></a>清理部署
@@ -138,7 +140,7 @@ az group delete --name myResourceGroup
 
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，我们创建了恢复服务保管库，在 VM 上启用了保护，并创建了初始恢复点。 若要详细了解 Azure 备份和恢复服务，请继续学习其他教程。
+本快速入门介绍了如何创建恢复服务保管库，如何在 VM 上启用保护，以及如何创建初始恢复点。 若要详细了解 Azure 备份和恢复服务，请继续学习其他教程。
 
 > [!div class="nextstepaction"]
 > [备份多个 Azure VM](./tutorial-backup-vm-at-scale.md)

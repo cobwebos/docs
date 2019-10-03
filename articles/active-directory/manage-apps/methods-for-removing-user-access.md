@@ -3,8 +3,8 @@ title: 如何删除用户对应用程序的访问权限 | Microsoft Docs
 description: 了解如何删除用户对应用程序的访问权限
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db9ac671b616e2b5af59c033d08768c9e572876f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5b69502995eff88df53af3671a8e611809f83e59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105363"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65826100"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>如何删除用户对应用程序的访问权限
 
@@ -38,21 +38,21 @@ ms.locfileid: "58105363"
 
 若要**删除应用程序**，请按照以下说明进行操作：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  或“共同管理员”  身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”  ，打开“Azure Active Directory 扩展”  。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”  ，选择“Azure Active Directory”  项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”  。
 
-5. 单击“所有应用程序”，查看所有应用程序的列表。
+5. 单击“所有应用程序”  ，查看所有应用程序的列表。
 
-   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”  顶部的“筛选器”  控件，并将“显示”  选项设置为“所有应用程序”  。
 
 6. 选择要删除的应用程序。
 
-7. 加载应用程序后，在应用程序顶部的“概述”窗格中，单击“删除”图标。
+7. 加载应用程序后，在应用程序顶部的“概述”  窗格中，单击“删除”  图标。
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>我要禁用用户未来针对应用程序的所有同意操作
 
@@ -60,15 +60,15 @@ ms.locfileid: "58105363"
 
 若要**禁用用户未来在整个目录中执行的所有同意操作**，请根据以下说明进行操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”  身份登录。
 
-2.  打开“Azure Active Directory 扩展” 
+2.  打开“Azure Active Directory 扩展”  
 
-3.  在导航菜单中，单击“企业应用程序”。
+3.  在导航菜单中，单击“企业应用程序”  。
 
-5.  单击“用户设置”。
+5.  单击“用户设置”  。
 
-6.  将“用户可以允许应用代表他们访问公司数据”切换为“否”并单击“保存”按钮。
+6.  将“用户可以允许应用代表他们访问公司数据”切换为“否”并单击“保存”按钮   。
 
 
 ## <a name="next-steps"></a>后续步骤

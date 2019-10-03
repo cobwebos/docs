@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 90df43e22f17fd32fe642514df098b72700e77af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 3cf136c5ddec8f4998d15c597914e1f806453945
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108295"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60631577"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>修改 StorSimple 8000 系列设备上的 DATA 0 网络接口设置
 
@@ -38,20 +38,20 @@ DATA 0 接口最先是在 StorSimple 设备的初始部署期间通过设置向�
 可以通过连接到 StorSimple 设备的 Windows PowerShell 接口并启动设置向导会话来重新配置 DATA 0 网络设置。 可以执行以下步骤来修改 DATA 0 设置：
 
 #### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>通过设置向导修改 DATA 0 网络设置
-1. 在串行控制台菜单中，选择选项 1“使用完全访问权限登录”。 出现提示时，请提供**设备管理员密码**。 默认密码为 `Password1`。
+1. 在串行控制台菜单中，选择选项 1“使用完全访问权限登录”  。 出现提示时，请提供**设备管理员密码**。 默认密码为 `Password1`。
 2. 在命令提示符处，键入：
    
     `Invoke-HcsSetupWizard`
 3. 设置向导随即出现，以帮助配置设备的 DATA 0 接口。 为 IP 地址、网关和网络掩码提供新值。
 
 > [!NOTE]
-> 固定控制器 IP 将需要在 Azure 门户中通过 StorSimple 设备的“网络设置”边栏选项卡进行重新配置。 有关详细信息，请转到[修改网络接口](storsimple-8000-modify-device-config.md#modify-network-interfaces)。
+> 固定控制器 IP 将需要在 Azure 门户中通过 StorSimple 设备的“网络设置”边栏选项卡进行重新配置。  有关详细信息，请转到[修改网络接口](storsimple-8000-modify-device-config.md#modify-network-interfaces)。
 
 ## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>通过 Set-HcsNetInterface cmdlet 修改 DATA 0 网络设置
 重新配置 DATA 0 网络接口的另一种方法是使用 `Set-HcsNetInterface` cmdlet。 该 cmdlet 是从 StorSimple 设备的 Windows PowerShell 接口执行的。 当使用此过程时，还可以在此处配置控制器固定 IP。 可以执行以下步骤来修改 DATA 0 设置： 
 
 #### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>通过 Set-HcsNetInterface cmdlet 修改 DATA 0 网络设置
-1. 在串行控制台菜单中，选择选项 1“使用完全访问权限登录”。 出现提示时，请提供设备管理员密码。 默认密码为 `Password1`。
+1. 在串行控制台菜单中，选择选项 1“使用完全访问权限登录”  。 出现提示时，请提供设备管理员密码。 默认密码为 `Password1`。
 2. 在命令提示符处，键入：
    
     `Set-HCSNetInterface -InterfaceAlias Data0 -IPv4Address <> -IPv4Netmask <> -IPv4Gateway <> -Controller0IPv4Address <> -Controller1IPv4Address <> -IsiScsiEnabled 1 -IsCloudEnabled 1`

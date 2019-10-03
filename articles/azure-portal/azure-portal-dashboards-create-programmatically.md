@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
 ms.openlocfilehash: b24a0397a1365479907fedc6348caa54508dbbb0
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444880"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60552136"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -380,7 +380,7 @@ __可在本文档末尾查看完整的工作模板。__
 
 ### <a name="template-representation-of-our-example-dashboard"></a>示例仪表板的模板表示形式
 
-仪表板的模板版本定义了三个参数，分别为virtualMachineName、virtualMachineResourceGroup 和 dashboardName。  使用这些参数可在每次部署时将此仪表板指向不同的 Azure 虚拟机。 突出显示了参数化的 id，用于指示此仪表板可以编程方式配置并部署为指向任何 Azure 虚拟机。 测试此功能的最简单方法是复制以下模板并将其粘贴到 [Azure 门户的模板部署页](https://portal.azure.com/#create/Microsoft.Template)。 
+仪表板的模板版本定义了三个参数，分别为virtualMachineName、virtualMachineResourceGroup 和 dashboardName    。  使用这些参数可在每次部署时将此仪表板指向不同的 Azure 虚拟机。 突出显示了参数化的 id，用于指示此仪表板可以编程方式配置并部署为指向任何 Azure 虚拟机。 测试此功能的最简单方法是复制以下模板并将其粘贴到 [Azure 门户的模板部署页](https://portal.azure.com/#create/Microsoft.Template)。 
 
 此示例自行部署了一个仪表板，但使用模板语言可部署多个资源并将其与一个或多个仪表板绑定。 
 

@@ -6,16 +6,15 @@ documentationcenter: na
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 2762e5c4f2b67415a0e42e80a34ae5b34c57adc9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c411ff6b3a7152adaaf29045f4c3b3a3deb22d09
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086575"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087591"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 Zip 部署
 

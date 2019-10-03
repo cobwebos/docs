@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: eb1fe69a7fb99949ac95291c33e76c1a32bf5439
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310051"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965456"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>为 StorSimple 8000 系列设备部署 StorSimple 设备管理器服务
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概述
 
@@ -75,7 +77,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 
     ![搜索要删除的服务](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. 这将转到 StorSimple 设备管理器服务边栏选项卡。 单击“删除” 。
+2. 这将转到 StorSimple 设备管理器服务边栏选项卡。 单击“删除”。
 
     ![删除服务](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
@@ -187,7 +189,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>在运行 Update 5.0 之前版本的设备上支持的操作
 Azure 门户中仅支持运行 Update 5.0 和更高版本的 StorSimple 设备。 对于运行较旧版本的设备，仅提供有限支持。 在迁移到 Azure 门户后，可使用下表来了解在运行 Update 5.0 之前版本的设备上支持的操作。
 
-| Operation                                                                                                                       | 支持      |
+| 操作                                                                                                                       | 支持      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
 | 注册设备                                                                                                               | 是            |
 | 配置设备设置，例如常规、网络和安全性                                                                | 是            |

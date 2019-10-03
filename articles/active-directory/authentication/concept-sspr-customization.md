@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/30/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d38d93a1c9716cc3a71d904b7b1a46fb8b1c2ee0
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 527dd99f122ec70cc47305947a5cbce3207b9664
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369218"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666300"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -24,14 +24,22 @@ ms.locfileid: "58369218"
 
 ## <a name="customize-the-contact-your-administrator-link"></a>自定义“联系管理员”链接
 
-即使未启用 SSPR，用户在密码重置门户中也仍可找到“联系管理员”链接。 如果用户选择该链接，它将执行以下任务之一：
+自助服务密码重置用户在密码重置门户中提供 "联系你的管理员" 链接。 如果用户选择此链接, 它将执行以下两个操作之一:
 
-* 向管理员发送一封电子邮件，请求他们帮助更改用户的密码。
-* 将用户指引到指定的 URL 以获取帮助。
+* 如果处于默认状态:
+   * 电子邮件将发送给你的管理员, 并要求他们在更改用户密码时提供帮助。 请参阅下面的[示例电子邮件](#sample-email)。
+* 如果自定义:
+   * 将用户发送到管理员指定的网页或电子邮件地址以获得帮助。
 
-建议将此联系人设置为用户已用来提问支持问题的电子邮件地址或网站等内容。
+> [!TIP]
+> 如果你自定义此功能, 我们建议将其设置为用户已熟悉支持的内容。
 
-![若要重置电子邮件发送给管理员的示例请求][Contact]
+> [!WARNING]
+> 如果你使用需要密码重置的电子邮件地址和帐户自定义此设置, 则用户可能无法请求协助。
+
+### <a name="sample-email"></a>示例电子邮件
+
+![用于重置发送到管理员的电子邮件的示例请求][Contact]
 
 此联系人电子邮件按以下顺序发送到以下收件人：
 
@@ -68,8 +76,8 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 * 用户输入其用户名后
 * 如果用户通过以下方式访问自定义的 URL：
-   * 通过传递`whr`到密码重置页，例如 `https://login.microsoftonline.com/?whr=contoso.com`
-   * 通过传递`username`到密码重置页，例如 `https://login.microsoftonline.com/?username=admin@contoso.com`
+   * 通过将`whr`参数传递到密码重置页, 如`https://login.microsoftonline.com/?whr=contoso.com`
+   * 通过将`username`参数传递到密码重置页, 如`https://login.microsoftonline.com/?username=admin@contoso.com`
 
 有关如何配置公司品牌的详细信息，请参阅[将公司品牌添加到 Azure AD 中的登录页](../fundamentals/customize-branding.md)一文。
 
@@ -95,4 +103,4 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
-[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "联系管理员请求帮忙重置密码的电子邮件示例"
+[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "与管理员联系以获取有关重置密码电子邮件示例的帮助"

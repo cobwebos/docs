@@ -12,276 +12,290 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 08/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 96e3a24b0c9f9ab21652ffcd1b29deeb512581e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 51c699f9b392be5f2e2bc16b5729d6567ace7f17
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796927"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016241"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源
 
-使用 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)可以轻松地[一次一个向实验室中添加 VM](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm)。 但是，如果环境包含多个 VM，则必须分别创建每个 VM。 对于多层 Web 应用或 SharePoint 场等情况，需要使用某种机制以单个步骤创建多个 VM。 现在，可以使用 Azure 资源管理器模板定义 Azure 解决方案的基础结构和配置，以一致的状态重复部署多个 VM。 此功能提供以下优势：
+Azure 开发测试实验室环境允许用户在实验室范围内以一致的方式轻松部署复杂的基础结构。 可以使用[Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)在开发测试实验室中创建具有资源集的环境。 这些环境可以包含资源管理器模板可以创建的任何 Azure 资源。 
 
-- Azure 资源管理器模板是从源代码管理存储库（GitHub 或 Azure DevOps Services Git）直接加载的。
-- 配置后，用户可以在 Azure 门户中通过选择 Azure 资源管理器模板来创建环境，就像对其他类型的 [VM 库](./devtest-lab-comparing-vm-base-image-types.md)所做的一样。
-- 除了 IaaS VM 以外，还可以通过 Azure 资源管理器模板在环境中预配 Azure PaaS 资源。
-- 除了其他类型的库创建的单个 VM 以外，还可以在实验室中跟踪环境的成本。
-- PaaS 资源会被创建，并在成本跟踪中显示；但 VM 自动关闭不适用于 PaaS 资源。
+通过使用[Azure 门户](https://portal.azure.com), 一次可以轻松地[将一个虚拟机 (VM) 添加](devtest-lab-add-vm.md)到实验室。 不过, 多层 web 应用或 SharePoint 场等方案需要一种机制, 以便在单个步骤中创建多个 Vm。 通过使用 Azure 资源管理器模板, 可以定义 Azure 解决方案的基础结构和配置, 并以一致的状态重复部署多个虚拟机。 
 
-详细了解[使用 Resource Manager 模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#the-benefits-of-using-resource-manager)通过单个操作部署、更新或删除所有实验室资源的众多优点。
+Azure 资源管理器模板还具有以下优势:
+
+- Azure 资源管理器模板直接从 GitHub 或 Azure Repos 源代码管理存储库加载。
+- 用户可以通过从 Azure 门户中选取配置的 Azure 资源管理器模板来创建环境, 就像使用其他类型的[VM 库](devtest-lab-comparing-vm-base-image-types.md)时一样。
+- 可以通过 Azure 资源管理器模板在环境中预配 Azure PaaS 资源以及 IaaS Vm。
+- 除了通过其他类型的基创建的单个 Vm 之外, 还可以跟踪实验室环境的成本。 PaaS 资源随即创建并显示在成本跟踪中。 不过，VM 自动关闭不适用于 PaaS 资源。
+
+若要了解有关使用资源管理器模板在单个操作中部署、更新或删除多个实验室资源的优势的详细信息, 请参阅[使用资源管理器模板的好处](../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager)。
 
 > [!NOTE]
-> 基于 Resource Manager 模板创建更多实验室 VM 时，无论正创建多 VM 还是单 VM，都需注意某些差异。 [使用虚拟机的 Azure 资源管理器模板](devtest-lab-use-resource-manager-template.md)更加详细地阐述了这些差异。
+> 使用资源管理器模板作为创建实验室 Vm 的基础时, 创建多个 Vm 或单个 VM 之间存在一些差异。 有关详细信息, 请参阅[使用虚拟机的 Azure 资源管理器模板](devtest-lab-use-resource-manager-template.md)。
 >
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="use-devtest-labs-public-environments"></a>使用开发测试实验室公共环境
+Azure 开发测试实验室提供[azure 资源管理器模板的公共存储库](https://github.com/Azure/azure-devtestlab/tree/master/Environments), 你可以使用这些模板来创建环境, 而无需自行连接到外部 GitHub 源。 此公共存储库类似于你创建的每个实验室 Azure 门户中提供的项目的公共存储库。 利用环境存储库, 你可以快速开始使用具有较少输入参数的预创作环境模板。 这些模板提供了实验室内 PaaS 资源的平稳入门体验。 
 
-## <a name="devtest-labs-public-environments"></a>开发测试实验室公共环境
-Azure 开发测试实验室包含 [Azure 资源管理器模板的公共存储库](https://github.com/Azure/azure-devtestlab/tree/master/Environments)，可以使用此存储库来创建环境，而无需自行连接到外部 GitHub 源。 此存储库包含常用的模板，例如 Azure Web 应用、Service Fabric 群集和 SharePoint 场开发环境。 此功能类似于针对所创建的每个实验室包含的项目的公共存储库。 借助环境存储库，只需提供极少量的输入参数，即可快速开始使用预先编写的环境模板，在实验室中获得 PaaS 资源的顺畅入门体验。 有关详细信息，请参阅[在开发测试实验室中配置和使用公共环境](devtest-lab-configure-use-public-environments.md)。
+在公共存储库中, 开发测试实验室团队和其他人已创建和共享常用模板, 如 Azure Web 应用、Service Fabric 群集和开发 SharePoint 场环境。 您可以直接使用这些模板, 也可以根据您的需要对其进行自定义。 有关详细信息，请参阅[在开发测试实验室中配置和使用公共环境](devtest-lab-configure-use-public-environments.md)。 创建自己的模板后, 可以将其存储在此存储库中, 以便与他人共享, 或设置自己的 Git 存储库。
 
-## <a name="configure-your-own-template-repositories"></a>配置自己的模板存储库
-在基础结构即代码和配置即代码方面，最佳做法之一是在源代码管理中管理环境模板。 Azure 开发测试实验室遵循这种做法，它直接从 GitHub 或 Azure DevOps Services Git 存储库加载所有 Azure 资源管理器模板。 因此，从测试环境到生产环境，Resource Manager 模板可用于整个发布周期。
+<a name="configure-your-own-template-repositories"></a> 
+## <a name="create-your-own-template-repositories"></a>创建你自己的模板存储库
 
-查看[公共 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Environments)中由开发测试实验室团队创建的模板。 在此公共存储库中，可以查看他人共享的模板，可以直接使用或自定义它们来满足你的需求。 创建模板后，将其存储在此存储库中以将其与他人共享。 还可以使用可以用来在云中设置环境的模板设置你自己的 Git 存储库。 
+作为基础结构即代码和配置为代码的最佳实践之一, 你应管理源代码管理中的环境模板。 Azure 开发测试实验室遵循这种做法, 并直接从 GitHub 或 Azure Repos 存储库加载所有 Azure 资源管理器模板。 因此, 您可以在整个发布周期中使用资源管理器模板, 从测试环境到生产环境。
 
-在存储库中整理 Azure 资源管理器模板时需遵循几条规则：
+在存储库中组织 Azure 资源管理器模板需要遵循以下规则:
 
-- 必须将主模板文件命名为 `azuredeploy.json`。 
-
-    ![关键的 Azure 资源管理器模板文件](./media/devtest-lab-create-environment-from-arm/master-template.png)
-
-- 如果想要使用参数文件中定义的参数值，必须将参数文件命名为 `azuredeploy.parameters.json`。
-- 可以使用参数 `_artifactsLocation` 和 `_artifactsLocationSasToken` 来构造 parametersLink URI 值，以允许开发测试实验室自动管理嵌套模板。 有关详细信息，请参阅 [How Azure DevTest Labs makes nested Resource Manager template deployments easier for testing environments](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/)（Azure 开发测试实验室如何使在测试环境中部署嵌套的资源管理器模板部署更轻松）。
-- 可以定义元数据来指定模板显示名称和说明。 此元数据必须在名为 `metadata.json` 的文件中。 以下示例元数据文件演示如何指定显示名称和说明： 
-
-    ```json
-    { 
-        "itemDisplayName": "<your template name>", 
-        "description": "<description of the template>" 
-    }
-    ```
-
-以下步骤指导完成使用 Azure 门户将存储库添加到实验室的整个过程。 
-
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
-1. 从实验室列表，选择所需的实验室。   
-1. 在实验室的“概览”窗格中，选择“配置和策略”。
-
-    ![配置和策略](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
-
-1. 从“配置和策略”设置列表中选择“存储库”。 “存储库”窗格列出已添加到实验室的存储库。 名为 `Public Repo` 的存储库是系统自动为所有实验室生成的，它连接到包含你所用的多个 VM 项目的[开发测试实验室 GitHub 存储库](https://github.com/Azure/azure-devtestlab)。
-
-    ![公共存储库](./media/devtest-lab-create-environment-from-arm/public-repo.png)
-
-1. 选择“添加+”来添加 Azure 资源管理器模板存储库。
-1. 当第二个“存储库”窗格打开时，请如下所示输入所需的信息：
-    - **名称** - 输入实验室中使用的存储库名称。
-    - Git 克隆 URI - 输入 GitHub 或 Azure DevOps Services 中的 GIT HTTPS 克隆 URL。  
-    - **分支** - 输入用于访问 Azure 资源管理器模板定义的分支名称。 
-    - **个人访问令牌** - 个人访问令牌用于安全访问存储库。 要从 Azure DevOps Services 获取令牌，请选择“&lt;姓名>”>“我的配置文件”>“安全”>“公共访问令牌”。 要从 GitHub 获取令牌，请选择头像，然后选择“设置”>“公共访问令牌”。 
-    - **文件夹路径** - 使用两个输入字段中的一个，输入以正斜杠“/”开头的文件夹路径，该路径是项目定义（第一个输入字段）或 Azure 资源管理器模板定义的 Git 克隆 URI 的相对路径。   
-    
-        ![公共存储库](./media/devtest-lab-create-environment-from-arm/repo-values.png)
-
-
-1. 输入所有必填字段并通过验证后，请选择“保存”。
-
-下一部分将逐步讲解如何通过 Azure 资源管理器模板创建环境。
-
-## <a name="create-an-environment-from-a-resource-manager-template-using-the-azure-portal"></a>使用 Azure 门户通过资源管理器模板创建环境
-
-在实验室中配置 Azure 资源管理器模板存储库后，实验室用户可在 Azure 门户中使用以下步骤创建环境：
-
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
-1. 从实验室列表，选择所需的实验室。   
-1. 在实验室的窗格中，选择“添加+”。
-1. “选择库”窗格显示了可与最前面列出的 Azure 资源管理器模板配合使用的基本映像。 选择所需的 Azure 资源管理器模板。
-
-    ![选择一个库](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
+- 必须将主模板文件命名为*azuredeploy.json*。 
   
-1. 在“添加”窗格中，输入“环境名称”值。 环境名称是向实验室中的用户显示的名称。 剩余的输入字段已在 Azure 资源管理器模板中定义。 如果模板中定义了默认值或者存在 `azuredeploy.parameter.json` 文件，默认值会显示在这些输入字段中。 对于*安全字符串*类型的参数，可以使用 Azure 密钥保管库中存储的机密。 若要了解如何在密钥保管库中保存机密并在创建实验室资源时使用这些机密，请参阅[在 Azure 密钥保管库中存储机密](devtest-lab-store-secrets-in-key-vault.md)。  
+- 如果要使用在参数文件中定义的参数值, 则参数文件必须命名为*azuredeploy.json*。
+  
+  可以使用参数 `_artifactsLocation` 和 `_artifactsLocationSasToken` 来构造 parametersLink URI 值，以允许开发测试实验室自动管理嵌套模板。 有关详细信息, 请参阅[部署用于测试环境的嵌套 Azure 资源管理器模板](deploy-nested-template-environments.md)。
+  
+- 你可以定义元数据以在名为*metadata*的文件中指定模板显示名称和说明, 如下所示:
+  
+  ```json
+  { 
+    "itemDisplayName": "<your template name>", 
+    "description": "<description of the template>" 
+  }
+  ```
 
-    ![添加窗格](./media/devtest-lab-create-environment-from-arm/add.png)
+![关键的 Azure 资源管理器模板文件](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
-    > [!NOTE]
-    > 有几个参数值会显示为空值，即使已指定这些值。 因此，如果用户将这些值分配到 Azure 资源管理器模板中的参数，则开发测试实验室不会显示这些值。 相反，将会显示空的输入字段，实验室用户在创建环境时必须在这些字段中输入值。
-    > 
-    > - GEN-UNIQUE
-    > - GEN-UNIQUE-[N]
-    > - GEN-SSH-PUB-KEY
-    > - GEN-PASSWORD 
- 
-1. 选择“添加”创建环境。 环境随即会开始预配，其状态显示在“我的虚拟机”列表中。 实验室会自动创建一个新资源组，用于预配 Azure 资源管理器模板中定义的所有资源。
-1. 创建环境后，请在“我的虚拟机”列表中选择该环境，打开资源组窗格并浏览该环境中预配的所有资源。
-    
-    ![“我的虚拟机”列表](./media/devtest-lab-create-environment-from-arm/all-environment-resources.png)
+## <a name="add-template-repositories-to-the-lab"></a>将模板存储库添加到实验室
+
+创建并配置存储库后, 可以使用 Azure 门户将其添加到实验室: 
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
+1. 从实验室列表中, 选择所需的实验室。 
+1. 在实验室的 "**概述**" 窗格上, 选择 "**配置和策略**"。
    
-   还可以展开环境仅查看该环境中预配的 VM 列表。
+   ![配置和策略](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
+   
+1. 从 "**配置和策略**" 设置列表中, 选择 "**存储库**"。 将自动为所有实验室生成**公共项目**存储库存储库, 并连接到[开发测试实验室公共 GitHub 存储库](https://github.com/Azure/azure-devtestlab)。
+   
+1. 若要添加 Azure 资源管理器模板存储库, 请选择 "**添加**"。
+   
+   ![公共存储库](./media/devtest-lab-create-environment-from-arm/public-repo.png)
+   
+1. 在 "**存储库**" 窗格中, 输入以下信息:
+   
+   - **名称**：输入要在实验室中使用的存储库名称。
+   - **Git 克隆 URL**:输入 GitHub 或 Azure Repos 中的 Git HTTPS 克隆 URL。 
+   - **分支**(可选):输入用于访问 Azure 资源管理器模板定义的分支名称。
+   - **个人访问令牌**:输入用于安全访问存储库的个人访问令牌。
+     - 若要从 Azure Repos 获取令牌, 请在配置文件下选择 "**用户设置** > **安全** > **个人访问令牌**"。
+     - 若要从 GitHub 获取令牌, 请在配置文件中选择 "**设置** > " "**开发人员设置** > " "**个人访问令牌**"。
+   - **文件夹路径**:输入与你的项目定义或 Azure 资源管理器模板定义相对的 Git 克隆 URI 的文件夹路径。 
+   
+1. 选择**保存**。
+   
+   ![添加新存储库](./media/devtest-lab-create-environment-from-arm/repo-values.png)
+
+向实验室添加 Azure 资源管理器模板后, 实验室用户可以使用模板创建环境。 
+
+## <a name="configure-access-rights-for-lab-users"></a>配置实验室用户的访问权限
+
+默认情况下, 实验室用户具有 "**读者**" 角色, 因此无法更改环境资源组中的资源。 例如, 它们不能停止或启动其资源。 
+
+若要为实验室用户**参与者**角色授予其环境中的资源, 请执行以下步骤:
+
+1. 在[Azure 门户](https://portal.azure.com)中, 在实验室的 "**概述**" 窗格中选择 "**配置和策略**", 然后选择 "**实验室设置**"。
+   
+1. 在 "**实验室设置**" 窗格中, 选择 "**参与者**", 然后选择 "**保存**" 向实验室用户授予写入权限。
+   
+   ![可配置的实验室用户访问权限](./media/devtest-lab-create-environment-from-arm/config-access-rights.png)
+
+下一部分介绍如何从 Azure 资源管理器模板创建环境。
+
+## <a name="create-environments-from-templates-in-the-azure-portal"></a>通过 Azure 门户中的模板创建环境
+
+向实验室添加 Azure 资源管理器模板后, 实验室用户可以通过以下步骤在 Azure 门户中创建环境:
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+   
+1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
+   
+1. 从实验室列表中, 选择所需的实验室。 
+   
+1. 在实验室页面上, 选择 "**添加**"。
+   
+1. "**选择基本**" 窗格显示你可以使用的基本映像, Azure 资源管理器模板首先列出。 选择所需的 Azure 资源管理器模板。
+   
+   ![选择一个库](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
+   
+1. 在 "**添加**" 窗格上, 输入要向环境用户显示的**环境名称**值。 
+   
+   Azure 资源管理器模板定义剩余的输入字段。 如果模板*azuredeploy.json*文件定义了默认值, 则输入字段将显示这些值。 
+   
+   对于类型为*secure string*的参数, 可以使用 Azure Key Vault 中的机密。 若要了解如何在密钥保管库中存储机密并在创建实验室资源时使用它们, 请参阅[在 Azure Key Vault 中存储机密](devtest-lab-store-secrets-in-key-vault.md)。  
+   
+   ![添加窗格](./media/devtest-lab-create-environment-from-arm/add.png)
+   
+   > [!NOTE]
+   > 以下参数值不会出现在输入字段中 (即使模板指定了这些值)。 相反, 窗体显示空白的输入字段, 实验室用户在创建环境时必须输入值。
+   > 
+   > - GEN-UNIQUE
+   > - GEN-UNIQUE-[N]
+   > - GEN-SSH-PUB-KEY
+   > - GEN-PASSWORD 
+   
+1. 选择“添加”创建环境。 
+   
+   环境会立即开始预配, 状态显示在 "**我的虚拟机**" 列表中。 实验室会自动创建新的资源组, 用于预配 Azure 资源管理器模板中定义的所有资源。
+   
+1. 创建环境后, 在 "**我的虚拟机**" 列表中选择环境以打开 "资源组" 窗格, 并浏览环境预配的所有资源。
+   
+   ![环境资源](./media/devtest-lab-create-environment-from-arm/all-environment-resources.png)
+   
+   你还可以展开环境以仅查看环境中预配的 Vm 列表。
+   
+   ![“我的虚拟机”列表](./media/devtest-lab-create-environment-from-arm/my-vm-list.png)
+   
+1. 选择任何环境以查看可用的操作, 例如应用项目、附加数据磁盘、更改自动关闭时间等等。
+   
+   ![环境操作](./media/devtest-lab-create-environment-from-arm/environment-actions.png)
+
+<a name="automate-deployment-of-environments"></a> 
+## <a name="automate-environment-creation-with-powershell"></a>利用 PowerShell 自动执行环境创建
+
+使用 Azure 门户向实验室添加单个环境是可行的, 但当开发或测试方案必须创建多个环境时, 自动部署是一个更好的体验。 
+
+在继续操作之前, 请确保你具有定义要创建的资源的 Azure 资源管理器模板。 [在 Git 存储库中添加并配置模板](#configure-your-own-template-repositories), 并[将存储库添加到实验室](#add-template-repositories-to-the-lab)。
+
+下面的示例脚本在实验室中创建一个环境。 注释有助于更好地理解脚本。 
+
+1. 将以下示例 PowerShell 脚本保存到硬盘驱动器上的*deployenv*。 
+  
+   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+   
+   ```powershell
+   #Requires -Module Az.Resources
+   
+   [CmdletBinding()]
+   
+   param (
+   # ID of the Azure Subscription for the lab
+   [string] [Parameter(Mandatory=$true)] $SubscriptionId,
+   
+   # Name of the existing lab in which to create the environment
+   [string] [Parameter(Mandatory=$true)] $LabName,
+   
+   # Name of the connected repository in the lab 
+   [string] [Parameter(Mandatory=$true)] $RepositoryName,
+   
+   # Name of the template (folder name in the Git repository)
+   [string] [Parameter(Mandatory=$true)] $TemplateName,
+   
+   # Name of the environment to be created in the lab
+   [string] [Parameter(Mandatory=$true)] $EnvironmentName,
+   
+   # The parameters to be passed to the template. Each parameter is prefixed with "-param_". 
+   # For example, if the template has a parameter named "TestVMName" with a value of "MyVMName", 
+   # the string in $Params will have the form: -param_TestVMName MyVMName. 
+   # This convention allows the script to dynamically handle different templates.
+   [Parameter(ValueFromRemainingArguments=$true)]
+       $Params
+   )
+   
+   # Sign in to Azure. 
+   # Comment out the following statement to completely automate the environment creation. 
+   Connect-AzAccount
+   
+   # Select the subscription that has the lab.  
+   Set-AzContext -SubscriptionId $SubscriptionId | Out-Null
+   
+   # Get information about the user, specifically the user ID, which is used later in the script.  
+   $UserId = $((Get-AzADUser -UserPrincipalName (Get-AzContext).Account).Id.Guid)
+           
+   # Get information about the lab, such as lab location. 
+   $lab = Get-AzResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName -ResourceGroupName $ResourceGroupName 
+   if ($lab -eq $null) { throw "Unable to find lab $LabName in subscription $SubscriptionId." } 
+       
+   # Get information about the repository in the lab. 
+   $repository = Get-AzResource -ResourceGroupName $lab.ResourceGroupName `
+       -ResourceType 'Microsoft.DevTestLab/labs/artifactsources' `
+       -ResourceName $LabName `
+       -ApiVersion 2016-05-15 `
+       | Where-Object { $RepositoryName -in ($_.Name, $_.Properties.displayName) } `
+       | Select-Object -First 1
+   if ($repository -eq $null) { throw "Unable to find repository $RepositoryName in lab $LabName." } 
+   
+   # Get information about the Resource Manager template base for the environment. 
+   $template = Get-AzResource -ResourceGroupName $lab.ResourceGroupName `
+       -ResourceType "Microsoft.DevTestLab/labs/artifactSources/armTemplates" `
+       -ResourceName "$LabName/$($repository.Name)" `
+       -ApiVersion 2016-05-15 `
+       | Where-Object { $TemplateName -in ($_.Name, $_.Properties.displayName) } `
+       | Select-Object -First 1
+   if ($template -eq $null) { throw "Unable to find template $TemplateName in lab $LabName." } 
+   
+   # Build the template parameters with parameter name and values.  
+   $parameters = Get-Member -InputObject $template.Properties.contents.parameters -MemberType NoteProperty | Select-Object -ExpandProperty Name
+   $templateParameters = @()
+   
+   # Extract the custom parameters from $Params and format as name/value pairs.
+   $Params | ForEach-Object {
+       if ($_ -match '^-param_(.*)' -and $Matches[1] -in $parameters) {
+           $name = $Matches[1]                
+       } elseif ( $name ) {
+           $templateParameters += @{ "name" = "$name"; "value" = "$_" }
+           $name = $null #reset name variable
+       }
+   }
+   
+   # Once name/value pairs are isolated, create an object to hold the necessary template properties.
+   $templateProperties = @{ "deploymentProperties" = @{ "armTemplateId" = "$($template.ResourceId)"; "parameters" = $templateParameters }; } 
+   
+   # Now, create or deploy the environment in the lab by using the New-AzResource command. 
+   New-AzResource -Location $Lab.Location `
+       -ResourceGroupName $lab.ResourceGroupName `
+       -Properties $templateProperties `
+       -ResourceType 'Microsoft.DevTestLab/labs/users/environments' `
+       -ResourceName "$LabName/$UserId/$EnvironmentName" `
+       -ApiVersion '2016-05-15' -Force 
     
-    ![“我的虚拟机”列表](./media/devtest-lab-create-environment-from-arm/my-vm-list.png)
+   Write-Output "Environment $EnvironmentName completed."
+   ```
+   
+1. 按如下所示运行该脚本, 并使用您在 LabName、ResourceGroupName、Event.pushnotification.repositoryname、TemplateName (Git 存储库中的文件夹) 和 EnvironmentName 的特定值。
+   
+   ```powershell
+   ./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG000000" -RepositoryName "myRepository" -TemplateName "My Environment template name" -EnvironmentName "myGroupEnv" 
+   ```
 
-1. 单击任一环境可以查看可用的操作 - 例如，应用项目、附加数据磁盘、更改自动关闭时间，等等。
-
-    ![环境操作](./media/devtest-lab-create-environment-from-arm/environment-actions.png)
-
-## <a name="automate-deployment-of-environments"></a>自动部署环境
-Azure 开发测试实验室提供了使用的功能[Azure 资源管理管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)与一组资源在实验室中创建的环境。 这些环境可以包含任何可以使用资源管理器模板创建的 Azure 资源。 开发测试实验室环境可使用户轻松地部署复杂的基础结构在实验室的范围内以一致的方式。 目前，一次，创建时添加到使用 Azure 门户的实验室环境是可行，但在开发或测试的情况下，发生多个创建自动的部署可实现改进的体验。
-
-以下步骤以完成[配置你自己的模板存储库](#configure-your-own-template-repositories)继续之前的部分： 
-
-1. 创建资源管理器模板，它定义要创建的资源。 
-2. 资源管理器模板中设置 Git 存储库。 
-3. 连接到实验室的 Git 存储库。 
-
-### <a name="powershell-script-to-deploy-the-resource-manager-template"></a>若要部署资源管理器模板的 PowerShell 脚本
-将 PowerShell 脚本保存到硬盘下一节中 (例如： deployenv.ps1) 和 SubscriptionId、 ResourceGroupName、 LabName、 RepositoryName，为指定值后，运行该脚本在 Git 存储库，EnvironmentName TemplateName （文件夹）。
-
-```powershell
-./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG994248" -RepositoryName "SP Repository" -TemplateName "My Environment template name" -EnvironmentName "SPResourceGroupEnv"  
-```
-
-#### <a name="sample-script"></a>示例脚本
-下面是要在实验室中创建环境的示例脚本。 在脚本中的注释可帮助您更好地理解该脚本。 
-
-```powershell
-#Requires -Module Az.Resources
-
-[CmdletBinding()]
-
-param (
-# ID of the Azure Subscription where the lab is created.
-[string] [Parameter(Mandatory=$true)] $SubscriptionId,
-
-# Name of the lab (existing) in which to create the environment.
-[string] [Parameter(Mandatory=$true)] $LabName,
-
-# Name of the connected repository in the lab. 
-[string] [Parameter(Mandatory=$true)] $RepositoryName,
-
-# Name of the template (folder name in the Git repository) based on which the environment will be created.
-[string] [Parameter(Mandatory=$true)] $TemplateName,
-
-# Name of the environment to be created in the lab.
-[string] [Parameter(Mandatory=$true)] $EnvironmentName,
-
-# The parameters to be passed to the template. Each parameter is prefixed with “-param_”. 
-# For example, if the template has a parameter named “TestVMName” with a value of “MyVMName”, the string in $Params will have the form: `-param_TestVMName MyVMName`. 
-# This convention allows the script to dynamically handle different templates.
-[Parameter(ValueFromRemainingArguments=$true)]
-    $Params
-)
-
-# Save this script as the deployenv.ps1 file
-# Run the script after you specify values for SubscriptionId, ResourceGroupName, LabName, RepositoryName, TemplateName (folder) in the Git repo, EnvironmentName
-# ./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG994248" -RepositoryName "SP Repository" -TemplateName "My Environment template name" -EnvironmentName "SPResourceGroupEnv"    
-
-# Comment this statement to completely automate the environment creation.    
-# Sign in to Azure. 
-Connect-AzAccount
-
-# Select the subscription that has the lab.  
-Set-AzContext -SubscriptionId $SubscriptionId | Out-Null
-
-# Get information about the user, specifically the user ID, which is used later in the script.  
-$UserId = $((Get-AzADUser -UserPrincipalName (Get-AzContext).Account).Id.Guid)
-        
-# Get information about the lab such as lab location. 
-$lab = Get-AzResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName -ResourceGroupName $ResourceGroupName 
-if ($lab -eq $null) { throw "Unable to find lab $LabName in subscription $SubscriptionId." } 
-    
-# Get information about the repository in the lab. 
-$repository = Get-AzResource -ResourceGroupName $lab.ResourceGroupName `
-    -ResourceType 'Microsoft.DevTestLab/labs/artifactsources' `
-    -ResourceName $LabName `
-    -ApiVersion 2016-05-15 `
-    | Where-Object { $RepositoryName -in ($_.Name, $_.Properties.displayName) } `
-    | Select-Object -First 1
-if ($repository -eq $null) { throw "Unable to find repository $RepositoryName in lab $LabName." } 
-
-# Get information about the Resource Manager template based on which the environment will be created. 
-$template = Get-AzResource -ResourceGroupName $lab.ResourceGroupName `
-    -ResourceType "Microsoft.DevTestLab/labs/artifactSources/armTemplates" `
-    -ResourceName "$LabName/$($repository.Name)" `
-    -ApiVersion 2016-05-15 `
-    | Where-Object { $TemplateName -in ($_.Name, $_.Properties.displayName) } `
-    | Select-Object -First 1
-if ($template -eq $null) { throw "Unable to find template $TemplateName in lab $LabName." } 
-
-# Build the template parameters with parameter name and values.     
-$parameters = Get-Member -InputObject $template.Properties.contents.parameters -MemberType NoteProperty | Select-Object -ExpandProperty Name
-$templateParameters = @()
-
-# The custom parameters need to be extracted from $Params and formatted as name/value pairs.
-$Params | ForEach-Object {
-    if ($_ -match '^-param_(.*)' -and $Matches[1] -in $parameters) {
-        $name = $Matches[1]                
-    } elseif ( $name ) {
-        $templateParameters += @{ "name" = "$name"; "value" = "$_" }
-        $name = $null #reset name variable
-    }
-}
-
-# Once name/value pairs are isolated, create an object to hold the necessary template properties
-$templateProperties = @{ "deploymentProperties" = @{ "armTemplateId" = "$($template.ResourceId)"; "parameters" = $templateParameters }; } 
-
-# Now, create or deploy the environment in the lab by using the New-AzResource command. 
-New-AzResource -Location $Lab.Location `
-    -ResourceGroupName $lab.ResourceGroupName `
-    -Properties $templateProperties `
-    -ResourceType 'Microsoft.DevTestLab/labs/users/environments' `
-    -ResourceName "$LabName/$UserId/$EnvironmentName" `
-    -ApiVersion '2016-05-15' -Force 
- 
-Write-Output "Environment $EnvironmentName completed."
-```
-
-您还可以使用 Azure CLI 使用资源管理器模板部署资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)。
+你还可以使用 Azure CLI 资源管理器模板部署资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/resource-group-template-deploy-cli.md)。
 
 > [!NOTE]
-> 只有具有实验室所有者权限的用户才能使用 Azure PowerShell 根据 Resource Manager 模板创建 VM。 如果想要使用 Resource Manager 模板自动创建 VM，并且只具有用户权限，则可以使用 [CLI 中的 az lab vm create 命令](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create)。
+> 只有具有实验室所有者权限的用户才能使用 Azure PowerShell 根据 Resource Manager 模板创建 VM。 如果要使用资源管理器模板自动创建 VM, 并且仅具有用户权限, 则可以使用 CLI 命令[az lab VM create](/cli/azure/lab/vm#az-lab-vm-create)。
 
-### <a name="general-limitations"></a>一般限制 
+## <a name="resource-manager-template-limitations-in-devtest-labs"></a>开发测试实验室中的资源管理器模板限制 
 
-在开发测试实验室中使用资源管理器模板时，请注意以下限制：
+在开发测试实验室中使用资源管理器模板时, 请考虑以下限制:
 
-- 你创建的任何资源管理器模板都不能引用现有资源；它只能引用新资源。 此外，如果你具有通常在开发测试实验室外部部署的现有资源管理器模板并且它包含对现有资源的引用，则不能在实验室中使用它。
-
-   唯一的例外是，**可以**引用现有的虚拟网络。 
-
-- 无法从通过资源管理器模板创建的实验室 VM 创建公式。 
-
-- 无法从通过资源管理器模板创建的实验室 VM 创建自定义图像。 
-
-- 在部署资源管理器模板时，大多数策略不进行评估。
-
-   例如，你可能具有指定了用户只能创建五个 VM 的实验室策略。 但是，用户可以部署创建数十个 VM 的资源管理器模板。 不评估的策略包括：
-
-   - 每个用户的 VM 数
-   - 每个实验室用户的高级 VM 数
-   - 每个实验室用户的高级磁盘数
-
-
-### <a name="configure-environment-resource-group-access-rights-for-lab-users"></a>为实验室用户配置环境资源组访问权限
-
-实验室用户可以部署资源管理器模板。 但默认情况下，它们具有“读者”访问权限，这意味着他们不能更改环境资源组中的资源。 例如，他们无法停止或启动其资源。
-
-请按照下列步骤向实验室用户授予“参与者”访问权限。 然后，当他们部署资源管理器模板时，他们将能够编辑该环境中的资源。 
-
-
-1. 在实验室的“概览”窗格中，选择“配置和策略”。
-1. 选择“实验室设置”。
-1. 在“实验室设置”窗格中，选择“参与者”以向实验室用户授予写入权限。
-
-    ![可配置的实验室用户访问权限](./media/devtest-lab-create-environment-from-arm/configure-access-rights.png)
-
-1. 选择“保存”。
+- 资源管理器模板不能引用大多数现有资源。 它们只能创建新的资源。 如果你的开发测试实验室外使用资源管理器模板引用现有资源, 则不能在开发测试实验室中使用它们。 唯一的例外是, 可以引用现有的虚拟网络。 
+  
+- 无法从从资源管理器模板创建的实验室 Vm 创建公式或自定义映像。 
+  
+- 部署资源管理器模板时, 不会对大多数策略进行评估。
+  
+  例如, 你可能有一个实验室策略, 用户只能创建五个 Vm。 但是，用户可以部署创建数十个 VM 的资源管理器模板。 未评估的策略包括:
+  
+  - 每个用户的 VM 数
+    
+  - 每个实验室用户的高级 VM 数
+    
+  - 每个实验室用户的高级磁盘数
 
 ## <a name="next-steps"></a>后续步骤
-* 创建 VM 后，可以通过在 VM 的管理窗格中选择“连接”来连接到该 VM。
-* 在实验室的“我的虚拟机”列表中选择环境，查看和管理该环境中的资源。 
-* 浏览 [Azure 快速入门模板库中的 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates)。
+- 创建 VM 后, 可以通过在 VM 的管理窗格上选择 "**连接**" 来连接到该 vm。
+- 在实验室的“我的虚拟机”列表中选择环境，查看和管理该环境中的资源。 
+- [从 Azure 快速入门模板库探索 azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates)。

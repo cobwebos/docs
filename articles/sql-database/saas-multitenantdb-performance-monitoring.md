@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: be7dbe35800bbe911bc56d1883462534a16499a0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 50fab6afe837ad409f05dbb0f3a8a44d089a894e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083175"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570322"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能
 
@@ -52,7 +51,7 @@ Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型�
 
 [Azure 门户](https://portal.azure.com)提供内置的监视和警报功能，可以监视大多数资源。 对于 SQL 数据库，在数据库上提供了监视和警报功能。 这种内置的监视和警报功能是特定于资源的，因此，对于使用少量资源的方案比较方便，但在处理大量资源时就不太适用了。
 
-对于大容量方案，其中你正在使用许多资源，请[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)可用。 这是单独的 Azure 服务的基础上发出的诊断日志和 Log Analytics 工作区中收集的遥测提供了分析。 Azure Monitor 日志可以收集多个服务的遥测数据和用于查询和设置警报。
+对于大容量方案, 使用多个资源时, 可以使用[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)。 这是单独的 Azure 服务, 可针对在 Log Analytics 工作区中收集的发出的诊断日志和遥测提供分析。 Azure Monitor 日志可以收集来自多个服务的遥测数据, 并用于查询和设置警报。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>获取 Wingtip Tickets SaaS 多租户数据库应用程序源代码和脚本
 
@@ -64,7 +63,7 @@ Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型�
 
 如果在之前的教程中已预配一批租户，则可跳到[模拟所有租户数据库上的使用情况](#simulate-usage-on-all-tenant-databases)部分。
 
-1. 在 PowerShell ISE 中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
+1. 在 PowerShell ISE中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
 1. 设置 **$DemoScenario** = **1**，_预配一批租户_
 1. 按 **F5** 运行脚本。
 
@@ -76,16 +75,16 @@ New-TenantBatch 脚本在分片多租户数据库内使用唯一的租户密钥�
 
 我们提供了 Demo-PerformanceMonitoringAndManagement.ps1 脚本，用于模拟针对多租户数据库运行的工作负载。 负载是使用可用负载方案之一生成的：
 
-| 演示 | 场景 |
+| 演示 | 应用场景 |
 |:--|:--|
 | 2 | 生成正常强度负载 (约 30 DTU) |
 | 3 | 生成单个租户的突发时间更长的负载|
-| 4 | 生成每个租户 (大约 70 DTU) 的 DTU 突发更高的负载|
-| 5 | 生成单个租户加上所有其他租户正常强度负载上的高强度 (大约 90 个 DTU) |
+| 4 | 为每个租户生成具有更高 DTU 猝发负载的负载 (大约 70 DTU)|
+| 5 | 在单个租户上生成高强度 (约 90 DTU), 并在所有其他租户上生成正常强度负载 |
 
 负载生成器向每个租户数据库应用仅限 CPU 的综合负载。 该生成器为每个租户数据库启动一个作业，以便定期调用生成负载的存储过程。 负载级别（以 DTU 计）、持续时间和间隔在各个数据库之间都是不同的，用以模拟不可预测的租户活动。
 
-1. 在 PowerShell ISE 中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
+1. 在 PowerShell ISE中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
 1. 设置 **$DemoScenario** = **2**，生成正常强度负载
 1. 按 **F5** 将负载应用到所有租户。
 
@@ -96,9 +95,9 @@ Wingtip Tickets SaaS 多租户数据库是一个 SaaS 应用，SaaS 应用上的
 
 ## <a name="monitor-resource-usage-using-the-azure-portal"></a>通过 Azure 门户监视资源使用情况
 
-若要监视应用负载后的资源使用情况，请打开多租户数据库 tenants1 的门户，其中包含租户：
+若要监视应用负载后的资源使用情况，请打开多租户数据库tenants1 的门户，其中包含租户：
 
-1. 打开 [Azure 门户](https://portal.azure.com)，并浏览到服务器 *tenants1-mt-&lt;USER&gt;*。
+1. 打开 [Azure 门户](https://portal.azure.com)，并浏览到服务器 *tenants1-mt-&lt;USER&gt;* 。
 1. 向下滚动并找到数据库，然后单击“tenants1”。 此分片多租户数据库包含目前创建的所有租户。
 
 ![数据库图表](./media/saas-multitenantdb-performance-monitoring/multitenantdb.png)
@@ -154,7 +153,7 @@ Wingtip Tickets SaaS 多租户数据库是一个 SaaS 应用，SaaS 应用上的
 
 如果已在其自己的数据库中预配了新租户，则可跳过以下几个步骤。
 
-1. 在 PowerShell ISE 中，打开…\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*。 
+1. 在 PowerShell ISE中，打开…\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*。 
 1. 修改 $TenantName = "Salix Salsa" 和 $VenueType  = "dance"
 1. 设置 **$Scenario** = **2**，在新的单租户数据库中预配租户
 1. 按 **F5** 运行脚本。
@@ -168,7 +167,7 @@ Wingtip Tickets SaaS 多租户数据库是一个 SaaS 应用，SaaS 应用上的
 本练习模拟 Salix Salsa 在销售热门活动票时遇到的负载过高的情况。
 
 1. 打开 …\\Demo-PerformanceMonitoringAndManagement.ps1 脚本。
-1. 设置 **$DemoScenario = 5**，_生成在正常负载 (约 90 个 DTU) 的单个租户上的高负载。_
+1. 设置 **$DemoScenario = 5**,_在单个租户上生成正常负载加上高负载 (大约 90 DTU)。_
 1. 设置 $SingleTenantName = Salix Salsa
 1. 使用 **F5** 执行该脚本。
 

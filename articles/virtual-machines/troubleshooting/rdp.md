@@ -4,7 +4,7 @@ description: 在 Azure 中排查 Windows VM 的 RDP 问题。
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 45c69812-d3e4-48de-a98d-39a0f5675777
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 96e0b0b03643143064e52d1f05ee37b58559f607
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53439814"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057272"
 ---
 # <a name="troubleshoot-rdp-issues"></a>排查 RDP 问题
 

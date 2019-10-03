@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 5d0b5a57f3fe587a06a102c958b17dbf2a73225c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790750"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61466663"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>配置 Postman 以便进行媒体服务 REST API 调用  
 
@@ -39,10 +39,10 @@ ms.locfileid: "59790750"
 
 1. 创建一个包含 AMS 教程中所用环境变量的 .json 文件。 命名该文件（例如，**AzureMediaServices.postman_environment.json**）。 打开该文件并从[此代码清单](postman-environment.md)粘贴用于定义 Postman 环境的代码。 
 2. 打开 **Postman**。
-3. 在屏幕的右侧，选择“管理环境”选项。
+3. 在屏幕的右侧，选择“管理环境”  选项。
 
     ![上传文件](./media/media-services-rest-upload-files/postman-create-env.png)
-4. 从“管理环境”对话框中，单击“导入”。
+4. 从“管理环境”  对话框中，单击“导入”  。
 5. 浏览并选择 **AzureMediaServices.postman_environment.json** 文件。
 6. 添加 **AzureMedia** 环境。
 7. 关闭对话框。
@@ -53,7 +53,7 @@ ms.locfileid: "59790750"
 ## <a name="configure-the-collection"></a>配置集合
 
 1. 创建一个包含 **Postman** 集合的 .json 文件，该集合包含将文件上传到媒体服务所需的所有操作。 命名该文件（例如，**AzureMediaServicesOperations.postman_collection.json**）。 打开该文件并从[此代码清单](postman-collection.md)粘贴用于定义 **Postman** 集合的代码。
-2. 单击“导入”导入该集合文件。
+2. 单击“导入”  导入该集合文件。
 3. 选择 **AzureMediaServicesOperations.postman_collection.json** 文件。
 
     ![上传文件](./media/media-services-rest-upload-files/postman-import-collection.png)

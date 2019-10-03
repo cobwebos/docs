@@ -1,7 +1,6 @@
 ---
 title: 将 MapReduce 和 PowerShell 与 Apache Hadoop 配合使用 - Azure HDInsight
 description: 了解如何使用 PowerShell 通过 HDInsight 上的 Apache Hadoop 远程运行 MapReduce 作业。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 015728a43e091e36dcf02b5cc17f0135a64428ca
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 2ba8ab07edc4fd036b82c97f0ae3fb565d5eed72
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361942"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078402"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>使用 PowerShell 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
 
@@ -28,9 +27,6 @@ ms.locfileid: "58361942"
 
 * **Azure HDInsight（HDInsight 上的 Hadoop）群集**
 
-  > [!IMPORTANT]  
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
-
 * **配备 Azure PowerShell 的工作站**。
 
 ## <a id="powershell"></a>运行 MapReduce 作业
@@ -39,15 +35,15 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
 
 在远程 HDInsight 群集上运行 MapReduce 作业时，将使用以下 Cmdlet。
 
-* **连接 AzAccount**:在 Azure 订阅中进行 Azure PowerShell 身份验证。
+* **Connect-AzAccount**：在 Azure 订阅中进行 Azure PowerShell 身份验证。
 
-* **New-AzHDInsightMapReduceJobDefinition**:使用指定的 MapReduce 信息创建新的作业定义。
+* **New-AzHDInsightMapReduceJobDefinition**：使用指定的 MapReduce 信息创建新的作业定义  。
 
-* **开始 AzHDInsightJob**:将作业定义发送到 HDInsight 并启动作业。 将返回作业对象。
+* **Start-AzHDInsightJob**：将作业定义发送到 HDInsight 并启动作业。 将返回作业对象  。
 
-* **等待 AzHDInsightJob**:使用作业对象来检查作业的状态。 它等到作业完成或超出等待时间。
+* **Wait-AzHDInsightJob**：使用作业对象来检查作业的状态。 它等到作业完成或超出等待时间。
 
-* **Get-AzHDInsightJobOutput**:用于检索作业的输出。
+* **Get-AzHDInsightJobOutput**：用于检索作业的输出。
 
 以下步骤演示了如何使用这些 Cmdlet 在 HDInsight 群集上运行作业。
 
@@ -82,7 +78,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 MapReduce �
 
 ### <a name="view-output"></a>查看输出
 
-若要查看作业生成的单词和计数，请在文本编辑器中打开 output.txt 文件。
+若要查看作业生成的单词和计数，请在文本编辑器中打开 output.txt 文件  。
 
 > [!NOTE]  
 > MapReduce 作业的输出文件是固定不变的。 因此，如果重新运行此示例，将需要更改输出文件的名称。

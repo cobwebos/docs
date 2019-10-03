@@ -2,18 +2,18 @@
 title: Power BI 工作区集合常见问题解答
 description: 与 Power BI 工作区集合相关的常见问题。
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+ms.service: power-bi-embedded
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: 2de9d57e6febd0f0bec3bbbf1a175700c5b0bf71
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b737c7753ce374d0360738e37d83609d1db995b1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518893"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672424"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI 工作区集合常见问题解答
 
@@ -42,15 +42,15 @@ Power BI 工作区集合仅用于为供第三方使用而提供的应用程序�
 
 ## <a name="can-power-bi-workspace-collections-be-used-to-create-internal-applications"></a>Power BI 工作区集合可以用于创建内部应用程序吗？
 
-不能，Power BI 工作区集合仅供外部用户使用，不应在内部业务应用程序中使用。 为了嵌入用于内部业务应用程序的 Power BI 内容，你应该使用 Power BI 服务，并且所有使用该内容的用户必须拥有一个有效的 Power BI 免费版或 Power BI 专业版的用户订阅许可证。 有关如何将内部应用程序与 Power BI 服务进行集成的详细信息，请访问 [https://dev.powerbi.com](https://dev.powerbi.com)。
+不能，Power BI 工作区集合仅供外部用户使用，不应在内部业务应用程序中使用。 为了嵌入用于内部业务应用程序的 Power BI 内容，应该使用 Power BI 服务，并且所有使用该内容的用户必须拥有一个有效的 Power BI 免费版或 Power BI Pro 的用户订阅许可证。 有关如何将内部应用程序与 Power BI 服务进行集成的详细信息，请访问 [https://dev.powerbi.com](https://dev.powerbi.com)。
 
 ## <a name="is-this-service-available-globally"></a>此服务是否在全球提供？
 
-目前，大多数数据中心内都提供 Power BI 工作区集合服务。 始终可以 [在此处](https://azure.microsoft.com/status/)检查最新可用性。
+目前，大多数数据中心内都提供 Power BI 工作区集合服务。 始终可以[在此处](https://azure.microsoft.com/status/)检查最新可用性。
 
 ## <a name="what-is-the-available-sla-for-the-service"></a>对于该服务，可用的 SLA 是什么？
 
-具有 Azure 标准 SLA 的 Power BI 工作区集合。 有关详细信息，请参阅 [服务级别协议](https://azure.microsoft.com/support/legal/sla/) 。
+具有 Azure 标准 SLA 的 Power BI 工作区集合。 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
 
 ## <a name="what-is-a-report-session-and-how-is-it-billed"></a>什么是报表会话，它是如何计费的？
 
@@ -60,7 +60,7 @@ Power BI 工作区集合仅用于为供第三方使用而提供的应用程序�
 
 Azure 门户会提供关于针对订阅已执行的呈现/报表会话数的帐单详细信息。
 
-## <a name="do-i-need-a-power-bi-subscription-in-order-to-develop-applications-with-power-bi-workspace-collections-how-do-i-get-started"></a>使用 Power BI 工作区集合开发应用程序是否需要 Power BI 订阅？ 我如何开始？
+## <a name="do-i-need-a-power-bi-subscription-in-order-to-develop-applications-with-power-bi-workspace-collections-how-do-i-get-started"></a>使用 Power BI 工作区集合开发应用程序是否需要 Power BI 订阅？ 如何入门？
 
 作为应用程序开发人员，创建希望在应用程序中使用的报表和可视化元素无需具有 Power BI 订阅。 但需要 Microsoft Azure 订阅和免费的 Power BI Desktop 应用程序。
 
@@ -68,11 +68,11 @@ Azure 门户会提供关于针对订阅已执行的呈现/报表会话数的帐�
 
 ## <a name="i-have-an-azure-subscription-can-i-use-power-bi-workspace-collections-using-my-existing-subscription"></a>用户有一个 Azure 订阅。 是否可以通过现有的订阅使用 Power BI 工作区集合？
 
-可以。 可以使用现有的 Azure 订阅预配和使用 Microsoft Power BI 工作区集合服务。
+是的。 可以使用现有的 Azure 订阅预配和使用 Microsoft Power BI 工作区集合服务。
 
 ## <a name="does-my-application-end-user-need-a-power-bi-license"></a>应用程序的最终用户是否需要 Power BI 许可证？
 
-不。 应用程序的最终用户无需单独购买 Power BI 订阅便可访问应用内数据可视化元素。 在 Power BI 工作区集合模型中，会通过 Azure 消耗计量器针对服务向应用程序提供商计费。 请参阅[定价和许可页](https://go.microsoft.com/fwlink/?LinkId=760527)。
+否。 应用程序的最终用户无需单独购买 Power BI 订阅便可访问应用内数据可视化元素。 在 Power BI 工作区集合模型中，会通过 Azure 消耗计量器针对服务向应用程序提供商计费。 请参阅[定价和许可页](https://go.microsoft.com/fwlink/?LinkId=760527)。
 
 ## <a name="how-does-user-authentication-work-with-power-bi-workspace-collections"></a>如何对 Power BI 工作区集合的用户进行身份验证？
 
@@ -82,7 +82,7 @@ Power BI 工作区集合服务使用“应用令牌”进行身份验证和授�
 
 ## <a name="what-data-sources-are-currently-supported-with-power-bi-workspace-collections"></a>Power BI 工作区集合当前支持哪些数据源？
 
-会支持通过直接查询对使用基本凭据的云数据源进行访问。 这意味着目前支持的源有 Azure SQL DB 和 Azure SQL DW 等。 在未来几个月中会添加对其他数据源和访问类型的支持。 有关详细信息，请参阅[连接到数据源](connect-datasource.md)。
+将支持通过直接查询对使用基本凭据的云数据源进行访问。 这意味着目前支持的源有 Azure SQL DB 和 Azure SQL DW 等。 在未来几个月中会添加对其他数据源和访问类型的支持。 有关详细信息，请参阅[连接到数据源](connect-datasource.md)。
 
 ## <a name="how-does-the-tenancy-model-work-for-power-bi-workspace-collections"></a>Power BI 工作区集合的租户模型如何工作？
 
@@ -94,15 +94,15 @@ Power BI 工作区集合服务使用“应用令牌”进行身份验证和授�
 
 可以访问 [Power BI 工作区集合文档页](get-started.md)。 通过访问 [Power BI 博客](https://powerbi.microsoft.com/blog/)或通过访问 dev.powerbi.com 中的 Power BI 开发人员中心，可以了解该服务的最新信息。 也可以在 [Stack Overflow](https://stackoverflow.com/questions/tagged/powerbi) 上提问。
 
-## <a name="how-do-i-get-started"></a>我如何开始？
+## <a name="how-do-i-get-started"></a>如何入门？
 
 可以立即开始体验免费版！ 如果拥有 Azure 订阅，现在就可以直接从 Azure 门户预配 Power BI 工作区集合。 也可以创建[免费 Azure 帐户](https://azure.microsoft.com/free/)。 一旦 Power BI 工作区集合服务预配完毕，就可以直接轻松使用 Power BI REST API，或使用 [GitHub](https://go.microsoft.com/fwlink/?LinkID=746472) 上提供的开发人员 SDK。 关于如何使用开发人员 SDK 提供的示例。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [什么是 Microsoft Power BI 工作区集合](what-are-power-bi-workspace-collections.md)
 [Microsoft Power BI 工作区集合入门](get-started.md)
 [示例入门](get-started-sample.md)   
 [JavaScript 嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+有更多问题？ [尝试 Power BI 社区](https://community.powerbi.com/)

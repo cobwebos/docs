@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.date: 01/27/2017
 ms.openlocfilehash: 180d90450497b38f107f3601944385a003f50282
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193502"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60845777"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>为 Azure 逻辑应用创建用于跟踪集成帐户中的 AS2 消息和 MDN 的架构
 
@@ -75,8 +75,8 @@ ms.locfileid: "57193502"
 | incomingHeaders |JToken 字典 | 传入 AS2 消息标头的详细信息。 (可选) |
 | outgoingHeaders |JToken 字典 | 传出 AS2 消息标头的详细信息。 (可选) |
 | isNrrEnabled | Boolean | 如果值未知，请使用默认值。 （必需） |
-| isMdnExpected | 布尔 | 如果值未知，请使用默认值。 （必需） |
-| mdnType | 枚举 | 允许的值为 **NotConfigured**、**Sync** 和 **Async**。 （必需） |
+| isMdnExpected | Boolean | 如果值未知，请使用默认值。 （必需） |
+| mdnType | Enum | 允许的值为 **NotConfigured**、**Sync** 和 **Async**。 （必需） |
 ||||
 
 ## <a name="as2-mdn-tracking-schema"></a>AS2 MDN 跟踪架构
@@ -123,8 +123,8 @@ ms.locfileid: "57193502"
 | isMessageFailed |Boolean | AS2 消息是否失败。 （必需） |
 | isMessageSigned |Boolean | AS2 消息是否已签名。 （必需） |
 | isNrrEnabled | Boolean | 如果值未知，请使用默认值。 （必需） |
-| statusCode | 枚举 | 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
-| micVerificationStatus | 枚举 | 允许的值为 **NotApplicable**、**Succeeded** 和 **Failed**。 （必需） |
+| statusCode | Enum | 允许的值为 **Accepted**、**Rejected** 和 **AcceptedWithErrors**。 （必需） |
+| micVerificationStatus | Enum | 允许的值为 **NotApplicable**、**Succeeded** 和 **Failed**。 （必需） |
 | correlationMessageId | String | 相关性 ID。 原始消息 ID（为其配置 MDN 的消息的消息 ID）。 (可选) |
 | incomingHeaders | JToken 字典 | 指示传入消息标头的详细信息。 (可选) |
 | outgoingHeaders |JToken 字典 | 指示传出消息标头的详细信息。 (可选) |

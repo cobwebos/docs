@@ -1,13 +1,13 @@
 ---
 title: 将计分概要文件添加到搜索索引 - Azure 搜索
 description: 通过添加计分概要文件，提高 Azure 搜索结果的搜索排名分数。
-ms.date: 01/31/2019
+ms.date: 05/02/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: Brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: eae7de00294a6a09cb7f942d11ee2391710fc55f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 547cd318a922e242198e1d2aee6806f73a16bd64
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007805"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648861"
 ---
 # <a name="add-scoring-profiles-to-an-azure-search-index"></a>将计分概要文件添加到 Azure 搜索索引
 
@@ -66,7 +66,7 @@ ms.locfileid: "56007805"
  若要使用此计分概要文件，查询要表述为对查询字符串指定此概要文件。 在下面的查询中，请注意请求中的查询参数 `scoringProfile=geo`。  
 
 ```  
-GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2017-11-11  
+GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2019-05-06 
 ```  
 
  此查询对“inn”一词进行搜索，并在当前位置中传递。 请注意，此查询包含其他参数，如 `scoringParameter`。 有关查询参数的信息，请参阅[搜索文档和 Azure 搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。  
@@ -76,7 +76,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 ## <a name="what-is-default-scoring"></a>什么是默认计分？  
  计分对排序结果集中的每项计算搜索分数。 搜索结果集中的每项都分配到一个搜索分数，并从高到低排名。 分数较高的项返回应用程序。 默认返回前 50 个，但可以使用 `$top` 参数返回较少或较多的项（单个响应中最多 1000 个）。  
 
-根据数据和查询的统计属性计算搜索分数。 Azure 搜索查找包含了查询字符串中搜索词的文档（部分或全部包含，具体取决于 `searchMode`），优先列出包含该搜索词多个实例的文档。 如果搜索词在数据语料库中很少见，但在文档中很常见，搜索分数仍升至更高。 这种相关性计算方法的基础称为 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) 或词频-逆文档频率。  
+根据数据和查询的统计属性计算搜索分数。 Azure 搜索查找包含了查询字符串中搜索词的文档（部分或全部包含，具体取决于 `searchMode`），优先列出包含该搜索词多个实例的文档。 如果搜索词在数据索引中很少见，但在文档中很常见，搜索分数仍升至更高。 这种相关性计算方法的基础称为 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) 或词频-逆文档频率。  
 
  假设没有自定义排序，结果在返回调用应用程序之前按搜索分数排名。 如果 $top 未指定，则返回具有最高搜索分数的 50 项。  
 
@@ -232,12 +232,12 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 > [!NOTE]  
 >  计分函数仅可应用于可筛选的字段。  
 
-|属性|说明|  
+|特性|描述|  
 |---------------|-----------------|  
 |`Name`|必需。 这是计分概要文件的名称。 它遵循与字段相同的命名约定。 它必须以字母开头，不能包含点、冒号或 @ 符号，并且不能以短语“azureSearch”（区分大小写）开头。|  
 |`Text`|包含 Weights 属性。|  
 |`Weights`|可选。 指定字段名称和相对权重的名称-值对。 相对权重必须为正整数或浮点数。 最大值为 int32.MaxValue。<br /><br /> 可以指定不带相应权重的字段名称。 权重用于指示一个字段相对于另一个字段的重要性。|  
-|`Functions`|可选。 请注意，计分函数仅可应用于可筛选字段。|  
+|`Functions`|可选。 计分函数仅可应用于可筛选的字段。|  
 |`Type`|计分函数的必需项。 指示要使用的函数类型。 有效值包括 magnitude、freshness、distance 和 tag。 可以在每个计分概要文件中包含多个函数。 函数名称必须小写。|  
 |`Boost`|计分函数的必需项。 用作原始分数乘数的正数。 不得等于 1。|  
 |`Fieldname`|计分函数的必需项。 计分函数仅可应用于作为索引字段集合一部分且可筛选的字段。 此外，每个函数类型都引入了其他限制（freshness 与 datetime 字段结合使用、magnitude 与 integer 或 double 字段结合使用、distance 与 location 字段结合使用。）。 仅可按函数定义指定单个字段。 例如，若要在同一概要文件中使用两次 magnitude，则需要包含两个定义 magnitude，每个字段一个。|  
@@ -246,7 +246,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 |`magnitude` &#124; `boostingRangeStart`|设置对其进行量值计分的范围的起始值。 该值必须是整数或浮点数。 对于星级评分 1 到 4，这里应为 1。 对于超过 50% 的利润率，这里应为 50。|  
 |`magnitude` &#124; `boostingRangeEnd`|设置对其进行量值计分的范围的结束值。 该值必须是整数或浮点数。 对于星级评分 1 到 4，这里应为 4。|  
 |`magnitude` &#124; `constantBoostBeyondRange`|有效值为 true 或 false（默认）。 设置为 true 时，完整的提升将继续应用到有一个目标字段值高于范围上限的文档。 如果为 false，此函数的提升不会应用到有一个目标字段值超出范围的文档。|  
-|`freshness`|freshness 计分函数用于改变基于 `DateTimeOffset` 字段值的项的排名分数。 例如，具有较新日期的项可以排在日期较旧的项之上。<br /><br /> 请注意，也可以排列日历事件等具有未来日期的项，以便接近当前日期的项可以排在距离当前日期较远的将来的项之上。<br /><br /> 在当前服务版本中，范围的一端将固定为当前时间。 另一端是基于 `boostingDuration` 的过去的时间。 要提升将来时间的范围，请使用负 `boostingDuration`。<br /><br /> 提升从最大范围和最小范围改变的比率由应用到计分概要文件的内插确定（请见下图）。 若要反转应用的提升系数，请选择不超过 1 的提升系数。|  
+|`freshness`|freshness 计分函数用于改变基于 `DateTimeOffset` 字段值的项的排名分数。 例如，具有较新日期的项可以排在日期较旧的项之上。<br /><br /> 也可以排列日历事件等具有未来日期的项，以便接近当前日期的项可以排在距离当前日期较远的将来的项之上。<br /><br /> 在当前服务版本中，范围的一端将固定为当前时间。 另一端是基于 `boostingDuration` 的过去的时间。 要提升将来时间的范围，请使用负 `boostingDuration`。<br /><br /> 提升从最大范围和最小范围改变的比率由应用到计分概要文件的内插确定（请见下图）。 若要反转应用的提升系数，请选择不超过 1 的提升系数。|  
 |`freshness` &#124; `boostingDuration`|设置一个有效期，超过这个有效期之后，针对特定文档的 Boosting 将停止。 请参阅以下语法和示例部分中的[设置 boostingDuration](#bkmk_boostdur)。|  
 |`distance`|距离计分函数用于影响基于其相对的参考地理位置远近程度的文档分数。 参考位置在形参中指定为查询的一部分（使用 `scoringParameterquery` 字符串选项），作为经纬度实参。|  
 |`distance` &#124; `referencePointParameter`|要在查询中传递以用作参考位置的参数。 `scoringParameter` 是一个查询参数。 有关查询参数的说明，请参阅[搜索文档（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。|  
@@ -284,7 +284,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  有关更多示例，请参阅 [XML 架构：数据类型（W3.org 网站）](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)。  
 
-## <a name="see-also"></a>另请参阅  
+## <a name="see-also"></a>请参阅  
  [Azure 搜索服务 REST](https://docs.microsoft.com/rest/api/searchservice/)   
  [创建索引（Azure 搜索服务 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)   
  [Azure 搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

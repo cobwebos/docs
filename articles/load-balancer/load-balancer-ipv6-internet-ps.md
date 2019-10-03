@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 了解如何使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动, iot
 ms.service: load-balancer
 ms.custom: seodec18
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 48552105ddd2defb0f38350c7840cd8ded40ab0f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.author: allensu
+ms.openlocfilehash: 12f9b8d3031d3b64e2f39f07763f7a75164aad25
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672825"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274986"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>开始使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器
 
@@ -100,7 +100,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. 为前端 IP 地址池创建 Azure 公共 IP 地址 (PIP) 资源。 请务必更改的值为`-DomainNameLabel`之前运行以下命令。 值必须是唯一的 Azure 区域中。
+2. 为前端 IP 地址池创建 Azure 公共 IP 地址 (PIP) 资源。 请确保在运行以下命令`-DomainNameLabel`之前更改的值。 此值在 Azure 区域中必须是唯一的。
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4

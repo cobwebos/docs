@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
 ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120544"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66135195"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>应用程序网关运行状况监视概述
 
@@ -35,7 +35,7 @@ ms.locfileid: "58120544"
 
 ### <a name="probe-matching"></a>探测匹配
 
-默认情况下，状态代码 200 与 399 之间的 HTTP (S) 响应被视为正常运行。 自定义运行状况探测额外支持两个匹配条件。 可根据需要使用条件匹配来修改构成正常响应的因素的默认解释。
+默认情况下，状态代码为 200 到 399 的 HTTP(S) 响应被视为正常。 自定义运行状况探测额外支持两个匹配条件。 可根据需要使用条件匹配来修改构成正常响应的因素的默认解释。
 
 下面是匹配条件： 
 
@@ -64,7 +64,7 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 > [!NOTE]
 > 该端口与后端 HTTP 设置的端口相同。
 
-默认探测只查看 http:\//127.0.0.1:\<端口\>来确定运行状况状态。 如果需要配置运行状况探测以使其转到自定义 URL 或修改任何其他设置，必须使用自定义探测。
+默认探测只查看 http:\//127.0.0.1:\<端口\> 来判断运行状况。 如果需要配置运行状况探测以使其转到自定义 URL 或修改任何其他设置，必须使用自定义探测。
 
 ### <a name="probe-intervals"></a>探测间隔
 
@@ -82,11 +82,11 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 | 探测属性 | 描述 |
 | --- | --- |
-| 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
-| 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
+| Name |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
+| Protocol |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值与 VM 主机名不同。 |
 | 路径 |探测的相对路径。 有效路径以“/”开头。 |
-| 时间间隔 |探测间隔（秒）。 此值是每两次连续探测之间的时间间隔。 |
+| Interval |探测间隔（秒）。 此值是每两次连续探测之间的时间间隔。 |
 | 超时 |探测超时（秒）。 如果在此超时期间内未收到有效响应，则将探测标记为失败。  |
 | 不正常阈值 |探测重试计数。 连续探测失败计数达到不正常阈值后，将后端服务器标记为故障。 |
 

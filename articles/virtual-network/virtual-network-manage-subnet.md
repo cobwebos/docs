@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: 了解如何在 Azure 中添加、更改或删除虚拟网络子网。
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
-ms.author: jdial
-ms.openlocfilehash: b4fd3d7cd1d25415ba5938586aee448bdc512aa7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: 4af8c6dbbcbb877351018eb881f4d3b0b447bbce
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100456"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098976"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>添加、更改或删除虚拟网络子网
 
@@ -30,8 +31,8 @@ ms.locfileid: "58100456"
 在完成本文任何部分中的步骤之前，请完成以下任务：
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
-- 如果使用门户，请打开 https://portal.azure.com，并使用 Azure 帐户登录。
-- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块版本 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+- 如果使用门户，请打开 https://portal.azure.com ，并使用 Azure 帐户登录。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 登录或连接到 Azure 所用的帐户必须分配有[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或者分配有可执行[权限](#permissions)中列出的适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
@@ -71,8 +72,8 @@ ms.locfileid: "58100456"
     - **用户**：可使用内置角色或自己的自定义角色控制对子网的访问。 若要了解有关分配访问子网的角色和用户的详细信息，请参阅[使用角色分配管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment)。
     - **网络安全组**和**路由表**：请参阅[添加子网](#add-a-subnet)的步骤 5。
     - **服务终结点**：请参阅[添加子网](#add-a-subnet)的步骤 5 中的服务终结点。 如果为某个现有子网启用服务终结点，请确保该子网的任何资源上未运行任何关键任务。 服务终结点可将子网每个网络接口上的路由，从使用地址前缀为 0.0.0.0/0 且下一跃点类型为 Internet 的默认路由，切换到使用服务地址前缀且下一跃点类型为 VirtualNetworkServiceEndpoint 的新路由。 切换过程中，可能会终止任何打开的 TCP 连接。 对于使用新路由更新的所有网络接口，除非流量流向服务，否则不会启用服务终结点。 若要了解有关路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)。
-    - **子网委派**：请参阅[添加子网](#add-a-subnet)的步骤 5 中的服务终结点。 可以将子网委派修改为，为子网启用零到多个委派。 如果已在子网中部署服务的资源，只有在删除服务的所有资源后，才能删除子网委派。 若要向其他服务委派，请从“服务”列表中选择要委派给的服务。
-5. 选择“保存”。
+    - **子网委派**：请参阅[添加子网](#add-a-subnet)的步骤 5 中的服务终结点。 可以将子网委派修改为，为子网启用零到多个委派。 如果已在子网中部署了服务的资源，则在删除该服务的所有资源之前，无法添加或删除子网委派。 若要向其他服务委派，请从“服务”列表中选择要委派给的服务。
+5. 选择**保存**。
 
 **命令**
 
@@ -98,7 +99,7 @@ ms.locfileid: "58100456"
 
 若要在子网中执行任务，必须将帐户分配到[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配到下表中所列出的适当操作的[自定义](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-|操作                                                                   |   名称                                       |
+|操作                                                                   |   姓名                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft.Network/virtualNetworks/subnets/read                           |   读取虚拟网络子网              |
 |Microsoft.Network/virtualNetworks/subnets/write                          |   创建或更新虚拟网络子网  |

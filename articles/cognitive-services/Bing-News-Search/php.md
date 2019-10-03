@@ -1,6 +1,6 @@
 ---
-title: 快速入门：使用 PHP 执行新闻搜索 - 必应新闻搜索 REST API
-titlesuffix: Azure Cognitive Services
+title: 快速入门：使用 PHP 和必应新闻搜索 REST API 执行新闻搜索
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门，通过 PHP 将请求发送到必应新闻搜索 REST API，并接收 JSON 响应。
 services: cognitive-services
 author: aahill
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e77c7ea6036e92c33c975f8180053a8880db55a0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090519"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423705"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>快速入门：使用 PHP 和必应新闻搜索 REST API 执行新闻搜索
 
@@ -34,7 +34,7 @@ ms.locfileid: "58090519"
 
 ## <a name="run-the-application"></a>运行应用程序
 
-[必应新闻搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) 从必应搜索引擎返回新闻结果。
+[必应新闻搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) 从必应搜索引擎返回新闻结果。
 
 1. 请确保在 `php.ini` 中启用安全 HTTP 支持，如代码注释中所述。
 2. 在你喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。

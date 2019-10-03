@@ -1,6 +1,6 @@
 ---
-title: 电话号码预构建实体
-titleSuffix: Azure
+title: 电话号码预生成实体 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 本文包含语言理解 (LUIS) 中的电话号码预构建实体信息。
 services: cognitive-services
 author: diberry
@@ -8,28 +8,31 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/04/2019
+ms.topic: conceptual
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 2a3e84de6d956e4b45945c77c11f789d4455bfe2
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9e237b09bd2b0ecc3e91e10697f6c025f73057da
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338784"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677442"
 ---
-# <a name="phonenumber-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 Phonenumber 预构建实体
+# <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的电话号码预生成实体
 `phonenumber` 实体提取各种包括国家/地区代码在内的电话号码。 此实体已定型，因此不需要将陈述示例添加到应用程序。 仅在 `en-us` 区域性中支持 `phonenumber` 实体。 
 
-## <a name="types-of-phonenumber"></a>phonenumber 类型
-Phonenumber 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) Github 存储库
+## <a name="types-of-a-phone-number"></a>电话号码的类型
+`Phonenumber` 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) GitHub 存储库中
 
-## <a name="resolution-for-prebuilt-phonenumber-entity"></a>预构建的 phonenumber 实体解析
+## <a name="resolution-for-this-prebuilt-entity"></a>针对此预生成实体的解决方法
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+
 以下示例演示了 builtin.phonenumber 实体解析。
 
 ```json
 {
-  "query": "my mobile is 00 44 161 1234567",
+  "query": "my mobile is 1 (800) 642-7676",
   "topScoringIntent": {
     "intent": "None",
     "score": 0.8448457
@@ -42,19 +45,82 @@ Phonenumber 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizer
   ],
   "entities": [
     {
-      "entity": "00 44 161 1234567",
-      "type": "builtin.phonenumber",
-      "startIndex": 13,
-      "endIndex": 29,
-      "resolution": {
-        "value": "00 44 161 1234567"
-      }
+        "entity": "1 (800) 642-7676",
+        "type": "builtin.phonenumber",
+        "startIndex": 13,
+        "endIndex": 28,
+        "resolution": {
+            "score": "1",
+            "value": "1 (800) 642-7676"
+        }
     }
   ]
 }
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+
+以下 JSON 的 `verbose` 参数设置为 `false`：
+
+```json
+{
+    "query": "my mobile is 1 (800) 642-7676",
+    "prediction": {
+        "normalizedQuery": "my mobile is 1 (800) 642-7676",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.592748761
+            }
+        },
+        "entities": {
+            "phonenumber": [
+                "1 (800) 642-7676"
+            ]
+        }
+    }
+}
+```
+
+以下 JSON 的 `verbose` 参数设置为 `true`：
+
+```json
+{
+    "query": "my mobile is 1 (800) 642-7676",
+    "prediction": {
+        "normalizedQuery": "my mobile is 1 (800) 642-7676",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.592748761
+            }
+        },
+        "entities": {
+            "phonenumber": [
+                "1 (800) 642-7676"
+            ],
+            "$instance": {
+                "phonenumber": [
+                    {
+                        "type": "builtin.phonenumber",
+                        "text": "1 (800) 642-7676",
+                        "startIndex": 13,
+                        "length": 16,
+                        "score": 1,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+* * * 
 
 ## <a name="next-steps"></a>后续步骤
+
+了解有关[V3 预测终结点](luis-migration-api-v3.md)的详细信息。
 
 了解有关[百分比](luis-reference-prebuilt-percentage.md)、[数字](luis-reference-prebuilt-number.md)和[温度](luis-reference-prebuilt-temperature.md)实体。 

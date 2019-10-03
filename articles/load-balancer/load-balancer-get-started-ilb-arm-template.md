@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 了解如何在 Resource Manager 中使用模板创建内部负载均衡器
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 6cbde9d0d53cdd688c39381978bd338c66d5688e
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.author: allensu
+ms.openlocfilehash: f05c90948fe95f204f268d84c01e1e8773bec468
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671669"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275386"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>使用模板创建内部负载均衡器
 
@@ -36,7 +36,7 @@ ms.locfileid: "56671669"
 
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>通过单击部署方式部署模板
 
-公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 要通过单击部署的方式来部署此模板，请访问[此链接](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)，单击“部署至 Azure”，如有必要，请替换默认参数值，并按照门户中的说明进行操作。
+公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。 要通过单击部署的方式来部署此模板，请访问[此链接](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)，单击“部署至 Azure”  ，如有必要，请替换默认参数值，并按照门户中的说明进行操作。
 
 ## <a name="deploy-the-template-by-using-powershell"></a>使用 PowerShell 部署模板
 

@@ -3,17 +3,17 @@ title: 在本地部署远程监视解决方案 - Docker - Azure | Microsoft Docs
 description: 本操作指南展示了如何使用 Docker 将远程监视解决方案加速器部署到本地计算机，以用于测试和开发。
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: c00e62e237fe263f54926c8e74fb6211a2e5a4e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: db934725fe91a142c43ba66701919e9d5a70a4b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993055"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65967542"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>在本地部署远程监视解决方案加速器 - Docker
 
@@ -27,7 +27,7 @@ ms.locfileid: "57993055"
 
 若要部署远程监视解决方案加速器使用的 Azure 服务，需要一个有效的 Azure 订阅。
 
-如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="machine-setup"></a>计算机设置
 
@@ -91,8 +91,8 @@ docker rmi <list_of_images>
 
 1. 导航到 [Azure 门户](https://portal.azure.com)。
 1. 导航到为解决方案创建的**资源组**。 该资源组的名称是在运行 **start.cmd** 脚本时为解决方案选择的名称。
-1. 在资源列表中单击“流分析作业”。
-1. 在流分析作业的“概述”页上，单击“启动”按钮。 然后单击“启动”以立即启动该作业。
+1. 在资源列表中单击“流分析作业”。 
+1. 在流分析作业的“概述”页上，单击“启动”按钮。   然后单击“启动”以立即启动该作业  。
 
 ### <a name="connect-to-the-dashboard"></a>连接到仪表板
 

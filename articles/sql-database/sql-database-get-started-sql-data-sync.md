@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: 82b85ffd685df52e702db15e5a5b57a53a3b4f64
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 37b8f64360e871236be7a8623460bbe75bd1d8b5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485996"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568162"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>教程：设置 Azure SQL 数据库和本地 SQL Server 之间的 SQL 数据同步
 
@@ -158,13 +157,13 @@ ms.locfileid: "58485996"
 
 1. 从列表中，选择要同步的表。默认情况下，所有列都处于选中状态，因此请禁用不想同步的列的复选框。请务必保持主键列的选中状态不变。
 
-1. 选择“保存”。
+1. 选择**保存**。
 
 1. 默认情况下，在计划或手动运行数据库之前，不会同步数据库。 要运行手动同步，请导航到 Azure 门户中的 SQL 数据库，选择“同步到其他数据库”，然后选择同步组。 “数据同步”页随即打开。 选择“同步”。
 
     ![手动同步](media/sql-database-get-started-sql-data-sync/datasync-sync.png)
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 数据同步以什么频率同步数据？
 
@@ -232,7 +231,7 @@ SQL 数据同步是否能完全创建表？
 
 - [Azure SQL 数据同步的 Data Sync Agent](sql-database-data-sync-agent.md)
 - [最佳做法](sql-database-best-practices-data-sync.md)和[如何解决 Azure SQL 数据同步问题](sql-database-troubleshoot-data-sync.md)
-- [使用 Azure Monitor 监视 SQL 数据同步日志](sql-database-sync-monitor-oms.md)
+- [利用 Azure Monitor 日志监视 SQL 数据同步](sql-database-sync-monitor-oms.md)
 - [使用 Transact-SQL 更新同步架构](sql-database-update-sync-schema.md) 或使用 [PowerShell](scripts/sql-database-sync-update-schema.md) 更新同步架构
 
 有关 SQL 数据库的详细信息，请参阅：

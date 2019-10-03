@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d277786fd08e1448b3d5ccf4fd45055fe069e4c0
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078782"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097762"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>使用适用于 Azure 移动应用的 .NET 后端服务器 SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -28,12 +28,12 @@ ms.locfileid: "58078782"
 本主题说明如何在关键的 Azure 应用服务移动应用方案中使用 .NET 后端服务器 SDK。 借助 Azure 移动应用 SDK 可从 ASP.NET 应用程序使用移动客户端。
 
 > [!TIP]
-> [适用于 Azure 移动应用的 .NET 服务器 SDK][2] 是 GitHub 上的开放源代码。 存储库包含所有源代码，包括整个服务器 SDK 单元测试套件以及一些示例项目。
+> [适用于 Azure 移动应用的 .net 服务器 SDK][2]是 GitHub 上的开放源代码。 该存储库包含所有源代码，包括整个服务器 SDK 单元测试套件以及一些示例项目。
 >
 >
 
 ## <a name="reference-documentation"></a>参考文档
-服务器 SDK 的参考文档位于此处：[Azure 移动应用 .NET 参考][1]。
+服务器 SDK 的参考文档位于此处：[Azure 移动应用 .Net 参考][1]。
 
 ## <a name="create-app"></a>如何：创建 .NET 移动应用后端
 如果要开始一个新项目，可以使用 [Azure 门户]或 Visual Studio 创建应用服务应用程序。 可以在本地运行应用服务应用程序，或将项目发布到基于云的应用服务移动应用。
@@ -41,7 +41,7 @@ ms.locfileid: "58078782"
 如果将移动功能添加到现有项目，请参阅[下载并初始化 SDK](#install-sdk) 部分。
 
 ### <a name="create-a-net-backend-using-the-azure-portal"></a>使用 Azure 门户创建 .NET 后端
-若要创建应用服务移动后端，请按照[快速入门教程][3]或以下步骤操作：
+若要创建应用服务移动后端，请按照[快速入门教程][3]或执行以下步骤：
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
@@ -62,14 +62,14 @@ ms.locfileid: "58078782"
 
 ### <a name="create-a-net-backend-using-visual-studio-2015"></a>使用 Visual Studio 2015 创建 .NET 后端
 
-安装[用于 .NET 的 Azure SDK][4]（2.9.0 版或更高版本），在 Visual Studio 中创建 Azure 移动应用项目。 安装 SDK 后，请使用以下步骤创建 ASP.NET 应用程序：
+安装用于[.net 的 AZURE SDK][4] （版本2.9.0 或更高版本），在 Visual Studio 中创建 Azure 移动应用项目。 安装 SDK 后，请使用以下步骤创建 ASP.NET 应用程序：
 
 1. 打开“新建项目”对话框（从“文件” > “新建” > “项目...”）。
 2. 展开“模板” > “Visual C#”，并选择“Web”。
 3. 选择“ASP.NET Web 应用程序”。
 4. 填写项目名称。 然后单击“确定”。
 5. 在“ASP.NET 4.5.2 模板”下，选择“Azure 移动应用”。 选中“云中的主机”，在云中创建移动后端（可在其中发布此项目）。
-6. 单击“确定”。
+6. 单击 **“确定”** 。
 
 ## <a name="install-sdk"></a>如何：下载并初始化 SDK
 该 SDK 在 [NuGet.org] 上提供。此包包含开始使用 SDK 所需的基本功能。 若要初始化该 SDK，需要对 **HttpConfiguration** 对象执行操作。
@@ -78,8 +78,8 @@ ms.locfileid: "58078782"
 要安装该 SDK，请在 Visual Studio 中右键单击服务器项目，选择“管理 NuGet 包”，搜索 [Microsoft.Azure.Mobile.Server] 包，并单击“安装”。
 
 ### <a name="server-project-setup"></a> 初始化服务器项目
-初始化 .NET 后端服务器项目的方式类似其他 ASP.NET 项目，可通过包含 OWIN 启动类来完成。 确保已引用 NuGet 包 `Microsoft.Owin.Host.SystemWeb`。 若要在 Visual Studio 中添加此类，请右键单击服务器项目，选择 **“添加”** >
- **“新建项”**，然后选择 **“Web”** > **“常规”** > **“OWIN 启动类”**。  将生成具有以下属性的类：
+初始化 .NET 后端服务器项目的方式类似其他 ASP.NET 项目，可通过包含 OWIN 启动类来完成。 确保已引用 NuGet 包 `Microsoft.Owin.Host.SystemWeb`。 若要在 Visual Studio 中添加此类，请右键单击服务器项目，选择 **“添加”**  >
+ **“新建项”** ，然后选择 **“Web”**  >  **“常规”**  >  **“OWIN 启动类”** 。  将生成具有以下属性的类：
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 
@@ -104,7 +104,7 @@ ms.locfileid: "58078782"
         .MapApiControllers()
         .ApplyTo(config);
 
-Azure 门户中的服务器快速启动代码调用 **UseDefaultConfiguration()**。 此代码相当于以下设置：
+Azure 门户中的服务器快速启动代码调用 **UseDefaultConfiguration()** 。 此代码相当于以下设置：
 
         new MobileAppConfiguration()
             .AddMobileAppHomeController()             // from the Home package
@@ -410,7 +410,7 @@ SID 派生自提供程序特定的用户 ID，对于给定的用户和登录提�
 
 创建安装时，后端会忽略客户端在推送通知注册期间提供的任何标记。 要使客户端能够将标记添加到安装，必须创建一个自定义 API，此 API 可以使用上述模式添加标记。
 
-有关示例，请参阅应用服务移动应用的完整快速入门示例中的[客户端添加的推送通知标记][5]。
+有关示例，请参阅应用服务移动应用已完成快速入门示例中的[客户端添加的推送通知标记][5]。
 
 ## <a name="push-user"></a>如何：将推送通知发送到经过身份验证的用户
 当经过身份验证的用户注册推送通知时，用户 ID 标记会自动添加到注册中。 使用此标记可以向该用户注册的所有设备发送推送通知。 以下代码获取发出请求的用户 SID，并将模板推送通知发送到该用户的每个设备注册：
@@ -426,7 +426,7 @@ SID 派生自提供程序特定的用户 ID，对于给定的用户和登录提�
     // Send a template notification to the user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
 
-在注册来自经过身份验证客户端的推送通知时，请确保在尝试注册之前身份验证已完成。 有关详细信息，请参阅适用于 .NET 后端的应用服务移动应用的完整快速入门示例中的[推送到用户][6]。
+在注册来自经过身份验证客户端的推送通知时，请确保在尝试注册之前身份验证已完成。 有关详细信息，请参阅在 .NET 后端的应用服务移动应用已完成快速入门示例中[推送到用户][6]。
 
 ## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>如何：对 .NET 服务器 SDK 进行调试和故障排除
 Azure 应用服务提供多种适用于 ASP.NET 应用程序的调试和故障排除方法：
@@ -440,7 +440,7 @@ Azure 应用服务提供多种适用于 ASP.NET 应用程序的调试和故障�
 
 启用诊断并写入日志：
 
-1. 遵循[如何启用诊断](../app-service/troubleshoot-diagnostic-logs.md#enablediag)中的步骤。
+1. 按照[启用应用程序日志记录（Windows）](../app-service/troubleshoot-diagnostic-logs.md#enable-application-logging-windows)中的步骤进行操作。
 2. 在代码文件中添加以下 using 语句：
 
         using System.Web.Http.Tracing;
@@ -449,7 +449,7 @@ Azure 应用服务提供多种适用于 ASP.NET 应用程序的调试和故障�
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");
 4. 重新发布服务器项目，并访问移动应用后端，结合日志记录执行代码路径。
-5. 根据[如何：下载日志](../app-service/troubleshoot-diagnostic-logs.md#download)中所述下载并评估日志。
+5. 下载并评估日志，如 "[访问日志文件](../app-service/troubleshoot-diagnostic-logs.md#access-log-files)" 中所述。
 
 ### <a name="local-debug"></a>使用身份验证进行本地调试
 可以先在本地运行应用程序以测试更改，然后将更改发布到云中。 对于大多数 Azure 移动应用后端，请在 Visual Studio 中按 *F5*。 但是，使用身份验证时需要考虑其他一些事项。

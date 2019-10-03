@@ -1,23 +1,23 @@
 ---
-title: Azure Database for PostgreSQL 中的服务器概念
-description: 本文提供配置和管理 Azure Database for PostgreSQL 服务器的注意事项和指南。
+title: Azure Database for PostgreSQL（单一服务器）中的服务器概念
+description: 本文提供配置和管理 Azure Database for PostgreSQL（单一服务器）的注意事项和指南。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/07/2018
-ms.openlocfilehash: a5b6db9f4bfbe9a11119270e9236580b41fae8c7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.date: 5/6/2019
+ms.openlocfilehash: bc135e58d0fbabc809f3718915e9f4e35b8ed875
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540854"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65067159"
 ---
-# <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL 服务器
-本文提供使用 Azure Database for PostgreSQL 服务器的注意事项和指南。
+# <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器
+本文提供使用 Azure Database for PostgreSQL（单一服务器）的注意事项和指南。
 
 ## <a name="what-is-an-azure-database-for-postgresql-server"></a>什么是 Azure Database for PostgreSQL 服务器？
-Azure Database for PostgreSQL 服务器是多个数据库的中心管理点。 它的 PostgreSQL 服务器构造与本地环境中用户可能比较熟悉的构造相同。 具体而言，PostgreSQL 服务是托管的服务，它提供性能保证、公开服务器级访问权限和功能。
+Azure Database for PostgreSQL（单一服务器）部署选项中的服务器是多个数据库的中心管理点。 它的 PostgreSQL 服务器构造与本地环境中用户可能比较熟悉的构造相同。 具体而言，PostgreSQL 服务是托管的服务，它提供性能保证、公开服务器级访问权限和功能。
 
 Azure Database for PostgreSQL 服务器：
 
@@ -39,8 +39,8 @@ Azure Database for PostgreSQL 服务器：
 |||
 |:--|:--|
 | **身份验证和授权** | Azure Database for PostgreSQL 服务器支持本机 PostgreSQL 身份验证。 可使用服务器的管理员登录名连接到服务器并进行身份验证。 |
-| 协议 | 该服务支持 PostgreSQL 使用的基于消息的协议。 |
-| TCP/IP | 通过 TCP/IP 和 Unix 域套接字支持该协议。 |
+| 协议  | 该服务支持 PostgreSQL 使用的基于消息的协议。 |
+| TCP/IP  | 通过 TCP/IP 和 Unix 域套接字支持该协议。 |
 | **防火墙** | 为帮助保护数据，在用户指定具有访问权限的计算机之前，防火墙规则将禁止所有对服务器及其数据库的访问。 请参阅  [Azure Database for PostgreSQL 服务器防火墙规则](concepts-firewall-rules.md)。 |
 
 ## <a name="managing-your-server"></a>管理服务器
@@ -51,9 +51,9 @@ Azure Database for PostgreSQL 服务器：
 PostgreSQL 超级用户属性分配给属于托管服务的 azure_superuser。 你无权访问此角色。
 
 Azure Database for PostgreSQL 服务器具有默认数据库： 
-- postgres - 可以在创建服务器后连接到的默认数据库。
-- azure_maintenance - 此数据库用于将提供托管服务的进程与用户操作分开。 你无权访问此数据库。
-- azure_sys - 查询存储的一个数据库。 当查询存储处于关闭状态时，此数据库不会累积数据；这是默认设置。 有关详细信息，请参阅[查询存储概述](concepts-query-store.md)。
+- postgres  - 可以在创建服务器后连接到的默认数据库。
+- azure_maintenance  - 此数据库用于将提供托管服务的进程与用户操作分开。 你无权访问此数据库。
+- azure_sys  - 查询存储的一个数据库。 当查询存储处于关闭状态时，此数据库不会累积数据；这是默认设置。 有关详细信息，请参阅[查询存储概述](concepts-query-store.md)。
 
 
 ## <a name="server-parameters"></a>服务器参数
@@ -64,6 +64,6 @@ PostgreSQL 服务器参数可确定服务器的配置。 在 Azure Database for 
 
 ## <a name="next-steps"></a>后续步骤
 - 有关该服务的概述，请参阅  [Azure Database for PostgreSQL 概述](overview.md)。
-- 有关基于服务层 **** 的具体资源配额和限制的信息，请参阅 [服务层](concepts-pricing-tiers.md)。
+- 有关基于服务层级 **** 的具体资源配额和限制的信息，请参阅 [服务层级](concepts-pricing-tiers.md)。
 - 有关连接到服务的信息，请参阅  [Azure Database for PostgreSQL 的连接库](concepts-connection-libraries.md)。
 - 通过 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 查看和编辑服务器参数。

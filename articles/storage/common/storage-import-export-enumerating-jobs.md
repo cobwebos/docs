@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 0ae9e7fa76c8ecbb724cf0f494e648df989dff30
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55726661"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478685"
 ---
 # <a name="enumerating-jobs-in-the-azure-importexport-service"></a>枚举 Azure 导入/导出服务中的作业
 若要枚举订阅中的所有作业，请调用[列出作业](/rest/api/storageimportexport/jobs)操作。 `List Jobs` 返回作业列表以及以下属性：

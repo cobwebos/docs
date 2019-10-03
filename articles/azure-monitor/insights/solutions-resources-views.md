@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
 ms.openlocfilehash: cefb83d5336bb99fd09001b5ea369a0b8fc4b942
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769114"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60596635"
 ---
 # <a name="views-in-management-solutions-preview"></a>管理解决方案（预览版）中的视图
 > [!NOTE]
@@ -89,7 +89,7 @@ ms.locfileid: "57769114"
 * 变量应在解决方案中进行定义，并在适当的属性中使用。
 
 ### <a name="log-analytics-api-version"></a>Log Analytics API 版本
-资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion 属性，该属性将定义资源应使用的 API 版本。  对于使用[旧版查询语言和升级版查询语言](../../azure-monitor/log-query/log-query-overview.md)的具有查询的视图，此版本有所不同。  
+资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion  属性，该属性将定义资源应使用的 API 版本。  对于使用[旧版查询语言和升级版查询语言](../../azure-monitor/log-query/log-query-overview.md)的具有查询的视图，此版本有所不同。  
 
  下表指定了旧版和升级版工作区中视图的 Log Analytics API 版本： 
 

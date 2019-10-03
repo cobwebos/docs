@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: e022a7661997d231e291a4d09611bb6e95bee262
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 42ee1dea8c9735592f6d6c9e0542ca094a6be383
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528299"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65962909"
 ---
 # <a name="caching-with-azure-front-door-service"></a>使用 Azure Front Door 服务进行缓存
 下列文档详细说明了在具有已启用缓存的路由规则时 Front Door 的行为。
@@ -82,7 +82,7 @@ Front Door 可动态压缩边缘内容，从而更快响应客户端。 所有�
 如果资产请求指定进行压缩，但该请求导致缓存缺失，则 Front Door 将直接在 POP 服务器上压缩资产。 此后，将从缓存提供压缩的文件。 通过 transfer-encoding: chunked 返回所生成的项。
 
 ## <a name="query-string-behavior"></a>查询字符串行为
-借助 Front Door，可控制如何对包含查询字符串的 Web 请求缓存文件。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如， http://www.contoso.com/content.mov?field1=value1&field2=value2。 如果请求的查询字符串中有多个键值对，其顺序并不重要。
+借助 Front Door，可控制如何对包含查询字符串的 Web 请求缓存文件。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如， http://www.contoso.com/content.mov?field1=value1&field2=value2 。 如果请求的查询字符串中有多个键值对，其顺序并不重要。
 - **忽略查询字符串**：默认模式。 在此模式下，Front Door 将来自请求者的查询字符串传递到第一个请求上的后端并缓存该资产。 由 Front Door 环境处理的资产的所有后续请求都将忽略查询字符串，直到所缓存的资产过期。
 
 - **缓存每个唯一的 URL**：在此模式下，包含唯一 URL 的每个请求（包括查询字符串）将视为具有其自己的缓存的唯一资产。 例如，后端对 `www.example.ashx?q=test1` 的请求做出的响应将缓存在 Front Door 环境中，并为具有同一查询字符串的后续缓存返回该响应。 `www.example.ashx?q=test2` 的请求将作为具有其自己的生存时间设置的单独资产来缓存。
@@ -101,10 +101,10 @@ Front Door 的缓存清除不区分大小写。 此外，它们不区分查询�
 ## <a name="cache-expiration"></a>缓存到期
 按下列标题顺序来确定项目在缓存中的存储时间：</br>
 1. Cache-Control: s-maxage=\<seconds>
-2. Cache-Control: maxage=\<seconds>
+2. Cache-Control: max-age=\<seconds>
 3. 过期： \<http 日期 >
 
-优选可指示不缓存响应的 Cache-Control 响应标头，例如 Cache-Control: private，Cache-Control: no-cache 和 Cache-Control: no-store。 但是，如果 POP 中多个正在进行的请求针对的是同一 URL，则它们可共享响应。
+优选可指示不缓存响应的 Cache-Control 响应标头，例如 Cache-Control: private，Cache-Control: no-cache 和 Cache-Control: no-store。 但是，如果 POP 中多个正在进行的请求针对的是同一 URL，则它们可共享响应。 如果存在没有缓存控制，则默认行为是时间的 AFD 将缓存的资源量 X X 时间的随机选择介于 1 到 3 天之间。
 
 
 ## <a name="request-headers"></a>请求标头

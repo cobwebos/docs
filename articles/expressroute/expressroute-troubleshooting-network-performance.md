@@ -9,11 +9,11 @@ ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
 ms.openlocfilehash: 9ec310ffaa9d2bb297abde9341bf7b6c2dc763b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995800"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60883225"
 ---
 # <a name="troubleshooting-network-performance"></a>网络性能故障排除
 ## <a name="overview"></a>概述
@@ -116,7 +116,7 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 此外，也请记得查看 OSI 模型的其他层。 注意到网络和第 1 - 3 层（物理层、数据层和网络层）很容易，但是问题也可能出现在应用程序层的第 7 层。 保持开放的心态，验证假设。
 
 ## <a name="advanced-expressroute-troubleshooting"></a>高级 ExpressRoute 故障排除
-如果不确定云边缘的实际所在，那么隔离 Azure 要素便是一个难题。 使用 ExpressRoute 时，边缘是名为 Microsoft 企业边缘 (MSEE) 的网络要素。 使用 ExpressRoute 时，MSEE 是进入 Microsoft 网络的第一个接触点和离开 Microsoft 网络的最后一个跃点。 在 VNet 网关和 ExpressRoute 线路之间创建连接对象时，实际上正在连接 MSEE。 辨别 MSEE 是第一个跃点还是最后一个跃点（取决于要走哪个方向）至关重要，可隔离 Azure 网络问题，证明问题出在 Azure 上还是 WAN 或企业网络的更下游。 
+如果不确定云边缘的实际所在，那么隔离 Azure 要素便是一个难题。 使用 ExpressRoute 时，边缘是名为 Microsoft 企业边缘 (MSEE) 的网络要素。 使用 ExpressRoute 时，MSEE 是进入 Microsoft 网络的第一个接触点和离开 Microsoft 网络的最后一个跃点。  在 VNet 网关和 ExpressRoute 线路之间创建连接对象时，实际上正在连接 MSEE。 辨别 MSEE 是第一个跃点还是最后一个跃点（取决于要走哪个方向）至关重要，可隔离 Azure 网络问题，证明问题出在 Azure 上还是 WAN 或企业网络的更下游。 
 
 [![2]][2]
 
@@ -125,7 +125,7 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 >
 >
 
-如果两个 Vnet（关系图中的 Vnet A 和 B）连接到相同 ExpressRoute 线路，便可执行一系列测试以隔离 Azure 中的问题（或证明它不在 Azure 中）
+如果两个 Vnet（关系图中的 Vnet A 和 B）连接到相同 ExpressRoute 线路，便可执行一系列测试以隔离 Azure 中的问题（或证明它不在 Azure 中） 
  
 ### <a name="test-plan"></a>测试计划
 1. 在 VM1 和 VM2 之间运行 Get-LinkPerformance 测试。 此测试可让你了解到问题是否是出在本地。 如果此测试带来了可接受的延迟和带宽结果，则可将本地 VNet 网络标记为良好。
@@ -133,7 +133,7 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 3. 如果排除了 Azure，可在公司网络上执行类似的测试步骤。 如果此测试结果也是良好，则应对服务提供商或 ISP 执行测试来诊断 WAN 连接状态。 示例：在两个分支机构之间运行此测试，或在桌面和数据中心服务器之间进行测试。 根据测试内容，寻找可实现该路径的终结点（服务器、PC 等等）。
 
 >[!IMPORTANT]
-> 对于每次测试，都务必标记运行测试时的时间，并将测试结果记录在共同位置（我喜欢记录在 OneNote 或 Excel 上）。 每次测试运行应有相同的输出，以便在测试运行之间比较结果数据，并在数据中没有“遗漏”。 我使用 AzureCT 进行故障排除主要是因为多个测试间的一致性。 “魔力”在于从每个测试中获取的一致测试结果和数据输出，而非我所运行的精确负载方案。 如果稍后发现问题是偶尔发生的，每次记录时间并获得一致的数据特别有用。 要勤于采集数据，这样可避免重复测试相同的方案（多年前我了解到这不容易）。
+> 对于每次测试，都务必标记运行测试时的时间，并将测试结果记录在共同位置（我喜欢记录在 OneNote 或 Excel 上）。 每次测试运行应有相同的输出，以便在测试运行之间比较结果数据，并在数据中没有“遗漏”。 我使用 AzureCT 进行故障排除主要是因为多个测试间的一致性。 “魔力”在于从每个测试中获取的一致测试结果和数据输出，而非我所运行的精确负载方案。   如果稍后发现问题是偶尔发生的，每次记录时间并获得一致的数据特别有用。 要勤于采集数据，这样可避免重复测试相同的方案（多年前我了解到这不容易）。
 >
 >
 
@@ -179,7 +179,7 @@ AzureCT PowerShell 模块有两个组成部分 - [可用性测试][Availability 
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>位置|Azure<br/>区域|估计<br/>距离 (km)|Latency|1 会话<br/>带宽|最大值<br/>带宽|
+|ExpressRoute<br/>Location|Azure<br/>区域|估计<br/>距离 (km)|Latency|1 会话<br/>带宽|最大值<br/>带宽|
 | 西雅图 | 美国西部 2        |    191 km |   5 ms | 262.0 Mbits/sec |  3.74 Gbits/sec |
 | 西雅图 | 美国西部          |  1,094 km |  18 ms |  82.3 Mbits/sec |  3.70 Gbits/sec |
 | 西雅图 | 美国中部       |  2,357 km |  40 ms |  38.8 Mbits/sec |  2.55 Gbits/sec |

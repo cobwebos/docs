@@ -2,24 +2,17 @@
 title: 市场推广服务 - 套餐列出最佳做法 | Azure
 description: 市场推广服务 - 本部分介绍套餐的列出最佳做法
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: e5db2f340917705ec29f7b6db4de40914c66efcd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2a660fe0f7663ac87b82038a3bd3d4c4fbf18544
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57863927"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962771"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
 
@@ -28,14 +21,14 @@ ms.locfileid: "57863927"
 ## <a name="storefront-offer-details"></a>店面产品/服务详细信息
 | 店面设置 | 最佳做法 |
 |:--- |:--- |  
-| 产品名称 | 提供强有力的标题：<br> <ul> <li> 应用名称应向客户传达核心价值。 </li> <li> 在应用标题中包含搜索关键字可以提高搜索引擎结果的排名。 </li> </ul> 遵循咨询服务列表的固定标题格式：<br>[套餐名称]：[持续时间] [套餐类型]（例如，Contoso *：* 2 周实现） <br><br> 遵循品牌指南：<br>参考 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵守 [Microsoft 商标和品牌指南](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)及其他相关的产品特定指南。 |
+| 产品/服务名称 | 提供强有力的标题：<br> <ul> <li> 应用名称应向客户传达核心价值。 </li> <li> 在应用标题中包含搜索关键字可以提高搜索引擎结果的排名。 </li> </ul> 遵循咨询服务列表的固定标题格式：<br>[套餐名称]：[持续时间] [套餐类型]（例如，Contoso *：* 2 周实现） <br><br> 遵循品牌指南：<br>参考 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵守 [Microsoft 商标和品牌指南](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)及其他相关的产品特定指南。 |
 | 产品/服务描述 | 提供明确的产品/服务说明：<br> <ul> <li> 在前几句描述中清晰描述产品/服务的价值主张。 </li> <li> 请牢记，前几句话可能在搜索引擎结果中显示。 </li> <li> 不要依赖于特性和功能来销售产品。 而应该强调提供的价值。 </li> <li> 尽可能多使用行业特定用语或基于优势的措辞。</li> <li> 此外，咨询服务商品必须明确说明你提供的专业服务。 </li></ul> 核心价值主张应包含以下信息：<ul><li>产品说明。</li><li>受益于该产品的用户类型。</li><li>该产品可满足的客户需求或解决的难题。</li></ul> |
 
 ## <a name="storefront-listing-details"></a>店面列表详细信息
 | 店面设置 | 最佳做法 |
 |:--- |:--- |  
 | 行业：仅限 AppSource 应用和咨询服务 | 如果套餐可满足行业特定需求，请选择相关行业： <ul><li> 在产品/服务说明中强调行业特定的功能。</li> </ul> **注意**：最大选项数因套餐类型而异并会在[云合作伙伴门户](https://cloudpartner.azure.com/#insights)中指明。 |
-| 类别 | 选择与产品/服务最相关的类别：<br> <ul> <li> 认真选择类别，因为客户会使用这些类别搜索相关应用。 </li> <li> 确保在产品/服务说明中强调你的产品/服务如何满足特定类别的需求。 </li> </ul> **注意**：最大选项数因套餐类型而异并会在[云合作伙伴门户](https://cloudpartner.azure.com/#insights)中指明。 |
+| Categories | 选择与产品/服务最相关的类别：<br> <ul> <li> 认真选择类别，因为客户会使用这些类别搜索相关应用。 </li> <li> 确保在产品/服务说明中强调你的产品/服务如何满足特定类别的需求。 </li> </ul> **注意**：最大选项数因套餐类型而异并会在[云合作伙伴门户](https://cloudpartner.azure.com/#insights)中指明。 |
 | 可与应用配合使用的具体产品（最多 3 个）：仅限 AppSource 应用 | 列出解决方案使用或扩展的其他产品和技术。 例如，Azure IoT 中心或 Azure 机器学习。 |
 | 搜索关键字（最多 3 个） | 搜索关键字可以帮助企业用户在通过以下方式搜索时找到你的套餐 <ul> <li> 在 Azure 市场中 </li> <li> 在 AppSource 中 </li> <li> 使用搜索引擎 </li> </ul> 要使商品显示在这些搜索结果中，需要： <ul> <li> 确定套餐的三个最常用搜索关键字； </li> <li> 在套餐摘要和说明中加入搜索关键字； </li> <li> 在此处列出搜索关键字。 </li> </ul> |
 
@@ -60,7 +53,7 @@ ms.locfileid: "57863927"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关市场 GTM 服务的详细信息，请转到[市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
+详细了解你的[商业应用商店权益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)。
 
 登录到[云合作伙伴门户](https://cloudpartner.azure.com)，以便创建并配置套餐。
 

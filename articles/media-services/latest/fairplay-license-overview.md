@@ -15,27 +15,27 @@ ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 6d4b7ba842d08723b90a4f2491d9e79e68dd932e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994896"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60733566"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 许可要求和配置 
 
-使用 Azure 媒体服务可通过 Apple FairPlay (AES-128 CBC) 加密 HLS 内容。 媒体服务还提供用于交付 FairPlay 许可证的服务。 当播放器尝试播放受 FairPlay 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并用来解密和播放指定的内容。
+使用 Azure 媒体服务可通过 Apple FairPlay (AES-128 CBC) 加密 HLS 内容  。 媒体服务还提供用于交付 FairPlay 许可证的服务。 当播放器尝试播放受 FairPlay 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并用来解密和播放指定的内容。
 
-媒体服务还提供可用于配置 FairPlay 许可证的 API。 本主题讨论 FairPlay 许可证要求，并演示如何使用媒体服务 API 配置 FairPlay 许可证。 
+媒体服务还提供可用于配置 FairPlay 许可证的 API。 本主题讨论 FairPlay 许可证要求，并演示如何使用媒体服务 API 配置 FairPlay 许可证  。 
 
 ## <a name="requirements"></a>要求
 
-使用媒体服务通过 Apple FairPlay 加密 HLS 内容并使用媒体服务交付 FairPlay 许可证时，必需完成以下各项：
+使用媒体服务通过 Apple FairPlay 加密 HLS 内容并使用媒体服务交付 FairPlay 许可证时，必需完成以下各项  ：
 
 * 注册 [Apple 开发计划](https://developer.apple.com/)。
 * Apple 要求内容所有者获取[部署包](https://developer.apple.com/contact/fps/)。 说明已使用媒体服务实现密钥安全模块 (KSM)，以及正在请求最终 FPS 包。 最终 FPS 包中有如何生成证书和获取应用程序密钥 (ASK) 的说明。 可使用 ASK 配置 FairPlay。
 * 必须在媒体服务密钥/许可证交付端上设置以下各项：
 
-    * **应用证书 (AC)**：这是一个包含私钥的 .pfx 文件。 创建此文件，并使用密码对其进行加密。 .pfx 文件应采用 Base64 格式。
+    * **应用证书 (AC)** ：这是一个包含私钥的 .pfx 文件。 创建此文件，并使用密码对其进行加密。 .pfx 文件应采用 Base64 格式。
 
         以下步骤介绍如何为 FairPlay 生成 .pfx 证书文件：
 
@@ -54,7 +54,7 @@ ms.locfileid: "57994896"
     
 * 以下事项必须通过 FPS 客户端来设置：
 
-  * **应用证书 (AC)**：这是一个包含公钥的 .cer/.der 文件，操作系统使用它来加密某些有效负载。 媒体服务需要了解它，因为播放器需要它。 密钥传送服务使用相应的私钥对其进行解密。
+  * **应用证书 (AC)** ：这是一个包含公钥的 .cer/.der 文件，操作系统使用它来加密某些有效负载。 媒体服务需要了解它，因为播放器需要它。 密钥传送服务使用相应的私钥对其进行解密。
 
 * 要播放 FairPlay 加密的流，需要先获取实际 ASK，然后生成实际证书。 该过程将创建所有三个部分：
 
@@ -64,7 +64,7 @@ ms.locfileid: "57994896"
 
 ## <a name="fairplay-and-player-apps"></a>FairPlay 和播放器应用
 
-使用 Apple FairPlay 对内容进行加密时，各视频和音频示例都使用 AES-128 CBC 模式进行加密。 **FairPlay 流式处理** (FPS) 集成到设备操作系统，iOS 和 Apple TV 本身支持这项功能。 OS X 上的 Safari 使用加密媒体扩展 (EME) 接口支持启用 FPS。
+使用 Apple FairPlay 对内容进行加密时，各视频和音频示例都使用 AES-128 CBC 模式进行加密   。 **FairPlay 流式处理** (FPS) 集成到设备操作系统，iOS 和 Apple TV 本身支持这项功能。 OS X 上的 Safari 使用加密媒体扩展 (EME) 接口支持启用 FPS。
 
 Azure Media Player 还支持 FairPlay 播放。 有关详细信息，请参阅 [Azure Media Player 文档](https://amp.azure.net/libs/amp/latest/docs/index.html)。
 

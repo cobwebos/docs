@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 186bd272fdca20475686847dc4e86b8ad50e5e41
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: df12acad5fa9287f43cc256bfcc89fa6775c3e3b
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080958"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001311"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -33,18 +33,21 @@ Azure IoT 设备预配服务支持两类注册：
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
+> [!NOTE]
+> 本指南仅适用于现已弃用的 V1 Python SDK。 V2 尚不支持模拟 TPM 设备。 该团队目前正在努力使 V2 具有功能奇偶一致性。
+
 ## <a name="prepare-the-environment"></a>准备环境 
 
-1. 确保已在计算机上安装 [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/) 或 [Visual Studio 2017](https://www.visualstudio.com/vs/)。 必须启用“使用 C++ 进行桌面开发”工作负荷才能进行 Visual Studio 安装。
+1. 确保你已安装了 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本，并为你的 Visual Studio 安装启用“使用 C++ 的桌面开发”。
 
 1. 下载并安装 [CMake 生成系统](https://cmake.org/download/)。
 
-1. 确保在计算机上安装 `git` 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括 Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
+1. 确保在计算机上安装 `git` 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括  Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
 
 1. 打开命令提示符或 Git Bash。 为设备模拟代码示例克隆 GitHub 存储库：
     
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-python.git --recursive
+    git clone --single-branch --branch v1-deprecated https://github.com/Azure/azure-iot-sdk-python.git --recursive
     ```
 
 1. 在该 GitHub 存储库的本地副本中创建一个用于 CMake 生成过程的文件夹。 
@@ -61,7 +64,7 @@ Azure IoT 设备预配服务支持两类注册：
     cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
     ```
 
-1. 在单独的命令提示符处，导航到 TPM 模拟器文件夹，然后运行 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 模拟器。 单击“允许访问”。 该模拟器通过套接字在端口 2321 和 2322 上进行侦听。 请勿关闭此命令窗口；本快速入门指南自始至终都需让该模拟器保持运行状态。 
+1. 在单独的命令提示符处，导航到 TPM 模拟器文件夹，然后运行 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 模拟器。 单击“允许访问”。  该模拟器通过套接字在端口 2321 和 2322 上进行侦听。 请勿关闭此命令窗口；本快速入门指南自始至终都需让该模拟器保持运行状态。 
 
     ```cmd/sh
     .\azure-iot-sdk-python\c\provisioning_client\deps\utpm\tools\tpm_simulator\Simulator.exe
@@ -72,27 +75,27 @@ Azure IoT 设备预配服务支持两类注册：
 
 ## <a name="create-a-device-enrollment-entry"></a>创建设备注册项
 
-1. 打开在 cmake 文件夹中生成的名为 `azure_iot_sdks.sln` 的解决方案，将其内置到 Visual Studio 中。
+1. 打开在  cmake 文件夹中生成的名为 `azure_iot_sdks.sln` 的解决方案，将其内置到 Visual Studio 中。
 
-1. 右键单击“tpm_device_provision”项目，然后选择“设为启动项目”。 运行解决方案。 输出窗口会显示进行设备注册所需的“认可密钥”和“注册 ID”。 记下这些值。 
+1. 右键单击“tpm_device_provision”项目，  然后选择“设为启动项目”。  运行解决方案。 输出窗口会显示进行设备注册所需的“认可密钥”  和“注册 ID”  。 记下这些值。 
 
     ![TPM 安装程序](./media/python-quick-create-simulated-device/tpm-setup.png)
 
-1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务。
+1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开设备预配服务  。
 
-1. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”。 选择“个人注册”选项卡，然后单击顶部的“添加个人注册”按钮。 
+1. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”  。 选择“个人注册”选项卡，然后单击顶部的“添加个人注册”按钮。   
 
-1. 在“添加注册”下，输入以下信息：
-   - 选择“TPM”作为标识证明*机制*。
+1. 在“添加注册”下  ，输入以下信息：
+   - 选择“TPM”  作为标识证明*机制*。
    - 输入 TPM 设备的*注册 ID* 和*认可密钥*。 
    - 选择与预配服务链接的 IoT 中心。
    - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。
-   - 使用设备所需的初始配置更新“初始设备孪生状态”。
-   - 完成后，单击“保存”按钮。 
+   - 使用设备所需的初始配置更新“初始设备孪生状态”  。
+   - 完成后，单击“保存”按钮  。 
 
      ![在门户边栏选项卡中输入设备注册信息](./media/python-quick-create-simulated-device/enterdevice-enrollment.png)  
 
-   成功注册以后，设备的“注册 ID”会显示在“单个注册”选项卡下的列表中。 
+   成功注册以后，设备的“注册 ID”会显示在“单个注册”选项卡下的列表中。   
 
 
 ## <a name="simulate-the-device"></a>模拟设备
@@ -135,11 +138,11 @@ Azure IoT 设备预配服务支持两类注册：
 
     ![注册成功](./media/python-quick-create-simulated-device/registration-success.png)
 
-1. 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“Device Explorer”边栏选项卡上。
+1. 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“Device Explorer”边栏选项卡上。 
 
     ![设备注册到 IoT 中心](./media/python-quick-create-simulated-device/hubregistration.png) 
 
-    如果从设备的注册项中的默认值更改了“初始设备孪生状态”，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)
+    如果从设备的注册项中的默认值更改了“初始设备孪生状态”  ，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)
 
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -148,8 +151,8 @@ Azure IoT 设备预配服务支持两类注册：
 
 1. 关闭计算机上的设备客户端示例输出窗口。
 1. 关闭计算机上的 TPM 模拟器窗口。
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择设备预配服务。 打开服务的“管理注册”边栏选项卡，然后单击“单个注册”选项卡。选择在本快速入门中注册的设备的“注册 ID”，然后单击顶部的“删除”按钮。 
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心。 打开中心的“IoT 设备”边栏选项卡，选择在本快速入门中注册的设备的“设备 ID”，然后单击顶部的“删除”按钮。
+1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”边栏选项卡，然后单击“单个注册”选项卡。   选择在本快速入门中注册的设备的“注册 ID”，然后单击顶部的“删除”按钮。   
+1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”边栏选项卡，选择在本快速入门中注册的设备的“设备 ID”，然后单击顶部的“删除”按钮。   
 
 ## <a name="next-steps"></a>后续步骤
 

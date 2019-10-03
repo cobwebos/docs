@@ -4,15 +4,15 @@ description: 了解如何使用 Azure Cosmos DB，通过 Azure Cosmos DB 的用�
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 12/26/2018
+ms.date: 05/20/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: d0f61afaba094a1e499a91f9937a31554438759e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 22438837a7cee1755d115993683101c260b99f2c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042166"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953846"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB 的用于 MongoDB 的 API
 
@@ -22,17 +22,17 @@ ms.locfileid: "54042166"
 
 Azure Cosmos DB 服务对 Cassandra、MongoDB、Gremlin 和 Azure 表存储等常见的 NoSQL 数据库实现网络协议。 它在 Cosmos DB 中直接有效地提供网络协议的本机实现，使 NoSQL 数据库的现有客户端 SDK、驱动程序和工具能够以透明方式与 Cosmos DB 交互。 Cosmos DB 不使用数据库的任何源代码来为任何 NoSQL 数据库提供网络兼容的 API。
 
-默认情况下，Azure Cosmos DB 的用于 MongoDB 的 API 与 MongoDB 网络协议版本 3.2 兼容。 在网络协议版本 3.4 中添加的功能或查询运算符目前以预览版功能形式提供。 任何识别这些协议版本的 MongoDB 客户端驱动程序原生应该可以连接到 Cosmos DB。
+默认情况下，Azure Cosmos DB 的用于 MongoDB 的 API 与 MongoDB 网络协议版本 3.2 兼容。 在网络协议版本 3.4 中添加的功能或查询运算符目前以预览版功能形式提供。 任何识别这些协议版本的 MongoDB 客户端驱动程序应该可以本机连接到 Cosmos DB。
 
 ![Azure Cosmos DB 的用于 MongoDB 的 API](./media/mongodb-introduction/cosmosdb-mongodb.png) 
 
 ## <a name="key-benefits"></a>主要优点
 
-[此文](introduction.md)介绍了完全托管式、全局分布式数据库即服务 Cosmos DB 的主要优势。 此外，Cosmos DB 通过本机实现流行 NoSQL API 的网络协议来提供以下优势：
+[此文](introduction.md)介绍了 Cosmos DB（完全托管的全局分布式数据库即服务）的主要优势。 此外，Cosmos DB 通过本机实现流行 NoSQL API 的网络协议来提供以下优势：
 
 * 轻松将应用程序迁移到 Cosmos DB，同时保留应用程序逻辑的重要部分。
 * 使应用程序保持可移植性，并继续保持云供应商的不可知性。
-* 获得行业领先的、有 SLA 和资金保障的、以 Cosmos DB 为后盾的常用 NoSQL API。
+* 为 Cosmos DB 支持的常用 NoSQL API 获取行业领先的、有资金保障的 SLA。
 * 根据需求弹性缩放 Cosmos 数据库的预配吞吐量和存储，并且只需为使用的吞吐量和存储付费。 这可以大幅节省成本。
 * 通过多主数据库复制实现统包全局分布。
 

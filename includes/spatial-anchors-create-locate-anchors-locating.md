@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 52dfbfca5f79a7f92848ea39eddc00aa10f05ff1
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58631993"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172666"
 ---
 ## <a name="locate-a-cloud-spatial-anchor"></a>查找云空间定位点
 

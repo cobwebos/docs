@@ -3,8 +3,8 @@ title: 诊断 Azure 虚拟机路由问题 | Microsoft Docs
 description: 了解如何通过查看虚拟机的有效路由来诊断虚拟机路由问题。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
-ms.author: jdial
-ms.openlocfilehash: 6864e282319bc5a0539c4c94f3062dcab7315970
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: 465d44ea823c99afbb4f25541d64770c114ba7e2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652240"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64730510"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>诊断虚拟机路由问题
 
@@ -30,13 +30,13 @@ ms.locfileid: "56652240"
 
 你正在尝试连接到某个 VM，但连接失败。 若要确定为何无法连接到该 VM，可以使用 Azure [门户](#diagnose-using-azure-portal)、[PowerShell](#diagnose-using-powershell) 或 [Azure CLI](#diagnose-using-azure-cli) 查看网络接口的有效路由。
 
-以下步骤假设有一个要查看其有效路由的现有 VM。 如果没有 VM，请先部署 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 以完成本文中的任务。 本文中的示例适用于名为 *myVM* 的 VM，其中包含名为 *myVMVMNic* 的网络接口。 VM 和网络接口在名为 *myResourceGroup*、位于“美国东部”区域的资源组中。 针对想要诊断其问题的 VM，相应地更改步骤中的值。
+以下步骤假设有一个要查看其有效路由的现有 VM。 如果没有 VM，请先部署 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 以完成本文中的任务。 本文中的示例适用于名为 *myVM* 的 VM，其中包含名为 *myVMVMNic* 的网络接口。 VM 和网络接口在名为 *myResourceGroup*、位于“美国东部”区域的资源组中。  针对想要诊断其问题的 VM，相应地更改步骤中的值。
 
 ## <a name="diagnose-using-azure-portal"></a>使用 Azure 门户诊断
 
 1. 使用拥有[所需权限](virtual-network-network-interface.md#permissions)的 Azure 帐户登录到 Azure [门户](https://portal.azure.com)。
 2. 在 Azure 门户顶部的搜索框中，输入处于运行状态的 VM 的名称。 当 VM 名称显示在搜索结果中时，请选择它。
-3. 选择“诊断并解决问题”，然后在“建议的步骤”下，选择第 7 项中的“有效路由”，如下图所示：
+3. 选择“诊断并解决问题”，然后在“建议的步骤”下，选择第 7 项中的“有效路由”，如下图所示：   
 
     ![查看有效路由](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "56652240"
 
     如果已将多个网络接口附加到 VM，可以选择任一网络接口来查看其有效路由。 由于每个网络接口可能位于不同的子网中，因此，每个网络接口可能有不同的有效路由。
 
-    在上图中所示的示例中，列出的路由是 Azure 为每个子网创建的默认路由。 你的列表至少包含这些路由，但可能还包含其他路由，具体取决于为虚拟网络启用的功能，例如，已将它对等互连到另一个虚拟网络，或通过 Azure VPN 网关连接到本地网络。 若要详细了解每个路由以及网络接口的其他路由，请参阅[虚拟网络流量路由](virtual-networks-udr-overview.md)。 如果列表中包含大量的路由，你可能会发现，选择“下载”来下载包含路由列表的 .csv 文件会更方便。
+    在上图中所示的示例中，列出的路由是 Azure 为每个子网创建的默认路由。 你的列表至少包含这些路由，但可能还包含其他路由，具体取决于为虚拟网络启用的功能，例如，已将它对等互连到另一个虚拟网络，或通过 Azure VPN 网关连接到本地网络。 若要详细了解每个路由以及网络接口的其他路由，请参阅[虚拟网络流量路由](virtual-networks-udr-overview.md)。 如果列表中包含大量的路由，你可能会发现，选择“下载”来下载包含路由列表的 .csv 文件会更方便。 
 
 尽管上述步骤是通过 VM 查看有效路由，但也可以通过以下方式查看有效路由：
 - **单个网络接口**：了解如何[查看网络接口](virtual-network-network-interface.md#view-network-interface-settings)。
@@ -56,9 +56,9 @@ ms.locfileid: "56652240"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果从您的计算机运行 PowerShell，你需要 Azure PowerShell 模块，版本 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需要运行 `Connect-AzAccount`，以使用拥有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
+可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 Azure PowerShell 模块 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需要运行 `Connect-AzAccount`，以使用拥有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
 
-获取与网络接口的有效路由[Get AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)。 以下示例获取资源组 *myResourceGroup* 中名为 *myVMVMNic* 的网络接口的有效路由：
+使用 [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) 获取网络接口的有效路由。 以下示例获取资源组 *myResourceGroup* 中名为 *myVMVMNic* 的网络接口的有效路由：
 
 ```azurepowershell-interactive
 Get-AzEffectiveRouteTable `
@@ -125,11 +125,11 @@ az vm show \
 排查通信问题时，请注意以下几点：
 
 - 路由基于定义的路由、边界网关协议 (BGP) 和系统路由之间的最长前缀匹配 (LPM)。 如果有多个路由的 LPM 匹配情况相同，则会按[路由概述](virtual-networks-udr-overview.md#how-azure-selects-a-route)中所列的顺序，根据路由的来源选择路由。 对于有效路由，只能查看基于所有可用路由匹配 LPM 的有效路由。 查看网络接口的路由评估方式可以更方便地对可能影响 VM 通信的特定路由进行故障排除。
-- 如果定义了网络虚拟设备 (NVA) 的自定义路由（“虚拟设备”是下一跃点类型），请确保接收流量的 NVA 已启用 IP 转发，否则数据包会被丢弃。 详细了解如何[为网络接口启用 IP 转发](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)。 此外，NVA 中的操作系统或应用程序也必须能够转发网络流量，并且能够配置为执行此操作。
+- 如果定义了网络虚拟设备 (NVA) 的自定义路由（“虚拟设备”是下一跃点类型），请确保接收流量的 NVA 已启用 IP 转发，否则数据包会被丢弃。  详细了解如何[为网络接口启用 IP 转发](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)。 此外，NVA 中的操作系统或应用程序也必须能够转发网络流量，并且能够配置为执行此操作。
 - 如果创建了 0.0.0.0/0 的路由，所有出站 Internet 流量将路由到指定的下一跃点，从而路由到 NVA 或 VPN 网关。 创建此类路由的方法通常称为强制隧道。 根据下一跃点处理流量的方式，使用此路由可能无法从 Internet 通过 RDP 或 SSH 来与 VM 建立远程连接。 符合以下条件时，可以启用强制隧道：
-    - 使用站点到站点 VPN 创建下一跃点类型为“VPN 网关”的路由。 详细了解如何[配置强制隧道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+    - 使用站点到站点 VPN 创建下一跃点类型为“VPN 网关”的路由。  详细了解如何[配置强制隧道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
     - 使用站点到站点 VPN 或 ExpressRoute 线路时，通过虚拟网络网关基于 BGP 播发 0.0.0.0/0（默认路由）。 详细了解如何将 BGP 与[站点到站点 VPN](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#ip-addresses-used-for-azure-private-peering) 配合使用。
-- 要使虚拟网络对等互连流量正常工作，对等互连虚拟网络的前缀范围中必须存在下一跃点类型为“VNet 对等互连”的系统路由。 如果没有此类路由，并且虚拟网络对等互连链接为“已连接”：
+- 要使虚拟网络对等互连流量正常工作，对等互连虚拟网络的前缀范围中必须存在下一跃点类型为“VNet 对等互连”的系统路由。  如果没有此类路由，并且虚拟网络对等互连链接为“已连接”： 
     - 请等待几秒钟后重试。 如果这是一个新建的对等互连链接，有时需要花费较长的时间才能将路由传播到子网中的所有网络接口。 若要详细了解虚拟网络对等互连，请参阅[虚拟网络对等互连概述](virtual-network-peering-overview.md)和[管理虚拟网络对等互连](virtual-network-manage-peering.md)。
     - 网络安全组规则可能会影响通信。 有关详细信息，请参阅[诊断虚拟机网络流量筛选器问题](diagnose-network-traffic-filter-problem.md)。
 - 尽管 Azure 会将默认路由分配到每个 Azure 网络接口，但如果已将多个网络接口附加到 VM，则只会为主要网络接口或 VM 操作系统中的网关分配默认路由 (0.0.0.0/0)。 了解如何为附加到 [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) 或 [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) VM 的辅助网络接口创建默认路由。 详细了解[主要和辅助网络接口](virtual-network-network-interface-vm.md#constraints)。

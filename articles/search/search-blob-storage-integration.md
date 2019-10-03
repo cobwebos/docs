@@ -6,15 +6,15 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 03/01/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: b7e7ecd2a82a8d64967288def9c6ede7a292f72a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f0801931b57302ae1d627dab783a40d2407c19ac
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759385"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650086"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>使用 Azure 搜索来搜索 Blob 存储
 
@@ -38,7 +38,7 @@ ms.locfileid: "57759385"
 ## <a name="image-search"></a>图像搜索
 Azure 搜索的全文搜索、分面导航和排序功能现在可以应用于 blob 中存储的图像的元数据了。
 
-认知搜索包括图像处理技能，如[光学字符识别 (OCR)](cognitive-search-skill-ocr.md)和标识[视觉特征](cognitive-search-skill-image-analysis.md)，使其编制索引，在每个找到的可视内容图像。
+认知搜索包括图像处理技能，例如[光学字符识别 (OCR)](cognitive-search-skill-ocr.md) 和[可视特征](cognitive-search-skill-image-analysis.md)的标识，这些技能可以用于为每个图像中发现的可视内容编制索引。
 
 ## <a name="index-and-search-through-json-blobs"></a>在 JSON blob 中编制索引和执行搜索
 可以将 Azure 搜索配置为提取在包含 JSON 的 blob 中找到的结构化内容。 Azure 搜索可以读取 JSON blob 并将结构化内容解析为 Azure 搜索文档的合适字段。 Azure 搜索还可以获取包含 JSON 对象数组的 blob 并将每个元素映射到单独的 Azure 搜索文档。

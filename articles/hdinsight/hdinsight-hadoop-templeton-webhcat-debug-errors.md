@@ -1,7 +1,6 @@
 ---
 title: 了解并解决 HDInsight 上的 WebHCat 错误 - Azure
 description: 了解 HDInsight 上的 WebHCat 返回的常见错误以及如何解决它们。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: f158e08f0f882801dc488721013e9705ea4ff738
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: cfbd42a67f9c9d6c66df3787b53575dc9e918e35
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448316"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067983"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>了解和解决从 HDInsight 上的 WebHCat 收到的错误
 
@@ -33,8 +32,6 @@ ms.locfileid: "58448316"
 
 * 对于 **Linux** 群集：使用 Apache Ambari（Web 或 REST API）修改值。 有关详细信息，请参阅[使用 Apache Ambari 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
 
-> [!IMPORTANT]  
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
 
 ### <a name="default-configuration"></a>默认配置
 
@@ -80,7 +77,7 @@ ms.locfileid: "58448316"
 | --- | --- |
 | WebHCat 进程内发生内部垃圾回收 |等待垃圾回收完成或重新启动 WebHCat 服务 |
 | 等待 ResourceManager 服务的响应超时。 当活动应用程序的数量达到配置的最大值（默认为 10,000）时，可能会发生此错误 |等待当前正在运行的作业完成，或者通过修改 `yarn.scheduler.capacity.maximum-applications` 来提高并发作业限制。 有关详细信息，请参阅[修改配置](#modifying-configuration)部分。 |
-| 在 `Fields` 设置为 `*` 时，尝试通过 [GET /jobs ](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 调用来检索所有作业 |不检索全部作业详细信息。 改为使用`jobid`检索仅大于特定作业 ID 的作业的详细信息 或者，不使用 `Fields` |
+| 在 `Fields` 设置为 `*` 时，尝试通过 [GET /jobs ](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 调用来检索所有作业 |不检索全部  作业详细信息。 改为使用`jobid`检索仅大于特定作业 ID 的作业的详细信息 或者，不使用 `Fields` |
 | 在 HeadNode 故障转移期间 WebHCat 服务关闭 |等待两分钟，并重试该操作 |
 | 通过 WebHCat 提交的作业有超过 500 个处于挂起状态 |等到当前挂起的作业完成再提交更多作业 |
 

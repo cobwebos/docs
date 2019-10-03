@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Data Lake U-SQL SDK 在本地运行和测试 U-SQL 作业
+title: 在本地运行 U-SQL 作业-Azure Data Lake U-SQL SDK
 description: 了解如何使用命令行和本地工作站上的编程接口在本地运行和测试 U-SQL 作业。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 51d9060eaf4b30c696ef2a3b5f798a31e2f2a98a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089958"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309686"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 运行和测试 U-SQL
 
@@ -139,22 +139,22 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 
 |参数|默认值|描述|
 |--------|-------------|-----------|
-|-CodeBehind|False|该脚本具有 .cs 代码隐藏|
+|-CodeBehind|假|该脚本具有 .cs 代码隐藏|
 |-CppSDK| |CppSDK 目录|
 |-DataRoot| DataRoot 环境变量|用于本地运行的 DataRoot，默认为“LOCALRUN_DATAROOT”环境变量|
 |-MessageOut| |将控制台上的消息转储到文件中|
-|-Parallel|第|使用指定的并行度运行计划|
+|-Parallel|1|使用指定的并行度运行计划|
 |-References| |代码隐藏的额外引用数据集或数据文件的路径列表，列表由“;”分隔|
-|-UdoRedirect|False|生成 Udo 程序集重定向配置|
+|-UdoRedirect|假|生成 Udo 程序集重定向配置|
 |-UseDatabase|master|用于代码隐藏临时程序集注册的数据库|
-|-Verbose|False|显示运行时的详细输出|
+|-Verbose|假|显示运行时的详细输出|
 |-WorkDir|当前目录|编译器用法和输出的目录|
 |-RunScopeCEP|0|要使用的 ScopeCEP 模式|
 |-ScopeCEPTempPath|temp|用于流式处理数据的临时路径|
 |-OptFlags| |用逗号分隔的优化器标志列表|
 
 
-下面是一个示例：
+以下是一个示例：
 
     LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose
 
@@ -240,7 +240,7 @@ U-SQL 本地运行需要指定的数据根作为本地存储帐户，还需要�
 
 - 请确保将 NugetPackage\build\runtime\ 下的所有依赖项文件复制到项目工作目录（通常位于 ProjectFolder\bin\x64\Debug 下）。
 
-### <a name="step-2-create-u-sql-script-test-case"></a>步骤 2：创建 U-SQL 脚本测试用例
+### <a name="step-2-create-u-sql-script-test-case"></a>步骤 2：创建 SQL 脚本测试用例
 
 以下是 U-SQL 脚本测试的示例代码。 为了进行测试，需要准备脚本、输入文件和预期输出文件。
 
@@ -332,34 +332,34 @@ LocalRunHelper.exe 为 U-SQL 本地编译和运行等提供编程接口。以下
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|参数|Type|描述|
+|参数|type|描述|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|对于输出消息，设置为 null 以使用控制台|
 
 **属性**
 
-|属性|Type|描述|
+|属性|类型|描述|
 |--------|----|-----------|
-|AlgebraPath|字符串|代数文件的路径（代数文件是某个编译结果）|
-|CodeBehindReferences|字符串|如果脚本有额外的代码隐藏引用，请指定用“;”分隔的路径|
-|CppSdkDir|字符串|CppSDK 目录|
-|CurrentDir|字符串|当前目录|
-|DataRoot|字符串|数据根路径|
-|DebuggerMailPath|字符串|调试程序邮件槽的路径|
+|AlgebraPath|string|代数文件的路径（代数文件是某个编译结果）|
+|CodeBehindReferences|string|如果脚本有额外的代码隐藏引用，请指定用“;”分隔的路径|
+|CppSdkDir|string|CppSDK 目录|
+|CurrentDir|string|当前目录|
+|DataRoot|string|数据根路径|
+|DebuggerMailPath|string|调试程序邮件槽的路径|
 |GenerateUdoRedirect|bool|是否要生成程序集加载重定向替代配置|
 |HasCodeBehind|bool|如果脚本具有.cs 代码隐藏|
-|InputDir|字符串|输入数据的目录|
-|MessagePath|字符串|消息转储文件路径|
-|OutputDir|字符串|输出数据的目录|
+|InputDir|string|输入数据的目录|
+|MessagePath|string|消息转储文件路径|
+|OutputDir|string|输出数据的目录|
 |并行度|int|运行代数的并行度|
 |ParentPid|int|父级（服务监视器要从中退出）的 PID，设置为 0 或负数以忽略|
-|ResultPath|字符串|结果转储文件路径|
-|RuntimeDir|字符串|运行时目录|
-|ScriptPath|字符串|在何处可以找到脚本|
+|ResultPath|string|结果转储文件路径|
+|RuntimeDir|string|运行时目录|
+|ScriptPath|string|在何处可以找到脚本|
 |Shallow|bool|浅层编译或不编译|
-|TempDir|字符串|临时目录|
-|UseDataBase|字符串|指定用于代码隐藏临时程序集注册的数据库，默认为 master|
-|WorkDir|字符串|首选工作目录|
+|TempDir|string|临时目录|
+|UseDataBase|string|指定用于代码隐藏临时程序集注册的数据库，默认为 master|
+|WorkDir|string|首选工作目录|
 
 
 **方法**
@@ -375,11 +375,11 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 ## <a name="faq-about-common-issue"></a>常见问题
 
 ### <a name="error-1"></a>错误 1：
-E_CSC_SYSTEM_INTERNAL:内部错误 ！ 无法加载文件或程序集“ScopeEngineManaged.dll”或其某个依赖项。 找不到指定的模块。
+E_CSC_SYSTEM_INTERNAL:内部错误！ 无法加载文件或程序集“ScopeEngineManaged.dll”或其某个依赖项。 找不到指定的模块。
 
 请检查以下事项：
 
-- 请确保具有 x64 环境。 生成目标平台和测试环境应为 x64，请参阅**步骤 1:创建C#单元测试项目和配置**上面。
+- 请确保具有 x64 环境。 生成目标平台和测试环境应为 x64，请参阅**步骤1：在C#上面创建单元测试项目**和配置。
 - 请确保已将 NugetPackage\build\runtime\ 下的所有依赖项文件都复制到了项目工作目录。
 
 

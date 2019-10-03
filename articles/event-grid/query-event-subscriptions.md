@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: spelluru
-ms.openlocfilehash: ad9c2d492f70a697ef0e7dc3b7ed03b9938f2468
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 08fa9ada97c652ca609a499da1c8e87f7e4487db
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181684"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786628"
 ---
 # <a name="query-event-grid-subscriptions"></a>查询事件网格订阅 
 
@@ -46,7 +46,7 @@ Get-AzEventGridSubscription
 对于 Azure CLI，请使用：
 
 ```azurecli-interactive
-az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Subscriptions"
+az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Subscriptions" --location global
 ```
 
 对于 PowerShell，请使用：
@@ -60,7 +60,7 @@ Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 对于 Azure CLI，请使用：
 
 ```azurecli-interactive
-az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.ResourceGroups"
+az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.ResourceGroups" --location global
 ```
 
 对于 PowerShell，请使用：
@@ -74,7 +74,7 @@ Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
 对于 Azure CLI，请使用：
 
 ```azurecli-interactive
-az eventgrid event-subscription list --resource-group myResourceGroup
+az eventgrid event-subscription list --resource-group myResourceGroup --location global
 ```
 
 对于 PowerShell，请使用：

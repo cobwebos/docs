@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f2defd60ec6b835ec856c9253a92f1d6817e861
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
-ms.translationtype: HT
+ms.openlocfilehash: 1c5b4904419af1fe86e43dc2f781ef43ce8dd762
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325997"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078789"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>一个 Azure 区域内的 SAP HANA 可用性
 本文介绍一个 Azure 区域内的多种可用性场景。 Azure 已在许多区域上市，这些区域分散在世界各地。 有关 Azure 区域的列表，请查阅 [Azure 区域](https://azure.microsoft.com/regions/)。 Microsoft 将 SAP HANA 部署在一个 Azure 区域内的 VM 上，可以提供包含一个 HANA 实例的单一 VM 部署。 为了提高可用性，可将包含两个 HANA 实例的两个 VM 部署在一个 [Azure 可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)中，并使用 HANA 系统复制来实现可用性。 

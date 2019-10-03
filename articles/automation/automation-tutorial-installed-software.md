@@ -11,12 +11,12 @@ ms.service: automation
 ms.subservice: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2cce925f4b3e1acc6c93019615b81983a5c95f6f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 47313781756e460a8c30638661489874481b88a0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56815886"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476821"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>发现在 Azure 计算机和非 Azure 计算机上安装的软件
 
@@ -47,13 +47,13 @@ ms.locfileid: "56815886"
 
 就本教程来说，首先需要启用更改跟踪和清单。 如果以前已经启用了**更改跟踪**解决方案，则此步骤不是必需的。
 
-导航到你的自动化帐户，在“配置管理”下选择“清单”。
+导航到你的自动化帐户，在“配置管理”下选择“清单”。  
 
-选择 Log Analytics 工作区和自动化帐户，然后单击“启用”以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
+选择 Log Analytics 工作区和自动化帐户，然后单击“启用”以启用此解决方案。  启用此解决方案最长需要 15 分钟的时间。
 
 ![清单载入配置横幅](./media/automation-tutorial-installed-software/enableinventory.png)
 
-若要启用此解决方案，请配置要使用的位置、Log Analytics 工作区和自动化帐户，然后单击“启用”。 如果这些字段灰显，则意味着已经为 VM 启用了其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
+若要启用此解决方案，请配置要使用的位置、Log Analytics 工作区和自动化帐户，然后单击“启用”。  如果这些字段灰显，则意味着已经为 VM 启用了其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
 
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作区用于收集由功能和服务（如清单）生成的数据。
 工作区提供了一个位置来查看和分析来自多个数据源的数据。
@@ -66,13 +66,13 @@ ms.locfileid: "56815886"
 
 ## <a name="onboard-a-vm"></a>载入 VM
 
-在你的自动化帐户中，导航到“配置管理”下的“清单”。
+在你的自动化帐户中，导航到“配置管理”下的“清单”。  
 
-选择“+ 添加 Azure VM”，这将打开“虚拟机”页面并允许从列表中选择现有 VM。 选择要载入的 VM。 在打开的页面上，单击“启用”以在 VM 上启用此解决方案。 Microsoft 管理代理部署到 VM，并配置代理来与你在启用解决方案时配置的 Log Analytics 工作区进行通信。 可能需要花费几分钟时间才能完成载入。 此时，可以从列表中选择一台新的 VM 并载入另一 VM。
+选择“+ 添加 Azure VM”  ，这将打开“虚拟机”  页面并允许从列表中选择现有 VM。 选择要载入的 VM。 在打开的页面上，单击“启用”以在 VM 上启用此解决方案。  Microsoft 管理代理部署到 VM，并配置代理来与你在启用解决方案时配置的 Log Analytics 工作区进行通信。 可能需要花费几分钟时间才能完成载入。 此时，可以从列表中选择一台新的 VM 并载入另一 VM。
 
 ## <a name="onboard-a-non-azure-machine"></a>载入非 Azure 计算机
 
-若要添加非 Azure 计算机，请根据你的操作系统安装适用于 [Windows](../azure-monitor/platform/agent-windows.md) 或 [Linux](automation-linux-hrw-install.md) 的代理。 安装代理后，导航到你的自动化帐户，然后转到“配置管理”下的“清单”。 单击“管理计算机”时，可以看到向你的 Log Analytics 工作区进行报告且尚未启用此解决方案的计算机的列表。 选择适合你的环境的选项。
+若要添加非 Azure 计算机，请根据你的操作系统安装适用于 [Windows](../azure-monitor/platform/agent-windows.md) 或 [Linux](automation-linux-hrw-install.md) 的代理。 安装代理后，导航到你的自动化帐户，然后转到“配置管理”下的“清单”。   单击“管理计算机”  时，可以看到向你的 Log Analytics 工作区进行报告且尚未启用此解决方案的计算机的列表。 选择适合你的环境的选项。
 
 * **在所有可用计算机上启用** - 此选项在当前向你的 Log Analytics 工作区进行报告的所有计算机上启用此解决方案。
 * **在所有可用计算机以及将来的计算机上启用** - 此选项在向你的 Log Analytics 工作区进行报告的所有计算机上启用此解决方案，并且会在将来添加到该工作区的所有计算机上启用此解决方案。
@@ -82,13 +82,13 @@ ms.locfileid: "56815886"
 
 ## <a name="view-installed-software"></a>查看已安装软件
 
-启用更改跟踪和清单解决方案以后，即可在“清单”页查看结果。
+启用更改跟踪和清单解决方案以后，即可在“清单”页查看结果。 
 
-从你的自动化帐户中，在“配置管理”下选择“清单”。
+从你的自动化帐户中，在“配置管理”下选择“清单”。  
 
-在“清单”页上单击“软件”选项卡。
+在“清单”页上单击“软件”选项卡。  
 
-“软件”选项卡上有一个表，其中列出了已发现的软件。 软件按软件名称和版本分组。
+“软件”选项卡上有一个表，其中列出了已发现的软件。  软件按软件名称和版本分组。
 
 可在表中查看每个软件记录的高级详细信息。 这些详细信息包括：软件名称、版本、发布者、上次刷新时间（由组中的计算机报告的最近刷新时间）、计算机数（装有该软件的计算机的计数）。
 
@@ -103,7 +103,7 @@ ms.locfileid: "56815886"
 
 ## <a name="search-inventory-logs-for-installed-software"></a>在清单日志中搜索已安装的软件
 
-清单生成发送到 Azure Monitor 日志的日志数据。 若要通过运行查询来搜索日志，请选择“清单”窗口顶部的“Log Analytics”。
+清单生成发送到 Azure Monitor 日志的日志数据。 若要通过运行查询来搜索日志，请选择“清单”窗口顶部的“Log Analytics”。  
 
 清单数据存储在 **ConfigurationData** 类型下。
 以下示例 Log Analytics 查询返回 Publisher 等于“Microsoft Corporation”的清单结果。

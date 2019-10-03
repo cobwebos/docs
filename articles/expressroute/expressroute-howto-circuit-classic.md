@@ -6,14 +6,15 @@ author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: ganesr;cherylmc
+ms.author: ganesr
+ms.reviewer: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 1d6fc4a54ca600bd094a68e5eaab1306e7e831ac
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7468338e7bc39128564e71831abe61bb1714ff72
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047906"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849243"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 修改 ExpressRoute 线路（经典）
 
@@ -21,6 +22,7 @@ ms.locfileid: "59047906"
 > * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
+> * [Azure Resource Manager 模板](expressroute-howto-circuit-resource-manager-template.md)
 > * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
 >
@@ -125,9 +127,9 @@ get-help get-azurededicatedcircuit -detailed
 可以在不停机的情况下执行以下任务：
 
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。
-* 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 不支持对线路的带宽进行降级。 
+* 增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 不支持对线路的带宽进行降级。
 * 将计量套餐从数据流量套餐更改为无限制流量套餐。 不支持将计量套餐从无限制流量套餐更改为数据流量套餐。
-* 可以启用和禁用允许经典操作。
+* 可以启用和禁用允许经典操作  。
 
 有关限制和局限性的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 
@@ -154,8 +156,8 @@ Status                           : Enabled
 
 > [!IMPORTANT]
 > 如果使用的资源超出了标准线路允许的范围，此操作可能会失败。
-> 
-> 
+>
+>
 
 #### <a name="considerations"></a>注意事项
 
@@ -189,8 +191,8 @@ Status                           : Enabled
 > 如果现有端口上的容量不足，可能需要重新创建 ExpressRoute 线路。 如果该位置没有额外的可用容量，则不能升级线路。
 >
 > 但是，无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，并重新预配新的 ExpressRoute 线路。
-> 
-> 
+>
+>
 
 #### <a name="resize-a-circuit"></a>调整线路大小
 
@@ -228,8 +230,8 @@ At line:1 char:1
 ### <a name="considerations"></a>注意事项
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接，此操作才能成功。 如果此操作失败，请查看是否有虚拟网络链接到了此线路。
-* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们一端取消预配线路。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
-* 如果服务提供商已取消预配线路（服务提供商预配状态设置为“未预配”），则可以删除线路。 这样就会停止对线路的计费。
+* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”  或“已预配”  ，则必须与服务提供商合作，在他们一端取消预配线路。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
+* 如果服务提供商已取消预配线路（服务提供商预配状态设置为“未预配”  ），则可以删除线路。 这样就会停止对线路的计费。
 
 #### <a name="delete-a-circuit"></a>删除线路
 

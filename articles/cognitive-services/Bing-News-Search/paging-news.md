@@ -1,6 +1,6 @@
 ---
 title: 如何分页列出必应新闻搜索结果
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何分页列出必应新闻搜索 API 返回的新闻文章。
 services: cognitive-services
 author: swhite-msft
@@ -10,16 +10,16 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1d344f388b03acb3a81fcfde0e214eb7d82dc9b9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: e5f8dce1a03e44758eea737ad2da419fa67c36a2
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885066"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423744"
 ---
 # <a name="how-to-page-through-news-search-results"></a>如何分页列出新闻搜索结果
 
-调用新闻搜索 API 时，必应会返回与查询相关的结果列表。 若要获取可访问结果的总估计数，请访问答案对象的 [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-totalmatches) 字段。  
+调用新闻搜索 API 时，必应会返回与查询相关的结果列表。 若要获取可访问结果的总估计数，请访问答案对象的 [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-totalmatches) 字段。  
   
 以下示例显示了新闻答案包含的 `totalEstimatedMatches` 字段。  
 
@@ -32,10 +32,10 @@ ms.locfileid: "55885066"
 }  
 ```  
   
-若要翻页浏览可用文章，请使用 [count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#count) 和 [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#offset) 查询参数。  
+若要翻页浏览可用文章，请使用 [count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#count) 和 [offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#offset) 查询参数。  
  
 
-|参数  |说明  |
+|参数  |描述  |
 |---------|---------|
 |`count`     | 指定要在响应中返回的结果数。 可以在响应中请求的最大结果数为 100。 默认值为 10。 提供的实际结果数可能小于请求获取的结果数。        |
 |`offset`     | 指定要跳过的结果数。 `offset` 从零开始，应小于 (`totalEstimatedMatches` - `count`)。          |

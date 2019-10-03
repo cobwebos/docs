@@ -10,26 +10,34 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a35246aff99ec78e665e3be4afd47409959bef63
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103904"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089727"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动，通过 Open Hub 从 SAP Business Warehouse (BW) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
+>[!TIP]
+>若要了解 ADF 全面支持 SAP 数据集成方案，请参阅[使用 Azure 数据工厂的 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，并提供详细的简介、comparsion 和指南。
+
 ## <a name="supported-capabilities"></a>支持的功能
+
+以下活动支持通过开放集线器连接器实现的 SAP 业务仓库：
+
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以通过 Open Hub 将数据从 SAP Business Warehouse 复制到任何受支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，此 SAP Business Warehouse Open Hub 连接器支持：
 
-- SAP Business Warehouse **7.01 或更高版本 （在最新 SAP 支持包堆栈在 2015 年之后发布） 的版本**。
+- SAP Business Warehouse **7.01 或更高版本（位于最新的 SAP 支持包堆栈中，该堆栈是 2015 年以后发布的）** 。
 - 通过 Open Hub Destination 本地表复制数据，该表下方可能是 DSO、InfoCube、MultiProvider、DataSource 等。
 - 使用基本身份验证复制数据。
 - 连接到应用程序服务器。
@@ -38,40 +46,40 @@ ms.locfileid: "58103904"
 
 可以通过 [SAP BW Open Hub Service](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) 从 SAP BW 高效地提取数据。 下图显示客户在其 SAP 系统中的典型流之一，数据流动方向为：SAP ECC -> PSA -> DSO -> 多维数据集。
 
-SAP BW Open Hub Destination (OHD) 定义 SAP 数据的中继目标。 支持的 SAP 数据传输进程 (DTP) 的任何对象可以用作打开 hub 数据源，例如，DSO、 InfoCube、 数据源，等等。Open Hub Destination 类型是存储中继数据的地方，可以是数据库表（本地或远程）和平面文件。 此 SAP BW Open Hub 连接器支持从 BW 中的 OHD 本地表复制数据。 如果使用其他类型，则可使用其他连接器直接连接到数据库或文件系统。
+SAP BW Open Hub Destination (OHD) 定义 SAP 数据的中继目标。 可以使用 SAP 数据传输过程 (DTP) 支持的任何对象（例如，DSO、InfoCube、DataSource 等）作为 Open Hub 数据源。Open Hub Destination 类型是存储中继数据的地方，可以是数据库表（本地或远程）和平面文件。 此 SAP BW Open Hub 连接器支持从 BW 中的 OHD 本地表复制数据。 如果使用其他类型，则可使用其他连接器直接连接到数据库或文件系统。
 
 ![SAP BW Open Hub](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
 ## <a name="delta-extraction-flow"></a>增量提取流
 
-ADF SAP BW 开放中心连接器提供两个可选属性：`excludeLastRequest`和`baseRequestId`这可用于处理从 Open Hub 的增量加载。 
+ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和 `baseRequestId`，可以用于处理来自 Open Hub 的增量负荷。 
 
-- **excludeLastRequestId**:是否排除最后一个请求的记录。 默认值为 true。 
-- **baseRequestId**:增量加载的请求的 ID。 一旦设置，将检索仅使用请求 Id 大于此属性的值的数据。 
+- **excludeLastRequestId**：是否排除最后一个请求的记录。 默认值为 true。 
+- **baseRequestId**：增量加载的请求的 ID。 设置以后，只会检索 requestId 大于此属性的值的数据。 
 
-总体而言，从 SAP InfoProviders 提取到 Azure 数据工厂 (ADF) 包含 2 个步骤： 
+总之，从 SAP InfoProviders 提取到 Azure 数据工厂 (ADF) 的操作包含 2 个步骤： 
 
-1. **SAP BW 数据传输进程 (DTP)** 此步骤将数据从 SAP BW InfoProvider 复制到 SAP BW Open Hub 表 
+1. **SAP BW 数据传输过程 (DTP)** ：此步骤将数据从 SAP BW InfoProvider 复制到 SAP BW Open Hub 表 
 
-1. **ADF 数据复制**在此步骤中，打开中心表读取由 ADF 连接器 
+1. **ADF 数据复制**：在此步骤中，Open Hub 表由 ADF 连接器读取 
 
 ![增量提取流](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
 
-在第一个步骤中，执行 DTP。 每次执行创建新的 SAP 请求 id。 请求 ID 存储在打开的中心表，然后由 ADF 连接器用来标识增量。 以异步方式运行的两个步骤： DTP 触发 sap，并通过 ADF 触发 ADF 数据复制。 
+在第一步中，执行 DTP。 每执行一次都会创建新的 SAP 请求 ID。 此请求 ID 存储在 Open Hub 表中，然后 ADF 连接器用它来标识增量。 这两个步骤以异步方式运行：DTP 由 SAP 触发，ADF 数据复制通过 ADF 触发。 
 
-默认情况下，ADF 并没有最新的增量从读取 Open Hub 表 （选项"排除的最后一个请求"为 true）。 据此，在 ADF 中的数据不是 100%开放中心缺失的表 （最后一个增量） 中的数据保持最新状态。 反过来，此过程可确保任何行获取丢失造成的异步提取。 它工作正常，即使 ADF 正在读取的 Open Hub 表同时 DTP 仍为写入到同一个表。 
+默认情况下，ADF 不从 Open Hub 表读取最新增量（选项“排除上一请求”为 true）。 因此，ADF 中的数据并非与 Open Hub 表中的数据 100% 一致（最后的增量缺失）。 反过来，此过程可确保不会因异步提取而导致行丢失。 即使在 ADF 读取 Open Hub 表（此时 DTP 仍在写入同一表）时，它也适用。 
 
-通常将最大复制的请求 ID 存储在 adf 中暂存数据存储 （如上述关系图中的 Azure Blob) 的最后一个域中。 因此，相同的请求不读取第二次 adf 后续运行中。 同时，请注意从 Open Hub 表不会自动删除数据。
+通常将在最后一次运行时由 ADF 进行了最多复制的请求 ID 存储在暂存数据存储（例如上图中的 Azure Blob）中。 因此，同一请求不会在后续运行中由 ADF 再次读取。 同时请注意，数据不会自动从 Open Hub 表中删除。
 
-正确增量处理它不是允许具有相同的 Open Hub 表中的请求 Id 从不同 DTPs。 因此，您必须创建多个 DTP 为每个打开中心目标 (OHD)。 当需要从同一个 InfoProvider 完全和增量提取，您应为相同 InfoProvider 创建两个 OHDs。 
+为了进行正常的增量处理，不允许将来自不同 DTP 的请求 ID 置于同一 Open Hub 表中。 因此，不得为单个 Open Hub 目标 (OHD) 创建多个 DTP。 需要从同一 InfoProvider 进行完全提取和增量提取时，应该为同一 InfoProvider 创建两个 OHD。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要使用此 SAP Business Warehouse Open Hub 连接器，需要：
 
 - 设置 3.13 或更高版本的自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
 
-- 从 SAP 的网站下载 **64 位 [SAP .NET Connector 3.0](https://support.sap.com/en/product/connectors/msnet.html)**，将其安装在自承载 IR 计算机上。 安装时，请在可选的安装步骤窗口中确保选择“将程序集安装到 GAC”选项，如下图所示。 
+- 从 SAP 的网站下载 **64 位 [SAP .NET Connector 3.0](https://support.sap.com/en/product/connectors/msnet.html)** ，将其安装在自承载 IR 计算机上。 安装时，请在可选的安装步骤窗口中确保选择“将程序集安装到 GAC”选项，如下图所示。 
 
     ![安装 SAP .NET Connector](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
@@ -86,7 +94,7 @@ ADF SAP BW 开放中心连接器提供两个可选属性：`excludeLastRequest`�
 
 > [!TIP]
 >
-> 有关使用 SAP BW 开放中心连接器的演练，请参阅[通过使用 Azure 数据工厂加载数据从 SAP Business Warehouse (BW)](load-sap-bw-data.md)。
+> 若要详细了解如何使用 SAP BW Open Hub 连接器，请参阅[使用 Azure 数据工厂从 SAP Business Warehouse (BW) 加载数据](load-sap-bw-data.md)。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -99,10 +107,10 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapOpenHub** | 是 |
-| server | SAP BW 实例所驻留的服务器的名称。 | 是 |
+| 服务器 | SAP BW 实例所驻留的服务器的名称。 | 是 |
 | systemNumber | SAP BW 系统的系统编号。<br/>允许值：用字符串表示的两位十进制数。 | 是 |
 | clientId | SAP W 系统中的客户端的客户端 ID。<br/>允许值：用字符串表示的三位十进制数。 | 是 |
-| 语言 | SAP 系统使用的语言。 | 否（默认值为 **EN**）|
+| language | SAP 系统使用的语言。 | 否（默认值为 **EN**）|
 | userName | 有权访问 SAP 服务器的用户名。 | 是 |
 | password | 用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
@@ -134,7 +142,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Salesforce 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 SAP BW Open Hub 数据集支持的属性列表。
 
 若要从/向 SAP BW Open Hub 复制数据，请将数据集的 type 属性设置为 **SapOpenHubTable**。 支持以下属性。
 
@@ -142,11 +150,8 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SapOpenHubTable**。  | 是 |
 | openHubDestinationName | 要从其复制数据的 Open Hub Destination 的名称。 | 是 |
-| excludeLastRequest | 是否排除最后一个请求的记录。 | 否（默认为 **true**） |
-| baseRequestId | 增量加载的请求的 ID。 设置以后，只会检索 requestId **大于**此属性的值的数据。  | 否 |
 
->[!TIP]
->如果 Open Hub 表只包含通过单个请求 ID 生成的数据（例如，始终进行完全加载并覆盖表中的现有数据，或者只在测试时运行 DTP 一次），则请记住取消选中“excludeLastRequest”选项，以便复制数据。
+如果在数据集中`excludeLastRequest`设置`baseRequestId`和，则仍支持原样，而建议使用活动源中的新模型。
 
 **示例：**
 
@@ -155,12 +160,13 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
     "name": "SAPBWOpenHubDataset",
     "properties": {
         "type": "SapOpenHubTable",
+        "typeProperties": {
+            "openHubDestinationName": "<open hub destination name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP BW Open Hub linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "openHubDestinationName": "<open hub destination name>"
         }
     }
 }
@@ -172,7 +178,18 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 ### <a name="sap-bw-open-hub-as-source"></a>将 SAP BW Open Hub 作为源
 
-若要从 SAP BW Open Hub 复制数据，请将复制活动中的源类型设置为“SapOpenHubSource”。 复制活动的 **source** 节中没有其他特定于类型的必需属性。
+若要从 SAP BW 打开的中心复制数据，复制活动**源**部分支持以下属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| type | 复制活动源的**type**属性必须设置为**SapOpenHubSource**。 | 是 |
+| excludeLastRequest | 是否排除最后一个请求的记录。 | 否（默认为 **true**） |
+| baseRequestId | 增量加载的请求的 ID。 设置以后，只会检索 requestId **大于**此属性的值的数据。  | 否 |
+
+>[!TIP]
+>如果 Open Hub 表只包含通过单个请求 ID 生成的数据（例如，始终进行完全加载并覆盖表中的现有数据，或者只在测试时运行 DTP 一次），则请记住取消选中“excludeLastRequest”选项，以便复制数据。
+
+若要加快数据加载速度，可以在复制[`parallelCopies`](copy-activity-performance.md#parallel-copy)活动上设置，以并行从 SAP BW 打开的中心加载数据。 例如，如果将设置`parallelCopies`为4，则数据工厂会同时执行四个 RFC 调用，并且每个 rfc 调用都将从 SAP BW 打开的中心表中检索部分数据，并按 DTP 请求 id 和包 id 进行分区。 这适用于唯一 DTP 请求 ID + 包 ID 的数量大于的值`parallelCopies`时。 将数据复制到基于文件的数据存储时，还 recommanded 将文件夹作为多个文件写入（仅指定文件夹名称），在这种情况下，性能比写入单个文件更好。
 
 **示例：**
 
@@ -195,11 +212,13 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
         ],
         "typeProperties": {
             "source": {
-                "type": "SapOpenHubSource"
+                "type": "SapOpenHubSource",
+                "excludeLastRequest": true
             },
             "sink": {
                 "type": "<sink type>"
-            }
+            },
+            "parallelCopies": 4
         }
     }
 ]
@@ -211,14 +230,19 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 | SAP ABAP 类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| C（字符串） | String |
-| I（整数） | Int32 |
-| F（浮点数） | Double |
-| D（日期） | String |
-| T（时间） | String |
-| P（BCD 打包，货币，小数，Qty） | Decimal |
+| C (String) | String |
+| I (integer) | Int32 |
+| F (Float) | Double |
+| D (Date) | String |
+| T (Time) | String |
+| P (BCD Packed, Currency, Decimal, Qty) | Decimal |
 | N (Numc) | String |
-| X（二进制，原始） | String |
+| X (Binary and Raw) | String |
+
+## <a name="lookup-activity-properties"></a>查找活动属性
+
+若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

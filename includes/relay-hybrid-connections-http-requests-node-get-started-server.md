@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2018
 ms.author: clemensv
 ms.custom: include file
-ms.openlocfilehash: d0fd3e88bdb25fdfd430924ef6b7f571d070b733
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: fdd4e26839661ab9765b7d496e7f60c3686ba637
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33905198"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173187"
 ---
 ### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 

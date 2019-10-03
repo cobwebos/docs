@@ -1,6 +1,6 @@
 ---
 title: 将模型导出到移动设备 - 自定义视觉服务
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何导出模型以用于创建移动应用程序。
 services: cognitive-services
 author: anrothMSFT
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 405b6ebd06091536749751a94362d8c4a6495dbc
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 554a392a7f815a6e646927f137b1e6c2856099bd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351282"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561086"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>导出模型以用于移动设备
 
@@ -69,10 +69,10 @@ ms.locfileid: "58351282"
 
 ## <a name="next-steps"></a>后续步骤
 
-将导出的模型集成到应用程序中。 以下几个示例应用程序可供参考：
+通过浏览以下文章或示例之一将导出的模型集成到应用程序中:
 
-* [在 iOS 应用程序中使用导出的 CoreML 模型](https://go.microsoft.com/fwlink/?linkid=857726)以使用 Swift 进行实时图像分类的示例
-* [将导出的 CoreML 模型与 Xamarin 配合使用](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)以进行实时图像分类的 iOS 应用程序示例 
-* [在 Android 应用程序中使用导出的 Tensorflow 模型](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)进行实时图像分类的示例 
-* [配合使用 Tensorflow 模型和 Windows ](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-model-python)
-* [将导出的 ONNX 模型与 Windows 机器学习配合使用](https://azure.microsoft.com/resources/samples/cognitive-services-onnx-customvision-sample/)的示例
+* [将 Tensorflow 模型与 Python 配合使用](export-model-python.md)
+* [将 ONNX 模型用于 Windows 机器学习](custom-vision-onnx-windows-ml.md)
+* 请参阅[iOS 应用程序中的 CoreML 模型](https://go.microsoft.com/fwlink/?linkid=857726)示例, 以便使用 Swift 实现实时映像分类。
+* 请参阅 android[应用程序中的 Tensorflow 模型](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)示例, 了解 android 上的实时图像分类。
+* 请参阅在 Xamarin iOS 应用中使用 Xamarin 进行实时映像分类的[CoreML 模型](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)示例。

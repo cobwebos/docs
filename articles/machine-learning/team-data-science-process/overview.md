@@ -12,11 +12,11 @@ ms.date: 10/20/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3b4e8c78d7402c254c91c3e100814e1f3eafc41b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867195"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61429367"
 ---
 # <a name="what-is-the-team-data-science-process"></a>什么是团队数据科学过程？
 

@@ -10,17 +10,17 @@ ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: astay;cephalin;kraigb
+ms.author: cephalin
+ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: f8894132dae179be2d5d9d9b6887851be78d7746
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 8563e0ac060e5cce6853472dfb1c51c6c2c36a4d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548124"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071091"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
@@ -119,7 +119,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 app:app
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-例如，如果 Flask 应用的主模块是 hello.py，而该文件中的 Flask 应用对象名为 `myapp`，则 \<custom-command> 如下所示：
+例如，如果 Flask 应用的主模块是 hello.py，而该文件中的 Flask 应用对象名为 `myapp`，则 \<custom-command> 如下所示   ：
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -131,9 +131,9 @@ gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-还可以将 Gunicorn 的任何附加参数添加到 \<custom-command>，例如 `--workers=4`。 有关详细信息，请参阅[运行 Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org)。
+还可以将 Gunicorn 的任何附加参数添加到 \<custom-command>，例如 `--workers=4`  。 有关详细信息，请参阅[运行 Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org)。
 
-要使用非 Gunicorn 服务器（例如 [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)），则可以使用以下内容替换 \<custom-command>：
+要使用非 Gunicorn 服务器（例如 [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)），则可以使用以下内容替换 \<custom-command>  ：
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -144,7 +144,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>访问环境变量
 
-在应用服务中，可以在应用代码外部[设置应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)。 然后，可以使用标准的 [os.environ](https://docs.python.org/3/library/os.html#os.environ) 模式访问这些设置。 例如，若要访问名为 `WEBSITE_SITE_NAME` 的应用设置，请使用以下代码：
+在应用服务中，可以在应用代码外部[设置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然后，可以使用标准的 [os.environ](https://docs.python.org/3/library/os.html#os.environ) 模式访问这些设置。 例如，若要访问名为 `WEBSITE_SITE_NAME` 的应用设置，请使用以下代码：
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -182,8 +182,6 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 - [访问日志流](#access-diagnostic-logs)。
 
 ## <a name="next-steps"></a>后续步骤
-
-Linux 上的应用服务中内置的 Python 映像目前处于预览状态，你可以自定义用于启动应用的命令。 还可以改用自定义容器创建生产 Python 应用。
 
 > [!div class="nextstepaction"]
 > [教程：使用 PostgreSQL 的 Python 应用](tutorial-python-postgresql-app.md)

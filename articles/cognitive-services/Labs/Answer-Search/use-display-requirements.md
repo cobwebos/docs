@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 085cb20e4dad92ed55b5ba0914c677aa50f3ac97
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2b42d61fd887f166a08b78510d5eaacb8a7cdcb8
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875325"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706706"
 ---
 # <a name="project-answer-search-use-and-display-requirements"></a>项目应答搜索的使用和显示要求
 
@@ -61,7 +62,7 @@ ms.locfileid: "55875325"
 
 **C.通知和品牌推广。** 
 
-- 在每个用户体验 (UX) 点（用户可输入搜索查询）附近，以醒目方式添加“Microsoft 隐私声明”(https://go.microsoft.com/fwlink/?LinkId=521839) 的功能性超链接。 将该超链接标记为“Microsoft 隐私声明”。
+- 在每个用户体验 (UX) 点（用户可输入搜索查询）附近，以醒目方式添加“Microsoft 隐私声明”(https://go.microsoft.com/fwlink/?LinkId=521839 ) 的功能性超链接。 将该超链接标记为“Microsoft 隐私声明”。
 - 在每个用户体验点（用户可输入搜索查询）附近，以醒目方式显示必应品牌推广（应符合 https://go.microsoft.com/fwlink/?linkid=833278 中所述的准则）。  此类品牌推广必须向用户明确表明 Microsoft 为该 Internet 搜索体验提供支持。
 - 可根据 https://go.microsoft.com/fwlink/?linkid=833278 中所述，将必应 Web、图像、新闻和视频 API 显示的每个响应（或响应中的一部分）归于 Microsoft，除非 Microsoft 对你的使用情形另有书面规定。 
 - 请勿将从必应自定义搜索 API 中显示的响应（或响应中的一部分）归于 Microsoft，除非 Microsoft 对你的特定使用情形另有书面规定。

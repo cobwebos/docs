@@ -4,14 +4,14 @@ description: 使用此 Power BI 教程来导入 JSON、创建见解深入的报�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/03/2018
+ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 2c58b982e596c95aa47442c1897410fe9ab6b99a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1dbdd428a54ebf38c7b880bb9530935c0f748226
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58137668"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616811"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 连接器可视化 Azure Cosmos DB 数据
 
@@ -25,14 +25,14 @@ ms.locfileid: "58137668"
 > [!NOTE]
 > 目前，仅 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持使用 Power BI 连接器连接 Azure Cosmos DB。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在按照此 Power BI 教程中的说明操作之前，请确保已拥有对以下资源的访问权限：
 
 * [下载最新版本的 Power BI Desktop](https://powerbi.microsoft.com/desktop)。
 
 * 从 GitHub 下载[示例火山数据](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json)。
 
-* [创建一个 Azure Cosmos DB 数据库帐户](https://azure.microsoft.com/documentation/articles/create-account/)并使用 [Azure Cosmos DB 数据迁移工具](import-data.md)导入火山数据。 导入数据时，请考虑数据迁移工具中源和目标的以下设置：
+* [创建 Azure Cosmos 数据库帐户](https://azure.microsoft.com/documentation/articles/create-account/), 并使用[Azure Cosmos DB 数据迁移工具](import-data.md)导入火山数据。 导入数据时，请考虑数据迁移工具中源和目标的以下设置：
 
    * **源参数** 
 
@@ -40,9 +40,9 @@ ms.locfileid: "58137668"
 
    * **目标参数** 
 
-      * **连接字符串：**`AccountEndpoint=<Your_account_endpoint>;AccountKey=<Your_primary_or_secondary_key>;Database= <Your_database_name>` 
+      * **连接字符串：** `AccountEndpoint=<Your_account_endpoint>;AccountKey=<Your_primary_or_secondary_key>;Database= <Your_database_name>` 
 
-      * **分区键：**/Country 
+      * **分区键：** /Country 
 
       * **集合吞吐量：** 1000 
 
@@ -120,9 +120,9 @@ ms.locfileid: "58137668"
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 坐标列表](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 7. 若要平展坐标数组，请创建一个名为 LatLong 的**自定义列**。  选择“添加列”功能区并单击“自定义列”。  此时将显示“自定义列”窗口。
 8. 为新列提供一个名称，例如经纬度。
-9. 接下来，为新列指定自定义公式。  对于我们的示例，我们将如下所示，使用以下公式连接逗号分隔的纬度值和经度值：`Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 单击“确定”。
+9. 接下来，为新列指定自定义公式。  对于我们的示例，我们将如下所示，使用以下公式连接逗号分隔的纬度值和经度值：`Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 单击 **“确定”** 。
    
-    在数据分析表达式 (DAX) 包括 DAX 函数的详细信息，请访问[Power BI Desktop 中的 DAX 基础知识](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)。
+    有关数据分析表达式 (DAX)（包括 DAX 函数）的详细信息，请访问 [Power BI Desktop 中的 DAX 基础知识](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)。
    
     ![Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 添加自定义列](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 
@@ -168,7 +168,7 @@ ms.locfileid: "58137668"
 要共享报表，必须在 PowerBI.com 中拥有帐户。
 
 1. 在 Power BI Desktop 中，单击“主页”功能区。
-2. 单击“发布” 。  系统会提示输入 PowerBI.com 帐户的用户名和密码。
+2. 单击“发布”。  系统会提示输入 PowerBI.com 帐户的用户名和密码。
 3. 一旦验证凭据后，就可将报表发布到所选目的地。
 4. 单击“打开 Power BI 中的‘PowerBITutorial.pbix’”，查看并共享 Power BI.com 上的报表。
    

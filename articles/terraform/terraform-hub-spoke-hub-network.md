@@ -8,13 +8,13 @@ author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 5f8d9119ea9caeb598946a384f321fa6f7e14def
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 12538c0348efc1621d3f8f6ee0cb93d73c712898
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000217"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173423"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-with-terraform-in-azure"></a>教程：在 Azure 中使用 Terraform 创建中心虚拟网络
 
@@ -45,7 +45,7 @@ ms.locfileid: "58000217"
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)。
 
-1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。
+1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。 
 
     ![Cloud Shell 提示符](./media/terraform-common/azure-portal-cloud-shell-button-min.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "58000217"
 
 1. 在编辑器中粘贴以下代码：
 
-    ```JSON
+    ```hcl
     locals {
       prefix-hub         = "hub"
       hub-location       = "CentralUS"

@@ -1,20 +1,19 @@
 ---
-title: 将 Apache Hive 与针对 Visual Studio 的 Data Lake (Apache Hadoop) 工具配合使用 - Azure HDInsight
+title: 适用于 Visual Studio 的 Data Lake 工具 Apache Hive-Azure HDInsight
 description: 了解如何使用用于 Visual Studio 的 Data Lake 工具，通过 Azure HDInsight 上的 Apache Hadoop 运行 Apache Hive 查询。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1412e644a0c824be3612e14a1059661092805682
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447425"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076283"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询
 
@@ -22,35 +21,78 @@ ms.locfileid: "58447425"
 
 ## <a id="prereq"></a>先决条件
 
-* Azure HDInsight（HDInsight 上的 Apache Hadoop）群集
-
-  > [!IMPORTANT]  
-  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
+* HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
 * Visual Studio（以下版本之一）：
 
+    * Visual Studio 2015、2017（任何版本）
     * 包含 Update 4 的 Visual Studio 2013 Community/Professional/Premium/Ultimate
-
-    * Visual Studio 2015（任何版本）
-
-    * Visual Studio 2017（任何版本）
 
 * Visual Studio 的 HDInsight 工具或 Visual Studio 的 Azure Data Lake 工具。 请参阅 [Get started using Visual Studio Hadoop tools for HDInsight](apache-hadoop-visual-studio-tools-get-started.md)（开始使用 Visual Studio Hadoop tools for HDInsight），了解如何安装和配置这些工具。
 
 ## <a id="run"></a> 使用 Visual Studio 运行 Apache Hive 查询
 
-1. 打开“Visual Studio”，选择“新建” > “项目” > “Azure Data Lake” > “HIVE” > “Hive 应用程序”。 提供此项目的名称。
+可以使用两个选项来创建并运行 Hive 查询：
 
-2. 打开使用此项目创建的 **Script.hql** 文件，并在其中粘贴以下 HiveQL 语句：
+* 创建即席查询
+* 创建 Hive 应用程序
 
-   ```hiveql
-   set hive.execution.engine=tez;
-   DROP TABLE log4jLogs;
-   CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
-   ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-   STORED AS TEXTFILE LOCATION '/example/data/';
-   SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND  INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
-   ```
+### <a name="ad-hoc"></a>即席
+
+即席查询可以**批处理**或**交互式**模式执行。
+
+1. 打开 **Visual Studio**。
+
+2. 在“服务器资源管理器”中，导航到“Azure” > “HDInsight”。
+
+3. 展开“HDInsight”，右键单击要运行查询的群集，然后选择“编写 Hive 查询”。
+
+4. 输入以下 Hive 查询：
+
+    ```hql
+    SELECT * FROM hivesampletable;
+    ```
+
+5. 选择“执行”。 请注意，执行模式默认设置为“交互式”。
+
+    ![执行交互式 Hive 查询的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
+
+6. 若要以**批处理**模式下运行同一查询，请将下拉列表从“交互式”切换到“批处理”。 请注意，执行按钮将从“执行”更改为“提交”。
+
+    ![提交 Hive 查询的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
+
+    Hive 编辑器支持 IntelliSense。 用于 Visual Studio 的 Data Lake 工具支持在编辑 Hive 脚本时加载远程元数据。 例如，如果键入 `SELECT * FROM`，则 IntelliSense 会列出所有建议的表名称。 在指定表名称后，IntelliSense 会列出列名称。 这些工具支持大多数 Hive DML 语句、子查询和内置 UDF。 IntelliSense 只建议 HDInsight 工具栏中所选群集的元数据。
+
+    ![HDInsight Visual Studio Tools IntelliSense 示例 1 的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "U-SQL IntelliSense")
+   
+    ![HDInsight Visual Studio Tools IntelliSense 示例 2 的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
+
+7. 选择“提交”或“提交(高级)”。
+
+   如果选择高级提交选项，请为脚本配置“作业名称”、“参数”、“其他配置”和“状态目录”：
+
+    ![HDInsight Hadoop Hive 查询的屏幕截图](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "提交查询")
+
+### <a name="hive-application"></a>Hive 应用程序
+
+1. 打开 **Visual Studio**。
+
+2. 在菜单栏中，导航到“文件” > “新建” > “项目”。
+
+3. 在“新建项目”窗口中，导航至“模板” > “Azure Data Lake” > “HIVE (HDInsight)” > “Hive 应用程序”。 
+
+4. 提供此项目的名称，然后选择“确定”。
+
+5. 打开使用此项目创建的 **Script.hql** 文件，并在其中粘贴以下 HiveQL 语句：
+
+    ```hiveql
+    set hive.execution.engine=tez;
+    DROP TABLE log4jLogs;
+    CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+    STORED AS TEXTFILE LOCATION '/example/data/';
+    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND  INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
+    ```
 
     这些语句将执行以下操作：
 
@@ -71,40 +113,44 @@ ms.locfileid: "58447425"
 
    * `INPUT__FILE__NAME LIKE '%.log'` - 告诉 Hive，我们只应返回以 .log 结尾的文件中的数据。 此子句将搜索限定为包含数据的 sample.log 文件。
 
-3. 在工具栏中，选择需要用于此查询的“HDInsight 群集”。 选择“提交”，让语句以 Hive 作业的形式运行。
+6. 在工具栏中，选择需要用于此查询的“HDInsight 群集”。 选择“提交”，让语句以 Hive 作业的形式运行。
 
-   ![“提交”栏](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
+   ![Azure HDInsight 工具栏提交](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
 
-4. “Hive 作业摘要”将会出现并显示有关正在运行的作业的信息。 在“作业状态”更改为“已完成”之前，使用“刷新”链接刷新作业信息。
+7. “Hive 作业摘要”会出现并显示有关正在运行的作业的信息。 在“作业状态”更改为“已完成”之前，使用“刷新”链接刷新作业信息。
 
-   ![作业摘要，显示已完成的作业](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
+   ![作业摘要，显示已完成的作业](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
-5. 使用“作业输出”链接查看此作业的输出。 它显示 `[ERROR] 3`，这是此查询返回的值。
+8. 使用“作业输出”链接查看此作业的输出。 它显示 `[ERROR] 3`，这是此查询返回的值。
 
-6. 也可以运行 Hive 查询，而无需创建项目。 使用“服务器资源管理器”，展开“Azure” > “HDInsight”，右键单击 HDInsight 服务器，并选择“编写 Hive 查询”。
+### <a name="additional-example"></a>其他示例
 
-7. 在出现的 **temp.hql** 文档中，添加以下 HiveQL 语句：
+此示例依赖于前一步骤中创建的 `log4jLogs` 表。
 
-   ```hiveql
-   set hive.execution.engine=tez;
-   CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
-   INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
-   ```
+1. 在“服务器资源管理器”中，右键单击群集，然后选择“编写 Hive 查询”。
+
+2. 输入以下 Hive 查询：
+
+    ```hql
+    set hive.execution.engine=tez;
+    CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
+    INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
+    ```
 
     这些语句将执行以下操作：
 
-   * `CREATE TABLE IF NOT EXISTS`：如果表不存在，则创建表。 因为未使用 `EXTERNAL` 关键字，此语句创建内部表。 内部表存储在 Hive 数据仓库中，由 Hive 管理。
+    * `CREATE TABLE IF NOT EXISTS`：如果表不存在，则创建表。 因为未使用 `EXTERNAL` 关键字，此语句创建内部表。 内部表存储在 Hive 数据仓库中，由 Hive 管理。
+    
+    > [!NOTE]  
+    > 与 `EXTERNAL` 表不同，删除内部表会同时删除基础数据。
 
-     > [!NOTE]  
-     > 与 `EXTERNAL` 表不同，删除内部表会同时删除基础数据。
+    * `STORED AS ORC`：以优化的行纵栏式 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。
+    
+    * `INSERT OVERWRITE ... SELECT`：从包含 `[ERROR]` 的 `log4jLogs` 表中选择行，然后将数据插入 `errorLogs` 表中。
 
-   * `STORED AS ORC`：以优化的行纵栏式 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。
+3. 以**批处理**模式执行查询。
 
-   * `INSERT OVERWRITE ... SELECT`：从包含 `[ERROR]` 的 `log4jLogs` 表中选择行，然后将数据插入 `errorLogs` 表中。
-
-8. 从工具栏中，选择“提交”以运行该作业。 使用“作业状态”确定作业是否已成功完成。
-
-9. 若要验证作业是否已创建表，请使用“服务器资源管理器”，然后展开“Azure” > “HDInsight”> 用户的 HDInsight 群集 >“Hive 数据库” > “默认值”。 此时会列出 **errorLogs** 表和 **log4jLogs** 表。
+4. 若要验证作业是否已创建表，请使用“服务器资源管理器”，然后展开“Azure” > “HDInsight”> 用户的 HDInsight 群集 >“Hive 数据库” > “默认值”。 此时会列出 **errorLogs** 表和 **log4jLogs** 表。
 
 ## <a id="nextsteps"></a>后续步骤
 
@@ -123,31 +169,3 @@ ms.locfileid: "58447425"
 有关适用于 Visual Studio 的 HDInsight 工具的详细信息：
 
 * [用于 Visual Studio 的 HDInsight 工具入门](apache-hadoop-visual-studio-tools-get-started.md)
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[apache-tez]: https://tez.apache.org
-[apache-hive]: https://hive.apache.org/
-[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
-[hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-
-
-[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
-
-
-
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
-
-[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
-
-[image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
-[img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-[image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png

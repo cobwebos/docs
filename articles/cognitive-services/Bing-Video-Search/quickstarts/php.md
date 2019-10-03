@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用必应视频搜索 REST API 和 PHP 来搜索视频
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入门使用 PHP 向必应视频搜索 REST API 发送视频搜索请求
 services: cognitive-services
 author: aahill
@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 50c39594aeb014860d25b2f2cc791ebfec14b572
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8ecbba5ef046a284e9b4134f8703580021adb9d8
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535189"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500106"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>快速入门：使用必应视频搜索 REST API 和 PHP 来搜索视频
 
 使用本快速入门首次调用必应视频搜索 API 并查看 JSON 响应中的搜索结果。 这个简单的 JavaScript 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示响应。 虽然此应用程序采用 JavaScript 编写且使用了 Node.js，但 API 是一种 RESTful Web 服务，可与大多数编程语言兼容。
 编写的示例代码在 PHP 5.6 下工作。
 
-有关 API 的技术详细信息，请参阅 [API 参考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)。
+有关 API 的技术详细信息，请参阅 [API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,7 +32,7 @@ ms.locfileid: "57535189"
 
 ## <a name="running-the-application"></a>运行应用程序
 
-[必应视频搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) 从必应搜索引擎返回结果。
+[必应视频搜索 API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) 从必应搜索引擎返回结果。
 
 1. 请确保在 `php.ini` 中启用安全 HTTP 支持，如代码注释中所述。
 2. 在你喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。

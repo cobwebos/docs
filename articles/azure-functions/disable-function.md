@@ -7,25 +7,57 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/24/2018
+ms.date: 08/05/2019
 ms.author: glenga
-ms.openlocfilehash: ab9cf429a0af69db116fe910ab90b83d404afbb7
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
-ms.translationtype: HT
+ms.openlocfilehash: 498bb8c0f1e7bb674605d4a98f0be0f3e0b9a7c9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093628"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650496"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何在 Azure Functions 中禁用函数
 
 本文介绍如何在 Azure Functions 中禁用函数。 禁用某个函数意味着运行时将忽略针对该函数定义的自动触发器。 执行该操作的方式取决于运行时版本和编程语言：
 
-* Functions 1.x
-  * 脚本语言
-  * C# 类库
-* Functions 2.x
+* 函数 1.x:
   * 适用于所有语言的单一方法
   * 适用于 C# 类库的可选方式
+* 函数 1.x:
+  * 脚本语言
+  * C# 类库
+
+## <a name="functions-2x---all-languages"></a>Functions 2.x - 所有语言
+
+在函数2.x 中, 使用格式`AzureWebJobs.<FUNCTION_NAME>.Disabled`的应用设置禁用函数。 您可以通过多种方式创建和修改此应用程序设置, 包括通过使用 " [Azure CLI](/cli/azure/) " 和 "函数" 的 "**管理**" 选项卡上的[Azure 门户](https://portal.azure.com)中。 
+
+### <a name="azure-cli"></a>Azure CLI
+
+在 Azure CLI 中, 使用[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)命令创建和修改应用设置。 下面的命令通过创建名`QueueTrigger` `AzureWebJobs.QueueTrigger.Disabled`为的应用设置设置为来`true`禁用名为的函数。 
+
+```azurecli-interactive
+az functionapp config appsettings set --name <myFunctionApp> \
+--resource-group <myResourceGroup> \
+--settings AzureWebJobs.QueueTrigger.Disabled=true
+```
+
+若要重新启用此函数, 请使用值`false`重新运行相同的命令。
+
+```azurecli-interactive
+az functionapp config appsettings set --name <myFunctionApp> \
+--resource-group <myResourceGroup> \
+--settings AzureWebJobs.QueueTrigger.Disabled=false
+```
+
+### <a name="portal"></a>门户
+
+也可以使用函数“管理”选项卡上的“函数状态”开关。此开关的工作方式是创建和删除 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 应用设置。
+
+![函数状态开关](media/disable-function/function-state-switch.png)
+
+## <a name="functions-2x---c-class-libraries"></a>Functions 2.x - C# 类库
+
+在 Functions 2.x 类库中，我们建议使用适用于所有语言的方法。 但如果需要，可以[像在 Functions 1.x 中一样使用 Disable 属性](#functions-1x---c-class-libraries)。
 
 ## <a name="functions-1x---scripting-languages"></a>Functions 1.x - 脚本语言
 
@@ -102,18 +134,6 @@ public static class QueueFunctions
 > “管理”选项卡上的“函数状态”开关也是如此，因为它的工作方式就是更改 *function.json* 文件。
 >
 > 另请注意，门户可能指示函数已禁用，但实际上并未禁用。
-
-
-
-## <a name="functions-2x---all-languages"></a>Functions 2.x - 所有语言
-
-在 Functions 2.x 中，可以使用应用设置禁用函数。 例如，若要禁用名为 `QueueTrigger` 的函数，请创建名为 `AzureWebJobs.QueueTrigger.Disabled` 的应用设置，并将其设置为 `true`。 若要启用该函数，请将应用设置设为 `false`。 也可以使用函数“管理”选项卡上的“函数状态”开关。此开关的工作方式是创建和删除 `AzureWebJobs.<functionname>.Disabled` 应用设置。
-
-![函数状态开关](media/disable-function/function-state-switch.png)
-
-## <a name="functions-2x---c-class-libraries"></a>Functions 2.x - C# 类库
-
-在 Functions 2.x 类库中，我们建议使用适用于所有语言的方法。 但如果需要，可以[像在 Functions 1.x 中一样使用 Disable 属性](#functions-1x---c-class-libraries)。
 
 ## <a name="next-steps"></a>后续步骤
 

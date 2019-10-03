@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 6e041e41372c72c6792c1fb4a1fbdc3bbe475b21
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661644"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60844377"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Service Fabric 中指标和负载的重整
 Service Fabric 群集资源管理器用于管理群集中的负载指标的默认策略是分散负载。 确保均匀地使用节点，避免出现导致争用和浪费资源的热点和冷点。 若要幸免于故障，让工作负荷分布在群集中还是最安全的方法，因为它可确保某个故障不会导致给定的工作负荷大部分失效。 
@@ -42,7 +42,7 @@ Service Fabric 群集资源管理器支持另一种用于管理负载的策略 -
 
 <center>
 
-![比较均衡与重整的群集][Image1]
+![比较均衡的群集与重整的群集][Image1]
 </center>
 
 在平衡的情况下，请考虑放置其中一个最大的服务对象所需的移动数。 在经过重整的群集中，大型工作负荷可放置在四个或五个节点上，而无需等待移动任何其他服务。

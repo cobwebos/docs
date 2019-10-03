@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Data Lake Analytics 分析网站日志
-description: 了解如何使用 Data Lake Analytics 分析网站日志。
+description: 了解如何使用 Azure Data Lake Analytics 分析网站日志以运行 U SQL 函数和查询。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,19 +9,19 @@ ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 83742a4f82fb4d67fd258ff0d242847eab634c78
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
-ms.translationtype: HT
+ms.openlocfilehash: 04c6d4c74a82ccfbcbb0faecb0dca5ec495f6663
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402279"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672876"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 分析网站日志
 了解如何使用 Data Lake Analytics 分析网站日志，尤其是找出尝试访问网站时哪些引用发生了错误。
 
 ## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2015 或 Visual Studio 2013**。
-* **[针对 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)**。
+* **[针对 Visual Studio 的 Data Lake 工具](https://aka.ms/adltoolsvs)** 。
 
     安装好适用于 Visual Studio 的 Data Lake 工具后，将在 Visual Studio 的“工具”菜单中看到“Data Lake”项：
 
@@ -58,7 +58,7 @@ U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细�
 2. 选择“U-SQL 项目”类型。
 
     ![新建 U-SQL Visual Studio 项目](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
-3. 单击“确定”。 Visual Studio 将创建包含 Script.usql 文件的解决方案。
+3. 单击 **“确定”** 。 Visual Studio 将创建包含 Script.usql 文件的解决方案。
 4. 在 Script.usql 文件中输入以下脚本：
 
         // Create a database for easy reuse, so you don't need to read from a file every time.
@@ -168,7 +168,7 @@ U-SQL 应用程序主要是 U-SQL 脚本。 若要了解有关 U SQL 的详细�
 3. 双击“UnsuccessfulResponses.log”。
 4. 也可以双击该作业图形视图中的输出文件直接导航到输出。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 若要借助不同的工具开始使用 Data Lake Analytics，请参阅：
 
 * [通过 Azure 门户实现 Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)

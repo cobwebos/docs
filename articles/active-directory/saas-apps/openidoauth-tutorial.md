@@ -12,29 +12,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713e4e7874b2ca650ab669d52f9d3026b5e80899
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 166452b052313397f1ec17adb59cad3c20fab1f9
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780977"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497388"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>从 Azure AD 应用库配置 OpenID/OAuth 应用程序
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>从库添加 OpenID 应用程序的过程
 
-1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”。 
+1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”  。 
 
     ![“Azure Active Directory”按钮](common/select-azuread.png))
 
-2. 转到“企业应用程序” > “所有应用程序”。
+2. 转到“企业应用程序”   > “所有应用程序”  。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 选择对话框顶部的“新建应用程序”。
+3. 选择对话框顶部的“新建应用程序”。 
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "57780977"
     ![结果列表中的 Openid](common/search-new-app.png)
 
     > [!NOTE]
-    > 对于 OpenID Connect 和 OAuth 应用，“添加”按钮默认处于禁用状态。 在这里，租户管理员应该选择“注册”按钮并向应用程序提供许可。 该应用程序随即会添加到客户租户中，可在租户中进行配置。 无需显式添加应用程序。
+    > 对于 OpenID Connect 和 OAuth 应用，“添加”按钮默认处于禁用状态。  在这里，租户管理员应该选择“注册”按钮并向应用程序提供许可。 该应用程序随即会添加到客户租户中，可在租户中进行配置。 无需显式添加应用程序。
 
     ![“添加”按钮](./media/openidoauth-tutorial/addbutton.png)
 
@@ -98,7 +98,25 @@ ms.locfileid: "57780977"
 
 以下步骤说明应用程序开发人员和用户如何使用许可体验：
 
-1. 假设某个 Web 客户端应用程序需要请求资源或 API 的特定访问权限。 Azure 门户用于在配置时声明权限请求。 这些配置与其他配置设置一样，将会成为应用程序的 Azure AD 注册的一部分：
+1. 假设某个 Web 客户端应用程序需要请求资源或 API 的特定访问权限。 Azure 门户用于在配置时声明权限请求。 这些配置与其他配置设置一样，将会成为应用程序的 Azure AD 注册的一部分。 对于权限请求路径，需要按照以下步骤操作：
+
+    a. 单击菜单左侧的“应用注册”  ，然后在搜索框中键入应用程序名称以打开应用程序。
+
+    ![图形 API](./media/openidoauth-tutorial/application.png)
+
+    b. 单击“查看 API 权限”  。
+
+    ![图形 API](./media/openidoauth-tutorial/api-permission.png)
+
+    c. 单击“添加权限”  。
+
+    ![图形 API](./media/openidoauth-tutorial/add-permission.png)
+
+    d. 单击“Microsoft Graph”  。
+
+    ![图形 API](./media/openidoauth-tutorial/microsoft-graph.png)
+
+    e. 从“委托的权限”  和  “应用程序权限”中选择所需的选项。
 
     ![图形 API](./media/openidoauth-tutorial/graphapi.png)
 
@@ -118,12 +136,12 @@ ms.locfileid: "57780977"
 
 ## <a name="difference-between-admin-consent-and-user-consent"></a>管理员许可与用户许可的区别
 
-作为管理员，还可以代表租户中的所有用户同意应用程序的委派权限。 管理许可可防止针对租户中的每个用户显示许可对话框。 具有管理员角色的用户可在 Azure 门户中提供许可。 在应用程序的“设置”页中，选择“所需权限” > “授予权限”。
+作为管理员，还可以代表租户中的所有用户同意应用程序的委派权限。 管理许可可防止针对租户中的每个用户显示许可对话框。 具有管理员角色的用户可在 Azure 门户中提供许可。 在应用程序的“设置”页中，选择“所需权限” > “授予管理员同意”。   
 
 ![“授予权限”按钮](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可。 否则，在请求访问令牌时应用程序会失败。
+> 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予管理员同意”按钮授予显式许可  。 否则，在请求访问令牌时应用程序会失败。
 
 仅限应用的权限始终需要租户管理员的同意。 如果应用程序请求仅限应用的权限，当用户尝试登录应用程序时，会显示一条错误消息。 该消息指出该用户无法许可。
 
@@ -131,7 +149,7 @@ ms.locfileid: "57780977"
 
 在管理员已许可且系统已在客户的租户中创建服务主体之后，后续登录请求就不再需要 *prompt=admin_consent* 参数。 由于管理员已确定可接受请求的权限，因此从该时间点之后，不再提示租户中的任何其他用户许可。
 
-租户管理员可以禁用普通用户同意应用程序的能力。 如果禁用此功能，则始终需要管理员同意，才能在租户中使用应用程序。 如果想要在禁用最终用户许可的情况下测试应用程序，可以在 [Azure 门户](https://portal.azure.com/)中找到配置开关。 该开关位于“企业应用程序”下的[用户设置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)部分。
+租户管理员可以禁用普通用户同意应用程序的能力。 如果禁用此功能，则始终需要管理员同意，才能在租户中使用应用程序。 如果想要在禁用最终用户许可的情况下测试应用程序，可以在 [Azure 门户](https://portal.azure.com/)中找到配置开关。 该开关位于“企业应用程序”下的[用户设置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)部分。 
 
 *prompt=admin_consent* 参数还可以由请求不需要管理员许可的权限的应用程序使用。 例如，某个应用程序需要如下所述的体验：租户管理员“注册”一次，在此之后不再提示其他用户确认许可。
 

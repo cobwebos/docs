@@ -1,35 +1,49 @@
 ---
-title: Azure 数据工厂映射数据流聚合转换
-description: Azure 数据工厂数据流聚合转换
+title: 映射数据流中的聚合转换-Azure 数据工厂 |Microsoft Docs
+description: 了解如何在 Azure 数据工厂中大规模聚合数据以及映射数据流聚合转换。
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 7b488b243c0520befb6b5470598f460b5a759fed
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 778aefc05a9b12648e60d752a3c281cb18323125
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730030"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314231"
 ---
-# <a name="azure-data-factory-mapping-data-flow-aggregate-transformation"></a>Azure 数据工厂映射数据流聚合转换
+# <a name="aggregate-transformation-in-mapping-data-flow"></a>映射数据流中的聚合转换 
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-可以在聚合转换中定义数据流中列的聚合。 在表达式生成器中，可以定义不同类型的聚合（例如 SUM、MIN、MAX、COUNT 等）并在输出中创建新的字段，其中包含这些具有可选分组依据字段聚合。
-
-![聚合转换选项](media/data-flow/agg.png "聚合 1")
+可以在聚合转换中定义数据流中列的聚合。 使用 "表达式生成器" 可以定义不同类型的聚合, 如 SUM、MIN、MAX 和 COUNT, 可以按现有或计算列进行分组。
 
 ## <a name="group-by"></a>分组依据
-（可选）为聚合选择一个分组依据子句，并使用现有列的名称或新名称。 使用"添加列"添加多个分组依据子句，然后单击列名旁边的文本框以启动表达式生成器，以便仅为分组选择现有列、列组合或表达式。
+选择现有列或创建新的计算列, 以用作聚合的 group by 子句。 若要使用现有列, 请从下拉列表中选择所需的列。 若要创建新的计算列, 请将鼠标悬停在子句上, 并单击 "计算列"。 这将打开 "数据流[表达式生成器](concepts-data-flow-expression-builder.md)"。 创建计算列后, 请在 "名称" 字段中输入输出列的名称。 如果要添加其他 group by 子句, 请将鼠标悬停在现有子句上, 并单击 "+"。
 
-## <a name="the-aggregate-column-tab"></a>聚合列选项卡 
-（必需）选择“聚合列”选项卡以生成聚合表达式。 可以选择一个现有列以使用聚合覆盖值，或使用聚合的新名称创建新的字段。 在列名选择器旁的右侧框中输入要用于聚合的表达式。 单击该文本框将打开表达式生成器。
+![聚合转换组 (按设置])(media/data-flow/agg.png "聚合转换组 (按设置"))
 
-![聚合转换选项](media/data-flow/agg2.png "聚合器")
+> [!NOTE]
+> 在聚合转换中, group by 子句是可选的。
 
-## <a name="data-preview-in-expression-builder"></a>表达式生成器中的数据预览
+## <a name="aggregate-column"></a>聚合列 
+选择 "聚合" 选项卡以生成聚合表达式。 您可以选择现有列并使用聚合覆盖值, 也可以使用新名称创建新的字段。 在列名称选择器旁的右侧框中输入聚合表达式。 若要编辑该表达式, 请单击文本框打开 "表达式生成器"。 若要添加其他聚合, 请将鼠标悬停在现有表达式上, 并单击 "+" 创建新的聚合列或[列模式](concepts-data-flow-column-pattern.md)。
 
-在“调试”模式下，表达式生成器无法使用聚合函数生成数据预览。 若要查看聚合转换的数据预览，请关闭表达式生成器并查看数据流设计器中的数据配置文件。
+![聚合转换聚合设置](media/data-flow/agg2.png "聚合转换聚合设置")
+
+> [!NOTE]
+> 每个聚合表达式必须包含至少一个聚合函数。
+
+> [!NOTE]
+> 在调试模式下, 表达式生成器不能用聚合函数生成数据预览。 若要查看聚合转换的数据预览, 请关闭 "表达式生成器" 并通过 "数据预览" 选项卡来查看数据。
+
+## <a name="reconnect-rows-and-columns"></a>重新连接行和列
+聚合转换与 SQL 聚合选择查询密切等效。 未包含在 Group By 子句或聚合函数中的列不会流向聚合转换的输出。 如果要将其他列与聚合行输出一起包含, 则必须执行以下操作之一:
+
+* 使用聚合函数包含该附加列, 如 Last () 或 First ()
+* 使用[自联接模式](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)在聚合之前重新联接列。
+
+## <a name="next-steps"></a>后续步骤
+
+* 使用[窗口转换](data-flow-window.md)定义基于窗口的聚合

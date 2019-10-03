@@ -3,7 +3,7 @@ title: Azure 流量管理器地理路由类型使用的国家/地区层次结构
 description: 本文列出了 Azure 流量管理器地理路由类型使用的国家/地区层次结构
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: kumud
-ms.openlocfilehash: f033f8e8e686165febdd2262953b2aa871686a12
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.author: allensu
+ms.openlocfilehash: d16529e966fb2e16d1012f4aa0aafcff204a3093
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609228"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071161"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Azure 流量管理器将国家/地区层次结构用于地理流量路由方法
 
@@ -99,7 +99,7 @@ ms.locfileid: "59609228"
 
         - ME(黑山)
 
-        - MK （北部前）
+        - MK(北马其顿)
 
         - MT(马耳他)
 
@@ -128,7 +128,7 @@ ms.locfileid: "59609228"
         - SM(圣马力诺)
 
         - UA(乌克兰)
-            - 克里米亚的区域
+            - 克里米亚区域
 
         - VA(梵蒂冈城)
 
@@ -481,8 +481,6 @@ ms.locfileid: "59609228"
         - CD(刚果(金))
 
         - CF(中非共和国)
-
-        - CG(刚果(布))
 
         - CI(科特迪瓦)
 

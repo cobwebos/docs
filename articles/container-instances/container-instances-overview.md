@@ -3,18 +3,18 @@ title: 什么是 Azure 容器实例？
 description: Azure 容器实例服务提供了在 Azure 中运行隔离容器的最简捷方式，既无需管理虚拟机，也不必采用更高级的业务流程协调程序。
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
-ms.date: 11/30/2018
+ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 91cf0986241a40c48430d8305849c12864d645fb
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: a07eda709c813e68bc3e4f08b6aab3f93dec65a6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499550"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325746"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -56,7 +56,10 @@ Azure 容器实例可以使用同一 API 来计划 Windows 和 Linux 容器。 �
 * [虚拟网络部署](container-instances-vnet.md)（预览版）
 * [GPU 资源](container-instances-gpu.md)（预览版）
 
-Azure 容器实例目前支持基于长期服务渠道 (LTSC) 版本的 Windows Server 2016 映像。 不支持 Windows 半年频道 (SAC) 发行版，例如 1709 和 1803。
+对于 Windows 容器部署，请基于常用 [Windows 基础映像](container-instances-faq.md#what-windows-base-os-images-are-supported)使用映像。
+
+> [!NOTE]
+> 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。
 
 ## <a name="co-scheduled-groups"></a>共同计划组
 

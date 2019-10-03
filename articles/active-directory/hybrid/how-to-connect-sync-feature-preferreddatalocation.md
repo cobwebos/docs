@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Connect 同步：在 Office 365 中为多地域功能配置首选数据位置 | Microsoft Docs
+title: Azure AD Connect：为 Office 365 资源配置首选数据位置
 description: 介绍了如何使用 Azure Active Directory Connect 同步将 Office 365 用户资源放在靠近用户的位置。
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 50cb5a76c6b19668fc23147244d65a0d996ebf90
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118436"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033723"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同步：为 Office 365 资源配置首选数据位置
 本主题的目的是介绍如何在 Azure Active Directory (Azure AD) Connect 同步中配置首选数据位置的属性。当某人使用了 Office 365 中的多地域功能时，你使用此属性来指定用户的 Office 365 数据的地理位置。 （术语*区域*和*地域*可以互换使用。）
@@ -32,7 +32,7 @@ ms.locfileid: "58118436"
 通过设置属性 **preferredDataLocation**，可以定义用户的地域。 可以将用户的 Office 365 资源（例如邮箱和 OneDrive）放在用户所在的同一区域，同时仍对整个组织使用一个租户。
 
 > [!IMPORTANT]
-> Office 365 服务订阅数大于等于 2,500 个的客户现可使用多地理位置功能。 有关详细信息，请咨询 Microsoft 代表。
+> 多地区目前可供具有活动企业协议和至少 500 Office 365 服务订阅的客户使用。 有关详细信息，请咨询 Microsoft 代表。
 >
 >
 
@@ -50,6 +50,8 @@ Office 365 中支持多地域的区域包括：
 | 印度 | IND |
 | 日本 | JPN |
 | 韩国 | KOR |
+| 南非 | ZAF |
+| 阿拉伯联合酋长国 | 就 |
 | 英国 | GBR |
 | 美国 | NAM |
 
@@ -59,7 +61,7 @@ Office 365 中支持多地域的区域包括：
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect 对同步的支持
 
-Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象的 **preferredDataLocation** 属性进行同步。 具体而言：
+Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象的 **preferredDataLocation** 属性进行同步。 尤其是在下列情况下：
 
 * Azure AD 连接器中对象类型 **User** 的架构已扩展，现在包含 **preferredDataLocation** 属性。 该属性为单值字符串类型。
 * Metaverse 中对象类型 **Person** 的架构已扩展，现在包含 **preferredDataLocation** 属性。 该属性为单值字符串类型。
@@ -124,9 +126,9 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 3. 若要创建新的入站规则，请选择“添加新规则”按钮。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | 属性 | 值 | 详细信息 |
+    | 特性 | ReplTest1 | 详细信息 |
     | --- | --- | --- |
-    | 名称 | *提供名称* | 例如“In from AD – User preferredDataLocation” |
+    | 姓名 | *提供名称* | 例如“In from AD – User preferredDataLocation” |
     | 描述 | *提供自定义说明* |  |
     | 连接的系统 | *选取本地 Active Directory 连接器* |  |
     | 连接的系统对象类型 | **User** |  |
@@ -137,9 +139,9 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 5. 将“范围筛选器”留空以包括所有对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
 6. 转到“转换”选项卡并实现以下转换规则：
 
-    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
-    |直接 | preferredDataLocation | 选择源属性 | 未选中 | 更新 |
+    |直接 | preferredDataLocation | 选择源属性 | 未选中 | Update |
 
 7. 若要创建入站规则，请选择“添加”。
 
@@ -153,9 +155,9 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 3. 选择“添加新规则”。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | 属性 | 值 | 详细信息 |
+    | 特性 | ReplTest1 | 详细信息 |
     | ----- | ------ | --- |
-    | 名称 | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
+    | 姓名 | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
     | 描述 | *提供说明* ||
     | 连接的系统 | *选择 Azure AD 连接器* ||
     | 连接的系统对象类型 | **User** ||
@@ -165,18 +167,18 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
 5. 转到“范围筛选器”选项卡，并添加包含两个子句的单个范围筛选器组：
 
-    | 属性 | 运算符 | 值 |
+    | 特性 | 运算符 | ReplTest1 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
 
-    范围筛选器确定要将此出站同步规则应用到哪些 Azure AD 对象。 在本示例中，我们将使用与“Out to AD – User Identity”OOB（现成）同步规则中相同的范围筛选器。 它可以防止将同步规则应用到未从本地 Active Directory 同步的 **User** 对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
+    范围筛选器确定要将此出站同步规则应用到哪些 Azure AD 对象。 在此示例中，我们将使用 "Out to Azure AD – User Identity" OOB （现成）同步规则中的相同范围筛选器。 它可以防止将同步规则应用到未从本地 Active Directory 同步的 **User** 对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
 
 6. 转到“转换”选项卡并实现以下转换规则：
 
-    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
-    | 直接 | preferredDataLocation | preferredDataLocation | 未选中 | 更新 |
+    | 直接 | preferredDataLocation | preferredDataLocation | 未选中 | Update |
 
 7. 关闭“添加”创建出站规则。
 

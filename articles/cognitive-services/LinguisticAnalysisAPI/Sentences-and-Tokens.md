@@ -12,11 +12,11 @@ ms.date: 03/21/2016
 ms.author: davl
 ROBOTS: NOINDEX
 ms.openlocfilehash: 435513023cf74bbc259cb922220d5f9940452d79
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879388"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60635460"
 ---
 # <a name="sentence-separation-and-tokenization"></a>句子拆分和词汇切分
 
@@ -57,7 +57,7 @@ ms.locfileid: "55879388"
 
 有几种棘手情况。
 首先，标点通常（但不一定）应从周围上下文中切分出来。
-其次，英语有缩写形式（例如“didn't”或“it's”），其中字词已压缩并缩写为更短形式。
+其次，英语有缩写形式  （例如“didn't”或“it's”），其中字词已压缩并缩写为更短形式。
 tokenizer 的目标是，将字符序列切分为字词。
 
 回到上面的示例句子。
@@ -67,10 +67,10 @@ tokenizer 的目标是，将字符序列切分为字词。
 - I &middot; did &middot; n't &middot; hear &middot; about &middot; the &middot; director &middot; 's &middot; " &middot; new &middot; proposal &middot; . &middot; "
 - It &middot; 's &middot; important &middot; to &middot; Mr. &middot; and &middot; Mrs.&middot; Smith &middot; .
 
-请注意，大部分词汇都能在字典中查到（例如，important、director）。
+请注意，大部分词汇都能在字典中查到（例如，important  、director  ）。
 另一些词汇只包含标点。
-最后，还有一些较不常见的词汇表示缩写形式。例如，n't 表示 not，'s 表示所有格。
-借助这种词汇切分，可以更为一致地处理字词 (didn't) 和短语 (did not)。
+最后，还有一些较不常见的词汇表示缩写形式。例如，n't  表示 not  ，'s  表示所有格。
+借助这种词汇切分，可以更为一致地处理字词 (didn't  ) 和短语 (did not  )。
 
 ## <a name="specification"></a>规格
 

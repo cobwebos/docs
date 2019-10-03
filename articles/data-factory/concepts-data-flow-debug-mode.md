@@ -6,57 +6,87 @@ ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 1a332dd46cac196c8185ddb12c0d900f5c36e1b3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 09/06/2019
+ms.openlocfilehash: 7d1023f6c46c15b6f982193350923f5c91cdc4b9
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894047"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801713"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>映射数据流调试模式
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Azure 数据工厂映射数据流有调试模式下，这可以设计图面顶部的调试流数据按钮切换。 设计数据流时，通过将调试模式设置为打开，可在生成和调试数据流时以交互方式观察数据形状转换。 在数据流设计会话以及管道的数据流的调试执行期间，可以使用调试会话。
-
-![调试按钮](media/data-flow/debugbutton.png "调试按钮")
-
 ## <a name="overview"></a>概述
-在调试模式下时，您将以交互方式生成数据的流与活动的 Spark 群集。 在 Azure 数据工厂中关闭调试后，会话将关闭。 你应该了解 Azure Databricks 在打开调试会话期间产生的每小时费用。
 
-在大多数情况下，最好在调试模式下生成数据流，以便在 Azure 数据工厂中发布工作之前验证业务逻辑并查看数据转换。 您应使用管道面板上的"调试"按钮来测试管道内数据的流。
+Azure 数据工厂映射数据流的调试模式允许您在生成和调试数据流时以交互方式监视数据形状转换。 调试会话既可以在数据流设计会话中使用，也可以在数据流的管道调试执行过程中使用。 若要启用调试模式，请使用设计图面顶部的 "数据流调试" 按钮。
 
-## <a name="debug-mode-on"></a>在调试模式
-当你打开调试模式时，系统会提示你使用侧面板窗体，该窗体将要求你指向交互式 Azure Databricks 群集并选择源采样选项。 你必须使用 Azure Databricks 中的交互式群集，并从每个源转换中选择一个采样大小，或选择要用于测试数据的文本文件。
+![调试滑块](media/data-flow/debugbutton.png "调试滑块")
 
-<img src="media/data-flow/upload.png" width="400">
+打开滑块后，系统将提示您选择要使用的集成运行时配置。 如果选择了 "AutoResolveIntegrationRuntime"，则将启动具有8个常规计算的群集，其生存时间为60分钟。 有关数据流集成运行时的详细信息，请参阅数据流[性能](concepts-data-flow-performance.md#increase-size-of-your-compute-engine-in-azure-integration-runtime)。
 
-> [!NOTE]
->在数据流中以调试模式运行时，数据不会写入接收器转换。 调试会话旨在用作转换测试工具。 调试期间不需要接收器，并且会在数据流中忽略接收器。 如果希望在接收器中测试数据写入，请从 Azure 数据工厂管道执行数据流，并从管道使用调试执行。
+![调试 IR 选择](media/data-flow/debugbutton2.png "调试 IR 选择")
 
-## <a name="debug-settings"></a>调试设置
-调试设置可以是在数据流中的每个源会显示在侧面板，还可以通过选择"源设置"，在数据流设计器工具栏上进行编辑。 你可以在此处选择要用于每个源转换的限制和/或文件源。 在本设置中的行限制是仅为当前调试会话。 您还可以在源中将采样设置，用于到源 transforamtion 限制行中。
+当调试模式为 on 时，将使用活动的 Spark 群集以交互方式生成数据流。 在 Azure 数据工厂中关闭调试后，会话将关闭。 你应该了解 Azure Databricks 在打开调试会话期间产生的每小时费用。
+
+在大多数情况下，最好在调试模式下生成数据流，以便在 Azure 数据工厂中发布工作之前验证业务逻辑和查看数据转换。 使用 "管道" 面板上的 "调试" 按钮来测试管道中的数据流。
 
 ## <a name="cluster-status"></a>群集状态
-设计图面顶部有一个群集状态指示器，当群集准备好进行调试时，该指示器将变为绿色。 如果群集已热，那么绿色指示器几乎会立即出现。 如果在进入调试模式时群集尚未运行，则必须等待 5-7 分钟才能启动群集。 指示灯将为黄色，直到群集准备就绪。 群集准备好进行数据流调试后，指示灯将变为绿色。
 
-完成调试后，关闭调试开关，以便 Azure Databricks 群集可以终止调试。
+当群集准备好进行调试时，设计图面顶部的群集状态指示器将变为绿色。 如果群集已热，那么绿色指示器几乎会立即出现。 如果在你进入调试模式时群集尚未运行，则你必须等待5-7 分钟以便群集启动。 指示器将旋转到其就绪状态。
 
-<img src="media/data-flow/datapreview.png" width="400">
+完成调试后，请关闭调试开关，以便 Azure Databricks 群集可以终止，并且不再为调试活动付费。
+
+## <a name="debug-settings"></a>调试设置
+
+可以通过单击 "数据流画布" 工具栏上的 "调试设置" 来编辑调试设置。 你可以在此处选择要用于每个源转换的行限制或文件源。 此设置中的行限制仅适用于当前调试会话。 你还可以选择要用于 SQL DW 源的暂存链接的服务。 
+
+![调试设置](media/data-flow/debug-settings.png "调试设置")
+
+如果数据流或其引用的任何数据集中都有参数，则可以通过选择 "**参数**" 选项卡指定要在调试期间使用的值。
+
+![调试设置参数](media/data-flow/debug-settings2.png "调试设置参数")
 
 ## <a name="data-preview"></a>数据预览
-打开调试后，“数据预览”选项卡将在底部面板上亮起。 如果未打开调试模式，数据流将仅在“检查”选项卡中显示传入和传出每个转换的当前元数据。数据预览仅将查询调试设置中设置为你的限制的行的数。 你可能需要单击“提取数据”来刷新数据预览。
 
-<img src="media/data-flow/stats.png" width="400">
+打开调试后，“数据预览”选项卡将在底部面板上亮起。 如果未打开调试模式，数据流将仅在“检查”选项卡中显示传入和传出每个转换的当前元数据。数据预览只会查询您在调试设置中设置为限制的行数。 单击 "**刷新**" 提取数据预览。
 
-## <a name="data-profiles"></a>数据配置文件
-在数据预览选项卡中选择单个列时，将在数据网格的最右侧弹出一个图表，其中包含有关每个字段的详细统计信息。 Azure 数据工厂将根据要显示的图表类型的数据采样做出决定。 高基数字段将默认为 NULL / NOT NULL 图表，而具有低基数的分类和数值数据将显示条形图（显示数据值频率）。 你还将看到字符串字段的最大/最小长度、数值字段中的最小/最大值、标准偏差、百分点值、计数和平均值。 
+![数据预览](media/data-flow/datapreview.png "数据预览")
 
-<img src="media/data-flow/chart.png" width="400">
+> [!NOTE]
+> 文件源仅限制您看到的行数，而不限制所读取的行数。 对于非常大的数据集，建议你拍摄该文件的一小部分，并将其用于测试。 可以为文件数据集类型的每个源选择 "调试" 设置中的临时文件。
+
+在数据流中以调试模式运行时，数据不会写入接收器转换。 调试会话旨在用作转换的测试工具。 调试期间不需要接收器，并且会在数据流中忽略接收器。 如果希望测试在接收器中写入数据，请从 Azure 数据工厂管道执行数据流，并使用管道中的调试执行。
+
+### <a name="testing-join-conditions"></a>测试联接条件
+
+单元测试联接、存在或查找转换时，请确保为测试使用少量的已知数据。 你可以使用上面的 "调试设置" 选项来设置用于测试的临时文件。 这是必需的，因为在对大型数据集中的行进行限制或采样时，无法预测哪些行以及哪些键将被读入流以进行测试。 结果是非确定性的，这意味着联接条件可能会失败。
+
+### <a name="quick-actions"></a>快速操作
+
+看到数据预览后，就可以生成快速转换来转换、删除或修改列。 单击列标题，然后从数据预览工具栏中选择一个选项。
+
+![快速操作](media/data-flow/quick-actions1.png "快速操作")
+
+选择修改后，数据预览会立即刷新。 在右上角单击 "**确认**" 以生成新的转换。
+
+![快速操作](media/data-flow/quick-actions2.png "快速操作")
+
+**转换**和**Modify**将生成一个派生列转换，并且**删除**将生成一个 Select 转换。
+
+![快速操作](media/data-flow/quick-actions3.png "快速操作")
+
+> [!NOTE]
+> 如果编辑数据流，则需要在添加快速转换之前重新提取数据预览。
+
+### <a name="data-profiling"></a>数据事件探查
+
+在 "数据预览" 选项卡中选择一个列，然后在 "数据预览" 工具栏中单击 "**统计信息**"，将在数据网格最右侧弹出一个图表，其中包含有关每个字段的详细统计信息。 Azure 数据工厂将根据要显示的图表类型的数据采样做出决定。 高基数字段将默认为 NULL/NOT NULL 图表，而具有较低基数的分类和数值数据将显示显示数据值频率的条形图。 你还将看到字符串字段的 max/len 长度、数字字段中的最小/最大值、标准 dev、百分位数、计数和平均值。
+
+![列统计信息](media/data-flow/stats.png "列统计信息")
 
 ## <a name="next-steps"></a>后续步骤
 
-一旦您已完成的生成和调试数据的流，[从管道执行。](control-flow-execute-data-flow-activity.md)
-
-测试时使用数据流管道，请使用管道[调试运行执行选项。](iterative-development-debugging.md)
+* 完成生成和调试数据流后，请[从管道中执行它。](control-flow-execute-data-flow-activity.md)
+* 使用数据流测试管道时，请使用管道[调试 "运行执行" 选项。](iterative-development-debugging.md)

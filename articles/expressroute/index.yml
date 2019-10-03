@@ -1,55 +1,123 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: ExpressRoute 文档
+summary: 了解如何通过本地基础结构或共同租用设施，使用 ExpressRoute 来与 Microsoft 云服务建立快速专用连接。
 metadata:
-  document_id: null
-  title: ExpressRoute
-  meta.description: 'Learn how to use ExpressRoute. Tutorials, REST APIs and other documentation show you how to configure and manage an ExpressRoute circuit.'
-  author: cherylmc
-  manager: jeconnoc
-  ms.service: ExpressRoute
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  title: ExpressRoute 文档
+  description: 了解 ExpressRoute
+  services: expressroute
+  ms.service: expressroute
   ms.topic: landing-page
-  ms.date: 05/18/2018
+  author: cherylmc
   ms.author: cherylmc
-abstract:
-  description: 了解如何通过本地基础结构或共同租用设施，使用 ExpressRoute 来与 Microsoft 云服务建立快速专用连接。 教程、REST API 和其他文档可帮助你配置和管理 ExpressRoute 线路。
-sections:
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何配置和管理 ExpressRoute 线路。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/expressroute/expressroute-howto-circuit-portal-resource-manager">创建和修改 ExpressRoute 线路</a>
-          - html: <a href="/azure/expressroute/expressroute-howto-routing-portal-resource-manager">创建和修改对等互连配置</a>
-          - html: <a href="/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager">将虚拟网络链接到 ExpressRoute 线路</a>
-          - html: <a href="/azure/expressroute/how-to-routefilter-portal">配置用于 Microsoft 对等互连的路由筛选器</a>
-  - title: 免费 Pluralsight 视频培训
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 管理员
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-          - title: Azure 解决方案架构师
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: '<p><a href="/powershell/module/az.network/#expressroute">PowerShell</a></p><p><a href="/cli/azure/network/express-route">Azure CLI</a></p>'
-          - title: REST
-            html: '<p><a href="https://msdn.microsoft.com/library/azure/mt586720">REST API 参考</a></p><p><a href="https://msdn.microsoft.com/library/azure/dn606310">经典 REST API 参考</a></p>'
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 67a20fb9adf8351ce6024f4c521852bbf7935c0d
+  ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70114522"
+landingContent:
+- title: 关于 ExpressRoute
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 ExpressRoute？
+      url: expressroute-introduction.md
+  - linkListType: concept
+    links:
+    - text: 常见问题解答
+      url: expressroute-faqs.md
+- title: 入门
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 创建和修改线路
+      url: expressroute-howto-circuit-portal-resource-manager.md
+    - text: 为线路创建和修改对等互连
+      url: expressroute-howto-routing-portal-resource-manager.md
+    - text: 将 VNet 连接到线路
+      url: expressroute-howto-linkvnet-portal-resource-manager.md
+    - text: 配置路由筛选器
+      url: how-to-routefilter-portal.md
+- title: 规划
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 先决条件和清单
+      url: expressroute-prerequisites.md
+    - text: 工作流
+      url: expressroute-workflows.md
+    - text: 线路和对等互连
+      url: expressroute-circuit-peerings.md
+    - text: 路由要求
+      url: expressroute-routing.md
+    - text: 基于 ExpressRoute 的 BFD
+      url: expressroute-bfd.md
+    - text: QoS 要求
+      url: expressroute-qos.md
+    - text: 按位置组织的提供商
+      url: expressroute-locations-providers.md
+    - text: 按提供商组织的位置
+      url: expressroute-locations.md
+- title: 设计
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 连接模型
+      url: expressroute-connectivity-models.md
+    - text: 旨在实现高可用性
+      url: designing-for-high-availability-with-expressroute.md
+    - text: 通过专用对等互连进行灾难恢复的设计
+      url: designing-for-disaster-recovery-with-expressroute-privatepeering.md
+- title: 加密流量
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 通过 Microsoft 对等互连配置站点到站点 VPN
+      url: site-to-site-vpn-over-microsoft-peering.md
+    - text: 配置专用对等互连的 IPsec 传输模式
+      url: expressroute-howto-ipsec-transport-private-windows.md
+- title: 监视
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 配置监视、指标和警报
+      url: expressroute-monitoring-metrics-alerts.md
+    - text: 配置网络性能监视器
+      url: how-to-npm.md
+- title: ExpressRoute Direct
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是 ExpressRoute Direct？
+      url: expressroute-erdirect-about.md
+    - text: FastPath
+      url: expressroute-about-virtual-network-gateways.md#fastpath
+    - text: ExpressRoute Direct 常见问题解答
+      url: expressroute-faqs.md#expressRouteDirect
+  - linkListType: how-to-guide
+    links:
+    - text: 配置 ExpressRoute Direct
+      url: expressroute-howto-erdirect.md
+- title: ExpressRoute Global Reach
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是 Global Reach？
+      url: expressroute-global-reach.md
+    - text: Global Reach 常见问题解答
+      url: expressroute-faqs.md#globalreach
+  - linkListType: how-to-guide
+    links:
+    - text: 配置 Global Reach
+      url: expressroute-howto-set-global-reach.md
+- title: 引用
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/network/express-route
+    - text: Azure Powershell
+      url: /powershell/module/az.network#expressroute
+    - text: REST
+      url: /rest/api/expressroute

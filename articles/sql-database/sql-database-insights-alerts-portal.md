@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 93337e39a117c1f8d38f24dc416ff8ae95513a34
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3103b556098d0b9ccbfca7348ab70c183a69753d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855582"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262226"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库和数据仓库创建警报
 
@@ -59,7 +58,7 @@ ms.locfileid: "57855582"
 4. **命名**警报规则，并选择也在通知电子邮件中显示的“说明”。
 5. 选择想要监视的“指标”为该指标选择一个“条件”和“阈值”。 还选择触发警报前指标规则必须满足的时间段。 例如，如果使用时间段"PT5M"，且警报针对 CPU 高于 80% 的情况，则平均 CPU 高于 80% 达到 5 分钟时触发警报。 第一次触发结束后，当平均 CPU 低于 80% 的时间超过 5 分钟时，将再次触发。 每 1 分钟对 CPU 进行一次测量。 请参阅下表，了解支持的时间窗口和每个警报使用的聚合类型（并非所有警报都使用平均值）。   
 6. 如果触发警报时希望向管理员和共同管理员发送电子邮件，则选择“向所有者发送电子邮件...”。
-7. 触发警报时，如果希望其他电子邮件收到通知，请将其添加到“其他管理员电子邮件”字段下。 请用分号分隔的分隔多个电子邮件*电子邮件\@contoso.com;email2\@contoso.com*
+7. 触发警报时，如果希望其他电子邮件收到通知，请将其添加到“其他管理员电子邮件”字段下。 用分号隔开多个电子邮件 - *email\@contoso.com;email2\@contoso.com*
 8. 触发警报时，如果希望调用有效的 URI，请将其放入“Webhook”字段。
 9. 警报创建完成后，选择“确定”。   
 
@@ -77,47 +76,47 @@ ms.locfileid: "57855582"
 
 | 资源类型 | 指标名称 | 友好名称 | 聚合类型 | 最小警报时间窗口|
 | --- | --- | --- | --- | --- |
-| SQL 数据库 | cpu_percent | CPU 百分比 | 平均值 | 5 分钟 |
-| SQL 数据库 | physical_data_read_percent | 数据 IO 百分比 | 平均值 | 5 分钟 |
-| SQL 数据库 | log_write_percent | 日志 IO 百分比 | 平均值 | 5 分钟 |
-| SQL 数据库 | dtu_consumption_percent | DTU 百分比 | 平均值 | 5 分钟 |
+| SQL 数据库 | cpu_percent | CPU 百分比 | Average | 5 分钟 |
+| SQL 数据库 | physical_data_read_percent | 数据 IO 百分比 | Average | 5 分钟 |
+| SQL 数据库 | log_write_percent | 日志 IO 百分比 | Average | 5 分钟 |
+| SQL 数据库 | dtu_consumption_percent | DTU 百分比 | Average | 5 分钟 |
 | SQL 数据库 | storage | 数据库总大小 | 最大值 | 30 分钟 |
 | SQL 数据库 | connection_successful | 成功的连接数 | 总计 | 10 分钟 |
 | SQL 数据库 | connection_failed | 失败的连接数 | 总计 | 10 分钟 |
-| SQL 数据库 | blocked_by_firewall | 被防火墙阻止 | 总计 | 10 分钟 |
-| SQL 数据库 | deadlock | 死锁数 | 总计 | 10 分钟 |
+| SQL 数据库 | blocked_by_firewall | 由防火墙阻止 | 总计 | 10 分钟 |
+| SQL 数据库 | deadlock | 死锁 | 总计 | 10 分钟 |
 | SQL 数据库 | storage_percent | 数据库大小百分比 | 最大值 | 30 分钟 |
-| SQL 数据库 | xtp_storage_percent | In-Memory OLTP 存储百分比（预览） | 平均值 | 5 分钟 |
-| SQL 数据库 | workers_percent | 辅助角色百分比 | 平均值 | 5 分钟 |
-| SQL 数据库 | sessions_percent | 会话百分比 | 平均值 | 5 分钟 |
-| SQL 数据库 | dtu_limit | DTU 限制 | 平均值 | 5 分钟 |
-| SQL 数据库 | dtu_used | 已用的 DTU | 平均值 | 5 分钟 |
+| SQL 数据库 | xtp_storage_percent | In-Memory OLTP 存储百分比（预览） | Average | 5 分钟 |
+| SQL 数据库 | workers_percent | 工作线程百分比 | Average | 5 分钟 |
+| SQL 数据库 | sessions_percent | 会话百分比 | Average | 5 分钟 |
+| SQL 数据库 | dtu_limit | DTU 限制 | Average | 5 分钟 |
+| SQL 数据库 | dtu_used | 已用的 DTU | Average | 5 分钟 |
 ||||||
-| 弹性池 | cpu_percent | CPU 百分比 | 平均值 | 10 分钟 |
-| 弹性池 | physical_data_read_percent | 数据 IO 百分比 | 平均值 | 10 分钟 |
-| 弹性池 | log_write_percent | 日志 IO 百分比 | 平均值 | 10 分钟 |
+| 弹性池 | cpu_percent | CPU 百分比 | Average | 10 分钟 |
+| 弹性池 | physical_data_read_percent | 数据 IO 百分比 | Average | 10 分钟 |
+| 弹性池 | log_write_percent | 日志 IO 百分比 | Average | 10 分钟 |
 | 弹性池 | dtu_consumption_percent | DTU 百分比 | 平均值 | 10 分钟 |
-| 弹性池 | storage_percent | 存储百分比 | 平均值 | 10 分钟 |
-| 弹性池 | workers_percent | 辅助角色百分比 | 平均值 | 10 分钟 |
-| 弹性池 | eDTU_limit | eDTU 限制 | 平均值 | 10 分钟 |
-| 弹性池 | storage_limit | 存储限制 | 平均值 | 10 分钟 |
-| 弹性池 | eDTU_used | 已用的 eDTU | 平均值 | 10 分钟 |
-| 弹性池 | storage_used | 已用的存储量 | 平均值 | 10 分钟 |
+| 弹性池 | storage_percent | 存储百分比 | Average | 10 分钟 |
+| 弹性池 | workers_percent | 工作线程百分比 | Average | 10 分钟 |
+| 弹性池 | eDTU_limit | eDTU 限制 | Average | 10 分钟 |
+| 弹性池 | storage_limit | 存储限制 | Average | 10 分钟 |
+| 弹性池 | eDTU_used | 已用的 eDTU | Average | 10 分钟 |
+| 弹性池 | storage_used | 已用的存储量 | Average | 10 分钟 |
 ||||||               
-| SQL 数据仓库 | cpu_percent | CPU 百分比 | 平均值 | 10 分钟 |
-| SQL 数据仓库 | physical_data_read_percent | 数据 IO 百分比 | 平均值 | 10 分钟 |
+| SQL 数据仓库 | cpu_percent | CPU 百分比 | Average | 10 分钟 |
+| SQL 数据仓库 | physical_data_read_percent | 数据 IO 百分比 | Average | 10 分钟 |
 | SQL 数据仓库 | connection_successful | 成功的连接数 | 总计 | 10 分钟 |
 | SQL 数据仓库 | connection_failed | 失败的连接数 | 总计 | 10 分钟 |
-| SQL 数据仓库 | blocked_by_firewall | 被防火墙阻止 | 总计 | 10 分钟 |
+| SQL 数据仓库 | blocked_by_firewall | 由防火墙阻止 | 总计 | 10 分钟 |
 | SQL 数据仓库 | service_level_objective | 数据库服务层 | 总计 | 10 分钟 |
 | SQL 数据仓库 | dwu_limit | dwu 限制 | 最大值 | 10 分钟 |
-| SQL 数据仓库 | dwu_consumption_percent | DWU 百分比 | 平均值 | 10 分钟 |
-| SQL 数据仓库 | dwu_used | 已用的 DWU | 平均值 | 10 分钟 |
+| SQL 数据仓库 | dwu_consumption_percent | DWU 百分比 | Average | 10 分钟 |
+| SQL 数据仓库 | dwu_used | 已用的 DWU | Average | 10 分钟 |
 ||||||
 
 
 ## <a name="next-steps"></a>后续步骤
 * [获取 Azure 监视概述](../monitoring-and-diagnostics/monitoring-overview.md)，包括可收集和监视的信息的类型。
 * 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
-* 获取[诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)收集有关服务的详细高频率指标。
+* 获取[诊断日志概述](../azure-monitor/platform/resource-logs-overview.md)收集有关服务的详细高频率指标。
 * 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

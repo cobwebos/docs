@@ -7,15 +7,15 @@ author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 8181fc259ffbed11672fe64a8fc821e234183b72
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856846"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883550"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>必应视觉搜索 API 的语言和区域支持
 
@@ -34,7 +34,7 @@ ms.locfileid: "55856846"
 > - 美食、购物及包括这些页面的见解仅在美国市场中可用。
 
 
-## <a name="countries"></a>国家/地区
+## <a name="countriesregions"></a>国家/地区
 
 |国家/地区|代码|
 |-------|----|
@@ -51,7 +51,7 @@ ms.locfileid: "55856846"
 |德国|DE|
 |香港特别行政区|HK|
 |印度|IN|
-|印度尼西亚|ID|
+|印度尼西亚|id|
 |意大利|IT|
 |日本|JP|
 |韩国|KR|
@@ -117,5 +117,5 @@ ms.locfileid: "55856846"
 |中国台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
 |英国|英语|en-GB|
-|美国|英语|en-US|
+|美国|英语|zh-CN|
 |美国|西班牙语|es-US|

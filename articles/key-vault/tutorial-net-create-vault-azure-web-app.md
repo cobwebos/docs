@@ -2,22 +2,19 @@
 title: 教程 - 如何将 Azure Key Vault 与 .NET Azure Web 应用配合使用 | Microsoft Docs
 description: 本教程介绍如何将 ASP.NET Core 应用程序配置为从 Key Vault 读取机密。
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
+author: msmbaldwin
 manager: rajvijan
-ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
-ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: pryerram
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 2c2bb3e4064294bb8d4a63b009069fd6834ca31e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 84256d79ec543d038b4d3d3f3dc6901bbd003871
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370884"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003373"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>教程：如何将 Azure Key Vault 与 .NET Azure Web 应用配合使用
 
@@ -36,7 +33,7 @@ Azure Key Vault 可帮助你保护机密，例如 API 密钥和数据库连接�
 > * 为 Web 应用分配权限。
 > * 在 Azure 上运行 Web 应用。
 
-在开始之前，请阅读 [Key Vault 的基本概念](key-vault-whatis.md#basic-concepts)。 
+在开始之前，请阅读 [Key Vault 的基本概念](basic-concepts.md)。 
 
 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -46,14 +43,14 @@ Azure Key Vault 可帮助你保护机密，例如 API 密钥和数据库连接�
 * 对于 Mac：[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)
 * 对于 Windows、Mac 和 Linux：
   * [Git](https://git-scm.com/downloads)
-  * 本部分教程要求在本地运行 Azure CLI。 必须安装 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI 2.0](https://review.docs.microsoft.com/cli/azure/install-azure-cli)。
+  * 本部分教程要求在本地运行 Azure CLI。 必须安装 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
   * [.NET Core](https://www.microsoft.com/net/download/dotnet-core/2.1)
 
 ## <a name="about-managed-service-identity"></a>关于托管服务标识
 
-Azure Key Vault 可以安全地存储凭据，因此不需要在代码中显示凭据。 但是，需要对 Azure Key Vault 进行身份验证才能检索密钥。 若要对 Key Vault 进行身份验证，需要提供凭据。 因此，在启动过程中，这是一个难以兼顾的典型问题。 托管服务标识 (MSI) 提供简化该过程的启动标识，可以解决此问题。
+Azure Key Vault 可以安全地存储凭据，因此不需要在代码中显示凭据。 但是，需要对 Azure Key Vault 进行身份验证才能检索密钥。 若要对 Key Vault 进行身份验证，需要提供凭据。 因此，在启动过程中，这是一个难以兼顾的典型问题。 托管服务标识 (MSI) 提供简化该过程的启动标识，可以解决此问题。 
 
-为 Azure 服务（例如 Azure 虚拟机、Azure 应用服务或 Azure Functions）启用 MSI 时，Azure 会创建一个[服务主体](key-vault-whatis.md#basic-concepts)。 MSI 针对 Azure Active Directory (Azure AD) 中的服务实例提供启动标识，并将服务主体凭据注入该实例。
+为 Azure 服务（例如 Azure 虚拟机、Azure 应用服务或 Azure Functions）启用 MSI 时，Azure 会创建一个[服务主体](basic-concepts.md)。 MSI 针对 Azure Active Directory (Azure AD) 中的服务实例提供启动标识，并将服务主体凭据注入该实例。
 
 ![MSI 示意图](media/MSI.png)
 
@@ -130,7 +127,7 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
 
 ## <a name="open-and-edit-the-solution"></a>打开并编辑解决方案
 
-1. 转到“Pages” > “About.cshtml.cs”文件。
+1. 转到“Pages” > “About.cshtml.cs”文件。  
 
 1. 安装以下 NuGet 包：
    - [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)
@@ -194,8 +191,8 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
 
 ## <a name="run-the-web-app"></a>运行 Web 应用
 
-1. 在 Visual Studio 2017 的主菜单中，选择“调试” > “开始执行(调试)”或“开始执行(不调试)”。 
-1. 在浏览器中，转到“关于”页。  
+1. 在 Visual Studio 2019 的主菜单中，选择“调试” > “开始执行(调试)”或“开始执行(不调试)”   。 
+1. 在浏览器中，转到“关于”页。   
     此时会显示 **AppSecret** 的值。
 
 ## <a name="enable-a-managed-identity"></a>启用托管标识
@@ -222,7 +219,7 @@ az webapp identity assign --name "<YourAppName>" --resource-group "<YourResource
 ```
 
 >[!NOTE]
->此过程中的命令等同于转到 [Azure 门户](https://portal.azure.com)并在 Web 应用程序属性中将“标识/系统分配”设置切换为“打开”。
+>此过程中的命令等同于转到 [Azure 门户](https://portal.azure.com)并在 Web 应用程序属性中将“标识/系统分配”设置切换为“打开”  。 
 
 ## <a name="assign-permissions-to-your-app"></a>向应用分配权限
 
@@ -239,8 +236,8 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 再次将 Web 应用发布到 Azure，以验证实时 Web 应用是否可以提取机密值。
 
 1. 在 Visual Studio 中选择 **key-vault-dotnet-core-quickstart** 项目。
-2. 选择“发布” > “开始”。
-3. 选择“创建”。
+2. 选择“发布”   >   “开始”。
+3. 选择“创建”  。
 
 运行该应用程序时应会看到，它可以检索机密值。
 
@@ -252,4 +249,4 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 ## <a name="next-steps"></a>后续步骤
 
 >[!div class="nextstepaction"]
->[Azure Key Vault 开发人员指南](https://docs.microsoft.com/azure/key-vault/key-vault-developers-guide)
+>[Azure Key Vault 开发人员指南](key-vault-developers-guide.md)

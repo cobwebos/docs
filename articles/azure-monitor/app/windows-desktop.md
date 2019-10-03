@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 08/09/2019
 ms.author: mbullwin
-ms.openlocfilehash: 95ff8d1a70325357fee4bc24fd96c1a1c7a73845
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.openlocfilehash: ed6df8b4724dbb297a0c64fd869d3377545a7595
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077600"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932334"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>监视经典 Windows 桌面应用中的使用情况和性能
 
@@ -37,10 +37,11 @@ ms.locfileid: "54077600"
    
     如果使用 ApplicationInsights.config，请确保它在解决方案资源管理器中的属性设置为“生成操作”=“内容”、“复制到输出目录”=“复制”。
 5. [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 发送遥测。
-6. 运行应用，并在 Azure 门户中查看所创建的资源中的遥测。
+6. 运行你的应用, 并在 Azure 门户中创建的资源中查看遥测数据。
 
 ## <a name="telemetry"></a>示例代码
 ```csharp
+using Microsoft.ApplicationInsights;
 
     public partial class Form1 : Form
     {
@@ -52,7 +53,6 @@ ms.locfileid: "54077600"
             tc.InstrumentationKey = "key copied from portal";
 
             // Set session data:
-            tc.Context.User.Id = Environment.UserName;
             tc.Context.Session.Id = Guid.NewGuid().ToString();
             tc.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
 
@@ -61,9 +61,10 @@ ms.locfileid: "54077600"
             ...
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            stop = true;
+            e.Cancel = true;
+
             if (tc != null)
             {
                 tc.Flush(); // only for desktop apps
@@ -77,7 +78,7 @@ ms.locfileid: "54077600"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [创建仪表板](../../azure-monitor/app/app-insights-dashboards.md)
+* [创建仪表板](../../azure-monitor/app/overview-dashboard.md)
 * [诊断搜索](../../azure-monitor/app/diagnostic-search.md)
 * [探索指标](../../azure-monitor/app/metrics-explorer.md)
 * [编写分析查询](../../azure-monitor/app/analytics.md)

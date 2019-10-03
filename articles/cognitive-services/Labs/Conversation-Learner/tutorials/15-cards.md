@@ -3,19 +3,20 @@ title: 如何通过对话学习器模型使用卡，第 1 部分 - Microsoft 认
 titleSuffix: Azure
 description: 了解如何通过对话学习器模型使用卡。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: a2db74e4c5688c0a2a3975ff828caf20c3cf7904
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 426d7c8de29abeb88833e94962a7291a641702ac
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222570"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703747"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>如何使用卡（第 1 部分，共 2 部分）
 
@@ -53,7 +54,7 @@ ms.locfileid: "55222570"
 > 请注意文本字段中的正文类型“TextBlock”和“{{question}}”占位符。
 > 提供两个提交按钮和每个按钮提交的文本。
 
-### <a name="actions"></a>操作
+### <a name="actions"></a>个操作
 
 我们已创建了三个操作。 如下所示，第一个操作是卡。
 

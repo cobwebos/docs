@@ -4,7 +4,7 @@ description: 了解如何在典型部署模型中使用 Azure CLI 控制 Vnet �
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: ca2b4638-8777-4d30-b972-eb790a7c804f
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 0b6c8da03c4a67aadb38280ba958a9b0feb88d1f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 1193145b315175e6394db4caf93ab2e76a942ed9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38678572"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058786"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>使用 Azure CLI 控制路由和使用虚拟设备（经典）
 
@@ -72,8 +72,8 @@ ms.locfileid: "38678572"
    
     参数：
    
-   * **-l（或 --location）**。 要在其中创建新 NSG 的 Azure 区域。 对于我们的方案，为 *westus*。
-   * **-n（或 --name）**。 新 NSG 的名称。 对于我们的方案，为 *NSG-FrontEnd*。
+   * **-l（或 --location）** 。 要在其中创建新 NSG 的 Azure 区域。 对于我们的方案，为 *westus*。
+   * **-n（或 --name）** 。 新 NSG 的名称。 对于我们的方案，为 *NSG-FrontEnd*。
 3. 运行以下命令，在路由表中创建路由，将目标为后端子网 (192.168.2.0/24) 的所有流量发送到 **FW1** VM (192.168.0.4)：
 
     ```azurecli
@@ -89,9 +89,9 @@ ms.locfileid: "38678572"
    
     参数：
    
-   * **-r（或 --route-table-name）**。 要添加路由的路由表的名称。 对于我们的方案，为 *UDR-FrontEnd*。
-   * **-a（或 --address-prefix）**。 数据包的目标子网的地址前缀。 对于我们的方案，为 *192.168.2.0/24*。
-   * **-t （或 --next-hop-type）**。 要发送的对象流量的类型。 可能的值为 *VirtualAppliance*、*VirtualNetworkGateway*、*VNETLocal*、*Internet* 或 *None*。
+   * **-r（或 --route-table-name）** 。 要添加路由的路由表的名称。 对于我们的方案，为 *UDR-FrontEnd*。
+   * **-a（或 --address-prefix）** 。 数据包的目标子网的地址前缀。 对于我们的方案，为 *192.168.2.0/24*。
+   * **-t （或 --next-hop-type）** 。 要发送的对象流量的类型。 可能的值为 *VirtualAppliance*、*VirtualNetworkGateway*、*VNETLocal*、*Internet* 或 *None*。
    * **-p（或 --next-hop-ip-address**）。 下一个跃点的 IP 地址。 对于我们的方案，为 *192.168.0.4*。
 4. 运行以下命令将已创建的路由表与 **FrontEnd** 子网关联：
 
@@ -114,8 +114,8 @@ ms.locfileid: "38678572"
    
     参数：
    
-   * **-t（或 --vnet-name）**。 子网所在的 VNet 的名称。 对于我们的方案，为 *TestVNet*。
-   * **-n（或 --subnet-name）**。 将在其中添加路由表的子网的名称。 对于我们的方案，为 *FrontEnd*。
+   * **-t（或 --vnet-name）** 。 子网所在的 VNet 的名称。 对于我们的方案，为 *TestVNet*。
+   * **-n（或 --subnet-name）** 。 将在其中添加路由表的子网的名称。 对于我们的方案，为 *FrontEnd*。
 
 ## <a name="create-the-udr-for-the-back-end-subnet"></a>为后端子网创建 UDR
 若要根据方案为后端子网创建所需的路由表和路由，请完成以下步骤：

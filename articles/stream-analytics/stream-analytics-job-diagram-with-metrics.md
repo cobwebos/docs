@@ -9,20 +9,20 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 3d50f96f3dea3646bb32a3a42d0248957dabf9f0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 472d7fcbca1a221b69d681ce33d39978b53a3204
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526815"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620952"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>使用作业关系图进行数据驱动调试
 
-使用 Azure 门户中“监视”边栏选项卡里的作业关系图，可以可视化作业管道。 它显示了输入、输出和查询步骤。 可使用作业关系图检查每个步骤的指标，并且在解决问题时，更快速地隔离问题源。
+Azure 门户的“监视”  边栏选项卡中的作业关系图可帮助你将作业管道可视化。 它显示了输入、输出和查询步骤。 可使用作业关系图检查每个步骤的指标，并且在解决问题时，更快速地隔离问题源。
 
 ## <a name="using-the-job-diagram"></a>使用作业关系图
 
-在 Azure 门户的流分析作业中，在“支持和故障排除”下，选择“作业关系图”：
+在 Azure 门户的流分析作业中，在“支持和故障排除”  下，选择“作业关系图”  ：
 
 ![包含指标的作业关系图 - 位置](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
@@ -30,7 +30,7 @@ ms.locfileid: "31526815"
 
 ![包含指标的作业关系图 - 基本作业](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
 
-要查看 Azure 事件中心输入的分区，请选择“. . .” 上下文菜单随即打开。 还可查看输入合并。
+要查看 Azure 事件中心输入的分区，请选择“. . .”  上下文菜单随即打开。 还可查看输入合并。
 
 ![包含指标的作业关系图 - 展开分区](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
 
@@ -48,16 +48,16 @@ ms.locfileid: "31526815"
 
 ## <a name="troubleshoot-by-using-metrics"></a>使用指标进行故障排除
 
-QueryLastProcessedTime 指标指示特定步骤收到数据的时间。 通过查看拓扑，可以从输出处理器开始反向检查，判断哪个步骤未接收数据。 如果一个步骤未收到数据，请转到它之前的查询步骤。 检查前面的查询步骤是否具有时间范围，以及是否经过了充足的、用于输出数据的时间。 （注意：时间范围会对齐到小时。）
+QueryLastProcessedTime 指标指示特定步骤收到数据的时间  。 通过查看拓扑，可以从输出处理器开始反向检查，判断哪个步骤未接收数据。 如果一个步骤未收到数据，请转到它之前的查询步骤。 检查前面的查询步骤是否具有时间范围，以及是否经过了充足的、用于输出数据的时间。 （注意：时间范围会对齐到小时。）
  
-如果前一个查询步骤是输入处理器，请使用输入指标帮助解答下列针对性问题。 它们可以帮助判断作业是否正从其输入源获取数据。 如果查询已分区，请检查每个分区。
+如果前一个查询步骤是输入处理器，请使用输入指标帮助解答下列针对性问题。 它们可帮助你判断作业是否正从其输入源获取数据。 如果查询已分区，请检查每个分区。
  
 ### <a name="how-much-data-is-being-read"></a>正在读取的数据量有多少？
 
-*   InputEventsSourcesTotal 是已读取的数据单元的数目。 例如，blob 的数目。
-*   InputEventsTotal 是已读取的事件数目。 此指标按分区提供。
-*   InputEventsInBytesTotal 是已读取的字节数。
-*   在接收每个事件时，使用该事件的排队时间更新 InputEventsLastArrivalTime。
+*   InputEventsSourcesTotal 是已读取的数据单元的数目  。 例如，blob 的数目。
+*   InputEventsTotal 是已读取的事件数目  。 此指标按分区提供。
+*   InputEventsInBytesTotal 是已读取的字节数  。
+*   在接收每个事件时，使用该事件的排队时间更新 InputEventsLastArrivalTime  。
  
 ### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>时间是否在不断前进？ 如果已读取实际事件，可能不会发出停顿。
 
@@ -65,15 +65,15 @@ QueryLastProcessedTime 指标指示特定步骤收到数据的时间。 通过�
  
 ### <a name="are-there-any-errors-in-the-input"></a>输入中是否有任何错误？
 
-*   InputEventsEventDataNullTotal 是包含 null 数据的事件计数。
-*   InputEventsSerializerErrorsTotal 是无法正确反序列化的事件计数。
-*   InputEventsDegradedTotal 是出现了问题、但该问题不是反序列化问题的事件计数。
+*   InputEventsEventDataNullTotal 是包含 null 数据的事件计数  。
+*   InputEventsSerializerErrorsTotal 是无法正确反序列化的事件计数  。
+*   InputEventsDegradedTotal 是出现了问题、但该问题不是反序列化问题的事件计数  。
  
 ### <a name="are-events-being-dropped-or-adjusted"></a>事件是否被删除或调整？
 
-*   InputEventsEarlyTotal 是应用程序时间戳在高水位线之前的事件数目。
-*   InputEventsLateTotal是应用程序时间戳在高水位线之后的事件数目。
-*   InputEventsDroppedBeforeApplicationStartTimeTotal 是作业开始时间之前删除的事件数目。
+*   InputEventsEarlyTotal 是应用程序时间戳在高水位线之前的事件数目  。
+*   InputEventsLateTotal是应用程序时间戳在高水位线之后的事件数目  。
+*   InputEventsDroppedBeforeApplicationStartTimeTotal 是作业开始时间之前删除的事件数目  。
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>在读取数据上是否落后于人？
 
@@ -87,5 +87,5 @@ QueryLastProcessedTime 指标指示特定步骤收到数据的时间。 通过�
 * [流分析简介](stream-analytics-introduction.md)
 * [流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [扩展流分析作业](stream-analytics-scale-jobs.md)
-* [流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

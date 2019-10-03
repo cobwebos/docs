@@ -5,15 +5,15 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 4a1f9556413df7ad8954171d2b446419d3bc2975
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fdd267937db589156aa5eddc7608323b143266de
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092304"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508844"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 和站点到站点共存连接
 > [!div class="op_single_selector"]
@@ -216,11 +216,34 @@ ms.locfileid: "58092304"
    ```azurepowershell-interactive
    $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-4. 此时，已有不带网关的虚拟网络。 若要创建新网关并设置连接，请按照上一部分中的步骤操作。
+4. 此时，已有不带网关的虚拟网络。 若要创建新的网关，并将连接设置，请使用下面的示例：
+
+   设置变量。
+
+    ```azurepowershell-interactive
+   $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+   $gwIP = New-AzPublicIpAddress -Name "ERGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
+   $gwIP = New-AzPublicIpAddress -Name "ERGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
+   $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
+   $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
+   ```
+
+   创建网关。
+
+   ```azurepowershell-interactive
+   $gw = New-AzVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup> -Location <yourlocation) -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
+   ```
+
+   创建连接。
+
+   ```azurepowershell-interactive
+   $ckt = Get-AzExpressRouteCircuit -Name "YourCircuit" -ResourceGroupName "YourCircuitResourceGroup"
+   New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -VirtualNetworkGateway1 $gw -PeerId $ckt.Id -ConnectionType ExpressRoute
+   ```
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>将点到站点配置添加到 VPN 网关
 
-可以按照下面的步骤将点到站点配置添加到共存设置中的 VPN 网关。 若要上载 VPN 根证书，必须在计算机上本地安装 PowerShell 或使用 Azure 门户。
+可以按照下面的步骤将点到站点配置添加到共存设置中的 VPN 网关。 若要上传 VPN 根证书，必须以本地方式将 PowerShell 安装到计算机，或者使用 Azure 门户。
 
 1. 添加 VPN 客户端地址池。
 
@@ -228,7 +251,7 @@ ms.locfileid: "58092304"
    $azureVpn = Get-AzVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
    Set-AzVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
    ```
-2. 为 VPN 网关将 VPN 根证书上传到 Azure。 在此示例中，假定根证书存储中，运行以下 PowerShell cmdlet 在本地计算机和本地运行 PowerShell。 你还可以上载使用 Azure 门户的证书。
+2. 为 VPN 网关将 VPN 根证书上传到 Azure。 在此示例中，假定根证书存储在运行以下 PowerShell cmdlet 的本地计算机中，并且你在本地运行 PowerShell。 也可使用 Azure 门户来上传证书。
 
    ```powershell
    $p2sCertFullName = "RootErVpnCoexP2S.cer" 

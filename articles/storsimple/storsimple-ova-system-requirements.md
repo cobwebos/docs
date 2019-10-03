@@ -12,17 +12,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/11/2019
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 65d2a21a9f40470cee1dd9d713f9f9cb5431a245
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876830"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516686"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 ## <a name="overview"></a>概述
+
 本文介绍了 Microsoft Azure StorSimple 虚拟阵列和访问阵列的存储客户端的重要系统要求。 建议在部署 StorSimple 系统之前仔细查看信息，并且在进行部署和后续操作过程中按需重新参阅。
 
 系统要求包括：
@@ -94,13 +98,13 @@ ms.locfileid: "58876830"
 
 | **端口号<sup>1</sup>** | **入或出** | **端口范围** | **必需** | **说明** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |出 |WAN |否 |出站端口用于 Internet 访问以检索更新。 <br></br>出站 Web 代理可由用户配置。 |
-| TCP 443 (HTTPS) |出 |WAN |是 |出站端口用于访问云中的数据。 <br></br>用户可配置出站 Web 代理。 |
-| UDP 53 (DNS) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 DNS 服务器时，才需要此端口。 <br></br> 注意，如果部署文件服务器，建议使用本地 DNS 服务器。 |
-| UDP 123 (NTP) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 NTP 服务器时，才需要此端口。<br></br> 注意，如果部署文件服务器，建议与 Active Directory 域控制器同步时间。 |
-| TCP 80 (HTTP) |In |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 <br></br> 注意，通过 HTTP 访问本地 UI 会自动重定向到 HTTPS。 |
-| TCP 443 (HTTPS) |In |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 |
-| TCP 3260 (iSCSI) |In |LAN |否 |此端口用于通过 iSCSI 访问数据。 |
+| TCP 80 (HTTP) |输出 |WAN |否 |出站端口用于 Internet 访问以检索更新。 <br></br>出站 Web 代理可由用户配置。 |
+| TCP 443 (HTTPS) |输出 |WAN(广域网) |是 |出站端口用于访问云中的数据。 <br></br>用户可配置出站 Web 代理。 |
+| UDP 53 (DNS) |出 |WAN(广域网) |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 DNS 服务器时，才需要此端口。 <br></br> 注意，如果部署文件服务器，建议使用本地 DNS 服务器。 |
+| UDP 123 (NTP) |输出 |WAN(广域网) |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 NTP 服务器时，才需要此端口。<br></br> 注意，如果部署文件服务器，建议与 Active Directory 域控制器同步时间。 |
+| TCP 80 (HTTP) |流入 |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 <br></br> 注意，通过 HTTP 访问本地 UI 会自动重定向到 HTTPS。 |
+| TCP 443 (HTTPS) |流入 |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 |
+| TCP 3260 (iSCSI) |流入 |LAN |否 |此端口用于通过 iSCSI 访问数据。 |
 
 <sup>1</sup> 无需在公共 Internet 上打开任何入站端口。
 

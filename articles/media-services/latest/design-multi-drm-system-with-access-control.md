@@ -14,16 +14,14 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: ef695d913c73f0a4266b20f21f1008108b85b4d0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ffbf53c0bb0aaf2832afecc2d0df935f04eeff19
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57893010"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310328"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
-
-## <a name="overview"></a>概述
 
 针对 over-the-top (OTT) 或在线流解决方案设计和构建数字版权管理 (DRM) 子系统是相当复杂的任务。 运营商/在线视频提供商通常会将此任务外包给专门的 DRM 服务提供商。 本文档旨在陈述 OTT 或在线流解决方案中端到端 DRM 子系统的参考设计和参考实现。
 
@@ -36,7 +34,6 @@ ms.locfileid: "57893010"
 * 降低加密成本，因为对于不同平台使用其原生 DRM 进行单一加密处理。
 * 降低管理资产的成本，因为只需要一份资产。
 * 消除 DRM 客户端许可成本，因为原生 DRM 客户端在其原生平台上通常是免费提供的。
-
 
 ### <a name="goals-of-the-article"></a>本文的目标
 
@@ -179,7 +176,7 @@ DRM 子系统可能包含以下组件：
 ### <a name="implementation-procedures"></a>实现过程
 实现包括下列步骤：
 
-1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。 DRM 保护稍后由动态保护完成。
+1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。  DRM 保护稍后由动态保护完成。
 
 2. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。 在此情况下，不需要密钥管理系统，因为只需要对一些测试资产使用单个密钥 ID 和内容密钥。
 
@@ -220,6 +217,7 @@ DRM 子系统可能包含以下组件：
 * 可以在[管理 Azure AD 租户目录](../../active-directory/fundamentals/active-directory-administer.md)中找到面向管理员的信息。
 
 ### <a name="some-issues-in-implementation"></a>实现中的一些问题
+
 请使用以下故障排除信息来帮助解决实现问题。
 
 * 颁发者 URL 必须以“/”结尾。 受众必须是播放器应用程序客户端 ID。 此外，必须在颁发者 URL 的末尾添加“/”。
@@ -231,7 +229,7 @@ DRM 子系统可能包含以下组件：
 
     ![JWT](./media/design-multi-drm-system-with-access-control/media-services-1st-gotcha.png)
 
-* 在应用程序的“配置”选项卡上，将权限添加到 Azure AD 中的应用程序。 对于本地版本和已部署的版本，需要提供每个应用程序的权限。
+* 在应用程序的“配置”选项卡上，将权限添加到 Azure AD 中的应用程序。  对于本地版本和已部署的版本，需要提供每个应用程序的权限。
 
     ![权限](./media/design-multi-drm-system-with-access-control/media-services-perms-to-other-apps.png)
 
@@ -243,7 +241,7 @@ DRM 子系统可能包含以下组件：
 
         <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
 
-    GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。
+    GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。 
 
 * 授予组成员资格声明权限。 确保 Azure AD 应用程序清单文件中包含以下内容： 
 
@@ -255,120 +253,8 @@ DRM 子系统可能包含以下组件：
 
     由于除了 JWT (ACS) 以外，还添加了对 SWT (Azure AD) 的支持，因此默认 TokenType 是 TokenType.JWT。 如果使用 SWT/ACS，则必须将令牌设置为 TokenType.SWT。
 
-## <a name="faqs"></a>常见问题解答
-
-本部分讨论设计和实现中的一些其他主题。
-
-### <a name="http-or-https"></a>使用 HTTP 还是 HTTPS？
-构建的 ASP.NET MVC 播放器应用程序必须支持以下功能：
-
-* 通过 Azure AD 进行用户身份验证（使用 HTTPS）。
-* 客户端与 Azure AD 之间的 JWT 交换（使用 HTTPS）。
-* 客户端的 DRM 许可证获取，如果许可证传送由媒体服务提供（必须使用 HTTPS）。 PlayReady 产品套件不会针对许可证传送强制要求使用 HTTPS。 如果 PlayReady 许可证服务器位于媒体服务以外的地方，则可以使用 HTTP 或 HTTPS。
-
-最佳做法是让 ASP.NET 播放器应用程序使用 HTTPS，使媒体播放器位于使用 HTTPS 的页面上。 不过，最好是使用 HTTP 进行流式传输，因此需要考虑混合内容问题。
-
-* 浏览器不允许混合内容。 但是 Silverlight 等插件和适用于平滑流与 DASH 的 OSMF 插件允许混合内容。 混合内容存在安全隐患 - 因为能够插入恶意 JavaScript 威胁，从而使客户数据处于风险之中。 默认情况下，浏览器会阻止此类内容。 唯一的解决方法是在服务器（来源）端允许所有域（不管是 HTTPS 还是 HTTP）。 这可能也不是个好主意。
-* 避免混合内容。 播放器应用程序和媒体播放器应使用 HTTP 或 HTTPS。 播放混合内容时，silverlightSS 技术需要清除混合内容警告。 flashSS 技术在没有混合内容警告的情况下处理混合内容。
-* 如果流式处理终结点是在 2014 年 8 月之前创建的，则它不支持 HTTPS。 在此情况下，请针对 HTTPS 创建并使用新的流式处理终结点。
-
-在参考实现中，对于 DRM 保护内容，应用程序和流都使用 HTTPS。 对于打开的内容，播放器不需要身份验证或许可证，因此可以使用 HTTP 或 HTTPS。
-
-### <a name="what-is-azure-active-directory-signing-key-rollover"></a>什么是 Azure Active Directory 签名密钥滚动更新？
-密钥滚动更新是需要在实现中考虑的要点。 如果忽略它，已完成的系统最终会在最多六周之后完全停止运行。
-
-Azure AD 使用行业标准，通过 Azure AD 在本身与应用程序之间建立信任。 具体而言，Azure AD 使用签名密钥，该密钥由公钥和私钥对组成。 当 Azure AD 创建包含用户相关信息的安全令牌时，Azure AD 将使用私钥对此令牌进行签名，然后将令牌发回给应用程序。 若要验证该令牌是否有效且来自 Azure AD，应用程序验证令牌的签名。 应用程序可以使用由 Azure AD 公开且包含在租户联合元数据文档中的公钥。 此公钥以及衍生它的签名密钥是由 Azure AD 中所有租户使用的同一个密钥。
-
-有关 Azure AD 密钥滚动更新的详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](../../active-directory/active-directory-signing-key-rollover.md)。
-
-在[公钥-私钥对](https://login.microsoftonline.com/common/discovery/keys/)之间：
-
-* Azure AD 使用私钥生成 JWT。
-* 应用程序（例如媒体服务中的 DRM 许可证传送服务）使用公钥验证 JWT。
-
-出于安全目的，Azure AD 将定期轮换证书（每隔六周）。 在发生安全违规时，密钥滚动更新可随时发生。 因此，媒体服务中的许可证传送服务需要在 Azure AD 轮换密钥对时更新公钥。 否则媒体服务中的令牌身份验证会失败，并且不颁发任何许可证。
-
-若要设置此服务，可以在配置 DRM 许可证传送服务时设置 TokenRestrictionTemplate.OpenIdConnectDiscoveryDocument。
-
-下面是 JWT 流：
-
-* Azure AD 使用当前私钥为已经过身份验证的用户颁发 JWT。
-* 当播放器看到使用多重 DRM 的 CENC 保护的内容时，会先找到 Azure AD 颁发的 JWT。
-* 播放器将包含 JWT 的许可证获取请求发送到媒体服务中的许可证传送服务。
-* 媒体服务中的许可证传送服务使用来自 Azure AD 的当前/有效公钥来验证 JWT，并颁发许可证。
-
-DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥。 Azure AD 提供的公钥是用于验证 Azure AD 所颁发 JWT 的密钥。
-
-如果 Azure AD 生成 JWT 之后、播放器将 JWT 发送到媒体服务中的 DRM 许可证传送服务以进行验证之前发生密钥滚动更新，会怎么样？
-
-由于密钥可能在任何时间滚动更新，联合元数据文档中始终有多个有效公钥可用。 媒体服务许可证传送可以使用文档中指定的任何密钥。 因为一个密钥可能很快就被轮换为另一个密钥。
-
-### <a name="where-is-the-access-token"></a>访问令牌位于何处？
-如果在[带有 OAuth 2.0 客户端凭据授予的应用程序标识](../../active-directory/develop/web-api.md)下，Web 应用调用 API 应用，身份验证流如下：
-
-* 用户在 Web 应用程序中登录到 Azure AD。 有关详细信息，请参阅 [Web 浏览器到 Web 应用程序](../../active-directory/develop/web-app.md)。
-* Azure AD 许可证终结点使用授权代码将用户代理重定向回到客户端应用程序。 用户代理将授权代码返回给客户端应用程序的重定向 URI。
-* Web 应用程序需要获取访问令牌，以便通过 Web API 进行身份验证并检索所需的资源。 它向 Azure AD 的令牌终结点发出一个请求，在其中提供凭据、客户端 ID 以及 Web API 的应用程序 ID URI。 它将提供授权代码来证明已获得用户许可。
-* Azure AD 对应用程序进行身份验证并返回用来调用 Web API 的 JWT 访问令牌。
-* 通过 HTTPS，Web 应用程序使用返回的 JWT 访问令牌在发往 Web API 的请求的“Authorization”标头中添加一个具有“Bearer”限定符的 JWT 字符串。 然后，Web API 对 JWT 进行验证。 如果验证成功，则返回所需的资源。
-
-在此应用程序标识流中，Web API 相信 Web 应用程序已对用户进行了身份验证。 因此，此模式称为受信任的子系统。 [授权流示意图](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code)描绘了授权代码授予流的工作原理。
-
-在具有令牌限制的许可证获取中，遵循相同的受信任子系统模式。 媒体服务中的许可证传送服务是 Web API 资源，即 Web 应用程序需要访问的“后端资源”。 那么，访问令牌位于何处？
-
-访问令牌是是从 Azure AD 获取的。 成功完成用户身份验证后，将返回授权代码。 然后使用授权代码连同客户端 ID 和应用密钥来交换访问令牌。 访问令牌用于访问指向或代表媒体服务许可证传送服务的“指针”应用程序。
-
-若要在 Azure AD 中注册并配置指针应用，请执行以下步骤：
-
-1. 在 Azure AD 租户中：
-
-   * 添加应用程序（资源）与登录 URL https://[资源名称].azurewebsites.net/。 
-   * 添加应用 ID 与 URL https://[AAD 租户名称].onmicrosoft.com/[资源名称]。
-
-2. 为资源应用添加新的密钥。
-
-3. 更新应用程序清单文件，使 groupMembershipClaims 属性具有值 "groupMembershipClaims":"All"。
-
-4. 在指向播放器 Web 应用的 Azure AD 应用中，在“对其他应用程序的权限”部分添加步骤 1 中添加的资源应用。 在“委派权限”下面选择“访问 [资源名称]”。 此选项可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果使用 Visual Studio 和 Azure Web 应用进行开发，请对本地版本和已部署版本的 Web 应用执行此操作。
-
-Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
-
-### <a name="what-about-live-streaming"></a>如何使用实时流？
-前面的讨论内容将重点放在按需资产上。 如何使用实时流？
-
-可以使用完全相同的设计和实现来保护媒体服务中的实时传送视频流，方法是将与节目关联的资产视为 VOD 资产。
-
-具体而言，要在媒体服务中执行实时传送视频流，需要创建频道，并在频道下面创建节目。 若要创建节目，需要创建资产并在其中包含节目的实时存档。 要使用带有多重 DRM 的 CENC 来保护实时内容，可在启动节目之前将相同设置/处理应用到资产，就如同它是 VOD 资产一样。
-
-### <a name="what-about-license-servers-outside-media-services"></a>如何使用媒体服务外部的许可证服务器？
-
-通常，客户可能已在他们自己的数据中心或由 DRM 服务提供商托管的位置投资了许可证服务器场。 使用媒体服务内容保护，可以在混合模式下操作。 可以在媒体服务中托管和动态保护内容，而 DRM 许可证由 Azure 媒体服务外部的服务器传送。 在此情况下，请注意以下变更：
-
-* STS 需要颁发被许可证服务器场认可和验证的令牌。 例如，Axinom 提供的 Widevine 许可证服务器需要特定的 JWT，其中包含权利消息。 因此，需要通过一个 STS 颁发此类 JWT。 
-* 不再需要在媒体服务中配置许可证传送服务。 需要在配置 ContentKeyPolicies 时，提供许可证获取 URL（针对 PlayReady、Widevine 和 FairPlay）。
-
-### <a name="what-if-i-want-to-use-a-custom-sts"></a>如何使用自定义 STS？
-客户可能想要使用自定义 STS 来提供 JWT。 原因包括：
-
-* 客户使用的 IDP 不支持 STS。 在此情况下，可以选择自定义 STS。
-* 客户在集成 STS 与客户的订户计费系统时可能需要更多弹性或更紧密的控制。 例如，MVPD 运营商可能提供多个 OTT 订户套餐，如高级、基本和运动。 运营商可能想要让令牌中的声明与订户套餐匹配，这样，只有特定套餐中的内容可供使用。 在此情况下，自定义 STS 可提供所需的弹性和控制度。
-
-使用自定义 STS 时，必须进行两项更改：
-
-* 为资产配置许可证传送服务时，需要指定自定义 STS 用于验证的安全密钥，而不是来自 Azure AD 的当前密钥。 （下面提供了详细信息。） 
-* 生成 JTW 令牌时，需要指定安全密钥，而不是 Azure AD 中当前 X509 证书的私钥。
-
-有两种类型的安全密钥：
-
-* 对称密钥：使用同一密钥来生成和验证 JWT。
-* 非对称密钥：使用 X509 证书中的私钥-公钥对，私钥用于加密/生成 JWT，公钥用于验证令牌。
-
-> [!NOTE]
-> 如果使用 .NET Framework/C# 作为开发平台，用于非对称安全密钥的 X509 证书的密钥长度必须至少为 2048。 这是 .NET Framework 中 System.IdentityModel.Tokens.X509AsymmetricSecurityKey 类的要求。 否则，将引发以下异常：
-> 
-> IDX10630:用于签名的 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' 不能小于 '2048' 位。
-
 ## <a name="the-completed-system-and-test"></a>完成的系统和测试
+
 本部分逐步讲解如何在完成的端到端系统中完成以下方案，让读者在获取登录帐户之前对该行为有个基本印象。
 
 * 如需非集成式方案：
@@ -413,6 +299,7 @@ Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 ![自定义 Azure AD 租户域帐户 3](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 
 ### <a name="use-encrypted-media-extensions-for-playready"></a>使用 PlayReady 的加密媒体扩展
+
 在支持 PlayReady 加密媒体扩展 (EME) 的新式浏览器（例如 Windows 8.1 和更高版本上的 Internet Explorer 11，以及 Windows 10 上的 Microsoft Edge 浏览器）上，PlayReady 是 EME 的基本 DRM。
 
 ![使用 EME for PlayReady](./media/design-multi-drm-system-with-access-control/media-services-eme-for-playready1.png)
@@ -428,6 +315,7 @@ Windows 10 上的 Microsoft Edge 和 Internet Explorer 11 中的 EME 允许在�
 将重心放在 Windows 设备上：PlayReady 是 Windows 设备可用的硬件中唯一的 DRM（PlayReady SL3000）。 流式处理服务可通过 EME 或通用 Windows 平台应用程序来使用 PlayReady，并利用 PlayReady SL3000 来提供比其他 DRM 所能提供更高的视频质量。 一般而言，2K 及更低分辨内容会流经 Chrome 或 Firefox，而 4K 及更低分辨内容流过 Microsoft Edge/Internet Explorer 11 或相同设备上的通用 Windows 平台应用程序。 流量取决于服务设置和实现。
 
 #### <a name="use-eme-for-widevine"></a>使用 EME for Widevine
+
 在支持 EME/Widevine 的现代浏览器上，例如 Windows 10、Windows 8.1、Mac OSX Yosemite 上的 Chrome 41+，以及 Android 4.4.4 上的 Chrome，Google Widevine 是 EME 背后的 DRM。
 
 ![使用 EME for Widevine](./media/design-multi-drm-system-with-access-control/media-services-eme-for-widevine1.png)
@@ -437,16 +325,19 @@ Widevine 不会阻止对受保护的视频进行屏幕截图。
 ![Widevine 的播放器插件](./media/design-multi-drm-system-with-access-control/media-services-eme-for-widevine2.png)
 
 #### <a name="use-eme-for-fairplay"></a>使用适用于 FairPlay 的 EME
+
 同样，可以在 macOS 或 iOS 11.2 和更高版本 Safari 中，使用此测试播放机测试受 FairPlay 保护的内容。
 
 请确保使用“FairPlay”作为 protectionInfo.type，并在 FPS AC 路径（FairPlay 流式处理应用程序证书路径）中包含应用程序证书的正确 URL。
 
 ### <a name="unentitled-users"></a>未获授权的用户
+
 如果用户不是“已获授权用户”组的成员，则通不过权利检查。 多重 DRM 许可证服务将拒绝颁发请求的许可证，如下所述。 详细的说明是“许可证获取失败”，这是设计使然。
 
 ![未获授权的用户](./media/design-multi-drm-system-with-access-control/media-services-unentitledusers.png)
 
 ### <a name="run-a-custom-security-token-service"></a>运行自定义安全令牌服务
+
 如果运行自定义 STS，JWT 由自定义 STS 使用对称或非对称密钥来颁发。
 
 以下屏幕截图显示了使用对称密钥的方案（使用 Chrome）：
@@ -459,13 +350,8 @@ Widevine 不会阻止对受保护的视频进行屏幕截图。
 
 在上述两个方案中，用户身份验证相同。 身份验证是通过 Azure AD 发生的。 唯一的差别在于，JWT 由自定义 STS 而不是 Azure AD 颁发。 配置动态 CENC 保护时，许可证传送服务的限制将指定 JWT 的类型是对称还是非对称密钥。
 
-## <a name="summary"></a>摘要
-本文档讨论了使用 3 个 DRM 的内容保护以及通过令牌身份验证进行访问控制：它的设计和实现使用了 Azure、Azure 媒体服务和 Azure Media Player。
-
-* 文中提供了一个参考设计，其中包含 DRM 子系统中的所有必要组件。
-* 提供了 Azure、Azure 媒体服务和 Azure Media Player 的参考实现。
-* 同时还讨论了直接涉及到设计和实现的某些主题。
-
 ## <a name="next-steps"></a>后续步骤
 
-[使用 DRM 保护内容](protect-with-drm.md)
+* [常见问题](frequently-asked-questions.md)
+* [内容保护概述](content-protection-overview.md)
+* [使用 DRM 保护内容](protect-with-drm.md)

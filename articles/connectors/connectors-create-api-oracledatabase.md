@@ -12,11 +12,11 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551749"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60453528"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle 数据库连接器入门
 
@@ -49,24 +49,24 @@ ms.locfileid: "57551749"
 ## <a name="add-the-connector"></a>添加连接器
 
 > [!IMPORTANT]
-> 此连接器没有任何触发器。 它只有操作。 因此，请在创建逻辑应用时，添加另一个用于启动逻辑应用的触发器，例如“计划 - 重复周期”或“请求/响应 - 响应”。 
+> 此连接器没有任何触发器。 它只有操作。 因此，请在创建逻辑应用时，添加另一个用于启动逻辑应用的触发器，例如“计划 - 重复周期”或“请求/响应 - 响应”。   
 
 1. 在 [Azure 门户](https://portal.azure.com)中，创建一个空白逻辑应用。
 
-2. 在启动逻辑应用时，请选择“请求/响应 - 请求”触发器： 
+2. 在启动逻辑应用时，请选择“请求/响应 - 请求”触发器：  
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. 选择“保存”。 保存时，会自动生成请求 URL。 
+3. 选择“保存”。  保存时，会自动生成请求 URL。 
 
-4. 选择“新步骤”，并选择“添加操作”。 若要查看可用操作，请键入 `oracle`： 
+4. 选择“新步骤”  ，并选择“添加操作”  。 若要查看可用操作，请键入 `oracle`： 
 
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > 这也是查看适用于任何连接器的触发器和操作的最快方式。 键入连接器的部分名称，例如 `oracle`。 设计器会列出任何触发器和任何操作。 
 
-5. 选择其中一个操作，例如“Oracle 数据库 - 获取行”。 选择“通过本地数据网关连接”。 输入 Oracle 服务器名称、身份验证方法、用户名、密码，并选择网关：
+5. 选择其中一个操作，例如“Oracle 数据库 - 获取行”。  选择“通过本地数据网关连接”。  输入 Oracle 服务器名称、身份验证方法、用户名、密码，并选择网关：
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "57551749"
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. **保存**逻辑应用，并选择“运行”。 关闭设计器，并在运行历史记录中查看状态。 如果该操作失败，请选择失败的消息行。 设计器会打开，并且会显示具体的失败步骤，以及错误信息。 如果该操作成功，应该会收到一封电子邮件，其中包含你添加的信息。
+8. **保存**逻辑应用，并选择“运行”。  关闭设计器，并在运行历史记录中查看状态。 如果该操作失败，请选择失败的消息行。 设计器会打开，并且会显示具体的失败步骤，以及错误信息。 如果该操作成功，应该会收到一封电子邮件，其中包含你添加的信息。
 
 
 ### <a name="workflow-ideas"></a>工作流创意

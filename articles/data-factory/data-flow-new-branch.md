@@ -8,11 +8,11 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.openlocfilehash: 9fac78f21f2f128ccb040e176891c33d39bf2820
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732783"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61348842"
 ---
 # <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Azure 数据工厂映射数据流“新建分支”转换
 

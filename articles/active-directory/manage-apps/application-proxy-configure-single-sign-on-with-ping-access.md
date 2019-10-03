@@ -3,185 +3,245 @@ title: 使用 PingAccess for Azure AD 应用程序代理进行基于标头的身
 description: 使用 PingAccess 和应用代理发布应用程序，以支持基于标头的身份验证。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/11/2017
+ms.date: 05/08/2019
 ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eef15098eed8959655ae2904bf41a8c3dffc9f4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0544ed0ff217b6e37cca22a1fc1e0048b30da462
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882779"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694220"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
-将 Azure Active Directory 应用程序代理与 PingAccess 配合使用可让 Azure Active Directory 客户访问更多的应用程序。 PingAccess 扩充了[现有的应用程序代理产品/服务](application-proxy.md)，即，增加了对使用标头进行身份验证的应用程序的单一登录访问功能。
+Azure Active Directory (Azure AD) 应用程序代理与 PingAccess 合作, 以便您的 Azure AD 客户可以访问更多的应用程序。 PingAccess 扩充了[现有的应用程序代理产品/服务](application-proxy.md)，即，增加了对使用标头进行身份验证的应用程序的单一登录访问功能。
 
-## <a name="what-is-pingaccess-for-azure-ad"></a>什么是 PingAccess for Azure AD？
+## <a name="whats-pingaccess-for-azure-ad"></a>Azure AD 有哪些 PingAccess？
 
-PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能够允许用户访问和单一登录使用标头进行身份验证的应用程序。 应用程序代理将这些应用视为与其他任何应用一样，它使用 Azure AD 对访问进行身份验证，然后通过连接器服务传递流量。 PingAccess 驻留在应用的前面，可将 Azure AD 提供的访问令牌转换为标头，使应用程序能够接收采用可读格式的身份验证令牌。
+使用 PingAccess Azure AD, 你可以向用户提供对使用标头进行身份验证的应用程序和单一登录 (SSO) 的访问权限。 应用程序代理将这些应用程序视为与其他任何应用程序一样，它使用 Azure AD 对访问进行身份验证，然后通过连接器服务传递流量。 PingAccess 位于应用程序的前面, 会将访问令牌从 Azure AD 转换为标头。 然后, 应用程序将以它可以读取的格式接收身份验证。
 
-用户登录后使用企业应用时，感觉不到任何差异。 他们仍可在任何位置的任何设备上工作。 
-
-由于应用程序代理连接器会将远程流量定向到所有应用（不管其身份验证类型为何），因此也会继续自动进行负载均衡。
+用户登录后使用企业应用程序时，感觉不到任何差异。 他们仍可在任何位置的任何设备上工作。 应用程序代理连接器会将远程流量定向到所有应用, 而不考虑其身份验证类型, 因此它们仍会自动平衡负载。
 
 ## <a name="how-do-i-get-access"></a>如何获取访问权限？
 
-由于本方案是通过 Azure Active Directory 与 PingAccess 之间的合作提供的，因此需要获取这两个服务的许可证。 但是，Azure Active Directory Premium 订阅包含一个 PingAccess 基本许可证，可涵盖多达 20 个应用程序。 如果需要发布 20 个以上基于标头的应用程序，可以再从 PingAccess 购买一个许可证。 
+由于此方案来自 Azure Active Directory 与 PingAccess 之间的合作关系, 因此你需要两个服务的许可证。 但是，Azure Active Directory Premium 订阅包含一个 PingAccess 基本许可证，可涵盖多达 20 个应用程序。 如果需要发布 20 个以上基于标头的应用程序，可以再从 PingAccess 购买一个许可证。
 
 有关详细信息，请参阅 [Azure Active Directory 版本](../fundamentals/active-directory-whatis.md)。
 
 ## <a name="publish-your-application-in-azure"></a>在 Azure 中发布应用程序
 
-本文面向首次使用此方案发布应用的人员。 其中逐步讲解了应用程序和 PingAccess 的入门方法以及发布步骤。 如果已配置这两个服务，但只是想要重温发布步骤，则可以跳过连接器安装，转到[使用应用程序代理将应用添加到 Azure AD](#add-your-app-to-azure-ad-with-application-proxy)。
+本文适用于首次使用此方案发布应用程序。 除了详细介绍发布步骤以外, 还指导您开始应用程序代理和 PingAccess。 如果已配置这两个服务, 但需要对发布步骤进行复习, 请跳到 "[将应用程序添加到与应用程序代理 Azure AD](#add-your-application-to-azure-ad-with-application-proxy) " 部分。
 
->[!NOTE]
->由于本方案是 Azure AD 与 PingAccess 之间的合作成果，某些说明已在 Ping Identity 站点上提供。
+> [!NOTE]
+> 由于本方案是 Azure AD 与 PingAccess 之间的合作成果，某些说明已在 Ping Identity 站点上提供。
 
 ### <a name="install-an-application-proxy-connector"></a>安装应用程序代理连接器
 
-如果已经启用应用程序代理，并且安装了连接器，则可以跳过此部分，转到[使用应用程序代理将应用添加到 Azure AD](#add-your-app-to-azure-ad-with-application-proxy)。
+如果已启用应用程序代理并已安装连接器, 则可以跳过此部分, 转到[使用应用程序代理将应用程序添加到 Azure AD](#add-your-application-to-azure-ad-with-application-proxy)。
 
-应用程序代理连接器是一个 Windows Server 服务，可将远程员工的流量定向到已发布的应用。 有关详细的安装说明，请参阅[在 Azure 门户中启用应用程序代理](application-proxy-add-on-premises-application.md)。
+应用程序代理连接器是一个 Windows Server 服务, 可将远程员工的流量定向到已发布的应用程序。 有关更多详细的安装说明[, 请参阅教程:在 Azure Active Directory](application-proxy-add-on-premises-application.md)中通过应用程序代理添加用于远程访问的本地应用程序。
 
-1. 登录到[Azure 门户](https://portal.azure.com)作为应用程序管理员。
-2. 选择“Azure Active Directory” > “应用程序代理”。
-3. 选择“下载连接器”，开始下载应用程序代理连接器。 遵照安装说明操作。
+1. 以应用程序管理员身份登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)。 此时会显示“Azure Active Directory 管理中心”页。
+1. 选择**Azure Active Directory** > **应用程序代理** > **下载连接器服务**"。 此时将显示 "**应用程序代理连接器下载**" 页。
 
-   ![启用应用程序代理并下载连接器](./media/application-proxy-configure-single-sign-on-with-ping-access/install-connector.png)
+   ![应用程序代理连接器下载](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
 
-4. 下载连接器时应会自动为目录启用应用程序代理，但如果没有，选择“启用应用程序代理”。
+1. 遵照安装说明操作。
 
+下载连接器应该会自动为你的目录启用应用程序代理, 但如果没有, 你可以选择 "**启用应用程序代理**"。
 
-### <a name="add-your-app-to-azure-ad-with-application-proxy"></a>使用应用程序代理将应用添加到 Azure AD
+### <a name="add-your-application-to-azure-ad-with-application-proxy"></a>将应用程序添加到与应用程序代理 Azure AD
 
-需要在 Azure 门户中执行两项操作。 首先，需要使用应用程序代理发布应用程序。 然后，需要收集一些有关应用的信息，以便在执行 PingAccess 步骤期间使用。
+需要在 Azure 门户中执行两项操作。 首先，需要使用应用程序代理发布应用程序。 然后, 需要收集有关可在 PingAccess 步骤中使用的应用程序的一些信息。
 
-按以下步骤发布应用。 有关步骤 1-8 更详细的演练，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)。
+#### <a name="publish-your-application"></a>发布应用程序
 
-1. 如果未在上一部分中，登录到[Azure 门户](https://portal.azure.com)作为应用程序管理员。
-2. 选择“Azure Active Directory” > “企业应用程序”。
-3. 单击边栏选项卡顶部的“添加”。
-4. 选择“本地应用程序”。
-5. 在必填的字段中填写有关新应用的信息。 参考以下指导完成设置：
-   - **内部 URL**：通常提供在企业网络中时可你将转到应用登录页的 URL。 对于此方案，连接器需要将 PingAccess 代理视为应用的首页。 使用此格式：`https://<host name of your PA server>:<port>`。 默认情况下端口为 3000，但可以在 PingAccess 中对其进行配置。
+首先需要发布应用程序。 此操作涉及:
 
-     > [!WARNING]
-     > 对于此类型的 SSO，内部 URL 必须使用 https，不能使用 http。
+- 将本地应用程序添加到 Azure AD
+- 分配用于测试应用程序和选择基于标头的 SSO 的用户
+- 设置应用程序的重定向 URL
+- 为用户和其他应用程序授予使用本地应用程序的权限
 
-   - **预身份验证方法**：Azure Active Directory
-   - **转换标头中的 URL**：否
+发布你自己的本地应用程序:
 
-   >[!NOTE]
-   >如果这是第一个应用程序，则从使用端口 3000 开始，如果更改了 PingAccess 配置，则返回以更新此设置。 如果这是你的第二个或后续应用，需要将其与在 PingAccess 中配置的侦听器相匹配。 详细了解 [PingAccess 中的侦听器](https://documentation.pingidentity.com/pingaccess/pa31/index.shtml#Listeners.html)。
+1. 如果你没有在上一节中, 请以应用程序管理员身份登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)。
+1. 选择 "**企业应用程序** > " "**新建应用** > 程序**本地应用程序"** 。 此时将显示 "**添加自己的本地应用程序**" 页。
 
-6. 选择边栏选项卡底部的“添加”。 添加应用程序后，将打开快速启动菜单。
-7. 在快速启动菜单中选择“分配用于测试的用户”，并将至少一个用户添加到应用程序。 确保此测试帐户有权访问本地应用程序。
-8. 选择“分配”，保存测试用户分配。
-9. 在应用管理边栏选项卡中选择“单一登录”。
-10. 从下拉菜单中选择“基于标头的登录”。 选择“保存”。
+   ![添加自己的本地应用程序](./media/application-proxy-configure-single-sign-on-with-ping-access/add-your-own-on-premises-application.png)
+1. 用有关新应用程序的信息填写必填字段。 对于设置, 请使用以下指南。
 
-    >[!TIP]
-    >如果这是第一次使用基于标头的单一登录，则需安装 PingAccess。 为了确保 Azure 订阅与 PingAccess 安装自动关联，请使用此单一登录页上的链接下载 PingAccess。 可以现在就打开下载站点，也可以稍后返回到此页面。 
+   > [!NOTE]
+   > 有关此步骤的更详细演练, 请参阅[将本地应用添加到 Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)。
 
-    ![选择基于标头的登录](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.PNG)
+   1. **内部 URL**：通常, 当你在公司网络中时, 你会提供 URL, 用于将你带到应用程序的登录页。 对于此方案, 连接器需要将 PingAccess 代理视为应用程序的首页。 使用此格式：`https://<host name of your PingAccess server>:<port>`。 默认情况下端口为 3000，但可以在 PingAccess 中对其进行配置。
 
-11. 关闭“企业应用程序”边栏选项卡或一直向左滚动，返回“Azure Active Directory”菜单。
-12. 选择“应用注册”。
+      > [!WARNING]
+      > 对于这种类型的单一登录, 内部 URL 必须使用`https`且不能使用。 `http`
 
-    ![选择“应用注册”](./media/application-proxy-configure-single-sign-on-with-ping-access/app-registrations.png)
+   1. **预身份验证方法**：选择**Azure Active Directory**。
+   1. **转换标头中的 URL**：选择 "**否**"。
 
-13. 选择刚添加的应用，并选择“回复 URL”。
+   > [!NOTE]
+   > 如果这是第一个应用程序，则从使用端口 3000 开始，如果更改了 PingAccess 配置，则返回以更新此设置。 对于后续应用程序, 端口将需要与你在 PingAccess 中配置的侦听器匹配。 详细了解 [PingAccess 中的侦听器](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html)。
 
-    ![选择“回复 URL”](./media/application-proxy-configure-single-sign-on-with-ping-access/reply-urls.png)
+1. 选择 **添加** 。 此时将显示新应用程序的 "概述" 页。
 
-14. 检查在步骤 5 中分配到应用的外部 URL 是否出现在“回复 URL”列表中。 如果未出现，现在请添加。
-15. 在应用设置边栏选项卡中，选择“所需的权限”。
+现在为应用程序测试分配用户, 并选择基于标头的单一登录:
 
-    ![选择“所需的权限”](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
+1. 从 "应用程序" 边栏中, 选择 "**用户和组** > " "**添加用户** > **用户和组" (\<选择的数字 >)** 。 此时会显示用户和组的列表供你选择。
 
-16. 选择 **添加** 。 对于 API，请选择“Windows Azure Active Directory”，并单击“选择”。 对于权限，请选择“读取和写入所有应用程序”和“登录并读取用户配置文件”，并依次单击“选择”和“完成”。  
+   ![显示用户和组的列表](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
 
-    ![选择权限](./media/application-proxy-configure-single-sign-on-with-ping-access/select-permissions.png)
+1. 选择用于应用程序测试的用户, 然后选择 "**选择**"。 确保此测试帐户有权访问本地应用程序。
+1. 选择“分配”。
+1. 从 "应用程序" 边栏中, 选择 "**基于标头的** **单一登录** > "。
 
-17. 关闭权限屏幕之前，请授予权限。 
-    ![授予权限](./media/application-proxy-configure-single-sign-on-with-ping-access/grantperms.png)
+   > [!TIP]
+   > 如果这是第一次使用基于标头的单一登录，则需安装 PingAccess。 为了确保 Azure 订阅与 PingAccess 安装自动关联，请使用此单一登录页上的链接下载 PingAccess。 可以现在就打开下载站点，也可以稍后返回到此页面。
 
-### <a name="collect-information-for-the-pingaccess-steps"></a>收集 PingAccess 步骤的信息
+   ![显示基于标头的登录屏幕和 PingAccess](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
 
-1. 在应用设置边栏选项卡中，选择“属性”。 
+1. 选择**保存**。
 
-   ![选择“属性”](./media/application-proxy-configure-single-sign-on-with-ping-access/properties.png)
+然后确保重定向 URL 设置为外部 URL:
 
-2. 保存“应用程序 ID”值。 配置 PingAccess 时，此值将用作客户端 ID。
-3. 在应用设置边栏选项卡中，选择“密钥”。
+1. 在**Azure Active Directory 管理中心**侧栏中, 选择 " **Azure Active Directory** > **应用注册**"。 此时将显示应用程序列表。
+1. 选择自己的应用程序。
+1. 选择 "**重定向 uri**" 旁边的链接, 显示为 web 和公用客户端设置的重定向 uri 的数目。 此时将显示 "  **\<应用程序名称 > 身份验证**" 页。
+1. 检查前面分配给应用程序的外部 URL 是否位于 "**重定向 uri** " 列表中。 如果没有, 请立即添加外部 URL, 使用**Web**的重定向 URI 类型, 然后选择 "**保存**"。
 
-   ![选择“密钥”](./media/application-proxy-configure-single-sign-on-with-ping-access/Keys.png)
+最后, 设置本地应用程序, 以便用户拥有读取/写入访问权限, 而其他应用程序具有读/写访问权限:
 
-4. 创建密钥：输入密钥的说明，并从下拉菜单中选择过期日期。
-5. 选择“保存”。 一个 GUID 随即出现在“值”字段中。
+1. 从应用程序的**应用注册**边栏中, 选择 **"API 权限** > " "**添加** > **Microsoft api** > **Microsoft Graph**权限"。 出现**Microsoft Graph**的 "**请求 API 权限**" 页, 其中包含 Windows Azure Active Directory 的 api。
 
-   现在请保存此值，因为关闭此窗口后再也无法看到它。
+   ![显示 "请求 API 权限" 页](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
 
-   ![新建密钥](./media/application-proxy-configure-single-sign-on-with-ping-access/create-keys.png)
+1. 选择 "**委托权限** > **用户** > " "用户" **。**
+1. 选择 "应用程序**权限** >  > " "应用程序" "应用**程序**"。
+1. 选择“添加权限”。
+1. 在 " **API 权限**" 页中, 选择 "**为\<你的目录名称 > 授予管理员许可**"。
 
-6. 关闭“应用注册”边栏选项卡或一直向左滚动，返回“Azure Active Directory”菜单。
-7. 选择“属性”。
-8. 保存“目录 ID”GUID。
+#### <a name="collect-information-for-the-pingaccess-steps"></a>收集 PingAccess 步骤的信息
 
-### <a name="optional---update-graphapi-to-send-custom-fields"></a>可选 - 更新 GraphAPI 以发送自定义字段
+需要收集这三条信息 (所有 Guid), 以便通过 PingAccess 设置应用程序:
 
-有关 Azure AD 用于身份验证发送的安全令牌列表，请参阅 [Azure AD 令牌引用](../develop/v1-id-and-access-tokens.md)。 如果需要用于发送其他令牌的自定义声明，请使用 Graph 浏览器或 Azure 门户中的应用程序清单，将应用字段“acceptMappedClaims”设置为“True”。    
+| Azure AD 字段的名称 | PingAccess 字段的名称 | 数据格式 |
+| --- | --- | --- |
+| **应用程序(客户端) ID** | **客户端 ID** | GUID |
+| **目录(租户) ID** | **N** | GUID |
+| `PingAccess key` | **客户端机密** | 随机字符串 |
 
-本示例中使用的是 Graph 浏览器：
+收集此信息:
+
+1. 在**Azure Active Directory 管理中心**侧栏中, 选择 " **Azure Active Directory** > **应用注册**"。 此时将显示应用程序列表。
+1. 选择自己的应用程序。 此时将显示应用程序的 "**应用注册**" 页。
+
+   ![应用程序的注册概述](./media/application-proxy-configure-single-sign-on-with-ping-access/registration-overview-for-an-application.png)
+
+1. 在 "**应用程序 (客户端) ID** " 值旁边, 选择 "**复制到剪贴板**" 图标, 然后复制并保存。 稍后将此值指定为 PingAccess 的客户端 ID。
+1. 接下来 , 选择 "**复制到剪贴板**", 然后复制并保存。 稍后将此值指定为 PingAccess 的颁发者。
+1. 从应用程序的 "**应用注册**" 边栏中, 选择 "**证书和机密** > " "**新建客户端密钥**"。 此时将显示 "**添加客户端密钥**" 页。
+
+   ![显示 "添加客户端密钥" 页](./media/application-proxy-configure-single-sign-on-with-ping-access/add-a-client-secret.png)
+
+1. 在 "**说明**" `PingAccess key`中, 键入。
+1. 在 "**过期**" 下, 选择设置 PingAccess 项的方式:**1 年**、 **2 年**或**从不**。
+1. 选择 **添加** 。 PingAccess 项显示在客户端密码表中, 并在 "**值**" 字段中显示一个随机字符串。
+1. 在 PingAccess 项的**值**字段旁边, 选择 "**复制到剪贴板**" 图标, 然后复制并保存。 稍后将此值指定为 PingAccess 的客户端机密。
+
+### <a name="update-graphapi-to-send-custom-fields-optional"></a>更新 GraphAPI 以发送自定义字段 (可选)
+
+如果需要在 PingAccess 使用的 access_token 中发送其他令牌的自定义声明, 请将`acceptMappedClaims`应用程序字段设置为。 `True` 可以使用图形资源管理器或 Azure AD 门户的应用程序清单进行此更改。
+
+**此示例使用图形资源管理器:**
 
 ```
-PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application> 
+PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application>
 
 {
   "acceptMappedClaims":true
 }
 ```
-本示例使用 [Azure 门户](https://portal.azure.com)来更新“acceptedMappedClaims”字段：
-1. 登录到[Azure 门户](https://portal.azure.com)作为应用程序管理员。
-2. 选择“Azure Active Directory” > “应用注册”。
-3. 选择应用程序 >“清单”。
-4. 选择“编辑”，搜索“acceptedMappedClaims”字段，将其值更改为“true”。
-![应用清单](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-ping-access-manifest.PNG)
-1. 选择“保存”。
 
->[!NOTE]
->若要使用自定义声明，还必须定义自定义策略并将其分配给应用程序。  此策略应包括所有必需的自定义属性。
+**此示例使用[Azure Active Directory 门户](https://aad.portal.azure.com/)更新`acceptMappedClaims`字段:**
+
+1. 以应用程序管理员身份登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)。
+1. 选择“Azure Active Directory” > “应用注册”。 此时将显示应用程序列表。
+1. 选择自己的应用程序。
+1. 从应用程序的 "**应用注册**" 页的边栏中, 选择 "**清单**"。 此时将显示应用程序注册的清单 JSON 代码。
+1. 搜索字段, 并将值更改为`True`。 `acceptMappedClaims`
+1. 选择**保存**。
+
+### <a name="use-of-optional-claims-optional"></a>使用可选声明 (可选)
+
+可选声明允许你添加每个用户和租户具有的标准-非默认的声明。 可以通过修改应用程序清单来配置应用程序的可选声明。 有关详细信息, 请参阅[了解 Azure AD 应用程序清单一文](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest/)
+
+将电子邮件地址包含到 PingAccess 将使用的 access_token 的示例:
+```
+    "optionalClaims": {
+        "idToken": [],
+        "accessToken": [
+            {
+                "name": "email",
+                "source": null,
+                "essential": false,
+                "additionalProperties": []
+            }
+        ],
+        "saml2Token": []
+    },
+```
+
+### <a name="use-of-claims-mapping-policy-optional"></a>使用声明映射策略 (可选)
+
+AzureAD 中不存在的属性的[声明映射策略 (预览)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties) 。 使用声明映射, 可以通过添加 ADFS 或用户对象支持的其他自定义声明, 将旧的本地应用迁移到云
+
+若要使你的应用程序使用自定义声明并包括其他字段, 请确保你还[创建了自定义声明映射策略并将其分配给应用程序](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
+
+> [!NOTE]
+> 若要使用自定义声明，还必须定义自定义策略并将其分配给应用程序。 此策略应包括所有必需的自定义属性。
 >
->可以通过 PowerShell、Azure AD Graph Explorer 或 MS Graph 来完成策略定义和分配。  如果在 PowerShell 中执行此操作，您可能需要首先使用`New-AzureADPolicy`然后将其分配到应用程序使用`Set-AzureADServicePrincipalPolicy`。  有关详细信息，请参阅 [Azure AD 策略文档](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
+> 可以通过 PowerShell、Azure AD Graph 资源管理器或 Microsoft Graph 来执行策略定义和分配。 如果要在 PowerShell 中执行这些操作, 则可能需要先使用`New-AzureADPolicy` , 然后使用将其分配给`Add-AzureADServicePrincipalPolicy`应用程序。 有关详细信息, 请参阅[声明映射策略分配](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
 
-### <a name="optional---use-a-custom-claim"></a>可选 - 使用自定义声明
-若要生成应用程序，请使用自定义声明并包括其他字段，请确保还[创建了自定义声明映射策略并将其分配给应用程序](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
+例如：
+```powershell
+$pol = New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","JwtClaimType":"employeeid"}]}}') -DisplayName "AdditionalClaims" -Type "ClaimsMappingPolicy"
 
-## <a name="download-pingaccess-and-configure-your-app"></a>下载 PingAccess 并配置应用
+Add-AzureADServicePrincipalPolicy -Id "<<The object Id of the Enterprise Application you published in the previous step, which requires this claim>>" -RefObjectId $pol.Id
+```
 
-完成 Azure Active Directory 的所有设置步骤后，可以开始配置 PingAccess。 
+### <a name="enable-pingaccess-to-use-custom-claims"></a>使 PingAccess 能够使用自定义声明
 
-Ping Identity 文档 [Configure PingAccess for Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)（配置 PingAccess for Azure AD）中为本方案的详细 PingAccess 步骤提供了后续内容。
+使 PingAccess 能够使用自定义声明是可选的, 但如果您希望应用程序使用其他声明, 则需要此参数。
 
-这些步骤将引导完成获取 PingAccess 帐户（如果尚未获取）、安装 PingAccess 服务器并使用从 Azure 门户中复制的目录 ID 创建 Azure AD OIDC 提供程序连接的整个过程。 然后，在 PingAccess 中使用应用程序 ID 和密钥值创建 Web 会话。 接下来，可以设置标识映射并创建虚拟主机、站点和应用程序。
+当你将在以下步骤中配置 PingAccess 时, 你将创建的 Web 会话 (设置-> 访问 > Web 会话) 必须取消选中 "**请求配置文件**", 并将 "**用户属性**" 设置为 "**否**"
 
-### <a name="test-your-app"></a>测试应用
+## <a name="download-pingaccess-and-configure-your-application"></a>下载 PingAccess 并配置应用程序
 
-完成所有这些步骤后，应用应会启动并运行。 若要测试应用，请打开浏览器并导航到在 Azure 中发布应用该时创建的外部 URL。 使用分配给应用的测试帐户登录。
+完成 Azure Active Directory 的所有设置步骤后，可以开始配置 PingAccess。
+
+此方案的 PingAccess 部分的详细步骤将继续执行 Ping 标识文档。 按照为 Azure AD 配置 PingAccess 中的说明来保护使用 Ping 标识网站上的[Microsoft Azure AD 应用程序代理发布的应用程序](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html)。
+
+这些步骤可帮助你安装 PingAccess 并设置 PingAccess 帐户 (如果尚未安装)。 然后, 若要创建 Azure AD OpenID Connect (OIDC) 连接, 请使用从 Azure AD 门户复制的**目录 (租户) ID**值设置一个令牌提供程序。 接下来, 若要在 PingAccess 上创建 web 会话, 请使用**应用程序 (客户端) ID**和`PingAccess key`值。 接下来，可以设置标识映射并创建虚拟主机、站点和应用程序。
+
+### <a name="test-your-application"></a>测试应用程序
+
+完成所有这些步骤后, 应用程序应启动并运行。 若要对其进行测试, 请打开浏览器并导航到在 Azure 中发布应用程序时创建的外部 URL。 用分配给应用程序的测试帐户登录。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [配置 PingAccess for Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
-- [Azure AD 应用程序代理如何提供单一登录？](application-proxy-single-sign-on.md)
-- [排查应用程序代理问题](application-proxy-troubleshoot.md)
+- [为 Azure AD 配置 PingAccess, 以保护使用 Microsoft Azure AD 应用程序代理发布的应用程序](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html)
+- [单一登录到 Azure Active Directory 中的应用程序](what-is-single-sign-on.md)
+- [应用程序代理问题和错误消息故障排除](application-proxy-troubleshoot.md)

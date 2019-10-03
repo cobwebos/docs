@@ -3,9 +3,9 @@ title: 使用 Azure 通知中心向 Windows 应用发送本地化通知 | Micros
 description: 了解如何使用 Azure 通知中心发送本地化的突发新闻通知。
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: c454f5a3-a06b-45ac-91c7-f91210889b25
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: f3880db813072ca0bcecf073a8db24b21c87189f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: 57353999ff94aa8fd4499b511c86cd59d24d1f0a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402705"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213378"
 ---
 # <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Windows 应用推送本地化通知
 
@@ -194,10 +196,10 @@ ms.locfileid: "58402705"
 
 ## <a name="run-the-uwp-application"></a>运行 UWP 应用程序
 
-1. 运行通用 Windows 平台应用程序。 等待“注册成功”消息出现。
+1. 运行通用 Windows 平台应用程序。 等待“注册成功”消息出现。 
 
     ![移动应用程序和注册](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
-2. 选择**类别**和**区域设置**，然后单击“订阅”。 应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。
+2. 选择**类别**和**区域设置**，然后单击“订阅”。  应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。
 
     ![移动应用程序](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
 3. 此时会看到有关**订阅**的**确认**消息。

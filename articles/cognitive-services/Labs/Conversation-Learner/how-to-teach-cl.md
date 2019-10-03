@@ -3,19 +3,20 @@ title: 如何训练对话学习器 - Microsoft 认知服务 | Microsoft Docs
 titleSuffix: Azure
 description: 了解如何训练对话学习器。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 8c55bb27ce5a413c5ceae22371ad61a5acf47281
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: a18d4c31da4ffeefebd4bda9aa441fdfec062be9
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220257"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705270"
 ---
 # <a name="how-to-teach-with-conversation-learner"></a>如何训练对话学习器 
 

@@ -2,39 +2,39 @@
 title: 使用自定义策略添加声明和自定义用户输入 - Azure Active Directory B2C | Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中自定义用户输入并将声明添加到注册或登录旅程。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e3eb7ce49c5d22b11b0b6f018e025bdfa2a67703
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e29e2e3e61594870cc9d704d64b1040a4211a520
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431999"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066213"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介绍如何在 Azure Active Directory (Azure AD) B2C 中向注册用户旅程添加新的用户提供的条目（声明）。  另外还介绍如何将该条目配置为下拉列表，并对它是否为必需条目进行定义。
+本文介绍如何在 Azure Active Directory B2C （Azure AD B2C）中向注册用户旅程添加新用户提供的条目（声明）。  将条目配置为下拉列表并定义是否需要。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。 测试注册或登录用户旅程，以便注册新的本地帐户，然后再继续操作。
 
 ## <a name="add-claims"></a>添加声明
 
-可以通过注册或登录用户旅程从用户收集初始数据。 稍后可以通过配置文件编辑用户旅程收集其他声明。 每当 Azure AD B2C 以交互方式直接从用户收集信息时，Identity Experience Framework 都会使用其 selfasserted 提供程序。
+可以通过注册或登录用户旅程从用户收集初始数据。 稍后可以通过配置文件编辑用户旅程收集其他声明。 Azure AD B2C 以交互方式直接从用户收集信息，标识体验框架将使用其自断言提供程序。
 
 
 ### <a name="define-the-claim"></a>定义声明
 
-我们请求用户输入其所在城市。 将以下元素添加到 TrustFrameworkBase 策略文件中的 **ClaimsSchema** 元素：
+让我们向用户提供其城市。 将以下元素添加到 TrustFrameworkBase 策略文件中的 **ClaimsSchema** 元素：
 
 ```xml
 <ClaimType Id="city">
@@ -79,7 +79,7 @@ ms.locfileid: "57431999"
 
 #### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-![下拉列表选项的屏幕截图](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
+![显示多个选项的单项选择下拉控件](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -96,7 +96,7 @@ ms.locfileid: "57431999"
 
 #### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-![多项选择选项的屏幕截图](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
+![显示多个选项的多选 checkbox 控件](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -235,7 +235,7 @@ ms.locfileid: "57431999"
       <IncludeTechnicalProfile ReferenceId="AAD-Common" />
     </TechnicalProfile>
     ```
-   
+
 4. 将 `<OutputClaim ClaimTypeReferenceId="city" />` 声明添加到 SignUporSignIn.xml 文件，以便在用户旅程成功完成后，在令牌中将此声明发送到应用程序。
 
     ```xml
@@ -261,7 +261,7 @@ ms.locfileid: "57431999"
 ## <a name="test-the-custom-policy"></a>测试自定义策略
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请务必使用包含 Azure AD 租户的目录，具体方法是：单击顶部菜单中的“目录和订阅筛选器”，再选择包含 Azure AD 租户的目录。
+2. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器并选择包含 Azure AD 租户的目录，确保使用的是包含 Azure AD 租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”。
 4. 选择“Identity Experience Framework (预览)”。
 5. 选择“上传自定义策略”，然后上传已更改的两个策略文件。

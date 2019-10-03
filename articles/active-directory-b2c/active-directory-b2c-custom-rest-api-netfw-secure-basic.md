@@ -2,20 +2,20 @@
 title: 在 Azure Active Directory B2C 中使用 HTTP 基本身份验证保护 RESTful 服务 | Microsoft Docs
 description: 使用 HTTP 基本身份验证保护 Azure AD B2C 中的自定义 REST API 声明交换。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 07865b2120aa91381d3711688e1a5c8e3187fab3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8c1251056ad816af664f95abcd18d50ceca4619d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793368"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835270"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
 
@@ -27,7 +27,7 @@ ms.locfileid: "58793368"
 
 有关详细信息，请参阅 [ASP.NET Web API 中的基本身份验证](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成[在 Azure AD B2C 用户旅程中集成 REST API 声明交换](active-directory-b2c-custom-rest-api-netfw.md)一文中所述的步骤。
 
@@ -70,18 +70,18 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 在 *App_Start* 文件夹下添加 `ClientAuthMiddleware.cs` 类。 为此，请执行以下操作：
 
-1. 右键单击“App_Start”文件夹，依次选择“添加”、“类”。
+1. 右键单击“App_Start”文件夹，依次选择“添加”、“类”。   
 
    ![在 App_Start 文件夹中添加 ClientAuthMiddleware.cs 类](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth1.png)
 
-2. 在“名称”框中，键入 **ClientAuthMiddleware.cs**。
+2. 在“名称”框中，键入 **ClientAuthMiddleware.cs**。 
 
-   ![创建新的 C# 类](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
+   ![创建一个新C#在 Visual Studio 的添加新项对话框中的类](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
 
 3. 打开 *App_Start\ClientAuthMiddleware.cs* 文件并将文件内容替换为以下代码：
 
     ```csharp
-    
+
     using Microsoft.Owin;
     using System;
     using System.Collections.Generic;
@@ -91,7 +91,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
     using System.Text;
     using System.Threading.Tasks;
     using System.Web;
-    
+
     namespace Contoso.AADB2C.API
     {
         /// <summary>
@@ -101,12 +101,12 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
         {
             private static readonly string ClientID = ConfigurationManager.AppSettings["WebApp:ClientId"];
             private static readonly string ClientSecret = ConfigurationManager.AppSettings["WebApp:ClientSecret"];
-    
+
             /// <summary>
             /// Gets or sets the next owin middleware
             /// </summary>
             private Func<IDictionary<string, object>, Task> Next { get; set; }
-    
+
             /// <summary>
             /// Initializes a new instance of the <see cref="ClientAuthMiddleware"/> class.
             /// </summary>
@@ -115,7 +115,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
             {
                 this.Next = next;
             }
-    
+
             /// <summary>
             /// Invoke client authentication middleware during each request.
             /// </summary>
@@ -125,7 +125,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
             {
                 // Get wrapper class for the environment
                 var context = new OwinContext(environment);
-    
+
                 // Check whether the authorization header is available. This contains the credentials.
                 var authzValue = context.Request.Headers.Get("Authorization");
                 if (string.IsNullOrEmpty(authzValue) || !authzValue.StartsWith("Basic ", StringComparison.OrdinalIgnoreCase))
@@ -133,21 +133,21 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
                     // Process next middleware
                     return Next(environment);
                 }
-    
+
                 // Get credentials
                 var creds = authzValue.Substring("Basic ".Length).Trim();
                 string clientId;
                 string clientSecret;
-    
+
                 if (RetrieveCreds(creds, out clientId, out clientSecret))
                 {
                     // Set transaction authenticated as client
                     context.Request.User = new GenericPrincipal(new GenericIdentity(clientId, "client"), new string[] { "client" });
                 }
-    
+
                 return Next(environment);
             }
-    
+
             /// <summary>
             /// Retrieve credentials from header
             /// </summary>
@@ -159,7 +159,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
             {
                 string pair;
                 clientId = clientSecret = string.Empty;
-    
+
                 try
                 {
                     pair = Encoding.UTF8.GetString(Convert.FromBase64String(credentials));
@@ -172,16 +172,16 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
                 {
                     return false;
                 }
-    
+
                 var ix = pair.IndexOf(':');
                 if (ix == -1)
                 {
                     return false;
                 }
-    
+
                 clientId = pair.Substring(0, ix);
                 clientSecret = pair.Substring(ix + 1);
-    
+
                 // Return whether credentials are valid
                 return (string.Compare(clientId, ClientAuthMiddleware.ClientID) == 0 &&
                     string.Compare(clientSecret, ClientAuthMiddleware.ClientSecret) == 0);
@@ -193,16 +193,16 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ### <a name="step-14-add-an-owin-startup-class"></a>步骤 1.4：添加 OWIN 启动类
 
 将名为 `Startup.cs` 的 OWIN 启动类添加到 API。 为此，请执行以下操作：
-1. 右键单击项目，选择“添加” > “新建项”，并搜索“OWIN”。
+1. 右键单击项目，选择“添加”   > “新建项”  ，并搜索“OWIN”  。
 
-   ![添加 OWIN 启动类](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
+   ![在 Visual Studio 中的添加新项对话框中创建 OWIN 启动类](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
 
 2. 打开 *Startup.cs* 文件并将文件内容替换为以下代码：
 
     ```csharp
     using Microsoft.Owin;
     using Owin;
-    
+
     [assembly: OwinStartup(typeof(Contoso.AADB2C.API.Startup))]
     namespace Contoso.AADB2C.API
     {
@@ -224,7 +224,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 ## <a name="step-2-publish-to-azure"></a>步骤 2：发布到 Azure
 
-若要发布项目，请在解决方案资源管理器中右键单击“Contoso.AADB2C.API”项目，选择“发布”。
+若要发布项目，请在解决方案资源管理器中右键单击“Contoso.AADB2C.API”项目，选择“发布”。  
 
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>步骤 3：将 RESTful 服务应用 ID 和应用机密添加到 Azure AD B2C
 
@@ -232,44 +232,44 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 ### <a name="step-31-add-a-restful-services-client-id"></a>步骤 3.1：添加 RESTful 服务客户端 ID
 
-1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。
+1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。  
 
 
-2. 选择“策略密钥”，查看租户中的可用密钥。
+2. 选择“策略密钥”，查看租户中的可用密钥。 
 
 3. 选择 **添加** 。
 
-4. 对于“选项”，请选择“手动”。
+4. 对于“选项”，请选择“手动”   。
 
-5. 对于“名称”，请键入 **B2cRestClientId**。  
-    可能会自动添加前缀 *B2C_1A_*。
+5. 对于“名称”，请键入 **B2cRestClientId**。 
+    可能会自动添加前缀 *B2C_1A_* 。
 
-6. 在“机密”框中，输入前面定义的应用 ID。
+6. 在“机密”框中，输入前面定义的应用 ID。 
 
-7. 对于“密钥用法”，请选择“签名”。
+7. 对于“密钥用法”，请选择“签名”   。
 
-8. 选择“创建”。
+8. 选择“创建”  。
 
 9. 确认已创建 `B2C_1A_B2cRestClientId` 密钥。
 
 ### <a name="step-32-add-a-restful-services-client-secret"></a>步骤 3.2：添加 RESTful 服务客户端机密
 
-1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。
+1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。  
 
-2. 选择“策略密钥”，查看租户中的可用密钥。
+2. 选择“策略密钥”，查看租户中的可用密钥。 
 
 3. 选择 **添加** 。
 
-4. 对于“选项”，请选择“手动”。
+4. 对于“选项”，请选择“手动”   。
 
-5. 对于“名称”，请键入 **B2cRestClientSecret**。  
-    可能会自动添加前缀 *B2C_1A_*。
+5. 对于“名称”，请键入 **B2cRestClientSecret**。 
+    可能会自动添加前缀 *B2C_1A_* 。
 
-6. 在“机密”框中，输入前面定义的应用机密。
+6. 在“机密”框中，输入前面定义的应用机密。 
 
-7. 对于“密钥用法”，请选择“签名”。
+7. 对于“密钥用法”，请选择“签名”   。
 
-8. 选择“创建”。
+8. 选择“创建”  。
 
 9. 确认已创建 `B2C_1A_B2cRestClientSecret` 密钥。
 
@@ -297,38 +297,38 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
     ```
 
     添加该片段后，技术配置文件应类似于以下 XML 代码：
-    
-    ![添加基本身份验证 XML 元素](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
+
+    ![将基本身份验证的 XML 元素添加到技术配置文件](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>步骤 5：将策略上传到租户
 
-1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，打开“Azure AD B2C”。
+1. 在 [Azure 门户](https://portal.azure.com)中，切换到 [Azure AD B2C 租户的上下文](active-directory-b2c-navigate-to-b2c-context.md)，打开“Azure AD B2C”。 
 
-2. 选择“标识体验框架”。
+2. 选择“标识体验框架”  。
 
-3. 打开“所有策略”。
+3. 打开“所有策略”。 
 
-4. 选择“上传策略”。
+4. 选择“上传策略”  。
 
-5. 选中“覆盖策略(如果存在)”复选框。
+5. 选中“覆盖策略(如果存在)”  复选框。
 
 6. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>步骤 6：使用“立即运行”测试自定义策略
 
-1. 打开“Azure AD B2C 设置”，选择“标识体验框架”。
+1. 打开“Azure AD B2C 设置”，选择“标识体验框架”。  
 
     >[!NOTE]
     >“立即运行”需要在租户中至少预先注册一个应用程序。 在 Azure AD B2C [入门](active-directory-b2c-get-started.md)或[应用程序注册](active-directory-b2c-app-registration.md)文章中了解如何注册应用程序。
 
-2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。
+2. 打开已上传的信赖方 (RP) 自定义策略 **B2C_1A_signup_signin**，然后选择“立即运行”。 
 
-3. 在“名”框中键入 **Test** 来测试该过程。  
+3. 在“名”框中键入 **Test** 来测试该过程。 
     Azure AD B2C 会在窗口顶部显示一条错误消息。
 
-    ![测试标识 API](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![测试标识 API 中的给定名称输入的验证](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. 在“名”框中键入一个名称（不要键入“Test”）。  
+4. 在“名”框中键入一个名称（不要键入“Test”）。 
     Azure AD B2C 会注册该用户，然后将会员号发送到应用程序。 请注意此示例中的编号：
 
     ```
@@ -355,7 +355,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>（可选）下载完整的策略文件和代码
 
 * 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)用于参考。
-* 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)下载完整代码。
+* 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)下载完整代码。
 
 ## <a name="next-steps"></a>后续步骤
 

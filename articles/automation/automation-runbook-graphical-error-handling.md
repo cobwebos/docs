@@ -4,17 +4,17 @@ description: 本文介绍如何在 Azure 自动化图形 Runbook 中实现错误
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d7fe38334b71334d4dae9235643117efdf5fbd5d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: ed6620333382a1e43ee1b38a009c91e8d7038233
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436682"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476936"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自动化图形 Runbook 中的错误处理
 
@@ -47,7 +47,7 @@ Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现�
 
 一种解决方案是让一个错误链接指向处理步骤一操作的活动。 例如，可以将 **Write-Warning** cmdlet 连接到步骤二的一个活动，例如 **Start-AzureRmAutomationRunbook** cmdlet。
 
-还可以通用化此行为，使其能够在多个 Runbook 中使用，只需将这两个活动放在单独的错误处理 Runbook 中，并遵循前面提供的指导即可。 在调用此错误处理 Runbook 之前，可以基于原始 Runbook 中的数据构造自定义消息，然后将其作为参数传递给错误处理 Runbook。
+还可以通用化此行为，使其能够在多个 Runbook 中使用，只需将这两个活动放在单独的错误处理 Runbook 中，并遵循前面提供的指导即可。 在调用此错误处理 Runbook 之前，可以根据原始 Runbook 中的数据构造自定义消息，并将此消息作为参数传递给错误处理 Runbook。
 
 ## <a name="how-to-use-error-handling"></a>如何使用错误处理
 
@@ -61,7 +61,7 @@ Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现�
 
 **Get-AutomationVariable** 活动和 **Start-AzureRmVm** 已配置为将异常转换为错误。 如果在获取变量或启动 VM 时出现问题，会生成错误。<br><br> ![自动化 Runbook 错误处理活动设置](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
 
-错误链接从这些活动流向单个“错误管理”活动（代码活动）。 该活动是通过使用 *Throw* 关键字的简单 PowerShell 表达式（用于停止处理）以及 *$Error.Exception.Message*（用于获取描述当前异常的消息）配置的。<br><br> ![自动化 Runbook 错误处理代码示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+错误链接从这些活动流向单个“错误管理”活动（代码活动）。  该活动是通过使用 *Throw* 关键字的简单 PowerShell 表达式（用于停止处理）以及 *$Error.Exception.Message*（用于获取描述当前异常的消息）配置的。<br><br> ![自动化 Runbook 错误处理代码示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 
 ## <a name="next-steps"></a>后续步骤

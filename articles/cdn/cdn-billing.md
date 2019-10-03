@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 09/13/2019
 ms.author: magattus
-ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8704d715a20b94dc170f232b07a0acd54bb1e6f1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735794"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996813"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 计费
 
@@ -32,7 +32,7 @@ ms.locfileid: "56735794"
 
 - 区域 2：亚太（包括日本）
 
-- 区域 3：南美洲
+- 区域 3：南美
 
 - 区域 4：澳大利亚和新西兰
 
@@ -57,9 +57,12 @@ Azure CDN 计费区域取决于将内容分发到最终用户的源服务器的�
 
 - 实际使用的 GB：源对象的实际存储。
 
+- 事务：填充缓存所需。
+
 - 以 GB 为单位的传输量：通过传输来填充 CDN 缓存的数据量。
 
-- 事务：填充缓存所需。
+> [!NOTE]
+> 从10月2019开始，如果你使用的是 Microsoft 的 Azure CDN，则从 Azure 托管的数据传输到 CDN Pop 的成本是免费的。 来自 Verizon 和 Akamai 的 Azure CDN 的 Azure CDN 服从下面所述的费率。
 
 有关 Azure 存储计费的详细信息，请参阅 [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)（了解 Azure 存储计费 - 带宽、事务和容量）。
 
@@ -83,6 +86,36 @@ CDN POP 会在每次需要填充其缓存时向要缓存的对象的源提出请
 - 多少节点需要加载对象：每次节点从源加载对象时，都会产生计费事务。 因此，全局内容越多（需要从更多的节点访问），计费事务也越多。
 
 - TTL 影响：对象的 TTL 越高，意味着需要从源提取该对象的频率越低。 同时还意味着客户端（例如浏览器）能够缓存该对象的时间越长，因此可以减少 CDN 的事务。
+
+## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>哪些源服务有资格通过 Microsoft Azure CDN 进行免费数据传输？ 
+如果使用以下 Azure 服务之一作为 CDN 源，则不会向 CDN Pop 发送数据传输费用。 
+
+- Azure 存储
+- Azure 媒体服务
+- Azure 虚拟机
+- 虚拟网络
+- 负载均衡器
+- 应用程序网关
+- Azure DNS
+- ExpressRoute
+- VPN 网关
+- 通信管理器
+- 网络观察程序
+- Azure 防火墙
+- Azure Front Door 服务
+- Azure Bastion
+- Azure 应用服务
+- Azure Functions
+- Azure 数据工厂
+- Azure API 管理
+- Azure Batch 
+- Azure 数据资源管理器
+- HDInsight
+- Azure Cosmos DB
+- Azure Data Lake Store
+- Azure 机器学习服务 
+- Azure SQL 数据库
+- 用于 Redis 的 Azure 缓存
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>如何才能最有效地管理费用？
 将内容的 TTL 尽可能设置得长一点。 

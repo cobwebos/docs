@@ -1,7 +1,6 @@
 ---
-title: 了解 SUSE 预留计划折扣和使用情况-Azure |Microsoft Docs
-description: 了解 SUSE 计划折扣是如何应用于虚拟机上的 SUSE 软件。
-services: billing
+title: 软件计划折扣 - Azure | Microsoft Docs
+description: 了解如何将软件计划折扣应用于虚拟机上的软件。
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,22 +10,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2018
+ms.date: 09/30/2019
 ms.author: banders
-ms.openlocfilehash: 4305db991a8129b0ae4205300051391df893c52c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e5cad667c2c97514a258578ab09f7c3628738635
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917781"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701970"
 ---
-# <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>了解如何为 Azure 应用 SUSE Linux Enterprise 软件预订计划折扣
+# <a name="azure-software-plan-discount"></a>Azure 软件计划折扣
 
-购买 SUSE Linux 计划后，折扣将自动应用于与预订匹配的已部署的 SUSE 虚拟机 (VM)。 一个 SUSE Linux 计划涵盖了在 Azure VM 上运行 SUSE 软件的成本。
+适用于 SUSE 和 RedHat 的 Azure 软件计划是适用于已部署 VM 的预留。 软件计划折扣将应用于与预留匹配的已部署 VM 的软件使用。
 
-若要购买正确的 SUSE Linux 计划，需要了解所运行的 SUSE VM 以及这些 VM 上的 vCPU 数量。 使用下列各节来帮助通过使用情况 CSV 文件来识别要购买的计划。
+关闭 VM 时，折扣会自动应用于另一个匹配的 VM（如果可用）。 软件计划涵盖了在 VM 上运行软件的成本。 计算、存储和网络等其他费用单独收费。
 
-## <a name="discount-applies-to-different-vm-sizes"></a>折扣适用于不同的 VM 大小
+若要购买适当的计划，需要了解 VM 使用情况以及这些 VM 上的 vCPU 数量。 根据使用情况数据，使用以下部分帮助确定要购买的计划。
+
+## <a name="how-reservation-discount-is-applied"></a>如何应用预留折扣
+
+预留折扣为“使用或丢失”  。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
+
+关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失  。
+
+## <a name="review-redhat-vm-usage-before-you-buy"></a>在购买前查看 RedHat VM 使用情况
+
+从使用情况数据获取产品名称，并购买相同类型和大小的 RedHat 计划。
+
+例如，如果使用情况包含产品 **Red Hat Enterprise Linux - 1-4 vCPU VM 许可证**，则应购买适用于 **1-4 vCPU VM** 的 **Red Hat Enterprise Linux**。
+
+<!--ADD RHEL SCREENSHOT -->
+
+## <a name="review-suse-vm-usage-before-you-buy"></a>在购买前查看 SUSE VM 使用情况
+
+从使用情况数据获取产品名称，并购买相同类型和大小的 SUSE 计划。
+
+例如，如果使用的是产品 **SUSE Linux Enterprise Server Priority - 2-4 vCPU VM 支持**，则应购买适用于 **2-4 vCPU** 的 **SUSE Linux Enterprise Server Priority**。
+
+![选择要购买的产品的示例](./media/billing-understand-suse-reservation-charges/select-suse-linux-enterprise-server-priority-2-4-vcpu.png)
+
+## <a name="discount-applies-to-different-vm-sizes-for-suse-plans"></a>折扣适用于 SUSE 计划的不同 VM 大小
 
 与预订的 VM 实例一样，SUSE 计划的购买也提供了实例大小灵活性。 这意味着即使在部署 vCPU 计数不同的 VM 时，折扣也适用。 折扣适用于软件计划内不同的 VM 大小。
 
@@ -38,9 +61,7 @@ ms.locfileid: "58917781"
 - 1 台具有 3 或 4 个 vCPU 的已部署 VM，
 - 或为具有 5 个或更多 vCPU 的 VM 的 0.77 或约 77%。
 
-对于 5 个或更多的 vCPU，此比率为 2.6。 因此对于 SUSE 具有 5 个或更多 Vcpu 的 VM 与预订涵盖软件成本，大约 77%具有唯一的部分。
-
-## <a name="understand-suse-vm-usage-before-you-buy"></a>在购买前了解 SUSE VM 使用情况
+对于 5 个或更多的 vCPU，此比率为 2.6。 因此，对于具有 5 个或更多 vCPU 的 VM 的 SUSE 预订仅涵盖了软件成本的一部分，即约 77%。
 
 下表显示可为其购买预订的软件计划、其相关的使用情况计量和每个计划的比率。
 
@@ -122,6 +143,10 @@ Azure 门户商城名称：
 |SLES 3-4 核 vCPU |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1.92308|D4s_v3|
 |SLES 5 个及以上的 vCPU |7b349b65-d906-42e5-833f-b2af38513468|2.30769| D8s_v3|
 
+## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
+
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关预留的详细信息，请参阅以下文章：
@@ -132,7 +157,3 @@ Azure 门户商城名称：
 - [管理 Azure 预留项](billing-manage-reserved-vm-instance.md)
 - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
-
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
-
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

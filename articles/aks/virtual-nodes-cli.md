@@ -2,32 +2,29 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中使用 Azure CLI 创建虚拟节点
 description: 了解如何通过 Azure CLI 创建使用虚拟节点运行 Pod 的 Azure Kubernetes 服务 (AKS) 群集。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.topic: conceptual
 ms.service: container-service
-ms.date: 12/03/2018
-ms.author: iainfou
-ms.openlocfilehash: 38b2654c8f3e8d302a66cac335913583bd4426ef
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 05/06/2019
+ms.author: mlearned
+ms.openlocfilehash: a6acdd6255278123ff13a8597cadd2a386536bd4
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682959"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67613780"
 ---
-# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>预览-创建和配置使用虚拟节点上使用 Azure CLI 的 Azure Kubernetes 服务 (AKS) 群集
+# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为通过 Azure CLI 使用虚拟节点
 
-若要快速缩放 Azure Kubernetes 服务 (AKS) 群集中的应用程序工作负载，可以使用虚拟节点。 使用虚拟节点可快速预配 Pod，并且只需对其执行时间按秒付费。 无需等待 Kubernetes 群集自动缩放程序部署 VM 计算节点来运行其他 Pod。 本文介绍如何创建和配置虚拟网络资源和 AKS 群集，然后启用虚拟节点。
+若要快速缩放 Azure Kubernetes 服务 (AKS) 群集中的应用程序工作负载，可以使用虚拟节点。 使用虚拟节点可快速预配 Pod，并且只需对其执行时间按秒付费。 无需等待 Kubernetes 群集自动缩放程序部署 VM 计算节点来运行其他 Pod。 只有 Linux pod 和节点支持虚拟节点。
 
-> [!IMPORTANT]
-> AKS 预览功能是自助服务和可以选择加入的功能。 提供预览是为了从我们的社区收集反馈和 bug。 但是，Azure 技术支持部门不为其提供支持。 如果你创建一个群集，或者将这些功能添加到现有群集，则除非该功能不再为预览版并升级为公开发布版 (GA)，否则该群集不会获得支持。
->
-> 如果遇到预览版功能的问题，请[在 AKS GitHub 存储库中提交问题][aks-github]，并在 Bug 标题中填写预览版功能的名称。
+本文介绍如何创建和配置虚拟网络资源和 AKS 群集，然后启用虚拟节点。
 
 ## <a name="before-you-begin"></a>开始之前
 
 ACI 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用高级网络创建的 AKS 群集。 默认情况下，AKS 群集是使用基本网络创建的。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
 
-如果以前没有使用过 ACI，请在订阅中注册服务提供程序。 可以使用 [az provider list][az-provider-list] 命令检查 ACI 提供程序注册的状态，如下面的示例所示：
+如果以前没有使用过 ACI，请在订阅中注册服务提供程序。 你可以使用[az provider list][az-provider-list]命令检查 ACI 提供程序注册的状态, 如以下示例中所示:
 
 ```azurecli-interactive
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
@@ -41,31 +38,38 @@ Namespace                    RegistrationState
 Microsoft.ContainerInstance  Registered
 ```
 
-如果提供程序显示为“未注册”，请使用 [az provider register][az-provider-register] 注册提供程序，如下面的示例所示：
+如果提供程序显示为*NotRegistered*, 请使用[az provider register][az-provider-register]注册提供程序, 如以下示例中所示:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>区域可用性
+## <a name="regional-availability"></a>适用区域
 
-虚拟节点部署支持以下区域：
+虚拟节点部署支持以下区域:
 
 * 澳大利亚东部 (australiaeast)
+* 美国中部 (centralus)
 * 美国东部 (eastus)
-* 美国中西部 (westcentralus)
+* 美国东部 2 (eastus2)
+* 日本东部 (japaneast)
+* 北欧 (northeurope)
+* 东南亚 (southeastasia)
+* 美国中部 (westcentralus)
 * 西欧 (westeurope)
 * 美国西部 (westus)
+* 美国西部 2 (westus2)
 
 ## <a name="known-limitations"></a>已知限制
-虚拟节点功能是很大程度取决于 ACI 的功能集。 尚不支持以下方案的虚拟节点
+虚拟节点功能很大程度上依赖于 ACI 的功能集。 虚拟节点尚不支持以下方案
 
-* 使用服务主体来请求 ACR 映像。 [解决方法](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry)是使用[Kubernetes 机密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
-* [虚拟网络限制](../container-instances/container-instances-vnet.md)包括 VNet 对等互连、 Kubernetes 网络策略和网络安全组与 internet 的出站流量。
-* Init 容器
+* 使用服务主体拉取 ACR 映像。 [解决方法](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry)是使用[Kubernetes 机密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
+* [虚拟网络限制](../container-instances/container-instances-vnet.md), 包括 VNet 对等互连、Kubernetes 网络策略和网络安全组发送到 internet 的出站流量。
+* 初始化容器
 * [主机别名](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
-* [参数](../container-instances/container-instances-exec.md#restrictions)exec 在 ACI 中的
-* [Daemonset](concepts-clusters-workloads.md#statefulsets-and-daemonsets)将不将 pod 部署到虚拟节点
+* ACI 中 exec 的[参数](../container-instances/container-instances-exec.md#restrictions)
+* [Daemonset](concepts-clusters-workloads.md#statefulsets-and-daemonsets)不会将 pod 部署到虚拟节点
+* 虚拟节点不支持[Windows Server 节点 (当前在 AKS 中为预览版)](windows-container-cli.md) 。 你可以使用虚拟节点来计划 Windows Server 容器, 而无需在 AKS 群集中使用 Windows Server 节点。
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -96,7 +100,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 ```
 
-现在，使用 [az network vnet subnet create][az-network-vnet-subnet-create] 命令为虚拟节点创建其他子网。 以下示例使用 10.241.0.0/16 地址前缀创建一个名为 myVirtualNodeSubnet 的子网。
+现在, 使用[az network vnet subnet create][az-network-vnet-subnet-create]命令为虚拟节点创建另一个子网。 以下示例使用 10.241.0.0/16 地址前缀创建一个名为 myVirtualNodeSubnet 的子网。
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -134,13 +138,13 @@ az ad sp create-for-rbac --skip-assignment
 
 若要允许群集使用和管理虚拟网络，必须授予 AKS 服务主体使用网络资源的适当权限。
 
-首先，使用 [az network vnet show][az-network-vnet-show] 获取虚拟网络资源 ID：
+首先, 使用[az network vnet show][az-network-vnet-show]获取虚拟网络资源 ID:
 
 ```azurecli-interactive
 az network vnet show --resource-group myResourceGroup --name myVnet --query id -o tsv
 ```
 
-若要授予 AKS 群集使用虚拟网络的适当访问权限，请使用 [az role assignment create][az-role-assignment-create] 命令创建角色分配。 将 `<appId`> 和 `<vnetId>` 替换为在前两个步骤中收集的值。
+若要授予 AKS 群集使用虚拟网络的正确访问权限, 请使用[az role create create][az-role-assignment-create]命令创建角色分配。 将 `<appId`> 和 `<vnetId>` 替换为在前两个步骤中收集的值。
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
@@ -148,13 +152,13 @@ az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-将 AKS 群集部署到上一步中创建的 AKS 子网。 使用 [az network vnet subnet show][az-network-vnet-subnet-show] 获取此子网的 ID：
+将 AKS 群集部署到上一步中创建的 AKS 子网。 使用[az network vnet subnet show][az-network-vnet-subnet-show]获取此子网的 ID:
 
 ```azurecli-interactive
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 将 `<subnetId>` 替换为上一步中获取的 ID，然后将 `<appId>` 和 `<password>` 替换为 
+使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为myAKSCluster 的群集。 将 `<subnetId>` 替换为上一步中获取的 ID，然后将 `<appId>` 和 `<password>` 替换为 
 
 ```azurecli-interactive
 az aks create \
@@ -172,9 +176,9 @@ az aks create \
 
 几分钟后，该命令完成并返回有关群集的 JSON 格式信息。
 
-## <a name="enable-virtual-nodes-addon"></a>启用虚拟节点外接程序
+## <a name="enable-virtual-nodes-addon"></a>启用虚拟节点加载项
 
-若要启用虚拟节点，现在使用 [az aks enable-addons][az-aks-enable-addons] 命令。 以下示例使用上一步中创建的名为 myVirtualNodeSubnet  的子网：
+若要启用虚拟节点, 请使用[az aks 加载项][az-aks-enable-addons]命令。 以下示例使用上一步中创建的名为 myVirtualNodeSubnet 的子网：
 
 ```azurecli-interactive
 az aks enable-addons \
@@ -183,11 +187,6 @@ az aks enable-addons \
     --addons virtual-node \
     --subnet-name myVirtualNodeSubnet
 ```
-> [!NOTE]
-> 如果你收到了有关虚拟找不到节点的错误，可能需要安装其 CLI 扩展 
-> ```azurecli-interactive
-> az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
-> ```
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
 
@@ -215,7 +214,7 @@ aks-agentpool-14693408-0      Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>部署示例应用
 
-创建名为 `virtual-node.yaml` 的文件，并将其复制到以下 YAML 中。 若要在节点上计划容器，需定义 [nodeSelector][node-selector] 和 [toleration][toleration]。
+创建名为 `virtual-node.yaml` 的文件，并将其复制到以下 YAML 中。 若要计划节点上的容器, 请定义[nodeSelector][node-selector]和[toleration][toleration] 。
 
 ```yaml
 apiVersion: apps/v1
@@ -248,13 +247,13 @@ spec:
         effect: NoSchedule
 ```
 
-使用 [kubectl apply][kubectl-apply] 命令运行该应用程序。
+使用[kubectl apply][kubectl-apply]命令运行应用程序。
 
 ```console
 kubectl apply -f virtual-node.yaml
 ```
 
-使用带有 `-o wide` 参数的 [kubectl get pods][kubectl-get] 命令输出 Pod 和计划节点的列表。 请注意，已在 `virtual-node-aci-linux` 节点上计划 `aci-helloworld` pod。
+使用带有`-o wide`参数的[kubectl get][kubectl-get] pod 命令输出 pod 和计划节点的列表。 请注意，已在 `virtual-node-aci-linux` 节点上计划 `aci-helloworld` pod。
 
 ```
 $ kubectl get pods -o wide
@@ -266,7 +265,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 系统从被委派用于虚拟节点的 Azure 虚拟网络子网中为该 Pod 分配了一个内部 IP 地址。
 
 > [!NOTE]
-> 如果使用存储在 Azure 容器注册表中的映像，请[配置并使用 Kubernetes 机密][acr-aks-secrets]。 虚拟节点预览版的当前限制在于，无法使用集成的 Azure AD 服务主体身份验证。 如果不使用机密，则在虚拟节点上计划的 Pod 将无法启动并报告错误 `HTTP response status code 400 error code "InaccessibleImage"`。
+> 如果使用存储在 Azure 容器注册表中的映像, 请[配置并使用 Kubernetes 机密][acr-aks-secrets]。 虚拟节点当前的限制是不能使用集成 Azure AD 服务主体身份验证。 如果不使用机密，则在虚拟节点上计划的 Pod 将无法启动并报告错误 `HTTP response status code 400 error code "InaccessibleImage"`。
 
 ## <a name="test-the-virtual-node-pod"></a>测试虚拟节点 Pod
 
@@ -282,7 +281,7 @@ kubectl run -it --rm virtual-node-test --image=debian
 apt-get update && apt-get install -y curl
 ```
 
-现在使用 `curl` 访问 Pod 的地址，例如 *http://10.241.0.4*。 提供上一个 `kubectl get pods` 命令中所示的你自己的内部 IP 地址：
+现在使用 `curl` 访问 Pod 的地址，例如 *http://10.241.0.4* 。 提供上一个 `kubectl get pods` 命令中所示的你自己的内部 IP 地址：
 
 ```console
 curl -L http://10.241.0.4
@@ -304,7 +303,15 @@ $ curl -L 10.241.0.4
 
 ## <a name="remove-virtual-nodes"></a>删除虚拟节点
 
-如果不再想要使用虚拟节点，则可以使用 [az aks disable-addons][az aks disable-addons] 命令禁用它们。 以下示例禁用 Linux 虚拟节点：
+如果不再想要使用虚拟节点, 可以使用[az aks 加载项][az aks disable-addons]命令禁用它们。 
+
+首先, 删除虚拟节点上运行的 helloworld pod:
+
+```azurecli-interactive
+kubectl delete -f virtual-node.yaml
+```
+
+下面的示例命令禁用 Linux 虚拟节点:
 
 ```azurecli-interactive
 az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --addons virtual-node
@@ -313,23 +320,29 @@ az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --add
 现在，删除虚拟网络资源和资源组：
 
 ```azurecli-interactive
-# Change the name of your resource group and network resources as needed
+# Change the name of your resource group, cluster and network resources as needed
 RES_GROUP=myResourceGroup
+AKS_CLUSTER=myAKScluster
+AKS_VNET=myVnet
+AKS_SUBNET=myVirtualNodeSubnet
+
+# Get AKS node resource group
+NODE_RES_GROUP=$(az aks show --resource-group $RES_GROUP --name $AKS_CLUSTER --query nodeResourceGroup --output tsv)
 
 # Get network profile ID
-NETWORK_PROFILE_ID=$(az network profile list --resource-group $RES_GROUP --query [0].id --output tsv)
+NETWORK_PROFILE_ID=$(az network profile list --resource-group $NODE_RES_GROUP --query [0].id --output tsv)
 
 # Delete the network profile
 az network profile delete --id $NETWORK_PROFILE_ID -y
 
 # Get the service association link (SAL) ID
-SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name myVnet --name myVirtualNodeSubnet --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
+SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name $AKS_VNET --name $AKS_SUBNET --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
 
 # Delete the default SAL ID for the subnet
 az resource delete --ids $SAL_ID --api-version 2018-07-01
 
 # Delete the subnet delegation to Azure Container Instances
-az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --name myVirtualNodeSubnet --remove delegations 0
+az network vnet subnet update --resource-group $RES_GROUP --vnet-name $AKS_VNET --name $AKS_SUBNET --remove delegations 0
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -338,10 +351,10 @@ az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --n
 
 虚拟节点通常是 AKS 中缩放解决方案的一个组件。 有关缩放解决方案的详细信息，请参阅以下文章：
 
-- [使用 Kubernetes 水平 Pod 自动缩放程序][aks-hpa]
-- [使用 Kubernetes 群集自动缩放程序][aks-cluster-autoscaler]
+- [使用 Kubernetes 横向 pod 自动缩放程序][aks-hpa]
+- [使用 Kubernetes cluster 自动缩放程序][aks-cluster-autoscaler]
 - [查看虚拟节点的自动缩放示例][virtual-node-autoscale]
-- [了解有关在 Virtual Kubelet 开放源代码库的更多信息][virtual-kubelet-repo]
+- [阅读有关虚拟 Kubelet 开放源代码库的详细信息][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

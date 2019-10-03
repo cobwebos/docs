@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Edge 限制 | Microsoft Docs
-description: 介绍了 Microsoft Azure Data Box Edge 的系统限制与建议的大小。
+description: 介绍 Azure 数据框 Edge 系统限制与建议的大小。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: a687398032adffe5e787ef1469abe0b2627a38fe
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b454b563cdb870ca8f07a45b796dc6b1e272502d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403530"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64924599"
 ---
 # <a name="azure-data-box-edge-limits"></a>Azure 数据框边缘限制
 
@@ -29,9 +29,9 @@ ms.locfileid: "58403530"
 
 | 描述 | 值 |
 |---|---|
-|不是。 设备的文件数 |1 亿 |
-|不是。 设备的共享数 |24 |
-|不是。 每个容器的共享数 |第 |
+|每 个设备的文件数 |1 亿 |
+|每 个设备的共享数 |24 |
+|每 个容器的共享数 |第 |
 |写入到共享的最大文件大小| 5 TB |
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制

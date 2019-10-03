@@ -1,121 +1,92 @@
 ---
-title: Azure Active Directory 条件访问中的策略迁移是什么？ | Microsoft Docs
+title: 什么是 Azure Active Directory 条件访问中的策略迁移？ | Microsoft Docs
 description: 了解在 Azure 门户中迁移经典策略所要掌握的知识。
 services: active-directory
-keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 07/24/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3246a7efa36e6c6ef0dac93e659a73dac17090a
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 7464546a78e1b54cdea3bd6dd66656f5b189bc02
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516869"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67506800"
 ---
-# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的策略迁移是什么？ 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>什么是 Azure Active Directory 条件访问中的策略迁移？ 
 
+[条件性访问](../active-directory-conditional-access-azure-portal.md)是一项功能的 Azure Active directory (Azure AD) 可以控制如何授权用户访问你的云应用。 虽然目的仍然相同，新的 Azure 门户的版本引入了重大改进条件性访问的工作原理。
 
-[条件访问](../active-directory-conditional-access-azure-portal.md)是 Azure Active Directory (Azure AD) 中的一项功能，用于控制已获授权的用户如何访问云应用。 尽管此功能的用途仍未变化，但新版 Azure 门户在条件访问的工作原理方面引入了重大改进。
-
-应考虑迁移未在 Azure 门户中创建的策略，因为：
+考虑迁移未在 Azure 门户中创建的策略，因为：
 
 - 现在可以解决以前无法处理的方案。
-
 - 可以通过合并来减少需要管理的策略数。   
-
-- 可以在一个中心位置管理所有条件访问策略。
-
+- 你可以管理在一个中心位置的所有条件性访问策略。
 - Azure 经典门户即将停用。   
 
-本文介绍在将现有条件访问策略迁移到新框架时所要掌握的知识。
+此文章介绍了您需要知道要将现有的条件性访问策略迁移到新的框架。
  
 ## <a name="classic-policies"></a>经典策略
 
-在 [Azure 门户](https://portal.azure.com)中，[条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)页是条件访问策略的入口点。 但是，你的环境也可能包含尚未使用此页创建的条件访问策略。 这些策略称为“经典策略”。 经典策略是在以下位置创建的条件访问策略：
+在中[Azure 门户](https://portal.azure.com)，则[条件访问-策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)页是条件性访问策略的入口点。 但是，在环境中，您还可能不具有创建使用此页的条件性访问策略。 这些策略称为“经典策略”。  经典策略是条件性访问策略，在已创建：
 
 - Azure 经典门户
 - Intune 经典门户
 - Intune 应用保护门户
 
-
-在“条件访问”页上，可以通过单击“管理”部分的“[**经典策略(预览)**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies)”来访问经典策略。 
-
+上**条件访问**页上，您可以通过单击访问经典策略[**经典策略 （预览）** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies)中**管理**部分。 
 
 ![Azure Active Directory](./media/policy-migration/71.png)
 
-
-“经典策略”视图提供了一个选项用于执行以下操作：
+“经典策略”视图提供了一个选项用于执行以下操作： 
 
 - 筛选经典策略。
  
-    ![Azure Active Directory](./media/policy-migration/72.png)
+   ![Azure Active Directory](./media/policy-migration/72.png)
 
 - 禁用经典策略。
 
-    ![Azure Active Directory](./media/policy-migration/73.png)
+   ![Azure Active Directory](./media/policy-migration/73.png)
    
-- 查看经典策略的设置（以及禁用经典策略）。
+- 查看经典策略 （以及以禁用它） 的设置。
 
-    ![Azure Active Directory](./media/policy-migration/74.png)
+   ![Azure Active Directory](./media/policy-migration/74.png)
 
-
-禁用经典策略后，再也无法还原此步骤。 因此，可以使用“详细信息”视图修改经典策略中的组成员身份。 
+禁用经典策略后，再也无法还原此步骤。 因此，可以使用“详细信息”视图修改经典策略中的组成员身份。  
 
 ![Azure Active Directory](./media/policy-migration/75.png)
 
 通过更改选定的组或排除特定的组，可以在针对所有包含的用户和组禁用某个策略之前，针对少量测试用户来测试禁用该策略所产生的影响。 
 
-
-
 ## <a name="azure-ad-conditional-access-policies"></a>Azure AD 条件访问策略
 
-对于 Azure 门户中的条件访问，可以在一个中心位置管理所有策略。 由于条件访问的实现方式已发生很大变化，在迁移经典策略之前，应熟悉基本的概念。
+使用 Azure 门户中的条件性访问，可以管理在一个中心位置中的所有策略。 由于条件性访问已更改的实现方式，您应熟悉的基本概念迁移经典策略之前。
 
-请参阅:
+请参阅：
 
-- [Azure Active Directory 中的条件访问是什么](../active-directory-conditional-access-azure-portal.md)，了解基本概念和术语。
-
-- [Azure Active Directory 中条件访问的最佳做法](best-practices.md)，获取有关在组织中部署条件访问的一些指导。
-
-- [通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)，熟悉 Azure 门户中的用户界面。
-
-
+- [什么是 Azure Active Directory 中条件性访问](../active-directory-conditional-access-azure-portal.md)若要了解基本概念和术语。
+- [Azure Active Directory 中条件性访问的最佳实践](best-practices.md)以获取有关在组织中部署条件性访问的一些指导。
+- [使用 Azure Active Directory 条件性访问需要针对特定应用的 MFA](app-based-mfa.md) ，熟悉 Azure 门户中的用户界面。
  
 ## <a name="migration-considerations"></a>迁移注意事项
 
-在本文中，Azure AD 条件访问策略也称为“新策略”。
+在本文中，Azure AD 条件性访问策略也称为*新的策略*。
 在禁用或删除经典策略之前，这些策略与新策略仍可同时运行。 
 
 在策略整合的上下文中，必须注意以下几个方面：
 
 - 尽管经典策略与特定的云应用相关联，但你可以根据需要在新策略中选择任意数量的云应用。
-
 - 云应用的经典策略和新策略控制要求满足所有控制条件 (*AND*)。 
-
-
 - 在新策略中，可以：
- 
-    - 根据方案的需要组合多个条件。 
+   - 根据方案的需要组合多个条件。 
+   - 选择多个授予要求作为访问控制，并使用逻辑 *OR*（要求满足选定控制条件中的一个）或逻辑 *AND*（要求满足所有选定控制条件）来合并这些要求。
 
-    - 选择多个授予要求作为访问控制，并使用逻辑 *OR*（要求满足选定控制条件中的一个）或逻辑 *AND*（要求满足所有选定控制条件）来合并这些要求。
-
-        ![Azure Active Directory](./media/policy-migration/25.png)
-
-
-
+   ![Azure Active Directory](./media/policy-migration/25.png)
 
 ### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
 
@@ -133,7 +104,6 @@ ms.locfileid: "58516869"
 
 ![Azure Active Directory](./media/policy-migration/16.png)
  
-
 Office 365 Exchange Online 的、将 **Exchange Active Sync** 包含为客户端应用条件的[基于应用](technical-reference.md#approved-client-app-requirement)的经典策略允许**受支持**和**不受支持**的[设备平台](technical-reference.md#device-platform-condition)。 尽管无法在相关的新策略中配置单个设备平台，但可以将支持状态限制为[受支持的设备平台](technical-reference.md#device-platform-condition)。 
 
 ![Azure Active Directory](./media/policy-migration/65.png)
@@ -141,7 +111,6 @@ Office 365 Exchange Online 的、将 **Exchange Active Sync** 包含为客户端
 可以整合多个将 **Exchange Active Sync** 包含为客户端应用条件的经典策略，前提是这些策略：
 
 - 只将 **Exchange Active Sync** 用作条件 
-
 - 针对授予访问权限配置了多项要求
 
 一种常见方案是整合：
@@ -153,8 +122,6 @@ Office 365 Exchange Online 的、将 **Exchange Active Sync** 包含为客户端
 
 ![Azure Active Directory](./media/policy-migration/62.png)
 
-
-
 ### <a name="device-platforms"></a>设备平台
 
 包含[基于应用的控制条件](technical-reference.md#approved-client-app-requirement)的经典策略中已预先将 iOS 和 Android 配置为[设备平台条件](technical-reference.md#device-platform-condition)。 
@@ -163,14 +130,7 @@ Office 365 Exchange Online 的、将 **Exchange Active Sync** 包含为客户端
 
 ![Azure Active Directory](./media/policy-migration/41.png)
 
-
-
- 
- 
-
-
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)。
-
-- 如果已准备好配置环境的条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)。 
+- 如果你想要了解如何配置条件性访问策略，请参阅[需要 MFA 的特定应用的 Azure Active Directory 条件性访问](app-based-mfa.md)。
+- 如果你已准备好配置你的环境的条件性访问策略，请参阅[的 Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。 

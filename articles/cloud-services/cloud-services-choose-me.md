@@ -2,23 +2,17 @@
 title: 什么是 Azure 云服务 | Microsoft Docs
 description: 了解什么是 Azure 云服务。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
+author: georgewallace
 ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ce88dcaedf32f293fc121cda2a088388c99badee
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.author: gwallace
+ms.openlocfilehash: 61369d51056607d8176d301afa945c7c77895b12
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603821"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359706"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Azure 云服务的概述
 Azure 云服务是[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 的一个示例。 与 [Azure 应用服务](../app-service/overview.md)一样，此技术设计用于支持可缩放、可靠且运营成本低廉的应用程序。 同样，应用服务托管在虚拟机 (VM) 上，Azure 云服务也是如此。 但是，你对 VM 有更多的控制。 可以在使用 Azure 云服务的 VM 上安装自己的软件，并且可以远程访问它们。
@@ -37,7 +31,7 @@ Azure 云服务是[平台即服务](https://azure.microsoft.com/overview/what-is
 
 如上图所示，一个应用程序中的所有 VM 都在同一云服务中运行。 用户通过单个公共 IP 地址访问应用程序，而请求会自动在应用程序的 VM 中进行负载均衡。 该平台采用一种能够避免单点硬件故障的方式在 Azure 云服务应用程序中[缩放和部署](cloud-services-how-to-scale-portal.md) VM。
 
-即使应用程序在 VM 中运行，理解 Azure 云服务提供的是 PaaS 而非基础结构即服务 (IaaS) 也很重要。 以下办法有助于理解这一点。 使用 IaaS（例如 Azure 虚拟机）时，首先要创建并配置你的应用程序将在其中运行的环境。 然后，将应用程序部署到该环境中。 你要负责执行该环境的大部分管理工作，例如在每个 VM 中部署操作系统的新修补版本。 相反，在 PaaS 中，这样的环境似乎早已存在。 只需部署应用程序。 已处理它所运行的平台的管理工作，包括部署操作系统的新版本。
+即使应用程序在 VM 中运行，理解 Azure 云服务提供的是 PaaS 而非基础结构即服务 (IaaS) 也很重要。 以下办法有助于理解这一点。 使用 IaaS（例如 Azure 虚拟机）时，首先要创建并配置你的应用程序将在其中运行的环境。 然后，将应用程序部署到该环境中。 你要负责执行该环境的大部分管理工作，例如在每个 VM 中部署操作系统的新修补版本。 相反，在 PaaS 中，这样的环境似乎早已存在。 只需部署应用程序即可。 已处理它所运行的平台的管理工作，包括部署操作系统的新版本。
 
 ## <a name="scaling-and-management"></a>缩放和管理
 使用 Azure 云服务时，你不需要创建虚拟机。 相反，你将提供一个配置文件，告知 Azure 每个 VM 需要多少个角色实例（例如，“三个 Web 角色实例”和“两个辅助角色实例”）。 然后，平台将创建它们。 虽然仍然要选择这些备份 VM 的[大小](cloud-services-sizes-specs.md)，但不用直接自行进行创建。 如果应用程序需要处理更大的负载，则可以要求增加 VM，Azure 将创建这些实例。 如果负载降低，则可以关闭这些实例并停止为它们付费。

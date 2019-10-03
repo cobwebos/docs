@@ -14,18 +14,18 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 102fe85916194648501be3d2cb39d8bcda9e9f5c
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: ef0237b38c8f640c0fc4b1b1788215c8804a5cd4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607069"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141901"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>如何通过 Python 使用服务总线主题和订阅
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-本文介绍了如何使用服务总线主题和订阅。 相关示例采用 Python 编写，并使用了 [Azure Python SDK 包][Azure Python package]。 涉及的方案包括：
+本文介绍了如何使用服务总线主题和订阅。 示例是用 Python 编写的, 并使用了[Azure PYTHON SDK 包][Azure Python package]。 涉及的方案包括：
 
 - 创建主题和订阅 
 - 创建订阅筛选器 
@@ -33,13 +33,13 @@ ms.locfileid: "59607069"
 - 从订阅接收消息
 - 删除主题和订阅
 
-## <a name="prerequisites"></a>必备组件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[Visual Studio 或 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照步骤[快速入门：使用 Azure 门户创建服务总线主题和订阅到主题](service-bus-quickstart-topics-subscriptions-portal.md)若要创建服务总线**命名空间**并获取**连接字符串**。
+## <a name="prerequisites"></a>先决条件
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 你可以[激活 Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或者注册[免费试用帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)中的步骤来创建服务总线**命名空间**并获取**连接字符串**。
 
     > [!NOTE]
-    > 您将创建**主题**和一个**订阅**使用主题**Python**在本快速入门。 
-3. 安装[Azure Python 包][Azure Python package]。 请参阅[Python 安装指南](../python-how-to-install.md)。
+    > 在本快速入门中，你将使用 **Python** 创建一个**主题**和对此主题的**订阅**。 
+3. 安装[Azure Python 包][Azure Python package]。 请参阅 [Python 安装指南](/azure/python/python-sdk-azure-install)。
 
 ## <a name="create-a-topic"></a>创建主题
 
@@ -58,7 +58,7 @@ bus_service = ServiceBusService(
     shared_access_key_value='sharedaccesskey')
 ```
 
-可从 [Azure 门户][Azure portal]获取 SAS 密钥名称和密钥值。
+可从 [Azure 门户][Azure portal]获取 SAS 密钥名称值和其值。
 
 ```python
 bus_service.create_topic('mytopic')
@@ -79,9 +79,9 @@ bus_service.create_topic('mytopic', topic_options)
 主题订阅也是使用 **ServiceBusService** 对象创建的。 为订阅命名，并且订阅可以具有可选筛选器，以限制传送到订阅的虚拟队列的消息集。
 
 > [!NOTE]
-> 订阅具有永久性，除非将其或其订阅的主题删除，否则订阅将一直存在。
+> 默认情况下, 订阅是永久性的, 并且将继续存在, 直到删除这些订阅或它们所订阅的主题。
 > 
-> 
+> 可以通过设置[auto_delete_on_idle 属性](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python)来自动删除订阅。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
 
@@ -140,7 +140,8 @@ bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 
 ```python
 for i in range(5):
-    msg = Message('Msg {0}'.format(i).encode('utf-8'), custom_properties={'messagenumber':i})
+    msg = Message('Msg {0}'.format(i).encode('utf-8'),
+                  custom_properties={'messagenumber': i})
     bus_service.send_topic_message('mytopic', msg)
 ```
 
@@ -151,7 +152,8 @@ for i in range(5):
 对 ServiceBusService 对象使用 `receive_subscription_message` 方法可从订阅接收消息：
 
 ```python
-msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=False)
+msg = bus_service.receive_subscription_message(
+    'mytopic', 'LowMessages', peek_lock=False)
 print(msg.body)
 ```
 
@@ -178,7 +180,7 @@ msg.delete()
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
 
-主题和订阅具有持久性，必须通过 [Azure 门户][Azure portal]或以编程方式显式删除。 以下示例说明如何删除名为 `mytopic` 的主题：
+除非设置[auto_delete_on_idle 属性](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python), 否则主题和订阅是永久性的。 可以通过[Azure 门户][Azure portal]或以编程方式删除这些方法。 以下示例说明如何删除名为 `mytopic` 的主题：
 
 ```python
 bus_service.delete_topic('mytopic')
@@ -189,6 +191,9 @@ bus_service.delete_topic('mytopic')
 ```python
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
+
+> [!NOTE]
+> 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,18 +4,18 @@ description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中使�
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
 ms.topic: article
 ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.openlocfilehash: e3d2a458c2cece5e3f01fdb9e3d403b3fb78dd2b
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: HT
+ms.openlocfilehash: 4a19462f4f849602fd14fe1204f1c7e3c01e6ec4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121639"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64701449"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中解码 X12 消息
 
@@ -36,7 +36,7 @@ ms.locfileid: "43121639"
 
 2. 解码 X12 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
 
-3.  在搜索框中，输入“x12”作为筛选器。 选择“X12 - 解码 X12 消息”。
+3.  在搜索框中，输入“x12”作为筛选器。 选择“X12 - 解码 X12 消息”。 
    
     ![搜索“x12”](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
 
@@ -51,7 +51,7 @@ ms.locfileid: "43121639"
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”。
+5.  完成后，连接详细信息应如此示例所示。 若要完成连接创建，请选择“创建”  。
    
     ![集成帐户连接详细信息](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
 
@@ -89,13 +89,13 @@ X12 解码连接器执行以下任务：
   * 针对交换中的其他组控制编号检查组控制编号。
   * 针对该组中的其他事务集控制编号检查事务集控制编号。
 * 将交换拆分为事务集，或保留整个交换：
-  * 将交换拆分为交易集 - 出错时暂停交易集：将交换拆分为交易集并分析每个交易集。 
+  * 将交换拆分为事务集-出错时挂起事务集：将交换拆分为事务集并分析每个事务集。 
   X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
-  * 将交换拆分为交易集 - 出错时暂停交换：将交换拆分为交易集并分析每个交易集。 
+  * 将交换拆分为事务集-出错时挂起交换：将交换拆分为事务集并分析每个事务集。 
   如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
-  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
+  * 保留交换-出错时挂起事务集：保留交换并处理整个批量的交换。 
   X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
-  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
+  * 保留交换-出错时挂起交换：保留交换并处理整个批量的交换。 
   如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。 
 * 生成技术和/或功能确认（如果已配置）。
   * 技术确认作为标头验证的结果生成。 技术确认报告地址接收方进行的交换标头和尾部处理的状态。

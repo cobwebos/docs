@@ -1,25 +1,19 @@
 ---
-title: Web Analytics | Microsoft Docs
+title: Web Analytics
 description: .
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 89cc8c4bffe910de0861d7f44925a10df3811fdb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: pabutler
+ms.openlocfilehash: a6b2a7981452b47a3992b6c0efee286878e143fb
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097468"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962886"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -77,7 +71,7 @@ ms.locfileid: "58097468"
     2.  登陆页面 URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
 3. 用户单击\"试用我的产品\"链接，然后进入 AppSource。
     1. 推荐 URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. 登陆页面 URL（**请确保在此 URL 中添加 utm\_campaign 和 utm\_source**）= [https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**](https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    2. 登陆页面 URL（**请确保在此 URL 中添加 utm\_campaign 和 utm\_source**）= [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_ campaign=MyCampaignAdName&utm\_ source=MySourceAdName**](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>如何评估营销活动的成功度
 -----------------------------------------

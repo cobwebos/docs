@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
 ms.openlocfilehash: a3d6cb745c782d2a7166208f2a8dd1202a330b15
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050483"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60410074"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>将数据移到 vFXT 群集 - 并行数据引入 
 
@@ -259,7 +259,7 @@ for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt
 
 ## <a name="use-the-msrsync-utility-to-populate-cloud-volumes"></a>使用 msrsync 实用工具填充云卷
 
-也可以使用 ``msrsync`` 工具将数据移到 Avere 群集的后端核心文件管理器。 此工具旨在通过运行多个并行 ``rsync`` 进程来优化带宽的使用。 可从 GitHub 获取此工具： https://github.com/jbd/msrsync。
+也可以使用 ``msrsync`` 工具将数据移到 Avere 群集的后端核心文件管理器。 此工具旨在通过运行多个并行 ``rsync`` 进程来优化带宽的使用。 可从 GitHub 获取此工具： https://github.com/jbd/msrsync 。
 
 ``msrsync`` 将源目录分解成独立的“桶”，然后针对每个桶运行单个 ``rsync`` 进程。
 

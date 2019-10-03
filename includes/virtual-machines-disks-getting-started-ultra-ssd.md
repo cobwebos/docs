@@ -5,85 +5,215 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3b596e5bad8202d88ea06c7eee114bec1063a35f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3f910a3d0466153bd60fe23ef2f9f656cac292ee
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58052065"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70919645"
 ---
-# <a name="enabling-azure-ultra-ssds"></a>启用 Azure 超高 Ssd
+# <a name="using-azure-ultra-disks"></a>使用 Azure 超磁盘
 
-Azure 超级 SSD 为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低延迟的磁盘存储。 此新产品提供出类拔萃的性能，其可用性级别与我们的现有磁盘产品相同。 超级 SSD 的其他优势包括能够动态改变工作负荷以及磁盘的性能，而无需重启虚拟机。 超级 SSD 适用于 SAP HANA、顶层数据库等数据密集型工作负荷，以及事务密集型工作负荷。
+Azure ultra 磁盘为 Azure IaaS 虚拟机（Vm）提供高吞吐量、高 IOPS 和一致的低延迟磁盘存储。 此新产品提供出类拔萃的性能，其可用性级别与我们的现有磁盘产品相同。 超磁盘的一个主要优点是能够在不重新启动 Vm 的情况下动态更改 SSD 的性能和工作负荷。 超磁盘适用于数据密集型工作负荷，例如 SAP HANA、顶级数据库和事务密集型工作负荷。
 
-目前，超级 SSD 为预览版，因此必须[注册](https://aka.ms/UltraSSDPreviewSignUp)预览版才能使用它们。
+## <a name="check-if-your-subscription-has-access"></a>检查你的订阅是否有访问权限
 
-获得批准后，请运行以下任一命令以确定要将超级磁盘部署到美国东部 2 中的哪个区域：
+如果你已注册了 ultra 磁盘，并且想要检查是否为超磁盘启用了你的订阅，请使用以下命令之一： 
 
-PowerShell：`Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
+CLI：`az feature show --namespace Microsoft.Compute --name UltraSSD`
 
-CLI：`az vm list-skus --resource-type disks --query “[?name==’UltraSSD_LRS’]”`
+PowerShell：`Get-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName UltraSSD`
 
-响应将类似于以下形式，其中的 X 表示要用于在美国东部 2 中进行部署的区域。 X 可能是1、2 或 3。
+如果你的订阅已启用，则输出应如下所示：
 
-|ResourceType  |名称  |位置  |区域  |限制  |功能  |值  |
-|---------|---------|---------|---------|---------|---------|---------|
-|disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
-
-如果命令没有返回任何响应，这表示你对使用此功能的注册还处于等待处理状态或者尚未获得批准。
-
-在知道了要部署到哪个区域后，请按照本文中的部署步骤来部署第一个具有超级 SSD 的 VM。
-
-## <a name="deploying-an-ultra-ssd"></a>部署超级 SSD
-
-首先，确定要部署的 VM 大小。 在此预览版中，仅支持 DsV3 和 EsV3 VM 系列。 有关这些 VM 大小的其他详细信息，请参阅此[博客](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)上的第二个表格。
-此外，请参阅示例[创建具有多个超级 SSD 的 VM](https://aka.ms/UltraSSDTemplate) 以了解如何创建具有多个超级 SSD 的 VM。
-
-下面介绍了新的/修改的资源管理器模板更改：必须将 `Microsoft.Compute/virtualMachines` 和 `Microsoft.Compute/Disks` 的 apiVersion 设置为 `2018-06-01`（或之后）。
-
-指定磁盘 Sku UltraSSD_LRS、磁盘容量、IOPS 和吞吐量 (MBps) 来创建超级磁盘。 以下是创建 1,024 GiB（GiB = 2^30 字节）、80,000 IOPS 和 1,200 MBps（MBps = 每秒 10^6 字节）的磁盘的示例：
-
-```json
-"properties": {  
-    "creationData": {  
-    "createOption": "Empty"  
-},  
-"diskSizeGB": 1024,  
-"diskIOPSReadWrite": 80000,  
-"diskMBpsReadWrite": 1200,  
-}
-```
-
-在 VM 的属性上添加一个额外功能来指示其超级功能已启用（请参阅[示例](https://aka.ms/UltraSSDTemplate)以查看完整的资源管理器模板）：
-
-```json
+```bash
 {
-    "apiVersion": "2018-06-01",
-    "type": "Microsoft.Compute/virtualMachines",
-    "properties": {
-                    "hardwareProfile": {},
-                    "additionalCapabilities" : {
-                                    "ultraSSDEnabled" : "true"
-                    },
-                    "osProfile": {},
-                    "storageProfile": {},
-                    "networkProfile": {}
-    }
+  "id": "/subscriptions/<yoursubID>/providers/Microsoft.Features/providers/Microsoft.Compute/features/UltraSSD",
+  "name": "Microsoft.Compute/UltraSSD",
+  "properties": {
+    "state": "Registered"
+  },
+  "type": "Microsoft.Features/providers/features"
 }
 ```
+
+## <a name="determine-your-availability-zone"></a>确定可用性区域
+
+批准后，需要确定你所在的可用性区域，以便使用超磁盘。 运行以下任一命令以确定要将您的 ultra 磁盘部署到哪个区域，确保首先替换**region**、 **vmSize**和**订阅**值：
+
+CLI：
+
+```bash
+$subscription = "<yourSubID>"
+$region = "<yourLocation>, example value is southeastasia"
+$vmSize = "<yourVMSize>, example value is Standard_E64s_v3"
+
+az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
+```
+
+PowerShell：
+
+```powershell
+$region = "southeastasia"
+$vmSize = "Standard_E64s_v3"
+(Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) -and $_.LocationInfo[0].ZoneDetails.Count -gt 0})[0].LocationInfo[0].ZoneDetails
+```
+
+响应将类似于以下形式，其中 X 是用于在所选区域中进行部署的区域。 X 可能是1、2 或 3。 目前，只有三个区域支持超小型磁盘，它们是：美国东部2、东南亚和北欧。
+
+保留 "**区域**" 值，它表示可用性区域，你需要它来部署超磁盘。
+
+|ResourceType  |姓名  |Location  |区域  |限制  |功能  |ReplTest1  |
+|---------|---------|---------|---------|---------|---------|---------|
+|磁盘     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+
+> [!NOTE]
+> 如果命令没有响应，则可能是该功能的注册仍处于挂起状态，或者使用的是旧版本的 CLI 或 PowerShell。
+
+现在，你已了解要部署到哪个区域，请按照本文中的部署步骤，使用附加的 ultra 磁盘部署 VM，或者将超小型磁盘附加到现有 VM。
+
+## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>使用 Azure 资源管理器部署 ultra 磁盘
+
+首先，确定要部署的 VM 大小。 目前，只有 DsV3 和 EsV3 VM 系列支持 ultra 磁盘。 有关这些 VM 大小的其他详细信息，请参阅此[博客](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)上的第二个表格。
+
+若要创建具有多个超磁盘的 VM，请参阅示例[创建包含多个超磁盘的 vm](https://aka.ms/ultradiskArmTemplate)。
+
+如果要使用自己的模板，请确保将**apiVersion** `Microsoft.Compute/virtualMachines` `Microsoft.Compute/Disks`设置`2018-06-01`为（或更高版本）。
+
+将磁盘 sku 设置为**UltraSSD_LRS**，然后设置磁盘容量、IOPS、可用性区域和吞吐量（以 MBps 为单位）以创建超磁盘。
 
 在预配 VM 后，可以对数据磁盘进行分区和格式设置并为工作负荷配置这些磁盘。
 
-## <a name="additional-ultra-ssd-scenarios"></a>其他超级 SSD 方案
+## <a name="deploy-an-ultra-disk-using-cli"></a>使用 CLI 部署 ultra 磁盘
 
-- 在 VM 创建期间，也可以隐式创建超级 SSD。 但是，这些磁盘将收到 IOPS (500) 和吞吐量（8 MiB/秒）的默认值。
-- 其他超级 SSD 可以附加到兼容的 VM 上。
-- 超级 SSD 支持在运行时调整磁盘性能属性（IOPS 和吞吐量），而无需从虚拟机拆离磁盘。 在对磁盘上发出磁盘性能调整大小操作后，更改实际上可能最多需要一个小时才能生效。
-- 增加磁盘容量需要释放虚拟机。
+首先，确定要部署的 VM 大小。 目前，只有 DsV3 和 EsV3 VM 系列支持 ultra 磁盘。 有关这些 VM 大小的其他详细信息，请参阅此[博客](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)上的第二个表格。
+
+必须创建能够使用 ultra 磁盘的 VM，才能附加超磁盘。
+
+将 **$vmname**、 **$rgname**、 **$diskname**、 **$location**、 **$password**、 **$user**变量替换为你自己的值。 将 **$zone**设置为从[本文开头](#determine-your-availability-zone)获取的可用性区域值。 然后运行以下 CLI 命令，以创建支持 ultra 的 VM：
+
+```azurecli-interactive
+az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
+```
+
+### <a name="create-an-ultra-disk-using-cli"></a>使用 CLI 创建超小型磁盘
+
+现在，你有了一个能够附加超磁盘的 VM，你可以创建一个超磁盘并将其附加到该磁盘。
+
+```azurecli-interactive
+$location="eastus2"
+$subscription="xxx"
+$rgname="ultraRG"
+$diskname="ssd1"
+$vmname="ultravm1"
+$zone=123
+
+#create an ultra disk
+az disk create `
+--subscription $subscription `
+-n $diskname `
+-g $rgname `
+--size-gb 4 `
+--location $location `
+--zone $zone `
+--sku UltraSSD_LRS `
+--disk-iops-read-write 1000 `
+--disk-mbps-read-write 50
+```
+
+## <a name="attach-an-ultra-disk-to-a-vm-using-cli"></a>使用 CLI 将 ultra 磁盘附加到 VM
+
+或者，如果你的现有 VM 位于能够使用超磁盘的区域/可用性区域中，则可以使用超磁盘，而不必创建新的 VM。
+
+```bash
+$rgName = "<yourResourceGroupName>"
+$vmName = "<yourVMName>"
+$diskName = "<yourDiskName>"
+$subscriptionId = "<yourSubscriptionID>"
+
+az vm disk attach -g $rgName --vm-name $vmName --disk $diskName --subscription $subscriptionId
+```
+
+### <a name="adjust-the-performance-of-an-ultra-disk-using-cli"></a>使用 CLI 调整超磁盘的性能
+
+超磁盘提供了独特的功能，使你能够调整性能，以下命令描述了如何使用此功能：
+
+```azurecli-interactive
+az disk update `
+--subscription $subscription `
+--resource-group $rgname `
+--name $diskName `
+--set diskIopsReadWrite=80000 `
+--set diskMbpsReadWrite=800
+```
+
+## <a name="deploy-an-ultra-disk-using-powershell"></a>使用 PowerShell 部署 ultra 磁盘
+
+首先，确定要部署的 VM 大小。 目前，只有 DsV3 和 EsV3 VM 系列支持 ultra 磁盘。 有关这些 VM 大小的其他详细信息，请参阅此[博客](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)上的第二个表格。
+
+若要使用超磁盘，必须创建能够使用超磁盘的 VM。 将 **$resourcegroup**和 **$vmName**变量替换为自己的值。 将 **$zone**设置为从[本文开头](#determine-your-availability-zone)获取的可用性区域值。 然后运行以下[new-azvm](/powershell/module/az.compute/new-azvm)命令，以创建支持 HYPER-V 的 VM：
+
+```powershell
+New-AzVm `
+    -ResourceGroupName $resourcegroup `
+    -Name $vmName `
+    -Location "eastus2" `
+    -Image "Win2016Datacenter" `
+    -EnableUltraSSD `
+    -size "Standard_D4s_v3" `
+    -zone $zone
+```
+
+### <a name="create-an-ultra-disk-using-powershell"></a>使用 PowerShell 创建超小型磁盘
+
+现在，你有了一个能够使用超磁盘的 VM，接下来可以创建一个超磁盘并将其附加到其中：
+
+```powershell
+$diskconfig = New-AzDiskConfig `
+-Location 'EastUS2' `
+-DiskSizeGB 8 `
+-DiskIOPSReadWrite 1000 `
+-DiskMBpsReadWrite 100 `
+-AccountType UltraSSD_LRS `
+-CreateOption Empty `
+-zone $zone;
+
+New-AzDisk `
+-ResourceGroupName $resourceGroup `
+-DiskName 'Disk02' `
+-Disk $diskconfig;
+```
+
+## <a name="attach-an-ultra-disk-to-a-vm-using-powershell"></a>使用 PowerShell 将 ultra 磁盘附加到 VM
+
+或者，如果你的现有 VM 位于能够使用超磁盘的区域/可用性区域中，则可以使用超磁盘，而不必创建新的 VM。
+
+```powershell
+# add disk to VM
+$subscription = "<yourSubscriptionID>"
+$resourceGroup = "<yourResourceGroup>"
+$vmName = "<yourVMName>"
+$diskName = "<yourDiskName>"
+$lun = 1
+Login-AzureRMAccount -SubscriptionId $subscription
+$vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
+$disk = Get-AzDisk -ResourceGroupName $resourceGroup -Name $diskName
+$vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Attach -ManagedDiskId $disk.Id -Lun $lun
+Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
+```
+
+### <a name="adjust-the-performance-of-an-ultra-disk-using-powershell"></a>使用 PowerShell 调整超磁盘的性能
+
+超磁盘具有独特的功能，使你能够调整性能，以下命令是一个示例，用于在不分离磁盘的情况下调整性能：
+
+```powershell
+$diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
+Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-如果想尝试新的磁盘类型并且尚未注册预览版，可以[通过此调查请求访问](https://aka.ms/UltraSSDPreviewSignUp)。
+如果希望使用此调查尝试新的磁盘类型[请求访问权限](https://aka.ms/UltraDiskSignup)。

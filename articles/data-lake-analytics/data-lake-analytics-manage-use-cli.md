@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 命令行接口管理 Azure Data Lake Analytics
+title: 使用 Azure CLI 管理 Azure Data Lake Analytics
 description: 本文介绍如何使用 Azure CLI 管理 Data Lake Analytics 作业、数据源和用户。
 services: data-lake-analytics
 author: jasonwhowell
@@ -8,12 +8,12 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: fa7d46d45c350435c0ffba8f3755ad8bea651c3e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d66926d8ba87096537800d22a9c116b7b10d23cf
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088751"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309736"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>使用 Azure 命令行接口 (CLI) 管理 Azure Data Lake Analytics
 
@@ -211,7 +211,7 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [Get started with Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)
 * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)

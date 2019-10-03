@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: db88a166cd59e96b459f8d4dcaa6a6d2b8c4ff99
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57907622"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67172662"
 ---
 ## <a name="set-properties"></a>设置属性
 

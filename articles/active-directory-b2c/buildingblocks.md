@@ -2,20 +2,20 @@
 title: BuildingBlocks - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 BuildingBlocks 元素。
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: afa064232c10d3e84e9c301d44b82faae4904253
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 5ab2b11749aa57065a1a4d688b02fed97731ab7c
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152971"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464750"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -67,6 +67,8 @@ BuildingBlocks 元素包含以下元素，必须按照定义的顺序指定：
     - 基于策略中提供的参数创建字符串声明。
     - 使用随机数生成器创建随机字符串。
     - 根据提供的格式字符串格式化声明。 此转换将使用 C# `String.Format` 方法。
+    
+- InputValidation-此元素允许执行类似于*and*和*or*的布尔聚合。
 
 - [ContentDefinitions](contentdefinitions.md) - 包含在用户旅程中使用的 HTML5 模板的 URL。 在自定义策略中，内容定义定义用于用户旅程中指定 UI 步骤的 HTML5 页面 URI。 例如，登录或注册、密码重置或错误页面。 可以通过重写 HTML5 文件的 LoadUri 来修改外观。 也可根据需要创建新的内容定义。 此元素可能包含使用本地化 ID 的本地化资源引用。
 

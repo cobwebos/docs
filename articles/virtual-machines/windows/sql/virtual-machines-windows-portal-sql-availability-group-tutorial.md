@@ -9,19 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6485b7c102977f4fb6963418084f4da050c68558
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003449"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036524"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>教程：在 Azure VM 中手动配置 Always On 可用性组
 
@@ -53,7 +52,7 @@ ms.locfileid: "58003449"
 开始本教程之前，需要[完成先决条件以便在 Azure 虚拟机中创建 Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-prereq.md)。 如果已完成这些先决条件，可跳到[创建群集](#CreateCluster)。
 
   >[!NOTE]
-  > 现在可以使用自动化许多在本教程中提供的步骤[Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md)并[Azure 快速入门模板](virtual-machines-windows-sql-availability-group-quickstart-template.md)。
+  > 本教程中提供的许多步骤现在可以通过[AZURE SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md)和[Azure 快速入门模板](virtual-machines-windows-sql-availability-group-quickstart-template.md)自动完成。
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
@@ -82,6 +81,9 @@ ms.locfileid: "58003449"
    | 确认 |除非使用的是存储空间，否则请使用默认值。 请参阅此表后面的备注。 |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>设置 Windows Server 故障转移群集 IP 地址
+
+  > [!NOTE]
+  > 在 Windows Server 2019 上，群集将创建**分布式服务器名称**，而不是**群集网络名称**。 如果使用的是 Windows Server 2019，请跳过本教程中引用群集核心名称的任何步骤。 可以使用[PowerShell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019)创建群集网络名称。 查看博客[故障转移群集：群集网络对象](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)以获取详细信息。 
 
 1. 在“故障转移群集管理器”中，向下滚动到“群集核心资源”，并展开群集详细信息。 应会看到“名称”和“IP 地址”资源都处于“已失败”状态。 不能将 IP 地址资源联机，因为向该群集分配的 IP 地址与计算机本身的地址相同，因此该地址为重复地址。
 
@@ -299,7 +301,7 @@ Repeat these steps on the second SQL Server.
 
     ![新建可用性组向导，选择初始数据同步](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 **\\\\\<第一个 SQL Server\>\Backup\\\**。 单击“下一步”。
+8. 在“选择初始数据同步”页上，选择“完全同步”，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中为 **\\\\\<第一个 SQL Server\>\Backup\\** 。 单击“下一步”。
 
    >[!NOTE]
    >完全同步对 SQL Server 第一个实例上的数据库进行完整备份，并将其还原到第二个实例。 对于大型数据库，不建议使用完全同步，因为这可能要花费很长时间。 可以通过使用 `NO RECOVERY` 对数据库进行手动备份和还原来降低该时间。 如果配置可用性组之前，已在 SQL Server 上使用 `NO RECOVERY` 对数据库进行还原，请选择“仅联接”。 若想在配置可用性组之后进行备份，请选择“跳过初始数据同步”。
@@ -460,7 +462,7 @@ WSFC IP 地址也必须在负载均衡器上。
    | 设置 | 说明 | 示例
    | --- | --- |---
    | 名称 | 文本 | WSFCEndPoint |
-   | “前端 IP 地址” | 选择一个地址 |使用配置 WSFC IP 地址时所创建的地址。 这不同于侦听器 IP 地址 |
+   | “前端 IP 地址” | 选择地址 |使用配置 WSFC IP 地址时所创建的地址。 这不同于侦听器 IP 地址 |
    | 协议 | 选择 TCP |TCP |
    | 端口 | 使用群集 IP 地址的端口。 这是可用的端口，不用于侦听器探测端口。 | 58888 |
    | 后端端口 | 当直接服务器返回设置为浮动 IP时，不使用此字段 | 58888 |

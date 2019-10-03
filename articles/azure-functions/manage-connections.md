@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 4e9bd4e9ea467446c2814cdb8956a40b1503b027
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 26702ae63dcb7aadb96b5bf77f96a44f7d6776f5
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784919"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114325"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
 
@@ -21,11 +21,11 @@ ms.locfileid: "59784919"
 
 ## <a name="connection-limit"></a>连接限制
 
-可用连接数量受到限制，部分原因是函数应用在[沙盒环境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)中运行。 沙盒对代码施加的限制之一是每个实例的[连接数上限（目前，活动连接数上限为 600 个，总连接数上限为 1,200 个）](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits)。 达到此限制时，函数运行时会创建一个包含以下消息的日志：`Host thresholds exceeded: Connections`。
+可用连接数量受到限制，部分原因是函数应用在[沙盒环境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)中运行。 沙盒对代码施加的限制之一是对出站连接数量进行限制，目前每个实例的活动连接数上限为 600 个（总共 1,200 个连接）。 达到此限制时，函数运行时会将以下消息写入日志：`Host thresholds exceeded: Connections`。 有关详细信息，请参阅 [Functions 服务限制](functions-scale.md#service-limits)。
 
-此限制是按实例施加的。  [缩放控制器添加函数应用实例](functions-scale.md#how-the-consumption-and-premium-plans-work)以处理更多请求时，每个实例都有单独的连接限制。 这意味着没有全局连接限制，你可以跨所有活动实例建立比 600 个活动连接多得多的连接。
+此限制是按实例施加的。 [缩放控制器添加函数应用实例](functions-scale.md#how-the-consumption-and-premium-plans-work)以处理更多请求时，每个实例都有单独的连接限制。 这意味着没有全局连接限制，你可以跨所有活动实例建立比 600 个活动连接多得多的连接。
 
-故障排除时，请确保为 function app 启用了 Application Insights。 Application Insights，可以查看函数应用执行类似的度量值。 有关详细信息，请参阅[Application Insights 中查看遥测数据](functions-monitoring.md#view-telemetry-in-application-insights)。  
+进行故障排除时, 请确保已启用函数应用 Application Insights。 Application Insights 使你可以查看函数应用的指标, 如执行。 有关详细信息, 请参阅[在 Application Insights 中查看遥测](functions-monitoring.md#view-telemetry-in-application-insights)。  
 
 ## <a name="static-clients"></a>静态客户端
 
@@ -116,15 +116,15 @@ public static async Task Run(string input)
 ```javascript
 const cosmos = require('@azure/cosmos');
 const endpoint = process.env.COSMOS_API_URL;
-const masterKey = process.env.COSMOS_API_KEY;
+const key = process.env.COSMOS_API_KEY;
 const { CosmosClient } = cosmos;
 
-const client = new CosmosClient({ endpoint, auth: { masterKey } });
+const client = new CosmosClient({ endpoint, key });
 // All function invocations also reference the same database and container.
 const container = client.database("MyDatabaseName").container("MyContainerName");
 
 module.exports = async function (context) {
-    const { result: itemArray } = await container.items.readAll().toArray();
+    const { resources: itemArray } = await container.items.readAll().fetchAll();
     context.log(itemArray);
 }
 ```
@@ -139,6 +139,6 @@ module.exports = async function (context) {
 
 ## <a name="next-steps"></a>后续步骤
 
-有关为何我们建议使用静态客户端的详细信息，请参阅[不当实例化对立模式](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)。
+有关为何建议静态客户端的详细信息, 请参阅不[正确的实例化对立模式](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)。
 
 有关更多 Azure Functions 性能提示，请参阅[优化 Azure Functions 的性能和可靠性](functions-best-practices.md)。

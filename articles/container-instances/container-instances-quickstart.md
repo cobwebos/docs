@@ -3,17 +3,18 @@ title: 快速入门 - 将 Docker 容器部署到 Azure 容器实例 - CLI
 description: 本快速入门将使用 Azure CLI 快速部署在隔离的 Azure 容器实例中运行的容器化 Web 应用
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8e504a081f8685107871aed920077dd75a70dfa7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: b344e5fefdef6cd25dcafc0577b9fbbd7f0e398d
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368504"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050621"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure 中部署容器实例
 
@@ -23,7 +24,7 @@ ms.locfileid: "58368504"
 
 ![在浏览器中显示的已部署到 Azure 容器实例的应用][aci-app-browser]
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户][azure-account]。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][azure-account]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -31,9 +32,9 @@ ms.locfileid: "58368504"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 容器实例（例如所有 Azure 资源）都必须部署到资源组中。 使用资源组，可以组织和管理相关的 Azure 资源。
+Azure 容器实例（例如所有 Azure 资源）都必须部署到资源组中。 使用资源组可以组织和管理相关的 Azure 资源。
 
-首先，使用以下 [az group create][az-group-create] 命令在 *eastus* 位置中创建一个名为 *myResourceGroup* 的资源组。
+首先，使用以下 [az group create][az-group-create] 命令在 eastus  位置中创建一个名为“myResourceGroup”  的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -41,7 +42,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>创建容器
 
-创建资源组后，可在 Azure 中运行容器。 若要使用 Azure CLI 创建容器实例，请向 [az container create][az-container-create] 命令提供一个资源组名称、容器实例名称和 Docker 容器映像。 本快速入门将使用公共 `mcr.microsoft.com/azuredocs/aci-helloworld` 映像。 此映像打包了一个用 Node.js 编写的小型 Web 应用程序，该应用程序提供静态 HTML 页面。
+创建资源组后，可在 Azure 中运行容器。 若要使用 Azure CLI 创建容器实例，请在 [az container create][az-container-create] 命令中提供资源组名称、容器实例名称和 Docker 容器映像。 本快速入门将使用公共 `mcr.microsoft.com/azuredocs/aci-helloworld` 映像。 此映像打包了一个用 Node.js 编写的小型 Web 应用程序，该应用程序提供静态 HTML 页面。
 
 可以通过指定要打开的一个或多个端口、一个 DNS 名称标签（或同时指定两者）来向 Internet 公开容器。 在本快速入门中，你将部署一个具有 DNS 名称标签的容器，以便 Web 应用可供公开访问。
 
@@ -51,7 +52,7 @@ az group create --name myResourceGroup --location eastus
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
 ```
 
-在几秒钟内，你应当会从 Azure CLI 收到响应，它指出部署已完成。 使用 [az container show][az-container-show] 命令检查它的状态：
+在几秒钟内，你应当会从 Azure CLI 收到响应，它指出部署已完成。 使用 [az container show][az-container-show] 命令检查其状态：
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
@@ -66,7 +67,7 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-如果容器的 `ProvisioningState` 为 **Succeeded**，则在浏览器中导航到其 FQDN。 如果看到一个与下图类似的网页，那么恭喜你了！ 现已成功将 Docker 容器中运行的应用程序部署到 Azure。
+如果容器的 `ProvisioningState` 为 **Succeeded**，则在浏览器中转到其 FQDN。 如果看到类似于下图的网页，那么恭喜你！ 现已成功将 Docker 容器中运行的应用程序部署到 Azure。
 
 ![浏览器屏幕截图，显示应用程序在 Azure 容器实例中运行][aci-app-browser]
 
@@ -124,7 +125,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成容器的操作后，可使用 [az container delete][az-container-delete] 命令将其删除：
+使用完容器后，可使用 [az container delete][az-container-delete] 命令将其删除：
 
 ```azurecli-interactive
 az container delete --resource-group myResourceGroup --name mycontainer
@@ -136,7 +137,7 @@ az container delete --resource-group myResourceGroup --name mycontainer
 az container list --resource-group myResourceGroup --output table
 ```
 
-mycontainer 容器不应出现在命令的输出中。 如果资源组中没有任何其他容器，则不会显示任何输出。
+mycontainer 容器不应出现在命令的输出中  。 如果资源组中没有任何其他容器，则不会显示任何输出。
 
 如果已使用完 *myResourceGroup* 资源组及其包含的所有资源，请使用 [az group delete][az-group-delete] 命令将其删除：
 

@@ -4,28 +4,27 @@ description: 介绍了解决以下问题的步骤：VM 启动时停滞并显示�
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: c6d9f46582e1c618de6bfccea9328fb35aea7875
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: d0a946ede154561aaa49d335b7b91fdae72c51d3
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485809"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155555"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM 启动时停滞，并在 Azure 中显示“正在准备 Windows。 请不要关闭计算机”
 
 本文可帮助解决虚拟机 (VM) 在启动时停滞，并显示“正在准备 Windows。 请不要关闭计算机”的问题。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="symptoms"></a>症状
 
@@ -121,7 +120,7 @@ ms.locfileid: "58485809"
 
 当 VM 在配置阶段停滞时，请使用[收集 OS 转储](troubleshoot-common-blue-screen-error.md#collect-memory-dump-file)部分中的步骤。
 
-## <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
+## <a name="contact-microsoft-support"></a>联系 Microsoft 支持部门
 
 收集转储文件后，请联系 [Microsoft 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来分析根本原因。
 

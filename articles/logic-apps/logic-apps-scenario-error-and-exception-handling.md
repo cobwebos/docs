@@ -5,19 +5,19 @@ services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: hedidin
-ms.author: b-hoedid
-ms.reviewer: estfan, LADocs
+ms.author: estfan
+ms.reviewer: LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 58e59e4faa135e24124f494d90437b49caa30129
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: ec01f738ee4943659de1b49ab8d52218e6a8fb79
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098657"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385455"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>场景：逻辑应用的异常处理和错误日志记录
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案:逻辑应用的异常处理和错误日志记录
 
 本方案介绍如何扩展逻辑应用以更好地支持异常处理。 我们已使用实际的用例回答了以下问题：“Azure 逻辑应用是否支持异常和错误处理？”
 
@@ -93,7 +93,7 @@ ms.locfileid: "55098657"
 ```
 
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 
 必须对来自 Dynamics CRM Online 门户的患者记录的源（请求）进行日志记录。
 
@@ -471,7 +471,7 @@ Azure Cosmos DB 中的每个文档都必须具有唯一 ID。 我们使用 `Pati
 
 前面代码示例中的表达式检查“Create_NewPatientRecord”的状态是否为“Failed”。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 * 可以在逻辑应用中轻松实现日志记录和错误处理。
 * 可以使用 Azure Cosmos DB 作为日志和错误记录的存储库（文档）。
@@ -485,4 +485,4 @@ Azure Cosmos DB 中的每个文档都必须具有唯一 ID。 我们使用 `Pati
 
 * [查看更多逻辑应用示例和方案](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [了解如何监视逻辑应用](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [为逻辑应用创建自动部署模板](../logic-apps/logic-apps-create-deploy-template.md)
+* [自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

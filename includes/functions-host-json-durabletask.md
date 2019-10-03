@@ -4,17 +4,17 @@ description: include 文件
 services: functions
 author: ggailey777
 manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d79d1bd5ec244ad4399a02c349e2504516d06ccd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2e30184c7273fad2f9bc8adb34834ee14840733b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58137640"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608095"
 ---
 [Durable Functions](../articles/azure-functions/durable-functions-overview.md) 的配置设置。
 
@@ -38,7 +38,7 @@ ms.locfileid: "58137640"
     "eventGridKeySettingName":  "EventGridKey",
     "eventGridPublishRetryCount": 3,
     "eventGridPublishRetryInterval": "00:00:30",
-    "eventGridPublishEventTypes": ["Started", "Pending", "Failed", "Terminated"]
+    "eventGridPublishEventTypes": ["Started", "Completed", "Failed", "Terminated"]
   }
 }
 ```
@@ -54,11 +54,11 @@ ms.locfileid: "58137640"
 |workItemQueueVisibilityTimeout |5 分钟|已取消排队的工作项队列消息的可见性超时。|
 |maxConcurrentActivityFunctions |10 倍于当前计算机上的处理器数|可以在单个主机实例上并发处理的活动函数的最大数目。|
 |maxConcurrentOrchestratorFunctions |10 倍于当前计算机上的处理器数|可以在单个主机实例上并发处理的业务流程协调程序函数的最大数目。|
-|maxQueuePollingInterval|30 秒|最大的控制和工作项队列中的轮询间隔*hh: mm:* 格式。 较高的值可能导致更高版本的消息处理延迟。 较低的值可能导致更高的存储事务由于存储成本较高。|
+|maxQueuePollingInterval|30 秒|最大的控制和工作项队列轮询时间间隔，采用 *hh:mm:ss* 格式。 值越高，可能导致的消息处理延迟也越高。 值越低，可能导致的存储成本会越高，因为存储事务数增高。|
 |azureStorageConnectionStringName |AzureWebJobsStorage|应用设置的名称，其中的 Azure 存储连接字符串用于管理基础的 Azure 存储资源。|
-|trackingStoreConnectionStringName||若要使用的历史记录和实例表的连接字符串的名称。 如果未指定，`azureStorageConnectionStringName`使用连接。|
-|trackingStoreNamePrefix||要使用的历史记录和实例的前缀表时`trackingStoreConnectionStringName`指定。 如果未设置，默认的前缀值将`DurableTask`。 如果`trackingStoreConnectionStringName`未指定，则将使用历史记录和实例表`hubName`值作为其前缀和任何设置`trackingStoreNamePrefix`将被忽略。|
-|traceInputsAndOutputs |false|一个指示是否跟踪函数调用的输入和输出的值。 跟踪函数执行事件时的默认行为是在函数调用的序列化输入和输出中包括字节数。 此行为可提供有关输入和输出外观而无需扩展日志或无意中公开敏感信息的最少信息。 将此属性设置为 true 会导致默认函数日志记录将函数输入和输出的整个内容都记录下来。|
+|trackingStoreConnectionStringName||连接字符串的名称，用于“历史记录”和“实例”表。 如果未指定，则使用 `azureStorageConnectionStringName` 连接。|
+|trackingStoreNamePrefix||指定 `trackingStoreConnectionStringName` 时用于“历史记录”和“实例”表的前缀。 如果未设置，则默认前缀值为 `DurableTask`。 如果 `trackingStoreConnectionStringName` 未指定，则“历史记录”和“实例”表会使用 `hubName` 值作为其前缀，`trackingStoreNamePrefix` 的任何设置都会被忽略。|
+|traceInputsAndOutputs |false|一个指示是否跟踪函数调用的输入和输出的值。 跟踪函数执行事件时的默认行为是在函数调用的序列化输入和输出中包括字节数。 此行为提供的有关输入和输出情况的信息是最少的，不会导致日志膨胀，也不会无意中将敏感信息公开。 将此属性设置为 true 会导致默认函数日志记录将函数输入和输出的整个内容都记录下来。|
 |logReplayEvents|false|一个值，该值指示是否将业务流程重播事件写入到 Application Insights。|
 |eventGridTopicEndpoint ||Azure 事件网格自定义主题终结点的 URL。 在设置此属性，业务流程生命周期通知事件发布到此终结点。 此属性支持应用设置解析。|
 |eventGridKeySettingName ||应用设置的名称，该设置包含的密钥用于在 `EventGridTopicEndpoint` 上通过 Azure 事件网格自定义主题进行身份验证。|
@@ -66,4 +66,4 @@ ms.locfileid: "58137640"
 |eventGridPublishRetryInterval|5 分钟|事件网格发布重试间隔（采用 *hh:mm:ss* 格式）。|
 |eventGridPublishEventTypes||若要将发布到事件网格的事件类型的列表。 如果未指定，将发布所有事件类型。 允许值包括`Started`， `Completed`， `Failed`， `Terminated`。|
 
-许多这些设置是为了优化性能。 有关详细信息，请参阅[性能和缩放](../articles/azure-functions/durable-functions-perf-and-scale.md)。
+许多此类设置用于优化性能。 有关详细信息，请参阅[性能和缩放](../articles/azure-functions/durable-functions-perf-and-scale.md)。

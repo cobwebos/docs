@@ -1,19 +1,19 @@
 ---
 title: Microsoft Azure 备份服务器中的新增功能
 description: Microsoft Azure 备份服务器提供用于保护 VM、文件和文件夹、工作负载等的增强备份功能。 了解如何安装或升级到 Azure 备份服务器 V3。
-services: backup
-author: rayne-wiselman
+ms.reviewer: adigan
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: adigan
-ms.openlocfilehash: 5718064994a80266c216ae6040746be29194adc9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: dacurwin
+ms.openlocfilehash: b7fc0e9819e3cbdd886271a8580af76923b6f819
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108910"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688537"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器中的新增功能
 
@@ -25,7 +25,7 @@ MABS V3 包含以下功能：
 发布 MABS V2 中的新式备份存储 (MBS) 时，我们宣布推出了工作负荷感知的存储，在其中可以根据存储属性，将某些工作负荷配置为备份到特定的存储。 但是，在配置后，你可能发现，需要将某些数据源的备份移到其他存储，以优化资源利用率。 在 MABS V3 中可以迁移备份，并通过 [3 个步骤](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/)将其配置为存储到其他卷。
 
 ## <a name="prevent-unexpected-data-loss"></a>防止意外的数据丢失
-在企业中，MABS 由管理员团队管理。 尽管用于备份的存储有指导原则可供参考，但在 MABS 中提供错误的卷作为备份存储可能会导致关键数据丢失。 在 MABS V3 中，可以使用[这些 PowerShell cmdlet](https://docs.microsoft.com/system-center/dpm/add-storage#volume-exclusion) 将这些卷配置为不可用于存储，来防止这种情况。
+在企业中，MABS 由管理员团队管理。 尽管用于备份的存储有指导原则可供参考，但在 MABS 中提供错误的卷作为备份存储可能会导致关键数据丢失。 在 MABS V3 中，可以使用[这些 PowerShell cmdlet](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage) 将这些卷配置为不可用于存储，来防止这种情况。
 
 ## <a name="custom-size-allocation"></a>自定义大小分配
 新式备份存储 (MBS) 根据需要消耗少量的存储。 为此，在配置用于保护后，MABS 会计算备份数据的大小。 但是，如果要同时备份许多的文件和文件夹（例如，在文件服务器中备份时），大小计算可能会花费很长时间。 使用 MABS V3，可将 MABS 配置为接受默认卷大小而不是计算每个文件的大小，因而可以节省时间。
@@ -54,7 +54,7 @@ MABS V3 是完整发行版，可直接安装在 Windows Server 2016、Windows Se
 
 
 > [!NOTE]
-> 
+>
 > MABS 的代码基与 System Center Data Protection Manager 相同。 MABS v3 相当于 Data Protection Manager 1807。
 
 ## <a name="next-steps"></a>后续步骤

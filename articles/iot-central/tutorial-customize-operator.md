@@ -3,19 +3,21 @@ title: 在 Azure IoT Central 自定义操作员的视图 | Microsoft Docs
 description: 以构建人员的身份在 Azure IoT Central 应用程序中自定义操作员的视图。
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 7fc42b24090b5fc68176fea2c7b993643ea24200
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: aa5ff93b4f1f6392f753a88d57a072f542fc16e2
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678218"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877269"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>教程：自定义 Azure IoT Central 操作员的视图
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 本教程向构建人员介绍如何自定义应用程序的操作员视图。 以构建人员的身份对应用程序进行更改时，可在 Microsoft Azure IoT Central 应用程序中预览操作员的视图。
 
@@ -40,23 +42,23 @@ ms.locfileid: "59678218"
 
 ## <a name="configure-your-device-dashboard"></a>配置设备仪表板
 
-构建人员可以定义要在设备仪表板上显示的信息。 在[在应用程序中定义新设备类型](tutorial-define-device-type.md)教程中，我们已将一个折线图和其他信息添加到“连接的空调”仪表板。
+构建人员可以定义要在设备仪表板上显示的信息。 在[在应用程序中定义新设备类型](tutorial-define-device-type.md)教程中，我们已将一个折线图和其他信息添加到“连接的空调”仪表板。 
 
-1. 若要编辑“连接的空调”设备模板，请在左侧导航菜单中选择“设备模板”：
+1. 若要编辑“连接的空调”设备模板，请在左侧导航菜单中选择“设备模板”：  
 
     ![“设备模板”页](media/tutorial-customize-operator/devicetemplates.png)
 
-2. 若要自定义设备仪表板，请选择[在应用程序中定义新设备类型](tutorial-define-device-type.md)教程中创建的“连接的空调(1.0.0)”设备模板设备。
+2. 若要自定义设备仪表板，请选择[在应用程序中定义新设备类型](tutorial-define-device-type.md)教程中创建的“连接的空调(1.0.0)”设备模板设备。 
 
-3. 若要编辑仪表板，请选择“仪表板”选项卡。
+3. 若要编辑仪表板，请选择“仪表板”选项卡。 
 
-4. 若要将关键绩效指标 (KPI) 磁贴添加到仪表板，请选择“KPI”：
+4. 若要将关键绩效指标 (KPI) 磁贴添加到仪表板，请选择“KPI”： 
 
     若要定义 KPI，请使用下表中的信息：
 
     | 设置     | 值 |
     | ----------- | ----- |
-    | 名称        | 最高温度 |
+    | Name        | 最高温度 |
     | 时间范围  | 过去 1 周 |
     | 度量类型 | 遥测 |
     | 度量 | 温度 |
@@ -65,7 +67,7 @@ ms.locfileid: "59678218"
 
     ![添加 KPI](media/tutorial-customize-operator/addkpi.png)
 
-5. 选择“保存”。 现在，可在仪表板中看到“KPI”磁贴：
+5. 选择“保存”。  现在，可在仪表板中看到“KPI”磁贴：
 
     ![“KPI”磁贴](media/tutorial-customize-operator/temperaturekpi.png)
 
@@ -75,7 +77,7 @@ ms.locfileid: "59678218"
 
 构建人员还可以配置设备设置的操作员视图。 操作员使用设备设置选项卡来配置设备。 例如，操作员可以使用设置选项卡来设置连接的空调的目标温度。
 
-1. 若要编辑连接的空调的设置布局，请选择“设置”选项卡。
+1. 若要编辑连接的空调的设置布局，请选择“设置”选项卡。 
 
 2. 可以移动设置磁贴并调整其大小：
 
@@ -85,7 +87,7 @@ ms.locfileid: "59678218"
 
 除了仪表板和设置以外，还可以配置设备属性的操作员视图。 操作员使用设备属性选项卡来管理设备元数据。 例如，操作员可以使用属性选项卡来查看设备序列号，或更新制造商的联系详细信息。
 
-1. 若要编辑连接的空调的属性布局，请选择“属性”选项卡。
+1. 若要编辑连接的空调的属性布局，请选择“属性”选项卡。 
 
 2. 可以移动属性字段并调整其大小：
 
@@ -93,21 +95,21 @@ ms.locfileid: "59678218"
 
 ## <a name="preview-the-device"></a>预览设备
 
-使用“设备模板”页自定义操作员的仪表板、设置和属性选项卡。 使用“Device Explorer”页查看和使用设备模板。
+使用“设备模板”页自定义操作员的仪表板、设置和属性选项卡。  使用“Device Explorer”页查看和使用设备模板。 
 
-1. 若要以操作员的身份查看和使用“连接的空调”模板，请导航到“Device Explorer”页，并选择 IoT Central 从你的模板生成的模拟设备：
+1. 若要以操作员的身份查看和使用“连接的空调”模板，请导航到“Device Explorer”页，并选择 IoT Central 从你的模板生成的模拟设备： 
 
     ![查看和使用设备模板](media/tutorial-customize-operator/usetemplate.png)
 
-2. 若要更新此设备的位置，请选择“属性”，并编辑“位置”磁贴中的值。 然后选择“保存”：
+2. 若要更新此设备的位置，请选择“属性”，并编辑“位置”磁贴中的值。  然后选择“保存”  ：
 
     ![编辑属性值](media/tutorial-customize-operator/editproperty.png)
 
-3. 若要将设置发送到连接的空调，请选择“设置”，更改磁贴中的设置值，并选择“更新”：
+3. 若要将设置发送到连接的空调，请选择“设置”，更改磁贴中的设置值，并选择“更新”：  
 
     ![将设置发送到设备](media/tutorial-customize-operator/sendsetting.png)
 
-    当设备确认新设置值时，该设置会在磁贴上显示为“已同步”。
+    当设备确认新设置值时，该设置会在磁贴上显示为“已同步”。 
 
 4. 操作员可以查看构建人员配置的设备仪表板：
 
@@ -120,18 +122,18 @@ ms.locfileid: "59678218"
 > [!NOTE]
 > 用户也可以创建自己的个人仪表板，然后选择一个作为其默认仪表板。
 
-1. 若要自定义默认应用程序仪表板，请导航到“仪表板”页，并在页面右上角选择“编辑”。 此时会出现一个面板，其中包含可添加到仪表板的对象库。
+1. 若要自定义默认应用程序仪表板，请导航到“仪表板”页  ，并在页面右上角选择“编辑”。  此时会出现一个面板，其中包含可添加到仪表板的对象库。
 
     ![仪表板页](media/tutorial-customize-operator/builderhome.png)
 
-2. 若要自定义仪表板，请从“库”中添加磁贴。 选择“链接”，并添加组织网站的详细信息。 然后选择“保存”：
+2. 若要自定义仪表板，请从“库”中添加磁贴。  选择“链接”，并添加组织网站的详细信息。  然后选择“保存”： 
 
     ![将链接添加到仪表板](media/tutorial-customize-operator/addlink.png)
 
     > [!NOTE]
     > 还可以在 Azure IoT Central 应用程序内部添加页面的链接。 例如，可以添加设备仪表板或设置页的链接。
 
-3. （可选）选择“图像”，并上传要在仪表板上显示的图像。 图像可以包含 URL，选择该图像时可导航到该 URL：
+3. （可选）选择“图像”，并上传要在仪表板上显示的图像。  图像可以包含 URL，选择该图像时可导航到该 URL：
 
     ![将图像添加到仪表板](media/tutorial-customize-operator/addimage.png)
 
@@ -139,7 +141,7 @@ ms.locfileid: "59678218"
 
 ## <a name="preview-the-dashboard"></a>预览仪表板
 
-若要以操作员身份预览应用程序仪表板，请在页面右上角选择“完成”。
+若要以操作员身份预览应用程序仪表板，请在页面右上角选择“完成”。 
 
 ![切换设计模式](media/tutorial-customize-operator/operatorviewhome.png)
 

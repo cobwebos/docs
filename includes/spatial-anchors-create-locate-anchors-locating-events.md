@@ -1,9 +1,14 @@
 ---
-ms.openlocfilehash: c4339aa8548ef66c862200ad61b6aaca90332ad0
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+author: ramonarguelles
+ms.service: azure-spatial-anchors
+ms.topic: include
+ms.date: 08/23/2019
+ms.author: rgarcia
+ms.openlocfilehash: 9a02dfbf3f2976489c10ccfeb935915a65d8dc84
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632060"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71180035"
 ---
-创建在观察程序后，`AnchorLocated`事件将激发为每个请求的定位点。 当定位点的位置，或定位点找不到，将引发此事件。 如果发生这种情况下，将在状态中所述的原因。 观察程序的所有定位点进行处理后，找到或未找到，则`LocateAnchorsCompleted`会触发事件。
+创建观察程序后，将为所请求的每个定位点触发 `AnchorLocated` 事件。 找到定位点或无法找到定位点时都会触发此事件。 如果发生这种情况，将在状态中说明原因。 在处理完观察程序的所有定位点（找到或未找到）后，将触发 `LocateAnchorsCompleted` 事件。 每个观察程序有 35 个标识符的限制。 

@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: edbd7000001ae6927078e2f1bb9e348cc78f9efa
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: 8ee2dea364253d871d5624242d15d8a81ab6f08f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962105"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465898"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智能检测
- 当 Web 应用程序中存在潜在性能问题时，智能检测会自动向你发出警告。 它会对应用发送至 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遥测数据执行主动分析。 如果失败率中存在骤升或者客户端或服务器性能中存在异常模式，将收到警报。 此功能不需要任何配置。 它会在应用程序发送足够的遥测时运行。
+ 智能检测自动向你发出警告潜在的性能问题和失败在 web 应用程序中的异常。 它会对应用发送至 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遥测数据执行主动分析。 如果失败率中存在骤升或者客户端或服务器性能中存在异常模式，将收到警报。 此功能不需要任何配置。 它会在应用程序发送足够的遥测时运行。
 
-可以从接收的电子邮件和“智能检测”边栏选项卡中访问智能检测警报。
+您可以访问检测从你收到的电子邮件和智能检测边栏选项卡中颁发的智能检测。
 
 ## <a name="review-your-smart-detections"></a>查看智能检测
 可通过以下两种方式发现检测：
@@ -32,26 +32,26 @@ ms.locfileid: "55962105"
     ![电子邮件警报](./media/proactive-diagnostics/03.png)
   
     单击大按钮以在门户中打开更多详细信息。
-* 应用“概述”边栏选项卡上的“智能检测”磁贴会显示最近警报的计数。 单击磁贴以查看最近的警报列表。
+* **在智能检测边栏选项卡**Application Insights 中。 选择**智能检测**下**调查**菜单以查看最近的检测的列表。
 
 ![查看最近的检测](./media/proactive-diagnostics/04.png)
 
-选择警报以查看其详细信息。
+选择检测以查看其详细信息。
 
 ## <a name="what-problems-are-detected"></a>检测到哪些问题？
-有三种检测类型：
+智能检测会检测并向通知有关各种问题，例如：
 
 * [智能检测 - 失败异常](../../azure-monitor/app/proactive-failure-diagnostics.md)。 我们使用机器学习，通过与负载和其他因素相关为应用设置预期的失败请求速率。 如果失败率超出预期的包络线，我们将发送警报。
 * [智能检测 - 性能异常](../../azure-monitor/app/proactive-performance-diagnostics.md)。 如果操作的响应时间或依赖关系的持续时间比历史基线慢，或者如果我们在响应时间或页面加载时间中识别到异常模式，会收到通知。   
-* [智能检测 - Azure 云服务问题](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/)。 如果应用托管在 Azure 云服务并且角色实例出现启动故障、频繁回收或运行时崩溃，将收到警报。
+* 常规性能下降和问题，如[跟踪下降](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity)，[内存泄漏](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak)，[异常容量增加异常](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume)和[安全反模式](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
 
 （每个通知中的帮助链接可转到相关文章。）
 
 ## <a name="smart-detection-email-notifications"></a>智能检测电子邮件通知
 
-除了标为预览版的规则以外，所有智能检测规则都默认配置为在发现检测时发送电子邮件通知。
+所有的智能检测规则，但规则标记为除外_预览版_，默认情况下找到检测时发送电子邮件通知配置。
 
-可以通过打开智能检测“设置”边栏选项卡并选择规则（这将打开“编辑规则”边栏选项卡）来为特定的智能检测规则配置电子邮件通知。
+可以通过打开智能检测“设置”  边栏选项卡并选择规则（这将打开“编辑规则”  边栏选项卡）来为特定的智能检测规则配置电子邮件通知。
 
 另外，还可以使用 Azure 资源管理器模板来更改配置。 有关更多详细信息，请参阅[使用 Azure 资源管理器模板管理 Application Insights 智能检测规则](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)。
 

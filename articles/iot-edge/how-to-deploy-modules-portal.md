@@ -4,18 +4,18 @@ description: 使用 Azure 门户将模块部署到 IoT Edge 设备
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/19/2019
+ms.date: 06/25/2019
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9d7729dce5419c5813de3c4dfce55c40098f5988
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: f27484fd1d47a2e29aa5083a7d440e5c7dba11c1
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430108"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839642"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>通过 Azure 门户部署 Azure IoT Edge 模块
 
@@ -23,7 +23,7 @@ ms.locfileid: "56430108"
 
 本文介绍了 Azure 门户如何引导创建部署清单并将部署推送给 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device-portal.md)。
@@ -43,9 +43,9 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 
 ### <a name="add-modules"></a>添加模块
 
-1. 在页面的“注册表设置”部分，提供用于任何访问包含模块映像的专用容器注册表的凭据。
+1. 在此页的“容器注册表设置”部分，提供用于访问包含模块映像的任何专用容器注册表的凭据。
 
-1. 在页面的“部署模块”部分中，选择“添加”。
+1. 在此页的“部署模块”部分中，选择“添加”。
 
 1. 在下拉列表中找到模块类型：
 
@@ -57,12 +57,12 @@ Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文�
 
 1. 提供模块名称，然后指定容器映像。 例如：
 
-   * **名称** - tempSensor
+   * **名称**-SimulatedTemperatureSensor
    * **映像 URI** - mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
 
 1. 必要时请填写可选字段。 要详细了解容器创建选项、重启策略和所需状态，请参阅 [EdgeAgent 必需属性](module-edgeagent-edgehub.md#edgeagent-desired-properties)。 要详细了解模块孪生，请参阅[定义或更新所需属性](module-composition.md#define-or-update-desired-properties)。
 
-1. 选择“保存”。
+1. 选择**保存**。
 
 1. 重复步骤 2-6，将其他模块添加到部署。
 

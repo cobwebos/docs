@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 25bc7798853d350139a7802eaad68d52a1d7d99f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f2514fff2a3bb292a86c9f4c0e92c37ed2709097
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834806"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341043"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming 
 
@@ -36,10 +36,13 @@ ms.locfileid: "57834806"
 除通过各种流式处理协议对联机流式处理的内容提供保护外，通常还要求提供受保护内容的脱机模式功能。 以下情况需要脱机模式支持：
 
 * 在 Internet 连接不可用（如旅行期间）时播放。
-* 某些内容提供程序可能不允许在某个国家/地区边界之外进行 DRM 许可证传送。 如果用户想在国外旅行期间查看内容，需要脱机下载。
-* 在某些国家/地区，Internet 可用性和/或宽带仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，Over-the-Top (OTT)/联机视频平台 (OVP) 提供商会请求脱机模式支持。
+* 某些内容提供程序可能会禁止国家/地区的边界之外的 DRM 许可证传送。 如果用户想要的国家/地区/区域之外旅行期间查看内容，需要脱机下载。
+* 在某些国家/地区，internet 可用性和/或带宽是仍然受到限制。 为获得满意的观看体验，用户可能选择首先下载以便能够观看高分辨率的内容。 在此情况下，通常问题不在于网络可用性，而在于受限的网络宽带。 此时，Over-the-Top (OTT)/联机视频平台 (OVP) 提供商会请求脱机模式支持。
 
 本文介绍 FairPlay Streaming (FPS) 脱机模式支持，适用于运行 iOS 10 或更高版本的设备。 此功能不支持其他 Apple 平台，例如 watchOS、tvOS 或 macOS 上的 Safari。
+
+> [!NOTE]
+> 脱机 DRM 仅计费下载内容时发出单个请求许可证。 不计费的任何错误。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -54,7 +57,7 @@ ms.locfileid: "57834806"
 
     - FPS Server SDK，该组件包含密钥安全模块 (KSM)、客户端示例、规格和一组测试矢量。
     - FPS 开发包，该组件包含 D 函数、规格和 FPS 证书生成说明、客户特定的私钥以及应用程序密钥。 Apple 仅对许可的内容提供商发布 FPS 开发包。
-* 克隆 https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git。 
+* 克隆 https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git 。 
 
     需要修改[使用 .NET 通过 DRM 加密](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM)中的代码以添加 FairPlay 配置。  
 

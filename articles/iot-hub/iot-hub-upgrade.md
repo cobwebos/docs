@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 96c3a7b2cfda23f173f4caeff4fb7a92b1ddc438
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571271"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61440197"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>如何升级 IoT 中心
 
@@ -37,17 +37,17 @@ ms.locfileid: "59571271"
 
 1. 登录 [Azure 门户](https://portal.azure.com/)，导航到 IoT 中心。
 
-2. 选择“定价和缩放”。
+2. 选择“定价和缩放”。 
 
    ![定价和缩放](./media/iot-hub-upgrade/pricing-scale.png)
 
-3. 若要更改中心的层，请选择“定价和缩放层”。 选择新层，然后单击“选择”。
+3. 若要更改中心的层，请选择“定价和缩放层”。  选择新层，然后单击“选择”  。
 
    ![定价和缩放层](./media/iot-hub-upgrade/select-tier.png)
 
-4. 若要更改中心的单元数，请在“IoT 中心单元数”下输入新值。
+4. 若要更改中心的单元数，请在“IoT 中心单元数”下输入新值。 
 
-5. 选择“保存”以保存更改。
+5. 选择“保存”  以保存更改。
 
 现在，IoT 中心已进行调整，但配置未更改。
 

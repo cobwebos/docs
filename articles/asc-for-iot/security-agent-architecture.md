@@ -1,69 +1,66 @@
 ---
-title: 了解 Azure 安全中心的 IoT 安全代理体系结构预览 |Microsoft Docs
-description: 了解用于在 Azure 安全中心的 IoT 服务使用的代理安全代理体系结构。
+title: 了解 IoT security agent 体系结构的 Azure 安全中心 |Microsoft Docs
+description: 了解用于 IoT 服务的 Azure 安全中心中所使用的代理的安全代理体系结构。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: e78523ae-d70a-456a-818d-f8b1b025d7cb
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: e10cd3f60c3b12c6d5115ff34f4cbde2ef19d9fd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 998aeab197931a75579fc39b28e3a248b85fc57b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862805"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596907"
 ---
 # <a name="security-agent-reference-architecture"></a>安全代理参考体系结构
 
-> [!IMPORTANT]
-> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
-> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+用于 IoT 的 Azure 安全中心为通过 IoT 中心记录、处理、聚合和发送安全数据的安全代理提供了参考体系结构。
 
+安全代理设计为在受约束的 IoT 环境中工作, 并且与它们所使用的资源相比, 它们可在其提供的值方面实现高度自定义。
 
-Azure 安全中心 (ASC) 适用于 IoT 的安全代理，记录、 处理、 聚合和发送通过 IoT 中心的安全数据提供参考体系结构。
+安全代理支持以下功能:
 
-安全代理用于处理在受约束 IoT 环境中，并且高度可自定义方面时与他们使用的资源相比，它们提供的值。
+- 收集基础操作系统 (Linux、Windows) 中的原始安全事件。 若要了解有关可用安全数据收集器的详细信息, 请参阅[用于 IoT 代理配置的 Azure 安全中心](how-to-agent-configuration.md)。
 
-安全代理支持以下功能：
+- 将原始安全事件聚合到通过 IoT 中心发送的消息中。
 
-- 从基础操作系统 （Linux、 Windows） 收集原始安全事件。 若要了解有关可用的安全数据收集器的详细信息，请参阅[ASC IoT 代理配置为](how-to-agent-configuration.md)。
+- 使用现有的设备标识或专用模块标识进行身份验证。 有关详细信息, 请参阅[安全代理身份验证方法](concept-security-agent-authentication-methods.md)。
 
-- 聚合成通过 IoT 中心发送消息的原始安全事件。
+- 通过使用**azureiotsecurity**模块克隆进行远程配置。 若要了解详细信息, 请参阅[为 IoT 代理配置 Azure 安全中心](how-to-agent-configuration.md)。
 
-- 使用现有的设备标识或专用的模块标识进行身份验证。 请参阅[安全代理身份验证方法](concept-security-agent-authentication-methods.md)若要了解详细信息。
+用于 IoT 安全代理的 Azure 安全中心作为开放源代码项目开发, 可从 GitHub 获得: 
 
-- 通过使用远程配置**azureiotsecurity**模块孪生。 若要了解详细信息，请参阅[配置 IoT 代理 ASC](how-to-agent-configuration.md)。
+- [基于 IoT C 的代理的 Azure 安全中心](https://github.com/Azure/Azure-IoT-Security-Agent-C) 
+- [基于 IoT C#的代理的 Azure 安全中心](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
-IoT 安全代理的 ASC 作为开放源代码项目开发的可从 GitHub: 
+## <a name="agent-supported-platforms"></a>代理支持的平台
 
-- [IoT C 基于代理的 ASC](https://github.com/Azure/Azure-IoT-Security-Agent-C) 
-- [适用于 IoT 的 ASC C#-基于代理](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
+用于 IoT 的 Azure 安全中心为32位和64位 Windows 提供不同的安装程序代理, 适用于32位和64位 Linux。 请确保按照下表为每个设备设置正确的代理安装程序:
 
-## <a name="agent-supported-platforms"></a>支持的代理的平台
-
-ASC 为 IoT 提供了不同的安装程序的 32 位和 64 位 Windows，代理和相同的 32 位和 64 位 Linux。 请确保具有正确的代理安装程序为每个设备根据下表：
-
-| 32 位还是 64 位 | Linux | Windows |    详细信息|
+| 体系结构 | Linux | Windows |    详细信息|
 |----------|----------------------------------------------|-------------|-------------------------------------------|
-| 32 位  | C  | C#  ||
-| 64 位  | C#或 C           | C#      | 使用 C 代理进行最少的资源的设备|
+| 32位  | C  | C#  ||
+| 64  | C#或 C           | C#      | 建议为设备使用具有更大限制或最小设备资源的 C 代理。|
+|
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您了解的关于 ASC 的 IoT 安全代理体系结构和可用安装程序。
+本文介绍了适用于 IoT 安全代理体系结构和可用安装程序的 Azure 安全中心。
 
-若要继续开始使用 ASC 为 IoT 部署，请使用以下文章：
+若要继续开始使用 Azure 安全中心进行 IoT 部署, 请使用以下文章:
 
 - 了解[安全代理身份验证方法](concept-security-agent-authentication-methods.md)
-- 选择并将其部署[安全代理](how-to-deploy-agent.md)
-- 查看 IoT ASC[服务先决条件](service-prerequisites.md)
-- 了解如何[启用 ASC 中 IoT 中心的 IoT 服务](quickstart-onboard-iot-hub.md)
-- 要详细了解从服务[ASC 为 IoT 常见问题](resources-frequently-asked-questions.md)
+- 选择并部署[安全代理](how-to-deploy-agent.md)
+- 查看 Azure 安全中心以了解 IoT[服务先决条件](service-prerequisites.md)
+- 了解如何[在 Iot 中心为 iot 服务启用 Azure 安全中心](quickstart-onboard-iot-hub.md)
+- 详细了解[Azure 安全中心提供的 IOT 常见问题解答](resources-frequently-asked-questions.md)

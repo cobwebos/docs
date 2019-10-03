@@ -2,17 +2,17 @@
 title: 限制对 Azure Kubernetes 服务 (AKS) 中的 kubeconfig 的访问
 description: 了解如何控制群集管理员和群集用户对 Kubernetes 配置文件 (kubeconfig) 的访问
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 01/03/2019
-ms.author: iainfou
-ms.openlocfilehash: 40588ec29eb6f7c33ba5e1d6071caf5c8ed43424
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.date: 05/31/2019
+ms.author: mlearned
+ms.openlocfilehash: cbc653b86ed83f9d6a7348d39f51dc7cd49c6892
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450161"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67615671"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 基于角色的访问控制定义对 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 配置文件的访问
 
@@ -24,7 +24,7 @@ ms.locfileid: "54450161"
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-本文还要求运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+本文还要求运行 Azure CLI 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="available-cluster-roles-permissions"></a>可用的群集角色权限
 
@@ -41,15 +41,17 @@ ms.locfileid: "54450161"
     * 允许访问 *Microsoft.ContainerService/managedClusters/listClusterUserCredential/action* API 调用。 此 API 调用[列出群集用户凭据][api-cluster-user]。
     * 下载 *clusterUser* 角色的 *kubeconfig*。
 
-## <a name="assign-role-permissions-to-a-user"></a>将角色权限分配给用户
+这些 RBAC 角色可以应用到 Azure Active Directory (AD) 用户或组。
 
-若要将某个 Azure 角色分配给用户，需要获取 AKS 群集的资源 ID 以及用户帐户的 ID。 以下示例命令将执行下述步骤：
+## <a name="assign-role-permissions-to-a-user-or-group"></a>将角色权限分配给用户或组
+
+若要分配某个可用角色，需要获取 AKS 群集的资源 ID 以及 Azure AD 用户帐户或组的 ID。 以下示例命令：
 
 * 使用 [az aks show][az-aks-show] 命令获取 *myResourceGroup* 资源组中名为 *myAKSCluster* 的群集的群集资源 ID。 请根据需要提供自己的群集和资源组名称。
-* 使用 [az account show][az-account-show] 和 [az ad user show][az-ad-user-show] 命令获取你的用户 ID。
+* 使用 [az account show][az-account-show] 和 [az ad user show][az-ad-user-show] 命令获取用户 ID。
 * 最后，使用 [az role assignment create][az-role-assignment-create] 命令分配角色。
 
-以下示例分配“Azure Kubernetes 服务群集管理员角色”：
+以下示例将 Azure Kubernetes 服务群集管理员角色分配给单个用户帐户：
 
 ```azurecli-interactive
 # Get the resource ID of your AKS cluster
@@ -65,6 +67,9 @@ az role assignment create \
     --scope $AKS_CLUSTER \
     --role "Azure Kubernetes Service Cluster Admin Role"
 ```
+
+> [!TIP]
+> 若要将权限分配给 Azure AD 组，请使用组而不是用户的对象 ID 更新在上一示例中显示的 `--assignee` 参数。 若要获取组的对象 ID，请使用 [az ad group show][az-ad-group-show] 命令。 以下示例获取名为 *appdev* 的 Azure AD 组的对象 ID：`az ad group show --group appdev --query objectId -o tsv`
 
 可根据需要将上述分配更改为“群集用户角色”。
 
@@ -120,7 +125,7 @@ users:
 
 ## <a name="remove-role-permissions"></a>删除角色权限
 
-若要删除角色分配，请使用 [az role assignment delete][az-role-assignment-delete] 命令。 指定在前面命令中获取的帐户 ID 和群集资源 ID：
+若要删除角色分配，请使用 [az role assignment delete][az-role-assignment-delete] 命令。 指定在前面命令中获取的帐户 ID 和群集资源 ID。 如果将角色分配给组而不是用户，请为 `--assignee` 参数指定相应的组对象 ID 而不是帐户对象 ID：
 
 ```azurecli-interactive
 az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
@@ -147,4 +152,5 @@ az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-role-assignment-delete]: /cli/azure/role/assignment#az-role-assignment-delete
-[aad-integration]: aad-integration.md
+[aad-integration]: azure-ad-integration.md
+[az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show

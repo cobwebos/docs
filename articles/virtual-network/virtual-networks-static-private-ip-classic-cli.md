@@ -5,6 +5,7 @@ description: 了解如何使用 Azure 经典命令行接口 (CLI) 为虚拟机�
 services: virtual-network
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 2f71dc2bcd5463f81ae286bbe3099124eb3fa539
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 64342c6dcf4c9a052442a6f4b0afb7a56994f496
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023883"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059221"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 为虚拟机（经典）配置专用 IP 地址
 
@@ -64,14 +65,14 @@ ms.locfileid: "54023883"
         info:    OK
         info:    vm create command OK
    
-   * **-l（或 --location）**。 将在其中创建 VM 的 Azure 区域。 对于我们的方案，为 *centralus*。
+   * **-l（或 --location）** 。 将在其中创建 VM 的 Azure 区域。 对于我们的方案，为 *centralus*。
    * **-n（或 --vm-name）** 要创建的 VM 的名称。
-   * **-w（或 --virtual-network-name）**。 将在其中创建 VM 的 VNet 的名称。 
-   * **-S（或 --static-ip）**。 VM 的静态专用 IP 地址。
+   * **-w（或 --virtual-network-name）** 。 将在其中创建 VM 的 VNet 的名称。 
+   * **-S（或 --static-ip）** 。 VM 的静态专用 IP 地址。
    * **TestService**。 将在其中创建 VM 的云服务的名称。
    * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2**。 用于创建 VM 的映像。
    * **adminuser**。 Windows VM 的本地管理员。
-   * <strong>AdminP@ssw0rd</strong>： Windows VM 的本地管理员密码。
+   * <strong>AdminP@ssw0rd</strong>. Windows VM 的本地管理员密码。
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>如何检索 VM 的静态专用 IP 地址信息
 若要查看使用上述脚本创建的 VM 的静态专用 IP 地址信息，请运行以下 Azure CLI 命令并观察 *Network StaticIP* 的值：

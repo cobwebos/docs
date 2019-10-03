@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 116e54fd39af801cf8941a974da2b72c483097dc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 05638e17c2f41806a5c8aa3e0c3020eae82bdb60
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237012"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315956"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>从托管缓存服务迁移到 Azure Redis 缓存
 在将使用 Azure 托管缓存服务的应用程序迁移到 Azure Redis 缓存时，只需对应用程序略做更改，具体情况取决于缓存应用程序所使用的托管缓存服务功能。 API 虽非完全相同，但却极为类似，而且使用托管缓存服务来访问缓存的多数现有代码，只需略做更改即可重复使用。 本文介绍了为迁移托管缓存服务应用程序以使用 Azure Redis 缓存，如何进行必要的配置和应用程序更改；还介绍了如何使用 Azure Redis 缓存的某些功能实现托管缓存服务缓存功能。
@@ -62,7 +62,7 @@ Microsoft Azure Redis 缓存在下述层中提供：
 
 * **基本** - 单个节点。 多种大小，最大 53 GB。
 * **标准** - 双节点主/副本配置。 多种大小，最大 53 GB。 99.9% SLA。
-* **高级** - 双节点主/副本配置，最多有 10 个分片。 多个大小（从 6 GB 到 530 GB）。 标准层的所有功能加上其他功能，包括支持 [Redis 群集](cache-how-to-premium-clustering.md)、[Redis 持久性](cache-how-to-premium-persistence.md)和 [Azure 虚拟网络](cache-how-to-premium-vnet.md)。 99.9% SLA。
+* **高级** - 双节点主/副本配置，最多有 10 个分片。 多个大小（从 6 GB 到 1.2 TB）。 标准层的所有功能加上其他功能，包括支持 [Redis 群集](cache-how-to-premium-clustering.md)、[Redis 持久性](cache-how-to-premium-persistence.md)和 [Azure 虚拟网络](cache-how-to-premium-vnet.md)。 99.9% SLA。
 
 每个级别在功能和定价方面存在差异。 在本指南的后面介绍这些功能，而有关定价的详细信息，则请参阅[缓存定价详细信息](https://azure.microsoft.com/pricing/details/cache/)。
 

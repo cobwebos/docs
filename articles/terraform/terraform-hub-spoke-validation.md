@@ -8,13 +8,13 @@ author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 157be65a19a1f790b911aa9d861c5f18fc8c0813
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: e35af0fcf4a8f1f8f0446be44fe5b0bb6eeec693
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006174"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169708"
 ---
 # <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>教程：在 Azure 中使用 Terraform 验证中心辐射型网络
 
@@ -43,7 +43,7 @@ ms.locfileid: "58006174"
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)。
 
-1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。
+1. 打开 [Azure Cloud Shell](/azure/cloud-shell/overview)。 如果事先未选择环境，请选择“Bash”作为环境。 
 
     ![Cloud Shell 提示符](./media/terraform-common/azure-portal-cloud-shell-button-min.png)
 
@@ -95,13 +95,13 @@ ms.locfileid: "58006174"
 
 本部分介绍如何测试从模拟本地环境到中心 VNet 的连接。
 
-1. 在 Azure 门户中，浏览到“onprem-vnet-rg”资源组。
+1. 在 Azure 门户中，浏览到“onprem-vnet-rg”资源组。 
 
-1. 在“onprem-vnet-rg”选项卡中，选择名为“onprem-vm”的 VM。
+1. 在“onprem-vnet-rg”选项卡中，选择名为“onprem-vm”的 VM。  
 
-1. 选择“连接”。
+1. 选择“连接”  。
 
-1. 在“使用 VM 本地帐户登录”文本的旁边，将 **ssh** 命令复制到剪贴板。
+1. 在“使用 VM 本地帐户登录”文本的旁边，将 **ssh** 命令复制到剪贴板。 
 
 1. 在 Linux 提示符下，运行 `ssh` 连接到模拟本地环境。 使用 `on-prem.tf` 参数文件中指定的密码。
 

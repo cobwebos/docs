@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: cc81a8d8023d0724f4ecb71c157e8f575aa9edc8
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522704"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997481"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 事件日志数据源
 由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是使用 Windows 代理收集数据的最常见[数据源](agent-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。
@@ -34,6 +34,9 @@ Azure Monitor 仅从在设置中指定的 Windows 事件日志收集事件。  �
 
 ![配置 Windows 事件](media/data-sources-windows-events/configure.png)
 
+> [!NOTE]
+> Windows 事件日志中的严重事件会在 Azure Monitor 日志中具有 "错误" 的严重性。
+
 ## <a name="data-collection"></a>数据收集
 Azure Monitor 在事件创建时从受监视的事件日志中收集与所选严重级别相匹配的每个事件。  代理会在将其收集到的每个事件日志的位置记录下来。  如果代理在一段时间内处于脱机状态，则它从其上次脱机的位置收集事件，即使这些事件是在代理脱机期间创建的。  如果事件日志在代理脱机时，还有未收集的事件正在被覆盖，则可能无法收集这些事件。
 
@@ -46,7 +49,7 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 
 | 属性 | 描述 |
 |:--- |:--- |
-| Computer |从中收集事件的计算机的名称。 |
+| 计算机 |从中收集事件的计算机的名称。 |
 | EventCategory |事件的类别。 |
 | EventData |所有原始格式的事件数据。 |
 | EventID |事件数。 |
@@ -54,9 +57,9 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 | EventLevelName |以文本形式指示的事件严重性。 |
 | EventLog |从中收集事件的事件日志名称。 |
 | ParameterXml |XML 格式的事件参数值。 |
-| ManagementGroupName |System Center Operations Manager 代理的管理组名称。  对于其他代理，此值是 `AOI-<workspace ID>` |
+| ManagementGroupName |System Center Operations Manager 代理的管理组名称。  对于其他代理，该值为 `AOI-<workspace ID>` |
 | RenderedDescription |具有参数值的事件描述 |
-| 源 |事件源。 |
+| Source |事件源。 |
 | SourceSystem |从中收集事件的代理类型。 <br> OpsManager – Windows 代理，直接连接或 Operations Manager 管理 <br> Linux - 所有 Linux 代理  <br> AzureStorage – Azure 诊断 |
 | TimeGenerated |在 Windows 中创建事件的日期和时间。 |
 | Username |记录事件的帐户的用户名。 |
@@ -64,9 +67,9 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 ## <a name="log-queries-with-windows-events"></a>使用 Windows 事件的日志查询
 下表提供了检索 Windows 事件记录的不同日志查询的示例。
 
-| Query | 描述 |
+| 查询 | 描述 |
 |:---|:---|
-| 事件 |所有 Windows 事件。 |
+| Event |所有 Windows 事件。 |
 | Event &#124; where EventLevelName == "error" |所有 Windows 事件与错误的严重性。 |
 | Event &#124; summarize count() by Source |按源计数 Windows 事件。 |
 | Event &#124; where EventLevelName == "error" &#124; summarize count() by Source |按源计数 Windows 错误事件。 |

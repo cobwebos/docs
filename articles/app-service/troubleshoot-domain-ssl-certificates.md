@@ -4,23 +4,22 @@ description: 排查 Azure 应用服务中的域和 SSL 证书问题
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: a6c3b8485a3243d7c89ab409a2fb83b1b045c9ba
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525375"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121982"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
@@ -78,22 +77,22 @@ ms.locfileid: "59525375"
 
 - 应用服务计划的层级为“免费”或“共享”。 这些定价层不支持 SSL。 
 
-    **解决方案**；将应用的应用服务计划升级到“标准”。
+    **解决方案**：将应用的应用服务计划升级到“标准”。
 
 - 订阅中没有有效的信用卡。
 
-    **解决方案**；将有效的信用卡添加到订阅。 
+    **解决方案**：将有效的信用卡添加到订阅。 
 
 - 该订阅套餐不支持购买“Microsoft 学生”等应用服务证书。  
 
-    **解决方案**；升级订阅。 
+    **解决方案**：升级订阅。 
 
 - 订阅已达到允许的购买限制。
 
-    **解决方案**；对于即用即付和 EA 订阅类型，可购买的应用服务证书限制为 10 个。 对于其他订阅类型，限制为 3 个。 若要提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-- 应用服务证书标记为欺诈。 收到以下错误消息：“你的证书已被标记为可能存在欺诈。 请求当前正在审查中。 如果证书不会不能使用 24 小时内，请联系 Azure 支持。"
+    **解决方案**：对于即用即付和 EA 订阅类型，可购买的应用服务证书限制为 10 个。 对于其他订阅类型，限制为 3 个。 若要提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+- 应用服务证书标记为欺诈。 收到以下错误消息：“你的证书已被标记为可能存在欺诈。 请求当前正在审查中。 如果证书未在 24 小时内变为可用，请联系 Azure 支持部门。”
 
-    **解决方案**；如果证书标记为欺诈，并且在 24 小时后未得到解决，请执行以下步骤：
+    **解决方案**：如果证书标记为欺诈，并且在 24 小时后未得到解决，请执行以下步骤：
 
     1. 登录到 [Azure 门户](https://portal.azure.com)。
     2. 转到“应用服务证书”，选择该证书。
@@ -191,7 +190,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 应用服务证书已续订，但使用应用服务证书的应用仍在使用旧证书。 此外，出现需要 HTTPS 协议的警告。
 
 #### <a name="cause"></a>原因 
-Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何更改发生，则会同步证书资源。 在轮换或更新证书时，应用程序有时仍会检索旧证书，而不是最近更新的证书。 原因是同步证书资源的作业尚未运行。 
+应用服务会在48小时内自动同步证书。 在轮换或更新证书时，应用程序有时仍会检索旧证书，而不是最近更新的证书。 原因是同步证书资源的作业尚未运行。 单击 "同步"。同步操作会自动更新应用服务中证书的主机名绑定，而不会导致应用程序停机。
  
 #### <a name="solution"></a>解决方案
 
@@ -238,17 +237,17 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 - Azure 订阅中没有信用卡，或信用卡无效。
 
-    **解决方案**；将有效的信用卡添加到订阅。
+    **解决方案**：将有效的信用卡添加到订阅。
 
 - 你不是订阅所有者，因此无权购买域。
 
-    **解决方案**；[将“所有者”角色分配](../role-based-access-control/role-assignments-portal.md)给自己的帐户。 或者联系订阅管理员获取购买域的权限。
+    **解决方案**：[将“所有者”角色分配](../role-based-access-control/role-assignments-portal.md)给自己的帐户。 或者联系订阅管理员获取购买域的权限。
 - 已达到订阅中可购买域数的限制。 当前限制为 20 个。
 
-    **解决方案**；若要请求提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+    **解决方案**：若要请求提高限制，请联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 - Azure 订阅类型不支持购买应用服务域。
 
-    **解决方案**；将 Azure 订阅升级到其他订阅类型，例如即用即付订阅。
+    **解决方案**：将 Azure 订阅升级到其他订阅类型，例如即用即付订阅。
 
 ### <a name="you-cant-add-a-host-name-to-an-app"></a>无法将主机名添加到应用 
 
@@ -262,10 +261,10 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 - 无权添加主机名。
 
-    **解决方案**；让订阅管理员为你授予添加主机名的权限。
+    **解决方案**：让订阅管理员为你授予添加主机名的权限。
 - 无法验证域所有权。
 
-    **解决方案**；验证是否已正确配置 CNAME 或 A 记录。 若要将自定义域映射到应用，请创建 CNAME 记录或 A 记录。 若要使用根域，必须使用 A 和 TXT 记录：
+    **解决方案**：验证是否已正确配置 CNAME 或 A 记录。 若要将自定义域映射到应用，请创建 CNAME 记录或 A 记录。 若要使用根域，必须使用 A 和 TXT 记录：
 
     |记录类型|主机|指向|
     |------|------|-----|
@@ -277,11 +276,11 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 **购买网站的自定义域后是否必须配置该域？**
 
-通过 Azure 门户购买某个域时，应用服务应用程序会自动配置为使用该自定义域。 你不需要执行任何额外的步骤。 有关详细信息，观看[Azure 应用服务自助帮助：自定义域名添加](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)第 9 频道上。
+通过 Azure 门户购买某个域时，应用服务应用程序会自动配置为使用该自定义域。 你不需要执行任何额外的步骤。 有关详细信息，请[观看 Azure App Service 自助：](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)在 Channel9 上添加自定义域名。
 
 **是否可以使用在 Azure 门户中购买的域来指向 Azure VM？**
 
-是的您可以将域指向 VM 了。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](../dns/dns-custom-domain.md)。
+是的，可将该域指向 VM。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](../dns/dns-custom-domain.md)。
 
 **我的域是由 GoDaddy 还是 Azure DNS 托管？**
 
@@ -313,11 +312,11 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 **是否可以在订阅中的另一个 Azure 应用服务应用中使用域？**
 
-是的。 在 Azure 门户中访问“自定义域和 SSL”边栏选项卡时，会看到购买的域。 可将应用配置为使用其中的任何域。
+是。 在 Azure 门户中访问“自定义域和 SSL”边栏选项卡时，会看到购买的域。 可将应用配置为使用其中的任何域。
 
 **是否可将域从一个订阅转移到另一个订阅？**
 
-可以将一个域移到另一个订阅/资源组使用[移动 AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet。
+可以使用 [Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet 将域转移到另一个订阅/资源组。
 
 **如果我当前没有 Azure 应用服务应用，该如何管理自定义域？**
 
@@ -325,7 +324,6 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 **是否可将使用自定义域的 Web 应用移到另一个订阅，或者将其从应用服务环境 v1 移到 v2？**
 
-是的，可以在订阅之间移动 Web 应用。 请遵照[如何在 Azure 中移动资源](../azure-resource-manager/resource-group-move-resources.md)中的指导操作。 移动 Web 应用时存在一些限制。 有关详细信息，请参阅[移动应用服务资源时存在的限制](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
-)。
+是的，可以在订阅之间移动 Web 应用。 请遵照[如何在 Azure 中移动资源](../azure-resource-manager/resource-group-move-resources.md)中的指导操作。 移动 Web 应用时存在一些限制。 有关详细信息，请参阅[移动应用服务资源时存在的限制](../azure-resource-manager/move-limitations/app-service-move-limitations.md)。
 
 移动 Web 应用之后，自定义域设置中的域的主机名绑定应保持不变。 无需执行额外的步骤即可配置主机名绑定。

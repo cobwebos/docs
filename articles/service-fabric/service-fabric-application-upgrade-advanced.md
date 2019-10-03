@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3cdddac74552b56dfe3567adf30f1a05b6eb8e24
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: a3d0d6077da4df9a7f0d1b246c9752d38488a175
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663785"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963822"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>在升级应用程序期间添加或删除服务类型
@@ -85,6 +85,44 @@ app1/
 ```
 
 换句话说，就是照常创建完整的应用程序包，然后删除其版本未更改的任何代码/配置/数据包文件夹。
+
+## <a name="upgrade-application-parameters-independently-of-version"></a>独立于版本升级应用程序参数
+
+有时, 需要更改 Service Fabric 应用程序的参数, 而无需更改清单版本。 可以通过将 **-ApplicationParameter**标志与**Get-servicefabricapplicationupgrade** Azure Service Fabric PowerShell cmdlet 一起使用来方便地完成此操作。 假设有以下属性的 Service Fabric 应用程序:
+
+```PowerShell
+PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
+
+ApplicationName        : fabric:/Application1
+ApplicationTypeName    : Application1Type
+ApplicationTypeVersion : 1.0.0
+ApplicationStatus      : Ready
+HealthState            : Ok
+ApplicationParameters  : { "ImportantParameter" = "1"; "NewParameter" = "testBefore" }
+```
+
+现在, 使用**get-servicefabricapplicationupgrade** cmdlet 升级应用程序。 此示例显示了监视的升级, 但也可以使用不受监视的升级。 若要查看此 cmdlet 接受的标志的完整说明, 请参阅[Azure Service Fabric PowerShell 模块参考](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters)
+
+```PowerShell
+PS C:\> $appParams = @{ "ImportantParameter" = "2"; "NewParameter" = "testAfter"}
+
+PS C:\> Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/Application1 -ApplicationTypeVers
+ion 1.0.0 -ApplicationParameter $appParams -Monitored
+
+```
+
+升级后, 确认应用程序包含更新的参数和相同的版本:
+
+```PowerShell
+PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
+
+ApplicationName        : fabric:/Application1
+ApplicationTypeName    : Application1Type
+ApplicationTypeVersion : 1.0.0
+ApplicationStatus      : Ready
+HealthState            : Ok
+ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAfter" }
+```
 
 ## <a name="rolling-back-application-upgrades"></a>回滚应用程序升级
 

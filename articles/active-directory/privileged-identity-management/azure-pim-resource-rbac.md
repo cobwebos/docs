@@ -1,9 +1,9 @@
 ---
-title: 查看活动和审核历史记录的 PIM-Azure Active Directory 中的 Azure 资源角色 |Microsoft Docs
+title: 在 PIM 中查看 Azure 资源角色的活动和审核历史记录 - Azure Active Directory | Microsoft Docs
 description: 在 Azure AD Privileged Identity Management (PIM) 中查看 Azure 资源角色的活动和审核历史记录。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74607f6a746558238ead65036d708b515d370035
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 40e1ed018f66d4f5eefd02d587504cf64969f47b
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492764"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804048"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>在 PIM 中查看 Azure 资源角色的活动和审核历史记录
 
@@ -43,11 +43,11 @@ ms.locfileid: "59492764"
 
     这将按日期显示用户在 Azure 资源中的操作的图形视图。 其中还显示了同一时间段内的最近角色激活。
 
-    ![用户详细信息](media/azure-pim-resource-rbac/rbac-user-details.png)
+    ![包含资源活动摘要和角色激活的用户详细信息](media/azure-pim-resource-rbac/rbac-user-details.png)
 
 1. 单击某个特定的角色可查看详细信息，以及在该用户处于活动状态期间发生的相应 Azure 资源活动。
 
-    ![选择角色激活](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
+    ![所选角色激活和按日期显示的活动详细信息](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
 ## <a name="export-role-assignments-with-children"></a>导出具有子级的角色分配
 
@@ -63,11 +63,11 @@ ms.locfileid: "59492764"
 
 1. 单击“导出”以打开“导出成员身份”窗格。
 
-    ![“导出成员身份”窗格](media/azure-pim-resource-rbac/export-membership.png)
+    ![用于导出所有成员的“导出成员身份”窗格](media/azure-pim-resource-rbac/export-membership.png)
 
 1. 单击“导出所有成员”以在 CSV 文件中导出所有角色分配。
 
-    ![导出 CSV 文件](media/azure-pim-resource-rbac/export-csv.png)
+    ![CSV 文件中导出的角色分配在 Excel 中显示](media/azure-pim-resource-rbac/export-csv.png)
 
 ## <a name="view-resource-audit-history"></a>查看资源审核历史记录
 
@@ -83,15 +83,15 @@ ms.locfileid: "59492764"
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 
-    ![筛选资源审核](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![带筛选器的资源审核列表](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 1. 对于“审核类型”，选择“激活(已分配 + 已激活)”。
 
-    ![活动详细信息](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+    ![按“激活”审核类型筛选的资源审核列表](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
 1. 在“操作”下，单击某个用户的 **（活动）** 可查看该用户在 Azure 资源中的活动详细信息。
 
-    ![用户活动详细信息](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
+    ![特定操作的用户活动详细信息](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
 ## <a name="view-my-audit"></a>查看我的审核
 
@@ -107,10 +107,10 @@ ms.locfileid: "59492764"
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 
-    ![个人角色活动](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![当前用户的审核列表](media/azure-pim-resource-rbac/my-audit-time.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 - [在 PIM 中分配 Azure 资源角色](pim-resource-roles-assign-roles.md)
 - [在 PIM 中批准或拒绝 Azure 资源角色的请求](pim-resource-roles-approval-workflow.md)
-- [在 PIM 中的 Azure AD 角色查看审核历史记录](pim-how-to-use-audit-log.md)
+- [在 PIM 中查看 Azure AD 角色的审核历史记录](pim-how-to-use-audit-log.md)

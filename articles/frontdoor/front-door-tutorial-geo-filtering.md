@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 8a1fb0c3270d4899f05190fb1745075584f613ab
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: e40e99aa57d10bd69143efc8db38ac0071d8952f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793580"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827769"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>如何为 Front Door 设置地区筛选 WAF 策略
 本教程介绍如何使用 Azure PowerShell 创建简单的地区筛选策略并将该策略与现有的 Front Door 前端主机相关联。 此示例地区筛选策略会阻止除美国之外的所有其他国家/地区的请求。
@@ -34,8 +35,8 @@ Azure PowerShell 提供一组可以使用 [Azure 资源管理器](https://docs.m
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用交互式登录对话框连接到 Azure
 ```
-Connect-AzAccount
 Install-Module -Name Az
+Connect-AzAccount
 ```
 确保已安装 PowerShellGet 最新版本。 运行下面的命令，重新打开 PowerShell。
 
@@ -53,10 +54,10 @@ Install-Module -Name Az.FrontDoor
 
 ## <a name="define-geo-filtering-match-condition"></a>定义地区筛选匹配条件
 
-创建一个示例匹配条件，该条件选择不是来自“US”的请求。创建匹配条件时，请在参数中使用 [New-AzFrontDoorMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject)。 [此处](front-door-geo-filtering.md)提供了用于国家/地区映射的双字母国家/地区代码。
+创建一个示例匹配条件，在创建匹配条件时使用 [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) 选择不是来自“美国”的请求。 [此处](front-door-geo-filtering.md)提供了用于国家/地区映射的双字母国家/地区代码。
 
 ```azurepowershell-interactive
-$nonUSGeoMatchCondition = New-AzFrontDoorMatchConditionObject `
+$nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable RemoteAddr `
 -OperatorProperty GeoMatch `
 -NegateCondition $true `
@@ -65,10 +66,10 @@ $nonUSGeoMatchCondition = New-AzFrontDoorMatchConditionObject `
  
 ## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>将地区筛选匹配条件添加到包含“操作”和“优先级”的规则
 
-使用 [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorcustomruleobject) 根据匹配条件、操作和优先级创建 CustomRule 对象 `nonUSBlockRule`。  一个 CustomRule 可以有多个 MatchCondition。  在此示例中，“操作”设置为“阻止”，“优先级”设置为 1（最高优先级）。
+使用 [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) 根据匹配条件、操作和优先级创建 CustomRule 对象 `nonUSBlockRule`。  一个 CustomRule 可以有多个 MatchCondition。  在此示例中，“操作”设置为“阻止”，“优先级”设置为 1（最高优先级）。
 
 ```
-$nonUSBlockRule = New-AzFrontDoorCustomRuleObject `
+$nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
 -Name "geoFilterRule" `
 -RuleType MatchRule `
 -MatchCondition $nonUSGeoMatchCondition `
@@ -77,12 +78,12 @@ $nonUSBlockRule = New-AzFrontDoorCustomRuleObject `
 ```
 
 ## <a name="add-rules-to-a-policy"></a>将规则添加到策略
-使用 `Get-AzResourceGroup` 找到包含该 Front Door 配置文件的资源组的名称。 接下来，在包含该 Front Door 配置文件的指定资源组中，使用 [New-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy) 创建包含 `nonUSBlockRule` 的 `geoPolicy` 策略对象。 必须为地区策略提供唯一名称。 
+使用 `Get-AzResourceGroup` 找到包含该 Front Door 配置文件的资源组的名称。 接下来，在包含该 Front Door 配置文件的指定资源组中，使用 [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) 创建包含 `nonUSBlockRule` 的 `geoPolicy` 策略对象。 必须为地区策略提供唯一名称。 
 
 以下示例使用资源组名称 *myResourceGroupFD1*，并假设已遵照以下文章中的说明创建了 Front Door 配置文件：[快速入门：创建 Front Door](quickstart-create-front-door.md)。 在下面的示例中，请将策略名称 *geoPolicyAllowUSOnly* 替换为唯一的策略名称。
 
 ```
-$geoPolicy = New-AzFrontDoorFireWallPolicy `
+$geoPolicy = New-AzFrontDoorWafPolicy `
 -Name "geoPolicyAllowUSOnly" `
 -resourceGroupName myResourceGroupFD1 `
 -Customrule $nonUSBlockRule  `
@@ -110,6 +111,5 @@ Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 > 只需设置 WebApplicationFirewallPolicyLink 属性一次，即可将 WAF 策略链接到 Front Door 前端主机。 后续策略更新会自动应用到前端主机。
 
 ## <a name="next-steps"></a>后续步骤
-
-- 了解[通过 Front Door 实现的应用程序层安全性](front-door-application-security.md)。
+- 了解 [Azure Web 应用程序防火墙](waf-overview.md)。
 - 了解如何[创建 Front Door](quickstart-create-front-door.md)。

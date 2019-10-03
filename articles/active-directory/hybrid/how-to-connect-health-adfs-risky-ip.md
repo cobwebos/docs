@@ -16,11 +16,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 49b93cb7852692e4dad65fcbd72cd749db1b16fb
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540901"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60350509"
 ---
 # <a name="risky-ip-report-public-preview"></a>风险 IP 报表 （公共预览版）
 AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为最终用户提供身份验证服务，方便他们访问 Office 365 之类的 SaaS 应用程序。 在这种情况下，恶意参与者可能会尝试登录 AD FS 系统，用猜测最终用户密码的方式获得应用程序资源的访问权限。 AD FS 提供 Extranet 帐户锁定功能，可以防止这些类型的攻击，自 AD FS 出现在 Windows Server 2012 R2 中以后就是这样。 如果所用版本较低，强烈建议将 AD FS 系统升级到 Windows Server 2016。 <br />
@@ -75,7 +75,7 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 | isWhitelistedIpAddress | 表示 IP 地址是否从警报和报表进行筛选的标志。 专用 IP 地址（<i>10.x.x.x、172.x.x.x 和 192.168.x.x</i>）和 Exchange IP 地址会在筛选后标记为 True。 如果看到专用 IP 地址范围，则很可能是因为外部负载均衡器在将请求传递给 Web 应用程序代理服务器时未发送客户端 IP 地址。  | 
 
 ## <a name="configure-notification-settings"></a>配置通知设置
-可以通过“通知设置”更新报表的管理联系人。 默认情况下，风险 IP 警报电子邮件通知处于关闭状态。 若要启用通知，可以切换“获取 IP 地址超过失败活动阈值报表的电子邮件通知”下的按钮 与 Connect Health 中的泛型警报通知设置一样，它可以让你在此处自定义有关风险 IP 报表的指定通知接收者列表。 也可在进行更改时通知所有全局管理员。 
+可以通过“通知设置”更新报表的管理联系人。  默认情况下，风险 IP 警报电子邮件通知处于关闭状态。 若要启用通知，可以切换“获取 IP 地址超过失败活动阈值报表的电子邮件通知”下的按钮 与 Connect Health 中的泛型警报通知设置一样，它可以让你在此处自定义有关风险 IP 报表的指定通知接收者列表。 也可在进行更改时通知所有全局管理员。 
 
 ## <a name="configure-threshold-settings"></a>配置阈值设置
 可以通过“阈值设置”更新警报阈值。 首先，系统已默认设置阈值。 在风险 IP 报表阈值设置中，共有四个类别：

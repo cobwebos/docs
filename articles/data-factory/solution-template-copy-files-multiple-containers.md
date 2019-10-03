@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/1/2018
 ms.openlocfilehash: a52729adf8d6df3f4e44e561b45b854db433628c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543417"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60635111"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>使用 Azure 数据工厂复制多个容器中的文件
 

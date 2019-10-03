@@ -2,17 +2,17 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的群集安全性
 description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理群集安全性和升级的群集操作员最佳做法
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: iainfou
-ms.openlocfilehash: b0d6afbe2db4c95460aef96a9d918219bd4240e2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: mlearned
+ms.openlocfilehash: 46e44804ddbabd8bf5620ad9516f1ca2d5017bfa
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769874"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019309"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
@@ -50,10 +50,10 @@ Azure Active Directory (AD) 提供可与 AKS 群集集成的企业级标识管�
 
 与应该向用户或组授予所需最少权限的方式一样，也应将容器限制为只能访问它们所需的操作和进程。 为了尽量减少攻击风险，请勿配置需要提升的权限或 root 访问权限的应用程序和容器。 例如，在 Pod 清单中设置 `allowPrivilegeEscalation: false`。 这些 *Pod 安全性上下文*内置于 Kubernetes 中，可用于定义其他权限（例如要以其身份运行的用户或组）或者要公开的 Linux 功能。 有关更多最佳做法，请参阅[保护 Pod 对资源的访问][pod-security-contexts]。
 
-若要更精确地控制容器操作，还可以使用内置 Linux 安全功能，例如 *AppArmor* 和 *seccomp*。 这些功能在节点级别定义，然后通过 Pod 清单实现。
+若要更精确地控制容器操作，还可以使用内置 Linux 安全功能，例如 *AppArmor* 和 *seccomp*。 这些功能在节点级别定义，然后通过 Pod 清单实现。 内置的 Linux 安全功能仅在 Linux 节点和 Pod 上提供。
 
 > [!NOTE]
-> 在恶意的多租户使用情况下，AKS 或其他位置中的 Kubernetes 环境并不完全安全。 用于节点的其他安全功能（如 *AppArmor*、*seccomp*、*Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
+> AKS 或其他位置中的 Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 用于节点的其他安全功能（如 *AppArmor*、*seccomp*、*Pod 安全策略*或更细粒度的基于角色的访问控制 (RBAC)）可增加攻击的难度。 但是，为了在运行恶意多租户工作负荷时获得真正的安全性，虚拟机监控程序应是你唯一信任的安全级别。 Kubernetes 的安全域成为整个群集，而不是单个节点。 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
 
 ### <a name="app-armor"></a>App Armor
 
@@ -188,18 +188,18 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 然后，可以使用 [az aks upgrade][az-aks-upgrade] 命令升级 AKS 群集。 升级过程会以安全的方式逐一封锁并清空节点，在剩余的节点上计划 Pod，然后部署一个运行最新 OS 和 Kubernetes 版本的新节点。
 
 ```azurecli-interactive
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.8
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION
 ```
 
 有关 AKS 中的升级的详细信息，请参阅 [AKS 中支持的 Kubernetes 版本][aks-supported-versions]和[升级 AKS 群集][aks-upgrade]。
 
-## <a name="process-node-updates-and-reboots-using-kured"></a>使用 kured 处理节点更新和重启
+## <a name="process-linux-node-updates-and-reboots-using-kured"></a>使用 kured 处理 Linux 节点更新和重启
 
-**最佳做法指南** - AKS 会自动在每个工作节点上下载并安装安全修补程序，但不会在必要时自动重启。 使用 `kured` 监视挂起的重启操作，然后安全地封锁并排空节点以允许节点重启，应用更新并尽可能安全地保护 OS。
+**最佳做法指南** - AKS 会自动在每个 Linux 节点上下载并安装安全修补程序，但不会在必要时自动重启。 使用 `kured` 监视挂起的重启操作，然后安全地封锁并排空节点以允许节点重启，应用更新并尽可能安全地保护 OS。 对于 Windows Server 节点 (当前在 AKS 中为预览版), 请定期执行 AKS 升级操作, 以安全地 cordon 和排出箱并部署已更新的节点。
 
-每天晚上，AKS 节点都会通过其发行版更新通道获得安全修补程序。 当在 AKS 群集中部署节点时，会​​自动配置此行为。 为了尽量减少对正在运行的工作负荷的中断和潜在影响，AKS 不会在安全修补程序或内核更新需要进行重启时自动重启节点。
+每天晚上，AKS 中的 Linux 节点都会通过其发行版更新通道获得安全修补程序。 当在 AKS 群集中部署节点时，会​​自动配置此行为。 为了尽量减少对正在运行的工作负荷的中断和潜在影响，AKS 不会在安全修补程序或内核更新需要进行重启时自动重启节点。
 
-Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可监视挂起的节点重启操作。 当节点应用需要进行重启的更新时，系统会安全地封锁并排空该节点，以便将 Pod 移至群集中的其他节点上并在这些节点上计划 Pod。 重启节点后，会将其重新添加到群集中，Kubernetes 将继续在该节点上计划 Pod。 为了尽量减少中断，`kured` 一次只允许重启一个节点。
+Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可监视挂起的节点重启操作。 当 Linux 节点应用需要进行重启的更新时，系统会安全地封锁并排空该节点，以便将 Pod 移至群集中的其他节点上并在这些节点上计划 Pod。 重启节点后，会将其重新添加到群集中，Kubernetes 将继续在该节点上计划 Pod。 为了尽量减少中断，`kured` 一次只允许重启一个节点。
 
 ![使用 kured 的 AKS 节点重启过程](media/operator-best-practices-cluster-security/node-reboot-process.png)
 
@@ -218,7 +218,7 @@ Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可�
 <!-- EXTERNAL LINKS -->
 [kured]: https://github.com/weaveworks/kured
 [k8s-apparmor]: https://kubernetes.io/docs/tutorials/clusters/apparmor/
-[seccomp]: https://docs.docker.com/engine/security/seccomp/
+[seccomp]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#seccomp
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-exec]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
@@ -230,7 +230,7 @@ Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可�
 [aks-upgrade]: upgrade-cluster.md
 [aks-best-practices-identity]: concepts-identity.md
 [aks-kured]: node-updates-kured.md
-[aks-aad]: aad-integration.md
+[aks-aad]: azure-ad-integration.md
 [best-practices-container-image-management]: operator-best-practices-container-image-management.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources

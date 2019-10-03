@@ -3,23 +3,21 @@ title: 将本地网络连接到 Azure 虚拟网络：站点到站点 VPN（经�
 description: 通过公共 Internet 创建从本地网络到经典 Azure 虚拟网络的 IPsec 连接。
 services: vpn-gateway
 author: cherylmc
-manager: jpconnock
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/14/2018
+ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: a2d714cae187e4ebcf2eefd37c61484dc48495e0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2e6036c5f29614f2e91278b693c07dc3dc8595f2
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002837"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575482"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 门户创建站点到站点连接（经典）
 
-[!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
-本文介绍如何使用 Azure 门户创建站点到站点 VPN 网关连接，以便从本地网络连接到 VNet。 本文中的步骤适用于经典部署模型。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
+本文介绍如何使用 Azure 门户创建站点到站点 VPN 网关连接，以便从本地网络连接到 VNet。 本文中的步骤适用于经典部署模型, 不适用于当前部署模型资源管理器。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
@@ -33,7 +31,7 @@ ms.locfileid: "58002837"
 
 ![站点到站点 VPN 网关跨界连接示意图](./media/vpn-gateway-howto-site-to-site-classic-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before"></a>准备工作
 
 在开始配置之前，请验证是否符合以下条件：
 
@@ -41,7 +39,7 @@ ms.locfileid: "58002837"
 * 确保有一台兼容的 VPN 设备，并且可对其进行配置。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 * 确认 VPN 设备有一个面向外部的公共 IPv4 地址。
 * 如果不熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。
-* 目前需要使用 PowerShell 来指定共享密钥和创建 VPN 网关连接。 安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 使用 PowerShell 进行此配置时，请确保以管理员身份运行。 
+* 目前需要使用 PowerShell 来指定共享密钥和创建 VPN 网关连接。 安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 若要安装 cmdlet, 请参阅[服务管理](/powershell/azure/servicemanagement/install-azure-ps)。 有关 PowerShell 安装的常规详细信息, 请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 使用 PowerShell 进行此配置时，请确保以管理员身份运行。
 
 ### <a name="values"></a>此练习的示例配置值
 
@@ -56,7 +54,7 @@ ms.locfileid: "58002837"
   * BackEnd：10.12.0.0/24（对于本练习来说是可选的）
 * **GatewaySubnet：** 10.11.255.0/27
 * **资源组：** TestRG1
-* **位置：** 美国东部
+* **位置：** East US
 * **DNS 服务器：** 10.11.0.3（对于本练习来说是可选的）
 * **本地站点名称：** Site2
 * **客户端地址空间：** 位于本地站点的地址空间。
@@ -72,24 +70,16 @@ ms.locfileid: "58002837"
 ### <a name="to-create-a-virtual-network"></a>创建虚拟网络
 
 1. 从浏览器导航到 [Azure 门户](https://portal.azure.com)，并在必要时用 Azure 帐户登录。
-2. 单击“+”。 在“在市场中搜索”字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”，单击打开“虚拟网络”页。
-
-   ![搜索虚拟网络页](./media/vpn-gateway-howto-site-to-site-classic-portal/newvnetportal700.png)
-3. 从靠近“虚拟网络”页底部的“选择部署模型”下拉列表中，选择“经典”，然后单击“创建”。
-
-   ![选择部署模型](./media/vpn-gateway-howto-site-to-site-classic-portal/selectmodel.png)
+2. 单击 "*创建资源*"。 在“在市场中搜索”字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”，单击打开“虚拟网络”页。
+3. 单击 " **(改为经典)** ", 然后单击 "**创建**"。
 4. 在“创建虚拟网络(经典)”页上，配置 VNet 设置。 在此页上，添加第一个地址空间和单个子网地址范围。 完成创建 VNet 之后，可以返回并添加其他子网和地址空间。
 
    ![创建虚拟网络页](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "创建虚拟网络页")
-5. 验证“订阅”  是否正确。 可以使用下拉列表更改订阅。
+5. 验证“订阅” 是否正确。 可以使用下拉列表更改订阅。
 6. 单击“资源组”，然后选择现有资源组，或通过键入名称创建新资源组。 有关资源组的详细信息，请访问 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md#resource-groups)。
-7. 接下来，选择 VNet 的“位置”  设置。 该位置确定要部署到此 VNet 的资源所在的位置。
-8. 如果希望能够在仪表板上轻松查找 VNet，请选择“固定到仪表板”。 单击“创建”以创建 VNet。
-
-   ![固定到仪表板](./media/vpn-gateway-howto-site-to-site-classic-portal/pintodashboard150.png "固定到仪表板")
+7. 接下来，选择 VNet 的“位置” 设置。 该位置确定要部署到此 VNet 的资源所在的位置。
+8. 单击“创建”以创建 VNet。
 9. 单击“创建”后，仪表板上会出现一个磁贴，反映 VNet 的进度。 创建 VNet 时，该磁贴会更改。
-
-   ![创建虚拟网络磁贴](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/deploying150.png "创建虚拟网络")
 
 ## <a name="additionaladdress"></a>2.添加其他地址空间
 
@@ -114,27 +104,28 @@ ms.locfileid: "58002837"
 
 本地站点通常指本地位置。 它包含 VPN 设备的 IP 地址和地址范围，需要创建到该设备的连接，并且需要通过 VPN 网关将地址范围路由到该设备。
 
-1. 在门户中，导航到要为其创建网关的虚拟网络。
-2. 在虚拟网络页的“概览”页的“VPN 连接”部分，单击“网关”打开“新建 VPN 连接”页。
-
-   ![单击此项配置网关设置](./media/vpn-gateway-howto-site-to-site-classic-portal/beforegw125.png "单击此项配置网关设置")
-3. 在“新建 VPN 连接”页上，选择“站点到站点”。
+1. 在 VNet 页的 "**设置**" 下, 单击 "**关系图**"。
+1. 在 " **VPN 连接**" 页上 **, 单击 "没有任何现有 VPN 连接"。若要开始**, 请单击此处。
+1. 对于 "**连接类型**", 请选择 "**站点到站点**"。
 4. 单击“本地站点 - 配置所需的设置”打开“本地站点”页。 配置设置，并单击“确定”保存设置。
    - **名称：** 为本地站点创建一个名称，方便进行识别。
-   - **VPN 网关 IP 地址：** 这是本地网络的 VPN 设备的公共 IP 地址。 VPN 设备需要 IPv4 公共 IP 地址。 为要连接到的 VPN 设备指定一个有效的公共 IP 地址。 它必须是可由 Azure 访问。 如果不知道 VPN 设备的 IP 地址，则始终可以先添加一个占位符值（只要其格式是有效的公共 IP 地址），等到以后再更改。
+   - **VPN 网关 IP 地址：** 这是本地网络的 VPN 设备的公共 IP 地址。 VPN 设备需要 IPv4 公共 IP 地址。 为要连接到的 VPN 设备指定一个有效的公共 IP 地址。 它必须可由 Azure 访问。 如果不知道 VPN 设备的 IP 地址，则始终可以先添加一个占位符值（只要其格式是有效的公共 IP 地址），等到以后再更改。
    - **客户端地址空间：** 列出要通过此网关路由到本地网络的 IP 地址范围。 可以添加多个地址空间范围。 请确保在此处指定的范围与虚拟网络连接到的其他网络的范围不重叠，也与虚拟网络本身的地址范围不重叠。
 
    ![本地站点](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png "配置本地站点")
+
+单击 **"确定"** 以关闭 "本地站点" 页。 **不要单击 "确定" 以关闭 "新建 VPN 连接" 页**。
 
 ## <a name="gatewaysubnet"></a>5.配置网关子网
 
 必须为 VPN 网关创建一个网关子网。 网关子网包含 VPN 网关服务使用的 IP 地址。
 
+
 1. 在“新建 VPN 连接”页上，选中“立即创建网关”复选框。 此时会显示“可选网关配置”页。 如果不选中该复选框，则看不到配置网关子网的页面。
 
    ![网关配置 - 子网、大小、路由类型](./media/vpn-gateway-howto-site-to-site-classic-portal/optional.png "网关配置 - 子网、大小、路由类型")
 2. 若要打开“网关配置”页，请单击“可选网关配置 - 子网、大小和路由类型”。
-3. 在“网关配置”页上，单击“子网 - 配置所需的设置”打开“添加子网”页。
+3. 在“网关配置”页上，单击“子网 - 配置所需的设置”打开“添加子网”页。 完成这些设置的配置后, 单击 **"确定"** 。
 
    ![网关配置 - 网关子网](./media/vpn-gateway-howto-site-to-site-classic-portal/subnetrequired.png "网关配置 - 网关子网")
 4. 在“添加子网”页上，添加网关子网。 指定的网关子网的大小取决于要创建的 VPN 网关配置。 尽管网关子网最小可以创建为 /29，但建议使用 /27 或 /28。 这样可以创建较大的子网，包含的地址更多。 使用更大的网关子网可以有足够的 IP 地址来应对未来可能会有的配置。
@@ -143,12 +134,12 @@ ms.locfileid: "58002837"
 
 ## <a name="sku"></a>6.指定 SKU 和 VPN 类型
 
-1. 选择网关“大小”。 这是用于创建虚拟网关的网关 SKU。 在门户中，“默认 SKU”为“基本”。 经典 VPN 使用老版（旧版）网关 SKU。 有关旧版网关 SKU 的详细信息，请参阅[使用虚拟网关 SKU（老版 SKU）](vpn-gateway-about-skus-legacy.md)。
+1. 选择网关“大小”。 这是用于创建虚拟网关的网关 SKU。 经典 VPN 使用老版（旧版）网关 SKU。 有关旧版网关 SKU 的详细信息，请参阅[使用虚拟网关 SKU（老版 SKU）](vpn-gateway-about-skus-legacy.md)。
 
    ![选择 SKU 和 VPN 类型](./media/vpn-gateway-howto-site-to-site-classic-portal/sku.png "选择 SKU 和 VPN 类型")
-2. 选择网关的“路由类型”。 这也称为 VPN 类型。 选择正确的网关类型很重要，因为无法将网关从一个类型转换为另一个类型。 VPN 设备必须兼容所选路由类型。 有关 VPN 类型的详细信息，请参阅[关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md#vpntype)。 可能会有文章引用“RouteBased”和“PolicyBased”VPN 类型。 “动态”对应于“RouteBased”，“静态”对应于“PolicyBased”。
+2. 选择网关的“路由类型”。 这也称为 VPN 类型。 选择正确的类型很重要, 因为无法将网关从一种类型转换为另一种类型。 VPN 设备必须兼容所选路由类型。 有关路由类型的详细信息, 请参阅[关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md#vpntype)。 可能会有文章引用“RouteBased”和“PolicyBased”VPN 类型。 “动态”对应于“RouteBased”，“静态”对应于“PolicyBased”。
 3. 单击“确定”保存设置。
-4. 在“新建 VPN 连接”页中，单击底部的“确定”开始创建虚拟网关。 创建虚拟网关可能需要长达 45 分钟的时间，具体取决于所选 SKU。
+4. 在 "**新建 VPN 连接**" 页上, 单击页面底部的 **"确定"** 开始部署虚拟网络网关。 创建虚拟网关可能需要长达 45 分钟的时间，具体取决于所选 SKU。
 
 ## <a name="vpndevice"></a>7.配置 VPN 设备
 
@@ -163,10 +154,16 @@ ms.locfileid: "58002837"
 此步骤设置共享密钥并创建连接。 设置的密钥必须是在 VPN 设备配置中使用过的同一密钥。
 
 > [!NOTE]
-> 此步骤目前在 Azure 门户中不可用。 必须使用服务管理 (SM) 版本的 Azure PowerShell cmdlet。
+> 此步骤目前在 Azure 门户中不可用。 必须使用服务管理 (SM) 版本的 Azure PowerShell cmdlet。 在[开始之前](#before), 请参阅, 了解有关安装这些 cmdlet 的信息。
 >
 
 ### <a name="step-1-connect-to-your-azure-account"></a>步骤 1。 连接到 Azure 帐户
+
+必须使用 PowerShell 服务管理模块在本地运行这些命令。 若要切换到服务管理, 请使用以下命令:
+
+```powershell
+azure config mode asm
+```
 
 1. 使用提升的权限打开 PowerShell 控制台，并连接到帐户。 使用下面的示例来帮助连接：
 
@@ -186,14 +183,14 @@ ms.locfileid: "58002837"
 
 ### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>步骤 2. 设置共享密钥并创建连接
 
-使用 PowerShell 和经典部署模型时，有时门户中资源的名称不是在使用 PowerShell 时 Azure 中本应显示的名称。 可通过以下步骤导出网络配置文件，获取这些名称的确切值。
+当你在门户中创建经典 VNet (而不是使用 PowerShell) 时, Azure 会将资源组名称添加到短名称。 例如, 根据 Azure, 为此练习创建的 VNet 的名称是 "Group TestRG1 TestVNet1", 而不是 "TestVNet1"。 PowerShell 需要虚拟网络的完整名称, 而不是在门户中显示的短名称。 长名称在门户中不可见。 以下步骤可帮助你导出网络配置文件, 以获取虚拟网络名称的确切值。 
 
 1. 在计算机上创建一个目录，然后将网络配置文件导出到该目录。 在此示例中，网络配置文件导出到 C:\AzureNet。
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-2. 使用 XML 编辑器打开网络配置文件，检查值中是否包含“LocalNetworkSite name”和“VirtualNetworkSite name”。 根据所需值修改此示例。 指定包含空格的名称时，请使用单引号将值引起来。
+2. 使用 XML 编辑器打开网络配置文件，检查值中是否包含“LocalNetworkSite name”和“VirtualNetworkSite name”。 修改此练习的示例以反映 xml 中的值。 指定包含空格的名称时，请使用单引号将值引起来。
 
 3. 设置共享密钥并创建连接。 “-SharedKey”是生成并指定的值。 在示例中，我们使用的是“abc123”，但可以生成并且应该使用更复杂的。 重要的是，此处指定的值必须与配置 VPN 设备时指定的值相同。
 
@@ -211,11 +208,11 @@ ms.locfileid: "58002837"
 
 ## <a name="reset"></a>如何重置 VPN 网关
 
-如果丢失一个或多个站点到站点隧道上的跨界 VPN 连接，重置 VPN 网关可有效解决该情况。 在此情况下，本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 有关步骤，请参阅[重置 VPN 网关](vpn-gateway-resetgw-classic.md)。
+如果丢失一个或多个站点到站点隧道上的跨界 VPN 连接，重置 VPN 网关可有效解决该情况。 在此情况下，本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 有关步骤，请参阅[重置 VPN 网关](vpn-gateway-resetgw-classic.md#resetclassic)。
 
 ## <a name="changesku"></a>如何更改网关 SKU
 
-有关更改网关 SKU 的步骤，请参阅[重设网关 SKU 大小](vpn-gateway-about-SKUS-legacy.md)。
+有关更改网关 SKU 的步骤，请参阅[重设网关 SKU 大小](vpn-gateway-about-SKUS-legacy.md#classicresize)。
 
 ## <a name="next-steps"></a>后续步骤
 

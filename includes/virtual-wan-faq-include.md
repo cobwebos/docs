@@ -5,19 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/18/2019
+ms.date: 08/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3fa261c6cb76cb95cffc602e5018e480afbb5dae
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 8a4bbe92cc1b34801abffa1e905d873d4382025a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890869"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68912291"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Azure 虚拟网络网关（VPN 网关）与 Azure 虚拟 WAN vpngateway 之间有什么差别？
 
-虚拟 WAN 提供大规模站点到站点连接，在设计上考虑到了吞吐量、可伸缩性和易用性。 ExpressRoute 和点到站点连接功能当前为预览版。 CPE 分支设备自动预配并连接到 Azure 虚拟 WAN。 这些设备由一个不断扩张的 SD-WAN 和 VPN 合作伙伴生态系统提供。 请参阅[首选合作伙伴列表](https://go.microsoft.com/fwlink/p/?linkid=2019615)。
+虚拟 WAN 提供大规模站点到站点连接，在设计上考虑到了吞吐量、可伸缩性和易用性。 用于虚拟 WAN 连接的 ExpressRoute 目前处于预览状态。 CPE 分支设备自动预配并连接到 Azure 虚拟 WAN。 这些设备由一个不断扩张的 SD-WAN 和 VPN 合作伙伴生态系统提供。 请参阅[首选合作伙伴列表](https://go.microsoft.com/fwlink/p/?linkid=2019615)。
+
+### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>到 Azure 虚拟 WAN 的分支连接是什么？
+
+从分支设备到 Azure 虚拟 WAN 的连接，包含两个主动/主动 IPsec 隧道。
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>推出时支持哪些设备提供商（虚拟 WAN 合作伙伴）？
 
@@ -45,7 +49,7 @@ ms.locfileid: "58890869"
 
 ### <a name="how-many-vpn-devices-can-connect-to-a-single-hub"></a>允许多少 VPN 设备连接到单个中心？
 
-每个虚拟中心最多支持 1000 个连接。 每个连接包括采用主动-主动配置的两个隧道。 隧道在 Azure 虚拟中心 vpngateway 中终止。
+每个虚拟中心最多支持 1,000 个连接。 每个连接包括采用主动-主动配置的两个隧道。 隧道在 Azure 虚拟中心 vpngateway 中终止。
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>本地 VPN 设备是否可以连接到多个中心？
 
@@ -97,15 +101,15 @@ ms.locfileid: "58890869"
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>虚拟 WAN 中是否允许分支到分支连接？
 
-是的，对于 VPN 和 VPN 到 ExpressRoute，分支到分支连接在虚拟 WAN 中可用。 虽然 VPN 站点到站点为正式版，但 ExpressRoute 和点到站点当前为预览版。
+是的，对于 VPN 和 VPN 到 ExpressRoute，分支到分支连接在虚拟 WAN 中可用。 虽然 VPN 站点到站点为正式版，但 ExpressRoute 当前为预览版。
 
-### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>分支到分支流量是否可以穿过 Azure 虚拟 WAN？
+### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>分支到分支流量是否可以通过 Azure 虚拟 WAN？
 
 是的。
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>虚拟 WAN 与现有 Azure 虚拟网络网关有何不同？
 
-虚拟网络网关 VPN 限制为 30 个隧道。 对于连接，应当为大型 VPN 使用虚拟 WAN。 对于除中西部区域之外的所有区域，你可以以 2 Gbps 的速率最多连接到 1000 个分支。 对于中西部区域，可以提供 20 Gbps 的速率。 我们将来会向其他区域推出 20 Gbps 的速率。 连接是从本地 VPN 设备到虚拟中心的主动-主动隧道。 每个区域中可以有一个中心，这意味着你可以跨中心连接到 1000 多个分支。
+虚拟网络网关 VPN 限制为 30 个隧道。 对于连接，应当为大型 VPN 使用虚拟 WAN。 在所有区域的中心内，可以以 20 Gbps 的速率最多连接到 1,000 个分支。 连接是从本地 VPN 设备到虚拟中心的主动-主动隧道。 每个区域中可以有一个中心，这意味着你可以跨中心连接到 1,000 多个分支。
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>虚拟 WAN 如何支持 SD-WAN 设备？
 
@@ -117,7 +121,19 @@ ms.locfileid: "58890869"
 
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>使用 Azure 虚拟 WAN 时是否存在网络吞吐量限制？
 
-分支数限制为每个中心/区域 1000 个连接，中心内总带宽为 2 G。 唯一的例外是美国中西部，它总共提供 20 Gbps。 我们将来会向其他区域推出 20 Gbps 的速率。
+分支数限制为每个中心/区域 1000 个连接，中心内总带宽为 20 Gbps。
+
+### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-the-portal-how-do-i-configure-that"></a>我在门户中看不到虚拟中心的 20 Gbps 设置。 我该如何配置它？
+
+目前，可以使用 [Update-AzVpnGateway](https://docs.microsoft.com/powershell/module/az.network/update-azvpngateway) cmdlet 为 20 Gbps 配置网关缩放单元。 此设置在门户中将要提供的路线图上。
+
+### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>一个虚拟 WAN 中心支持多少个 VPN 连接？
+
+一个 Azure 虚拟 WAN 中心可以同时支持最多 1,000 个 S2S 连接和 10,000 个 P2S 连接。
+
+### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>一个 VPN 隧道和一个连接的总 VPN 吞吐量是多少？
+
+一个中心的总 VPN 吞吐量最多为 20 Gbps，具体取决于所选缩放单元。 吞吐量由所有现有连接共享。
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>虚拟 WAN 是否允许本地设备并行利用多个 ISP？亦或它始终为单个 VPN 隧道？
 

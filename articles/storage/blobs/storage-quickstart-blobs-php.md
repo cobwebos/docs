@@ -1,19 +1,18 @@
 ---
 title: Azure 快速入门 - 使用 PHP 在对象存储中创建 blob | Microsoft Docs
 description: 快速了解如何使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
-services: storage
-author: roygara
-ms.service: storage
-ms.devlang: php
-ms.topic: quickstart
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 11/14/2018
-ms.author: rogarana
-ms.openlocfilehash: 3e1738c3e5acbe63faf1d614e2435088efd8c4d6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014775"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726392"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 本快速入门介绍如何使用 PHP 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 
@@ -41,7 +40,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-php-quickstart.git
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
-在应用程序中，必须提供存储帐户名称和帐户密钥，以创建应用程序的 **BlobRestProxy** 实例。 建议将这些标识符存储在运行应用程序的本地计算机的环境变量中。 根据操作系统按照下面的一个示例创建环境变量。 将 youraccountname 和 youraccountkey 值分别替换为帐户名称和密钥。
+在应用程序中，必须提供存储帐户名称和帐户密钥，以创建应用程序的 **BlobRestProxy** 实例。 建议将这些标识符存储在运行应用程序的本地计算机的环境变量中。 根据操作系统按照下面的一个示例创建环境变量。 将 youraccountname  和 youraccountkey  值分别替换为帐户名称和密钥。
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
@@ -94,7 +93,7 @@ This is the content of the blob uploaded: Hello Azure!
 > [!IMPORTANT]
 > 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
-此部分设置 Azure 存储客户端的实例，实例化 Blob 服务对象，创建新的容器，然后设置容器的权限，使 Blob 公开。 容器名称为 quickstartblobs。 
+此部分设置 Azure 存储客户端的实例，实例化 Blob 服务对象，创建新的容器，然后设置容器的权限，使 Blob 公开。 容器名称为 quickstartblobs  。 
 
 ```PHP
     # Setup a specific instance of an Azure::Storage::Client
@@ -125,7 +124,7 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的 
 
 若要将文件上传到 blob，请通过将本地驱动器上的目录名称和文件名称联接在一起来获取文件的完整路径。 然后可以使用 **createBlockBlob()** 方法将文件上传到指定的路径。 
 
-示例代码使用一个本地文件并将其上传到 Azure。 在代码中，该文件存储为 **myfile**，Blob 的名称存储为 **fileToUpload**。 以下示例将文件上传到名为“quickstartblobs”的容器。
+示例代码使用一个本地文件并将其上传到 Azure。 在代码中，该文件存储为 **myfile**，Blob 的名称存储为 **fileToUpload**。 以下示例将文件上传到名为“quickstartblobs”的容器  。
 
 ```PHP
     $myfile = fopen("HelloWorld.txt", "w") or die("Unable to open file!");

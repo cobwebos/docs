@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 926fb3e9a2c09d30da549330842d8b7e185674ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57908445"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173479"
 ---
-在“添加 vCenter”中，指定 vSphere 主机或 vCenter 服务器的友好名称，并指定服务器的 IP 地址或 FQDN。 除非已将 VMware 服务器配置为在不同的端口上侦听请求，否则请保留 443 作为端口号。 选择要连接到 VMware vCenter 或 vSphere ESXi 服务器的帐户。 单击“确定”。
+在“添加 vCenter”中，指定 vSphere 主机或 vCenter 服务器的友好名称，并指定服务器的 IP 地址或 FQDN。  除非已将 VMware 服务器配置为在不同的端口上侦听请求，否则请保留 443 作为端口号。 选择要连接到 VMware vCenter 或 vSphere ESXi 服务器的帐户。 单击“确定”。 
 
     ![VMware](./media/site-recovery-add-vcenter/vmware-server.png)
 

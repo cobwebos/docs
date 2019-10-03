@@ -13,11 +13,11 @@ ms.date: 04/08/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 28c880e8709074d808a41d9920361eaa2b20ecc4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496567"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60732359"
 ---
 # <a name="filtering-ordering-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 
@@ -57,7 +57,7 @@ ms.locfileid: "59496567"
 |名称|筛选器|顺序|
 |---|---|---|
 |id|||
-|名称|eq、gt、lt| 升序和降序|
+|name|eq、gt、lt| 升序和降序|
 |properties.alternateId |eq||
 |properties.assetId |eq||
 |properties.container |||
@@ -141,10 +141,10 @@ https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/
 
 下表显示了如何将这些选项应用于[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)属性： 
 
-|名称|筛选器|顺序|
+|Name|筛选器|顺序|
 |---|---|---|
 |id|||
-|名称|eq、ne、ge、le、gt、lt|升序和降序|
+|name|eq、ne、ge、le、gt、lt|升序和降序|
 |properties.created |eq、ne、ge、le、gt、lt|升序和降序|
 |properties.description |eq、ne、ge、le、gt、lt||
 |properties.lastModified|eq、ne、ge、le、gt、lt|升序和降序|
@@ -156,7 +156,7 @@ https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/
 
 已启用的四个排序顺序均支持分页。 当前，页面大小为 10。
 
-以下 C# 示例演示如何通过帐户中的所有内容密钥策略进行枚举。
+以下 C# 示例演示如何通过帐户中的所有内容密钥策略进行枚举  。
 
 ```csharp
 var firstPage = await MediaServicesArmClient.ContentKeyPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
@@ -176,9 +176,9 @@ while (currentPage.NextPageLink != null)
 
 下表显示了如何将这些选项应用于[作业](https://docs.microsoft.com/rest/api/media/jobs)属性： 
 
-| 名称    | 筛选器                        | 顺序 |
+| Name    | 筛选器                        | 顺序 |
 |---------|-------------------------------|-------|
-| 名称                    | eq            | 升序和降序|
+| name                    | eq            | 升序和降序|
 | properties.state        | eq、ne        |                         |
 | properties.created      | gt、ge、lt、le| 升序和降序|
 | properties.lastModified | gt、ge、lt、le | 升序和降序| 
@@ -223,10 +223,10 @@ while (!exit);
 
 下表显示这些选项如何应用于 StreamingLocator 属性： 
 
-|名称|筛选器|顺序|
+|Name|筛选器|顺序|
 |---|---|---|
 |id |||
-|名称|eq、ne、ge、le、gt、lt|升序和降序|
+|name|eq、ne、ge、le、gt、lt|升序和降序|
 |properties.alternativeMediaId  |||
 |properties.assetName   |||
 |properties.contentKeys |||
@@ -265,7 +265,7 @@ while (currentPage.NextPageLink != null)
 |名称|筛选器|顺序|
 |---|---|---|
 |id|||
-|名称|eq、ne、ge、le、gt、lt|升序和降序|
+|name|eq、ne、ge、le、gt、lt|升序和降序|
 |properties.commonEncryptionCbcs|||
 |properties.commonEncryptionCenc|||
 |properties.created |eq、ne、ge、le、gt、lt|升序和降序|
@@ -300,7 +300,7 @@ while (currentPage.NextPageLink != null)
 
 | 名称    | 筛选器                        | 顺序 |
 |---------|-------------------------------|-------|
-| 名称                    | eq            | 升序和降序|
+| name                    | eq            | 升序和降序|
 | properties.created      | gt、ge、lt、le| 升序和降序|
 | properties.lastModified | gt、ge、lt、le | 升序和降序|
 

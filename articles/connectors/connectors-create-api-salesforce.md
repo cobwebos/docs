@@ -11,12 +11,12 @@ ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
 ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 292d517f2c99974f4674a4c94472a0a320320ce4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: e3e9f7c841d25fa988ae7e0c97adf64a51d8ef87
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233831"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050826"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视、创建和管理 Salesforce 资源
 
@@ -29,7 +29,7 @@ ms.locfileid: "50233831"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * 一个 [Salesforce 帐户](https://salesforce.com/)
 
@@ -48,7 +48,7 @@ ms.locfileid: "50233831"
    * 对于空白逻辑应用，请在搜索框中输入“salesforce”作为筛选器。 
    在触发器列表下，选择所需的触发器。 
 
-     -或-
+     或
 
    * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”。 在搜索框中，输入“salesforce”作为筛选器。 在操作列表下，选择所需的操作。
 

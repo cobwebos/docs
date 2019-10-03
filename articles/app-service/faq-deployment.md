@@ -4,24 +4,23 @@ description: 获取有关 Azure 应用服务的 Web 应用功能的部署常见�
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9d38e3caf3d835eaf73df90282157eed76c5ea25
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 0a01f25894d1226466473dec7333859c7415f1fd
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350634"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121208"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的部署常见问题解答
 
@@ -38,16 +37,16 @@ ms.locfileid: "58350634"
 
 有关详细信息，请参阅[将应用部署到应用服务](deploy-local-git.md)。
 
-## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>我在尝试从 Visual Studio 进行部署时看到错误消息。 如何解决此问题？
+## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>我在尝试从 Visual Studio 进行部署时看到错误消息。 如何解决此错误？
 
-如果看到以下消息，则可能使用的是旧版本的 SDK：“在资源组 'YourResourceGroup' 中部署资源 'YourResourceName' 时出错: MissingRegistrationForLocation: 订阅未在 '美国中部' 位置注册资源类型 'components'。 要访问此位置，请重新注册此提供程序。” 
+如果看到以下消息，则可能使用的是旧版本的 SDK：“在资源组 'YourResourceGroup' 中部署资源 'YourResourceName' 时出错: MissingRegistrationForLocation: 订阅未在 '美国中部' 位置注册资源类型 'components'。 重新注册此提供程序以便有权访问此位置。 " 
 
 若要解决此错误，请升级到[最新 SDK](https://azure.microsoft.com/downloads/)。 如果你看到此消息并且具有最新 SDK，请提交支持请求。
 
 ## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>如何从 Visual Studio 将 ASP.NET 应用程序部署到应用服务？
 <a id="deployasp"></a>
 
-教程[五分钟内在 Azure 中创建第一个 ASP.NET Web 应用](app-service-web-get-started-dotnet.md)演示如何使用 Visual Studio 2017 将 ASP.NET Web 应用程序部署到应用服务中的 Web 应用。
+教程[五分钟内在 Azure 中创建第一个 ASP.NET Web 应用](app-service-web-get-started-dotnet.md)演示如何使用 Visual Studio 将 ASP.NET Web 应用程序部署到应用服务中的 Web 应用。
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>有哪些不同类型的部署凭据？
 
@@ -59,7 +58,7 @@ ms.locfileid: "58350634"
 
 ## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>如何在尝试通过 FTP 传输文件时解决“FTP 错误 550 - 磁盘空间不足”？
 
-如果看到此消息，则可能是遇到服务计划中针对 Web 应用的磁盘配额。 可能需要基于磁盘空间需求提升到较高服务层。 有关定价计划和资源限制的详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
+如果看到此消息，磁盘空间可能即将达到 Web 应用服务计划中的磁盘配额。 可能需要基于磁盘空间需求提升到较高服务层级。 有关定价计划和资源限制的详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>如何为应用服务 Web 应用程序设置持续部署？
 
@@ -69,11 +68,11 @@ ms.locfileid: "58350634"
 
 若要帮助调查从 GitHub 或 Bitbucket 进行持续部署的问题，请参阅[调查持续部署](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)。
 
-## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this"></a>我无法通过 FTP 传输到我的站点并发布代码。 如何解决此问题？
+## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this-issue"></a>我无法通过 FTP 传输到我的站点并发布代码。 如何解决此问题？
 
 解决 FTP 问题：
 
-1. 检查是否输入了正确的主机名和凭据。 有关不同类型的凭据以及如何使用它们的详细信息，请参阅[部署凭据](https://github.com/projectkudu/kudu/wiki/Deployment-credentials)。
+1. 验证是否输入了正确的主机名和凭据。 有关不同类型的凭据以及如何使用它们的详细信息，请参阅[部署凭据](https://github.com/projectkudu/kudu/wiki/Deployment-credentials)。
 2. 验证防火墙是否阻止了 FTP 端口。 端口应具有以下这些设置：
     * FTP 控制连接端口：21
     * FTP 数据连接端口：989、10001-10300
@@ -90,7 +89,7 @@ Azure 快速入门旨在帮助使用部署堆栈和所选方法部署应用。 �
 
 使用 Azure DevOps 进行持续部署有两种方法：
 
-*   使用 Git 项目。 使用部署中心连接通过应用服务。
+*   使用 Git 项目。 使用部署中心通过应用服务进行连接。
 *   使用 Team Foundation 版本控制 (TFVC) 项目。 通过对应用服务使用生成代理来进行部署。
 
 这两个选项的持续代码部署都依赖于现有开发人员工作流和签入过程。 有关详细信息，请参阅以下文章： 

@@ -2,22 +2,24 @@
 title: 适用于 Azure 通知中心的 Azure PowerShell 示例 | Microsoft Docs
 description: Azure PowerShell 示例 - 可帮助你创建和管理通知中心的脚本。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 5e08b72c93734c9fc693e342397bb6cffaa36f8b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 720256416ca77b40ca0075f5b227212355dda040
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401805"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213324"
 ---
 # <a name="azure-powershell-samples-for-azure-notification-hubs"></a>适用于 Azure 通知中心的 Azure PowerShell 示例
 

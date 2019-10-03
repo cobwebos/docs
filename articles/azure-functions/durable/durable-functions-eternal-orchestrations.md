@@ -2,20 +2,19 @@
 title: Durable Functions 中的永久业务流程 - Azure
 description: 了解如何使用 Azure Functions 的 Durable Functions 扩展实现永久业务流程。
 services: functions
-author: ggailey777
+author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c4adffd457338ffebfd1c9c7727023f82088dc57
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: dbe51eddcf748843fd90cc533063fd25e7c282fd
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607732"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933370"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的永久业务流程 (Azure Functions)
 
@@ -23,7 +22,7 @@ ms.locfileid: "59607732"
 
 ## <a name="orchestration-history"></a>业务流程历史记录
 
-如[检查点和重播](durable-functions-checkpointing-and-replay.md)中所述，Durable Task Framework 会跟踪每个函数业务流程的历史记录。 只要业务流程协调程序函数继续计划新工作，此历史记录就会不断增长。 如果业务流程协调程序函数进入无限循环并持续计划工作，则此历史记录可能会变得非常大并导致明显的性能问题。 *永久业务流程*概念是为了减轻需要无限循环的应用程序的此类问题而设计的。
+如[业务流程历史记录](durable-functions-orchestrations.md#orchestration-history)主题中所述，持久性任务框架跟踪每个函数业务流程的历史记录。 只要业务流程协调程序函数继续计划新工作，此历史记录就会不断增长。 如果业务流程协调程序函数进入无限循环并持续计划工作，则此历史记录可能会变得非常大并导致明显的性能问题。 *永久业务流程*概念是为了减轻需要无限循环的应用程序的此类问题而设计的。
 
 ## <a name="resetting-and-restarting"></a>重置和重启
 
@@ -45,7 +44,7 @@ ms.locfileid: "59607732"
 public static async Task Run(
     [OrchestrationTrigger] DurableOrchestrationContext context)
 {
-    await context.CallActivityAsync("DoCleanup");
+    await context.CallActivityAsync("DoCleanup", null);
 
     // sleep for one hour between cleanups
     DateTime nextCleanup = context.CurrentUtcDateTime.AddHours(1);
@@ -66,13 +65,32 @@ module.exports = df.orchestrator(function*(context) {
 
     // sleep for one hour between cleanups
     const nextCleanup = moment.utc(context.df.currentUtcDateTime).add(1, "h");
-    yield context.df.createTimer(nextCleanup);
+    yield context.df.createTimer(nextCleanup.toDate());
 
     context.df.continueAsNew(undefined);
 });
 ```
 
 此示例与计时器触发的函数之间的区别是此处的清理触发时间不基于计划。 例如，每小时执行某个函数的 CRON 计划将在 1:00、2:00 和 3:00 等时间执行，并且可能会遇到重叠问题。 不过，在此示例中，如果清理花费 30 分钟，则它将计划在 1:00、2:30、4:00 等时间执行，因此不可能重叠。
+
+## <a name="starting-an-eternal-orchestration"></a>启动永久业务流程
+使用[StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)方法启动永久业务流程。 这与触发其他任何业务流程函数并无区别。  
+
+> [!NOTE]
+> 如果需要确保单独的永久业务流程正在运行，则在启动业务流程时维护相同的`id`实例是非常重要的。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
+
+```csharp
+[FunctionName("Trigger_Eternal_Orchestration")]
+public static async Task<HttpResponseMessage> OrchestrationTrigger(
+    [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequestMessage request,
+    [OrchestrationClient] DurableOrchestrationClientBase client)
+{
+    string instanceId = "StaticId";
+    // Null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
+    await client.StartNewAsync("Periodic_Cleanup_Loop"), instanceId, null); 
+    return client.CreateCheckStatusResponse(request, instanceId);
+}
+```
 
 ## <a name="exit-from-an-eternal-orchestration"></a>从永久业务流程退出
 

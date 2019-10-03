@@ -3,22 +3,20 @@ title: Azure 数据工厂 - 示例
 description: 提供 Azure 数据工厂服务相关示例的详细信息。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: c0538b90-2695-4c4c-a6c8-82f59111f4ab
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 03127dc777588f669ef07af52c8f73d986bfe0ea
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020806"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139264"
 ---
 # <a name="azure-data-factory---samples"></a>Azure 数据工厂 - 示例
 > [!NOTE]
@@ -28,27 +26,27 @@ ms.locfileid: "54020806"
 ## <a name="samples-on-github"></a>GitHub 上的示例
 [GitHub Azure-DataFactory 存储库](https://github.com/azure/azure-datafactory)中的几个示例可帮助快速熟悉 Azure 数据工厂服务或修改脚本并将其用于自己的应用程序。 Samples\JSON 文件夹包含用于常见方案的 JSON 片段。
 
-| 示例 | Description |
+| 样本 | 描述 |
 |:--- |:--- |
-| [ADF 演练](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |此示例提供端到端演练，以使用 Azure 数据工厂处理日志文件，从而将日志文件中的数据转换为见解。 <br/><br/>在本演练中，数据工厂管道收集示例日志、处理和扩充日志中的数据（包含参考数据）并转换数据，以评估最近启动的市场营销活动的有效性。 |
-| [JSON 示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |此示例提供常见方案的 JSON 示例。 |
-| [Http 数据下载程序示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) |此示例展示如何使用自定义 .NET 活动将数据从 HTTP 终结点下载到 Azure Blob 存储。 |
-| [跨 AppDomain Dot Net 活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |借助此示例，可创建自定义 .NET 活动，该活动不受 ADF 启动器使用的程序集版本限制（例如，WindowsAzure.Storage v4.3.0、 Newtonsoft.Json v6.0.x 等）。 |
-| [运行 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) |此示例包括可用来调用 RScript.exe 的数据工厂自定义活动。 此示例仅适用于已安装有 R 的用户自己（非按需）的 HDInsight 群集。 |
-| [调用 HDInsight Hadoop 群集上的 Spark 作业](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark) |此示例演示如何使用 MapReduce 活动调用 Spark 程序。 Spark 程序只是将数据从一个 Azure Blob 容器复制到其他的 Azure Blob容器。 |
-| [使用 Azure 机器学习批处理评分活动的 Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-AzureMLBatchScoringActivity) |此示例演示如何使用 AzureMLBatchScoringActivity 调用执行 Twitter 情绪分析、评分、预测等的 Azure 机器学习模型。 |
-| [使用自定义活动的 Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |此示例演示如何使用自定义 .NET 活动调用执行 Twitter 情绪分析、评分、预测等的 Azure 机器学习模型。 |
-| [Azure 机器学习的参数化管道](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ParameterizedPipelinesForAzureML/) |此示例提供端到端 C# 代码来部署 N 个管道进行评分和重新训练，每个管道都具有不同的区域参数，其中区域列表来自 parameters.txt 文件，该文件包含在此示例中。 |
-| [Azure 流分析作业的引用数据刷新](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs) |此示例演示如何将 Azure 数据工厂和 Azure 流分析配合使用以运行引用数据的查询并将引用数据设置为定期刷新。 |
-| [本地 Hortonworks Hadoop 的混合管道](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HybridPipelineWithOnPremisesHortonworksHadoop) |此示例将本地 Hadoop 群集用作在数据工厂中运行作业的计算目标，就好像要在云中添加基于 HDInsight 的 Hadoop 群集等其他计算目标一样。 |
-| [JSON 转换工具](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSONConversionTool) |借助此工具，可将 JSON 从 2015-07-01-preview 之前的版本转换到最新版本或 2015-07-01-preview 版本（默认）。 |
-| [U-SQL 示例输入文件](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) |此文件是 U-SQL 活动使用的示例文件。 |
-| [删除 blob 文件](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity) | 此示例展示可用作 ADF 自定义 .net 活动的一部分的 C# 文件，该文件用于在复制文件后从源 Azure Blob 位置中删除文件。|
+| [ADF 演练](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |此示例提供端到端演练，以使用 Azure 数据工厂处理日志文件，从而将日志文件中的数据转换为见解。 <br/><br/>在本演练中，数据工厂管道收集示例日志、处理和扩充日志中的数据（包含参考数据）并转换数据，以评估最近启动的市场营销活动的有效性。 |
+| [JSON 示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |此示例提供常见方案的 JSON 示例。 |
+| [Http 数据下载程序示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |此示例展示如何使用自定义 .NET 活动将数据从 HTTP 终结点下载到 Azure Blob 存储。 |
+| [跨 AppDomain Dot Net 活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |借助此示例，可创建自定义 .NET 活动，该活动不受 ADF 启动器使用的程序集版本限制（例如，WindowsAzure.Storage v4.3.0、 Newtonsoft.Json v6.0.x 等）。 |
+| [运行 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |此示例包括可用来调用 RScript.exe 的数据工厂自定义活动。 此示例仅适用于已安装有 R 的用户自己（非按需）的 HDInsight 群集。 |
+| [调用 HDInsight Hadoop 群集上的 Spark 作业](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |此示例演示如何使用 MapReduce 活动调用 Spark 程序。 Spark 程序只是将数据从一个 Azure Blob 容器复制到其他的 Azure Blob容器。 |
+| [使用 Azure 机器学习批处理评分活动的 Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |此示例演示如何使用 AzureMLBatchScoringActivity 调用执行 Twitter 情绪分析、评分、预测等的 Azure 机器学习模型。 |
+| [使用自定义活动的 Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |此示例演示如何使用自定义 .NET 活动调用执行 Twitter 情绪分析、评分、预测等的 Azure 机器学习模型。 |
+| [Azure 机器学习的参数化管道](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |此示例提供端到端 C# 代码来部署 N 个管道进行评分和重新训练，每个管道都具有不同的区域参数，其中区域列表来自 parameters.txt 文件，该文件包含在此示例中。 |
+| [Azure 流分析作业的引用数据刷新](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |此示例演示如何将 Azure 数据工厂和 Azure 流分析配合使用以运行引用数据的查询并将引用数据设置为定期刷新。 |
+| [本地 Hortonworks Hadoop 的混合管道](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |此示例将本地 Hadoop 群集用作在数据工厂中运行作业的计算目标，就好像要在云中添加基于 HDInsight 的 Hadoop 群集等其他计算目标一样。 |
+| [JSON 转换工具](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |借助此工具，可将 JSON 从 2015-07-01-preview 之前的版本转换到最新版本或 2015-07-01-preview 版本（默认）。 |
+| [U-SQL 示例输入文件](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/U-SQL%20Sample%20Input%20File) |此文件是 U-SQL 活动使用的示例文件。 |
+| [删除 blob 文件](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity) | 此示例展示可用作 ADF 自定义 .net 活动的一部分的 C# 文件，该文件用于在复制文件后从源 Azure Blob 位置中删除文件。|
 
 ## <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 可在 GitHub 上找到数据工厂的以下 Azure 资源管理器模板。
 
-| 模板 | Description |
+| 模板 | 描述 |
 | --- | --- |
 | [从 Azure Blob 存储复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |部署此模板将创建 Azure 数据工厂，其中包含可将数据从指定的 Azure Blob 存储复制到 Azure SQL 数据库的管道 |
 | [从 Salesforce 复制到 Azure Blob 存储](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |部署此模板将创建 Azure 数据工厂，其中包含可将数据从指定的 Salesforce 帐户复制到 Azure Blob 存储的管道。 |
@@ -92,7 +90,7 @@ ms.locfileid: "54020806"
    2. 在右窗格中选择“数据工厂模板”。
    3. 输入项目的**名称**。
    4. 选择项目的**位置**。
-   5. 单击“确定”。
+   5. 单击 **“确定”** 。
 
       ![“新建项目”对话框](./media/data-factory-samples/vs-new-project-adf-templates.png)
 3. 在“数据工厂模板”对话框中，从“用例模板”部分选择示例模板，并单击“下一步”。 以下步骤将引导用户完成“客户分析”模板的使用。 步骤与其他示例的步骤类似。
@@ -110,7 +108,7 @@ ms.locfileid: "54020806"
 7. 在“配置计算”页上，选择“默认”，并单击“下一步”。
 8. 在“摘要”页上，查看所有设置，并单击“下一步”。
 9. 在“部署状态”页上，等待部署完成后，单击“完成”。
-10. 在“解决方案资源管理器”中，右键单击该项目，并单击“发布” 。
+10. 在“解决方案资源管理器”中，右键单击该项目，并单击“发布”。
 11. 如果显示“登录到 Microsoft 帐户”对话框，请输入拥有 Azure 订阅的帐户凭据，并单击“登录”。
 12. 应该会看到以下对话框：
 
@@ -122,6 +120,6 @@ ms.locfileid: "54020806"
     3. 单击“下一步”切换到“发布项”页。 （如果“下一步”按钮已禁用，请按 **TAB** 移出“名称”字段）。
 14. 在“发布项”页上，确保已选择所有数据工厂实体，并单击“下一步”切换到“摘要”页。     
 15. 查看摘要，单击“下一步”，启动部署过程并查看“部署状态”。
-16. 在“部署状态”  页上，应看到部署过程的状态。 部署完成后，单击“完成”。
+16. 在“部署状态” 页上，应看到部署过程的状态。 部署完成后，单击“完成”。
 
 要深入了解如何使用 Visual Studio 来创作数据工厂实体并将其发布到 Azure，请参阅[生成第一个数据工厂 (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md)。          

@@ -3,7 +3,7 @@ title: 关于 Azure 应用服务中的移动应用
 description: 了解应用服务为企业移动应用带来的优势。
 services: app-service\mobile
 documentationcenter: ''
-author: conceptdev
+author: elamalani
 manager: yochayk
 editor: ''
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
@@ -12,16 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: f3eb781e7f84e8cf03a975f7cb77f6a7ef074d44
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: a3817b3e9f62a863f3fea9305ef169db2eb84491
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771794"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637947"
 ---
 # <a name="getting-started"> </a>关于 Azure 应用服务中的移动应用
+
+> [!NOTE]
+> Visual Studio App Center 正在为移动应用开发的新的和集成的服务进行投资。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后, 开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况, 并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务, 以便在云中持久保存和同步应用程序数据。 立即查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-value-prop) 。
+>
+
 Azure 应用服务是完全托管的[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 产品，适用于专业开发人员。 该服务为 Web、移动和集成方案提供丰富的功能集。 
 
 Azure 应用服务中的移动应用功能为企业开发人员和系统集成商提供高度可缩放、全局可用的移动应用程序开发平台。
@@ -99,10 +104,11 @@ Azure 应用服务中的移动应用功能为企业开发人员和系统集成�
 [Xamarin.iOS 和 Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin.Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[自动缩放]: ../app-service/web-sites-scale.md
+[自动缩放]: ../app-service/manage-scale-up.md
 [过渡环境]: ../app-service/deploy-staging-slots.md
 [混合连接]: ../biztalk-services/integration-hybrid-connection-overview.md
 [虚拟网络]: ../app-service/web-sites-integrate-with-vnet.md
 [ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
 [应用服务环境]: ../app-service/environment/intro.md
 [学习路线图]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
+[Azure 应用服务]: ../app-service/overview.md

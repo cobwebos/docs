@@ -12,14 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 0d8267f1cd65f78d5e98ae9d288d5fa5c4214420
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576423"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60848239"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
 > * [版本 1](v1/data-factory-hadoop-streaming-activity.md)
 > * [当前版本](transform-data-using-hadoop-streaming.md)
 
@@ -70,7 +70,7 @@ ms.locfileid: "57576423"
 
 | 属性          | 说明                              | 需要 |
 | ----------------- | ---------------------------------------- | -------- |
-| 名称              | 活动名称                     | 是      |
+| name              | 活动名称                     | 是      |
 | description       | 描述活动用途的文本 | 否       |
 | type              | 对于 Hadoop 流式处理活动，活动类型是 HDInsightStreaming | 是      |
 | linkedServiceName | 引用在数据工厂中注册为链接服务的 HDInsight 群集。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
@@ -83,7 +83,7 @@ ms.locfileid: "57576423"
 | output            | 指定化简器输出文件的 WASB 路径。 | 是      |
 | getDebugInfo      | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）scriptLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：无。 | 否       |
 | arguments         | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | 否       |
-| 定义           | 在 Hive 脚本中指定参数作为键/值对，以供引用。 | 否       | 
+| defines           | 在 Hive 脚本中指定参数作为键/值对，以供引用。 | 否       | 
 
 ## <a name="next-steps"></a>后续步骤
 参阅以下文章了解如何以其他方式转换数据： 

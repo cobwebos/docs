@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 3cbcf36bdfb6bad3821216605ba86c8cd8332d18
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098913"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60201444"
 ---
 # <a name="azure-event-hubs-quotas-and-limits"></a>Azure 事件中心的配额和限制
 

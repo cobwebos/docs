@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: d1cff1011e190e5fbb2874657cbdfbdc68bde0c0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e074d76f9ed095725d99bddc9eb21925f4b3697c
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084389"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114474"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>配合使用虚拟机规模集和应用程序运行状况扩展
 监视应用程序的运行状况是管理和升级部署的重要信号。 Azure 虚拟机规模集支持[滚动升级](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)（包括[自动 OS-image 升级](virtual-machine-scale-sets-automatic-upgrade.md)），其依赖对各实例的运行状况监视来升级部署。
 
 本文介绍如何使用应用程序运行状况扩展监控部署在虚拟机规模集上的应用程序的运行状况。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 本文假定你熟悉以下内容：
 -   Azure 虚拟机[扩展](../virtual-machines/extensions/overview.md)
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虚拟机规模集
@@ -65,18 +65,18 @@ ms.locfileid: "58084389"
 
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ---- 
-| apiVersion | `2018-10-01` | 日期 |
-| 发布者 | `Microsoft.ManagedServices` | 字符串 |
-| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | 字符串 |
+| apiVersion | `2018-10-01` | date |
+| publisher | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>设置
 
-| 名称 | 值/示例 | 数据类型
+| 姓名 | 值/示例 | 数据类型
 | ---- | ---- | ----
-| 协议 | `http` 或 `tcp` | 字符串 |
+| protocol | `http` 或 `tcp` | string |
 | port | 协议为 `http` 时为可选，协议为 `tcp` 时为必需 | int |
-| requestPath | 协议为 `http` 时为必需，协议为 `tcp` 时为不允许 | 字符串 |
+| requestPath | 协议为 `http` 时为必需，协议为 `tcp` 时为不允许 | string |
 
 ## <a name="deploy-the-application-health-extension"></a>部署应用程序运行状况扩展
 可以使用多种方法将应用程序运行状况扩展部署到规模集，如下面的示例所示。
@@ -149,16 +149,25 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 使用 [az vmss 扩展集](/cli/azure/vmss/extension#az-vmss-extension-set)将应用程序运行状况扩展添加到规模集模型定义中。
 
-下面的示例将应用程序运行状况扩展添加到基于 Windows 的规模集的规模集模型中。
+下面的示例将应用程序运行状况扩展添加到基于 Linux 的规模集的规模集模型。
 
 ```azurecli-interactive
 az vmss extension set \
-  --name ApplicationHealthWindows \
+  --name ApplicationHealthLinux \
   --publisher Microsoft.ManagedServices \
   --version 1.0 \
   --resource-group <myVMScaleSetResourceGroup> \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
+```
+扩展的 json 文件内容。
+
+```json
+{
+  "protocol": "<protocol>",
+  "port": "<port>",
+  "requestPath": "</requestPath>"
+}
 ```
 
 

@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009846"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61443265"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>将自动设备管理包导入到远程监视解决方案加速器
 
@@ -28,18 +28,18 @@ ms.locfileid: "59009846"
 
 使用 Azure 门户从开发环境导出自动设备管理配置：
 
-1. 在 Azure 门户中，导航到用于开发和测试 IoT 设备的 IoT 中心。 单击“IoT 设备配置”：
+1. 在 Azure 门户中，导航到用于开发和测试 IoT 设备的 IoT 中心。 单击“IoT 设备配置”  ：
 
     [![IoT 设备配置](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-expanded.png#lightbox)
 
-1. 单击想要使用的配置。 随即将显示“设备配置详细信息”页：
+1. 单击想要使用的配置。 随即将显示“设备配置详细信息”  页：
 
     [![IoT 设备配置详细信息](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
-1. 单击“下载配置文件”：
+1. 单击“下载配置文件”  ：
 
     [![下载配置文件](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
 
-1. 将 JSON 文件另存为名为 configuration.json 的本地文件。
+1. 将 JSON 文件另存为名为 configuration.json  的本地文件。
 
 现在，有一个包含自动管理配置的文件。 在下一部分，将此配置作为包导入到远程监视解决方案中。
 
@@ -47,17 +47,17 @@ ms.locfileid: "59009846"
 
 按照以下步骤将自动设备管理配置作为包导入到解决方案：
 
-1. 导航到远程监视 Web UI 中的“包”页面：![包页面](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
+1. 导航到远程监视 Web UI 中的“包”页面  ：![包页面](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
 
-1. 单击“+ 新建包”，选择“配置”作为包类型，然后单击“浏览”以选择在上一部分中保存的 configuration.json 文件：
+1. 单击“+ 新建包”，选择“配置”作为包类型，然后单击“浏览”以选择在上一部分中保存的 configuration.json  文件    ：
 
     ![选择“配置”](media/iot-accelerators-remote-monitoring-import-adm-package/uploadpackage.png)
 
-1. 单击“上载”将包添加到远程监视解决方案中：
+1. 单击“上载”将包添加到远程监视解决方案中  ：
 
     ![上载的包](media/iot-accelerators-remote-monitoring-import-adm-package/uploadedpackage.png)
 
-现在已经下载自动设备管理配置作为包。 在“部署”页面上，可以将此包部署到已连接的设备。
+现在已经下载自动设备管理配置作为包。 在“部署”页面上，可以将此包部署到已连接的设备  。
 
 ## <a name="next-steps"></a>后续步骤
 

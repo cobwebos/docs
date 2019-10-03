@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: victorh
 ms.openlocfilehash: cde06aaf149785f464cd354c95c8f39575bad73b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698205"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66136147"
 ---
 # <a name="create-an-application-gateway-using-the-azure-cli"></a>使用 Azure CLI 创建应用程序网关
 

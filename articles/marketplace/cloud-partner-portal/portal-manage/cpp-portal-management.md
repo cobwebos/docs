@@ -1,25 +1,18 @@
 ---
-title: 云合作伙伴门户中管理的 Azure Marketplace |Microsoft Docs
+title: 云合作伙伴门户管理 |Azure Marketplace
 description: 介绍可用来管理云合作伙伴门户为 Azure Marketplace 帐户的操作的类型。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 539bc7861a487e6eb563f565d3475efdda99b093
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 58451dd225a4f0625a6922bde672a6928ea50943
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798173"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66257489"
 ---
 # <a name="cloud-partner-portal-management"></a>云合作伙伴门户管理
 
@@ -31,7 +24,7 @@ ms.locfileid: "59798173"
 在之前使用云合作伙伴门户，您应熟悉以下文章：
 
 - [Azure Marketplace 策略和条款](../../policies-terms.md)列出了各种法律和技术要求和适用于的用户，并且发布者规则[Azure Marketplace](https://azuremarketplace.microsoft.com)并[AppSource](https://appsource.microsoft.com)。
-- [成为云 Marketplace 发布者](../../become-publisher.md)概述成为正式的 Microsoft 云发布服务器所需的所有步骤。
+- [成为云 Marketplace 发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)概述成为正式的 Microsoft 云发布服务器所需的所有步骤。
 
 
 ## <a name="account-creation-and-management"></a>帐户创建和管理
