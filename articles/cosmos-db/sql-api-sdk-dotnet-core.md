@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: c39db870e44d4e810817b70e2793b8805088180e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 325e84ec4489eb2f1f530585af7d3c4bc4b201fc
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932544"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949567"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB .NET Core SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -43,9 +43,17 @@ ms.locfileid: "70932544"
 ## <a name="release-notes"></a>发行说明
 
 > [!NOTE]
-> 如果你使用的是 .NET Core, 请参阅[.NET SDK](sql-api-sdk-dotnet-standard.md)的最新版本 1.x, 该版本面向 .NET Standard。 
+> 如果你使用的是 .NET Core，请参阅[.NET SDK](sql-api-sdk-dotnet-standard.md)的最新版本1.x，该版本面向 .NET Standard。 
 
-### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
+### <a name="a-name270270"></a><a name="2.7.0"/>2.7。0
+
+* 添加了按查询排序的对数组和对象的支持
+* 处理有效的分区键冲突
+* 为多个 OrderBy 运算符添加了 LINQ 支持和 ThenBy 运算符
+* 自定义序列化设置现已应用于所有 upsert 和 replace 操作
+* 修复了 AysncCache 死锁问题，以便它可用于单线程任务计划程序
+
+### <a name="a-name260260"></a><a name="2.6.0"/>2.6。0
 
 * 已将 PortReusePolicy 添加到 ConnectionPolicy
 * Fixed ntdll.dll！在 UWP 应用中使用 SDK 时出现 RtlGetVersion TypeLoadException 问题
@@ -53,7 +61,7 @@ ms.locfileid: "70932544"
 ### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
 
 * SDK 的系统 .Net 版本现在与 NuGet 包中定义的版本匹配。
-* 如果原始的请求失败, 则允许写入请求回退到另一个区域。
+* 如果原始的请求失败，则允许写入请求回退到另一个区域。
 * 为写入请求添加会话重试策略。
 
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
@@ -272,10 +280,11 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.7.0](#2.7.0) |2019年9月23日 |--- |
 | [2.6.0](#2.6.0) |2019年8月30日 |--- |
 | [2.5.1](#2.5.1) |2019年7月 |--- |
 | [2.4.1](#2.4.1) |2019年6月20日 |--- |
-| [2.4.0](#2.4.0) |5月5日, 2019 |--- |
+| [2.4.0](#2.4.0) |5月5日，2019 |--- |
 | [2.3.0](#2.3.0) |2019年4月 |--- |
 | [2.2.3](#2.2.3) |2019年3月11日 |--- |
 | [2.2.2](#2.2.2) |2019年2月6日 |--- |

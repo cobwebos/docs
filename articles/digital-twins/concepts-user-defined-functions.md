@@ -1,19 +1,19 @@
 ---
-title: Azure 数字孪生中的数据处理和用户定义的函数 | Microsoft Docs
+title: 数据处理和用户定义的函数-Azure 数字孪生 |Microsoft Docs
 description: 概述 Azure 数字孪生中的数据处理、匹配程序和用户定义的函数。
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 07facf06702a63df8ea93d43b9896b72322b209f
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b8ea5c54afd4b1e2c212422417688e528367d44f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178254"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949976"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>数据处理和用户定义的函数
 
@@ -23,7 +23,7 @@ Azure 数字孪生提供高级计算功能。 开发人员可以针对传入的�
 
 在设备将遥测数据发送到 Azure 数字孪生后，开发人员可以分四个阶段处理数据：*验证*、*匹配*、*计算*和*调度*。
 
-[![Azure 数字孪生数据处理流](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
+[@no__t 1Azure 数字孪生数据处理流](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. 验证阶段将传入的遥测消息转换为容易理解的[数据传输对象](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5)格式。 此阶段还执行设备和传感器验证。
 1. 匹配阶段查找要运行的相应用户定义函数。 预定义的匹配程序根据传入的遥测消息中的设备、传感器和空间信息查找用户定义的函数。
@@ -34,7 +34,7 @@ Azure 数字孪生提供高级计算功能。 开发人员可以针对传入的�
 
 Azure 数字孪生中的数据处理包括定义三个对象：*匹配程序*、*用户定义的函数*和*角色分配*。
 
-[![Azure 数字孪生数据处理对象](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
+[@no__t 1Azure 数字孪生数据处理对象](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>匹配程序
 

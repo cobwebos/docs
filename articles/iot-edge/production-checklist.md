@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 29a771b93e1d686f7972e7dc4d9e78e5858644d6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 36465f016eeb066c0e12f6434deb98fd7b10966a
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899398"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958759"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -83,7 +83,7 @@ IoT Edge 设备建立连接后，请务必在将来的部署中继续为两个�
 
 ### <a name="be-consistent-with-upstream-protocol"></a>与上游协议保持一致
 
-如果将 IoT Edge 设备上的 IoT Edge 代理配置为使用其他协议而不是默认的 AMQP，则应在所有将来的部署中声明同一协议。 例如，如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面，则你可能已将设备配置为通过基于 WebSocket 的 AMQP (AMQPWS) 进行连接。 将模块部署到设备时，请为 IoT Edge 代理和 IoT Edge 中心配置相同的 APQPWS 协议，否则默认的 AMQP 将会替代设置，并阻止你重新连接。 
+如果将 IoT Edge 设备上的 IoT Edge 代理配置为使用其他协议而不是默认的 AMQP，则应在所有将来的部署中声明同一协议。 例如，如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面，则你可能已将设备配置为通过基于 WebSocket 的 AMQP (AMQPWS) 进行连接。 将模块部署到设备时，为 IoT Edge 代理和 IoT Edge 中心配置相同的 AMQPWS 协议，否则，默认 AMQP 将覆盖设置，并阻止你再次连接。 
 
 只需为 IoT Edge 代理和 IoT Edge 中心模块配置 UpstreamProtocol 环境变量即可。 其他任何模块将采用运行时模块中设置的任何协议。 
 

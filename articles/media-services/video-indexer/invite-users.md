@@ -3,19 +3,19 @@ title: 邀请用户加入视频索引器-Azure
 titlesuffix: Azure Media Services
 description: 本文介绍如何将用户邀请到视频索引器。
 services: media-services
-author: Juliako
+author: ReutAmior
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 718d69f8b582d8d31ca0abb1867eb0560b0dc53b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
-ms.translationtype: HT
+ms.openlocfilehash: 740b03179fad91e9042a54f8e74a622b3125b832
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827971"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950182"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>快速入门：邀请用户加入视频索引器
 

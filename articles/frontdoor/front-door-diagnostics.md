@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 5f76df0045fc3939392759ed0edd266380295a85
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 229706ff91b776363d3e9de080e02cee5edf9c77
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260172"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677896"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>在 Azure 前门服务中监视指标和日志
 
 使用 Azure 前门服务，可以通过以下方式监视资源：
 
-- **指标** 应用程序网关当前有七个指标可用来查看性能计数器。
+- **指标** Azure 前门目前有7个指标来查看性能计数器。
 - **日志**。 活动和诊断日志允许出于监视目的从资源保存或使用性能、访问及其他数据。
 
 ### <a name="metrics"></a>指标

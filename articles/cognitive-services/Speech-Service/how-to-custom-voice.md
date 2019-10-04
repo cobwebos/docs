@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9bb654f37ecc4fda46171e859adac0236b51e4b2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 636c397001a3130c60fc2bf498339ad058aca374
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881494"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959394"
 ---
 # <a name="get-started-with-custom-voice"></a>自定义语音入门
 
-[自定义语音](https://aka.ms/customvoice)是一组联机工具，可用于为品牌创建可识别的一种类型的声音。 只需准备好几个音频文件和关联的听录内容即可完全入门。 请遵循以下链接开始创建自定义文本转语音体验。
+[自定义语音](https://aka.ms/customvoice)是一组在线工具，使用它可为自有品牌创建可识别的独一无二的语音。 只需准备好几个音频文件和关联的听录内容即可完全入门。 请遵循以下链接开始创建自定义文本转语音体验。
 
 ## <a name="whats-in-custom-voice"></a>什么是自定义语音？
 
@@ -59,6 +59,6 @@ ms.locfileid: "70881494"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [准备自定义语音数据](how-to-custom-voice.md)
+- [准备自定义语音数据](how-to-custom-voice-prepare-data.md)
 - [创建自定义语音](how-to-custom-voice-create-voice.md)
 - [指南：录制语音样本](record-custom-voice-samples.md)

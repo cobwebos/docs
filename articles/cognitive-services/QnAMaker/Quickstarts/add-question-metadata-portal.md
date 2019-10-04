@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/27/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: dc4548e0c07adc485d1bb5785179aeb7ea2f3fe1
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ed50e6adbcca7cbb4935400c7850c37dc2ed389f
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196378"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803530"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>快速入门：使用 QnA Maker 门户添加问题和回答
 
@@ -70,7 +70,7 @@ ms.locfileid: "70196378"
     |`What is the max size of a knowledge base?`|
     |`How many GB of data can a knowledge base hold?`| 
 
-1. 选择“保存并训练”以重新训练知识库。  
+1. 选择**保存并训练**以重新训练知识库。 
 
 1. 选择“测试”，然后输入一个与新替代句式接近、但措辞不完全相同的问题： 
 

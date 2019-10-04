@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8e2e9d30fa24e56711a0d6800a8ca9a34e53c12e
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 6327f0c14b46ceaadbf7adaa58a70c32b39b7c2a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967232"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960492"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure 逻辑应用中将项目添加到 integration service 环境（ISE）
 
@@ -36,7 +36,7 @@ ms.locfileid: "70967232"
 
    ![向 ISE 中添加新的逻辑应用](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
-   或
+   -或-
 
    在 Azure 主菜单中，依次选择“创建资源” > “集成” > “逻辑应用”。
 
@@ -51,7 +51,7 @@ ms.locfileid: "70967232"
 
 1. 继续[以常规方式创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-   有关在使用 ISE 与全局逻辑应用服务相比, 触发器和操作的工作方式以及如何标记它们的区别, 请参阅[ISE 概述中的隔离与全局](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)。
+   有关在使用 ISE 与全局逻辑应用服务相比，触发器和操作的工作方式以及如何标记它们的区别，请参阅[ISE 概述中的隔离与全局](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)。
 
 1. 若要在 ISE 中管理逻辑应用和 API 连接，请参阅[管理集成服务环境](../logic-apps/ise-manage-integration-service-environment.md)。
 
@@ -59,18 +59,17 @@ ms.locfileid: "70967232"
 
 ## <a name="create-integration-accounts"></a>创建集成帐户
 
-基于在创建时选择的[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) , ISE 包含特定的集成帐户使用情况, 无需额外付费。 集成服务环境（ISE）中存在的逻辑应用只能引用位于同一 ISE 中的集成帐户。 因此，若要使集成帐户在 ISE 中使用逻辑应用，集成帐户和逻辑应用必须使用与其位置相同的*环境*。 有关集成帐户和 ISEs 的详细信息，请[参阅 integration accounts with](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
-)ISE。
+基于在创建时选择的[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) ，ISE 包含特定的集成帐户使用情况，无需额外付费。 集成服务环境（ISE）中存在的逻辑应用只能引用位于同一 ISE 中的集成帐户。 因此，若要使集成帐户在 ISE 中使用逻辑应用，集成帐户和逻辑应用必须使用与其位置相同的*环境*。 有关集成帐户和 ISEs 的详细信息，请参阅[integration accounts WITH ISE](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment)。
 
 若要创建使用 ISE 的集成帐户，请遵循以下步骤：
 
-1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**集成帐户** > " "**添加**"。
+1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**集成帐户**" @no__t "**添加**"。
 
    ![向 ISE 中添加新的集成帐户](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
-   或
+   -或-
 
-   在 Azure 主菜单中，选择 "**创建资源** > **集成** > **集成帐户**"。
+   在 Azure 主菜单中，选择 "**创建资源** > **集成**@no__t 集成**帐户**"。
 
 1. 提供要用于集成帐户的名称、Azure 订阅、Azure 资源组（新的或现有的）和定价层。
 

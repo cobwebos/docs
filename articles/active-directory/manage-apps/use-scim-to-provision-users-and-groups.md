@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Active Directory 中使用 SCIM 自动预配应用 | Microsoft Docs
-description: Azure Active Directory 可以使用 SCIM 协议规范中定义的接口，自动将用户和组预配到以 Web 服务为前端的任何应用程序或标识存储
+title: SCIM 用户预配 Azure Active Directory |Microsoft Docs
+description: 了解如何构建 SCIM 终结点，如何将 SCIM API 与 Azure Active Directory 集成，并在应用程序中开始自动执行预配用户和组。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,26 +16,26 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 922e5a2d5c639d7df380f686ddf7843ab59fca59
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 9344feeadc5f4146c3b3f853082cd9255100af5c
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802360"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949635"
 ---
-# <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
+# <a name="scim-user-provisioning-with-azure-active-directory"></a>SCIM 用户预配与 Azure Active Directory
 
-SCIM 是标准化的协议和架构，旨在提高跨系统管理标识的方式。 当应用程序为用户管理支持 SCIM 终结点时，Azure AD 用户预配服务可以向此终结点发送请求来创建、修改或删除已分配的用户和组。
+用于跨域标识管理（SCIM）的系统是标准化协议和架构，旨在促进在系统之间管理标识的一致性。 当应用程序为用户管理支持 SCIM 终结点时，Azure AD 用户预配服务可以向此终结点发送请求来创建、修改或删除已分配的用户和组。
 
 Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md)的许多应用程序实现 SCIM 作为接收用户更改通知的方法。  除此之外，客户还可以使用 Azure 门户中的通用 "非库" 集成选项连接支持[SCIM 2.0 协议规范](https://tools.ietf.org/html/rfc7644)的特定配置文件的应用程序。
 
-本文的主要重点是在 SCIM 2.0 的个人资料中，Azure AD 实现为非库应用的泛型 SCIM 连接器的一部分。 但是，成功测试支持 SCIM 和通用 Azure AD 连接器的应用程序是将 Azure AD 库中列出的应用程序作为支持用户预配的一步。 有关 Azure AD 应用程序库中列出应用程序的详细信息，请参阅[如何：在 Azure AD 应用程序库](../develop/howto-app-gallery-listing.md)中列出你的应用程序。
+本文的主要重点是在 SCIM 2.0 的个人资料中，Azure AD 实现为非库应用的泛型 SCIM 连接器的一部分。 但是，成功测试支持 SCIM 和通用 Azure AD 连接器的应用程序是将 Azure AD 库中列出的应用程序作为支持用户预配的一步。 有关 Azure AD 应用程序库中列出应用程序的详细信息，请参阅 [How：在 Azure AD 应用程序库中列出你的应用程序，@ no__t。
 
 > [!IMPORTANT]
 > Azure AD SCIM 实现的行为最近于 2018 年 12 月 18 日更新。 有关更改内容的信息，请参阅 [Azure AD 用户预配服务 SCIM 2.0 协议合规性](application-provisioning-config-problem-scim-compatibility.md)。
 
-![显示从 Azure AD 到应用或标识存储的设置][0]<br/>
-图 1：*从 Azure Active Directory 预配实现 SCIM 的应用程序或标识存储*
+从 Azure AD 到应用或标识存储的 @no__t 0Shows 预配 no__t-1<br/>
+图 1：*从 Azure Active Directory 预配实现 SCIM @ no__t 的应用程序或标识存储
 
 本文分为四个部分：
 
@@ -61,16 +61,16 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)。 请注意，你可以通过注册[开发人员计划](https://developer.microsoft.com/office/dev-program)来访问使用 P2 许可证的 Azure Active Directory 免费试用版
 1. 从左窗格中选择 "**企业应用程序**"。 将显示所有已配置应用的列表，包括从库中添加的应用。
-1. 选择 " **+ 新建应用程序** > **所有** > **非库应用程序**"。
+1. 选择 " **+ 新建应用程序** > **所有**不 @no__t 的**非库应用程序**。
 1. 输入应用程序的名称，然后选择 "**添加**" 以创建应用对象。 新应用将添加到企业应用程序列表中，并打开到其应用管理屏幕。
 
-   ![屏幕截图显示 Azure AD 应用程序库][1]<br/>
+   ![Screenshot 显示 Azure AD 应用程序库 @ no__t-1<br/>
    图 2：*Azure AD 应用程序库*
 
 1. 在应用管理屏幕的左侧面板中，选择 "**预配**"。
 1. 在“预配模式”菜单中，选择“自动”。
 
-   示例：![Azure 门户中的应用的设置页面][2]<br/>
+   示例：![Azure 门户 @ no__t 中的应用设置页-0<br/>
    图 3：*在 Azure 门户中配置预配*
 
 1. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL。 示例： https://api.contoso.com/scim/
@@ -108,21 +108,21 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 * 支持根据[SCIM 协议的第 3.3](https://tools.ietf.org/html/rfc7644#section-3.3)节，创建用户和组（可选）。  
 * 支持根据[SCIM 协议的每节 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2)修改修补请求的用户或组。  
 * 支持检索之前创建的用户或组的已知资源，如[SCIM 协议的3.4.1 节所](https://tools.ietf.org/html/rfc7644#section-3.4.1)述。  
-* 支持查询用户或组，如[SCIM 协议的3.4.2 节所](https://tools.ietf.org/html/rfc7644#section-3.4.2)述。  默认情况下`id` ，用户通过其`username`和`externalid`查询来检索用户，并且将查询`displayName`组。  
+* 支持查询用户或组，如[SCIM 协议的3.4.2 节所](https://tools.ietf.org/html/rfc7644#section-3.4.2)述。  默认情况下，用户由其 @no__t 0 检索，并按 `username` 和 @no__t 进行查询，并 `displayName` 查询组。  
 * 支持按 ID 和管理器查询用户，如 SCIM 协议的3.4.2 节所述。  
 * 支持按 ID 和成员查询组，这与 SCIM 协议的每节3.4.2 一样。  
 * 接受单个持有者令牌，用于对应用程序进行 Azure AD 身份验证和授权。
 
 实现 SCIM 终结点时，请遵循以下常规准则，以确保与 Azure AD 的兼容性：
 
-* `id`是所有资源的必需属性。 每个返回资源的响应都应确保每个资源都具有此属性`ListResponse` ，但不包含任何成员。
-* 查询/筛选器请求的响应应始终为`ListResponse`。
+* `id` 是所有资源的必需属性。 每个返回资源的响应都应确保每个资源都具有此属性，但 @no__t 0 个成员除外。
+* 响应查询/筛选请求应始终为 `ListResponse`。
 * 组是可选的，但仅当 SCIM 实现支持修补程序请求时才受支持。
 * 不需要在修补程序响应中包含整个资源。
 * Microsoft Azure AD 只使用以下运算符：  
      - `eq`
      - `and`
-* 对于 SCIM 中的结构元素，无需区分大小写，具体取决于`op`中 https://tools.ietf.org/html/rfc7644#section-3.5.2 定义的修补程序操作值。 Azure AD 将 "op" 的值作为`Add`、 `Replace`和`Remove`发出。
+* 不需要对 SCIM 中的结构元素进行区分大小写的匹配，具体 `op` 操作值，如 https://tools.ietf.org/html/rfc7644#section-3.5.2 中定义的那样。 Azure AD 将 "op" 的值作为 @no__t、@no__t 和 @no__t 发出。
 * Microsoft Azure AD 请求获取随机用户和组，以确保终结点和凭据有效。 它也作为[Azure 门户](https://portal.azure.com)中的**测试连接**流的一部分完成。 
 * 可在其上查询资源的属性应设置为[Azure 门户](https://portal.azure.com)的应用程序上的匹配属性。 有关详细信息，请参阅[自定义用户预配属性映射](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 
@@ -130,7 +130,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 下图显示了 Azure Active Directory 发送到 SCIM 服务的消息，以管理应用程序的标识存储中用户的生命周期。  
 
-![显示用户预配和取消预配顺序][4]<br/>
+@no__t 0Shows 用户预配和取消预配 no__t-1<br/>
 图 4：*用户预配和取消预配顺序*
 
 ### <a name="group-provisioning-and-de-provisioning"></a>组预配和取消预配
@@ -140,7 +140,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 * 检索组的请求指定要从为响应请求而提供的任何资源中排除成员属性。  
 * 确定引用属性是否具有特定值的请求是有关成员属性的请求。  
 
-![显示组预配和取消预配顺序][5]<br/>
+@no__t 0Shows 组预配和取消预配顺序 @ no__t-1<br/>
 图 5：*组预配和取消预配顺序*
 
 ### <a name="scim-protocol-requests-and-responses"></a>SCIM 协议请求和响应
@@ -196,7 +196,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 ### <a name="user-operations"></a>用户操作
 
-* 用户可以通过`userName`或`email[type eq "work"]`属性进行查询。  
+* 用户可以通过 `userName` 或 `email[type eq "work"]` 属性进行查询。  
 
 #### <a name="create-user"></a>创建用户
 
@@ -458,7 +458,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 ### <a name="group-operations"></a>组操作
 
 * 组应始终使用空成员列表创建。
-* 可以通过`displayName`属性来查询组。
+* @No__t-0 属性可以查询组。
 * 更新到组修补请求应在响应中生成*HTTP 204 无内容*。 不建议使用所有成员列表返回正文。
 * 不需要支持返回组的所有成员。
 
@@ -656,7 +656,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 1. 从 [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) 下载代码示例包
 1. 将包解压缩，并将其放在 Windows 计算机上的某个位置，例如 C:\AzureAD-BYOA-Provisioning-Samples\。
 1. 在此文件夹中，启动 Visual Studio 中的 FileProvisioning\Host\FileProvisioningService.csproj 项目。
-1. 选择 "**工具** > " "**NuGet 包管理器** > " "**包管理器控制台**"，然后对 FileProvisioningService 项目执行以下命令以解析解决方案引用：
+1. 选择 "**工具**"  >  "**NuGet 包管理器**"  >  "**程序包管理器控制台**"，然后对 FileProvisioningService 项目执行以下命令来解析解决方案引用：
 
    ```powershell
     Update-Package -Reinstall
@@ -664,20 +664,20 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 1. 构建 FileProvisioningService 项目。
 1. 在 Windows 中启动命令提示符应用程序（以管理员身分），并使用 cd 命令将目录切换到 \AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug 文件夹。
-1. 运行以下命令，将替换`<ip-address>`为 Windows 计算机的 IP 地址或域名：
+1. 运行以下命令，将 `<ip-address>` 替换为 Windows 计算机的 IP 地址或域名：
 
    ```
     FileSvc.exe http://<ip-address>:9000 TargetFile.csv
    ```
 
-1. 在 windows 中的 windows**设置** > **网络 & Internet 设置**"下，选择" **windows 防火墙** > **高级设置**"，并创建允许入站访问端口的**入站规则**9000。
+1. 在 windows " **Windows 设置**" 下的 " > **网络 & Internet 设置**" 下，选择 " **Windows 防火墙**@no__t" "**高级" 设置**，并创建允许入站访问端口9000的**入站规则**。
 1. 如果 Windows 计算机位于路由器后面，则需要将路由器配置为在向 internet 公开的端口9000和 Windows 计算机上的端口9000之间运行网络访问转换。 此配置是 Azure AD 在云中访问此终结点所必需的。
 
 #### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>在 Azure AD 中注册示例 SCIM 终结点
 
 1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)。 
 1. 从左窗格中选择 "**企业应用程序**"。 将显示所有已配置应用的列表，包括从库中添加的应用。
-1. 选择 " **+ 新建应用程序** > **所有** > **非库应用程序**"。
+1. 选择 " **+ 新建应用程序** > **所有**不 @no__t 的**非库应用程序**。
 1. 输入应用程序的名称，然后选择 "**添加**" 以创建应用对象。 创建的应用程序对象代表要预配和实现单一登录的目标应用，而不仅是 SCIM 终结点。
 1. 在应用管理屏幕的左侧面板中，选择 "**预配**"。
 1. 在“预配模式”菜单中，选择“自动”。    
@@ -837,7 +837,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 ### <a name="handling-endpoint-authentication"></a>处理终结点身份验证
 
-来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。   接收请求的任何服务应对颁发者进行身份验证，使其能够 Azure Active Directory 用于预期的 Azure Active Directory 租户，以便访问 Azure Active Directory Graph web 服务。  在令牌中，颁发者由 iss 声明标识，如 "iss"： "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ "。  在此示例中，声明值 https://sts.windows.net 的基址会将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 是的 Azure Active Directory 租户的唯一标识符。令牌的颁发者。 令牌的受众将是库中应用的应用程序模板 ID。 所有自定义应用的应用程序模板 ID 都是8adf8e6e-67b2-4cf2-a259-e3dc5476c621。 库中每个应用的应用程序模板 ID 各不相同。 有关库ProvisioningFeedback@microsoft.com应用程序的应用程序模板 ID 的问题，请联系。 在单个租户中注册的每个应用程序可能会收到`iss`与 SCIM 请求相同的声明。
+来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。   接收请求的任何服务应对颁发者进行身份验证，使其能够 Azure Active Directory 用于预期的 Azure Active Directory 租户，以便访问 Azure Active Directory Graph web 服务。  在令牌中，颁发者由 iss 声明标识，如 "iss"： "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ "。  在此示例中，声明值的基址 https://sts.windows.net ，将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 是 Azure Active Directory 租户的唯一标识符，已颁发令牌。 令牌的受众将是库中应用的应用程序模板 ID。 所有自定义应用的应用程序模板 ID 都是8adf8e6e-67b2-4cf2-a259-e3dc5476c621。 库中每个应用的应用程序模板 ID 各不相同。 对于库应用程序的应用程序模板 ID 上的问题，请联系 ProvisioningFeedback@microsoft.com。 在单个租户中注册的每个应用程序可能会收到与 SCIM 请求相同的 `iss` 声明。
 
 使用 Microsoft 提供的 CLI 库生成 SCIM 服务的开发人员可以通过执行以下步骤，使用 Owin 包对来自 Azure Active Directory 的请求进行身份验证： 
 
@@ -1329,7 +1329,7 @@ Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md
 
 Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  这些类型的资源是用户和组。  
 
-用户资源由架构标识符标识，此标识符`urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`包含在此协议规范中：。 https://tools.ietf.org/html/rfc7643  表1提供了 Azure Active Directory 中用户的属性的默认映射。  
+用户资源由 `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User` 的架构标识符标识，该标识符包含在此协议规范中： https://tools.ietf.org/html/rfc7643 。  表1提供了 Azure Active Directory 中用户的属性的默认映射。  
 
 组资源由架构标识符 `urn:ietf:params:scim:schemas:core:2.0:Group` 予以标识。 表2显示 Azure Active Directory 中组的属性到组资源的属性的默认映射。  
 

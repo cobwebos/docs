@@ -6,14 +6,14 @@ manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/03/2019
 ms.author: heidist
-ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327167"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947784"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”、“标准”还是“存储优化”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
@@ -146,7 +146,19 @@ ms.locfileid: "71327167"
 
 ## <a name="data-limits-cognitive-search"></a>数据限制（认知搜索）
 
-用于调用文本分析资源进行[实体识别](cognitive-search-skill-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment.md)、[语言检测](cognitive-search-skill-language-detection.md)的[认知搜索管道](cognitive-search-concept-intro.md)会受到数据限制。 记录的最大大小应为50000个字符[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+用于调用文本分析资源进行[实体识别](cognitive-search-skill-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment.md)、[语言检测](cognitive-search-skill-language-detection.md)的[认知搜索管道](cognitive-search-concept-intro.md)会受到数据限制。 记录的最大大小应为50000个字符，由[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)测量。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+
+## <a name="throttling-limits"></a>限制
+
+系统会限制搜索查询和索引编制请求，因为系统会接近高峰容量。 不同 Api 的限制行为有所不同。 查询 Api （搜索/建议/自动完成）和基于服务的负载动态地限制 Api 限制。 索引 Api 具有静态请求速率限制。 
+
+与索引相关的操作的静态速率请求限制：
+
++ 列出索引（获取/indexes）：每个搜索单位每秒5个
++ 获取索引（GET/indexes/myindex）：每个搜索单位每秒10个
++ Create Index （POST/indexes）：每个搜索单位每分钟12个
++ 创建或更新索引（PUT/indexes/myindex）：每个搜索单位每秒6个
++ 删除索引（删除/indexes/myindex）：每个搜索单位每分钟12个 
 
 ## <a name="api-request-limits"></a>API 请求限制
 * 每个请求最大 16 MB <sup>1</sup>

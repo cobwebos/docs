@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 412bfee12e50b66a780f33b2bca8c4ecc61d83f7
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 8fee8692b2e09f9e4f5580d60d2f7a5a5cea2858
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219348"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950347"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -169,7 +169,10 @@ In | 有权执行的操作
 
 ### <a name="directory-readersdirectory-readers-permissions"></a>[目录读取器](#directory-readers-permissions)
 
-此角色只应分配给不支持[同意框架](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)的旧版应用程序。 不要将其分配给用户。
+此角色中的用户可以读取基本的目录信息。 此角色应用于：
+* 授予一组特定的来宾用户读取访问权限，而不是将其授予所有来宾用户。
+* 将特定的一组非管理员用户授予 Azure 门户的访问权限： "仅限管理员访问 Azure AD 门户" 设置为 "是"。
+* 向服务主体授予对目录读取权限的目录的访问权限。全部不是一个选项。
 
 ### <a name="directory-synchronization-accountsdirectory-synchronization-accounts-permissions"></a>[目录同步帐户](#directory-synchronization-accounts-permissions)
 
@@ -198,7 +201,7 @@ In | 有权执行的操作
 此管理员可以管理 Azure Active Directory 租户与外部标识提供者之间的联合。 使用此角色时，用户可以添加新的标识提供者并配置所有可用设置（例如身份验证路径、服务 ID、已分配密钥容器）。 此用户可让租户信任来自外部标识提供者的身份验证。 对最终用户体验造成的影响取决于租户类型：
 
 * 员工与合作伙伴的 Azure Active Directory 租户： 添加联合身份验证（例如使用 Gmail）会立即影响所有尚未兑换的来宾邀请。 请参阅[添加 Google 作为 B2B 来宾用户的标识提供者](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)。
-* Azure Active Directory B2C 租户：添加联合身份验证（例如，使用 Facebook，或与其他 Azure AD 组织）不会立即影响最终用户流，直到将标识提供程序作为用户流中的选项（也称为内置策略）添加。 有关示例, 请参阅[将 Microsoft 帐户配置为标识提供者](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)。 若要更改用户流，需要使用受限角色“B2C 用户流管理员”。
+* Azure Active Directory B2C 租户：添加联合身份验证（例如，使用 Facebook，或与其他 Azure AD 组织）不会立即影响最终用户流，直到将标识提供程序作为用户流中的选项（也称为内置策略）添加。 有关示例，请参阅[将 Microsoft 帐户配置为标识提供者](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)。 若要更改用户流，需要使用受限角色“B2C 用户流管理员”。
 
 ### <a name="global-administrator--company-administratorcompany-administrator-permissions"></a>[全局管理员/公司管理员](#company-administrator-permissions)
 
@@ -233,7 +236,7 @@ In | 有权执行的操作
 * 高级管理人员、法律顾问和人力资源员工之类的非管理员，可能有权访问敏感或私有信息。
 
 > [!NOTE]
-> 使用[管理单元 (预览)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units)可以将管理权限委派给用户子集, 并将策略应用到部分用户。
+> 使用[管理单元（预览）](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units)可以将管理权限委派给用户子集，并将策略应用到部分用户。
 >
 > 此角色以前称为[Azure 门户](https://portal.azure.com/)中的 "密码管理员"。 我们已将其名称更改为“支持管理员”，以便与 Azure AD PowerShell、Azure AD 图形 API 和 Microsoft 图形 API 中的名称相匹配。
 

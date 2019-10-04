@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 8e800ec8a7a2dd52e052547efa51deaad8c9bb45
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: ec5a3ab0a2498e7d9bb24bed1bc0a37194e38e9e
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104922"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936968"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>排查 SSIS Integration Runtime 中的包执行问题
 
@@ -121,6 +121,7 @@ ms.locfileid: "71104922"
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>错误消息：“Microsoft OLE DB Provider for Analysis Services。 ‘Hresult:0x80004005 说明:’COM 错误:COM 错误: mscorlib；某个调用的目标引发了异常”
 
 一种潜在原因是为 Azure Analysis Services 身份验证配置了已启用 Azure 多重身份验证的用户名或密码。 SSIS Integration Runtime 不支持这种身份验证。 尝试使用服务主体进行 Azure Analysis Services 身份验证：
+
 1. 请根据[使用服务主体进行自动化](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)中所述准备服务主体。
 2. 在连接管理器中，配置“使用特定的用户名和密码”：将“AppID”设为用户名，将“clientSecret”设为密码。
 
@@ -128,19 +129,23 @@ ms.locfileid: "71104922"
 
 如果参数 *ConnectUsingManagedIdentity* 为 **True**，请确保不要将连接管理器的身份验证方法配置为“Active Directory密码身份验证”。 可将其配置为“SQL 身份验证”，设置了 *ConnectUsingManagedIdentity* 时会忽略此配置。
 
-### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>错误消息："请求暂存任务，操作 guid ...失败，因为错误：未能调度暂存操作，错误消息如下：Microsoft.sqlserver.management.integrationservices. AisAgentCore. AisAgentException：未能加载数据代理。 "
+### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>错误消息："0xC020801F ...，OData Source [...]：无法从运行时连接管理器获取托管连接 "
+
+一个可能的原因是，无法在 SSIS 集成运行时中启用传输层安全性（TLS），这是 OData 源所必需的。 可以通过使用 "自定义安装" 在 SSIS 集成运行时中启用 TLS。 有关详细信息，请参阅[无法从 SSIS 连接 Project Online Odata](https://docs.microsoft.com/office365/troubleshoot/cant-connect-project-online-odata-from-ssis)和[自定义 Azure ssis 集成运行时的设置](how-to-configure-azure-ssis-ir-custom-setup.md)。
+
+### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>错误消息："请求暂存任务，操作 guid 。失败，因为错误：未能调度暂存操作，错误消息如下：Microsoft.sqlserver.management.integrationservices. AisAgentCore. AisAgentException：未能加载数据代理。 "
 
 确保你的 Azure SSIS 集成运行时配置了自承载集成运行时。 有关详细信息，请参阅[配置自承载 IR 作为 ADF 中 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md)。
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>错误消息："暂存任务状态：已失败。 暂存任务错误：ErrorCode:2010，ErrorMessage：自承载 Integration Runtime ...处于脱机状态 "
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>错误消息："暂存任务状态：已失败。 暂存任务错误：ErrorCode:2010，ErrorMessage：自承载 Integration Runtime 。处于脱机状态 "
 
 请确保已安装并启动了自承载集成运行时。 有关详细信息，请参阅[创建和配置自承载集成运行时](create-self-hosted-integration-runtime.md)
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>错误消息："暂存任务错误：ErrorCode:2906，ErrorMessage：包执行失败。输出： {"OperationErrorMessages"：“错误:请求的 OLE DB 提供程序 ...未注册。 如果未安装64位驱动程序，请在32位模式下运行包 ... "
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>错误消息："暂存任务错误：ErrorCode:2906，ErrorMessage：包执行失败。输出： {"OperationErrorMessages"：“错误:请求的 OLE DB 提供程序 。未注册。 如果未安装64位驱动程序，请在32位模式下运行包 ... "
 
 请确保包中 OLE DB 连接器使用的相应提供程序正确安装在自承载集成运行时计算机上。 有关详细信息，请参阅[配置自承载 IR 作为 ADF 中 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>错误消息："暂存任务错误：ErrorCode:2906，ErrorMessage：包执行失败。输出： {"OperationErrorMessages"：“错误:FileLoadException：无法加载文件或程序集 "Windowsazure.storage，Version = ...，Culture = 中立，PublicKeyToken = 31bf3856ad364e35" 或其依赖项之一。 找到的程序集清单定义与程序集引用不匹配..."
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>错误消息："暂存任务错误：ErrorCode:2906，ErrorMessage：包执行失败。输出： {"OperationErrorMessages"：“错误:FileLoadException：无法加载文件或程序集 "Windowsazure.storage，Version = ...，Culture = 中立，PublicKeyToken = 31bf3856ad364e35" 或其依赖项之一。 找到的程序集清单定义与程序集引用不匹配。..."
 
 一个可能的原因是您的自承载集成运行时未正确安装或升级。 建议下载并重新安装最新的自承载集成运行时。 有关详细信息，请参阅[创建和配置自承载集成运行时](create-self-hosted-integration-runtime.md#installation-best-practices)
 
@@ -151,7 +156,7 @@ ms.locfileid: "71104922"
   * 可在[SSMS 报表](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports)或在 "SSIS 包执行" 活动中指定的日志文件夹中找到执行日志。
   * vNet 还可用于作为替代方法访问本地数据。 在[将 AZURE SSIS 集成运行时加入到虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)中可以找到更多详细信息
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>错误消息："暂存任务状态：已失败。 暂存任务错误：ErrorCode:2906，ErrorMessage：包执行失败。输出： {"OperationErrorMessages"："SSIS 执行程序退出代码：-1. \ n"、"LogLocation"： "...\\SSISTelemetryExecutionLog...\\"，" effectiveIntegrationRuntime "：" .. "，" executionDuration "： ...，" durationInQueue "： {" integrationRuntimeQueue "： ...}}"\\
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>错误消息："暂存任务状态：已失败。 暂存任务错误：ErrorCode:2906，ErrorMessage：包执行失败。输出： {"OperationErrorMessages"："SSIS 执行程序退出代码：-1. \ n"、"LogLocation"： "...\\SSISTelemetryExecutionLog...\\"，" effectiveIntegrationRuntime "：" . "，" executionDuration "： ...，" durationInQueue "： {" integrationRuntimeQueue "： ...}}"\\
 
 请确保在C++自承载集成运行时计算机上安装了 Visual 运行时。 有关详细信息，请参阅[配置自承载 IR 作为 ADF 中 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
 

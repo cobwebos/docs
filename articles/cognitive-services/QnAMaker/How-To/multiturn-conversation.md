@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 318df27ebb822f49c1f8881d0bf68ac7167dea36
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351298"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695146"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用跟进提示创建多个轮次的对话
 
@@ -55,23 +55,37 @@ ms.locfileid: "71351298"
 
 ![启用多轮提取的复选框](../media/conversational-context/enable-multi-turn.png)
 
-为导入的文档选择此选项时，可以从文档结构中隐含多轮对话。 如果该结构存在，QnA Maker 将创建将问题和答案对作为导入过程的一部分进行配对的后续提示。 
+当你选择此选项时，可以从文档结构中隐含多轮对话。 如果该结构存在，QnA Maker 将创建将问题和答案对作为导入过程的一部分进行配对的后续提示。 
 
 只能从 Url、PDF 文件或 .DOCX 文件推断出多个结构。 有关结构的示例，请查看[Microsoft Surface user 手动 PDF 文件](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)的图像。 由于此 PDF 文件的大小，QnA Maker 资源需要**B** （15个索引）或更大的**搜索定价层**。 
 
 ![![用户手册中的结构示例](../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-导入 PDF 文档时，QnA Maker 确定结构中的后续提示以创建对话流。 
+### <a name="determine-multi-turn-structure-from-format"></a>从格式确定多转换结构
 
-1. 在 QnA Maker 中，选择 "**创建知识库**"。
-1. 创建或使用现有 QnA Maker 服务。 在前面的 Microsoft Surface 示例中，由于 PDF 文件对于较小的层太大，请使用 QnA Maker 服务，该服务的**搜索服务**为**B** （15个索引）或更高。
-1. 为知识库输入名称，例如 "**表面手册**"。
-1. 选中 "**启用来自 url、.pdf 或 .docx 文件的多轮提取**" 复选框。 
-1. 选择 Surface 手动 URL， **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** 。
+QnA Maker 确定以下内容中的多个结构：
 
-1. 选择 "**创建 KB** " 按钮。 
+* 标题字体大小-如果使用样式、颜色或其他某些机制来表示文档中的结构，QnA Maker 将不会提取多个提示。 
 
-    创建知识库后，将显示问题和答案对的视图。
+标题规则包括：
+
+* 不要以问号结束标题，`?`。 
+
+### <a name="add-file-with-multi-turn-prompts"></a>添加具有多个提示的文件
+
+添加多文档时，QnA Maker 会确定结构中的后续提示以创建对话流。 
+
+1. 在 QnA Maker 中，选择使用 "**从 url、pdf 或 .docx 文件中启用多个提取"** 创建的现有知识库。 能够. 
+1. 请在 "**设置**" 页上，选择要添加的文件或 URL。 
+1. **保存并训练**知识库。
+
+> [!Caution]
+> 不支持使用导出的 TSV 或 XLS 多转换知识库文件作为新的或空知识库的数据源。 你需要在 QnA Maker 门户的 "**设置**" 页中**导入**该文件类型，以便将导出的 "多提示" 提示添加到知识库中。
+
+
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>通过创建 API 创建包含多个提示的知识库
+
+您可以使用[QnA Maker 创建 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)创建包含多个提示的知识案例。 提示添加到 `context` 属性的 @no__t 的数组中。 
 
 ## <a name="show-questions-and-answers-with-context"></a>用上下文显示问题和答案
 
@@ -126,29 +140,6 @@ ms.locfileid: "71351298"
 1. 编辑完显示文本后，请选择 "**保存**"。 
 1. 在顶部导航栏中，**保存并训练**。
 
-
-<!--
-
-## To find the best prompt answer, add metadata to follow-up prompts 
-
-If you have several follow-up prompts for a specific question-and-answer pair but you know, as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base. You can then send the metadata from the client application as part of the GenerateAnswer request.
-
-In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, and then the follow-ups are returned.
-
-1. Add metadata to each of the two follow-up question-and-answer pairs:
-
-    |Question|Add metadata|
-    |--|--|
-    |*Feedback on a QnA Maker service*|"Feature":"all"|
-    |*Feedback on an existing feature*|"Feature":"one"|
-    
-    ![The "Metadata tags" column for adding metadata to a follow-up prompt](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
-
-1. Select **Save and train**. 
-
-    When you send the question **Give feedback** with the metadata filter **Feature** with a value of **all**, only the question-and-answer pair with that metadata is returned. QnA Maker doesn't return both question-and-answer pairs, because both don't match the filter. 
-
--->
 
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>添加新的问题和答案对作为跟进提示
 
@@ -374,21 +365,13 @@ QnA Maker _GenerateAnswer_ JSON 响应包括 `answers` 对象中第一项的 @no
 
 [更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)支持在 JSON 响应中返回的[显示文本和显示顺序](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)。 
 
-<!--
-
-FIX - Need to go to parent, then answer column, then edit answer. 
-
--->
-
-## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>通过创建 API 创建包含多个提示的知识库
-
-您可以使用[QnA Maker 创建 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)创建包含多个提示的知识库。 提示添加到 `context` 属性的 @no__t 的数组中。 
-
-
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>添加或删除带有更新 API 的多个提示
 
 你可以使用[QnA Maker 更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)添加或删除多个提示。  在 `context` 属性的 @no__t 数组和 @no__t 2 数组中添加提示。 
 
+## <a name="export-knowledge-base-for-version-control"></a>用于版本控制的导出知识库
+
+QnA Maker 支持 QnA Maker 门户中的[版本控制](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base)，方法是在导出的文件中包含多轮会话步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

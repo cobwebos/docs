@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 7b5ee5bfe4b7498bc13ff0c8582b49fed8478e0a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 1b53d8a15e6ca1d4fc5a8ed6d58e526fadd12466
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337785"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948999"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 
@@ -31,9 +31,13 @@ ms.locfileid: "71337785"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务” > “管理组”。
+1. 选择 "**所有服务**"  > **管理 + 调控**"。
 
-1. 在主页上，选择“新建管理组”。
+1. 选择**成本管理 + 计费**
+
+1. 在 "成本管理 + 计费管理组" 页上，选择**管理组**
+
+1. 选择 " **+ 添加管理组**"。
 
    ![管理组操作页](./media/main.png)
 

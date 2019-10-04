@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: c0ceea5c86af8d733c838e19f77eaeadc8a12dbb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 00d3d63ff1a5b4d5dab0534e039145b97091af87
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300243"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802156"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
 
 有关 QnA Maker 服务的最常见问题的特选列表将有助于更快地采用服务, 并获得更好的结果。
 
+<a name="how-to-get-the-qnamaker-service-hostname"></a>
 
-## <a name="how-to-get-the-qnamaker-service-hostname"></a>如何获取 QnAMaker 服务主机名
+## <a name="how-to-get-the-qnamaker-service-endpoint"></a>如何获取 QnAMaker 服务终结点
 
-在联系 QnAMaker 客户支持部门或 UserVoice 时，QnAMaker 服务主机名对调试工作非常有用。 主机名为以下格式的 URL： https:// *{hostname}* . azurewebsites.net。
+当你联系 QnAMaker 支持部门或 UserVoice 时，QnAMaker service 终结点对于调试很有用。 此终结点是如下格式的 URL： https://your-resource-name.azurewebsites.net 。
     
 1. 在 [Azure 门户](https://portal.azure.com)中转到 QnAMaker 服务（资源组）
 
@@ -35,9 +36,9 @@ ms.locfileid: "71300243"
 
      ![选择“QnAMaker 应用服务”](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
 
-1. 在“概述”部分可以找到主机名 URL
+1. "概述" 部分提供了终结点 URL
 
-    ![QnAMaker 主机名](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
+    ![QnAMaker 终结点](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
     
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>在 QnA Maker 门户中使用帮助机器人
@@ -173,7 +174,7 @@ Azure 搜索资源的名称是 QnA Maker 资源名称加上在末尾追加的一
 你需要了解有关知识库的以下信息：
 
 * 知识库 ID。
-* 知识库的已发布终结点主机名-在发布后，在 "**设置**" 页上找到。
+* 发布后在 "设置" 页上的 "**设置**" 页上，知识库的已发布终结点自定义子域名称称为 `host`。
 * 知识库的已发布终结点项-发布后在 "**设置**" 页上找到。 
 
 有关此信息，请在 Azure 门户中转到机器人的应用服务。 在**设置-> 配置-> 应用程序设置**中，更改这些值。  

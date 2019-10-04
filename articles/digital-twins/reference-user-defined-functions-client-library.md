@@ -1,20 +1,20 @@
 ---
 title: Azure 数字孪生用户定义函数客户端库参考 | Microsoft Docs
 description: Azure 数字孪生用户定义函数客户端库参考。
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 14c153a6e5837da28060122a629c8cc5df8262cf
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 36fb8a5588321426ccae7d6c6577fb4b48f3a4db
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013762"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948905"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>用户定义函数客户端库参考
 
@@ -60,7 +60,7 @@ ms.locfileid: "69013762"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 描述  |
+| 参数  | type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *sensorId*  | `guid` | 传感器标识符 |
 | *dataType*  | `string` | 传感器数据类型 |
@@ -114,7 +114,7 @@ ms.locfileid: "69013762"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 描述  |
+| 参数  | type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 
@@ -144,7 +144,7 @@ ms.locfileid: "69013762"
 
 **类型**：全局函数
 
-| 参数  | type                | 描述  |
+| 参数  | 类型                | 描述  |
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | 空间标识符 |
 
@@ -154,7 +154,7 @@ ms.locfileid: "69013762"
 
 **类型**：全局函数
 
-| 参数  | type                | 描述  |
+| 参数  | 类型                | 描述  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | 传感器标识符 |
 
@@ -174,7 +174,7 @@ ms.locfileid: "69013762"
 
 **类型**：全局函数
 
-| 参数  | type                | 描述  |
+| 参数  | 类型                | 描述  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | 传感器标识符 |
 
@@ -241,7 +241,7 @@ ms.locfileid: "69013762"
 
 **类型**：全局函数
 
-| 参数  | type                | 描述  |
+| 参数  | 类型                | 描述  |
 | ------ | ------------------- | ------------ |
 | *message* | `string` | 要记录的消息 |
 
@@ -251,7 +251,7 @@ ms.locfileid: "69013762"
 
 **类型**：全局函数
 
-| 参数  | 类型                | 描述  |
+| 参数  | type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *topologyObjectId*  | `guid` | 图形对象标识符。 例如，空格、传感器和设备 ID。|
 | *topologyObjectType*  | `string` | 例如，空格、传感器和设备。|
@@ -300,7 +300,7 @@ ms.locfileid: "69013762"
 
 此函数将返回当前空间的值。
 
-| 参数  | type                | 描述  |
+| 参数  | 类型                | 描述  |
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | 值的名称 |
 
@@ -308,7 +308,7 @@ ms.locfileid: "69013762"
 
 此函数将返回当前空间的历史值。
 
-| 参数  | type                | 描述  |
+| 参数  | 类型                | 描述  |
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | 值的名称 |
 
@@ -316,7 +316,7 @@ ms.locfileid: "69013762"
 
 此函数发送具有指定有效负载的通知。
 
-| 参数  | type                | 描述  |
+| 参数  | 类型                | 描述  |
 | ------ | ------------------- | ------------ |
 | *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
@@ -352,7 +352,7 @@ ms.locfileid: "69013762"
 
 此函数返回当前设备的扩展属性及其值。
 
-| 参数  | type                | 描述  |
+| 参数  | 类型                | 描述  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | 扩展属性的名称 |
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b7f701cd3ce07099d80bca40e506108bcc9a9da9
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b4eebf7dac4d388411f570b1546c96e3b82b2a98
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178107"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950065"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限
 
@@ -33,7 +33,7 @@ ms.locfileid: "71178107"
 若要使用模板，必须执行以下操作：
 
 - 创建新的 JSON 文件并复制模板
-- 替换`<your-principal-id>`为要向其分配角色的用户、组或应用程序的唯一标识符。 标识符的格式为：`11111111-1111-1111-1111-111111111111`
+- 将 `<your-principal-id>` 替换为要将角色分配到的用户、组或应用程序的唯一标识符。 标识符的格式为：`11111111-1111-1111-1111-111111111111`
 
 ```json
 {
@@ -159,6 +159,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
 ```
 
+> [!NOTE]
+> 此模板不是幂等的，除非为每个模板部署的参数提供相同的 `roleNameGuid` 值。 如果未提供 `roleNameGuid`，则默认情况下将在每个部署上生成新的 GUID，并且后续部署将失败，并出现 `Conflict: RoleAssignmentExists` 错误。
+
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>在资源范围中创建角色分配
 
 如果需要在资源级别创建角色分配，角色分配的格式将会不同。 需提供要将角色分配到的资源的资源提供程序命名空间和资源类型。 还需在角色分配名称中包含该资源的名称。
@@ -180,8 +183,6 @@ az deployment create --location centralus --template-file rbac-test.json --param
 
 - 要为其分配角色的用户、组或应用程序的唯一标识符
 - 要分配的角色
-- 用于角色分配的唯一标识符；你也可以使用默认的标识符
-
 
 ```json
 {
@@ -203,13 +204,6 @@ az deployment create --location centralus --template-file rbac-test.json --param
             ],
             "metadata": {
                 "description": "Built-in role to assign"
-            }
-        },
-        "roleNameGuid": {
-            "type": "string",
-            "defaultValue": "[newGuid()]",
-            "metadata": {
-                "description": "A new GUID used to identify the role assignment"
             }
         },
         "location": {
@@ -238,7 +232,7 @@ az deployment create --location centralus --template-file rbac-test.json --param
         {
             "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
             "apiVersion": "2018-09-01-preview",
-            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', parameters('roleNameGuid'))]",
+            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(parameters('storageName'))))]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],
@@ -267,12 +261,12 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 ## <a name="create-a-role-assignment-for-a-new-service-principal"></a>创建新服务主体的角色分配
 
-如果创建新的服务主体并立即尝试将角色分配给该服务主体，则在某些情况下该角色分配可能会失败。 例如，如果创建新的托管标识，然后尝试将角色分配给同一 Azure 资源管理器模板中的服务主体，则角色分配可能会失败。 此故障的原因可能是复制延迟。 在一个区域中创建服务主体;但是，角色分配可能发生在尚未复制服务主体的其他区域中。 若要解决这种情况，应在`principalType`创建角色`ServicePrincipal`分配时将属性设置为。
+如果创建新的服务主体并立即尝试将角色分配给该服务主体，则在某些情况下该角色分配可能会失败。 例如，如果创建新的托管标识，然后尝试将角色分配给同一 Azure 资源管理器模板中的服务主体，则角色分配可能会失败。 此故障的原因可能是复制延迟。 在一个区域中创建服务主体;但是，角色分配可能发生在尚未复制服务主体的其他区域中。 若要解决这种情况，应在创建角色分配时将 `principalType` 属性设置为 `ServicePrincipal`。
 
 以下模板演示：
 
 - 如何创建新的托管标识服务主体
-- 如何指定`principalType`
+- 如何指定 `principalType`
 - 如何将参与者角色分配给资源组作用域上的服务主体
 
 若要使用模板，必须指定以下输入：

@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 9b78c18547ef61b388a56a1272b5621cada43806
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8e22bf53a81d94c5204a76c58b43fed63e32b136
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120491"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803400"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -33,7 +33,7 @@ ms.locfileid: "71120491"
 | 每个帐户的最大附件大小（附件功能正在进行折旧） | 2 GB | 
 
 > [!NOTE]
-> 对于其分区键的存储或吞吐量需求超过限制的工作负荷，[热分区键设计](synthetic-partition-keys.md)中提供了其管理最佳做法。
+> 若要了解有关管理工作负荷的最佳实践，其中的分区键需要更高的存储或吞吐量限制，请参阅[创建合成分区键](synthetic-partition-keys.md)。
 >
 
 Cosmos 容器（或共享吞吐量数据库）的吞吐量必须至少为 400 RU。 随着容器的不断扩大，支持的最小吞吐量还取决于以下因素：

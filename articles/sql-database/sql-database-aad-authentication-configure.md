@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: a14926dea576e0331cb8c0f8010f060f47faa3e7
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 11e3a9931d424433f2e3fd1f64e2e95a5835b65c
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991165"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960468"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>使用 SQL 配置和管理 Azure Active Directory 身份验证
 
@@ -304,6 +304,9 @@ CREATE USER [ICU Nurses] FROM EXTERNAL PROVIDER;
 CREATE USER [appName] FROM EXTERNAL PROVIDER;
 ```
 
+> [!NOTE]
+> 此命令要求代表登录用户 Azure AD （"外部提供程序"）。 有时会出现这样的情况，导致 Azure AD 将异常返回给 SQL。 在这些情况下，用户将看到 SQL 错误33134，该错误消息应包含 AAD 特定的错误消息。 大多数情况下，此错误会指出访问被拒绝，或者用户必须注册 MFA 才能访问资源，或者必须通过 preauthorization 处理第一方应用程序之间的访问。 在前两种情况下，该问题通常是由用户的 AAD 租户中设置的条件性访问策略引起的：阻止用户访问外部提供商。 更新 CA 策略以允许访问应用程序 "00000002-0000-0000-c000-000000000000" （AAD 图形 API 的应用程序 ID）应可以解决此问题。 如果错误显示必须通过 preauthorization 处理第一方应用程序之间的访问权限，则问题是因为用户是作为服务主体登录的。 如果此命令是由用户执行的，则该命令应成功。
+
 > [!TIP]
 > 无法从与 Azure 订阅关联的 Azure Active Directory 之外的 Azure Active Directory 直接创建用户。 但是，可以将关联 Active Directory 中从其他 Active Directory 导入的用户成员（称为外部用户）添加到租户 Active Directory 中的 Active Directory 组。 通过为该 AD 组创建包含的数据库用户，外部 Active Directory 中的用户可以获取对 SQL 数据库的访问权限。
 
@@ -414,7 +417,7 @@ conn.Open();
 以下语句使用版本 13.1 的 sqlcmd 进行连接，该版本可从[下载中心](https://go.microsoft.com/fwlink/?LinkID=825643)下载。
 
 > [!NOTE]
-> `sqlcmd``-G`使用命令对系统标识不起作用, 需要用户主体登录名。
+> 带 `-G` 的 `sqlcmd` 命令不适用于系统标识，它需要用户主体登录名。
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

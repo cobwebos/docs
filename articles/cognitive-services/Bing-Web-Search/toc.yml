@@ -54,7 +54,7 @@
     - name: 处理搜索词突出显示
       href: hit-highlighting.md
     - name: 对结果进行分页
-      href: paging-webpages.md
+      href: paging-search-results.md
     - name: 调整和裁剪缩略图
       href: resize-and-crop-thumbnails.md
     - name: 从 v5 升级到 v7

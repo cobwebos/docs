@@ -52,8 +52,9 @@
       href: gif-images.md
     - name: 获取热门图像
       href: trending-images.md
-    - name: 对图像进行分页
-      href: paging-images.md
+    - name: 翻页浏览搜索结果
+      maintainContext: true
+      href: ../bing-web-search/paging-search-results.md
     - name: 调整和裁剪缩略图
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

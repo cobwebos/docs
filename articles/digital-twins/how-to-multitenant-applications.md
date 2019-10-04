@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 数字孪生启用多租户应用程序 | Microsoft Docs
 description: 如何为 Azure 数字孪生配置多租户 Azure Active Directory 应用程序。
-author: mavoge
+ms.author: alinast
+author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: mavoge
-ms.openlocfilehash: 2ee3681640f68839c32e2963b34d5547abb6943b
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 10/02/2019
+ms.openlocfilehash: 070b04b27982b84f101ee4d6f85f4e5b82760092
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976876"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958778"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>使用 Azure 数字孪生启用多租户应用程序
 
@@ -57,20 +57,16 @@ ms.locfileid: "68976876"
   1. 打开“订阅”。
   1. 选择一个订阅，该订阅需具有要在开发人员的应用程序中使用的 Azure Active Directory 租户。
 
-     ![Azure Active Directory 订阅][1]
+     [![Azure Active Directory 订阅](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
 
   1. 选择“资源提供程序”。
   1. 搜索 Microsoft.IoTSpaces。
   1. 选择“注册”。
 
-     ![Azure Active Directory 资源提供程序][2]
+     [@no__t Active Directory 资源提供程序](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   
 ## <a name="next-steps"></a>后续步骤
 
 - 若要深入了解如何将用户定义的函数与 Azure 数字孪生配合使用，请阅读[如何创建 Azure 数字孪生用户定义的函数](./how-to-user-defined-functions.md)。
 
 - 若要了解如何使用基于角色的访问控制进一步保护具有角色分配的应用程序，请阅读[如何创建和管理 Azure 数字孪生基于角色的访问控制](./security-create-manage-role-assignments.md)。
-
-<!-- Images -->
-[1]: media/multitenant/ad-subscriptions.png
-[2]: media/multitenant/ad-resource-providers.png

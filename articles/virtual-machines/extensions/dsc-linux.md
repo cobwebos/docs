@@ -13,16 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: c37b81e08e5d9f150081a9dc12af51175e3f590c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6df6bb5c0be4bf1779541a815bd933965024809f
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084720"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960411"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
 Desired State Configuration (DSC) 是一个管理平台，可让你使用“配置即代码”来管理 IT 和开发基础结构。
+
+> !请注意，适用于 linux 的 DSC 扩展和[适用于 linux 的 Azure Monitor 虚拟机扩展](/virtual-machines/extensions/oms-linux)目前存在冲突，不受并行配置支持。  这意味着不应在同一 VM 上一起使用这两个解决方案。
 
 DSCForLinux 扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装 OMI 和 DSC 代理。 DSC 扩展还能执行以下操作
 
@@ -39,9 +41,9 @@ DSCForLinux 扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚�
 
 ### <a name="operating-system"></a>操作系统
 
-DSC Linux 扩展支持所有[在 Azure 上认可的 Linux 分发版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)，除了以下这些：
+DSC Linux 扩展支持所有[在 Azure 上认可的 Linux 分发版](/virtual-machines/linux/endorsed-distros)，除了以下这些：
 
-| 分发组 | Version |
+| 分发 | Version |
 |---|---|
 | Debian | 所有版本 |
 | Ubuntu| 18.04 |

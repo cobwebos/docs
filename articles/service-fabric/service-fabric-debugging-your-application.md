@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ee5354845efba0cce92ccf4f11eb3480684e7509
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300681"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947901"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 调试 Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -76,14 +76,10 @@ ms.locfileid: "71300681"
 
 > [!NOTE]
 > 此功能需要 [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) 和 [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/)。    
-> 
-> 
 
 <!-- -->
 > [!WARNING]
 > 远程调试适用于开发/测试方案，而非用于生产环境中，因为它会对运行中的应用程序造成影响。
-> 
-> 
 
 1. 在“云资源管理器”中导航到群集。 右键单击并选择“启用调试”
    
@@ -128,8 +124,6 @@ ms.locfileid: "71300681"
 > [!WARNING]
 > 流跟踪适用于开发/测试方案，而非用于生产环境中，因为它会对运行中的应用程序造成影响。
 > 在生产方案中，应依赖于使用 Azure 诊断转发事件。
-> 
-> 
 
 1. 在“云资源管理器”中导航到群集。 右键单击并选择“启用流式跟踪”
    

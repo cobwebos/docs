@@ -1,19 +1,19 @@
 ---
-title: 了解数字孪生对象模型和空间智能图 | Microsoft Docs
+title: 了解 Azure 数字孪生对象模型和空间智能图 |Microsoft Docs
 description: 使用 Azure 数字孪生对人员、位置和设备之间的关系进行建模
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 37f2afbd9bae4ca6bccc5062515f166687d8913c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 67a4aceb157ee3fe1b1d1553efd587a0f2838d88
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177070"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950011"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>了解数字孪生对象模型和空间智能图
 
@@ -23,7 +23,7 @@ Azure 数字孪生是一种 Azure IoT 服务，可提供物理环境及相关设
 
 准备好数字孪生对象模型和本体后，便可以填充空间图。 空间图是与 IoT 解决方案相关的空间、设备和人员之间的多种关系的虚拟呈现形式。 此图显示了使用智能建筑物本体的空间图示例。
 
-[![数字孪生空间图生成](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
+[@no__t 1Digital 孪生空间图生成](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 空间图将空间、设备、传感器和用户汇集在一起。 每一个对象均以模拟现实世界的方式链接在一起。 在此示例中，43 会场有四层楼，每层楼都具有许多不同区域。 用户与其工作站相关联，并且可以访问图形的某些部分。 管理员有权更改空间图，而访问者仅有权查看某些建筑物数据。
 

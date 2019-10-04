@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9ea9240ce5fa791734ab7b650ebdfa56b3f8dced
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3a6bebfa11294821ff717f221e3e0ddfd68cd65c
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840566"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948230"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 
@@ -76,7 +76,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
          |`<`, `>`, `<=`, `>=`     |  双精度、DateTime、TimeSpan       |         |
          |`=`, `!=`, `<>`     | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL        |         |
          |IN     | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL        |  所有操作数应为同一类型或者是 NULL 常数。        |
-         |HAS     | String        |  右侧只允许使用常量字符串文本。 不允许空字符串和 NULL。       |
+         |HAS     | 字符串        |  右侧只允许使用常量字符串文本。 不允许空字符串和 NULL。       |
 
       - 查询示例
 

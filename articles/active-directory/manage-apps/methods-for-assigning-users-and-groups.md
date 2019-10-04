@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13c9003baaca11dce5a2192a8183674faddfa6dc
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: bd66df381e11582b30ded5e3b529070357f35ad2
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967299"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720286"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>向 Azure Active Directory 中的应用程序分配用户和组
 本文介绍如何将用户或组分配到 Azure Active Directory (Azure AD) 中的应用程序。 首先必须将用户分配给应用程序，然后管理员才能授予这些用户访问权限以执行以下操作：
@@ -50,7 +50,7 @@ ms.locfileid: "68967299"
 
 要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1.  打开[**Azure 门户**](https://portal.azure.com/)并以**全局管理员或非管理员应用程序所有者**的身份登录。
 
 2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
@@ -82,13 +82,13 @@ ms.locfileid: "68967299"
 
 15. 单击“分配”按钮，将应用程序分配给选定用户。
 
-一小段时间后, 所选用户将能够使用解决方案描述部分中所述的方法启动这些应用程序。
+经过一小段时间后，所选用户将能够使用解决方案描述部分中所述的方法启动这些应用程序。
 
 ## <a name="assign-groups"></a>分配组
 
 要直接将一个或多个组分配到应用程序，请遵循以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1.  打开[**Azure 门户**](https://portal.azure.com/)并以**全局管理员身份**登录，或者以分配了 Azure AD Premium 许可证的非管理员应用程序所有者身份登录。
 
 2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
@@ -120,7 +120,7 @@ ms.locfileid: "68967299"
 
 15. 单击“分配”按钮，将应用程序分配给所选组。
 
-一小段时间后, 所选组中的用户将能够使用解决方案描述部分中所述的方法启动这些应用程序。 如果是动态组，则这些分配组中的用户显示分配时可能会出现一些额外的处理延迟。
+一小段时间后，所选组中的用户将能够使用解决方案描述部分中所述的方法启动这些应用程序。 如果是动态组，则这些分配组中的用户显示分配时可能会出现一些额外的处理延迟。
 
 ## <a name="enable-self-service-application-access"></a>启用自助应用程序访问
 

@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/01/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e7681afe3f5361b17670312c8391349c650a89d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: fd752540d078ef57c8b6150edbf9b124bc445fe0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936773"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949350"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -83,6 +83,20 @@ ms.locfileid: "71936773"
 | 扩展属性 1-15 | 用于扩展 Azure AD 架构的本地扩展属性 |
 
 有关详细信息，请参阅 [Table 3：每个 source @ no__t 的有效 ID 值。
+
+你还可以将任何常量（静态）值分配给在 Azure AD 中定义的任何声明。 请按照以下步骤分配常量值：
+
+1. 在[Azure 门户](https://portal.azure.com/)的 "**用户属性 & 声明**" 部分中，单击 "**编辑**" 图标以编辑声明。
+
+1. 单击要修改的必需的声明。
+
+1. 按组织的**源属性**输入常量值，并单击 "**保存**"。
+
+    ![打开 Azure 门户中的 "用户属性" & 声明 "部分](./media/active-directory-saml-claims-customization/organization-attribute.png)
+
+1. 常数值会显示如下。
+
+    ![打开 Azure 门户中的 "用户属性" & 声明 "部分](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>特殊声明-转换
 

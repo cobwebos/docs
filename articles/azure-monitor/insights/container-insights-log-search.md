@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d6e65331db53be5ba13a75e6b03b271f1071716d
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: ae8dd4cccb6795faa02e6705404644f6ccc24864
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67989820"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948049"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何从用于容器的 Azure Monitor 查询日志
 
@@ -40,19 +40,19 @@ ms.locfileid: "67989820"
 | Kubernetes 群集中的服务 | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
 | Kubernetes 群集节点部分的性能指标 | Perf &#124; where ObjectName == “K8SNode” | Computer、ObjectName、CounterName（cpuAllocatableBytes、memoryAllocatableBytes、cpuCapacityNanoCores、memoryCapacityBytes、memoryRssBytes、cpuUsageNanoCores、memoryWorkingsetBytes、restartTimeEpoc）、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
 | Kubernetes 群集容器部分的性能指标 | Perf &#124; where ObjectName == “K8SContainer” | CounterName（cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryWorkingSetBytes、restartTimeEpoch、cpuUsageNanoCores、memoryRssBytes）、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
-| 自定义指标 |`InsightsMetrics` | 计算机、名称、命名空间、源、SourceSystem、标记<sup>1</sup>、TimeGenerated、类型、Va、_ResourceId | 
+| 自定义指标 |`InsightsMetrics` | Computer、Name、Namespace、Origin、SourceSystem、Tags<sup>1</sup>、TimeGenerated、Type、Va、_ResourceId | 
 
-<sup>1</sup> "*标记*" 属性表示对应指标的[多个维度](../platform/data-platform-metrics.md#multi-dimensional-metrics)。 有关在`InsightsMetrics`表中收集和存储的指标以及记录属性的说明的其他信息, 请参阅[InsightsMetrics 概述](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)。
+<sup>1</sup> Tags 属性表示对应指标的[多个维度](../platform/data-platform-metrics.md#multi-dimensional-metrics)。 有关 `InsightsMetrics` 表中收集和存储的指标的其他信息以及记录属性的说明，请参阅 [InsightsMetrics 概述](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)。
 
 >[!NOTE]
->目前, 对 Prometheus 的支持是公共预览版中的一项功能。
+>目前，对 Prometheus 的支持是公共预览版中的一项功能。
 >
 
 ## <a name="search-logs-to-analyze-data"></a>搜索日志以分析数据
 
 Azure Monitor 日志有助于查找趋势、诊断瓶颈、预测或关联有助于确定是否最优执行当前群集配置的数据。 提供预定义日志搜索，可直接使用，也可通过自定义来按自己想要的方式返回信息。
 
-通过在预览窗格中选择“查看 Kubernetes 事件日志”或“查看容器日志”选项，对工作区中的数据执行交互式分析   。 “日志搜索”页面在用户所处的 Azure 门户页面的右侧显示  。
+通过在预览窗格中选择“查看 Kubernetes 事件日志”或“查看容器日志”选项，对工作区中的数据执行交互式分析。 “日志搜索”页面在用户所处的 Azure 门户页面的右侧显示。
 
 ![在 Log Analytics 中分析数据](./media/container-insights-analyze/container-health-log-search-example.png)   
 
@@ -67,10 +67,11 @@ Azure Monitor 日志有助于查找趋势、诊断瓶颈、预测或关联有助
 | ContainerInventory<br> &#124; project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; render table | 列出容器的所有生命周期信息| 
 | KubeEvents_CL<br> &#124; where not(isempty(Namespace_s))<br> &#124; sort by TimeGenerated desc<br> &#124; render table | Kubernetes 事件|
 | ContainerImageInventory<br> &#124; summarize AggregatedValue = count() by Image, ImageTag, Running | 映像清单 | 
-| 选择“折线图”显示选项  ：<br> 性能<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器 CPU | 
-| 选择“折线图”显示选项  ：<br> 性能<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器内存 |
+| 选择“折线图”显示选项：<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器 CPU | 
+| 选择“折线图”显示选项：<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | 容器内存 |
+| InsightsMetrics<br> &#124;where Name = = "requests_count"<br> &#124;汇总 Val = any （Val） by TimeGenerated = bin （TimeGenerated，1m）<br> &#124;按 TimeGenerated asc 排序<br> &#124;项目 RequestsPerMinute = Val-前（Val），TimeGenerated <br> &#124;呈现 barchart  | 每分钟个请求，含自定义指标 |
 
-下面的示例是一个 Prometheus 指标查询。 收集的度量值是计数, 若要确定在特定时间段内发生了多少错误, 必须从计数中减去。 数据集按*partitionKey*分区, 这意味着, 对于每个唯一的*名称*、*主机名*和*OperationType*集, 我们在该集上运行一个子查询, 该查询通过*TimeGenerated*对日志进行排序。查找先前的*TimeGenerated*和记录时间的计数, 以确定速率。
+以下示例是 Prometheus 指标查询。 收集的指标是计数，为了确定在特定时间段内发生的错误数，我们必须从计数中减去。 数据集按 *partitionKey* 分区，这意味着对于 Name、HostName 和 OperationType 的每个唯一集合，我们都会对该集合运行子查询以按 *TimeGenerated* 对日志进行排序，使用此过程可以查找以前的 *TimeGenerated* 以及为该时间记录的计数，以确定速率。
 
 ```
 let data = InsightsMetrics 
@@ -98,7 +99,7 @@ operationData
 | extend SuccessPercentage = iif(OperationCount == 0, 1.0, 1 - (ErrorCount / OperationCount))
 ```
 
-输出将显示类似于以下内容的结果:
+输出将显示与以下内容类似的结果：
 
 ![数据引入卷的日志查询结果](./media/container-insights-log-search/log-query-example-prometheus-metrics.png)
 

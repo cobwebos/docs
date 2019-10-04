@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: trbye
 ms.author: trbye
 author: trevorbye
-ms.date: 10/01/2019
-ms.openlocfilehash: 50593741e185a146c5a376c34da959063198e7d0
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 10/03/2019
+ms.openlocfilehash: 3df95f88c057fa564078dbf05d5dfa4b26150f6a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813803"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959663"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>调试机器学习管道并对其进行故障排除
 
@@ -27,7 +27,7 @@ ms.locfileid: "71813803"
 
 管道中最常见的失败之一是附加的脚本（数据清除脚本、计分脚本等）未按预期运行，或者包含远程计算上下文中的运行时错误，这些错误很难在 Azure 门户的工作区中进行调试。 
 
-管道本身不能在本地运行，但对基础脚本进行单元测试是一种简单的方法，可以确保您的脚本以隔离方式执行所需的操作，而无需等待完整的管道运行持续时间。 执行此操作需要执行某些开发工作：
+管道本身不能在本地运行，但在本地计算机上运行隔离的脚本可以更快地进行调试，因为无需等待计算和环境生成过程。 执行此操作需要执行某些开发工作：
 
 * 如果数据位于云数据存储中，则需要下载数据并使其可供脚本使用。 使用较小的数据示例，是一种更好的方法，可减少运行时并快速获取有关脚本行为的反馈
 * 如果你正在尝试模拟中间管道步骤，你可能需要手动生成特定脚本从上一步开始的对象类型
@@ -38,6 +38,9 @@ ms.locfileid: "71813803"
 * 附加自定义调试配置
 * 暂停执行并检查对象状态
 * 捕获在运行时之前不会公开的类型或逻辑错误
+
+> [!TIP] 
+> 验证脚本是否按预期运行后，下一步是在单步管道中运行该脚本，然后再尝试在包含多个步骤的管道中运行该脚本。
 
 ## <a name="debugging-scripts-from-remote-context"></a>从远程上下文调试脚本
 

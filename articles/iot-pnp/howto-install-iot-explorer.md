@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4e23a440f46b52633a88d0212e08c7b584f61a38
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932479"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960578"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>安装和使用 Azure IoT 浏览器
 
@@ -29,7 +29,7 @@ Azure IoT 浏览器是一种图形工具，用于与 IoT 即插即用预览版�
 若要使用 Azure IoT 资源管理器工具，你需要：
 
 - Azure IoT 中心。 可以通过多种方式将 IoT 中心添加到 Azure 订阅，如[使用 Azure CLI 创建 iot 中心](../iot-hub/iot-hub-create-using-cli.md)。 需要 IoT 中心连接字符串才能运行 Azure IoT 资源管理器工具。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 注册到 IoT 中心的设备。 你可以使用以下 Azure CLI 命令来注册设备。 请确保将`{YourIoTHubName}`和`{YourDeviceID}`占位符替换为值：
+- 注册到 IoT 中心的设备。 你可以使用以下 Azure CLI 命令来注册设备。 请确保将 @no__t 0 和 @no__t 占位符替换为值：
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -65,29 +65,27 @@ IoT 即插即用设备的模型定义存储在公共存储库、公司存储库�
 
 您可以将模型定义源之一拖放到列表中的其他排名。 如果存在冲突，具有较高排名的定义源将覆盖排名更低的源。
 
-### <a name="overview-page"></a>概述页
+### <a name="view-devices"></a>查看设备
 
-#### <a name="device-overview"></a>设备概述
+该工具连接到 IoT 中心后，将显示 "**设备**列表" 页，其中列出了注册到 iot 中心的设备标识。 您可以展开列表中的任何条目以查看详细信息。
 
-该工具连接到 IoT 中心后，会显示一个概述页面，其中列出了注册到 Azure IoT 中心的所有设备标识。 选择设备以查看更多详细信息。
+在 "**设备**列表" 页上，你可以：
 
-#### <a name="device-management"></a>设备管理
-
-- 若要向中心注册新设备，请选择 "**添加**"。 输入设备 ID。 使用默认设置来自动生成身份验证密钥，并启用与中心的连接。
-- 若要删除设备标识，请选择 "**删除**"。 请在完成此操作之前查看设备详细信息，以确保删除正确的设备标识。
-- 该工具支持按和`capabilityID` `interfaceID`进行查询。 `capabilityID`添加或`interfaceID`作为参数以查询设备。
+- 选择 "**添加**" 以向中心注册新设备。 然后输入设备 ID。 使用默认设置自动生成身份验证密钥，并启用与中心的连接。
+- 选择一个设备，然后选择 "**删除**" 以删除设备标识。 请在完成此操作之前查看设备详细信息，以确保删除正确的设备标识。
+- 通过 `capabilityID` 和 `interfaceID` 进行查询。 添加 @no__t 0 或 `interfaceID` 作为参数，以便查询设备。
 
 ## <a name="interact-with-a-device"></a>与设备交互
 
-双击 "概述" 页上的设备，查看下一级别的详细信息。 有两个部分：**设备**和**数字**设备。
+在 "**设备**列表" 页上，选择 "**设备 ID** " 列中的值，查看已注册设备的详细信息页。 对于设备，有两个部分：**设备**和**数字**设备。
 
 ### <a name="device"></a>设备
 
-本部分包括**设备标识**、**遥测**和**设备**克隆选项卡。
+本部分包括**设备标识**、**设备**克隆和**遥测**选项卡。
 
-- 可以在 "**设备标识**" 选项卡上查看和更新设备标识信息。
-- 如果设备已连接并主动发送数据，则可以在 "**遥测**" 选项卡上查看遥测数据。
-- 可以在 "**设备**克隆" 选项卡上访问设备克隆信息。
+- 可以在 "**设备标识**" 选项卡上查看和更新[设备标识](../iot-hub/iot-hub-devguide-identity-registry.md)信息。
+- 可以在 "**设备**克隆" 选项卡上访问[设备](../iot-hub/iot-hub-devguide-device-twins.md)克隆信息。
+- 如果设备已连接并主动发送数据，则可以在 "**遥测**" 选项卡上查看[遥测](../iot-hub/iot-hub-devguide-messages-read-builtin.md)数据。
 
 ### <a name="digital-twin"></a>数字输出
 

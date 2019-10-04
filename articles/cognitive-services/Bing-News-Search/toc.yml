@@ -49,8 +49,8 @@
     - name: 处理搜索词突出显示
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: 对新闻进行分页
-      href: paging-news.md
+    - name: 翻页浏览搜索结果
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: 调整和裁剪缩略图
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

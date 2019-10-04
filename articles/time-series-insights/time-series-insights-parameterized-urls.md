@@ -9,18 +9,18 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 08/08/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce8c74e5c194dbd971ecb65659c4fc8a7150146d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: cad57e3e7e52ec291819110bab9d8d79f51e5a2f
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882919"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958153"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
-若要在时序见解资源管理器中共享自定义视图, 可以通过编程方式创建自定义视图的参数化 URL。
+若要在时序见解资源管理器中共享自定义视图，可以通过编程方式创建自定义视图的参数化 URL。
 
 时序见解资源管理器支持使用 URL 查询参数，在 URL 中直接指定体验中的视图。 例如，只使用 URL 就可以指定目标环境、搜索谓词以及所需的时间跨度。 当用户选择自定义的 URL 时，界面会提供一个链接，直接指向时序见解门户中的相应资产。 数据访问策略适用。
 
@@ -70,7 +70,7 @@ ms.locfileid: "68882919"
 
 | 参数 | URL 项 | 描述 |
 | --- | --- | --- |
-| **名称** | `\<string>` | 术语的名称。 |
+| **name** | `\<string>` | 术语的名称。 |
 | **splitBy** | `\<string>` | 要按其进行拆分的列名。 |
 | **measureName** | `\<string>` | 度量值的列名。 |
 | **predicate** | `\<string>` | 用于服务器端筛选的where 子句。 |

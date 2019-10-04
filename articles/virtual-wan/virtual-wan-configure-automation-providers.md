@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: 72493f084b89d41c1e0d6ff60c35afa3491b0eda
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 430d90b2b372602072527c49796244c503778a3b
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703462"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959009"
 ---
 # <a name="virtual-wan-partners"></a>虚拟 WAN 合作伙伴
 
@@ -23,7 +23,7 @@ ms.locfileid: "71703462"
 ## <a name ="before"></a>开始自动化操作之前
 
 * 验证设备是否支持 IPsec IKEv1/IKEv2。 请参阅[默认策略](#default)。
-* 请查看 [REST API](https://docs.microsoft.com/rest/api/azure/)，此类 API 可以用来自动连接到 Azure 虚拟 WAN。
+* 查看用于自动连接到 Azure 虚拟 WAN 的[REST api](#additional) 。
 * 测试 Azure 虚拟 WAN 的门户体验。
 * 然后，确定连接步骤中的哪部分需要自动化。 建议至少自动化以下部分：
 
@@ -31,7 +31,16 @@ ms.locfileid: "71703462"
   * 将分支设备信息上传到 Azure 虚拟 WAN
   * 下载 Azure 配置，并设置从分支设备到 Azure 虚拟 WAN 的连接
 
-* 了解客户在结合 Azure 虚拟 WAN 进行操作时的预期体验。
+### <a name ="additional"></a>附加信息
+
+* [REST API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs)以自动创建虚拟中心
+* [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways)为虚拟广域网自动执行 Azure VPN 网关
+* [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections)将 VPNSite 连接到 Azure VPN 集线器
+* [默认 IPsec 策略](#default)
+
+## <a name ="ae"></a>客户体验
+
+了解客户在结合 Azure 虚拟 WAN 进行操作时的预期体验。
 
   1. 通常情况下，虚拟 WAN 用户一开始会创建虚拟 WAN 资源。
   2. 该用户会为本地系统（分支控制器或 VPN 设备预配软件）设置基于服务主体的资源组访问权限，以便将分支信息写入到 Azure 虚拟 WAN 中。
@@ -41,8 +50,7 @@ ms.locfileid: "71703462"
   6. 解决方案中的此步骤结束时，用户就可以在分支设备和虚拟中心之间进行无缝的站点到站点连接。 也可设置跨其他中心的其他连接。 每个连接都是主动-主动隧道。 客户可以选择针对隧道的每个链路使用不同的 ISP。
   7. 请考虑在 CPE 管理界面中提供故障排除和监视功能。 典型方案包括 "客户无法访问 Azure 资源，因为出现了 CPE 问题"、"在 CPE 端显示 IPsec 参数" 等。
 
-## <a name ="understand"></a>了解自动化详细信息
-
+## <a name ="understand"></a>自动化详细信息
 
 ###  <a name="access"></a>访问控制
 
@@ -55,26 +63,25 @@ ms.locfileid: "71703462"
 
 ###  <a name="branch"></a>上传分支设备信息
 
-设计用户体验以将分支（本地站点）信息上传到 Azure。 VPNSite 的 [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) 可用于在虚拟 WAN 中创建站点信息。 可提供所有分支 SDWAN/VPN 设备，或根据需要选择设备自定义。
-
+你应设计用户体验，将分支（本地站点）信息上载到 Azure。 可以使用 VPNSite 的[REST api](https://docs.microsoft.com/rest/api/virtualwan/vpnsites)在虚拟 WAN 中创建站点信息。 可提供所有分支 SDWAN/VPN 设备，或根据需要选择设备自定义。
 
 ### <a name="device"></a>设备配置下载和连接
 
-此步骤包括下载 Azure 配置，并设置从分支设备到 Azure 虚拟 WAN 的连接。 在此步骤中，未使用提供程序的客户将手动下载 Azure 配置并将其应用于本地 SDWAN/VPN 设备。 作为提供商，你应自动执行此步骤。 设备控制器可调用“GetVpnConfiguration”REST API 来下载 Azure 配置，该配置通常类似于以下文件。
+此步骤包括下载 Azure 配置，并设置从分支设备到 Azure 虚拟 WAN 的连接。 在此步骤中，未使用提供程序的客户将手动下载 Azure 配置并将其应用于本地 SDWAN/VPN 设备。 作为提供商，你应自动执行此步骤。 有关其他信息，请查看下载[REST api](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) 。 设备控制器可以调用 "GetVpnConfiguration" REST API 下载 Azure 配置。
 
 **配置说明**
 
   * 如果 Azure VNet 附加到虚拟中心，它们将显示为 ConnectedSubnets。
   * VPN 连接使用基于路由的配置，同时支持 IKEv1 和 IKEv2 协议。
 
-#### <a name="understanding-the-device-configuration-file"></a>了解设备配置文件
+## <a name="devicefile"></a>设备配置文件
 
 设备配置文件包含配置本地 VPN 设备时要使用的设置。 查看此文件时，请留意以下信息：
 
 * **vpnSiteConfiguration** - 此部分表示当站点连接到虚拟 WAN 时设置的设备详细信息。 它包含分支设备的名称和公共 IP 地址。
 * **vpnSiteConnections** - 此部分提供以下信息：
 
-    * 虚拟中心 VNet 的地址空间。<br>例如：
+    * 虚拟中心 VNet 的地址空间。<br>示例：
  
         ```
         "AddressSpace":"10.1.0.0/24"
@@ -84,7 +91,7 @@ ms.locfileid: "71703462"
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * 虚拟中心 vpngateway 的 IP 地址。 由于 vpngateway 的每个连接由采用主动-主动配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，可以看到为每个站点指定了“Instance0”和“Instance1”。<br>例如：
+    * 虚拟中心 vpngateway 的 IP 地址。 由于 vpngateway 的每个连接由采用主动-主动配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，可以看到为每个站点指定了“Instance0”和“Instance1”。<br>示例：
 
         ``` 
         "Instance0":"104.45.18.186"
@@ -92,7 +99,7 @@ ms.locfileid: "71703462"
         ```
     * Vpngateway 连接配置详细信息，例如 BGP、预共享密钥等。PSK 是自动生成的预共享密钥。 始终可以在“概述”页中为自定义 PSK 编辑连接。
   
-#### <a name="example-device-configuration-file"></a>示例设备配置文件
+**设备配置文件示例**
 
   ```
   { 
@@ -197,11 +204,7 @@ ms.locfileid: "71703462"
    }
   ```
 
-## <a name="default"></a>IPsec 连接的默认策略
-
-[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
-
-### <a name="does-everything-need-to-match-between-the-virtual-hub-vpngateway-policy-and-my-on-premises-sdwanvpn-device-or-sd-wan-configuration"></a>虚拟中心 vpngateway 策略与本地 SDWAN/VPN 设备或 SD-WAN 配置之间是否都需要匹配？
+## <a name="default"></a>连接详细信息
 
 本地 SDWAN/VPN 设备或 SD-WAN 配置必须匹配或包含在 Azure IPsec/IKE 策略中指定的以下算法和参数。
 
@@ -211,6 +214,12 @@ ms.locfileid: "71703462"
 * IPsec 加密算法
 * IPsec 完整性算法
 * PFS 组
+
+### <a name="default"></a>IPsec 连接的默认策略 
+
+使用默认策略时，Azure 可以在安装 IPsec 隧道期间充当发起方和响应方。 不支持仅将 Azure 作为响应方。
+
+[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

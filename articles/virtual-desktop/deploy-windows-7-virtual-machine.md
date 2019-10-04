@@ -5,16 +5,16 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: e7f565a995e4c2a5338f08437b0dd336846ba154
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a6fb67ce531ed8cc028d2d0a8dfc3022544efe0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679914"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947570"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>在 Windows 虚拟机上部署 Windows 7 虚拟机
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>在 Windows 虚拟桌面上部署 Windows 7 虚拟机
 
 在 Windows 虚拟机上部署 Windows 7 虚拟机（VM）的过程与运行更高版本 Windows 的 Vm 略有不同。 本指南将介绍如何部署 Windows 7。
 
@@ -43,9 +43,15 @@ ms.locfileid: "71679914"
      shutdown /r /t 0
      ```
     
+11. 按照[此处](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo)的说明获取注册令牌。
+12. [下载适用于 windows 7 的 Windows 虚拟桌面代理](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
+13. [下载适用于 windows 7 的 Windows 虚拟桌面代理程序管理器](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
+14. 打开 Windows 虚拟桌面代理安装程序，然后按照说明进行操作。 出现提示时，请提供在步骤11中创建的注册密钥。
+15. 打开 Windows 虚拟桌面安装程序，然后按照说明进行操作。
+16. 或者，阻止 TCP/3389 端口删除对 VM 的直接远程桌面协议访问权限。
+
 ## <a name="next-steps"></a>后续步骤
 
-你的 Windows 7 VM 现在已准备好在 Windows 虚拟桌面上进行部署。 按照[为 Windows 虚拟桌面代理安装准备虚拟机](create-host-pools-powershell.md#prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations)中的说明完成部署。
+你的 Windows 虚拟桌面部署现已准备就绪，可供使用。 [下载最新版本的 Windows 虚拟桌面客户端](https://aka.ms/wvd/clients/windows)以开始工作。
 
 有关 windows 虚拟桌面上 Windows 7 的已知问题和疑难解答说明的列表，请参阅故障排除一文，了解 windows[虚拟机中的 windows 7 虚拟机疑难解答](troubleshoot-windows-7-vm.md)。
-

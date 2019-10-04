@@ -1,19 +1,19 @@
 ---
 title: Azure 数字孪生中的出口和终结点 | Microsoft Docs
 description: 有关如何使用 Azure 数字孪生创建终结点的指南。
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: alinast
-ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.date: 10/02/2019
+ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013940"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959115"
 ---
 # <a name="egress-and-endpoints"></a>出口和终结点
 
@@ -23,7 +23,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 
 若要详细了解事件、路由和事件类型，请参阅[在 Azure 数字孪生中路由事件和消息](./concepts-events-routing.md)。
 
-## <a name="events"></a>事件
+## <a name="events"></a>Events
 
 事件由 IoT 对象（例如设备和传感器）发送，由 Azure 消息和事件代理进行处理。 事件是通过以下 [Azure 事件网格事件架构参考](../event-grid/event-schema.md)定义的。
 
@@ -49,7 +49,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 
 | 特性 | 类型 | 描述 |
 | --- | --- | --- |
-| id | string | 事件的唯一标识符。 |
+| ID | string | 事件的唯一标识符。 |
 | subject | string | 事件主题的发布者定义路径。 |
 | data | object | 特定于资源提供程序的事件数据。 |
 | eventType | string | 此事件源的一个注册事件类型。 |
@@ -85,7 +85,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 - ExtendedPropertyKey
 - ExtendedType
 - KeyStore
-- 报告
+- 报表
 - RoleDefinition
 - 传感器
 - SensorBlobMetadata
@@ -96,7 +96,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 - SpaceResource
 - SpaceRoleAssignment
 - 系统
-- 用户
+- “用户”
 - UserBlobMetadata
 - UserExtendedProperty
 
@@ -246,7 +246,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 >[!IMPORTANT]
 > 请特别注意 **eventTypes** 属性。 它定义终结点处理哪些事件类型并确定其路由。
 
-经过身份验证的 HTTP POST 请求:
+经过身份验证的 HTTP POST 请求：
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/endpoints

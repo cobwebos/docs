@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 306382a7dede44a0f1db53373e14e81cb54098ca
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: a5d89c0784c2125f5a7810ff134686645e8314a6
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914736"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960211"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
 
@@ -149,14 +149,14 @@ ms.locfileid: "70914736"
 | ----- | ----- | ----- | ----- |
 | 可路由的 | 联合 | 从 1703 版本开始 | 正式发布 |
 | 非可路由的 | 联合 | 从 1803 版本开始 | 正式发布 |
-| 可路由的 | 已管理 | 从 1803 版本开始 | Azure AD 不支持 Windows 锁屏上的 SSPR |
-| 非可路由的 | 已管理 | 不支持 | |
+| 可路由的 | 托管 | 从 1803 版本开始 | Azure AD 不支持 Windows 锁屏上的 SSPR |
+| 非可路由的 | 托管 | 不支持 | |
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [为联合环境](hybrid-azuread-join-federated-domains.md)
-> 配置混合 Azure Active Directory 联接为[托管环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)
+> [为联合环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-federated-domains.md)
+> [为托管环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

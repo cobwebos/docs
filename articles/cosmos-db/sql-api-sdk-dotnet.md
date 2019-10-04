@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 8017f02e694f5c9e2cd677c7b1f28c5de973d077
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f8c38c46bd60834c166721f62088d8edb2c722a9
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932570"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949580"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>适用于 SQL API 的 Azure Cosmos DB .NET SDK：下载和发行说明
 > [!div class="op_single_selector"]
@@ -43,9 +43,17 @@ ms.locfileid: "70932570"
 ## <a name="release-notes"></a>发行说明
 
 > [!NOTE]
-> 如果你正在使用 .NET Framework, 请参阅面向 .NET Standard 的[.NET SDK](sql-api-sdk-dotnet-standard.md)的最新版本1.x。 
+> 如果你正在使用 .NET Framework，请参阅面向 .NET Standard 的[.NET SDK](sql-api-sdk-dotnet-standard.md)的最新版本1.x。 
 
-### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
+### <a name="a-name270270"></a><a name="2.7.0"/>2.7。0
+
+* 添加了按查询排序的对数组和对象的支持
+* 处理有效的分区键冲突
+* 为多个 OrderBy 运算符添加了 LINQ 支持和 ThenBy 运算符
+* 自定义序列化设置现已应用于所有 upsert 和 replace 操作
+* 修复了 AysncCache 死锁问题，以便它可用于单线程任务计划程序
+
+### <a name="a-name260260"></a><a name="2.6.0"/>2.6。0
 
 * 已将 PortReusePolicy 添加到 ConnectionPolicy
 * Fixed ntdll.dll！在 UWP 应用中使用 SDK 时出现 RtlGetVersion TypeLoadException 问题
@@ -53,7 +61,7 @@ ms.locfileid: "70932570"
 ### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
 
 * SDK 的系统 .Net 版本现在与 NuGet 包中定义的版本匹配。
-* 如果原始的请求失败, 则允许写入请求回退到另一个区域。
+* 如果原始的请求失败，则允许写入请求回退到另一个区域。
 * 为写入请求添加会话重试策略。
 
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
@@ -317,7 +325,7 @@ ms.locfileid: "70932570"
 * 扩展了 LINQ 支持，包括用于分页、条件表达式和范围比较的新运算符。
   * Take 运算符在 LINQ 中启用 SELECT TOP 行为
   * CompareTo 运算符使能够进行字符串范围比较
-  * 条件 （？） 和将合并运算符 （？？）
+  * Conditional (?) 和 coalesce 运算符 (??)
 * **[已修复]** 合并模型投影与 LINQ 查询中的 Where-In 时引发 ArgumentOutOfRangeException。 [#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1
@@ -348,7 +356,7 @@ ms.locfileid: "70932570"
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 * 现已开始支持修改索引策略。
   * DocumentClient 中的新 ReplaceDocumentCollectionAsync 方法
-  * ResourceResponse\<T > 中的新 IndexTransformationProgress 属性, 用于跟踪索引策略更改的进度百分比
+  * ResourceResponse @ no__t-0T > 中的新 IndexTransformationProgress 属性，用于跟踪索引策略更改的进度百分比
   * DocumentCollection.IndexingPolicy 现在是可变的
 * 现已开始支持空间索引和查询。
   * 用于序列化/反序列化空间类型（如点和多边形）的新 Microsoft.Azure.Documents.Spatial 命名空间
@@ -390,10 +398,11 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.7.0](#2.7.0) |2019年9月23日 |--- |
 | [2.6.0](#2.6.0) |2019年8月30日 |--- |
 | [2.5.1](#2.5.1) |2019年7月 |--- |
 | [2.4.1](#2.4.1) |2019年6月20日 |--- |
-| [2.4.0](#2.4.0) |5月5日, 2019 |--- |
+| [2.4.0](#2.4.0) |5月5日，2019 |--- |
 | [2.3.0](#2.3.0) |2019年4月 |--- |
 | [2.2.3](#2.2.3) |2019年2月11日 |--- |
 | [2.2.2](#2.2.2) |2019 年 2 月 6 日 |--- |

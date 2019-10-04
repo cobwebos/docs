@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: pabutler
-ms.openlocfilehash: 3010b63c7c4c575d915789c19b60710194c79196
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 54369e0f2c943c146d186605833198253b960022
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874673"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949526"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -45,11 +45,11 @@ IoT Edge 模块仅发布到 Azure 市场，AppSource 不适用。  有关店面�
  
 **计费选项**
 
-市场当前支持 IoT Edge 模块的“免费”  和“自带许可证 (BYOL)”  计费选项。
+市场当前支持 IoT Edge 模块的“免费”和“自带许可证 (BYOL)”计费选项。
  
 **发布选项**
 
-在所有情况下，IoT Edge 模块应选择“Transact”  发布选项。  有关发布选项的详细信息，请参阅[选择发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
+在所有情况下，IoT Edge 模块应选择“Transact”发布选项。  有关发布选项的详细信息，请参阅[选择发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
 
 ## <a name="eligibility-criteria"></a>资格条件
 
@@ -82,9 +82,7 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 如果尚未执行此操作，
 
-- 请[在 Microsoft 合作伙伴网络中注册](https://partner.microsoft.com/membership)。
-- 创建 [Microsoft 帐户](https://account.microsoft.com/account/)（Azure 市场交易套餐的必需步骤；其他的建议步骤）。
-- 提交[市场注册表](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)。 有关详细信息, 请参阅如何[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+- 请在市场中[注册](https://azuremarketplace.microsoft.com/sell)。
 
 如果已注册并正在创建新套餐或正在使用现有套餐，
 

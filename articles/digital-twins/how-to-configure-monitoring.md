@@ -1,20 +1,20 @@
 ---
-title: 如何在 Azure 数字孪生中配置监视 | Microsoft Docs
+title: 如何配置监视-Azure 数字孪生 |Microsoft Docs
 description: 如何在 Azure 数字孪生中配置监视。
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 3fb00977a2e1dba5cf9627b8081aee2f76bc8bd4
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: d7d81636bfb60c2d5fa059da01ac535e09b829f4
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845459"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949997"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>如何在 Azure 数字孪生中配置监视
 
@@ -40,17 +40,17 @@ Azure 数字孪生的活动日志记录默认启用，可以通过以下方式�
 1. 选择 Azure 数字孪生实例。
 1. 选择“活动日志”以调出显示面板：
 
-    [![活动日志](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
+    [![Activity 日志](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
 
 对于高级活动日志记录：
 
 1. 选择“日志”选项以显示“Activity Log Analytics 概述”：
 
-    [![选择](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
+    [![Selection](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
 
 1. “Activity Log Analytics 概述”汇总了基本的活动日志数据：
 
-    [![活动 log analytics 概述]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
+    [@no__t 1Activity log analytics 概述]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
 
 >[!TIP]
 >使用活动日志可以快速了解订阅级事件。
@@ -70,12 +70,12 @@ Azure 数字孪生的活动日志记录默认启用，可以通过以下方式�
 1. 在 Azure 门户中打开资源。
 1. 选择 "**诊断设置**"：
 
-    [![诊断设置一](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
+    [@no__t 1Diagnostic 设置一](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
 1. 选择 **"启用诊断"** 以收集数据（如果以前未启用）。
 1. 填写请求的字段并选择保存数据的方式和位置：
 
-    [![诊断设置二](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
+    [@no__t 1Diagnostic 设置2](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
     诊断日志通常使用[Azure 文件存储](../storage/files/storage-files-deployment-guide.md)来保存，并与[Azure Monitor 日志](../azure-monitor/log-query/get-started-portal.md)共享。 可以同时选择这两个选项。
 
@@ -99,15 +99,15 @@ Azure Monitor 包含功能强大的 log analytics 服务，该服务允许在一
 1. 在 Azure 门户中搜索“Log Analytics”。
 1. 你将看到可用的**Log Analytics 工作区**实例。 选择一个实例，然后选择“日志”进行查询：
 
-    [![Log analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
+    [@no__t 1Log 分析](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
 1. 如果还没有**Log Analytics 的工作区**实例，则可以通过选择 "**添加**" 按钮来创建工作区：
 
-    [![创建 OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
+    [@no__t 1Create OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
 预配**Log Analytics 工作区**实例后，可以使用功能强大的查询，通过**日志管理**使用特定条件查找更多日志或搜索中的条目：
 
-   [![日志管理](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
+   [@no__t 1Log 管理](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
 有关功能强大的查询操作的详细信息，请参阅[开始使用查询](../azure-monitor/log-query/get-started-queries.md)。
 
@@ -116,7 +116,7 @@ Azure Monitor 包含功能强大的 log analytics 服务，该服务允许在一
 
 Azure Monitor 日志还提供了强大的错误和警报通知服务，可通过选择 "**诊断和解决问题**" 进行查看：
 
-   [![警报和错误通知](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
+   [@no__t 1Alert 和错误通知](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
 >使用**Log Analytics 工作区**来查询多个应用功能、订阅或服务的日志历史记录。

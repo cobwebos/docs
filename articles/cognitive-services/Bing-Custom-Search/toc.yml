@@ -60,8 +60,9 @@
     - name: 处理搜索词突出显示
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: 对网页进行分页
-      href: page-webpages.md
+    - name: 翻页浏览搜索结果
+      href: ../Bing-Web-Search/paging-search-results.md
+      maintainContext: true
 - name: 引用
   items:
     - name: 必应自定义自动建议 API 参考

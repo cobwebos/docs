@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7adf43110cffdc669b39632521c69ed5d3723257
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: ca0ac228bfe10992b658796d123c8dfbed74947f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845697"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948168"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>具有有序聚集列存储索引的性能优化  
 
@@ -44,6 +44,43 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 > [!NOTE] 
 > 在有序的 CCI 表中，不会自动对由 DML 或数据加载操作生成的新数据进行排序。  用户可以重新生成按序的 CCI 来对表中的所有数据进行排序。  
+
+## <a name="query-performance"></a>查询性能
+
+查询对按序的 CCI 的性能提高程度取决于查询模式、数据大小、数据的排序方式、段的物理结构以及为查询执行选择的 DWU 和资源类。  在设计有序的 CCI 表时，用户应查看所有这些因素，然后选择对列进行排序。
+
+具有所有这些模式的查询通常会更快地运行顺序的 CCI。  
+1. 查询具有相等、不相等或范围谓词
+1. 谓词列和有序的 CCI 列相同。  
+1. 谓词列的使用顺序与有序的 CCI 列的列序号相同。  
+ 
+在此示例中，表 T1 按 Col_C、Col_B 和 Col_A 序列排序了聚集列存储索引。
+
+```sql
+
+CREATE CLUSTERED COLUMNSTORE INDEX MyOrderedCCI ON  T1
+ORDER (Col_C, Col_B, Col_A)
+
+```
+
+查询1的性能比其他3个查询更多地受益于按序的 CCI。 
+
+```sql
+-- Query #1: 
+
+SELECT * FROM T1 WHERE Col_C = 'c' AND Col_B = 'b' AND Col_A = 'a';
+
+-- Query #2
+
+SELECT * FROM T1 WHERE Col_B = 'b' AND Col_C = 'c' AND Col_A = 'a';
+
+-- Query #3
+SELECT * FROM T1 WHERE Col_B = 'b' AND Col_A = 'a';
+
+-- Query #4
+SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
+
+```
 
 ## <a name="data-loading-performance"></a>数据加载性能
 
@@ -93,7 +130,7 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-**B.若要更改列序号，请在订单列表中添加或删除列，或更改为按序的 CCI：**
+**B.若要更改列序号，请在订单列表中添加或删除列，或更改为有序的 CCI：**
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
 ORDER (ProductKey, SalesAmount)

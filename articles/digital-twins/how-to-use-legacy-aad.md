@@ -1,23 +1,23 @@
 ---
 title: 使用 Azure 数字孪生的旧 AAD 应用注册 |Microsoft Docs
-description: 本文介绍如何使用旧版方法, 通过 Azure 数字孪生设置为 Azure Active Directory 创建应用注册。
+description: 本文介绍如何使用旧版方法，通过 Azure 数字孪生设置为 Azure Active Directory 创建应用注册。
+ms.author: alinast
 author: alinamstanciu
-manager: philmea
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.author: alinast
-ms.openlocfilehash: e9689c71c881c7f5f29ac05fea53bb2c27f75591
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 204b048dad348e37d44399025c5cd7a9526dbd2d
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624763"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949930"
 ---
 # <a name="register-your-azure-digital-twins-app-with-azure-active-directory-legacy"></a>向 Azure Active Directory 旧版注册 Azure 数字孪生应用
 
-本文介绍如何使用 "不推荐使用的**应用注册 (旧)** " 边栏选项卡注册示例应用程序。
+本文介绍如何使用 "不推荐使用的**应用注册（旧）** " 边栏选项卡注册示例应用程序。
 
 > [!IMPORTANT]
 > * 新的“Azure Active Directory” > “应用注册”边栏选项卡取代了旧的“Azure Active Directory” > “应用注册(旧版)”边栏选项卡 2019 年 5 月版。
