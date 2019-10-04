@@ -1,135 +1,133 @@
 ---
-title: 什么是 Azure Active Directory B2C？ | Microsoft Docs
-description: 了解如何使用 Azure Active Directory B2C 在应用程序中创建和管理标识体验，例如注册/登录和个人资料管理。
+title: 什么是 Azure Active Directory B2C？
+description: 了解如何使用 Azure Active Directory B2C 来支持应用程序中的外部标识，包括使用 Facebook、Google 和其他标识提供者的社交登录。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 09/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca636079439f811a887d16b627473e7d73930799
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 007b23f07afec6163c2158feb3f17ba71e44bdb5
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065705"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120702"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>什么是 Azure Active Directory B2C？
 
-Azure Active Directory B2C (Azure AD B2C) 是一种企业对消费者标识管理服务。 使用此服务可以自定义和控制用户如何安全地与 Web、桌面、移动或单页应用程序交互。 用户可以使用 Azure AD B2C 注册、登录、重置密码和编辑个人资料。 Azure AD B2C 实现某种形式的 OpenID Connect 和 OAuth 2.0 协议。 这些协议的实现中的重要密钥是安全令牌及其声明，用于提供对资源的安全访问。
+Azure Active Directory B2C 以服务的形式提供企业到客户的标识。 客户使用其首选的社交、企业或本地帐户标识对应用程序和 API 进行单一登录访问。
 
-用户旅程是用于指定策略的请求，该策略控制用户和应用程序在与 Azure AD B2C 交互时的行为。  可通过两种途径在 Azure AD B2C 中定义用户旅程。
+![Azure AD B2C 标识提供者和下游应用程序的信息图](media/active-directory-b2c-overview/azureadb2c-overview.png)
 
-如果你是具备或不具备标识专业知识的应用程序开发人员，可以选择使用 Azure 门户定义通用的标识用户流。 如果你是标识专家、系统集成商、顾问或者内部标识团队的成员，能够熟练使用 OpenID Connect 流，并且了解标识提供者和基于声明的身份验证，则可以选择基于 XML 的自定义策略。
+Azure Active Directory B2C (Azure AD B2C) 是一个客户标识访问管理 (CIAM) 解决方案，每天能够支持数百万用户和数十亿次身份验证。 它负责处理身份验证平台的规模和安全性，并监视和自动应对拒绝服务、密码喷洒或暴力攻击等威胁。
 
-在开始定义用户旅程之前，需要创建一个 Azure AD B2C 租户，并在该租户中注册你的应用程序和 API。 完成这些任务后，可以开始使用用户流或自定义策略定义用户旅程。 还可以选择性地添加或更改标识提供者，或者自定义用户对旅程的体验方式。
+## <a name="custom-branded-identity-solution"></a>自定义品牌的标识解决方案
 
-## <a name="protocols-and-tokens"></a>协议和令牌
+Azure AD B2C 是一种贴牌式身份验证解决方案。 你可以使用自己的品牌自定义整个用户体验，使其能够与 Web 和移动应用程序无缝融合。
 
-Azure AD B2C 支持对用户旅程使用 [OpenID Connect 和 OAuth 2.0 协议](active-directory-b2c-reference-protocols.md)。 在 OpenID Connect 的 Azure AD B2C 实现中，应用程序通过向 Azure AD B2C 发出身份验证请求，来启动此用户旅程。
+可以自定义当用户注册、登录和修改其个人资料信息时 Azure AD B2C 显示的每一页。 可以自定义用户旅程中的 HTML、CSS 和 JavaScript，使 Azure AD B2C 体验的外观类似于应用程序的原生组成部分。
 
-向 Azure AD B2C 发出请求后会获得一个安全令牌，例如 [ID 令牌或访问令牌](active-directory-b2c-reference-tokens.md)。 此安全令牌定义用户的标识。 令牌是从 Azure AD B2C 终结点（例如 `/token` 或 `/authorize` 终结点）接收的。 通过这些令牌，可以访问用于验证标识以及允许访问安全资源的声明。
+![自定义注册和登录页以及背景图像](media/active-directory-b2c-overview/sign-in-small.png)
 
-## <a name="tenants-and-applications"></a>租户和应用程序
+## <a name="single-sign-on-access-with-a-user-provided-identity"></a>使用用户提供的标识进行单一登录访问
 
-在 Azure AD B2C 中，租户表示组织，它是用户的目录。  每个 Azure AD B2C 租户都是独特的，独立于其他 Azure AD B2C 租户。 你可能已有一个 Azure Active Directory 租户，Azure AD B2C 租户是不同的租户。 租户包含已注册使用你的应用程序的用户的信息。 例如，密码、个人资料数据和权限。 有关详细信息，请参阅[教程：创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)中的步骤创建一个。
+Azure AD B2C 使用基于标准的身份验证协议，包括 OpenID Connect、OAuth 2.0 和 SAML。 它与大多数新式应用程序和商用现货软件相集成。
 
-在将应用程序配置为使用 Azure AD B2C 之前，首先需要使用 Azure 门户将它注册到租户中。 注册过程将收集一些值并将其分配给应用程序。 这些值包含用于唯一标识应用程序的应用程序 ID，以及用于将响应定向回到该应用程序的重定向 URI。
+![第三方标识与 Azure AD B2C 联合的示意图](media/active-directory-b2c-overview/scenario-singlesignon.png)
 
-每个应用程序的交互遵循类似的高级模式：
+Azure AD B2C 充当 Web 应用程序、移动应用和 API 的中心身份验证机构，使你能够为所有这些应用构建单一登录 (SSO) 解决方案。 集中收集用户个人资料和偏好信息，并捕获有关登录行为和注册转换的详细分析。
 
-1. 应用程序指示用户运行某个策略。
-2. 用户根据策略定义完成策略。
-3. 应用程序接收令牌。
-4. 应用程序使用该令牌尝试访问资源。
-5. 资源服务器验证令牌，确认是否可以授予访问权限。
-6. 应用程序定期刷新令牌。
+## <a name="integrate-with-external-user-stores"></a>与外部用户存储集成
 
-若要注册 Web 应用程序，请完成[教程：注册应用程序以便能够使用 Azure AD B2C 注册和登录](tutorial-register-applications.md)中的步骤。 还可以[将 Web API 应用程序添加到 Azure Active Directory B2C 租户](add-web-application.md)，或者[将本机客户端应用程序添加到 Azure Active Directory B2C 租户](add-native-application.md)。
+Azure AD B2C 提供一个目录，其中可以保存每个用户的 100 个自定义属性。 但是，你也可以与外部系统相集成。 例如，使用 Azure AD B2C 进行身份验证，但将权限委托给用作客户数据真实来源的外部客户关系管理 (CRM) 或客户忠诚度数据库。
 
-## <a name="user-journeys"></a>用户旅程
+另一种外部用户存储方案是让 Azure AD B2C 处理应用程序的身份验证，但与存储用户个人资料或个人数据的外部系统相集成。 例如，满足区域或本地数据存储策略规定的数据驻留要求。
 
-用户旅程中的策略可以定义为[用户流](active-directory-b2c-reference-policies.md)或[自定义策略](active-directory-b2c-overview-custom.md)。 Azure 门户中提供了最常见标识任务（例如注册、登录和配置文件编辑）的预定义用户流。
+![与外部用户存储通信的 Azure AD B2C 的逻辑关系图](media/active-directory-b2c-overview/scenario-remoteprofile.png)
 
-用户旅程允许通过配置以下设置来控制行为：
+Azure AD B2C 有助于在注册或编辑个人资料过程中从用户收集信息，然后将该数据转交到外部系统。 在将来的身份验证过程中，Azure AD B2C 可以从外部系统检索数据，并根据需要将此数据包含为发送到应用程序的身份验证令牌响应的一部分。
 
-- 用户用来注册应用程序的社交帐户
-- 从用户收集的数据，例如名字或邮政编码
-- 多重身份验证
-- 页面的外观
-- 返回给应用程序的信息
+## <a name="progressive-profiling"></a>渐进式分析
 
-自定义策略是在 Azure AD B2C 租户中定义[标识体验框架](trustframeworkpolicy.md)行为的配置文件。 标识体验框架是建立多方信任和完成用户旅程中的步骤的底层平台。
+另一个用户旅程选项包括渐进式分析。 渐进式分析可让客户通过收集极少量的信息来快速完成第一个事务。 今后在客户登录时，将以渐进方式从客户收集更多的个人资料数据。
 
-可以更改自定义策略以完成大量任务。 自定义策略是一个或多个采用 XML 格式的文件，这些文件在分层链中相互引用。 自定义策略可以使用[初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)来实现常见的标识任务。
+![渐进式分析的直观描绘](media/active-directory-b2c-overview/scenario-progressive.png)
 
-可根据需要在 Azure AD B2C 租户中使用不同类型的自定义策略或用户流，并可在不同的应用程序之间重复使用这些策略或用户流。 由于这种灵活性，只需对代码做出极少量的更改或根本不需要更改，即可定义和修改用户标识体验。 可以通过在 HTTP 身份验证请求中添加特殊的查询参数来使用策略。 若要创建自己的自定义策略，请参阅 [Azure Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)。
+## <a name="third-party-identity-verification-and-proofing"></a>第三方标识验证和证明
 
-## <a name="identity-providers"></a>标识提供者
+使用 Azure AD B2C 可以收集用户数据，然后将其传递给第三方系统来执行验证、信任评分和审批用户帐户创建操作，以此帮助完成标识验证和证明。
 
-在应用程序中，不妨允许用户使用不同的标识提供程序登录。 标识提供程序  创建、维护和管理标识信息，同时向应用程序提供身份验证服务。 可以使用 Azure 门户添加 Azure AD B2C 支持的标识提供程序。
+![显示第三方标识证明用户流的示意图](media/active-directory-b2c-overview/scenario-idproofing.png)
 
-通常在应用程序中只使用一个标识提供者，但可以视需要添加更多标识提供者。 若要在 Azure AD B2C 租户中配置标识提供者，请先在标识提供者开发人员站点上创建一个应用程序，然后记录所创建的标识提供者应用程序中的应用程序标识符或客户端标识符，以及密码或客户端机密。 然后，使用此标识符和密码来配置应用程序。
+这仅仅是用作企业到客户标识平台的 Azure AD B2C 的一部分功能。 本概述文章的以下部分将演练一个使用 Azure AD B2C 的演示应用程序。 另外，也欢迎你直接查看更深入的文章 [Azure AD B2C 技术概述](technical-overview.md)。
 
-以下文章介绍了将某些常见标识提供者添加到用户流的步骤：
+## <a name="example-woodgrove-groceries"></a>示例：WoodGrove Groceries
 
-- [Amazon](active-directory-b2c-setup-amzn-app.md)
-- [Facebook](active-directory-b2c-setup-fb-app.md)
-- [Microsoft 帐户](active-directory-b2c-setup-msa-app.md)
+[WoodGrove Groceries][woodgrove] 是 Microsoft 创建的用于演示多个 Azure AD B2C 功能的实时 Web 应用程序。 后面的几个部分将会介绍 Azure AD B2C 在 WoodGrove 网站中提供的某些身份验证选项。
 
-以下文章介绍了将某些常见标识提供者添加到自定义策略的步骤：
-- [Amazon](setup-amazon-custom.md)
-- [Google](active-directory-b2c-custom-setup-goog-idp.md)
-- [Microsoft 帐户](active-directory-b2c-custom-setup-msa-idp.md)
+### <a name="business-overview"></a>企业概述
 
-有关详细信息，请参阅[教程：将标识提供者添加到 Azure Active Directory B2C 中的应用程序](tutorial-add-identity-providers.md)。
+WoodGrove 是一家在线杂货商店，向个人消费者和企业客户销售杂货。 其企业客户代表他们的公司或者他们管理的企业购买杂货。
 
+### <a name="sign-in-options"></a>登录选项
 
-## <a name="page-customization"></a>页面自定义
+WoodGrove Groceries 根据其客户与自身商店之间的关系提供多个登录选项：
 
-可以控制呈现给用户旅程中的客户的大部分 HTML 和 CSS 内容。 使用页面自定义可对任何自定义策略或用户流的外观进行自定义。 可以通过此自定义功能在应用程序与 Azure AD B2C 之间保持品牌和视觉一致性。
+* **个人**客户可以使用个人帐户（例如社交标识提供者或电子邮件地址和密码）进行注册或登录。
+* **企业**客户可以使用其企业凭据进行注册或登录。
+* **合作伙伴**和供应商是向该杂货店提供销售产品的个人。 合作伙伴标识由 [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) 提供。
 
-Azure AD B2C 在用户的浏览器中运行代码，并使用称为“跨域资源共享”(CORS) 的新式方法。 首先，在包含自定义 HTML 内容的策略中指定 URL。 Azure AD B2C 将用户界面元素与从 URL 加载的 HTML 内容合并，然后向用户显示页面。
+![个人 (B2C)、业务 (B2C) 和合作伙伴 (B2B) 登录页](media/active-directory-b2c-overview/woodgrove-overview.png)
 
-可以在查询字符串中向 Azure AD B2C 发送参数。 通过将该参数传递到 HTML 终结点，可以动态更改页面内容。 例如，可以基于从 Web 或移动应用程序传递的参数，更改注册或登录页面上的背景图像。
+### <a name="authenticate-individual-customers"></a>对个人客户进行身份验证
 
-若要自定义用户流中的页面，请参阅[教程：在 Azure Active Directory B2C 中自定义用户界面体验](tutorial-customize-ui.md)。 若要自定义自定义策略中的页面，请参阅[在 Azure Active Directory B2C 中使用自定义策略自定义应用程序的用户界面](active-directory-b2c-ui-customization-custom.md)，或[在 Azure Active Directory B2C 中使用自定义策略配置包含动态内容的 UI](active-directory-b2c-ui-customization-custom-dynamic.md)。
+当客户选择“使用个人帐户登录”时，将重定向到 Azure AD B2C 托管的自定义登录页。  在下图中可以看到，我们已自定义用户界面 (UI)，其外观与 WoodGrove Groceries 网站非常类似。 WoodGrove 的客户应该不知道身份验证体验是由 Azure AD B2C 托管和保护的。
 
-## <a name="developer-resources"></a>开发人员资源
+![Azure AD B2C 托管的自定义 WoodGrove 登录页](media/active-directory-b2c-overview/sign-in.png)
 
-### <a name="client-applications"></a>客户端应用程序
+WoodGrove 允许其客户使用 Google、Facebook 或 Microsoft 帐户作为标识提供者进行注册和登录。 或者，其客户可以使用电子邮件地址和密码创建所谓的“本地帐户”来完成注册。 
 
-可以选择适用于 [iOS](active-directory-b2c-devquickstarts-ios.md)、[Android](active-directory-b2c-devquickstarts-android.md) 和 .NET 等系统的应用程序。 使用 Azure AD B2C，可以在执行这些操作的同时保护用户标识。
+当客户依次选择“使用个人帐户注册”、“立即注册”时，将会看到自定义注册页。  
 
-如果你是 ASP.NET Web 应用程序开发人员，请使用[教程：使 Web 应用程序能够使用 Azure AD B2C 进行帐户身份验证](active-directory-b2c-tutorials-web-app.md)中的步骤，将应用程序设置为对帐户进行身份验证。
+![Azure AD B2C 托管的自定义 WoodGrove 注册页](media/active-directory-b2c-overview/sign-up.png)
 
-如果你是桌面应用程序开发人员，请使用[教程：使桌面应用程序能够使用 Azure AD B2C 进行帐户身份验证](active-directory-b2c-tutorials-desktop-app.md)中的步骤，将应用程序设置为对帐户进行身份验证。
+在客户输入电子邮件地址并选择“发送验证码”后，Azure AD B2C 会向客户发送验证码。  输入验证码，选择“验证代码”，并在表单中输入其他信息后，客户还必须同意服务条款。 
 
-如果你是使用 Node.js 的单页应用程序开发人员，请使用[教程：使单页应用程序能够使用 Azure AD B2C 进行帐户身份验证](active-directory-b2c-tutorials-spa.md)中的步骤，将应用程序设置为对帐户进行身份验证。
+单击“创建”按钮后，Azure AD B2C 会将用户重定向回到 WoodGrove Groceries 网站。  在重定向时，Azure AD B2C 会将 OpenID Connect 身份验证令牌传递给 WoodGrove Web 应用程序。 用户现已完成登录并已准备好继续操作，其显示名称将显示在右上角，表示他们已登录。
 
-### <a name="apis"></a>API
-如果客户端或 Web 应用程序需要调用 API，可以在 Azure AD B2C 中设置对这些资源的安全访问。
+![显示用户已登录的 WoodGrove Groceries 网站标题](media/active-directory-b2c-overview/signed-in-individual.png)
 
-如果你是 ASP.NET Web 应用程序开发人员，请使用以下文章中的步骤将应用程序设置为调用受保护的 API：[教程：使用 Azure Active Directory B2C 授予对 ASP.NET Web API 的访问权限](active-directory-b2c-tutorials-web-api.md)。
+### <a name="authenticate-business-customers"></a>对企业客户进行身份验证
 
-如果你是桌面应用程序开发人员，请使用以下文章中的步骤将应用程序设置为调用受保护的 API：[教程：使用 Azure Active Directory B2C 从桌面应用授予对 Node.js Web API 的访问权限](active-directory-b2c-tutorials-desktop-app-webapi.md)。
+当客户选择“企业客户”下的某个选项时，WoodGrove Groceries 网站会调用一个不同的 Azure AD B2C 策略，该策略不同于针对个人客户调用的策略。 
 
-如果你是使用 Node.js 的单页应用程序开发人员，请使用[教程：从单页应用程序使用 Azure Active Directory B2C 授予对 ASP.NET Core Web API 的访问权限](active-directory-b2c-tutorials-spa-webapi.md)。
+此策略为用户提供一个使用其公司凭据进行注册和登录的选项。 在 WoodGrove 示例中，系统会提示用户使用任何 Office 365 或 Azure AD 帐户登录。 此策略使用[多租户 Azure AD 应用程序](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md)和 `/common` Azure AD 终结点将 Azure AD B2C 联合到全球的任何 Office 365 客户。
 
-### <a name="javascript"></a>JavaScript
+### <a name="authenticate-partners"></a>对合作伙伴进行身份验证
 
-可将自己的 JavaScript 客户端代码添加到 Azure AD B2C 中的应用程序。 若要在应用程序中设置 JavaScript，可以定义[页面布局](page-layout.md)，并在用户流或自定义策略中启用 [JavaScript](javascript-samples.md)。
+“使用供应商帐户登录”链接使用 Azure Active Directory B2B 的协作功能。  Azure AD B2B 是 Azure Active Directory 中用于管理合作伙伴标识的功能系列。 可以从 Azure Active Directory 联合这些标识，以访问 Azure AD B2C 保护的应用程序。
 
-### <a name="user-accounts"></a>用户帐户
+有关 Azure AD B2B 的详细信息，请参阅[什么是 Azure Active Directory B2B 中的来宾用户访问权限？](../active-directory/b2b/what-is-b2b.md)。
 
-许多常见的租户管理任务需要以编程方式执行。 用户管理是一个主要示例。 可能需要将现有用户存储迁移到 Azure AD B2C 租户。 可能想要在自己的页面上托管用户注册，并在 Azure AD B2C 目录后台创建用户帐户。 这些类型的任务需要能够创建、读取、更新和删除用户帐户。 可以使用 [Azure AD 图形 API](active-directory-b2c-devquickstarts-graph-dotnet.md) 来执行这些任务。
+<!-- UNCOMMENT WHEN REPO IS UPDATED WITH LATEST DEMO CODE
+### Sample code
+
+If you'd like to jump right into the code to see how the WoodGrove Groceries application is built, you can find the repository on GitHub:
+
+[Azure-Samples/active-directory-external-identities-woodgrove-demo][woodgrove-repo] (GitHub)
+-->
 
 ## <a name="next-steps"></a>后续步骤
 
-请继续学习教程，开始在应用程序中配置注册和登录体验。
+大致了解 Azure AD B2C 及其可以帮助实现的某些方案后，接下来请更深入地了解其功能和技术方面。
 
 > [!div class="nextstepaction"]
-> [教程：创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)
+> [Azure AD B2C 技术概述 >](technical-overview.md)
+
+<!-- LINKS - External -->
+[woodgrove]: https://aka.ms/ciamdemo
+[woodgrove-repo]: https://github.com/Azure-Samples/active-directory-external-identities-woodgrove-demo
