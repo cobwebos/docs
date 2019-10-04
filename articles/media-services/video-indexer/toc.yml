@@ -9,6 +9,8 @@
   items:
     - name: 入门
       href: video-indexer-get-started.md
+    - name: 邀请用户
+      href: invite-users.md
 - name: 教程
   items:
     - name: 使用视频索引器 API
