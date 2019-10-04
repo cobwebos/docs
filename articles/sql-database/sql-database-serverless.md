@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123086"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828233"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL 数据库无服务器计算层（预览版）
 
@@ -115,7 +115,7 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 
 - 异地复制（活动异地复制和自动故障转移组）。
 - 长期备份保留 (LTR)。
-- SQL 数据同步中使用的同步数据库。与同步数据库不同，中心和成员数据库支持 autopausing。
+- SQL 数据同步中使用的同步数据库。与同步数据库不同，中心数据库和成员数据库支持自动暂停。
 - 弹性作业中使用的作业数据库。
 
 在部署某些需要数据库联机的服务更新期间，会暂时阻止自动暂停。  在这种情况下，一旦服务更新完成，就会再次允许自动暂停。
@@ -132,12 +132,12 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 |审核|查看审核记录。<br>更新或查看审核策略。|
 |数据屏蔽|添加、修改、删除或查看数据屏蔽规则|
 |透明数据加密|查看透明数据加密的状况或状态|
-|查询（性能）数据存储|修改或查看 query store 设置|
+|查询（性能）数据存储|修改或查看查询存储设置|
 |自动优化|自动优化建议的应用和验证，例如自动索引|
 |数据库复制|创建数据库作为副本。<br>导出到 BACPAC 文件。|
 |SQL 数据同步|按照可配置的时间表或手动执行中心和成员数据库之间的同步|
 |修改特定的数据库元数据|添加新的数据库标记。<br>更改最大 vCore 数、最小 vCore 数或自动暂停延迟。|
-|SQL Server Management Studio (SSMS)|使用早于18.1 的 SSMS 版本，并为服务器中的任何数据库打开新的查询窗口，将恢复同一服务器中的任何自动暂停的数据库。 如果使用 SSMS 18.1 版或更高版本，则不会发生此行为。|
+|SQL Server Management Studio (SSMS)|使用早于 18.1 的 SSMS 版本并为服务器中的任何数据库打开新的查询窗口，将恢复同一服务器中任何自动暂停的数据库。 如果使用 SSMS 版本 18.1 或更高版本，则不会发生此行为。|
 
 在部署某些需要数据库联机的服务更新期间，也会触发自动恢复。
 
@@ -171,7 +171,7 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 
    |参数|可选的值|默认值|
    |---|---|---|---|
-   |最小 vCore 数|{0.5, 1, 2, 4} 中的任何值，不超过最大 vCore 数|0.5 个 vCore|
+   |最小 V 核心|取决于配置的最大 Vcore-请参阅[资源限制](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。|0.5 个 vCore|
    |自动暂停延迟|最低：60 分钟（1 小时）<br>最大值：10080 分钟（7 天）<br>增量：60 分钟<br>禁用自动暂停：-1|60 分钟|
 
 > [!NOTE]
@@ -290,7 +290,7 @@ Get-AzSqlDatabase `
 
 有关资源限制，请参阅[无服务器计算层](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。
 
-## <a name="billing"></a>帐单
+## <a name="billing"></a>账单
 
 计费的计算量是每秒使用的最大 CPU 和内存量。 如果所用的 CPU 和内存量分别少于最小预配量，则对预配量进行计费。 为了比较 CPU 与内存以进行计费，可通过将内存量 (GB) 按照每个 vCore 3 GB 进行重新缩放，将内存归一化为以 vCore 数为单位。
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a072ae64104f8fded49ff6a00f5b58902c39903
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677766"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838572"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 [在 Azure 中创建日志警报](alerts-log.md)时，可以选择[使用操作组配置](action-groups.md)以执行一个或多个操作。 本文介绍可用的不同 Webhook 操作，以及如何配置基于 JSON 的自定义 Webhook。
 
 > [!NOTE]
-> 还可以使用[通用警报架构](https://aka.ms/commonAlertSchemaDocs)进行 Webhook 集成。 通用警报架构的优点是可以跨 Azure Monitor 中的所有警报服务提供单个可扩展且统一的警报有效负载。 [了解常见的警报架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
+> 还可以使用[通用警报架构](https://aka.ms/commonAlertSchemaDocs)进行 Webhook 集成。 常见的警报架构提供了在 Azure Monitor 中的所有警报服务之间具有单个可扩展和统一的警报负载的优点。请注意，公用警报架构不会 honour 日志警报的自定义 JSON 选项。 如果选择了此选项，则它会与常见的警报架构负载相遵从，而不考虑在警报规则级别执行的自定义。 [了解常见的警报架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
 
 ## <a name="webhook-actions"></a>Webhook 操作
 

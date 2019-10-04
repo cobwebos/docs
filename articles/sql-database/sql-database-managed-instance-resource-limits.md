@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 09/16/2019
-ms.openlocfilehash: 5eaade975adac86b6842d1d8f9f9b8f522d15bca
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: HT
+ms.date: 10/02/2019
+ms.openlocfilehash: a360d836f1ef09b0bb87e2af39aeab0460034cd4
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816080"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71935623"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL 数据库托管实例资源限制概述
 
@@ -25,13 +25,9 @@ ms.locfileid: "71816080"
 > [!NOTE]
 > 有关支持的功能和 T-SQL 语句的差异，请参阅[功能差异](sql-database-features.md)和 [T-SQL 语句支持](sql-database-managed-instance-transact-sql-information.md)。 有关单一数据库和托管实例中服务层级之间的一般差异，请参阅[服务层级比较](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison)。
 
-## <a name="instance-level-resource-limits"></a>实例级别的资源限制
+## <a name="hardware-generation-characteristics"></a>硬件代系特性
 
-托管实例的某些特征和资源限制取决于底层基础结构和体系结构。 这些限制取决于硬件代系和服务层级。
-
-### <a name="hardware-generation-characteristics"></a>硬件代系特性
-
-Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5。 硬件代次具有不同的特征，如下表所述：
+托管实例的某些特征和资源限制取决于底层基础结构和体系结构。 Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5。 硬件代次具有不同的特征，如下表所述：
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
@@ -39,28 +35,28 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 | vCore 数目 | 8、16、24 个 vCore | 4、8、16、24、32、40、64、80 个 vCore |
 | 最大内存（内存/核心比） | 每个 vCore 7 GB<br/>添加更多 vCore 以获得更多内存。 | 每个 vCore 5.1 GB<br/>添加更多 vCore 以获得更多内存。 |
 | 最大内存中 OLTP 内存 | 实例限制：1-每 vCore 1.5 GB| 实例限制：每 vCore 0.8-1.65 GB |
-| 最大实例预留存储 |  常规用途：8 TB<br/>业务关键：1TB | 常规用途：8 TB<br/> 业务关键型 1 TB、2 TB 或 4 TB，具体取决于核心数 |
+| 最大实例预留存储 |  常规用途：8 TB<br/>业务关键：1 TB | 常规用途：8 TB<br/> 业务关键型 1 TB、2 TB 或 4 TB，具体取决于核心数 |
 
 > [!IMPORTANT]
 > - Gen4 硬件正在逐步推出。建议在 Gen5 硬件上部署新的托管实例。
 > - 目前，Gen4 硬件仅在以下区域提供：北欧、西欧、美国东部、美国中南部、美国中北部、美国西部2、美国中部、加拿大中部、印度南部和韩国中部。
 
-#### <a name="in-memory-oltp-available-space"></a>内存中 OLTP 可用空间 
+### <a name="in-memory-oltp-available-space"></a>内存中 OLTP 可用空间 
 
-内存中 OLTP 空间量取决于 Vcore 和硬件生成的数量。 下表列出了可用于内存中 OLTP 对象的内存限制。
+[业务关键](sql-database-service-tier-business-critical.md)服务层中的内存中 OLTP 空间量取决于 vcore 和硬件生成的数量。 下表列出了可用于内存中 OLTP 对象的内存限制。
 
-| 每个 vCore 的内存中 OLTP 空间    | **Gen5** | **Gen4** |
+| 内存中 OLTP 空间  | **Gen5** | **Gen4** |
 | --- | --- | --- |
-| 4 | 3.14 GB | |   
-| 8 | 6.28 GB | 8 GB |
-| 16    | 15.77 GB | 20 GB |
-| 24    | 25.25 GB | 36 GB |
-| 32    | 37.94 GB | |
-| 40    | 52.23 GB | |
-| 64    | 99.9 GB   | |
-| 80    | 131.68 GB| |
+| 4 个 vCore  | 3.14 GB | |   
+| 8 个 vCore  | 6.28 GB | 8 GB |
+| 16 Vcore | 15.77 GB | 20 GB |
+| 24 Vcore | 25.25 GB | 36 GB |
+| 32 Vcore | 37.94 GB | |
+| 40 Vcore | 52.23 GB | |
+| 64 Vcore | 99.9 GB    | |
+| 80 Vcore | 131.68 GB| |
 
-### <a name="service-tier-characteristics"></a>服务层特征
+## <a name="service-tier-characteristics"></a>服务层特征
 
 托管实例有两个服务层级：[常规用途](sql-database-service-tier-general-purpose.md)和[业务关键](sql-database-service-tier-business-critical.md)。 这些层级提供[不同的功能](sql-database-service-tiers-general-purpose-business-critical.md)，如下表中所述：
 
@@ -75,7 +71,7 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 | 每个实例的数据库文件数目上限 | 最大为280，除非已达到实例存储大小或[Azure 高级磁盘存储空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)的限制。 | 每个数据库32767个文件，除非已达到实例存储大小限制。 |
 | 数据文件最大大小 | 仅限当前可用的实例存储大小（最大 2 TB-8 TB）和[Azure 高级磁盘存储分配空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)。 | 仅限当前可用的实例存储大小（最大为 1 TB-4 TB）。 |
 | 最大日志文件大小 | 仅限 2 TB 和当前可用的实例存储大小。 | 仅限 2 TB 和当前可用的实例存储大小。 |
-| 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[增大文件大小以获取更多 IOPS](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5.5 K - 110 K (1375/vCore)<br/>添加更多 vCore 以获得更好的 IO 性能。 |
+| 数据/日志 IOPS（近似） | 每个实例最多 30-40 K IOPS *，500-每文件7500<br/>\*[增大文件大小以获取更多 IOPS](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5.5 k-110 K （1375 IOPS/vCore）<br/>添加更多 vCore 以获得更好的 IO 性能。 |
 | 日志写入吞吐量限制（每个实例） | 3 MB/s（每个 vCore）<br/>最大 22 MB/秒 | 4 MB/秒（每个 vCore）<br/>最大 48 MB/s |
 | 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[增大文件大小以获得更好的 IO 性能](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 不受限制。 |
 | 存储 IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
@@ -88,9 +84,23 @@ Azure SQL 数据库托管实例可部署在两个硬件代次上：Gen4 和 Gen5
 > - 与最大存储大小限制进行比较的实例存储大小同时包括用户和系统数据库中的数据及日志文件大小。 可以使用 <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> 系统视图来确定数据库使用的空间总量。 错误日志不会持久保存，不包括在大小中。 备份不包括在存储大小中。
 > - 吞吐量和 IOPS 还取决于不受托管实例显式限制的页面大小。
 > 可以使用自动故障转移组在不同的 Azure 区域中创建另一个只读副本。
+> - 最大实例 IOPS 取决于工作负荷的文件布局和分配。 例如，如果你创建 7 x 1GB 文件，其中每个都有最大的每个和7个小文件（小于 128 GB），其中每个都有 500 IOPS，则可以获取每个实例的 38500 IOPS （7x5000 + 7x500）（如果你的工作负荷可以使用所有文件）。 请注意，某些 IOPS 还用于自动备份。
 
 > [!NOTE]
 > 有关详细信息，请查看[本文中托管实例池中的资源限制](sql-database-instance-pools.md#instance-pools-resource-limitations)。
+
+### <a name="file-io-characteristics-in-general-purpose-tier"></a>常规用途层中的文件 IO 特征
+
+在常规用途服务层中，每个数据库文件都获取专用的 IOPS 和吞吐量，具体取决于文件大小。 较大的文件会获得更多的 IOPS 和吞吐量。 下表显示了数据库文件的 IO 特征：
+
+| 文件大小           | 0-128 GiB | 128-256 GiB | 256-512 GiB | 0.5-1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
+|---------------------|-------|-------|-------|-------|-------|-------|-------|
+| 每个文件的 IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500   |
+| 每个文件的吞吐量 | 100 MiB/秒 | 125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 
+
+如果注意到某个数据库文件的 IO 延迟较高，或者发现 IOPS/吞吐量达到了限制，则可以通过[增加文件大小](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)来提高性能。
+
+此外，还有一些实例级别的限制（如最大日志写入吞吐量 22 MB/秒），因此你可能无法在整个日志文件中访问文件，因为你达到了实例吞吐量限制。
 
 ## <a name="supported-regions"></a>支持的区域
 

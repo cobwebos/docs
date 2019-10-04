@@ -1,5 +1,5 @@
 ---
-title: 使用 DPS 自动预配 Windows 设备 - Azure IoT Edge | Microsoft Docs
+title: 通过 DPS Azure IoT Edge 自动预配 Windows 设备 |Microsoft Docs
 description: 使用 Windows 计算机上的模拟设备通过设备预配服务测试 Azure IoT Edge 的自动设备预配
 author: kgremban
 manager: philmea
@@ -9,23 +9,29 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0236491f9ebc8e3ecf7df8b74db4fd5ff441c7f8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 16ac8ef9e0fb876103b57b1cc463bdae5b2362b7
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677436"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828112"
 ---
-# <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>在 Windows 上创建和预配模拟 TPM Edge 设备
+# <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>使用 Windows 上的虚拟 TPM 创建和预配模拟 IoT Edge 设备
 
 可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
 
-本文介绍如何使用以下步骤，在模拟的 Edge 设备上测试自动预配：
+本文说明如何使用以下步骤测试模拟 IoT Edge 设备上的自动预配：
 
 * 创建 IoT 中心设备预配服务 (DPS) 的实例。
 * 使用用于确保硬件安全性的模拟受信任平台模块 (TPM) 在 Windows 计算机上创建一个模拟设备。
 * 为设备创建个人注册。
 * 安装 IoT Edge 运行时并将设备连接到 IoT 中心。
+
+> [!NOTE]
+> 将 TPM 证明与 DPS 结合使用时，TPM 2.0 是必需的，并且只能用于创建个人、非组、注册。
+
+> [!TIP]
+> 本文介绍如何通过在虚拟设备上使用 TPM 证明来测试自动预配，但在使用物理 TPM 硬件时也适用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,15 +44,20 @@ ms.locfileid: "68677436"
 
 运行设备预配服务后，从概述页复制“ID 范围”的值。 配置 IoT Edge 运行时时，需要使用此值。
 
+> [!TIP]
+> 如果你使用的是物理 TPM 设备，则需要确定**签署密钥**，该密钥对于每个 tpm 芯片都是唯一的，并从与其关联的 tpm 芯片制造商那里获得。 例如，你可以通过创建认可密钥的 256 SHA-1 哈希，为你的 TPM 设备派生唯一的**注册 ID** 。
+>
+> 按照[如何在 Azure 门户中管理设备](../iot-dps/how-to-manage-enrollments.md)注册一文中的说明在 DPS 中创建你的注册，然后继续阅读本文中的[安装 IoT Edge 运行时](#install-the-iot-edge-runtime)部分以继续。
+
 ## <a name="simulate-a-tpm-device"></a>模拟 TPM 设备
 
-在 Windows 开发计算机上创建模拟 TPM 设备。 检索设备的“注册 ID”和“认可密钥”，并使用它们在 DPS 中创建个人注册条目。
+在 Windows 开发计算机上创建模拟 TPM 设备。 检索设备的**注册 ID**和**认可密钥**，并使用它们在 DPS 中创建单个注册条目。
 
 在 DPS 中创建注册时，可以声明“初始设备孪生状态”。 在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-monitor.md)。
 
 选择要用来创建模拟设备的 SDK 语言，并遵循本文中的步骤，直到创建了个人注册为止。
 
-创建单个注册时, 请选择 " **True** " 以声明 Windows 开发计算机上的模拟 TPM 设备是**IoT Edge 设备**。
+创建个人注册时，请选择“True”，将 Windows 开发计算机上的模拟 TPM 设备声明为“IoT Edge设备”。
 
 模拟设备和个人注册指南：
 
@@ -60,15 +71,39 @@ ms.locfileid: "68677436"
 
 ## <a name="install-the-iot-edge-runtime"></a>安装 IoT Edge 运行时
 
-完成上一部分后，应该会发现新设备在 IoT 中心内列为 IoT Edge 设备。 现在，需要在设备上安装 IoT Edge 运行时。
+IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在容器中运行，允许你将其他容器部署到设备，以便在边缘上运行代码。
 
-IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在容器中运行，允许你将其他容器部署到设备，以便在边缘上运行代码。  
+预配设备时需要以下信息：
 
-遵照说明在运行上一部分所述的模拟 TPM 的设备上安装 IoT Edge 运行时。 确保将 IoT Edge 运行时配置为自动预配而不是手动预配。
+* DPS 的“ID 范围”值
+* 为设备创建的“注册 ID”
 
-在设备上安装 IoT Edge 之前，请先了解 DPS **ID 范围**和设备**注册 ID**。
+在运行模拟 TPM 的设备上安装 IoT Edge 运行时。 将 IoT Edge 运行时配置为自动进行，而不是手动设置。
 
-[安装和自动预配 IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+> [!TIP]
+> 在安装和测试期间，确保运行 TPM 模拟器的窗口处于打开状态。
+
+有关在 Windows 上安装 IoT Edge 的详细信息，包括管理容器和更新 IoT Edge 等任务的先决条件和说明，请参阅[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)。
+
+1. 在管理员模式下打开 PowerShell 窗口。 安装 IoT Edge 而不是 PowerShell （x86）时，请务必使用 PowerShell 的 AMD64 会话。
+
+1. **Deploy-IoTEdge** 命令检查 Windows 计算机是否使用了支持的版本，启用容器功能，然后下载 moby 运行时和 IoT Edge 运行时。 该命令默认使用 Windows 容器。
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Deploy-IoTEdge
+   ```
+
+1. 此时，IoT Core 设备可能会自动重启。 其他 Windows 10 或 Windows Server 设备可能会提示你重启。 如果是这样，请立即重启设备。 设备准备就绪后，再次以管理员身份运行 PowerShell。
+
+1. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时。 该命令默认为使用 Windows 容器手动预配。 通过 `-Dps` 标志使用设备预配服务，而不是手动预配。
+
+   用先前收集的数据替换 `{scope_id}` 的占位符值，并 `{registration_id}`。
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID}
+   ```
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 
@@ -81,7 +116,6 @@ Get-Service iotedge
 ```
 
 检查过去 5 分钟的服务日志。
-
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog

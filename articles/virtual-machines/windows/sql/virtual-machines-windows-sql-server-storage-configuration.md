@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 2705b42849922ce7e3650162b8f1ff78723685c2
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309239"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828615"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 
@@ -42,9 +42,28 @@ ms.locfileid: "70309239"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-使用 SQL Server 库映像预配 Azure VM 时，可以选择自动为新的 VM 配置存储。 可以指定存储大小、性能限制和工作负荷类型。 以下屏幕截图显示了在预配 SQL VM 期间使用的“存储配置”边栏选项卡。
+使用 SQL Server 库映像预配 Azure VM 时，请在 " **SQL Server 设置**" 选项卡上选择 "**更改配置**" 以打开 "性能优化存储配置" 页。 你可以将值保留为默认值，或根据工作负载修改最适合你的需求的磁盘配置类型。 
 
 ![预配期间的 SQL Server VM 存储配置](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
+
+在 "**存储优化**" 下选择要为其部署 SQL Server 的工作负载的类型。 使用**常规**优化选项时，默认情况下，你将有一个数据磁盘的最大 IOPS 为5000，并且你的数据、事务日志和 TempDB 存储将使用此相同驱动器。 选择**事务处理**（OLTP）或**数据仓库**时，将为数据创建单独的磁盘，为事务日志创建单独的磁盘，并将本地 SSD 用于 TempDB。 **事务处理**和**数据仓库**之间没有存储差别，但它确实更改了[条带配置和跟踪标志](#workload-optimization-settings)。 选择 "高级存储" 可将数据驱动器的缓存设置为*Readonly* ，而对于日志驱动器，则设置为 "*无*"，因为每[SQL Server VM 性能最佳做法](virtual-machines-windows-sql-performance.md)。 
+
+![预配期间的 SQL Server VM 存储配置](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
+
+磁盘配置可完全自定义，因此，你可以配置 SQL Server VM 工作负荷所需的存储拓扑、磁盘类型和 IOPs。 如果 SQL Server VM 位于某个受支持区域（美国东部2、东南亚和北欧），并且已[为订阅启用了 ultra 磁盘](/azure/virtual-machines/windows/disks-enable-ultra-ssd)，则还可以使用 UltraSSD （预览）作为**磁盘类型**的选项。  
+
+此外，还可以设置磁盘的缓存。 与[高级磁盘](/azure/virtual-machines/windows/disks-types#premium-ssd)结合使用时，Azure vm 具有称为[Blob 缓存](/azure/virtual-machines/windows/premium-storage-performance#disk-caching)的多层缓存技术。 Blob 缓存使用虚拟机 RAM 和本地 SSD 的组合进行缓存。 
+
+高级 SSD 的磁盘缓存可以是*ReadOnly*、 *ReadWrite*或*None*。 
+
+- 对于存储在高级存储上的 SQL Server 数据文件，*只读*缓存非常有用。 *ReadOnly*缓存会使读取延迟较低，读取率较高，吞吐量为，读取是从缓存执行的，后者是在 VM 内存和本地 SSD 中进行的。 与从 Azure blob 存储读取数据磁盘相比，这些读取速度要快得多。 高级存储不会将从缓存提供的读取次数计入磁盘 IOPS 和吞吐量。 因此，适用的可以实现更高的总 IOPS，即 ant 吞吐量。 
+- 如果日志文件是按顺序写入的，则不会对承载 SQL Server 日志文件的磁盘使用 "*无*缓存" 配置，也不能从*ReadOnly*缓存中获益。 
+- *Readwrite*缓存不能用于宿主 SQL Server 文件，因为 SQL Server 不支持与*ReadWrite*缓存的数据一致性。 写入*只读 blob*缓存的浪费容量，如果写入经过*只读*blob 缓存层，则延迟会略微增加。 
+
+
+   > [!TIP]
+   > 请确保存储配置与所选 VM 大小施加的限制相匹配。 选择超出 VM 大小的性能上限的存储参数将导致错误： `The desired performance might not be reached due to the maximum virtual machine disk performance cap.`。 可以通过更改磁盘类型来减少 IOPs，或增加 VM 大小以提高性能上限。 
+
 
 根据所做的选择，Azure 会在创建 VM 后执行以下存储配置任务：
 
@@ -64,6 +83,13 @@ ms.locfileid: "70309239"
 * [使用自动修补创建 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
 * [使用 AKV 集成创建 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault)
 
+### <a name="quickstart-template"></a>快速启动模板
+
+可以使用以下快速入门模板，通过存储优化部署 SQL Server VM。 
+
+* [创建具有存储优化的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage/)
+* [使用 UltraSSD 创建 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage-ultrassd)
+
 ## <a name="existing-vms"></a>现有 VM
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
@@ -79,38 +105,17 @@ ms.locfileid: "70309239"
 
 ![为现有 SQL Server VM 配置存储](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
-显示的配置选项会有所不同，这取决于以前是否用过此功能。 首次使用时，可以指定新驱动器的存储要求。 如果以前曾经使用此功能创建了驱动器，可以选择扩展该驱动器的存储。
+您可以修改在 SQL Server VM 创建过程中配置的驱动器的磁盘设置。 选择 "**扩展驱动器**" 将打开 "驱动器修改" 页，允许您更改磁盘类型并添加更多磁盘。 
 
-### <a name="use-for-the-first-time"></a>首次使用
+![为现有 SQL Server VM 配置存储](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
 
-如果首次使用此功能，可以指定新驱动器的存储大小和性能限制。 这种体验与预配类似。 主要差别在于无法指定工作负荷类型。 此限制可防止中断虚拟机上任何现有的 SQL Server 配置。
 
-Azure 会根据规范创建新驱动器。 在此方案中，Azure 将执行以下存储配置任务：
-
-* 创建高级存储数据磁盘并将其连接到虚拟机。
-* 配置 SQL Server 可访问的数据磁盘。
-* 根据指定的大小和性能（IOPS 和吞吐量）要求，在存储池中配置数据磁盘。
-* 将存储池与虚拟机上的新驱动器相关联。
-
-有关 Azure 如何配置存储设置的详细信息，请参阅[存储配置部分](#storage-configuration)。
-
-### <a name="add-a-new-drive"></a>添加新驱动器
-
-如果已在 SQL Server VM 上配置存储，则展开存储会显示两个新选项。 第一个选项是添加新驱动器以提升 VM 的性能级别。
-
-但是，添加驱动器后，必须执行一些附加的手动配置才能提升性能。
-
-### <a name="extend-the-drive"></a>扩展驱动器
-
-扩展存储的另一个选项是扩展现有驱动器。 此选项会增加驱动器的可用存储，但不提升性能。 对于存储池，在创建存储池后无法更改列数。 列数决定了可跨数据磁盘条带化的并行写入数。 因此，添加的任何数据磁盘均无法提升性能。 它们只能为写入的数据提供更多的存储空间。 这种限制也意味着，在扩展驱动器时，列数决定了可以添加的数据磁盘的最小数目。 因此，如果创建的存储池包含四个数据磁盘，则列数也是四个。 每次扩展存储时，必须至少添加四个数据磁盘。
-
-![扩展 SQL VM 的驱动器](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 
 ## <a name="storage-configuration"></a>存储配置
 
 本部分提供有关在 Azure 门户中预配或配置 SQL VM 期间，Azure 自动执行的存储配置更改的参考信息。
 
-* Azure 通过从 VM 选择的存储配置存储池。 本主题的下一部分提供了有关存储池配置的详细信息。
+* Azure 通过从 VM 中选择的存储配置存储池。 本主题的下一部分提供了有关存储池配置的详细信息。
 * 自动存储配置始终使用[高级 SSD](../disks-types.md) P30 数据磁盘。 因此，所选 TB 数目与附加到 VM 的数据磁盘数目之间存在 1:1 映射。
 
 有关价格信息，请参阅 [磁盘存储](https://azure.microsoft.com/pricing/details/storage) 选项卡上的 **存储定价** 页。

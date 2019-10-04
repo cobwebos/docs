@@ -230,6 +230,8 @@
           items:
             - name: 子网
               href: virtual-network-manage-subnet.md
+            - name: 子网委派
+              href: manage-subnet-delegation.md
             - name: 对等互连
               href: virtual-network-manage-peering.md
             - name: DDOS 保护

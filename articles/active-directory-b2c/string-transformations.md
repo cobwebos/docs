@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 83379cc194f23ebff977babc7124a7bc90f4bc60
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 77f0b196777ae0f2ff0b870eac0a01b11854190b
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063442"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936813"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -29,8 +29,8 @@ ms.locfileid: "71063442"
 
 | 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | string | 要比较的第一个声明的类型。 |
-| inputClaim | inputClaim2 | string | 要比较的第二个声明的类型。 |
+| InputClaim | inputClaim1 | string | 要比较的第一个声明的类型。 |
+| InputClaim | inputClaim2 | string | 要比较的第二个声明的类型。 |
 | InputParameter | stringComparison | string | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
 
 AssertStringClaimsAreEqual 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationStringsAreNotEqual 自断言技术配置文件元数据控制向用户显示的错误消息。
@@ -154,8 +154,8 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | string | 要比较的第一个声明类型。 |
-| inputClaim | inputClaim2 | string | 要比较的第二个声明类型。 |
+| InputClaim | inputClaim1 | string | 要比较的第一个声明类型。 |
+| InputClaim | inputClaim2 | string | 要比较的第二个声明类型。 |
 | InputParameter | 运算符 | string | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
 | InputParameter | ignoreCase | boolean | 指定此比较是否应忽略所比较字符串的大小写。 |
 | OutputClaim | outputClaim | boolean | 调用此声明转换后生成的 ClaimType。 |
@@ -195,7 +195,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | string | 要比较的声明类型。 |
+| InputClaim | inputClaim1 | string | 要比较的声明类型。 |
 | InputParameter | 运算符 | string | 可能的值：`EQUAL` 或 `NOT EQUAL`。 |
 | InputParameter | compareTo | string | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
 | InputParameter | ignoreCase | boolean | 指定此比较是否应忽略所比较字符串的大小写。 |
@@ -504,7 +504,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim | string | 要比较的声明类型。 |
+| InputClaim | inputClaim | string | 要比较的声明类型。 |
 | InputParameter | matchTo | string | 要与 `inputClaim` 进行比较的字符串。 |
 | InputParameter | stringComparison | string | 可能的值：`Ordinal` 或 `OrdinalIgnoreCase`。 |
 | InputParameter | stringMatchMsg | string | 字符串相等情况下第一个要设置的值。 |
@@ -553,7 +553,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | claimToMatch | string | 要比较的声明类型。 |
+| InputClaim | claimToMatch | string | 要比较的声明类型。 |
 | InputParameter | matchTo | string | 要与 inputClaim 进行比较的字符串。 |
 | InputParameter | stringComparison | string | 可能的值：`Ordinal` 或 `OrdinalIgnoreCase`。 |
 | InputParameter | outputClaimIfMatched | string | 字符串相等情况下要设置的值。 |

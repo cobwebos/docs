@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 983cf250f3a7188741c41386aac256bfdb28749b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 512da03e6b473055e3a14d64a9ac0e25b8efca56
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097331"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838921"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP 触发器和绑定
 
@@ -436,7 +436,7 @@ function.json 文件如下所示：
 
 #### <a name="read-parameter-from-a-route-java"></a>从路由中读取参数 (Java)  
 
-此示例读取名为 ```id``` 的必选参数，并从路由路径中读取可选参数 ```name```，然后使用这两个参数构建返回到客户端的 JSON 文档（内容类型为 ```application/json```）。 T
+此示例读取名为 ```id``` 的必选参数，并从路由路径中读取可选参数 ```name```，然后使用这两个参数构建返回到客户端的 JSON 文档（内容类型为 ```application/json```）。 周二
 
 ```java
     @FunctionName("TriggerStringRoute")
@@ -727,7 +727,7 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 
 ![在门户中管理函数密钥。](./media/functions-bindings-http-webhook/manage-function-keys.png)
 
-你可以使用[密钥管理 API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)以编程方式获取功能键。
+你可以使用[密钥管理 api](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)以编程方式获取功能键。
 
 ### <a name="api-key-authorization"></a>API 密钥的授权
 
@@ -740,8 +740,7 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 可以允许匿名请求，它不需要密钥。 可能还需要使用主密钥。 可使用绑定 JSON 中的 `authLevel` 属性更改默认授权级别。 有关详细信息，请参阅[触发器 - 配置](#trigger---configuration)。
 
 > [!NOTE]
-> 本地运行函数时，将禁用授权，而不考虑指定的身份验证级别设置。 发布到 Azure 后，将强制执行触发器中的 `authLevel` 设置。
-
+> 本地运行函数时，将禁用授权，而不考虑指定的身份验证级别设置。 发布到 Azure 后，将强制执行触发器中的 `authLevel` 设置。 [在容器中本地](functions-create-function-linux-custom-image.md#run-the-image-locally)运行时，仍然需要使用密钥。
 
 
 ### <a name="secure-an-http-endpoint-in-production"></a>在生产环境中保护 HTTP 终结点
@@ -756,7 +755,7 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 
 在使用这些函数应用级别的安全方法之一时，应将 HTTP 触发函数身份验证级别设置为 `anonymous`。
 
-### <a name="webhooks"></a>Webhooks
+### <a name="webhooks"></a>Webhook
 
 > [!NOTE]
 > Webhook 模式仅适用于 1.x 版 Functions 运行时。 进行此更改是为了提高 2.x 版中 HTTP 触发器的性能。

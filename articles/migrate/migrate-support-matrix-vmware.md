@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: a0ca483005cf1f5aaadcd7a6107b092d581d6773
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 949595b35c6d989be62dbda43a3b8ccb1608a23d
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067756"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937576"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>用于 VMware 评估和迁移的支持矩阵
 
@@ -41,7 +41,7 @@ ms.locfileid: "71067756"
 **地域** | **元数据存储位置**
 --- | ---
 Azure 政府 | US Gov 弗吉尼亚州
-亚太区 | 东亚或东南亚
+亚太 | 东亚或东南亚
 澳大利亚 | 澳大利亚东部或澳大利亚东南部
 巴西 | 巴西南部
 加拿大 | 加拿大中部或加拿大东部
@@ -108,7 +108,7 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 **设备** | **Connection**
 --- | ---
 设备 | TCP 端口3389上的入站连接，允许到设备的远程桌面连接。<br/><br/> 端口44368上的入站连接，使用 URL 远程访问设备管理应用程序：```https://<appliance-ip-or-name>:44368``` <br/><br/>端口443、5671和5672上的出站连接将发现和性能元数据发送到 Azure Migrate。
-vCenter Server | TCP 端口443上的入站连接，使设备能够收集配置和性能元数据以进行评估。 <br/><br/> 默认情况下，设备会在端口443上连接到 vCenter。 如果 vCenter 服务器侦听其他端口，则可以在设置发现时修改端口。
+vCenter 服务器 | TCP 端口443上的入站连接，使设备能够收集配置和性能元数据以进行评估。 <br/><br/> 默认情况下，设备会在端口443上连接到 vCenter。 如果 vCenter 服务器侦听其他端口，则可以在设置发现时修改端口。
 
 ## <a name="migration---limitations"></a>迁移-限制
 对于复制，最多可以选择10个 Vm。 如果要迁移更多计算机，请在10个组中进行复制。 对于 VMware 无代理迁移，可以同时运行多达100的复制。
@@ -119,7 +119,7 @@ vCenter Server | TCP 端口443上的入站连接，使设备能够收集配置�
 
 **支持** | **详细信息**
 --- | ---
-vCenter 服务器 | 版本5.5、6.0、6.5 或6.7。
+vCenter Server | 版本5.5、6.0、6.5 或6.7。
 VMware vSphere | 版本5.5、6.0、6.5 或6.7，
 
 ## <a name="agentless-migration-vcenter-server-permissions"></a>无代理迁移-vCenter Server 权限
@@ -196,7 +196,7 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 **设备** | **Connection**
 --- | ---
 设备 | 端口443上的出站连接，将复制的数据上传到 Azure，并与 Azure Migrate 服务进行通信协调复制和迁移。
-vCenter Server | 端口443上的入站连接，使设备能够协调复制-创建快照、复制数据、发布快照
+vCenter 服务器 | 端口443上的入站连接，使设备能够协调复制-创建快照、复制数据、发布快照
 vSphere/EXSI 主机 | TCP 端口902上的入站，用于从快照复制数据。
 
 
@@ -206,7 +206,7 @@ vSphere/EXSI 主机 | TCP 端口902上的入站，用于从快照复制数据。
 
 **支持** | **详细信息**
 --- | ---
-vCenter 服务器 | 版本5.5、6.0、6.5 或6.7。
+vCenter Server | 版本5.5、6.0、6.5 或6.7。
 VMware vSphere | 版本5.5、6.0、6.5 或6.7。
 
 ### <a name="agent-based-migration-vcenter-server-permissions"></a>基于代理的迁移-vCenter Server 权限
@@ -294,8 +294,8 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 **磁盘限制** |  每个虚拟机最多63个磁盘。
 **加密磁盘/卷** | 不支持对具有加密磁盘/卷的 Vm 进行迁移。
 **共享磁盘群集** | 不受支持。
-**独立磁盘** | 。
-**传递磁盘** | 。
+**独立磁盘** | 受支持
+**传递磁盘** | 受支持
 **NFS** | 不会复制装载为 Vm 上的卷的 NFS 卷。
 iSCSI 目标 | 具有 iSCSI 目标的 Vm 不支持无代理迁移。
 **多路径 IO** | 不受支持。
@@ -350,7 +350,7 @@ VM | Vm 上运行的移动服务与用于复制管理的端口 HTTPS 443 入站�
 FC 磁盘 | 不受支持。 | 如果不支持，检查会失败。
 BitLocker | 不受支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
-迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/> -迁移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP。<br/> 对于站点到站点 VPN 访问，请启用 rdp，并允许**Windows 防火墙** -> 中的 rdp 允许用于**域和专用**网络的**应用和功能**。 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详细信息](https://support.microsoft.com/kb/3031135)。 |
+迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/> -迁移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP。<br/> 对于站点到站点 VPN 访问，请启用 rdp，并允许**Windows 防火墙** -> 中的 rdp 允许用于**域和专用**网络的**应用和功能**。 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详细信息](prepare-for-migration.md)。 |
 迁移后连接-Linux | 使用 SSH 迁移后连接到 Azure Vm：<br/> 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为 "启动"，以及防火墙规则是否允许 SSH 连接。<br/> 故障转移后，在 Azure VM 上，允许已故障转移的 VM 上的网络安全组和连接到的 Azure 子网的 SSH 端口建立传入连接。 此外，为 VM 添加公共 IP 地址。 |  
 
 

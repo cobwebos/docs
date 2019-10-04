@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/15/2019
+ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: da3cb81eaeaa3b1609ffe67b2aea92a69b6bb47a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 07db6c5cecf2b8dec803e73d5775edef3f8906fa
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726249"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828627"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Azure 磁盘加密先决条件（早期版本）
 
@@ -53,6 +53,7 @@ ms.locfileid: "68726249"
 | Ubuntu | 18.04| OS 和数据磁盘 |
 | Ubuntu | 16.04| OS 和数据磁盘 |
 | Ubuntu | 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS 和数据磁盘 |
+| RHEL | 7.7 | OS 和数据磁盘（参阅下面的注释） |
 | RHEL | 7.6 | OS 和数据磁盘（参阅下面的注释） |
 | RHEL | 7.5 | OS 和数据磁盘（参阅下面的注释） |
 | RHEL | 7.4 | OS 和数据磁盘（参阅下面的注释） |
@@ -60,6 +61,7 @@ ms.locfileid: "68726249"
 | RHEL | 7.2 | OS 和数据磁盘（参阅下面的注释） |
 | RHEL | 6.8 | 数据磁盘（参阅下面的注释） |
 | RHEL | 6.7 | 数据磁盘（参阅下面的注释） |
+| CentOS | 7.7 | OS 和数据磁盘 |
 | CentOS | 7.6 | OS 和数据磁盘 |
 | CentOS | 7.5 | OS 和数据磁盘 |
 | CentOS | 7.4 | OS 和数据磁盘 |
@@ -71,7 +73,7 @@ ms.locfileid: "68726249"
 | SLES | 12-SP3 | 数据磁盘 |
 
 > [!NOTE]
-> 新的 ADE 实现支持 RHEL OS 和 RHEL7 即用即付映像的数据磁盘。 ADE 目前不支持 RHEL 自带订阅 (BYOS) 映像。 有关详细信息, 请参阅适用于[Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)。
+> 新的 ADE 实现支持 RHEL OS 和 RHEL7 即用即付映像的数据磁盘。 ADE 目前不支持 RHEL 自带订阅 (BYOS) 映像。 有关详细信息，请参阅适用于[Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)。
 
 - Azure 磁盘加密要求 Key Vault 和 VM 位于同一 Azure 区域和订阅。 在不同区域中配置资源会导致启用 Azure 磁盘加密功能失败。
 
@@ -115,7 +117,7 @@ ms.locfileid: "68726249"
 
 
 ## <a name="bkmk_PSH"></a>Azure PowerShell
-[Azure PowerShell](/powershell/azure/overview) 提供了一组使用 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)模型管理 Azure 资源的 cmdlet。 可以在浏览器中结合 [Azure Cloud Shell](../cloud-shell/overview.md) 使用 PowerShell，或者遵照以下说明将 PowerShell 安装在本地计算机上，以便在任何 PowerShell 会话中使用这些 cmdlet。 如果已在本地安装它, 请确保使用最新版本的 Azure PowerShell 来配置 Azure 磁盘加密。
+[Azure PowerShell](/powershell/azure/overview) 提供了一组使用 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)模型管理 Azure 资源的 cmdlet。 可以在浏览器中结合 [Azure Cloud Shell](../cloud-shell/overview.md) 使用 PowerShell，或者遵照以下说明将 PowerShell 安装在本地计算机上，以便在任何 PowerShell 会话中使用这些 cmdlet。 如果已在本地安装它，请确保使用最新版本的 Azure PowerShell 来配置 Azure 磁盘加密。
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>安装在本地计算机上使用的 Azure PowerShell（可选）：  
 1. [安装和配置 Azure PowerShell](/powershell/azure/install-az-ps)。 
@@ -183,7 +185,7 @@ ms.locfileid: "68726249"
 
 ## <a name="prerequisite-workflow-for-key-vault-and-the-azure-ad-app"></a>Key Vault 和 Azure AD 应用的先决条件工作流
 
-如果你已熟悉进行 Azure 磁盘加密时的 Key Vault 和 Azure AD 先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关使用先决条件脚本的详细信息, 请参阅[Azure 磁盘加密附录](azure-security-disk-encryption-appendix.md#bkmk_prereq-script)。 
+如果你已熟悉进行 Azure 磁盘加密时的 Key Vault 和 Azure AD 先决条件，则可以使用 [Azure 磁盘加密先决条件 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 有关使用先决条件脚本的详细信息，请参阅[Azure 磁盘加密附录](azure-security-disk-encryption-appendix.md#bkmk_prereq-script)。 
 
 1. 创建密钥保管库。 
 2. 设置 Azure AD 应用程序和服务主体。
@@ -268,7 +270,7 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
 
 ### <a name="bkmk_ADappCLI"></a>使用 Azure CLI 设置 Azure AD 应用和服务主体
 
-可以在 Azure CLI 中使用 [az ad sp](/cli/azure/ad/sp) 命令来管理服务主体。 有关详细信息, 请参阅[创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。
+可以在 Azure CLI 中使用 [az ad sp](/cli/azure/ad/sp) 命令来管理服务主体。 有关详细信息，请参阅[创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。
 
 1. 根据需要[连接到 Azure 订阅](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI)。
 2. 创建新服务主体。
@@ -285,7 +287,7 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
 2. [创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
      - 创建应用程序时，可以使用任意所需的名称和登录 URL。
 3. [获取应用程序 ID 和身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。 
-     - 身份验证密钥是客户端机密, 用作 AzVMDiskEncryptionExtension 的 AadClientSecret。 
+     - 身份验证密钥是客户端机密，用作 AzVMDiskEncryptionExtension 的 AadClientSecret。 
         - 应用程序使用身份验证密钥作为凭据登录到 Azure AD。 在 Azure 门户中，此机密称为密钥，但与 Key Vault 没有任何关系。 请适当地保护此机密。 
      - 应用程序 ID 稍后将用作 AzVMDiskEncryptionExtension 的 AadClientId 和 AzKeyVaultAccessPolicy 的 ServicePrincipalName。 
 
@@ -296,7 +298,7 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
 > Azure 磁盘加密要求为 Azure AD 客户端应用程序配置以下访问策略：_WrapKey_ 和 _Set_ 权限。
 
 ### <a name="bkmk_KVAPPSH"></a>使用 Azure PowerShell 为 Azure AD 应用设置 Key Vault 访问策略
-Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用[AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet, 使用客户端 ID (在注册应用程序时生成) 作为 _– ServicePrincipalName_参数值来授予对应用程序的权限。 若要了解详细信息，请参阅博客文章 [Azure Key Vault - Step by Step](https://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx)（Azure Key Vault - 分步指南）。 
+Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用[AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet，使用客户端 ID （在注册应用程序时生成）作为 _– ServicePrincipalName_参数值来授予对应用程序的权限。 若要了解详细信息，请参阅博客文章 [Azure Key Vault - Step by Step](https://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx)（Azure Key Vault - 分步指南）。 
 
 1. 根据需要[连接到 Azure 订阅](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH)。
 2. 使用 PowerShell 为 AD 应用程序设置 Key Vault 访问策略。

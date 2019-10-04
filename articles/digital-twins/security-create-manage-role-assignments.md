@@ -1,20 +1,20 @@
 ---
-title: 在 Azure 数字孪生中创建和管理角色分配 | Microsoft Docs
-description: 在 Azure 数字孪生中创建和管理角色分配。
+title: 创建和管理角色分配-Azure 数字孪生 |Microsoft Docs
+description: 了解如何创建和管理 Azure 数字孪生中的角色分配。
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/02/2019
 ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 2c43dd7c0700efdd2fbf2f16c57c9c9dc69d3c6b
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: MT
+ms.openlocfilehash: 9a9f3398df099eca7d83b38595364956e6b3b76b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703353"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827686"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>在 Azure 数字孪生中创建和管理角色分配
 
@@ -36,7 +36,7 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 
 下表描述了每个属性：
 
-| 特性 | 姓名 | 必填 | type | 描述 |
+| 特性 | 姓名 | 必填 | 类型 | 描述 |
 | --- | --- | --- | --- | --- |
 | roleId | 角色定义标识符 | 是 | 字符串 | 所需角色分配的唯一 ID。 通过查询系统 API 或查看下表查找角色定义及其标识符。 |
 | objectId | 对象标识符 | 是 | 字符串 | Azure Active Directory ID、服务主体对象 ID 或域名。 该角色分配要分配到哪个对象。 必须根据其关联类型设置角色分配的格式。 对于 `DomainName` objectIdType，objectId 必须以 `“@”` 字符开头。 |
@@ -165,8 +165,8 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  真 | 字符串 |   UserId objectIdType 的 objectId。 |
 | YOUR_PATH | 真 | 字符串 |   要检查访问权限的所选路径。 |
-| YOUR_ACCESS_TYPE |  真 | 字符串 |   要检查的访问类型。 |
-| YOUR_RESOURCE_TYPE | 真 | 字符串 |  要检查的资源。 |
+| YOUR_ACCESS_TYPE |  真 | 字符串 |   *读取*、*创建*、*更新*或*删除* |
+| YOUR_RESOURCE_TYPE | 真 | 字符串 |  *设备*、 *DeviceBlobMetadata*、 *DeviceExtendedProperty*、 *ExtendedPropertyKey*、 *ExtendedType*、*终结点*、*密钥*存储、*匹配程序*、 *Ontology*、*报告*、 *RoleDefinition*、*传感器*、 *SensorExtendedProperty*、 *Space*、 *SpaceBlobMetadata*、 *SpaceExtendedProperty*、 *SpaceResource*、 *SpaceRoleAssignment*、 *System*、 *UerDefinedFunction*、 *User*、 *UserBlobMetadata*或*UserExtendedProperty* |
 
 成功的请求将返回布尔值 `true` 或 `false`，指示是否已将该访问类型分配到给定路径和资源的用户。
 
@@ -198,7 +198,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 
 ### <a name="revoke-a-permission"></a>撤销权限
 
-若要撤销某个接收者的权限，请通过发出经过身份验证的 HTTP DELETE 请求来删除角色分配：
+若要撤消接收方的权限，请通过发出经过身份验证的 HTTP DELETE 请求来删除角色分配：
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID

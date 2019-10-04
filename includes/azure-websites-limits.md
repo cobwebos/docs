@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: 1080e3488483610af0f0c9afadaf000895021821
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 8cdfe82888cca471aa5aae6717a16f62000c4ad5
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69657732"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839208"
 ---
 | Resource | 免费 | 已共享 | 基本 | 标准 | 高级 (v2) | 独立 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ ms.locfileid: "69657732"
 <sup>2</sup>可以在这些计算机上托管的应用的实际数目取决于应用的活动、计算机实例的大小和相应的资源利用率。  
 <sup>3</sup>专用实例可有不同的大小。 有关详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。  
 <sup>4</sup>请求时允许更多。  
-<sup>5</sup>存储限制是跨相同应用服务计划中所有应用的内容总大小。  
+<sup>5</sup>存储限制是同一应用服务计划中所有应用的内容总大小。 单个资源组和区域中所有应用服务计划的所有应用的总内容大小不能超过500GB。  
 <sup>6</sup>这些资源受到专用实例上的物理资源（实例大小和实例数）的限制。  
 <sup>7</sup>如果将基本层的某个应用扩展为两个实例，则其中每个实例有 350 个并发连接。 对于标准层和更高版本，web 套接字没有理论限制，但其他因素可能会限制 web 套接的数量。 例如，允许的最大并发请求数（ `maxConcurrentRequestsPerCpu`由定义）为：每个小型 VM 7500、每个中型 VM 15000 （7500 x 2 核心）和每个大型 VM 75000 （18750 x 4 核心）。  
 <sup>8</sup>按需、按计划或作为应用服务实例内的后台任务连续运行自定义可执行文件和/或脚本。 连续执行 WebJob 需要使用“始终打开”。 计划的 WebJob 需要使用 Azure 计划程序免费或标准版。 对于可以在应用服务实例中运行的 Webjob 的数量没有预定义的限制。 有实际的限制取决于应用程序代码尝试执行的操作。  

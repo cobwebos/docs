@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 846f0ecdd49fc1c501893209b60fa9acc8a32ed2
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242333"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828252"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 有问题？ 有关详细信息，请查看以下常见问题解答。
@@ -38,7 +38,7 @@ ms.locfileid: "70242333"
 
 ### <a name="can-i-break-my-build-when-results-are-found"></a>能否在发现结果时中断生成？
 
-是的。 如果任何工具在其日志文件中报告了问题或问题，则可以引入生成中断。 只需添加后期分析生成任务，并选中要为其中断生成的任何工具的复选框。
+是。 如果任何工具在其日志文件中报告了问题或问题，则可以引入生成中断。 只需添加后期分析生成任务，并选中要为其中断生成的任何工具的复选框。
 
 在分析后任务的 UI 中，你可以选择在任何工具仅报告错误或同时报告错误和警告时中断生成。
 
@@ -48,7 +48,7 @@ ms.locfileid: "70242333"
 
 明显差异：
 
-- 从代理 $ （Build.sourcesdirectory）或% BUILD_SOURCESDIRECTORY% 的源文件夹运行的工具。 例如，C:\agent\_work\1\s。
+- 从代理 $ （Build.sourcesdirectory）或% BUILD_SOURCESDIRECTORY% 的源文件夹运行的工具。 例如，C:\agent @ no__t-0work\1\s。
 - 自变量中的路径可以是相对于前面列出的源目录的根目录的相对路径。 路径也可以是绝对路径。 你可以使用 Azure DevOps 生成变量或运行本地代理和本地资源的已知部署位置来获取绝对路径。
 - 工具自动提供输出文件路径或文件夹。 如果提供生成任务的输出位置，则会将该位置替换为生成代理上的日志的众所周知位置的路径
 - 某些工具的其他命令行参数会被更改。 例如，添加或删除确保没有启动 GUI 的选项。
@@ -63,11 +63,11 @@ ms.locfileid: "70242333"
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>工具所生成的输出文件保存在何处？ 
 
-生成任务自动将输出路径添加到生成代理上的此已知位置： $ （agent.builddirectory）\_sdt\logs。 由于我们将在此位置上标准化，因此生成或使用代码分析日志的所有团队都可以访问输出。
+生成任务自动将输出路径添加到生成代理上的此已知位置： $ （Agent.builddirectory） \_sdt \ logs。 由于我们将在此位置上标准化，因此生成或使用代码分析日志的所有团队都可以访问输出。
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>是否可以对生成进行排队以便在托管生成代理上运行这些任务？ 
 
-是的。 扩展中的所有任务和工具都可以在托管生成代理上执行。
+是。 扩展中的所有任务和工具都可以在托管生成代理上执行。
 
 >[!NOTE]
 > 反恶意软件扫描程序生成任务需要启用了 Windows Defender 的生成代理。 托管的 Visual Studio 2017 和更高版本提供此类代理。 生成任务不会在 Visual Studio 2015 托管代理上运行。
@@ -123,7 +123,7 @@ ms.locfileid: "70242333"
 
 文件表达式可以是文件名。 它也可以是完整文件路径或文件名的 basename 部分。 不支持通配符。
 
-下面的示例演示如何禁止显示文件\<InputPath > \src\JS\lib\angular.js
+下面的示例演示如何取消 \<InputPath > \src\JS\lib\angular.js 的文件。
 
 有效抑制规则的示例：
 
@@ -152,12 +152,6 @@ ms.locfileid: "70242333"
 
 #### <a name="what-are-recommended-guidelines-for-managing-secrets"></a>什么是用于管理机密的推荐指导原则？
 
-这有助于快速检测硬编码的机密并降低风险。 但阻止机密的检入甚至更好。
-
-为了帮助实现这一点，Microsoft 已发布凭据扫描器代码分析器的早期预览，作为 Visual Studio 的[Microsoft DevLabs 扩展](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio)的一部分。 分析器是一个早期预览版。 它为开发人员提供了在其代码中检测潜在机密的内嵌体验。 通过这种方式，analyzer 还能让开发人员实时修复这些问题。
-
-有关详细信息，请参阅博客文章[在云中安全管理机密](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)。
-
 以下资源可帮助你安全地管理机密，并从应用程序中访问敏感信息：
 
  - [Azure Key Vault](../../key-vault/index.yml)
@@ -166,6 +160,9 @@ ms.locfileid: "70242333"
  - [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Azure App Service 和 Azure Functions 中的托管标识](../../app-service/overview-managed-identity.md)
  - [Microsoft.azure.services.appauthentication 库](../../key-vault/service-to-service-authentication.md)
+
+
+有关详细信息，请参阅博客文章[在云中安全管理机密](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)。
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>我是否可以编写自己的自定义 searchers？
 
@@ -176,7 +173,7 @@ Credential 扫描器依赖于一组通常在 buildsearchers 文件中定义的�
 - **名称**：要在 Credential 扫描器输出文件中使用的描述性搜索程序名称。 建议为搜索程序名称使用 camel 大小写命名约定。
 - **RuleId**：搜索者的稳定不透明 ID：
     - 为凭据扫描器默认搜索者分配了**RuleId**值，如 CSCAN0010、CSCAN0020 或 CSCAN0030。 最后一个数字保留用于通过正则表达式（regex）合并或划分搜索程序组。
-    - 自定义搜索程序的**RuleId**值应具有其自己的命名空间。 \<示例包括 CSCAN\>0010、\>CSCAN\<和CSCAN\<命名空间0030。\>
+    - 自定义搜索程序的**RuleId**值应具有其自己的命名空间。 示例包括 CSCAN-\<Namespace @ no__t-10010、CSCAN \<Namespace @ no__t-30020 和 @no__t CSCAN-4Namespace @ no__t-50030。
     - 完全限定的搜索者名称是**RuleId**值和搜索者名称的组合。 例如，CSCAN0010。KeyStoreFiles 和 CSCAN0020。Base64EncodedCertificate.
 - **ResourceMatchPattern**：用于对照搜索者检查的文件扩展名的正则表达式。
 - **ContentSearchPatterns**：一个字符串数组，其中包含要匹配的正则表达式语句。 如果未定义搜索模式，则返回与**ResourceMatchPattern**值匹配的所有文件。
@@ -205,13 +202,13 @@ Credential 扫描器依赖于一组通常在 buildsearchers 文件中定义的�
 
 完整的错误消息：
 
-"csc" 已退出，错误代码为 1--无法从 C：\\*BBBB*创建分析器*AAAA*的实例：未能加载文件或程序集 "CodeAnalysis，Version =*x*. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x 系统找不到指定的文件。”
+"csc" 已退出，错误代码为 1--无法从 C： \\*BBBB*创建分析器*AAAA*的实例：未能加载文件或程序集 "CodeAnalysis，Version =*x*. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x 系统找不到指定的文件。”
 
 确保编译器支持 Roslyn 分析器。 运行命令**csc/version**应报告版本值2.6 或更高版本。
 
 有时，.csproj 文件可通过从 Microsoft.Net 引用包来重写生成计算机的 Visual Studio 安装。 如果不打算使用特定版本的编译器，请删除对 Microsoft.Net 的引用。 否则，请确保引用包的版本也为2.6 或更高版本。
 
-尝试获取在**csc/errorlog**选项中指定的错误日志路径。 选项和路径显示在 Roslyn 分析器生成任务的日志中。 它们可能类似于 **/errorlog： f:\ts-services-\_123 work\456\s\Some\Project\Code\Code.csproj.sarif**
+尝试获取在**csc/errorlog**选项中指定的错误日志路径。 选项和路径显示在 Roslyn 分析器生成任务的日志中。 它们可能类似于 **/errorlog： F:\ts-services-123 @ no__t-1work\456\s\Some\Project\Code\Code.csproj.sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>C#编译器版本不是最新版本
 

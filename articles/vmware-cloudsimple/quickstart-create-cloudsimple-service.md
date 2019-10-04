@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 39395c9d082bc40836c14ee4c0d328341f96edca
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: HT
+ms.openlocfilehash: 228ca0f43322c271b1a6db55a37c852ca1f66799
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816116"
+ms.locfileid: "71828910"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>快速入门-创建 Azure VMware 解决方案按 CloudSimple 服务
 
@@ -77,7 +77,7 @@ CloudSimple 服务允许 CloudSimple 使用 Azure VMware 解决方案。  通过
 7. 输入前缀来标识节点。
 8. 选择节点资源的位置。
 9. 选择用于托管节点资源的专用位置。
-10. 选择节点类型。 你可以选择[CS28 或 CS36 选项](cloudsimple-node.md)。 后一种方法包括最大计算和内存容量。
+10. 选择[节点类型](cloudsimple-node.md)。
 11. 选择要预配的节点数。
 12. 选择“查看 + 创建”。
 13. 查看设置。 若要修改任何设置，请单击 "**上一步**"。

@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 485c79bab90295cf9af9ef1dbbc209d46931a485
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 5506f95d532f69286bf29ec8916485bd63ce94da
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984942"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828823"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>为数据库服务器使用虚拟网络服务终结点和规则
 
@@ -124,7 +124,7 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据�
 3.  必须在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下启用“允许受信任的 Microsoft 服务访问此存储帐户”。 有关详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
  
 #### <a name="steps"></a>步骤
-1. 在 PowerShell 中，**注册 azure SQL Server**承载 Azure SQL 数据仓库实例，并将其 AZURE ACTIVE DIRECTORY （AAD）：
+1. 在 PowerShell 中，**向 Azure Active Directory (AAD) 注册**托管 Azure SQL 数据仓库实例的 Azure SQL Server：
 
    ```powershell
    Connect-AzAccount
@@ -138,7 +138,7 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据�
    > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
    > - 若要了解 Azure Data Lake Storage Gen2 的已知问题，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
     
-1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后单击“添加角色分配”。 将**存储 Blob 数据参与者**RBAC 角色分配给 azure SQL Server 托管你已注册到 Azure Active DIRECOTORY （AAD）的 Azure SQL 数据仓库，如步骤1中所述。
+1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后单击“添加角色分配”。 将**存储 Blob 数据参与者**RBAC 角色分配给 azure SQL Server 托管你的 Azure SQL 数据仓库，该数据仓库已注册到你的 Azure SQL 数据仓库，该数据仓库已注册到你的 AZURE ACTIVE DIRECTORY （AAD），
 
    > [!NOTE] 
    > 只有具有“所有者”特权的成员能够执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
@@ -244,7 +244,7 @@ PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdletNew-AzSqlServ
 3. 将“允许访问 Azure 服务”控件设置为“禁用”。
 
     > [!IMPORTANT]
-    > 如果将控制设置为 "打开"，则 Azure SQL 数据库服务器接受来自 Azure 边界内的任何子网的通信，即从可识别为 Azure 数据中心定义的范围内的某个 IP 地址发起。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 针对 SQL 数据库结合使用 Microsoft Azure 虚拟网络服务终结点功能和虚拟网络规则功能，可以降低安全风险。
+    > 如果将此控件保留设置为“启用”，则 Azure SQL 数据库服务器将接受来自 Azure 边界内任何子网的通信，即从识别为 Azure 数据中心定义的范围内的某个 IP 地址发起的通信。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 针对 SQL 数据库结合使用 Microsoft Azure 虚拟网络服务终结点功能和虚拟网络规则功能，可以降低安全风险。
 
 4. 在“虚拟网络”部分单击“+ 添加现有项”控件。
 

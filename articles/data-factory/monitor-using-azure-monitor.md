@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 2a707eda6a7e32a95666dd70e196c8da3c3b7834
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: HT
+ms.openlocfilehash: 6f5472e42b7ef43123698f01ee76fb0e691aa45e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815950"
+ms.locfileid: "71827804"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>使用 Azure Monitor 警报和监视数据工厂
 
@@ -287,7 +287,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| 属性 | 类型 | 描述 | 示例 |
+| 属性 | type | 描述 | 示例 |
 | --- | --- | --- | --- |
 | **级别** |字符串 | 诊断日志的级别。 对于 "活动-运行日志"，将属性值设置为4。 | `4` |
 | **correlationId** |字符串 | 用于跟踪特定请求的唯一 ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -401,7 +401,7 @@ Log Analytics 从监视器中继承架构，但有以下例外：
 * 没有 "级别" 列。
 * 动态 "properties" 列保留为以下动态 JSON blob 类型。
 
-    | Azure Monitor 列 | Log Analytics 列 | type |
+    | Azure Monitor 列 | Log Analytics 列 | 类型 |
     | --- | --- | --- |
     | $. 属性。UserProperties | UserProperties | 动态 |
     | $. 属性。批注 | 批注 | 动态 |
@@ -472,7 +472,7 @@ Azure 数据工厂版本2发出以下度量值。
 * 在_Azure 诊断_模式下，诊断日志流入_AzureDiagnostics_表
 
 > [!NOTE]
-> 由于 Azure 日志表的列数不能超过500，因此强烈建议选择 "特定于资源的模式"。 有关详细信息, 请参阅[Log Analytics 已知限制](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics)。
+> 由于 Azure 日志表的列数不能超过500，因此强烈建议选择 "特定于资源的模式"。 有关详细信息, 请参阅[Log Analytics 已知限制](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics)。
 
 ### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>从 Azure 市场安装 Azure 数据工厂分析
 

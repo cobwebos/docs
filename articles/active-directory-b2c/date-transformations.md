@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 077915705c242805d3709b5d52d445288fa5336a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 13c3f3aaf54bc3fb8ef656b5c1ce227fa70cee0b
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064353"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936785"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
 
@@ -29,8 +29,8 @@ ms.locfileid: "71064353"
 
 | 项 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | leftOperand | string | 第一个声明的类型，应晚于第二个声明。 |
-| inputClaim | rightOperand | string | 第二个声明的类型，应早于第一个声明。 |
+| InputClaim | leftOperand | string | 第一个声明的类型，应晚于第二个声明。 |
+| InputClaim | rightOperand | string | 第二个声明的类型，应早于第一个声明。 |
 | InputParameter | AssertIfEqualTo | boolean | 指定如果左操作数等于右操作数，是否应传递此断言。 |
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | 指定如果缺少右操作数，是否应传递此断言。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | 指定将两个日期时间视为相等时允许两者之间相差的毫秒数（例如，用于说明时钟偏差）。 |

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/25/2019
+ms.date: 10/02/2019
 ms.author: b-juche
-ms.openlocfilehash: 3d34caba9512dc0c0b20cf10476f5c38a2fab8ce
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: bd00c04ecfc211ae4ed410e886c0fe6553bea241
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299656"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827515"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -68,7 +68,11 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 
     请参阅[Azure NetApp 文件的准则网络规划](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)以获取支持的网络拓扑。
 
-    网络安全组（Nsg）和防火墙必须具有适当配置的规则，以允许 Active Directory 和 DNS 流量请求。
+    网络安全组（Nsg）和防火墙必须具有适当配置的规则，以允许 Active Directory 和 DNS 流量请求。 
+
+* Azure NetApp 文件委托子网必须能够访问域中的所有 Active Directory 域服务（添加）域控制器，包括所有本地和远程域控制器。 否则，可能会发生服务中断。  
+
+    如果你的域控制器无法通过 Azure NetApp 文件委托子网访问，你可以提交 Azure 支持请求，将作用域从**全局**（默认）更改为**站点**。  Azure NetApp 文件只需与 Azure NetApp 文件委托子网地址空间所在的站点中的域控制器进行通信。
 
     请参阅设计有关 AD 站点和服务[的站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
 

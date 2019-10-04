@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 5f6f4ce4fc77533a4d893472298ef3a20f153136
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e3e819fc90e8900219ebc7809adb293369084a72
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567991"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828211"
 ---
 # <a name="in-memory-sample"></a>内存中示例
 
@@ -49,7 +49,7 @@ ms.locfileid: "68567991"
 
 2. 使用 SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx) 连接到该数据库。
 
-3. 将 内存中 [OLTP Transact-SQL 脚本](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql)复制到剪贴板。 T-SQL 脚本在步骤 1 创建的 AdventureWorksLT 示例数据库中创建所需的内存中对象。
+3. 将 内存中 [OLTP Transact-SQL 脚本](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql)复制到剪贴板。 T-SQL 脚本在步骤 1 创建的 AdventureWorksLT 示例数据库中创建所需的内存中对象。
 
 4. 将 T-SQL 脚本粘贴到 SSMS，然后执行该脚本。 `MEMORY_OPTIMIZED = ON` 子句 CREATE TABLE 语句至关重要。 例如：
 
@@ -198,7 +198,7 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-inmem-stress-workload-first"></a>首先运行 *_inmem* 压力工作负荷
+### <a name="run-the-_inmem-stress-workload-first"></a>首先运行 *_inmem* 压力工作负荷
 
 
 可以使用 *RML 命令提示符*窗口来运行 ostress.exe 命令行。 命令行参数将 `ostress` 定向到：
@@ -236,7 +236,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-ondisk-then-rerun"></a>重置，编辑 _ondisk，然后重新运行
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>重置，编辑 _ondisk，然后重新运行
 
 
 在获得 _inmem 运行结果之后，请针对 _ondisk 运行执行以下步骤：
@@ -279,7 +279,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
    - 使用相同的名称。
    - 选择任一“高级”服务层级。
 
-2. 将 [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) 复制到剪贴板。
+2. 将 [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) 复制到剪贴板。
    - T-SQL 脚本在步骤 1 创建的 AdventureWorksLT 示例数据库中创建所需的内存中对象。
    - 该脚本将创建维度表和两个事实表。 每个事实表中填充了 350 万行。
    - 该脚本可能需要 15 分钟才能完成。
@@ -302,7 +302,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>用于比较列存储索引的关键查询
 
 
-[可以运行多种 T-SQL 查询类型](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql)来查看性能改进情况。 在 T-SQL 脚本的步骤 2 中，请注意这一对查询。 这一对查询只是在一行上有所不同：
+[可以运行多种 T-SQL 查询类型](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/clustered_columnstore_sample_queries.sql)来查看性能改进情况。 在 T-SQL 脚本的步骤 2 中，请注意这一对查询。 这一对查询只是在一行上有所不同：
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`

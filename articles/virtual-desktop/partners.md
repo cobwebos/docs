@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673017"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937498"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -33,9 +33,9 @@ Citrix 扩展了 Windows 虚拟桌面的价值和强大的企业工具，以提�
 
 ![VMware 徽标](./media/partners/vmware.png)
 
-Microsoft Azure 上的 VMware 横向云使组织能够将其自己的 Microsoft Azure 实例连接到简单的直观横向云控制平面，从而创建一个安全、全面的云托管解决方案来实现虚拟化Windows 应用程序和桌面。 随着 Windows 虚拟桌面版的发布，VMware 已与 Microsoft 合作，将 Windows 虚拟桌面的功能扩展到在 Microsoft Azure 上使用地平线 Cloud 的客户。
-
-作为批准的提供商，Microsoft Azure 客户的 VMware 横向云可获得 Windows 虚拟桌面的所有权益，例如 Windows 10 Enterprise for 多会话、带有免费扩展安全更新的 Windows 7 和 FSLogix功能，以及地平线云的所有新式企业级功能，如广泛的终结点支持;全球云优化协调，灵活的桌面选项和配置，用户环境管理，以及对混合环境的支持。 
+Microsoft Azure 上的 VMware 横向云使组织能够将其自己的 Microsoft Azure 实例连接到简单的直观横向云控制平面，从而创建一个安全、全面的云托管解决方案来实现虚拟化Windows 应用程序和桌面。 随着 Windows 虚拟桌面版的发布，VMware 已与 Microsoft 合作，将 Windows 虚拟桌面的功能扩展到在 Microsoft Azure 上使用地平线 Cloud 的客户。 此功能将在2019年底的技术预览版中提供。
+ 
+作为批准的提供商，Windows 虚拟桌面的优势将扩展到 Microsoft Azure 客户上的 VMware 横向云，包括 Windows 10 企业版（多会话）、Windows 7 （免费扩展安全更新，最多三年）以及FSLogix. 此外，客户还将收到地平线云的企业级功能，如广泛的终结点支持;全球云优化协调;灵活的桌面选项和配置;用户环境管理;和对混合环境的支持。
 
 - [在 Microsoft Azure 上注册适用于地平线云的技术预览版](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)。
 - [请参阅合作伙伴网站](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)。
@@ -93,7 +93,7 @@ Nerdio 是一个 Azure IT 自动化平台，可让你轻松地部署和管理 Wi
 Nerdio 扩展了 Windows 虚拟桌面的价值，使其易于预配 Azure 资源和简化部署。 使用 Nerdio for Azure，它可以在两个小时内自动部署和管理完整的 Azure 环境（包括 Windows 虚拟桌面）。
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)。
-- [请参阅合作伙伴网站](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/)。
+- [请参阅合作伙伴网站](https://getnerdio.com/windows-virtual-desktop/)。
 
 ## <a name="thinprint"></a>ThinPrint
 

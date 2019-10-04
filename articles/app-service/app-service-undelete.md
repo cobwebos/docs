@@ -6,12 +6,12 @@ ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
 ms.service: app-service
-ms.openlocfilehash: a766f7ed7a82874df8ef7506226de0d6f38a5847
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 7b3a21f3cfee806dc94353e0bc6c11e88641ea34
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219533"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827522"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>使用 PowerShell 还原已删除的应用服务应用
 
@@ -52,3 +52,5 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 - **TargetAppServicePlanName**：链接到应用的应用服务计划
 
 默认情况`Restore-AzDeletedWebApp`下，会还原应用配置以及内容。 如果只想还原内容，请对此 commandlet 使用`-RestoreContentOnly`标志。
+
+可在此处找到完整的 commandlet 引用：[AzDeletedWebApp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp)。

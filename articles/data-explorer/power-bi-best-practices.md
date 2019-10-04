@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 53bed3fe50afef260ac44f73a9f82e6894015c90
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349007"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937324"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>使用 Power BI 查询和可视化 Azure 数据资源管理器数据的最佳做法
 
@@ -34,7 +34,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
    * 使用[弱一致性提高并行度](/azure/kusto/concepts/queryconsistency)。 这可能会影响数据的新鲜度。
 
-* **有效切片**器–您可以使用[同步切片](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages)器来防止报表在准备就绪之前加载数据。 构建数据集并标记所有视觉对象并标记所有切片器后，你可以选择同步切片器以仅加载所需数据。
+* **有效切片**器–使用[同步切片](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages)器来防止报表在准备就绪之前加载数据。 构建数据集并标记所有视觉对象并标记所有切片器后，你可以选择同步切片器以仅加载所需数据。
 
 * **使用筛选器**-尽可能多地使用 Power BI 筛选器，使 Azure 数据资源管理器搜索相关的数据分片。
 
@@ -104,7 +104,7 @@ in
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
     ```
 
-1. 用参数替换查询的相关部分。 将查询拆分为多个部分，并使用 & 符号以及参数将其连接回。
+1. 用参数替换查询的相关部分。 将查询拆分为多个部分，并使用 "与" 符号（&）以及参数将其连接回去。
 
    例如，在上面的查询中， `State == 'ALABAMA'`我们将使用部分，并将其拆分为： `State == '`和`'` ，并且我们会在`State`它们之间放置参数：
    
@@ -138,7 +138,7 @@ in
 
 ### <a name="dont-use-power-bi-data-refresh-scheduler-to-issue-control-commands-to-kusto"></a>不要使用 Power BI 数据刷新计划程序向 Kusto 发出控制命令。
 
-Power BI 包括可以定期对数据源发出查询的数据刷新计划程序。 此机制不应用于计划 Kusto 的控制命令，因为 Power BI 假设所有查询都是只读的。
+Power BI 包括可以定期对数据源发出查询的数据刷新计划程序。 此机制不应用于将控制命令计划给 Kusto，因为 Power BI 假设所有查询都是只读的。
 
 ### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI 只能向 Kusto 发送 short （&lt;2000 个字符）的查询
 

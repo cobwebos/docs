@@ -1,51 +1,51 @@
 ---
 title: 使用 Azure 门户将 Azure 虚拟网络移到另一个 Azure 区域。
-description: 使用 Azure 资源管理器模板将 Azure 虚拟网络从一个 Azure 区域移到另一个 Azure 区域，使用 Azure 门户。
+description: 使用资源管理器模板和 Azure 门户将 Azure 虚拟网络从一个 Azure 区域移到另一个区域。
 author: asudbring
 ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: a09ce7b77dfcaa51e7c82f67a5d20000f3e22b61
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d6f417e53e7d7a1a242a0c0dc56c2356f78f5344
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219993"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828949"
 ---
-# <a name="move-azure-virtual-network-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 虚拟网络移到另一个区域
+# <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将 Azure 虚拟网络移到另一个区域
 
-在各种情况下，你想要将现有的 Azure 虚拟网络（Vnet）从一个区域移到另一个区域。 例如，你可能想要使用相同的配置来创建虚拟网络，以便测试和现有虚拟网络的可用性。 你可能还希望将生产虚拟网络作为灾难恢复计划的一部分转移到另一个区域。
+将现有的 Azure 虚拟网络从一个区域移到另一个区域的方案有多种。 例如，你可能希望使用与现有虚拟网络相同的测试和可用性配置来创建虚拟网络。 或者，您可能希望将生产虚拟网络作为灾难恢复计划的一部分转移到另一个区域。
 
-你可以使用 Azure 资源管理器模板来完成将虚拟网络移动到另一个区域。 为此，可将虚拟网络导出到模板，修改参数以匹配目标区域，然后将模板部署到新区域。  有关资源管理器和模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)
+你可以使用 Azure 资源管理器模板来完成将虚拟网络移动到另一个区域。 为此，可将虚拟网络导出到模板，修改参数以匹配目标区域，然后将模板部署到新区域。 有关资源管理器模板的详细信息，请参阅 [Quickstart：使用 Azure 门户创建和部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
 
 
 ## <a name="prerequisites"></a>先决条件
 
-- 请确保 Azure 虚拟网络位于要移动的 Azure 区域中。
+- 确保你的虚拟网络位于要移动的 Azure 区域中。
 
-- 若要导出虚拟网络并部署模板以在另一个区域中创建虚拟网络，你将需要网络参与者角色或更高版本。
+- 若要导出虚拟网络并部署模板以在另一个区域中创建虚拟网络，需要具有网络参与者角色或更高版本。
 
-- 虚拟网络对等互连不会重新创建，如果仍存在于模板中，它将失败。  在导出模板之前，必须删除所有虚拟网络对等方，然后在移动虚拟网络后重新建立对等节点。
+- 虚拟网络对等互连不会重新创建，如果仍然存在于模板中，它们将会失败。 导出模板之前，必须删除任何虚拟网络对等节点。 然后，你可以在虚拟网络移动后重新建立它们。
 
 - 确定源网络布局和当前正在使用的所有资源。 此布局包括但不限于负载均衡器、网络安全组（Nsg）和公共 Ip。
 
-- 验证 Azure 订阅是否允许在使用的目标区域中创建虚拟网络。 请联系支持部门，启用所需配额。
+- 验证 Azure 订阅是否允许在目标区域中创建虚拟网络。 若要启用所需的配额，请联系支持人员。
 
-- 请确保订阅中有足够的资源，以支持为此过程添加虚拟网络。  请参阅 [Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)
+- 请确保订阅中有足够的资源，以支持为此过程添加虚拟网络。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)。
 
 
-## <a name="prepare-and-move"></a>准备并移动
-以下步骤演示了如何使用资源管理器模板为移动准备虚拟网络，以及使用门户将虚拟网络移动到目标区域。
+## <a name="prepare-for-the-move"></a>准备移动
+在本部分中，将使用资源管理器模板为移动准备虚拟网络。 然后，使用 Azure 门户将虚拟网络移动到目标区域。
 
-### <a name="export-the-template-and-deploy-from-the-portal"></a>导出模板并从门户部署
+若要导出虚拟网络并使用 Azure 门户部署目标虚拟网络，请执行以下操作：
 
-1. 登录到[Azure 门户](https://portal.azure.com) > **资源组**。
-2. 找到包含源虚拟网络的资源组，然后单击它。
-3. 选择 >**设置** > ""**导出模板**"。
-4. 在 "**导出模板**" 边栏选项卡中选择 "**部署**"。
-5. 单击 "**模板** > " "**编辑参数**"，在联机编辑器中打开 "参数文件" **。**
-6. 若要编辑虚拟网络名称的参数，请在 "**参数**" 下更改 "**值**" 属性：
+1. 登录到[Azure 门户](https://portal.azure.com)，然后选择 "**资源组**"。
+1. 找到包含源虚拟网络的资源组，然后选择它。
+1. 选择 "**设置** > " "**导出模板**"。
+1. 在 "**导出模板**" 窗格中，选择 "**部署**"。
+1. 若要在在线编辑器中打开*parameters*文件，请选择 "**模板** > **编辑参数**"。
+1. 若要编辑虚拟网络名称的参数，请在 "**参数**" 下更改 "**值**" 属性：
 
     ```json
     {
@@ -58,13 +58,14 @@ ms.locfileid: "71219993"
         }
     }
     ```
-7. 将编辑器中的 "源虚拟网络名称" 值更改为目标 VNET 所选的名称。 确保将名称括在引号中。
 
-8.  在编辑器中单击 "**保存**"。
+1. 在编辑器中，将编辑器中的 "源虚拟网络名称" 值更改为目标虚拟网络所需的名称。 请确保将该名称括在引号中。
 
-9.  单击 "**模板** > " "**编辑模板**"，在联机编辑器中打开**模板**文件。
+1. 在编辑器中选择 "**保存**"。
 
-10. 若要编辑 VNET 将移动到的目标区域，请在 "联机" 编辑器中的 "**资源**" 下更改 "**位置**" 属性：
+1. 若要在在线编辑器中打开*模板 json*文件，请选择 "**模板** > **编辑模板**"。
+
+1. 在 "联机" 编辑器中，若要编辑要将虚拟网络移动到的目标区域，请更改 "**资源**" 下的 "**位置**" 属性：
 
     ```json
     "resources": [
@@ -84,11 +85,11 @@ ms.locfileid: "71219993"
 
     ```
 
-11. 若要获取地区位置代码，请参阅[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国** = 中部**centralus**的区域名称。
+1. 若要获取地区位置代码，请参阅[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域的代码是区域名称，没有空格（例如，**美国中部** = **centralus**）。
 
-12. 你还可以根据需要更改模板中的其他参数，并根据需要进行选择：
+1. 可有可无还可以根据需要更改模板中的其他参数：
 
-    * **地址空间**-可以在保存之前更改 VNET 的地址空间，方法是修改**resources** > **addressSpace**部分，**并在 addressPrefixes 文件中**更改属性：
+    * **地址空间**：在保存文件之前，可以通过修改**资源** > **addressSpace**部分并更改**addressPrefixes**属性，来更改虚拟网络的地址空间：
 
         ```json
                 "resources": [
@@ -108,7 +109,7 @@ ms.locfileid: "71219993"
 
         ```
 
-    * **子网**-子网名称和子网地址空间可以通过修改**模板 json**文件中的**子网**部分来更改或添加。 可以通过更改 "**名称**" 属性更改子网的名称。 可以通过更改**addressPrefix** **文件中的 "** 属性" 属性来更改子网地址空间：
+    * **子网**：可以通过更改模板的**子网**部分来更改或添加到子网名称和子网地址空间。 可以通过更改 "**名称**" 属性来更改子网的名称。 您可以通过更改**addressPrefix**属性来更改子网地址空间：
 
         ```json
                 "subnets": [
@@ -139,7 +140,7 @@ ms.locfileid: "71219993"
                 ]
         ```
 
-         在**模板 json**文件中，若要更改地址前缀，必须在两个位置中进行编辑，上面列出的部分和下面列出的**类型**部分。  更改**addressPrefix**属性，使其与上面的属性匹配：
+        若要更改*模板 json*文件中的地址前缀，请在以下两个位置中进行编辑：在上一节中的代码中，在以下代码的**type**节中进行编辑。 更改以下代码中的**addressPrefix**属性，以匹配上一部分代码中的**addressPrefix**属性。
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -175,32 +176,38 @@ ms.locfileid: "71219993"
          ]
         ```
 
-13. 在联机编辑器中单击 "**保存**"。
+1. 在联机编辑器中，选择 "**保存**"。
 
-14. 单击 "**基本** > **订阅**" 以选择将在其中部署目标 VNET 的订阅。
+1. 若要选择将在其中部署目标虚拟网络的订阅，请选择 "**基础** > **订阅**"。
 
-15. 单击 "**基本** > **资源组**" 以选择将在其中部署目标 VNET 的资源组。  可以单击 "**新建**" 为目标 VNET 创建新的资源组。  确保该名称与现有 VNET 的源资源组不相同。
+1. 若要选择将在其中部署目标虚拟网络的资源组，请选择 "**基础** > **资源组**"。 
 
-16. 验证**基本** > **位置**是否设置为要在其中部署 VNET 的目标位置。
+    如果需要为目标虚拟网络创建新的资源组，请选择 "**新建**"。 请确保名称与现有虚拟网络中的源资源组名称不同。
 
-17. 在 "**设置**" 下验证名称是否与上述 "参数编辑器" 中输入的名称相匹配。
+1. 验证**基本** > **位置**是否设置为要在其中部署虚拟网络的目标位置。
 
-18. 选中 "**条款和条件**" 下面的框。
+1. 在 "**设置**" 下，验证名称是否与您之前在参数编辑器中输入的名称相匹配。
 
-19. 单击 "**购买**" 按钮部署目标虚拟网络。
+1. 选中 "**条款和条件**" 复选框。
 
-## <a name="discard"></a>弃用
+1. 若要部署目标虚拟网络，请选择 "**购买**"。
 
-如果希望放弃目标虚拟网络，请删除包含目标虚拟网络的资源组。  为此，请在门户的 "仪表板" 中选择资源组，并选择 "概述" 页顶部的 "**删除**"。
+## <a name="delete-the-target-virtual-network"></a>删除目标虚拟网络
+
+若要放弃目标虚拟网络，请删除包含目标虚拟网络的资源组。 为此，请执行以下操作：
+1. 在 Azure 门户 "仪表板上，选择资源组。
+1. 在 "**概述**" 窗格的顶部，选择 "**删除**"。
 
 ## <a name="clean-up"></a>清理
 
-若要提交更改并完成虚拟网络的移动，请删除源虚拟网络或资源组。 为此，请在门户的 "仪表板" 中选择虚拟网络或资源组，并在每个页面顶部选择 "**删除**"。
+若要提交更改并完成虚拟网络移动，请删除源虚拟网络或资源组。 为此，请执行以下操作：
+1. 在 Azure 门户仪表板上，选择虚拟网络或资源组。
+1. 在每个窗格的顶部，选择 "**删除**"。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已将 Azure 虚拟网络从一个区域移到另一个区域，并清理了源资源。  若要详细了解如何在 Azure 中的区域和灾难恢复之间移动资源，请参阅：
+在本教程中，通过使用 Azure 门户将 Azure 虚拟网络从一个区域移到另一个区域，然后清理不需要的源资源。 若要详细了解如何在 Azure 中的区域和灾难恢复之间移动资源，请参阅：
 
 
 - [将资源移到新资源组或订阅中](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [将 Azure VM 移到另一区域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [将 Azure 虚拟机移动到另一个区域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/01/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
-ms.translationtype: MT
+ms.openlocfilehash: df12d6866f5e9e6bf492e228e32b0b10f7266eb4
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260861"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843862"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>如何在 Azure 数字孪生中调试用户定义的函数
 
@@ -55,6 +55,13 @@ AzureDiagnostics
 | 查询值 | 替换为 |
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | 已在事件数据中指定的相关 ID |
+
+若要查看所有最近的遥测日志查询：
+
+```Kusto
+AzureDiagnostics
+| order by CorrelationId desc
+```
 
 如果为用户定义函数启用日志记录, 则这些日志将显示在日志分析实例中, 其类别`UserDefinedFunction`为。 若要检索它们, 请在 log analytics 中输入以下查询条件:
 

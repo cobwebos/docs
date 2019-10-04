@@ -6,14 +6,14 @@ author: mlearned
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 54a95186a297cf3604858341fb8f5aba3702bf5a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4d736556147797bcd007bdab1b5328deeadea712
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241781"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827356"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -25,7 +25,7 @@ ms.locfileid: "70241781"
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS 是否支持节点自动缩放？
 
-是的，当前在预览版中提供自动缩放 AKS 中的代理节点的功能。 有关说明，请参阅[自动缩放群集以满足 AKS 中的应用程序需求][aks-cluster-autoscaler]。 AKS 自动缩放基于[Kubernetes 自动缩放程序][auto-scaler]。
+是的, 当前在预览版中提供自动缩放 AKS 中的代理节点的功能。 有关说明，请参阅[自动缩放群集以满足 AKS 中的应用程序需求][aks-cluster-autoscaler]。 AKS 自动缩放基于[Kubernetes 自动缩放程序][auto-scaler]。
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>是否可以将 AKS 部署到现有虚拟网络？
 
@@ -33,7 +33,7 @@ ms.locfileid: "70241781"
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>能否限制谁有权访问 Kubernetes API 服务器？
 
-是的，你可以使用[API 服务器授权的 IP 范围][api-server-authorized-ip-ranges]（当前为预览版）限制对 Kubernetes API 服务器的访问。
+是的, 你可以使用[API 服务器授权的 IP 范围][api-server-authorized-ip-ranges](当前为预览版) 限制对 Kubernetes API 服务器的访问。
 
 ## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>是否可以限制为只能在我的虚拟网络中访问 Kubernetes API 服务器？
 
@@ -41,7 +41,7 @@ ms.locfileid: "70241781"
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>单个群集中是否可以有不同的 VM 大小？
 
-是的，可以通过创建[多个节点池][multi-node-pools]（当前为预览版），在 AKS 群集中使用不同的虚拟机大小。
+是的, 可以通过创建[多个节点池][multi-node-pools](当前为预览版), 在 AKS 群集中使用不同的虚拟机大小。
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>安全更新是否可应用于 AKS 代理节点？
 
@@ -55,20 +55,22 @@ Azure 会按照夜间计划自动将安全修补程序应用于群集中的 Linu
 
 ### <a name="windows-server-nodes"></a>Windows Server 节点
 
-对于 Windows Server 节点（当前在 AKS 中为预览版），Windows 更新不会自动运行和应用最新更新。 在围绕 Windows 更新发布周期和你自己的验证过程的定期计划中，你应在 AKS 群集中的群集和 Windows Server 节点池上执行升级。 此升级过程创建运行最新 Windows Server 映像和修补程序的节点，然后删除旧节点。 有关此过程的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
+对于 Windows Server 节点 (当前在 AKS 中为预览版), Windows 更新不会自动运行和应用最新更新。 在围绕 Windows 更新发布周期和你自己的验证过程的定期计划中，你应在 AKS 群集中的群集和 Windows Server 节点池上执行升级。 此升级过程创建运行最新 Windows Server 映像和修补程序的节点, 然后删除旧节点。 有关此过程的详细信息, 请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>为什么使用 AKS 创建两个资源组？
 
-每个 AKS 部署都跨越两个资源组：
+AKS 基于多个 Azure 基础结构资源（包括虚拟机规模集、虚拟网络和托管磁盘）构建。 这使你能够利用 AKS 提供的托管 Kubernetes 环境中的许多 Azure 平台核心功能。 例如，大多数 Azure 虚拟机类型都可直接用于 AKS，而 Azure 保留可用于自动接收这些资源的折扣。
+
+若要启用此体系结构，每个 AKS 部署都跨越两个资源组：
 
 1. 创建第一个资源组。 此组仅包含 Kubernetes 服务资源。 在部署过程中，AKS 资源提供程序会自动创建第二个资源组。 第二个资源组的一个示例是*MC_myResourceGroup_myAKSCluster_eastus*。 有关如何指定这第二个资源组的名称，请参阅下一部分。
 1. 第二个资源组（称为节点资源组）包含与该群集相关联的所有基础结构资源。 这些资源包括 Kubernetes 节点 VM、虚拟网络和存储。 默认情况下，节点资源组具有类似于*MC_myResourceGroup_myAKSCluster_eastus*的名称。 每当删除群集，AKS 就会自动删除节点资源，因此，请只对生命周期与群集相同的资源使用 AKS。
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>我是否可为 AKS 节点资源组提供自己的名称？
 
-是的。 默认情况下，AKS 将命名节点资源组*MC_resourcegroupname_clustername_location*，但也可以提供自己的名称。
+是。 默认情况下，AKS 将节点资源组命名为 MC_resourcegroupname_clustername_location，但你也可以提供自己的名称。
 
-若要指定自己的资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 *0.3.2* 或更高版本。 使用 [az aks create][az-aks-create] 命令创建 AKS 群集时，请使用 *--node-resource-group* 参数并指定资源组的名称。 如果[使用 Azure 资源管理器模板][aks-rm-template]来部署 AKS 群集，则可以使用*nodeResourceGroup*属性来定义资源组名称。
+若要指定自己的资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 *0.3.2* 或更高版本。 使用 [az aks create][az-aks-create] 命令创建 AKS 群集时，请使用 *--node-resource-group* 参数并指定资源组的名称。 如果[使用 Azure 资源管理器模板][aks-rm-template]来部署 AKS 群集, 则可以使用*nodeResourceGroup*属性来定义资源组名称。
 
 * Azure 资源提供程序会在你自己的订阅中自动创建辅助资源组。
 * 只能在创建群集时指定自定义资源组名称。
@@ -108,15 +110,15 @@ AKS 目前尚未与 Azure Key Vault 本机集成。 但是，[Kubernetes 项目�
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>是否可以在 AKS 上运行 Windows Server 容器？
 
-是的，Windows Server 容器在预览版中可用。 若要在 AKS 中运行 Windows Server 容器，请创建一个运行 Windows Server 作为来宾 OS 的节点池。 Windows Server 容器只能使用 Windows Server 2019。 若要开始，请参阅[使用 Windows Server 节点池创建 AKS 群集][aks-windows-cli]。
+是的, Windows Server 容器在预览版中可用。 若要在 AKS 中运行 Windows Server 容器, 请创建一个运行 Windows Server 作为来宾 OS 的节点池。 Windows Server 容器只能使用 Windows Server 2019。 若要开始, 请参阅[使用 Windows Server 节点池创建 AKS 群集][aks-windows-cli]。
 
-Windows Server 对节点池的支持在 Kubernetes 项目中包含属于上游 Windows Server 的一些限制。 有关这些限制的详细信息，请参阅[Windows Server 容器中的 AKS 限制][aks-windows-limitations]。
+Windows Server 对节点池的支持在 Kubernetes 项目中包含属于上游 Windows Server 的一些限制。 有关这些限制的详细信息, 请参阅[Windows Server 容器中的 AKS 限制][aks-windows-limitations]。
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS 是否提供服务级别协议？
 
-在服务级别协议 (SLA) 中，如果未满足已发布的服务级别，提供商同意向客户偿还服务费用。 由于 AKS 是免费的，因此无需支付任何费用，因此 AKS 没有正式的 SLA。 不过，AKS 会设法将 Kubernetes API 服务器的可用性维持在不小于 99.5% 的水平上。
+在服务级别协议 (SLA) 中，如果未满足已发布的服务级别，提供商同意向客户偿还服务费用。 由于 AKS 是免费的，不存在偿还费用，因此也就没有正式的 SLA。 不过，AKS 会设法将 Kubernetes API 服务器的可用性维持在不小于 99.5% 的水平上。
 
-务必认识到 Kubernetes 控制面的运行时间和在 Azure 虚拟机上运行的特定工作负荷的可用性，这是 AKS 服务可用性的区别。 尽管控制平面在控制平面未就绪时可能不可用，但在 Azure Vm 上运行的群集工作负荷仍可正常工作。 给定的 Azure Vm 是由财务 SLA 提供支持的已支付资源。 请在此处阅读有关 Azure VM SLA 的[更多详细信息](https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/)，以及如何通过[可用性区域][availability-zones]等功能提高该可用性。
+重要的是要认识到 AKS 服务可用性（指 Kubernetes 控制平面的正常运行时间）和在 Azure 虚拟机上运行的特定工作负荷的可用性之间的区别。 尽管控制平面在控制平面未就绪时可能不可用，但在 Azure VM 上运行的群集工作负荷仍可正常工作。 鉴于 Azure VM 是付费资源，它们由财务 SLA 提供支持。 请在此处阅读有关 Azure VM SLA 的[更多详细信息](https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/)，以及如何通过[可用性区域][availability-zones]等功能提高该可用性。
 
 ## <a name="why-cant-i-set-maxpods-below-30"></a>为何无法将 maxPods 设置为 30 以下？
 
@@ -133,9 +135,9 @@ Windows Server 对节点池的支持在 Kubernetes 项目中包含属于上游 W
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>是否可将 Azure 预订折扣应用于 AKS 代理节点？
 
-AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AKS 中使用的 VM 大小购买[Azure 保留][reservation-discounts]，则会自动应用这些折扣。
+AKS 代理节点按标准 Azure 虚拟机计费, 因此, 如果你已为在 AKS 中使用的 VM 大小购买[Azure 保留][reservation-discounts], 则会自动应用这些折扣。
 
-## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>能否在 Azure 租户之间移动/迁移群集？
+## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>我可以在 Azure 租户之间移动/迁移群集吗？
 
 可以使用 `az aks update-credentials` 命令在 Azure 租户之间移动 AKS 群集。 按[选择更新或创建服务主体](https://docs.microsoft.com/azure/aks/update-credentials)中的说明操作，然后[使用新凭据更新 AKS 群集](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials)。
 

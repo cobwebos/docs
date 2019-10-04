@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 386dc737bb45eec031aaa1a0c55f4478b8302c54
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 05bb8b75fb09f3b8df0a6775874e72bdb04fc65e
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173580"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937544"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -40,7 +40,7 @@ ms.locfileid: "71173580"
 | 订阅 | 包含 Azure Data Lake Storage 帐户的订阅。 |
 | 帐户名 | 要向其发送输出的 Data Lake Store 帐户的名称。 你会看到一个下拉列表, 其中列出了你的订阅中可用的 Data Lake Store 帐户。 |
 | 路径前缀模式 | 用于在指定的 Data Lake Store 帐户中写入文件的文件路径。 可以指定 {date} 和 {time} 变量的一个或多个实例:<br /><ul><li>示例 1：folder1/logs/{date}/{time}</li><li>示例 2：folder1/logs/{date}</li></ul><br />创建的文件夹结构的时间戳遵循 UTC 而不是本地时间。<br /><br />如果文件路径模式不包含尾部反斜杠 (/), 则文件路径中的最后一个模式将被视为文件名前缀。 <br /><br />在这些情况下会创建新文件：<ul><li>在输出架构中进行更改</li><li>作业的外部或内部重启</li></ul> |
-| 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 例如：YYYY/MM/DD |
+| 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD |
 |时间格式 | 可选。 如果在前缀路径中使用时间令牌，可以指定组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV 和 Avro。|
 | 编码 | 如果使用 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式。|
@@ -52,21 +52,20 @@ ms.locfileid: "71173580"
 
 可以使用[AZURE SQL 数据库](https://azure.microsoft.com/services/sql-database/)作为本质上的关系或依赖于在关系数据库中托管的内容的应用程序的输出。 流分析作业将写入 SQL 数据库中的现有表。 表架构必须与作业输出中的字段及其类型完全匹配。 还可以通过 SQL 数据库输出选项指定[AZURE SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)作为输出。 若要了解提高写入吞吐量的方法, 请参阅将[AZURE SQL 数据库作为输出的流分析](stream-analytics-sql-output-perf.md)一文。
 
+您还可以将[Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)用作输出。 你必须[在 Azure SQL 数据库托管实例中配置公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)，然后在 Azure 流分析中手动配置以下设置。 通过手动配置以下设置，还支持运行与附加了数据库的 SQL Server 的 Azure 虚拟机。
+
 下表列出了用于创建 SQL 数据库输出的属性名称及其说明。
 
 | 属性名 | 说明 |
 | --- | --- |
 | 输出别名 |在查询中使用的友好名称，用于将查询输出定向到此数据库。 |
 | 数据库 | 要将输出发送到的数据库的名称。 |
-| 服务器名称 | SQL 数据库服务器名称。 |
+| 服务器名称 | SQL 数据库服务器名称。 对于 Azure SQL 数据库托管实例，需要指定端口3342。 例如， *sampleserver、3342*的实例。 |
 | 用户名 | 对数据库具有写入访问权限的用户名。 流分析仅支持 SQL 身份验证。 |
 | 密码 | 用于连接到数据库的密码。 |
 | 表 | 将写入输出的表名称。 表名称区分大小写。 此表的架构应与作业输出生成的字段数量及其类型完全匹配。 |
 |继承分区方案| 用于继承上一个查询步骤的分区方案的选项, 用于对表启用具有多个编写器的完全并行拓扑。 有关详细信息，请参阅从 [Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)。|
 |最大批处理计数| 建议的每个大容量插入事务发送的记录数的上限。|
-
-> [!NOTE]
-> 流分析中的作业输出支持 Azure SQL 数据库产品/服务, 但尚不支持运行 SQL Server 的 Azure 虚拟机 (附带附加的数据库或 SQL Azure 托管实例)。 这在将来的版本中可能会有所改变。
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>Blob 存储和 Azure Data Lake Gen2
 
@@ -83,7 +82,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 | 存储帐户密钥 | 与存储帐户关联的密钥。                              |
 | 存储容器   | 对存储在 Azure Blob 服务中的 blob 进行逻辑分组。 将 blob 上传到 Blob 服务时，必须为该 blob 指定一个容器。 |
 | 路径模式 | 可选。 用于写入指定容器中的 blob 的文件路径模式。 <br /><br /> 在路径模式中，可以选择使用数据时间变量的一个或多个实例指定 blob 写入的频率： <br /> {date}、{time} <br /><br />可以使用自定义 blob 分区从事件数据中指定一个自定义 {field} 名称来对 blob 进行分区。 字段名称是字母数字，并且可以包含空格、连字符和下划线。 对自定义字段的限制包括以下内容： <ul><li>字段名称不区分大小写。 例如，服务无法区分列“ID”和列“id”。</li><li>不允许嵌套字段。 在作业查询中改用别名来“平展”字段。</li><li>不能使用表达式作为字段名称。</li></ul> <br />通过此功能可以在路径中使用自定义日期/时间格式说明符配置。 一次只能指定一个自定义日期和时间格式，并用 {datetime:\<specifier>} 关键字括起来。 \<specifier> 允许的输入为 yyyy、MM、M、dd、d、HH、H、mm、m、ss 或 s。 可以在路径中多次使用 {datetime:\<specifier>} 关键字以构成自定义的日期/时间配置。 <br /><br />例如： <ul><li>示例 1：cluster1/logs/{date}/{time}</li><li>示例 2：cluster1/logs/{date}</li><li>示例 3：cluster1/{client_id}/{date}/{time}</li><li>示例 4：cluster1/{datetime:ss}/{myField}，其中查询是：SELECT data.myField AS myField FROM Input;</li><li>示例 5：cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />创建的文件夹结构的时间戳遵循 UTC 而不是本地时间。<br /><br />文件命名采用以下约定： <br /><br />{路径前缀模式}/schemaHashcode_Guid_Number.extension<br /><br />示例输出文件：<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />有关此功能的详细信息，请参阅 [Azure 流分析自定义 blob 输出分区](stream-analytics-custom-path-patterns-blob-storage-output.md)。 |
-| 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 例如：YYYY/MM/DD |
+| 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD |
 | 时间格式 | 可选。 如果在前缀路径中使用时间令牌，可以指定组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV、Avro 和 Parquet。 |
 |最小行数 (仅 Parquet)|每批的最小行数。 对于 Parquet, 每个批处理都将创建一个新文件。 当前默认值为2000行, 允许的最大值为10000行。|
@@ -253,7 +252,7 @@ datetime | 字符串 | 字符串 |  datetime | 字符串
 | 帐户 ID | Azure Cosmos DB 帐户的名称或终结点 URI。 |
 | 帐户密钥 | Azure Cosmos DB 帐户的共享访问密钥。 |
 | 数据库 | Azure Cosmos DB 数据库名称。 |
-| 容器名 | 要使用的容器名称, 该名称必须存在于 Cosmos DB 中。 例如：  <br /><ul><li> _MyContainer_:名为 "MyContainer" 的容器必须存在。</li>|
+| 容器名 | 要使用的容器名称, 该名称必须存在于 Cosmos DB 中。 示例：  <br /><ul><li> _MyContainer_:名为 "MyContainer" 的容器必须存在。</li>|
 | 文档 ID |可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。
 
 ## <a name="azure-functions"></a>Azure Functions

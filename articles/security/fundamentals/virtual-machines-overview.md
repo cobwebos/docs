@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7b33484084b4ada5aeaf89eb90167658ade15ad8
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4aca2a4495d4b6c3669982b2e7757b7252d70f6a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899787"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828559"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 本文概述了可用于虚拟机的核心 Azure 安全功能。
@@ -37,7 +37,7 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 * 识别和检测威胁。
 * 满足符合性要求。  
 
-## <a name="antimalware"></a>Antimalware
+## <a name="antimalware"></a>反恶意软件
 
 通过 Azure，可使用安全供应商（例如 Microsoft、Symantec、Trend Micro 和 Kaspersky）提供的反恶意软件。 此软件可帮助保护虚拟机免受恶意文件、广告程序和其他威胁的侵害。
 
@@ -102,7 +102,7 @@ Azure 磁盘加密是用于加密 Windows 和 Linux 虚拟机磁盘的新功能�
 了解更多：
 
 * [适用于 IaaS VM 的 Azure 磁盘加密](/azure/security/azure-security-disk-encryption-overview)
-* [Quickstart:Encrypt a Windows IaaS VM with Azure PowerShell](../azure-disk-encryption-linux-powershell-quickstart.md)（快速入门：使用 Azure PowerShell 加密 Windows IaaS VM）
+* [Quickstart:Encrypt a Windows IaaS VM with Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)（快速入门：使用 Azure PowerShell 加密 Windows IaaS VM）
 
 ## <a name="virtual-machine-backup"></a>虚拟机备份
 
@@ -113,7 +113,7 @@ Azure 备份是一种可缩放的解决方案，无需资本投资便可帮助�
 * [什么是 Azure 备份？](/azure/backup/backup-introduction-to-azure-backup)
 * [Azure 备份服务 - 常见问题解答](/azure/backup/backup-azure-backup-faq)
 
-## <a name="azure-site-recovery"></a>Azure Site Recovery
+## <a name="azure-site-recovery"></a>Azure 站点恢复
 
 组织的 BCDR 策略的其中一个重要部分是，找出在发生计划的和非计划的中断时让企业工作负荷和应用保持运行的方法。 Azure Site Recovery 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
 
@@ -158,7 +158,7 @@ Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心�
 * [Azure 安全中心常见问题解答](/azure/security-center/security-center-faq)
 * [Azure 安全中心规划和操作](/azure/security-center/security-center-planning-and-operations-guide)
 
-## <a name="compliance"></a>符合性
+## <a name="compliance"></a>合规性
 
 Azure 虚拟机已针对 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 和其他关键合规性计划进行了认证。 此认证使自己的 Azure 应用程序更容易满足合规性要求，并使企业更容易应对各种国内和国际法规要求。
 

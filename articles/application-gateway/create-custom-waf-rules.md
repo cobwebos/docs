@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 71f2357ba2c2d3e978e4f967ad09fee763586a7c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: bfd2154216e679b3074d36ea3b49c69ff5a92da8
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058312"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937184"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>创建并使用 Web 应用程序防火墙 v2 自定义规则
 
@@ -127,7 +127,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-2"></a>示例 2
 
-要阻止来自 198.168.5.0/24 范围内的 IP 地址的所有请求。
+你想要阻止来自范围 198.168.5.0/24 内 IP 地址的所有请求。
 
 在此示例中，需阻止来自某个 IP 地址范围的所有流量。 规则名称为 *myrule1*，优先级设置为 100。
 
@@ -145,7 +145,7 @@ $condition1 = New-AzApplicationGatewayFirewallCondition `
 
 $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule1 `
-   -Priority 100 `
+   -Priority 10 `
    -RuleType MatchRule `
    -MatchCondition $condition1 `
    -Action Block
@@ -159,7 +159,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule1",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 10,
         "action": "Block",
         "matchConditions": [
           {
@@ -179,7 +179,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-3"></a>示例 3
 
-在此示例中，你想要阻止用户代理*evilbot*，以及 192.168.5.0/24 范围内的流量。 为此，可以创建两个独立的匹配条件，将其置于同一规则中。 这可以确保如果用户代理标头中的*evilbot* **和**192.168.5.0/24 范围内的 IP 地址匹配，则会阻止请求。
+在此示例中，需阻止用户代理 evilbot 和 192.168.5.0/24 范围内的流量。 为此，可以创建两个独立的匹配条件，将其置于同一规则中。 这样可以确保，如果 User-Agent 标头中的 evilbot **与** 192.168.5.0/24 范围内的 IP 地址都匹配，则请求将被阻止。
 
 逻辑：p **and** q
 
@@ -206,7 +206,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
  $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule `
-   -Priority 100 `
+   -Priority 10 `
    -RuleType MatchRule `
    -MatchCondition $condition1, $condition2 `
    -Action Block
@@ -221,7 +221,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
       { 
         "name": "myrule", 
         "ruleType": "MatchRule", 
-        "priority": 100, 
+        "priority": 10, 
         "action": "block", 
         "matchConditions": [ 
             { 
@@ -251,7 +251,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 ## <a name="example-4"></a>示例 4
 
-在此示例中，你想要阻止请求是在 IP 地址范围*192.168.5.0/24*以外，还是不能使用用户代理*字符串（即，用户不使用*chrome 浏览器）。 由于此逻辑使用 **or**，因此这两个条件位于不同的规则中，如以下示例所示。 *myrule1* 和 *myrule2* 都需要匹配才能阻止流量。
+在此示例中，需阻止 IP 地址范围 192.168.5.0/24 之外的请求，或者阻止用户代理字符串不为 chrome（即用户不使用 Chrome 浏览器）的请求。 由于此逻辑使用 **or**，因此这两个条件位于不同的规则中，如以下示例所示。 *myrule1* 和 *myrule2* 都需要匹配才能阻止流量。
 
 逻辑：**not** (p **and** q) = **not** p **or not** q。
 
@@ -278,14 +278,14 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule1 `
-   -Priority 100 `
+   -Priority 10 `
    -RuleType MatchRule `
    -MatchCondition $condition1 `
    -Action Block
 
 $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule2 `
-   -Priority 200 `
+   -Priority 20 `
    -RuleType MatchRule `
    -MatchCondition $condition2 `
    -Action Block
@@ -299,7 +299,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule1",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 10,
         "action": "block",
         "matchConditions": [
           {
@@ -315,7 +315,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule2",
         "ruleType": "MatchRule",
-        "priority": 200,
+        "priority": 20,
         "action": "block",
         "matchConditions": [
           {
@@ -398,7 +398,7 @@ $condition1 = New-AzApplicationGatewayFirewallCondition `
 
 $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule1 `
-   -Priority 100 `
+   -Priority 10 `
    -RuleType MatchRule `
    -MatchCondition $condition1 `
 -Action Block
@@ -414,7 +414,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule2 `
-   -Priority 200 `
+   -Priority 20 `
    -RuleType MatchRule `
    -MatchCondition $condition2 `
    -Action Block
@@ -430,7 +430,7 @@ $condition3 = New-AzApplicationGatewayFirewallCondition `
 
 $rule3 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule3 `
-   -Priority 300 `
+   -Priority 30 `
    -RuleType MatchRule `
    -MatchCondition $condition3 `
    -Action Block
@@ -444,7 +444,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule1",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 10,
         "action": "block",
         "matchConditions": [
           {
@@ -459,7 +459,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule2",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 20,
         "action": "block",
         "matchConditions": [
           {
@@ -477,7 +477,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule3",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 30,
         "action": "block",
         "matchConditions": [
           {

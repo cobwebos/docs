@@ -9,30 +9,37 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b48455b6ea9c1cd74e94c10d8f9f938c20512c02
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 228851a0d528bfb222e5aa19880f856424e95ad1
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414573"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828132"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>使用 Linux 虚拟机上的虚拟 TPM 创建和预配 IoT Edge 设备
 
-可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备。 如果不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。 
+可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
 
-本文介绍如何使用以下步骤，在模拟的 IoT Edge 设备上测试自动预配： 
+本文说明如何使用以下步骤测试模拟 IoT Edge 设备上的自动预配：
 
 * 使用用于确保硬件安全性的模拟受信任平台模块 (TPM) 在 Hyper-V 中创建 Linux 虚拟机 (VM)。
 * 创建 IoT 中心设备预配服务 (DPS) 的实例。
 * 为设备创建个人注册
 * 安装 IoT Edge 运行时并将设备连接到 IoT 中心
 
-本文中的步骤仅用于测试目的。
+> [!NOTE]
+> 将 TPM 证明与 DPS 结合使用时，TPM 2.0 是必需的，并且只能用于创建个人、非组、注册。
+
+> [!TIP]
+> 本文介绍如何使用 TPM 模拟器测试 DPS 预配，但其中的许多功能适用于物理 TPM 硬件，如[INFINEON OPTIGA @ no__t](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board)、Azure IoT 认证设备。
+>
+> 如果你使用的是物理设备，则可以跳转到本文的[从物理设备检索设置信息](#retrieve-provisioning-information-from-a-physical-device)部分。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [已启用 Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 的 Windows 开发计算机。 本文使用运行 Ubuntu Server VM 的 Windows 10。 
-* 活动的 IoT 中心。 
+* [已启用 Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 的 Windows 开发计算机。 本文使用运行 Ubuntu Server VM 的 Windows 10。
+* 活动的 IoT 中心。
+* 如果使用模拟的 TPM，则[Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本启用了[" C++桌面开发](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)" 工作负荷。
 
 ## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>创建包含虚拟 TPM 的 Linux 虚拟机
 
@@ -72,7 +79,7 @@ ms.locfileid: "68414573"
 
 ### <a name="enable-virtual-tpm"></a>启用虚拟 TPM
 
-创建 VM 后，打开其设置以启用虚拟受信任平台模块 (TPM) 来自动预配设备。 
+创建 VM 后，打开其设置以启用可自动预配设备的虚拟受信任的平台模块（TPM）。
 
 1. 选择该虚拟机，然后打开其“设置”。
 
@@ -86,18 +93,48 @@ ms.locfileid: "68414573"
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>启动虚拟机并收集 TPM 数据
 
-在虚拟机中，生成一个可用于检索设备“注册 ID”和“认可密钥”的 C SDK 工具。 
+在虚拟机中，生成一个可用于检索设备**注册 ID**和**认可密钥**的工具。
 
 1. 启动并连接到虚拟机。
 
-2. 遵照虚拟机中的提示完成安装过程，然后重新启动虚拟机。 
+1. 遵照虚拟机中的提示完成安装过程，然后重新启动虚拟机。
 
-3. 登录到 VM，然后遵循[设置 Linux 开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)中的步骤安装并生成适用于 C 的 Azure IoT 设备 SDK。 
+1. 登录到 VM，然后遵循[设置 Linux 开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)中的步骤安装并生成适用于 C 的 Azure IoT 设备 SDK。
 
    >[!TIP]
-   >在本文中，我们将在虚拟机中进行复制和粘贴，而在 Hyper-V 管理器连接应用程序中难以执行此类操作。 可以通过 Hyper-V 管理器连接到虚拟机一次，以检索其 IP 地址：`ifconfig`。 然后，可以使用该 IP 地址通过 SSH 进行连接：`ssh <username>@<ipaddress>`。
+   >在本文中，我们将在虚拟机中进行复制和粘贴，而在 Hyper-V 管理器连接应用程序中难以执行此类操作。 你可能想要通过 Hyper-v 管理器连接到虚拟机一次以检索其 IP 地址： `ifconfig`。 然后，可以使用该 IP 地址通过 SSH 进行连接：`ssh <username>@<ipaddress>`。
 
-4. 运行以下命令，生成用于检索设备预配信息的 C SDK 工具。 
+1. 运行以下命令以生成 SDK 工具，该工具可从 TPM 模拟器检索设备设置信息。
+
+   ```bash
+   cd azure-iot-sdk-c/cmake
+   cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
+   cd provisioning_client/tools/tpm_device_provision
+   make
+   sudo ./tpm_device_provision
+   ```
+
+1. 在命令窗口中，导航到 `azure-iot-sdk-c` 目录，并运行 TPM 模拟器。 该模拟器通过套接字在端口 2321 和 2322 上进行侦听。 请勿关闭此命令窗口;需要将此模拟器保持运行状态。
+
+   从 `azure-iot-sdk-c` 目录中运行以下命令以启动模拟器：
+
+   ```bash
+   ./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe
+   ```
+
+1. 使用 Visual Studio 打开在名为 @no__t 的 `cmake` 目录中生成的解决方案，然后使用 "**生成**" 菜单上的 "**生成解决方案**" 命令生成该解决方案。
+
+1. **在 Visual Studio 的** “解决方案资源管理器”窗格中，导航到 **Provision\_Tools** 文件夹。 右键单击“tpm_device_provision”项目，然后选择“设为启动项目”。
+
+1. 使用 "**调试**" 菜单上的任一 "**启动**" 命令运行解决方案。 "输出" 窗口将显示 TPM 模拟器的 "**注册 ID** " 和 "**认可密钥**"，你应该在以后为设备创建单个注册时，将其复制以供以后使用。你可以关闭此窗口（使用注册 ID 和认可密钥），但使 TPM 模拟器窗口保持运行。
+
+## <a name="retrieve-provisioning-information-from-a-physical-device"></a>从物理设备检索预配信息
+
+在设备上，生成一个可用于检索设备的设置信息的工具。
+
+1. 按照[设置 Linux 开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)中的步骤安装和生成适用于 C 语言的 Azure IOT 设备 SDK。
+
+1. 运行以下命令以生成 SDK 工具，该工具可从 TPM 设备检索设备设置信息。
 
    ```bash
    cd azure-iot-sdk-c/cmake
@@ -106,10 +143,8 @@ ms.locfileid: "68414573"
    make
    sudo ./tpm_device_provision
    ```
-   >[!TIP]
-   >如果要使用 TPM 模拟器进行测试，则需要放置一个额外的参数 `-Duse_tpm_simulator:BOOL=ON` 来启用它。 完整命令将为 `cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..`。
 
-5. 复制“注册 ID”和“认可密钥”的值。 稍后要使用这些值在 DPS 中为设备创建个人注册。 
+1. 复制 "**注册 ID** " 和 "**认可密钥**" 的值。 稍后要使用这些值在 DPS 中为设备创建个人注册。
 
 ## <a name="set-up-the-iot-hub-device-provisioning-service"></a>设置 IoT 中心设备预配服务
 
@@ -130,15 +165,18 @@ ms.locfileid: "68414573"
 3. 选择“添加个人注册”，然后完成以下步骤以配置注册：  
 
    1. 对于“机制”，请选择“TPM”。 
-   
+
    2. 提供从虚拟机中复制的“认可密钥”和“注册 ID”。
-   
+
+      > [!TIP]
+      > 如果你使用的是物理 TPM 设备，则需要确定**签署密钥**，该密钥对于每个 tpm 芯片都是唯一的，并从与其关联的 tpm 芯片制造商那里获得。 例如，你可以通过创建认可密钥的 256 SHA-1 哈希，为你的 TPM 设备派生唯一的**注册 ID** 。
+
    3. 选择“True”，以声明此虚拟机是 IoT Edge 设备。 
-   
+
    4. 选择要将设备连接到的链接“IoT 中心”。 可以选择多个中心，设备将根据所选的分配策略分配到其中的一个中心。 
-   
+
    5. 根据需要，为设备提供一个 ID。 可以使用设备 ID 将单个设备指定为模块部署的目标。 如果未提供设备 ID，则会使用注册 ID。
-   
+
    6. 根据需要，将标记值添加到“初始设备孪生状态”。 可以使用标记将设备组指定为模块部署的目标。 例如： 
 
       ```json
@@ -152,7 +190,7 @@ ms.locfileid: "68414573"
       }
       ```
 
-   7. 选择**保存**。 
+   7. 选择“保存”。 
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 
 
@@ -216,35 +254,6 @@ IoT Edge 运行时需要有权访问 TPM 才能自动预配设备。
    ```
 
    如果未看到应用了正确的权限，请尝试重新启动计算机来刷新 udev。 
-
-8. 打开 IoT Edge 运行时 overrides 文件。 
-
-   ```bash
-   sudo systemctl edit iotedge.service
-   ```
-
-9. 添加以下代码以建立 TPM 环境变量。
-
-   ```input
-   [Service]
-   Environment=IOTEDGE_USE_TPM_DEVICE=ON
-   ```
-
-10. 保存并退出该文件。
-
-11. 验证重写是否成功。
-
-    ```bash
-    sudo systemctl cat iotedge.service
-    ```
-
-    如果重写成功，输出将显示 **iotedge** 默认服务变量，然后显示 **override.conf** 中设置的环境变量。 
-
-12. 重载设置。
-
-    ```bash
-    sudo systemctl daemon-reload
-    ```
 
 ## <a name="restart-the-iot-edge-runtime"></a>重启 IoT Edge 运行时
 

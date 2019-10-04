@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 38fdbbf76806325e457f066e6b469a531c27b038
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e0bc4647476cd5c6aa0f38456ef8890b4ddcaa5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102205"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828784"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>如何在 Azure 门户中预配 Windows SQL Server 虚拟机
 
@@ -36,9 +36,9 @@ ms.locfileid: "70102205"
 
 创建 SQL Server 虚拟机时，可从虚拟机库中选择一个预配置的映像。 以下步骤演示如何选择一个 SQL Server 2017 映像。
 
-1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果**AZURE sql**不在列表中, 请选择 "**所有服务**", 然后在搜索框中键入 "Azure sql"。 可有可无选择 " **AZURE SQL** " 旁边的星号将其收藏, 并将其添加为左侧导航栏中的项。 
-1. 选择 " **+ 添加**", 打开 "**选择 SQL 部署" 选项**页。 您可以通过选择 "**显示详细**信息" 查看其他信息。 
-1. 在`2017` " **SQL 虚拟机**" 磁贴上的 "SQL Server 图像搜索框中键入 **, 然后选择" 免费 SQL Server 许可证 ":从下拉 SQL Server 2017 Windows Server 2016**开发人员。 
+1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果**AZURE sql**不在列表中，请选择 "**所有服务**"，然后在搜索框中键入 "Azure sql"。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 选择“+ 添加”以打开“选择 SQL 部署选项”页。 您可以通过选择 "**显示详细**信息" 查看其他信息。 
+1. 在 " **SQL 虚拟机**" 磁贴上的 SQL Server 图像搜索框中键入 `2017`，然后选择 **Free SQL Server 许可证：SQL Server 2017 开发人员： Windows Server 2016 @ no__t-0 从下拉。 
 
 
    ![选择 SQL VM 映像](media/virtual-machines-windows-portal-sql-server-provision/select-sql-vm-image-portal.png)
@@ -54,17 +54,6 @@ ms.locfileid: "70102205"
 
 1. 选择“创建”。
 
-
-## <a id="configure"></a> 配置选项
-
-有多个选项卡用于配置 SQL Server 虚拟机。 出于本指南的目的, 我们将重点介绍以下内容: 
-
-| 步骤 | 描述 |
-| --- | --- |
-| **基础知识** |[配置基本设置](#1-configure-basic-settings) |
-| **可选功能** |[配置可选功能](#2-configure-optional-features) |
-| **SQL Server 设置** |[配置 SQL Server 设置](#3-configure-sql-server-settings) |
-| **查看 + 创建** | [查看摘要](#4-review--create) |
 
 ## <a name="1-configure-basic-settings"></a>1.配置基本设置
 
@@ -111,7 +100,7 @@ ms.locfileid: "70102205"
 * 在 "**高级**" 下的 "使用**托管磁盘**" 下选择 **"是"** 。
 
    > [!NOTE]
-   > Microsoft 建议为 SQL Server 使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关详细信息, 请参阅[Azure 托管磁盘概述](../managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../manage-availability.md)。
+   > Microsoft 建议为 SQL Server 使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关详细信息，请参阅[Azure 托管磁盘概述](../managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../manage-availability.md)。
 
 ![SQL VM 磁盘设置](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
@@ -122,7 +111,7 @@ ms.locfileid: "70102205"
 
 * 创建新的**虚拟网络**, 或使用现有的 vNet 作为 SQL Server VM。 同时指定一个**子网**。 
 
-* 在 " **NIC 网络安全组**" 下, 选择 "基本" 安全组或 "高级" 安全组。 选择 "基本" 选项后, 可以为 SQL Server VM 选择入站端口 (在 "**基本**" 选项卡上配置的值相同)。 选择 "高级" 选项, 可以选择现有的网络安全组, 也可以创建一个新的安全组。 
+* 在 " **NIC 网络安全组**" 下，选择 "基本" 安全组或 "高级" 安全组。 选择 "基本" 选项后, 可以为 SQL Server VM 选择入站端口 (在 "**基本**" 选项卡上配置的值相同)。 选择 "高级" 选项, 可以选择现有的网络安全组, 也可以创建一个新的安全组。 
 
 * 你可以对网络设置进行其他更改，也可以保留默认值。
 
@@ -132,7 +121,7 @@ ms.locfileid: "70102205"
 
 在 "**监视**" 选项卡上, 配置监视和自动关闭。 
 
-* 默认情况下, Azure 会启用使用为 VM 指定的同一个存储帐户的**启动诊断**。 你可以在此处更改这些设置, 并启用**OS 来宾诊断**。 
+* 默认情况下，Azure 会启用使用为 VM 指定的同一个存储帐户的**启动诊断**。 你可以在此处更改这些设置, 并启用**OS 来宾诊断**。 
 * 也可以在此选项卡上启用**系统分配的托管标识**和**自动关闭**。 
 
 ![SQL VM 管理设置](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)
@@ -141,8 +130,6 @@ ms.locfileid: "70102205"
 ## <a name="3-configure-sql-server-settings"></a>3.配置 SQL Server 设置
 
 在“SQL Server 设置”选项卡上，配置 SQL Server 的特定设置和优化。 可以为 SQL Server 配置的设置包括以下各项：
-
-
 
 | 设置 |
 | --- |
@@ -189,11 +176,11 @@ ms.locfileid: "70102205"
 如果未启用 SQL Server 身份验证，可以在 VM 上使用本地管理员帐户连接到 SQL Server 实例。
 
 
-### <a name="azure-key-vault-integration"></a>Azure Key Vault 集成
+### <a name="azure-key-vault-integration"></a>Azure 密钥保管库集成
 
 若要将安全机密存储在 Azure 中进行加密, 请选择 " **SQL Server 设置**", 并向下滚动到 " **azure 密钥保管库集成**"。 选择 "**启用**", 并填写所需的信息。 
 
-![Azure Key Vault 集成](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
+![Azure 密钥保管库集成](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
 
 下表列出了配置 Azure 密钥保管库集成所需的参数。
 
@@ -208,24 +195,19 @@ ms.locfileid: "70102205"
 
 ### <a name="storage-configuration"></a>存储配置
 
-在 " **SQL Server 设置**" 选项卡上的 "**存储配置**" 下, 选择 "**更改配置**" 以指定存储要求。
+在 " **SQL Server 设置**" 选项卡上的 "**存储配置**" 下，选择 "**更改配置**" 以打开 "性能优化存储配置" 页，并指定存储要求。
 
-
-> [!NOTE]
-> 如果已手动将 VM 配置为使用标准存储，则此选项不可用。 自动存储优化只适用于高级存储。
-
-> [!TIP]
-> 每个滑块的停止数和上限取决于所选 VM 大小。 VM 较大且功能较强时，纵向扩展的余地越大。
-
-可以将要求指定为每秒输入/输出操作数 (IOPs)、吞吐量（MB/秒）以及总存储大小。 可使用可调缩放性配置这些值。 可根据工作负荷更改这些存储设置。 门户会根据这些要求自动计算要附加和配置的磁盘数。
+![SQL VM 存储配置](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
 在“ **存储优化目标**”下，选择以下选项之一：
 
 * **常规** ：默认设置，支持大多数工作负荷。
-* **事务处理** ：针对传统数据库 OLTP 工作负荷优化存储。
+* **事务处理**针对传统数据库 OLTP 工作负荷优化存储。
 * **数据仓库** ：针对分析和报告工作负荷优化存储。
 
-![SQL VM 存储配置](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-storage-configuration.png)
+![SQL VM 存储配置](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
+
+您可以选择将值保留为默认值，也可以根据 IOPS 需要手动更改存储拓扑。 有关详细信息，请参阅[存储配置](virtual-machines-windows-sql-server-storage-configuration.md)。 
 
 ### <a name="sql-server-license"></a>SQL Server 许可证
 如果你是软件保障客户, 则可以利用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来引入你自己的 SQL Server 许可证并保存资源。 

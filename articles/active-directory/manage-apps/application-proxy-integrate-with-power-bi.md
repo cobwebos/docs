@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3d758b63b56bb84b1cb4e5793731da5eb4f5209
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 6a81ecd855b098ec59c5b6f7761ceebfa7a03fa9
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103871"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936728"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理启用对 Power BI 移动版的远程访问
 
@@ -121,6 +121,8 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
    为 Power BI 移动版**Android**配置应用时，请添加以下类型的重定向 Uri：公用客户端（移动 & 桌面）：
    - `urn:ietf:wg:oauth:2.0:oob`
    - `mspbi-adal://com.microsoft.powerbimobile`
+   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D` 
+   - `msauth://com.microsoft.powerbim/izba1HXNWrSmQ7ZvMXgqeZPtNEU%3D`
 
    > [!IMPORTANT]
    > 若要使应用程序正常工作，必须添加重定向 Uri。 如果要同时为 Power BI 移动版 iOS 和 Android 配置应用，请将以下类型的重定向 URI 添加到为 iOS `urn:ietf:wg:oauth:2.0:oob`配置的重定向 Uri 列表（移动 & 桌面）。

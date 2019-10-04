@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 80f2e8a8fd41fbafbaf6d30bc1001b86c5dcdd50
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1fff9c076349d98d7a72c4bf69edb0a2795ac88f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266373"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937378"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -66,7 +66,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>使用审批工作流访问专用链接资源 
 可以使用以下连接批准方法连接到专用链接资源：
-- 当你拥有或具有特定专用链接资源的权限时**自动**批准。 所需的权限基于专用链接资源类型，格式如下：微软.\<提供程序 >/< resource_type >/privateEndpointConnectionApproval/action
+- 当你拥有或具有特定专用链接资源的权限时**自动**批准。 所需的权限基于专用链接资源类型，格式如下：@No__t-0Provider >/< resource_type >/privateEndpointConnectionApproval/action
 - 当你没有必需的权限，并且想要请求访问时，**手动**请求。 将启动审批工作流。 专用终结点和后续的专用终结点连接将在 "挂起" 状态下创建。 专用链接资源所有者负责批准连接。 获得批准后，会启用专用终结点以正常发送流量，如以下审批工作流关系图中所示。  
 
 ![工作流审批](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -124,8 +124,9 @@ Azure 会在公共 DNS 上创建规范名称 DNS 记录（CNAME），以将解�
 |网络安全组（NSG）规则不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有与之关联的 NSG，但这些规则对专用终结点处理的流量不起作用。 必须[禁用网络策略强制](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍在同一子网上托管的其他工作负荷上强制实施。   | 在源客户端上使用 NSG 规则控制流量。        |
 |无法在针对服务终结点或专用工作负荷启用的子网中创建专用终结点    |无法在为服务终结点或委派到专用工作负荷的子网启用的子网上部署专用终结点|  创建一个单独的子网来部署专用终结点。        |
 |专用终结点只能映射到同一区域中的专用链接服务（客户拥有）    |   不支持从其他区域连接到专用链接服务（你自己的）       |  预览期间，必须在同一区域中部署专用链接服务。        |
+|  不支持仅具有专用终结点的对等互连虚拟网络   |   不支持在不使用任何其他工作负荷的情况下连接到对等互连虚拟网络上的专用终结点       | 在对等互连虚拟网络上部署单个 VM，以启用连接 |
 |专用工作负荷无法访问专用终结点    |   以下部署到虚拟网络中的服务无法访问使用专用终结点的任何专用链接资源：<br>应用服务计划</br>Azure 容器实例</br>Azure NetApp 文件</br>Azure 专用 HSM<br>       |   预览期间没有缓解措施。       |
-|  门户不支持使用别名创建专用终结点  |   门户只允许使用资源 URI 创建专用终结点      | 使用资源 URI 请求专用终结点连接        |
+
 
 ## <a name="next-steps"></a>后续步骤
 - [使用门户创建 SQL 数据库服务器的专用终结点](create-private-endpoint-portal.md)

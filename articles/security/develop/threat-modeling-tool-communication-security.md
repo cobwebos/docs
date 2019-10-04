@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 9c750522123995685191001988ae0081d9454ccf
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 090242cde79f6c31b0f70e1a75240778dca89fa7
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728361"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828580"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -41,7 +41,7 @@ ms.locfileid: "68728361"
 
 ## <a id="comm-ssltls"></a>使用 SSL/TLS 保护与事件中心之间的通信
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure 事件中心 | 
 | **SDL 阶段**               | Build |  
@@ -52,7 +52,7 @@ ms.locfileid: "68728361"
 
 ## <a id="priv-aspnet"></a>检查服务帐户特权，并检查自定义服务或 ASP.NET 页面是否遵循 CRM 的安全性
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Dynamics CRM | 
 | **SDL 阶段**               | Build |  
@@ -63,18 +63,18 @@ ms.locfileid: "68728361"
 
 ## <a id="sqlserver-factory"></a>将本地 SQL Server 连接到 Azure 数据工厂时使用数据管理网关
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure 数据工厂 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 链接服务类型-Azure 和本地 |
-| **参考**              |[在本地和 Azure 数据工厂之间移动数据](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway),[数据管理网关](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
+| **参考**              |[在本地和 Azure 数据工厂之间移动数据](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway)，[数据管理网关](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
 | **步骤** | <p>需要使用数据管理网关 (DMG) 工具连接到受企业网络或防火墙保护的数据源。</p><ol><li>锁定计算机可以隔离 DMG 工具，防止不正常的程序损坏源计算机或者窥视其数据。 （例如， 必须安装最新的更新、启用所需的最少量端口、预配受控帐户、审核启用、启用磁盘加密，等等。）</li><li>必须经常或者每当 DMG 服务帐户密码续订时轮替数据网关密钥</li><li>通过链接服务传输的数据必须加密</li></ol> |
 
 ## <a id="identity-https"></a>确保发往标识服务器的所有流量都通过 HTTPS 连接传输
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | 标识服务器 | 
 | **SDL 阶段**               | 部署 |  
@@ -85,7 +85,7 @@ ms.locfileid: "68728361"
 
 ## <a id="x509-ssltls"></a>验证用于对 SSL、TLS 和 DTLS 连接进行身份验证的 X.509 证书
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web 应用程序 | 
 | **SDL 阶段**               | Build |  
@@ -96,7 +96,7 @@ ms.locfileid: "68728361"
 
 ## <a id="ssl-appservice"></a>在 Azure 应用服务中为自定义域配置 SSL 证书
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web 应用程序 | 
 | **SDL 阶段**               | Build |  
@@ -107,7 +107,7 @@ ms.locfileid: "68728361"
 
 ## <a id="appservice-https"></a>强制要求发往 Azure 应用服务的所有流量都通过 HTTPS 连接传输
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web 应用程序 | 
 | **SDL 阶段**               | Build |  
@@ -140,7 +140,7 @@ ms.locfileid: "68728361"
 
 ## <a id="http-hsts"></a>启用 HTTP 严格传输安全性 (HSTS)
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web 应用程序 | 
 | **SDL 阶段**               | Build |  
@@ -151,7 +151,7 @@ ms.locfileid: "68728361"
 
 ## <a id="sqlserver-validation"></a>确保加密 SQL Server 连接并验证证书
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | 数据库 | 
 | **SDL 阶段**               | Build |  
@@ -162,7 +162,7 @@ ms.locfileid: "68728361"
 
 ## <a id="encrypted-sqlserver"></a>强制以加密形式来与 SQL Server 通信
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | 数据库 | 
 | **SDL 阶段**               | Build |  
@@ -173,7 +173,7 @@ ms.locfileid: "68728361"
 
 ## <a id="comm-storage"></a>确保与 Azure 存储之间的通信通过 HTTPS 进行
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
@@ -184,7 +184,7 @@ ms.locfileid: "68728361"
 
 ## <a id="md5-https"></a>如果无法启用 HTTPS，请在下载 Blob 后验证 MD5 哈希
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure 存储 | 
 | **SDL 阶段**               | Build |  
@@ -195,7 +195,7 @@ ms.locfileid: "68728361"
 
 ## <a id="smb-shares"></a>使用与 SMB 3.0 兼容的客户端来确保传输到 Azure 文件共享的数据经过加密
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | 移动客户端 | 
 | **SDL 阶段**               | Build |  
@@ -206,7 +206,7 @@ ms.locfileid: "68728361"
 
 ## <a id="cert-pinning"></a>实施证书固定
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure 存储 | 
 | **SDL 阶段**               | Build |  
@@ -283,25 +283,25 @@ namespace CertificatePinningExample
 
 ## <a id="https-transport"></a>启用 HTTPS - 安全传输通道
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | WCF | 
 | **SDL 阶段**               | Build |  
 | **适用的技术** | NET Framework 3 |
 | **属性**              | 不可用  |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[巩固王国](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **步骤** | 应用程序配置应确保始终使用 HTTPS 来访问敏感信息。<ul><li>**解释：** 如果应用程序需要处理敏感信息并且没有使用消息级别加密，则只应允许它通过加密的传输通道进行通信。</li><li>**建议：** 确保禁用 HTTP 传输，改为启用 HTTPS 传输。 例如，将 `<httpTransport/>` 替换为 `<httpsTransport/>` 标记。 不要依赖使用网络配置（防火墙）来保证只能通过安全通道访问应用程序。 从哲学的观点来讲，应用程序不应依赖于网络来保证其安全性。</li></ul><p>从实践的观点来讲，负责保护网络的人不会一直跟进应用程序的不断变化的安全要求。</p>|
 
 ## <a id="message-protection"></a>WCF：将消息安全保护级别设置为 EncryptAndSign
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | WCF | 
 | **SDL 阶段**               | Build |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 不可用  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **步骤** | <ul><li>**解释：** 当保护级别设置为“none”时，将禁用消息保护。 保密性和完整性是使用适当的设置级别实现的。</li><li>**建议：**<ul><li>当 `Mode=None` 时 - 禁用消息保护</li><li>当 `Mode=Sign` 时 - 将消息签名但不加密；当数据完整性非常重要时应使用该设置</li><li>当 `Mode=EncryptAndSign` 时 - 将消息签名并加密</li></ul></li></ul><p>请考虑禁用加密，仅当只是需要验证信息的完整性而不关心机密性时，才为消息签名。 对于需要验证原始发送者但不传输任何敏感数据的操作或服务约定，这种做法可能很有用。 降低保护级别时，请小心不要在消息中包含任何个人身份信息 (PII)。</p>|
+| **步骤** | <ul><li>**解释：** 当保护级别设置为“none”时，将禁用消息保护。 保密性和完整性是使用适当的设置级别实现的。</li><li>**建议：**<ul><li>当 `Mode=None` 时 - 禁用消息保护</li><li>当 `Mode=Sign` 时 - 将消息签名但不加密；当数据完整性非常重要时应使用该设置</li><li>当 `Mode=EncryptAndSign` 时 - 将消息签名并加密</li></ul></li></ul><p>请考虑禁用加密，仅当只是需要验证信息的完整性而不关心机密性时，才为消息签名。 对于需要验证原始发送者但不传输任何敏感数据的操作或服务约定，这种做法可能很有用。 降低保护级别时，请注意消息不包含任何个人数据。</p>|
 
 ### <a name="example"></a>示例
 以下示例演示了如何将服务和操作配置为只将消息签名。 `ProtectionLevel.Sign` 服务协定示例：以下是在服务协定级别处使用 ProtectionLevel.Sign 的示例： 
@@ -323,7 +323,7 @@ string GetData(int value);
 
 ## <a id="least-account-wcf"></a>WCF：使用最低特权帐户运行 WCF 服务
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | WCF | 
 | **SDL 阶段**               | Build |  
@@ -334,7 +334,7 @@ string GetData(int value);
 
 ## <a id="webapi-https"></a>强制要求发往 Web API 的所有流量都通过 HTTPS 连接传输
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web API | 
 | **SDL 阶段**               | Build |  
@@ -375,7 +375,7 @@ public class ValuesController : ApiController
  
 ## <a id="redis-ssl"></a>确保与 Azure Redis 缓存之间的通信通过 SSL 进行
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | 用于 Redis 的 Azure 缓存 | 
 | **SDL 阶段**               | Build |  
@@ -388,7 +388,7 @@ public class ValuesController : ApiController
 
 ## <a id="device-field"></a>保护设备与现场网关之间的通信
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | IoT 现场网关 | 
 | **SDL 阶段**               | Build |  
@@ -399,7 +399,7 @@ public class ValuesController : ApiController
 
 ## <a id="device-cloud"></a>使用 SSL/TLS 保护设备与云网关之间的通信
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | IoT 云网关 | 
 | **SDL 阶段**               | Build |  

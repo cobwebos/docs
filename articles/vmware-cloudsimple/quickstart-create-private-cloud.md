@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5cea36760746eaa63451c9e9955368c71ba4472
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: HT
+ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816129"
+ms.locfileid: "71828940"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>快速入门-配置私有云环境
 
@@ -42,7 +42,7 @@ ms.locfileid: "71816129"
 
 5. 在 CloudSimple 门户中，提供私有云的名称。
 6. 选择私有云的**位置**。
-7. 选择 "**节点类型**"，与 Azure 上购买的内容一致。 你可以选择[CS28 或 CS36 选项](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku)。 后一种方法包括最大计算和内存容量。
+7. 选择 "**节点类型**"，与 Azure 上购买的内容一致。
 8. 指定**节点计数**。  至少需要三个节点才能创建私有云。
 
     ![创建私有云-基本信息](media/create-private-cloud-basic-info.png)
@@ -176,7 +176,7 @@ CloudSimple 建议你在首次登录到 vCenter 时更改密码。
 * 小数至少一个数字字符，0-9
 * 最大相同相邻字符：三
 
-    例如：CC 或 CCC 可作为密码的一部分接受，但 CCCC 不能。
+    示例：CC 或 CCC 可作为密码的一部分接受，但 CCCC 不能。
 
 如果设置的密码不符合要求：
 

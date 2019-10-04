@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 9/26/2019
+ms.date: 10/2/2019
 ms.author: ellacroi
-ms.openlocfilehash: abc3b3a6be5f8c61c07fb29a6f168c8738733099
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4096b9201afc98f6e5eb239cf9e6883ac69b6e79
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350380"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827983"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft 商业市场常见问题解答
 
@@ -155,7 +155,7 @@ Azure 应用（解决方案模板和托管应用）：
 
 **支持哪种类型的试验？**
 
-免费试用产品/服务是通过调用操作来启动试用的列表。 这会使客户成为发布者定义的网站, 以设置试用体验。 还可将试用版添加到付费产品/服务, 其中的第一个月免费。 
+发布者可以为付费 SaaS 产品/服务添加一个免费月份，并为 VM 映像添加一个或三个免费月份。 免费试用产品/服务是通过调用操作来启动试用的列表。 这会使客户成为发布者定义的网站, 以设置试用体验。 还可将试用版添加到付费产品/服务, 其中的第一个月免费。 
 
 **是否需要存档付款方式（例如信用卡），才能部署免费层套餐或自带许可 (BYOL) 套餐？**
 
@@ -169,6 +169,10 @@ Azure 应用（解决方案模板和托管应用）：
 
 是的，注册时，注册管理员可对企业协议 (EA) 客户关闭所有帐户的购买特权，并将其重新打开足够长的时间以便进行购买。 此外，所有客户都可使用 Azure Policy 限制其 Azure 订阅的部署选项，包括管理 Azure 市场资源。
 
+**商业 marketplace 购买支持哪些付款方式？**
+
+客户可以从 Azure Marketplace 购买产品并使用信用卡 Microsoft AppSource。 如果你已有 Azure 订阅，则从 Azure Marketplace 进行的购买将使用帐户上配置的付款方式，并与单独的行项出现在同一发票上。 某些产品/服务使用 Azure 货币承诺，但大多数 ommercial marketplace 购买不会降低企业协议承诺，不过，Azure 基础结构消耗将不会降低。
+
 **我能对 Azure 市场套餐应用我帐户上的 Azure 订阅额度或货币承诺资金吗？**
 
 特定 Azure 市场套餐可使用 Azure 订阅额度或货币承诺资金。 有关参与此计划的产品的完整列表，请参阅 [Azure 货币承诺](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)。 这些套餐不包括 BYOL 或 BYOS 选项。 所有其他 Azure Marketplace 产品/服务不能使用 Azure 订阅信用额度或资金承诺: 例如, 免费为期1个月的试用信用额度、每月的 MSDN 信用额度、Azure 促销的信用额度、资金承诺余额以及提供的任何其他免费信用额度。Microsoft.
@@ -176,12 +180,6 @@ Azure 应用（解决方案模板和托管应用）：
 **批量许可折扣是否适用于 Azure 市场购买内容？**
 
 否。 拥有 Azure 市场中解决方案的发布者可以定价。  标准 Microsoft 批量许可折扣不适用于 Azure 市场购买内容。
-
-**如何为这些订阅付款？Azure 市场购买内容显示在 Azure 帐单上吗？是否还有其他帐单？**
-
-MOSP- [Microsoft 联机订阅计划](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en)(如 web 直接) 会针对其 Azure 订阅配置文件的文件中的同一信用卡收费。 如果没有存档信用卡，则将无法从 Azure 市场购买商品。 在这种情况下，你已收到了一个特别豁免权，可针对 Azure 费用向你开票。
-
-对于企业协议 (EA) 客户，将针对其 EA 收费。 此处列出的特定 Azure 市场套餐将首先扣除可用货币承诺，然后在单张季度发票上按超额计费。 EA 间接、教育和政府客户将按其授权解决方案提供商 (LSP) 计费。
 
 **可在哪里查看 Azure 市场订阅详细信息和计费信息？**
 
@@ -197,7 +195,7 @@ MOSP- [Microsoft 联机订阅计划](https://azure.microsoft.com/support/legal/s
 
 **将按何种频率对 Azure 市场购买内容计费？**
 
-企业协议客户, 对于所述的特定服务, 首先会将可用的货币承诺量降低到其使用月份的总成本。 对于不可从货币承诺扣费的所有 Azure 市场套餐，将以欠款形式按月计费。 年度 SaaS 订阅按一年的服务计费。
+对于不可从货币承诺扣费的所有 Azure 市场套餐，将以欠款形式按月计费。 年度 SaaS 订阅按一年的服务计费。
 
 MOSP- [Microsoft 联机订阅计划](https://azure.microsoft.com/support/legal/subscription-agreement/)(web 直接) 客户按月向其 Azure 订阅配置文件上的同一信用卡收费。 年度 SaaS 订阅按一年的服务计费。
 
@@ -210,10 +208,6 @@ MOSP- [Microsoft 联机订阅计划](https://azure.microsoft.com/support/legal/s
 **Azure Marketplace 中虚拟机产品/服务的*价格*、*软件价格*和*总价格*之间的区别是什么？**
 
 *价格*指运行软件的 Azure 虚拟机的成本。 *软件价格*指的是在 Azure 虚拟机上运行的 Marketplace 发布者软件的成本。 *总价*指的是在 Azure 虚拟机上运行的 Azure 虚拟机和 Marketplace 发布者软件的总成本。
-
-**是否可以将帐户上的 Azure 订阅额度或货币资金用于 Azure 产品和运营 Azure 市场套餐所需的服务？**
-
-是。 帐户上的 Azure 订阅额度或货币承诺资金可用于 Azure 产品和 Azure 市场套餐。 例如, Azure 货币承诺资金可应用于 Azure Marketplace 中虚拟机产品/服务的*价格*部分。 但是, Azure 订阅信用额度和资金承诺资金仅适用于在 Azure 虚拟机上运行的某些 Marketplace 发布者软件 (*软件价格*)。
 
 **如何了解我已使用了多少 Azure 市场购买内容？**
 

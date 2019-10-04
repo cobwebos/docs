@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f041889f1594ef3852c8f2393be93bb7a6513b4c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5401260921aee5fc54b50c1222188a6b244a0c5a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676634"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840133"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature"></a>确定诊断功能的问题
+# <a name="identify-and-diagnose-issues"></a>确定和诊断问题
 
 Windows 虚拟桌面提供一项诊断功能，使管理员能够通过单个界面识别问题。 每当用户与系统交互时, Windows 虚拟桌面角色就会记录诊断活动。 每个日志都包含相关信息, 例如事务中涉及的 Windows 虚拟桌面角色、错误消息、租户信息和用户信息。 诊断活动由最终用户和管理操作创建, 可分为三个主要的存储桶:
 

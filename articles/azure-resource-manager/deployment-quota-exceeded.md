@@ -4,14 +4,14 @@ description: 介绍如何解决在资源组历史记录中部署800以上的错�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 10/01/2019
+ms.date: 10/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: f06aff74e2cf800d44115f34921825122b09a9e7
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: HT
+ms.openlocfilehash: 755383c9d40c104d50ad9bb7a31b3a00f8348313
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719430"
+ms.locfileid: "71827013"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>在部署计数超过800时解决错误
 
@@ -51,3 +51,9 @@ Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymen
 (Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup).Count
 ```
 
+## <a name="third-party-solutions"></a>第三方解决方案
+
+以下外部解决方案解决了特定方案：
+
+* [Azure 逻辑应用和 PowerShell 解决方案](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
+* [AzDevOps 扩展](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)

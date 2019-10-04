@@ -9,22 +9,19 @@ ms.date: 04/18/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 7117e7287f601b306893cb02dc5d7599d7c6224d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 787618b59cd18dd4c38892ddf0861808211671cb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60453745"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936627"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>在 Azure Monitor 中监视使用情况和预估成本
 
 > [!NOTE]
-> 本文介绍如何针对不同的定价模型查看多个 Azure 监视功能的使用情况和估算成本。  相关信息请参阅以下文章。
-> - [通过在 Log Analytics 中控制数据量和保留期管理成本](manage-cost-storage.md)介绍如何通过更改数据保留期来控制成本。
-> - [在 Log Analytics 中分析数据使用情况](../../azure-monitor/platform/data-usage.md)介绍了如何根据数据使用情况进行分析和警告。
-> - [在 Application Insights 中管理定价和数据量](../../azure-monitor/app/pricing.md)介绍如何在 Application Insights 中分析数据使用情况。
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> 本文介绍如何在不同定价模型的多个 Azure 监视功能中查看使用情况和预估成本。 Azure Monitor 的特定组件的相关文章包括：
+> - [使用 Azure Monitor 日志管理使用情况和成本](manage-cost-storage.md)介绍了如何通过更改数据保持期来控制成本，以及如何分析和警报数据的使用情况。
+> - [管理 Application Insights 的使用情况和成本](../../azure-monitor/app/pricing.md)介绍如何分析 Application Insights 中的数据使用情况。
 
 在 Azure 门户的 Monitor 中心，“使用情况和预估成本”页说明[警报、指标和通知](https://azure.microsoft.com/pricing/details/monitor/)、[Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) 及 [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) 等核心监视功能的使用情况。 对于使用 2018 年 4 月之前提供的定价计划的客户，这还包括通过见解和分析套餐购买的 Log Analytics 使用情况功能。
 
@@ -42,9 +39,11 @@ ms.locfileid: "60453745"
 
 ![使用情况和预估成本门户屏幕截图 - 2018 年 4 月定价](./media/usage-estimated-costs/003.png)
 
-## <a name="new-pricing-model"></a>新定价模型
+## <a name="pricing-model"></a>定价模型
 
-2018 年 4 月[发布了新的监控定价模型](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。  此模型采用适合云的基于消耗的定价。 客户只需为使用的资源付费，且无需基于节点做出承诺。 我们已提供适用于[警报、指标和通知](https://azure.microsoft.com/pricing/details/monitor/)、[Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) 及 [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) 的新定价模型的详细信息。 
+2018 年 4 月[发布了新的监控定价模型](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。  此功能可为云友好的基于消耗的定价（"即用即付"）提供便利。 客户只需为使用的资源付费，且无需基于节点做出承诺。 我们已提供适用于[警报、指标和通知](https://azure.microsoft.com/pricing/details/monitor/)、[Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) 及 [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) 的新定价模型的详细信息。 
+
+除了即用即付模型外2019，我们还为 Log Analytics 增加了容量预留量，使你能够将其保存为与现用现付价格相比 25%。 产能预留价格使你可以购买起价 100 GB/天的保留。 将按现用现付费率对超出预订级别的任何使用量进行计费。 [了解](https://azure.microsoft.com/pricing/details/monitor/)有关容量保留定价的详细信息。
 
 对于在 2018 年 4 月 2 日之后加入 Log Analytics 或 Application Insights 的客户，新定价模型是唯一选项。 对于已使用这些服务的客户，可以选择性地转移到新定价模型。
 
@@ -112,4 +111,3 @@ ms.locfileid: "60453745"
 如上所述，不再要求同时将订阅中的所有监视资源移至新定价模型，因此 ``migratetonewpricingmodel`` 操作将不再具有任何效果。 现在可以将 Application Insights 资源和 Log Analytics 工作区分别移动到最新的定价层。  
 
 根据文档记录，Application Insights 通过将 [Set-AzureRmApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightspricingplan) 与 ``-PricingPlan "Basic"`` 配合使用自动执行此更改，Log Analytics 通过将 [Set-AzureRmOperationalInsightsWorkspace](https://docs.microsoft.com/powershell/module/AzureRM.OperationalInsights/Set-AzureRmOperationalInsightsWorkspace) 与 ``-sku "PerGB2018"`` 配合使用自动执行此更改。 
-

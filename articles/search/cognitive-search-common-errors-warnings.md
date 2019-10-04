@@ -9,13 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: abmotley
-ms.subservice: cognitive-search
-ms.openlocfilehash: 4e31f818e96ae9f13e3ce8892e575318831848f6
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 18befbfb924129518ac32a7fdddaa9ee573840b0
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329378"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936493"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Azure 搜索中的 AI 扩充管道的常见错误和警告
 
@@ -52,6 +51,64 @@ ms.locfileid: "71329378"
 | 文档键无效 | 文档键的长度不能超过1024个字符 | 修改文档键以满足验证要求。 |
 | 未能将字段映射应用于字段 | 无法将映射函数 `'functionName'` 应用于字段 `'fieldName'`。 数组不能为 null。 参数名称：字节 | 仔细检查在索引器上定义的[字段映射](search-indexer-field-mappings.md)，并将与已失败文档的指定字段的数据进行比较。 可能需要修改字段映射或文档数据。 |
 | 无法读取字段值 | 无法读取索引 `'fieldIndex'` 的列 @no__t 的值。 在接收来自服务器的结果时发生传输级错误。 （提供程序：TCP 提供程序，错误：0-现有连接被远程主机强行关闭。） | 这些错误通常是由于数据源的基础服务的意外连接问题导致的。 稍后再次尝试通过索引器运行文档。 |
+
+### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>技能输入 "languageCode" 具有以下语言代码 "X"、"Y"、"Z"，其中至少有一个是无效的。
+不支持传递给下游技能的可选 `languageCode` 输入的一个或多个值。 如果将[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)的输出传递给后续技能，并且输出包含的语言比这些下游技能支持的语言多，则会发生这种情况。
+
+如果你知道数据集全部使用一种语言，则应删除[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)和 @no__t 技能输入，并改为使用该技能的 @no__t 技能参数，前提是该技术支持该语言。
+
+如果你知道数据集包含多种语言，因而需要[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)和 `languageCode` 输入，请考虑添加[ConditionalSkill](cognitive-search-skill-conditional.md) ，以筛选出在传入之前不受支持的语言的文本向下游技能文本。  下面是有关 EntityRecognitionSkill 的示例：
+
+```json
+{
+    "@odata.type": "#Microsoft.Skills.Util.ConditionalSkill",
+    "context": "/document",
+    "inputs": [
+        { "name": "condition", "source": "= $(/document/language) == 'de' || $(/document/language) == 'en' || $(/document/language) == 'es' || $(/document/language) == 'fr' || $(/document/language) == 'it'" },
+        { "name": "whenTrue", "source": "/document/content" },
+        { "name": "whenFalse", "source": "= null" }
+    ],
+    "outputs": [ { "name": "output", "targetName": "supportedByEntityRecognitionSkill" } ]
+}
+```
+
+下面是可能产生此错误消息的每项技能当前支持的语言的参考资料：
+* [文本分析支持的语言](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)（适用[于 KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)、 [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)和[SentimentSkill](cognitive-search-skill-sentiment.md)）
+* [翻译工具支持的语言](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)（用于[文本 TranslationSkill](cognitive-search-skill-text-translation.md)）
+* [文本 SplitSkill](cognitive-search-skill-textsplit.md)支持的语言： `da, de, en, es, fi, fr, it, ko, pt`
+
+### <a name="skill-did-not-execute-within-the-time-limit"></a>未在时间限制内执行技能
+在以下两种情况下，你可能会遇到此错误消息，每个情况都应以不同的方式处理。 请按照下面的说明操作，具体取决于为你返回此错误的技能。
+
+#### <a name="built-in-cognitive-service-skills"></a>内置认知服务技能
+许多内置认知技巧，如语言检测、实体识别或 OCR，都由认知服务 API 终结点支持。 有时，这些终结点存在暂时性问题，请求将超时。对于暂时性问题，没有任何补救措施，请等待，然后重试。 作为缓解措施，请考虑将索引器设置为按[计划运行](search-howto-schedule-indexers.md)。 计划索引从中断的位置继续进行。 假设已解决暂时性问题，则在下一次计划运行时，索引和认知技能处理应能继续。
+
+#### <a name="custom-skills"></a>自定义技能
+如果遇到与已创建的自定义技能有关的超时错误，可以尝试以下几个事项。 首先，请查看您的自定义技能，并确保它不会陷入无限循环，并且它将以一致的方式返回结果。 一旦您确认了这种情况，就会确定您的技能执行时间。 如果未显式设置自定义技能定义上的 @no__t 0 值，则默认 @no__t 为30秒。 如果30秒不够长，无法满足您的技能需要，您可以在您的自定义技能定义上指定一个更高的 @no__t 0 值。 下面是一个自定义技能定义的示例，其中超时设置为90秒：
+
+```json
+  {
+        "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+        "uri": "<your custom skill uri>",
+        "batchSize": 1,
+        "timeout": "PT90S",
+        "context": "/document",
+        "inputs": [
+          {
+            "name": "input",
+            "source": "/document/content"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "output",
+            "targetName": "output"
+          }
+        ]
+      }
+```
+
+可以为 @no__t 参数设置的最大值为230秒。  如果自定义技能在230秒内无法持续执行，则可以考虑减少自定义技能的 @no__t 0，使其在单个执行中处理的文档更少。  如果已将 @no__t 0 设置为1，则需要重写可在230秒内执行的技能，或将其拆分为多个自定义技能，以便任何单个自定义技能的执行时间最大为230秒。 有关详细信息，请查看[自定义技能文档](cognitive-search-custom-skill-web-api.md)。
 
 ##  <a name="warnings"></a>警告
 警告不会停止索引，但它们会指示可能导致意外结果的条件。 你是否采取措施取决于数据和你的方案。

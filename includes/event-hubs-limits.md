@@ -8,21 +8,22 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c163e3cce862640d43f8696dca4eeef29f2ae12a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: a20481ea42a0772ab42322e912cfce67877734d6
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68912289"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71830040"
 ---
-下表列出了特定于 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
+下表提供了特定于[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
+
+以下限制是基本层、标准层和专用层之间的通用限制。 
 
 | 限制 | 范围 | 说明 | ReplTest1 |
 | --- | --- | --- | --- |
 | 每个订阅的事件中心命名空间数 |订阅 |- |100 |
 | 每个命名空间的事件中心数 |命名空间 |创建新事件中心的后续请求会被拒绝。 |10 |
 | 每个事件中心的分区数 |实体 |- |32 |
-| 事件中心事件的最大大小|实体 |- |1 MB |
 | 事件中心名称的最大大小 |实体 |- |50 个字符 |
 | 每个使用者组的非 epoch 接收者数 |实体 |- |5 |
 | 最大吞吐量单位 |命名空间 |超出吞吐量单位限制会导致数据受到限制，并生成[服务器忙异常](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)。 若要为标准层请求更多的吞吐量单位，请提供[支持请求](/azure/azure-supportability/how-to-create-azure-support-request)。 [额外的吞吐量单位](../articles/event-hubs/event-hubs-auto-inflate.md)将基于承诺的购买以大小为 20 个单位的块的形式提供。 |20 |
@@ -33,9 +34,10 @@ ms.locfileid: "68912289"
 ### <a name="event-hubs-basic-and-standard---quotas-and-limits"></a>事件中心基本和标准-配额和限制
 | 限制 | 范围 | 说明 | 基本 | 标准 |
 | --- | --- | --- | -- | --- |
-| 每个事件中心的使用者组数 |实体 | - |1 |20 |
+| 事件中心事件的最大大小|实体 | &nbsp; | 256 KB | 1 MB |
+| 每个事件中心的使用者组数 |实体 | &nbsp; |1 |20 |
 | 每个命名空间的 AMQP 连接数 |命名空间 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |100 |5,000|
-| 事件数据的最长保留期限 |实体 | - |1 天 |1-7 天 |
+| 事件数据的最长保留期限 |实体 | &nbsp; |1 天 |1-7 天 |
 |启用 Apache Kafka 命名空间|命名空间 |使用 Kafka 协议的事件中心命名空间流应用程序 |否 | 是 |
 |捕获 |实体 | 启用后，同一个流上的微批处理 |否 |是 |
 
@@ -49,9 +51,9 @@ ms.locfileid: "68912289"
 | 命名空间 | 每 CU 50 |
 | 事件中心 |  每个命名空间1000 |
 | 入口事件 | 已包含 |
-| 消息大小 | 1000000字节 |
+| 消息大小 | 1 MB |
 | 分区 | 每个 CU 2000 |
 | 使用者组 | 对于每个 CU，每个事件中心无限制，1000 |
 | 中转连接 | 包括 100 K |
-| 消息保留 | 最多7天（即将推出90天的保留期）、每个 CU 包含 10 TB |
+| 消息保留 | 最多7天，每个 CU 包含 10 TB |
 | 捕获 | 已包含 |

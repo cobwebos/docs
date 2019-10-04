@@ -4,14 +4,14 @@ description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7b8d3de3eaa9cdbb945879f2acc283d74c8b4e82
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 06028224379bd42e1e0ea21b684ce443abd5992a
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996832"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937021"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。 标记为“支持标记”的列指示资源类型是否具有标记的属性。 标记为“在成本报表中标记”的列指示该资源类型是否将标记传递给成本报表。
@@ -40,7 +40,6 @@ ms.locfileid: "70996832"
 > - [Microsoft.Batch](#microsoftbatch)
 > - [微软帐单](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
@@ -123,6 +122,7 @@ ms.locfileid: "70996832"
 > - [Microsoft.NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [ObjectStore](#microsoftobjectstore)
 > - [OffAzure](#microsoftoffazure)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
@@ -134,7 +134,7 @@ ms.locfileid: "70996832"
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft RemoteApp](#microsoftremoteapp)
-> - [ResourceGraph](#microsoftresourcegraph)
+> - [Microsoft.ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
@@ -198,7 +198,7 @@ ms.locfileid: "70996832"
 > | logs | 否 |否 |
 > | 报告 | 否 |否 |
 > | servicehealthmetrics | 否 |否 |
-> | services | 否 |否 |
+> | 服务 | 否 |否 |
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 
@@ -207,7 +207,7 @@ ms.locfileid: "70996832"
 > | ------------- | ----------- | ----------- |
 > | 配置 | 否 |否 |
 > | generateRecommendations | 否 |否 |
-> | 元数据 | 否 |否 |
+> | metadata | 否 |否 |
 > | 推荐 | 否 |否 |
 > | 禁止显示 | 否 |否 |
 
@@ -393,6 +393,7 @@ ms.locfileid: "70996832"
 > | billingAccounts/客户 | 否 |否 |
 > | billingAccounts/customers/billingSubscriptions | 否 |否 |
 > | billingAccounts/customers/initiateTransfer | 否 |否 |
+> | billingAccounts/客户/策略 | 否 |否 |
 > | billingAccounts/客户/产品 | 否 |否 |
 > | billingAccounts/客户/事务 | 否 |否 |
 > | billingAccounts/客户/转移 | 否 |否 |
@@ -440,13 +441,6 @@ ms.locfileid: "70996832"
 > | ------------- | ----------- | ----------- |
 > | mapApis | 是 |是 |
 > | updateCommunicationPreference | 否 |否 |
-
-## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 支持标记 | 在成本报表中标记 |
-> | ------------- | ----------- | ----------- |
-> | BizTalk | 是 |是 |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
@@ -542,7 +536,7 @@ ms.locfileid: "70996832"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | capabilities | 否 |否 |
-> | domainNames | 是 |是 |
+> | domainNames | 否 |否 |
 > | domainNames/capabilities | 否 |否 |
 > | domainNames/internalLoadBalancers | 否 |否 |
 > | domainNames/serviceCertificates | 否 |否 |
@@ -556,7 +550,7 @@ ms.locfileid: "70996832"
 > | quotas | 否 |否 |
 > | resourceTypes | 否 |否 |
 > | validateSubscriptionMoveAvailability | 否 |否 |
-> | virtualMachines | 是 |是 |
+> | virtualMachines | 否 |否 |
 > | virtualMachines/diagnosticSettings | 否 |否 |
 > | virtualMachines/metricDefinitions | 否 |否 |
 > | virtualMachines/metrics | 否 |否 |
@@ -577,10 +571,10 @@ ms.locfileid: "70996832"
 > | expressRouteCrossConnections | 否 |否 |
 > | expressRouteCrossConnections/peerings | 否 |否 |
 > | gatewaySupportedDevices | 否 |否 |
-> | networkSecurityGroups | 是 |是 |
+> | networkSecurityGroups | 否 |否 |
 > | quotas | 否 |否 |
-> | reservedIps | 是 |是 |
-> | virtualNetworks | 是 |是 |
+> | reservedIps | 否 |否 |
+> | virtualNetworks | 否 |否 |
 > | virtualNetworks/remoteVirtualNetworkPeeringProxies | 否 |否 |
 > | virtualNetworks/virtualNetworkPeerings | 否 |否 |
 
@@ -596,7 +590,7 @@ ms.locfileid: "70996832"
 > | osPlatformImages | 否 |否 |
 > | publicImages | 否 |否 |
 > | quotas | 否 |否 |
-> | storageAccounts | 是 |是 |
+> | storageAccounts | 否 |否 |
 > | storageAccounts/blobServices | 否 |否 |
 > | storageAccounts/fileServices | 否 |否 |
 > | storageAccounts/metricDefinitions | 否 |否 |
@@ -634,10 +628,10 @@ ms.locfileid: "70996832"
 > | diskEncryptionSets | 是 |是 |
 > | 磁盘 | 是 |是 |
 > | galleries | 是 |是 |
-> | galleries/applications | 是 |是 |
-> | galleries/applications/versions | 是 |是 |
-> | galleries/images | 是 |是 |
-> | galleries/images/versions | 是 |是 |
+> | galleries/applications | 否 |否 |
+> | galleries/applications/versions | 否 |否 |
+> | galleries/images | 否 |否 |
+> | galleries/images/versions | 否 |否 |
 > | hostGroups | 是 |是 |
 > | hostGroups/hosts | 是 |是 |
 > | 映像 | 是 |是 |
@@ -645,13 +639,11 @@ ms.locfileid: "70996832"
 > | restorePointCollections | 是 |是 |
 > | restorePointCollections/restorePoints | 否 |否 |
 > | sharedVMImages | 是 |是 |
-> | sharedVMImages/versions | 是 |是 |
+> | sharedVMImages/versions | 否 |否 |
 > | 快照 | 是 |是 |
 > | virtualMachines | 是 |是 |
 > | virtualMachines/extensions | 是 |是 |
 > | virtualMachines/metricDefinitions | 否 |否 |
-> | virtualMachines/scriptJobs | 否 |否 |
-> | virtualMachines/softwareUpdateDeployments | 否 |否 |
 > | virtualMachineScaleSets | 是 |是 |
 > | virtualMachineScaleSets/extensions | 否 |否 |
 > | virtualMachineScaleSets/networkInterfaces | 否 |否 |
@@ -866,7 +858,7 @@ ms.locfileid: "70996832"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | services | 否 |否 |
+> | 服务 | 否 |否 |
 > | services/projects | 否 |否 |
 
 ## <a name="microsoftdatashare"></a>DataShare
@@ -919,6 +911,9 @@ ms.locfileid: "70996832"
 > | serverGroups | 是 |是 |
 > | 服务器 | 是 |是 |
 > | servers/advisors | 否 |否 |
+> | 服务器/privateEndpointConnectionProxies | 否 |否 |
+> | 服务器/privateEndpointConnections | 否 |否 |
+> | 服务器/privateLinkResources | 否 |否 |
 > | servers/queryTexts | 否 |否 |
 > | servers/recoverableServers | 否 |否 |
 > | servers/topQueryStatistics | 否 |否 |
@@ -1023,7 +1018,7 @@ ms.locfileid: "70996832"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | services | 是 |是 |
+> | 服务 | 是 |是 |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
@@ -1123,7 +1118,7 @@ ms.locfileid: "70996832"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | services | 是 |是 |
+> | 服务 | 是 |是 |
 
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
@@ -1199,6 +1194,7 @@ ms.locfileid: "70996832"
 > | clusters/databases | 否 |否 |
 > | clusters/databases/dataconnections | 否 |否 |
 > | clusters/databases/eventhubconnections | 否 |否 |
+> | 群集/sharedidentities | 否 |否 |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
@@ -1278,7 +1274,7 @@ ms.locfileid: "70996832"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | offers | 否 |否 |
+> | 套餐 | 否 |否 |
 > | offerTypes | 否 |否 |
 > | offerTypes/publishers | 否 |否 |
 > | offerTypes/publishers/offers | 否 |否 |
@@ -1363,11 +1359,13 @@ ms.locfileid: "70996832"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | netAppAccounts | 是 |是 |
+> | netAppAccounts/backupPolicies | 是 |是 |
 > | netAppAccounts/capacityPools | 是 |是 |
 > | netAppAccounts/capacityPools/卷 | 是 |是 |
+> | netAppAccounts/capacityPools/卷/备份 | 否 |否 |
 > | netAppAccounts/capacityPools/卷集/mountTargets | 是 |是 |
 > | netAppAccounts/capacityPools/卷/快照 | 是 |是 |
-
+> | netAppAccounts/保管库 | 否 |否 |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1458,6 +1456,7 @@ ms.locfileid: "70996832"
 > [!NOTE]
 > 对于 Azure 前门服务, 可以在创建资源时应用标记, 但目前不支持更新或添加标记。
 
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -1465,6 +1464,13 @@ ms.locfileid: "70996832"
 > | ------------- | ----------- | ----------- |
 > | 命名空间 | 是 |否 |
 > | namespaces/notificationHubs | 是 |否 |
+
+## <a name="microsoftobjectstore"></a>ObjectStore
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 在成本报表中标记 |
+> | ------------- | ----------- | ----------- |
+> | osNamespaces | 是 |是 |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
@@ -1597,7 +1603,7 @@ ms.locfileid: "70996832"
 > | childResources | 否 |否 |
 > | 事件 | 否 |否 |
 > | impactedResources | 否 |否 |
-> | 元数据 | 否 |否 |
+> | metadata | 否 |否 |
 > | 通知 | 否 |否 |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
@@ -1607,13 +1613,15 @@ ms.locfileid: "70996832"
 > | ------------- | ----------- | ----------- |
 > | 部署 | 是 |否 |
 > | deployments/operations | 否 |否 |
-> | links | 否 |否 |
+> | 链接 | 否 |否 |
 > | notifyResourceJobs | 否 |否 |
 > | providers | 否 |否 |
 > | resourceGroups | 是 |否 |
 > | 资源 | 否 |否 |
 > | 订阅 | 否 |否 |
 > | subscriptions/providers | 否 |否 |
+> | subscriptions/resourceGroups | 否 |否 |
+> | subscriptions/resourcegroups/resources | 否 |否 |
 > | subscriptions/resources | 否 |否 |
 > | subscriptions/tagnames | 否 |否 |
 > | subscriptions/tagNames/tagValues | 否 |否 |
@@ -1666,7 +1674,7 @@ ms.locfileid: "70996832"
 > | iotSecuritySolutions/analyticsModels/aggregatedAlerts | 否 |否 |
 > | iotSecuritySolutions/analyticsModels/aggregatedRecommendations | 否 |否 |
 > | jitNetworkAccessPolicies | 否 |否 |
-> | Networkdata.xml | 否 |否 |
+> | networkData | 否 |否 |
 > | playbookConfigurations | 是 |是 |
 > | 策略 | 否 |否 |
 > | pricings | 否 |否 |
@@ -1680,6 +1688,7 @@ ms.locfileid: "70996832"
 > | securityStatusesSummaries | 否 |否 |
 > | serverVulnerabilityAssessments | 否 |否 |
 > | 设置 | 否 |否 |
+> | subAssessments | 否 |否 |
 > | 任务 | 否 |否 |
 > | topologies | 否 |否 |
 > | workspaceSettings | 否 |否 |
@@ -1972,7 +1981,7 @@ ms.locfileid: "70996832"
 > | 连接 | 是 |是 |
 > | customApis | 是 |是 |
 > | deletedSites | 否 |否 |
-> | 函数 | 否 |否 |
+> | functions | 否 |否 |
 > | hostingEnvironments | 是 |是 |
 > | hostingEnvironments/multiRolePools | 否 |否 |
 > | hostingEnvironments/workerPools | 否 |否 |

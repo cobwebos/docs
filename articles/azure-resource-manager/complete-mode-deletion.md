@@ -4,14 +4,14 @@ description: 显示资源类型如何在 Azure 资源管理器模板中进行完
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: d8238dddee041573d9b122e62cec66118c681ef6
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cdc00ccc61e20865e993a18c72b930d9570896f2
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995266"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937051"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
 
@@ -43,7 +43,6 @@ ms.locfileid: "70995266"
 > - [Microsoft.Batch](#microsoftbatch)
 > - [微软帐单](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
@@ -126,6 +125,7 @@ ms.locfileid: "70995266"
 > - [Microsoft.NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [ObjectStore](#microsoftobjectstore)
 > - [OffAzure](#microsoftoffazure)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
@@ -137,7 +137,7 @@ ms.locfileid: "70995266"
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft RemoteApp](#microsoftremoteapp)
-> - [ResourceGraph](#microsoftresourcegraph)
+> - [Microsoft.ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
@@ -201,7 +201,7 @@ ms.locfileid: "70995266"
 > | logs | 否 |
 > | 报告 | 否 |
 > | servicehealthmetrics | 否 |
-> | services | 否 |
+> | 服务 | 否 |
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 
@@ -210,7 +210,7 @@ ms.locfileid: "70995266"
 > | ------------- | ----------- |
 > | 配置 | 否 |
 > | generateRecommendations | 否 |
-> | 元数据 | 否 |
+> | metadata | 否 |
 > | 推荐 | 否 |
 > | 禁止显示 | 否 |
 
@@ -396,6 +396,7 @@ ms.locfileid: "70995266"
 > | billingAccounts/客户 | 否 |
 > | billingAccounts/customers/billingSubscriptions | 否 |
 > | billingAccounts/customers/initiateTransfer | 否 |
+> | billingAccounts/客户/策略 | 否 |
 > | billingAccounts/客户/产品 | 否 |
 > | billingAccounts/客户/事务 | 否 |
 > | billingAccounts/客户/转移 | 否 |
@@ -443,13 +444,6 @@ ms.locfileid: "70995266"
 > | ------------- | ----------- |
 > | mapApis | 是 |
 > | updateCommunicationPreference | 否 |
-
-## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 完整模式删除 |
-> | ------------- | ----------- |
-> | BizTalk | 是 |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
@@ -637,10 +631,10 @@ ms.locfileid: "70995266"
 > | diskEncryptionSets | 是 |
 > | 磁盘 | 是 |
 > | galleries | 是 |
-> | galleries/applications | 是 |
-> | galleries/applications/versions | 是 |
-> | galleries/images | 是 |
-> | galleries/images/versions | 是 |
+> | galleries/applications | 否 |
+> | galleries/applications/versions | 否 |
+> | galleries/images | 否 |
+> | galleries/images/versions | 否 |
 > | hostGroups | 是 |
 > | hostGroups/hosts | 是 |
 > | 映像 | 是 |
@@ -648,13 +642,11 @@ ms.locfileid: "70995266"
 > | restorePointCollections | 是 |
 > | restorePointCollections/restorePoints | 否 |
 > | sharedVMImages | 是 |
-> | sharedVMImages/versions | 是 |
+> | sharedVMImages/versions | 否 |
 > | 快照 | 是 |
 > | virtualMachines | 是 |
 > | virtualMachines/extensions | 是 |
 > | virtualMachines/metricDefinitions | 否 |
-> | virtualMachines/scriptJobs | 否 |
-> | virtualMachines/softwareUpdateDeployments | 否 |
 > | virtualMachineScaleSets | 是 |
 > | virtualMachineScaleSets/extensions | 否 |
 > | virtualMachineScaleSets/networkInterfaces | 否 |
@@ -869,9 +861,8 @@ ms.locfileid: "70995266"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
-> | services | 是 |
+> | 服务 | 是 |
 > | services/projects | 是 |
-> | slots | 是 |
 
 ## <a name="microsoftdatashare"></a>DataShare
 
@@ -923,6 +914,9 @@ ms.locfileid: "70995266"
 > | serverGroups | 是 |
 > | 服务器 | 是 |
 > | servers/advisors | 否 |
+> | 服务器/privateEndpointConnectionProxies | 否 |
+> | 服务器/privateEndpointConnections | 否 |
+> | 服务器/privateLinkResources | 否 |
 > | servers/queryTexts | 否 |
 > | servers/recoverableServers | 否 |
 > | servers/topQueryStatistics | 否 |
@@ -1027,7 +1021,7 @@ ms.locfileid: "70995266"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
-> | services | 是 |
+> | 服务 | 是 |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
@@ -1127,7 +1121,7 @@ ms.locfileid: "70995266"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
-> | services | 是 |
+> | 服务 | 是 |
 
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
@@ -1203,6 +1197,7 @@ ms.locfileid: "70995266"
 > | clusters/databases | 否 |
 > | clusters/databases/dataconnections | 否 |
 > | clusters/databases/eventhubconnections | 否 |
+> | 群集/sharedidentities | 否 |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
@@ -1282,7 +1277,7 @@ ms.locfileid: "70995266"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
-> | offers | 否 |
+> | 套餐 | 否 |
 > | offerTypes | 否 |
 > | offerTypes/publishers | 否 |
 > | offerTypes/publishers/offers | 否 |
@@ -1367,11 +1362,13 @@ ms.locfileid: "70995266"
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | netAppAccounts | 是 |
+> | netAppAccounts/backupPolicies | 是 |
 > | netAppAccounts/capacityPools | 是 |
 > | netAppAccounts/capacityPools/卷 | 是 |
+> | netAppAccounts/capacityPools/卷/备份 | 否 |
 > | netAppAccounts/capacityPools/卷集/mountTargets | 是 |
 > | netAppAccounts/capacityPools/卷/快照 | 是 |
-
+> | netAppAccounts/保管库 | 否 |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1464,6 +1461,13 @@ ms.locfileid: "70995266"
 > | ------------- | ----------- |
 > | 命名空间 | 是 |
 > | namespaces/notificationHubs | 是 |
+
+## <a name="microsoftobjectstore"></a>ObjectStore
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 完整模式删除 |
+> | ------------- | ----------- |
+> | osNamespaces | 是 |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
@@ -1596,7 +1600,7 @@ ms.locfileid: "70995266"
 > | childResources | 否 |
 > | 事件 | 否 |
 > | impactedResources | 否 |
-> | 元数据 | 否 |
+> | metadata | 否 |
 > | 通知 | 否 |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
@@ -1606,7 +1610,7 @@ ms.locfileid: "70995266"
 > | ------------- | ----------- |
 > | 部署 | 否 |
 > | deployments/operations | 否 |
-> | links | 否 |
+> | 链接 | 否 |
 > | notifyResourceJobs | 否 |
 > | providers | 否 |
 > | resourceGroups | 否 |
@@ -1618,7 +1622,6 @@ ms.locfileid: "70995266"
 > | subscriptions/resources | 否 |
 > | subscriptions/tagnames | 否 |
 > | subscriptions/tagNames/tagValues | 否 |
-> | 标记 | 否 |
 > | tenants | 否 |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1668,7 +1671,7 @@ ms.locfileid: "70995266"
 > | iotSecuritySolutions/analyticsModels/aggregatedAlerts | 否 |
 > | iotSecuritySolutions/analyticsModels/aggregatedRecommendations | 否 |
 > | jitNetworkAccessPolicies | 否 |
-> | Networkdata.xml | 否 |
+> | networkData | 否 |
 > | playbookConfigurations | 是 |
 > | 策略 | 否 |
 > | pricings | 否 |
@@ -1682,6 +1685,7 @@ ms.locfileid: "70995266"
 > | securityStatusesSummaries | 否 |
 > | serverVulnerabilityAssessments | 否 |
 > | 设置 | 否 |
+> | subAssessments | 否 |
 > | 任务 | 否 |
 > | topologies | 否 |
 > | workspaceSettings | 否 |
@@ -1966,7 +1970,7 @@ ms.locfileid: "70995266"
 > | 连接 | 是 |
 > | customApis | 是 |
 > | deletedSites | 否 |
-> | 函数 | 否 |
+> | functions | 否 |
 > | hostingEnvironments | 是 |
 > | hostingEnvironments/multiRolePools | 否 |
 > | hostingEnvironments/workerPools | 否 |

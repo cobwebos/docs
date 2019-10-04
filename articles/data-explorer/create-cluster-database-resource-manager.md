@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: dfc0cd6686ac4ea1af2beb34edeadd17e4c952e1
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b8aa87b871b86a8dab3b1984b638366a42708483
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329430"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936894"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure 数据资源管理器群集和数据库
 
@@ -110,7 +110,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     ![部署到 Azure](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
-您可以使用窗体[在 Azure 门户中编辑和部署模板](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)。
+    您可以使用窗体[在 Azure 门户中编辑和部署模板](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)。
 
 1. 完整的**基本**信息和**设置**部分。 选择 "唯一群集" 和 "数据库名称"。
 创建 Azure 数据资源管理器群集和数据库需要几分钟时间。
@@ -140,9 +140,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 1. 右键单击 shell 控制台，然后选择“粘贴”。
 创建 Azure 数据资源管理器群集和数据库需要几分钟时间。
 
-#### <a name="verify-the-deployment-using-powershell"></a>使用 powershell 验证部署
+#### <a name="verify-the-deployment-using-powershell"></a>使用 PowerShell 验证部署
 
-若要验证部署，请使用以下 Azure PowerShell 脚本。  如果 Cloud shell 仍处于打开状态，则无需复制/运行第一行（读取主机）。 有关在 PowerShell 中管理 Azure 数据资源管理器资源的详细信息，请阅读[Az. Kusto](/powershell/module/az.kusto/?view=azps-2.7.0)。 做出相关更改
+若要验证部署，请使用以下 Azure PowerShell 脚本。  如果 Cloud Shell 仍处于打开状态，则无需复制/运行第一行（读取主机）。 有关在 PowerShell 中管理 Azure 数据资源管理器资源的详细信息，请阅读[Az. Kusto](/powershell/module/az.kusto/?view=azps-2.7.0)。 
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -163,9 +163,9 @@ Write-Host "Press [ENTER] to continue ..."
 
 按照[清理资源](create-cluster-database-portal.md#clean-up-resources)中的步骤操作，删除 Azure 门户中的资源。
 
-### <a name="clean-up-resources-using-powershell"></a>使用 powershell 清理资源
+### <a name="clean-up-resources-using-powershell"></a>使用 PowerShell 清理资源
 
-如果 Cloud shell 仍处于打开状态，则无需复制/运行第一行（读取主机）。
+如果 Cloud Shell 仍处于打开状态，则无需复制/运行第一行（读取主机）。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"

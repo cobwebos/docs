@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 92a5f7c058904015cb22a239b7e7c4938ae1fdae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b06134c6694e54cf246f9527d10147c573b95ad9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044632"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828000"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI 元素
 一个允许用户指定要上传的一个或多个文件的控件。
@@ -48,7 +48,7 @@ ms.locfileid: "61044632"
 ```
 
 ## <a name="remarks"></a>备注
-- `constraints.accept` 指定在浏览器的文件对话框中显示的文件类型。 有关允许的值，请参阅 [HTML5 规范](https://www.w3.org/TR/html5/forms.html#attr-input-accept)。 默认值为 **null**。
+- `constraints.accept` 指定在浏览器的文件对话框中显示的文件类型。 有关允许的值，请参阅 [HTML5 规范](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept)。 默认值为 **null**。
 - 如果 `options.multiple` 设置为 **true**，则会允许用户在浏览器的文件对话框中选择多个文件。 默认值为 **false**。
 - 此元素支持基于 `options.uploadMode` 的值以两种模式上传文件。 如果指定了 **file**，则输出会以 blob 形式包含文件的内容。 如果指定了 **url**，则文件会被上传到一个临时位置，并且输出会包含 blob 的 URL。 临时 blob 在 24 小时后会被清除。 默认值为 **file**。
 - 上传的文件受到保护。 输出 URL 包括用于在部署期间访问文件的 [SAS 令牌](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。

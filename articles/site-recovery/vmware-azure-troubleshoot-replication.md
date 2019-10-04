@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 54686a96385532e17fe0ac6e59058b91b40c1342
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: b02e819255db0cdf8b9d241f2ec0d41df7494162
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742567"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844360"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
@@ -55,35 +55,15 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 如果系统中存在重复的条目，则在 Site Recovery 下复制的虚拟机将不会显示在 Azure 门户中。 若要了解如何删除过时的条目和解决此问题，请参阅[使用 Azure Site Recovery 进行 VMware 到 Azure 的复制：如何清除重复或过时的条目](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx)。
 
-## <a name="common-errors-and-solutions"></a>常见错误和解决方法
+## <a name="no-crash-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>在最后 "XXX" 分钟内，VM 没有可用的崩溃一致恢复点
+
+下面列出了其中的一些最常见
 
 ### <a name="initial-replication-issues-error-78169"></a>初始复制问题 [错误 78169]
 
 反复确认不存在连接、带宽或时间同步相关的问题后，请确保：
 
 - 没有任何防病毒软件正在阻止 Azure Site Recovery。 [了解详细](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) Azure Site Recovery 要求排除的文件夹。
-
-### <a name="missing-app-consistent-recovery-points-error-78144"></a>缺少应用一致性恢复点 [错误 78144]
-
- 此错误是卷影复制服务 (VSS) 问题造成的。 若要解决问题，请执行以下操作： 
- 
-- 确认安装的 Azure Site Recovery 代理版本至少为 9.22.2。 
-- 确认 VSS 提供程序已在 Windows 服务中作为一个服务安装，并在“组件服务”MMC 中检查 Azure Site Recovery VSS 提供程序是否已列出。
-- 如果未安装 VSS 提供程序，请参阅[安装故障排除文章](vmware-azure-troubleshoot-push-install.md#vss-installation-failures)。
-
-- 如果已禁用 VSS：
-    - 确认 VSS 提供程序服务的启动类型是否设置为“自动”。
-    - 重启以下服务：
-        - VSS 服务
-        - Azure Site Recovery VSS 提供程序
-        - VDS 服务
-
-- 如果运行的是 SQL 或 Exchange 工作负荷, 请检查这些应用程序编写器的日志中的失败情况。 以下文章中捕获了经常发生的错误和解决方法:
-    -  [SQL Server 数据库的 "自动关闭" 选项设置为 TRUE](https://support.microsoft.com/help/4504104)
-    - [SQL Server 2008 R2 引发不可重试的错误](https://support.microsoft.com/help/4504103)
-    - [SQL Server 2016 和2017中的已知问题](https://support.microsoft.com/help/4493364)
-    - [Exchange Server 2013 和2016常见问题](https://support.microsoft.com/help/4037535)
-
 
 ### <a name="source-machines-with-high-churn-error-78188"></a>源计算机的变动率较高 [错误 78188]
 
@@ -93,13 +73,13 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 若要解决问题，请执行以下操作：
 - 确保根据源中的变动率要求预配目标存储帐户类型（“标准”或“高级”）。
-- 如果已复制到高级托管磁盘 (asrseeddisk 类型), 请确保磁盘大小支持根据 Site Recovery 限制观察到的变动率。 如果需要, 可以增加 asrseeddisk 的大小。 请按照以下步骤操作：
-    - 导航到受影响的复制计算机的 "磁盘" 边栏选项卡, 并复制副本磁盘名称
+- 如果已复制到高级托管磁盘（asrseeddisk 类型），请确保磁盘大小支持根据 Site Recovery 限制观察到的变动率。 如果需要，可以增加 asrseeddisk 的大小。 请按照以下步骤操作：
+    - 导航到受影响的复制计算机的“磁盘”边栏选项卡，并复制副本磁盘名称
     - 导航到此副本托管磁盘
-    - 你可能会在概述边栏选项卡上看到一个横幅, 指出已生成 SAS URL。 单击此标语并取消导出。 如果看不到横幅, 请忽略此步骤。
-    - 一旦将 SAS URL 吊销, 请在托管磁盘中转到 "配置" 边栏选项卡, 增加大小, 以便 ASR 支持在源磁盘上观察到的变动率
+    - 你可能会在“概述”边栏选项卡上看到一个横幅，指出已生成 SAS URL。 单击此横幅并取消导出。 如果看不到横幅，请忽略此步骤。
+    - 撤销 SAS URL 后，请转至托管磁盘的“配置”边栏选项卡并增加大小，以便 ASR 支持源磁盘上观察到的变动率
 - 如果观测到的变动率是暂时性的，请等待几个小时，让等待中的数据跟上上传进度并创建恢复点。
-- 如果磁盘包含非关键数据 (如临时日志、测试数据等), 请考虑将此数据移到其他位置, 或者从复制中完全排除此磁盘
+- 如果磁盘包含非关键数据（如临时日志、测试数据等），请考虑将此数据移到其他位置，或者从复制中完全排除此磁盘
 - 如果问题持续出现，请使用 Site Recovery [部署规划器](site-recovery-deployment-planner.md#overview)来帮助规划复制。
 
 ### <a name="source-machines-with-no-heartbeat-error-78174"></a>源计算机无检测信号 [错误 78174]
@@ -138,8 +118,21 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
     - 检查位于以下位置的日志以查看错误详细信息：
         
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+3. 若要向配置服务器注册主目标，请导航到 **%PROGRAMDATA%\ASR\Agent**文件夹，并在命令提示符下运行以下命令：
+   ```
+   cmd
+   cdpcli.exe --registermt
 
-## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>错误 ID 78144-最近 "XXX" 分钟内没有适用于 VM 的应用一致恢复点
+   net stop obengine
+
+   net start obengine
+
+   exit
+   ```
+
+## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>错误 ID 78144 - 在过去“XXX”分钟内没有可供 VM 使用的应用一致性恢复点
+
+移动代理[9.23](vmware-physical-mobility-service-overview.md##from-923-version-onwards) & [9.27](site-recovery-whats-new.md#update-rollup-39)版本中已进行了改进，可处理 VSS 安装失败行为。 确保你处于最新版本，以获得有关排查 VSS 故障的最佳指导。
 
 下面列出了其中的一些最常见
 
@@ -169,12 +162,12 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS 编写器未安装 - 错误 2147221164 
 
-*如何解决*：若要生成应用程序一致性标记, Azure Site Recovery 使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务未安装，则应用程序一致性快照创建会失败，并出现 ID 为 0x80040154 的错误“类未注册”。 </br>
+*如何解决*：若要生成应用程序一致性标记，Azure Site Recovery 使用 Microsoft 卷影复制服务（VSS）。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务未安装，则应用程序一致性快照创建会失败，并出现 ID 为 0x80040154 的错误“类未注册”。 </br>
 请参阅[有关 VSS 编写器安装故障排除的文章](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS 编写器已禁用 - 错误 2147943458
 
-**如何解决**：若要生成应用程序一致性标记, Azure Site Recovery 使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务已禁用，则应用程序一致性快照创建会失败，并出现 错误“指定的服务已禁用，无法启动(0x80070422)”。 </br>
+**如何解决**：若要生成应用程序一致性标记，Azure Site Recovery 使用 Microsoft 卷影复制服务（VSS）。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务已禁用，则应用程序一致性快照创建会失败，并出现 错误“指定的服务已禁用，无法启动(0x80070422)”。 </br>
 
 - 如果已禁用 VSS：
     - 确认 VSS 提供程序服务的启动类型是否设置为“自动”。
@@ -185,7 +178,7 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 ####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS 提供程序未注册 - 错误 2147754756
 
-**如何解决**：若要生成应用程序一致性标记, Azure Site Recovery 使用 Microsoft 卷影复制服务 (VSS)。 检查 Azure Site Recovery VSS 提供程序服务是否已安装。 </br>
+**如何解决**：若要生成应用程序一致性标记，Azure Site Recovery 使用 Microsoft 卷影复制服务（VSS）。 检查 Azure Site Recovery VSS 提供程序服务是否已安装。 </br>
 
 - 使用以下命令重试提供程序安装：
 - 卸载现有的提供程序：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd

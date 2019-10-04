@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f892857d74150ee42cc2ea4b5c996feac3d1cfa2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 19e1a5f1534d09246ca85029f45ee918ec57e51f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695616"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828413"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘
 
@@ -142,4 +142,4 @@ ms.locfileid: "68695616"
 
 ## <a name="next-steps"></a>后续步骤
 * 如需更多存储，还可以[向 Linux VM 添加数据磁盘](add-disk.md)。 
-* 有关磁盘加密的详细信息，请参阅[使用 Azure CLI 加密 Linux VM 上的磁盘](encrypt-disks.md)。
+* 有关磁盘加密的详细信息，请参阅[适用于 Linux vm 的 Azure 磁盘加密](disk-encryption-overview.md)。

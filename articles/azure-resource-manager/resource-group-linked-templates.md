@@ -4,20 +4,20 @@ description: 介绍如何使用 Azure 资源管理器模板中的链接模板创
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: b48988c04f6b387a8124a812a836e2b92a9d3ada
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 59af553f4080ca86e964b75234e4d812297d8541
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194378"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827332"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
 若要部署解决方案，可以使用单个模板或包含任意相关模板的主模板。 相关模板可以是从主模板链接到的单独文件，也可以是嵌套在主模板中的模板。
 
-对于中小型解决方案，单个模板更易于理解和维护。 可以查看单个文件中的所有资源和值。 对于高级方案，使用链接模板可将解决方案分解为目标组件，并重复使用模板。
+对于中小型解决方案，单个模板更易于理解和维护。 可以查看单个文件中的所有资源和值。 对于高级方案，可以使用链接的模板将解决方案分解为目标组件。 可以轻松地将这些模板重复用于其他方案。
 
 使用链接模板时，需创建一个用于在部署期间接收参数值的主模板。 主模板包含所有链接模板，并根据需要将值传递给这些模板。
 
@@ -27,7 +27,7 @@ ms.locfileid: "70194378"
 > 对于链接模板或嵌套模板，只能使用[增量](deployment-modes.md)部署模式。
 >
 
-## <a name="link-or-nest-a-template"></a>链接或嵌套模板
+## <a name="deployments-resource"></a>部署资源
 
 若要链接到另一个模板，请将一个**部署**资源添加到主模板。
 
@@ -47,7 +47,7 @@ ms.locfileid: "70194378"
 
 为部署资源提供的属性将因要链接到外部模板，还是要将内联模板嵌套在主模板中而异。
 
-### <a name="nested-template"></a>嵌套模板
+## <a name="nested-template"></a>嵌套模板
 
 若要将模板嵌套在主模板中，请使用 **template** 属性并指定模板语法。
 
@@ -94,9 +94,17 @@ ms.locfileid: "70194378"
 
 嵌套模板需要与标准模板[相同的属性](resource-group-authoring-templates.md)。
 
-### <a name="external-template-and-external-parameters"></a>外部模板和外部参数
+## <a name="external-template"></a>外部模板
 
-若要链接到外部模板和参数文件，请使用 **templateLink** 和 **parametersLink**。 链接到某个模板时，资源管理器服务必须能够访问该模板。 不能指定本地文件，或者只能在本地网络中使用的文件。 只能提供包含 **http** 或 **https** 的 URI 值。 一种做法是将链接模板放入存储帐户，并对该项使用 URI。
+若要链接到外部模板，请使用**templateLink**属性。 不能指定本地文件，或者只能在本地网络中使用的文件。 只能提供包含 **http** 或 **https** 的 URI 值。 资源管理器必须能够访问模板。
+
+一种做法是将链接模板放入存储帐户，并对该项使用 URI。
+
+可在外部文件或内联中提供外部模板的参数。
+
+### <a name="external-parameters"></a>外部参数
+
+提供外部参数文件时，请使用**parametersLink**属性：
 
 ```json
 "resources": [
@@ -105,15 +113,15 @@ ms.locfileid: "70194378"
     "apiVersion": "2018-05-01",
     "name": "linkedTemplate",
     "properties": {
-    "mode": "Incremental",
-    "templateLink": {
+      "mode": "Incremental",
+      "templateLink": {
         "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
         "contentVersion":"1.0.0.0"
-    },
-    "parametersLink": {
+      },
+      "parametersLink": {
         "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
         "contentVersion":"1.0.0.0"
-    }
+      }
     }
   }
 ]
@@ -121,11 +129,11 @@ ms.locfileid: "70194378"
 
 无需为模板或参数提供 `contentVersion` 属性。 如果未提供内容版本值，将部署模板的当前版本。 如果提供内容版本值，它必须与链接的模板中的版本相匹配；否则，部署失败并产生错误。
 
-### <a name="external-template-and-inline-parameters"></a>外部模板和内联参数
+### <a name="inline-parameters"></a>内联参数。
 
 或者，可以提供内联参数。 不能同时使用内联参数和指向参数文件的链接。 同时指定 `parametersLink` 和 `parameters` 时，部署将失败，并出现错误。
 
-若要将值从主模板传递给链接模板，请使用**参数**。
+若要将值从主模板传递到链接模板，请使用**parameters**属性。
 
 ```json
 "resources": [
@@ -269,7 +277,7 @@ ms.locfileid: "70194378"
 }
 ```
 
-与其他资源类型一样，可在链接的模板和其他资源间设置依赖关系。 因此，当其他资源需要链接模板的输出值时，请确保在部署这些资源之前部署链接模板。 或者，当链接模板依赖于其他资源时，请确保在部署链接模板之前部署其他资源。
+与其他资源类型一样，可在链接的模板和其他资源间设置依赖关系。 当其他资源需要来自链接模板的输出值时，请确保在其之前部署链接的模板。 或者，当链接模板依赖于其他资源时，请确保在部署链接模板之前部署其他资源。
 
 以下示例演示一个部署公共 IP 地址并返回资源 ID 的模板：
 
@@ -480,7 +488,7 @@ done
 
 也可将参数文件限制为通过 SAS 令牌进行访问。
 
-目前, 无法链接到位于[Azure 存储防火墙](../storage/common/storage-network-security.md)后面的存储帐户中的模板。
+目前，无法链接到位于 [Azure 存储防火墙](../storage/common/storage-network-security.md)后面的存储帐户中的模板。
 
 以下示例演示在链接到模板时如何传递 SAS 令牌：
 

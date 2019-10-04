@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 0a718786cc7c72ef4ee9573c3c3e40401c53a315
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 6bff2210e77f7af98c1289b08159a89f42f2a3bd
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308066"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827613"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
 
@@ -193,7 +193,7 @@ Hive 元存储用于存储 Hive 服务器使用的数据源的元数据。大小
 
 ### <a name="how-do-i-create-a-keytab-for-an-hdinsight-esp-cluster"></a>如何实现为 HDInsight ESP 群集创建 keytab？
 
-为域用户名创建 Kerberos keytab。 稍后可以使用此 keytab 在未输入密码的情况下向已加入域的远程群集进行身份验证。 请注意，域名为大写字母：
+为域用户名创建 Kerberos keytab。 稍后可以使用此 keytab 在未输入密码的情况下向已加入域的远程群集进行身份验证。 域名为大写字母：
 
 ```shell
 ktutil
@@ -310,14 +310,14 @@ HDInsight 群集，或者在创建群集时到新群集。 有关详细信息，
 
 你可以使用以下 REST 终结点以 JSON 格式请求所需的信息。 使用基本身份验证标头发出请求。
 
-- Tez 查询视图： *https：\//\<群集名称 >. clustername>.azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
-- Tez Dag 视图： *https：\//\<群集名称 >. clustername>.azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
+- Tez 查询视图： *https： \/ @ no__t-2 @ no__t-3cluster name >. clustername>.azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID* /
+- Tez Dag 视图： *https： \/ @ no__t-2 @ no__t-3cluster name >. clustername>.azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID* /
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>如何实现使用 Azure Active Directory 用户从 HDI 群集中检索配置详细信息吗？
 
 若要与 AAD 用户协商正确的身份验证令牌，请使用以下格式浏览网关：
 
-* https://`<cluster dnsname>`. azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https://`<cluster dnsname>`.azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>如何实现使用 Ambari Restful API 来监视 YARN 性能？
 
@@ -352,6 +352,10 @@ http://<headnodehost>:8080/api/v1/clusters/<ClusterName>/services/YARN/component
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>部署 HDInsight 群集需要多少费用？
 
 有关与计费相关的定价和常见问题解答的详细信息，请参阅[Azure HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)页。
+
+### <a name="when-does-hdinsight-billing-start--stop"></a>HDInsight 计费何时开始 & 停止？
+
+创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 每分钟按比例计费。
 
 ### <a name="how-do-i-cancel-my-subscription"></a>如何实现取消我的订阅？
 

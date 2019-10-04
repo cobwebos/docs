@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fdad2f2dfec6f13fe4a40641db3417f29273349c
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: a0b9166d24bea28bb3271d719e8ffe0b24d71381
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315050"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71826931"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略为多租户 Azure Active Directory 设置登录
 
@@ -58,7 +58,7 @@ ms.locfileid: "71315050"
 1. 在 "**策略**" 下，选择 "**标识体验框架**"。
 1. 选择 "**策略密钥**"，然后选择 "**添加**"。
 1. 对于“选项”，请选择 `Manual`。
-1. 输入策略密钥的**名称**。 例如， `AADAppSecret` 。  创建前缀`B2C_1A_`后，会自动将其添加到密钥的名称，因此，其在以下部分中的 XML 引用为*B2C_1A_AADAppSecret*。
+1. 输入策略密钥的**名称**。 例如， `AADAppSecret` 。  创建时，前缀 `B2C_1A_` 会自动添加到密钥的名称中，因此，在下一部分的 XML 中，其引用为*B2C_1A_AADAppSecret*。
 1. 在 "**密钥**" 中，输入你之前记录的客户端密码。
 1. 在“密钥用法”处选择 `Signature`。
 1. 选择“创建”。
@@ -187,6 +187,8 @@ ms.locfileid: "71315050"
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 
 ## <a name="create-an-azure-ad-b2c-application"></a>创建 Azure AD B2C 应用程序
+
+与 Azure AD B2C 通信是通过在 B2C 租户中注册的应用程序进行的。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

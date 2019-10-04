@@ -11,26 +11,25 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/30/2019
+ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 448469d4c1ff15ed2ba814dfaa653c4d3c7e3452
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3e0bdd42ea19b7029d3f3df4ff9a5a275aec0271
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677820"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936682"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
 > [!NOTE]
-> 本文介绍如何在 Application Insights 中分析数据使用情况。  相关信息请参阅以下文章。
-> - [监视使用情况及预估成本](../../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md)介绍了如何针对不同的定价模型查看多个 Azure 监视功能的使用情况及预估成本。 它还介绍了如何更改定价模型。
+> 本文介绍如何了解和控制 Application Insights 的费用。  相关文章[监视使用情况和估计成本](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs)介绍了如何在不同定价模型的多个 Azure 监视功能中查看使用情况和预估成本。
 
 如果对 Application Insights 定价工作原理存在疑问，欢迎在我们的[论坛](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights)提出问题。
 
 ## <a name="pricing-model"></a>定价模型
 
-[Azure 应用程序 Insights][start]的定价基于数据量引入，并可选择用于更长的数据保留。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。
+[Azure 应用程序 Insights][start]的定价是基于数据量引入的即用即付模型，还可以选择用于更长的数据保留。 每个 Application Insights 资源作为独立服务计费，并在 Azure 订阅的帐单中产生相应费用。 
 
 ### <a name="data-volume-details"></a>数据量详细信息
 
@@ -46,6 +45,22 @@ ms.locfileid: "71677820"
 [多步骤 Web 测试](../../azure-monitor/app/availability-multistep.md)会额外收费。 多步骤 Web 测试是指执行一系列操作的 Web 测试。
 
 单页“ping 测试”不单独计费。 进行 ping 测试和多步测试时发送的遥测数据与应用发送的其他遥测数据计费方式相同。
+
+## <a name="estimating-the-costs-to-manage-your-application"></a>估计管理应用程序的成本 
+
+如果尚未使用 Application Insights，则可以使用[Azure Monitor 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=monitor)来估计使用 Application Insights 的成本。 首先在搜索框中输入 "Azure Monitor"，然后单击生成的 Azure Monitor 磁贴。 向下滚动到 "Azure Monitor"，然后从 "类型" 下拉列表中选择 "Application Insights"。  您可以在此输入每月要收集的数据的 GB 数，因此问题是 Application Insights 收集监视应用程序的数据量。 
+
+可以通过以下两种方法解决此情况：使用 ASP.NET SDK 中提供的默认监视和自适应采样，或 estimtate 基于其他类似客户查看的数据引入 likley 数据。 
+
+### <a name="data-collection-when-using-sampling"></a>使用采样时的数据收集
+
+使用 ASP.NET SDK 的[自适应采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)，数据量会自动调整，以保持默认 Application Insights 监视的流量的指定最大速率。 如果应用程序生成的遥测数据量较低，例如调试或由于使用率较低，则采样处理器不会丢弃项，只要卷低于每秒配置的事件。 对于大容量应用程序，默认阈值为每秒5个事件，自适应采样会将每日事件的数目限制为432000。 使用的典型平均事件大小为 1 KB，这对应于托管应用程序的每个节点每31天的遥测值 13.4 GB （因为采样是在每个节点的本地完成的。） 
+
+对于不支持自适应采样的 Sdk，可以利用 [引入采样] [@no__t] 来根据要保留的数据百分比或[ASP.NET、ASP.NET Core 和 Java 的固定速率采样来 Application Insights receved 数据。](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites)用于减少从 web 服务器和 web 浏览器发送的流量的网站
+
+### <a name="learn-from-what-similar-customers-collect"></a>了解类似客户收集的内容
+
+在适用于 Application Insights 的 Azure 监视定价计算器中，如果启用了 "基于应用程序活动估计数据量" 功能，则可以提供有关应用程序的输入（每月的请求数和页面视图数，以防你将收集客户端遥测数据），然后计算器会告诉您类似应用程序收集的中间值和 90% 的数据量。 当然，这些 scala 跨越 Application Insights 配置的范围（例如，某些示例有默认采样，某些[采样](../../azure-monitor/app/sampling.md)没有采样等），因此，您仍然可以使用采样来减少在中间级别下引入的数据量。 但这是一种开始了解其他同类客户看到的情况。 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>了解你的使用情况和估计成本
 
@@ -64,6 +79,12 @@ E. 设置每日数据量上限。
 Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计费”部分或在 [Azure 计费门户](https://account.windowsazure.com/Subscriptions)中查看 Azure 账单的详细信息。 
 
 ![在左侧菜单中，选择“账单”](./media/pricing/02-billing.png)
+
+## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>查看 Azure 帐单上的 Application Insights 使用情况 
+
+Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中心提供了大量有用的功能。 例如，通过 "成本分析" 功能，可以查看 Azure 资源的花费。 按资源类型添加筛选器（对于 Application Insights 的 "insights/组件"）可让你看到跟踪你的支出。
+
+通过[从 Azure 门户下载你的使用](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)情况，可以更好地了解你的使用情况。 在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可以通过第一次筛选 "计量类别" 列以显示 "Application Insights" 和 "Log Analytics" 来查找 Application Insights 资源的用法，然后在 "Instance ID" 列中添加筛选器，这是 "containsmicrosoft insights/组件 "。  由于所有 Azure Monitor 组件都有一个登录后端，因此，大多数 Application Insights 使用情况都是在计量器类别为 Log Analytics 的情况下报告的。  对于旧定价层和多步骤 web 测试 Application Insights 资源，将使用 Application Insights 的计量类别进行报告。  使用情况显示在 "已消耗数量" 列中，每个条目的单位显示在 "度量单位" 列中。  更多详细信息可帮助你[了解 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
 
 ## <a name="managing-your-data-volume"></a>管理数据卷 
 
@@ -156,16 +177,15 @@ systemEvents
 
 ## <a name="change-the-data-retention-period"></a>更改数据保留期
 
-> [!NOTE]
-> 我们暂时删除了此功能，但解决了可能出现的问题。  我们将在10月 1 2019 日的第一周后返回。
-
 Application Insights 资源的默认保留期为 90 天。 可以为每个 Application Insights 资源选择不同的保留期。 完整的可用保留期集为 30、60、90、120、180、270、365、550 或 730 天。 
 
 若要更改保留期，请从 Application Insights 资源转到“使用情况和预估成本”页，然后选择“数据保留”选项：
 
 ![调整每日遥测数据量上限](./media/pricing/pricing-005.png)
 
-当为延长保留期启用了计费时，保留时间超过 90 天的数据将按照当前针对 Azure Log Analytics 数据保留的计费费率进行计费。 请访问[“Azure Monitor 定价”页](https://azure.microsoft.com/pricing/details/monitor/)了解更多信息。 通过[投票支持此建议](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)，随时了解可变保留进度的最新情况。 
+还可以[通过 ARM](https://docs.microsoft.com/azure/azure-monitor/app/powershell)使用 `retentionInDays` 参数设置保留。 此外，如果将数据保留期设置为30天，则可以使用 `immediatePurgeDataOn30Days` 参数触发立即清除旧数据，这对于符合性相关的方案可能很有用。 仅通过 ARM 公开此功能。 
+
+当计费在12月2019年初开始更长的保留期时，保存时间超过90天的数据将按当前为 Azure Log Analytics 数据保留计费的相同费率计费。 请访问[“Azure Monitor 定价”页](https://azure.microsoft.com/pricing/details/monitor/)了解更多信息。 通过[投票支持此建议](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)，随时了解可变保留进度的最新情况。 
 
 ## <a name="data-transfer-charges-using-application-insights"></a>使用 Application Insights 的数据传输费用
 

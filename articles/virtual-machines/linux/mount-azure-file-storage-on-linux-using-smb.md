@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: c394b013b057a78e99cafc0adde9727d0a75a87c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: effe1169fb531abd3fe8a206f2baf83380fcd28f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091827"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828396"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
 
@@ -115,5 +115,5 @@ sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFile
 
 - [在创建期间使用 cloud-init 自定义 Linux VM](using-cloud-init.md)
 - [将磁盘添加到 Linux VM](add-disk.md)
-- [使用 Azure CLI 加密 Linux VM 上的磁盘](encrypt-disks.md)
+- [适用于 Linux Vm 的 Azure 磁盘加密](disk-encryption-overview.md)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 19ccd44888d64967baf82568c1cbb2540f3b3f68
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 75edb385a86be849ec7c165759d3b451eab804f6
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780338"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828512"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
@@ -152,6 +152,18 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 
 在加密受保护的值以后，[在 Service Fabric 应用程序中指定加密的机密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application)，并[解密服务代码中加密的机密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code)。
 
+## <a name="include-certificate-in-service-fabric-applications"></a>在 Service Fabric 应用程序中包括证书
+
+若要为应用程序提供对机密的访问权限，请通过将**SecretsCertificate**元素添加到应用程序清单中来包含证书。
+
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
+```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>使用托管服务标识 (MSI) 向 Azure 资源验证 Service Fabric 应用程序
 
 若要了解 Azure 资源的托管标识，请参阅[什么是 Azure 资源的托管标识？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-it-work)。
@@ -188,7 +200,7 @@ principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGr
 az role assignment create --assignee $principalid --role 'Contributor' --scope "/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/<PROVIDER NAME>/<RESOURCE TYPE>/<RESOURCE NAME>"
 ```
 
-在 Service Fabric 应用程序代码中, 为 Azure 资源管理器[获取一个访问令牌](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http), 使其完全类似于以下内容:
+在 Service Fabric 应用程序代码中，为 Azure 资源管理器[获取一个访问令牌](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)，使其完全类似于以下内容：
 
 ```bash
 access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true | python -c "import sys, json; print json.load(sys.stdin)['access_token']")
@@ -202,16 +214,16 @@ access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-v
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
 ## <a name="windows-security-baselines"></a>Windows 安全基线
-[我们建议你实现一个行业标准的配置, 该配置被广泛已知并且经过良好测试, 如 Microsoft 安全基线, 而不是自己创建基线](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines);在虚拟机规模集上预配这些虚拟机的选项是使用 Azure Desired State Configuration (DSC) 扩展处理程序, 在虚拟机处于联机状态时对其进行配置, 使其运行生产软件。
+[我们建议你实现一个行业标准的配置，该配置被广泛已知并且经过良好测试，如 Microsoft 安全基线，而不是自己创建基线](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines);在虚拟机规模集上预配这些虚拟机的选项是使用 Azure Desired State Configuration （DSC）扩展处理程序，在虚拟机处于联机状态时对其进行配置，使其运行生产软件。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
-[Azure 防火墙是一种托管的基于云的网络安全服务, 可保护 Azure 虚拟网络资源。它是一种具有内置的高可用性和无限制云可伸缩性的完全有状态防火墙即服务。](https://docs.microsoft.com/azure/firewall/overview); 这使得能够将出站 HTTP/S 流量限制为指定的完全限定域名 (FQDN) 列表 (包括通配符)。 此功能不需要 SSL 终止。 建议你将[Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)用于 Windows 更新, 并启用到 Microsoft Windows 更新终结点的网络流量通过防火墙。 [使用模板部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/deploy-template)提供了一个有关 azureFirewalls 资源模板定义的示例。 Service Fabric 应用程序通用的防火墙规则是允许群集虚拟网络执行以下操作:
+@no__t 0Azure 防火墙是一种托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一种具有内置的高可用性和不受限制的云可伸缩性的完全有状态防火墙即服务。 ](https://docs.microsoft.com/azure/firewall/overview);这使你能够将出站 HTTP/S 流量限制为指定的完全限定的域名（FQDN）列表（包括通配符）。 此功能不需要 SSL 终止。 建议你将[Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)用于 Windows 更新，并启用到 Microsoft Windows 更新终结点的网络流量通过防火墙。 [使用模板部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/deploy-template)提供了一个有关 azureFirewalls 资源模板定义的示例。 Service Fabric 应用程序通用的防火墙规则是允许群集虚拟网络执行以下操作：
 
 - \* download.microsoft.com
 - *servicefabric.azure.com
 - *.core.windows.net
 
-这些防火墙规则会将允许的出站网络安全组 (包括 ServiceFabric 和存储) 作为虚拟网络的允许目标。
+这些防火墙规则会将允许的出站网络安全组（包括 ServiceFabric 和存储）作为虚拟网络的允许目标。
 
 ## <a name="tls-12"></a>TLS 1.2
 [TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)

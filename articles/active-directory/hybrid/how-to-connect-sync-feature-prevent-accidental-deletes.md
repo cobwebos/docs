@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c09a751119c1d6effa5795f2dbf7da422b7806
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 48f3109b4c87e25444629ca25411894eab8a9d56
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135797"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827127"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect 同步：防止意外删除
 本主题说明 Azure AD Connect 中的防止意外删除功能。
@@ -58,8 +58,9 @@ ms.locfileid: "70135797"
 
 ![搜索连接器空间](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
-[!NOTE] 如果你不确定所有删除都是必需的, 并且希望关闭更安全的路由。 你可以使用 PowerShell cmdlet: `Enable-ADSyncExportDeletionThreshold`设置新的阈值, 而不是禁用可能会导致不需要的删除的阈值。 
+[!NOTE] 如果你不确定所有删除都是必需的，并且希望关闭更安全的路由。 你可以使用 PowerShell cmdlet： `Enable-ADSyncExportDeletionThreshold` 设置新阈值，而不是禁用可能会导致不需要的删除的阈值。 
 
+## <a name="if-all-deletes-are-desired"></a>如果需要所有删除
 如果想要查看所有删除项，请执行以下操作：
 
 1. 若要检索当前的删除阈值，请运行 PowerShell cmdlet `Get-ADSyncExportDeletionThreshold`。 提供 Azure AD 全局管理员帐户和密码。 默认值为 500。

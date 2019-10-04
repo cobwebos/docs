@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 74a1a2218020718a05c9d01de96ddf4fccb35eb4
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
-ms.translationtype: MT
+ms.openlocfilehash: 7adf43110cffdc669b39632521c69ed5d3723257
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802568"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845697"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>具有有序聚集列存储索引的性能优化  
 
@@ -24,7 +24,7 @@ ms.locfileid: "71802568"
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>已排序和未排序的聚集列存储索引 
 默认情况下，对于不使用索引选项创建的每个 Azure 数据仓库表，内部组件（索引生成器）将在其上创建未排序的聚集列存储索引（CCI）。  每列中的数据将压缩为单独的 CCI 行组段。  对于每个段的值范围，都有元数据，因此，在执行查询期间，不会从磁盘中读取超出查询谓词范围的段。  CCI 提供最高级别的数据压缩，并减小段的大小以进行读取，以便查询可以更快地运行。 但是，因为在将数据压缩为段之前，索引生成器不会对数据进行排序，所以，可能会出现具有重叠值范围的段，从而导致查询读取磁盘中的更多段并花费更长时间才能完成。  
 
-创建按序的 CCI 时，Azure SQL 数据仓库引擎会按顺序键对内存中的数据进行排序，然后索引生成器将其压缩到索引段。  使用已排序的数据时，段重叠会减少，使查询更有效地消除段，从而提高性能，因为要从磁盘读取的段数越小。  如果所有数据都可以在内存中同时进行排序，则可以避免进行分段重叠。  由于数据仓库表中的数据大小较大，因此不经常发生这种情况。  
+创建有序的 CCI 时，Azure SQL 数据仓库引擎会按顺序键对内存中的现有数据进行排序，然后索引生成器将这些数据压缩到索引段。  使用已排序的数据时，段重叠会减少，使查询更有效地消除段，从而提高性能，因为要从磁盘读取的段数越小。  如果所有数据都可以在内存中同时进行排序，则可以避免进行分段重叠。  由于数据仓库表中的数据大小较大，因此不经常发生这种情况。  
 
 若要检查列的段范围，请使用表名称和列名称运行此命令：
 
@@ -42,6 +42,9 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 ```
 
+> [!NOTE] 
+> 在有序的 CCI 表中，不会自动对由 DML 或数据加载操作生成的新数据进行排序。  用户可以重新生成按序的 CCI 来对表中的所有数据进行排序。  
+
 ## <a name="data-loading-performance"></a>数据加载性能
 
 将数据加载到有序的 CCI 表中的性能类似于将数据加载到已分区表中。  
@@ -51,12 +54,24 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ![Performance_comparison_data_loading @ no__t-1
  
 ## <a name="reduce-segment-overlapping"></a>减少分段重叠
-下面是通过 CTAS 或使用数据的现有表在新表中创建有序的 CCI 时，进一步减少分段重叠的选项：
 
-- 使用更大的资源类可在索引生成器将更多数据压缩为段之前，允许在内存中同时对这些数据进行排序。  在索引段中，无法更改数据的物理位置。  段或段内没有数据排序。  
+重叠段的数量取决于要排序的数据的大小、可用内存和排序的 CCI 创建期间的最大并行度（MAXDOP）设置。 下面是在创建有序的 CCI 时减少段重叠的选项。
 
-- 使用较低的并行度（例如 DOP = 1）。  用于按序的 CCI 创建的每个线程都在数据子集上运行，并在本地对其进行排序。  不同线程排序的数据没有全局排序。  使用并行线程可以减少创建有序的 CCI 的时间，但会生成比使用单个线程更多的重叠段。 
+- 在索引生成器将数据压缩成多个段之前，请在更高的 DWU 上使用 xlargerc 资源类，以便为数据排序留出更多的内存。  在索引段中，无法更改数据的物理位置。  段或段内没有数据排序。  
+
+- 创建具有 MAXDOP = 1 的顺序 CCI。  用于按序的 CCI 创建的每个线程都在数据子集上运行，并在本地对其进行排序。  不同线程排序的数据没有全局排序。  使用并行线程可以减少创建有序的 CCI 的时间，但会生成比使用单个线程更多的重叠段。  目前，仅支持使用 CREATE TABLE 作为 SELECT 命令创建有序的 CCI 表中的 MAXDOP 选项。  通过 CREATE INDEX 或 CREATE TABLE 命令创建按序的 CCI 不支持 MAXDOP 选项。 例如，
+
+```sql
+CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
+AS SELECT * FROM ExampleTable
+OPTION (MAXDOP 1);
+```
 - 在将数据加载到 Azure SQL 数据仓库表之前，按排序关键字预先对数据进行排序。
+
+
+下面是一个有序的 CCI 表分布的示例，该分发具有与上述建议重叠的零段。 有序的 CCI 表是使用 MAXDOP 1 和 xlargerc 通过 CTAS 从 DWU1000c 数据库中创建的。  CCI 在不包含重复项的 BIGINT 列上排序。  
+
+![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
 ## <a name="create-ordered-cci-on-large-tables"></a>对大型表创建按序的 CCI
 创建按序的 CCI 是一种脱机操作。  对于没有分区的表，用户在按序的 CCI 创建过程完成之前，不能访问数据。   对于已分区表，因为引擎按分区创建按序排序的 CCI 分区，所以用户仍可以访问未处理顺序的 CCI 的分区中的数据。   可以使用此选项最大限度地减少在大表上排序的 CCI 创建过程中的停机时间： 

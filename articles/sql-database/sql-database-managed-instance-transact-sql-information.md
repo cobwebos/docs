@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 94e9a484afe42f8621380fa685f8bc9faeb894d3
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: HT
+ms.openlocfilehash: 9796a4efdacef04390705607defb7b5cdd462886
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816039"
+ms.locfileid: "71828731"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例的 T-SQL 差异、限制和已知问题
 
@@ -334,7 +334,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 由于托管实例无法访问文件共享和 Windows 文件夹，因此存在以下约束：
 
-- 仅支持 `CREATE ASSEMBLY FROM BINARY`。 请参阅 [CREATE ASSEMBLY FROM BINARY](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql)。 
+- 仅支持 `CREATE ASSEMBLY FROM BINARY`。 请参阅[CREATE ASSEM 通过 FROM BINARY](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql)。 
 - 不支持 `CREATE ASSEMBLY FROM FILE`。 请参阅 [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql)。
 - `ALTER ASSEMBLY` 不能引用文件。 请参阅 [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql)。
 
@@ -548,7 +548,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 **日期：** Oct 2019
 
-SQL Server/托管实例[不允许用户删除不为空的文件](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database.md#Prerequisites)。 如果尝试使用 `ALTER DATABASE REMOVE FILE` 语句删除非空的数据文件，则不会立即返回错误 `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty`。 托管实例将继续尝试删除文件，并且在30分钟后，操作将失败，并 `Internal server error`。
+SQL Server/托管实例[不允许用户删除不为空的文件](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 如果尝试使用 `ALTER DATABASE REMOVE FILE` 语句删除非空的数据文件，则不会立即返回错误 `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty`。 托管实例将继续尝试删除文件，并且在30分钟后，操作将失败，并 `Internal server error`。
 
 **解决方法**：使用 `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` 命令删除文件内容。 如果这是文件组中的唯一文件，则需要在收缩文件之前删除与此文件组关联的表或分区中的数据，并选择性地将这些数据加载到另一个表/分区。
 

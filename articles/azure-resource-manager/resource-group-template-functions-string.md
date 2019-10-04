@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: c30bb47f3f35663a6ffcfc0126758eb82c9dec4e
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b558e046f3402fdfa127192788d7d3ee1307ddeb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194776"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937032"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的字符串函数
 
@@ -112,8 +112,8 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | 字符串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字符串 | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
@@ -177,8 +177,8 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | 字符串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字符串 | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
@@ -189,7 +189,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | base64Value |是 |string |要转换为字符串的 base64 表示形式。 |
 
@@ -242,8 +242,8 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | 字符串 | b25lLCB0d28sIHRocmVl |
+| toStringOutput | 字符串 | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="concat"></a>concat
@@ -290,7 +290,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| concatOutput | String | prefix-5yj4yjf5mbg72 |
+| concatOutput | 字符串 | prefix-5yj4yjf5mbg72 |
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json)演示如何组合两个数组。
 
@@ -407,12 +407,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| stringTrue | Bool | True |
-| stringFalse | Bool | False |
-| objectTrue | Bool | True |
-| objectFalse | Bool | False |
-| arrayTrue | Bool | True |
-| arrayFalse | Bool | False |
+| stringTrue | Bool | 真 |
+| stringFalse | Bool | 假 |
+| objectTrue | Bool | 真 |
+| objectFalse | Bool | 假 |
+| arrayTrue | Bool | 真 |
+| arrayFalse | Bool | 假 |
 
 ## <a name="datauri"></a>dataUri
 
@@ -466,8 +466,8 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | 字符串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | 字符串 | Hello, World! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -521,8 +521,8 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | 字符串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | 字符串 | Hello, World! |
 
 ## <a name="empty"></a>empty
 
@@ -585,9 +585,9 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | True |
-| objectEmpty | Bool | True |
-| stringEmpty | Bool | True |
+| arrayEmpty | Bool | 真 |
+| objectEmpty | Bool | 真 |
+| stringEmpty | Bool | 真 |
 
 ## <a name="endswith"></a>endsWith
 
@@ -648,12 +648,12 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| startsTrue | Bool | True |
+| startsTrue | Bool | 真 |
 | startsCapTrue | Bool | True |
-| startsFalse | Bool | False |
-| endsTrue | Bool | True |
-| endsCapTrue | Bool | True |
-| endsFalse | Bool | False |
+| startsFalse | Bool | 假 |
+| endsTrue | Bool | 真 |
+| endsCapTrue | Bool | 真 |
+| endsFalse | Bool | 假 |
 
 ## <a name="first"></a>first
 
@@ -704,8 +704,8 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| arrayOutput | String | one |
-| stringOutput | String | O |
+| arrayOutput | 字符串 | one |
+| stringOutput | 字符串 | O |
 
 ## <a name="format"></a>format
 
@@ -715,7 +715,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | formatString | 是 | string | 复合格式字符串。 |
 | arg1 | 是 | 字符串、整数或布尔值 | 要包含在带格式字符串中的值。 |
@@ -762,7 +762,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| formatTest | String | Hello, User。 带格式的数字：8,175,133 |
+| formatTest | 字符串 | Hello, User。 带格式的数字：8,175,133 |
 
 ## <a name="guid"></a>guid
 
@@ -904,7 +904,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
 
@@ -945,8 +945,8 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| arrayOutput | String | three |
-| stringOutput | String | e |
+| arrayOutput | 字符串 | three |
+| stringOutput | 字符串 | e |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
@@ -1017,7 +1017,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组、字符串或对象 |用于获取元素数的数组、用于获取字符数的字符串，或用于获取根级属性数的对象。 |
 
@@ -1282,8 +1282,8 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| firstOutput | String | 1231231234 |
-| secondOutput | String | 123-123-xxxx |
+| firstOutput | 字符串 | 1231231234 |
+| secondOutput | 字符串 | 123-123-xxxx |
 
 ## <a name="skip"></a>skip
 
@@ -1293,7 +1293,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
 | numberToSkip |是 |int |要跳过的元素或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
@@ -1351,7 +1351,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | arrayOutput | 阵列 | ["three"] |
-| stringOutput | String | two three |
+| stringOutput | 字符串 | two three |
 
 ## <a name="split"></a>split
 
@@ -1471,12 +1471,12 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| startsTrue | Bool | True |
+| startsTrue | Bool | 真 |
 | startsCapTrue | Bool | True |
-| startsFalse | Bool | False |
-| endsTrue | Bool | True |
-| endsCapTrue | Bool | True |
-| endsFalse | Bool | False |
+| startsFalse | Bool | 假 |
+| endsTrue | Bool | 真 |
+| endsCapTrue | Bool | 真 |
+| endsFalse | Bool | 假 |
 
 ## <a name="string"></a>string
 
@@ -1486,7 +1486,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 | 任意 |要转换为字符串的值。 可以转换任何类型的值，包括对象和数组。 |
 
@@ -1545,9 +1545,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
-| arrayOutput | String | ["a","b","c"] |
-| intOutput | String | 5 |
+| objectOutput | 字符串 | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | 字符串 | ["a","b","c"] |
+| intOutput | 字符串 | 5 |
 
 ## <a name="substring"></a>substring
 
@@ -1608,7 +1608,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| substringOutput | String | two |
+| substringOutput | 字符串 | two |
 
 ## <a name="take"></a>take
 
@@ -1618,7 +1618,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | type | 描述 |
+| 参数 | 必填 | 类型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
 | numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
@@ -1676,7 +1676,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
 | arrayOutput | 阵列 | ["one", "two"] |
-| stringOutput | String | 开 |
+| stringOutput | 字符串 | on |
 
 ## <a name="tolower"></a>toLower
 
@@ -1726,8 +1726,8 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | 字符串 | one two three |
+| toUpperOutput | 字符串 | ONE TWO THREE |
 
 ## <a name="toupper"></a>toUpper
 
@@ -1737,7 +1737,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |是 |string |要转换为大写的值。 |
 
@@ -1777,8 +1777,8 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | 字符串 | one two three |
+| toUpperOutput | 字符串 | ONE TWO THREE |
 
 ## <a name="trim"></a>trim
 
@@ -1788,7 +1788,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |是 |string |要剪裁的值。 |
 
@@ -1824,7 +1824,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| 返回 | String | one two three |
+| 返回 | 字符串 | one two three |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -1834,7 +1834,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | baseString |是 |string |哈希函数中用于创建唯一字符串的值。 |
 | 根据需要使用其他参数 |否 |string |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
@@ -1912,12 +1912,28 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
-| baseUri |是 |string |基本 uri 字符串。 |
+| baseUri |是 |string |基本 uri 字符串。 请注意观察与处理尾部反斜杠（'/'）有关的行为，如下表所述。  |
 | relativeUri |是 |string |要添加到基本 uri 字符串的相对 uri 字符串。 |
 
-**baseUri** 参数的值可包含特定文件，但在构造 URI 时，只使用基路径。 例如，将 `http://contoso.com/resources/azuredeploy.json`作为 baseUri 参数传递会生成 `http://contoso.com/resources/` 的基 URI。
+* 如果**baseUri**以尾随斜杠结束，则结果将是后跟**relativeUri**的**baseuri** 。
+
+* 如果**baseUri**不以尾随斜杠结束，则会出现以下两种情况之一。  
+
+   * 如果**baseUri**根本没有斜杠（前面附近的 "//" 除外），则结果将是一个后跟**relativeUri**的**baseuri** 。
+
+   * 如果**baseUri**有一些斜杠，但不以斜杠结尾，则从最后一个斜杠开头开始的所有内容都将从**baseuri**中删除，结果为**baseuri**后跟**relativeUri**。
+     
+下面是一些可能的恶意活动：
+
+```
+uri('http://contoso.org/firstpath', 'myscript.sh') -> http://contoso.org/myscript.sh
+uri('http://contoso.org/firstpath/', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
+uri('http://contoso.org/firstpath/azuredeploy.json', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
+uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://contoso.org/firstpath/azuredeploy.json/myscript.sh
+```
+有关完整的详细信息，请按[RFC 3986 第5节](https://tools.ietf.org/html/rfc3986#section-5)中所述解析**baseUri**和**relativeUri**参数。
 
 ### <a name="return-value"></a>返回值
 
@@ -1964,9 +1980,9 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | 字符串 | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | 字符串 | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | 字符串 | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="uricomponent"></a>uriComponent
 
@@ -2019,9 +2035,9 @@ URI 编码值的字符串。
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | 字符串 | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | 字符串 | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | 字符串 | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
@@ -2031,7 +2047,7 @@ URI 编码值的字符串。
 
 ### <a name="parameters"></a>Parameters
 
-| 参数 | 必填 | 类型 | 描述 |
+| 参数 | 必填 | type | 描述 |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |是 |string |要转换为字符串的 URI 编码值。 |
 
@@ -2074,9 +2090,9 @@ URI 编码值的解码字符串。
 
 | 姓名 | 类型 | ReplTest1 |
 | ---- | ---- | ----- |
-| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | 字符串 | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | 字符串 | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | 字符串 | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="utcnow"></a>utcNow
 
