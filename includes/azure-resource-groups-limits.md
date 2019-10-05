@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1190798b234f9c73e02fda41c03ffa296246be63
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69626298"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71975277"
 ---
 | Resource | 默认限制 | 最大限制 |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "69626298"
 | 标记键长度 |512 |512 |
 | 标记值长度 |256 |256 |
 
-<sup>1</sup>如果达到每个资源组的部署数限制 800，则会从历史记录中删除不再需要的部署。 从部署历史记录中删除条目不会影响已部署的资源。 可以使用 Azure CLI 的 [az group deployment delete](/cli/azure/group/deployment) 或 PowerShell 中的 [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) 删除历史记录中的条目。  有关在持续集成和持续交付 (CI/CD) 方案中用于自动删除部署的 PowerShell 脚本，请参阅 [remove-deployments.ps1](https://gist.github.com/bmoore-msft/ed33fb940dafb09380174b7fca57651f)。
+<sup>1</sup>如果达到每个资源组的部署数限制 800，则会从历史记录中删除不再需要的部署。 从部署历史记录中删除条目不会影响已部署的资源。 有关详细信息，请参阅[在部署计数超过800时解决错误](../articles/azure-resource-manager/deployment-quota-exceeded.md)。
 
 #### <a name="template-limits"></a>模板限制
 

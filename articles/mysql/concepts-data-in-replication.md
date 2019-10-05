@@ -1,17 +1,17 @@
 ---
-title: 将数据复制到 Azure Database for MySQL。
-description: 本文介绍 Azure Database for MySQL 的复制中数据。
+title: 将数据复制到 Azure Database for MySQL
+description: 了解如何使用数据复制从外部服务器同步到 Azure Database for MySQL 服务。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 5ef11e86b85a537a809352325d56ac3ff983c2c1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: b501a1f1ea54aff5617932dc5085d6d19f86976c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993048"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970349"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>将数据复制到 Azure Database for MySQL
 
@@ -36,7 +36,7 @@ ms.locfileid: "70993048"
 - 每个表都必须有主键。
 - 主服务器应使用 MySQL InnoDB 引擎。
 - 用户必须具有权限才能在主服务器上配置二进制日志记录和创建新用户。
-- 如果主服务器已启用 ssl，请确保在`mysql.az_replication_change_master`存储过程中包含为域提供的 ssl CA 证书。 请参阅下面的[示例](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication)和`master_ssl_ca`参数。
+- 如果主服务器已启用 SSL，请确保在 @no__t 0 存储过程中包含为域提供的 SSL CA 证书。 请参阅下面的[示例](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication)和 `master_ssl_ca` 参数。
 - 确保主服务器的 IP 地址已添加到 Azure Database for MySQL 副本服务器的防火墙规则中。 使用 [Azure 门户](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal)或 [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli) 更新防火墙规则。
 - 确保托管主服务器的计算机在端口 3306 上允许入站和出站流量。
 - 请确保主服务器具有**公共 IP 地址**、DNS 可公开访问，或者具有完全限定的域名（FQDN）。

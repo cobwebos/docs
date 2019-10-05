@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MySQL 中的只读副本。
-description: 本文介绍 Azure Database for MySQL 的只读副本。
+description: 了解 Azure Database for MySQL 中的读取副本：选择区域、创建副本、连接到副本、监视复制和停止复制。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: cdcb4832408b9e26e692a055e06bfb55e2fdfe96
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 6ad71cecfd088a92bdd41ae13cb530c286ebea4c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993101"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970394"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -19,7 +19,7 @@ ms.locfileid: "70993101"
 
 副本是新的服务器，可以像管理普通的 Azure Database for MySQL 服务器一样对其进行管理。 每个只读副本按照预配计算资源的 vCore 数量以及每月 GB 存储量计费。
 
-如需了解有关 MySQL 复制功能和问题的详细信息，请参阅 [MySQL 复制文档](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)。
+若要了解有关 MySQL 复制功能和问题的详细信息，请参阅[MySQL 复制文档](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)。
 
 ## <a name="when-to-use-a-read-replica"></a>何时使用只读副本
 
@@ -34,12 +34,12 @@ ms.locfileid: "70993101"
 ## <a name="cross-region-replication"></a>跨区域复制
 可以在与主服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。
 
-可以在任何 [Azure Database for MySQL 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)中设置主服务器。  主服务器可以在其配对区域或通用副本区域中拥有副本。 下图显示了哪些副本区域可用，具体取决于你的主区域。
+可以在任何 [Azure Database for MySQL 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)中设置主服务器。  主服务器可以在其配对区域或通用副本区域中有一个副本。 下图显示了哪些副本区域可用，具体取决于你的主区域。
 
-[![读取副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[@no__t 1Read 副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>通用副本区域
-无论主服务器位于何处，始终可以在以下任何区域中创建读取副本。 下面是通用副本区域：
+您可以在以下任何区域中创建读取副本，而不管您的主服务器位于何处。 支持的通用副本区域包括：
 
 澳大利亚东部、澳大利亚东南部、美国中部、东亚、美国东部、美国东部2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部、美国西部2。
 
@@ -63,7 +63,7 @@ ms.locfileid: "70993101"
 
 启动“创建副本”工作流时，将创建空白的 Azure Database for MySQL 服务器。 新服务器中填充了主服务器上的数据。 创建时间取决于主服务器上的数据量，以及自上次每周完整备份以来所经历的时间。 具体所需时间从几分钟到几小时不等。
 
-每个副本都启用了存储[自动增长](concepts-pricing-tiers.md#storage-auto-grow)。 自动增长功能允许副本与复制到它的数据保持同步，并防止由于存储空间不足错误而导致的复制中断。
+每个副本都启用了存储[自动增长](concepts-pricing-tiers.md#storage-auto-grow)。 使用自动增长功能，副本可与复制到它的数据保持同步，防止因存储空间不足而导致的复制中断。
 
 了解如何[在 Azure 门户中创建只读副本](howto-read-replicas-portal.md)。
 
@@ -109,7 +109,7 @@ Azure Database for MySQL 在 Azure Monitor 中提供“复制滞后时间(秒)�
 
 ### <a name="master-server-restart"></a>主服务器重启
 
-如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点并在非高峰期执行这些操作。
+如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点，并在非高峰期执行这些操作。
 
 ### <a name="new-replicas"></a>新副本
 

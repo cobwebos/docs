@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MySQL 存储过程
-description: 本文介绍特定于 Azure Database for MySQL 的存储过程。
+title: Azure Database for MySQL 管理存储过程
+description: 了解 Azure Database for MySQL 中哪些存储过程可用于帮助你配置数据复制、设置时区和终止查询。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.openlocfilehash: f01a0bf68e510133058dc0075f27cfcf6241c7a8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 34598278ac7f432c5976de86eaf5dcf477c7e81a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156171"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970339"
 ---
-# <a name="azure-database-for-mysql-stored-procedures"></a>Azure Database for MySQL 存储过程
+# <a name="azure-database-for-mysql-management-stored-procedures"></a>Azure Database for MySQL 管理存储过程
 
 存储过程在 Azure Database for MySQL 服务器上可用以帮助管理 MySQL 服务器。 这包括管理服务器的连接、查询和设置数据传入复制。  
 
@@ -41,7 +41,7 @@ Azure Database for MySQL 中提供了以下存储过程来管理服务器。
 |-----|-----|-----|-----|
 |*mysql _kill*|processlist_id|不可用|等效于[`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html)命令。 终止连接所执行的任何语句后，将终止与所提供的 processlist_id 关联的连接。|
 |*mysql _kill_query*|processlist_id|不可用|等效于[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html)命令。 将终止当前正在执行连接的语句。 保持连接的活动状态。|
-|*mysql _load_timezone*|不可用|不可用|加载时区表以允许`time_zone`将参数设置为命名值（例如 "美国/太平洋"）。|
+|*mysql _load_timezone*|不可用|不可用|加载时区表以允许将 `time_zone` 参数设置为命名值（例如 "美国/太平洋"）。|
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何设置[数据传入复制](howto-data-in-replication.md)

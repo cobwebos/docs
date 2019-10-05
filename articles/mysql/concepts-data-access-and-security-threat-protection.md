@@ -1,26 +1,26 @@
 ---
-title: 高级威胁防护 - Azure Database for MySQL | Microsoft Docs
-description: 高级威胁防护会检测异常的数据库活动，指出对数据库的潜在安全威胁。
+title: 高级威胁防护概念-Azure Database for MySQL
+description: 了解有关高级威胁防护的概念，它会检测到异常数据库活动，指示数据库存在潜在的安全威胁。
 author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.openlocfilehash: 10fa2a409437c8cc48bcd1a674cc3832f086dcf2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 23f8679a2ae7d9dc299db42e45b5b06d42f94536
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525981"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970455"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>Azure Database for MySQL 高级威胁防护
 
 Azure Database for MySQL 的高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试。
 
 > [!NOTE]
-> 高级的威胁防护处于公共预览状态。
+> 高级威胁防护是公开预览版。
 
-高级威胁防护包含在高级数据安全产品/服务中，是一个针对高级安全功能的统一软件包。 可以访问和管理通过高级的威胁防护[Azure 门户](https://portal.azure.com)或使用[REST API](/rest/api/mysql/serversecurityalertpolicies)。 功能仅适用于常规用途和内存优化的服务器。
+高级威胁防护包含在高级数据安全产品/服务中，是一个针对高级安全功能的统一软件包。 可以通过[Azure 门户](https://portal.azure.com)或使用[REST API](/rest/api/mysql/serversecurityalertpolicies)来访问和管理高级威胁防护。 此功能可用于常规用途和内存优化服务器。
 
 > [!NOTE]
 > 高级威胁防护功能在以下 Azure 政府和主权云区域中**不可用**：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。

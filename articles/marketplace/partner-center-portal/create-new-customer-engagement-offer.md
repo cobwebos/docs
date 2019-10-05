@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 58dd9ade749458facd6f11682af0b730258a7584
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 10/04/2019
+ms.openlocfilehash: f1d5f97328af699cb7245212b709c750a970392a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033230"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969522"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>创建新的 Dynamics 365 & PowerApps 产品/服务
 
@@ -22,13 +22,16 @@ ms.locfileid: "70033230"
 
 ![合作伙伴中心的商业应用商店仪表板](./media/new-offer-overview.png)
 
-## <a name="create-a-new-offer"></a>创建新套餐
+>[!Note]
+> 发布产品/服务后，将仅在系统中更新对合作伙伴中心提供的产品/服务，并在重新发布后存储。 进行更改后，请确保提交产品/服务进行发布。
+
+## <a name="create-a-new-offer"></a>创建新产品/服务
 
 选择 " **+ 新建产品/服务**" 按钮，然后选择 " **Dynamics 365 for Customer Engagement & PowerApps** " 菜单项。 将显示 "**新建产品/服务**" 对话框。
 
 ### <a name="offer-id-and-alias"></a>产品/服务 ID 和别名
 
-- **产品/服务 ID**：帐户中每个产品/服务的唯一标识符。 在 marketplace 产品/服务和 Azure 资源管理器模板（如果适用）的 URL 地址中，客户将可以看到此 ID。 产品 ID 必须是小写字母数字字符（包括连字符和下划线，但不能包含空格）。 这限制为50个字符，并且在你选择 "**创建**" 后将无法更改。  例如，如果在此处输入 "*测试/服务-1* "，则 "产品/ `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`服务" URL 将为。
+- **产品/服务 ID**：帐户中每个产品/服务的唯一标识符。 在 marketplace 产品/服务和 Azure 资源管理器模板（如果适用）的 URL 地址中，客户将可以看到此 ID。 产品 ID 必须是小写字母数字字符（包括连字符和下划线，但不能包含空格）。 这限制为50个字符，并且在你选择 "**创建**" 后将无法更改。  例如，如果在此处输入了 "*测试/服务-1* "，则产品/服务 URL 将为 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
 
 - **提供别名**：用于在合作伙伴中心内引用产品/服务的名称。 此名称不会在 marketplace 中使用，并且不同于将向客户显示的产品/服务名称和其他值。 选择 "**创建**" 后，不能更改此值。
 
@@ -174,7 +177,7 @@ ms.locfileid: "70033230"
 
 输入组织的隐私策略的 URL。 你需要负责确保你的应用符合隐私法律和法规，并提供有效的隐私策略。
 
-### <a name="contacts"></a>联系人
+### <a name="contacts"></a>通讯录
 
 在本部分中，你必须提供**支持联系人**和**工程联系人**的姓名、电子邮件和电话号码。 此信息不会向客户显示，但会提供给 Microsoft，并可提供给 CSP 合作伙伴。
 
@@ -270,7 +273,7 @@ ms.locfileid: "70033230"
 - [Azure 资源管理器](#technical-configuration-for-azure-resource-manager-test-drive)
 - [Dynamics 365](#technical-configuration-for-dynamics-365-test-drive)
 - [逻辑应用](#technical-configuration-for-logic-app-test-drive)
-- [Power BI](#technical-configuration-not-required-for-power-bi-test-drives)（不需要技术配置）
+- [Power BI](#technical-configuration-not-required-for-power-bi-test-drives) （不需要技术配置）
 
 ### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Azure 资源管理器测试驱动器的技术配置
 
@@ -292,13 +295,13 @@ ms.locfileid: "70033230"
 
 Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服务预配和部署，消除设置测试驱动器的复杂性。 无论测试驱动器是面向业务中心、客户接洽还是操作受众，此类型的托管测试驱动器的配置都是相同的。
 
-- **最大并发测试驱动器**（必需）：设置一次可以使用您的测试驱动器的客户的最大数目。 在测试驱动器处于活动状态时，每个并发用户将使用 Dynamics 365 许可证，因此你将需要确保有足够的可用许可证来支持最大限制集。 建议的值为 3-5。
+- **最大并发测试驱动器**数（必需）：设置一次可以使用您的测试驱动器的客户的最大数目。 在测试驱动器处于活动状态时，每个并发用户将使用 Dynamics 365 许可证，因此你将需要确保有足够的可用许可证来支持最大限制集。 建议的值为 3-5。
 
 - **测试驱动器持续时间**（必需）：通过定义小时数来输入测试驱动器保持活动状态的时间长度。 超过此时间后，会话将结束，并且不再使用您的许可证之一。 建议使用2-24 小时的值，具体取决于产品/服务的复杂性。 此持续时间可能只会按整小时数设置（例如"2" 小时，"1.5" 无效。  如果用户运行时间不足，并且想要再次访问测试驱动器，则用户可以请求新的会话。
 
-- **实例 URL**（必需）：客户将从其开始测试驱动器的 URL。 通常是运行应用并安装示例数据的 Dynamics 365 实例的 URL （例如 https://testdrive.crm.dynamics.com) ，
+- **实例 URL** （必需）：客户将从其开始测试驱动器的 URL。 通常是运行应用并安装示例数据的 Dynamics 365 实例的 URL （例如 https://testdrive.crm.dynamics.com) 。
 
-- **实例 WEB API URL**（必需）：通过登录到 Microsoft 365 帐户并导航到 "**设置** \&" gt; 来检索 Dynamics 365 实例的 Web API URL**自定义**\&g t;**开发人员资源**\&g t;**实例 WEB API （服务根 url）** ，复制此处找到的 URL （例如 https://testdrive.crm.dynamics.com/api/data/v9.0) ）。
+- **实例 WEB API URL** （必需）：通过登录到 Microsoft 365 帐户并导航到 "**设置**" \&gt; 来检索 Dynamics 365 实例的 WEB API URL;**自定义**\&gt;**开发人员资源**\&gt;**实例 WEB API （服务根 url）** ，复制此处找到的 URL （例如 https://testdrive.crm.dynamics.com/api/data/v9.0) 。
 
 - **角色名称**（必需）：提供在自定义 Dynamics 365 测试驱动器中定义的安全角色名称。 这会在其测试驱动器（例如，测试驱动器角色）期间分配给用户。
 
@@ -306,9 +309,9 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 任何自定义产品都应使用这种类型的测试驱动器部署模板，其中包含各种复杂的解决方案体系结构。 有关设置逻辑应用测试驱动器的详细信息，请访问 GitHub 上的[操作](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md)和[客户参与](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)。
 
-- **区域**（必需，单项选择下拉列表）：目前，有26个支持 Azure 的区域可供使用。 逻辑应用的资源将部署在所选的区域中。 如果逻辑应用包含存储在特定区域中的任何自定义资源，请确保在此处选择 "区域"。 实现此目的的最佳方式是在门户中将逻辑应用完全部署在 Azure 订阅上，并在做出此选择之前验证它是否正常工作。
+- **区域**（必需，单选下拉列表）：目前，有26个支持 Azure 的区域可供使用。 逻辑应用的资源将部署在所选的区域中。 如果逻辑应用包含存储在特定区域中的任何自定义资源，请确保在此处选择 "区域"。 实现此目的的最佳方式是在门户中将逻辑应用完全部署在 Azure 订阅上，并在做出此选择之前验证它是否正常工作。
 
-- **最大并发测试驱动器**（必需）：设置一次可以使用您的测试驱动器的客户的最大数目。 已部署这些测试驱动器，从而使客户无需等待部署即可立即访问它们。
+- **最大并发测试驱动器**数（必需）：设置一次可以使用您的测试驱动器的客户的最大数目。 已部署这些测试驱动器，从而使客户无需等待部署即可立即访问它们。
 
 - **测试驱动器持续时间**（必需）：输入测试驱动器将保持活动状态的时间长度（以小时为单位）。 此时间段结束后，测试驱动器自动终止。
 
@@ -326,13 +329,13 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 若要代表你部署测试驱动器，请创建并提供一个单独的唯一 Azure 订阅。 （对于 Power BI 测试驱动器不是必需的）。
 
-- **Azure 订阅 ID**（Azure 资源管理器和逻辑应用需要）：输入订阅 ID，为资源使用情况报告和计费授予对 Azure 帐户服务的访问权限。 如果还没有 Azure 订阅，请考虑[创建一个单独的 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)用于测试驱动器。 你可以通过登录到[Azure 门户](https://portal.azure.com/)并导航到左侧菜单的 "**订阅**" 选项卡来查找你的 Azure 订阅 ID。 选择该选项卡将显示你的订阅 ID （例如 "a83645ac-5ab6-6789-1h234g764ghty"）。
+- **Azure 订阅 ID** （azure 资源管理器和逻辑应用需要）：输入订阅 ID，为资源使用情况报告和计费授予对 Azure 帐户服务的访问权限。 如果还没有 Azure 订阅，请考虑[创建一个单独的 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)用于测试驱动器。 你可以通过登录到[Azure 门户](https://portal.azure.com/)并导航到左侧菜单的 "**订阅**" 选项卡来查找你的 Azure 订阅 ID。 选择该选项卡将显示你的订阅 ID （例如 "a83645ac-5ab6-6789-1h234g764ghty"）。
 
-- **Azure AD 租户 ID**（必需）：输入 Azure Active Directory （AD）[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 "Active Directory" 选项卡，选择 "**属性**"，然后查找列出的**目录 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。 你还可以使用域名 URL 查找你组织的租户 ID，网址为： [https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
+- **Azure AD 租户 ID** （必需）：输入 Azure Active Directory （AD）[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 "Active Directory" 选项卡，选择 "**属性**"，然后查找列出的**目录 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。 你还可以使用域名 URL 查找你组织的租户 ID，网址为： [https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
 
 - **Azure AD 租户名称**（动态365需要）：输入 Azure Active Directory （AD）名称。 若要查找此名称，请登录到[Azure 门户](https://portal.azure.com/)，在右上角，你的租户名称将在你的帐户名称下面列出。
 
-- **Azure AD 应用 ID**（必需）：输入 Azure Active Directory （AD）[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 "Active Directory" 选项卡，选择 "**应用注册**"，然后查找列出的**应用程序 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。
+- **Azure AD 应用 ID** （必需）：输入 Azure Active Directory （AD）[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 "Active Directory" 选项卡，选择 "**应用注册**"，然后查找列出的**应用程序 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。
 
 - **Azure AD 应用客户端机密**（必需）：输入 Azure AD 应用程序[客户端机密](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 若要查找此值，请登录到[Azure 门户](https://portal.azure.com/)。 选择左侧菜单中的 " **Azure Active Directory** " 选项卡，选择 "**应用注册**"，然后选择你的测试驱动器应用。 接下来，选择 "**证书和密码**"，选择 "**新建客户端密码**"，输入描述，选择 "**永不** **过期**"，然后选择 "**添加**"。 请确保复制值。 （在执行此操作之前，请勿导航离开页面，否则将无法访问此值。）
 
@@ -340,15 +343,15 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 "**测试驱动器**" 选项卡下的**Marketplace 列表**选项显示了可用的测试驱动器的语言。 请注意，当前只有**英语（美国）** 是可用的位置。 选择语言名称以输入描述测试驱动器体验的信息。
 
-- **描述**（必需）：介绍您的测试驱动器、要演示的内容、要浏览的功能，以及可帮助用户确定是否获取您的产品/服务的任何相关信息。 最多可在此字段中输入3000个字符的文本。 
+- **说明**（必需）：介绍您的测试驱动器、要演示的内容、要浏览的功能，以及可帮助用户确定是否获取您的产品/服务的任何相关信息。 最多可在此字段中输入3000个字符的文本。 
 
 - **访问信息**（对于 Azure 资源管理器和逻辑测试驱动器是必需的）：说明若要访问和使用此测试驱动器，客户需要知道哪些内容。 逐步完成使用产品/服务的方案，并确切了解客户在整个测试过程中访问功能应知道的情况。 最多可在此字段中输入10000个字符的文本。
 
 - **用户手册**（必需）：深入演练了您的测试驱动器体验。 用户手册应确切地说明您希望客户从遇到该测试驱动器中获得的内容，并为他们可能遇到的任何问题提供参考。 文件必须采用 PDF 格式，并在上传后命名为（最多255个字符）。
 
-- **视频添加视频** （可选）：可以将视频上传到 YouTube 或 Vimeo，并使用链接和缩略图（533 x 324 像素）在此处引用视频，以便客户可以查看信息，以帮助他们更好地了解测试驱动器，包括如何成功使用提供并了解突出显示其优势的方案。
-  - **名称**请求
-  - **URL （仅限 YouTube 或 Vimeo）** 请求
+- **Videos：添加视频 @ no__t （可选）：可以将视频上传到 YouTube 或 Vimeo，并使用链接和缩略图（533 x 324 像素）在此处引用视频，以便客户可以查看信息，以帮助他们更好地了解测试驱动器，包括如何成功使用提供并了解突出显示其优势的方案。
+  - **名称**（必需）
+  - **URL （仅限 YouTube 或 Vimeo）** （必需）
   - **缩略图（533 x 324px）** ：图像文件必须采用 PNG 格式。
 
 ## <a name="supplemental-content"></a>补充内容

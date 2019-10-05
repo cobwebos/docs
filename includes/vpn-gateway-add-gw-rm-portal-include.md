@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 12d3f06ca349413231d69fc9de7b9d2f36645b23
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: ed828a09843648b129b701c9afd22aac9e2fa9b0
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273786"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970825"
 ---
 1. 在门户左侧单击“+ 创建资源”，然后在搜索框中键入“虚拟网关”。 在搜索返回结果中找到“虚拟网络网关”，并单击该条目。 在“虚拟网络网关”页上，单击“创建”。 这会打开“创建虚拟网关”页。
 
@@ -37,7 +37,7 @@ ms.locfileid: "71273786"
 
       **虚拟网络**：选择要将此网关添加到其中的虚拟网络。
 
-      **网关子网地址范围**：仅当所选虚拟网络没有网关子网时，才会显示此字段。 如果还没有网关子网，请填写范围。 如果可能，请将范围设为“/27”或更大（/26、/25 等）
+      **网关子网地址范围**：仅当 VNet 没有网关子网时，才会显示此字段。 如果可能，请将范围/27 或更大（/26、/25 等）设置为。 建议不要创建小于/28 的范围。 如果已有网关子网，可以通过导航到虚拟网络来查看 GatewaySubnet 详细信息。 单击 "**子网**" 以查看范围。 如果要更改范围，可以删除并重新创建 GatewaySubnet。
 
    **公共 IP 地址**：此设置指定与 VPN 网关关联的公共 IP 地址对象。 创建 VPN 网关后，会将公共 IP 地址动态分配给此对象。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
 
