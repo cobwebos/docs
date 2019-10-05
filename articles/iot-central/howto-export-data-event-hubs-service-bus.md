@@ -8,12 +8,12 @@ ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: e6df6a1f751106f62cdfecc3a7b5efb0fe4c63bf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 732ce570f8235d1f147055af6972c2a8d12599dc
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875999"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971591"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>导出 Azure IoT Central 中的数据
 
@@ -33,9 +33,9 @@ ms.locfileid: "69875999"
 
 ## <a name="set-up-export-destination"></a>设置导出目标
 
-如果没有要导出到的现有事件中心/服务总线, 请遵循以下步骤:
+如果没有要导出到的现有事件中心/服务总线，请按照以下步骤创建一个：
 
-## <a name="create-event-hubs-namespace"></a>创建事件中心命名空间
+### <a name="create-event-hubs-namespace"></a>创建事件中心命名空间
 
 1. [在 Azure 门户中创建新的事件中心命名空间](https://ms.portal.azure.com/#create/Microsoft.EventHub)。 可以在 [Azure 事件中心文档](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)中进行详细的了解。
 2. 选择订阅。 
@@ -44,7 +44,7 @@ ms.locfileid: "69875999"
     > 可以将数据导出到其他订阅，此类订阅**不同于**那些适用于即用即付 IoT Central 应用程序的订阅。 在此示例中，将使用连接字符串进行连接。
 3. 在事件中心命名空间中创建事件中心。 转到命名空间，选择顶部的“+ 事件中心”，以便创建事件中心实例。
 
-## <a name="create-service-bus-namespace"></a>创建服务总线命名空间
+### <a name="create-service-bus-namespace"></a>创建服务总线命名空间
 
 1. [在 Azure 门户中创建新的服务总线命名空间](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5)。 可以在 [Azure 服务总线文档](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal)中进行详细的了解。
 2. 选择订阅。 
@@ -57,25 +57,23 @@ ms.locfileid: "69875999"
 
 ## <a name="set-up-continuous-data-export"></a>设置连续数据导出
 
-现在, 你已有要将数据导出到的事件中心/服务总线目标, 请按照以下步骤设置连续数据导出。 
+现在，你已有要将数据导出到的事件中心/服务总线目标，请按照以下步骤设置连续数据导出。 
 
 1. 登录到 IoT Central 应用程序。
 
-2. 在左侧菜单中, 选择 "**连续数据导出**"。
+2. 在左侧菜单中，选择 "**连续数据导出**"。
 
     > [!Note]
     > 如果在左侧菜单中看不到“连续数据导出”，则说明你在应用中不是管理员。 请与管理员联系以设置数据导出。
-
-    ![创建新的 cde 事件中心](media/howto-export-data/export_menu1.png)
 
 3. 选择右上方的 " **+ 新建**" 按钮。 选择**Azure 事件中心**或**azure 服务总线**作为导出目标。 
 
     > [!NOTE] 
     > 每个应用的最大导出数目是 5。 
 
-    ![创建新的连续数据导出](media/howto-export-data/export_new1.png)
+    ![创建新的连续数据导出](media/howto-export-data/export-new2.png)
 
-4. 在下拉列表框中, 选择**事件中心命名空间/服务总线命名空间**。 也可选取列表中的最后一个选项，即“输入连接字符串”。 
+4. 在下拉列表框中，选择**事件中心命名空间/服务总线命名空间**。 也可选取列表中的最后一个选项，即“输入连接字符串”。 
 
     > [!NOTE] 
     > 只会在 **IoT Central 应用所在的订阅**中看到存储帐户/事件中心命名空间/服务总线命名空间。 若要导出到此订阅外部的某个目标，请选择“输入连接字符串”，然后参阅步骤 5。
@@ -83,11 +81,11 @@ ms.locfileid: "69875999"
     > [!NOTE] 
     > 若要通过 7 天试用期的应用来配置连续事件导出，则唯一的方式是使用连接字符串。 这是因为 7 天试用期的应用没有关联的 Azure 订阅。
 
-    ![创建新的 cde 事件中心](media/howto-export-data/export_create1.png)
+    ![创建新的 cde 事件中心](media/howto-export-data/export-eh.png)
 
 5. （可选）如果选中了“输入连接字符串”，则会出现一个用于粘贴连接字符串的新框。 若要获取连接字符串，请执行以下操作：
-    - 事件中心或服务总线, 请中转到 Azure 门户中的命名空间。
-        - 在 "**设置**" 下, 选择 "**共享访问策略**"
+    - 事件中心或服务总线，请中转到 Azure 门户中的命名空间。
+        - 在 "**设置**" 下，选择 "**共享访问策略**"
         - 选择默认的 **RootManageSharedAccessKey**，或者创建一个新的
         - 复制主连接字符串或辅助连接字符串
  
@@ -95,14 +93,12 @@ ms.locfileid: "69875999"
 
 7. 在“要导出的数据”下，通过将类型设置为“打开”来指定要导出的各类数据。
 
-6. 若要启用连续数据导出，请确保将“数据导出”设置为“打开”。 选择**保存**。
+8. 若要启用连续数据导出，请确保已**启用** **数据导出**切换。 选择“保存”。
 
-    ![配置连续数据导出](media/howto-export-data/export_list1.png)
-
-7. 几分钟后，数据便会出现在所选目标中。
+9. 几分钟后，数据便会出现在所选目标中。
 
 
-## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>导出到 Azure 事件中心和 Azure 服务总线
+## <a name="data-format"></a>数据格式
 
 度量、设备和设备模板数据以近实时方式导出到事件中心或服务总线队列或主题。 导出的度量数据包含设备发送到 IoT Central 的消息的全部内容，不只是度量值本身。 导出的设备数据包含对所有设备的属性和设置所做的更改，而导出的设备模板则包含对所有设备模板的更改。 导出的数据位于“body”属性中，采用 JSON 格式。
 
@@ -146,7 +142,7 @@ ms.locfileid: "69875999"
     "x-opt-enqueued-time": 1539381030200
   },
   "sequenceNumber": 25325,
-  "enqueuedTimeUtc": "2018-10-12T21:50:30.200Z",
+  "enqueuedTimeUtc": "2018-10-02T21:50:30.200Z",
   "offset": "<offset>",
   "properties": {
     "content_type": "application/json",
@@ -211,7 +207,7 @@ ms.locfileid: "69875999"
   },
   "partitionKey": "<partitionKey>",
   "sequenceNumber": 39740,
-  "enqueuedTimeUtc": "2018-10-11T16:22:39.654Z",
+  "enqueuedTimeUtc": "2018-10-02T16:22:39.654Z",
   "offset": "<offset>",
 }
 ```
@@ -236,62 +232,62 @@ ms.locfileid: "69875999"
 以下示例显示了一条消息，该消息描述在事件中心或服务总线的队列或主题中的设备模板数据：
 
 ```json
-{
-  "body": {
-    "id": "<id>",
-    "version": "1.0.0",
-    "name": "<templateName>",
-    "measurements": {
-      "telemetry": {
-        "humidity": {
-          "dataType": "double",
-          "name": "humidity"
+{ 
+  "body":{ 
+    "id":"<id>",
+    "version":"1.0.0",
+    "name":"<templateName>",
+    "measurements":{ 
+      "telemetry":{ 
+        "humidity":{ 
+          "dataType":"double",
+          "name":"humidity"
         },
-        "pressure": {
-          "dataType": "double",
-          "name": "pressure"
+        "pressure":{ 
+          "dataType":"double",
+          "name":"pressure"
         },
-        "temp": {
-          "dataType": "double",
-          "name": "temperature"
+        "temp":{ 
+          "dataType":"double",
+          "name":"temperature"
         }
       }
     },
-    "properties": {
-      "cloud": {
-        "location": {
-          "dataType": "string",
-          "name": "Location"
+    "properties":{ 
+      "cloud":{ 
+        "location":{ 
+          "dataType":"string",
+          "name":"Location"
         }
       },
-      "device": {
-        "dieNumber": {
-          "dataType": "double",
-          "name": "Die Number"
+      "device":{ 
+        "dieNumber":{ 
+          "dataType":"double",
+          "name":"Die Number"
         }
       }
     },
-    "settings": {
-      "device": {
-        "fanSpeed": {
-          "dataType": "double",
-          "name": "Fan Speed",
-          "initialValue": 0
+    "settings":{ 
+      "device":{ 
+        "fanSpeed":{ 
+          "dataType":"double",
+          "name":"Fan Speed",
+          "initialValue":0
         }
       }
     }
   },
-  "annotations": {
-    "iotcentral-message-source": "deviceTemplates",
-    "x-opt-partition-key": "<partitionKey>",
-    "x-opt-sequence-number": 25315,
-    "x-opt-offset": "<offset>",
-    "x-opt-enqueued-time": 1539274985085
+  "annotations":{ 
+    "iotcentral-message-source":"deviceTemplates",
+    "x-opt-partition-key":"<partitionKey>",
+    "x-opt-sequence-number":25315,
+    "x-opt-offset":"<offset>",
+    "x-opt-enqueued-time":1539274985085
   },
-  "partitionKey": "<partitionKey>",
-  "sequenceNumber": 25315,
-  "enqueuedTimeUtc": "2018-10-11T16:23:05.085Z",
-  "offset": "<offset>",
+  "partitionKey":"<partitionKey>",
+  "sequenceNumber":25315,
+  "enqueuedTimeUtc":"2018-10-02T16:23:05.085Z",
+  "offset":"<offset>"
 }
 ```
 

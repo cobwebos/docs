@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 08/02/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: dbfa7ff6e30b64fe1025114590c1b1a8824e6cdf
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 6c59513c2c84b5f280e8200411b53848768eaf29
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780125"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970799"
 ---
 1. 在门户中，单击“+创建资源”。
 2. 在搜索框中键入“本地网关”，然后按 **Enter** 进行搜索。 这会返回一个结果列表。 单击“本地网关”，然后单击“创建”按钮，打开“创建本地网关”页。
@@ -28,6 +28,6 @@ ms.locfileid: "68780125"
    - **配置 BGP 设置：** 仅在配置 BGP 时使用。 否则，不选择此项。
    - **订阅：** 确保显示正确的订阅。
    - **资源组：** 选择要使用的资源组。 可以创建新的资源组或选择已创建的资源组。
-   - **位置：** 选择将在其中创建此对象的位置。 可选择 VNet 所在的位置，但这不是必须的。
+   - **位置：** 位置与其他设置中的**区域**相同。 选择将在其中创建此对象的位置。 可选择 VNet 所在的位置，但这不是必须的。
 
 4. 完成指定值后，单击页底部的“创建”按钮即可创建本地网关。

@@ -4,21 +4,20 @@ description: 用于 Azure 机器学习服务的示例笔记本的概述，其可
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 0dc4fc31-ae1c-422c-ac34-7b025e6651b4
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: c99f815bd58b03dbc43ba742577259be5638fef9
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f591758fa6e51c420a090aa62d5160320fe15fe8
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035736"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973032"
 ---
 # <a name="use-azure-machine-learning-service-in-a-notebook"></a>在笔记本中使用 Azure 机器学习服务
 
@@ -28,7 +27,7 @@ Azure Notebooks 预先配置了使用 [Azure 机器学习服务](/azure/machine-
 
 1. 登录 [Azure Notebooks](https://notebooks.azure.com/)。
 1. 选择 "**我的项目**" 以切换到 "项目" 仪表板。
-1. 选择 "**上传 Github**存储库" (向上箭头) 按钮, 打开 "**上传 github 存储库**" 弹出窗口。
+1. 选择 "**上传 Github**存储库" （向上箭头）按钮，打开 "**上传 github 存储库**" 弹出窗口。
 1. 在弹出窗口中，在“GitHub 存储库”中输入 `Azure/MachineLearningNotebooks`，在“项目名称”中为项目提供名称（如“Azure 机器学习服务”），在“项目 ID”中提供标识符，并且如果需要，可以清除“公共”，然后选择“导入”。
 
     ![将 Azure 机器学习笔记本示例导入 Notebooks 帐户](media/azureml-import-project.png)
@@ -41,7 +40,7 @@ Azure Notebooks 预先配置了使用 [Azure 机器学习服务](/azure/machine-
 
     - 因为 Azure Notebooks 已包含必要的 Python 包，所以可以只运行先决条件的第 2 步中的代码片段来验证 Azure ML SDK 版本。
 
-1. 配置完成后, 选择 " **01. 入门**" 以打开包含十三个不同示例笔记本的文件夹, 其中每个示例都一目了然。
+1. 配置完成后，选择 " **01. 入门**" 以打开包含十三个不同示例笔记本的文件夹，其中每个示例都一目了然。
 
 ## <a name="next-steps"></a>后续步骤
 

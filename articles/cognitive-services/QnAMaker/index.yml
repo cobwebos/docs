@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker 文档
   description: QnA Maker 是一种基于云的 API 服务，它创建基于数据的聊天式问答层。 使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。 QnA Maker 服务通过将问题与知识库的 QnA 中的最可能答案进行匹配，来回答用户的自然语言问题。
-  ms.openlocfilehash: 8e47211194be3653c3d0ba060b573bad446162ba
-  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+  ms.openlocfilehash: 091d2007d115c5e08904af6081d0f67b2eb60071
+  ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71155096"
+  ms.lasthandoff: 10/05/2019
+  ms.locfileid: "71971467"
 landingContent:
 - title: 关于 QnA Maker
   linkLists:
@@ -26,6 +26,10 @@ landingContent:
       url: overview/overview.md
     - text: QnA Maker 门户
       url: https://www.qnamaker.ai
+  - linkListType: whats-new
+    links:
+    - text: 新增功能
+      url: whats-new.md
   - linkListType: concept
     links:
     - text: 开发生命周期
@@ -45,7 +49,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: 快速入门：创建新的知识库
-      url: how-to/create-knowledge-base.md
+      url: quickstarts/create-publish-knowledge-base.md
     - text: 快速入门：添加问题和答案
       url: quickstarts/add-question-metadata-portal.md
   - linkListType: how-to-guide

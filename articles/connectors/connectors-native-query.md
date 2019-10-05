@@ -9,18 +9,17 @@ editor: ''
 tags: connectors
 ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
 ms.service: logic-apps
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
-ms.openlocfilehash: 2a82afe396039857e5b9ad6b8a6d0e710573037f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10332b95e0d385d7155003efcc52b4bae3969313
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60538208"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973753"
 ---
 # <a name="get-started-with-the-query-action"></a>查询操作入门
 通过使用查询操作，可使用批处理和数组完成工作流，以便：
@@ -38,9 +37,9 @@ ms.locfileid: "60538208"
 
 下面是在逻辑应用中添加它的方法：
 
-1. 选择“新步骤”  按钮。
-2. 选择“添加操作”  。
-3. 在操作搜索框中，键入“筛选”  列出“筛选数组”  操作。
+1. 选择“新步骤”按钮。
+2. 选择“添加操作”。
+3. 在操作搜索框中，键入“筛选”列出“筛选数组”操作。
    
     ![选择查询操作](./media/connectors-native-query/using-action-1.png)
 4. 选择要筛选的数组。 （以下屏幕截图显示来自 Twitter 搜索的结果数组。）
@@ -67,7 +66,7 @@ ms.locfileid: "60538208"
 下面是操作的输入字段，该操作发出 HTTP 出站请求。
 \* 表示它是必填字段。
 
-| Display name | 属性名称 | 描述 |
+| Display name | 属性名 | 描述 |
 | --- | --- | --- |
 | 来自* |from |要筛选的数组 |
 | 条件* |其中 |要为每个项目评估的条件 |
@@ -77,9 +76,9 @@ ms.locfileid: "60538208"
 ### <a name="output-details"></a>输出详细信息
 下面是 HTTP 响应的输出详细信息。
 
-| 属性名称 | 数据类型 | 描述 |
+| 属性名 | 数据类型 | 描述 |
 | --- | --- | --- |
-| 已筛选的数组 |数组 |为每个已筛选的结果包含一个对象的数组 |
+| 已筛选的数组 |array |为每个已筛选的结果包含一个对象的数组 |
 
 ## <a name="next-steps"></a>后续步骤
 现在，试用平台并[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。

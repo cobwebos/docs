@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 530869928f7a25e779cb01f0fe392efdbb54c5ba
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 52d4efaba25dcede3322586d05fceb4d166f51e3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695114"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973810"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker 中的知识库生命周期
 QnA Maker 在反复的模型变更、表述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。 
@@ -24,7 +24,7 @@ QnA Maker 在反复的模型变更、表述示例、发布以及从终结点查�
 ![创作周期](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
 ## <a name="creating-a-qna-maker-knowledge-base"></a>创建 QnA Maker 知识库
-QnA Maker 知识库 (KB) 终结点基于知识库的内容为用户查询提供匹配度最高的答案。 创建知识库是向问题、答案和相关元数据设置内容存储库的一次性操作。 可以通过提取预先存在的内容（例如常见问题解答页面、产品手册或结构化问-答对）创建知识库。 了解如何[创建知识库](../How-To/create-knowledge-base.md)。
+QnA Maker 知识库 (KB) 终结点基于知识库的内容为用户查询提供匹配度最高的答案。 创建知识库是向问题、答案和相关元数据设置内容存储库的一次性操作。 可以通过提取预先存在的内容（例如常见问题解答页面、产品手册或结构化问-答对）创建知识库。 了解如何[创建知识库](../quickstarts/create-publish-knowledge-base.md)。
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>测试和更新知识库
 
@@ -74,8 +74,3 @@ QnA Maker 未提供版本控制。 需要从 "**设置**" 页导出知识库，�
 
 > [!div class="nextstepaction"]
 > [置信度分数](./confidence-score.md)
-
-## <a name="see-also"></a>请参阅 
-
-[知识库](./knowledge-base.md)
-[QnA Maker 概述](../Overview/overview.md)

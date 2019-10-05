@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MariaDB 服务器防火墙规则
-description: 介绍 Azure Database for MariaDB 服务器的防火墙规则。
+description: 了解如何使用防火墙规则启用到 Azure Database for MariaDB 服务器的连接。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/22/2019
-ms.openlocfilehash: 94efc87cdea8e1d9b63361d4652b63909c6ce3e7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 89c4bce33b80e988a9da363a89854e921bee30b0
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203608"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973660"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB 服务器防火墙规则
 在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。
@@ -61,7 +61,7 @@ ms.locfileid: "71203608"
 
    * 改为获取客户端计算机的静态 IP 地址，并将该 IP 地址作为防火墙规则添加。
 
-* **服务器的 IP 似乎是公共的：** 与 Azure Database for MariaDB 服务器的连接通过可公开访问的 Azure 网关进行路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请访问[连接体系结构一文](concepts-connectivity-architecture.md)。 
+* **服务器的 IP 似乎是公共的：** 到 Azure Database for MariaDB 服务器的连接通过可公开访问的 Azure 网关进行路由。 但是，实际的服务器 IP 受防火墙保护。 有关详细信息，请参阅[连接体系结构文章](concepts-connectivity-architecture.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 - [使用 Azure 门户创建和管理 Azure Database for MariaDB 防火墙规则](./howto-manage-firewall-portal.md)

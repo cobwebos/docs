@@ -6,10 +6,9 @@ metadata:
   description: 了解如何通过托管的 Azure Notebooks 服务创建、运行和共享 Jupyter 笔记本。
   services: notebooks
   author: kraigb
-  manager: douge
+  manager: barbkess
   ms.service: azure-notebooks
   ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 12/04/2018
   ms.author: kraigb

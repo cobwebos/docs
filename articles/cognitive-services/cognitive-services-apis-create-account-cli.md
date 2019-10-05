@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: cd00f49aea08e5c94a9206b64f66f4424ef3ca04
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: d50b0858ac7c4c0e5e0263bd157e044d0fec4489
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057653"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972670"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
@@ -77,7 +77,7 @@ az group create \
 > [!NOTE]
 > 许多认知服务提供免费层让客户试用相应的服务。 若要使用免费层，请使用 `F0` 作为资源的 SKU。
 
-### <a name="vision"></a>视觉
+### <a name="vision"></a>影像
 
 | 服务                    | 种类                      |
 |----------------------------|---------------------------|
@@ -170,12 +170,22 @@ az login
 * 在定价层中启用的服务功能。
 * 预定义事务量的成本。 超出此数量将导致服务的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)中指定额外的费用。
 
+## <a name="get-current-quota-usage-for-your-resource"></a>获取资源的当前配额使用率
+
+使用[az cognitiveservices account account list 使用条款](https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage)命令获取认知服务资源的使用情况。
+
+```azurecli-interactive
+az cognitiveservices account list-usage \
+    --name anomaly-detector-resource \
+    --resource-group cognitive-services-resource-group \
+    --subscription subscription-name
+```
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果要清理并删除认知服务资源, 则可以将其删除或资源组。 删除资源组也会删除该组中包含的任何其他资源。
+如果要清理并删除认知服务资源，则可以将其删除或资源组。 删除资源组也会删除该组中包含的任何其他资源。
 
-若要删除资源组及其关联的资源, 请使用 az group delete 命令。
+若要删除资源组及其关联的资源，请使用 az group delete 命令。
 
 ```azurecli-interactive
 az group delete --name storage-resource-group

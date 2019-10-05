@@ -1,17 +1,17 @@
 ---
-title: 在 Azure Database for MySQL 中创建和管理只读副本
-description: 本文介绍如何使用门户在 Azure Database for MySQL 中设置和管理只读副本。
+title: 创建 & 管理读取副本（Azure 门户）-Azure Database for MySQL
+description: 了解如何使用 Azure 门户在 Azure Database for MySQL 中设置和管理读取副本。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 275c7bc8127855712c191141ef681526da7c377b
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a90e9cccf8b59dabbee8415818c0e819ba1b26c3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309501"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972874"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中创建和管理只读副本
 

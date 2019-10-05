@@ -1,17 +1,17 @@
 ---
 title: 如何对 Azure Database for MySQL 中的查询性能问题进行故障排除
-description: 本文介绍了如何使用 EXPLAIN 对 Azure Database for MySQL 中的查询性能问题进行故障排除。
+description: 了解如何使用说明来解决 Azure Database for MySQL 中的查询性能问题。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/28/2018
-ms.openlocfilehash: 819e2393619766d46385cdd6fe550fff1e1a7631
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d58721f1fedd234b3c400a82035048d8e70f8c32
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720206"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972858"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>如何使用 EXPLAIN 分析 Azure Database for MySQL 中的查询性能
 **EXPLAIN** 是一个可用来优化查询的易用工具。 可以使用 EXPLAIN 语句来获取有关 SQL 语句执行情况的信息。 下面的输出显示了 EXPLAIN 语句的一个执行示例。
@@ -139,7 +139,7 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-MySQL 执行“文件排序”操作时非常缓慢，尤其是必须对大量行进行排序时。  若要优化此查询，可以基于要排序的两个列创建一个组合索引。
+MySQL 执行“文件排序”操作时非常缓慢，尤其是必须对大量行进行排序时。 若要优化此查询，可以基于要排序的两个列创建一个组合索引。
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
@@ -163,7 +163,7 @@ EXPLAIN 现在表明，MySQL 能够使用组合索引避免额外的排序，因
  
 ## <a name="conclusion"></a>结束语
  
-使用 EXPLAIN 和各种类型的索引可以显著提高性能。 表上有索引并不一定意味着 MySQL 能够将其用于查询。 请始终使用 EXPLAIN 来验证假设并使用索引优化查询。
+使用 EXPLAIN 和各种类型的索引可以显著提高性能。 表中的索引并不一定意味着 MySQL 能够将其用于查询。 请始终使用 EXPLAIN 来验证假设并使用索引优化查询。
 
 
 ## <a name="next-steps"></a>后续步骤

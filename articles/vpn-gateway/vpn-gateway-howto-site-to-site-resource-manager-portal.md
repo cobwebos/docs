@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9fb62d74025869c3442308f9e4ac9fb8fc02669b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 96a8b8d33f713faf96e7a96b32e9e41ca669e6cb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266554"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970800"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 门户中创建站点到站点连接
 
@@ -42,20 +42,19 @@ ms.locfileid: "71266554"
 
 本文中的示例使用以下值。 可使用这些值创建测试环境，或参考这些值以更好地理解本文中的示例。 有关通用 VPN 网关设置的详细信息，请参阅[关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)。
 
-* **VNet 名称：** VNet1
+* **虚拟网络名称：** VNet1
 * **地址空间：** 10.1.0.0/16
 * **订阅：** 要使用的订阅
 * **资源组：** TestRG1
-* **位置：** East US
+* **区域：** East US
 * **子网：** FrontEnd：10.1.0.0/24，BackEnd：10.1.1.0/24（对于本练习来说是可选的）
-* **网关子网名称：** GatewaySubnet（会在门户中自动填充）
 * **网关子网地址范围：** 10.1.255.0/27
 * **虚拟网络网关名称：** VNet1GW
-* **公共 IP：** VNet1GWIP
+* **公共 IP 地址名称：** VNet1GWIP
 * **VPN 类型：** 基于路由
 * **连接类型：** 站点到站点 (IPsec)
 * **网关类型：** VPN
-* **局域网网关名称：** Site1
+* **本地网络网关名称：** Site1
 * **连接名称：** VNet1toSite1
 * **共享密钥：** 本示例使用“abc123”。 但是，你可以使用与 VPN 硬件兼容的任何密钥。 重要的是连接两端的值要匹配。
 
@@ -69,6 +68,16 @@ ms.locfileid: "71266554"
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
+### <a name="example-settings"></a>示例设置
+
+* **实例详细信息 > 地区：** East US
+* **虚拟网络 > 虚拟网络：** VNet1
+* **实例详细信息 > 名称：** VNet1GW
+* **实例详细信息 > 网关类型：** VPN
+* **实例详细信息 > VPN 类型：** 基于路由
+* **虚拟网络 > 网关子网地址范围：** 10.1.255.0/27
+* **公共 IP 地址 > 公共 IP 地址名称：** VNet1GWIP
+
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
@@ -77,6 +86,13 @@ ms.locfileid: "71266554"
 ## <a name="LocalNetworkGateway"></a>3.创建本地网关
 
 本地网络网关通常是指本地位置。 可以为站点提供一个名称供 Azure 引用，并指定本地 VPN 设备的 IP 地址，以便创建一个连接来连接到该设备。 此外还可指定 IP 地址前缀，以便通过 VPN 网关将其路由到 VPN 设备。 指定的地址前缀是位于本地网络的前缀。 如果之后本地网络发生了更改，或需要更改 VPN 设备的公共 IP 地址，可轻松更新这些值。
+
+**示例值**
+
+* **名称：** Site1
+* **资源组：** TestRG1
+* **位置：** East US
+
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 

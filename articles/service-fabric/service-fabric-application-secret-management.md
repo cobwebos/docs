@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 9854ad7118684e1a5e57b0809d733d812ad64176
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b05473fd9868821285853b089fe711aa48f347fc
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828835"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973440"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的已加密机密
 本指南逐步讲解管理 Service Fabric 应用程序中的机密的步骤。 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。
@@ -56,7 +56,7 @@ ms.locfileid: "71828835"
 </CodePackage>
 ```
 
-还可以通过在应用程序清单中指定证书，在 Service Fabric 应用程序中包含密码。 将**SecretsCertificate**元素添加到**applicationmanifest.xml** ，并包括所需证书的指纹。
+还应通过在应用程序清单中指定证书，将机密包含在 Service Fabric 的应用程序中。 将**SecretsCertificate**元素添加到**applicationmanifest.xml** ，并包括所需证书的指纹。
 
 ```xml
 <ApplicationManifest … >

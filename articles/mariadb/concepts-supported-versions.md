@@ -1,26 +1,26 @@
 ---
-title: Azure Database for MariaDB 中支持的版本
-description: 说明 Azure Database for MariaDB 中支持的版本。
+title: 支持的版本-Azure Database for MariaDB
+description: 了解 Azure Database for MariaDB 服务支持哪些版本的 MariaDB 服务器。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: e5d1dbc8c212d4cdefb12fb740a454324d3adfa1
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 950f8600dac6fccfa72f5dea6e900a210572ee38
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962920"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973534"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>支持的 Azure Database for MariaDB 服务器版本
 
-已使用 InnoDB 引擎从开源[MariaDB 服务器](https://downloads.mariadb.org/)开发 Azure Database for MariaDB。 
+已使用 InnoDB 引擎从开源[MariaDB 服务器](https://downloads.mariadb.org/)开发 Azure Database for MariaDB。
 
 MariaDB 使用 X.x.x.x 命名方案。 X 是主要版本，Y 是次版本，Z 是修补程序版本。
 
 > [!NOTE]
-> 在服务中，网关用于将连接重定向到服务器实例。 建立连接后，MySQL 客户端显示网关中设置的 MariaDB 版本，而不是 MariaDB 服务器实例上运行的实际版本。 若要确定 MariaDB 服务器实例的版本，请使用`SELECT VERSION();`命令。
+> 在服务中，网关用于将连接重定向到服务器实例。 建立连接后，MySQL 客户端显示网关中设置的 MariaDB 版本，而不是 MariaDB 服务器实例上运行的实际版本。 若要确定 MariaDB 服务器实例的版本，请使用 `SELECT VERSION();` 命令。
 
 Azure Database for MariaDB 目前支持以下版本：
 

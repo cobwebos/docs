@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: e96d501196a629c7e37de7e5ad66b68863bf556f
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: b2973a8e826ab8cc8da29f1ec9678d6a6e4fa975
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097900"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971852"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>预览-自动缩放群集以满足 Azure Kubernetes 服务（AKS）上的应用程序需求
 
@@ -90,21 +90,21 @@ az aks create \
   --resource-group myResourceGroup \
   --name myAKSCluster \
   --node-count 1 \
-  --vm-set-type VirtualMachineScaleSets \
+  ---enable-vmss \
   --enable-cluster-autoscaler \
   --min-count 1 \
   --max-count 3
 ```
 
 > [!NOTE]
-> 如果在运行`az aks create`时指定 *--kubernetes 版本*，则该版本必须满足或超过 "[开始之前](#before-you-begin)" 部分中所述的最低版本号。
+> 如果在运行 `az aks create` 时指定 *--kubernetes 版本*，则该版本必须满足或超过 "[开始之前](#before-you-begin)" 部分中所述的最低版本号。
 
 创建群集并配置群集自动缩放程序设置需要几分钟时间。
 
 ## <a name="change-the-cluster-autoscaler-settings"></a>更改群集自动缩放程序设置
 
 > [!IMPORTANT]
-> 如果已在订阅上启用*多个代理池*功能，请跳到 "[使用多个代理池自动缩放" 部分](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)。 启用了多个代理池的群集要求使用`az aks nodepool`命令集来更改节点池特定属性， `az aks`而不是。 以下说明假定你尚未启用多个节点池。 若要检查是否已启用该功能， `az feature  list -o table`请运行， `Microsoft.ContainerService/multiagentpoolpreview`并查找。
+> 如果已在订阅上启用*多个代理池*功能，请跳到 "[使用多个代理池自动缩放" 部分](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)。 启用了多个代理池的群集要求使用 `az aks nodepool` 命令集来更改节点池特定属性，而不是 `az aks`。 以下说明假定你尚未启用多个节点池。 若要检查是否已启用，请运行 `az feature  list -o table` 并查找 `Microsoft.ContainerService/multiagentpoolpreview`。
 
 在上一步中，若要创建 AKS 群集或更新现有节点池，请将 "群集自动缩放程序最小节点计数" 设置为 " *1*"，并将 "最大节点计数" 设置为*3*。 随着应用程序需求发生变化，可能需要调整群集自动缩放程序节点计数。
 
@@ -159,7 +159,7 @@ az aks nodepool update \
   --max-count 5
 ```
 
-可以通过[az aks nodepool update][az-aks-nodepool-update]和传递`--disable-cluster-autoscaler`参数来禁用群集自动缩放程序。
+可以通过[az aks nodepool update][az-aks-nodepool-update]和自动缩放程序参数 @no__t 传递来禁用群集。
 
 ```azurecli-interactive
 az aks nodepool update \

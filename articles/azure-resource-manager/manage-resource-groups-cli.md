@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: c50a96b2598b89d5072a9441162d198163156c8d
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: e55755e3edcc54d0d75c937c4d18b845b0282833
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296274"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972736"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>使用 Azure CLI 管理 Azure 资源管理器资源组
 
@@ -82,7 +82,7 @@ az group delete --name $resourceGroupName
 
 ## <a name="redeploy-when-deployment-fails"></a>部署失败时，重新部署
 
-此功能也称为“出错时回滚”  。 有关详细信息，请参阅[在部署失败时重新部署](./resource-group-template-deploy-cli.md#redeploy-when-deployment-fails)。
+此功能也称为“出错时回滚”。 有关详细信息，请参阅[在部署失败时重新部署](./rollback-on-error.md)。
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>移到另一个资源组或订阅
 
@@ -139,7 +139,7 @@ az group export --name $resourceGroupName
 
 该脚本在控制台上显示模板。  复制 JSON，并将其另存为文件。
 
-有关详细信息，请参阅[单个和多资源导出到 Azure 门户中的模板](./export-template-portal.md)。
+有关详细信息，请参阅[将 Azure 门户中的单资源和多资源导出到模板](./export-template-portal.md)。
 
 ## <a name="manage-access-to-resource-groups"></a>管理对资源组的访问
 

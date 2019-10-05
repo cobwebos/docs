@@ -4,21 +4,20 @@ description: 如何通过 Azure Notebooks UI 和直接终端访问管理项目�
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/13/2019
 ms.author: kraigb
-ms.openlocfilehash: 0440e498451ee141fa03851b78418caf911d0e32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fca98594be08f04b2f266f3aa574837ac024ecf4
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596736"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973133"
 ---
 # <a name="manage-and-configure-projects"></a>管理和配置项目
 
@@ -33,20 +32,20 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 > [!Note]
 > 此处描述的管理和配置功能仅适用于最初创建项目的项目所有者。 但是，可以将项目克隆到你自己的帐户中，在这种情况下，你将成为所有者并可以根据需要配置项目。
 
-每当你运行笔记本或其他文件时，Azure Notebooks 都会启动基础虚拟机。 服务器自动保存文件并在处于非活动状态 60 分钟后关闭。 你还可以随时使用“关闭”命令（键盘快捷方式：h）停止服务器  。
+每当你运行笔记本或其他文件时，Azure Notebooks 都会启动基础虚拟机。 服务器自动保存文件并在处于非活动状态 60 分钟后关闭。 你还可以随时使用“关闭”命令（键盘快捷方式：h）停止服务器。
 
 ## <a name="compute-tier"></a>计算层
 
-默认情况下，项目运行**免费计算**层，限制为 4 GB 的内存和 1 GB 的数据，以防止滥用。 可以绕过这些限制，并通过使用不同的虚拟机的 Azure 订阅中已预配提高计算能力。 有关详细信息，请参阅[如何使用数据科学虚拟机](use-data-science-virtual-machine.md)。
+默认情况下，项目在**免费计算**层上运行，其限制为4gb 的内存和 1 gb 的数据，以防止滥用。 可以通过使用在 Azure 订阅中预配的不同虚拟机，绕过这些限制并增加计算能力。 有关详细信息，请参阅[如何使用数据科学虚拟机](use-data-science-virtual-machine.md)。
 
 ## <a name="edit-project-metadata"></a>编辑项目元数据
 
-在项目面板中，选择“项目设置”，再选择“信息”选项卡，该选项卡包含下表所含的项目元数据   。 可随时更改项目元数据。
+在项目面板中，选择“项目设置”，再选择“信息”选项卡，该选项卡包含下表所含的项目元数据。 可随时更改项目元数据。
 
 | 设置 | 描述 |
 | --- | --- |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 例如“Python 中的 Hello World”。 |
-| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分。 此 ID 可以使用字母、 数字和连字符，限制为 30 个字符，且不能为[保留项目 ID](create-clone-jupyter-notebooks.md#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
+| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分。 此 ID 只能使用字母、数字和连字符，不能超过30个字符，且不能是[保留的项目 ID](create-clone-jupyter-notebooks.md#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
 | 公共项目 | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
 | 隐藏克隆 | 如果设置了此选项，其他用户无法看到该项目的克隆的列表。 对于与不属于同一个组织的许多人共享（例如，在教学过程中使用笔记本）的项目，隐藏克隆十分有用。 |
 
@@ -60,7 +59,7 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 ### <a name="create-new-files-and-folders"></a>新建文件和文件夹
 
-“+ 新建”命令（键盘快捷方式：n）用于创建新的文件或文件夹  。 使用该命令时，首先选择要创建的项的类型：
+“+ 新建”命令（键盘快捷方式：n）用于创建新的文件或文件夹。 使用该命令时，首先选择要创建的项的类型：
 
 | 项类型 | 描述 | 命令行为 |
 | --- | --- | --- |
@@ -71,7 +70,7 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 ### <a name="upload-files"></a>上传文件
 
-“上传”命令为从其他位置导入数据提供两个选择  ：“从 URL 导入”以及“从计算机导入”   。 有关详细信息，请参阅[使用 Azure Notebook 项目中的数据文件](work-with-project-data-files.md)。
+“上传”命令为从其他位置导入数据提供两个选择：“从 URL 导入”以及“从计算机导入”。 有关详细信息，请参阅[使用 Azure Notebook 项目中的数据文件](work-with-project-data-files.md)。
 
 ### <a name="select-file-specific-commands"></a>选择特定于文件的命令
 
@@ -79,17 +78,17 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 ![文件上下文菜单上的命令](media/project-file-commands.png)
 
-| 命令 | 键盘快捷键 | 操作 |
+| Command | 键盘快捷键 | 操作 |
 | --- | --- | --- |
 | 运行 | r（或单击） | 运行笔记本文件。 其他文件类型打开供查看。  |
 | 复制链接 | y | 将文件链接复制到剪贴板。 |
 | 在 Jupyter 实验室中运行 | j | 在 Jupyter 实验室中运行笔记本，比起 Jupyter 通常提供的界面而言，该界面更像是面向开发者的界面。 |
 | 预览 | p | 打开文件 HTML 格式的预览；对于笔记本，则以只读形式呈现笔记本。 有关详细信息，请参阅[预览](#preview)部分。 |
 | 编辑文件 | i | 打开文件进行编辑。 |
-| 下载 | d | 下载 zip 文件，它包含文件夹的文件或内容。 |
+| 下载 | 天 | 下载 zip 文件，它包含文件夹的文件或内容。 |
 | 重命名 | a | 提示输入文件或文件夹的新名称。 |
-| DELETE | x | 提示确认，然后从项目中永久地删除文件。 删除不可撤消。 |
-| 移动 | m | 将文件移到同一项目的其他文件夹中。 |
+| DELETE | X | 提示确认，然后从项目中永久地删除文件。 删除不可撤消。 |
+| 移动 | 分钟 | 将文件移到同一项目的其他文件夹中。 |
 
 #### <a name="preview"></a>预览
 
@@ -97,12 +96,12 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 预览页支持以下几个具有键盘快捷方式的工具栏命令：
 
-| 命令 | 键盘快捷键 | 操作 |
+| Command | 键盘快捷键 | 操作 |
 | --- | --- | --- |
-| 共享 | s | 显示共享弹出式菜单，可从中获取链接、共享至社交媒体、获取用于嵌入的 HTML 以及发送电子邮件。 |
+| 共享 | 秒 | 显示共享弹出式菜单，可从中获取链接、共享至社交媒体、获取用于嵌入的 HTML 以及发送电子邮件。 |
 | 克隆 | c  | 将笔记本克隆到你的帐户。 |
 | 运行 | r | 运行笔记本（假如你有权执行此操作）。 |
-| 下载 | d | 下载笔记本的副本。 |
+| 下载 | 天 | 下载笔记本的副本。 |
 
 ## <a name="configure-the-project-environment"></a>配置项目环境
 
@@ -116,44 +115,44 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 ### <a name="one-time-initialization-script"></a>一次性的初始化脚本
 
-Azure Notebooks 首次为项目创建服务器时，它会在项目中查找一个名为“aznbsetup.sh”的文件  。如果该文件存在，Azure Notebooks 会运行它。 该脚本的输出作为“.aznbsetup.log”存储在你的项目文件夹中  。
+Azure Notebooks 首次为项目创建服务器时，它会在项目中查找一个名为“aznbsetup.sh”的文件。如果该文件存在，Azure Notebooks 会运行它。 该脚本的输出作为“.aznbsetup.log”存储在你的项目文件夹中。
 
 ### <a name="environment-setup-steps"></a>环境设置步骤
 
 你可以使用项目的环境设置来创建配置环境的各个步骤。
 
-在项目仪表板上，选择“项目设置”，再选择“环境”选项卡，在该选项卡中添加、删除和修改项目的设置步骤   ：
+在项目仪表板上，选择“项目设置”，再选择“环境”选项卡，在该选项卡中添加、删除和修改项目的设置步骤：
 
 ![选中了“环境”选项卡的项目设置弹出式对话框](media/project-settings-environment-steps.png)
 
-若要添加步骤，先选择“+ 添加”，再在“操作”下拉列表中选择一个步骤类型   ：
+若要添加步骤，先选择“+ 添加”，再在“操作”下拉列表中选择一个步骤类型：
 
 ![新环境设置步骤的操作选择器](media/project-settings-environment-details.png)
 
 稍后呈现的信息取决于你所选的操作类型：
 
-- **Requirements.txt**：在第二个下拉列表中，选择项目中已有的一个 *requirements.txt* 文件。 然后从显示的第三个下拉列表中选择 Python 版本。 若使用 requirements.txt 文件，Azure Notebooks 会在启动笔记本服务器时通过 requirements.txt 运行 `pip install -r`   。 不需要在笔记本内显式安装程序包。
+- **Requirements.txt**：在第二个下拉列表中，选择项目中已有的一个 *requirements.txt* 文件。 然后从显示的第三个下拉列表中选择 Python 版本。 若使用 requirements.txt 文件，Azure Notebooks 会在启动笔记本服务器时通过 requirements.txt 运行 `pip install -r`。 不需要在笔记本内显式安装程序包。
 
-- **Shell 脚本**：在第二个下拉列表中，选择项目中的一个 bash shell 脚本（通常为扩展名为 .sh 的文件），该脚本包含你希望为初始化环境而运行的所有命令  。
+- **Shell 脚本**：在第二个下拉列表中，选择项目中的一个 bash shell 脚本（通常为扩展名为 .sh 的文件），该脚本包含你希望为初始化环境而运行的所有命令。
 
-- **Environment.yml**：在第二个下拉列表中，为使用 conda 环境的 Python 项目选择 environments.yml 文件  。
+- **Environment.yml**：在第二个下拉列表中，为使用 conda 环境的 Python 项目选择 environments.yml 文件。
 
-完成添加步骤后，选择“保存”  。
+完成添加步骤后，选择“保存”。
 
 ### <a name="use-the-terminal"></a>使用终端
 
-终端命令位于项目仪表板上，用于打开 Linux 终端，使你直接访问服务器  。 可以在终端内下载数据、编辑或管理文件、检查进程，甚至使用 vi 和 nano 等工具。
+终端命令位于项目仪表板上，用于打开 Linux 终端，使你直接访问服务器。 可以在终端内下载数据、编辑或管理文件、检查进程，甚至使用 vi 和 nano 等工具。
 
 > [!Note]
 > 如果项目环境中有启动脚本，打开终端可能会显示一则消息，指示仍在进行设置。
 
-可以在终端中发出任何标准 Linux 命令。 还可以在主文件夹中使用 `ls` 查看虚拟机上存在的不同环境（例如 anaconda2_501、anaconda3_420、anaconda3_501、IfSharp 和 R）以及含有以下项目的项目文件夹       ：
+可以在终端中发出任何标准 Linux 命令。 还可以在主文件夹中使用 `ls` 查看虚拟机上存在的不同环境（例如 anaconda2_501、anaconda3_420、anaconda3_501、IfSharp 和 R）以及含有以下项目的项目文件夹：
 
 ![Azure Notebooks 中的项目终端](media/project-terminal.png)
 
 若要影响特定的环境，首先将目录切换到该环境文件夹。
 
-就 Python 环境而言，可以在各个环境的 bin 文件夹中找到 `pip` 和 `conda`  。 还可以为环境使用内置的别名：
+就 Python 环境而言，可以在各个环境的 bin 文件夹中找到 `pip` 和 `conda`。 还可以为环境使用内置的别名：
 
 ```bash
 # Anaconda 2 5.3.0/Python 2.7: python27
@@ -166,14 +165,14 @@ python35 -m pip install <package>
 python36 -m pip install <package>
 ```
 
-对服务器所做的更改仅应用于当前会话，你在项目文件夹内创建的文件和文件夹除外  。 例如，会在在会话之间保存对项目文件夹中的文件的编辑，但不保存使用 `pip install` 的程序包。
+对服务器所做的更改仅应用于当前会话，你在项目文件夹内创建的文件和文件夹除外。 例如，会在在会话之间保存对项目文件夹中的文件的编辑，但不保存使用 `pip install` 的程序包。
 
 > [!Note]
 > 如果使用的是 `python` 或 `python3`则调用系统安装的 Python 版本，这些版本不用于笔记本。 你没有 `pip install` 等操作的权限，因此务必使用特定于版本的别名。
 
 ## <a name="access-notebook-logs"></a>访问笔记本日志
 
-如果在运行笔记本时遇到问题，来自 Jupyter 的输出会存储在名为“.nb.log”的文件夹中  。 可以通过终端命令或项目仪表板访问这些日志  。
+如果在运行笔记本时遇到问题，来自 Jupyter 的输出会存储在名为“.nb.log”的文件夹中。 可以通过终端命令或项目仪表板访问这些日志。
 
 通常在本地运行 Jupyter 时，你可能已从终端窗口启动了它。 终端窗口显示内核状态等输出。
 

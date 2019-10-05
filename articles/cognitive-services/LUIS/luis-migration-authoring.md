@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 19852fe3a6925ada3dea141a1472683ee264f6d5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932829"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973296"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
@@ -63,9 +63,9 @@ ms.locfileid: "70932829"
 
 * **（可选**）通过导出每个应用或使用导出[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)，从 LUIS 门户的 "应用" 列表备份应用。
 * **还可以选择**保存每个应用的 collaborator's 列表。 此电子邮件列表作为迁移过程的一部分提供。
-* **需要，需要**有一个[Azure 订阅](https://azure.microsoft.com/free/)。 订阅过程的一部分需要计费信息。 但是，在使用 LUIS 时，可以`F0`使用免费（）定价层。 
+* **需要，需要**有一个[Azure 订阅](https://azure.microsoft.com/free/)。 订阅过程的一部分需要计费信息。 但是，在使用 LUIS 时，可以使用免费（`F0`）定价层。 
 
-`F0` **创作你的 LUIS 应用程序是免费**的，由层指示。 了解[有关定价层的详细信息](luis-boundaries.md#key-limits)。
+**创作你的 LUIS 应用程序是免费**的，由 `F0` 层指示。 了解[有关定价层的详细信息](luis-boundaries.md#key-limits)。
 
 如果你没有 Azure 订阅，请[注册](https://azure.microsoft.com/free/)。 
 
@@ -99,6 +99,10 @@ LUIS 的每个用户都需要迁移，包括协作者/参与者。
 应用所有者需要[将电子邮件作为协作者添加到 Azure 创作资源](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)。 
 
 迁移过程完成后，LUIS 门户的 "**我的应用**" 页上提供了你拥有的任何应用。  
+
+## <a name="troubleshooting"></a>疑难解答
+
+迁移过程完成后，LUIS 创作密钥仅在 LUIS 门户中可见。 如果创建了创作密钥，例如 with LUIS CLI，则用户仍需完成迁移过程。 
 
 ## <a name="next-steps"></a>后续步骤
 

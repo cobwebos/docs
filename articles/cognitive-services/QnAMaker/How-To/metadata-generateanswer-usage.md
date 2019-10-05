@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 10/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2f9b624ffcc04963046ad817bb2bc9c025161506
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 03e04853e93bb78391476a365b20550d471e1dbb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300247"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971813"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和元数据获取答案
 
@@ -48,7 +48,7 @@ QnA Maker 使你能够以键和值对的形式向问题和答案集添加元数�
 获取终结点详细信息：
 1. 登录到 [https://www.qnamaker.ai](https://www.qnamaker.ai)。
 1. 在**知识库**中，选择 "**查看**知识库" 代码。
-    ![我的知识库的屏幕截图](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
+    ![Screenshot of My 知识库 @ no__t-1
 1. 获取 GenerateAnswer 终结点的详细信息。
 
     ![终结点详细信息的屏幕截图](../media/qnamaker-how-to-metadata-usage/view-code.png)
@@ -64,7 +64,7 @@ QnA Maker 使你能够以键和值对的形式向问题和答案集添加元数�
 POST 请求使用：
 
 * 必需的[URI 参数](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* 必需的[标头属性](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer)， `Authorization`用于安全性
+* 安全所需的[标头属性](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer)`Authorization`
 * 必需的[正文属性](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)。 
 
 GenerateAnswer URL 具有以下格式： 
@@ -73,7 +73,7 @@ GenerateAnswer URL 具有以下格式：
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-请记住， `Authorization`使用带有尾随空格的字符串`EndpointKey`的值设置的 HTTP 标头属性，然后在 "**设置**" 页上找到终结点键。
+请记住，将 `Authorization` 的 HTTP 标头属性设置为带有尾随空格的字符串 `EndpointKey`，然后在 "**设置**" 页上找到终结点键。
 
 示例 JSON 正文如下所示：
 
@@ -161,7 +161,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>使用元数据筛选自定义元数据标记的答案
 
-通过添加元数据，可以按这些元数据标记筛选答案。 从 "**视图选项**" 菜单添加 "元数据" 列。 通过选择元 **+** 数据图标来添加元数据对，将元数据添加到知识库中。 此对包含一个键和一个值。
+通过添加元数据，可以按这些元数据标记筛选答案。 从 "**视图选项**" 菜单添加 "元数据" 列。 通过选择元数据 **+** 图标来添加元数据对，将元数据添加到知识库中。 此对包含一个键和一个值。
 
 ![添加元数据的屏幕截图](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
@@ -219,9 +219,9 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="match-questions-only-by-text"></a>仅匹配问题，按文本
 
-默认情况下，QnA Maker 搜索问题和答案。 如果只想要搜索问题，若要生成答案，请`RankerType=QuestionOnly`在 GenerateAnswer 请求的 POST 正文中使用。
+默认情况下，QnA Maker 搜索问题和答案。 如果只想搜索问题，以生成答案，请在 GenerateAnswer 请求的 POST 正文中使用 `RankerType=QuestionOnly`。
 
-可以使用`isTest=false` `isTest=true`在测试 kb 中搜索已发布的 kb、使用或。
+您可以使用 `isTest=false` 或使用 `isTest=true` 在测试 kb 中搜索已发布的 kb。
 
 ```json
 {
@@ -249,4 +249,4 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 "**发布**" 页还提供了有关使用[Postman](../Quickstarts/get-answer-from-kb-using-postman.md)和[卷曲](../Quickstarts/get-answer-from-kb-using-curl.md)生成答案的信息。 
 
 > [!div class="nextstepaction"]
-> [创建知识库](./create-knowledge-base.md)
+> [创建知识库 bot](../tutorials/integrate-qnamaker-luis.md)

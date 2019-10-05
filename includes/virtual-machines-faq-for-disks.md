@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266868"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973018"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -292,7 +292,11 @@ Azure 标准 SSD 盘是什么？
 
 创建托管磁盘时，是否会默认启用 Azure 存储服务加密？
 
-是的。
+是。
+
+**默认情况下，托管磁盘上的启动卷是否已加密？**
+
+是。 默认情况下，所有托管磁盘都将加密，包括操作系统磁盘。
 
 加密密钥由谁管理？
 

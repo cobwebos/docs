@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MySQL 的定价层
-description: 本文介绍 Azure Database for MySQL 的定价层。
+description: 了解 Azure Database for MySQL 的各种定价层，包括计算代、存储类型、存储大小、Vcore、内存和备份保留期。
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 087a88322175b1908ab591a5b9afb5ae45227bb1
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: f53f260ebe80ce2e3d6d6349e3fa892fa3c021a3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177953"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972831"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
 

@@ -4,10 +4,12 @@
   items:
     - name: 什么是 QnA Maker？
       href: Overview/overview.md
+    - name: 新增功能
+      href: whats-new.md
 - name: 快速入门
   items:
     - name: 创建新的知识库
-      href: How-To/create-knowledge-base.md
+      href: quickstarts/create-publish-knowledge-base.md
     - name: 添加带有元数据的问题
       href: quickstarts/add-question-metadata-portal.md
     - name: 获取答案

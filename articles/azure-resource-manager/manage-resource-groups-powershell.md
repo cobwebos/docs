@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 5197358e3bd8a3052fbf71cafc2f1e3acda46b26
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: e78a6ffd269b7a93c1d224fd4afe580cf0b31b06
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721146"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972719"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 资源管理器资源组
 
@@ -85,7 +85,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="redeploy-when-deployment-fails"></a>部署失败时，重新部署
 
-此功能也称为“出错时回滚”  。 有关详细信息，请参阅[在部署失败时重新部署](./resource-group-template-deploy.md#redeploy-when-deployment-fails)。
+此功能也称为“出错时回滚”。 有关详细信息，请参阅[在部署失败时重新部署](./rollback-on-error.md)。
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>移到另一个资源组或订阅
 
@@ -119,12 +119,12 @@ Get-AzResourceLock -ResourceGroupName $resourceGroupName
 
 ## <a name="export-resource-groups-to-templates"></a>将资源组导出到模板
 
-设置你的资源组之后, 可以查看资源组的资源管理器模板。 导出模板有两个好处：
+设置资源组后，可以查看资源组的资源管理器模板。 导出模板有两个好处：
 
-- 自动执行未来部署的解决方案，因为该模板包含完整的基础结构。
+- 由于模板包含整个基础结构，因此将来可以自动完成解决方案的部署。
 - 通过查看代表解决方案的 JavaScript 对象表示法 (JSON)，了解模板语法。
 
-若要导出的资源组中的所有资源，请使用[都导出 AzResourceGroup](/powershell/module/az.resources/Export-AzResourceGroup) cmdlet 和提供资源组名称。
+若要导出资源组中的所有资源，请使用 [Export-AzResourceGroup](/powershell/module/az.resources/Export-AzResourceGroup) cmdlet 并提供资源组名称。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -132,11 +132,11 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Export-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
 
-它将模板保存为本地文件。
+它将模板另存为本地文件。
 
-而不是导出的资源组中的所有资源，可以选择要导出哪些资源。
+可以选择要导出的资源，而不是导出资源组中的所有资源。
 
-若要导出一个资源，请将传递该资源 id。
+若要导出一个资源，请传递该资源 ID。
 
 ```azurepowershell-interactive
 $resource = Get-AzResource `
@@ -148,7 +148,7 @@ Export-AzResourceGroup `
   -Resource $resource.ResourceId
 ```
 
-若要导出多个资源，请将传递一个数组中的资源 Id。
+若要导出多个资源，请在数组中传递资源 ID。
 
 ```azurepowershell-interactive
 Export-AzResourceGroup `
@@ -156,7 +156,7 @@ Export-AzResourceGroup `
   -Resource @($resource1.ResourceId, $resource2.ResourceId)
 ```
 
-当导出模板时，可以指定是否在模板中使用参数。 默认情况下，资源名称的参数包括但它们不具有默认值。 必须在部署期间传递该参数值。
+导出模板时，可以指定是否在模板中使用参数。 默认情况下，包含资源名称的参数，但它们没有默认值。 在部署过程中必须传递该参数值。
 
 ```json
 "parameters": {
@@ -171,7 +171,7 @@ Export-AzResourceGroup `
 }
 ```
 
-在资源中，该参数使用的名称。
+在资源中，参数用于名称。
 
 ```json
 "resources": [
@@ -184,7 +184,7 @@ Export-AzResourceGroup `
 ]
 ```
 
-如果使用`-IncludeParameterDefaultValue`参数导出模板时，模板参数包括设置为当前值的默认值。 可以使用该默认值，也可以通过传入不同的值来覆盖默认值。
+如果在导出模板时使用 `-IncludeParameterDefaultValue` 参数，则模板参数包括设置为当前值的默认值。 可以使用该默认值，也可以通过传入不同的值来覆盖默认值。
 
 ```json
 "parameters": {
@@ -199,7 +199,7 @@ Export-AzResourceGroup `
 }
 ```
 
-如果使用`-SkipResourceNameParameterization`参数的资源名称不为模板中包含导出的模板参数时。 而是直接在其当前值的资源上设置资源名称。 不能在部署期间自定义名称。
+如果在导出模板时使用 `-SkipResourceNameParameterization` 参数，则模板中不包括资源名称的参数。 而是，资源名称直接在资源上设置为其当前值。 无法在部署过程中自定义该名称。
 
 ```json
 "resources": [
@@ -212,7 +212,7 @@ Export-AzResourceGroup `
 ]
 ```
 
-有关详细信息，请参阅[单个和多资源导出到 Azure 门户中的模板](./export-template-portal.md)。
+有关详细信息，请参阅[将 Azure 门户中的单资源和多资源导出到模板](./export-template-portal.md)。
 
 ## <a name="manage-access-to-resource-groups"></a>管理对资源组的访问
 

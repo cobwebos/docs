@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MariaDB 中的查询存储
-description: 本文介绍 Azure Database for MariaDB 中的查询存储功能
+description: 了解 Azure Database for MariaDB 中的查询存储功能，以帮助您跟踪一段时间内的性能。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 5d4d01f9f85c78d0e864ec9d11c1d8cd43542e57
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: ee0a3c41edd144c1220cdc9b5a5463b43bef5551
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950634"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973558"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>使用查询存储监视 Azure Database for MariaDB 的性能
 
@@ -53,7 +53,7 @@ ms.locfileid: "68950634"
 查询存储有两个存储：
 
 - 用于保存查询执行统计信息的运行时统计信息存储。
-- 用于保存等待统计信息的等待统计信息存储。
+- 用于保留等待统计信息的等待统计信息存储。
 
 为尽量减少空间使用量，运行时统计信息存储中的运行时执行统计信息在一个固定的、可配置的时间范围内聚合。 通过查询这些查询存储视图，这些存储中的信息是可见的。
 
@@ -89,7 +89,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 | **Parameter** | **说明** | **默认** | **范围** |
 |---|---|---|---|
-| query_store_capture_mode | 根据值打开/关闭查询存储功能。 注意:如果 performance_schema 为 OFF，则打开 query_store_capture_mode 会打开 performance_schema，以及此功能所需的一部分性能架构检测。 | 全部 | NONE、ALL |
+| query_store_capture_mode | 根据值打开/关闭查询存储功能。 注意:如果 performance_schema 为 OFF，则打开 query_store_capture_mode 会打开 performance_schema，以及此功能所需的一部分性能架构检测。 | ALL | NONE、ALL |
 | query_store_capture_interval | 查询存储捕获时间间隔，以分钟为单位。 允许指定聚合查询指标的时间间隔 | 15 | 5 - 60 |
 | query_store_capture_utility_queries | 打开或关闭捕获系统中正在执行的所有实用工具查询的功能。 | 否 | YES、NO |
 | query_store_retention_period_in_days | 在查询存储中保留数据的时限，以天为单位。 | 7 | 1 - 30 |
@@ -127,10 +127,10 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `execution_count` | bigint(20)| 否| 针对此时间戳 ID/在配置的间隔时间段内执行该查询的次数|
 | `warning_count` | bigint(20)| 否| 此查询在该时间间隔内生成的警告数|
 | `error_count` | bigint(20)| 否| 此查询在该时间间隔内生成的错误数|
-| `sum_timer_wait` | 双| 是| 此查询在该时间间隔内的总执行时间|
-| `avg_timer_wait` | 双| 是| 此查询在该时间间隔内的平均执行时间|
-| `min_timer_wait` | 双| 是| 此查询的最小执行时间|
-| `max_timer_wait` | 双| 是| 最大执行时间|
+| `sum_timer_wait` | double| 是| 此查询在该时间间隔内的总执行时间|
+| `avg_timer_wait` | double| 是| 此查询在该时间间隔内的平均执行时间|
+| `min_timer_wait` | double| 是| 此查询的最小执行时间|
+| `max_timer_wait` | double| 是| 最大执行时间|
 | `sum_lock_time` | bigint(20)| 否| 在此时间范围内对此查询执行的所有锁花费的总时间|
 | `sum_rows_affected` | bigint(20)| 否| 受影响的行数|
 | `sum_rows_sent` | bigint(20)| 否| 发送到客户端的行数|
@@ -159,9 +159,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `event_type` | varchar(32) | 否| 等待事件的类别 |
 | `event_name` | varchar(128) | 否| 等待事件的名称 |
 | `count_star` | bigint(20) | 否| 在查询间隔内采样的等待事件数 |
-| `sum_timer_wait_ms` | 双 | 否| 此查询在该时间间隔内的总等待时间（以毫秒为单位） |
+| `sum_timer_wait_ms` | double | 否| 此查询在该时间间隔内的总等待时间（以毫秒为单位） |
 
-### <a name="functions"></a>函数
+### <a name="functions"></a>Functions
 
 | **名称**| **说明** |
 |---|---|

@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 07b196b8e7081a6cce1ae87297528c1711b3b8bb
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 047c92f1c50409e6a1716f0ef2f774464bd12a0a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259442"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972765"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>网络安全组的诊断日志记录
 
 网络安全组 (NSG) 包含的规则可以用来允许或拒绝发往虚拟网络子网和/或网络接口的流量。 为 NSG 启用诊断日志记录时，可以记录以下类别的信息：
 
-* **事件：** 根据 MAC 地址记录的与应用到 VM 的 NSG 规则相对应的条目。 每隔 60 秒收集一次这些规则的状态。
-* **规则计数器：** 包含应用每个 NSG 规则以拒绝或允许流量的次数的条目。
+* **事件：** 根据 MAC 地址记录的与应用到 VM 的 NSG 规则相对应的条目。
+* **规则计数器：** 包含应用每个 NSG 规则以拒绝或允许流量的次数的条目。 每隔 60 秒收集一次这些规则的状态。
 
 诊断日志仅适用于通过 Azure 资源管理器部署模型部署的 NSG。 不能对通过经典部署模型部署的 NSG 启用诊断日志记录。 若要更好地了解这两种模型，请参阅[了解 Azure 部署模型](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
@@ -57,7 +57,7 @@ ms.locfileid: "71259442"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 Azure PowerShell 模块 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，还需要运行`Connect-AzAccount` ，使用具有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
+可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 Azure PowerShell 模块 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，还需要运行 `Connect-AzAccount`，使用具有[必要权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
 
 若要启用诊断日志记录，需要现有 NSG 的 ID。 如果没有现有的 NSG，可以使用[AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)创建一个。
 
