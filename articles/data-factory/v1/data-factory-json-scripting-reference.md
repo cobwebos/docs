@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 10/04/2019
 ms.locfileid: "70736009"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
@@ -288,7 +288,7 @@ ms.locfileid: "70736009"
 | type | 数据集的类型。 指定 Azure 数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 有关数据工厂支持的所有数据存储和数据集类型，请参阅[数据存储](#data-stores)部分。 |
 | structure | 数据集的架构。 其中包含列及其类型，等等。 | 否 |不可用 |
 | typeProperties | 对应于所选类型的属性。 有关支持的类型及其属性，请参阅[数据存储](#data-stores)部分。 |是 |不可用 |
-| external | 布尔标志，用于指定数据集是否由数据工厂管道显式生成。 |否 |假 |
+| external | 布尔标志，用于指定数据集是否由数据工厂管道显式生成。 |否 |false |
 | availability | 定义数据集生产的处理窗口或切片模型。 有关数据集切片模型的详细信息，请参阅[计划和执行](data-factory-scheduling-and-execution.md)一文。 |是 |不可用 |
 | 策略 |定义数据集切片必须满足的标准或条件。 <br/><br/>有关详细信息，请参阅“数据集策略”部分。 |否 |不可用 |
 
@@ -542,7 +542,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | --- | --- | --- | --- |
 | copyBehavior |源为 BlobSource 或 FileSystem 时，请定义复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy：</b>源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><br/><b>MergeFiles：（默认值）</b>将源文件夹中的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 |否 |
 
-#### <a name="example-blobsink"></a>例如：BlobSink
+#### <a name="example-blobsink"></a>示例：BlobSink
 
 ```json
 {
@@ -736,7 +736,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | --- | --- | --- | --- |
 | copyBehavior |指定复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy</b>：源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/><b>MergeFiles</b>：将源文件夹的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 |否 |
 
-#### <a name="example-azuredatalakestoresink"></a>例如：AzureDataLakeStoreSink
+#### <a name="example-azuredatalakestoresink"></a>示例：AzureDataLakeStoreSink
 ```json
 {
     "name": "SamplePipeline",
@@ -784,7 +784,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="linked-service"></a>链接的服务
 要定义 Azure Cosmos DB 链接服务，请将链接服务的“类型”设置为“DocumentDb”，并在“typeProperties”部分中指定以下属性：
 
-| **属性** | **说明** | **必需** |
+| **Property** | **说明** | **必需** |
 | --- | --- | --- |
 | connectionString |指定连接 Azure Cosmos DB 数据库所需的信息。 |是 |
 
@@ -806,7 +806,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="dataset"></a>数据集
 要定义 Azure Cosmos DB 数据集，请将数据集的“类型”设置为“DocumentDbCollection”，并在“typeProperties”部分中指定以下属性：
 
-| **属性** | **说明** | **必需** |
+| **Property** | **说明** | **必需** |
 | --- | --- | --- |
 | collectionName |Azure Cosmos DB 集合的名称。 |是 |
 
@@ -835,7 +835,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 如果要从 Azure Cosmos DB 复制数据，请将复制活动的“源类型”设置为“DocumentDbCollectionSource”，并在“源”部分中指定以下属性：
 
 
-| **属性** | **说明** | **允许的值** | **必需** |
+| **Property** | **说明** | **允许的值** | **必需** |
 | --- | --- | --- | --- |
 | query |指定要读取数据的查询。 |Azure Cosmos DB 支持的查询字符串。 <br/><br/>示例： `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行的 SQL 语句为：`select <columns defined in structure> from mycollection` |
 | nestingSeparator |指示嵌套文档的特殊字符 |任意字符。 <br/><br/>Azure Cosmos DB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构。 Azure 数据工厂允许用户通过 nestingSeparator 来表示层次结构，即 上述示例中的“.”。 通过该分隔符，复制活动会根据表定义中的“Name.First”、“Name.Middle”和“Name.Last”生成包含三个子元素（First、Middle 和 Last）的“Name”对象。 |否 |
@@ -881,11 +881,11 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 ### <a name="azure-cosmos-db-collection-sink-in-copy-activity"></a>复制活动中的 Azure Cosmos DB 集合接收器
 如果要将数据复制到 Azure Cosmos DB，请将复制活动的“接收器类型”设置为“DocumentDbCollectionSink”，并在“接收器”部分中指定以下属性：
 
-| **属性** | **说明** | **允许的值** | **必需** |
+| **Property** | **说明** | **允许的值** | **必需** |
 | --- | --- | --- | --- |
 | nestingSeparator |源列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>在上述示例中：输出表中的 `Name.First` 在 Cosmos DB 文档中生成以下 JSON 结构：<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |用于分隔嵌套级别的字符。<br/><br/>默认值为 `.`（点）。 |用于分隔嵌套级别的字符。 <br/><br/>默认值为 `.`（点）。 |
 | writeBatchSize |向 Azure Cosmos DB 服务发送创建文档的并行请求数。<br/><br/>将数据复制到 Azure Cosmos DB 以及从其中复制数据时，可使用此属性对性能进行微调。 增加 writeBatchSize 时，由于会向 Azure Cosmos DB 发送更多的并行请求，因此可以获得更好的性能。 但是，需要避免可能会引发以下错误消息的限制：“请求速率大”。<br/><br/>限制由多种因素决定，包括文档大小、文档中的术语数、目标集合的索引策略等。对于复制操作，可以使用更佳的集合（例如 S3）实现最大吞吐量（2,500 请求单位/秒）。 |整数 |否（默认值：5） |
-| writeBatchTimeout |超时之前等待操作完成的时间。 |timespan<br/><br/> 例如：“00:30:00”（30 分钟）。 |否 |
+| writeBatchTimeout |超时之前等待操作完成的时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
 
 #### <a name="example"></a>示例
 
@@ -1047,7 +1047,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | 属性 | 说明 | 允许的值 | 必填 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 例如：“00:30:00”（30 分钟）。 |否 |
+| writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。 |整数（行数） |否（默认值：10000） |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 |查询语句。 |否 |
 | sliceIdentifierColumnName |指定复制活动要填充自动生成切片标识符的列名，以便在重新运行时清除特定切片的数据。 |数据类型为 binary(32) 的列的列名。 |否 |
@@ -1224,7 +1224,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | 属性 | 说明 | 允许的值 | 必填 |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 |查询语句。 |否 |
-| allowPolyBase |指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> **使用 PolyBase 是将数据加载到 SQL 数据仓库的建议方式。** |True <br/>False（默认值） |否 |
+| allowPolyBase |指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> **使用 PolyBase 是将数据加载到 SQL 数据仓库的建议方式。** |真 <br/>False（默认值） |否 |
 | polyBaseSettings |**allowPolybase** 属性设置为 **true** 时可以指定的一组属性。 |&nbsp; |否 |
 | rejectValue |指定在查询失败之前可以拒绝的行数或百分比。 <br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅[创建外部表 (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) 主题的**参数**部分。 |0（默认值）、1、2 … |否 |
 | rejectType |指定将 rejectValue 选项指定为文字值还是百分比。 |值（默认），百分比 |否 |
@@ -1444,7 +1444,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 | 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |是的。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
+| tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |是。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
 
 #### <a name="example"></a>示例
 
@@ -3175,10 +3175,10 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 | 属性 | 说明 | 允许的值 | 必填 |
 | --- | --- | --- | --- |
-| bucketName |S3 存储桶的名称。 |String |是 |
-| 钥 |S3 对象键。 |String |否 |
-| prefix |S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当键为空时应用。 |String |否 |
-| version |启用 S3 版本控制时 S3 对象的版本。 |String |否 |
+| bucketName |S3 存储桶的名称。 |字符串 |是 |
+| 钥 |S3 对象键。 |字符串 |否 |
+| prefix |S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当键为空时应用。 |字符串 |否 |
+| version |启用 S3 版本控制时 S3 对象的版本。 |字符串 |否 |
 | format | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 | |
 | compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 | |
 
@@ -3209,7 +3209,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
     }
 }
 ```
-#### <a name="example-sample-data-set-with-version"></a>例如：示例数据集（包含版本）
+#### <a name="example-sample-data-set-with-version"></a>示例：示例数据集（包含版本）
 
 ```json
 {
@@ -3234,7 +3234,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 }
 ```
 
-#### <a name="example-dynamic-paths-for-s3"></a>例如：S3 的动态路径
+#### <a name="example-dynamic-paths-for-s3"></a>示例：S3 的动态路径
 在示例中，对于 Amazon S3 数据集中的 key 和 bucketName 属性，使用固定的值。
 
 ```json
@@ -3557,8 +3557,8 @@ auto-
 | encryptedCredential |访问 FTP 服务器的加密凭据 |否 |&nbsp; |
 | gatewayName |用于连接本地 FTP 服务器的数据管理网关的名称 |否 |&nbsp; |
 | 端口 |FTP 服务器侦听的端口 |否 |21 |
-| enableSsl |指定是否使用 FTP over SSL/TLS 通道 |否 |真 |
-| enableServerCertificateValidation |指定使用 FTP over SSL/TLS 通道时，是否启用服务器 SSL 证书验证 |否 |真 |
+| enableSsl |指定是否使用 FTP over SSL/TLS 通道 |否 |true |
+| enableServerCertificateValidation |指定使用 FTP over SSL/TLS 通道时，是否启用服务器 SSL 证书验证 |否 |true |
 
 #### <a name="example-using-anonymous-authentication"></a>例如：使用匿名身份验证
 
@@ -3575,7 +3575,7 @@ auto-
 }
 ```
 
-#### <a name="example-using-username-and-password-in-plain-text-for-basic-authentication"></a>例如：使用纯文本用户名和密码进行基本身份验证
+#### <a name="example-using-username-and-password-in-plain-text-for-basic-authentication"></a>示例：使用纯文本用户名和密码进行基本身份验证
 
 ```json
 {
@@ -3612,7 +3612,7 @@ auto-
 }
 ```
 
-#### <a name="example-using-encryptedcredential-for-authentication-and-gateway"></a>例如：将 encryptedCredential 用于身份验证和网关
+#### <a name="example-using-encryptedcredential-for-authentication-and-gateway"></a>示例：将 encryptedCredential 用于身份验证和网关
 
 ```json
 {
@@ -3779,7 +3779,7 @@ auto-
 | 属性 | 说明 | 必填 |
 | --- | --- | --- |
 | folderPath |文件夹路径。 示例： `myfolder`<br/><br/>请对字符串中的特殊字符使用转义符“\”。 例如：对于 folder\subfolder，请指定 folder\\\\subfolder；对于 d:\samplefolder，请指定 d:\\\\samplefolder。<br/><br/>可将此属性与 **partitionBy** 相组合，基于切片开始/结束日期时间构成文件夹路径。 |是 |
-| fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
+| fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 fileName，生成的文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt` （例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 可用于指定时序数据的动态 folderPath 和 filename。 示例：folderPath 可针对每小时的数据参数化。 |否 |
 | format | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
 | compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
@@ -4480,7 +4480,7 @@ auto-
 }
 ```
 
-#### <a name="example-using-anonymous-authentication"></a>例如：使用匿名身份验证
+#### <a name="example-using-anonymous-authentication"></a>示例：使用匿名身份验证
 
 ```json
 {
@@ -4593,7 +4593,7 @@ auto-
 
 | 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> -默认值为 "https\/：/login.salesforce.com"。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
+| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> -默认值为 "https： \//login .com .com"。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
 | username |为用户帐户指定用户名。 |是 |
 | password |指定用户帐户的密码。 |是 |
 | securityToken |为用户帐户指定安全令牌。 请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)了解有关如何重置/获取安全令牌的说明。 若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。 |是 |
@@ -4967,7 +4967,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 
 | 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| 类型 |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
+| type |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
 | accountName |Azure Data Lake Analytics 帐户名。 |是 |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |否 |
 | authorization |在数据工厂编辑器中单击“授权”按钮并完成 OAuth 登录后，会自动检索授权代码。 |是 |
@@ -5075,7 +5075,7 @@ activities | 描述
 
 | 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| 脚本 (script) |指定 Hive 脚本内联 |否 |
+| script |指定 Hive 脚本内联 |否 |
 | scriptPath |将 Hive 脚本存储在 Azure blob 存储中，并提供该文件的路径。 使用“script”或“scriptPath”属性。 两者不能一起使用。 文件名称需区分大小写。 |否 |
 | defines |使用“hiveconf”在 Hive 脚本中指定参数作为密钥/值对，以便参考 |否 |
 
@@ -5475,7 +5475,7 @@ trainedModelDatasetName | 指向重新训练操作返回的 iLearner 文件的�
 |:--- |:--- |:--- |
 | scriptPath |包含 U-SQL 脚本的文件夹路径。 文件的名称区分大小写。 |否（如果使用脚本） |
 | scriptLinkedService |将包含脚本的存储链接到数据工厂的链接服务 |否（如果使用脚本） |
-| 脚本 (script) |指定内联脚本，而不是指定 scriptPath 和 scriptLinkedService。 示例："script":"CREATE DATABASE test"。 |否（如果使用 scriptPath 和 scriptLinkedService） |
+| script |指定内联脚本，而不是指定 scriptPath 和 scriptLinkedService。 示例："script":"CREATE DATABASE test"。 |否（如果使用 scriptPath 和 scriptLinkedService） |
 | degreeOfParallelism |同时用于运行作业的最大节点数。 |否 |
 | 优先级 |确定应在所有排队的作业中选择哪些作业首先运行。 编号越低，优先级越高。 |否 |
 | 参数 |U-SQL 脚本的参数 |否 |
