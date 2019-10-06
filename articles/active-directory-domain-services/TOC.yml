@@ -85,7 +85,7 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: 将应用程序部署到 Azure AD DS
+    - name: 部署应用程序
       items:
         - name: 部署 Azure AD 应用程序代理
           href: deploy-azure-app-proxy.md
@@ -95,11 +95,17 @@
       items:
         - name: 常见错误
           href: troubleshoot.md
-        - name: “不匹配的租户”错误
+        - name: 域加入问题
+          href: troubleshoot-domain-join.md
+        - name: 帐户锁定
+          href: troubleshoot-account-lockout.md
+        - name: 登录问题
+          href: troubleshoot-sign-in.md
+        - name: 解决“不匹配的租户”错误
           href: mismatched-tenant-error.md
         - name: 挂起的域
           href: suspension.md
-        - name: 安全 LDAP
+        - name: 安全 LDAP 问题
           href: tshoot-ldaps.md
         - name: 已知问题
           items:

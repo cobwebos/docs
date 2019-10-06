@@ -139,6 +139,12 @@
           items:
             - name: 性能优化指南
               href: performance-tuning-ordered-CCI.md
+            - name: 创建表
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=aps-pdw-2016-au7'
+            - name: CTAS
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7'
+            - name: 创建和更改索引
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-index-transact-sql?view=sql-server-2017#examples--and-'
         - name: 结果集缓存
           items:
             - name: 为数据库设置

@@ -77,19 +77,21 @@
     - name: 创建评估
       href: how-to-create-assessment.md
     - name: 评估 SQL Server 数据库
-      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json&view=sql-server-2017'
+      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
     - name: 自定义评估
       href: how-to-modify-assessment.md
     - name: 添加迁移工具
       href: how-to-migrate.md
-    - name: 大规模评估和迁移
-      items:
-        - name: 评估大量 VMware VM
-          href: scale-vmware-assessment.md
-        - name: 评估大量 Hyper-V VM
-          href: scale-hyper-v-assessment.md
-        - name: 自动执行大量 VM 的迁移
-          href: how-to-migrate-at-scale.md
+    - name: 准备计算机以进行迁移
+      href: prepare-for-migration.md
+- name: 大规模评估和迁移
+  items:
+    - name: 评估大量 VMware VM
+      href: scale-vmware-assessment.md
+    - name: 评估大量 Hyper-V VM
+      href: scale-hyper-v-assessment.md
+    - name: 自动执行大量 VM 的迁移
+      href: how-to-migrate-at-scale.md
     - name: 迁移示例 - Contoso 系列
       href: contoso-migration-overview.md
 - name: 故障排除

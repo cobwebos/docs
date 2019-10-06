@@ -65,8 +65,14 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: 常见错误消息
   href: error-messages.md
+- name: 为 Microsoft Azure 自动化建立案例时要收集的数据
+  href: collect-data-microsoft-azure-automation-case.md
 - name: VM 性能问题
   href: performance-diagnostics.md
+- name: 运行 Linux 或 Windows 的 Azure 虚拟机常规性能故障排除
+  href: troubleshoot-performance-virtual-machine-linux-windows.md
+- name: Azure 虚拟机对 32 位操作系统的支持
+  href: support-32-bit-operating-systems-virtual-machines.md
   items:
     - name: Windows
       items:

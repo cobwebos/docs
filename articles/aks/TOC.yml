@@ -191,6 +191,8 @@
       items:
         - name: 创建服务主体
           href: kubernetes-service-principal.md
+        - name: 使用托管标识（预览版）
+          href: use-managed-identity.md
         - name: 限制对群集配置文件的访问
           href: control-kubeconfig-access.md
         - name: 使用网络策略保护 Pod 流量

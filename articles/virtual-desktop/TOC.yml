@@ -54,7 +54,7 @@
       href: install-office-on-wvd-master-image.md
     - name: 为 Windows 虚拟桌面配置 GPU
       href: configure-vm-gpu.md
-    - name: 自动缩放会话主机
+    - name: 动态缩放会话主机
       href: set-up-scaling-script.md
     - name: 为 Windows 虚拟桌面用户自定义源
       href: customize-feed-for-virtual-desktop-users.md
@@ -84,7 +84,7 @@
   items:
     - name: 故障排除概述、反馈和支持
       href: troubleshoot-set-up-overview.md
-    - name: 确定诊断功能的问题
+    - name: 识别和诊断问题
       href: diagnostics-role-service.md
     - name: 创建租户和主机池
       href: troubleshoot-set-up-issues.md
