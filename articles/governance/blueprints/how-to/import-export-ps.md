@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/03/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: f7bc3610841bcc3c40435f077073ffa0d55acd93
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 30e734c99a87364acfba9a58d83fe9a377958607
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70243173"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978447"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>通过 PowerShell 导入和导出蓝图定义
 
@@ -25,7 +24,7 @@ ms.locfileid: "70243173"
   - 在测试环境中自动测试蓝图定义
   - 支持持续集成和持续部署（CI/CD）管道
 
-无论出于何种原因，在代码中管理蓝图定义都有好处。 本文介绍如何在[Az](https://powershellgallery.com/packages/Az.Blueprint/)模块中`Import-AzBlueprintWithArtifact`使用`Export-AzBlueprintWithArtifact`和命令。
+无论出于何种原因，在代码中管理蓝图定义都有好处。 本文介绍如何使用[Az](https://powershellgallery.com/packages/Az.Blueprint/) module 中的 @no__t 0 和 @no__t 命令。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,16 +34,16 @@ ms.locfileid: "70243173"
 - 了解[部署阶段](../concepts/deployment-stages.md)和[蓝图生命周期](../concepts/lifecycle.md)
 - 通过 PowerShell[创建](../create-blueprint-powershell.md)和[管理](./manage-assignments-ps.md)蓝图定义和分配
 
-如果尚未安装，请按照[添加 az module 模块](./manage-assignments-ps.md#add-the-azblueprint-module)中的说明安装并验证 PowerShell 库中的**Az** module 模块。
+如果尚未安装，请按照[添加 Az.Blueprint 模块](./manage-assignments-ps.md#add-the-azblueprint-module)中的说明安装并验证 PowerShell 库中的 Az.Blueprint 模块。
 
 ## <a name="folder-structure-of-a-blueprint-definition"></a>蓝图定义的文件夹结构
 
 在查看导出和导入蓝图之前，让我们先来看看组成蓝图定义的文件是如何构建的。 蓝图定义应存储在其自己的文件夹中。
 
 > [!IMPORTANT]
-> 如果没有任何值传递到`Import-AzBlueprintWithArtifact` cmdlet 的**Name**参数，则使用存储蓝图定义的文件夹的名称。
+> 如果没有任何值传递到 `Import-AzBlueprintWithArtifact` cmdlet 的**Name**参数，将使用存储蓝图定义的文件夹的名称。
 
-除了蓝图定义外，还必须命名`blueprint.json`蓝图定义的项目。 每个项目都必须位于名为`artifacts`的子文件夹中。
+除了蓝图定义（必须命名为 `blueprint.json`），都是蓝图定义所构成的项目。 每个项目都必须位于名为 `artifacts` 的子文件夹中。
 将蓝图定义的结构组合起来，因为文件夹中的 JSON 文件应如下所示：
 
 ```text
@@ -64,16 +63,16 @@ ms.locfileid: "70243173"
 
 导出蓝图定义的步骤非常简单。 导出蓝图定义对于共享、备份或置于源代码管理中非常有用。
 
-- **蓝图**请求
+- **蓝图**[必需]
   - 指定蓝图定义
-  - 用于`Get-AzBlueprint`获取 reference 对象
-- **OutputPath**请求
+  - 使用 `Get-AzBlueprint` 获取 reference 对象
+- **OutputPath** [必需]
   - 指定用于保存蓝图定义 JSON 文件的路径
   - 输出文件位于具有蓝图定义名称的子文件夹中
-- **版本**可有可无
+- **版本**（可选）
   - 如果**蓝图**引用对象包含对多个版本的引用，则指定要输出的版本。
 
-1. 获取对蓝图定义的引用以从表示为`{subId}`的订阅导出：
+1. 获取对蓝图定义的引用以从表示为 `{subId}` 的订阅导出：
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -82,7 +81,7 @@ ms.locfileid: "70243173"
    $bpDefinition = Get-AzBlueprint -SubscriptionId '{subId}' -Name 'MyBlueprint' -Version '1.1'
    ```
 
-1. `Export-AzBlueprintWithArtifact`使用 cmdlet 导出指定的蓝图定义：
+1. 使用 @no__t cmdlet 导出指定的蓝图定义：
 
    ```azurepowershell-interactive
    Export-AzBlueprintWithArtifact -Blueprint $bpDefinition -OutputPath 'C:\Blueprints'
@@ -94,19 +93,19 @@ ms.locfileid: "70243173"
 
 有关内置蓝图定义的示例，请参阅[Azure 蓝图 GitHub](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins)存储库。
 
-- **名称**请求
+- **名称**[必需]
   - 指定新蓝图定义的名称
-- **InputPath**请求
+- **InputPath** [必需]
   - 指定从其创建蓝图定义的路径
   - 必须与[所需的文件夹结构](#folder-structure-of-a-blueprint-definition)相匹配
-- **ManagementGroupId**可有可无
+- **ManagementGroupId** （可选）
   - 在当前上下文默认情况下，用于保存蓝图定义的管理组 ID
   - 必须指定**ManagementGroupId**或**SubscriptionId**
-- **SubscriptionId**可有可无
+- **SubscriptionId** （可选）
   - 如果不是当前上下文默认值，则为将蓝图定义保存到的订阅 ID
   - 必须指定**ManagementGroupId**或**SubscriptionId**
 
-1. `Import-AzBlueprintWithArtifact`使用 cmdlet 导入指定的蓝图定义：
+1. 使用 @no__t cmdlet 导入指定的蓝图定义：
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
