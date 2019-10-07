@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: c9ae01b3a8f49b210c363fea20bc3c221d9e837a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 83f10eb9dadfda5b87f1da287718f59da17c5110
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839631"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947601"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -51,14 +51,22 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 >API 权限是 Windows 虚拟桌面，Log Analytics 和 Microsoft Graph API 权限添加到 Azure Active Directory 应用程序。
 
 1. 以管理员身份打开 PowerShell。
-2. 请参阅[RDS 模板 GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)存储库，并在 PowerShell 中运行**Create AD 应用注册 for Diagnostics**脚本。
-3.  当脚本要求你为应用命名时，请输入唯一的应用名称。
-4.  然后，该脚本会要求使用管理帐户登录。 输入具有[委派的管理员访问权限](delegated-access-virtual-desktop.md)的用户的凭据。 管理员应具有 RDS 所有者或参与者权限。
+2. 使用对要用于诊断工具的 Azure 订阅拥有 "所有者" 或 "参与者" 权限的帐户登录到 Azure：
+   ```powershell
+   Login-AzAccount
+   ```
+3. 用同一帐户登录到 Azure AD：
+   ```powershell
+   Connect-AzureAD
+   ```
+4. 请参阅[RDS 模板 GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)存储库，并在 PowerShell 中运行**CreateADAppRegistrationforDiagnostics**脚本。
+5.  当脚本要求你为应用命名时，请输入唯一的应用名称。
+
 
 脚本成功运行后，它应在输出中显示以下内容：
 
 -  确认你的应用程序的消息现在有一个服务主体角色分配。
--  部署诊断工具时需要用于的打印客户端 ID 和客户端密钥。
+-  部署诊断工具时需要的客户端 ID 和客户端密钥。
 
 现在，已注册了应用，接下来可以配置 Log Analytics 工作区。
 
@@ -76,7 +84,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 运行 PowerShell 脚本：
 
 1.  以管理员身份打开 PowerShell。
-2.  请参阅[RDS 模板 GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)存储库，并在 PowerShell 中运行**Create LogAnalyticsWorkspace for Diagnostics**脚本。
+2.  请参阅[RDS 模板 GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)存储库，并在 PowerShell 中运行**CreateLogAnalyticsWorkspaceforDiagnostics**脚本。
 3. 输入以下参数值：
 
     - 对于**ResourceGroupName**，输入资源组的名称。

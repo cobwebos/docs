@@ -241,6 +241,8 @@
           items:
             - name: 排查用户预配问题
               href: application-provisioning-config-problem.md
+            - name: 隔离状态
+              href: application-provisioning-quarantine-status.md
             - name: “预配”日志
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
             - name: 同步属性以进行映射 - 库应用
@@ -357,6 +359,8 @@
           href: provisioning-agent-release-version-history.md
     - name: 本地应用的应用程序代理
       items:
+        - name: 应用程序代理常见问题解答
+          href: application-proxy-faq.md
         - name: 应用程序代理版本历史记录
           href: application-proxy-release-version-history.md
 - name: 资源

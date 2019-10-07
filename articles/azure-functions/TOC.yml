@@ -82,6 +82,8 @@
       href: functions-deployment-technologies.md
     - name: 事件和消息传送
       items:
+        - name: 可靠的事件处理
+          href: functions-reliable-event-processing.md
         - name: 设计完全相同的输入
           href: functions-idempotent.md
     - name: 触发器和绑定

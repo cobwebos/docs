@@ -198,6 +198,14 @@
           href: compute-benchmark-scores.md
         - name: vCPU 配额
           href: quotas.md
+        - name: 预留实例
+          items:
+            - name: 为 VM 预付
+              href: prepay-reserved-vm-instances.md
+            - name: 什么是 Azure 预留？
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: VM 实例大小灵活性
+              href: reserved-vm-instance-size-flexibility.md
     - name: 专用主机
       href: dedicated-hosts.md
     - name: 维护和更新
@@ -359,14 +367,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: 创建日志警报
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: 管理成本
-      items:
-        - name: 为 VM 预付费 - Azure 预留项
-          href: prepay-reserved-vm-instances.md
-        - name: 什么是 Azure 预留？
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: VM 实例大小灵活性
-          href: reserved-vm-instance-size-flexibility.md
     - name: 使用映像
       items:
         - name: 共享映像
@@ -422,8 +422,6 @@
         - name: 创建邻近放置组
           href: proximity-placement-groups.md
         - name: 纵向缩放
-          href: vertical-scaling-automation.md
-        - name: 在可用性区域中创建 VM
           items:
             - name: PowerShell
               href: create-powershell-availability-zone.md

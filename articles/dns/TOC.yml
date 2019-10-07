@@ -39,10 +39,6 @@
           href: tutorial-alias-pip.md
         - name: 区域记录的别名记录
           href: tutorial-alias-rr.md
-- name: 示例
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
 - name: 概念
   items:
     - name: 公共 DNS
@@ -63,10 +59,18 @@
           href: ../networking/disaster-recovery-dns-traffic-manager.md
     - name: 专用 DNS
       items:
-        - name: 常见问题解答 - 专用 DNS
-          href: dns-faq-private.md
+        - name: 专用 DNS 区域
+          href: private-dns-privatednszone.md
+        - name: 虚拟网络链接
+          href: private-dns-virtual-network-links.md
+        - name: 自动注册
+          href: private-dns-autoregistration.md
         - name: 专用 DNS 方案
           href: private-dns-scenarios.md
+        - name: 在虚拟网络中进行 DNS 解析
+          href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
+        - name: 常见问题解答
+          href: dns-faq-private.md
 - name: 如何
   items:
     - name: 公共 DNS
@@ -119,6 +123,8 @@
       items:
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=dns'
+        - name: CLI 示例
+          href: cli-samples.md
         - name: Azure PowerShell
           href: /powershell/module/az.dns
         - name: Azure CLI
@@ -149,6 +155,8 @@
           href: /rest/api/dns/privatedns/privatezones
 - name: 相关内容
   items:
+    - name: 专用链接
+      href: ../private-link/private-link-overview.md
     - name: 应用程序网关
       href: /azure/application-gateway/
     - name: 虚拟网络
