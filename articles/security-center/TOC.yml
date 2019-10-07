@@ -113,7 +113,7 @@
           href: security-center-identity-access.md
     - name: 应用云防御措施
       items:
-        - name: 管理恰时访问
+        - name: 管理实时访问
           href: security-center-just-in-time.md
         - name: 自适应应用程序控制
           href: security-center-adaptive-application.md
@@ -147,6 +147,8 @@
   items:
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: 发行说明
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 功能和 API 停用（2019 年 7 月）
       href: security-center-features-retirement-july2019.md
     - name: 终结点保护评估和建议
