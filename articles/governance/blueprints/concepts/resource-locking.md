@@ -6,17 +6,16 @@ ms.author: dacoulte
 ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 8d3cee73d8614c4aea2d2883cdcf2f049b1b8f67
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5c62fdb698dddf293d339904fd0c854052d636eb
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232949"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981048"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
-仅当存在一个可以维护该一致性的机制时，大规模创建一致的环境才会真正有价值。 本文介绍 Azure 蓝图中的资源锁定的工作原理。 若要查看资源锁定的示例以及_拒绝分配_的应用, 请参阅[保护新资源](../tutorials/protect-new-resources.md)教程。
+仅当存在一个可以维护该一致性的机制时，大规模创建一致的环境才会真正有价值。 本文介绍 Azure 蓝图中的资源锁定的工作原理。 若要查看资源锁定的示例以及_拒绝分配_的应用，请参阅[保护新资源](../tutorials/protect-new-resources.md)教程。
 
 ## <a name="locking-modes-and-states"></a>锁定模式和状态
 
@@ -53,20 +52,20 @@ ms.locfileid: "70232949"
 
 ![蓝图拒绝对资源组的分配](../media/resource-locking/blueprint-deny-assignment.png)
 
-每个模式的[拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)如下所示:
+每个模式的[拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)如下所示：
 
 |模式 |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|只读 |**\*** |**\*/read** |SystemDefined (Everyone) |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
-|请勿删除 |**\*/delete** | |SystemDefined (Everyone) |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
+|只读 |**\*** |**\*/读取** |SystemDefined （Everyone） |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
+|请勿删除 |**\*/delete** | |SystemDefined （Everyone） |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
 
 > [!IMPORTANT]
 > Azure 资源管理器可以将角色分配详细信息缓存最多 30 分钟。 因此，蓝图资源上的拒绝分配拒绝操作可能不会立即完全生效。 在此时间段内，可能无法删除将由蓝图锁保护的资源。
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>从拒绝分配中排除主体
 
-在某些设计或安全方案中, 可能需要将主体从蓝图分配创建的[拒绝分配](../../../role-based-access-control/deny-assignments.md)中排除。 这是在 REST API 中完成的, 方法是在[创建分配](/rest/api/blueprints/assignments/createorupdate)时, 将最多五个值添加到 "**锁定**" 属性中的**excludedPrincipals**数组。
-下面是包含**excludedPrincipals**的请求正文示例:
+在某些设计或安全方案中，可能需要将主体从蓝图分配创建的[拒绝分配](../../../role-based-access-control/deny-assignments.md)中排除。 这是在 REST API 中完成的，方法是在[创建分配](/rest/api/blueprints/assignments/createorupdate)时，将最多五个值添加到 "**锁定**" 属性中的**excludedPrincipals**数组。
+下面是包含**excludedPrincipals**的请求正文示例：
 
 ```json
 {

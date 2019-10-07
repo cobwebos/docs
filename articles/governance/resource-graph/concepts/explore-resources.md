@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: e6a43db764a3dbc001e132ef5e321f20aa36041f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241128"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981276"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 浏览 Azure 资源
 
@@ -107,7 +106,7 @@ JSON 结果的结构类似于下面的示例：
 ]
 ```
 
-属性告诉我们有关虚拟机资源本身的其他信息，这些信息来自 SKU、OS、磁盘、标记以及其所属的资源组和订阅。
+属性告诉我们有关虚拟机资源本身的其他信息，包括 SKU、OS、磁盘、标记以及它所属的资源组和订阅信息。
 
 ### <a name="virtual-machines-by-location"></a>按位置列出的虚拟机
 

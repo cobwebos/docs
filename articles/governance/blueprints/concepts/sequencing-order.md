@@ -1,22 +1,21 @@
 ---
 title: 了解部署排序顺序
-description: 了解蓝图定义经历的生命周期, 以及有关每个阶段的详细信息。
+description: 了解蓝图定义经历的生命周期，以及有关每个阶段的详细信息。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 05cc12f5416cbbbff470b40c870f41647ef37cd5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: bda7a6caea931a993a6ddd6731688792bf0b3948
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231922"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981013"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
-在处理蓝图定义的分配时, Azure 蓝图使用**排序顺序**来确定创建资源的顺序。 本文解释了以下概念：
+在处理蓝图定义的分配时，Azure 蓝图使用**排序顺序**来确定创建资源的顺序。 本文解释了以下概念：
 
 - 使用的默认序列化顺序
 - 如何自定义顺序
@@ -28,7 +27,7 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 ## <a name="default-sequencing-order"></a>默认排序顺序
 
-如果蓝图定义为部署项目的顺序不包含指令, 或者指令为 null, 则使用以下顺序:
+如果蓝图定义为部署项目的顺序不包含指令，或者指令为 null，则使用以下顺序：
 
 - 订阅级别“角色分配”项目按项目名称排序
 - 订阅级别“策略分配”项目按项目名称排序
@@ -42,21 +41,21 @@ JSON 示例中的有些变量需要用自己的值替换：
 - 资源组子“Azure 资源管理器模板”项目按项目名称排序
 
 > [!NOTE]
-> 使用[伪像 ()](../reference/blueprint-functions.md#artifacts)可对所引用的项目创建隐式依赖项。
+> 使用[伪像（）](../reference/blueprint-functions.md#artifacts)可对所引用的项目创建隐式依赖项。
 
 ## <a name="customizing-the-sequencing-order"></a>自定义排序顺序
 
-编写大型蓝图定义时, 可能需要按特定顺序创建资源。 此方案的最常见使用模式是蓝图定义包含多个 Azure 资源管理器模板。 蓝图通过允许定义排序顺序来处理此模式。
+编写大型蓝图定义时，可能需要按特定顺序创建资源。 此方案的最常见使用模式是蓝图定义包含多个 Azure 资源管理器模板。 蓝图通过允许定义排序顺序来处理此模式。
 
 排序是通过在 JSON 中定义 `dependsOn` 属性来实现的。 资源组和项目对象的蓝图定义支持此属性。 `dependsOn` 是在创建特定项目之前需要创建的项目名称的字符串数组。
 
 > [!NOTE]
-> 创建蓝图对象时, 如果使用[REST API](/rest/api/blueprints/artifacts/createorupdate), 则每个项目资源都将从文件名中获取其名称 (如果使用[POWERSHELL](/powershell/module/az.blueprint/new-azblueprintartifact)) 或 URL 端点。
+> 创建蓝图对象时，如果使用[REST API](/rest/api/blueprints/artifacts/createorupdate)，则每个项目资源都将从文件名中获取其名称（如果使用[POWERSHELL](/powershell/module/az.blueprint/new-azblueprintartifact)）或 URL 端点。
 > 项目中的 ResourceGroup 引用必须与蓝图定义中定义的_资源_组引用匹配。
 
 ### <a name="example---ordered-resource-group"></a>示例-有序资源组
 
-此示例蓝图定义具有一个资源组, 该资源组通过声明的值`dependsOn`以及标准资源组定义了自定义的排序顺序。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理。
+此示例蓝图定义具有一个资源组，该资源组定义了一个自定义的排序顺序，方法是将一个值指定为 `dependsOn` 以及标准资源组。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理。
 standard-rg 将按默认排序顺序进行处理。
 
 ```json
@@ -105,7 +104,7 @@ standard-rg 将按默认排序顺序进行处理。
 
 ### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>示例-根据资源组的订阅级别模板项目
 
-此示例适用于在订阅级别部署的资源管理器模板, 以依赖于资源组。 默认排序中, 将在这些资源组中的任何资源组和子项目之前创建订阅级别项目。 资源组在蓝图定义中定义, 如下所示:
+此示例适用于在订阅级别部署的资源管理器模板，以依赖于资源组。 默认排序中，将在这些资源组中的任何资源组和子项目之前创建订阅级别项目。 资源组在蓝图定义中定义，如下所示：
 
 ```json
 "resourceGroups": {
@@ -117,7 +116,7 @@ standard-rg 将按默认排序顺序进行处理。
 }
 ```
 
-根据 "**等待我**" 资源组的定义, 订阅级别模板项目的定义如下所示:
+根据 "**等待我**" 资源组的定义，订阅级别模板项目的定义如下所示：
 
 ```json
 {

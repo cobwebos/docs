@@ -6,21 +6,18 @@ ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: a01cee2ba803a048e426507b57b96d0833743636
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 5326e765701a42323ea62df8d35128c4117b2ed9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181374"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981421"
 ---
-# <a name="azure-policy-assignment-structure"></a>Azure 策略分配结构
+# <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
 策略分配由 Azure 策略用于定义在策略或计划中分配的资源。 在分配时，策略分配可以确定该组资源的参数值，这样就可以重复使用策略定义来处理相同的资源属性，同时满足不同的遵从性需求。
 
-可以在此处找到 Azure Policy 使用的架构：[https://docs.microsoft.com/azure/templates/microsoft.authorization/2019-01-01/policyassignments](/azure/templates/microsoft.authorization/2019-01-01/policyassignments)
-
-使用 JSON 创建策略分配。 策略定义包含以下项的元素：
+使用 JSON 创建策略分配。 策略分配包含的元素：
 
 - 显示名称
 - description
@@ -76,7 +73,7 @@ ms.locfileid: "71181374"
 ## <a name="policy-definition-id"></a>策略定义 ID
 
 此字段必须是策略定义或计划定义的完整路径名称。
-`policyDefinitionId`是字符串，而不是数组。 如果经常将多个策略分配到一起，则建议使用[方案](./definition-structure.md#initiatives)。
+@no__t 为字符串而不是数组。 如果经常将多个策略分配到一起，则建议使用[方案](./definition-structure.md#initiatives)。
 
 ## <a name="parameters"></a>Parameters
 
@@ -94,7 +91,7 @@ ms.locfileid: "71181374"
 }
 ```
 
-在此示例中，策略定义中先前定义的参数是`prefix`和`suffix`。 此特定策略分配将`prefix`设置为 DeptA `suffix`和**LC**。 同一策略定义可与不同部门的不同参数集一起使用，从而减少策略定义的重复和复杂性，同时提供灵活性。
+在此示例中，策略定义中先前定义的参数 `prefix` 并 `suffix`。 此特定策略分配将 `prefix` 设置为**DeptA** ，并 `suffix` 到 **-LC**。 同一策略定义可与不同部门的不同参数集一起使用，从而减少策略定义的重复和复杂性，同时提供灵活性。
 
 ## <a name="next-steps"></a>后续步骤
 

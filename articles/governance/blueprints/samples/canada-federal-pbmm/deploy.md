@@ -7,13 +7,12 @@ ms.author: dacoulte
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: b5cf0cf5dc8a0964d981c5537b6fa41f1c6c2058
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 2e810c810fd2c143f3d3e43a6ff1df87a150fa3b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968492"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981650"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>部署加拿大联邦 PBMM 蓝图示例
 
@@ -47,7 +46,7 @@ ms.locfileid: "70968492"
 
 ## <a name="publish-the-sample-copy"></a>发布示例副本
 
-现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其**发布**，然后才能分配和部署它。 可以根据您的环境和需要自定义蓝图示例的副本, 但这种修改可能会远离标准版本。
+现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其**发布**，然后才能分配和部署它。 可以根据您的环境和需要自定义蓝图示例的副本，但这种修改可能会远离标准版本。
 
 1. 选择“所有服务”，然后在左窗格中搜索并选择“策略”。 在“策略”页上选择“蓝图”。
 
@@ -98,10 +97,10 @@ ms.locfileid: "70968492"
 
 项目名称|项目类型|参数名称|描述|
 |-|-|-|-|
-|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |Linux VM 的 Log Analytics 工作区 |有关详细信息, 请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
-|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Linux OS 添加到范围的 VM 映像列表 |空数组可用于指示没有可选参数：`[]` |
-|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Windows OS 添加到范围的 VM 映像列表 |空数组可用于指示没有可选参数：`[]` |
-|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |Windows VM 的 Log Analytics 工作区 |有关详细信息, 请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |Linux VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Linux OS 添加到范围的 VM 映像列表 |空数组可用于指示没有可选参数： `[]` |
+|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Windows OS 添加到范围的 VM 映像列表 |空数组可用于指示没有可选参数： `[]` |
+|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |Windows VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
 |\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应为 VM 配置的 Log Analytics 工作区 ID |这是应为 VM 配置的 Log Analytics 工作区的 ID (GUID)。 |
 |\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应启用诊断日志的资源类型列表 |如果未启用诊断日志设置，则为要审核的资源类型的列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中提供了可接受的值。 |
 |\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |Administrators 组 |组. 示例： `Administrator; myUser1; myUser2` |

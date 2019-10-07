@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: d9aadc477c3f39cfbb108d2f3eece0c9e0b06264
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: ff50619d7b3d5bc803e8ee8d9e4cbf4389a4191f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239143"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978090"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -90,10 +89,10 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 | 资源状态 | 效果 | 策略评估 | 符合性状态 |
 | --- | --- | --- | --- |
-| 存在 | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 不符合 |
-| 存在 | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 合规 |
-| 新 | Audit、AuditIfNotExist\* | True | 不符合 |
-| 新 | Audit、AuditIfNotExist\* | False | 合规 |
+| 存在 | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | 真 | 不符合 |
+| 存在 | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | 假 | 符合 |
+| 新建 | Audit、AuditIfNotExist\* | 真 | 不符合 |
+| 新建 | Audit、AuditIfNotExist\* | 假 | 符合 |
 
 \*Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。
 这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
@@ -324,7 +323,7 @@ PolicyAssignments     : {/subscriptions/{subscriptionId}/resourcegroups/RG-Tags/
                         oft.authorization/policyassignments/37ce239ae4304622914f0c77}
 ```
 
-例如：获取最近评估的资源的状态记录（默认按时间戳的降序排序）。
+示例：获取最近评估的资源的状态记录（默认按时间戳的降序排序）。
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyState -Top 1
@@ -413,7 +412,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-如果你具有与`AzureActivity`订阅相关联的[Activity Log Analytics 解决方案](../../../azure-monitor/platform/activity-log-collect.md)的`AzureActivity` [Log Analytics 工作区](../../../log-analytics/log-analytics-overview.md)，则还可以使用简单的 Kusto 查询和数据表. 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
+如果你的[Log Analytics 工作区](../../../log-analytics/log-analytics-overview.md)与你的订阅关联的[Activity Log Analytics 解决方案](../../../azure-monitor/platform/activity-log-collect.md)中 `AzureActivity`，则还可以使用简单的 Kusto 查询和 @no__t 表从评估周期查看不符合性结果。 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
 
 
 ![使用 Azure Monitor 日志的 Azure 策略符合性](../media/getting-compliance-data/compliance-loganalytics.png)

@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 8fd50ed571e42a1eb6673c56a61314d2adfe27f2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: fcb65e75de730178901742dc36c72776e39b044b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172466"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977974"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建来宾配置策略
 
@@ -62,9 +61,9 @@ ms.locfileid: "71172466"
 
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>来宾配置自定义资源的要求
 
-当来宾配置审核计算机时，它会首先`Test-TargetResource`运行来确定其是否处于正确的状态。 函数返回的布尔值确定来宾分配的 Azure 资源管理器状态是否应符合或不符合。 如果布尔值`$false`适用于配置中的任何资源，则该提供程序将`Get-TargetResource`运行。 如果不调用布尔`$true`值`Get-TargetResource` ，则为。
+当来宾配置审核计算机时，它会首先运行 `Test-TargetResource` 来确定其是否处于正确的状态。 函数返回的布尔值确定来宾分配的 Azure 资源管理器状态是否应符合或不符合。 如果配置中的任何资源的布尔值都为 `$false`，则提供程序将运行 `Get-TargetResource`。 如果布尔值为 `$true`，则不会调用 `Get-TargetResource`。
 
-对于 Windows `Get-TargetResource` Desired State configuration，此函数对来宾配置有特殊要求。
+函数 `Get-TargetResource` 对来宾配置有特殊的要求，这些要求对于 Windows Desired 状态配置没有必要。
 
 - 返回的哈希表必须包含**一个名为的属性**。
 - 原因属性必须是数组。
@@ -75,9 +74,9 @@ ms.locfileid: "71172466"
 服务需要属性**代码**和**短语**。 创作自定义资源时，请设置要显示的文本（通常为 stdout），因为该资源不符合**短语**的值。 **代码**具有特定的格式要求，因此报表可以清楚地显示用于执行审核的资源的相关信息。 此解决方案使来宾配置可扩展。 只要可以捕获输出并将其作为**短语**属性的字符串值返回，就可以运行任何命令来审核计算机。
 
 - **代码**（字符串）：此资源的名称，重复，然后不包含空格作为原因标识符的短名称。 这三个值应以冒号分隔，不含空格。
-  - 例如，`registry:registry:keynotpresent`
+  - 示例 `registry:registry:keynotpresent`
 - **短语**（字符串）：可读文本，用于说明设置不符合的原因。
-  - 例如，`The registry key $key is not present on the machine.`
+  - 示例 `The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -96,9 +95,9 @@ return @{
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux 上的自定义来宾配置配置
 
-适用于 Linux 上的来宾配置的 DSC 配置`ChefInSpecResource`使用资源为引擎提供[Chef InSpec](https://www.chef.io/inspec/)定义的名称。 **Name**为唯一必需的资源属性。
+适用于 Linux 上的来宾配置的 DSC 配置使用 @no__t 资源为引擎提供[Chef InSpec](https://www.chef.io/inspec/)定义的名称。 **Name**为唯一必需的资源属性。
 
-以下示例创建名为 "**基线**" 的配置，导入**GuestConfiguration**资源模块， `ChefInSpecResource`并使用资源将 InSpec 定义的名称设置为 " **linux-修补程序-基线**"：
+以下示例创建名为 "**基线**" 的配置，导入**GuestConfiguration**资源模块，并使用 `ChefInSpecResource` 资源将 InSpec 定义的名称设置为 " **linux-修补程序-基线**"：
 
 ```azurepowershell-interactive
 # Define the DSC configuration and import GuestConfiguration
@@ -122,7 +121,7 @@ baseline
 
 仅来宾配置代理使用 Azure 策略来宾配置的 DSC 配置，而不会与 Windows PowerShell Desired State Configuration 冲突。
 
-以下示例创建名为**AuditBitLocker**的配置，导入**GuestConfiguration**资源模块，并使用该`Service`资源审核正在运行的服务：
+以下示例创建名为**AuditBitLocker**的配置，导入**GuestConfiguration**资源模块，并使用 `Service` 资源来审核正在运行的服务：
 
 ```azurepowershell-interactive
 # Define the DSC configuration and import GuestConfiguration
@@ -155,14 +154,14 @@ MOF 编译完成后，必须将支持文件打包在一起。 来宾配置使用
   - Linux具有 Chef InSpec 定义和其他内容的文件夹
   - Windows未内置的 DSC 资源模块
 
-Cmdlet `New-GuestConfigurationPackage`将创建包。 以下格式用于创建自定义包：
+@No__t cmdlet 将创建包。 以下格式用于创建自定义包：
 
 ```azurepowershell-interactive
 New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}' `
     -Path '{OutputFolder}' -Verbose
 ```
 
-`New-GuestConfigurationPackage` Cmdlet 的参数：
+@No__t cmdlet 的参数：
 
 - **名称**：来宾配置包名称。
 - **配置**：已编译的 DSC 配置文档完整路径。
@@ -191,7 +190,7 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 
 1. 最后，在自定义资源中使用上面生成的客户端 ID 通过计算机上提供的令牌访问 Key Vault。
 
-   可以`client_id`将 Key Vault 实例的和 url 作为[属性](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema)传递给资源，这样就不需要为多个环境更新资源，也不需要更改这些值。
+   可以将 `client_id` 和 Key Vault 实例的 url 作为[属性](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema)传递到资源，以便无需为多个环境更新资源，或者需要更改这些值。
 
 下面的代码示例可在自定义资源中使用，以使用用户分配的标识从 Key Vault 检索机密。 从请求返回到 Key Vault 的值为纯文本。 最佳做法是将其存储在 credential 对象中。
 
@@ -209,19 +208,19 @@ $credential = New-Object System.Management.Automation.PSCredential('secret',$val
 
 ## <a name="test-a-guest-configuration-package"></a>测试来宾配置包
 
-创建配置包后，但在将其发布到 Azure 之前，可以从工作站或 CI/CD 环境测试包的功能。 GuestConfiguration 模块包含一个 cmdlet， `Test-GuestConfigurationPackage`该 cmdlet 在你的开发环境中加载与在 Azure 计算机中使用相同的代理。 使用此解决方案，你可以在发布到计费的测试/QA/生产环境之前，在本地执行集成测试。
+创建配置包后，但在将其发布到 Azure 之前，可以从工作站或 CI/CD 环境测试包的功能。 GuestConfiguration 模块包括一个 cmdlet `Test-GuestConfigurationPackage`，它在开发环境中加载与在 Azure 计算机中使用的相同的代理。 使用此解决方案，你可以在发布到计费的测试/QA/生产环境之前，在本地执行集成测试。
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
 ```
 
-`Test-GuestConfigurationPackage` Cmdlet 的参数：
+@No__t cmdlet 的参数：
 
 - **名称**：来宾配置策略名称。
 - **参数**：以哈希表格式提供的策略参数。
 - **路径**：来宾配置包的完整路径。
 
-Cmdlet 还支持来自 PowerShell 管道的输入。 通过管道将`New-GuestConfigurationPackage` cmdlet 的输出传递`Test-GuestConfigurationPackage`给 cmdlet。
+Cmdlet 还支持来自 PowerShell 管道的输入。 通过管道将 `New-GuestConfigurationPackage` cmdlet 的输出传递给 @no__t cmdlet。
 
 ```azurepowershell-interactive
 New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
@@ -231,7 +230,7 @@ New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConf
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>创建 Azure 策略定义和计划部署文件
 
-创建来宾配置自定义策略包并将其上传到计算机可访问的位置后，请创建 Azure 策略的来宾配置策略定义。 Cmdlet 采用可公开访问的来宾配置自定义策略包，并创建**auditIfNotExists**和 deployIfNotExists 策略定义。 `New-GuestConfigurationPolicy` 同时还会创建包括两个策略定义的策略计划定义。
+创建来宾配置自定义策略包并将其上传到计算机可访问的位置后，请创建 Azure 策略的来宾配置策略定义。 @No__t cmdlet 采用可公开访问的来宾配置自定义策略包，并创建**auditIfNotExists**和**deployIfNotExists**策略定义。 同时还会创建包括两个策略定义的策略计划定义。
 
 以下示例在来自 Windows 的来宾配置自定义策略包的指定路径中创建策略和计划定义，并提供名称、说明和版本：
 
@@ -246,7 +245,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-`New-GuestConfigurationPolicy` Cmdlet 的参数：
+@No__t cmdlet 的参数：
 
 - **ContentUri**：来宾配置内容包的公共 http （s） uri。
 - **DisplayName**：策略显示名称。
@@ -256,7 +255,7 @@ New-GuestConfigurationPolicy
 - **路径**：创建策略定义的目标路径。
 - **平台**：适用于来宾配置策略和内容包的目标平台（Windows/Linux）。
 
-以下文件是通过`New-GuestConfigurationPolicy`创建的：
+@No__t 创建以下文件：
 
 - **auditIfNotExists**
 - **deployIfNotExists**
@@ -270,7 +269,7 @@ Cmdlet 输出返回一个对象，该对象包含策略文件的计划显示名�
 
 来宾配置支持在运行时重写配置的属性。 此功能意味着包中 MOF 文件中的值不必被视为静态的。 覆盖值是通过 Azure 策略提供的，并且不会影响创作或编译配置的方式。
 
-Cmdlet `New-GuestConfigurationPolicy`和`Test-GuestConfigurationPolicyPackage`包含一个名为**参数**的参数。 此参数采用哈希表定义，其中包括有关每个参数的所有详细信息，并自动创建用于创建每个 Azure 策略定义的文件的所有必需部分。
+Cmdlet `New-GuestConfigurationPolicy`，`Test-GuestConfigurationPolicyPackage` 包含一个名为**Parameters**的参数。 此参数采用哈希表定义，其中包括有关每个参数的所有详细信息，并自动创建用于创建每个 Azure 策略定义的文件的所有必需部分。
 
 下面的示例将创建一个 Azure 策略用于审核服务，其中用户在策略分配时从服务列表中选择。
 
@@ -339,14 +338,14 @@ Configuration FirewalldEnabled {
 
 ## <a name="publish-to-azure-policy"></a>发布到 Azure 策略
 
-**GuestConfiguration**资源模块提供一种在 Azure 中创建策略定义和计划定义的方法，其中一步通过`Publish-GuestConfigurationPolicy` cmdlet。
-该 cmdlet 只有**Path**参数，该参数指向创建`New-GuestConfigurationPolicy`的三个 JSON 文件的位置。
+**GuestConfiguration**资源模块提供一种在 Azure 中创建策略定义和计划定义的方法，其中一个步骤通过 @no__t cmdlet 进行。
+该 cmdlet 只有**Path**参数，该参数指向 `New-GuestConfigurationPolicy` 创建的三个 JSON 文件的位置。
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy -Path '.\policyDefinitions' -Verbose
 ```
 
-`Publish-GuestConfigurationPolicy` Cmdlet 接受 PowerShell 管道中的路径。 此功能意味着您可以创建策略文件，并在一组管道命令中发布这些文件。
+@No__t cmdlet 接受 PowerShell 管道中的路径。 此功能意味着您可以创建策略文件，并在一组管道命令中发布这些文件。
 
 ```azurepowershell-interactive
 New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' -DisplayName 'Audit BitLocker service.' -Description 'Audit if the BitLocker service is not enabled on Windows machine.' -Path '.\policyDefinitions' -Platform 'Windows' -Version 1.2.3.4 -Verbose | ForEach-Object {$_.Path} | Publish-GuestConfigurationPolicy -Verbose
@@ -361,14 +360,14 @@ New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.w
 
 使用自定义内容包发布自定义 Azure 策略后，如果想要发布新版本，必须更新两个字段。
 
-- **版本**：当你运行`New-GuestConfigurationPolicy` cmdlet 时，你必须指定一个比当前发布的版本号大的版本号。 属性更新新策略文件中的来宾配置分配的版本，以便扩展识别包已更新。
-- **contentHash**：此属性由`New-GuestConfigurationPolicy` cmdlet 自动更新。 它是由`New-GuestConfigurationPackage`创建的包的哈希值。 对于发布的`.zip`文件，属性必须是正确的。 如果仅更新**contentUri**属性（例如，如果用户可以从门户手动更改策略定义），则扩展不会接受内容包。
+- **版本**：运行 @no__t cmdlet 时，必须指定一个大于当前发布的版本号。 属性更新新策略文件中的来宾配置分配的版本，以便扩展识别包已更新。
+- **contentHash**：此属性由 @no__t cmdlet 自动更新。 它是 `New-GuestConfigurationPackage` 创建的包的哈希值。 对于您发布的 @no__t 0 文件，属性必须是正确的。 如果仅更新**contentUri**属性（例如，如果用户可以从门户手动更改策略定义），则扩展不会接受内容包。
 
 发布更新包的最简单方法是重复本文中所述的过程，并提供更新的版本号。 该进程保证所有属性都已正确更新。
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>将 Windows 组策略内容转换为 Azure 策略来宾配置
 
-审核 Windows 计算机时，来宾配置是 PowerShell Desired 状态配置语法的实现。 DSC 社区已发布工具，用于将导出的组策略模板转换为 DSC 格式。 通过将此工具与上述来宾配置 cmdlet 结合使用，你可以转换 Windows 组策略内容并打包/发布它以供 Azure 策略审核。 有关使用该工具的详细信息，请参阅[文章快速入门：将组策略转换为](/powershell/dsc/quickstarts/gpo-quickstart)DSC。
+审核 Windows 计算机时，来宾配置是 PowerShell Desired 状态配置语法的实现。 DSC 社区已发布工具，用于将导出的组策略模板转换为 DSC 格式。 通过将此工具与上述来宾配置 cmdlet 结合使用，你可以转换 Windows 组策略内容并打包/发布它以供 Azure 策略审核。 有关使用该工具的详细信息，请参阅文章 [Quickstart：将组策略转换为 DSC @ no__t。
 内容转换完成后，创建包并将其发布为 Azure 策略的步骤与任何 DSC 内容相同。
 
 ## <a name="optional-signing-guest-configuration-packages"></a>可选：为来宾配置包签名
@@ -378,21 +377,21 @@ New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.w
 
 若要启用此方案，需要完成两个步骤。 运行 cmdlet 以对内容包进行签名，并将标记追加到需要对代码进行签名的计算机。
 
-若要使用签名验证功能，请运行`Protect-GuestConfigurationPackage` cmdlet 以在包发布之前对包进行签名。 此 cmdlet 需要 "代码签名" 证书。
+若要使用签名验证功能，请在发布包之前运行 @no__t cmdlet 对包进行签名。 此 cmdlet 需要 "代码签名" 证书。
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert") }
 Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Certificate $Cert -Verbose
 ```
 
-`Protect-GuestConfigurationPackage` Cmdlet 的参数：
+@No__t cmdlet 的参数：
 
 - **路径**：来宾配置包的完整路径。
 - **证书**：用于对包进行签名的代码签名证书。 仅当为 Windows 签名内容时才支持此参数。
 - **PrivateGpgKeyPath**：私有 GPG 密钥路径。 仅在为 Linux 签名内容时才支持此参数。
 - **PublicGpgKeyPath**：公共 GPG 密钥路径。 仅在为 Linux 签名内容时才支持此参数。
 
-GuestConfiguration 代理需要在 Windows 计算机上的 "受信任的根证书颁发机构" 和 Linux 计算机上的路径`/usr/local/share/ca-certificates/extra`中显示证书公钥。 要使节点验证签名内容，请在应用自定义策略之前在计算机上安装证书公钥。 可以使用 VM 内的任何方法或使用 Azure 策略来完成此过程。 [此处提供](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)了一个示例模板。
+GuestConfiguration 代理要求在 Windows 计算机上的 "受信任的根证书颁发机构" 和 Linux 计算机上的路径 `/usr/local/share/ca-certificates/extra` 中提供证书公钥。 要使节点验证签名内容，请在应用自定义策略之前在计算机上安装证书公钥。 可以使用 VM 内的任何方法或使用 Azure 策略来完成此过程。 [此处提供](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)了一个示例模板。
 Key Vault 访问策略必须允许计算资源提供程序在部署过程中访问证书。 有关详细步骤，请参阅[在 Azure 资源管理器中为虚拟机设置 Key Vault](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)。
 
 下面是从签名证书导出公钥以导入到计算机的示例。
@@ -404,7 +403,7 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 
 GitHub 上的一篇文章提供了一个用于创建用于 Linux 计算机的 GPG 密钥的好参考，其中[生成了新的 GPG 密钥](https://help.github.com/en/articles/generating-a-new-gpg-key)。
 
-发布内容后，会将名称`GuestConfigPolicyCertificateValidation`和值`enabled`的标记追加到需要进行代码签名的所有虚拟机。 可以使用 Azure 策略大规模传递此标记。 请参阅[应用标记及其默认值](../samples/apply-tag-default-value.md)示例。 完成此标记后，使用`New-GuestConfigurationPolicy` cmdlet 生成的策略定义将通过来宾配置扩展启用要求。
+发布内容后，将名为 `GuestConfigPolicyCertificateValidation` 的标记和值 `enabled` 附加到需要进行代码签名的所有虚拟机。 可以使用 Azure 策略大规模传递此标记。 请参阅[应用标记及其默认值](../samples/apply-tag-default-value.md)示例。 完成此标记后，使用 @no__t cmdlet 生成的策略定义将通过来宾配置扩展启用要求。
 
 ## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>效果来宾配置策略分配疑难解答
 

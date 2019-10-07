@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: e5697d00c2b0a869667d74e93c3ccae593bf200b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: bf1fdca5476f66249eb5b73bbcbf5913142eb0d3
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231932"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978486"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
 
@@ -28,7 +27,7 @@ ms.locfileid: "70231932"
 
 1. 从左侧页面选择“分配的蓝图”。
 
-1. 在蓝图列表中，左键单击蓝图分配。 然后单击 "**更新分配**" 按钮, 或右键单击蓝图分配, 然后选择 "**更新分配**"。
+1. 在蓝图列表中，左键单击蓝图分配。 然后单击 "**更新分配**" 按钮，或右键单击蓝图分配，然后选择 "**更新分配**"。
 
    ![更新现有蓝图分配](../media/update-existing-assignments/update-assignment.png)
 
@@ -48,7 +47,7 @@ ms.locfileid: "70231932"
 
 - 角色分配
   - 如果角色或角色代理人（用户、组或应用程序）发生更改，则创建新的角色分配。 以前部署的角色分配将会保留。
-- 策略分配数
+- 策略分配
   - 如果策略分配的参数已发生更改，则更新现有分配。
   - 如果策略分配的定义已发生更改，则会创建一个新的策略分配。 以前部署的策略分配将会保留。
   - 如果从蓝图中删除策略分配项目，已部署的策略分配将会保留。

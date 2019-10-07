@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6820daf34e63fd48e83c645e7509a3256bc8435b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0c8c270681794621b2a12671d4bcf350cd6cc4d8
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066997"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981117"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>在 Azure 应用服务的应用程序代码中使用 SSL 证书
 
@@ -32,7 +32,7 @@ ms.locfileid: "70066997"
 
 在上传专用证书之前，请确保[它满足所有要求](app-service-web-tutorial-custom-ssl.md#prepare-a-private-certificate)，唯一例外是不需要将它配置为进行服务器身份验证。
 
-准备好上传时, 请在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令。
+准备好上传时，请在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令。
 
 ```azurecli-interactive
 az webapp config ssl upload --name <app-name> --resource-group <resource-group-name> --certificate-file <path-to-PFX-file> --certificate-password <PFX-password> --query thumbprint
@@ -62,7 +62,7 @@ az webapp config ssl upload --name <app-name> --resource-group <resource-group-n
 
 ## <a name="make-the-certificate-accessible"></a>使证书可供访问
 
-若要在应用代码中使用已上传或已导入的证书, 请`WEBSITE_LOAD_CERTIFICATES`通过在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令, 使其指纹可通过应用设置进行访问:
+若要在应用代码中使用已上传或已导入的证书，请在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令，使其指纹可通过 `WEBSITE_LOAD_CERTIFICATES` 应用设置访问：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
@@ -71,7 +71,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 若要使所有证书可供访问，请将值设置为 `*`。
 
 > [!NOTE]
-> 此设置将指定的证书放置在[当前 User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)存储中的大多数定价层, 但在**隔离**层中 (即应用在[应用服务环境](environment/intro.md)中运行), 将证书放入[本地 Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)店.
+> 此设置将[当前 User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)存储中的指定证书放入大多数定价层，但如果应用在**隔离**层上运行（即应用在[应用服务环境](environment/intro.md)中运行），则可能需要签入[本地Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)存储库。
 >
 
 ![配置应用设置](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
@@ -112,7 +112,7 @@ certStore.Close();
 
 如需从应用程序目录加载证书文件，则可首选某些方式，例如，使用 [FTPS](deploy-ftp.md) 会比使用 [Git](deploy-local-git.md) 更好。 应将专用证书之类的敏感信息置于源代码管理之外。
 
-即使是在 .NET 代码中直接加载文件，库仍会验证是否加载当前的用户配置文件。 若要加载当前用户配置文件, 请`WEBSITE_LOAD_USER_PROFILE`在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中通过以下命令设置应用设置。
+即使是在 .NET 代码中直接加载文件，库仍会验证是否加载当前的用户配置文件。 若要加载当前用户配置文件，请在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中用以下命令设置 `WEBSITE_LOAD_USER_PROFILE` 应用设置。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1

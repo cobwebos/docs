@@ -2,17 +2,16 @@
 title: Azure 管理概述 - Azure 治理
 description: Azure 应用程序和资源管理领域概述及 Azure 管理工具上内容的链接。
 author: DCtheGeek
-manager: carmonm
 ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: 958f82ef94a08adaf2bbae1ef8ceefae5db289ea
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 2535b64380f67da440698c7577840d5319e6ca4f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780802"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978548"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure 中的管理服务概述
 
@@ -40,7 +39,7 @@ Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure �
 ## <a name="govern"></a>治理
 
 “治理”提供了机制和流程来保持对 Azure 中的应用程序和资源的控制。 它涉及规划计划和设置战略优先级。
-Azure 中的治理主要是通过两个服务实现的。 [Azure Policy ](./policy/overview.md)允许你创建、分配和管理策略定义，以强制执行资源规则。 此功能可使这些资源符合企业标准。 使用[Azure 成本管理](../cost-management/overview-cost-mgt.md), 可以跟踪 azure 资源和其他云提供商的云使用情况和支出。
+Azure 中的治理主要是通过两个服务实现的。 [Azure Policy ](./policy/overview.md)允许你创建、分配和管理策略定义，以强制执行资源规则。 此功能可使这些资源符合企业标准。 使用[Azure 成本管理](../cost-management/overview-cost-mgt.md)，可以跟踪 azure 资源和其他云提供商的云使用情况和支出。
 
 ## <a name="secure"></a>安全
 

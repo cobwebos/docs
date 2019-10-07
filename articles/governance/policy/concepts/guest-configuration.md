@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 51129f89f45d65007f8a7f37df0353121ebdbdd8
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: ac8d4d2519ce918a943cfe1e93ed2c5c7afd9a47
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338387"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978055"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -34,7 +33,7 @@ ms.locfileid: "71338387"
 
 ## <a name="register-guest-configuration-resource-provider"></a>注册来宾配置资源提供程序
 
-必须注册资源提供程序，之后才能使用来宾配置。 可以通过门户或通过 PowerShell 注册。 如果来宾配置策略的分配是通过门户完成的, 则会自动注册资源提供程序。
+必须注册资源提供程序，之后才能使用来宾配置。 可以通过门户或通过 PowerShell 注册。 如果来宾配置策略的分配是通过门户完成的，则会自动注册资源提供程序。
 
 ### <a name="registration---portal"></a>注册 - 门户
 
@@ -87,7 +86,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 |Suse|SLES|12 SP3|
 
 > [!IMPORTANT]
-> 来宾配置可以审核运行受支持的操作系统的节点。 如果你想要审核使用自定义映像的虚拟机, 则需要复制**DeployIfNotExists**定义, 并修改**If**部分以包括你的映像属性。
+> 来宾配置可以审核运行受支持的操作系统的节点。 如果你想要审核使用自定义映像的虚拟机，则需要复制**DeployIfNotExists**定义，并修改**If**部分以包括你的映像属性。
 
 ### <a name="unsupported-client-types"></a>不支持的客户端类型
 
@@ -97,7 +96,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 要与 Azure 中的来宾配置资源提供程序通信，计算机需要对端口**443**上的 Azure 数据中心的出站访问。 如果你使用的是 Azure 中不允许出站流量的私有虚拟网络，请使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置例外。 Azure 策略来宾配置目前不存在服务标记。
 
-对于 IP 地址列表, 你可以下载[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。 只需允许对部署了 Vm 的区域中的 Ip 进行出站访问。
+对于 IP 地址列表，你可以下载[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。 只需允许对部署了 Vm 的区域中的 Ip 进行出站访问。
 
 > [!NOTE]
 > Azure 数据中心 IP 地址 XML 文件列出了 Microsoft Azure 数据中心使用的 IP 地址范围。 文件中包含计算、SQL 和存储范围。 每周都将发布更新的文件。 该文件反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 建议每周下载新的 XML 文件。 然后，更新网站以正确地标识 Azure 中运行的服务。 Azure ExpressRoute 用户应注意，此文件过去经常在每个月的第一周更新 Azure 空间的边界网关协议 (BGP) 播发。
@@ -113,7 +112,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
   - 安装 Microsoft.GuestConfiguration 扩展的最新版本
   - 安装[验证工具](#validation-tools)和依赖项（如果需要）
 
-如果**DeployIfNotExists**分配不符合, 则可以使用[补救任务](../how-to/remediate-resources.md#create-a-remediation-task)。
+如果**DeployIfNotExists**分配不符合，则可以使用[补救任务](../how-to/remediate-resources.md#create-a-remediation-task)。
 
 **DeployIfNotExists**分配符合要求后， **AuditIfNotExists**策略分配将使用本地验证工具来确定配置分配是符合还是不符合。 验证工具向来宾配置客户端提供结果。 客户端将结果转发给来宾扩展，使其可通过来宾配置资源提供程序使用。
 
@@ -122,7 +121,7 @@ Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“�
 > [!NOTE]
 > **AuditIfNotExists**策略需要**DeployIfNotExists**策略才能返回结果。 如果没有**DeployIfNotExists**，则**AuditIfNotExists**策略会将 "0 个 0" 资源显示为状态。
 
-来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：*Linux 和 Windows 计算机*内的审核密码安全设置包含18个策略。 对于 Windows 有六个 DeployIfNotExists 和 AuditIfNotExists 对，对于 Linux 有三个对。 [策略定义](definition-structure.md#policy-rule)逻辑验证是否只计算目标操作系统。
+来宾配置的所有内置策略包含在一个计划内，以对分配中使用的定义分组。 名为“[预览]：*在 Linux 和 Windows 计算机中审核密码安全设置 @ no__t-0 包含18个策略。 对于 Windows 有六个 DeployIfNotExists 和 AuditIfNotExists 对，对于 Linux 有三个对。 [策略定义](definition-structure.md#policy-rule)逻辑验证是否只计算目标操作系统。
 
 ### <a name="multiple-assignments"></a>多个分配
 
@@ -135,17 +134,17 @@ Azure Policy 使用来宾配置资源提供程序 complianceStatus 属性在“�
 
 ## <a name="client-log-files"></a>客户端日志文件
 
-来宾配置扩展将日志文件写入以下位置:
+来宾配置扩展将日志文件写入以下位置：
 
 Windows：`C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
 
 Linux：`/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
-其中`<version>`指的是当前版本号。
+其中 `<version>` 指的是当前版本号。
 
 ### <a name="collecting-logs-remotely"></a>远程收集日志
 
-对来宾配置配置或模块进行故障排除的第一步应该是`Test-GuestConfigurationPackage`按照[测试来宾配置包](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)中的步骤使用 cmdlet。
+对来宾配置配置或模块进行故障排除的第一步应该是按照[测试来宾配置包](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)中的步骤使用 @no__t 的 cmdlet。
 如果未成功，则收集客户端日志有助于诊断问题。
 
 #### <a name="windows"></a>Windows
@@ -172,7 +171,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="guest-configuration-samples"></a>来宾配置示例
 
-策略来宾配置的示例可在以下位置找到:
+策略来宾配置的示例可在以下位置找到：
 
 - [示例索引-来宾配置](../samples/index.md#guest-configuration)
 - [Azure 策略示例 GitHub 存储库](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)

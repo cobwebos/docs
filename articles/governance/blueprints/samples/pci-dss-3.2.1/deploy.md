@@ -7,13 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 430cf7cde22cc8de337d33e1f083121503d084f5
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: f95f9a592085fd93fba5e6b11a1a75609eb70295
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802344"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980928"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>部署 PCI-X 3.2.1 蓝图蓝图示例
 
@@ -98,7 +97,7 @@ ms.locfileid: "70802344"
 
 |项目名称|项目类型|参数名称|描述|
 |-|-|-|-|
-|\[预览版\] audit pci-x 3.2.1：2018控制和部署特定 VM 扩展以支持审核要求|策略分配|资源类型列表 | 所选资源类型的审核诊断设置。 默认值为 "所有资源"| 
+|\[Preview @ no__t-1 Audit PCI v2.0 3.2.1：2018控制和部署特定 VM 扩展以支持审核要求|策略分配|资源类型列表 | 所选资源类型的审核诊断设置。 默认值为 "所有资源"| 
 |允许的位置|策略分配|允许的位置列表|允许部署到其中的任何资源的数据中心位置的列表。 此列表可在全球范围内自定义到所需的 Azure 位置。 选择要允许的位置。| 
 |允许的资源组位置|策略分配 |允许的位置 |此策略使你能够限制你的组织可在中创建资源组的位置。 用于强制执行异地符合性要求。| 
 |在 SQL Server 上部署审核|策略分配|保留天数|数据保留，单位为天。 默认值为180，但 PCI 需要365。| 
@@ -109,8 +108,8 @@ ms.locfileid: "70802344"
 现在，你已经查看了用于部署 PCI-X 3.2.1 蓝图蓝图示例的步骤，接下来请访问以下文章来了解概述和控件映射：
 
 > [!div class="nextstepaction"]
-> [Pci-dss v2.0 3.2.1 蓝图-概述](./index.md)
-> [PCI-dss v2.0 蓝图-控件映射](./control-mapping.md)
+> [PCI-dss v2.0 3.2.1 蓝图-概述](./index.md)
+> [PCI-DSS V1.0 蓝图-控件映射](./control-mapping.md)
 
 有关蓝图和如何使用这些蓝图的更多文章：
 

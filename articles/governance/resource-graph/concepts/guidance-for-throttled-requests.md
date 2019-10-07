@@ -1,51 +1,50 @@
 ---
-title: 限制的请求的指南
-description: 了解如何创建更好的查询，以避免对 Azure 资源 Graph 的请求，从受限制。
+title: 针对受限制请求的指南
+description: 了解如何创建更好的查询，以避免对 Azure Resource Graph 发出的请求受到限制。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/19/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: c644d230846d9c644c3845348431eef36c8279c8
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 85d68beb27ab27a2ada9acbf9482d35dec438c06
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276894"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980297"
 ---
-# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>限制的请求数在 Azure 资源图表中的指南
+# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>有关 Azure Resource Graph 中受限请求的指南
 
-在创建时以编程方式和频繁使用的 Azure 资源的图形数据，应考虑如何限制影响的查询的结果。 请求更改数据的方式，可帮助你和你的组织避免被限制和维护的有关 Azure 资源的及时数据的流。
+创建编程代码和频繁使用 Azure Resource Graph 数据时，应考虑到限制对查询结果的影响。 更改请求数据的方式可能有助于你和你的组织避免受到限制，并在 Azure 资源方面保持及时的数据流。
 
-本文介绍了四个区域和与创建 Azure 资源 Graph 中查询相关的模式：
+本文介绍与在 Azure Resource Graph 中创建查询相关的四个方面和模式：
 
-- 了解限制的标头
+- 了解限制标头
 - 批处理查询
-- 交错安排查询
+- 错开查询
 - 分页的影响
 
-## <a name="understand-throttling-headers"></a>了解限制的标头
+## <a name="understand-throttling-headers"></a>了解限制标头
 
-Azure 资源图形会为基于时间窗口上每个用户分配配额数量。 例如，用户可以发送最多 15 个查询每隔 5 秒时间范围内不受限制的情况下。 配额值由许多因素，并且可能会发生更改。
+Azure Resource Graph 根据时间范围为每个用户分配配额数。 例如，某个用户可以每隔 5 秒最多发送 15 个查询，而不会受到限制。 配额值由多种因素决定，并可能会发生更改。
 
-在每个查询的响应，Azure 资源图形添加两个限制的标头：
+在每个查询响应中，Azure Resource Graph 会添加两个限制标头：
 
 - `x-ms-user-quota-remaining` (int)：用户的剩余资源配额。 此值映射到查询计数。
-- `x-ms-user-quota-resets-after` (hh:mm:ss)：时间之前的持续时间重置用户的配额使用情况。
+- `x-ms-user-quota-resets-after` (hh:mm:ss)：在用户的配额消耗量重置之前的持续时间。
 
-为了说明标头的工作原理，让我们看看将标头和值的查询响应`x-ms-user-quota-remaining: 10`和`x-ms-user-quota-resets-after: 00:00:03`。
+为了演示标头的工作原理，让我们看看一个包含标头以及值 `x-ms-user-quota-remaining: 10` 和 `x-ms-user-quota-resets-after: 00:00:03` 的查询响应。
 
-- 在下一步的 3 秒内，最多 10 个查询可能不受限制的情况下提交。
-- 在 3 秒、 的值`x-ms-user-quota-remaining`并`x-ms-user-quota-resets-after`将重置为`15`和`00:00:05`分别。
+- 在接下来的 3 秒内，最多可以提交 10 个查询，这不会受到限制。
+- 3 秒后，`x-ms-user-quota-remaining` 和 `x-ms-user-quota-resets-after` 的值将分别重置为 `15` 和 `00:00:05`。
 
-若要使用到的标头的示例，请参阅_退避算法_查询请求，请参阅中的示例[并行查询](#query-in-parallel)。
+有关演示如何使用标头回退查询请求的示例，请参阅[并行查询](#query-in-parallel)中的示例。
 
 ## <a name="batching-queries"></a>批处理查询
 
-批处理按订阅、 资源组或单个资源的查询是对查询进行并行化比效率更高。 更大的配额开销通常是查询的小于许多小型和目标查询的配额成本。 建议的批大小为少于_300_。
+按订阅、资源组或单个资源批处理查询比并行化查询更为有效。 较大查询的配额成本通常小于众多有针对性的小型查询的配额成本。 建议使用小于 _300_ 的批大小。
 
-- 优化不良的方法的示例
+- 优化不当的方法示例
 
   ```csharp
   // NOT RECOMMENDED
@@ -66,7 +65,7 @@ Azure 资源图形会为基于时间窗口上每个用户分配配额数量。 �
   }
   ```
 
-- 示例 #1 的优化的批处理方法
+- 优化的批处理方法示例 #1
 
   ```csharp
   // RECOMMENDED
@@ -89,7 +88,7 @@ Azure 资源图形会为基于时间窗口上每个用户分配配额数量。 �
   }
   ```
 
-- 示例 #2 的优化的批处理方法
+- 优化的批处理方法示例 #2
 
   ```csharp
   // RECOMMENDED
@@ -113,23 +112,23 @@ Azure 资源图形会为基于时间窗口上每个用户分配配额数量。 �
   }
   ```
 
-## <a name="staggering-queries"></a>交错安排查询
+## <a name="staggering-queries"></a>错开查询
 
-由于的方式强制实施限制，我们建议查询，以交错。 也就是说，而不是在同一时间发送 60 次查询，错开查询到四个 5 秒窗口：
+由于限制的实施方式，我们建议将查询错开。 也就是说，不要同时发送 60 个查询，而是在四个 5 秒时限内将查询错开：
 
-- 非错开查询计划
+- 未错开的查询计划
 
   | 查询计数         | 60  | 0    | 0     | 0     |
   |---------------------|-----|------|-------|-------|
-  | 时间间隔 （秒） | 0-5 | 5-10 | 10-15 | 15-20 |
+  | 时间间隔（秒） | 0-5 | 5-10 | 10-15 | 15-20 |
 
-- 错开查询计划
+- 错开的查询计划
 
   | 查询计数         | 15  | 15   | 15    | 15    |
   |---------------------|-----|------|-------|-------|
-  | 时间间隔 （秒） | 0-5 | 5-10 | 10-15 | 15-20 |
+  | 时间间隔（秒） | 0-5 | 5-10 | 10-15 | 15-20 |
 
-下面是查询 Azure 资源图形时遵循限制的标头的一个示例：
+下面是查询 Azure Resource Graph 时遵从限制标头的示例：
 
 ```csharp
 while (/* Need to query more? */)
@@ -153,7 +152,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>并行查询
 
-即使通过并行化建议批处理，有些时候查询无法以轻松地批处理。 在这些情况下，你可能想要通过以并行方式发送多个查询来查询 Azure 资源的图形。 下面是一个示例如何_退避算法_基于限制此类方案中的标头：
+尽管我们建议使用批处理而不是并行化，但有时，并不能轻松地批处理查询。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure Resource Graph。 以下示例演示在这种情况下如何基于限制标头进行回退：
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
@@ -187,11 +186,11 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 ## <a name="pagination"></a>分页
 
-由于 Azure 资源图表在单个查询响应中返回最多 1000 个项，则可能需要[分页](./work-with-data.md#paging-results)查询以获取所需的完整数据集。 但是，某些 Azure 资源 Graph 客户端不同的方式处理分页。
+由于 Azure Resource Graph 在单个查询响应中最多返回 1000 个条目，因此你可能需要将查询[分页](./work-with-data.md#paging-results)才能获取所需的完整数据集。 但是，某些 Azure Resource Graph 客户端处理分页的方式与其他客户端不同。
 
 - C# SDK
 
-  使用 ResourceGraph SDK 时，您需要通过将传递到下一个分页查询前一查询响应中返回的跳过标记处理分页。 这种设计意味着您需要从已分页的所有调用收集结果并将它们组合在一起的末尾。 在这种情况下，你将发送每个分页的查询采用一个查询配额：
+  使用 ResourceGraph SDK 时，需要通过将上一查询响应中返回的跳过标记传递给下一个分页查询，来处理分页。 这种设计意味着需要收集所有分页调用的结果，并最终将其组合到一起。 在这种情况下，发送的每个分页查询都会占用一个查询配额：
 
   ```csharp
   var results = new List<object>();
@@ -214,9 +213,9 @@ async Task ExecuteQueries(IEnumerable<string> queries)
   }
   ```
 
-- Azure CLI / Azure PowerShell
+- Azure CLI/Azure PowerShell
 
-  使用 Azure CLI 或 Azure PowerShell 时，对 Azure 资源 Graph 查询是自动分页来提取最多 5000 个条目。 查询结果分页的所有调用从返回项的组合的列表。 在这种情况下，具体取决于查询结果中的条目数，单个的分页的查询可能会占用多个查询配额。 例如，下面的示例中，在单次运行的查询可能会占用最多五个查询配额：
+  使用 Azure CLI 或 Azure PowerShell 时，对 Azure Resource Graph 的查询将自动分页，以最多提取 5000 个条目。 查询结果将返回所有分页调用中的条目的组合列表。 在这种情况下，根据查询结果中的条目数，单个分页查询可能会消耗多个查询配额。 例如，在以下示例中，运行一次查询最多可能会消耗五个查询配额：
 
   ```azurecli-interactive
   az graph query -q 'project id, name, type' -top 5000
@@ -226,19 +225,19 @@ async Task ExecuteQueries(IEnumerable<string> queries)
   Search-AzGraph -Query 'project id, name, type' -Top 5000
   ```
 
-## <a name="still-get-throttled"></a>仍会受到限制？
+## <a name="still-get-throttled"></a>仍然受到限制？
 
-如果受到了限制执行上述建议后，与在团队联系[ resourcegraphsupport@microsoft.com ](mailto:resourcegraphsupport@microsoft.com)。
+如果在运用上述建议后仍然受到限制，请联系支持团队 ([resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com))。
 
-提供这些详细信息：
+请提供以下详细信息：
 
-- 特定用例和业务驱动程序需要更高版本的限制。
-- 你有权访问的资源数量？ 从单个查询均对其进行多少返回？
-- 类型的资源是您对感兴趣？
-- 什么是查询模式？ 每 Y 秒等查询 x。
+- 特定的用例，以及需要提高限制的业务驱动因素。
+- 你有权访问多少资源？ 单个查询返回了多少资源？
+- 你感兴趣的资源类型有哪些？
+- 你的查询模式是什么？ 每 Y 秒发送 X 个查询，等等。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅在中使用的语言[初学者查询](../samples/starter.md)。
-- 使用中的高级，请参阅[高级查询](../samples/advanced.md)。
+- 在[初学者查询](../samples/starter.md)中了解使用的语言。
+- 在[高级查询](../samples/advanced.md)中了解高级用法。
 - 了解如何[浏览资源](explore-resources.md)。

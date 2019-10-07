@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cee148b6cb17f18c06e98158ac21638cedf519c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: e98c004b802711c83558bf4d7ec86c418679836b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828745"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981149"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -110,28 +110,28 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 若要对[时序见解 REST api](https://docs.microsoft.com/rest/api/time-series-insights/)执行经过身份验证的查询，必须使用所选的 REST 客户端（Postman、JavaScript、 C#）在[授权标头](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate)中传递有效的 OAuth 2.0 持有者令牌。 
 
 > [!IMPORTANT]
-> 令牌必须完全颁发给`https://api.timeseries.azure.com/`资源（也称为令牌的 "受众"）。
-> * 因此， [Postman](https://www.getpostman.com/) **AuthURL**符合以下内容：`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+> 令牌必须严格颁发给 @no__t 0 资源（也称为令牌的 "受众"）。
+> * 因此， [Postman](https://www.getpostman.com/) **AuthURL**符合： `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
 
 > [!TIP]
-> 请参阅[探索 Azure 时序见解 JavaScript 客户端库](tutorial-explore-js-client-lib.md#authentication)教程，了解如何使用[JAVASCRIPT 客户端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)以编程方式使用时序见解 api 进行身份验证。
+> 请参阅托管的 Azure 时序见解[客户端 SDK 示例可视化](https://tsiclientsample.azurewebsites.net/)，了解如何使用[JAVASCRIPT 客户端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)以编程方式在图表和图形上使用时序见解 api 进行身份验证。
 
 ### <a name="http-headers"></a>HTTP 标头
 
 所需请求标头：
 
-- `Authorization`对于身份验证和授权，必须在授权标头中传递有效的 OAuth 2.0 持有者令牌。 令牌必须完全颁发给`https://api.timeseries.azure.com/`资源（也称为令牌的 "受众"）。
+- `Authorization` 用于身份验证和授权，必须在授权标头中传递有效的 OAuth 2.0 持有者令牌。 令牌必须严格颁发给 @no__t 0 资源（也称为令牌的 "受众"）。
 
 可选请求标头：
 
-- `Content-type`-仅`application/json`支持。
+- `Content-type`-仅支持 `application/json`。
 - `x-ms-client-request-id`-客户端请求 ID。 服务记录此值。 允许服务跨服务跟踪操作。
 - `x-ms-client-session-id`-客户端会话 ID。 服务记录此值。 允许服务跟踪跨服务的一组相关操作。
 - `x-ms-client-application-name`-生成此请求的应用程序的名称。 服务记录此值。
 
 响应标头：
 
-- `Content-type`-仅`application/json`支持。
+- `Content-type`-仅支持 `application/json`。
 - `x-ms-request-id`-服务器生成的请求 ID。 可用于与 Microsoft 联系以调查请求。
 
 ### <a name="http-parameters"></a>HTTP 参数
@@ -143,7 +143,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 可选 URL 查询字符串参数：
 
-- `timeout=<timeout>`–请求执行的服务器端超时。 仅适用于[获取环境事件](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)和[获取环境聚合](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)api。 超时值应采用 ISO 8601 持续时间格式，例如`"PT20S"` ，应在范围`1-30 s`内。 默认值为 `30 s`。
+- `timeout=<timeout>` –请求执行的服务器端超时。 仅适用于[获取环境事件](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)和[获取环境聚合](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)api。 超时值应采用 ISO 8601 duration 格式，例如 `"PT20S"`，并且应在 `1-30 s` 的范围内。 默认值为 `30 s`。
 
 ## <a name="next-steps"></a>后续步骤
 

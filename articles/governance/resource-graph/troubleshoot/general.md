@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 4cd4d89f276770cba401d7941a975fad8e49c8cd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: abf6d22f2010db9bff97c7a93354c1cf8e1e1644
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000529"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976610"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>排查使用 Azure Resource Graph 时出现的错误
 
@@ -69,11 +68,11 @@ $response
 
 #### <a name="cause"></a>原因
 
-Azure 资源 Graph REST API 仅支持`Content-Type` **application/json**的。 某些 REST 工具或代理默认为**text/简洁**，这不受 REST API 支持。
+Azure 资源 Graph REST API 仅支持**应用程序/json**@no__t 的0。 某些 REST 工具或代理默认为**text/简洁**，这不受 REST API 支持。
 
 #### <a name="resolution"></a>分辨率
 
-验证用于查询 Azure 资源关系图的工具或代理是否为**application/json**配置了`Content-Type` REST API 标头。
+验证用于查询 Azure 资源关系图的工具或代理是否具有为**application/json**配置的 REST API 标头 `Content-Type`。
 ### <a name="rest-403"></a>场景：列表中没有对所有订阅的读取权限
 
 #### <a name="issue"></a>问题

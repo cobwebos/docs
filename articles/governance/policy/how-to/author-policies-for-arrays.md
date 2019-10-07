@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 479f77791a0b035f2d1de6085dfb12f5196288ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5b90eb975d0d495723a70095b447d37e051fc0b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979328"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978040"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>针对 Azure 资源中的数组属性创作策略
 
@@ -30,7 +29,7 @@ Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个�
 ### <a name="define-a-parameter-array"></a>定义参数数组
 
 如果需要多个值，将参数定义为数组可以提高策略的灵活性。
-此策略定义允许的参数的任何单个位置**allowedLocations**默认值为_eastus2_:
+此策略定义允许参数**allowedLocations**的任何单个位置，并默认为_eastus2_：
 
 ```json
 "parameters": {
@@ -46,9 +45,9 @@ Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个�
 }
 ```
 
-由于**类型**是_字符串_，因此在分配该策略时，只能设置一个值。 如果分配此策略，只允许单个 Azure 区域中的处于范围内的资源。 需要有关的已批准的选项，例如允许列表允许大多数策略定义_eastus2_， _eastus_，并_westus2_。
+由于**类型**是_字符串_，因此在分配该策略时，只能设置一个值。 如果分配此策略，只允许单个 Azure 区域中的处于范围内的资源。 大多数策略定义需要允许使用批准的选项的列表，例如允许使用_eastus2_、 _eastus_和_westus2_。
 
-若要创建允许多个选项的策略定义，请使用“数组”**类型**。  可按如下所示重新编写同一策略：
+若要创建允许多个选项的策略定义，请使用“数组”**类型**。 可按如下所示重新编写同一策略：
 
 ```json
 "parameters": {
@@ -77,7 +76,7 @@ Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个�
 
 ### <a name="pass-values-to-a-parameter-array-during-assignment"></a>在分配期间将值传递给参数数组
 
-通过 Azure 门户分配策略时，“数组”**类型**的参数将显示为单个文本框。  提示中会指出“请使用 ; 来分隔值。 (例如 London;New York)”。 若要允许的位置的值传递_eastus2_， _eastus_，并_westus2_到参数，可使用以下字符串：
+通过 Azure 门户分配策略时，“数组”**类型**的参数将显示为单个文本框。 提示中会指出“请使用 ; 来分隔值。 (例如 London;New York)”。 若要将_eastus2_、 _eastus_和_westus2_的允许位置值传递给参数，请使用以下字符串：
 
 `eastus2;eastus;westus2`
 
@@ -106,7 +105,7 @@ Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个�
 ### <a name="array-conditions"></a>数组条件
 
 可以结合“数组”
-**类型**的参数使用的策略规则[条件](../concepts/definition-structure.md#conditions)限制为 `in` 和 `notIn`。  以包含条件 `equals` 的以下策略定义为例：
+**类型**的参数使用的策略规则[条件](../concepts/definition-structure.md#conditions)限制为 `in` 和 `notIn`。 以包含条件 `equals` 的以下策略定义为例：
 
 ```json
 {
@@ -138,11 +137,11 @@ Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个�
 
 - “由于出现验证错误，无法参数化策略 '{GUID}'。 请检查是否正确定义了策略参数。 出现内部异常‘语言表达式 '[parameters('allowedLocations')]' 评估结果的类型为‘数组’，而预期类型为‘字符串’。’”
 
-条件 `equals` 的预期**类型**为“字符串”。  由于 **allowedLocations** 定义为“数组”**类型**，因此策略引擎会评估该语言表达式并引发错误。  使用 `in` 和 `notIn` 条件时，策略引擎预期语言表达式中的**类型**为“数组”。  若要解决此错误消息，请将 `equals` 更改为 `in` 或 `notIn`。
+条件 `equals` 的预期**类型**为“字符串”。 由于 **allowedLocations** 定义为“数组”**类型**，因此策略引擎会评估该语言表达式并引发错误。 使用 `in` 和 `notIn` 条件时，策略引擎预期语言表达式中的**类型**为“数组”。 若要解决此错误消息，请将 `equals` 更改为 `in` 或 `notIn`。
 
 ### <a name="evaluating-the--alias"></a>评估 [*] 别名
 
-名称中附加有 **[\*]** 的别名表示**类型**为“数组”。  指定 **[\*]** 可以评估数组的每个元素，而不会评估整个数组的值。 这种按项评估的功能在三种场合下非常有用：None、Any 和 All。
+名称中附加有 **[\*]** 的别名表示**类型**为“数组”。 指定 **[\*]** 可以评估数组的每个元素，而不会评估整个数组的值。 这种按项评估的功能在三种场合下非常有用：None、Any 和 All。
 
 仅当 **if** 规则评估为 true 时，策略引擎才会在 **then** 中触发**效果**。
 若要根据上下文了解 **[\*]** 如何评估数组的每个元素，必须知道这一事实。
@@ -207,9 +206,9 @@ Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看示例[Azure 策略示例](../samples/index.md)。
+- 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
-- 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何[修正的不合规资源](remediate-resources.md)。
+- 了解如何以[编程方式创建策略](programmatically-create.md)。
+- 了解如何[修正不合规的资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: d6ca7827200815cf9b9b1c7ac697d06f9c6b306d
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 219a3c56f9e4e4c9e132fa759b017fac63ade766
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147052"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977995"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
@@ -161,7 +160,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>通过 Azure CLI 创建修正任务
 
-若要使用 Azure CLI 创建**修正任务**，请使用`az policy remediation`命令。 将`{subscriptionId}`替换为你的订阅`{myAssignmentId}` ID，将替换为你的**deployIfNotExists**或**修改**策略分配 ID。
+若要使用 Azure CLI 创建**修正任务**，请使用 @no__t 命令。 将 `{subscriptionId}` 替换为你的订阅 ID @no__t，将替换为你的**deployIfNotExists**或**修改**策略分配 ID。
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -174,7 +173,7 @@ az policy remediation create --name myRemediation --policy-assignment '/subscrip
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>通过 Azure PowerShell 创建修正任务
 
-若要使用 Azure PowerShell 创建**修正任务**，请使用`Start-AzPolicyRemediation`命令。 将`{subscriptionId}`替换为你的订阅`{myAssignmentId}` ID，将替换为你的**deployIfNotExists**或**修改**策略分配 ID。
+若要使用 Azure PowerShell 创建**修正任务**，请使用 @no__t 命令。 将 `{subscriptionId}` 替换为你的订阅 ID @no__t，将替换为你的**deployIfNotExists**或**修改**策略分配 ID。
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

@@ -1,18 +1,17 @@
 ---
 title: 理解查询语言
-description: 介绍可用于 Azure 资源关系图的可用 Kusto 运算符和函数。
+description: 介绍所提供的可以与 Azure Resource Graph 配合使用的 Kusto 运算符和函数。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: c6e35d688581d0839e12806117e63c7d71fbc459
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 54bb0b4f21752b91ceb9d4004c153ff4d95006aa
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231510"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976756"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -54,31 +53,31 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每项工作�
 
 ## <a name="escape-characters"></a>转义字符
 
-某些属性名称 (如包含`.`或`$`的属性名称) 在查询中必须进行包装或转义, 或者属性名称解释错误, 不提供预期结果。
+某些属性名称（例如那些包含 `.` 或 `$` 的属性名称）必须在查询中进行包装或转义，否则就会解释不正确，无法提供预期的结果。
 
-- `.`-包装属性名称, 如下所示:`['propertyname.withaperiod']`
+- `.` - 将属性名称包装成这样：`['propertyname.withaperiod']`
   
-  包装属性 odata 的示例查询 _。键入_:
+  包装 _odata.type_ 属性的示例查询：
 
   ```kusto
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$`-对属性名称中的字符进行转义。 使用的转义字符取决于从运行的 shell 资源关系图。
+- `$` - 对属性名称中的字符进行转义。 所使用的转义字符取决于 Resource Graph 从哪个 shell 运行。
 
-  - **狂欢** - `\`
+  - **bash** - `\`
 
-    在 bash 中对属性 _\$类型_进行转义的示例查询:
+    在 bash 中对 _\$type_ 属性进行转义的示例查询：
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
     ```
 
-  - **cmd** -不要转义`$`字符。
+  - **cmd** - 不对 `$` 字符进行转义。
 
   - **PowerShell** - ``` ` ```
 
-    在 PowerShell 中对属性 _\$类型_进行转义的示例查询:
+    在 PowerShell 中对 _\$type_ 属性进行转义的示例查询：
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type

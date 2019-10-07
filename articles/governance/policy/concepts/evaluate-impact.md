@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: b24a0e9f3f557ea2ac425db7caeed63959d18dd8
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 2aee31d3e874f709d5ec30ed4ddc0ba0445d4130
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181400"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980762"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>评估新 Azure 策略的影响
 
@@ -37,8 +36,8 @@ Azure 策略是一种功能强大的工具，可用于管理 Azure 资源与业�
 
 ## <a name="audit-existing-resources"></a>审核现有资源
 
-在希望使用新策略定义管理新的或更新的资源之前，最好是了解它是如何评估现有资源（如测试资源组）的有限子集的。 在策略分配上使用 "[强制模式](./assignment-structure.md#enforcement-mode)
-_已禁用_（DoNotEnforce）" 可防止创建触发或活动日志项的[效果](./effects.md)。
+在希望使用新策略定义管理新的或更新的资源之前，最好是了解它是如何评估现有资源（如测试资源组）的有限子集的。 在策略分配中使用 "[强制模式](./assignment-structure.md#enforcement-mode)
+_已禁用_（DoNotEnforce）" 以防止创建触发或活动日志条目的[影响](./effects.md)。
 
 此步骤使你可以在不影响工作流的情况下评估新策略对现有资源的符合性结果。 检查是否未将符合标准的资源标记为不符合（_误报_），并检查是否所有预期为不符合的资源均已正确标记。
 资源的初始子集按预期进行验证后，慢慢地将计算展开为所有现有资源。
