@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c775b16eaa15ccd7115f4770bf197545a9de2500
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004024"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828016"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教程：训练第一个 ML 模型
 
@@ -35,21 +35,15 @@ ms.locfileid: "71004024"
 
 在本教程的这一部分中，你将运行在第一部分结束时打开的示例 Jupyter Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` 中的代码。 本文将介绍此 Notebook 中的相同代码。
 
-## <a name="launch-jupyter-web-interface"></a>启动 Jupyter Web 界面
+## <a name="open-the-notebook"></a>打开笔记本
 
-1. 在 Azure 门户的工作区页上，选择左侧的“笔记本 VM”。 
+1. 登录到[工作区登陆页面](https://ml.azure.com/)。
 
-1. 在本教程第一部分中创建的 VM 的 **URI** 列中选择 **Jupyter**。
+1. 打开[第一部分](tutorial-1st-experiment-sdk-setup.md#open)中所示的文件夹中的 **tutorial-1st-experiment-sdk-train.ipynb**。
 
-    ![启动 Jupyter 笔记本服务器](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
-   此链接启动笔记本服务器并在新的浏览器标签页中打开 Jupyter 笔记本网页。此链接将仅适用于创建 VM 的人。 工作区的每个用户必须创建自己的 VM。
-
-1. 在 Jupyter 笔记本网页上，选择包含你的用户名的顶部文件夹名称。  
-
-   此文件夹存在于工作区[存储帐户](concept-workspace.md#resources)中，而不在笔记本 VM 本身上。  如果删除笔记本 VM，你仍将保留所有工作。  稍后创建新的笔记本 VM 时，它将加载此同一文件夹。 如果将工作区与他人共享，则他人会看到你的文件夹，你会看到他人的文件夹。
-
-1. 打开 `samples-*` 子目录，然后打开 Jupyter 笔记本 `tutorials/tutorial-1st-experiment-sdk-train.ipynb`，**而不是**同名的 `.yml` 文件。 
+> [!Warning]
+> 在 Jupyter 界面中**不**创建*新的*笔记本！ 笔记本`tutorials/tutorial-1st-experiment-sdk-train.ipynb`包含本教程**所需的所有代码和数据**。
 
 ## <a name="connect-workspace-and-create-experiment"></a>连接工作区并创建试验
 
@@ -57,7 +51,7 @@ ms.locfileid: "71004024"
 > 本文的其余部分包含的内容与在笔记本中看到的内容相同。  
 >
 > 如果要在运行代码时继续阅读，请立即切换到 Jupyter 笔记本。 
-> 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter**。 或者，从顶部菜单中选择“单元”>“全部运行”  来运行整个笔记本。
+> 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter**。 或者，通过从顶部工具栏中选择“全部运行”  来运行整个笔记本。
 
 导入 `Workspace` 类，并使用函数 `from_config().` 从文件 `config.json` 中加载订阅信息。默认情况下，这会查找当前目录中的 JSON 文件，但你也可以使用 `from_config(path="your/file/path")` 指定一个路径参数以指向该文件。 在云笔记本服务器中，该文件自动位于根目录中。
 
@@ -139,7 +133,7 @@ experiment
 
 ## <a name="view-training-results-in-portal"></a>在门户中查看训练结果
 
-单击 **Azure 门户的链接**会转到试验主页。 在此处可以查看试验中的每个运行。 所有自定义记录的值（在本例中为 `alpha_value` 和 `rmse`）将成为每个运行的字段，并且可在试验页顶部的图表和磁贴中使用。 若要将记录的指标添加到图表或磁贴，请将鼠标悬停在该图表或磁贴上，单击编辑按钮，然后找到自定义记录的指标。
+单击“链接到 Azure 门户”  将你带到主试验页。 在此处可以查看试验中的每个运行。 所有自定义记录的值（在本例中为 `alpha_value` 和 `rmse`）将成为每个运行的字段，并且可在试验页顶部的图表和磁贴中使用。 若要将记录的指标添加到图表或磁贴，请将鼠标悬停在该图表或磁贴上，单击编辑按钮，然后找到自定义记录的指标。
 
 对包含数百甚至数千个独立运行的模型进行大规模训练时，在此页中可以轻松查看训练的每个模型，具体而言，可以查看模型的训练方式，以及独特的指标在不同时间的变化。
 

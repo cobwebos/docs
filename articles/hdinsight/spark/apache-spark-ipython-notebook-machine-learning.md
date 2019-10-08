@@ -1,21 +1,21 @@
 ---
 title: 教程：在 Azure HDInsight 中生成 Spark 机器学习应用程序
 description: 教程 - 有关如何使用 Jupyter Notebook 在 HDInsight Spark 群集中生成 Apache Spark 机器学习应用程序的分步说明。
-ms.service: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: e1a52072ab3309454742d2d3e8582b58a33666e3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e77414da964d548b64250bbf98f86bee1529f2ab
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448706"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327018"
 ---
-# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中生成 Apache Spark 机器学习应用程序 
+# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中生成 Apache Spark 机器学习应用程序
 
 本教程介绍如何使用 [Jupyter Notebook](https://jupyter.org/) 生成适用于 Azure HDInsight 的 [Apache Spark](https://spark.apache.org/) 机器学习应用程序。
 
@@ -43,7 +43,7 @@ ms.locfileid: "67448706"
 
 1. 使用 PySpark 内核创建 Jupyter Notebook。 有关说明，请参阅[创建 Jupyter Notebook](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)。
 
-1. 导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。 
+1. 导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -60,7 +60,7 @@ ms.locfileid: "67448706"
     from numpy import array
     ```
 
-3. 加载数据 (hvac.csv)，分析数据，并使用它来训练模型。 
+1. 加载数据 (hvac.csv)，分析数据，并使用它来训练模型。
 
     ```PySpark
     # Define a type called LabelDocument
@@ -72,7 +72,7 @@ ms.locfileid: "67448706"
         if (values[3] > values[2]):
             hot = 1.0
         else:
-            hot = 0.0        
+            hot = 0.0
 
         textValue = str(values[4]) + " " + str(values[5])
 
@@ -87,7 +87,7 @@ ms.locfileid: "67448706"
 
     在此代码片段中，定义用于比较实际温度与目标温度的函数。 如果实际温度较高，则表示建筑物处于高温状态，以值 **1.0** 表示。 否则建筑物处于低温状态，用值 **0.0** 表示。
 
-4. 设置包括三个阶段的 Spark 机器学习管道：tokenizer、hashingTF 和 lr。
+1. 设置包括三个阶段的 Spark 机器学习管道：tokenizer、hashingTF 和 lr。
 
     ```PySpark
     tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -98,18 +98,18 @@ ms.locfileid: "67448706"
 
     有关管道及其工作原理的详细信息，请参阅 [Apache Spark 机器学习管道](https://spark.apache.org/docs/latest/ml-pipeline.html)。
 
-5. 将管道拟合到培训文档中。
+1. 将管道拟合到培训文档中。
 
     ```PySpark
     model = pipeline.fit(training)
     ```
 
-6. 验证训练文档以根据应用程序的进度创建检查点。
+1. 验证训练文档以根据应用程序的进度创建检查点。
 
     ```PySpark
     training.show()
     ```
-   
+
     输出类似于：
 
     ```output
@@ -145,7 +145,7 @@ ms.locfileid: "67448706"
 
     请注意，实际温度比目标温度低的情况表示建筑物处于低温状态。 因此在训练输出中，第一行中的 **label** 值为 **0.0**，表示建筑物并非处于高温状态。
 
-7. 准备要对其运行已训练模型的数据集。 为此，将传递系统 ID 和系统年数（以训练输出中的 **SystemInfo** 表示），模型将预测具有该系统 ID 和系统年数的建筑物的温度是较高（以 1.0 表示）还是较低（以 0.0 表示）。
+1. 准备要对其运行已训练模型的数据集。 为此，将传递系统 ID 和系统年数（以训练输出中的 **SystemInfo** 表示），模型将预测具有该系统 ID 和系统年数的建筑物的温度是较高（以 1.0 表示）还是较低（以 0.0 表示）。
 
     ```PySpark
     # SystemInfo here is a combination of system ID followed by system age
@@ -159,7 +159,7 @@ ms.locfileid: "67448706"
         .map(lambda x: Document(*x)).toDF()
     ```
 
-8. 最后，对测试数据进行预测。
+1. 最后，对测试数据进行预测。
 
     ```PySpark
     # Make predictions on test documents and print columns of interest
@@ -182,9 +182,10 @@ ms.locfileid: "67448706"
 
    从预测中的第一行可以看出，对于 ID 为 20 且系统年数为 25 的 HVAC 系统，建筑物处于高温状态 (**prediction=1.0**)。 DenseVector (0.49999) 的第一个值对应于预测 0.0，第二个值 (0.5001) 对应于预测 1.0。 在输出中，即使第二个值只稍高一点，模型也仍旧显示 **prediction=1.0**。
 
-10. 关闭笔记本以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止”   。 此操作会关闭 Notebook。
+1. 关闭笔记本以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止”   。 此操作会关闭 Notebook。
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>将 Anaconda scikit-learn 库用于 Spark 机器学习
+
 HDInsight 中的 Apache Spark 群集包含 Anaconda 库。 它还包括适用于机器学习的 scikit-learn 库  。 该库还包含用于直接从 Jupyter 笔记本生成示例应用程序的各种数据集。 有关使用 scikit-learn 库的示例，请参阅 [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)。
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -201,7 +202,7 @@ HDInsight 中的 Apache Spark 群集包含 Anaconda 库。 它还包括适用于
 
 1. 选择“删除”。  请选择“是”。 
 
-![删除 HDInsight 群集](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
+![Azure 门户删除 HDInsight 群集](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
 
 ## <a name="next-steps"></a>后续步骤
 

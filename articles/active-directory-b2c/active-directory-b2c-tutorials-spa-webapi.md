@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6d354ab25125b0df90ac3d6852d7eafe5d5aba46
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 60fe9569b0e6e92ae161271439ecbf1b04788ed4
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064698"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694574"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>教程：从单页应用程序使用 Azure Active Directory B2C 授予对 ASP.NET Core Web API 的访问权限
 
@@ -38,32 +38,15 @@ ms.locfileid: "71064698"
 
 ## <a name="add-a-web-api-application"></a>添加 Web API 应用程序
 
-Web API 资源需要先在租户中注册，然后才能接受并响应提供访问令牌的客户端应用程序所提出的受保护资源请求。
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
-1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-1. 选择“应用程序”，然后选择“添加”   。
-1. 输入应用程序的名称。 例如，“webapi1”  。
-1. 对于“包括 Web 应用/Web API”和“允许隐式流”，请选择“是”。   
-1. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点  。 本教程中的示例在本地运行并在 `https://localhost:5000` 上进行侦听。
-1. 对于“应用 ID URI”，请在所示的 URI 中输入一个 API 终结点标识符。  对于本教程，请输入 `api`，因此，完整的 URI 类似于 `https://contosotenant.onmicrosoft.com/api`。
-1. 单击“创建”。 
-1. 选择“webapi1”应用程序以打开其属性页。 
-1. 记下属性页上显示的“应用程序 ID”。  在稍后的步骤中配置 Web 应用程序时，需要使用此 ID。
+[!INCLUDE [active-directory-b2c-appreg-webapi](../../includes/active-directory-b2c-appreg-webapi.md)]
 
 ## <a name="configure-scopes"></a>配置范围
 
 可通过范围控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让某些用户拥有读取和写入访问权限，让另一些用户拥有只读权限。 在本教程中，你将定义 Web API 的读取和写入权限。
 
-1. 选择“应用程序”，然后选择“webapi1”以打开其属性页（如果尚未打开）。  
-1. 选择“已发布的范围”  。
-1. 在“范围”中输入 `Hello.Read`，在“说明”中输入 `Read access to hello`。  
-1. 在“范围”中输入 `Hello.Write`，在“说明”中输入 `Write access to hello`。  
-1. 选择“保存”。 
-1. 记下 `Hello.Read` 范围的“完整范围值”，以便在稍后的步骤中配置单页应用程序时使用。  完整范围值类似于 `https://yourtenant.onmicrosoft.com/api/Hello.Read`。
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-可以使用发布的作用域向客户端应用授予对 Web API 的权限。
+记下 `demo.read` 范围的“完整范围值”，以便在稍后的步骤中配置单页应用程序时使用。  完整范围值类似于 `https://yourtenant.onmicrosoft.com/api/demo.read`。
 
 ## <a name="grant-permissions"></a>授予权限
 
@@ -71,12 +54,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 
 在先决条件教程中，你已创建名为 *webapp1* 的 Web 应用程序。 在本教程中，你要将该应用程序配置为调用在上一部分创建的 Web API：*webapi1*。
 
-1. 在 Azure 门户中导航到你的 B2C 租户
-1. 依次选择“应用程序”、“webapp1”   。
-1. 依次选择“API 访问”、“添加”   。
-1. 在“选择 API”下拉列表中，选择“webapi1”   。
-1. 在“选择范围”下拉列表中，选择之前定义的“Hello.Read”和“Hello.Write”范围    。
-1. 单击“确定”。 
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 随即会注册该单页应用程序，它可以调用受保护的 Web API。 用户通过 Azure AD B2C 进行身份验证，以使用单页应用程序。 该单页应用从 Azure AD B2C 获取授权，以访问受保护的 Web API。
 
@@ -101,8 +79,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
       "ClientId": "<webapi-application-ID>",
       "Policy": "B2C_1_signupsignin1",
 
-      "ScopeRead": "Hello.Read",
-      "ScopeWrite": "Hello.Write"
+      "ScopeRead": "demo.read",
+      "ScopeWrite": "demo.write"
     },
     ```
 
@@ -154,7 +132,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 若要更改 SPA 中的设置：
 
 1. 打开在上一篇教程中下载或克隆的 [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] 项目中的 *index.html* 文件。
-1. 使用前面创建的 *Hello.Read* 范围的 URI 以及 Web API 的 URL 配置示例。
+1. 使用前面创建的 *demo.read* 范围的 URI 以及 Web API 的 URL 配置示例。
     1. 在 `appConfig` 定义中，将 `b2cScopes` 值替换为范围的完整 URI（前面记下的“完整范围值”）。 
     1. 将 `webApi` 值更改为在上一部分指定的 `applicationURL` 值。
 
@@ -163,7 +141,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
     var appConfig = {
-      b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/api/Hello.Read"],
+      b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/api/demo.read"],
       webApi: "http://localhost:5000/"
     };
     ```

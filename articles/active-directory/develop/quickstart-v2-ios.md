@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b8637bb1a1ba397750bd04c88c6535fa3d1caa0
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: bdb1ae92b17bef281e3b82a8c1a21344fa37f0da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309642"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345530"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -94,11 +94,11 @@ ms.locfileid: "71309642"
 > 1. 解压缩 zip 文件并在 XCode 中打开该项目。
 > 1. 编辑 **ViewController.swift** 并将以“let kClientID”开头的行替换为以下代码片段。 记住将 `kClientID` 的值更新为客户端 ID，该 ID 是你在本快速入门的前面部分通过门户注册应用时保存的：
 >    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. 打开项目设置。 在“标识”部分  ，输入以前在门户中输入的**捆绑标识符**。
 > 1. （仅适用于 iOS）右键单击 **Info.plist**，然后选择“打开为”   > “源代码”。 
-> 1. （仅适用于 iOS）在 dict 根节点下，将 `Enter_the_bundle_Id_Here` 替换为你在门户中输入的***捆绑 ID***。
+> 1. （仅适用于 iOS）在 dict 根节点下，将 `CFBundleURLSchemes` 替换为你在门户中输入的***捆绑 ID***。
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -120,7 +120,7 @@ ms.locfileid: "71309642"
 > 1. 解压缩 zip 文件并在 XCode 中打开该项目。
 > 1. 编辑 **ViewController.swift** 并将以“let kClientID”开头的行替换为以下代码片段。 记住将 `kClientID` 的值更新为客户端 ID，该 ID 是你在本快速入门的前面部分通过门户注册应用时保存的：
 >    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. 打开项目设置。 在“标识”部分  ，输入以前在门户中输入的**捆绑标识符**。
 > 1. （仅适用于 iOS）右键单击 **Info.plist**，然后选择“打开为”   > “源代码”。 

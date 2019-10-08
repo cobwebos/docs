@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f640921e6f48559db3f1414551d6ed974df15e4f
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257080"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703217"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中部署应用
 
@@ -87,43 +87,50 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
 1. 选择与新资源名称关联的终结点 URL。 此操作将打开包含正确构造的 URL Web 浏览器，以便向预测终结点运行时发出 `GET` 请求。
 
-1. URL 末尾的 `q=` 是查询的缩写，并且是用户的言语追加到 GET 请求的位置  。 在 `q=` 之后，输入在上一个快速入门结束时使用的相同用户言语：
+## <a name="prediction-endpoint-request"></a>预测终结点请求
 
-    ```Is there a form named hrf-234098```
+<!-- V3FIX -->
 
-    浏览器会显示响应，该响应与客户端应用程序将收到的 JSON 相同：
+URL 末尾的 `q=` 是查询的缩写，并且是用户的言语追加到 GET 请求的位置  。 在 `q=` 之后，输入在上一个快速入门结束时使用的相同用户言语：
 
-    ```JSON
+```Is there a form named hrf-234098```
+
+浏览器会显示响应，该响应与客户端应用程序将收到的 JSON 相同：
+
+```JSON
+{
+"query": "Is there a form named hrf-234098",
+"topScoringIntent": {
+    "intent": "FindForm",
+    "score": 0.9768753
+},
+"intents": [
     {
-    "query": "Is there a form named hrf-234098",
-    "topScoringIntent": {
-        "intent": "FindForm",
-        "score": 0.9768753
+    "intent": "FindForm",
+    "score": 0.9768753
     },
-    "intents": [
-        {
-        "intent": "FindForm",
-        "score": 0.9768753
-        },
-        {
-        "intent": "None",
-        "score": 0.0216071066
-        }
-    ],
-    "entities": [
-        {
-        "entity": "hrf-234098",
-        "type": "Human Resources Form Number",
-        "startIndex": 22,
-        "endIndex": 31
-        }
-      ]
+    {
+    "intent": "None",
+    "score": 0.0216071066
     }
-    ```
+],
+"entities": [
+    {
+    "entity": "hrf-234098",
+    "type": "Human Resources Form Number",
+    "startIndex": 22,
+    "endIndex": 31
+    }
+    ]
+}
+```
 
-    此响应提供的信息比上一个教程中的默认测试窗格提供的信息更详细。 若要在测试窗格中看到相同级别的信息，必须发布应用。 发布应用后，在测试窗格中选择“与已发布版本进行比较”  。 在发布的测试窗格中使用“显示 JSON 视图”，以查看与上一步相同的 JSON  。 这样可以比较当前正在使用的应用和发布到终结点的应用。
+此响应提供的信息比上一个教程中的默认测试窗格提供的信息更详细。 若要在测试窗格中看到相同级别的信息，必须发布应用。 发布应用后，在测试窗格中选择“与已发布版本进行比较”  。 在发布的测试窗格中使用“显示 JSON 视图”，以查看与上一步相同的 JSON  。 这样可以比较当前正在使用的应用和发布到终结点的应用。
 
-    [![比较当前正在编辑的应用和已发布版本的应用](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+[![比较当前正在编辑的应用和已发布版本的应用](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+
+
+
 
 ## <a name="clean-up-resources"></a>清理资源
 

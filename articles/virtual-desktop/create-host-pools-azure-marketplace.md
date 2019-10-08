@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure 市场创建 Windows 虚拟桌面预览版主机池 - Azure
-description: 如何使用 Azure 市场创建 Windows 虚拟桌面预览版主机池。
+title: 使用 Azure 市场创建 Windows 虚拟桌面主机池 - Azure
+description: 如何使用 Azure 市场创建 Windows 虚拟桌面主机池。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c0b93529872de774e1a6e915ef8254c5c0e0a1a9
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208380"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676705"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>教程：通过使用 Azure 市场创建主机池
 
-主机池是 Windows 虚拟桌面预览版租户环境中一个或多个相同虚拟机的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
+主机池是 Windows 虚拟桌面租户环境中一个或多个相同虚拟机的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
 
 本教程介绍如何使用 Microsoft Azure 市场产品/服务在 Windows 虚拟桌面租户中创建主机池。 相关任务包括：
 
@@ -80,7 +80,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 3. 选择连接到 Active Directory 服务器的虚拟网络，然后选择一个子网用于托管虚拟机。
 4. 选择“确定”  。
 
-### <a name="windows-virtual-desktop-preview-tenant-information"></a>Windows 虚拟桌面预览版租户信息
+### <a name="windows-virtual-desktop-tenant-information"></a>Windows 虚拟桌面租户信息
 
 在“Windows 虚拟桌面租户信息”边栏选项卡中  ，可以执行以下操作：
 

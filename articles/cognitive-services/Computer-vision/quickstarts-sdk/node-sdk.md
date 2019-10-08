@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/18/2019
+ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: bcce9c53e2618f9501dde63905fb834bce7985ee
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: fdf2b132b5d07b2b12c679cb436968c6fb19887e
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204436"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719511"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>快速入门：适用于 Node.js 的计算机视觉客户端库
 
@@ -171,9 +171,9 @@ npm install azure-cognitiveservices-computervision ms-rest-azure
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_formatfaces)]
 
-### <a name="detect-adult-or-racy-content"></a>检测成人或不雅内容
+### <a name="detect-adult-racy-or-gory-content"></a>检测成人、色情或血腥内容
 
-以下代码输出图像中检测到的成人内容或不雅内容。 有关更多详细信息，请参阅[成人和不雅内容](../concept-detecting-adult-content.md)。
+以下代码输出图像中检测到的成人内容。 有关更多详细信息，请参阅[成人、色情或血腥内容](../concept-detecting-adult-content.md)。
 
 定义要使用的图像的 URL：
 

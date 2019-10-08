@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 03a036ce5381130af4bbcea88c87d77cd93cf6a9
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e2816d8e6fdd900473cceebb20c96794f3f9f0f9
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743886"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350877"
 ---
 # <a name="azure-storage-samples"></a>Azure 存储示例
 
@@ -40,13 +40,7 @@ ms.locfileid: "70743886"
 ## <a name="nodejs-samples"></a>Node.js 示例
 要浏览 Node.js 示例，请下载 [Node.js 存储客户端库](https://github.com/Azure/azure-storage-node)。
 
-* [Blob 上传程序](https://github.com/Azure/azure-storage-node/tree/master/examples/blobuploader)
-* [上传和下载 Blob](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/blobuploaddownloadsample.js)
-* [继续标记](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js)
-* [重试策略](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/retrypolicysample.js)
-* [共享访问签名](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/sassample.js)
-* [快照](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
-* [表查询](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
+* [使用 JavaScript/Node.js 的 Azure 存储示例](storage-samples-javascript.md)
 
 ## <a name="c-samples"></a>C ++ 示例
 若要浏览 C++ 示例，请从 NuGet 下载 [C++ 存储客户端库](https://www.nuget.org/packages/wastorage/)。
@@ -71,4 +65,5 @@ ms.locfileid: "70743886"
 
 * [使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
 * [使用 Java 的 Azure 存储示例](storage-samples-java.md)
+* [使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
 * [使用 Python 的 Azure 存储示例](storage-samples-python.md)

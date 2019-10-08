@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 985845197f8a1ece76fe0a620f05194109f51bd6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 1db46e8562006e1b60e4f51ca88220aeca5fb2a8
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408669"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687048"
 ---
 # <a name="what-is-azure-app-configuration"></a>什么是 Azure 应用程序配置？
 
@@ -75,3 +75,4 @@ Azure 应用程序配置提供一项可集中管理应用程序设置和功能�
 * [Azure 函数快速入门](./quickstart-azure-function-csharp.md)
 * [Java Spring 快速入门](./quickstart-java-spring-app.md)
 * [ASP.NET Core 功能标志快速入门](./quickstart-feature-flag-aspnet-core.md)
+* [Spring Boot 功能标志快速入门](./quickstart-feature-flag-spring-boot.md)

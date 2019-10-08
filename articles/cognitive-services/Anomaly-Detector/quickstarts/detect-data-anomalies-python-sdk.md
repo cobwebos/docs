@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 08/01/2019
 ms.author: aahi
-ms.openlocfilehash: 59a4d79cc68c57faf54bde3d42370fb17a317325
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 28dbcde723e25577545cfd44fed9ef00249d8f30
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725561"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694911"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>快速入门：适用于 Python 的异常检测器客户端库
 
-开始使用适用于 .NET 的异常检测器客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过异常检测器服务，可以对时序数据自动使用最佳适配模型，从而查找器其中的异常，不限行业、场景或数据量。
+适用于 Python 的异常检测器客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过异常检测器服务，可以对时序数据自动使用最佳适配模型，从而查找器其中的异常，不限行业、场景或数据量。
 
 使用适用于 Python 的异常检测器客户端库，可实现以下操作：
 
@@ -70,9 +70,9 @@ pip install --upgrade azure-cognitiveservices-anomalydetector
 
 ## <a name="code-examples"></a>代码示例 
 
-这些代码片段展示如何使用适用于 .NET 的异常检测器客户端库执行以下操作：
+这些代码片段展示如何使用适用于 Python 的异常检测器客户端库执行以下操作：
 
-* [验证客户端](#authenticate-the-client)
+* [对客户端进行身份验证](#authenticate-the-client)
 * [从文件加载时序数据集](#load-time-series-data-from-a-file)
 * [在整个数据集中检测异常](#detect-anomalies-in-the-entire-data-set) 
 * [检测最新数据点的异常状态](#detect-the-anomaly-status-of-the-latest-data-point)

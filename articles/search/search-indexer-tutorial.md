@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: d0f0abade5d1eea952c5abde293ae90745ee9b04
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 1ba0a965de356cfbe7d9a1cfc8d6d2e8da092934
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640650"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327173"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C# 教程：使用 Azure 搜索索引器搜索 Azure SQL 数据库
 
@@ -230,7 +230,7 @@ public string HotelName { get; set; }
 
 + **appsettings.json** 中的数据库连接信息。 它应该是从门户获得的 ADO.NET 连接字符串，经修改后包括了适用于数据库的用户名和密码。 用户帐户必须有权检索数据。
 
-+ 资源限制。 回想一下，共享（免费）服务仅限 3 个索引、索引器和数据源。 达到最大限制的服务不能创建新的对象。
++ 资源限制。 回想一下，免费层仅限 3 个索引、索引器和数据源。 达到最大限制的服务不能创建新的对象。
 
 ## <a name="search-the-index"></a>搜索索引 
 

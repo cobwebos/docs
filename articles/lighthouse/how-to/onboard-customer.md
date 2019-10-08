@@ -4,15 +4,15 @@ description: 了解如何将客户载入到 Azure 委派资源管理，使你能
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/19/2019
+ms.date: 09/30/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a199dde6b9e36683b817f908e385aabcc431ce16
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: b2e935a3a5ff2b6da99ad693f2d4e924ae811caf
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155126"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694831"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -113,11 +113,11 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 
-要载入客户，需要创建 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/)模板，其中包含以下内容：
+若要加入客户，需要使用以下信息为你的产品/服务创建 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/)模板。 在 Azure 门户的[服务提供商页](view-manage-service-providers.md)中查看产品/服务详细信息时，客户可以看到 **mspOfferName** 和 **mspOfferDescription** 值。
 
 |字段  |定义  |
 |---------|---------|
-|**mspName**     |服务提供商名称         |
+|**mspOfferName**     |描述此定义的名称。 此值将作为产品/服务的标题显示给客户。         |
 |**mspOfferDescription**     |产品/服务的简短说明（例如“Contoso VM 管理产品/服务”）      |
 |**managedByTenantId**     |租户 ID         |
 |**authorizations**     |租户中用户/组/SPN 的 principalId 值，每个值都带有一个 principalIdDisplayName（帮助客户了解授权的目的）并且已映射到内置 roleDefinitionId 值以指定访问级别            |
@@ -132,9 +132,9 @@ az role definition list --name "<roleName>" | grep name
 |订阅（使用发布到 Azure 市场的产品/服务时）   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
-> 此处所述的过程需要对每个要载入的订阅单独进行部署。
-> 
-> 如果要载入不同订阅中的多个资源组，也需要单独部署。 但是，可在一个部署中载入单个订阅中的多个资源组。
+> 此处所述的过程需要对每个要载入的订阅单独进行部署。 如果要载入不同订阅中的多个资源组，也需要单独部署。 但是，可在一个部署中载入单个订阅中的多个资源组。
+>
+> 对于应用于同一订阅（或订阅内的资源组）的多个产品/服务，还需要单独部署。 所应用的每个产品/服务必须使用不同的 **mspOfferName**。
 
 下面的示例展示了一个修改后的 resourceProjection.parameters.json 文件，该文件用于载入订阅  。 资源组参数文件（位于 [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) 文件夹）很类似，但还带有一个 rgName 参数，它用于标识要载入的特定资源组  。
 
@@ -143,7 +143,7 @@ az role definition list --name "<roleName>" | grep name
     "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "mspName": {
+        "mspOfferName": {
             "value": "Fabrikam Managed Services - Interstellar"
         },
         "mspOfferDescription": {

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
-ms.openlocfilehash: cbd55d3243426f2e6ec84986a2147ff94574bdda
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b5fa5fc13c8ce0c98c04d2451f3a50e89b986c16
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816381"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676447"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>教程：设置服务警报
 
@@ -27,7 +27,7 @@ ms.locfileid: "68816381"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [教程：在 Windows 虚拟桌面预览版中创建租户](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
+- [教程：在 Windows 虚拟桌面中创建租户](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
 - [教程：使用 PowerShell 创建服务主体和角色分配](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
 - [教程：通过 Azure 市场创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
 

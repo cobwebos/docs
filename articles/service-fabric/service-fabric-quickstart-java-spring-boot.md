@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 2aa5879ee3960bd5d26855ac7e7c3e12994ee54e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 4ec6addb348b8c13f124ec225e056d2003a93c38
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861342"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703524"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>快速入门：在 Azure Service Fabric 上部署 Java Spring Boot 应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "70861342"
 
 本快速入门使用 Spring 网站中的[入门](https://spring.io/guides/gs/spring-boot/)示例。 本快速入门逐步讲解如何使用熟悉的命令行工具，将 Spring Boot 示例部署为 Service Fabric 应用程序。 完成后，Spring Boot 入门示例将在 Service Fabric 上正常运行。
 
-![应用程序屏幕截图](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
+![Spring Boot Service Fabric 示例](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 此快速入门介绍如何：
 
@@ -79,7 +79,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
 
 1. 每次出现提示时，请输入以下详细信息。
 
-    ![Yeoman 输入内容](./media/service-fabric-quickstart-java-spring-boot/yeomanspringboot.png)
+    ![Spring Boot Yeoman 条目](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
 
 1. 在 `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` 文件夹中，创建名为 `entryPoint.sh` 的文件。 将以下内容添加到 `entryPoint.sh` 文件中。 
 
@@ -147,7 +147,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
 
     启动本地群集需要一些时间。 若要确认群集是否完全正常，请访问 Service Fabric Explorer（网址： **http://localhost:19080** ）。 5 个节点均正常即表示本地群集运行正常。 
     
-    ![本地群集正常运行](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
+    ![Service Fabric Explorer 显示运行正常的节点](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-healthy-nodes.png)
 
 1. 打开 `gs-spring-boot/SpringServiceFabric` 文件夹。
 1. 运行以下命令连接到本地群集。
@@ -163,7 +163,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
 
 1. 打开喜欢的 Web 浏览器并访问应用程序（网址：`http://localhost:8080`）。
 
-    ![本地应用程序前端](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
+    ![Spring Boot Service Fabric 示例](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 现在可以访问已部署到 Service Fabric 群集的 Spring Boot 应用程序。
 
@@ -178,7 +178,7 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
 1. 在群集中打开 Service Fabric Explorer - 例如 `http://localhost:19080`。
 1. 在树视图中选择“fabric:/SpringServiceFabric/SpringGettingStarted”节点旁边的省略号 ( **...** )，选择“缩放服务”   。
 
-    ![Service Fabric Explorer 缩放服务](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
+    ![Service Fabric Explorer 缩放服务示例](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-scale-sample.png)
 
     现在可以选择缩放服务的实例数量。
 
@@ -196,7 +196,7 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
 
 1. 在树视图中选择“fabric:/SpringServiceFabric/SpringGettingStarted”  节点，展开分区节点（由 GUID 表示）。
 
-    ![Service Fabric Explorer 缩放服务完成](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
+    ![Service Fabric Explorer 缩放服务完成](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-partition-node.png)
 
     此服务有三个实例。树状视图显示实例在哪些节点上运行。
 
@@ -209,10 +209,10 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
 1. 在群集中打开 Service Fabric Explorer - 例如 `http://localhost:19080`。
 1. 选择运行服务实例的节点旁边的省略号 ( **...** )，并重启节点。
 
-    ![Service Fabric Explorer - 重启节点](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
+    ![Service Fabric Explorer 重启节点](./media/service-fabric-quickstart-java-spring-boot/service=fabric-explorer-restart=node.png)
 1. 服务实例已转移到另一个节点，且应用程序并未关闭。
 
-    ![Service Fabric Explorer - 重启节点成功](./media/service-fabric-quickstart-java-spring-boot/sfxfailedover.png)
+    ![Service Fabric Explorer 重启节点成功](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-service-moved.png)
 
 ## <a name="next-steps"></a>后续步骤
 

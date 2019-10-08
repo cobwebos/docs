@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Azure Data Lake Storage Gen2 事件更新 Databricks Delta 表 | Microsoft Docs
+title: 教程：实现数据湖捕获模式以更新 Azure Databricks Delta 表 | Microsoft Docs
 description: 本教程介绍如何使用事件网格订阅、Azure 函数和 Azure Databricks 作业将数据行插入到存储在 Azure DataLake Storage Gen2 中的表。
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 5a85e3b16a5a93fedd6a2257f5601b0673f825ad
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904651"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326990"
 ---
-# <a name="tutorial-use-azure-data-lake-storage-gen2-events-to-update-a-databricks-delta-table"></a>教程：使用 Azure Data Lake Storage Gen2 事件更新 Databricks Delta 表
+# <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>教程：实现数据湖捕获模式以更新 Databricks Delta 表
 
 本教程介绍如何处理使用分层命名空间的存储帐户中的事件。
 

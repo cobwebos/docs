@@ -1,5 +1,5 @@
 ---
-title: 快速入门：识别语音，Java（Windows、Linux）- 语音服务
+title: 快速入门：识别语音，Java（Windows、Linux、macOS）- 语音服务
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何创建一个简单的 Java 应用程序，用于从计算机的麦克风中捕获和转录用户语音。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 498e41b08133113be9789ef49291b8e2bb0f3705
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9438cd1345d324b068db8837216afb39241cb2a2
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554103"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802460"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>快速入门：使用适用于 Java 的语音 SDK 识别语音
 
-针对[语音转语音翻译](quickstart-translate-speech-java-jre.md)和[语音优先虚拟助手](quickstart-virtual-assistant-java-jre.md)也提供了快速入门。
+快速入门也可用于[语音到语音翻译](quickstart-translate-speech-java-jre.md)、[语音优先虚拟助手](quickstart-virtual-assistant-java-jre.md)和[语音合成](quickstart-text-to-speech-java-jre.md)。
 
 如果需要，请选择不同的编程语言和/或环境：<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
@@ -95,6 +95,7 @@ GitHub 上提供了其他示例，例如如何从音频文件中读取语音。
 
 ## <a name="see-also"></a>另请参阅
 
-- [快速入门：翻译语音，Java（Windows、Linux）](quickstart-translate-speech-java-jre.md)
+- [快速入门：翻译语音，Java（Windows、Linux、macOS）](quickstart-translate-speech-java-jre.md)
+- [快速入门：合成语音，Java（Windows、Linux、macOS）](quickstart-text-to-speech-java-jre.md)
 - [自定义声学模型](how-to-customize-acoustic-models.md)
 - [自定义语言模型](how-to-customize-language-model.md)

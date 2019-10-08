@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: b295c5a945f41059ca98e96d742bc5e1f6b4bf9f
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 2d08180d40233c0ab990bc700f0412d11647d5f1
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744806"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71349963"
 ---
 # <a name="azure-storage-samples-using-java"></a>使用 Java 的 Azure 存储示例
 
@@ -97,5 +97,6 @@ ms.locfileid: "70744806"
 了解有关其他语言的示例的信息：
 
 * .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
+* JavaScript/Node.js：[使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
 * Python:[使用 Python 的 Azure 存储示例](storage-samples-python.md)
 * 所有其他语言：[Azure 存储示例](storage-samples.md)

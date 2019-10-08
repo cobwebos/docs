@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 915388b850b1b046dae91a20540881480694a944
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967060"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719546"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
-使用 Azure 的计算机视觉服务，开发人员可以访问用于处理图像并返回信息的高级算法。 若要分析图像，可以上传图像，也可以指定图像 URL。 图像处理算法可以通过多种不同的方式分析内容，具体取决于你感兴趣的视觉功能。 例如，计算机视觉可以确定图像是否包含成人内容或不雅内容，或者查找图像中的所有人脸。
+使用 Azure 的计算机视觉服务，开发人员可以访问用于处理图像并返回信息的高级算法。 若要分析图像，可以上传图像，也可以指定图像 URL。 图像处理算法可以通过多种不同的方式分析内容，具体取决于你感兴趣的视觉功能。 例如，计算机视觉可以确定图像是否包含成人内容，或者查找图像中的所有人脸。
 
 可以在应用程序中使用计算机视觉，方法是：使用本机 SDK，或者直接调用 REST API。 此页广泛地介绍了计算机视觉的功能。
 
@@ -52,7 +52,7 @@ ms.locfileid: "70967060"
 
 ## <a name="moderate-content-in-images"></a>管理图像中的内容
 
-可以使用计算机视觉来[检测图像中的成人和不雅内容](concept-detecting-adult-content.md)，并返回这两者的置信度分数。 可以根据自己的偏好在滑尺上设置成人和不雅内容检测的筛选器。
+可以使用计算机视觉[检测图像中的成人内容](concept-detecting-adult-content.md)，并返回不同分类的置信度分数。 可以在滑尺上设置标记内容的阈值，以适应首选项。
 
 ## <a name="use-containers"></a>使用容器
 

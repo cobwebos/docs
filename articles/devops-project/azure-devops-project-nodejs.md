@@ -16,14 +16,14 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-september2019
 monikerRange: vsts
-ms.openlocfilehash: c59df73e7fa1d19db4c83a1c9a317f9b69ec8a37
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 9fc276626d2a863f7f2e53cd7312ab8b3be513dd
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091167"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815770"
 ---
-#  <a name="create-a-cicd-pipeline-for--nodejs-with-azure-devops-projects"></a>使用 Azure DevOps Projects 创建用于 Node.js 的 CI/CD 管道 
+#  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>快速入门：使用 Azure DevOps Projects 创建用于 Node.js 的 Azure Pipelines 中的 CI/CD 管道
 
 Azure DevOps Projects 提供一种简化的体验，适合在 Azure Pipelines 中为 Node.js 应用创建 Azure 资源并设置持续集成 (CI) 和持续交付 (CD) 管道。  
 

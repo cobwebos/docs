@@ -3,18 +3,18 @@ title: 快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Ha
 description: 在本快速入门中，将使用 Azure 门户创建 HDInsight Hadoop 群集
 keywords: hadoop 入门,hadoop linux,hadoop 快速入门,hive 入门,hive 快速入门
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
-ms.date: 07/02/2019
-ms.author: hrasheed
-ms.openlocfilehash: 33f70ba33168190577baf1757e9be0ece5d315ba
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.date: 09/25/2019
+ms.openlocfilehash: 5d87cc7fdcd9c8065c2a9886b970b406df0d8fc8
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066892"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677913"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Hadoop 群集
 
@@ -36,58 +36,51 @@ ms.locfileid: "71066892"
 
     ![创建资源 HDInsight 群集](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight-cluster.png "创建资源 HDInsight 群集")
 
-1. 在“HDInsight”   > “快速创建”   > “基本信息”  下，输入或选择以下值：
+1. 在“基本信息”下，输入或选择以下值： 
 
     |属性  |说明  |
     |---------|---------|
-    |群集名称   | 输入 Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
     |Subscription    |  选择 Azure 订阅。 |
-    |群集类型     | 暂时跳过此步骤。 在此过程的下一步骤中提供此输入。|
+    |Resource group     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
+    |群集名称   | 输入 Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
+    |位置    | 选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 |
+    |群集类型| 选择“选择群集类型”  。 然后选择 **Hadoop** 作为群集类型。|
+    |版本|将指定群集类型的默认版本。 如果要指定其他版本，请从下拉列表中进行选择。|
     |群集登录用户名和密码    | 默认登录名为“admin”  。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”  。|
     |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”  。  可以提供其他名称作为 SSH 用户名。 |
     |对 SSH 使用群集登录密码| 选中此复选框，让 SSH 用户使用与提供给群集登录用户的密码相同的密码。|
-    |Resource group     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
-    |位置    | 选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 |
 
-    ![HDInsight Linux 入门提供群集基本值](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-basics1.png "为创建 HDInsight 群集提供基本值")
+    ![HDInsight Linux 入门提供群集基本值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics-blank.png "为创建 HDInsight 群集提供基本值")
 
-1. 选择“群集类型”  以打开“群集配置”  页，然后提供以下值：
-
-    |属性  |说明  |
-    |---------|---------|
-    |群集类型     | 选择“Hadoop”  |
-    |版本     | 选择 Hadoop 2.7.3 (HDI 3.6) |
-
-    ![HDInsight Linux 入门群集配置](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-configuration-hadoop.png "HDInsight Linux 入门群集配置")
-
-    依次选择“选择”  、“下一步”  以转到存储设置。
+    选择页面底部的“下一步:  存储 >>”以前进到存储设置。
 
 1. 在“存储”  选项卡中，提供以下值：
 
     |属性  |说明  |
     |---------|---------|
-    |主存储类型    | 对于本文，选择“Azure 存储”以使用 Azure 存储 Blob 作为默认存储帐户。 还可以将 Azure Data Lake Storage 用作默认存储。 |
-    |选择方法     |  在本文中，选择“我的订阅”，使用 Azure 订阅中的存储帐户  。 若要使用其他订阅中的存储帐户，请选择“访问密钥”，然后提供该帐户的访问密钥  。 |
-    |选择存储帐户   | 选择“选择存储帐户”  以选择现有存储帐户，或选择“新建”  。 如果创建新帐户，帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。|
+    |主存储类型|使用默认值 **Azure 存储**。|
+    |选择方法|使用默认值**从列表中选择**。|
+    |主存储帐户|使用下拉列表选择现有存储帐户，或选择“新建”  。 如果创建新帐户，名称的长度必须在 3 到 24 个字符之间，并且只能包含数字和小写字母|
+    |容器|使用自动填充的值。|
 
-    接受所有其他默认值，然后选择“下一步”  以转到摘要页。
+    ![HDInsight Linux 入门提供群集存储值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage-blank.png "为创建 HDInsight 群集提供存储值")
 
-    ![HDInsight Linux 入门提供群集存储值](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-storage.png "为创建 HDInsight 群集提供存储值")
+    选择“查看 + 创建”  选项卡。
 
-1. 在“摘要”选项卡中，确认之前步骤中所选的值  。
+1. 在“查看 + 创建”  选项卡中，验证你在前面的步骤中选择的值。
 
-    ![HDInsight Linux 入门群集摘要](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-summary.png "HDInsight Linux 入门群集摘要")
+    ![HDInsight Linux 入门群集摘要](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-review-create-hadoop.png "HDInsight Linux 入门群集摘要")
 
 1. 选择“创建”  。 创建群集大约需要 20 分钟时间。
 
-1. 创建群集后，Azure 门户中会显示群集概述页。
+创建群集后，Azure 门户中会显示群集概述页。
 
-    ![HDInsight Linux 入门群集设置](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-settings-overview.png "HDInsight 群集属性")    
+![HDInsight Linux 入门群集设置](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-settings-overview.png "HDInsight 群集属性")
 
-    每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)或 [Azure Data Lake 帐户](../hdinsight-hadoop-use-data-lake-store.md)依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
+每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)或 [Azure Data Lake 帐户](../hdinsight-hadoop-use-data-lake-store.md)依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
 
-    > [!NOTE]  
-    > 如需其他群集创建方法或要了解本快速入门中使用的属性，请参阅[创建 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
+> [!NOTE]  
+> 如需其他群集创建方法或要了解本快速入门中使用的属性，请参阅[创建 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 
 ## <a name="run-apache-hive-queries"></a>运行 Apache Hive 查询
 
@@ -151,4 +144,4 @@ ms.locfileid: "71066892"
 本快速入门介绍了如何使用资源管理器模板创建基于 Linux 的 HDInsight 群集，以及如何执行基本 Hive 查询。 下一篇文章将介绍如何使用 Hadoop on HDInsight 执行提取、转换和加载 (ETL) 操作。
 
 > [!div class="nextstepaction"]
->[使用 HDInsight 上的交互式查询提取、转换和加载数据](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+> [使用 HDInsight 上的交互式查询提取、转换和加载数据](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)

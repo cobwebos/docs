@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e9be7ef5c4f37c66f7cbf2c6226936438b367108
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 357cc23c9dedb49dfd19dc897102762066ffd1b2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515167"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679351"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -53,7 +53,7 @@ ms.locfileid: "68515167"
 
 创建任意数目的与物理位置对应的站点。 例如，如果你在纽约、伦敦和洛杉矶各有一个分支机构，请创建三个独立的站点。 这些站点包含本地 VPN 设备终结点。 目前，只能为站点指定一个专用地址空间。
 
-1. 单击已创建的 WAN。 在 WAN 页上的“WAN 体系结构”  下，单击“VPN 站点”  打开“VPN 站点”页。
+1. 单击已创建的 WAN。 在 WAN 页上的“虚拟 WAN 体系结构”  下，单击“VPN 站点”  打开“VPN 站点”页。
 2. 在“VPN 站点”  页上，单击“+创建站点”  。
 3. 在“创建站点”页上填写以下字段： 
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 65678f08399f378b8580eed79e49197dd4d84c64
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390309"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351147"
 ---
 # <a name="what-is-project-acoustics"></a>什么是项目音响效果？
 项目音响效果是 3D 交互式体验的波形音效引擎。 它可对复杂场景中的声障、声笼、传送门和混响效果进行建模而无需手动区域标记或 CPU 密集型光线跟踪。 它还包括游戏引擎和音频中间件集成。 项目音响效果的原理类似于静态照明：脱机烘焙出具体的物理数据以提供物理基线，并将轻型运行时与表达式设计控件结合使用来满足虚拟世界音响效果的艺术需要。
@@ -58,11 +58,10 @@ ms.locfileid: "70390309"
 ## <a name="download"></a>下载
 * [项目音响效果 Unity 插件和示例](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
 * [项目音响效果 Unreal 与 Wwise 插件和示例](https://www.microsoft.com/download/details.aspx?id=58090)
-  * 如需 Xbox 二进制文件和相关支持，请通过下面的注册表单与我们联系
+  * 如需 Xbox 二进制文件和其他支持，请通过[论坛](https://github.com/microsoft/ProjectAcoustics/issues)与我们联系。
 
 ## <a name="contact-us"></a>联系我们
 * [项目音响效果讨论和问题报告](https://github.com/microsoft/ProjectAcoustics/issues)
-* [注册以接收项目音响效果更新](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>后续步骤
 * 试用 [Unity 项目音响效果快速入门](unity-quickstart.md)或 [Unreal](unreal-quickstart.md) 项目音响效果快速入门

@@ -8,12 +8,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: 人体, 帧, azure, kinect, 跟踪, 提示
-ms.openlocfilehash: 287a10aaee6780e731a13cdfa06e41bbfaad080f
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b53005bf43b88c5ddab9650ee144b56923202e59
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241303"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828065"
 ---
 # <a name="access-data-in-body-frame"></a>访问人体帧中的数据
 
@@ -26,7 +26,7 @@ ms.locfileid: "70241303"
 - [k4abt_frame_get_body_skeleton()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga7ef3f65827c9d21dac0caef572cc6c23.html#ga7ef3f65827c9d21dac0caef572cc6c23)
 - [k4abt_frame_get_capture()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_gad9eef11f6496bbfe997536c374217d9a.html#gad9eef11f6496bbfe997536c374217d9a)
 - [k4abt_frame_get_num_bodies()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga485b3a0f29e61c75f2e3d8b78b345ea9.html#ga485b3a0f29e61c75f2e3d8b78b345ea9)
-- [k4abt_frame_get_timestamp_usec()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga4c7d92c9f1b4e4a4b928736fb315f918.html#ga4c7d92c9f1b4e4a4b928736fb315f918)
+- [k4abt_frame_get_device_timestamp_usec()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/0.9.x/group__btfunctions_ga04be7b814b40296cd6b97044ed7283e4.html#ga04be7b814b40296cd6b97044ed7283e4)
 
 ## <a name="key-components-of-a-body-frame"></a>人体帧的关键组成部分
 

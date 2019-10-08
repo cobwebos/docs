@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 5e33108c9fc674abaf980a1272cca31aa21cffff
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991126"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326439"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>教程：使用 Python 示例项目启动沉浸式阅读器
 
@@ -113,7 +113,7 @@ pip install jinja2
 安装 virtualenv： 用于创建独立 Python 环境的工具。
 
 ```cmd
-pip install pip install virtualenv
+pip install virtualenv
 ```
 
 安装 virtualenvwrapper-win。 virtualenvwrapper 的理念是简化 virtualenv 的使用。
@@ -126,6 +126,12 @@ pip install virtualenvwrapper-win
 
 ```cmd
 pip install requests
+```
+
+安装 python-dotenv 模块。 此模块从 .env 文件中读取键值对并将其添加到环境变量中。
+
+```cmd
+pip install python-dotenv
 ```
 
 创建虚拟环境
@@ -251,6 +257,12 @@ pip install virtualenvwrapper --user
 
 ```bash
 pip install requests --user
+```
+
+安装 python-dotenv 模块。 此模块从 .env 文件中读取键值对并将其添加到环境变量中。
+
+```bash
+pip install python-dotenv --user
 ```
 
 选择要在其中保留虚拟环境的文件夹并运行此命令

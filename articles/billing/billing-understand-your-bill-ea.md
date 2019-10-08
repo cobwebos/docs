@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f89d7935af10ebb477125c598a01278a4ceef0bd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490288"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326945"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解 Azure 企业协议帐单
 
@@ -28,10 +28,10 @@ ms.locfileid: "67490288"
 
 本部分不适用于澳大利亚、日本或新加坡的 Azure 客户。 如果你位于其中一个国家/地区，请参阅[其他客户的发票](#invoices-for-other-customers)。
 
-在计费周期中发生以下情况之一时，会收到 Azure 发票：
+当计费周期中发生以下任何事件时，将收到 Azure 发票：
 
 - **服务超额**：组织的使用费超过了信用余额。
-- **单独计费**：组织使用的服务未包括在信用额度中。 不管信用余额是多少，都会开具以下服务的发票：
+- **单独计费**：组织使用的服务未包括在信用额度中。 无论信用余额如何，都会为以下服务开具发票：
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -43,7 +43,7 @@ ms.locfileid: "67490288"
     - Visual Studio Enterprise（每年）
     - Visual Studio Professional（每月）
     - Visual Studio Professional（每年）
-- **市场费用**：组织的额度不涵盖 Azure 市场购买和使用。 因此，无论你的额度余额是多少，都会收到市场费用的发票。 在 Enterprise Portal 中，企业管理员可以启用和禁用市场购买。
+- **市场费用**：组织的额度不涵盖 Azure 市场购买和使用。 因此，不管信用余额如何，都会收到市场费用的发票。 在 Enterprise Portal 中，企业管理员可以启用和禁用市场购买。
 
 ## <a name="review-charges-for-most-customers"></a>查看大多数客户的费用
 本部分不适用于澳大利亚、日本或新加坡的 Azure 客户。 如果你位于其中一个国家/地区，请参阅[查看其他客户的费用](#review-charges-for-other-customers)。
@@ -54,7 +54,7 @@ ms.locfileid: "67490288"
 
 将 Enterprise Portal 的“报告” > “使用情况摘要”中显示的合计总金额与 Azure 发票进行比较。   “使用情况摘要”  中的金额不含税。
 
-1. 登录到 [Enterprise Portal](https://ea.azure.com)。
+1. 登录到[企业门户](https://ea.azure.com)。
 1. 选择“报告”。 
 1. 在选项卡的右上角，将视图从“M”切换到“C”，然后匹配发票上的周期。    
     ![显示“使用情况摘要”中“M + C”选项的屏幕截图。](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
@@ -66,10 +66,10 @@ ms.locfileid: "67490288"
 
 本部分仅适用于澳大利亚、日本或新加坡的 Azure 客户。
 
-发生以下情况时，你将收到一个或多个 Azure 发票：
+当发生以下任何事件时，将收到一张或多张 Azure 发票：
 
 - **服务超额**：组织的使用费超过了信用余额。
-- **单独计费**：组织使用的服务未包括在信用额度中。 不管信用余额是多少，都会开具以下服务的发票：
+- **单独计费**：组织使用的服务未包括在信用额度中。 将为以下服务开发票：
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -81,7 +81,7 @@ ms.locfileid: "67490288"
     - Visual Studio Enterprise（每年）
     - Visual Studio Professional（每月）
     - Visual Studio Professional（每年）
-- **市场费用**：Azure 市场采购和使用不包括在组织的信用额度中，需单独计费。 在 Enterprise Portal 中，企业管理员可以启用和禁用市场购买。
+- **市场费用**：Azure 市场采购和使用不包括在组织的额度中，需单独计费。 在 Enterprise Portal 中，企业管理员可以启用和禁用市场购买。
 
 在计费周期内，如果由于服务超额和单独计费而产生费用，你会收到一个发票。 它包括这两种类型的费用。 市场费用始终单独开票。
 

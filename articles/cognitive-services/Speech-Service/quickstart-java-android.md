@@ -10,19 +10,21 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: c9b63685ae73fb4e056c72a640d6c4049e98b8b8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2f728231c01056ecb8709f84f13e834ef3618dc8
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559495"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803310"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>快速入门： 在 Android 上的 Java 中使用语音 SDK 识别语音
+
+针对[语音合成](quickstart-text-to-speech-java-android.md)和[语音优先虚拟助手](quickstart-virtual-assistant-java-android.md)也提供了快速入门。
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 本文介绍如何使用认知服务语音 SDK 将语音转为文本，进而开发适用于 Android 的 Java 应用程序。
-该应用程序基于语音 SDK Maven 包（版本 1.6.0）和 Android Studio 3.3。
+该应用程序基于语音 SDK Maven 包和 Android Studio 3.3。
 语音 SDK 目前与具有 32/64 位 ARM 和 Intel x86/x64 兼容处理器的 Android 设备兼容。
 
 > [!NOTE]

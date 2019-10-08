@@ -4,16 +4,16 @@ description: 本文介绍管理员可在 Azure EA 门户中完成的常见任务
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 09/25/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 236a8d6d280e75102df84fec5ab3df51f7ba355b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105486"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308102"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -31,7 +31,7 @@ ms.locfileid: "71105486"
 
 Azure EA 管理员创建部门后，Azure 企业管理员可以添加部门管理员并将每个管理员关联到某个部门。 部门管理员可以创建新帐户。 需要添加新帐户才能创建 Azure EA 订阅。
 
-有关添加部门的详细信息，请参阅“创建 Azure EA 部门”。
+有关添加部门管理员的详细信息，请参阅[创建 Azure EA 部门管理员](billing-ea-portal-get-started.md#add-a-department-admin)。
 
 ## <a name="enterprise-user-roles"></a>企业用户角色
 
@@ -124,14 +124,14 @@ Azure EA 帐户是 Azure EA 门户中的一个组织单位，用于管理订阅�
 
 请求注册转移时，请提供以下信息：
 
-- 对于源注册，请提供要转移的注册编号和帐户
-- 对于目标注册，请提供要转移到的注册编号
+- 对于源注册，请提供要转移的注册编号和帐户。
+- 对于目标注册，请提供要转移到的注册编号。
 - 注册转移生效日期可以是目标注册开始日期当日或之后的某个日期 所选日期不能影响任何已开具的超额发票的使用。
 
 转移注册之前要注意的其他要点：
 
-- 目标和源注册需要经过 EA 管理员的批准
-  - 在某些情况下，Microsoft 可能会要求源注册的 EA 管理员做出附加批准
+- 目标和源注册需要经过 EA 管理员的批准。
+  - 在某些情况下，Microsoft 可能会要求源注册的 EA 管理员做出附加批准。
 - 如果注册转移不符合要求，请考虑进行帐户转移。
 - 仅转移指定的帐户。 可以请求转移所有帐户。
 - 源注册的状态将保留为活动/已扩展。 在该注册过期之前，可以继续使用它。
@@ -208,7 +208,7 @@ Azure EA 门户可将一个帐户所有者的订阅转移到另一个帐户所�
 6. 根据需要添加联系人，然后单击“添加”。 
 7. 单击“ **保存**”。
 
-![显示“添加联系人”的示例 ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
+![显示“添加联系人”框的示例 ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure 赞助套餐
 Azure 赞助套餐是一个受限的 Microsoft Azure 赞助帐户。 它是 Microsoft 通过电子邮件邀请提供给有限的客户使用的套餐。 如果你符合 Microsoft Azure 赞助套餐的条件，你的帐户 ID 会收到一封邀请电子邮件。

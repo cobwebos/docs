@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 014a5f264b9beed666f718cda52d197381d58876
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266258"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802526"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>快速入门：让适用于 Python 的客户端库个性化
 
@@ -33,9 +33,19 @@ ms.locfileid: "71266258"
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
 
-## <a name="setting-up"></a>设置
+## <a name="using-this-quickstart"></a>使用此快速入门
 
-### <a name="create-a-personalizer-azure-resource"></a>创建个性化体验创建服务 Azure 资源
+
+使用此快速入门有几个步骤：
+
+* 在 Azure 门户中，创建一个个性化体验创建服务资源
+* 在 Azure 门户中，对于个性化体验创建服务资源，在“设置”  页上，更改模型更新频率
+* 在代码编辑器中，创建一个代码文件并编辑该代码文件
+* 在命令行或终端中，从命令行安装 SDK
+* 在命令行或终端中，运行代码文件
+
+
+## <a name="create-a-personalizer-azure-resource"></a>创建个性化体验创建服务 Azure 资源
 
 Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://portal.azure.com/)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 有关更多详细信息，请参阅[如何使用 Azure 门户创建认知服务资源](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 还可以：
 
@@ -50,7 +60,7 @@ Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](ht
 在 Azure 门户中，可以从“快速入门”页中获取密钥和终结点值  。
 
 
-### <a name="install-the-python-library-for-personalizer"></a>为个性化体验创建服务安装 Python 库
+## <a name="install-the-python-library-for-personalizer"></a>为个性化体验创建服务安装 Python 库
 
 使用以下命令安装适用于 Python 的个性化体验创建服务客户端库：
 
@@ -58,11 +68,9 @@ Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](ht
 pip install azure-cognitiveservices-personalizer
 ```
 
-如果你使用的是 Visual Studio IDE，客户端库可用作可下载的 NuGet 包。
+## <a name="change-the-model-update-frequency"></a>更改模型更新频率
 
-### <a name="change-the-model-update-frequency"></a>更改模型更新频率
-
-在 Azure 门户中的个性化体验创建服务中，将“模型更新频率”  更改为 10 秒。 这将快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化。
+在 Azure 门户的“设置”  页上的个性化体验创建服务资源中，将“模型更新频率”  更改为 10 秒。 这将快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化。
 
 ![更改模型更新频率](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -92,13 +100,15 @@ pip install azure-cognitiveservices-personalizer
 
 ## <a name="add-the-dependencies"></a>添加依赖项
 
-在首选的编辑器或 IDE 中，从项目目录打开 **Program.cs** 文件。 将现有 `using` 代码替换为以下 `using` 指令：
+从项目目录中，在首选编辑器或 IDE 中打开 **sample.py** 文件。 添加以下内容：
 
 [!code-python[Add module dependencies](~/samples-personalizer/quickstarts/python/sample.py?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>添加个性化体验创建服务资源信息
 
-在 **Program** 类中，为资源的 Azure 密钥以及从环境变量提取的终结点创建名为 `PERSONALIZER_RESOURCE_KEY` 和 `PERSONALIZER_RESOURCE_ENDPOINT` 的变量。 如果在启动应用程序后创建了环境变量，则需要关闭并重新加载运行它的编辑器、IDE 或 shell 以访问该变量。 稍后将在本快速入门中创建这些方法。
+为资源的 Azure 密钥以及从环境变量拉取的终结点创建名为 `PERSONALIZER_RESOURCE_KEY` 和 `PERSONALIZER_RESOURCE_ENDPOINT` 的变量。 如果在启动应用程序后创建了环境变量，则需要关闭并重新加载运行它的编辑器、IDE 或 shell 以访问该变量。 稍后将在本快速入门中创建这些方法。
+
+资源名称是终结点 URL 的一部分：`https://<your-resource-name>.api.cognitive.microsoft.com/`。
 
 [!code-python[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/python/sample.py?name=AuthorizationVariables)]
 
@@ -110,7 +120,7 @@ pip install azure-cognitiveservices-personalizer
 
 ## <a name="get-content-choices-represented-as-actions"></a>获取以操作形式表示的内容选项
 
-操作表示你希望个性化体验创建服务排名的内容选项。 将以下方法添加到 Program 类，以从命令行获取用户的日期时间输入及其当前食品偏好。
+操作表示你希望个性化体验创建服务排名的内容选项。 添加以下方法以从命令行获取用户对一天中的时间和当前食物偏好的输入。
 
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
 
@@ -122,7 +132,7 @@ pip install azure-cognitiveservices-personalizer
 
 个性化体验创建服务学习循环是一个[排名](#request-a-rank)和[奖励](#send-a-reward)调用周期。 在本快速入门中，用于个性化内容的每个排名调用都后接一个奖励调用，该奖励调用让个性化体验创建服务知道服务对内容排名的适用程度。 
 
-程序的 `main` 方法中的以下代码循环调用某个周期，要求用户在命令行中指定其偏好，将该信息发送给个性化体验创建服务以进行排名，向客户显示排名的选项以让他们从列表中进行选择，然后向个性化体验创建服务发送奖励，指出服务对所选内容排名的适用程度。
+以下代码循环调用以下循环：在命令行询问用户的首选项，将该信息发送给个性化体验创建服务以进行排名，向客户显示排名的选项以让他们从列表中进行选择，然后向个性化体验创建服务发送奖励，指出服务对所选内容排名的适用程度。
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=mainLoop&highlight=9,10,29)]
 

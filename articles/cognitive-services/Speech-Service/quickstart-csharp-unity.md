@@ -1,35 +1,34 @@
 ---
 title: 快速入门：识别语音，Unity - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 参考本指南使用 Unity 和适用于 Unity 的语音 SDK (Beta) 创建语音转文本应用程序。 完成后，可以使用计算机的麦克风实时将语音转录为文本。
+description: 参考本指南使用 Unity 和适用于 Unity 的语音 SDK 创建语音转文本应用程序。 完成后，可以使用计算机的麦克风实时将语音转录为文本。
 services: cognitive-services
 author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 09/17/2019
 ms.author: jhakulin
-ms.openlocfilehash: 1b6e60edd86cff2d657b562f05351e20571c0909
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a7ac6831fd21fcc0dc425b57f5d73d8c328f9350
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815376"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803474"
 ---
-# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>快速入门：使用适用于 Unity 的语音 SDK (Beta) 识别语音
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity"></a>快速入门：使用适用于 Unity 的语音 SDK 识别语音
 
 针对[文本转语音](quickstart-text-to-speech-csharp-unity.md)也提供了快速入门。
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-参考本指南使用 [Unity](https://unity3d.com/) 和适用于 Unity 的语音 SDK (Beta) 创建语音转文本应用程序。
+参考本指南使用 [Unity](https://unity3d.com/) 和适用于 Unity 的语音 SDK 创建语音转文本应用程序。
 完成后，可以对着设备讲话，以实时将语音转录为文本。
 如果你不熟悉 Unity，我们建议在开发应用程序之前先学习 [Unity 用户手册](https://docs.unity3d.com/Manual/UnityManual.html)。
 
 > [!NOTE]
-> 适用于 Unity 的语音 SDK 目前为 Beta 版。
-> 它支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）以及 Android（x86、ARM32/64）。
+> 适用于 Unity 的语音 SDK 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +36,7 @@ ms.locfileid: "68815376"
 
 - [Unity 2018.3 或更高版本](https://store.unity.com/)，以及[支持 UWP ARM64 的 Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)。
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。 也可以使用 Visual Studio 2017 版本 15.9 或更高版本。
-  - 为了支持 ARM64，请安装[适用于 ARM64 的可选版本，以及适用于 ARM64 的 Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/)。
+- 为了支持 Windows ARM64，请安装[适用于 ARM64 的可选版本工具，以及适用于 ARM64 的 Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/)
 - 语音服务的订阅密钥。 [免费获得一个](get-started.md)。
 - 能够访问计算机的麦克风。
 
@@ -62,7 +61,7 @@ ms.locfileid: "68815376"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-1. 下载并打开[适用于 Unity 的语音 SDK (Beta)](https://aka.ms/csspeech/unitypackage)，该程序打包为 Unity 资产包 (.unitypackage)。 打开资产包后，会显示“导入 Unity 包”对话框。 
+1. 下载并打开[适用于 Unity 的语音 SDK](https://aka.ms/csspeech/unitypackage)，该程序打包为 Unity 资产包 (.unitypackage)。 打开资产包后，会显示“导入 Unity 包”对话框。 
 
    [![Unity 编辑器中的“导入 Unity 包”对话框](media/sdk/qs-csharp-unity-01-import.png)](media/sdk/qs-csharp-unity-01-import.png#lightbox)
 1. 确保选择所有文件，然后选择“导入”。  片刻之后，Unity 资产包即会导入到项目中。

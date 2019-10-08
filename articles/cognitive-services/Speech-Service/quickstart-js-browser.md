@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 7c1c616ec6ce36ee58f32dbcada8ead6fc339f2e
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 77afdb491e4a6cee0a3d6861ea76f57502e56278
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306976"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802440"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>快速入门：在浏览器中使用语音 SDK 通过 JavaScript 识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 本文介绍如何创建使用认知服务语音 SDK 的 JavaScript 绑定以将语音转录为文本的网站。
-该应用程序基于适用于 JavaScript 的语音 SDK（[下载版本 1.6.0](https://aka.ms/csspeech/jsbrowserpackage)）。
+该应用程序基于[适用于 JavaScript 的语音 SDK](https://aka.ms/csspeech/jsbrowserpackage)）。
 
 ## <a name="prerequisites"></a>先决条件
 

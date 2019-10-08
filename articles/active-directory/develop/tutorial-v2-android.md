@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a53a0d5ea8405c116d0286d3b67b1640f98ed96d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0a26a7fc27fa13d86eb3b82fd4be70e5b371581f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852446"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677964"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>从 Android 应用将用户登录并调用 Microsoft Graph
 
@@ -49,7 +49,7 @@ ms.locfileid: "68852446"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 本教程需要 Android Studio 16 版本或更高版本（建议使用 19+ 版本）。
+* 本教程需要 Android Studio 版本 3.5。
 
 ## <a name="create-a-project"></a>创建一个项目
 
@@ -59,15 +59,16 @@ ms.locfileid: "68852446"
 2. 选择“基本活动”，再选择“下一步”   。
 3. 命名应用程序。
 4. 保存包名称。 以后需将它输入 Azure 门户中。
-5. 将“最低 API 级别”  设置为 **API 19** 或更高，然后单击“完成”。 
-6. 在项目视图的下拉列表中选择“项目”  ，以便显示源和非源的项目文件，然后打开 **app/build.gradle**，将 `targetSdkVersion` 设置为 `27`。
+5. 将语言从“Kotlin”  更改为“Java”  。
+6. 将“最低 API 级别”  设置为 **API 19** 或更高，然后单击“完成”。 
+7. 在项目视图的下拉列表中选择“项目”  ，以便显示源和非源的项目文件，然后打开 **app/build.gradle**，将 `targetSdkVersion` 设置为 `28`。
 
 ## <a name="register-your-application"></a>注册应用程序
 
 1. 转到 [Azure 门户](https://aka.ms/MobileAppReg)。
 2. 打开[“应用注册”边栏选项卡](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)，单击“+新建注册”。 
 3. 输入应用的“名称”，然后在不设置重定向  URI 的情况下单击“注册”。 
-4. 在显示的窗格的“管理”部分，  选择“身份验证”   > “+ 添加平台”   >   “Android”。
+4. 在显示的窗格的“管理”部分，  选择“身份验证”   > “+ 添加平台”   >   “Android”。 （可能必须选择边栏选项卡顶部附近的“切换到新体验”才能看到此部分）
 5. 输入项目的包名称。 如果下载了代码，则该值为 `com.azuresamples.msalandroidapp`。
 6. 在“配置 Android 应用”页的“签名哈希”部分，单击“生成开发签名哈希”。    然后复制用于平台的 KeyTool 命令。
 
@@ -83,8 +84,8 @@ ms.locfileid: "68852446"
 
 1. 在 Android Studio 的项目窗格中，导航到 **app\src\main\res**。
 2. 右键单击“res”  ，选择“新建”   >   “目录”。 输入 `raw` 作为新目录名称，然后单击“确定”。 
-3. 在 **app** > **src** > **res** > **raw** 中，新建名为 `auth_config.json` 的 JSON 文件，然后粘贴以前保存的 MSAL 配置。 有关详细信息，请参阅 [MSAL 配置](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)。
-4. 在 **app** > **src** > **main** > **AndroidManifest.xml** 中，添加下面的 `BrowserTabActivity` 活动。 该条目允许 Microsoft 在完成身份验证后回调应用程序：
+3. 在 **app** > **src** > **main** > **res** > **raw** 中，新建名为 `auth_config.json` 的 JSON 文件，然后粘贴以前保存的 MSAL 配置。 有关详细信息，请参阅 [MSAL 配置](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)。
+4. 在 **app** > **src** > **main** > **AndroidManifest.xml** 中，将以下 `BrowserTabActivity` 活动添加到应用程序主体。 该条目允许 Microsoft 在完成身份验证后回调应用程序：
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -114,7 +115,7 @@ ms.locfileid: "68852446"
 ### <a name="create-the-apps-ui"></a>创建应用的 UI
 
 1. 在 Android Studio 项目窗口中导航到 **app** > **src** > **main** > **res** > **layout**，打开 **activity_main.xml**，然后打开“文本”视图。 
-2. 更改活动布局，例如，将 `<androidx.coordinatorlayout.widget.CoordinatorLayout` 更改为 `<androidx.coordinatorlayout.widget.LinearLayout`。
+2. 更改活动布局，例如，将 `<androidx.coordinatorlayout.widget.CoordinatorLayout` 更改为 `<androidx.coordinatorlayout.widget.DrawerLayout`。 
 3. 将 `android:orientation="vertical"` 属性添加到 `LinearLayout` 节点。
 4. 将以下代码粘贴到 `LinearLayout` 节点，替换当前内容：
 
@@ -176,13 +177,13 @@ ms.locfileid: "68852446"
 
     ```gradle  
     implementation 'com.android.volley:volley:1.1.1'
-    implementation 'com.microsoft.identity.client:msal:0.3.+'
+    implementation 'com.microsoft.identity.client:msal:1.0.+'
     ```
 
 ### <a name="use-msal"></a>使用 MSAL
 
 现在，请在 `MainActivity.java` 中进行更改，以便在应用中添加并使用 MSAL。
-在 Android Studio 项目窗口中，导航到 app  >  src  >  main  >  java  >  com.example.msal，然后打开 `MainActivity.java`      。
+在 Android Studio 项目窗口中，导航到 **app** > **src** > **main** > **java** > **com.example.（你的应用）** ，然后打开 `MainActivity.java`。
 
 #### <a name="required-imports"></a>要求的导入
 

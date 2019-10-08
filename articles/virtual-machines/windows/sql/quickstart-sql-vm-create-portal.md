@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3ba804f76f8d443c0b49a9b4e5425333f01f0b9a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bbf127f105f0ef22a23f00541396c2ac66b0e5f9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102332"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828360"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 SQL Server 2017 Windows 虚拟机
 
@@ -81,9 +81,10 @@ ms.locfileid: "70102332"
 在“SQL Server 设置”选项卡中配置以下选项： 
 
 1. 在“安全性和网络”下，为“SQL 连接”选择“公共(Internet)”，并将端口更改为 `1401`，以避免在公共方案中使用众所周知的端口号。    
-1. 在“SQL 身份验证”下，选择“启用”。   SQL 登录名设置为针对 VM 配置的相同用户名和密码。 对“Azure Key Vault 集成”和“存储配置”使用默认设置。    
+1. 在“SQL 身份验证”下，选择“启用”。   SQL 登录名设置为针对 VM 配置的相同用户名和密码。 使用 [**Azure Key Vault 集成**](virtual-machines-windows-ps-sql-keyvault.md)的默认设置。 **存储配置**不可用于基本 SQL Server VM 映像，但你可以在[存储配置](virtual-machines-windows-sql-server-storage-configuration.md#new-vms)中找到有关其他映像的可用选项的详细信息。  
 
    ![SQL Server 安全性设置](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
+
 
 1. 根据需要更改其他任何设置，然后选择“查看 + 创建”。  
 

@@ -1,22 +1,22 @@
 ---
-title: 管理 Windows 虚拟桌面预览版的应用组 - Azure
-description: 介绍如何在 Azure Active Directory 中设置 Windows 虚拟桌面预览版租户。
+title: 管理 Windows 虚拟桌面的应用组 - Azure
+description: 介绍如何在 Azure Active Directory 中设置 Windows 虚拟桌面租户。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 2bec7e490443727fa294e7be9412bb20ae66e691
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e158c0a6090493bec0169c144f030300de921516
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163255"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679452"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>教程：管理 Windows 虚拟桌面预览版的应用组
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>教程：管理 Windows 虚拟桌面的应用组
 
-为新的 Windows 虚拟桌面预览版主机池创建的默认应用组也会发布完整桌面。 此外，可为主机池创建一个或多个 RemoteApp 应用程序组。 请遵循本教程创建 RemoteApp 应用组并发布单个“开始”  菜单应用。
+为新的 Windows 虚拟桌面主机池创建的默认应用组也会发布完整桌面。 此外，可为主机池创建一个或多个 RemoteApp 应用程序组。 请遵循本教程创建 RemoteApp 应用组并发布单个“开始”  菜单应用。
 
 本教程介绍如何执行下列操作：
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 06/21/2019
-ms.openlocfilehash: 32e253b4e131d753ab6937d0aa2a49bda471e091
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466583"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327645"
 ---
 # <a name="c-tutorial-order-the-results---azure-search"></a>C# 教程：对结果排序 - Azure 搜索
 
@@ -31,7 +31,7 @@ ms.locfileid: "67466583"
 
 要完成本教程，需要：
 
-已设置并运行 [C# 教程：搜索结果分页 - Azure 搜索](tutorial-csharp-paging.md)项目的无限滚动版本。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
+已设置并运行 [C# 教程：搜索结果分页 - Azure 搜索](tutorial-csharp-paging.md)项目的无限滚动版本。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="order-results-based-on-one-property"></a>根据一个属性对结果排序
 
@@ -43,7 +43,7 @@ ms.locfileid: "67466583"
 
 ### <a name="add-the-orderby-property-to-the-search-parameters"></a>向搜索参数添加 OrderBy 属性
 
-1. 要根据单个数值属性对结果进行排序，只需将 OrderBy 参数设置为属性的名称  。 在 Index(SearchData model) 方法中，向搜索参数添加以下行  。
+1. 要根据单个数值属性对结果进行排序，只需将 OrderBy 属性设置为属性的名称  。 在 Index(SearchData model) 方法中，向搜索参数添加以下行  。
 
     ```cs
         OrderBy = new[] { "Rating desc" },
@@ -142,7 +142,7 @@ ms.locfileid: "67466583"
                 }
     ```
 
-6. 需要能在所显示的第一个页面以及通过无限滚动调用的后续页面中进行评级。 对于这两种情况的后一种情况，我们需要更新控制器中的 Next 操作，还需要更新 scrolled 函数   。 首先从控制器开始，将 Next 方法更改为以下代码  。 此代码会创建并传递评级文本。
+6. 需要能在所显示的第一个页面以及通过无限滚动调用的后续页面中进行评级。 对于这两种情况的后一种情况，我们需要更新控制器中的 Next 操作，还需要更新 scrolled   。 首先从控制器开始，将 Next 方法更改为以下代码  。 此代码会创建并传递评级文本。
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -320,7 +320,7 @@ ms.locfileid: "67466583"
 
     ![显示房价范围](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
 
-搜索参数的 OrderBy 属性将不接受 Rooms.BaseRate 之类的条目来提供最低房价，即使客房已按房价进行排序（但事实并非如此）   。 为了显示示例数据集中已按房价排序的酒店，你必须在主控制器中对结果进行排序，并按所需顺序将这些结果发送到视图中。
+搜索参数的 **OrderBy** 属性将不接受 **Rooms.BaseRate** 之类的条目来提供最低房价，即使客房已按房价进行排序。 在这种情况下，房间不按费率排序。 为了显示示例数据集中已按房价排序的酒店，你必须在主控制器中对结果进行排序，并按所需顺序将这些结果发送到视图中。
 
 ## <a name="order-results-based-on-multiple-values"></a>根据多个值对结果排序
 

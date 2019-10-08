@@ -1,17 +1,17 @@
 ---
-title: 教程 - 使用 Azure Data Share 预览版与客户和合作伙伴共享数据
+title: 教程：在组织外共享 - Azure Data Share 预览版
 description: 教程 - 使用 Azure Data Share 预览版与客户和合作伙伴共享数据
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 01888f3656765b922c1b646e7ca8e07d81e799f3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f7df46a6a6f149ef0228fda8c967469a25dc3d50
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838417"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327418"
 ---
 # <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>教程：使用 Azure Data Share 预览版共享数据
 

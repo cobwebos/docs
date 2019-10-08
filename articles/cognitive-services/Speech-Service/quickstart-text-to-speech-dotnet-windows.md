@@ -8,30 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/27/2019
 ms.author: yinhew
-ms.openlocfilehash: 65db847c5df1a05671e3b1c0ac4541f00506c8fd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1a411455e4a6dea22e092cdfc8e70ee23b656435
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854698"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327453"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>快速入门：使用适用于 .NET Framework 的语音 SDK (Windows) 合成语音
 
-针对[语音识别](quickstart-csharp-dotnet-windows.md)和[语音翻译](quickstart-translate-speech-dotnetframework-windows.md)也提供了快速入门。
+还为[语音识别](quickstart-csharp-dotnet-windows.md)和[语音翻译](quickstart-translate-speech-dotnetframework-windows.md)提供了快速入门。
 
 按照本指南使用适用于 Windows 的 .NET framework 和语音 SDK 创建文本转语音控制台应用程序。 完成后，你可以从文本合成语音，并实时听到扬声器上的语音。
 
-为了快速演示（无需自己构建 Visual Studio 项目，如下所示）：
-
-从 GitHub 获取最新[认知服务语音 SDK 示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk)。
+若要快速演示（不需要自己构建 Visual Studio 项目，如本文所述），请从 GitHub 获取最新的[认知服务语音 SDK 示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本项目，需要：
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。
 * 语音服务的订阅密钥。 [免费获得一个](get-started.md)。
 * 可用的扬声器（或耳机）。
 
@@ -41,29 +39,25 @@ ms.locfileid: "68854698"
 
 ## <a name="add-sample-code"></a>添加示例代码
 
-1. 打开 `Program.cs` 并使用此示例替换自动生成的代码：
+1. 打开 **Program.cs** 并使用此示例替换自动生成的代码：
 
-    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-dotnet-windows/helloworld/Program.cs#code)]
+   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. 找到字符串 `YourSubscriptionKey` 并将其替换为你的语音服务订阅密钥。
+1. 找到字符串 `YourSubscriptionKey` 并将其替换为语音服务订阅密钥。
 
-1. 找到字符串 `YourServiceRegion` 并将其替换为与订阅关联的[区域](regions.md)。 例如，如果使用的是免费试用版，区域是 `westus`。
+1. 查找字符串 `YourServiceRegion`，并将其替换为与订阅关联的[区域](regions.md)。 例如，如果使用的是免费试用订阅，区域是 `westus`。
 
-1. 保存对项目的更改。
+1. 在菜单栏中，选择“文件”   > “全部保存”  。
 
-## <a name="build-and-run-the-app"></a>生成并运行应用
+## <a name="build-and-run-the-application"></a>构建并运行应用程序
 
-1. 从菜单栏中，选择“构建” > “构建解决方案”   。 现在，编译代码时应不会提示错误。
+1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 现在，编译代码时应不会提示错误。
 
-    ![Visual Studio 应用程序的屏幕截图，其中突出显示了“生成解决方案”选项](media/sdk/qs-csharp-dotnet-windows-08-build.png "成功生成")
+1. 选择“调试”   > “开始调试”  （或选择 F5  ）以启动 helloworld  应用程序。
 
-1. 在菜单栏中，选择“调试” > “开始调试”，或按 F5 以启动应用程序    。
+1. 输入一个英语短语或句子。 应用程序将你的文本传输到语音服务，该服务会将合成的语音发送到应用程序以在你的扬声器上播放。
 
-    ![Visual Studio 应用程序的屏幕截图，其中突出显示了“启动调试”选项](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "启动应用进入调试")
-
-1. 此时将显示控制台窗口，提示你键入一些文本。 键入几个单词或一个句子。 你键入的文本将传输到语音服务，并合成为语音，在你的扬声器上播放。
-
-    ![成功识别后的控制台输出的屏幕截图](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "成功识别后的控制台输出")
+   ![语音合成用户界面](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -72,5 +66,5 @@ ms.locfileid: "68854698"
 
 ## <a name="see-also"></a>另请参阅
 
-- [自定义语音字体](how-to-customize-voice-font.md)
-- [录制语音示例](record-custom-voice-samples.md)
+- [创建自定义语音](how-to-custom-voice-create-voice.md)
+- [录制自定义语音示例](record-custom-voice-samples.md)

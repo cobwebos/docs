@@ -1,22 +1,22 @@
 ---
-title: 在 Windows 虚拟桌面预览版中创建租户 - Azure
-description: 介绍如何在 Azure Active Directory 中设置 Windows 虚拟桌面预览版租户。
+title: 在 Windows 虚拟桌面中创建租户 - Azure
+description: 介绍如何在 Azure Active Directory 中设置 Windows 虚拟桌面租户。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: helohr
-ms.openlocfilehash: 66441e852ebe0a391a5807b90eeadae230130815
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 04a65442e86168239f08fb71303b8d9e9e152e72
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734450"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679475"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>教程：在 Windows 虚拟桌面预览版中创建租户
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>教程：在 Windows 虚拟桌面中创建租户
 
-在 Windows 虚拟桌面预览版中创建租户是生成桌面虚拟化解决方案的第一步。 租户是由一个或多个主机池构成的组。 每个主机池包含多个会话主机，这些主机作为虚拟机在 Azure 中运行，并注册到 Windows 虚拟桌面服务。 每个主机池还包含用于向用户发布远程桌面和远程应用程序资源的一个或多个应用组。 使用租户可以生成主机池、创建应用组、分配用户，以及通过服务建立连接。
+在 Windows 虚拟桌面中创建租户是生成桌面虚拟化解决方案的第一步。 租户是由一个或多个主机池构成的组。 每个主机池包含多个会话主机，这些主机作为虚拟机在 Azure 中运行，并注册到 Windows 虚拟桌面服务。 每个主机池还包含用于向用户发布远程桌面和远程应用程序资源的一个或多个应用组。 使用租户可以生成主机池、创建应用组、分配用户，以及通过服务建立连接。
 
 本教程介绍如何执行下列操作：
 
@@ -107,7 +107,7 @@ ms.locfileid: "70734450"
 3. 查找“订阅 ID”，然后将鼠标悬停在该值上，直到出现剪贴板图标  。 选择剪贴板图标，再将其粘贴到方便的位置，以便稍后可将其用作 **AzureSubscriptionId** 值。
    ![Azure 订阅属性的屏幕截图。 将鼠标悬停在剪贴板图标上来复制粘贴“订阅 ID”。](media/tenant-subscription-id.png)
 
-## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>创建 Windows 虚拟桌面预览版租户
+## <a name="create-a-windows-virtual-desktop-tenant"></a>创建 Windows 虚拟桌面租户
 
 向 Windows 虚拟桌面服务授予查询 Azure Active Directory 的权限并将 TenantCreator 角色分配到用户帐户后，可以创建 Windows 虚拟桌面租户。
 

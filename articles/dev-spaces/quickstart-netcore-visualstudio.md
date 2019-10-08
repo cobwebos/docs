@@ -12,12 +12,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm,
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: ece47c86fba6bc975a4146f596fa001014352a4f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 41dea16f7938d391f8cdf03e1a731e8082f74b26
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725842"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695473"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>快速入门：通过 Azure Dev Spaces 在 Kubernetes 上使用 Visual Studio 和 .NET Core 进行调试和循环访问
 
@@ -26,6 +26,11 @@ ms.locfileid: "68725842"
 - 使用 Azure 中的托管 Kubernetes 群集设置 Azure Dev Spaces。
 - 使用 Visual Studio 在容器中以迭代方式开发代码。
 - 使用 Visual Studio 调试群集中运行的代码。
+
+Azure Dev Spaces 还允许使用以下方法进行调试和迭代：
+- [Java 和 Visual Studio Code](quickstart-java.md)
+- [Node.js 和 Visual Studio Code](quickstart-nodejs.md)
+- [.NET Core 和 Visual Studio Code](quickstart-netcore.md)
 
 ## <a name="prerequisites"></a>先决条件
 

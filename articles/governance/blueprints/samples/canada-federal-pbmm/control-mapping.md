@@ -7,12 +7,12 @@ ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 64f0517eece5efcd928b18c7f040fb88c3c36546
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 35bc0445494c1d72b833eecd9a8e5bec7ab10423
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309527"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350798"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大联邦 PBMM 蓝图示例的控制映射
 
@@ -87,7 +87,7 @@ Azure SQL 数据库高级数据安全性的数据发现和分类功能提供用�
 
 ## <a name="ac-17-1-remote-access--automated-monitoring--control"></a>AC-17 (1) 远程访问 | 自动监视/控制
 
-此蓝图可帮助你监视和控制远程访问，因为它会分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 应用服务应用程序的远程调试处于关闭状态，此蓝图还会分配策略定义用于审核允许来自无密码帐户的远程连接的 Linux 虚拟机。 此蓝图还将分配一个 Azure Policy 定义，用于帮助监视对存储帐户的无限制访问。 监视这些指标可以帮助确保远程访问方法符合安全策略。
+此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来监视 Azure 应用服务应用程序的远程调试被关闭，从而帮助你监视和控制远程访问。 此蓝图还分配了审核 Linux 虚拟机的策略定义，这些虚拟机允许从没有密码的帐户进行远程连接。 此外，此蓝图还分配了一个 Azure Policy 定义，帮助你监视对存储帐户的不受限制的访问。 监视这些指标可以帮助确保远程访问方法符合安全策略。
 
 - \[预览\]：审核允许通过没有密码的帐户进行远程连接的 Linux VM
 - \[预览\]：部署要求以审核允许通过没有密码的帐户进行远程连接的 Linux VM

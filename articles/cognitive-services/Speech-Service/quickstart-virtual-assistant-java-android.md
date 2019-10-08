@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 1c203bb39a90fdb1c77c3a2c844318a748df7c63
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f5b8623c835b4188d098ab2acf842abef30138e9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559205"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71800052"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Java on Android 中创建语音优先的虚拟助手
 
-我们还编写了一篇适用于[语音转文本](quickstart-java-android.md)服务的快速入门。
+针对[语音转文本](quickstart-java-android.md)和[文本转语音](quickstart-text-to-speech-java-android.md)也提供了快速入门。
 
 在本文中，你将使用[语音 SDK](speech-sdk.md) 在 Java for Android 中生成一个语音优先的虚拟助手。 此应用程序将连接到已使用 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)编写并配置的机器人。 然后，它将语音请求发送到该机器人，并提供支持语音的响应活动。
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 8c346b75b30737645721d8b39a655a85ed446fae
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 536ada668db724ca50d7db820aff173f7222bab2
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229529"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336856"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教程：创建和配置 Azure Active Directory 域服务实例
 
@@ -42,7 +42,8 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 需要在 Azure AD 目录中拥有“全局管理员”特权才能启用 Azure AD DS。 
 * 需要在 Azure 订阅中拥有“参与者”特权才能创建所需的 Azure AD DS 资源。 
-* 必须在 Azure AD 租户中[配置自助式密码重置][configure-sspr]。
+
+尽管 Azure AD DS 不需要，但建议为 Azure AD 租户[配置自助式密码重置 (SSPR)][configure-sspr]。 用户可以在没有 SSPR 的情况下更改其密码，但如果用户忘记其密码并需要重置密码，SSPR 会有所帮助。
 
 > [!IMPORTANT]
 > 创建 Azure AD DS 托管域后，无法将实例移到其他资源组、虚拟网络、订阅等。部署 Azure AD DS 实例时，请注意选择最合适的订阅、资源组、区域和虚拟网络。

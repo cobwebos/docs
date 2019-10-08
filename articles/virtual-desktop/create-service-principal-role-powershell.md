@@ -1,22 +1,22 @@
 ---
-title: 使用 PowerShell 创建 Windows 虚拟桌面预览版服务主体和角色分配 - Azure
-description: 了解如何使用 PowerShell 在 Windows 虚拟桌面预览版中创建服务主体并分配角色。
+title: 使用 PowerShell 创建 Windows 虚拟桌面服务主体和角色分配 - Azure
+description: 了解如何使用 PowerShell 在 Windows 虚拟桌面中创建服务主体并分配角色。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: dbde4ccede7f27ae494c8326babc7ec69b4a1266
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 87057d29d9d95ac0ebca298e40ca0d8c2aa9b0b1
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985006"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679622"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>教程：通过使用 PowerShell 创建服务主体和角色分配
 
-服务主体是可以在 Azure Active Directory 中创建的、用于根据特定目的分配角色和权限的标识。 在 Windows 虚拟桌面预览版中，可以创建服务主体来实现以下目的：
+服务主体是可以在 Azure Active Directory 中创建的、用于根据特定目的分配角色和权限的标识。 在 Windows 虚拟桌面中，可以创建服务主体来实现以下目的：
 
 - 自动执行特定的 Windows 虚拟桌面管理任务。
 - 运行任何 Windows 虚拟桌面的 Azure 资源管理器模板时，将服务主体用作凭据，而无需让用户执行 MFA。

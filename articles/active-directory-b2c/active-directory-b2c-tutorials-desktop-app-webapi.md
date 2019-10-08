@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 75469d4522cea2914e0f69d5aa1850e468cb0d50
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 8c4b2d818549da07faf9ecd28f61b4ed5315f745
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064836"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679328"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>教程：从桌面应用使用 Azure Active Directory B2C 授予对 Node.js Web API 的访问权限
 
@@ -29,48 +29,29 @@ ms.locfileid: "71064836"
 > * 授予 Web API 权限
 > * 将示例更新为使用该应用程序
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 ## <a name="prerequisites"></a>先决条件
 
 完成[教程：使桌面应用能够使用帐户通过 Azure Active Directory B2C 进行身份验证](active-directory-b2c-tutorials-desktop-app.md)。
 
 ## <a name="add-a-web-api-application"></a>添加 Web API 应用程序
 
-Web API 资源需要先在租户中注册，然后才能接受并响应提供访问令牌的客户端应用程序所提出的受保护资源请求。
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-4. 选择“应用程序”，然后选择“添加”   。
-5. 输入应用程序的名称。 例如，“webapi1”  。
-6. 对于“包括 Web 应用/Web API”和“允许隐式流”，请选择“是”。   
-7. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点  。 本教程中的示例在本地运行并在 `https://localhost:5000` 上进行侦听。
-8. 对于“应用 ID URI”，请输入 Web API 使用的标识符。  包括域在内的完整标识符 URI 是为你生成的。 例如，`https://contosotenant.onmicrosoft.com/api` 。
-9. 单击“创建”。 
-10. 在属性页上，记录在配置 Web 应用程序时要使用的应用程序 ID。
+[!INCLUDE [active-directory-b2c-appreg-webapi](../../includes/active-directory-b2c-appreg-webapi.md)]
 
 ## <a name="configure-scopes"></a>配置范围
 
 可通过范围控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让某些用户拥有读取和写入访问权限，让另一些用户拥有只读权限。 在本教程中，你将定义对 Web API 的读取权限。
 
-1. 依次选择“应用程序”、“webapi1”   。
-2. 选择“已发布的范围”  。
-3. 在“范围”中输入 `Hello.Read`，在“说明”中输入 `Read access to hello`  。
-4. 在“范围”中输入 `Hello.Write`，在“说明”中输入 `Write access to hello`  。
-5. 单击“ **保存**”。
-
-可以使用发布的作用域向客户端应用授予对 Web API 的权限。
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
 ## <a name="grant-permissions"></a>授予权限
 
 若要从应用程序调用受保护的 Web API，需授予应用程序访问该 API 的权限。 在先决条件教程中，已在 Azure AD B2C 中创建名为 *app1* 的 Web 应用程序。 使用此应用程序调用 Web API。
 
 1. 依次选择“应用程序”、“nativeapp1”   。
-2. 依次选择“API 访问”、“添加”   。
-3. 在“选择 API”下拉列表中，选择“webapi1”   。
-4. 在“选择范围”下拉列表中，选择之前定义的“Hello.Read”和“Hello.Write”范围    。
-5. 单击“确定”。 
+1. 依次选择“API 访问”、“添加”   。
+1. 在“选择 API”下拉列表中，选择“webapi1”   。
+1. 在“选择范围”  下拉列表中，选择先前定义的范围。 例如，*demo.read* 和 *demo.write*。
+1. 选择“确定”  。
 
 用户通过 Azure AD B2C 进行身份验证，以使用 WPF 桌面应用程序。 桌面应用程序从 Azure AD B2C 获取授权，以访问受保护的 Web API。
 
@@ -83,6 +64,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应提供访
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
+
 该 Node.js Web API 示例使用 Passport.js 库来使得 Azure AD B2C 能够保护对 API 的调用。
 
 1. 打开 `index.js` 文件。

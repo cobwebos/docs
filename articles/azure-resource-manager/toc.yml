@@ -134,8 +134,7 @@
           href: resource-group-linked-templates.md
         - name: 创建多个实例
           href: resource-group-create-multiple.md
-        - name: 在订阅级别创建资源组和资源
-          displayName: subscription level deployment
+        - name: 订阅级资源
           href: deploy-to-subscription.md
     - name: 部署模板
       items:

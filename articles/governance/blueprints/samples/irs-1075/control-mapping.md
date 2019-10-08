@@ -7,12 +7,12 @@ ms.date: 08/07/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 5a3eab2c703c63a4d73fa468224aed88a92b8b94
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 675a0b93fed3764fb3d6c78bcee819928a03b353
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309478"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350778"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 蓝图示例的控制映射
 
@@ -78,7 +78,7 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 
 ## <a name="93112-ac-17-1-remote-access--automated-monitoring--control"></a>9.3.1.12 AC-17 (1) 远程访问 | 自动监视/控制
 
-此蓝图可帮助你监视和控制远程访问，因为它会分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 应用服务应用程序的远程调试处于关闭状态，此蓝图还会分配策略定义用于审核允许来自无密码帐户的远程连接的 Linux 虚拟机。 此蓝图还将分配一个 Azure Policy 定义，用于帮助监视对存储帐户的无限制访问。 监视这些指标可以帮助确保远程访问方法符合安全策略。
+此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来监视 Azure 应用服务应用程序的远程调试被关闭，从而帮助你监视和控制远程访问。 此蓝图还分配了审核 Linux 虚拟机的策略定义，这些虚拟机允许从没有密码的帐户进行远程连接。 此外，此蓝图还分配了一个 Azure Policy 定义，帮助你监视对存储帐户的不受限制的访问。 监视这些指标可以帮助确保远程访问方法符合安全策略。
 
 - \[预览\]：审核允许通过没有密码的帐户进行远程连接的 Linux VM
 - \[预览\]：部署要求以审核允许通过没有密码的帐户进行远程连接的 Linux VM

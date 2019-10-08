@@ -34,6 +34,8 @@
           href: sql-database-server-level-firewall-rule.md
         - name: 配置托管实例上的公共终结点
           href: sql-database-managed-instance-public-endpoint-configure.md
+        - name: 配置托管实例上的连接类型
+          href: sql-database-managed-instance-connection-type.md
         - name: 与托管实例的客户端 VM 连接
           href: sql-database-managed-instance-configure-vm.md
         - name: 与托管实例的点到站点连接

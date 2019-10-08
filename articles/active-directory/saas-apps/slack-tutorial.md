@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c2d877a1dc611e02e9fbc245df230ca669a2ae4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: b94607691b662dcfcf0e166cd5c339b00ed0573d
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70171445"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326684"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Slack 集成
 
@@ -87,7 +87,7 @@ ms.locfileid: "70171445"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.slack.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<your Slack company>.slack.com` 
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://slack.com` 
 
@@ -124,19 +124,19 @@ ms.locfileid: "70171445"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-slack-sso"></a>配置 Slack SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Slack 公司站点。
 
-2. 导航到“Microsoft Azure AD”  ，并转到“团队设置”  。
+2. 导航到左侧的 Slack 公司名称，在我们的示例中已设置为 **Microsoft Azure AD**，然后转到**团队设置**，如以下屏幕截图所示。
 
      ![在应用端配置单一登录](./media/slack-tutorial/tutorial_slack_001.png)
 

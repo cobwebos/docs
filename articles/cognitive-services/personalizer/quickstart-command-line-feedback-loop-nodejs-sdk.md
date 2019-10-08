@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: ab593ae33f11fe3e39846c50e9f43f73f80894ba
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: b7ea28f98340d3c3547b0ed66771b3982a03143d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265964"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345252"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>快速入门：让适用于 Node.js 的客户端库个性化
 
@@ -31,11 +31,21 @@ ms.locfileid: "71265964"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
-* 最新版本的 [Node.js](https://nodejs.org)。
+* 最新版本的 [Node.js](https://nodejs.org) 和 NPM。
 
-## <a name="setting-up"></a>设置
+## <a name="using-this-quickstart"></a>使用此快速入门
 
-### <a name="create-a-personalizer-azure-resource"></a>创建个性化体验创建服务 Azure 资源
+
+使用此快速入门有几个步骤：
+
+* 在 Azure 门户中，创建一个个性化体验创建服务资源
+* 在 Azure 门户中，对于个性化体验创建服务资源，在“设置”  页上，更改模型更新频率
+* 在代码编辑器中，创建一个代码文件并编辑该代码文件
+* 在命令行或终端中，从命令行安装 SDK
+* 在命令行或终端中，运行代码文件
+
+
+## <a name="create-a-personalizer-azure-resource"></a>创建个性化体验创建服务 Azure 资源
 
 Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于个性化体验创建服务的资源。 还可以：
 
@@ -50,7 +60,7 @@ Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](ht
 在 Azure 门户中，可以从“快速入门”页中获取密钥和终结点值  。
 
 
-### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
+## <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
 
 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 
 
@@ -64,7 +74,7 @@ mkdir myapp && cd myapp
 npm init -y
 ```
 
-### <a name="install-the-nodejs-library-for-personalizer"></a>为个性化体验创建服务安装 Node.js 库
+## <a name="install-the-nodejs-library-for-personalizer"></a>为个性化体验创建服务安装 Node.js 库
 
 使用以下命令安装适用于 Node.js 的个性化体验创建服务客户端库：
 
@@ -78,9 +88,9 @@ npm install @azure/cognitiveservices-personalizer --save
 npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 ```
 
-### <a name="change-the-model-update-frequency"></a>更改模型更新频率
+## <a name="change-the-model-update-frequency"></a>更改模型更新频率
 
-在 Azure 门户中的个性化体验创建服务中，将“模型更新频率”  更改为 10 秒。 这将快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化。
+在 Azure 门户的“设置”  页上的个性化体验创建服务资源中，将“模型更新频率”  更改为 10 秒。 这将快速训练服务，使你可以看到顶部操作如何针对每次迭代而变化。
 
 ![更改模型更新频率](./media/settings/configure-model-update-frequency-settings.png)
 
