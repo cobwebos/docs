@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: miparker
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: b830538f81d1696c34db3e4f66a07346c17bcdcc
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8dae5bcc082ba5dd0953e3e97f609e4031547a35
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211955"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030653"
 ---
 # <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>教程：向使用通知中心 REST API 的 Swift iOS 应用推送通知
 
@@ -91,10 +91,10 @@ ms.locfileid: "71211955"
 
    | Key                            | 类型                     | ReplTest1                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | 字符串                   | \<hubKey>                  |
-   | notificationHubKeyName         | 字符串                   | \<hubKeyName>              |
-   | notificationHubName            | 字符串                   | \<hubName>                 |
-   | notificationHubNamespace       | 字符串                   | \<hubNamespace>            |
+   | notificationHubKey             | String                   | \<hubKey>                  |
+   | notificationHubKeyName         | String                   | \<hubKeyName>              |
+   | notificationHubName            | String                   | \<hubName>                 |
+   | notificationHubNamespace       | String                   | \<hubNamespace>            |
 
    可以在 Azure 门户中导航到“通知中心”资源来找到所需的值。 具体而言，可以在“概述”页中“概要”摘要的右上角找到 **notificationHubName** 和 **notificationHubNamespace** 值。
 
@@ -297,7 +297,7 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 
 若要添加并配置桥接标头：
 
-1. 在“Xcode”中，选择“文件” > “新建” > “文件”> “标头文件”。  将标头文件命名为 **BridgingHeader.h**。
+1. 在 Xcode 中，选择 " **File** > **New** > **File** > **头文件**。 将标头文件命名为 **BridgingHeader.h**。
 
 1. 编辑该文件以导入 **CommonHMAC.h**：
 
@@ -313,11 +313,11 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 
 1. 更新目标的“生成设置”以引用桥接标头：
 
-   1. 打开“生成设置”选项卡并向下滚动到“Swift 编译器”部分。 ****   ****  
+   1. 打开 "**生成设置**" 选项卡，向下滚动到**Swift 编译器**部分。
 
-   1. 确保“安装 Objective-C 兼容性标头”选项设置为“是”。 ****   ****
+   1. 确保 "**安装目标-C 兼容性标头**" 选项设置为 **"是"** 。
 
-   1. 在“Objective-C 桥接标头”选项中输入文件路径 `'<ProjectName>/BridgingHeader.h'`。  这是桥接标头的文件路径。
+   1. 在 "**目标-C 桥接标头**" 选项中输入文件路径 `'<ProjectName>/BridgingHeader.h'`。 这是桥接标头的文件路径。
 
    如果找不到这些选项，请确保已选择“所有”视图（而不是“基本”或“自定义”）。
 
@@ -662,7 +662,7 @@ class NotificationRegistrationService {
    | ------------------------------ | ------------------------------ |
    | Content-Type                   | application/json;charset=utf-8 |
    | Authorization                  | \<sasToken>                     |
-   | ServiceBusNotification-Format  | 模板                       |
+   | ServiceBusNotification-Format  | template                       |
    | Tags                           | "12345"                        |
 
 1. 将请求**正文**配置为使用包含以下 JSON 有效负载的“RAW - JSON (application.json)”：

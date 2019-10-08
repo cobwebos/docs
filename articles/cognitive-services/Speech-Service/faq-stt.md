@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: a437927f6ad43f4c3a90433faa5b9fa6f964aa5c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: bde68a70ac047433e86b7e06bc5f4a56bdd28595
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839239"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028510"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -39,7 +39,7 @@ ms.locfileid: "67839239"
 
 **问：如何知道何时完成数据集或模型的处理？**
 
-**答**：目前，表中模型或数据集的状态是唯一可以了解的途径。 处理完成后，状态是“成功”  。
+**答**：目前，表中模型或数据集的状态是唯一可以了解的途径。 处理完成后，状态是“成功”。
 
 **问：能否创建多个模型？**
 
@@ -69,7 +69,7 @@ ms.locfileid: "67839239"
 
 **答**：以 20 个并发请求为增量纵向扩展模型。
 
-请联系[语音支持](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text)如果需要更高的规模。
+如果需要更高的规模，请联系[语音支持](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text)。
 
 **问：能否下载模型并在本地运行？**
 
@@ -83,9 +83,9 @@ ms.locfileid: "67839239"
 
 **答**：REST API 将请求限制为每 5 秒 25 个。 可以在我们的[语音转文本](speech-to-text.md)页面中找到详细信息。
 
-**问：我如何计费的双声道音频？**
+**问：双声道音频如何收费？**
 
-**答**：如果单独提交每个通道 （在其自己的文件中每个通道），你将按每个文件的持续时间收费。 如果使用复合到一起，每个通道提交单个文件，然后你将收取单一文件的持续时间。
+**答**：如果你单独提交每个声道（每个声道在其自己的文件中），将按每个文件的持续时间对你收费。 如果你提交单个文件，其中每个声道都一起多路复用，则按单个文件的持续时间对你收费。
 
 > [!IMPORTANT]
 > 如果有禁止使用自定义语音服务的其他隐私问题，请联系其中一个支持渠道。
@@ -96,7 +96,7 @@ ms.locfileid: "67839239"
 
 **答**：答：数据集的当前限制为 2 GB。 之所以有此限制，是由于 HTTP 上传文件大小存在限制。 
 
-**问：是否可以压缩文本文件，以便上传更大的文本文件？** 
+**问：是否可以压缩文本文件，以便上传更大的文本文件？** 
 
 **答**：否。 目前，仅允许未压缩的文本文件。
 
@@ -140,7 +140,7 @@ ms.locfileid: "67839239"
 
 **答**：测试结果对基线模型和自定义模型进行了比较。 应以超越基线模型为目标，使自定义模型变得有价值。
 
-**问：如何确定基础模型的 WER 以便查看是否有改进？** 
+**问：如何确定基础模型的 WER 以便查看是否有改进？** 
 
 **答**：离线测试结果显示了自定义模型的基线准确度以及与基线相比的改进情况。
 

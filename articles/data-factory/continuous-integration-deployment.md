@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 4386a7adba17eefe3c373697597abdb7d69c476a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ff1d34852890a8d5005153ebdfa2fa0f9749d129
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265984"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030623"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>在 Azure 数据工厂中进行持续集成和交付 (CI/CD)
 
@@ -122,7 +122,7 @@ ms.locfileid: "71265984"
 
     f.  在“替代模板参数”字段旁边 在 "**模板参数" 字段中。** 选择参数文件。 选择正确的文件，具体取决于你是创建了副本，还是使用默认的 *ARMTemplateParametersForFactory.json* 文件。
 
-    g.  在“替代模板参数”字段旁边 选择“…”，然后填充目标数据工厂的信息。 对于来自密钥保管库的凭据，请在双引号之间输入密钥名称。 例如，如果密码的名称为`cred1`，则输入`"$(cred1)"`其值。
+    g.  在“替代模板参数”字段旁边 选择“…”，然后填充目标数据工厂的信息。 对于来自密钥保管库的凭据，请在双引号之间输入密钥名称。 例如，如果密码的名称为 `cred1`，请输入 @no__t 1for 其值。
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -196,7 +196,7 @@ ms.locfileid: "71265984"
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-部署后，可以执行类似的步骤`Start-AzDataFactoryV2Trigger`来重新启动触发器。
+部署后，可以执行类似的 @no__t 步骤来重新启动触发器。
 
 > [!IMPORTANT]
 > 在持续集成和部署方案中，不同环境之间的集成运行时类型必须相同。 例如，如果在开发环境中有自承载集成运行时 (IR)，则在测试和生产等其他环境中同一 IR 的类型必须为自承载。 同样，如果跨多个阶段共享集成运行时，则必须在所有环境（如开发、测试和生产）中将集成运行时配置为“链接自承载”。
@@ -328,21 +328,21 @@ else {
 * 你使用自动 CI/CD，并且想要在资源管理器部署过程中更改某些属性，但默认情况下不会对属性进行参数化。
 * 由于默认资源管理器模板超过允许的最大参数（256），因此您的工厂非常大。
 
-在这些情况下，若要重写默认参数化模板，请在存储库的根文件夹中创建一个名为 " *arm-模板-参数-json* " 的文件。 文件名必须完全匹配。 数据工厂尝试从你当前在 Azure 数据工厂门户中的哪个分支读取此文件，而不仅仅是从协作分支读取此文件。 你可以从私有分支创建或编辑该文件，你可以使用 UI 中的 "**导出 ARM" 模板**来测试你的更改。 然后，可以将文件合并到协作分支。 如果未找到任何文件，则使用默认模板。
+在这些情况下，若要重写默认参数化模板，请在存储库的根文件夹中创建一个名为 " *arm-模板-参数-json* " 的文件。 文件名必须完全匹配。 数据工厂尝试从你当前在 Azure 数据工厂门户中的哪个分支读取此文件，而不仅仅是从协作分支读取此文件。 你可以从私有分支创建或编辑该文件，你可以使用 UI 中的 "**导出 ARM" 模板**来测试你的更改。 然后，可以将文件合并到协作分支。 如果未找到任何文件，则使用默认模板。
 
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>自定义参数文件的语法
 
 下面是在创作自定义参数文件时使用的一些准则。 该文件由每个实体类型的部分组成：触发器、管道、链接服务、数据集、集成运行时等。
 * 输入相关实体类型下的属性路径。
-* 将属性名称设置为 "\*" 时，表示要将其下的所有属性参数化（仅向下一级，而不是递归）。 你还可以向此提供任何例外。
-* 将属性的值设置为字符串时，表示你希望参数化该属性。 使用格式 `<action>:<name>:<stype>`。
-   *  `<action>` 可以是下列字符之一：
-      * `=` 表示保留当前值作为参数的默认值。
-      * `-` 表示不要保留参数的默认值。
-      * `|` 是 Azure Key Vault 用于连接字符串或键的密码的特例。
-   * `<name>` 参数的名称。 如果为空，则采用属性的名称。 如果值以`-`字符开头，则将缩短名称。 例如， `AzureStorage1_properties_typeProperties_connectionString`将缩短为`AzureStorage1_connectionString`。
-   * `<stype>` 参数的类型。 `string`如果 `<stype>`为空，则 默认类型为。 支持的值`string`： `bool`、 `number`、 `object`、和`securestring`。
+* 将属性名称设置为 "\*" 时，表示要将其下的所有属性参数化（仅向下到第一个级别，而不是以递归方式）。 你还可以向此提供任何例外。
+* 将属性的值设置为字符串时，表示你希望参数化该属性。 使用 @ no__t-0 格式。
+   *  `<action>` @ no__t-1can 是以下字符之一：
+      * `=` @ no__t-1means 保持当前值为参数的默认值。
+      * `-` @ no__t-1means 不保留参数的默认值。
+      * `|` @ no__t-1 来自连接字符串或键的 Azure Key Vault 的密码的特例。
+   * `<name>` @ no__t-1 参数的名称。 如果为空，则采用属性的名称。 如果值以 @no__t 0 字符开头，则名称将被缩短。 例如，`AzureStorage1_properties_typeProperties_connectionString` 会缩短为 `AzureStorage1_connectionString`。
+   * `<stype>` @ no__t-1 参数的类型。 如果 @ no__t-0 @ no__t-1 空白，则默认类型为 `string`。 支持的值： `string`、`bool`、`number`、`object` 和 @no__t。
 * 如果在定义文件中指定数组，则表明模板中的匹配属性是数组。 数据工厂使用数组的 Integration Runtime 对象中指定的定义来循环访问数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
 * 不能有特定于资源实例的定义。 任何定义都适用于该类型的所有资源。
 * 默认情况下，所有安全字符串（如 Key Vault 机密）和安全字符串（如连接字符串、密钥和令牌）都是参数化的。
@@ -414,27 +414,27 @@ else {
 
 #### <a name="pipelines"></a>管道
     
-* Path activity/typeProperties/waitTimeInSeconds 中的任何属性均已参数化。 管道中具有名为`waitTimeInSeconds` （例如`Wait` ，活动）的代码级别属性的任何活动均被参数化为数字，并且具有默认名称。 但资源管理器模板中没有默认值。 在资源管理器部署过程中，它将是必需的输入。
-* 同样，名`headers`为的属性（例如， `Web`在活动中）使用 type `object` （JObject）进行参数化。 它有一个默认值，该值与源工厂中的值相同。
+* Path activity/typeProperties/waitTimeInSeconds 中的任何属性均已参数化。 管道中具有名为 `waitTimeInSeconds` 的代码级属性的任何活动（例如，`Wait` 活动）都被参数化为数字，具有默认名称。 但资源管理器模板中没有默认值。 在资源管理器部署过程中，它将是必需的输入。
+* 同样，名为 `headers` 的属性（例如，在 @no__t 1 活动中）使用类型 `object` （JObject）进行参数化。 它有一个默认值，该值与源工厂中的值相同。
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* 路径`typeProperties`下的所有属性均由其各自的默认值参数化。 例如， **IntegrationRuntimes** type properties 下有两个属性： `computeProperties`和。 `ssisProperties` 这两个属性类型都是用各自的默认值和类型（对象）创建的。
+* 路径 `typeProperties` 下的所有属性均由其各自的默认值参数化。 例如，" **IntegrationRuntimes** " 类型 "属性" 下有两个属性： `computeProperties` 和 `ssisProperties`。 这两个属性类型都是用各自的默认值和类型（对象）创建的。
 
 #### <a name="triggers"></a>Triggers
 
-* 在`typeProperties`下，参数化两个属性。 第一个是`maxConcurrency`，它被指定为具有默认值，并且的类型`string`为。 它的默认参数名称为`<entityName>_properties_typeProperties_maxConcurrency`。
-* 此`recurrence`属性也是参数化的。 在该级别下，将指定该级别的所有属性指定为字符串，并将默认值和参数名称指定为参数。 异常是`interval`属性，该属性被参数化为数值类型，参数名称以`<entityName>_properties_typeProperties_recurrence_triggerSuffix`后缀作为后缀。 同样，此`freq`属性是一个字符串，参数化为字符串。 但是，属性`freq`的参数化没有默认值。 名称将被缩短并带有后缀。 例如， `<entityName>_freq` 。
+* 在 `typeProperties` 下，参数化两个属性。 第一个是 @no__t 0，它指定为具有默认值，并且的类型为 @ no__t-1。 它的默认参数名称为 `<entityName>_properties_typeProperties_maxConcurrency`。
+* @No__t 的属性也是参数化的。 在该级别下，将指定该级别的所有属性指定为字符串，并将默认值和参数名称指定为参数。 例外情况是 `interval` 属性（参数化为数字类型），参数名称后缀 `<entityName>_properties_typeProperties_recurrence_triggerSuffix`。 同样，`freq` 属性为字符串，参数化为字符串。 但是，不使用默认值参数化 `freq` 属性。 名称将被缩短并带有后缀。 例如， `<entityName>_freq` 。
 
 #### <a name="linkedservices"></a>LinkedServices
 
-* 链接服务是唯一的。 由于链接服务和数据集具有各种类型，因此你可以提供特定于类型的自定义。 在此示例中，将应用类型`AzureDataLakeStore`为的所有链接服务，将应用特定的模板，并且将应用其他模板（通过\*）。
-* 该`connectionString`属性将被参数化为`securestring`一个值，它不会有默认值，并且它将具有一个后缀为`connectionString`的缩写参数名称。
-* 属性`secretAccessKey`碰巧`AmazonS3`为（例如，在链接服务中）。 `AzureKeyVaultSecret` 它自动参数化为 Azure Key Vault 机密，并从配置的密钥保管库提取。 还可以参数化密钥保管库本身。
+* 链接服务是唯一的。 由于链接服务和数据集具有各种类型，因此你可以提供特定于类型的自定义。 在此示例中，所有类型的链接服务 `AzureDataLakeStore`，将应用特定的模板，并且所有其他模板（通过 \*）将应用不同的模板。
+* @No__t-0 属性将参数化为 @no__t 1 值，它不会有默认值，并且它将具有一个带有后缀 `connectionString` 后缀的短型参数名称。
+* 属性 `secretAccessKey` 应为 `AzureKeyVaultSecret` （例如，@no__t 2 链接服务）。 它自动参数化为 Azure Key Vault 机密，并从配置的密钥保管库提取。 还可以参数化密钥保管库本身。
 
 #### <a name="datasets"></a>数据集
 
-* 尽管特定于类型的自定义可用于数据集，但可以提供配置，而\*无需明确地进行配置。 在上面的示例中，所有`typeProperties`的数据集属性都是参数化的。
+* 尽管特定于类型的自定义可用于数据集，但可以提供配置，而无需明确 @no__t 旁1/-0 级配置。 在上面的示例中，参数化 @no__t 下的所有数据集属性。
 
 ### <a name="default-parameterization-template"></a>默认参数化模板
 
@@ -545,7 +545,7 @@ else {
 }
 ```
 
-下面是如何将单个值添加到默认参数化模板的示例。 我们只想要将 Databricks 链接服务的现有 Databricks 交互式群集 ID 添加到参数文件。 请注意，下面的文件与上述文件相同，不同之`existingClusterId`处在于在的属性`Microsoft.DataFactory/factories/linkedServices`字段下包含。
+下面是如何将单个值添加到默认参数化模板的示例。 我们只想要将 Databricks 链接服务的现有 Databricks 交互式群集 ID 添加到参数文件。 请注意，下面的文件与上述文件相同，只是在 `Microsoft.DataFactory/factories/linkedServices` 的属性字段下包含 `existingClusterId`。
 
 ```json
 {
@@ -657,11 +657,11 @@ else {
 
 如果已为数据工厂设置持续集成和部署（CI/CD），则当工厂增长更大时，你可能会遇到 Azure 资源管理器模板限制。 限制的一个示例是资源管理器模板中的最大资源数。 为了适应大型工厂，以及生成工厂的完整资源管理器模板，数据工厂现在会生成链接资源管理器模板。 利用此功能，整个工厂有效负载分为多个文件，因此不会遇到限制。
 
-如果已配置 Git，则会生成链接的模板，并将其与`adf_publish`分支中完整资源管理器模板一起保存在一个名`linkedTemplates`为的新文件夹下。
+如果已配置 Git，则会生成链接的模板，并将其与 `adf_publish` 分支中的完整资源管理器模板一起保存在名为 `linkedTemplates` 的新文件夹下。
 
 ![链接的资源管理器模板文件夹](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-链接的资源管理器模板通常有一个主模板和一组链接到主模板的子模板。 父模板名为 `ArmTemplate_master.json`，子模板以如下模式命名：`ArmTemplate_0.json`、`ArmTemplate_1.json`，依此类推。 若要使用链接模板而不是完整资源管理器模板，请将 CI/CD 任务更新为`ArmTemplate_master.json`指向`ArmTemplateForFactory.json` （而不是完整资源管理器模板）。 资源管理器还要求将链接的模板上传到存储帐户，以便它们在部署期间可供 Azure 访问。 有关详细信息，请参阅[通过 VSTS 部署链接的 ARM 模板](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)。
+链接的资源管理器模板通常有一个主模板和一组链接到主模板的子模板。 父模板名为 `ArmTemplate_master.json`，子模板以如下模式命名：`ArmTemplate_0.json`、`ArmTemplate_1.json`，依此类推。 若要使用链接模板而不是完整资源管理器模板，请将 CI/CD 任务更新为指向 `ArmTemplate_master.json` 而不是 `ArmTemplateForFactory.json` （完整资源管理器模板）。 资源管理器还要求将链接的模板上传到存储帐户，以便它们在部署期间可供 Azure 访问。 有关详细信息，请参阅[通过 VSTS 部署链接的 ARM 模板](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)。
 
 不要忘记在执行部署任务之前和之后在 CI/CD 管道中添加数据工厂脚本。
 
@@ -703,7 +703,7 @@ else {
 
 -   **Key Vault**。 使用基于 Azure Key Vault 的链接服务时，可以通过为不同的环境保留单独的密钥保管库，进一步充分利用它。 此外，可为每个 Key Vault 单独配置权限级别。 例如，你可能不希望团队成员有权使用生产机密。 如果遵循此方法，则建议在所有阶段保留相同的机密名称。 如果保留相同的名称，则无需在 CI/CD 环境中更改资源管理器模板，因为唯一更改的是密钥保管库名称，这是一个资源管理器模板参数。
 
-## <a name="unsupported-features"></a>不受支持的功能
+## <a name="unsupported-features"></a>不支持的功能
 
 - 按照设计，ADF_不_允许挑拣提交或选择性地发布资源。 发布将包括数据工厂中所做的**所有**更改
 

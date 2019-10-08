@@ -14,24 +14,24 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: d5aa2e326739a97ff3d518ec383f4cf14311ca74
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 410571320e5ffae9cf94c5035079e5b202190863
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446337"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027364"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 JavaScript 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-html-how-to-use-client-library)今天。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 本指南介绍如何使用最新的[适用于 Azure 移动应用的 JavaScript SDK] 执行常见任务。 对于 Azure 移动应用的新手，请先完成 [Azure Mobile Apps Quick Start]创建后端和表。 本指南着重介绍如何在 HTML/JavaScript Web 应用程序中使用移动后端。
 
-## <a name="supported-platforms"></a>支持的平台
+## <a name="supported-platforms"></a>受支持的平台
 我们将浏览器支持限制为主要浏览器的当前版本和过去版本：Google Chrome、Microsoft Edge、Microsoft Internet Explorer 和 Mozilla Firefox。  我们期望 SDK 能与任何相对新式的浏览器一起运作。
 
 由于包已被分发为通用 JavaScript 模块，因此它支持全局、AMD 和 CommonJS 格式。
@@ -80,11 +80,11 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 
 1. 登录到 [Azure 门户]
 2. 导航到移动应用后端。
-3. 在“开发工具”  菜单中，选择“资源浏览器”  。
-4. 单击“开始”  在新选项卡或窗口中打开移动应用后端的资源管理器。
-5. 展开应用的“config”   > “authsettings”  节点。
-6. 单击“编辑”  按钮可对资源进行编辑。
-7. 查找应为 null 的“allowedExternalRedirectUrls”  元素。 在数组中添加 URL：
+3. 在“开发工具”菜单中，选择“资源浏览器”。
+4. 单击“开始”在新选项卡或窗口中打开移动应用后端的资源管理器。
+5. 展开应用的“config” > “authsettings”节点。
+6. 单击“编辑”按钮可对资源进行编辑。
+7. 查找应为 null 的“allowedExternalRedirectUrls”元素。 在数组中添加 URL：
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
@@ -92,15 +92,15 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
          ],
 
     将数组中的 URL 替换为服务的 URL，在本示例中为本地 Node.js 示例服务的 `http://localhost:3000`。 对于 Ripple 服务，也可以根据应用的配置方式，使用 `http://localhost:4400` 或其他某个 URL。
-8. 在页面顶部，单击“读/写”  ，并单击“PUT”  保存更新。
+8. 在页面顶部，单击“读/写”，并单击“PUT”保存更新。
 
 还需要将相同的环回 URL 添加到 CORS 允许列表设置：
 
 1. 导航回到 [Azure 门户]。
 2. 导航到移动应用后端。
-3. 在“API”  菜单中单击“CORS”  。
-4. 在空的“允许的来源”  文本框中输入每个 URL。  将创建新的文本框。
-5. 单击“保存” 
+3. 在“API”菜单中单击“CORS”。
+4. 在空的“允许的来源”文本框中输入每个 URL。  将创建新的文本框。
+5. 单击“保存”
 
 后端更新后，可以在应用中使用新的环回 URL。
 

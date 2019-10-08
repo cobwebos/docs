@@ -14,24 +14,24 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 327cb3a3667c63454549ec694790769c9ea1fd58
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3cf18e6da56b25e453d52dc58020961f672da27d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446418"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027431"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 Apache Cordova 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-how-to-use-client-library)今天。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 本指南介绍了如何使用最新的[适用于 Azure 移动应用的 Apache Cordova 插件]执行常见任务。 对于 Azure 移动应用的新手，请先完成 [Azure 移动应用快速入门]，创建后端、创建表并下载预先生成的 Apache Cordova 项目。 本指南侧重于客户端 Apache Cordova 插件。
 
-## <a name="supported-platforms"></a>支持的平台
+## <a name="supported-platforms"></a>受支持的平台
 此 SDK 在 iOS、Android 和 Windows 设备上支持 Apache Cordova v6.0.0 及更高版本。  支持的平台如下：
 
 * Android API 19-24（KitKat 到 Nougat）。
@@ -99,11 +99,11 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 请遵循以下说明将本地设置添加到配置中：
 
 1. 登录到 [Azure 门户]
-2. 选择“所有资源”  或“应用服务”  ，并单击移动应用的名称。
-3. 单击“工具” 
-4. 在“观察”菜单中单击“资源浏览器”  ，并单击“转到”  。  会打开新窗口或选项卡。
-5. 在左侧导航栏中，展开站点的“config”  、“authsettings”  节点。
-6. 单击“编辑” 
+2. 选择“所有资源”或“应用服务”，并单击移动应用的名称。
+3. 单击“工具”
+4. 在“观察”菜单中单击“资源浏览器”，并单击“转到”。  会打开新窗口或选项卡。
+5. 在左侧导航栏中，展开站点的“config”、“authsettings”节点。
+6. 单击“编辑”
 7. 查找“allowedExternalRedirectUrls”元素。  该元素可能已设置为 null 或值数组。  将该值更改为以下值：
 
          "allowedExternalRedirectUrls": [
@@ -111,20 +111,20 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
              "https://localhost:3000"
          ],
 
-    将 URL 替换为自己服务的 URL。  示例包括`http://localhost:3000`（适用于 Node.js 示例服务） 或`http://localhost:4400`（适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
-8. 单击屏幕右上角的“读/写”  按钮。
-9. 单击绿色的“PUT”  按钮。
+    将 URL 替换为自己服务的 URL。  示例包括 `http://localhost:3000`（适用于 Node.js 示例服务）或 `http://localhost:4400`（适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
+8. 单击屏幕右上角的“读/写”按钮。
+9. 单击绿色的“PUT”按钮。
 
 此时会保存设置。  在保存完设置之前，请不要关闭浏览器窗口。
 还需要将以下环回 URL 添加到应用服务的 CORS 设置：
 
 1. 登录到 [Azure 门户]
-2. 选择“所有资源”  或“应用服务”  ，并单击移动应用的名称。
-3. “设置”边栏选项卡随即自动打开。  如果没有打开，请单击“所有设置”  。
-4. 在“API”菜单下单击“CORS”  。
+2. 选择“所有资源”或“应用服务”，并单击移动应用的名称。
+3. “设置”边栏选项卡随即自动打开。  如果没有打开，请单击“所有设置”。
+4. 在“API”菜单下单击“CORS”。
 5. 在提供的框中输入想要添加的 URL，并按 Enter。
 6. 根据需要输入其他 URL。
-7. 单击“保存”  保存这些设置。
+7. 单击“保存”保存这些设置。
 
 大约需要 10-15 秒时间才能使新设置生效。
 

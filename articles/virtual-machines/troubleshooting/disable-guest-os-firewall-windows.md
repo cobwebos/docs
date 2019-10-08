@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 9ae8620b803fa9a911f44840a5fff5d190a316a1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086535"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030602"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
 
@@ -92,7 +92,7 @@ ms.locfileid: "71086535"
 
 1.  在故障排除 VM 上，启动注册表编辑器，然后转到“文件” > “连接网络注册表”。
 
-2.  打开  *TARGET MACHINE*\SYSTEM 分支，指定以下值：
+2.  打开 "*目标计算机*\SYSTEM" 分支，并指定以下值：
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -102,13 +102,13 @@ ms.locfileid: "71086535"
 
 3.  重启服务。 由于无法使用远程注册表执行此操作，因此必须使用“删除服务控制台”。
 
-4.  打开  **Services.msc** 的实例。
+4.  打开**services.msc**的实例。
 
 5.  单击“服务(本地)”。
 
 6.  选择“连接到另一台计算机”。
 
-7.  输入问题 VM 的 **专用 IP 地址 (DIP)**  。
+7.  输入问题 VM 的**专用 IP 地址（DIP）** 。
 
 8.  重启本地防火墙策略。
 

@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 4c01cd36d489d8e7128bed645c8cb1127c6c0c25
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: aaff1d5e657b8acb28293f3450849b1446727680
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130405"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030791"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>将大数据分析解决方案从 Azure Data Lake Storage Gen1 升级到 Azure Data Lake Storage Gen2
 
@@ -83,7 +83,7 @@ ms.locfileid: "71130405"
 | 虚拟网络 (VNet) 支持  | [使用虚拟网络集成](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-network-security)  | [使用 Azure 存储的服务终结点](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) | 现已提供 |
 | 大小限制 | 无帐户大小、文件大小或文件数量限制 | 帐户大小或文件数量没有限制。 文件大小限制为 5 TB。 | 现已提供|
 | 异地冗余| 本地冗余 (LRS) | 本地冗余（LRS）区域冗余（ZRS）地域冗余（GRS）读取访问地域冗余（RA-GRS）请参阅[此处](https://docs.microsoft.com/azure/storage/common/storage-redundancy)，了解详细信息| 现已提供 |
-| 适用区域 | 参见[此处](https://azure.microsoft.com/regions/) | 所有 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)                                                                                                                                                                                                                                                                                                                                       | 现已提供                                                                                                                           |
+| 区域可用性 | 参见[此处](https://azure.microsoft.com/regions/) | 所有 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)                                                                                                                                                                                                                                                                                                                                       | 现已提供                                                                                                                           |
 | 价格                                       | 参阅[定价](https://azure.microsoft.com/pricing/details/data-lake-store/)                                                                            | 参阅[定价](https://azure.microsoft.com/pricing/details/storage/data-lake/)                                                                                                                                                                                                                                                                                                                                         |                                                                                                                                           |
 | 可用性 SLA                            | [请参阅 SLA](https://azure.microsoft.com/support/legal/sla/data-lake-store/v1_0/)                                                                   | [请参阅 SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_3/)                                                                                                                                                                                                                                                                                                                                                | 现已提供                                                                                                                           |
 | 数据管理                             | 文件到期时间                                                                                                                                        | 生命周期策略                                                                                                                                                                                                                                                                                                                                                                                                          | 尚未提供                                                                                                                       |
@@ -115,7 +115,7 @@ ms.locfileid: "71130405"
 
 使用 Data Lake Storage Gen1 时，可以在端到端管道中使用各种 Microsoft 服务和产品。 这些服务和产品可直接或间接与 Data Lake Storage Gen1 配合使用。 此表显示了经过修改可以和 Data Lake Storage Gen1 配合使用的服务，还显示了目前哪些服务可以和 Data Lake Storage Gen2 兼容。
 
-| **区域**             | **Data Lake Storage Gen1 的可用性**                                                                                                                                    | **Data Lake Storage Gen2 可用性 - 共享密钥验证**                                                                                                           | **Data Lake Storage Gen2 可用性 - OAuth 验证**                                                                                        |
+| **区域**             | **Data Lake Storage Gen1 的可用性**                                                                                                                                    | **Data Lake Storage Gen2 可用性 - 共享密钥验证**                                                                                                           | **Data Lake Storage Gen2 可用性 - OAuth 验证**                                                                                        |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 分析框架  | [Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-azure-datalake/index.html)                                                                                       | 现已提供                                                                                                                                                              | 现已提供                                                                                                                                 |
 |                      | [HDInsight](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal)                                                               | [HDInsight](https://docs.microsoft.com/azure/storage/data-lake-storage/quickstart-create-connect-hdi-cluster) 3.6 - 现已提供 HDInsight 4.0 - 尚未提供      | HDInsight 3.6 ESP – *现已提供* <br><br>  HDInsight 4.0 ESP - *尚未提供*                                                                 |
@@ -162,7 +162,7 @@ Data Lake Storage Gen1 将特定消息和数据推送到其他服务，有助于
 | 计费数据 - 发送到商业团队进行计费，然后提供给客户的计量  | 现已提供                                                                                             | 现已提供                                                                                                                           |
 | 活动日志                                                                                          | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs#audit-logs)   | 使用支持票证对特定持续时间的日志进行一次性请求 - 现已提供 Azure 监视集成 - 尚未提供 |
 | 诊断日志                                                                                        | [链接](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs#request-logs) | 使用支持票证对特定持续时间的日志进行一次性请求 - 现已提供 Azure 监视集成 - 尚未提供 |
-| 指标                                                                                                | *不支持*                                                                                               | 现已提供 - [链接](https://docs.microsoft.com/azure/storage/common/storage-metrics-in-azure-monitor)                          |
+| 度量值                                                                                                | *不支持*                                                                                               | 现已提供 - [链接](https://docs.microsoft.com/azure/storage/common/storage-metrics-in-azure-monitor)                          |
 
 ## <a name="planning-for-an-upgrade"></a>规划升级
 
@@ -245,11 +245,11 @@ Data Lake Storage Gen1 将特定消息和数据推送到其他服务，有助于
 
 #### <a name="uri-changes"></a>URI 更改
 
-此处的主要任务是将前缀为的`adl://` uri 转换为`abfss://`具有前缀的 uri 的。
+此处的主要任务是将前缀为 `adl://` 的 URI 转换为具有 @no__t 前缀的 URI。
 
 Data Lake Storage Gen1 的 URI 方案在[此处](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store)进行了详细介绍，但从广义上讲，它是 adl：//mydatalakestore.azuredatalakestore.net/ \<file_path\>。
 
-[此处](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)详细说明了用于访问 Data Lake Storage Gen2 文件的 URI 方案，但却广泛地说明了`abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`这一点。
+[此处](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)详细说明了用于访问 Data Lake Storage Gen2 文件的 URI 方案，但在很大程度上说，它 @no__t 为-1。
 
 需要浏览现有的应用程序，并确保已适当地更改 URI，使其指向 Data Lake Storage Gen2。 此外，还需要添加适当的凭据。 最后，如何停用原始应用程序并替换为新的应用程序需要与整体升级策略密切保持一致。
 

@@ -1,6 +1,6 @@
 ---
 title: 将 Windows 计算机连接到 Azure Monitor |Microsoft Docs
-description: 本文介绍如何将在其他云中或本地托管的 Windows 计算机连接到与 Windows 的 Log Analytics 代理 Azure Monitor。
+description: 本文介绍如何使用适用于 Windows 的 Log Analytics 代理将在其他云中或本地托管的 Windows 计算机连接到 Azure Monitor。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 5e1fe6252f396a4585b5d7d7190728b79229d5c7
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6c8d25a9df49323866e99487ef6c648dede40ec4
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073976"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033953"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>将 Windows 计算机连接到 Azure Monitor
 
@@ -34,7 +34,7 @@ ms.locfileid: "70073976"
 * 适用于在 Azure Stack 中运行 Windows 本地环境的虚拟机的资源管理器模板。 
 
 >[!NOTE]
->Azure 安全中心 (ASC) 依赖于 Microsoft Monitoring Agent（也称为 Log Analytics Windows 代理），并将在其部署过程中安装和配置它以便向 Log Analytics 工作区报告。 ASC 包括一个自动预配选项，该选项允许在订阅中的所有 VM 上自动安装 Log Analytics Windows 代理，并将其配置为向特定工作区报告。 有关此选项的详细信息, 请参阅[Enable Log Analytics agent 的自动预配](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-the-log-analytics-agent-)。
+>Azure 安全中心 (ASC) 依赖于 Microsoft Monitoring Agent（也称为 Log Analytics Windows 代理），并将在其部署过程中安装和配置它以便向 Log Analytics 工作区报告。 ASC 包括一个自动预配选项，该选项允许在订阅中的所有 VM 上自动安装 Log Analytics Windows 代理，并将其配置为向特定工作区报告。 有关此选项的详细信息，请参阅[Enable Log Analytics agent 的自动预配](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-the-log-analytics-agent-)。
 >
 
 如果需要将代理配置为向多个工作区报告，则不能在初始设置期间执行此操作，只能在通过从控制面板或 PowerShell 更新设置之后执行，如[添加或删除工作区](agent-manage.md#adding-or-removing-a-workspace)中所述。  
@@ -51,7 +51,11 @@ ms.locfileid: "70073976"
 5. 将**工作区 ID** 和**主密钥**复制并粘贴到常用编辑器。    
    
 ## <a name="configure-agent-to-use-tls-12"></a>将代理配置为使用 TLS 1.2
-若要为 Windows 代理与 Log Analytics 服务之间的通信使用 [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) 协议，可以在将代理安装在虚拟机上之前或之后执行以下步骤来启用该协议。   
+若要为 Windows 代理与 Log Analytics 服务之间的通信使用 [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) 协议，可以在将代理安装在虚拟机上之前或之后执行以下步骤来启用该协议。
+
+>[!NOTE]
+>如果要将运行 Windows Server 2008 SP2 x64 的 VM 配置为使用 TLS 1.2，则在执行以下步骤之前，首先需要安装以下[sha-1 代码签名支持更新](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update)。 
+>
 
 1. 找到以下注册表子项：**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. 在 **Protocols** 下为 TLS 1.2 创建一个子项：**HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
@@ -85,7 +89,7 @@ ms.locfileid: "70073976"
 8. 在“准备安装”页上检查所做的选择，并单击“安装”。
 9. 在“配置已成功完成”页上，单击“完成”。
 
-完成后， **Microsoft Monitoring Agent** 将显示在中的步骤安**控制面板**。 要确认其正在向 Log Analytics 报告，请参阅[验证代理与 Log Analytics 的连接](#verify-agent-connectivity-to-log-analytics)。 
+完成后，**Microsoft Monitoring Agent** 将显示在“**控制面板**”中。 要确认其正在向 Log Analytics 报告，请参阅[验证代理与 Log Analytics 的连接](#verify-agent-connectivity-to-log-analytics)。 
 
 ## <a name="install-the-agent-using-the-command-line"></a>使用命令行安装代理
 下载的代理文件是自包含安装包。  代理和支持文件的安装程序包含在该包中，需要提取才能使用以下示例中所示的命令行正确安装。    
@@ -204,6 +208,6 @@ ms.locfileid: "70073976"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[管理和维护适用于 Windows 和 Linux 的 Log Analytics 代理](agent-manage.md), 以了解如何在虚拟机中重新配置、升级或删除代理。
+- 查看[管理和维护 Windows 和 Linux 的 Log Analytics 代理](agent-manage.md)以了解如何重新配置、升级代理或从虚拟机中删除代理。
 
 - 如果在安装或管理代理时遇到问题，请查看 [Windows 代理疑难解答](agent-windows-troubleshoot.md)。

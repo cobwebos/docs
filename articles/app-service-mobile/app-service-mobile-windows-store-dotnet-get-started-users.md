@@ -1,6 +1,6 @@
 ---
 title: 向通用 Windows 平台 (UWP) 应用添加身份验证 | Microsoft Docs
-description: 了解如何使用 Azure 应用服务移动应用通过各种标识提供者（包括 AAD、 Google、 Facebook、 Twitter 和 Microsoft。
+description: 了解如何使用 Azure 应用服务移动应用通过各种标识提供者（包括 AAD、Google、Facebook、Twitter 和 Microsoft。
 services: app-service\mobile
 documentationcenter: windows
 author: elamalani
@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 9a3a6a8d063836094c1285a5ab4c17ee403fc347
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ae1a4c7570a4430c9961109c425298e356c9fa9a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440233"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027071"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>向 Windows 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-users)今天。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 本主题演示如何向移动应用添加基于云的身份验证。 在本教程中，使用 Azure 应用服务支持的标识提供者向移动应用的通用 Windows 平台 (UWP) 快速入门项目添加身份验证。 在移动应用后端成功进行身份验证和授权后，显示用户 ID 值。
@@ -42,11 +42,11 @@ ms.locfileid: "67440233"
 
 1. 在 [Azure 门户](https://ms.portal.azure.com)中，选择“应用服务”。
 
-2. 单击“身份验证/授权”  菜单选项。
+2. 单击“身份验证/授权”菜单选项。
 
-3. 在“允许的外部重定向 URL”  中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案  。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
-4. 单击“ **保存**”。
+4. 单击“保存”。
 
 ## <a name="permissions"></a>将权限限制为已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -90,7 +90,7 @@ ms.locfileid: "67440233"
         }
    
     此代码使用 Facebook 登录对用户进行身份验证。 如果使用的标识提供商不是 Facebook，请将上述 **MobileServiceAuthenticationProvider** 的值更改为提供商的值。
-2. 替换 MainPage.xaml.cs 中的 OnNavigatedTo() 方法  。 接下来，向应用添加用于触发身份验证的“登录”  按钮。
+2. 替换 MainPage.xaml.cs 中的 OnNavigatedTo() 方法。 接下来，向应用添加用于触发身份验证的“登录” 按钮。
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -114,7 +114,7 @@ ms.locfileid: "67440233"
                 await RefreshTodoItems();
             }
         }
-4. 打开 MainPage.xaml 项目文件，找到定义“保存”  按钮的元素，将其替换为以下代码：
+4. 打开 MainPage.xaml 项目文件，找到定义“保存”按钮的元素，将其替换为以下代码：
    
         <Button Name="ButtonSave" Visibility="Collapsed" Margin="0,8,8,0" 
                 Click="ButtonSave_Click">
@@ -146,8 +146,8 @@ ms.locfileid: "67440233"
             Window.Current.Activate();
             base.OnActivated(args);
         }
-6. 打开 Package.appxmanifest 文件，导航到“声明”，在“可用声明”下拉列表中，选择“协议”，然后单击“添加”按钮     。 现在，配置“协议”声明的“属性”   。 在“显示名称”中，添加要向应用程序用户显示的名称  。 在“名称”中，添加 {url_scheme_of_your_app}  。
-7. 按 F5 键运行该应用，单击“登录”  按钮，然后使用所选的标识提供者登录到该应用。 成功登录后，该应用运行时不会出错，用户能够查询后端，并对数据进行更新。
+6. 打开 Package.appxmanifest 文件，导航到“声明”，在“可用声明”下拉列表中，选择“协议”，然后单击“添加”按钮。 现在，配置“协议”声明的“属性”。 在“显示名称”中，添加要向应用程序用户显示的名称。 在“名称”中，添加 {url_scheme_of_your_app}。
+7. 按 F5 键运行该应用，单击“登录”按钮，然后使用所选的标识提供者登录到该应用。 成功登录后，该应用运行时不会出错，用户能够查询后端，并对数据进行更新。
 
 ## <a name="tokens"></a>在客户端上存储身份验证令牌
 前一示例显示了标准登录，这要求在该应用每次启动时客户端同时联系标识提供者和应用服务。 此方法不仅效率低下，而且如果很多客户尝试同时启动应用，会遇到关于使用率的问题。 更好的方法是缓存应用服务返回的授权令牌，并在使用基于提供者的登录之前首先尝试使用此令牌。

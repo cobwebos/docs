@@ -8,20 +8,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/07/2019
 ms.author: makromer
-ms.openlocfilehash: 7db410e97046b6d251eb73e754e40eab09a2ee64
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.date: 10/07/2019
+ms.openlocfilehash: cbfa1acac34187263f8c4203e41bbe61d7e4c745
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981815"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030505"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的数据流活动
 
 使用数据流活动可以通过映射数据流来转换和移动数据。 如果你不熟悉数据流，请参阅[映射数据流概述](concepts-data-flow-overview.md)
-
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 ## <a name="syntax"></a>语法
 
@@ -51,12 +49,12 @@ ms.locfileid: "71981815"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必填
+属性 | 说明 | 允许的值 | 需要
 -------- | ----------- | -------------- | --------
 数据流 | 对正在执行的数据流的引用 | DataFlowReference | 是
 integrationRuntime | 运行数据流的计算环境 | IntegrationRuntimeReference | 是
 暂存。 linkedService | 如果使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的存储帐户 | LinkedServiceReference | 仅当数据流读取或写入 SQL DW 时
-暂存。 folderPath | 如果使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的 blob 存储帐户中的文件夹路径 | 字符串 | 仅当数据流读取或写入 SQL DW 时
+暂存。 folderPath | 如果使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的 blob 存储帐户中的文件夹路径 | String | 仅当数据流读取或写入 SQL DW 时
 
 ![执行数据流](media/data-flow/activity-data-flow.png "执行数据流")
 

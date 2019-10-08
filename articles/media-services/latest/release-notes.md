@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 2d01828cb61937b45665e953a13795b5346a5f1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801388"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030530"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -34,9 +34,9 @@ ms.locfileid: "70801388"
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
 
-## <a name="september-2019"></a>2019年9月
+## <a name="september-2019"></a>2019 年 9 月
 
-媒体服务 v3 宣布推出实时事件实时线性编码的24小时 x 365 天的预览。
+媒体服务 v3 宣布推出对直播活动进行实时线性编码的 24 小时 x 365 天预览版。
  
 ## <a name="august-2019"></a>2019 年 8 月
 
@@ -58,14 +58,14 @@ ms.locfileid: "70801388"
 
 ### <a name="video-subclipping"></a>视频子剪辑
 
-你现在可以在使用[作业](https://docs.microsoft.com/rest/api/media/jobs)对视频进行编码时剪裁或子剪辑视频。 
+现在，在使用[作业](https://docs.microsoft.com/rest/api/media/jobs)对视频进行编码时，可以对其进行剪裁或子剪辑。 
 
-此功能适用于使用[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)预设或[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms)。 
+此功能适用于使用 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设或 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms)。 
 
 请参阅示例：
 
-* [使用 .NET 子剪辑视频](subclip-video-dotnet-howto.md)
-* [使用 REST 子剪辑视频](subclip-video-rest-howto.md)
+* [使用 .NET 创建视频的子剪辑](subclip-video-dotnet-howto.md)
+* [使用 REST 对视频进行子剪辑](subclip-video-rest-howto.md)
 
 ## <a name="may-2019"></a>2019 年 5 月
 
@@ -78,9 +78,9 @@ ms.locfileid: "70801388"
 
 有关详细信息，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
 
-### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>动态打包中的多音频跟踪支持 
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>动态打包中的多音频轨道支持 
 
-当使用多个编解码器和语言的多个音频轨迹流式传输资产时，[动态打包](dynamic-packaging-overview.md)现在支持 HLS 输出的多个音频轨迹（版本4或更高版本）。
+使用多种编解码器和语言流式处理具有多个音频轨道的资产时，[动态打包](dynamic-packaging-overview.md)现在支持 HLS 输出（版本 4 或更高版本）的多个音频轨道。
 
 ### <a name="korea-regional-pair-is-open-for-media-services"></a>韩国区域对为 Media Services 开放 
 
@@ -90,27 +90,27 @@ ms.locfileid: "70801388"
 
 ### <a name="performance-improvements"></a>性能提升
 
-添加了更新，其中包括媒体服务性能改进。
+添加了包括媒体服务性能改进的更新。
 
-* 已更新处理所支持的最大文件大小。 请参阅、[配额和限制](limits-quotas-constraints.md)。
-* [编码加快了提高](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
+* 更新了处理所支持的最大文件大小。 请参阅[配额和限制](limits-quotas-constraints.md)。
+* [编码速度提高](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
 
 ## <a name="april-2019"></a>2019 年 4 月
 
-### <a name="new-presets"></a>新预设
+### <a name="new-presets"></a>新增预设
 
-* 已将[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)添加到内置分析器预设。
-* 已将[ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)添加到内置编码器预设。 有关详细信息，请参阅[内容感知编码](cae-experimental.md)。 
+* 向内置分析器预设添加了 [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)。
+* 向内置编码器预设添加了 [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。 有关详细信息，请参阅[内容感知型编码](cae-experimental.md)。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-动态打包现在支持杜比 Atmos。 有关详细信息，请参阅[动态打包支持的音频编解码器](dynamic-packaging-overview.md#audio-codecs)。
+动态打包现在支持 Dolby Atmos。 有关详细信息，请参阅[动态打包支持的音频编解码器](dynamic-packaging-overview.md#audio-codecs)。
 
-你现在可以指定将应用于流式处理定位符的资产或帐户筛选器的列表。 有关详细信息，请参阅[将筛选器与流式处理定位符相关联](filters-concept.md#associating-filters-with-streaming-locator)。
+现在，可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 有关详细信息，请参阅[将筛选器与流定位器相关联](filters-concept.md#associating-filters-with-streaming-locator)。
 
 ## <a name="february-2019"></a>2019 年 2 月
 
-媒体服务 v3 现在在 Azure 国内云中受支持。 目前，并非所有功能在所有云中都可用。 有关详细信息，请参阅[存在 Azure 媒体服务 v3 的云和区域](azure-clouds-regions.md)。
+媒体服务 v3 目前在 Azure 国家云中受支持。 目前，并非所有功能在所有云中都可用。 有关详细信息，请参阅[存在 Azure 媒体服务 v3 的云和区域](azure-clouds-regions.md)。
 
 [Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) 事件已添加到媒体服务的 Azure 事件网格架构中。
 
@@ -275,4 +275,5 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 ## <a name="next-steps"></a>后续步骤
 
-[概述](media-services-overview.md)
+- [概述](media-services-overview.md)
+- [媒体服务 v2 发行说明](../previous/media-services-release-notes.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 083a7e7ad4ac40a7782936e664a9136d0452e93d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 69fe370029cef391b8ee483ffdee5c588df41d58
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694677"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030669"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>设置在 Linux 上讲授 shell 脚本的实验室
 本文介绍如何设置实验室，以在 Linux 上讲授 shell 脚本。 脚本编写是系统管理的一个有用部分，可让管理员避免重复执行的任务。 在此示例方案中，类涵盖了传统的 bash 脚本和增强的脚本。 增强型脚本是结合 bash 命令和 Ruby 的脚本。 此方法允许 Ruby 传递数据和 bash 命令以与 shell 交互。 
@@ -80,12 +80,14 @@ Ruby 是一种开放源动态语言，可与 bash 脚本结合使用。 本部�
 
     该模板现已更新，并具有完成实验室所需的编程语言和开发工具。 现在可以将模板映像发布到实验室。 选择 "模板" 页上的 "**发布**" 按钮，将模板发布到实验室。  
 
-## <a name="cost"></a>开销 
+## <a name="cost"></a>成本 
 如果要估计此实验室的成本，可以使用以下示例：
  
-对于具有20个小时的计划类时间和10小时配额（适用于家庭或分配）的25名学生，实验室的价格为：25名学生 * （20 + 10）小时 * 20 个实验室单位 * 0.01 美元/小时 = 150 美元
+对于具有20个小时的计划类时间和10小时配额（适用于家庭或分配）的25名学生，实验室的价格为： 
 
-有关定价的更多详细信息，请参阅以下文档：[Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
+25名学生 * （20 + 10）小时 * 20 个实验室单位 * 0.01 美元/小时 = 150 美元
+
+有关定价的详细信息，请参阅以下文档：[Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
 
 ## <a name="conclusion"></a>结束语
 本文指导你完成为脚本编写类创建实验室的步骤。 尽管本文重点介绍了如何在 Linux 计算机上设置 Ruby 脚本编写工具，但相同的设置可用于其他脚本类，如 Linux 上的 Python。

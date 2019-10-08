@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/06/2019
-ms.openlocfilehash: 8c35877c7de2fa89a8fe7a94c11787814183df9e
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/02/2019
+ms.openlocfilehash: 6f2ef181e7f61696245a4413d7a28d84801f2838
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162252"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72032886"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>关于 Azure SQL“超大规模”数据库的常见问题解答
 
@@ -37,22 +37,22 @@ ms.locfileid: "71162252"
 
 ### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>“超大规模”服务层级与“常规用途”和“业务关键”服务层级有何区别
 
-主要根据可用性、存储类型和 IOPS 区分基于 vCore 的服务层级。
+基于 vCore 的服务层主要基于可用性、存储类型和 IOPS 来区分。
 
 - “常规用途”服务层级提供一组均衡的计算和存储选项（其中 IO 延迟或故障转移时间无需优先考虑），适用于大多数业务工作负荷。
 - “超大规模”服务层级针对非常大的数据库工作负荷进行了优化。
 - “业务关键”服务层级适用于需优先考虑 IO 延迟的业务工作负荷。
 
-| | 资源类型 | 常规用途 |  超大规模 | 业务关键型 |
+| | 资源类型 | 常规用途 |  超大规模 | 业务关键 |
 |:---:|:---:|:---:|:---:|:---:|
-| **最适用于** |All|  大多数业务工作负荷。 提供以预算导向的、均衡的计算和存储选项。 | 数据容量要求高且能够流畅地自动缩放存储和流畅缩放计算的数据应用程序。 | 事务率较高、延迟 IO 最低的 OLTP 应用程序。 使用多个独立副本，提供最高级别的故障恢复能力。|
+| **最适用于** |All|提供以预算导向的、均衡的计算和存储选项。|大多数业务工作负荷。 自动缩放存储大小，最高可达 100 TB、流体垂直和水平计算缩放、快速数据库还原。|事务速率较高和 IO 延迟较低的 OLTP 应用程序。 使用多个同步更新的副本提供最高的故障恢复能力和快速故障转移。|
 |  **资源类型** ||单一数据库/弹性池/托管实例 | 单一数据库 | 单一数据库/弹性池/托管实例 |
 | **计算大小**|单一数据库/弹性池* | 1 - 80 个 vCore | 1 - 80 个 vCore* | 1 - 80 个 vCore |
 | |托管实例 | 8、16、24、32、40、64、80 个 vCore | 不可用 | 8、16、24、32、40、64、80 个 vCore |
 | **存储类型** | All |高级远程存储（每个实例） | 具有本地 SSD 缓存的分离的存储（每个实例） | 超快的本地 SSD 存储（每个实例） |
 | **存储大小** | 单一数据库/弹性池 | 5 GB – 4 TB | 最多 100 TB | 5 GB – 4 TB |
 | | 托管实例  | 32 GB – 8 TB | 不可用 | 32 GB – 4 TB |
-| **IO 吞吐量** | 单一数据库** | 每个 vCore 提供 500 IOPS，最大 7000 IOPS | 超大规模是具有多个级别缓存的多层体系结构。 有效 IOPS 将取决于工作负荷。 | 5000 IOPS，最大 200,000 IOPS|
+| **IOPS** | 单一数据库** | 每个 vCore 提供 500 IOPS，最大 7000 IOPS | 超大规模是具有多个级别缓存的多层体系结构。 有效 IOPS 将取决于工作负荷。 | 5000 IOPS，最大 200,000 IOPS|
 | | 托管实例 | 取决于文件大小 | 不可用 | 托管实例：取决于文件大小|
 |**可用性**|All|1 个副本，无读取扩展副本，无本地缓存 | 多个副本，多达4个可读缩放的部分本地缓存 | 3 个副本，1 个读取扩展副本，区域冗余 HA，完整的本地缓存 |
 |**备份**|All|RA-GRS，7-35 天（默认为 7 天）| RA-GRS，7 天，恒定的时间时点恢复 (PITR) | RA-GRS，7-35 天（默认为 7 天） |
@@ -61,7 +61,7 @@ ms.locfileid: "71162252"
 
 ### <a name="who-should-use-the-hyperscale-service-tier"></a>哪些群体应使用“超大规模”服务层级
 
-“超大规模”服务层级主要面向拥有大型本地 SQL Server 数据库并希望通过迁移到云来实现应用程序现代化的客户，或已使用 Azure SQL 数据库并且想大大拓展数据库增长可能性的客户。 “超大规模”服务层级也适用于那些寻求高性能和高可伸缩性的客户。 使用“超大规模”服务层级，可以：
+超大规模服务层适用于拥有大型本地 SQL Server 数据库并想要通过迁移到云或已在使用 Azure SQL 数据库的客户来实现应用程序现代化的客户，并想要大大扩展数据库增长的潜能。 “超大规模”服务层级也适用于那些寻求高性能和高可伸缩性的客户。 使用“超大规模”服务层级，可以：
 
 - 支持高达 100 TB 的数据库大小
 - 快速进行数据库备份，无需考虑数据库大小（备份基于文件快照）
@@ -173,7 +173,7 @@ SQL 数据库“超大规模”服务层级支持所有 SQL Server 工作负荷�
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>数据库的大小按多少增量增长
 
-1 GB
+每个数据文件的增长大小为 10 GB。 多个数据文件可能会同时增长。
 
 ### <a name="is-the-storage-in-sql-database-hyperscale-local-or-remote"></a>SQL 数据库“超大规模”服务层级中的存储是本地存储还是远程存储
 
@@ -217,9 +217,9 @@ SQL 数据库“超大规模”服务层级支持所有 SQL Server 工作负荷�
 
 是。 目前，部分 Azure SQL 数据库功能不受支持，包括但不限于长期保留备份。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。  我们预期这些限制是暂时性的。
 
-### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>能否将我的本地 SQL Server 数据库或 SQL Server 虚拟机数据库迁移到“超大规模”服务层级
+### <a name="can-i-move-my-on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>是否可以将本地 SQL Server 数据库或我 SQL Server 的虚拟机数据库移到超大规模
 
-是。 可以利用现有的所有迁移技术（包括 BACPAC、事务复制和逻辑数据加载）迁移到“超大规模”服务层级。 另请参阅 [Azure 数据库迁移服务](../dms/dms-overview.md)。
+是。 你可以使用所有现有迁移技术迁移到超大规模，包括事务复制和任何其他数据移动技术（大容量复制、Azure 数据工厂、Azure Databricks、SSIS）。 另请参阅 [Azure 数据库迁移服务](../dms/dms-overview.md)。
 
 ### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>从本地或虚拟机环境迁移到“超大规模”服务层级期间，我的停机时间有多长，如何尽量减少停机时间
 
@@ -228,11 +228,13 @@ SQL 数据库“超大规模”服务层级支持所有 SQL Server 工作负荷�
 
 ### <a name="how-much-time-would-it-take-to-bring-in-x-amount-of-data-to-sql-database-hyperscale"></a>向 SQL 数据库“超大规模”服务层级引入 X 数据量需要多少时间
 
-超大规模数据库每秒能够使用 100 MB 新数据/更改的数据。
+超大规模能够消耗 100 MB/秒的新数据/已更改数据，但将数据移入 Azure SQL 数据库所需的时间也会受到可用网络吞吐量、源读取速度和目标超大规模数据库服务级别目标的影响。
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-and-sql-data-warehouse"></a>能否从 blob 存储读取数据并执行快速加载（如 Polybase 和 SQL 数据仓库）
 
 可以从 Azure 存储中读取数据并将数据加载到“超大规模”数据库（就像对常规的单一数据库执行的操作一样）。 Azure SQL 数据库当前不支持 Polybase。 可以通过使用 [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/)或通过[适用于 SQL 的 Spark 连接器](sql-database-spark-connector.md)在 [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) 中运行 Spark 作业，执行 Polybase。 SQL 的 Spark 连接器支持批量插入。
+
+还可以使用 BULK INSERT 或 OPENROWSET 批量从 Azure Blob 存储区中读取数据：[对 Azure Blob 存储中的数据进行大容量访问的示例](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
 
 “超大规模”数据库中不支持简单恢复或批量日志记录模式。 提供高可用性需要完整恢复模式。 但是，相比于单个 Azure SQL 数据库而言，“超大规模”数据库由于具有新的日志体系结构，可提供更快的数据引入速率。
 
@@ -365,7 +367,7 @@ IOPS 和 IO 延迟根据工作负荷模式而异。  如果需要访问的数据
 ### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-node-using-ssms--other-client-tools"></a>如何实现验证是否已使用 SSMS/其他客户端工具成功连接到辅助计算节点？
 
 你可以使用 SSMS/其他客户端工具执行以下 T-sql 查询： `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`。
-如果连接指向`READ_ONLY`只读辅助节点，或者`READ_WRITE`如果连接指向主节点，则结果为。
+如果连接指向只读辅助节点，则结果为 `READ_ONLY`; 如果连接指向主节点，则为 `READ_WRITE`。
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>能不能为读取扩展副本创建专用终结点
 

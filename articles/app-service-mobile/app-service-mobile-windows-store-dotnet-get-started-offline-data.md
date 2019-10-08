@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 4970a80b911a1efbc308d48ac4b8a50f774b4d04
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 2ffd80f60543c3136eff2d5774a850347eb68427
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67551929"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027094"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>为 Windows 应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center 正在为移动应用开发的新的和集成的服务进行投资。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后, 开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况, 并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务, 以便在云中持久保存和同步应用程序数据。 立即查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-offline-data) 。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 本教程演示如何使用 Azure 移动应用后端为通用 Windows 平台 (UWP) 应用添加脱机支持。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。 更改存储在本地数据库中。 设备重新联机后，这些更改会与远程后端同步。
@@ -40,11 +40,11 @@ ms.locfileid: "67551929"
 
 * 在 Windows 8.1 或更高版本上运行的 Visual Studio 2013。
 * 完成[创建 Windows 应用][创建 Windows 应用]。
-* [Azure 移动服务 SQLite 应用商店][sqlite store nuget]
+* [Azure 移动服务 SQLite Store][sqlite store nuget]
 * [适用于通用 Windows 平台开发的 SQLite](https://marketplace.visualstudio.com/items?itemName=SQLiteDevelopmentTeam.SQLiteforUniversalWindowsPlatform) 
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>更新客户端应用以支持脱机功能
-脱机情况下，可使用 Azure 移动应用脱机功能与本地数据库交互。 若要在应用中使用这些功能, 可以初始化[SyncContext][synccontext] to a local store. Then reference your table through the [IMobileServiceSyncTable][IMobileServiceSyncTable]接口。 SQLite 在设备上用作本地存储。
+脱机情况下，可使用 Azure 移动应用脱机功能与本地数据库交互。 若要在应用中使用这些功能，请初始化 [SyncContext][synccontext] to a local store. Then reference your table through the [IMobileServiceSyncTable][IMobileServiceSyncTable] 接口。 SQLite 在设备上用作本地存储。
 
 1. 安装[适用于通用 Windows 平台的 SQLite 运行时](https://sqlite.org/2016/sqlite-uwp-3120200.vsix)。
 2. 在 Visual Studio 中，打开在[创建 Windows 应用]教程中完成的 UWP 应用项目的 NuGet 包管理器。
@@ -82,10 +82,10 @@ ms.locfileid: "67551929"
    `UpdateCheckedTodoItem` 调用 `SyncAsync`，将每个已完成项与移动应用后端同步。 `SyncAsync` 同时调用推送和拉取操作。 但是，**每当对客户端已更改的表执行拉取操作时，始终会自动执行推送操作**。 此行为可确保本地存储中的所有表以及关系都保持一致。 此行为可能会导致意外的推送。  有关此行为的详细信息，请参阅 [Azure 移动应用中的脱机数据同步]。
 
 ## <a name="api-summary"></a>API 摘要
-为了支持移动服务的脱机功能, 我们使用了[IMobileServiceSyncTable]接口, 并使用本地 SQLite 数据库初始化了[MobileServiceClient。][synccontext] 脱机时，移动应用的普通 CRUD 操作执行起来就像此应用仍处于连接状态一样，但操作针对本地存储进行。 以下方法用于将本地存储与服务器进行同步：
+为了支持移动服务的脱机功能，我们使用了 [IMobileServiceSyncTable] 接口，并使用本地 SQLite 数据库初始化了 [MobileServiceClient.SyncContext][synccontext]。 脱机时，移动应用的普通 CRUD 操作执行起来就像此应用仍处于连接状态一样，但操作针对本地存储进行。 以下方法用于将本地存储与服务器进行同步：
 
 * [PushAsync] 由于此方法是 [IMobileServicesSyncContext] 的成员，因此对所有表进行的更改将推送到后端。 只有具有本地更改的记录将发送到服务器。
-* **[PullAsync]** 从 [IMobileServiceSyncTable] 启动拉取操作。 当表中存在被跟踪的更改时，会执行隐式推送操作以确保本地存储中的所有表以及关系都保持一致。 *PushOtherTables* 参数控制在隐式推送操作中是否推送上下文中的其他表。 *Query*参数使用[\<IMobileServiceTableQuery T >][IMobileServiceTableQuery]或 OData 查询字符串来筛选返回的数据。 *queryId* 参数用于定义增量同步。有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步](app-service-mobile-offline-data-sync.md#how-sync-works)。
+* **[PullAsync]** 从 [IMobileServiceSyncTable] 启动拉取操作。 当表中存在被跟踪的更改时，会执行隐式推送操作以确保本地存储中的所有表以及关系都保持一致。 *PushOtherTables* 参数控制在隐式推送操作中是否推送上下文中的其他表。 query 参数使用 [IMobileServiceTableQuery\<T>][IMobileServiceTableQuery] 或 OData 查询字符串来筛选返回的数据。 *queryId* 参数用于定义增量同步。有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步](app-service-mobile-offline-data-sync.md#how-sync-works)。
 * **[PurgeAsync]** 应用应定期调用此方法，从本地存储中清除过时数据。 需要清除尚未同步的任何更改时，请使用 *force* 参数。
 
 有关这些概念的详细信息，请参阅 [Azure 移动应用中的脱机数据同步](app-service-mobile-offline-data-sync.md#how-sync-works)。
@@ -94,7 +94,7 @@ ms.locfileid: "67551929"
 以下主题提供有关移动应用的脱机同步功能的更多背景信息：
 
 * [Azure 移动应用中的脱机数据同步]
-* [Azure 移动应用 .NET SDK 如何][8]
+* [Azure 移动应用 .NET SDK 操作指南][8]
 
 <!-- Anchors. -->
 [Update the app to support offline features]: #enable-offline-app

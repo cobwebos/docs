@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: e2cd69d5977b8ad1d9be2a71a006579fe3abfd23
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: fc497837792075501bcd92f6ee07ad9ee4fe2dfa
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971256"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027007"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure 数据工厂更改行转换
 
-使用更改行转换在行上设置插入、删除、更新、更新插入策略。 可以将一对多条件作为表达式添加。 应按优先级顺序指定这些条件, 因为每一行都将用与第一个匹配表达式对应的策略进行标记。 其中每个条件都可能会导致插入、更新、删除或 upserted 行。 更改行可能会对数据库执行 DDL 和 DML 操作。
+使用更改行转换在行上设置插入、删除、更新、更新插入策略。 可以将一对多条件作为表达式添加。 应按优先级顺序指定这些条件，因为每一行都将用与第一个匹配表达式对应的策略进行标记。 其中每个条件都可能会导致插入、更新、删除或 upserted 行。 更改行可能会对数据库执行 DDL 和 DML 操作。
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ![更改行设置](media/data-flow/alter-row1.png "更改行设置")
 
@@ -26,16 +26,16 @@ ms.locfileid: "69971256"
 
 ## <a name="indicate-a-default-row-policy"></a>指示默认行策略
 
-创建 Alter Row 转换, 并指定条件为的`true()`行策略。 每个不满足任何以前定义的表达式的行将被标记为指定的行策略。 默认情况下, 不满足任何条件表达式的每一行都将标记为`Insert`。
+创建 Alter Row 转换，并指定条件为 `true()` 的行策略。 每个不满足任何以前定义的表达式的行将被标记为指定的行策略。 默认情况下，每个不满足任何条件表达式的行都将被标记为 `Insert`。
 
-![更改一行策略](media/data-flow/alter-row4.png "更改一行策略")
+![更改行一个策略](media/data-flow/alter-row4.png "更改行策略")
 
 > [!NOTE]
-> 若要将所有行标记为一个策略, 可以为该策略创建一个条件, 并将条件`true()`指定为。
+> 若要将所有行标记为一个策略，可以为该策略创建条件，并将条件指定为 `true()`。
 
 ## <a name="view-policies"></a>查看策略
 
-启用数据流调试模式, 在数据预览窗格中查看更改行策略的结果。 在“数据流调试”模式下执行更改行不会对目标进行 DDL 或 DML 操作。 若要执行这些操作, 请在管道内的执行数据流活动中执行数据流。
+启用数据流调试模式，在数据预览窗格中查看更改行策略的结果。 在“数据流调试”模式下执行更改行不会对目标进行 DDL 或 DML 操作。 若要执行这些操作，请在管道内的执行数据流活动中执行数据流。
 
 ![更改行策略](media/data-flow/alter-row3.png "更改行策略")
 
@@ -43,7 +43,7 @@ ms.locfileid: "69971256"
 
 ## <a name="sink-settings"></a>接收器设置
 
-必须有一个数据库接收器类型，否则更改行无法操作。 在接收器设置中, 应将每个操作设置为要允许的更改行条件。
+必须有一个数据库接收器类型，否则更改行无法操作。 在接收器设置中，应将每个操作设置为要允许的更改行条件。
 
 ![更改行接收器](media/data-flow/alter-row2.png "更改行接收器")
 

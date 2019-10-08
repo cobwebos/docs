@@ -14,20 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: b7e2ff63211ec5891a48a585e4f69e18116cdeb3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8ce307df954575b3204f7a4b3f46af1f4a9c3089
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446577"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027456"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>向 Xamarin.Forms 应用添加推送通知
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-push)今天。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 
@@ -35,7 +35,7 @@ ms.locfileid: "67446577"
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 对于 iOS，用户需要 [Apple 开发人员计划成员身份](https://developer.apple.com/programs/ios/)和物理 iOS 设备。 [iOS 模拟器不支持推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
 
@@ -63,8 +63,8 @@ ms.locfileid: "67446577"
 
 使用 FCM 配置后端以后，即可将组件和代码添加到客户端，以便通过 FCM 注册。 也可通过移动应用后端向 Azure 通知中心注册推送通知，然后即可接收通知。
 
-1. 在 **Droid** 项目中，右键单击“引用”>“管理 NuGet 包...”  。
-1. 在“NuGet 包管理器”窗口中，搜索“Xamarin.Firebase.Messaging”  包并将其添加到项目中。
+1. 在 **Droid** 项目中，右键单击“引用”>“管理 NuGet 包...”。
+1. 在“NuGet 包管理器”窗口中，搜索“Xamarin.Firebase.Messaging”包并将其添加到项目中。
 1. 在 **Droid** 项目的项目属性中，将应用设置为使用 Android 7.0 版或更高版本进行编译。
 1. 将从 Firebase 控制台下载的 **google-services.json** 文件添加到 **Droid** 项目的根目录，并将其生成操作设置为 **GoogleServicesJson**。 有关详细信息，请参阅[添加 Google 服务 JSON 文件](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File)。
 
@@ -232,10 +232,10 @@ ms.locfileid: "67446577"
 
 只有在模拟器上测试时才需要前两个步骤。
 
-1. 请确保部署到配置了 Google Play Services 的设备或模拟器，或者在该设备或模拟器上进行调试。 这可以通过检查设备或模拟器上是否安装了“播放”  应用来进行验证。
-2. 单击“应用”   > “设置”   > “添加帐户”  ，将 Google 帐户添加到 Android 设备。 然后按提示操作，将现有的 Google 帐户添加到设备，或者新建一个。
-3. 在 Visual Studio 或 Xamarin Studio 中，右键单击 **Droid** 项目，并单击“设为启动项目”  。
-4. 单击“运行”  生成项目，并在 Android 设备或模拟器中启动应用。
+1. 请确保部署到配置了 Google Play Services 的设备或模拟器，或者在该设备或模拟器上进行调试。 这可以通过检查设备或模拟器上是否安装了“播放”应用来进行验证。
+2. 单击“应用” > “设置” > “添加帐户”，将 Google 帐户添加到 Android 设备。 然后按提示操作，将现有的 Google 帐户添加到设备，或者新建一个。
+3. 在 Visual Studio 或 Xamarin Studio 中，右键单击 **Droid** 项目，并单击“设为启动项目”。
+4. 单击“运行”生成项目，并在 Android 设备或模拟器中启动应用。
 5. 在应用中，键入一项任务，并单击加号 ( **+** ) 图标。
 6. 确认在添加该项目时收到了通知。
 
@@ -324,14 +324,14 @@ ms.locfileid: "67446577"
 
 #### <a name="test-push-notifications-in-your-ios-app"></a>在 iOS 应用中测试推送通知
 
-1. 右键单击 iOS 项目，并单击“设为启动项目”  。
-2. 在 Visual Studio 中按“运行”  按钮或 **F5** 生成项目并在 iOS 设备中启动应用， 然后单击“确定”接受推送通知。 
+1. 右键单击 iOS 项目，并单击“设为启动项目”。
+2. 在 Visual Studio 中按“运行”按钮或 **F5** 生成项目并在 iOS 设备中启动应用， 然后单击“确定”接受推送通知。
 
    > [!NOTE]
    > 必须显式接受来自应用程序的推送通知。 此请求只会在首次运行应用程序时出现。
 
 3. 在应用中，键入一项任务，并单击加号 ( **+** ) 图标。
-4. 检查是否已收到通知，并单击“确定”以取消通知。 
+4. 检查是否已收到通知，并单击“确定”以取消通知。
 
 ## <a name="configure-and-run-windows-projects-optional"></a>配置和运行 Windows 项目（可选）
 
@@ -395,13 +395,13 @@ ms.locfileid: "67446577"
 
     这可确保每次启动应用时，创建或刷新推送通知注册。 请务必执行此操作，以保证 WNS 推送通道始终处于活动状态。  
 
-4. 在 Visual Studio 的解决方案资源管理器中，打开 **Package.appxmanifest** 文件，并在“通知”  下将“支持 Toast 通知”  设置为“是”  。
+4. 在 Visual Studio 的解决方案资源管理器中，打开 **Package.appxmanifest** 文件，并在“通知”下将“支持 Toast 通知”设置为“是”。
 5. 生成该应用并确认没有错误。 客户端应用现在应从移动应用后端注册模板通知。 对于解决方案中的每个 Windows 项目，重复此部分的操作。
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>在 Windows 应用中测试推送通知
 
-1. 在 Visual Studio 中，右键单击 Windows 项目，并单击“设为启动项目”  。
-2. 按“运行”按钮生成项目并启动应用程序  。
+1. 在 Visual Studio 中，右键单击 Windows 项目，并单击“设为启动项目”。
+2. 按“运行”按钮生成项目并启动应用程序 。
 3. 在应用中，为新 todoitem 键入一个名称，并单击加号 ( **+** ) 图标以添加它。
 4. 确认在添加项时收到了通知。
 

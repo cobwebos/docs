@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: fdcfcbaf99d48a345d2be4da297be1c9139da15c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 70dd4af16746ecf54310dffcb854c3c0857283ba
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308116"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033869"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 诊断日志支持的服务、架构和类别
 
@@ -23,14 +23,14 @@ ms.locfileid: "71308116"
 
 ## <a name="top-level-diagnostic-logs-schema"></a>顶级诊断日志架构
 
-| 姓名 | 必需/可选 | 描述 |
+| 名称 | 必需/可选 | 描述 |
 |---|---|---|
-| time | 必填 | 事件时间戳 (UTC)。 |
-| resourceId | 必填 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
+| time | 需要 | 事件时间戳 (UTC)。 |
+| resourceId | 需要 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
 | tenantId | 对于租户日志而言是必需的 | 此事件关联到的 Active Directory 租户的租户 ID。 此属性仅用于租户级日志，它不会出现在资源级日志中。 |
-| operationName | 必填 | 此事件表示的操作的名称。 如果该事件表示 RBAC 操作，则这是 RBAC 操作名称 （例如 Microsoft.Storage/storageAccounts/blobServices/blobs/Read）。 通常以资源管理器操作的形式建模，即使它们不是实际记录的资源管理器操作 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
+| operationName | 需要 | 此事件表示的操作的名称。 如果该事件表示 RBAC 操作，则这是 RBAC 操作名称 （例如 Microsoft.Storage/storageAccounts/blobServices/blobs/Read）。 通常以资源管理器操作的形式建模，即使它们不是实际记录的资源管理器操作 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | 可选 | 如果使用 API 执行 operationName，则 api-version 与该操作关联（例如 `http://myservice.windowsazure.net/object?api-version=2016-06-01`）。 如果没有与此操作相对应的 API，则该版本表示该操作的版本，以防与操作相关联的属性在将来发生更改。 |
-| category | 必填 | 事件的日志类别。 类别是可以在特定资源上启用或禁用日志的粒度。 在事件的属性 blob 内显示的属性在特定日志类别和资源类型中相同。 典型的日志类别是“Audit”、“Operational”、“Execution”和“Request”。 |
+| category | 需要 | 事件的日志类别。 类别是可以在特定资源上启用或禁用日志的粒度。 在事件的属性 blob 内显示的属性在特定日志类别和资源类型中相同。 典型的日志类别是“Audit”、“Operational”、“Execution”和“Request”。 |
 | resultType | 可选 | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
 | resultSignature | 可选 | 事件的子状态。 如果此操作对应于 REST API 调用，则这是相应 REST 调用的 HTTP 状态代码。 |
 | resultDescription | 可选 | 此操作的静态文本说明，例如 “获取存储文件”。 |
@@ -55,6 +55,7 @@ ms.locfileid: "71308116"
 | Azure Batch |[Azure Batch 诊断日志记录](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL 诊断日志](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL 诊断日志](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
+| Azure 数据资源管理器 | [Azure 数据资源管理器诊断日志](../../data-explorer/using-diagnostic-logs.md) |
 | 认知服务 | [Azure 认知服务的诊断日志记录](../../cognitive-services/diagnostic-logging.md) |
 | 内容分发网络 | [CDN 的 Azure 诊断日志](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB 日志记录](../../cosmos-db/logging.md) |
@@ -62,7 +63,7 @@ ms.locfileid: "71308116"
 | Data Lake Analytics |[访问 Azure Data Lake Analytics 的诊断日志](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[访问 Azure Data Lake Store 的诊断日志](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | 事件中心 |[Azure 事件中心诊断日志](../../event-hubs/event-hubs-diagnostic-logs.md) |
-| 快速路由 | 架构不可用。 |
+| Express Route | 架构不可用。 |
 | Azure 防火墙 | 架构不可用。 |
 | IoT 中心 | [IoT 中心操作](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Azure 密钥保管库日志记录](../../key-vault/key-vault-logging.md) |
@@ -72,12 +73,12 @@ ms.locfileid: "71308116"
 | 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS 保护 | [管理 Azure DDoS 防护标准](../../virtual-network/manage-ddos-protection.md) |
 | Power BI 专用 | [Azure 中的 Power BI Embedded 的诊断日志记录](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
-| Recovery Services | [Azure 备份的数据模型](../../backup/backup-azure-reports-data-model.md)|
+| 恢复服务 | [Azure 备份的数据模型](../../backup/backup-azure-reports-data-model.md)|
 | 搜索 |[允许并使用搜索流量分析](../../search/search-traffic-analytics.md) |
 | 服务总线 |[Azure 服务总线诊断日志](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL 数据库 | [Azure SQL 数据库诊断日志记录](../../sql-database/sql-database-metrics-diag-logging.md) |
 | 流分析 |[作业诊断日志](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
-| 通信管理器 | [流量管理器日志架构](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
+| 流量管理器 | [流量管理器日志架构](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | 虚拟网络 | 架构不可用。 |
 | 虚拟网络网关 | 架构不可用。 |
 
@@ -107,7 +108,7 @@ ms.locfileid: "71308116"
 |Microsoft.DataLakeAnalytics/accounts|审核|审核日志|
 |Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
 |Microsoft.DataLakeStore/accounts|审核|审核日志|
-|Microsoft.DataLakeStore/accounts|请求|请求日志|
+|Microsoft.DataLakeStore/accounts|Requests|请求日志|
 |Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL 服务器日志|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL 服务器日志|
 |Microsoft.Devices/IotHubs|连接|连接|
@@ -134,7 +135,7 @@ ms.locfileid: "71308116"
 |Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|自动缩放评估|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|自动缩放缩放操作|
 |Microsoft.IoTSpaces/Graph|跟踪|跟踪|
-|Microsoft.IoTSpaces/Graph|操作|操作|
+|Microsoft.IoTSpaces/Graph|可运行|可运行|
 |Microsoft.IoTSpaces/Graph|审核|审核|
 |Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
 |Microsoft.IoTSpaces/Graph|流入量|流入量|
@@ -177,7 +178,7 @@ ms.locfileid: "71308116"
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery 受保护的磁盘数据改动|
 |Microsoft.Search/searchServices|OperationLogs|操作日志|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|操作日志|
-|Microsoft.Sql/servers/databases|SQLInsights|SQL 见解|
+|Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/servers/databases|AutomaticTuning|自动优化|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|查询存储运行时统计信息|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|查询存储等待统计信息|
@@ -185,7 +186,7 @@ ms.locfileid: "71308116"
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|数据库等待统计信息|
 |Microsoft.Sql/servers/databases|超时|超时|
 |Microsoft.Sql/servers/databases|块|块|
-|Microsoft.Sql/servers/databases|死锁|死锁|
+|Microsoft.Sql/servers/databases|死锁数|死锁数|
 |Microsoft.Sql/servers/databases|审核|审核日志|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL 安全审核事件|
 |Microsoft.Sql/servers/databases|DmsWorkers|Dms 辅助角色|
@@ -195,7 +196,7 @@ ms.locfileid: "71308116"
 |Microsoft.Sql/servers/databases|Waits|等待|
 |Microsoft.Sql/managedInstances|ResourceUsageStats|资源使用情况统计信息|
 |Microsoft.Sql/managedInstances|SQLSecurityAuditEvents|SQL 安全审核事件|
-|Microsoft.Sql/managedInstances/databases|SQLInsights|SQL 见解|
+|Microsoft.Sql/managedInstances/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|查询存储运行时统计信息|
 |Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|查询存储等待统计信息|
 |Microsoft.Sql/managedInstances/databases|错误|错误|

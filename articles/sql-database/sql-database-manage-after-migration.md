@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845601"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028250"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中的单一数据库和共用数据库
 
@@ -142,7 +142,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 
 #### <a name="reserved-ips"></a>保留 IP
 
-另一种方法是为 Vm 设置[保留 ip](../virtual-network/virtual-networks-reserved-public-ip.md) ，并在服务器防火墙设置中添加这些特定的 VM IP 地址。 通过分配保留 IP，就可以避免通过更改 IP 地址来更新防火墙规则的麻烦。
+另一种方法是为 VM 预配[保留 IP](../virtual-network/virtual-networks-reserved-public-ip.md)，并在服务器防火墙设置中添加这些特定的 VM IP 地址。 通过分配保留 IP，就可以避免通过更改 IP 地址来更新防火墙规则的麻烦。
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>连接到哪些端口上的 SQL 数据库
 
@@ -278,11 +278,11 @@ Azure 门户通过选择数据库并单击“概述”窗格中的图表来显�
 
 可以使用[查询性能见解](sql-database-query-performance.md)查看特定数据库那些排名靠前的资源消耗查询和长时间运行查询的历史记录。 可通过资源利用率、持续时间和执行频率快速找出热门查询。 还可跟踪查询，并检测回归。 此功能需要为数据库启用和激活[查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
 
-![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
+![查询性能见解](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Monitor 日志中的 Azure SQL Analytics （预览）
 
-[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)可用于收集和直观显示关键 Azure SQL Azure 性能指标，每个工作区最多支持150000个 sql 数据库和5000个 sql 弹性池。 你可以使用它监视并接收通知。 可以跨多个 Azure 订阅和弹性池监视 SQL 数据库和弹性池指标，并可用于识别应用程序堆栈每一层上的问题。
+[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)使你可以收集和直观显示 Azure sql 数据库的关键性能指标，每个工作区最多支持150000个 sql 数据库和5000个 sql 弹性池。 你可以使用它监视并接收通知。 可以跨多个 Azure 订阅和弹性池监视 SQL 数据库和弹性池指标，并可用于识别应用程序堆栈每一层上的问题。
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>我注意到了性能问题：我的 SQL 数据库故障排除方法与 SQL Server 有何不同
 

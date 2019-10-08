@@ -1,47 +1,21 @@
 ---
-title: Dynamics 365 for Customer Engagement 提供联系人选项卡 |Azure Marketplace
-description: 在 AppSource 市场上配置 Dynamics 365 for Customer Engagement 产品/服务的联系人信息。
+title: Dynamics 365 for Customer Engagement 优惠联系人选项卡 |Azure Marketplace
+description: 不推荐使用此 CPP 文章链接到电脑文章;Was "为 Dynamics 365 的联系人信息配置 AppSource Marketplace 上的客户参与产品/服务。"
 services: Dynamics 365 for Customer Engagement, Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: cdd3d01c9295ef5ae8e7bc1936b5926fb38cfe77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 8a04d7d6f5913a100ab6c4187a42a4d6c470cbda
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942514"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033908"
 ---
 # <a name="azure-application-contacts-tab"></a>Azure 应用程序“联系人”选项卡
 
-使用“联系人”选项卡为 Dynamics 365 for Customer Engagement 产品/服务提供工程和客户支持信息  。
+[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持创建和管理 Dynamics 365 Customer Engagement 产品/服务。 相反，此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[创建新的 Dynamics 365 For Customer Engagement & PowerApps 产品](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)/服务。
 
-![产品/服务的“联系人”选项卡](./media/dynce-contacts-tab.png)
-
-
-## <a name="specify-customer-and-engineering-contacts"></a>指定客户和工程联系人
-
-提供以下值以定义主要“工程联系人以及产品/服务的“工程联系人”  。 必填字段用星号 (*) 表示。
-
-|    字段        |  描述                    |
-|    ---------    |  ---------------                |
-|  **名称\***       |  应用的工程联系人姓名。 此联系人将收到来自 Microsoft 的技术邮件。   |
-|  **电子邮件\***      |  工程联系人的电子邮件地址  |
-|  **Phone\***      |  工程联系人的电话号码  |
-|  |  |
-
-提供以下值以定义主要“支持联系人”以及产品/服务的“支持联系人”  。
-
-|    字段        |   描述                   |
-|    ---------    |  ---------------                |
-|  **名称\***       |  应用的客户支持联系人姓名。 此联系人将收到来自 Microsoft 的支持相关邮件。   |
-|  **电子邮件\***      |  客户支持联系人的电子邮件地址  |
-|  **Phone\***      |  客户支持联系人的电话号码  |
-|  |  |
-
-
-## <a name="next-steps"></a>后续步骤
-
-在验证产品/服务需要[技术资产](./cpp-create-technical-assets.md)后，即可[发布 Dynamics 365 for Customer Engagement 产品/服务](./cpp-publish-offer.md)。
+在为 Customer Engagement 产品/服务创建新的 Dynamics 365 之前，应阅读[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然后在选中 "**概述**" 页的情况下打开 "[商业市场" 仪表板](https://partner.microsoft.com/dashboard/directory)。 按照[创建新的 Dynamics 365 For Customer Engagement & PowerApps 产品](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)/服务中的说明创建产品/服务。

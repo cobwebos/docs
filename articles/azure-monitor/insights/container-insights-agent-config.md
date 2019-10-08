@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 7cd915c47fa0661a9da66d7ca3315480ce7d6b98
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ada573cc919d775af52abc5a75004866aebbeddb
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709429"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033935"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>配置用于容器的 Azure Monitor 的代理数据收集
 
@@ -44,12 +44,12 @@ ms.locfileid: "71709429"
 |Key |数据类型 |ReplTest1 |描述 |
 |----|----------|------|------------|
 |`schema-version` |字符串（区分大小写） |v1 |这是代理在分析 ConfigMap 时使用的架构版本。 当前支持的架构版本为 v1。 不支持修改此值，评估 ConfigMap 时会拒绝修改的值。|
-|`config-version` |字符串 | | 支持在源代码管理系统/存储库中跟踪此配置文件的版本。 允许的最大字符数为 10，所有其他字符将会截掉。 |
-|`[log_collection_settings.stdout] enabled =` |布尔 | true 或 false | 此设置控制是否启用 stdout 容器日志收集。 如果设置为 `true` 且未在 stdout 日志收集中排除任何命名空间（下面的 `log_collection_settings.stdout.exclude_namespaces` 设置），则会从所有群集 pod/节点中的所有容器收集 stdout 日志。 如果未在 ConfigMap 中指定，默认值为 `enabled = true`。 |
-|`[log_collection_settings.stdout] exclude_namespaces =`|字符串 | 逗号分隔的数组 |不收集其 stdout 日志的 Kubernetes 命名空间数组。 仅当 `log_collection_settings.stdout.enabled` 设置为 `true` 时，此设置才会生效。 如果未在 ConfigMap 中指定，默认值为 `exclude_namespaces = ["kube-system"]`。|
-|`[log_collection_settings.stderr] enabled =` |布尔 | true 或 false |此设置控制是否启用 stderr 容器日志收集。 如果设置为 `true` 且未在 stdout 日志收集中排除任何命名空间（`log_collection_settings.stderr.exclude_namespaces` 设置），则会从所有群集 pod/节点中的所有容器收集 stderr 日志。 如果未在 ConfigMap 中指定，默认值为 `enabled = true`。 |
-|`[log_collection_settings.stderr] exclude_namespaces =` |字符串 |逗号分隔的数组 |不收集其 stderr 日志的 Kubernetes 命名空间数组。 仅当 `log_collection_settings.stdout.enabled` 设置为 `true` 时，此设置才会生效。 如果未在 ConfigMap 中指定，默认值为 `exclude_namespaces = ["kube-system"]`。 |
-| `[log_collection_settings.env_var] enabled =` |布尔 | true 或 false | 此设置控制是否启用环境变量收集。 如果设置为 `false`，则不会收集所有群集 pod/节点中运行的任何容器的环境变量。 如果未在 ConfigMap 中指定，默认值为 `enabled = true`。 |
+|`config-version` |String | | 支持在源代码管理系统/存储库中跟踪此配置文件的版本。 允许的最大字符数为 10，所有其他字符将会截掉。 |
+|`[log_collection_settings.stdout] enabled =` |Boolean | true 或 false | 此设置控制是否启用 stdout 容器日志收集。 如果设置为 `true` 且未在 stdout 日志收集中排除任何命名空间（下面的 `log_collection_settings.stdout.exclude_namespaces` 设置），则会从所有群集 pod/节点中的所有容器收集 stdout 日志。 如果未在 ConfigMap 中指定，默认值为 `enabled = true`。 |
+|`[log_collection_settings.stdout] exclude_namespaces =`|String | 逗号分隔的数组 |不收集其 stdout 日志的 Kubernetes 命名空间数组。 仅当 `log_collection_settings.stdout.enabled` 设置为 `true` 时，此设置才会生效。 如果未在 ConfigMap 中指定，默认值为 `exclude_namespaces = ["kube-system"]`。|
+|`[log_collection_settings.stderr] enabled =` |Boolean | true 或 false |此设置控制是否启用 stderr 容器日志收集。 如果设置为 `true` 且未在 stdout 日志收集中排除任何命名空间（`log_collection_settings.stderr.exclude_namespaces` 设置），则会从所有群集 pod/节点中的所有容器收集 stderr 日志。 如果未在 ConfigMap 中指定，默认值为 `enabled = true`。 |
+|`[log_collection_settings.stderr] exclude_namespaces =` |String |逗号分隔的数组 |不收集其 stderr 日志的 Kubernetes 命名空间数组。 仅当 `log_collection_settings.stdout.enabled` 设置为 `true` 时，此设置才会生效。 如果未在 ConfigMap 中指定，默认值为 `exclude_namespaces = ["kube-system"]`。 |
+| `[log_collection_settings.env_var] enabled =` |Boolean | true 或 false | 此设置控制群集中所有 pod/节点上的环境变量集合，如果 ConfigMaps 中未指定，则默认为 `enabled = true`。 如果已全局启用了环境变量的集合，则可以通过将环境变量设置为 `AZMON_COLLECT_ENV` 到**False** ，将环境变量设置为 Dockerfile，[或者在](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) **env：** 部分。 如果已全局禁用环境变量的集合，则无法为特定容器启用收集（也就是说，可在容器级别应用的唯一重写是在全局启用时禁用集合）。 |
 
 ### <a name="prometheus-scraping-settings"></a>Prometheus 擦除设置
 
@@ -73,18 +73,18 @@ ms.locfileid: "71709429"
 |范围 | Key | 数据类型 | ReplTest1 | 描述 |
 |------|-----|-----------|-------|-------------|
 | 群集范围 | | | | 指定以下三种方法中的任何一种，以擦除指标的终结点。 |
-| | `urls` | 字符串 | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
-| | `kubernetes_services` | 字符串 | 逗号分隔的数组 | 用于从 kube-state-metrics 擦除指标的 Kubernetes 服务数组。 例如 `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`。|
-| | `monitor_kubernetes_pods` | 布尔 | true 或 false | 如果在群集范围设置中将此项设置为 `true`，则容器代理的 Azure Monitor 将在整个群集中擦除以下 Prometheus 批注的 Kubernetes pod：<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | 布尔 | true 或 false | 启用 pod 擦除。 `monitor_kubernetes_pods` 必须设置为 `true`。 |
-| | `prometheus.io/scheme` | 字符串 | http 或 https | 默认为通过 HTTP 擦除。 必要时设置为 `https`。 | 
-| | `prometheus.io/path` | 字符串 | 逗号分隔的数组 | 要从中提取指标的 HTTP 资源路径。 如果指标路径不是 `/metrics`，请使用此批注定义它。 |
-| | `prometheus.io/port` | 字符串 | 9102 | 指定要侦听的端口。 如果未设置端口，则默认为 9102。 |
-| 节点范围 | `urls` | 字符串 | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
-| 节点范围或群集范围 | `interval` | 字符串 | 60s | 收集间隔默认为 1 分钟（60 秒）。 可以将 *[prometheus_data_collection_settings]* 和/或 *[prometheus_data_collection_settings]* 的集合修改为时间单位，例如 ns、us （或Âμs）、ms、s、m、h。 |
-| 节点范围或群集范围 | `fieldpass`<br> `fielddrop`| 字符串 | 逗号分隔的数组 | 可以通过设置允许 (`fieldpass`) 和禁止 (`fielddrop`) 列表，来指定要从终结点收集或不收集的特定指标。 必须先设置允许列表。 |
+| | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
+| | `kubernetes_services` | String | 逗号分隔的数组 | 用于从 kube-state-metrics 擦除指标的 Kubernetes 服务数组。 例如 `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`。|
+| | `monitor_kubernetes_pods` | Boolean | true 或 false | 如果在群集范围设置中将此项设置为 `true`，则容器代理的 Azure Monitor 将在整个群集中擦除以下 Prometheus 批注的 Kubernetes pod：<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Boolean | true 或 false | 启用 pod 擦除。 `monitor_kubernetes_pods` 必须设置为 `true`。 |
+| | `prometheus.io/scheme` | String | http 或 https | 默认为通过 HTTP 擦除。 必要时设置为 `https`。 | 
+| | `prometheus.io/path` | String | 逗号分隔的数组 | 要从中提取指标的 HTTP 资源路径。 如果指标路径不是 `/metrics`，请使用此批注定义它。 |
+| | `prometheus.io/port` | String | 9102 | 指定要侦听的端口。 如果未设置端口，则默认为 9102。 |
+| 节点范围 | `urls` | String | 逗号分隔的数组 | HTTP 终结点（指定的 IP 地址或有效的 URL 路径）。 例如：`urls=[$NODE_IP/metrics]`。 （$NODE_IP 是容器参数的特定 Azure Monitor，可以使用它来代替节点 IP 地址。 必须全部大写。） |
+| 节点范围或群集范围 | `interval` | String | 60s | 收集间隔默认为 1 分钟（60 秒）。 可以将 *[prometheus_data_collection_settings]* 和/或 *[prometheus_data_collection_settings]* 的集合修改为时间单位，例如 ns、us （或Âμs）、ms、s、m、h。 |
+| 节点范围或群集范围 | `fieldpass`<br> `fielddrop`| String | 逗号分隔的数组 | 可以通过设置允许 (`fieldpass`) 和禁止 (`fielddrop`) 列表，来指定要从终结点收集或不收集的特定指标。 必须先设置允许列表。 |
 
-ConfigMap 是一个全局列表，只能将一个 ConfigMap 应用到代理。 不能使用推翻收集规则的其他 ConfigMap。
+ConfigMaps 是一个全局列表，只能有一个 ConfigMap 应用于代理。 不能将其他 ConfigMaps overruling 到集合中。
 
 ## <a name="configure-and-deploy-configmaps"></a>使用 ConfigMap 进行配置和部署
 

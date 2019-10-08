@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 4523d7bf8f6c0ffc0ebfbc57d20a19baec08c91b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 99def93a20a365dd0ff5fc27e9c52909ee30bd83
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720354"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028139"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>使用地理区域冗余存储（GZRS）构建高度可用的 Azure 存储应用程序（预览版）
 
@@ -35,7 +35,7 @@ GZRS 和 RA-GZRS 目前可用于以下区域：
 - 美国东部 2
 - 美国中部
 
-Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看 [Azure 服务更新](https://azure.microsoft.com/updates/) 页，以了解有关支持的区域的信息。
+Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 定期查看 [Azure 服务更新](https://azure.microsoft.com/updates/) page 以获取有关支持的区域的信息。
 
 有关预览版定价的信息，请参阅 GZRS preview 定价 for [blob](https://azure.microsoft.com/pricing/details/storage/blobs)、 [文件](https://azure.microsoft.com/pricing/details/storage/files/)、 [队列](https://azure.microsoft.com/pricing/details/storage/queues/)和 [表](https://azure.microsoft.com/pricing/details/storage/tables/)。
 
@@ -49,11 +49,11 @@ Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看 [
 > [!IMPORTANT]
 > 异步复制涉及到将数据写入主要区域和将数据复制到次要区域之间的延迟时间。 发生区域性灾难时，如果无法从主要区域中恢复数据，则尚未复制到次要区域的更改可能会丢失。
 
-创建存储帐户时，可以指定如何复制该帐户中的数据，还可以指定该帐户的主要区域。 异地复制帐户的成对次要区域是根据主要区域确定的，不能更改。 有关 Azure 支持的区域的最新信息，请参阅 [业务连续性和灾难恢复（BCDR）：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 有关使用 GZRS 或 GZRS 创建存储帐户的信息，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+创建存储帐户时，可以指定如何复制该帐户中的数据，还可以指定该帐户的主要区域。 异地复制帐户的成对次要区域是根据主要区域确定的，不能更改。 有关 Azure 支持的区域的最新信息，请参阅 @ no__t-0Business 连续性和灾难恢复（BCDR）：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 有关使用 GZRS 或 GZRS 创建存储帐户的信息，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>使用 GZRS 实现高可用性
 
-如果为存储帐户启用了 GZRS，则可以从辅助终结点以及存储帐户的主终结点读取数据。 辅助终结点将后缀 *–辅助* 点追加到帐户名称。 例如，如果 Blob 服务的主终结点是 `myaccount.blob.core.windows.net`，则辅助终结点是。 `myaccount-secondary.blob.core.windows.net` 存储帐户的访问密钥对于主终结点和辅助终结点是相同的。
+如果为存储帐户启用了 GZRS，则可以从辅助终结点以及存储帐户的主终结点读取数据。 辅助终结点将后缀 *–辅助*点追加到帐户名称。 例如，如果 Blob 服务的主终结点为 @ no__t-0，则辅助终结点为 @ no__t。 存储帐户的访问密钥对于主终结点和辅助终结点是相同的。
 
 若要在发生区域性服务中断时充分利用 GZRS，必须事先设计应用程序来处理这种情况。 您的应用程序应在主终结点上进行读取和写入，但当主要区域不可用时，将切换到使用辅助终结点。 有关使用 GZRS 进行高可用性设计的指南，请参阅 [使用 GZRS 或 GRS 设计高度可用的应用程序](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs)。
 
@@ -115,7 +115,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 在实时迁移期间，你可以在源存储帐户和目标存储帐户之间迁移数据时使用存储帐户。 在实时迁移过程中，你的帐户将继续满足其持久性和可用性的 SLA。 实时迁移不会造成停机或数据丢失。
 
-只有常规用途 v2 帐户支持 GZRS/GZRS，因此，在将请求提交到 GZRS/RA-GZRS 之前，你必须将你的帐户升级到常规用途 v2。 有关详细信息，请参阅 [Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview) 和 [升级到常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)。
+只有常规用途 v2 帐户支持 GZRS/GZRS，因此，在将请求提交到 GZRS/RA-GZRS 之前，你必须将你的帐户升级到常规用途 v2。 有关详细信息，请参阅 [Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview) and [升级到常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)。
 
 迁移完成后，存储帐户的复制设置将更新为**异地区域冗余存储（GZRS）** 或**读取访问区域冗余存储（GZRS）** 。 服务终结点、访问密钥、共享访问签名（SAS）和任何其他帐户配置选项保持不变并保持不变。
 
@@ -125,7 +125,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 - 帐户必须包含数据。
 - 只能在同一区域中迁移数据。
 - 只有标准存储帐户类型才支持实时迁移。 高级存储帐户必须手动迁移。
-- 不支持从 GZRS 或 GZRS 帐户实时迁移到 LRS、GRS 或 RA-GRS 帐户。 需要手动将数据移动到新的或现有的存储帐户。
+- 不支持从 GZRS 或 GZRS 帐户实时迁移到 LRS、GRS 或 RA-GRS 帐户。 需手动将数据移到新的或现有的存储帐户。
 - 可以请求从 GRS 到 GZRS 的实时迁移。 但是，不支持从 GRS 迁移到 GZRS。 在这种情况下，你必须请求将实时迁移到 GZRS，然后手动转换存储帐户以使用 GZRS。
 - 托管磁盘仅支持 LRS，不能迁移到 GZRS 或 GZRS。 有关与可用性集的集成，请参阅 [Azure 托管磁盘简介](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)。
 - 可以将标准 SSD 托管磁盘的快照和映像存储在标准 HDD 存储上，并在 [LRS、ZRS、GZRS 和 RA-GZRS 选项之间进行选择](https://azure.microsoft.com/pricing/details/managed-disks/)。
@@ -133,18 +133,18 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 若要请求实时迁移，请使用 [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 从门户中，选择要迁移到 GZRS 或 GZRS 的存储帐户，并按照以下说明操作：
 
-1. 选择 " **新建支持请求**"。
-2. 根据帐户信息完成 **基本** 操作。 在 " **服务** " 部分中，选择 " **存储帐户管理** " 并指定要迁移的帐户。
-3. 选择“下一步”。 ****
-4. 在 " **问题** " 部分指定以下值：
+1. 选择 "**新建支持请求**"。
+2. 根据帐户信息填写“基本信息”。 在 "**服务**" 部分中，选择 "**存储帐户管理**" 并指定要迁移的帐户。
+3. 选择“**下一步**”。
+4. 在“问题”部分指定以下值：
     - **严重性**：保留默认值。
-    - **问题类型**：选择 " **数据迁移**"。
-    - **类别**：选择 " **迁移到区域内的（RA-） GZRS**"。
-    - **标题**：键入描述性标题，例如 " **（RA-） GZRS 帐户迁移**"。
-    - **详细信息**：在 **详细信息**@no__t 中键入其他详细信息，例如，"我想要从 \_ @ no__t-3" 区域中的 [LRS，GRS] 迁移到 GZRS。 " 或 "我想要从 \_ @ no__t-1 区域中的 [LRS，RA-GRS] 迁移到" RA-GZRS "。
-5. 选择“下一步”。 ****
-6. 验证 " **联系人信息** " 边栏选项卡上的联系人信息是否正确。
-7. 选择“创建” **** 。
+    - **问题类型**：选择“数据迁移”。
+    - **类别**：选择 "**迁移到区域内的（RA-） GZRS**"。
+    - **标题**：键入描述性标题，例如 " **（RA-） GZRS 帐户迁移**"。
+    - **详细信息**：在 "**详细信息**" 框中键入其他详细信息，例如，"我想要迁移到 \_ @ no__t-2 区域中的 [LRS，GRS] 中的 GZRS。" 或 "我想要从 \_ @ no__t-1 区域中的 [LRS，RA-GRS] 迁移到" RA-GZRS "。
+5. 选择“**下一步**”。
+6. 检查“联系信息”边栏选项卡中的联系信息是否正确。
+7. 选择“创建”。
 
 支持代表将与你联系以提供帮助。
 

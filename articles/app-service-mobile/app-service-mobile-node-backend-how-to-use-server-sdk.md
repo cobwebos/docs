@@ -14,16 +14,20 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 6eaaeba8a36bcba8134d605889185fb8827dd05c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 74a522f8761c2eeaf329c90ae35aef0f44c40254
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851193"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027202"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>如何使用移动应用 Node.js SDK
 
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
+
+> [!NOTE]
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 本文提供详细的信息和示例，说明如何在 Azure 应用服务的移动应用功能中使用 Node.js 后端。
 
@@ -135,7 +139,7 @@ Visual Studio 2015 需要使用一个扩展在 IDE 中开发 Node.js 应用程�
 
     保存该文件。
 
-1. 在本地运行应用程序 (API 在上`http://localhost:3000`提供) 或发布到 Azure。
+1. 在本地运行应用程序（API 会在 `http://localhost:3000` 上提供），或发布到 Azure。
 
 ### <a name="create-node-backend-portal"></a>使用 Azure 门户创建 Node.js 后端
 
@@ -374,7 +378,7 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
 |:--- |:--- |:--- |:--- |
 | **MS_MobileAppName** |name |应用的名称 |string |
 | **MS_MobileLoggingLevel** |logging.level |要记录的消息的最小日志级别 |error、warning、info、verbose、debug、silly |
-| **MS_DebugMode** |调试 |启用或禁用调试模式 |true、false |
+| **MS_DebugMode** |debug |启用或禁用调试模式 |true、false |
 | **MS_TableSchema** |data.schema |SQL 表的默认架构名称 |字符串（默认值：dbo） |
 | **MS_DynamicSchema** |data.dynamicSchema |启用或禁用调试模式 |true、false |
 | **MS_DisableVersionHeader** |版本（设置为 undefined） |禁用 X-ZUMO-Server-Version 标头 |true、false |
@@ -389,7 +393,7 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
 1. 滚动到“应用设置”部分。
 1. 如果该应用设置已存在，请选择其值进行编辑。
    如果该应用设置不存在，请在“键”框中输入“应用设置”，在“值”框中输入值。
-1. 选择**保存**。
+1. 选择“保存”。
 
 更改大多数应用设置后都需要重新启动服务。
 

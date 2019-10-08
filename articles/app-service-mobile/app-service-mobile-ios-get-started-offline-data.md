@@ -14,19 +14,19 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: f7ae3e7a33ae7df70214ed171b00cc2accbaccb5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0c96442de5b8eea2ec969c48e6a815b6ae78b5c4
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446374"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027276"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用与 iOS 移动应用进行脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-offline-data)今天。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 本教程介绍如何使用适用于 iOS 的 Azure 应用服务的“移动应用”功能进行脱机同步。 使用脱机同步，即使没有网络连接，最终用户也可与移动应用交互，以便查看、添加或修改数据。 更改存储在本地数据库中。 设备重新联机后，这些更改会与远程后端同步。
@@ -127,7 +127,7 @@ ms.locfileid: "67446374"
    }
    ```
 
-在 Objective-C 版本中的 `syncData` 内，先对同步上下文调用 **pushWithCompletion**。 此方法是 `MSSyncContext`（而不是同步表本身）的成员，因为它会将更改推送到所有表。 只有已在本地以某种方式修改（通过 CUD 操作来完成）的记录才会发送到服务器。 然后将调用 pullData  帮助程序，后者再调用 MSSyncTable.pullWithQuery  以检索远程数据并将其存储在本地数据库中。
+在 Objective-C 版本中的 `syncData` 内，先对同步上下文调用 **pushWithCompletion**。 此方法是 `MSSyncContext`（而不是同步表本身）的成员，因为它会将更改推送到所有表。 只有已在本地以某种方式修改（通过 CUD 操作来完成）的记录才会发送到服务器。 然后将调用 pullData 帮助程序，后者再调用 MSSyncTable.pullWithQuery 以检索远程数据并将其存储在本地数据库中。
 
 在 Swift 版本中，由于推送操作不是绝对必需的，因此不存在对 **pushWithCompletion** 的调用。 如果同步上下文中正在进行推送操作的表存在任何挂起的更改，则提取始终会先发出推送。 但是，如果有多个同步表，则最好显式调用推送，确保所有内容在相关表中保持一致。
 
@@ -159,11 +159,11 @@ ms.locfileid: "67446374"
 
 ### <a name="system-tables"></a>系统表
 
-MS_TableOperations   
+MS_TableOperations  
 
 ![MS_TableOperations 表属性][defining-core-data-tableoperations-entity]
 
-| 特性 | Type |
+| 特性 | type |
 | --- | --- |
 | id | Integer 64 |
 | itemId | String |
@@ -172,11 +172,11 @@ MS_TableOperations
 | tableKind | Integer 16 |
 
 
-MS_TableOperationErrors 
+MS_TableOperationErrors
 
  ![MS_TableOperationErrors 表属性][defining-core-data-tableoperationerrors-entity]
 
-| 特性 | Type |
+| 特性 | 类型 |
 | --- | --- |
 | id |String |
 | operationId |Integer 64 |
@@ -187,10 +187,10 @@ MS_TableOperationErrors
 
  ![][defining-core-data-tableconfig-entity]
 
-| 特性 | Type |
+| 特性 | 类型 |
 | --- | --- |
 | id |String |
-| key |String |
+| 钥 |String |
 | keyType |Integer 64 |
 | table |String |
 | value |String |
@@ -199,14 +199,14 @@ MS_TableOperationErrors
 
 **TodoItem**
 
-| 特性 | Type | 注意 |
+| 特性 | 类型 | 注释 |
 | --- | --- | --- |
 | id | 字符串（标记为必需） |远程存储中的主键 |
 | complete | Boolean | 待办事项字段 |
 | text |String |待办事项字段 |
 | createdAt | Date | （可选）映射到 **createdAt** 系统属性 |
 | updatedAt | Date | （可选）映射到 **updatedAt** 系统属性 |
-| 版本 | String | （可选）用于检测冲突，映射到版本 |
+| version | String | （可选）用于检测冲突，映射到版本 |
 
 ## <a name="setup-sync"></a>更改应用的同步行为
 在本部分，将修改应用，以便在应用启动时或插入和更新项时应用不会进行同步。 仅当按刷新手势按钮时，应用才会同步。
@@ -253,7 +253,7 @@ MS_TableOperationErrors
 2. 添加一些待办事项。 退出模拟器（或强行关闭应用），并重新启动它。 验证更改是否已保存。
 
 3. 查看远程 **TodoItem** 表的内容：
-   * 对于 Node.js 后端，请转到 [Azure 门户](https://portal.azure.com/)，在移动应用后端中单击“简易表”   > “TodoItem”  。  
+   * 对于 Node.js 后端，请转到 [Azure 门户](https://portal.azure.com/)，在移动应用后端中单击“简易表” > “TodoItem”。  
    * 对于 .NET 后端，请使用 SQL 工具（如 SQL Server Management Studio）或 REST 客户端（如 Fiddler 或 Postman）。  
 
 4. 验证新项是否*未*与服务器同步。
@@ -265,7 +265,7 @@ MS_TableOperationErrors
 
 7. 再次查看 **TodoItem** 数据。 现在应显示新的和更改的待办事项。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 为了支持脱机同步功能，我们使用了 `MSSyncTable` 接口，并使用本地存储初始化了 `MSClient.syncContext`。 在这种情况下，本地存储是基于 Core Data 的数据库。
 
 使用 Core Data 本地存储时，必须使用[正确的系统属性](#review-core-data)定义多个表。

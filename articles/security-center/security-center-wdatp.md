@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 07934e3c7d9f61ecb4153e6a169882509a81dc75
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fb401226e9697afb71dfa7a30f9814e07c3422c2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241044"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028080"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure 安全中心的 Microsoft Defender 高级威胁防护
 
@@ -53,7 +53,7 @@ Azure 安全中心现在提供了以下功能：
 安全中心的 Microsoft Defender ATP 支持在标准服务订阅中的 Windows Server 2016、2012 R2 和 2008 R2 SP1 操作系统上检测。
 
 > [!NOTE]
-> 使用 Azure 安全中心监视服务器时，将自动创建 Microsoft Defender ATP 租户，并且默认情况下，Microsoft Defender ATP 数据存储在欧洲。 如果需要将数据移动到另一个位置, 则需要联系 Microsoft 支持部门重置租户。 已为 Office 365 GCC 客户禁用了利用此集成的服务器终结点监视。
+> 使用 Azure 安全中心监视服务器时，将自动创建 Microsoft Defender ATP 租户，并且默认情况下，Microsoft Defender ATP 数据存储在欧洲。 如果需要将数据移动到另一个位置，则需要联系 Microsoft 支持部门重置租户。 已为 Office 365 GCC 客户禁用了利用此集成的服务器终结点监视。
 
 ## <a name="onboarding-servers-to-security-center"></a>将服务器加入安全中心 
 
@@ -107,7 +107,7 @@ Azure 安全中心现在提供了以下功能：
 
 3. 如果此命令成功，你将在 Azure 安全中心仪表板和 Microsoft Defender ATP 门户上看到新警报。 此警报可能要在几分钟之后才显示。
 
-4. 若要在安全中心查看该警报，请转到“安全警报”>  “可疑的 Powershell 命令行” 。
+4. 若要在安全中心查看该警报，请转到“安全警报” >  “可疑的 Powershell 命令行”。
 
 5. 从调查窗口中，选择要前往 Microsoft Defender ATP 门户的链接。
 

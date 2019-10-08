@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: d2e15c63ac6d93824aeab3f251c2860b7ea114d6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fbe41bdc5f253f1a605aa291a31191b7339b9850
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086825"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030580"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -302,7 +302,7 @@ public class EventSchema {
 
 ## <a name="attributes"></a>特性
 
-在 [C# 类库](functions-dotnet-class-library.md)中，使用 [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/EventGridTriggerAttribute.cs) 特性。
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/TriggerBinding/EventGridTriggerAttribute.cs) 特性。
 
 下面是某个方法签名中的 `EventGridTrigger` 特性：
 
@@ -324,7 +324,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 |---------|---------|
 | **type** | 必需 - 必须设置为 `eventGridTrigger`。 |
 | **direction** | 必需 - 必须设置为 `in`。 |
-| **名称** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
+| **name** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
 ## <a name="usage"></a>用法
 
@@ -529,13 +529,13 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 * 设置 `aeg-event-type: Notification` 标头。
 * 将 RequestBin 数据粘贴到请求正文。
 * 发布到事件网格触发器函数的 URL。
-  * 对于 2.x, 请使用以下模式:
+  * 对于2.x，请使用以下模式：
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
     ```
 
-  * 对于1.x 使用:
+  * 对于1.x 使用：
 
     ```
     http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
@@ -555,7 +555,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ## <a name="local-testing-with-ngrok"></a>使用 ngrok 进行本地测试
 
-在本地测试事件网格触发器的另一种方法是自动化 Internet 与开发计算机之间的 HTTP 连接。 可以使用[ngrok](https://ngrok.com/)之类的工具来执行此操作:
+在本地测试事件网格触发器的另一种方法是自动化 Internet 与开发计算机之间的 HTTP 连接。 可以使用[ngrok](https://ngrok.com/)之类的工具来执行此操作：
 
 1. [创建 ngrok 终结点](#create-an-ngrok-endpoint)。
 1. [运行事件网格触发器函数](#run-the-event-grid-trigger-function)。

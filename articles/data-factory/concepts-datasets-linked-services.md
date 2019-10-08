@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 788fee724f381ab317b97a682aa21d17ec1ffa9d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c4daa5989013ba8d5c5a7136fe0878fae64f0357
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137301"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030558"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -66,16 +66,16 @@ ms.locfileid: "70137301"
 ```
 下表描述了上述 JSON 中的属性：
 
-属性 | 说明 | 必填 |
+属性 | 说明 | 需要 |
 -------- | ----------- | -------- |
 name | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-type)。 | 是 |
-结构 | 数据集的架构。 有关详细信息，请参阅[数据集架构](#dataset-structure-or-schema)。 | 否 |
+structure | 数据集的架构。 有关详细信息，请参阅[数据集架构](#dataset-structure-or-schema)。 | 否 |
 typeProperties | 每种类型的类型属性各不相同（例如：Azure Blob、Azure SQL 表）。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#dataset-type)。 | 是 |
 
 ### <a name="data-flow-compatible-dataset"></a>与数据流兼容的数据集
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 有关[与数据流兼容的](concepts-data-flow-overview.md)数据集类型的列表，请参阅支持的数据[集类型](#dataset-type)。 与数据流兼容的数据集需要用于转换的细化数据集定义。 因此，JSON 定义略有不同。 与数据流兼容的数据集具有_架构_属性，而不是_结构_属性。
 
@@ -111,7 +111,7 @@ typeProperties | 每种类型的类型属性各不相同（例如：Azure Blob�
 
 下表描述了上述 JSON 中的属性：
 
-属性 | 说明 | 必填 |
+属性 | 说明 | 需要 |
 -------- | ----------- | -------- |
 name | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-type)。 | 是 |
@@ -177,7 +177,7 @@ typeProperties | 每种类型的类型属性各不相同（例如：Azure Blob�
 
 结构中的每个列都包含以下属性：
 
-属性 | 说明 | 必填
+属性 | 说明 | 需要
 -------- | ----------- | --------
 name | 列的名称。 | 是
 type | 列的数据类型。 数据工厂支持以下临时数据类型作为允许的值：**Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset 和 Timespan** | 否
@@ -203,7 +203,7 @@ format | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的�
 若要了解何时加入结构信息以及在结构部分包含哪些信息，请参阅以下指南。 详细了解数据工厂如何通过[架构和类型映射](copy-activity-schema-and-type-mapping.md)将源数据映射到接收器，以及何时指定结构信息。
 
 - **对于强架构数据源**，仅当要将源列映射到接收器列且其名称不同时，才指定“结构”部分。 此类结构化的数据源将存储数据架构和类型信息，以及数据本身。 结构化的数据源的示例包括 SQL Server、Oracle 和 Azure SQL 数据库。<br/><br/>由于类型信息已可用于结构化数据源，因此包含结构部分时不应包含类型信息。
-- **对于无/弱架构数据源（例如 blob 存储中的文本文件）**，当数据集是复制活动的输入且应将源数据集的数据类型转换为接收器的本机类型时，请加入结构。 另外，当需要将源列映射到接收器列时，请加入结构。
+- **对于无/弱架构数据源（例如 blob 存储中的文本文件）** ，当数据集是复制活动的输入且应将源数据集的数据类型转换为接收器的本机类型时，请加入结构。 另外，当需要将源列映射到接收器列时，请加入结构。
 
 ## <a name="create-datasets"></a>创建数据集
 可以使用以下任一工具或 SDK 创建数据集：[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure 资源管理器模板和 Azure 门户
