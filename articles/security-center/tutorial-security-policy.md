@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: memildin
-ms.openlocfilehash: 488210e4f2c5d3a8a978079d0c7293ce091d998b
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: fce8c75dadbb255a357b85bf85049423f50d18ec
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338770"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996353"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 
@@ -31,7 +31,7 @@ ms.locfileid: "71338770"
 > 安全中心使用 Azure Policy 开始集成。 现有客户将自动迁移到 Azure Policy 中新的内置计划，而不是安全中心中的旧的安全策略。 除了 Azure Policy 中存在新计划外，此更改不会影响资源或环境。
 
 ## <a name="what-are-security-policies"></a>什么是安全策略？
-安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在 Azure Policy 中，可定义 Azure 订阅策略，并根据工作负载类型或数据机密性进行量身定制。 例如, 使用受管制数据 (如个人数据或客户数据) 的应用程序可能需要比其他工作负载更高级别的安全性。 若要跨订阅或管理组设置策略，请在 [Azure Policy](../governance/policy/overview.md) 中进行设置。
+安全策略定义了工作负载的相应配置，有助于确保用户遵守公司或法规方面的安全要求。 在 Azure Policy 中，可定义 Azure 订阅策略，并根据工作负载类型或数据机密性进行量身定制。 例如，使用受管制数据（如个人数据或客户数据）的应用程序可能需要比其他工作负载更高级别的安全性。 若要跨订阅或管理组设置策略，请在 [Azure Policy](../governance/policy/overview.md) 中进行设置。
 
 安全策略驱动在 Azure 安全中心获得的安全建议。 可以使用它们监视符合性以帮助识别潜在漏洞和缓解威胁。 若要详细了解如何确定适合你的选项，请参阅[内置安全性策略](security-center-policy-definitions.md)列表。
 
@@ -86,7 +86,7 @@ Azure Policy 由以下组件构成：
 > 查看已分配的策略时，可以看到多个分配并且可以看到每个分配如何自行配置。
 
 ## <a name="edit-security-policies"></a>编辑安全策略
-可以在 [Azure Policy](../governance/policy/tutorials/create-and-manage.md) 中为每个 Azure 订阅和管理组编辑默认的安全策略。 若要修改安全策略, 你必须是该订阅或包含管理组的所有者或安全管理员。
+可以在 [Azure Policy](../governance/policy/tutorials/create-and-manage.md) 中为每个 Azure 订阅和管理组编辑默认的安全策略。 若要修改安全策略，你必须是该订阅或包含管理组的所有者或安全管理员。
 
 有关如何在 Azure Policy 中编辑安全策略的说明，请参阅[创建和管理策略以强制实施符合性](../governance/policy/tutorials/create-and-manage.md)。
 
@@ -226,7 +226,7 @@ Azure Policy 中的重要概念：
 |SQL 审核 |监视 Azure 安全中心内未审核的 SQL 数据库 |sqlAuditingMonitoringEffect|
 |系统更新 |监视 Azure 安全中心内系统更新的缺失情况 |systemUpdatesMonitoringEffect|
 |存储加密 |审核存储帐户是否缺少 blob 加密 |storageEncryptionMonitoringEffect|
-|JIT 网络访问 |监视 Azure 安全中心内可能的网络即时(JIT)访问 |jitNetworkAccessMonitoringEffect |
+|JIT 网络访问 |在 Azure 安全中心监视可能的网络实时（JIT）访问 |jitNetworkAccessMonitoringEffect |
 |自适应应用程序控件 |监视 Azure 安全中心内列入允许列表的可能的应用 |adaptiveApplicationControlsMonitoringEffect|
 |网络安全组 |监视 Azure 安全中心内规则较宽松的网络访问 |networkSecurityGroupsMonitoringEffect| 
 |安全配置 |监视 Azure 安全中心的 OS 漏洞 |systemConfigurationsMonitoringEffect| 

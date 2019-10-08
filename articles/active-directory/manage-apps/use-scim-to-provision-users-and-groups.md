@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9344feeadc5f4146c3b3f853082cd9255100af5c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: b5c24a2340775712f1105448b2aacfdc9a75f1a6
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949635"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001721"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory"></a>SCIM 用户预配与 Azure Active Directory
 
-用于跨域标识管理（SCIM）的系统是标准化协议和架构，旨在促进在系统之间管理标识的一致性。 当应用程序为用户管理支持 SCIM 终结点时，Azure AD 用户预配服务可以向此终结点发送请求来创建、修改或删除已分配的用户和组。
+用于跨域标识管理（[SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards)）的系统是标准化协议和架构，旨在促进在系统之间管理标识的一致性。 当应用程序为用户管理支持 SCIM 终结点时，Azure AD 用户预配服务可以向此终结点发送请求来创建、修改或删除已分配的用户和组。
 
 Azure AD 支持[预先集成的自动用户预配](../saas-apps/tutorial-list.md)的许多应用程序实现 SCIM 作为接收用户更改通知的方法。  除此之外，客户还可以使用 Azure 门户中的通用 "非库" 集成选项连接支持[SCIM 2.0 协议规范](https://tools.ietf.org/html/rfc7644)的特定配置文件的应用程序。
 

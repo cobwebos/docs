@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218255"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982842"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure 安全中心提供支持的功能
 
@@ -39,20 +39,21 @@ ms.locfileid: "71218255"
 |----|----|----|----|----|----|----|----|
 |**环境**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
 ||**虚拟机**|**虚拟机规模集**||**虚拟机**|**虚拟机规模集**|
-|VMBA 威胁检测警报|✔|✔|✔|✔（在支持的版本上）|✔（在支持的版本上）|✔|建议 (免费) 威胁检测 (标准)|
+|虚拟机行为分析威胁检测警报|✔|✔|✔|✔（在支持的版本上）|✔（在支持的版本上）|✔|建议（免费）威胁检测（标准）|
 |基于网络的威胁检测警报|✔|✔|X|✔|✔|X|标准|
 |Microsoft Defender ATP 集成|✔（在支持的版本上）|✔（在支持的版本上）|✔|X|X|X|标准|
 |允许缺失修补程序|✔|✔|✔|✔|✔|✔|免费|
 |安全配置|✔|✔|✔|✔|✔|✔|免费|
 |Endpoint protection 评估|✔|✔|✔|X|X|X|免费|
-|JIT VM 访问|✔|X|X|✔|X|X|标准|
+|实时 VM 访问|✔|X|X|✔|X|X|标准|
 |自适应应用程序控件|✔|X|✔|✔|X|✔|标准|
-|FIM|✔|✔|✔|✔|✔|✔|标准|
+|文件完整性监视|✔|✔|✔|✔|✔|✔|标准|
 |磁盘加密评估|✔|✔|X|✔|✔|X|免费|
 |第三方部署|✔|X|X|✔|X|X|免费|
 |NSG 评估|✔|✔|X|✔|✔|X|免费|
 |无文件威胁检测|✔|✔|✔|X|X|X|标准|
 |网络映射|✔|✔|X|✔|✔|X|标准|
+|自适应网络强化|✔|X|X|✔|X|X|标准|
 |自适应网络控制|✔|✔|X|✔|✔|X|标准|
 |合规性仪表板 & 报表|✔|✔|✔|✔|✔|✔|标准|
 |Docker 托管的 IaaS 容器上的建议和威胁检测|X|X|X|✔|✔|✔|标准|
@@ -64,7 +65,7 @@ ms.locfileid: "71218255"
  - 是否可以使用 Azure 安全中心安装每个解决方案。
  - 安全中心可以发现哪些保护解决方案。 如果发现其中一个终结点保护解决方案，安全中心将建议不要安装。
 
-有关为每个保护生成建议的时间的信息, 请参阅[Endpoint Protection 评估和建议](security-center-endpoint-protection.md)。
+有关为每个保护生成建议的时间的信息，请参阅[Endpoint Protection 评估和建议](security-center-endpoint-protection.md)。
 
 | Endpoint Protection| 平台 | 安全中心安装 | 安全中心发现 |
 |------|------|-----|-----|
@@ -74,7 +75,7 @@ ms.locfileid: "71218255"
 | Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |
 | McAfee v10+ | Windows Server 系列  | 否 | 是 |
 | McAfee v10+ | Linux 服务器系列  | 否 | 是 **\*** |
-| Sophos V9.x +| Linux 服务器系列  | 否 | 是的 **\***  |
+| Sophos V9.x +| Linux 服务器系列  | 否 | 是 **\***  |
 
  **\*** 覆盖状态和支持数据当前仅可用于与受保护订阅关联的 Log Analytics 工作区中，而不会在 Azure 安全中心门户中反映出来。
 
@@ -88,7 +89,7 @@ ms.locfileid: "71218255"
 
 Azure 安全中心支持以下 PaaS 资源：
 
-|服务|建议 (免费)|威胁检测 (标准)|
+|服务|建议（免费）|威胁检测（标准）|
 |----|----|----|
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
@@ -120,7 +121,7 @@ Azure 安全中心支持以下 PaaS 资源：
 
 \* 公共预览版目前支持这些功能。
 
-\*\*Azure Active Directory （Azure AD）建议仅适用于标准订阅。
+\* @ no__t Azure Active Directory （Azure AD）建议仅适用于标准订阅。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: 8f90cc3b41eab1847b0d4483b92a282d46af765b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 71e1f8be2af5556d86996175e8a1ddbccc9c7de1
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309307"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001670"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关上的后端运行状况问题
 ==================================================
@@ -81,13 +81,13 @@ BackendAddressPoolsText : [
 "**详细信息**" 列中显示的消息可提供有关该问题的详细信息，并根据这些信息开始对问题进行故障排除。
 
 > [!NOTE]
-> 默认探测请求\<以协议\>：//127.0.0.1：\<port\>/格式发送。 例如， http://127.0.0.1:80 对于端口80上的 http 探测。 仅200到399的 HTTP 状态代码被视为正常。 协议和目标端口从 HTTP 设置继承而来。 如果希望应用程序网关探测不同的协议、主机名或路径，并将不同的状态代码识别为健康，请配置自定义探测，并将其与 HTTP 设置关联。
+> 默认探测请求的格式为 \<protocol @ no__t-1：//127.0.0.1： \<port @ no__t。 例如，在端口80上的 http 探测 http://127.0.0.1:80 。 仅200到399的 HTTP 状态代码被视为正常。 协议和目标端口从 HTTP 设置继承而来。 如果希望应用程序网关探测不同的协议、主机名或路径，并将不同的状态代码识别为健康，请配置自定义探测，并将其与 HTTP 设置关联。
 
 <a name="error-messages"></a>错误消息
 ------------------------
 #### <a name="backend-server-timeout"></a>后端服务器超时
 
-**消息：** 后端响应应用程序网关\'运行状况探测所用的时间超过了探测设置中的超时阈值。
+**消息：** 后端响应应用程序网关 @ no__t-0 运行状况探测所花的时间超过了探测设置中的超时阈值。
 
 原因：在应用程序网关将 HTTP （S）探测请求发送到后端服务器后，它将等待来自后端服务器的响应已配置时间段。 如果后端服务器未在配置的时间段（超时值）内响应，则会将其标记为不正常，直到它在配置的超时期限内再次开始响应。
 
@@ -131,7 +131,7 @@ BackendAddressPoolsText : [
 
 **解决方案：** 如果收到此错误，请执行以下步骤：
 
-1.  使用浏览器或 PowerShell 检查是否可以使用 HTTP 设置中提到的端口连接到后端服务器。 例如，运行以下命令：`Test-NetConnection -ComputerName
+1.  使用浏览器或 PowerShell 检查是否可以使用 HTTP 设置中提到的端口连接到后端服务器。 例如，运行以下命令： `Test-NetConnection -ComputerName
     www.bing.com -Port 443`
 
 1.  如果指定的端口不是所需的端口，请输入应用程序网关的正确端口号，以连接到后端服务器
@@ -155,7 +155,7 @@ BackendAddressPoolsText : [
     ```
 1.  如果你找不到 NSG 或 UDR 的任何问题，请检查后端服务器，以了解与应用程序相关的问题，这些问题阻止客户端在配置的端口上建立 TCP 会话。 要检查的几个方面：
 
-    a.  打开命令提示符（Win + R-\> cmd），输入`netstat`，然后选择 enter。
+    a.  打开命令提示符（Win + R-\> cmd），输入 `netstat`，然后选择 Enter。
 
     b.  检查服务器是否正在侦听配置的端口。 例如：
     ```
@@ -170,13 +170,13 @@ BackendAddressPoolsText : [
 
 **消息：** 后端 HTTP 响应的状态代码与探测设置不匹配。 预期值: {HTTPStatusCode0}，收到的值: {HTTPStatusCode1}.
 
-原因：建立 TCP 连接并完成 SSL 握手后（如果启用了 SSL），应用程序网关会将探测作为 HTTP GET 请求发送到后端服务器。 如前文所述\<，默认探测为协议\>：//127.0.0.1：\<端口\>/，并将风行一时200到399中的响应状态代码视为正常。 如果服务器返回任何其他状态代码，则会将此消息标记为不正常。
+原因：建立 TCP 连接并完成 SSL 握手后（如果启用了 SSL），应用程序网关会将探测作为 HTTP GET 请求发送到后端服务器。 如前文所述，默认探测为 \<protocol @ no__t-1：//127.0.0.1： \<port @ no__t-3/，并将风行一时200到399中的响应状态代码视为正常。 如果服务器返回任何其他状态代码，则会将此消息标记为不正常。
 
 **解决方案：** 根据后端服务器的响应代码，可以执行以下步骤。 下面列出了一些常见的状态代码：
 
 | **错误** | **操作** |
 | --- | --- |
-| 探测状态代码不匹配：收到 401 | 检查后端服务器是否要求身份验证。 应用程序网关探测此时无法传递用于身份验证的凭据。 允许\"探测状态代码\"中的 HTTP 401 匹配或探测到服务器不需要身份验证的路径。 | |
+| 探测状态代码不匹配：收到 401 | 检查后端服务器是否要求身份验证。 应用程序网关探测此时无法传递用于身份验证的凭据。 允许探测状态代码中的 \"HTTP 401 @ no__t 为匹配或探测到服务器不需要身份验证的路径。 | |
 | 探测状态代码不匹配：收到 403 | 禁止访问。 检查后端服务器是否允许访问路径。 | |
 | 探测状态代码不匹配：收到 404 | 找不到页面。 检查主机名路径是否可在后端服务器上访问。 将主机名或路径参数更改为可访问的值。 | |
 | 探测状态代码不匹配：收到 405 | 应用程序网关的探测请求使用 HTTP GET 方法。 检查服务器是否允许此方法。 | |
@@ -216,9 +216,9 @@ BackendAddressPoolsText : [
 
 1.  选择 Win + R 或右键单击 "**开始**" 按钮，然后选择 "**运行**"。
 
-1.  输入`certmgr.msc` ，然后选择 enter。 你还可以在 "**开始**" 菜单中搜索 "证书管理器"。
+1.  输入 `certmgr.msc`，然后选择 Enter。 你还可以在 "**开始**" 菜单中搜索 "证书管理器"。
 
-1.  找到证书（通常在中`\Certificates - Current User\\Personal\\Certificates\`），然后将其打开。
+1.  找到该证书（通常在 `\Certificates - Current User\\Personal\\Certificates\`），然后将其打开。
 
 1.  选择根证书，然后选择 "**查看证书**"。
 
@@ -259,20 +259,22 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
 如果输出未显示要返回的证书的完整链，请再次导出证书，包括根证书。 在后端服务器上配置该证书。 
 
-CONNECTED(00000188)\
-depth=0 OU = Domain Control Validated, CN = \*.example.com\
-verify error:num=20:unable to get local issuer certificate\
-verify return:1\
-depth=0 OU = Domain Control Validated, CN = \*.example.com\
-verify error:num=21:unable to verify the first certificate\
-verify return:1\
-\-\-\-\
-Certificate chain\
- 0 s:/OU=Domain Control Validated/CN=*.example.com\
-   i:/C=US/ST=Arizona/L=Scottsdale/O=GoDaddy.com, Inc./OU=http://certs.godaddy.com/repository//CN=Go Daddy Secure Certificate Authority - G2\
-\-----BEGIN CERTIFICATE-----\
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
-\-----END CERTIFICATE-----
+```
+  CONNECTED(00000188)\
+  depth=0 OU = Domain Control Validated, CN = \*.example.com\
+  verify error:num=20:unable to get local issuer certificate\
+  verify return:1\
+  depth=0 OU = Domain Control Validated, CN = \*.example.com\
+  verify error:num=21:unable to verify the first certificate\
+  verify return:1\
+  \-\-\-\
+  Certificate chain\
+   0 s:/OU=Domain Control Validated/CN=*.example.com\
+     i:/C=US/ST=Arizona/L=Scottsdale/O=GoDaddy.com, Inc./OU=http://certs.godaddy.com/repository//CN=Go Daddy Secure Certificate Authority - G2\
+  \-----BEGIN CERTIFICATE-----\
+  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
+  \-----END CERTIFICATE-----
+```
 
 #### <a name="backend-certificate-invalid-common-name-cn"></a>后端证书无效的公用名（CN）
 
@@ -300,7 +302,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
 
 1.  输入**certmgr.msc** ，然后选择 Enter。 你还可以在 "**开始**" 菜单中搜索 "证书管理器"。
 
-1.  找到证书（通常在中`\Certificates - Current User\\Personal\\Certificates`），然后打开证书。
+1.  找到证书（通常在 `\Certificates - Current User\\Personal\\Certificates`）中，然后打开证书。
 
 1.  在 "**详细信息**" 选项卡上，检查证书**使用者**。
 

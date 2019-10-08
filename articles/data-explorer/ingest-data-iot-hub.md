@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 327fd5352a3f067638c7f9ceb51e2de9e284d845
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: ef66e6a69b6d33b16a558293fe29b8adf51cd137
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947850"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996752"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>将数据从 IoT 中心引入 Azure 数据资源管理器（预览版）
 
@@ -78,10 +78,9 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     |---|---|
     | 数据连接名称 | 要在 Azure 中创建的连接的名称数据资源管理器
     | IoT 中心 | IoT 中心名称 |
-    | 共享的访问策略 | 共享访问策略的名称。 必须具有读取权限 |
+    | 共享访问策略 | 共享访问策略的名称。 必须具有读取权限 |
     | 使用者组 |  IoT 中心内置终结点中定义的使用者组 |
-    | 事件系统属性 | [IoT 中心事件系统属性](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)如果每个事件消息有多个记录，系统属性将添加到第一个记录。|
-    | | 
+    | 事件系统属性 | [IoT 中心事件系统属性](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 添加系统属性时，[创建](/azure/kusto/management/tables#create-table)或[更新](/azure/kusto/management/tables#alter-table-and-alter-merge-table)表架构和[映射](/azure/kusto/management/mappings)以包括所选属性。 | | | 
 
     > [!NOTE]
     > 如果是[手动故障转移](/azure/iot-hub/iot-hub-ha-dr#manual-failover)，则必须重新创建数据连接。
@@ -95,7 +94,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     |---|---|---|
     | 表 | TestTable | 在**testdb**中创建的表。 |
     | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE 和 TXT。 |
-    | 列映射 | TestMapping | 在**testdb**中创建的映射，用于将传入 JSON 数据映射到**testdb**的列名称和数据类型。 对于 JSON、多行 JSON 和 AVRO 是必需的，对于其他格式则是可选的。|
+    | 列映射 | TestMapping | 在**testdb**中创建的[映射](/azure/kusto/management/mappings)，用于将传入 JSON 数据映射到**testdb**的列名称和数据类型。 对于 JSON、多行 JSON 和 AVRO 是必需的，对于其他格式则是可选的。|
     | | |
 
     > [!NOTE]

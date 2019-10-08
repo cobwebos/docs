@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: a360d836f1ef09b0bb87e2af39aeab0460034cd4
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 74fd8abbe78395a75d9c0a49eb717fb8ceecd11e
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71935623"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982785"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL 数据库托管实例资源限制概述
 
@@ -47,8 +47,8 @@ ms.locfileid: "71935623"
 
 | 内存中 OLTP 空间  | **Gen5** | **Gen4** |
 | --- | --- | --- |
-| 4 个 vCore  | 3.14 GB | |   
-| 8 个 vCore  | 6.28 GB | 8 GB |
+| 4 Vcore  | 3.14 GB | |   
+| 8 Vcore  | 6.28 GB | 8 GB |
 | 16 Vcore | 15.77 GB | 20 GB |
 | 24 Vcore | 25.25 GB | 36 GB |
 | 32 Vcore | 37.94 GB | |
@@ -58,12 +58,15 @@ ms.locfileid: "71935623"
 
 ## <a name="service-tier-characteristics"></a>服务层特征
 
-托管实例有两个服务层级：[常规用途](sql-database-service-tier-general-purpose.md)和[业务关键](sql-database-service-tier-business-critical.md)。 这些层级提供[不同的功能](sql-database-service-tiers-general-purpose-business-critical.md)，如下表中所述：
+托管实例有两个服务层级：[常规用途](sql-database-service-tier-general-purpose.md)和[业务关键](sql-database-service-tier-business-critical.md)。 这些层提供了[不同的功能](sql-database-service-tiers-general-purpose-business-critical.md)，如下表中所述。
+
+> [!Important]
+> 业务关键服务层提供了可用于只读工作负荷的实例（辅助副本）的附加内置副本。 如果可以分离读写查询和只读/分析/报告查询，则会获得相同价格的两倍 Vcore 和内存。 辅助副本可能会在主实例之后滞后几秒钟，因此它旨在卸载不需要精确数据状态的报表/分析工作负荷。 在下表中，**只读查询**是在辅助副本上执行的查询。
 
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
-| vCore 数目\* | 第 4 代：8、16、24<br/>Gen5：4、8、16、24、32、40、64、80 | Gen4：8、16、24 <br/> Gen5：4、8、16、24、32、40、64、80 |
-| 最大内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：20.4 GB-408 GB （5.1 GB/vCore）<br/>添加更多 vCore 以获得更多内存。 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：20.4 GB-408 GB （5.1 GB/vCore）<br/>添加更多 vCore 以获得更多内存。 |
+| vCore 数目\* | 第 4 代：8、16、24<br/>Gen5：4、8、16、24、32、40、64、80 | Gen4：8、16、24 <br/> Gen5：4、8、16、24、32、40、64、80 <br/>@no__t 的 Vcore 数专用于只读查询。 |
+| 最大内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：20.4 GB-408 GB （5.1 GB/vCore）<br/>添加更多 vCore 以获得更多内存。 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：对于读/写查询，20.4 GB-408 GB （5.1 GB/vCore）<br/>+ 其他 20.4 GB-408 GB （5.1 GB/vCore）用于只读查询。<br/>添加更多 vCore 以获得更多内存。 |
 | 最大实例存储大小（保留） | - 2 TB，适用于 4 个 vCore（仅限 Gen5）<br/>- 8 TB，适用于其他大小 | Gen4：1 TB <br/> Gen5： <br/>- 1 TB，适用于 4、8、16 个 vCore<br/>- 24 个 vCore 2 TB<br/>- 32、40、64、80 个 vCore 4 TB |
 | 最大数据库大小 | 当前可用实例大小（最大为 2 TB-8 TB，具体取决于 Vcore 数）。 | 最高当前可用实例大小（最大 1 TB-4 TB，取决于 Vcore 数）。 |
 | 最大 tempDB 大小 | 限制为 24 GB/vCore （96-1920 GB）和当前可用的实例存储大小。<br/>添加更多 vCore 以获得更多 TempDB 空间。 | 最多当前可用的实例存储大小。 TempDB 日志文件大小目前的限制为 24GB/vCore。 |
@@ -75,7 +78,7 @@ ms.locfileid: "71935623"
 | 日志写入吞吐量限制（每个实例） | 3 MB/s（每个 vCore）<br/>最大 22 MB/秒 | 4 MB/秒（每个 vCore）<br/>最大 48 MB/s |
 | 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[增大文件大小以获得更好的 IO 性能](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 不受限制。 |
 | 存储 IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
-| 内存中 OLTP | 不支持 | 可用 |
+| 内存中 OLTP | 不支持 | 可用，[大小取决于 vCore 数量](#in-memory-oltp-available-space) |
 | 最大会话数 | 30000 | 30000 |
 | [只读副本](sql-database-read-scale-out.md) | 0 | 1（包含在价格中） |
 
@@ -139,9 +142,9 @@ ms.locfileid: "71935623"
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional 和 MSDN 平台|2|32|
 
-\*在规划部署时，请考虑业务关键（BC）服务层需要四（4）倍于常规用途（GP）服务层的 vCore。 例如：1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 单位。 若要简化对默认限制的消耗分析，请在部署托管实例的区域中的所有子网中汇总 vCore 单位，并将结果与订阅类型的实例单位限制进行比较。 **VCore 单位限制的最大数量**适用于区域中的每个订阅。 每个子网没有任何限制，只不过跨多个子网部署的所有 Vcore 的总和必须小于或等于**vCore 单元的最大数目**。
+\* 在规划部署中，请考虑业务关键（BC）服务层需要四（4）倍于常规用途（GP）服务层的 vCore。 例如：1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 单位。 若要简化对默认限制的消耗分析，请在部署托管实例的区域中的所有子网中汇总 vCore 单位，并将结果与订阅类型的实例单位限制进行比较。 **VCore 单位限制的最大数量**适用于区域中的每个订阅。 每个子网没有任何限制，只不过跨多个子网部署的所有 Vcore 的总和必须小于或等于**vCore 单元的最大数目**。
 
-\*\*以下区域提供了更大的子网和 vCore 限制：澳大利亚东部、美国东部、美国东部2、北欧、美国中南部、东南亚、英国南部、西欧、美国西部2。
+\* @ no__t 更大的子网和 vCore 限制可用于以下区域：澳大利亚东部、美国东部、美国东部2、北欧、美国中南部、东南亚、英国南部、西欧、美国西部2。
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>获取更大的 SQL 托管实例配额
 

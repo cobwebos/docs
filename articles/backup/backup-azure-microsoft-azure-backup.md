@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3f427726a128eed426a64bc533075ba0cdde9544
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7a0f1f7dd79be250370fa97096a0cbf6dfc7f637
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241094"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982856"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 
@@ -184,11 +184,14 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     对 SSRS 配置使用以下值： 
     - 服务帐户："使用内置帐户" 应该是网络服务
-    - Web 服务 URL："虚拟目录" 应为 ReportServer_<SQLInstanceName>
-    - 数据库：DatabaseName 应为 ReportServer $<SQLInstanceName>
-    - Web 门户 URL："虚拟目录" 应为 Reports_<SQLInstanceName>
+    - Web 服务 URL："Virtual Directory" 应为 ReportServer_ @ no__t-0
+    - 数据库：DatabaseName 应为 ReportServer $ <SQLInstanceName>
+    - Web 门户 URL："Virtual Directory" 应为 Reports_ @ no__t-0
 
     [详细了解](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS 配置。
+
+    > [!NOTE]
+    > 用作 MABS 数据库的 SQL Server 的许可受[Microsoft Online Services 条款](https://www.microsoft.com/en-us/licensing/product-licensing/products)（OST）的约束。 根据 OST，与 MABS 捆绑的 SQL Server 只能用作 MABS 的数据库。
 
 4. 提供 Microsoft Azure 备份服务器文件的安装位置，并单击“**下一步**”。
 

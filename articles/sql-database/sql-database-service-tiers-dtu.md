@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 03f16987941f79f9161ccbc172bb2ca1a7139384
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e735d8832912f5b512b7cfe015ca47efbe641da7
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773212"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000429"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 
@@ -35,7 +35,7 @@ ms.locfileid: "70773212"
 | :-- | --: |--:| --:|
 |目标工作负荷|开发和生产|开发和生产|开发和生产|
 |运行时间 SLA|99.99%|99.99%|99.99%|
-|备份保留|7 天|35 天|35 天|
+|最大备份保留|7 天|35 天|35 天|
 |CPU|低|低、中、高|中、高|
 |IO 吞吐量（近似） |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
 |IO 延迟（近似）|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
@@ -164,7 +164,7 @@ ms.locfileid: "70773212"
 
 | 服务等级 | 吞吐量度量值 | 响应时间要求 |
 | --- | --- | --- |
-| 高级 |每秒创建的事务数 |0\.5 秒时达到 95% |
+| 高级 |每秒事务数 |0\.5 秒时达到 95% |
 | 标准 |每分钟事务数 |1\.0 秒时达到 90% |
 | 基本 |每小时事务数 |2\.0 秒时达到 80% |
 

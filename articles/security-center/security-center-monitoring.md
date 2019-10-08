@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: b7bb67ec052244689b2775c280ff39a2121da3fa
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 57d47712fe20fac0bf370a9a100a07a37d7aa753
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201692"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996671"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>使用 Azure 安全中心加强安全态势
 本文可帮助你加强安全态势。 使用 Azure 安全中心的监视功能，确保资源安全性尽可能严格，并监视策略符合性。
@@ -34,7 +34,7 @@ ms.locfileid: "71201692"
 - 若要监视网络资源，例如虚拟机、网络安全组和终结点，并收到提高其安全性的建议，请参阅[在 Azure 安全中心保护网络](security-center-network-recommendations.md)，了解详细信息。 
 - 若要监视数据和存储资源，例如 SQL 服务器和存储帐户，并收到提高其安全性的建议，请参阅[在 Azure 安全中心保护 Azure SQL 服务和数据](security-center-sql-service-recommendations.md)，了解详细信息。 
 - 若要监视标识和访问资源，包括 MFA 和帐户权限，并收到提高其安全性的建议，请参阅[在 Azure 安全中心监视标识和访问](security-center-identity-access.md)，了解详细信息。 
-- 若要监视资源的实时访问，请参阅[使用实时功能管理虚拟机访问](security-center-just-in-time.md)，了解详细信息。 
+- 若要监视对资源的实时访问，请参阅[使用实时管理虚拟机访问](security-center-just-in-time.md)以获取详细信息。 
 
 
 如需详细了解如何应用建议，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。

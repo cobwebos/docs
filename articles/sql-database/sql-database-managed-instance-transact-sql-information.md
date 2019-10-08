@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 704c1cdf95424bffa19e0946d13fa45d1b520753
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9a043d07004870c00c656b655d56a1526f8993d8
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959936"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000497"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例的 T-SQL 差异、限制和已知问题
 
@@ -110,7 +110,7 @@ Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 
 请参阅 [CREATE CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) 和 [BACKUP CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql)。 
  
-**解决方法**：编写证书或私钥的脚本，将其存储为 .sql 文件，然后从二进制文件创建证书：
+**解决方法**：[获取证书二进制内容和私钥，并将其存储为 .sql 文件，然后从二进制文件创建](https://docs.microsoft.com/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)，而不是创建证书备份和还原备份，并将其存储为 .sql 文件。
 
 ```sql
 CREATE CERTIFICATE  
@@ -195,7 +195,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支持[缓冲池扩展](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension)。
 - 不支持 `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION`。 请参阅 [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql)。
 
-### <a name="collation"></a>排序规则
+### <a name="collation"></a>Collation
 
 默认实例排序规则为 `SQL_Latin1_General_CP1_CI_AS` 并可以被指定为创建参数。 请参阅[排序规则](https://docs.microsoft.com/sql/t-sql/statements/collations)。
 
@@ -280,7 +280,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 - 目前，托管实例不支持启用和禁用 SQL Server 代理。 SQL 代理始终运行。
 - SQL Server 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。 
-- 作业(Job)
+- 作业
   - 支持 T-SQL 作业步骤。
   - 支持以下复制作业：
     - 事务日志读取器

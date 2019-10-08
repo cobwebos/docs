@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
+ms.lasthandoff: 10/07/2019
 ms.locfileid: "70736009"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
@@ -102,8 +102,8 @@ ms.locfileid: "70736009"
 | --- | --- | --- | --- |
 | concurrency |整数 <br/><br/>最大值：10 |1 |活动的并发执行次数。<br/><br/>它决定可在不同切片上发生的并行活动执行次数。 例如，如果活动需要完成大量可用数据，更大的并发值能加快数据处理速度。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |确定正在处理的数据切片的顺序。<br/><br/>例如，有两个切片（分别发生在下午 4 点和下午 5 点），且均在等待执行。 如果将 executionPriorityOrder 设置为 NewestFirst，则首先处理下午 5 点的切片。 同理，如果将 executionPriorityORder 设置为 OldestFIrst，则先处理下午 4 点的切片。 |
-| 重试 |整数<br/><br/>最大值可为 10 |0 |将切片的数据处理标记为“失败”之前的重试次数。 数据切片的活动执行次数不能超过指定的重试次数。 出现故障后尽快重试。 |
-| timeout |TimeSpan |00:00:00 |活动的超时。 例如：00:10:00（表示超时 10 分钟）<br/><br/>如果不指定值或值为 0，则表示无限超时。<br/><br/>如果某个切片的数据处理时间超出了超时值，将取消该处理，且系统尝试重试处理。 重试次数取决于重试属性。 发生超时时，会将状态设置为“超时”。 |
+| retry |整数<br/><br/>最大值可为 10 |0 |将切片的数据处理标记为“失败”之前的重试次数。 数据切片的活动执行次数不能超过指定的重试次数。 出现故障后尽快重试。 |
+| timeout |TimeSpan |00:00:00 |活动的超时。 示例：00:10:00（表示超时 10 分钟）<br/><br/>如果不指定值或值为 0，则表示无限超时。<br/><br/>如果某个切片的数据处理时间超出了超时值，将取消该处理，且系统尝试重试处理。 重试次数取决于重试属性。 发生超时时，会将状态设置为“超时”。 |
 | delay |TimeSpan |00:00:00 |启动切片的数据处理前，需指定延迟。<br/><br/>延迟超过预期执行时间后，启动数据切片的活动执行。<br/><br/>例如：00:10:00（表示延迟 10 分钟） |
 | longRetry |整数<br/><br/>最大值：10 |1 |切片执行失败之前的长重试次数。<br/><br/>longRetryInterval 指定尝试 longRetry 的间隔。 因此，如果需要指定重试尝试之间的时间，请使用 longRetry。 如果同时指定 Retry 和 longRetry，则每次 longRetry 尝试均包含 Retry 尝试，且最大尝试次数为 Retry * longRetry。<br/><br/>例如，如果活动策略中具有以下设置：<br/>Retry:3<br/>longRetry:2<br/>longRetryInterval:01:00:00<br/><br/>假设仅执行一个切片（状态为“等待”），且活动执行每次都失败。 最初将有 3 次连续执行尝试。 每次尝试后，切片状态为“重试”。 前 3 次尝试结束后，切片状态为“长重试”。<br/><br/>1 小时（即 longRetryInteval 的值）后，开始另一组 3 次连续执行尝试。 之后，切片的状态变为“失败”，且不会再进行重试。 因此，共进行了 6 次尝试。<br/><br/>如果某次执行成功，切片状态“就绪”，且不会再重试。<br/><br/>如果依赖数据在非确定性时间到达，或处理数据的总体环境难以捉摸，可以使用 longRetry。 在这种情况下，一遍遍重试效果可能不理想，但一段时间后再重试可能会输出想要的结果。<br/><br/>注意：不要为 longRetry 或 longRetryInterval 设置高值。 通常，较高值可能会引起其他系统问题。 |
 | longRetryInterval |TimeSpan |00:00:00 |长重试尝试之间的延迟 |
@@ -227,7 +227,7 @@ ms.locfileid: "70736009"
 
 有关创建此管道的完整演练，请参阅[教程：使用 Hadoop 群集构建用于处理数据的第一个管道](data-factory-build-your-first-pipeline.md)。
 
-## <a name="linked-service"></a>链接的服务
+## <a name="linked-service"></a>链接服务
 链接服务定义的高级结构如下所示：
 
 ```json
@@ -405,7 +405,7 @@ structure:
 
 ## <a name="azure-blob-storage"></a>Azure Blob 存储
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 有两种类型的链接服务：Azure 存储链接服务和 Azure 存储 SAS 链接服务。
 
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
@@ -542,7 +542,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | --- | --- | --- | --- |
 | copyBehavior |源为 BlobSource 或 FileSystem 时，请定义复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy：</b>源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><br/><b>MergeFiles：（默认值）</b>将源文件夹中的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 |否 |
 
-#### <a name="example-blobsink"></a>示例：BlobSink
+#### <a name="example-blobsink"></a>例如：BlobSink
 
 ```json
 {
@@ -585,7 +585,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Azure Data Lake Store 链接服务，请将链接服务的类型设置为 **AzureDataLakeStore**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必选 |
@@ -736,7 +736,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | --- | --- | --- | --- |
 | copyBehavior |指定复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy</b>：源文件夹中的所有文件在目标文件夹的第一个级别中创建。 创建目标文件时，自动生成名称。<br/><br/><b>MergeFiles</b>：将源文件夹的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 |否 |
 
-#### <a name="example-azuredatalakestoresink"></a>示例：AzureDataLakeStoreSink
+#### <a name="example-azuredatalakestoresink"></a>例如：AzureDataLakeStoreSink
 ```json
 {
     "name": "SamplePipeline",
@@ -781,7 +781,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Azure Cosmos DB 链接服务，请将链接服务的“类型”设置为“DocumentDb”，并在“typeProperties”部分中指定以下属性：
 
 | **Property** | **说明** | **必需** |
@@ -885,7 +885,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | --- | --- | --- | --- |
 | nestingSeparator |源列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>在上述示例中：输出表中的 `Name.First` 在 Cosmos DB 文档中生成以下 JSON 结构：<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |用于分隔嵌套级别的字符。<br/><br/>默认值为 `.`（点）。 |用于分隔嵌套级别的字符。 <br/><br/>默认值为 `.`（点）。 |
 | writeBatchSize |向 Azure Cosmos DB 服务发送创建文档的并行请求数。<br/><br/>将数据复制到 Azure Cosmos DB 以及从其中复制数据时，可使用此属性对性能进行微调。 增加 writeBatchSize 时，由于会向 Azure Cosmos DB 发送更多的并行请求，因此可以获得更好的性能。 但是，需要避免可能会引发以下错误消息的限制：“请求速率大”。<br/><br/>限制由多种因素决定，包括文档大小、文档中的术语数、目标集合的索引策略等。对于复制操作，可以使用更佳的集合（例如 S3）实现最大吞吐量（2,500 请求单位/秒）。 |整数 |否（默认值：5） |
-| writeBatchTimeout |超时之前等待操作完成的时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
+| writeBatchTimeout |超时之前等待操作完成的时间。 |timespan<br/><br/> 例如：“00:30:00”（30 分钟）。 |否 |
 
 #### <a name="example"></a>示例
 
@@ -931,7 +931,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 ## <a name="azure-sql-database"></a>Azure SQL 数据库
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Azure SQL 数据库链接服务，请将链接服务的**类型**设置为 **AzureSqlDatabase**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
@@ -1102,7 +1102,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 ## <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Azure SQL 数据仓库链接服务，请将链接服务的**类型**设置为 **AzureSqlDW**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
@@ -1231,7 +1231,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 | rejectSampleValue |确定在 PolyBase 重新计算被拒绝行的百分比之前要检索的行数。 |1、2 … |如果 **rejectType** 是**百分比**，则为“是” |
 | useTypeDefault |指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 中的参数部分。 |True、False（默认值） |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表 |整数（行数） |否（默认值：10000） |
-| writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 例如：“00:30:00”（30 分钟）。 |否 |
+| writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
 
 #### <a name="example"></a>示例
 
@@ -1281,7 +1281,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 ## <a name="azure-search"></a>Azure 搜索
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Azure 搜索链接服务，请将链接服务的**类型**设置为 **AzureSearch**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
@@ -1390,7 +1390,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 ## <a name="azure-table-storage"></a>Azure 表存储
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 有两种类型的链接服务：Azure 存储链接服务和 Azure 存储 SAS 链接服务。
 
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
@@ -1587,12 +1587,12 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 ## <a name="amazon-redshift"></a>Amazon RedShift
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Amazon Redshift 链接服务，请将链接服务的**类型**设置为 **AmazonRedshift**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| 服务器 |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
+| server |Amazon Redshift 服务器的 IP 地址或主机名。 |是 |
 | port |Amazon Redshift 服务器用于侦听客户端连接的 TCP 端口数。 |否，默认值：5439 |
 | database |Amazon Redshift 数据库名称。 |是 |
 | username |有权访问数据库的用户的名称。 |是 |
@@ -1699,7 +1699,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 ## <a name="ibm-db2"></a>IBM DB2
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 IBM DB2 链接服务，请将链接服务的**类型**设置为 **OnPremisesDB2**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
@@ -1815,12 +1815,12 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 ## <a name="mysql"></a>MySQL
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 MySQL 链接服务，请将链接服务的**类型**设置为 **OnPremisesMySql**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| 服务器 |MySQL 服务器的名称。 |是 |
+| server |MySQL 服务器的名称。 |是 |
 | database |MySQL 数据库的名称。 |是 |
 | schema |数据库中架构的名称。 |否 |
 | authenticationType |用于连接 MySQL 数据库的身份验证类型。 可能的值为：`Basic` |是 |
@@ -1937,7 +1937,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 ## <a name="oracle"></a>Oracle
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Oracle 链接服务，请将链接服务的**类型**设置为 **OnPremisesOracle**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
@@ -2106,12 +2106,12 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 ## <a name="postgresql"></a>PostgreSQL
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 PostgreSQL 链接服务，请将链接服务的**类型**设置为 **OnPremisesPostgreSql**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| 服务器 |PostgreSQL 服务器的名称。 |是 |
+| server |PostgreSQL 服务器的名称。 |是 |
 | database |PostgreSQL 数据库的名称。 |是 |
 | schema |数据库中架构的名称。 架构名称区分大小写。 |否 |
 | authenticationType |用于连接到 PostgreSQL 数据库的身份验证类型。 可能的值包括：Anonymous、Basic 和 Windows。 |是 |
@@ -2230,7 +2230,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 属性 | 说明 | 允许的值 | 必填
 -------- | ----------- | -------------- | --------
-服务器 | SAP BW 实例所驻留的服务器的名称。 | string | 是
+server | SAP BW 实例所驻留的服务器的名称。 | string | 是
 systemNumber | SAP BW 系统的系统编号。 | 用字符串表示的两位十进制数。 | 是
 clientId | SAP W 系统中的客户端的客户端 ID。 | 用字符串表示的三位十进制数。 | 是
 username | 有权访问 SAP 服务器的用户名 | string | 是
@@ -2335,12 +2335,12 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 ## <a name="sap-hana"></a>SAP HANA
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 SAP HANA 链接服务，请将链接服务的**类型**设置为 **SapHana**，并在 **typeProperties** 节中指定以下属性：
 
 属性 | 说明 | 允许的值 | 必填
 -------- | ----------- | -------------- | --------
-服务器 | SAP HANA 实例所驻留的服务器的名称。 如果服务器使用的是自定义端口，则指定 `server:port`。 | string | 是
+server | SAP HANA 实例所驻留的服务器的名称。 如果服务器使用的是自定义端口，则指定 `server:port`。 | string | 是
 authenticationType | 身份验证的类型。 | 字符串。 “基本”或“Windows” | 是
 username | 有权访问 SAP 服务器的用户名 | string | 是
 password | 用户密码。 | string | 是
@@ -2445,7 +2445,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 ## <a name="sql-server"></a>SQL Server
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 创建 **OnPremisesSqlServer** 类型的链接服务，将本地 SQL Server 数据库链接到数据工厂。 下表提供了有关特定于本地 SQL Server 链接服务的 JSON 元素的描述。
 
 下表提供了有关特定于 SQL Server 链接服务的 JSON 元素的描述。
@@ -2664,12 +2664,12 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 ## <a name="sybase"></a>Sybase
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Sybase 链接服务，请将链接服务的**类型**设置为 **OnPremisesSybase**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| 服务器 |Sybase 服务器的名称。 |是 |
+| server |Sybase 服务器的名称。 |是 |
 | database |Sybase 数据库的名称。 |是 |
 | schema |数据库中架构的名称。 |否 |
 | authenticationType |用于连接 Sybase 数据库的身份验证类型。 可能的值包括：Anonymous、Basic 和 Windows。 |是 |
@@ -2784,12 +2784,12 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 ## <a name="teradata"></a>Teradata
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Teradata 链接服务，请将链接服务的**类型**设置为 **OnPremisesTeradata**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| 服务器 |Teradata 服务器的名称。 |是 |
+| server |Teradata 服务器的名称。 |是 |
 | authenticationType |用于连接 Teradata 数据库的身份验证类型。 可能的值包括：Anonymous、Basic 和 Windows。 |是 |
 | username |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
 | password |指定为用户名指定的用户帐户的密码。 |否 |
@@ -2898,7 +2898,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ## <a name="cassandra"></a>Cassandra
 
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Cassandra 链接服务，请将链接服务的**类型**设置为 **OnPremisesCassandra**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
@@ -3025,12 +3025,12 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 
 ## <a name="mongodb"></a>MongoDB
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 MongoDB 链接服务，请将链接服务的**类型**设置为 **OnPremisesMongoDB**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| 服务器 |MongoDB 服务器的 IP 地址或主机名。 |是 |
+| server |MongoDB 服务器的 IP 地址或主机名。 |是 |
 | port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |可选，默认值：27017 |
 | authenticationType |Basic 或 Anonymous。 |是 |
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
@@ -3146,7 +3146,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ## <a name="amazon-s3"></a>Amazon S3
 
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Amazon S3 链接服务，请将链接服务的**类型**设置为 **AwsAccessKey**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 允许的值 | 必选 |
@@ -3209,7 +3209,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
     }
 }
 ```
-#### <a name="example-sample-data-set-with-version"></a>示例：示例数据集（包含版本）
+#### <a name="example-sample-data-set-with-version"></a>例如：示例数据集（包含版本）
 
 ```json
 {
@@ -3234,7 +3234,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 }
 ```
 
-#### <a name="example-dynamic-paths-for-s3"></a>示例：S3 的动态路径
+#### <a name="example-dynamic-paths-for-s3"></a>例如：S3 的动态路径
 在示例中，对于 Amazon S3 数据集中的 key 和 bucketName 属性，使用固定的值。
 
 ```json
@@ -3310,7 +3310,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 ## <a name="file-system"></a>文件系统
 
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 可使用**本地文件服务器**链接服务将本地文件系统链接到 Azure 数据工厂。 下表提供本地文件服务器链接服务特定的 JSON 元素的说明。
 
 | 属性 | 说明 | 必选 |
@@ -3347,7 +3347,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 否
 }
 ```
 
-#### <a name="example-using-encryptedcredential"></a>例如：使用 encryptedcredential
+#### <a name="example-using-encryptedcredential"></a>示例：使用 encryptedcredential
 
 ```json
 {
@@ -3545,7 +3545,7 @@ auto-
 
 ## <a name="ftp"></a>FTP
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 FTP 链接服务，请将链接服务的**类型**设置为 **FtpServer**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 | 默认 |
@@ -3575,7 +3575,7 @@ auto-
 }
 ```
 
-#### <a name="example-using-username-and-password-in-plain-text-for-basic-authentication"></a>示例：使用纯文本用户名和密码进行基本身份验证
+#### <a name="example-using-username-and-password-in-plain-text-for-basic-authentication"></a>例如：使用纯文本用户名和密码进行基本身份验证
 
 ```json
 {
@@ -3612,7 +3612,7 @@ auto-
 }
 ```
 
-#### <a name="example-using-encryptedcredential-for-authentication-and-gateway"></a>示例：将 encryptedCredential 用于身份验证和网关
+#### <a name="example-using-encryptedcredential-for-authentication-and-gateway"></a>例如：将 encryptedCredential 用于身份验证和网关
 
 ```json
 {
@@ -3723,7 +3723,7 @@ auto-
 
 ## <a name="hdfs"></a>HDFS
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 HDFS 链接服务，请将链接服务的**类型**设置为 **Hdfs**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必选 |
@@ -3753,7 +3753,7 @@ auto-
 }
 ```
 
-#### <a name="example-using-windows-authentication"></a>例如：使用 Windows 身份验证
+#### <a name="example-using-windows-authentication"></a>示例：使用 Windows 身份验证
 
 ```json
 {
@@ -3859,7 +3859,7 @@ auto-
 ## <a name="sftp"></a>SFTP
 
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 SFTP 链接服务，请将链接服务的**类型**设置为 **Sftp**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
@@ -3900,7 +3900,7 @@ auto-
 }
 ```
 
-#### <a name="example-basic-authentication-with-encrypted-credential"></a>例如：**使用加密凭据的基本身份验证**
+#### <a name="example-basic-authentication-with-encrypted-credential"></a>示例：**使用加密凭据的基本身份验证**
 
 ```json
 {
@@ -3951,7 +3951,7 @@ auto-
 }
 ```
 
-#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>例如：**使用私钥内容进行 SshPublicKey 身份验证**
+#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>示例：**使用私钥内容进行 SshPublicKey 身份验证**
 
 ```json
 {
@@ -4066,7 +4066,7 @@ auto-
 
 ## <a name="http"></a>HTTP
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 HTTP 链接服务，请将链接服务的**类型**设置为 **Http**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
@@ -4077,7 +4077,7 @@ auto-
 | gatewayName | 用于连接本地 HTTP 源的数据管理网关的名称 | 如果从本地 HTTP 源复制数据，则值为 Yes。 |
 | encryptedCredential | 用于访问 HTTP 终结点的已加密凭据。 在复制向导或 ClickOnce 弹出对话框中配置身份验证信息时自动生成。 | 否。 仅当从本地 HTTP 服务器复制数据时才适用。 |
 
-#### <a name="example-using-basic-digest-or-windows-authentication"></a>例如：使用基本、摘要或 Windows 身份验证
+#### <a name="example-using-basic-digest-or-windows-authentication"></a>示例：使用基本、摘要或 Windows 身份验证
 将 `authenticationType` 设置为 `Basic`、`Digest` 或 `Windows`，并指定除上述 HTTP 连接器泛型属性以外的下列属性：
 
 | 属性 | 说明 | 必填 |
@@ -4264,7 +4264,7 @@ auto-
 
 ## <a name="odata"></a>OData
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 OData 链接服务，请将链接服务的**类型**设置为 **OData**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
@@ -4434,7 +4434,7 @@ auto-
 ## <a name="odbc"></a>ODBC
 
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 ODBC 链接服务，请将链接服务的**类型**设置为 **OnPremisesOdbc**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
@@ -4480,7 +4480,7 @@ auto-
 }
 ```
 
-#### <a name="example-using-anonymous-authentication"></a>示例：使用匿名身份验证
+#### <a name="example-using-anonymous-authentication"></a>例如：使用匿名身份验证
 
 ```json
 {
@@ -4588,7 +4588,7 @@ auto-
 ## <a name="salesforce"></a>Salesforce
 
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Salesforce 链接服务，请将链接服务的**类型**设置为 **Salesforce**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
@@ -4711,7 +4711,7 @@ auto-
 
 ## <a name="web-data"></a>Web 数据
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 要定义 Web 链接服务，请将链接服务的**类型**设置为 **Web**，并在 **typeProperties** 节中指定以下属性：
 
 | 属性 | 说明 | 必填 |
@@ -4831,7 +4831,7 @@ auto-
 ## <a name="on-demand-azure-hdinsight-cluster"></a>按需 Azure HDInsight 群集
 Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 群集，以处理数据。 群集创建在与该群集相关联的存储帐户（JSON 中的 linkedServiceName 属性）所在的同一区域中。 可在此链接服务中运行以下转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce 活动](#hdinsight-mapreduce-activity)、Hadoop 流式处理活动、[Spark 活动](#hdinsight-spark-activity)。
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 下表提供了按需 HDInsight 链接服务的 Azure JSON 定义中使用的属性的说明。
 
 | 属性 | 说明 | 必选 |
@@ -4869,7 +4869,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="existing-azure-hdinsight-cluster"></a>现有的 Azure HDInsight 群集
 可以创建 Azure HDInsight 链接服务，以向数据工厂注册自己的 HDInsight 群集。 可在此链接服务中运行以下数据转换活动：[.NET 自定义活动](#net-custom-activity)、[Hive 活动](#hdinsight-hive-activity)、[Pig 活动](#hdinsight-pig-activity)、[MapReduce 活动](#hdinsight-mapreduce-activity)、Hadoop 流式处理活动、[Spark 活动](#hdinsight-spark-activity)。
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 下表提供了 Azure HDInsight 链接服务的 Azure JSON 定义中使用的属性的说明。
 
 | 属性 | 说明 | 必选 |
@@ -4902,7 +4902,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="azure-batch"></a>Azure Batch
 可以创建 Azure 批处理链接服务，用于向数据工厂注册虚拟机 (VM) 的批处理池。 可以使用 Azure Batch 或 Azure HDInsight 运行 .NET 自定义活动。 可以在此链接服务中运行 [.NET 自定义活动](#net-custom-activity)。
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 下表提供了 Azure 批处理链接服务的 Azure JSON 定义中使用的属性的说明。
 
 | 属性 | 说明 | 必选 |
@@ -4934,7 +4934,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="azure-machine-learning"></a>Azure 机器学习
 可以创建 Azure 机器学习链接服务，用于向数据工厂注册机器学习批处理评分终结点。 可以在此链接服务上运行的两个数据转换活动：[机器学习批处理执行活动](#machine-learning-batch-execution-activity)、[机器学习更新资源活动](#machine-learning-update-resource-activity)。
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 下表提供了 Azure 机器学习链接服务的 Azure JSON 定义中使用的属性的说明。
 
 | 属性 | 说明 | 必填 |
@@ -4961,13 +4961,13 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 在使用管道中的 [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)前，创建 **Azure Data Lake Analytics** 链接服务，以将 Azure Data Lake Analytics 计算服务链接到 Azure 数据工厂。
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 
 下表提供了 Azure Data Lake Analytics 链接服务的 JSON 定义中使用的属性的说明。
 
 | 属性 | 说明 | 必填 |
 | --- | --- | --- |
-| type |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
+| 类型 |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
 | accountName |Azure Data Lake Analytics 帐户名。 |是 |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |否 |
 | authorization |在数据工厂编辑器中单击“授权”按钮并完成 OAuth 登录后，会自动检索授权代码。 |是 |
@@ -4999,7 +4999,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 ## <a name="sql-server"></a>SQL Server
 创建 SQL Server 链接服务，并将其与[存储的过程活动](data-factory-stored-proc-activity.md)配合使用，以从数据工厂管道调用存储的过程。
 
-### <a name="linked-service"></a>链接的服务
+### <a name="linked-service"></a>链接服务
 创建 **OnPremisesSqlServer** 类型的链接服务，将本地 SQL Server 数据库链接到数据工厂。 下表提供了有关特定于本地 SQL Server 链接服务的 JSON 元素的描述。
 
 下表提供了有关特定于 SQL Server 链接服务的 JSON 元素的描述。
@@ -5033,7 +5033,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
     }
 }
 ```
-#### <a name="example-json-for-using-windows-authentication"></a>例如：用于使用 Windows 身份验证的 JSON
+#### <a name="example-json-for-using-windows-authentication"></a>示例：用于使用 Windows 身份验证的 JSON
 
 如果指定了用户名和密码，网关会使用用户名和密码模拟指定的用户帐户来连接到本地 SQL Server 数据库。 否则，网关使用网关（其启动帐户）的安全上下文直接连接到 SQL Server。
 
@@ -5234,7 +5234,7 @@ activities | 描述
 | mapper | 映射器可执行文件的名称。 在示例中，cat.exe 即是映射器可执行文件。|
 | reducer | 化简器可执行文件的名称。 在示例中，wc.exe 即是减压器可执行文件。 |
 | input | 映射器的输入文件（包括位置）。 在示例 `"wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt"` 中：adfsample 是 blob 容器，example/data/Gutenberg 是文件夹，davinci.txt 是 blob。 |
-| 输出 | 化简器的输出文件（包括位置）。 将 Hadoop Streaming 作业的输出写入到为该属性指定的位置。 |
+| output | 化简器的输出文件（包括位置）。 将 Hadoop Streaming 作业的输出写入到为该属性指定的位置。 |
 | filePaths | 映射器和化简器可执行文件的路径。 在此示例中：blob 容器为 "adfsample/example/apps/wc.exe"adfsample，文件夹为 example/apps，可执行文件为 wc.exe。 |
 | fileLinkedService | Azure 存储链接服务，表示包含 filePaths 节中指定的文件的 Azure 存储。 |
 | arguments | MapReduce 程序的逗号分隔参数列表。 运行时，可在 MapReduce 框架中看到几个额外的参数（例如：mapreduce.job.tags）。 要区分自己的参数和 MapReduce 参数，请考虑将选项和值同时作为参数使用，如下例所示（-s、--input、--output 等选项后面紧接相应的值） |
@@ -5478,7 +5478,7 @@ trainedModelDatasetName | 指向重新训练操作返回的 iLearner 文件的�
 | script |指定内联脚本，而不是指定 scriptPath 和 scriptLinkedService。 示例："script":"CREATE DATABASE test"。 |否（如果使用 scriptPath 和 scriptLinkedService） |
 | degreeOfParallelism |同时用于运行作业的最大节点数。 |否 |
 | 优先级 |确定应在所有排队的作业中选择哪些作业首先运行。 编号越低，优先级越高。 |否 |
-| 参数 |U-SQL 脚本的参数 |否 |
+| parameters |U-SQL 脚本的参数 |否 |
 
 ### <a name="json-example"></a>JSON 示例
 

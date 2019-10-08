@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: a5d11be7d4fbe7f23b5584775c5d9a57c2214155
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b2b4dc1aa9486e432fb2fae48343c21fba620221
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200986"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996689"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -89,16 +89,16 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 
 ## <a name="advanced-cloud-defense"></a>高级云防御
 
-Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能包括实时虚拟机 (VM) 访问和自适应应用程序控制。
+Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能包括实时虚拟机（VM）访问和自适应应用程序控制。
 
 若要了解如何在安全中心使用这些功能，请参考以下资源。
 
 视频  
-* [Azure Security Center – Just-in-Time VM Access](https://youtu.be/UOQb2FcdQnU)（Azure 安全中心 - 实时 VM 访问）
+* [Azure 安全中心-实时 VM 访问](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center - Adaptive Application Controls](https://youtu.be/wWWekI1Y9ck)（Azure 安全中心 - 自适应应用程序控制）
 
 文章    
-* [使用恰时功能管理虚拟机访问](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [使用实时管理虚拟机访问](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
 * [Azure 安全中心的自适应应用程序控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
 ## <a name="hands-on-activities"></a>动手活动

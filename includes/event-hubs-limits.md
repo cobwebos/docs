@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a20481ea42a0772ab42322e912cfce67877734d6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 8c836582798f40cf6e9ffff264c1612cb4037f74
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830040"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996889"
 ---
 下表提供了特定于[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
@@ -55,5 +55,5 @@ ms.locfileid: "71830040"
 | 分区 | 每个 CU 2000 |
 | 使用者组 | 对于每个 CU，每个事件中心无限制，1000 |
 | 中转连接 | 包括 100 K |
-| 消息保留 | 最多7天，每个 CU 包含 10 TB |
+| 消息保留 | 90天，每个 CU 包含 10 TB |
 | 捕获 | 已包含 |

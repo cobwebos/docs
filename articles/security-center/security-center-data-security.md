@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: 30f4358bea2670cfa8d825bf1ef75feeba7ea851
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3c63283a1a13e2deb178a53dfc5045d371d6a28a
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202337"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996935"
 ---
 # <a name="azure-security-center-data-security"></a>Azure 安全中心数据安全性
 为了帮助客户防止、检测和应对威胁，Azure 安全中心将收集和处理安全相关的数据，包括配置信息、元数据、事件日志、故障转储文件，等等。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。
@@ -51,8 +51,8 @@ Azure 安全中心将分析以下源中的数据，提供安全状态视图、�
 | 加拿大                              | 加拿大        |
 | 欧洲（英国除外）   | 欧洲        |
 | 英国                      | 英国 |
-| 亚洲（印度、日本、韩国、中国除外）   | 亚太  |
-| 韩国                              | 亚太  |
+| 亚洲（印度、日本、韩国、中国除外）   | 亚太区  |
+| 韩国                              | 亚太区  |
 | 印度                               | 印度         |
 | 日本                               | 日本         |
 | 中国                               | 中国         |
@@ -80,7 +80,7 @@ Microsoft Monitoring Agent 扫描各种安全相关配置和事件，并将其�
 
 客户可以使用与安全中心相关的数据，这些数据来自不同的数据流，如下所示：
 
-* **Azure 活动**：所有安全警报、经审核的安全中心[实时](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)请求，以及由[自适应应用程序控件](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)生成的所有警报。
+* **Azure 活动**：所有安全警报、已批准的安全中心[实时](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)请求以及[自适应应用程序控件](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)生成的所有警报。
 * **Azure Monitor 日志**：所有安全警报。
 
 

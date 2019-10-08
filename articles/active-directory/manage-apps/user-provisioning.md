@@ -15,12 +15,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac78029ba2d1f45ef67ef0d858fdd2917bd4a97a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3ef652b05f62218ee1d0e72543bfa546f0c14abe
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033341"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001713"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 
@@ -56,18 +56,15 @@ Azure Active Directory （Azure AD）可让你自动创建、维护和删除云�
 
 **Azure AD 预配服务**通过连接到每个应用程序供应商提供的用户管理 API 终结点，将用户预配到 SaaS 应用和其他系统。 这些用户管理 API 终结点允许 Azure AD 以编程方式创建、更新和删除用户。 对于所选的应用程序，预配服务还可以创建、更新和删除其他标识相关对象，如组和角色。
 
-![Azure AD 预配](./media/user-provisioning/provisioning0.PNG)
-服务*图1：Azure AD 预配服务*
+@no__t 0Azure AD 预配服务 @ no__t-1 @ no__t-2Figure 1：Azure AD 预配服务*
 
-![出站用户预](./media/user-provisioning/provisioning1.PNG)
-配工作流*图2：从 Azure AD 到常见 SaaS 应用程序的“出站”用户预配工作流*
+@no__t 0Outbound user 预配 workflow @ no__t-1 @ no__t-2Figure 2：从 Azure AD 到常见 SaaS 应用程序的“出站”用户预配工作流*
 
-![入站用户预](./media/user-provisioning/provisioning2.PNG)
-配工作流*图3：从常见人力资本管理 (HCM) 应用程序到 Azure Active Directory 和 Windows Server Active Directory 的“入站”用户预配工作流*
+@no__t 0Inbound user 预配 workflow @ no__t-1 @ no__t-2Figure 3：从常见人力资本管理 (HCM) 应用程序到 Azure Active Directory 和 Windows Server Active Directory 的“入站”用户预配工作流*
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>可在哪些应用程序和系统中使用 Azure AD 自动用户预配？
 
-Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支持，以及对实现 SCIM 2.0 标准的特定部分的应用的一般性支持。
+Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支持，以及对实现[SCIM 2.0 标准](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)的特定部分的应用的一般性支持。
 
 ### <a name="pre-integrated-applications"></a>预先集成的应用程序
 
@@ -93,7 +90,7 @@ Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支�
 1. 选择 " **+ 新建应用程序**" 以添加应用程序。 根据你的方案添加以下任一内容：
 
    - "**添加自己的应用**" 选项支持自定义开发的 SCIM 集成。
-   - "**从库** > 中添加"**功能应用程序**部分中的所有应用程序都支持自动预配。 有关其他应用程序，请参阅[支持用户预配的应用程序列表教程](../saas-apps/tutorial-list.md)。
+   - "**从库中添加**"  > **特色应用程序**部分中的所有应用程序都支持自动预配。 有关其他应用程序，请参阅[支持用户预配的应用程序列表教程](../saas-apps/tutorial-list.md)。
 
 1. 提供任何详细信息，然后选择 "**添加**"。 新应用将添加到企业应用程序列表中，并打开到其 "应用程序管理" 屏幕。
 1. 选择 "**预配**"，管理应用的用户帐户预配设置。
@@ -128,7 +125,7 @@ Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支�
 
 1. 查询源系统中的所有用户和组，并检索[属性映射](customize-application-attributes.md)中定义的所有属性。
 1. 使用配置的任何[分配](assign-user-or-group-access-portal.md)或[基于属性的范围筛选器](define-conditional-rules-for-provisioning-user-accounts.md)筛选返回的用户和组。
-1. 当分配用户或在设置范围内时，服务将使用指定的[匹配属性](customize-application-attributes.md#understanding-attribute-mapping-properties)在目标系统中查询匹配的用户。 例如：如果源系统中的 userPrincipal 名称是匹配的属性并映射到目标系统中的 userName，则预配服务会在目标系统中查询与源系统中 userPrincipal 名称值匹配的 userName。
+1. 当分配用户或在设置范围内时，服务将使用指定的[匹配属性](customize-application-attributes.md#understanding-attribute-mapping-properties)在目标系统中查询匹配的用户。 示例：如果源系统中的 userPrincipal 名称是匹配的属性并映射到目标系统中的 userName，则预配服务会在目标系统中查询与源系统中 userPrincipal 名称值匹配的 userName。
 1. 如果在目标系统中找不到匹配的用户，则使用从源系统返回的属性创建该用户。 创建用户帐户后，预配服务将检测并缓存新用户的目标系统 ID，该用户用于运行对该用户的所有未来操作。
 1. 如果找到匹配的用户，则使用源系统提供的属性进行更新。 匹配该用户帐户后，预配服务将检测并缓存新用户的目标系统 ID，该用户用于运行对该用户的所有未来操作。
 1. 如果属性映射包含 "引用" 属性，则服务会在目标系统上执行其他更新以创建和链接引用的对象。 例如，用户可能在目标系统中有“Manager”属性，该属性链接到目标系统中创建的另一个用户。

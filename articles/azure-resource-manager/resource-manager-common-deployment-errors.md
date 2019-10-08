@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: ac700592a63e88936593c24f8f7ce06a08e289ce
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 185570992ad0308b500da30bca212a0495bcb0fa
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972687"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001639"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure 资源管理器时的常见 Azure 部署错误
 
@@ -44,6 +44,7 @@ ms.locfileid: "71972687"
 | InUseSubnetCannotBeDeleted | 如果尝试更新资源，但已通过删除并创建资源处理了请求，则可能会出现此错误。 确保指定所有未更改值。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | 获取相应租户的访问令牌。 只能从帐户所属的租户获取该令牌。 | |
 | InvalidContentLink | 很可能尝试过链接到不可用的嵌套模板。 再次确认为嵌套模板提供的 URI。 如果模板存在于存储帐户中，请确保 URI 可访问。 可能需要传递 SAS 令牌。 目前，无法链接到位于 [Azure 存储防火墙](../storage/common/storage-network-security.md)后面的存储帐户中的模板。 考虑将模板移到其他存储库，如 GitHub。 | [链接的模板](resource-group-linked-templates.md) |
+| InvalidDeploymentLocation | 在订阅级别部署时，你为以前使用的部署名称提供了不同的位置。 | [订阅级别部署](deploy-to-subscription.md) |
 | InvalidParameter | 为资源提供的某个值与预期值不匹配。 此错误可能由许多不同的状况造成。 例如，密码强度可能不足，或者 Blob 名称可能不正确。 错误消息应表明哪个值需要更正。 | |
 | InvalidRequestContent | 部署值包含无法识别的值，或者缺少必需的值。 确认资源类型的值。 | [模板参考](/azure/templates/) |
 | InvalidRequestFormat | 在运行部署时启用调试日志记录功能，并验证请求的内容。 | [调试日志记录](#enable-debug-logging) |
