@@ -371,7 +371,7 @@
               href: delete-vault.md
     - name: 应用的灾难恢复
       items:
-        - name: 为本地应用设置灾难恢复到 Azure
+        - name: 关于本地应用的灾难恢复
           href: site-recovery-workload.md
         - name: Active Directory 和 DNS
           href: site-recovery-active-directory.md

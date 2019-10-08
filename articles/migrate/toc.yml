@@ -92,7 +92,7 @@
       href: scale-hyper-v-assessment.md
     - name: 自动执行大量 VM 的迁移
       href: how-to-migrate-at-scale.md
-    - name: 迁移示例 - Contoso 系列
+    - name: 迁移示例（Contoso 系列）
       href: contoso-migration-overview.md
 - name: 故障排除
   items:
