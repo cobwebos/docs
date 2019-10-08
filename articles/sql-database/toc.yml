@@ -778,29 +778,35 @@
   items:
     - name: 术语词汇表
       href: sql-database-glossary-terms.md
-    - name: 利用 Microsoft Learn 掌握技能
-      href: /learn/browse/?products=azure-sql-database
-    - name: SQL Server 博客
-      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
-    - name: Microsoft Azure 博客
-      href: 'https://azure.microsoft.com/blog/'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 公共数据集
-      href: sql-database-public-data-sets.md
-    - name: 排查连接问题
-      href: 'https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
-    - name: 堆栈溢出
-      href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 视频
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'
-    - name: 服务更新
-      href: 'https://azure.microsoft.com/updates/?service=sql-database'
     - name: 体系结构中心
       href: /azure/architecture/
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/?products=azure-sql-database
     - name: 客户案例
       href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Microsoft Azure 博客
+      href: 'https://azure.microsoft.com/blog/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
+    - name: 公共数据集
+      href: sql-database-public-data-sets.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?service=sql-database'
+    - name: SQL Server 博客
+      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/sql-azure'
+    - name: 故障排除
+      items:
+        - name: 连接问题
+          href: troubleshoot-connectivity-issues-microsoft-azure-sql-database.md
+        - name: 问题解决方法
+          items:
+            - name: 导入/导出服务挂起
+              href: azure-sql-database-hangs-importing-exporting.md
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'

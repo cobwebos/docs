@@ -78,6 +78,8 @@
           href: classroom-labs/class-type-deep-learning-natural-processing.md
         - name: Linux 上的 Shell 脚本
           href: classroom-labs/class-type-shell-scripting-linux.md
+        - name: 道德黑客攻击
+          href: classroom-labs/class-type-ethical-hacking.md
     - name: 教室实验室
       items:
         - name: 创建和配置实验室帐户（实验室帐户所有者）
@@ -90,6 +92,8 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: 附加或分离共享映像库
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
+            - name: 在模板 VM 上启用嵌套虚拟化
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: 创建和配置课堂实验室（讲师）
           items:
             - name: 创建和管理教室实验室

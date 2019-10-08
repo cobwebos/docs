@@ -27,14 +27,14 @@
           items:
             - name: .NET
               href: storage-quickstart-blobs-dotnet.md
-            - name: Node.js
-              href: storage-quickstart-blobs-nodejs-v10.md
+            - name: Java
+              href: storage-quickstart-blobs-java.md
             - name: Python
               href: storage-quickstart-blobs-python.md
-            - name: 使用 v10 SDK 的 JS/HTML
+            - name: Javascript (Node.js)
+              href: storage-quickstart-blobs-nodejs-v10.md
+            - name: JavaScript（浏览器）
               href: storage-quickstart-blobs-javascript-client-libraries-v10.md
-            - name: 使用 v2 SDK 的 JS/HTML
-              href: storage-quickstart-blobs-javascript-client-libraries.md
             - name: Go
               href: storage-quickstart-blobs-go.md
             - name: PHP
@@ -101,7 +101,7 @@
           items:
             - name: 安全概述
               href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 存储服务加密
+            - name: Azure 存储加密
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 授权
               href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -334,7 +334,7 @@
                       href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: 定义存储访问策略
                       href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 使用客户管理的密钥进行服务加密
+            - name: 使用客户管理的密钥进行加密
               items:
                 - name: 门户
                   href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -410,12 +410,12 @@
                   href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
             - name: Xamarin
               href: storage-xamarin-blob-storage.md
-            - name: 旧 SDK
+            - name: 以前的 SDK 版本
               items:
-                - name: Java (存储 SDK V7)
-                  href: storage-quickstart-blobs-java.md
-                - name: Node.js (存储 SDK v2)
+                - name: Javascript (Node.js)（存储 SDK v2）
                   href: storage-quickstart-blobs-nodejs.md
+                - name: Javascript（浏览器）（存储 SDK v2）
+                  href: storage-quickstart-blobs-javascript-client-libraries.md
         - name: 管理 Blob
           items:
             - name: Azure CLI

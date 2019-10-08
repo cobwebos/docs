@@ -59,7 +59,8 @@
           href: concepts-connectivity-architecture.md
     - name: 业务连续性
       items:
-        - name: 概述
+        - name: 业务连续性简介
+          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
           href: concepts-business-continuity.md
         - name: 备份和还原
           href: concepts-backup.md
@@ -185,7 +186,7 @@
       href: /rest/api/mariadb
     - name: 资源管理器模板
       href: /azure/templates/microsoft.dbformariadb/allversions
-    - name: Azure 存储过程
+    - name: 管理存储过程
       href: reference-stored-procedures.md
 - name: 资源
   items:
