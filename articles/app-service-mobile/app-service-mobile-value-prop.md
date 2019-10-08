@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: a3817b3e9f62a863f3fea9305ef169db2eb84491
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 48f7066f2db96165daa104dcf32fe8e2e2cd55cf
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637947"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025225"
 ---
 # <a name="getting-started"> </a>关于 Azure 应用服务中的移动应用
 
 > [!NOTE]
-> Visual Studio App Center 正在为移动应用开发的新的和集成的服务进行投资。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后, 开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况, 并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务, 以便在云中持久保存和同步应用程序数据。 立即查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-value-prop) 。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 Azure 应用服务是完全托管的[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 产品，适用于专业开发人员。 该服务为 Web、移动和集成方案提供丰富的功能集。 
 

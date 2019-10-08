@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27b5a8a7667419e0e3345fb453eefd840368b643
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
-ms.translationtype: HT
+ms.openlocfilehash: 3992ea29d3d81262b5d9b8b126c8fca54feca67d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001694"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026383"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -63,10 +63,10 @@ ms.locfileid: "72001694"
 具有此角色的用户可以设置或重置非密码凭据，并可以更新所有用户的密码。 身份验证管理员可以要求用户重新注册现有非密码凭据（例如 MFA 或 FIDO），并可以撤销“在设备上记住 MFA”（当非管理员或仅分配有以下角色的用户下次登录时提示他们执行 MFA）：
 
 * 身份验证管理员
-* 目录读取者
+* 目录读者
 * 来宾邀请者
 * 消息中心读取者
-* 报告读取者
+* 报告读者
 
 > [!IMPORTANT]
 > 具有此角色的用户可以更改可能有权访问 Azure Active Directory 内外敏感或私有信息或关键配置的用户的凭据。 更改用户的凭据可能意味着假定用户标识和权限的能力。 例如：
@@ -212,6 +212,22 @@ In | 有权执行的操作
 >
 >
 
+### <a name="global-readerglobal-reader-permissions"></a>[全局读取器](#global-reader-permissions)
+
+此角色中的用户可以跨 Microsoft 365 服务读取设置和管理信息，但不能执行管理操作。 全局读取器是全局管理员的只读对应项。 为计划、审核或调查分配全局读取器而不是全局管理员。 将全局读取器与其他有限管理员角色（如 Exchange 管理员）结合使用，以便在不调用全局管理员角色的情况下完成工作。 全局读者适用于新的 Microsoft 365 管理中心、Exchange 管理中心、团队管理中心、安全中心、合规中心、Azure AD 管理中心和设备管理管理中心。 
+
+> [!NOTE]
+> 全局读者角色目前有以下限制：
+>* SharePoint 管理中心-SharePoint 管理中心不支持全局读者角色。 因此，在 " [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)" 中的 "管理中心" 下，你将看不到左侧窗格中的 "SharePoint"。 转到 https：//{租户名称}-admin.sharepoint.com 时，拒绝访问。 
+>* [Azure AD 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)-全局读取器无法读取企业应用的预配模式。
+>* [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)-全局读取器无法读取 cusomter 密码箱请求。 在 M365 管理中心的左窗格 "支持" 下，将找不到 "客户密码箱请求" 选项卡。
+>* [M365 安全中心](https://security.microsoft.com/homepage)-全局读取器无法读取敏感度和保留标签。 在 M365 安全中心的分类下，你将不会在左窗格中找到敏感度标签、保留标签和标签分析选项卡。
+>* [团队管理员中心](https://admin.teams.microsoft.com)-全球读者无法阅读团队生命周期、报表 & 呼叫分析、IP 电话设备管理和应用程序目录。
+>* [Privileged Access Management （PAM）](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview)不支持全局读取器。
+> 
+> 对这些功能的支持会随时间推移而变化。
+>
+
 ### <a name="guest-inviterguest-inviter-permissions"></a>[来宾邀请者](#guest-inviter-permissions)
 
 此角色的用户可在“成员可以邀请”用户设置设置为“否”时管理 Azure Active Directory B2B 来宾用户邀请。 [关于 Azure AD B2B 协作](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)中提供了有关 B2B 协作的详细信息。 它不包括任何其他权限。
@@ -220,11 +236,11 @@ In | 有权执行的操作
 
 具有此角色的用户可以更改密码、使刷新令牌失效、管理服务请求和监视服务运行状况。 使刷新令牌失效会强制用户重新登录。 对于非管理员或仅分配有以下角色的其他用户，支持管理员可以重置其密码，以及使其刷新令牌失效：
 
-* 目录读取者
+* 目录读者
 * 来宾邀请者
 * 支持管理员
 * 消息中心读取者
-* 报告读取者
+* 报告读者
 
 > [!IMPORTANT]
 > 具有此角色的用户可以更改可能有权访问 Azure Active Directory 内外敏感或私有信息或关键配置的用户的密码。 更改用户的密码可能意味着假定用户标识和权限的能力。 例如：
@@ -275,7 +291,7 @@ In | 有权执行的操作
 
 具有此角色的用户具有管理密码的有限能力。 此角色不会授予管理服务请求或监视服务运行状况的功能。 密码管理员可以重置非管理员或以下角色成员的其他用户的密码：
 
-* 目录读取者
+* 目录读者
 * 来宾邀请者
 * 密码管理员
 
@@ -404,7 +420,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | --- | --- |
 |常规权限|<p>创建用户和组</p><p>创建和管理用户视图</p><p>管理 Office 支持票证<p>更新密码过期策略|
 |<p>适用于所有用户，包括所有管理员</p>|<p>管理许可证</p><p>管理除用户主体名称之外的所有用户属性</p>
-|仅适用于不是管理员或具有以下任一管理员角色（权限有限）的用户：<ul><li>目录读取者<li>来宾邀请者<li>支持管理员<li>消息中心读取者<li>报告读取者<li>用户管理员|<p>删除和还原</p><p>禁用和启用</p><p>使刷新令牌失效</p><p>管理包括用户主体名称在内的所有用户属性</p><p>重新设置密码</p><p>更新 (FIDO) 设备密钥</p>|
+|仅适用于不是管理员或具有以下任一管理员角色（权限有限）的用户：<ul><li>目录读者<li>来宾邀请者<li>支持管理员<li>消息中心读取者<li>报告读者<li>用户管理员|<p>删除和还原</p><p>禁用和启用</p><p>使刷新令牌失效</p><p>管理包括用户主体名称在内的所有用户属性</p><p>重置密码</p><p>更新 (FIDO) 设备密钥</p>|
 
 > [!IMPORTANT]
 > 具有此角色的用户可以更改可能有权访问 Azure Active Directory 内外敏感或私有信息或关键配置的用户的密码。 更改用户的密码可能意味着假定用户标识和权限的能力。 例如：
@@ -687,10 +703,10 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft.commerce.billing/allEntities/allTasks | 管理 Office 365 计费的各个方面。 |
 | microsoft.intune/allEntities/allTasks | 管理 Intune 的各个方面。 |
-| microsoft.office365.complianceManager/allEntities/allTasks | 管理 Office 365 合规性管理器的各个方面 |
+| microsoft.office365.complianceManager/allEntities/allTasks | 管理 Office 365 合规性管理器的所有方面 |
 | microsoft.office365.desktopAnalytics/allEntities/allTasks | 管理桌面分析的各个方面。 |
 | microsoft.office365.exchange/allEntities/allTasks | 管理 Exchange Online 的各个方面。 |
-| microsoft.office365.lockbox/allEntities/allTasks | 管理 Office 365 客户密码箱的各个方面 |
+| microsoft.office365.lockbox/allEntities/allTasks | 管理 Office 365 客户密码箱的所有方面 |
 | microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
 | microsoft.office365.messageCenter/securityMessages/read | 读取 microsoft.office365.messageCenter 中的安全消息。 |
 | microsoft.office365.protectionCenter/allEntities/allTasks | 管理 Office 365 防护中心的各个方面。 |
@@ -794,7 +810,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
-| microsoft.office365.lockbox/allEntities/allTasks | 管理 Office 365 客户密码箱的各个方面 |
+| microsoft.office365.lockbox/allEntities/allTasks | 管理 Office 365 客户密码箱的所有方面 |
 
 ### <a name="desktop-analytics-administrator-permissions"></a>桌面分析管理员权限
 
@@ -965,6 +981,76 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | **操作** | **说明** |
 | --- | --- |
 | microsoft.aad.b2c/identityProviders/allTasks | 读取和配置 Azure Active Directory B2C 中的标识提供者。 |
+
+### <a name="global-reader-permissions"></a>全局读者权限
+可以读取全局管理员可以使用的所有内容，但不能编辑任何内容。 
+
+> [!NOTE]
+> 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的[角色说明](#global-reader)。
+>
+>
+
+| **操作** | **说明** |
+| --- | --- |
+| microsoft allEntities/读取   | 阅读 Office 365 帐单的所有方面。 |
+| administrativeUnits/basic/read    | 读取 Azure Active Directory 中 administrativeUnits 的基本属性。 |
+| administrativeUnits/成员/读取  | 读取 Azure Active Directory 中的 administrativeUnits.members 属性。 |
+| microsoft 目录/应用程序/基本/读取   | 读取 Azure Active Directory 中应用程序的基本属性。 |
+| microsoft.directory/applications/owners/read  | 读取 Azure Active Directory 中的 applications.owners 属性。 |
+| microsoft. 目录/应用程序/策略/读取    | 读取 Azure Active Directory 中的 applications.policies 属性。 |
+| microsoft. directory/contacts/basic/read   | 读取 Azure Active Directory 中联系人的基本属性。 |
+| microsoft. directory/contacts/memberOf/read    | 读取 Azure Active Directory 中的 contacts.memberOf 属性。 |
+| microsoft. directory/协定/基本/读取  | 读取 Azure Active Directory 中协定的基本属性。 |
+| microsoft. directory/设备/基本/读取    | 读取 Azure Active Directory 中设备的基本属性。 |
+| microsoft. directory/设备/memberOf/read | 读取 Azure Active Directory 中的 devices.memberOf 属性。 |
+| microsoft 目录/设备/Devices.registeredowners/读取 | 读取 Azure Active Directory 中的 devices.registeredOwners 属性。 |
+| microsoft 目录/设备/registeredUsers/读取  | 读取 Azure Active Directory 中的 devices.registeredUsers 属性。 |
+| directoryRoles/basic/read | 读取 Azure Active Directory 中 directoryRoles 的基本属性。 |
+| directoryRoles/eligibleMembers/read   | 读取 Azure Active Directory 中的 directoryRoles.eligibleMembers 属性。 |
+| directoryRoles/成员/读取   | 读取 Azure Active Directory 中的 directoryRoles.members 属性。 |
+| microsoft. directory/域/基本/读取    | 读取 Azure Active Directory 中域的基本属性。 |
+| microsoft. directory/groups/appRoleAssignments/read    | 读取 Azure Active Directory 中的 groups.appRoleAssignments 属性。 |
+| microsoft. 目录/组/基本/读取 | 读取 Azure Active Directory 中组的基本属性。 |
+| microsoft. directory/groups/hiddenMembers/read | 读取 Azure Active Directory 中的 groups.hiddenMembers 属性。 |
+| microsoft. directory/groups/memberOf/read  | 读取 Azure Active Directory 中的 groups.memberOf 属性。 |
+| microsoft. 目录/组/成员/读取   | 读取 Azure Active Directory 中的 groups.members 属性。 |
+| microsoft. 目录/组/所有者/读取    | 读取 Azure Active Directory 中的 groups.owners 属性。 |
+| microsoft. 目录/组/设置/读取  | 读取 Azure Active Directory 中的 groups.settings 属性。 |
+| groupSettings/basic/read  | 读取 Azure Active Directory 中 groupSettings 的基本属性。 |
+| groupSettingTemplates/basic/read  | 读取 Azure Active Directory 中 groupSettingTemplates 的基本属性。 |
+| oAuth2PermissionGrants/basic/read | 读取 Azure Active Directory 中 oAuth2PermissionGrants 的基本属性。 |
+| microsoft. directory/组织/基本/读取   | 读取 Azure Active Directory 中组织的基本属性。 |
+| microsoft. directory/组织/trustedCAsForPasswordlessAuth/读取   | 读取 Azure Active Directory 中的 organization.trustedCAsForPasswordlessAuth 属性。 |
+| microsoft. directory/策略/标准/读取    | 读取 Azure Active Directory 中的标准策略。 |
+| roleAssignments/basic/read    | 读取 Azure Active Directory 中 roleAssignments 上的基本属性。 |
+| roleDefinitions/basic/read    | 读取 Azure Active Directory 中 roleDefinitions 上的基本属性。 |
+| 服务主体/appRoleAssignedTo/read  | 读取 Azure Active Directory 中的 servicePrincipals.appRoleAssignedTo 属性。 |
+| 服务主体/appRoleAssignments/read | 读取 Azure Active Directory 中的 servicePrincipals.appRoleAssignments 属性。 |
+| 服务主体/basic/read  | 读取 Azure Active Directory 中 servicePrincipals 的基本属性。 |
+| 服务主体/memberOf/read   | 读取 Azure Active Directory 中的 servicePrincipals.memberOf 属性。 |
+| 服务主体/oAuth2PermissionGrants/basic/read   | 读取 Azure Active Directory 中的 servicePrincipals.oAuth2PermissionGrants 属性。 |
+| 服务主体/ownedObjects/read   | 读取 Azure Active Directory 中的 servicePrincipals.ownedObjects 属性。 |
+| 服务主体/物主/物主/读取 | 读取 Azure Active Directory 中的 servicePrincipals.owners 属性。 |
+| 服务主体/策略/读取   | 读取 Azure Active Directory 中的 servicePrincipals.policies 属性。 |
+| microsoft.directory/signInReports/allProperties/read  | 读取 Azure Active Directory 中 signInReports 上的所有属性（包括特权属性）。 |
+| subscribedSkus/basic/read | 读取 Azure Active Directory 中 subscribedSkus 的基本属性。 |
+| microsoft. directory/users/appRoleAssignments/read | 读取 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
+| microsoft. directory/users/basic/read  | 读取 Azure Active Directory 中用户的基本属性。 |
+| microsoft. directory/users/directReports/read  | 读取 Azure Active Directory 中的 users.directReports 属性。 |
+| microsoft. 目录/用户/经理/读取    | 读取 Azure Active Directory 中的 users.manager 属性。 |
+| microsoft. directory/users/memberOf/read   | 读取 Azure Active Directory 中的 users.memberOf 属性。 |
+| microsoft. directory/users/oAuth2PermissionGrants/basic/read   | 读取 Azure Active Directory 中的 users.oAuth2PermissionGrants 属性。 |
+| microsoft. directory/users/ownedDevices/read   | 读取 Azure Active Directory 中的 users.ownedDevices 属性。 |
+| microsoft. directory/users/ownedObjects/read   | 读取 Azure Active Directory 中的 users.ownedObjects 属性。 |
+| microsoft. directory/users/registeredDevices/read  | 读取 Azure Active Directory 中的 users.registeredDevices 属性。 |
+| microsoft. directory/users/strongAuthentication/read   | 读取强身份验证属性，如 MFA 凭据信息。 |
+| office365/allEntities/read | 阅读 Exchange Online 的所有方面。 |
+| microsoft.office365.messageCenter/messages/read   | 读取 microsoft.office365.messageCenter 中的消息。 |
+| microsoft.office365.messageCenter/securityMessages/read   | 读取 microsoft.office365.messageCenter 中的安全消息。 |
+| microsoft.office365.protectionCenter/allEntities/read | 读取 Office 365 防护中心的各个方面。 |
+| office365. securityComplianceCenter/allEntities/read | 读取 office365. securityComplianceCenter 中的所有标准属性。 |
+| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
+| office365. webPortal/allEntities/standard/read   | 读取 office365. webPortal 中所有资源的标准属性。 |
 
 ### <a name="guest-inviter-permissions"></a>来宾邀请者权限
 可以邀请与“成员可邀请来宾”设置无关的来宾用户。
@@ -1519,13 +1605,13 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 Azure 信息保护管理员 | Azure 信息保护管理员 | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C 用户流管理员 | B2C 用户流管理员 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 B2C 用户流属性管理员 | B2C 用户流属性管理员 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
-B2C IEF 密钥集管理员 | B2C IEF 密钥集管理员 | aaf43236-0c0d-4d5f-883a-6955382ac081
+B2C IEF 键集管理员 | B2C IEF 键集管理员 | aaf43236-0c0d-4d5f-883a-6955382ac081
 B2C IEF 策略管理员 | B2C IEF 策略管理员 | 3edaf663-341e-4475-9f94-5c398ef6c070
 计费管理员 | 计费管理员 | b0f54661-2d74-4c50-afa3-1ec803f12efe
-云应用程序管理员 | 云应用程序管理员 | 158c047a-c907-4556-b7ef-446551a6b5f7
+云应用管理员 | 云应用程序管理员 | 158c047a-c907-4556-b7ef-446551a6b5f7
 云设备管理员 | 云设备管理员 | 7698a772-787b-4ac8-901f-60d6b08affd2
 公司管理员 | 全局管理员 | 62e90394-69f5-4237-9190-012177145e10
-符合性管理员 | 符合性管理员 | 17315797-102d-40b4-93e0-432062caca18
+符合性管理员 | 法规管理员 | 17315797-102d-40b4-93e0-432062caca18
 合规性数据管理员 | 合规性数据管理员 | e6d1a23a-da11-4be4-9570-befc86d067a7
 条件访问管理员 | 条件访问管理员 | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
 CRM 服务管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f96a
@@ -1535,11 +1621,12 @@ CRM 服务管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f
 设备联接 | 设备加入 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
 设备管理器 | 设备管理员 | 2b499bcd-da44-4968-8aec-78e1674fa64d
 设备用户 | 设备用户 | d405c6df-0af8-4e3b-95e4-4d06e542189e
-目录读取者 | 目录读取者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
+目录读者 | 目录读者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 目录同步帐户 | 目录同步帐户 | d29b2b05-8046-44ba-8758-1e26182fcf32
-目录写入者 | 目录写入者 | 9360feb5-f418-4baa-8175-e2a00bac4301
+目录编写人员 | 目录写入者 | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部标识提供者管理员 | 外部标识提供者管理员 | be2f45a1-457d-42af-a067-6ec1fa63bc45
+全局读取器 | 全局读取器 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 来宾邀请者 | 来宾邀请者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 支持管理员 | 密码管理员 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Intune 服务管理员 | Intune 管理员 | 3a2c62db-5318-420d-8d74-23affee5d9d5
@@ -1548,13 +1635,13 @@ Kaizala 管理员 | Kaizala 管理员 | 74ef975b-6605-40af-a5d2-b9539d836353
 Lync 服务管理员 | Skype for Business 管理员 | 75941009-915a-4869-abe7-691bff18279e
 消息中心隐私读取者 | 消息中心隐私读取者 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 消息中心读取者 | 消息中心读取者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
-合作伙伴层级 1 支持 | 合作伙伴层级 1 支持 | 4ba39ca4-527c-499a-b93d-d9b492c50246
-合作伙伴层级 2 支持 | 合作伙伴层级 2 支持 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
+合作伙伴一线支持人员 | 合作伙伴一线支持人员 | 4ba39ca4-527c-499a-b93d-d9b492c50246
+合作伙伴二线支持人员 | 合作伙伴二线支持人员 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 密码管理员 | 密码管理员 | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI 服务管理员 | Power BI 管理员 | a9ea8996-122f-4c74-9520-8edcd192826c
 特权身份验证管理员 | 特权身份验证管理员 | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 特权角色管理员 | 特权角色管理员 | e8611ab8-c189-46e8-94e1-60213ab1f814
-报告读取者 | 报告读取者 | 4a5d8f65-41da-4de4-8968-e035b65339cf
+报告读者 | 报告读者 | 4a5d8f65-41da-4de4-8968-e035b65339cf
 搜索管理员 | 搜索管理员 | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
 搜索编辑员 | 搜索编辑员 | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 安全管理员 | 安全管理员 | 194ae4cb-b126-40b2-bd5b-6091b380977d
@@ -1564,7 +1651,7 @@ Power BI 服务管理员 | Power BI 管理员 | a9ea8996-122f-4c74-9520-8edcd192
 SharePoint 服务管理员 | SharePoint 管理员 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Teams 通信管理员 | Teams 通信管理员 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Teams 通信支持工程师 | Teams 通信支持工程师 | f70938a0-fc10-4177-9e90-2178f8765737
-Teams 通信支持专员 | Teams 通信支持专员 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
+Teams 通信支持专家 | Teams 通信支持专家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2a7a8
 “用户” | “用户” | a0b1b346-4d3e-4e8b-98f8-753987be4970
 用户帐户管理员 | 用户管理员 | fe930be7-5e62-47db-91af-98c3a49a38b1
@@ -1578,7 +1665,7 @@ Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2
 * 设备联接
 * 设备管理器
 * 设备用户
-* 电子邮件验证的用户创建程序
+* 经电子邮件验证的用户创建者
 * 邮箱管理员
 * 工作区设备联接
 

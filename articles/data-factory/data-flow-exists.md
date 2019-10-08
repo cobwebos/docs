@@ -1,23 +1,23 @@
 ---
-title: Azure 数据工厂映射流存在数据转换
-description: 如何检查现有行使用数据工厂映射数据的流使用 Exists 转换
+title: Azure 数据工厂映射数据流存在转换
+description: 如何使用数据工厂映射使用存在转换的数据流来检查现有行
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: b98b7afb21f2f50d44ba93ed793b6efb20f75164
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b488a079b2da1bcf0dd064025ed251a1dc25213
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235989"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029386"
 ---
-# <a name="mapping-data-flow-exists-transformation"></a>存在映射数据流转换
+# <a name="mapping-data-flow-exists-transformation"></a>映射数据流存在转换
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Exists 转换是阻止或允许数据行通过的行筛选转换。 Exists 转换类似于 ```SQL WHERE EXISTS``` 和 ```SQL WHERE NOT EXISTS```。 完成后存在转换从数据流生成的行将既包括列来自源 1 的值位于源 2 的所有行或源 2 中不存在。
+
+Exists 转换是阻止或允许数据行通过的行筛选转换。 Exists 转换类似于 ```SQL WHERE EXISTS``` 和 ```SQL WHERE NOT EXISTS```。 存在转换后，数据流中的结果行将包含源1中的列值存在于源2中的所有行或源2中不存在的行。
 
 ![Exists 设置](media/data-flow/exists.png "exists 1")
 
@@ -27,14 +27,14 @@ Exists 转换是阻止或允许数据行通过的行筛选转换。 Exists 转�
 
 ## <a name="multiple-exists-conditions"></a>多个存在条件
 
-旁边 Exists 在列条件中的每个行，您会发现 + 符号可用时悬停在到达行。 这样，您可以添加多个行 Exists 条件。 每个其他条件是"和"。
+在出现的列条件中的每行旁边，你会发现，当你将鼠标指针悬停在行上时，将显示一个 + 符号。 这将允许您为 Exists 条件添加多行。 每个附加条件都是 "And"。
 
 ## <a name="custom-expression"></a>自定义表达式
 
-![存在自定义设置](media/data-flow/exists1.png "存在自定义")
+![存在](media/data-flow/exists1.png "自定义")自定义设置
 
-可以单击"自定义表达式"改为创建自由格式表达式作为你存在或不存在的条件。 选中此复选框将允许您作为一项条件表达式中的类型。
+您可以单击 "自定义表达式" 来创建自由格式的表达式，因为存在或不存在条件。 选中此框将允许您将自己的表达式键入为条件。
 
 ## <a name="next-steps"></a>后续步骤
 
-类似的转换[查找](data-flow-lookup.md)并[加入](data-flow-join.md)。
+类似的转换是[查找](data-flow-lookup.md)和[联接](data-flow-join.md)。

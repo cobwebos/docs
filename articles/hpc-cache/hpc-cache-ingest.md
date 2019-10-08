@@ -4,14 +4,14 @@ description: 如何填充用于 Azure HPC 缓存的 Azure Blob 存储
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: c18e1c9afab211a8ac076307eefc9074ae7c99d6
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/07/2019
+ms.author: rohogue
+ms.openlocfilehash: 6c505e6918071b61a4152b0b421ed7cee3282206
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299992"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024494"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>将数据移动到 Azure Blob 存储
 
@@ -27,7 +27,7 @@ ms.locfileid: "71299992"
 
 基于 Python 的实用工具可用于将内容加载到 Blob 存储容器中。 若要了解详细信息，请参阅[Blob 存储中的预加载数据](#pre-load-data-in-blob-storage-with-clfsload)。
 
-如果不想使用加载实用程序，或者如果要将内容添加到现有存储目标，请遵循[通过 AZURE HPC 缓存复制数据](#copy-data-through-the-azure-hpc-cache)中的并行数据引入提示。 
+如果不想使用加载实用程序，或者如果要将内容添加到现有存储目标，请遵循[通过 AZURE HPC 缓存复制数据](#copy-data-through-the-azure-hpc-cache)中的并行数据引入提示。
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>在 Blob 存储中通过 CLFSLoad 预加载数据
 
@@ -58,9 +58,9 @@ Avere CLFSLoad 实用工具需要以下信息：
 
 如果不想要使用 Avere CLFSLoad 实用程序，或者想要将大量数据添加到现有 Blob 存储目标，可以通过缓存复制它。 Azure HPC 缓存旨在同时为多个客户端提供服务，因此，若要通过缓存复制数据，应使用来自多个客户端的并行写入。
 
-![显示多客户端、多线程数据移动的示意图：在左上方，本地硬件存储对应的图标引出了多个箭头。 箭头指向四台客户端计算机。 每个客户端计算机的三个箭头指向 Azure HPC 缓存。 通过 Azure HPC 缓存，多个箭头指向 Blob 存储。](media/hpc-cache-parallel-ingest.png) 
+![显示多客户端、多线程数据移动的示意图：在左上方，本地硬件存储对应的图标引出了多个箭头。 箭头指向四台客户端计算机。 每个客户端计算机的三个箭头指向 Azure HPC 缓存。 通过 Azure HPC 缓存，多个箭头指向 Blob 存储。](media/hpc-cache-parallel-ingest.png)
 
-通常用于``copy``将数据从一个存储系统传输到另一个存储系统的或命令是单线程进程，该进程一次只复制一个文件。``cp`` 这意味着文件服务器一次只引入一个文件，这就是缓存资源的浪费。
+通常用于将数据从一个存储系统传输到另一个存储系统的 @no__t 0 或 @no__t 1 命令是单线程进程，该进程一次只复制一个文件。 这意味着文件服务器一次只引入一个文件，这就是缓存资源的浪费。
 
 本部分介绍了使用 Azure HPC 缓存创建多客户端多线程文件复制系统以将数据移到 Blob 存储的策略。 其中解释了文件传输的概念，以及可用于有效通过多个客户端和简单复制命令来复制数据的决策点。
 
@@ -77,11 +77,11 @@ Avere CLFSLoad 实用工具需要以下信息：
 
 通过 Azure HPC 缓存引入并行数据的策略包括：
 
-* 手动复制-可以通过在后台针对预定义的文件或路径集运行多个 copy 命令，在客户端上手动创建多线程副本。 有关详细信息，请参阅[AZURE HPC 云数据引入-手动复制方法](hpc-cache-ingest-manual.md)。
+* 手动复制-可以通过在后台针对预定义的文件或路径集运行多个 copy 命令，在客户端上手动创建多线程副本。 有关详细信息，请参阅[AZURE HPC 缓存数据引入-手动复制方法](hpc-cache-ingest-manual.md)。
 
-* 的``msrsync``  -  ``rsync``部分自动复制是一个运行多个并行进程的包装实用工具。 ``msrsync`` 有关详细信息，请参阅[AZURE HPC 缓存数据引入-msrsync 方法](hpc-cache-ingest-msrsync.md)。
+* 使用 @no__t 的部分自动复制-0 @ no__t-1 @ no__t-2 是运行多个并行 @no__t 3 进程的包装实用工具。 有关详细信息，请参阅[AZURE HPC 缓存数据引入-msrsync 方法](hpc-cache-ingest-msrsync.md)。
 
-* 使用``parallelcp``脚本复制-了解如何在[Azure HPC 缓存数据引入-并行复制脚本方法](hpc-cache-ingest-parallelcp.md)中创建和运行并行复制脚本。
+* 使用 @no__t 的脚本复制-了解如何在[AZURE HPC 缓存数据引入-并行复制脚本方法](hpc-cache-ingest-parallelcp.md)中创建和运行并行复制脚本。
 
 ## <a name="next-steps"></a>后续步骤
 

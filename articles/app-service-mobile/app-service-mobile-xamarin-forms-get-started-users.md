@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 643539fb569cdefba8e04d1ac08e73055624d3ae
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "67446303"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025050"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>向 Xamarin Forms 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center 正在为移动应用开发的新的和集成的服务进行投资。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后, 开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况, 并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务, 以便在云中持久保存和同步应用程序数据。 立即查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-users) 。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 本主题演示如何从客户端应用程序对应用服务移动应用的用户进行身份验证。 在本教程中，使用应用服务支持的标识提供者向 Xamarin Forms 快速入门项目添加身份验证。 移动应用成功进行身份验证和授权后，会显示用户 ID 值，该用户能够访问受限制的表数据。
@@ -57,7 +57,7 @@ ms.locfileid: "67446303"
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>向可移植类库添加身份验证
-移动应用使用[MobileServiceClient][4]上的[LoginAsync][3]扩展方法通过应用服务身份验证登录用户。 此示例使用服务器托管的身份验证流，在应用中显示提供程序的登录界面。 有关详细信息，请参阅[服务器托管的身份验证][5]。 若要在生产应用中提供更好的用户体验, 应考虑改用[客户端托管的身份验证][6]。
+移动应用使用 [MobileServiceClient][4] 上的 [LoginAsync][3] 扩展方法通过应用服务身份验证登录用户。 此示例使用服务器托管的身份验证流，在应用中显示提供程序的登录界面。 有关详细信息，请参阅[服务器托管的身份验证][5]。 若要在生产应用中提供更好的用户体验，应考虑改用[客户端托管的身份验证][6]。
 
 若要使用 Xamarin Forms 项目进行身份验证，请在可移植类库中为应用定义 **IAuthenticate** 接口。 然后将“登录”按钮添加到可移植类库中定义的用户界面，单击该按钮可开始身份验证。 身份验证成功后，将从移动应用后端加载数据。
 

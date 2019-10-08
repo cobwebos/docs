@@ -5,71 +5,86 @@ author: roygara
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 11/22/2017
+ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b79086298983e807cbfe0f4413d1fde54969cc6c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 6f2159ddf3e3039dc0c38fc8f942c508ac177f06
+ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986375"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72038172"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
-本教程演示通过 .NET 开发应用程序的基础知识，此类应用程序使用 [Azure 文件](storage-files-introduction.md)来存储文件数据。 本教程将创建一个简单的控制台应用程序，用于通过 .NET 和 Azure 文件执行基本的操作：
+本教程演示通过 .NET 开发应用程序的基础知识，此类应用程序使用 [Azure 文件](storage-files-introduction.md)来存储文件数据。 本教程创建一个简单的控制台应用程序，用于对 .NET 和 Azure 文件执行基本操作：
 
-* 获取文件内容
-* 设置文件共享的配额（最大大小）。
+* 获取文件的内容。
+* 设置文件共享的最大大小或*配额*。
 * 若一个文件使用在共享中定义的共享访问策略，则为该文件创建一个共享访问签名（SAS 密钥）。
 * 将文件复制到同一存储帐户中的另一个文件。
 * 将文件复制到同一存储帐户中的一个 Blob。
-* 使用 Azure 存储度量值进行故障排除
+* 使用 Azure 存储度量值进行故障排除。
 
-若要详细了解 Azure 文件，请参阅 [Azure 文件简介](storage-files-introduction.md)。
+若要了解有关 Azure 文件的详细信息，请参阅[什么是 Azure 文件？](storage-files-introduction.md)
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
 ## <a name="understanding-the-net-apis"></a>了解 .NET API
 
-Azure 文件为客户端应用程序提供两个主要方法：服务器消息块 (SMB) 和 REST。 在 .NET 中，这些方法通过 `System.IO` 和 `WindowsAzure.Storage` API 进行抽象。
+Azure 文件为客户端应用程序提供两个主要方法：服务器消息块 (SMB) 和 REST。 在 .NET 中，@no__t 0 和 @no__t 1 Api 将抽象这些方法。
 
 API | 使用时机 | 说明
 ----|-------------|------
-[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | 应用程序： <ul><li>需要通过 SMB 读取/写入文件</li><li>是否在可以通过端口 445 访问 Azure 文件帐户的设备上运行</li><li>不需要管理文件共享的任何管理设置</li></ul> | 通过 SMB 使用 Azure 文件对文件 I/O 进行编码与使用任何网络文件共享或本地存储设备对 I/O 进行编码相同。 有关 .NET 中的一些功能（包括文件 I/O）的简介，请参阅[此教程](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)。
-[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | 应用程序： <ul><li>由于防火墙或 ISP 约束，无法通过 SMB 在端口 445 上访问 Azure 文件</li><li>需要管理功能，例如能够设置文件共享的配额或创建共享访问签名</li></ul> | 本文演示如何通过 REST（而不是 SMB）将 `Microsoft.Azure.Storage.File` 用于文件 I/O 以及如何管理文件共享。
+[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | 应用程序： <ul><li>需要使用 SMB 读取/写入文件</li><li>是否在可以通过端口 445 访问 Azure 文件帐户的设备上运行</li><li>不需要管理文件共享的任何管理设置</li></ul> | 通过 SMB 通过 Azure 文件实现的文件 i/o 通常与任何网络文件共享或本地存储设备的 i/o 相同。 有关 .NET 中的许多功能（包括文件 i/o）的简介，请参阅[控制台应用程序](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)教程。
+[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | 应用程序： <ul><li>由于防火墙或 ISP 限制，无法使用端口445上的 SMB 访问 Azure 文件</li><li>需要管理功能，例如能够设置文件共享的配额或创建共享访问签名</li></ul> | 本文演示如何使用 REST 的 `Microsoft.Azure.Storage.File` 来代替文件共享的 SMB 和管理。
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>创建控制台应用程序，并获取程序集
-在 Visual Studio 中创建新的 Windows 控制台应用程序。 以下步骤演示如何在 Visual Studio 2017 中创建控制台应用程序，但是，其他 Visual Studio 版本中的步骤是类似的。
 
-1. 选择“文件” > “新建” > “项目”
-2. 选择“已安装” > “模板” > “Visual C#” > “Windows 经典桌面”
-3. 选择“控制台应用(.NET Framework)”
-4. 在“名称:”字段中输入应用程序的名称
-5. 选择“确定”
+在 Visual Studio 中创建新的 Windows 控制台应用程序。 以下步骤演示了如何在 Visual Studio 2019 中创建控制台应用程序。 在其他版本的 Visual Studio 中，这些步骤是类似的。
 
-本教程中的所有代码示例都可以添加到控制台应用程序的 `Program.cs` 文件的 `Main()` 方法。
+1. 启动 Visual Studio 并选择 "**创建新项目**"。
+1. 在 "**创建新项目**" 中，选择C#"**控制台应用（.NET Framework）** "，然后选择 "**下一步**"。
+1. 在 "**配置新项目**" 中，输入应用的名称，然后选择 "**创建**"。
 
-可以在任意类型的 .NET 应用程序（包括 Azure 云服务或 Web 应用，以及桌面和移动应用程序）中使用 Azure 存储客户端库。 为简单起见，我们在本指南中使用控制台应用程序。
+此教程中的所有代码示例都可以添加到控制台应用程序的 @no__t 的 @no__t 0 方法。
+
+你可以在任何类型的 .NET 应用程序中使用 Azure 存储客户端库。 这些类型包括 Azure 云服务或 web 应用，以及桌面和移动应用程序。 为简单起见，我们在本指南中使用控制台应用程序。
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>使用 NuGet 安装所需包
-若要完成本教程, 需要在项目中引用这些包:
 
-* [适用于 .NET 的 Microsoft Azure 存储通用库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)：使用此包能够以编程方式访问存储帐户中的公共资源。
-* [适用于 .NET 的 Microsoft Azure 存储 Blob 库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)：使用此包能够以编程方式访问存储帐户中的 Blob 资源。
-* [适用于 .net 的 Microsoft Azure 存储文件库](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/):此程序包提供对存储帐户中文件资源的编程访问。
-* [适用于 .NET 的 Microsoft Azure 配置管理器库](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)：此包提供用于分析配置文件中连接字符串的类，而不考虑应用程序在何处运行。
+若要完成本教程，请参阅项目中的这些包：
+
+* [适用于 .NET 的 Microsoft Azure 存储通用库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+  
+  使用此包能够以编程方式访问存储帐户中的公共资源。
+* [适用于 .NET 的 Microsoft Azure 存储 Blob 库](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+
+  此包提供以编程方式访问存储帐户中的 blob 资源的权限。
+* [Microsoft Azure 存储适用于 .NET 的文件库](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/)
+
+  此程序包提供对存储帐户中文件资源的编程访问。
+* [适用于 .NET 的 Microsoft Azure Configuration Manager 库](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
+
+  在应用程序运行时，此包提供用于分析配置文件中的连接字符串的类。
 
 可以使用 NuGet 获取这两个包。 请执行以下步骤：
 
-1. 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包”。
-2. 在线搜索“WindowsAzure.Storage”，并单击“安装” 以安装存储客户端库和依赖项。
-3. 在线搜索“WindowsAzure.ConfigurationManager”，并单击“安装”以安装 Azure Configuration Manager。
+1. 在**解决方案资源管理器**中，右键单击项目并选择 "**管理 NuGet 包**"。
+1. 在“NuGet 包管理器”中选择“浏览”。 然后搜索并**选择 ""，然后选择 "** **安装**"。
 
-## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>将存储帐户凭据保存到 app.config 文件
-接下来，将凭据保存到项目的 app.config 文件中。 编辑 app.config 文件，使其看起来类似于下面的示例，将 `myaccount` 替换为存储帐户名称，并将 `mykey` 替换为存储帐户密钥。
+   此步骤将安装包及其依赖项。
+1. 搜索并安装以下包：
+
+   * **Microsoft. Common**
+   * **Microsoft.Azure.Storage.File**
+   * **ConfigurationManager**
+
+## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>将存储帐户凭据保存到 App.config 文件
+
+接下来，将你的凭据保存到项目的 @no__t 0 文件中。 在**解决方案资源管理器**中，双击 @no__t 并编辑文件，使其类似于下面的示例。 将 `myaccount` 替换为你的存储帐户名称，并 `mykey` 替换为你的存储帐户密钥。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -87,7 +102,8 @@ API | 使用时机 | 说明
 > 最新版本的 Azure 存储模拟器不支持 Azure 文件。 连接字符串必须针对云中要使用 Azure 文件的 Azure 存储帐户。
 
 ## <a name="add-using-directives"></a>添加 using 指令
-从解决方案资源管理器打开 `Program.cs` 文件，并在该文件顶部添加以下 using 指令。
+
+在**解决方案资源管理器**中，打开 @no__t 文件，然后将以下 using 指令添加到文件顶部。
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -99,7 +115,8 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
 ## <a name="access-the-file-share-programmatically"></a>以编程方式访问文件共享
-接下来，将以下代码添加到 `Main()` 方法（在上面显示的代码后面）以检索连接字符串。 此代码会获取我们先前创建的文件的引用，并将其内容输出到控制台窗口中。
+
+接下来，将以下内容添加到上面显示的代码 @no__t，以检索连接字符串。 此代码将获取对我们先前创建的文件的引用并输出其内容。
 
 ```csharp
 // Create a CloudFileClient object for credentialed access to Azure Files.
@@ -136,9 +153,10 @@ if (share.Exists())
 运行控制台应用程序以查看输出。
 
 ## <a name="set-the-maximum-size-for-a-file-share"></a>设置文件共享的最大大小
-从 Azure 存储客户端库的 5.x 版开始，可以设置文件共享的配额（或最大大小），单位为千兆字节。 还可以查看共享当前存储了多少数据。
 
-通过设置一个共享的配额，可以限制在该共享上存储的文件的总大小。 如果共享上文件的总大小超过在共享上设定的配额，则客户端不能增加现有文件的大小或创建新文件，除非这些文件是空的。
+从 Azure 存储客户端库的版本1.x 开始，可以设置文件共享的配额（最大大小）。 还可以查看共享当前存储了多少数据。
+
+设置共享配额会限制共享上存储的文件的总大小。 如果共享上文件的总大小超过在共享上设置的配额，则客户端不能增加现有文件的大小。 客户端无法创建新文件，除非这些文件是空的。
 
 下面的示例演示如何检查共享的当前使用情况，以及如何设置共享的配额。
 
@@ -173,9 +191,10 @@ if (share.Exists())
 ```
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>为文件或文件共享生成共享访问签名
-从 Azure 存储客户端库的 5.x 版开始，可以为文件共享或单个文件生成共享访问签名 (SAS)。 还可以在文件共享上创建一个共享访问策略以管理共享访问签名。 建议创建共享访问策略，因为它提供了一种在受到威胁时撤消 SAS 的方式。
 
-以下示例在一个共享上创建共享访问策略，并使用该策略为共享中的一个文件提供 SAS 约束。
+从 Azure 存储客户端库的 5.x 版开始，可以为文件共享或单个文件生成共享访问签名 (SAS)。 还可以在文件共享上创建一个共享访问策略以管理共享访问签名。 建议创建共享访问策略，因为它会使你能够在 SAS 受到威胁时将其吊销。
+
+以下示例在共享上创建共享访问策略。 该示例使用该策略为共享中的文件提供 SAS 约束。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -221,19 +240,21 @@ if (share.Exists())
 }
 ```
 
-若要深入了解如何创建和使用共享访问签名，请参阅[使用共享访问签名 (SAS)](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+有关创建和使用共享访问签名的详细信息，请参阅[共享访问签名的工作原理](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#how-a-shared-access-signature-works)。
 
 ## <a name="copy-files"></a>复制文件
-从 Azure 存储客户端库的 5.x 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 在后续部分中，我们演示如何以编程方式执行这些复制操作。
 
-还可以使用 AzCopy 将一个文件复制到另一个文件或将一个 Blob 复制到一个文件，反之亦然。 请参阅 [使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+从 Azure 存储客户端库的 5.x 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 在接下来的部分中，我们将演示如何以编程方式执行这些复制操作。
+
+还可以使用 AzCopy 将一个文件复制到另一个文件，或将一个 blob 复制到一个文件或其他方法。 请参阅 [AzCopy 入门](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 > [!NOTE]
 > 如果将一个 Blob 复制到一个文件，或将一个文件复制到一个 Blob，必须使用共享访问签名 (SAS) 授予对源对象的访问权限，即使是在同一存储帐户内进行复制。
-> 
-> 
+>
 
-将文件复制到另一文件：以下示例将一个文件复制到同一共享中的另一个文件。 因为此操作在同一存储帐户中的文件之间进行复制，可以使用共享密钥身份验证来进行复制。
+### <a name="copy-a-file-to-another-file"></a>将文件复制到另一个文件
+
+以下示例将一个文件复制到同一共享中的另一个文件。 由于此复制操作在同一存储帐户中的文件之间进行复制，因此可以使用共享密钥身份验证来进行复制。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -277,7 +298,9 @@ if (share.Exists())
 }
 ```
 
-将文件复制到 Blob：以下示例创建一个文件并将其复制到同一存储帐户中的某个 Blob。 该示例为源文件创建一个 SAS，服务在复制操作期间使用该 SAS 授予对源文件的访问权限。
+### <a name="copy-a-file-to-a-blob"></a>将文件复制到 blob
+
+以下示例创建一个文件并将其复制到同一存储帐户中的某个 blob。 该示例为源文件创建一个 SAS，服务在复制操作期间使用该 SAS 授予对源文件的访问权限。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -326,9 +349,10 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 可以用相同的方式将一个 Blob 复制到一个文件。 如果源对象是一个 Blob，则创建一个 SAS，以便在复制操作期间授予对该 Blob 的访问权限。
 
 ## <a name="share-snapshots"></a>共享快照
+
 从 Azure 存储客户端库的 8.5 版开始，可以创建共享快照。 还可以列出或浏览共享快照，以及删除共享快照。 共享快照的状态为只读，因此不允许对共享快照执行写入操作。
 
-**创建共享快照**
+### <a name="create-share-snapshots"></a>创建共享快照
 
 下面的示例创建文件共享快照。
 
@@ -340,7 +364,8 @@ CloudFileShare myShare = fClient.GetShareReference(baseShareName);
 var snapshotShare = myShare.Snapshot();
 
 ```
-**列出共享快照**
+
+### <a name="list-share-snapshots"></a>列出共享快照
 
 下面的示例列出共享上的共享快照。
 
@@ -348,7 +373,7 @@ var snapshotShare = myShare.Snapshot();
 var shares = fClient.ListShares(baseShareName, ShareListingDetails.All);
 ```
 
-**浏览共享快照中的文件和目录**
+### <a name="browse-files-and-directories-within-share-snapshots"></a>浏览共享快照中的文件和目录
 
 下面的示例浏览共享快照中的文件和目录。
 
@@ -358,40 +383,36 @@ var rootDirectory = mySnapshot.GetRootDirectoryReference();
 var items = rootDirectory.ListFilesAndDirectories();
 ```
 
-**列出共享和共享快照，以及从共享快照还原文件共享或文件** 
+### <a name="list-shares-and-share-snapshots-and-restore-file-shares-or-files-from-share-snapshots"></a>列出共享快照并共享快照，并从共享快照还原文件共享或文件
 
-拍摄文件共享的快照即可在将来恢复单个文件或整个文件共享。 
+拍摄文件共享的快照即可在将来恢复单个文件或整个文件共享。
 
-查询文件共享的共享快照即可从文件共享快照还原文件。 然后，可以检索属于特定共享快照的文件，并使用该版本直接进行读取和比较，或者进行还原。
+查询文件共享的共享快照即可从文件共享快照还原文件。 然后，你可以检索属于特定共享快照的文件。 使用该版本直接读取和比较或还原。
 
 ```csharp
 CloudFileShare liveShare = fClient.GetShareReference(baseShareName);
 var rootDirOfliveShare = liveShare.GetRootDirectoryReference();
-
-       var dirInliveShare = rootDirOfliveShare.GetDirectoryReference(dirName);
+var dirInliveShare = rootDirOfliveShare.GetDirectoryReference(dirName);
 var fileInliveShare = dirInliveShare.GetFileReference(fileName);
 
-           
 CloudFileShare snapshot = fClient.GetShareReference(baseShareName, snapshotTime);
 var rootDirOfSnapshot = snapshot.GetRootDirectoryReference();
-
-       var dirInSnapshot = rootDirOfSnapshot.GetDirectoryReference(dirName);
+var dirInSnapshot = rootDirOfSnapshot.GetDirectoryReference(dirName);
 var fileInSnapshot = dir1InSnapshot.GetFileReference(fileName);
 
 string sasContainerToken = string.Empty;
-       SharedAccessFilePolicy sasConstraints = new SharedAccessFilePolicy();
-       sasConstraints.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24);
-       sasConstraints.Permissions = SharedAccessFilePermissions.Read;
-       //Generate the shared access signature on the container, setting the constraints directly on the signature.
+SharedAccessFilePolicy sasConstraints = new SharedAccessFilePolicy();
+sasConstraints.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24);
+sasConstraints.Permissions = SharedAccessFilePermissions.Read;
+
+//Generate the shared access signature on the container, setting the constraints directly on the signature.
 sasContainerToken = fileInSnapshot.GetSharedAccessSignature(sasConstraints);
 
 string sourceUri = (fileInSnapshot.Uri.ToString() + sasContainerToken + "&" + fileInSnapshot.SnapshotTime.ToString()); ;
 fileInliveShare.StartCopyAsync(new Uri(sourceUri));
-
 ```
 
-
-**删除共享快照**
+### <a name="delete-share-snapshots"></a>删除共享快照
 
 下面的示例删除文件共享快照。
 
@@ -399,21 +420,22 @@ fileInliveShare.StartCopyAsync(new Uri(sourceUri));
 CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
 ```
 
-## <a name="troubleshooting-azure-files-using-metrics"></a>使用指标对 Azure 文件进行故障排除
+## 使用指标对 Azure 文件进行故障排除<a name="troubleshooting-azure-files-using-metrics"></a>
+
 Azure 存储分析现在支持用于 Azure 文件的指标。 使用指标数据，可以跟踪请求和诊断问题。
 
-可以从[Azure 门户](https://portal.azure.com)为 Azure 文件启用指标。 还可以通过 REST API 或存储客户端库中的类似物之一调用“设置文件服务属性”操作，以编程方式启用指标。
+可以从[Azure 门户](https://portal.azure.com)为 Azure 文件启用指标。 你还可以通过使用存储客户端库中的 REST API 或它的某个模拟调用 "设置文件服务属性" 操作，以编程方式启用指标。
 
 以下代码示例演示如何使用适用于 .NET 的存储客户端库启用 Azure 文件的指标。
 
-首先，在添加以上指令后，将以下 `using` 指令添加到 `Program.cs` 文件中：
+首先，将以下 `using` 指令添加到你的 @no__t 1 文件以及你在上面添加的指令：
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-请注意，Azure Blob、Azure 表和 Azure 队列使用 `Microsoft.Azure.Storage.Shared.Protocol` 命名空间中的共享 `ServiceProperties` 类型，而 Azure 文件使用其自己的类型，即 `Microsoft.Azure.Storage.File.Protocol` 命名空间中的 `FileServiceProperties` 类型。 但是，代码中必须同时引用这两个命名空间，才能编译后续代码。
+尽管 Azure Blob、Azure 表和 Azure 队列使用 `Microsoft.Azure.Storage.Shared.Protocol` 命名空间中的共享 `ServiceProperties` 类型，但 Azure 文件使用其自己的类型，即 `Microsoft.Azure.Storage.File.Protocol` 命名空间中的 @no__t 类型。 但必须从代码中引用这两个命名空间，才能编译下面的代码。
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -456,26 +478,31 @@ Console.WriteLine(serviceProperties.MinuteMetrics.RetentionDays);
 Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ```
 
-还可以参考 [Azure 文件故障排除文章](storage-troubleshoot-windows-file-connection-problems.md) 了解有关端到端故障排除指南。
+如果遇到任何问题，可以参阅[排查 Windows 中的 Azure 文件问题](storage-troubleshoot-windows-file-connection-problems.md)。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下链接，获取有关 Azure 文件的更多信息。
+
+有关 Azure 文件的详细信息，请参阅以下资源：
 
 ### <a name="conceptual-articles-and-videos"></a>概念性文章和视频
+
 * [Azure 文件：适用于 Windows 和 Linux 的顺畅的云 SMB 文件系统](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [如何通过 Linux 使用 Azure 文件](storage-how-to-use-files-linux.md)
+* [将 Azure 文件与 Linux 配合使用](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-file-storage"></a>文件存储的工具支持
-* [如何对 Microsoft Azure 存储使用 AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+
+* [AzCopy 入门](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [将 Azure CLI 用于 Azure 存储](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
-* [排查 Azure 文件问题](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
+* [在 Windows 中排查 Azure 文件问题](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>参考
-* [.NET 存储客户端库参考](https://msdn.microsoft.com/library/azure/dn261237.aspx)
-* [文件服务 REST API 参考](https://msdn.microsoft.com/library/azure/dn167006.aspx)
+
+* [适用于 .NET 的 Azure 存储 Api](/dotnet/api/overview/azure/storage)
+* [文件服务 REST API](/rest/api/storageservices/File-Service-REST-API)
 
 ### <a name="blog-posts"></a>博客文章
-* [Azure 文件现已正式发布](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [Azure 文件内部](https://azure.microsoft.com/blog/inside-azure-file-storage/)
+
+* [Azure 文件存储现已正式发布](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+* [Azure 文件存储内部](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Microsoft Azure 文件服务简介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [将连接保存到 Microsoft Azure 文件中](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)

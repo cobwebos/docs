@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 67a6de6d85a58f48af4761e0b5d5b0a1a4d74b1a
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 9862866d5cddb227d9417ac15db6b8ea851507e6
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703399"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030288"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>映射数据流表达式生成器
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Azure 数据工厂映射数据流中提供了表达式框，可在其中输入数据转换表达式。 请在这些框中使用数据流中的列、字段、变量、参数和函数。 若要生成表达式，请使用表达式生成器。单击转换中的表达式文本框即可启动表达式生成器。 选择转换的列时，有时还会看到“计算列”选项。 单击该选项也会启动表达式生成器。
 

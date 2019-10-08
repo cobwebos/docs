@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/01/2019
+ms.date: 10/07/2019
 ms.author: anavin
-ms.openlocfilehash: 100bbb6e0ed8e2ea5b35e30e7759a3b11c169b60
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c488b96940cac03b9c392f0ac4bd1d32a15ba111
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077628"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035281"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
-使用虚拟网络对等互连可以无缝连接 Azure [虚拟网络](virtual-networks-overview.md)。 建立对等互连后，出于连接目的，两个虚拟网络会显示为一个。 对等虚拟网络中虚拟机之间的流量通过 Microsoft 主干基础结构路由，非常类似于只通过专用 IP 地址在同一虚拟网络中的虚拟机之间路由流量。  Azure 支持：
+使用虚拟网络对等互连可以无缝连接 Azure [虚拟网络](virtual-networks-overview.md)。 建立对等互连后，出于连接目的，两个虚拟网络会显示为一个。 对等虚拟网络中虚拟机之间的流量通过 Microsoft 主干基础结构路由，非常类似于只通过专用 IP 地址在同一虚拟网络中的虚拟机之间路由流量。 Azure 支持：
 * VNet 对等互连 - 连接同一 Azure 区域中的 VNet
 * 全局 VNet 对等互连 - 跨 Azure 区域连接 VNet
 
@@ -47,7 +47,7 @@ ms.locfileid: "67077628"
 
 ## <a name="service-chaining"></a>服务链
 
-可将指向对等虚拟网络中虚拟机的用户定义的路由表配置为“下一跃点”IP 地址（也可配置指向虚拟网关的用户定义的路由），以便启用服务链。  使用服务链，可以通过用户定义的路由将流量从一个虚拟网络定向到对等虚拟网络中的虚拟设备（或虚拟网关）。
+可将指向对等虚拟网络中虚拟机的用户定义的路由表配置为“下一跃点”IP 地址（也可配置指向虚拟网关的用户定义的路由），以便启用服务链。 使用服务链，可以通过用户定义的路由将流量从一个虚拟网络定向到对等虚拟网络中的虚拟设备（或虚拟网关）。
 
 可以部署中心辐射型网络，允许中心虚拟网络在其中托管基础结构组件，如网络虚拟设备或 VPN 网关。 然后，可以将所有分散虚拟网络与中心虚拟网络对等。 流量可以流经中心虚拟网络中的网络虚拟设备或 VPN 网关。 
 
@@ -69,7 +69,7 @@ VNet 对等互连和全局 VNet 对等互连均支持网关传输。 仅当网�
 
 ## <a name="troubleshoot"></a>故障排除
 
-若要确认虚拟网络对等互连，可以[检查有效路由](diagnose-network-routing-problem.md)，看虚拟网络的任何子网中是否存在网络接口。 如果虚拟网络对等互连存在，则虚拟网络中的所有子网都会有下一跃点类型为“VNet 对等互连”的路由，这适用于每个对等互连的虚拟网络中的每个地址空间。 
+若要确认虚拟网络对等互连，可以[检查有效路由](diagnose-network-routing-problem.md)，看虚拟网络的任何子网中是否存在网络接口。 如果虚拟网络对等互连存在，则虚拟网络中的所有子网都会有下一跃点类型为“VNet 对等互连”的路由，这适用于每个对等互连的虚拟网络中的每个地址空间。
 
 还可以使用网络观察程序的[连接性检查](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来排查与对等互连虚拟网络中某个虚拟机之间的连接问题。 可以通过连接性检查来确定流量如何从源虚拟机的网络接口路由到目标虚拟机的网络接口。
 
@@ -90,7 +90,7 @@ VNet 对等互连和全局 VNet 对等互连均支持网关传输。 仅当网�
 
 利用虚拟网络对等互连的入口和出口流量会产生少许费用。 有关 VNet 对等互连和全局 VNet 对等互连定价的详细信息，请参阅[定价页面](https://azure.microsoft.com/pricing/details/virtual-network)。
 
-网关传输是启用要使用用于跨内部部署或 VNet 到 VNet 连接的对等互连虚拟网络中的 VPN/ExpressRoute 网关的虚拟网络对等互连属性。 通过在此方案中的远程网关的流量都将遵守[VPN 网关费用](https://azure.microsoft.com/pricing/details/vpn-gateway/)或 ExpressRoute 网关费用和不会产生[VNet 对等互连费用。](https://azure.microsoft.com/pricing/details/virtual-network) 例如，如果 VNetA 具有本地连接的 VPN 网关，并且 VNetB 对等互连到 VNetA 与配置的相应属性，从 VNetB 到的本地流量仅收取出口每个 VPN 网关定价或 ExpressRoute 定价。 不会产生 VNet 对等互连费用。 了解如何[针对虚拟网络对等互连配置 VPN 网关传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+网关传输是一种对等互连属性，该属性使虚拟网络能够在对等互连虚拟网络中使用 VPN/ExpressRoute 网关进行跨界连接或 VNet 到 VNet 连接。 有关更多详细信息，请参阅[VPN 网关收费](https://azure.microsoft.com/pricing/details/vpn-gateway/)或 ExpressRoute 网关费用和[VNet 对等互连费用。](https://azure.microsoft.com/pricing/details/virtual-network)
 
 ## <a name="next-steps"></a>后续步骤
 

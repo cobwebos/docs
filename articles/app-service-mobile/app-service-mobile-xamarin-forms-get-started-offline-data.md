@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 53f339d5450965c992f6528ff294e0d37ec2f7f6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 53d65d5577f8905d66da80e99cab6647f0a4dc4c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446282"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025037"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>为 Xamarin.Forms 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-offline-data)今天。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 本教程介绍适用于 Xamarin.Forms 的 Azure 移动应用的脱机同步功能。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。 更改存储在本地数据库中。 设备重新联机后，这些更改会与远程服务同步。
@@ -38,18 +38,18 @@ ms.locfileid: "67446282"
 ## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>启用快速入门解决方案中的脱机同步功能
 脱机同步代码使用 C# 预处理器指令，包含在项目中。 定义 **OFFLINE\_SYNC\_ENABLED** 符号时，这些代码路径包含在生成中。 对于 Windows 应用，还必须安装 SQLite 平台。
 
-1. 在 Visual Studio 中，右键单击解决方案 >“管理解决方案的 NuGet 包…”  ，并在解决方案的所有项目中搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
+1. 在 Visual Studio 中，右键单击解决方案 >“管理解决方案的 NuGet 包…”，并在解决方案的所有项目中搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
 2. 在解决方案资源管理器中，从名称中包含 **Portable** 的项目（该项目是可移植类库项目）中打开 TodoItemManager.cs 文件，并取消注释以下预处理器指令：
 
         #define OFFLINE_SYNC_ENABLED
 3. （可选）若要支持 Windows 设备，请安装以下 SQLite 运行时包之一：
 
-   * **Windows 8.1 运行时：** 安装[适用于 Windows 8.1 的 SQLite][3]。
-   * **Windows Phone 8.1：** 安装[适用于 Windows Phone 8.1 的 SQLite][4]。
-   * **通用 Windows 平台**安装[适用于通用 Windows 世界的 SQLite][5]。
+   * **Windows 8.1 运行时：** 安装 [SQLite for Windows 8.1][3]。
+   * **Windows Phone 8.1：** 安装 [SQLite for Windows Phone 8.1][4]。
+   * **通用 Windows 平台** 安装 [适用于通用 Windows 平台的 SQLite][5]。
 
      尽管快速入门中不包含通用 Windows 项目，但通用 Windows 平台支持 Xamarin Forms。
-4. （可选）在每个 Windows 应用项目中，右键单击“引用”   > “添加引用...”  ，展开 **Windows** 文件夹 >“扩展”  。
+4. （可选）在每个 Windows 应用项目中，右键单击“引用” > “添加引用...”，展开 **Windows** 文件夹 >“扩展”。
     启用合适的 **SQLite for Windows** SDK 以及 **Visual C++ 2013 Runtime for Windows** SDK。
     每个 Windows 平台的 SQLite SDK 名称略有不同。
 
@@ -118,11 +118,11 @@ ms.locfileid: "67446282"
     此示例使用默认同步处理程序的简单错误处理。 实际的应用程序使用自定义的 **IMobileServiceSyncHandler** 实现处理各种错误，如网络状况和服务器冲突。
 
 ## <a name="offline-sync-considerations"></a>脱机同步注意事项
-在此示例中，仅在启动时和请求同步时才调用 **SyncAsync** 方法。  若要在 Android 或 iOS 应用中启动同步，请下拉项目列表；对于 Windows，请使用“同步”  按钮。 在实际应用程序中，还可以在网络状态发生更改时触发同步。
+在此示例中，仅在启动时和请求同步时才调用 **SyncAsync** 方法。  若要在 Android 或 iOS 应用中启动同步，请下拉项目列表；对于 Windows，请使用“同步”按钮。 在实际应用程序中，还可以在网络状态发生更改时触发同步。
 
 对具有由上下文跟踪的未完成本地更新的表执行拉取操作时，该拉取操作会自动触发在前面执行的上下文推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **PushAsync** 调用。
 
-在所提供的代码中，查询远程 TodoItem 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 **PushAsync** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步][2]中的增量同步  部分。
+在所提供的代码中，查询远程 TodoItem 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 **PushAsync** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步][2]中的增量同步部分。
 
 ## <a name="run-the-client-app"></a>运行客户端应用
 现已启用脱机同步，可在每个平台上至少运行一次客户端应用程序，以填充本地存储数据库。 然后模拟脱机情况，并在应用处于脱机状态时修改本地存储中的数据。
@@ -143,20 +143,20 @@ ms.locfileid: "67446282"
 4. 关闭应用程序并重新启动它，以验证你创建的新项目是否已永久保存到本地存储中。
 5. （可选）使用 Visual Studio 查看 Azure SQL 数据库表，以了解后端数据库中的数据是否未更改。
 
-    在 Visual Studio 中，打开“服务器资源管理器”  。 导航到“Azure”  ->“SQL 数据库”  中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”  。 现在便可以浏览 SQL 数据库表及其内容。
+    在 Visual Studio 中，打开“服务器资源管理器”。 导航到“Azure”->“SQL 数据库”中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”。 现在便可以浏览 SQL 数据库表及其内容。
 
 ## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>更新客户端应用以重新连接移动后端
 在本部分中，将应用重新连接到移动后端，以模拟重新回到联机状态的应用。 执行刷新手势时，数据同步到移动后端。
 
 1. 重新打开 Constants.cs。 更正 `applicationURL`，使其指向正确的 URL。
 2. 重新生成并运行客户端应用。 该应用在启动后将尝试与移动应用后端进行同步。 验证调试控制台中是否未记录任何异常。
-3. （可选）查看更新后的数据使用 SQL Server 对象资源管理器或 Fiddler 之类的 REST 工具或[Postman][6]。 请注意，数据已在后端数据库和本地存储之间进行同步。
+3. （可选）使用 SQL Server 对象资源管理器或 REST 工具（如 Fiddler 或 [Postman][6]）查看更新后的数据。 请注意，数据已在后端数据库和本地存储之间进行同步。
 
     请注意，数据已在数据库和本地存储之间进行同步，并包含在应用断开连接时添加的项目。
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure 移动应用中的脱机数据同步][2]
-* [Azure 移动应用.NET SDK 操作方法][8]
+* [Azure 移动应用 .NET SDK 操作指南][8]
 
 <!-- URLs. -->
 [1]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

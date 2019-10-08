@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 929c923fda8c1c2bddd96d0b4d4e4b6ce6d29de9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 52f86f85ec303d23a78fd942276bfe46d0f12832
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845310"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030413"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>为本地工作站的私有云 vCenter 访问配置 DNS 进行名称解析
 
@@ -23,7 +23,7 @@ ms.locfileid: "70845310"
 
 1. 登录到[CloudSimple 门户](access-cloudsimple-portal.md)。
 
-2. 导航到 "**资源** > " "**私有云**"，然后选择要连接到的私有云。
+2. 导航到 "**资源**"  > **私有云**，然后选择要连接到的私有云。
 
 3. 在私有云的 "**摘要**" 页的 "**基本信息**" 下，复制私有云 DNS 服务器 IP 地址。
 
@@ -65,7 +65,7 @@ zone “cloudsimple.io”
 3. 根据您的环境选择合适的选项，然后单击 "**下一步**"。
 
     ![新建区域](media/DNS03.png)
-4. 选择 "**向前查找区域** "，然后单击 "**下一步**"。
+4. 选择 "**向前查找区域**"，然后单击 "**下一步**"。
 
     ![新建区域](media/DNS01.png)
 5. 输入区域名称，并单击 "**下一步**"。

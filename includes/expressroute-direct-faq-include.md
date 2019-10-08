@@ -5,36 +5,37 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 07/09/2019
+ms.date: 10/07/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 43d1942b1413569d77c6c17fee9fff14dc83c924
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9c53aac47e965a6eba681008d6b6476142190ef8
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362455"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72023077"
 ---
 ### <a name="what-is-expressroute-direct"></a>什么是 ExpressRoute Direct？
 
-借助 ExpressRoute Direct，用户可直接连接到巧妙分布在全球对等互连位置的 Microsoft 的全球网络。 ExpressRoute Direct 提供双100或 10 Gbps 连接, 支持大规模主动/主动连接。 
+借助 ExpressRoute Direct，用户可直接连接到巧妙分布在全球对等互连位置的 Microsoft 的全球网络。 ExpressRoute Direct 提供双100或 10 Gbps 连接，支持大规模主动/主动连接。 
 
 ### <a name="how-do-customers-connect-to-expressroute-direct"></a>客户如何连接到 ExpressRoute Direct？ 
 
 客户需要联系他们的本地运营商和主机托管提供商以连接到 ExpressRoute 路由器才能利用 ExpressRoute Direct。
 
-### <a name="what-locations-currently-support-expressroute-direct"></a>目前, 哪些位置支持 ExpressRoute 直接？ 
+### <a name="what-locations-currently-support-expressroute-direct"></a>目前，哪些位置支持 ExpressRoute 直接？ 
 
 可用端口将为动态端口，并且将由 PowerShell 用于查看容量。 位置包括以下区域并且将基于可用性而有所更改：
 
 * 阿姆斯特丹
 * 阿姆斯特丹 2
-* Auckland 
+* 奥克兰 
 * 芝加哥
 * 达拉斯
-* Dublin
+* 都柏林
 * 香港特别行政区
 * 伦敦
+* 伦敦 2
 * 墨尔本
 * New York City
 * 珀斯

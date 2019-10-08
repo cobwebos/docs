@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6cf03d1269cac5dcfa67c2d4778be3fce9ee63aa
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 9163f2b7943a8022b88b2ed514f4a466e61a8d98
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973367"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029017"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -134,9 +134,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 下面是用于调用 `Push-OutputBinding` 的有效参数：
 
-| 姓名 | type | 位置 | 描述 |
+| 名称 | 类型 | 位置 | 描述 |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | 字符串 | 1 | 要设置的输出绑定的名称。 |
+| **`-Name`** | String | 第 | 要设置的输出绑定的名称。 |
 | **`-Value`** | Object | 2 | 要设置的输出绑定的值，它从管道 ByValue 接受。 |
 | **`-Clobber`** | SwitchParameter | 名为 | 可有可无指定时，将强制为指定的输出绑定设置值。 | 
 
@@ -303,7 +303,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 传入脚本的请求对象的类型为 `HttpRequestContext`，它具有以下属性：
 
-| 属性  | 说明                                                    | 类型                      |
+| 属性  | 说明                                                    | type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | 一个包含请求正文的对象。 `Body` 根据数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | object |
 | **`Headers`** | 包含请求标头的字典。                | 字典 < 字符串，string ><sup>*</sup> |
@@ -434,6 +434,9 @@ requirements.psd1
 | MDMaxBackgroundUpgradePeriod      | "7.00：00： 00" （7天）     | 每个 PS 辅助角色会在辅助进程启动时，启动每个 MDMaxBackgroundUpgradePeriod 上的模块升级。 如果 PS 库中提供了新的模块版本，则会将其安装到可用于 PS 辅助角色的文件系统。 减小此值将使函数应用更快获取较新的模块版本，但也会增加应用资源使用情况（网络 i/o、CPU、存储）。 增加此值会降低应用程序资源的使用，但也可能会延迟将新的模块版本传递给你的应用程序。      | 
 | MDNewSnapshotCheckPeriod          | "01:00:00" （1小时）       | 将新模块版本安装到文件系统后，需要重新启动每个 PS 辅助角色。 重新启动 PS 工作线程可能会影响你的应用程序可用性，因为它可能会中断当前函数调用。 在重新启动所有 PS 辅助角色之前，函数调用可能会使用旧的或新的模块版本。 重新启动所有 PS 辅助角色将在 MDNewSnapshotCheckPeriod 中完成。 增大此值将降低中断的频率，但也可能会增加函数调用使用旧模块版本或新模块版本不确定的时间段。 |
 | MDMinBackgroundUpgradePeriod      | "1.00：00： 00" （1天）     | 若要避免频繁的工作线程重新启动时进行过多的模块升级，如果在上一 MDMinBackgroundUpgradePeriod 中已经启动了任何工作线程，则不会执行模块升级检查。 |
+
+> [!NOTE]
+> 托管依赖项依赖于访问 www.powershellgallery.com 来下载模块。 你需要通过添加任何所需的防火墙规则确保函数运行时有权访问此 url。
 
 利用您自己的自定义模块与通常的方式不同。
 

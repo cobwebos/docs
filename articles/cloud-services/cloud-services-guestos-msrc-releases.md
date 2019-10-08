@@ -10,40 +10,37 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/20/2019
+ms.date: 10/7/2019
 ms.author: raiye
-ms.openlocfilehash: 6168e877022eccd9cbe818c20e81266cc3ea1f69
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 736cb30942646788ee6f365f67244d27f1aa0316
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169363"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035182"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
 
 ## <a name="september-2019-guest-os"></a>2019年9月来宾 OS
 
->[!NOTE]
->9月版来宾 OS 目前正在推出给为自动更新配置的云服务 Vm。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 9月版来宾操作系统中包含以下修补程序。 此列表可能随时变动。
-
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
 | --- | --- | --- | --- | --- |
-|  Rel 19-09   |  [4516046]  |  Internet Explorer   |  2.90、3.77、4.70  |  2019年9月10日  |
-|  Rel 19-09   |  [4516115]  |  闪烁   |  2.90、3.77、4.70、5.35、6.11  |  2019年9月10日  |
-|  Rel 19-09   |  [4512578]  |  最新累积更新   |  6.11  |  2019年9月10日  |
-|  Rel 19-09   |  [4514366]  |  .NET Framework 3.5 和4.7。2   |  6.11  |  2019年9月10日  |
-|  Rel 19-09   |  [4516044]  |  最新累积更新   |  5.35  |  2019年9月10日  |
-|  Rel 19-09   |  [4516064]  |  Windows 安全性   |  4.7  |  2019年9月10日  |
-|  Rel 19-09   |  [4514350]  |  .NET Framework 3.5   |  4.7  |  2019年9月10日  |
-|  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  4.7  |  2019年9月10日  |
-|  Rel 19-09   |  [4516062]  |  Windows 安全性   |  3.77  |  2019年9月10日  |
-|  Rel 19-09   |  [4514349]  |  .NET Framework 3.5   |  3.77  |  2019年9月10日  |
-|  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  3.77  |  2019年9月10日  |
-|  Rel 19-09   |  [4516033]  |  Windows 安全性   |  2.9  |  9月12日，2019  |
-|  Rel 19-09   |  [4512488]  |  非安全性   |  4.7  |  8月13日，2019  |
-|  Rel 19-09   |  [4512518]  |  非安全性   |  3.77  |  8月13日，2019  |
-|  Rel 19-09   |  [4512506]  |  非安全性   |  2.9  |  8月13日，2019  |
+|  Rel 19-09   |  [4516046]  |  Internet Explorer   |  [2.90]、 [3.77]、 [4.70]  |  2019年9月10日  |
+|  Rel 19-09   |  [4516115]  |  闪烁   |  [2.90]、 [3.77]、 [4.70]、 [5.35]、 [6.11]  |  2019年9月10日  |
+|  Rel 19-09   |  [4512578]  |  最新累积更新   |  [6.11]  |  2019年9月10日  |
+|  Rel 19-09   |  [4514366]  |  .NET Framework 3.5 和4.7。2   |  [6.11]  |  2019年9月10日  |
+|  Rel 19-09   |  [4516044]  |  最新累积更新   |  [5.35]  |  2019年9月10日  |
+|  Rel 19-09   |  [4516064]  |  Windows 安全性   |  [4.70]  |  2019年9月10日  |
+|  Rel 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4.70]  |  2019年9月10日  |
+|  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4.70]  |  2019年9月10日  |
+|  Rel 19-09   |  [4516062]  |  Windows 安全性   |  [3.77]  |  2019年9月10日  |
+|  Rel 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3.77]  |  2019年9月10日  |
+|  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3.77]  |  2019年9月10日  |
+|  Rel 19-09   |  [4516033]  |  Windows 安全性   |  [2.90]  |  9月12日，2019  |
+|  Rel 19-09   |  [4512488]  |  非安全性   |  [4.70]  |  8月13日，2019  |
+|  Rel 19-09   |  [4512518]  |  非安全性   |  [3.77]  |  8月13日，2019  |
+|  Rel 19-09   |  [4512506]  |  非安全性   |  [2.90]  |  8月13日，2019  |
 
 [4516046]: https://support.microsoft.com/kb/4516046
 [4516115]: https://support.microsoft.com/kb/4516115
@@ -60,6 +57,11 @@ ms.locfileid: "71169363"
 [4512488]: https://support.microsoft.com/kb/4512488
 [4512518]: https://support.microsoft.com/kb/4512518
 [4512506]: https://support.microsoft.com/kb/4512506
+[6.11]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.35]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.70]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.77]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.90]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="august-2019-guest-os"></a>2019年8月来宾操作系统

@@ -1,40 +1,22 @@
 ---
 title: LCS 订阅
-description: 有关创建订阅的教程的简介。
+description: 不推荐使用此 CPP 文章链接到电脑文章;是 "创建订阅的教程简介"。
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 43d27f832d5eb456de60e86257e2be8575f94bf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 58733bec13c99f2c871c1782d56db8304386dc44
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935197"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034385"
 ---
 # <a name="lcs-subscription"></a>LCS 订阅
 
-在本教程中，你将了解如何创建订阅。 此订阅将为你提供一个 Microsoft Online 测试租户和一个你可以在其中部署环境的 Microsoft Dynamics Lifecycle Services 项目。 你还将在 Microsoft Online 租户中设置更多用户，并体验以下服务管理功能。 下面是你将学习的技能：
+[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持为财务和运营提供的 Dynamics 365 的创建和管理。 相反，此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅为[操作提供新的 Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)。
 
-- 订阅并创建新的 Microsoft Online 测试租户。
-- 导航到 Lifecycle Services 项目。
-- 使用 Lifecycle Services 上的功能。
-- 向 Microsoft Azure Active Directory 和客户端添加更多用户。
-- 在订阅电子邮件中查看资源。
-
-## <a name="key-terms"></a>关键术语
-
-**Microsoft Online Services 租户** - 租户是包含你的组织的所有订阅和用户的组。 租户是在 Microsoft Online Services 中创建你的第一个订阅时创建的。
-
-**订阅** - 订阅为你提供联机环境。 使用此环境，可以体验云中的 Dynamics 365 for Operations，并且可以了解如何将你开发的自定义项部署到云中。
-
-**Microsoft Azure Active Directory** -云环境中包括 Azure Active Directory (AD)，它可以帮助您管理用户、 组、 安全角色和联机应用程序，以便在本地管理它们的方式类似于许可证环境。
-
-**用户** - 你的组织订阅的服务的用户是在 Azure AD 中管理的。 可以将你的租户中的任何用户添加并分配到安全角色。
-
-**开发者和管理员** - 开发者和管理员是也有权访问 Lifecycle Services 的用户，他们可以使用该服务管理项目和环境。 这些用户也是最终用户。
-
-有关详细信息，请参阅 [LCS 订阅](https://docs.microsoft.com/dynamics365/operations/dev-itpro/dev-tools/sign-up-preview-subscription)。
+在为操作提供新的 Dynamics 365 之前，应阅读[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然后在选中 "**概述**" 页的情况下打开 "[商业市场" 仪表板](https://partner.microsoft.com/dashboard/directory)。 按照为[操作创建新的 Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)中的说明来创建产品/服务。

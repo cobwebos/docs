@@ -14,14 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 7133e8bc7d04b3653b6b788347b7bc5176087f4c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 87c64a98d783d2604c985017fbce586ed51e5c9d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883472"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025429"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>移动应用和移动服务中的客户端与服务器版本控制
+> [!NOTE]
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+
 Azure 移动服务的最新版本是 Azure 应用服务的**移动应用**功能。
 
 移动应用客户端和服务器 SDK 最初基于移动服务中的 SDK，但它们彼此*不*兼容。

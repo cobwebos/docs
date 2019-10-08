@@ -14,20 +14,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 2b718a000bb5805cc615a59aebb2d5dcca6906a4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6bb94828344b6f6e846b573a94e3049d03effe89
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440207"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025188"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>通过 Azure 后端创建 Windows 应用
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 > [!NOTE]
-> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started)今天。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 
@@ -37,7 +37,7 @@ ms.locfileid: "67440207"
 
 只有在完成本教程后，才可以学习有关 UWP 应用的所有其他移动应用教程。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要以下各项：
 
@@ -73,7 +73,7 @@ ms.locfileid: "67440207"
 
 5. 按 F5 键部署并运行应用。
 
-6. 在应用的“插入待办事项”文本框中键入有意义的文本（例如“完成教程”  ），并单击“保存”   。
+6. 在应用的“插入待办事项”文本框中键入有意义的文本（例如“完成教程”），并单击“保存”。
 
     ![Windows 快速入门完整桌面](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 

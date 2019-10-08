@@ -13,20 +13,20 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 898bf082874a1e9bf26dd094a6a0fe55417c9d8e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 44b3259745877ddb43e643f1fa8307e100ca8b38
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851066"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025241"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 iOS 客户端库
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center 正在为移动应用开发的新的和集成的服务进行投资。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后, 开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况, 并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务, 以便在云中持久保存和同步应用程序数据。 立即查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=/app-service-mobile-ios-how-to-use-client-library) 。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 本指南介绍如何使用最新的 [Azure 移动应用 iOS SDK][1] 执行常见任务。 对于 Azure 移动应用的新手，请先完成 [Azure 移动应用快速入门]，创建后端、创建表并下载预先生成的 iOS Xcode 项目。 本指南侧重于客户端 iOS SDK。 有关用于后端的服务器端 SDK，请参阅 Server SDK 操作方法。
@@ -640,8 +640,8 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 
 可以使用 Facebook SDK for iOS 以用户的身份登录到使用 Facebook 的应用程序。  使用客户端流身份验证会优先使用 `loginWithProvider:completion:` 方法。  客户端流身份验证提供更直观的 UX 风格，并允许进行其他自定义。
 
-1. 按照[如何为 facebook 登录配置应用服务][9]教程的说明, 为 facebook 登录配置移动应用后端。
-2. 遵循[适用于 ios 的 FACEBOOK sdk-入门][10]文档, 安装 facebook Sdk for ios。 不需创建应用，可以将 iOS 平台添加到现有注册。
+1. 按照[如何为 facebook 登录配置应用服务][9]教程的说明，为 facebook 登录配置移动应用后端。
+2. 遵循[适用于 ios 的 FACEBOOK sdk-入门][10]文档，安装 facebook Sdk for ios。 不需创建应用，可以将 iOS 平台添加到现有注册。
 3. Facebook 的文档包括 App Delegate 中的一些 Objective-C 代码。 如果使用 **Swift**，则可以使用以下 AppDelegate.swift 的转换：
 
     ```swift

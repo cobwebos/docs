@@ -1,19 +1,19 @@
 ---
 title: HDInsight 中的 Azure Active Directory 企业安全性套餐
 description: 了解如何使用 Azure Active Directory 域服务设置和配置 HDInsight 企业安全性套餐群集。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
-ms.date: 04/23/2019
-ms.openlocfilehash: aa18c4a078edf579e8d9c4c09df99100dfcea148
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 10/02/2019
+ms.openlocfilehash: 5989aca2b577621c31fe486877ea006cb25d47b5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918306"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030340"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>在 HDInsight 中企业安全性套餐配置与 Azure Active Directory 域服务
 
@@ -70,7 +70,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 ## <a name="networking-considerations"></a>网络注意事项
 
 > [!NOTE]  
-> Azure AD-必须将 DS 部署到基于 Azure 资源管理器的 vNET 中。 Azure AD-DS 不支持经典虚拟网络。 有关更多详细信息，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network)。
+> Azure AD-必须将 DS 部署到基于 Azure 资源管理器的 vNET 中。 Azure AD-DS 不支持经典虚拟网络。 有关详细信息，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network)。
 
 启用 Azure AD-DS 后，本地域名服务 (DNS) 服务器将在 AD 虚拟机 (VM) 上运行。 配置 Azure AD-DS 虚拟网络 (VNET) 来使用这些自定义 DNS 服务器。 若要找到正确的 IP 地址，请选择“管理”类别下的“属性”，然后查看“虚拟网络上的 IP 地址”下列出的 IP 地址。
 
@@ -82,27 +82,27 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 将 Azure AD-DS 实例和 HDInsight 群集放在同一 Azure 虚拟网络中会更方便。 如果打算使用不同的 VNET，必须使这些虚拟网络对等，以便域控制器对 HDI VM 可见。 有关详细信息，请参阅[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)。 
 
-VNET 对等后，配置 HDInsight VNET 以使用自定义 DNS 服务器并输入 Azure AD-DS 专用 IP 作为 DNS 服务器地址。 当两个 VNET 都使用相同的 DNS 服务器，自定义域名将解析为正确的 IP 并可从 HDInsight 进行访问。 例如，如果你的域名`contoso.com`在此步骤之后， `ping contoso.com`应解析为正确的 Azure AD DS IP。
+VNET 对等后，配置 HDInsight VNET 以使用自定义 DNS 服务器并输入 Azure AD-DS 专用 IP 作为 DNS 服务器地址。 当两个 VNET 都使用相同的 DNS 服务器，自定义域名将解析为正确的 IP 并可从 HDInsight 进行访问。 例如，如果域名 `contoso.com`，则在此步骤之后，`ping contoso.com` 应解析为正确的 Azure AD DS IP。
 
 ![为对等 VNET 配置自定义 DNS 服务器](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-如果在 HDInsight 子网中使用网络安全组 (NSG) 规则，应允许入站和出站流量[所需的 IP](../hdinsight-management-ip-addresses.md)。 
+如果你在 HDInsight 子网中使用网络安全组（NSG）规则，则应该允许入站和出站流量[所需的 ip](../hdinsight-management-ip-addresses.md) 。
 
 若要测试网络连接设置是否正确，将 windows VM 加入到 HDInsight VNET/子网并对域名执行 ping 操作（它应解析为 IP），然后运行 ldp.exe 以访问 Azure AD-DS 域。 然后将此 windows VM 加入到域以确认客户端和服务器之间所有所需的 RPC 调用均已成功。 此外可以使用 nslookup 来确认对存储帐户或任何可能使用的外部数据库（例如，外部 Hive 元存储或 Ranger DB）的网络访问。
-如果 AAD-DS 由 NSG 提供保护，应确保所有[所需的端口](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)均在 AAD-DS 子网网络安全组规则的允许列表中。 如果此 windows VM 的域加入操作成功，则可以继续执行下一步以创建 ESP 群集。
+如果 AAD-DS 由 NSG 提供保护，应确保所有[所需的端口](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)均在 AAD-DS 子网网络安全组规则的允许列表中。 如果此 windows VM 的域加入成功，则可以继续执行下一步，并创建 ESP 群集。
 
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>创建具有 ESP 的 HDInsight 群集
 
-正确设置前面的步骤后，下一步是创建启用了 ESP 的 HDInsight 群集。 创建 HDInsight 群集后，可以在“自定义”选项卡中启用企业安全性套餐。如果想要使用 Azure 资源管理器模板进行部署，使用门户体验一次，并下载最后“摘要”页上的预填写模板，供将来重复使用。
+正确设置前面的步骤后，下一步是创建启用了 ESP 的 HDInsight 群集。 创建 HDInsight 群集时，可以在 "**安全 + 网络**" 选项卡中启用企业安全性套餐。如果你更愿意使用 Azure 资源管理器模板进行部署，请使用门户体验一次，并在 "**评审 + 创建**" 页上下载预填充模板以供将来重复使用。
 
 > [!NOTE]  
 > ESP 群集名称的前六个字符在环境中必须是唯一的。 例如，如果在不同 VNET 中有多个 ESP 群集，则应选择一个命名约定，该命名约定确保群集名称上的前六个字符是唯一的。
 
-![Azure HDInsight 企业安全性套餐域验证](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
+![Azure HDInsight 企业安全性套餐域验证](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
 
-启用 ESP 后，将自动检测与 Azure AD-DS 相关的常见错误配置并对其进行验证。 修复这些错误后，你可以继续下一步： 
+启用 ESP 后，将自动检测与 Azure AD-DS 相关的常见错误配置并对其进行验证。 修复这些错误后，你可以继续下一步：
 
-![Azure HDInsight 企业安全性套餐域验证失败](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate-failed.png)
+![Azure HDInsight 企业安全性套餐域验证失败](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
 
 创建具有 ESP 的 HDInsight 群集时，必须提供以下参数：
 
@@ -112,13 +112,9 @@ VNET 对等后，配置 HDInsight VNET 以使用自定义 DNS 服务器并输入
 
 - **LDAPS URL**：例如 `ldaps://contoso.com:636`。
 
-以下屏幕截图显示了 Azure 门户中的成功配置：
-
-![Azure HDInsight ESP Active Directory 域服务配置](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
-
 创建新群集时，已创建的托管标识可以从用户分配的托管标识下拉列表中选择。
 
-![Azure HDInsight ESP Active Directory 域服务托管标识](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
+![Azure HDInsight ESP Active Directory 域服务托管标识](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
 
 ## <a name="next-steps"></a>后续步骤
 

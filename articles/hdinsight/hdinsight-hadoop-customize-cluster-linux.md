@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: df9e6e3a9116b9a4490d8847e9a9d3e9e112f4f7
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 10/03/2019
+ms.openlocfilehash: 16b0fdcbae51b30e14fbf7ea4d98699dfaf19804
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098796"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035731"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
 
@@ -157,13 +157,9 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>在创建群集期间从 Azure 门户使用脚本操作
 
-1. 根据[使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集](hdinsight-hadoop-provision-linux-clusters.md)中所述开始创建群集。 创建群集期间，将会看到“群集摘要”页。 从“群集摘要”页中选择__高级设置__的__编辑__链接。
+1. 按照[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)中所述，开始创建群集。 在群集创建过程中，你将收到步骤6：**脚本操作**。 导航到 "**可选** >  **+ 提交新**项"。
 
-    ![Azure 门户群集高级设置](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
-
-1. 从“高级设置”部分中选择“脚本操作”。 在“脚本操作”部分选择“+ 提交新项”。
-
-    ![门户脚本操作提交新的](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
+    ![Azure 门户群集脚本操作](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-classic-script-action.png)
 
 1. 使用“选择脚本”条目选择预制的脚本。 若要使用自定义脚本，请选择“自定义”。 然后提供脚本的“名称”和“Bash 脚本 URI”。
 
@@ -185,7 +181,7 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
     ![HDInsight 多脚本操作](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
-    添加完脚本后，选择“选择”按钮，然后选择“下一步”按钮返回到“群集摘要”部分。
+    添加完脚本后，选择 "__选择__" 按钮，然后选择 "__下一步__" 按钮继续到 "__群集摘要__" 部分。
 
 1. 要创建群集，请从“群集摘要”部分中选择“创建”。
 
@@ -235,9 +231,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
 转到 [Azure 门户](https://portal.azure.com)：
 
-1. 在左侧菜单中，选择“所有服务”。
-
-1. 在“ANALYTICS”下，选择“HDInsight 群集”。
+1. 在左侧菜单中，导航到“所有服务” >  “分析” > “HDInsight 群集”。
 
 1. 从列表中选择你的群集。此时会打开默认视图。
 
@@ -336,9 +330,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在左侧菜单中，选择“所有服务”。
-
-1. 在“ANALYTICS”下，选择“HDInsight 群集”。
+1. 从左侧菜单中，导航到 "**所有服务**"  > **Analytics** > **HDInsight 群集**。
 
 1. 从列表中选择你的群集。此时会打开默认视图。
 
@@ -358,7 +350,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-| cmdlet | 函数 |
+| cmdlet | Functions |
 | --- | --- |
 | `Get-AzHDInsightPersistedScriptAction` |检索有关持久化脚本操作的信息。 |
 | `Get-AzHDInsightScriptActionHistory` |检索已应用到群集的脚本操作的历史记录，或特定脚本的详细信息。 |
@@ -374,7 +366,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
 ### <a name="the-azure-classic-cli"></a>Azure 经典 CLI
 
-| cmdlet | 函数 |
+| cmdlet | Functions |
 | --- | --- |
 | `azure hdinsight script-action persisted list <clustername>` |检索持久化脚本操作的列表。 |
 | `azure hdinsight script-action persisted show <clustername> <scriptname>` |检索有关特定持久化脚本操作的信息。 |
@@ -403,8 +395,8 @@ Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 构建的开源技术
 
   * [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ResourceManager。
   * Hive 查询语言 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)。
-  * [Apache Mahout](https://mahout.apache.org/)。 
-    
+  * [Apache Mahout](https://mahout.apache.org/)。
+
     [在 HDInsight 中可以使用哪些 Apache Hadoop 组件和版本？](hdinsight-component-versioning.md)中提供了群集组件的完整列表。
 
 * **自定义组件**。 群集用户可以安装或者在工作负荷中使用由社区提供的或自己创建的任何组件。

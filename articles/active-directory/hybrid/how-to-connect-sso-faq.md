@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b12acf083e83d42ff3e8d6967d747f4bb2d93543
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960200"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025674"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
@@ -43,7 +43,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 以下非详尽列表列出了可将这些参数发送到 Azure AD 的部分应用程序，因此使用无缝 SSO 可为用户提供无提示登录体验（即用户无需输入其用户名或密码）：
 
-| 应用程序名 | 可供使用的应用程序 URL |
+| 应用程序名称 | 可供使用的应用程序 URL |
 | -- | -- |
 | 访问面板 | https:\//myapps.microsoft.com/contoso.com |
 | Outlook 网页版 | https： \//office365/contoso .com |
@@ -51,7 +51,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 此外, 如果应用程序将登录请求发送到 Azure AD 的终结点 (即, https:\//login.microsoftonline.com/contoso.com/<), 则用户将获得无提示登录体验。> 或 https:\//login.microsoftonline.com/<tenant_ID>/<..>-而不是 Azure AD 公用终结点, 即 https:\//login.microsoftonline.com/common/<...>。 以下为提出此类登录请求的应用程序的非详尽列表。
 
-| 应用程序名 | 可供使用的应用程序 URL |
+| 应用程序名称 | 可供使用的应用程序 URL |
 | -- | -- |
 | SharePoint Online | https:\//contoso.sharepoint.com |
 | Azure 门户 | https:\//portal.azure.com/contoso.com |
@@ -96,7 +96,10 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
    1. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 AD 林的域管理员凭据。
 
    > [!NOTE]
-   > 我们使用以用户主体名称 (UPN) (johndoe@contoso.com) 格式或域限定的 SAM 帐户名（contoso\johndoe 或 contoso.com\johndoe）格式提供的域管理员用户名查找目标 AD 林。 如果你使用域限定的 SAM 帐户名，则我们使用用户名的域部分[使用 DNS 查找域管理员的域控制器](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)。 如果你使用的是 UPN，则我们在查找合适的域控制器前会[将它转换为域限定的 SAM 帐户名](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)。
+   >必须以 SAM 帐户名称格式（contoso\johndoe 或 com\johndoe）输入域管理员凭据用户名。 我们使用用户名的域部分通过 DNS 查找域管理员的域控制器。
+
+   >[!NOTE]
+   >使用的域管理员帐户不得是受保护用户组的成员。 如果是这样，则操作将失败。
 
    2. 调用 `Update-AzureADSSOForest -OnPremCredentials $creds`。 此命令会在此特定 AD 林中更新 `AZUREADSSOACC` 计算机帐户的 Kerberos 解密密钥，并在 Azure AD 中对其进行更新。
    3. 针对已设置了此功能的每个 AD 林重复上述步骤。

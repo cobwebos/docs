@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: cf985f08f13198a9041b1d50f2c6c7f0fec70911
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 16ce90d3db1091fa759d940f4bbf91a3ef924e42
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945039"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025539"
 ---
 # <a name="archived-release-notes"></a>已存档的发行说明
 
@@ -166,7 +166,7 @@ HDP 2.6.4 提供 Hadoop Common 2.7.3 和以下 Apache 修补程序：
 
 -   [YARN-6805](https://issues.apache.org/jira/browse/YARN-6805)：由于 null PrivilegedOperationException 退出代码，LinuxContainerExecutor 中出现 NPE。
 
-### <a name="hbase"></a>Hbase
+### <a name="hbase"></a>HBase
 
 此版本提供 HBase 1.1.2 和以下 Apache 修补程序。
 
@@ -822,73 +822,73 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 
 ### <a name="cve-2017-7676"></a>**CVE-2017-7676**
 
-| **摘要：**  Apache Ranger 策略评估忽略“\*”通配符后面的字符 |
+| **摘要：** Apache Ranger 策略评估忽略 "\*" 通配符后面的字符 |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **严重性：**  关键                                                                           |
-| **供应商：**  Hortonworks                                                                          |
-| **受影响的版本：**  HDInsight 3.6 版本，包括 Apache Ranger 版本 0.5.x/0.6.x/0.7.0     |
-| **受影响的用户：**  使用在“\*”通配符后面包含字符的 Ranger 策略的环境 – 如 my\*test、test\*.txt |
-| **影响：**  策略资源匹配程序将忽略“\*”通配符后面的字符，从而可能导致意外的行为。      |
-| **修复详细信息：**  Ranger 策略资源匹配程序已更新，可以正确处理通配符匹配。           |
-| **建议的操作：**  升级到 HDI 3.6（使用 Apache Ranger 0.7.1+）。                                |
+| **严重性：** 关键                                                                           |
+| **供应商：** Hortonworks                                                                          |
+| **受影响的版本：** HDInsight 3.6 版本，包括 Apache Ranger 版本 0.5. x/0.6. x/0.7.0 编写     |
+| **受影响的用户：** 使用 Ranger 策略（包含 "\*" 通配符之后的字符）的环境（如 my @ no__t-1test、test\*.txt） |
+| **对**策略资源匹配程序将忽略 "\*" 通配符后面的字符，这可能会导致意外的行为。      |
+| **修复详细信息：** 已更新 Ranger 策略资源匹配程序以正确处理通配符匹配。           |
+| 建议的操作升级到 HDI 3.6 （带有 Apache Ranger 0.7.1 +）。                                |
 
 ### <a name="cve-2017-7677"></a>**CVE-2017-7677**
 
-| **摘要：**  指定了外部位置时，Apache Ranger Hive 授权者应检查 RWX 权限 |
+| **摘要：** 指定外部位置时，Apache Ranger Hive 授权者应检查 RWX 权限 |
 |--------------------------------------------------------------------------------------------------|
-| **严重性：**  关键                                                                           |
-| **供应商：**  Hortonworks                                                                          |
-| **受影响的版本：**  HDInsight 3.6 版本，包括 Apache Ranger 版本 0.5.x/0.6.x/0.7.0 |
-| **受影响的用户：**  对 hive 表使用外部位置的环境 |
-| **影响：**  在对 hive 表使用外部位置的环境中，Apache Ranger Hive 授权者应检查指定用于创建表的外部位置的 RWX 权限。 |
-| **修复详细信息：**  Ranger Hive 授权者已更新，可以使用外部位置正确处理权限检查。 |
-| **建议的操作：**  用户应升级到 HDI 3.6（使用 Apache Ranger 0.7.1+）。 |
+| **严重性：** 关键                                                                           |
+| **供应商：** Hortonworks                                                                          |
+| **受影响的版本：** HDInsight 3.6 版本，包括 Apache Ranger 版本 0.5. x/0.6. x/0.7.0 编写 |
+| **受影响的用户：** 使用 hive 表的外部位置的环境 |
+| **对**在使用 hive 表的外部位置的环境中，Apache Ranger Hive 授权者应检查是否有针对 create table 指定的外部位置的 RWX 权限。 |
+| **修复详细信息：** 已更新 Ranger Hive 授权程序，以便正确地处理外部位置的权限检查。 |
+| 建议的操作用户应升级到 HDI 3.6 （带有 Apache Ranger 0.7.1 +）。 |
 
 ### <a name="cve-2017-9799"></a>**CVE-2017-9799**
 
-| **摘要：**  可能以 Apache Storm 中错误用户的身份执行代码 |
+| **摘要：** Apache Storm 中的错误用户可能执行代码 |
 |--------------------------------------------------------------------------------------------------|
-|**严重性：**  重要 |
-| **供应商：**  Hortonworks |
-| **受影响的版本：**  HDP-2.4.0、HDP-2.5.0、HDP-2.6.0 |
-| **受影响的用户：**  在安全模式下使用 Storm，并使用 Blob 存储来分发基于拓扑的项目或使用 Blob 存储来分发任何拓扑资源的用户。 |
-| **影响：**  在某些情况下使用 storm 的配置时，在理论上，拓扑的所有者能够以不同的非 root 用户身份欺骗监督程序来启动辅助角色。 在最坏的情况下，这可能导致其他用户的安全凭据泄密。 此漏洞仅适用于已启用安全性的 Apache Storm 安装。 |
-| **缓解措施：**  目前没有解决方法，只能升级到 HDP 2.6.2.1。  |
+|**严重性：** 重要提示 |
+| **供应商：** Hortonworks |
+| **受影响的版本：** HDP 2.4.0、HDP-2.5.0、HDP-2.6。0 |
+| **受影响的用户：** 在安全模式下使用风暴并使用 blobstore 分发基于拓扑的项目或使用 blobstore 来分发任何拓扑资源的用户。 |
+| **对**在某些情况下和风暴的配置下，一种拓扑的所有者可能会诱使监察员以不同的非根用户身份启动辅助角色。 在最坏的情况下，这可能导致其他用户的安全凭据泄密。 此漏洞仅适用于已启用安全性的 Apache Storm 安装。 |
+| **缓解：** 升级到 HDP-2.6.2.1，因为目前没有解决方法。  |
 
 ### <a name="cve-2016-4970"></a>**CVE-2016-4970**
 
-| **摘要：**  4.0.37.Final 之前的 Netty 4.0.x 以及 4.1.1.Final 之前的 4.1.x 中的 handler/ssl/OpenSslEngine.java 允许远程攻击者造成拒绝服务（无限循环） |
+| **摘要：** 4.0.37.Final 之前的 Netty 4.0.x 以及 4.1.1.Final 之前的 4.1.x 中的 handler/ssl/OpenSslEngine.java 允许远程攻击者造成拒绝服务（无限循环） |
 |--------------------------------------------------------------------------------------------------|
 | **严重性：** 中等  |
-| **供应商：**  Hortonworks  |
-| **受影响的版本：**  从 2.3.x 开始的 HDP 2.x.x  |
-| **受影响的用户：**  使用 HDFS 的所有用户。 |
-| **影响：**  影响较低，因为 Hortonworks 不直接在 Hadoop 代码库中使用 OpenSslEngine.java。     |
-| **建议的操作：**  升级到 HDP 2.6.3。   |
+| **供应商：** Hortonworks  |
+| **受影响的版本：** 从 2.3. x 开始 HDP 2。x  |
+| **受影响的用户：** 使用 HDFS 的所有用户。 |
+| **对**影响较低，因为 Hortonworks 不会直接在 Hadoop 基本代码中使用 OpenSslEngine。     |
+| 建议的操作升级到 HDP 2.6.3。   |
 
 ### <a name="cve-2016-8746"></a>**CVE-2016-8746**
 
-| **摘要：**  策略评估中存在 Apache Ranger 路径匹配问题                                                                    |
+| **摘要：** Apache Ranger 路径匹配策略评估中的问题                                                                    |
 |----------------------------------------------------------------------------------------------------------------------------------------|
-| **严重性：**  普通                                                                                                                   |
+| **严重性：** 一般                                                                                                                   |
 | **供应商：** Hortonworks                                                                                                                |
-| **受影响的版本：**  所有 HDP 2.5 版本，包括 Apache Ranger 版本 0.6.0/0.6.1/0.6.2                                         |
-| **受影响的用户：**  Ranger 策略管理工具的所有用户。                                                                         |
-| **影响：**  在某些情况下，当策略包含通配符和递归标志时，Ranger 策略引擎不会正确匹配路径。 |
+| **受影响的版本：** 所有 HDP 2.5 版本，包括 Apache Ranger 版本 0.6.0/0.6.1/0.6。2                                         |
+| **受影响的用户：** Ranger 策略管理工具的所有用户。                                                                         |
+| **对**当策略包含通配符和递归标志时，Ranger 策略引擎不正确地匹配某些条件中的路径。 |
 | **修复详细信息：** 已修复策略评估逻辑                                                                                          |
-| **建议的操作：**  用户应升级到 HDP 2.5.4+（使用 Apache Ranger 0.6.3+）或 HDP 2.6+（使用 Apache Ranger 0.7.0+）         |
+| 建议的操作用户应升级到 HDP 2.5.4 + （带有 Apache Ranger 0.6.3 +）或 HDP 2.6 + （带有 Apache Ranger 0.7.0 编写 +）         |
 
 ### <a name="cve-2016-8751"></a>**CVE-2016-8751**
 
-| **摘要：**  Apache Ranger 存储跨站点脚本问题  |
+| **摘要：** Apache Ranger 存储的跨站点脚本编写问题  |
 |--------------------------------------------------------------------------------------------------|
-| **严重性：**  普通 |
-| **供应商：**  Hortonworks |
-| **受影响的版本：**  所有 HDP 2.3/2.4/2.5 版本，包括 Apache Ranger 版本 0.5.x/0.6.0/0.6.1/0.6.2  |
-| **受影响的用户：**  Ranger 策略管理工具的所有用户。 |
-| **影响：**  进入自定义的策略条件时，Apache Ranger 容易受到存储跨站点脚本攻击。 当普通用户登录和访问策略时，管理员用户可能会存储一些任意 javascript 代码执行。 |
-| **修复详细信息：**  添加了逻辑来清理用户输入。  |
-| **建议的操作：**  用户应升级到 HDP 2.5.4+（使用 Apache Ranger 0.6.3+）或 HDP 2.6+（使用 Apache Ranger 0.7.0+）  |
+| **严重性：** 一般 |
+| **供应商：** Hortonworks |
+| **受影响的版本：** 所有 HDP 2.3/2.4/2.5 版本，包括 Apache Ranger 版本 0.5. x/0.6.0/0.6.1/0.6。2  |
+| **受影响的用户：** Ranger 策略管理工具的所有用户。 |
+| **对**Apache Ranger 在输入自定义策略条件时容易受到存储的跨站点脚本攻击。 当普通用户登录和访问策略时，管理员用户可能会存储一些任意 javascript 代码执行。 |
+| **修复详细信息：** 添加了用于净化用户输入的逻辑。  |
+| 建议的操作用户应升级到 HDP 2.5.4 + （带有 Apache Ranger 0.6.3 +）或 HDP 2.6 + （带有 Apache Ranger 0.7.0 编写 +）  |
 
 ## <a name="fixed-issues-for-support"></a>修复了支持问题
 
@@ -1247,7 +1247,7 @@ HDP 2.3.x 和 2.4.x 未随附 Mahout 的特定 Apache 版本，而是同步到 A
 | BUG-95595              | [HIVE-15563](https://issues.apache.org/jira/browse/HIVE-15563)                                                                                                                                                                                                                 | 忽略 SQLOperation.runQuery 中的非法操作状态转换异常，以公开实际异常。                                                       |
 | BUG-95685              | [ATLAS-2422](https://issues.apache.org/jira/browse/ATLAS-2422)                                                                                                                                                                                                                 | 导出：支持基于类型的导出                                                                                                                            |
 | BUG-95798              | [PHOENIX-2714](https://issues.apache.org/jira/browse/PHOENIX-2714)、 [PHOENIX-2724](https://issues.apache.org/jira/browse/PHOENIX-2724)、 [PHOENIX-3023](https://issues.apache.org/jira/browse/PHOENIX-3023)、 [PHOENIX-3040](https://issues.apache.org/jira/browse/PHOENIX-3040) | 不要使用 guideposts 串行执行查询                                                                                                          |
-| BUG-95969              | [HIVE-16828](https://issues.apache.org/jira/browse/HIVE-16828)、 [HIVE-17063](https://issues.apache.org/jira/browse/HIVE-17063)、 [HIVE-18390](https://issues.apache.org/jira/browse/HIVE-18390)                                                                                 | 分区视图失败并出现 FAILED：IndexOutOfBoundsException 索引：1，大小：1                                                                              |
+| BUG-95969              | [HIVE-16828](https://issues.apache.org/jira/browse/HIVE-16828)、 [HIVE-17063](https://issues.apache.org/jira/browse/HIVE-17063)、 [HIVE-18390](https://issues.apache.org/jira/browse/HIVE-18390)                                                                                 | 分区视图失败并出现 FAILED：IndexOutOfBoundsException 索引：1，大小：第                                                                              |
 | BUG-96019              | [HIVE-18548](https://issues.apache.org/jira/browse/HIVE-18548)                                                                                                                                                                                                                 | 修复 log4j 导入                                                                                                                                             |
 | BUG-96288              | [HBASE-14123](https://issues.apache.org/jira/browse/HBASE-14123)、 [HBASE-14135](https://issues.apache.org/jira/browse/HBASE-14135)、 [HBASE-17850](https://issues.apache.org/jira/browse/HBASE-17850)                                                                           | 向后移植 Hbase 备份/还原 2.0                                                                                                                            |
 | BUG-96313              | [KNOX-1119](https://issues.apache.org/jira/browse/KNOX-1119)                                                                                                                                                                                                                   | Pac4J OAuth/OpenID 主体需可配置                                                                                                        |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 86ce2ada9ebd19c88414fab33a62dda5ba41ecb0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: b834f14450196e8d377177bf10c80fbb05a10a57
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949654"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030015"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -345,7 +345,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 
    - 备份操作员
 
-   - 每个人
+   - 所有人
 
    - 用户
 
@@ -396,6 +396,9 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 |                         | CVE-2018-0886  | KB4103718               | KB4103730                | KB4103725       | KB4103723                                               | KB4103731                  | KB4103727                                       | KB4103721                                       |
 |                         |                | KB4103712          | KB4103726          | KB4103715|                                                         |                            |                                                 |                                                 |
        
+> [!NOTE]
+> 若要避免在 VM 预配期间发生意外重启，建议确保所有 Windows 更新安装完成，并且不会挂起任何更新。 执行此操作的一种方法是在运行 Sysprep 命令之前安装所有可能的 Windows 更新并重新启动一次。
+
 ### 确定何时使用 sysprep <a id="step23"></a>    
 
 系统准备工具 (Sysprep) 是一个可以重置 Windows 安装的进程。 Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“全新安装”体验。 

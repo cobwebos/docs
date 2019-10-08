@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb5c82e551ed6299f754f518ebeebca0be4964d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: ca17d049d988b2bc8b60249d99c03f70c555d3fb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679303"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023733"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
 
@@ -25,7 +25,7 @@ ms.locfileid: "71679303"
 
 在 Azure Active Directory B2C （Azure AD B2C）中，支持以下选项：
 
-- **本机客户端**：当代码在用户端设备上运行时，将在身份验证期间进行用户交互。 设备可以是在本机操作系统（如 Android）中运行的移动应用程序，也可以是在浏览器中运行的应用程序，例如 JavaScript。
+- **本机客户端**：当代码在用户端设备上运行时，将在身份验证期间进行用户交互。 该设备可以是在本机操作系统（如 Android 和 iOS）中运行的移动应用程序。
 - **公共客户端流**：只有通过应用程序收集的用户凭据才会在 API 调用中发送。 不会发送应用程序的凭据。
 - **添加新声明**：可更改 ID 令牌内容以添加新的声明。
 
@@ -69,7 +69,7 @@ ms.locfileid: "71679303"
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
 | grant_type | password |
-| 范围 | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
 
@@ -109,7 +109,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
-| 资源 | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* 和 *resource* 是之前记录为应用程序 ID 的值。 *Refresh_token* 是在前述身份验证调用中收到的令牌。

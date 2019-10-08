@@ -14,21 +14,21 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: f138911510db4e6839ff96317fa6004e449e58be
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 789bb45ddef8d5ca0205e96298491ebee02698d6
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443586"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025502"
 ---
 # <a name="add-authentication-to-your-android-app"></a>将身份验证添加到 Android 应用
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-users)今天。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 本教程介绍如何使用支持的标识提供者将身份验证添加到 Android 上的待办事项列表快速入门项目。 本教程基于 [Get started with Mobile Apps] （移动应用入门）教程，必须先完成该教程。
 
 ## <a name="register"></a>注册应用以进行身份验证并配置 Azure 应用服务
@@ -40,20 +40,20 @@ ms.locfileid: "67443586"
 
 1. 在 [Azure 门户]中，选择“应用服务”。
 
-2. 单击“身份验证/授权”  菜单选项。
+2. 单击“身份验证/授权”菜单选项。
 
-3. 在“允许的外部重定向 URL”  中，输入 `appname://easyauth.callback`。  此字符串中的 _appname_ 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+3. 在“允许的外部重定向 URL”中，输入 `appname://easyauth.callback`。  此字符串中的 _appname_ 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
-4. 单击“确定”。 
+4. 单击 **“确定”** 。
 
-5. 单击“ **保存**”。
+5. 单击“保存”。
 
 ## <a name="permissions"></a>将权限限制为已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-* 在 Android Studio 中，打开按照[Get started with Mobile Apps]教程完成的项目。 从“运行”  菜单中单击“运行应用”  ；验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未经处理的异常。
+* 在 Android Studio 中，打开按照[Get started with Mobile Apps]教程完成的项目。 从“运行”菜单中单击“运行应用”；验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未经处理的异常。
 
-     发生此异常的原因是应用尝试以未经身份验证的用户身份访问后端，但 TodoItem  表现在要求身份验证。
+     发生此异常的原因是应用尝试以未经身份验证的用户身份访问后端，但 TodoItem 表现在要求身份验证。
 
 接下来，需要更新应用，以便在从移动应用后端请求资源之前对用户进行身份验证。
 

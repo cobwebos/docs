@@ -1,21 +1,21 @@
 ---
 title: Azure 数据工厂数据流移动节点
-description: 如何移动节点在 Azure 数据工厂映射数据流关系图
+description: 如何在 Azure 数据工厂映射数据流图表中移动节点
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 951a5d4fcbd561b085b0377bde48e820dc8972a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 853fff955a953052b94ad4e7e1dd55371069c30b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519968"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030193"
 ---
 # <a name="mapping-data-flow-move-nodes"></a>映射数据流移动节点
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ![聚合转换选项](media/data-flow/agghead.png "聚合器标头")
 
@@ -23,7 +23,7 @@ Azure 数据工厂数据流设计界面是一个“构造”界面，可以在�
 
 因此，在没有拖放范例的情况下，“移动”转换节点的方式是更改传入流。 你将通过更改“传入流”来四处移动转换。
 
-## <a name="streams-of-data-inside-of-data-flow"></a>在数据流的数据流
+## <a name="streams-of-data-inside-of-data-flow"></a>数据流中的数据流
 
 在 Azure 数据工厂数据流中，流表示数据的流动。 在“转换设置”窗格中，你会看到一个“传入流”字段。 它告诉你哪个传入数据流在为该转换提供数据。 可以通过单击传入流名称并选择另一个数据流在图形上更改转换节点的物理位置。 然后，该流上的当前转换以及所有后续转换都将移动到新位置。
 
@@ -33,4 +33,4 @@ Azure 数据工厂数据流设计界面是一个“构造”界面，可以在�
 
 ## <a name="next-steps"></a>后续步骤
 
-数据流设计后，打开调试按钮并测试此程序在调试模式下可以直接在[数据流设计器](concepts-data-flow-debug-mode.md)或[管道调试](control-flow-execute-data-flow-activity.md)。
+完成数据流设计后，打开 "调试" 按钮，并在调试模式下直接在 "数据流[设计器](concepts-data-flow-debug-mode.md)" 或 "[管道调试](control-flow-execute-data-flow-activity.md)" 中对其进行测试。

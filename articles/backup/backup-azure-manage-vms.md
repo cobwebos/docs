@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9e7d6a027a60590396446479aecf1644ef753ecf
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 24e36e231d80a82362333b7a711f94cf627816ac
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130172"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029254"
 ---
-# <a name="manage-azure-vm-backups-with-azure-backup-service"></a>通过 Azure 备份服务管理 Azure VM 备份
+# <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
 本文介绍了如何使用 [Azure 备份服务](backup-overview.md)管理 Azure 虚拟机 (VM)。 本文还概述了可以在保管库仪表板上找到的备份信息。
 
@@ -49,7 +49,7 @@ ms.locfileid: "71130172"
 
     ![打开“备份项”磁贴](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. 在 " **备份项** " 边栏选项卡上，可以查看受保护的 vm 列表。 在此示例中，保管库保护着一台虚拟机：demobackup。  
+6. 在 "**备份项**" 边栏选项卡上，可以查看受保护的 vm 列表。 在此示例中，保管库保护着一台虚拟机：demobackup。  
 
     ![查看“备份项”边栏选项卡](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "71130172"
 
     ![打开“备份项”磁贴](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. 在 " **备份项** " 边栏选项卡上，可以查看受保护的 vm 的列表，以及最近的还原点时间的备份状态。
+3. 在 "**备份项**" 边栏选项卡上，可以查看受保护的 vm 的列表，以及最近的还原点时间的备份状态。
 
     ![查看“备份项”边栏选项卡](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 

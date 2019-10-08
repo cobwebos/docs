@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 026689b68244052c3ad7cb50cd90d7319b6760ef
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229407"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024612"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教程：用 Azure Sentinel 调查事件
 
@@ -35,7 +35,7 @@ ms.locfileid: "71229407"
 > [!div class="checklist"]
 > * 调查事件
 > * 使用调查图
-> * 响应威胁
+> * 应对威胁
 
 事件可包含多个警报。 它是用于特定调查的所有相关证据的聚合。 事件是根据你在 "**分析**" 页中创建的分析规则创建的。 与警报相关的属性，例如严重性和状态，在事件级别设置。 让 Azure Sentinel 知道要查找的威胁种类以及如何找到它们后，可以通过调查事件来监视检测到的威胁。
 
@@ -44,7 +44,7 @@ ms.locfileid: "71229407"
 
 ## <a name="how-to-investigate-incidents"></a>如何调查事件
 
-1. 选择 " **事件**"。 使用 " **事件** " 页，您可以了解有多少事件、打开的事件数、已设置为 **正在进行**的事件数以及已关闭的事件数。 对于每个事件，可以查看其发生时间以及事件的状态。 查看严重性，决定要首先处理哪些事件。
+1. 选择 "**事件**"。 使用 "**事件**" 页，您可以了解有多少事件、打开的事件数、已设置为**正在进行**的事件数以及已关闭的事件数。 对于每个事件，可以查看其发生时间以及事件的状态。 查看严重性，决定要首先处理哪些事件。
 
     ![查看事件严重性](media/tutorial-investigate-cases/incident-severity.png)
 
@@ -78,14 +78,14 @@ ms.locfileid: "71229407"
 
 使用调查图：
 
-1. 选择一个事件，然后选择 " **调查**"。 这会转到调查关系图。 Graph 提供直接连接到警报的实体的图示，以及每个关联的资源。
+1. 选择一个事件，然后选择 "**调查**"。 这会转到调查关系图。 Graph 提供直接连接到警报的实体的图示，以及每个关联的资源。
 
    > [!IMPORTANT] 
    > 如果在设置分析规则时使用了实体映射字段，则只能调查事件。 调查图要求您的原始事件包含实体。
 
    ![查看地图](media/tutorial-investigate-cases/map1.png)
 
-1. 选择一个实体以打开 " **实体** " 窗格，以便您可以查看有关该实体的信息。
+1. 选择一个实体以打开 "**实体**" 窗格，以便您可以查看有关该实体的信息。
 
     ![查看地图中的实体](media/tutorial-investigate-cases/map-entities.png)
   
@@ -97,7 +97,7 @@ ms.locfileid: "71229407"
 
     ![查看相关警报](media/tutorial-investigate-cases/related-alerts.png)
 
-1. 对于每个浏览查询，可以通过选择 "**事件\>** " 来选择用于打开原始事件结果和 Log Analytics 中所使用的查询的选项。
+1. 对于每个浏览查询，可以通过选择 "**事件 @ no__t-1**"，选择用于打开原始事件结果和 Log Analytics 中所使用的查询的选项。
 
 1. 为了理解事件，图形提供了一个并行时间线。
 

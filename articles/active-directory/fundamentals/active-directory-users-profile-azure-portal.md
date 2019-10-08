@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4002c14ed6340a0e1a89ee295d47c98436515775
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0c416d7279dd558b8a793064e295b7654925b1c8
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561770"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034889"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>使用 Azure Active Directory 添加或更新用户的配置文件信息
 使用 Azure Active Directory (Azure AD) 来添加用户配置文件信息，包括配置文件图片、工作特定信息和某些设置。 有关添加新用户的详细信息，请参阅[如何添加或删除 Azure Active Directory 中的用户](add-users-azure-active-directory.md)。
@@ -46,11 +46,11 @@ ms.locfileid: "68561770"
 
     - **设置。** 决定用户是否可以登录到 Azure Active Directory 租户。 此外可以指定用户的全局位置。
 
-    - **联系信息。** 为用户添加任何相关的联系信息。 例如，街道地址或移动电话号码。
+    - **联系信息。** 添加用户的任何相关联系信息，某些用户的电话或移动联系人信息除外（对于管理员角色中的用户，只有全局管理员才能更新）。
 
     - **身份验证联系人信息。** 验证此信息以确保用户的电话号码和电子邮件地址有效。 Azure Active Directory 使用此信息在登录期间确保用户为本人。 身份验证联系人信息只能由全局管理员更新。
 
-4. 选择**保存**。
+4. 选择“保存”。
 
     为用户保存所做的所有更改。
 

@@ -7,16 +7,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 9fac78f21f2f128ccb040e176891c33d39bf2820
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f443396627a4bbaba2a3eeb0a3ac05cc1597c85
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348842"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029287"
 ---
 # <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Azure 数据工厂映射数据流“新建分支”转换
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ![分支选项](media/data-flow/menu.png "菜单")
 

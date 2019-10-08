@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: ca0ac228bfe10992b658796d123c8dfbed74947f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948168"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035103"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>具有有序聚集列存储索引的性能优化  
 
@@ -43,7 +43,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> 在有序的 CCI 表中，不会自动对由 DML 或数据加载操作生成的新数据进行排序。  用户可以重新生成按序的 CCI 来对表中的所有数据进行排序。  
+> 在有序的 CCI 表中，不会自动对由 DML 或数据加载操作生成的新数据进行排序。  用户可以重新生成按序的 CCI 来对表中的所有数据进行排序。  在 Azure SQL 数据仓库中，列存储索引重新生成是一项脱机操作。  对于已分区的表，每次重新生成一个分区。  重新生成的分区中的数据处于 "脱机" 状态，并且在该分区的重建完成前不可用。 
 
 ## <a name="query-performance"></a>查询性能
 
@@ -84,11 +84,17 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 ## <a name="data-loading-performance"></a>数据加载性能
 
-将数据加载到有序的 CCI 表中的性能类似于将数据加载到已分区表中。  
-由于数据排序，将数据加载到有序的 CCI 表可能需要更多的时间，而不是将数据加载到无序的 CCI 表中。  
+将数据加载到有序的 CCI 表中的性能类似于已分区的表。  由于数据排序操作的原因，将数据加载到有序的 CCI 表中所用的时间可能比非顺序的  
 
 下面是将数据加载到具有不同架构的表中的性能比较示例。
-![Performance_comparison_data_loading @ no__t-1
+
+![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+
+
+下面是一个示例，用于查询性能与 CCI 和顺序的 CCI 之间的比较。
+
+![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/occi_query_performance.png)
+
  
 ## <a name="reduce-segment-overlapping"></a>减少分段重叠
 
@@ -116,7 +122,7 @@ OPTION (MAXDOP 1);
 1.  在目标大型表（称为表 A）上创建分区。
 2.  创建具有与表 A 相同的表和分区架构的空顺序 CCI 表（称为表 B）。
 3.  将一个分区从表 A 切换到表 B。
-4.  在表 B 上运行 ALTER INDEX < Ordered_CCI_Index > REBUILD 来重建已切换的分区。  
+4.  在表 B 上运行 ALTER INDEX < Ordered_CCI_Index > REBUILD PARTITION = < Partition_ID > 以重新生成已切换的分区。  
 5.  为表 A 中的每个分区重复步骤3和4。
 6.  将所有分区从表 A 切换到表 B 并重新生成后，删除表 A 并将表 B 重命名为表 A。 
 

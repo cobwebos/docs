@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0acd4c2793c7c13fb687f591d01e6d8753f71bdc
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 9b246fe9b09f2939663b4fb74ee1da703264d533
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181143"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028938"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight
 
@@ -177,7 +177,7 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 7. 单击“添加”按钮以保存此密钥和值，并单击“保存”按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存”。
 
-8. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”，并从右侧的“服务操作”下拉列表中选择“重启所有受影响项” ****  。 出现提示时，选择“确认全部重启” **** 。
+8. 在 Ambari web UI 中，从左侧列表中选择 "HDFS"，然后从右侧的 "服务操作" 下拉列表中选择 "**重新启动受影响的所有**操作"。 出现提示时，选择“确认全部重启”。
 
 9. 对 MapReduce2 和 YARN 重复此过程。
 

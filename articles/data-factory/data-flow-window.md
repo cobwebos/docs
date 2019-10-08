@@ -7,16 +7,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 6f3f06ff54fc76416ba63f4f09835897d546f8dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf58db14398026da62ed13c66be815be8fe166a2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61349626"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029901"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Azure 数据工厂窗口转换
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 在窗口转换中，将定义数据流中基于窗口的列的聚合。 在表达式生成器中，可以定义基于数据或时间窗口（SQL OVER 子句）的不同类型的聚合，如 LEAD、LAG、NTILE、CUMEDIST、RANK 等。 输出中将生成包含这些聚合的新字段。 还可以包含可选的分组字段。
 
@@ -39,7 +39,7 @@ Over 子句的另一部分是设置 ```Order By```。 该操作将设置数据�
 
 ![窗口选项](media/data-flow/windows6.png "窗口 6")
 
-## <a name="window-columns"></a>窗口的列
+## <a name="window-columns"></a>窗口列
 最后，使用表达式生成器定义你希望与数据窗口一起使用的聚合，例如 RANK、COUNT、MIN、MAX、DENSE RANK、LEAD 和 LAG 等。
 
 ![窗口选项](media/data-flow/windows7.png "窗口 7")
@@ -48,4 +48,4 @@ Over 子句的另一部分是设置 ```Order By```。 该操作将设置数据�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果您正在寻找简单的 group by 聚合，使用[聚合转换](data-flow-aggregate.md)
+如果正在查找简单的分组依据聚合，则使用[聚合转换](data-flow-aggregate.md)

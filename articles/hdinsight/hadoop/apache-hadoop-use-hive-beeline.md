@@ -2,17 +2,17 @@
 title: 将 Apache Beeline 与 Apache Hive 配合使用 - Azure HDInsight
 description: 了解如何使用 Beeline 客户端通过 Hadoop on HDInsight 运行 Hive 查询。 Beeline 是用于通过 JDBC 操作 HiveServer2 的实用工具。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/03/2019
-ms.author: hrasheed
-ms.openlocfilehash: 8a1bb4f0315be70cfe8debab0ee9eb1e4b576738
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.date: 10/03/2019
+ms.openlocfilehash: d6063daa649b507057fd2a4468c32dad1cd35eec
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181130"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030424"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>将 Apache Beeline 客户端与 Apache Hive 配合使用
 
@@ -46,7 +46,7 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>到 HDInsight 企业安全性套餐（ESP）群集使用 Kerberos
 
-将客户端从客户端连接到同一领域的同一领域中的计算机上的企业安全性套餐（ESP） Azure Active Directory 群集时，还必须指定域名称`<AAD-Domain>`以及域用户帐户的名称。访问群集`<username>`的权限：
+当从客户端连接到同一领域的同一领域内的计算机上的企业安全性套餐（ESP） Azure Active Directory 群集时，还必须指定域名 `<AAD-Domain>` 以及具有权限的域用户帐户的名称。访问群集 `<username>`：
 
 ```bash
 kinit <username>
@@ -59,7 +59,7 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 
 ### <a name="over-public-or-private-endpoints"></a>通过公共或专用终结点
 
-使用公共或专用终结点连接到群集时，必须提供群集登录帐户名（默认`admin`）和密码。 例如，使用 Beeline 从客户端系统连接到 `<clustername>.azurehdinsight.net` 地址。 此连接通过端口 `443` 建立，并使用 SSL 进行加密：
+使用公共或专用终结点连接到群集时，必须提供群集登录帐户名（默认 `admin`）和密码。 例如，使用 Beeline 从客户端系统连接到 `<clustername>.azurehdinsight.net` 地址。 此连接通过端口 `443` 建立，并使用 SSL 进行加密：
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
@@ -81,7 +81,7 @@ Apache Spark 提供自己的 HiveServer2 实现（有时称为 Spark Thrift 服�
 
 #### <a name="through-public-or-private-endpoints"></a>通过公共或专用终结点
 
-使用的连接字符串略有不同。 它是 `httpPath/sparkhive2`，不包含 `httpPath=/hive2`：
+使用的连接字符串略有不同。 不包含 `httpPath=/hive2` @no__t：
 
 ```bash 
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
@@ -111,13 +111,11 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
-* 请记下群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 例如，对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储启用安全传输，则 URI 为`wasbs://`。 有关详细信息，请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
+* 请记下群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 例如，对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储启用安全传输，则 URI 为 `wasbs://`。 有关详细信息，请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
-
-* 选项 1：SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 本文档中的大多数步骤都假定从与群集的 SSH 会话中使用 Beeline。
+* 选项 1：SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 本文档中的大多数步骤都假设使用的是从 SSH 会话到群集的 Beeline。
 
 * 选项 2：本地 Beeline 客户端。
-
 
 ## <a id="beeline"></a>运行 Hive 查询
 
@@ -137,7 +135,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 3. Beeline 命令以 `!` 字符开头，例如，`!help` 会显示帮助。 但是，`!` 对于某些命令可以省略。 例如，`help` 也是有效的。
 
-    有一个 `!sql`，用于执行 HiveQL 语句。 但是，由于 HiveQL 非常流行，因此可以省略前面的 `!sql`。 以下两个语句等效：
+    @No__t-0，用于执行 HiveQL 语句。 但是，由于 HiveQL 非常流行，因此可以省略前面的 `!sql`。 以下两个语句等效：
 
     ```hiveql
     !sql show tables;
@@ -193,7 +191,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     这些语句将执行以下操作：
 
-    * `DROP TABLE` - 如果表存在，则将其删除。
+    * `DROP TABLE`-如果表存在，则将其删除。
 
     * `CREATE EXTERNAL TABLE` - 在 Hive 中创建一个**外部**表。 外部表只会在 Hive 中存储表定义。 数据将保留在原始位置。
 
@@ -255,7 +253,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     这些语句将执行以下操作：
 
-   * **CREATE TABLE IF NOT EXISTS** - 创建表（如果该表尚不存在）。 因为未使用 **EXTERNAL** 关键字，此语句创建内部表。 内部表存储在 Hive 数据仓库中，由 Hive 全权管理。
+   * **CREATE TABLE （如果不存在**）-如果该表尚不存在，则创建它。 由于不使用**EXTERNAL**关键字，所以此语句创建一个内部表。 内部表存储在 Hive 数据仓库中，由 Hive 全权管理。
    * **STORED AS ORC**：以优化行纵栏表 (ORC) 格式存储数据。 ORC 格式是高度优化且有效的 Hive 数据存储格式。
    * **INSERT OVERWRITE ...SELECT**- 从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，然后将数据插入 **errorLogs** 表中。
 
@@ -290,9 +288,6 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (1.538 seconds)
 
-
-
-
 ## <a id="summary"></a><a id="nextsteps"></a>后续步骤
 
 有关 HDInsight 中 Hive 的更多常规信息，请参阅以下文档：
@@ -303,26 +298,3 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 * [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[apache-tez]: https://tez.apache.org
-[apache-hive]: https://hive.apache.org/
-[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
-[hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-
-
-[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
-
-[putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
-
-
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-
-
-[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx

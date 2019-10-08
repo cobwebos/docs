@@ -92,8 +92,6 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: 附加或分离共享映像库
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-            - name: 在模板 VM 上启用嵌套虚拟化
-              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: 创建和配置课堂实验室（讲师）
           items:
             - name: 创建和管理教室实验室
@@ -112,6 +110,8 @@
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
             - name: 设置或重置虚拟机的密码
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: 在模板 VM 上启用嵌套虚拟化
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: 连接到课堂实验室中的 VM（学生）
           items:
             - name: 访问教室实验室

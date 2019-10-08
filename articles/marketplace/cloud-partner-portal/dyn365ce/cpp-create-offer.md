@@ -1,39 +1,21 @@
 ---
-title: 创建 Dynamics 365 for Customer Engagement 应用程序产品/服务 |Azure Marketplace
-description: 如何在 AppSource 市场上创建新的 Dynamics 365 for Customer Engagement 应用程序产品/服务。
+title: 为客户参与应用程序产品/服务创建 Dynamics 365 |Azure Marketplace
+description: 弃用此 CPP 文章并指向电脑文章"如何在 AppSource Marketplace 上为客户参与应用程序产品/服务创建新的 Dynamics 365。"
 services: Dynamics 365 for Customer Engagement Offer, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/21/2018
-ms.author: pabutler
-ms.openlocfilehash: ebfef673102878e50f744081ec9b46fd4cd1796b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 1682abd3983d3e090b59e6452c4761913e29da3d
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942696"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034346"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>创建 Dynamics 365 for Customer Engagement 应用程序产品/服务
 
-本节介绍如何为 AppSource 市场创建和发布 Dynamics 365 for Customer Engagement 应用程序产品/服务。 每个产品/服务在市场中显示为其自己的实体，并且由以下各组资产和支持服务组成：产品/服务详细信息、包技术信息、市场营销项目、支持信息和（可选）体验版规范。 
+[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持创建和管理 Dynamics 365 Customer Engagement 产品/服务。 相反，此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[创建新的 Dynamics 365 For Customer Engagement & PowerApps 产品](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)/服务。
 
-
-## <a name="new-offer-form"></a>“新建套餐”窗体
-
-登录到[云合作伙伴门户](https://cloudpartner.azure.com/)，然后在左侧菜单栏中选择“+ 新建产品/服务”  。 在“新建产品/服务”菜单上，选择“Dynamics 365 for Customer Engagement”  ：
-
-![Dynamics 365 for Customer Engagement 应用程序的“新建产品/服务”菜单项](./media/new-dyn365ce-menu-item.png)
-
-系统显示“新建产品/服务”窗体，其中显示最初的[“产品/服务设置”选项卡](./cpp-offer-settings-tab.md)   。
-
-
-## <a name="next-steps"></a>后续步骤
-
-“新建产品/服务”页提供了一组选项卡和表单域，用于创建新的产品/服务  。 以下文章介绍如何为新的产品/服务定义资产组和支持信息。
-
-* [“产品/服务设置”选项卡](./cpp-offer-settings-tab.md)
-* [“技术信息”选项卡](./cpp-technical-info-tab.md)
-* [“体验版”选项卡](./cpp-testdrive-tab.md)
-* [“店面详细信息”选项卡](./cpp-storefront-details-tab.md)
-* [“联系人”选项卡](./cpp-contacts-tab.md)
+在为 Customer Engagement 产品/服务创建新的 Dynamics 365 之前，应阅读[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然后在选中 "**概述**" 页的情况下打开 "[商业市场" 仪表板](https://partner.microsoft.com/dashboard/directory)。 按照[创建新的 Dynamics 365 For Customer Engagement & PowerApps 产品](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)/服务中的说明创建产品/服务。

@@ -7,16 +7,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348528"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029319"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>映射数据流联接转换
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 在数据流中使用联接来组合两个表中的数据。 单击将成为左侧关系的转换，并从工具箱中添加一个“联接”转换。 在“联接”转换内，你将从数据流中选择要成为右侧关系的另一个数据流。
 
@@ -24,11 +24,11 @@ ms.locfileid: "61348528"
 
 ## <a name="join-types"></a>联接类型
 
-选择联接类型是必需的联接转换。
+对于联接转换，选择 "联接类型" 是必需的。
 
 ### <a name="inner-join"></a>内部联接
 
-内部联接将通过与两个表中的列条件匹配的行。
+内部联接将仅传递与两个表中的列条件相匹配的行。
 
 ### <a name="left-outer"></a>左外部
 
@@ -40,11 +40,11 @@ ms.locfileid: "61348528"
 
 ### <a name="full-outer"></a>完全外部
 
-完全外部生成的所有列和行与列的 NULL 值两侧不存在其他表中。
+完全外部生成的所有列和行均为空值，对于其他表中不存在的列。
 
 ### <a name="cross-join"></a>交叉联接
 
-使用表达式指定的两个流的叉积。 您可以用于创建自定义联接条件。
+使用表达式指定两个流的叉积。 您可以使用此来创建自定义联接条件。
 
 ## <a name="specify-join-conditions"></a>指定联接条件
 
@@ -54,11 +54,11 @@ ms.locfileid: "61348528"
 
 ## <a name="join-performance-optimizations"></a>联接性能优化
 
-与 SSIS 等工具中的“合并联接”不同，ADF 数据流中的联接不是必需的合并联接操作。 因此，不需要首先对联接键进行排序。 联接操作将使用 Databricks 基于 Spark 中的最佳联接操作在 Spark 中进行：广播 / 端映射联接：
+与 SSIS 等工具中的“合并联接”不同，ADF 数据流中的联接不是必需的合并联接操作。 因此，不需要首先对联接键进行排序。 联接操作将基于 Spark 中的最佳联接操作进行：广播 / 端映射联接：
 
 ![“联接”转换优化](media/data-flow/joinoptimize.png "联接优化")
 
-如果数据集可以容纳在 Databricks 辅助角色节点内存中，则我们可以优化你的联接性能。 你还可以在联接操作中指定数据分区，以创建能够更好地容纳到每个辅助角色的内存中的数据集。
+如果可以将数据集装入工作节点内存，则可以优化联接性能。 你还可以在联接操作中指定数据分区，以创建能够更好地容纳到每个辅助角色的内存中的数据集。
 
 ## <a name="self-join"></a>自联接
 
@@ -68,10 +68,10 @@ ms.locfileid: "61348528"
 
 在上面的关系图中，“选择”转换位于顶部。 它所做的所有工作就是将原始流的别名指定为“OrigSourceBatting”。 在它下方突出显示的“联接”转换中，你可以看到我们将此“选择别名”流用作右侧联接，以便可以在内部联接的左侧和右侧引用同一个键。
 
-## <a name="composite-and-custom-keys"></a>组合键和自定义
+## <a name="composite-and-custom-keys"></a>复合和自定义键
 
-内部联接转换动态，您可以构建自定义和复合键。 添加行对于每个关系行旁边的加号 （+） 的其他联接列。 或计算动态上联接值表达式生成器中的一个新的密钥值。
+您可以在联接转换内进行动态构建自定义键和组合键。 为其他联接列添加行，每个关系行旁边有一个加号（+）。 或在 "表达式生成器" 中为动态联接值计算一个新键值。
 
 ## <a name="next-steps"></a>后续步骤
 
-加入后的数据，然后，可以[创建新列](data-flow-derived-column.md)并[到目标数据存储接收器数据](data-flow-sink.md)。
+联接数据后，可以[创建新列](data-flow-derived-column.md)并将[数据接收到目标数据存储](data-flow-sink.md)。

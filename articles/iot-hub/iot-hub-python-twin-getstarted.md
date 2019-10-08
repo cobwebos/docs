@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 565330528638bb6c8e0458a9761e2cf9fa4e3d2a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 729371ede8df3dc21f70bc5742de52f2be874507
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001486"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029998"
 ---
 # <a name="get-started-with-device-twins-python"></a>设备孪生入门 (Python)
 
@@ -47,16 +47,16 @@ ms.locfileid: "71001486"
 
 ## <a name="create-the-service-app"></a>创建服务应用
 
-在本部分中，将创建一个 Python 控制台应用，用于将位置元数据添加到与 **{DEVICE ID}** 关联的设备克隆中。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
+在本部分中，将创建一个 Python 控制台应用，该应用将位置元数据添加到与 **{Device ID}** 关联的设备孪生。 然后，该应用将选择位于 Redmond 的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
 
-1. 在工作目录中，打开命令提示符，并安装**用于 Python 的 Azure IoT 中心服务 SDK**。
+1. 在工作目录中，打开命令提示符并安装安装适用于 Python 的 Azure IoT 中心服务 SDK。
 
    ```cmd/sh
    pip install azure-iothub-service-client
    ```
 
    > [!NOTE]
-   > 适用于 azure iothub 的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac 操作系统，请参阅[准备适用于 Python 的开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)一文中特定于 Linux 和 Mac 操作系统的部分。
+   > azure-iothub-service-client 的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac 操作系统，请参阅[准备适用于 Python 的开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)一文中特定于 Linux 和 Mac 操作系统的部分。
    >
 
 2. 使用文本编辑器，新建一个 **AddTagsAndQuery.py** 文件。
@@ -70,7 +70,7 @@ ms.locfileid: "71001486"
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. 添加以下代码。 将`[IoTHub Connection String]`替换为在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。 将`[Device Id]`替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
+4. 添加以下代码。 将 `[IoTHub Connection String]` 替换为在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。 将 `[Device Id]` 替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -171,7 +171,7 @@ ms.locfileid: "71001486"
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. 添加以下代码。 将占位符值替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。 `[IoTHub Device Connection String]`
+4. 添加以下代码。 将 `[IoTHub Device Connection String]` 占位符值替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -187,7 +187,7 @@ ms.locfileid: "71001486"
             print(patch)
 
     def iothub_client_init():
-        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+        client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
         return client
 
     def iothub_client_sample_run():

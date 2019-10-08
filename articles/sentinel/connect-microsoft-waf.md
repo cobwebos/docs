@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9d85b5a72c2e37719348d61250d167eb9a5688a1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: e7dc1e6c1bb1ca81ada59cb3dae8fecbc6452b7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240020"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029785"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>连接来自 Microsoft web 应用程序防火墙的数据
 
@@ -40,10 +40,10 @@ ms.locfileid: "71240020"
     
 1. 在 Azure Sentinel 门户中，选择 "**数据连接器**"。
 1. 在 "数据连接器" 页上，选择 " **WAF** " 磁贴。
-1. 中转到 "[应用程序网关资源](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) "，然后选择你的 WAF。
-    1. 选择 " **诊断设置**"。
-    1. 选择表下的 " **+ 添加诊断设置**"。
-    1. 在 " **诊断设置**" 页中，键入 **名称**，然后选择 " **发送到 Log Analytics**"。
+1. 请参阅[应用程序网关资源](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways)@no__t 1AND 选择 WAF。
+    1. 选择“诊断设置”。
+    1. 选择表下的 " **+ 添加诊断设置**"。
+    1. 在 "**诊断设置**" 页中，键入**名称**，然后选择 "**发送到 Log Analytics**"。
     1. 在**Log Analytics 工作区**中，选择 Azure Sentinel 工作区。
     1. 选择要分析的日志类型。 建议使用：ApplicationGatewayAccessLog 和 ApplicationGatewayFirewallLog。
 1. 若要在 Microsoft web 应用程序防火墙警报 Log Analytics 中使用相关架构，请搜索**AzureDiagnostics**。

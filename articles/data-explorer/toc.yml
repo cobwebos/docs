@@ -43,11 +43,29 @@
     - name: 引入数据
       items:
         - name: 事件中心
-          href: ingest-data-event-hub.md
+          items:
+            - name: Azure 门户
+              href: ingest-data-event-hub.md
+            - name: Python
+              href: data-connection-event-hub-python.md
+            - name: 'C#'
+              href: data-connection-event-hub-csharp.md
         - name: 事件网格
-          href: ingest-data-event-grid.md
+          items:
+            - name: Azure 门户
+              href: ingest-data-event-grid.md
+            - name: Python
+              href: data-connection-event-grid-python.md
+            - name: 'C#'
+              href: data-connection-event-grid-csharp.md
         - name: IoT 中心
-          href: ingest-data-iot-hub.md
+          items:
+            - name: Azure 门户
+              href: ingest-data-iot-hub.md
+            - name: Python
+              href: data-connection-iot-hub-python.md
+            - name: 'C#'
+              href: data-connection-iot-hub-csharp.md
         - name: 一键式引入
           href: ingest-data-one-click.md
         - name: 流式引入

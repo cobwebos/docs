@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 0f64642d04504770415c0d2243ec77b44bde05f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fbc4628ff3d3d7d90f7ec2c47c87f7afa3e9cd43
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566293"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028835"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异
 
@@ -82,9 +82,9 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 ### <a name="about-the-applies-to-tags"></a>有关“适用于”标记
 
-Transact-SQL 参考包含从 SQL Server 2008 到最新版本的相关文章。 文章标题下面有一个图标栏，其中列出了四个 SQL Server 平台，并指明了适用性。 例如，SQL Server 2012 中引入了可用性组。  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) 一文指明该语句适用于 **SQL Server（从版本 2012 开始）** 。 该语句不适用于 SQL Server 2008、SQL Server 2008 R2、Azure SQL 数据库、Azure SQL 数据仓库或并行数据仓库。
+Transact-SQL 参考包含从 SQL Server 2008 到最新版本的相关文章。 文章标题下面有一个图标栏，其中列出了四个 SQL Server 平台，并指明了适用性。 例如，SQL Server 2012 中引入了可用性组。  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) article 指示该语句应用于**SQL Server （从2012开始）** 。 该语句不适用于 SQL Server 2008、SQL Server 2008 R2、Azure SQL 数据库、Azure SQL 数据仓库或并行数据仓库。
 
-在某些情况下, 可以在产品中使用文章的一般主题, 但产品之间存在细微的差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 在某些情况下, 可以在产品中使用文章的一般主题, 但产品之间存在细微的差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 例如，CREATE TRIGGER 文章在 SQL 数据库中可用。 但服务器级触发器的 **ALL SERVER** 选项指示不能在 SQL 数据库中使用服务器级触发器。 请改用数据库级触发器。
+在某些情况下，产品中可能使用了某篇文章的常规主旨，但产品之间存在细微差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 在某些情况下，产品中可能使用了某篇文章的常规主旨，但产品之间存在细微差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 例如，CREATE TRIGGER 文章在 SQL 数据库中可用。 但服务器级触发器的 **ALL SERVER** 选项指示不能在 SQL 数据库中使用服务器级触发器。 请改用数据库级触发器。
 
 ## <a name="next-steps"></a>后续步骤
 

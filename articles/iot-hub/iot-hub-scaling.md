@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 8d7bb201a9d01725f933105a4a0beb85c82ca105
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203710"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023640"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
 
@@ -39,7 +39,7 @@ IoT 中心的标准层启用了所有功能，是任何需要使用双向通信�
 | ---------- | ---------- | ------------- |
 | [设备到云的遥测](iot-hub-devguide-messaging.md) | 是 | 是 |
 | [每设备标识](iot-hub-devguide-identity-registry.md) | 是 | 是 |
-| [消息路由](iot-hub-devguide-messages-read-custom.md)和[事件网格集成](iot-hub-event-grid.md) | 是 | 是 |
+| [消息路由](iot-hub-devguide-messages-read-custom.md)、[消息根据](iot-hub-message-enrichments-overview.md)和[事件网格集成](iot-hub-event-grid.md) | 是 | 是 |
 | [HTTP、AMQP 和 MQTT 协议](iot-hub-devguide-protocols.md) | 是 | 是 |
 | [设备预配服务](../iot-dps/about-iot-dps.md) | 是 | 是 |
 | [监视和诊断](iot-hub-monitor-resource-health.md) | 是 | 是 |
@@ -112,17 +112,17 @@ IoT 中心基本层和标准层所支持的功能存在差异，也就是说，�
 * 云到设备的消息
 * 标识注册表操作
 
-每个单位为 IoT 中心衡量流量。 创建 IoT 中心时，选择其层和版本，并设置可用的单位数。 对于 B1、B2、S1 或 S2 版，最多可购买200单位，对于 B3 或 S3 edition，最多可购买10个单位。 创建 IoT 中心后，可以更改其版本中可用的单位数，在其层中的各版本之间进行升级或降级（B1 到 B2），或从基本层升级到标准层（B1 到 S1），而不会中断现有的操作。 有关详细信息，请参阅[如何升级 IoT 中心](iot-hub-upgrade.md)。  
+IoT 中心的流量按单元进行度量。 创建 IoT 中心时，请选择其层级和版本，并设置可用的单元数。 对于 B1、B2、S1 或 S2 版本，最多可以购买 200 个单元；对于 B3 或 S3 版本，最多可以购买 10 个单元。 创建 IoT 中心后，可以更改其版本中可用的单元数、在其层级中的各版本之间进行升级或降级（B1 到 B2），或从基本层级升级到标准层级（B1 到 S1），而不会中断现有的操作。 有关详细信息，请参阅[如何升级 IoT 中心](iot-hub-upgrade.md)。  
 
 例如，就每个层的流量功能来说，设备到云的消息遵循以下持续吞吐量指导原则：
 
-| 层版本 | 持续吞吐量 | 持续发送速率 |
+| 层级版本 | 持续吞吐量 | 持续发送速率 |
 | --- | --- | --- |
 | B1、S1 |每个单元最多 1111 KB/分钟<br/>（1.5 GB/天/单元） |每个单元平均 278 条消息/分钟<br/>（400000 条消息/天/单元） |
 | B2、S2 |每个单元最多 16 MB/分钟<br/>（22.8 GB/天/单元） |每个单元平均 4,167 条消息/分钟<br/>（600 万条消息/天/单元） |
 | B3、S3 |每个单元最多 814 MB/分钟<br/>（1144.4 GB/天/单元） |每个单元平均 208,333 条消息/分钟<br/>（3 亿条消息/天/单元） |
 
-从设备到云的吞吐量只是设计 IoT 解决方案时需要考虑的一个指标。 有关更全面的信息，请参阅[IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
+设备到云的吞吐量只是设计 IoT 解决方案时需要考虑的指标之一。 有关更全面的信息，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
 
 ### <a name="identity-registry-operation-throughput"></a>标识注册表操作吞吐量
 
@@ -136,6 +136,6 @@ IoT 中心基本层和标准层所支持的功能存在差异，也就是说，�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 IoT 中心功能和性能详细信息的详细信息，请参阅[Iot 中心定价](https://azure.microsoft.com/pricing/details/iot-hub)或[iot 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
+* 若要详细了解 IoT 中心功能和性能，请参阅 [IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub)或 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
 
 * 若要更改 IoT 中心层，请执行[升级 IoT 中心](iot-hub-upgrade.md)中的步骤。

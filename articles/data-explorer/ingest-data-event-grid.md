@@ -7,14 +7,19 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 3c2407472cd15326c295f70c69606fc5ee663f72
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
-ms.translationtype: HT
+ms.openlocfilehash: 9557923fc2228e8508acaa7e15d1729ac3d29538
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996795"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028379"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>通过订阅事件网格通知将 Blob 引入 Azure 数据资源管理器
+
+> [!div class="op_single_selector"]
+> * [门户](ingest-data-event-grid.md)
+> * [C#](data-connection-event-grid-csharp.md)
+> * [Python](data-connection-event-grid-python.md)
 
 Azure 数据资源管理器是一项快速且可缩放的数据探索服务，适用于日志和遥测数据。 它可以持续从写入到 Blob 容器中的 Blob 引入数据（数据加载）。 
 
@@ -38,7 +43,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
     **设置** | **建议的值** | **字段说明**
     |---|---|---|
-    | 姓名 | *test-grid-connection* | 要创建的事件网格的名称。|
+    | 名称 | *test-grid-connection* | 要创建的事件网格的名称。|
     | 事件架构 | *事件网格架构* | 事件网格要使用的架构。 |
     | 主题类型 | *存储帐户* | 事件网格主题的类型。 |
     | 主题资源 | *gridteststorage* | 你的存储帐户的名称。 |

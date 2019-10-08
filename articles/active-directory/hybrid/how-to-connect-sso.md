@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86895ab315784c49c2b240badb249dce57ae958a
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 7791e7b50a963d2f92a2cbc460e36f9e83bb1b52
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622559"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025697"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 
@@ -53,8 +53,8 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 - 登录用户名可以是本地默认用户名 (`userPrincipalName`)，也可以是 Azure AD Connect 中配置的另一个属性 (`Alternate ID`)。 两种用例均可运行，因为无缝 SSO 使用 Kerberos 票证中的 `securityIdentifier` 声明，在 Azure AD 中查找相应的用户对象。
 - 无缝 SSO 是个机会型功能。 如果由于任何原因失败，用户登录体验将回退到其常规行为 - 即用户将需要在登录页面上输入其密码。
-- 如果某个应用程序 (例如, `https://myapps.microsoft.com/contoso.com`) 在其`domain_hint` Azure AD 登录请求中转发`whr` (OpenID connect) 或 (SAML `login_hint` ) 参数 (标识租户) 或参数标识用户, 则用户将自动登录, 无需输入用户名或密码。
-- 如果某个应用程序 (例如`https://contoso.sharepoint.com`,) 将登录请求发送到 Azure AD 的终结点设置为租户-即, `https://login.microsoftonline.com/contoso.com/<.>`或`https://login.microsoftonline.com/<tenant_ID>/<.>` -而不是 Azure AD 公用终结点, `https://login.microsoftonline.com/common/<...>`则用户还可获得无提示登录体验.
+- 如果某个应用程序（例如 `https://myapps.microsoft.com/contoso.com`）转发 `domain_hint` （OpenID Connect）或 `whr` （SAML）参数（标识租户）或 @no__t 3 参数标识用户，则在其 Azure AD 登录请求中，将自动登录用户而不使用这些用户输入用户名或密码。
+- 如果某个应用程序（例如 `https://contoso.sharepoint.com`）将登录请求发送到设置为租户的 Azure AD 终结点（即，@no__t 为 "-1" 或 "`https://login.microsoftonline.com/<tenant_ID>/<..>`"，而不是 Azure AD 的常见终结点，即 @no__t），则用户也会获得无提示登录体验。
 - 支持注销。 这可以让用户选择另一个 Azure AD 帐户进行登录，而不是自动使用无缝 SSO 自动登录。
 - 使用非交互式流支持版本为 16.0.8730.xxxx 及更高版本的 Office 365 Win32 客户端（Outlook、Word、Excel 等）。 对于 OneDrive，必须激活 [OneDrive 无提示配置功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)才能获得无提示登录体验。
 - 可通过 Azure AD Connect 启用它。
@@ -63,7 +63,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 | 操作系统\浏览器 |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|是\*|否|是|是\*\*\*|不可用
+|Windows 10|是\*|是|是|是\*\*\*|不可用
 |Windows 8.1|是\*|不可用|是|是\*\*\*|不可用
 |Windows 8|是\*|不可用|是|是\*\*\*|不可用
 |Windows 7|是\*|不可用|是|是\*\*\*|不可用

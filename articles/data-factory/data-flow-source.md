@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 16bc4c2651d5571bce823aa9c69f823d7fede8af
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c3c24e9dc674ac29c8ca4d0d445cc3f572cda71e
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801630"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029197"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>映射数据流的源转换 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 源转换为数据流配置数据源。 在设计数据流时，第一步将始终配置源转换。 若要添加源，请在数据流画布中单击 "**添加源**" 框。
 
@@ -62,7 +62,7 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 
 如果你使用的是基于文件的数据集（例如 Azure Blob 存储或 Azure Data Lake Storage），则 "**源选项**" 选项卡可让你管理源读取文件的方式。
 
-![源选项](media/data-flow/sourceOPtions1.png "源选项")
+![Source options](media/data-flow/sourceOPtions1.png "源选项")
 
 **通配符路径：** 使用通配符模式将指示 ADF 通过单个源转换循环遍历每个匹配的文件夹和文件。 这是在单个流中处理多个文件的有效方法。 添加多个通配符匹配模式，并在将鼠标悬停在现有通配符模式上时显示的 + 符号。
 
@@ -70,16 +70,16 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 
 通配符示例：
 
-* ```*```表示任意字符集
-* ```**```表示递归目录嵌套
-* ```?```替换一个字符
-* ```[]```匹配括号中的一个或多个字符
+* ```*``` 表示任意字符集
+* ```**``` 表示递归目录嵌套
+* ```?``` 替换一个字符
+* ```[]``` 匹配括号中的一个或多个字符
 
-* ```/data/sales/**/*.csv```获取/data/sales 下的所有 csv 文件。
-* ```/data/sales/20??/**```获取20世纪的所有文件
-* ```/data/sales/2004/*/12/[XY]1?.csv```获取2004年12月的所有 csv 文件，以两位数为前缀的 X 或 Y 开头
+* ```/data/sales/**/*.csv``` 获取/data/sales 下的所有 csv 文件。
+* ```/data/sales/20??/**``` 获取20世纪的所有文件
+* ```/data/sales/2004/*/12/[XY]1?.csv``` 从以两位数为前缀的 X 或 Y 开始，获取2004年12月的所有 csv 文件。
 
-**分区根路径：** 如果文件源```key=value```中的分区文件夹的格式（例如 year = 2019）已分区，则可以将该分区文件夹树的顶层分配给数据流数据流中的列名称。
+**分区根路径：** 如果文件源中的分区文件夹采用 @no__t 0 格式（例如，year = 2019），则可以将该分区文件夹树的顶层分配给数据流数据流中的列名称。
 
 首先，设置一个通配符，以包括所有作为分区文件夹的路径，以及要读取的叶文件。
 
@@ -120,23 +120,23 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 
 所有源设置都可以使用[映射数据流的转换表达式语言](data-flow-expression-functions.md)指定为表达式。 若要添加动态内容，请在 "设置" 面板中的字段内单击或悬停。 单击 "**添加动态内容**" 的超链接。 这将启动表达式生成器，可在其中使用表达式、静态文本值或参数动态设置值。
 
-![参数](media/data-flow/params6.png "参数")
+![Parameters](media/data-flow/params6.png "参数")
 
 ## <a name="sql-source-options"></a>SQL 源选项
 
 如果源在 SQL 数据库或 SQL 数据仓库中，则 "**源选项**" 选项卡中还提供了其他特定于 SQL 的设置。 
 
-**送**选择是将源指向表（等效于```Select * from <table-name>```）还是输入自定义 SQL 查询。
+**送**选择是将源指向某个表（等效于 ```Select * from <table-name>```）还是输入自定义 SQL 查询。
 
 **查询**：如果在 "输入" 字段中选择 "查询"，请为源输入 SQL 查询。 此设置将重写您在数据集中选择的任何表。 此处不支持**Order By**子句，但你可以设置完整的 SELECT FROM 语句。 你还可以使用用户定义的表函数。 **select * From udfGetData （）** 是返回表的 SQL 中的 UDF。 此查询将生成可以在数据流中使用的源表。
 
 **批大小**：输入批大小，将大数据分成多个读取。
 
 **隔离级别**：映射数据流中的 SQL 源默认值为 "未提交读"。 可以将此处的隔离级别更改为以下值之一：
-* 提交读
+* 已提交读
 * 未提交读
-* 可重复读
-* 可串行
+* 可重复的读取
+* 序列
 * 无（忽略隔离级别）
 
 ![隔离级别](media/data-flow/isolationlevel.png "隔离级别")
@@ -145,7 +145,7 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 
 与数据集中的架构一样，源中的投影定义源数据中的数据列、类型和格式。 对于大多数数据集类型（例如 SQL 和 Parquet），源中的投影是固定的，以反映数据集中定义的架构。 如果源文件不是强类型的（例如，平面 csv 文件而不是 Parquet 文件），则可以定义源转换中每个字段的数据类型。
 
-!["投影" 选项卡上的设置](media/data-flow/source3.png "投影")
+![投影选项卡投影上的设置](media/data-flow/source3.png "")
 
 如果文本文件没有定义的架构，请选择 "**检测数据类型**"，以便数据工厂将采样并推断数据类型。 选择 "**定义默认格式**" 以自动检测默认数据格式。 
 
@@ -167,7 +167,7 @@ Azure 数据工厂可访问超过80个本机连接器。 若要在数据流中�
 
 您可以选择基于查询对连接进行分区。 输入 WHERE 谓词的内容。 例如，输入 year > 1980。
 
-有关映射数据流中优化的详细信息，请参阅 "[优化" 选项卡](concepts-data-flow-optimize-tab.md)。
+有关映射数据流中的优化的详细信息，请参阅 "[优化" 选项卡](concepts-data-flow-overview.md#optimize)。
 
 ## <a name="next-steps"></a>后续步骤
 

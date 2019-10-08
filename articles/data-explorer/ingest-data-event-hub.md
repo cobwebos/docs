@@ -7,14 +7,19 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: a0568d3c3258fe082fe8451820fe7a25390cfe78
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
-ms.translationtype: HT
+ms.openlocfilehash: 102cfa81c6093ff1aeefdd8d1937143a25cf76f5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996771"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028494"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
+
+> [!div class="op_single_selector"]
+> * [门户](ingest-data-event-hub.md)
+> * [C#](data-connection-event-hub-csharp.md)
+> * [Python](data-connection-event-hub-python.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本文中，将创建事件中心，从 Azure 数据资源管理器中连接到该事件中心，并查看通过系统的数据流。
 
@@ -42,7 +47,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     “部署到 Azure”按钮将转到 Azure 门户以填写部署窗体。
 
-    ![部署到 Azure](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![“部署到 Azure”](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. 选择要在其中创建事件中心的订阅，并创建名为 test-hub-rg 的资源组。
 

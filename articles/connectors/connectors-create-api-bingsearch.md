@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 61004ed75a1935ada21b5c620a909fb5289aebb8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f7558a5836d8f087e719346fb38bbf24ece2c8fb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050997"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026765"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>使用必应搜索和 Azure 逻辑应用查找新闻
 
@@ -54,13 +54,13 @@ ms.locfileid: "70050997"
 
    对于此示例，请提供从必应搜索返回匹配的新闻文章的条件。
 
-   | 属性 | 必填 | Value | 描述 |
+   | 属性 | 需要 | Value | 描述 |
    |----------|----------|-------|-------------|
    | Search Query | 是 | <search-words> | 输入要使用的搜索关键字。 |
    | Market | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
    | Safe Search | 是 | <search-level> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
    | Count | 否 | <results-count> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
-   | 偏移量 | 否 | <skip-value> | 返回结果前要跳过的结果数 |
+   | Offset | 否 | <skip-value> | 返回结果前要跳过的结果数 |
    |||||
 
    例如：
@@ -69,7 +69,7 @@ ms.locfileid: "70050997"
 
 4. 选择希望触发器检查结果的时间间隔和频率。
 
-5. 完成后, 请在设计器工具栏上选择 "**保存**"。
+5. 完成后，请在设计器工具栏上选择“保存”。
 
 6. 现在请继续向逻辑应用添加一个或多个操作，以便完成需对触发器结果执行的任务。
 
@@ -81,7 +81,7 @@ ms.locfileid: "70050997"
 
 1. 在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 此示例使用 Azure 门户。
 
-2. 在触发器或操作下, 选择 "**新建步骤** > " "**添加操作**"。
+2. 在 "触发器" 或 "操作" 下，选择 "**新建步骤** > **添加操作**"。
 
    此示例使用以下触发器：
 
@@ -105,19 +105,19 @@ ms.locfileid: "70050997"
 
    对于此示例，提供返回触发器结果子集的条件。
 
-   | 属性 | 必填 | Value | 描述 |
+   | 属性 | 需要 | Value | 描述 |
    |----------|----------|-------|-------------|
    | Search Query | 是 | <search-expression> | 输入用于查询触发器结果的表达式。 可以从动态内容列表的字段中进行选择，或使用表达式生成器创建表达式。 |
    | Market | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
    | Safe Search | 是 | <search-level> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
    | Count | 否 | <results-count> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
-   | 偏移量 | 否 | <skip-value> | 返回结果前要跳过的结果数 |
+   | Offset | 否 | <skip-value> | 返回结果前要跳过的结果数 |
    |||||
 
    例如，假设需要类别名称包含单词“tech”的结果。
 
    1. 在“搜索查询”框中单击，以显示动态内容列表。 
-   从该列表中选择 "**表达式**", 以便显示 "表达式生成器"。 
+   从该列表中选择 "**表达式**"，以便显示 "表达式生成器"。 
 
       ![必应搜索触发器](./media/connectors-create-api-bing-search/bing-search-action.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "70050997"
 
       `"@{contains(triggerBody()?['category'],'tech')}"`
 
-5. 完成后, 请在设计器工具栏上选择 "**保存**"。
+5. 完成后，请在设计器工具栏上选择“保存”。
 
 <a name="create-connection"></a>
 
@@ -152,7 +152,7 @@ ms.locfileid: "70050997"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | 属性 | 必填 | Value | 描述 |
+   | 属性 | 需要 | Value | 描述 |
    |----------|----------|-------|-------------|
    | 连接名称 | 是 | <*connection-name*> | 为连接创建的名称 |
    | API 版本 | 是 | <API-version> | 默认情况下，必应搜索 API 版本设置为当前版本。 可以根据需要选择早期版本。 |

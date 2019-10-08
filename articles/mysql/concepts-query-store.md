@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: e938baa21f9d2351b3270f4fa2411bf8ecb547d4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: bac270dc0d49c0eaa8c01b030256aa9bb597db80
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972803"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029863"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>使用查询存储监视 Azure Database for MySQL 的性能
 
-**适用于：**  Azure Database for MySQL 5.7
+**适用于：** Azure Database for MySQL 5。7
 
 > [!IMPORTANT]
 > 查询存储目前以预览版提供。
@@ -37,14 +37,14 @@ ms.locfileid: "71972803"
 ### <a name="enable-query-store-using-the-azure-portal"></a>使用 Azure 门户启用查询存储
 
 1. 登录到 Azure 门户，选择你的 Azure Database for MySQL 服务器。
-1. 在菜单的“设置”部分选择“服务器参数”。 ****   ****  
+1. 在菜单的“设置”部分中选择“服务器参数”。
 1. 搜索 query_store_capture_mode 参数。
-1. 将值设置为 ALL，然后 **保存**。
+1. 将值设置为 "全部" 并**保存**。
 
 若要在查询存储中启用等待统计信息，请执行以下操作：
 
 1. 搜索 query_store_wait_sampling_capture_mode 参数。
-1. 将值设置为 ALL，然后 **保存**。
+1. 将值设置为 "全部" 并**保存**。
 
 第一批数据可在 mysql 数据库中最长保留 20 分钟。
 
@@ -78,8 +78,8 @@ SELECT * FROM mysql.query_store_wait_stats;
 | **观测** | **Action** |
 |---|---|
 |高锁定等待 | 检查受影响查询的查询文本，并确定目标实体。 在查询存储中查找修改同一实体的其他查询，这些查询经常执行和/或持续很长时间。 确定这些查询后，请考虑更改应用程序逻辑以提高并发性，或使用限制较少的隔离级别。 |
-|高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议 **** 。  |
-|高内存等待 | 在查询存储中查找消耗内存最多的查询。 这些查询可能会延迟受影响查询的进度。 检查门户中服务器的“性能建议”，以查看是否存在可优化这些查询的索引建议 **** 。 |
+|高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议。 |
+|高内存等待 | 在查询存储中查找消耗内存最多的查询。 这些查询可能会延迟受影响查询的进度。 检查门户中服务器的“性能建议”，以查看是否存在可优化这些查询的索引建议。|
 
 ## <a name="configuration-options"></a>配置选项
 
@@ -108,7 +108,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="views-and-functions"></a>视图和函数
 
-使用以下视图和函数查看并管理查询存储。 [选择特权公共角色](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql)中的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
+使用以下视图和函数查看并管理查询存储。 [选择特权公共角色](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql)中的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在**mysql**数据库中可用。
 
 删除文本和常数后，通过查看查询的结构来规范化查询。 如果除文本值之外两个查询相同，则它们将具有相同的哈希值。
 

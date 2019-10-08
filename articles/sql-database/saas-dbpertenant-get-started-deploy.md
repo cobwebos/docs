@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: d5326a3a154ed6f193b5527a0150ad84c843c273
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d5f64f0a9abfa736c1db0e562b6f18ecfc1f6de5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570441"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023830"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>部署并探究一个多租户 SaaS 应用，该应用通过“每租户一个数据库”模式使用 SQL 数据库
 
@@ -36,7 +36,7 @@ ms.locfileid: "68570441"
 
 可通过观看[相关教程系列](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)，了解各种 SaaS 设计和管理模式。 除了初始部署相关内容，这些教程还提供其他丰富的内容延展。 使用这些教程时，可以观察所提供的脚本来了解不同的 SaaS 模式是如何实现的。 脚本演示 SQL 数据库的功能如何简化 SaaS 应用程序的开发。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保安装 Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "68570441"
 
 现在请选择自己的名称，并将其写下来。
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 1. 若要在 Azure 门户中打开 Wingtip Tickets SaaS“每租户一个数据库”部署模板，请选择“部署到 Azure”。
 
@@ -114,9 +114,9 @@ ms.locfileid: "68570441"
 
     ![事件中心](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
-2. 在事件中心内选择“Fabrikam Jazz Club”。 ****  
+2. 选择 "事件中心" 中的 " **Fabrikam 爵士乐俱乐部**"。
 
-    ![事件](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
+    ![Events](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure 流量管理器
 
@@ -220,14 +220,14 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载。 以下步骤�
 
 现在，你已针对该组租户运行了加载，下面让我们看看一些已部署的资源。
 
-1. 在  [Azure 门户](https://portal.azure.com)中，浏览到你的 SQL 服务器列表。 然后，打开  **catalog-dpt-&lt;USER&gt;**   服务器。
+1. 在  [Azure 门户](https://portal.azure.com)中，浏览到你的 SQL 服务器列表。 然后打开 **catalog-dpt-&lt;USER&gt;** 服务器。
     - 目录服务器包含两个数据库：**tenantcatalog** 和 **basetenantdb**（为了创建新租户而复制的模板数据库）。
 
    ![数据库](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. 返回到 SQL 服务器列表。
 
-3. 打开存放着租户数据库的 **tenants1-dpt-&lt;USER&gt;**   服务器。
+3. 打开保存租户数据库的 tenants1-dpt-&lt;USER&gt; 服务器。
 
 4. 查看以下项：
 
@@ -240,7 +240,7 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载。 以下步骤�
 
 LoadGenerator.ps1 运行几分钟后，可提供足够的数据，用于开始查看某些监视功能。 这些功能内置于池和数据库中。
 
-浏览到服务器 **tenants1-dpt-&lt;user&gt;** ，然后选择  **Pool1**  来查看池的资源利用率。 在以下图表中，负载生成器已运行一个小时。
+浏览到服务器 **tenants1-dpt-&lt;user&gt;** ，然后选择 **Pool1** 来查看池的资源利用率。 在以下图表中，负载生成器已运行一个小时。
 
    ![监视池](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

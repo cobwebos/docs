@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 0cae5166fbbba650b270829b9c8e3711b12a574e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 8d8f796fa7db9cab5bcac88a293dd1b98707a571
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073954"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025774"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
 可以通过成本管理中的预算来计划并推动组织责任制。 可以通过预算对特定时期使用或订阅的 Azure 服务进行核算。 可以通过预算将他人的支出通知给本人，方便他们对成本进行前摄性管理，并且可以监视一段时间的支出情况。 超出所创建的预算阈值时，只会触发通知， 不会影响资源，也不会停止你对资源的使用。 可以使用预算来比较和跟踪支出，就像分析成本一样。
 
-成本和使用情况数据通常在8-12 小时内可用，每四个小时针对这些成本评估预算。 电子邮件通知通常在12-16 小时内收到。
+成本和使用情况数据通常在12-16 小时内可用，每四个小时针对这些成本评估预算。 电子邮件通知通常在12-16 小时内收到。
 
 在未来选择过期日期时，预算会在某个期间末（月末、季末或年末）自动重置为相同的预算金额。 由于预算是使用相同的预算金额重置的，因此如果未来时段的预算货币金额不同于现在，则需创建单独的预算。
 
@@ -78,7 +78,7 @@ ms.locfileid: "71073954"
 
 ![显示具有每月成本数据的预算创建的示例 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-配置预算金额后，单击 "**下一步**" 以配置预算警报。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 当满足预算阈值时，通常将在八小时内接收到电子邮件通知。 有关通知的详细信息，请参阅[使用成本警报](cost-mgt-alerts-monitor-usage-spending.md)。 在下面的示例中，达到预算的 90% 时将生成电子邮件警报。
+配置预算金额后，单击 "**下一步**" 以配置预算警报。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 当达到预算阈值时，通常会在20小时内收到电子邮件通知。 有关通知的详细信息，请参阅[使用成本警报](cost-mgt-alerts-monitor-usage-spending.md)。 在下面的示例中，达到预算的 90% 时将生成电子邮件警报。
 
 ![显示警报条件的示例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 

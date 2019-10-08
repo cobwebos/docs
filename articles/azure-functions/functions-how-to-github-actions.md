@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 8e9e1189c3eb9de273926645ad0d4cfde5ba1c49
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 483ac9380fa8d58f294112cb6c80e0393fa01589
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260046"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028965"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 操作进行持续交付
 
@@ -23,15 +23,15 @@ ms.locfileid: "71260046"
 
 在 GitHub 操作中，[工作流](https://help.github.com/articles/about-github-actions#workflow)是在 github 存储库中定义的自动化过程。 此过程告知 GitHub 如何在 GitHub 上生成和部署函数应用项目。 
 
-工作流是由存储库`/.github/workflows/`路径中的 YAML （docker-compose.override.yml）文件定义的。 此定义包含组成工作流的各种步骤和参数。 
+工作流是由存储库中 `/.github/workflows/` 路径中的 YAML （docker-compose.override.yml）文件定义的。 此定义包含组成工作流的各种步骤和参数。 
 
 对于 Azure Functions 工作流，文件包含三个部分： 
 
-| 节 | 任务 |
+| 部分 | 任务 |
 | ------- | ----- |
-| **身份验证** | <ol><li>定义服务主体。</li><li>创建 GitHub 机密。</li></ol>|  
+| **身份验证** | <ol><li>定义服务主体。</li><li>下载发布配置文件。</li><li>创建 GitHub 机密。</li></ol>|
 | **生成** | <ol><li>设置环境。</li><li>生成函数应用。</li></ol> |
-| **部署** | <ol><li>部署函数应用。</li></ol>| 
+| **部署** | <ol><li>部署函数应用。</li></ol>|
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
@@ -43,16 +43,27 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 在此示例中，将资源中的占位符替换为你的订阅 ID、资源组和函数应用名称。 输出是提供对函数应用程序的访问权限的角色分配凭据。 复制此 JSON 对象，该对象可用于从 GitHub 进行身份验证。
 
+> [!NOTE]
+> 如果决定使用发布配置文件进行身份验证，则不需要创建服务主体。
+
 > [!IMPORTANT]
 > 授予最小访问权限始终是一种很好的做法。 这就是上一个示例中的作用域仅限于特定的函数应用，而不是整个资源组。
 
+## <a name="download-the-publishing-profile"></a>下载发布配置文件
+
+可以通过转到应用的 "**概述**" 页，然后单击 "**获取发布配置文件**"，下载 functionapp 的发布配置文件。
+
+   ![下载发布配置文件](media/functions-how-to-github-actions/get-publish-profile.png)
+
+复制该文件的内容。
+
 ## <a name="configure-the-github-secret"></a>配置 GitHub 机密
 
-1. 在[GitHub](https://github.com)中浏览存储库，选择 "**设置** > " "**机密** > " "**添加新密钥**"。
+1. 在[GitHub](https://github.com)中，浏览存储库，选择 "**设置**"  > **机密** > **添加新机密**。
 
-    ![添加机密](media/functions-how-to-github-actions/add-secret.png)
+   ![添加机密](media/functions-how-to-github-actions/add-secret.png)
 
-1. 将`AZURE_CREDENTIALS`用作**值**的 "**名称**" 和 "复制的命令输出"，然后选择 "**添加密钥**"。 
+1. 如果你随后选择 "**添加密钥**"，请使用 `AZURE_CREDENTIALS` 作为 "**名称**" 和 "复制的命令输出" 作为**值**。 如果使用的是发布配置文件，请使用 `SCM_CREDENTIALS` 作为**名称**，并使用文件内容作为**值**。
 
 GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
 
@@ -187,7 +198,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
 
 ## <a name="deploy-the-function-app"></a>部署函数应用
 
-若要将代码部署到 function app，需要使用`Azure/functions-action`操作。 此操作有两个参数：
+若要将代码部署到 function app，需要使用 `Azure/functions-action` 操作。 此操作有两个参数：
 
 |参数 |说明  |
 |---------|---------|
@@ -195,7 +206,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
 |_**槽名称**_ | 可有可无要部署到的[部署槽](functions-deployment-slots.md)的名称。 必须已在 function app 中定义槽。 |
 
 
-下面的示例使用版本 1 `functions-action`：
+下面的示例使用 @no__t 的版本1：
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -207,7 +218,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看完整的 yaml，请参阅[Azure GitHub 操作工作流](https://github.com/Azure/actions-workflow-samples)中具有`functionapp`名称的存储库中的一个文件。 您可以使用这些示例作为工作流的起点。
+若要查看完整的 yaml，请参阅 " [Azure GitHub 操作" 工作流](https://github.com/Azure/actions-workflow-samples)中的一个文件，其中包含名称中 `functionapp` 的存储库。 您可以使用这些示例作为工作流的起点。
 
 > [!div class="nextstepaction"]
 > [了解有关 GitHub 操作的详细信息](https://help.github.com/en/articles/about-github-actions)

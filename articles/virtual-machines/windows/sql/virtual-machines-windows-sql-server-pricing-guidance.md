@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d9b4cf755bbf2e225bee813510c083570b0f8064
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70280177"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028624"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 的定价指南
 
@@ -58,13 +58,13 @@ ms.locfileid: "70280177"
 |-----|-----|
 | Web | 小型网站 |
 | Standard | 中小型工作负荷 |
-| 企业 | 大型或任务关键型工作负荷|
+| Enterprise | 大型或任务关键型工作负荷|
 
 可按两种方法为这些版本的 SQL Server 许可付费：“按使用情况付费”或“自带许可证 (BYOL)”。
 
 ## <a name="pay-per-usage"></a>按使用情况付费
 
-“按使用情况支付 SQL Server 许可证费用”意味着 Azure VM 的每秒运行成本包括 SQL Server 许可证的费用。 有关不同 SQL Server 版本（Web、Standard 和 Enterprise）的定价，可参阅适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) 的 Azure VM 定价页。
+**按使用情况支付 SQL Server 许可证**（也称为即**用即付**）意味着运行 Azure VM 的每秒费用包括 SQL Server 许可证的成本。 有关不同 SQL Server 版本（Web、Standard 和 Enterprise）的定价，可参阅适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) 的 Azure VM 定价页。
 
 所有版本的 SQL Server（2012 SP3 到 2017）的费用相同。 每秒许可成本取决于 VM vCPU 的数量。
 
@@ -74,7 +74,7 @@ ms.locfileid: "70280177"
 
 - **生存期或规模未知的工作负荷**。 例如，某应用可能在几个月内无需使用，或可能需要更多/更少的计算能力（具体取决于需求）。
 
-若要使用上述某个按使用情况付费的映像创建 SQL Server 2017 Azure VM，请参阅以下链接：
+若要使用其中一种即用即付映像创建 SQL Server 2017 Azure VM，请参阅以下链接：
 
 | 平台 | 许可的映像 |
 |---|---|

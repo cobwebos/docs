@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/2/2019
+ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6776d7ff21599a1cfab47fd0e4ab0fbef5d3d8c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5132581c3d79db88dabc3c20ac3b962226d8a12d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827099"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025834"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -45,6 +45,8 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 ## <a name="14250"></a>1.4.25.0
 
+
+
 ### <a name="release-status"></a>版本状态
 9/28/2019：已发布以便自动升级以选择租户。 不可用于下载。
 
@@ -56,12 +58,15 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 ## <a name="14180"></a>1.4.18.0
 
+>[!WARNING]
+>我们正在调查事件，其中某些客户在升级到此版本的 Azure AD Connect 后，某些客户遇到了现有混合 Azure AD 联接设备的问题。 我们建议已部署混合 Azure AD 联接的客户推迟升级到此版本，直至完全理解和缓解这些问题的根本原因。 将尽快提供详细信息。
+
 >[!IMPORTANT]
 >在此版本的 Azure AD Connect，某些客户可能会看到其所有 Windows 设备从 Azure AD 中消失。 这不是问题的原因，因为在条件访问授权期间 Azure AD 不会使用这些设备标识。 有关详细信息，请参阅[了解 Azure AD Connect 1.4. x 设备 disappearnce](reference-connect-device-disappearance.md)
 
 
 ### <a name="release-status"></a>版本状态
-9/25/2019：已发布以便自动升级和下载
+9/25/2019：从手动下载中删除，直到事件调查完成。
 
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 - 新的疑难解答工具有助于排查 "用户未同步"、"组未同步" 或 "组成员未同步" 方案的问题。
@@ -460,7 +465,7 @@ Azure AD Connect 版本 1.1.654.0（以及更高版本）中已添加了一项�
 *   删除特定对象上的所有 ACE，特定于 SELF 的 ACE 除外。 当涉及到 SELF 时，我们希望保持默认权限不变。
 *   分配以下特定权限：
 
-type     | 姓名                          | 访问               | 应用于
+类型     | 名称                          | Access               | 应用于
 ---------|-------------------------------|----------------------|--------------|
 Allow    | SYSTEM                        | 完全控制         | 此对象  |
 Allow    | 企业管理员             | 完全控制         | 此对象  |
@@ -494,7 +499,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 >[!NOTE] 
 >$credential.UserName 应为 FQDN\username 格式。 示例：contoso.com\admin 
 
-##### <a name="example"></a>例如：
+##### <a name="example"></a>示例：
 
 ```powershell
 Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbackdc,DC=com" -Credential $credential 
@@ -810,7 +815,7 @@ CBool(
 * 引入了以下架构更改，使客户能够创建自定义同步规则来传送组对象的 sAMAccountName、domainNetBios 和 domainFQDN，以及用户对象的 distinguishedName：
 
   * 向 MV 架构添加了以下属性：
-    * 组：帐户名
+    * 组：AccountName
     * Group: domainNetBios
     * Group: domainFQDN
     * Person: distinguishedName

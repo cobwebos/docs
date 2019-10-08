@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 3796017af643c993871757482ed17d1765cd6494
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: e33987d382a2afd93644a413084339fcd330d2e2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802417"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029713"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT 中心模块标识和模块孪生 (Node.js) 入门
 
@@ -54,9 +54,9 @@ ms.locfileid: "70802417"
 
 1. 创建目录以保存代码。
 
-2. 在该目录中，首先运行“npm init -y” ，使用默认值创建一个空的 package.json **** 。 这是代码的项目文件。
+2. 在该目录中，首先运行 npm init -y 使用默认值创建一个空的 package.json。 这是代码的项目文件。
 
-3. 运行  **npm install -S azure-iothub\@modules-preview**，以在  **node_modules**  子目录中安装服务 SDK。
+3. 运行**npm 安装-S azure-iothub @ no__t-1modules-preview** ，将服务 SDK 安装在**node_modules**子目录内。
 
     > [!NOTE]
     > 子目录名称 node_modules 使用字“模块”来表示“节点库”。 此处的术语与 IoT 中心模块无关。
@@ -192,7 +192,7 @@ ms.locfileid: "70802417"
     });
     ```
 
-4. 现在请使用命令“node twin.js”来运行它 **** 。
+4. 现在请使用命令 node twin.js 来运行它。
 
    ```cmd/sh
    F:\temp\module_twin>node twin.js

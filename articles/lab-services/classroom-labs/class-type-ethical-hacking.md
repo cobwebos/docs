@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: c92dd48e81512b79fb72cbb751303504d1036594
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: df24f846f1600685803fdd485f1810d66e32ae37
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71982029"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028672"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>设置实验室来讲授道德攻击类 
 本文介绍如何设置一个侧重于道德攻击辩论方的类。 渗透测试是一种由道德黑客团体使用的惯例，当有人尝试获取对系统或网络的访问权限来演示恶意攻击者可能会利用的漏洞时，就会发生这种情况。 
@@ -125,10 +125,14 @@ Rapid7 Metasploitable 映像是特意配置了安全漏洞的映像。 将使用
 该模板现已更新，并具有符合道德的黑客渗透测试类所需的图像、包含用于执行渗透测试的工具的映像，以及另一个包含安全漏洞的映像。 现在可以将模板映像发布到类。 选择 "模板" 页上的 "**发布**" 按钮，将模板发布到实验室。
   
 
-## <a name="cost"></a>开销  
+## <a name="cost"></a>成本  
 如果要估计此实验室的成本，可以使用以下示例： 
  
-对于具有20个小时的计划类时间和10小时配额（适用于家庭或分配）的25名学生，实验室的价格为：25名学生 * （20 + 10）小时 * 55 实验室单位 * 0.01 美元/小时 = 412.50。 有关定价的更多详细信息，请参阅[Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
+对于具有20个小时的计划类时间和10小时配额（适用于家庭或分配）的25名学生，实验室的价格为： 
+
+25名学生 * （20 + 10）小时 * 55 实验室单位 * 0.01 美元/小时 = 412.50 美元。 
+
+有关定价的详细信息，请参阅[Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
 
 ## <a name="conclusion"></a>结束语
 本文指导你完成为道德攻击类创建实验室的步骤。 它包括设置嵌套虚拟化的步骤，用于在主机虚拟机内创建两个虚拟机以进行渗透测试。

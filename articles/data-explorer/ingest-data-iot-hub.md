@@ -7,14 +7,19 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: ef66e6a69b6d33b16a558293fe29b8adf51cd137
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
-ms.translationtype: HT
+ms.openlocfilehash: 9f1bd795af2802af642d48b4a16a55425c5f4c7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996752"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028473"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>将数据从 IoT 中心引入 Azure 数据资源管理器（预览版）
+
+> [!div class="op_single_selector"]
+> * [门户](ingest-data-iot-hub.md)
+> * [C#](data-connection-iot-hub-csharp.md)
+> * [Python](data-connection-iot-hub-python.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供来自 IoT 中心的引入（数据加载），这是一个大型数据流式处理平台和 IoT 引入服务。
 

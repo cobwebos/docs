@@ -14,20 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 9edd5e755b4a42fe881a0863bb284039299ec713
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 27c20d3d3c84455130c8fd978eaeb076781846ef
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446267"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024986"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加推送通知
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-ios-get-started-push)今天。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 
@@ -35,7 +35,7 @@ ms.locfileid: "67446267"
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅 [使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) 。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 完成 [Xamarin.iOS 快速入门](app-service-mobile-xamarin-ios-get-started.md)教程。
 * 物理 iOS 设备。 iOS 模拟器不支持推送通知。
@@ -146,13 +146,13 @@ ms.locfileid: "67446267"
 
 ## <a name="test"></a>在应用程序中测试推送通知
 
-1. 在支持 iOS 的设备中按“运行”  按钮，生成项目并启动应用，并单击“确定”  接受推送通知。
+1. 在支持 iOS 的设备中按“运行”按钮，生成项目并启动应用，并单击“确定”接受推送通知。
 
    > [!NOTE]
    > 必须显式接受来自应用程序的推送通知。 此请求只会在首次运行应用程序时出现。
 
 2. 在应用中，键入一项任务，然后单击加号 ( **+** ) 图标。
-3. 检查是否已收到通知，并单击“确定”  取消通知。
+3. 检查是否已收到通知，并单击“确定”取消通知。
 4. 重复步骤 2 并立即关闭应用，并检查是否已显示通知。
 
 已成功完成本教程。

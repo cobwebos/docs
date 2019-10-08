@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 7a0b2c54c2d2a9daba56ea1d05c18e72a2d7a7a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 44a6261819ee8e880d9a5763e92678bc359f5eff
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447059"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025092"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>向 Xamarin.Android 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-android-get-started-users)今天。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 本主题演示如何从客户端应用程序对移动应用的用户进行身份验证。 在本教程中，使用 Azure 移动应用支持的标识提供者向快速入门项目添加身份验证。 在移动应用中成功进行身份验证和授权后，显示用户 ID 值。
@@ -42,13 +42,13 @@ ms.locfileid: "67447059"
 
 1. 在 [Azure 门户]中，选择应用服务。
 
-2. 单击“身份验证/授权”  菜单选项。
+2. 单击“身份验证/授权”菜单选项。
 
-3. 在“允许的外部重定向 URL”  中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案  。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
-4. 单击“确定”。 
+4. 单击 **“确定”** 。
 
-5. 单击“ **保存**”。
+5. 单击“保存”。
 
 ## <a name="permissions"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -58,7 +58,7 @@ ms.locfileid: "67447059"
 接下来，更新客户端应用，以使用经过身份验证的用户从移动应用后端请求资源。
 
 ## <a name="add-authentication"></a>向应用添加身份验证
-已更新应用，在显示数据之前要求用户点击“登录”  按钮进行身份验证。
+已更新应用，在显示数据之前要求用户点击“登录”按钮进行身份验证。
 
 1. 将以下代码添加到 **TodoActivity** 类：
    
@@ -98,10 +98,10 @@ ms.locfileid: "67447059"
             }
         }
    
-    此代码创建一个对用户进行身份验证的新方法和一个针对新“登录”  按钮的方法处理程序。 上面示例代码中的用户使用 Facebook 登录进行身份验证。 对话框用于在进行身份验证后显示用户 ID。
+    此代码创建一个对用户进行身份验证的新方法和一个针对新“登录”按钮的方法处理程序。 上面示例代码中的用户使用 Facebook 登录进行身份验证。 对话框用于在进行身份验证后显示用户 ID。
    
    > [!NOTE]
-   > 如果使用的 Facebook 以外的其他标识提供程序，将更改传递给的值**LoginAsync**上面为以下值之一：MicrosoftAccount、Twitter、Google 或 WindowsAzureActiveDirectory     。
+   > 如果使用的标识提供者不是 Facebook，请将传递给上述**LoginAsync**的值更改为以下值之一：MicrosoftAccount、Twitter、Google 或 WindowsAzureActiveDirectory。
    > 
    > 
 2. 在 **OnCreate** 方法中，删除或注释掉以下代码行：
@@ -131,7 +131,7 @@ ms.locfileid: "67447059"
 
 6. 在 Visual Studio 或 Xamarin Studio 中，运行设备或模拟器中的客户端项目，并使用所选的标识提供者登录。 成功登录后，应用会显示登录 ID 和待办事项列表，用户可以对数据进行更新。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 **应用程序崩溃并显示 `Java.Lang.NoSuchMethodError: No static method startActivity`**
 

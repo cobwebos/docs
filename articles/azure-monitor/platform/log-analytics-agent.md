@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 66f3a9ae1f29d863170dcb4bc43e38b648602eed
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 1eec8b79579a1c4d5c889b830706299ccc25e88b
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695029"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035646"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>使用 Log Analytics 代理收集日志数据
 
@@ -53,7 +53,7 @@ Azure Log Analytics 代理，前称为 Microsoft Monitoring Agent (MMA) 或 OMS 
 Windows 代理官方支持以下版本的 Windows 操作系统：
 
 * Windows Server 2019
-* Windows Server 2008 R2、2012、2012 R2、2016、版本 1709 和 版本 1803
+* Windows Server 2008 SP2 （x64），2008 R2，2012，2012 R2，2016，版本1709和1803
 * Windows 7 SP1、Windows 8 企业版和专业版，以及 Windows 10 企业版和专业版
 
 >[!NOTE]
@@ -117,7 +117,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 |\* .blob.core.windows.net |端口 443 |出站|是 |  
 |\* .azure-automation.net |端口 443 |出站|是 |  
 
-有关 Azure 政府版所需的防火墙信息, 请参阅[Azure 政府版管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)。 
+有关 Azure 政府版所需的防火墙信息，请参阅[Azure 政府版管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)。 
 
 如果计划使用 Azure 自动化混合 Runbook 辅助角色连接并注册自动化服务以在环境中使用 Runbook，则它必须可以访问[针对混合 Runbook 辅助角色配置网络](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的端口号和 URL。 
 
@@ -133,7 +133,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 |属性| 描述 |
 |--------|-------------|
 |Protocol | https |
-|用户 | 用于代理身份验证的可选用户名 |
+|user | 用于代理身份验证的可选用户名 |
 |password | 用于代理身份验证的可选密码 |
 |proxyhost | 代理服务器/Log Analytics 网关的地址或 FQDN |
 |port | 代理服务器/Log Analytics 网关的可选端口号 |

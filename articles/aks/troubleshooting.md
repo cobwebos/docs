@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 6ff273236f9f8465de9ec0cda89ed3ff8996ecec
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d2561b1882ea612f29c0ff0eeb4bd6614403c9ff
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932667"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025485"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -73,7 +73,7 @@ ms.locfileid: "70932667"
 
 ## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>有错误指出，我的群集处于故障状态，在解决此解决之前无法进行升级或缩放
 
-*此故障排除帮助是从 https://aka.ms/aks-cluster-failed*
+*此故障排除帮助是通过 https://aka.ms/aks-cluster-failed 定向的*
 
 如果群集出于多种原因进入故障状态，则会发生此错误。 请遵循以下步骤解决群集故障状态，然后重试先前失败的操作：
 
@@ -84,7 +84,7 @@ ms.locfileid: "70932667"
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>尝试升级或缩放群集时，有错误指出我的群集当前正在升级或升级失败
 
-*此故障排除帮助是从 https://aka.ms/aks-pending-upgrade*
+*此故障排除帮助是通过 https://aka.ms/aks-pending-upgrade 定向的*
 
 具有单个节点池的群集或具有[多个节点池](use-multiple-node-pools.md)的群集的升级和缩放操作是互斥的。 不能让群集或节点池同时升级和缩放， 而只能先在目标资源上完成一个操作类型，然后再在同一资源上执行下一个请求。 因此，如果当前正在执行升级或缩放操作，或者曾经尝试过这些操作，但随后失败，则其他操作会受到限制。 
 
@@ -105,9 +105,9 @@ ms.locfileid: "70932667"
 
 **AgentPool ' AgentPool ' 已启用自动缩放，但它不在虚拟机规模集上**
 
-若要使用群集自动缩放程序或多节点池等功能，必须创建使用虚拟机规模集的 AKS 群集。 如果尝试使用依赖于虚拟机规模集的功能，并以常规的非虚拟机规模集 AKS 群集为目标，则会返回错误。 虚拟机规模集支持目前在 AKS 中以预览版提供。
+若要使用群集自动缩放程序或多节点池等功能，必须创建使用虚拟机规模集的 AKS 群集。 如果尝试使用依赖于虚拟机规模集的功能，并以常规的非虚拟机规模集 AKS 群集为目标，则会返回错误。
 
-按照相应文档中*开始步骤之前*的步骤，正确注册虚拟机规模集功能预览并创建 AKS 群集：
+在相应文档中*开始步骤之前*，请执行相应的步骤，以正确创建 AKS 群集：
 
 * [使用群集自动缩放程序](cluster-autoscaler.md)
 * [创建和使用多个节点池](use-multiple-node-pools.md)
@@ -133,17 +133,17 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 
 * 如果群集的升级失败，请按[有错误指出，我的群集处于故障状态，在解决此解决之前无法进行升级或缩放](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)中概述的步骤操作。
 
-## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>我在尝试创建新群集时找不到服务主体，但未传入现有群集时，出现错误。
+## <a name="im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one"></a>尝试创建一个新群集而不是传入现有群集时，收到“找不到服务主体”错误。
 
-创建 AKS 群集时，需要使用服务主体来代表你创建资源。 AKS 提供在创建群集时创建新的功能，但这需要 Azure Active Directory 在合理的时间内完全传播新的服务主体，以便群集成功创建。 如果此传播时间太长，则群集将无法进行验证，因为它找不到可用的服务主体来执行此操作。 
+创建 AKS 群集时，需要服务主体来代表你创建资源。 AKS 提供了在创建群集时创建新服务主体的功能，但这需要 Azure Active Directory 在合理的时间内完全传播新的服务主体，以便成功创建群集。 当此传播花费的时间太长时，群集将无法创建验证，因为它找不到可用的服务主体来执行此操作。 
 
 为此，请使用以下解决方法：
-1. 使用已在区域中传播的现有服务主体，并在创建群集时将其传递到 AKS。
+1. 使用已在区域中传播并且存在的现有服务主体，并在创建群集时将其传入 AKS。
 2. 如果使用自动化脚本，请在创建服务主体和创建 AKS 群集之间添加时间延迟。
-3. 如果使用 Azure 门户，请在创建过程中返回到群集设置，然后在几分钟后重试验证页面。
+3. 如果使用 Azure 门户，请在创建过程中返回到群集设置，并在几分钟后重试验证页。
 
 ## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>限制出站流量后收到错误
 
-在限制来自 AKS 群集的出口流量时，需要为 AKS[提供必需和可选](limit-egress-traffic.md)的出站端口/网络规则和 FQDN/应用程序规则。 如果你的设置与任何这些规则冲突，你可能无法运行某些`kubectl`命令。 创建 AKS 群集时，还可能会看到错误。
+在限制来自 AKS 群集的出口流量时，需要为 AKS[提供必需和可选](limit-egress-traffic.md)的出站端口/网络规则和 FQDN/应用程序规则。 如果你的设置与任何这些规则冲突，你可能无法运行某些 `kubectl` 命令。 创建 AKS 群集时，还可能会看到错误。
 
 验证你的设置是否不与任何必需或可选的建议出站端口/网络规则和 FQDN/应用程序规则冲突。

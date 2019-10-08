@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f008cdf80e15e2737fea19f72ec6703932cf301f
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: b1a5aee1be7580956c32947e9bda7e2928a006c3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382820"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026397"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>在 Azure Active Directory 中创建和分配自定义角色
 
@@ -30,8 +30,8 @@ ms.locfileid: "70382820"
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>创建新的自定义角色，授予管理应用注册所需的访问权限
 
-1. 在 Azure AD 组织中，以特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
-1. 选择“Azure Active Directory” ****  > “角色和管理员” > **** “新建自定义角色”。
+1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com)"@no__t 1with" Azure AD 组织中的特权角色管理员或全局管理员权限。
+1. 选择**Azure Active Directory**@no__t "**角色和管理员**" @no__t "**新建自定义角色**"。
 
    ![在“角色和管理员”页中创建或编辑角色](./media/roles-create-custom/new-custom-role.png)
 

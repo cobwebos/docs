@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9e67e063ed37c706ba172703f0a5483d8d4f68ca
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 24e90ebd2994c5fffc1252167c06783421f2ac33
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881874"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035247"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
-可以使用 [Azure 备份服务](backup-overview.md)将数据备份到 Microsoft Azure 云平台。 本文汇总了 Azure 备份体系结构、组件和流程。 
+可以使用 [Azure 备份服务](backup-overview.md)将数据备份到 Microsoft Azure 云平台。 本文汇总了 Azure 备份体系结构、组件和流程。
 
 ## <a name="what-does-azure-backup-do"></a>Azure 备份有什么功能？
 
@@ -27,13 +27,13 @@ Azure 备份可以备份数据、计算机状态，以及本地计算机和 Azur
 可以使用许多方法备份计算机和数据：
 
 - **备份本地计算机**：
-    - 可以使用 Azure 备份 Microsoft Azure 恢复服务 (MARS) 代理直接将本地 Windows 计算机备份到 Azure。 不支持 Linux 计算机。
-    - 可将本地计算机备份到备份服务器（System Center Data Protection Manager (DPM) 或 Microsoft Azure 备份服务器 (MABS)）。 然后，可将备份服务器备份到 Azure 中的恢复服务保管库。
+  - 可以使用 Azure 备份 Microsoft Azure 恢复服务 (MARS) 代理直接将本地 Windows 计算机备份到 Azure。 不支持 Linux 计算机。
+  - 可以将本地计算机备份到备份服务器-系统中心 Data Protection Manager （DPM）或 Microsoft Azure 备份服务器（MABS）。 然后，可将备份服务器备份到 Azure 中的恢复服务保管库。
 
 - **备份 Azure VM**：
-    - 可以直接备份 Azure VM。 Azure 备份会将一个备份扩展安装到 VM 上运行的 Azure VM 代理。 此扩展备份整个 VM。
-    - 可以通过运行 MARS 代理来备份 Azure VM 上的特定文件和文件夹。
-    - 可将 Azure VM 备份到 Azure 中运行的 MABS，然后可将 MABS 备份到恢复服务保管库。
+  - 可以直接备份 Azure VM。 Azure 备份会将一个备份扩展安装到 VM 上运行的 Azure VM 代理。 此扩展备份整个 VM。
+  - 可以通过运行 MARS 代理来备份 Azure VM 上的特定文件和文件夹。
+  - 可将 Azure VM 备份到 Azure 中运行的 MABS，然后可将 MABS 备份到恢复服务保管库。
 
 详细了解[可以备份哪些内容](backup-overview.md)，以及[支持的备份方案](backup-support-matrix.md)。
 
@@ -45,20 +45,20 @@ Azure 备份将备份的数据存储在恢复服务保管库中。 保管库是 
 
 - 使用保管库可以方便地组织备份数据，并将管理开销降至最低。
 - 在每个 Azure 订阅中，最多可以创建 500 个保管库。
-- 可以监视保管库中的已备份项, 包括 Azure Vm 和本地计算机。
+- 可以监视保管库中的已备份项，包括 Azure Vm 和本地计算机。
 - 可以使用 Azure [基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 来管理对保管库的访问。
 - 指定如何复制保管库中的数据以实现冗余：
-    - **本地冗余存储 (LRS)** ：若要防范数据中心发生故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
-    - **异地冗余存储 (GRS)** ：若要防范区域范围的服务中断，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。 
-    - 恢复服务保管库默认使用 GRS。 
+  - **本地冗余存储 (LRS)** ：若要防范数据中心发生故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
+  - **异地冗余存储 (GRS)** ：若要防范区域范围的服务中断，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+  - 恢复服务保管库默认使用 GRS。
 
 ## <a name="backup-agents"></a>备份代理
 
 Azure 备份提供不同的备份代理，具体取决于要备份哪种类型的计算机：
 
-**代理** | **详细信息** 
---- | --- 
-**MARS 代理** | <ul><li>在独立的本地 Windows Server 计算机上运行，可以备份文件、文件夹和系统状态。</li> <li>在 Azure VM 上运行，可以备份文件、文件夹和系统状态。</li> <li>在 DPM/MABS 服务器上运行，可将 DPM/MABS 本地存储磁盘备份到 Azure。</li></ul> 
+**代理** | **详细信息**
+--- | ---
+**MARS 代理** | <ul><li>在独立的本地 Windows Server 计算机上运行，可以备份文件、文件夹和系统状态。</li> <li>在 Azure VM 上运行，可以备份文件、文件夹和系统状态。</li> <li>在 DPM/MABS 服务器上运行，可将 DPM/MABS 本地存储磁盘备份到 Azure。</li></ul>
 **Azure VM 扩展** | 在 Azure VM 上运行，可以将其备份到保管库。
 
 ## <a name="backup-types"></a>备份类型
@@ -69,7 +69,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 --- | --- | ---
 **完整** | 完整备份包含整个数据源。 占用的网络带宽比差异或增量备份更多。 | 用于初始备份。
 **差异** |  差异备份存储自初始完整备份以来发生更改的块。 使用较少的网络带宽和存储量，且不保留未更改数据的冗余副本。<br/><br/> 效率不高，因为需要传输并存储每次后续备份之后未发生更改的数据块。 | Azure 备份不使用此备份类型。
-**增量** | 增量备份仅存储自上次备份以来发生更改的数据块。 存储和网络效率高。 <br/><br/> 使用增量备份时，无需使用完整备份进行补充。 | DPM/MABS 使用此备份类型来备份磁盘，备份到 Azure 的所有方案都使用此备份类型。
+**增量** | 增量备份仅存储自上次备份以来发生更改的数据块。 存储和网络效率高。 <br/><br/> 使用增量备份时，无需使用完整备份进行补充。 | DPM/MABS 使用此备份类型来备份磁盘，备份到 Azure 的所有方案都使用此备份类型。 不用于 SQL Server 备份。
 
 ## <a name="sql-server-backup-types"></a>SQL Server 备份类型
 
@@ -88,7 +88,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 - 数据源 A 由每月备份的 10 个存储块 A1-A10 组成。
 - 第一个月，存储块 A2、A3、A4 和 A9 变化，第二个月，存储块 A5 变化。
 - 对于差异备份，在第二个月，将备份已更改的块 A2、A3、A4 和 A9。 第三个月，会再次备份这些相同的存储块，以及已更改的存储块 A5。 下次进行完整备份之前，将继续对已更改的存储块进行备份。
-- 对于增量备份，在第二个月，块 A2、A3、A4 和 A9 将标记为已更改和已传输。 在第三个月，仅标记已更改的存储块 A5，并进行传输。 
+- 对于增量备份，在第二个月，块 A2、A3、A4 和 A9 将标记为已更改和已传输。 在第三个月，仅标记已更改的存储块 A5，并进行传输。
 
 ![备份方法比较图](./media/backup-architecture/backup-method-comparison.png)
 
@@ -98,11 +98,11 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 
 **功能** | **本地 Windows Server 计算机（直接备份）** | **Azure VM** | **DPM/MABS 中的计算机或应用**
 --- | --- | --- | ---
-备份到保管库 | ![是][green] | ![是][green] | ![是][green] 
-依次备份到 DPM/MABS 磁盘和 Azure | | | ![是][green] 
-压缩发送的备份数据 | ![是][green] | 传输数据时不使用压缩。 存储消耗略有提高，但还原速度更快。  | ![是][green] 
-运行增量备份 |![是][green] |![是][green] |![是][green] 
-备份已删除重复数据的磁盘 | | | ![部分][yellow]<br/><br/> 仅适用于本地部署的 DPM/MABS 服务器。 
+备份到保管库 | ![是][green] | ![是][green] | ![是][green]
+依次备份到 DPM/MABS 磁盘和 Azure | | | ![是][green]
+压缩发送的备份数据 | ![是][green] | 传输数据时不使用压缩。 存储消耗略有提高，但还原速度更快。  | ![是][green]
+运行增量备份 |![是][green] |![是][green] |![是][green]
+备份已删除重复数据的磁盘 | | | ![部分][yellow]<br/><br/> 仅适用于本地部署的 DPM/MABS 服务器。
 
 ![表键](./media/backup-architecture/table-key.png)
 
@@ -112,17 +112,17 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 1. 首次备份期间，如果 VM 已运行，则会在 VM 上安装备份扩展。
     - 对于 Windows VM，将安装 VMSnapshot 扩展。
     - 对于 Linux VM，将安装 VMSnapshot Linux 扩展。
-1. 该扩展创建存储级快照。 
+1. 该扩展创建存储级快照。
     - 对于正在运行的 Windows VM，备份服务将与卷影复制服务 (VSS) 互相配合，来创建 VM 的应用一致性快照。 备份服务默认创建完整的 VSS 备份。 如果 Azure 备份无法创建应用一致性快照，则会创建文件一致性快照。
     - 对于 Linux VM，Azure 备份将创建文件一致性快照。 对于应用一致性快照，需要手动自定义前脚本/后脚本。
-    - 可以通过并行备份每个 VM 磁盘来优化备份。 对于每个要备份的磁盘，Azure 备份将读取磁盘上的块，并只存储已更改的数据。 
-1. 创建快照后，数据将传输到保管库。 
+    - 可以通过并行备份每个 VM 磁盘来优化备份。 对于每个要备份的磁盘，Azure 备份将读取磁盘上的块，并只存储已更改的数据。
+1. 创建快照后，数据将传输到保管库。
     - 只会复制自上次备份以来发生更改的数据块。
     - 不会加密数据。 Azure 备份可以备份使用 Azure 磁盘加密进行加密的 Azure VM。
     - 快照数据可能不会立即复制到保管库。 在高峰期，可能需要好几个小时才能完成备份。 每日备份策略规定的 VM 备份总时间不会超过 24 小时。
-1. 将数据发送到保管库后, 将创建恢复点。 默认情况下, 快照在删除前两天内保留。 此功能允许从这些快照还原操作, 从而缩短还原时间。 它减少了从保管库转换和复制数据所需的时间。 请参阅[Azure 备份即时还原功能](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability)。
+1. 将数据发送到保管库后，将创建恢复点。 默认情况下，快照会保留两天，然后再删除。 此功能允许从这些快照执行还原操作，从而缩短还原时间。 它减少了从保管库转换数据和复制回数据所需的时间。 请参阅 [Azure 备份即时还原功能](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability)。
 
-Azure VM 需要能够访问 Internet 才能执行控制命令。 如果备份 VM 中的工作负荷（例如 SQL Server 数据库备份），则也需要访问 Internet 来传输后端数据。 
+Azure VM 需要能够访问 Internet 才能执行控制命令。 如果备份 VM 中的工作负荷（例如 SQL Server 数据库备份），则也需要访问 Internet 来传输后端数据。
 
 ![备份 Azure VM](./media/backup-architecture/architecture-azure-vm.png)
 
@@ -157,15 +157,15 @@ Azure VM 需要能够访问 Internet 才能执行控制命令。 如果备份 VM
 Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure VM 至少包含两个磁盘：一个磁盘用于操作系统，另一个用作临时磁盘。 Azure VM 还可以使用数据磁盘来存储应用数据。 磁盘以 VHD 的形式进行存储。
 
 - 在 Azure 上的标准或高级存储帐户中，VHD 以页 Blob 的形式进行存储：
-    - **标准存储：** 为运行不关注延迟的工作负荷的 VM 提供可靠、低成本的磁盘支持。 标准存储可以使用标准固态硬盘 (SSD) 或标准机械硬盘 (HDD)。
-    - **高级存储：** 高性能磁盘支持。 使用高级·SSD 磁盘。
+  - **标准存储：** 为运行不关注延迟的工作负荷的 VM 提供可靠、低成本的磁盘支持。 标准存储可以使用标准固态硬盘 (SSD) 或标准机械硬盘 (HDD)。
+  - **高级存储：** 高性能磁盘支持。 使用高级·SSD 磁盘。
 - 磁盘具有不同的性能层：
-    - **标准 HDD 磁盘：** 基于 HDD，用作经济高效的存储。
-    - **标准 SSD 磁盘：** 结合了高级 SSD 磁盘和标准 HDD 磁盘的特点。 提供的一致性能和可靠性超过 HDD，而性价比仍然很高。
-    - **高级·SSD 磁盘：** 基于 SSD，为运行 I/O 密集型工作负荷的 VM 提供高性能和低延迟。
+  - **标准 HDD 磁盘：** 基于 HDD，用作经济高效的存储。
+  - **标准 SSD 磁盘：** 结合了高级 SSD 磁盘和标准 HDD 磁盘的特点。 提供的一致性能和可靠性超过 HDD，而性价比仍然很高。
+  - **高级·SSD 磁盘：** 基于 SSD，为运行 I/O 密集型工作负荷的 VM 提供高性能和低延迟。
 - 磁盘可以是托管磁盘或非托管磁盘：
-    - **非托管磁盘：** VM 使用的传统磁盘类型。 对于这些磁盘，可以创建自己的存储帐户，并在创建磁盘时指定该存储帐户。 然后需要确定如何最大限度地利用 VM 的存储资源。
-    - **托管磁盘：** Azure 将为你创建和管理存储帐户。 你只需指定磁盘大小和性能层，Azure 就会自动创建托管磁盘。 当你添加磁盘和缩放 VM 时，Azure 将处理存储帐户。
+  - **非托管磁盘：** VM 使用的传统磁盘类型。 对于这些磁盘，可以创建自己的存储帐户，并在创建磁盘时指定该存储帐户。 然后需要确定如何最大限度地利用 VM 的存储资源。
+  - **托管磁盘：** Azure 将为你创建和管理存储帐户。 你只需指定磁盘大小和性能层，Azure 就会自动创建托管磁盘。 当你添加磁盘和缩放 VM 时，Azure 将处理存储帐户。
 
 有关磁盘存储和 VM 可用的磁盘类型的详细信息，请参阅以下文章：
 
@@ -173,7 +173,7 @@ Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure 
 - [适用于 Linux VM 的 Azure 托管磁盘](../virtual-machines/linux/managed-disks-overview.md)
 - [VM 可用的磁盘类型](../virtual-machines/windows/disks-types.md)
 
-### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>备份和还原使用高级存储的 Azure VM 
+### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>备份和还原使用高级存储的 Azure VM
 
 可以通过 Azure 备份来备份使用高级存储的 Azure VM：
 
@@ -201,13 +201,11 @@ Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure 
 
 - 查看支持矩阵，以[了解备份方案支持的功能和限制](backup-support-matrix.md)。
 - 为以下方案之一设置备份：
-    - [备份 Azure VM](backup-azure-arm-vms-prepare.md)。
-    - 不使用备份服务器[直接备份 Windows 计算机](tutorial-backup-windows-server-to-azure.md)。
-    - [设置 MABS](backup-azure-microsoft-azure-backup.md) 以备份到 Azure，然后将工作负荷备份到 MABS。
-    - [设置 DPM](backup-azure-dpm-introduction.md) 以备份到 Azure，然后将工作负荷备份到 DPM。
-
+  - [备份 Azure VM](backup-azure-arm-vms-prepare.md)。
+  - 不使用备份服务器[直接备份 Windows 计算机](tutorial-backup-windows-server-to-azure.md)。
+  - [设置 MABS](backup-azure-microsoft-azure-backup.md) 以备份到 Azure，然后将工作负荷备份到 MABS。
+  - [设置 DPM](backup-azure-dpm-introduction.md) 以备份到 Azure，然后将工作负荷备份到 DPM。
 
 [green]: ./media/backup-architecture/green.png
 [yellow]: ./media/backup-architecture/yellow.png
 [red]: ./media/backup-architecture/red.png
-

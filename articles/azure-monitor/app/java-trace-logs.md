@@ -12,19 +12,22 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: ac9bd6021b5fcec36e3aadfdf4c30020971f3be5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 99a18125fa5ce07a46fcc1af554fd03746ebf110
+ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299251"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72038149"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。
 
+> [!TIP]
+> 只需为应用程序设置一次 Application Insights 检测密钥。 如果使用的是 Java 弹簧等框架，则可能已在应用配置中的其他位置注册了该密钥。
+
 ## <a name="using-the-application-insights-java-agent"></a>使用 Application Insights Java 代理
 
-可以通过在`AI-Agent.xml`文件中启用该功能, 将 Application Insights Java 代理配置为自动捕获日志:
+可以通过在 `AI-Agent.xml` 文件中启用该功能，将 Application Insights Java 代理配置为自动捕获日志：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

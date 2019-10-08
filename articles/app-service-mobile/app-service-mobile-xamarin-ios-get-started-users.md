@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: fa1f4bae314025a71568e1e04cbf950ebbe26dbe
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1af488d4f170508bbf586621d00e9a92657983ca
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446240"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024810"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center 投入新和集成服务移动应用开发的核心。 开发人员可以使用**构建**，**测试**并**分发**服务来设置持续集成和交付管道。 应用程序部署后，开发人员可以监视状态和其应用程序使用的使用情况**Analytics**并**诊断**服务，并与用户使用**推送**服务。 开发人员还可以利用**身份验证**其用户进行身份验证并**数据**服务以持久保存并在云中的应用程序数据同步。 请查看[App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-ios-get-started-users)今天。
->
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
+> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 
@@ -43,13 +43,13 @@ ms.locfileid: "67446240"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择“应用服务”。
 
-2. 单击“身份验证/授权”  菜单选项。
+2. 单击“身份验证/授权”菜单选项。
 
-3. 在“允许的外部重定向 URL”  中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案  。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
-4. 单击“确定”。 
+4. 单击 **“确定”** 。
 
-5. 单击“ **保存**”。
+5. 单击“保存”。
 
 ## <a name="restrict-permissions-to-authenticated-users"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -91,7 +91,7 @@ ms.locfileid: "67446240"
     ```
 
     > [!NOTE]
-    > 如果使用 Google 以外的标识提供程序，请将以上传递至 LoginAsync  的值更改为以下值之一：MicrosoftAccount、Twitter、Google 或 WindowsAzureActiveDirectory     。
+    > 如果使用 Google 以外的标识提供程序，请将以上传递至 LoginAsync的值更改为以下值之一：MicrosoftAccount、Twitter、Google 或 WindowsAzureActiveDirectory。
 
 3. 打开 **QSTodoListViewController.cs**。 修改 **ViewDidLoad** 的方法定义，删除接近结尾处对 **RefreshAsync()** 的调用：
 
@@ -126,7 +126,7 @@ ms.locfileid: "67446240"
     // rest of RefreshAsync method
     ```
 
-5. 打开 AppDelegate.cs，添加以下方法  ：
+5. 打开 AppDelegate.cs，添加以下方法：
 
     ```csharp
     public static Func<NSUrl, bool> ResumeWithURL;
@@ -137,7 +137,7 @@ ms.locfileid: "67446240"
     }
     ```
 
-6. 打开 Info.plist 文件，导航到“高级”部分中的“URL 类型”    。 现在配置 URL 类型的标识符  和 URL 方案  ，然后单击“添加 URL 类型”  。 URL 方案  应与你的 {url_scheme_of_your_app} 相同。
+6. 打开 Info.plist 文件，导航到“高级”部分中的“URL 类型”。 现在配置 URL 类型的标识符和 URL 方案，然后单击“添加 URL 类型”。 URL 方案应与你的 {url_scheme_of_your_app} 相同。
 7. 在已连接到 Mac 主机的 Visual Studio 中或在 Visual Studio for Mac 中，针对设备或模拟器运行客户端项目。 验证应用程序是否未显示任何数据。
 
     通过向下拉动项列表来执行刷新笔势，这会导致显示登录屏幕。 成功输入有效的凭据后，应用会显示待办事项列表，用户可以对数据进行更新。
