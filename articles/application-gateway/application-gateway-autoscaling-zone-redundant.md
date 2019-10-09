@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/13/2019
+ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: b97dab0f41915ac6193c35cad9a6af812b16fd4a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f58ac4448f50e8e02f2838fef02c9f884f69266b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104889"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177450"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -35,7 +35,7 @@ ms.locfileid: "71104889"
 
 ## <a name="supported-regions"></a>支持的区域
 
-Standard_v2 和 WAF_v2 SKU 在以下区域中提供：美国中北部、美国中南部、美国西部、美国西部2、美国东部、美国东部2、美国中部、北欧、西欧、东南亚、法国中部、英国西部、日本东部、日本西部、澳大利亚东部、澳大利亚东南部、加拿大中部、加拿大东部、东亚、韩国中央、韩国南部、印度南部、英国南部、印度中部、印度西部、印度南部。
+Standard_v2 和 WAF_v2 SKU 在以下区域中提供：美国中北部、美国中南部、美国西部、美国西部2、美国东部、美国东部2、美国中部、北欧、西欧、东南亚、法国中部、英国西部、日本东部、日本西部、澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、东部亚洲、韩国中部、韩国南部、印度南部、英国南部、印度中部、印度西部、印度南部。
 
 ## <a name="pricing"></a>定价
 
@@ -118,7 +118,7 @@ Standard_v2 和 WAF_v2 SKU 在以下区域中提供：美国中北部、美国�
 | 区域冗余                                   |          | &#x2713; |
 | 静态 VIP                                        |          | &#x2713; |
 | Azure Kubernetes 服务 (AKS) 入口控制器 |          | &#x2713; |
-| Azure Key Vault 集成                       |          | &#x2713; |
+| Azure 密钥保管库集成                       |          | &#x2713; |
 | 重写 HTTP(S) 标头                           |          | &#x2713; |
 | 基于 URL 的路由                                 | &#x2713; | &#x2713; |
 | 多站点托管                             | &#x2713; | &#x2713; |
@@ -130,7 +130,7 @@ Standard_v2 和 WAF_v2 SKU 在以下区域中提供：美国中北部、美国�
 | 自定义错误页                                | &#x2713; | &#x2713; |
 | WebSocket 支持                                 | &#x2713; | &#x2713; |
 | HTTP/2 支持                                    | &#x2713; | &#x2713; |
-| 连接排出                               | &#x2713; | &#x2713; |
+| 连接清空                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
 > 自动缩放 v2 SKU 现在支持使用[默认的运行状况探测](application-gateway-probe-overview.md#default-health-probe)自动监视后端池中所有资源的运行状况，并突出显示那些被视为不正常的后端成员。 对于不使用任何自定义探测配置的后端，系统会自动配置默认的运行状况探测。 有关详细信息，请参阅[应用程序网关中的运行状况探测](application-gateway-probe-overview.md)。
@@ -144,7 +144,7 @@ Standard_v2 和 WAF_v2 SKU 在以下区域中提供：美国中北部、美国�
 |应用程序网关子网上的用户定义路由 (UDR)|不支持|
 |入站端口范围的 NSG| 对于 Standard_v2 SKU，为 - 65200 到 65535<br>对于标准 SKU，为 - 65503 到 65534<br>有关详细信息，请参阅[常见问题](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
 |Azure 诊断中的性能日志|不受支持。<br>应当使用 Azure 指标。|
-|帐单|我们已安排在 2019 年 7 月 1 日开始计费。|
+|计费|我们已安排在 2019 年 7 月 1 日开始计费。|
 |FIPS 模式|目前不支持。|
 |“仅 ILB”模式|目前不支持。 同时支持公共和 ILB 模式。|
 |Netwatcher 集成|不受支持。|

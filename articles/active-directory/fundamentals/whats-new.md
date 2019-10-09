@@ -16,16 +16,16 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2598ce01c749574833d53133ed3aced184e71737
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 616a637df20e43c20faadaf3db9243c28f94de34
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694601"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174727"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
->通过复制并粘贴此 URL，获取有关何时通过复制并粘贴此 URL 来`https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us`重新访问![此页面的通知](./media/whats-new/feed-icon-16x16.png) ：到 rss 源读者图标源读者。
+>通过复制并粘贴以下 URL，获取有关何时通过复制并粘贴此 URL 来重新访问此页的通知： `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` 到 @no__t 1RSS 源读取器图标 @ no__t 源读取器。
 
 Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
@@ -137,7 +137,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 **服务类别：** 其他  
 **产品功能：** 目录
 
-我们发布了自动升级客户的更新版本 Azure AD Connect。 此新版本包括几项新功能、改进和 bug 修复。 有关此新版本的详细信息，请参阅 [Azure AD Connect：版本发布历史记录](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#14x0)。
+我们发布了自动升级客户的更新版本 Azure AD Connect。 此新版本包括几项新功能、改进和 bug 修复。 有关此新版本的详细信息，请参阅 [Azure AD Connect：版本发布历史记录](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#14250)。
 
 ---
 
@@ -167,7 +167,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 
 ## <a name="august-2019"></a>2019 年 8 月
 
-### <a name="plan-for-change-deprecation-of-the-power-bi-content-packs"></a>计划更改:弃用 Power BI 内容包
+### <a name="plan-for-change-deprecation-of-the-power-bi-content-packs"></a>计划更改：弃用 Power BI 内容包
 
 **类型：** 更改计划  
 **服务类别：** 报告  
@@ -262,7 +262,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 
 向你的组织注册了移动应用的用户现在可以通过从 Microsoft Authenticator 应用批准通知或通过从其移动应用或硬件令牌输入代码来重置其自己的密码。
 
-有关详细信息，请[参阅工作原理：Azure AD 自助式密码重置](https://aka.ms/authappsspr)。 有关用户体验的详细信息，请参阅[重置你自己的工作或学校密码概述](https://docs.microsoft.com/azure/active-directory/user-help/user-help-password-reset-overview)。
+有关详细信息，请参阅 [How：Azure AD 自助式密码重置](https://aka.ms/authappsspr)。 有关用户体验的详细信息，请参阅[重置你自己的工作或学校密码概述](https://docs.microsoft.com/azure/active-directory/user-help/user-help-password-reset-overview)。
 
 ---
 
@@ -272,7 +272,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 **服务类别：** 身份验证（登录）  
 **产品功能：** 用户身份验证
 
-从 Azure AD 身份验证库（ADAL.NET）第5.0.0 版-预览版开始，应用开发人员必须[为 web 应用和 Web api 每个帐户序列化一个缓存](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api)。 否则，某些使用代理[流](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow)的方案以及某些特定用例`UserAssertion`可能会导致权限提升。 为避免出现这种情况，ADAL.NET 会为代表方案忽略用于 dotnet （MSAL.NET）共享缓存的 Microsoft 身份验证库。
+从 Azure AD 身份验证库（ADAL.NET）第5.0.0 版-预览版开始，应用开发人员必须[为 web 应用和 Web api 每个帐户序列化一个缓存](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api)。 否则，某些使用代理[流](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow)的方案以及 `UserAssertion` 的某些特定用例可能会导致权限提升。 为避免出现这种情况，ADAL.NET 会为代表方案忽略用于 dotnet （MSAL.NET）共享缓存的 Microsoft 身份验证库。
 
 有关此问题的详细信息，请参阅[Azure Active Directory Authentication Library 提升权限漏洞](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1258)。
 
@@ -292,7 +292,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 
 ---
 
-### <a name="new-versions-of-the-azuread-powershell-and-azureadpreview-powershell-modules-are-available"></a>提供了新版本的 AzureAD PowerShell 和 AzureADPreview PowerShell 模块
+### <a name="new-versions-of-the-azuread-powershell-and-azureadpreview-powershell-modules-are-available"></a>提供新版 AzureAD PowerShell 和 AzureADPreview PowerShell 模块
 
 **类型：** 已更改的功能  
 **服务类别：** 其他  
@@ -300,7 +300,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 
 AzureAD 和 AzureAD 预览版 PowerShell 模块的新更新可用：
 
-- 已将`-Filter`新参数添加到 AzureAD `Get-AzureADDirectoryRole`模块中的参数。 此参数可帮助你筛选 cmdlet 返回的目录角色。
+- 已将新的 `-Filter` 参数添加到 AzureAD 模块中的 `Get-AzureADDirectoryRole` 参数。 此参数可帮助你筛选 cmdlet 返回的目录角色。
 - 新的 cmdlet 已添加到 AzureADPreview 模块中，可帮助定义和分配 Azure AD 中的自定义角色，其中包括：
 
     - `Get-AzureADMSRoleAssignment`
@@ -325,19 +325,19 @@ AzureAD 和 AzureAD 预览版 PowerShell 模块的新更新可用：
 
 ---
 
-### <a name="new-microsoft-graph-app-permission-available-for-use-with-access-reviews"></a>可以与访问评审一起使用的新 Microsoft Graph 应用权限
+### <a name="new-microsoft-graph-app-permission-available-for-use-with-access-reviews"></a>新 Microsoft Graph 应用权限可与访问评审一起使用
 
 **类型：** 已更改的功能  
 **服务类别：** 访问评审  
 **产品功能：** 标识监管
 
-我们引入了新的 Microsoft Graph 应用权限`AccessReview.ReadWrite.Membership`，它允许应用自动创建和检索组成员身份和应用分配的访问评审。 此权限可由计划作业或自动化的一部分使用，无需登录的用户上下文。
+我们引入了新的 Microsoft Graph 应用程序权限，`AccessReview.ReadWrite.Membership`，它允许应用自动创建和检索组成员身份和应用分配的访问评审。 此权限可由计划作业或自动化的一部分使用，无需登录的用户上下文。
 
 有关详细信息，请参阅[示例如何使用 PowerShell 博客创建 Azure AD 访问评审 Microsoft Graph 应用权限](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-how-to-create-Azure-AD-access-reviews-using-Microsoft/m-p/807241)。
 
 ---
 
-### <a name="azure-ad-activity-logs-are-now-available-for-government-cloud-instances-in-azure-monitor"></a>Azure AD 活动日志现在适用于 Azure Monitor 中的政府云实例
+### <a name="azure-ad-activity-logs-are-now-available-for-government-cloud-instances-in-azure-monitor"></a>Azure AD 活动日志现在可用于 Azure Monitor 中的政府云实例
 
 **类型：** 已更改的功能  
 **服务类别：** 报告  
@@ -357,7 +357,7 @@ AzureAD 和 AzureAD 预览版 PowerShell 模块的新更新可用：
 
 2019年9月25日，我们将关闭用于注册和管理用户安全信息的旧的、不安全的安全信息体验，并只启用新的[增强版本](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271)。 这意味着你的用户将无法再使用旧体验。
 
-有关增强的安全信息体验的详细信息，请参阅我们的[管理员文档](https://aka.ms/securityinfodocs) 和我们的[用户文档](https://aka.ms/securityinfoguide)。
+有关增强的安全信息体验的详细信息，请参阅我们的[管理员文档](https://aka.ms/securityinfodocs) and 我们的[用户文档](https://aka.ms/securityinfoguide)。
 
 #### <a name="to-turn-on-this-new-experience-you-must"></a>若要启用这种新体验，你必须：
 
@@ -374,11 +374,11 @@ AzureAD 和 AzureAD 预览版 PowerShell 模块的新更新可用：
     保存设置后，将无法再访问旧的安全信息体验。
 
 >[!Important]
->如果未在2019年9月25日之前完成这些步骤，则会自动为你的 Azure Active Directory 租户启用增强体验。 如果有疑问，请通过联系我们registrationpreview@microsoft.com。
+>如果未在2019年9月25日之前完成这些步骤，则会自动为你的 Azure Active Directory 租户启用增强体验。 如果有疑问，请在 registrationpreview@microsoft.com 联系我们。
 
 ---
 
-### <a name="authentication-requests-using-post-logins-will-be-more-strictly-validated"></a>使用 POST 登录名的身份验证请求将受到严格验证
+### <a name="authentication-requests-using-post-logins-will-be-more-strictly-validated"></a>将更严格地验证使用 POST 登录的身份验证请求
 
 **类型：** 已更改的功能  
 **服务类别：** 身份验证（登录）  
@@ -392,7 +392,7 @@ AzureAD 和 AzureAD 预览版 PowerShell 模块的新更新可用：
 
 ## <a name="july-2019"></a>2019 年 7 月
 
-### <a name="plan-for-change-application-proxy-service-update-to-support-only-tls-12"></a>计划更改:应用程序代理服务更新，仅支持 TLS 1。2
+### <a name="plan-for-change-application-proxy-service-update-to-support-only-tls-12"></a>计划更改：应用程序代理服务更新，仅支持 TLS 1。2
 
 **类型：** 更改计划  
 **服务类别：** 应用代理  
@@ -406,7 +406,7 @@ AzureAD 和 AzureAD 预览版 PowerShell 模块的新更新可用：
 
 ---
 
-### <a name="plan-for-change-design-updates-are-coming-for-the-application-gallery"></a>计划更改:适用于应用程序库的设计更新
+### <a name="plan-for-change-design-updates-are-coming-for-the-application-gallery"></a>计划更改：适用于应用程序库的设计更新
 
 **类型：** 更改计划  
 **服务类别：** 企业应用  
@@ -416,7 +416,7 @@ AzureAD 和 AzureAD 预览版 PowerShell 模块的新更新可用：
 
 ---
 
-### <a name="plan-for-change-removal-of-the-mfa-server-ip-address-from-the-office-365-ip-address"></a>计划更改:从 Office 365 IP 地址中删除 MFA 服务器 IP 地址
+### <a name="plan-for-change-removal-of-the-mfa-server-ip-address-from-the-office-365-ip-address"></a>计划更改：从 Office 365 IP 地址中删除 MFA 服务器 IP 地址
 
 **类型：** 更改计划  
 **服务类别：** MFA  
@@ -434,7 +434,7 @@ AzureAD 和 AzureAD 预览版 PowerShell 模块的新更新可用：
 
 2019年7月26日，我们更改了我们通过[客户端凭据 grant](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)提供仅限应用的令牌的方式。 以前，无论客户端应用是否在租户中，应用都可以获取令牌来调用其他应用。 我们更新了此行为，因此只能由资源租户中存在的客户端应用调用单租户资源（有时称为 Web Api）。
 
-如果你的应用程序不在资源租户中，你将收到一条错误消息， `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.`指出，若要解决此问题，必须使用[管理员许可终结点](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint)或[通过 PowerShell 在租户中创建客户端应用服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)，确保你的租户已为租户提供了在租户内操作的权限。
+如果你的应用程序不在资源租户中，你将收到一条错误消息，`The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` 若要解决此问题，你必须使用[管理员许可终结点](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint)或[通过 PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)在租户中创建客户端应用服务主体，这可以确保你的租户授予应用在租户内操作的权限。
 
 有关详细信息，请参阅[身份验证的新增功能？](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant)。
 
@@ -469,7 +469,7 @@ Azure AD 客户现在可以设置策略以管理其组织的用户和组的 FIDO
 
 ---
 
-### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>自动执行这些新支持的 SaaS 应用的用户帐户预配
+### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>自动为这些新支持的 SaaS 应用执行用户帐户预配
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -493,7 +493,7 @@ Azure AD 客户现在可以设置策略以管理其组织的用户和组的 FIDO
 
 ---
 
-### <a name="new-azure-ad-domain-services-service-tag-for-network-security-group"></a>网络安全组的新 Azure AD 域服务服务标记
+### <a name="new-azure-ad-domain-services-service-tag-for-network-security-group"></a>网络安全组的新 Azure AD 域服务的服务标记
 
 **类型：** 新功能  
 **服务类别：** Azure AD 域服务  
@@ -573,7 +573,7 @@ Azure AD 客户现在可以设置策略以管理其组织的用户和组的 FIDO
 
 ---
 
-### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>自动执行这些新支持的 SaaS 应用的用户帐户预配
+### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>自动为这些新支持的 SaaS 应用执行用户帐户预配
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -597,7 +597,7 @@ Azure AD 客户现在可以设置策略以管理其组织的用户和组的 FIDO
 
 ---
 
-### <a name="new-check-for-duplicate-group-names-in-the-azure-ad-portal"></a>新检查 Azure AD 门户中的重复组名称
+### <a name="new-check-for-duplicate-group-names-in-the-azure-ad-portal"></a>Azure AD 门户中对重复的组名称的全新检查
 
 **类型：** 新功能  
 **服务类别：** 组管理  
@@ -615,9 +615,9 @@ Azure AD 客户现在可以设置策略以管理其组织的用户和组的 FIDO
 **服务类别：** 身份验证（登录）  
 **产品功能：** 用户身份验证
 
-Azure AD 应用现在可以使用静态查询参数（例如， `https://contoso.com/oauth2?idp=microsoft`）为 OAuth 2.0 请求注册和使用回复（重定向） uri。 静态查询参数服从于回复 URI 的字符串匹配，就像回复 URI 的任何其他部分一样。 如果没有任何已注册的字符串与 URL 解码的重定向 uri 匹配，则会拒绝该请求。 如果找到了回复 URI，则使用整个字符串重定向用户，包括静态查询参数。
+Azure AD 应用现在可以使用静态查询参数（例如，`https://contoso.com/oauth2?idp=microsoft`）为 OAuth 2.0 请求注册并使用回复（重定向） Uri。 静态查询参数服从于回复 URI 的字符串匹配，就像回复 URI 的任何其他部分一样。 如果没有任何已注册的字符串与 URL 解码的重定向 uri 匹配，则会拒绝该请求。 如果找到了回复 URI，则使用整个字符串重定向用户，包括静态查询参数。
 
-动态回复 Uri 仍被禁止，因为它们表示安全风险，不能用于在身份验证请求中保留状态信息。 为此，请使用`state`参数。
+动态回复 Uri 仍被禁止，因为它们表示安全风险，不能用于在身份验证请求中保留状态信息。 为此，请使用 @no__t 的参数。
 
 目前，Azure 门户的应用注册屏幕仍会阻止查询参数。 但是，您可以手动编辑应用程序清单以在应用程序中添加和测试查询参数。 有关详细信息，请参阅[身份验证的新增功能？](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#redirect-uris-can-now-contain-query-string-parameters)。
 
@@ -675,7 +675,7 @@ Azure AD 应用现在可以使用静态查询参数（例如， `https://contoso
 
 ---
 
-### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>自动执行这些新支持的 SaaS 应用的用户帐户预配
+### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>自动为这些新支持的 SaaS 应用执行用户帐户预配
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -707,7 +707,7 @@ Azure AD 应用现在可以使用静态查询参数（例如， `https://contoso
 
 ---
 
-### <a name="company-branding-now-appears-on-sign-out-and-error-screens"></a>公司品牌现在显示在 "注销" 和 "错误" 屏幕上
+### <a name="company-branding-now-appears-on-sign-out-and-error-screens"></a>公司品牌现在显示在注销和错误屏幕上
 
 **类型：** 已更改的功能  
 **服务类别：** 身份验证（登录）  
@@ -1015,7 +1015,7 @@ Azure AD 访问评审中的新更新可让你：
 **服务类别：** AD Sync  
 **产品功能：** 平台
 
-Azure AD Connect 正在转换电子邮件警报系统，可能会向某些客户显示新的电子邮件发件人。 若要解决此情况，你`azure-noreply@microsoft.com`必须将添加到你的组织的允许列表，否则无法继续接收来自 Office 365、Azure 或你的同步服务的重要警报。
+Azure AD Connect 正在转换电子邮件警报系统，可能会向某些客户显示新的电子邮件发件人。 若要解决此情况，你必须将 @no__t 0 添加到你的组织的允许列表，否则无法继续接收来自 Office 365、Azure 或你的同步服务的重要警报。
 
 ---
 

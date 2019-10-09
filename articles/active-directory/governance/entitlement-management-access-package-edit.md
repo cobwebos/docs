@@ -16,12 +16,12 @@ ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 864a6476ad894952a2ef877d534ffe8a86e07819
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326383"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170031"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>在 Azure AD 权利管理（预览版）中编辑和管理现有的访问包
 
@@ -309,7 +309,7 @@ ms.locfileid: "71326383"
 
 将整个 "我的访问门户" 链接发送到内部业务合作伙伴时，必须将其复制到一起，这一点很重要。 这可确保合作伙伴能够访问你的目录门户来发出请求。 
 
-该链接将以 "myaccess" 开头，包含目录提示，并以访问包 id 结尾。请确保该链接包括以下所有内容：
+该链接将以 "myaccess" 开头，包含目录提示，并以访问包 ID 结尾。 请确保该链接包括以下所有内容：
 
  `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -367,5 +367,4 @@ ms.locfileid: "71326383"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [添加目录所有者或访问包管理者](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [请求过程和电子邮件通知](entitlement-management-process.md)

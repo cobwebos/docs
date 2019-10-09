@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: ce59c238e50a1be6879b07e959b236f6181a8ce4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 98a811508d5fa65135c224536b668145ea0808d0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703257"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176068"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>使用 Azure 逻辑应用在 Azure Blob 存储中创建和管理 Blob
 
@@ -24,10 +24,11 @@ ms.locfileid: "71703257"
 
 假定你有一个在 Azure 网站上进行更新的工具。 它充当逻辑应用的触发器。 当此事件发生时，可以让逻辑应用更新 Blob 存储容器中的某些文件，这是逻辑应用中的一项操作。
 
-> [!NOTE]
+> [!IMPORTANT]
 >
-> 逻辑应用无法直接访问具有[防火墙规则](../storage/common/storage-network-security.md)且位于同一区域中的 Azure 存储帐户。 但是，逻辑应用可以访问位于不同区域中的 Azure 存储帐户，因为公共 IP 地址用于跨区域通信。 只需确保在[区域中的托管连接器上允许出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)。 或者，你可以使用以下两个高级选项：
->
+> 逻辑应用无法直接访问具有[防火墙规则](../storage/common/storage-network-security.md)且位于同一区域中的 Azure 存储帐户。 但是，如果你[为区域中的托管连接器允许出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)，则逻辑应用可以访问不同区域中的存储帐户，但使用 Azure 表存储连接器或 Azure 队列存储连接器时除外。 若要访问表存储或队列存储，你仍可以使用 HTTP 触发器和操作。 
+> 否则，可以使用此处的更高级选项：
+> 
 > * 创建[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，该环境可以连接到 Azure 虚拟网络中的资源。
 >
 > * 如果使用专用层进行 API 管理，则可以通过使用 API 管理并允许通过防火墙使用后端的 IP 地址，来存储 API 的前端。 基本上，将 API 管理使用的 Azure 虚拟网络添加到存储帐户的防火墙设置。 然后，可以使用 API 管理操作或 HTTP 操作来调用 Azure 存储 Api。 但是，如果选择此选项，则必须自行处理身份验证过程。 有关详细信息，请参阅[简单的企业集成体系结构](https://aka.ms/aisarch)。
@@ -96,7 +97,7 @@ ms.locfileid: "71703257"
 
    ![添加操作](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
-   若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 选择出现的加号（ **+** ），然后选择 "**添加操作**"。
+   若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 依次选择出现的加号 ( **+** ) 和“添加操作”。
 
 3. 在搜索框中，输入“azure blob”作为筛选器。 从操作列表中选择所需的操作。
 

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: a3d0d6077da4df9a7f0d1b246c9752d38488a175
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.author: atsenthi
+ms.openlocfilehash: c37ee8177ba31ac8a5da90fef175a6fbd63a6d75
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963822"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167587"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>在升级应用程序期间添加或删除服务类型
@@ -88,7 +88,7 @@ app1/
 
 ## <a name="upgrade-application-parameters-independently-of-version"></a>独立于版本升级应用程序参数
 
-有时, 需要更改 Service Fabric 应用程序的参数, 而无需更改清单版本。 可以通过将 **-ApplicationParameter**标志与**Get-servicefabricapplicationupgrade** Azure Service Fabric PowerShell cmdlet 一起使用来方便地完成此操作。 假设有以下属性的 Service Fabric 应用程序:
+有时，需要更改 Service Fabric 应用程序的参数，而无需更改清单版本。 可以通过将 **-ApplicationParameter** 标志与 **Start-ServiceFabricApplicationUpgrade** 一起使用来方便地完成此操作。 假设 Service Fabric 应用程序具有以下属性：
 
 ```PowerShell
 PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1
@@ -101,7 +101,7 @@ HealthState            : Ok
 ApplicationParameters  : { "ImportantParameter" = "1"; "NewParameter" = "testBefore" }
 ```
 
-现在, 使用**get-servicefabricapplicationupgrade** cmdlet 升级应用程序。 此示例显示了监视的升级, 但也可以使用不受监视的升级。 若要查看此 cmdlet 接受的标志的完整说明, 请参阅[Azure Service Fabric PowerShell 模块参考](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters)
+现在使用 **Start-ServiceFabricApplicationUpgrade** cmdlet 升级该应用程序。 此示例显示了受监视的升级，但也可以使用不受监视的升级。 若要查看此 cmdlet 接受的标志的完整说明，请参阅 [Azure Service Fabric PowerShell 模块参考](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps#parameters)
 
 ```PowerShell
 PS C:\> $appParams = @{ "ImportantParameter" = "2"; "NewParameter" = "testAfter"}
@@ -111,7 +111,7 @@ ion 1.0.0 -ApplicationParameter $appParams -Monitored
 
 ```
 
-升级后, 确认应用程序包含更新的参数和相同的版本:
+升级后，确认应用程序具有已更新的参数和相同的版本：
 
 ```PowerShell
 PS C:\> Get-ServiceFabricApplication -ApplicationName fabric:/Application1

@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: ff3ae9ec4a775e2450a552e414ec52597593dd39
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e4308f98b6e547acd4adfb62ab78c0517247d905
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604279"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177091"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>使用 Visual Studio 中的连接服务连接到计算机视觉 API
 
 本文及其同类文章提供了对认知服务计算机视觉 API 使用 Visual Studio 连接服务功能的详细信息。 安装了认知服务扩展的 Visual Studio 2017 15.7 或更高版本中均提供此功能。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 - Visual Studio 2017 版本 15.7 或更高版本，并安装有 **Web 开发**工作负荷。 [立即下载](https://visualstudio.microsoft.com/downloads/)。
@@ -33,12 +33,12 @@ ms.locfileid: "67604279"
 
 1. 创建新的 ASP.NET Core Web 项目。 使用空项目模板。 
 
-1. 在“解决方案资源管理器”中，选择“添加” > “连接服务”    。
+1. 在“解决方案资源管理器”中，选择“添加” > “连接服务”。
    此时会显示“连接服务”页，其中包含可添加到项目的服务。
 
    ![右键单击 Visual Studio 项目上的菜单：“添加”>“连接服务”](../media/vs-common/Connected-Service-Menu.PNG)
 
-1. 在可用服务菜单中，选择“认知服务计算机视觉 API”  。
+1. 在可用服务菜单中，选择“认知服务计算机视觉 API”。
 
    ![“连接的服务”菜单：列出“分析图像...”](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
@@ -62,7 +62,7 @@ ms.locfileid: "67604279"
    [4/26/2018 5:15:40.286 PM] Installing NuGet package 'Microsoft.Azure.CognitiveServices.Vision.ComputerVision' version 2.1.0.
    [4/26/2018 5:15:44.117 PM] Retrieving keys...
    [4/26/2018 5:15:45.602 PM] Changing appsettings.json setting: ComputerVisionAPI_ServiceKey=<service key>
-   [4/26/2018 5:15:45.606 PM] Changing appsettings.json setting: ComputerVisionAPI_ServiceEndPoint=https://australiaeast.api.cognitive.microsoft.com/vision/v2.0
+   [4/26/2018 5:15:45.606 PM] Changing appsettings.json setting: ComputerVisionAPI_ServiceEndPoint=https://australiaeast.api.cognitive.microsoft.com/vision/v2.1
    [4/26/2018 5:15:45.609 PM] Changing appsettings.json setting: ComputerVisionAPI_Name=WebApplication-Core-ComputerVision_ComputerVisionAPI
    [4/26/2018 5:15:46.747 PM] Successfully added Computer Vision API to the project.
    ```
@@ -90,11 +90,11 @@ ms.locfileid: "67604279"
       }
    ```
 
-1. 在项目的 wwwroot 文件夹中，添加图像文件夹，并向 wwwroot 文件夹添加图像文件。 例如，可使用此[计算机视觉 API 页](https://azure.microsoft.com/services/cognitive-services/computer-vision/)中的一张图像。 右键单击其中一张图像，将其保存到本地硬盘驱动器，然后在解决方案资源管理器中右键单击图像文件夹，选择“添加” > “现有项”，将其添加到项目中   。 项目在解决方案资源管理器中应如下所示： 
+1. 在项目的 wwwroot 文件夹中，添加图像文件夹，并向 wwwroot 文件夹添加图像文件。 例如，可使用此[计算机视觉 API 页](https://azure.microsoft.com/services/cognitive-services/computer-vision/)中的一张图像。 右键单击其中一张图像，将其保存到本地硬盘驱动器，然后在解决方案资源管理器中右键单击图像文件夹，选择“添加” > “现有项”，将其添加到项目中。 项目在解决方案资源管理器中应如下所示： 
   
    ![选择了一个图像文件的解决方案资源管理器视图的屏幕截图](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
-1. 右键单击图像文件，选择“属性”，然后选择“如果较新则复制”  。 
+1. 右键单击图像文件，选择“属性”，然后选择“如果较新则复制”。 
 
    ![图像属性窗口；“复制到输出目录”设置为“如果较新则复制”](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
@@ -255,8 +255,8 @@ ms.locfileid: "67604279"
 不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
-2. 选择“删除资源组”  。
-3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”   。
+2. 选择“删除资源组”。
+3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

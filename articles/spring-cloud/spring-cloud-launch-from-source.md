@@ -1,23 +1,26 @@
 ---
-title: 从源代码启动春季 Cloud 应用程序
+title: 快速入门：从源代码启动春季 Cloud 应用程序
 description: 了解如何直接从源代码启动 Azure 春季云应用程序
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 9/27/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a161b38ab6d23ad86df1ef7e843640276ba486bf
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 445cac1494828362d54a8c15e68d27f01b165841
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038803"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170538"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>从源代码启动春季 Cloud 应用程序
 
 使用 Azure 弹簧 Cloud，可以直接从 java 源代码或预生成的 JAR 启动应用程序。 本文将指导你完成所需的步骤。
 
-## <a name="initial-requirements"></a>初始要求
+## <a name="prerequisites"></a>先决条件
+
+>[!Note]
+> 开始本快速入门之前，请确保 Azure 订阅有权访问 Azure 春季 Cloud。  作为预览服务，我们要求你联系我们，以便我们可以将你的订阅添加到我们的允许列表。  如果你想要探索 Azure 春季云的功能，请 @no__t，请参阅此窗体 @ no__t-1。
 
 在开始之前，请确保你的 Azure 订阅具有所需的依赖项：
 

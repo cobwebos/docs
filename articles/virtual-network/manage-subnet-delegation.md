@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2019
 ms.author: kumud
-ms.openlocfilehash: 9bf44aa5ab18f94ec91650548dc13360ce1b1f3d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5fa340fc3c839d74f292f551b73184ea4df1c0f1
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71938494"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72175949"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>添加或删除子网委派
 
@@ -36,7 +36,7 @@ ms.locfileid: "71938494"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 姓名 | 输入 *MyVirtualNetwork*。 |
+    | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 *10.0.0.0/16*。 |
     | 订阅 | 选择订阅。|
     | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
@@ -45,6 +45,12 @@ ms.locfileid: "71938494"
     | 子网 - 地址范围 | 输入 *10.0.0.0/24*。 |
     |||
 1. 将 rest 保留为默认值，然后选择 "**创建**"。
+
+## <a name="permissons"></a>权限
+
+如果你未创建要委派给 Azure 服务的子网，则需要以下权限： `Microsoft.Network/virtualNetworks/subnets/write`。
+
+内置[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色还包含所需的权限。
 
 ## <a name="delegate-a-subnet-to-an-azure-service"></a>将子网委托给 Azure 服务
 

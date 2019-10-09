@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: a9ef2cd695f9591f299bb85b95d14d60b987c38d
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1654a7be8c3aba4efa6fcf96024ea987e2957e73
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258690"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173461"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>通过 Reliable Services 使用 C# 进行服务远程处理
 
@@ -36,7 +36,7 @@ ms.locfileid: "70258690"
 可通过两个简单步骤为服务设置远程处理：
 
 1. 为服务创建要实现的接口。 此接口定义可供服务的远程过程调用使用的方法。 这些方法必须是返回任务的异步方法。 此接口必须实现 `Microsoft.ServiceFabric.Services.Remoting.IService` 以表明此服务具有远程处理接口。
-2. 在服务中使用远程处理侦听器。 远程侦听器是提供远程处理功能的 `ICommunicationListener` 实现。 `Microsoft.ServiceFabric.Services.Remoting.Runtime` 命名空间包含一个同时适用于无状态服务和有状态服务的扩展方法 `CreateServiceRemotingListener`，可用于创建使用默认远程处理传输协议的远程处理侦听器。
+2. 在服务中使用远程处理侦听器。 远程侦听器是提供远程处理功能的 `ICommunicationListener` 实现。 `Microsoft.ServiceFabric.Services.Remoting.Runtime` 命名空间包含一个同时适用于无状态服务和有状态服务的扩展方法 `CreateServiceRemotingInstanceListeners`，可用于创建使用默认远程处理传输协议的远程处理侦听器。
 
 >[!NOTE]
 >`Remoting` 命名空间可用作名为 `Microsoft.ServiceFabric.Services.Remoting` 的单独 NuGet 包。
@@ -322,7 +322,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 若要从 V1 升级到 V2（接口兼容，称为 V2_1），必须执行双步升级。 请按顺序执行以下步骤。
 
 > [!NOTE]
-> 从 V1 升级到 V2 时，请确保`Remoting`将命名空间更新为使用 V2。 例如："FabricTransport" 的 "ServiceFabric"。
+> 从 V1 升级到 V2 时，请确保更新 `Remoting` 命名空间以使用 V2。 例如：'Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client`
 >
 >
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 虚拟机规模集的安全控制
-description: 用于评估 Azure 虚拟机规模集的安全控制清单
+description: 用于评估 Azure 虚拟机规模集的安全控制的清单
 services: virtual-machine-scale-sets
 ms.service: virtual-machine-scale-sets
 documentationcenter: ''
@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 570bf7968b3d6fac44dc770a7fda1e0784dbdcf9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 7d7e69e8ad0c5b14ac7ed8b941a7949f4f675812
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886508"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176772"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的安全控制
 
@@ -31,7 +31,7 @@ ms.locfileid: "70886508"
 | 网络隔离和防火墙支持| 是 |  |
 | 强制隧道支持| 是 | 请参阅[使用 Azure 资源管理器部署模型配置强制隧道](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm)。 |
 
-## <a name="monitoring--logging"></a>监视 & 日志记录
+## <a name="monitoring--logging"></a>监视和日志记录
 
 | 安全控制 | Yes/No | 说明|
 |---|---|--|
@@ -50,9 +50,9 @@ ms.locfileid: "70886508"
 
 | 安全控制 | Yes/No | 说明 |
 |---|---|--|
-| 服务器端静态加密：Microsoft 托管的密钥 | 是 | 请参阅[如何在 Azure 中加密 Linux 虚拟机](/azure/virtual-machines/linux/encrypt-disks)和[加密 Windows VM 上的虚拟磁盘](/azure/virtual-machines/windows/encrypt-disks)。 |
-| 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | Azure 虚拟机支持[ExpressRoute](/azure/expressroute)和 VNet 加密。 请参阅[Vm 中的传输中加密](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。 |
-| 服务器端加密：客户托管的密钥（BYOK） | 是 | 客户托管的密钥是受支持的 Azure 加密方案;请参阅[Azure 加密概述](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。|
+| 服务器端静态加密：Microsoft 管理的密钥 | 是 | 请参阅[如何在 Azure 中加密 Linux 虚拟机](/azure/virtual-machines/linux/disk-encryption-linux)和[加密 Windows VM 上的虚拟磁盘](/azure/virtual-machines/windows/encrypt-disks)。 |
+| 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | Azure 虚拟机支持 [ExpressRoute](/azure/expressroute) 和 VNet 加密。 请参阅[Vm 中的传输中加密](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。 |
+| 服务器端静态加密：客户管理的密钥 (BYOK) | 是 | 客户托管的密钥是受支持的 Azure 加密方案;请参阅[Azure 加密概述](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。|
 | 列级加密（Azure 数据服务）| 不可用 | |
 | 加密的 API 调用| 是 | 通过 HTTPS 和 SSL。 |
 

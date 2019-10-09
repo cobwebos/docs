@@ -4,17 +4,17 @@ description: 了解 Azure Service Fabric 网格的常见问题和解答。
 services: service-fabric-mesh
 keywords: ''
 author: chackdan
-ms.author: chackdan
+ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 950f9ac89b9d3224db29b32fe2d1e403ccc98116
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: edd30dc8799ae9e5410ebc862574d632d09b9483
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143279"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168681"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>有关 Service Fabric 网格的常见问题
 
@@ -28,11 +28,11 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 ### <a name="what-is-the-cost-of-participating-in-the-preview"></a>参与预览版的成本是多少？
 
-目前可免费用于将应用程序或容器部署到网格预览。 请继续观看 5 月中的更新要启用计费。 不过，我们建议您删除的资源将部署并不会使其保持运行，除非你积极地测试它们。
+对于将应用程序或容器部署到网格预览，当前没有任何费用。 请注意中的更新可能会对计费进行支持。 但是，我们建议你删除部署的资源，而不是将其保持运行状态，除非你主动对它们进行测试。
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>内核和 RAM 的数量是否有配额限制？
 
-是的。 每个订阅的配额是：
+是。 每个订阅的配额是：
 
 - 应用程序数量：5
 - 每个应用程序的核心数：12
@@ -96,11 +96,11 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
     - 无已知限制
 
 > [!NOTE]
-> Visual Studio 工具网格尚不支持部署到 Windows Server 2019 和 1809年容器。
+> 适用于网格的 Visual Studio 工具尚不支持部署到 Windows Server 2019 和1809容器。
 
 ### <a name="what-types-of-applications-can-i-deploy"></a>可以部署哪些类型的应用程序？ 
 
-你可以部署为应用程序资源 （请参阅上面有关配额的详细信息） 放置在适合的限制范围内的容器中运行的任何内容。 如果我们检测到使用网格用于运行非法工作负荷或滥用系统 （即挖掘），然后我们保留终止您的部署和阻止列表从服务上运行你的订阅的权限。 请联系我们如果你有正在运行的特定工作负荷上的任何问题。 
+你可以部署在容器中运行的、适合于应用程序资源上的限制的任何内容（有关配额的详细信息，请参阅上文）。 如果我们检测到你正在使用网格来运行非法工作负荷或滥用系统（即挖掘），则我们保留终止你的部署并阻止列表你的订阅在服务上运行的权利。 如果对运行特定工作负荷有任何疑问，请联系我们。 
 
 ## <a name="developer-experience-issues"></a>开发人员体验问题
 
@@ -144,9 +144,9 @@ Azure 网格目前不支持跨应用程序进行 DNS 解析。
 - 将多个应用部署到一个本地群集时，请使用一个五节点群集。
 - 删除当前未测试的应用。
 
-### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>VS 工具的支持有限的 Windows 容器
+### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>VS 工具对 Windows 容器的支持有限
 
-Visual Studio 工具仅支持与 Windows Server 1709 和 1803年的基础 OS 版本现在部署 Windows 容器。 
+Visual Studio 工具仅支持使用 Windows Server 1709 和1803的基本操作系统版本部署 Windows 容器。 
 
 ## <a name="feature-gaps-and-other-known-issues"></a>功能差距和其他已知问题
 

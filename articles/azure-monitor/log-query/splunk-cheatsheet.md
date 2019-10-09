@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: fb637197139001c67a4cfa773f897e6701dc1e9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03a0d755cf6d099f07a7c6d853e1d747908eec05
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61425128"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177639"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>从 Splunk 到 Azure Monitor 日志查询
 
@@ -33,14 +33,14 @@ ms.locfileid: "61425128"
  | 部署单元  | cluster |  cluster |  Azure Monitor 允许跨群集进行任意查询， Splunk 则不允许。 |
  | 数据缓存 |  存储桶  |  缓存和保留策略 |  控制数据的保留期和缓存级别。 此设置直接影响查询性能和部署成本。 |
  | 数据的逻辑分区  |  index  |  database  |  允许数据的逻辑隔离。 这两个实现都允许跨这些分区的联合与联接。 |
- | 结构化事件元数据 | 不适用 | 表 |  Splunk 没有向事件元数据搜索语言公开的概念。 Azure Monitor 日志具有表的概念，表包含列。 每个事件实例映射到行。 |
- | 数据记录 | event | 行 |  仅限术语变化。 |
- | 数据记录属性 | 字段 |  列 |  在 Azure Monitor 中，此概念预定义为表结构的一部分。 在 Splunk 中，每个事件有自身的字段集。 |
+ | 结构化事件元数据 | 不可用 | table |  Splunk 没有向事件元数据搜索语言公开的概念。 Azure Monitor 日志具有表的概念，表包含列。 每个事件实例映射到行。 |
+ | 数据记录 | 事件 | 行 |  仅限术语变化。 |
+ | 数据记录属性 | 字段 |  column |  在 Azure Monitor 中，此概念预定义为表结构的一部分。 在 Splunk 中，每个事件有自身的字段集。 |
  | 类型 | 数据类型 |  数据类型 |  Azure Monitor 数据类型更明确，因为它们是在列中设置的。 两者都能动态处理数据类型，数据类型集（包括 JSON 支持）大致相同。 |
  | 查询和搜索  | 搜索 | query |  Azure Monitor 和 Splunk 的概念在本质上相同。 |
  | 数据引入时间 | 系统时间 | ingestion_time() |  在 Splunk 中，每个事件将获取编制事件索引时的系统时间戳。 在 Azure Monitor 中，可以定义名为 ingestion_time 的策略，用于公开可通过 ingestion_time() 函数引用的系统列。 |
 
-## <a name="functions"></a>函数
+## <a name="functions"></a>Functions
 
 下表指定了 Azure Monitor 中等效于 Splunk 函数的函数。
 
@@ -125,12 +125,12 @@ Splunk 还有一个 `eval` 函数，该函数不能与 `eval` 运算符进行比
 
 
 ### <a name="rename"></a>重命名 
-Azure Monitor 使用相同的运算符来重命名和新建字段。 Splunk 有两个独立的运算符：`eval` 和 `rename`。
+Azure Monitor 使用 @no__t 0 运算符重命名字段。 `project-rename` 允许查询利用为字段预先生成的任何索引。 Splunk 有一个 @no__t 0 运算符来执行相同的操作。
 
 | |  | |
 |:---|:---|:---|
 | Splunk | **rename** |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
-| Azure Monitor | **extend** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend exception = Date_Exception</code> |
+| Azure Monitor | **项目-重命名** | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
 | | |
 
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 15724adfc6eb875f3d2d5b6d3ecbbb54135a7265
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 90ccc89f80da7c2abce324c077f0fb1a436b8d44
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671437"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170983"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中将基础结构自动化工具与虚拟机配合使用
 若要以一致的方式大规模创建和管理 Azure 虚拟机 (VM)，通常需要某种形式的自动化。 可以通过许多工具和解决方案来自动完成整个 Azure 基础结构部署和管理生命周期。 本文介绍了一些可以在 Azure 中使用的基础结构自动化工具。 这些工具通常适合以下某个方法：
@@ -55,7 +55,7 @@ ms.locfileid: "67671437"
 ## <a name="cloud-init"></a>Cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
 
-Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装  或 yum 安装  来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
+Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 
 我们正在积极地与我们认可的 Linux 发行版合作伙伴合作，以便在 Azure 市场中提供已启用 cloud-init 的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。 了解有关 Azure 上的 cloud-init 的更多详细信息：
 
@@ -64,15 +64,15 @@ Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装  或
 
 
 ## <a name="powershell-dsc"></a>PowerShell DSC
-[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) 是一个管理平台，用于定义目标计算机的配置。 也可通过 [Open Management Infrastructure (OMI) 服务器](https://collaboration.opengroup.org/omi/)在 Linux 上使用 DSC。
+[PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) 是一个管理平台，用于定义目标计算机的配置。 也可通过 [Open Management Infrastructure (OMI) 服务器](https://collaboration.opengroup.org/omi/)在 Linux 上使用 DSC。
 
 DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 本地配置管理器 (LCM) 引擎在每个目标节点上运行，此类节点根据推送的配置处理请求的操作。 拉取服务器是一项在中心主机上运行的 Web 服务，用于存储 DSC 配置和关联的资源。 该拉取服务器与每个目标主机上的 LCM 引擎通信，提供所需的配置并报告符合性情况。
 
 了解如何：
 
 - [创建基本的 DSC 配置](https://msdn.microsoft.com/powershell/dsc/quickstarts/website-quickstart)。
-- [配置 DSC 拉取服务器](https://msdn.microsoft.com/powershell/dsc/pullserver)。
-- [使用适用于 Linux 的 DSC](https://msdn.microsoft.com/powershell/dsc/lnxgettingstarted)。
+- [配置 DSC 拉取服务器](/powershell/scripting/dsc/pull-server/pullserver)。
+- [使用适用于 Linux 的 DSC](/powershell/scripting/dsc/getting-started/lnxgettingstarted)。
 
 
 ## <a name="azure-custom-script-extension"></a>Azure 自定义脚本扩展

@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 430d90b2b372602072527c49796244c503778a3b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 2f847d8db983303d46b465f4f80bff65eeff632f
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959009"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168491"
 ---
 # <a name="virtual-wan-partners"></a>虚拟 WAN 合作伙伴
 
@@ -81,17 +81,17 @@ ms.locfileid: "71959009"
 * **vpnSiteConfiguration** - 此部分表示当站点连接到虚拟 WAN 时设置的设备详细信息。 它包含分支设备的名称和公共 IP 地址。
 * **vpnSiteConnections** - 此部分提供以下信息：
 
-    * 虚拟中心 VNet 的地址空间。<br>示例：
+    * 虚拟中心 VNet 的地址空间。<br>例如：
  
         ```
         "AddressSpace":"10.1.0.0/24"
         ```
-    * 已连接到中心的 VNet 的地址空间。<br>例如：
+    * 已连接到中心的 VNet 的地址空间。<br>示例：
 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * 虚拟中心 vpngateway 的 IP 地址。 由于 vpngateway 的每个连接由采用主动-主动配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，可以看到为每个站点指定了“Instance0”和“Instance1”。<br>示例：
+    * 虚拟中心 vpngateway 的 IP 地址。 由于 vpngateway 的每个连接由采用主动-主动配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，可以看到为每个站点指定了“Instance0”和“Instance1”。<br>例如：
 
         ``` 
         "Instance0":"104.45.18.186"
@@ -215,11 +215,13 @@ ms.locfileid: "71959009"
 * IPsec 完整性算法
 * PFS 组
 
-### <a name="default"></a>IPsec 连接的默认策略 
+### <a name="default"></a>IPsec 连接的默认策略
 
-使用默认策略时，Azure 可以在安装 IPsec 隧道期间充当发起方和响应方。 不支持仅将 Azure 作为响应方。
+[!INCLUDE [IPsec Default](../../includes/virtual-wan-ipsec-include.md)]
 
-[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
+### <a name="custom"></a>IPsec 连接的自定义策略
+
+[!INCLUDE [IPsec Custom](../../includes/virtual-wan-ipsec-custom-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

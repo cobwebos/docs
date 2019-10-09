@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c85d17e88016e5e9067d4be86e1cd290b4b12a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 053c52d7d1a0282d72ad76408b77c96aa3b0e3e4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948193"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174708"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux Vm 的 Azure 磁盘加密 
 
@@ -32,7 +32,7 @@ Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与�
 
 ### <a name="supported-vm-sizes"></a>支持的 VM 大小
 
-Linux Vm 在[大小范围](sizes.md)内可用。 Azure 磁盘加密不适用于[基本、A 系列 vm](/pricing/details/virtual-machines/series/)或不满足以下最低内存要求的虚拟机：
+Linux Vm 在[大小范围](sizes.md)内可用。 Azure 磁盘加密不适用于[基本、A 系列 vm](https://azure.microsoft.com/pricing/details/virtual-machines/series/)或不满足以下最低内存要求的虚拟机：
 
 | 虚拟机 | 最低内存要求 |
 |--|--|
@@ -112,7 +112,7 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 
 | 术语 | 定义 |
 | --- | --- |
-| Azure Key Vault | Key Vault 是基于联邦信息处理标准 (FIPS) 验证的硬件安全模块。 这些标准有助于保护加密密钥和敏感机密。 有关详细信息，请参阅[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)文档和[为 Azure 磁盘加密创建和配置密钥保管库](disk-encryption-key-vault.md)。 |
+| Azure 密钥保管库 | Key Vault 是基于联邦信息处理标准 (FIPS) 验证的硬件安全模块。 这些标准有助于保护加密密钥和敏感机密。 有关详细信息，请参阅[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)文档和[为 Azure 磁盘加密创建和配置密钥保管库](disk-encryption-key-vault.md)。 |
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) 经过了优化，可从命令行管理 Azure 资源。|
 | DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) 是基于 Linux 的透明磁盘加密子系统，用于在 Linux VM 上启用磁盘加密。 |
 | 密钥加密密钥 (KEK) | 可用于保护或包装机密的非对称密钥 (RSA 2048)。 可提供硬件安全模块 (HSM) 保护的密钥或软件保护的密钥。 有关详细信息，请参阅[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)文档和[为 Azure 磁盘加密创建和配置密钥保管库](disk-encryption-key-vault.md)。 |

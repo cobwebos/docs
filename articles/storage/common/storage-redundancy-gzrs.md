@@ -8,24 +8,24 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 99def93a20a365dd0ff5fc27e9c52909ee30bd83
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 395e8b1bc92ea64c8a5cea114be443d6411c7412
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028139"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170332"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>使用地理区域冗余存储（GZRS）构建高度可用的 Azure 存储应用程序（预览版）
 
 区域冗余存储（GZRS）（预览版）结婚时会[区域冗余存储（ZRS）](storage-redundancy-zrs.md)的高可用性，通过[异地冗余存储（GRS）](storage-redundancy-grs.md)提供的区域中断保护。 将 GZRS 存储帐户中的数据复制到主要区域中的三个[Azure 可用性区域](../../availability-zones/az-overview.md)，并将其复制到辅助地理区域，以防止区域灾难。 每个 Azure 区域与同一地理位置中另一个区域配对。 有关更多详细信息和异常，请参阅[文档](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
-使用 GZRS 存储帐户，可以在可用性区域变得不可用或无法恢复时继续读取和写入数据。 此外，在发生整个区域中断或发生主要区域无法恢复的灾难时，数据也是持久的。 GZRS 设计为在给定的一年内提供至少 99.99999999999999% （16个9）的对象持久性。 GZRS 还提供与 LRS、ZRS、GRS 或 RA-GRS 相同的 [可伸缩性目标](storage-scalability-targets.md)。 如果你的应用程序需要能够在主要区域发生灾难时读取数据，则可以选择启用对辅助区域中的数据的读取访问（使用读取访问权限异地冗余存储（GZRS））。
+使用 GZRS 存储帐户，可以在可用性区域变得不可用或无法恢复时继续读取和写入数据。 此外，在发生整个区域中断或发生主要区域无法恢复的灾难时，数据也是持久的。 GZRS 设计为在给定的一年内提供至少 99.99999999999999% （16个9）的对象持久性。 GZRS 还提供与 LRS、ZRS、GRS 或 RA-GRS 相同的[可伸缩性目标](storage-scalability-targets.md)。 如果你的应用程序需要能够在主要区域发生灾难时读取数据，则可以选择启用对辅助区域中的数据的读取访问（使用读取访问权限异地冗余存储（GZRS））。
 
 Microsoft 建议为需要一致性、持续性、高可用性、优秀性能和恢复能力的应用程序使用 GZRS。 对于发生区域性灾难时对辅助区域的 "读取" 访问权限的其他安全，请为你的存储帐户启用 GZRS。
 
 ## <a name="about-the-preview"></a>关于此预览版
 
-仅常规用途 v2 存储帐户支持 GZRS 和 GZRS。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 GZRS 和 GZRS 支持块 blob，不是 VHD 磁盘、文件、表和队列的页 blob。
+仅常规用途 v2 存储帐户支持 GZRS 和 GZRS。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 GZRS 和 GZRS 支持块 blob，不是 VHD 磁盘、文件、表和队列的页 blob。
 
 GZRS 和 RA-GZRS 目前可用于以下区域：
 
@@ -35,9 +35,9 @@ GZRS 和 RA-GZRS 目前可用于以下区域：
 - 美国东部 2
 - 美国中部
 
-Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 定期查看 [Azure 服务更新](https://azure.microsoft.com/updates/) page 以获取有关支持的区域的信息。
+Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看[Azure 服务更新](https://azure.microsoft.com/updates/)页，以了解有关支持的区域的信息。
 
-有关预览版定价的信息，请参阅 GZRS preview 定价 for [blob](https://azure.microsoft.com/pricing/details/storage/blobs)、 [文件](https://azure.microsoft.com/pricing/details/storage/files/)、 [队列](https://azure.microsoft.com/pricing/details/storage/queues/)和 [表](https://azure.microsoft.com/pricing/details/storage/tables/)。
+有关预览版定价的信息，请参阅 GZRS preview 定价 for [blob](https://azure.microsoft.com/pricing/details/storage/blobs)、[文件](https://azure.microsoft.com/pricing/details/storage/files/)、[队列](https://azure.microsoft.com/pricing/details/storage/queues/)和[表](https://azure.microsoft.com/pricing/details/storage/tables/)。
 
 > [!IMPORTANT]
 > Microsoft 建议不要对生产工作负荷使用预览功能。
@@ -49,13 +49,13 @@ Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 定期查看 [Azu
 > [!IMPORTANT]
 > 异步复制涉及到将数据写入主要区域和将数据复制到次要区域之间的延迟时间。 发生区域性灾难时，如果无法从主要区域中恢复数据，则尚未复制到次要区域的更改可能会丢失。
 
-创建存储帐户时，可以指定如何复制该帐户中的数据，还可以指定该帐户的主要区域。 异地复制帐户的成对次要区域是根据主要区域确定的，不能更改。 有关 Azure 支持的区域的最新信息，请参阅 @ no__t-0Business 连续性和灾难恢复（BCDR）：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 有关使用 GZRS 或 GZRS 创建存储帐户的信息，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+创建存储帐户时，可以指定如何复制该帐户中的数据，还可以指定该帐户的主要区域。 异地复制帐户的成对次要区域是根据主要区域确定的，不能更改。 有关 Azure 支持区域的最新信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 有关使用 GZRS 或 GZRS 创建存储帐户的信息，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>使用 GZRS 实现高可用性
 
-如果为存储帐户启用了 GZRS，则可以从辅助终结点以及存储帐户的主终结点读取数据。 辅助终结点将后缀 *–辅助*点追加到帐户名称。 例如，如果 Blob 服务的主终结点为 @ no__t-0，则辅助终结点为 @ no__t。 存储帐户的访问密钥对于主终结点和辅助终结点是相同的。
+如果为存储帐户启用了 GZRS，则可以从辅助终结点以及存储帐户的主终结点读取数据。 辅助终结点将后缀 *–辅助*点追加到帐户名称。 例如，如果 Blob 服务的主终结点是 `myaccount.blob.core.windows.net`，辅助终结点则是 `myaccount-secondary.blob.core.windows.net`。 存储帐户的访问密钥对于主终结点和辅助终结点是相同的。
 
-若要在发生区域性服务中断时充分利用 GZRS，必须事先设计应用程序来处理这种情况。 您的应用程序应在主终结点上进行读取和写入，但当主要区域不可用时，将切换到使用辅助终结点。 有关使用 GZRS 进行高可用性设计的指南，请参阅 [使用 GZRS 或 GRS 设计高度可用的应用程序](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs)。
+若要在发生区域性服务中断时充分利用 GZRS，必须事先设计应用程序来处理这种情况。 您的应用程序应在主终结点上进行读取和写入，但当主要区域不可用时，将切换到使用辅助终结点。 有关使用 GZRS 进行高可用性设计的指南，请参阅[使用 GZRS 或 GRS 设计高度可用的应用程序](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs)。
 
 由于数据是以异步方式复制到辅助区域，因此次要区域通常位于主要区域后面。 若要确定哪些写入操作已复制到次要区域，应用程序需要检查存储帐户的上次同步时间。 在上次同步时间之前写入主要区域的所有写入操作都已成功复制到次要区域，这意味着它们可以从辅助区域读取。 在上次同步时间之后写入主要区域的任何写入操作都可能或尚未复制到次要区域，这意味着它们可能不可用于读取操作。
 
@@ -115,7 +115,7 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 在实时迁移期间，你可以在源存储帐户和目标存储帐户之间迁移数据时使用存储帐户。 在实时迁移过程中，你的帐户将继续满足其持久性和可用性的 SLA。 实时迁移不会造成停机或数据丢失。
 
-只有常规用途 v2 帐户支持 GZRS/GZRS，因此，在将请求提交到 GZRS/RA-GZRS 之前，你必须将你的帐户升级到常规用途 v2。 有关详细信息，请参阅 [Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview) and [升级到常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)。
+只有常规用途 v2 帐户支持 GZRS/GZRS，因此，在将请求提交到 GZRS/RA-GZRS 之前，你必须将你的帐户升级到常规用途 v2。 有关详细信息，请参阅[Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)和[升级到常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)。
 
 迁移完成后，存储帐户的复制设置将更新为**异地区域冗余存储（GZRS）** 或**读取访问区域冗余存储（GZRS）** 。 服务终结点、访问密钥、共享访问签名（SAS）和任何其他帐户配置选项保持不变并保持不变。
 
@@ -127,11 +127,11 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 - 只有标准存储帐户类型才支持实时迁移。 高级存储帐户必须手动迁移。
 - 不支持从 GZRS 或 GZRS 帐户实时迁移到 LRS、GRS 或 RA-GRS 帐户。 需手动将数据移到新的或现有的存储帐户。
 - 可以请求从 GRS 到 GZRS 的实时迁移。 但是，不支持从 GRS 迁移到 GZRS。 在这种情况下，你必须请求将实时迁移到 GZRS，然后手动转换存储帐户以使用 GZRS。
-- 托管磁盘仅支持 LRS，不能迁移到 GZRS 或 GZRS。 有关与可用性集的集成，请参阅 [Azure 托管磁盘简介](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)。
-- 可以将标准 SSD 托管磁盘的快照和映像存储在标准 HDD 存储上，并在 [LRS、ZRS、GZRS 和 RA-GZRS 选项之间进行选择](https://azure.microsoft.com/pricing/details/managed-disks/)。
+- 托管磁盘仅支持 LRS，不能迁移到 GZRS 或 GZRS。 有关与可用性集的集成，请参阅[Azure 托管磁盘简介](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)。
+- 可以将标准 SSD 托管磁盘的快照和映像存储在标准 HDD 存储上，并在[LRS、ZRS、GZRS 和 RA-GZRS 选项之间进行选择](https://azure.microsoft.com/pricing/details/managed-disks/)。
 - GZRS 不支持包含大型文件共享的帐户。
 
-若要请求实时迁移，请使用 [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 从门户中，选择要迁移到 GZRS 或 GZRS 的存储帐户，并按照以下说明操作：
+若要请求实时迁移，请使用[Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 从门户中，选择要迁移到 GZRS 或 GZRS 的存储帐户，并按照以下说明操作：
 
 1. 选择 "**新建支持请求**"。
 2. 根据帐户信息填写“基本信息”。 在 "**服务**" 部分中，选择 "**存储帐户管理**" 并指定要迁移的帐户。

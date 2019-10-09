@@ -7,16 +7,16 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: afbde512ecb5a38eac38d6f5db614d92cd44c908
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f98f55dca8b3dbbfbe03cb8c79691cedb63335a0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937419"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168981"
 ---
 # <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>在 Azure Red Hat OpenShift 中管理安全上下文约束 
 
-安全上下文约束（Scc）允许群集管理员控制 pod 的权限。 若要了解有关此 API 类型的详细信息，请参阅[scc 的体系结构文档](https://https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 你可以通过使用 CLI，将实例中的 Scc 作为常规 API 对象进行管理。
+安全上下文约束（Scc）允许群集管理员控制 pod 的权限。 若要了解有关此 API 类型的详细信息，请参阅[scc 的体系结构文档](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)。 你可以通过使用 CLI，将实例中的 Scc 作为常规 API 对象进行管理。
 
 ## <a name="list-security-context-constraints"></a>列出安全上下文约束
 
