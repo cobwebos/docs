@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259317"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350504"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>教程：使用自动化机器学习创建第一个分类模型
 
@@ -50,7 +50,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 ## <a name="create-and-run-the-experiment"></a>创建并运行试验
 
-在工作区登陆页面中完成以下试验设置和运行步骤，该页面是包含用于为所有技能级别的数据科学实践者执行数据科学方案的机器学习工具的合并界面。
+在工作区登陆页面中完成以下试验设置和运行步骤，该页面是包含用于为所有技能级别的数据科学实践者执行数据科学方案的机器学习工具的合并界面。 Internet Explorer 浏览器不支持工作区登陆页。
 
 1. 登录到[工作区登陆页面](https://ml.azure.com/workspaceportal/)。
 
@@ -73,7 +73,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
    字段 | 说明 | 教程的值
    ----|---|---
    计算名称 |用于标识计算上下文的唯一名称。|automl-compute
-   虚拟机大小| 指定计算资源的虚拟机大小。|Standard_DS12_V2
+   虚拟机大小&nbsp;&nbsp;| 指定计算资源的虚拟机大小。|Standard_DS12_V2
    最小/最大节点数（在“高级设置”中）| 若要分析数据，必须指定一个或多个节点。|最小节点数：1<br>最大节点数：6
 
    >[!NOTE]
@@ -99,31 +99,29 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
        
     1. 验证“设置和预览”窗体是否已填充如下，然后选择“下一步”。  
         
-        字段|教程的值
-        ---|---
-        文件格式| 带分隔符
-        分隔符| 逗号
-        编码| UTF-8
-        列标题| 所有文件都具有相同的标题
-        跳过行 | 无
+        字段|说明| 教程的值
+        ---|---|---
+        文件格式|定义文件中存储的数据的布局和类型。| 带分隔符
+        分隔符|一个或多个字符，用于指定纯文本或其他数据流中不同的独立区域之间的边界。&nbsp; |逗号
+        编码|指定字符架构表中用于读取数据集的位。| UTF-8
+        列标题| 指示如何处理数据集的标头（如果有）。| 所有文件都具有相同的标题
+        跳过行 | 指示要跳过数据集中的多少行（如果有）。| 无
     
-    1. 通过“架构”窗体，可以进一步为此试验配置数据。  对于本示例，为 day_of_week 特征选择切换开关，以便在此试验中不包含在内  。 选择“完成”，完成试验的文件上传和数据集创建  。
-
         ![“预览”选项卡中的配置](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
 1. 选择“分类”作为预测任务。 
 
 1. 选择“y”作为用于执行预测的目标列。  此列指示客户是否认购了定期存款产品。
 
-1. 展开“高级设置”并按如下所示填充字段。 
+1. 展开“高级设置”并按如下所示填充字段。  使用这些设置可以更好地控制训练作业。 否则，将会根据试验选择和数据应用默认设置。
 
    >[!NOTE]
    > 在本教程中，我们不会按迭代阈值设置指标分数或最大核心数， 也不会阻止对算法进行测试。
    
-   高级设置|说明|教程的值
+   高级设置&nbsp;|说明|教程的值&nbsp;&nbsp;
    ------|---------|---
    主要指标| 对机器学习算法进行度量时依据的评估指标。|AUC_weighted
-   退出条件| 如果符合某个条件，则会停止训练作业。 |训练作业次数：5 <br> <br> 最大迭代次数：10
+   退出条件| 如果符合某个条件，则会停止训练作业。 |训练作业次数：&nbsp;&nbsp;5 <br> <br> 最大迭代次数：10
    预处理| 启用自动化机器学习执行的预处理。 这包括自动化数据清理、准备和转换，以生成合成特征。| 启用
    验证类型 | 选择交叉验证类型。|K 折交叉验证
    验证次数 | 测试次数。 | 2 个交叉验证 
@@ -138,10 +136,10 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 ##  <a name="explore-iteration-results"></a>浏览迭代结果
 
-当试验正在进行时，屏幕会使用已创建完的不同迭代（模型）更新“迭代图表”和“迭代列表”，并按指标分数对其排序。   默认情况下，列表中首先显示评分最高的模型（评分根据所选 **AUC_weighted** 指标给出）。
+当试验正在进行时，该屏幕将使用完成时创建的不同迭代（模型）更新**迭代图表**和**迭代列表**。 默认情况下，迭代按指标评分排序。 对于本教程，列表中首先显示评分最高的模型（评分根据所选 **AUC_weighted** 指标给出）。
 
 在等待所有试验迭代完成的时候，可以选择已完成迭代的“名称”，以便浏览其性能详细信息。  
-   
+
 下面显示了为每个迭代生成的图表和运行指标，例如精确度-召回率曲线、混淆矩阵、加权准确度分数，等等。 
 
 ![运行迭代详细信息](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
@@ -199,6 +197,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 + 详细了解[预处理](how-to-create-portal-experiments.md#preprocess)。
 + 详细了解[数据分析](how-to-create-portal-experiments.md#profile)。
 + 详细了解[自动化机器学习](concept-automated-ml.md)。
++ 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md#classification)一文。
 
 >[!NOTE]
 > 此银行营销数据集是根据 [Creative Commons (CCO:Public Domain) 许可条款](https://creativecommons.org/publicdomain/zero/1.0/)提供的。 数据库各项内容中的任何权利是根据[数据库内容许可条款](https://creativecommons.org/publicdomain/zero/1.0/)在 [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset) 上授予的。 此数据集最初在 [UCI 机器学习数据库](https://archive.ics.uci.edu/ml/datasets/bank+marketing)中提供。<br><br>
