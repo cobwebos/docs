@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a6d0cba41e694e154da32a878cb4c076aae13e65
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827577"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034725"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
 本文档介绍 Azure 应用服务虚拟网络集成功能，并说明如何在 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中使用应用对其进行设置。 使用 [Azure 虚拟网络][VNETOverview] (VNet) 可将多个 Azure 资源置于无法通过 Internet 路由的网络中。  
@@ -64,6 +64,10 @@ VNet 集成不支持某些功能，其中包括：
 
 ## <a name="regional-vnet-integration"></a>区域 VNet 集成 
 
+> [!NOTE]
+> 对等互连对于基于 Linux 的应用服务尚不可用。
+>
+
 在应用的同一区域中与 Vnet 一起使用 VNet 集成时，它要求使用至少包含32地址的委托子网。 子网不能用于其他任何内容。 从你的应用程序发出的出站调用将从委托子网中的地址进行。 当你使用此版本的 VNet 集成时，将从 VNet 中的地址进行调用。 使用 VNet 中的地址，你的应用可以：
 
 * 调用服务终结点保护服务
@@ -108,7 +112,7 @@ VNet 集成不支持某些功能，其中包括：
 若要从 VNet 断开应用，请选择“断开连接”。 该操作将重启 Web 应用。 
 
 
-#### <a name="web-app-for-containers"></a>用于容器的 Web 应用
+#### <a name="web-app-for-containers"></a>容器的 Web 应用
 
 如果在 Linux 上使用带有内置映像的应用服务，则区域 VNet 集成功能无需进行其他更改即可工作。 如果使用用于容器的 Web 应用，则需要修改 docker 映像才能使用 VNet 集成。 在 docker 映像中，使用端口环境变量作为主 web 服务器的侦听端口，而不是使用硬编码的端口号。 在容器启动时，应用服务平台会自动设置端口环境变量。 如果你使用的是 SSH，则必须将 SSH 守护程序配置为侦听 SSH_PORT 环境变量在使用区域 VNet 集成时指定的端口号。
 
@@ -230,7 +234,7 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 > 
 > 
 
-## <a name="peering"></a>对等
+## <a name="peering"></a>对等互连
 如果对区域 VNet 集成使用对等互连，则不需要进行任何附加的配置。 
 
 如果结合对等互连使用网关所需的 VNet 集成，则需要配置几个附加的项。 若要配置对等互连以使用应用，请执行以下操作：
@@ -240,7 +244,7 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 1. 转到门户中的“应用服务计划”>“网络”>“VNet 集成 UI”。  选择应用连接的 VNet。 在路由部分下，添加与应用所连接的 VNet 对等互连的 VNet 的地址范围。  
 
 
-## <a name="pricing-details"></a>定价详情
+## <a name="pricing-details"></a>定价详细信息
 除 ASP 定价层的费用外，区域 VNet 集成功能不会产生额外的使用费。
 
 使用网关所需的 VNet 集成功能涉及到三种相关费用：

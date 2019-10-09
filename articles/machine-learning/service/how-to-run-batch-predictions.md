@@ -10,12 +10,12 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 910974eac6a67c9c9fe68c502f2876ef68bb94eb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034282"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028517"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>对包含 Azure 机器学习管道的大型数据集运行批处理预测
 
@@ -26,7 +26,7 @@ ms.locfileid: "71034282"
 >[!TIP]
 > 如果系统要求低延迟处理（以便快速处理单个文档或少量文档），则请使用[实时评分](how-to-consume-web-service.md)而不是批量预测。
 
-在以下步骤中, 你将创建一个[机器学习管道](concept-ml-pipelines.md)来注册预先训练的计算机视觉模型 ([开始-V3](https://arxiv.org/abs/1512.00567))。 然后使用预先训练的模型对 Azure Blob 存储帐户中提供的映像执行批处理评分。 这些用于评分的图像是 [ImageNet](http://image-net.org/) 数据集中的未标记图像。
+在以下步骤中，你将创建一个[机器学习管道](concept-ml-pipelines.md)来注册预先训练的计算机视觉模型（[开始-V3](https://arxiv.org/abs/1512.00567)）。 然后使用预先训练的模型对 Azure Blob 存储帐户中提供的映像执行批处理评分。 这些用于评分的图像是 [ImageNet](http://image-net.org/) 数据集中的未标记图像。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -59,7 +59,7 @@ ms.locfileid: "71034282"
 
 首先，访问包含模型、标签和图像的数据存储。
 
-使用名为*sampledata*的公共 blob 容器, 该容器包含 ImageNet 评估集中的图像。 此公共容器的数据存储名称为 *images_datastore*。 将此数据存储注册到工作区：
+使用名为*sampledata*的公共 blob 容器 *，该容器*包含 ImageNet 评估集中的图像。 此公共容器的数据存储名称为 *images_datastore*。 将此数据存储注册到工作区：
 
 ```python
 from azureml.core import Datastore
@@ -193,7 +193,7 @@ model = Model.register(
 >[!Warning]
 >以下代码只是一个示例，说明了在[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb)使用的 [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) 中包含了什么内容。 你需要根据具体情况创建自己的评分脚本。
 
-`batch_score.py` 脚本采用 *dataset_path* 中的输入图像和 *model_dir* 中的预先训练的模型，并将 *results-label.txt* 输出到 *output_dir*。
+@No__t-0 脚本在*model_dir*中使用*dataset_path*预先训练模型中的输入图像，并将*results-label*输出到*output_dir*。
 
 ```python
 # Snippets from a sample scoring script

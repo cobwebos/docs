@@ -1,22 +1,22 @@
 ---
-title: 什么是 Windows 虚拟桌面预览版？  - Azure
-description: Windows 虚拟桌面预览版的概述。
+title: 什么是 Windows 虚拟桌面？  - Azure
+description: Windows 虚拟桌面的概述。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 440ebfffec9378e0dad1fd04e0880c90571bb0f1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300995"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676549"
 ---
-# <a name="what-is-windows-virtual-desktop-preview"></a>什么是 Windows 虚拟桌面预览版？ 
+# <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？ 
 
-Windows 虚拟桌面现已推出公共预览版，它是一个在云中运行的桌面和应用虚拟化服务。
+Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 
 下面是在 Azure 中运行 Windows 虚拟桌面时可以执行的操作：
 
@@ -88,7 +88,19 @@ Windows 虚拟桌面现已推出公共预览版，它是一个在云中运行的
 >[!NOTE]
 >如需 Azure 订阅，可以[注册一个月免费试用版](https://azure.microsoft.com/free/)。 如果使用免费试用版的 Azure，则应使用 Azure AD 域服务来使 Windows Server Active Directory 与 Azure Active Directory 保持同步。
 
-Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由 Microsoft 作为服务托管在 Azure 上的管理解决方案。 在公共预览期，桌面和应用可以部署在任何 Azure 区域中的虚拟机 (VM) 上，这些 VM 的管理解决方案和数据将驻留在美国（美国东部 2 区域）。 因此，在公共预览期测试服务时，数据可能会传输到美国。 开始推出正式版后，我们即会将管理解决方案和数据的本地化工作扩展到所有 Azure 区域。
+为 Windows 虚拟桌面创建的 Azure 虚拟机必须能够对以下 URL 进行出站 TCP 443 访问：
+
+* *.wvd.microsoft.com
+* \* .blob.core.windows.net
+* *.core.windows.net
+* *.servicebus.windows.net
+* prod.warmpath.msftcloudes.com
+* catalogartifact.azureedge.net
+
+>[!NOTE]
+>若要可靠部署 Windows 虚拟桌面，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。 这些 URL 仅对应于 Windows 虚拟桌面站点和资源，而不包括 Azure AD 等其他服务的 URL。
+
+Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由 Microsoft 作为服务托管在 Azure 上的管理解决方案。 桌面和应用可以部署在任何 Azure 区域中的虚拟机 (VM) 上，这些 VM 的管理解决方案和数据将驻留在美国（美国东部 2 区域）。 这可能会导致将数据传输到美国。
 
 为获得最佳性能，请确保网络满足以下要求：
 
@@ -108,11 +120,28 @@ Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由
 Windows 虚拟桌面目前支持以下 OS 映像：
 
 * Windows 10 Enterprise 多会话
+* Windows 10 Enterprise
+* Windows 7 Enterprise
+* Windows Server 2019
 * Windows Server 2016
+* Windows Server 2012 R2
+
+可用的自动化和部署选项取决于所选的 OS 和版本，如下表所示： 
+
+|操作系统|Azure 映像库|手动 VM 部署|Azure 资源管理器模板集成|在 Azure 市场中预配主机池|Windows 虚拟桌面代理更新|
+|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
+|Windows 10 多会话版本 1903|是|是|是|是|自动|
+|Windows 10 多会话版本 1809|是|是|否|否|自动|
+|Windows 10 Enterprise 版本 1903|是|是|是|是|自动|
+|Windows 10 Enterprise 版本 1809|是|是|否|否|自动|
+|Windows 7 Enterprise|是|是|否|否|手动|
+|Windows Server 2019|是|是|否|否|自动|
+|Windows Server 2016|是|是|是|是|自动|
+|Windows Server 2012 R2|是|是|否|否|自动|
 
 ## <a name="next-steps"></a>后续步骤
 
 若要开始使用本服务，需要创建一个租户。 若要详细了解如何创建租户，请继续学习有关创建租户的教程。
 
 > [!div class="nextstepaction"]
-> [在 Windows 虚拟桌面预览版中创建租户](tenant-setup-azure-active-directory.md)
+> [在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)

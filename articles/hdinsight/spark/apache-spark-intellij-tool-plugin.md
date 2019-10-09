@@ -2,18 +2,18 @@
 title: 教程 - Azure Toolkit for IntelliJ：适用于 HDInsight 群集的 Spark 应用程序
 description: 教程 - 使用 Azure Toolkit for IntelliJ 开发以 Scala 编写的 Spark 应用程序，并将其提交到 HDInsight Spark 群集。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: c19d867553290ba956515fddc50c4fd836877860
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: ff08d3ffde958a8e64dce911ace83cec87201117
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995935"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327287"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>教程：使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序
 
@@ -47,11 +47,11 @@ ms.locfileid: "70995935"
 
 2. 在欢迎屏幕上，导航到“配置” > “插件”打开“插件”窗口。   
 
-    ![启用 scala 插件](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
+    ![IntelliJ IDEA 启用 scala 插件](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
 
 3. 选择在新窗口中作为特色功能列出的 Scala 插件对应的“安装”。   
 
-    ![安装 scala 插件](./media/apache-spark-intellij-tool-plugin/install-scala-plugin.png)
+    ![IntelliJ IDEA 安装 scala 插件](./media/apache-spark-intellij-tool-plugin/install-scala-plugin.png)
 
 4. 成功安装该插件后，必须重启 IDE。
 
@@ -67,7 +67,7 @@ ms.locfileid: "70995935"
    * **Maven**：支持 Scala 项目创建向导。
    * **SBT**：用于管理依赖项和生成 Scala 项目。
 
-     ![“新建项目”对话框](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
+     ![IntelliJ IDEA“新建项目”对话框](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
 5. 选择“**下一步**”。
 
@@ -80,7 +80,7 @@ ms.locfileid: "70995935"
     |项目 SDK| 首次使用 IDEA 时，此字段可能是空白的。  选择“新建...”并导航到 JDK。 |
     |Spark 版本|创建向导集成了适当版本的 Spark SDK 和 Scala SDK。 如果 Spark 群集版本低于 2.0，请选择“Spark 1.x”  。 否则，请选择“Spark 2.x”  。 本示例使用“Spark 2.3.0 (Scala 2.11.8)”。 |
 
-    ![选择 Spark SDK](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
+    ![选择 Apache Spark SDK](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
 
 7. 选择“完成”。   可能需要在几分钟后才会显示该项目。
 
@@ -135,27 +135,27 @@ ms.locfileid: "70995935"
 
 1. 在菜单栏中，导航到“视图” > “工具窗口” > “Azure 资源管理器”。   
 
-   ![显示 Azure 资源管理器](./media/apache-spark-intellij-tool-plugin/show-azure-explorer1.png)
+   ![IntelliJ IDEA 显示 Azure 资源管理器](./media/apache-spark-intellij-tool-plugin/show-azure-explorer1.png)
 
 2. 在 Azure 资源管理器中右键单击“Azure”节点，然后选择“登录”。  
 
-   ![资源管理器右键单击 Azure](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
+   ![在 IntelliJ IDEA 资源管理器中右键单击“Azure”](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
 
 3. 在“Azure 登录”  对话框中，依次选择“设备登录”、“登录”   。
 
-    ![视图资源管理器 2](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer2.png)
+    ![IntelliJ IDEA Azure 登录设备登录](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer2.png)
 
 4. 在“Azure 设备登录”对话框中单击“复制并打开”。  
 
-   ![视图资源管理器 5](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer5.png)
+   ![IntelliJ IDEA Azure 设备登录](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer5.png)
 
 5. 在浏览器界面中粘贴代码，然后单击“下一步”  。
 
-   ![视图资源管理器 6](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer6.png)
+   ![Microsoft HDI 输入代码对话框](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer6.png)
 
 6. 输入 Azure 凭据，然后关闭浏览器。
 
-   ![视图资源管理器 7](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer7.png)
+   ![Microsoft HDI 输入电子邮件对话框](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer7.png)
 
 7. 登录之后，“选择订阅”  对话框会列出与凭据关联的所有 Azure 订阅。 选择你的订阅，然后选择“选择”按钮。 
 
@@ -163,11 +163,11 @@ ms.locfileid: "70995935"
 
 8. 在“Azure 资源管理器”中展开“HDInsight”，查看订阅中的 HDInsight Spark 群集。  
 
-    ![视图资源管理器 3](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer3.png)
+    ![IntelliJ IDEA Azure 资源管理器主视图](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer3.png)
 
 9. 若要查看与群集关联的资源（例如存储帐户），可以进一步展开群集名称节点。
 
-    ![展开的群集名称节点](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer4.png)
+    ![Azure 资源管理器存储帐户](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer4.png)
 
 ### <a name="link-a-cluster"></a>链接群集
 
@@ -177,7 +177,7 @@ ms.locfileid: "70995935"
 
 1. 在 Azure 资源管理器中右键单击“HDInsight”节点，然后选择“链接群集”。  
 
-   ![链接群集上下文菜单](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
+   ![Azure 资源管理器链接群集上下文菜单](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
 1. “链接群集”窗口中提供的选项根据在“链接资源类型”下拉列表中选择的值而异。    请输入自己的值，然后选择“确定”。 
 
@@ -191,7 +191,7 @@ ms.locfileid: "70995935"
         |用户名| 输入群集用户名，默认为 admin。|
         |密码| 输入用户名的密码。|
 
-        ![链接 HDInsight 群集对话框](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
+        ![IntelliJ IDEA 链接群集对话框](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
 
     * **Livy 服务**  
   
@@ -205,15 +205,15 @@ ms.locfileid: "70995935"
         |用户名| 输入群集用户名，默认为 admin。|
         |密码| 输入用户名的密码。|
 
-        ![链接 livy 群集对话框](./media/apache-spark-intellij-tool-plugin/link-livy-cluster-dialog.png)
+        ![IntelliJ IDEA 链接 Livy 群集对话框](./media/apache-spark-intellij-tool-plugin/link-livy-cluster-dialog.png)
 
 1. 在“HDInsight”节点中可以看到链接的群集。 
 
-   ![链接的群集](./media/apache-spark-intellij-tool-plugin/hdinsight-linked-cluster.png)
+   ![Azure 资源管理器链接群集 1](./media/apache-spark-intellij-tool-plugin/hdinsight-linked-cluster.png)
 
 1. 还可以从 **Azure 资源管理器**取消链接群集。
 
-   ![取消链接的群集](./media/apache-spark-intellij-tool-plugin/hdi-unlinked-cluster.png)
+   ![Azure 资源管理器取消链接群集](./media/apache-spark-intellij-tool-plugin/hdi-unlinked-cluster.png)
 
 ## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>在 HDInsight Spark 群集中运行 Spark Scala 应用程序
 
@@ -245,9 +245,9 @@ ms.locfileid: "70995935"
 
 4. 选择“SparkJobRun”将项目提交到所选群集  。 “群集中的远程 Spark 作业”选项卡在底部显示作业执行进度  。 可通过单击红色按钮来停止应用程序。 若要了解如何访问作业输出，请参阅本文稍后的“使用用于 IntelliJ 的 Azure 工具包访问和管理 HDInsight Spark 群集”部分。  
 
-    ![“Spark 提交”窗口](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
+    ![Apache Spark 提交窗口](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 
-## <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>本地或远程调试 HDInsight 群集上的 Apache Spark 应用程序 
+## <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>本地或远程调试 HDInsight 群集上的 Apache Spark 应用程序
 
 我们还建议以另一种方式将 Spark 应用程序提交到群集。 为此，可在“运行/调试配置”  IDE 中设置参数。 有关详细信息，请参阅[使用用于 IntelliJ 的 Azure 工具包通过 SSH 本地或远程调试 HDInsight 群集上的 Apache Spark 应用程序](apache-spark-intellij-tool-debug-remotely-through-ssh.md)。
 
@@ -259,19 +259,19 @@ ms.locfileid: "70995935"
 
 1. 在 Azure 资源管理器中，导航到“HDInsight” > “\<你的群集>”>“作业”。  
 
-    ![“作业视图”节点](./media/apache-spark-intellij-tool-plugin/intellij-job-view-node.png)
+    ![IntelliJ Azure 资源管理器作业视图节点](./media/apache-spark-intellij-tool-plugin/intellij-job-view-node.png)
 
 2. 在右窗格中，“Spark 作业视图”  选项卡显示了群集上运行的所有应用程序。 选择想要查看其详细信息的应用程序的名称。
 
-    ![应用程序详细信息](./media/apache-spark-intellij-tool-plugin/intellij-view-job-logs.png)
+    ![Spark 作业视图应用程序详细信息](./media/apache-spark-intellij-tool-plugin/intellij-view-job-logs.png)
 
 3. 若要显示正在运行的作业的基本信息，请将鼠标悬停在作业图上。 若要查看每个作业生成的阶段图和信息，请在作业图中选择一个节点。
 
-    ![作业阶段详细信息](./media/apache-spark-intellij-tool-plugin/Job-graph-stage-info.png)
+    ![Spark 作业视图作业阶段详细信息](./media/apache-spark-intellij-tool-plugin/Job-graph-stage-info.png)
 
 4. 若要查看常用的日志，例如“驱动程序 Stderr”、“驱动程序 Stdout”和“目录信息”，请选择“日志”选项卡。    
 
-    ![日志详细信息](./media/apache-spark-intellij-tool-plugin/intellij-job-log-info.png)
+    ![Spark 作业视图日志详细信息](./media/apache-spark-intellij-tool-plugin/intellij-job-log-info.png)
 
 5. 还可以选择窗口顶部的相应链接查看 Spark 历史记录 UI 和 YARN UI（应用程序级别）。
 
@@ -326,13 +326,13 @@ ms.locfileid: "70995935"
 
 7. 此时可能会显示两个对话框，询问是否要自动修复依赖项。 如果已显示，请选择“自动修复”。 
 
-    ![Spark 自动修复1](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix1.png)
+    ![IntelliJ IDEA Spark 自动修复对话框 1](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix1.png)
 
-    ![Spark 自动修复2](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix2.png)
+    ![IntelliJ IDEA Spark 自动修复对话框 2](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix2.png)
 
 8. 控制台应如下图所示。 在控制台窗口中键入 `sc.appName`，然后按 Ctrl+Enter。  随后将显示结果。 可以通过单击红色按钮来终止 Local Console。
 
-    ![Local Console 结果](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
+    ![IntelliJ IDEA 本地控制台结果](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
 
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark Livy Interactive Session Console(Scala)
 
@@ -359,7 +359,7 @@ ms.locfileid: "70995935"
 
 7. 控制台应如下图所示。 在控制台窗口中键入 `sc.appName`，然后按 Ctrl+Enter。  随后将显示结果。 可以通过单击红色按钮来终止 Local Console。
 
-    ![Interactive Console 结果](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
+    ![IntelliJ IDEA 交互式控制台结果](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
 
 ### <a name="send-selection-to-spark-console"></a>将选定内容发送到 Spark Console
 
@@ -377,16 +377,16 @@ ms.locfileid: "70995935"
 
 2. 在“Azure 资源管理器”中展开“HDInsight”，查看订阅中的 HDInsight 群集。   标记为“角色:读取者”的群集只有仅限读取者角色权限。 
 
-    ![视图资源管理器 15](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer15.png)
+    ![IntelliJ Azure 资源管理器角色: 读取者](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer15.png)
 
 3. 右键单击具有仅限读取者角色权限的群集。 从上下文菜单中选择“链接此群集”以链接群集。  输入 Ambari 用户名和密码。
 
-    ![视图资源管理器 11](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer11.png)
+    ![IntelliJ Azure 资源管理器链接此群集](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer11.png)
 
 4. 如果已成功链接群集，HDInsight 将会刷新。
    群集阶段将变为链接状态。
   
-    ![视图资源管理器 8](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer8.png)
+    ![IntelliJ Azure 资源管理器链接对话框](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer8.png)
 
 ### <a name="link-cluster-by-expanding-jobs-node"></a>通过展开“作业”节点来链接群集
 
@@ -394,7 +394,7 @@ ms.locfileid: "70995935"
 
 2. 单击“链接此群集”以链接群集。 
 
-    ![视图资源管理器 9](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer9.png)
+    ![群集作业访问被拒绝对话框](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer9.png)
 
 ### <a name="link-cluster-from-rundebug-configurations-window"></a>从“运行/调试配置”窗口链接群集
 
@@ -402,21 +402,21 @@ ms.locfileid: "70995935"
 
 2. 对于“Spark 群集(仅限 Linux)”，请选择一个具有仅限读取者角色权限的群集。  此时会显示警告消息。可以单击“链接此群集”以链接群集。 
 
-   ![创建配置 1](./media/apache-spark-intellij-tool-plugin/create-configuration.png)
+   ![IntelliJ IDEA 运行/调试配置创建](./media/apache-spark-intellij-tool-plugin/create-configuration.png)
 
 ### <a name="view-storage-accounts"></a>查看存储帐户
 
 * 对于具有仅限读取者角色权限的群集，请单击“存储帐户”节点，此时会弹出“存储访问被拒绝”窗口。   可以单击“打开 Azure 存储资源管理器”以打开存储资源管理器。 
 
-   ![视图资源管理器 14](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer14.png)
+   ![IntelliJ IDEA 存储访问被拒绝](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer14.png)
 
-   ![视图资源管理器 10](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer10.png)
+   ![IntelliJ IDEA 存储访问被拒绝按钮](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer10.png)
 
 * 对于链接的群集，请单击“存储帐户”节点，此时会弹出“存储访问被拒绝”窗口。   可以单击“打开 Azure 存储”以打开存储资源管理器。 
 
-   ![视图资源管理器 13](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer13.png)
+   ![IntelliJ IDEA 存储访问被拒绝 2](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer13.png)
 
-   ![视图资源管理器 12](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer12.png)
+   ![IntelliJ IDEA 存储访问被拒绝 2 按钮](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer12.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>转换现有 IntelliJ IDEA 应用程序以使用用于 IntelliJ 的 Azure 工具包
 
@@ -448,7 +448,7 @@ ms.locfileid: "70995935"
 
 1. 选择“删除”。  请选择“是”。 
 
-![删除 HDInsight 群集](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
+![在 Azure 门户中删除 HDInsight 群集](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6cde60ee31b1654d79affd6e9050f426365ba29f
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 0c7d88d76a3fea87b3cfe4032186140f38c263d3
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240972"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693411"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>教程：开发适用于 Windows 设备的 IoT Edge 模块
 
@@ -134,7 +134,7 @@ Azure IoT Edge Tools 扩展为 Visual Studio 中支持的所有 IoT Edge 模块�
    | ----- | ----- |
    | Visual Studio 模板 | 选择“C# 模块”。  | 
    | 模块名称 | 接受默认的 **IotEdgeModule1**。 | 
-   | 存储库 URL | 映像存储库包含容器注册表的名称和容器映像的名称。 系统已基于模块项目名称值预先填充容器映像。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/iotedgemodule1。 |
+   | 存储库 URL | 映像存储库包含容器注册表的名称和容器映像的名称。 系统已基于模块项目名称值预先填充容器映像。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概述”页中检索“登录服务器”值。   <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/iotedgemodule1。 |
 
       ![针对目标设备、模块类型和容器注册表配置项目](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
@@ -143,33 +143,38 @@ Azure IoT Edge Tools 扩展为 Visual Studio 中支持的所有 IoT Edge 模块�
 在 Visual Studio 窗口中加载新项目后，请花时间熟悉其创建的文件： 
 
 * 一个名为 **CSharpTutorialApp** 的 IoT Edge 项目。
-    * 包含指向项目所含模块的指针的 **Modules** 文件夹。 在本例中，应该只有 IotEdgeModule1。 
-    * **deployment.template.json** 文件是可帮助创建部署清单的模板。 *部署清单*是一个文件，可准确定义想要在设备上部署的模块、应如何配置它们以及它们如何相互通信及与云通信。 
+  * 包含指向项目所含模块的指针的 **Modules** 文件夹。 在本例中，应该只有 IotEdgeModule1。 
+  * 隐藏的 **.env** 文件保存容器注册表的凭据。 这些凭据与 IoT Edge 设备共享，以便它可以访问并拉取容器映像。
+  * **deployment.template.json** 文件是可帮助创建部署清单的模板。 *部署清单*是一个文件，可准确定义想要在设备上部署的模块、应如何配置它们以及它们如何相互通信及与云通信。
+    > [!TIP]
+    > 在“注册表凭据”部分中，将根据创建解决方案时提供的信息自动填充地址。 但是，用户名和密码引用 .env 文件中存储的变量。 这是出于安全考量，因为 .env 文件被 Git 忽略，但部署模板未被忽略。
 * 名为 **IotEdgeModule1** 的 IoT Edge 模块项目。
-    * **program.cs** 文件中包含项目模板附带的默认 C# 模块代码。 默认模块从源获取输入并将其传递到 IoT 中心。 
-    * **module.json** 文件保存有关模块的详细信息，其中包括完整的映像存储库、映像版本以及用于每个受支持平台的 Dockerfile。
+  * **program.cs** 文件中包含项目模板附带的默认 C# 模块代码。 默认模块从源获取输入并将其传递到 IoT 中心。 
+  * **module.json** 文件保存有关模块的详细信息，其中包括完整的映像存储库、映像版本以及用于每个受支持平台的 Dockerfile。
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>向 IoT Edge 代理提供注册表凭据
 
-IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge 设备中。 将这些凭据添加到部署模板。 
+IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge 设备中。 IoT Edge 扩展会尝试从 Azure 提取容器注册表信息，并将其填充到部署模板中。
 
-1. 打开 **deployment.template.json** 文件。
+1. 在模块解决方案中打开 **deployment.template.json** 文件。
 
-2. 在 $edgeAgent 所需属性中找到 **registryCredentials** 属性。 
-
-3. 使用凭据更新该属性，遵循以下格式： 
+1. 在 $edgeAgent 所需属性中找到 **registryCredentials** 属性，并确保它包含正确的信息。
 
    ```json
    "registryCredentials": {
      "<registry name>": {
-       "username": "<username>",
-       "password": "<password>",
+       "username": "$CONTAINER_REGISTRY_USERNAME_<registry name>",
+       "password": "$CONTAINER_REGISTRY_PASSWORD_<registry name>",
        "address": "<registry name>.azurecr.io"
      }
    }
    ```
 
-4. 保存 deployment.template.json 文件。 
+1. 打开模块解决方案中的 **.env** 文件。 （默认情况下，此文件会隐藏在解决方案资源管理器中，可能需要选择“显示所有文件”按钮才能显示它。） 
+
+1. 添加从 Azure 容器注册表中复制的“用户名”和“密码”值。  
+
+1. 将更改保存到 .env 文件。
 
 ### <a name="review-the-sample-code"></a>查看示例代码
 

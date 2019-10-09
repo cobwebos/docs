@@ -3,24 +3,21 @@ title: Azure Cosmos DB with Apache Spark 中的内置运营分析简介
 description: 了解如何使用 Azure Cosmos DB 中的内置 Apache Spark 支持来运行运营分析和 AI
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 09/26/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 0f070cb9a6e300dad0ec9e0b393b09b7f22d2942
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 952dd084bccd67a0a8833002d73d3aaf1d5dfb25
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212575"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338614"
 ---
-# <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Azure Cosmos DB with Apache Spark 中的内置运营分析（预览版） 
+# <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark"></a>Azure Cosmos DB with Apache Spark 中的内置运营分析
 
-使用 Azure Cosmos DB 中的内置 Apache Spark 支持可以通过 Apache Spark 针对 Azure Cosmos 帐户中存储的数据运行分析。 Azure Cosmos DB 原生支持在全局分布式 Cosmos 数据库中直接执行 Apache Spark 作业。 借助这些功能，开发人员、数据工程师和数据科学家可以使用 Azure Cosmos DB 作为灵活、可缩放且高效的数据平台来运行 **OLTP 和 OLAP/HTAP** 工作负荷。 
+使用 Azure Cosmos DB 可对事务数据运行全局分布式的低延迟分析和 AI。 Azure Cosmos DB 原生支持 Apache Spark 和 Jupyter Notebooks，可帮助缩短见解的生成时间。 由于会引入和提供数据，因此将会针对 Azure 区域中的本地数据库副本运行分析。 可以直接对存储在数据分区中的带索引多模型数据执行 Apache Spark 查询。
 
-Spark 计算在与你的 Azure Cosmos 帐户关联的 Azure 区域中自动可用。 Spark 作业使用 Azure Cosmos DB 的多主数据库功能，并且它们可以针对每个区域中的本地副本进行写入或查询。 
-
-> [!NOTE]
-> Azure Cosmos DB 中的内置 Apache Spark 支持目前以受限预览版提供。 若要注册预览版，请导航到[“注册预览版”页](https://portal.azure.com/?feature.customportal=false#create/Microsoft.DocumentDB)。 
+使用 Azure Cosmos DB 中的内置 Apache Spark 支持可以通过 Apache Spark 针对 Azure Cosmos 帐户中存储的数据运行分析。 Azure Cosmos DB 原生支持在全局分布式 Cosmos 数据库中直接执行 Apache Spark 作业。 借助这些功能，开发人员、数据工程师和数据科学家可以使用 Azure Cosmos DB 作为灵活、可缩放且高效的数据平台来运行 **OLTP 和 OLAP/HTAP** 工作负荷。
 
 Azure Cosmos DB 中的 Apache Spark 支持提供以下优势：
 
@@ -43,15 +40,17 @@ Azure Cosmos DB 中的 Apache Spark 支持在 Apache Spark 运行时中提供内
 
 ## <a name="key-benefits"></a>主要优点
 
-### <a name="globally-distributed-low-latency-operational-analytics-and-ai"></a>全局分布式低延迟运营分析和 AI
+### <a name="low-latency-operational-analytics-and-ai"></a>低延迟运营分析和 AI
 
 针对全局分布式 Azure Cosmos 数据库使用 Apache Spark，可以在全球各地快速获取实时见解。 Azure Cosmos DB 使用三项关键技术来实现支持弹性缩放的**全局分布式低延迟运营分析**：
 
-* 由于 Azure Cosmos 数据库是全局分布式的，将在数据生成者（例如用户）所在位置的本地引入所有数据。 无论数据生成者和使用者位于全球的哪个位置，都会针对最靠近他们的本地副本提供查询服务。 
+* 由于 Azure Cosmos 数据库是全局分布式的，将在数据生成者（例如用户）所在位置的本地引入所有数据。 无论数据生成者和使用者位于全球的哪个位置，都会针对最靠近他们的本地副本提供查询服务。
 
-* 所有分析查询将会直接针对数据分区中存储的索引数据执行，而无需进行任何不必要的数据移动。 
+* 所有分析查询将会直接针对数据分区中存储的索引数据执行，而无需进行任何不必要的数据移动。
 
 * 由于 Spark 与 Azure Cosmos DB 共置在一起，只会发生极少量的中间转换和数据移动，因此可以提高性能和可伸缩性。
+
+* 所有 Azure Cosmos DB 核心功能（例如多主数据库、自动故障转移、可用性区域等）都适用于 Azure Cosmos DB 中的内置 Apache Spark。
 
 ### <a name="unified-serverless-experience-for-apache-spark"></a>适用于 Apache Spark 的统一无服务器体验
 
@@ -61,81 +60,29 @@ Azure Cosmos DB 中的 Apache Spark 支持在 Apache Spark 运行时中提供内
 
 ### <a name="no-schema-or-index-management"></a>无需架构或索引管理
 
-与传统的分析数据库不同，使用 Azure Cosmos DB 时，数据工程师和数据科学家不再需要处理繁琐的架构和索引管理。 Azure Cosmos DB 中的数据库引擎不需要任何明确的架构或索引管理，并可以自动为引入的所有数据编制索引，以快速地为 Apache Spark 查询提供服务。 
+与传统的分析数据库不同，使用 Azure Cosmos DB 时，数据工程师和数据科学家不再需要处理繁琐的架构和索引管理。 Azure Cosmos DB 中的数据库引擎不需要任何明确的架构或索引管理，并可以自动为引入的所有数据编制索引，以快速地为 Apache Spark 查询提供服务。
 
 ### <a name="consistency-choices"></a>一致性选项
 
-由于 Apache Spark 作业是在 Azure Cosmos 数据库的数据分区中执行的，因此查询可以获得[五个妥善定义的一致性选项](consistency-levels.md)。 这些一致性模型允许灵活选择严格的一致性，以便为机器学习算法提供最准确的结果，且不会影响延迟和高可用性。 
+由于 Apache Spark 作业是在 Azure Cosmos 数据库的数据分区中执行的，因此查询可以获得[五个妥善定义的一致性选项](consistency-levels.md)。 这些一致性模型允许灵活选择严格的一致性，以便为机器学习算法提供最准确的结果，且不会影响延迟和高可用性。
 
 ### <a name="comprehensive-slas"></a>综合 SLA
 
 Apache Spark 作业将会利用 Azure Cosmos DB 的优势，例如，行业领先的综合性 [SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) (99.999)，且可以避免单独管理各个 Apache Spark 群集所造成的开销。 这些 SLA 涵盖了吞吐量、99% 时间内的延迟、一致性和高可用性。 
 
-### <a name="mixed-workloads"></a>混合工作负荷
+### <a name="mixed-operational-and-analytical-workloads-with-complete-isolation"></a>完全隔离的混合运营与分析工作负荷
 
-将 Apache Spark 集成到 Azure Cosmos DB 可以弥补事务与分析功能的隔离状态，而这种隔离是客户在生成全球规模的云原生应用程序时面临的主要痛点之一。 
+将 Apache Spark 集成到 Azure Cosmos DB 可以弥补事务与分析功能的隔离状态，而这种隔离是客户在生成全球规模的云原生应用程序时面临的主要痛点之一。 OLTP 和 OLAP 工作负荷并行运行，不会相互干扰。
 
-## <a name="scenarios-for-azure-cosmos-db-spark-support"></a>Azure Cosmos DB Spark 支持的使用场合
+### <a name="low-latency-analytical-and-transactional-storage"></a>低延迟分析和事务存储
 
-### <a name="retail-and-consumer-goods"></a>零售和日用消费品
+Azure Cosmos DB 原生将数据存储在两个不同的存储层中：事务存储（行导向）和分析存储（列导向，采用 Apache Parquet 文件格式）。 它将数据全局复制到每个层，并允许用户根据保留策略独立管理这些层中的数据。
 
-可以使用 Azure Cosmos DB 中的 Spark 支持提供实时建议和套餐。 可以通过实时个性化和产品建议帮助客户发现所需商品。
+此存储体系结构对相同的全局分布式数据同时启用任务关键型事务和分析工作负荷。 使用 Cosmos DB 时，无需执行任何 ETL 操作或不必要的数据移动。 只需对相同的底层数据运行事务和分析工作负载即可。 事务工作负荷可以使用用户熟悉的事务访问 API，包括 SQL、Cassandra、MongoDB、Gremlin 和 Etcd。 同时，分析和 AI 工作负荷可以使用内置的 Apache Spark SQL、ML 框架和整个 Apache Spark 工具链。
 
-* 可以使用 Apache Spark 运行时提供的内置机器学习支持跨产品目录生成实时建议。
+### <a name="snapshots-and-historical-analytical-queries"></a>快照和历史分析查询
 
-* 可以通过挖掘点击流数据、购买数据和客户数据，提供可以提高顾客终生价值的针对性建议。
-
-* 可以利用 Azure Cosmos DB 的全球分布特性，在数毫秒内分析完大量分布在多个区域的产品数据。
-
-* 可以快速获取分布在各地的用户和数据的见解。 可以在正确的时间为正确的用户提供正确的广告，提高促销转化率。
-
-* 可以利用内置的 Spark 流式处理功能，将其与静态客户数据组合使用，以便丰富实时数据。 这样就可以根据客户当前的操作提供更个性化且更具针对性的实时广告。
-
-下图显示了如何使用 Azure Cosmos DB Spark 支持来优化定价和促销：
-
-![Azure Cosmos DB 的用于优化定价和促销的 Spark 支持](./media/spark-api-introduction/optimize-pricing-and-promotions.png)
-
-
-下图显示了如何在实时建议引擎中使用 Azure Cosmos DB Spark 支持：
-
-![实时建议引擎中的 Azure Cosmos DB Spark 支持](./media/spark-api-introduction/real-time-recommendation-engine.png)
-
-### <a name="manufacturing-and-iot"></a>制造和 IoT
-
-可以通过 Azure Cosmos DB 的内置分析平台对来自全球数百万台设备的 IoT 数据进行实时分析。 可以进行各种现代创新，例如天气模式预测、预测分析、能源优化。
-
-* 可以使用 Azure Cosmos DB 来挖掘数据（例如实时资产指标和天气因素），然后应用智能电网分析来优化现场连接设备的性能。 智能电网分析是控制运营成本、提高电网可靠性以及向使用者提供个性化能源服务的关键。
-
-下图显示了如何使用 Azure Cosmos DB 的 Spark 支持，以便从 IoT 设备读取指标并应用智能电网分析：
-
-![Azure Cosmos DB 的用于从 IoT 设备读取指标的 Spark 支持](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
-
-
-### <a name="predictive-maintenance"></a>预见性维护
-
-* 维护资产（例如在从小型钻井平台到深水平台中使用的压缩机）是一项复杂的工作。 这些资产位于全球，生成数 PB 的数据。 可以使用 Azure Cosmos DB 构建端到端预测性数据管道，该管道使用 Spark 流式处理来处理大量的传感器遥测数据、存储资产部件以及传感器映射数据。
-
-* 可以构建并部署机器学习模型，以便在资产故障发生之前预测它们，以及在故障发生之前发出维护工作订单。
-
-下图显示了如何使用 Azure Cosmos DB 的 Spark 支持来构建预测性维护系统：
-
-![Azure Cosmos DB 的 Spark 支持，用于构建预测性维护系统](./media/spark-api-introduction/predictive-maintenance-system.png)
-
-下图显示了如何使用 Azure Cosmos DB 的 Spark 支持来构建实时车辆诊断系统：
-
-![Azure Cosmos DB 的 Spark 支持，用于构建实时车辆诊断系统](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
-
-### <a name="gaming"></a>游戏
-
-* Azure Cosmos DB 内置了 Spark 支持，可以用来轻松地快速构建、缩放和部署高级分析和机器学习模型，尽可能构建最佳游戏体验。
-
-* 你可以分析玩家、购买和行为数据，创建相关的个性化套餐，以便获得高转化率。
-
-* 可以使用 Spark 机器学习分析游戏遥测数据并获得相关见解。 可以诊断和预防加载时间过长的问题以及游戏中的问题。
-
-下图显示了如何在游戏分析中使用 Azure Cosmos DB 的 Spark 支持：
-
-![Azure Cosmos DB 的 Spark 支持，用于游戏分析](./media/spark-api-introduction/gaming-analytics.png)
+可为分析层中存储的列式压缩数据创建按需或按计划的快照，以针对特定的快照直接执行分析查询。 此功能可启用闪回或时光穿越查询、回滚、完整历史审核线索，以及可重现的机器学习和 AI 试验。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -144,7 +91,3 @@ Apache Spark 作业将会利用 Azure Cosmos DB 的优势，例如，行业领�
 * [Azure Cosmos DB Cassandra API 入门](cassandra-introduction.md)
 * [Azure Cosmos DB Gremlin API 入门](graph-introduction.md)
 * [Azure Cosmos DB 表 API 入门](table-introduction.md)
-
-
-
-

@@ -7,18 +7,22 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 15b4d3208be693a5b8d858d30b663347515f5a68
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: d7c2aee3ad73552a57776af5ce6585b36518d169
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130289"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687057"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>使用 Azure 门户创建专用终结点
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 本快速入门介绍如何使用 Azure PowerShell 在 Azure 虚拟网络中创建一个 VM，以及一个包含 Azure 专用终结点的 SQL 数据库服务器。 然后，你可以从该 VM 安全访问该 SQL 数据库服务器。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+
+> [!NOTE]
+> 不允许将专用终结点与同一子网中的服务终结点结合使用！
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -210,30 +214,31 @@ ms.locfileid: "71130289"
     Name:    myserver.privatelink.database.windows.net
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
-3. Install [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+    ```
+3. 安装 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)。
 
-4. In **Connect to server**, enter or select this information:
+4. 在“连接服务器”中，输入或选择以下信息 **** ：
 
-    | Setting | Value |
+    | 设置 | 值 |
     | ------- | ----- |
-    | Server type| Select **Database Engine**.|
-    | Server name| Select *myserver.database.windows.net* |
-    | User name | Enter a password provided during the SQL server creation. |
-    |Password |Enter a password provided during the SQL server creation. |
-    |Remember password|Select **Yes**.|
+    | 服务器类型| 选择“数据库引擎”。 |
+    | 服务器名称| 选择“myserver.database.windows.net”。  |
+    | 用户名 | 输入创建 SQL 服务器期间提供的密码。 |
+    |密码 |输入创建 SQL 服务器期间提供的密码。 |
+    |记住密码|请选择“是”。 |
     |||
-1. Select **Connect**.
-2. Browse databases from left menu.
-3. (Optionally) Create or query information from mydatabase.
-4. Close the remote desktop connection to *myVm*. 
+1. 选择“连接”。 ****
+2. 浏览左侧菜单中的数据库。
+3. （可选）创建或查询 mydatabase 中的信息。
+4. 关闭与  *myVm* 建立的远程桌面连接。 
 
-## Clean up resources 
-When you're done using the private endpoint, SQL server, and the VM, delete the resource group and all of the resources it contains: 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
-2. Select **Delete resource group**. 
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+## <a name="clean-up-resources"></a>清理资源 
+用完专用终结点、SQL 服务器和 VM 之后，请删除资源组及其包含的所有资源： 
+1. 在门户顶部的“搜索”框中输入  *myResourceGroup*，然后选择从搜索结果中选择“myResourceGroup”。  ****   **   
+2. 选择“删除资源组”。 **** 
+3. 在“键入资源组名称”中输入 myResourceGroup，然后选择“删除”。 ****   ****
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
-In this quickstart, you created a VM on a virtual network, a SQL database server, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the SQL database server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint?](private-endpoint-overview.md).
+在本快速入门中，你已在虚拟网络中创建一个 VM，并创建了一个 SQL 数据库服务器，以及一个用于私密访问的专用终结点。 你已从 Internet 连接到一个 VM，并使用专用链接安全地与 SQL 数据库服务器通信。 若要详细了解专用终结点，请参阅[什么是 Azure 专用终结点？](private-endpoint-overview.md)。
 

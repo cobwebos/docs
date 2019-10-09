@@ -83,7 +83,7 @@ Azure AD 应用程序代理具有以下优势:
 
 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)(MCAS) 可帮助你确定很有用的应用程序, 这些应用程序可能批准并添加到企业应用程序库, 使用户能够受益于 SSO 和条件性访问等功能。
 
-*"**Cloud App Security** 有助于我们确保用户正确地使用我们的云和 SaaS 应用程序, 以支持帮助保护 Accenture 的基础安全策略的方式。"* --- [John Blasi, 管理总监, 信息安全, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*" **Cloud App Security** 有助于我们确保用户正确地使用我们的云和 SaaS 应用程序, 以支持帮助保护 Accenture 的基础安全策略的方式*。" --- [John Blasi, 管理总监, 信息安全, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 除了检测影子 IT 外, MCAS 还可以确定应用程序的风险级别, 防止未经授权访问公司数据、可能的数据泄漏和应用程序固有的其他安全风险。
 

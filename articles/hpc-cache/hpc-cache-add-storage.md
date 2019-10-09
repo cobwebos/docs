@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 302d727ede9604d11972eaa8f46a3e27f204858f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710039"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024558"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -37,13 +37,16 @@ ms.locfileid: "71710039"
 
 !["添加存储目标" 页的屏幕截图，其中填充了新的 Azure Blob 存储目标的信息](media/hpc-cache-add-blob.png)
 
-<!-- need to replace screenshot after note text is updated with both required RBAC roles -->
+<!-- need to replace screenshot after note text is updated with both required RBAC roles and also with correct search term -->
 
 * **存储目标名称**-设置在 Azure HPC 缓存中标识此存储目标的名称。
 * **目标类型**-选择 " **Blob**"。
 * **存储帐户**-选择容器要引用的帐户。
 
   如[添加访问角色](#add-the-access-control-roles-to-your-account)中所述，你将需要授权缓存实例访问存储帐户。
+
+  有关可使用的存储帐户类型的信息，请参阅[Blob 存储要求](hpc-cache-prereqs.md#blob-storage-requirements)。
+
 * **存储容器**-选择此目标的 Blob 容器。
 
 * **虚拟命名空间路径**-为此存储目标设置面向客户端的文件路径。 阅读[配置聚合命名空间](hpc-cache-namespace.md)，了解有关虚拟命名空间功能的详细信息。
@@ -54,7 +57,7 @@ ms.locfileid: "71710039"
 
 Azure HPC 缓存使用[基于角色的访问控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/index)来授权缓存应用程序访问 Azure Blob 存储目标的存储帐户。
 
-存储帐户所有者必须为用户 "StorageCache 资源提供程序" 显式添加角色 "[存储帐户参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)" 和 "[存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)"。
+存储帐户所有者必须为用户 "HPC 缓存资源提供程序" 显式添加角色[存储帐户参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)和[存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)。
 
 可以提前完成此操作，也可以通过单击页面上添加 Blob 存储目标的链接来完成此操作。
 
@@ -62,13 +65,16 @@ Azure HPC 缓存使用[基于角色的访问控制（RBAC）](https://docs.micro
 
 1. 打开存储帐户的 "**访问控制（IAM）** " 页。 （"**添加存储目标**" 页中的链接会自动打开所选帐户的此页。）
 
-1. 单击页面 **+** 顶部的，然后选择 "**添加角色分配**"。
+1. 单击页面顶部的 " **+** "，然后选择 "**添加角色分配**"。
 
 1. 从列表中选择 "存储帐户参与者" 角色。
 
 1. 在 "**将访问权限分配给**" 字段中，保留选定的默认值（"Azure AD 用户、组或服务主体"）。  
 
-1. 在**选择**字段中，搜索 "storagecache"。  此字符串应匹配一个名为 "HPC 缓存资源提供程序" 的安全主体。 单击该主体将其选中。
+1. 在**选择**字段中，搜索 "hpc"。  此字符串应匹配一个名为 "HPC 缓存资源提供程序" 的服务主体。 单击该主体将其选中。
+
+   > [!NOTE]
+   > 如果搜索 "hpc" 不起作用，请尝试使用字符串 "storagecache"。 早加入预览的用户可能需要使用服务主体的旧名称。
 
 1. 单击 "**保存**" 按钮，将角色分配添加到存储帐户。
 

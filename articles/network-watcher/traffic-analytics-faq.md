@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: 45200e7620326dedcee92c579843e61bb07ff68e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b232df010190a95d12d5a57f076a4c1bf336cea4
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610247"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026579"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -58,7 +58,7 @@ ms.locfileid: "68610247"
 
 2. 使用**AzSubscription**选择所需的订阅。 
 
-3. 若要列出分配给特定用户的所有角色, 请使用**AzRoleAssignment-SignInName [user email]-IncludeClassicAdministrators**。 
+3. 若要列出分配给特定用户的所有角色，请使用**AzRoleAssignment-SignInName [user email]-IncludeClassicAdministrators**。 
 
 如果未看到任何输出，请与相应的订阅管理员联系以获取运行命令的权限。 有关详细信息，请参阅[使用 Azure PowerShell 管理基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
 
@@ -120,11 +120,11 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>是否可以在单个工作区中配置多个 NSG？
 
-是的。
+是。
 
 ## <a name="can-i-use-an-existing-workspace"></a>是否可以使用现有的的工作区？
 
-是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息, 请参阅[Azure Monitor 日志升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md)。
+是。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[Azure Monitor 日志升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md)。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可将 Azure 存储帐户放在一个订阅中，并将 Log Analytics 工作区放在另一个订阅中？
 
@@ -143,8 +143,8 @@ Log Analytics 工作区必须存在于以下区域中：
 要使流日志记录正常工作，必须注册 Microsoft.Insights 提供程序。 如果不确定是否为订阅注册了 Microsoft.Insights 提供程序，请替换以下命令中的“xxxxx-xxxxx-xxxxxx-xxxx”，并从 PowerShell 运行以下命令：
 
 ```powershell-interactive
-**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>我已配置解决方案。 为何仪表板上未显示任何信息？
@@ -174,7 +174,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>是否可以使用 PowerShell 或 Azure 资源管理器模板或客户端配置流量分析？
 
-可使用版本 6.2.1 及以上版本的 Windows PowerShell 配置流量分析。 若要使用 Set cmdlet 配置特定 NSG 的流日志记录和流量分析, 请参阅[AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要获取特定 NSG 的流日志记录和流量分析状态, 请参阅[AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
+可使用版本 6.2.1 及以上版本的 Windows PowerShell 配置流量分析。 若要使用 Set cmdlet 配置特定 NSG 的流日志记录和流量分析，请参阅[AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要获取特定 NSG 的流日志记录和流量分析状态，请参阅[AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
 
 目前，无法使用 Azure 资源管理器模板配置流量分析。
 
@@ -252,11 +252,11 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何确定 IP 是恶意的？ 
 
-流量分析依赖 Microsoft 内部威胁情报系统将 IP 视为恶意 IP。 这些系统利用各种遥测源, 如 Microsoft 产品和服务、Microsoft 数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC) 以及外部源, 并在其之上构建大量智能。 其中一些数据是 Microsoft 内部数据。 如果已知 IP 被标记为恶意 IP, 请提供支持票证来了解详细信息。
+流量分析依赖 Microsoft 内部威胁情报系统将 IP 视为恶意 IP。 这些系统利用各种遥测源，如 Microsoft 产品和服务、Microsoft 数字犯罪部门（DCU）、Microsoft 安全响应中心（MSRC）以及外部源，并在其之上构建大量智能。 其中一些数据是 Microsoft 内部数据。 如果已知 IP 被标记为恶意 IP，请提供支持票证来了解详细信息。
 
 ## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>如何对流量分析数据设置警报？
 
-流量分析没有对警报的内置支持。 不过, 由于流量分析数据存储在 Log Analytics 可以编写自定义查询并对这些查询设置警报。 逐步
+流量分析没有对警报的内置支持。 不过，由于流量分析数据存储在 Log Analytics 可以编写自定义查询并对这些查询设置警报。 逐步
 - 可以在流量分析中使用 Log Analytics 的向。 
 - 使用[此处所述的架构](traffic-analytics-schema.md)编写查询 
 - 单击 "新建警报规则" 以创建警报
@@ -266,8 +266,8 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 地图页面包含两个主要部分：
     
-- **标题**："地理地图" 顶部的横幅提供了用于选择流量分布筛选器 (例如, 部署、来自国家/地区的流量和恶意) 的按钮。 选择某按钮时，将在地图上应用相应的筛选器。 例如，如果选择“活动”按钮，则地图会突出显示部署中的活动数据中心。
-- **地图**：在标题下方, 地图部分显示了 Azure 数据中心和国家/地区之间的流量分布。
+- **标题**："地理地图" 顶部的横幅提供了用于选择流量分布筛选器（例如，部署、来自国家/地区的流量和恶意）的按钮。 选择某按钮时，将在地图上应用相应的筛选器。 例如，如果选择“活动”按钮，则地图会突出显示部署中的活动数据中心。
+- **地图**：在标题下方，地图部分显示了 Azure 数据中心和国家/地区之间的流量分布。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>标题中的键盘导航
     

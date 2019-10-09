@@ -10,208 +10,208 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 02/20/2019
-ms.openlocfilehash: 264d8e049cc7b714e00aaa77441cdc81a1e0a0c9
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 9/27/2019
+ms.openlocfilehash: 5b9be86b0a3d17c9c325b565979fccbec92f5733
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140732"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815884"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 
-在本教程中，我们将创建一个数据工厂管道来展示某些控制流功能。 此管道执行从 Azure Blob 存储容器中某个容器到同一存储帐户中另一个容器的简单复制。 如果复制活动成功，可以在告知成功结果的电子邮件中发送成功复制操作的详细信息（例如写入的数据量）。 如果复制活动失败，可以在告知失败结果的电子邮件中发送复制失败的详细信息（例如错误消息）。 整个教程讲解了如何传递参数。
+在本教程中，我们将创建一个数据工厂管道来展示某些控制流功能。 此管道从 Azure Blob 存储容器中的某个容器复制到同一存储帐户中的另一个容器。 如果复制活动成功，该管道会在电子邮件中发送成功复制操作的详细信息。 该信息可能包括写入的数据量。 如果复制活动失败，该管道会在电子邮件中发送复制失败的详细信息（例如错误消息）。 整个教程讲解了如何传递参数。
 
-方案的综合概述：![概述](media/tutorial-control-flow/overview.png)
+下图概述了该方案：
 
-在本教程中执行以下步骤：
+![概述](media/tutorial-control-flow/overview.png)
+
+本教程介绍如何执行以下任务：
 
 > [!div class="checklist"]
-> * 创建数据工厂。
-> * 创建 Azure 存储链接服务。
+> * 创建数据工厂
+> * 创建 Azure 存储链接服务
 > * 创建 Azure Blob 数据集
 > * 创建包含复制活动和 Web 活动的管道
 > * 将活动的输出发送到后续活动
-> * 利用参数传递和系统变量
+> * 使用参数传递和系统变量
 > * 启动管道运行
 > * 监视管道和活动运行
 
-本教程使用 .NET SDK。 可以使用其他机制来与 Azure 数据工厂交互，具体请参阅目录中的“快速入门”。
+本教程使用 .NET SDK。 可以使用其他机制来与 Azure 数据工厂交互。 有关数据工厂的快速入门，请参阅 [5 分钟快速入门](https://docs.microsoft.com/azure/data-factory/#5-minute-quickstarts)。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 存储帐户**。 可将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
-* **Azure SQL 数据库**。 将数据库用作**接收器**数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)一文获取创建步骤。
-* **Visual Studio** 2013、2015 或 2017。 本文中的演练使用 Visual Studio 2017。
-* **下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)** 。
-* 遵照[这些说明](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)**在 Azure Active Directory 中创建应用程序**。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**身份验证密钥**和**租户 ID**。 遵照同一文章中的以下说明将应用程序分配到“参与者”角色。 
+* Azure 存储帐户。 可将 Blob 存储用作源数据存储。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-quickstart-create-account.md)。
+* Azure 存储资源管理器下载。 若要安装此工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。
+* Azure SQL 数据库。 将数据库用作接收器数据存储。 如果你没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)。
+* Visual Studio。 本文使用 Visual Studio 2019。
+* Azure .NET SDK。 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
 
-### <a name="create-blob-table"></a>创建 Blob 表
+有关当前可以使用数据工厂的 Azure 区域列表，请参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据存储和计算可以位于其他区域。 存储包括 Azure 存储和 Azure SQL 数据库。 计算包括数据工厂使用的 HDInsight。
 
-1. 启动记事本。 复制以下文本并在磁盘上将其另存为 **input.txt** 文件。
+根据[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)中所述创建一个应用程序。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。  需要获取多个值（例如“应用程序(客户端) ID”和“目录(租户) ID”），以便在本教程的后续部分中使用。  
 
-    ```
-    John|Doe
-    Jane|Doe
-    ```
+### <a name="create-a-blob-table"></a>创建 Blob 表
 
-2. 使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具创建 **adfv2branch** 容器，并将 **input.txt** 文件上传到该容器。
+1. 打开文本编辑器。 复制以下文本，并在本地将其保存为 *input.txt*。
 
-## <a name="create-visual-studio-project"></a>创建 Visual Studio 项目
+   ```
+   Ethel|Berg
+   Tamika|Walsh
+   ```
 
-使用 Visual Studio 2015/2017 创建 C# .NET 控制台应用程序。
+1. 打开 Azure 存储资源管理器。 展开你的存储帐户。 右键单击“Blob 容器”，并选择“创建 Blob 容器”。  
+1. 将新容器命名为 *adfv2branch*，然后选择“上传”将 *input.txt* 文件添加到该容器。 
 
-1. 启动 **Visual Studio**。
-2. 单击“文件”，指向“新建”并单击“项目”。    需要 .NET 4.5.2 或更高版本。
-3. 从右侧项目类型列表中选择“Visual C#”   -> “控制台应用(.NET Framework)”  。
-4. 输入 **ADFv2BranchTutorial** 作为名称。
-5. 单击“确定”以创建该项目  。
+## 创建 Visual Studio 项目<a name="create-visual-studio-project"></a>
 
-## <a name="install-nuget-packages"></a>安装 NuGet 包
+创建一个 C# .NET 控制台应用程序：
 
-1. 单击“工具”   -> “NuGet 包管理器”   -> “包管理器控制台”  。
-2. 在“包管理器控制台”  中，运行以下命令来安装包。 有关详细信息，请参阅 [Microsoft.Azure.Management.DataFactory nuget 包](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
+1. 启动 Visual Studio 并选择“创建新项目”。 
+1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。   
+1. 将项目命名为 *ADFv2BranchTutorial*。
+1. 选择“.NET 版本 4.5.2”或更高版本，然后选择“创建”。  
 
-    ```powershell
-    Install-Package Microsoft.Azure.Management.DataFactory
-    Install-Package Microsoft.Azure.Management.ResourceManager
-    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-    ```
+### <a name="install-nuget-packages"></a>安装 NuGet 包
 
-## <a name="create-a-data-factory-client"></a>创建数据工厂客户端
+1. 选择“工具”   > “NuGet 包管理器”   > “包管理器控制台”  。
+1. 在“包管理器控制台”  中，运行以下命令来安装包。 有关详细信息，请参阅 [Microsoft.Azure.Management.DataFactory NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
 
-1. 打开 **Program.cs**，包括以下语句来添加对命名空间的引用。
+   ```powershell
+   Install-Package Microsoft.Azure.Management.DataFactory
+   Install-Package Microsoft.Azure.Management.ResourceManager -IncludePrerelease
+   Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
+   ```
 
-    ```csharp
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Microsoft.Rest;
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.DataFactory;
-    using Microsoft.Azure.Management.DataFactory.Models;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
-    ```
+### <a name="create-a-data-factory-client"></a>创建数据工厂客户端
 
-2. 将这些静态变量添加到 **Program 类**。 将占位符替换为自己的值。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+1. 打开文件 *Program.cs* 并添加以下语句：
 
-    ```csharp
-        // Set variables
-        static string tenantID = "<tenant ID>";
-        static string applicationId = "<application ID>";
-        static string authenticationKey = "<Authentication key for your application>";
-        static string subscriptionId = "<Azure subscription ID>";
-        static string resourceGroup = "<Azure resource group name>";
+   ```csharp
+   using System;
+   using System.Collections.Generic;
+   using System.Linq;
+   using Microsoft.Rest;
+   using Microsoft.Azure.Management.ResourceManager;
+   using Microsoft.Azure.Management.DataFactory;
+   using Microsoft.Azure.Management.DataFactory.Models;
+   using Microsoft.IdentityModel.Clients.ActiveDirectory;
+   ```
 
-        static string region = "East US";
-        static string dataFactoryName = "<Data factory name>";
+1. 将这些静态变量添加到 `Program` 类。 将占位符替换为自己的值。
 
-        // Specify the source Azure Blob information
-        static string storageAccount = "<Azure Storage account name>";
-        static string storageKey = "<Azure Storage account key>";
-        // confirm that you have the input.txt file placed in th input folder of the adfv2branch container. 
-        static string inputBlobPath = "adfv2branch/input";
-        static string inputBlobName = "input.txt";
-        static string outputBlobPath = "adfv2branch/output";
-        static string emailReceiver = "<specify email address of the receiver>";
+   ```csharp
+   // Set variables
+   static string tenantID = "<tenant ID>";
+   static string applicationId = "<application ID>";
+   static string authenticationKey = "<Authentication key for your application>";
+   static string subscriptionId = "<Azure subscription ID>";
+   static string resourceGroup = "<Azure resource group name>";
 
-        static string storageLinkedServiceName = "AzureStorageLinkedService";
-        static string blobSourceDatasetName = "SourceStorageDataset";
-        static string blobSinkDatasetName = "SinkStorageDataset";
-        static string pipelineName = "Adfv2TutorialBranchCopy";
+   static string region = "East US";
+   static string dataFactoryName = "<Data factory name>";
 
-        static string copyBlobActivity = "CopyBlobtoBlob";
-        static string sendFailEmailActivity = "SendFailEmailActivity";
-        static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
-    
-    ```
+   // Specify the source Azure Blob information
+   static string storageAccount = "<Azure Storage account name>";
+   static string storageKey = "<Azure Storage account key>";
+   // confirm that you have the input.txt file placed in th input folder of the adfv2branch container. 
+   static string inputBlobPath = "adfv2branch/input";
+   static string inputBlobName = "input.txt";
+   static string outputBlobPath = "adfv2branch/output";
+   static string emailReceiver = "<specify email address of the receiver>";
 
-3. 在 **Main** 方法中添加用于创建 **DataFactoryManagementClient** 类的实例的以下代码。 将使用此对象来创建数据工厂、链接服务、数据集和管道。 还将使用此对象来监视管道运行详细信息。
+   static string storageLinkedServiceName = "AzureStorageLinkedService";
+   static string blobSourceDatasetName = "SourceStorageDataset";
+   static string blobSinkDatasetName = "SinkStorageDataset";
+   static string pipelineName = "Adfv2TutorialBranchCopy";
 
-    ```csharp
-    // Authenticate and create a data factory management client
-    var context = new AuthenticationContext("https://login.windows.net/" + tenantID);
-    ClientCredential cc = new ClientCredential(applicationId, authenticationKey);
-    AuthenticationResult result = context.AcquireTokenAsync("https://management.azure.com/", cc).Result;
-    ServiceClientCredentials cred = new TokenCredentials(result.AccessToken);
-    var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
-    ```
+   static string copyBlobActivity = "CopyBlobtoBlob";
+   static string sendFailEmailActivity = "SendFailEmailActivity";
+   static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
+   ```
 
-## <a name="create-a-data-factory"></a>创建数据工厂
+1. 将以下代码添加到 `Main` 方法中。 此代码将创建 `DataFactoryManagementClient` 类的实例。 然后，你将使用此对象来创建数据工厂、链接服务、数据集和管道。 还可使用此对象来监视管道运行详细信息。
 
-在 Program.cs 文件中创建“CreateOrUpdateDataFactory”函数：
+   ```csharp
+   // Authenticate and create a data factory management client
+   var context = new AuthenticationContext("https://login.windows.net/" + tenantID);
+   ClientCredential cc = new ClientCredential(applicationId, authenticationKey);
+   AuthenticationResult result = context.AcquireTokenAsync("https://management.azure.com/", cc).Result;
+   ServiceClientCredentials cred = new TokenCredentials(result.AccessToken);
+   var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
+   ```
 
-```csharp
-static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
-{
-    Console.WriteLine("Creating data factory " + dataFactoryName + "...");
-    Factory resource = new Factory
-    {
-        Location = region
-    };
-    Console.WriteLine(SafeJsonConvert.SerializeObject(resource, client.SerializationSettings));
+### <a name="create-a-data-factory"></a>创建数据工厂
 
-    Factory response;
-    {
-        response = client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, resource);
-    }
+1. 将 `CreateOrUpdateDataFactory` 方法添加到 *Program.cs* 文件中：
 
-    while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState == "PendingCreation")
-    {
-        System.Threading.Thread.Sleep(1000);
-    }
-    return response;
-}
-```
+   ```csharp
+   static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
+   {
+       Console.WriteLine("Creating data factory " + dataFactoryName + "...");
+       Factory resource = new Factory
+       {
+           Location = region
+       };
+       Console.WriteLine(SafeJsonConvert.SerializeObject(resource, client.SerializationSettings));
 
+       Factory response;
+       {
+           response = client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, resource);
+       }
 
+       while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState == "PendingCreation")
+       {
+           System.Threading.Thread.Sleep(1000);
+       }
+       return response;
+   }
+   ```
 
-在 **Main** 方法中添加用于创建**数据工厂**的以下代码。 
+1. 在 `Main` 方法中添加用于创建数据工厂的以下行：
 
-```csharp
-Factory df = CreateOrUpdateDataFactory(client);
-```
+   ```csharp
+   Factory df = CreateOrUpdateDataFactory(client);
+   ```
 
 ## <a name="create-an-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 
-在 Program.cs 文件中创建“StorageLinkedServiceDefinition”函数：
+1. 将 `StorageLinkedServiceDefinition` 方法添加到 *Program.cs* 文件中：
 
-```csharp
-static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
-{
-    Console.WriteLine("Creating linked service " + storageLinkedServiceName + "...");
-    AzureStorageLinkedService storageLinkedService = new AzureStorageLinkedService
-    {
-        ConnectionString = new SecureString("DefaultEndpointsProtocol=https;AccountName=" + storageAccount + ";AccountKey=" + storageKey)
-    };
-    Console.WriteLine(SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings));
-    LinkedServiceResource linkedService = new LinkedServiceResource(storageLinkedService, name:storageLinkedServiceName);
-    return linkedService;
-}
-```
+   ```csharp
+   static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
+   {
+      Console.WriteLine("Creating linked service " + storageLinkedServiceName + "...");
+      AzureStorageLinkedService storageLinkedService = new AzureStorageLinkedService
+      {
+          ConnectionString = new SecureString("DefaultEndpointsProtocol=https;AccountName=" + storageAccount + ";AccountKey=" + storageKey)
+      };
+      Console.WriteLine(SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings));
+      LinkedServiceResource linkedService = new LinkedServiceResource(storageLinkedService, name:storageLinkedServiceName);
+      return linkedService;
+   }
+   ```
 
-在 **Main** 方法中添加用于创建 **Azure 存储链接服务**的以下代码。 从 [Azure Blob 链接服务属性](connector-azure-blob-storage.md#linked-service-properties)了解更多有关受支持属性的信息及其细节。
+1. 在 `Main` 方法中添加用于创建 Azure 存储链接服务的以下行：
 
-```csharp
-client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLinkedServiceName, StorageLinkedServiceDefinition(client));
-```
+   ```csharp
+   client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLinkedServiceName, StorageLinkedServiceDefinition(client));
+   ```
+
+有关支持的属性和详细信息，请参阅[链接服务属性](connector-azure-blob-storage.md#linked-service-properties)。
 
 ## <a name="create-datasets"></a>创建数据集
 
-在本部分中创建两个数据集：一个用于源，另一个用于接收器。 
+在本部分中创建两个数据集：一个用于源，另一个用于接收器。
 
-### <a name="create-a-dataset-for-source-azure-blob"></a>为源 Azure Blob 创建数据集
+### <a name="create-a-dataset-for-a-source-azure-blob"></a>为源 Azure Blob 创建数据集
 
-向 **Main** 方法中添加用于创建 **Azure blob 数据集**的以下代码。 从 [Azure Blob 数据集属性](connector-azure-blob-storage.md#dataset-properties)了解更多有关受支持属性的信息及其细节。
+添加一个方法用于创建 *Azure Blob 数据集*。 有关支持的属性和详细信息，请参阅 [Azure Blob 数据集属性](connector-azure-blob-storage.md#dataset-properties)。
 
-在 Azure Blob 中定义表示源数据的数据集。 此 Blob 数据集引用在上一步中创建的 Azure 存储链接服务，并说明以下信息：
-
-- 要从中复制的 Blob 的位置：**FolderPath** 和 **FileName**；
-- 请注意 FolderPath 的参数用法。 “sourceBlobContainer”是参数的名称，表达式已替换为在管道运行中传递的值。 用于定义参数的语法为 `@pipeline().parameters.<parameterName>`
-
-在 Program.cs 文件中创建“SourceBlobDatasetDefinition”函数
+将 `SourceBlobDatasetDefinition` 方法添加到 *Program.cs* 文件中：
 
 ```csharp
 static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -232,44 +232,48 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-### <a name="create-a-dataset-for-sink-azure-blob"></a>为接收器 Azure Blob 创建数据集
+在 Azure Blob 中定义表示源数据的数据集。 此 Blob 数据集引用在上一步骤中支持的 Azure 存储链接服务。 Blob 数据集描述要从中复制 Blob 的位置：*FolderPath* 和 *FileName*。
 
-在 Program.cs 文件中创建“SourceBlobDatasetDefinition”函数
+请注意 *FolderPath* 的参数用法。 `sourceBlobContainer` 是参数的名称，表达式已替换为在管道运行中传递的值。 用于定义参数的语法为 `@pipeline().parameters.<parameterName>`
 
-```csharp
-static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)
-{
-    Console.WriteLine("Creating dataset " + blobSinkDatasetName + "...");
-    AzureBlobDataset blobDataset = new AzureBlobDataset
-    {
-        FolderPath = new Expression { Value = "@pipeline().parameters.sinkBlobContainer" },
-        LinkedServiceName = new LinkedServiceReference
-        {
-            ReferenceName = storageLinkedServiceName
-        }
-    };
-    Console.WriteLine(SafeJsonConvert.SerializeObject(blobDataset, client.SerializationSettings));
-    DatasetResource dataset = new DatasetResource(blobDataset, name: blobSinkDatasetName);
-    return dataset;
-}
-```
+### <a name="create-a-dataset-for-a-sink-azure-blob"></a>为接收器 Azure Blob 创建数据集
 
-在 **Main** 方法中添加用于创建 Azure Blob 源和接收器数据集的以下代码。 
+1. 将 `SourceBlobDatasetDefinition` 方法添加到 *Program.cs* 文件中：
 
-```csharp
-client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDatasetName, SourceBlobDatasetDefinition(client));
+   ```csharp
+   static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)
+   {
+       Console.WriteLine("Creating dataset " + blobSinkDatasetName + "...");
+       AzureBlobDataset blobDataset = new AzureBlobDataset
+       {
+           FolderPath = new Expression { Value = "@pipeline().parameters.sinkBlobContainer" },
+           LinkedServiceName = new LinkedServiceReference
+           {
+               ReferenceName = storageLinkedServiceName
+           }
+       };
+       Console.WriteLine(SafeJsonConvert.SerializeObject(blobDataset, client.SerializationSettings));
+       DatasetResource dataset = new DatasetResource(blobDataset, name: blobSinkDatasetName);
+       return dataset;
+   }
+   ```
 
-client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
-```
+1. 在 `Main` 方法中添加用于创建 Azure Blob 源和接收器数据集的以下代码。
+
+   ```csharp
+   client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDatasetName, SourceBlobDatasetDefinition(client));
+
+   client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
+   ```
 
 ## <a name="create-a-c-class-emailrequest"></a>创建 C# 类：EmailRequest
 
-在 C# 项目中，创建名为 **EmailRequest** 的类。 此类定义在发送电子邮件时，管道要在正文请求中发送哪些属性。 在本教程中，管道会将四个属性从管道发送到电子邮件：
+在 C# 项目中，创建名为 `EmailRequest` 的类。 此类定义在发送电子邮件时，管道要在正文请求中发送哪些属性。 在本教程中，管道会将四个属性从管道发送到电子邮件：
 
-- **消息**：电子邮件的正文。 如果复制成功，此属性包含运行的详细信息（写入的数据量）。 如果复制失败，此属性包含错误详细信息。
-- **数据工厂名称**：数据工厂的名称
-- **管道名称**：管道的名称
-- **收件人**：传递的参数。 此属性指定电子邮件的收件人。
+* 消息。 电子邮件的正文。 如果复制成功，此属性将包含写入的数据量。 如果复制失败，此属性将包含错误详细信息。
+* 数据工厂名称。 数据工厂的名称。
+* 管道名称。 管道的名称。
+* 收件人。 传递的参数。 此属性指定电子邮件的收件人。
 
 ```csharp
     class EmailRequest
@@ -298,15 +302,11 @@ client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetNa
 
 ## <a name="create-email-workflow-endpoints"></a>创建电子邮件工作流终结点
 
-若要触发电子邮件的发送，可以使用[逻辑应用](../logic-apps/logic-apps-overview.md)来定义工作流。 有关创建逻辑应用工作流的详细信息，请参阅[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 
+若要触发电子邮件的发送，可以使用[逻辑应用](../logic-apps/logic-apps-overview.md)来定义工作流。 有关创建逻辑应用工作流的详细信息，请参阅[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-### <a name="success-email-workflow"></a>成功电子邮件工作流 
+### <a name="success-email-workflow"></a>成功电子邮件工作流
 
-创建名为 `CopySuccessEmail` 的逻辑应用工作流。 将工作流触发器定义为 `When an HTTP request is received`，并添加 `Office 365 Outlook – Send an email` 操作。
-
-![成功电子邮件工作流](media/tutorial-control-flow/success-email-workflow.png)
-
-对于请求触发器，请在 `Request Body JSON Schema` 中填写以下 JSON：
+在 [Azure 门户](https://portal.azure.com)中，创建名为 *CopySuccessEmail* 的逻辑应用工作流。 将工作流触发器定义为 `When an HTTP request is received`。 对于请求触发器，请在 `Request Body JSON Schema` 中填写以下 JSON：
 
 ```json
 {
@@ -328,39 +328,29 @@ client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetNa
 }
 ```
 
-此值与前一部分中创建的 **EmailRequest** 类相符。 
+工作流类似于以下示例：
 
-逻辑应用设计器中的请求应如下所示：
+![成功电子邮件工作流](media/tutorial-control-flow/success-email-workflow-trigger.png)
 
-![逻辑应用设计器 - 请求](media/tutorial-control-flow/logic-app-designer-request.png)
+此 JSON 内容与前一部分中创建的 `EmailRequest` 类相符。
 
-对于“发送电子邮件”操作，请使用传入请求正文 JSON 架构的属性来自定义如何设置电子邮件的格式。  下面是一个示例：
+添加 `Office 365 Outlook – Send an email` 操作。 对于“发送电子邮件”操作，请使用传入请求**正文** JSON 架构的属性来自定义如何设置电子邮件的格式。  下面是一个示例：
 
-![逻辑应用设计器 - 发送电子邮件操作](media/tutorial-control-flow/send-email-action.png)
+![逻辑应用设计器 - 发送电子邮件操作](media/tutorial-control-flow/customize-send-email-action.png)
 
-记下成功电子邮件工作流的 HTTP Post 请求 URL：
+保存工作流后，复制并保存触发器中的“HTTP POST URL”值。 
 
-```
-//Success Request Url
-https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
-```
+## <a name="fail-email-workflow"></a>失败电子邮件工作流
 
-## <a name="fail-email-workflow"></a>失败电子邮件工作流 
-
-克隆 **CopySuccessEmail**，并创建另一个 **CopyFailEmail** 逻辑应用工作流。 在请求触发器中，`Request Body JSON schema` 是相同的。 只需更改电子邮件的格式（例如 `Subject`）即可定制失败电子邮件。 下面是一个示例：
+克隆 **CopySuccessEmail** 作为名为 *CopyFailEmail* 的另一个逻辑应用工作流。 在请求触发器中，`Request Body JSON schema` 是相同的。 更改电子邮件的格式（例如 `Subject`）即可定制失败电子邮件。 下面是一个示例：
 
 ![逻辑应用设计器 - 失败电子邮件工作流](media/tutorial-control-flow/fail-email-workflow.png)
 
-记下失败电子邮件工作流的 HTTP Post 请求 URL：
+保存工作流后，复制并保存触发器中的“HTTP POST URL”值。 
 
-```
-//Fail Request Url
-https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
-```
+现在，应有两个工作流 URL，如以下示例所示：
 
-现在，应有两个工作流 URL：
-
-```
+```csharp
 //Success Request Url
 https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
 
@@ -370,104 +360,102 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 ## <a name="create-a-pipeline"></a>创建管道
 
-在 Main 方法中添加用于创建包含复制活动和 dependsOn 属性的管道的以下代码。 在本教程中，该管道包含一个活动：这是一个复制活动，它使用 Blob 数据集作为源，使用另一个 Blob 数据集作为接收器。 复制活动成功和失败时，会调用不同的电子邮件任务。
+返回 Visual Studio 中的项目。 现在，我们添加代码来创建包含复制活动和 `DependsOn` 属性的管道。 在本教程中，该管道包含一个活动：这是一个复制活动，它使用 Blob 数据集作为源，使用另一个 Blob 数据集作为接收器。 复制活动成功或失败时，它会调用不同的电子邮件任务。
 
 在此管道中使用以下功能：
 
-- parameters
-- Web 活动
-- 活动依赖项
-- 使用一个活动的输出作为后续活动的输入
+* parameters
+* Web 活动
+* 活动依赖项
+* 使用一个活动的输出作为另一活动的输入
 
-让我们将以下管道分解成不同的部分：
+1. 将此方法添加到项目。 以下部分提供了更多详细信息。
 
-```csharp
-
-static PipelineResource PipelineDefinition(DataFactoryManagementClient client)
-        {
-            Console.WriteLine("Creating pipeline " + pipelineName + "...");
-            PipelineResource resource = new PipelineResource
+    ```csharp
+    static PipelineResource PipelineDefinition(DataFactoryManagementClient client)
             {
-                Parameters = new Dictionary<string, ParameterSpecification>
+                Console.WriteLine("Creating pipeline " + pipelineName + "...");
+                PipelineResource resource = new PipelineResource
                 {
-                    { "sourceBlobContainer", new ParameterSpecification { Type = ParameterType.String } },
-                    { "sinkBlobContainer", new ParameterSpecification { Type = ParameterType.String } },
-                    { "receiver", new ParameterSpecification { Type = ParameterType.String } }
+                    Parameters = new Dictionary<string, ParameterSpecification>
+                    {
+                        { "sourceBlobContainer", new ParameterSpecification { Type = ParameterType.String } },
+                        { "sinkBlobContainer", new ParameterSpecification { Type = ParameterType.String } },
+                        { "receiver", new ParameterSpecification { Type = ParameterType.String } }
 
-                },
-                Activities = new List<Activity>
-                {
-                    new CopyActivity
+                    },
+                    Activities = new List<Activity>
                     {
-                        Name = copyBlobActivity,
-                        Inputs = new List<DatasetReference>
+                        new CopyActivity
                         {
-                            new DatasetReference
+                            Name = copyBlobActivity,
+                            Inputs = new List<DatasetReference>
                             {
-                                ReferenceName = blobSourceDatasetName
+                                new DatasetReference
+                                {
+                                    ReferenceName = blobSourceDatasetName
+                                }
+                            },
+                            Outputs = new List<DatasetReference>
+                            {
+                                new DatasetReference
+                                {
+                                    ReferenceName = blobSinkDatasetName
+                                }
+                            },
+                            Source = new BlobSource { },
+                            Sink = new BlobSink { }
+                        },
+                        new WebActivity
+                        {
+                            Name = sendSuccessEmailActivity,
+                            Method = WebActivityMethod.POST,
+                            Url = "https://prodxxx.eastus.logic.azure.com:443/workflows/00000000000000000000000000000000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0000000000000000000000000000000000000000000000",
+                            Body = new EmailRequest("@{activity('CopyBlobtoBlob').output.dataWritten}", "@{pipeline().DataFactory}", "@{pipeline().Pipeline}", "@pipeline().parameters.receiver"),
+                            DependsOn = new List<ActivityDependency>
+                            {
+                                new ActivityDependency
+                                {
+                                    Activity = copyBlobActivity,
+                                    DependencyConditions = new List<String> { "Succeeded" }
+                                }
                             }
                         },
-                        Outputs = new List<DatasetReference>
+                        new WebActivity
                         {
-                            new DatasetReference
+                            Name = sendFailEmailActivity,
+                            Method =WebActivityMethod.POST,
+                            Url = "https://prodxxx.eastus.logic.azure.com:443/workflows/000000000000000000000000000000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0000000000000000000000000000000000000000000",
+                            Body = new EmailRequest("@{activity('CopyBlobtoBlob').error.message}", "@{pipeline().DataFactory}", "@{pipeline().Pipeline}", "@pipeline().parameters.receiver"),
+                            DependsOn = new List<ActivityDependency>
                             {
-                                ReferenceName = blobSinkDatasetName
-                            }
-                        },
-                        Source = new BlobSource { },
-                        Sink = new BlobSink { }
-                    },
-                    new WebActivity
-                    {
-                        Name = sendSuccessEmailActivity,
-                        Method = WebActivityMethod.POST,
-                        Url = "https://prodxxx.eastus.logic.azure.com:443/workflows/00000000000000000000000000000000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0000000000000000000000000000000000000000000000",
-                        Body = new EmailRequest("@{activity('CopyBlobtoBlob').output.dataWritten}", "@{pipeline().DataFactory}", "@{pipeline().Pipeline}", "@pipeline().parameters.receiver"),
-                        DependsOn = new List<ActivityDependency>
-                        {
-                            new ActivityDependency
-                            {
-                                Activity = copyBlobActivity,
-                                DependencyConditions = new List<String> { "Succeeded" }
-                            }
-                        }
-                    },
-                    new WebActivity
-                    {
-                        Name = sendFailEmailActivity,
-                        Method =WebActivityMethod.POST,
-                        Url = "https://prodxxx.eastus.logic.azure.com:443/workflows/000000000000000000000000000000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0000000000000000000000000000000000000000000",
-                        Body = new EmailRequest("@{activity('CopyBlobtoBlob').error.message}", "@{pipeline().DataFactory}", "@{pipeline().Pipeline}", "@pipeline().parameters.receiver"),
-                        DependsOn = new List<ActivityDependency>
-                        {
-                            new ActivityDependency
-                            {
-                                Activity = copyBlobActivity,
-                                DependencyConditions = new List<String> { "Failed" }
+                                new ActivityDependency
+                                {
+                                    Activity = copyBlobActivity,
+                                    DependencyConditions = new List<String> { "Failed" }
+                                }
                             }
                         }
                     }
-                }
-            };
-            Console.WriteLine(SafeJsonConvert.SerializeObject(resource, client.SerializationSettings));
-            return resource;
-        }
-```
+                };
+                Console.WriteLine(SafeJsonConvert.SerializeObject(resource, client.SerializationSettings));
+                return resource;
+            }
+    ```
 
-在 **Main** 方法中添加用于创建管道的以下代码：
+1. 在 `Main` 方法中添加用于创建管道的以下行：
 
-```
-client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
-```
+   ```csharp
+   client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
+   ```
 
 ### <a name="parameters"></a>parameters
 
-管道的第一个部分定义参数。 
+管道代码的第一个部分定义参数。
 
-- sourceBlobContainer – 源 Blob 数据集使用的管道中的参数。
-- sinkBlobContainer – 接收器 Blob 数据集使用的管道中的参数
-- receiver – 此参数由管道中的两个 Web 活动用来向其电子邮件地址已通过此参数指定的接收方发送成功或失败电子邮件。
-
+* `sourceBlobContainer`。 源 Blob 数据集在管道中使用此参数。
+* `sinkBlobContainer`。 接收器 Blob 数据集在管道中使用此参数。
+* `receiver`。 管道中的两个 Web 活动使用此参数向收件人发送成功或失败电子邮件。
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>
@@ -480,7 +468,7 @@ Parameters = new Dictionary<string, ParameterSpecification>
 
 ### <a name="web-activity"></a>Web 活动
 
-Web 活动允许调用任何 REST 终结点。 有关该活动的详细信息，请参阅 [Web 活动](control-flow-web-activity.md)。 此管道使用 Web 活动调用逻辑应用电子邮件工作流。 创建两个 Web 活动：一个调用 **CopySuccessEmail** 工作流，另一个调用 **CopyFailWorkFlow**。
+Web 活动允许调用任何 REST 终结点。 有关该活动的详细信息，请参阅 [Azure 数据工厂中的 Web 活动](control-flow-web-activity.md)。 此管道使用 Web 活动调用逻辑应用电子邮件工作流。 创建两个 Web 活动：一个调用 `CopySuccessEmail` 工作流，另一个调用 `CopyFailWorkFlow`。
 
 ```csharp
         new WebActivity
@@ -500,18 +488,18 @@ Web 活动允许调用任何 REST 终结点。 有关该活动的详细信息，
         }
 ```
 
-在“Url”属性中，相应地粘贴来自逻辑应用工作流的请求 URL 终结点。 在“Body”属性中，传递“EmailRequest”类的实例。 电子邮件请求包含以下属性：
+在 `Url` 属性中，粘贴来自逻辑应用工作流的“HTTP POST URL”终结点。  在 `Body` 属性中，传递 `EmailRequest` 类的实例。 电子邮件请求包含以下属性：
 
-- 消息 – `@{activity('CopyBlobtoBlob').output.dataWritten` 的传递值。 访问前一复制活动的属性，并传递 dataWritten 的值。 失败时，传递错误输出而不是 `@{activity('CopyBlobtoBlob').error.message`。
-- 数据工厂名称 – `@{pipeline().DataFactory}` 的传递值。这是一个系统变量，用于访问相应的数据工厂名称。 有关系统变量的列表，请参阅[系统变量](control-flow-system-variables.md)一文。
-- 管道名称 – `@{pipeline().Pipeline}` 的传递值。 这也是系统变量，用于访问相应的管道名称。 
-- 接收方 – 传递 "\@pipeline().parameters.receiver") 的值。 访问管道参数。
- 
-此代码根据上一个成功的复制活动创建新的活动依赖项。
+* 消息。 传递 `@{activity('CopyBlobtoBlob').output.dataWritten` 值。 访问前一复制活动的属性，并传递 `dataWritten` 值。 失败时，传递错误输出而不是 `@{activity('CopyBlobtoBlob').error.message`。
+* 数据工厂名称。 传递 `@{pipeline().DataFactory}` 值。这是一个系统变量，用于访问相应的数据工厂名称。 有关系统变量的列表，请参阅[系统变量](control-flow-system-variables.md)。
+* 管道名称。 传递 `@{pipeline().Pipeline}` 值。 此系统变量用于访问相应的管道名称。
+* 收件人。 传递 `"@pipeline().parameters.receiver"` 值。 访问管道参数。
+
+此代码创建依赖于上一个复制活动的新活动依赖项。
 
 ## <a name="create-a-pipeline-run"></a>创建管道运行
 
-在 **Main** 方法中添加用于**触发管道运行**的以下代码。
+在 `Main` 方法中添加用于触发管道运行的以下代码。
 
 ```csharp
 // Create a pipeline run
@@ -527,9 +515,9 @@ CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(
 Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
-## <a name="main-class"></a>Main 类 
+## <a name="main-class"></a>Main 类
 
-最终的 Main 方法应如下所示。 生成并运行程序以触发管道运行！
+最终的 `Main` 方法应如下所示。
 
 ```csharp
 // Authenticate and create a data factory management client
@@ -559,9 +547,11 @@ CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(
 Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
+生成并运行程序以触发管道运行！
+
 ## <a name="monitor-a-pipeline-run"></a>监视管道运行
 
-1. 在 **Main** 方法中添加以下代码用于持续检查管道运行状态，直到它完成数据复制为止。
+1. 将以下代码添加到 `Main` 方法中：
 
     ```csharp
     // Monitor the pipeline run
@@ -578,7 +568,9 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     }
     ```
 
-2. 在 **Main** 方法中添加以下代码用于检索复制活动运行详细信息，例如，读取/写入的数据大小。
+    此代码持续检查运行状态，直到运行完成数据复制。
+
+1. 在 `Main` 方法中添加以下代码用于检索复制活动运行详细信息，例如，读取/写入的数据大小。
 
     ```csharp
     // Check the copy activity run details
@@ -602,9 +594,10 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ## <a name="run-the-code"></a>运行代码
 
 生成并启动应用程序，然后验证管道执行。
-控制台会输出数据工厂、链接服务、数据集、管道和管道运行的创建进度。 然后，检查管道运行状态。 请等到出现包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 Azure 存储资源管理器等工具检查 Blob 是否已根据变量中的指定从“inputBlobPath”复制到“outputBlobPath”。
 
-**示例输出：**
+应用程序将显示数据工厂、链接服务、数据集、管道和管道运行的创建进度。 然后，检查管道运行状态。 请等到出现包含数据读取/写入大小的复制活动运行详细信息。 然后，使用 Azure 存储资源管理器等工具检查 Blob 是否已根据变量中指定的 *inputBlobPath* 复制到 *outputBlobPath*。
+
+输出应类似于以下示例：
 
 ```json
 Creating data factory DFTutorialTest...
@@ -758,18 +751,18 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>后续步骤
 
-已在本教程中执行了以下步骤： 
+在本教程中，你已执行以下任务：
 
 > [!div class="checklist"]
-> * 创建数据工厂。
-> * 创建 Azure 存储链接服务。
+> * 创建数据工厂
+> * 创建 Azure 存储链接服务
 > * 创建 Azure Blob 数据集
 > * 创建包含复制活动和 Web 活动的管道
 > * 将活动的输出发送到后续活动
-> * 利用参数传递和系统变量
+> * 使用参数传递和系统变量
 > * 启动管道运行
 > * 监视管道和活动运行
 
-现在可以转到“概念”部分详细了解 Azure 数据工厂。
+现在可以转到“概念”部分来详细了解 Azure 数据工厂。
 > [!div class="nextstepaction"]
 >[管道和活动](concepts-pipelines-activities.md)
