@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 84e4cc69d173fd37ecd15f537feadf19c275ef34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b565a48b56162d19a07f0f54bfe780b7dda04b96
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086218"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177397"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -74,15 +74,7 @@ ms.locfileid: "70086218"
 
 ## <a name="trigger---example"></a>触发器 - 示例
 
-参阅语言特定的示例：
-
-* [C#](#trigger---c-example)
-* [C# 脚本 (.csx)](#trigger---c-script-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>触发器 - C# 示例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 以下示例演示在 `samples-workitems` 容器中添加或更新 blob 时写入日志的 [C# 函数](functions-dotnet-class-library.md)。
 
@@ -98,9 +90,9 @@ blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创�
 
 有关 `BlobTrigger` 特性的详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
 
-### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Python 代码](functions-reference-python.md)。 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
+下面的示例演示*函数 json*文件中的 blob 触发器绑定，以及使用绑定的代码。 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
 
 下面是 function.json 文件中的绑定数据：
 
@@ -145,7 +137,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
-### <a name="trigger---javascript-example"></a>触发器 - JavaScript 示例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [JavaScript 代码](functions-reference-node.md)。 在 `samples-workitems` 容器中添加或更新 Blob 时，该函数会写入日志。
 
@@ -179,7 +171,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="trigger---python-example"></a>触发器 - Python 示例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Python 代码](functions-reference-python.md)。 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
 
@@ -216,7 +208,7 @@ def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
 ```
 
-### <a name="trigger---java-example"></a>触发器 - Java 示例
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 以下示例显示了 function.json 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Java 代码](functions-reference-java.md)。 在 `myblob` 容器中添加或更新 Blob 时，该函数会写入日志。
 
@@ -253,8 +245,11 @@ public void run(
 }
 ```
 
+---
 
 ## <a name="trigger---attributes"></a>触发器 - 特性
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 对于 [C# 类库](functions-dotnet-class-library.md)，请使用以下属性来配置 blob 触发器：
 
@@ -284,7 +279,7 @@ public void run(
   }
    ```
 
-  有关完整示例，请参阅[触发器 - C# 示例](#trigger---c-example)。
+  有关完整示例，请参阅[触发器示例](#trigger---example)。
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -310,6 +305,24 @@ public void run(
 * 应用到类的 `StorageAccount` 特性。
 * 函数应用的默认存储帐户（“AzureWebJobsStorage”应用设置）。
 
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+C#脚本不支持特性。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python 不支持特性。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+@No__t-0 属性用于授予您对触发函数的 blob 的访问权限。 有关详细信息，请参阅[触发器示例](#trigger---example)。
+
+---
+
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
 下表解释了在 function.json 文件和 `BlobTrigger` 特性中设置的绑定配置属性。
@@ -318,7 +331,7 @@ public void run(
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#trigger---usage)部分中已阐述异常。 |
-|**名称** | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
+|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
 |**路径** | **BlobPath** |要监视的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可以是某种 [Blob 名称模式](#trigger---blob-name-patterns)。 |
 |**连接** | **Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 
@@ -326,25 +339,27 @@ public void run(
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 
-在 C# 和 C# 脚本中，可以为触发 blob 使用以下参数类型：
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* `Stream`
-* `TextReader`
-* `string`
-* `Byte[]`
-* 可序列化为 JSON 的 POCO
-* `ICloudBlob`<sup>1</sup>
-* `CloudBlockBlob`<sup>1</sup>
-* `CloudPageBlob`<sup>1</sup>
-* `CloudAppendBlob`<sup>1</sup>
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-如果尝试绑定到某个存储 SDK 类型并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-由于整个 Blob 内容都会加载到内存中，因此，只有当 Blob 较小时才建议绑定到 `string`、`Byte[]` 或 POCO。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文后面的[并发和内存使用情况](#trigger---concurrency-and-memory-usage)。
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-在 JavaScript 中，可以使用 `context.bindings.<name from function.json>` 访问输入 Blob 数据。
+使用 `context.bindings.<name from function.json>` 访问 blob 数据。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+通过类型为[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[触发器示例](#trigger---example)。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+@No__t-0 属性用于授予您对触发函数的 blob 的访问权限。 有关详细信息，请参阅[触发器示例](#trigger---example)。
+
+---
 
 ## <a name="trigger---blob-name-patterns"></a>触发器 - Blob 名称模式
 
@@ -357,6 +372,7 @@ public void run(
 ```json
 "path": "input/{blobname}.{blobextension}",
 ```
+
 如果 Blob 名为 *original-Blob1.txt*，则函数代码中 `blobname` 和 `blobextension` 变量的值为 *original-Blob1* 和 *txt*。
 
 ### <a name="filter-on-blob-name"></a>按 Blob 名称筛选
@@ -389,23 +405,15 @@ public void run(
 
 ## <a name="trigger---metadata"></a>触发器 - 元数据
 
-Blob 触发器提供了几个元数据属性。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些值的语义与 [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) 类型相同。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-|属性  |type  |描述  |
-|---------|---------|---------|
-|`BlobTrigger`|`string`|触发 Blob 的路径。|
-|`Uri`|`System.Uri`|主位置的 blob 的 URI。|
-|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|Blob 的系统属性。 |
-|`Metadata` |`IDictionary<string,string>`|Blob 的用户定义元数据。|
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-例如，以下 C# 脚本和 JavaScript 示例会记录触发 blob 的路径，包括容器：
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-```csharp
-public static void Run(string myBlob, string blobTrigger, ILogger log)
-{
-    log.LogInformation($"Full blob path: {blobTrigger}");
-} 
-```
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 module.exports = function (context, myBlob) {
@@ -413,6 +421,16 @@ module.exports = function (context, myBlob) {
     context.done();
 };
 ```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python 中的元数据不可用。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+元数据在 Java 中不可用。
+
+---
 
 ## <a name="trigger---blob-receipts"></a>触发器 - Blob 回执
 
@@ -464,15 +482,7 @@ JavaScript 和 Java 函数会将整个 blob 加载到内存中，并且如果绑
 
 ## <a name="input---example"></a>输入 - 示例
 
-参阅语言特定的示例：
-
-* [C#](#input---c-example)
-* [C# 脚本 (.csx)](#input---c-script-example)
-* [Java](#input---java-examples)
-* [JavaScript](#input---javascript-example)
-* [Python](#input---python-example)
-
-### <a name="input---c-example"></a>输入 - C# 示例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 以下示例演示使用一个队列触发器和一个 blob 输入绑定的 [C# 函数](functions-dotnet-class-library.md)。 队列消息包含该 blob 的名称，函数记录该 blob 的大小。
 
@@ -487,7 +497,7 @@ public static void Run(
 }
 ```
 
-### <a name="input---c-script-example"></a>输入 - C# 脚本示例
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -536,7 +546,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-### <a name="input---javascript-example"></a>输入 - JavaScript 示例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
@@ -585,7 +595,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="input---python-example"></a>输入 - Python 示例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 <!--Same example for input and output. -->
 
@@ -637,16 +647,16 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
     return inputblob
 ```
 
-### <a name="input---java-examples"></a>输入 - Java 示例
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 本部分包含以下示例：
 
-* [HTTP 触发器，使用查询字符串查找 blob 名称](#http-trigger-look-up-blob-name-from-query-string-java)
-* [队列触发器，接收来自队列消息的 blob 名称](#queue-trigger-receive-blob-name-from-queue-message-java)
+* [HTTP 触发器，使用查询字符串查找 blob 名称](#http-trigger-look-up-blob-name-from-query-string)
+* [队列触发器，接收来自队列消息的 blob 名称](#queue-trigger-receive-blob-name-from-queue-message)
 
-#### <a name="http-trigger-look-up-blob-name-from-query-string-java"></a>HTTP 触发器，使用查询字符串查找 blob 名称 (Java)
+#### <a name="http-trigger-look-up-blob-name-from-query-string"></a>HTTP 触发器，从查询字符串查找 blob 名称
 
- 下面的示例显示了一个 Java 函数，该函数使用 ```HttpTrigger``` 注释来接收包含 blob 存储容器中某个文件的名称的一个参数。 然后，```BlobInput``` 注释读取该文件并将其作为 ```byte[]``` 传递给该函数。
+ 下面的示例显示了一个 Java 函数，该函数使用 `HttpTrigger` 注释来接收包含 blob 存储容器中某个文件的名称的一个参数。 然后，`BlobInput` 注释读取该文件并将其作为 `byte[]` 传递给该函数。
 
 ```java
   @FunctionName("getBlobSizeHttp")
@@ -669,9 +679,9 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
   }
 ```
 
-#### <a name="queue-trigger-receive-blob-name-from-queue-message-java"></a>队列触发器，接收来自队列消息的 blob 名称 (Java)
+#### <a name="queue-trigger-receive-blob-name-from-queue-message"></a>队列触发器，从队列消息中接收 blob 名称
 
- 下面的示例显示了一个 Java 函数，该函数使用 ```QueueTrigger``` 注释来接收包含 blob 存储容器中某个文件的名称的一个消息。 然后，```BlobInput``` 注释读取该文件并将其作为 ```byte[]``` 传递给该函数。
+ 下面的示例显示了一个 Java 函数，该函数使用 `QueueTrigger` 注释来接收包含 blob 存储容器中某个文件的名称的一个消息。 然后，`BlobInput` 注释读取该文件并将其作为 `byte[]` 传递给该函数。
 
 ```java
   @FunctionName("getBlobSize")
@@ -693,7 +703,11 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
 
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自 Blob 的参数使用 `@BlobInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
+---
+
 ## <a name="input---attributes"></a>输入 - 特性
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs)。
 
@@ -726,6 +740,24 @@ public static void Run(
 
 可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
 
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+C#脚本不支持特性。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python 不支持特性。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+@No__t-0 特性使你能够访问触发函数的 blob。 如果使用具有特性的字节数组，请将 `dataType` 设置为 `binary`。 有关详细信息，请参阅[输入示例](#input---example)。
+
+---
+
 ## <a name="input---configuration"></a>输入 - 配置
 
 下表解释了在 *function.json* 文件和 `Blob` 特性中设置的绑定配置属性。
@@ -734,7 +766,7 @@ public static void Run(
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为 `blob`。 |
 |**direction** | 不适用 | 必须设置为 `in`。 [用法](#input---usage)部分中已阐述异常。 |
-|**名称** | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
+|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
 |**路径** |**BlobPath** | Blob 的路径。 |
 |**连接** |**Connection**| 包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 |不适用 | **Access** | 表示是要读取还是写入。 |
@@ -743,26 +775,27 @@ public static void Run(
 
 ## <a name="input---usage"></a>输入 - 用法
 
-在 C# 和 C# 脚本中，可以为 blob 输入绑定使用以下参数类型：
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* `Stream`
-* `TextReader`
-* `string`
-* `Byte[]`
-* `CloudBlobContainer`
-* `CloudBlobDirectory`
-* `ICloudBlob`<sup>1</sup>
-* `CloudBlockBlob`<sup>1</sup>
-* `CloudPageBlob`<sup>1</sup>
-* `CloudAppendBlob`<sup>1</sup>
+[!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-如果尝试绑定到某个存储 SDK 类型并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
+[!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-由于整个 Blob 内容都会加载到内存中，因此，只有当 Blob 较小时才建议绑定到 `string` 或 `Byte[]`。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文前文中的[并发和内存使用情况](#trigger---concurrency-and-memory-usage)。
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-在 JavaScript 中，可以使用 `context.bindings.<name from function.json>` 访问 Blob 数据。
+使用 `context.bindings.<name from function.json>` 访问 blob 数据。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+通过类型为[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[输入示例](#input---example)。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+@No__t-0 特性使你能够访问触发函数的 blob。 如果使用具有特性的字节数组，请将 `dataType` 设置为 `binary`。 有关详细信息，请参阅[输入示例](#input---example)。
+
+---
 
 ## <a name="output"></a>Output
 
@@ -770,15 +803,7 @@ public static void Run(
 
 ## <a name="output---example"></a>输出 - 示例
 
-参阅语言特定的示例：
-
-* [C#](#output---c-example)
-* [C# 脚本 (.csx)](#output---c-script-example)
-* [Java](#output---java-examples)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>输出 - C# 示例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 以下示例演示使用一个 blob 触发器和两个 blob 输出绑定的 [C# 函数](functions-dotnet-class-library.md)。 在 *sample-images* 容器中创建映像 Blob 时，会触发该函数。 该函数创建该映像 Blob 的小型和中型副本。
 
@@ -828,7 +853,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 };
 ```
 
-### <a name="output---c-script-example"></a>输出 - C# 脚本示例
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -877,7 +902,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-### <a name="output---javascript-example"></a>输出 - JavaScript 示例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
@@ -926,7 +951,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---python-example"></a>输出 - Python 示例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 <!--Same example for input and output. -->
 
@@ -979,7 +1004,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
     outputblob.set(inputblob)
 ```
 
-### <a name="output---java-examples"></a>输出 - Java 示例
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 本部分包含以下示例：
 
@@ -988,7 +1013,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
 
 #### <a name="http-trigger-using-outputbinding-java"></a>HTTP 触发器，使用 OutputBinding (Java)
 
- 下面的示例显示了一个 Java 函数，该函数使用 ```HttpTrigger``` 注释来接收包含 blob 存储容器中某个文件的名称的一个参数。 然后，```BlobInput``` 注释读取该文件并将其作为 ```byte[]``` 传递给该函数。 ```BlobOutput``` 注释绑定到 ```OutputBinding outputItem```，然后，函数使用后者来将输入 blob 的内容写入到所配置的存储容器中。
+ 下面的示例显示了一个 Java 函数，该函数使用 `HttpTrigger` 注释来接收包含 blob 存储容器中某个文件的名称的一个参数。 然后，`BlobInput` 注释读取该文件并将其作为 `byte[]` 传递给该函数。 `BlobOutput` 注释绑定到 `OutputBinding outputItem`，然后，函数使用后者来将输入 blob 的内容写入到所配置的存储容器中。
 
 ```java
   @FunctionName("copyBlobHttp")
@@ -1020,7 +1045,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
 
 #### <a name="queue-trigger-using-function-return-value-java"></a>队列触发器，使用函数返回值 (Java)
 
- 下面的示例显示了一个 Java 函数，该函数使用 ```QueueTrigger``` 注释来接收包含 blob 存储容器中某个文件的名称的一个消息。 然后，```BlobInput``` 注释读取该文件并将其作为 ```byte[]``` 传递给该函数。 ```BlobOutput``` 注释绑定到函数返回值，然后，运行时使用后者来将输入 blob 的内容写入到所配置的存储容器中。
+ 下面的示例显示了一个 Java 函数，该函数使用 `QueueTrigger` 注释来接收包含 blob 存储容器中某个文件的名称的一个消息。 然后，`BlobInput` 注释读取该文件并将其作为 `byte[]` 传递给该函数。 `BlobOutput` 注释绑定到函数返回值，然后，运行时使用后者来将输入 blob 的内容写入到所配置的存储容器中。
 
 ```java
   @FunctionName("copyBlobQueueTrigger")
@@ -1046,7 +1071,11 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
 
  在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将写入 Blob 存储中对象的函数参数使用 `@BlobOutput` 注释。  参数类型应为 `OutputBinding<T>`，其中 T 是任何本机 Java 类型或者是一个 POJO。
 
+---
+
 ## <a name="output---attributes"></a>输出 - 特性
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs)。
 
@@ -1074,7 +1103,25 @@ public static void Run(
 }
 ```
 
-有关完整示例，请参阅[输出 - C# 示例](#output---c-example)。
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+C#脚本不支持特性。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python 不支持特性。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+@No__t-0 特性使你能够访问触发函数的 blob。 如果使用具有特性的字节数组，请将 `dataType` 设置为 `binary`。 有关详细信息，请参阅[输出示例](#output---example)。
+
+---
+
+有关完整示例，请参阅[输出示例](#output---example)。
 
 可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
 
@@ -1086,7 +1133,7 @@ public static void Run(
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为 `blob`。 |
 |**direction** | 不适用 | 对于输出绑定，必须设置为 `out`。 [用法](#output---usage)部分中已阐述异常。 |
-|**名称** | 不适用 | 表示函数代码中的 Blob 的变量的名称。  设置为 `$return` 可引用函数返回值。|
+|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。  设置为 `$return` 可引用函数返回值。|
 |**路径** |**BlobPath** | Blob 容器的路径。 |
 |**连接** |**Connection**| 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 |不适用 | **Access** | 表示是要读取还是写入。 |
@@ -1095,32 +1142,32 @@ public static void Run(
 
 ## <a name="output---usage"></a>输出 - 用法
 
-在 C# 和 C# 脚本中，可绑定到以下类型，以编写 blob：
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* `TextWriter`
-* `out string`
-* `out Byte[]`
-* `CloudBlobStream`
-* `Stream`
-* `CloudBlobContainer`<sup>1</sup>
-* `CloudBlobDirectory`
-* `ICloudBlob`<sup>2</sup>
-* `CloudBlockBlob`<sup>2</sup>
-* `CloudPageBlob`<sup>2</sup>
-* `CloudAppendBlob`<sup>2</sup>
+[!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-<sup>1</sup> function.json 中需有 "in" 绑定 `direction` 或 C# 类库中需有 `FileAccess.Read`。 但是，可以使用运行时提供的容器对象来执行写入操作，例如将 Blob 上传到容器。
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-<sup>2</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
+[!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-如果尝试绑定到某个存储 SDK 类型并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
-
-在异步函数中，请使用返回值或 `IAsyncCollector` 而非 `out` 参数。
-
-由于整个 Blob 内容都会加载到内存中，因此，只有当 Blob 较小时才建议绑定到 `string` 或 `Byte[]`。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文前文中的[并发和内存使用情况](#trigger---concurrency-and-memory-usage)。
-
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 在 JavaScript 中，可以使用 `context.bindings.<name from function.json>` 访问 Blob 数据。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+可以将函数参数声明为以下类型以写出到 blob 存储：
+
+* 字符串作为 `func.Out(str)`
+* 流为 `func.Out(func.InputStream)`
+
+有关详细信息，请参阅[输出示例](#output---example)。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+@No__t-0 特性使你能够访问触发函数的 blob。 如果使用具有特性的字节数组，请将 `dataType` 设置为 `binary`。 有关详细信息，请参阅[输出示例](#output---example)。
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 

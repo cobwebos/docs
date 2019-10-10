@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 83f10eb9dadfda5b87f1da287718f59da17c5110
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947601"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177770"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -197,7 +197,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 在使诊断工具可供用户使用之前，请确保他们具有以下权限：
 
-- 用户需要 log analytics 的读取访问权限。 有关详细信息，请参阅[Azure Monitor 的角色、权限和安全入门](/articles/azure-monitor/platform/roles-permissions-security.md)。
+- 用户需要 log analytics 的读取访问权限。 有关详细信息，请参阅[Azure Monitor 的角色、权限和安全入门](/azure/azure-monitor/platform/roles-permissions-security)。
 -  用户还需要对 Windows 虚拟桌面租户（RDS 读取者角色）具有读取权限。 有关详细信息，请参阅[Windows 虚拟桌面中的委托访问](delegated-access-virtual-desktop.md)。
 
 还需要为用户指定以下信息：

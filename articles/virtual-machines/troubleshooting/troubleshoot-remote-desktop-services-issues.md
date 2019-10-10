@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 9f7957fb0e6e888367c1f8ded1abfb3828697cbb
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7949bedec2d304cd87fb512b44cd61d6f0894638
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087096"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168960"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
 
@@ -40,7 +40,7 @@ ms.locfileid: "71087096"
     **源**：      服务控制管理器 </br>
     **日期**：        2017 年 12 月 16 日上午 11:19:36</br>
     **事件 ID**：    7022</br>
-    **任务类别**：None</br>
+    **任务类别**：无</br>
     **级别**：       Error</br>
     **关键字**：    经典</br>
     **用户**：        不可用</br>
@@ -113,7 +113,7 @@ ms.locfileid: "71087096"
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService 服务由于访问被拒绝问题而停止
 
 1. 连接到[串行控制台](serial-console-windows.md)并打开 PowerShell 实例。
-2. 运行以下脚本下载进程监视器工具：
+2. 通过运行以下脚本来下载进程监视器工具：
 
    ```
    remove-module psreadline  
@@ -141,16 +141,16 @@ ms.locfileid: "71087096"
    procmon /Terminate 
    ```
 
-5. 收集文件  **c:\temp\ProcMonTrace.PML**：
+5. 收集文件**c:\temp\ProcMonTrace.PML**：
 
     1. [将数据磁盘附加到 VM](../windows/attach-managed-disk-portal.md
 )。
     2. 使用串行控制台可将文件复制到新驱动器。 例如， `copy C:\temp\ProcMonTrace.PML F:\` 。 在此命令中，F 是附加的数据磁盘的驱动程序号。
     3. 分离数据驱动器，并将其附加到已安装进程监视器 ubstakke 的正常 VM。
 
-6. 在正常的 VM 上使用进程监视器打开 **ProcMonTrace.PML**。 然后按“结果为‘访问被拒绝’”进行筛选，如以下屏幕截图所示 **：**
+6. 在正常的 VM 上使用进程监视器打开 **ProcMonTrace.PML**。 然后按**结果筛选为 "拒绝访问**"，如以下屏幕截图所示：
 
-    ![在进程监视器中按结果进行筛选](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
+    ![按进程监视器中的结果筛选](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
  
 6. 修复输出中的注册表项、文件夹或文件。 通常，出现此问题的原因是服务中使用的登录帐户没有 ACL 权限，因此无法访问这些对象。 若要了解登录帐户的正确 ACL 权限，可以在正常的 VM 上检查。 
@@ -221,6 +221,6 @@ ms.locfileid: "71087096"
 
 4. [分离 OS 磁盘并重新创建 VM](../windows/troubleshoot-recovery-disks-portal.md)。 然后检查是否解决了问题。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系技术支持
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)解决问题。

@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d0fd26da81c4f59f16b5f0364cf165ec36a6ea39
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 2daae1637c568b72d548330abbcb73da21b12683
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516337"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176857"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 本文介绍可用于处理或转换数据的不同计算环境。 同时还详细介绍了配置将这些计算环境链接到 Azure 数据工厂的链接服务时，数据工厂所支持的不同配置（按需和自带）。
@@ -146,7 +146,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性                | 说明                              | 必填 |
+| 属性                | 说明                              | 需要 |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | 指定应用程序的客户端 ID。     | 是      |
 | **servicePrincipalKey** | 指定应用程序的密钥。           | 是      |
@@ -156,7 +156,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 也可以为按需 HDInsight 群集的粒度配置指定以下属性。
 
-| 属性               | 说明                              | 必填 |
+| 属性               | 说明                              | 需要 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 为待创建的 HDInsight 群集指定核心配置参数（如在 core-site.xml 中）。 | 否       |
 | hBaseConfiguration     | 为 HDInsight 群集指定 HBase 配置参数 (hbase-site.xml)。 | 否       |
@@ -224,7 +224,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ### <a name="node-sizes"></a>节点大小
 可使用以下属性指定头节点、数据节点和 Zookeeper 节点的大小： 
 
-| 属性          | 说明                              | 必填 |
+| 属性          | 说明                              | 需要 |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | 指定头节点的大小。 默认值为：Standard_D3。 有关详细信息，请参阅**指定节点大小**部分。 | 否       |
 | dataNodeSize      | 指定数据节点的大小。 默认值为：Standard_D3。 | 否       |
@@ -288,8 +288,8 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | 类型属性应设置为 **HDInsight**。            | 是      |
 | clusterUri        | HDInsight 群集的 URI。                            | 是      |
-| userName          | 指定用于连接到现有 HDInsight 群集的用户的名称。 | 是      |
-| 密码          | 指定用户帐户的密码。                       | 是      |
+| username          | 指定用于连接到现有 HDInsight 群集的用户的名称。 | 是      |
+| password          | 指定用户帐户的密码。                       | 是      |
 | linkedServiceName | Azure 存储链接服务（指 HDInsight 群集使用的 Azure Blob 存储）的名称。 <p>目前，不能为此属性指定 Azure Data Lake Store 链接服务。 如果 HDInsight 群集有权访问 Data Lake Store，则可从 Hive/Pig 脚本访问 Azure Data Lake Store 中的数据。 </p> | 是      |
 | isEspEnabled      | 如果 HDInsight 群集启用了[企业安全性套餐](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture)，请指定“true”。 默认值为“false”。 | 否       |
 | connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 <br />对于启用了企业安全性套餐 (ESP) 的 HDInsight 群集，可以使用自承载集成运行时，该运行时具有群集的视线，或者应该与 ESP HDInsight 群集部署在同一虚拟网络内。 | 否       |
@@ -380,7 +380,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 ```
 
 ### <a name="properties"></a>属性
-| 属性               | 说明                              | 必填                                 |
+| 属性               | 说明                              | 需要                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | 类型                   | 类型属性应设置为：AzureML。 | 是                                      |
 | mlEndpoint             | 批处理计分 URL。                   | 是                                      |
@@ -388,7 +388,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | updateResourceEndpoint | Azure ML Web 服务终结点的更新资源 URL 用于使用经过训练的模型文件更新预测性 Web 服务 | 否                                       |
 | servicePrincipalId     | 指定应用程序的客户端 ID。     | 如果已指定 updateResourceEndpoint，则为必需 |
 | servicePrincipalKey    | 指定应用程序的密钥。           | 如果已指定 updateResourceEndpoint，则为必需 |
-| 租户                 | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 如果已指定 updateResourceEndpoint，则为必需 |
+| tenant                 | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 如果已指定 updateResourceEndpoint，则为必需 |
 | connectVia             | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否                                       |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics 链接服务
@@ -432,13 +432,15 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | resourceGroupName    | Azure 资源组名称                | 否                                       |
 | servicePrincipalId   | 指定应用程序的客户端 ID。     | 是                                      |
 | servicePrincipalKey  | 指定应用程序的密钥。           | 是                                      |
-| 租户               | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是                                      |
+| tenant               | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是                                      |
 | connectVia           | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否                                       |
 
 
 
 ## <a name="azure-databricks-linked-service"></a>Azure Databricks 链接服务
-可以通过创建 **Azure Databricks 链接服务**来注册 Databricks 工作区，该工作区将用于运行 Databricks 工作负荷 (Notebook)。
+你可以创建**Azure Databricks 链接服务**，以注册将用于运行 Databricks 工作负荷（笔记本、jar、python）的 Databricks 工作区。 
+> [!IMPORTANT]
+> Databricks 链接服务支持[实例池](https://aka.ms/instance-pools)。 
 
 ### <a name="example---using-new-job-cluster-in-databricks"></a>示例 - 在 Databricks 中使用新的作业群集
 
@@ -483,13 +485,14 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 
 ### <a name="properties"></a>属性
 
-| 属性             | 说明                              | 必填                                 |
+| 属性             | 说明                              | 需要                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | 链接服务的名称               | 是   |
 | type                 | 类型属性应设置为：AzureDatabricks。 | 是                                      |
 | 域               | 根据 Databricks 工作区的区域相应地指定 Azure 区域。 示例： https://eastus.azuredatabricks.net | 是                                 |
 | accessToken          | 数据工厂通过 Azure Databricks 进行身份验证时，必须使用访问令牌。 需从 Databricks 工作区生成访问令牌。 [此处](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)提供了查找访问令牌的更多详细步骤  | 是                                       |
 | existingClusterId    | 现有群集的群集 ID，用于在其上运行所有作业。 该群集应该是已创建的交互式群集。 如果群集停止响应，则可能需要手动重启该群集。 Databricks 建议在新群集上运行作业，以提高可靠性。 可以通过 Databricks 工作区 ->“群集”->“交互式群集名称”->“配置”->“标记”找到交互式群集的群集 ID。 [更多详细信息](https://docs.databricks.com/user-guide/clusters/tags.html) | 否 
+| instancePoolId    | Databricks 工作区中现有池的实例池 ID。  | 否  |
 | newClusterVersion    | 群集的 Spark 版本。 它会在 Databricks 中创建作业群集。 | 否  |
 | newClusterNumOfWorker| 此群集应该拥有的工作节点的数目。 群集有一个 Spark 驱动程序和 num_workers 个执行器，总共有 num_workers + 1 个 Spark 节点。 字符串格式的 Int32，例如“1”是指 numOfWorker 为 1，“1:10”是指自动缩放的范围为 1 到 10。  | 否                |
 | newClusterNodeType   | 此字段通过单个值对提供给此群集中的每个 Spark 节点的资源进行编码。 例如，可以针对内存或计算密集型工作负荷对 Spark 节点进行预配和优化。此字段是新群集必需的                | 否               |

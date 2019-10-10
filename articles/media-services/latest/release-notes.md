@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 10/07/2019
 ms.author: juliako
-ms.openlocfilehash: 2d01828cb61937b45665e953a13795b5346a5f1b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 34d68974366eb17704b4ea1291bd1d29a0eea95a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030530"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168637"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -36,16 +36,38 @@ ms.locfileid: "72030530"
 
 ## <a name="september-2019"></a>2019 年 9 月
 
+###  <a name="media-services-v3"></a>媒体服务 v3  
+
+#### <a name="live-linear-encoding-of-live-events"></a>实时事件的实时线性编码
+
 媒体服务 v3 宣布推出对直播活动进行实时线性编码的 24 小时 x 365 天预览版。
- 
+
+###  <a name="media-services-v2"></a>媒体服务 v2  
+
+#### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
+
+我们将宣布弃用*Azure Media Indexer*和*Azure Media Indexer 2 预览版*。 [Azure Media Indexer](../previous/media-services-index-content.md)媒体处理器将在2020年10月1日停用。 [Azure Media Indexer 2 预览版](../previous/media-services-process-content-with-indexer2.md)媒体处理器将于2020年1月1日停用。 [Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)替代了这些旧媒体处理器。
+
+有关详细信息，请参阅[从 Azure Media Indexer 迁移和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](../previous/migrate-indexer-v1-v2.md)。
+
 ## <a name="august-2019"></a>2019 年 8 月
 
-### <a name="south-africa-regional-pair-is-open-for-media-services"></a>已为 Media Services 打开了南非区域对 
+###  <a name="media-services-v3"></a>媒体服务 v3  
+
+#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>已为 Media Services 打开了南非区域对 
 
 媒体服务现已在南部北部和南非非洲地区推出。
 
 有关详细信息，请参阅[媒体服务 v3 所在的云和区域](azure-clouds-regions.md)。
 
+###  <a name="media-services-v2"></a>媒体服务 v2  
+
+#### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
+
+我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器，这两个处理器将于 2019 年 11 月 30 日停用。
+
+有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) 和[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
+ 
 ## <a name="july-2019"></a>2019 年 7 月
 
 ### <a name="content-protection"></a>内容保护

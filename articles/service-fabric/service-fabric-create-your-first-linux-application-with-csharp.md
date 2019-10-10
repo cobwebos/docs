@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
-ms.author: subramar
-ms.openlocfilehash: 7bb9b1c545d30f66a09817ba977f12666a9f41c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 8c34f50e8eb9d9793c146c38aca47691b04049c0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394283"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167300"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>创建第一个 Azure Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "60394283"
 
 Service Fabric 提供用于在 Linux 上使用 .NET Core 和 Java 构建服务的 SDK。 本教程介绍如何在 .NET Core 2.0 中使用 C# 创建适用于 Linux 的应用程序和生成服务。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 开始之前，请确保已[设置 Linux 开发环境](service-fabric-get-started-linux.md)。 如果使用的是 Mac OS X，则可以[使用 Vagrant 在虚拟机中设置 Linux 单机环境](service-fabric-get-started-mac.md)。
 
 还需要安装 [Service Fabric CLI](service-fabric-cli.md)
@@ -97,7 +97,7 @@ Service Fabric Yeoman 模板包含一个可用于（在导航到应用程序文�
 
 这些命令的参数可以在应用程序包内的已生成清单中找到。
 
-应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 然后，展开“应用程序”  节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
+应用程序部署完以后，请打开浏览器并导航到 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)，其地址为 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。 然后，展开“应用程序”节点，注意现在有一个条目是用于你的应用程序类型，另一个条目用于该类型的第一个实例。
 
 > [!IMPORTANT]
 > 必须将证书配置为向 Service Fabric 运行时验证应用程序，才能将应用程序部署到 Azure 中的安全 Linux 群集。 这样做可允许 Reliable Services 服务与基础 Service Fabric 运行时 API 通信。 若要了解详细信息，请参阅[将 Reliable Services 应用程序配置为在 Linux 群集上运行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  
@@ -123,7 +123,7 @@ Actor 项目自身未执行任何操作。 它们需要另一个服务或客户�
 2. 在 Service Fabric Explorer 中，找到承载 actor 服务的主副本的节点。 以下屏幕截图中显示的是节点 3。
 
     ![在 Service Fabric Explorer 中查找主副本][sfx-primary]
-3. 单击上一步找到的节点，并在“操作”菜单中选择“停用(重启)”  。 此操作在本地群集中重新启动一个节点，从而强制故障转移到在另一个节点上运行的一个辅助副本。 在执行此操作时，请注意来自测试客户端的输出，并注意虽然发生故障转移，但是计数器仍将继续递增。
+3. 单击上一步找到的节点，并在“操作”菜单中选择“停用(重启)”。 此操作在本地群集中重新启动一个节点，从而强制故障转移到在另一个节点上运行的一个辅助副本。 在执行此操作时，请注意来自测试客户端的输出，并注意虽然发生故障转移，但是计数器仍将继续递增。
 
 ## <a name="adding-more-services-to-an-existing-application"></a>将更多服务添加到现有应用程序
 

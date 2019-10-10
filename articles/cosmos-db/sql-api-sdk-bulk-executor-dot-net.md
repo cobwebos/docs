@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 11/19/2018
+ms.date: 10/08/2019
 ms.author: ramkris
-ms.openlocfilehash: 447f52a08c9e833808508852c4619f6ce1d947e1
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 90537a7e24e5f87087fb718322a7271043d1d229
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703373"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176828"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
 
@@ -41,6 +41,10 @@ ms.locfileid: "71703373"
 | **当前受支持的框架**| Microsoft .NET Framework 4.5.2、4.6.1 和 .NET Standard 2.0 |
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name240-preview240-preview"></a><a name="2.4.0-preview"/>2.4.0-预览
+
+* 已将 SDK 依赖关系更改为 > = 2.5。1
 
 ### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
 

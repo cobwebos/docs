@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc7710619b8975064ec4ec60ed44ccede970ac34
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3ef8ab4b24d223f372ae3704b00ba6ff090fb039
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200944"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169987"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件访问：阻止传统身份验证
 
@@ -26,7 +26,7 @@ ms.locfileid: "71200944"
 
 以下步骤将帮助创建条件性访问策略来阻止旧式身份验证请求。
 
-1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
+1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
 1. 浏览到“Azure Active Directory” > “条件访问”。
 1. 选择“新策略”。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。

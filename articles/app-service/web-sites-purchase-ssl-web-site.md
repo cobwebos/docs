@@ -15,12 +15,12 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 7c899bae6cf36e68664a3ce60939f72a4b5bd1ab
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 9569928882bcaaa1d2406c9af1b2197c2ba6e93d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001210"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177522"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -49,8 +49,8 @@ ms.locfileid: "71001210"
 
 | 设置 | 描述 |
 |-|-|
-| 姓名 | 应用服务证书证书的友好名称。 |
-| 裸域主机名 | 在此处指定根域。 颁发的证书*同时*保护根域和`www`子域。 在颁发的证书中，"公用名" 字段包含根域，"使用者可选名称" 字段`www`包含该域。 若要仅保护子域，请在此处指定子域的完全限定域名（例如，`mysubdomain.contoso.com`）。|
+| 名称 | 应用服务证书证书的友好名称。 |
+| 裸域主机名 | 在此处指定根域。 颁发的证书*同时*保护根域和 `www` 子域。 在颁发的证书中，"公用名" 字段包含根域，"使用者可选名称" 字段包含 `www` 域。 若要仅保护子域，请在此处指定子域的完全限定域名（例如，`mysubdomain.contoso.com`）。|
 | 订阅 | 托管 Web 应用的数据中心。 |
 | 资源组 | 包含证书的资源组。 例如，可以使用新资源组，或选择与应用服务应用相同的资源组。 |
 | 证书 SKU | 确定要创建的证书类型是标准证书还是[通配符证书](https://wikipedia.org/wiki/Wildcard_certificate)。 |
@@ -66,11 +66,11 @@ ms.locfileid: "71001210"
 
 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 是一项 Azure 服务，可帮助保护云应用程序和服务使用的加密密钥和机密。 它是为应用服务证书所选的存储。
 
-在“Key Vault 状态”页，单击“Key Vault 存储库”以创建新的保管库或选择现有保管库。 如果选择创建新的保管库，请使用下表以帮助配置保管库，然后单击“创建”。 查看如何在同一订阅和资源组中创建新的 Key Vault。
+在“Key Vault 状态”页，单击“Key Vault 存储库”以创建新的保管库或选择现有保管库。 如果选择创建新的保管库，请使用下表来帮助你配置保管库，并单击 "**创建**"。
 
 | 设置 | 描述 |
 |-|-|
-| 姓名 | 由字母数字字符和短划线组成的唯一名称。 |
+| 名称 | 由字母数字字符和短划线组成的唯一名称。 |
 | 资源组 | 建议选择与应用服务证书相同的资源组。 |
 | Location | 选择与应用服务应用相同的位置。 |
 | 定价层 | 有关信息，请参阅 [Azure Key Vault 定价详细信息](https://azure.microsoft.com/pricing/details/key-vault/)。 |
@@ -121,7 +121,7 @@ ms.locfileid: "71001210"
 
 使用 `HTTPS://<domain_name>`（而非 `HTTP://<domain_name>`）访问应用，以验证是否已正确配置证书。
 
-## <a name="rekey-certificate"></a>为证书重新生成密钥
+## <a name="rekey-certificate"></a>重新生成证书
 
 如果你认为证书的私钥已泄露，则可以重新生成证书。 在 "[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)" 页中选择证书，然后从左侧导航栏中选择 "重新**生成密钥并同步**"。
 

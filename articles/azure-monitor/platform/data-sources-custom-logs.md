@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2019
 ms.author: bwren
-ms.openlocfilehash: 39691c0efbac7b7a48dd844641d63e0ca178e95f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 957df2d03352756c74a5450de240afde2615e50b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327466"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177615"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor 中的自定义日志
 
@@ -157,7 +157,7 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
 ![日志名称](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>验证是否正在收集自定义日志
-我们使用简单的*MyApp_CL*查询从收集的日志返回所有记录。
+我们使用简单的查询 *MyApp_CL* 来从收集的日志中返回所有记录。
 
 ![没有自定义字段的日志查询](media/data-sources-custom-logs/query-01.png)
 
@@ -172,7 +172,7 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
 在不能使用自定义日志收集数据的情况下，请考虑下列备用策略：
 
 - 使用自定义脚本或其他方式将数据写入到 Azure Monitor 收集的 [Windows 事件](data-sources-windows-events.md)或 [Syslog](data-sources-syslog.md)。 
-- 使用 [HTTP 数据收集器 API](data-collector-api.md) 将数据直接发送到 Azure Monitor。 [使用 Azure 自动化 runbook 收集 Azure Monitor 中的日志数据](runbook-datacollect.md)中提供了使用 Azure 自动化 runbook 的示例。
+- 使用 [HTTP 数据收集器 API](data-collector-api.md) 将数据直接发送到 Azure Monitor。 
 
 ## <a name="next-steps"></a>后续步骤
 * 请参阅[在 Azure Monitor 中分析文本数据](../log-query/parse-text.md)来了解用于将每个导入的日志条目分析到多个属性中的方法。

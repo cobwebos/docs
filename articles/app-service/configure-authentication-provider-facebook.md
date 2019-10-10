@@ -1,6 +1,6 @@
 ---
 title: 配置 Facebook 身份验证 - Azure 应用服务
-description: 了解如何为应用服务应用配置 Facebook 身份验证。
+description: 了解如何为应用服务应用配置 Facebook 身份验证
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -14,53 +14,70 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 410d769d0d9abe3a0a0f9c45e3cf67bb94ec9f4d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: fb8497f3b9b887e2fd06b350bcc25ac8faaa7b43
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232077"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177008"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>如何将应用服务应用程序配置为使用 Facebook 登录
+# <a name="configure-your-app-service-app-to-use-facebook-login"></a>将应用服务应用配置为使用 Facebook 登录
+
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-本主题介绍了如何将 Azure 应用服务配置为使用 Facebook 作为验证提供程序。
+本文介绍如何将 Azure App Service 配置为将 Facebook 用作身份验证提供程序。
 
-要完成本主题中的过程，必须拥有一个包含已验证电子邮件地址的 Facebook 帐户和一个手机号码。 若要创建新的 Facebook 帐户，请转到 [facebook.com]。
+若要完成本文中的过程，需要一个包含已验证电子邮件地址和移动电话号码的 Facebook 帐户。 若要创建新的 Facebook 帐户，请转到 [facebook.com]。
 
 ## <a name="register"> </a>向 Facebook 注册应用程序
-1. 导航到[Facebook Developers]网站, 并以 facebook 帐户凭据登录。
-3. 可有可无如果你没有 Facebook for 开发人员帐户, 请单击 "**入门**", 然后按照注册步骤操作。
-4.  > 单击 **"我的应用" "** **添加新应用**"。
-5. 在**显示名称**中，键入应用的唯一名称。 此外，还提供**联系人电子邮件**，然后单击“创建应用 ID”并完成安全检查。 已打开新 Facebook 应用的开发人员仪表板。
-6. 单击 "**仪表板** > **Facebook 登录** > **设置** > **Web**"。
-1. 在 " **Facebook 登录**" 下的左侧导航栏中, 单击 "**设置**"。
-1. 在 "**有效的 OAuth 重定向 uri**" 中, 键入`https://<app-name>.azurewebsites.net/.auth/login/facebook/callback`并将 *\<app-name >* 替换为 Azure App Service 应用的名称。 单击**保存更改**。
-8. 在左侧导航栏中，单击“设置” > “基本”。 在 "**应用密码**" 字段中, 单击 "**显示**"。 复制 "**应用 ID** " 和 "**应用机密**" 的值。 稍后可将其用于配置 Azure 中的应用服务应用。
-   
+
+1. 请切换到[Facebook Developers]网站，并以 facebook 帐户凭据登录。
+
+   如果你没有 Facebook for 开发人员帐户，请选择 "**入门**"，然后按照注册步骤操作。
+1. 选择 **"我的应用" @no__t "** **添加新应用**"。
+1. 在 "**显示名称**" 字段中：
+   1. 为应用键入唯一的名称。
+   1. 提供您的**联系人电子邮件**。
+   1. 选择 "**创建应用 ID**"。
+   1. 完成安全检查。
+
+   此时将打开新 Facebook 应用的开发人员仪表板。
+1. 选择**仪表板** > **Facebook 登录**@no__t**设置** > **Web**。
+1. 在左侧导航中的 " **Facebook 登录**" 下，选择 "**设置**"。
+1. 在 "**有效的 OAuth 重定向 uri** " 字段中，输入 `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback`。 请记得将 @no__t 0 替换为 Azure App Service 应用程序的名称。
+1. 选择“保存更改”。
+1. 在左窗格中，选择 "**设置**"  > **基本**"。 
+1. 在 "**应用密码**" 字段中，选择 "**显示**"。 复制 "**应用 ID** " 和 "**应用机密**" 的值。 稍后可将其用于配置 Azure 中的应用服务应用。
+
    > [!IMPORTANT]
    > 应用程序密钥是一个非常重要的安全凭据。 请勿与任何人分享此密钥或在客户端应用程序中分发它。
-   > 
-   > 
-9. 用于注册应用程序的 Facebook 帐户是应用的管理员。 在这种情况下，只有管理员可以登录此应用程序。 若要对其他 Facebook 帐户进行身份验证, 请单击 "**应用审核**", 并启用 **\<** "应用程序名称 >", 以使用 Facebook 身份验证启用常规公共访问。
+   >
+
+1. 用于注册应用程序的 Facebook 帐户是应用的管理员。 此时，只有管理员才能登录到此应用程序。
+
+   若要对其他 Facebook 帐户进行身份验证，请选择 "**应用程序审核**"，并启用 "**将 @no__t-name > 公开**"，以启用使用 Facebook 身份验证访问应用的通用公共。
 
 ## <a name="secrets"></a>向应用程序添加 Facebook 信息
-1. 登录到[Azure 门户]并导航到应用服务应用。 单击“设置” > “身份验证/授权”，并确保“应用服务身份验证”为“启用”。
-2. 单击 " **Facebook**", 粘贴前面获取的应用程序 ID 和应用程序密钥值, 还可以选择启用应用程序所需的任何范围, 然后单击 **"确定"** 。
-   
-    ![][0]
-   
-    默认情况下，应用服务提供身份验证但不限制对站点内容和 API 的已授权访问。 必须在应用代码中为用户授权。
-3. （可选）要限制只有通过 Facebook 帐户身份验证的用户可以访问站点，请将“请求未经身份验证时需执行的操作”设置为“Facebook”。 这会要求对所有请求进行身份验证，而所有未经身份验证的请求会被重定向到 Facebook 进行身份验证。
- 
-> [!CAUTION]
-> 以这种方式限制访问权限适用于对应用的所有调用, 对于需要公开提供的主页的应用, 与在许多单页应用程序中一样。 对于此类应用程序, 可以首选 "**允许匿名请求 (无操作)** ", 应用手动启动登录, 如[此处](overview-authentication-authorization.md#authentication-flow)所述。
 
-4. 配置身份验证完成后，单击“保存”。
+1. 登录到[Azure 门户]并导航到应用服务应用。
+1. 选择 "**设置**" @no__t "**身份验证/授权**"，并确保已**启用 "** **应用服务身份验证**"。
+1. 选择 " **Facebook**"，然后粘贴你之前获取的应用程序 ID 和应用程序密钥值。 启用应用程序所需的任何范围。
+1. 选择“确定”。
 
-现在，可以在应用中使用 Facebook 进行身份验证了。
+   ![移动应用 Facebook 设置的屏幕截图][0]
 
-## <a name="related-content"> </a>相关内容
+    默认情况下，应用服务提供身份验证，但它不限制对站点内容和 Api 的授权访问。 你需要在应用程序代码中对用户进行授权。
+1. 可有可无若要将访问权限仅限制为 Facebook 身份验证的用户，请设置在请求未通过**facebook** **身份验证时要执行的操作**。 设置此功能时，应用要求对所有请求进行身份验证。 它还将所有未经身份验证的请求重定向到 Facebook 进行身份验证。
+
+   > [!CAUTION]
+   > 以这种方式限制访问权限适用于对应用的所有调用，对于具有公开可用主页的应用，与在许多单页应用程序中一样，这可能并不理想。 对于此类应用程序，"**允许匿名请求（无操作）** " 可能首选，以便应用手动启动身份验证。 有关详细信息，请参阅[身份验证流](overview-authentication-authorization.md#authentication-flow)。
+
+1. 选择“保存”。
+
+现在，你可以在应用中使用 Facebook 进行身份验证。
+
+## <a name="related-content"></a>后续步骤
+
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Images. -->

@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.openlocfilehash: 5e05acf515aacaada96bd6e493c1a2bf24d7c5ab
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/8/2019
+ms.openlocfilehash: d867cceb3e7261f658e2406617144c9150e36f2a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030767"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173441"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -252,7 +252,7 @@ datetime | String | String |  datetime | String
 | 帐户 ID | Azure Cosmos DB 帐户的名称或终结点 URI。 |
 | 帐户密钥 | Azure Cosmos DB 帐户的共享访问密钥。 |
 | 数据库 | Azure Cosmos DB 数据库名称。 |
-| 容器名称 | 要使用的容器名称，该名称必须存在于 Cosmos DB 中。 示例：  <br /><ul><li> _MyContainer_：名为 "MyContainer" 的容器必须存在。</li>|
+| 容器名称 | 要使用的容器名称，该名称必须存在于 Cosmos DB 中。 例如：  <br /><ul><li> _MyContainer_：名为 "MyContainer" 的容器必须存在。</li>|
 | 文档 ID |可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。
 
 ## <a name="azure-functions"></a>Azure Functions

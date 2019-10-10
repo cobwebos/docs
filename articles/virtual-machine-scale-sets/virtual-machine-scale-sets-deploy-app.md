@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 09145612821cb669e26e3ccb8d15611112eca700
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 996006c60e754437f8f863c7e7a72c929ed77f2c
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618619"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166210"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虚拟机规模集上部署应用程序
 
@@ -41,20 +41,20 @@ ms.locfileid: "60618619"
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
-- [Azure 资源管理器模板](tutorial-install-apps-template.md)
+- [Azure Resource Manager 模板](tutorial-install-apps-template.md)
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>使用 PowerShell DSC 将应用安装到 Windows VM
-[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) 是一个管理平台，用于定义目标计算机的配置。 DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 本地配置管理器 (LCM) 引擎在每个目标节点上运行，此类节点根据推送的配置处理请求的操作。
+[PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) 是一个管理平台，用于定义目标计算机的配置。 DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 本地配置管理器 (LCM) 引擎在每个目标节点上运行，此类节点根据推送的配置处理请求的操作。
 
 通过 PowerShell DSC 扩展，可使用 PowerShell 在规模集中自定义 VM 实例。 以下示例：
 
-- 指示 VM 实例从 GitHub 下载 DSC 包 - https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip 
+- 指示 VM 实例从 GitHub 下载 DSC 包 - https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip
 - 设置用于运行安装脚本的扩展 - `configure-http.ps1`
 - 使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) 获取有关规模集的信息
 - 使用 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) 将扩展应用到 VM 实例
 
-DSC 扩展会应用于名为 myResourceGroup 的资源组中的 myScaleSet VM 实例   。 按如下所示输入自己的名称：
+DSC 扩展会应用于名为 myResourceGroup 的资源组中的 myScaleSet VM 实例。 按如下所示输入自己的名称：
 
 ```powershell
 # Define the script for your Desired Configuration to download and run
@@ -94,11 +94,11 @@ Update-AzVmss `
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>使用 cloud-init 将应用安装到 Linux VM
 [Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 在初始启动期间运行 cloud-init 时，无需额外的步骤且无需代理来应用配置。
 
-Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装  或 yum 安装  来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
+Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 
-有关详细信息，包括示例 cloud-init.txt 文件，请参阅[使用 cloud-init 自定义 Azure VM](../virtual-machines/linux/using-cloud-init.md)  。
+有关详细信息，包括示例 cloud-init.txt 文件，请参阅[使用 cloud-init 自定义 Azure VM](../virtual-machines/linux/using-cloud-init.md)。
 
-若要创建规模集并使用 cloud-init 文件，请将 `--custom-data` 参数添加到 [az vmss create](/cli/azure/vmss) 命令并指定 cloud-init 文件的名称。 以下示例会在 myResourceGroup 中创建名为 myScaleSet 的规模集，并配置包含名为 cloud-init.txt 的文件的 VM 实例    。 按如下所示输入自己的名称：
+若要创建规模集并使用 cloud-init 文件，请将 `--custom-data` 参数添加到 [az vmss create](/cli/azure/vmss) 命令并指定 cloud-init 文件的名称。 以下示例会在 myResourceGroup 中创建名为 myScaleSet 的规模集，并配置包含名为 cloud-init.txt 的文件的 VM 实例。 按如下所示输入自己的名称：
 
 ```azurecli
 az vmss create \

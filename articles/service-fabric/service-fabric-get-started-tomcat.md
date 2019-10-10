@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
-ms.author: chackdan
-ms.openlocfilehash: 165dc95681b75e98d91c66b490e15c2e96608299
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: pepogors
+ms.openlocfilehash: 7e14a027f17c15c83a4ce25a211ef6106f2d2eaa
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098933"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170606"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>在 Linux 上创建运行 Apache Tomcat 服务器的 Service Fabric 容器
 Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 本文介绍如何使用 Apache Tomcat 和简单的 Web 应用程序生成容器，然后将该容器部署到运行 Linux 的 Service Fabric 群集并连接到 Web 应用程序。  
@@ -142,9 +142,9 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
 
    * 命名应用程序：ServiceFabricTomcat
    * 应用程序服务的名称：TomcatService
-   * 输入映像名称：提供容器映像在容器注册表中的 URL;例如, myregistry.azurecr.io/samples/tomcattest。
+   * 输入映像名称：提供容器映像在容器注册表中的 URL;例如，myregistry.azurecr.io/samples/tomcattest。
    * 命令：将此项留空。 此映像中定义了一个工作负荷入口点，因此不需显式指定输入命令（命令在容器中运行，这可以在启动后使容器保持运行）。
-   * 来宾容器应用程序的实例数：1
+   * 来宾容器应用程序的实例数：第
 
    ![适用于容器的 Service Fabric Yeoman 生成器](./media/service-fabric-get-started-tomcat/yo-generator.png)
 

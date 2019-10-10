@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873200"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177992"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>设备到云 IoT 中心消息的消息扩充（预览版）
 
@@ -29,9 +29,9 @@ ms.locfileid: "69873200"
 
 * 要对其应用扩充的一个或多个[终结点](iot-hub-devguide-endpoints.md)。
 
-**该键**是一个字符串。 密钥只能包含字母数字字符或以下特殊字符: 连字符 (`-`)、下划线 (`_`) 和句点 (`.`)。
+**键**是一个字符串。 键只能包含字母数字字符或以下特殊字符：连字符 (`-`)、下划线 (`_`)和句点 (`.`)。
 
-**该值**可以是以下任一示例:
+**值**可以是以下任一示例：
 
 * 任意静态字符串。 不允许条件、逻辑、操作和函数等动态值。 例如，如果你开发由多个客户使用的 SaaS 应用程序，可为每个客户分配一个标识符，并使该标识符在应用程序中可用。 当该应用程序运行时，IoT 中心会使用客户的标识符来戳记设备遥测消息，从而可为每个客户以不同的方式处理消息。
 
@@ -40,9 +40,9 @@ ms.locfileid: "69873200"
 * 设备孪生中的信息，例如其路径。 示例包括 *$twin.tags.field* 和 *$twin.tags.latitude*。
 
    > [!NOTE]
-   > 目前, 仅 $iothubname、$twin、$twin 和 $twin 都是消息扩充的支持的变量和属性。
+   > 目前，只有 $iothubname、$twin.tags、$twin.properties.desired 和 $twin.properties.reported 是消息扩充支持的变量。
 
-消息根据作为应用程序属性添加到发送到所选终结点的消息。  
+消息扩充将作为应用程序属性添加到发送到所选终结点的消息中。  
 
 ## <a name="applying-enrichments"></a>应用扩充
 
@@ -76,7 +76,7 @@ ms.locfileid: "69873200"
 
 * 总消息大小（包括扩充）不能超过 256 KB。 如果消息大小超过 256 KB，IoT 中心会丢弃消息。 如果丢弃了消息，可以使用 [IoT 中心指标](iot-hub-metrics.md)来识别和调试错误。 例如，可以监视 d2c.telemetry.egress.invalid。
 
-* 消息根据不适用于数字克隆更改事件 ( [IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)的一部分)。
+* 消息根据不适用于数字克隆更改事件（ [IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)的一部分）。
 
 ## <a name="pricing"></a>定价
 
@@ -90,7 +90,7 @@ ms.locfileid: "69873200"
 
 请查看以下文章来详细了解如何将消息路由到 IoT 中心：
 
-* [消息增强教程](tutorial-message-enrichments.md)
+* [Message 根据教程](tutorial-message-enrichments.md)
 
 * [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](iot-hub-devguide-messages-d2c.md)
 

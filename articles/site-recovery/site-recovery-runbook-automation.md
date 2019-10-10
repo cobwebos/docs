@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: f6e2fedf3f2f8384d4a6062852888c312e8285a1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212866"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173486"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>将 Azure 自动化 Runbook 添加到恢复计划
 
@@ -112,12 +112,12 @@ Aman Sharma 在[收集云](http://harvestingclouds.com)上的博客提供了一�
 ## <a name="customize-the-recovery-plan"></a>自定义恢复计划
 
 1. 在保管库中，选择 "**恢复计划" （Site Recovery）**
-2. 若要创建恢复计划，请单击 " **+ 恢复计划**"。 [了解详细信息](/site-recovery-create-recovery-plans.md)。 如果已有恢复计划，请选择将其打开。
+2. 若要创建恢复计划，请单击 " **+ 恢复计划**"。 [了解详细信息](site-recovery-create-recovery-plans.md)。 如果已有恢复计划，请选择将其打开。
 3. 在 "恢复计划" 页中，单击 "**自定义**"。
 
     ![单击“自定义”按钮](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. 单击 " **组 1" 旁边的省略号（...）：开始**添加 > **post 操作**。
+2. 单击 "**Group 1" 旁边的省略号（...）：Start @ no__t-0 @ no__t**添加 post 操作**。
 3. 在 "**插入操作**" 中，验证是否选择了 "**脚本**"，并指定脚本的名称（**Hello World**）。
 4. 指定自动化帐户并选择 runbook。 选择“确定”，保存脚本。 此脚本添加到“组 1: **后步骤”** 。
 

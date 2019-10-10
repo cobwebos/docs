@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7f8c029c5ceff0865b060cf8edc794454d6c282
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0a1515144f340938cddfd5ca9f2ac4803bcb3f77
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828466"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174718"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux Vm 上的 Azure 磁盘加密方案
 
@@ -36,7 +36,7 @@ Azure 磁盘加密使用 Linux 的 DM Dm-crypt 功能为 Azure 虚拟机（Vm）
 
 ## <a name="install-tools-and-connect-to-azure"></a>安装工具并连接到 Azure
 
-可以通过[Azure CLI](/cli/azure)和[Azure PowerShell](/azure/new-azureps-module-az)来启用和管理 Azure 磁盘加密。 为此，必须在本地安装工具并连接到 Azure 订阅。
+可以通过[Azure CLI](/cli/azure)和[Azure PowerShell](/powershell/azure/new-azureps-module-az)来启用和管理 Azure 磁盘加密。 为此，必须在本地安装工具并连接到 Azure 订阅。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -66,7 +66,7 @@ az account set --subscription "<subscription name or ID>"
 有关详细信息，请参阅 [Azure CLI 2.0 入门](/cli/azure/get-started-with-azure-cli)。 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell az 模块](/azure/new-azureps-module-az)提供一组 cmdlet，这些 Cmdlet 使用[azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)模型来管理 azure 资源。 你可以在浏览器中将其与[Azure Cloud Shell](../../cloud-shell/overview.md)一起使用，也可以按照[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)中的说明将其安装在本地计算机上。 
+[Azure PowerShell az 模块](/powershell/azure/new-azureps-module-az)提供一组 cmdlet，这些 Cmdlet 使用[azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)模型来管理 azure 资源。 你可以在浏览器中将其与[Azure Cloud Shell](../../cloud-shell/overview.md)一起使用，也可以按照[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)中的说明将其安装在本地计算机上。 
 
 如果已在本地安装 PowerShell，请确保使用最新版本的 Azure PowerShell SDK 来配置 Azure 磁盘加密。 下载最新版本的 [Azure PowerShell 版本](https://github.com/Azure/azure-powershell/releases)。
 

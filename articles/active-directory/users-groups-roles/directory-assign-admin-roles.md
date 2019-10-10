@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3992ea29d3d81262b5d9b8b126c8fca54feca67d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d70a2aa6ad0e092fc6df9f5792029dc759345321
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026383"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169779"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -214,18 +214,19 @@ In | 有权执行的操作
 
 ### <a name="global-readerglobal-reader-permissions"></a>[全局读取器](#global-reader-permissions)
 
-此角色中的用户可以跨 Microsoft 365 服务读取设置和管理信息，但不能执行管理操作。 全局读取器是全局管理员的只读对应项。 为计划、审核或调查分配全局读取器而不是全局管理员。 将全局读取器与其他有限管理员角色（如 Exchange 管理员）结合使用，以便在不调用全局管理员角色的情况下完成工作。 全局读者适用于新的 Microsoft 365 管理中心、Exchange 管理中心、团队管理中心、安全中心、合规中心、Azure AD 管理中心和设备管理管理中心。 
+此角色中的用户可以跨 Microsoft 365 服务读取设置和管理信息，但不能执行管理操作。 全局读取器是全局管理员的只读对应项。 为计划、审核或调查分配全局读取器而不是全局管理员。 将全局读取器与其他有限的管理员角色（如 Exchange 管理员）结合使用，以便在没有分配全局管理员角色的情况下更轻松地完成工作。 全局读者适用于 Microsoft 365 管理中心、Exchange 管理中心、团队管理中心、安全中心、合规中心、Azure AD 管理中心和设备管理中心。
 
 > [!NOTE]
-> 全局读者角色目前有以下限制：
->* SharePoint 管理中心-SharePoint 管理中心不支持全局读者角色。 因此，在 " [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)" 中的 "管理中心" 下，你将看不到左侧窗格中的 "SharePoint"。 转到 https：//{租户名称}-admin.sharepoint.com 时，拒绝访问。 
+> 全局读者角色有一些限制，
+>
+>* SharePoint 管理中心-SharePoint 管理中心不支持全局读者角色。 你不会在[Microsoft 365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)中的 "管理中心" 下的左窗格中看到 "SharePoint"，你会在尝试转到*https：//{Azure AD 组织名称}* 时拒绝访问。
 >* [Azure AD 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)-全局读取器无法读取企业应用的预配模式。
->* [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)-全局读取器无法读取 cusomter 密码箱请求。 在 M365 管理中心的左窗格 "支持" 下，将找不到 "客户密码箱请求" 选项卡。
->* [M365 安全中心](https://security.microsoft.com/homepage)-全局读取器无法读取敏感度和保留标签。 在 M365 安全中心的分类下，你将不会在左窗格中找到敏感度标签、保留标签和标签分析选项卡。
->* [团队管理员中心](https://admin.teams.microsoft.com)-全球读者无法阅读团队生命周期、报表 & 呼叫分析、IP 电话设备管理和应用程序目录。
->* [Privileged Access Management （PAM）](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview)不支持全局读取器。
-> 
-> 对这些功能的支持会随时间推移而变化。
+>* [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)-全局读者无法读取客户密码箱请求。 在 M365 管理中心的左窗格中，你将找不到 "**支持**" 下的 "**客户密码箱请求**" 选项卡。
+>* [M365 安全中心](https://security.microsoft.com/homepage)-全球读者无法读取敏感度和保留标签。 在 M365 安全中心的左窗格中找不到**灵敏度标签**、**保留标签**和**标签分析**选项卡。
+>* [团队管理员中心](https://admin.teams.microsoft.com)-全球读者无法阅读**团队生命周期**、**分析 & 报表**、 **IP 电话设备管理**和**应用程序目录**。
+>* [Privileged Access Management （PAM）](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview)不支持全局读者角色。
+>
+> 这些功能目前正在开发中。
 >
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[来宾邀请者](#guest-inviter-permissions)

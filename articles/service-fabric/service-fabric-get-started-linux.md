@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 6916eea26f03d7b9cd0b3792fa65354619f97f74
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: atsenthi
+ms.openlocfilehash: 6471d3f58fbe0e19910f39e9527f193d00a228be
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828504"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170623"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]

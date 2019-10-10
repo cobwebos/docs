@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: d749e1355e69ad93c8c211474043f88127ec76f0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: aa7b63453a5147742e27b9bb32ad05221e745f8c
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599388"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168803"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric 容器网络模式
 
@@ -205,9 +205,9 @@ ms.locfileid: "68599388"
    |Priority |2000 | |
    |名称 |Custom_Dns  | |
    |Source |VirtualNetwork | |
-   |目标 | VirtualNetwork | |
+   |Destination | VirtualNetwork | |
    |服务 | DNS (UDP/53) | |
-   |Action | Allow  | |
+   |操作 | Allow  | |
    | | |
 
 4. 在应用程序清单中为每个服务指定网络模式 `<NetworkConfig NetworkType="Open">`。 开放网络模式使服务获得专用 IP 地址。 如果未指定模式，服务默认使用 nat 模式。 在以下清单示例中，`NodeContainerServicePackage1` 和 `NodeContainerServicePackage2` 服务均可在相同端口上进行侦听（这两个服务都在 `Endpoint1` 上进行侦听）。 如果指定了开放网络模式，便无法指定 `PortBinding` 配置。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 0a80630ffa363d2b633667d8104cc0326c4afa2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17db8dbcba8dd0181be9ca7289ea1b85079ff9a1
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478595"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168513"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -27,9 +27,9 @@ ms.locfileid: "66478595"
 
 ## <a name="naming"></a>命名
 
-所有 Azure 资源都有名称。 该名称在一个范围内必须是唯一的，但每种资源类型可能会有所不同。 例如，虚拟网络的名称在[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)内必须是唯一的，但可在[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)或 Azure [区域](https://azure.microsoft.com/regions/#services)内重复。 当一段时间内管理多个网络资源时，定义命名资源时可一致使用的命名约定很有用。 有关建议，请参阅[命名约定](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#networking)。
+所有 Azure 资源都有名称。 该名称在一个范围内必须是唯一的，但每种资源类型可能会有所不同。 例如，虚拟网络的名称在[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)内必须是唯一的，但可在[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)或 Azure [区域](https://azure.microsoft.com/regions/#services)内重复。 当一段时间内管理多个网络资源时，定义命名资源时可一致使用的命名约定很有用。 有关建议，请参阅[命名约定](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#virtual-networking)。
 
-## <a name="regions"></a>区域
+## <a name="regions"></a>Regions
 
 在 Azure 区域和订阅中创建所有 Azure 资源。 只能在与资源位于相同区域和订阅的虚拟网络中创建资源。 但是，可连接存在于不同订阅和区域中的虚拟网络。 有关详细信息，请参阅[连接性](#connectivity)。 在决定要在哪个区域部署资源时，请考虑资源的使用者位于何处：
 
@@ -37,7 +37,7 @@ ms.locfileid: "66478595"
 - 是否有数据驻留、主权、符合性或复原能力需求？ 如果有，选择符合需求的区域至关重要。 有关详细信息，请参阅[Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)。
 - 是否需要在部署资源的相同 Azure 区域内跨 Azure 可用性区域提供复原能力？ 可将资源（如虚拟机 (VM)）部署到相同虚拟网络中的不同可用性区域。 但并非所有 Azure 区域都支持可用性区域。 若要详细了解可用性区域和支持它们的区域，请参阅[可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-## <a name="subscriptions"></a>订阅
+## <a name="subscriptions"></a>Subscriptions
 
 可根据需要在每个订阅中部署尽可能多的虚拟网络，直至达到[上限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)。 例如，一些组织的不同部门有不同的订阅。 有关订阅的详细信息和注意事项，请参阅[订阅监管](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "66478595"
 - 可将对 Azure 资源（例如 Azure 存储帐户或 Azure SQL 数据库）的访问权限限制为具有虚拟网络服务终结点的特定子网。 此外，可拒绝通过 Internet 访问资源。 可创建多个子网，并为某些子网启用服务终结点，但不启用其他项。 详细了解[服务终结点](virtual-network-service-endpoints-overview.md)，以及可为其启用的 Azure 资源。
 - 可将零个或一个网络安全组与虚拟网络中的每个子网相关联。 可将相同或不同的网络安全组关联到每个子网。 每个网络安全组都包含规则，允许或拒绝到达和来自源和目标的流量。 详细了解[网络安全组](#traffic-filtering)。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 可使用网络安全组和网络虚拟设备来筛选虚拟网络中到达或来自资源的流量。 可控制 Azure 如何路由来自子网的流量。 还可限制组织中的人员使用虚拟网络中的资源。
 
@@ -77,7 +77,7 @@ ms.locfileid: "66478595"
 - 如果子网中不同 VM 需要应用不同的安全规则，则可将 VM 中的网络接口与一个或多个应用程序安全组相关联。 安全规则可以在其源和/或目标中指定应用程序安全组。 该规则仅适用于属于应用程序安全组成员的网络接口。 详细了解[网络安全组](security-overview.md)和[应用程序安全组](security-overview.md#application-security-groups)。
 - Azure 在每个网络安全组中创建了多个默认安全规则。 其中一个默认规则允许所有流量在虚拟网络中的所有资源之间流动。 若要替代此行为，可使用网络安全组和/或自定义路由将流量路由到 NVA。 建议熟悉 Azure 的所有[默认安全规则](security-overview.md#default-security-rules)，并了解网络安全组规则如何应用于资源。
 
-您可以查看示例设计用于实现外围网络 (也称为 DMZ) Azure 与 internet 使用之间[NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json)。
+可以查看使用[NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json)在 Azure 与 internet 之间实现外围网络（也称为 DMZ）的示例设计。
 
 ### <a name="traffic-routing"></a>流量路由
 

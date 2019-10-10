@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: dbe51eddcf748843fd90cc533063fd25e7c282fd
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d96229bb5e3d288915b64e5a7ce29a8651f2a181
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933370"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177377"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的永久业务流程 (Azure Functions)
 
@@ -22,7 +22,7 @@ ms.locfileid: "70933370"
 
 ## <a name="orchestration-history"></a>业务流程历史记录
 
-如[业务流程历史记录](durable-functions-orchestrations.md#orchestration-history)主题中所述，持久性任务框架跟踪每个函数业务流程的历史记录。 只要业务流程协调程序函数继续计划新工作，此历史记录就会不断增长。 如果业务流程协调程序函数进入无限循环并持续计划工作，则此历史记录可能会变得非常大并导致明显的性能问题。 *永久业务流程*概念是为了减轻需要无限循环的应用程序的此类问题而设计的。
+如[业务流程历史记录](durable-functions-orchestrations.md#orchestration-history)主题中所述，Durable Task Framework 会跟踪每个函数业务流程的历史记录。 只要业务流程协调程序函数继续计划新工作，此历史记录就会不断增长。 如果业务流程协调程序函数进入无限循环并持续计划工作，则此历史记录可能会变得非常大并导致明显的性能问题。 *永久业务流程*概念是为了减轻需要无限循环的应用程序的此类问题而设计的。
 
 ## <a name="resetting-and-restarting"></a>重置和重启
 
@@ -74,10 +74,10 @@ module.exports = df.orchestrator(function*(context) {
 此示例与计时器触发的函数之间的区别是此处的清理触发时间不基于计划。 例如，每小时执行某个函数的 CRON 计划将在 1:00、2:00 和 3:00 等时间执行，并且可能会遇到重叠问题。 不过，在此示例中，如果清理花费 30 分钟，则它将计划在 1:00、2:30、4:00 等时间执行，因此不可能重叠。
 
 ## <a name="starting-an-eternal-orchestration"></a>启动永久业务流程
-使用[StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)方法启动永久业务流程。 这与触发其他任何业务流程函数并无区别。  
+使用 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) 方法启动永久业务流程。 这与触发任何其他业务流程函数没有什么不同。  
 
 > [!NOTE]
-> 如果需要确保单独的永久业务流程正在运行，则在启动业务流程时维护相同的`id`实例是非常重要的。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
+> 如果需要确保单一永久业务流程实例正在运行，则在启动业务流程时维护相同的实例 `id` 非常重要。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -87,7 +87,7 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 {
     string instanceId = "StaticId";
     // Null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
-    await client.StartNewAsync("Periodic_Cleanup_Loop"), instanceId, null); 
+    await client.StartNewAsync("Periodic_Cleanup_Loop", instanceId, null); 
     return client.CreateCheckStatusResponse(request, instanceId);
 }
 ```

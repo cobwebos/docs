@@ -1,23 +1,23 @@
 ---
 title: Azure 数据共享预览版术语
-description: Azure 数据共享预览版术语
+description: 了解用于描述 Azure 数据共享预览中使用的资源的常见术语（数据访问接口、数据使用者、数据共享、共享订阅、快照、邀请、收件人。）
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844707"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166275"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Azure 数据共享预览概念 
 
 Azure 数据共享预览引入了一些与数据共享相关的新术语。 本文介绍了在整个服务中可能会看到的一些常用术语。 
 
-## <a name="data-provider"></a>数据提供者
+## <a name="data-provider"></a>数据访问接口
 
 数据访问接口是与使用者共享数据的组织。 通常，数据访问接口可以是数据的所有者或陈列。 数据访问接口需要共享各种类型的数据。 数据访问接口可能要共享的数据的一些示例包括原始数据，如销售额或时序数据的点。 数据访问接口可能还需要共享已经包含分析和见解的预先处理的特选数据。 
 
@@ -49,15 +49,15 @@ Azure 数据共享预览引入了一些与数据共享相关的新术语。 本�
 
 数据使用者可以选择启用此快照计划以接收增量更新，这包括自首次生成新快照以来已更改的所有数据。 
 
-## <a name="invitation"></a>邀请
+## <a name="invitation"></a>受到
 
 数据访问接口可以邀请多个收件人的数据共享。 可以通过将收件人添加到数据共享来实现此目的。 创建数据共享后，还可以添加邀请。 
 
 如果未接受邀请，则数据提供程序可以在发送邀请后将其删除。 如果数据提供程序删除了邀请，但尚未接受，则数据使用者将无法接受它。 
 
-邀请最多可重新发送到5次。 
+每日最多可向邀请发送5次。 
 
-## <a name="recipient"></a>收件人
+## <a name="recipient"></a>Recipient
 
 收件人是接收数据共享邀请的人。 通常，数据访问接口会将收件人添加到他们创建的数据共享。 邀请的接收方接受邀请后，就成为了一个数据使用者。  
 

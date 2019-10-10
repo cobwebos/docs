@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 8c24352fdbc6b81e7d263ac8c511b7c61792e6ae
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 6249a3c1c8ea3be02ca802d6be7e720bd900f675
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907868"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178097"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>设置 VNet 的网络映射和 IP 寻址
 
@@ -33,7 +33,7 @@ ms.locfileid: "69907868"
 3. 在“添加网络映射”中，选择源和目标位置。 在本示例中，源 VM 在“东亚”区域运行，将复制到“东南亚”区域。
 
     ![选择源和目标](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
-3. 现在，在对方目录中创建网络映射。 在本示例中，源现在是“东南亚”，目标是“东亚”。
+3. 现在，按相反方向创建网络映射。 在本示例中，源现在是“东南亚”，目标是“东亚”。
 
     ![添加网络映射窗格 - 选择目标网络的源和目标位置](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 

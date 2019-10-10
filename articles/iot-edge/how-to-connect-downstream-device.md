@@ -4,17 +4,17 @@ description: 如何配置下游或叶设备以连接到 Azure IoT Edge 网关设
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/07/2019
+ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 822e58d1d35cfb9b62565ca78ea2277b8d194bc0
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c37c3ed2031746d7c476850749bb3dc613252654
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266121"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176786"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
 
@@ -182,18 +182,24 @@ var options = {
 
 本部分介绍用于将 Azure IoT Python 设备客户端连接到 IoT Edge 网关的示例应用程序。 
 
-1. 从[适用于 Python 的 Azure IoT 设备 SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios)获取**send_message**示例。 
-2. 确保你正在边缘容器中运行，或者在调试方案中， `EdgeHubConnectionString`设置了和`EdgeModuleCACertificateFile`环境变量。
+1. 从[适用于 Python 的 Azure IoT 设备 SDK 示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios)获取 **send_message** 的示例。 
+2. 确保你正在 IoT Edge 容器中运行，或在调试方案中运行 @no__t 设置了和 @no__t 环境变量。
 3. 参阅 SDK 文档，获取有关如何在设备上运行该示例的说明。 
 
 
 ## <a name="test-the-gateway-connection"></a>测试网关连接
 
-这是测试所有内容是否已正确设置的示例命令。 应会看到一条消息指出“verified OK”。
+使用此示例命令测试下游设备是否可以连接到网关设备： 
 
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
+
+此命令测试 MQTTS 上的连接（端口8883）。 如果使用其他协议，请根据需要为 AMQPS （5671）或 HTTPS （433）调整该命令。
+
+此命令的输出可能很长，其中包括有关链中所有证书的信息。 如果连接成功，则会看到一条类似 `Verification: OK` 或 `Verify return code: 0 (ok)` 的行。
+
+![验证网关连接](./media/how-to-connect-downstream-device/verification-ok.png)
 
 ## <a name="troubleshoot-the-gateway-connection"></a>对网关连接进行故障排除
 

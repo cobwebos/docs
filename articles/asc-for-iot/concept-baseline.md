@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2019
+ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: b0f5696b36082375a29e99298395cf16734d5bb4
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937141"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176613"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>用于 IoT 基线和自定义检查的 Azure 安全中心
 
@@ -55,7 +55,7 @@ ms.locfileid: "71937141"
         "baselineCustomChecksFilePath": {
           "value" : "/home/user/full_path.xml"
         },
-        "baselineCustomChecksFilePath": {
+        "baselineCustomChecksFileHash": {
           "value" : "#hashexample!"
         }
       }
@@ -64,7 +64,7 @@ ms.locfileid: "71937141"
 
 ## <a name="baseline-custom-check-properties"></a>基线自定义检查属性
 
-| 姓名| 状态 | 有效值| 默认值| 描述 |
+| 名称| 状态 | 有效值| 默认值| 描述 |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |baselineCustomChecksEnabled|必需： true |有效值：**布尔值** |默认值： **false** |发送高优先级消息之前的最大时间间隔。|
 |baselineCustomChecksFilePath |必需： true|有效值：**String**， **null** |默认值： **null** |基线 xml 配置的完整路径|

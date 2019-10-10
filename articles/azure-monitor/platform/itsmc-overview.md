@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 31d9307d23d308192b362d9570911c86a7dd8372
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: eb9d803bcc9667c26acecbfd098a3022b7421478
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051835"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177653"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -64,7 +64,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 3. 在“OMS 工作区”部分，选择要在其中安装解决方案的 Azure Log Analytics 工作区。
    >[!NOTE]
    > * 作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现工作区在称为 Log Analytics 工作区。
-   > * 只能在以下区域的 Log Analytics 工作区中安装 ITSM 连接器:美国东部、西欧、东南亚、东南部、美国西部、美国东部、日本西部、印度中部、美国东部、加拿大中部。
+   > * 只能在以下区域的 Log Analytics 工作区中安装 ITSM 连接器：美国东部、西欧、东南亚、东南部、美国西部、美国东部、日本西部、印度中部、美国东部、加拿大中部。
 
 4. 在“OMS 工作区设置”部分，选择要在其中创建解决方案资源的资源组。
 
@@ -83,7 +83,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 若要创建连接，需要准备好 ITSM 工具，以允许从 ITSM 连接器解决方案建立连接。  
 
-根据要连接到 ITSM 产品执行以下步骤：
+根据你要连接到的 ITSM 产品，请执行以下步骤：
 
 - [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
@@ -194,15 +194,15 @@ ServiceDeskWorkItemType_s="Incident"
 - 解决者
 - 关闭者
 - Source
-- 已分配给
+- 分配给
 - 类别
-- 标题
+- Title
 - 描述
 - 创建日期
 - 关闭日期
 - 解决日期
 - 上次修改日期
-- 计算机
+- Computer
 
 
 **工作项：** **更改请求**
@@ -216,7 +216,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 关闭者
 - Source
 - 分配给
-- 标题
+- Title
 - 类型
 - 类别
 - 状态
@@ -226,7 +226,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Priority
 - 风险
 - 影响
-- 已分配给
+- 分配给
 - 创建日期
 - 关闭日期
 - 上次修改日期
@@ -236,13 +236,13 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 工作开始日期
 - 工作结束日期
 - 描述
-- 计算机
+- Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow 事件的输出数据
 
 | Log Analytics 字段 | ServiceNow 字段 |
 |:--- |:--- |
-| ServiceDeskId_s| 数量 |
+| ServiceDeskId_s| Number |
 | IncidentState_s | 状态 |
 | Urgency_s |紧急性 |
 | Impact_s |影响|
@@ -258,16 +258,16 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | CreatedDate_t|  已打开 |
 | ClosedDate_t| 已关闭|
 | ResolvedDate_t|已解决|
-| 计算机  | 配置项 |
+| Computer  | 配置项 |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow 更改请求的输出数据
 
 | Log Analytics | ServiceNow 字段 |
 |:--- |:--- |
-| ServiceDeskId_s| 数量 |
+| ServiceDeskId_s| Number |
 | CreatedBy_s | 请求者 |
 | ClosedBy_s | 关闭者 |
-| AssignedTo_s | 分配给  |
+| AssignedTo_s | 已分配到  |
 | Title_s|  简短说明 |
 | Type_s|  类型 |
 | Category_s|  类别 |
@@ -283,7 +283,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | WorkStartDate_t  | 实际开始日期 |
 | WorkEndDate_t | 实际结束日期|
 | Description_s | 描述 |
-| 计算机  | 配置项 |
+| Computer  | 配置项 |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>排查 ITSM 连接问题

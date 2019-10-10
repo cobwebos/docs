@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f53ade09c5e2e7db0499122526a1de482af9378f
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d392ae97a8325dd4a56acd807ebfb2b951216eae
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901615"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174246"
 ---
 # <a name="bulk-restore-deleted-users-preview-in-azure-active-directory"></a>在 Azure Active Directory 中批量还原已删除的用户（预览版）
 
@@ -26,18 +26,22 @@ Azure Active Directory （Azure AD）支持批量用户创建和删除操作，�
 
 ## <a name="to-bulk-restore-users"></a>批量还原用户
 
-1. 使用组织中的用户管理员帐户[登录到 Azure AD 组织](https://aad.portal.azure.com)。
-1. 在 Azure AD 中，选择 "**已删除** **用户** > "。
+1. 使用 Azure AD 组织中的用户管理员帐户[登录到 Azure AD 组织](https://aad.portal.azure.com)。
+1. 在 Azure AD 中，选择 "**用户**@no__t**已删除**-1"。
 1. 在 "**已删除用户**" 页上，选择 "**批量还原**"，以上传要还原的用户的属性的有效 CSV 文件。
 
    ![在 "已删除用户" 页上选择 "批量还原" 命令](./media/users-bulk-restore/bulk-restore.png)
 
-1. 当你完成了 CSV 文件的编辑或者你拥有自己准备好上载的任何一个时，请选择 "**上传**要验证的 CSV 文件" 下的文件。
+1. 打开 CSV 文件并为每个要还原的用户添加一行。 唯一必需的值为**ObjectID**。 然后保存文件。
 
    ![选择要在其中列出你要添加的用户的本地 CSV 文件](./media/users-bulk-restore/upload-button.png)
 
-1. 当验证文件内容时，如果出现错误，请修复文件信息并重新提交文件。 提交有效文件将自动启动数据上载作业。
-1. 在 CSV 文件通过验证后，选择 "**提交**" 以启动用于还原用户的 Azure batch 作业。 如果有错误，则可以在 "批量操作结果" 页上下载并查看结果文件。 文件包含每个错误的原因。
+1. 在 "**批量还原（预览）** " 页上的 "**上载 csv 文件**" 下，浏览到该文件。 选择该文件并单击 "**提交**" 时，将启动对 CSV 文件的验证。
+1. 验证文件内容后，会看到“文件上传成功”消息。 如果有错误，必须修正错误，然后才能提交作业。
+1. 当你的文件通过验证时，请选择 "**提交**" 以启动用于还原用户的 Azure 批量操作。
+1. 还原操作完成后，会看到一条通知，指出批量操作已成功。
+
+如果有错误，则可以在 "**批量操作结果**" 页上下载并查看结果文件。 文件包含每个错误的原因。
 
 ## <a name="check-status"></a>查看状态
 

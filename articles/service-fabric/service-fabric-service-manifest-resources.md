@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 82b6e701a5f76aa4c2cea78417ca9bcbeeb10308
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.author: atsenthi
+ms.openlocfilehash: a795e01d37504dad360dc094b6b2aea2955b6a4a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927694"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170443"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述
@@ -29,7 +29,7 @@ ms.locfileid: "68927694"
 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 例如，可以查看本段落后面提供的清单代码段中指定的终结点 *ServiceEndpoint1*。 此外，服务还可以请求在资源中使用特定端口。 在不同群集节点上运行的服务副本可以分配不同的端口号，而运行在同一节点上的服务副本共享同一个端口。 之后服务副本可根据需要将这些端口用于复制和侦听客户端请求。
 
 > [!WARNING] 
-> 设计静态端口不应与 Clustermanifest.xml 中指定的应用程序端口范围重叠。 如果指定静态端口, 请将其分配到应用程序端口范围外, 否则将导致端口冲突。 使用 release 6.5 CU2, 我们将在检测到此类冲突时发出**运行状况警告**, 但允许部署与发货6.5 行为保持同步。 但是, 我们可能会阻止应用程序在下一个主要版本中进行部署。
+> 根据设计，静态端口不应与 ClusterManifest 中指定的应用程序端口范围重叠。 如果指定静态端口，请将其分配到应用程序端口范围外，否则会导致端口冲突。 对于版本 6.5CU2，当我们检测到此类冲突时，我们将发出**运行状况警告**，但让部署继续与已发布的 6.5 行为同步。 但是，我们可能会在下一个主要版本中阻止应用程序部署。
 >
 
 ```xml

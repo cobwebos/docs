@@ -1,20 +1,19 @@
 ---
-title: Azure 数据共享 Azure PowerShell 示例 |Microsoft Docs
-description: Azure PowerShell 示例-帮助你创建和管理数据共享的脚本。
-services: data-share
+title: Azure 数据共享 Azure PowerShell 示例
+description: 了解 Azure PowerShell 示例脚本，以帮助你在 Azure 数据共享预览中创建和管理数据共享。
 ms.service: data-share
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/6/2019
+ms.devlang: powershell
 author: joannapea
 ms.author: joanpo
-ms.openlocfilehash: 90b23da3ae911038c67dc1d99c5b98d04b935281
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.date: 07/6/2019
+ms.openlocfilehash: a694ced2697cba8cc50e3c7b5b14f712527e1cd9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70243095"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166330"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Azure 数据共享 Azure PowerShell 示例
 
@@ -33,9 +32,3 @@ ms.locfileid: "70243095"
 |[查看数据共享的详细信息](scripts/powershell/view-share-details-powershell.md)| 此示例 PowerShell 脚本列出并检索数据共享的详细信息。 |
 |[监视共享数据的使用情况](scripts/powershell/monitor-usage-powershell.md)| 此示例 PowerShell 脚本监视已发送共享数据的使用情况。 |
 |[创建和查看快照触发器](scripts/powershell/create-view-trigger-powershell.md)| 此示例 PowerShell 脚本创建共享的快照触发器。
-
-
-
-
-
-

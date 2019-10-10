@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
-ms.author: chackdan
-ms.openlocfilehash: 4e41638472307f0f88e92413d98b669b27572f54
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: pepogors
+ms.openlocfilehash: 31a7a3a42436f3a818fcf48f2af5ca395fa02386
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872127"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170418"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>保护服务的基于 WCF 的通信
 安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先构建的通信堆栈和工具，可用来提高安全性。 本文介绍如何在使用服务远程处理时提高安全性。

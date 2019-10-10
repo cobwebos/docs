@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: e393eb92e11dc8dc296f1dc5f1c0036566c285c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: f5df528c7e46a5cb2a5df98f0088a451eb08cd6a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60616023"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167539"
 ---
 # <a name="troubleshoot-application-upgrades"></a>应用程序升级故障排除
 
@@ -93,7 +93,7 @@ UpgradeReplicaSetCheckTimeout  : 00:00:00
 
 当前 **UpgradeState** 为 *RollingBackCompleted*，因此必须已使用回滚 **FailureAction**（会在失败时自动回滚升级）执行原始升级。 如果已使用手动 **FailureAction** 执行了原始升级，则升级将改为处于挂起状态，以允许对应用程序进行实时调试。
 
-在极少数情况下，当系统完成当前升级域的所有工作时，如果整体升级超时，则 UpgradeDomainProgressAtFailure 字段可能为空  。 如果发生这种情况，请尝试增加 UpgradeTimeout 和 UpgradeDomainTimeout 升级参数值，然后重试升级   。
+在极少数情况下，当系统完成当前升级域的所有工作时，如果整体升级超时，则 UpgradeDomainProgressAtFailure 字段可能为空。 如果发生这种情况，请尝试增加 UpgradeTimeout 和 UpgradeDomainTimeout 升级参数值，然后重试升级。
 
 ### <a name="investigate-health-check-failures"></a>调查运行状况检查失败
 

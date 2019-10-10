@@ -6,16 +6,16 @@ ms.service: sql-database
 ms.subservice: security
 ms.devlang: ''
 ms.topic: conceptual
-author: monhaber
-ms.author: v-mohabe
+author: rkarlin
+ms.author: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: b8fc82ca8f4b42adf595680541042ef38efe1470
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dc302d5435234b8cad9d79b5d626056e4d1e2cf2
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569549"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170377"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL 数据库的高级数据安全
 
@@ -51,17 +51,17 @@ ADS 定价遵循 Azure 安全中心“标准”层级定价，其中每个受保
 
 ## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2.开始对数据分类、跟踪漏洞和调查威胁警报
 
-单击“数据发现和分类”卡，查看建议进行分类的敏感列，并使用永久性敏感标签对数据分类。 单击“漏洞评估”卡，查看和管理漏洞扫描和报告，并跟踪安全状况。 如果收到安全警报, 请单击 "**高级威胁防护**卡" 查看警报的详细信息, 并通过 "Azure 安全中心安全警报" 页查看有关 Azure 订阅中的所有警报的合并报表。
+单击“数据发现和分类”卡，查看建议进行分类的敏感列，并使用永久性敏感标签对数据分类。 单击“漏洞评估”卡，查看和管理漏洞扫描和报告，并跟踪安全状况。 如果收到安全警报，请单击“高级威胁防护”卡，查看警报的详细信息，并通过 Azure 安全中心安全警报页面查看 Azure 订阅中所有警报的综合报告。
 
 ## <a name="3-manage-ads-settings-on-your-sql-database-server-or-managed-instance"></a>3.管理 SQL 数据库服务器或托管实例上的 ADS 设置
 
-要查看和管理 ADS 设置，请导航到“安全”下的“高级数据安全”来访问 SQL 数据库服务器或托管实例。 在此页上, 可以启用或禁用广告, 并修改整个 SQL 数据库服务器或托管实例的漏洞评估和高级威胁防护设置。
+要查看和管理 ADS 设置，请导航到“安全”下的“高级数据安全”来访问 SQL 数据库服务器或托管实例。 在此页上，可以启用或禁用 ADS，并修改整个 SQL 数据库服务器或托管实例的漏洞评估和高级威胁防护设置。
 
 ![服务器设置](./media/sql-advanced-protection/server_settings.png) 
 
 ## <a name="4-manage-ads-settings-for-a-sql-database"></a>4.管理 SQL 数据库的 ADS 设置
 
-要重写特定数据库的 ADS 设置，请勾选“在数据库级别启用高级数据安全”复选框。 仅在以下情况下使用此选项, 即你有特定要求接收单独数据库的单独的高级威胁防护警报或漏洞评估结果, 以及在数据库服务器或托管实例。
+要重写特定数据库的 ADS 设置，请勾选“在数据库级别启用高级数据安全”复选框。 仅当有接收单个数据库的单独高级威胁防护警报或漏洞评估结果这一特殊要求时才使用此选项，以代替或补充为数据库服务器或托管实例上的所有数据库接收的警报和结果。
 
 选中该复选框后，可以配置此数据库的相关设置。
  

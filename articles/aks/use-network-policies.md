@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 63678ad7260210d86daf035bfec9bb467a526042
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 6c7cf82381dfb895fdaa0f130e33b2dc9a6e7403
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950309"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169759"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -464,7 +464,7 @@ kubectl delete namespace development
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
 [calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
-[calico-support]: https://www.projectcalico.org/support
+[calico-support]: https://www.tigera.io/tigera-products/calico/
 [calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 

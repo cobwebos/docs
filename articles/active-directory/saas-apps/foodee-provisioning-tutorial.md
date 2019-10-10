@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: abf2a752eaf0f1d0a9a8b07072dfc0b4c1ae45b7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812717"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170073"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Foodee
 
@@ -118,7 +118,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
 1. 在 "**管理员凭据**" 下，执行以下操作：
 
-   a. 在 "**租户 URL** " 框中，输入之前检索到的 **@no__t**值。
+   a. 在 "**租户 URL** " 框中，输入之前检索到的**https： \//接待/scim/v2**值。
 
    b. 在 "**机密令牌**" 框中，输入之前检索到的**API 令牌**值。
    

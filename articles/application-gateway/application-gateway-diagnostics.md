@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/28/2019
+ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 896e1fb3e93fc0a542f0dca75cc1d87b3a2c237c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 36f26808b94893990ceec65e114b11113dbafd6f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057899"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177486"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -22,7 +22,7 @@ ms.locfileid: "71057899"
 
 * [日志](#diagnostic-logging)：通过日志记录，可出于监视目的从资源保存或使用性能、访问及其他数据。
 
-* [指标](application-gateway-metrics.md)：应用程序网关具有多个指标，可帮助你验证系统是否按预期执行。
+* [指标](application-gateway-metrics.md)：应用程序网关有几个指标可以帮助你验证系统是否按预期运行。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -105,7 +105,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 可通过三种方式存储日志：
 
 * **存储帐户**：如果日志存储时间较长并且希望能根据需要随时查看，则最好使用存储帐户。
-* **事件中心**：事件中心是一种很好的选择，用于与其他安全信息和事件管理（SIEM）工具集成，以获取对资源的警报。
+* **事件中心**：若要集成其他安全信息和事件管理 (SIEM) 工具以获取资源警报，事件中心是很好的选择。
 * **Azure Monitor 日志**：Azure Monitor 日志最适合用于应用程序常规实时监视或查看趋势。
 
 ### <a name="enable-logging-through-powershell"></a>通过 PowerShell 启用日志记录
@@ -172,7 +172,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |sentBytes| 发送的数据包大小（以字节为单位）。|
 |timeTaken| 处理请求并发送其响应所需的时长（以毫秒为单位）。 这是计算从应用程序网关接收到 HTTP 请求的第一个字节到响应发送操作完成这两个时间点之间的时间间隔。 请务必注意，所用时间字段通常包含请求和响应数据包通过网络传输的时间。 |
 |sslEnabled| 与后端池的通信是否使用 SSL。 有效值为打开和关闭。|
-|host| 向后端服务器发送请求时所用的主机名。 如果即将覆盖后端主机名，则此名称将反映该主机名。|
+|host| 向后端服务器发送请求时所用的主机名。 如果正在重写后端主机名，则此名称将反映该主机名。|
 |originalHost| 应用程序网关从客户端接收请求时所用的主机名。|
 ```json
 {
@@ -261,7 +261,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |healthyHostCount     | 后端池中运行正常的主机数。        |
 |unHealthyHostCount     | 后端池中运行不正常的主机数。        |
 |requestCount     | 服务的请求数。        |
-|延迟 | 从实例到请求服务后端的请求的平均延迟（以毫秒为单位）。 |
+|latency | 从实例到请求服务后端的请求的平均延迟（以毫秒为单位）。 |
 |failedRequestCount| 失败的请求数。|
 |throughput| 自最后一个日志后的平均吞吐量，以每秒字节数为单位。|
 
@@ -301,7 +301,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |ruleSetType     | 规则集类型。 可用值为 OWASP。        |
 |ruleSetVersion     | 使用的规则集版本。 可用值为 2.2.9 和 3.0。     |
 |ruleId     | 触发事件的规则 ID。        |
-|消息     | 触发事件的用户友好信息。 详细信息部分提供了更多详细信息。        |
+|message     | 触发事件的用户友好信息。 详细信息部分提供了更多详细信息。        |
 |action     |  针对请求执行的操作。 可用值为“阻止”和“允许”。      |
 |site     | 为其生成日志的站点。 目前，由于规则为全局性规则，所以仅列出了“全局”站点。|
 |details     | 触发事件的详细信息。        |
@@ -309,7 +309,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |details.data     | 在请求中找到的匹配规则的特定数据。         |
 |details.file     | 包含此规则的配置文件。        |
 |details.line     | 配置文件中触发事件的行号。       |
-|主机名   | 应用程序网关的主机名或 IP 地址。    |
+|hostname   | 应用程序网关的主机名或 IP 地址。    |
 |transactionId  | 给定事务的唯一 ID，有助于对同一请求中发生的多个规则冲突进行分组。   |
 
 ```json
@@ -347,7 +347,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 可使用以下任一方法查看和分析活动日志数据：
 
 * **Azure 工具**：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 活动操作](../azure-resource-manager/resource-group-audit.md)一文中详细介绍了每种方法的分步说明。
-* **Power BI**：如果还没有 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可以免费试用。 使用[适用于 Power BI 的 Azure 活动日志内容包](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)，可以借助预配置的仪表板（可直接使用或进行自定义）分析数据。
+* **Power BI**：如果还没有 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可以免费试用。 通过使用[Power BI 模板应用](https://docs.microsoft.com/power-bi/service-template-apps-overview)，你可以分析数据。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>查看并分析访问、性能和防火墙日志
 

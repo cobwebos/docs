@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2019
 ms.author: anavin
-ms.openlocfilehash: c488b96940cac03b9c392f0ac4bd1d32a15ba111
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a53d5810b20aa8389c152889fed5d7f4e8cfc5b7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035281"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177671"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -90,7 +90,7 @@ VNet 对等互连和全局 VNet 对等互连均支持网关传输。 仅当网�
 
 利用虚拟网络对等互连的入口和出口流量会产生少许费用。 有关 VNet 对等互连和全局 VNet 对等互连定价的详细信息，请参阅[定价页面](https://azure.microsoft.com/pricing/details/virtual-network)。
 
-网关传输是一种对等互连属性，该属性使虚拟网络能够在对等互连虚拟网络中使用 VPN/ExpressRoute 网关进行跨界连接或 VNet 到 VNet 连接。 有关更多详细信息，请参阅[VPN 网关收费](https://azure.microsoft.com/pricing/details/vpn-gateway/)或 ExpressRoute 网关费用和[VNet 对等互连费用。](https://azure.microsoft.com/pricing/details/virtual-network)
+网关传输是一种对等互连属性，该属性使虚拟网络能够在对等互连虚拟网络中使用 VPN/ExpressRoute 网关进行跨界连接或 VNet 到 VNet 连接。 到对等互连 VNet 中的网关（入口或出口）的流量将产生 VNet 对等互连费用。 有关更多详细信息，请参阅[VPN 网关收费](https://azure.microsoft.com/pricing/details/vpn-gateway/)或 ExpressRoute 网关费用和[VNet 对等互连费用。](https://azure.microsoft.com/pricing/details/virtual-network)
 
 ## <a name="next-steps"></a>后续步骤
 

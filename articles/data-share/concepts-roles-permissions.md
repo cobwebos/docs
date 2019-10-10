@@ -1,17 +1,17 @@
 ---
 title: Azure 数据共享预览版的角色和要求
-description: Azure 数据共享预览版的角色和要求
+description: 了解用于在 Azure 数据共享预览中共享数据的数据访问接口和数据使用者的访问控制角色和要求。
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 7bf98f8774551292574d4f1951eba44657fa7de0
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c0841f6386440776c6ea719f9932a53cada9d9c4
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307359"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166378"
 ---
 # <a name="roles-and-requirements-for-azure-data-share-preview"></a>Azure 数据共享预览版的角色和要求
 
@@ -30,9 +30,9 @@ Azure 数据共享使用 Azure 服务的托管标识（以前称为 Msi）对基
 | |  |  |
 |---|---|---|
 |**存储类型**|**数据访问接口源存储帐户**|**数据使用者目标存储帐户**|
-|Azure Blob 存储| 存储 Blob 数据读取器 | 存储 Blob 数据参与者
-|Azure Data Lake Gen1 | 所有者 | 不受支持
-|Azure Data Lake Gen2 | 存储 Blob 数据读取器 | 存储 Blob 数据参与者
+|Azure Blob 存储| 存储 Blob 数据读取者 | 存储 Blob 数据参与者
+|Azure Data Lake Gen1 | 所有者 | 不支持
+|Azure Data Lake Gen2 | 存储 Blob 数据读取者 | 存储 Blob 数据参与者
 |
 ### <a name="data-providers"></a>数据访问接口 
 若要将数据集添加到 Azure 数据共享，需要将数据访问接口数据共享资源托管标识添加到存储 Blob 数据读取器角色。 如果用户是通过 Azure 添加数据集，并且是存储帐户的所有者，或者是分配了 Microsoft 授权/角色分配/写入权限的自定义角色的成员，则 Azure 数据共享服务会自动完成此操作。 

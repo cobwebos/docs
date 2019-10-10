@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828233"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173399"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL 数据库无服务器计算层（预览版）
 
@@ -33,7 +33,7 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 - “最小 vCore 数”和“最大 vCore 数”是可配置的参数，用于定义数据库可用的计算容量范围。 内存和 IO 限制与指定的 vCore 范围成正比。  
 - **自动暂停延迟**是可配置的参数，用于定义数据库在自动暂停之前必须处于非活动状态的时间段。 发生下次登录或其他活动时，数据库会自动恢复。  或者，可以禁用自动暂停。
 
-### <a name="cost"></a>开销
+### <a name="cost"></a>成本
 
 - 无服务器数据库的成本是计算成本和存储成本之和。
 - 如果计算用量介于配置的下限和上限之间，则计算成本基于使用的 vCore 数和内存量。
@@ -141,7 +141,7 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 
 在部署某些需要数据库联机的服务更新期间，也会触发自动恢复。
 
-### <a name="connectivity"></a>连接性
+### <a name="connectivity"></a>连接
 
 如果无服务器数据库处于暂停状态，则首次登录将恢复数据库，并返回一个错误，指出数据库将不可用，错误代码为 40613。 恢复数据库后，必须重新尝试登录以建立连接。 具有连接重试逻辑的数据库客户端应该不需要进行修改。
 
@@ -157,7 +157,7 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 
    |服务目标名称|服务层|硬件代次|最大 vCore 数|
    |---|---|---|---|
-   |GP_S_Gen5_1|常规用途|Gen5|1|
+   |GP_S_Gen5_1|常规用途|Gen5|第|
    |GP_S_Gen5_2|常规用途|Gen5|2|
    |GP_S_Gen5_4|常规用途|Gen5|4|
    |GP_S_Gen5_6|常规用途|Gen5|6|
@@ -171,7 +171,7 @@ Azure SQL 数据库无服务器计算层（预览版）是适用于单一数据�
 
    |参数|可选的值|默认值|
    |---|---|---|---|
-   |最小 V 核心|取决于配置的最大 Vcore-请参阅[资源限制](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。|0.5 个 vCore|
+   |最小 vCore 数|取决于配置的最大 Vcore-请参阅[资源限制](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。|0.5 个 vCore|
    |自动暂停延迟|最低：60 分钟（1 小时）<br>最大值：10080 分钟（7 天）<br>增量：60 分钟<br>禁用自动暂停：-1|60 分钟|
 
 > [!NOTE]
@@ -257,7 +257,7 @@ Set-AzSqlDatabase `
 
 用户资源池是数据库最内层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 用户资源池限定由 DDL 查询（例如 CREATE 和 ALTER）和 DML 查询（例如 SELECT、INSERT、UPDATE 和 DELETE）生成的用户工作负荷的 CPU 和 IO 范围。 这些查询通常表示应用包中最重要的使用率比例。
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 下表列出了用于监视无服务器数据库应用包和用户池的资源使用情况的指标：
 
@@ -290,7 +290,7 @@ Get-AzSqlDatabase `
 
 有关资源限制，请参阅[无服务器计算层](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)。
 
-## <a name="billing"></a>账单
+## <a name="billing"></a>计费
 
 计费的计算量是每秒使用的最大 CPU 和内存量。 如果所用的 CPU 和内存量分别少于最小预配量，则对预配量进行计费。 为了比较 CPU 与内存以进行计费，可通过将内存量 (GB) 按照每个 vCore 3 GB 进行重新缩放，将内存归一化为以 vCore 数为单位。
 
@@ -317,7 +317,7 @@ VCore 单位价格是每秒 vCore 的成本。 请参考 [Azure SQL 数据库定
 |时间间隔|每秒使用的 vCore 数|每秒使用的 GB 量|计费的计算维度|时间间隔内计费的 vCore 秒数|
 |---|---|---|---|---|
 |0:00-1:00|4|9|使用的 vCore 数|4 个 vCore * 3600 秒 = 14400 vCore 秒|
-|1:00-2:00|1|12|使用的内存量|12 GB * 1/3 * 3600 秒 = 14400 vCore 秒|
+|1:00-2:00|第|12|使用的内存量|12 GB * 1/3 * 3600 秒 = 14400 vCore 秒|
 |2:00-8:00|0|0|预配的最小内存|3 GB * 1/3 * 21600 秒 = 21600 vCore 秒|
 |8:00-24:00|0|0|暂停时不计收计算费用|0 vCore 秒|
 |24 小时内计费的总 vCore 秒||||50400 vCore 秒|
@@ -326,7 +326,7 @@ VCore 单位价格是每秒 vCore 的成本。 请参考 [Azure SQL 数据库定
 
 ## <a name="available-regions"></a>可用区域
 
-无服务器计算层在全球范围内可用，但以下区域除外：澳大利亚中部、中国东部、中国北部、法国南部、德国中部、德国东北部、印度西部、韩国南部、南非西部、英国北部、英国南部、英国西部和美国中部。
+无服务器计算层在全球范围内可用，但以下区域除外：中国东部、中国北部、德国中部、德国东北部、英国北部、英国南部2、美国西部和 US Gov 中部（爱荷华）。
 
 ## <a name="next-steps"></a>后续步骤
 
