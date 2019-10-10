@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4e07274f7abf87360c054edd3fe0ade1c09907a7
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: eeaa709b88ca795d906fe3688301b4cd7d8c726e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178587"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244131"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>在 ExpressRoute 直接端口上配置 MACsec
 
@@ -130,6 +130,9 @@ Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ```
 
 此时，Microsoft 端的 ExpressRoute 直接端口上禁用了 MACsec。
+
+### <a name="test-connectivity"></a>测试连接
+在 ExpressRoute 直接端口上配置 MACsec （包括 MACsec 密钥更新）后，请[检查](expressroute-troubleshooting-expressroute-overview.md)线路的 BGP 会话是否已启动并正在运行。 如果端口上还没有线路，请先创建一个，并设置该线路的 Azure 专用对等互连或 Microsoft 对等互连。 如果 MACsec 配置不正确，包括网络设备和 Microsoft 网络设备之间的 MACsec key 不匹配，则不会在第3层中看到 ARP 解析，并在第3层建立 BGP。 如果所有内容都已正确配置，则应看到在两个方向上正确公布的 BGP 路由，以及基于 ExpressRoute 的应用程序数据流。
 
 ## <a name="next-steps"></a>后续步骤
 1. [在 ExpressRoute 直接上创建 ExpressRoute 线路](expressroute-howto-erdirect.md)

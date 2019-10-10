@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/04/2019
+ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: b50c7c0fbd2ef2c3825ba4c69232b69188d7ffbb
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 433bcd31399d8443355edcb2e8586993644174ca
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308299"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242363"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -29,7 +29,6 @@ ms.locfileid: "70308299"
 
 | **类别**  | **产品/服务名称** | **配额 ID** | **套餐编号** | **可用数据** |
 | --- | --- | --- | --- | --- |
-| **Azure 德国** | [Azure 德国即用即付](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P | 10月2日，2018<sup>2</sup> |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 5月 2014<sup>1</sup> |
 | **企业协议 (EA)** | Enterprise 开发/测试                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 5月 2014<sup>1</sup> |
 | **企业协议 (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 5月 2014<sup>1</sup> |
@@ -54,7 +53,7 @@ _<sup>**2**</sup>对于10月 2 2018 日之前的数据，请访问[Azure 帐户�
 
 _<sup>**3**</sup> 2019 年3月开始使用 Microsoft 客户协议，此点之前没有任何历史数据。_
 
-_<sup>**4**</sup>基于信用额度和向外付费订阅的历史数据可能与发票不匹配。请参阅下面的[历史数据可能与发票不匹配](#historical-data-might-not-match-invoice)。_
+_<sup>**4**</sup>个基于信用额度和向外付费订阅的历史数据可能与你的发票不匹配。请参阅下面的[历史数据可能与发票不匹配](#historical-data-might-not-match-invoice)。_
 
 尚不支持以下产品/服务：
 
@@ -64,7 +63,7 @@ _<sup>**4**</sup>基于信用额度和向外付费订阅的历史数据可能与
 | **云解决方案提供商 (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **云解决方案提供商 (CSP)** | Azure 政府版 CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **云解决方案提供商 (CSP)** | Microsoft 德国云 CSP 中的 Azure 德国版   | CSP_2015-05-01 | MS-AZR-DE-0145P |
-| **即用即付**                 | Azure for Students Starter | DreamSpark_2015-02-01 | MS-AZR-0144P |
+| **即用即付**                 | 面向学生的 Azure 入门版 | DreamSpark_2015-02-01 | MS-AZR-0144P |
 | **即用即付** | [面向学生的 Azure](https://azure.microsoft.com/offers/ms-azr-0170p)<sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
 | **即用即付**                 | [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
 | **支持计划** | 标准支持                    | Default_2014-09-01 | MS-AZR-0041P |

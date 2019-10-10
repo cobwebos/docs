@@ -1,17 +1,17 @@
 ---
-title: 了解如何审核计算机的内容
+title: 了解如何审核虚拟机的内容
 description: 了解 Azure 策略如何使用来宾配置审核 Azure 计算机中的设置。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: ac8d4d2519ce918a943cfe1e93ed2c5c7afd9a47
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 82279e6937fccfbbef13f9580f76cd344593b0df
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978055"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255846"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -75,9 +75,9 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 下表显示了 Azure 映像上支持的操作系统列表：
 
-|发布者|姓名|版本|
+|发布者|名称|版本|
 |-|-|-|
-|规范|Ubuntu 服务器|14.04、16.04、18.04|
+|规范|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
 |Microsoft|Windows Server|2012 datacenter、2012 R2 Datacenter、2016 Datacenter、2019 Datacenter|
 |Microsoft|Windows 客户端|Windows 10|

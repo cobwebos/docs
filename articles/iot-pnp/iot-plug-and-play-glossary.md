@@ -3,18 +3,18 @@ title: 术语词汇表-IoT 即插即用预览版 |Microsoft Docs
 description: 概念-与 IoT 即插即用预览相关的常见术语的词汇表。
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 08/29/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a5c9d2d54fcce1179e43c38027db23c3d7e557e8
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858846"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249305"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT 即插即用预览版术语表
 
@@ -97,6 +97,7 @@ IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 
 
 - 设备连接字符串使[iot 即插即用设备](#iot-plug-and-play-device)能够连接到 iot 中心上面向设备的终结点。 设备上的客户端代码使用连接字符串建立与 IoT 中心的安全连接。
 - IoT 中心连接字符串使后端解决方案和工具能够安全地连接到 IoT 中心上面向服务的终结点。 这些解决方案和工具管理 IoT 中心和连接到它的设备。
+- 公司模型存储库连接字符串使后端解决方案和工具能够安全地连接到[公司模型存储库](#company-model-repository)。 这些解决方案和工具使用或管理存储库中的[设备功能模型](#device-capability-model)和[接口](#interface)。
 
 ## <a name="device-capability-model"></a>设备功能模型
 

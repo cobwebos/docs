@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 86875643950e11f1e5030676c1ab3825039749ed
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8f7349310f72c8cccc7b1906239ece3038dd7861
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203541"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249212"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "71203541"
 
 ## <a name="what-cluster-operations-are-available"></a>哪些群集操作可用？
 
-只能增加或减少计算节点数。 创建后，不允许对`Microsoft.ContainerService/openShiftManagedClusters`资源进行任何其他修改。 计算节点的最大数目限制为20个。
+只能增加或减少计算节点数。 创建后，不允许对 @no__t 资源进行任何其他修改。 计算节点的最大数目限制为20个。
 
 ## <a name="what-virtual-machine-sizes-can-i-use"></a>我可以使用哪些虚拟机大小？
 
@@ -59,11 +59,11 @@ ms.locfileid: "71203541"
 
 ## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Docker 注册表是否可在外部使用，因此可以使用 Jenkins 等工具？
 
-中`https://docker-registry.apps.<clustername>.<region>.azmosa.io/`提供了 Docker 注册表，但未提供强大的存储持久性保证。 你还可以使用[Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)。
+Docker 注册表可从 `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` 开始，但不提供强大的存储持久性保证。 你还可以使用[Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)。
 
 ## <a name="is-cross-namespace-networking-supported"></a>是否支持交叉命名空间网络？
 
-客户和单个项目管理员可以使用`NetworkPolicy`对象基于每个项目自定义跨命名空间网络（包括拒绝此网络）。
+客户和单独的项目管理员可使用 @no__t 0 对象基于每个项目自定义跨命名空间网络（包括拒绝此网络）。
 
 ## <a name="can-an-admin-manage-users-and-quotas"></a>管理员是否可以管理用户和配额？
 
@@ -71,7 +71,7 @@ ms.locfileid: "71203541"
 
 ## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>是否可以将群集限制为仅限特定 Azure AD 的用户？
 
-是。 你可以通过配置 Azure AD 应用程序限制用户可以登录到群集的 Azure AD。 有关详细信息， [请参阅如何：将你的应用程序限制为一组用户](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
+是。 你可以通过配置 Azure AD 应用程序限制用户可以登录到群集的 Azure AD。 有关详细信息，请参阅 [How to：将你的应用限制为一组用户 @ no__t-0
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>群集是否可以跨多个 Azure 区域具有计算节点？
 
@@ -85,15 +85,15 @@ ms.locfileid: "71203541"
 
 是。 可以将 OSBA 与 Azure Red Hat OpenShift 配合使用。 有关详细信息，请参阅[Open Service Broker For Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) 。
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>我尝试使用其他订阅中的虚拟网络，但收到`Failed to get vnet CIDR`错误消息。
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>我尝试对另一个订阅中的虚拟网络进行对等互连，但收到 `Failed to get vnet CIDR` 错误。
 
-在具有虚拟网络的订阅中，请确保将提供程序`Microsoft.ContainerService`注册到`az provider register -n Microsoft.ContainerService --wait` 
+在具有虚拟网络的订阅中，请确保将 `Microsoft.ContainerService` 提供程序注册 `az provider register -n Microsoft.ContainerService --wait` 
 
 ## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Azure Red Hat OpenShift （ARO）维护过程是什么？
 
 对于 ARO，有三种维护类型：升级、备份和还原 etcd 数据，以及云提供商启动的维护。
 
-+ 升级包括软件升级和标识符。 在启动时，将通过运行`yum update`并提供即时缓解来进行 CVE 更正。  并行，将为将来创建群集创建新的映像版本。
++ 升级包括软件升级和标识符。 在启动时，将通过运行 `yum update` 并提供即时缓解来实现 CVE 修正。  并行，将为将来创建群集创建新的映像版本。
 
 + Etcd 数据的备份和管理是一种自动化过程，根据具体的操作，可能需要群集停机。 如果正在从备份还原 etcd 数据库，则会有停机时间。 我们每小时备份一次 etcd，并保留过去6小时的备份。
 
@@ -129,9 +129,9 @@ ms.locfileid: "71203541"
 
 Syslog、docker 日志、日记和 dmesg 由托管服务进行处理，不会向客户显示。
 
-## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>客户如何在节点级别获取对 CPU/内存等度量值的访问权限，以采取措施来缩放、调试问题，等等。我似乎无法在 ARO `kubectl top`群集上运行。
+## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>客户如何在节点级别获取对 CPU/内存等度量值的访问权限，以采取措施来缩放、调试问题，等等。我似乎无法在 ARO 群集上运行 `kubectl top`。
 
-`kubectl top`在 Red Hat OpenShift 上不可用。 它需要一个后备指标源（Heapster （不推荐使用）或指标-服务器（孵化或 alpha），其中的任何一个都不包含在 OpenShift 监视堆栈中。
+`kubectl top` 在 Red Hat OpenShift 上不可用。 它需要一个后备指标源（Heapster （不推荐使用）或指标-服务器（孵化或 alpha），其中的任何一个都不包含在 OpenShift 监视堆栈中。
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>ARO 的默认 pod 计划程序配置是什么？
 
@@ -189,7 +189,7 @@ SDN 为 openshift-ovs-es-networkpolicy，不可配置。
 
 每个 Azure Red Hat OpenShift 群集专用于给定的客户，并在客户的订阅中。 
 
-## <a name="can-we-choose-any-persistent-storage-solution-ocs"></a>能否选择任何持久性存储解决方案。 OCS? 
+## <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>能否选择任何持久性存储解决方案，如 OCS？ 
 
 有两个存储类可供选择：Azure 磁盘和 Azure 文件。
 

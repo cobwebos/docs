@@ -1,6 +1,6 @@
 ---
 title: 准备设备和部署以用于生产 - Azure IoT Edge | Microsoft Docs
-description: 了解如何从开发到生产中获取 Azure IoT Edge 解决方案，包括使用适当的证书设置设备，并为未来的代码更新制定部署计划。
+description: 了解如何将 Azure IoT Edge 解决方案从开发环境转移到生产环境，包括使用适当的证书设置设备以及为将来的代码更新制定部署计划。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 36465f016eeb066c0e12f6434deb98fd7b10966a
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 599b5b075f32294f9e68c776c4a7744283e9c269
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958759"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244047"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -177,9 +177,11 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
    | mcr.microsoft.com  | 443 | Microsoft 容器注册表 |
    | global.azure-devices-provisioning.net  | 443 | DPS 访问（可选） |
    | \*.azurecr.io | 443 | 个人和第三方容器注册表 |
-   | \*.blob.core.windows.net | 443 | 下载映像增量数据 | 
+   | \*.blob.core.windows.net | 443 | 从 blob 存储下载 Azure 容器注册表映像增量  | 
    | \*.azure-devices.net | 5671、8883、443 | IoT 中心访问 |
    | \*.docker.io  | 443 | Docker 中心访问（可选） |
+
+其中的某些防火墙规则继承自 Azure 容器注册表。 有关详细信息，请参阅[配置规则以访问防火墙后面的 Azure 容器注册表](../container-registry/container-registry-firewall-access-rules.md)。
 
 ### <a name="configure-communication-through-a-proxy"></a>配置为通过代理进行通信
 

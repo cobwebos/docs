@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f7e9b738a55248678a207f0b298ef65e6c2761a4
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145658"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240152"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 标识平台最佳实践和建议
 
@@ -31,7 +31,7 @@ ms.locfileid: "71145658"
 
 使用以下查检表确保应用程序与 [Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/)有效集成。
 
-## <a name="basics"></a>基本
+## <a name="basics"></a>基础
 
 |   |   |
 |---|---|
@@ -43,7 +43,7 @@ ms.locfileid: "71145658"
 |---|---|
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 确保用来注册和管理应用的、与帐户关联的信息是最新的。 |
 
-## <a name="branding"></a>品牌打造
+## <a name="branding"></a>品牌
 
 |   |   |
 |---|---|
@@ -87,7 +87,7 @@ ms.locfileid: "71145658"
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | [了解许可体验](application-consent-experience.md)并配置应用许可提示的片段，使最终用户和管理员有足够的信息确定是否可信任你的应用。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 在执行交互式流之前尝试进行静默身份验证（静默令牌获取），以尽量减少用户在使用应用时输入登录凭据所需的时间。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 不要对每次登录使用“prompt=consent”。 仅当你已确定需要请求其他权限的许可（例如，如果已更改应用的所需权限）时，才使用 prompt=consent。 |
-| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 如果适用，请使用用户数据扩充应用程序。 使用 [Microsoft Graph API](https://developer.microsoft.com/graph) 可以轻松实现此目的。 [Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)可帮助你开始。 |
+| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 如果适用，请使用用户数据扩充应用程序。 使用[MICROSOFT GRAPH API](https://developer.microsoft.com/graph)是执行此操作的一种简单方法。 [图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)工具可帮助您入门。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 注册应用所需的完整权限集，使管理员能够轻松地向其租户授予许可。 在运行时使用[增量许可](azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)，以帮助用户了解应用在首次启动时为何要请求可能会给用户带来忧虑或困惑的权限。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 实现[干净的单一注销体验](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut)。 这是一项隐私和安全要求，有助于建立良好的用户体验。 |
 

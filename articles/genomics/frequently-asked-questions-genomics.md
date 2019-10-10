@@ -1,28 +1,28 @@
 ---
-title: Microsoft 基因组学：常见问题-常见问题 |Microsoft Docs
-titleSuffix: Azure
+title: 常见问题-常见问题
+titleSuffix: Microsoft Genomics
 description: 有关 Microsoft 基因组学的用户常见问题解答。
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: d36a2c6379a95cc67a55c2cc266ced94b4a0179a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 80a656ee687b71fcaf09a02d70d0a5a4300186bc
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672236"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249231"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft 基因组学：常见问题
 
 本文列出了用户可能会遇到的与 Microsoft 基因组学相关的几大疑问。 有关 Microsoft 基因组学服务的详细信息，请参阅[什么是 Microsoft 基因组学？](overview-what-is-genomics.md)。 有关故障排除的详细信息，请参阅我们的[故障排除指南](troubleshooting-guide-genomics.md)。 
 
 
-## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>如何在 Microsoft 基因组学运行 GATK4 工作流？
-在 Microsoft 基因组学服务的 config.txt 文件中，指定到 process_name `gatk4`。 请注意，您将会按常规费率计费计费。
+## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>如何实现在 Microsoft 基因组学上运行 GATK4 工作流？
+在 Microsoft 基因组学服务的 config.xml 文件中，将 process_name 指定为 `gatk4`。 请注意，将按定期计费费率计费。
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>什么是 Microsoft 基因组学的 SLA？
@@ -46,10 +46,10 @@ Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有
  |`cancel`             |发送请求来取消由 `--workflow-id` 指定的工作流进程。 另请参阅 `msgen help cancel`。 |
 
 ## <a name="where-do-i-get-the-value-for---api-url-base"></a>在何处获取 `--api-url-base` 的值？
-请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”   。 可在此处找到 API URL 和访问密钥。
+请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
 
 ## <a name="where-do-i-get-the-value-for---access-key"></a>在何处获取 `--access-key` 的值？
-请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”   。 可在此处找到 API URL 和访问密钥。
+请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
 
 ## <a name="why-do-i-need-two-access-keys"></a>为什么需要两个访问密钥？
 如果想更新（重新生成）密钥而不中断对服务的使用，则需要两个访问密钥。 例如，若要更新第一个密钥，则应该让所有新工作流使用第二个密钥。 等待使用第一个密钥的所有工作流完成，然后再更新第一个密钥。
@@ -78,9 +78,9 @@ msgen 可识别采用以下格式的配置文件：
 
   |命令行参数            | 配置文件行 |
   |:-------------                   |:-------------                 |
-  |`-u/--api-url-base https://url`  | api_url_base: https://url     |
-  |`-k/--access-key KEY`            | access_key:KEY               |      
-  |`-pa/--process-args R=B37m1`     | process_args:R-b37m1         |  
+  |`-u/--api-url-base https://url`  | api_url_base: https://url    |
+  |`-k/--access-key KEY`            | access_key:KEY              |      
+  |`-pa/--process-args R=B37m1`     | process_args:R-b37m1        |  
 
 ## <a name="next-steps"></a>后续步骤
 

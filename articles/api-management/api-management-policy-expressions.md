@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: fa5e84ba62896969458b84cf014e2b35ee869df7
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e9e6eff4c527ff2e22be57ebc1eb3dcdb3c4e0ab
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072174"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241982"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
 本文讨论策略表达式语法 C# 7。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。
@@ -52,15 +52,16 @@ ms.locfileid: "70072174"
 @(context.Variables.ContainsKey("maxAge") ? int.Parse((string)context.Variables["maxAge"]) : 3600)
 
 @{
-  string value;
+  string[] value;
   if (context.Request.Headers.TryGetValue("Authorization", out value))
   {
-    return Encoding.UTF8.GetString(Convert.FromBase64String(value));
+      if(value != null && value.Length > 0)
+      {
+          return Encoding.UTF8.GetString(Convert.FromBase64String(value[0]));
+      }
   }
-  else
-  {
-    return null;
-  }
+  return null;
+
 }
 ```
 
@@ -75,134 +76,134 @@ ms.locfileid: "70072174"
 
 |类型|受支持的成员|
 |--------------|-----------------------|
-|Newtonsoft.Json.Formatting|全部|
+|Newtonsoft.Json.Formatting|All|
 |Newtonsoft.Json.JsonConvert|SerializeObject、DeserializeObject|
-|Newtonsoft.Json.Linq.Extensions|全部|
-|Newtonsoft.Json.Linq.JArray|全部|
-|Newtonsoft.Json.Linq.JConstructor|全部|
-|Newtonsoft.Json.Linq.JContainer|全部|
-|Newtonsoft.Json.Linq.JObject|全部|
-|Newtonsoft.Json.Linq.JProperty|全部|
-|Newtonsoft.Json.Linq.JRaw|全部|
-|Newtonsoft.Json.Linq.JToken|全部|
-|Newtonsoft.Json.Linq.JTokenType|全部|
-|Newtonsoft.Json.Linq.JValue|全部|
-|System.Array|全部|
-|System.BitConverter|全部|
-|System.Boolean|全部|
-|System.Byte|全部|
-|System.Char|全部|
-|System.Collections.Generic.Dictionary<TKey, TValue>|全部|
-|System.Collections.Generic.HashSet\<T>|全部|
-|System.Collections.Generic.ICollection\<T>|全部|
-|System.Collections.Generic.IDictionary<TKey, TValue>|全部|
-|System.Collections.Generic.IEnumerable\<T>|全部|
-|System.Collections.Generic.IEnumerator\<T>|全部|
-|System.Collections.Generic.IList\<T>|全部|
-|System.Collections.Generic.IReadOnlyCollection\<T>|全部|
-|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|全部|
-|System.Collections.Generic.ISet\<T>|全部|
-|System.Collections.Generic.KeyValuePair<TKey, TValue>|全部|
-|System.Collections.Generic.List\<T>|全部|
-|System.Collections.Generic.Queue\<T>|全部|
-|System.Collections.Generic.Stack\<T>|全部|
-|System.Convert|全部|
+|Newtonsoft.Json.Linq.Extensions|All|
+|Newtonsoft.Json.Linq.JArray|All|
+|Newtonsoft.Json.Linq.JConstructor|All|
+|Newtonsoft.Json.Linq.JContainer|All|
+|Newtonsoft.Json.Linq.JObject|All|
+|Newtonsoft.Json.Linq.JProperty|All|
+|Newtonsoft.Json.Linq.JRaw|All|
+|Newtonsoft.Json.Linq.JToken|All|
+|Newtonsoft.Json.Linq.JTokenType|All|
+|Newtonsoft.Json.Linq.JValue|All|
+|System.Array|All|
+|System.BitConverter|All|
+|System.Boolean|All|
+|System.Byte|All|
+|System.Char|All|
+|System.Collections.Generic.Dictionary<TKey, TValue>|All|
+|System.Collections.Generic.HashSet\<T>|All|
+|System.Collections.Generic.ICollection\<T>|All|
+|System.Collections.Generic.IDictionary<TKey, TValue>|All|
+|System.Collections.Generic.IEnumerable\<T>|All|
+|System.Collections.Generic.IEnumerator\<T>|All|
+|System.Collections.Generic.IList\<T>|All|
+|System.Collections.Generic.IReadOnlyCollection\<T>|All|
+|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|All|
+|System.Collections.Generic.ISet\<T>|All|
+|System.Collections.Generic.KeyValuePair<TKey, TValue>|All|
+|System.Collections.Generic.List\<T>|All|
+|System.Collections.Generic.Queue\<T>|All|
+|System.Collections.Generic.Stack\<T>|All|
+|System.Convert|All|
 |System.DateTime|（构造函数）、Add、AddDays、AddHours、AddMilliseconds、AddMinutes、AddMonths、AddSeconds、AddTicks、AddYears、Date、Day、DayOfWeek、DayOfYear、DaysInMonth、Hour、IsDaylightSavingTime、IsLeapYear、MaxValue、Millisecond、Minute、MinValue、Month、Now、Parse、Second、Subtract、Ticks、TimeOfDay、Today、ToString、UtcNow、Year|
 |System.DateTimeKind|Utc|
-|System.DateTimeOffset|全部|
-|System.Decimal|全部|
-|System.Double|全部|
-|System.Exception|全部|
-|System.Guid|全部|
-|System.Int16|全部|
-|System.Int32|全部|
-|System.Int64|全部|
-|System.IO.StringReader|全部|
-|System.IO.StringWriter|全部|
-|System.Linq.Enumerable|全部|
-|System.Math|全部|
-|System.MidpointRounding|全部|
-|System.Net.WebUtility|全部|
-|System.Nullable|全部|
-|System.Random|全部|
-|System.SByte|全部|
-|System.Security.Cryptography.AsymmetricAlgorithm|全部|
-|System.Security.Cryptography.CipherMode|全部|
-|System.Security.Cryptography.HashAlgorithm|全部|
-|System.Security.Cryptography.HashAlgorithmName|全部|
-|System.Security.Cryptography.HMAC|全部|
-|System.Security.Cryptography.HMACMD5|全部|
-|System.Security.Cryptography.HMACSHA1|全部|
-|System.Security.Cryptography.HMACSHA256|全部|
-|System.Security.Cryptography.HMACSHA384|全部|
-|System.Security.Cryptography.HMACSHA512|全部|
-|System.Security.Cryptography.KeyedHashAlgorithm|全部|
-|System.Security.Cryptography.MD5|全部|
-|System.Security.Cryptography.Oid|全部|
-|System.Security.Cryptography.PaddingMode|全部|
-|System.Security.Cryptography.RNGCryptoServiceProvider|全部|
-|System.Security.Cryptography.RSA|全部|
-|System.Security.Cryptography.RSAEncryptionPadding|全部|
-|System.Security.Cryptography.RSASignaturePadding|全部|
-|System.Security.Cryptography.SHA1|全部|
-|System.Security.Cryptography.SHA1Managed|全部|
-|System.Security.Cryptography.SHA256|全部|
-|System.Security.Cryptography.SHA256Managed|全部|
-|System.Security.Cryptography.SHA384|全部|
-|System.Security.Cryptography.SHA384Managed|全部|
-|System.Security.Cryptography.SHA512|全部|
-|System.Security.Cryptography.SHA512Managed|全部|
-|System.Security.Cryptography.SymmetricAlgorithm|全部|
-|System.Security.Cryptography.X509Certificates.PublicKey|全部|
-|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|全部|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|姓名|
-|System.Security.Cryptography.X509Certificates.X509Certificate|全部|
-|System.Security.Cryptography.X509Certificates.X509Certificate2|全部|
-|System.Security.Cryptography.X509Certificates.X509ContentType|全部|
-|System.Security.Cryptography.X509Certificates.X509NameType|全部|
-|System.Single|全部|
-|System.String|全部|
-|System.StringComparer|全部|
-|System.StringComparison|全部|
-|System.StringSplitOptions|全部|
-|System.Text.Encoding|全部|
+|System.DateTimeOffset|All|
+|System.Decimal|All|
+|System.Double|All|
+|System.Exception|All|
+|System.Guid|All|
+|System.Int16|All|
+|System.Int32|All|
+|System.Int64|All|
+|System.IO.StringReader|All|
+|System.IO.StringWriter|All|
+|System.Linq.Enumerable|All|
+|System.Math|All|
+|System.MidpointRounding|All|
+|System.Net.WebUtility|All|
+|System.Nullable|All|
+|System.Random|All|
+|System.SByte|All|
+|System.Security.Cryptography.AsymmetricAlgorithm|All|
+|System.Security.Cryptography.CipherMode|All|
+|System.Security.Cryptography.HashAlgorithm|All|
+|System.Security.Cryptography.HashAlgorithmName|All|
+|System.Security.Cryptography.HMAC|All|
+|System.Security.Cryptography.HMACMD5|All|
+|System.Security.Cryptography.HMACSHA1|All|
+|System.Security.Cryptography.HMACSHA256|All|
+|System.Security.Cryptography.HMACSHA384|All|
+|System.Security.Cryptography.HMACSHA512|All|
+|System.Security.Cryptography.KeyedHashAlgorithm|All|
+|System.Security.Cryptography.MD5|All|
+|System.Security.Cryptography.Oid|All|
+|System.Security.Cryptography.PaddingMode|All|
+|System.Security.Cryptography.RNGCryptoServiceProvider|All|
+|System.Security.Cryptography.RSA|All|
+|System.Security.Cryptography.RSAEncryptionPadding|All|
+|System.Security.Cryptography.RSASignaturePadding|All|
+|System.Security.Cryptography.SHA1|All|
+|System.Security.Cryptography.SHA1Managed|All|
+|System.Security.Cryptography.SHA256|All|
+|System.Security.Cryptography.SHA256Managed|All|
+|System.Security.Cryptography.SHA384|All|
+|System.Security.Cryptography.SHA384Managed|All|
+|System.Security.Cryptography.SHA512|All|
+|System.Security.Cryptography.SHA512Managed|All|
+|System.Security.Cryptography.SymmetricAlgorithm|All|
+|System.Security.Cryptography.X509Certificates.PublicKey|All|
+|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|All|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|名称|
+|System.Security.Cryptography.X509Certificates.X509Certificate|All|
+|System.Security.Cryptography.X509Certificates.X509Certificate2|All|
+|System.Security.Cryptography.X509Certificates.X509ContentType|All|
+|System.Security.Cryptography.X509Certificates.X509NameType|All|
+|System.Single|All|
+|System.String|All|
+|System.StringComparer|All|
+|System.StringComparison|All|
+|System.StringSplitOptions|All|
+|System.Text.Encoding|All|
 |System.Text.RegularExpressions.Capture|Index、Length、Value|
 |System.Text.RegularExpressions.CaptureCollection|Count、Item|
 |System.Text.RegularExpressions.Group|Captures、Success|
 |System.Text.RegularExpressions.GroupCollection|Count、Item|
 |System.Text.RegularExpressions.Match|Empty、Groups、Result|
 |System.Text.RegularExpressions.Regex|（构造函数）、IsMatch、Match、Matches、Replace、Unescape、Split|
-|System.Text.RegularExpressions.RegexOptions|全部|
-|System.Text.StringBuilder|全部|
-|System.TimeSpan|全部|
-|System.TimeZone|全部|
-|System.TimeZoneInfo.AdjustmentRule|全部|
-|System.TimeZoneInfo.TransitionTime|全部|
-|System.TimeZoneInfo|全部|
-|System.Tuple|全部|
-|System.UInt16|全部|
-|System.UInt32|全部|
-|System.UInt64|全部|
-|System.Uri|全部|
-|System.UriPartial|全部|
-|System.Xml.Linq.Extensions|全部|
-|System.Xml.Linq.XAttribute|全部|
-|System.Xml.Linq.XCData|全部|
-|System.Xml.Linq.XComment|全部|
-|System.Xml.Linq.XContainer|全部|
-|System.Xml.Linq.XDeclaration|全部|
+|System.Text.RegularExpressions.RegexOptions|All|
+|System.Text.StringBuilder|All|
+|System.TimeSpan|All|
+|System.TimeZone|All|
+|System.TimeZoneInfo.AdjustmentRule|All|
+|System.TimeZoneInfo.TransitionTime|All|
+|System.TimeZoneInfo|All|
+|System.Tuple|All|
+|System.UInt16|All|
+|System.UInt32|All|
+|System.UInt64|All|
+|System.Uri|All|
+|System.UriPartial|All|
+|System.Xml.Linq.Extensions|All|
+|System.Xml.Linq.XAttribute|All|
+|System.Xml.Linq.XCData|All|
+|System.Xml.Linq.XComment|All|
+|System.Xml.Linq.XContainer|All|
+|System.Xml.Linq.XDeclaration|All|
 |System.Xml.Linq.XDocument|全部，除了：加载|
-|System.Xml.Linq.XDocumentType|全部|
-|System.Xml.Linq.XElement|全部|
-|System.Xml.Linq.XName|全部|
-|System.Xml.Linq.XNamespace|全部|
-|System.Xml.Linq.XNode|全部|
-|System.Xml.Linq.XNodeDocumentOrderComparer|全部|
-|System.Xml.Linq.XNodeEqualityComparer|全部|
-|System.Xml.Linq.XObject|全部|
-|System.Xml.Linq.XProcessingInstruction|全部|
-|System.Xml.Linq.XText|全部|
-|System.Xml.XmlNodeType|全部|
+|System.Xml.Linq.XDocumentType|All|
+|System.Xml.Linq.XElement|All|
+|System.Xml.Linq.XName|All|
+|System.Xml.Linq.XNamespace|All|
+|System.Xml.Linq.XNode|All|
+|System.Xml.Linq.XNodeDocumentOrderComparer|All|
+|System.Xml.Linq.XNodeEqualityComparer|All|
+|System.Xml.Linq.XObject|All|
+|System.Xml.Linq.XProcessingInstruction|All|
+|System.Xml.Linq.XText|All|
+|System.Xml.XmlNodeType|All|
 
 ## <a name="ContextVariables"></a> 上下文变量
 在每个策略[表达式](api-management-policy-expressions.md#Syntax)中均可隐式使用名为 `context` 的变量。 其成员提供与 `\request` 相关的信息。 所有 `context` 成员均为只读。
@@ -223,7 +224,7 @@ ms.locfileid: "70072174"
 |<a id="ref-context-user"></a>context.User|Email: 字符串<br /><br /> FirstName: 字符串<br /><br /> 组：IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: 字符串<br /><br /> 标识：IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: 字符串<br /><br /> Note: 字符串<br /><br /> RegistrationDate：DateTime|
 |<a id="ref-iapi"></a>IApi|Id: 字符串<br /><br /> Name: 字符串<br /><br /> Path: 字符串<br /><br /> 协议：IEnumerable<string\><br /><br /> ServiceUrl：[IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames：[ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|Id: 字符串<br /><br /> Name: 字符串|
-|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false):其中 T: string、byte []、JObject、JToken、JArray、System.xml.linq.xnode>、System.xml.linq.xelement>、XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Response.Body.As<T>` 方法用于读取请求和响应采用指定类型 `T` 的消息正文。 该方法默认使用原始消息正文流，并在返回后将其呈现为不可用。 要通过让该方法在正文流的副本上执行操作而避免这种情况，请将 `preserveContent` 参数设置为 `true`。 请转到[此处](api-management-transformation-policies.md#SetBody)查看示例。|
+|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false):其中 T 为 string、byte[]、JObject、JToken、JArray、XNode、XElement、XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Response.Body.As<T>` 方法用于读取请求和响应采用指定类型 `T` 的消息正文。 该方法默认使用原始消息正文流，并在返回后将其呈现为不可用。 要通过让该方法在正文流的副本上执行操作而避免这种情况，请将 `preserveContent` 参数设置为 `true`。 请转到[此处](api-management-transformation-policies.md#SetBody)查看示例。|
 |<a id="ref-iurl"></a>IUrl|Host: 字符串<br /><br /> Path: 字符串<br /><br /> Port: 整数<br /><br /> [查询](#ref-iurl-query)：IReadOnlyDictionary<string, string[]><br /><br /> QueryString: 字符串<br /><br /> Scheme: 字符串|
 |<a id="ref-iuseridentity"></a>IUserIdentity|Id: 字符串<br /><br /> Provider: 字符串|
 |<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Header: 字符串<br /><br /> Query: 字符串|

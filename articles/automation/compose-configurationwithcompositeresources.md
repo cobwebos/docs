@@ -10,16 +10,16 @@ ms.author: robreed
 ms.date: 08/21/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e153186a3917be3aa94cb663dec58bc3db46aae9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d9d16d9d9967af5bf8f9e13406e13d5637325f52
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850416"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243356"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>使用复合资源在 Azure Automation State Configuration (DSC) 中编译 DSC 配置
 
-当需要使用多个单个的所需状态配置 (DSC) 配置来托管资源时，最佳方法是使用[复合资源](/powershell/dsc/authoringresourcecomposite)。 复合资源是嵌套的参数化配置，在另一个配置中用作 DSC 资源。 这允许创建复杂配置，同时允许单独托管和构建基础复合资源（参数化配置）。
+当需要使用多个单个的所需状态配置 (DSC) 配置来托管资源时，最佳方法是使用[复合资源](/powershell/scripting/dsc/resources/authoringresourcecomposite)。 复合资源是嵌套的参数化配置，在另一个配置中用作 DSC 资源。 这允许创建复杂配置，同时允许单独托管和构建基础复合资源（参数化配置）。
 
 Azure 自动化可以[导入和编译复合资源](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources)。
 将复合资源导入自动化帐户后，即可在“状态配置 (DSC)”页面中使用撰写配置经验。
@@ -36,7 +36,7 @@ Azure 自动化可以[导入和编译复合资源](automation-dsc-compile.md#com
    ![撰写配置页面的基本部分的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
 1. 源代码步骤显示所选复合资源的组合配置。 可以看到所有参数的合并以及将它们传递给复合资源的方式。 查看所有新的源代码后，单击“下一步”或单击“参数”。
    ![撰写配置页面的源代码部分的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
-1. 在“参数”中，公开了每个复合资源所具有的参数，以便可以提供它们。 如果参数有说明，将显示在参数字段旁边。 如果某个字段是 PSCredential 类型的参数，要配置的下拉框会提供当前自动化帐户中 Credential 对象的列表。 此外还提供了一个 " **+ 添加凭据**" 选项。 提供所有必需的参数后，单击“保存和编译”。
+1. 在“参数”中，公开了每个复合资源所具有的参数，以便可以提供它们。 如果参数有说明，将显示在参数字段旁边。 如果某个字段是 PSCredential 类型的参数，要配置的下拉框会提供当前自动化帐户中 Credential 对象的列表。 还可以使用“+ 添加凭据”选项。 提供所有必需的参数后，单击“保存和编译”。
    ![撰写配置页面的参数部分的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
 保存新配置后，将它提交以进行编译。 可以像任何导入的配置一样查看编译作业的状态。 有关详细信息，请参阅[查看编译作业](automation-dsc-getting-started.md#viewing-a-compilation-job)。

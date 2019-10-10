@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: f1d5f97328af699cb7245212b709c750a970392a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 703b8b5732109faed1523c678af612e7fc8dab6d
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969522"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244089"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>创建新的 Dynamics 365 & PowerApps 产品/服务
 
@@ -25,7 +25,7 @@ ms.locfileid: "71969522"
 >[!Note]
 > 发布产品/服务后，将仅在系统中更新对合作伙伴中心提供的产品/服务，并在重新发布后存储。 进行更改后，请确保提交产品/服务进行发布。
 
-## <a name="create-a-new-offer"></a>创建新产品/服务
+## <a name="create-a-new-offer"></a>创建新套餐
 
 选择 " **+ 新建产品/服务**" 按钮，然后选择 " **Dynamics 365 for Customer Engagement & PowerApps** " 菜单项。 将显示 "**新建产品/服务**" 对话框。
 
@@ -85,7 +85,7 @@ ms.locfileid: "71969522"
 
 ## <a name="connect-lead-management"></a>连接潜在客户管理
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+[!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
 有关详细信息，请参阅[线索管理概述](./commercial-marketplace-get-customer-leads.md)。
 
@@ -134,7 +134,7 @@ ms.locfileid: "71969522"
 > [!NOTE]
 > 产品/服务列表内容（如描述、文档、屏幕截图、使用条款等）无需使用英语，只要提议说明以短语开头，"此应用程序仅在 [非英语语言] 中可用"。 还可以提供一个*有用的链接 URL*来提供与产品/服务列表内容中所用语言不同的内容。
 
-### <a name="name"></a>姓名
+### <a name="name"></a>名称
 
 你在此处输入的名称将作为产品/服务列表的标题向客户显示。 此字段预填充了你在创建产品/服务时为 "**产品/服务别名**" 输入的文本，但你可以更改此值。 此名称可能是商标字（并且你可以包括商标或版权符号）。 名称不能超过50个字符，并且不能包含任何表情符号。
 
@@ -177,7 +177,7 @@ ms.locfileid: "71969522"
 
 输入组织的隐私策略的 URL。 你需要负责确保你的应用符合隐私法律和法规，并提供有效的隐私策略。
 
-### <a name="contacts"></a>通讯录
+### <a name="contacts"></a>联系人
 
 在本部分中，你必须提供**支持联系人**和**工程联系人**的姓名、电子邮件和电话号码。 此信息不会向客户显示，但会提供给 Microsoft，并可提供给 CSP 合作伙伴。
 
@@ -195,7 +195,7 @@ ms.locfileid: "71969522"
 
 可以通过以下三种大小提供产品/服务的徽标：**Small （48 x 48）** 、**大型（216 x 216）** 和**宽（255 x 115）** 。 小型和大型大小是必需的。
 
-#### <a name="hero"></a>Hero
+#### <a name="hero"></a>英雄
 
 英雄映像是可选的。 如果提供了一个，则必须度量 815 x 290 像素。
 

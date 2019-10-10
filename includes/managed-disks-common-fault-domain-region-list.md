@@ -4,16 +4,16 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 40f0a667ffa23010ef00ed105454ab305171cc19
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 11924b44a51767df68372cd94c581b2feaa8ac25
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812491"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72247098"
 ---
 ### <a name="number-of-fault-domains-per-region"></a>每个区域的容错域数
 
-| 区域              | 最大容错域数  |
+| 地区              | 最大容错域数  |
 |---------------------|-------------------------|
 | East US             | 3                       |
 | 美国东部 2           | 3                       |
@@ -23,7 +23,7 @@ ms.locfileid: "67812491"
 | 美国中北部    | 3                       |
 | 美国中南部    | 3                       |
 | 美国中西部     | 2                       |
-| 加拿大中部      | 3                      |
+| 加拿大中部      | 3                       |
 | 加拿大东部         | 2                       |
 |                     |                         |
 | 北欧        | 3                       |
@@ -39,9 +39,14 @@ ms.locfileid: "67812491"
 | 印度中部       | 2                       |
 | 印度西部          | 2                       |
 | 韩国中部       | 2                       |
-| 韩国南部         | 2                       |
+| 韩国         | 2                       |
 | 阿拉伯联合酋长国北部           | 2                       |
 |                     |                         |
+| 中国东部          | 2                       |
+| 中国东部 2        | 2                       |
+| 中国北部         | 2                       |
+| 中国北部 2       | 2                       |
+|
 | 澳大利亚东部      | 2                       |
 | 澳大利亚东南部 | 2                       |
 | 澳大利亚中部   | 2                       |
@@ -49,8 +54,8 @@ ms.locfileid: "67812491"
 |                     |                         |
 | 巴西南部        | 2                       |
 |                     |                         |
-| 美国政府弗吉尼亚州     | 2                       |
-| 美国德克萨斯州政府        | 2                       |
-| 美国亚利桑那州政府      | 2                       |
+| US Gov 弗吉尼亚州     | 2                       |
+| US Gov 德克萨斯州        | 2                       |
+| US Gov 亚利桑那州      | 2                       |
 | 美国 DoD 中部      | 2                       |
 | 美国 DoD 东部         | 2                       |

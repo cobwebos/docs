@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 10/09/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 982996bdbc5e618cf90aa4b028c0585a7898f465
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 30fed5a75e368e9d87da54d4c75e6f69759813e7
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670960"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249286"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>通过 PowerShell 配置客户管理的密钥用于 Azure 存储加密
 
@@ -23,7 +23,7 @@ ms.locfileid: "71670960"
 本文介绍如何使用 PowerShell 配置包含客户管理的密钥的 Key Vault。
 
 > [!IMPORTANT]
-> 将客户管理的密钥用于 Azure 存储加密需要为 Key Vault 配置两个必需的属性：“软删除”和“不要清除”。 在 Azure 门户中创建新的 Key Vault 时，默认会启用这些属性。 但是，如果需要针对现有的 Key Vault 启用这些属性，必须使用 PowerShell 或 Azure CLI。
+> 将客户托管的密钥用于 Azure 存储加密要求在 key vault 上设置两个属性，**软删除**并不**清除**。 默认情况下不启用这些属性。 若要启用这些属性，请使用 PowerShell 或 Azure CLI。
 > 仅支持 RSA 密钥以及密钥大小 2048。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>将标识分配到存储帐户
@@ -67,7 +67,7 @@ Set-AzKeyVaultAccessPolicy `
     -PermissionsToKeys wrapkey,unwrapkey,get,recover
 ```
 
-## <a name="create-a-new-key"></a>创建新密钥
+## <a name="create-a-new-key"></a>新建密钥
 
 接下来，在 Key Vault 中创建新密钥。 若要创建新密钥，请调用 [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey)。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
 

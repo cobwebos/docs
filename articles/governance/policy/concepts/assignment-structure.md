@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 5326e765701a42323ea62df8d35128c4117b2ed9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a75c64ebb6ba3eeffeccd98cf41365fe96218573
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981421"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255893"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -24,7 +24,7 @@ ms.locfileid: "71981421"
 - metadata
 - 强制模式
 - 策略定义
-- 参数
+- parameters
 
 例如，以下 JSON 显示了具有动态参数的_DoNotEnforce_模式下的策略分配：
 
@@ -58,8 +58,7 @@ ms.locfileid: "71981421"
 
 ## <a name="enforcement-mode"></a>强制模式
 
-**EnforcementMode**属性使客户能够测试现有资源上的策略的结果，而无需在[Azure 活动日志](../../../azure-monitor/platform/activity-logs-overview.md)中启动策略效果或触发条目。
-这种情况通常称为 "What If"，并与安全部署做法保持一致。
+**EnforcementMode**属性使客户能够测试现有资源上的策略的结果，而无需在[Azure 活动日志](../../../azure-monitor/platform/activity-logs-overview.md)中启动策略效果或触发条目。 这种情况通常称为 "What If"，并与安全部署做法保持一致。 **enforcementMode**不同于[禁用](./effects.md#disabled)的效果，因为这种效果会阻止资源评估发生。
 
 此属性具有以下值：
 

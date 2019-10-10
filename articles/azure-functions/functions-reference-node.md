@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 62115dd519336c728b679e4e698182a50660a464
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 86bacbe22ce23fc4b0355374d81a96310e59178a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "68949890"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255012"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -421,7 +421,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 | Functions 版本 | Node.js 版本 | 
 |---|---|
 | 1.x | 6.11.2（运行时锁定） |
-| 2.x  | 活动 LTS 和维护 LTS Node.js 版本（建议使用 8.11.1 和 10.14.1）。 使用 WEBSITE_NODE_DEFAULT_VERSION [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)来设置版本。|
+| 2.x  | _ACTIVE LTS_ AND_维护 LTS_ node.js 版本（建议使用约10个）。 将 WEBSITE_NODE_DEFAULT_VERSION[应用设置](functions-how-to-use-azure-function-app-settings.md#settings)设为 `~10`，以在 Azure 中定位版本。|
 
 可以通过查看上述应用设置或打印任何函数的 `process.version` 来查看运行时正在使用的当前版本。
 
@@ -584,7 +584,7 @@ TypeScript 文件 (.ts) 转译为 `dist` 输出目录中的 JavaScript (.js) 文
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-使用 Core 工具时, TypeScript 项目与 JavaScript 项目有多种不同的方式。
+使用 Core Tools 时，TypeScript 项目与 JavaScript 项目有几种不同之处。
 
 #### <a name="create-project"></a>创建项目
 
@@ -594,9 +594,9 @@ TypeScript 文件 (.ts) 转译为 `dist` 输出目录中的 JavaScript (.js) 文
 
 - 运行 `func init --worker-runtime typescript` 命令。
 
-#### <a name="run-local"></a>运行本地
+#### <a name="run-local"></a>在本地运行
 
-若要使用核心工具在本地运行函数应用代码, 请使用以下命令而`func host start`不是: 
+若要使用 Core Tools 在本地运行函数应用代码，请使用以下命令而不是 `func host start`： 
 
 ```command
 npm install
@@ -612,16 +612,16 @@ npm start
 
 #### <a name="publish-to-azure"></a>发布到 Azure
 
-使用[`func azure functionapp publish`]命令部署到 Azure 之前, 可以从 TypeScript 源文件创建 JavaScript 文件的生产就绪版本。 
+在使用 [`func azure functionapp publish`] 命令部署到 Azure 之前，请基于 TypeScript 源文件创建一个随时可在生产环境中使用的 JavaScript 文件版本。 
 
-以下命令使用核心工具准备并发布 TypeScript 项目: 
+以下命令使用 Core Tools 准备和发布 TypeScript 项目： 
 
 ```command
 npm run build:production 
 func azure functionapp publish <APP_NAME>
 ```
 
-在此命令中, `<APP_NAME>`将替换为 function app 的名称。
+在此命令中，将 `<APP_NAME>` 替换为函数应用的名称。
 
 ## <a name="considerations-for-javascript-functions"></a>JavaScript 函数的注意事项
 

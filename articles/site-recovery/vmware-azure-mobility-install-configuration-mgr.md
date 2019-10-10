@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 35c317c4b73e9a22e3b0d6192abcfc2a596066b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ee92ad6e0687018f69044bf3edde76b9f98cee52
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598038"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255592"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>使用 System Center Configuration Manager 自动执行移动服务安装
 
@@ -26,7 +26,7 @@ ms.locfileid: "60598038"
 
 或者，可以使用 [Azure Automation DSC](vmware-azure-mobility-deploy-automation-dsc.md) 自动执行出行服务安装。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 1. 已在环境中部署的软件部署工具，例如 Configuration Manager。
 2. 应创建两个[设备集合](https://technet.microsoft.com/library/gg682169.aspx)，一个用于要使用 Site Recovery 保护的所有 **Windows 服务器**，另一个用于要保护的所有 **Linux 服务器**。
@@ -156,61 +156,58 @@ IF NOT %ERRORLEVEL% EQU 0 (
 ### <a name="create-a-package"></a>创建包
 
 1. 登录 Configuration Manager 控制台。
-2. 浏览到“软件库”   > “应用程序管理”   > “包”  。
-3. 右键单击“包”  ，然后选择“创建包”  。
+2. 浏览到“软件库” > “应用程序管理” > “包”。
+3. 右键单击“包”，然后选择“创建包”。
 4. 提供“名称”、“说明”、“制造商”、“语言”和“版本”的值。
-5. 选中“此包包含源文件”  复选框。
-6. 单击“浏览”  ，然后选择存储安装程序的网络共享 (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcWindows)。
+5. 选中“此包包含源文件”复选框。
+6. 单击“浏览”，然后选择存储安装程序的网络共享 (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcWindows)。
 
    ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
-7. 在“选择要创建的程序类型”  页上，选择“标准程序”  ，然后单击“下一步”  。
+7. 在“选择要创建的程序类型”页上，选择“标准程序”，然后单击“下一步”。
 
    ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
-8. 在“指定此标准程序的相关信息”  页上，提供以下输入，然后单击“下一步”  。 （其他输入可以使用其默认值。）
+8. 在“指定此标准程序的相关信息”页上，提供以下输入，然后单击“下一步”。 （其他输入可以使用其默认值。）
 
    | **参数名称** | **ReplTest1** |
    |--|--|
-   | Name | 安装 Microsoft Azure 移动服务 (Windows) |
+   | 名称 | 安装 Microsoft Azure 移动服务 (Windows) |
    | 命令行 | install.bat |
    | 程序可以运行 | 用户是否已登录 |
 
    ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
-9. 在下一页中，选择目标操作系统。 移动服务只能安装在 Windows Server 2012 R2、Windows Server 2012 和 Windows Server 2008 R2 上。
-
-   ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2.png)
-
-10. 要完成向导，请单击“下一步”  两次。
+9. 在下一页中，选择目标操作系统。 
+10. 要完成向导，请单击“下一步”两次。
 
 
 > [!NOTE]
 > 脚本支持移动服务代理的全新安装和已安装代理的更新。
 
 ### <a name="deploy-the-package"></a>部署包
-1. 在 Configuration Manager 控制台中，右键单击包，并选择“分发内容”  。
+1. 在 Configuration Manager 控制台中，右键单击包，并选择“分发内容”。
    ![Configuration Manager 控制台的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. 选择包应复制到的 **[分发点](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** 。
 3. 完成该向导。 包随后开始复制到指定的分发点。
-4. 完成包分发后，右键单击包，然后选择“部署”  。
+4. 完成包分发后，右键单击包，然后选择“部署”。
    ![Configuration Manager 控制台的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. 选择在先决条件部分中创建的 Windows Server 设备集合作为部署的目标集合。
 
    ![部署软件向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection.png)
 
-6. 在“指定内容目标”  页上，选择**分发点**。
-7. 在“指定设置以控制此软件的部署方式”  页上，确保目的为“必需”  。
+6. 在“指定内容目标”页上，选择**分发点**。
+7. 在“指定设置以控制此软件的部署方式”页上，确保目的为“必需”。
 
    ![部署软件向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
-8. 在“为此部署指定计划”  页中，指定计划。 有关详细信息，请参阅[计划包](https://technet.microsoft.com/library/gg682178.aspx)。
-9. 在“分发点”  页上，根据数据中心的需求配置属性。 然后完成向导。
+8. 在“为此部署指定计划”页中，指定计划。 有关详细信息，请参阅[计划包](https://technet.microsoft.com/library/gg682178.aspx)。
+9. 在“分发点”页上，根据数据中心的需求配置属性。 然后完成向导。
 
 > [!TIP]
 > 为了避免不必要的重新启动，请在每月的维护时段或软件更新时段计划包安装。
 
-可以使用 Configuration Manager 控制台监视部署进度。 转到“监视”   > “部署”   > “[包名称]”  。
+可以使用 Configuration Manager 控制台监视部署进度。 转到“监视” > “部署” > “[包名称]”。
 
   ![用于监视部署的 Configuration Manager 选项的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/report.PNG)
 
@@ -226,12 +223,12 @@ IF NOT %ERRORLEVEL% EQU 0 (
     `cd %ProgramData%\ASR\home\svsystems\bin`
 
     `genpassphrase.exe -v > MobSvc.passphrase`
-4. 将“MobSvc.passphrase”  文件复制到网络共享上的“MobSvcLinux”  文件夹。
+4. 将“MobSvc.passphrase” 文件复制到网络共享上的“MobSvcLinux”文件夹。
 5. 运行以下命令，浏览到配置服务器上的安装程序存储库：
 
    `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
-6. 将以下文件复制到网络共享上的“MobSvcLinux”  文件夹：
+6. 将以下文件复制到网络共享上的“MobSvcLinux”文件夹：
    * Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz
    * Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz
    * Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz
@@ -381,19 +378,19 @@ cd /tmp
 ### <a name="create-a-package"></a>创建包
 
 1. 登录 Configuration Manager 控制台。
-2. 浏览到“软件库”   > “应用程序管理”   > “包”  。
-3. 右键单击“包”  ，然后选择“创建包”  。
+2. 浏览到“软件库” > “应用程序管理” > “包”。
+3. 右键单击“包”，然后选择“创建包”。
 4. 提供“名称”、“说明”、“制造商”、“语言”和“版本”的值。
-5. 选中“此包包含源文件”  复选框。
-6. 单击“浏览”  ，然后选择存储安装程序的网络共享(\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux)。
+5. 选中“此包包含源文件”复选框。
+6. 单击“浏览”，然后选择存储安装程序的网络共享(\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux)。
 
    ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package-linux.png)
 
-7. 在“选择要创建的程序类型”  页上，选择“标准程序”  ，然后单击“下一步”  。
+7. 在“选择要创建的程序类型”页上，选择“标准程序”，然后单击“下一步”。
 
    ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
-8. 在“指定此标准程序的相关信息”  页上，提供以下输入，然后单击“下一步”  。 （其他输入可以使用其默认值。）
+8. 在“指定此标准程序的相关信息”页上，提供以下输入，然后单击“下一步”。 （其他输入可以使用其默认值。）
 
     | **参数名称** | **ReplTest1** |
    |--|--|
@@ -403,32 +400,32 @@ cd /tmp
 
    ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-linux.png)
 
-9. 在下一页中，选择“此程序可以在任何平台上运行”  。
+9. 在下一页中，选择“此程序可以在任何平台上运行”。
    ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2-linux.png)
 
-10. 要完成向导，请单击“下一步”  两次。
+10. 要完成向导，请单击“下一步”两次。
 
 > [!NOTE]
 > 脚本支持移动服务代理的全新安装和已安装代理的更新。
 
 ### <a name="deploy-the-package"></a>部署包
-1. 在 Configuration Manager 控制台中，右键单击包，并选择“分发内容”  。
+1. 在 Configuration Manager 控制台中，右键单击包，并选择“分发内容”。
    ![Configuration Manager 控制台的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. 选择包应复制到的 **[分发点](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** 。
 3. 完成该向导。 包随后开始复制到指定的分发点。
-4. 完成包分发后，右键单击包，然后选择“部署”  。
+4. 完成包分发后，右键单击包，然后选择“部署”。
    ![Configuration Manager 控制台的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. 选择在先决条件部分中创建的 Linux 服务器设备集合作为部署的目标集合。
 
    ![部署软件向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection-linux.png)
 
-6. 在“指定内容目标”  页上，选择**分发点**。
-7. 在“指定设置以控制此软件的部署方式”  页上，确保目的为“必需”  。
+6. 在“指定内容目标”页上，选择**分发点**。
+7. 在“指定设置以控制此软件的部署方式”页上，确保目的为“必需”。
 
    ![部署软件向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
-8. 在“为此部署指定计划”  页中，指定计划。 有关详细信息，请参阅[计划包](https://technet.microsoft.com/library/gg682178.aspx)。
-9. 在“分发点”  页上，根据数据中心的需求配置属性。 然后，完成向导。
+8. 在“为此部署指定计划”页中，指定计划。 有关详细信息，请参阅[计划包](https://technet.microsoft.com/library/gg682178.aspx)。
+9. 在“分发点”页上，根据数据中心的需求配置属性。 然后，完成向导。
 
 移动服务会根据配置的计划安装在 Linux 服务器设备集合上。
 

@@ -5,17 +5,17 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: 1317e900fd4448ded046ffea481313f8ea9f68e3
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409868"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256235"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>规划 Avere vFXT 系统
 
-本文介绍如何规划 Azure 定位并根据需要适当地设置大小的群集新 Avere vFXT。 
+本文介绍了如何为 Azure 群集规划新的 Avere vFXT，并根据需要调整其大小。 
 
 在访问 Azure 市场或创建任何 VM 之前，请考虑群集如何与 Azure 中的其他元素交互。 规划好要将群集资源定位在专用网络和子网中的哪个位置，并确定后端存储的位置。 确保创建的群集节点足够强大，可以支持自己的工作流。 
 
@@ -32,22 +32,22 @@ ms.locfileid: "60409868"
 * 应使用为 Avere vFXT 部署创建的新订阅来管理所有元素。 优势包括： 
   * 更简单的成本跟踪 - 在一个订阅中查看和审核由资源、基础结构和计算循环产生的所有成本。
   * 更轻松的清理 - 完成项目后，可以删除整个订阅。
-  * 方便分区资源的配额-保护其他关键工作负荷免受可能限制通过隔离 Avere vFXT 客户端和单个订阅中的群集的资源。 提供大量的高性能计算工作流的客户端时，这可以避免冲突。
+  * 方便地分区资源配额-通过将 Avere vFXT 客户端和群集隔离在单个订阅中，可保护其他关键工作负荷免受可能的资源限制。 这可以避免在为高性能计算工作流带来大量客户端时出现冲突。
 
 * 将客户端计算系统定位在靠近 vFXT 群集的位置。 后端存储可以位于较远的位置。  
 
-* VFXT 群集和群集控制器 VM 应位于同一资源组中，同一虚拟网络 (vnet) 中使用相同的存储帐户。 自动化的群集创建模板处理大多数情况下。
+* VFXT 群集和群集控制器 VM 应该位于同一个虚拟网络（vnet）中的同一资源组中，并使用相同的存储帐户。 在大多数情况下，自动群集创建模板会处理这种情况。
 
 * 群集必须位于其自身的子网中，以避免与客户端或计算资源发生 IP 地址冲突。 
 
-* 群集创建模板可以创建该群集，包括资源组、 虚拟网络、 子网，以及存储帐户的所需的基础结构资源的大多数。 如果你想要使用已存在的资源，请确保它们满足此表中的要求。 
+* 群集创建模板可以为群集创建大多数所需的基础结构资源，包括资源组、虚拟网络、子网和存储帐户。 如果要使用已存在的资源，请确保它们满足此表中的要求。 
 
-  | Resource | 使用现有？ | 要求 |
+  | Resource | 使用现有的？ | 要求 |
   |----------|-----------|----------|
-  | 资源组 | 是的如果为空 | 必须为空| 
-  | 存储帐户 | 如果创建群集后连接的现有 Blob 容器是 <br/>  如果在群集创建过程中创建新的 Blob 容器否 | 现有的 Blob 容器必须为空 <br/> &nbsp; |
-  | 虚拟网络 | 是 | 如果创建新的 Azure Blob 容器必须包含存储服务终结点 | 
-  | 子网 | 是 |   |
+  | 资源组 | 是，如果为空 | 必须为空| 
+  | 存储帐户 | 如果在创建群集后连接现有 Blob 容器，则为 "是" <br/>  如果在群集创建过程中创建新的 Blob 容器，则为否 | 现有 Blob 容器必须为空 <br/> &nbsp; |
+  | 虚拟网络 | 是 | 如果创建新的 Azure Blob 容器，则必须包含存储服务终结点 | 
+  | Subnet | 是 |   |
 
 ## <a name="ip-address-requirements"></a>IP 地址要求 
 
@@ -78,9 +78,9 @@ Avere vFXT 群集使用以下 IP 地址：
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_E32s_v3 | 32  | 256 GiB | 512 GiB  | 32 | 51,200 IOPS <br/> 768 MBps | 16,000 MBps (8)  |
 
-每个节点的磁盘缓存可配置，范围为 1000 GB 到 8000 GB。 每个节点的 4 TB 是 Standard_E32s_v3 节点的建议的缓存大小。
+每个节点的磁盘缓存可配置，范围为 1000 GB 到 8000 GB。 每个节点 4 TB 是 Standard_E32s_v3 节点的建议缓存大小。
 
-有关这些虚拟机的其他信息，请参阅 Microsoft Azure 文档：
+有关这些 Vm 的其他信息，请阅读 Microsoft Azure 文档：
 
 * [内存优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
 
@@ -124,7 +124,7 @@ Avere vFXT for Azure 群集位于专用子网中，并且该群集没有公用 I
 
 如果你在群集控制器上设置了公用 IP 地址，则可以使用它作为跳转主机来从专用子网外部联系 Avere vFXT 群集。 但是，因为控制器有权修改群集节点，这会带来小小的安全风险。  
 
-为了提高安全性具有公共 IP 地址的控制器，部署脚本会自动创建限制为仅端口 22 的入站的访问的网络安全组。 可以通过锁定对 IP 源地址范围的访问来进一步保护系统，换句话说，只允许从你打算将其用于群集访问的计算机进行连接。
+为了提高具有公共 IP 地址的控制器的安全性，部署脚本会自动创建一个网络安全组，该安全组限制对端口22的入站访问。 可以通过锁定对 IP 源地址范围的访问来进一步保护系统，换句话说，只允许从你打算将其用于群集访问的计算机进行连接。
 
 创建群集时，可以选择是否在群集控制器上创建公用 IP 地址。 
 
@@ -133,14 +133,14 @@ Avere vFXT for Azure 群集位于专用子网中，并且该群集没有公用 I
 
 ## <a name="vm-access-roles"></a>VM 访问角色 
 
-Azure 使用[基于角色的访问控制](../role-based-access-control/index.yml)(RBAC) 授权群集 Vm 执行某些任务。 例如，群集控制器需要授权才能创建和配置群集节点 Vm。 群集节点需要能够分配或重新分配到其他群集节点的 IP 地址。
+Azure 使用[基于角色的访问控制](../role-based-access-control/index.yml)（RBAC）来授权群集 vm 执行特定任务。 例如，群集控制器需要授权才能创建和配置群集节点 Vm。 群集节点需要能够向其他群集节点分配或重新分配 IP 地址。
 
-两个内置的 Azure 角色用于 Avere vFXT 虚拟机： 
+Avere vFXT 虚拟机使用了两个内置的 Azure 角色： 
 
-* 群集控制器使用的内置角色[Avere 参与者](../role-based-access-control/built-in-roles.md#avere-contributor)。 
-* 群集节点使用的内置角色[Avere 运算符](../role-based-access-control/built-in-roles.md#avere-operator)
+* 群集控制器使用内置角色[Avere 参与者](../role-based-access-control/built-in-roles.md#avere-contributor)。 
+* 群集节点使用内置角色[Avere 运算符](../role-based-access-control/built-in-roles.md#avere-operator)
 
-如果需要自定义 Avere vFXT 组件的访问权限角色，必须定义你自己的角色并向 Vm 中在创建时分配它。 不能在 Azure Marketplace 中使用部署模板。 查阅 Microsoft 客户服务和支持通过 Azure 门户中打开票证，如中所述[获取有关您的系统的帮助](avere-vfxt-open-ticket.md)。 
+如果需要自定义 Avere vFXT 组件的访问角色，则必须定义自己的角色，然后在创建 Vm 时将其分配给 Vm。 不能使用 Azure Marketplace 中的部署模板。 如通过[系统获取帮助](avere-vfxt-open-ticket.md)中所述，在 Azure 门户中打开票证，以咨询 Microsoft 客户服务和支持部门。 
 
 ## <a name="next-step-understand-the-deployment-process"></a>后续步骤：了解部署过程
 

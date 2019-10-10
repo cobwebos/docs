@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 5/8/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b79ed7ea3113f097f767ad7ff8bdc47b4e4916eb
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 338977c236ebb8f1b800eb6c28747a010e708300
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883567"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244217"
 ---
 # <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
@@ -58,11 +58,11 @@ HSM 用于存储以下加密功能使用的加密密钥，这些功能包括 SSL
 
 Microsoft 仅通过专用 HSM 服务提供 Gemalto SafeNet Luna 网络 HSM，不能托管客户提供的任何设备。
 
-### <a name="q-does-azure-dedicated-hsm-support-payment-pinetf-features"></a>问:Azure 专用 HSM 是否支持支付（PIN/ETF）功能？
+### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>问：Azure 专用 HSM 是否支持支付（引脚/EFT）功能？
 
-Azure 专用 HSM 服务使用 SafeNet Luna Network HSM 7（型号 A790）设备。 这些设备不支持付款 HSM 特定功能（例如 PIN 或 ETF）或认证。 如果希望 Azure 专用 HSM 服务在将来支持支付 Hsm，请将反馈传递给你的 Microsoft 客户代表。
+Azure 专用 HSM 服务使用 SafeNet Luna Network HSM 7（型号 A790）设备。 这些设备不支持特定于支付 HSM 的功能（如 PIN 或 EFT）或认证。 如果希望 Azure 专用 HSM 服务在将来支持支付 Hsm，请将反馈传递给你的 Microsoft 客户代表。
 
-### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>问:哪些 Azure 区域是专用的 HSM？
+### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>问：哪些 Azure 区域是专用的 HSM？
 
 从2019年3月晚晚些，专用 HSM 将在下面列出的14个区域中提供。 还规划了更多区域，可以通过 Microsoft 客户代表进行讨论。
 
@@ -122,7 +122,7 @@ PKCS#11、Java (JCA/JCE)、Microsoft CAPI、CNG 和 OpenSSL
 
 ### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>问：是否可将 Luna 5/6 HSM 中的密钥导入/迁移到 Azure 专用 HSM？
 
-是的。 请参阅 Gemalto 迁移指南。 
+是。 请参阅 Gemalto 迁移指南。 
 
 ## <a name="using-your-hsm"></a>使用 HSM
 
@@ -149,17 +149,17 @@ Azure 专用 HSM 是最适合迁移方案。 即，将已在使用 HSM 的本地
 
 ### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>问：客户是否可以获取专用 HSM 中 HSM 的完全独占控制权？
 
-是的。 每个 HSM 设备完全由一个客户专用，经预配或者更改管理员密码后，其他任何人都对它没有管理控制权。
+是。 每个 HSM 设备完全由一个客户专用，经预配或者更改管理员密码后，其他任何人都对它没有管理控制权。
 
 ### <a name="q-what-level-of-access-does-microsoft-have-to-my-hsm"></a>问：Microsoft 对我的 HSM 拥有哪种访问级别？
 
 Microsoft 对 HSM 没有任何管理或加密控制权。 但 Microsoft 确实拥有监视级别的访问权限，它可以通过串行端口连接来检索基本的遥测数据，例如温度和组件运行状况。 这样，Microsoft 便可以针对运行状况问题提供主动通知。 客户可根据需要禁用此帐户。
 
-### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>问:Microsoft 使用的 "tenantadmin" 帐户是什么，我曾使用 SafeNet Hsm 的管理员用户作为 "管理员" 吗？
+### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>问：Microsoft 使用的 "tenantadmin" 帐户是什么，我曾使用 SafeNet Hsm 的管理员用户作为 "管理员" 吗？
 
 HSM 设备附带了默认的 "管理员" 用户及其默认密码。 当任何设备处于等待由客户设置的池中时，Microsoft 不希望使用默认密码。 这不能满足我们的严格安全要求。 出于此原因，我们设置了在设置时放弃的强密码。 此外，在设置时，我们会在名为 "tenantadmin" 的管理员角色中创建一个新用户。 此用户具有默认密码，客户会将此作为首次登录到新设置的设备时的第一个操作。 此过程可确保高程度的安全性，并为我们的客户提供唯一的管理控制承诺。 应注意的是，如果客户首选使用该帐户，则可以使用 "tenantadmin" 用户重置管理员用户密码。 
 
-### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>问:Microsoft 或 Microsoft 的任何员工是否可以访问我的专用 HSM 中的密钥？
+### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>问：Microsoft 或 Microsoft 的任何员工是否可以访问我的专用 HSM 中的密钥？
 
 否。 Microsoft 对客户分配的专用 HSM 中存储的密钥没有任何访问权限。
 
@@ -181,19 +181,19 @@ HSM 设备附带了默认的 "管理员" 用户及其默认密码。 当任何�
 
 ### <a name="q-can-i-get-full-access-log-of-all-hsm-operations-from-dedicated-hsm"></a>问：是否可以全权访问专用 HSM 中所有 HSM 操作的日志？
 
-是的。 可将来自 HSM 设备的日志发送到 syslog 服务器
+是。 可将来自 HSM 设备的日志发送到 syslog 服务器
 
 ## <a name="high-availability"></a>高可用性
 
-### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>问:是否可以在同一区域或跨多个区域配置高可用性？
+### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>问：是否可以在同一区域或跨多个区域配置高可用性？
 
-是的。 高可用性配置和设置在 Gemalto 提供的 HSM 客户端软件中执行。 同一区域或跨区域的同一 VNET 中的 Hsm 或其他 Vnet 中的 Hsm，或者使用站点到站点或点到点 VPN 连接到 VNET 的本地 Hsm 可以添加到相同的高可用性配置。 应注意的是，这只同步密钥材料，而不同步特定的配置项目，如角色。
+是。 高可用性配置和设置在 Gemalto 提供的 HSM 客户端软件中执行。 同一区域或跨区域的同一 VNET 中的 Hsm 或其他 Vnet 中的 Hsm，或者使用站点到站点或点到点 VPN 连接到 VNET 的本地 Hsm 可以添加到相同的高可用性配置。 应注意的是，这只同步密钥材料，而不同步特定的配置项目，如角色。
 
-### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>问:是否可将本地网络中的 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
+### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>问：是否可将本地网络中的 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
 
-是的。 这些 HSM 必须符合 SafeNet Luna Network HSM 7 的高可用性要求。
+是。 这些 HSM 必须符合 SafeNet Luna Network HSM 7 的高可用性要求。
 
-### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>问:是否可将本地网络中的 Luna 5/6 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
+### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>问：是否可将本地网络中的 Luna 5/6 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
 
 否。
 
@@ -223,15 +223,15 @@ Azure 数据中心提供全面的物理和程序性安全控制。 除此之外�
 
 Microsoft 和 Gemalto 身份都提供支持。  如果你遇到了硬件或网络访问问题，请与 Microsoft 提出支持请求，如果你遇到 HSM 配置、软件和应用程序开发问题，请使用 Gemalto 身份提出支持请求。 如果有一个不确定的问题，请向 Microsoft 提出支持请求，然后可以根据需要执行 Gemalto 身份。 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>问:如何实现获取 SafeNet Luna 7 HSM 的客户端软件、文档和访问集成指南？
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>问：如何实现获取 SafeNet Luna 7 HSM 的客户端软件、文档和访问集成指南？
 
 注册服务后，将提供 Gemalto 身份客户 ID，允许在 Gemalto 身份客户支持门户中注册。 这样，便可以访问所有软件和文档，还可以直接使用 Gemalto 身份启用支持请求。
 
-### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>问:如果发现了安全漏洞，而 Gemalto 发布了相关的修补程序，由谁负责升级或修补 OS/固件？
+### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>问：如果发现了安全漏洞，而 Gemalto 发布了相关的修补程序，由谁负责升级或修补 OS/固件？
 
 Microsoft 无法连接到分配给客户的 HSM。 客户必须自行升级和修补其 HSM。
 
-### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>问:如果需要重新启动 HSM，会怎么样？
+### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>问：如果需要重新启动 HSM，会怎么样？
 
 HSM 具有命令行重启选项，但是，我们偶尔会遇到重新启动挂起问题，因此建议你向 Microsoft 提出支持请求，以便在物理上重新启动设备。 
 
@@ -267,13 +267,13 @@ HSM 具有命令行重启选项，但是，我们偶尔会遇到重新启动挂�
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>问：专用 HSM 是否已通过 FIPS 140-2 级别 3 验证？
 
-是的。 专用 HSM 服务将预配 SafeNet Network HSM 7 设备，这些设备使用 FIPS 140-2 级别 3 验证的 HSM。
+是。 专用 HSM 服务将预配 SafeNet Network HSM 7 设备，这些设备使用 FIPS 140-2 级别 3 验证的 HSM。
 
 ### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>问：如何确保在 FIPS 140-2 级别 3 验证模式下运行专用 HSM？
 
 专用 HSM 服务将预配 SafeNet Luna Network HSM 7 设备。 这些设备使用 FIPS 140-2 级别 3 验证的 HSM。 默认部署的配置、操作系统和固件也已通过 FIPS 验证。 无需采取任何措施即可符合 FIPS 140-2 级别 3 的要求。
 
-### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>问:客户如何确保在取消预配 HSM 时擦除所有密钥材料？
+### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>问：客户如何确保在取消预配 HSM 时擦除所有密钥材料？
 
 在请求取消预配之前，客户必须使用 Gemalto 提供的 HSM 客户端工具将 HSM 归零。
 
@@ -291,7 +291,7 @@ HSM 具有命令行重启选项，但是，我们偶尔会遇到重新启动挂�
 
 使用的 SafeNet Luna HSM 7 型号 A790 包含10个分区的许可证，以服务为代价。 设备的分区限制为100个，添加分区达到此限制将产生额外的许可成本，并要求在设备上安装新的许可证文件。
 
-### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>问:专用 HSM 支持多少个密钥？
+### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>问：专用 HSM 支持多少个密钥？
 
 最大键数是可用内存的函数。 使用的 SafeNet Luna 7 型号 A790 有 32 MB 内存。 如果使用非对称密钥，则以下数字也适用于密钥对。
 

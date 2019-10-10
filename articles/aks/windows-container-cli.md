@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 8e00053d5ce7c481b026d2fe0ce590d7b8799d8a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: ff4367194f06a8a6895c9c16252b01c3b94995d3
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075456"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241255"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>预览-使用 Azure CLI 在 Azure Kubernetes Service （AKS）群集上创建 Windows Server 容器
 
@@ -61,7 +61,7 @@ az feature register --name WindowsPreview --namespace Microsoft.ContainerService
 ```
 
 > [!NOTE]
-> 成功注册*WindowsPreview*功能标志后创建的任何 AKS 群集都将使用此预览版群集体验。 若要继续创建常规且完全受支持的群集, 请不要对生产订阅启用预览功能。 使用单独的测试或开发 Azure 订阅来测试预览功能。
+> 成功注册*WindowsPreview*功能标志后创建的任何 AKS 群集都将使用此预览版群集体验。 若要继续创建常规且完全受支持的群集，请不要对生产订阅启用预览功能。 使用单独的测试或开发 Azure 订阅来测试预览功能。
 
 完成注册需要几分钟时间。 使用[az feature list][az-feature-list]命令检查注册状态：
 
@@ -69,7 +69,7 @@ az feature register --name WindowsPreview --namespace Microsoft.ContainerService
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/WindowsPreview')].{Name:name,State:properties.state}"
 ```
 
-当注册状态为`Registered`时，按 ctrl-c 停止监视状态。  然后使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
+当注册状态为 `Registered` 时，按 Ctrl-c 停止监视状态。  然后使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -77,12 +77,12 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="limitations"></a>限制
 
-创建和管理支持多个节点池的 AKS 群集时, 有以下限制:
+创建和管理支持多个节点池的 AKS 群集时，有以下限制：
 
 * 成功注册*WindowsPreview*后，多个节点池可用于创建的群集。 如果为订阅注册*MultiAgentpoolPreview*功能，则还可以使用多个节点池。 在成功注册此功能之前，无法添加或管理已创建的现有 AKS 群集的节点池。
 * 不能删除第一个节点池。
 
-此功能处于预览阶段, 但以下附加限制适用:
+此功能处于预览阶段，但以下附加限制适用：
 
 * AKS 群集最多可以有8个节点池。
 * AKS 群集在这八个节点池中最多可以有400个节点。
@@ -141,7 +141,7 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
-    --vm-set-type VirtualMachineScaleSets \
+    --enable-vmss \
     --network-plugin azure
 ```
 
@@ -153,7 +153,7 @@ az aks create \
 
 ## <a name="add-a-windows-server-node-pool"></a>添加 Windows Server 节点池
 
-默认情况下，将使用可运行 Linux 容器的节点池创建 AKS 群集。 使用`az aks nodepool add`命令添加可运行 Windows Server 容器的其他节点池。
+默认情况下，将使用可运行 Linux 容器的节点池创建 AKS 群集。 使用 `az aks nodepool add` 命令添加可运行 Windows Server 容器的其他节点池。
 
 ```azurecli
 az aks nodepool add \
@@ -165,7 +165,7 @@ az aks nodepool add \
     --kubernetes-version 1.14.6
 ```
 
-上述命令将创建一个名为*npwin*的新节点池，并将其添加到*myAKSCluster*中。 创建节点池以运行 Windows Server 容器时，*节点-vm 大小*的默认值为*Standard_D2s_v3*。 如果选择设置*节点-vm 大小*的参数，请查看[受限 vm 大小][restricted-vm-sizes]的列表。 建议的最小大小为*Standard_D2s_v3*。 上面的命令还使用运行`az aks create`时创建的默认 vnet 中的默认子网。
+上述命令将创建一个名为*npwin*的新节点池，并将其添加到*myAKSCluster*中。 创建节点池以运行 Windows Server 容器时，*节点-vm 大小*的默认值为*Standard_D2s_v3*。 如果选择设置*节点-vm 大小*的参数，请查看[受限 vm 大小][restricted-vm-sizes]的列表。 建议的最小大小为*Standard_D2s_v3*。 上述命令也使用运行 @no__t 时创建的默认 vnet 中的默认子网。
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
 

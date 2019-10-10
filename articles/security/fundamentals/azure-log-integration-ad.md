@@ -16,12 +16,12 @@ ums.workload: na
 ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0820ca227a4d0e8c71ed3f35cd8fa2841163d38f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e7f3a9bc9aade5f8ade857e9c2f14f8e9898a7da
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727653"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244672"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>集成 Azure Active Directory 审核日志
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) 审核事件可以帮助识别 Azure Active Di
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure 日志集成的详细信息，请参阅：
 
-* [适用于 Azure 日志的 Microsoft Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)：此下载中心页提供有关 Azure 日志集成的详细信息、系统要求和安装说明。
+* [适用于 Azure 日志的 Microsoft Azure 日志集成](https://azure.microsoft.com/services/monitor/)：此下载中心页提供有关 Azure 日志集成的详细信息、系统要求和安装说明。
 * [Azure 日志集成简介](azure-log-integration-overview.md)：此文介绍 Azure 日志集成、其主要功能和工作原理。
 * [Azure 日志集成常见问题解答](azure-log-integration-faq.md)：本文回答了关于 Azure 日志的问题。
 * [Azure 诊断和 Azure 审核日志的新功能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/)：此博客文章介绍 Azure 审核日志和其他功能，可帮助你深入了解 Azure 资源的操作。

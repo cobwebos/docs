@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 68ae316dff1518dd8115006764c6cc3036f59e4a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: rohogue
+ms.openlocfilehash: fa6408d33504c6ac73eacec079e9c08acd4cece2
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299940"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255265"
 ---
 # <a name="plan-the-aggregated-namespace"></a>规划聚合命名空间
 
@@ -57,7 +57,7 @@ NFS 存储目标可以有多个虚拟命名空间路径，只要每个路径引�
 | *IP 地址或主机名* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP 地址或主机名* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-客户端应用程序可以装载缓存并轻松访问聚合的命名空间文件``/source``路径``/templates/sku798``、和``/templates/sku980``。
+客户端应用程序可以装载缓存并轻松访问聚合命名空间文件路径 ``/source``、``/templates/sku798`` 和 ``/templates/sku980``。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,19 +5,19 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 9fd9eaf1e62d063026e0e656346baaaade87064f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: c28189bf227a6a81ae9e72e889a0dc598cd7949e
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60410096"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256270"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere 群集 DNS 配置
 
 本节介绍配置 DNS 系统以对 Avere vFXT 群集进行负载均衡的基础知识。 
 
-本文档不包含有关在 Azure 环境中设置和管理 DNS 服务器的说明  。 
+本文档不包含有关在 Azure 环境中设置和管理 DNS 服务器的说明。 
 
 不要使用轮询 DNS 对 Azure 中的 vFXT 群集进行负载均衡，而是考虑使用手动方法在客户端装载时均匀分配 IP 地址。 [装载 Avere 群集](avere-vfxt-mount-clients.md)中描述了几种方法。 
 
@@ -41,8 +41,7 @@ ms.locfileid: "60410096"
 
 左侧显示群集虚拟服务器，IP 地址显示在右侧中间。 如图所示，使用 A 记录和指针配置每个客户端接入点。
 
-![Avere 分类轮循机制 DNS 关系图](media/avere-vfxt-rrdns-diagram.png) 
-<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
+@no__t 0Avere 群集循环 DNS 关系图 @ no__t-1<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 每个面向客户端的 IP 地址必须具有唯一的名称供群集内部使用。 （在此图中，为了清楚起见，将客户端 IP 命名为 vs1-client-IP- *，但在生产中，应使用更简洁的名称，如 client*。）
 
@@ -74,7 +73,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>群集 DNS 设置
 
-在“群集” > “管理网络设置”页面中指定 vFXT 群集使用的 DNS 服务器   。 该页面上的设置包括：
+在“群集” > “管理网络设置”页面中指定 vFXT 群集使用的 DNS 服务器。 该页面上的设置包括：
 
 * DNS 服务器地址
 * DNS 域名

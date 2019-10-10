@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 830be92d37f304598cca05c3ac80973158c38a59
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: rohogue
+ms.openlocfilehash: 098ed98c1680fa2ea38c377e9e34719ba778b175
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439970"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255036"
 ---
 # <a name="access-the-vfxt-cluster"></a>访问 vFXT 群集
 
@@ -29,15 +29,15 @@ ms.locfileid: "67439970"
 
 ## <a name="create-an-ssh-tunnel"></a>创建 SSH 隧道 
 
-可以创建 SSH 隧道从基于 Linux 的命令行或 Windows 10 客户端系统。 
+可以从基于 Linux 或 Windows 10 客户端系统的命令行创建 SSH 隧道。 
 
-使用 SSH 隧道与此窗体的命令： 
+使用具有以下格式的 SSH 隧道命令： 
 
-   ssh -L local_port:cluster_mgmt_ip:443 controller_username\@controller_public_IP 
+ssh -L local_port:cluster_mgmt_ip:443 controller_username\@controller_public_IP
 
 此命令通过群集控制器的 IP 地址连接到群集的管理 IP 地址。
 
-示例：
+例如：
 
 ```sh
 ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
@@ -55,13 +55,13 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
 * 如果你使用 VPN 或 ExpressRoute 来访问群集，请在浏览器中导航到群集管理 IP 地址。 示例： ``https://203.0.113.51``
 
-可能需要单击“高级”并确认是否可以安全地继续浏览该页面  ，具体取决于浏览器。
+可能需要单击“高级”并确认是否可以安全地继续浏览该页面，具体取决于浏览器。
 
 输入创建群集时提供的用户名 `admin` 和管理密码。
 
 ![填写了用户名“管理员”和密码的 Avere 登录页面的屏幕截图](media/avere-vfxt-gui-login.png)
 
-单击“登录”或在键盘上按 Enter  。
+单击“登录”或在键盘上按 Enter。
 
 ## <a name="next-steps"></a>后续步骤
 

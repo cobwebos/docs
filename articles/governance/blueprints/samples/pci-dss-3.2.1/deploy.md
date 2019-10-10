@@ -1,18 +1,18 @@
 ---
 title: 示例-DSS-DSS 3.2.1 蓝图-部署步骤
-description: 支付卡行业数据安全标准版3.2.1 蓝图示例的部署步骤。
+description: 支付卡行业数据安全标准 v2.0 蓝图蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: f95f9a592085fd93fba5e6b11a1a75609eb70295
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: fa409b873ea1dd0c0970ebc694ad68673df4d033
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980928"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248862"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>部署 PCI-X 3.2.1 蓝图蓝图示例
 
@@ -66,7 +66,7 @@ ms.locfileid: "71980928"
 
 1. 提供蓝图分配的参数值：
 
-   - 基本
+   - 基础
 
      - **订阅**：在蓝图示例副本所保存到的管理组中选择一个或多个订阅。 如果选择多个订阅，将使用输入的参数为每个订阅创建一个分配。
      - **分配名称**：系统会根据蓝图的名称预先填充该名称。
@@ -74,7 +74,7 @@ ms.locfileid: "71980928"
      - **位置**：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
      - **蓝图定义版本**：选择蓝图示例副本的**已发布**版本。
 
-   - 锁定分配
+   - 锁分配
 
      选择环境的蓝图锁定设置。 有关更多信息，请参阅[蓝图资源锁定](../../concepts/resource-locking.md)。
 

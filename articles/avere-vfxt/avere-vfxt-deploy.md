@@ -5,43 +5,43 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: v-erkell
-ms.openlocfilehash: 7ded66c29f12b8f68746726ca6c126bffbc51f0d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: 6ddf950bf2d138a94675ee394109a0d227ea206b
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60410209"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255453"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
 
-此过程详述如何使用 Azure 市场提供的部署向导。 此向导自动使用 Azure 资源管理器模板来部署群集。 在窗体中输入参数并单击“创建”后，  Azure 会自动完成以下步骤：
+此过程详述如何使用 Azure 市场提供的部署向导。 此向导自动使用 Azure 资源管理器模板来部署群集。 在窗体中输入参数并单击“创建”后，Azure 会自动完成以下步骤：
 
-* 创建群集控制器，这是基本的 VM，其中包含部署和管理群集所需的软件。
+* 创建群集控制器，该控制器是一个基本 VM，其中包含部署和管理群集所需的软件。
 * 设置资源组和虚拟网络基础结构，包括创建新元素。
-* 创建群集节点 Vm，并将它们配置为 Avere 群集。
-* 如果请求，创建新的 Azure Blob 容器，并将其配置为群集核心文件管理器。
+* 创建群集节点 Vm，并将其配置为 Avere 群集。
+* 如果请求，将创建一个新的 Azure Blob 容器，并将其配置为群集核心文件服务器。
 
-本文档中的说明进行操作后，将获得一个虚拟网络、 子网、 一个控制器和 vFXT 群集，如以下关系图中所示。 下图显示的可选 Azure Blob core 筛选器，其中包括新的 Blob 存储容器 （在新的存储帐户，不会显示） 和 Microsoft 存储空间的子网的服务终结点。 
+按照本文档中的说明操作后，你将拥有一个虚拟网络、一个子网、一个控制器和一个 vFXT 群集，如下图所示。 此图显示了可选的 Azure Blob 核心文件服务器，其中包括新的 Blob 存储容器（在新的存储帐户中，未显示）和子网中 Microsoft 存储的服务终结点。 
 
-![关系图显示三个同心矩形与 Avere 群集组件。 外部矩形标记为资源组，并包含标记为 Blob 存储 （可选） 六边形。 中的下一步矩形标记为虚拟网络：10.0.0.0/16，并且不包含任何独特的组件。 最内层矩形标记为 Subnet:10.0.0.0/24，并包含标记为群集控制器，堆栈的三个 Vm 标记为 vFXT 节点 （vFXT 群集），并标记为服务终结点六边形的 VM。 没有连接的服务终结点 （这是内部子网） 和 blob 存储 （这是外部的子网和 vnet 的资源组中） 的箭头。 通过子网和虚拟网络边界传递箭头。](media/avere-vfxt-deployment.png)  
+![显示具有 Avere 群集组件的三个同心圆矩形的关系图。 外部矩形标记为 "资源组"，包含标记为 "Blob 存储（可选）" 的六边形。 中的下一个矩形标记为 "虚拟网络：10.0.0.0/16，不包含任何唯一组件。 最内层的矩形标记为 "Subnet： 10.0.0.0/24"，其中包含标记为 "群集控制器" 的 VM、标记为 "vFXT 节点（vFXT Cluster）" 的三个 Vm 的堆栈以及标记为 "Service endpoint" 的六边形。 有一个箭头连接服务终结点（位于子网内）以及 blob 存储（位于子网和 vnet 之外的资源组中）。 箭头通过子网和虚拟网络边界。](media/avere-vfxt-deployment.png)  
 
 在使用创建模板之前，请确保已具备以下必备项：  
 
 1. [新订阅](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [订阅所有者权限](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [vFXT 群集的配额](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [存储服务终结点 （如果需要）](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) -必需的部署使用现有的虚拟网络和创建 blob 存储
+1. [存储服务终结点（如果需要）](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) -部署使用现有虚拟网络和创建 blob 存储所需的要求
 
 有关群集部署的步骤和计划的详细信息，请阅读[计划 Avere vFXT 系统](avere-vfxt-deploy-plan.md)和[部署概述](avere-vfxt-deploy-overview.md)。
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>创建 Avere vFXT for Azure
 
-通过 Avere 搜索并选择"Azure ARM 模板 Avere vFXT"访问 Azure 门户中的创建模板。 
+通过搜索 Avere 并选择 "Avere vFXT for Azure ARM 模板"，访问 Azure 门户中的创建模板。 
 
-![显示 Azure 门户的浏览器窗口（带有面包屑导航“新建>市场>所有内容”）。 在所有功能页上，搜索字段中术语"avere"和第二个结果，"Avere vFXT Azure ARM 模板"的边框为红色以突出显示它。](media/avere-vfxt-template-choose.png)
+![显示 Azure 门户的浏览器窗口（带有面包屑导航“新建>市场>所有内容”）。 在 "所有内容" 页中，搜索字段的字词为 "avere"，第二个结果为 "Avere vFXT for Azure ARM Template"，以红色突出显示。](media/avere-vfxt-template-choose.png)
 
-阅读有关 Azure ARM 模板页 Avere vFXT 的详细信息之后, 单击**创建**开始。 
+读取 Avere vFXT for Azure ARM 模板页上的详细信息后，单击 "**创建**" 以开始。 
 
 ![Azure 市场，显示部署模板的第一页](media/avere-vfxt-deploy-first.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "60410209"
 
 * **位置** - 选择群集和资源的 Azure 位置。
 
-完成后，单击“确定”。  
+完成后，单击“确定”。 
 
 > [!NOTE]
 > 如果希望群集控制器有一个面向公众的 IP 地址，请为群集创建一个新的虚拟网络，而不是选择一个现有的网络。 此设置在第二页上。
@@ -91,13 +91,13 @@ ms.locfileid: "60410209"
 
 * **Avere vFXT 群集名称** - 为群集提供唯一名称。 
 
-* **大小**-本部分介绍用于在群集节点的 VM 类型。 尽管只有一个推荐的选项，但**更改大小**链接将打开此实例类型和指向定价计算器的详细信息表。  
+* **大小**-此部分显示将用于群集节点的 VM 类型。 尽管只有一个推荐的选项，但 "**更改大小**" 链接会打开一个表，其中包含有关此实例类型的详细信息以及指向定价计算器的链接。  
 
 * **每个节点的缓存大小** - 群集缓存分布在多个群集节点上，因此 Avere vFXT 群集上的总缓存大小为每个节点的缓存大小乘以节点数。 
 
-  建议的配置是 Standard_E32s_v3 节点每个节点使用 4 TB。
+  建议的配置是将 Standard_E32s_v3 节点的每个节点使用 4 TB。
 
-* **虚拟网络**-定义新的 vnet 来存放该群集，或选择现有 vnet 满足先决条件中所述[规划 Avere vFXT 系统](avere-vfxt-deploy-plan.md#resource-group-and-network-infrastructure)。 
+* **虚拟网络**-定义新的 vnet 以容纳群集，或选择满足[Plan Avere vFXT 系统](avere-vfxt-deploy-plan.md#resource-group-and-network-infrastructure)中所述先决条件的现有 vnet。 
 
   > [!NOTE]
   > 如果创建新的 VNet，群集控制器就会有一个公共 IP 地址，供你访问新的专用网络。 如果选择现有的 VNet，则配置的群集控制器没有公共 IP 地址。 
@@ -107,25 +107,25 @@ ms.locfileid: "60410209"
   >  * 如果未在控制器上设置公共 IP 地址，则必须使用其他跳转主机、VPN 连接或 ExpressRoute 来访问群集。 例如，在已配置 VPN 连接的虚拟网络中创建控制器。
   >  * 如果创建具有公共 IP 地址的控制器，则应使用网络安全组保护控制器 VM。 默认情况下，Avere vFXT for Azure 部署会创建一个网络安全组，仅限对具有公共 IP 地址的控制器的端口 22 进行入站访问。 可以通过锁定对 IP 源地址范围的访问来进一步保护系统，换句话说，只允许从你打算将其用于群集访问的计算机进行连接。
 
-  部署模板还将配置新的 vnet 与 Azure Blob 存储的存储服务终结点和锁定为仅 Ip 从群集子网的网络访问控制。 
+  部署模板还会将新的 vnet 配置为使用 Azure Blob 存储的存储服务终结点，并且网络访问控制仅锁定为群集子网中的 Ip。 
 
 * **子网** - 从现有虚拟网络中选择一个子网，或者创建一个新的子网。 
 
-* **创建和使用 blob 存储**-选择**true**创建新的 Azure Blob 容器并将其配置为新的 Avere vFXT 群集的后端存储。 此选项还会创建新的存储帐户用作群集的群集子网内，Microsoft 存储服务终结点在同一资源组中。 
+* **创建和使用 blob 存储**-选择 " **true** " 可创建新的 Azure blob 容器，并将其配置为新的 Avere vFXT 群集的后端存储。 此选项还会在群集所在的同一个资源组中创建一个新的存储帐户，并在群集子网中创建一个 Microsoft 存储服务终结点。 
   
-  如果您提供的现有虚拟网络，它必须具有存储服务终结点，在创建群集之前。 (有关详细信息，请阅读[规划 Avere vFXT 系统](avere-vfxt-deploy-plan.md)。)
+  如果提供现有虚拟网络，则在创建群集之前，它必须具有存储服务终结点。 （有关详细信息，请参阅[计划 Avere vFXT 系统](avere-vfxt-deploy-plan.md)。）
 
   如果不希望创建新容器，请将此字段设置为 **false**。 在这种情况下，必须在创建群集后附加和配置存储。 有关说明，请参阅[配置存储](avere-vfxt-add-storage.md)。 
 
-* **（新）存储帐户**-如果创建新的 Azure Blob 容器中，输入新的存储帐户的名称。 
+* **（新）存储帐户**-如果要创建新的 Azure Blob 容器，请输入新存储帐户的名称。 
 
 ## <a name="validation-and-purchase"></a>验证和购买
 
-第三页汇总了配置和验证参数。 验证成功后，请单击“确定”按钮继续。  
+第三页概述配置并验证参数。 验证成功后，请单击“确定”按钮继续。 
 
 ![部署模板的第三页 - 验证](media/avere-vfxt-deploy-3.png)
 
-在第 4 页上，输入任何所需的联系信息，然后单击**创建**按钮以接受条款并创建 Azure 群集 Avere vFXT。 
+在第四页上，输入任何所需的联系信息，然后单击 "**创建**" 按钮接受条款并为 Azure 群集创建 Avere vFXT。 
 
 ![部署模板的第四页 - 条款和条件、“创建”按钮](media/avere-vfxt-deploy-4.png)
 
@@ -142,11 +142,11 @@ Avere vFXT 模板在创建完群集以后，会输出有关新群集的某些重
 
 1. 转到群集控制器的资源组。
 
-1. 在左侧单击“部署”，然后单击“microsoft-avere.vfxt-template”   。
+1. 在左侧单击“部署”，然后单击“microsoft-avere.vfxt-template”。
 
    ![资源组门户页面，其左侧选中“部署”，“部署名称”下的表中显示 microsoft-avere.vfxt-template](media/avere-vfxt-outputs-deployments.png)
 
-1. 在左侧，单击“输出”  。 复制每个字段中的值。 
+1. 在左侧，单击“输出”。 复制每个字段中的值。 
 
    ![输出页面，在标签右侧的字段中显示 SSHSTRING、RESOURCE_GROUP、LOCATION、NETWORK_RESOURCE_GROUP、NETWORK、SUBNET、SUBNET_ID、VSERVER_IPs 和 MGMT_IP 的值](media/avere-vfxt-outputs-values.png)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: eb4f0e26d1795abc3392e9736e71093fab79aae2
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 1bef73e6be4bdbe8828e1d20ea6e684759984627
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967934"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244636"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施 
 
@@ -42,7 +42,7 @@ ms.locfileid: "68967934"
 
 ## <a id="standard-authn-web-app"></a>考虑使用标准身份验证机制向 Web 应用程序进行身份验证
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web 应用程序 | 
 | **SDL 阶段**               | Build |  
@@ -53,7 +53,7 @@ ms.locfileid: "68967934"
 
 ## <a id="handle-failed-authn"></a>应用程序必须安全处理失败的身份验证方案
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web 应用程序 | 
 | **SDL 阶段**               | Build |  
@@ -64,7 +64,7 @@ ms.locfileid: "68967934"
 
 ## <a id="step-up-adaptive-authn"></a>启用升级或自适应身份验证
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web 应用程序 | 
 | **SDL 阶段**               | Build |  
@@ -75,7 +75,7 @@ ms.locfileid: "68967934"
 
 ## <a id="admin-interface-lockdown"></a>确保适当锁定管理界面
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web 应用程序 | 
 | **SDL 阶段**               | Build |  
@@ -86,7 +86,7 @@ ms.locfileid: "68967934"
 
 ## <a id="forgot-pword-fxn"></a>安全实施忘记密码功能
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web 应用程序 | 
 | **SDL 阶段**               | Build |  
@@ -97,18 +97,18 @@ ms.locfileid: "68967934"
 
 ## <a id="pword-account-policy"></a>确保实施密码和帐户策略
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web 应用程序 | 
 | **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不可用  |
 | **参考**              | 不可用  |
-| 详细信息 | <p>应该实施与组织策略和最佳做法相符的密码与帐户策略。</p><p>为了防范暴力破解和基于字典的猜测：必须实现强密码策略，确保用户创建复杂密码（例如，最小长度为 12 个字符，必须包含字母数字和特殊字符）。</p><p>可按以下方式实施帐户锁定策略：</p><ul><li>**软锁定：** 这可能是防止用户遭受暴力破解攻击的不错选项。 例如, 当用户输入错误密码三次时, 应用程序可能会将该帐户锁定一分钟, 以便减缓强行破解密码的过程, 从而使攻击者无法继续进行盈利。 如果要在此示例中实现硬锁定对策, 可以通过永久锁定帐户来实现 "DoS"。 或者，应用程序可以生成 OTP（一次性密码），并将其以带外方式（通过电子邮件、短信等）发送给用户。 另一种做法是在达到失败尝试次数的阈值后实施 CAPTCHA。</li><li>**硬锁定：** 每当检测到你的应用程序的攻击者, 并通过永久锁定其帐户, 直到响应团队有时间完成其辩论之前, 就应应用这种类型的锁定。 完成此过程后, 你可以决定向用户返回其帐户或对其采取进一步的法律操作。 这种方式可以防止攻击者进一步侵入应用程序和基础结构。</li></ul><p>为了防范针对默认与可预测帐户的攻击，请验证所有密钥和密码是否可替换，并且是否是在安装后生成或替换的。</p><p>如果应用程序必须自动生成密码，请确保生成的密码是随机的并具有高熵。</p>|
+| 详细信息 | <p>应该实施与组织策略和最佳做法相符的密码与帐户策略。</p><p>为了防范暴力破解和基于字典的猜测：必须实现强密码策略，确保用户创建复杂密码（例如，最小长度为 12 个字符，必须包含字母数字和特殊字符）。</p><p>可按以下方式实施帐户锁定策略：</p><ul><li>**软锁定：** 这可能是防止用户遭受暴力破解攻击的不错选项。 例如，当用户输入错误密码三次时，应用程序可能会将该帐户锁定一分钟，以便减缓强行破解密码的过程，从而使攻击者无法继续进行盈利。 如果要在此示例中实现硬锁定对策，可以通过永久锁定帐户来实现 "DoS"。 或者，应用程序可以生成 OTP（一次性密码），并将其以带外方式（通过电子邮件、短信等）发送给用户。 另一种做法是在达到失败尝试次数的阈值后实施 CAPTCHA。</li><li>**硬锁定：** 每当检测到你的应用程序的攻击者，并通过永久锁定其帐户，直到响应团队有时间完成其辩论之前，就应应用这种类型的锁定。 完成此过程后，你可以决定向用户返回其帐户或对其采取进一步的法律操作。 这种方式可以防止攻击者进一步侵入应用程序和基础结构。</li></ul><p>为了防范针对默认与可预测帐户的攻击，请验证所有密钥和密码是否可替换，并且是否是在安装后生成或替换的。</p><p>如果应用程序必须自动生成密码，请确保生成的密码是随机的并具有高熵。</p>|
 
 ## <a id="controls-username-enum"></a>实施控制来防止用户名枚举
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web 应用程序 | 
 | **SDL 阶段**               | Build |  
@@ -119,7 +119,7 @@ ms.locfileid: "68967934"
 
 ## <a id="win-authn-sql"></a>尽可能使用 Windows 身份验证连接到 SQL Server
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | 数据库 | 
 | **SDL 阶段**               | Build |  
@@ -130,7 +130,7 @@ ms.locfileid: "68967934"
 
 ## <a id="aad-authn-sql"></a>尽可能使用 Azure Active Directory 身份验证连接到 SQL 数据库
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | 数据库 | 
 | **SDL 阶段**               | Build |  
@@ -141,7 +141,7 @@ ms.locfileid: "68967934"
 
 ## <a id="authn-account-pword"></a>使用 SQL 身份验证模式时，确保对 SQL Server 实施帐户和密码策略
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | 数据库 | 
 | **SDL 阶段**               | Build |  
@@ -152,7 +152,7 @@ ms.locfileid: "68967934"
 
 ## <a id="autn-contained-db"></a>不要在包含的数据库中使用 SQL 身份验证
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | 数据库 | 
 | **SDL 阶段**               | Build |  
@@ -163,7 +163,7 @@ ms.locfileid: "68967934"
 
 ## <a id="authn-sas-tokens"></a>结合 SaS 令牌使用每个设备的身份验证凭据
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure 事件中心 | 
 | **SDL 阶段**               | Build |  
@@ -174,18 +174,18 @@ ms.locfileid: "68967934"
 
 ## <a id="multi-factor-azure-admin"></a>为 Azure 管理员启用 Azure 多重身份验证
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure 信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不可用  |
 | **参考**              | [什么是 Azure 多重身份验证？](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
-| **步骤** | <p>多重身份验证 (MFA) 是要求使用多种验证方法的身份验证方法，为用户登录和事务额外提供一层重要的安全保障。 它需要以下验证方法中的两种或更多种来进行工作：</p><ul><li>你知道的某样东西（通常为密码）</li><li>具有的某样东西（无法轻易复制的可信设备，如电话）</li><li>自身的特征（生物辨识系统）</li><ul>|
+| **步骤** | <p>多重身份验证 (MFA) 是要求使用多种验证方法的身份验证方法，为用户登录和事务额外提供一层重要的安全保障。 它需要以下验证方法中的两种或更多种来进行工作：</p><ul><li>您知道的信息（通常为密码）</li><li>您拥有的东西（不易被复制的受信任设备，如电话）</li><li>您的特征（生物识别）</li><ul>|
 
 ## <a id="anon-access-cluster"></a>限制对 Service Fabric 群集的匿名访问
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
@@ -196,7 +196,7 @@ ms.locfileid: "68967934"
 
 ## <a id="fabric-cn-nn"></a>确保 Service Fabric 的客户端到节点证书不同于节点到节点证书
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
@@ -207,7 +207,7 @@ ms.locfileid: "68967934"
 
 ## <a id="aad-client-fabric"></a>使用 AAD 向 Service Fabric 群集进行客户端身份验证
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
@@ -218,7 +218,7 @@ ms.locfileid: "68967934"
 
 ## <a id="fabric-cert-ca"></a>确保从批准的证书颁发机构 (CA) 获取 Service Fabric 证书
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Service Fabric 信任边界 | 
 | **SDL 阶段**               | 部署 |  
@@ -229,7 +229,7 @@ ms.locfileid: "68967934"
 
 ## <a id="standard-authn-id"></a>使用标识服务器支持的标准身份验证方案
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | 标识服务器 | 
 | **SDL 阶段**               | Build |  
@@ -240,7 +240,7 @@ ms.locfileid: "68967934"
 
 ## <a id="override-token"></a>使用可缩放的替代方案覆盖默认的标识服务器令牌缓存
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | 标识服务器 | 
 | **SDL 阶段**               | 部署 |  
@@ -251,7 +251,7 @@ ms.locfileid: "68967934"
 
 ## <a id="binaries-signed"></a>确保部署的应用程序的二进制文件经过数字签名
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
@@ -262,7 +262,7 @@ ms.locfileid: "68967934"
 
 ## <a id="msmq-queues"></a>连接到 WCF 中的 MSMQ 队列时启用身份验证
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | WCF | 
 | **SDL 阶段**               | Build |  
@@ -302,13 +302,13 @@ ms.locfileid: "68967934"
 
 ## <a id="message-none"></a>WCF - 不要将消息 clientCredentialType 设置为 none
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | WCF | 
 | **SDL 阶段**               | Build |  
 | **适用的技术** | .NET Framework 3 |
 | **属性**              | 客户端凭据类型 - None |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_message_client) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
 | **步骤** | 缺少身份验证意味着每个人都能访问此服务。 不对其客户端进行身份验证的服务允许所有用户访问。 将应用程序配置为对客户端凭据进行身份验证。 为此，可将消息 clientCredentialType 设置为 Windows 或 Certificate。 |
 
 ### <a name="example"></a>示例
@@ -318,13 +318,13 @@ ms.locfileid: "68967934"
 
 ## <a id="transport-none"></a>WCF - 不要将传输 clientCredentialType 设置为 none
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | WCF | 
 | **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、.NET Framework 3 |
 | **属性**              | 客户端凭据类型 - None |
-| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
+| **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
 | **步骤** | 缺少身份验证意味着每个人都能访问此服务。 不对其客户端进行身份验证的服务允许所有用户访问其功能。 将应用程序配置为对客户端凭据进行身份验证。 为此，可将传输 clientCredentialType 设置为 Windows 或 Certificate。 |
 
 ### <a name="example"></a>示例
@@ -334,7 +334,7 @@ ms.locfileid: "68967934"
 
 ## <a id="authn-secure-api"></a>确保使用标准身份验证技术保护 Web API
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Web API | 
 | **SDL 阶段**               | Build |  
@@ -345,7 +345,7 @@ ms.locfileid: "68967934"
 
 ## <a id="authn-aad"></a>使用 Azure Active Directory 支持的标准身份验证方案
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure AD | 
 | **SDL 阶段**               | Build |  
@@ -356,7 +356,7 @@ ms.locfileid: "68967934"
 
 ## <a id="adal-scalable"></a>使用可缩放的替代方案覆盖默认的 ADAL 令牌缓存
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure AD | 
 | **SDL 阶段**               | Build |  
@@ -367,7 +367,7 @@ ms.locfileid: "68967934"
 
 ## <a id="tokenreplaycache-adal"></a>确保使用 TokenReplayCache 防止 ADAL 身份验证令牌重放
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure AD | 
 | **SDL 阶段**               | Build |  
@@ -428,18 +428,18 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 ## <a id="adal-oauth2"></a>使用 ADAL 库来管理从 OAuth2 客户端发往 AAD（或本地 AD）的令牌请求
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure AD | 
 | **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型 |
 | **属性**              | 不可用  |
 | **参考**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
-| **步骤** | <p>通过 Azure AD 身份验证库 (ADAL)，客户端应用程序开发人员能够轻松利用云或本地 Active Directory (AD) 对用户进行身份验证，并获取访问令牌，以进行安全的 API 调用。</p><p>ADAL 提供许多可以方便开发人员进行身份验证的功能，例如，异步支持、用于存储访问令牌和刷新令牌的可配置令牌缓存、访问令牌过期时和提供刷新令牌时自动刷新令牌，等等。</p><p>ADAL 可以应对大部分复杂情况，因而可以帮助开发人员集中处理其应用程序中的业务逻辑，并可轻松保护资源而不必成为安全方面的专家。 适用于 .NET、JavaScript (客户端和 node.js)、Python、iOS、Android 和 Java 的单独库。</p>|
+| **步骤** | <p>通过 Azure AD 身份验证库 (ADAL)，客户端应用程序开发人员能够轻松利用云或本地 Active Directory (AD) 对用户进行身份验证，并获取访问令牌，以进行安全的 API 调用。</p><p>ADAL 提供许多可以方便开发人员进行身份验证的功能，例如，异步支持、用于存储访问令牌和刷新令牌的可配置令牌缓存、访问令牌过期时和提供刷新令牌时自动刷新令牌，等等。</p><p>ADAL 可以应对大部分复杂情况，因而可以帮助开发人员集中处理其应用程序中的业务逻辑，并可轻松保护资源而不必成为安全方面的专家。 适用于 .NET、JavaScript （客户端和 node.js）、Python、iOS、Android 和 Java 的单独库。</p>|
 
 ## <a id="authn-devices-field"></a>对连接到现场网关的设备进行身份验证
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | IoT 现场网关 | 
 | **SDL 阶段**               | Build |  
@@ -450,13 +450,13 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 ## <a id="authn-devices-cloud"></a>确保对连接到云网关的设备进行身份验证
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | IoT 云网关 | 
 | **SDL 阶段**               | Build |  
 | **适用的技术** | 泛型、C#、Node.JS,  |
 | **属性**              | 不适用，网关选项 - Azure IoT 中心 |
-| **参考**              | 不适用,[包含 .net 的 Azure IoT 中心](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/),[入门 Iot 中心和 NODE.JS](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted), 使用[SAS 和证书保护 IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [Git 存储库](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
+| **参考**              | 不适用，[包含 .net 的 Azure IoT 中心](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)，[入门 Iot 中心和 NODE.JS](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)，使用[SAS 和证书保护 IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)， [Git 存储库](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
 | **步骤** | <ul><li>**泛型：** 使用传输层安全性 (TLS) 或 IPSec 对设备进行身份验证。 如果设备无法处理完全非对称加密，则基础结构应该支持在这些设备上使用预共享密钥 (PSK)。 利用 Azure AD、Oauth。</li><li>**C#：** 创建 DeviceClient 实例时，Create 方法默认创建使用 AMQP 协议来与 IoT 中心通信的 DeviceClient 实例。 要使用 HTTPS 协议，请使用 Create 方法的重写，它可以让你指定协议。 如果使用 HTTPS 协议，则还应在项目中添加 `Microsoft.AspNet.WebApi.Client` NuGet 包，以包含 `System.Net.Http.Formatting` 命名空间。</li></ul>|
 
 ### <a name="example"></a>示例
@@ -550,7 +550,7 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="authn-cred"></a>使用每个设备的身份验证凭据
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | IoT 云网关  | 
 | **SDL 阶段**               | Build |  
@@ -561,7 +561,7 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="req-containers-anon"></a>确保只对所需的容器和 Blob 授予匿名读取访问权限
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure 存储 | 
 | **SDL 阶段**               | Build |  
@@ -572,7 +572,7 @@ await deviceClient.SendEventAsync(message);
 
 ## <a id="limited-access-sas"></a>使用 SAS 或 SAP 授予对 Azure 存储中的对象的受限访问权限
 
-| 标题                   | 详细信息      |
+| Title                   | 详细信息      |
 | ----------------------- | ------------ |
 | 组件               | Azure 存储 | 
 | **SDL 阶段**               | Build |  

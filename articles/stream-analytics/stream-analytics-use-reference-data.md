@@ -7,13 +7,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: 3bf90812abcef30b6bf300ba00ebd9f4186229cb
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.date: 10/8/2019
+ms.openlocfilehash: d058fdd48b8a271c8a2db7d327267de053c02c44
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000400"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244859"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 
@@ -36,8 +36,8 @@ ms.locfileid: "72000400"
 |存储帐户密钥   | 与存储帐户关联的密钥。 如果存储帐户的订阅与流分析作业相同，则自动填充此密钥。   |
 |存储容器   | 容器对存储在 Microsoft Azure Blob 服务中的 blob 进行逻辑分组。 将 blob 上传到 Blob 服务时，必须为该 blob 指定一个容器。   |
 |路径模式   | 用于对指定容器中的 blob 进行定位的路径。 在路径中，可以选择指定一个或多个使用以下 2 个变量的实例：<BR>{date}、{time}<BR>示例 1：products/{date}/{time}/product-list.csv<BR>示例 2：products/{date}/product-list.csv<BR>示例 3：product-list.csv<BR><br> 如果指定路径中不存在 blob，流分析作业将无限期地等待 blob 变为可用状态。   |
-|日期格式 [可选]   | 如果在指定的路径模式中使用了 {date}，则可从支持格式的下拉列表中选择组织 blob 所用的日期格式。<BR>例如：YYYY/MM/DD、MM/DD/YYYY，等等。   |
-|时间格式 [可选]   | 如果在指定的路径模式中使用了 {time}，则可从支持格式的下拉列表中选择组织 blob 所用的时间格式。<BR>例如：HH、HH/mm、或 HH-mm。  |
+|日期格式 [可选]   | 如果在指定的路径模式中使用了 {date}，则可从支持格式的下拉列表中选择组织 blob 所用的日期格式。<BR>示例：YYYY/MM/DD、MM/DD/YYYY，等等。   |
+|时间格式 [可选]   | 如果在指定的路径模式中使用了 {time}，则可从支持格式的下拉列表中选择组织 blob 所用的时间格式。<BR>示例：HH、HH/mm、或 HH-mm。  |
 |事件序列化格式   | 为确保查询按预计的方式运行，流分析需要了解你对传入数据流使用哪种序列化格式。 对于引用数据，所支持的格式是 CSV 和 JSON。  |
 |编码   | 目前只支持 UTF-8 这种编码格式。  |
 
@@ -91,7 +91,7 @@ Azure SQL 数据库参考数据由流分析作业进行检索并作为快照存�
 |**属性名称**|**说明**  |
 |---------|---------|
 |输入别名|一个友好名称会用于作业查询，以便引用此输入。|
-|订阅|选择你的订阅|
+|订阅|选择自己的订阅|
 |数据库|包含参考数据的 Azure SQL 数据库。 对于 Azure SQL 数据库托管实例，需要指定端口3342。 例如， *sampleserver、3342*的实例。|
 |用户名|与 Azure SQL 数据库关联的用户名。|
 |密码|与 Azure SQL 数据库关联的密码。|
@@ -105,7 +105,7 @@ Azure SQL 数据库参考数据由流分析作业进行检索并作为快照存�
 
 |**流单元数**  |**大约支持的最大大小（以 MB 为单位）**  |
 |---------|---------|
-|1   |50   |
+|第   |50   |
 |3   |150   |
 |至少 6   |300   |
 

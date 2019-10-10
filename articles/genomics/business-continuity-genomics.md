@@ -1,21 +1,21 @@
 ---
-title: 业务连续性 - Microsoft 基因组学 | Microsoft Docs
-titleSuffix: Azure
-description: 本概述介绍 Microsoft 基因组学针对业务连续性和灾难恢复所提供的功能。 了解在发生可能导致数据丢失的中断事件（如 Azure 区域中断）后进行恢复的选项。
+title: 业务连续性概述
+titleSuffix: Microsoft Genomics
+description: 本概述介绍 Microsoft 基因组学针对业务连续性和灾难恢复所提供的功能。
 keywords: 业务连续性, 灾难恢复
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/06/2018
-ms.openlocfilehash: 7a51477dbbf6f4e50959a6d979342961c7e49ad9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 28a4a53851155c56e8d34981862bf52a3a2cf15b
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60641103"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249181"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>使用 Microsoft 基因组学实现业务连续性的概述
 本概述介绍 Microsoft 基因组学针对业务连续性和灾难恢复所提供的功能。 了解在发生可能导致数据丢失的中断事件（如 Azure 区域中断）后进行恢复的选项。 
@@ -30,7 +30,7 @@ ms.locfileid: "60641103"
 
 
 ### <a name="manually-failover-microsoft-genomics-workflows-to-another-region"></a>手动将 Microsoft 基因组学工作流故障转移到另一个区域
-如果区域数据中心发生中断，可以选择根据单独的数据主权和业务连续性要求，在次要区域中提交 Microsoft 基因组学工作流。 若要手动故障转移 Microsoft 基因组学工作流，请使用不同的区域特定的 基因组学帐户，并使用相应的区域特定的基因组学和存储帐户凭据提交作业。
+如果发生区域数据中心中断，你可以选择根据你的个人数据主权和业务连续性要求在次要区域中提交 Microsoft 基因组学工作流。 若要手动故障转移 Microsoft 基因组学工作流，请使用不同的区域特定的 基因组学帐户，并使用相应的区域特定的基因组学和存储帐户凭据提交作业。
 
 具体而言，需要：
 * 使用 Azure 门户在次要区域中创建基因组学帐户。 

@@ -1,20 +1,20 @@
 ---
-title: 版本发布历史记录 - Microsoft 基因组学
-titleSuffix: Azure
-description: Microsoft 基因组学定期更新 Microsoft 基因组学 Python 客户端，以便提供修补程序和新的功能。
+title: 版本发行历史记录
+titleSuffix: Microsoft Genomics
+description: Microsoft 基因组学 Python 客户端更新的发布历史记录，用于修补程序和新功能。
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 2037bcf173951769f1627f809352ef60afce2d50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03bbbed53cd0494e8507a156d0fadac8dcd4297a
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780944"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249143"
 ---
 # <a name="version-release-history"></a>版本发行历史记录
 Microsoft 基因组学团队定期更新 Microsoft 基因组学 Python 客户端，以便提供修补程序和新的功能。 

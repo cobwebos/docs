@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 88305e5d877f5bc3cc7ebb116f69b0f49f162b79
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: 9684b230b8790e36cd7442c65481c0c71ce185d6
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409906"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255424"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT for Azure - 部署概述
 
@@ -44,11 +44,11 @@ vFXT 群集启动并运行后，需要知道如何将客户端连接到该群集
 
      群集控制器是驻留在 Avere vFXT 群集所在的同一虚拟网络中的简单 VM，它具有创建和管理群集时所需的自定义软件。 该控制器可创建 vFXT 节点并组建群集，此外，还提供一个命令行接口，用于在群集的整个生存期内对其进行管理。
 
-     如果在部署期间创建新的 vnet，请在控制器将具有一个公共 IP 地址。 这意味着该控制器可用作跳转主机连接到 vnet 的外部从群集。
+     如果在部署过程中创建新的 vnet，控制器将具有公共 IP 地址。 这意味着，控制器可以充当用于从 vnet 外部连接到群集的跳转主机。
 
    * 创建群集节点 VM
 
-   * 配置群集节点 Vm 来形成群集
+   * 将群集节点 Vm 配置为形成群集
 
    * （可选）创建新的 Blob 容器并将其配置为群集的后端存储
 

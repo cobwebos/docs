@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e4f0f81c5f135e885fe06d4fb4fa67514e8781b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8d202cb0cc2d073326a5bcc8fb0d540c232afa98
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988159"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240889"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成
 
@@ -36,7 +36,7 @@ ms.locfileid: "68988159"
 * 包含 Azure AD 活动日志的 Azure 事件中心。 了解如何[将活动日志流式传输到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 
 * ArcSight Syslog NG 守护程序 SmartConnector (SmartConnector) 或 ArcSight 负载均衡器的已配置实例。 如果事件发送到 ArcSight 负载均衡器，则它们会因此由负载均衡器发送到 SmartConnector。
 
-下载并打开[适用于 Azure Monitor 事件中心的 ArcSight SmartConnector 配置指南](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)。 本指南包含安装和配置适用于 Azure Monitor 的 ArcSight SmartConnector 所需的步骤。 
+下载并打开[适用于 Azure Monitor 事件中心的 ArcSight SmartConnector 配置指南](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)。 本指南包含安装和配置适用于 Azure Monitor 的 ArcSight SmartConnector 所需的步骤。 
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>将 Azure AD 日志与 ArcSight 集成
 

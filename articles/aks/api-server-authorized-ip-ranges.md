@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5819a6c6d73b2ee51fc72d2b56d99b0efb3ea0be
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058347"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241127"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的授权 IP 地址范围进行预览-安全访问 API 服务器
 
@@ -51,19 +51,19 @@ az extension update --name aks-preview
 若要使用 API 服务器授权的 IP 范围，请首先在订阅上启用功能标志。 若要注册*APIServerSecurityPreview*功能标志，请使用[az feature register][az-feature-register]命令，如以下示例中所示：
 
 > [!CAUTION]
-> 在订阅上注册功能时, 当前无法注册该功能。 启用某些预览功能后, 默认值可用于在订阅中创建的所有 AKS 群集。 不要对生产订阅启用预览功能。 使用单独的订阅来测试预览功能并收集反馈。
+> 在订阅上注册功能时，当前无法注册该功能。 启用某些预览功能后，默认值可用于在订阅中创建的所有 AKS 群集。 不要对生产订阅启用预览功能。 使用单独的订阅来测试预览功能并收集反馈。
 
 ```azurecli-interactive
 az feature register --name APIServerSecurityPreview --namespace Microsoft.ContainerService
 ```
 
-状态显示为“已注册”需要几分钟时间。 您可以使用[az feature list][az-feature-list]命令检查注册状态:
+状态显示为“已注册”需要几分钟时间。 您可以使用[az feature list][az-feature-list]命令检查注册状态：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/APIServerSecurityPreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后, 请使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册:
+准备就绪后，请使用[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -228,7 +228,7 @@ echo "Public IP address for the Azure Firewall instance that should be added to 
 
 使用[az aks update][az-aks-update]命令并指定 *--api-服务器授权的 ip 范围*以允许。 这些 IP 地址范围通常是本地网络所使用的地址范围。 添加在上一步中获取的自己的 Azure 防火墙的公共 IP 地址，例如*20.42.25.196/32*。
 
-以下示例在名为*myResourceGroup*的资源组中名为*myAKSCluster*的群集上启用 API 服务器授权的 IP 范围。 要授权的 IP 地址范围是*20.42.25.196/32* （Azure 防火墙公共 IP 地址），然后是*172.0.0.0/16*和*168.10.0.0/18*：
+以下示例在名为*myResourceGroup*的资源组中名为*myAKSCluster*的群集上启用 API 服务器授权的 IP 范围。 要授权的 IP 地址范围为*20.42.25.196/32* （Azure 防火墙公共 IP 地址）、 *172.0.0.0/16* （Pod/节点地址范围）和*168.10.0.0/18* （ServiceCidr）：
 
 ```azurecli-interactive
 az aks update \
@@ -236,6 +236,13 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
+
+> [!NOTE]
+> 应将这些范围添加到允许列表中：
+> - 防火墙公共 IP 地址
+> - 服务 CIDR
+> - 子网的地址范围，其中包含节点和盒
+> - 任何表示你要从中管理群集的网络的范围
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>更新或禁用授权的 IP 范围
 

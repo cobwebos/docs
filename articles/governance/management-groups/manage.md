@@ -1,17 +1,17 @@
 ---
-title: 如何更改、删除或管理管理组 - Azure 治理
+title: 如何使用管理组-Azure 调控
 description: 了解如何查看、维护、更新和删除管理组层次结构。
 author: rthorn17
 ms.service: governance
 ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 28bfabd5c28fe833050551e7be690c0ea3d1e6a0
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 57695157119b81580777c0581adccb267e7e9faa
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338942"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255929"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 

@@ -4,14 +4,14 @@ description: 列出可以在一个资源组中有 800 多个实例的 Azure 资�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6677290999049dead40f39e9a840735810c7c763
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0f9db618b69ff692350f333b8a4a4354f4980169
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973309"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249123"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
@@ -32,13 +32,13 @@ ms.locfileid: "71973309"
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
-* botServices-联系支持人员以扩展限制。
+* botServices-默认情况下，限于800实例。 可以通过联系支持人员来增加该限制。
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-* 磁盘
-* 映像
-* 快照
+* disks
+* images
+* snapshots
 * virtualMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
@@ -58,21 +58,21 @@ ms.locfileid: "71973309"
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
-* 服务器
+* servers
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
-* 服务器
+* servers
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 * serverGroups
-* 服务器
+* servers
 * serversv2
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
-* 服务
+* services
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
@@ -128,7 +128,7 @@ ms.locfileid: "71973309"
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* publicIPAddresses - 若要提高限制，请联系支持部门。
+* publicIPAddresses-默认情况下，限于800实例。 可以通过联系支持人员来增加该限制。
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
@@ -139,7 +139,7 @@ ms.locfileid: "71973309"
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
-* workspaceCollections - 若要提高限制，请联系支持部门。
+* workspaceCollections-默认情况下，限于800实例。 可以通过联系支持人员来增加该限制。
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
@@ -147,12 +147,12 @@ ms.locfileid: "71973309"
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
-* 应用程序
+* 服务
 * containerGroups
 * gateways
-* 网络
+* networks
 * 机密
-* 卷
+* volumes
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -161,7 +161,7 @@ ms.locfileid: "71973309"
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 * apiManagementAccounts/apis
-* 站点
+* sites
 
 ## <a name="next-steps"></a>后续步骤
 

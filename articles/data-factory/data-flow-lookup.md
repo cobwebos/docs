@@ -3,20 +3,17 @@ title: Azure 数据工厂映射数据流查找转换
 description: Azure 数据工厂映射数据流查找转换
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/03/2019
-ms.openlocfilehash: ef72b7aed12afd1cee47b11bc7584d1e53bf2af5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/03/2019
+ms.openlocfilehash: d762bddbe098e30cbf9e9c02da3c06073a358b12
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029342"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249254"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure 数据工厂映射数据流查找转换
-
-
 
 使用“查找”将其他源的参考数据添加到数据流中。 查找转换需要一个定义的源，它指向你的引用表并匹配关键字段。
 
@@ -24,7 +21,9 @@ ms.locfileid: "72029342"
 
 选择要在传入流字段和参考源字段之间匹配的关键字段。 必须先在数据流设计画布上创建一个新源，以在右侧用于查找。
 
-找到匹配项后，参考源中生成的行和列将添加到数据流中。 可以在数据流的末尾选择要包含在接收器中的感兴趣的字段。
+找到匹配项后，参考源中生成的行和列将添加到数据流中。 可以在数据流的末尾选择要包含在接收器中的感兴趣的字段。 或者，在查找时使用 "选择" 转换来修剪字段列表，以便仅保留两个流中要保留的字段。
+
+查找转换执行左外部联接的等效操作。 因此，你会看到左侧源中的所有行都与你的右侧的匹配项相结合。 如果在查找中有多个匹配值，或者如果想要自定义查找表达式，更可取的方法是切换到联接转换并使用交叉联接。 这将避免执行时出现笛卡尔积错误。
 
 ## <a name="match--no-match"></a>匹配/不匹配
 
@@ -38,7 +37,7 @@ ms.locfileid: "72029342"
 
 ### <a name="broadcast-join"></a>广播联接
 
-选择 "左" 和/或 "右" "向右广播" "请求 ADF"，将整个数据集从查找关系的两侧推送到内存。
+选择 "左" 和/或 "右" "向右广播" "请求 ADF"，将整个数据集从查找关系的两侧推送到内存。 对于较小的数据集，这可以极大地提高查找性能。
 
 ### <a name="data-partitioning"></a>数据分区
 

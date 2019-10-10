@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: e1ca6fa4ea1ae4a5bf5996e88d32e1e00416f067
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: rohogue
+ms.openlocfilehash: 7e29cbd202b32897026bed074743de543d3fd587
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299977"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254470"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC 缓存（预览）数据引入-手动复制方法
 
@@ -114,7 +114,7 @@ cp /mnt/source/file8* /mnt/destination3/ & \
 
 最后，当客户端的处理能力达到极限时，添加更多的复制线程或装入点不会进一步提高每秒文件数或每秒字节数。 在这种情况下，可以部署包含相同装入点集、运行自身文件复制进程集的另一个客户端。 
 
-例如：
+示例：
 
 ```bash
 Client1: cp -R /mnt/source/dir1/dir1a /mnt/destination/dir1/ &

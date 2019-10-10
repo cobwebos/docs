@@ -1,29 +1,29 @@
 ---
-title: Microsoft 基因组学：故障排除指南 | Microsoft Docs
-titleSuffix: Azure
-description: 详细了解故障排除策略
+title: 故障排除指南
+titleSuffix: Microsoft Genomics
+description: 了解有关使用 Microsoft 基因组学的故障排除策略。
 keywords: 故障排除, 错误, 调试
-services: microsoft-genomics
+services: genomics
 author: ruchir
 editor: jasonwhowell
 ms.author: ruchir
 ms.service: genomics
 ms.workload: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce8af4d444e642a8f67f43f8cf403ce9b2cb08ab
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790498"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248516"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
 下面提供了当你使用 Microsoft 基因组学服务 (MSGEN) 时可能会遇到的一些常见问题的故障排除提示。
 
  如需与故障排除无关的常见问题解答，请参阅[常见问题](frequently-asked-questions-genomics.md)。
-## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>步骤 1：找到与工作流关联的错误代码
+## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>步骤 1：查找与工作流关联的错误代码
 
 可通过以下方式查找与工作流关联的错误消息：
 
@@ -43,7 +43,7 @@ msgen status -u URL -k KEY -w ID
 
 * URL - API 的基本 URI
 * 密钥 - 基因组学帐户的访问密钥
-    * 若要查找 URL 和密钥，请转到 Azure 门户并打开 Microsoft 基因组学帐户页。 在“管理”标题下方，选择“访问密钥”   。 可在此处找到 API URL 和访问密钥。
+    * 若要查找 URL 和密钥，请转到 Azure 门户并打开 Microsoft 基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
 
   
 * ID - 工作流 ID
@@ -93,14 +93,14 @@ msgen status -w 1001 -f "config.txt"
 若要进行故障排除，请检查 standardoutput.txt 的内容，并记下出现的任何错误消息。
 
 
-## <a name="step-2-try-recommended-steps-for-common-errors"></a>步骤 2：提供常见错误的建议步骤的重试
+## <a name="step-2-try-recommended-steps-for-common-errors"></a>步骤 2：尝试常见错误的建议步骤
 
 本部分简要描述 Microsoft 基因组学服务 (msgen) 输出的常见错误，以及可用于解决这些错误的策略。 
 
 Microsoft 基因组学服务 (msgen) 可能引发以下两种类型的错误：
 
-1. 内部服务错误：通过修复参数或输入的文件可能未解析的服务的内部错误。 有时，重新提交工作流可能会解决这些错误。
-2. 输入的错误：通过使用正确的参数或修复文件格式，可以解决的错误。
+1. 内部服务错误：服务内部的错误，可能无法通过修复参数或输入文件进行解析。 有时，重新提交工作流可能会解决这些错误。
+2. 输入错误：使用正确的参数或修复文件格式可以解决的错误。
 
 ### <a name="1-internal-service-errors"></a>1.内部服务错误
 
@@ -137,7 +137,7 @@ Microsoft 基因组学服务 (msgen) 可能引发以下两种类型的错误：
 | FASTQ        | 308        |  FASTQ 读取错误。 两端的读取以不同的方式做出了响应。 是否选择了正确的 FASTQ 文件?                                                                                       | 请更正 FASTQ 文件的格式，然后重新提交工作流。                                                                         |
 |        |       |                                                                                        |                                                                           |
 
-## <a name="step-3-contact-microsoft-genomics-support"></a>步骤 3：请联系 Microsoft 基因组学支持人员
+## <a name="step-3-contact-microsoft-genomics-support"></a>步骤 3：联系 Microsoft 基因组学支持人员
 
 如果作业继续失败或有任何其他疑问，请通过 Azure 门户与 Microsoft 基因组学支持人员联系。 可从[此处](file-support-ticket-genomics.md)找到有关如何提交支持请求的更多信息。
 

@@ -1,6 +1,6 @@
 ---
-title: 身份验证方法使用情况和见解报告 （预览版）-Azure Active Directory
-description: 报告 Azure AD 自助服务密码重置和多重身份验证身份验证方法使用情况
+title: '& Insights 报告（预览版）的身份验证方法用法-Azure Active Directory'
+description: 报告 Azure AD 自助服务密码重置和多重身份验证方法使用情况
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,93 +11,91 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0f6a74308f1bc4a7b77576fb9f39f965de0a4f8
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: ddfea07989f52c463816318276fd5b6643cb2041
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561031"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255065"
 ---
-# <a name="authentication-methods-usage--insights-preview"></a>身份验证方法使用情况和见解 （预览）
+# <a name="authentication-methods-usage--insights-preview"></a>身份验证方法用法 & insights （预览版）
 
-根据使用情况和见解，可了解你的组织中的功能，如 Azure 多重身份验证和自助服务密码重置的身份验证方法的工作方式。 此报告功能提供了您的组织使用来了解正在注册哪些方法以及如何使用它们的方式。
+使用情况 & insights 使你能够了解 Azure 多重身份验证和自助服务密码重置等功能的身份验证方法在你的组织中的工作方式。 此报告功能为您的组织提供了一种了解哪些方法正在注册以及如何使用它们的方法。
 
 ## <a name="permissions-and-licenses"></a>权限和许可证
 
-使用情况和见解，可以访问以下角色：
+以下角色可以访问使用情况和见解：
 
 - 全局管理员角色
 - 安全读取者
 - 安全管理员
 - 报告读者
 
-没有额外的许可，则需要访问的使用情况和见解。 Azure 多重身份验证和自助服务密码重置 (SSPR) 授权信息，可[Azure Active Directory 定价站点](https://azure.microsoft.com/pricing/details/active-directory/)。
+访问使用情况和见解不需要额外的许可。 Azure 多重身份验证和自助密码重置（SSPR）许可信息可在[Azure Active Directory 定价站点](https://azure.microsoft.com/pricing/details/active-directory/)上找到。
 
 ## <a name="how-it-works"></a>工作原理
 
 若要访问身份验证方法使用情况和见解：
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory** > **密码重置** > **根据使用情况和见解**。
-1. 从**注册**或**用法**概述，可以选择以打开预筛选报表以筛选根据你的需求。
+1. 浏览到**Azure Active Directory**@no__t 的**密码重置** > **用法 & insights**。
+1. 从**注册**或**使用情况**概述中，你可以选择打开预先筛选的报表以根据你的需要进行筛选。
 
-![根据使用情况和见解概述](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
+![使用情况 & 见解概述](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-若要直接访问使用情况和见解，请转到[ https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade)。 此链接将转到注册概述。
+若要直接访问 insights &，请参阅[https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade)。 此链接将显示注册概述。
 
-用户已注册，用户启用，并且用户能够磁贴显示你的用户的以下注册数据：
+已注册的用户、启用的用户和支持用户的磁贴会显示用户的以下注册数据：
 
-- 注册：用户是被视为已注册如果他们 （或管理员） 已注册足够的身份验证方法，以满足您组织的 SSPR 或多重身份验证策略。
-- 已启用:将用户视为启用是否 SSPR 策略的作用域。 如果组已启用 SSPR，用户被视为已启用它们是否在该组中。 如果 （不包括来宾） 的租户中的所有用户都被视为已启用，将为所有用户启用 SSPR。
-- 支持：如果它们是已注册和启用，用户被视为支持。 此状态表示，他们可以执行 SSPR 随时根据需要。
+- 注册如果用户（或管理员）已注册了足够的身份验证方法来满足组织的 SSPR 或多重身份验证策略，则会将该用户视为已注册用户。
+- 已启用:如果用户在 SSPR 策略范围内，则认为该用户处于启用状态。 如果为某个组启用了 SSPR，则如果用户在该组中，则认为该用户处于启用状态。 如果为所有用户启用了 SSPR，则租户中的所有用户（不包括来宾）都将被视为已启用。
+- 能够如果用户已注册并处于启用状态，则会将该用户视为能够使用。 此状态意味着它们可以在需要时随时执行 SSPR。
 
-单击任何磁贴或它们所示的见解将使注册详细信息的预筛选列表。
+单击其中的任何磁贴或其中显示的见解会将你带到预筛选的注册详细信息列表。
 
-**登记**图表上**注册**选项卡显示了成功和失败的身份验证数方法注册的身份验证方法。 **重置**图表上**用法**选项卡显示成功数和在密码的身份验证失败的身份验证方法重置流。
+"**注册**" 选项卡上的 **"注册" 图表显示**通过身份验证方法进行的身份验证方法注册失败和失败的次数。 "**使用情况**" 选项卡上的 "**重置**图表" 会显示通过身份验证方法进行密码重置流时的身份验证成功和失败的次数。
 
-单击图表的任何一个将转到相应的注册预筛选列表或重置事件。
+单击其中一个图表将显示注册或重置事件的预筛选列表。
 
-使用中左上、 右上角的控件，可以更改为 24 小时、 7 天或 30 天的注册和重置图表中显示的审核数据的日期范围。
-
-从注册数据 
+使用右上角的控件，可以更改注册中显示的审核数据的日期范围，并将图表重置为24小时、7天或30天。
 
 ### <a name="registration-details"></a>注册详细信息
 
-单击**注册的用户**，**已启用的用户**，或**用户能够**磁贴或见解可转到注册详细信息。
+单击注册的**用户**、**启用**的用户或**支持**的磁贴或见解的用户将会获得注册详细信息。
 
-注册详细信息报表显示每个用户的以下信息：
-
-- Name
-- 用户名
-- 注册状态，所有已注册的 (未注册）
-- 已启用状态 （所有，已启用，未启用）
-- 支持的状态 (所有，能够，不支持)
-- 方法 （应用通知、 应用程序代码、 电话呼叫、 短信、 电子邮件，安全问题）
-
-在列表的顶部使用的控件，可以搜索用户和筛选的基础显示的列的用户列表。
-
-### <a name="reset-details"></a>重置的详细信息
-
-单击注册或重置图表上将使重置的详细信息。
-
-重置的详细信息报告显示从包括在过去 30 天的注册和重置事件：
+"注册详细信息" 报表显示每个用户的以下信息：
 
 - 名称
 - 用户名
-- （所有注册，重置） 的功能
-- 身份验证方法 （应用通知、 应用程序代码、 电话、 办公呼叫、 短信、 电子邮件，安全问题）
-- 状态 （全部，如果成功，失败）
+- 注册状态（所有、已注册、未注册）
+- 启用状态（"全部"、"已启用"、"未启用"）
+- 支持的状态（全部、功能、不支持）
+- 方法（应用通知、应用代码、电话呼叫、短信、电子邮件、安全问题）
 
-在列表的顶部使用的控件，可以搜索用户和筛选的基础显示的列的用户列表。
+使用列表顶部的控件，可以搜索用户并根据显示的列筛选用户列表。
+
+### <a name="reset-details"></a>重置详细信息
+
+单击注册或重置图表会显示重置详细信息。
+
+"重置详细信息" 报告显示过去30天内的注册和重置事件，其中包括：
+
+- 名称
+- 用户名
+- 功能（全部、注册、重置）
+- 身份验证方法（应用通知、应用代码、电话呼叫、办公室电话、短信、电子邮件、安全问题）
+- 状态（全部、成功、失败）
+
+使用列表顶部的控件，可以搜索用户并根据显示的列筛选用户列表。
 
 ## <a name="limitations"></a>限制
 
-这些报表中显示的数据将最多 60 分钟的时间延迟。 若要确定你的数据的最近在 Azure 门户中存在的"上次刷新时间"字段。
+这些报告中显示的数据将延迟达60分钟。 "上次刷新时间" 字段存在于 Azure 门户中，用于识别最近的数据的方式。
 
-使用情况和见解的数据不是替换为 Azure 多重身份验证活动报告或 Azure AD 登录报告中包含的信息。
+使用情况和见解数据并不能替代 Azure 多重身份验证活动报告或 Azure AD 登录报告中包含的信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用身份验证方法使用情况报告 API](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
-- [选择你的组织的身份验证方法](concept-authentication-methods.md)
-- [结合使用注册体验](concept-registration-mfa-sspr-combined.md)
+- [使用身份验证方法使用情况报表 API](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [为你的组织选择身份验证方法](concept-authentication-methods.md)
+- [组合注册体验](concept-registration-mfa-sspr-combined.md)

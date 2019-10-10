@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b53cb65ec99637dadb16ed9d97c495571be956d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4512b79873d7f770b32a452a02c53bc5575bdac
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61073875"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243607"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>用例：使用 Automation State Configuration 和 Chocolatey 持续部署到虚拟机
 
@@ -36,7 +36,7 @@ DevOps 领域中有许多工具可帮助你处理持续集成管道中的各个�
 [apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) 之类的包管理器在 Linux 领域耳熟能详，但在 Windows 领域并不被大家所熟悉。
 [Chocolatey](https://chocolatey.org/) 就是这样一个工具，Scott Hanselman 的有关该工具主题的[博客](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx)对此工具进行了深入介绍。 简单的说，Chocolatey 可让你使用命令行从包的中央存储库将包安装到 Windows 系统。 可以创建和管理自己的存储库，Chocolatey 可以从指定的任何数量的存储库来安装包。
 
-Desired State Configuration (DSC)（[概述](/powershell/dsc/overview)）是一个 PowerShell 工具，可使用它为计算机声明所需的配置。 例如，可以说“我想要安装 Chocolatey、我想要安装 IIS、我想要打开端口 80、我想要安装网站 1.0.0 版”。 DSC 本地配置管理器 (LCM) 实现该配置。 DSC“拉”服务器有一个存储库用于保存计算机的配置。 每台计算机上的 LCM 定期检查计算机的配置是否与存储的配置匹配。 它可以报告状态，也可以尝试让计算机恢复到与存储的配置匹配。 可以编辑“拉”服务器上存储的配置，使一台计算机或一组计算机与更改的配置匹配。
+Desired State Configuration (DSC)（[概述](/powershell/scripting/dsc/overview/overview)）是一个 PowerShell 工具，可使用它为计算机声明所需的配置。 例如，可以说“我想要安装 Chocolatey、我想要安装 IIS、我想要打开端口 80、我想要安装网站 1.0.0 版”。 DSC 本地配置管理器 (LCM) 实现该配置。 DSC“拉”服务器有一个存储库用于保存计算机的配置。 每台计算机上的 LCM 定期检查计算机的配置是否与存储的配置匹配。 它可以报告状态，也可以尝试让计算机恢复到与存储的配置匹配。 可以编辑“拉”服务器上存储的配置，使一台计算机或一组计算机与更改的配置匹配。
 
 Azure 自动化是 Microsoft Azure 中的托管服务，可让你使用 Runbook、节点、凭据、资源以及计划和全局变量之类的资产，将各种任务自动化。
 Azure Automation State Configuration 扩展了此自动化功能，包含 PowerShell DSC 工具。 下面是全面的[概述](automation-dsc-overview.md)。
@@ -51,7 +51,7 @@ Resource Manager 模板以声明方式生成基础结构，例如网络、子网
 ## <a name="quick-trip-around-the-diagram"></a>示意图速览
 
 首先，需要编写、生成和测试代码，然后创建安装包。
-Chocolatey 可以处理各种类型的安装包，例如 MSI、MSU、ZIP。 如果 Chocolatey 的本机功能不足以满足需要，还有 PowerShell 的完整功能可执行实际安装。 将包放入某个地方访问 – 包存储库。 本用例使用 Azure Blob 存储帐户中的公共文件夹，但它可以位于任何位置。 Chocolatey 原生可配合 NuGet 服务器和其他某些工具一起管理包元数据。 [本文](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed)介绍了相应的选项。 本用例使用 NuGet。 Nuspec 是包的元数据。 Nuspec 将“编译”成 NuPkg，然后存储在 NuGet 服务器中。 当配置按名称请求某个包并引用 NuGet 服务器时，Chocolatey DSC 资源（现在位于 VM 中）将获取并安装包。 也可以请求特定版本的包。
+Chocolatey 可以处理各种类型的安装包，例如 MSI、MSU、ZIP。 如果 Chocolatey 的本机功能不足以满足需要，还有 PowerShell 的完整功能可执行实际安装。 将包放入可访问的位置–包存储库。 本用例使用 Azure Blob 存储帐户中的公共文件夹，但它可以位于任何位置。 Chocolatey 原生可配合 NuGet 服务器和其他某些工具一起管理包元数据。 [本文](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed)介绍了相应的选项。 本用例使用 NuGet。 Nuspec 是包的元数据。 Nuspec 将“编译”成 NuPkg，然后存储在 NuGet 服务器中。 当配置按名称请求某个包并引用 NuGet 服务器时，Chocolatey DSC 资源（现在位于 VM 中）将获取并安装包。 也可以请求特定版本的包。
 
 示意图左下方有一个 Azure 资源管理器模板。 在本用例中，VM 扩展将 VM 注册到 Azure Automation State Configuration“拉”服务器（即请求服务器）成为“节点”。 配置存储在“拉”服务器中。
 实际上存储两次：一次存储为纯文本，另一次编译成 MOF 文件（适用于对此有所了解的人）。在门户，MOF 是“节点配置”（而不只是“配置”）。 它是与“节点”关联的项目，节点知道它的配置。 以下详细信息演示如何将节点配置分配给节点。

@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: e72e6d969649de09389ee38b94e874fad98ee08f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: 77fc5a53c8bdc389c24cd1e6406415eefc3f167b
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409203"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256178"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>授权非所有者部署 Avere vFXT
 
@@ -62,7 +62,7 @@ ms.locfileid: "60409203"
 
    `az role definition create --role-definition <PATH_TO_FILE>`
 
-    示例：
+    例如：
     ```azurecli
     az role definition create --role-definition ./averecreatecluster.json
     ```

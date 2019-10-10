@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: a3d6cb745c782d2a7166208f2a8dd1202a330b15
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: f4696d9e2d45e99089c9a723024067bf3b2aabcc
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60410074"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255436"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>将数据移到 vFXT 群集 - 并行数据引入 
 
@@ -145,7 +145,7 @@ cp /mnt/source/file8* /mnt/destination3/ & \
 
 最后，当客户端的处理能力达到极限时，添加更多的复制线程或装入点不会进一步提高每秒文件数或每秒字节数。 在这种情况下，可以部署包含相同装入点集、运行自身文件复制进程集的另一个客户端。 
 
-示例：
+例如：
 
 ```bash
 Client1: cp -R /mnt/source/dir1/dir1a /mnt/destination/dir1/ &

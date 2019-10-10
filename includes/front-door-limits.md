@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: deca0034996f6c8ddcac71cd4f191c1a0659b655
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 37ebe2f0c5cbbaca712e69ab4484379ecf0f4830
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67333366"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72237287"
 ---
 | Resource | 默认/最大限制 |
 | --- | --- |
@@ -24,7 +24,7 @@ ms.locfileid: "67333366"
 | 每个后端池的后端数 | 100 |
 | 要匹配路由规则的路径模式数 | 25 |
 | 每个策略的自定义 Web 应用程序防火墙规则数 | 10 |
-| 每个资源的 Web 应用程序防火墙策略数 | 100 |
+| 每个订阅的 Web 应用程序防火墙策略 | 100 |
 | Web 应用程序防火墙根据每个自定义规则匹配条件数 | 10 |
 | 每个匹配条件的 Web 应用防火墙 IP 地址范围数 | 600 |
 | 每个匹配条件的 Web 应用程序防火墙字符串匹配值数 | 10 |
@@ -53,4 +53,5 @@ ms.locfileid: "67333366"
 | **上载** |  只要每个 CTE 上传都小于 2 GB，就没有限制。 | 大小不得大于 2 GB。 |
 
 ### <a name="other-limits"></a>其他限制
-- 最大 URL 大小（8,192 字节）指定原始 URL（URL 的方案 + 主机名 + 端口 + 路径 + 查询字符串）的最大长度；最大查询字符串大小（4,096 字节）指定查询字符串的最大长度（以字节为单位）。
+- 最大 URL 大小-8192 字节-指定原始 URL 的最大长度（方案 + 主机名 + 端口 + 路径 + URL + 查询字符串）
+- 最大查询字符串大小-4096 字节-指定查询字符串的最大长度（以字节为单位）。

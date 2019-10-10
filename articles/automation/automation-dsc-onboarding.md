@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: c05ac7a1894fc3e159ef8fc2b3dd2654714faccf
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: cf95a66cf68cf0b33444a17cf762bae79db4b50c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70965188"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243431"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
 
@@ -56,7 +56,7 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 如果虚拟机未安装 PowerShell 所需状态扩展且电源状态为“正在运行”，请单击“连接”。
 
-在“注册”下，输入用例所需的[“PowerShell DSC 本地配置管理器”值](/powershell/dsc/managing-nodes/metaconfig)，并选择性地输入要分配给 VM 的节点配置。
+在“注册”下，输入用例所需的[“PowerShell DSC 本地配置管理器”值](/powershell/scripting/dsc/managing-nodes/metaConfig)，并选择性地输入要分配给 VM 的节点配置。
 
 ![加入](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
@@ -82,7 +82,7 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 ## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws"></a>位于本地或 Azure 以外的云中的物理/虚拟 Windows 计算机/AWS
 
-在本地或其他云环境中运行的 Windows 服务器还可以载入 Azure 自动化状态配置, 前提是它们具有[azure 的出站访问权限](automation-dsc-overview.md#network-planning):
+在本地或其他云环境中运行的 Windows 服务器还可以载入 Azure 自动化状态配置，前提是它们具有[azure 的出站访问权限](automation-dsc-overview.md#network-planning)：
 
 1. 确保已在要加入到 Azure Automation State Configuration 的计算机上安装最新版本的 [WMF 5](https://aka.ms/wmf5latest)。
 1. 请根据以下[**生成 DSC 元配置**](#generating-dsc-metaconfigurations)部分中的说明生成包含所需 DSC 元配置的文件夹。
@@ -97,10 +97,10 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 ## <a name="physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure"></a>位于本地或者非 Azure 云中的物理/虚拟 Linux 计算机
 
-在本地或其他云环境中运行的 Linux 服务器还可以载入 Azure 自动化状态配置, 前提是它们具有[azure 的出站访问权限](automation-dsc-overview.md#network-planning):
+在本地或其他云环境中运行的 Linux 服务器还可以载入 Azure 自动化状态配置，前提是它们具有[azure 的出站访问权限](automation-dsc-overview.md#network-planning)：
 
 1. 确保已在希望加入到 Azure Automation State Configuration 的计算机上安装[适用于 Linux 的 PowerShell Desired State Configuration](https://github.com/Microsoft/PowerShell-DSC-for-Linux) 的最新版本。
-1. 如果 [PowerShell DSC 本地 Configuration Manager 默认值](/powershell/dsc/metaconfig4)与用例匹配，并且想要将计算机加入为**同时**从 Azure Automation State Configuration 提取并报告信息，则请执行以下操作：
+1. 如果 [PowerShell DSC 本地 Configuration Manager 默认值](/powershell/scripting/dsc/managing-nodes/metaConfig4)与用例匹配，并且想要将计算机加入为**同时**从 Azure Automation State Configuration 提取并报告信息，则请执行以下操作：
 
    - 在要加入到 Azure Automation State Configuration 的每台 Linux 计算机上，通过 `Register.py` 使用 PowerShell DSC 本地 Configuration Manager 默认值加入：
 
@@ -134,7 +134,7 @@ Azure Automation State Configuration 可让你使用 Azure 门户、Azure 资源
 
 ## <a name="generating-dsc-metaconfigurations"></a>生成 DSC 元配置
 
-若要以一般方式将任何计算机加入 Azure Automation State Configuration，可以生成 [DSC 元配置](/powershell/dsc/metaconfig)，以告知 DSC 代理从 Azure Automation State Configuration 提取数据和/或向其报告。 Azure Automation State Configuration 的 DSC 元配置可以使用 PowerShell DSC 配置或 Azure 自动化 PowerShell cmdlet 来生成。
+若要以一般方式将任何计算机加入 Azure Automation State Configuration，可以生成 [DSC 元配置](/powershell/scripting/dsc/managing-nodes/metaConfig)，以告知 DSC 代理从 Azure Automation State Configuration 提取数据和/或向其报告。 Azure Automation State Configuration 的 DSC 元配置可以使用 PowerShell DSC 配置或 Azure 自动化 PowerShell cmdlet 来生成。
 
 > [!NOTE]
 > DSC 元配置包含将计算机登记到进行管理的自动化帐户的机密。 请务必适当保护所创建的任何 DSC 元配置，或者在使用后将其删除。
@@ -319,7 +319,7 @@ Azure Automation State Configuration 可让你轻松加入 Azure Windows VM 以�
 在将计算机注册为 Azure Automation State Configuration 中的 DSC 节点之后，有多种原因可能使需要在将来重新注册该节点：
 
 - 对于 Windows Server 2019 之前的 Windows Server 版本，每个节点会自动协商唯一的身份验证证书，该证书将在一年后过期。 目前，当证书即将过期时，PowerShell DSC 注册协议无法自动续订证书，因此需要在一年之后重新注册这些节点。 在重新注册之前，请确保每个节点正在运行 Windows Management Framework 5.0 RTM。 如果节点的身份验证证书过期并且该节点尚未注册，则该节点将无法与 Azure 自动化通信，并将标记为“无响应”。 与证书过期时间相距 90 天或更短时间内执行的注册，或者在证书过期时间之后任何时间点执行的注册，将生成新的证书并提供使用。  Windows Server 2019 和更高版本中包含对此问题的解决方法。
-- 更改在节点初始注册期间设置的任何 [PowerShell DSC 本地配置管理器值](/powershell/dsc/metaconfig4)，例如 ConfigurationMode。 目前，只可以通过重新注册更改这些 DSC 代理值。 一种例外情况是分配给节点的节点配置 - 可以在 Azure 自动化 DSC 中直接更改。
+- 更改在节点初始注册期间设置的任何 [PowerShell DSC 本地配置管理器值](/powershell/scripting/dsc/managing-nodes/metaConfig4)，例如 ConfigurationMode。 目前，只可以通过重新注册更改这些 DSC 代理值。 一种例外情况是分配给节点的节点配置 - 可以在 Azure 自动化 DSC 中直接更改。
 
 可以使用本文档中所述的任何登记方法，按照初始注册节点的相同方法执行重新注册。 重新注册节点之前，不需要从 Azure Automation State Configuration 中注销节点。
 

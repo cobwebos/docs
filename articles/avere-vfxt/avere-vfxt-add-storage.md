@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.author: v-erkell
-ms.openlocfilehash: 6d35d5cdeafb80a36f910d71393802a3affb4df8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: 86b63e6d9799387347093e469015fbd3019069d1
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515940"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255042"
 ---
 # <a name="configure-storage"></a>配置存储
 
@@ -45,11 +45,11 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
 
 执行以下步骤添加 NAS 核心文件管理器：
 
-1. 在 Avere 控制面板中，单击顶部的“设置”选项卡  。
+1. 在 Avere 控制面板中，单击顶部的“设置”选项卡。
 
-1. 单击左侧的“核心文件管理器” > “管理核心文件管理器”   。
+1. 单击左侧的“核心文件管理器” > “管理核心文件管理器”。
 
-1. 单击**创建**。
+1. 单击“创建”。
 
    ![“添加新核心文件”页的屏幕截图，其中光标位于“创建”按钮上](media/avere-vfxt-add-core-filer-start.png)
 
@@ -57,12 +57,12 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
 
    * 为核心文件服务器命名。
    * 如果有，提供完全限定的域名 (FQDN)。 否则，请提供解析为核心文件管理器的 IP 地址或主机名。
-   * 从列表中选择文件管理器类。 如果不确定，请选择“其他”  。
+   * 从列表中选择文件管理器类。 如果不确定，请选择“其他”。
 
      ![添加新核心文件管理器页面的屏幕截图，其中包含核心文件管理器名称及其完全限定的域名](media/avere-vfxt-add-core-filer.png)
   
-   * 单击“下一步”，然后选择一个高速缓存策略  。 
-   * 单击“添加文件管理器”  。
+   * 单击“下一步”，然后选择一个高速缓存策略。 
+   * 单击“添加文件管理器”。
    * 有关更多详细信息，请参阅 Avere 群集设置指南中的 [Adding a new NAS core filer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html)（添加新的 NAS 核心文件管理器）。
 
 接下来，继续执行[创建交接点](#create-a-junction)。  
@@ -72,7 +72,7 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
 要将 Azure Blob 存储用作 vFXT 群集的后端存储，需要将一个空容器添加为核心文件管理器。
 
 > [!TIP] 
-> 如果你选择在创建 Avere vFXT 群集的同时创建 blob 容器，则在创建 vFXT 群集的过程中，部署模板或脚本将创建一个存储容器，将其定义为核心文件管理器，并创建命名空间交接点。 此模板还创建群集的虚拟网络中的存储服务终结点。 
+> 如果你选择在创建 Avere vFXT 群集的同时创建 blob 容器，则在创建 vFXT 群集的过程中，部署模板或脚本将创建一个存储容器，将其定义为核心文件管理器，并创建命名空间交接点。 该模板还会在群集的虚拟网络中创建存储服务终结点。 
 
 将 Blob 存储添加到群集需要执行以下任务：
 
@@ -104,21 +104,21 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
 
    ![Azure 门户中的新存储帐户](media/avere-vfxt-new-storage-acct.png)
 
-1. 通过单击概述页面上的“Blob”创建 Blob 容器，然后单击“+容器”   。 使用任何容器名称，并确保访问权限设置为“专用”  。
+1. 通过单击概述页面上的“Blob”创建 Blob 容器，然后单击“+容器”。 使用任何容器名称，并确保访问权限设置为“专用”。
 
    ![没有现有容器的存储 Blob 页](media/avere-vfxt-blob-no-container.png)
 
-1. 单击“设置”下的“访问密钥”，获取 Azure 存储帐户密钥：  
+1. 单击“设置”下的“访问密钥”，获取 Azure 存储帐户密钥：
 
    ![用于复制密钥的 Azure 门户 GUI](media/avere-vfxt-copy-storage-key.png) 
 
-1. 打开群集的 Avere 控制面板。 单击“设置”，然后在左侧导航窗格中打开“群集” > “云凭据”    。 在“云凭据”页上，单击“添加凭据”  。
+1. 打开群集的 Avere 控制面板。 单击“设置”，然后在左侧导航窗格中打开“群集” > “云凭据”。 在“云凭据”页上，单击“添加凭据”。
 
    ![单击“云凭据”配置页上的“添加凭据”按钮](media/avere-vfxt-new-credential-button.png)
 
 1. 填写以下信息以创建云核心文件管理器的凭据： 
 
-   | 字段 | 值 |
+   | 字段 | ReplTest1 |
    | --- | --- |
    | 凭据名称 | 任何描述性名称 |
    | 服务类型 | （选择 Azure 存储访问密钥） |
@@ -126,28 +126,28 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
    | 订阅 | 订阅 ID |
    | 存储访问密钥 | Azure 存储帐户密钥（在上一步中复制） | 
 
-   单击“提交”  。
+   单击“提交”。
 
    ![Avere 控制面板中已完成的云凭据表单](media/avere-vfxt-new-credential-submit.png)
 
-1. 接下来，创建核心文件管理器。 在 Avere 控制面板的左侧，单击“核心文件管理器” >  “管理核心文件管理器”   。 
+1. 接下来，创建核心文件管理器。 在 Avere 控制面板的左侧，单击“核心文件管理器” >  “管理核心文件管理器”。 
 
-1. 单击“管理核心文件管理器”设置页上的“创建”按钮   。
+1. 单击“管理核心文件管理器”设置页上的“创建”按钮。
 
 1. 填写该向导：
 
-   * 选择文件管理器类型“云”  。 
-   * 命名新的核心文件管理器，然后单击“下一步”  。
+   * 选择文件管理器类型“云”。 
+   * 命名新的核心文件管理器，然后单击“下一步”。
    * 接受默认缓存策略并进入第三页。
-   * 在“服务类型”中，选择“Azure 存储”   。 
+   * 在“服务类型”中，选择“Azure 存储”。 
    * 选择之前创建的凭据。
-   * 将“Bucket 内容”设置为“空”  
-   * 将“证书验证”更改为“禁用”  
-   * 将“压缩模式”更改为“无”    
-   * 单击“下一步”。 
-   * 在第四页上，在“Bucket 名称”中输入容器的名称 storage_account_name/container_name    。
-   * （可选）将“加密类型”设置为“无”   。  Azure 存储默认已加密。
-   * 单击“添加文件管理器”  。
+   * 将“Bucket 内容”设置为“空”
+   * 将“证书验证”更改为“禁用”
+   * 将“压缩模式”更改为“无”  
+   * 单击“下一步”。
+   * 在第四页上，在“Bucket 名称”中输入容器的名称 storage_account_name/container_name。
+   * （可选）将“加密类型”设置为“无”。  Azure 存储默认已加密。
+   * 单击“添加文件管理器”。
 
    有关更多详细信息，请阅读 Avere 群集配置指南中的 [Adding a new cloud core filer](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>)（添加新的云核心文件管理器）。 
 
@@ -165,11 +165,11 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
 
 在 Avere 控制面板设置界面中执行以下步骤：
 
-* 单击左上角的“VServer” > “命名空间”   。
+* 单击左上角的“VServer” > “命名空间”。
 * 提供以“/”（正斜杠）开头的命名空间路径，如 ``/avere/data``。
 * 选择核心文件管理器。
 * 选择核心文件管理器导出。
-* 单击“下一步”。 
+* 单击“下一步”。
 
   ![“添加新交接点”页面的屏幕截图，其中包含为交接点、核心文件管理器和导出完成的字段](media/avere-vfxt-add-junction.png)
 

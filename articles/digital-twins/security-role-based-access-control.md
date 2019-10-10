@@ -8,16 +8,16 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e89a8f98d92e92fa8afe93340576b14ff1dd5051
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949024"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249197"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure 数字孪生中基于角色的访问控制
 
-Azure 数字孪生支持对空间图中特定数据、资源和操作进行精确的访问控制。 它通过精细的角色和权限管理（称为基于角色的访问控制 (RBAC)）实现。 RBAC 包括“角色”和“角色分配”。 角色标识权限的级别。 角色分配将角色与用户或设备相关联。
+使用 Azure 数字孪生可以精确地控制空间图中的特定数据、资源和操作。 它通过将角色和权限管理称为[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/)（RBAC）来实现此目的。 RBAC 包括“角色”和“角色分配”。 角色标识权限的级别。 角色分配将角色与用户或设备相关联。
 
 使用 RBAC 可将权限授予：
 
@@ -84,3 +84,5 @@ Azure 数字孪生角色分配将某个对象（例如用户或 Azure AD 租户�
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解如何创建和管理 Azure 数字孪生角色分配，请阅读[创建和管理角色分配](./security-create-manage-role-assignments.md)。
+
+- 阅读有关[适用于 Azure 的 RBAC 的](https://docs.microsoft.com/azure/role-based-access-control/)详细信息。

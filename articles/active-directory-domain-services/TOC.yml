@@ -25,6 +25,8 @@
       href: powershell-create-instance.md
 - name: 概念
   items:
+    - name: 管理基础知识
+      href: administration-concepts.md
     - name: 常见部署方案
       href: scenarios.md
     - name: Azure AD DS 同步的工作原理

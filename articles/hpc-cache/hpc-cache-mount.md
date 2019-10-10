@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: ea23331ebc75b5ede22c9f7357a9e0de12d819e2
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: rohogue
+ms.openlocfilehash: 3257cf92c628650fc50e0a36ec37fcab920aba2f
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299963"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254572"
 ---
 # <a name="mount-the-azure-hpc-cache-preview"></a>装载 Azure HPC 缓存（预览）
 
@@ -25,7 +25,7 @@ Mount 命令由两个元素组成：
 ![Azure HPC 缓存实例的 "概述" 页的屏幕截图，右下方的 "装入地址" 列表周围有一个突出显示框](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
-> 缓存装入地址对应于缓存的子网中的网络接口。 在资源组中，将列出这些 nic，名称以`-cluster-nic-`结尾并使用数字。 请勿更改或删除这些接口，否则缓存将不可用。
+> 缓存装入地址对应于缓存的子网中的网络接口。 在资源组中，这些 Nic 的名称以 `-cluster-nic-` 和数字结尾。 请勿更改或删除这些接口，否则缓存将不可用。
 
 虚拟命名空间路径显示在 "**存储目标**" 页中。 单击单个存储目标名称可查看其详细信息，包括关联的聚合命名空间路径。
 
@@ -37,7 +37,7 @@ Mount 命令由两个元素组成：
 
 > sudo mount *cache_mount_address*：/*namespace_path* *local_path* {*options*}
 
-例如：
+示例：
 
 ```
 root@test-client:/tmp# mkdir hpccache
@@ -45,7 +45,7 @@ root@test-client:/tmp# sudo mount 10.0.0.28:/blob-demo-0722 ./hpccache/ -orw,tcp
 root@test-client:/tmp# 
 ```
 
-此命令成功之后，存储导出的内容应显示在客户端上的``hpccache``目录中。
+此命令成功之后，存储导出的内容应显示在客户端上的 ``hpccache`` 目录中。
 
 > [!NOTE] 
 > 你的客户端必须能够访问包含缓存的虚拟网络和子网。 例如，在同一虚拟网络中创建客户端 Vm，或者使用终结点、网关或虚拟网络中的其他解决方案从外部访问。 请记住，不能将其他内容托管在缓存的子网中。

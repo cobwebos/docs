@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a83112c1555d50976e5a20106b877f5c0099a5f3
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: bfb170036293dc9f519259dc92737f30380aa84a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178144"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244822"
 ---
 # <a name="networking-prerequisites-for-azure-vmware-solution-by-cloudsimple"></a>Azure VMware 解决方案的网络必备组件（按 CloudSimple）
 
@@ -58,6 +58,7 @@ Azure VMware 解决方案（按 CloudSimple）提供了一个 VMware 私有云�
 
 ## <a name="next-steps"></a>后续步骤
 
+* [用于访问私有云的本地防火墙设置](on-premises-firewall-configuration.md)
 * [快速入门-创建 CloudSimple 服务](quickstart-create-cloudsimple-service.md)
 * [快速入门-配置私有云](quickstart-create-private-cloud.md)
 * 了解有关[Azure 网络连接](cloudsimple-azure-network-connection.md)的详细信息

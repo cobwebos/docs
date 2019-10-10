@@ -5,21 +5,21 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: 265ec55a6e013a37cf963b6256e900c070311f72
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.author: rohogue
+ms.openlocfilehash: 6eac6c367be42021a4654f85c8f4ec980c9f6925
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180946"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255288"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---msrsync-method"></a>Azure HPC 缓存（预览）数据引入-msrsync 方法
 
-本文提供了有关使用``msrsync``实用程序将数据复制到 azure Blob 存储容器以用于 azure HPC 缓存的详细说明。
+本文详细说明了如何使用 ``msrsync`` 实用工具将数据复制到 Azure Blob 存储容器，以便与 Azure HPC 缓存一起使用。
 
 若要详细了解如何将数据移到 Azure HPC 缓存的 Blob 存储，请参阅[将数据移到 AZURE Hpc 缓存的 Azure blob 存储](hpc-cache-ingest.md)。
 
-该``msrsync``工具可用于将数据移到 Azure HPC 缓存的后端存储目标。 此工具旨在通过运行多个并行 ``rsync`` 进程来优化带宽的使用。 可从 GitHub 获取此工具： https://github.com/jbd/msrsync 。
+@No__t-0 工具可用于将数据移到 Azure HPC 缓存的后端存储目标。 此工具旨在通过运行多个并行 ``rsync`` 进程来优化带宽的使用。 可从 GitHub 获取此工具： https://github.com/jbd/msrsync 。
 
 ``msrsync`` 将源目录分解成独立的“桶”，然后针对每个桶运行单个 ``rsync`` 进程。
 
@@ -27,14 +27,14 @@ ms.locfileid: "71180946"
 
 请注意，``msrsync`` 只能与本地卷相互写入。 源和目标必须可作为用于发出命令的工作站上的本地装载。
 
-按照这些说明操作， ``msrsync``使用 azure HPC 缓存填充 azure Blob 存储：
+按照以下说明使用 ``msrsync`` 来使用 Azure HPC 缓存填充 Azure Blob 存储：
 
-1. 安装``msrsync``及其必备组件（``rsync``和 Python 2.6 或更高版本）
+1. 安装 ``msrsync`` 及其必备组件（@no__t 1 和 Python 2.6 或更高版本）
 1. 确定要复制的文件和目录总数。
 
-   例如，将实用工具``prime.py``与参数```prime.py --directory /path/to/some/directory```一起使用（可通过下载<https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>获得）。
+   例如，使用实用程序 ``prime.py``，参数 ```prime.py --directory /path/to/some/directory``` （可通过下载 <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>）使用。
 
-   如果不使用``prime.py``，则可以使用 GNU ``find``工具计算项的数目，如下所示：
+   如果不使用 ``prime.py``，则可按如下所示计算 GNU ``find`` 工具的项的数目：
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -44,7 +44,7 @@ ms.locfileid: "71180946"
 
 1. 将项数除以 64 即可得出每个进程的项数。 运行该命令时，在 ``-f`` 选项中使用此数字可以设置桶的大小。
 
-1. ``msrsync``发出命令以复制文件：
+1. 发出 ``msrsync`` 命令以复制文件：
 
    ```bash
    msrsync -P --stats -p64 -f<ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH>

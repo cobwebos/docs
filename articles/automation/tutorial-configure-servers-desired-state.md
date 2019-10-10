@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 0d877dafc4ab4f8ec4edb0a94450fa9c5dfcd0bb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 09ba4bc9e5ac496a7d1d65ff145d56818e53116e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850230"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243340"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>将服务器配置到所需状态并管理偏移
 
@@ -34,7 +34,7 @@ ms.locfileid: "68850230"
 - 一个 Azure 自动化帐户。 有关如何创建 Azure 自动化运行方式帐户的说明，请参阅 [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)。
 - 一个运行 Windows Server 2008 R2 或更高版本的 Azure 资源管理器 VM（非经典）。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 - Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
-- 熟悉所需状态配置 (DSC)。 有关 DSC 文档的信息，请参阅 [Windows PowerShell Desired State Configuration 概述](https://docs.microsoft.com/powershell/dsc/overview)
+- 熟悉所需状态配置 (DSC)。 有关 DSC 文档的信息，请参阅 [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overviews)
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -48,7 +48,7 @@ Connect-AzureRmAccount
 
 对于本教程，我们将使用简单 DSC 配置，以确保在 VM 上安装 IIS。
 
-有关 DSC 配置的详细信息，请参阅 [DSC 配置](/powershell/dsc/configurations)。
+有关 DSC 配置的详细信息，请参阅 [DSC 配置](/powershell/scripting/dsc/configurations/configurations)。
 
 在文本编辑器中，键入以下命令，并在本地将其保存为 `TestConfig.ps1`。
 
@@ -65,7 +65,7 @@ configuration TestConfig {
 ```
 
 > [!NOTE]
-> 在更高级的方案中, 若要导入提供 DSC 资源的多个模块, 请确保每个模块`Import-DscResource`在配置中都有唯一的行。
+> 在需要导入多个提供 DSC 资源的模块的更高级方案中，请确保每个模块在配置中都有唯一的 `Import-DscResource` 行。
 
 调用 `Import-AzureRmAutomationDscConfiguration` cmdlet，将配置上传到自动化帐户：
 
@@ -77,7 +77,7 @@ configuration TestConfig {
 
 必须先将 DSC 配置编译为节点配置，然后才能将它分配给节点。
 
-有关编译配置的信息，请参阅 [DSC 配置](/powershell/dsc/configurations)。
+有关编译配置的信息，请参阅 [DSC 配置](/powershell/scripting/dsc/configurations/configurations)。
 
 调用 `Start-AzureRmAutomationDscCompilationJob` cmdlet，将 `TestConfig` 配置编译为节点配置：
 
@@ -116,7 +116,7 @@ Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -Automati
 
 有关设置托管节点的配置属性的详细信息，请参阅 [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode)。
 
-有关 DSC 配置设置的详细信息，请参阅[配置本地配置管理器](/powershell/dsc/metaconfig)。
+有关 DSC 配置设置的详细信息，请参阅[配置本地配置管理器](/powershell/scripting/dsc/managing-nodes/metaConfig)。
 
 ## <a name="assign-a-node-configuration-to-a-managed-node"></a>将节点配置分配给托管节点
 
@@ -132,16 +132,16 @@ Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAcc
 
 这会将名为 `TestConfig.WebServer` 的节点配置分配到名为 `DscVm` 的已注册 DSC 节点。
 默认情况下，每隔 30 分钟会检查一次 DSC 节点是否符合节点配置。
-有关如何更改符合性检查间隔的信息，请参阅[配置本地配置管理器](/PowerShell/DSC/metaConfig)。
+有关如何更改符合性检查间隔的信息，请参阅[配置本地配置管理器](/powershell/scripting/dsc/managing-nodes/metaConfig)。
 
 ## <a name="working-with-partial-configurations"></a>使用部分配置
 
 Azure 自动化状态配置支持使用[部分配置](/powershell/dsc/pull-server/partialconfigs)。
-在此方案中, DSC 配置为独立管理多个配置, 并且每个配置都是从 Azure 自动化检索的。
+在此方案中，DSC 配置为独立管理多个配置，并且每个配置都从 Azure 自动化中检索。
 但是，每个自动化帐户只能为一个节点分配一个配置。
 这意味着，如果对节点使用两种配置，则需要两个自动化帐户。
 
-有关如何从请求服务注册部分配置的详细信息, 请参阅[部分配置](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)的文档。
+有关如何从请求服务注册部分配置的详细信息，请参阅[部分配置](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)的文档。
 
 有关团队如何协作以代码形式使用配置来协作管理服务器的更多信息，请参见[了解 DSC 在 CI/CD 管道中的角色](/powershell/dsc/overview/authoringadvanced)。
 

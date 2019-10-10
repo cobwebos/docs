@@ -1,18 +1,18 @@
 ---
 title: 示例-加拿大联邦 PBMM 蓝图-部署步骤
-description: 部署 theCanada 联邦 PBMM 蓝图示例的步骤。
+description: 加拿大联邦 PBMM 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 2e810c810fd2c143f3d3e43a6ff1df87a150fa3b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0e799de92f25c688b41d3ac5718fe3a2b7a8aba0
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981650"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249010"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>部署加拿大联邦 PBMM 蓝图示例
 
@@ -66,7 +66,7 @@ ms.locfileid: "71981650"
 
 1. 提供蓝图分配的参数值：
 
-   - 基本
+   - 基础
 
      - **订阅**：在蓝图示例副本所保存到的管理组中选择一个或多个订阅。 如果选择多个订阅，将使用输入的参数为每个订阅创建一个分配。
      - **分配名称**：系统会根据蓝图的名称预先填充该名称。
@@ -74,7 +74,7 @@ ms.locfileid: "71981650"
      - **位置**：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
      - **蓝图定义版本**：选择蓝图示例副本的**已发布**版本。
 
-   - 锁定分配
+   - 锁分配
 
      选择环境的蓝图锁定设置。 有关更多信息，请参阅[蓝图资源锁定](../../concepts/resource-locking.md)。
 
@@ -97,18 +97,18 @@ ms.locfileid: "71981650"
 
 项目名称|项目类型|参数名称|描述|
 |-|-|-|-|
-|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |Linux VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |适用于 Linux 虚拟机的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
 |\[预览\]：为 Linux VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Linux OS 添加到范围的 VM 映像列表 |空数组可用于指示没有可选参数： `[]` |
 |\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |可选：支持将 Windows OS 添加到范围的 VM 映像列表 |空数组可用于指示没有可选参数： `[]` |
-|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |Windows VM 的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
+|\[预览\]：为 Windows VM 部署 Log Analytics 代理 |策略分配 |适用于 Windows 虚拟机的 Log Analytics 工作区 |有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../../../azure-monitor/learn/quick-create-workspace.md)。 |
 |\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应为 VM 配置的 Log Analytics 工作区 ID |这是应为 VM 配置的 Log Analytics 工作区的 ID (GUID)。 |
 |\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应启用诊断日志的资源类型列表 |如果未启用诊断日志设置，则为要审核的资源类型的列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中提供了可接受的值。 |
 |\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |Administrators 组 |组. 示例： `Administrator; myUser1; myUser2` |
 |\[预览\]：审核加拿大联邦 PBMM 控件并部署特定的 VM 扩展以支持审核要求 |策略分配 |应该包括在 Windows VM 管理员组中的用户的列表 |以分号分隔的应包括在管理员本地组中的成员列表。 示例： `Administrator; myUser1; myUser2` |
 |在存储帐户上部署高级威胁防护 |策略分配 |效果 |有关策略效果的信息，请参阅[了解 Azure 策略影响](../../../policy/concepts/effects.md)。 |
 |在 SQL Server 上部署审核 |策略分配 |保持期的值（天数，0 表示保持期无限制） |保留天数（可选，如果未指定，则为_180_天） |
-|在 SQL Server 上部署审核 |策略分配 |要进行 SQL Server 审核的存储帐户的资源组名称 |审核将数据库事件写入 Azure 存储帐户中的审核日志（在创建 SQL Server 的每个区域中创建存储帐户，该区域由该区域中的所有服务器共享）。 重要提示：对于正确的审核操作，请不要删除或重命名资源组或存储帐户。 |
-|为网络安全组部署诊断设置 |策略分配 |适用于网络安全组诊断的存储帐户前缀 |此前缀与网络安全组位置组合在一起以形成创建的存储帐户名称。 |
+|在 SQL Server 上部署审核 |策略分配 |用于 SQL 服务器审核的存储帐户的资源组名称 |审核将数据库事件写入 Azure 存储帐户中的审核日志（在创建 SQL Server 的每个区域中创建存储帐户，该区域由该区域中的所有服务器共享）。 重要提示：对于正确的审核操作，请不要删除或重命名资源组或存储帐户。 |
+|为网络安全组部署诊断设置 |策略分配 |用于网络安全组诊断的存储帐户前缀 |此前缀与网络安全组位置组合在一起以形成创建的存储帐户名称。 |
 |为网络安全组部署诊断设置 |策略分配 |适用于网络安全组诊断的存储帐户的资源组名称（必须存在） |在其中创建存储帐户的资源组。 此资源组必须已存在。 |
 
 ## <a name="next-steps"></a>后续步骤

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673419"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241174"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -43,7 +43,7 @@ Azure AD 提供了一个规则生成器，以便更快地创建和更新重要�
 - 具有五个以上表达式的规则
 - 直接下属规则
 - 设置[运算符优先级](groups-dynamic-membership.md#operator-precedence)
-- [包含复杂表达式的规则](groups-dynamic-membership.md#rules-with-complex-expressions);例如`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [包含复杂表达式的规则](groups-dynamic-membership.md#rules-with-complex-expressions);例如 `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > 规则生成器可能无法显示在文本框中构造的某些规则。 当规则生成器无法显示规则时，可能会看到一条消息。 规则生成器不会以任何方式更改动态组规则的支持语法、验证或处理。
@@ -78,8 +78,8 @@ user.department -eq "Sales"
 
 有三种类型的属性可用于构建成员资格规则。
 
-- 布尔
-- 字符串
+- Boolean
+- String
 - 字符串集合
 
 以下是可用于创建单个表达式的用户属性。
@@ -142,7 +142,7 @@ user.department -eq "Sales"
 | 开头不为 |-notStartsWith |
 | 开头为 |-startsWith |
 | 不包含 |-notContains |
-| 包含 |-contains |
+| Contains |-contains |
 | 不匹配 |-notMatch |
 | 匹配 |-match |
 | In | -in |
@@ -342,7 +342,7 @@ device.objectid -ne null
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-自定义扩展属性与本地 Windows Server AD 或连接的 SaaS 应用程序同步，格式为 `user.extension_[GUID]__[Attribute]`，其中：
+自定义扩展属性与本地 Windows Server AD 或连接的 SaaS 应用程序同步，格式为 `user.extension_[GUID]_[Attribute]`，其中：
 
 * [GUID] 是 Azure AD 中用于在 Azure AD 中创建属性的应用程序的唯一标识符
 * [Attribute] 是属性创建时的名称
@@ -350,7 +350,7 @@ device.objectid -ne null
 下面是使用自定义扩展属性的规则示例：
 
 ```
-user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
+user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
 通过使用 Graph Explorer 查询用户属性并搜索属性名，可在目录中找到自定义属性名称。 此外，现在可以在动态用户组规则生成器中选择“获取自定义扩展属性”链接，以输入唯一的应用程序 ID，并接收创建动态成员身份规则时要使用的自定义扩展属性的完整列表。 还可以刷新此列表，以获取该应用的任何新自定义扩展属性。

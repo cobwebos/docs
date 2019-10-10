@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 075eaaa188307e4320337ef21fd0875942e9e7e7
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327671"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249354"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -62,7 +62,7 @@ Azure 文件提供可确保数据安全的几个内置选项：
     * 不支持带加密功能的 SMB 3.0 的客户端可通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。 不允许 SMB 客户端通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。
     * 客户端可以通过 HTTP 或 HTTPS 与文件 REST 通信。
 * 静态加密（[Azure 存储服务加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)）：存储服务加密 (SSE) 对所有存储帐户启用。 静态数据使用完全托管的密钥进行加密。 静态加密不会增加存储成本，也不会降低性能。 
-* 加密数据在传输中的可选要求：选择此项时，Azure 文件将拒绝通过未加密的通道访问数据。 具体而言，仅允许具有加密连接的 HTTPS 和 SMB 3.0。
+* 传输中加密数据的可选要求：选中时，Azure 文件存储会拒绝通过未加密通道访问数据。 具体而言，仅允许具有加密连接的 HTTPS 和 SMB 3.0。
 
     > [!Important]  
     > 要求安全传输数据将导致较早的 SMB 客户端无法与 SMB 3.0 通信，进而造成加密失败。 有关详细信息，请参阅[在 Windows 上装载](storage-how-to-use-files-windows.md)、[在 Linux 上装载](storage-how-to-use-files-linux.md)和[在 macOS 上装载](storage-how-to-use-files-mac.md)。
@@ -73,29 +73,29 @@ Azure 文件提供可确保数据安全的几个内置选项：
 
 ## <a name="file-share-performance-tiers"></a>文件共享性能层
 
-Azure 文件提供两个性能层: 标准和高级。
+Azure 文件提供两个性能层：标准和高级。
 
 ### <a name="standard-file-shares"></a>标准文件共享
 
-标准文件共享支持硬盘驱动器 (Hdd)。 标准文件共享为 IO 工作负荷提供可靠的性能, 这些工作负荷对性能变化 (如一般用途文件共享和开发/测试环境) 不敏感。 标准文件共享只能在即用即付计费模型下使用。
+标准文件共享支持硬盘驱动器（Hdd）。 标准文件共享为 IO 工作负荷提供可靠的性能，这些工作负荷对性能变化（如一般用途文件共享和开发/测试环境）不敏感。 标准文件共享只能在即用即付计费模型下使用。
 
-标准文件共享最多可提供5个 TiB。 尽管较大的文件共享 (这是大于 5 TiB 的任何共享, 最多可达 100 TiB), 但目前作为预览产品/服务。
+标准文件共享最多可提供5个 TiB。 尽管较大的文件共享（这是大于 5 TiB 的任何共享，最多可达 100 TiB），但目前作为预览产品/服务。
 
 > [!IMPORTANT]
-> 有关加入的步骤以及预览范围和限制的详细步骤, 请参阅[板载到大型文件共享 (标准层)](#onboard-to-larger-file-shares-standard-tier)部分。
+> 有关加入的步骤以及预览范围和限制的详细步骤，请参阅[板载到大型文件共享（标准层）](#onboard-to-larger-file-shares-standard-tier)部分。
 
 ### <a name="premium-file-shares"></a>高级文件共享
 
-高级文件共享由固态硬盘 (Ssd) 支持。 对于 IO 密集型工作负荷, 高级文件共享为大多数 IO 操作提供持续的高性能和低延迟。 这使得它们适用于各种工作负荷, 如数据库、网站托管和开发环境。 高级文件共享只能在预配的计费模型下使用。 高级文件共享使用与标准文件共享分离的部署模型。
+高级文件共享由固态硬盘（Ssd）支持。 对于 IO 密集型工作负荷，高级文件共享为大多数 IO 操作提供持续的高性能和低延迟。 这使得它们适用于各种工作负荷，如数据库、网站托管和开发环境。 高级文件共享只能在预配的计费模型下使用。 高级文件共享使用与标准文件共享分离的部署模型。
 
-Azure 备份适用于高级文件共享, Azure Kubernetes 服务支持版本1.13 及更高版本中的高级文件共享。
+Azure 备份适用于高级文件共享，Azure Kubernetes 服务支持版本1.13 及更高版本中的高级文件共享。
 
-如果你想要了解如何创建高级文件共享, 请参阅主题的文章:[如何创建 Azure 高级文件存储帐户](storage-how-to-create-premium-fileshare.md)。
+如果你想要了解如何创建高级文件共享，请参阅主题的文章：[如何创建 Azure 高级文件存储帐户](storage-how-to-create-premium-fileshare.md)。
 
-目前, 不能在标准文件共享和高级文件共享之间直接转换。 如果要切换到任一层, 必须在该层中创建新的文件共享, 并手动将数据从原始共享复制到所创建的新共享。 可以使用支持的任何 Azure 文件复制工具 (例如 Robocopy 或 AzCopy) 来执行此操作。
+目前，不能在标准文件共享和高级文件共享之间直接转换。 如果要切换到任一层，必须在该层中创建新的文件共享，并手动将数据从原始共享复制到所创建的新共享。 可以使用支持的任何 Azure 文件复制工具（例如 Robocopy 或 AzCopy）来执行此操作。
 
 > [!IMPORTANT]
-> 在大多数区域中，LRS 提供高级文件共享，这些区域提供存储帐户，并在较小的区域部分中使用 ZRS。 若要确定高级文件共享当前是否在你的区域中可用, 请参阅 Azure 的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)" 页。 若要找出支持 ZRS 的区域，请参阅[支持范围和区域可用性](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)。
+> 在大多数区域中，LRS 提供高级文件共享，这些区域提供存储帐户，并在较小的区域部分中使用 ZRS。 若要确定高级文件共享当前是否在你的区域中可用，请参阅 Azure 的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)" 页。 若要找出支持 ZRS 的区域，请参阅[支持范围和区域可用性](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)。
 >
 > 若要帮助我们确定新的区域和高级层功能的优先级，请填写此[调查](https://aka.ms/pfsfeedback)。
 
@@ -105,24 +105,24 @@ Azure 备份适用于高级文件共享, Azure Kubernetes 服务支持版本1.13
 
 最大限度地提供服务时，对于预配的存储，所有共享都可以突增到每 GiB 3 IOPS，持续 60 分钟或更长时间，具体取决于共享大小。 新共享将根据预配的容量以完全突增额度开始。
 
-必须以 1 GiB 为增量预配共享。 最小大小为 100 GiB, 下一大小为 101 GiB, 依此类推。
+必须以 1 GiB 为增量预配共享。 最小大小为 100 GiB，下一大小为 101 GiB，依此类推。
 
 > [!TIP]
-> 基线 IOPS = 1 * 预配的 GiB。 (最大可达 100000 IOPS)。
+> 基线 IOPS = 1 * 预配的 GiB。 （最大可达 100000 IOPS）。
 >
-> 突发限制 = 3 * 基准 IOPS。 (最大可达 100000 IOPS)。
+> 突发限制 = 3 * 基准 IOPS。 （最大可达 100000 IOPS）。
 >
 > 出口速率 = 60 MiB/s + 0.06 * 预配 GiB
 >
 > 入口速率 = 40 MiB/s + 0.04 * 预配 GiB
 
-预配的共享大小由共享配额指定。 共享配额可随时增加，但只能在自上次增加之后24小时后减少。 等待24小时后，如果没有增加配额，你可以根据需要将共享配额减少多次，直到再次增加。 在大小改变后的几分钟内, IOPS/吞吐量规模更改将生效。
+预配的共享大小由共享配额指定。 共享配额可随时增加，但只能在自上次增加之后24小时后减少。 等待24小时后，如果没有增加配额，你可以根据需要将共享配额减少多次，直到再次增加。 在大小改变后的几分钟内，IOPS/吞吐量规模更改将生效。
 
-可以在使用的 GiB 下减小预配共享的大小。 如果执行此操作, 则不会丢失数据, 但仍会对所用的大小进行计费, 并获得预配的共享的性能 (基线 IOPS、吞吐量和突发 IOPS), 而不是所使用的大小。
+可以在使用的 GiB 下减小预配共享的大小。 如果执行此操作，则不会丢失数据，但仍会对所用的大小进行计费，并获得预配的共享的性能（基线 IOPS、吞吐量和突发 IOPS），而不是所使用的大小。
 
-下表演示了预配共享大小的这些公式的几个示例:
+下表演示了预配共享大小的这些公式的几个示例：
 
-|容量 (GiB) | 基线 IOPS | 突发 IOPS | 出口 (MiB/秒) | 入口 (MiB/秒) |
+|容量（GiB） | 基线 IOPS | 突发 IOPS | 出口（MiB/秒） | 入口（MiB/秒） |
 |---------|---------|---------|---------|---------|
 |100         | 100     | 最多 300     | 66   | 44   |
 |500         | 500     | 最高1500   | 90   | 60   |
@@ -134,26 +134,26 @@ Azure 备份适用于高级文件共享, Azure Kubernetes 服务支持版本1.13
 |102,400     | 100,000 | 最高100000 | 6,204 | 4,136   |
 
 > [!NOTE]
-> 文件共享性能受到计算机网络限制、可用网络带宽、IO 大小、并行性的限制, 还有许多其他因素。 若要实现最大性能规模, 请将负载分散到多个 Vm。 请参阅[故障排除指南](storage-troubleshooting-files-performance.md), 了解一些常见问题和解决方法。
+> 文件共享性能受到计算机网络限制、可用网络带宽、IO 大小、并行性的限制，还有许多其他因素。 若要实现最大性能规模，请将负载分散到多个 Vm。 请参阅[故障排除指南](storage-troubleshooting-files-performance.md)，了解一些常见问题和解决方法。
 
 #### <a name="bursting"></a>冲
 
-高级文件共享可能会将其 IOPS 突发为三倍。 突发是自动进行的, 并基于信用系统运行。 突发会尽力工作, 而突发限制并不保证, 文件共享可能会突然*达到*限制。
+高级文件共享可能会将其 IOPS 突发为三倍。 突发是自动进行的，并基于信用系统运行。 突发会尽力工作，而突发限制并不保证，文件共享可能会突然*达到*限制。
 
-如果文件共享的流量低于基线 IOPS, 信用额度会在突发桶中累积。 例如, 100 GiB 共享有100的基线 IOPS。 如果共享上的实际流量为特定1秒间隔的 40 IOPS, 则会将60未使用的 IOPS 贷记到突发桶。 以后在操作超过基线 IOPs 时, 将使用这些信用额度。
+如果文件共享的流量低于基线 IOPS，信用额度会在突发桶中累积。 例如，100 GiB 共享有100的基线 IOPS。 如果共享上的实际流量为特定1秒间隔的 40 IOPS，则会将60未使用的 IOPS 贷记到突发桶。 以后在操作超过基线 IOPs 时，将使用这些信用额度。
 
 > [!TIP]
 > 突发流量桶的大小 = 基线 IOPS * 2 * 3600。
 
-只要共享超过基线 IOPS, 并在突发桶中包含信用额度, 就会突然增长。 只要剩余信用额度, 共享就可以继续突发, 不过, 小于 50 TiB 的共享只会保持最多一小时的突发限制。 超过 50 TiB 的共享在技术上可以超过此小时的限制, 最长可达两个小时, 但这取决于所应计的突发点数。 超出基线 IOPS 的每个 IO 消耗一个信用额度, 一旦使用了所有信用额度, 该共享就会返回到基线 IOPS。
+只要共享超过基线 IOPS，并在突发桶中包含信用额度，就会突然增长。 只要剩余信用额度，共享就可以继续突发，不过，小于 50 TiB 的共享只会保持最多一小时的突发限制。 超过 50 TiB 的共享在技术上可以超过此小时的限制，最长可达两个小时，但这取决于所应计的突发点数。 超出基线 IOPS 的每个 IO 消耗一个信用额度，一旦使用了所有信用额度，该共享就会返回到基线 IOPS。
 
-共享信用包含三种状态:
+共享信用包含三种状态：
 
-- 如果文件共享使用的不是基线 IOPS, 则为。
-- 正在拒绝, 当文件共享为突发。
+- 如果文件共享使用的不是基线 IOPS，则为。
+- 正在拒绝，当文件共享为突发。
 - 当未使用任何信用额度或基线 IOPS 时剩余的常量。
 
-新文件共享在其突发桶中以全部信用额度开头。 如果由于服务器限制而导致共享 IOPS 低于基准 IOPS, 则不会对爆发信用进行应计。
+新文件共享在其突发桶中以全部信用额度开头。 如果由于服务器限制而导致共享 IOPS 低于基准 IOPS，则不会对爆发信用进行应计。
 
 ## <a name="file-share-redundancy"></a>文件共享冗余
 
@@ -178,7 +178,7 @@ Azure 文件 premium 共享支持 LRS 和 ZRS，ZRS 目前在一小部分区域�
 
 异地冗余存储 (GRS) 通过将数据复制到距主要区域数百英里以外的次要区域，用于在给定的一年内至少为对象提供 99.99999999999999%（16 个 9）的持久性。 如果存储帐户启用了 GRS，则即使遇到区域完全停电或导致主区域不可恢复的灾难，数据也能持久保存。
 
-如果你选择读取访问权限异地冗余存储 (RA-GRS)，则应当知道 Azure 文件目前在任何区域都不支持读取访问权限异地冗余存储 (RA-GRS)。 GRS 存储帐户中的文件共享的工作方式与其在 GRS 帐户中的工作方式相同, 并按 GRS 价格收费。
+如果你选择读取访问权限异地冗余存储 (RA-GRS)，则应当知道 Azure 文件目前在任何区域都不支持读取访问权限异地冗余存储 (RA-GRS)。 GRS 存储帐户中的文件共享的工作方式与其在 GRS 帐户中的工作方式相同，并按 GRS 价格收费。
 
 GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Microsoft 发起了从主要区域到次要区域的故障转移时，才可读取这些数据。
 
@@ -189,81 +189,81 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 确定要使用哪个复制选项时，请记住以下几点：
 
 * 地域冗余存储（GZRS）（预览版）通过在三个 Azure 可用性区域之间同步复制数据，然后将数据异步复制到次要区域，提供高可用性和最大持久性。 你还可以启用对次要区域的读取访问权限。 GZRS 设计为在给定的一年内提供至少 99.99999999999999% （16个9）的对象持久性。 有关 GZRS 的详细信息，请参阅[区域冗余存储以获得高可用性和最大持续性（预览版）](../common/storage-redundancy-gzrs.md)。
-* 区域冗余存储 (ZRS) 通过同步复制提供高可用性, 对于某些方案, 可能是比 GRS 更好的选择。 有关 ZRS 的详细信息，请参阅 [ZRS](../common/storage-redundancy-zrs.md)。
+* 区域冗余存储（ZRS）通过同步复制提供高可用性，对于某些方案，可能是比 GRS 更好的选择。 有关 ZRS 的详细信息，请参阅 [ZRS](../common/storage-redundancy-zrs.md)。
 * 对于异步复制，从数据写入到主要区域到数据复制到次要区域，这之间存在延迟。 发生区域性灾难时，如果无法从主要区域中恢复数据，则尚未复制到次要区域的更改可能会丢失。
 * 使用 GRS 时，副本不可用于读取或写入访问，除非 Microsoft 启动到次要区域的故障转移。 如果发生故障转移，则在故障转移完成后，你将具有对该数据的读取和写入访问权限。 有关详细信息，请参阅[灾难恢复指南](../common/storage-disaster-recovery-guidance.md)。
 
-## <a name="onboard-to-larger-file-shares-standard-tier"></a>集成到较大的文件共享 (标准层)
+## <a name="onboard-to-larger-file-shares-standard-tier"></a>集成到较大的文件共享（标准层）
 
 本部分仅适用于标准文件共享。 所有高级文件共享都可用 100 TiB 作为 GA 产品/服务。
 
 ### <a name="restrictions"></a>限制
 
-- Azure 预览版[条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)适用于处于预览阶段的大型文件共享, 包括与 Azure 文件同步部署一起使用。
-- 要求您创建一个新的常规用途存储帐户 (无法扩展现有存储帐户)。
+- Azure 预览版[条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)适用于处于预览阶段的大型文件共享，包括与 Azure 文件同步部署一起使用。
+- 要求您创建一个新的常规用途存储帐户（无法扩展现有存储帐户）。
 - 在将订阅接受到较大的文件共享预览后，创建的任何新存储帐户都不能进行 LRS/ZRS 到 GRS/GZRS 帐户转换。
 
 
 ### <a name="regional-availability"></a>区域可用性
 
-标准文件共享在所有区域中可用, 最高可达 5 TiB。 在某些区域, 可使用 100 TiB 限制, 下表列出了这些区域:
+标准文件共享在所有区域中可用，最高可达 5 TiB。 在某些区域，可使用 100 TiB 限制，下表列出了这些区域：
 
 |地区 |支持的冗余 |支持现有的存储帐户 |门户支持 * |
 |-------|---------|---------|---------|
 |澳大利亚东部 |LRS     |否    |是|
-|澳大利亚东南部|LRS     |否    |尚不支持|
-|印度中部  |LRS     |否    |尚不支持|
-|东亚      |LRS     |否    |尚不支持|
-|East US        |LRS     |否    |尚不支持|
-|法国中部 |LRS、ZRS|否    |LRS-是，ZRS-尚未|
+|澳大利亚东南部|LRS |否    |是|
+|印度中部  |LRS     |否    |是|
+|东亚      |LRS     |否    |是|
+|East US        |LRS     |否    |是|
+|法国中部 |LRS、ZRS|否    |是|
 |法国南部   |LRS     |否    |是|
 |北欧   |LRS     |否    |尚不支持|
-|印度南部    |LRS     |否    |尚不支持|
+|印度南部    |LRS     |否    |是|
 |东南亚 |LRS、ZRS|否    |是|
-|美国中西部|LRS     |否    |尚不支持|
+|美国中西部|LRS     |否    |是|
 |西欧    |LRS、ZRS|否    |是|
-|美国西部        |LRS     |否    |尚不支持|
+|美国西部        |LRS     |否    |是|
 |美国西部 2      |LRS、ZRS|否    |是|
 
 
 \* 对于没有门户支持的区域，你仍可以使用 PowerShell 或 Azure 命令行接口（CLI）来创建大于 5 TiB 的共享。 或者，通过门户创建新的共享，而无需指定配额。 这会创建默认大小为 100 TiB 的共享，稍后可通过 PowerShell 或 Azure CLI 进行更新。
 
-若要帮助我们确定新的区域和功能的优先级, 请填写此[调查](https://aka.ms/azurefilesatscalesurvey)。
+若要帮助我们确定新的区域和功能的优先级，请填写此[调查](https://aka.ms/azurefilesatscalesurvey)。
 
 ### <a name="steps-to-onboard"></a>载入步骤
 
-若要将订阅注册到较大的文件共享预览, 需要使用 Azure PowerShell。 您可以使用[Azure Cloud Shell](https://shell.azure.com/)或[本地安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0)来运行以下 PowerShell 命令:
+若要将订阅注册到较大的文件共享预览，需要使用 Azure PowerShell。 您可以使用[Azure Cloud Shell](https://shell.azure.com/)或[本地安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0)来运行以下 PowerShell 命令：
 
-首先, 请确保选择要在预览中注册的订阅:
+首先，请确保选择要在预览中注册的订阅：
 
 ```powershell
 $context = Get-AzSubscription -SubscriptionId ...
 Set-AzContext $context
 ```
 
-然后, 使用以下命令注册预览版:
+然后，使用以下命令注册预览版：
 
 ```powershell
 Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
-运行这两个命令后, 会自动批准订阅。
+运行这两个命令后，会自动批准订阅。
 
-若要验证你的注册状态, 你可以运行以下命令:
+若要验证你的注册状态，你可以运行以下命令：
 
 ```powershell
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-最长可能需要15分钟才能将状态更新为 "**已注册**"。 **注册**状态后, 应该能够使用此功能。
+最长可能需要15分钟才能将状态更新为 "**已注册**"。 **注册**状态后，应该能够使用此功能。
 
 ### <a name="use-larger-file-shares"></a>使用较大的文件共享
 
-若要开始使用较大的文件共享, 请创建新的常规用途 v2 存储帐户和新的文件共享。
+若要开始使用较大的文件共享，请创建新的常规用途 v2 存储帐户和新的文件共享。
 
 ## <a name="data-growth-pattern"></a>数据增长模式
 
-目前, Azure 文件共享的最大大小为 5 TiB 100 (TiB 为预览版)。 鉴于此当前限制，必须考虑部署 Azure 文件共享时的预期数据增长。
+目前，Azure 文件共享的最大大小为 5 TiB 100 （TiB 为预览版）。 鉴于此当前限制，必须考虑部署 Azure 文件共享时的预期数据增长。
 
 可使用 Azure 文件同步将多个 Azure 文件共享同步到单个 Windows 文件服务器。这可确保本地的较旧、大型文件共享能够导入到 Azure 文件同步。有关详细信息，请参阅[规划 Azure 文件同步部署](storage-files-planning.md)。
 

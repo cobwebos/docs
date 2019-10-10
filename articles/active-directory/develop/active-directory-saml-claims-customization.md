@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd752540d078ef57c8b6150edbf9b124bc445fe0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: f4f26c82d4cda6ce3d8bf01c7fd52fa579e86dcf
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949350"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240234"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -66,13 +66,13 @@ ms.locfileid: "71949350"
 | **电子邮件地址** | Azure AD 将使用 EmailAddress 作为 NameID 格式。 |
 | **未指定** | Azure AD 将使用未指定的作为 NameID 格式。 |
 
-若要了解有关 NameIDPolicy 属性的详细信息，请参阅[单一登录 SAML 协议](single-sign-on-saml-protocol.md)。
+还支持暂时性 NameID，但在下拉列表中不可用，并且不能在 Azure 端进行配置。 若要了解有关 NameIDPolicy 属性的详细信息，请参阅[单一登录 SAML 协议](single-sign-on-saml-protocol.md)。
 
 ### <a name="attributes"></a>特性
 
 为 `NameIdentifier`（或 NameID）声明选择所需的源。 可以从以下选项中选择。
 
-| 姓名 | 描述 |
+| 名称 | 描述 |
 |------|-------------|
 | Email | 用户的电子邮件地址 |
 | userprincipalName | 用户的用户主体名称（UPN） |

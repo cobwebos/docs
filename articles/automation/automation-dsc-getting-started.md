@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 55950892bec71fdff50cdd0e0b1aae107d845739
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: f943aac4a91217983963fac6f8d0b2b3ba6895a1
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169736"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243613"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration 入门
 
-本文说明如何使用 Azure Automation State Configuration 执行最常见的任务，例如创建、导入、编译配置，加入要管理的计算机和查看报告。 有关 Azure Automation State Configuration 的概述，请参阅 [Azure Automation State Configuration 概述](automation-dsc-overview.md)。 有关 Desired State Configuration (DSC) 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](/powershell/dsc/overview)。
+本文说明如何使用 Azure Automation State Configuration 执行最常见的任务，例如创建、导入、编译配置，加入要管理的计算机和查看报告。 有关 Azure Automation State Configuration 的概述，请参阅 [Azure Automation State Configuration 概述](automation-dsc-overview.md)。 有关 Desired State Configuration (DSC) 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overview)。
 
 本文提供有关如何使用 Azure Automation State Configuration 的分步指南。 如果需要一个已经设置好的示例环境，而不想按照本文所述步骤进行操作，则可使用以下资源管理器模板：[Azure 自动化托管的节点模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration)。 此模板设置了一个完整的 Azure Automation State Configuration 环境，包括一个由 Azure Automation State Configuration 管理的 Azure VM。
 
@@ -31,7 +31,7 @@ ms.locfileid: "72169736"
 
 ## <a name="creating-a-dsc-configuration"></a>创建 DSC 配置
 
-将创建一个简单的 [DSC 配置](/powershell/dsc/configurations)，以确保存在（或不存在）**Web-Server** Windows 功能 (IIS)，具体取决于分配节点的方式。
+将创建一个简单的 [DSC 配置](/powershell/scripting/dsc/configurations/configurations)，以确保存在（或不存在）**Web-Server** Windows 功能 (IIS)，具体取决于分配节点的方式。
 
 1. 启动 [VSCode](https://code.visualstudio.com/docs)（或任何文本编辑器）。
 1. 键入以下文本：
@@ -61,7 +61,7 @@ ms.locfileid: "72169736"
     ```
 1. 将文件另存为 `TestConfig.ps1`。
 
-此配置调用每个节点块中的一个资源（[WindowsFeature 资源](/powershell/dsc/windowsfeatureresource)），以确保存在（或不存在）**Web-Server** 功能。
+此配置调用每个节点块中的一个资源（[WindowsFeature 资源](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)），以确保存在（或不存在）**Web-Server** 功能。
 
 ## <a name="importing-a-configuration-into-azure-automation"></a>将配置导入 Azure 自动化
 
@@ -94,7 +94,7 @@ ms.locfileid: "72169736"
 ## <a name="compiling-a-configuration-in-azure-automation"></a>编译 Azure 自动化中的配置
 
 在将所需状态应用到某个节点之前，必须将定义该状态的 DSC 配置编译成一个或多个节点配置（MOF 文档），然后放置在自动化 DSC 拉取服务器上。 如需在 Azure Automation State Configuration 中进行配置编译的更详细说明，请参阅[在 Azure Automation State Configuration 中编译配置](automation-dsc-compile.md)。
-有关编译配置的详细信息，请参阅 [DSC 配置](/powershell/dsc/configurations)。
+有关编译配置的详细信息，请参阅 [DSC 配置](/powershell/scripting/dsc/configurations/configurations)。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”，并单击自动化帐户的名称。
@@ -195,7 +195,7 @@ Azure 将启动登记 VM 的过程。 完成后，VM 会显示在自动化帐户
 - 节点的名称、IP 地址和配置模式。
 
 还可以通过单击“查看原始报告”来查看节点发送到服务器的实际数据。
-有关如何使用该数据的详细信息，请参阅[使用 DSC 报表服务器](/powershell/dsc/reportserver)。
+有关如何使用该数据的详细信息，请参阅[使用 DSC 报表服务器](/powershell/scripting/dsc/pull-server/reportserver)。
 
 在登记节点以后，可能需要一段时间才会提供第一个报告。 在登记节点以后，可能需要等待长达 30 分钟的时间才能获得第一个报告。
 
@@ -233,6 +233,6 @@ Azure 将启动登记 VM 的过程。 完成后，VM 会显示在自动化帐户
 
 - [Azure Automation State Configuration 概述](automation-dsc-overview.md)
 - [加入 Azure Automation State Configuration 管理的计算机](automation-dsc-onboarding.md)
-- [Windows PowerShell Desired State Configuration 概述](/powershell/dsc/overview)
+- [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overview)
 - [Azure Automation State Configuration cmdlet](/powershell/module/azurerm.automation/#automation)
 - [Azure Automation State Configuration 定价](https://azure.microsoft.com/pricing/details/automation/)

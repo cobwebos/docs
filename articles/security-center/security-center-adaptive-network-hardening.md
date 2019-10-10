@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 28761b78b49ad0774594b45db4587c710fc7d810
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 060a5a6a356574e04a3492cdeadd93ddf9a38535
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996716"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255241"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 安全中心的自适应网络强化
 了解如何在 Azure 安全中心配置自适应网络强化。
@@ -49,7 +49,7 @@ ms.locfileid: "71996716"
 
 2. 从 "不**正常资源**" 选项卡中，选择要查看其警报的 VM，并选择要应用的建议强化规则。
 
-    ![强化警报](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
+    ![强化警报](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
 
 
 ## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>查看并应用自适应网络强化建议规则

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 876fef2b597e9a7dfd896f2b9697378e745a07f3
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 2ec38659b0bafa8836ac787ac36b662970141843
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709816"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249092"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB 和 Azure Functions 的基于事件的无服务器体系结构
 
@@ -29,7 +29,7 @@ Azure Functions 提供连接到[更改源](change-feed.md)的最简单方法。 
 
 若要实现基于事件的无服务器流，需要：
 
-* **受监视的容器**：受监视的容器是正在受到监视的 Azure Cosmos 容器，它存储生成了更改源的数据。 对受监视容器的任何插入和更改（例如 CRUD）都会反映在容器的更改源中。
+* **受监视的容器**：受监视的容器是正在受到监视的 Azure Cosmos 容器，它存储生成了更改源的数据。 对受监视容器的任何插入、对所监视容器的更新都会反映在容器的更改源中。
 * **租约容器**：租约容器维护多个动态无服务器 Azure 函数实例的状态，并启用动态缩放。 可以通过适用于 Cosmos DB 的 Azure Functions 触发器手动或自动创建此租约容器。 若要自动创建租约容器，请在[配置](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)中设置 *CreateLeaseCollectionIfNotExists* 标记。 分区的租约容器需要包含 `/id` 分区键定义。
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>创建适用于 Cosmos DB 的 Azure Functions 触发器
@@ -44,7 +44,7 @@ Azure Functions 提供连接到[更改源](change-feed.md)的最简单方法。 
 
 可以使用 [Azure Cosmos DB 模拟器](./local-emulator.md)[在本地运行 Azure 函数](../azure-functions/functions-develop-local.md)，以创建和开发基于事件的无服务器流，而无需使用 Azure 订阅，也不会产生任何费用。
 
-如果要测试云中的实时方案, 可以[免费试用 Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) , 无需任何信用卡或 Azure 订阅。
+如果要测试云中的实时方案，可以[免费试用 Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) ，无需任何信用卡或 Azure 订阅。
 
 ## <a name="next-steps"></a>后续步骤
 

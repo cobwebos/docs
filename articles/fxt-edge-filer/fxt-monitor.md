@@ -1,85 +1,85 @@
 ---
-title: 监视 Azure FXT 边缘文件管理器
-description: 如何监视 Azure FXT 边缘文件管理器混合存储缓存的硬件状态
+title: 监视 Azure FXT Edge 文件服务器
+description: 如何监视 Azure FXT Edge 文件服务器混合存储缓存的硬件状态
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: e6afd90c4e5a1b0759b3de7789ec37db4c04f2c7
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.author: rohogue
+ms.openlocfilehash: 3f422339af2040ad81c585c0e193e6cb3667b135
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827443"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254872"
 ---
-# <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>监视 Azure FXT 边缘文件管理器硬件状态
+# <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>监视 Azure FXT Edge 文件服务器硬件状态
 
-Azure FXT 边缘文件管理器混合存储缓存系统具有多个内置于机箱，可帮助管理员了解了解硬件的运行状况的状态指示灯。
+Azure FXT Edge 文件服务器混合存储缓存系统将多个状态灯内置于机箱，以帮助管理员了解硬件的工作方式。
 
-## <a name="system-health-status"></a>系统运行状况状态
+## <a name="system-health-status"></a>系统运行状况
 
-若要监视高级别上的缓存操作，使用该软件控制面板的**仪表板**页上，如中所述[控件面板仪表板指南](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html)
+若要在更高级别上监视缓存操作，请使用 "软件控制面板" 的 "**仪表板**" 页，如控制面板的 "[仪表板" 指南](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html)中所述
 
 ## <a name="hardware-status-leds"></a>硬件状态 Led
 
-本部分介绍内置于 Azure FXT 边缘文件服务器硬件的各种状态指示灯。
+本部分介绍 Azure FXT Edge 文件服务器硬件中内置的各种状态灯。
 
-### <a name="hard-drive-status-leds"></a>硬盘驱动器状态 Led
+### <a name="hard-drive-status-leds"></a>硬盘状态 Led
 
-![硬盘驱动器正面、 水平、 带标注标签 2 的图片 （左上的角），1 （左下角） 和 3 （右侧）](media/fxt-monitor/fxt-drive-callouts.png)
+![硬盘正面、水平、带有标注标签2（左上角）、1（左下角）和3（右侧）的图片](media/fxt-monitor/fxt-drive-callouts.png)
 
-每个驱动器承运人有两个状态指示灯： 活动指示器 （1） 和状态指示器 (2)。 
+每个驱动器托架都有两个状态 Led：活动指示器（1）和状态指示器（2）。 
 
-* 活动 LED (1) 灯时驱动器正在使用中。  
-* 状态 LED (2) 通过使用下表中的代码指示在驱动器的条件。
+* 驱动器正在使用时，活动 LED （1）指示灯亮起。  
+* 状态 LED （2）指示驱动器的条件，使用下表中的代码。
 
 | 驱动器状态 LED 状态              | 含义  |
 |-------------------------------------|----------------------------------------------------------|
-| 每秒两次绿色闪烁      | 标识驱动器*或* <br> 删除准备驱动器  |
-| 关闭 （未亮起）                         | 系统未完成启动*或* <br>驱动器已准备好要删除 |
-| 闪烁的绿色、 琥珀色，并关闭       | 预测的驱动器故障   |
-| 每秒四次闪烁琥珀色 | 驱动器出现故障   |
-| 稳定的绿色                         | 驱动器处于联机状态 |
+| 每秒闪烁绿色两次      | 正在识别驱动器*或* <br> 正在准备要删除的驱动器  |
+| 关闭（unlit）                         | 系统尚未完成启动*或* <br>已准备好删除驱动器 |
+| 闪烁绿色、琥珀色和熄灭       | 预测驱动器故障   |
+| 每秒闪烁四次琥珀色 | 驱动器失败   |
+| 稳定绿色                         | 驱动器处于联机状态 |
 
-驱动器 (3) 的右侧都标有驱动器的容量和其他信息。
+驱动器（3）的右侧标有驱动器容量和其他信息。
 
-驱动器编号显示在驱动器之间的空间上。 在 Azure FXT Edge Filer 中，驱动器 0 为左上角的驱动器，驱动器 1 位于其正下方。 编号将继续在该模式中。 
+驱动器编号显示在驱动器之间的空间上。 在 Azure FXT Edge Filer 中，驱动器 0 为左上角的驱动器，驱动器 1 位于其正下方。 此模式中的编号继续。 
 
 ![FXT 机箱中一个硬盘槽的图片，其中显示了驱动器编号和容量标签](media/fxt-drives-photo.png)
 
-## <a name="left-control-panel"></a>左侧的控件面板
+## <a name="left-control-panel"></a>左侧控制面板
 
-左前控制面板具有各种状态 LED 指示灯 （1） 和大型亮起的系统运行状况指示符 (2)。 
+左前控制面板具有各种状态 LED 指示器（1）和较大的灯系统运行状况指示符（2）。 
 
-![左边的状态窗格中，标签上的左窗格和标签右侧浅大型系统运行状况指示符的 2 的状态指示器的 1](media/fxt-monitor/fxt-control-panel-left.jpg)
+![左侧状态面板，左侧有1个标签状态指示器，2则在右侧添加较大的系统健康指示器光源](media/fxt-monitor/fxt-control-panel-left.jpg)
 
-### <a name="control-panel-status-indicators"></a>控件面板状态指示器 
+### <a name="control-panel-status-indicators"></a>控制面板状态指示器 
 
-在左侧的状态指示符显示稳定琥珀色指示灯在该系统中是否存在错误。 下表描述了可能的原因和解决方案的错误。 
+如果系统中存在错误，则左侧的状态指示器显示稳定的琥珀色指示灯。 下表描述了可能的错误原因和解决方法。 
 
-如果仍在尝试使用这些解决方案时遇到错误[请联系支持人员](fxt-support-ticket.md)有关的帮助。 
+如果尝试这些解决方案后仍出现错误，请[联系支持人员](fxt-support-ticket.md)获取帮助。 
 
 | 图标 | 描述 | 添加状态 | 可能的解决方案 |
 |----------------|---------------|--------------------|----------------------|
-| ![驱动器图标](media/fxt-monitor/fxt-hd-icon.jpg) | 驱动器状态 | 驱动器错误 | 检查系统事件日志以确定驱动器是否有错误，或 <br>运行相应的在线诊断测试;重新启动系统并运行嵌入式的诊断 (ePSA)，或 <br>如果在 RAID 阵列，则将配置驱动器，重新启动系统并输入主机适配器配置实用程序 |
-|![温度图标](media/fxt-monitor/fxt-temp-icon.jpg) | 温度状态 | 热感错误-例如，风扇发生故障或环境温度超出范围 | 检查可寻址满足以下条件： <br>冷却风扇缺失或已失败 <br>系统的封面，以无线方式罩内存模块保留为空，或后删除填充托架 <br>环境温度过高 <br>外部空气流通挡住 |
-|![电力图标](media/fxt-monitor/fxt-electric-icon.jpg) | 电源状态 | 电力错误-例如，电压超出范围，失败 PSU 或失败的电压 regulator |  检查系统事件日志或系统消息的特定问题。 如果没有 PSU 问题，检查 PSU 状态 LED，并且如果需要重新 PSU。 | 
-|![内存图标](media/fxt-monitor/fxt-memory-icon.jpg) | 内存状态 | 内存不足错误 | 检查系统事件日志或系统消息的失败内存; 位置将内存模块的重新。 |
+| ![驱动器图标](media/fxt-monitor/fxt-hd-icon.jpg) | 驱动器状态 | 驱动器错误 | 检查系统事件日志以确定驱动器是否有错误，或 <br>运行相应的联机诊断测试;重新启动系统并运行嵌入式诊断（ePSA），或者 <br>如果驱动器是在 RAID 阵列中配置的，请重新启动系统并输入主机适配器配置实用程序 |
+|![温度图标](media/fxt-monitor/fxt-temp-icon.jpg) | 温度状态 | 温度错误-例如，风扇出现故障或环境温度超出范围 | 检查以下可寻址条件： <br>冷却风扇丢失或已失败 <br>系统盖、导风槽、内存模块为空或背面填充托架已删除 <br>环境温度过高 <br>外部气流受到阻碍 |
+|![电力图标](media/fxt-monitor/fxt-electric-icon.jpg) | 电气状态 | 电气错误-例如，电压超出范围、失败的 PSU 或发生故障的电压调节器 |  检查系统事件日志或系统消息中是否有特定的问题。 如果出现 PSU 问题，请检查 PSU 状态 LED，并根据需要重新拔插 PSU。 | 
+|![内存图标](media/fxt-monitor/fxt-memory-icon.jpg) | 内存状态 | 内存错误 | 检查系统事件日志或系统消息中是否有失败的内存;重新拔插内存模块。 |
 |![PCIe 图标](media/fxt-monitor/fxt-pcie-icon.jpg) | PCIe 状态 | PCIe 卡错误 | 重新启动系统;更新 PCIe 卡驱动程序;重新安装卡 |
 
 
-### <a name="system-health-status-indicator"></a>系统运行状况状态指示符
+### <a name="system-health-status-indicator"></a>系统运行状况状态指示器
 
-左侧的控件面板右侧的大文字的按钮指示总体系统状态，也用作在系统 ID 模式下的单元定位器光。
+左侧控制面板右侧的 "大点" 按钮指示整体系统状态，并且在系统 ID 模式下用作单元定位灯。
 
-按系统运行状况和 ID 按钮系统 ID 模式和系统运行状况模式之间进行切换。
+按 "系统运行状况" 和 "ID" 按钮在系统 ID 模式和系统运行状况模式间切换。
 
-|系统运行状况状态为 | 条件 |
+|系统运行状况状态 | 条件 |
 |-------------------------------------------|-----------------------------------------------|
-| 纯色的蓝色 | 正常操作： 系统已开启，通常情况下，操作系统和系统 ID 模式未处于活动状态。 <br/>如果你想要切换到系统 ID 模式，请按系统运行状况和 ID 按钮。 |
-| 闪烁的蓝色 | 系统 ID 模式处于活动状态。 如果你想要切换到系统运行状况模式，按系统运行状况和 ID 系统按钮。 |
-| 琥珀色 | 系统为防故障模式。 如果问题仍然存在，请[请联系 Microsoft 客户服务和支持](fxt-support-ticket.md)。 |
-| 闪烁的琥珀色 | 系统故障。 检查系统事件日志以特定的错误消息。 有关生成系统固件和监视系统组件的代理的事件和错误消息的信息，请参阅 qrl.dell.com 的错误代码查找页面。 |
+| 稳定蓝色 | 正常操作：系统已打开，正常运行，系统 ID 模式处于非活动状态。 <br/>如果要切换到系统 ID 模式，请按 "系统运行状况" 和 "ID" 按钮。 |
+| 蓝色闪烁 | 系统 ID 模式处于活动状态。 如果要切换到系统运行状况模式，请按 "系统运行状况和系统 ID" 按钮。 |
+| 稳定琥珀色 | 系统处于故障安全模式。 如果问题仍然存在，请[与 Microsoft 客户服务和支持联系](fxt-support-ticket.md)。 |
+| 琥珀色闪烁 | 系统错误。 检查系统事件日志中是否有特定的错误消息。 有关系统固件和监视系统组件的代理生成的事件和错误消息的信息，请参阅错误代码查找页面，网址为 qrl.dell.com。 |
 
 

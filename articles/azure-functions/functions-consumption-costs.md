@@ -7,12 +7,12 @@ ms.date: 9/20/2019
 ms.topic: conceptual
 ms.service: azure-functions
 manager: gwallace
-ms.openlocfilehash: fa35e5bea7b0d7f2435a8ad31b9195d2fd35a45c
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 0ff41eb511ad4513fc9bf5a2ded7ef47b08d12ab
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181257"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243306"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估计消耗计划成本
 
@@ -34,7 +34,7 @@ Durable Functions 还可以在消耗计划中运行。 若要了解有关使用 
 
 单个函数执行的执行*开销*以*GB 秒*为单位。 执行开销是通过将其内存使用率与执行时间相结合来计算的。 用于运行的函数比使用更多内存的函数更长。 
 
-假设函数使用的内存量保持不变。 在这种情况下，计算成本是简单的乘法。 例如，假设函数使用了 0.5 GB，3秒。 则执行成本为`0.5GB * 3s = 1.5 GB-seconds`。 
+假设函数使用的内存量保持不变。 在这种情况下，计算成本是简单的乘法。 例如，假设函数使用了 0.5 GB，3秒。 则执行开销为 `0.5GB * 3s = 1.5 GB-seconds`。 
 
 由于内存使用量随时间而变化，因此计算实质上是一段时间内内存使用量的整数。  系统会按固定的时间间隔对进程的内存使用量（以及子进程）执行此计算。 如[定价页]中所述，内存使用量向上舍入到最接近的 128-MB 存储桶。 如果你的进程使用 160 MB，则需支付 256 MB。 计算采用并发性，这是同一进程中的多个并发函数执行。
 
@@ -61,11 +61,11 @@ Durable Functions 还可以在消耗计划中运行。 若要了解有关使用 
 
 + **触发器和绑定**：从读取输入并将输出写入[函数绑定](functions-triggers-bindings.md)所用的时间将计入执行时间。 例如，当函数使用输出绑定将消息写入到 Azure 存储队列时，执行时间包括将消息写入队列所用的时间，包括在函数开销的计算中。 
 
-+ **异步执行**：函数等待异步请求结果（`await`在中C#）的时间计为执行时间。 GB-秒计算基于函数的开始和结束时间以及该时间段内的内存使用量。 在这段时间内，不会将 CPU 活动分解为计算。 在异步操作期间，可以使用[Durable Functions](durable/durable-functions-overview.md)降低成本。 在业务流程协调程序函数中等待等待的时间不计费。
++ **异步执行**：函数等待异步请求结果（在中C#为 @no__t）的时间被视为执行时间。 GB-秒计算基于函数的开始和结束时间以及该时间段内的内存使用量。 在这段时间内，不会将 CPU 活动分解为计算。 在异步操作期间，可以使用[Durable Functions](durable/durable-functions-overview.md)降低成本。 在业务流程协调程序函数中等待等待的时间不计费。
 
 ## <a name="view-execution-data"></a>查看执行数据
 
-在[您的发票](/billing/billing-download-azure-invoice.md)中，可以查看所有执行的与成本相关的数据 **-函数**和**执行时间-函数**以及实际计费的成本。 但是，此发票数据是过去发票周期的每月聚合。 
+在[您的发票](/azure/billing/billing-download-azure-invoice)中，可以查看所有执行的与成本相关的数据 **-函数**和**执行时间-函数**以及实际计费的成本。 但是，此发票数据是过去发票周期的每月聚合。 
 
 为了更好地了解函数的成本影响，可以使用 Azure Monitor 查看函数应用当前生成的与成本相关的指标。 可以在[Azure 门户]或 REST api 中使用[Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)来获取此数据。
 
@@ -73,9 +73,9 @@ Durable Functions 还可以在消耗计划中运行。 若要了解有关使用 
 
 使用[Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)以图形格式查看消耗计划函数应用的成本相关数据。 
 
-1. 在搜索 "服务"、"**资源" 和 "文档**" 的[Azure 门户]顶部`monitor` ，搜索并选择 "**服务**" 下的 "**监视**"。
+1. 在搜索 "服务"、"**资源" 和 "文档**" 的[Azure 门户]顶部，搜索 @no__t 并选择 "**服务**" 下的 "**监视**"。
 
-1. 在左侧，选择 "**指标** > " "**选择资源**"，然后使用图像下方的设置选择 function app。
+1. 在左侧，选择 "**指标**"  > **选择一个资源**，然后使用图像下方的设置选择 function app。
 
     ![选择 function app 资源](media/functions-consumption-costing/select-a-resource.png)
 
@@ -84,7 +84,7 @@ Durable Functions 还可以在消耗计划中运行。 若要了解有关使用 
     |---------|---------|---------|
     | 订阅    |  订阅  | 包含 function app 的订阅。  |
     | 资源组     | 你的资源组  | 包含 function app 的资源组。   |
-    | 资源类型     |  应用程序服务 | 函数应用显示为监视器中的应用服务实例。 |
+    | 资源类型     |  应用服务 | 函数应用显示为监视器中的应用服务实例。 |
     | Resource     |  函数应用  | 要监视的函数应用。        |
 
 1. 选择 "**应用**"，选择要监视的函数应用。
@@ -101,13 +101,13 @@ Durable Functions 还可以在消耗计划中运行。 若要了解有关使用 
 
 由于执行单元数量大于执行计数，因此图表只显示执行单元。
 
-此图显示了在两个`Function Execution Units`小时内使用的总1110000000，以 MB 为单位。 若要转换为 GB 秒，请除以1024000。 在此示例中，函数应用使用`1110000000 / 1024000 = 1083.98`了 GB 秒。 您可以采用此值并乘以 "[函数定价" 页][定价页]上的当前执行时间价格，这将为您提供两个小时的成本，假定您已使用任何免费的执行时间授予。 
+此图显示了在两个小时内使用的总 1110000000 `Function Execution Units`，以 MB 为单位。 若要转换为 GB 秒，请除以1024000。 在此示例中，函数应用的使用 @no__t 为 0 GB。 您可以采用此值并乘以 "[函数定价" 页][定价页]上的当前执行时间价格，这将为您提供两个小时的成本，假定您已使用任何免费的执行时间授予。 
 
 ### <a name="azure-cli"></a>Azure CLI
 
 [Azure CLI](/cli/azure/)包含用于检索度量值的命令。 可以从本地命令环境使用 CLI，也可以直接从门户使用[Azure Cloud Shell](../cloud-shell/overview.md)。 例如，以下[az monitor 公制 list](/cli/azure/monitor/metrics#az-monitor-metrics-list)命令将返回以前使用的相同时间段内的每小时数据。
 
-请确保将替换`<AZURE_SUBSCRIPTON_ID>`为运行命令的 Azure 订阅 ID。
+请确保将 `<AZURE_SUBSCRIPTON_ID>` 替换为运行命令的 Azure 订阅 ID。
 
 ```azurecli-interactive
 az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/metrics-testing-consumption/providers/Microsoft.Web/sites/metrics-testing-consumption --metric FunctionExecutionUnits,FunctionExecutionCount --aggregation Total --interval PT1H --start-time 2019-09-11T21:46:00Z --end-time 2019-09-11T23:18:00Z
@@ -192,7 +192,7 @@ az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resour
   ]
 }
 ```
-此特定响应显示`2019-09-11T21:46` `2019-09-11T23:18`，在中，应用使用 1110000000 MB-毫秒（1083.98 GB）。
+此特定响应显示，从 `2019-09-11T21:46` 到 `2019-09-11T23:18`，其中应用使用 1110000000 MB-毫秒（1083.98 GB-秒）。
 
 ## <a name="determine-memory-usage"></a>确定内存使用情况
 
@@ -210,14 +210,14 @@ performanceCounters
 
 结果类似于以下示例：
 
-| timestamp \[UTC\]          | name          | value       |
+| timestamp \[UTC @ no__t-1          | name          | value       |
 |----------------------------|---------------|-------------|
-| 9/12/2019，1:05:14\.947 AM | 专用字节数 | 209932288 |
-| 9/12/2019，1:06:14\.994 AM | 专用字节数 | 212189184 |
-| 9/12/2019，1:06:30\.010 AM | 专用字节数 | 231714816 |
-| 9/12/2019，1:07:15\.040 AM | 专用字节数 | 210591744 |
-| 9/12/2019，1:12:16\.285 AM | 专用字节数 | 216285184 |
-| 9/12/2019，1:12:31\.376 AM | 专用字节数 | 235806720 |
+| 9/12/2019，1：05： 14 @ NO__T-0947 AM | 专用字节 | 209932288 |
+| 9/12/2019，1：06： 14 @ NO__T-0994 AM | 专用字节 | 212189184 |
+| 9/12/2019，1：06： 30 @ NO__T-0010 AM | 专用字节 | 231714816 |
+| 9/12/2019，1：07： 15 @ NO__T-0040 AM | 专用字节 | 210591744 |
+| 9/12/2019，1：12： 16 @ NO__T-0285 AM | 专用字节 | 216285184 |
+| 9/12/2019，1：12： 31 @ NO__T-0376 AM | 专用字节 | 235806720 |
 
 ## <a name="function-level-metrics"></a>函数级指标
 
@@ -232,9 +232,9 @@ customMetrics
 
 | name                       | averageDurationMilliseconds |
 |----------------------------|-----------------------------|
-| QueueTrigger AvgDurationMs | 16\.087                     |
-| QueueTrigger MaxDurationMs | 90\.249                     |
-| QueueTrigger MinDurationMs | 8\.522                      |
+| QueueTrigger AvgDurationMs | 16 @ no__t-0087                     |
+| QueueTrigger MaxDurationMs | 90 @ no__t-0249                     |
+| QueueTrigger MinDurationMs | 8 @ no__t-0522                      |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,7 +1,7 @@
 ---
-title: 使用共享的访问签名-Microsoft 基因组学提交工作流
-titleSuffix: Azure
-description: 本文假设已安装 msgen 客户端并成功运行了通过服务的示例数据。
+title: 使用共享访问签名的工作流
+titleSuffix: Microsoft Genomics
+description: 本文演示如何使用共享访问签名（SAS）而不是存储帐户密钥将工作流提交到 Microsoft 基因组学服务。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,18 +9,18 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 833067f53f53f347ce091a64702d44a78cde836f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657097"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248588"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>使用 SAS 而非存储帐户密钥将工作流提交到 Microsoft 基因组学 
 
-本文演示如何提交到 Microsoft 基因组学服务使用 config.txt 文件，其中包含工作流[共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)而不是存储帐户密钥。 如果担心让存储帐户密钥在 config.txt 文件中可见存在安全问题，则可使用此功能。 
+本文演示如何使用包含[共享访问签名（SAS）（](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)而不是存储帐户密钥）的 config.xml 文件将工作流提交到 Microsoft 基因组学服务。 如果担心让存储帐户密钥在 config.txt 文件中可见存在安全问题，则可使用此功能。 
 
-本文假定你已安装和运行 `msgen` 客户端，并且熟悉如何使用 Azure 存储。 如果您已成功提交使用提供的示例数据的工作流，你现可继续执行本文。 
+本文假定你已安装和运行 `msgen` 客户端，并且熟悉如何使用 Azure 存储。 如果已使用提供的示例数据成功提交工作流，则可继续阅读本文。 
 
 ## <a name="what-is-a-sas"></a>什么是 SAS？
 [共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 用于对存储帐户中的资源进行委托访问。 通过 SAS，可以授予对存储帐户中资源的访问权限，无需共享帐户密钥。 这是在应用程序中使用共享访问签名的关键之处 - SAS 是用于共享存储资源的一种安全方式，它不会危及帐户密钥。
@@ -33,14 +33,14 @@ ms.locfileid: "67657097"
 对于每个提交到 Microsoft 基因组学服务的工作流，需要至少两个 SAS 令牌，一个用于输入文件，一个用于输出容器。
 
 输入文件的 SAS 应该具有以下属性：
-1.  作用域(帐户、容器、Blob)：Blob
-2.  有效期：从现在起的 48 小时
-3.  权限：读取
+ - 作用域(帐户、容器、Blob)：Blob
+ - 有效期：从现在起的 48 小时
+ - 权限：读取
 
 输出容器的 SAS 应该具有以下属性：
-1.  作用域(帐户、容器、Blob)：容器
-2.  有效期：从现在起的 48 小时
-3.  权限：读取、写入、删除
+ - 作用域(帐户、容器、Blob)：容器
+ - 有效期：从现在起的 48 小时
+ - 权限：读取、写入、删除
 
 
 ## <a name="create-a-sas-for-the-input-files-and-the-output-container"></a>为输入文件和输出容器创建 SAS

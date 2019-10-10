@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 991cfb54dc511c284c5f5d0cf1807d5dd42b34ea
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: eb15aa3c6dbe0f4db62a2029a3c97b4475ab53a2
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978078"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255880"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -44,6 +44,9 @@ Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请
 ## <a name="disabled"></a>已禁用
 
 对于测试情况以及在策略定义已参数化效果时，此效果很有用。 借助这种灵活性可以禁用单个分配，而无需禁用该策略的所有分配。
+
+禁用效果的替代方法是在策略分配上设置的**enforcementMode** 。
+禁用**enforcementMode**时，仍会评估资源。 日志记录（例如活动日志）和策略效果不会发生。 有关详细信息，请参阅[策略分配-强制模式](./assignment-structure.md#enforcement-mode)。
 
 ## <a name="append"></a>附加
 

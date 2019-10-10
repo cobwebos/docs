@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: ed231bc05d58a40c93cea74081c027e5b49f5306
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982842"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254504"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure 安全中心提供支持的功能
 
@@ -39,35 +39,35 @@ ms.locfileid: "71982842"
 |----|----|----|----|----|----|----|----|
 |**环境**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
 ||**虚拟机**|**虚拟机规模集**||**虚拟机**|**虚拟机规模集**|
-|虚拟机行为分析威胁检测警报|✔|✔|✔|✔（在支持的版本上）|✔（在支持的版本上）|✔|建议（免费）威胁检测（标准）|
-|基于网络的威胁检测警报|✔|✔|X|✔|✔|X|标准|
-|Microsoft Defender ATP 集成|✔（在支持的版本上）|✔（在支持的版本上）|✔|X|X|X|标准|
-|允许缺失修补程序|✔|✔|✔|✔|✔|✔|免费|
-|安全配置|✔|✔|✔|✔|✔|✔|免费|
-|Endpoint protection 评估|✔|✔|✔|X|X|X|免费|
-|实时 VM 访问|✔|X|X|✔|X|X|标准|
-|自适应应用程序控件|✔|X|✔|✔|X|✔|标准|
-|文件完整性监视|✔|✔|✔|✔|✔|✔|标准|
-|磁盘加密评估|✔|✔|X|✔|✔|X|免费|
-|第三方部署|✔|X|X|✔|X|X|免费|
-|NSG 评估|✔|✔|X|✔|✔|X|免费|
-|无文件威胁检测|✔|✔|✔|X|X|X|标准|
-|网络映射|✔|✔|X|✔|✔|X|标准|
-|自适应网络强化|✔|X|X|✔|X|X|标准|
+|[Microsoft Defender ATP 集成](https://docs.microsoft.com/azure/security-center/security-center-wdatp)|✔（在支持的版本上）|✔（在支持的版本上）|✔|X|X|X|标准|
+|[虚拟机行为分析威胁检测警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas)|✔|✔|✔|✔（在支持的版本上）|✔（在支持的版本上）|✔|建议（免费）威胁检测（标准）|
+|[Fileless 威胁检测警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas#fileless-attack-detection-)|✔|✔|✔|X|X|X|标准|
+|[基于网络的威胁检测警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer#azure-network-layer)|✔|✔|X|✔|✔|X|标准|
+|[实时 VM 访问](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|✔|X|X|✔|X|X|标准|
+|[文件完整性监视](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)|✔|✔|✔|✔|✔|✔|标准|
+|[自适应应用程序控制](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)|✔|X|✔|✔|X|✔|标准|
+|[网络映射](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations#network-map)|✔|✔|X|✔|✔|X|标准|
+|[自适应网络强化](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)|✔|X|X|✔|X|X|标准|
 |自适应网络控制|✔|✔|X|✔|✔|X|标准|
-|合规性仪表板 & 报表|✔|✔|✔|✔|✔|✔|标准|
+|[合规性仪表板 & 报表](https://docs.microsoft.com/azure/security-center/security-center-compliance-dashboard)|✔|✔|✔|✔|✔|✔|标准|
 |Docker 托管的 IaaS 容器上的建议和威胁检测|X|X|X|✔|✔|✔|标准|
+|缺少操作系统修补程序评估|✔|✔|✔|✔|✔|✔|免费|
+|安全错误配置评估|✔|✔|✔|✔|✔|✔|免费|
+|[Endpoint protection 评估](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|X|X|X|免费|
+|磁盘加密评估|✔|✔|X|✔|✔|X|免费|
+|第三方漏洞评估|✔|X|X|✔|X|X|免费|
+|[网络安全评估]()|✔|✔|X|✔|✔|X|免费|
 
 ### 支持的 endpoint protection 解决方案<a name="endpoint-supported"></a>
 
 下表提供了一个矩阵：
 
  - 是否可以使用 Azure 安全中心安装每个解决方案。
- - 安全中心可以发现哪些保护解决方案。 如果发现其中一个终结点保护解决方案，安全中心将建议不要安装。
+ - 安全中心可以发现哪些保护解决方案。 如果发现此列表中的 endpoint protection 解决方案，则安全中心不建议安装一个。
 
 有关为每个保护生成建议的时间的信息，请参阅[Endpoint Protection 评估和建议](security-center-endpoint-protection.md)。
 
-| Endpoint Protection| 平台 | 安全中心安装 | 安全中心发现 |
+| 终结点保护| 平台 | 安全中心安装 | 安全中心发现 |
 |------|------|-----|-----|
 | Windows Defender (Microsoft Antimalware)| Windows Server 2016| 否，内置到 OS| 是 |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2（请参阅以下备注） | 通过扩展 | 是 |
@@ -77,7 +77,7 @@ ms.locfileid: "71982842"
 | McAfee v10+ | Linux 服务器系列  | 否 | 是 **\*** |
 | Sophos V9.x +| Linux 服务器系列  | 否 | 是 **\***  |
 
- **\*** 覆盖状态和支持数据当前仅可用于与受保护订阅关联的 Log Analytics 工作区中，而不会在 Azure 安全中心门户中反映出来。
+ **\*** 覆盖率状态和支持数据当前仅在与受保护订阅关联的 Log Analytics 工作区中可用。 它不会在 Azure 安全中心门户中反映出来。
 
 > [!NOTE]
 >
@@ -105,10 +105,10 @@ Azure 安全中心支持以下 PaaS 资源：
 |NIC|✔| 不可用|
 |NSG|✔| 不可用|
 |订阅|✔ **| ✔|
-|Batch 帐户|✔| X|
+|批处理帐户|✔| X|
 |Service fabric 帐户|✔| X|
 |自动化帐户|✔| X|
-|负载均衡器|✔| X|
+|负载均衡|✔| X|
 |搜索|✔| X|
 |服务总线命名空间|✔| X|
 |流分析|✔| X|

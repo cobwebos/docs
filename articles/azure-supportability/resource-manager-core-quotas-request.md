@@ -5,23 +5,23 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 06/07/2019
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9a997af984b92ea59cc02d99fbd66d8967ca31bd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3248b10b4ad343e8776056d42ec153130f0061f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076816"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248650"
 ---
 # <a name="quota-increase-requests"></a>配额增加请求
 
-为虚拟机和虚拟机规模集资源管理器 vCPU 配额是在为每个订阅，每个区域中的两个层强制实施。 
+每个区域的每个订阅在两个级别上为虚拟机和虚拟机规模集资源管理器 vCPU 配额。 
 
-第一层的总区域的 Vcpu 限制 （跨所有 VM 系列中），第二层是每个 VM 系列的 Vcpu 限制 （例如 D 系列 Vcpu)。 每当新的 VM 时要部署的 VM 系列的新的和现有 Vcpu 使用率总和不能超过批准该特定的 VM 系列的 vCPU 配额。 此外，在所有 VM 系列中部署的总的新的和现有 vCPU 计数不应超过订阅的已批准的总区域的 Vcpu 配额。 如果超过了上述任一配额，将不允许部署 VM。
-你可以从 Azure 门户来请求增加的 VM 系列的 Vcpu 配额限制。 中的 VM 系列配额增加自动增加总区域的 Vcpu 限制相同的量。 
+第一层是区域个 vcpu 限制（跨所有 VM 系列），第二层是每个 VM 系列个 vcpu 限制（如 D 系列个 vcpu）。 每当部署新 VM 时，该 VM 系列的新的和现有个 vcpu 使用的总和不得超过为该特定 VM 系列批准的 vCPU 配额。 此外，在所有 VM 系列上部署的新的和现有的 vCPU 计数不应超过为订阅批准的总区域个 vcpu 配额。 如果超过了上述任一配额，将不允许部署 VM。
+可以从 Azure 门户中为 VM 序列请求增加个 vcpu 配额限制。 VM 序列配额增加会自动增加相同数量的区域个 vcpu 限制。 
 
-创建新订阅时，默认区域 Vcpu 总数可能不是等于默认对所有单个 VM 系列的 vCPU 配额的总和。 这可能导致具有足够的配额为你想要部署，每个单个 VM 系列，但没有足够的配额的区域 Vcpu 总数的所有部署的订阅。 在这种情况下，需要提交请求以显式增大总区域的 Vcpu 数限制。 区域的 Vcpu 总数限制不能超过已批准的配额的和区域的所有 VM 系列上。
+创建新订阅时，默认的区域个 vcpu 不能等于所有单个 VM 序列的默认 vCPU 配额之和。 这可能会导致订阅中每个要部署的单个 VM 序列具有足够的配额，但没有足够的配额来容纳所有部署的区域个 vcpu。 在这种情况下，你将需要提交请求，以显式增加区域个 vcpu 限制。 区域个 vcpu 限制的总大小不能超过区域的所有 VM 系列上批准的配额的总和。
 
-了解有关配额的详细信息[虚拟机 vCPU 配额页](https://docs.microsoft.com/azure/virtual-machines/windows/quotas)并[Azure 订阅和服务限制](https://aka.ms/quotalimits)页。 
+在[虚拟机 vCPU 配额页](https://docs.microsoft.com/azure/virtual-machines/windows/quotas)和[Azure 订阅和服务限制](https://aka.ms/quotalimits)页上了解有关配额的详细信息。 
 

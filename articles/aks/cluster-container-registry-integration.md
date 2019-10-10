@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: mlearned
-ms.openlocfilehash: ab744efd205d826cb7ae2c3eda7bba28f4a9bee0
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: d9d432c073872e7bb7f3562979e78989faea65eb
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097806"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241096"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
@@ -31,7 +31,7 @@ ms.locfileid: "71097806"
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>通过 ACR 集成创建新的 AKS 群集
 
-可以在一开始创建 AKS 群集时设置 AKS 与 ACR 的集成。  若要允许 AKS 群集与 ACR 交互，请使用 Azure Active Directory **服务主体**。 使用以下 CLI 命令，可以授权订阅中的现有 ACR，并为服务主体配置适当的**ACRPull**角色。 为下面的参数提供有效值。  括号中的参数为可选。
+可以在一开始创建 AKS 群集时设置 AKS 与 ACR 的集成。  若要允许 AKS 群集与 ACR 交互，请使用 Azure Active Directory **服务主体**。 以下 CLI 命令允许你在订阅中授权现有 ACR，并为服务主体配置适当的 **ACRPull** 角色。 为下面的参数提供有效值。  括号中的参数为可选。
 ```azurecli
 az login
 az acr create -n myContainerRegistry -g myContainerRegistryResourceGroup --sku basic [in case you do not have an existing ACR]
@@ -39,20 +39,20 @@ az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resou
 ```
 **ACR 资源 ID 具有以下格式：** 
 
-/subscriptions/< 订阅 >/resourceGroups/> </providers/Microsoft.ContainerRegistry/registries/{name} 
+/subscriptions/\<subscription @ no__t-1/resourceGroups/\<resource//providers/no__t-3/注册表项/@no__t-microsoft.containerregistry @ 4name 
   
 此步骤可能需要几分钟才能完成。
 
-## <a name="configure-acr-integration-for-existing-aks-clusters"></a>配置现有 AKS 群集的 ACR 集成
+## <a name="configure-acr-integration-for-existing-aks-clusters"></a>为现有的 AKS 群集配置 ACR 集成
 
-通过为**ACR 名称**或**acr 资源 id**提供有效值（如下所示），将现有的 ACR 与现有的 AKS 群集集成。
+通过为 **acr-name** 或 **acr-resource-id** 提供有效值，将现有 ACR 与现有 AKS 群集集成，如下所示。
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
 
-还可以使用以下项删除 ACR 与 AKS 群集之间的集成
+还可以使用以下命令删除 ACR 与 AKS 群集之间的集成
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>

@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure 的 Ansible 模块和版本矩阵 |Microsoft Docs
+title: 适用于 Azure 的 Ansible 模块和版本矩阵
 description: 适用于 Azure 的 Ansible 模块和版本矩阵
 keywords: ansible, 角色, 矩阵, 版本, azure, devops
 ms.topic: reference
@@ -8,24 +8,24 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: b3396b2f4639cc7298b77810dbaafadd308d6b24
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18654500a78178c46e72f9f6cd01e8507fa179f0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230977"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241539"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible 模块和版本矩阵
 
-Ansible 包括一套用于预配和配置 Azure 资源的模块。 这些资源包括虚拟机、规模集、网络服务和容器服务。 本文适用于 Azure 和在其中它们寄送的 Ansible 版本列出了各种 Ansible 模块。
+Ansible 包括一套用于预配和配置 Azure 资源的模块。 这些资源包括虚拟机、规模集、网络服务和容器服务。 本文列出了 Azure 的各种 Ansible 模块及其随附的 Ansible 版本。
 
 ## <a name="ansible-modules-for-azure"></a>适用于 Azure 的 Ansible 模块
 
-以下模块可以直接在远程主机上或通过 playbook 执行。
+可以直接在远程主机上或通过行动手册来执行以下模块。
 
-这些模块进行从 Ansible 官方发行版本和从以下 Microsoft playbook 角色。
+可从 Ansible 官方版本和以下 Microsoft 操作手册角色获取这些模块。
 
-| 适用于 Azure 的 Ansible 模块                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | Ansible 2.8 | Ansible 角色 | 
+| 适用于 Azure 的 Ansible 模块                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | Ansible 2。8 | Ansible 角色 | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|--------------|--------------| 
 | **计算**                    |           |                          |                          |                            |           |           |
 | azure_rm_availabilityset                    | 是          | 是                         | 是          | 是          | 是          | 是          |
@@ -190,10 +190,10 @@ Ansible 包括一套用于预配和配置 Azure 资源的模块。 这些资源�
 
 ## <a name="introduction-to-playbook-role-for-azure"></a>Azure 的 playbook 角色简介
 
-[Azure_preview_module playbook 角色](https://galaxy.ansible.com/Azure/azure_preview_modules/)包括所有最新的 Azure 模块。 更新和 Bug 修补程序比正式 Ansible 发布更及时完成。 如果将 Ansible 用于 Azure 资源预配目的，建议您安装`azure_preview_module`playbook 角色。
+[Azure_preview_module 操作手册角色](https://galaxy.ansible.com/Azure/azure_preview_modules/)包括所有最新的 azure 模块。 更新和 Bug 修补程序比正式 Ansible 发布更及时完成。 如果使用 Ansible 进行 Azure 资源预配，则建议安装 `azure_preview_module` 操作手册角色。
 
-`azure_preview_module` Playbook 角色每三周发布。
+每三周发布一次 `azure_preview_module` 操作手册角色。
 
 ## <a name="next-steps"></a>后续步骤
 
-Playbook 角色有关的详细信息，请参阅[创建可重用的 playbook](https://docs.ansible.com/ansible/latest/playbooks_reuse.html)。 
+有关操作手册角色的详细信息，请参阅[创建可重用的行动手册](https://docs.ansible.com/ansible/latest/playbooks_reuse.html)。 

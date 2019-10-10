@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 48ef7aeb1804aca9001288f6babd302b9c3a8347
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d035f26e4b550eb1e5d2cca161f14880814a15f6
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969538"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244161"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
@@ -160,18 +160,7 @@ SaaS 使用按流量计费服务，根据固定费用、每用户或消耗费用
 
 ## <a name="connect-lead-management"></a>连接潜在客户管理
 
-通过在市场中列出产品/服务并挂钩你的客户关系管理（CRM）系统，直接与客户联系，以便你可以在客户提出兴趣后立即接收客户联系信息或部署产品.
-
-- **选择潜在顾客目标**（下拉菜单）：向 CRM 系统提供连接详细信息，您希望我们向客户发送客户主管。 
-
-对于潜在客户管理，合作伙伴中心支持以下 CRM 系统。 选择安装说明的链接。
-
-- Azure Blob –提供联系人电子邮件、容器名称和存储帐户连接字符串。 
-- [Azure 表](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)–提供联系人电子邮件和存储帐户连接字符串。 
-- [DYNAMICS CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) –提供联系人电子邮件、URL 和身份验证模式（Office 365 或 Azure Active Directory）。
-- [Https 终结点](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https)–提供联系人电子邮件和 Https 终结点 URL。 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) –提供联系人电子邮件、表单 ID、MUNCHKIN 帐户 id 和服务器 id。
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) -提供联系人电子邮件和组织 ID。 
+[!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
 #### <a name="additional-lead-management-resources"></a>其他潜在客户管理资源
 - [潜在客户管理常见问题](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)

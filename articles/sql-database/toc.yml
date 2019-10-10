@@ -198,22 +198,20 @@
                   href: /sql/connect/ruby/ruby-driver-for-sql-server
     - name: 备份、还原和高可用性 (BCDR)
       items:
-        - name: 使用备份进行恢复
-          href: sql-database-recovery-using-backups.md
-        - name: 加速的数据库恢复
-          href: sql-database-accelerated-database-recovery.md
-        - name: 中断恢复指南
-          href: sql-database-disaster-recovery.md
-        - name: 恢复练习
-          href: sql-database-disaster-recovery-drills.md
         - name: 业务连续性
           href: sql-database-business-continuity.md
         - name: 高可用性
           href: sql-database-high-availability.md
-        - name: 自动备份
-          href: sql-database-automated-backups.md
-        - name: 长期备份保留
-          href: sql-database-long-term-retention.md
+        - name: 备份
+          items:
+            - name: 自动备份
+              href: sql-database-automated-backups.md
+            - name: 使用备份进行恢复
+              href: sql-database-recovery-using-backups.md
+            - name: 加速的数据库恢复
+              href: sql-database-accelerated-database-recovery.md
+            - name: 长期备份保留
+              href: sql-database-long-term-retention.md
         - name: 故障转移组和异地复制
           items:
             - name: 活动异地复制
@@ -222,6 +220,10 @@
               href: sql-database-auto-failover-group.md
             - name: 为副本配置安全性
               href: sql-database-geo-replication-security-config.md
+            - name: 中断恢复指南
+              href: sql-database-disaster-recovery.md
+            - name: 恢复练习
+              href: sql-database-disaster-recovery-drills.md
     - name: 监视和优化
       items:
         - name: “监视和优化”文档

@@ -1,22 +1,22 @@
 ---
-title: 可以通过 Azure Site Recovery 保护哪些工作负荷？ | Microsoft Docs
+title: 关于 Azure Site Recovery 的本地应用的灾难恢复
 description: 介绍可以通过将灾难恢复与 Azure Site Recovery 服务配合使用来保护的工作负荷。
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ad989a28e150635637a477d07803107a9fefff63
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232185"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255558"
 ---
-# <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>可以通过 Azure Site Recovery 保护哪些工作负荷？
+# <a name="about-disaster-recovery-for-on-premises-apps"></a>关于本地应用的灾难恢复
 
-本文介绍了可以使用 [Azure Site Recovery](site-recovery-overview.md) 服务为灾难恢复保护的工作负荷和应用程序。
+本文介绍了本地工作负荷和应用，你可以通过[Azure Site Recovery](site-recovery-overview.md)服务为灾难恢复提供保护。
 
 
 
@@ -41,7 +41,7 @@ Site Recovery 可帮助实现应用程序级的保护和恢复，如下所示：
 * 丰富的自动化库，提供特定于应用程序的生产就绪型脚本，可以下载并与恢复计划集成。
 
 ## <a name="workload-summary"></a>工作负荷摘要
-站点恢复可复制受支持计算机上运行的任何应用。 此外, 我们还与产品团队合作, 为表中指定的应用程序执行其他测试。
+站点恢复可复制受支持计算机上运行的任何应用。 此外，我们还与产品团队合作，对表中指定的应用进行额外测试。
 
 | **工作负载** |**将 Azure VM 复制到 Azure** |**将 Hyper-V VM 复制到辅助站点** | **将 Hyper-V VM 复制到 Azure** | **将 VMware VM 复制到辅助站点** | **将 VMware VM 复制到 Azure** |
 | --- | --- | --- | --- | --- |---|
