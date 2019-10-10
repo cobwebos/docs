@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2c01172bf22fb286f790543b02a4c1e482b05fe7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d5eca6ffce8390b2f8b4deae589d43f40897756d
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850563"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243455"
 ---
 # <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>使用 Desired State Configuration 配置虚拟机
 
@@ -42,7 +42,7 @@ ms.locfileid: "68850563"
 2. 单击“添加”  以打开“VM 选择”页。
 3. 找到要启用 DSC 的虚拟机。 可以使用搜索栏和筛选器选项来查找特定的虚拟机。
 4. 单击虚拟机，然后选择“连接”。 
-5. 选择适用于虚拟机的 DSC 设置。 如果已准备了一个配置，可以通过“节点配置名称”的形式来指定该配置。  可以将[配置模式](https://docs.microsoft.com/powershell/dsc/metaconfig)设置为控制计算机的配置行为。
+5. 选择适用于虚拟机的 DSC 设置。 如果已准备了一个配置，可以通过“节点配置名称”的形式来指定该配置。  可以将[配置模式](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig)设置为控制计算机的配置行为。
 6. 单击 **“确定”**
 
 ![将 Azure VM 载入到 DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -64,7 +64,7 @@ ms.locfileid: "68850563"
 
 本快速入门使用 DSC 配置在计算机上配置 Apache HTTP Server、MySQL 和 PHP。
 
-有关 DSC 配置的详细信息，请参阅 [DSC 配置](https://docs.microsoft.com/powershell/dsc/configurations)。
+有关 DSC 配置的详细信息，请参阅 [DSC 配置](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations)。
 
 在文本编辑器中，键入以下命令，并在本地将其保存为 `LAMPServer.ps1`。
 
@@ -142,7 +142,7 @@ configuration LAMPServer {
 > [!div class="nextstepaction"]
 > [通过 DSC 和 Chocolatey 持续部署到 VM](./automation-dsc-cd-chocolatey.md)
 
-* 若要详细了解 PowerShell Desired State Configuration，请参阅 [PowerShell Desired State Configuration 概述](https://docs.microsoft.com/powershell/dsc/overview)。
+* 若要详细了解 PowerShell Desired State Configuration，请参阅 [PowerShell Desired State Configuration 概述](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview)。
 * 若要详细了解如何通过 PowerShell 管理自动化 DSC，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/)。
 * 要了解如何将 DSC 报告转发到 Azure Monitor 日志以进行报告和警报，请参阅[将 DSC 报告转发到 Azure Monitor 日志](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
 

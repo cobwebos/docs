@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 0864db682141b1d7f8cb0c9ff14c9897fb02fe1b
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 149b83b9aacf23cde06a2b35aed06c164afe9647
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65412753"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243327"
 ---
 # <a name="what-is-azure-databricks"></a>什么是 Azure Databricks？
 
@@ -23,7 +23,7 @@ Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Az
 
 ![什么是 Azure Databricks？](./media/what-is-azure-databricks/azure-databricks-overview.png "什么是 Azure Databricks？")
 
-Azure Databricks 是基于Apache Spark 的快速、简单、协作型分析服务。 使用大数据管道时，原始或结构化的数据将通过 Azure 数据工厂以批的形式引入 Azure，或者通过 Kafka、事件中心或 IoT 中心进行准实时的流式传输。 此数据将驻留在 Data Lake（长久存储）、Azure Blob 存储或 Azure Data Lake Storage 中。 在运行分析工作流的过程中，可以使用 Azure Databricks 从 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)、[Azure Data Lake Storage](../data-lake-store/index.md)、[Azure Cosmos DB](../cosmos-db/index.yml) 或 [Azure SQL 数据仓库](../sql-data-warehouse/index.md)等多个数据源读取数据，并使用 Spark 将数据转化为前所未有的见解。
+Azure Databricks 是基于Apache Spark 的快速、简单、协作型分析服务。 使用大数据管道时，原始或结构化的数据将通过 Azure 数据工厂以批的形式引入 Azure，或者通过 Kafka、事件中心或 IoT 中心进行准实时的流式传输。 此数据将驻留在 Data Lake（长久存储）、Azure Blob 存储或 Azure Data Lake Storage 中。 在运行分析工作流的过程中，可以使用 Azure Databricks 从 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)、[Azure Data Lake Storage](../data-lake-store/index.md)、[Azure Cosmos DB](../cosmos-db/index.yml) 或 [Azure SQL 数据仓库](../sql-data-warehouse/index.yml)等多个数据源读取数据，并使用 Spark 将数据转化为前所未有的见解。
 
 ![Databricks 管道](./media/what-is-azure-databricks/databricks-pipeline.png)
 
@@ -64,7 +64,7 @@ Azure Databricks 在云中拥有安全可靠的生产环境，由 Spark 专家�
 ### <a name="databricks-runtime"></a>Databricks 运行时
 Databricks 运行时构建在 Apache Spark 的基础之上，原生针对 Azure 云构建。 
 
-与“无服务器”选项一样，Azure Databricks 完全消除了设置和配置数据基础结构所存在的基础结构复杂性以及所需的专业知识。 “无服务器”选项可帮助数据科学家以团队形式快速迭代。
+与“无服务器”选项一样，Azure Databricks 完全消除了设置和配置数据基础结构所存在的基础结构复杂性以及所需的专业知识。  “无服务器”选项可帮助数据科学家以团队形式快速迭代。
 
 对于关注生产作业性能的数据工程师而言，Azure Databricks 通过 I/O 层和处理层 (Databricks I/O) 的各种优化提供一个更快速、更高效的 Spark 引擎。
 

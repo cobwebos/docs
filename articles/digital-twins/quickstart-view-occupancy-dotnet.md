@@ -1,6 +1,7 @@
 ---
 title: 查找可用房间 - Azure 数字孪生 | Microsoft Docs
 description: 在本快速入门中，请运行两个 .NET Core 示例应用程序，将模拟的移动和二氧化碳遥测数据发送到 Azure 数字孪生中的空间。 目标是在云中进行计算处理以后，通过管理 API 查找空气清新的可用房间。
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
@@ -8,14 +9,13 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 08/16/2019
-ms.author: alinast
-ms.openlocfilehash: 40a98f915bc11ad17eae27596519cc78539fb2bb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 10/03/2019
+ms.openlocfilehash: 3c9a806b936b9f167d1700c95b1e769926abb17b
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640289"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958907"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>快速入门：通过 Azure 数字孪生查找可用房间
 
