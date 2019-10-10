@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: 自定义视觉文档
-summary: Azure 自定义视觉是一种认知服务，用于生成、部署和改进自己的图像分类器。 图像分类器是一种 AI 服务，可以根据图像的视觉特征为图像应用标签（代表类）。
+summary: 自定义视觉是一种认知服务，用于生成、部署和改进自己的图像分类器。 图像分类器是一种 AI 服务，可以根据图像的视觉特征为图像应用标签（代表类）。
 metadata:
   title: 自定义视觉文档
-  description: Azure 自定义视觉是一种认知服务，用于生成、部署和改进自己的图像分类器。 图像分类器是一种 AI 服务，可以根据图像的视觉特征为图像应用标签（代表类）。
+  description: 自定义视觉是一种认知服务，用于生成、部署和改进自己的图像分类器。 图像分类器是一种 AI 服务，可以根据图像的视觉特征为图像应用标签（代表类）。
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: custom-vision
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 931f67bd0f5c73426781da39ded3bcfff0a8dea3
-  ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+  ms.openlocfilehash: 5be5dcd64345de32e37413932869574391573c60
+  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71211973"
+  ms.lasthandoff: 10/09/2019
+  ms.locfileid: "72176170"
 landingContent:
 - title: 关于自定义视觉
   linkLists:

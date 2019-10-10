@@ -2,19 +2,19 @@
 title: 教程：使用 Azure DevOps Projects 部署受 Azure Cosmos DB 支持的 Node.js 应用
 description: 可以通过 Azure DevOps Projects 轻松地在 Azure 上开始操作。 使用 DevOps Projects，可通过几个快速步骤将受 Azure Cosmos DB 支持的 Node.js 应用部署到 Windows Web 应用。
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 38fc4aa04269924ad0acd529e961dd3228ec236e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884418"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969659"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>使用 DevOps Projects 部署受 Azure Cosmos DB 支持的 Node.js 应用
 

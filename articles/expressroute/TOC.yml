@@ -44,6 +44,8 @@
       href: expressroute-erdirect-about.md
     - name: 关于 ExpressRoute Global Reach
       href: expressroute-global-reach.md
+    - name: 关于 ExpressRoute 加密
+      href: expressroute-about-encryption.md
     - name: 将 Azure 连接到公有云
       href: expressroute-connect-azure-to-public-cloud.md
     - name: 后端连接互操作性
@@ -121,6 +123,8 @@
           href: expressroute-howto-erdirect.md
         - name: Azure CLI
           href: expressroute-howto-expressroute-direct-cli.md
+    - name: 为 ExpressRoute Direct 端口配置 MACsec
+      href: expressroute-howto-macsec.md
     - name: 配置用于 Microsoft 对等互连的路由筛选器
       items:
         - name: Azure 门户

@@ -2,17 +2,16 @@
 title: 示例 - 审核 DB 级别的威胁检测设置
 description: 此示例策略定义会对那些未设置成指定状态的 SQL 数据库安全警报策略进行审核。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8fbe687a08e36cfa9503078cbcb75ee85f43b7a1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7c8c5f4530f6f34cfe94143fa03c89647369f5b7
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266216"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977546"
 ---
 # <a name="sample---audit-db-level-threat-detection-setting"></a>示例 - 审核 DB 级别的威胁检测设置
 

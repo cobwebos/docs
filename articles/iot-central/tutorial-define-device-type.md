@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: db9f7e75af01ed83c39ef3a37ab2612426ef6ea4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a3faa76c1506664a075648edc7d57fbba542b011
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099607"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960534"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新的设备类型
 
@@ -365,7 +365,7 @@ ms.locfileid: "70099607"
     | 显示名称         | 回显命令    |
     | 字段名称           | echo            |
     | 默认超时      | 30              |
-    | 显示类型         | text            |
+    | 数据类型         | text            |
     | 说明          | 设备命令  |  
 
     可以向命令添加其他输入，方法是针对“输入字段”选择“+”   。

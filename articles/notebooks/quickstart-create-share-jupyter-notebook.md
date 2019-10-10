@@ -4,21 +4,20 @@ description: 在 Azure Notebooks 上快速创建并运行 Jupyter Notebook，然
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 5add60ad-0b4b-4fd5-adf5-eb50ce072d00
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 42f5d3abda715d83d58b0d341aed784de639e460
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 19e8217bf88427c353fdd4c90c9f421445b7c81a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751795"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970180"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>快速入门：创建和共享笔记本
 

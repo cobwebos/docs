@@ -57,8 +57,10 @@
       href: tutorial-global-distribution-sql-api.md
 - name: 示例
   items:
-    - name: .NET 示例
+    - name: .NET V2 SDK 示例
       href: sql-api-dotnet-samples.md
+    - name: .NET V3 SDK 示例
+      href: sql-api-dotnet-v3sdk-samples.md
     - name: Java 示例
       href: sql-api-java-samples.md
     - name: 异步 Java 示例
@@ -1022,6 +1024,8 @@
           href: odbc-driver.md
     - name: 将数据迁移到 Cosmos DB
       items:
+        - name: 用于将数据迁移到 Cosmos DB 的选项
+          href: cosmosdb-migrationchoices.md
         - name: 使用 Striim 迁移到 SQL API
           href: cosmosdb-sql-api-migrate-data-striim.md
         - name: 使用 Striim 迁移到 Cassandra API

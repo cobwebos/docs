@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: ffa4424dd3173cf6493ec219fe92925c970ad08c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e4a57c6d4a9034d9145058e9137759c2cea19aa6
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258328"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978673"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>什么是 Azure 时序见解预览版？
 
@@ -81,7 +81,7 @@ IoT 数据通常仅在第一方数据源（如 CRM 或 ERP）提供的其他数�
 | 与其他数据解决方案顺利持续集成 | 时序见解中的数据[存储](./time-series-insights-update-storage-ingress.md)在开源的 Apache Parquet 文件中。 无论是第一方还是第三方，这种与其他数据解决方案的集成对于端到端方案都很容易。 这些方案包括商业智能、高级机器学习和预测分析。 |
 | 近实时数据浏览 | [Azure 时序见解预览版资源管理器](./time-series-insights-update-explorer.md)用户体验提供的可视化功能适用于通过引入管道流式传输的所有数据。 连接事件源后不久，便可查看、浏览和查询事件数据。 通过这种方式，可以验证设备是否按预期方式发出数据。 此外可以监视 IoT 资产的运行状况、生产效率和整体成效。 |
 | 根本原因分析和异常情况检测 | [Azure 时序见解预览版资源管理器](./time-series-insights-update-explorer.md)支持的模式和透视视图可以执行和保存多步骤根本原因分析。 你可以将 Azure 流分析与时序见解配合使用，以便通过近实时方式检测警报和异常。 |
-| 在时序见解平台上生成的自定义应用程序 | 时序见解支持 [JavaScript SDK](./tutorial-explore-js-client-lib.md)。 SDK 提供了丰富的控件并且简化了对查询的访问。 使用 SDK 基于时序见解生成自定义 IoT 应用程序，以满足特定业务需求。 还可以直接使用时序见解[查询 API](./time-series-insights-update-tsq.md) 将数据推送到自定义 IoT 应用程序中。 |
+| 在时序见解平台上生成的自定义应用程序 | 时序见解支持 [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)。 SDK 提供了丰富的控件并且简化了对查询的访问。 使用 SDK 基于时序见解生成自定义 IoT 应用程序，以满足特定业务需求。 还可以直接使用时序见解[查询 API](./time-series-insights-update-tsq.md) 将数据推送到自定义 IoT 应用程序中。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0d430f7c9a6e9d59b20cd1420b65f70d9c6994d5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 350bc95e08aa994e4cb70db6bf1f08d53bbec5a3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141440"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177287"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>快速入门：使用计算机视觉 REST API 和 cURL 生成缩略图
 
@@ -38,7 +38,7 @@ ms.locfileid: "70141440"
 1. 将以下代码复制到编辑器中。
 1. 将 `<Subscription Key>` 替换为有效订阅密钥。
 1. 将 `<File>` 替换为保存缩略图所需的路径和文件名。
-1. 如有必要，请更改请求 URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0`) 以使用获得订阅密钥的位置。
+1. 如有必要，请更改请求 URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.1`) 以使用获得订阅密钥的位置。
 1. （可选）更改要分析的图像 (`{\"url\":\"...`)。
 1. 在安装了 cURL 的计算机上打开命令窗口。
 1. 将代码粘贴到窗口中并运行命令。
@@ -61,7 +61,7 @@ ms.locfileid: "70141440"
 1. 将文本编辑器中的命令粘贴到命令提示符窗口，然后运行命令。
 
     ```bash
-    curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -o <thumbnailFile> -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail?width=100&height=100&smartCropping=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\"}"
+    curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -o <thumbnailFile> -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.1/generateThumbnail?width=100&height=100&smartCropping=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\"}"
     ```
 
 ## <a name="examine-the-response"></a>检查响应

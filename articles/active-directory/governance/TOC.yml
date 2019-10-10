@@ -19,6 +19,8 @@
   items:
     - name: 权利管理
       items:
+        - name: 委托和角色
+          href: entitlement-management-delegate.md
         - name: 请求过程和电子邮件
           href: entitlement-management-process.md
     - name: 访问评审
@@ -36,17 +38,21 @@
       items:
         - name: 常见方案
           href: entitlement-management-scenarios.md
-        - name: 管理员和部门经理
+        - name: 管理员
           items:
-            - name: 委派任务
-              href: entitlement-management-delegate.md
-            - name: 创建资源目录
-              href: entitlement-management-catalog-create.md
+            - name: 委托给目录创建者
+              href: entitlement-management-delegate-catalog.md
             - name: 查看报表和日志
               href: entitlement-management-reports.md
             - name: 故障排除
               href: entitlement-management-troubleshoot.md
-        - name: 项目经理
+        - name: 目录所有者
+          items:
+            - name: 创建资源目录
+              href: entitlement-management-catalog-create.md
+            - name: 委托给访问包管理者
+              href: entitlement-management-delegate-managers.md
+        - name: 访问包管理者
           items:
             - name: 创建新的访问包
               href: entitlement-management-access-package-create.md

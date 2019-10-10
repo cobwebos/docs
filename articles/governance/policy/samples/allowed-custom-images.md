@@ -2,17 +2,16 @@
 title: 示例 - 已批准的 VM 映像
 description: 此示例策略定义要求在环境中仅部署已批准的自定义映像。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8def11c2d92af618054d0353fa2687d2e88e1134
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 34a3cf54879dcf6fc25fab50bcbabde28fff653a
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266709"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980846"
 ---
 # <a name="sample---approved-virtual-machine-images"></a>示例 - 已批准的虚拟机映像
 
@@ -52,7 +51,7 @@ ms.locfileid: "59266709"
 
 ## <a name="parameters"></a>parameters
 
-|名称 |Type |字段 |说明 |
+|Name |类型 |字段 |说明 |
 |---|---|---|---|
 |imageIds |Array |Microsoft.Compute/imageIds |已批准的 VM 映像的列表|
 

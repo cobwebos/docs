@@ -2,17 +2,16 @@
 title: 示例 - 审核 SQL Server 审核设置
 description: 此示例策略定义使用 auditIfNotExists 审核 SQL Server 审核设置。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: c4510a316760fa948aa39627c9a9c517437b1d77
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c548d1e0e9f21f482a0cfc4b19c482e040d7f298
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790971"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980374"
 ---
 # <a name="sample---audit-sql-server-audit-settings"></a>示例 - 审核 SQL Server 审核设置
 
@@ -58,7 +57,7 @@ ms.locfileid: "59790971"
 
 ## <a name="deploy-with-the-portal"></a>使用门户进行部署
 
-分配策略时，请从可用的内置定义中选择“审核 SQL Server 级别的审核设置”。
+分配策略时，请从可用的内置定义中选择“审核 SQL Server 级别的审核设置”  。
 
 ## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
 

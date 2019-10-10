@@ -2,18 +2,19 @@
 title: include 文件
 description: include 文件
 services: digital-twins
-author: dsk-2015
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
 ms.date: 09/24/2019
-ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: 5b88e3f17c1bbf60d38763f7fb349302ae4a920b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 7b2df437833f270a6e102257693426f4cc65b9d2
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310503"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949742"
 ---
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 

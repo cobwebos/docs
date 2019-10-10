@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 274c437acd8df50d631727fc352c4b9ebecead18
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: a82b24f89cea580a1c79a1dec60996629b7b14f3
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479971"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978142"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>教程：使用 Azure 蓝图资源锁保护新资源
 
@@ -157,8 +156,8 @@ ms.locfileid: "66479971"
 
      |项目名称|项目类型|参数名称|值|说明|
      |-|-|-|-|-|
-     |RGtoLock 资源组|资源组|名称|TestingBPLocks|定义要将蓝图锁应用到的新资源组的名称。|
-     |RGtoLock 资源组|资源组|位置|美国西部 2|定义要将蓝图锁应用到的新资源组的位置。|
+     |RGtoLock 资源组|Resource group|Name|TestingBPLocks|定义要将蓝图锁应用到的新资源组的名称。|
+     |RGtoLock 资源组|Resource group|位置|美国西部 2|定义要将蓝图锁应用到的新资源组的位置。|
      |StorageAccount|资源管理器模板|storageAccountType (StorageAccount)|Standard_GRS|存储 SKU。 默认值为 _Standard_LRS_。|
 
 1. 输入所有参数后，选择页面底部的“分配”。 

@@ -2,17 +2,16 @@
 title: 示例 - 审核 SQL 数据库的透明数据加密
 description: 如果 SQL 数据库未启用透明数据加密，则此示例策略定义会进行审核。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: e8ee800ff9f286f901a84a039e3c433442ae11b2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: de7819f43b2d0ce4d6d047b324db94d3e5f85eec
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789572"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981319"
 ---
 # <a name="sample---audit-sql-database-encryption"></a>示例 - 审核 SQL 数据库加密
 
@@ -28,7 +27,7 @@ ms.locfileid: "59789572"
 
 ## <a name="deploy-with-the-portal"></a>使用门户进行部署
 
-分配策略时，请从可用的内置定义中选择“审核透明数据加密状态”。
+分配策略时，请从可用的内置定义中选择“审核透明数据加密状态”  。
 
 ## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
 

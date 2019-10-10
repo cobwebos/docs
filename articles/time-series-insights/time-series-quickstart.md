@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/23/2019
-ms.openlocfilehash: b5fb0c4de82d5ff5f5290127ec529787cabad64a
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 83446facc734c0bfa24b7e78916d652467d01415
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258356"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978684"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>快速入门：探索 Azure 时序见解
 
@@ -24,7 +24,7 @@ ms.locfileid: "71258356"
 
 Azure 时序见解是一种完全托管的分析、存储和可视化效果服务，可简化如何同时浏览和分析数十亿个 IoT 事件的过程。 它提供数据的全局视图，从而可以快速验证 IoT 解决方案并避免任务关键型设备出现代价高昂的故障时间。 通过 Azure 时序见解，可以近乎实时地发现隐藏的趋势、发现异常情况并对其进行根本原因分析。
 
-若要更加灵活地使用 Azure 时序见解，可以通过其功能强大的 [REST API](./time-series-insights-update-tsq.md) 和[客户端 SDK](./tutorial-create-tsi-sample-spa.md) 将其添加到预先存在的应用程序中。 通过 API，可以在所选择的客户端应用程序中存储、查询和使用时序数据。 还可使用客户端 SDK 将 UI 组件添加到现有应用程序中。
+若要更加灵活地使用 Azure 时序见解，可以通过其功能强大的 [REST API](./time-series-insights-update-tsq.md) 和[客户端 SDK](https://github.com/microsoft/tsiclient) 将其添加到预先存在的应用程序中。 通过 API，可以在所选择的客户端应用程序中存储、查询和使用时序数据。 还可使用客户端 SDK 将 UI 组件添加到现有应用程序中。
 
 此时序见解资源管理器快速入门以导览的形式介绍正式版中的功能。
 

@@ -2,17 +2,16 @@
 title: 示例 - 审核诊断设置
 description: 如果未对指定资源类型启用诊断设置，此示例策略定义会进行审核。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 66c9c1c21cad7fb4058a91be826a50059691877c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b71876195ffd3993b49794835781e8ccbd1648d3
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797765"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977455"
 ---
 # <a name="sample---audit-diagnostic-setting"></a>示例 - 审核诊断设置
 
@@ -36,7 +35,7 @@ ms.locfileid: "59797765"
 
 ## <a name="deploy-with-the-portal"></a>使用门户进行部署
 
-分配策略时，请从可用的内置定义中选择“审核诊断设置”。
+分配策略时，请从可用的内置定义中选择“审核诊断设置”  。
 
 ## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
 

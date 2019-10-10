@@ -6,12 +6,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 06e53f07969ab5dfdebec88d36d0cb3d06cc87e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5055734ae3529d7fca87688c5f9410f38368a634
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078428"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959365"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
@@ -51,7 +51,7 @@ DNS 基于在 Azure 中托管的 DNS 区域数和接收的 DNS 查询数进行�
 
 ## <a name="customizable-virtual-networks-with-private-domains"></a>具有专用域的可自定义虚拟网络
 
-Azure DNS 还支持专用 DNS 域，其使用的功能当前为公共预览版。 此功能允许在专用虚拟网络中使用自定义域名而不使用当前可用的由 Azure 提供的名称。
+Azure DNS 还支持 DNS 专用域。 此功能允许在专用虚拟网络中使用自定义域名而不使用当前可用的由 Azure 提供的名称。
 
 有关详细信息，请参阅[在专用域中使用 Azure DNS](private-dns-overview.md)。
 

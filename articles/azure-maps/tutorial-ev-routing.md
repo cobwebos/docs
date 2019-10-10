@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 30751bebd397b378924453987462c9e2b3b55ebf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c4b46bc952782fc7c9b56d6f0c049fe17b63d0f2
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803891"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836356"
 ---
 # <a name="electric-vehicle-routing-using-azure-notebooks-python"></a>使用 Azure Notebooks 规划电动车路 (Python)
 
-Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合，可让开发人员、企业和 ISV 创建位置感知的应用及 IoT、移动、物流与资产跟踪解决方案。 可以从 Python 和 R 等语言调用 Azure Maps REST API，以实现地理空间数据分析和机器学习方案。 Azure Maps 提供一组可靠的[路线 API]([https://docs.microsoft.com/rest/api/maps/route)，让用户根据各种条件（例如车辆类型或可抵达区域）计算多个数据点之间的路线。 本教程逐步介绍一种方案，帮助遇到电量不足情况的电动车司机在电量耗尽之前找到最近的充电站。
+Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合，可让开发人员、企业和 ISV 创建位置感知的应用及 IoT、移动、物流与资产跟踪解决方案。 可以从 Python 和 R 等语言调用 Azure Maps REST API，以实现地理空间数据分析和机器学习方案。 Azure Maps 提供一组可靠的[路线 API](https://docs.microsoft.com/rest/api/maps/route)，让用户根据各种条件（例如车辆类型或可抵达区域）计算多个数据点之间的路线。 本教程逐步介绍一种方案，帮助遇到电量不足情况的电动车司机在电量耗尽之前找到最近的充电站。
 
 在本教程中，将：
 

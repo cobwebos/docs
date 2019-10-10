@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 9fdbf3466256c5e24de17541770fa2095fcf38a4
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 92ee9b0a8a0906bca31d7dcb1730c3464d0d6cbc
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171086"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839179"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>将 Azure 存储队列绑定添加到 Python 函数
 
@@ -30,20 +30,11 @@ ms.locfileid: "70171086"
 
 在开始学习本文之前，请完成 [Python 快速入门第 1 部分](functions-create-first-function-python.md)中的步骤。
 
+[!INCLUDE [functions-cloud-shell-note](../../includes/functions-cloud-shell-note.md)]
+
 ## <a name="download-the-function-app-settings"></a>下载函数应用设置
 
-在前一篇快速入门文章中，你已在 Azure 中创建了一个函数应用以及所需的存储帐户。 此帐户的连接字符串安全存储在 Azure 中的应用设置内。 在本文中，你要将消息写入到同一帐户中的存储队列。 若要在本地运行函数时连接到该存储帐户，必须将应用设置下载到 local.settings.json 文件。 运行以下 Azure Functions Core Tools 命令，将设置下载到 local.settings.json（请将 `<APP_NAME>` 替换为前一篇文章中的函数应用名称）：
-
-```bash
-func azure functionapp fetch-app-settings <APP_NAME>
-```
-
-可能需要登录到 Azure 帐户。
-
-> [!IMPORTANT]  
-> 由于 local.settings.json 文件包含机密，因此永远不会发布它，应将其从源代码管理中排除。
-
-需要 `AzureWebJobsStorage` 值，即存储帐户连接字符串。 你将使用此连接来验证输出绑定是否按预期方式工作。
+[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>启用扩展捆绑包
 
@@ -53,80 +44,13 @@ func azure functionapp fetch-app-settings <APP_NAME>
 
 ## <a name="add-an-output-binding"></a>添加输出绑定
 
-在 Functions 中，每种类型的绑定都需要一个 `direction`、`type`，以及要在 function.json 文件中定义的唯一 `name`。 根据绑定类型，可能还需要其他属性。 [队列输出配置](functions-bindings-storage-queue.md#output---configuration)描述 Azure 存储队列绑定所需的字段。
+在 Functions 中，每种类型的绑定都需要一个 `direction`、`type`，以及要在 function.json 文件中定义的唯一 `name`。 定义这些属性的方式取决于函数应用的语言。
 
-若要创建绑定，请将绑定配置对象添加到 function.json 文件。 编辑 HttpTrigger 文件夹中的 function.json 文件，以将一个包含以下属性的对象添加到 `bindings` 数组：
-
-| 属性 | 值 | 说明 |
-| -------- | ----- | ----------- |
-| **`name`** | `msg` | 用于标识代码中引用的绑定参数的名称。 |
-| **`type`** | `queue` | 该绑定是 Azure 存储队列绑定。 |
-| **`direction`** | `out` | 该绑定是输出绑定。 |
-| **`queueName`** | `outqueue` | 绑定要写入到的队列的名称。 如果 `queueName` 不存在，首次使用绑定时，它会创建该属性。 |
-| **`connection`** | `AzureWebJobsStorage` | 包含存储帐户连接字符串的应用设置的名称。 `AzureWebJobsStorage` 设置包含连同函数应用一起创建的存储帐户的连接字符串。 |
-
-function.json 文件现在应如以下示例所示：
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-  {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
+[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
 ## <a name="add-code-that-uses-the-output-binding"></a>添加使用输出绑定的代码
 
-配置 `name` 后，可以开始使用它来以函数签名中的方法属性的形式访问绑定。 在以下示例中，`msg` 是 [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest) 的实例。
-
-```python
-import logging
-
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        msg.set(name)
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
-```
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
 
 使用输出绑定时，无需使用 Azure 存储 SDK 代码进行身份验证、获取队列引用或写入数据。 Functions 运行时和队列输出绑定将为你执行这些任务。
 
@@ -149,34 +73,11 @@ func host start
 
 ### <a name="set-the-storage-account-connection"></a>设置存储帐户连接
 
-打开 local.settings.json 文件并复制 `AzureWebJobsStorage` 的值（即存储帐户连接字符串）。 使用以下 Bash 命令将 `AZURE_STORAGE_CONNECTION_STRING` 环境变量设置为该连接字符串：
-
-```azurecli-interactive
-export AZURE_STORAGE_CONNECTION_STRING=<STORAGE_CONNECTION_STRING>
-```
-
-在 `AZURE_STORAGE_CONNECTION_STRING` 环境变量中设置连接字符串时，无需每次都要提供身份验证，即可访问你的存储帐户。
+[!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
 ### <a name="query-the-storage-queue"></a>查询存储队列
 
-可以使用 [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) 命令查看帐户中的存储队列，如以下示例所示：
-
-```azurecli-interactive
-az storage queue list --output tsv
-```
-
-此命令的输出包含名为 `outqueue` 的队列，即运行函数时创建的队列。
-
-接下来，使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，如以下示例所示：
-
-```azurecli-interactive
-echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
-```
-
-返回的字符串应与发送的用于测试函数的消息相同。
-
-> [!NOTE]  
-> 以上示例从 base64 解码返回的字符串。 这是因为，队列存储绑定以 [base64 字符串](functions-bindings-storage-queue.md#encoding)的形式写入和读取 Azure 存储。
+[!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
 现在，可将更新的函数应用重新发布到 Azure。
 

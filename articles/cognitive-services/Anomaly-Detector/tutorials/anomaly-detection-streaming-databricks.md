@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 05/08/2019
+ms.date: 10/01/2019
 ms.author: aahi
-ms.openlocfilehash: 8d3f5d0e10fadd31fd8bde77339b872c1b90451f
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 75c2c8bf8b3baee1f9f89282840622e1e29d2a18
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721470"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71837776"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据进行异常情况检测
 
@@ -53,7 +53,7 @@ ms.locfileid: "67721470"
 
 - 用于访问事件中心命名空间的[连接字符串](../../../event-hubs/event-hubs-get-connection-string.md)。 该连接字符串应采用类似于
 
-    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>` 的格式。 
+    `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`。 
 
 - 事件中心的共享访问策略名称和策略密钥。
 
@@ -165,11 +165,11 @@ ms.locfileid: "67721470"
 
     |值 |说明  |
     |---------|---------|
-    |名称     | 异常检测器资源的名称。        |
-    |订阅     | 将要与资源关联的 Azure 订阅。        |
+    |Name     | 异常检测器资源的名称。        |
+    |Subscription     | 将要与资源关联的 Azure 订阅。        |
     |位置     | Azure 位置。        |
     |定价层     | 服务定价层。 有关异常检测器定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)。        |
-    |资源组     | 指定是要创建新的资源组还是选择现有的资源组。        |
+    |Resource group     | 指定是要创建新的资源组还是选择现有的资源组。        |
 
 
      选择“创建”  。

@@ -2,18 +2,19 @@
 title: include 文件
 description: include 文件
 services: digital-twins
-author: dsk-2015
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
 ms.date: 09/30/2019
-ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: 6e808fb64d004f117a3c25946ad97e26ddfadaa3
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 880c2a811df7b4d41760676d4d6e0153e9384f38
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802378"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949764"
 ---
 >[!NOTE]
 >本部分提供有关[新的 Azure AD 应用注册](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的说明。 如果仍有旧的本机应用注册，则可以使用该注册，只要它受支持就可以。 此外，如果出于某种原因，以新方式注册应用在设置中不起作用，你可以尝试创建旧的本机 AAD 应用。 请阅读[将 Azure 数字孪生应用注册到 Azure Active Directory 旧版](../articles/digital-twins/how-to-use-legacy-aad.md)以获取更多说明。 

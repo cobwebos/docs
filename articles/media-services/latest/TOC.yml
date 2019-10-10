@@ -4,6 +4,8 @@
   items:
     - name: 关于媒体服务
       href: media-services-overview.md
+    - name: 媒体服务中的新增功能
+      href: release-notes.md
 - name: 教程
   expanded: true
   items:
@@ -343,8 +345,6 @@
           href: 'https://aka.ms/ams-v3-ruby-sdk'
     - name: Azure 媒体服务浏览器
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
-    - name: 发行说明
-      href: release-notes.md
     - name: 配额和限制
       href: limits-quotas-constraints.md
     - name: 常见问题解答

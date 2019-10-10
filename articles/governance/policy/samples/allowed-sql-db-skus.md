@@ -2,17 +2,16 @@
 title: 示例 - 允许的 SQL DB SKU
 description: 此示例策略定义要求 SQL 数据库使用已批准的 SKU。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 193048baac8ffcc5212b3e1d9772148f8c55aacd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4d20986e6bb3f9dc8e1d19a141716bdc66abd13e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262969"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977719"
 ---
 # <a name="sample---allowed-sql-database-skus"></a>示例 - 允许的 SQL 数据库 SKU
 

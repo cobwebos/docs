@@ -2,17 +2,16 @@
 title: 示例 - 在资源组强制执行标记及其值
 description: 此示例策略定义要求对资源组使用标记和值。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: a7a76fbde74ab80f8aa0f5e67e6445504c3aafa5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 00c94aa6077c8a8599b31e9ab37f925fdfebefb0
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276654"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977170"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>示例 - 在资源组强制执行标记及其值
 
@@ -50,7 +49,7 @@ ms.locfileid: "59276654"
 
 [!code-json[parameters](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|名称 |Type |字段 |说明 |
+|Name |类型 |字段 |说明 |
 |---|---|---|---|
 |tagName |String |标记 |标记的名称，如 costCenter|
 |tagValue |String |标记 |标记的值，如 headquarter|

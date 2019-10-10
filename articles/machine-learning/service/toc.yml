@@ -137,23 +137,6 @@
           href: how-to-train-with-datasets.md
     - name: 训练模型
       items:
-        - name: 设置训练环境
-          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
-          href: how-to-set-up-training-targets.md
-        - name: 使用估算器训练
-          items:
-            - name: 在训练期间创建估算器
-              href: how-to-train-ml-models.md
-            - name: 使用 Scikit-learn
-              href: how-to-train-scikit-learn.md
-            - name: 使用 TensorFlow
-              href: how-to-train-tensorflow.md
-            - name: 使用 Keras
-              href: how-to-train-keras.md
-            - name: 使用 PyTorch
-              href: how-to-train-pytorch.md
-            - name: 使用 Chainer
-              href: how-to-train-chainer.md
         - name: 使用可视界面
           displayName: sample visual interface experiments
           items:
@@ -175,25 +158,29 @@
             - name: 预测航班延误
               displayName: 'classification, studio'
               href: how-to-ui-sample-classification-predict-flight-delay.md
-        - name: 优化超参数
-          displayName: parameter
-          href: how-to-tune-hyperparameters.md
-        - name: 训练时使用 Key Vault
-          displayName: secrets keyvault
-          href: how-to-use-secrets-in-runs.md
-    - name: 跟踪和监视试验
-      items:
-        - name: 启动、监视或取消运行
-          displayName: 'cancel, fail, status, child run'
-          href: how-to-manage-runs.md
-        - name: 记录训练运行的指标
-          href: how-to-track-experiments.md
-        - name: 使用 MLflow 对试验进行跟踪
-          displayName: 'log, monitor, metrics'
-          href: how-to-use-mlflow.md
-        - name: 使用 TensorBoard 将运行可视化
-          displayName: 'log, monitor, metrics'
-          href: how-to-monitor-tensorboard.md
+        - name: 将估算器用于 ML
+          items:
+            - name: 在训练期间创建估算器
+              href: how-to-train-ml-models.md
+            - name: 设置训练环境
+              displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+              href: how-to-set-up-training-targets.md
+            - name: 优化超参数
+              displayName: parameter
+              href: how-to-tune-hyperparameters.md
+            - name: 训练时使用 Key Vault
+              displayName: secrets keyvault
+              href: how-to-use-secrets-in-runs.md
+        - name: Scikit-learn
+          href: how-to-train-scikit-learn.md
+        - name: TensorFlow
+          href: how-to-train-tensorflow.md
+        - name: Keras
+          href: how-to-train-keras.md
+        - name: PyTorch
+          href: how-to-train-pytorch.md
+        - name: Chainer
+          href: how-to-train-chainer.md
     - name: 自动化机器学习
       displayName: 'automl, auto ml'
       items:
@@ -210,6 +197,19 @@
           href: how-to-auto-train-forecast.md
         - name: 了解图表和指标
           href: how-to-understand-automated-ml.md
+    - name: 跟踪和监视试验
+      items:
+        - name: 启动、监视或取消运行
+          displayName: 'cancel, fail, status, child run'
+          href: how-to-manage-runs.md
+        - name: 记录训练运行的指标
+          href: how-to-track-experiments.md
+        - name: 使用 MLflow 对试验进行跟踪
+          displayName: 'log, monitor, metrics'
+          href: how-to-use-mlflow.md
+        - name: 使用 TensorBoard 将运行可视化
+          displayName: 'log, monitor, metrics'
+          href: how-to-monitor-tensorboard.md
     - name: 部署和提供模型
       items:
         - name: 在何处以及如何部署

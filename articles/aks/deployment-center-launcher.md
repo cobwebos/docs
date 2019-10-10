@@ -2,19 +2,18 @@
 title: 适用于 Azure Kubernetes 的部署中心
 description: Azure DevOps 中的部署中心简化了为应用程序设置可靠的 Azure DevOps 管道的过程
 ms.author: puagarw
-ms.manager: douge
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 35484566890f3bfd964e3fda337bfb3666d1da6c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5384180720d391c6b4ae830f9316a70e80003063
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618725"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972976"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>适用于 Azure Kubernetes 的部署中心
 

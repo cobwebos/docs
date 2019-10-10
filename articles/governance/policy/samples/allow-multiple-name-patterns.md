@@ -2,17 +2,16 @@
 title: 示例 - 多名称模式
 description: 此示例策略定义要求资源匹配所提供的其中一种名称模式。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f38b8879a16a5f61b2a31cc7fc2989e2fa228e7a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c178c2a2ef08b5c925261488007accd72a6208f9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280717"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977742"
 ---
 # <a name="sample---allow-multiple-name-patterns"></a>示例 - 允许多种名称模式
 

@@ -2,17 +2,16 @@
 title: 示例 - 需要对 Data Lake Store 进行加密
 description: 此示例策略定义要求启用 Data Lake Store 加密。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f9e38b737cad255ef2d9802490b5d114950d01e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9cee9f2d94f822679acee0813471e271a38a38e3
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785895"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977194"
 ---
 # <a name="sample---require-data-lake-store-encryption"></a>示例 - 需要 Data Lake Store 加密
 
@@ -46,7 +45,7 @@ ms.locfileid: "59785895"
 
 ## <a name="deploy-with-the-portal"></a>使用门户进行部署
 
-分配策略时，请从可用的内置定义中选择“强制对 DataLakeStore 帐户启用加密”。
+分配策略时，请从可用的内置定义中选择“强制对 DataLakeStore 帐户启用加密”  。
 
 ## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
 

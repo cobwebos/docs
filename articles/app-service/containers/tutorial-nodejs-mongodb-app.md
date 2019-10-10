@@ -15,17 +15,17 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3a5f6b5b1f66542a534c9016c5d9d60a1273975f
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: cf145e04ca0e0ddf336521e72f6dc230dc8fc86b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544787"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024954"
 ---
-# <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中构建 Node.js 和 MongoDB Web 应用
+# <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 Node.js 和 MongoDB 应用
 
 > [!NOTE]
-> 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 _Windows_ 的应用服务，请参阅[在 Azure 中构建 Node.js 和 MongoDB Web 应用](../app-service-web-tutorial-nodejs-mongodb-app.md)。
+> 本文将应用部署到基于 Linux 的应用服务。 若要部署到基于 _Windows_ 的应用服务，请参阅[在 Azure 中生成 Node.js 和 MongoDB 应用](../app-service-web-tutorial-nodejs-mongodb-app.md)。
 >
 
 [Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程展示了如何创建一个 Node.js 应用，在本地将其连接到 MongoDB 数据库，然后将其部署到 Azure Cosmos DB 的用于 MongoDB 的 API 中的一个数据库。 完成操作后，将拥有一个在 Linux 应用服务中运行的 MEAN 应用程序（MongoDB、Express、AngularJS 和 Node.js）。 为简单起见，示例应用程序使用了 [MEAN.js Web 框架](https://meanjs.org/)。
@@ -107,13 +107,13 @@ MEAN.JS version: 0.5.0
 --
 ```
 
-在浏览器中导航至 `http://localhost:3000` 。 单击菜单顶部的“注册”，并创建测试用户。 
+在浏览器中导航至 `http://localhost:3000` 。 单击菜单顶部的“注册”  ，并创建测试用户。 
 
 MEAN.js 示例应用程序将用户数据存储在数据库中。 如果创建用户和登录成功，应用向本地 MongoDB 数据库写入数据。
 
 ![MEAN.js 成功连接至 MongoDB](./media/tutorial-nodejs-mongodb-app/mongodb-connect-success.png)
 
-选择“管理员”>“管理文章”，添加一些文章。
+选择“管理员”>“管理文章”  ，添加一些文章。
 
 在终端按 `Ctrl+C`，随时停止 Node.js。
 
@@ -137,7 +137,7 @@ MEAN.js 示例应用程序将用户数据存储在数据库中。 如果创建�
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
 ```
 
---kind MongoDB 参数启用 MongoDB 客户端连接。
+--kind MongoDB  参数启用 MongoDB 客户端连接。
 
 创建 Cosmos DB 帐户后，Azure CLI 会显示类似于以下示例的信息：
 
@@ -231,7 +231,7 @@ App version:     0.5.0
 MEAN.JS version: 0.5.0
 ```
 
-在浏览器中导航至 `http://localhost:8443` 。 单击菜单顶部的“注册”，并创建测试用户。 如果创建用户并登录成功，则应用会将数据写入 Azure 中的 Cosmos DB 数据库。
+在浏览器中导航至 `http://localhost:8443` 。 单击菜单顶部的“注册”  ，并创建测试用户。 如果创建用户并登录成功，则应用会将数据写入 Azure 中的 Cosmos DB 数据库。
 
 在终端中，通过键入 `Ctrl+C` 停止 Node.js。
 
@@ -259,7 +259,7 @@ MEAN.JS version: 0.5.0
 
 若要设置应用设置，请在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。
 
-以下示例在 Azure 应用中配置 `MONGODB_URI` 应用设置。 替换 *\<app-name>*、*\<cosmosdb-name>* 和 *\<primary-master-key>* 占位符。
+以下示例在 Azure 应用中配置 `MONGODB_URI` 应用设置。 替换 *\<app-name>* 、 *\<cosmosdb-name>* 和 *\<primary-master-key>* 占位符。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
@@ -297,7 +297,7 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://<app-name>.scm.azurewebsites.net/<app-name>.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 ```
 
 你可能会注意到，部署进程将在运行 `npm install` 之后运行 [Gulp](https://gulpjs.com/)。 应用服务在部署期间不会运行 Gulp 或 Grunt 任务，因此该示例存储库的根目录中有两个额外文件用于启用它：
@@ -315,15 +315,15 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
 http://<app-name>.azurewebsites.net
 ```
 
-单击菜单顶部的“注册”，创建虚拟用户。
+单击菜单顶部的“注册”  ，创建虚拟用户。
 
 如果操作成功，且创建的用户可自动登录到应用，则表示 Azure 中的 MEAN.js 应用已连接到 Azure Cosmos DB 的用于 MongoDB 的 API。
 
 ![在 Azure 应用服务中运行的 MEAN.js 应用](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
-选择“管理员”>“管理文章”，添加一些文章。
+选择“管理员”>“管理文章”  ，添加一些文章。
 
-祝贺你！ 正在 Linux 上的 Azure 应用服务中运行数据驱动的 Node.js 应用。
+祝贺你！  正在 Linux 上的 Azure 应用服务中运行数据驱动的 Node.js 应用。
 
 ## <a name="update-data-model-and-redeploy"></a>更新数据模型和重新部署
 
@@ -356,7 +356,7 @@ let ArticleSchema = new Schema({
 
 需修改的文件共计五个：服务器控制器以及四个客户端视图。 
 
-打开 modules/articles/server/controllers/articles.server.controller.js。
+打开 modules/articles/server/controllers/articles.server.controller.js  。
 
 在 `update` 函数中，添加 `article.comment` 的赋值。 以下代码显示完整的 `update` 函数：
 
@@ -372,7 +372,7 @@ exports.update = function (req, res) {
 };
 ```
 
-打开 modules/articles/client/views/view-article.client.view.html。
+打开 modules/articles/client/views/view-article.client.view.html  。
 
 在 `</section>` 结尾标记正上方，添加下列行以显示 `comment` 和其余文章数据：
 
@@ -380,7 +380,7 @@ exports.update = function (req, res) {
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
-打开 modules/articles/client/views/list-articles.client.view.html。
+打开 modules/articles/client/views/list-articles.client.view.html  。
 
 在 `</a>` 结尾标记正上方，添加下列行以显示 `comment` 和其余文章数据：
 
@@ -388,7 +388,7 @@ exports.update = function (req, res) {
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
-打开 modules/articles/client/views/admin/list-articles.client.view.html。
+打开 modules/articles/client/views/admin/list-articles.client.view.html  。
 
 在 `<div class="list-group">` 元素内，以及 `</a>` 结尾标记正上方，添加下列行以显示 `comment` 和其余文章数据：
 
@@ -396,7 +396,7 @@ exports.update = function (req, res) {
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
-打开 modules/articles/client/views/admin/form-article.client.view.html。
+打开 modules/articles/client/views/admin/form-article.client.view.html  。
 
 查找包含提交按钮的 `<div class="form-group">` 元素，如下所示：
 
@@ -428,7 +428,7 @@ NODE_ENV=production node server.js
 
 在浏览器中导航至 `http://localhost:8443`，并确保已登录。
 
-选择“管理员”>“管理文章”，然后选择 **+** 按钮添加文章。
+选择“管理员”>“管理文章”  ，然后选择 **+** 按钮添加文章。
 
 现在你将看到新 `Comment` 文本框。
 
@@ -459,11 +459,11 @@ git push azure master
 
 转到 [Azure 门户](https://portal.azure.com)查看创建的应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。
+在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。 
 
 ![在门户中导航到 Azure 应用](./media/tutorial-nodejs-mongodb-app/access-portal.png)
 
-默认情况下，门户将显示应用的“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+默认情况下，门户将显示应用的  “概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
 ![Azure 门户中的应用服务页](./media/tutorial-nodejs-mongodb-app/web-app-blade.png)
 

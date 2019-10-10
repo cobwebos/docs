@@ -3,8 +3,8 @@ title: 在 Linux 上创建 Python 应用 - Azure 应用服务 | Microsoft Docs
 description: 数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Python hello world 应用。
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: app-service-web
@@ -14,18 +14,18 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 08b1b85b980f992e799fc5198891290ec0d55c5d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+experimental: false
+experiment_id: 1e304dc9-5add-4b
+ms.openlocfilehash: d6e062145474b8479db749627b56163106f088d8
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071005"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024943"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>在 Linux 上的 Azure 应用服务（预览）中创建 Python 应用
+# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中创建 Python 应用
 
-[Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门展示了如何使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 在 Linux 应用服务中，在内置 Python 映像（预览）之上部署 Python 应用。
-
-可以使用 Mac、Windows 或 Linux 计算机执行本文中的步骤。
+在本快速入门中，需将简单的 Python 应用部署到 [Linux 上的应用服务](app-service-linux-intro.md)，该版本提供了一项高度可缩放、自我修补的 Web 托管服务。 由于是通过基于浏览器的交互式 Azure Cloud Shell 来使用 Azure 命令行接口 ([Azure CLI](/cli/azure/install-azure-cli))，因此可遵循使用 Mac、Linux 或 Windows 计算机的步骤。
 
 ![在 Azure 中运行应用的示例](media/quickstart-python/hello-world-in-browser.png)
 
@@ -122,7 +122,7 @@ Python 示例代码在包含内置映像的 Linux 上的应用服务中运行。
 
 祝贺你！  现已将第一个 Python 应用部署到 Linux 应用服务。
 
-## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
+## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 
 在 Cloud Shell 中，键入 `code application.py` 以打开 Cloud Shell 编辑器。
 
@@ -163,8 +163,6 @@ az webapp up -n <app_name>
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>后续步骤
-
-Linux 上的应用服务中内置的 Python 映像目前处于预览状态，你可以自定义用于启动应用的命令。 还可以改用自定义容器创建生产 Python 应用。
 
 > [!div class="nextstepaction"]
 > [教程：使用 PostgreSQL 的 Python 应用](tutorial-python-postgresql-app.md)
