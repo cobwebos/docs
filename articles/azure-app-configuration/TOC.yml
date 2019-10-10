@@ -39,6 +39,8 @@
       href: use-feature-flags-spring-boot.md
     - name: 管理功能标志
       href: manage-feature-flags.md
+    - name: 在 ASP.NET Core 应用中使用 Key Vault 引用
+      href: use-key-vault-references-dotnet-core.md
     - name: 与 CI/CD 管道集成
       href: integrate-ci-cd-pipeline.md
 - name: 示例

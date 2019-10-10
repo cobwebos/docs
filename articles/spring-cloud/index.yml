@@ -1,0 +1,78 @@
+### YamlMime:Landing
+title: Azure Spring Cloud 文档
+summary: Azure Spring Cloud 提供了一种托管服务，使 Java 开发人员能够在 Azure 上轻松生成和运行基于 Spring Boot 的微服务，而无需进行任何代码更改。
+metadata:
+  title: Azure Spring Cloud
+  description: Azure Spring Cloud 提供了一种托管服务，使 Java 开发人员能够在 Azure 上轻松生成和运行基于 Spring Boot 的微服务，而无需进行任何代码更改。
+  services: spring-cloud
+  ms.service: spring-cloud
+  ms.topic: landing-page
+  ms.collection: collection
+  author: jpconnock
+  ms.author: jpconnock
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 0dcbe8d01761e8feb06cd5705a104d8c9e5196e0
+  ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 10/08/2019
+  ms.locfileid: "72038595"
+landingContent:
+- title: 关于 Azure Spring Cloud
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Spring Cloud 是什么？
+      url: spring-cloud-overview.md
+    - text: 了解 Azure Spring Cloud 配额和限制
+      url: spring-cloud-quotas.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用门户启动 Java Spring 应用
+      url: spring-cloud-quickstart-launch-app-portal.md
+    - text: 使用 Azure CLI 启动 Java Spring 应用
+      url: spring-cloud-quickstart-launch-app-cli.md
+  - linkListType: tutorial
+    links:
+    - text: 准备 Java Spring 应用以进行部署
+      url: spring-cloud-tutorial-prepare-app-deployment.md
+- title: 监视应用程序
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用分布式跟踪功能和 App Insights 监视应用程序
+      url: spring-cloud-tutorial-distributed-tracing.md
+    - text: 对 Java Spring 应用程序启用诊断服务
+      url: diagnostic-services.md
+  - linkListType: concept
+    links:
+    - text: 了解适用于 Spring Cloud 的 Azure Monitor 指标
+      url: spring-cloud-concept-metrics.md
+- title: 与其他服务绑定
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将应用程序与 Azure Redis 缓存绑定
+      url: spring-cloud-tutorial-bind-redis.md
+    - text: 将应用程序绑定到 Azure MySQL DB
+      url: spring-cloud-tutorial-bind-mysql.md
+    - text: 将应用程序绑定到 Azure CosmosDB
+      url: spring-cloud-tutorial-bind-cosmos.md
+- title: 配置服务
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用配置服务器来维护应用程序配置
+      url: spring-cloud-tutorial-config-server.md
+    - text: 手动缩放应用程序
+      url: spring-cloud-tutorial-scale-manual.md
+  - linkListType: how-to-guide
+    links:
+    - text: 在 Azure Spring Cloud 中自动运行 CI/CD 管道
+      url: spring-cloud-howto-cicd.md
+    - text: 使用 Azure Spring Cloud 启用蓝绿部署
+      url: spring-cloud-howto-staging-environment.md
+    - text: 在 Azure Spring Cloud 中使用永久性存储
+      url: spring-cloud-howto-persistent-storage.md
