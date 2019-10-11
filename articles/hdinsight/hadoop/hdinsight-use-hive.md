@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/06/2019
-ms.openlocfilehash: ea8f14a7013a937ddd77baf0f50b8dca09cabad6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 10/04/2019
+ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076312"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167351"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
@@ -45,10 +45,9 @@ HDInsight 提供已针对特定工作负荷进行优化的多种群集类型。 
 | [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux、Unix、Mac OS X 或 Windows |
 | [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
 
-
 ## <a name="hiveql-language-reference"></a>HiveQL 语言参考
 
-HiveQL 语言参考现已推出[语言手册](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)。
+[语言手册](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)中提供了 HiveQL 语言参考。
 
 ## <a name="hive-and-data-structure"></a>Hive 和数据结构
 
@@ -91,7 +90,7 @@ Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化�
     * 需要一个自定义位置，例如非默认存储帐户。
     * 由 Hive 以外的某个程序管理数据格式、位置等。
 
-有关详细信息，请参阅[Hive 内部和外部表简介](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/)博客文章。
+有关详细信息，请参阅 [Hive 内部和外部表简介](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/)博客文章。
 
 ## <a name="user-defined-functions-udf"></a>用户定义函数 (UDF)
 
@@ -127,13 +126,12 @@ CREATE EXTERNAL TABLE log4jLogs (
     t7 string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
-SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs 
-    WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' 
+SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
+    WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log'
     GROUP BY t4;
 ```
 
 在上例中，HiveQL 语句执行以下操作：
-
 
 * `DROP TABLE`：如果该表已存在，则删除它。
 
@@ -141,7 +139,7 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 * `ROW FORMAT`：让 Hive 知道数据的格式已如何进行了设置。 在此情况下，每个日志中的字段以空格分隔。
 
-* `STORED AS TEXTFILE LOCATION`：让 Hive 知道数据的存储位置（`example/data` 目录），并且数据已存储为文本。 数据可以在一个文件中，也可以分散在目录的多个文件内。
+* `STORED AS TEXTFILE LOCATION`：告知 Hive 存储数据（`example/data` 目录），并将其存储为文本。 数据可以在一个文件中，也可以分散在目录的多个文件内。
 
 * `SELECT`：选择“t4”列中包含值“[ERROR]”的所有行的计数。 此语句返回的值为 **3**，因为有三行包含此值。
 
@@ -171,7 +169,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 这些语句将执行以下操作：
 
-* `CREATE TABLE IF NOT EXISTS`：如果该表不存在，则创建该表。 由于未使用 **EXTERNAL** 关键字，因此，此语句创建一个内部表。 该表存储在 Hive 数据仓库中，并完全由 Hive 管理。
+* `CREATE TABLE IF NOT EXISTS`：如果该表不存在，则创建该表。 因为不使用**EXTERNAL**关键字，所以此语句创建一个内部表。 该表存储在 Hive 数据仓库中，并完全由 Hive 管理。
 
 * `STORED AS ORC`：以优化的行纵栏式 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。
 
@@ -184,7 +182,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 
 ### <a id="usetez"></a>Apache Tez
 
-[Apache Tez](https://tez.apache.org) 是可让数据密集型应用程序（例如 Hive）大规模高效运行的框架。 默认情况下启用 Tez。  [Apache Hive on Tez 设计文档](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)包含有关实现选项和优化配置的详细信息。
+[Apache Tez](https://tez.apache.org) 是可让数据密集型应用程序（例如 Hive）大规模高效运行的框架。 默认情况下，Tez 已启用。  [Apache Hive on Tez 设计文档](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)包含有关实现选项和优化配置的详细信息。
 
 ### <a name="low-latency-analytical-processing-llap"></a>低延迟分析处理 (LLAP)
 
@@ -208,7 +206,7 @@ Azure 数据工厂允许将 HDInsight 用作数据工厂管道的一部分。 �
 
 * [Azure 订阅连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-有关详细信息，请参阅[的 Azure 功能包](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis)文档。
+有关详细信息，请参阅 [Azure 功能包](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis)文档。
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
