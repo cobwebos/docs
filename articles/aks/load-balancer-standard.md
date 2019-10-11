@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: c9b6f6cf52d71451d2e1de27d0637eeb749b1e0b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 55ded9a733baaac7fbc78621bd625d57d1d37ad1
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349067"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255469"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的标准 SKU 负载均衡器
 
@@ -145,7 +145,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster
 
 若要在群集上使用负载均衡器，请使用服务类型*LoadBalancer*创建服务清单。 若要显示负载均衡器的工作情况，请创建另一个清单，其中包含要在群集上运行的示例应用程序。 此示例应用程序通过负载均衡器公开，并可通过浏览器进行查看。
 
-创建一个名`sample.yaml`为的清单，如以下示例中所示：
+创建一个名为 `sample.yaml` 的清单，如以下示例中所示：
 
 ```yaml
 apiVersion: apps/v1
@@ -221,7 +221,7 @@ spec:
           value: "azure-vote-back"
 ```
 
-上面的清单配置了两个部署： *azure-投票*和*azure 投票*。 若要配置使用负载均衡器公开的*azure 投票前*部署，请创建一个名`standard-lb.yaml`为的清单，如以下示例中所示：
+上面的清单配置了两个部署： *azure-投票*和*azure 投票*。 若要配置使用负载均衡器公开的*azure 投票前*部署，请创建名为 `standard-lb.yaml` 的清单，如以下示例中所示：
 
 ```yaml
 apiVersion: v1
@@ -245,7 +245,7 @@ kubectl apply -f sample.yaml
 kubectl apply -f standard-lb.yaml
 ```
 
-*标准*SKU 负载均衡器现已配置为公开示例应用程序。 使用[kubectl get][kubectl-get]查看*azure*的服务详细信息，查看负载均衡器的公共 IP。 负载均衡器的公共 IP 地址显示在 "*外部 ip* " 列中。 IP 地址可能需要一到两分钟的时间才能从 *\<"挂起\>* " 更改为实际的外部 IP 地址，如以下示例中所示：
+*标准*SKU 负载均衡器现已配置为公开示例应用程序。 使用[kubectl get][kubectl-get]查看*azure*的服务详细信息，查看负载均衡器的公共 IP。 负载均衡器的公共 IP 地址显示在 "*外部 ip* " 列中。 IP 地址可能需要一到两分钟的时间才能从 *\<pending @ no__t-2*更改为实际的外部 IP 地址，如以下示例中所示：
 
 ```
 $ kubectl get service azure-vote-front
@@ -254,12 +254,12 @@ NAME                TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)       
 azure-vote-front    LoadBalancer   10.0.227.198   52.179.23.131   80:31201/TCP   16s
 ```
 
-在浏览器中导航到公共 IP，并验证是否看到该示例应用程序。 在上面的示例中，公共 IP 为`52.179.23.131`。
+在浏览器中导航到公共 IP，并验证是否看到该示例应用程序。 在上面的示例中，公共 IP `52.179.23.131`。
 
-![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 > [!NOTE]
-> 你还可以将负载均衡器配置为内部负载均衡器，而不是公开公共 IP。 若要将负载均衡器配置为内部`service.beta.kubernetes.io/azure-load-balancer-internal: "true"`负载均衡器，请将作为批注添加到*LoadBalancer*服务。 可在[此处][internal-lb-yaml]查看示例 yaml 清单以及有关内部负载均衡器的更多详细信息。
+> 你还可以将负载均衡器配置为内部负载均衡器，而不是公开公共 IP。 若要将负载均衡器配置为内部负载均衡器，请将 @no__t 0 作为批注添加到*LoadBalancer*服务。 可在[此处][internal-lb-yaml]查看示例 yaml 清单以及有关内部负载均衡器的更多详细信息。
 
 ## <a name="optional---scale-the-number-of-managed-public-ips"></a>可选-缩放托管的公共 Ip 数量
 
@@ -276,7 +276,7 @@ az aks update \
 
 上面的示例将*myResourceGroup*中*myAKSCluster*群集的托管出站公共 ip 数设置为*2* 。 
 
-你还可以在创建群集时使用*负载平衡器托管 ip 计数*参数设置初始的托管出站公共 ip 数，方法是附加`--load-balancer-managed-outbound-ip-count`参数并将其设置为所需的值。 托管出站公共 Ip 的默认数量为1。
+在创建群集时，还可以使用*负载平衡器托管 ip 计数*参数设置初始的托管出站公共 ip 数，方法是在创建群集时追加 `--load-balancer-managed-outbound-ip-count` 参数，并将其设置为所需的值。 托管出站公共 Ip 的默认数量为1。
 
 ## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>可选-提供自己的公共 Ip 或传出的前缀
 

@@ -5,17 +5,17 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: 852b4e692a4316c7701c8c179039104bee561949
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.author: rohogue
+ms.openlocfilehash: 4899f946cb358693c969def3fa740af64675d934
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180953"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254514"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC 缓存（预览）数据引入-并行复制脚本方法
 
-本文提供了有关创建``parallelcp``脚本并使用它将数据移动到 Blob 存储容器以便与 Azure HPC 缓存一起使用的说明。
+本文介绍如何创建 ``parallelcp`` 脚本，并使用它将数据移动到 Blob 存储容器，以便与 Azure HPC 缓存一起使用。
 
 若要详细了解如何将数据移到 Azure HPC 缓存的 Blob 存储，请参阅[将数据移到 AZURE Hpc 缓存的 Azure blob 存储](hpc-cache-ingest.md)。
 
@@ -75,11 +75,11 @@ EOM
 
 ## <a name="parallel-copy-example"></a>并行复制示例
 
-此示例使用并行复制脚本在 Azure HPC ``glibc``缓存中使用源文件进行编译。
+此示例使用并行复制脚本，使用 Azure HPC 缓存中的源文件编译 @no__t 0。
 
 源文件缓存在 Azure HPC 缓存装载点，对象文件存储在本地硬盘上。
 
-此示例将并行复制脚本与选项``-j``一起使用， ``make``以获得并行化。
+此示例使用带有选项 ``-j`` 和 ``make`` 的并行复制脚本来获取并行化。
 
 ```bash
 sudo apt-get update

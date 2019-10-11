@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e07d154ce5dae8a461bf9db19303db685f8a4152
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
-ms.translationtype: MT
+ms.openlocfilehash: 6771164c26c51e40d80d0c82b42f04c4f95c4c37
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103075"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255101"
 ---
-# <a name="troubleshoot-azure-file-sync"></a>Azure 文件同步疑难解答
+# <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
 
 本文旨在帮助排查和解决在 Azure 文件同步部署中可能遇到的问题。 此外，还介绍了在需要对问题进行更深入调查的情况下，如何从系统收集重要日志。 如果本文未能涵盖你的问题，欢迎通过以下渠道联系我们（以升序排列）：
@@ -41,7 +41,7 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 
 要解决此问题，请将 PDC 角色转移到另一运行 Windows Server 2012 R2 或更高版本的域控制器，然后安装同步。
 
-<a id="server-registration-prerequisites"></a>**服务器注册显示以下消息：“缺少必备项”**
+<a id="server-registration-prerequisites"></a>@no__t 1Server 注册显示以下消息：“缺少必备项”**
 
 如果未在 PowerShell 5.1 上安装 Az 或 AzureRM PowerShell 模块，则会出现此消息。 
 
@@ -56,7 +56,7 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
     - [AzureRM 模块]( https://go.microsoft.com/fwlink/?linkid=856959)
 3. 运行 ServerRegistration.exe 并完成向导中的操作，将服务器注册到存储同步服务。
 
-<a id="server-already-registered"></a>**服务器注册显示以下消息：“此服务器已注册”** 
+<a id="server-already-registered"></a>@no__t 1Server 注册显示以下消息：“此服务器已注册”** 
 
 ![包含“服务器已注册”错误消息的服务器注册对话框屏幕截图](media/storage-sync-files-troubleshoot/server-registration-1.png)
 
@@ -274,9 +274,9 @@ PerItemErrorCount: 1006.
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>根据文件/目录同步错误进行故障排除
 **ItemResults 日志 - 按项列出的同步错误**  
 
-| HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 更正 |
+| HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 补救 |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | 服务器上的分层文件无法访问。 如果在删除服务器终结点之前未重新调用该分层文件, 则会出现此问题。 | 若要解决此问题, 请参阅[删除服务器终结点后, 服务器上的分层文件无法访问](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)。 |
+| 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | 服务器上的分层文件无法访问。 如果在删除服务器终结点之前未重新调用该分层文件，则会出现此问题。 | 若要解决此问题，请参阅[删除服务器终结点后，服务器上的分层文件无法访问](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)。 |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 由于尚未同步依赖文件夹，因此无法同步文件或目录更改。 在同步相关的更改后，此项将会同步。 | 无需采取措施。 |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
@@ -286,7 +286,7 @@ PerItemErrorCount: 1006.
 | 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | 已跳过该文件，但会在下一个同步会话期间同步该文件。 | 无需采取措施。 |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | 无法同步该文件，因为已达到 Azure 文件共享限制。 | 要解决此问题，请参阅疑难解答指南中的[达到 Azure 文件共享存储限制](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)部分。 |
 | 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | 此文件由不受支持的解决方案（如 NTFS EFS）进行加密。 | 解密文件并使用受支持的加密解决方案。 有关支持解决方案的列表，请参阅计划指南中的[加密解决方案](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)部分。 |
-| 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | 此文件位于 DFS R 只读复制文件夹中。 | 文件位于 DFS R 只读复制文件夹中。 Azure 文件同步不支持 DFS 只读复制文件夹中的服务器终结点。 有关详细信息, 请参阅[规划指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)。 |
+| 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | 此文件位于 DFS R 只读复制文件夹中。 | 文件位于 DFS R 只读复制文件夹中。 Azure 文件同步不支持 DFS 只读复制文件夹中的服务器终结点。 有关详细信息，请参阅[规划指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)。 |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 文件具有 "删除挂起" 状态。 | 无需采取措施。 关闭所有打开的文件句柄后，文件将被删除。 |
 | 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | 由于启用了存储帐户上的防火墙和虚拟网络设置并且服务器无权访问存储帐户，因此无法同步该文件。 | 按照部署指南中的[配置防火墙和虚拟网络设置](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)部分所述的步骤，添加服务器 IP 地址或虚拟网络。 |
 | 0x80c80243 | -2134375869 | ECS_E_SECURITY_DESCRIPTOR_SIZE_TOO_LARGE | 此文件无法同步，因为安全描述符大小超过了 64 KiB 的限制。 | 若要解决此问题，请删除文件上的访问控制项（ACE）以减少安全描述符大小。 |
@@ -342,7 +342,7 @@ PerItemErrorCount: 1006.
 
 无需采取措施；服务器会重试。 如果此错误持续几个小时，请创建支持请求。
 
-<a id="-2134364043"></a>**同步被阻止, 直到更改检测完成还原后**  
+<a id="-2134364043"></a>**同步被阻止，直到更改检测完成还原后**  
 
 | | |
 |-|-|
@@ -351,7 +351,7 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **所需的补救措施** | 否 |
 
-无需任何操作。 使用 Azure 备份还原文件或文件共享 (云终结点) 后, 同步会被阻止, 直到在 Azure 文件共享上完成更改检测。 一旦还原完成且持续时间基于文件共享中的文件数, 更改检测会立即运行。
+无需任何操作。 使用 Azure 备份还原文件或文件共享（云终结点）后，同步会被阻止，直到在 Azure 文件共享上完成更改检测。 一旦还原完成且持续时间基于文件共享中的文件数，更改检测会立即运行。
 
 <a id="-2147216747"></a>**同步失败，因为同步数据库已卸载。**  
 
@@ -1010,60 +1010,71 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 > [!NOTE]
 > 如果文件无法重新调用，则每小时在“遥测”事件日志中记录事件 ID 9006 一次（为每个错误代码记录一个事件）。 如果需要其他信息才能诊断问题，请使用“操作”和“诊断”事件日志。
 
-### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>删除服务器终结点后, 无法在服务器上访问分层文件
-如果在删除服务器终结点之前未重新调用这些文件, 则服务器上的分层文件将无法访问。
+### <a name="recall-errors-and-remediation"></a>撤回错误和修正
 
-如果分层文件不可访问, 则记录错误
+| HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 补救 |
+|---------|-------------------|--------------|-------|-------------|
+| 0x80070079 | -121 | ERROR_SEM_TIMEOUT | 由于 i/o 超时，文件无法撤回。 此问题可能是由以下几个原因导致的：服务器资源约束、网络连接差或 Azure 存储问题（例如，限制）。 | 无需采取措施。 如果错误持续几个小时，请打开支持案例。 |
+| 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | 由于网络问题，文件无法撤回。  | 如果错误仍然存在，请检查与 Azure 文件共享之间的网络连接。 |
+| 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | 由于已删除服务器终结点，因此文件无法撤回。 | 若要解决此问题，请参阅[删除服务器终结点后，服务器上的分层文件无法访问](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)。 |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 由于访问被拒绝错误，文件无法撤回。 如果存储帐户上的防火墙和虚拟网络设置已启用并且服务器无权访问存储帐户，则可能出现此问题。 | 若要解决此问题，请遵循部署指南中的[配置防火墙和虚拟网络设置](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)部分中所述的步骤来添加服务器 IP 地址或虚拟网络。 |
+| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | 由于在 Azure 文件共享中无法访问该文件，因此该文件无法撤回。 | 若要解决此问题，请验证文件是否存在于 Azure 文件共享中。 如果文件存在于 Azure 文件共享中，请升级到最新的 Azure 文件同步代理版本。 |
+| 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | 由于对存储帐户的授权失败，文件无法撤回。 | 若要解决此问题，请验证[Azure 文件同步是否有权访问存储帐户](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac)。 |
+
+### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>删除服务器终结点后，无法在服务器上访问分层文件
+如果在删除服务器终结点之前未重新调用这些文件，则服务器上的分层文件将无法访问。
+
+如果分层文件不可访问，则记录错误
 - 同步文件时，错误代码-2147942467 （0x80070043-ERROR_BAD_NET_NAME）记录在 ItemResults 事件日志中
 - 撤回文件时，错误代码-2134376393 （0x80c80037-ECS_E_SYNC_SHARE_NOT_FOUND）记录在 RecallResults 事件日志中
 
-如果满足以下条件, 则可以还原对分层文件的访问权限:
+如果满足以下条件，则可以还原对分层文件的访问权限：
 - 已在过去30天内删除服务器终结点
 - 未删除云终结点 
 - 未删除文件共享
 - 未删除同步组
 
-如果满足上述条件, 则可以通过在同一同步组中的同一同步组内的同一路径上重新创建服务器终结点来还原对服务器上文件的访问权限。 
+如果满足上述条件，则可以通过在同一同步组中的同一同步组内的同一路径上重新创建服务器终结点来还原对服务器上文件的访问权限。 
 
-如果未满足上述条件, 则无法还原访问, 因为服务器上的这些分层文件现在已孤立。 请按照下面的说明删除孤立的分层文件。
+如果未满足上述条件，则无法还原访问，因为服务器上的这些分层文件现在已孤立。 请按照下面的说明删除孤立的分层文件。
 
 **说明**
-- 当分层文件在服务器上不可访问时, 如果直接访问 Azure 文件共享, 则完整文件应仍可访问。
-- 若要防止将来使用孤立的分层文件, 请按照删除服务器终结点时[删除服务器终结](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint)点中所述的步骤进行操作。
+- 当分层文件在服务器上不可访问时，如果直接访问 Azure 文件共享，则完整文件应仍可访问。
+- 若要防止将来使用孤立的分层文件，请按照删除服务器终结点时[删除服务器终结](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint)点中所述的步骤进行操作。
 
 <a id="get-orphaned"></a>**如何获取孤立分层文件的列表** 
 
 1. 验证是否安装了 Azure 文件同步 agent 版本5.1 或更高版本。
-2. 运行以下 PowerShell 命令以列出孤立的分层文件:
+2. 运行以下 PowerShell 命令以列出孤立的分层文件：
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 $orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
 $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 ```
-3. 保存 OrphanTieredFiles 输出文件, 以防文件在删除后需要从备份还原。
+3. 保存 OrphanTieredFiles 输出文件，以防文件在删除后需要从备份还原。
 
 <a id="remove-orphaned"></a>**如何删除孤立的分层文件** 
 
-*选项 1：删除孤立的分层文件*
+*选项 1：删除孤立的分层文件 @ no__t-0
 
-此选项将删除 Windows Server 上的孤立分层文件, 但需要删除服务器终结点 (如果该终结点由于30天后重新使用而存在), 或者连接到不同的同步组。 如果在重新创建服务器终结点之前在 Windows Server 或 Azure 文件共享上更新了文件, 则会发生文件冲突。
+此选项将删除 Windows Server 上的孤立分层文件，但需要删除服务器终结点（如果该终结点由于30天后重新使用而存在），或者连接到不同的同步组。 如果在重新创建服务器终结点之前在 Windows Server 或 Azure 文件共享上更新了文件，则会发生文件冲突。
 
 1. 验证是否安装了 Azure 文件同步 agent 版本5.1 或更高版本。
 2. 备份 Azure 文件共享和服务器终结点位置。
-3. 按照[删除服务器终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint)中所述的步骤操作, 在同步组中删除服务器终结点 (如果存在)。
+3. 按照[删除服务器终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint)中所述的步骤操作，在同步组中删除服务器终结点（如果存在）。
 
 > [!Warning]  
-> 如果在使用 StorageSyncOrphanedTieredFiles cmdlet 之前未删除服务器终结点, 则在服务器上删除孤立的分层文件将删除 Azure 文件共享中的完整文件。 
+> 如果在使用 StorageSyncOrphanedTieredFiles cmdlet 之前未删除服务器终结点，则在服务器上删除孤立的分层文件将删除 Azure 文件共享中的完整文件。 
 
-4. 运行以下 PowerShell 命令以列出孤立的分层文件:
+4. 运行以下 PowerShell 命令以列出孤立的分层文件：
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 $orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
 $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 ```
-5. 保存 OrphanTieredFiles 输出文件, 以防文件在删除后需要从备份还原。
-6. 运行以下 PowerShell 命令以删除孤立的分层文件:
+5. 保存 OrphanTieredFiles 输出文件，以防文件在删除后需要从备份还原。
+6. 运行以下 PowerShell 命令以删除孤立的分层文件：
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -1072,17 +1083,17 @@ $orphanFilesRemoved.OrphanedTieredFiles > DeletedOrphanFiles.txt
 ```
 **说明** 
 - 在未同步到 Azure 文件共享的服务器上修改的分层文件将被删除。
-- 可访问 (而不是孤立) 的分层文件将不会被删除。
+- 可访问（而不是孤立）的分层文件将不会被删除。
 - 非分层文件将保留在服务器上。
 
-7. 可选：如果在步骤3中删除服务器终结点, 请重新创建该终结点。
+7. 可选：如果在步骤3中删除服务器终结点，请重新创建该终结点。
 
-*选项 2：装载 Azure 文件共享, 并在服务器上本地复制文件*
+*选项 2：装载 Azure 文件共享，并在服务器 @ no__t 上将孤立文件复制到本地
 
-此选项不需要删除服务器终结点, 但需要足够的磁盘空间来本地复制完整文件。
+此选项不需要删除服务器终结点，但需要足够的磁盘空间来本地复制完整文件。
 
 1. 在具有孤立分层文件的 Windows 服务器上[装载](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)Azure 文件共享。
-2. 运行以下 PowerShell 命令以列出孤立的分层文件:
+2. 运行以下 PowerShell 命令以列出孤立的分层文件：
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 $orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>

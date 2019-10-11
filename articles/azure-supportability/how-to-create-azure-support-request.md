@@ -2,31 +2,26 @@
 title: 如何创建 Azure 支持请求 | Microsoft Docs
 description: 如何创建 Azure 支持请求。
 services: Azure Supportability
-documentationcenter: ''
 author: ganganarayanan
 manager: scotthit
-editor: ''
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-ms.openlocfilehash: 462a14d7845c6723a3482e50b01c50e3d913beee
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0195cc86875b075e00e9305d803b8d637905db78
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71072079"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248706"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>如何创建 Azure 支持请求
 ## <a name="summary"></a>总结
 Azure 客户可在 Azure 门户 [https://portal.azure.com](https://portal.azure.com) 中创建和管理支持请求。
 
 > [!NOTE]
-> 德国[https://portal.azure.com](https://portal.azure.com) Azure 门户 Azure 门户用于商业[https://portal.microsoftazure.de](https://portal.microsoftazure.de)   
+> 适用于商业的 Azure 门户为德国[https://portal.azure.com](https://portal.azure.com) Azure 门户[https://portal.microsoftazure.de](https://portal.microsoftazure.de)@no__t  
 > 美国政府 Azure 门户[https://portal.azure.us](https://portal.azure.us)
 
 
@@ -51,7 +46,7 @@ Azure 客户可在 Azure 门户 [https://portal.azure.com](https://portal.azure.
 
 ![在上下文中](./media/how-to-create-azure-support-request/Incontext.png)
 
-## <a name="basics"></a>基本
+## <a name="basics"></a>基础
 支持请求过程的第一步是收集关于问题和支持计划的基本信息。
 
 下面是一个示例：你遇到了虚拟机的技术难题，并怀疑存在网络连接问题。
@@ -130,5 +125,5 @@ Azure 客户可在 Azure 门户 [https://portal.azure.com](https://portal.azure.
 ## <a name="feedback"></a>反馈
 我们始终乐于接受反馈和建议！ 请向我们发送[建议](https://feedback.azure.com/forums/266794-support-feedback)。 此外，可以通过 [Twitter](https://twitter.com/azuresupport) 或 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure)与我们联系。
 
-## <a name="learn-more"></a>了解详情
+## <a name="learn-more"></a>了解详细信息
 [Azure 支持常见问题](https://azure.microsoft.com/support/faq)

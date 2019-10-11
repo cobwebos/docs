@@ -1,17 +1,17 @@
 ---
 title: 示例 - 加拿大联邦 PBMM 蓝图 - 概述
-description: 加拿大联邦 PBMM 蓝图示例概述。
+description: 加拿大联邦 PBMM 蓝图示例概述。 此蓝图示例可帮助客户评估特定加拿大联邦 PBMM 控制要求。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 16d4f618aadd1e2157cdf06ca292f069f415d1b6
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 3c2e579d546cbbf3f0e6ca4183d0d150a31a3ed4
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981627"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248491"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大联邦 PBMM 蓝图示例概述
 

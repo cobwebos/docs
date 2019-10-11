@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c3bae2fff9e20ed9427c72b5f5f632d975f9f94
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: bce04a14a13d5b3615963f298f35af0d2fc480bb
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034415"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244439"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型定型的计算目标 
 
@@ -68,7 +68,7 @@ ML 管道是从多个**步骤**构造的，这些步骤是管道中的不同计�
 > [!TIP]
 > 在训练模型时，ML 管道可以使用运行配置或估算。
 
-虽然 ML 管道可以训练模型，但它们还可以在训练和部署模型之后准备数据。 管道的主要用例之一是批处理评分。 有关详细信息，请[参阅管道：优化机器学习工作](concept-ml-pipelines.md)流。
+虽然 ML 管道可以训练模型，但它们还可以在训练和部署模型之后准备数据。 管道的主要用例之一是批处理评分。 有关详细信息，请参阅 [Pipelines：优化机器学习工作流 @ no__t。
 
 ## <a name="set-up-in-python"></a>在 Python 中设置
 
@@ -106,7 +106,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 可将 Azure 机器学习计算创建为运行时的计算目标。 将自动为运行创建计算。 完成运行后，会自动删除计算。 
 
 > [!NOTE]
-> 若要指定要使用的最大节点数，通常会将`node_count`设置为节点数。 当前有（04/04/2019） bug 阻止了此操作。 解决方法是使用`amlcompute._cluster_max_node_count`运行配置的属性。 例如， `run_config.amlcompute._cluster_max_node_count = 5` 。
+> 若要指定要使用的最大节点数，通常应将 `node_count` 设置为节点数。 当前有（04/04/2019） bug 阻止了此操作。 解决方法是使用运行配置的 `amlcompute._cluster_max_node_count` 属性。 例如， `run_config.amlcompute._cluster_max_node_count = 5` 。
 
 > [!IMPORTANT]
 > Azure 机器学习计算的基于运行的创建功能目前为预览版。 如果使用自动化超参数优化或自动化机器学习，请不要使用基于运行的创建。 若要使用超参数优化或自动化机器学习，请改为创建[持久性计算](#persistent)目标。
@@ -206,7 +206,7 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
 
    try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
-    attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azureinsight.net', 
+    attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azurehdinsight.net', 
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
@@ -295,7 +295,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
  
 1. 在“应用程序”下，选择“计算”。
 
-    [![查看计算选项卡](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [![View 计算选项卡](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>创建计算目标
 
@@ -379,7 +379,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 > [!IMPORTANT]
 > 提交训练运行时，将创建包含定型脚本的目录的快照，并将其发送到计算目标。 它也作为实验的一部分存储在工作区中。 如果更改文件并再次提交运行，则只会上载已更改的文件。
 >
-> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果同时存在这两个`.amlignore`文件, 则该文件将优先。
+> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果这两个文件都存在，则 @no__t 的文件优先。
 > 
 > 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 
@@ -406,7 +406,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
 > [!TIP]
-> 此示例默认为仅使用计算目标的一个节点进行定型。 若要使用多个节点，请将`node_count`运行配置的设置为所需的节点数。 例如，下面的代码将用于定型的节点数设置为4：
+> 此示例默认为仅使用计算目标的一个节点进行定型。 若要使用多个节点，请将运行配置的 @no__t 0 设置为所需的节点数。 例如，下面的代码将用于定型的节点数设置为4：
 >
 > ```python
 > src.run_config.node_count = 4
@@ -422,7 +422,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>使用 Azure 机器学习 CLI 创建运行配置并提交运行
 
-您可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)和[机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)来创建运行配置，并将运行中的运行提交到不同的计算目标。 以下示例假定你已有 Azure 机器学习工作区，并使用`az login` CLI 命令登录到 Azure。 
+您可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)和[机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)来创建运行配置，并将运行中的运行提交到不同的计算目标。 以下示例假定你已有 Azure 机器学习工作区，并且已使用 `az login` CLI 命令登录到 Azure。 
 
 ### <a name="create-run-configuration"></a>创建运行配置
 
@@ -432,7 +432,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 az ml folder attach
 ```
 
-此命令创建一个子`.azureml`文件夹，其中包含不同计算目标的模板运行配置文件。 可以复制和编辑这些文件，以自定义配置，例如添加 Python 包或更改 Docker 设置。  
+此命令创建一个子文件夹 `.azureml`，其中包含不同计算目标的模板运行配置文件。 可以复制和编辑这些文件，以自定义配置，例如添加 Python 包或更改 Docker 设置。  
 
 ### <a name="structure-of-run-configuration-file"></a>运行配置文件的结构
 
@@ -493,13 +493,13 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 请注意 .runconfig 和 HyperDrive config 中的*参数空间*中的*参数*部分。它们包含要传递给训练脚本的命令行参数。 .Runconfig 中的值在每次迭代中保持不变，而 HyperDrive config 中的范围将循环访问。 不要在这两个文件中指定相同的参数。
 
-有关这些```az ml``` CLI 命令和完整参数集的更多详细信息，请参阅[参考文档](reference-azure-machine-learning-cli.md)。
+有关这些 @no__t 参数的详细信息，请参阅[参考文档](reference-azure-machine-learning-cli.md)。
 
 <a id="gitintegration"></a>
 
 ## <a name="git-tracking-and-integration"></a>Git 跟踪和集成
 
-当你开始在源目录为本地 Git 存储库的训练运行时, 有关存储库的信息存储在运行历史记录中。 例如, 将在历史记录中记录存储库的当前提交 ID。
+当你开始在源目录为本地 Git 存储库的训练运行时，有关存储库的信息存储在运行历史记录中。 例如，将在历史记录中记录存储库的当前提交 ID。
 
 ## <a name="notebook-examples"></a>Notebook 示例
 

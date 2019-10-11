@@ -234,6 +234,10 @@
       items:
         - name: 安全和策略
           href: security-policy.md
+        - name: Azure 磁盘加密
+          href: disk-encryption-overview.md
+        - name: 内置安全控件
+          href: virtual-machines-windows-security-controls.md
     - name: 状态和生命周期
       href: states-lifecycle.md
     - name: 监视
@@ -242,8 +246,6 @@
       href: backup-recovery.md
     - name: 基础结构示例
       href: infrastructure-example.md
-    - name: 内置安全控件
-      href: virtual-machines-windows-security-controls.md
 - name: 操作指南
   items:
     - name: 创建 VM
@@ -286,8 +288,31 @@
         - name: 实时访问
           href: ../../security-center/security-center-just-in-time.md
         - name: 加密
-          href: encrypt-disks.md
-          displayName: encryption
+          items:
+            - name: 适用于 Windows 的磁盘加密方案
+              href: disk-encryption-windows.md
+            - name: 使用 Azure CLI 进行 VM 加密
+              href: disk-encryption-cli-quickstart.md
+            - name: 使用 Azure PowerShell 进行 VM 加密
+              href: disk-encryption-powershell-quickstart.md
+            - name: 使用 Azure 门户进行 VM 加密
+              href: disk-encryption-portal-quickstart.md
+            - name: 用于 Azure 磁盘加密的密钥保管库
+              href: disk-encryption-key-vault.md
+            - name: 磁盘加密示例脚本
+              href: disk-encryption-sample-scripts.md
+            - name: 磁盘加密故障排除
+              href: disk-encryption-troubleshooting.md
+            - name: 磁盘加密常见问题解答
+              href: disk-encryption-faq.md
+            - name: 磁盘加密 - 以前的版本 (AAD)
+              items:
+                - name: 概述
+                  href: disk-encryption-overview-aad.md
+                - name: 用于 Azure 磁盘加密的密钥保管库
+                  href: disk-encryption-key-vault-aad.md
+                - name: 适用于 Windows 的磁盘加密方案
+                  href: disk-encryption-windows-aad.md
         - name: 使用 WinRM
           href: winrm.md
         - name: 使用访问控制

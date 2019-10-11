@@ -432,6 +432,8 @@
           href: control-flow-get-metadata-activity.md
         - name: If Condition 活动
           href: control-flow-if-condition-activity.md
+        - name: 切换活动
+          href: control-flow-switch-activity.md
         - name: 查找活动
           href: control-flow-lookup-activity.md
         - name: 设置变量活动
@@ -598,6 +600,8 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: 在 Azure-SSIS IR 中排查包执行问题
           href: ssis-integration-runtime-ssis-activity-faq.md
+        - name: 排查数据流问题
+          href: data-flow-troubleshoot-guide.md
 - name: 方案
   items:
     - name: Data Lake 与 EDW 的数据迁移

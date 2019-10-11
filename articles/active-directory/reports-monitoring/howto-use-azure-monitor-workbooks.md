@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 288fa54a1a6dd4eb05f953a4490bf7736d6d7ff8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 9bea8da4f0d694be3a39a8f5dfaca8e54ce2773d
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931250"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255657"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>如何将 Azure Monitor 工作簿用于 Azure Active Directory 报表
 
@@ -48,6 +48,13 @@ ms.locfileid: "70931250"
 - 具有高级（P1 或 P2）许可证的 Active Directory 租户。 了解如何[获取高级许可证](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)。
 
 - [Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
+
+- [访问](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)log analytics 工作区
+- Azure Active Directory 中的以下角色（如果你要通过 Azure Active Directory 门户访问 Log Analytics）
+    - 安全管理员
+    - 安全读取者
+    - 报表读取器
+    - 全局管理员
 
 ## <a name="roles"></a>角色
 你必须是以下角色之一，并且有[权访问基础 Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions)工作区来管理工作簿：
@@ -83,7 +90,7 @@ ms.locfileid: "70931250"
 
 - 所有登录
 
-- Success
+- 成功
 
 - 挂起的用户操作
 
@@ -93,7 +100,7 @@ ms.locfileid: "70931250"
 
 - 时间范围
 
-- 应用程序
+- 应用
 
 - 用户
 
@@ -120,14 +127,14 @@ ms.locfileid: "70931250"
 
 - 所有登录
 
-- Success
+- 成功
 
 
 可以按以下类别筛选每个趋势：
 
 - 时间范围
 
-- 应用程序
+- 应用
 
 - 用户
 
@@ -151,7 +158,7 @@ ms.locfileid: "70931250"
 
 - 时间范围
 
-- 应用程序
+- 应用
 
 - 用户
 
@@ -188,7 +195,7 @@ ms.locfileid: "70931250"
 
 - 时间范围
 
-- 应用程序
+- 应用
 
 - 用户
 
@@ -208,7 +215,7 @@ ms.locfileid: "70931250"
 
 - 登录
 - 条件访问策略
-- 旧身份验证 
+- 旧式身份验证 
 
 
 若要通过条件访问数据访问登录，请在 "**故障排除**" 部分中，选择 "**使用旧身份验证登录**"。 
@@ -217,7 +224,7 @@ ms.locfileid: "70931250"
 
 - 所有登录
 
-- Success
+- 成功
 
 - 挂起的操作
 
@@ -228,7 +235,7 @@ ms.locfileid: "70931250"
 
 - 时间范围
 
-- 应用程序
+- 应用
 
 - 用户
 

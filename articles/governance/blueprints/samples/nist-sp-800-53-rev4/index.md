@@ -1,17 +1,17 @@
 ---
 title: 示例 - NIST SP 800-53 R4 蓝图 - 概述
-description: NIST SP 800-53 R4 蓝图示例的概述。
+description: NIST SP 800-53 R4 蓝图示例的概述。 此蓝图示例可帮助客户评估特定 NIST SP 800-53 R4 控制要求。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 09249b7f8acb171eb63cdc88b647ebf2048c7358
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 6edec05d157df35fb4096e41059b12e36cefd3da
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980947"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248364"
 ---
 # <a name="overview-of-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 蓝图示例的概述
 

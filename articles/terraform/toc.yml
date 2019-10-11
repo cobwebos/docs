@@ -25,7 +25,7 @@
       items:
         - name: 使用 AKS 创建 Kubernetes 群集
           href: terraform-create-k8s-cluster-with-tf-and-aks.md
-        - name: 将 AKS 与作为入口控制器的应用程序网关配合使用来创建 Kubernetes 群集
+        - name: 在 AKS 中创建应用程序网关入口控制器
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: 基础结构
       items:
