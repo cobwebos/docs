@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: c291a914ae9e76ce548df2a52523d60b69f0a7b0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bc20af10e2e5b2ceb26c1cc891a8f69eb44e5740
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882714"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242888"
 ---
-# <a name="define-and-use-moderation-jobs-net"></a>定义和使用审核作业 (.NET)
+# <a name="define-and-use-moderation-jobs-net"></a>定义和使用审核作业（.NET）
 
-裁决作业作为内容审核、工作流和评论功能的一种包装。 本指南提供了信息和代码示例, 帮助你开始使用[适用于 .net 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
+裁决作业作为内容审核、工作流和评论功能的一种包装。 本指南提供了信息和代码示例，帮助你开始使用[适用于 .net 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ：
 
 - 启动审核工作以扫描和创建人工审查器评审
 - 获取待处理的评审状态
@@ -67,8 +67,7 @@ ms.locfileid: "68882714"
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

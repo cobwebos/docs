@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8c9f8b3733a4b2491c4199f041ba6b24efbb0224
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e3b36eae4f6dc4343828a38fa4ffe3920a83f589
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881905"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242866"
 ---
-# <a name="create-human-reviews-net"></a>创建人机评审 (.NET)
+# <a name="create-human-reviews-net"></a>创建人机评审（.NET）
 
-查看存储并显示要评估的人的内容。 当用户完成评审后, 结果将发送到指定的回调终结点。 本指南提供了信息和代码示例, 帮助你开始使用[适用于 .net 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) :
+查看存储并显示要评估的人的内容。 当用户完成评审后，结果将发送到指定的回调终结点。 本指南提供了信息和代码示例，帮助你开始使用[适用于 .net 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ：
 
 - 为人工审查方创建一组审阅
 - 获取人工审查方的现有审阅的状态
@@ -59,8 +59,7 @@ ms.locfileid: "68881905"
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -382,7 +381,7 @@ private static void CreateReviews(ContentModeratorClient client)
 
 将以下代码添加到 Main 方法。
 
-此代码模拟在定义和管理列表以及使用列表筛查图像时执行的诸多操作。 使用日志记录功能, 可以查看由 SDK 调用内容 mModerator 服务生成的响应对象。
+此代码模拟在定义和管理列表以及使用列表筛查图像时执行的诸多操作。 使用日志记录功能，可以查看由 SDK 调用内容 mModerator 服务生成的响应对象。
 
 ```csharp
 using (TextWriter outputWriter = new StreamWriter(OutputFile, false))
@@ -536,4 +535,4 @@ Creating reviews for the following images:
 
 ## <a name="next-steps"></a>后续步骤
 
-获取[内容审查器 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) , 并下载适用于 .net 的其他内容审查器快速入门的[Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator), 并开始进行集成。
+获取[内容审查器 .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ，并下载适用于 .net 的其他内容审查器快速入门的[Visual Studio 解决方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，并开始进行集成。

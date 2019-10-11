@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: cb5a3b8572cebfd6c0731a9e572e966fda280be6
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: a441ca83230a1c715aadda79683964aaab6d6213
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772790"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72252971"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -26,7 +26,7 @@ ms.locfileid: "70772790"
  * 音译可将一种语言的文本从一个脚本转换为另一个脚本。
  * 在一个请求中翻译成多种语言。
  * 在一个请求中进行语言检测、翻译和音译。
- * 字典可查找术语的替代翻译，可查找反向翻译以及显示上下文中使用的术语的示例。
+ * 用于查找字词的替代翻译的字典，查找用于显示上下文中所用术语的反向翻译和示例。
  * 更详细的语言检测结果。
 
 ## <a name="base-urls"></a>基 URL
@@ -41,19 +41,18 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 
 若要强制由特定 Azure 地理区域处理请求，请将 API 请求中的全球终结点更改为所需的区域终结点：
 
-|描述|Azure 地理区域|基 URL|
+|描述|Azure 地理|基 URL|
 |:--|:--|:--|
 |Azure|全局（非区域）|   api.cognitive.microsofttranslator.com|
 |Azure|美国|   api-nam.cognitive.microsofttranslator.com|
 |Azure|欧洲|  api-eur.cognitive.microsofttranslator.com|
 |Azure|亚太区|    api-apc.cognitive.microsofttranslator.com|
 
-
 ## <a name="authentication"></a>身份验证
 
-订阅 Microsoft 认知服务中的文本翻译 API 或[认知服务多服务](https://azure.microsoft.com/pricing/details/cognitive-services/)，并使用你的订阅密钥（在 Azure 门户中提供）进行身份验证。 
+订阅 Azure 认知服务中的文本翻译 API 或[认知服务多服务](https://azure.microsoft.com/pricing/details/cognitive-services/)，并使用你的订阅密钥（在 Azure 门户中提供）进行身份验证。 
 
-有三个标头可用于对你的订阅进行身份验证。 下表介绍了每个标头的使用方式：
+有三个标头可用于对你的订阅进行身份验证。 下表描述了每种方法的使用方式：
 
 |标头|说明|
 |:----|:----|
@@ -62,7 +61,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 |Ocp-Apim-Subscription-Region|*如果要传递多服务机密密钥，请将用于认知服务多服务订阅。*<br/>值是多服务订阅的区域。 如果不使用多服务订阅，此值是可选的。|
 
 ###  <a name="secret-key"></a>密钥
-第一个选项是使用 `Ocp-Apim-Subscription-Key` 标头进行身份验证。 只需将 `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` 标头添加到你的请求。
+第一个选项是使用 `Ocp-Apim-Subscription-Key` 标头进行身份验证。 将 @no__t 的标头添加到请求中。
 
 ### <a name="authorization-token"></a>授权令牌
 或者，可以交换访问令牌的密钥。 此令牌作为 `Authorization` 标头包含在每个请求中。 若要获取授权令牌，请向以下 URL 发出 `POST` 请求：
@@ -73,7 +72,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 
 以下是根据给定密钥获取令牌的示例请求：
 
-```
+```curl
 // Pass secret key using header
 curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
 
@@ -83,11 +82,11 @@ curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscrip
 
 成功的请求会在响应正文中将编码的访问令牌作为纯文本返回。 有效的令牌在授权中作为持有者令牌传递给翻译服务。
 
-```
+```http
 Authorization: Bearer <Base64-access_token>
 ```
 
-身份验证令牌的有效期为 10 分钟。 在对翻译 API 进行多次调用时，应重新使用该令牌。 但是，如果程序在很长一段时间内向翻译 API 发出请求，则程序必须定期（例如每 8 分钟）请求一个新的访问令牌。
+身份验证令牌的有效期为 10 分钟。 对转换器 Api 进行多次调用时，应重新使用该令牌。 但是，如果程序在很长一段时间内向转换器 API 发出请求，则程序必须定期请求新的访问令牌（例如，每8分钟一次）。
 
 ### <a name="multi-service-subscription"></a>多服务订阅
 
@@ -99,7 +98,7 @@ Authorization: Bearer <Base64-access_token>
 
 区域对于多服务文本 API 订阅是必需的。 你选择的区域是在使用多服务订阅密钥时可用于文本翻译的唯一区域，并且必须是通过 Azure 门户注册多服务订阅时所选的同一区域。
 
-可用区域包括`australiaeast` `brazilsouth` 、、`centralus` 、`eastus`、、 、`centraluseuap` 、、`japanwest`、、、、 `eastasia` `canadacentral` `centralindia` `eastus2` `francecentral` `japaneast` `koreacentral`、 、`northcentralus` 、、`southeastasia`、、 、、`southafricanorth`、和。 `westcentralus` `southcentralus` `uksouth` `northeurope` `westeurope` `westus` `westus2`
+可用区域 `australiaeast`，`brazilsouth`，`canadacentral`，`centralindia`，`centralus`，`centraluseuap`，`eastasia`，`eastus`，`eastus2`，`francecentral`，0，1，2，6，7，8，9，0，@no__tt-21 和 2。
 
 如果使用参数 `Subscription-Key` 传递查询字符串中的密钥，则必须使用查询参数 `Subscription-Region` 指定区域。
 
@@ -111,12 +110,11 @@ Authorization: Bearer <Base64-access_token>
 标准错误响应是具有名为 `error` 的名称/值对的 JSON 对象。 该值也是具有以下属性的 JSON 对象：
 
   * `code`：服务器定义的错误代码。
-
   * `message`：一个提供人类可读的错误表示形式的字符串。
 
 例如，拥有免费试用版订阅的客户会在免费配额用尽后收到以下错误：
 
-```
+```json
 {
   "error": {
     "code":403001,
@@ -136,7 +134,7 @@ Authorization: Bearer <Base64-access_token>
 | 400005| 输入文本缺失或无效。|
 | 400006| 语言和脚本的组合无效。|
 | 400018| 源脚本说明符（“From script”）缺失或无效。|
-| 400019| 指定的某个语言不受支持。|
+| 400019| 不支持指定的语言之一。|
 | 400020| 输入文本数组中的某个元素无效。|
 | 400021| API 版本参数缺失或无效。|
 | 400023| 指定的某个语言对无效。|
@@ -156,7 +154,7 @@ Authorization: Bearer <Base64-access_token>
 | 400079| 请求用于在源语言与目标语言之间进行翻译的自定义系统不存在。|
 | 400080| 语言或脚本不支持音译。|
 | 401000| 由于凭据缺失或无效，请求未授权。|
-| 401015| “提供的凭据适用于语音 API。 此请求需要文本 API 的凭据。 请使用文本翻译 API 的订阅。”|
+| 401015| “提供的凭据适用于语音 API。 此请求需要文本 API 的凭据。 使用订阅文本翻译 API。 "|
 | 403000| 不允许该操作。|
 | 403001| 由于订阅已超过其免费配额，因此不允许该操作。|
 | 405000| 请求的资源不支持该请求方法。|
