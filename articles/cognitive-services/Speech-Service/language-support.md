@@ -81,7 +81,7 @@ de-DE | 德语(德国) | 女 | "Microsoft Server Speech Text to Speech Voice (de
 en-US | 英语(美国) | 男 | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)" | "en-us-GuyNeural"
 en-US | 英语(美国) | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)" | "en-us-JessaNeural"
 it-IT | 意大利语(意大利) | 女 |"Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)" | "it-ElsaNeural"
-zh-CN | 中文(中国) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)" | "zh-chs-XiaoxiaoNeural"
+zh-CN | 中文(中国) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
 
 > [!NOTE]
 > 你可以在语音合成请求中使用完整的服务名称映射或短名称。
@@ -164,15 +164,15 @@ te-IN | 泰卢固语(印度) | 女 | "Microsoft Server Speech Text to Speech Voi
 th-TH | 泰语 | 男 | "Microsoft Server Speech Text to Speech Voice (th-TH, Pattara)" | "第 Pattara"
 tr-TR | 土耳其语 | 女 | "Microsoft Server Speech Text to Speech Voice (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
 vi-VN | 越南语 | 男 | "Microsoft Server Speech Text to Speech Voice (vi-VN, An)" | "vi-VN"
-zh-CN | 中文(中国) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)" | "zh-chs-HuihuiRUS"
+zh-CN | 中文(中国) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)" | "zh-CN-HuihuiRUS"
 | | | 女 | "Microsoft Server Speech Text to Speech Voice (zh-CN, Yaoyao, Apollo)" | "zh-CN-Yaoyao-Apollo"
-| | | 男 | "Microsoft Server Speech Text to Speech Voice (zh-CN, Kangkang, Apollo)" | "zh-chs-Kangkang-Apollo"
-zh-HK | 中文(香港特别行政区) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-HK, Tracy, Apollo)" | "zh-chs-Tracy-Apollo"
-| | | 女 | "Microsoft Server Speech Text to Speech Voice (zh-HK, TracyRUS)" | "zh-chs-TracyRUS"
-| | | 男 | "Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apollo)" | "zh-chs-Danny-Apollo"
-zh-TW | 中文(中国台湾) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)" | "zh-chs-Yating-Apollo"
+| | | 男 | "Microsoft Server Speech Text to Speech Voice (zh-CN, Kangkang, Apollo)" | "zh-CN-Kangkang-Apollo"
+zh-HK | 中文(香港特别行政区) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-HK, Tracy, Apollo)" | "zh-CN-Tracy-Apollo"
+| | | 女 | "Microsoft Server Speech Text to Speech Voice (zh-HK, TracyRUS)" | "zh-CN-TracyRUS"
+| | | 男 | "Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Apollo)" | "zh-CN-Danny-Apollo"
+zh-TW | 中文(中国台湾) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)" | "zh-CN-Yating-Apollo"
 | | | 女 | "Microsoft Server Speech Text to Speech Voice (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
-| | | 男 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)" | "zh-chs-Zhiwei-Apollo"
+| | | 男 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)" | "zh-CN-Zhiwei-Apollo"
 
 \* *ar-EG 支持现代标准阿拉伯语 (MSA)。*
 
@@ -181,10 +181,10 @@ zh-TW | 中文(中国台湾) | 女 | "Microsoft Server Speech Text to Speech Voi
 
 ### <a name="customization"></a>自定义
 
-语音自定义适用于 de、en、en、en-us、en-us、es-mx、fr、it、zh-chs、pt-BR 和-CN。 选择与训练自定义语音模型所需的定型数据相匹配的正确区域设置。 例如, 如果您的记录数据是以英语撰写的, 则选择 "en-us"。  
+语音自定义适用于 de、en、en、en-us、en-us、es-mx、fr、it、zh-CN、pt-BR 和-CN。 选择与训练自定义语音模型所需的定型数据相匹配的正确区域设置。 例如, 如果您的记录数据是以英语撰写的, 则选择 "en-us"。  
 
 > [!NOTE]
-> 除了简体中文 bi 语言, 我们不支持自定义语音中的 bi 语言模型定型。 如果要训练一种可以说英语的中文语音, 请选择 "中文-英语双语"。 所有区域设置中的语音训练都以 2000 + 最谈话的数据集开头, 除了 en-us 和 zh-chs, 你可以从任何大小的定型数据开始。
+> 除了简体中文 bi 语言, 我们不支持自定义语音中的 bi 语言模型定型。 如果要训练一种可以说英语的中文语音, 请选择 "中文-英语双语"。 所有区域设置中的语音训练都以 2000 + 最谈话的数据集开头, 除了 en-us 和 zh-CN, 你可以从任何大小的定型数据开始。
 
 ## <a name="speech-translation"></a>语音翻译
 
