@@ -4,15 +4,15 @@ description: 对 Azure 文件同步的常见问题进行故障排除
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/10/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 6771164c26c51e40d80d0c82b42f04c4f95c4c37
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
-ms.translationtype: HT
+ms.openlocfilehash: 31a9eda0e17083aac25be071c1d1a3ab84049e39
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255101"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274874"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -797,6 +797,17 @@ PerItemErrorCount: 1006.
 4. 如果已在服务器终结点上启用云分层，则可以通过执行 "[删除服务器终结点后无法在服务器上访问](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)" 一节中所述的步骤，在服务器上删除孤立的分层文件。
 5. 重新创建同步组。
 
+<a id="-2145844941"></a>**同步失败，因为已重定向 HTTP 请求**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80190133 |
+| **HRESULT（十进制）** | -2145844941 |
+| **错误字符串** | HTTP_E_STATUS_REDIRECT_KEEP_VERB |
+| **所需的补救措施** | 是 |
+
+发生此错误的原因是 Azure 文件同步不支持 HTTP 重定向（3xx 状态代码）。 若要解决此问题，请在代理服务器或网络设备上禁用 HTTP 重定向。
+
 ### <a name="common-troubleshooting-steps"></a>常见故障排除步骤
 <a id="troubleshoot-storage-account"></a>**验证存储帐户是否存在。**  
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
@@ -1008,7 +1019,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
         - 在权限提升的命令提示符下，运行 `fltmc`。 验证 StorageSync.sys 和 StorageSyncGuard.sys 文件系统筛选器驱动程序是否已列出。
 
 > [!NOTE]
-> 如果文件无法重新调用，则每小时在“遥测”事件日志中记录事件 ID 9006 一次（为每个错误代码记录一个事件）。 如果需要其他信息才能诊断问题，请使用“操作”和“诊断”事件日志。
+> 如果文件无法重新调用，则每小时在“遥测”事件日志中记录事件 ID 9006 一次（为每个错误代码记录一个事件）。 检查[撤回错误和修正](#recall-errors-and-remediation)部分，以查看是否为错误代码列出了更正步骤。
 
 ### <a name="recall-errors-and-remediation"></a>撤回错误和修正
 
@@ -1018,8 +1029,12 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | 由于网络问题，文件无法撤回。  | 如果错误仍然存在，请检查与 Azure 文件共享之间的网络连接。 |
 | 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | 由于已删除服务器终结点，因此文件无法撤回。 | 若要解决此问题，请参阅[删除服务器终结点后，服务器上的分层文件无法访问](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)。 |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 由于访问被拒绝错误，文件无法撤回。 如果存储帐户上的防火墙和虚拟网络设置已启用并且服务器无权访问存储帐户，则可能出现此问题。 | 若要解决此问题，请遵循部署指南中的[配置防火墙和虚拟网络设置](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)部分中所述的步骤来添加服务器 IP 地址或虚拟网络。 |
-| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | 由于在 Azure 文件共享中无法访问该文件，因此该文件无法撤回。 | 若要解决此问题，请验证文件是否存在于 Azure 文件共享中。 如果文件存在于 Azure 文件共享中，请升级到最新的 Azure 文件同步代理版本。 |
-| 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | 由于对存储帐户的授权失败，文件无法撤回。 | 若要解决此问题，请验证[Azure 文件同步是否有权访问存储帐户](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac)。 |
+| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | 由于在 Azure 文件共享中无法访问该文件，因此该文件无法撤回。 | 若要解决此问题，请验证文件是否存在于 Azure 文件共享中。 如果文件存在于 Azure 文件共享中，请升级到最新的 Azure 文件同步[代理版本](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)。 |
+| 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | 由于对存储帐户的授权失败，文件无法撤回。 | 若要解决此问题，请验证[Azure 文件同步是否有权访问存储帐户](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac)。 |
+| 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | 由于无法访问 Azure 文件共享，该文件未能撤回。 | 验证文件共享存在并且可访问。 如果删除并重新创建了文件共享，请执行同步失败中所述的步骤，[因为已删除并重新创建 Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810)部分以删除并重新创建同步组。 |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 由于 insuffcient 系统资源，该文件无法撤回。 | 如果错误仍然存在，请调查哪些应用程序或内核模式驱动程序耗尽系统资源。 |
+| 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | 由于 insuffcient 内存，文件无法重新调用。 | 如果错误仍然存在，请调查是哪个应用程序或内核模式驱动程序导致内存不足的情况。 |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | 由于磁盘空间不足，文件无法撤回。 | 若要解决此问题，请通过将文件移动到不同的卷，增加卷的大小，或者使用 StorageSyncCloudTiering cmdlet 将文件强制转换为级别，从而释放卷上的空间。 |
 
 ### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>删除服务器终结点后，无法在服务器上访问分层文件
 如果在删除服务器终结点之前未重新调用这些文件，则服务器上的分层文件将无法访问。

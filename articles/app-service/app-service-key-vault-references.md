@@ -8,20 +8,20 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 311a9fc887db399cb16d6cbb2bcec665a7ddfce7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240115"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274429"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>使用应用服务和 Azure Functions 的 Key Vault 引用（预览版）
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>为应用服务和 Azure Functions 使用 Key Vault 引用
 
 > [!NOTE] 
-> 目前，Key Vault 引用处于预览阶段，Linux 消耗计划目前不支持这些引用。
+> Key Vault 引用目前在 Linux 消耗计划中不可用。
 
 本主题介绍在不需进行任何代码更改的情况下，如何使用应用服务或 Azure Functions 应用程序的 Azure Key Vault 中的机密。 [Azure Key Vault](../key-vault/key-vault-overview.md) 是一项服务，可以提供集中式机密管理，并且可以完全控制访问策略和审核历史记录。
 
@@ -52,7 +52,7 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** 应该是 Key Vault 资源的名称。 **SecretName** 应该是目标机密的名称。 **SecretVersion** 应该是要使用的机密的版本。 |
 
 > [!NOTE] 
-> 在当前的预览版中，版本是必需的。 轮换机密时，需在应用程序配置中更新版本。
+> 当前需要版本。 轮换机密时，需在应用程序配置中更新版本。
 
 例如，完整的引用将如下所示：
 
@@ -192,7 +192,9 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 
 最常见的原因是， [Key Vault 访问策略](#granting-your-app-access-to-key-vault)的配置错误。 但是，这也可能是由于机密已不再存在，或者引用本身中存在语法错误。
 
-如果语法正确，则可以通过使用内置检测程序来检查当前的解决状态，来查看其他错误原因。
+如果语法正确，可以通过在门户中检查当前解决方案状态来查看其他错误原因。 导航到 "应用程序设置"，然后选择 "编辑" 以获取相关引用。 在设置配置下面，应会看到状态信息，包括任何错误。 缺少这一点意味着引用语法无效。
+
+你还可以使用某个内置检测程序来获取其他信息。
 
 ### <a name="using-the-detector-for-app-service"></a>使用应用程序服务的检测程序
 

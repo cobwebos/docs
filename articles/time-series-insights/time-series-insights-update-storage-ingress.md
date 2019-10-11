@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98baa8d3f951a8922bcd1f40449fa26840f3a3c4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 9af53728ee038a6511c434aeedfdb9afdab6d04b
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051474"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273884"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -23,22 +23,22 @@ ms.locfileid: "70051474"
 
 ## <a name="data-ingress"></a>数据入口
 
-Azure 时序见解数据入口策略确定数据的来源和格式。
+Azure 时序见解数据入口策略决定了数据可以源自何处，以及采用什么格式。
 
 [![时序模型类型](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
 
 ### <a name="ingress-policies"></a>流入策略
 
-时序见解预览版支持时序见解当前支持的相同事件源和文件类型:
+时序见解预览版支持时序见解目前所支持的相同事件源和文件类型：
 
 - [Azure IoT 中心](../iot-hub/about-iot-hub.md)
 - [Azure 事件中心](../event-hubs/event-hubs-about.md)
   
-Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 JSON。 若要优化 IoT JSON 数据, 请了解[如何为 json](./time-series-insights-send-events.md#json)。
+Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 JSON。 若要优化 IoT JSON 数据，请了解[如何塑造 JSON](./time-series-insights-send-events.md#supported-json-shapes)。
 
 ### <a name="data-storage"></a>数据存储
 
-创建时序见解预览即用即付 SKU 环境时, 会创建两个资源:
+创建时序见解预览版即用即付 SKU 环境时，请创建两个资源：
 
 * 时序见解环境。
 * 用于存储数据的 Azure 存储常规用途 V1 帐户。
@@ -52,11 +52,11 @@ Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 J
 时序见解预览版使用 Blob 大小优化策略为数据编制索引。 根据数据传入量以及传入速度为数据编制索引后，这些数据可用于查询。
 
 > [!IMPORTANT]
-> * 时序见解正式发布 (GA) 版本将使数据在到达事件源后60秒内可用。
+> * 在数据到达事件源的 60 秒内，时序见解正式版 (GA) 即可提供数据。
 > * 在预览版中，预期需要在更长的时间后才会提供数据。
 > * 如果遇到很长的延迟，请务必联系我们。
 
-### <a name="scale"></a>调整
+### <a name="scale"></a>缩放
 
 时序见解预览版最高支持每个环境每秒 1 Mbps 的初始流入规模。 我们正在增强缩放支持， 到时会更新我们的文档以反映这些改进。
 
@@ -70,9 +70,9 @@ Parquet 是面向列的数据文件格式，旨在实现：
 
 时序见解之所以选择 Parquet，是因为它提供高效的数据压缩和编码方案，并增强了性能，可以批量处理复杂的数据。
 
-有关 Parquet 文件类型的详细信息, 请参阅[Parquet 文档](https://parquet.apache.org/documentation/latest/)。
+有关 Parquet 文件类型的详细信息，请参阅 [Parquet 文档](https://parquet.apache.org/documentation/latest/)。
 
-有关 Azure 中的 Parquet 文件格式的详细信息, 请参阅[Azure 存储中支持的文件类型](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs#parquet-format)。
+有关 Azure 中的 Parquet 文件格式的详细信息，请参阅[Azure 存储中支持的文件类型](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs#parquet-format)。
 
 ### <a name="event-structure-in-parquet"></a>Parquet 中的事件结构
 
@@ -102,9 +102,9 @@ Parquet 是面向列的数据文件格式，旨在实现：
 
 ## <a name="azure-storage"></a>Azure 存储
 
-本部分介绍 azure 时序见解相关的 Azure 存储空间详细信息。
+此部分介绍与 Azure 时序见解相关的 Azure 存储详细信息。
 
-有关 Azure Blob 存储服务的全面说明, 请参阅[存储 blob 简介](../storage/blobs/storage-blobs-introduction.md)。
+如需详尽的 Azure Blob 存储服务说明，请阅读[存储 Blob 简介](../storage/blobs/storage-blobs-introduction.md)。
 
 ### <a name="your-storage-account"></a>你的存储帐户
 
@@ -114,7 +114,7 @@ Parquet 是面向列的数据文件格式，旨在实现：
 
 此外，时序见解可将 Parquet 文件重新分区，以优化时序见解 API。 还会保存最近重新分区的文件。
 
-公共预览期间, 数据将无限期地存储在 Azure 存储帐户中。
+在公共预览版中，数据无限期存储在 Azure 存储帐户中。
 
 ### <a name="writing-and-editing-time-series-insights-blobs"></a>编写和编辑时序见解 Blob
 
@@ -136,7 +136,7 @@ Parquet 是面向列的数据文件格式，旨在实现：
 #### <a name="from-an-azure-storage-account"></a>通过 Azure 存储帐户
 
 * 需要对用于访问时序见解数据的任何帐户拥有读取访问权限。 有关详细信息，请参阅[管理对存储帐户资源的访问权限](../storage/blobs/storage-manage-access-to-resources.md)。
-* 有关从 Azure Blob 存储读取数据的直接方法的详细信息, 请参阅[选择用于数据传输的 Azure 解决方案](../storage/common/storage-choose-data-transfer-solution.md)。
+* 有关直接从 Azure Blob 存储读取数据的详细信息，请参阅[选择 Azure 数据传输解决方案](../storage/common/storage-choose-data-transfer-solution.md)。
 * 从 Azure 存储帐户导出数据：
     * 首先确保帐户符合导出数据的必要要求。 有关详细信息，请参阅[存储导入和导出要求](../storage/common/storage-import-export-requirements.md)。
     * 若要了解从 Azure 存储帐户导出数据的其他方法，请参阅[从 Blob 导入和导出数据](../storage/common/storage-import-export-data-from-blobs.md)。
@@ -147,7 +147,7 @@ Parquet 是面向列的数据文件格式，旨在实现：
 
 ## <a name="partitions"></a>分区
 
-每个时序见解预览版环境必须有一个用于唯一标识它的“时序 ID”属性和“时间戳”属性。 时序 ID 充当数据的逻辑分区，为时序见解预览版环境提供自然边界，以便跨物理分区分布数据。 物理分区由 Azure 存储帐户中的时序见解预览来管理。
+每个时序见解预览版环境必须有一个用于唯一标识它的“时序 ID”属性和“时间戳”属性。 时序 ID 充当数据的逻辑分区，为时序见解预览版环境提供自然边界，以便跨物理分区分布数据。 时序见解预览版在 Azure 存储帐户中管理物理分区。
 
 时序见解通过删除和重新创建分区，使用动态分区来优化存储和查询性能。 时序见解预览版动态分区算法会尽量防止在单个物理分区中包含多个不同逻辑分区的数据。 换言之，分区算法专门在 Parquet 文件中保留单个时序 ID 特定的所有数据，使其不与其他时序 ID 重叠。 动态分区算法还会尽量保留单个时序 ID 中事件的原始顺序。
 

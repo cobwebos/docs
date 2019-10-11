@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 185570992ad0308b500da30bca212a0495bcb0fa
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: bba59d024e253c8d05aa75123be5e3f13699f72e
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001639"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263040"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure 资源管理器时的常见 Azure 部署错误
 
@@ -25,7 +25,7 @@ ms.locfileid: "72001639"
 
 ## <a name="error-codes"></a>错误代码
 
-| 错误代码 | 缓解 | 详细信息 |
+| 错误代码 | 缓解措施 | 详细信息 |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | 遵循存储帐户的命名限制。 | [解析存储帐户名称](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | 检查可用的存储帐户属性。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
@@ -35,6 +35,7 @@ ms.locfileid: "72001639"
 | BadRequest | 发送的部署值与资源管理器预期的值不匹配。 检查内部状态消息，以帮助进行故障排除。 | [模板引用](/azure/templates/)和[支持的位置](resource-location.md) |
 | 冲突 | 在资源的当前状态下不允许所请求的操作。 例如，仅当创建 VM 或该 VM 已解除分配时，才允许调整磁盘大小。 | |
 | DeploymentActiveAndUneditable | 等待此资源组上的并发部署完成。 | |
+| DeploymentFailedCleanUp | 在完整模式下部署时，不在模板中的所有资源都将被删除。 如果没有足够的权限删除模板中的所有资源，则会出现此错误。 若要避免此错误，请将部署模式改为 "增量"。 | [Azure 资源管理器部署模式](deployment-modes.md) |
 | DeploymentNameInvalidCharacters | 部署名称只能包含字母、数字、"-"、"." 或 "_"。 | |
 | DeploymentNameLengthLimitExceeded | 部署名称限制为64个字符。  | |
 | DeploymentFailed | DeploymentFailed 错误为常规错误，未提供解决错误所需的详细信息。 请查看错误代码的错误详情，其中提供了详细信息。 | [查找错误代码](#find-error-code) |
@@ -61,7 +62,7 @@ ms.locfileid: "72001639"
 | MissingRegistrationForLocation | 检查资源提供程序注册状态，以及支持的位置。 | [解决注册问题](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | 将订阅注册到资源提供程序。 | [解决注册问题](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | 检查资源提供程序注册状态。 | [解决注册问题](resource-manager-register-provider-errors.md) |
-| 未找到 | 你可能在尝试部署与父资源并行的依赖资源。 检查是否需要添加依赖项。 | [解决依赖项问题](resource-manager-not-found-errors.md) |
+| NotFound | 你可能在尝试部署与父资源并行的依赖资源。 检查是否需要添加依赖项。 | [解决依赖项问题](resource-manager-not-found-errors.md) |
 | OperationNotAllowed | 部署正在尝试执行一个超过了订阅、资源组或区域配额的操作。 如果可能，请修改部署，以保持在配额范围内。 否则，请考虑请求更改配额。 | [解决配额问题](resource-manager-quota-errors.md) |
 | ParentResourceNotFound | 确保在创建子资源之前父资源已存在。 | [解决父资源问题](resource-manager-parent-resource-errors.md) |
 | PasswordTooLong | 你可能选择了包含太多字符的密码，或在将密码值作为参数传递之前将其转换成了一个安全字符串。 如果模板包括一个**安全字符串**参数，则不需要将值转换为安全字符串。 请以文本形式提供密码值。 |  |
@@ -246,7 +247,7 @@ az group deployment operation list \
 }
 ```
 
-或者，假设遇到认为与不正确设置的依赖项相关的部署错误。 通过将模板分解为多个简化模板进行测试。 首先，创建仅部署单个资源（如 SQL Server）的模板。 确定已正确定义该资源后，添加依赖于该资源的资源（如 SQL 数据库）。 正确定义这两个资源后，添加其他从属资源（如审核策略）。 在每个测试部署之间，删除资源组，以确保充分测试依赖关系。
+或者，假设您收到的部署错误与错误设置依赖关系无关。 通过将模板分解为多个简化模板进行测试。 首先，创建仅部署单个资源（如 SQL Server）的模板。 如果确定已正确定义该资源，请添加依赖于该资源的资源（如 SQL 数据库）。 正确定义这两个资源后，添加其他从属资源（如审核策略）。 在每个测试部署之间，删除资源组，以确保充分测试依赖关系。
 
 
 ## <a name="next-steps"></a>后续步骤

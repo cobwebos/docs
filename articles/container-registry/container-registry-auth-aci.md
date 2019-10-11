@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: d2099de9ad909b23b79a92a831d7730b1cf126e3
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b11f88cbb29016032cbf536a2c970573eda82152
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311640"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72262855"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>使用 Azure 容器注册表从 Azure 容器实例进行身份验证
 
@@ -57,7 +57,7 @@ az container create \
 以下文章包含有关使用服务主体和 ACR 的其他详细信息：
 
 * [使用服务主体的 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)
-* [使用 Azure 容器注册表从 Azure Kubernetes 服务 (AKS) 进行身份验证](container-registry-auth-aks.md)
+* [使用 Azure 容器注册表从 Azure Kubernetes 服务 (AKS) 进行身份验证](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

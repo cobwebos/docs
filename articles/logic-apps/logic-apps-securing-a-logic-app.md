@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: be10d144fadb21a695c5573c82681a26136e71d4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b1331865224d34f731dbd388cebdaec8b7c9fe7f
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004092"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264664"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure 逻辑应用中保护访问和数据
 
@@ -578,7 +578,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 * 以托管标识的身份对资源进行身份验证和访问。
 
-  若要在不登录的情况下访问其他 Azure Active Directory (Azure AD) 租户中的资源并对你的标识进行身份验证，逻辑应用可以使用托管标识（以前称为托管服务标识或 MSI），而非使用凭据或机密。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 有关如何为逻辑应用设置并使用系统分配的托管标识的详细信息, 请参阅[在 Azure 逻辑应用中使用托管标识对资源进行身份验证和访问](../logic-apps/create-managed-service-identity.md)。
+  若要在不登录的情况下访问其他 Azure Active Directory (Azure AD) 租户中的资源并对你的标识进行身份验证，逻辑应用可以使用托管标识（以前称为托管服务标识或 MSI），而非使用凭据或机密。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 有关如何为逻辑应用设置并使用系统分配的托管标识的详细信息，请参阅[在 Azure 逻辑应用中使用托管标识对资源进行身份验证和访问](../logic-apps/create-managed-service-identity.md)。
 
 * 安全连接到本地系统。
 

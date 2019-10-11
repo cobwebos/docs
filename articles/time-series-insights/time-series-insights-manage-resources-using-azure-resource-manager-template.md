@@ -9,18 +9,18 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: d3e22df76124185c1e23f04f59145e12a1fec023
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b3aa6d06add1d80512eda0e62888b4a36760e98c
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164250"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274803"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
 
-本文介绍如何使用 Azure 资源管理器模板、PowerShell 和时序见解资源提供程序创建并部署时序见解资源。
+本文介绍如何使用[Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/)、PowerShell 和时序见解资源提供程序创建和部署时序见解资源。
 
 时序见解支持以下资源：
 
@@ -47,7 +47,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 1. 按照 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)中的说明安装 Azure PowerShell。
 
-1. 从 GitHub 克隆或复制 [201-timeseriesinsights-environment-with-eventhub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) 模板。
+1. 从 GitHub 克隆或复制 [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) 模板。
 
    * 创建参数文件
 
@@ -208,7 +208,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
        DeploymentName          : MyDemoDeployment
        ResourceGroupName       : MyDemoRG
        ProvisioningState       : Succeeded
-       Timestamp               : 5/8/2019 10:28:34 PM
+       Timestamp               : 10/11/2019 3:20:37 AM
        Mode                    : Incremental
        TemplateLink            :
        Parameters              :

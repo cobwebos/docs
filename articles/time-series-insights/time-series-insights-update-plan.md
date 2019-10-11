@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6141f898a33b4b37c2a1f16e115b184e21163a5a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 780e639ad6e1ee721820749da2df9ea6efa07bd6
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300693"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273718"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>计划 Azure 时序见解预览版环境
 
@@ -82,7 +82,7 @@ Azure 时序见解采用即用即付业务模型。 有关费用和容量的详�
 * 将元数据存储在时序模型中。
 * 时序模式、实例字段和事件仅包括必要信息，例如：时序 ID 或时间戳。
 
-有关详细信息，请参[塑造事件](./time-series-insights-send-events.md#json)。
+有关详细信息，请参[塑造事件](./time-series-insights-send-events.md#supported-json-shapes)。
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

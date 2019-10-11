@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 4c684a2db02b7587b6d81eaf2f034540250fc001
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 167d880f82314fc3b5ade299442f04d62b5dacb9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841297"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274488"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>会话主机虚拟机配置
 
@@ -62,11 +62,11 @@ ms.locfileid: "71841297"
 
 **原因 1：** Vm 位于与域所在的虚拟网络（VNET）不关联的虚拟网络上。
 
-**修复 1:** 在配置了 Vm 的 VNET 和运行域控制器（DC）的 VNET 之间创建 VNET 对等互连。 请参阅[创建虚拟网络对等互连-资源管理器、不同订阅](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions)。
+**修复1：** 在配置了 Vm 的 VNET 和运行域控制器（DC）的 VNET 之间创建 VNET 对等互连。 请参阅[创建虚拟网络对等互连-资源管理器、不同订阅](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions)。
 
 **原因 2：** 使用 Azure Active Directory 域服务（Azure AD DS）时，不会将虚拟网络的 DNS 服务器设置更新为指向托管域控制器。
 
-**修复 2:** 若要更新包含 Azure AD DS 的虚拟网络的 DNS 设置，请参阅[更新 Azure 虚拟网络的 dns 设置](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network)。
+**修复2：** 若要更新包含 Azure AD DS 的虚拟网络的 DNS 设置，请参阅[更新 Azure 虚拟网络的 dns 设置](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network)。
 
 **原因3：** 网络接口的 DNS 服务器设置未指向虚拟网络上适当的 DNS 服务器。
 
@@ -80,7 +80,7 @@ ms.locfileid: "71841297"
 
 按照以下说明确认是否已安装组件并检查是否有错误消息。
 
-1. 检查 "控制面板" "**程序** >  **" "**  > 程序**和功能**"，确认是否已安装这两个组件。 如果**Windows 虚拟桌面代理**和**Windows 虚拟桌面代理启动加载程序**不可见，则不会在 VM 上安装它们。
+1. 通过在 **"控制面板**"  >  "**程序**@no__t" 程序**和功能 "，** 确认是否安装了这两个组件。 如果**Windows 虚拟桌面代理**和**Windows 虚拟桌面代理启动加载程序**不可见，则不会在 VM 上安装它们。
 2. 打开**文件资源管理器**并导航到**C:\Windows\Temp\scriptlogs.log**。 如果缺少该文件，则表示安装了这两个组件的 PowerShell DSC 无法在提供的安全上下文中运行。
 3. 如果文件**C:\Windows\Temp\scriptlogs.log**存在，请将其打开，并检查错误消息。
 
@@ -88,11 +88,11 @@ ms.locfileid: "71841297"
 
 **原因 1：** 在 Azure 资源管理器模板的输入过程中提供的凭据不正确或权限不足。
 
-**修复 1:** 使用 "[使用 PowerShell 创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)"，手动将缺少的组件添加到 vm。
+**修复1：** 使用 "[使用 PowerShell 创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)"，手动将缺少的组件添加到 vm。
 
 **原因 2：** PowerShell DSC 能够启动并执行，但无法完成，因为它无法登录到 Windows 虚拟桌面并获得所需的信息。
 
-**修复 2:** 确认以下列表中的项。
+**修复2：** 确认以下列表中的项。
 
 - 请确保该帐户没有 MFA。
 - 确认租户名称正确，并且租户存在于 Windows 虚拟桌面中。
@@ -141,11 +141,11 @@ ms.locfileid: "71841297"
 
 **原因 1：** RDAgentBootLoader 服务已停止。
 
-**修复 1:** 启动任务管理器，如果 "服务" 选项卡报告 RDAgentBootLoader 服务的已停止状态，则启动该服务。
+**修复1：** 启动任务管理器，如果 "服务" 选项卡报告 RDAgentBootLoader 服务的已停止状态，则启动该服务。
 
 **原因 2：** 可能会关闭端口443。
 
-**修复 2:** 按照以下说明打开端口443。
+**修复2：** 按照以下说明打开端口443。
 
 1. 从[Sysinternal 工具](https://docs.microsoft.com/sysinternals/downloads/psping)下载 PSPing 工具，确认端口443已打开。
 2. 在运行代理的会话主机 VM 上安装 PSPing。
@@ -233,7 +233,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 按照以下说明从同一子网和域运行修正：
 
 1. 将与标准远程桌面协议（RDP）连接到将应用修复的 VM。
-2. 从 https://docs.microsoft.com/sysinternals/downloads/psexec 下载 PsExec。
+2. 从 @no__t 下载 PsExec。
 3. 解压缩下载的文件。
 4. 以本地管理员身份启动命令提示符。
 5. 导航到在其中解压缩了 PsExec 的文件夹。
@@ -296,13 +296,13 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 16. Cmdlet 运行完毕后，请使用不正常的并行堆栈重新启动 VM。
 
-## <a name="remote-licensing-model-isnt-configured"></a>未配置远程许可模式
+## <a name="remote-desktop-licensing-mode-isnt-configured"></a>未配置远程桌面授权模式
 
 如果使用管理帐户登录到 Windows 10 企业多会话，你可能会收到一条通知，显示 "远程桌面授权模式未配置，远程桌面服务将在 X 天内停止工作。 在连接代理服务器上，使用服务器管理器指定远程桌面授权模式。 "
 
 如果时间限制到期，将出现一条错误消息，显示 "远程会话已断开连接，因为没有可用于此计算机的远程桌面客户端访问许可证"。
 
-如果看到这些消息中的任何一个，则表示需要打开 "组策略编辑器"，并将授权模式手动配置为 "**每用户**"。 手动配置过程会有所不同，具体取决于所使用的 Windows 10 Enterprise 多会话版本。 以下各节说明了如何检查你的版本号以及对每个版本的操作。
+如果看到这些消息中的任何一个，则表示该映像未安装最新的 Windows 更新，或者你正在将 "远程桌面授权" 模式设置为 "**每用户**"。 删除任何设置此策略的配置，然后按照步骤标识 Windows 10 企业版多会话版本并安装相应的更新。  
 
 >[!NOTE]
 >当主机池包含 Windows Server 会话主机时，Windows 虚拟桌面只需要 RDS 客户端访问许可证（CAL）。 若要了解如何配置 RDS CAL，请参阅[使用客户端访问许可证为你的 RDS 部署提供许可](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license)。
@@ -322,59 +322,20 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 ### <a name="version-1809"></a>版本1809
 
-如果版本号显示 "1809"，则可以升级到 Windows 10 企业多会话、版本1903或将主机池重新部署到最新映像。
-
-升级到 Windows 10，版本1903：
-
-1. 如果尚未安装，请下载并安装[Windows 10 2019 更新](https://support.microsoft.com/help/4028685/windows-10-get-the-update)。
-2. 用管理员帐户登录到您的计算机。
-3. 运行**gpedit.msc**以打开组策略编辑器。
-4. 在 "计算机配置" 下，中转到**管理模板** > **Windows 组件** > "**远程桌面服务** > **远程桌面会话主机** > **许可"** .
-5. 选择 **"设置远程桌面授权模式"** 。
-6. 在打开的窗口中，首先选择 "**启用**"，然后在 "选项" 下，根据**用户**指定 RD 会话主机服务器的授权模式，如下图所示。
-    
-    ![根据步骤6中的说明配置的 "设置远程桌面授权模式" 窗口的屏幕截图。](media/group-policy-editor-per-user.png)
-
-7. 选择“应用”。
-8. 选择“确定”。
-9.  重启计算机。
-
-若要重新部署包含最新映像的主机池：
-
-1. 按照[使用 Azure Marketplace 创建主机池](create-host-pools-azure-marketplace.md)中的说明进行操作，直到系统提示你选择映像操作系统版本。 你可以选择 "Windows 10 企业多会话" （带或不带 Office365 ProPlus）。
-2. 用管理员帐户登录到您的计算机。
-3. 运行**gpedit.msc**以打开组策略编辑器。
-4. 在 "计算机配置" 下，中转到**管理模板** > **Windows 组件** > "**远程桌面服务** > **远程桌面会话主机** > **许可"** .
-5. 选择 **"设置远程桌面授权模式"** 。
-6. 在打开的窗口中，首先选择 "**已启用**"，然后在 "选项" 下，根据**用户**指定 RD 会话主机服务器的授权模式。
-7. 选择“应用”。
-8. 选择“确定”。
-9.  重启计算机。
+如果版本号显示 "1809"，则安装[KB4516077 更新](https://support.microsoft.com/help/4516077)。
 
 ### <a name="version-1903"></a>版本1903
 
-如果版本号显示 "1903"，请遵循以下说明：
-
-1. 用管理员帐户登录到您的计算机。
-2. 运行**gpedit.msc**以打开组策略编辑器。
-3. 在 "计算机配置" 下，中转到**管理模板** > **Windows 组件** > "**远程桌面服务** > **远程桌面会话主机** > **许可"** .
-4. 选择 **"设置远程桌面授权模式"** 。
-6. 在打开的窗口中，首先选择 "**启用**"，然后在 "选项" 下，根据**用户**指定 RD 会话主机服务器的授权模式，如下图所示。
-    
-    ![根据步骤6中的说明配置的 "设置远程桌面授权模式" 窗口的屏幕截图。](media/group-policy-editor-per-user.png)
-
-7. 选择“应用”。
-8. 选择“确定”。
-9.  重启计算机。
+如果版本号显示 "1903"，则安装[KB4517211 更新](https://support.microsoft.com/help/4517211)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Windows 虚拟桌面故障排除和升级跟踪的概述, 请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
-- 若要在 Windows 虚拟桌面环境中创建租户和主机池时排查问题, 请参阅[租户和主机池创建](troubleshoot-set-up-issues.md)。
-- 若要解决在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题, 请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
-- 若要解决 Windows 虚拟桌面客户端连接问题, 请参阅[远程桌面客户端连接](troubleshoot-client-connection.md)。
-- 若要解决将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题, 请参阅[Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
+- 有关 Windows 虚拟桌面故障排除和升级跟踪的概述，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
+- 若要在 Windows 虚拟桌面环境中创建租户和主机池时排查问题，请参阅[租户和主机池创建](troubleshoot-set-up-issues.md)。
+- 若要解决在 Windows 虚拟桌面中配置虚拟机（VM）时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
+- 若要解决 Windows 虚拟桌面客户端连接问题，请参阅[远程桌面客户端连接](troubleshoot-client-connection.md)。
+- 若要解决将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅[Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)。
-- 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)问题。
+- 若要完成故障排除教程，请参阅[教程：资源管理器模板部署的疑难解答 @ no__t-0。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)。

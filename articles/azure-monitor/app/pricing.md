@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 3e0bdd42ea19b7029d3f3df4ff9a5a275aec0271
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 51caf34d0030fd404cd7f7c1868a0e2945c75b35
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936682"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264422"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -56,11 +56,11 @@ ms.locfileid: "71936682"
 
 使用 ASP.NET SDK 的[自适应采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)，数据量会自动调整，以保持默认 Application Insights 监视的流量的指定最大速率。 如果应用程序生成的遥测数据量较低，例如调试或由于使用率较低，则采样处理器不会丢弃项，只要卷低于每秒配置的事件。 对于大容量应用程序，默认阈值为每秒5个事件，自适应采样会将每日事件的数目限制为432000。 使用的典型平均事件大小为 1 KB，这对应于托管应用程序的每个节点每31天的遥测值 13.4 GB （因为采样是在每个节点的本地完成的。） 
 
-对于不支持自适应采样的 Sdk，可以利用 [引入采样] [@no__t] 来根据要保留的数据百分比或[ASP.NET、ASP.NET Core 和 Java 的固定速率采样来 Application Insights receved 数据。](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites)用于减少从 web 服务器和 web 浏览器发送的流量的网站
+对于不支持自适应采样的 Sdk，可以使用[引入采样](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)，根据要保留的数据百分比或[ASP.NET、ASP.NET Core 和 Java 的固定速率采样 Application Insights 来 receved 数据。](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites)用于减少从 web 服务器和 web 浏览器发送的流量的网站
 
 ### <a name="learn-from-what-similar-customers-collect"></a>了解类似客户收集的内容
 
-在适用于 Application Insights 的 Azure 监视定价计算器中，如果启用了 "基于应用程序活动估计数据量" 功能，则可以提供有关应用程序的输入（每月的请求数和页面视图数，以防你将收集客户端遥测数据），然后计算器会告诉您类似应用程序收集的中间值和 90% 的数据量。 当然，这些 scala 跨越 Application Insights 配置的范围（例如，某些示例有默认采样，某些[采样](../../azure-monitor/app/sampling.md)没有采样等），因此，您仍然可以使用采样来减少在中间级别下引入的数据量。 但这是一种开始了解其他同类客户看到的情况。 
+在适用于 Application Insights 的 Azure 监视定价计算器中，如果启用了 "基于应用程序活动估计数据量" 功能，则可以提供有关应用程序的输入（每月的请求数和页面视图数，以防你将收集客户端遥测数据），然后计算器会告诉您类似应用程序收集的中间值和90% 的数据量。 当然，这些 scala 跨越 Application Insights 配置的范围（例如，某些示例有默认采样，某些[采样](../../azure-monitor/app/sampling.md)没有采样等），因此，您仍然可以使用采样来减少在中间级别下引入的数据量。 但这是一种开始了解其他同类客户看到的情况。 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>了解你的使用情况和估计成本
 
@@ -92,7 +92,7 @@ Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-man
 
 * 转到“使用情况和预估成本”页查看每日数据量图表。 
 * 在指标资源管理器中，添加新图表。 对于图表指标，选择“数据点容量”。 启用“分组”，并按数据类型分组。
-* `systemEvents`使用数据类型。 例如，若要查看最后一天的数据量引入，则查询如下：
+* 使用 @no__t 数据类型。 例如，若要查看最后一天的数据量引入，则查询如下：
 
 ```kusto
 systemEvents 
@@ -147,7 +147,7 @@ systemEvents
 
 ![调整每日遥测数据量上限](./media/pricing/pricing-003.png)
 
-若要[通过 Azure 资源管理器更改每日上限](../../azure-monitor/app/powershell.md)，要更改的属性为`dailyQuota`。  通过 Azure 资源管理器你还可以设置`dailyQuotaResetTime`和每日`warningThreshold`上限。 
+若要[通过 Azure 资源管理器更改每日上限](../../azure-monitor/app/powershell.md)，要更改的属性为 `dailyQuota`。  你还可以通过 Azure 资源管理器将 @no__t 设置为 `warningThreshold`。 
 
 ## <a name="sampling"></a>采样
 [采样](../../azure-monitor/app/sampling.md)是一种方法，可降低向应用发送遥测的速率，同时仍可在诊断搜索过程中查找相关事件。 此外，还可保留正确的事件计数。
@@ -183,7 +183,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ![调整每日遥测数据量上限](./media/pricing/pricing-005.png)
 
-还可以[通过 ARM](https://docs.microsoft.com/azure/azure-monitor/app/powershell)使用 `retentionInDays` 参数设置保留。 此外，如果将数据保留期设置为30天，则可以使用 `immediatePurgeDataOn30Days` 参数触发立即清除旧数据，这对于符合性相关的方案可能很有用。 仅通过 ARM 公开此功能。 
+还可以使用 Powershell 以[编程](https://docs.microsoft.com/azure/azure-monitor/app/powershell/set-the-data-retention)方式使用 `retentionInDays` 参数设置保留。 此外，如果将数据保留期设置为30天，则可以使用 `immediatePurgeDataOn30Days` 参数触发立即清除旧数据，这对于符合性相关的方案可能很有用。 此清除功能仅通过 ARM 公开，并应非常小心地使用。 
 
 当计费在12月2019年初开始更长的保留期时，保存时间超过90天的数据将按当前为 Azure Log Analytics 数据保留计费的相同费率计费。 请访问[“Azure Monitor 定价”页](https://azure.microsoft.com/pricing/details/monitor/)了解更多信息。 通过[投票支持此建议](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)，随时了解可变保留进度的最新情况。 
 

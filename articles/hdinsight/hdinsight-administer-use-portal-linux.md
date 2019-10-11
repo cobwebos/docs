@@ -2,18 +2,18 @@
 title: 使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 description: 了解如何使用 Azure 门户创建和管理 Azure HDInsight 群集。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: dfe531f8b298be1d90df45f57918f87744912949
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 10/04/2019
+ms.openlocfilehash: 4cf979c99c596abff075eb38f3358c6389a6b07e
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077061"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264294"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -26,30 +26,34 @@ ms.locfileid: "71077061"
 HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="getting-started"></a>入门
+
 登录到 [https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="showClusters"></a> 列出并显示集群
+
 从“HDInsight 群集”页会列出现有的群集。  在门户中：
 1. 在左侧菜单中，选择“所有服务”。
 2. 在“ANALYTICS”下，选择“HDInsight 群集”。
 
 ## <a name="homePage"></a> 群集主页 
+
 从 " [**HDInsight 群集**](#showClusters)" 页中选择群集名称。  此时会打开“概览”视图，该视图类似于下图：
 
 ![Azure 门户 HDInsight 群集概要](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
 
 **顶部菜单：**  
 
-| 项| 描述 |
+| Item| 描述 |
 |---|---|
 |移动|将群集移至其他资源组或其他订阅。|
 |DELETE|删除群集。 |
 |刷新|刷新视图。|
 
 **左侧菜单：**  
+
   - **顶部左侧菜单**
 
-    | 项| 描述 |
+    | Item| 描述 |
     |---|---|
     |概述|提供群集的常规信息。|
     |活动日志|显示和查询活动日志。|
@@ -61,7 +65,7 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 
   - **“设置”菜单**  
 
-    | 项| 描述 |
+    | Item| 描述 |
     |---|---|
     |群集大小|检查、增加和减少群集辅助角色节点的数量。 请参阅[缩放群集](hdinsight-administer-use-portal-linux.md#scale-clusters)。|
     |配额限制|显示订阅的已使用和可用核心数。|
@@ -78,16 +82,16 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 
   - **监视菜单**
 
-    | 项| 描述 |
+    | Item| 描述 |
     |---|---|
     |警报|管理警报和操作。|
-    |指标|监视 Azure Monitor 日志中的群集指标。|
+    |度量值|监视 Azure Monitor 日志中的群集指标。|
     |诊断设置|存储诊断指标的位置设置。|
-    |Operations Management Suite|监视 Azure Operations Management Suite (OMS) 和 Azure Monitor 日志中的群集。|
+    |Azure Monitor|监视 Azure Monitor 中的群集。|
 
   - **支持 + 故障排除菜单**
 
-    | 项| 描述 |
+    | Item| 描述 |
     |---|---|
     |资源运行状况|请参阅 [Azure 资源运行状况概述](../service-health/resource-health-overview.md)。|
     |新建支持请求|允许对 Microsoft 支持创建支持票证。|
@@ -96,9 +100,9 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 
 在[群集主页](#homePage)的“设置”下，选择“属性”。
 
-|项 | 描述 |
+|Item | 描述 |
 |---|---|
-|主机名|群集名称。|
+|段|群集名称。|
 |群集 URL|Ambari Web 界面的 URL。|
 |专用终结点|群集的专用终结点。|
 |安全外壳 (SSH)|用于通过 SSH 访问群集的用户名和主机名。|
@@ -125,6 +129,7 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 3. 按新页面中的说明操作。
 
 ## <a name="delete-clusters"></a>删除群集
+
 删除群集不会删除默认存储帐户或任何链接的存储帐户。 可以使用相同的存储帐户和相同的元存储来重新创建群集。 建议在重新创建群集时使用新的默认 Blob 容器。
 
 在[群集主页](#homePage)中执行以下操作：
@@ -146,15 +151,15 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 
 ## <a name="pauseshut-down-clusters"></a>暂停/关闭群集
 
-大多数 Hadoop 作业都为批处理作业，只是偶尔运行。 大多数 Hadoop 群集都存在长时间不进行处理的情况。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。
-此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。
+大多数 Hadoop 作业都为批处理作业，只是偶尔运行。 对于大多数 Hadoop 群集，群集不会用于处理的时间较长。 使用 HDInsight，你的数据存储在 Azure 存储中，因此你可以在不使用群集时安全删除该群集。
+即使未使用 HDInsight 群集，也需要为其付费。 由于群集的费用比存储的费用多很多，因此在不使用群集时将其删除是经济的。
 
 可以通过许多方式对此过程进行程序性处理：
 
-* 用户 Azure 数据工厂。 有关创建按需 HDInsight 链接服务的信息，请参阅[在 HDInsight 中使用 Azure 数据工厂创建基于 Linux 的按需 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-adf.md)。
-* 使用 Azure PowerShell。  请参阅[分析航班延误数据](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)。
-* 使用 Azure CLI。 请参阅[使用 Azure CLI 管理 Azure HDInsight 群集](hdinsight-administer-use-command-line.md)。
-* 使用 HDInsight .NET SDK。 请参阅[提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
+- 用户 Azure 数据工厂。 有关创建按需 HDInsight 链接服务的信息，请参阅[在 HDInsight 中使用 Azure 数据工厂创建基于 Linux 的按需 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-adf.md)。
+- 使用 Azure PowerShell。  请参阅[分析航班延误数据](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)。
+- 使用 Azure CLI。 请参阅[使用 Azure CLI 管理 Azure HDInsight 群集](hdinsight-administer-use-command-line.md)。
+- 使用 HDInsight .NET SDK。 请参阅[提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
 
 有关定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。 若要从门户中删除群集，请参阅[删除群集](#delete-clusters)
 
@@ -178,6 +183,7 @@ Ambari 提供由其 RESTful API 提供支持的直观、易用的 Hadoop 管理 
 有关详细信息，请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
 
 ## <a name="change-passwords"></a>更改密码
+
 HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（HTTP 用户帐户）和 SSH 用户帐户是在创建过程中创建的。 可以使用门户更改群集用户帐户密码，使用脚本操作更改 SSH 用户帐户。
 
 ### <a name="change-the-cluster-user-password"></a>更改群集用户密码
@@ -194,6 +200,7 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（HT
 将在群集中的所有节点上更改密码。
 
 ### <a name="change-the-ssh-user-password"></a>更改 SSH 用户密码
+
 1. 使用文本编辑器将以下文本保存为名为“changepassword.sh”的文件。
 
     > [!IMPORTANT]  
@@ -214,58 +221,63 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（HT
    | 字段 | ReplTest1 |
    | --- | --- |
    | 脚本类型 | 从下拉列表中选择“- 自定义”。|
-   | 姓名 |“更改 ssh 密码” |
+   | 名称 |“更改 ssh 密码” |
    | Bash 脚本 URI |changepassword.sh 文件的 URI |
    | 节点类型：（头节点、辅助角色节点、Nimbus、监督程序、Zookeeper，等等。） |✓ 适用于所有列出的节点类型 |
    | Parameters |输入 SSH 用户名和新密码。 用户名与密码之间应有一个空格。 |
    | 保留此脚本操作... |将此字段保留未选中状态。 |
 
-6. 选择“创建”以应用脚本。 完成脚本后，可以使用新密码通过 SSH 连接到群集。
+6. 选择“创建”以应用脚本。 脚本完成后，可以使用 SSH 和新密码连接到群集。
 
 ## <a name="grantrevoke-access"></a>授予/撤消访问权限
+
 HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样式的终结点）：
 
-* ODBC
-* JDBC
-* Ambari
-* Oozie
-* Templeton
+- ODBC
+- JDBC
+- Ambari
+- Oozie
+- Templeton
 
 默认情况下，将授权这些服务进行访问。 可以使用 [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access) 来撤销/授予访问权限。
 
 ## <a name="find-the-subscription-id"></a>查找订阅 ID
+
 每个群集都绑定到一个 Azure 订阅。  Azure 订阅 ID 在[群集主页](#homePage)中可见。
 
 ## <a name="find-the-resource-group"></a>查找资源组
+
 在 Azure 资源管理器模式下，使用 Azure 资源管理器组创建每个 HDInsight 群集。 资源管理器组在[群集主页](#homePage)中可见。
 
 ## <a name="find-the-storage-accounts"></a>查找存储帐户
+
 HDInsight 群集使用 Azure 存储帐户或 Azure Data Lake Storage 来存储数据。 每个 HDInsight 群集都可拥有一个默认存储帐户和多个链接的存储帐户。 若要列出存储帐户，请在[群集主页](#homePage)的“设置”下选择“存储帐户”。
 
 ## <a name="monitor-jobs"></a>监视作业
+
 请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md#monitoring)。
 
 ## <a name="cluster-size"></a>群集大小
 
-[群集主页](#homePage)中的“群集大小”磁贴显示分配给此群集的核心数以及如何为此群集中的节点分配核心。
+[群集主页](#homePage)的 "**群集大小**" 磁贴显示分配给此群集的核心数，以及这些核心是如何分配给此群集中的节点的。
 
 > [!IMPORTANT]  
 > 若要监视 HDInsight 群集提供的服务，必须使用 Ambari Web 或 Ambari REST API。 有关如何使用 Ambari 的详细信息，请参阅[使用 Apache Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
 
 ## <a name="connect-to-a-cluster"></a>连接到群集
 
-* [将 Apache Hive 和 HDInsight 配合使用](hadoop/apache-hadoop-use-hive-ambari-view.md)
-* [将 Pig 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [将 Apache Hive 和 HDInsight 配合使用](hadoop/apache-hadoop-use-hive-ambari-view.md)
+- [将 Pig 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了一些基本管理功能。 若要了解更多信息，请参阅下列文章：
+本文介绍了一些基本的管理功能。 若要了解更多信息，请参阅下列文章：
 
-* [使用 Azure PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)
-* [使用 Azure CLI 管理 HDInsight](hdinsight-administer-use-command-line.md)
-* [创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
-* [有关使用 Apache Ambari REST API 的详细信息](hdinsight-hadoop-manage-ambari-rest-api.md)
-* [使用 HDInsight 中的 Apache Hive](hadoop/hdinsight-use-hive.md)
-* [在 HDInsight 中使用 Apache Sqoop](hadoop/hdinsight-use-sqoop.md)
-* [在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)](hadoop/python-udf-hdinsight.md)
-* [Azure HDInsight 包含哪个版本的 Apache Hadoop？](hdinsight-component-versioning.md)
+- [使用 Azure PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)
+- [使用 Azure CLI 管理 HDInsight](hdinsight-administer-use-command-line.md)
+- [创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
+- [有关使用 Apache Ambari REST API 的详细信息](hdinsight-hadoop-manage-ambari-rest-api.md)
+- [使用 HDInsight 中的 Apache Hive](hadoop/hdinsight-use-hive.md)
+- [在 HDInsight 中使用 Apache Sqoop](hadoop/hdinsight-use-sqoop.md)
+- [在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)](hadoop/python-udf-hdinsight.md)
+- [Azure HDInsight 包含哪个版本的 Apache Hadoop？](hdinsight-component-versioning.md)

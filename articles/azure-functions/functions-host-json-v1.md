@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: b373afc9b5a60abee7a587fc405320fe3c583369
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 3d6a28c8cdcf13dc805d70832ed65732911138cd
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735159"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263347"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
@@ -156,7 +156,7 @@ ms.locfileid: "70735159"
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>函数
+## <a name="functions"></a>functions
 
 作业主机运行的函数列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 的函数应用中，应改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤禁用特定函数，而不是使用此设置。
 
@@ -194,7 +194,7 @@ ms.locfileid: "70735159"
 
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
-|enabled|真|指定是否已启用该功能。 | 
+|enabled|true|指定是否已启用该功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 
@@ -203,6 +203,17 @@ ms.locfileid: "70735159"
 ## <a name="http"></a>http
 
 [http 触发器和绑定](functions-bindings-http-webhook.md)的配置设置。
+
+```json
+{
+    "http": {
+        "routePrefix": "api",
+        "maxOutstandingRequests": 200,
+        "maxConcurrentRequests": 100,
+        "dynamicThrottlesEnabled": true
+    }
+}
+```
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
@@ -282,7 +293,7 @@ ms.locfileid: "70735159"
 
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
-|来自|不适用|所有函数的发件人电子邮件地址。| 
+|from|不适用|所有函数的发件人电子邮件地址。| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -345,7 +356,7 @@ ms.locfileid: "70735159"
 
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
-|consoleLevel|信息|控制台日志记录的跟踪级别。 选项包括：`off`、`error`、`warning`、`info` 和 `verbose`。|
+|consoleLevel|info|控制台日志记录的跟踪级别。 选项包括：`off`、`error`、`warning`、`info` 和 `verbose`。|
 |fileLoggingMode|debugOnly|文件日志记录的跟踪级别。 选项包括 `never`、`always` 和 `debugOnly`。| 
 
 ## <a name="watchdirectories"></a>watchDirectories

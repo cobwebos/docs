@@ -3,15 +3,15 @@ title: 处理大型数据集
 description: 了解使用 Azure Resource Graph 时如何获取和控制大型数据集。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/01/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4da890a5ef7acb44d0e8628dc4ec3904f6a065e4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0ecd0ea997520947b766912f834de2a0c2e64429
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980316"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274232"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>处理大型 Azure 资源数据集
 
@@ -68,7 +68,7 @@ resultTruncated 是布尔值，用于指示使用者返回的响应中是否还�
 
 如果 resultTruncated 为 true，便会在响应中设置 $skipToken 属性。 此值与相同的查询值及订阅值一起使用，以获取与查询匹配的下一个记录集。
 
-以下示例演示了如何使用 Azure CLI 和 Azure PowerShell **跳过**头 3000 条记录，返回这些跳过的记录之后的**头** 1000 条记录：
+下面的示例演示如何**跳过**前3000条记录，并在 Azure CLI 和 Azure PowerShell 跳过这些记录后返回**前**1000 记录：
 
 ```azurecli-interactive
 az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
@@ -82,6 +82,90 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 > 查询必须投射 ID 字段，这样分页才能生效。 如果查询中缺少 ID 字段，响应中不会包含 $skipToken。
 
 有关示例，请参阅 REST API 文档中的[下一页查询](/rest/api/azureresourcegraph/resources/resources#next-page-query)。
+
+## <a name="formatting-results"></a>设置结果格式
+
+资源图表查询的结果以两种格式提供：_表_和_ObjectArray_。 该格式配置为请求选项中的**resultFormat**参数。 _Table_ Format 是**resultFormat**的默认值。
+
+默认情况下，Azure CLI 中提供了来自的结果。 默认情况下，Azure PowerShell 是**PSCustomObject** ，但可以使用 @no__t cmdlet 快速将其转换为 JSON。 对于其他 Sdk，可以将查询结果配置为输出_ObjectArray_格式。
+
+### <a name="format---table"></a>格式-表
+
+默认格式 "_表_" 以 JSON 格式返回结果，旨在突出显示查询所返回的属性的列设计和行值。 此格式与结构化表或电子表格中定义的数据非常类似，其中包含首先标识的列，然后每一行表示与这些列对齐的数据。
+
+下面是带有_表格式_的查询结果的示例：
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": {
+        "columns": [{
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "type",
+                "type": "string"
+            },
+            {
+                "name": "location",
+                "type": "string"
+            },
+            {
+                "name": "subscriptionId",
+                "type": "string"
+            }
+        ],
+        "rows": [
+            [
+                "veryscaryvm2-nsg",
+                "microsoft.network/networksecuritygroups",
+                "eastus",
+                "11111111-1111-1111-1111-111111111111"
+            ]
+        ]
+    },
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+### <a name="format---objectarray"></a>格式-ObjectArray
+
+_ObjectArray_格式还以 JSON 格式返回结果。 但是，这种设计与 JSON 中常见的键/值对关系保持一致，其中的列和行数据在数组组中匹配。
+
+下面是具有_ObjectArray_格式的查询结果的示例：
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": [{
+        "name": "veryscaryvm2-nsg",
+        "type": "microsoft.network/networksecuritygroups",
+        "location": "eastus",
+        "subscriptionId": "11111111-1111-1111-1111-111111111111"
+    }],
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+以下是将**resultFormat**设置为使用_ObjectArray_格式的一些示例：
+
+```csharp
+var requestOptions = new QueryRequestOptions( resultFormat: ResultFormat.ObjectArray);
+var request = new QueryRequest(subscriptions, "limit 1", options: requestOptions);
+```
+
+```python
+request_options = QueryRequestOptions(
+    result_format=ResultFormat.object_array
+)
+request = QueryRequest(query="limit 1", subscriptions=subs_list, options=request_options)
+response = client.resources(request)
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: b6ecf1e9cece51635afc0bf0f8025b6e117438ee
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 53a765cd2e71b5b1eb1ac2c70506fd55aec6736e
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169454"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274127"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
 
@@ -27,7 +27,7 @@ ms.locfileid: "71169454"
 需要 [Microsoft Azure](https://azure.com) 订阅。 使用 Microsoft 帐户登录，该帐户可能适用于 Windows、XBox Live 或其他 Microsoft 云服务。 团队可能拥有 Azure 组织订阅：要求所有者使用 Microsoft 帐户你将加入其中。
 
 > [!NOTE]
-> 有一个名为[WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)的新 BETA Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights。 建议在[此处](../../azure-monitor/app/worker-service.md)使用此包和相关说明。 此包面向[`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)，因此可在 .net Core 2.0 或更高版本中使用，并 .NET Framework 4.7.2 或更高版本。
+> 有一个名为[WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)的新 BETA Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights。 建议在[此处](../../azure-monitor/app/worker-service.md)使用此包和相关说明。 此包的目标为[`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)，因此可在 .net Core 2.0 或更高版本中使用，并 .NET Framework 4.7.2 或更高版本。
 此新包的稳定版本发布后，此文档将被弃用。
 
 ## <a name="getting-started"></a>入门
@@ -159,7 +159,7 @@ namespace ConsoleApp
             configuration.InstrumentationKey = "removed";
             configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 
-            var telemetryClient = new TelemetryClient();
+            var telemetryClient = new TelemetryClient(configuration);
             using (InitializeDependencyTracking(configuration))
             {
                 // run app...

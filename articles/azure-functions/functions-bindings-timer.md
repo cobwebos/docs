@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 57b4f018cd044b4f516266dcf9776e82252f7f22
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 6ac83a054b146b9d515386332779c4fe94cde7c3
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937116"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263437"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器 
 
@@ -213,7 +213,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
     }
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 }
- ```
+```
 
 ## <a name="configuration"></a>配置
 
@@ -264,7 +264,7 @@ Azure Functions 使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来�
 |---------|---------|---------|
 |一个具体值 |<nobr>"0 5 * * * *"</nobr>|在 hh:05:00，其中 hh 表示每小时（每小时一次）|
 |所有值 (`*`)|<nobr>"0 * 5 * * *"</nobr>|在每天的 5:mm:00，其中 mm 表示该小时的每分钟（一天 60 次）|
-|一个范围（`-` 运算符）|<nobr>"5-7 * * * * *"</nobr>|在 hh:mm:05、hh:mm:06 和 hh:mm:07，其中 hh:mm 表示每小时的每分钟（每分钟 3 次）|  
+|一个范围（`-` 运算符）|<nobr>"5-7 * * * * *"</nobr>|在 hh:mm:05、hh:mm:06 和 hh:mm:07，其中 hh:mm 表示每小时的每分钟（每分钟 3 次）|
 |一组值（`,` 运算符）|<nobr>"5,8,10 * * * * *"</nobr>|在 hh:mm:05、hh:mm:08 和 hh:mm:10，其中 hh:mm 表示每小时的每分钟（每分钟 3 次）|
 |一个间隔值（`/` 运算符）|<nobr>"0 */5 * * * *"</nobr>|在 hh:05:00、hh:10:00、hh:15:00，依此类推，直到 hh:55:00，其中 hh 表示每小时（每小时 12 次）|
 
@@ -326,7 +326,16 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
 
 ## <a name="function-apps-sharing-storage"></a>共享同一存储的函数应用
 
-如果在多个函数应用之间共享存储帐户，请确保每个函数应用在 *host.json* 中都有不同的 `id`。 可以省略 `id` 属性或手动将每个函数应用的 `id` 设置为不同的值。 计时器触发器使用存储锁来确保当函数应用横向扩展到多个实例时将只有一个计时器实例。 如果两个函数应用共享相同的 `id` 且每个都使用计时器触发器，则只会运行一个计时器。
+如果你要跨未部署到应用服务的函数应用共享存储帐户，你可能需要为每个应用显式分配主机 ID。
+
+| Functions 版本 | 设置                                              |
+| ----------------- | ---------------------------------------------------- |
+| 2.x               | `AzureFunctionsWebHost__hostid` 环境变量 |
+| 1.x               | 在*host*中 `id`                                  |
+
+可以省略标识值，也可以手动将每个 function app 的标识配置设置为不同的值。
+
+Timer 触发器使用存储锁来确保只有一个计时器实例向外扩展到多个实例。 如果两个函数应用共享相同的标识配置，并且每个应用都使用计时器触发器，则只会运行一个计时器。
 
 ## <a name="retry-behavior"></a>重试行为
 

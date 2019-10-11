@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 50fbd0a2169fb120424d76e786a6269243eeb3e1
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067106"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273947"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>将 SAP HANA 数据库备份到 Azure
 
@@ -27,7 +27,7 @@ ms.locfileid: "71067106"
 --- | ---
 **支持的地理区域** | 澳大利亚东南部、澳大利亚东部 <br> 巴西南部 <br> 加拿大中部、加拿大东部 <br> 南东亚，东亚 <br> 美国东部、美国东部2、美国中部、美国西部、美国西部2、美国中北部、美国中部、美国中南部<br> 印度中部、印度南部 <br> 日本东部、日本西部<br> 韩国中部、韩国南部 <br> 欧洲北部、欧洲西部 <br> 英国南部，英国西部
 **支持的 VM 操作系统** | SLES 12 SP2、SP3 或 SP4。
-**支持的 HANA 版本** | Hana 1.x 上的 SDC，HANA 2.x 上的 MDC < = SPS04 Rev 42
+**支持的 HANA 版本** | Hana 1.x 上的 SDC，HANA 2.x 上的 MDC < = SPS04 Rev 43
 
 ### <a name="current-limitations"></a>当前限制
 
@@ -40,7 +40,7 @@ ms.locfileid: "71067106"
 - 可以每隔15分钟备份一次数据库日志。 日志备份仅在数据库的成功完整备份完成后开始流动。
 - 可以进行完整备份和差异备份。 当前不支持增量备份。
 - 应用 SAP HANA 备份后，无法修改备份策略。 如果要使用不同的设置进行备份，请创建新策略或分配其他策略。
-  - 若要创建新策略，请在保管库中单击 "**策略** > " "**备份策略** > " **+**  > **在 Azure VM 中添加 SAP HANA**，并指定策略设置。
+  - 若要创建新策略，请在保管库中单击 "**策略**" **@no__t @no__t-** 3 **+** **在 Azure VM 中**添加  >  SAP HANA，并指定 "策略设置"。
   - 若要分配不同的策略，请在运行数据库的 VM 的属性中，单击 "当前策略名称"。 然后，在 "**备份策略**" 页上，可以选择用于备份的其他策略。
 
 ## <a name="prerequisites"></a>先决条件
@@ -101,7 +101,7 @@ ms.locfileid: "71067106"
 
 1. 在步骤2中，单击 "**配置备份**"。
 2. 在 "**选择要备份的项目**" 中，选择要保护的所有数据库 > **"确定"** 。
-3. 在 "**备份策略** > " 中，根据以下**说明，为**数据库创建新的备份策略。
+3. 在**备份策略** > **选择备份策略**中，根据以下说明为数据库创建新的备份策略。
 4. 创建策略后，在 "**备份**" 菜单上单击 "**启用备份**"。
 5. 在门户的 "**通知**" 区域中跟踪备份配置进度。
 
@@ -167,7 +167,7 @@ ms.locfileid: "71067106"
 
 1. 等待数据库的所有完整备份或日志备份完成。 在 SAP HANA Studio 中检查状态。
 2. 禁用日志备份，并将备份目录设置为相关数据库的文件系统。
-3. 为此，请双击 " **systemdb** > **配置** > " "**选择数据库** > **筛选器（日志）** "。
+3. 为此，请双击**systemdb** > **配置** > **选择数据库** > **筛选器（日志）** 。
 4. 将**enable_auto_log_backup**设置为**No**。
 5. 将**log_backup_using_backint**设置为**False**。
 6. 对数据库进行临时完整备份。

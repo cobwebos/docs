@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e85fc5e6e907e32c0ad67af339c48cf84ef4764
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 46dc3a44041acd90dbab449215138eeecbda7105
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269033"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264180"
 ---
 # <a name="configure-keychain"></a>配置密钥链
 
-当[适用于 iOS 和 macOS 的 Microsoft 身份验证库](msal-overview.md)（MSAL）在用户中签名或刷新令牌时，它会尝试缓存密钥链中的令牌。 通过在密钥链中缓存令牌，MSAL 可以在同一 Apple 开发人员发布的多个应用之间提供静默单一登录（SSO）。 SSO 是通过密钥链访问组功能实现的（请参阅[Apple 的文档](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)）
+当[适用于 iOS 和 macOS 的 Microsoft 身份验证库](msal-overview.md)（MSAL）在用户中签名或刷新令牌时，它会尝试缓存密钥链中的令牌。 使用密钥链中的缓存令牌，MSAL 可以在同一 Apple 开发人员分发的多个应用之间提供静默单一登录（SSO）。 SSO 是通过密钥链访问组功能实现的。 有关详细信息，请参阅 Apple 的[密钥链项文档](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)。
 
 本文介绍如何配置应用权利，以便 MSAL 可以将缓存的令牌写入 iOS 和 macOS 密钥链。
 
@@ -34,21 +34,21 @@ ms.locfileid: "71269033"
 
 ### <a name="ios"></a>iOS
 
-默认情况下，iOS `com.microsoft.adalcache`上的 MSAL 使用访问组。 这是 MSAL 和 Azure AD 身份验证库（ADAL） Sdk 使用的共享访问组，可确保同一发布者的多个应用之间的最佳单一登录（SSO）体验。
+默认情况下，MSAL on iOS 使用 @no__t 0 访问组。 这是 MSAL 和 Azure AD 身份验证库（ADAL） Sdk 使用的共享访问组，可确保同一发布者的多个应用之间的最佳单一登录（SSO）体验。
 
-在 iOS 上，将`com.microsoft.adalcache`密钥链组添加到 XCode 中的应用的授权下的**项目设置** > **功能** > **密钥链共享**
+在 iOS 上，将 @no__t 0 密钥链组添加到 XCode 中**项目 @no__t 设置**下的应用的权利 **，@no__t-** 4**密钥链共享**
 
 ### <a name="macos"></a>macOS
 
-默认情况下， `com.microsoft.identity.universalstorage` macOS 上的 MSAL 使用访问组。
+默认情况下，macOS 上的 MSAL 使用 @no__t 的访问组。
 
-由于 macOS 密钥链限制，MSAL `access group`不会直接转换为 kSecAttrAccessGroup 10.14 及更早版本上的密钥链访问组属性（请参阅[macOS](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)）。 但是，它的行为与 SSO 的行为类似，这是为了确保同一 Apple 开发人员分发的多个应用程序可以具有无提示 SSO。
+由于 macOS 密钥链的限制，MSAL `access group` 不会直接转换为 KSecAttrAccessGroup 10.14 及更早版本上的密钥链访问组属性（参见[macOS](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)）。 但是，它的行为与 SSO 的行为类似，这是为了确保同一 Apple 开发人员分发的多个应用程序可以具有无提示 SSO。
 
 在 macOS 10.15 后（macOS Catalina），MSAL 使用密钥链访问组属性来实现无提示 SSO，与 iOS 类似。
 
 ## <a name="custom-keychain-access-group"></a>自定义密钥链访问组
 
-如果要使用不同的密钥链访问组，可以在`MSALPublicClientApplicationConfig`创建`MSALPublicClientApplication`之前传递自定义组，如下所示：
+如果你想要使用不同的密钥链访问组，则在创建 `MSALPublicClientApplication` 之前，可以传递自定义 @no__t 组，如下所示：
 
 Objective-C：
 
@@ -68,7 +68,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 
 
 
-反应
+Swift：
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -96,7 +96,7 @@ Objective-C：
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-反应
+Swift：
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {

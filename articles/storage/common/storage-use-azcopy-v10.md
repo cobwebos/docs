@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 980156284b27478163760b1f833a91ba7cddec21
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: f4523b2aa580d0fd237c15e23b06b44593cbf055
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244785"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274639"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -29,7 +29,8 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 
 首先，将 AzCopy V10 可执行文件下载到计算机上的任何目录中。 AzCopy V10 只是一个可执行文件，因此没有要安装的内容。
 
-- [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
+- [Windows 64 位](https://aka.ms/downloadazcopy-v10-windows)（zip）
+- [Windows 32 位](https://aka.ms/downloadazcopy-v10-windows-32bit)（zip）
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 

@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 13e2a848f9d178fc6554062c324c951102e1343b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4858d803b4fccdc6ae4d5a790721bad60d218313
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244111"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274204"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
@@ -30,6 +30,7 @@ ms.locfileid: "72244111"
 - 了解当某个资源更改了合规状态时可能已更改的其他属性。 评估这些附加属性可以洞察可能需要通过 Azure Policy 定义进行管理的其他属性。
 
 本文介绍如何通过 Resource Graph 的 SDK 收集此信息。 若要在 Azure 门户中查看此信息，请参阅 Azure 策略的[更改历史记录](../../policy/how-to/determine-non-compliance.md#change-history-preview)或 Azure 活动日志[更改历史记录](../../../azure-monitor/platform/activity-log-view.md#azure-portal)。
+有关从基础结构层对应用程序所做的更改的详细信息，请参阅使用 Azure Monitor 中的[应用程序更改分析（预览版）](../../../azure-monitor/app/change-analysis.md) 。
 
 > [!NOTE]
 > 资源图中的更改详细信息用于资源管理器属性。 若要跟踪虚拟机内的更改，请参阅 Azure 自动化的[更改跟踪](../../../automation/automation-change-tracking.md)或 azure 策略的[Vm 的来宾配置](../../policy/concepts/guest-configuration.md)。

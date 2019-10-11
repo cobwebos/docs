@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 30530f445941747c659f584d279261148b08825e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 15e4fc3ce412807908c75fe25acecac0fe86d261
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240804"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72262797"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
 
@@ -32,9 +32,9 @@ ms.locfileid: "70240804"
 
 Azure Cosmos DB 有一个不受架构影响的索引编制引擎，能够自动为它引入的所有数据编制索引，不会要求开发者提供任何架构或辅助索引。 该引擎依赖于一组逻辑索引布局（倒置、纵栏表、树形），这些布局将存储布局从索引和查询处理子系统中分离出来。 Cosmos DB 还能够以可扩展方式支持一组连网协议和 API 并将它们高效地转换为核心数据模型 (1) 和逻辑索引布局 (2)，这使得它具有原本就支持多个数据模型的独特功能。
 
-### <a name="can-i-use-multiple-apis-to-access-my-data"></a>是否可以使用多个 Api 来访问我的数据？
+### <a name="can-i-use-multiple-apis-to-access-my-data"></a>是否可以使用多个 API 来访问我的数据？
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 如果多模型意味着 Azure Cosmos DB 支持多个 Api 和多个数据模型，则不同的 Api 将不同的数据格式用于存储和网络协议。 例如，SQL 使用 JSON，MongoDB 使用 BSON，表使用 EDM，Cassandra 使用 CQL，Gremlin 使用 GraphSON。 因此，建议使用相同的 API 对给定帐户中的数据进行所有访问。
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 其中多模型意味着 Azure Cosmos DB 支持多个 API 和多个数据模型，不同的 API 将不同的数据格式用于存储和线路协议。 例如，SQL 使用 JSON，MongoDB 使用 BSON，表使用 EDM，Cassandra 使用 CQL，Gremlin 使用 GraphSON。 因此，建议使用相同的 API 对给定帐户中的数据进行所有访问。
 
 除了可互操作的 Gremlin 和 SQL API，每个 API 都独立运行。
 
@@ -119,11 +119,15 @@ Azure 门户中提供了 Azure Cosmos DB。 首先注册 Azure 订阅。 注册�
 
 ### <a name="is-it-possible-to-switch-from-container-level-throughput-provisioning-to-database-level-throughput-provisioning-or-vice-versa"></a>是否可以从容器级吞吐量预配切换到数据库级吞吐量预配？ 或者反之亦然？
 
-容器级和数据库级吞吐量预配是不同的产品，在这两者之间切换需要将数据从源迁移到目标。 这意味着你需要创建新的数据库或新的容器，然后通过使用[批量执行程序库](bulk-executor-overview.md)或[Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)来迁移数据。
+容器级和数据库级吞吐量预配是不同的产品，在这两者之间切换需要将数据从源迁移到目标。 这意味着你需要创建新数据库或新容器，然后使用[批量执行程序库](bulk-executor-overview.md)或 [Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)迁移数据。
 
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Azure CosmosDB 是否支持时序分析？
 
 是，Azure CosmosDB 支持时序分析，下面是一个[时序模式](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/samples/Patterns)示例。 此示例演示如何使用更改源基于时序数据构建聚合的视图。 可以使用 spark 流式处理或其他流数据处理器扩展此方法。
+
+## <a name="what-are-the-azure-cosmos-db-service-quotas-and-throughput-limits"></a>什么是 Azure Cosmos DB 服务配额和吞吐量限制
+
+有关详细信息，请参阅 Azure Cosmos DB[服务配额](concepts-limits.md)，以及[每个容器和数据库](set-throughput.md#comparison-of-models)项目的限制。
 
 ## <a name="sql-api"></a>SQL API
 
@@ -150,7 +154,7 @@ GitHub 上提供了 SQL API [.NET](sql-api-dotnet-samples.md)、[Java](https://g
 容器是文档及其关联的 JavaScript 应用程序逻辑的组。 容器是一个计费实体，其[成本](performance-levels.md)由吞吐量和已用存储确定。 容器可以跨一个或多个分区或服务器，并且能缩放以处理几乎无限制增长的存储或吞吐量。
 
 * 对于 SQL API，容器映射到容器。
-* 对于 MongoDB 帐户的 Cosmos DB API，容器映射到集合。
+* 对于 Cosmos DB 的 API for MongoDB 帐户，容器映射到集合。
 * 对于 Cassandra 和表 API 帐户，容器映射到表。
 * 对于 Gremlin API 帐户，容器映射到图表。
 
@@ -158,7 +162,7 @@ GitHub 上提供了 SQL API [.NET](sql-api-dotnet-samples.md)、[Java](https://g
 
 ### <a name="how-do-i-create-a-database"></a>我如何创建数据库？
 
-你可以使用[Azure 门户](https://portal.azure.com)创建数据库，如[添加容器](create-sql-api-java.md#add-a-container)、 [Azure Cosmos DB sdk](sql-api-sdk-dotnet.md)之一或[REST api](/rest/api/cosmos-db/)中所述。
+可以使用 [Azure 门户](https://portal.azure.com)（详见[添加容器](create-sql-api-java.md#add-a-container)中所述）、某个 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 或 [REST API](/rest/api/cosmos-db/) 来创建数据库。
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>我如何设置用户和权限？
 
@@ -180,7 +184,7 @@ SQL API 通过 HTTP 实体标记或 ETag 支持乐观并发控制 (OCC)。 每�
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>如何在 SQL API 中执行事务？
 
-SQL API 通过 JavaScript 存储过程和触发器支持语言集成式事务。 脚本内的所有数据库操作均在快照隔离下执行。 如果它是单分区容器，则执行的作用域为容器。 如果容器已分区，则执行的作用域为容器中具有相同分区键值的文档。 文档版本 (ETag) 的快照是在事务开始时获取的，且只有当脚本成功运行时才会提交。 如果 JavaScript 引发错误，则会回滚事务。 有关详细信息，请参阅 [Azure Cosmos DB 的服务器端 JavaScript 编程](stored-procedures-triggers-udfs.md)。
+SQL API 通过 JavaScript 存储过程和触发器支持语言集成式事务。 脚本内的所有数据库操作均在快照隔离下执行。 如果是单分区容器，则在容器范围内执行。 如果容器已分区，则执行范围为该容器中具有相同分区键值的文档。 文档版本 (ETag) 的快照是在事务开始时获取的，且只有当脚本成功运行时才会提交。 如果 JavaScript 引发错误，则会回滚事务。 有关详细信息，请参阅 [Azure Cosmos DB 的服务器端 JavaScript 编程](stored-procedures-triggers-udfs.md)。
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>如何将文档批量插入到 Document DB 中？
 
@@ -192,11 +196,11 @@ SQL API 通过 JavaScript 存储过程和触发器支持语言集成式事务。
 
 ### <a name="does-the-sql-api-support-resource-link-caching"></a>SQL API 是否支持资源链接缓存？
 
-是，因为 Azure Cosmos DB 是 RESTful 服务，而资源链接固定不变，所以可以缓存。 SQL API 客户端可以指定 "If-无-Match" 标头，用于对任何类似资源的文档或容器进行读取，然后在服务器版本发生更改后更新其本地副本。
+是，因为 Azure Cosmos DB 是 RESTful 服务，而资源链接固定不变，所以可以缓存。 SQL API 客户端可以通过指定“If-None-Match”标头来读取任何资源（例如文档或容器），然后在服务器版本更改后更新本地副本。
 
 ### <a name="is-a-local-instance-of-sql-api-available"></a>SQL API 的本地实例是否可用？
 
-是的。 [Azure Cosmos DB 模拟器](local-emulator.md)提供对 Cosmos DB 服务的高保真模拟。 它支持与 Azure Cosmos DB 相同的功能，包括对创建和查询 JSON 文档、预配和缩放集合，以及执行存储过程和触发器的支持。 可以使用 Azure Cosmos DB 模拟器开发和测试应用程序，然后对 Azure Cosmos DB 的连接终结点进行单一配置更改，可以将这些应用程序部署到全局范围的 Azure。
+是。 [Azure Cosmos DB 模拟器](local-emulator.md)提供对 Cosmos DB 服务的高保真模拟。 它支持与 Azure Cosmos DB 相同的功能，包括对创建和查询 JSON 文档、预配和缩放集合，以及执行存储过程和触发器的支持。 可以使用 Azure Cosmos DB 模拟器开发和测试应用程序，然后对 Azure Cosmos DB 的连接终结点进行单一配置更改，可以将这些应用程序部署到全局范围的 Azure。
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>当从门户中的数据资源管理器查看时，为何会对文档中的长浮点值进行舍入？
 
@@ -210,7 +214,7 @@ SQL API 通过 JavaScript 存储过程和触发器支持语言集成式事务。
 
 ### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>什么是 Azure Cosmos DB 的用于 MongoDB 的 API？
 
-Azure Cosmos DB 的 MongoDB API 是一种有线协议兼容性层，它允许应用程序使用现有的、社区支持的 Sdk 和 MongoDB 驱动程序轻松透明地与本机 Azure Cosmos 数据库引擎进行通信。 开发人员现在可以使用现有的 MongoDB 工具链和技术，生成能够充分利用 Azure Cosmos DB 的应用程序。 开发人员受益于 Azure Cosmos DB 的独特功能，其中包括具有多主机复制的全局分发、自动索引、备份维护、财务支持的服务级别协议（Sla）等。
+Azure Cosmos DB 的 API for MongoDB 是一个线路协议兼容层，允许应用程序使用现有的、社区支持的 SDK 和用于 MongoDB 的驱动程序轻松、透明地与本机 Azure Cosmos 数据库引擎通信。 开发人员现在可以使用现有的 MongoDB 工具链和技术，生成能够充分利用 Azure Cosmos DB 的应用程序。 开发人员受益于 Azure Cosmos DB 的独特功能，其中包括具有多主机复制的全局分发、自动索引、备份维护、财务支持的服务级别协议（Sla）等。
 
 ### <a name="how-do-i-connect-to-my-database"></a>如何连接到我的数据库？
 
@@ -226,7 +230,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 
 | Error               | 代码  | 描述  | 解决方案  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | 使用的请求单位总数大于容器的预配请求单位率，已受到限制。 | 考虑从 Azure 门户中对分配给一个容器或一组容器的吞吐量进行缩放，或者重试。 |
+| TooManyRequests     | 16500 | 使用的请求单位总数超过了容器的预配请求单位率，已被限制。 | 考虑从 Azure 门户中对分配给一个容器或一组容器的吞吐量进行缩放，或者重试。 |
 | ExceededMemoryLimit | 16501 | 作为一种多租户服务，操作已超出客户端的内存配额。 | 通过限制性更强的查询条件缩小操作的作用域，或者通过 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)联系支持人员。 <br><br>示例：<em>&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name:"Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])</em>) |
 
 ### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmos-dbs-api-for-mongodb"></a>是否支持将 MongoDB 的 Simba 驱动程序与 Azure CosmosDB 的用于 MongoDB 的 API 一起使用？
@@ -460,7 +464,7 @@ Azure Cosmos DB 会在本地区域持续提交数据，然后在几毫秒内将�
 符合以下任一情况时，都应更改 TableThroughput：
 
 * 要执行数据提取、转换和加载 (ETL) 操作，或者想在短时间内上传大量数据。
-* 需要后端的容器或容器组提供更大的吞吐量。 例如，发现已用吞吐量超过预配吞吐量，且吞吐量已达到限制。 有关详细信息，请参阅[设置 Azure Cosmos 容器的吞吐量](set-throughput.md)。
+* 需要后端的容器或容器组提供更大的吞吐量。 例如，发现已用吞吐量超过预配吞吐量，且吞吐量已达到限制。 有关详细信息，请参阅[为 Azure Cosmos 容器设置吞吐量](set-throughput.md)。
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>是否可以提高或降低表 API 表的吞吐量？
 
@@ -500,7 +504,7 @@ Azure Cosmos DB 是基于 SLA 的系统，可提供无限缩放，并在延迟�
 
 ### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-table-api"></a>表 API 是否仍然需要 PartitionKey 和 RowKey？
 
-是的。 由于表 API 的外围应用类似于 Azure 表存储 SDK，因此使用分区键可以高效地分发数据。 行键在该分区中是唯一的。 需要存在行键且它不能为 null（在标准 SDK 中可为 null）。 RowKey 的长度为 255 个字节，PartitionKey 的长度为 1 KB。
+是。 由于表 API 的外围应用类似于 Azure 表存储 SDK，因此使用分区键可以高效地分发数据。 行键在该分区中是唯一的。 需要存在行键且它不能为 null（在标准 SDK 中可为 null）。 RowKey 的长度为 255 个字节，PartitionKey 的长度为 1 KB。
 
 ### <a name="what-are-the-error-messages-for-the-table-api"></a>表 API 的错误消息有哪些？
 
@@ -524,7 +528,7 @@ RU 费用取决于遍历的工作数据集，而不是结果集。 例如，如�
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>图形数据库可在 Azure Cosmos DB Gremlin API 中拥有的最大规模是怎样的？
 
-Azure Cosmos DB 利用[水平分区](partition-data.md)自动满足增加存储和吞吐量的需求。 工作负荷的最大吞吐量和存储容量取决于与给定容器关联的分区数。 不过，Gremlin API 容器具有一组特定的指导原则，可确保大规模获得适当的性能体验。 有关分区和最佳做法的详细信息，请参阅 [Azure Cosmos DB 中的分区](partition-data.md)一文。
+Azure Cosmos DB 利用[水平分区](partition-data.md)自动满足增加存储和吞吐量的需求。 工作负荷的最大吞吐量和存储容量由与给定容器关联的分区数量决定。 但是，Gremlin API 容器有一组用于按规模确保适当性能体验的特定准则。 有关分区和最佳做法的详细信息，请参阅 [Azure Cosmos DB 中的分区](partition-data.md)一文。
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>如何使用 Gremlin 驱动程序防范注入式攻击？
 
@@ -755,7 +759,7 @@ Apache Cassandra SDK 的使用 CQLv3 的客户端驱动程序用于客户端程�
 
 ### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>本地 Apache Cassandra 群集是否可与 Azure Cosmos DB 的 Cassandra API 配对？
 
-目前，Azure Cosmos DB 针对云环境提供了优化的体验，且不产生操作开销。 如果需要配对，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送邮件并在其中提供你的方案的说明。 我们正在致力于帮助将本地/不同云 Cassandra 群集与 Cosomos DB 的 Cassandra API 配对。
+目前，Azure Cosmos DB 针对云环境提供了优化的体验，且不产生操作开销。 如果需要配对，请向 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 发送邮件并在其中提供你的方案的说明。 我们正致力于提供一项服务，帮助用户将本地的 Cassandra 群集或不同的云 Cassandra 群集与 Cosomos DB 的 Cassandra API 配对。
 
 ### <a name="does-cassandra-api-provide-full-backups"></a>Cassandra API 是否提供完整备份？
 

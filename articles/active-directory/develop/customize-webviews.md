@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1b7417de8de6fb063de18fe670ef474a3b486d0
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 0dd5be3944bdff459f6d920b358ae08efedcc431
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269072"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264203"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>如何：自定义 iOS/macOS 的浏览器和 Webview
 
-Web 浏览器是交互式身份验证所必需的。 在 iOS 上，默认情况下，Microsoft 身份验证库（MSAL）使用系统 web 浏览器（可能会显示在应用的顶部）进行交互式身份验证，以便登录用户。 使用系统浏览器具有很大的优势，即与其他应用程序和 web 应用程序共享单一登录（SSO）状态。
+Web 浏览器是交互式身份验证所必需的。 在 iOS 上，默认情况下，Microsoft 身份验证库（MSAL）使用系统 web 浏览器（可能出现在应用程序的顶部）进行交互式身份验证，以便登录用户。 使用系统浏览器的优点是将单一登录（SSO）状态与其他应用程序和 web 应用程序共享。
 
 你可以通过将配置自定义为其他用于显示 web 内容的选项来更改体验，例如：
 
@@ -40,13 +40,13 @@ Web 浏览器是交互式身份验证所必需的。 在 iOS 上，默认情况�
 
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc)。
 
-MacOS 的 MSAL 仅支持`WKWebView`。
+MacOS 的 MSAL 仅支持 @no__t 0。
 
 ## <a name="system-browsers"></a>系统浏览器
 
-对于 iOS， `ASWebAuthenticationSession` `SFAuthenticationSession`、和`SFSafariViewController`被视为系统浏览器。 通常，系统浏览器在 Safari 浏览器应用程序中共享 cookie 和其他网站数据。
+对于 iOS，`ASWebAuthenticationSession`，`SFAuthenticationSession`，`SFSafariViewController` 被视为系统浏览器。 通常，系统浏览器在 Safari 浏览器应用程序中共享 cookie 和其他网站数据。
 
-默认情况下，MSAL 将动态检测 iOS 版本，并选择该版本上提供的建议系统浏览器。 在 iOS 12 + 上，它`ASWebAuthenticationSession`将是。 
+默认情况下，MSAL 将动态检测 iOS 版本，并选择该版本上提供的建议系统浏览器。 在 iOS 12 + 上，将 `ASWebAuthenticationSession`。 
 
 | Version | Web 浏览器 |
 |:-------------:|:-------------:|
@@ -56,8 +56,8 @@ MacOS 的 MSAL 仅支持`WKWebView`。
 
 开发人员还可以为 MSAL 应用选择其他系统浏览器：
 
-- `SFAuthenticationSession`是的`ASWebAuthenticationSession`iOS 11 版本。
-- `SFSafariViewController`更通用，并提供用于浏览 web 的界面，还可用于登录。 在 iOS 9 和10中，cookie 和其他网站数据与 Safari 共享--而不是在 iOS 11 和更高版本中。
+- @no__t 为 `ASWebAuthenticationSession` 的 iOS 11 版本。
+- @no__t 是更通用的，它提供了用于浏览 web 的界面，还可用于登录。 在 iOS 9 和10中，cookie 和其他网站数据与 Safari 共享--而不是在 iOS 11 和更高版本中。
 
 ## <a name="in-app-browser"></a>应用内浏览器
 
@@ -79,7 +79,7 @@ MacOS 的 MSAL 仅支持`WKWebView`。
 
 ## <a name="change-the-default-browser-for-the-request"></a>更改请求的默认浏览器
 
-你可以根据用户的 UX 要求使用应用内浏览器或特定系统浏览器，方法是在中`MSALWebviewParameters`更改以下属性：
+你可以根据 UX 要求使用应用内浏览器或特定系统浏览器，方法是在 `MSALWebviewParameters` 中更改以下属性：
 
 ```objc
 @property (nonatomic) MSALWebviewType webviewType;
@@ -87,9 +87,9 @@ MacOS 的 MSAL 仅支持`WKWebView`。
 
 ## <a name="change-per-interactive-request"></a>按交互式请求更改
 
-可以通过在将`MSALInteractiveTokenParameters.webviewParameters.webviewType`属性传递`acquireTokenWithParameters:completionBlock:`给 API 之前更改属性，将每个请求配置为覆盖默认浏览器。
+每个请求都可以配置为覆盖默认浏览器，方法是在将 @no__t 值传递到 `acquireTokenWithParameters:completionBlock:` API 之前更改该属性。
 
-此外，MSAL 还支持通过`WKWebView` `MSALInteractiveTokenParameters.webviewParameters.customWebView`设置属性来传入自定义。
+此外，MSAL 还支持通过设置 `MSALInteractiveTokenParameters.webviewParameters.customWebView` 属性传入自定义 `WKWebView`。
 
 例如：
 

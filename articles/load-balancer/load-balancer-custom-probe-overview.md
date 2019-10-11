@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 22f0ef7da9018da128e9a978cefa71eaa786829c
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 62af688c6090b61f2596ab376cb479c270b87759
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098931"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274115"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -116,7 +116,7 @@ TCP 探测通过使用定义的端口执行三方开放式 TCP 握手来初始�
 
 HTTP 和 HTTPS 探测构建在 TCP 探测的基础之上，发出包含指定路径的 HTTP GET。 这两个探测都支持 HTTP GET 的相对路径。 与 HTTP 探测一样，HTTPS 探测中也添加了传输层安全性（TLS，前称为 SSL）包装器。 如果实例在超时期限内做出响应并返回 HTTP 状态 200，则将运行状况探测标记为运行。  默认情况下，运行状况探测每隔 15 秒尝试检查配置的运行状况探测端口。 最小探测间隔为 5 秒。 所有间隔的总持续时间不能超过 120 秒。
 
-若要表示运行状况探测，也可以使用 HTTP/HTTPS 探测。  如果探测端口也是服务本身的侦听器，请实现自己的逻辑，以便从负载均衡器轮转中删除实例。 例如，如果实例的 CPU 利用率超过 90% 并返回非 200 HTTP 状态，则你可以决定删除该实例。 
+如果探测端口也是服务本身的侦听器，则 HTTP/HTTPS 探测对于实现自己的逻辑以便从负载均衡器轮换中删除实例也很有用。 例如，如果实例的 CPU 利用率超过 90% 并返回非 200 HTTP 状态，则你可以决定删除该实例。 
 
 如果使用云服务，并且现有的 Web 角色使用 w3wp.exe，则你还可以实现自动网站监视。 如果网站代码中出现故障，则会向负载均衡器探测返回非 200 状态。
 

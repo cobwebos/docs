@@ -6,15 +6,15 @@ author: ashannon7
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 08/09/2019
+ms.date: 10/09/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 48e09a64812f7552bd79c529138db693df283790
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 4916397d05ad9d5fcae7624bf558eb7dc5be940f
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947152"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274400"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>塑造 JSON 以最大化查询性能 
 
@@ -27,6 +27,7 @@ ms.locfileid: "68947152"
 > [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
 ## <a name="best-practices"></a>最佳实践
+
 考虑如何将事件发送到时序见解。 即，始终：
 
 1. 尽量高效地通过网络发送数据。
@@ -57,9 +58,10 @@ ms.locfileid: "68947152"
 
 以下示例涉及到单个 Azure IoT 中心消息，其中的外部数组包含通用维度值的共享节。 该外部数组使用参考数据来提高消息的效率。 参考数据包含设备元数据，这些数据不会根据每个事件变化，但提供有用的属性用于数据分析。 批处理通用维度值和采用参考数据都能减少通过网络发送的字节数，这可以提高消息的效率。
 
-示例 JSON 有效负载：
+使用在发送到 Azure 云时序列化为 JSON 的[IoT 设备消息对象](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet)，考虑将以下 JSON 有效负载发送到时序见解 GA 环境：
 
-```json
+
+```JSON
 [
     {
         "deviceId": "FXXX",
@@ -103,13 +105,12 @@ ms.locfileid: "68947152"
    | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
    | FYYY | LINE\_DATA | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
-有关这两个表的说明：
-
-- **deviceId** 列充当机群中各种设备的列标题。 对于其他五个列，使 deviceId 值成为其自身的属性名称会将设备总数限制为 595（对于 S1 环境）或 795（对于 S2 环境）。
-- 避免不必要的属性，例如制造商和型号信息。 由于将来不会查询这些属性，消除它们对网络和存储效率有利。
-- 参考数据用于减少通过网络传输的字节数。 已使用键属性 **deviceId** 联接 **messageId** 和 **deviceLocation** 这两个特性。 此数据在流入时联接到遥测数据，然后存储在时序见解中以供查询。
-- 使用了两个嵌套层，这是时序见解支持的最大嵌套数量。 必须避免深层嵌套的数组。
-- 由于度量很少，因此将其作为单独的属性在同一对象中发送。 此处的 **series.Flow Rate psi** 和 **series.Engine Oil Pressure ft3/s** 是唯一的列。
+> [!NOTE]
+> - **deviceId** 列充当机群中各种设备的列标题。 如果将**deviceId**值作为其自身的属性名称，则会将总设备数限制为595（适用于 S1 环境）或795（适用于 S2 环境），其中包含其他五个列。
+> - 避免了不必要的属性（例如，品牌和型号的信息）。 由于将来不会查询这些属性，消除它们对网络和存储效率有利。
+> - 参考数据用于减少通过网络传输的字节数。 已使用键属性 **deviceId** 联接 **messageId** 和 **deviceLocation** 这两个特性。 此数据在流入时联接到遥测数据，然后存储在时序见解中以供查询。
+> - 使用了两个嵌套层，这是时序见解支持的最大嵌套数量。 必须避免深层嵌套的数组。
+> - 由于度量很少，因此将其作为单独的属性在同一对象中发送。 此处的 **series.Flow Rate psi** 和 **series.Engine Oil Pressure ft3/s** 是唯一的列。
 
 ## <a name="scenario-two-several-measures-exist"></a>方案二：存在多个度量
 
@@ -118,7 +119,7 @@ ms.locfileid: "68947152"
 
 示例 JSON 有效负载：
 
-```json
+```JSON
 [
     {
         "deviceId": "FXXX",
@@ -179,12 +180,11 @@ ms.locfileid: "68947152"
    | FYYY | pumpRate | LINE\_DATA | US | 流速 | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
    | FYYY | oilPressure | LINE\_DATA | US | 引擎油压 | psi | 2018-01-17T01:18:00Z | 22.2 |
 
-有关这两个表的说明：
-
-- 列 **deviceId** 和 **series.tagId** 充当机群中各个设备和标记的列标题。 对于其他六个列，将每个值用作其自身的特性会将设备总数查询限制为 594（对于 S1 环境）或 794（对于 S2 环境）。
-- 出于第一个示例中提到的原因，请避免不必要的属性。
-- 参考数据用于减少通过网络传输的字节数，因为针对 **messageId** 和 **deviceLocation** 的唯一对引入了 **deviceId**。 针对 **type** 和 **unit** 的唯一对使用了组合键 **series.tagId**。 该组合键允许使用 **deviceId** 和 **series.tagId** 对来引用四个值：**messageId、deviceLocation、type** 和 **unit**。 在流入时，此数据将联接到遥测数据。 然后，它将存储在时序见解中供查询。
-- 出于第一个示例中提到的原因，使用了两个嵌套层。
+> [!NOTE]
+> - 列 **deviceId** 和 **series.tagId** 充当机群中各个设备和标记的列标题。 对于其他六个列，将每个值用作其自身的特性会将设备总数查询限制为 594（对于 S1 环境）或 794（对于 S2 环境）。
+> - 出于第一个示例中提到的原因，请避免不必要的属性。
+> - 参考数据用于减少通过网络传输的字节数，因为针对 **messageId** 和 **deviceLocation** 的唯一对引入了 **deviceId**。 针对 **type** 和 **unit** 的唯一对使用了组合键 **series.tagId**。 该组合键允许使用 **deviceId** 和 **series.tagId** 对来引用四个值：**messageId、deviceLocation、type** 和 **unit**。 在流入时，此数据将联接到遥测数据。 然后，它将存储在时序见解中供查询。
+> - 出于第一个示例中提到的原因，使用了两个嵌套层。
 
 ### <a name="for-both-scenarios"></a>对于两种场景
 
@@ -195,5 +195,8 @@ ms.locfileid: "68947152"
 
 ## <a name="next-steps"></a>后续步骤
 
+- 详细了解[如何向云发送 IoT 中心设备消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)。
+
 - 请参阅 [Azure 时序见解查询语法](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax)，以详细了解时序见解数据访问 REST API 的查询语法。
+
 - 了解[如何调整事件](./time-series-insights-send-events.md)。

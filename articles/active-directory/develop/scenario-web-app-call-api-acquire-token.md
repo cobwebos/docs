@@ -15,23 +15,23 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fd66dcd6e3845aad79ebffb3cad656d0a14c1a6
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: f30194592989b74aca96a5a483e9128cd3a86eb5
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720222"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274470"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>调用 Web API 的 Web 应用 - 获取应用的令牌
 
 既然已生成客户端应用程序对象，就可以使用它来获取用于调用 web API 的令牌。 在 ASP.NET 或 ASP.NET Core 中，在控制器中调用 web API。 具体操作是：
 
-- 使用令牌缓存获取 Web API 的令牌。 若要获取此令牌，请`AcquireTokenSilent`调用。
+- 使用令牌缓存获取 Web API 的令牌。 若要获取此令牌，请调用 `AcquireTokenSilent`。
 - 使用访问令牌调用受保护的 API。
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-控制器方法受`[Authorize]`属性保护，该特性强制用户进行身份验证，以使用 Web 应用。 下面是调用 Microsoft Graph 的代码。
+控制器方法受 `[Authorize]` 特性保护，该特性强制用户进行身份验证，以便使用 Web 应用程序。 下面是调用 Microsoft Graph 的代码。
 
 ```CSharp
 [Authorize]
@@ -61,10 +61,10 @@ public async Task<IActionResult> Profile()
  string[] scopes = new string[]{"user.read"};
  string accessToken = await tokenAcquisition.GetAccessTokenOnBehalfOfUserAsync(scopes);
 
-// use the access token to call a protected web API
-HttpClient client = new HttpClient();
-client.DefaultRequestHeaders.Add("Authorization", result.CreateAuthorizationHeader());
-string json = await client.GetStringAsync(url);
+ // use the access token to call a protected web API
+ HttpClient client = new HttpClient();
+ client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+ string json = await client.GetStringAsync(url);
 }
 ```
 
@@ -81,9 +81,9 @@ string json = await client.GetStringAsync(url);
 
 ASP.NET 中的情况类似：
 
-- 受 [授权] 属性保护的控制器操作会提取控制器的 `ClaimsPrincipal` 成员的租户 ID 和用户 ID。 （ASP.NET 使用`HttpContext.User`。）
-- 然后，它会生成一个 MSAL.NET `IConfidentialClientApplication`。
-- 最后，它调用`AcquireTokenSilent`机密客户端应用程序的方法。
+- 受 [授权] 属性保护的控制器操作会提取控制器的 `ClaimsPrincipal` 成员的租户 ID 和用户 ID。 （ASP.NET 使用 `HttpContext.User`。）
+- 然后，它会生成 MSAL.NET `IConfidentialClientApplication`。
+- 最后，它将调用机密客户端应用程序的 @no__t 0 方法。
 
 此代码类似于为 ASP.NET Core 显示的代码。
 

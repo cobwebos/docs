@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: b365c914db0ce43da5dac4c5b889c854c0ea0639
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: cbdf4f203204df2d26eb7c908167c1e1ca10d0ab
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827407"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264315"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -39,7 +39,7 @@ ms.locfileid: "71827407"
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>如何使用 Azure 容器注册表配置 Kubernetes？
 
-请参阅 [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) 的文档以及适用于 [Azure Kubernetes 服务](container-registry-auth-aks.md)的步骤。
+请参阅 [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) 的文档以及适用于 [Azure Kubernetes 服务](../aks/cluster-container-registry-integration.md)的步骤。
 
 ### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>如何获取容器注册表的管理员凭据？
 
@@ -190,15 +190,15 @@ az acr login -n MyRegistry
 
 ### <a name="does-azure-container-registry-support-content-trust"></a>Azure 容器注册表是否支持内容信任？
 
-是的, 你可以使用 Azure 容器注册表中的受信任映像, 因为[Docker 公证人](https://docs.docker.com/notary/getting_started/)已集成并可启用。 有关详细信息, 请参阅[Azure 容器注册表中的内容信任](container-registry-content-trust.md)。
+是的，你可以使用 Azure 容器注册表中的受信任映像，因为[Docker 公证人](https://docs.docker.com/notary/getting_started/)已集成并可启用。 有关详细信息，请参阅[Azure 容器注册表中的内容信任](container-registry-content-trust.md)。
 
 
 ####  <a name="where-is-the-file-for-the-thumbprint-located"></a>指纹位于何处？
 
-在`~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata`:
+@No__t 下-0：
 
-* 所有角色 (委托角色除外) 的公钥和证书都存储在中`root.json`。
-* 委托角色的公钥和证书存储在其父角色的 JSON 文件中 ( `targets.json`例如`targets/releases` , 角色)。
+* 所有角色（委托角色除外）的公钥和证书都存储在 `root.json` 中。
+* 委托角色的公钥和证书存储在其父角色的 JSON 文件中（例如，`targets/releases` 角色 `targets.json`）。
 
 建议在 Docker 和公证人客户端完成总体 TUF 验证之后验证这些公钥和证书。
 

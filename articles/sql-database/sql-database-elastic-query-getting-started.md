@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-ms.date: 12/18/2018
-ms.openlocfilehash: cc59d7cb1ce09aad834130818e5af533719e04c1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/10/2019
+ms.openlocfilehash: 4e896fae0d8459629c58dfd0bbdfbb32b90b1cac
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568604"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264234"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
 
@@ -26,14 +26,14 @@ ms.locfileid: "68568604"
 
 若要了解需要查询的 SQL 对象，请参阅[跨横向分区的数据库进行查询](sql-database-elastic-query-horizontal-partitioning.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 下载并运行[弹性数据库工具示例入门](sql-database-elastic-scale-get-started.md)。
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>使用示例应用程序创建分片映射管理器
 在此处，用户将创建分片映射管理器以及多个分片，并将数据插入分片。 如果分片中正好设置了分片数据，则可以跳过下面的步骤，直接转到下一部分。
 
-1. 生成并运行**弹性数据库工具入门**示例应用程序。 一直执行到[下载和运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)部分中的步骤 7。 在步骤 7 结束时，可以看到以下命令提示符：
+1. 按照[下载并运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1)一文中的步骤，生成并运行**弹性数据库工具**入门示例应用程序。 完成所有步骤后，会看到以下命令提示符：
 
     ![命令提示符][1]
 2. 在命令窗口中键入“1”，并按“Enter”。 这会创建分片映射管理器，并将两个分片添加到服务器。 “然”后“键”入“3”并按“Enter”；重复该操作四次。 这会在分片中插入示例数据行。
@@ -62,13 +62,13 @@ ms.locfileid: "68568604"
 1. 在 Visual Studio 中打开 SQL Server Management Studio 或 SQL Server Data Tools。
 2. 连接到 ElasticDBQuery 数据库，并执行以下 T-SQL 命令：
 
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
+        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
 
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
         WITH IDENTITY = '<username>',
         SECRET = '<password>';
 
-    “username”和“password”应该与[弹性数据库工具入门](sql-database-elastic-scale-get-started.md)中[下载和运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)的步骤 6 中使用的登录信息相同。
+    "用户名" 和 "密码" 应与在**弹性数据库工具**入门一文中的[下载和运行示例应用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)部分的步骤3中使用的登录信息相同。
 
 ### <a name="external-data-sources"></a>外部数据源
 若要创建外部数据源，请对 ElasticDBQuery 数据库执行以下命令：
@@ -123,7 +123,7 @@ ms.locfileid: "68568604"
 
 现在，可以使用 Excel 的强大数据可视化功能。 可以使用包含服务器名称、数据库名称和凭据的连接字符串，将 BI 和数据集成工具连接到弹性查询数据库。 请确保支持将 SQL Server 用作工具的数据源。 可以引用弹性查询数据库和外部表，就如同使用工具连接的任何其他 SQL Server 数据库和 SQL Server 表一样。
 
-### <a name="cost"></a>开销
+### <a name="cost"></a>成本
 使用弹性数据库查询功能不会产生额外的费用。
 
 有关价格信息，请参阅 [SQL 数据库定价详细信息](https://azure.microsoft.com/pricing/details/sql-database/)。

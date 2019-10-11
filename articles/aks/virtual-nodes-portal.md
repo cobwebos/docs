@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 8752d888e24e7135d488be6d1b377070a30fe4eb
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: ab0aebf0b66ac01e19699795b14063df31cb9621
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67613845"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263760"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为使用 Azure 门户中的虚拟节点
 
@@ -24,7 +24,7 @@ ms.locfileid: "67613845"
 
 ACI 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用高级网络创建的 AKS 群集。 默认情况下，AKS 群集是使用基本网络创建的。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
 
-如果以前没有使用过 ACI，请在订阅中注册服务提供程序。 你可以使用[az provider list][az-provider-list]命令检查 ACI 提供程序注册的状态, 如以下示例中所示:
+如果以前没有使用过 ACI，请在订阅中注册服务提供程序。 你可以使用[az provider list][az-provider-list]命令检查 ACI 提供程序注册的状态，如以下示例中所示：
 
 ```azurecli-interactive
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
@@ -38,24 +38,24 @@ Namespace                    RegistrationState
 Microsoft.ContainerInstance  Registered
 ```
 
-如果提供程序显示为*NotRegistered*, 请使用 [az provider register] [az-provider] 来注册提供程序, 如以下示例中所示:
+如果提供程序显示为*NotRegistered*，请使用 [az provider register] [az-provider] 来注册提供程序，如以下示例中所示：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>适用区域
+## <a name="regional-availability"></a>区域可用性
 
-虚拟节点部署支持以下区域:
+虚拟节点部署支持以下区域：
 
-* 澳大利亚东部 (australiaeast)
-* 美国中部 (centralus)
+* 澳大利亚东部（australiaeast）
+* 美国中部（centralus）
 * 美国东部 (eastus)
-* 美国东部 2 (eastus2)
-* 日本东部 (japaneast)
+* 美国东部2（eastus2）
+* 日本东部（japaneast）
 * 北欧 (northeurope)
-* 东南亚 (southeastasia)
-* 美国中部 (westcentralus)
+* 东南亚（southeastasia）
+* 美国中部（westcentralus）
 * 西欧 (westeurope)
 * 美国西部 (westus)
 * 美国西部 2 (westus2)
@@ -64,14 +64,14 @@ az provider register --namespace Microsoft.ContainerInstance
 虚拟节点功能很大程度上依赖于 ACI 的功能集。 虚拟节点尚不支持以下方案
 
 * 使用服务主体拉取 ACR 映像。 [解决方法](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry)是使用[Kubernetes 机密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
-* [虚拟网络限制](../container-instances/container-instances-vnet.md), 包括 VNet 对等互连、Kubernetes 网络策略和网络安全组发送到 internet 的出站流量。
+* [虚拟网络限制](../container-instances/container-instances-vnet.md)，包括 VNet 对等互连、Kubernetes 网络策略和网络安全组发送到 internet 的出站流量。
 * 初始化容器
 * [主机别名](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * ACI 中 exec 的[参数](../container-instances/container-instances-exec.md#restrictions)
 * [Daemonset](concepts-clusters-workloads.md#statefulsets-and-daemonsets)不会将 pod 部署到虚拟节点
-* 虚拟节点不支持[Windows Server 节点 (当前在 AKS 中为预览版)](windows-container-cli.md) 。 你可以使用虚拟节点来计划 Windows Server 容器, 而无需在 AKS 群集中使用 Windows Server 节点。
+* 虚拟节点不支持[Windows Server 节点（当前在 AKS 中为预览版）](windows-container-cli.md) 。 你可以使用虚拟节点来计划 Windows Server 容器，而无需在 AKS 群集中使用 Windows Server 节点。
 
-## <a name="sign-in-to-azure"></a>登录  Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 通过 https://portal.azure.com 登录到 Azure 门户。
 
@@ -83,12 +83,12 @@ az provider register --namespace Microsoft.ContainerInstance
 
 - *项目详细信息*：选择 Azure 订阅，然后选择或创建 Azure 资源组，例如 *myResourceGroup*。 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。
 - *群集详细信息*：选择 AKS 群集的区域、Kubernetes 版本和 DNS 名称前缀。
-- *主节点池*:选择 AKS 节点的 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小。
+- *主节点池*：选择 AKS 节点的 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小。
      - 选择要部署到群集中的节点数。 在本文中，将“节点计数”设置为 *1*。 部署群集后，可以调整节点计数。
 
-单击“下一步:**Scale**。
+单击“下一步:**Scale @ no__t。
 
-在 "**缩放**" 页上, 选择 "**虚拟节点**" 下的 "*启用*"。
+在 "**缩放**" 页上，选择 "**虚拟节点**" 下的 "*启用*"。
 
 ![创建 AKS 群集并启用虚拟节点](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
@@ -106,7 +106,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 若要打开 Cloud Shell，请从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
-使用[az aks get 凭据][az-aks-get-credentials]命令将配置`kubectl`为连接到 Kubernetes 群集。 以下示例获取名为 *myResourceGroup* 的资源组中群集名称 *myAKSCluster* 的凭据：
+使用[az aks get][az-aks-get-credentials]命令将 `kubectl` 配置为连接到 Kubernetes 群集。 以下示例获取名为 *myResourceGroup* 的资源组中群集名称 *myAKSCluster* 的凭据：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -130,7 +130,7 @@ aks-agentpool-14693408-0       Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>部署示例应用
 
-在 Azure Cloud Shell 中，创建一个名为 `virtual-node.yaml` 的文件并复制到以下 YAML 中。 若要计划节点上的容器, 请定义[nodeSelector][node-selector]和[toleration][toleration] 。 这些设置允许在虚拟节点上计划 Pod，并确认已成功启用该功能。
+在 Azure Cloud Shell 中，创建一个名为 `virtual-node.yaml` 的文件并复制到以下 YAML 中。 若要计划节点上的容器，请定义[nodeSelector][node-selector]和[toleration][toleration] 。 这些设置允许在虚拟节点上计划 Pod，并确认已成功启用该功能。
 
 ```yaml
 apiVersion: apps/v1
@@ -169,7 +169,7 @@ spec:
 kubectl apply -f virtual-node.yaml
 ```
 
-使用带有`-o wide`参数的[kubectl get][kubectl-get] pod 命令输出 pod 和计划节点的列表。 请注意，已在 `virtual-node-linux` 节点上计划 `virtual-node-helloworld` pod。
+使用带有 `-o wide` 参数的[kubectl get][kubectl-get] pod 命令输出 pod 和计划节点的列表。 请注意，已在 `virtual-node-linux` 节点上计划 `virtual-node-helloworld` pod。
 
 ```
 $ kubectl get pods -o wide
@@ -181,7 +181,7 @@ virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m      
 系统从被委派用于虚拟节点的 Azure 虚拟网络子网中为该 Pod 分配了一个内部 IP 地址。
 
 > [!NOTE]
-> 如果使用存储在 Azure 容器注册表中的映像, 请[配置并使用 Kubernetes 机密][acr-aks-secrets]。 虚拟节点当前的限制是不能使用集成 Azure AD 服务主体身份验证。 如果不使用机密，则在虚拟节点上计划的 Pod 将无法启动并报告错误 `HTTP response status code 400 error code "InaccessibleImage"`。
+> 如果使用存储在 Azure 容器注册表中的映像，请[配置并使用 Kubernetes 机密][acr-aks-secrets]。 虚拟节点当前的限制是不能使用集成 Azure AD 服务主体身份验证。 如果不使用机密，则在虚拟节点上计划的 Pod 将无法启动并报告错误 `HTTP response status code 400 error code "InaccessibleImage"`。
 
 ## <a name="test-the-virtual-node-pod"></a>测试虚拟节点 Pod
 
@@ -238,6 +238,7 @@ $ curl -L 10.241.0.4
 [aks-github]: https://github.com/azure/aks/issues]
 [virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
 [virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
+[acr-aks-secrets]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 
 <!-- LINKS - internal -->
 [aks-network]: ./networking-overview.md
@@ -245,5 +246,4 @@ $ curl -L 10.241.0.4
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
-[acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret
 [az-provider-list]: /cli/azure/provider#az-provider-list

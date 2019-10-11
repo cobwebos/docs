@@ -12,12 +12,12 @@ ms.server: functions
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: 976121e2fd7af280ccc959ba2a93aceb4ae2bdea
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ff5b104c9fa1bedf1f710c06761b6449b20bbf05
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276833"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263194"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 
@@ -38,8 +38,8 @@ Azure Functions 部署通常包括以下资源：
 
 | Resource                                                                           | 要求 | 语法和属性参考                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| 函数应用                                                                     | 必填    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| [Azure 存储](../storage/index.yml)帐户                                   | 必填    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| 函数应用                                                                     | 需要    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| [Azure 存储](../storage/index.yml)帐户                                   | 需要    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
 | [Application Insights](../azure-monitor/app/app-insights-overview.md)组件 | 可选    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
 | [托管计划](./functions-scale.md)                                             | 可选<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
@@ -57,11 +57,11 @@ Azure Functions 部署通常包括以下资源：
 {
     "type": "Microsoft.Storage/storageAccounts",
     "name": "[variables('storageAccountName')]",
-    "apiVersion": "2018-07-01",
+    "apiVersion": "2019-04-01",
     "location": "[resourceGroup().location]",
     "kind": "StorageV2",
-    "properties": {
-        "accountType": "[parameters('storageAccountType')]"
+    "sku": {
+        "name": "[parameters('storageAccountType')]"
     }
 }
 ```
@@ -106,7 +106,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
         },
 ```
 
-此外，需要使用`APPINSIGHTS_INSTRUMENTATIONKEY`应用程序设置向函数应用提供检测密钥。 此属性在`appSettings` `siteConfig`对象的集合中指定：
+此外，需要使用 `APPINSIGHTS_INSTRUMENTATIONKEY` 应用程序设置向函数应用提供检测密钥。 此属性在 `siteConfig` 对象的 @no__t 集合中指定：
 
 ```json
 "appSettings": [
@@ -124,7 +124,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 * [高级计划](#premium)（预览版）
 * [应用服务计划](#app-service-plan)
 
-### <a name="function-app"></a>Function App
+### <a name="function-app"></a>函数应用
 
 函数应用资源是使用类型为 **Microsoft.Web/sites** 且种类为 **functionapp** 的资源定义的：
 
@@ -270,7 +270,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 #### <a name="linux"></a>Linux
 
-在 Linux 上，函数应用必须将其`kind`设置为`functionapp,linux`， `reserved`并且它必须将属性设置为`true`：
+在 Linux 上，函数应用必须将其 @no__t 设置为 `functionapp,linux`，并且它必须将 `reserved` 属性设置为 `true`：
 
 ```json
 {
@@ -318,7 +318,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-premium-plan"></a>创建高级计划
 
-高级计划是一种特殊类型的 "服务器场" 资源。 您可以使用`EP1`、 `EP2` `EP3` 或`sku`属性值来指定它。
+高级计划是一种特殊类型的 "服务器场" 资源。 您可以使用 `EP1`、`EP2` 或 `EP3` 来指定 `sku` 属性值。
 
 ```json
 {
@@ -335,7 +335,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
-高级计划中的函数应用必须`serverFarmId`将属性设置为前面创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`和`WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
+高级计划中的函数应用必须将 `serverFarmId` 属性设置为之前创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
 
 ```json
 {
@@ -398,34 +398,34 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
+    "apiVersion": "2018-02-01",
     "name": "[variables('hostingPlanName')]",
     "location": "[resourceGroup().location]",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "hostingEnvironment": "",
-        "numberOfWorkers": 1
+    "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
     }
 }
 ```
 
-若要在 Linux 上运行应用，还必须将设置`kind`为`Linux`：
+若要在 Linux 上运行应用，还必须将 `kind` 设置为 `Linux`：
 
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
+    "apiVersion": "2018-02-01",
     "name": "[variables('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "kind": "Linux",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "hostingEnvironment": "",
-        "numberOfWorkers": 1
+    "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
     }
 }
 ```
@@ -471,9 +471,9 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-Linux 应用还应在下`linuxFxVersion` `siteConfig`包括属性。 如果只是部署代码，则此值的值由所需的运行时堆栈确定：
+Linux 应用还应在 `siteConfig` 下包含 `linuxFxVersion` 属性。 如果只是部署代码，则此值的值由所需的运行时堆栈确定：
 
-| 堆栈            | 示例值                                         |
+| 重叠            | 示例值                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
@@ -517,7 +517,7 @@ Linux 应用还应在下`linuxFxVersion` `siteConfig`包括属性。 如果只�
 }
 ```
 
-如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其`linuxFxVersion`指定为，并包括允许请求映像的配置，如[用于容器的 Web 应用](/azure/app-service/containers)中所示。 此外，将`WEBSITES_ENABLE_APP_SERVICE_STORAGE`设置`false`为，因为容器本身中提供了应用内容：
+如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其指定为 `linuxFxVersion`，并包括允许请求映像的配置，如[用于容器的 Web 应用](/azure/app-service/containers)中所示。 另外，将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置为 `false`，因为应用内容在容器本身中提供：
 
 ```json
 {

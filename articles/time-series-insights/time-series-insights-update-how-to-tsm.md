@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 245a69f5e5834e68bbbd17a96859a93bc16eacbe
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 64f892f344780d4af58c70935b9b7b68bad9550d
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744245"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273742"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据建模
 
@@ -100,7 +100,7 @@ ms.locfileid: "70744245"
 
     [![删除层次结构](media/v2-update-how-to-tsm/portal-twelve.png)](media/v2-update-how-to-tsm/portal-twelve.png#lightbox)
 
-## <a name="instances"></a>实例
+## <a name="instances"></a>Instances
 
 ### <a name="create-a-single-instance"></a>创建单个实例
 
@@ -136,4 +136,4 @@ ms.locfileid: "70744245"
 
 - 若要详细了解预览版，请阅读[在 Azure 时序见解预览版资源管理器中可视化数据](./time-series-insights-update-explorer.md)。
 
-- 若要了解支持的 JSON 配置，请阅读[支持的 JSON 配置](./time-series-insights-send-events.md#json)。
+- 若要了解支持的 JSON 配置，请阅读[支持的 JSON 配置](./time-series-insights-send-events.md#supported-json-shapes)。

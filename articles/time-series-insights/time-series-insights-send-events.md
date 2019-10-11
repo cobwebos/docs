@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 84eb0e230875b999218b67d47a66a3c92b494253
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: accf3adea08e713a7a2f06bb175c759ae66a72c0
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072842"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274506"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
 
@@ -30,14 +30,14 @@ ms.locfileid: "70072842"
 1. 选择事件中心。
 1. 在创建事件中心时，实际上要创建事件中心命名空间。 如果尚未在命名空间中创建事件中心，请在菜单中的“实体”下创建事件中心。  
 
-    [![事件中心列表](media/send-events/updated.png)](media/send-events/updated.png#lightbox)
+    [![事件中心列表](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
 
 1. 创建事件中心后，请在事件中心列表中选择它。
 1. 在菜单中的“实体”下，选择“事件中心”。
 1. 选择事件中心的名称对其进行配置。
-1. 在 "**概述**" 下, 选择 "**使用者组**", 然后选择 "**使用者组**"。
+1. 在 "**概述**" 下，选择 "**使用者组**"，然后选择 "**使用者组**"。
 
-    [![创建使用者组](media/send-events/consumer-group.png)](media/send-events/consumer-group.png#lightbox)
+    [![创建使用者组](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
 
 1. 请确保创建一个使用者组，由时序见解事件源独占使用。
 
@@ -46,11 +46,11 @@ ms.locfileid: "70072842"
 
 1. 在菜单中的“设置”下，选择“共享访问策略”，然后选择“添加”。
 
-    [![选择“共享访问策略”，然后选择“添加”按钮](media/send-events/shared-access-policy.png)](media/send-events/shared-access-policy.png#lightbox)
+    [![选择“共享访问策略”，然后选择“添加”按钮](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
 
 1. 在“添加新的共享访问策略”窗格中，创建名为“MySendPolicy”的共享访问。 将使用此共享访问策略在本文后面的 C# 示例中发送事件。
 
-    [![在“策略名称”框中输入 MySendPolicy](media/send-events/shared-access-policy-2.png)](media/send-events/shared-access-policy-2.png#lightbox)
+    [![在“策略名称”框中输入 MySendPolicy](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
 
 1. 在“声明”下选择“发送”复选框。
 
@@ -64,7 +64,7 @@ ms.locfileid: "70072842"
 
 1. 为 `timeSeriesId` 设置一个值。 若要详细了解时间序列 ID，请参阅[时序模型](./time-series-insights-update-tsm.md)。
 
-### <a name="push-events"></a>推送事件（windmills 示例）
+### <a name="push-events-to-windmills-sample"></a>将事件推送到 windmills 示例
 
 1. 在搜索栏中搜索“事件中心”。 在返回的列表中选择“事件中心”。
 
@@ -72,20 +72,20 @@ ms.locfileid: "70072842"
 
 1. 请访问**共享访问策略** > **MySendPolicy**。 复制“连接字符串 - 主密钥”的值。
 
-    [![复制主密钥连接字符串的值](media/send-events/sample-code-connection-string.png)](media/send-events/sample-code-connection-string.png#lightbox)
+    [![复制主密钥连接字符串的值](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
 
 1. 转到  https://tsiclientsample.azurewebsites.net/windFarmGen.html 。 URL 运行模拟 windmill 设备。
-1. 在网页上的“事件中心连接字符串”框中，粘贴在[推送事件](#push-events)中复制的连接字符串。
+1. 在网页上的 "**事件中心连接字符串**" 框中，粘贴在[windmill 输入字段](#push-events-to-windmills-sample)中复制的连接字符串。
   
-    [![将主密钥连接字符串粘贴到“事件中心连接字符串”框中](media/send-events/updated_two.png)](media/send-events/updated_two.png#lightbox)
+    [![将主密钥连接字符串粘贴到“事件中心连接字符串”框中](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
 
 1. 选择“单击可启动”。 模拟器生成可以直接使用的实例 JSON。
 
 1. 返回到 Azure 门户中的事件中心。 在“概述”页面上，可以看到事件中心收到的新事件：
 
-    [![显示事件中心指标的事件中心“概述”页](media/send-events/telemetry.png)](media/send-events/telemetry.png#lightbox)
+    [![显示事件中心指标的事件中心“概述”页](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
 
-## <a name="json"></a>支持的 JSON 形状
+## <a name="supported-json-shapes"></a>支持的 JSON 形状
 
 ### <a name="example-one"></a>示例一
 
@@ -199,3 +199,5 @@ ms.locfileid: "70072842"
 ## <a name="next-steps"></a>后续步骤
 
 - 在时序见解资源管理器中[查看环境](https://insights.timeseries.azure.com)。
+
+- 阅读有关[IoT 中心设备消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)的详细信息

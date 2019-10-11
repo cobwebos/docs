@@ -8,12 +8,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
-ms.openlocfilehash: 316ddbf662a5418e54f37cb335475a86c50118c7
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131436"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264490"
 ---
 # <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>使用 Azure 数据工厂命令活动运行 Azure 数据资源管理器控制命令
 
@@ -29,11 +29,13 @@ ms.locfileid: "71131436"
 ## <a name="create-a-new-pipeline"></a>创建新管道
 
 1. 选择 "**创作**铅笔" 工具。 
-1. 通过选择 **+** 并从下拉选择 "**管道**"，创建一个新管道。
+1. 通过选择 " **@no__t** "，然后从下拉端选择 "**管道**" 来创建新的管道。
 
    ![创建新管道](media/data-factory-command-activity/create-pipeline.png)
 
 ## <a name="create-a-lookup-activity"></a>创建查找活动
+
+[查找活动](/azure/data-factory/control-flow-lookup-activity)可以从任何支持 Azure 数据工厂的数据源检索数据集。 查找活动的输出可以在 ForEach 或其他活动中使用。
 
 1. 在 "**活动**" 窗格中的 "**常规**" 下，选择**查找**活动。 将其拖放到右侧的主画布中。
  
@@ -83,13 +85,13 @@ ms.locfileid: "71131436"
     * 选择“测试连接”以测试创建的链接服务连接。 如果可以连接到设置，会出现绿色的勾选标记“连接成功”。
     * 选择“完成”以完成链接服务的创建过程。
 
-1. 设置链接服务后，在 " **AzureDataExplorerTable** > **连接**" 中添加 "**表**名称"。 选择 "**预览数据**"，确保数据得到正确显示。
+1. 设置链接服务后，在**AzureDataExplorerTable** > **连接**中，添加**表**名称。 选择 "**预览数据**"，确保数据得到正确显示。
 
    数据集现已准备就绪，可以继续编辑管道。
 
 ### <a name="add-a-query-to-your-lookup-activity"></a>向查找活动添加查询
 
-1. 在 "**管道-4-文档** > **设置**" 中，在 "**查询**" 文本框中添加查询，例如：
+1. 在**管道中-4-文档** > **设置**在 "**查询**" 文本框中添加查询，例如：
 
     ```kusto
     ClusterQueries
@@ -103,7 +105,9 @@ ms.locfileid: "71131436"
 
 ## <a name="create-a-for-each-activity"></a>为每个活动创建一个 
 
-1. 接下来，将每个活动添加到管道。 此活动将处理从查找活动返回的数据。 
+[For-每个](/azure/data-factory/control-flow-for-each-activity)活动用于循环访问集合，并在循环中执行指定的活动。 
+
+1. 现在，将每个活动添加到管道。 此活动将处理从查找活动返回的数据。 
     * 在 "**活动**" 窗格中的 "**迭代 & 条件**" 下，选择**ForEach**活动，并将其拖放到画布中。
     * 在查找活动的输出和画布中的 ForEach 活动的输入之间绘制一条线以连接它们。
 
@@ -112,7 +116,7 @@ ms.locfileid: "71131436"
 1.  选择画布中的 ForEach 活动。 在下面的 "**设置**" 选项卡中：
     * 选中 "**顺序**" 复选框可按顺序处理查找结果，或将其保留为未选中状态以创建并行处理。
     * 设置**批处理计数**。
-    * 在 "**项**" 中，提供对输出值的以下引用：  *@activity（' Lookup1 '）。*
+    * 在 "**项**" 中，提供对输出值的以下引用： *@activity （' Lookup1 '）。*
 
        ![ForEach 活动设置](media/data-factory-command-activity/for-each-activity-settings.png)
 
@@ -166,7 +170,7 @@ ms.locfileid: "71131436"
 
 ### <a name="returned-value-of-a-non-async-control-command"></a>非 async control 命令的返回值
 
-在非 async control 命令中，返回值的结构类似于查找活动结果的结构。 `count`字段指示返回的记录数。 固定数组字段`value`包含一系列记录。 
+在非 async control 命令中，返回值的结构类似于查找活动结果的结构。 @No__t-0 字段指示返回的记录数。 固定数组字段 `value` 包含记录的列表。 
 
 ```json
 { 
@@ -188,7 +192,7 @@ ms.locfileid: "71131436"
  
 ### <a name="returned-value-of-an-async-control-command"></a>Async control 命令的返回值
 
-在 async control 命令中，活动将轮询后台的操作表，直到异步操作完成或超时。因此，返回的值将包含给定**OperationId**属性`.show operations OperationId`的的结果。 检查 "**状态**" 和 "**状态**" 属性的值，验证操作是否成功完成。
+在 async control 命令中，活动将轮询后台的操作表，直到异步操作完成或超时。因此，返回的值将包含给定**OperationId**属性 `.show operations OperationId` 的结果。 检查 "**状态**" 和 "**状态**" 属性的值，验证操作是否成功完成。
 
 ```json
 { 

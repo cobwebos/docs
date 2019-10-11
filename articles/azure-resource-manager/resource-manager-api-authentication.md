@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: dugill
-ms.openlocfilehash: 3a8f9f1975530c846008b3b3def4f4d4a22716fd
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 033f3ca9ca79903f884c625dc694b06a3e4fd04c
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205450"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263005"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>使用 Resource Manager 身份验证 API 访问订阅
 
@@ -60,11 +60,11 @@ Web 应用：
 ![连接订阅](./media/resource-manager-api-authentication/sample-ux-7.png)
 
 ## <a name="register-application"></a>注册应用程序
-在开始编写代码之前，请先使用 Azure Active Directory (AD) 注册 Web 应用。 应用注册会在 Azure AD 中为应用创建一个中心标识。 该标识保留有关应用程序的基本信息，例如应用程序用来进行身份验证和访问 Azure 资源管理器 API 的 OAuth 客户端 ID、回复 URL 和凭据。 应用注册还会记录你的应用程序的用户访问 Microsoft Api 时所需的各种委派的权限。
+在开始编写代码之前，请先使用 Azure Active Directory (AD) 注册 Web 应用。 应用注册会在 Azure AD 中为应用创建一个中心标识。 该标识保留有关应用程序的基本信息，例如应用程序用来进行身份验证和访问 Azure 资源管理器 API 的 OAuth 客户端 ID、回复 URL 和凭据。 应用注册还会记录应用程序访问用户访问 Microsoft Api 时所需的各种委托权限。
 
-若要注册你的应用，请参阅[快速入门：注册一个应用程序的 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)。 为您的应用程序提供一个名称，然后选择**任何组织的目录中的帐户**适用于受支持的帐户类型。 对于重定向 URL，请提供与 Azure Active Directory 相关联的域。
+若要注册应用，请参阅[快速入门：将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)。 为你的应用命名，并选择“任何组织目录中的帐户”作为支持的帐户类型。 对于“重定向 URL”，请提供与 Azure Active Directory 关联的域。
 
-若要以 AD 应用程序登录，需要应用程序 ID 和机密。 应用程序 ID 显示在应用程序的概述。 若要创建机密并请求 API 的权限，请参阅[快速入门：配置客户端应用程序以访问 web Api](../active-directory/develop/quickstart-configure-app-access-web-apis.md)。 提供新的客户端机密。 有关 API 的权限，选择**Azure 服务管理**。 选择**委托的权限**并**user_impersonation**。
+若要以 AD 应用程序登录，需要应用程序 ID 和机密。 应用程序 ID 显示在应用程序的概述中。 若要创建机密并请求 API 权限，请参阅[快速入门：将客户端应用程序配置为访问 Web API](../active-directory/develop/quickstart-configure-app-access-web-apis.md)。 提供新的客户端密码。 对于“API 权限”，请选择“Azure 服务管理”。 选择“委托的权限”和 **user_impersonation**。
 
 ### <a name="optional-configuration---certificate-credential"></a>可选配置 - 证书凭据
 Azure AD 还支持应用程序的证书凭据：创建自签名证书、保留私钥，以及将公钥添加到 Azure AD 应用程序注册。 对于身份验证，应用程序会使用私钥将小负载发送到签名的 Azure AD，Azure AD 会使用注册的公钥来验证签名。
@@ -129,7 +129,7 @@ Azure AD 对用户进行身份验证，并根据需要请求用户向应用授�
 
     grant_type=authorization_code&code=AAABAAAAiL9Kn2Z*****L1nVMH3Z5ESiAA&redirect_uri=http%3A%2F%2Flocalhost%3A62080%2FAccount%2FSignIn&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_secret=olna84E8*****goScOg%3D
 
-使用证书凭据时，请使用应用程序证书凭据的私钥来创建 JSON Web 令牌 (JWT) 并签名 (RSA SHA256)。 生成此令牌以[客户端凭据流](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#second-case-access-token-request-with a-certificate)形式显示。  若要为客户端断言 JWT 令牌签名，请参考 [Active Directory 身份验证库 (.NET) 代码](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs)。
+使用证书凭据时，请使用应用程序证书凭据的私钥来创建 JSON Web 令牌 (JWT) 并签名 (RSA SHA256)。 生成此令牌以[客户端凭据流](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#second-case-access-token-request-with-a-certificate)形式显示。
 
 有关客户端身份验证的详细信息，请参阅 [Open ID Connect spec](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)（Open ID Connect 规范）。
 
@@ -207,7 +207,7 @@ ASP.NET MVC 示例应用的 [UserCanManagerAccessForSubscription](https://github
 
 ### <a name="get-app-only-access-token-for-azure-ad-graph-api"></a>获取 Azure AD 图形 API 的仅限应用的访问令牌
 
-若要对您的应用程序进行身份验证并获取 Azure AD Graph API 的令牌，向 Azure AD 令牌终结点发出客户端凭据授予 OAuth2.0 流令牌请求 (**https:\//login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**).
+若要对应用进行身份验证并获取 Azure AD 图形 API 的令牌，请发出客户端凭据 Grant OAuth 2.0 流令牌请求到 Azure AD 令牌终结点（**https： \//microsoftonline/{directory_domain_name}/OAuth2/token**）。
 
 ASP.net MVC 示例应用程序的 [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) 方法使用适用于 .NET 的 Active Directory 身份验证库来获取图形 API 的仅限应用的访问令牌。
 
@@ -277,7 +277,7 @@ ASP.net MVC 示例应用的 [GetRoleId](https://github.com/dushyantgill/VipSwapp
 
 下面是常用内置角色的标识符：
 
-| 角色 | GUID |
+| Role | GUID |
 | --- | --- |
 | 读取器 |acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 | 参与者 |b24988ac-6180-42a0-ab88-20f7382dd24c |

@@ -5,19 +5,19 @@ metadata:
   title: 应用程序管理文档
   description: 通过 Azure Active Directory 可以对云和本地应用程序进行安全无缝的访问。 此外，还无需管理密码。 最终用户一次登录即可访问 Office 365 和数以千计的其他应用程序。 使用我们的快速入门、教程和指南了解如何管理和部署应用程序。
   ms.service: active-directory
-  ms.subservice: manage-apps
+  ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 08/16/2019
+  ms.date: 10/10/2019
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: acb99eab233836f46c1e1dfe4c857fb2e80ed3de
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: 0d7081a35a143abf1ae068ce7344e0e50e240eaa
+  ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70127547"
+  ms.lasthandoff: 10/11/2019
+  ms.locfileid: "72264130"
 landingContent:
 - title: 关于应用程序管理
   linkLists:

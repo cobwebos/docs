@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 834b13c512bca1b7c43c3c8e93a72383a82db198
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162421"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274182"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -72,7 +72,6 @@ ms.locfileid: "71162421"
 - Project Online
 - Skype for Business Online
 - 虚拟专用网络 (VPN)
-- Visual Studio App Center
 - Windows Defender ATP
 
 ### <a name="other-applications"></a>其他应用程序
@@ -144,7 +143,7 @@ ms.locfileid: "71162421"
 |    |    |
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| 姓名 | 1 |
+| 名称 | 1 |
 | type | REG_SZ (String) |
 | Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
 
@@ -153,7 +152,7 @@ ms.locfileid: "71162421"
 |    |    |
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| 姓名 | 1 |
+| 名称 | 1 |
 | 类型 | REG_SZ (String) |
 | Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 

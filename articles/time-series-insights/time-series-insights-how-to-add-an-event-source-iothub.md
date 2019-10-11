@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 234fe28cb8bd9dcb97e307836961e2f587e15181
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: eaac2e3e2fc489b364729711da151c28cde86d6c
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846633"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274707"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>向时序见解环境添加 IoT 中心事件源
 
@@ -38,15 +38,15 @@ ms.locfileid: "68846633"
 
 若要将新的使用者组添加到 IoT 中心，请执行以下操作：
 
-1. 在 Azure 门户中，查找并打开 IoT 中心。
+1. 在[Azure 门户](https://portal.azure.com)中，找到并打开 IoT 中心。
 
 1. 在“设置”下，选择“内置终结点”，然后选择“事件”终结点。
 
-   [![在“内置终结点”页上，选择“事件”按钮](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-one.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-one.png#lightbox)
+   [![在“内置终结点”页上，选择“事件”按钮](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png#lightbox)
 
 1. 在“使用者组”下，为使用者组输入唯一名称。 创建新的事件源时，请在时序见解环境中使用此相同名称。
 
-1. 选择**保存**。
+1. 选择“保存”。
 
 ## <a name="add-a-new-event-source"></a>添加新的事件源
 
@@ -56,7 +56,7 @@ ms.locfileid: "68846633"
 
 1. 在“环境拓扑”下，依次选择“事件源”、“添加”。
 
-   [![选择“事件源”，然后选择“添加”按钮](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-two.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-two.png#lightbox)
+   [![选择“事件源”，然后选择“添加”按钮](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png#lightbox)
 
 1. 在“新建事件源”窗格中，输入一个特定于此时序见解环境的名称作为“事件源名称”。 例如，输入 **event-stream**。
 
@@ -66,21 +66,18 @@ ms.locfileid: "68846633"
 
    * 在其中一个订阅上已有 IoT 中心时，请选择“从可用订阅使用 IoT 中心”。 此选项是最简单的方法。
    
-     [![在“新建事件源”窗格中选择选项](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-three.png#lightbox)
+     [![在“新建事件源”窗格中选择选项](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png#lightbox)
 
     * 下表介绍的属性是“通过可用订阅使用 IoT 中心”选项所需的：
 
-       [![“新建事件源”窗格 - 需要在“通过可用订阅使用 IoT 中心”选项中设置的属性](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-four.png#lightbox)
+       [![“新建事件源”窗格 - 需要在“通过可用订阅使用 IoT 中心”选项中设置的属性](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png#lightbox)
 
        | 属性 | 描述 |
        | --- | --- |
-       | 订阅 ID | 选择已在其中创建此 IoT 中心的订阅。
-       | Iot 中心名称 | 选择 IoT 中心的名称。
-       | IoT 中心策略名称 | 选择共享访问策略。 可以在 IoT 中心设置选项卡上找到共享访问策略。每个共享访问策略具有名称、所设权限以及访问密钥。 事件源的共享访问策略必须具有服务连接权限。
-       | IoT 中心策略密钥 | 密钥已预填充。
-       | IoT 中心使用者组 | 从 IoT 中心读取事件的使用者组。 强烈建议为事件源使用专用的使用者组。
-       | 事件序列化格式 | 目前，JSON 是唯一可用的序列化格式。 事件消息必须采用此格式，否则将无法读取任何数据。 |
-       | 时间戳属性名称 | 若要确定此值，需要了解发送到 IoT 中心的消息数据的消息格式。 此值是消息数据中你想要用作事件时间戳的特定事件属性的“名称”。 该值区分大小写。 如果留空，则事件源中的“事件排队时间”将用作事件时间戳。 |
+       | 订阅 | 所需的 iot 中心所属的订阅。 |
+       | IoT 中心名称 | 所选 iot 中心的名称。 |
+       | IoT 中心策略名称 | 选择共享访问策略。 可以在 IoT 中心设置选项卡上找到共享访问策略。每个共享访问策略具有名称、所设权限以及访问密钥。 事件源的共享访问策略必须具有服务连接权限。 |
+       | IoT 中心策略密钥 | 密钥已预填充。 |
 
     * 如果 IoT 中心在订阅外部，或者你希望选择高级选项，请选择“手动提供 IoT 中心设置”。
 
@@ -88,20 +85,24 @@ ms.locfileid: "68846633"
 
        | 属性 | 描述 |
        | --- | --- |
-       | 订阅 ID | 在其中创建了此 IoT 中心的订阅。
-       | 资源组 | 在其中创建了此 IoT 中心的资源组名称。
-       | Iot 中心名称 | IoT 中心的名称。 创建 IoT 中心时，为 IoT 中心输入了一个名称。
-       | IoT 中心策略名称 | 共享访问策略。 可以在 IoT 中心设置选项卡上创建共享访问策略。每个共享访问策略具有名称、所设权限以及访问密钥。 事件源的共享访问策略必须具有服务连接权限。
-       | IoT 中心策略密钥 | 用于对 Azure 服务总线命名空间的访问权限进行身份验证的共享访问密钥。 在此处输入主密钥或辅助密钥。
-       | IoT 中心使用者组 | 从 IoT 中心读取事件的使用者组。 强烈建议为事件源使用专用的使用者组。
+       | 订阅 ID | 所需的 iot 中心所属的订阅。 |
+       | 资源组 | 在其中创建了此 IoT 中心的资源组名称。 |
+       | IoT 中心名称 | IoT 中心的名称。 创建 IoT 中心时，为 IoT 中心输入了一个名称。 |
+       | IoT 中心策略名称 | 共享访问策略。 可以在 IoT 中心设置选项卡上创建共享访问策略。每个共享访问策略具有名称、所设权限以及访问密钥。 事件源的共享访问策略必须具有服务连接权限。 |
+       | IoT 中心策略密钥 | 用于对 Azure 服务总线命名空间的访问权限进行身份验证的共享访问密钥。 在此处输入主密钥或辅助密钥。 |
+
+    * 这两个选项共享以下配置选项：
+
+       | 属性 | 描述 |
+       | --- | --- |
+       | IoT 中心使用者组 | 从 IoT 中心读取事件的使用者组。 强烈建议为事件源使用专用的使用者组。 |
        | 事件序列化格式 | 目前，JSON 是唯一可用的序列化格式。 事件消息必须采用此格式，否则将无法读取任何数据。 |
        | 时间戳属性名称 | 若要确定此值，需要了解发送到 IoT 中心的消息数据的消息格式。 此值是消息数据中你想要用作事件时间戳的特定事件属性的“名称”。 该值区分大小写。 如果留空，则事件源中的“事件排队时间”将用作事件时间戳。 |
+
 
 1. 添加已添加到 IoT 中心的专用时序见解使用者组名称。
 
 1. 选择“创建”。
-
-   [![“创建”按钮](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-five.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-five.png#lightbox)
 
 1. 创建事件源以后，时序见解就会自动将数据流式传输到环境中。
 
