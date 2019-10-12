@@ -7,60 +7,33 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 03/21/2019
+ms.topic: reference
+ms.date: 09/24/2019
 ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: bec09e5cd053774902083c6dd042c1ed4b293d20
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: f4f7fffdde7d103271fa667bbab11c09ebc54825
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066666"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285862"
 ---
-# <a name="language-support-for-qna-maker"></a>QnA Maker 的语言支持
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker 资源和知识库的语言支持
 
-知识库的语言影响 QnA Maker 从[源](../Concepts/data-sources-supported.md)自动提取问题和解答的能力，以及 QnA Maker 响应用户查询时提供的结果的相关性。
+在资源中创建第一个知识库时，将选择服务语言。 资源中的所有其他知识库必须采用相同的语言。 
 
-## <a name="auto-extraction"></a>自动提取
-QnA Maker 支持提取任何语言页面中的问题/解答，但对于以下语言，提取有效性更高，因为 QnA Maker 使用关键字来标识问题。
+该语言确定 QnA Maker 提供的结果与用户查询的相关关系。
 
-|支持的语言| 区域设置|
-|-----|----|
-|英语|en-*|
-|法语|fr-*|
-|意大利语|it-*|
-|德语|de-*|
-|西班牙语|es-*|
+了解有关[语言选择的影响的](../how-to/language-knowledge-base.md)详细信息。
 
-## <a name="primary-language-detection"></a>主语言检测
+## <a name="languages-supported"></a>支持的语言
 
-将第一个文档或 URL 添加到第一个知识库时，将为 QnA Maker 资源以及在该资源上创建的所有知识库设置用于检测的主要语言。 不能更改此语言。 
+以下列表包含 QnA Maker 资源支持的语言。 
 
-如果用户计划支持多种语言，则他们需要为每种语言提供新的 QnA Maker 资源。 了解如何[创建基于语言的 QnA Maker 知识库](../how-to/language-knowledge-base.md)。  
-
-通过以下步骤验证主要语言：
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。  
-1. 查找并选择作为 QnA Maker 资源的一部分创建的 Azure 搜索资源。 Azure 搜索资源名称将以与 QnA Maker 资源相同的名称开始，并将具有类型**搜索服务**。 请记住，只有一个 QnA Maker 资源可链接到一个 Azure 搜索资源。
-1. 从搜索资源的 "**概述**" 页中，选择 "**索引**"。 
-1. 选择 testkb 索引。
-1. 选择 "**字段**" 选项卡。 
-1. 查看**问题**和**答案**字段的**分析器**列。 
-
-
-## <a name="query-matching-and-relevance"></a>查询匹配和相关性
-QnA Maker 依赖于 Azure 搜索中的[语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)来提供结果。 针对 En-* 语言提供了特殊的重新排名功能以实现更好的相关性。
-
-虽然 Azure 搜索功能对于支持的语言而言都相同，但 QnA Maker 还有基于 Azure 搜索结果的额外排名器。 在此 ranker 模型中，我们使用了一些特殊的语义和 en 中基于 word 的功能，这些功能尚不适用于其他语言。 我们并不提供这些功能，因为它们是 QnA Maker ranker 的内部工作的一部分。 
-
-QnA Maker 在创建过程中[自动检测知识库的语言](#primary-language-detection)，并相应地设置分析器。 可以采用以下语言创建知识库。 
-
-|支持的语言|
-|-----|
+|语言|
+|--|
 |阿拉伯语|
 |亚美尼亚语|
-孟加拉语|
+|孟加拉语|
 |巴斯克语|
 |保加利亚语|
 |加泰罗尼亚语|
@@ -111,3 +84,8 @@ QnA Maker 在创建过程中[自动检测知识库的语言](#primary-language-d
 |乌克兰语|
 |乌尔都语|
 |越南语|
+
+## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> [语言选择](../how-to/language-knowledge-base.md)
