@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8fbb09ecf09008c25c84a11c7b43dfb26450e30a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: ee7bbff8ab501a1159030a8ee9c57f1c5a64ea22
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338755"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286548"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
@@ -37,7 +37,7 @@ ms.locfileid: "71338755"
  
 在修复之前，可以将数据集连接到任何数据转换模块（选择数据集中的列，编辑元数据，拆分数据等）并运行试验。 然后，可以可视化数据集。 
 
-下图显示了如何![： visulize](./media/resource-known-issues/aml-visualize-data.png)
+下图显示了如何 @no__t： 0visulize-data @ no__t-1
 
 ## <a name="sdk-installation-issues"></a>SDK 安装问题
 
@@ -73,7 +73,7 @@ conda create -n <env-name> python=3.7.3
 
 你将无法在 FPGA 上部署模型，直到已请求并获得 FPGA 配额批准为止。 若要请求访问权限，请填写配额请求表单： https://aka.ms/aml-real-time-ai
 
-## <a name="automated-machine-learning"></a>自动机器学习
+## <a name="automated-machine-learning"></a>自动化机器学习
 
 Tensor Flow 自动化机器学习当前不支持 Tensor 流版本1.13。 安装此版本将导致包依赖关系停止工作。 我们正在努力解决此问题。 
 
@@ -101,7 +101,7 @@ psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
 
 ### <a name="10-iterations-for-automated-machine-learning"></a>自动机器学习 > 10 次迭代
 
-在自动机器学习设置中，如果有10个以上的迭代， `show_output`请`False`在提交运行时将设置为。
+在自动机器学习设置中，如果有10个以上的迭代，请将 `show_output` 设置为提交运行时 `False`。
 
 ### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Azure 机器学习 SDK/自动机器学习的小组件
 
@@ -128,11 +128,11 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 ### <a name="failtosendfeather"></a>FailToSendFeather
 
-如果读取 Azure Databricks 群集上的数据时出现错误，请参阅以下解决方案：`FailToSendFeather`
+如果在 Azure Databricks 群集上读取数据时看到 `FailToSendFeather` 错误，请参阅以下解决方案：
 
-* 将`azureml-sdk[automl_databricks]`包升级到最新版本。
-* 添加`azure-dataprep`版本1.1.8 或更高版本。
-* 添加`pyarrow`版本0.11 或更高版本。
+* 将 `azureml-sdk[automl_databricks]` 包升级到最新版本。
+* 添加 `azure-dataprep` 版本1.1.8 或更高版本。
+* 添加 `pyarrow` 版本0.11 或更高版本。
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -171,13 +171,13 @@ Azure 机器学习工作区中的某些操作不会将信息记录到__活动日
 
 ## <a name="overloaded-azurefile-storage"></a>重载的 AzureFile 存储
 
-如果收到错误`Unable to upload project files to working directory in AzureFile because the storage is overloaded`，请应用以下解决方法。
+如果收到错误 `Unable to upload project files to working directory in AzureFile because the storage is overloaded`，请应用以下解决方法。
 
 如果对其他工作负荷（如数据传输）使用文件共享，则建议使用 blob，以便可以自由地使用文件共享来提交运行。 你还可以在两个不同的工作区之间拆分工作负荷。
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Azure Kubernetes 服务中的 Webservices 故障 
 
-Azure Kubernetes 服务中的许多 webservice 故障可通过使用`kubectl`连接到群集来进行调试。 可以通过运行来`kubeconfig.json`获取 Azure Kubernetes 服务群集的
+Azure Kubernetes 服务中的许多 webservice 故障都可以通过使用 `kubectl` 连接到群集来进行调试。 可以通过运行来获取 Azure Kubernetes 服务群集的 `kubeconfig.json`
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -185,7 +185,12 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 ## <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>更新 AKS 群集中 Azure 机器学习组件
 
-必须手动应用 Azure Kubernetes Service 群集中安装 Azure 机器学习组件的更新。 可以通过从 "Azure 机器学习" 工作区分离群集，然后将群集重新附加到工作区来应用这些更新。 如果在群集中启用了 SSL，则需要在重新附加群集时提供 SSL 证书和私钥。 
+必须手动应用 Azure Kubernetes Service 群集中安装 Azure 机器学习组件的更新。 
+
+> [!WARNING]
+> 在执行以下操作之前，请检查 Azure Kubernetes Service 群集的版本。 如果群集版本等于或大于1.14，你将无法重新将群集连接到 Azure 机器学习工作区。
+
+可以通过从 "Azure 机器学习" 工作区分离群集，然后将群集重新附加到工作区来应用这些更新。 如果在群集中启用了 SSL，则需要在重新附加群集时提供 SSL 证书和私钥。 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
@@ -206,14 +211,14 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-如果不再具有 SSL 证书和私钥，或者使用的是 Azure 机器学习生成的证书，则可以在分离群集之前通过使用`kubectl`和检索机密来连接到该群集来检索这些文件 `azuremlfessl`。
+如果不再具有 SSL 证书和私钥，或者使用的是 Azure 机器学习生成的证书，则可以在分离群集之前通过使用 `kubectl` 并检索机密 @no__t 来检索这些文件。
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes 以64编码格式存储密码。 在向提供机密`cert.pem` `key.pem`之前，需要对机密的和组件进行64解码。 `attach_config.enable_ssl` 
+>Kubernetes 以64编码格式存储密码。 在向 @no__t 提供 @no__t 机密之前，需要先对其进行64解码，然后再对其进行 @no__t 解码。 
 
 ## <a name="recommendations-for-error-fix"></a>错误修复建议
 基于常规观察，以下是 Azure ML 建议，用于修复 Azure ML 中的一些常见错误。

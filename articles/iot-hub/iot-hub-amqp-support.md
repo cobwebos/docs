@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
-ms.openlocfilehash: b53bb0f04bf6a739b588b14febd622f6bf7a6a63
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7f7e957502419b766f7da63048e8168192ea20da
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354893"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286650"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>使用 AMQP 协议来与 IoT 中心通信
 
@@ -222,7 +222,7 @@ for msg in batch:
 
 设备客户端需要以下信息：
 
-| Information | 值 |
+| Information | ReplTest1 |
 |-------------|--------------|
 | IoT 中心主机名 | `<iot-hub-name>.azure-devices.net` |
 | 访问密钥 | 与设备关联的主要密钥或辅助密钥 |
@@ -262,7 +262,7 @@ send_client = uamqp.SendClient(uri, debug=True)
 | 创建者 | 链接类型 | 链接路径 | 描述 |
 |------------|-----------|-----------|-------------|
 | 设备 | 接收方链接 | `/devices/<deviceID>/messages/devicebound` | 每个目标设备将在此链接上接收发往设备的云到设备消息。 |
-| 设备 | 发送方链接 | `/devices/<deviceID>messages/events` | 设备发送的设备到云消息将通过此链接发送。 |
+| 设备 | 发送方链接 | `/devices/<deviceID>/messages/events` | 设备发送的设备到云消息将通过此链接发送。 |
 | 设备 | 发送方链接 | `/messages/serviceBound/feedback` | 设备通过此链接将云到设备的消息反馈发送到服务。 |
 
 ### <a name="receive-cloud-to-device-commands-device-client"></a>接收云到设备的命令（设备客户端）
@@ -360,7 +360,7 @@ for result in results:
         print result
 ```
 
-## <a name="additional-notes"></a>其他注释
+## <a name="additional-notes"></a>附加说明
 
 * AMQP 连接可能由于网络波动或身份验证令牌（在代码中生成）过期而中断。 服务客户端必须处理这种情况，并根据需要重新建立连接和链接。 如果身份验证令牌会过期，客户端还可以在令牌过期之前主动续订令牌，以避免连接断开。
 

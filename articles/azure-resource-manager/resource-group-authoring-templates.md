@@ -4,14 +4,14 @@ description: 使用声明性 JSON 语法描述 Azure 资源管理器模板的结
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: b6d479935bc9e4bd731b93d3e027644b9ca4dbe0
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: e5ef3dcd7c2eec08237d5eb31fb95a0e450d9ac9
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694979"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286721"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 
@@ -36,7 +36,7 @@ ms.locfileid: "71694979"
 }
 ```
 
-| 元素名称 | 必填 | 描述 |
+| 元素名称 | 需要 | 描述 |
 |:--- |:--- |:--- |
 | $schema |是 |描述模板语言版本的 JSON 架构文件所在的位置。<br><br> 对于资源组部署，请使用：`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>对于订阅部署，请使用：`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |是 |模板的版本（例如 1.0.0.0）。 可为此元素提供任意值。 使用此值记录模板中的重要更改。 使用模板部署资源时，此值可用于确保使用正确的模板。 |
@@ -66,13 +66,13 @@ ms.locfileid: "71694979"
     "minLength": <minimum-length-for-string-or-array>,
     "maxLength": <maximum-length-for-string-or-array-parameters>,
     "metadata": {
-      "description": "<description-of-the parameter>" 
+      "description": "<description-of-the parameter>"
     }
   }
 }
 ```
 
-| 元素名称 | 必填 | 描述 |
+| 元素名称 | 需要 | 描述 |
 |:--- |:--- |:--- |
 | parameter-name |是 |参数的名称。 必须是有效的 JavaScript 标识符。 |
 | type |是 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 请参阅[数据类型](#data-types)。 |
@@ -107,8 +107,8 @@ ms.locfileid: "71694979"
 ```json
 "variables": {
   "<variable-name>": "<variable-value>",
-  "<variable-name>": { 
-    <variable-complex-type-value> 
+  "<variable-name>": {
+    <variable-complex-type-value>
   },
   "<variable-object-name>": {
     "copy": [
@@ -167,7 +167,7 @@ ms.locfileid: "71694979"
 ],
 ```
 
-| 元素名称 | 必填 | 描述 |
+| 元素名称 | 需要 | 描述 |
 |:--- |:--- |:--- |
 | 命名空间 |是 |自定义函数的命名空间。 用于避免与模板函数的命名冲突。 |
 | function-name |是 |自定义函数的名称。 调用函数时，将函数名称与命名空间组合在一起。 例如，若要在命名空间 contoso 中调用名为 uniqueName 的函数，请使用 `"[contoso.uniqueName()]"`。 |
@@ -238,7 +238,7 @@ ms.locfileid: "71694979"
 ]
 ```
 
-| 元素名称 | 必填 | 描述 |
+| 元素名称 | 需要 | 描述 |
 |:--- |:--- |:--- |
 | 条件 | 否 | 布尔值，该值指示在此部署期间是否将预配资源。 为 `true` 时，在部署期间创建资源。 为 `false` 时，此部署将跳过资源。 请参阅[条件](conditional-resource-deployment.md)。 |
 | apiVersion |是 |用于创建资源的 REST API 版本。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
@@ -251,8 +251,8 @@ ms.locfileid: "71694979"
 | dependsOn |否 |必须在部署此资源前部署的资源。 Resource Manager 评估资源之间的依赖关系，并根据正确顺序进行部署。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 仅列出在此模板中部署的资源。 未在此模板中定义的资源必须是已存在的资源。 避免添加不必要的依赖项，因为这些依赖项可能会降低部署速度并创建循环依赖项。 有关设置依赖项的指导，请参阅[在 Azure 资源管理器模板中定义依赖项](resource-group-define-dependencies.md)。 |
 | properties |否 |特定于资源的配置设置。 properties 的值与创建资源时，在 REST API 操作（PUT 方法）的请求正文中提供的值相同。 还可以指定副本数组，为一个属性创建多个实例。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
 | sku | 否 | 某些资源接受定义了要部署的 SKU 的值。 例如，可以为存储帐户指定冗余类型。 |
-| 种类 | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
-| 计划 | 否 | 某些资源接受定义了要部署的计划的值。 例如，可以为虚拟机指定市场映像。 | 
+| kind | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
+| 计划 | 否 | 某些资源接受定义了要部署的计划的值。 例如，可以为虚拟机指定市场映像。 |
 | 资源 |否 |依赖于所定义的资源的子资源。 只能提供父资源的架构允许的资源类型。 不隐式表示对父资源的依赖。 必须显式定义该依赖关系。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
 
 ## <a name="outputs"></a>outputs
@@ -271,7 +271,7 @@ ms.locfileid: "71694979"
 }
 ```
 
-| 元素名称 | 必填 | 描述 |
+| 元素名称 | 需要 | 描述 |
 |:--- |:--- |:--- |
 | output-name |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
 | condition |否 | 指示此输出值是否返回的布尔值。 如果为 `true`，则该值包含在部署的输出中。 如果为 `false`，则此部署将跳过输出值。 如果未指定，则默认值为 `true`。 |
@@ -355,7 +355,10 @@ ms.locfileid: "71694979"
 
 无法将元数据对象添加到用户定义的函数。
 
-对于内联注释，可使用 `//`，但此语法不适用于所有工具。 无法使用 Azure CLI 来部署带有内联注释的模板。 而且，无法使用门户模板编辑器处理带有内联注释的模板。 如果添加此类注释，请务必使用支持内联 JSON 注释的工具。
+对于内联注释，可以使用 `//` 或 `/* ... */`，但此语法不适用于所有工具。 不能使用门户模板编辑器来处理包含内嵌批注的模板。 如果添加此类注释，请务必使用支持内联 JSON 注释的工具。
+
+> [!NOTE]
+> 若要使用 Azure CLI 通过注释部署模板，必须使用 @no__t 开关。
 
 ```json
 {
@@ -363,7 +366,7 @@ ms.locfileid: "71694979"
   "name": "[variables('vmName')]", // to customize name, change it in variables
   "location": "[parameters('location')]", //defaults to resource group location
   "apiVersion": "2018-10-01",
-  "dependsOn": [ // storage account and network interface must be deployed first
+  "dependsOn": [ /* storage account and network interface must be deployed first */
     "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
   ],
@@ -376,6 +379,30 @@ ms.locfileid: "71694979"
 1. 选择“带注释的 JSON”。
 
    ![选择语言模式](./media/resource-group-authoring-templates/select-json-comments.png)
+
+## <a name="multi-line-strings"></a>多行字符串
+
+您可以将字符串拆分为多个行。 例如，location 属性和下面的 JSON 示例中的一个注释。
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[
+    parameters('location')
+    ]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  /*
+    storage account and network interface
+    must be deployed first
+  */
+  "dependsOn": [
+    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
+```
+
+若要使用 Azure CLI 通过多行字符串部署模板，必须使用 @no__t 开关。
 
 ## <a name="next-steps"></a>后续步骤
 

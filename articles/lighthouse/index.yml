@@ -3,19 +3,19 @@ title: Azure Lighthouse 文档
 summary: Azure Lighthouse 具有更高的自动化程度、可伸缩性和增强的管理功能，可供服务提供商管理其所有客户的 Azure 资源。
 metadata:
   title: Azure Lighthouse 文档
-  description: 了解如何管理大规模客户资源
+  description: Azure Lighthouse 具有更高的自动化程度、可伸缩性和增强的管理功能，可供服务提供商管理其所有客户的 Azure 资源。
   ms.service: lighthouse
   ms.topic: landing-page
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
   ms.date: 09/25/2019
-  ms.openlocfilehash: d2003af574961a5729949f60824aa67692be1655
-  ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+  ms.openlocfilehash: 9543ac8a6e7dc30fa44e4bada42ca4786cc53ba0
+  ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/25/2019
-  ms.locfileid: "71264572"
+  ms.lasthandoff: 10/11/2019
+  ms.locfileid: "72286556"
 landingContent:
 - title: 关于 Azure Lighthouse
   linkLists:

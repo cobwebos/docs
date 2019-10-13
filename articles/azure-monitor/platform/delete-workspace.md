@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 09/26/2019
 ms.author: magoedte
-ms.openlocfilehash: f8dcab1a7a46d518b752e48f9886b60a37d8ec4c
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
-ms.translationtype: MT
+ms.openlocfilehash: 4f03fc71a11c1ecb2e96b316efac9249395fc333
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299542"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285546"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>删除和还原 Azure Log Analytics 工作区
 本文介绍 Azure Log Analytics 工作区软删除的概念，以及如何恢复已删除的工作区。 
@@ -41,7 +41,7 @@ ms.locfileid: "71299542"
 > [!NOTE] 
 > 在删除时，将从工作区中永久删除已安装的解决方案和类似于自动化帐户的链接服务，且无法恢复。 应在恢复操作后重新配置这些配置，使工作区成为其以前的功能。 
 
-可以使用[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0)、 [API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)或[Azure 门户](https://portal.azure.com)删除工作区。
+可以使用[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0)、 [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)或[Azure 门户](https://portal.azure.com)来删除工作区。
 
 ### <a name="delete-workspace-in-azure-portal"></a>删除 Azure 门户中的工作区
 1. 若要登录，请转到 [Azure 门户](https://portal.azure.com)。 
@@ -54,11 +54,12 @@ ms.locfileid: "71299542"
 ## <a name="recover-workspace"></a>恢复工作区
 如果对工作区在软删除操作之前关联到的订阅和资源组具有 "参与者" 权限，则可以在其软删除期间（包括其数据、配置和连接的代理）恢复该工作区。 软删除期结束后，工作区将不可恢复并分配给永久删除。
 
-可以通过使用任何支持的创建方法重新创建工作区，来恢复工作区：PowerShell、Azure CLI 或 Azure 门户，只要这些属性是用已删除工作区的详细信息进行填充的，其中包括：
+可以通过使用[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace)或[REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate)工作区创建方法来重新创建工作区，前提是这些属性使用已删除工作区的详细信息进行填充，其中包括：
 1.  订阅 ID
 2.  资源组名称
 3.  工作区名称
 4.  地区
 
 > [!NOTE]
-> 已删除工作区的名称将保留在软删除期间，不能在创建新工作区时使用。 在软删除期到期后，工作区名称将被*释放*，并可用于创建新的工作区。
+> * [Azure 门户](https://portal.azure.com)中不支持工作区恢复。 软删除期间重新创建工作区会显示此工作区名称已被使用。
+> * 已删除工作区的名称将保留软删除期间，不能在创建新工作区时使用。

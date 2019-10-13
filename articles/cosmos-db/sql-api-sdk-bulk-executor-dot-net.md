@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/08/2019
+ms.date: 10/11/2019
 ms.author: ramkris
-ms.openlocfilehash: 90537a7e24e5f87087fb718322a7271043d1d229
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 7d30b685d0debb0aeb0f79db8b078dcc165a8ca1
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176828"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286670"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 
 
@@ -42,6 +42,10 @@ ms.locfileid: "72176828"
 
 ## <a name="release-notes"></a>发行说明
 
+### <a name="a-name241-preview241-preview"></a><a name="2.4.1-preview"/>2.4.1-预览
+
+* 修复了 BulkDelete 响应中的 TotalElapsedTime，以正确度量包括任何重试的总时间。
+
 ### <a name="a-name240-preview240-preview"></a><a name="2.4.0-preview"/>2.4.0-预览
 
 * 已将 SDK 依赖关系更改为 > = 2.5。1
@@ -65,6 +69,10 @@ ms.locfileid: "72176828"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
 
 * 添加了 .NET Standard 2.0 作为受支持的目标框架之一，使批量执行器库可用于 .NET Core 应用程序。
+
+### <a name="a-name183183"></a><a name="1.8.3"/>1.8。3
+
+* 修复了 BulkDelete 响应中的 TotalElapsedTime，以正确度量包括任何重试的总时间。
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 

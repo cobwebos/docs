@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 39fab02ebc3a80e0aae34a86a1a6b7f3f46c96f3
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937324"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286745"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>使用 Power BI 查询和可视化 Azure 数据资源管理器数据的最佳做法
 
@@ -48,7 +48,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 与 Power Query 相比，复杂查询更容易用 Kusto 表示。 它们应该实现为[Kusto 函数](/azure/kusto/query/functions)，并在 Power BI 中调用。 在 Kusto 查询中对 `let` 语句使用**DirectQuery**时，此方法是必需的。 由于 Power BI 联接两个查询，而 `let` 语句不能与 `join` 运算符一起使用，因此可能会出现语法错误。 因此，将联接的每个部分保存为 Kusto 函数，并允许 Power BI 将这两个函数联接在一起。
 
-### <a name="how-to-simulate-a-relative-data-time-operator"></a>如何模拟相对数据时间运算符
+### <a name="how-to-simulate-a-relative-date-time-operator"></a>如何模拟相对日期时间运算符
 
 Power BI 不包含*相对*日期时间运算符，如 `ago()`。
 若要模拟 `ago()`，请结合使用 @no__t 和 @no__t Power BI 函数。
@@ -106,7 +106,7 @@ in
 
 1. 用参数替换查询的相关部分。 将查询拆分为多个部分，并使用 "与" 符号（&）以及参数将其连接回去。
 
-   例如，在上面的查询中， `State == 'ALABAMA'`我们将使用部分，并将其拆分为： `State == '`和`'` ，并且我们会在`State`它们之间放置参数：
+   例如，在上面的查询中，我们将获取 @no__t 0 部分，并将其拆分为： `State == '` 和 `'`，并将 `State` 参数放置到其中：
    
     ```kusto
     "StormEvents | where State == '" & State & "' | take 100"

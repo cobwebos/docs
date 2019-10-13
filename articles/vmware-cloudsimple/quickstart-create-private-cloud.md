@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b38779681dfe612369fefb9d752389395965e7b4
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828940"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285784"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>快速入门-配置私有云环境
 
@@ -47,7 +47,7 @@ ms.locfileid: "71828940"
 
     ![创建私有云-基本信息](media/create-private-cloud-basic-info.png)
 
-9. 单击“下一步:**高级选项**。
+9. 单击“下一步:**高级选项 @ no__t。
 10. 输入 vSphere/vSAN 子网的 CIDR 范围。 请确保 CIDR 范围不与任何本地或其他 Azure 子网（虚拟网络）或网关子网重叠。
 
     **CIDR 范围选项：** /24、/23、/22 或/21。 A/24 CIDR 范围最多支持26个节点，/23 个 CIDR 范围最多支持58个节点，并且/22 和/21 CIDR 范围支持64节点（私有云中的最大节点数）。  若要了解详细信息、Vlan 和子网，请参阅[vlan 和子网概述](cloudsimple-vlans-subnets.md)。
@@ -55,7 +55,7 @@ ms.locfileid: "71828940"
       > [!IMPORTANT]
       > VSphere/vSAN CIDR 范围中的 IP 地址保留供私有云基础结构使用。  请勿在任何虚拟机上使用此范围内的 IP 地址。
 
-11. 单击“下一步:**查看和创建**。
+11. 单击“下一步:**查看并创建 @ no__t-0。
 12. 查看设置。 如果需要更改任何设置，请单击 "**上一步**"。
 13. 单击“创建”。
 
@@ -176,16 +176,16 @@ CloudSimple 建议你在首次登录到 vCenter 时更改密码。
 * 小数至少一个数字字符，0-9
 * 最大相同相邻字符：三
 
-    示例：CC 或 CCC 可作为密码的一部分接受，但 CCCC 不能。
+    例如：CC 或 CCC 可作为密码的一部分接受，但 CCCC 不能。
 
 如果设置的密码不符合要求：
 
 * 如果使用 vSphere Flash 客户端，则会报告错误
 * 如果使用 HTML5 客户端，则不会报告错误。 客户端不接受更改，旧密码将继续工作。
 
-## <a name="change-nsx-administrator-password"></a>更改 NSX 管理员密码
+## <a name="access-nsx-manager"></a>访问 NSX 管理器
 
-使用默认密码部署了 NSX 管理器。  建议在创建私有云后更改密码。
+使用默认密码部署了 NSX 管理器。 
 
 * 用户名：**管理员**
 * 密码：**CloudSimple123!**
@@ -198,8 +198,6 @@ CloudSimple 建议你在首次登录到 vCenter 时更改密码。
 4. 使用**NSX Manager**的 FQDN 或 IP 地址，并使用 web 浏览器进行连接。
 
     ![查找 NSX Manager FQDN](media/private-cloud-nsx-manager-fqdn.png)
-
-若要更改密码，请按照[NSX Manager 安装](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html)中的说明进行操作。
 
 ## <a name="create-a-port-group"></a>创建端口组
 

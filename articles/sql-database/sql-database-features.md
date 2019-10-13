@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 1d8379d0ee54332ae4971cd9abaa8b153d52084a
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 6f1ea4e1053efd7522a9562a3229a0d3094da36b
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816069"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285797"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL 数据库功能
 
@@ -45,7 +45,7 @@ Azure SQL 数据库将管理数据库并保证其高可用性。 可能影响高
 | [证书和非对称密钥](https://docs.microsoft.com/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | 是，无法访问文件系统完成 `BACKUP` 和 `CREATE` 操作。 | 是，无法访问文件系统完成 `BACKUP` 和 `CREATE` 操作 - 请参阅[证书差异](sql-database-managed-instance-transact-sql-information.md#certificates)。 | 
 | [更改数据捕获 - CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | 否 | 是 |
 | [排序规则 - 服务器/实例](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | 否，始终使用默认的逻辑服务器排序规则 `SQL_Latin1_General_CP1_CI_AS`。 | 是，可以在[创建实例](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)时设置，以后不可更新。 |
-| [列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | 是 - [高级层、标准层 - S3 及以上层、常规用途层和业务关键层](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |是 |
+| [列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | 是-[高级层，标准层-S3 及更高版本，常规用途层、业务关键和超大规模层](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |是 |
 | [公共语言运行时 - CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | 否 | 是，但无权在 `CREATE ASSEMBLY` 语句中访问文件系统 - 请参阅 [CLR 差异](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [凭据](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | 是，但是仅限[数据库范围的凭据](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)。 | 是，但仅支持 **Azure Key Vault** 和 `SHARED ACCESS SIGNATURE`，请参阅[详细信息](sql-database-managed-instance-transact-sql-information.md#credential) |
 | [跨数据库/三部分名称查询](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | 否 - 请参阅[弹性查询](sql-database-elastic-query-overview.md) | 是，外加[弹性查询](sql-database-elastic-query-overview.md) |
@@ -129,7 +129,7 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | [长期备份保留 - LTR](sql-database-long-term-retention.md) | 是，将自动创建的备份最长保留 10 年。 | 还不可以。 使用 `COPY_ONLY` [手动备份](sql-database-managed-instance-transact-sql-information.md#backup)作为临时解决方法。 |
 | 暂停/恢复 | 是，在[无服务器模型](sql-database-serverless.md)中 | 否 | 
 | [基于策略的管理](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | 否 | 否 |
-| 公用 IP 地址 | 是。 访问权限可以使用防火墙或服务终结点来限制。  | 是。 需要显式启用，且必须在 NSG 规则中启用端口 3342。 可根据需要禁用公共 IP。 有关更多详细信息，请参阅[公共终结点](sql-database-managed-instance-public-endpoint-securely.md)。 | 
+| 公共 IP 地址 | 是。 访问权限可以使用防火墙或服务终结点来限制。  | 是。 需要显式启用，且必须在 NSG 规则中启用端口 3342。 可根据需要禁用公共 IP。 有关更多详细信息，请参阅[公共终结点](sql-database-managed-instance-public-endpoint-securely.md)。 | 
 | [数据库时间点还原](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | 是 - 除超大规模之外的所有服务层级 - 请参阅 [SQL 数据库恢复](sql-database-recovery-using-backups.md#point-in-time-restore) | 是 - 请参阅 [SQL 数据库恢复](sql-database-recovery-using-backups.md#point-in-time-restore) |
 | 资源池 | 是，用作[弹性池](sql-database-elastic-pool.md) | 是。 单个托管实例可以有多个共享同一资源池的数据库。 此外，还可以在可共享资源的[实例池（预览版）](sql-database-instance-pools.md)中部署多个托管实例。 |
 | 纵向扩展或缩减（联机） | 是，可以更改 DTU、预留的 vCore 数或最大存储，这只会造成极短时间的停机。 | 是，可以更改预留的 vCore 数或最大存储，这只会造成极短时间的停机。 |

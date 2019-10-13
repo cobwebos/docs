@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: e82ce8f5c97aed7e2cb832d8e808ff84691f7c9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2785d85db47ed3b214044e673566a2837b83e984
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401193"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285493"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR 服务中的消息和连接
 
@@ -42,13 +42,15 @@ Azure SignalR 服务对消息大小不施加限制。
 
 ## <a name="how-connections-are-counted"></a>如何统计连接数
 
-有服务器连接和客户端连接。 默认情况下，每个中心的每个应用程序服务器与 Azure SignalR 服务建立 5 个连接，每个客户端与 Azure SignalR 服务建立 1 个客户端连接。
+存在服务器连接和 Azure SignalR 服务的客户端连接。 默认情况下，每个应用程序服务器都开始每个集线器5个初始连接，每个客户端都有一个客户端连接。
 
 Azure 门户中显示的连接计数包括服务器连接和客户端连接。
 
 例如，假设你有 2 个应用程序服务器，并在代码中定义了 5 个中心。 服务器连接计数是 50：2 个应用服务器 * 5 个中心 * 每个中心的 5 个连接。
 
-ASP.NET SignalR 在计算服务器连接数方面有所不同。 除了定义的中心以外，它还包括一个默认的中心。 默认情况下，每个应用程序服务器需要 5 个额外的服务器连接。 默认中心的连接计数与其他中心保持一致。
+ASP.NET SignalR 在计算服务器连接数方面有所不同。 除了定义的中心以外，它还包括一个默认的中心。 默认情况下，每个应用程序服务器需要5个以上的初始服务器连接。 默认中心的初始连接计数与其他中心的初始连接计数保持一致。
+
+在应用程序服务器的生存期内，服务和应用程序服务器保持同步连接状态，并对服务器连接进行调整，以获得更好的性能和服务稳定性。 因此，您可能会发现服务器连接号码会随时间变化而变化。
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>如何统计入站/出站流量
 

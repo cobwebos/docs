@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: 7e22aaf2ead4dd618c2907f8659455e1862110a5
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: b0300dd91876b651015ae78c53dbc1e72bf8dd68
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650100"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285691"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>cloud-init 对 Azure 中虚拟机的支持
-本文介绍了在 Azure 中设置时,[云初始化](https://cloudinit.readthedocs.io)用于配置虚拟机 (VM) 或虚拟机规模集的支持。 Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。  
+本文介绍了在 Azure 中设置时，[云初始化](https://cloudinit.readthedocs.io)用于配置虚拟机（VM）或虚拟机规模集的支持。 Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。  
 
 ## <a name="cloud-init-overview"></a>Cloud-init 概述
 [Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
@@ -38,14 +38,15 @@ Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 y
 |规范 |UbuntuServer |16.04-LTS |latest |是 | 
 |规范 |UbuntuServer |14.04.5-LTS |latest |是 |
 |CoreOS |CoreOS |Stable |latest |是 |
-|OpenLogic 7。6 |CentOS |7-CI |latest |预览 |
-|RedHat 7。6 |RHEL |7-RAW-CI |7.6.2019072418 |是 |
-|RedHat 7。7 |RHEL |7-RAW-CI |7.7.2019081601 |预览 |
+|OpenLogic 7。7 |CentOS |7-CI |7.7.20190920 |预览 |
+|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |是 |
+|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |预览 |
     
 目前 Azure Stack 不支持使用 cloud init 预配 RHEL 1.x 和 CentOS 1.x。
 
-* 对于 RHEL 7.6, 云初始化包, 支持的包为:*18.2-1. el7 _ 6。2* 
-* 对于 RHEL 7.7 (预览版)、云初始化包, 支持的包如下:*18.5-3. el7*
+* 对于 RHEL 7.6，云初始化包，支持的包为：*18.2-1. el7 _ 6。2* 
+* 对于 RHEL 7.7 （预览版）、云初始化包、预览包：*18.5-3. el7*
+* 对于 CentOS 7.7 （预览版）、云-init 包、预览包：*18.5-3. el7. centos*
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>cloud-init 和 Linux 代理 (WALA) 之间的区别是什么？
 WALA 是一种特定于 Azure 平台的代理，用于预配和配置 VM 并处理 Azure 扩展。 我们正在优化配置 VM 的任务以使用 cloud-init 代替 Linux 代理，目的是让现有 cloud-init 客户可以使用他们当前的 cloud-init 脚本。  如果当前已使用 cloud-init 脚本来配置 Linux 系统，则不需要任何额外的设置就可以启用它们。 

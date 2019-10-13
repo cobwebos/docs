@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: bc2be73f85ebec7785b9aa06d6152447eee7e33e
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e23a83ab3a5b110f74ab4ac203dfc020e8920c24
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147290"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285983"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 的咨询服务
 Azure 市场和 AppSource 中的咨询服务使 Microsoft 合作伙伴可实现将客户与服务相连以支持和扩展他们对 Azure 的使用的目标以及业务目标。 
@@ -24,7 +24,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure 市场中的咨询服务和 AppSource 店面
 市场店面与受众需求和 Microsoft 云产品的特点相匹配，从而帮助客户找到所需产品。 每个店面都提供专门的发布选项来帮助你最大程度地优化发布投资。 下表汇总了这些选项：
 
-|         |Azure Marketplace  |Microsoft AppSource |
+|         |Azure 市场  |Microsoft AppSource |
 |---------|---------|---------|
 |**受众**   |**IT 专业人员和云开发人员**|**业务用户/业务线决策者**|
 |解决方案相关性     |为 Azure 构建或在其上构建的技术应用|利用 Extend D365、Power BI、O365 和 Azure 的业务应用。 （已完成的外接程序或附加设备应用）|
@@ -79,7 +79,6 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 |丹麦   |意大利   |     挪威          |美国 |
 |芬兰   |日本   |     波兰          
 
-咨询服务的启动将在特定地理区域中进行。 首次启动区域将包括：美国、加拿大、英国和澳大利亚。 其他国家/地区的目录将会在有意义的数量和令人耳目一新的服务产品/服务提交并由 Microsoft 批准后生效。
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>如何在 Azure 市场和 AppSource 中注册咨询服务
 首先在市场中[注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)公司信息。 发布者可以参考[成为 Marketplace 中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)，获取注册要求的完整清单。 
@@ -102,7 +101,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 |新产品设置  |
 |---------|
 |产品/服务名称（200 个字符）和说明（2000 个字符）    |
-|特色     |
+|资质     |
 |国家/区域可用性     |
 |参与持续时间     |
 |适用的行业、类别和搜索关键字     |
@@ -119,7 +118,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 3. **提交**：提供说明中列出的必需信息。 所有内容和支持材料都必须以英文提交。 
 4. **评审**：我们的营销和编辑团队将会评审提交内容，并在可读性、语法和效果方面对其进行优化。 
 5. **暂存**：暂存提交内容以供查阅。 
-6. **发布**：在你和 Microsoft 都对暂存内容感到满意后，所列产品便可以在市场中推出。 你的列表的生效日期取决于你在产品/服务中指定的国家/地区。 如果所选国家/地区的目录已位于 Azure Marketplace 或 AppSource 上, 则你的列表将在几个小时内显示。 否则，该目录一推出，就会显示列表。
+6. **发布**：在你和 Microsoft 都对暂存内容感到满意后，所列产品便可以在市场中推出。 你的列表的生效日期取决于你在产品/服务中指定的国家/地区。 如果所选国家/地区的目录已位于 Azure Marketplace 或 AppSource 上，则你的列表将在几个小时内显示。 否则，该目录一推出，就会显示列表。
 
 ## <a name="offer-listings-and-content-review-criteria"></a>产品列表和内容审核标准
 产品/服务必须属于以下五种服务类型之一（可以列出多个）： 
@@ -151,7 +150,7 @@ Azure 市场和 AppSource 支持 Microsoft 系统集成商 (SI) 合作伙伴提�
 
 在审核“产品/服务说明”和“产品/服务摘要”时，审核团队会应用以下标准：
 
-|产品/服务类型  |必填 |建议  |
+|产品/服务类型  |需要 |建议  |
 |---------|---------|---------|
 |**评估**    |   包括一个详细的适用于多日或多周评估的议程，并说明客户预期可以获得的可交付结果      |    使用最常用的搜索引擎优化关键字来优化产品/服务摘要     |
 |**简报**    |   说明客户预期可以获得的可交付结果。 请记住，简报必须面对面提供。 如果提供的是虚拟服务，请选择另一产品/服务类型    |  使用最常用的搜索引擎优化关键字来优化产品/服务摘要       |

@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/08/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 9c02db01d7b95f3178d73602089b30029fb0db9f
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a788226ad5bd3f8cd6416ad032fc439e860fd713
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274826"
+ms.locfileid: "72286693"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动公式
 
@@ -106,7 +106,7 @@ $NodeDeallocationOption = taskcompletion;
 | --- | --- |
 | $TargetDedicatedNodes |池的专用计算节点的目标数。 专用节点数指定为目标，因为池可能永远达不到所需的节点数目。 例如，如果在池达到初始目标数之前专用节点的目标数被自动缩放评估修改，则池可能不会达到目标数数。 <br /><br /> 如果目标数超过了 Batch 帐户节点或核心配额，则使用 Batch 服务配置创建的帐户中的池无法实现其目标。 如果目标数超过了订阅的共享核心配额，则使用用户订阅配置创建的帐户中的池无法实现其目标。|
 | $TargetLowPriorityNodes |池的低先级计算节点的目标数。 低优先级节点数指定为目标，因为池可能永远达不到所需的节点数目。 例如，如果在池达到初始目标数之前低优先级的目标数被自动缩放评估修改，则池可能不会达到目标数数。 如果目标数超过 Batch 帐户节点或核心配额，则池也无法实现其目标。 <br /><br /> 有关低优先级计算节点的详细信息，请参阅[使用 Batch 中的低优先级 VM（预览版）](batch-low-pri-vms.md)。 |
-| $NodeDeallocationOption |从池中删除计算节点时发生的操作。 可能的值包括：<ul><li>**重新排队**-默认值。 立即终止任务并将其放回作业队列，以便重新计划这些任务。 此操作可确保节点的目标数量尽快达到，但效率可能较低，因为任何正在运行的任务都将中断并且需要重新启动，从而浪费已经完成的所有工作。 <li>**terminate**--立即终止任务并将其从作业队列中删除。<li>**taskcompletion**--等待当前运行的任务完成，并从池中删除节点。 使用此选项可以避免任务被中断和重新排队，从而浪费任务完成的任何工作。 <li>**retaineddata**--等待清理节点上的本地任务保留的所有数据，并从池中删除节点。</ul> |
+| $NodeDeallocationOption |从池中删除计算节点时发生的操作。 可能的值有：<ul><li>**重新排队**-默认值。 立即终止任务并将其放回作业队列，以便重新计划这些任务。 此操作可确保节点的目标数量尽快达到，但效率可能较低，因为任何正在运行的任务都将中断并且需要重新启动，从而浪费已经完成的所有工作。 <li>**terminate**--立即终止任务并将其从作业队列中删除。<li>**taskcompletion**--等待当前运行的任务完成，并从池中删除节点。 使用此选项可以避免任务被中断和重新排队，从而浪费任务完成的任何工作。 <li>**retaineddata**--等待清理节点上的本地任务保留的所有数据，并从池中删除节点。</ul> |
 
 > [!NOTE]
 > 还可以使用别名 @no__t 指定 `$TargetDedicatedNodes` 变量。 同样，可以使用别名 @no__t 指定 `$TargetLowPriority` 变量。 如果完全命名的变量及其别名都是由公式设置的，则分配给完全命名变量的值将优先。
@@ -207,7 +207,7 @@ $NodeDeallocationOption = taskcompletion;
 | lg(double) |double |返回 double 的对数底数 2。 |
 | lg(doubleVecList) |doubleVec |返回 doubleVecList 的分量对数底数 2。 必须为参数显式传递 vec(double)。 否则会采用 double lg(double) 版本。 |
 | ln(double) |double |返回 double 的自然对数。 |
-| ln(doubleVecList) |doubleVec |返回 doubleVecList 的分量对数底数 2。 必须为参数显式传递 vec(double)。 否则会采用 double lg(double) 版本。 |
+| ln(doubleVecList) |doubleVec |返回 double 的自然对数。 |
 | log(double) |double |返回 double 的对数底数 10。 |
 | log(doubleVecList) |doubleVec |返回 doubleVecList 的分量对数底数 10。 对于单一的 double 参数，必须显式传递 vec(double)。 否则会采用 double log(double) 版本。 |
 | max(doubleVecList) |double |返回 doubleVecList 中的最大值。 |

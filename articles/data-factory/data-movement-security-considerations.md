@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: b571ba8d259a5e3b3b049ad66d4718e9e85d488b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ca5a98fb4fd0fd07cd0e2557840a2e0aed6901e5
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931273"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285615"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="选择在使用数据工厂服务版本："]
@@ -110,7 +110,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和
 ### <a name="on-premises-data-store-credentials"></a>本地数据存储凭据
 凭据可以存储在数据工厂中，也可以在运行时从 Azure Key Vault 中[引用](store-credentials-in-key-vault.md)。 如果将凭据存储在数据工厂中，则始终会在自承载集成运行时对其进行加密。 
  
-- **在本地存储凭据**。 如果直接将**AzDataFactoryV2LinkedService** CMDLET 与 JSON 中的连接字符串和凭据一起使用，则链接服务会加密并存储在自承载集成运行时中。  在这种情况下，凭据将通过 azure 后端服务（extremly 安全）传递到自承载集成计算机，最终 encrpted 并存储该服务。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。
+- **在本地存储凭据**。 如果直接将**AzDataFactoryV2LinkedService** CMDLET 与 JSON 中的连接字符串和凭据一起使用，则链接服务会加密并存储在自承载集成运行时中。  在这种情况下，凭据将通过 azure 后端服务（此服务非常安全）传递到自承载的集成计算机（在该服务中，最终会对其进行加密和存储）。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。
 
 - **在 Azure Key Vault 中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
 
@@ -136,7 +136,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表根据混合数据移动的源和目标位置的不同组合，汇总了有关网络和自承载集成运行时的配置建议。
 
-| Source      | 目标                              | 网络配置                    | 集成运行时安装                |
+| Source      | Destination                              | 网络配置                    | 集成运行时安装                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 自承载集成运行时应安装在虚拟网络中的 Azure 虚拟机上。  |
 | 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（专用对等互连）           | 自承载集成运行时应安装在虚拟网络中的 Azure 虚拟机上。  |
@@ -152,24 +152,17 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 ![将 IPSec VPN 与网关配合使用](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a> 防火墙配置及将 IP 地址加入允许列表
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>针对 IP 地址的防火墙配置和允许列表设置
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求  
 在企业中，企业防火墙在组织的中央路由器上运行。 Windows 防火墙在安装自承载集成运行时的本地计算机上作为守护程序运行。 
 
 下表提供了企业防火墙的出站端口和域要求：
 
-| 域名                  | 出站端口 | 描述                              |
-| ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443            | 自承载集成运行时连接到数据工厂中的数据移动服务时需要此端口。 |
-| `*.frontend.clouddatahub.net` | 443            | 自承载集成运行时连接到数据工厂服务时需要此端口。 |
-| `download.microsoft.com`    | 443            | 自承载集成运行时下载更新时需要此端口。 如果已禁用自动更新，则可以跳过此设置。 |
-| `*.core.windows.net`          | 443            | 使用[分阶段复制](copy-activity-performance.md#staged-copy)功能时，由自承载集成运行时用来连接到 Azure 存储帐户。 |
-| `*.database.windows.net`      | 1433           | （可选）从/向 Azure SQL 数据库或 Azure SQL 数据仓库复制时需要。 在不打开端口 1433 的情况下，使用暂存复制功能将数据复制到 Azure SQL 数据库或 Azure SQL 数据仓库。 |
-| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | （可选）从/向 Azure Data Lake Store 复制时需要。 |
+[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> 可能需要按相应数据源的要求在企业防火墙级别管理端口或白名单域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
+> 可能需要根据相应数据源的要求，在企业防火墙级别管理端口或设置域的允许列表。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
 
 下表提供了 Windows 防火墙的入站端口要求：
 
@@ -179,10 +172,10 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 ![网关端口要求](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>数据存储中的 IP 配置和允许列表
-云中的某些数据存储还需要将访问存储的计算机的 IP 地址加入允许列表。 确保已在防火墙中相应地将自承载集成运行时计算机的 IP 地址加入允许列表或进行配置。
+#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>数据存储中的 IP 配置和允许列表设置
+云中的某些数据存储还要求你允许访问存储的计算机的 IP 地址。 确保在防火墙中相应地允许或配置了自承载集成运行时计算机的 IP 地址。
 
-以下云数据存储要求将自承载集成运行时计算机的 IP 地址加入允许列表。 默认情况下，某些这类数据存储可能不需要允许列表。 
+以下云数据存储要求你允许自承载集成运行时计算机的 IP 地址。 默认情况下，某些数据存储可能不需要允许列表。 
 
 - [Azure SQL 数据库](../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -194,11 +187,11 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 **是否可在不同的数据工厂之间共享自承载集成运行时？**
 
-是的。 [此处](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/)提供了更多详细信息。
+是。 [此处](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/)提供了更多详细信息。
 
 **需要满足哪些端口要求才能让自承载集成运行时正常工作？**
 
-自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8060。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和允许列表 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of-gateway)部分。 
+自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8060。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和允许列表设置 IP 地址](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)部分。 
 
 
 ## <a name="next-steps"></a>后续步骤

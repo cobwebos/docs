@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: be59f5fd34c52397b54146a8aeaf51f4d594452f
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 8ea6a365b0c7bc6c254c1313445bb54231e161ae
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383348"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285645"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -82,7 +82,7 @@ ms.locfileid: "70383348"
 - 复制活动按特定的频率发生。 计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率还很大程度上取决于正在移动的数据量。 进行多个复制作业时，会看到资源使用率在高峰期上升。
 - 如果提取 Parquet、ORC 或 Avro 格式的数据，则任务可能会失败。 文件创建在自承载集成计算机上运行，并要求以下必备组件按预期工作（请参阅[Azure 数据工厂中的 Parquet 格式](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)）。
     - [Visual C++ 2010 可再发行组件](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe)包（x64）
-    - 来自 JRE 提供商的 Java 运行时（JRE）版本8（如[采用 OpenJDK](https://adoptopenjdk.net/)）， `JAVA_HOME`确保设置了环境变量。
+    - 基于 JRE 提供程序的 Java 运行时（JRE）版本8（如[采用 OpenJDK](https://adoptopenjdk.net/)），确保设置 @no__t 1 环境变量。
 
 ## <a name="installation-best-practices"></a>安装最佳做法
 可以通过从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载 MSI 安装程序包来安装自承载集成运行时。 请参阅文章[在本地和云之间移动数据](tutorial-hybrid-copy-powershell.md)以获取分步说明。
@@ -132,7 +132,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
  详细信息（参数/属性）： 
 
-| 属性                                                    | 说明                                                  | 必填 |
+| 属性                                                    | 说明                                                  | 需要 |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | RegisterNewNode "`<AuthenticationKey>`"                     | 将集成运行时（自承载）节点注册到指定的身份验证密钥 | 否       |
 | EnableRemoteAccess "`<port>`" ["`<thumbprint>`"]            | 在当前节点上启用远程访问，以便设置高可用性群集和/或启用直接针对自承载 IR（不通过 ADF 服务）通过同一网络的远程计算机中的 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 设置凭据的功能。 | 否       |
@@ -267,19 +267,15 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 在企业防火墙级别，需配置以下域和出站端口：
 
-域名 | 端口 | 描述
------------- | ----- | ------------
-*.servicebus.windows.net | 443 | 用来与后端数据移动服务通信
-*.core.windows.net | 443 | 用于通过 Azure Blob 存储（如果已配置）进行临时复制
-*.frontend.clouddatahub.net | 443 | 用来与后端数据移动服务通信
-download.microsoft.com | 443 | 用于下载更新
+[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
+
 
 在 Windows 防火墙级别（计算机级别），通常已启用这些出站端口。 如果没有，可以在自承载集成运行时计算机上相应地配置域和端口。
 
 > [!NOTE]
-> 根据源和接收器，可能需要在企业防火墙或 Windows 防火墙中将其他域和出站端口加入允许列表。
+> 根据源和接收器，可能需要在企业防火墙或 Windows 防火墙中允许其他域和出站端口。
 >
-> 对于部分云数据库（例如 Azure SQL 数据库和 Azure Data Lake），可能需要在其防火墙配置中将自承载集成运行时计算机的 IP 地址列入允许列表。
+> 对于某些云数据库（例如，Azure SQL 数据库和 Azure Data Lake），可能需要在其防火墙配置中允许自承载集成运行时计算机的 IP 地址。
 
 ### <a name="copy-data-from-a-source-to-a-sink"></a>将数据从源复制到接收器
 确保在企业防火墙、自承载集成运行时计算机上的 Windows 防火墙和数据存储上正确启用防火墙规则。 启用这些规则可以让自承载集成运行时成功连接到源和接收器。 为复制操作涉及的每个数据存储启用规则。
@@ -360,7 +356,7 @@ download.microsoft.com | 443 | 用于下载更新
 > [!IMPORTANT]
 > 不要忘记同时更新 diahost.exe.config 和 diawp.exe.config。
 
-还需要确保 Microsoft Azure 列于公司的白名单中。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=41653)下载有效的 Microsoft Azure IP 地址列表。
+还需要确保 Microsoft Azure 在公司的允许列表中。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=41653)下载有效的 Microsoft Azure IP 地址列表。
 
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>防火墙和代理服务器相关问题的可能症状
 如果遇到类似于以下的错误，可能是由于防火墙或代理服务器配置错误，阻止了自承载集成运行时连接到数据工厂进行自身身份验证。 若要确保正确配置防火墙和代理服务器，请参阅上一部分。

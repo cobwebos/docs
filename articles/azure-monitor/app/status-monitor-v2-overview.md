@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 7f045a95bcc9d5a61b26036e14e050a597347d1a
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057834"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286443"
 ---
 # <a name="status-monitor-v2"></a>状态监视器 v2
 
@@ -63,10 +63,6 @@ ms.locfileid: "71057834"
 - 状态监视器 v2 支持 ASP.NET Core 应用程序吗？
 
   *否*。 有关启用对 ASP.NET Core 应用程序的监视的说明，请参阅[ASP.NET Core 应用程序的 Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。 无需为 ASP.NET Core 的应用程序安装 StatusMonitor。 即使在 IIS 中承载 ASP.NET Core 应用程序，也是如此。
-  
-状态监视器 v2 支持 ASP.NET Core 应用程序吗？ 
-
-  *否*。 请按照[以下](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)说明启用对 ASP.NET Core 应用程序的监视。 不需要为 ASP.NET Core 的应用程序安装 StatusMonitor。 即使在 IIS 中承载 ASP.NET Core 应用程序，也是如此。
 
 - 如何验证启用是否成功？
 

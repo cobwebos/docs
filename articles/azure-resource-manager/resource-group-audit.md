@@ -1,19 +1,19 @@
 ---
 title: 查看 Azure 活动日志以监视资源 | Microsoft Docs
-description: 使用活动日志查看用户操作和错误。 显示 Azure 门户 PowerShell、 Azure CLI 和 REST。
+description: 使用活动日志查看用户操作和错误。 显示 Azure 门户、PowerShell、Azure CLI 和 REST。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7ff45be4eea5c6e8ab83093847164ede0e94579a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aba06b07fef1cbc5d84d93cf38fec3bd936c1ac8
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606548"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286119"
 ---
-# <a name="view-activity-logs-to-monitor-actions-on-resources"></a>查看活动日志来监视对资源的操作
+# <a name="view-activity-logs-to-monitor-actions-on-resources"></a>查看活动日志以监视对资源的操作
 
 通过活动日志，可以确定：
 
@@ -23,7 +23,7 @@ ms.locfileid: "65606548"
 * 操作的状态
 * 其他可能有助于研究操作的属性的值
 
-活动日志包含你的资源的所有写入操作 (PUT、 POST、 DELETE)。 它不包含读取操作 (GET)。 有关资源操作的列表，请参阅 [Azure 资源管理器资源提供程序操作](../role-based-access-control/resource-provider-operations.md)。 活动日志可用于在故障排除时查找错误，或用于监视组织内用户对资源的修改。
+活动日志包含针对资源执行的所有写入操作（PUT、POST、DELETE）。 它不包含读取操作 (GET)。 有关资源操作的列表，请参阅 [Azure 资源管理器资源提供程序操作](../role-based-access-control/resource-provider-operations.md)。 活动日志可用于在故障排除时查找错误，或用于监视组织内用户对资源的修改。
 
 活动日志可存储 90 天。 可以查询任何日期范围，只要开始日期不早于过去 90 天。
 
@@ -31,35 +31,35 @@ ms.locfileid: "65606548"
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 若要通过门户查看活动日志，请选择“监视”  。
+1. 若要通过门户查看活动日志，请选择“监视”。
 
     ![选择“监视”](./media/resource-group-audit/select-monitor.png)
 
-1. 选择“活动日志”  。
+1. 选择“活动日志”。
 
     ![选择“活动日志”](./media/resource-group-audit/select-activity-log.png)
 
-1. 将显示最近操作的摘要。 系统会向这些操作应用一组默认的筛选器。 请注意，测试摘要上的信息包括谁启动了操作以及其发生的时间。
+1. 将显示最近操作的摘要。 系统会向这些操作应用一组默认的筛选器。 请注意，摘要中的信息包括操作启动者和操作发生时间。
 
     ![查看最近操作的摘要](./media/resource-group-audit/audit-summary.png)
 
-1. 若要快速运行一组预定义的筛选器，请选择**Quick Insights**。
+1. 若要快速运行一组预定义的筛选器，请选择“快速见解”。
 
-    ![选择快速见解](./media/resource-group-audit/select-quick-insights.png)
+    ![选择“快速见解”](./media/resource-group-audit/select-quick-insights.png)
 
-1. 选择一个选项。 例如，选择**失败的部署**若要查看部署中的错误。
+1. 选择一个选项。 例如，选择“失败的部署”以查看部署中的错误。
 
-    ![选择部署失败](./media/resource-group-audit/select-failed-deployments.png)
+    ![选择“失败的部署”](./media/resource-group-audit/select-failed-deployments.png)
 
-1. 请注意，过去 24 小时内已更改为专注于部署错误的筛选器。 显示筛选器匹配的操作。
+1. 请注意，筛选器已更改为专注于过去 24 小时内的部署错误。 只显示与筛选器匹配的操作。
 
     ![查看筛选器](./media/resource-group-audit/view-filters.png)
 
-1. 若要专注于特定操作，请更改筛选器或应用新的筛选器。 例如，下图显示了“时间跨度”的新值，且“资源类型”设置为存储帐户   。 
+1. 若要专注于特定操作，请更改筛选器或应用新的筛选器。 例如，下图显示了“时间跨度”的新值，且“资源类型”设置为存储帐户。
 
     ![设置筛选器选项](./media/resource-group-audit/set-filter.png)
 
-1. 如果稍后需要重新运行该查询，请选择“固定当前筛选器”  。
+1. 如果稍后需要重新运行该查询，请选择“固定当前筛选器”。
 
     ![固定筛选器](./media/resource-group-audit/pin-filters.png)
 
@@ -71,15 +71,15 @@ ms.locfileid: "65606548"
 
     ![在仪表板上显示筛选器](./media/resource-group-audit/show-dashboard.png)
 
-1. 在门户中，可以查看对资源的更改。 转置为默认值查看在监视器中，并选择涉及更改资源的操作。
+1. 在门户中，可以查看对资源的更改。 返回“监视”中的默认视图，并选择涉及更改资源的操作。
 
     ![选择操作](./media/resource-group-audit/select-operation.png)
 
-1. 选择**更改历史记录 （预览版）** ，选择一个可用的操作。
+1. 选择“更改历史记录(预览)”，然后选择一个可用操作。
 
-    ![选择更改历史记录](./media/resource-group-audit/select-change-history.png)
+    ![选择“更改历史记录”](./media/resource-group-audit/select-change-history.png)
 
-1. 将显示在资源中的更改。
+1. 将显示资源中的更改。
 
     ![显示更改](./media/resource-group-audit/show-changes.png)
 
@@ -107,7 +107,7 @@ Get-AzLog -ResourceGroup ExampleGroup -StartTime 2019-05-05T06:00 -EndTime 2019-
 Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
 ```
 
-您可以查找特定用户执行的操作。
+可以查找特定用户执行的操作。
 
 ```azurepowershell-interactive
 Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
@@ -137,7 +137,7 @@ Get-AzLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller,
 Get-AzLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
 ```
 
-可以使用资源图表以查看资源的更改历史记录。 有关详细信息，请参阅[获取资源更改](../governance/resource-graph/how-to/get-resource-changes.md)。
+可以使用资源关系图查看资源的更改历史记录。 有关详细信息，请参阅[获取资源更改](../governance/resource-graph/how-to/get-resource-changes.md)。
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -183,7 +183,7 @@ az monitor activity-log list -g ExampleGroup --offset 1d --query '[].{Operation:
 az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationName.value=='Microsoft.Storage/storageAccounts/write']"
 ```
 
-可以使用资源图表以查看资源的更改历史记录。 有关详细信息，请参阅[获取资源更改](../governance/resource-graph/how-to/get-resource-changes.md)。
+可以使用资源关系图查看资源的更改历史记录。 有关详细信息，请参阅[获取资源更改](../governance/resource-graph/how-to/get-resource-changes.md)。
 
 ## <a name="rest-api"></a>REST API
 
@@ -193,6 +193,7 @@ az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationNam
 
 * Azure 活动日志可以与 Power BI 一起使用，以便更深入地了解在订阅中执行的操作。 请参阅 [View and analyze Azure Activity Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）。
 * 若要了解如何设置安全策略，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
+* 若要查看有关应用程序从基础结构层对应用程序所做的更改的更多详细信息，请参阅 [在 Azure Monitor 中使用应用程序更改分析] （.。。/azure-monitor/app/change-analysis）。
 * 若要了解查看部署操作的命令，请参阅[查看部署操作](resource-manager-deployment-operations.md)。
 * 若要了解如何防止对所有用户的资源执行删除操作，请参阅[使用 Azure 资源管理器锁定资源](resource-group-lock-resources.md)。
 * 若要查看可用于各 Microsoft Azure 资源管理器提供程序的操作的列表，请参阅 [Azure 资源管理器资源提供程序操作](../role-based-access-control/resource-provider-operations.md)
