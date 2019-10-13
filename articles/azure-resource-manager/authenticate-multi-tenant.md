@@ -4,14 +4,14 @@ description: 介绍了 Azure 资源管理器如何跨租户处理身份验证请
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 10/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 625a17156eaf199af0d51151c6fd37769b8f7b4a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b85ed32ac333402caeca4901e4d91bbe4d1d112c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848756"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300346"
 ---
 # <a name="authenticate-requests-across-tenants"></a>跨租户对请求进行身份验证
 
@@ -24,7 +24,7 @@ ms.locfileid: "68848756"
 | 标头名称 | 描述 | 示例值 |
 | ----------- | ----------- | ------------ |
 | Authorization | 主令牌 | Bearer &lt;primary-token&gt; |
-| x-ms-authorization-auxiliary | 辅助令牌 | 持有&lt;者 token1&gt;, EncryptedBearer &lt;, token2&gt;, 持有&lt;者辅助-token3&gt; |
+| x-ms-authorization-auxiliary | 辅助令牌 | Bearer &lt;auxiliary-token1&gt;、EncryptedBearer &lt;auxiliary-token2&gt;、Bearer &lt;auxiliary-token3&gt; |
 
 辅助标头最多可以容纳三个辅助令牌。 
 
@@ -37,5 +37,6 @@ ms.locfileid: "68848756"
 当请求引用了其他租户的资源时，资源管理器会检查辅助令牌来确定是否可以处理该请求。 标头中的所有辅助标记必须有效且未过期。 如果有任何令牌已过期，则资源管理器将返回 401 响应代码。 响应包括无效令牌中的客户端 ID 和租户 ID。 如果辅助标头包含租户的有效令牌，则会处理跨租户请求。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解如何通过 Azure 资源管理器 API 发送身份验证请求，请参阅[使用资源管理器身份验证 API 访问订阅](resource-manager-api-authentication.md)。
-* 有关令牌的详细信息，请参阅 [Azure Active Directory 访问令牌](/azure/active-directory/develop/access-tokens)。
+
+* 若要了解身份验证请求，请参阅[身份验证流和应用程序方案](../active-directory/develop/authentication-flows-app-scenarios.md)。
+* 有关令牌的详细信息，请参阅 [Azure Active Directory 访问令牌](../active-directory/develop/access-tokens.md)。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e43bc4b8eb1db91493f279f5c46681483e4b18c4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 1e9f852d01d60ead9979b6b1190e285b35d5c312
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261391"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294045"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB 中的诊断日志记录 
 
@@ -106,6 +106,12 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
 
        ```
        { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
+       ```
+
+      * **PartitionKeyStatistics**：此日志报告分区键的统计信息。 目前，统计信息用分区键的存储大小（KB）表示。 日志针对占用大多数数据存储空间的前三个分区键发出。
+
+       ```
+       { "time": "2019-10-11T02:33:24.2018744Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "PartitionKeyStatistics", "properties": {"subscriptionId": "<your_subscription_ID>","regionName": "West US 2","databaseName": "KustoQueryResults","collectionname": "CapacityMetrics","partitionkey": "["CapacityMetricsPartition.136"]","sizeKb": "2048270"}}
        ```
 
       * **指标请求**：选择此选项可在 [Azure 指标](../azure-monitor/platform/metrics-supported.md)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。
@@ -474,7 +480,7 @@ $blobs | Get-AzStorageBlobContent `
 | **clientIpAddress** | **clientIpAddress_s** | 客户端的 IP 地址。 |
 | **requestCharge** | **requestCharge_s** | 操作使用的 RU 数目 |
 | **collectionRid** | **collectionId_s** | 集合的唯一 ID。|
-| **duration** | **duration_s** | 操作的持续时间（以毫秒为单位）。 |
+| **duration** | **duration_s** | 操作持续时间，以毫秒为单位。 |
 | **requestLength** | **requestLength_s** | 请求的长度（按字节计）。 |
 | **responseLength** | **responseLength_s** | 响应的长度（按字节计）。|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | 将[资源令牌](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens)用于身份验证时，此值非空。 值指向用户的资源 ID。 |

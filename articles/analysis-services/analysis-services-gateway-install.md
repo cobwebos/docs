@@ -2,24 +2,23 @@
 title: 为 Azure Analysis Services 安装本地数据网关 |Microsoft Docs
 description: 了解如何安装并配置本地数据网关。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e87a8221a4db4dfab132a91a31a9ba5b5602a3db
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 6f182976ac655692f8c50d4e7560aa21444ce848
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678432"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298642"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
 
-同一区域中的一个或多个 Azure Analysis Services 服务器连接到本地数据源时，需要具备本地数据网关。  尽管安装的网关与其他服务 (如 Power BI、电源应用和逻辑应用) 所使用的网关相同, 但是, 在为 Azure Analysis Services 进行安装时, 需要完成一些额外的步骤。 本安装文章特定于**Azure Analysis Services**。
+同一区域中的一个或多个 Azure Analysis Services 服务器连接到本地数据源时，需要具备本地数据网关。  虽然你安装的网关与其他服务（例如 Power BI、Power Apps 和逻辑应用）使用的网关相同，但在针对 Azure Analysis Services 进行安装时，有一些需要完成的额外步骤。 本安装文章专门针对 **Azure Analysis Services**。
 
-若要详细了解网关及其使用方式 Azure Analysis Services, 请参阅[连接到本地数据源](analysis-services-gateway.md)。
+若要详细了解网关以及 Azure Analysis Services 如何使用网关，请参阅[连接达到本地数据源](analysis-services-gateway.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -55,7 +54,7 @@ ms.locfileid: "68678432"
 
 1. 运行安装程序。
 
-2. 选择 **"本地数据网关"** 。
+2. 选择“本地数据网关”。
 
    ![选择](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
@@ -65,7 +64,7 @@ ms.locfileid: "68678432"
 
 3. 登录 Azure。 该帐户必须位于你租户的 Azure Active Directory 中。 该帐户用于网关管理员。 安装和注册网关时不支持 Azure B2B（来宾）帐户。
 
-   ![登录  Azure](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
+   ![登录 Azure](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
    > 如果使用域帐户登录，它将映射到你在 Azure AD 中的组织帐户。 你的组织帐户将用作网关管理员。
@@ -90,7 +89,7 @@ ms.locfileid: "68678432"
 
 在安装并注册了网关后，需要在 Azure 订阅中创建网关资源。 使用注册网关时使用的帐户登录到 Azure。
 
-1. 在 Azure 门户中, 单击 "**创建资源**", 然后搜索 **"本地数据网关**", 然后单击 "**创建**"。
+1. 在 Azure 门户中单击“创建资源”，接着搜索“本地数据网关”，然后单击“创建”。
 
    ![创建网关资源](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 
@@ -106,7 +105,7 @@ ms.locfileid: "68678432"
 
    * **位置**：选择网关的注册区域。
 
-   * **安装名称**：如果尚未选择网关安装, 请选择您的计算机上安装的网关并注册。 
+   * **安装名称**：如果尚未选择网关安装，请选择您的计算机上安装的网关并注册。 
 
      完成后，单击“创建”。
 
@@ -123,7 +122,7 @@ ms.locfileid: "68678432"
     > [!NOTE]
     > 如果列表中不显示你的网关，很可能是你的服务器与你注册网关时指定的区域不在同一个区域。
 
-    如果服务器和网关资源之间的连接成功, 则状态将显示 "**已连接**"。
+    在服务器和网关资源之间成功建立连接以后，状态会显示“已连接”。
 
 
     ![将服务器连接到网关资源成功](media/analysis-services-gateway-install/aas-gateway-connect-success.png)

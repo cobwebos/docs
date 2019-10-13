@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: bd00c04ecfc211ae4ed410e886c0fe6553bea241
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 94fc4906478e44365d03e9c8eeadd7cb1946a43a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827515"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300541"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
-Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 SMBv3 卷。 若要创建 NFS 卷, 请参阅[为 Azure NetApp 文件创建 NFS 卷](azure-netapp-files-create-volumes.md)。 
+Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 SMBv3 卷。 若要创建 NFS 卷，请参阅[为 Azure NetApp 文件创建 NFS 卷](azure-netapp-files-create-volumes.md)。 
 
 ## <a name="before-you-begin"></a>开始之前 
 必须已设置容量池。   
@@ -33,12 +33,12 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 
 ## <a name="requirements-for-active-directory-connections"></a>Active Directory 连接的要求
 
- 创建 SMB 卷之前, 需要创建 Active Directory 连接。 Active Directory 连接的要求如下: 
+ 创建 SMB 卷之前，需要创建 Active Directory 连接。 Active Directory 连接的要求如下： 
 
-* 你使用的管理员帐户必须能够在你将指定的组织单位 (OU) 路径中创建计算机帐户。  
+* 你使用的管理员帐户必须能够在你将指定的组织单位（OU）路径中创建计算机帐户。  
 
-* 在适用的 Windows Active Directory (AD) 服务器上必须打开正确的端口。  
-    所需的端口如下: 
+* 在适用的 Windows Active Directory （AD）服务器上必须打开正确的端口。  
+    所需的端口如下： 
 
     |     服务           |     Port     |     Protocol     |
     |-----------------------|--------------|------------------|
@@ -78,11 +78,11 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 
 ## <a name="create-an-active-directory-connection"></a>创建 Active Directory 连接
 
-1. 在你的 NetApp 帐户中, 单击 " **Active Directory 连接**", 然后单击 "**加入**"。  
+1. 在你的 NetApp 帐户中，单击 " **Active Directory 连接**"，然后单击 "**加入**"。  
 
     ![Active Directory 连接](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
-2. 在 "联接 Active Directory" 窗口中提供以下信息:
+2. 在 "联接 Active Directory" 窗口中提供以下信息：
 
     * **主 DNS**  
         这是 Active Directory 域加入和 SMB 身份验证操作所需的 DNS。 
@@ -90,27 +90,30 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
         这是确保冗余名称服务的辅助 DNS 服务器。 
     * **域**  
         这是你要加入的 Active Directory 域服务的域名。
-    * **SMB 服务器 (计算机帐户) 前缀**  
+    * **SMB 服务器（计算机帐户）前缀**  
         这是 Azure NetApp 文件将用于创建新帐户 Active Directory 中的计算机帐户的命名前缀。
 
-        例如, 如果你的组织用于文件服务器的命名标准为 "NAS-01, NAS-02 ..., 045", 则你将输入 "NAS" 作为前缀。 
+        例如，如果你的组织用于文件服务器的命名标准为 "NAS-01，NAS-02 ...，045"，则你将输入 "NAS" 作为前缀。 
 
         该服务将根据需要在 Active Directory 中创建其他计算机帐户。
 
     * **组织单位路径**  
-        这是将在其中创建 SMB 服务器计算机帐户的组织单位 (OU) 的 LDAP 路径。 即 OU = 第二级, OU = 第一级。 
+        这是将在其中创建 SMB 服务器计算机帐户的组织单位（OU）的 LDAP 路径。 即 OU = 第二级，OU = 第一级。 
 
-        如果将 Azure NetApp 文件与 Azure Active Directory 域服务一起使用，则在为 NetApp 帐户`OU=AADDC Computers`配置 Active Directory 时，组织单位路径为。
+        如果将 Azure NetApp 文件与 Azure Active Directory 域服务一起使用，则在为 NetApp 帐户配置 Active Directory 时，组织单位路径 @no__t 为0。
         
-    * 凭据, 包括**用户名**和**密码**
+    * 凭据，包括**用户名**和**密码**
 
-    ![加入 Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![联接 Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
 3. 单击“加入”。  
 
     此时将显示创建的 Active Directory 连接。
 
     ![Active Directory 连接](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+
+> [!NOTE] 
+> 保存 Active Directory 连接后，可以编辑 "用户名" 和 "密码" 字段。 保存连接后，不能再编辑其他值。 如果需要更改其他任何值，则必须先删除所有已部署的 SMB 卷，然后删除并重新创建 Active Directory 连接。
 
 ## <a name="add-an-smb-volume"></a>添加 SMB 卷
 
@@ -121,13 +124,13 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 2. 单击“+ 添加卷”以创建卷。  
     此时将显示 "创建卷" 窗口。
 
-3. 在 "创建卷" 窗口中, 单击 "**创建**", 并为以下字段提供信息:   
+3. 在 "创建卷" 窗口中，单击 "**创建**"，并为以下字段提供信息：   
     * **卷名**      
         指定要创建的卷的名称。   
 
         卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 您可以使用任何字母数字字符。   
 
-        不能将`default`用作卷名。
+        不能使用 `default` 作为卷名。
 
     * **容量池**  
         指定要在其中创建卷的容量池。
@@ -152,7 +155,7 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
     
         ![创建子网](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-4. 单击 "**协议**" 并完成以下信息:  
+4. 单击 "**协议**" 并完成以下信息：  
     * 选择**SMB**作为卷的协议类型。 
     * 从下拉列表中选择**Active Directory**连接。
     * 在 "**共享名**" 中指定共享卷的名称。

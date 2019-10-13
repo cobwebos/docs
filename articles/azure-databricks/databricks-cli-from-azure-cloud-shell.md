@@ -1,6 +1,6 @@
 ---
 title: '从 Azure Cloud Shell 中使用 Databricks CLI '
-description: 了解如何从 Azure Cloud Shell 中使用 Databricks CLI。
+description: 了解如何使用 Azure Cloud Shell 的 Databricks CLI 对 Azure Databricks 执行操作。
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: mamccrea
-ms.openlocfilehash: dae481fb477223f149404c6a09cad024bc15cd90
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: b327403b29f26f6c1f43f9dfe7aabd5c3c7e0a68
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204962"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299911"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>从 Azure Cloud Shell 中使用 Databricks CLI
 
 了解如何从 Azure Cloud Shell 中使用 Databricks CLI 对 Databricks 执行操作。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 一个 Azure Databricks 工作区和群集。 有关说明，请参阅 [Azure Databricks 入门](quickstart-create-databricks-workspace-portal.md)。 
 

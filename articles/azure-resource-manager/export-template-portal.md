@@ -4,14 +4,14 @@ description: 使用 Azure 门户从订阅中的资源导出 Azure 资源管理�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 10/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 15f527dfe517dcb3329b8b61243d7c5054eedb56
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6b37b61bea63ec626bfd709a40f177f43d1dfe03
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959701"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300386"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure 门户中的单个和多个资源导出到模板
 
@@ -48,39 +48,36 @@ ms.locfileid: "71959701"
 * 想要一个易于重复使用的模板。
 * 不需要包含原始部署之后所做的更改。
 
-## <a name="export-template-from-resource-group"></a>从资源组导出模板
+## <a name="export-template-from-a-resource-group"></a>从资源组导出模板
 
 若要从资源组中导出一个或多个资源：
 
 1. 选择包含所要导出的资源的资源组。
 
-1. 若要导出资源组中的所有资源，请依次选择“全部”、“导出模板”。 只有在至少选择了一个资源之后，才会启用“导出模板”选项。
+1. 通过选中相应的复选框选择一个或多个资源。  若要选择 "全部"，请选中 "**名称**" 左侧的复选框。 仅在选择了至少一个资源后，才会启用 "**导出模板**" 菜单项。
 
    ![导出所有资源](./media/export-template-portal/select-all-resources.png)
 
-1. 若要选取要导出的特定资源，请选中这些资源旁边的复选框。 然后选择“导出模板”。
+    在屏幕截图上，只选择了存储帐户。
+1. 选择“导出模板”。
 
-   ![选择要导出的资源](./media/export-template-portal/select-resources.png)
-
-1. 随后，导出的模板将会显示，并可供下载。
+1. 将显示导出的模板，可供下载和部署。
 
    ![显示模板](./media/export-template-portal/show-template.png)
 
-## <a name="export-template-from-resource"></a>从资源导出模板
+## <a name="export-template-from-a-resource"></a>从资源中导出模板
 
 导出一个资源：
 
 1. 选择包含所要导出的资源的资源组。
 
-1. 选择要导出的资源。
-
-   ![选择资源](./media/export-template-portal/select-link-resource.png)
+1. 选择要导出的资源，以打开资源。
 
 1. 在左窗格中选择该资源对应的“导出模板”。
 
    ![导出资源](./media/export-template-portal/export-single-resource.png)
 
-1. 随后，导出的模板将会显示，并可供下载。 模板只包含单个资源。
+1. 将显示导出的模板，可供下载和部署。 模板只包含单个资源。
 
 ## <a name="export-template-before-deployment"></a>在部署之前导出模板
 
@@ -92,9 +89,8 @@ ms.locfileid: "71959701"
 
    ![下载模板](./media/export-template-portal/download-before-deployment.png)
 
-1. 随后，该模板将会显示，并可供下载。
+1. 模板随即显示，可供下载和部署。
 
-   ![显示模板](./media/export-template-portal/show-template-before-deployment.png)
 
 ## <a name="export-template-after-deployment"></a>在部署之后导出模板
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: 3c8d0d3ec0f11592610363e9150be47112995853
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 2afc3a859ddb5378b6313c43d693842fdb5fce14
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219855"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296435"
 ---
 # <a name="what-is-video-indexer"></a>什么是视频索引器？
 
@@ -62,7 +62,7 @@ ms.locfileid: "71219855"
 ### <a name="audio-insights"></a>音频见解
 
 * **自动语言检测**：自动识别主导性的讲述语言。 支持的语言包括英语、西班牙语、法语、德语、意大利语、简体中文、日语、俄语和巴西葡萄牙语。 如果无法自信地识别该语言，视频索引器将假定说语言为英语。 有关详细信息，请参阅[语言标识模型](language-identification-model.md)。
-* **多语言语音识别和脚本**（预览）：在音频中自动标识不同段中的口述语言，发送要转录的媒体文件的每个段并将其合并回一个统一的脚本。 有关详细信息，请参阅[自动识别和转录多语言内容](multi-language-identification-transcription.md)。
+* **多语言语音识别和**操作（预览版）：在音频中自动标识不同段中的口述语言，发送要转录的媒体文件的每个段并将其合并回一个统一的脚本。 有关详细信息，请参阅[自动识别和转录多语言内容](multi-language-identification-transcription.md)。
 * **音频听录**：将语音转换为 12 种语言的文本并允许扩展。 支持的语言包括英语、西班牙语、法语、德语、意大利语、简体中文、日语、阿拉伯语、俄语、巴西葡萄牙语、印地语和朝鲜语。
 * **隐藏式字幕**：以三种格式创建隐藏式字幕：VTT、TTML、SRT。
 * **双通道处理**：自动检测、隔离脚本及合并到单个时间线。
@@ -81,7 +81,7 @@ ms.locfileid: "71219855"
 
 * **关键字提取**：从语音和视觉文本中提取关键字。
 * **命名实体提取**：通过自然语言处理（NLP）从语音和视觉文本中提取品牌、位置和人物。
-* **主题推理**：根据脚本推理主要主题。 包括第一级 IPTC 分类。
+* **主题推理**：根据脚本推理主要主题。 包含第2级 IPTC 分类。
 * **项目**：提取每个模型的丰富的“下一种详细程度”项目。
 * **情绪分析**：在语音和视觉文本中识别积极、消极和中性情绪。
 

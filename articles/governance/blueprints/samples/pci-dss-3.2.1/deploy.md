@@ -1,5 +1,5 @@
 ---
-title: 示例-DSS-DSS 3.2.1 蓝图-部署步骤
+title: PCI-DSS v2.0 版蓝图示例-部署步骤
 description: 支付卡行业数据安全标准 v2.0 蓝图蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: fa409b873ea1dd0c0970ebc694ad68673df4d033
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 85f9eab29411ac896f73eed7aba607c733e4b95e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248862"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299041"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>部署 PCI-X 3.2.1 蓝图蓝图示例
 
@@ -100,7 +100,7 @@ ms.locfileid: "72248862"
 |\[Preview @ no__t-1 Audit PCI v2.0 3.2.1：2018控制和部署特定 VM 扩展以支持审核要求|策略分配|资源类型列表 | 所选资源类型的审核诊断设置。 默认值为 "所有资源"| 
 |允许的位置|策略分配|允许的位置列表|允许部署到其中的任何资源的数据中心位置的列表。 此列表可在全球范围内自定义到所需的 Azure 位置。 选择要允许的位置。| 
 |允许的资源组位置|策略分配 |允许的位置 |此策略使你能够限制你的组织可在中创建资源组的位置。 用于强制执行异地符合性要求。| 
-|在 SQL Server 上部署审核|策略分配|保留天数|数据保留，单位为天。 默认值为180，但 PCI 需要365。| 
+|在 SQL Server 上部署审核|策略分配|保留天数|数据保留期（天）。 默认值为180，但 PCI 需要365。| 
 |在 SQL Server 上部署审核|策略分配|存储帐户的资源组名称|审核针对 Azure 存储帐户（将在 SQL Server 所在的每个区域中创建的存储帐户，由该区域中的所有服务器共享）中审核日志的写入数据库事件。| 
 
 ## <a name="next-steps"></a>后续步骤

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 10/11/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 6f27dd199cc054d128a4f46b222c7207d5975efb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2990917243507d93cb6a86da11cf771f3a42eebd
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241009"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298424"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Azure 区块链服务开发概述
 
@@ -39,7 +39,7 @@ Geth 是命令行接口，用于运行在中转中实现的完全以太坊节点
 
 Truffle 是一种常用的区块链开发框架，用于在以太坊区块链上编写、编译、部署和测试分散的应用程序。 你还可以将 Truffle 看作是一个框架，它尝试无缝集成智能协定开发和传统 web 开发。
 
-即使是最小的项目与至少两个区块链节点交互：一个在开发人员的计算机上，另一个表示开发人员在其中部署应用程序的网络。 例如，主公共以太坊网络或 Azure 区块链服务。 Truffle 提供一个系统，用于管理每个网络的编译和部署项目，并以简化最终应用程序部署的方式实现此目的。 有关详细信息，请参阅[快速入门：使用 Truffle 连接到 Azure 区块链服务网络](connect-truffle.md)。
+即使是最小的项目与至少两个区块链节点交互：一个在开发人员的计算机上，另一个表示开发人员在其中部署应用程序的网络。 例如，主公共以太坊网络或 Azure 区块链服务。 Truffle 提供一个系统，用于管理每个网络的编译和部署项目，并以简化最终应用程序部署的方式实现此目的。 有关详细信息，请参阅[快速入门：使用 Truffle 连接到 Azure 区块链 Service network @ no__t-0。
 
 ## <a name="ethereum-quorum-private-transaction"></a>以太坊仲裁私有事务
 
@@ -51,13 +51,13 @@ Truffle 是一种常用的区块链开发框架，用于在以太坊区块链上
 * 对等互连-使用智能协定的节点和对等节点，确保只有已知的参与方可以加入网络
 * 更高的性能-仲裁比公共 Geth 提供更高的性能
 
-有关分步说明，请参阅[教程：使用 Azure 区块链服务](send-transaction.md)发送事务，以获取专用事务的示例。
+有关分步说明，请参阅[教程：使用 Azure 区块链服务 @ no__t 发送事务，以获取专用事务的示例。
 
 ## <a name="block-explorers"></a>阻止资源管理器
 
 阻止资源管理器是联机区块链浏览器，用于显示单个块内容、事务地址数据和历史记录。 可以通过 Azure 区块链服务中的 Azure Monitor 获取基本块信息，但是，如果在开发过程中需要更多详细信息，则块资源管理器会很有用。  你可以使用常用的开源块资源管理器。 下面是适用于 Azure 区块链服务的块浏览器列表：
 
-* Web3 实验室中的[Azure 区块链服务资源管理器](https://web3labs.com/azure-offer)
+* 从 Web3 实验室[Epirus Azure 区块链 Service Explorer](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview)
 * [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
 ## <a name="tps-measurement"></a>TPS 度量
@@ -66,4 +66,4 @@ Truffle 是一种常用的区块链开发框架，用于在以太坊区块链上
 
 ## <a name="next-steps"></a>后续步骤
 
-[快速入门：使用 Truffle 连接到 Azure 区块链服务网络](connect-truffle.md)
+[快速入门：使用 Truffle 连接到 Azure 区块链服务网络 @ no__t-0

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 138894f10a4865a5ea251caff6683ed70721c000
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c33619ba52246128526bb132dfe94416c7c4de8c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172923"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299598"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>使用 Azure 门户为时序见解环境创建引用数据集
 
@@ -36,13 +36,13 @@ ms.locfileid: "70172923"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 查找现有时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”。 选择时序见解环境。
+1. 找到现有的 Azure 时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”。 选择时序见解环境。
 
 1. 选择“概述”页面。 找到**时序见解资源管理器 URL** 并打开此链接。  
 
-   查看 TSI 环境的资源管理器。
+   查看时序见解环境的资源管理器。
 
-1. 在 TSI 资源管理器中展开环境选择器。 选择活动的环境。 选择资源管理器页面右上角的参考数据图标。
+1. 展开时序见解资源管理器中的环境选择器。 选择活动的环境。 选择资源管理器页面右上角的参考数据图标。
 
    [![添加参考数据](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
 
@@ -51,12 +51,14 @@ ms.locfileid: "70172923"
    [![添加数据集](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
 
 1. 在“新建参考数据集”页面上，选择数据格式：
+
    - 选择“CSV”表示以逗号分隔的数据。 第一行被视为标题行。
-   - 选择“JSON 数组”表示 javascript 对象表示法 (JSON) 格式的数据。
+   - 选择**JSON 数组**作为 JavaScript 对象表示法（JSON）格式的数据。
 
    [![选择数据格式。](media/add-reference-data-set/add-data.png)](media/add-reference-data-set/add-data.png#lightbox)
 
 1. 使用下列两种方法之一提供数据：
+
    - 将数据粘贴到文本编辑器中。 然后，选择“分析参考数据”按钮。
    - 选择“选择文件”按钮来从本地文本文件添加数据。
 

@@ -6,15 +6,15 @@ keywords: 编码;编码器;媒体
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 08/08/2019
+ms.date: 10/10/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6b9cb325f2bb7419e32efd5bde4705786c5dbeb5
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: aa5eae3e40b8578f826b1b275995bbb3d346e586
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934931"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300944"
 ---
 # <a name="recommended-live-streaming-encoders"></a>建议的实时传送视频流编码器
 
@@ -37,6 +37,7 @@ ms.locfileid: "68934931"
 > 通过 RTMP 流式处理时，检查防火墙和/或代理设置，确认出站 TCP 端口 1935 和 1936 已打开。
 
 - Adobe Flash 媒体实时编码器 3.2
+- [Cambria Live 4。3](https://www.capellasystems.net/products/cambria-live/)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
@@ -61,7 +62,7 @@ ms.locfileid: "68934931"
 - Media Excel Hero Live 和 Hero 4K (UHD/HEVC)
 
 > [!TIP]
->  如果要以多种语言 (例如, 一个英语音轨和一个西班牙语音轨) 流式传输实时事件, 则可以使用配置为将实时源发送到传递实时事件的媒体 Excel 实时编码器来实现此目的。
+>  如果要以多种语言（例如，一个英语音频轨道和一个西班牙语音频轨道）流式传输直播活动，则可以将 Media Excel 实时编码器配置为将实时源发送到直通直播活动，以实现此目的。
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>配置本地实时编码器设置
 

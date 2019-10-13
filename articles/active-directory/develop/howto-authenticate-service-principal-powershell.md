@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/19/2019
+ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe0a3c8cbee92be85fe415a4d44d5493940bb45a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f7c75a567dbefc71b4b0fea595dae56a03def5ed
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638624"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295447"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
 
@@ -46,9 +46,14 @@ ms.locfileid: "69638624"
 
 检查帐户是否有足够权限的最简方法是使用门户。 请参阅[检查所需的权限](howto-create-service-principal-portal.md#required-permissions)。
 
+## <a name="assign-the-application-to-a-role"></a>将应用程序分配给角色
+要访问订阅中的资源，必须将应用程序分配到角色。 判定哪个角色能为应用程序提供适当的权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](/azure/role-based-access-control/built-in-roles)。
+
+可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域将继承权限。 例如，将某个应用程序添加到资源组的 "*读取*者" 角色意味着该应用程序可以读取该资源组及其包含的所有资源。 若要允许应用程序执行重启、启动和停止实例等操作，请选择 "*参与者*" 角色。
+
 ## <a name="create-service-principal-with-self-signed-certificate"></a>使用自签名证书创建服务主体
 
-下面的示例介绍了简单的方案。 它使用 [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) 创建具有自签名证书的服务主体，并使用 [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 将[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色分配给该服务主体。 角色分配的范围限定为当前所选 Azure 订阅。 若要选择其他订阅，请使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
+下面的示例介绍了简单的方案。 它使用[AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal)创建具有自签名证书的服务主体，并使用[New-azurermroleassignment](/powershell/module/az.resources/new-azroleassignment)将 "[读取](/azure/role-based-access-control/built-in-roles#reader)者" 角色分配给服务主体。 角色分配的范围限定为当前所选 Azure 订阅。 若要选择其他订阅，请使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
 
 > [!NOTE]
 > New-selfsignedcertificate cmdlet 和 PKI 模块目前在 PowerShell Core 中不受支持。 
@@ -64,7 +69,7 @@ $sp = New-AzADServicePrincipal -DisplayName exampleapp `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore
 Sleep 20
-New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.ApplicationId
 ```
 
 该示例休眠 20 秒，让新的服务主体有时间传遍 Azure AD。 如果脚本没有等待足够长的时间，则会显示一个错误：“主体 {0} 不存在于目录 {DIR-ID} 中”。 若要解决此错误，请等待片刻，然后重新运行 **New-AzRoleAssignment** 命令。
@@ -105,7 +110,7 @@ $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).Applicat
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>使用来自证书颁发机构的证书创建服务主体
 
-以下示例使用证书颁发机构颁发的证书创建服务主体。 分配的范围限定为指定的 Azure 订阅。 它将服务主体添加到[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色。 如果在角色分配过程中发生错误，它会重试分配。
+以下示例使用证书颁发机构颁发的证书创建服务主体。 分配的范围限定为指定的 Azure 订阅。 它将服务主体添加到 "[读取](../../role-based-access-control/built-in-roles.md#reader)者" 角色。 如果在角色分配过程中发生错误，它会重试分配。
 
 ```powershell
 Param (
@@ -141,7 +146,7 @@ Param (
  {
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
-    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
+    New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
     $NewRole = Get-AzRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
@@ -222,6 +227,5 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 ## <a name="next-steps"></a>后续步骤
 
 * 若要使用密码设置服务主体，请参阅[使用 Azure PowerShell 创建 Azure 服务主体](/powershell/azure/create-azure-service-principal-azureps)。
-* 有关将应用程序集成到 Azure 以管理资源的详细步骤，请参阅[使用 Azure 资源管理器 API 进行授权的开发人员指南](../../azure-resource-manager/resource-manager-api-authentication.md)。
 * 有关应用程序和服务主体的详细说明，请参阅 [Application Objects and Service Principal Objects](app-objects-and-service-principals.md)（应用程序对象和服务主体对象）。
 * 有关 Azure AD 身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](authentication-scenarios.md)。

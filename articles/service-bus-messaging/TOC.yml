@@ -91,6 +91,8 @@
       href: service-bus-async-messaging.md
     - name: 处理中断和灾难问题
       href: service-bus-outages-disasters.md
+    - name: 限制
+      href: service-bus-throttling.md
     - name: 安全
       items:
         - name: 身份验证和授权

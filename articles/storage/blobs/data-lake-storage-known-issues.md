@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fb333db693c0f42b66e9fd45f5eb3c879787875d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 300da59aa1a16bb2c4cfeaf8035cbe882ae83358
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959114"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300246"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -21,20 +21,20 @@ ms.locfileid: "70959114"
 
 <a id="blob-apis-disabled" />
 
-## <a name="blob-storage-apis"></a>Blob 存储 API
+## <a name="blob-storage-apis"></a>Blob 存储 Api
 
-Blob 存储 API 已禁用，以防止可能出现的功能可操作性问题，因为 Blob 存储 API 还不能与 Azure Data Lake Gen2 API 互操作。
+禁用了 blob 存储 Api，以防止由于 Blob 存储 Api 尚未与 Azure Data Lake Gen2 Api 进行互操作而导致的功能可操作性问题。
 
 > [!NOTE]
-> 如果在 Data Lake Storage 上注册多协议访问的公共预览版, 则 blob Api 和 Data Lake Storage Gen2 Api 可以对相同的数据执行操作。 若要了解详细信息, 请参阅[Data Lake Storage 上的多协议访问](data-lake-storage-multi-protocol-access.md)。
+> 利用 Data Lake Storage 上的多协议访问的公共预览版，blob Api 和 Data Lake Storage Gen2 Api 可以对相同的数据进行操作。 若要了解详细信息，请参阅[Data Lake Storage 上的多协议访问](data-lake-storage-multi-protocol-access.md)。
 
 ### <a name="what-to-do-with-existing-tools-applications-and-services"></a>对于现有工具、应用程序和服务要采取的措施
 
-如果其中任何一个使用 Blob Api, 并且你想要使用它们来处理你上载到你的帐户的所有内容, 则有两个选择。
+如果其中任何一个使用 Blob Api，并且你想要使用它们来处理你的帐户中的所有内容，则有两个选择。
 
-* **选项 1**：请不要在 Blob 存储帐户上启用分层命名空间, 直到 Blob Api 与 Azure Data Lake Gen2 Api 互操作。 使用不带分层命名空间的存储帐户意味着你不能访问 Data Lake Storage Gen2 特定功能，例如目录和容器访问控制列表。
+* **选项 1**：请不要在 Blob 存储帐户上启用分层命名空间，直至[Data Lake Storage 上的多协议访问](data-lake-storage-multi-protocol-access.md)已正式发布，并且 Blob api 与 Azure Data Lake Gen2 api 完全可互操作。 [Data Lake Storage 上的多协议访问](data-lake-storage-multi-protocol-access.md)当前为公共预览版。  使用**不带**分层命名空间的存储帐户意味着你不能访问 Data Lake Storage Gen2 特定功能，例如目录和容器访问控制列表。
 
-* **选项 2**：[在 Data Lake Storage 上注册多协议访问](data-lake-storage-multi-protocol-access.md)的公共预览版。 调用 Blob Api 的工具和应用程序以及 Blob 存储功能 (如诊断日志) 可用于具有分层命名空间的帐户。
+* **选项 2**：启用分层命名空间。 利用[Data Lake Storage 上的多协议访问](data-lake-storage-multi-protocol-access.md)的公共预览版，调用 Blob api 的工具和应用程序以及 blob 存储功能（如诊断日志）可用于具有分层命名空间的帐户。 请务必查看本文了解已知问题和限制。
 
 ### <a name="what-to-do-if-you-used-blob-apis-to-load-data-before-blob-apis-were-disabled"></a>如果在禁用 Blob API 之前已使用 Blob API 上传了数据，该怎么办
 
@@ -50,7 +50,7 @@ Blob 存储 API 已禁用，以防止可能出现的功能可操作性问题，�
 
 ### <a name="issues-and-limitations-with-using-blob-apis-on-accounts-that-have-a-hierarchical-namespace"></a>在有分层命名空间的帐户上使用 Blob API 时存在的问题和限制
 
-如果在 Data Lake Storage 上注册多协议访问的公共预览版, 则 blob Api 和 Data Lake Storage Gen2 Api 可以对相同的数据执行操作。
+利用 Data Lake Storage 上的多协议访问的公共预览版，blob Api 和 Data Lake Storage Gen2 Api 可以对相同的数据进行操作。
 
 本部分介绍使用 Blob API 和 Data Lake Storage Gen2 API 对相同的数据执行操作时存在的问题和限制。
 
@@ -90,22 +90,22 @@ Blob 存储 API 已禁用，以防止可能出现的功能可操作性问题，�
 
 | 功能/工具    | 详细信息    |
 |--------|-----------|
-| **适用于 Data Lake Storage Gen2 存储帐户的 API** | 部分支持 <br><br>Data Lake Storage 上的多协议访问当前为公共预览版。 此预览版使你能够在 .NET、Java、Python Sdk 中使用具有分层命名空间的帐户。  Sdk 尚不包含 Api, 使你能够与目录交互或设置访问控制列表 (Acl)。 若要执行这些功能, 可以使用 Data Lake Storage Gen2 **REST** api。 |
+| **适用于 Data Lake Storage Gen2 存储帐户的 API** | 部分支持 <br><br>Data Lake Storage 上的多协议访问当前为公共预览版。 此预览版使你能够在 .NET、Java、Python Sdk 中使用具有分层命名空间的帐户。  Sdk 尚不包含 Api，使你能够与目录交互或设置访问控制列表（Acl）。 若要执行这些功能，可以使用 Data Lake Storage Gen2 **REST** api。 |
 | **AzCopy** | 特定于版本的支持 <br><br>仅使用最新版本的 AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json))。 不支持早期版本的 AzCopy，例如 AzCopy v8.1。|
-| **Azure Blob 存储生命周期管理策略** | 仅当你在[Data Lake Storage 预览版上注册多协议访问](data-lake-storage-multi-protocol-access.md)时才支持此项。 仅预览支持 "冷" 和 "存档" 访问层。 尚不支持删除 blob 快照。 |
-| **Azure 内容分发网络 (CDN)** | 尚不支持|
-| **Azure 搜索** |仅当你在[Data Lake Storage 预览版上注册多协议访问](data-lake-storage-multi-protocol-access.md)时才支持此项。|
+| **Azure Blob 存储生命周期管理策略** | [Data Lake Storage 预览版上的多协议访问](data-lake-storage-multi-protocol-access.md)支持。 仅预览支持 "冷" 和 "存档" 访问层。 尚不支持删除 blob 快照。 |
+| **Azure 内容分发网络（CDN）** | 尚不支持|
+| **Azure 搜索** |[Data Lake Storage 预览版上的多协议访问](data-lake-storage-multi-protocol-access.md)支持。|
 | **Azure 存储资源管理器** | 特定于版本的支持 <br><br>仅使用版本 `1.6.0` 或更高版本。 <br>版本 `1.6.0` 可[免费下载](https://azure.microsoft.com/features/storage-explorer/)。|
 | **Blob 容器 ACL** |尚不支持|
 | **Blobfuse** |尚不支持|
 | **自定义域** |尚不支持|
 | **文件系统资源管理器** | 有限支持 |
-| **诊断日志记录** |仅当你在 Data Lake Storage 预览中注册[多协议访问](data-lake-storage-multi-protocol-access.md)时，才支持诊断日志。 <br><br>当前不支持在 Azure 门户中启用日志。 下面是如何使用 PowerShell 启用日志的示例。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`。 <br><br>请确保将指定`Blob`为`-ServiceType`参数的值，如本示例中所示。 <br><br>目前，Azure 存储资源管理器不能用于查看诊断日志。 若要查看日志，请使用 AzCopy 或 Sdk。
+| **诊断日志记录** |[Data Lake Storage 预览版中的多协议访问](data-lake-storage-multi-protocol-access.md)支持诊断日志。 <br><br>当前不支持在 Azure 门户中启用日志。 下面是如何使用 PowerShell 启用日志的示例。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`。 <br><br>请确保指定 `Blob` 作为 @no__t 参数的值，如本示例中所示。 <br><br>目前，Azure 存储资源管理器不能用于查看诊断日志。 若要查看日志，请使用 AzCopy 或 Sdk。
 | **不可变存储** |尚不支持 <br><br>使用不可变存储可以 [WORM（一次写入，多次读取）](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)状态存储数据。|
-| **对象级层** |仅当你在[Data Lake Storage 预览版上注册多协议访问](data-lake-storage-multi-protocol-access.md)时, 才支持冷层和存档层。 <br><br> 目前尚不支持所有其他访问层。|
-| **Powershell 和 CLI 支持** | 受限功能 <br><br>支持创建帐户等管理操作。 数据平面操作 (如上传和下载文件) 作为[Data Lake Storage 上的多协议访问](data-lake-storage-multi-protocol-access.md)的一部分, 作为公共预览。 尚不支持使用目录和设置访问控制列表 (Acl)。 |
-| **静态网站** |尚不支持 <br><br>具体而言, 是将文件提供给[静态网站](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)的功能。|
-| **第三方应用程序** | 有限支持 <br><br>对于使用 REST API 保持正常运行的第三方应用程序，如果在 Data Lake Storage Gen2 中使用这些应用程序，则它们可继续正常运行。 <br>如果你在[Data Lake Storage 上注册多协议访问](data-lake-storage-multi-protocol-access.md)的公共预览版, 则调用 Blob api 的应用程序可能会起作用。 
+| **对象级层** |[Data Lake Storage 预览版中的多协议访问](data-lake-storage-multi-protocol-access.md)支持 "冷" 和 "存档" 层。 <br><br> 目前尚不支持所有其他访问层。|
+| **Powershell 和 CLI 支持** | 受限功能 <br><br>支持创建帐户等管理操作。 数据平面操作（如上传和下载文件）作为[Data Lake Storage 上的多协议访问](data-lake-storage-multi-protocol-access.md)的一部分，作为公共预览。 尚不支持使用目录和设置访问控制列表（Acl）。 |
+| **静态网站** |尚不支持 <br><br>具体而言，是将文件提供给[静态网站](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)的功能。|
+| **第三方应用程序** | 有限支持 <br><br>对于使用 REST API 保持正常运行的第三方应用程序，如果在 Data Lake Storage Gen2 中使用这些应用程序，则它们可继续正常运行。 <br>调用 Blob Api 的应用程序将很可能使用[Data Lake Storage 上的多协议访问](data-lake-storage-multi-protocol-access.md)的公共预览版。 
 | **版本控制功能** |尚不支持 <br><br>这包括[快照](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)和[软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)。|
 
 

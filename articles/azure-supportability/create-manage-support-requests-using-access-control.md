@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 基于角色的访问控制 (RBAC) 控制用于创建和管理支持请求的访问权限 | Microsoft 文档
+title: 用于在 Azure 中创建支持请求的访问控制
 description: 使用 Azure 基于角色的访问控制 (RBAC) 控制用于创建和管理支持请求的访问权限
 author: ganganarayanan
 ms.author: gangan
@@ -7,14 +7,18 @@ ms.date: 1/31/2017
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 94f21e973063dc627ef1424ca5393dd85aedd671
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 328f4928aff6a892849ce3e08fe794578b5e03a4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248839"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299257"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>使用 Azure 基于角色的访问控制 (RBAC) 控制用于创建和管理支持请求的访问权限
+
+> [!IMPORTANT]
+> 用于控制 Azure 中的支持请求的访问权限的这一手动方法已替换为内置角色。 有关详细信息，请参阅[支持请求参与者](../role-based-access-control/built-in-roles.md#support-request-contributor)。 
 
 [基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 可用于对 Azure 进行细致的访问管理。
 Azure 门户（[portal.azure.com](https://portal.azure.com)）中的支持请求创建使用 Azure 的 RBAC 模型定义谁可以创建和管理支持请求。

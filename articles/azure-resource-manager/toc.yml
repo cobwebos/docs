@@ -228,8 +228,6 @@
           href: resource-group-delete.md
         - name: 锁定资源
           href: resource-group-lock-resources.md
-        - name: 用于访问订阅的身份验证 API
-          href: resource-manager-api-authentication.md
         - name: 创建 EA 订阅
           href: programmatically-create-subscription.md
         - name: 授予访问权限以创建 EA 订阅

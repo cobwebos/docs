@@ -1,23 +1,20 @@
 ---
 title: Azure Functions 最佳做法 | Microsoft Docs
 description: 了解 Azure Functions 的最佳做法和模式。
-services: functions
-documentationcenter: na
-author: wesmc7777
-manager: jeconnoc
-keywords: Azure Functions, 模式, 最佳做法, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
+author: ggailey777
+manager: gwallace
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ad2f56388b49692d799202d06ed3dc0123f272e5
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933052"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294358"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
@@ -29,7 +26,9 @@ ms.locfileid: "70933052"
 
 ### <a name="avoid-long-running-functions"></a>避免使用长时间运行的函数
 
-长时间运行的大型函数可能会引起意外超时问题。 函数规模可能因含有许多 Node.js 依赖项而变大。 导入依赖项也会导致加载时间增加，引起意外的超时问题。 显式和隐式加载依赖项。 由代码加载的单个模块可能会加载自己的附加模块。  
+长时间运行的大型函数可能会引起意外超时问题。 若要了解有关给定宿主计划的超时的详细信息，请参阅[函数应用超时持续时间](functions-scale.md#timeout)。 
+
+函数规模可能因含有许多 Node.js 依赖项而变大。 导入依赖项也会导致加载时间增加，引起意外的超时问题。 显式和隐式加载依赖项。 由代码加载的单个模块可能会加载自己的附加模块。 
 
 尽可能将大型函数重构为可协同工作且快速返回响应的较小函数集。 例如，webhook 或 HTTP 触发器函数可能需要在特定时间限制内确认响应；webhook 需要快速响应，这很常见。 可将 HTTP 触发器有效负载传递到由队列触发器函数处理的队列。 此方法允许延迟实际工作并返回即时响应。
 

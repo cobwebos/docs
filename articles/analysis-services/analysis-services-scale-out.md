@@ -2,18 +2,17 @@
 title: Azure Analysis Services 横向扩展 | Microsoft Docs
 description: 通过横向扩展复制 Azure Analysis Services 服务器
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 29188013b75dbefbaf80f3c59360f203ae5b5a82
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 0e6a234e8b69eb48f00687916d4a7b48d3ba1040
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736754"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301186"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -25,7 +24,7 @@ ms.locfileid: "68736754"
 
 在典型的服务器部署中，一台服务器同时用作处理服务器和查询服务器。 如果服务器上针对模型的客户端查询数量超过服务器计划的查询处理单元 (QPU)，或模型处理与高查询工作负载同时发生，就会导致性能降低。 
 
-通过向外扩展, 可以创建最多具有7个附加查询副本资源的查询池 (包括*主*服务器在内的8个)。 可以缩放查询池中的副本数目以满足关键时刻的 QPU 需求，并且随时可以从查询池中隔离处理服务器。 
+通过向外扩展，可以创建最多具有7个附加查询副本资源的查询池（包括*主*服务器在内的8个）。 可以缩放查询池中的副本数目以满足关键时刻的 QPU 需求，并且随时可以从查询池中隔离处理服务器。 
 
 不论查询池中查询副本的数量如何，处理工作负载都不会分布在查询副本中。 主服务器充当处理服务器。 查询副本仅为针对查询池中主服务器与每个副本之间同步的模型数据库发出的查询提供服务。 
 
@@ -112,7 +111,7 @@ ms.locfileid: "68736754"
 |---------|---------|
 |-1     |  无效       |
 |0     | 正在复制        |
-|1     |  正在解冻       |
+|第     |  正在解冻       |
 |2     |   已完成       |
 |3     |   已失败      |
 |4     |    正在完成     |
@@ -143,9 +142,9 @@ ms.locfileid: "68736754"
 
 ![服务器名称](media/analysis-services-scale-out/aas-scale-out-name.png)
 
-## <a name="scale-up-scale-down-vs-scale-out"></a>向上缩放、向下缩放与横向扩展
+## <a name="scale-up-scale-down-vs-scale-out"></a>纵向扩展、纵向缩减与横向扩展
 
-可以在具有多个副本的服务器上更改定价层。 同一定价层适用于所有副本。 缩放操作首先将所有副本全部关闭, 然后在新的定价层上打开所有副本。
+可以在具有多个副本的服务器上更改定价层。 同一定价层适用于所有副本。 缩放操作将首先同时关闭所有副本，然后在新的定价层上启动所有副本。
 
 ## <a name="troubleshoot"></a>故障排除
 

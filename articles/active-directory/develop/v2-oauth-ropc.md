@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/11/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d5324aba5202abb76f07d1eaf43fe214e690393
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 2fb475a5d88547cc5f39cb269cc1cbf72fcd25b3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193206"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295392"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
 
@@ -30,20 +30,21 @@ Microsoft 标识平台支持[资源所有者密码凭据 (ROPC) 授予](https://
 
 > [!IMPORTANT]
 >
-> * Microsoft 标识平台终结点仅支持 Azure AD 租户的 ROPC, 而不支持个人帐户。 这意味着，必须使用特定于租户的终结点 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 或 `organizations` 终结点。
+> * Microsoft 标识平台终结点仅支持 Azure AD 租户的 ROPC，而不支持个人帐户。 这意味着，必须使用特定于租户的终结点 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 或 `organizations` 终结点。
 > * 受邀加入 Azure AD 租户的个人帐户不能使用 ROPC。
 > * 没有密码的帐户不能通过 ROPC 登录。 对于这种情况，建议改用适合应用的其他流。
 > * 如果用户需使用多重身份验证 (MFA) 来登录应用程序，则系统会改为阻止用户。
+> * [混合身份验证](/azure/active-directory/hybrid/whatis-fed)方案（例如 Azure AD 和用于对本地帐户进行身份验证的 ADFS）不支持 ROPC。 如果用户完全被页面重定向到本地标识提供程序，Azure AD 无法针对该标识提供程序测试用户名和密码。 不过，ROPC 支持[传递身份验证](/azure/active-directory/hybrid/how-to-connect-pta)。
 
 ## <a name="protocol-diagram"></a>协议图
 
 下图显示了 ROPC 流。
 
-![显示资源所有者密码凭据流的图示](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
+![显示资源所有者密码凭据流的关系图](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>授权请求
 
-ROPC 流是单个请求: 将客户端标识和用户的凭据发送到 IDP, 然后接收返回的令牌。 在这样做之前，客户端必须请求用户的电子邮件地址 (UPN) 和密码。 在成功进行请求之后，客户端应立即以安全方式释放内存中的用户凭据， 而不得保存这些凭据。
+ROPC 流是单个请求：将客户端标识和用户的凭据发送到 IDP，然后接收返回的令牌。 在这样做之前，客户端必须请求用户的电子邮件地址 (UPN) 和密码。 在成功进行请求之后，客户端应立即以安全方式释放内存中的用户凭据， 而不得保存这些凭据。
 
 > [!TIP]
 > 尝试在 Postman 中执行此请求！
@@ -66,14 +67,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数 | 条件 | 描述 |
 | --- | --- | --- |
-| `tenant` | 必填 | 一个目录租户，用户需登录到其中。 这可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
-| `client_id` | 必填 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 | 
-| `grant_type` | 必填 | 必须设置为 `password`。 |
-| `username` | 必填 | 用户的电子邮件地址。 |
-| `password` | 必填 | 用户的密码。 |
+| `tenant` | 需要 | 一个目录租户，用户需登录到其中。 这可采用 GUID 或友好名称格式。 此参数不能设置为 `common` 或 `consumers`，但可以设置为 `organizations`。 |
+| `client_id` | 需要 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 | 
+| `grant_type` | 需要 | 必须设置为 `password`。 |
+| `username` | 需要 | 用户的电子邮件地址。 |
+| `password` | 需要 | 用户的密码。 |
 | `scope` | 建议 | 以空格分隔的[范围](v2-permissions-and-consent.md)或权限的列表，这是应用需要的。 在交互式流中，管理员或用户必须提前同意这些范围。 |
-| `client_secret`| 有时需要 | 如果你的应用程序是公用客户端, `client_secret`则`client_assertion`不能包含或。  如果应用是机密客户端, 则必须将其包含在内。 | 
-| `client_assertion` | 有时需要 | 使用证书生成的`client_secret`不同形式的。  有关更多详细信息, 请参阅[证书凭据](active-directory-certificate-credentials.md)。 | 
+| `client_secret`| 有时需要 | 如果你的应用程序是公用客户端，则不能包含 `client_secret` 或 `client_assertion`。  如果应用是机密客户端，则必须将其包含在内。 | 
+| `client_assertion` | 有时需要 | 使用证书生成的不同形式 `client_secret`。  有关更多详细信息，请参阅[证书凭据](active-directory-certificate-credentials.md)。 | 
 
 ### <a name="successful-authentication-response"></a>成功的身份验证响应
 
@@ -108,9 +109,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Error | 描述 | 客户端操作 |
 |------ | ----------- | -------------|
 | `invalid_grant` | 身份验证失败 | 凭据不正确，或者客户端没有所请求范围的许可。 如果没有授予范围，则会返回 `consent_required` 错误。 如果发生这种情况，客户端应通过 Webview 或浏览器向用户发送交互式提示。 |
-| `invalid_request` | 请求的构造方式不正确 | 授予类型在 `/common` 或 `/consumers` 身份验证上下文中不受支持。  请`/organizations`改用或租户 ID。 |
+| `invalid_request` | 请求的构造方式不正确 | 授予类型在 `/common` 或 `/consumers` 身份验证上下文中不受支持。  请改用 `/organizations` 或租户 ID。 |
 
-## <a name="learn-more"></a>了解详情
+## <a name="learn-more"></a>了解详细信息
 
 * 请通过[示例控制台应用程序](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)自行试用 ROPC。
 * 若要确定是否应使用 v2.0 终结点，请阅读 [Microsoft 标识平台限制](active-directory-v2-limitations.md)。

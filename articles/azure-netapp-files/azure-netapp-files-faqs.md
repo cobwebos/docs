@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: ec0fa0ba7c7cad698cda0f7b440415c3dbb0236a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: eefa54806d9f5ec9ef3a0c02e4abbaf6b4bf22e2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299622"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298476"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -50,7 +50,7 @@ ms.locfileid: "71299622"
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Azure VM 和存储之间的网络流量是否可以加密？
 
-未加密数据流量（从 NFSv3 或 SMBv3 客户端到 Azure NetApp 文件卷的流量）。 但是，从 Azure VM （运行 NFS 或 SMB 客户端）到 Azure NetApp 文件的流量与任何其他 Azure VM 到 VM 的流量一样安全。 此流量是 Azure 数据中心网络的本地流量。 
+未加密数据流量（从 NFSv3、NFSv 4.1 或 SMBv3 客户端到 Azure NetApp 文件卷的流量）。 但是，从 Azure VM （运行 NFS 或 SMB 客户端）到 Azure NetApp 文件的流量与任何其他 Azure VM 到 VM 的流量一样安全。 此流量是 Azure 数据中心网络的本地流量。 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>是否可以静态加密存储？
 
@@ -103,7 +103,7 @@ Azure NetApp 文件提供了卷性能指标。 你还可以使用 Azure Monitor 
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>我希望在启动或重新启动 Azure VM 时自动装载卷。  如何实现为持久性 NFS 卷配置主机？
 
-要使 NFS 卷在 VM 启动或重新启动时自动装载，请在主机上`/etc/fstab`的文件中添加一个条目。 
+要使 NFS 卷在 VM 启动或重新启动时自动装载，请将条目添加到主机上的 @no__t 0 文件中。 
 
 例如： `$ANFIP:/$FILEPATH      /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
@@ -120,7 +120,11 @@ DF 中报告的卷大小是 Azure NetApp 文件量可以增长到的最大大小
 
 ### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Azure NetApp 文件支持什么 NFS 版本？
 
-Azure NetApp 文件目前支持 NFSv3。
+Azure NetApp 文件支持 NFSv3 和 NFSv 4.1。 可以使用任一 NFS 版本创建卷。 
+
+> [!IMPORTANT] 
+> 对 NFSv 4.1 功能的访问需要允许列表。  若要请求允许列表，请将请求提交到 <anffeedback@microsoft.com>。 
+
 
 ### <a name="how-do-i-enable-root-squashing"></a>如何实现启用根 squashing？
 
@@ -140,7 +144,7 @@ Azure NetApp 文件目前支持每个订阅一个 Active Directory 连接。 此
 
 支持[Azure Active Directory （AD）域服务](https://docs.microsoft.com/azure/active-directory-domain-services/overview)和[Active Directory 域服务（AD DS）](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) 。 可以将现有 Active Directory 域控制器与 Azure NetApp 文件一起使用。 域控制器可以作为虚拟机或本地通过 ExpressRoute 或 S2S VPN 驻留在 Azure 中。 目前，Azure NetApp 文件不支持[Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/)的 AD join。
 
-如果将 Azure NetApp 文件与 Azure Active Directory 域服务一起使用，则在为 NetApp 帐户`OU=AADDC Computers`配置 Active Directory 时，组织单位路径为。
+如果将 Azure NetApp 文件与 Azure Active Directory 域服务一起使用，则在为 NetApp 帐户配置 Active Directory 时，组织单位路径 @no__t 为0。
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>支持哪些版本的 Windows Server Active Directory？
 

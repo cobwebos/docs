@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 388b389cca7c3e820ea3ccfd37a2a93ccd476b31
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: c3c13b7e28ef7c17fd45682d828f318de5326542
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254641"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293869"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -30,6 +30,10 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
 
 * [Azure Functions 开发人员指南](functions-reference.md)
 * [Azure Functions Visual Studio 2019 工具](functions-develop-vs.md)
+
+## <a name="supported-versions"></a>支持的版本
+
+Azure Functions 2.x 运行时使用 .NET Core 2.2。 函数代码可以通过更新 Visual Studio 项目设置来使用 .NET Core 2.2 Api。 函数模板并不默认为 .NET Core 2.2，以避免对未安装 .NET Core 2.2 的客户造成不利影响。
 
 ## <a name="functions-class-library-project"></a>Functions 类库项目
 
@@ -54,6 +58,7 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
 
 > [!IMPORTANT]
 > 生成过程将为每个函数创建一个 *function.json* 文件。 此 *function.json* 文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 要了解如何禁用函数，请参阅[如何禁用函数](disable-function.md#functions-2x---c-class-libraries)。
+
 
 ## <a name="methods-recognized-as-functions"></a>识别为函数的方法
 
@@ -156,7 +161,7 @@ public static class BindingExpressionsExample
 
 *function.json* 文件生成是由 NuGet 包 [Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) 生成的。 
 
-Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1\.x 项目和 2.x 项目的不同之处在于目标框架。 以下是 csproj  文件的相关部分，其中显示了不同的目标框架和相同的 `Sdk` 包：
+Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1\.x 项目和 2.x 项目的不同之处在于目标框架。 以下是 csproj 文件的相关部分，其中显示了不同的目标框架和相同的 `Sdk` 包：
 
 **Functions 1.x**
 
@@ -191,7 +196,7 @@ GitHub 存储库 [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azu
 
 Visual Studio 使用 [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 运行 Functions 项目。 Core Tools 是适用于 Functions 运行时的命令行接口。
 
-如果使用 npm 安装 Core Tools，则不会影响 Visual Studio 使用的 Core Tools 版本。 对于 Functions 运行时版本 1.x，Visual Studio 在 %USERPROFILE%\AppData\Local\Azure.Functions.Cli 中存储 Core Tools 版本且存储最新版本  。 对于 Functions 2.x，Core Tools 包含在 Azure Functions 和 Web Jobs Tools 扩展中  。 对于 1.x 和 2.x，运行 Functions 项目时可以看到控制台输出中正在使用何种版本：
+如果使用 npm 安装 Core Tools，则不会影响 Visual Studio 使用的 Core Tools 版本。 对于 Functions 运行时版本 1.x，Visual Studio 在 %USERPROFILE%\AppData\Local\Azure.Functions.Cli 中存储 Core Tools 版本且存储最新版本。 对于 Functions 2.x，Core Tools 包含在 Azure Functions 和 Web Jobs Tools 扩展中。 对于 1.x 和 2.x，运行 Functions 项目时可以看到控制台输出中正在使用何种版本：
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
@@ -248,7 +253,7 @@ public static class SimpleExample
 } 
 ```
 
-避免在 Azure Functions 中使用 `Console.Write`。 有关详细信息，请参阅“监视 Azure Functions”文章中的[使用 C# 函数编写日志](functions-monitoring.md#write-logs-in-c-functions)  。
+避免在 Azure Functions 中使用 `Console.Write`。 有关详细信息，请参阅“监视 Azure Functions”文章中的[使用 C# 函数编写日志](functions-monitoring.md#write-logs-in-c-functions)。
 
 ## <a name="async"></a>异步
 
@@ -344,7 +349,7 @@ public static class EnvironmentVariablesExample
   }
   ```
 
-  `BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如, 移动应用表输出绑定支持[6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), 但只能将[ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)或[IAsyncCollector\<> t](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)与命令式绑定一起使用。
+  `BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如，移动应用表输出绑定支持[六种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于命令性绑定，仅可使用 [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [IAsyncCollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
 
 ### <a name="single-attribute-example"></a>单属性示例
 

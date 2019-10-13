@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: d1c80e2ab9ae6a893b1adea6bd68e9b585288d8b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0bf52b45bc315874c58be50bccbffa49090d554d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074957"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294339"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
 
@@ -33,12 +33,13 @@ ms.locfileid: "71074957"
 ### <a name="open-api-general"> </a>常规
 
 -   路径和查询所需的参数必须具有唯一名称。 （在 OpenAPI 中，参数名称只需要在一个位置内是唯一的，例如路径、查询、标头。 但是，在 API 管理中，我们允许操作通过路径和查询参数进行区分（OpenAPI 不支持此方法）。 这就是要求参数名称在整个 URL 模板中是唯一的原因。）
--   引用指针无法引用外部文件。  **\$**
+-   **@no__t 1ref**指针无法引用外部文件。
 -   仅支持 **x-ms-paths** 和 **x-servers** 扩展。
 -   自定义扩展在导入时将被忽略，并且不会为导出保存或保留。
 -   **递归** - API 管理目前不支持以递归方式定义的定义（例如，引用自身的架构）。
 -   源文件 URL（如果可用）应用于相对服务器 URL。
 -   忽略安全定义。
+-   不支持 API 操作的内联架构定义。 架构定义在 API 作用域中定义，可在 API 操作请求或响应范围内引用。
 
 ### <a name="open-api-v2"> </a>OpenAPI 版本 2
 

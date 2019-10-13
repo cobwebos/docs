@@ -2,18 +2,17 @@
 title: Azure Analysis Services 中支持的数据源 | Microsoft Docs
 description: 介绍 Azure Analysis Services 中数据模型支持的数据源。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 79346f0bf80386fb83f55daccda8790652ff8541
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993384"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298634"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -34,7 +33,7 @@ ms.locfileid: "70993384"
 ||||
 
 <a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。   
-<a name="azsqlmanaged">2</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例在使用专用 IP 地址的 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则需要本地数据网关。    
+<a name="azsqlmanaged">2</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例使用专用 IP 地址在 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则需要本地数据网关。    
 <a name="databricks">3</a> - 目前不支持使用 Spark 连接器的 Azure Databricks。   
 <a name="gen2">4</a> - 目前不支持 ADLS Gen2。
 
@@ -50,8 +49,8 @@ ms.locfileid: "70993384"
 
 |数据源 | 内存中提供程序 | DirectQuery 提供程序 |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据访问接口 |
-| SQL Server 数据仓库 |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据访问接口 |
+| SQL Server |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
+| SQL Server 数据仓库 |SQL Server Native Client 11.0、用于 SQL Server 的 Microsoft OLE DB 提供程序、用于 SQL Server 的 .NET Framework 数据提供程序 | 用于 SQL Server 的 .NET Framework 数据提供程序 |
 | Oracle | 用于 Oracle 的 OLE DB 提供程序、用于 .NET 的 Oracle 数据提供程序 |用于 .Net 的 Oracle 数据提供程序 |
 | Teradata |用于 Teradata 的 OLE DB 提供程序、用于 .NET 的 Teradata 数据提供程序 |用于 .Net 的 Teradata 数据提供程序 |
 | | | |

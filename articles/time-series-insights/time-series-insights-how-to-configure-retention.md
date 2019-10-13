@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5cc1489af1dce3a9a57b96a3240c63e0395c33a
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 9986f57b05032c1e12769d59781e8b7aca443abb
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947228"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298992"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>在时序见解中配置保留期
 
@@ -24,7 +24,7 @@ ms.locfileid: "68947228"
 
 ## <a name="summary"></a>总结
 
-每个时序见解 (TSI) 环境都有用于配置**数据保留时间**的设置。 该值的范围为 1 到 400 天。 将根据环境存储容量或保留期限 (1-400) 删除数据，以先达到的条件为准。
+每个 Azure 时序见解环境都有一个设置来配置**数据保留时间**。 该值的范围为 1 到 400 天。 将根据环境存储容量或保留期限 (1-400) 删除数据，以先达到的条件为准。
 
 每个 TSI 环境都有一项附加设置：“超出存储限制时的行为”。 此设置控制达到环境最大容量时的传入和清除行为。 可以从两种行为中进行选择：
 
@@ -41,13 +41,17 @@ ms.locfileid: "68947228"
 
 1. 在“设置”标题下，选择“配置”。
 
-1. 选择“数据保留时间”，以通过使用滚动条或在文本框中键入数字来配置保留期。
+    [@no__t 1Select 设置，然后配置](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+
+1. 选择 "**数据保留时间（天）** "，使用滚动条或在文本框中键入一个数字来配置保留期。
 
 1. 请注意“容量”设置，因为此配置会影响数据事件的最大数量和用于存储数据的总存储容量。
 
 1. 切换“超出存储限制时的行为”设置。 选择“清除旧数据”或“暂停传入”行为。
 
-1. 选择“保存”以配置更改。
+    [![Data 保留接受并保存。](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+
+1. 接受此复选框，指出您已经查看了文档并了解丢失数据的潜在风险。 选择“保存”以配置更改。
 
 ## <a name="next-steps"></a>后续步骤
 

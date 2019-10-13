@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 548f37d6a0d4390fb98ceaee7b59314400debb38
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986550"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299624"
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
@@ -26,7 +26,7 @@ Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助�
     - 支持通过 Azure AD 集成执行 blob 和队列数据操作。 可以将范围为订阅、资源组、存储帐户或单个容器或队列的 RBAC 角色分配给 Azure 资源的某个安全主体或托管标识。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure 存储访问进行身份验证](storage-auth-aad.md)。   
 - 在应用程序和 Azure 之间传输数据时，可使用[客户端加密](../storage-client-side-encryption.md)、HTTPS 或 SMB 3.0 保护数据。  
 - Azure 虚拟机使用的 OS 和数据磁盘可使用 [Azure 磁盘加密](../../security/azure-security-disk-encryption.md)进行加密。
-- 可以使用共享访问签名来授予对 Azure 存储中数据对象的委派访问权限。 有关详细信息, 请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)。
+- 在 Azure 存储中，可以使用共享访问签名授予数据对象的委派访问权限。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)。
 
 本文概述其中每项可配合 Azure 存储使用的安全功能。 提供的文章链接提供每项功能的详细信息，让你轻松地进一步探讨每个主题。
 
@@ -102,10 +102,8 @@ Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助�
 * [Azure Storage Resource Provider REST API Reference](https://msdn.microsoft.com/library/azure/mt163683.aspx)（Azure 存储资源提供程序 REST API 参考）
 
   该 API 参考信息介绍了可用于按编程方式管理存储帐户的 API。
-* [使用资源管理器身份验证 API 访问订阅](../../azure-resource-manager/resource-manager-api-authentication.md)
 
-  此文说明如何使用 Resource Manager API 进行身份验证。
-* [Role-Based Access Control for Microsoft Azure from Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
+* [Role-Based Access Control for Microsoft Azure from Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)（Ignite 中提供的适用于 Microsoft Azure 的基于角色的访问控制）
 
   这是第 9 频道中提供的 2015 MS Ignite 会议视频链接。 此次研讨会讨论了 Azure 中的访问管理和报告功能，并探索使用 Azure Active Directory 安全访问 Azure 订阅的最佳实践。
 
@@ -427,7 +425,7 @@ SSE 由 Azure 存储管理。 SSE 不是针对传输中数据安全性提供的�
 
   本文提供 Microsoft Message Analyzer 的参考信息，包括教程、快速入门和功能摘要的链接。
 
-## <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享(CORS)
+## <a name="cross-origin-resource-sharing-cors"></a>跨源资源共享 (CORS)
 ### <a name="cross-domain-access-of-resources"></a>跨域访问资源
 在某一个域中运行的 Web 浏览器对来自不同域的资源发出 HTTP 请求称为跨域 HTTP 请求。 例如，contoso.com 中的 HTML 页面将对 fabrikam.blob.core.windows.net 上托管的 jpeg 发出请求。 出于安全原因，浏览器将限制从脚本（例如 JavaScript）中初始化的跨域 HTTP 请求。 这意味着，如果 contoso.com 的页面上有一些 JavaScript 代码请求 fabrikam.blob.core.windows.net 上的该 jpeg，浏览器将拒绝此请求。
 

@@ -2,18 +2,17 @@
 title: 使用 Excel 连接到 Azure Analysis Services | Microsoft Docs
 description: 了解如何使用 Excel 连接到 Azure Analysis Services 服务器。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4e6c73ad465f362a046a339f286cc25b4af508cf
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 1ba6864d0bab460b270f6f27acced57d7943a17a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619184"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295333"
 ---
 # <a name="connect-with-excel"></a>使用 Excel 进行连接
 

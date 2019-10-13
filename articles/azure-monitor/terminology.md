@@ -10,23 +10,26 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2019
+ms.date: 10/08/2019
 ms.author: bwren
-ms.openlocfilehash: f8a86c0b71a5248164ea522472f9f2ecb2ce36bc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: dc7d839c81edd67d69e1525d219f87ee70f17502
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827353"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300520"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor 命名和术语更改
 最近对 Azure Monitor 进行了重要更改，整合了不同的服务，目的是为 Azure 客户简化监视过程。 本文介绍最近在 Azure Monitor 文档中所做的名称和术语更改。
+
+## <a name="october-2019---diagnostic-log-to-resource-log"></a>10月 2019-诊断日志到资源日志
+诊断日志已更改为 "资源日志"，以更好地匹配实际收集的内容。 术语 "诊断设置" 将保持不变。  
 
 ## <a name="february-2019---log-analytics-terminology"></a>2019 年 2 月 - Log Analytics 术语
 将不同的服务合并到 Azure Monitor 下以后，我们将执行下一步，修改文档中的术语，以便更好地描述 Azure Monitor 服务及其不同的组件。 
 
 ### <a name="log-analytics"></a>Log Analytics
-Azure Monitor 日志数据仍然存储在 Log Analytics 工作区中，并仍然由同一 Log Analytics 服务收集并分析，但我们会在许多位置将术语 _Log Analytics_ 更改为“Azure Monitor 日志”。 此术语可以更好地反映其在 Azure Monitor 中的角色, 并与[Azure Monitor 中的指标](platform/data-platform-metrics.md)提供更好的一致性。
+Azure Monitor 日志数据仍然存储在 Log Analytics 工作区中，并仍然由同一 Log Analytics 服务收集并分析，但我们会在许多位置将术语 _Log Analytics_ 更改为“Azure Monitor 日志”。 此术语更好地反映了它在 Azure Monitor 中的角色，并提供了与 [Azure Monitor 中的指标](platform/data-platform-metrics.md)更好的一致性。
 
 术语 _Log Analytics_ 现在主要应用于 Azure 门户中的页面，用于编写和运行查询以及分析日志数据。 它在功能上相当于[指标资源管理器](platform/metrics-charts.md)，后者是 Azure 门户中的页面，用于分析指标数据。
 

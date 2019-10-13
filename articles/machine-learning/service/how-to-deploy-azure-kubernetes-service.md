@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: c32560f7bb182ac347e9e5a71b53b57cf80fac38
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: dfaa39b33839406ffdf484299cb520aebf011c7d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034627"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299683"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes Service 群集
 
@@ -48,17 +48,17 @@ ms.locfileid: "71034627"
 
     * `ws`-设置为你的工作区。
     * `model`-设置为已注册的模型。
-    * `inference_config`-将设置为模型的推理配置。
+    * `inference_config`-设置为模型的推理配置。
 
     有关设置这些变量的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- 本文中的__CLI__代码段假定您已创建一个`inferenceconfig.json`文档。 有关创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
+- 本文中的__CLI__代码段假设你已创建 @no__t 1 文档。 有关创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="create-a-new-aks-cluster"></a>创建新的 AKS 群集
 
 **时间估计**：大约 20 分钟。
 
-创建或附加 AKS 群集是工作区的一次过程。 可以将此群集重复用于多个部署。 如果删除群集或包含该群集的资源组, 则下次需要部署时, 必须创建新群集。 可以将多个 AKS 群集附加到工作区。
+创建或附加 AKS 群集是工作区的一次过程。 可以将此群集重复用于多个部署。 如果删除群集或包含该群集的资源组，则下次需要部署时，必须创建新群集。 可以将多个 AKS 群集附加到工作区。
 
 > [!TIP]
 > 如果要使用 Azure 虚拟网络保护 AKS 群集，必须先创建虚拟网络。 有关详细信息，请参阅[通过 Azure 虚拟网络进行安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。
@@ -66,7 +66,7 @@ ms.locfileid: "71034627"
 如果要创建 AKS 群集以进行__开发__、__验证__和__测试__，而不是生产，则可以将__群集目的__指定为进行开发__测试__。
 
 > [!WARNING]
-> 如果设置`cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`，则创建的群集不适用于生产级别的流量，可能会增加推理时间。 开发/测试群集也不保证容错能力。 对于开发/测试群集，建议至少2个虚拟 Cpu。
+> 如果将 @no__t 设置为 "0"，则创建的群集不适用于生产级别的流量，可能会增加推理时间。 开发/测试群集也不保证容错能力。 对于开发/测试群集，建议至少2个虚拟 Cpu。
 
 以下示例演示如何使用 SDK 和 CLI 创建新的 AKS 群集：
 
@@ -91,9 +91,9 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> 对于[`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)，如果你为`agent_count`和`vm_size`选择`agent_count` `cluster_purpose` 了自`DEV_TEST`定义值，并且不是，则需要确保乘以大于或等于12个虚拟cpu。`vm_size` 例如，如果使用的是`vm_size`具有4个虚拟 cpu 的 "Standard_D3_v2"，则应`agent_count`选择3个或更多的。
+> 对于[`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)，如果选择 `agent_count` 和 `vm_size` 的自定义值，并且 `cluster_purpose` 不是 @no__t 5，则需要确保 `vm_size` 乘以 @no__t 大于或等于12个虚拟 cpu。 例如，如果使用的是具有4个虚拟 Cpu 的 @no__t "Standard_D3_v2"，则应选择3个或更高的 @no__t。
 >
-> Azure 机器学习 SDK 不支持缩放 AKS 群集。 若要缩放群集中的节点, 请在 Azure 门户中使用 AKS 群集的 UI。 只能更改节点计数, 而不能更改群集的 VM 大小。
+> Azure 机器学习 SDK 不支持缩放 AKS 群集。 若要缩放群集中的节点，请在 Azure 门户中使用 AKS 群集的 UI。 只能更改节点计数，而不能更改群集的 VM 大小。
 
 有关此示例中使用的类、方法和参数的详细信息，请参阅以下参考文档：
 
@@ -112,9 +112,9 @@ az ml computetarget create aks -n myaks
 
 ## <a name="attach-an-existing-aks-cluster"></a>附加现有的 AKS 群集
 
-**估计时间:** 大约5分钟。
+**估计时间：** 大约5分钟。
 
-如果 Azure 订阅中已有 AKS 群集, 并且它是版本 1.12. # #, 则可以使用它来部署映像。
+如果 Azure 订阅中已有 AKS 群集，并且该群集低于版本1.14，则可以使用它来部署映像。
 
 > [!TIP]
 > 现有的 AKS 群集可以位于 Azure 区域，而不是 Azure 机器学习工作区。
@@ -122,18 +122,18 @@ az ml computetarget create aks -n myaks
 > 如果要使用 Azure 虚拟网络保护 AKS 群集，必须先创建虚拟网络。 有关详细信息，请参阅[通过 Azure 虚拟网络进行安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。
 
 > [!WARNING]
-> 将 AKS 群集附加到工作区时, 可以通过设置`cluster_purpose`参数来定义使用群集的方式。
+> 将 AKS 群集附加到工作区时，可以通过设置 @no__t 参数来定义使用群集的方式。
 >
-> 如果未设置`cluster_purpose`参数或设置`cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, 则群集必须有至少12个可用的虚拟 cpu。
+> 如果未设置 @no__t 参数或将 @no__t 设置为-1，则群集必须有至少12个可用的虚拟 Cpu。
 >
-> 如果设置`cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`了, 则群集不需要具有12个虚拟 cpu。 建议至少2个虚拟 Cpu 用于开发/测试。 但是，为开发/测试配置的群集不适用于生产级别的流量，可能会增加推理时间。 开发/测试群集也不保证容错能力。
+> 如果将 @no__t 设置为0，则群集不需要有12个虚拟 Cpu。 建议至少2个虚拟 Cpu 用于开发/测试。 但是，为开发/测试配置的群集不适用于生产级别的流量，可能会增加推理时间。 开发/测试群集也不保证容错能力。
 
 有关使用 Azure CLI 或门户创建 AKS 群集的详细信息，请参阅以下文章：
 
 * [创建 AKS 群集（CLI）](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
-* [创建 AKS 群集 (门户)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
+* [创建 AKS 群集（门户）](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
-以下示例演示了如何将现有的 AKS 1.12. # # 群集附加到工作区：
+以下示例演示了如何将现有的 AKS 群集附加到工作区：
 
 **使用 SDK**
 
@@ -160,7 +160,7 @@ aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
 
 **使用 CLI**
 
-若要使用 CLI 附加现有群集，需要获取现有群集的资源 ID。 若要获取此值，请使用以下命令。 将`myexistingcluster`替换为 AKS 群集的名称。 将`myresourcegroup`替换为包含群集的资源组：
+若要使用 CLI 附加现有群集，需要获取现有群集的资源 ID。 若要获取此值，请使用以下命令。 将 `myexistingcluster` 替换为 AKS 群集的名称。 将 `myresourcegroup` 替换为包含群集的资源组：
 
 ```azurecli
 az aks show -n myexistingcluster -g myresourcegroup --query id
@@ -172,7 +172,7 @@ az aks show -n myexistingcluster -g myresourcegroup --query id
 /subscriptions/{GUID}/resourcegroups/{myresourcegroup}/providers/Microsoft.ContainerService/managedClusters/{myexistingcluster}
 ```
 
-若要将现有群集附加到工作区，请使用以下命令。 替换`aksresourceid`为上一命令返回的值。 将`myresourcegroup`替换为包含工作区的资源组。 将`myworkspace`替换为你的工作区名称。
+若要将现有群集附加到工作区，请使用以下命令。 将 `aksresourceid` 替换为上一命令返回的值。 将 `myresourcegroup` 替换为包含工作区的资源组。 将 `myworkspace` 替换为你的工作区名称。
 
 ```azurecli
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
@@ -210,7 +210,7 @@ print(service.get_logs())
 
 ### <a name="using-the-cli"></a>使用 CLI
 
-若要使用 CLI 进行部署, 请使用以下命令。 替换`myaks`为 AKS 计算目标的名称。 替换`mymodel:1`为注册的模型的名称和版本。 替换`myservice`为要为此服务提供的名称:
+若要使用 CLI 进行部署，请使用以下命令。 将 `myaks` 替换为 AKS 计算目标的名称。 将 `mymodel:1` 替换为已注册的模型的名称和版本。 将 `myservice` 替换为要为此服务提供的名称：
 
 ```azurecli-interactive
 az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
@@ -231,7 +231,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 部署到 Azure Kubernetes 服务时，默认情况下启用__基于密钥的__身份验证。 你还可以启用__基于令牌的__身份验证。 基于令牌的身份验证要求客户端使用 Azure Active Directory 帐户来请求身份验证令牌，该令牌用于向部署的服务发出请求。
 
-若要__禁用__身份验证， `auth_enabled=False`请在创建部署配置时设置参数。 下面的示例使用 SDK 禁用身份验证：
+若要__禁用__身份验证，请在创建部署配置时设置 `auth_enabled=False` 参数。 下面的示例使用 SDK 禁用身份验证：
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, auth_enabled=False)
@@ -241,7 +241,7 @@ deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1,
 
 ### <a name="authentication-with-keys"></a>密钥身份验证
 
-如果启用密钥身份验证，则可以使用`get_keys`方法检索主要和辅助身份验证密钥：
+如果启用密钥身份验证，则可以使用 `get_keys` 方法检索主要和辅助身份验证密钥：
 
 ```python
 primary, secondary = service.get_keys()
@@ -253,13 +253,13 @@ print(primary)
 
 ### <a name="authentication-with-tokens"></a>带令牌的身份验证
 
-若要启用令牌身份验证， `token_auth_enabled=True`请在创建或更新部署时设置参数。 下面的示例使用 SDK 启用令牌身份验证：
+若要启用令牌身份验证，请在创建或更新部署时设置 @no__t 参数。 下面的示例使用 SDK 启用令牌身份验证：
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, token_auth_enabled=True)
 ```
 
-如果启用令牌身份验证，则可以使用`get_token`方法检索 JWT 令牌和令牌的过期时间：
+如果启用令牌身份验证，则可以使用 `get_token` 方法检索 JWT 令牌和令牌的过期时间：
 
 ```python
 token, refresh_by = service.get_token()
@@ -267,7 +267,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> 需要在令牌`refresh_by`时间之后请求新令牌。
+> 需要在令牌的 `refresh_by` 时间之后请求新令牌。
 >
 > Microsoft 强烈建议在 Azure Kubernetes Service 群集所在的同一区域中创建 Azure 机器学习工作区。 若要使用令牌进行身份验证，web 服务将调用创建 Azure 机器学习工作区的区域。 如果工作区的区域不可用，则即使群集与工作区位于不同的区域，也无法获取 web 服务的令牌。 这实际上会导致在工作区的区域再次可用之前，不能使用基于令牌的身份验证。 此外，群集区域与工作区区域之间的距离越大，提取令牌所需的时间就越长。
 

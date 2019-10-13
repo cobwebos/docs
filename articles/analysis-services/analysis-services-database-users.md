@@ -2,18 +2,17 @@
 title: 管理 Azure Analysis Services 中的数据库角色和用户| Microsoft Docs
 description: 了解如何在 Azure 中管理 Analysis Services 服务器上的数据库角色和用户。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2a6c63c4ae58079c79a9d344f1e2550e4768088f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 426b69173994fc94a52ef0fcccb0dbc6315de14a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932239"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301148"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
@@ -26,9 +25,9 @@ ms.locfileid: "68932239"
 *  进程 - 用户可以连接到数据库并对其执行处理操作，分析模型数据库数据。
 *  读取 - 用户可以使用客户端应用程序连接到模型数据库数据并进行分析。
 
-创建表格模型项目时, 可以使用中的角色管理器创建角色并向这些角色添加用户或组 SQL Server Data Tools (SSDT)。 部署到服务器时, 可以使用 SQL Server Management Studio (SSMS)、 [Analysis Services PowerShell cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)或[表格模型脚本语言](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)(TMSL) 来添加或删除角色和用户成员。
+创建表格模型项目时，可以使用 SQL Server Data Tools (SSDT) 中的角色管理器创建角色并将用户或组添加到这些角色中。 部署到服务器时，可以使用 SQL Server Management Studio (SSMS)、[Analysis Services PowerShell cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) 或[表格模型脚本语言](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) 来添加或删除角色和用户成员。
 
-**安全组**必须[启用邮件](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups), 并`MailEnabled`将属性设置为。 `True` 通过电子邮件地址指定组时使用`obj:groupid@tenantid`。
+**安全组**必须[已启用邮件](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups)且 `MailEnabled` 属性设置为 `True`。 按电子邮件地址指定组时，请使用 `obj:groupid@tenantid`。
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>在 SSDT 中添加或管理角色和用户  

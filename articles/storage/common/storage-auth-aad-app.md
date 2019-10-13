@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0ff2d9b8c0ca891b25dfcd6bf1f19d1541fd1541
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: ca6b055b5d3702cea4ca1986ad1c81b59f76cee3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673242"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299635"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>使用客户端应用程序中的 Azure Active Directory 授权访问 Blob 和队列
 
@@ -76,7 +76,7 @@ ms.locfileid: "71673242"
 
 注册应用程序并向其授予 Azure Blob 存储或队列存储中的数据的访问权限后，可将代码添加到应用程序，以便对安全主体进行身份验证并获取 OAuth 2.0 令牌。 若要进行身份验证并获取令牌，可以使用 [Microsoft 标识平台身份验证库](../../active-directory/develop/reference-v2-libraries.md)，或其他支持 OpenID Connect 1.0 的开源库。 然后，应用程序可以使用访问令牌来授权针对 Azure Blob 存储或队列存储发出的请求。
 
-有关支持获取令牌的方案列表，请参阅[适用于 .NET 的 Microsoft 身份验证库 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub 存储库的[方案](https://aka.ms/msal-net-scenarios)部分。
+有关获取令牌支持的方案的列表，请参阅[Microsoft 身份验证库内容](/azure/active-directory/develop/msal-overview)的[身份验证流](/en-us/azure/active-directory/develop/msal-authentication-flows)部分。
 
 ## <a name="well-known-values-for-authentication-with-azure-ad"></a>使用 Azure AD 进行身份验证的已知值
 
@@ -117,7 +117,7 @@ ms.locfileid: "71673242"
 
 ### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>创建一个授权使用 Azure AD 访问 Blob 存储的 Web 应用程序
 
-当应用程序访问 Azure 存储时，它是在代表用户进行访问，这意味着，这是在使用已登录用户的权限访问 blob 或队列资源。 若要尝试运行此代码示例，需要提供一个可以提示用户使用 Azure AD 标识登录的 Web 应用程序。 你可以创建自己的, 或使用 Microsoft 提供的示例应用程序。
+当应用程序访问 Azure 存储时，它是在代表用户进行访问，这意味着，这是在使用已登录用户的权限访问 blob 或队列资源。 若要尝试运行此代码示例，需要提供一个可以提示用户使用 Azure AD 标识登录的 Web 应用程序。 你可以创建自己的，或使用 Microsoft 提供的示例应用程序。
 
 [GitHub](https://aka.ms/aadstorage) 上提供了一个已完成的示例 Web 应用程序，该应用程序可获取令牌，并使用该令牌在 Azure 存储中创建 Blob。 查看并运行这个已完成的示例可能有助于理解代码示例。 有关如何运行已完成的示例的说明，请参阅标题为[查看和运行已完成的示例](#view-and-run-the-completed-sample)的部分。
 

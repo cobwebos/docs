@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28354f54978e8ba776d8b0da294652ff462a05f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 14c3f90918d246a63d50af7b3542e8e74d5fbcf1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853454"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295521"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -52,7 +52,7 @@ ms.locfileid: "68853454"
 
 1. 导航到要将应用程序分配到的作用域级别。 例如，若要在订阅范围内分配角色，请依次选择“所有服务”和“订阅”。
 
-   ![例如, 在订阅范围内分配角色](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![例如，在订阅范围内分配角色](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. 选择要将应用程序分配到的特定订阅。
 
@@ -85,22 +85,22 @@ ms.locfileid: "68853454"
    ![复制应用程序（客户端）ID](./media/howto-create-service-principal-portal/copy-app-id.png)
 
 ## <a name="certificates-and-secrets"></a>证书和机密
-守护程序应用程序可以使用两种形式的凭据对 Azure AD: 证书和应用程序机密进行身份验证。  我们建议使用证书，但你也可以创建新的应用程序机密。
+守护程序应用程序可以使用两种形式的凭据来向 Azure AD 进行身份验证：证书和应用程序机密。  我们建议使用证书，但你也可以创建新的应用程序机密。
 
-### <a name="upload-a-certificate"></a>上载证书
+### <a name="upload-a-certificate"></a>上传证书
 
 可以使用现有证书（如果有）。  （可选）可以创建自签名证书以进行测试。 打开 PowerShell 并使用以下参数运行 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate)，以在计算机上的用户证书存储中创建自签名证书：`$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`。  使用可从 Windows 控制面板访问的[管理用户证书](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC 管理单元导出此证书。
 
 若要上传证书，请执行以下操作：
 
 1. 选择“证书和机密”。
-1. 选择 "**上传证书**", 并选择证书 (现有证书或已导出的自签名证书)。
+1. 选择“上传证书”并选择证书（现有证书或导出的自签名证书）。
 
-    ![选择 "上传证书", 然后选择要添加的证书](./media/howto-create-service-principal-portal/upload-cert.png)
+    ![选择“上传证书”并选择要添加的证书](./media/howto-create-service-principal-portal/upload-cert.png)
 
 1. 选择 **添加** 。
 
-在应用程序注册门户中将证书注册到你的应用程序后, 你需要启用客户端应用程序代码以使用该证书。
+在应用程序注册门户中将证书注册到你的应用程序后，你需要启用客户端应用程序代码以使用该证书。
 
 ### <a name="create-a-new-application-secret"></a>创建新的应用程序机密
 
@@ -123,7 +123,7 @@ ms.locfileid: "68853454"
 1. 选择“Azure Active Directory”。
 1. 记下你的角色。 如果角色为“用户”，则必须确保非管理员可以注册应用程序。
 
-   ![查找你的角色。 如果你是用户, 请确保非管理员可以注册应用程序](./media/howto-create-service-principal-portal/view-user-info.png)
+   ![找到你的角色。 如果你是用户，请确保非管理员可以注册应用](./media/howto-create-service-principal-portal/view-user-info.png)
 
 1. 选择“用户设置”。
 1. 检查“应用注册”设置。 只有管理员可设置此值。 如果设置为“是”，则 Active AD 租户中的任何用户都可以注册应用。
@@ -138,7 +138,7 @@ ms.locfileid: "68853454"
 
 1. 在右上角选择自己的帐户，然后选择“...”->“我的权限”。
 
-   ![选择你的帐户和你的用户权限](./media/howto-create-service-principal-portal/select-my-permissions.png)
+   ![选择帐户和用户权限](./media/howto-create-service-principal-portal/select-my-permissions.png)
 
 1. 从下拉列表中，选择要在其中创建服务主体的订阅。 然后，选择“单击此处查看此订阅的完整访问详细信息”。
 
@@ -146,10 +146,9 @@ ms.locfileid: "68853454"
 
 1. 选择“角色分配”以查看分配到的角色，并确定你是否拥有足够的权限来向角色分配 AD 应用。 如果没有，请要求订阅管理员你将添加到用户访问管理员角色。 在下图中，用户分配到了“所有者”角色，这意味着该用户具有足够的权限。
 
-   ![此示例演示如何将用户分配到 "所有者" 角色](./media/howto-create-service-principal-portal/view-user-role.png)
+   ![此示例演示如何将用户分配到“所有者”角色](./media/howto-create-service-principal-portal/view-user-role.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要设置多租户应用程序，请参阅[使用 Azure 资源管理器 API 进行授权的开发人员指南](../../azure-resource-manager/resource-manager-api-authentication.md)。
 * 若要了解如何指定安全策略，请参阅 [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。  
 * 有关可对用户授予或拒绝的可用操作的列表，请参阅 [Azure 资源管理器资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。

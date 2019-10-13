@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 为 Azure 云服务中的角色启用远程桌面连接
+title: 使用 PowerShell 为角色启用远程桌面（Azure 云服务）
 description: 如何使用 PowerShell 配置 Azure 云服务应用程序以允许远程桌面连接
 services: cloud-services
 documentationcenter: ''
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: gwallace
-ms.openlocfilehash: b466cb866889edcdc2bd02373a5567a7b53ae18d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: cd36188cba91ad8a97e3f97896cf215a5f0220c2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358990"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298410"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>使用 PowerShell 为 Azure 云服务中的角色启用远程桌面连接
 

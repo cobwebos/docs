@@ -1,5 +1,5 @@
 ---
-title: 开始使用队列存储和 Visual Studio 连接服务（WebJob 项目）| Microsoft Docs
+title: 使用 Visual Studio （Web 作业项目）开始使用队列存储
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始使用 WebJob 项目中的 Azure 队列存储
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: ffba203bafaf3837cd2d7fc1a6fd962a6926b186
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510793"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298749"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -190,7 +191,7 @@ public static void GracefulShutdownDemo(
 若要编写创建新队列消息的函数，请使用 **Queue** 属性。 与 **QueueTrigger** 一样，可以传入字符串形式的队列名称，还可以[动态设置队列名称](#how-to-set-configuration-options)。
 
 ### <a name="string-queue-messages"></a>字符串队列消息
-下面的非异步代码示例在名为“outputqueue”的队列中创建新的队列消息，该消息的内容与名为“inputqueue”的队列中收到的队列消息相同。 (对于异步函数, 请使用 **\<IAsyncCollector T >** , 如本节后面部分所示。)
+下面的非异步代码示例在名为“outputqueue”的队列中创建新的队列消息，该消息的内容与名为“inputqueue”的队列中收到的队列消息相同。 （对于异步函数，请使用**IAsyncCollector @ no__t-1T >** ，如本节后面部分所示。）
 
 ```csharp
 public static void CreateQueueMessage(
@@ -216,7 +217,7 @@ public static void CreateQueueMessage(
 SDK 会自动将对象序列化为 JSON。 即使对象为 null，也始终会创建队列消息。
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>在异步函数中创建多个消息
-若要创建多个消息, 请设置输出队列的参数**类型\<ICollector t >** 或 **\<IAsyncCollector t >** , 如下面的示例中所示。
+若要创建多个消息，请将输出队列的参数类型**ICollector @ no__t-1T >** 或**IAsyncCollector @ no__t-3T >** ，如下面的示例中所示。
 
 ```csharp
 public static void CreateQueueMessages(

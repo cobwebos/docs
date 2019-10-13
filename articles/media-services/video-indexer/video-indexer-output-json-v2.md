@@ -1,5 +1,5 @@
 ---
-title: 检查生成 v2 API 的 Azure 媒体服务视频索引器输出
+title: 检查 v2 API 生成的 Azure 媒体服务视频索引器输出
 titlesuffix: Azure Media Services
 description: 本主题探讨 v2 API 生成的视频索引器输出。
 services: media-services
@@ -8,24 +8,24 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 10/11/2019
 ms.author: juliako
-ms.openlocfilehash: 205dc7d9e69788ea29a48ff342844a4b74e143bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20a973e5386cd9cad7d090236f021ced9a64cafc
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799085"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300925"
 ---
-# <a name="examine-the-video-indexer-output-produced-by-api"></a>检查视频索引器输出中生成的 API
+# <a name="examine-the-video-indexer-output-produced-by-api"></a>检查 API 生成的视频索引器输出
 
-调用“获取视频索引”API 时，如果响应状态为 OK，则你会获得详细的 JSON 输出（响应内容）。  JSON 内容包含指定的视频见解的详细信息。 Insights 包括如维度： 脚本，Ocr，人脸，主题、 块等。维度包含视频中出现每个维度时显示的时间范围实例。  
+调用“获取视频索引”API 时，如果响应状态为 OK，则你会获得详细的 JSON 输出（响应内容）。 JSON 内容包含指定的视频见解的详细信息。 见解包含如下所示的维度：脚本、OCRs、面部、主题、块等。维度包含视频中出现每个维度时显示的时间范围实例。  
 
-此外，可以通过在[视频索引器](https://www.videoindexer.ai/)网站中的视频上按“播放”按钮，来直观检查视频的汇总见解。  有关详细信息，请参阅[查看和编辑视频见解](video-indexer-view-edit.md)。
+此外，可以通过在[视频索引器](https://www.videoindexer.ai/)网站中的视频上按“播放”按钮，来直观检查视频的汇总见解。 有关详细信息，请参阅[查看和编辑视频见解](video-indexer-view-edit.md)。
 
 ![洞察力](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
-本文探讨“获取视频索引”API 返回的 JSON 内容。  
+本文探讨“获取视频索引”API 返回的 JSON 内容。 
 
 > [!NOTE]
 > 视频索引器中所有访问令牌的有效期为一小时。
@@ -33,7 +33,7 @@ ms.locfileid: "65799085"
 
 ## <a name="root-elements"></a>根元素
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |accountId|播放列表的 VI 帐户 ID。|
 |id|播放列表的 ID。|
@@ -77,10 +77,10 @@ ms.locfileid: "65799085"
 |---|---|
 |name|视频的名称。 例如 Azure Monitor。|
 |id|视频的 ID。 例如 63c6d532ff。|
-|privacyMode|可以细分为以下模式之一：“私用”、“公共”。   **公共** - 向你帐户中的任何人，以及具有视频链接的每个人显示该视频。 **私用** - 向你帐户中的每个人显示该视频。|
+|privacyMode|可以细分为以下模式之一：“私用”、“公共”。 **公共** - 向你帐户中的任何人，以及具有视频链接的每个人显示该视频。 **私用** - 向你帐户中的每个人显示该视频。|
 |duration|包含一个持续时间，用于描述见解发生的时间。 持续时间以秒为单位。|
 |thumbnailVideoId|从其创建缩略图的视频的 ID。
-|thumbnailId|视频的缩略图 ID。 若要获取实际的缩略图，请调用[获取缩略图](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail)并将其传递 thumbnailVideoId 和 thumbnailId。|
+|thumbnailId|视频的缩略图 ID。 若要获取实际缩略图，请调用[get-缩略图](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail)，并将其传递给 ThumbnailVideoId 和 thumbnailId。|
 |人脸|可以包含零个或多个人脸。 有关更详细的信息，请参阅 [faces](#faces)。|
 |关键字|可以包含零个或多个关键字。 有关更详细的信息，请参阅 [keywords](#keywords)。|
 |情绪|可以包含零个或多个情绪。 有关更详细的信息，请参阅 [sentiments](#sentiments)。|
@@ -107,7 +107,7 @@ ms.locfileid: "65799085"
 |metadata|视频的外部元数据（如果用户已指定）。|
 |isAdult|指示视频是否已经过人工审查，并已标识为成人视频。|
 |insights|见解对象。 有关详细信息，请参阅 [insights](#insights)。|
-|thumbnailId|视频的缩略图 ID。 若要获取实际的缩略图调用[获取缩略图](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail)并将其传递的视频 ID 和 thumbnailId。|
+|thumbnailId|视频的缩略图 ID。 若要获取实际的缩略图，请调用[Get 缩略图](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail)，并向其传递视频 ID 和 thumbnailId。|
 |publishedUrl|用于流式传输视频的 URL。|
 |publishedUrlProxy|要从中流式传输视频的 URL（适用于 Apple 设备）。|
 |viewToken|用于流式传输视频的短期查看令牌。|
@@ -168,7 +168,7 @@ ms.locfileid: "65799085"
 |情感| [emotions](#emotions) 维度。|
 |topics|[topics](#topics) 维度。|
 
-示例：
+例如：
 
 ```json
 {
@@ -205,7 +205,7 @@ instances|此块的时间范围列表。|
 |language|脚本语言。 旨在支持每行语言不同的脚本。|
 |instances|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
 
-示例：
+例如：
 
 ```json
 "transcript": [
@@ -244,8 +244,8 @@ instances|此块的时间范围列表。|
 |language|OCR 语言。|
 |instances|出现此 OCR 的时间范围列表（同一 OCR 可重复多次出现）。|
 |height|OCR 矩形的高度|
-|top|像素中的顶部位置|
-|左侧| 像素中的左侧的位置|
+|top|Px 中的顶部位置|
+|左侧| Px 中的左侧位置|
 |width|OCR 矩形的宽度|
 
 ```json
@@ -271,7 +271,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="keywords"></a>关键字
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|关键字 ID。|
 |text|关键字文本。|
@@ -347,7 +347,7 @@ instances|此块的时间范围列表。|
 
 #### <a name="labels"></a>标签
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|标签 ID。|
 |name|标签名称（例如“计算机”、“电视”）。|
@@ -406,10 +406,10 @@ instances|此块的时间范围列表。|
 
 #### <a name="scenes"></a>scenes
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|场景 ID。|
-|instances|此场景 （一个场景可以只有 1 个实例） 的时间范围的列表。|
+|instances|此场景的时间范围列表（场景只能有1个实例）。|
 
 ```json
 "scenes":[  
@@ -442,8 +442,8 @@ instances|此块的时间范围列表。|
 |名称|描述|
 |---|---|
 |id|截图 ID。|
-|keyFrames|（每个具有一个 ID 和实例时间范围的列表） 的截图中的关键帧的列表。 每个关键帧实例都包含关键帧的缩略图的 thumbnailId 字段 id。|
-|instances|此快照 （快照只能有 1 个实例） 的时间范围的列表。|
+|keyFrames|快照内的关键帧列表（每个关键帧都有一个 ID 和一个实例时间范围列表）。 每个关键帧实例都有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
+|instances|此快照的时间范围列表（快照只能有1个实例）。|
 
 ```json
 "shots":[  
@@ -489,7 +489,7 @@ instances|此块的时间范围列表。|
 
 在语音转文本脚本和/或视频 OCR 中检测到的企业和产品品牌名称。 这不包括品牌或徽标检测内容的视觉辨识形式。
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|品牌 ID。|
 |name|品牌名称。|
@@ -626,7 +626,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以选择请求人工审查内容，在这种情况下，IsAdult 属性将包含人工审查的结果。
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|
@@ -662,7 +662,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|文本内容审核 ID。|
 |bannedWordsCount |受禁单词的数目。|
@@ -672,7 +672,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 视频索引器基于语音和音频提示识别情感。识别的情感可能是：快乐、悲伤、愤怒或恐惧。
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|情感 ID。|
 |type|基于语音和音频提示识别的瞬间情感。情感可能是：快乐、悲伤、愤怒或恐惧。|
@@ -760,9 +760,9 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 #### <a name="topics"></a>topics
 
-视频索引器从脚本中推理主要主题。 在可能的情况下，会包括第一级 [IPTC](https://iptc.org/standards/media-topics/) 分类。 
+视频索引器从脚本中推理主要主题。 在可能的情况下，将包括第2级[IPTC](https://iptc.org/standards/media-topics/)分类。 
 
-|Name|描述|
+|名称|描述|
 |---|---|
 |id|主题 ID。|
 |name|主题名称，例如：“药品”。|

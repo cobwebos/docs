@@ -123,6 +123,8 @@
               href: automation-scenario-source-control-integration-with-VSTS.md
     - name: 故障排除
       items:
+        - name: 为 Microsoft Azure 自动化建立案例时要收集的数据
+          href: troubleshoot/collect-data-microsoft-azure-automation-case.md
         - name: 对混合 Runbook 辅助角色进行故障排除
           href: troubleshoot/hybrid-runbook-worker.md
           displayName: 'troubleshoot, HRW, hybrid worker'

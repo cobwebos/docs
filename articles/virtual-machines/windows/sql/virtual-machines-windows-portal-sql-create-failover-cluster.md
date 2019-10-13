@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: b30ccbcba0b2126d1fe1abce9ae67a55ce25f601
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92623377daa80efe08b260745fa1d9443366cb8a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170256"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300584"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -375,14 +375,15 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 
 1. 为负载均衡器配置以下属性：
 
-   - **名称**：标识负载均衡器的名称。
-   - **类型**：负载均衡器可以是公共或专用的。 专用负载均衡器可从同一 VNET 内部访问。 大多数 Azure 应用程序可以使用专用负载均衡器。 如果应用程序需要通过 Internet 直接访问 SQL Server，请使用公共负载均衡器。
-   - **虚拟网络**：虚拟机所在的同一网络。
-   - **子网**：虚拟机所在的同一子网。
-   - **专用 IP 地址**：分配给 SQL Server FCI 群集网络资源的同一 IP 地址。
    - **订阅**：Azure 订阅。
    - **资源组**：使用虚拟机所在的同一资源组。
-   - **位置**：使用虚拟机所在的同一 Azure 位置。
+   - **名称**：标识负载均衡器的名称。
+   - **区域**：使用虚拟机所在的同一 Azure 位置。
+   - **类型**：负载均衡器可以是公共或专用的。 专用负载均衡器可从同一 VNET 内部访问。 大多数 Azure 应用程序可以使用专用负载均衡器。 如果应用程序需要通过 Internet 直接访问 SQL Server，请使用公共负载均衡器。
+   - **SKU**：负载均衡器的 SKU 应该是标准的。 
+   - **虚拟网络**：虚拟机所在的同一网络。
+   - **IP 地址分配**：IP 地址分配应为静态。 
+   - **专用 IP 地址**：分配给 SQL Server FCI 群集网络资源的同一 IP 地址。
    参阅下图：
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)

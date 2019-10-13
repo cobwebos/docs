@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 966386bfed5f94556f145afab1c665eb3c90546a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 36a95b502c13ccf360ba4ac56b4837d41ee487c8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065560"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296407"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义
 
@@ -102,5 +102,5 @@ ms.locfileid: "71065560"
 上一示例中配置了以下值：
 
 - **单一登录 (SSO)** - 单一登录是通过 **SingleSignOn** 配置的。 适用的值为 `Tenant`、`Application`、`Policy` 和 `Suppressed`。
-- **Web 应用会话生存期（分钟）** - Web 应用会话生存期是通过 **SessionExpiryInSeconds** 元素设置的。 默认值为 86400 秒（1440 分钟）。
 - **Web 应用会话超时** - Web 应用会话超时是通过 **SessionExpiryType** 元素设置的。 适用的值为 `Absolute` 和 `Rolling`。
+- **Web 应用会话生存期**-web 应用会话生存期设置为**SessionExpiryInSeconds**元素。 默认值为 86400 秒（1440 分钟）。

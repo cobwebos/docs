@@ -2,18 +2,17 @@
 title: 使用服务主体自动完成 Azure Analysis Services 任务 | Microsoft Docs
 description: 了解如何创建服务主体以自动完成 Azure Analysis Services 任务。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4bfa969089407a35658160cf05a6407f8c717714
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 94f1313825b21b3adf7173b56798fce22736ea87
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347967"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294567"
 ---
 # <a name="automation-with-service-principals"></a>使用服务主体进行自动化
 
@@ -21,7 +20,7 @@ ms.locfileid: "68347967"
 
 在 Analysis Services 中，服务主体可以与 Azure 自动化、PowerShell 无人参与模式、自定义客户端应用程序和 Web 应用配合使用，以便自动完成常见的任务。 例如，预配服务器、部署模型、数据刷新、垂直缩放、暂停/恢复等操作均可使用服务主体自动完成。 权限通过角色成员身份分配给服务主体，十分类似于常规的 Azure AD UPN 帐户。
 
-Analysis Services 还支持由使用服务主体的托管标识执行的操作。 若要了解详细信息, 请参阅[azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)和[支持 Azure AD 身份验证的 azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)。
+Analysis Services 还支持由托管标识使用服务主体执行的操作。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)和[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)。
 
 ## <a name="create-service-principals"></a>创建服务主体
  

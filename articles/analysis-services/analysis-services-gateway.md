@@ -2,24 +2,23 @@
 title: Azure Analysis Services 的本地数据网关 |Microsoft Docs
 description: 如果 Azure 中的 Analysis Services 服务器要连接到本地数据源，则本地网关是必需的。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b783e6b709700104985ef3f052443cf1284bf2d6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 8d9df32070ff252dff791650788888d1d9a6ce84
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678397"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294933"
 ---
-# <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>通过本地数据网关连接到本地数据源
+# <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用本地数据网关连接到本地数据源
 
-本地数据网关提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器，最新版本的网关也适用于 Azure 逻辑应用、Power BI、Power Apps 和 Microsoft Flow。 可以将同一订阅和同一区域中的多个服务与单个网关进行关联。 虽然安装的网关在所有这些服务中都是相同的, 但 Azure Analysis Services 和逻辑应用都有一些额外的步骤。
+本地数据网关提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器，最新版本的网关也适用于 Azure 逻辑应用、Power BI、Power Apps 和 Microsoft Flow。 可以将同一订阅和同一区域中的多个服务与单个网关进行关联。 虽然在所有这些服务中安装的网关是相同的，但 Azure Analysis Services 和逻辑应用有一些额外的步骤。
 
-对于 Azure Analysis Services, 第一次使用网关进行设置的过程分为四个部分:
+就 Azure Analysis Services 来说，首次安装网关的过程由四个部分组成：
 
 - 下载并运行安装程序 - 这一步会在你组织的计算机上安装网关服务。 还在[租户的](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure AD 中使用帐户登录到 Azure。 不支持 Azure B2B（来宾）帐户。
 
@@ -30,7 +29,7 @@ ms.locfileid: "68678397"
 - 将你的服务器连接到网关资源 - 在订阅中拥有网关资源后，便可以着手将你的服务器连接到该网管资源了。 可以连接多个服务器和其他资源，前提是它们位于同一订阅和同一区域中。
 
 ## <a name="how-it-works"></a>工作原理
-在你组织中的计算机上安装的网关作为 Windows 服务（本地数据网关）运行。 此本地服务是通过 Azure 服务总线向网关云服务注册的。 然后为你的 Azure 订阅创建本地数据网关资源。 然后, Azure Analysis Services 服务器将连接到 Azure 网关资源。 当你服务器上的模型需要连接到你的本地数据源进行查询或处理时，查询和数据的流将遍历网关资源、Azure 服务总线、本地数据网关服务，以及你的数据源。 
+在你组织中的计算机上安装的网关作为 Windows 服务（本地数据网关）运行。 此本地服务是通过 Azure 服务总线向网关云服务注册的。 然后，为 Azure 订阅创建本地数据网关资源。 Azure Analysis Services 服务器随后会连接到 Azure 网关资源。 当你服务器上的模型需要连接到你的本地数据源进行查询或处理时，查询和数据的流将遍历网关资源、Azure 服务总线、本地数据网关服务，以及你的数据源。 
 
 ![工作原理](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
@@ -43,17 +42,17 @@ ms.locfileid: "68678397"
 5. 网关将查询发送到数据源以便执行。
 6. 结果会从数据源返回到网关，并返回到云服务和你的服务器。
 
-## <a name="installing"></a>正在安装
+## <a name="installing"></a>安装
 
-为 Azure Analysis Services 环境安装时, 请务必按照[为 Azure Analysis Services 安装和配置本地数据网关](analysis-services-gateway-install.md)中所述的步骤操作。 本文特定于 Azure Analysis Services。 它包括在 Azure 中设置本地数据网关资源所需的其他步骤, 并将 Azure Analysis Services 服务器连接到该资源。
+针对 Azure Analysis Services 环境进行安装时，必须按[为 Azure Analysis Services 安装和配置本地数据网关](analysis-services-gateway-install.md)中介绍的步骤操作。 本文专门针对 Azure Analysis Services。 它包含在 Azure 中设置本地数据网关资源并将 Azure Analysis Services 服务器连接到该资源所需的其他步骤。
 
 ## <a name="ports-and-communication-settings"></a>端口和通信设置
 
 网关会创建与 Azure 服务总线之间的出站连接。 它在出站端口上进行通信：TCP 443（默认值）、5671、5672、9350 到 9354。  网关不需要入站端口。
 
-可能需要在防火墙中将数据区域的 IP 地址列入允许列表。 可以下载 [Microsoft Azure 数据中心 IP 列表](https://www.microsoft.com/download/details.aspx?id=41653)。 该列表每周都会进行更新。 Azure 数据中心 IP 列表中列出的 IP 地址使用的是 CIDR 表示法。 若要了解详细信息，请参阅 [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)（无类别域际路由）。
+你可能需要将防火墙中数据区域的 IP 地址加入允许列表。 可以下载 [Microsoft Azure 数据中心 IP 列表](https://www.microsoft.com/download/details.aspx?id=41653)。 该列表每周都会进行更新。 Azure 数据中心 IP 列表中列出的 IP 地址使用的是 CIDR 表示法。 若要了解详细信息，请参阅 [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)（无类别域际路由）。
 
-下面是网关使用的完全限定的域名。
+以下是该网关所用的完全限定域名。
 
 | 域名 | 出站端口 | 描述 |
 | --- | --- | --- |
@@ -82,7 +81,7 @@ ms.locfileid: "68678397"
 
 ## <a name="next-steps"></a>后续步骤 
 
-以下文章包含在适用于网关支持的所有服务的本地数据网关一般内容中:
+以下文章包含在本地数据网关常规内容中，该内容适用于网关支持的所有服务：
 
 * [本地数据网关常见问题解答](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)   
 * [使用本地数据网关应用](https://docs.microsoft.com/data-integration/gateway/service-gateway-app)   

@@ -12,36 +12,38 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: cea0d63c20af781fcfc6ba5d7c06061b12992702
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: 8f4de88ed79ee802866579448681cfe6cee3e654
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212030"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293427"
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>使用通知中心向用户发送跨平台通知
 
-在上一教程[使用通知中心通知用户]中，我们了解了如何向注册给经过身份验证的特定用户的所有设备推送通知。 在该教程中，需要使用多个请求将通知发送到每个支持的客户端平台。 Azure 通知中心支持模板，可以通过模板指定特定设备要如何接收通知。 此方法简化了发送跨平台通知的方式。
+本教程基于上一教程，[使用 Azure 通知中心向特定用户发送通知]。 本教程介绍如何将通知推送到已注册到特定身份验证用户的所有设备。 这种方法需要多个请求将通知发送到每个支持的客户端平台。 Azure 通知中心支持模板，可以通过模板指定特定设备要如何接收通知。 此方法简化了发送跨平台通知的方式。
 
-本文演示了如何利用模板在单个请求中向所有平台发送不区分平台的通知。 有关模板的更多详细信息，请参阅[Azure 通知中心概述][Templates]。
+本文演示如何利用模板发送面向所有平台的通知。 本文使用单个请求发送平台中立通知。 有关模板的更多详细信息，请参阅[通知中心概述][Templates]。
 
 > [!IMPORTANT]
-> Visual Studio 2017 不支持使用 Windows Phone 项目 8.1 及更早的版本。 有关详细信息，请参阅 [Visual Studio 2017 平台目标以及兼容性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)。
+> Visual Studio 2019 不支持 Windows Phone 项目8.1 及更早版本。 有关详细信息，请参阅[Visual Studio 2019 平台目标和兼容性](/visualstudio/releases/2019/compatibility)。
 
 > [!NOTE]
-> 通过通知中心，设备可使用同一标记注册多个模板。 在这种情况下，针对该标签的传入的邮件将导致系统向设备发送多个通知（每个通知对应一个模板）。 此过程可以在多个可视通知中显示同一消息，如显示为 Windows 应用商店应用中的徽章和 toast 通知。
+> 使用通知中心时，设备可以通过使用同一标记注册多个模板。 在这种情况下，以标记为目标的传入消息会导致向设备发送多个通知，每个通知对应一个模板。 此过程可以在多个可视通知中显示同一消息，如显示为 Windows 应用商店应用中的徽章和 toast 通知。
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>使用模板发送跨平台通知
 
+本部分使用[使用 Azure 通知中心向特定用户发送通知]教程中生成的示例代码。 可以从 [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) 下载该示例。
+
 若要使用模板发送跨平台通知，请执行以下步骤：
 
-1. 在 Visual Studio 的解决方案资源管理器中，展开“控制器”文件夹，然后打开 RegisterController.cs 文件。
+1. 在**解决方案资源管理器**中的 Visual Studio 中，展开 "**控制器**" 文件夹，然后打开*RegisterController.cs*文件。
 
-2. 在 `Put` 方法中找到用于创建新注册的代码块，然后将 `switch` 内容替换为以下代码：
+1. 在 `Put` 方法中找到用于创建新注册的代码块，然后将 `switch` 内容替换为以下代码：
 
     ```csharp
     switch (deviceUpdate.Platform)
@@ -74,7 +76,7 @@ ms.locfileid: "71212030"
 
     此代码调用平台特定的方法来创建模板注册而非本机注册。 由于模板注册派生自本机注册，因此无需修改现有注册。
 
-3. 在 `Notifications` 控制器中，将 `sendNotification` 方法替换为以下代码：
+1. 在**解决方案资源管理器**的 "**控制器**" 文件夹中，打开*NotificationsController.cs*文件。 将 `Post` 方法的代码替换为以下代码：
 
     ```csharp
     public async Task<HttpResponseMessage> Post()
@@ -89,21 +91,20 @@ ms.locfileid: "71212030"
     }
     ```
 
-    此代码将通知同时发送到所有平台，而不必指定本机负载。 通知中心使用提供的*标记*值（在注册的模板中指定）生成正确的有效负载并将它传递到每个设备。
+    此代码将通知同时发送到所有平台。 不指定本机负载。 通知中心会构建正确的有效负载，并将其提供给每个设备，其中包含提供的标记值（在注册的模板中指定）。
 
-4. 重新发布 WebApi 后端项目。
+1. 重新发布 Web API 项目。
 
-5. 再次运行客户端应用并验证注册是否已成功。
+1. 再次运行客户端应用，以验证注册是否已成功。
 
-6. （可选）将客户端应用部署到第二个设备，然后运行该应用。
-    通知会显示在每个设备上。
+1. （可选）将客户端应用部署到第二个设备，然后运行应用。 通知会显示在每个设备上。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已完成本教程，请从以下主题中查找有关通知中心和模板的更多信息：
+完成本教程后，请在以下文章中了解有关通知中心和模板的详细信息：
 
-* [Use Notification Hubs to send breaking news]: Demonstrates another scenario for using templates.
-* [Azure 通知中心概述][Templates]：包含有关模板的更多详细信息。
+* 有关使用模板的其他方案，请参阅将[通知推送到运行通用 Windows 平台应用程序的特定 Windows 设备][Use Notification Hubs to send breaking news]教程。
+* 有关模板的更多详细信息，请参阅[通知中心概述][Templates]。
 
 <!-- Anchors. -->
 
@@ -112,10 +113,10 @@ ms.locfileid: "71212030"
 <!-- URLs. -->
 [Push to users ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Push to users Mobile Services]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Visual Studio 2012 Express for Windows 8]: https://go.microsoft.com/fwlink/?LinkId=257546
+[Visual Studio 2012 Express for Windows 8]: https://visualstudio.microsoft.com/downloads/
 
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Azure Notification Hubs]: https://go.microsoft.com/fwlink/p/?LinkId=314257
-[使用通知中心通知用户]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[使用 Azure 通知中心向特定用户发送通知]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Templates]: https://go.microsoft.com/fwlink/p/?LinkId=317339
 [Notification Hub How to for Windows Store]: https://msdn.microsoft.com/library/windowsazure/jj927172.aspx

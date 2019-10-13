@@ -2,18 +2,17 @@
 title: 通过 Visual Studio (SSDT) 部署到 Azure Analysis Services | Microsoft Docs
 description: 了解如何通过 SSDT 将表格模型部署到 Azure Analysis Services 服务器。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2811685df678730b90f2fdb28d472f8fa268ec6a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 759d85db26ac7370c0b884d2e4839d3045384673
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932452"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301134"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>从 Visual Studio 部署模型
 

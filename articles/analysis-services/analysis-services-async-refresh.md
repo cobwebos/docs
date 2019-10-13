@@ -2,18 +2,17 @@
 title: Azure Analysis Services 模型的异步刷新 | Microsoft Docs
 description: 了解如何使用 REST API 编写异步刷新的代码。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 82e40f756e0d8e0b5627b7c8856bd25fa98adbcb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: daa25ecd12cb4c3b6ba72164c36cef01001448cf
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932295"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301159"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 
@@ -104,7 +103,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 | `CommitMode`     | Enum  | 确定是要分批提交对象，还是只在完成时才提交。 模式包括：default、transactional、partialBatch。  |  transactional       |
 | `MaxParallelism` | Int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
 | `RetryCount`     | Int   | 指示操作在失败之前要重试的次数。      |     0    |
-| `Objects`        | 阵列 | 要处理的对象数组。 每个对象包含：“table”（处理整个表时），或者“table”和“partition”（处理分区时）。 如果未指定任何对象，则会刷新整个模型。 |   处理整个模型      |
+| `Objects`        | Array | 要处理的对象数组。 每个对象包含：“table”（处理整个表时），或者“table”和“partition”（处理分区时）。 如果未指定任何对象，则会刷新整个模型。 |   处理整个模型      |
 
 CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个小时的初始加载时，将会使用 CommitMode。 如果在成功提交一个或多个批之后刷新操作失败，则成功提交的批将保留已提交状态（不会回滚已成功提交的批）。
 

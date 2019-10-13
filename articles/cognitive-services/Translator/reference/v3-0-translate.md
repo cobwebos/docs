@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 67d323d5a3574100760c78427db6983f6aff5ac8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bc03e10e40e90845c8e1a3dd064c4f50fafeac00
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933999"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299824"
 ---
-# <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：转换
+# <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：Translate
 
 翻译文本。
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 <code>3.0</code>。</td>
   </tr>
   <tr>
-    <td>来自</td>
+    <td>from</td>
     <td>可选参数。<br/>指定输入文本的语言。 可以使用 <code>translation</code> 范围来查找<a href="./v3-0-languages.md">支持的语言</a>，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。 <br/><br/>使用<a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">动态字典</a>功能时，必须使用 <code>from</code> 参数而不是自动检测。</td>
   </tr>
   <tr>
@@ -54,7 +54,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用<a href="../customization.md">自定义翻译工具</a>构建的自定义系统获取翻译。 将自定义转换器<a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">项目详细信息</a>中的类别 ID 添加到此参数, 以使用已部署的自定义系统。 默认值为 <code>general</code>。</td>
+    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用<a href="../customization.md">自定义翻译工具</a>构建的自定义系统获取翻译。 将自定义转换器<a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">项目详细信息</a>中的类别 ID 添加到此参数，以使用已部署的自定义系统。 默认值为 <code>general</code>。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
@@ -169,7 +169,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 [示例](#examples)部分提供了 JSON 响应的示例。
 
-## <a name="response-headers"></a>响应头
+## <a name="response-headers"></a>响应标头
 
 <table width="100%">
   <th width="20%">标头</th>
@@ -201,7 +201,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>401</td>
-    <td>无法验证该请求。 请确保凭据已指定且有效。</td>
+    <td>无法对请求进行身份验证。 请确保凭据已指定且有效。</td>
   </tr>
   <tr>
     <td>403</td>
@@ -217,7 +217,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>500</td>
-    <td>发生意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 <code>X-RequestId</code> 中的请求标识符、请求标头 <code>X-ClientTraceId</code> 中的客户端标识符。</td>
+    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 <code>X-RequestId</code> 中的请求标识符、请求标头 <code>X-ClientTraceId</code> 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
@@ -354,7 +354,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Action</th>
+  <th>操作</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>此选项为默认行为。 不雅内容会从源传递到目标。<br/><br/>
@@ -469,8 +469,10 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 比对信息以 `0:2-0:1` 开头，这意味着源文本中的头三个字符 (`The`) 映射到翻译文本中的头两个字符 (`La`)。
 
+#### <a name="limitations"></a>限制
 请注意以下限制：
 
+* 对齐方式不适用于 HTML 格式的文本，即 textType = html
 * 仅针对一部分语言对返回比对内容：
   - 从英语到任何其他语言；
   - 从任何其他语言到英语，除了简体中文、繁体中文和拉脱维亚语到英语；
@@ -511,7 +513,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 <mstrans:dictionary translation=”translation of phrase”>phrase</mstrans:dictionary>
 ```
 
-例如，考虑英语句子“The word wordomatic is a dictionary entry.”。 若要在翻译中保留单词 _wordomatic_ ，请发送请求：
+例如，考虑英语句子“The word wordomatic is a dictionary entry.”。 若要在翻译中保留单词 _wordomatic_，请发送请求：
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"

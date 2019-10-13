@@ -1,5 +1,5 @@
 ---
-title: 开始使用 Blob 存储和 Visual Studio 连接服务（WebJob 项目）| Microsoft Docs
+title: 使用 Visual Studio （Web 作业项目）开始使用 blob 存储
 description: 在使用 Visual Studio 连接服务连接到 Azure 存储后，如何开始使用 WebJob 项目中的 Blob 存储
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 1e951fde7e47ccfcce5f64db4ef27ac767d63480
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 90aa824b7df575eb2783ece5bd88322f0b55f0a2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510657"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299976"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -144,7 +145,7 @@ ms.locfileid: "69510657"
 
 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
-* FunctionId (格式为 *{WebJob 名称}* 。函数. *{Function name}* , 例如:WebJob1.Functions.CopyBlob)
+* FunctionId （格式为 *{WebJob 名称}* 。函数. *{Function name}* ，例如：WebJob1.Functions.CopyBlob)
 * BlobType（"BlockBlob" 或 "PageBlob"）
 * ContainerName
 * BlobName
@@ -193,7 +194,7 @@ WebJobs SDK 确保没有为相同的新 blob 或更新 blob 多次调用 **BlobT
 
 Blob 回执存储在 AzureWebJobsStorage 连接字符串指定的 Azure 存储帐户中名为 *azure-webjobs-hosts* 的容器中。 Blob 回执包含以下信息：
 
-* 为 blob 调用的函数 (" *{WebJob 名称}* "。函数. *{Function name}* ", 例如:".Functions. CopyBlob")
+* 为 blob 调用的函数（" *{WebJob 名称}* "。函数. *{Function name}* "，例如：".Functions. CopyBlob"）
 * 容器名称
 * Blob 类型（"BlockBlob" 或 "PageBlob"）
 * Blob 名称

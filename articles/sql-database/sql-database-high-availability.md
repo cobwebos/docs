@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 06/10/2019
-ms.openlocfilehash: 54994dd626df23694ea372d4a662d2b4fb051fc8
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
-ms.translationtype: HT
+ms.date: 10/11/2019
+ms.openlocfilehash: 0307a905c1d3d7d9bc707fbda87fb8f3fd6d2aee
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285759"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299705"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性和 Azure SQL 数据库
 
@@ -39,7 +39,7 @@ Azure SQL 数据库在最新稳定版本的 SQL Server 数据库引擎和 Window
 
 标准可用性模型包括两个层：
 
-- 无状态计算层：运行 `sqlserver.exe` 进程，仅在附加的 SSD 上包含暂时性的缓存数据，例如 TempDB、模型数据库、计划缓存、缓冲池和列存储池。 此无状态节点由 Azure Service Fabric 运行。Service Fabric 初始化 `sqlserver.exe`、控制节点运行状况，并根据需要执行到另一节点的故障转移。
+- 无状态计算层，它运行 @no__t 的进程，并且仅包含暂时性和缓存的数据，例如 TempDB、附加 SSD 上的模型数据库、计划缓存、缓冲池和内存中的列存储池。 此无状态节点由 Azure Service Fabric 运行。Service Fabric 初始化 `sqlservr.exe`、控制节点运行状况，并根据需要执行到另一节点的故障转移。
 - 有状态数据层：包含存储在 Azure Blob 存储中的数据库文件 (.mdf/.ldf)。 Azure Blob 存储具有内置的数据可用性和冗余功能。 它可以保证即使 SQL Server 进程崩溃，日志文件中的每条记录或者数据文件中的页面也仍会得到保留。
 
 每当升级数据库引擎或操作系统，或者检测到故障时，Azure Service Fabric 会将无状态 SQL Server 进程移到具有足够可用容量的另一个无状态计算节点。 Azure Blob 存储中的数据不受移动操作的影响，数据/日志文件将附加到新初始化的 SQL Server 进程。 此过程保证 99.99% 的可用性，但在过渡期间，繁重工作负荷的性能可能会有一定程度的下降，因为新的 SQL Server 实例是使用冷缓存启动的。
@@ -54,7 +54,24 @@ Azure SQL 数据库在最新稳定版本的 SQL Server 数据库引擎和 Window
 
 作为一项额外的优势，高级可用性模型提供用于将只读 SQL 连接重定向到某个次要副本的功能。 此功能称为[读取扩展](sql-database-read-scale-out.md)。它通过主要副本免费提供 100% 的额外计算容量，以减轻分析工作负荷等只读操作的负担。
 
-### <a name="zone-redundant-configuration"></a>区域冗余配置
+## <a name="hyperscale-service-tier-availability"></a>超大规模服务层可用性
+
+[分布式函数体系结构](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture)中介绍了超大规模服务层体系结构。 
+
+![超大规模功能体系结构](./media/sql-database-hyperscale/hyperscale-architecture.png)
+
+超大规模中的可用性模型包含四个层：
+
+- 无状态计算层，它运行 @no__t 0 的进程，并且仅包含在附加的 SSD 上的非覆盖 RBPEX 缓存、TempDB、模型数据库等，以及在内存中计划缓存、缓冲池和列存储池等。 此无状态层包括主要计算副本和可用作故障转移目标的多个辅助计算副本（可选）。
+- 页面服务器形成的无状态存储层。 此层是在计算副本上运行的 @no__t 0 进程的分布式存储引擎。 每个页面服务器仅包含暂时性和缓存的数据，例如在附加的 SSD 上覆盖 RBPEX 缓存，以及在内存中缓存数据页。 每个页面服务器在主动-主动配置中都有成对的页面服务器，以提供负载平衡、冗余和高可用性。
+- 由计算节点构成的有状态事务日志存储层，运行日志服务进程、事务日志登陆区域和事务日志长期存储。 登陆区域和长期存储使用 Azure 存储，它为事务日志提供可用性和[冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)，确保已提交事务的数据持久性。
+- 一种具有数据库文件（.mdf/ndf）的有状态数据存储层，存储在 Azure 存储中，由页面服务器更新。 该层使用 Azure 存储的数据可用性和[冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)功能。 它保证数据文件中的每个页面都将保留，即使超大规模体系结构崩溃的其他层中的进程或计算节点发生故障。
+
+所有超大规模层中的计算节点在 Azure Service Fabric 上运行，用于控制每个节点的运行状况，并根据需要对可用节点执行故障转移。
+
+有关超大规模中的高可用性的详细信息，请参阅[超大规模中的数据库高可用性](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale)。
+
+## <a name="zone-redundant-configuration"></a>区域冗余配置
 
 默认情况下，将在同一数据中心内创建高级可用性模型的节点群集。 引入[Azure 可用性区域](../availability-zones/az-overview.md)后，SQL 数据库可以将业务关键数据库的不同副本放置到同一区域中的不同可用性区域。 若要消除单一故障点，还要将控件环跨区域地复制为三个网关环 (GW)。 到特定网关环的路由受 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md) (ATM) 控制。 由于高级或业务关键服务层中的区域冗余配置不会创建其他数据库冗余，因此你可以无需额外付费即可启用此功能。 通过选择区域冗余配置，你可以使你的高级或业务关键数据库弹性应对一组更大的故障，包括灾难性的数据中心中断，而不会对应用程序逻辑进行任何更改。 还可以将所有现有“高级”或“业务关键”数据库或池转换到区域冗余配置。
 

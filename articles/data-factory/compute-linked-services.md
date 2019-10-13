@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 2daae1637c568b72d548330abbcb73da21b12683
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: ae3350b14ca1073a5fbb1a353b9301c57e7f1ea4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176857"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298318"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 本文介绍可用于处理或转换数据的不同计算环境。 同时还详细介绍了配置将这些计算环境链接到 Azure 数据工厂的链接服务时，数据工厂所支持的不同配置（按需和自带）。
@@ -27,7 +27,8 @@ ms.locfileid: "72176857"
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [按需 HDInsight 群集](#azure-hdinsight-on-demand-linked-service)或[自己的 HDInsight 群集](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md)、[Pig](transform-data-using-hadoop-pig.md)、[Spark](transform-data-using-spark.md)、[MapReduce](transform-data-using-hadoop-map-reduce.md)、[Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [自定义](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure 机器学习](#azure-machine-learning-linked-service) | [机器学习活动：批处理执行和更新资源](transform-data-using-machine-learning.md) |
+| [Azure 机器学习工作室](#azure-machine-learning-studio-linked-service) | [机器学习活动：批处理执行和更新资源](transform-data-using-machine-learning.md) |
+| [Azure 机器学习服务](#azure-machine-learning-service-linked-service) | [Azure 机器学习执行管道](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service)、[Azure SQL 数据仓库](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [存储过程](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md)、[Jar](transform-data-databricks-jar.md)、[Python](transform-data-databricks-python.md) |
@@ -354,8 +355,8 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | linkedServiceName | 与此 Azure Batch 链接服务相关联的 Azure 存储链接服务的名称。 此链接服务用于暂存运行活动所需的文件。 | 是      |
 | connectVia        | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否       |
 
-## <a name="azure-machine-learning-linked-service"></a>Azure 机器学习链接服务
-可以创建 Azure 机器学习链接服务，以向数据工厂注册机器学习批处理计分终结点。
+## <a name="azure-machine-learning-studio-linked-service"></a>Azure 机器学习 Studio 链接服务
+创建 Azure 机器学习 Studio 链接服务，以向数据工厂注册机器学习 batch 计分终结点。
 
 ### <a name="example"></a>示例
 
@@ -385,11 +386,55 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
 | 类型                   | 类型属性应设置为：AzureML。 | 是                                      |
 | mlEndpoint             | 批处理计分 URL。                   | 是                                      |
 | apiKey                 | 已发布的工作区模型的 API。     | 是                                      |
-| updateResourceEndpoint | Azure ML Web 服务终结点的更新资源 URL 用于使用经过训练的模型文件更新预测性 Web 服务 | 否                                       |
+| updateResourceEndpoint | 用于使用定型模型文件更新预测 Web 服务的 Azure 机器学习 Web 服务终结点的更新资源 URL | 否                                       |
 | servicePrincipalId     | 指定应用程序的客户端 ID。     | 如果已指定 updateResourceEndpoint，则为必需 |
 | servicePrincipalKey    | 指定应用程序的密钥。           | 如果已指定 updateResourceEndpoint，则为必需 |
 | tenant                 | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 如果已指定 updateResourceEndpoint，则为必需 |
 | connectVia             | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否                                       |
+
+## <a name="azure-machine-learning-service-linked-service"></a>Azure 机器学习服务链接服务
+创建 Azure 机器学习服务链接服务，以便将 Azure 机器学习服务工作区连接到数据工厂。
+
+> [!NOTE]
+> 目前仅支持 Azure 机器学习服务链接服务的服务主体身份验证。
+
+### <a name="example"></a>示例
+
+```json
+{
+    "name": "AzureMLServiceLinkedService",
+    "properties": {
+        "type": "AzureMLService",
+        "typeProperties": {
+            "subscriptionId": "subscriptionId",
+            "resourceGroupName": "resourceGroupName",
+            "mlWorkspaceName": "mlWorkspaceName",
+            "servicePrincipalId": "service principal id",
+            "servicePrincipalKey": {
+                "value": "service principal key",
+                "type": "SecureString"
+            },
+            "tenant": "tenant ID"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime?",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="properties"></a>属性
+| 属性               | 说明                              | 需要                                 |
+| ---------------------- | ---------------------------------------- | ---------------------------------------- |
+| 类型                   | 类型属性应设置为：**AzureMLService**。 | 是                                      |
+| subscriptionId         | Azure 订阅 ID              | 是                                      |
+| resourceGroupName      | name | 是                                      |
+| mlWorkspaceName        | Azure 机器学习服务工作区名称 | 是  |
+| servicePrincipalId     | 指定应用程序的客户端 ID。     | 否 |
+| servicePrincipalKey    | 指定应用程序的密钥。           | 否 |
+| tenant                 | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 如果已指定 updateResourceEndpoint，则为必需 | 否 |
+| connectVia             | 用于将活动分发到此链接服务的集成运行时。 可以使用 Azure 集成运行时或自托管集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 | 否 |    
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics 链接服务
 创建 **Azure Data Lake Analytics** 链接服务将 Azure Data Lake Analytics 计算服务链接到 Azure 数据工厂。 管道中的 Data Lake Analytics U-SQL 活动是指此链接服务。 
@@ -410,7 +455,7 @@ Azure 数据工厂服务可自动创建按需 HDInsight 群集，以处理数据
                 "type": "SecureString"
             },
             "tenant": "tenant ID",
-            "subscriptionId": "<optional, subscription id of ADLA>",
+            "subscriptionId": "<optional, subscription ID of ADLA>",
             "resourceGroupName": "<optional, resource group name of ADLA>"
         },
         "connectVia": {

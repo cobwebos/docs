@@ -2,18 +2,17 @@
 title: 将服务主体添加到 Azure Analysis Services 服务器管理员角色 | Microsoft Docs
 description: 了解如何将自动化服务主体添加到服务器管理员角色
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8fbbdbd647aa3d733a26ceaf72629058ae3a274
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5e4650d3be5ce21a49b419577eaf83225b1c0d4d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619272"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298717"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
 

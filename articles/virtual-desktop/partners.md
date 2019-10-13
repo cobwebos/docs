@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937498"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300160"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -62,6 +62,16 @@ ControlUp 是一个 Windows 虚拟桌面增值服务提供程序，它使 IT 团
 - [请参阅联接解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit)。
 - [请参阅合作伙伴网站](https://www.controlup.com/solutions/ms_wvd/)。
 
+## <a name="devicetrust"></a>deviceTRUST
+
+![deviceTRUST 徽标](./media/partners/devicetrust.png)
+
+deviceTRUST 是一个 Windows 虚拟桌面增值服务提供商，可 tsi 公司企业，使用户能够从任何位置、任何设备上的任何位置自由访问其 Windows 虚拟桌面，同时提供该网络为满足其治理要求而需要的信息和控制部门。 
+
+deviceTRUST 将 Windows 虚拟桌面的值扩展为其上下文安全技术。 deviceTRUST 为安全 Windows 虚拟桌面访问和 Windows 虚拟桌面中的条件性应用程序访问启用条件性访问，并且无需任何其他基础结构即可应用条件性 Windows 虚拟桌面策略。 使用 deviceTRUST 可实现一个满足所有安全性、合规性和法规要求的移动灵活工作区。 
+
+- [请参阅合作伙伴网站](https://devicetrust.com/wvd)。
+
 ## <a name="lakeside-software"></a>Lakeside 软件
 
 ![Lakeside 软件徽标](./media/partners/lakeside.png)
@@ -84,6 +94,14 @@ Liquidware Essentials 通过有效地收集用户配置文件和收集重要用�
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1)。
 - [请参阅合作伙伴网站](https://www.liquidware.com/solutions/solutions-platform/microsoft)。
 
+## <a name="login-vsi"></a>登录 .VSI
+
+![登录的 .VSI 徽标](./media/partners/loginvsi.png)
+
+Login .VSI 是 Windows 虚拟桌面增值服务提供商和 Microsoft 合作伙伴，用于在 Windows 虚拟桌面环境中测试应用程序性能。 将其本地业务服务移动到 Windows 虚拟桌面的客户使用登录的 .VSI Enterprise Edition 评估和维护 Windows 10 企业多会话、Windows 10 企业版和的最佳性能、可伸缩性和可用性Windows 7 启用了其业务关键应用程序。
+
+- [请参阅合作伙伴网站](https://www.loginvsi.com)。
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio 徽标](./media/partners/nerdio.png)
@@ -94,6 +112,26 @@ Nerdio 扩展了 Windows 虚拟桌面的价值，使其易于预配 Azure 资源
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)。
 - [请参阅合作伙伴网站](https://getnerdio.com/windows-virtual-desktop/)。
+
+## <a name="policypak"></a>PolicyPak
+
+![PolicyPak 徽标](./media/partners/policypak.png)
+
+PolicyPak Software 是一种 Windows 虚拟桌面合作伙伴，用于执行应用程序、桌面、浏览器、Java 和安全设置的总体设置管理。 PolicyPak 使桌面、系统和安全设置保持符合性。 PolicyPak 通过添加一套组件来增强 Windows 的内置管理，从而增强了 Windows 虚拟桌面的价值。 使用现有 Active Directory 组策略和/或 Windows Intune 提供 PolicyPak 的设置，并提高管理员管理其 Windows 10 计算机的能力。 
+
+PolicyPak 的主要用例是删除本地管理员权限并克服 UAC 提示，阻止勒索软件，管理多个浏览器，管理 Internet Explorer 的企业和兼容性模式，减少 Gpo 的数量，管理 Windows 10 文件关联管理 Windows 10 "开始" 菜单和任务栏，并管理 Windows 10 功能和可选功能。  
+
+- [请参阅合作伙伴网站](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html)。
+
+## <a name="printerlogic"></a>PrinterLogic
+
+![PrinterLogic 徽标](./media/partners/printerlogic.png)
+
+PrinterLogic 是一个 Windows 虚拟桌面增值服务提供商平台，使 IT 专业人员能够消除所有打印服务器并提供高度可用的无服务器打印基础结构。 PrinterLogic 扩展了 Windows 虚拟桌面和 Azure 的价值，使你可以轻松地集中管理打印机对象并将其部署到任何打印机或终结点操作系统。   
+
+PrinterLogic 平台在你自己的私有云中作为 SaaS 或 web 堆栈提供，可确保用户在其虚拟会话中始终根据用户 ID、设备名称或位置提供所需的正确打印机。 此功能通过一整套企业打印管理功能（如打印跟踪和报告、移动打印和安全徽章版本打印）进行求反。 
+
+- [请参阅合作伙伴网站](https://www.printerlogic.com)。
 
 ## <a name="thinprint"></a>ThinPrint
 

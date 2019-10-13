@@ -1,5 +1,5 @@
 ---
-title: 我的 ASP.NET 5 项目（Visual Studio 连接服务）发生了什么情况？| Microsoft Docs
+title: 我的 ASP.NET 5 项目发生了什么情况（Visual Studio 连接服务）
 description: 介绍在 Visual Studio ASP.NET 5 项目中使用 Visual Studio 连接服务连接到 Azure 存储帐户后会发生什么情况
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: e29c0302ecd703cb02199df95892e24917baf8e8
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: be99465a48aaf680834f313e03384a9f0c211502
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510757"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300013"
 ---
 # <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>我的 ASP.NET 5 项目（Visual Studio Azure 存储连接服务）发生了什么情况？
 ## <a name="references-added"></a>已添加引用

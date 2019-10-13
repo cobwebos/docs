@@ -14,19 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 891eade6aaaf8db9813566d10cdceed113560dc7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 223a5a5b77ded9eb26a5cf3f0003bc9d393615db
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091877"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300852"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>在 Azure 中运行 OpenSUSE Linux 的虚拟机上安装 MySQL
 
 [MySQL](https://www.mysql.com) 是一种常用的开源 SQL 数据库。 本教程介绍如何创建运行 OpenSUSE Linux 的虚拟机，并安装 MySQL。
 
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 

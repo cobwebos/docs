@@ -1,6 +1,6 @@
 ---
 title: '从 Azure Databricks 连接到不同数据源 '
-description: 了解如何从 Azure Databricks 连接到不同数据源。
+description: 了解如何从 Azure Databricks 连接到 Azure SQL 数据库、Azure Data Lake Store、blob 存储、Cosmos DB、事件中心和 Azure SQL 数据仓库。
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: f2b7136ec21416e31c2af658974577023a4494de
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c77d1d1a66d3ee92f5ad3f2016d2160831fa3ad9
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240346"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299309"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>从 Azure Databricks 连接到数据源
 
 本文提供了指向 Azure 中可以连接到 Azure Databricks 的所有不同数据源的链接。 请按照这些链接中的示例操作，将 Azure 数据源（例如，Azure Blob 存储、Azure 事件中心等）中的数据提取到 Azure Databricks 群集中，并对这些数据运行分析作业。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 必须具备 Azure Databricks 工作区和 Spark 群集。 请按照 [Azure Databricks 入门](quickstart-create-databricks-workspace-portal.md)中的说明操作。
 

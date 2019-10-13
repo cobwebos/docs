@@ -2,18 +2,17 @@
 title: Azure Analysis Services 诊断日志记录 | Microsoft Docs
 description: 了解如何设置 Azure Analysis Services 诊断日志记录。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b158545390dafa36e7dad285953c78243f891f28
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: a9684042a76c9c906a75334c319b4ca8ee0b727b
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259431"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298610"
 ---
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
 
@@ -165,7 +164,7 @@ ms.locfileid: "71259431"
 
 #### <a name="example-1"></a>示例 1
 
-下面的查询为模型数据库和服务器返回每个查询的结束/刷新结束事件的持续时间。 如果向外扩展，结果将被副本中断，因为副本编号包含在 ServerName_s 中。 按 RootActivityId_g 分组可减少从 Azure 诊断 REST API 检索到的行计数，有助于保持在[Log Analytics 速率限制](https://dev.loganalytics.io/documentation/Using-the-API/Limits)中所述的限制范围内。
+以下查询返回模型数据库和服务器的每个查询结束/刷新结束事件的持续时间。 如果进行横向扩展，则结果将按副本细分，因为副本编号包含在 ServerName_s 中。 按 RootActivityId_g 分组可减少从 Azure 诊断 REST API 检索到的行数，并有助于保持在 [Log Analytics 速率限制](https://dev.loganalytics.io/documentation/Using-the-API/Limits)中所述的限制内。
 
 ```Kusto
 let window = AzureDiagnostics
@@ -180,7 +179,7 @@ window
 
 #### <a name="example-2"></a>示例 2
 
-下面的查询返回服务器的内存和 QPU 消耗。 如果向外扩展，结果将被副本中断，因为副本编号包含在 ServerName_s 中。
+以下查询返回服务器的内存和 QPU 消耗。 如果进行横向扩展，则结果将按副本细分，因为副本编号包含在 ServerName_s 中。
 
 ```Kusto
 let window = AzureDiagnostics
@@ -195,7 +194,7 @@ window
 
 #### <a name="example-3"></a>示例 3
 
-下面的查询返回服务器读取的行数/秒 Analysis Services 引擎性能计数器。
+以下查询返回服务器的 Analysis Services 引擎性能计数器每秒读取的行数。
 
 ```Kusto
 let window =  AzureDiagnostics
@@ -214,7 +213,7 @@ window
 
 ## <a name="turn-on-logging-by-using-powershell"></a>使用 PowerShell 启用日志记录
 
-在此快速教程中，你将在 Analysis Services 服务器所在订阅和资源组中创建存储帐户。 然后使用 AzDiagnosticSetting 打开诊断日志记录，并将输出发送到新存储帐户。
+在此快速教程中，你将在 Analysis Services 服务器所在订阅和资源组中创建存储帐户。 然后使用 Set-AzDiagnosticSetting 启用诊断日志记录，将输出发送到新的存储帐户。
 
 ### <a name="prerequisites"></a>先决条件
 要完成本教程，必须备好以下资源：
@@ -270,7 +269,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 
 ### <a name="enable-logging"></a>启用日志记录
 
-若要启用日志记录，请将 AzDiagnosticSetting cmdlet 与新存储帐户、服务器帐户和类别的变量一起使用。 运行以下命令，将“-Enabled”标志设置为“$true”：
+若要启用日志记录，请将 Set-AzDiagnosticSetting cmdlet 与新存储帐户、服务器帐户和类别的变量一起使用。 运行以下命令，将“-Enabled”标志设置为“$true”：
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
@@ -329,4 +328,4 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 深入了解 [Azure 资源诊断日志记录](../azure-monitor/platform/resource-logs-overview.md)
 
-请参阅 PowerShell 帮助中[的 AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) 。
+请参阅 PowerShell 帮助中的 [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)。

@@ -28,6 +28,12 @@
           href: azure-disk-enc-linux.md
         - name: Windows
           href: azure-disk-enc-windows.md
+    - name: Azure 密钥保管库
+      items:
+        - name: Linux
+          href: key-vault-linux.md
+        - name: Windows
+          href: key-vault-windows.md
     - name: 适用于 SQL Server 的 Azure 备份
       items:
         - name: 适用于 SQL Server 的 Azure 备份

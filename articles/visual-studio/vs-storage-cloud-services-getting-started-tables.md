@@ -1,5 +1,5 @@
 ---
-title: 开始使用表存储和 Visual Studio 连接服务（云服务）| Microsoft Docs
+title: 通过 Visual Studio 开始使用表存储（云服务）
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的云服务项目中使用 Azure 表存储
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5e8c1a92e79eea61e2807c7007ccaea5819e8529
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 5c42d65b5e2c46fcdbe1b0725f2ebce881722db3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510717"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299996"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>开始使用 Azure 表存储和 Visual Studio 连接服务（云服务项目）
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]

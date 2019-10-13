@@ -2,18 +2,17 @@
 title: 连接到 Azure Analysis Services 服务器 | Microsoft Docs
 description: 了解如何连接到 Azure 中的 Analysis Services 服务器并从中获取数据。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9a8863189ee9cb63d86b157c0bbebb6fd16116b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8059ac748f73ad8f9036f8e675e876e3a8716be
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61027962"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295184"
 ---
 # <a name="connecting-to-servers"></a>连接到服务器
 
@@ -36,12 +35,12 @@ ms.locfileid: "61027962"
 
 ### <a name="get-the-server-name"></a>获取服务器名称
 
-在 **Azure 门户**中，单击“服务器”>“概述”   > “服务器名称”  ，并复制整个服务器名称。 如果组织中的其他用户也要连接此服务器，则可以将此服务器名称与他们共享。 指定服务器名称时，必须使用完整路径。
+在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，并复制整个服务器名称。 如果组织中的其他用户也要连接此服务器，则可以将此服务器名称与他们共享。 指定服务器名称时，必须使用完整路径。
 
 ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
 > [!NOTE]
-> 协议为美国东部 2 区域**aspaaseastus2**。
+> 美国东部2地区的协议为**aspaaseastus2**。
 
 ## <a name="connection-string"></a>连接字符串
 

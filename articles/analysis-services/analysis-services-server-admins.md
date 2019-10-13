@@ -2,24 +2,23 @@
 title: 管理 Azure Analysis Services 中的服务器管理员 | Microsoft Docs
 description: 了解如何在 Azure 中管理 Analysis Services 服务器的服务器管理员。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: eb5248d374fa6212398ad652b4db1496833473ae
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: fbb7d339c5c3c12990a49d6ebd53760e101f4eb7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696311"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301094"
 ---
 # <a name="manage-server-administrators"></a>管理服务器管理员
 
 服务器管理员必须是 Azure Active Directory (Azure AD) 中服务器所在租户的有效用户或安全组。 可以对 Azure 门户中的服务器使用“Analysis Services 管理员”，或使用 SSMS、PowerShell 或 REST API 中的“服务器属性”来管理服务器管理员。 
 
-**安全组**必须[启用邮件](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups), 并`MailEnabled`将属性设置为。 `True` 通过电子邮件地址指定组时使用`obj:groupid@tenantid`。
+**安全组**必须[已启用邮件](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups)且 `MailEnabled` 属性设置为 `True`。 按电子邮件地址指定组时，请使用 `obj:groupid@tenantid`。
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>使用 Azure 门户添加服务器管理员
 

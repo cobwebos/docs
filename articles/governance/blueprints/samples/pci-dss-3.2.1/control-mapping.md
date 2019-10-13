@@ -1,5 +1,5 @@
 ---
-title: 示例-DSS-DSS-3.2.1 蓝图-控件映射
+title: PCI-DSS v2.0 版蓝图示例-控件映射
 description: 控制支付卡行业数据安全标准 v2.0 蓝图示例到 Azure 策略和 RBAC 的映射。
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: fca86163cdfc8790da007a1f0f9264534b512cdd
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 8c8dbc8534720189c40624cfda97ce09a612e453
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981488"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297199"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>控制 PCI DSS v 3.2.1 蓝图示例的映射
 
@@ -28,42 +28,42 @@ ms.locfileid: "71981488"
 此蓝图通过分配用于监视具有可许可规则的网络安全组的[Azure 策略](../../../policy/overview.md)定义，帮助你管理和控制网络。 过于宽松的规则可能会允许意外的网络访问，应该对其进行评审。 此蓝图分配一个 Azure 策略定义，用于监视未受保护的终结点、应用程序和存储帐户。 不受防火墙保护的终结点和应用程序，以及具有无限制访问权限的存储帐户，可能会允许意外访问信息系统中包含的信息。
 
 - 审核对存储帐户的不受限的网络访问
-- 应该限制通过面向 Internet 的终结点进行访问
+- 应限制通过面向 Internet 的终结点进行访问
 
 ## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4. a、4.1、4.1. g、4.1 和6.5.3 加密保护
 
 此蓝图通过分配[Azure 策略](../../../policy/overview.md)定义（强制执行特定的如何控件并审核弱加密设置的使用），帮助你通过使用如何控件来强制实施策略。 了解 Azure 资源中的哪些位置采用欠佳的加密配置有助于采取纠正措施，以确保根据信息安全策略配置资源。 具体而言，此蓝图分配的策略需要对 SQL 数据库进行透明数据加密;审核存储帐户和自动化帐户变量上缺少加密。 此外，还提供了用于处理与存储帐户、Function Apps、WebApp、API 应用和 Redis 缓存的不安全连接的策略，以及审核未加密 Service Fabric 通信。
 
-- 应该只能通过 HTTPS 访问函数应用
+- 只能通过 HTTPS 访问函数应用
 - 只能通过 HTTPS 访问 Web 应用程序
 - 只能通过 HTTPS 访问 API 应用
-- 应在 SQL 数据库上启用透明数据加密
-- 应在虚拟机上启用磁盘加密
+- 应启用 SQL 数据库上的透明数据加密
+- 应对虚拟机应用磁盘加密
 - 自动化帐户变量应进行加密
-- 应该启用只能通过安全方式连接到 Redis 缓存
-- 应该启用安全传输到存储帐户
+- 应仅启用与 Redis 缓存的安全连接
+- 应启用安全转移到存储帐户
 - Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign
-- 应在 SQL 数据库上启用透明数据加密
+- 应启用 SQL 数据库上的透明数据加密
 - 部署 SQL DB 透明数据加密
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5.1、6.2、6.6 和11.2.1 漏洞扫描和系统更新
 
 此蓝图通过分配用于监视 Azure 中缺少系统更新、操作系统漏洞、SQL 漏洞和虚拟机漏洞的[Azure 策略](../../../policy/overview.md)定义，帮助你管理信息系统漏洞安全中心。 Azure 安全中心提供报告功能，使你能够实时洞察已部署的 Azure 资源的安全状态。
 
-- 监视 Azure 安全中心 Endpoint Protection 的缺失情况
+- 在 Azure 安全中心监视 Endpoint Protection 的缺失情况
 - 为 Windows Server 部署默认 Microsoft IaaSAntimalware 扩展
 - 在 SQL Server 上部署威胁检测
-- 应在计算机上安装系统更新
-- 应该修复计算机上安全配置中的漏洞
-- 应该修复 SQL 数据库中的漏洞
-- 应该通过漏洞评估解决方案修复漏洞
+- 应对计算机安装系统更新
+- 应修正计算机上的安全配置漏洞
+- 应修正 SQL 数据库上的漏洞
+- 漏洞应由漏洞评估解决方案修正
 
 ## <a name="711-712-and-713-separation-of-duties"></a>7.1.1. 7.1.2 和7.1.3 的职责分离
 
 仅分配一个 Azure 订阅所有者并不能实现管理冗余。 相反，分配过多的 Azure 订阅所有者会增大违规的可能性，因为会有更多的所有者帐户可能会泄密。 此蓝图可帮助你维护合适数量的 Azure 订阅所有者，方法是分配[Azure 策略](../../../policy/overview.md)定义，用于审核 azure 订阅的所有者数量。 管理订阅所有者权限有助于实现适当的职责分离。
 
-- 应该为你的订阅分配了多个所有者
-- 只多只为订阅指定 3 个所有者 
+- 应向订阅分配多个所有者
+- 最多只能为订阅指定 3 个所有者 
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3.2、7.2.1、8.3.1 和8.3.1 管理特权访问权限
 
@@ -71,30 +71,30 @@ ms.locfileid: "71981488"
 服务器.
  
 - 应从订阅中删除拥有所有者权限的外部帐户
-- 应从订阅中删除具有写入权限的外部帐户
+- 应从订阅中删除拥有写入权限的外部帐户
 - 应从订阅中删除拥有读取权限的外部帐户
-- 应在对订阅拥有所有者权限的帐户上启用 MFA
-- 应为 MFA 启用对订阅具有写入权限的帐户
-- 应在对订阅拥有读取权限的帐户上启用 MFA
-- 应该为 SQL 服务器预配 Azure Active Directory 管理员
+- 应对拥有订阅所有者权限的帐户启用 MFA
+- 应对订阅中拥有写入权限的帐户启用 MFA
+- 应对拥有订阅读取权限的帐户启用 MFA
+- 应为 SQL 服务器预配 Azure Active Directory 管理员
 - 审核自定义 RBAC 规则的使用
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 和8.1.5 最小权限和用户访问权限检查
 
 Azure 实施基于角色的访问控制（RBAC），以帮助你管理哪些用户有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图将[Azure 策略](../../../policy/overview.md)定义分配到审核帐户，这些帐户应优先排序，包括具有提升权限的帐户和外部帐户。
 
-- 应从订阅中删除弃用的帐户
+- 应从订阅中删除弃用帐户
 - 应从订阅中删除拥有所有者权限的已弃用帐户
 - 应从订阅中删除拥有所有者权限的外部帐户
-- 应从订阅中删除具有写入权限的外部帐户
+- 应从订阅中删除拥有写入权限的外部帐户
 - 应从订阅中删除拥有读取权限的外部帐户
 
 ## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 删除或调整访问权限
 
 Azure 实施基于角色的访问控制（RBAC），以帮助你管理哪些用户有权访问 Azure 中的资源。 使用 Azure Active Directory 和 RBAC，可以更新用户角色以反映组织更改。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图将[Azure 策略](../../../policy/overview.md)定义分配给审核折旧帐户，以便删除。
 
-- 应从订阅中删除弃用的帐户
-- 应从订阅中删除拥有所有者权限的已弃用帐户
+- 应从订阅中删除弃用帐户
+- 应从订阅中删除拥有所有者权限的弃用帐户
 
 ## <a name="823ab-824ab-and-825-password-based-authentication"></a>8.2.3，b，8.2.4，b 和8.2.5 基于密码的身份验证
 
@@ -112,12 +112,12 @@ Azure 实施基于角色的访问控制（RBAC），以帮助你管理哪些用�
 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来帮助确保记录系统事件，这些定义用于审核在 Azure 资源上的日志设置。
 诊断日志针对 Azure 资源中执行的操作提供见解。 Azure 日志依赖于同步的内部时钟创建各个资源中事件的时间相关记录。
 
-- 应在 SQL Server 的高级数据安全设置上启用审核
+- 应在 SQL Server 上的高级数据安全设置上启用审核
 - 审核诊断设置
 - 审核 SQL 服务器级别审核设置
 - 在 SQL Server 上部署审核
-- 应将存储帐户迁移到新的 Azure 资源管理器资源
-- 应将虚拟机迁移到新的 Azure 资源管理器资源
+- 应将存储帐户迁移到新 Azure 资源管理器资源
+- 应将虚拟机迁移到新 Azure 资源管理器资源
 
 ## <a name="1236-and-1237-information-security"></a>12.3.6 和12.3.7 信息安全性
 
