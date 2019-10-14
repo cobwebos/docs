@@ -3,16 +3,15 @@ title: 示例 - CIS Microsoft Azure Foundations Benchmark 蓝图 - 建议映射
 description: CIS Microsoft Azure Foundations Benchmark 蓝图示例到 Azure Policy 的建议映射。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/09/2019
+ms.date: 10/01/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: f048262003a3567175c40ebf4ee744c41e11b5f9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 9368ad220f1ded1a11360dbdf0af86c27277a207
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918698"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001277"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark 蓝图示例的建议映射
 
@@ -26,186 +25,332 @@ ms.locfileid: "70918698"
 
 ## <a name="11-ensure-that-multi-factor-authentication-is-enabled-for-all-privileged-users"></a>1.1 确保为所有特权用户启用多重身份验证
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+未针对 Azure Active Directory 特权帐户启用多重身份验证时，此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你进行监视。
 
 - 应在对订阅拥有所有者权限的帐户上启用 MFA
 - 应在对订阅拥有写入权限的帐户上启用 MFA
 
 ## <a name="12-ensure-that-multi-factor-authentication-is-enabled-for-all-non-privileged-users"></a>1.2 确保为所有非特权用户启用多重身份验证
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+未针对 Azure Active Directory 非特权帐户启用多重身份验证时，此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你进行监视。
 
 - 应在对订阅拥有读取权限的帐户上启用 MFA
 
 ## <a name="13-ensure-that-there-are-no-guest-users"></a>1.3 确保没有任何来宾用户
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助监视可能需要删除的来宾帐户。
 
 - 应从订阅中删除拥有所有者权限的外部帐户
 - 应从订阅中删除拥有读取权限的外部帐户
 - 应从订阅中删除具有写入权限的外部帐户
 
+## <a name="21-ensure-that-standard-pricing-tier-is-selected"></a>2.1 确保已选择标准定价层
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你监视未启用安全中心标准层的网络和虚拟机。
+
+ - 应选择安全中心标准定价层
+
+## <a name="22-ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>2.2 确保“监视代理的自动预配”设置为“打开”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保启用 Log Analytics 代理的自动预配。
+
+- 应该对订阅启用 Log Analytics 监视代理的自动预配
+
 ## <a name="23-ensure-asc-default-policy-setting-monitor-system-updates-is-not-disabled"></a>2.3 确保 ASC 默认策略设置“监视系统更新”不是处于“已禁用”状态
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在虚拟机上安装系统更新。
 
 - 应在计算机上安装系统更新
 
 ## <a name="24-ensure-asc-default-policy-setting-monitor-os-vulnerabilities-is-not-disabled"></a>2.4 确保 ASC 默认策略设置“监视 OS 漏洞”不是处于“已禁用”状态
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你监视未修正的虚拟机漏洞。
 
 - 应该修复计算机上安全配置中的漏洞
 
 ## <a name="25-ensure-asc-default-policy-setting-monitor-endpoint-protection-is-not-disabled"></a>2.5 确保 ASC 默认策略设置“监视终结点保护”不是处于“已禁用”状态
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在虚拟机上启用终结点保护。
 
 - 监视 Azure 安全中心 Endpoint Protection 的缺失情况
 
 ## <a name="26-ensure-asc-default-policy-setting-monitor-disk-encryption-is-not-disabled"></a>2.6 确保 ASC 默认策略设置“监视磁盘加密”不是处于“已禁用”状态
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保加密虚拟机磁盘。
 
 - 应在虚拟机上启用磁盘加密
 
+## <a name="27-ensure-asc-default-policy-setting-monitor-network-security-groups-is-not-disabled"></a>2.7 确保 ASC 默认策略设置“监视网络安全组”不是处于“已禁用”状态
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你保护面向 Internet 的虚拟机。
+
+- 应该强化面向 Internet 的虚拟机的网络安全组规则
+
 ## <a name="28-ensure-asc-default-policy-setting-monitor-web-application-firewall-is-not-disabled"></a>2.8 确保 ASC 默认策略设置“监视 Web 应用程序防火墙”不是处于“已禁用”状态
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 可帮助你保护运行 Web 应用程序的虚拟机。
 
 - 应该强化 IaaS 上 Web 应用程序的 NSG 规则
 
+## <a name="29-ensure-asc-default-policy-setting-enable-next-generation-firewallngfw-monitoring-is-not-disabled"></a>2.9 确保 ASC 默认策略设置“启用下一代防火墙(NGFW)监视”不是处于“已禁用”状态
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 可帮助你通过限制访问来防范子网和虚拟机受到威胁。 此 CIS Microsoft Azure Foundations Benchmark 建议参考的安全中心策略已由两条新建议替代。 下面参考的策略解释了新建议。
+
+- 子网应与网络安全组关联
+- 虚拟机应与网络安全组关联
+
 ## <a name="210-ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>2.10 确保 ASC 默认策略设置“监视漏洞评估”不是处于“已禁用”状态
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保检测和修正漏洞。
 
 - 应该通过漏洞评估解决方案修复漏洞
 
+## <a name="211-ensure-asc-default-policy-setting-monitor-storage-blob-encryption-is-not-disabled"></a>2.11 确保 ASC 默认策略设置“监视存储 Blob 加密”不是处于“已禁用”状态
+
+针对所有新的和现有的存储帐户启用 Azure 存储加密，并且不能禁用。 （这是默认的 Azure 功能；没有策略分配。）
+
 ## <a name="212-ensure-asc-default-policy-setting-monitor-jit-network-access-is-not-disabled"></a>2.12 确保 ASC 默认策略设置“监视 JIT 网络访问”不是处于“已禁用”状态
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你控制对虚拟机的访问。
 
 - 应在虚拟机上应用实时网络访问控制
 
+## <a name="213-ensure-asc-default-policy-setting-monitor-adaptive-application-whitelisting-is-not-disabled"></a>2.13 确保 ASC 默认策略设置“监视自适应应用程序白名单”不是处于“已禁用”状态
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在虚拟机上启用自适应应用程序控制。
+
+- 应在虚拟机上启用自适应应用程序控制
+
+## <a name="214-ensure-asc-default-policy-setting-monitor-sql-auditing-is-not-disabled"></a>2.14 确保 ASC 默认策略设置“监视 SQL 审核”不是处于“已禁用”状态
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保启用 SQL 服务器审核。
+
+- 应在 SQL Server 的高级数据安全设置上启用审核
+
 ## <a name="215-ensure-asc-default-policy-setting-monitor-sql-encryption-is-not-disabled"></a>2.15 确保 ASC 默认策略设置“监视 SQL 加密”不是处于“已禁用”状态
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在 SQL 数据库中启用透明数据加密。
 
 - 应在 SQL 数据库上启用透明数据加密
 
+## <a name="216-ensure-that-security-contact-emails-is-set"></a>2.16 确保已设置“安全联系人电子邮件”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保正确启用安全通知
+
+- 应为订阅提供安全联系人电子邮件地址
+
+## <a name="217-ensure-that-security-contact-phone-number-is-set"></a>2.17 确保已设置安全联系人的“电话号码”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保正确启用安全通知
+
+- 应为订阅提供安全联系人电话号码
+
+## <a name="218-ensure-that-send-email-notification-for-high-severity-alerts-is-set-to-on"></a>2.18 确保将“发送高严重性警报的电子邮件通知”设置为“打开”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保正确启用安全通知
+
+- 应启用高严重性警报的电子邮件通知
+
+## <a name="219-ensure-that-send-email-also-to-subscription-owners-is-set-to-on"></a>2.19 确保将“同时将电子邮件发送给订阅所有者”设置为“打开”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保正确启用安全通知
+
+- 应启用向订阅所有者发送高严重性警报的电子邮件通知
+
 ## <a name="31-ensure-that-secure-transfer-required-is-set-to-enabled"></a>3.1 确保“需要安全传输”设置为“已启用”
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你监视允许不安全连接的存储帐户。
 
 - 应该启用安全传输到存储帐户
 
 ## <a name="37-ensure-default-network-access-rule-for-storage-accounts-is-set-to-deny"></a>3.7 确保将针对存储帐户的默认网络访问规则设置为“拒绝”
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你监视允许不受限访问的存储帐户。
 
 - 审核对存储帐户的不受限的网络访问
 
+## <a name="38-ensure-trusted-microsoft-services-is-enabled-for-storage-account-access"></a>3.8 确保启用“受信任的 Microsoft 服务”来访问存储帐户
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你监视不允许从受信任 Microsoft 服务进行访问的存储帐户。
+
+- 存储帐户应允许从受信任的 Microsoft 服务访问
+
 ## <a name="41-ensure-that-auditing-is-set-to-on"></a>4.1 确保“审核”设置为“打开”
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保启用 SQL 服务器审核。 
 
 - 应在 SQL Server 的高级数据安全设置上启用审核
 
 ## <a name="42-ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>4.2 确保在“审核”策略中为 SQL 服务器正确设置“AuditActionGroups”
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保正确配置 SQL 服务器审核。
 
 - SQL 审核设置中应包含配置为捕获关键活动的操作组
 
 ## <a name="43-ensure-that-auditing-retention-is-greater-than-90-days"></a>4.3 确保审核保留期“大于 90 天”
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保至少将 SQL 服务器日志保留 90 天。
 
 - 应将 SQL 服务器的审核保留期配置为大于 90 天。
 
 ## <a name="44-ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>4.4 确保将 SQL 服务器上的“高级数据安全性”设置为“打开”
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在 SQL 服务器和 SQL 托管实例上启用高级数据安全性。
 
+- 应在 SQL 托管实例上启用高级数据安全性
 - 应在 SQL 服务器上启用高级数据安全性
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4.5 确保“威胁检测类型”设置为“所有”
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在 SQL 服务器和 SQL 托管实例上正确配置高级威胁防护。
 
 - 应在 SQL 服务器的“高级数据安全性”设置中将“高级威胁保护类型”设置为“所有”
 - 应在 SQL 托管实例的“高级数据安全性”设置中将“高级威胁保护类型”设置为“所有”
 
 ## <a name="46-ensure-that-send-alerts-to-is-set"></a>4.6 确保设置“将警报发送到”
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保正确启用高级数据安全性通知。
 
+- SQL 托管实例的“高级数据安全性”设置应包含用于接收安全警报的电子邮件地址
 - SQL 服务器的“高级数据安全性”设置应包含用于接收安全警报的电子邮件地址
 
 ## <a name="47-ensure-that-email-service-and-co-administrators-is-enabled"></a>4.7 确保“电子邮件服务和协同管理员”设置为“已启用”
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保正确启用高级数据安全性通知。
 
-- SQL 托管实例的“高级数据安全性”设置应包含用于接收安全警报的电子邮件地址
+- 应在 SQL 托管实例高级数据安全设置中启用“向管理员和订阅所有者发送电子邮件通知”
+- 应在 SQL 服务器高级数据安全设置中为管理员和订阅所有者启用电子邮件通知
 
 ## <a name="48-ensure-that-azure-active-directory-admin-is-configured"></a>4.8 确保配置 Azure Active Directory 管理员
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保为 SQL 服务器预配 Azure Active Directory 管理员。
 
 - 应该为 SQL 服务器预配 Azure Active Directory 管理员
 
 ## <a name="49-ensure-that-data-encryption-is-set-to-on-on-a-sql-database"></a>4.9 确保将 SQL 数据库上的“数据加密”设置为“打开”
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在 SQL 数据库中启用透明数据加密。
 
 - 应在 SQL 数据库上启用透明数据加密
 
 ## <a name="410-ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>4.10 确保使用 BYOK（使用自己的密钥）加密 SQL 服务器的 TDE 保护器
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保使用自己的密钥加密 SQL 服务器和 SQL 托管实例的透明数据加密保护器。
 
-- 应使用自己的密钥加密 SQL 服务器的 TDE 保护器
 - 应使用自己的密钥加密 SQL 托管实例的 TDE 保护器
+- 应使用自己的密钥加密 SQL 服务器的 TDE 保护器
+
+## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11 确保 MySQL 数据库服务器的“强制 SSL 连接”设置为“已启用”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保 MySQL 数据库服务器强制 SSL 连接。
+
+- 应为 MySQL 数据库服务器启用“强制 SSL 连接”
+
+## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13 确保 PostgreSQL 数据库服务器的“强制 SSL 连接”设置为“已启用”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保 PostgreSQL 数据库服务器强制 SSL 连接。
+
+- 应为 PostgreSQL 数据库服务器启用“强制 SSL 连接”
+
+## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4.17 确保 PostgreSQL 数据库服务器的服务器参数“connection_throttling”设置为“ON”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你缓解针对 PostgreSQL 数据库服务器的暴力攻击。
+
+- 应为 PostgreSQL 数据库服务器启用连接限制
+
+## <a name="419-ensure-that-azure-active-directory-admin-is-configured"></a>4.19 确保配置 Azure Active Directory 管理员
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保为 SQL 服务器预配 Azure Active Directory 管理员。 CIS Microsoft Azure Foundations Benchmark 包括此建议；但它是[建议 4.8](#48-ensure-that-azure-active-directory-admin-is-configured) 的副本。
+
+- 应该为 SQL 服务器预配 Azure Active Directory 管理员
+
+## <a name="511-ensure-that-a-log-profile-exists"></a>5.1.1 确保日志配置文件存在
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保所有 Azure 订阅的日志配置文件都存在。 
+
+- Azure 订阅应有用于活动日志的日志配置文件
+
+## <a name="512-ensure-that-activity-log-retention-is-set-365-days-or-greater"></a>5.1.2 确保将“活动日志保留期”设置为 365 天或更长时间
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保至少将活动日志保留一年。
+
+- 活动日志至少应保留一年
+
+## <a name="513-ensure-audit-profile-captures-all-the-activities"></a>5.1.3 确保审核配置文件捕获所有活动
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保正确配置日志配置文件。
+
+- Azure Monitor 日志配置文件应收集“写入”、“删除”和“操作”类别的日志
+
+## <a name="514-ensure-the-log-profile-captures-activity-logs-for-all-regions-including-global"></a>5.1.4 确保日志配置文件捕获所有区域（包括全球）的活动日志
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保正确配置日志配置文件。
+
+- Azure Monitor 应从所有区域收集活动日志
 
 ## <a name="517-ensure-that-logging-for-azure-keyvault-is-enabled"></a>5.1.7 确保 Azure KeyVault 日志记录设置为“已启用”
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保为 Key Vault 启用诊断日志。
 
 - 应启用 Key Vault 中的诊断日志
 
+## <a name="65-ensure-that-network-watcher-is-enabled"></a>6.5 确保网络观察程序已启用
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保为部署资源的所有区域启用网络观察程序。 此策略需要一个指定所有适用区域的参数数组。 此策略计划定义中的默认值为“eastus”。
+
+- 应启用网络观察程序
+
 ## <a name="71-ensure-that-os-disk-are-encrypted"></a>7.1 确保“OS 磁盘”已加密
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在虚拟机上启用磁盘加密。
 
 - 应在虚拟机上启用磁盘加密
 
 ## <a name="72-ensure-that-data-disks-are-encrypted"></a>7.2 确保“数据磁盘”已加密
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在虚拟机上启用磁盘加密。
 
 - 应在虚拟机上启用磁盘加密
 
+## <a name="73-ensure-that-unattached-disks-are-encrypted"></a>7.3 确保加密“未附加的磁盘”
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保加密未附加的磁盘。
+
+- 应加密未附加的磁盘
+
+## <a name="74-ensure-that-only-approved-extensions-are-installed"></a>7.4 确保仅安装已批准的扩展
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保仅安装已批准的虚拟机扩展。 此策略需要一个指定所有已批准虚拟机扩展的参数数组。 此策略计划定义包含客户应该验证的建议默认值。 
+
+ - 应仅安装已批准的 VM 扩展
+
 ## <a name="75-ensure-that-the-latest-os-patches-for-all-virtual-machines-are-applied"></a>7.5 确保已应用适用于所有虚拟机的最新 OS 修补程序
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在虚拟机上安装系统更新。
 
 - 应在计算机上安装系统更新
 
 ## <a name="76-ensure-that-the-endpoint-protection-for-all-virtual-machines-is-installed"></a>7.6 确保已安装适用于所有虚拟机的终结点保护
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在虚拟机上启用终结点保护。
 
 - 监视 Azure 安全中心 Endpoint Protection 的缺失情况
 
+## <a name="84-ensure-the-key-vault-is-recoverable"></a>8.4 确保 Key Vault 可恢复
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保 Key Vault 对象在意外删除后可恢复。
+
+- 应可恢复 Key Vault 对象
+
 ## <a name="85-enable-role-based-access-control-rbac-within-azure-kubernetes-services"></a>8.5 在 Azure Kubernetes 服务中启用基于角色的访问控制 (RBAC)
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保使用基于角色的访问控制来管理 Kubernetes 服务群集中的权限
 
 - \[预览\]：应在 Kubernetes 服务中使用基于角色的访问控制 (RBAC)
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9.2 确保 Web 应用将所有 HTTP 流量重定向到 Azure 应用服务中的 HTTPS
 
-此蓝图分配与此 CIS 建议相符的 [Azure Policy](../../../policy/overview.md) 定义。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保只能通过安全连接访问 Web 应用程序。
 
 - 只能通过 HTTPS 访问 Web 应用程序
 

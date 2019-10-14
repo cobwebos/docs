@@ -3,17 +3,17 @@ title: 在 Linux 上使用自定义映像创建 Azure Functions
 description: 了解如何创建在自定义 Linux 映像中运行的 Azure Functions。
 author: ggailey777
 ms.author: glenga
-ms.date: 06/25/2019
+ms.date: 09/27/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 1865b1b96b5b8794f1518d639825ccd2f1dcd090
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 54d7dc4e57991f6b773169f539a86fdc8451cbba
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773138"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950387"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>在 Linux 上使用自定义映像创建函数
 
@@ -34,6 +34,8 @@ ms.locfileid: "70773138"
 > * 从 Docker 中心部署函数应用。
 > * 将应用程序设置添加到函数应用。
 > * 启用持续部署。
+> * 与容器建立 SSH 连接。
+> * 添加队列存储输出绑定。 
 > * 添加 Application Insights 监视。
 
 支持在 Mac、Windows 或 Linux 计算机上执行以下步骤。 
@@ -51,7 +53,9 @@ ms.locfileid: "70773138"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-local-function-app-project"></a>创建本地函数应用项目
+[!INCLUDE [functions-cloud-shell-note](../../includes/functions-cloud-shell-note.md)]
+
+## <a name="create-the-local-project"></a>创建本地项目
 
 从命令行运行以下命令，以便在当前本地目录的 `MyFunctionProj` 文件夹中创建一个函数应用项目。 对于 Python 项目，你[必须在虚拟环境中运行](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional)。
 
@@ -67,15 +71,6 @@ func init MyFunctionProj --docker
 * `node`：创建一个 JavaScript 项目。
 * `python`：创建 Python 项目。  
 
-执行命令后，看到的内容如以下输出所示：
-
-```output
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Writing Dockerfile
-```
-
 使用以下命令导航到新的 `MyFunctionProj` 项目文件夹。
 
 ```bash
@@ -86,7 +81,7 @@ cd MyFunctionProj
 
 [!INCLUDE [functions-run-function-test-local](../../includes/functions-run-function-test-local.md)]
 
-## <a name="build-the-image-from-the-docker-file"></a>从 Docker 文件生成映像
+## <a name="build-from-the-docker-file"></a>从 Docker 文件生成
 
 查看项目根文件夹中的 _Dockerfile_。 此文件描述在 Linux 上运行函数应用所需的环境。 以下示例是一个用于创建容器的 Dockerfile，该容器在 JavaScript (Node.js) 辅助角色运行时上运行函数应用： 
 
@@ -101,38 +96,16 @@ COPY . /home/site/wwwroot
 > Azure Functions 支持的基础映像的完整列表可以在 [Azure Functions 基础映像页](https://hub.docker.com/_/microsoft-azure-functions-base)中找到。
 
 ### <a name="run-the-build-command"></a>运行 `build` 命令
+
 在根文件夹中运行 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令，并提供名称 `mydockerimage` 和标记 `v1.0.0`。 将 `<docker-id>` 替换为 Docker 中心帐户 ID。 此命令为容器生成 Docker 映像。
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 ```
 
-执行命令后，看到的内容如以下输出所示，在此示例中适用于 JavaScript 辅助角色运行时：
+该命令完成后，可在本地运行新容器。
 
-```bash
-Sending build context to Docker daemon  17.41kB
-Step 1/3 : FROM mcr.microsoft.com/azure-functions/node:2.0
-2.0: Pulling from azure-functions/node
-802b00ed6f79: Pull complete
-44580ea7a636: Pull complete
-73eebe8d57f9: Pull complete
-3d82a67477c2: Pull complete
-8bd51cd50290: Pull complete
-7bd755353966: Pull complete
-Digest: sha256:480e969821e9befe7c61dda353f63298f2c4b109e13032df5518e92540ea1d08
-Status: Downloaded newer image for mcr.microsoft.com/azure-functions/node:2.0
- ---> 7c71671b838f
-Step 2/3 : ENV AzureWebJobsScriptRoot=/home/site/wwwroot
- ---> Running in ed1e5809f0b7
-Removing intermediate container ed1e5809f0b7
- ---> 39d9c341368a
-Step 3/3 : COPY . /home/site/wwwroot
- ---> 5e196215935a
-Successfully built 5e196215935a
-Successfully tagged <docker-id>/mydockerimage:v1.0.0
-```
-
-### <a name="test-the-image-locally"></a>在本地测试映像
+### <a name="run-the-image-locally"></a>在本地运行映像
 通过在本地容器中运行生成的 Docker 映像，验证该映像是否正常工作。 发布 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令并将映像的名称和标记传递给它。 确保使用 `-p` 参数指定端口。
 
 ```bash
@@ -141,14 +114,14 @@ docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 
 使用本地 Docker 容器中运行的自定义映像，通过浏览到 <http://localhost:8080> 验证函数应用和容器是否正常运行。
 
-![在本地测试函数应用。](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
+![在本地运行函数应用。](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
 > [!NOTE]
 > 此时，尝试调用特定 HTTP 函数时，会收到 HTTP 401 错误响应。 这是因为函数在本地容器中的运行方式与在 Azure 中的运行方式相同，这意味着需要功能键。 由于尚未将容器发布到函数应用，因此没有可用的功能键。 稍后你将看到，当你使用核心工具发布容器时，将显示功能键。 如果要测试在本地容器中运行的函数，可以将[授权密钥](functions-bindings-http-webhook.md#authorization-keys)更改为 `anonymous`。 
 
 验证容器中的函数应用后，请停止执行。 现在，可将自定义映像推送到 Docker 中心帐户。
 
-## <a name="push-the-custom-image-to-docker-hub"></a>将自定义映像推送到 Docker 中心
+## <a name="push-to-docker-hub"></a>推送到 Docker Hub
 
 注册表是一种托管映像、提供服务映像和容器服务的应用程序。 若要共享映像，必须先将其推送至注册表。 Docker 中心是一种用于 Docker 映像的注册表，使用该注册表，用户能够托管自己的存储库，无论是公共的还是专用的均可。
 
@@ -164,19 +137,7 @@ docker login --username <docker-id>
 docker push <docker-id>/mydockerimage:v1.0.0
 ```
 
-可通过检查命令的输出来验证推送是否成功。
-
-```bash
-The push refers to a repository [docker.io/<docker-id>/mydockerimage:v1.0.0]
-24d81eb139bf: Pushed
-fd9e998161c9: Mounted from <docker-id>/mydockerimage
-e7796c35add2: Mounted from <docker-id>/mydockerimage
-ae9a05b85848: Mounted from <docker-id>/mydockerimage
-45c86e20670d: Mounted from <docker-id>/mydockerimage
-v1.0.0: digest: sha256:be080d80770df71234eb893fbe4d... size: 1796
-```
-
-现在，可在 Azure 中将此映像用作新函数应用的部署源。
+推送成功后，可以在 Azure 中将此映像用作新函数应用的部署源。
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 
@@ -193,7 +154,7 @@ az functionapp plan create --resource-group myResourceGroup --name myPremiumPlan
 --location WestUS --number-of-workers 1 --sku EP1 --is-linux
 ```
 
-## <a name="create-and-deploy-the-custom-image"></a>创建并部署自定义映像
+## <a name="create-an-app-from-the-image"></a>从映像创建应用
 
 函数应用管理托管计划中函数的执行。 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令基于 Docker 中心映像创建一个函数应用。
 
@@ -230,13 +191,37 @@ AzureWebJobsStorage=$storageConnectionString
 >
 > 需停止函数应用，然后再将其启动，以便这些值生效
 
-现在，可以测试 Azure 中的 Linux 上运行的函数。
+## <a name="verify-your-functions"></a>验证函数
 
-[!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+<!-- we should replace this with a CLI or API-based approach, when we get something better than REST -->
+
+调用终结点时，创建的 HTTP 触发的函数需要[函数密钥](functions-bindings-http-webhook.md#authorization-keys)。 目前，获取函数 URL（包括密钥）的最简单方法是在 [Azure 门户]中获取。 
+
+> [!TIP]
+> 也可以使用[密钥管理 API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) 获取函数密钥，但这需要提供[用于身份验证的持有者令牌](/cli/azure/account#az-account-get-access-token)。
+
+在 [Azure 门户]中找到新的函数应用，方法是在页面顶部的“搜索”框中键入函数应用名称，然后选择“应用服务”资源。  
+
+选择“MyHttpTrigger”函数，然后选择“</> 获取函数 URL” > “默认(函数密钥)” > “复制”。    
+
+![从 Azure 门户复制函数 URL](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)
+
+在此 URL 中，函数密钥是 `code` 查询参数。 
+
+> [!NOTE]  
+> 由于函数应用将部署为容器，因此无法在门户中对函数代码进行更改。 必须改为更新本地容器中的项目，然后将其重新发布到 Azure。
+
+将函数 URL 粘贴到浏览器的地址栏中。 将查询字符串值 `&name=<yourname>` 添加到该 URL 尾部，然后按键盘上的 `Enter` 键来执行请求。 此时会看到函数返回的响应显示在浏览器中。
+
+以下示例显示了浏览器中的响应：
+
+![浏览器中的函数响应。](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
+
+请求 URL 包含通过 HTTP 访问函数默认所需的密钥。 
 
 ## <a name="enable-continuous-deployment"></a>启用持续部署
 
-使用容器的一大好处是，在注册表中更新容器时可以自动部署更新。 使用 [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) 命令启用持续部署。
+使用容器的好处之一是能够为持续部署提供支持。 当容器在注册表中更新后，可以使用 Functions 来自动部署更新。 使用 [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) 命令启用持续部署。
 
 ```azurecli-interactive
 az functionapp deployment container config --enable-cd \
@@ -248,36 +233,154 @@ az functionapp deployment container config --enable-cd \
 
 复制部署 URL 并浏览到 DockerHub 存储库，选择“Webhook”选项卡，  键入 Webhook 的 **Webhook 名称**，将 URL 粘贴到“Webhook URL”中，  然后选择加号 ( **+** )。
 
-![将 Webhook 添加到 DockerHub 存储库中](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+![将 Webhook 添加到 DockerHub 存储库中](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
 设置 Webhook 以后，只要 DockerHub 中的链接映像进行了更新，函数应用就会下载并安装最新映像。
 
-## <a name="enable-application-insights"></a>启用 Application Insights
+## <a name="enable-ssh-connections"></a>启用 SSH 连接
 
-监视函数执行的建议方法是将函数应用与 Azure Application Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，当你使用 Azure CLI 创建函数应用时，Azure 的函数应用中的集成并未完成。
+SSH 实现容器和客户端之间的安全通信。 启用 SSH 后，可以使用应用服务高级工具 (Kudu) 连接到容器。 为了便于使用 SSH 连接到容器，Functions 提供了已启用 SSH 的基础映像。 
 
-若要为函数应用启用 Application Insights，请执行以下操作：
+### <a name="change-the-base-image"></a>更改基础映像
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+在 dockerfile 中，将字符串 `-appservice` 追加到 `FROM` 指令中的基础映像。在 JavaScript 项目中，更新的内容如下所示。
 
-若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+```docker
+FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
+```
+
+在两个基础映像中做出修改后，可以通过 SSH 连接到容器。 [此应用服务教程](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections)详细描述了这些差异。
+
+### <a name="rebuild-and-redeploy-the-image"></a>重新生成并重新部署映像
+
+在根文件夹中，根据如前所述再次运行 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令（请将 `<docker-id>` 替换为你的 Docker Hub 帐户 ID）。 
+
+```bash
+docker build --tag <docker-id>/mydockerimage:v1.0.0 .
+```
+
+将更新的映像推回到 Docker Hub。
+
+```bash
+docker push <docker-id>/mydockerimage:v1.0.0
+```
+
+更新的映像将重新部署到函数应用。
+
+### <a name="connect-to-your-container-in-azure"></a>连接到 Azure 中的容器
+
+在浏览器中，导航到函数应用容器的以下高级工具 (Kudu) `scm.` 终结点（请将 `<app_name>` 替换为函数应用的名称）。
+
+```
+https://<app_name>.scm.azurewebsites.net/
+```
+
+登录到你的 Azure 帐户，然后选择“SSH”选项卡来与容器建立 SSH 连接。 
+
+建立连接后，运行 `top` 命令查看当前正在运行的进程。 
+
+![在 SSH 会话中运行的 Linux top 命令。](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
+
+## <a name="write-to-queue-storage"></a>写入队列存储
+
+无需编写自己的集成代码，即可使用 Functions 将 Azure 服务和其他资源连接到函数。 这些绑定表示输入和输出，在函数定义中声明。  绑定中的数据作为参数提供给函数。 触发器是一种特殊类型的输入绑定。  尽管一个函数只有一个触发器，但它可以有多个输入和输出绑定。 有关详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
+
+本部分介绍如何将函数与 Azure 存储队列集成。 添加到此函数的输出绑定会将 HTTP 请求中的数据写入到队列中的消息。
+
+### <a name="download-the-function-app-settings"></a>下载函数应用设置
+
+[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
+
+### <a name="enable-extension-bundles"></a>启用扩展捆绑包
+
+由于你使用队列存储输出绑定，因此在运行项目之前，必须安装存储绑定扩展。 
+
+
+# <a name="javascript--pythontabnodejspython"></a>[JavaScript/Python](#tab/nodejs+python)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+除了 HTTP 和计时器触发器，绑定将实现为扩展包。 在终端窗口中运行以下 [dotnet add package](/dotnet/core/tools/dotnet-add-package) 命令，将存储扩展包添加到项目中。
+
+```bash
+dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+```
+
+> [!TIP]
+> 使用 Visual Studio 时，还可以使用 NuGet 包管理器来添加此包。
+
+---
+
+现在，可将存储输出绑定添加到项目。
+
+### <a name="add-an-output-binding"></a>添加输出绑定
+
+在 Functions 中，每种类型的绑定都需要一个 `direction`、`type`，以及要在 function.json 文件中定义的唯一 `name`。 定义这些属性的方式取决于函数应用的语言。
+
+# <a name="javascript--pythontabnodejspython"></a>[JavaScript/Python](#tab/nodejs+python)
+
+[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+[!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
+
+---
+
+### <a name="add-code-that-uses-the-output-binding"></a>添加使用输出绑定的代码
+
+定义绑定后，可以使用绑定的 `name`，将其作为函数签名中的属性进行访问。 使用输出绑定时，无需使用 Azure 存储 SDK 代码进行身份验证、获取队列引用或写入数据。 Functions 运行时和队列输出绑定将为你执行这些任务。
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+[!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
+---
+
+### <a name="update-the-hosted-container"></a>更新托管容器
+
+在根文件夹中再次运行 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令，但这次请将标记中的版本更新为 `v1.0.2`。 如前所述，将 `<docker-id>` 替换为你的 Docker Hub 帐户 ID。 
+
+```bash
+docker build --tag <docker-id>/mydockerimage:v1.0.0 .
+```
+
+将更新的映像推回到存储库。
+
+```bash
+docker push <docker-id>/mydockerimage:v1.0.0
+```
+
+### <a name="verify-the-updates-in-azure"></a>验证 Azure 中的更新
+
+在浏览器中使用前面所述的同一 URL 来触发函数。 应会看到相同的响应。 但这一次，作为 `name` 参数传递的字符串已写入到 `outqueue` 存储队列。
+
+### <a name="set-the-storage-account-connection"></a>设置存储帐户连接
+
+[!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
+
+### <a name="query-the-storage-queue"></a>查询存储队列
+
+[!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+成功将自定义容器部署到 Azure 中的函数应用后，接下来请考虑阅读有关以下主题的详细信息：
 
-> [!div class="checklist"]
-> * 使用 Core Tools 创建函数应用和 Dockerfile。
-> * 使用 Docker 生成自定义映像。
-> * 将自定义映像发布到容器注册表。
-> * 创建 Azure 存储帐户。
-> * 创建一个 Linux 高级计划。
-> * 从 Docker 中心部署函数应用。
-> * 将应用程序设置添加到函数应用。
-> * 启用持续部署。
-> * 添加 Application Insights 监视。
++ [监视函数](functions-monitoring.md)
++ [缩放和托管选项](functions-scale.md)
++ [基于 Kubernetes 的无服务器托管](functions-kubernetes-keda.md)
 
-> [!div class="nextstepaction"] 
-> [详细了解用于将函数部署到 Azure 的选项](functions-deployment-technologies.md)
+[Azure 门户]: https://portal.azure.com
