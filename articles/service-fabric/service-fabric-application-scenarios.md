@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/24/2019
 ms.author: atsenthi
-ms.openlocfilehash: 91e85f762e05c836fe32f5743cc48afed30ae983
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d72e124248887690ca26c2676e8036cb1b5c4339
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327293"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303514"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric 应用程序方案
 Azure Service Fabric 提供了一个可靠而灵活的平台，可用于编写和运行多种类型的商业应用程序和服务。 这些应用程序和微服务可以无状态也可以有状态，它们在各虚拟机间资源平衡，可最大限度提高工作效率。 
 
-Service Fabric 的独特体系结构使你可以在应用程序中执行近实时数据分析、内存中计算、并行事务和事件处理。 可以根据不断变化的资源要求轻松向上或向下缩放应用程序（其实是扩展或缩减）。
+Service Fabric 的独特体系结构使你可以在应用程序中执行近实时数据分析、内存中计算、并行事务和事件处理。 可根据不断变化的资源要求轻松向上或向下缩放应用程序（其实是扩展或缩减）。
 
 有关生成应用程序的设计指南，请参阅[Azure Service Fabric 上的微服务体系结构](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric)和[使用 Service Fabric 进行应用程序设计的最佳实践](service-fabric-best-practices-applications.md)。
 
@@ -50,7 +50,7 @@ Service Fabric 的独特体系结构使你可以在应用程序中执行近实�
 
     已构建计算服务的客户包括 [Solidsoft Reply](https://customers.microsoft.com/story/solidsoft-reply-platform-powers-e-verification-of-pharmaceuticals) 和 [Infosupport](https://customers.microsoft.com/story/service-fabric-customer-profile-info-support-and-fudura)。
 
-* **高度可用的服务**：Service Fabric 通过创建多个辅助服务副本提供快速的故障转移。 节点、进程或单独的服务因硬件或其他故障而不可用时，其中一个辅助副本会提升为主副本，将对服务的损失降到最低。
+* **高度可用的服务**：Service Fabric 通过创建多个辅助服务副本提供快速的故障转移。 节点、进程或单个服务因硬件或其他故障而不可用时，其中一个次要副本会提升为主要副本，将服务的损失降到最低。
 
 * **可缩放的服务**：可对单独的服务进行分区，以允许在群集范围内扩大状态。 此外，还可动态创建和删除各项服务。 可将少量节点上的少量实例中的服务横向扩展为许多节点上的数千个实例，以后可根据需要再次缩减。 可以使用 Service Fabric 生成这些服务并管理其整个生命周期。
 
@@ -58,19 +58,19 @@ Service Fabric 的独特体系结构使你可以在应用程序中执行近实�
 [客户案例](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=0&so=story_publish_date%20desc/)和 [Azure 中的微服务](https://azure.microsoft.com/solutions/microservice-applications/)站点上发布了介绍如何使用 Service Fabric 设计应用程序的案例研究。
 
 ## <a name="designing-applications-composed-of-stateless-and-stateful-microservices"></a>设计由无状态和有状态微服务组成的应用程序
-构建使用 Azure 云服务辅助角色的应用程序是无状态服务的一个示例。 相之之下，除请求及其响应以外，有状态微服务还维护其权威状态。 此功能在复制支持下提供交易保证的简单 API，从而提供状态的高可用性和一致性。 
+构建使用 Azure 云服务辅助角色的应用程序是无状态服务的一个示例。 相比之下，有状态微服务不仅维护请求及其响应，还维护其权威状态。 此功能在复制支持下提供交易保证的简单 API，从而提供状态的高可用性和一致性。 
 
-Service Fabric 中的有状态服务可让所有类型的应用程序（而不仅仅是数据库和其他数据存储）实现高可用性。 这是顺其自然的进步。 针对高可用性，应用程序已从使用单纯的关系数据库发展到 NoSQL 数据库的境界。 现在，应用程序可在自身内部管理其“热”状态和数据，以便进一步提高性能，而无需损失可靠性、一致性或可用性。
+Service Fabric 中的有状态服务可让所有类型的应用程序（而不仅仅是数据库和其他数据存储）实现高可用性。 这是一种自然的进步。 为实现高可用性，应用程序已从使用单纯的关系数据库发展到 NoSQL 数据库。 现在，应用程序可在自身内部管理其“热”状态和数据，以便进一步提高性能，而无需损失可靠性、一致性或可用性。
 
 构建包含微服务的应用程序时，通常有一个无状态 Web 应用（例如 ASP.NET 和 Node.js）组合调用应用于无状态和有状态业务中间层服务。 这些应用和服务全部通过 Service Fabric 部署命令部署到同一个 Service Fabric 群集。 在规模、可靠性和资源使用方面，其中的每个服务都是独立的。 这种独立性大大提高了开发和生命周期管理的敏捷性与灵活性。
 
-有状态微服务将简化应用程序设计，因为它们不再需要传统上需要用来处理纯无状态应用程序的可用性和延迟需求的附加队列和缓存。 由于有状态服务具有高度可用和低延迟的特点，要在应用程序中管理的详细信息更少。 
+有状态微服务可简化应用程序设计，因为它们不再需要传统上需要用来处理纯无状态应用程序的可用性和延迟需求的附加队列和缓存。 由于有状态服务具有高度可用和低延迟的特点，要在应用程序中管理的详细信息更少。 
 
 下图演示了设计有状态应用程序与无状态应用程序之间的差异。 通过利用 [Reliable Services](service-fabric-reliable-services-introduction.md) 和 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 编程模型，有状态服务降低了应用程序的复杂性，同时实现了高吞吐量和低延迟。
 
 下面是使用无状态服务的示例应用程序：使用无状态服务 @ no__t-1 的 0Application @no__t
 
-下面是使用有状态服务的示例应用程序：使用无状态服务 @ no__t-1 的 0Application @no__t
+下面是使用有状态服务的示例应用程序：使用有状态服务 @ no__t 的 @no__t 0Application
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -85,7 +85,7 @@ Service Fabric 中的有状态服务可让所有类型的应用程序（而不�
   * [定义和管理服务状态](service-fabric-concepts-state.md)
   * [Service Fabric 服务的可用性](service-fabric-availability-services.md)
   * [缩放 Service Fabric 服务](service-fabric-concepts-scalability.md)
-  * [对 Service Fabric 服务进行分区](service-fabric-concepts-partitioning.md)
+  * [Service Fabric 服务分区](service-fabric-concepts-partitioning.md)
 
 [Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.png
 [Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.png

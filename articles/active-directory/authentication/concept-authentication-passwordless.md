@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab48579c6eda085d77e2a6ab080b0a4a1ce806bd
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: dfcd46f06035e356f6528a79b749350627541121
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000332"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303522"
 ---
 # <a name="what-is-passwordless"></a>什么是无密码？
 
@@ -50,12 +50,12 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 
 | # | 功能/扩展信任 | 为什么需要此功能或扩展？ |
 | --- | --- | --- |
-| 1 | 居民密钥 | 此功能使安全密钥可移植，其中的凭据存储在安全密钥上。 |
+| 第 | 居民密钥 | 此功能使安全密钥可移植，其中的凭据存储在安全密钥上。 |
 | 2 | 客户端 pin | 利用此功能，你可以使用另一个因素来保护凭据，并将其应用于没有用户界面的安全密钥。 |
 | 3 | hmac-secret | 此扩展可确保你可以在设备处于脱机状态或处于飞行模式时登录到你的设备。 |
 | 4 | 每个 RP 多个帐户 | 此功能可确保你可以在多个服务（如 Microsoft 帐户和 Azure Active Directory）上使用相同的安全密钥。 |
 
-以下提供商提供了 FIDO2 安全密钥，它们具有已知兼容 paswordless 体验的不同形式因素。 Microsoft 鼓励客户通过联系供应商和 FIDO 联盟来评估这些密钥的安全属性。
+以下提供商提供了 FIDO2 安全密钥，它们具有已知兼容无密码体验的不同形式因素。 Microsoft 鼓励客户通过联系供应商和 FIDO 联盟来评估这些密钥的安全属性。
 
 | 提供商 | 联系人 |
 | --- | --- |

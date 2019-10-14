@@ -1,26 +1,21 @@
 ---
 title: 使用 Visual Studio 开发和部署 WebJobs - Azure
 description: 了解如何使用 Visual Studio 开发 Azure WebJobs 并将其部署到 Azure 应用服务。
-services: app-service
-documentationcenter: ''
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
 ms.service: app-service
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.custom: vs-azure
-ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: ac458b01135be8628fbf939e310f8bda02b8d290
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876884"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303536"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 开发和部署 WebJobs - Azure 应用服务
 
@@ -116,18 +111,18 @@ ms.locfileid: "69876884"
     ![在“添加 Azure Web 作业”对话框中选择项目](./media/webjobs-dotnet-deploy-vs/aaw1.png)
 3. 完成[添加 Azure Web 作业](#configure)对话框，并单击“确定”。 
 
-#### <a id="convertnolink"></a> 不使用 Web 项目启用 WebJobs 部署
-1. 右键单击“解决方案资源管理器”中的控制台应用程序项目，然后单击“发布为 Azure Web 作业...”。 
+#### <a id="convertnolink"></a> 不使用 Web 项目启用 Web 作业部署
+1. 右键单击“解决方案资源管理器”中的控制台应用程序项目，然后单击“发布为 Azure Web 作业”。 
    
     ![发布为 Azure Web 作业](./media/webjobs-dotnet-deploy-vs/paw.png)
    
     此时显示[添加 Azure Web 作业](#configure)对话框，其“项目名称”框中已选中该项目。
 2. 完成[添加 Azure Web 作业](#configure)对话框，并单击“确定”。
    
-   此时会显示“发布 Web”向导。  如果不打算立即发布，请关闭向导。 输入的设置会保存，以便在[部署项目](#deploy)时使用。
+   此时显示“发布 Web”向导。  如果不打算立即发布，请关闭向导。 输入的设置会保存，以便在[部署项目](#deploy)时使用。
 
 ### <a id="create"></a>创建已启用 Web 作业的新项目
-若要创建已启用 Web 作业的新项目，可以使用控制台应用程序项目模板，并根据[上一节](#convert)所述启用 Web 作业部署。 或者，可以使用 Web 作业新建项目模板：
+若要创建已启用 Web 作业的新项目，可以使用控制台应用程序项目模板，并根据 [上一节](#convert)所述启用 Web 作业部署。 或者，可以使用 Web 作业新建项目模板：
 
 * [为独立的 Web 作业使用 Web 作业新建项目模板](#createnolink)
   
@@ -137,26 +132,26 @@ ms.locfileid: "69876884"
     创建一个项目，该项目配置为在针对位于相同解决方案中的 Web 项目进行部署时，自动以 Web 作业的方式部署。 要在运行相关 Web 应用程序的同一 Web 应用中运行 Web 作业时，请使用此选项。
 
 > [!NOTE]
-> Web 作业新建项目模板会自动安装 NuGet 包，并在 *Program.cs* 中包含适用于 [WebJobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs) 的代码。 如果不希望使用 WebJobs SDK，请删除或更改 *Program.cs* 中的 `host.RunAndBlock` 语句。
+> Web 作业新建项目模板会自动安装 NuGet 包，并在 *Program.cs* 中包含适用于 [WebJobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs) 的代码。 如果不想使用 WebJobs SDK，请删除或更改 Program.cs 中的 `host.RunAndBlock` 语句。
 > 
 > 
 
-#### <a id="createnolink"></a> 为独立的 WebJob 使用 WebJobs 新建项目模板
-1. 依次单击“文件” > “新建项目”，然后在“新建项目”对话框中，依次单击“云” > “Azure WebJob (.NET Framework)”。
+#### <a id="createnolink"></a> 为独立的 Web 作业使用 Web 作业新建项目模板
+1. 依次单击“文件” > “新建项目”，然后在“新建项目”对话框中，依次单击“云” > “Azure Web 作业 (.NET Framework)”。
    
     ![显示了 Web 作业模板的“新建项目”对话框](./media/webjobs-dotnet-deploy-vs/np.png)
-2. 按照前述说明，[将控制台应用程序项目设为独立的 Web 作业项目](#convertnolink)。
+2. 按照前述说明， [将控制台应用程序项目设为独立的 Web 作业项目](#convertnolink)。
 
 #### <a id="createlink"></a> 在链接到 Web 项目的 Web 作业中使用 Web 作业新建项目模板
 1. 右键单击“解决方案资源管理器”中的 Web 项目，并依次单击“添加” > “新建 Azure Web 作业项目”。
    
     ![“新建 Azure Web 作业项目”菜单项](./media/webjobs-dotnet-deploy-vs/nawj.png)
    
-    此时会显示[“添加 Azure Web 作业”](#configure)对话框。
+    此时显示[添加 Azure Web 作业](#configure)对话框。
 2. 完成[“添加 Azure Web 作业”](#configure)对话框，并单击“确定”。
 
 ### <a id="configure"></a>添加 Azure Web 作业对话框
-使用“添加 Azure WebJob”对话框可以输入你的 WebJob 的 WebJob 名称和运行模式。 
+可在“添加 Azure Web 作业”对话框中输入 Web 作业的名称和 Web 作业的运行模式设置。 
 
 ![“添加 Azure Web 作业”对话框](./media/webjobs-dotnet-deploy-vs/aaw2.png)
 
@@ -164,8 +159,8 @@ ms.locfileid: "69876884"
 
 > [!NOTE]
 > * 有关命令行部署的信息，请参阅[启用 Azure Web 作业的命令行或连续传送](https://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/)。
-> * 如果部署了某个 WebJob，但后来想要更改该 WebJob 的类型并重新部署，则需要删除 *webjobs-publish-settings.json* 文件。 这样，Visual Studio 就会再次显示发布选项，使你可以更改 WebJob 的类型。
-> * 如果部署了某个 Web 作业，并随后将运行模式从连续更改为非连续（或相反），则在重新部署时，Visual Studio 会在 Azure 中创建新的 Web 作业。 如果更改了其他计划设置但保持运行模式不变，或在计划模式与按需模式之间切换，则 Visual Studio 会更新现有的作业，而不是创建新的作业。
+> * 如果部署了某个 WebJob，但后来想要更改该 WebJob 的类型并重新部署，则需要删除 *webjobs-publish-settings.json* 文件。 这样，Visual Studio 就会再次显示发布选项，使你可以更改 Web 作业的类型。
+> * 如果部署了某个 Web 作业，并随后将运行模式从连续更改为非连续（或相反），则在重新部署时，Visual Studio 将在 Azure 中创建新的 Web 作业。 如果更改了其他计划设置但保持运行模式不变，或在计划模式与按需模式之间切换，则 Visual Studio 会更新现有的作业，而不是创建新的作业。
 > 
 > 
 
@@ -182,7 +177,7 @@ ms.locfileid: "69876884"
           "runMode": "Continuous"
         }
 
-可以编辑此文件目录，Visual Studio 将提供 IntelliSense。 在 [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) 中可查看存储的文件架构。  
+可以编辑此文件目录，Visual Studio 会提供 IntelliSense。 在 [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) 中可查看存储的文件架构。  
 
 ### <a id="webjobslist"></a>webjobs-list.json
 如果将已启用 Web 作业的项目链接到 Web 项目，Visual Studio 会将 Web 作业项目的名称存储在 Web 项目 *Properties* 文件夹的 *webjobs-list.json* 文件中。 该列表可能包含多个 Web 作业项目，如以下示例所示：
@@ -199,12 +194,12 @@ ms.locfileid: "69876884"
           ]
         }
 
-可以编辑此文件目录，Visual Studio 将提供 IntelliSense。 在 [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) 中可查看存储的文件架构。
+可以编辑此文件目录，Visual Studio 会提供 IntelliSense。 在 [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) 中可查看存储的文件架构。
 
-### <a id="deploy"></a>部署 WebJobs 项目
+### <a id="deploy"></a>部署 Web 作业项目
 已链接到 Web 项目的 Web 作业项目会通过 Web 项目自动部署。 有关 Web 项目部署的信息，请参阅左侧导航区域中的“操作指南” > “部署应用”。
 
-若要自动部署某个 Web 作业项目，请在“解决方案资源管理器”中右键单击该项目，然后单击“发布为 Azure Web 作业...”。 
+若要自动部署某个 Web 作业项目，请在“解决方案资源管理器”中右键单击该项目，然后单击“发布为 Azure Web 作业”。 
 
 ![发布为 Azure Web 作业](./media/webjobs-dotnet-deploy-vs/paw.png)
 
@@ -229,6 +224,8 @@ WebJobs 使用 *settings.job* 文件确定某个 WebJob 是否已运行。 使�
 ### <a name="cron-expressions"></a>CRON 表达式
 
 WebJobs 使用的 CRON 计划表达式与 Azure Functions 中的计时器触发器相同。 若要详细了解 CRON 支持，请参阅[计时器触发器参考文章](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)。
+
+[!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
 ### <a name="settingjob-reference"></a>setting.job 参考
 

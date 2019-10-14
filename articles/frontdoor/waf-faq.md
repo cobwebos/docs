@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: f7d205920704ce8aedf3b2e3c07bd429b3c64964
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f6e0ea7ca5b9b131a8d7d7c2c6546130a7d020b3
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375345"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302843"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Azure web 应用程序防火墙常见问题解答
 
@@ -31,7 +31,7 @@ Azure WAF 策略可应用于应用程序网关或 Azure 前门服务上托管的
 
 ## <a name="what-is-waf-for-azure-front-door-service"></a>Azure 前门服务的 WAF 是什么？ 
 
-Azure 前门是高度可缩放的全球分布式应用程序和内容交付网络。 Azure WAF 与前门集成后，可在 Azure 网络边缘停止拒绝服务和目标应用程序攻击，在进入虚拟网络之前，接近攻击源，提供保护，而不影响性能。
+Azure 前门是高度可缩放的全球分布式应用程序和内容交付网络。 将 Azure WAF 与 Azure 前门集成后，会在 Azure 网络边缘停止拒绝服务和目标应用攻击。 此保护会在攻击源有机会进入 vitrual 网络之前发生。 WAF for Azure 前门服务提供保护，而不影响性能。
 
 ## <a name="does-azure-waf-support-https"></a>Azure WAF 是否支持 HTTPS？
 
@@ -39,7 +39,7 @@ Azure 前门是高度可缩放的全球分布式应用程序和内容交付网�
 
 ## <a name="does-azure-waf-support-ipv6"></a>Azure WAF 是否支持 IPv6？
 
-是的。 可为 IPv4 和 IPv6 配置 IP 限制。
+是。 可为 IPv4 和 IPv6 配置 IP 限制。
 
 ## <a name="how-up-to-date-are-the-managed-rule-sets"></a>托管规则集的最新版本是什么？
 

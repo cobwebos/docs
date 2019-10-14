@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: 80bca606a2b06d85afc8a2115133f44d738f7e0a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 185bdd5f666da04238a575f3b7704baf10f5e281
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035246"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303479"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -47,11 +47,12 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 * 美国中西部
 * East US
 * 日本东部
-* 东南亚
+* 亚洲东南部
 * 澳大利亚东南部
 * 英国南部
 * 印度中部
 * 美国弗吉尼亚州政府
+* 中国东部 2
 
 
 可在[文档](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)中查看支持 ExpressRoute 监视器的区域列表。
@@ -105,7 +106,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 1. 将网络性能监视器解决方案从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)添加到工作区。 也可以使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程。 
 2. 打开 Log Analytics 工作区，然后选择“概览”磁贴。 
-3. 选择 "**网络性能监视器**" 磁贴, 其中包含消息*解决方案需要其他配置*。
+3. 选择 "**网络性能监视器**" 磁贴，其中包含消息*解决方案需要其他配置*。
 
    ![网络性能监视器磁贴](media/network-performance-monitor/npm-config.png)
 
@@ -148,7 +149,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 1. 选择要监视的节点或清除要停止监视的节点。 
 2. 选中“用于监视”，或清除它（视情况而定）。 
-3. 选择**保存**。 
+3. 选择“保存”。 
 
 
 配置所需功能：
@@ -245,7 +246,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ## <a name="log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询
 
-通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在[日志查询](../log-query/log-query-overview.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板中的 "**常见查询**" 区域包含一些有用的查询, 你可以使用这些查询作为开始创建自己的查询和报表的起点。 
+通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在[日志查询](../log-query/log-query-overview.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板中的 "**常见查询**" 区域包含一些有用的查询，你可以使用这些查询作为开始创建自己的查询和报表的起点。 
 
 ## <a name="alerts"></a>警报
 
@@ -254,12 +255,12 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 这意味着使用[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)管理所有通知。  
 
 如果你是通过 Log Analytics 创建警报的 NPM 用户： 
-1. 你将看到一个链接, 它会将你重定向到 Azure 门户。 单击该链接以访问门户。
+1. 你将看到一个链接，该链接可将你重定向到 Azure 门户。 单击该链接以访问门户。
 2. 单击“网络性能监视器解决方案”磁贴。 
 3. 导航到“配置”。  
 4. 选择要针对其创建警报的测试，并按照下述步骤进行操作。
 
-如果你是 NPM 用户通过 Azure 门户创建警报:  
+如果你是 NPM 用户通过 Azure 门户创建警报：  
 1. 可以选择直接输入电子邮件，也可以选择通过操作组创建警报。
 2. 如果选择直接输入电子邮件，则将创建名为 **NPM Email ActionGroup** 的操作组，并将电子邮件 ID 添加到该操作组。
 3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 
@@ -277,7 +278,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 * **UserVoice**：可以发表有关希望我们开发的网络性能监视器功能的想法。 请访问 [UserVoice 页](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)。 
 
-* **加入我们的队伍**：我们总是希望一直有新客户不断加入我们的队伍。 那样，能够在早期接触到新功能并有机会帮助我们改进网络性能监视器。 如果你有兴趣加入, 请填写此[快速调查](https://aka.ms/npmcohort)。 
+* **加入我们的队伍**：我们总是希望一直有新客户不断加入我们的队伍。 那样，能够在早期接触到新功能并有机会帮助我们改进网络性能监视器。 如果你有兴趣加入，请填写此[快速调查](https://aka.ms/npmcohort)。 
 
 ## <a name="next-steps"></a>后续步骤 
 详细了解[性能监视器](network-performance-monitor-performance-monitor.md)、[服务连接性监视器](network-performance-monitor-performance-monitor.md)和 [ExpressRoute 监视器](network-performance-monitor-expressroute.md)。 

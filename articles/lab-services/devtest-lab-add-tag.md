@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 10/13/2019
 ms.author: spelluru
-ms.openlocfilehash: e4d9aeb527461cc7292235fef1de0abdfa4242bd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1d7175d000eebd3f68665e7f097bbe3f68025bc8
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311333"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302804"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室添加标记
 
@@ -36,21 +36,24 @@ ms.locfileid: "60311333"
 
 可以在[创建实验室](devtest-lab-create-lab.md)时应用标记，稍后通过“配置和设置”下的“标记”边栏选项卡管理标记。
 
-每个标记都由“名称  /值  ”对组成。 例如，可以创建一个标记，其中名称 costcenter  对应的值为 34543  。 此类标记可能有助于稍后发现在组织的这一特定区域可计费的实验室资源。 可以选择对所需订阅整理方式有意义的名称和值。
+每个标记都由“名称/值”对组成。 例如，可以创建一个标记，其中名称 costcenter 对应的值为 34543。 此类标记可能有助于稍后发现在组织的这一特定区域可计费的实验室资源。 可以选择对所需订阅整理方式有意义的名称和值。
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>在现有实验室中管理标记的具体步骤
 
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 如果需要，请选择“所有服务”  ，并从列表中选择“开发测试实验室”  。 实验室可能已显示在“所有资源”  下的“仪表板”上。
+1. 如果需要，请选择“所有服务”，并从列表中选择“开发测试实验室”。 实验室可能已显示在“所有资源”下的“仪表板”上。
 1. 在实验室列表中，选择要在其中添加或管理标记的实验室。
-1. 在实验室的“概览”  区域中，选择“配置和策略”  。
+1. 在实验室的“概览”区域中，选择“配置和策略”。
 
     ![“配置和策略”按钮](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
-1. 在左侧的“管理”  下，选择“标记”  。
-1. 若要为此实验室新建标记，请输入“名称  /值  ”对，再选择“保存”  。 还可以从列表中选择现有标记，从而查看或管理与此标记相关联的资源。
+1. 在左侧的“管理”下，选择“标记”。
+1. 若要为此实验室新建标记，请输入“名称/值”对，再选择“保存”。 还可以从列表中选择现有标记，从而查看或管理与此标记相关联的资源。
 
     ![管理标记](./media/devtest-lab-add-tag/devtestlab-manage-tags.png)
+
+> [!NOTE]
+> 在实验室级别创建的标记会流过实验室在你的订阅中的所有可计费资源。 例如，实验室级标记流向实验室 Vm 的基础计算 Vm。您可以在成本管理的上下文中使用标记。 实验室级标记显示在用于成本管理的标记筛选器中。
 
 ## <a name="understanding-limitations-to-tags"></a>了解标记限制
 
@@ -66,4 +69,4 @@ ms.locfileid: "60311333"
 
 ## <a name="next-steps"></a>后续步骤
 * 可使用自定义策略对订阅应用限制和约定。 定义的策略可能要求所有资源具有特定标记的值。 有关详细信息，请参阅[设置策略和计划](devtest-lab-set-lab-policy.md)。
-* 浏览[开发测试实验室 Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 探索[开发测试 Labs Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。

@@ -14,20 +14,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: b-juche
-ms.openlocfilehash: a401cae7140d9ceec5ec81274e1b6f3b2b46b55a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 76e01055043932f2c7e7d57bd7eed6265d666a8c
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371493"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302776"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>为 Windows 或 Linux 虚拟机装载或卸载卷 
 
 可以根据需要为 Windows 或 Linux 虚拟机装载或卸载卷。  Azure NetApp 文件上提供了 Linux 虚拟机的装载说明。  
 
-1. 单击**卷**边栏选项卡，然后选择你想要装载的卷。 
-2. 单击**装载说明**从所选的卷，然后按照说明来装载卷。 
+1. 单击 "**卷**" 边栏选项卡，然后选择要装入的卷。 
+2. 单击所选卷中的 "**装载说明**"，然后按照说明来装载卷。 
 
-    ![装载 NFS 的说明](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
+    ![装载说明 NFS](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
 
     ![装载说明 SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
+    
+如果使用的是 NFSv 4.1，请使用以下命令来装载文件系统： `sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`

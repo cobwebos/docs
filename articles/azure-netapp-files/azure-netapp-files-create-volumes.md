@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: b7474ca8e8489edb37b3ac9b7c8b5be52867363c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1a479b4928631f27d5453d462a59fe7fed09a88c
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298502"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302759"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
 
@@ -33,11 +33,11 @@ Azure NetApp 文件支持 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 卷。 卷的容
 
 ## <a name="considerations"></a>注意事项 
 
-* 确定要使用的 NFS 版本  
-  NFSv3 可以处理各种用例，通常部署在大多数企业应用程序中。 你应验证应用程序所需的版本（NFSv3 或 NFSv 4.1），并使用适当的版本创建你的卷。 例如，如果使用[Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)，则建议通过 NFSv3 使用 nfsv 4.1 进行文件锁定。 
-
 > [!IMPORTANT] 
 > 对 NFSv 4.1 功能的访问需要允许列表。  若要请求允许列表，请将请求提交到 <anffeedback@microsoft.com>。 
+
+* 确定要使用的 NFS 版本  
+  NFSv3 可以处理各种用例，通常部署在大多数企业应用程序中。 你应验证应用程序所需的版本（NFSv3 或 NFSv 4.1），并使用适当的版本创建你的卷。 例如，如果使用[Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)，则建议通过 NFSv3 使用 nfsv 4.1 进行文件锁定。 
 
 * 安全性  
   支持 UNIX 模式位（读取、写入和执行），适用于 NFSv3 和 NFSv 4.1。 NFS 客户端上需要根级别的访问权限才能装载 NFS 卷。

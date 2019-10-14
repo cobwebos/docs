@@ -1,22 +1,21 @@
 ---
-title: 将全文搜索添加到 Azure Blob 存储 - Azure 搜索
-description: 在代码中使用 HTTP REST API 抓取 Azure Blob 存储中用于 Azure 搜索索引的文本内容。
-services: search
+title: 将全文搜索添加到 Azure Blob 存储
+titleSuffix: Azure Search
+description: 在 Azure 搜索中生成全文搜索索引时，提取内容并将结构添加到 Azure blob。
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/01/2019
-author: mgottein
-manager: nitinme
-ms.author: magottei
-ms.custom: seodec2018
-ms.openlocfilehash: f0801931b57302ae1d627dab783a40d2407c19ac
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 10/09/2019
+ms.openlocfilehash: 7e5eb73cc6abc72689bbc674b29f4d288dd66b6f
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650086"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302892"
 ---
-# <a name="searching-blob-storage-with-azure-search"></a>使用 Azure 搜索来搜索 Blob 存储
+# <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>使用 Azure 搜索将全文搜索添加到 Azure blob 数据
 
 在 Azure Blob 存储中存储的各种内容类型之间进行搜索可能是一个很难解决的问题。 但是，使用 Azure 搜索，只需单击几下，便可以为 Blob 中的内容编制索引以及对其进行搜索。 在 Blob 存储中进行搜索需要预配 Azure 搜索服务。 可以在[定价页](https://aka.ms/azspricing)上找到 Azure 搜索的各种服务限制和定价层。
 
@@ -45,7 +44,7 @@ Azure 搜索的全文搜索、分面导航和排序功能现在可以应用于 b
 
 JSON 解析当前不可通过门户进行配置。 [了解有关 Azure 搜索中的 JSON 解析的详细信息。](https://aka.ms/azsjsonblobindexing)
 
-## <a name="quick-start"></a>快速入门
+## <a name="quickstart"></a>快速入门
 可以直接从 Blob 存储门户页将 Azure 搜索添加到 blob。
 
 ![](./media/search-blob-storage-integration/blob-blade.png)

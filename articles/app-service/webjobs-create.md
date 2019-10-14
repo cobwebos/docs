@@ -1,33 +1,31 @@
 ---
 title: 使用 WebJobs 运行后台任务 - Azure 应用服务
 description: 了解如何使用 WebJobs 在 Azure 应用服务 Web 应用、API 应用或移动应用中运行后台任务。
-services: app-service
 author: ggailey777
-manager: jeconnoc
-editor: jimbe
-ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
+manager: wgallace
+s.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 53f808570a298c8e576b6df7b4654196ffc56813
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2d97f826f4288d13589a2fb9da8148d58a2c5e1e
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177494"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303579"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
 
+本文介绍如何使用 [Azure 门户](https://portal.azure.com)部署 WebJobs，以便上传可执行文件或脚本。 有关如何使用 Visual Studio 开发和部署 WebJobs 的信息，请参阅[使用 Visual Studio 部署 WebJobs](webjobs-dotnet-deploy-vs.md)。
+
 ## <a name="overview"></a>概述
-WebJobs 是 [Azure 应用服务](https://docs.microsoft.com/azure/app-service/)的一项功能，可以在与 Web 应用、API 应用或移动应用相同的上下文中运行程序或脚本。 使用 Web 作业无需支付额外的费用。
+WebJobs 是 [Azure 应用服务](index.yml)的一项功能，可以在与 Web 应用、API 应用或移动应用相同的上下文中运行程序或脚本。 使用 Web 作业无需支付额外的费用。
 
 > [!IMPORTANT]
 > Linux 上的应用服务尚不支持 WebJobs。
-
-本文介绍如何使用 [Azure 门户](https://portal.azure.com)部署 WebJobs，以便上传可执行文件或脚本。 有关如何使用 Visual Studio 开发和部署 WebJobs 的信息，请参阅[使用 Visual Studio 部署 WebJobs](webjobs-dotnet-deploy-vs.md)。
 
 可以结合 WebJobs 使用 Azure WebJobs SDK 来简化许多编程任务。 有关详细信息，请参阅[什么是 WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)。
 
@@ -130,7 +128,7 @@ when making changes in one don't forget the other two.
 
    ![Web 作业列表](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-7. 要运行 WebJob，请在列表中右键单击其名称，并单击“运行”。
+7. 如果要运行 Web 作业，请在列表中右键单击其名称，并单击“运行”。
    
     ![运行 Web 作业](./media/web-sites-create-web-jobs/runondemand.png)
 
@@ -181,6 +179,8 @@ when making changes in one don't forget the other two.
 
 若要了解详细信息，请参阅[计划触发的 Web 作业](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob)。
 
+[!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
+
 ## <a name="ViewJobHistory"></a>查看作业历史记录
 
 1. 选择要查看其历史记录 Web 作业，并选择“日志”按钮。
@@ -203,6 +203,6 @@ when making changes in one don't forget the other two.
    
     ![历史记录仪表板中的 Web 作业列表](./media/web-sites-create-web-jobs/webjobslist.png)
    
-## <a name="NextSteps"></a>后续步骤
+## <a name="NextSteps"></a> 后续步骤
 
 可以结合 WebJobs 使用 Azure WebJobs SDK 来简化许多编程任务。 有关详细信息，请参阅[什么是 WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)。

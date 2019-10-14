@@ -150,7 +150,7 @@
             - name: 可伸缩性和性能目标
               href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 性能和可伸缩性清单
-              href: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: storage-performance-checklist.md
             - name: Blob 存储中的延迟
               href: storage-blobs-latency.md
         - name: 并发
