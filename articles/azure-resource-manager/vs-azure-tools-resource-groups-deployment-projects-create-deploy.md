@@ -6,16 +6,16 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8677d906375853bdde5c192c86dacc7479f2e31e
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: c7f71dbadf24244756cf65f68ceea24547190737
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311324"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170238"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
 
-使用 Visual Studio 可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以部署 web 主机、web 站点和 web 站点代码。 Visual Studio 许多不同的入门模板用于部署常见方案。 本文中将部署一个 Web 应用。  
+使用 Visual Studio 可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以部署 Web 主机、网站和网站代码。 Visual Studio 许多不同的入门模板用于部署常见方案。 本文中将部署一个 Web 应用。
 
 本文介绍如何使用[装有 Azure 开发和 ASP.NET 工作负荷的 Visual Studio 2019 或更高版本](/visualstudio/install/install-visual-studio?view=vs-2019)。 如果使用 Visual Studio 2017，体验将大体相同。
 
@@ -205,13 +205,13 @@ ms.locfileid: "67311324"
 
     ![添加资源](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource-2.png)
 
-1. 这次选择“用于 Web 应用的 Web 部署”  。 
+1. 这次选择“用于 Web 应用的 Web 部署”  。
 
     ![添加 Web 部署](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-web-deploy.png)
 
    保存模板。
 
-1. 你的模板中有一些新的参数。 它们是在先前的步骤中添加进来的。 不需要为 _artifactsLocation 或 _artifactsLocationSasToken 提供值，因为这些值自动生成   。 但是，必须将文件夹和文件名称设置为包含部署包的路径。 这些参数的名称以 PackageFolder 和 PackageFileName 结尾   。 名称的第一部分是添加的 Web 部署资源的名称。 在本文中，它们被命名为 ExampleAppPackageFolder 和 ExampleAppPackageFileName   。 
+1. 你的模板中有一些新的参数。 它们是在先前的步骤中添加进来的。 不需要为 _artifactsLocation 或 _artifactsLocationSasToken 提供值，因为这些值自动生成   。 但是，必须将文件夹和文件名称设置为包含部署包的路径。 这些参数的名称以 PackageFolder 和 PackageFileName 结尾   。 名称的第一部分是添加的 Web 部署资源的名称。 在本文中，它们被命名为 ExampleAppPackageFolder 和 ExampleAppPackageFileName   。
 
    打开 Website.parameters.json 并将这些参数设置为你在引用属性中看到的值  。 将 ExampleAppPackageFolder 设置为文件夹的名称  。 将 ExampleAppPackageFileName 设置为 zip 文件的名称  。
 
@@ -386,7 +386,7 @@ ms.locfileid: "67311324"
 
 ## <a name="next-steps"></a>后续步骤
 
-在此快速入门中，你了解了如何使用 Visual Studio 创建和部署模板。 下一教程介绍如何从模板参考中查找信息，以便创建加密的 Azure 存储帐户。
+在此快速入门中，你了解了如何使用 Visual Studio 创建和部署模板。 若要详细了解模板开发，请参阅新的初学者教程系列：
 
 > [!div class="nextstepaction"]
-> [创建加密的存储帐户](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [初学者教程](./template-tutorial-create-first-template.md)

@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 40b3e0260e08ab5a8870c726042d06d80393fb15
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2c198ce8af17912d3174269b6cced96b5c1ac8bd
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849086"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243238"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>开始使用 App Center 和 Application Insights 分析移动应用
 
@@ -30,6 +30,9 @@ ms.locfileid: "68849086"
 - iOS、Android、Xamarin、通用 Windows 或 React 本机应用。
  
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+
+## <a name="sign-up-with-app-center"></a>使用 App Center 注册
+首先，创建一个帐户并[使用 App Center 注册](https://appcenter.ms/signup?utm_source=ApplicationInsights&utm_medium=Azure&utm_campaign=docs)。
 
 ## <a name="onboard-to-app-center"></a>载入到 App Center
 

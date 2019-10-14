@@ -9,18 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 192374971e92bae282c5092dd8c5e7261fce0c5f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2673d0d2c1cb174316e99a79a10a67347e2bc031
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066370"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001347"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>教程：将真实设备添加到 Azure IoT Central 应用程序
 
 [!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-本教程介绍如何在 Microsoft Azure IoT Central 应用程序中添加和配置真实的设备。
+本教程介绍如何在 Microsoft Azure IoT Central 应用程序中添加和配置真实的设备  。 在本教程中，你将使用 Node.js 对真实设备进行编码，并在台式计算机上运行代码。 你不需要单独的 IoT 设备（例如 Raspberry Pi 或 MXChip IoT DevKit 设备）即可完成本教程。
 
 本教程由两个部分组成：
 
@@ -52,11 +52,11 @@ ms.locfileid: "71066370"
 
    **Device Explorer** 显示“连接的空调”设备模板和模拟设备。  当你创建设备模板时，IoT Central 会自动创建模拟设备。
 
-2. 若要开始连接真实的连接空调设备，请依次选择“+”、“真实”：  
+2. 请注意，“连接的空调”  设备模板是在**设备资源管理器**中选择的模板。 若要开始连接使用此模板的真实空调设备，请依次选择“+”、“真实”：  
 
    ![开始添加新的真实连接空调设备](media/tutorial-add-device/newreal.png)
 
-3. 输入设备 ID（应小写）或使用建议的设备 ID。 也可输入新设备的名称，然后选择“创建”。 
+3. 输入你自己的**设备 ID**（应为小写）或使用建议的值。 也可输入新设备的**设备名称**，然后选择“创建”。 
 
    ![重命名设备](media/tutorial-add-device/rename.png)
 
@@ -76,9 +76,9 @@ ms.locfileid: "71066370"
 
 ## <a name="prepare-the-client-code"></a>准备客户端代码
 
-本文中的示例代码是以 [Node.js](https://nodejs.org/) 编写的，演示了如何通过足够的代码执行以下操作：
+本文中的示例代码是以 [Node.js](https://nodejs.org/) 编写的，并且显示了让设备执行以下操作的足够代码：
 
-* 以设备的形式连接到 Azure IoT Central 应用程序。
+* 连接到 Azure IoT Central 应用程序。
 * 以连接的空调设备形式发送温度遥测数据。
 * 将设备属性发送到 Azure IoT Central 应用程序。
 * 对使用“设置温度”设置的操作员做出响应。 
@@ -96,7 +96,7 @@ ms.locfileid: "71066370"
 
    ![显示“查看连接信息”链接的“设备”页](media/tutorial-add-device/connectionlink.png)
 
-1. 在“设备连接”页上，记下**作用域 ID**、**设备 ID** 和**主要密钥**值。 本教程后面会用到这些值。
+1. 在“设备连接”  页上，记下**作用域 ID**、**设备 ID** 和**主要密钥**值。 本教程后面会用到这些值。
 
    ![连接详细信息](media/tutorial-add-device/device-connect.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "71066370"
     var provisioningHost = 'global.azure-devices-provisioning.net';
     var idScope = '{your Scope ID}';
     var registrationId = '{your Device ID}';
-    var symmetricKey = '{your Primary Key};
+    var symmetricKey = '{your Primary Key}';
     var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
     var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
     var hubClient;
@@ -150,7 +150,7 @@ ms.locfileid: "71066370"
 
 ## <a name="review-client-code"></a>评审客户端代码
 
-在上一部分，我们为某个应用程序创建了一个要与 Azure IoT Central 应用程序相连接的主干 Node.js 项目。 下一步是添加用于执行以下操作的代码：
+在上一部分中，我们为某个设备应用程序创建了一个与 Azure IoT Central 应用程序连接的主干 Node.js 项目。 下一步是添加用于执行以下操作的代码：
 
 * 连接到 Azure IoT Central 应用程序。
 * 将遥测数据发送到 Azure IoT Central 应用程序。

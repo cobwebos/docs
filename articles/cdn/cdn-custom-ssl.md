@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: b6ac528d0d2916f513be4e2a72bff061bdad8e58
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bacd26cdba24e7ad503a3ae58d5c77d5a3311537
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718646"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177748"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域中配置 HTTPS
 
@@ -132,7 +132,9 @@ ms.locfileid: "71718646"
 
 3. 选择“证书权限”  ，然后选中 **Get** 和 **List** 所对应的复选框，以允许 CDN 执行这些权限来获取和列出证书。
 
-4. 选择“确定”  。 
+4. 选择“机密权限”  ，然后选中 **Get** 和 **List** 所对应的复选框，以允许 CDN 执行这些权限来获取和列出机密。
+
+5. 选择“确定”  。 
 
     Azure CDN 现在可以访问此 Key Vault 和存储在其中的证书（机密）。
  
@@ -190,7 +192,7 @@ CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* �
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>自定义域未映射到 CDN 终结点
 
 >[!NOTE]
->如果使用的是 **Akamai 的 Azure CDN**，则应设置以下 CNAME 以启用自动域验证。 “_acme-challenge.<custom domain hostname> -> CNAME -> <custom domain hostname>.ak-acme-challenge.azureedge.net”
+>如果使用的是 **Akamai 的 Azure CDN**，则应设置以下 CNAME 以启用自动域验证。 "_acme-challenge.&lt;custom domain hostname&gt; -> CNAME -> &lt;custom domain hostname&gt;.ak-acme-challenge.azureedge.net"
 
 如果 CNAME 记录条目包含 cdnverify 子域，请按照此步骤中的其余说明进行操作。
 

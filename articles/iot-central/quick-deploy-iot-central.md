@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: c83e64b0b49ba853765de22e5a7df5a0d06d1686
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 23ef0afbf3a3fd3e0d0db6e3b4130b45530916be
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719151"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001266"
 ---
 # <a name="create-an-azure-iot-central-application"></a>创建 Azure IoT Central 应用程序
 
@@ -33,8 +33,8 @@ ms.locfileid: "71719151"
 若要创建新的 Azure IoT Central 应用程序：
 
 1. 选择付款计划：
-   - **试用版**应用程序免费 7 天，然后过期。 它们可以在到期之前随时转换为“即用即付”。  若要创建**试用版**应用程序，则需要输入联系信息并选择是否接收 Microsoft 发送的信息和使用技巧。
-   - **即用即付**应用程序按设备收费，前 5 台设备免费。 若要创建**即用即付**应用程序，需要选择“目录”、“Azure 订阅”和“区域”    ：
+   - **试用版**应用程序免费 7 天，然后过期。 它们可以在到期之前随时转换为“即用即付”。  若要创建试用版应用程序，则需要输入联系信息并选择是否接收 Microsoft 发送的信息和使用技巧  。
+   - **即用即付**应用程序按设备收费，前 5 台设备免费。 若要创建即用即付应用程序，需要选择“目录”、“Azure 订阅”和“区域”     ：
         - 目录是用于创建应用程序的 Azure Active Directory (AD)  。 它包含用户标识、凭据和其他组织信息。 如果没有 Azure AD，则在创建 Azure 订阅时，系统会为你创建一个 Azure AD。
         - 有了 *Azure 订阅*，就可以创建 Azure 服务的实例。 IoT Central 将在订阅中预配资源。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。 创建 Azure 订阅以后，请导航回“创建应用程序”页。  新订阅显示在“Azue 订阅”  下拉列表中。
         - 区域  是你想要创建应用程序的物理位置或[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 通常，应选择物理上离设备最近的区域以获得最佳性能。 可以在[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central)页面上查看提供 Azure IoT Central 的区域。 选择一个区域后，就不能在以后将应用程序移到其他区域。

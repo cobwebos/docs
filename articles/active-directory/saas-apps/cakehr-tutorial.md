@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9acedc081166c84935e3abfde8401b55c64156a7
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 34ef0497b5cacb66ccf92079e740acd98a05021a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174373"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026439"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>教程：Azure Active Directory 单一登录 (SSO) 与 CakeHR 集成
 
@@ -137,11 +137,11 @@ ms.locfileid: "71174373"
 
 1. 打开新的 Web 浏览器窗口，以管理员身份登录到 CakeHR 公司站点。
 
-2. 在页面的右上角，单击“个人资料”，然后导航至“设置” ****   **** 。
+2. 在页面的右上角，单击“个人资料”，然后导航至“设置”   。
 
     ![CakeHR 配置](./media/cakehr-tutorial/config01.png)
 
-3. 在菜单栏的左侧，单击“集成” “SAML SSO”，然后执行以下步骤 **** > **** ：
+3. 在菜单栏的左侧，单击“集成” > “SAML SSO”，然后执行以下步骤   ：
 
      ![CakeHR 配置](./media/cakehr-tutorial/config02.png)
 
@@ -163,7 +163,7 @@ ms.locfileid: "71174373"
 
 1. 以安全管理员身份登录 CakeHR。
 
-2. 从菜单的左侧，单击“公司” ****  > **** “添加”。
+2. 从菜单栏的左侧，单击“公司”   >   “添加”。
 
     ![CakeHR 配置](./media/cakehr-tutorial/config03.png)
 

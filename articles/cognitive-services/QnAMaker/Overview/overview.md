@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 08/01/2019
 ms.author: diberry
-ms.openlocfilehash: f56798359cdc8739a363bed3bfddadd584617adf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d647875895e33254b51fb8c3d11aa40c6c1ed71f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815490"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973784"
 ---
 # <a name="what-is-the-qna-maker-service"></a>QnA Maker 服务是什么？
 
@@ -85,21 +85,8 @@ QnA Maker 提供可集成到整个开发生命周期的创作、训练、发布�
 
 **步骤 4**：在客户端应用程序中，以编程方式调用知识库的终结点，并读取 JSON 响应以向用户显示最佳回答。  
 
-## <a name="news-and-updates"></a>新增功能和更新
-
-了解 QnA Maker 的新增功能。
-
-* 2019 年 7 月
-    * 改善了法语、意大利语、德语、西班牙语、葡萄牙语的排名器模型
-* 2019 年 4 月
-    * 支持网站内容提取
-    * Sharepoint 文档支持
-* 2019 年 3 月
-    * 主动学习 
-    * 改善了英语的 NLP 排名器模型 
-
 ## <a name="next-steps"></a>后续步骤
 QnA Maker 提供生成、管理和部署自定义知识库所需的全部功能。 
 
 > [!div class="nextstepaction"]
-> [创建 QnA Maker 服务](../how-to/set-up-qnamaker-service-azure.md)
+> [查看最新更改](../whats-new.md)

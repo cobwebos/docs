@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: 44f370829b972840ac4266a760fefb4aa317be30
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a4a25b8504d873b624e1f6822807c9c08ebd2e4f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884565"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936983"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70884565"
 > * [Python](search-get-started-python.md)
 > * [C#](search-get-started-dotnet.md)
 
-若要快速提升 Azure 搜索概念，请尝试 Azure 门户中的内置工具。 向导和编辑器不提供与 .NET 和 REST API 完全相同的功能，但你可以快速开始使用无代码的介绍，在几分钟内针对示例数据编写感兴趣的查询。
+若要快速提升 Azure 搜索概念，请尝试 Azure 门户中的内置工具。 向导和编辑器不提供与 .NET 和 REST API 完全相同的功能，但你可以快速开始使用无代码的简介，在几分钟内针对索引编写感兴趣的查询。
 
 > [!div class="checklist"]
 > * 从 Azure 上托管的免费公共示例数据集开始
@@ -53,7 +53,7 @@ ms.locfileid: "70884565"
 
 搜索查询可循环访问[索引](search-what-is-an-index.md)，索引中包含可搜索数据、元数据，以及其他用于优化某些搜索行为的构造。 
 
-在本教程中，请使用可通过“导入数据”向导利用[索引器](search-indexer-overview.md)对其进行爬网的内置示例数据集。   索引器是特定于源的爬网程序，可以从支持的 Azure 数据源中读取元数据和内容。 通常，索引器以编程方式使用，但在门户中，你可以通过“导入数据”向导来访问  。 
+在本教程中，请使用可通过[“导入数据”向导](search-import-data-portal.md)利用[索引器](search-indexer-overview.md)对其进行抓取的内置示例数据集。   索引器是特定于源的爬网程序，可以从支持的 Azure 数据源中读取元数据和内容。 通常，索引器以编程方式使用，但在门户中，你可以通过“导入数据”向导来访问  。 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>步骤 1 - 启动“导入数据”向导和创建数据源
 

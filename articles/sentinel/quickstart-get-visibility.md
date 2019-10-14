@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: c81f4cacd4c93d681122f3c8cd692ca8645288af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 676a41b64b79be6b11c3ef22b34d3de0e37e2a92
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240091"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023791"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入门：Azure Sentinel 入门
 
@@ -122,7 +122,7 @@ ms.locfileid: "71240091"
 
 创建新的检测时，请利用 Microsoft 安全研究人员为你连接的数据源量身定制的内置检测。
 
-若要查看所有现成的检测，请转到“分析”，然后转到“规则模板”。   **** 此选项卡包含所有的 Azure Sentinel 内置规则。
+若要查看所有现成的检测，请转到 **Analytics**，然后转到“规则模板”  。 此选项卡包含所有的 Azure Sentinel 内置规则。
 
    ![使用 Azure Sentinel 通过内置检测来查找威胁](media/tutorial-detect-built-in/view-oob-detections.png)
 

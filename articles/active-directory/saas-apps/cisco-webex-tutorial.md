@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 141d3062f231e198b3587efcdf4ae6e9a1c97ed6
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d4e497c556bde1be4e498cd85a68282a0e3b2666
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162680"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026266"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex Meetings 集成
 
@@ -78,7 +78,7 @@ ms.locfileid: "70162680"
 
 1. 在 [Azure 门户](https://portal.azure.com/)的“Cisco Webex Meetings”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”  页上，可以通过上传“服务提供程序元数据”  文件，在  **IdP**  发起模式下配置应用程序，如下所示：
+1. 在“使用 SAML 设置单一登录”  页上，可以通过上传“服务提供程序元数据”  文件，在 **IDP** 发起模式下配置应用程序，如下所示：
 
     a. 单击“上传元数据文件”  。
 
@@ -97,7 +97,7 @@ ms.locfileid: "70162680"
     
     b. 在“登录 URL”  文本框中，使用以下模式键入 URL：` https://<customername>.my.webex.com`
 
-5. Cisco Webex Meetings 应用程序需要特定格式的 SAML 断言，因此，我们需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框 ****  。
+5. Cisco Webex Meetings 应用程序需要特定格式的 SAML 断言，因此，我们需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”  图标以打开“用户属性”对话框。
 
     ![image](common/edit-attribute.png)
 
@@ -152,12 +152,12 @@ ms.locfileid: "70162680"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-cisco-webex-meetings-sso"></a>配置 Cisco Webex Meetings SSO

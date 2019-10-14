@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: a2a0ffd670a03aeaaa262b83127a385be9efc978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5575a2e8f776e87fcd4e6f4a7a9244752ebfd9a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088483"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950426"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>教程：Azure Active Directory 与 TOPdesk - Public 集成
 
@@ -120,8 +120,10 @@ ms.locfileid: "67088483"
 
     d. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net`。
 
-    e. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net/tas/public/login/verify`
-
+    e. 在“标识符 URL”  文本框中，填写可从 TOPdesk 配置中检索的 TOPdesk 元数据 URL。 它应使用以下模式：`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
+    
+    f. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net/tas/public/login/verify`
+    
     > [!NOTE] 
     > 如果“标识符”  和“回复 URL”  值未自动填充，则需要手动输入它们。 对于标识符，请遵循上面提到的模式，你可从本教程下文中将介绍的“配置 TOPdesk - Public 单一登录”  部分获取回复 URL。 “登录 URL”  值不是真实值，因此你需要将该值更新为实际登录 URL。 请联系 [TOPdesk - Public 客户端支持团队](https://help.topdesk.com/saas/enterprise/user/)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 

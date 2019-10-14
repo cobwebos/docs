@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/03/2019
-ms.openlocfilehash: 03a0f285b2e8c74070a30bfbaac50e9bd9c58f65
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a23518cd016a1711e47734df0f7179770aa92a87
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051474"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166982"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>快速入门：将遥测数据从设备发送到 IoT 中心 (iOS)
 
@@ -51,21 +51,23 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **myiOSdevice**：这是为注册的设备提供的名称。 请按显示的方法使用 myiOSdevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **myiOSdevice**：这是所注册的设备的名称。 建议使用 **myiOSdevice**，如图所示。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
    ```azurecli-interactive
-   az iot hub device-identity create --hub-name YourIoTHubName --device-id myiOSdevice
+   az iot hub device-identity create --hub-name {YourIoTHubName} --device-id myiOSdevice
    ```
 
-1. 运行以下命令，获取刚注册设备的设备连接字符串： 
+1. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的_设备连接字符串_：
+
+   **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id myiOSdevice --output table
+   az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
    ```
 
    记下如下所示的设备连接字符串：
 
-   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=myiOSdevice;SharedAccessKey={YourSharedAccessKey}`
 
     稍后会在快速入门中用到此值。
 
@@ -120,7 +122,7 @@ pod install
 在 Azure Cloud Shell 中运行以下命令，并将 `YourIoTHubName` 替换为 IoT 中心的名称：
 
 ```azurecli-interactive
-az iot hub monitor-events --device-id myiOSdevice --hub-name YourIoTHubName
+az iot hub monitor-events --device-id myiOSdevice --hub-name {YourIoTHubName}
 ```
 
 以下屏幕截图显示了在扩展接收模拟设备发送到 IoT 中心的遥测数据后的输出：
@@ -135,7 +137,7 @@ az iot hub monitor-events --device-id myiOSdevice --hub-name YourIoTHubName
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你设置了 IoT 中心、注册了设备、将模拟遥测数据从 iOS 设备发送到了中心，并从中心读取了遥测数据。 
+在本快速入门中，你设置了 IoT 中心、注册了设备、将模拟遥测数据从 iOS 设备发送到了中心，并从中心读取了遥测数据。 
 
 若要了解如何从后端应用程序控制模拟设备，请继续阅读下一快速入门教程。
 

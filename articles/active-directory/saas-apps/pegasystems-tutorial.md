@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 013e477b66d2772698ce5c9cc61a59f8a5a04a5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd54466e054055ff84cd5bb2b28c5cc074ac0017
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094882"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026799"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>教程：zure Active Directory 与 Pega Systems 集成
 
@@ -124,7 +124,7 @@ ms.locfileid: "67094882"
     > [!NOTE]
     > 此处提供的值为占位符。 使用实际的标识符、回复 URL、登录 URL 和中继状态 URL。 可以根据本教程稍后所述，从 Pega 应用程序获取标识符和回复 URL 值。 若要获取中继状态值，请联系 [Pega Systems 支持团队](https://www.pega.com/contact-us)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-6. Pega Systems 应用程序需要特定格式的 SAML 断言。 若要获取正确格式的 SAML 断言，需将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性。 选择“编辑”图标打开“用户属性”对话框：      
+6. Pega Systems 应用程序需要特定格式的 SAML 断言。 若要获取正确格式的 SAML 断言，需将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性。 选择“编辑”  图标以打开“用户属性”  对话框：
 
     ![用户属性](common/edit-attribute.png)
 

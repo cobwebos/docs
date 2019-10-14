@@ -1,5 +1,5 @@
 ---
-title: 开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET) | Microsoft Docs
+title: 通过 Visual Studio 开始使用 Azure 表存储（ASP.NET）
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 ASP.NET 项目中使用 Azure 表存储
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: 6f0858d3c2e3f79dda58710031c105e83418058e
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: ec391db0e18128ad85d3bacb79fa51770aa70ea1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511169"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298881"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -169,7 +170,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Create table", "CreateTable", "Tables")</li>
     ```
 
-1. 运行应用程序, 并选择 "**创建表**" 以查看类似于以下屏幕截图的结果:
+1. 运行应用程序，并选择 "**创建表**" 以查看类似于以下屏幕截图的结果：
   
     ![创建表](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
@@ -271,7 +272,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Add entity", "AddEntity", "Tables")</li>
     ```
 
-1. 运行应用程序, 并选择 "**添加实体**" 以查看类似于以下屏幕截图的结果:
+1. 运行应用程序，并选择 "**添加实体**" 以查看类似于以下屏幕截图的结果：
   
     ![添加实体](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
@@ -391,7 +392,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Add entities", "AddEntities", "Tables")</li>
     ```
 
-1. 运行应用程序, 并选择 "**添加实体**" 以查看类似于以下屏幕截图的结果:
+1. 运行应用程序，并选择 "**添加实体**" 以查看类似于以下屏幕截图的结果：
   
     ![添加实体](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
@@ -493,7 +494,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
     ```
 
-1. 运行应用程序, 并选择 "**获取单个**" 以查看类似于以下屏幕截图的结果:
+1. 运行应用程序，并选择 "**获取单个**" 以查看类似于以下屏幕截图的结果：
   
     ![获取单个实体](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
@@ -537,7 +538,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. 实例化 **TableQuery** 对象，指定 **Where** 子句中的查询。 以下代码片段使用[向表添加一批实体](#add-a-batch-of-entities-to-a-table)部分提供的**CustomerEntity**类和数据, 在表中查询**PartitionKey** (客户的姓氏) 值为 "Smith" 的所有实体:
+1. 实例化 **TableQuery** 对象，指定 **Where** 子句中的查询。 以下代码片段使用[向表添加一批实体](#add-a-batch-of-entities-to-a-table)部分提供的**CustomerEntity**类和数据，在表中查询**PartitionKey** （客户的姓氏）值为 "Smith" 的所有实体：
 
     ```csharp
     TableQuery<CustomerEntity> query = 
@@ -603,7 +604,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
     ```
 
-1. 运行应用程序, 并选择 "**获取分区**" 以查看类似于以下屏幕截图的结果:
+1. 运行应用程序，并选择 "**获取分区**" 以查看类似于以下屏幕截图的结果：
   
     ![获取分区](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
@@ -703,7 +704,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     <li>@Html.ActionLink("Delete entity", "DeleteEntity", "Tables")</li>
     ```
 
-1. 运行应用程序, 并选择 "**删除实体**" 以查看类似于以下屏幕截图的结果:
+1. 运行应用程序，并选择 "**删除实体**" 以查看类似于以下屏幕截图的结果：
   
     ![获取单个实体](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 

@@ -2,18 +2,17 @@
 title: 连接到 Azure Analysis Services 所需的客户端库 | Microsoft Docs
 description: 介绍了客户端应用程序和工具连接 Azure Analysis Services 时所需的客户端库
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/11/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9e597b03abfdeda01d74986b7b30c14de46fd3f1
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 1ea14f141ed4fa698a21da8030878b04a81f1d08
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861136"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298663"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>用于连接到 Azure Analysis Services 的客户端库
 
@@ -23,10 +22,10 @@ ms.locfileid: "70861136"
 
 |下载  |产品版本  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.1.25    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.1.25       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.5.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.5.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.5.15    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.5.15       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.9.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.9.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO 和 ADOMD（NuGet 包）
 
@@ -34,8 +33,8 @@ Analysis Services Management Objects (AMO) 和 ADOMD 客户端库在 [NuGet.org]
 
 |package  | 产品版本  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.5     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.5      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.9     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.9      |
 
 NuGet 包程序集 AssemblyVersion 遵循语义版本控制：MAJOR.MINOR.PATCH。 NuGet 引用加载预期的版本，即使 GAC 中存在不同的版本（由 MSI 安装导致的）。 PATCH 将随每次发布递增。 AMO 和 ADOMD 版本保持同步。
 

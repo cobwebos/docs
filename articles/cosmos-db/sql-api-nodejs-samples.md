@@ -7,16 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.openlocfilehash: d5094fb01c9640704f02c5128c64edfd31d77f20
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: c009084c4623391c299239feb5f95d7c2b4d2061
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018806"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170121"
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Azure Cosmos DB Node.js 示例
 > [!div class="op_single_selector"]
-> * [.NET 示例](sql-api-dotnet-samples.md)
+> * [.NET V2 SDK 示例](sql-api-dotnet-samples.md)
+> * [.NET V3 SDK 示例](sql-api-dotnet-v3sdk-samples.md)
 > * [Java 示例](sql-api-java-samples.md)
 > * [异步 Java 示例](sql-api-async-java-samples.md)
 > * [Node.js 示例](sql-api-nodejs-samples.md)

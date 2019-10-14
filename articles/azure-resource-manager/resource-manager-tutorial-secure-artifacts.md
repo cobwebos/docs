@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 02/25/2019
+ms.date: 10/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bf004f07558ae1f252a6bd26b4fd59ea9e4eea6e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bcf64d98f53d85937ee7960ec3938280814267d8
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069273"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170197"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>教程：保护 Azure 资源管理器模板部署中的项目
 
@@ -64,7 +64,7 @@ ms.locfileid: "67069273"
 
 ### <a name="download-the-bacpac-file"></a>下载 BACPAC 文件
 
-下载 [BACPAC 文件](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac)，并以相同的名称 **SQLDatabaseExtension.bacpac** 将其保存到本地计算机。
+下载 [BACPAC 文件](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac)，并以相同的名称 **SQLDatabaseExtension.bacpac** 将其保存到本地计算机。
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -134,13 +134,13 @@ ms.locfileid: "67069273"
 
 ## <a name="open-an-existing-template"></a>打开现有模板
 
-在此会话中，修改在[教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)中创建的模板，以通过 SAS 令牌调用 BACPAC 文件。  在 SQL 扩展教程中开发的模板已在 [https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json) 位置共享。
+在此会话中，修改在[教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)中创建的模板，以通过 SAS 令牌调用 BACPAC 文件。  SQL 扩展教程中开发的模板将在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) 中共享。
 
 1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
 2. 在“文件名”中粘贴以下 URL： 
 
     ```url
-    https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json
     ```
 3. 选择“打开”以打开该文件。 
 

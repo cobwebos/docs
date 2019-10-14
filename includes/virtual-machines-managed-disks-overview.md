@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266902"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949717"
 ---
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
@@ -25,7 +25,7 @@ ms.locfileid: "71266902"
 
 ### <a name="simple-and-scalable-vm-deployment"></a>简单且可缩放的 VM 部署
 
-托管磁盘支持在每个区域中的一个订阅中创建最多 50,000 个同一类型的 VM 磁盘  ，这样就可以在单个订阅中创建数以万计的 VM  。 通过允许使用某个市场映像在一个虚拟机规模集中创建多达 1,000 VM，此功能还可以进一步增加[虚拟机规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)的可伸缩性。
+托管磁盘支持在每个区域中的一个订阅中创建最多 50,000 个同一类型的 VM 磁盘  ，这样就可以在单个订阅中创建数以万计的 VM  。 此功能允许使用 Marketplace 映像，在一个虚拟机规模集中创建多达 1000 台 VM，进一步增加[虚拟机规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)的可伸缩性。
 
 ### <a name="integration-with-availability-sets"></a>集成可用性集
 
@@ -73,7 +73,7 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 ### <a name="os-disk"></a>OS 磁盘
 
-每个虚拟机都附加了一个操作系统磁盘。 该 OS 磁盘有一个预先安装的 OS，是在创建 VM 时选择的。
+每个虚拟机都附加了一个操作系统磁盘。 该 OS 磁盘有一个预先安装的 OS，是在创建 VM 时选择的。 此磁盘包含启动卷。
 
 此磁盘最大容量为 2,048 GiB。
 

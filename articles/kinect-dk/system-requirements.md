@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, 系统要求, CPU, GPU, USB, 设置, 安装, 最低, 要求
-ms.openlocfilehash: c43d13280dfad566809a3711ce1b7746f53e9146
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: cb19582440bfd6ef2c4eff804a1fb7529ed03cbc
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679184"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949508"
 ---
 # <a name="azure-kinect-sensor-sdk-system-requirements"></a>Azure Kinect 传感器 SDK 系统要求
 
@@ -51,7 +51,7 @@ ms.locfileid: "68679184"
 - NVIDIA GEFORCE GTX 1070 或更佳
 - 专用 USB3 端口
 
-根据具体的用例，低端或早期的 CPU 和 NVIDIA GPU 可能也适用。
+建议的最低配置假定 K4A_DEPTH_MODE_NFOV_UNBINNED 深度模式以 30fps 的速度跟踪 5 个人。 根据具体的用例，低端或早期的 CPU 和 NVIDIA GPU 可能也适用。
 
 ## <a name="usb3"></a>USB3
 

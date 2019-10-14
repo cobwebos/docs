@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Ansible 配置 Azure 虚拟网络对等互连 | Microsoft Docs
+title: 教程 - 使用 Ansible 配置 Azure 虚拟网络对等互连
 description: 了解如何使用 Ansible 通过虚拟网络对等互连来连接虚拟网络。
 keywords: ansible, azure, devops, bash, playbook, 网络, 对等互连
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: f51e7c857a22a362a3d295fbe087c54b25f85780
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 180bdff48a2ace4dfee1d1cb10eb75a33d360f4c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230753"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241239"
 ---
 # <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>教程：使用 Ansible 配置 Azure 虚拟网络对等互连
 
@@ -145,7 +145,7 @@ ms.locfileid: "65230753"
 
 ## <a name="get-the-sample-playbook"></a>获取示例 playbook
 
-可通过两种方式获取完整的示例 playbook：
+可通过两种方法获取完整示例 playbook：
 
 - [下载 playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) 并将其保存到 `vnet_peering.yml`。
 - 新建名为 `vnet_peering.yml` 的文件，并将以下内容复制到其中：
@@ -243,7 +243,7 @@ ms.locfileid: "65230753"
 ansible-playbook vnet_peering.yml
 ```
 
-运行 playbook 后，将看到类似于以下结果的输出：
+运行 playbook 后，将看到与下述结果类似的输出：
 
 ```Output
 PLAY [localhost] 

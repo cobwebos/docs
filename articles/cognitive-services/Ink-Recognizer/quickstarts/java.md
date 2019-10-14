@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 36ff0fe4550b140a722ed25f4e372f7c88581211
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e8cd6a4acbd1492bba1c9e88b523a7c44a44f009
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212680"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996840"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>快速入门：使用墨迹识别器 REST API 和 Java 识别数字墨迹
 
@@ -39,36 +39,19 @@ ms.locfileid: "71212680"
 
 - 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json) 上找到此快速入门的示例墨迹笔划数据。
 
-[!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
+### <a name="create-an-ink-recognizer-resource"></a>创建“墨迹识别器”资源
+
+[!INCLUDE [creating an ink recognizer resource](../includes/setup-instructions.md)]
 
 ## <a name="create-a-new-application"></a>创建新应用程序
 
 1. 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库。
-
-    ```java
-    import org.apache.http.HttpEntity;
-    import org.apache.http.client.methods.CloseableHttpResponse;
-    import org.apache.http.client.methods.HttpPost;
-    import org.apache.http.entity.StringEntity;
-    import org.apache.http.impl.client.CloseableHttpClient;
-    import org.apache.http.impl.client.HttpClients;
-    import org.apache.http.util.EntityUtils;
-    import java.io.IOException;
-    import java.nio.file.Files;
-    import java.nio.file.Paths;
-    ```
-
-2. 为订阅密钥和终结点创建变量。 将下面的终结点替换为为墨迹识别器资源生成的终结点。 将其追加到墨迹识别器 URI 以连接到 API。
-
-    ```java
-    // Replace the subscriptionKey string value with your valid subscription key.
-    static final String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-    // Replace the dataPath string with a path to the JSON formatted ink stroke data file.
-    static final String dataPath = "PATH_TO_INK_STROKE_DATA";
     
-    static final String endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
-    static final String inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
-    ```
+    [!code-java[import statements](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=imports)]
+
+2. 为订阅密钥、终结点和 JSON 文件创建变量。 稍后会将终结点追加到墨迹识别器 URI。
+
+    [!code-java[initial vars](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>创建用于发送请求的函数
 
@@ -84,41 +67,13 @@ ms.locfileid: "71212680"
 
 6. 创建 `HttpEntity` 对象，用于存储响应内容。 使用 `getEntity()` 获取内容。 如果响应不为空，请将其返回。
     
-    ```java
-    static String sendRequest(String apiAddress, String endpoint, String subscriptionKey, String requestData) {
-        try (CloseableHttpClient client = HttpClients.createDefault()) {
-            HttpPut request = new HttpPut(endpoint + apiAddress);
-            // Request headers.
-            request.setHeader("Content-Type", "application/json");
-            request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            request.setEntity(new StringEntity(requestData));
-            try (CloseableHttpResponse response = client.execute(request)) {
-                HttpEntity respEntity = response.getEntity();
-                if (respEntity != null) {
-                    return EntityUtils.toString(respEntity, "utf-8");
-                }
-            } catch (Exception respEx) {
-                respEx.printStackTrace();
-            }
-        } catch (IOException ex) {
-            System.err.println("Exception recognizing ink: " + ex.getMessage());
-            ex.printStackTrace();
-        }
-        return null;
-    }
-    ```
+    [!code-java[send a request](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=sendRequest)]
 
 ## <a name="send-an-ink-recognition-request"></a>发送墨迹识别请求
 
 创建名为 `recognizeInk()` 的方法，用于识别墨迹笔划数据。 调用在上面使用终结点、URL、订阅密钥和 JSON 数据创建的 `sendRequest()` 方法。 获取结果，并将其输出到控制台。
 
-```java
-static void recognizeInk(String requestData) {
-    System.out.println("Sending an ink recognition request");
-    String result = sendRequest(inkRecognitionUrl, endpoint, subscriptionKey, requestData);
-    System.out.println(result);
-}
-```
+[!code-java[recognizeInk](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=recognizeInk)]
 
 ## <a name="load-your-digital-ink-data-and-send-the-request"></a>加载数字墨迹数据并发送请求
 
@@ -126,12 +81,8 @@ static void recognizeInk(String requestData) {
 
 2. 调用上面创建的墨迹识别函数。
     
-    ```java
-    public static void main(String[] args) throws Exception {
-        String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "UTF-8");
-        recognizeInk(requestData);
-    }
-    ```
+    [!code-java[main method](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=main)]
+
 
 ## <a name="run-the-application-and-view-the-response"></a>运行应用程序并查看响应
 

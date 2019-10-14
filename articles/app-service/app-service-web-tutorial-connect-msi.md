@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/16/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: d4e0d632fe476df159710f800eca3a2a283f7908
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b39c1596dd16f8ec6235878abdbf37492abd1ea8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018289"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177079"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接的安全
 
@@ -188,6 +188,9 @@ conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceT
 > 为清楚起见，此演示代码是同步的。 有关详细信息，请参阅[构造函数的异步指南](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#constructors)。
 
 这就是连接到 SQL 数据库所要完成的所有准备工作。 在 Visual Studio 中调试时，代码将使用[设置 Visual Studio](#set-up-visual-studio) 中配置的 Azure AD 用户。 稍后你将设置 SQL 数据库服务器，以允许应用服务应用的托管标识建立连接。 `AzureServiceTokenProvider` 类将令牌缓存在内存中，在过期前才将其从 Azure AD 检索出来。 不需要任何自定义代码就可以刷新该令牌。
+
+> [!TIP]
+> 如果你配置的 Azure AD 用户可以访问多个租户，请使用所需的租户 ID 调用 `GetAccessTokenAsync("https://database.windows.net/", tenantid)` 以检索正确的访问令牌。
 
 键入 `Ctrl+F5`，再次运行该应用。 浏览器中相同的 CRUD 应用程序现使用 Azure AD 身份验证直接连接到 Azure SQL 数据库。 此设置使你能够从 Visual Studio 运行数据库迁移。
 

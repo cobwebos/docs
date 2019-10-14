@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Ansible 配置 Azure 服务总线主题 | Microsoft Docs
+title: 教程 - 使用 Ansible 配置 Azure 服务总线主题
 description: 了解如何使用 Ansible 创建 Azure 服务总线主题
 keywords: ansible, azure, devops, bash, playbook, service bus, topics, subscriptions
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: ca8d849796520ac260d888d772c064316db68a30
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 952779db582f9437f10608bf86b0b80560ded2c0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230870"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241221"
 ---
 # <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>教程：使用 Ansible 配置 Azure 服务总线主题
 

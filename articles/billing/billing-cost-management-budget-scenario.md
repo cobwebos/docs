@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 8ff402299b26637473f3fb762a3320255ea4df64
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bc35ba74acb2ce807597230fee0685606a93a775
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719910"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958364"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>使用 Azure 预算管理成本
 
@@ -272,7 +272,7 @@ ms.locfileid: "71719910"
 创建操作组时，将指向之前在本教程中创建的逻辑应用。
 
 1.  如果尚未登录 [Azure 门户](https://portal.azure.com/)，请登录并选择“所有服务” > “Monitor”   。
-2.  从“设置”部分选择“操作组”   。
+2.  选择“警报”  ，然后选择“管理操作”  。
 3.  从“操作组”边栏选项卡中选择“添加操作组”   。
 4.  添加并验证以下项：
     - 操作组名称

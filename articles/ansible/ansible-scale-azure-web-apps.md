@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Ansible 在 Azure 应用服务中缩放应用 | Microsoft Docs
+title: 教程 - 使用 Ansible 在 Azure 应用服务中缩放应用
 description: 了解如何在 Azure 应用服务中纵向扩展应用
 keywords: ansible, azure, devops, bash, playbook, Azure 应用服务, Web 应用, 缩放, Java
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d63708cd87afa426f2712da6d0fcb11c84590798
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 0adcddb8afa4f0e3d0b9288f351dae7d77922612
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230943"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241487"
 ---
 # <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>教程：使用 Ansible 在 Azure 应用服务中缩放应用
 
@@ -36,7 +36,7 @@ ms.locfileid: "65230943"
 
 ## <a name="scale-up-an-app"></a>纵向扩展应用
 
-有两个工作流可用于缩放、纵向扩展和横向扩展。
+有两个工作流可用于缩放、纵向扩展和横向扩展   。
 
 **纵向扩展：** 纵向扩展意味着要获得更多资源。 这些资源包括 CPU、内存、磁盘空间、VM 等。 可通过更改应用所属的应用服务计划的定价层来纵向扩展应用。 
 **横向扩展：** 横向扩展意味着要增加运行应用的 VM 实例数量。 根据应用服务计划定价层，可横向扩展到多达 20 个实例。 借助[自动缩放](/azure/azure-monitor/platform/autoscale-get-started)，可以根据预定义的规则和计划自动横向扩展实例计数。

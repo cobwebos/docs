@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b9e28f986f28bde6e46319ddb404d424c100726
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 571d8849fd7cae5c872a56182858848dbb43ef42
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174463"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026687"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Sonarqube 集成
 
@@ -139,7 +139,7 @@ ms.locfileid: "71174463"
 
 2. 从 Sonarqube 市场位置安装 SAML 插件。
 
-3. 在页面的左上角，单击“管理”，然后导航到“SAML” ****   **** 。
+3. 在页面的左上角，单击“管理”，然后导航到“SAML”   。
 
 4. 在 **SAML** 页上执行以下步骤：
 

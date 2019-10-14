@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/18/2019
+ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 82a5054a98a5b77cf996be1fddd6502b8f3146bc
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8bb9073ccb4aef81b46b3b2b87730ddede5c0ff7
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120509"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240193"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -50,18 +50,7 @@ ms.locfileid: "71120509"
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>选项 2：注册并手动配置应用程序和代码示例
 > 
 >
-> #### <a name="step-1-download-the-code-sample"></a>步骤 1：下载代码示例
-> 
-> - [下载代码示例](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
->
-> #### <a name="step-2-open-applicationproperties"></a>步骤 2：打开 application.properties
->
-> 1. 将 zip 文件解压缩到某个本地文件夹。
-> 1. （可选）如果使用集成开发环境，请在偏好的 IDE 中打开示例。
-> 1. 打开 *application.properties* 文件。 在下一步骤中注册应用程序时，将插入 `aad.clientId`、`aad.authority` 和 `aad.secretKey` 的值。
-
-
-> #### <a name="step-3-register-your-application"></a>步骤 3：注册应用程序
+> #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要注册应用程序并将应用的注册信息手动添加到解决方案，请执行以下步骤：
 >
 > 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
@@ -71,8 +60,8 @@ ms.locfileid: "71120509"
 > 1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
 >    - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `java-webapp`。
 >    - 暂时将“重定向 URI”留空，并选择“注册”。  
-> 1. 找到应用程序的“应用程序(客户端) ID”值。  更新 *application.properties* 文件中的 `Enter_the_Application_Id_here` 值。
-> 1. 找到应用程序的“目录(租户) ID”值。  更新 *application.properties* 文件中的 `Enter_the_Tenant_Info_Here` 值。 
+> 1. 找到应用程序的“应用程序(客户端) ID”值。  复制此值，以后将需要它。
+> 1. 找到应用程序的“目录(租户) ID”值。  复制此值，以后将需要它。
 > 1. 选择“身份验证”菜单，然后添加以下信息  ：
 >    - 在“重定向 URI”中添加 `http://localhost:8080/msal4jsamples/secure/aad` 和 `https://localhost:8080/msal4jsamples/graph/users`。 
 >    - 选择“保存”。 
@@ -81,7 +70,7 @@ ms.locfileid: "71120509"
 >    - 键入（实例应用机密）的密钥说明。
 >    - 选择密钥持续时间“1 年”。 
 >    - 单击“添加”时，将显示密钥值。  
->    - 复制密钥的值。 打开前面下载的 *application.properties* 文件，并使用密钥值更新 `Enter_the_Client_Secret_Here` 的值。 
+>    - 复制密钥的值，稍后将需要它。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -93,20 +82,26 @@ ms.locfileid: "71120509"
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已配置](media/quickstart-v2-aspnet-webapp/green-check.png) 应用程序已使用这些属性进行配置。
-> 
-> #### <a name="step-2-download-the-code-sample"></a>步骤 2：下载代码示例
-> 
-> - [下载代码示例](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
-> 
-> #### <a name="step-3-configure-the-code-sample"></a>步骤 3：配置代码示例 
-> 
-> 1. 将 zip 文件解压缩到某个本地文件夹。
-> 1. 如果使用集成开发环境，请在偏好的 IDE 中打开示例（可选）。
-> 1. 打开 *src/main/resources/* 中的 **application.properties** 文件。
-> 1. 替换应用程序属性。
->   1. 查找 `aad.clientId` 并使用你注册的应用程序的“应用程序 (客户端) ID”  值更新 `Enter_the_Application_Id_here` 的值。 
->   1. 找到 `aad.authority`，并使用已注册的应用程序的“目录(租户) ID”值更新 `Enter_the_Tenant_Name_Here` 的值。 
->   1. 找到 `aad.secretKey`，并使用在已注册应用程序的“证书和机密”中创建的“客户端机密”更新 `Enter_the_Client_Secret_Here` 的值。  
+
+#### <a name="step-2-download-the-code-sample"></a>步骤 2：下载代码示例
+ 
+ [下载代码示例](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
+ 
+ #### <a name="step-3-configure-the-code-sample"></a>步骤 3：配置代码示例 
+ 
+ 1. 将 zip 文件解压缩到某个本地文件夹。
+ 1. 如果使用集成开发环境，请在偏好的 IDE 中打开示例（可选）。
+ 1. 打开 *src/main/resources/* 中的 **application.properties** 文件。
+ 1. 替换应用程序属性。
+   1. 查找 `aad.clientId` 并使用你注册的应用程序的“应用程序 (客户端) ID”  值更新 `Enter_the_Application_Id_here` 的值。 
+   1. 找到 `aad.authority`，并使用已注册的应用程序的“目录(租户) ID”值更新 `Enter_the_Tenant_Name_Here` 的值。 
+   1. 找到 `aad.secretKey`，并使用在已注册应用程序的“证书和机密”中创建的“客户端机密”更新 `Enter_the_Client_Secret_Here` 的值。  
+
+> [!div renderon="docs"]
+> 其中：
+>
+> - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
+> - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”  中为注册的应用程序创建的**客户端密码**。
 
 #### <a name="step-4-run-the-code-sample"></a>步骤 4：运行代码示例
 1. 运行代码示例，然后打开浏览器并导航到 *http://localhost:8080* 。
@@ -114,7 +109,6 @@ ms.locfileid: "71120509"
 1. 在 Azure Active Directory 中成功完成身份验证后，用户将重定向到 *http://localhost:8080/msal4jsamples/secure/aad* 。 他们将正式登录到应用程序，页面上应会显示已登录帐户的信息。 页面上还包含以下按钮： 
     - *注销*：从应用程序中注销当前用户，并将其重定向到主页。
     - *显示用户*：获取 Microsoft Graph 的令牌，然后使用请求中附加的令牌来调用 Microsoft Graph，以获取租户中的所有用户。
-
 
 ## <a name="more-information"></a>详细信息
 
@@ -134,7 +128,7 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
 ```
 
 
-### <a name="msal-initialization"></a>Msal 初始化
+### <a name="msal-initialization"></a>MSAL 初始化
 可以通过将以下代码添加到要在其中使用 MSAL4J 的文件的顶部，来添加对 MSAL4J 的引用： 
 
 ```Java

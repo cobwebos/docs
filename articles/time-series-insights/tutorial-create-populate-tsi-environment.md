@@ -5,16 +5,16 @@ services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 07/29/2019
+ms.date: 10/02/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 4c81daa1f55167fa868c69f3bff388dbaa4887cd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a6f2b2875ea58ff89d59f577f7cb27d97e07b28e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725742"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981242"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>教程：创建 Azure 时序见解环境
 
@@ -196,4 +196,4 @@ Azure IoT 中心是本教程中的所有设备（模拟设备或物理设备）�
 了解如何创建自己的时序见解环境后，请学习如何生成可以使用时序见解环境中的数据的 Web 应用程序：
 
 > [!div class="nextstepaction"]
-> [创建 Azure 时序见解单页 Web 应用](tutorial-create-tsi-sample-spa.md)
+> [请参阅托管客户端 SDK 可视化示例](https://tsiclientsample.azurewebsites.net/)

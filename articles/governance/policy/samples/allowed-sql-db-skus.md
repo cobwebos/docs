@@ -1,17 +1,17 @@
 ---
 title: 示例 - 允许的 SQL DB SKU
-description: 此示例策略定义要求 SQL 数据库使用已批准的 SKU。
+description: 此示例策略定义要求 SQL 数据库使用已批准的 SKU。 拒绝不满足要求的新资源。
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4d20986e6bb3f9dc8e1d19a141716bdc66abd13e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 812ba137bad052e9ee784504151d2a52f99fb9a8
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977719"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244189"
 ---
 # <a name="sample---allowed-sql-database-skus"></a>示例 - 允许的 SQL 数据库 SKU
 

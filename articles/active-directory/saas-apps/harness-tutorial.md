@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 21409eb056743d92db42e0787af24f8cec07db1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305942"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026954"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Harness 集成
 
@@ -121,12 +121,12 @@ ms.locfileid: "70305942"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-harness-sso"></a>配置 Harness SSO
@@ -141,11 +141,11 @@ ms.locfileid: "70305942"
 
 3. 若要手动设置 Harness，请打开新的 Web 浏览器窗口，以管理员身份登录 Harness 公司站点，并执行以下步骤：
 
-4. 在页面右上角，单击“持续安全性” ****  >“访问管理” ****  > “身份验证设置”  。
+4. 在页面右上角，单击“持续安全性”   > “访问管理”   > “身份验证设置”  。
 
     ![Harness 配置](./media/harness-tutorial/configure01.png)
 
-5. 在“SSO 提供程序”  部分中，单击“+ 添加 SSO 提供程序” ****  >“SAML” **** 。
+5. 在“SSO 提供程序”  部分中，单击“+ 添加 SSO 提供程序”   > “SAML”  。
 
     ![Harness 配置](./media/harness-tutorial/configure03.png)
 
@@ -169,11 +169,11 @@ ms.locfileid: "70305942"
 
 1. 以管理员身份登录到 Harness。
 
-1. 在页面右上角，单击“持续安全性” ****  >“访问管理” ****  > “用户”  。
+1. 在页面右上角，单击“持续安全性”   > “访问管理”   > “用户”  。
 
     ![Harness 配置](./media/harness-tutorial/configure04.png)
 
-1. 在页面右侧，单击“+ 添加用户”。 ****
+1. 在页面右侧，单击“+ 添加用户”。 
 
     ![Harness 配置](./media/harness-tutorial/configure05.png)
 

@@ -8,17 +8,16 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 526c60916854d4918607a1fd1b887ac9d27cd1c7
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 29e0b05ee9cb8f7dc67f90b54081bca4db0691b6
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950012"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035236"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什么是 Azure 备份服务？
 
 Azure 备份服务将数据备份到 Microsoft Azure 云。 可以备份本地计算机和工作负荷，以及 Azure 虚拟机 (VM)。
-
 
 ## <a name="why-use-azure-backup"></a>为何使用 Azure 备份？
 
@@ -28,16 +27,15 @@ Azure 备份具有以下主要优势：
 - **备份 Azure IaaS VM**：Azure 备份提供独立且隔离的备份，可以防范原始数据的意外破坏。 备份存储在可以对恢复点进行内置托管的恢复服务保管库中。 配置和可伸缩性很简单，备份经过优化，可以轻松地根据需要还原。
 - **轻松缩放** - Azure 备份利用 Azure 云的基础功能和无限缩放功能实现高可用性 - 无需维护，也无需监视开销。
 - **无限数据传输**：Azure 备份不会限制传输的入站或出站数据量，不会对传输的数据收费。
-    - 出站数据是指还原操作期间从恢复服务保管库传输的数据。
-    - 如果使用 Azure 导入/导出服务执行脱机初始备份以导入大量数据，则入站数据将产生相关费用。  [了解详细信息](backup-azure-backup-import-export.md)。
+  - 出站数据是指还原操作期间从恢复服务保管库传输的数据。
+  - 如果使用 Azure 导入/导出服务执行脱机初始备份以导入大量数据，则入站数据将产生相关费用。  [了解详细信息](backup-azure-backup-import-export.md)。
 - **保护数据安全**：Azure 备份为传输中的数据和静态数据提供保护解决方案。
 - **获取应用一致性备份**：应用程序一致性备份意味着恢复点包含还原备份副本所需的所有数据。 Azure 备份提供了应用程序一致性备份，确保了还原数据时无需额外的修补程序。 还原应用程序一致型数据可减少还原时间，因此可快速恢复到运行状态。
-- **保留短期和长期数据**：可将恢复服务保管库用于短期和长期数据保留。 Azure 不会限制恢复服务保管库中数据的保留时间长度。 可将数据保留任意时间。 Azure 备份的限制为每个受保护实例仅限 9999 个恢复点。 
+- **保留短期和长期数据**：可将恢复服务保管库用于短期和长期数据保留。 Azure 不会限制恢复服务保管库中数据的保留时间长度。 可将数据保留任意时间。 Azure 备份的限制为每个受保护实例仅限 9999 个恢复点。
 - **自动存储管理** - 混合环境常常需要异类存储（部分在本地，部分在云端）。 通过 Azure 备份，使用本地存储设备时无需付费。 Azure 备份会自动分配和管理备份存储，且采用即用即付模型，因此，你只需为消耗的存储付费。 [详细了解](https://azure.microsoft.com/pricing/details/backup)定价情况。
 - **多个存储选项** - Azure 备份提供两种类型的复制来保持存储/数据的高可用性。
-    - [本地冗余存储 (LRS)](../storage/common/storage-redundancy-lrs.md) 将数据中心的存储缩放单元中的数据复制三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一种低成本选项，用于保护数据免受本地硬件故障的影响。
-    - [异地冗余存储 (GRS)](../storage/common/storage-redundancy-grs.md) 是默认的和推荐的复制选项。 GRS 将数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 可让数据更为持久，即使出现区域性故障也是如此。
-
+  - [本地冗余存储 (LRS)](../storage/common/storage-redundancy-lrs.md) 将数据中心的存储缩放单元中的数据复制三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一种低成本选项，用于保护数据免受本地硬件故障的影响。
+  - [异地冗余存储 (GRS)](../storage/common/storage-redundancy-grs.md) 是默认的和推荐的复制选项。 GRS 将数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 可让数据更为持久，即使出现区域性故障也是如此。
 
 ## <a name="whats-the-difference-between-azure-backup-and-azure-site-recovery"></a>Azure 备份与 Azure Site Recovery 的区别是什么？
 
@@ -66,16 +64,16 @@ Azure 备份可以备份本地计算机和 Azure VM。
 **计算机** | **备份方案**
 --- | ---
 **本地备份** |  1) 在本地 Windows 计算机上运行 Azure 备份 Microsoft Azure 恢复服务 (MARS) 代理，以备份单个文件和系统状态。 <br/><br/>2) 将本地计算机备份到备份服务器（System Center Data Protection Manager (DPM) 或 Microsoft Azure 备份服务器 (MABS)），然后将备份服务器配置为备份到 Azure 中的 Azure 备份恢复服务保管库。
-**Azure VM** | 1) 为单个 Azure VM 启用备份。 启用备份时，Azure 备份会在 VM 上运行的 Azure VM 代理中安装一个扩展。 该代理备份整个 VM。<br/><br/> 2) 在 Azure VM 上运行 MARS 代理。 若要备份 VM 上的单个文件和文件夹，此功能将十分有用。<br/><br/> 
-
+**Azure VM** | 1) 为单个 Azure VM 启用备份。 启用备份时，Azure 备份会在 VM 上运行的 Azure VM 代理中安装一个扩展。 该代理备份整个 VM。<br/><br/> 2) 在 Azure VM 上运行 MARS 代理。 若要备份 VM 上的单个文件和文件夹，此功能将十分有用。<br/><br/>
 
 ## <a name="why-use-a-backup-server"></a>为何要使用备份服务器？
+
 将计算机和应用备份到 MABS/DPM 存储，然后将 DPM/MABS 存储备份到保管库的优点如下所述：
 
 - 备份到 MABS/DPM 可以在文件/文件夹/卷备份以及计算机状态备份（裸机、系统状态）的基础上提供应用感知型备份，后者已针对常用应用（例如 SQL Server、Exchange 和 SharePoint）进行优化。
 - 对于本地计算机，不需在要备份的每台计算机上安装 MARS 代理。 每台计算机运行 DPM/MABS 保护代理，而 MARS 代理只在 MABS/DPM 上运行。
 - 有更多适合运行备份的灵活性和粒度计划选项。
-- 可以管理多台计算机的备份，这些计算机已在单个控制台中集中到保护组。 当应用的分层跨越多台计算机，而你需要将它们一起进行备份时，此方法特别有用。
+- 可以管理多台计算机的备份，这些计算机已在单个控制台中集中到保护组。 当应用的分层跨越多台计算机，而你需要将它们一起进行备份时，此方法很有用。
 
 详细了解使用备份服务器时的[备份工作原理](backup-architecture.md#architecture-back-up-to-dpmmabs)，以及备份服务器的[支持要求](backup-support-matrix-mabs-dpm.md)。
 
@@ -118,7 +116,7 @@ Azure 备份针对每个受保护实例实施 9999 个恢复点（也称为备�
 
 下表显示了每个组件的最大备份频率。 备份策略配置确定了恢复点的消耗速度。 例如，如果每天创建一个恢复点，可以保留恢复点 27 年，27 年后配额会耗尽。如果每月创建一个恢复点，可以保留恢复点 833 年。备份服务未针对恢复点实施过期时间限制。
 
-|  | Azure 备份代理 | System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
+|  | Azure 备份 (MARS) 代理| System Center DPM | Azure 备份服务器 | Azure IaaS VM 备份 |
 | --- | --- | --- | --- | --- |
 | 备份频率<br/> （到恢复服务保管库） |每天三次备份 |每天两次备份 |每天两次备份 |每天一次备份 |
 | 备份频率<br/> （到磁盘） |不适用 |SQL Server 每隔 15 分钟<br/><br/> 其他工作负荷每隔 1 小时 |SQL Server 每隔 15 分钟<br/><br/> 其他工作负荷每隔 1 小时 |不适用 |

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: f677d6b8edfe60646c6368acce9d47b23a35237d
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 95b85aa11d99ddd48c90c8d9fa28789e79ee979f
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146887"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299249"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>检索 Azure CDN 的当前 POP IP 列表
 
@@ -41,7 +41,6 @@ REST API 可用于检索 Verizon 入网点 (POP) 服务器的 IP 集。 这些 P
 
 可在[此处](https://www.microsoft.com/download/details.aspx?id=56519)找到 Microsoft 服务的 IP 范围和服务标记
 
-筛选从 Microsoft Azure CDN 发送的传入标头 "X-转发主机" 的值。 标头唯一允许的值应该是 CDN 配置中定义的所有终结点主机。事实上，在您自己的特定来源，只是想要接受其流量的主机名。
 
 ## <a name="typical-use-case"></a>典型用例
 

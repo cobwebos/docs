@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/11/2019
 ms.author: lahugh
-ms.openlocfilehash: 6bd74fa299385acb1abe4b32db5d35366249eaa6
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 3c6a054229ab7a16fb48dff5ec2e8681c3c5345e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173918"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299496"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure 上的第 2 代 VM 支持（预览版）
 
@@ -57,7 +57,7 @@ Azure 中的所有 VM 大小都支持第 1 代 VM。 Azure 目前为以下选定
 
 * Windows Server 2019 Datacenter
 * Windows Server 2016 Datacenter
-* Windows Server 2012 R2 数据中心
+* Windows Server 2012 R2 Datacenter
 * Windows Server 2012 Datacenter
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
@@ -91,9 +91,9 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 | OS 磁盘 > 2 TB                    | :x:                | :heavy_check_mark: |
 | 自定义磁盘/映像/交换 OS         | :heavy_check_mark: | :heavy_check_mark: |
 | 虚拟机规模集支持 | :heavy_check_mark: | :heavy_check_mark: |
-| Azure 站点恢复               | :heavy_check_mark: | :x:                |
+| Azure Site Recovery               | :heavy_check_mark: | :x:                |
 | 备份/还原                    | :heavy_check_mark: | :heavy_check_mark: |
-| 共享映像库              | :heavy_check_mark: | :x:                |
+| 共享映像库              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure 磁盘加密             | :heavy_check_mark: | :x:                |
 
 ## <a name="creating-a-generation-2-vm"></a>创建第 2 代 VM
@@ -121,7 +121,7 @@ Windows 和 SLES 的第2代映像包含在 Gen1 映像所在的同一个服务�
 
 还可以通过直接引用第1代或第2代 SKU 来使用 PowerShell 创建 VM。
 
-例如，使用以下 PowerShell cmdlet 获取`WindowsServer`产品/服务中的 sku 列表。
+例如，使用以下 PowerShell cmdlet 获取 `WindowsServer` 产品中的 Sku 列表。
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
@@ -152,7 +152,7 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer 
 * **第 1 代与第 2 代 VM 的价格是否有差别？**  
     否。
 
-* **我有来自本地第2代 VM 的 .vhd 文件。能否在 Azure 中使用该 .vhd 文件创建第2代 VM？**
+* **I 的本地第2代 VM 包含 .vhd 文件。能否在 Azure 中使用该 .vhd 文件创建第2代 VM？**
   是的，你可以将第2代 .vhd 文件引入 Azure 并使用它来创建第2代 VM。 使用以下步骤来执行此操作：
     1. 将 .vhd 上传到要在其中创建 VM 的同一区域中的存储帐户。
     1. 从 .vhd 文件创建托管磁盘。 将 Hyper-v 生成属性设置为 V2。 以下 PowerShell 命令在创建托管磁盘时设置 Hyper-v 生成属性。

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: c6a424ed6036016839f03f50f90ad5d911b05fad
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 0e8b203240b4b2d6b67534ab52a7cd4ccf5df571
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710003"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976596"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>类类型概述 - Azure 实验室服务
 使用 Azure 实验室服务可以在云中快速设置课堂实验室环境。 本部分列出的文章提供了有关如何使用 Azure 实验室服务设置多种类型的课堂实验室的指导。
@@ -34,6 +34,13 @@ ms.locfileid: "71710003"
 使用这些脚本类的学生可以通过 Linux 虚拟机了解 Linux 的基础知识，并熟悉 bash shell 脚本。 该 Linux 虚拟机已启用远程桌面访问，并装有 [gedit](https://help.gnome.org/users/gedit/stable/) 和 [Visual Studio Code](https://code.visualstudio.com/) 文本编辑器。
 
 有关如何设置此类实验室的详细信息，请参阅 [Linux 上的 Shell 脚本](class-type-shell-scripting-linux.md)。
+
+## <a name="ethical-hacking"></a>道德黑客攻击 
+可以为专注于道德黑客取证方面的课程设置实验室。 渗透测试是道德黑客社区使用的一种做法，当某人试图获得对系统或网络的访问权限以证明恶意攻击者可能利用的漏洞时，就会进行渗透测试。 
+
+在道德黑客课程中，学生可以学习抵御漏洞的新式技术。 每个学生都获得一个 Windows Server 主机虚拟机，它包含两个嵌套虚拟机 - 一个是带有 **Metaspoiltable** 映像的虚拟机，另一个是带有 [Kali Linux](https://www.kali.org/) 映像的虚拟机。 Metasploitable 虚拟机用于开发目的，Kali 虚拟机提供对执行取证任务所需的工具的访问。
+
+有关如何设置此类实验室的详细信息，请参阅[设置实验室以教授道德黑客课程](class-type-ethical-hacking.md)。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 

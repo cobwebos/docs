@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: d5deedb12afb1b766255ad0a9f247594ed70acaa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 708656ee88f5bacaa498bcd84fde34d69228d28b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069302"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170281"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板
 
@@ -42,10 +42,10 @@ ms.locfileid: "67069302"
     ![使用 Azure 门户创建 Azure 存储帐户](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 3. 输入以下信息：
 
-    |名称|值|
+    |Name|值|
     |----|----|
     |**资源组**|选择“新建”  ，然后指定所选资源组的名称。 在屏幕截图中，资源组名称为 *mystorage1016rg*。 资源组是 Azure 资源的容器。 资源组方便 Azure 资源的管理。 |
-    |**名称**|为存储帐户指定唯一的名称。 存储帐户名称在整个 Azure 中必须是唯一的，且仅包含小写字母和数字。 名称长度必须介于 3 到 24 个字符之间。 如果收到错误消息“存储帐户名称‘mystorage1016’已被占用”，请尝试使用“&lt;名称>存储&lt;MMDD 格式的今日日期>”，例如“johndolestorage1016”   。 有关详细信息，请参阅[命名规则和限制](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)。|
+    |**名称**|为存储帐户指定唯一的名称。 存储帐户名称在整个 Azure 中必须是唯一的，且仅包含小写字母和数字。 名称长度必须介于 3 到 24 个字符之间。 如果收到错误消息“存储帐户名称‘mystorage1016’已被占用”，请尝试使用“&lt;名称>存储&lt;MMDD 格式的今日日期>”，例如“johndolestorage1016”   。 有关详细信息，请参阅[命名规则和限制](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming)。|
 
     可对剩余的属性使用默认值。
 
@@ -156,7 +156,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
 8. 选择“保存”。 
 9. 输入以下值：
 
-    |名称|值|
+    |Name|值|
     |----|----|
     |**资源组**|选择在上一部分中创建的资源组名称。 |
     |**位置**|选择存储帐户的位置。 例如“美国中部”。  |
@@ -192,7 +192,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍如何通过 Azure 门户生成模板，以及如何使用门户部署模板。 本快速入门中使用的模板是包含一个 Azure 资源的简单模板。 如果模板较为复杂，使用 Visual Studio Code 或 Visual Studio 开发模板会更方便。 下一快速入门还介绍如何使用 Azure PowerShell 和 Azure 命令行界面 (CLI) 来部署模板。
+本教程已介绍如何通过 Azure 门户生成模板，以及如何使用门户部署模板。 本快速入门中使用的模板是包含一个 Azure 资源的简单模板。 如果模板较为复杂，使用 Visual Studio Code 或 Visual Studio 开发模板会更方便。 若要详细了解模板开发，请参阅新的初学者教程系列：
 
 > [!div class="nextstepaction"]
-> [使用 Visual Studio Code 创建模板](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)
+> [初学者教程](./template-tutorial-create-first-template.md)

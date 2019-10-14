@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Ansible 在 Azure 中配置虚拟机规模集 | Microsoft Docs
+title: 教程 - 使用 Ansible 在 Azure 中配置虚拟机规模集
 description: 了解如何在 Azure 中使用 Ansible 创建和配置虚拟机规模集
 keywords: ansible, azure, devops, bash, playbook, 虚拟机, 虚拟机规模集, vmss
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 41ef6103a899970142df1a6beee0ad428419f3df
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1d9b8cd207596aefa01af852627f11cb9b4ce5dc
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230741"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241728"
 ---
 # <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>教程：使用 Ansible 在 Azure 中配置虚拟机规模集
 
@@ -145,7 +145,7 @@ ms.locfileid: "65230741"
             caching: ReadOnly
 ```
 
-在运行 playbook 之前，请参阅以下说明：
+运行 playbook 之前，请参阅以下说明：
 
 * 在 `vars` 节中，请将 `{{ admin_password }}` 占位符替换为你自己的密码。
 

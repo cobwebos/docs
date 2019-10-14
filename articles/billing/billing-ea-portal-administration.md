@@ -4,16 +4,16 @@ description: 本文介绍管理员可在 Azure EA 门户中完成的常见任务
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/25/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308102"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035222"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -87,10 +87,11 @@ Azure EA 帐户是 Azure EA 门户中的一个组织单位，用于管理订阅�
 - 目标和源注册需要经过 EA 管理员的批准
   - 在某些情况下，Microsoft 可能会要求源注册的 EA 管理员做出附加批准
 - 如果帐户转移不符合要求，请考虑进行注册转移。
-- 帐户转移过程会转移所有服务、订阅、帐户、部门和整个注册结构，包括所有 EA 部门管理员。
-- 帐户转移会将源注册状态设置为“已转移”。  转移的帐户仅可用于历史使用情况报告。
-- 无法将角色或订阅添加到处于已转移状态的注册。 该状态可防止注册进一步产生使用费。
-- 源协议中任何剩余的货币承诺余额将会丢失，包括将来的条款。
+- 帐户转移与特定帐户相关的所有服务和订阅。
+- 转移完成后，转移的帐户在源注册下显示为非活动状态。
+- 帐户转移可以追溯到目标注册开始日期内的任何日期。
+- 帐户显示与源注册的有效转移日期相对应的终止日期，并将其显示为目标注册的起始日期。
+- 在有效转移日期之前该帐户发生的任何使用情况均保留在源注册中。
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>将企业注册转移到新注册

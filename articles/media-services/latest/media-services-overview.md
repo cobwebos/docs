@@ -16,16 +16,18 @@ ms.workload: media
 ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: a752d7759386828e916f68e5903115220812f3e0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c6359cf2401ff198b0242243dbf6dfdf2e35ce47
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123044"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244023"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure 媒体服务 v3 概述
 
 Azure 媒体服务是一个基于云的平台，用于生成解决方案，以便实现广播质量的视频流、增强可访问性和分发、分析内容，等等。 无论你是应用程序开发者、呼叫中心、政府机构还是娱乐公司，媒体服务都能帮助你创建应用程序，通过当今最热门的移动设备和浏览器向广大受众提供品质卓越的媒体体验。 
+
+媒体服务 v3 SDK 基于[媒体服务 v3 OpenAPI 规范 (Swagger)](https://aka.ms/ams-v3-rest-sdk)。
 
 > [!NOTE]
 > 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或支持的 [SDK](media-services-apis-overview.md#sdks) 之一。

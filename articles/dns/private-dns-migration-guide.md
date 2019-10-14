@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: e7ebbf35cd572601f02a69930b58811686a92c86
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 870f8f43fb37f3f58fc19f2fd544e77b1a3a3967
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276315"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960557"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>将旧的 Azure DNS 专用区域迁移到新的资源模型
 
-我们在预览更新版中为 Azure DNS 专用区域提供了新的 API/资源模型。 预览更新版提供了新的功能，并删除了初始公共预览版的一些局限和限制。 但是，使用旧 API 创建的 DNS 专用区域不具有这些优势。 要获得新版本的优势，必须将旧的 DNS 专用区域资源迁移到新的资源模型。 迁移过程很简单，我们提供了一个 PowerShell 脚本来自动执行此过程。 本指南将分步说明如何将 Azure DNS 专用区域迁移到新的资源模型。
+当前的 Azure DNS 专用区域版本提供了新的功能，并删除了初始公共预览版的一些局限和限制。 但是，使用预览 API 创建的专用 DNS 区域不具有这些优势。 要获得新版本的优势，必须将旧的 DNS 专用区域资源迁移到新的资源模型。 迁移过程很简单，我们提供了一个 PowerShell 脚本来自动执行此过程。 本指南将分步说明如何将 Azure DNS 专用区域迁移到新的资源模型。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,7 +29,7 @@ Install-Module -Name Az.PrivateDns -AllowPrerelease
 ```
 
 >[!IMPORTANT]
->迁移过程完全自动化，并且预计不会导致停机。 但是，如果您在关键生产环境中使用 Azure DNS 专用区域 （预览版），应在计划内维护时段执行以下迁移过程。 在运行迁移脚本时，请确保不要修改 DNS 专用区域的配置或记录集。
+>迁移过程完全自动化，并且预计不会导致停机。 但是，如果在关键生产环境中使用 Azure DNS 专用区域（预览版），应在计划内维护时段执行以下迁移过程。 在运行迁移脚本时，请确保不要修改 DNS 专用区域的配置或记录集。
 
 ## <a name="installing-the-script"></a>安装脚本
 
@@ -112,7 +112,7 @@ PrivateDnsMigrationScript.ps1
 
 * 了解可以通过 Azure DNS 中的专用区域实现的一些常见[专用区域方案](./private-dns-scenarios.md)。
 
-* 有关 Azure DNS 专用区域的一些常见问题和解答，包括对于某些类型的操作可以期待的特定行为，请参阅 [DNS 专用区域常见问题解答](./dns-faq-private.md)。
+* 有关 Azure DNS 专用区域的一些常见问题和解答，包括对于某些类型的操作可以期待的特定行为，请参阅[专用 DNS 常见问题解答](./dns-faq-private.md)。
 
 * 访问 [DNS 区域和记录概述](dns-zones-records.md)，了解 DNS 区域和记录。
 

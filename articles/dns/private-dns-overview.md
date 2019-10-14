@@ -7,19 +7,14 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 0921a1ac7aa1192fae78f168c2eb51ee3e74e24a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 152087ab3dc20dfc95cfeaa0353d961917d362d6
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774620"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959356"
 ---
 # <a name="what-is-azure-private-dns"></a>什么是 Azure 专用 DNS？
-
-> [!IMPORTANT]
-> Azure 专用 DNS 当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 域名系统（或称为 DNS）负责将服务名称转换（或解析）为其 IP 地址。  Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 除了支持面向 Internet 的 DNS 域之外，Azure DNS 还支持专用 DNS 区域。
 
@@ -60,22 +55,14 @@ Azure DNS 提供以下功能：
 
 * **在虚拟网络范围内支持反向 DNS 查找**。 对分配到专用区域的虚拟网络中的专用 IP 进行反向 DNS 查找会返回 FQDN，其中包括主机/记录名称以及作为后缀的区域名称。
 
-## <a name="known-issues"></a>已知问题
-以下项目是预览版中的已知 bug 和问题：
-* 如果删除链接到专用 DNS 区域的虚拟网络，则不会删除指向专用 DNS 区域的链接。 如果重新创建具有相同名称和资源组的虚拟网络，并尝试再次将其链接到任何专用 DNS 区域，则链接将失败。 若要解决此问题，请在其他资源组中创建虚拟网络，或在同一资源组中使用其他名称。
-* 如果将虚拟网络移动到另一个资源组或订阅，则不会更新指向专用 DNS 区域的链接。 已移动的虚拟网络的名称解析继续有效，但是查看专用 DNS 区域的虚拟网络链接时，将看到虚拟网络的旧 ARM ID。
-* 目前，托管于阿联酋北部、阿联酋中部、南非西部、南非北部、加拿大东部、法国南部的链接虚拟网络可能会失败，你可能会遇到间歇性 DNS 解析问题。 
-
-
 ## <a name="other-considerations"></a>其他注意事项
 
 Azure DNS 具有以下限制：
 
 * 如果启用了自动注册 VM DNS 记录，则特定虚拟网络只能链接到一个专用区域。 但可以将多个虚拟网络链接到单个 DNS 区域。
 * 反向 DNS 仅适用于链接虚拟网络中的专用 IP 空间
-* 链接虚拟网络的专用 IP 的反向 DNS 返回“internal.cloudapp.net”，作为虚拟机的默认后缀。 对于链接到启用了自动注册的专用区域的虚拟网络，专用 IP 的反向 DNS 返回 2 个 FQDN，一个具有默认后缀 internal.cloudapp.net，另一个具有专用区域后缀  。
-* 目前，条件转发不受本机支持。 若要启用 Azure 和本地网络之间的解析，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
-
+* 链接虚拟网络的专用 IP 地址的反向 DNS 返回“internal.cloudapp.net”  ，作为虚拟机的默认后缀。 对于链接到启用了自动注册的专用区域的虚拟网络，专用 IP 地址的反向 DNS 返回两个 FQDN：一个具有默认后缀 internal.cloudapp.net  ，另一个具有专用区域后缀。
+* 目前，条件转发不受本机支持。 在 Azure 和本地网络之间启用解析。 请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
  
 ## <a name="pricing"></a>定价
 

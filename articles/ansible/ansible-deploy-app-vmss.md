@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Ansible 在 Azure 中将应用部署到虚拟机规模集 | Microsoft Docs
+title: 教程 - 使用 Ansible 在 Azure 中部署虚拟机规模集
 description: 了解如何使用 Ansible 配置 Azure 虚拟机规模集并在该规模集上部署应用程序
 keywords: ansible, azure, devops, bash, playbook, 虚拟机, 虚拟机规模集, vmss
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: a44fd06ace9b21122f5f4253ac7d9601b54e6b62
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f9035259d466a50b83fe0094d43bc0fe985e8c4e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231042"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241750"
 ---
 # <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>教程：使用 Ansible 在 Azure 中部署虚拟机规模集
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 2f1ee5caf89af718d91abeac01730700c131ab41
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: bc7858aeceea7cbd35bc2d834ddfb4fb5d656321
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048959"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174833"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>快速入门：使用设备功能模型创建 IoT 即插即用设备并将其连接到 IoT Central 应用程序
 
@@ -42,12 +42,12 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用](../iot-pnp/overview-iot-plu
     npm i -g dps-keygen
     ```
 
-### <a name="install-azure-iot-device-workbench"></a>安装 Azure IoT Device Workbench
+### <a name="install-azure-iot-tools"></a>安装 Azure IoT Tools
 
-使用以下步骤在 VS Code 中安装 Azure IoT Device Workbench 扩展：
+使用以下步骤在 VS Code 中安装 Azure IoT Tools 扩展包：
 
 1. 在 VS Code 中选择“扩展”选项卡。 
-1. 搜索 **Azure IoT Device Workbench**。
+1. 搜索“Azure IoT Tools”  。
 1. 选择“安装”  。
 
 ## <a name="prepare-the-development-environment"></a>准备开发环境

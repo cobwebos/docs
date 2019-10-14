@@ -13,12 +13,12 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
 ms.author: yucwan
-ms.openlocfilehash: cbeaccf4cdea87d6f34d5ee77e6a08b32abd76b5
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: d25a5720e3aaa8ad6306a72d2db8d3ca2e89861b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708190"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169445"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>快速入门：使用 IntelliJ IDEA 创建和部署 Azure 资源管理器模板
 
@@ -40,7 +40,7 @@ ms.locfileid: "68708190"
 
 ## <a name="deploy-a-quickstart-template"></a>部署快速入门模板
 
-无需从头开始创建模板，可以通过 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)打开一个模板。 Azure 快速入门模板是资源管理器模板的存储库。 本快速入门中使用的模板称为[创建标准存储帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。 
+无需从头开始创建模板，可以通过 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)打开一个模板。 Azure 快速入门模板是资源管理器模板的存储库。 本快速入门中使用的模板称为[创建标准存储帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。
 
 1. 单击右键并将 [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) 和 [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) 保存到本地计算机。
 
@@ -89,10 +89,10 @@ ms.locfileid: "68708190"
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门重点介绍了如何使用 IntelliJ IDEA 来部署 Azure 快速入门模板中的现有模板。 此外，介绍了如何查看和更新 Azure 上的现有部署。 Azure 快速入门模板中的模板可能并未提供你所需的一切。 下一教程介绍如何从模板参考中查找信息，以便创建加密的 Azure 存储帐户。
+本快速入门重点介绍了如何使用 IntelliJ IDEA 来部署 Azure 快速入门模板中的现有模板。 此外，介绍了如何查看和更新 Azure 上的现有部署。 Azure 快速入门模板中的模板可能并未提供你所需的一切。 若要详细了解模板开发，请参阅新的初学者教程系列：
 
 > [!div class="nextstepaction"]
-> [创建加密的存储帐户](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [初学者教程](./template-tutorial-create-first-template.md)
 
 > [!div class="nextstepaction"]
 > [在 Azure 开发人员中心访问 Java](https://docs.microsoft.com/azure/java)

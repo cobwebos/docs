@@ -1,22 +1,22 @@
 ---
 title: Azure Database for MySQL 关系数据库服务概述
-description: 用于 MySQL 关系数据库服务的 Azure 数据库的概述。
-ms.service: mysql
+description: 了解 Azure Database for MySQL 服务，这是 Microsoft 云中基于 MySQL 社区版的关系数据库服务。
 author: ajlam
+ms.service: mysql
 ms.author: andrela
 ms.custom: mvc
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 08/13/2019
-ms.openlocfilehash: 1299f82c28181d1c24f68a0d36ba13c6b40d21ee
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
-ms.translationtype: MT
+ms.openlocfilehash: f193dceaf26361fececde9df9df6769e2a971543
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013404"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178103"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>什么是用于 MySQL 的 Azure 数据库？
 
-Azure Database for MySQL 是 Microsoft 云中基于[MySQL 社区版](https://www.mysql.com/products/community/)的关系型数据库服务 (可在 GPLv2 许可证下找到) 数据库引擎版本5.6、5.7 和8.0。 用于 MySQL 的 Azure 数据库提供以下功能：
+Azure Database for MySQL 是 Microsoft 云中的关系数据库服务，基于 [MySQL Community Edition](https://www.mysql.com/products/community/)（在 GPLv2 许可证下提供）数据库引擎 5.6、5.7 和 8.0 版。 用于 MySQL 的 Azure 数据库提供以下功能：
 
 - 没有额外费用的内置高可用性。
 - 使用非独占即用即付定价，实现可预测性能。
@@ -50,12 +50,12 @@ Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft �
 ## <a name="secure-your-data"></a>保护数据
 Azure 数据库沿袭了 Azure Database for MySQL 的若干数据安全性功能，包括限制访问、保护静止和移动数据，以及帮助监视活动等。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.microsoft.com/en-us/trustcenter/security)。
 
-Azure Database for MySQL 服务对静态数据使用存储加密，并且符合 FIPS 140-2 标准。 包括备份在内的数据都在磁盘中加密（运行查询时由引擎创建的临时文件除外）。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终可用，并且不能禁用。
+Azure Database for MySQL 服务使用 FIPS 140-2 验证的加密模块对静态数据进行存储加密。 数据（包括备份）在磁盘上加密，运行查询时创建的临时文件除外。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终可用，并且不能禁用。
 
 默认情况下，将用于 MySQL 的 Azure 数据库服务配置为要求网络中传输的数据具备 [SSL 连接安全性](./concepts-ssl-connection-security.md)。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。 （可选）如果客户端应用程序不支持 SSL 连接，则可以禁止要求 SSL 连接到数据库服务。
 
 ## <a name="contacts"></a>联系人
-如果有任何关于使用 Azure Database for MySQL 的问题或建议，请发送电子邮件至 Azure Database for MySQL 团队 ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com))。 请注意，这不是技术支持别名。
+如果有任何关于使用 Azure Database for MySQL 的问题或建议，请发送电子邮件至 Azure Database for MySQL 团队 ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com))。 此电子邮件地址不是技术支持别名。
 
 另外，请酌情考虑以下联系点：
 
@@ -64,7 +64,7 @@ Azure Database for MySQL 服务对静态数据使用存储加密，并且符合 
 - 若要提供反馈或请求新功能，请通过 [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) 创建条目。
 
 ## <a name="next-steps"></a>后续步骤
-现在，已阅读了用于 MySQL 的 Azure 数据库的简介并回答了“什么是用于 MySQL 的 Azure 数据库？”这个问题，因此可以继续完成以下内容：
+现在，已阅读了 Azure Database for MySQL 的简介并回答了“什么是 Azure Database for MySQL？”这个问题， 因此可以继续完成以下内容：
 
 - 有关成本比较和计算器，请参阅定价页。 [定价](https://azure.microsoft.com/pricing/details/mysql/)
 - 从创建第一个服务器开始。 [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](quickstart-create-mysql-server-database-using-azure-portal.md)

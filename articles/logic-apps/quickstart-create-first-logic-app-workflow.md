@@ -11,18 +11,18 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
-ms.openlocfilehash: d6c7f04d35a91e30a98ec403b6811a2be0aaee20
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: c85b3e3ced661eb36d9cb1eb0ae443a5ab21a913
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051678"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029419"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>快速入门：使用 Azure 逻辑应用创建第一个自动化工作流 - Azure 门户
 
 本快速入门介绍如何使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)构建第一个自动化工作流。 在本文中，请创建一个逻辑应用，以便定期查看网站的 RSS 源中是否有新项。 如果存在新项，逻辑应用会针对每个项发送电子邮件。 完成后，逻辑应用看起来大致与以下工作流类似：
 
-![概述 - 逻辑应用示例](./media/quickstart-create-first-logic-app-workflow/overview.png)
+![高级示例逻辑应用工作流](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
 若要按照本快速入门进行操作，你需要逻辑应用支持的提供商（例如 Office 365 Outlook、Outlook.com 或 Gmail）提供的电子邮件帐户。 至于其他提供商，请[查看此处的连接器列表](https://docs.microsoft.com/connectors/)。 此逻辑应用使用 Office 365 Outlook 帐户。 如果使用其他电子邮件帐户，整个步骤仍然是相同的，但 UI 可能稍有不同。
 
@@ -36,11 +36,11 @@ ms.locfileid: "70051678"
 
 1. 在 Azure 主菜单中，依次选择“创建资源” > “集成” > “逻辑应用”。   
 
-   ![创建逻辑应用](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
+   ![创建逻辑应用 - Azure 门户](./media/quickstart-create-first-logic-app-workflow/create-new-logic-app.png)
 
 1. 在“创建逻辑应用”下，提供有关逻辑应用的详细信息，如下所示。  完成后，选择“创建”  。
 
-   ![提供逻辑应用的详细信息](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
+   ![提供有关新逻辑应用的详细信息](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
    | 属性 | 值 | 说明 |
    |----------|-------|-------------|
@@ -53,13 +53,13 @@ ms.locfileid: "70051678"
 
 1. 在 Azure 部署你的应用后，在 Azure 工具栏上，选择“通知”   > “转到资源”  ，查看你部署的逻辑应用。
 
-   ![转到资源](./media/quickstart-create-first-logic-app-workflow/go-to-logic-app.png)
+   ![转到新创建的逻辑应用资源](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
    或者，可以通过在搜索框中键入名称来查找和选择逻辑应用。
 
    逻辑应用设计器打开并显示一个包含简介视频和常用触发器的页面。   在“模板”下选择“空白逻辑应用”。
 
-   ![选择空白逻辑应用模板](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
+   ![选择逻辑应用的空白模板](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
 接下来请添加一个[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)，该触发器在出现新的 RSS 源项时触发。 每个逻辑应用都必须从触发器开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例来启动并运行工作流。
 
@@ -71,15 +71,15 @@ ms.locfileid: "70051678"
 
 1. 在搜索框中输入“rss”。 从触发器列表中选择此触发器：**当有源项发布时 - RSS**
 
-   ![选择触发器：“RSS - 发布源项时”](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss.png)
+   ![选择“发布源项时”触发器](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
 1. 为触发器提供如下所示的信息：
 
-   ![使用 RSS 源、频率和间隔设置触发器](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss-settings.png)
+   ![使用 RSS 源、频率和间隔设置触发器](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
    | 属性 | 值 | 说明 |
    |----------|-------|-------------|
-   | **RSS 源 URL** | ```http://feeds.reuters.com/reuters/topNews``` | 要监视的 RSS 源的链接 |
+   | **RSS 源 URL** | `http://feeds.reuters.com/reuters/topNews` | 要监视的 RSS 源的链接 |
    | 间隔  | 1 | 在两次检查之间需等待的时间间隔数 |
    | **频率** | 分钟 | 两次检查的间隔的时间单位  |
    ||||
@@ -88,7 +88,7 @@ ms.locfileid: "70051678"
 
 1. 若要立即隐藏触发器详细信息，请单击触发器的标题栏。
 
-   ![折叠形状即可隐藏详细信息](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
+   ![折叠逻辑应用形状即可隐藏详细信息](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
 1. 保存逻辑应用。 在设计器工具栏上，选择“保存”  。
 
@@ -100,13 +100,13 @@ ms.locfileid: "70051678"
 
 1. 在“发布源项时”触发器下，选择“新建步骤”   。
 
-   ![添加操作](./media/quickstart-create-first-logic-app-workflow/add-new-action.png)
+   ![在触发器下，选择“新建步骤”](./media/quickstart-create-first-logic-app-workflow/add-new-step-under-trigger.png)
 
 1. 在“选择操作”和搜索框下，选择“全部”   。
 
 1. 在搜索框中，输入“发送电子邮件”。 从操作列表中，为所需的 电子邮件提供商选择“发送电子邮件”操作。
 
-   ![选择此操作：“Office 365 Outlook - 发送电子邮件”](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
+   ![选择 Office 365 Outlook 的“发送电子邮件”操作](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
    若要通过对操作列表进行筛选来查找特定的应用或服务，可以先选择应用或服务：
 
@@ -123,21 +123,21 @@ ms.locfileid: "70051678"
 
    1. 在“主题”框中，输入带有尾随空格的以下文本：  ```New RSS item:```
 
-      ![输入电子邮件主题](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
+      ![在“主题”属性中，输入电子邮件主题](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
 
    1. 从“添加动态内容”列表  中选择“源标题”  ，用于包括 RSS 项标题。
 
-      ![动态内容列表 -“源标题”](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject-dynamic-content.png)
+      ![从动态内容列表中，选择“源标题”属性](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject-dynamic-content.png)
 
       完成后，电子邮件主题如以下示例所示：
 
-      ![添加的源标题](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-feed-title.png)
+      ![完成的添加源标题的电子邮件主题示例](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-feed-title.png)
 
       如果“For each”循环显示在设计器上，则你为数组选择了一个令牌，例如 **categories-Item** 令牌。 对于这些类型的令牌，设计器会自动围绕引用该令牌的操作添加此循环。 这样一来，逻辑应用会对每个数组项执行同一操作。 若要删除循环，请选择循环的标题栏上的省略号 ( **...** )，然后选择“删除”。  
 
    1. 在“正文”框中选择此文本，然后选择这些令牌作为电子邮件正文。  若要在编辑框中添加空行，请按 Shift + Enter。
 
-      ![添加电子邮件正文内容](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
+      ![选择电子邮件正文内容的属性](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
       | 属性 | 说明 |
       |----------|-------------|
@@ -156,7 +156,7 @@ ms.locfileid: "70051678"
 
 例如，下面是此逻辑应用发送的一封示例电子邮件。
 
-![针对新的 RSS 源项发送的电子邮件](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
+![出现新的 RSS 源项时发送的示例电子邮件](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
 从技术上讲，当触发器检查 RSS 源并找到新项时，触发器将会激发，并且逻辑应用引擎会创建一个逻辑应用工作流实例，用于运行工作流中的操作。 如果触发器未找到新项，则触发器不会激发，而是“跳过”实例化工作流的操作。
 
@@ -168,11 +168,11 @@ ms.locfileid: "70051678"
 
 1. 在 Azure 主菜单中，选择“资源组”，然后选择逻辑应用的资源组。  在“概述”  窗格上，选择“删除资源组”。 
 
-   ![“资源组”>“概览”>“删除资源组”](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
+   ![查找、选择和删除资源组](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 
 1. 输入资源组名称作为确认，然后选择“删除”。 
 
-   ![确认删除](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
+   ![若要确认删除，请选择“删除”](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
 > [!NOTE]
 > 删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。

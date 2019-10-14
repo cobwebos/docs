@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: d09ed0585250d078f728aa4e7272cca147a40c38
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 540cd0e136dc602848c34edbd3914d69ca725758
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612367"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000550"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 
@@ -53,9 +53,9 @@ ms.locfileid: "67612367"
 
    |**设置**  |**建议的值** |**说明**  |
    |---------|---------|---------|
-   |名称     | myEventHubsNS        |  用于标识事件中心命名空间的唯一名称。       |
-   |订阅     |   用户的订阅\<\>      |   选择要在其中创建事件中心的 Azure 订阅。      |
-   |资源组     |   MyASADemoRG      |  选择“新建”  ，然后输入帐户的新资源组名称。       |
+   |Name     | myEventHubsNS        |  用于标识事件中心命名空间的唯一名称。       |
+   |Subscription     |   用户的订阅\<\>      |   选择要在其中创建事件中心的 Azure 订阅。      |
+   |Resource group     |   MyASADemoRG      |  选择“新建”  ，然后输入帐户的新资源组名称。       |
    |位置     |   美国西部 2      |    一个位置，可在其中部署事件中心命名空间。     |
 
 4. 对其余设置使用默认选项，然后选择“创建”。 
@@ -137,8 +137,8 @@ ms.locfileid: "67612367"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |作业名称     |  ASATutorial       |   用于标识事件中心命名空间的唯一名称。      |
-   |订阅    |  用户的订阅\<\>   |   选择要在其中创建作业的 Azure 订阅。       |
-   |资源组   |   MyASADemoRG      |   选择“使用现有”  ，然后输入帐户的新资源组名称。      |
+   |Subscription    |  用户的订阅\<\>   |   选择要在其中创建作业的 Azure 订阅。       |
+   |Resource group   |   MyASADemoRG      |   选择“使用现有”  ，然后输入帐户的新资源组名称。      |
    |位置   |    美国西部 2     |      一个位置，可在其中部署作业。 为获得最佳性能，建议将作业和事件中心放置在同一区域，这样在不同区域之间传输数据时就不需要付费。      |
    |宿主环境    | 云        |     流分析作业可以部署到云或边缘设备。 可以通过云部署到 Azure 云，通过“Edge”部署到 IoT Edge 设备。    |
    |流式处理单位     |    1       |      流单元表示执行作业所需的计算资源。 默认情况下，此值设置为 1。 若要了解如何缩放流单元，请参阅[了解和调整流单元](stream-analytics-streaming-unit-consumption.md)一文。      |
@@ -160,7 +160,7 @@ ms.locfileid: "67612367"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输入别名     |  CallStream       |  提供用于标识输入的友好名称。 输入别名只能包含字母数字字符、连字符和下划线，而且长度必须介于 3 到 63 个字符之间。       |
-   |订阅    |   用户的订阅\<\>      |   选择在其中创建了事件中心的 Azure 订阅。 事件中心可以位于流分析作业所在的订阅中，也可以位于另一订阅中。       |
+   |Subscription    |   用户的订阅\<\>      |   选择在其中创建了事件中心的 Azure 订阅。 事件中心可以位于流分析作业所在的订阅中，也可以位于另一订阅中。       |
    |事件中心命名空间    |  myEventHubsNS       |  选择在上一部分创建的事件中心命名空间。 当前订阅中所有可用的事件中心命名空间均列在下拉列表中。       |
    |事件中心名称    |   MyEventHub      |  选择在上一部分创建的事件中心。 当前订阅中所有可用的事件中心均列在下拉列表中。       |
    |事件中心策略名称   |  MyPolicy       |  选择在上一部分创建的事件中心共享访问策略。 当前订阅中所有可用的事件中心策略均列在下拉列表中。       |
@@ -266,7 +266,7 @@ ms.locfileid: "67612367"
 
 在本教程的此部分中，请使用 Power BI 团队创建的示例性 [ASP.NET](https://asp.net/) Web 应用程序来嵌入仪表板。 有关如何嵌入仪表板的详细信息，请参阅[使用 Power BI 嵌入](https://docs.microsoft.com/power-bi/developer/embedding)一文。
 
-若要设置应用程序，请访问 [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub 存储库，然后按照“用户拥有数据”部分的说明操作（请使用 **integrate-dashboard-web-app** 子部分的重定向 URL 和主页 URL）。  由于我们使用的是“仪表板”示例，因此请使用 [GitHub 存储库](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app)中的 **integrate-dashboard-web-app** 示例代码。
+若要设置应用程序，请访问 [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub 存储库，然后按照“用户拥有数据”部分的说明操作（请使用 **integrate-web-app** 子部分下的重定向 URL 和主页 URL）。  由于我们使用的是“仪表板”示例，因此请使用 [GitHub 存储库](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-web-app)中的 **integrate-web-app** 示例代码。
 在浏览器中运行应用程序以后，请执行以下步骤，将此前创建的仪表板嵌入网页中：
 
 1. 选择“登录到 Power BI”  ，以便授予应用程序访问 Power BI 帐户中的仪表板的权限。

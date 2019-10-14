@@ -7,12 +7,12 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 1b6348173f47b570efff25bf09e9a427ff2ba9b5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 27ae562d38ee8734201299e10dbe6ac4be3cb2ee
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640998"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947646"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库
 
@@ -31,11 +31,11 @@ ms.locfileid: "69640998"
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="required-before-you-begin"></a>开始前需要
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 * Azure 存储帐户 - [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* 适用于你的操作系统的 [NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) 或更高版本。 确保获取 SDK，而不是运行时。
+* 适用于操作系统的最新 [NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。 确保获取 SDK，而不是运行时。
 
 ## <a name="setting-up"></a>设置
 

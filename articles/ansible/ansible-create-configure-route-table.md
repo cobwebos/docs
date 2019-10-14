@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Ansible 配置 Azure 路由表 | Microsoft Docs
+title: 教程 - 使用 Ansible 配置 Azure 路由表
 description: 了解如何使用 Ansible 创建、更改和删除 Azure 路由表
 keywords: ansible, azure, devops, bash, playbook, 网络, 路由, 路由表
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 846ff510603c0ed0888ec92ece8b86fad0354c19
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 14753af58a179ddf4011cb29c7ed08faab62875c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230881"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241782"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>教程：使用 Ansible 配置 Azure 路由表
 

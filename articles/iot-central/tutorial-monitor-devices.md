@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d716eb761ab406b65f10898b29775327a801ac45
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f68bc211be3cffb61b3381390ae2eeacaffa4213
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875494"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960420"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>教程：使用 Azure IoT Central 监视设备
 
@@ -41,7 +41,7 @@ ms.locfileid: "69875494"
 
 Azure IoT Central 将有关设备的通知作为电子邮件发送。 构建者添加了一条规则，用于在连接的空调设备中的温度超过阈值时发送通知。 检查发送到构建者选择接收通知的帐户的电子邮件。
 
-打开你在[配置用于设备的规则和操作](tutorial-configure-rules.md)教程结束时收到的电子邮件。 在此电子邮件中，选择“单击此处打开设备”  ：
+打开你在[配置用于设备的规则和操作](tutorial-configure-rules.md)教程结束时收到的电子邮件。 在电子邮件中，选择“详细信息”  部分中“设备名称”  旁边的设备链接：
 
 ![警报通知电子邮件](media/tutorial-monitor-devices/email.png)
 

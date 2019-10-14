@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
-ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: 2d66064167741b59766763f4fc1313409de1e649
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: 0208e72263991daceed52073bcce8b3e01f8e8c2
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801057"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174287"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Linux 虚拟机
 
-Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门介绍了如何使用 Azure CLI 在 Azure 中部署 Linux 虚拟机 (VM)。 在本教程中，我们将安装 Ubuntu 16.04 LTS。 为了显示运转中的 VM，我们将使用 SSH 连接到它并安装 NGINX Web 服务器。
+本快速入门向你展示了如何使用 Azure 命令行接口 (CLI) 在 Azure 中部署 Linux 虚拟机 (VM)。 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 在本教程中，我们将安装 Ubuntu 16.04 LTS。 为了显示运转中的 VM，我们将使用 SSH 连接到它并安装 NGINX Web 服务器。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

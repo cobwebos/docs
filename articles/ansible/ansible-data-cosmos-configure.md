@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Ansible 配置 Azure Cosmos DB 帐户 | Microsoft Docs
+title: 教程 - 使用 Ansible 配置 Azure Cosmos DB 帐户
 description: 了解如何使用 Ansible 创建和配置 Azure Cosmos DB
 keywords: ansible, azure, devops, bash, playbook, cosmo db, database
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 06d416358c1886f09b0b2336cc1ea53ce89947ae
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 82cb29cfe3aeb7b6ca43fceca4c900b2eeb148c2
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230807"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242070"
 ---
 # <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>教程：使用 Ansible 配置 Azure Cosmos DB 帐户
 

@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Ansible 配置 Azure 服务总线中的队列 | Microsoft Docs
+title: 教程 - 使用 Ansible 配置 Azure 服务总线中的队列
 description: 了解如何使用 Ansible 创建 Azure 服务总线队列
 keywords: ansible, azure, devops, bash, playbook, 服务总线, 队列
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 6efc11106fae18beac43ab1896733ab6bfc64dad
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: a48796c2177a8b5b818553bf8aa0ff36f712d4e0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230769"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241393"
 ---
 # <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>教程：使用 Ansible 配置 Azure 服务总线中的队列
 
@@ -139,7 +139,7 @@ ansible-playbook servicebus_queue_policy.yml
           var: ns
 ```
 
-在运行 playbook 之前，请参阅以下说明：
+运行 playbook 之前，请参阅以下说明：
 - `show_sas_policies` 值指示是否在指定的命名空间下显示 SAS 策略。 默认情况下，值为 `False`，以避免额外的网络开销。
 
 使用 `ansible-playbook` 命令运行 playbook：
@@ -174,7 +174,7 @@ ansible-playbook servicebus_namespace_info.yml
           var: queue
 ```
 
-在运行 playbook 之前，请参阅以下说明：
+运行 playbook 之前，请参阅以下说明：
 - `show_sas_policies` 值指示是否在指定的队列下显示 SAS 策略。 默认情况下，此值设置为 `False`，以避免额外的网络开销。
 
 使用 `ansible-playbook` 命令运行 playbook：

@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/30/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: b2e935a3a5ff2b6da99ad693f2d4e924ae811caf
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: f1d01a4b6b4e42261542cc64516a2e1c2bef56c0
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694831"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958723"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -136,7 +136,7 @@ az role definition list --name "<roleName>" | grep name
 >
 > 对于应用于同一订阅（或订阅内的资源组）的多个产品/服务，还需要单独部署。 所应用的每个产品/服务必须使用不同的 **mspOfferName**。
 
-下面的示例展示了一个修改后的 resourceProjection.parameters.json 文件，该文件用于载入订阅  。 资源组参数文件（位于 [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) 文件夹）很类似，但还带有一个 rgName 参数，它用于标识要载入的特定资源组  。
+以下示例显示了将用于载入订阅的 **delegatedResourceManagement.parameters.json** 文件。 资源组参数文件（位于 [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) 文件夹）很类似，但还带有一个 rgName 参数，它用于标识要载入的特定资源组  。
 
 ```json
 {

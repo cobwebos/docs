@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装, 人体, 跟踪
-ms.openlocfilehash: 1308f7e4d4be9c57b8ed47a88294da9fe60a2e3c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1a55e9873d55cdc26cd7de0a082142e6a5fb4b1b
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172621"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949576"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>下载 Azure Kinect 人体跟踪 SDK
 
@@ -59,6 +59,7 @@ ms.locfileid: "71172621"
 * [功能] 提高了人体索引映射的准确性。
 * [Bug 修复] 修复了传感器方向设置无效的 bug。
 * [Bug 修复] 将 body_index_map 类型从 K4A_IMAGE_FORMAT_CUSTOM 更改为 K4A_IMAGE_FORMAT_CUSTOM8。
+* [已知问题] 两个相近的身体可能合并成单个实体部分。
 
 ### <a name="v092"></a>v0.9.2
 * [中断性变更] 更新为依赖最新的 Azure Kinect 传感器 SDK 1.2.0。

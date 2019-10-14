@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: d7c2aee3ad73552a57776af5ce6585b36518d169
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 95dbe2b9ccfdc0a900ba53668869e3872b6e51d5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687057"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030308"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>使用 Azure 门户创建专用终结点
 
@@ -135,7 +135,7 @@ ms.locfileid: "71687057"
 在本部分，你将创建一个 SQL 服务器并在其中添加专用终结点。 
 
 1. 在 Azure 门户屏幕的左上方，选择“创建资源” > “网络” > “专用链接中心(预览版)”。   
-2. 在“专用链接中心 - 概述”中的“与服务建立专用连接”选项的旁边，选择“启动”。 ****  ****  ****
+2. 在“专用链接中心 - 概述”中的“与服务建立专用连接”选项的旁边，选择“启动”。   
 1. 在“创建专用终结点(预览版) - 基本信息”中，输入或选择以下信息： 
 
     | 设置 | 值 |

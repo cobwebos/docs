@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 45ac641948531aa27334762704eba3333aebba4d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 69c190b9ce9e5a99d39a46c147f7159ace47e4f7
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564319"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001437"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>快速入门：使用 C# 分析文本内容中是否存在令人反感的材料
 
@@ -34,10 +34,11 @@ ms.locfileid: "68564319"
 
 1. 在 Visual Studio 中创建新的**控制台应用 (.NET Framework)** 项目并将其命名为 **TextModeration**。 
 1. 如果解决方案中有其他项目，请将此项目选为单一启动项目。
-1. 获取所需的 NuGet 包。 右键单击解决方案资源管理器中的项目，选择“管理 NuGet 包”，然后找到并安装以下包： 
-    - `Microsoft.Azure.CognitiveServices.ContentModerator`
-    - `Microsoft.Rest.ClientRuntime`
-    - `Newtonsoft.Json`
+1. 获取所需的 NuGet 包。 在解决方案资源管理器中右键单击项目，然后选择“管理 NuGet 包”  。 然后查找并安装 **`Microsoft.Azure.CognitiveServices.ContentModerator` 包**。 或者，可以从解决方案目录中运行以下命令：
+
+```console
+dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator
+```
 
 ## <a name="add-text-moderation-code"></a>添加文本审查代码
 

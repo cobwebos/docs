@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 802b4deb91f1df784ac0aed2952d3f915b54ce73
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3ce754a67643f4506fa825f0780969dc4a06f826
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699717"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299588"
 ---
 # <a name="how-to-deploy-azure-files"></a>如何部署 Azure 文件
 [Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文介绍如何在组织内实际部署 Azure 文件。
@@ -63,7 +63,7 @@ Azure 文件同步也可用于将数据迁移到 Azure 文件共享，即使长�
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    可以指定同一存储帐户的多个共享。 有关详细信息，请参阅[准备数据集 CSV 文件](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-the-dataset-csv-file)。
+    可以指定同一存储帐户的多个共享。 有关详细信息，请参阅[准备数据集 CSV 文件](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 5. 创建驱动器集 CSV 文件。 驱动器集 CSV 文件可列出本地导出代理可用的磁盘。 例如，以下驱动器集 CSV 文件可列出用于本地导出作业的 `X:`、`Y:` 和 `Z:` 驱动器：
 
@@ -74,7 +74,7 @@ Azure 文件同步也可用于将数据迁移到 Azure 文件共享，即使长�
     Z,Format,SilentMode,Encrypt,
     ```
     
-    有关详细信息，请参阅[准备驱动器集 CSV 文件](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-initialdriveset-or-additionaldriveset-csv-file)。
+    有关详细信息，请参阅[准备驱动器集 CSV 文件](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 6. 使用 [WAImportExport 工具](https://www.microsoft.com/download/details.aspx?id=55280)将数据复制到一个或多个硬盘驱动器。
 

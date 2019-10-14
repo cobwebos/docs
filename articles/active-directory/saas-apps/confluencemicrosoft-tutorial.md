@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1384a8c9cfc4da9e8757c26bdb3e92defdb73708
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: d54580d395b17d80742ed95aefa479f4bc104484
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743672"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960075"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Confluence SAML SSO by Microsoft 集成
 
@@ -75,9 +75,13 @@ ms.locfileid: "70743672"
 - Confluence：6.8.1
 - Confluence：6.9.0
 - Confluence：6.10.0
+- Confluence：6.10.3
 - Confluence：6.11.0
 - Confluence：6.12.0
+- Confluence：6.13.5
 - Confluence：6.15.3
+- Confluence：6.15.4
+- Confluence：6.15.8
 
 > [!NOTE]
 > 请注意，Confluence 插件还适用于 Ubuntu 版本 16.04
@@ -196,11 +200,11 @@ ms.locfileid: "70743672"
 
 1. 插件安装后，它会显示在“管理加载项”部分的“用户已安装”加载项部分   。 单击“配置”  配置新的插件。
 
-    ![配置单一登录](./media/confluencemicrosoft-tutorial/addon13.png)
+    ![配置单一登录](./media/confluencemicrosoft-tutorial/addon15.png)
 
 1. 在配置页上执行下列步骤：
 
-    ![配置单一登录](./media/confluencemicrosoft-tutorial/addon53.png)
+    ![配置单一登录](./media/confluencemicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
@@ -210,6 +214,8 @@ ms.locfileid: "70743672"
     1. 复制“标识符”、“回复 URL”和“登录 URL”值，并将其分别粘贴到 Azure 门户中“基本 SAML 配置”部分下的“标识符”、“回复 URL”和“登录 URL”文本框中    。
 
     1. 在“登录按钮名”中键入组织希望用户在登录屏幕上看到的按钮名称  。
+    
+    1. 在**登录按钮说明**中，键入你的组织希望用户在登录屏幕上看到的按钮的说明。
 
     1. 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”    。  此 ID 必须是 Confluence 用户 ID。 如果用户 ID 不匹配，系统将不允许用户登录。 
 

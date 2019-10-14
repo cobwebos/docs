@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c73084b03736a422e5e3b617ec058ade1de0fbb9
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b62d4f8b43c62ff401b4d74932b131c1bf8fd63f
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317112"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169566"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 
 了解如何使用 Visual Studio Code 和 Azure 资源管理器工具扩展创建和编辑 Azure 资源管理器模板。 可以在 Visual Studio Code 中不使用扩展创建资源管理器模板，但是该扩展提供自动完成选项，可以简化模板开发。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
 
-在本教程中，你将部署存储帐户：
+在本快速入门中，你将部署存储帐户：
 
 ![资源管理器模板快速入门 visual studio 代码关系图](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
 
@@ -39,8 +39,8 @@ ms.locfileid: "57317112"
 
     1. 打开 Visual Studio Code。
     2. 按 **CTRL+SHIFT+X** 打开“扩展”窗格
-    3. 搜索“Azure 资源管理器工具”，然后选择“安装”。
-    4. 选择“重新加载”完成扩展安装。
+    3. 搜索“Azure 资源管理器工具”，然后选择“安装”。  
+    4. 选择“重新加载”完成扩展安装  。
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
@@ -48,15 +48,15 @@ ms.locfileid: "57317112"
 
 本快速入门中使用的模板称为[创建标准存储帐户](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。
 
-1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。
-2. 在“文件名”中粘贴以下 URL：
+1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
+2. 在“文件名”中粘贴以下 URL： 
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 
-3. 选择“打开”以打开该文件。
-4. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。
+3. 选择“打开”以打开该文件。 
+4. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。  
 
 ## <a name="edit-the-template"></a>编辑模板
 
@@ -90,7 +90,7 @@ ms.locfileid: "57317112"
 
     ![资源管理器模板 - Visual Studio Code - IntelliSense](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
-2. 选择“文件”>“保存”以保存文件。
+2. 选择“文件”>“保存”以保存文件。  
 
 ## <a name="deploy-the-template"></a>部署模板
 
@@ -100,7 +100,7 @@ ms.locfileid: "57317112"
 
 1. 登录到 [Azure Cloud Shell](https://shell.azure.com)
 
-2. 通过在左上角选择“PowerShell”或“Bash”(CLI) 来选择你喜欢使用的环境。  进行切换时，需重启 shell。
+2. 通过在左上角选择“PowerShell”  或“Bash”  (CLI) 来选择你喜欢使用的环境。  进行切换时，需重启 shell。
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
 
@@ -112,30 +112,30 @@ ms.locfileid: "57317112"
 
     ---
 
-3. 依次选择“上传/下载文件”、“上传”。
+3. 依次选择“上传/下载文件”、“上传”。  
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
 
     ![Azure 门户 - Cloud Shell - 上传文件](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
-   
+
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
-    
+
     ![Azure 门户 - Cloud Shell - 上传文件](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
-    
+
     ---
 
     选择在上一部分保存的文件。 默认名称为 **azuredeploy.json**。 必须可以从 shell 访问模板文件。
 
-    还可以选择使用 **ls** 命令和 **cat** 命令来验证文件是否已成功上传。 
+    还可以选择使用 **ls** 命令和 **cat** 命令来验证文件是否已成功上传。
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
 
     ![Azure 门户 - Cloud Shell - 列出文件](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
-   
+
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
-    
+
     ![Azure 门户 - Cloud Shell - 列出文件](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
-    
+
     ---
 4. 在 Cloud Shell 中运行以下命令。 选择用于显示 PowerShell 代码或 CLI 代码的选项卡。
 
@@ -148,31 +148,31 @@ ms.locfileid: "57317112"
     az group create --name $resourceGroupName --location "$location" &&
     az group deployment create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
-   
+
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
-    
+
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    
+
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
     ```
-    
+
     ---
 
-    如果将模板文件保存到了 **azuredeploy.json** 之外的其他文件中，其更新其名称。 
+    如果将模板文件保存到了 **azuredeploy.json** 之外的其他文件中，其更新其名称。
 
     以下屏幕截图显示了一个示例部署：
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
 
     ![Azure 门户 - Cloud Shell - 部署模板](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
-   
+
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
-    
+
     ![Azure 门户 - Cloud Shell - 部署模板](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
-    
+
     ---
 
     输出部分的存储帐户名称和存储 URL 在屏幕截图上突出显示。 在下一步需要此存储帐户名称。
@@ -187,15 +187,15 @@ ms.locfileid: "57317112"
     read storageAccountName &&
     az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
-   
+
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
-    
+
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
     Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
     ```
-    
+
     ---
 
 若要详细了解如何使用 Azure 存储帐户，请参阅[快速入门：使用 Azure 门户上传、下载和列出 Blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
@@ -204,14 +204,14 @@ ms.locfileid: "57317112"
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”。
-2. 在“按名称筛选”字段中输入资源组名称。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
+2. 在“按名称筛选”字段中输入资源组名称。 
 3. 选择资源组名称。  应会看到，该资源组中总共有六个资源。
-4. 在顶部菜单中选择“删除资源组”。
+4. 在顶部菜单中选择“删除资源组”。 
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门的主要关注点是如何使用 Visual Studio Code 来编辑 Azure 快速入门模板中的现有模板。 你还学习了如何从 Azure Cloud Shell 中使用 CLI 或 PowerShell 来部署模板。 Azure 快速入门模板中的模板可能并未提供你所需的一切。 下一教程介绍如何从模板参考中查找信息，以便创建加密的 Azure 存储帐户。
+本快速入门的主要关注点是如何使用 Visual Studio Code 来编辑 Azure 快速入门模板中的现有模板。 你还学习了如何从 Azure Cloud Shell 中使用 CLI 或 PowerShell 来部署模板。 Azure 快速入门模板中的模板可能并未提供你所需的一切。 若要详细了解模板开发，请参阅新的初学者教程系列：
 
 > [!div class="nextstepaction"]
-> [创建加密的存储帐户](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [初学者教程](./template-tutorial-create-first-template.md)

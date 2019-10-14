@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/4/2019
+ms.date: 10/08/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: c685b2314d15e431ccac3470fd337ca92697e1a5
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 5be1a673ac456b0896ce83afcb469e4ac6b8b40a
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241183"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001324"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -78,10 +78,6 @@ FQDN 标记使你可以轻松地允许已知的 Azure 服务网络流量通过�
 转换到防火墙公共 IP 地址的入站网络流量（目标网络地址转换）并将其筛选到虚拟网络上的专用 IP 地址。
 
 ## <a name="multiple-public-ip-addresses"></a>多个公共 IP 地址
-
-> [!IMPORTANT]
-> 可通过 Azure 门户、Azure PowerShell、Azure CLI、REST 和模板来使用具有多个公共 IP 地址的 Azure 防火墙。
-
 
 可将多个公共 IP 地址（最多 100 个）关联到防火墙。
 

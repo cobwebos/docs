@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b8faf3801a2217e6ef7040a7c2b67c7e6fad8e60
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ea3fc21891f1e4d4e744449032a4b2cfcdfbb2f0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709603"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177536"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>跟踪 Microsoft 客户协议的 Azure 额度余额
 
 可以在 Azure 门户中查看 Microsoft 客户协议的 Azure 额度余额。 使用额度来支付额度涵盖的费用。
 
-如果你使用的产品不在额度范围内，或者使用量超出额度余额，我们会对你收费。 有关详细信息，请参阅 [Azure 额度不涵盖的产品] (#products-that-arent-covered-by-azure-credits)。
+如果你使用的产品不在额度范围内，或者使用量超出额度余额，我们会对你收费。 有关详细信息，请参阅 [Azure 额度未涵盖的产品](#products-that-arent-covered-by-azure-credits)。
 
 本文适用于 Microsoft 客户协议的计费帐户。 [检查你是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
 

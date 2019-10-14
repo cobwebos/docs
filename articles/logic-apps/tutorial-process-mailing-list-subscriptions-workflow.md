@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: 734a6be81a8052b2894f4c27b165bb8dc4f14caf
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: fb92e882607575e99ae800bd9c6d7c36b5d89d8e
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171730"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034519"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建自动化的基于审批的工作流
 
@@ -35,7 +35,7 @@ ms.locfileid: "71171730"
 
 完成后，逻辑应用看起来大致与以下工作流类似：
 
-![完成的逻辑应用概览](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-overview.png)
+![完成的高级逻辑应用概述](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-overview.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -53,11 +53,11 @@ ms.locfileid: "71171730"
 
 1. 在 Azure 主菜单中，依次选择“创建资源” > “集成” > “逻辑应用”。   
 
-   ![创建逻辑应用](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app.png)
+   ![创建新的逻辑应用资源](./media/tutorial-process-mailing-list-subscriptions-workflow/create-new-logic-app-resource.png)
 
 1. 在“创建逻辑应用”下，提供有关逻辑应用的信息，如下所示。  完成操作后，选择“创建”  。
 
-   ![提供逻辑应用信息](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
+   ![提供有关逻辑应用的信息](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
    | 属性 | 值 | 说明 |
    |----------|-------|-------------|
@@ -70,7 +70,7 @@ ms.locfileid: "71171730"
 
 1. 在 Azure 部署你的应用后，在 Azure 工具栏上，选择“通知”   > “转到资源”  ，查看你部署的逻辑应用。
 
-   ![转到资源](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app.png)
+   ![转到新的逻辑应用资源](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app-resource.png)
 
    或者，可以通过在搜索框中键入名称来查找和选择逻辑应用。
 
@@ -108,13 +108,13 @@ ms.locfileid: "71171730"
 
    1. 现在，为触发器添加另一属性，这样就可以在电子邮件主题行中进行筛选。 打开“添加新参数”列表，选择“主题筛选器”属性。  
 
-      ![添加新参数](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
+      ![将“主题筛选器”属性添加到触发器](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
 
       有关此触发器的属性的详细信息，请参阅 [Office 365 Outlook 连接器参考](https://docs.microsoft.com/connectors/office365/)或 [Outlook.com 连接器参考](https://docs.microsoft.com/connectors/outlook/)。
 
    1. 当属性显示在触发器中以后，请输入此文本：`subscribe-test-members-ML`
 
-      ![输入主题筛选器文本添加新参数](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
+      ![为“主题筛选器”属性输入文本](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
 
 1. 若要立即隐藏触发器的详细信息，请单击触发器的标题栏。
 
@@ -161,13 +161,13 @@ ms.locfileid: "71171730"
 
 1. 在“选择操作”下，选择“内置”。   在搜索框中，输入 `condition` 作为筛选器。 从操作列表中选择“条件”操作。 
 
-   ![选择“条件”](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition.png)
+   ![查找并选择“条件”操作](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition-action.png)
 
 1. 重命名此条件，并提供更好的说明。
 
    1. 在条件的标题栏中，选择**省略号** ( **...** ) 按钮 >“重命名”。 
 
-      ![重命名条件](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition.png)
+      ![重命名条件的说明](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition-description.png)
 
    1. 重命名条件并提供以下说明：`If request approved`
 
@@ -177,7 +177,7 @@ ms.locfileid: "71171730"
 
    1. 从显示的动态内容列表中的“发送审批电子邮件”下选择 **SelectedOption** 属性。 
 
-      ![在“发送审批电子邮件”下选择“SelectedOption”](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
+      ![从动态内容列表中，选择“SelectedOption”](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
 
    1. 在中间的比较框中，选择“等于”  运算符。
 
@@ -185,7 +185,7 @@ ms.locfileid: "71171730"
 
       完成后，条件如以下示例所示：
 
-      ![已完成的条件](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
+      ![已批准示例的完成条件](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
 
 1. 保存逻辑应用。
 
@@ -242,7 +242,7 @@ ms.locfileid: "71171730"
 
       完成后，条件如以下示例所示：
 
-      ![已完成的条件](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member-2.png)
+      ![已订阅示例的完成条件](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member-2.png)
 
 接下来，请设置电子邮件，以便在批准的成员成功加入或无法加入邮件列表时发送。
 
@@ -250,7 +250,7 @@ ms.locfileid: "71171730"
 
 1. 在“如果添加成员成功”条件的 **If true** 分支中，选择“添加操作”。  
 
-   ![在条件的“If true”分支中，选择“添加操作”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
+   ![在“If true”分支中，选择“添加操作”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
 
 1. 在“选择操作”  下的搜索框中，输入 `outlook send email` 作为筛选器，然后选择“发送电子邮件”操作。 
 
@@ -275,7 +275,7 @@ ms.locfileid: "71171730"
 
 1. 在“如果添加成员成功”条件的 **If false** 分支中，选择“添加操作”。  
 
-   ![在条件的“If false”分支中，选择“添加操作”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
+   ![在“If false”分支中，选择“添加操作”](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
 
 1. 在“选择操作”  下的搜索框中，输入 `outlook send email` 作为筛选器，然后选择“发送电子邮件”操作。 
 
@@ -298,7 +298,7 @@ ms.locfileid: "71171730"
 
 接下来测试逻辑应用，该应用现在看起来类似于以下示例：
 
-![完成的逻辑应用](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-complete.png)
+![完成的逻辑应用工作流示例](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-completed.png)
 
 ## <a name="run-your-logic-app"></a>运行逻辑应用
 
@@ -312,11 +312,11 @@ ms.locfileid: "71171730"
 
 1. 如果订户的电子邮件地址在邮件列表中不存在，逻辑应用会添加该人的电子邮件地址并向你发送一封电子邮件，如以下示例所示：
 
-   ![成功电子邮件](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-success.png)
+   ![示例电子邮件 - 成功订阅](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-mailing-list-success.png)
 
    如果逻辑应用无法添加订户，你会收到一封电子邮件，如下示例所示：
 
-   ![失败电子邮件](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-failed.png)
+   ![示例电子邮件 - 失败订阅](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-mailing-list-failed.png)
 
    如果没有收到任何电子邮件，请检查电子邮件的垃圾邮件文件夹。 垃圾电子邮件筛选器可能会将这些类型的邮件重定向。 否则，如果不确定逻辑应用是否正常运行，请参阅[逻辑应用故障排除](../logic-apps/logic-apps-diagnosing-failures.md)。
 

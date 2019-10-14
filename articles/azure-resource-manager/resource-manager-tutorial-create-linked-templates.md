@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/18/2019
+ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c5399f46106d94d593a15530ee0c223a3f5f3eaf
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 869e59aea9b78c44b1a920e58ecefab5e0ca4920
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802050"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169415"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>教程：创建链接的 Azure 资源管理器模板
 
@@ -166,7 +166,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 ## <a name="upload-the-linked-template"></a>上传链接的模板
 
-主模板和链接的模板必须能够从运行部署时所在的位置进行访问。 在本教程中使用的 Cloud Shell 部署方法就是在[教程：使用依赖的资源创建 Azure 资源管理器模板](./resource-manager-tutorial-create-templates-with-dependent-resources.md)中使用的。 主模板 (azuredeploy.json) 会上传到 Shell。 链接的模板 (linkedTemplate.json) 必须在某个位置安全地共享。 以下 PowerShell 脚本创建一个 Azure 存储帐户，将模板上传到该存储帐户，然后生成一个 SAS 令牌，以便授予对模板文件的受限访问权限。 为了简化本教程，该脚本会从共享位置下载一个完成的链接模板。 若要使用已创建的链接模板，可以使用 [Cloud shell](https://shell.azure.com) 上传链接模板，然后修改脚本，这样就可以使用自己的链接模板。
+主模板和链接的模板必须能够从运行部署时所在的位置进行访问。 在本教程中使用的 Cloud Shell 部署方法就是在[教程：使用依赖的资源创建 Azure 资源管理器模板](./resource-manager-tutorial-create-templates-with-dependent-resources.md)中使用的。 主模板 (azuredeploy.json) 会上传到 Shell。 链接的模板 (linkedTemplate.json) 必须在某个位置安全地共享。 以下 PowerShell 脚本创建一个 Azure 存储帐户，将模板上传到该存储帐户，然后生成一个 SAS 令牌，以便授予对模板文件的受限访问权限。 为了简化本教程，脚本从 Github 存储库下载了一个完整的链接模板。 若要使用已创建的链接模板，可以使用 [Cloud shell](https://shell.azure.com) 上传链接模板，然后修改脚本，这样就可以使用自己的链接模板。
 
 > [!NOTE]
 > 脚本将 SAS 令牌限制为在八小时内使用。 如果需要更多时间来完成本教程，请将到期时间推后。
@@ -179,7 +179,7 @@ $resourceGroupName = $projectNamePrefix + "rg"
 $storageAccountName = $projectNamePrefix + "store"
 $containerName = "linkedtemplates" # The name of the Blob container to be created.
 
-$linkedTemplateURL = "https://armtutorials.blob.core.windows.net/linkedtemplates/linkedStorageAccount.json" # A completed linked template used in this tutorial.
+$linkedTemplateURL = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-linked-templates/linkedStorageAccount.json" # A completed linked template used in this tutorial.
 $fileName = "linkedStorageAccount.json" # A file name used for downloading and uploading the linked template.
 
 # Download the tutorial linked template
@@ -259,7 +259,7 @@ echo "Linked template URI with SAS token: $templateURI"
       "properties": {
           "mode": "Incremental",
           "templateLink": {
-              "uri":"https://armtutorials.blob.core.windows.net/linkedtemplates/linkedStorageAccount.json"
+              "uri":"https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-linked-templates/linkedStorageAccount.json"
           },
           "parameters": {
               "storageAccountName":{"value": "[variables('storageAccountName')]"},

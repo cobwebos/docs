@@ -1,5 +1,5 @@
 ---
-title: 什么是 Azure 自定义视觉？
+title: 什么是自定义视觉？
 titleSuffix: Azure Cognitive Services
 description: 了解如何通过自定义视觉服务在 Azure 云中生成自定义图像分类器。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 033b0317b1738e24e4ac9c9ae2150b015cc5a8e5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e455a42945ba4d6ce334d557b7390c3c50e7ff9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560967"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177825"
 ---
-# <a name="what-is-azure-custom-vision"></a>什么是 Azure 自定义视觉？
+# <a name="what-is-custom-vision"></a>什么是自定义视觉？
 
-Azure 自定义视觉是一种认知服务，用于生成、部署和改进自己的图像分类器。 图像分类器是一种 AI 服务，可以根据视觉特征为图像应用标签（代表类  ）。 与[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)服务不同，自定义视觉允许你确定要应用的标签。
+自定义视觉是一种认知服务，用于生成、部署和改进自己的图像分类器。 图像分类器是一种 AI 服务，可以根据视觉特征为图像应用标签（代表类  ）。 与[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)服务不同，自定义视觉允许你确定要应用的标签。
 
 ## <a name="what-it-does"></a>作用
 

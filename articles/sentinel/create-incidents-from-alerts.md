@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1acef92ed5de86d4526d8b5c4bcf338b341c50f7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 722feb29a08cd5e1113eae197fbcae9769ed5550
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241150"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029764"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>自动根据 Microsoft 安全警报创建事件
 
@@ -35,7 +35,7 @@ ms.locfileid: "71241150"
 
 使用 Azure Sentinel 中提供的内置规则，以便选择哪些连接的 Microsoft 安全解决方案应该以自动方式实时创建 Azure Sentinel 事件。 也可编辑这些规则，以便定义更具体的选项来筛选 Microsoft 安全解决方案生成的哪些警报应该在 Azure Sentinel 中创建事件。 例如，可以选择只有在出现严重性级别很高的 Azure 安全中心警报时才自动创建 Azure Sentinel 事件。
 
-1. 在 Azure 门户的 Azure Sentinel 下，选择“分析”。 ****
+1. 在 Azure 门户的 Azure Sentinel 下，选择“分析”。 
 
 1. 选择“规则模板”选项卡，查看所有内置的分析规则。 
 

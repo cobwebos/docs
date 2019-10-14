@@ -1,7 +1,7 @@
 ---
 title: 教程：使用自定义徽标检测器识别 Azure 服务 - 自定义视觉
 titleSuffix: Azure Cognitive Services
-description: 本教程逐步介绍一个在徽标检测方案中使用 Azure 自定义视觉的示例应用。 了解如何将自定义视觉与其他组件配合使用，以提供端到端的应用程序。
+description: 本教程逐步介绍一个在徽标检测方案中使用自定义视觉的示例应用。 了解如何将自定义视觉与其他组件配合使用，以提供端到端的应用程序。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: bdcf8a0d63b880075cd22c73305afa8cf09a2e3b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b48d82354a8e733db5ddd0c86e34bab1fa9caa8d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261972"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177791"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>教程：识别照片中的 Azure 服务徽标
 
-在本教程中，你会了解在大型方案中使用 Azure 自定义视觉的示例应用。 AI Visual Provision 应用（适用于移动平台的 Xamarin.Forms 应用）将分析 Azure 服务徽标的照片，然后将实际服务部署到用户的 Azure 帐户。 你将在本文中了解如何配合其他组件使用自定义视觉来提供有用的端到端应用程序。 可以自行运行整个应用方案，也可以只完成设置的自定义视觉部分，并探索应用如何使用它。
+在本教程中，你会了解在大型方案中使用自定义视觉的示例应用。 AI Visual Provision 应用（适用于移动平台的 Xamarin.Forms 应用）将分析 Azure 服务徽标的照片，然后将实际服务部署到用户的 Azure 帐户。 你将在本文中了解如何配合其他组件使用自定义视觉来提供有用的端到端应用程序。 可以自行运行整个应用方案，也可以只完成设置的自定义视觉部分，并探索应用如何使用它。
 
 本教程会说明如何：
 

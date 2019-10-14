@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Ansible 在 Azure Redis 缓存中配置缓存 | Microsoft Docs
+title: 教程 - 使用 Ansible 在 Azure Redis 缓存中配置缓存
 description: 了解如何使用 Ansible 创建、缩放和重新启动 Azure Redis 缓存
 keywords: ansible, azure, devops, bash, playbook, cache, redis
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 693b042f631044352eaae708905fefca02f38415
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 92592dffb3a9094ae74328e8819cafc9469c2ac7
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231024"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241797"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>教程：使用 Ansible 在 Azure Redis 缓存中配置缓存
 
@@ -88,7 +88,7 @@ ok: [localhost]
 
 Azure Redis 缓存具有不同的缓存产品/服务，具体取决于应用的需求。 这些缓存选项能够灵活地选择缓存大小和功能。 如果在创建缓存后应用要求发生更改，则可以根据需要缩放缓存。 有关缩放的详细信息，请参阅[如何缩放 Azure Redis 缓存](/azure/azure-cache-for-redis/cache-how-to-scale)。
 
-以下示例代码将缓存缩放为“标准”：
+以下示例代码将缓存缩放为“标准”  ：
 
 ```yml
 - name: Scale up Azure Cache for Redis

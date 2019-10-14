@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: eae2319e8d1c162969a04f8dafa18eec671ee1d0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172178"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034648"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建自动化的基于计划的重复工作流
 
@@ -34,7 +34,7 @@ ms.locfileid: "71172178"
 
 完成后，逻辑应用看起来大致与以下工作流类似：
 
-![高级逻辑应用](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
+![高级逻辑应用工作流概述](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,11 +52,11 @@ ms.locfileid: "71172178"
 
 1. 在 Azure 主菜单中，依次选择“创建资源” > “集成” > “逻辑应用”。   
 
-   ![创建逻辑应用](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app.png)
+   ![创建逻辑应用资源](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
 
 1. 在“创建逻辑应用”下，提供有关逻辑应用的信息，如下所示。  完成操作后，选择“创建”  。
 
-   ![提供逻辑应用信息](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
+   ![提供有关逻辑应用的信息](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
    | 属性 | 值 | 说明 |
    |----------|-------|-------------|
@@ -69,7 +69,7 @@ ms.locfileid: "71172178"
 
 1. 在 Azure 部署你的应用后，在 Azure 工具栏上，选择“通知”   > “转到资源”  ，查看你部署的逻辑应用。
 
-   ![转到资源](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-logic-app.png)
+   ![转到新的逻辑应用资源](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
 
    或者，可以通过在搜索框中键入名称来查找和选择逻辑应用。
 
@@ -87,11 +87,11 @@ ms.locfileid: "71172178"
 
 1. 在“重复”形状中选择**省略号** ( **...** ) 按钮，然后选择“重命名”。   重命名触发器并提供以下说明：`Check travel time every weekday morning`
 
-   ![重命名触发器](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
+   ![重命名重复触发器说明](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
 1. 在触发器中更改这些属性。
 
-   ![更改间隔和频率](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
+   ![更改重复触发器的间隔和频率](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
    | 属性 | 必选 | Value | 说明 |
    |----------|----------|-------|-------------|
@@ -105,7 +105,7 @@ ms.locfileid: "71172178"
    * **在这些小时**
    * **在这些分钟**
 
-   ![添加触发器属性](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
+   ![添加重复触发器的属性](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
 
 1. 现在，按此处所示和所述设置其他属性的值。
 
@@ -140,7 +140,7 @@ ms.locfileid: "71172178"
 
 1. 如果没有必应地图连接，系统会提示创建一个连接。 提供以下连接详细信息，然后选择“创建”  。
 
-   ![创建必应地图连接](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
+   ![创建与必应地图 API 的连接](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
    | 属性 | 必选 | Value | 说明 |
    |----------|----------|-------|-------------|
@@ -221,11 +221,11 @@ ms.locfileid: "71172178"
 
    1. 在表达式中解析属性值后，选择“确定”。 
 
-      ![选择“确定”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
+      ![若要完成构建表达式，请选择“确定”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
 
       “值”属性现在如下所示： 
 
-      ![“值”属性和解析的表达式](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
+      ![“值”属性与已解析表达式一起出现](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
 
 1. 保存逻辑应用。
 
@@ -247,7 +247,7 @@ ms.locfileid: "71172178"
 
    1. 从显示的动态内容列表中的“变量”  下，选择 **travelTime** 属性。
 
-      ![生成条件的左部分](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
+      ![构建条件的左侧](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
    1. 在中间的比较框中，选择“大于”  运算符。
 
@@ -255,7 +255,7 @@ ms.locfileid: "71172178"
 
       完成后，条件如以下示例所示：
 
-      ![已完成的条件](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![检查行程时间的完成条件](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. 保存逻辑应用。
 
@@ -269,7 +269,7 @@ ms.locfileid: "71172178"
 
 1. 在“选择操作”下选择“标准”。   在搜索框中，输入“发送电子邮件”。 此列表将返回许多结果，因此请先选择所需的电子邮件连接器，例如：
 
-   ![选择电子邮件连接器](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
+   ![选择所需的电子邮件连接器](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
 
    * 对于 Azure 工作或学校帐户，请选择“Office 365 Outlook”。 
    * 对于个人 Microsoft 帐户，请选择“Outlook.com”。 
@@ -320,17 +320,17 @@ ms.locfileid: "71172178"
 
    1. 在表达式中解析属性后，选择“确定”。 
 
-      ![“正文”属性和解析的表达式](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
+      ![在“正文”属性解析后，选择“确定”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
 
       “正文”属性现在如下所示： 
 
-      ![“正文”属性和解析的表达式](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
+      ![解析了表达式中的“正文”属性](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
 
 1. 保存逻辑应用。
 
 接下来测试逻辑应用，该应用现在看起来类似于以下示例：
 
-![完成的逻辑应用](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-finished.png)
+![完成的示例逻辑应用工作流](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-finished.png)
 
 ## <a name="run-your-logic-app"></a>运行逻辑应用
 
@@ -340,7 +340,7 @@ ms.locfileid: "71172178"
 
 * 如果当前的行程时间超出限制，则会收到一封电子邮件，其中包含当前的行程时间以及超出限制的分钟数。 下面是逻辑应用发送的一封示例电子邮件：
 
-![包含行程时间的已发送电子邮件](./media/tutorial-build-scheduled-recurring-logic-app-workflow/email-notification.png)
+![显示行程时间的已发送电子邮件示例](./media/tutorial-build-scheduled-recurring-logic-app-workflow/received-example-email-notification.png)
 
 如果没有收到任何电子邮件，请检查电子邮件的垃圾邮件文件夹。 垃圾电子邮件筛选器可能会将这些类型的邮件重定向。 否则，如果不确定逻辑应用是否正常运行，请参阅[逻辑应用故障排除](../logic-apps/logic-apps-diagnosing-failures.md)。
 
