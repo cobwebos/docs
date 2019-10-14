@@ -1,5 +1,5 @@
 ---
-title: 创建第一个自动化机器学习试验
+title: 创建第一个自动化 ML 分类试验
 titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure 机器学习的工作区登陆页面（预览版）中使用自动化机器学习训练和部署分类模型。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350504"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035678"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>教程：使用自动化机器学习创建第一个分类模型
 
@@ -121,7 +121,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
    高级设置&nbsp;|说明|教程的值&nbsp;&nbsp;
    ------|---------|---
    主要指标| 对机器学习算法进行度量时依据的评估指标。|AUC_weighted
-   退出条件| 如果符合某个条件，则会停止训练作业。 |训练作业次数：&nbsp;&nbsp;5 <br> <br> 最大迭代次数：10
+   退出条件| 如果符合某个条件，则会停止训练作业。 |训练作业次数：&nbsp;&nbsp;5 <br> <br> 最大迭代次数：10&nbsp;#&nbsp;&nbsp;
    预处理| 启用自动化机器学习执行的预处理。 这包括自动化数据清理、准备和转换，以生成合成特征。| 启用
    验证类型 | 选择交叉验证类型。|K 折交叉验证
    验证次数 | 测试次数。 | 2 个交叉验证 
