@@ -177,6 +177,8 @@
       href: how-to-configure-proxy-support.md
     - name: 在边缘存储数据
       items:
+        - name: 向模块授予对设备本地存储的访问权限
+          href: how-to-access-host-storage-from-module.md
         - name: IoT Edge 上的 Azure Blob 存储
           href: how-to-store-data-blob.md
         - name: 部署 blob 存储模块

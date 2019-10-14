@@ -44,6 +44,8 @@
     - name: 查看和管理服务提供商
       displayName: 'managed services offer, azure marketplace, publish'
       href: ./how-to/view-manage-service-providers.md
+    - name: 部署可修正的策略
+      href: ./how-to/deploy-policy-remediation.md
 - name: 引用
   items:
     - name: Azure CLI

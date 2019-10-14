@@ -414,6 +414,8 @@
           href: transform-data-using-machine-learning.md
         - name: 机器学习更新资源活动
           href: update-machine-learning-models.md
+        - name: 机器学习执行管道活动
+          href: transform-data-machine-learning-service.md
         - name: 存储过程活动
           href: transform-data-using-stored-procedure.md
         - name: 计算链接服务

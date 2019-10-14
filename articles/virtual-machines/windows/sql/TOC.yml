@@ -100,8 +100,10 @@
                   href: virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md
         - name: 故障转移群集实例
           items:
-            - name: 配置
+            - name: 使用存储空间直通
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
+            - name: 使用高级文件存储
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: 引用
   items:
     - name: Azure PowerShell

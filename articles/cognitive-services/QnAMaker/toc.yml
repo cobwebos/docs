@@ -116,7 +116,7 @@
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
         - name: 创建带有 QnA Maker 和 LUIS 的机器人
           href: Tutorials/integrate-qnamaker-luis.md
-        - name: 以另一种语言创建知识库
+        - name: 语言选择
           href: How-To/language-knowledge-base.md
         - name: 迁移知识库
           href: Tutorials/migrate-knowledge-base.md
@@ -141,6 +141,12 @@
           href: How-To/business-continuity-plan.md
 - name: 引用
   items:
+    - name: Languages
+      href: Overview/language-support.md
+    - name: 限制
+      href: limits.md
+    - name: 故障排除
+      href: troubleshooting.md
     - name: REST API 参考
       items:
         - name: 创作 API
@@ -150,10 +156,6 @@
         - name: 训练 API
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
       href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
-    - name: 故障排除
-      href: troubleshooting.md
-    - name: 限制
-      href: limits.md
     - name: 示例
       items:
         - name: QnA Maker 帮助机器人
@@ -206,8 +208,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定价和限制
       href: 'https://aka.ms/qnamaker-pricing'
-    - name: 语言支持
-      href: Overview/language-support.md
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
     - name: UserVoice

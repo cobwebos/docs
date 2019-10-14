@@ -1,17 +1,17 @@
 ---
-title: 示例 - ISO 27001 蓝图 - 概述
+title: ISO 27001 蓝图示例 - 概述
 description: ISO 27001 蓝图示例概述。 此蓝图示例可帮助客户评估特定 ISO 27001 控制要求。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: dc58038497ade11ef23f4e8c1bd3b5254006455c
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: ccfd782d375de9d3a39cac20b1e48e16cc40d2f7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248891"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297389"
 ---
 # <a name="overview-of-the-iso-27001-blueprint-sample"></a>ISO 27001 蓝图示例概述
 

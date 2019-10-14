@@ -206,6 +206,8 @@
                   items:
                     - name: Node.js
                       href: app/nodejs.md
+                    - name: Python
+                      href: app/opencensus-python.md
                 - name: 网页
                   items:
                     - name: 客户端 JavaScript
@@ -280,6 +282,9 @@
                 - name: 多步骤测试
                   displayname: 'availability, GSM, visual studio web test, web test'
                   href: app/availability-multistep.md
+                - name: 可用性 + Azure Functions
+                  href: app/availability-azure-functions.md
+                  displayname: 'availability,azure functions,TrackAvailability(), timer function, azure gov, azure china, custom test, customized tests, contentmatch'
                 - name: 可用性警报
                   displayname: 'alerts, global, alerting'
                   href: app/availability-alerts.md
@@ -297,8 +302,6 @@
                   displayname: 'correlation headers, w3c, distributed tracing, tracing'
                 - name: 本地转发器
                   href: app/opencensus-local-forwarder.md
-                - name: Python
-                  href: app/opencensus-python.md
                 - name: Go
                   href: app/opencensus-go.md
             - name: 实时指标流
