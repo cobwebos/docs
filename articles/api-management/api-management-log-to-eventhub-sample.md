@@ -31,7 +31,7 @@ ms.locfileid: "60656723"
 ## <a name="why-send-from-api-management-service"></a>为何要从 API 管理服务发送？
 可以编写能够插入到 HTTP API 框架中的 HTTP 中间件，以捕获 HTTP 请求和响应并将其馈送到日志记录和监视系统。 此方法的缺点是 HTTP 中间件必须集成到后端 API，并且必须与 API 的平台匹配。 如果有多个 API，每个 API 都必须部署中间件。 后端 API 无法升级往往是有原因的。
 
-使用 Azure API 管理服务来与日志记录基础结构集成提供了一个集中的、平台独立的解决方案。 此外，还可以借助 Azure API 管理的[异地复制](api-management-howto-deploy-multi-region.md)功能进行缩放。
+使用 Azure API 管理服务来与日志记录基础结构集成提供了一个集中的、独立于平台的解决方案。 此外，还可以借助 Azure API 管理的[异地复制](api-management-howto-deploy-multi-region.md)功能进行缩放。
 
 ## <a name="why-send-to-an-azure-event-hub"></a>为何要发送到 Azure 事件中心？
 一个合理的问题是，为何要创建特定于 Azure 事件中心的策略？ 在许多不同的场合下，我可能想要记录我的请求。 为何不能直接将请求发送到最终目标？  这只是一个选项。 但是，从 API 管理服务发出日志记录请求时，必须考虑日志记录消息对 API 性能造成的影响。 增加系统组件的可用实例或使用异地复制功能，可以处理逐渐增加的负载。 但是，如果日志记录基础结构在低负载状态下开始变慢，则短期的流量高峰可能导致请求延迟。
@@ -293,7 +293,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor` 利用可轻松将 HTTP 事件数据推送到其服务的[适用于 Moesif 的 C# API 库](https://www.moesif.com/docs/api?csharp#events)。 若要将 HTTP 数据发送到 Moesif 收集器 API，需要拥有帐户和应用程序 ID。可通过在 [Moesif 网站](https://www.moesif.com)上创建帐户，然后转到_右上方菜单_ -> “应用设置”来获取 Moesif 应用程序 ID  。
+`MoesifHttpMessageProcessor` 利用可轻松将 HTTP 事件数据推送到其服务的[适用于 Moesif 的 C# API 库](https://www.moesif.com/docs/api?csharp#events)。 若要将 HTTP 数据发送到 Moesif 收集器 API，需要拥有帐户和应用程序 ID。可通过在 [Moesif 网站](https://www.moesif.com)上创建帐户，然后转到_右上方菜单_ -> “应用设置”来获取 Moesif 应用程序 ID。
 
 ## <a name="complete-sample"></a>完整示例
 GitHub 上提供了本示例的[源代码](https://github.com/dgilling/ApimEventProcessor)和测试。 需要准备好 [API 管理服务](get-started-create-service-instance.md)、[连接的事件中心](api-management-howto-log-event-hubs.md)和[存储帐户](../storage/common/storage-create-storage-account.md)才能自行运行本示例。   

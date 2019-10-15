@@ -140,7 +140,7 @@ VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价�
 | DE         | 德国              | EUR               |
 | GR         | 希腊               | EUR               |
 | GT         | 危地马拉            | GTQ               |
-| HK         | 中国香港特别行政区        | HKD               |
+| HK         | 香港特别行政区        | HKD               |
 | HU         | 匈牙利              | HUF               |
 | IS         | 冰岛              | ISK               |
 | IN         | 印度                | INR               |

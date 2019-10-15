@@ -46,7 +46,7 @@ ms.locfileid: "68932579"
 
 ### <a name="language-support-for-diacritics"></a>对音调符号的语言支持
 
-#### <a name="brazilian-portuguese-pt-br-diacritics"></a>巴西葡萄牙语 `pt-br` 音调符号
+#### <a name="brazilian-portuguese-pt-br-diacritics"></a>葡萄牙语(巴西) `pt-br` 音调符号
 
 |音调符号设置为 false|音调符号设置为 true|
 |-|-|

@@ -56,8 +56,8 @@ Azure Maps 不具有相同级别的信息和所有城市和国家/地区的准�
 |--------|---------|
 | 澳大利亚      | <p>阿德莱德，Alice 弹簧、 Bowen、 布里斯班、 Bundaberg QLD、 Burnie、 Cairns、 堪培拉、 达尔文、 Gladstone、 霍巴特、 Innisfail、 Launceston、 Mackay、 磁性岛，Maryborough Hervey Bay、 墨尔本、 新南威尔士州、 珀斯、 RockHampton、 南东部昆士兰州、悉尼、 Toowoomba、 Townsville，维多利亚，Warwick、 Yeppoon</p> |
 | 中国 | <p> Changchun、 Changsha、 成都、 重庆、 大连、 Datong、 Dongguan、 杭州、 Jiangyin、 Jinan、 南京、 Nantong、 宁波、 Pingdingshan、 Qingdao、 Shenyang、 Suzhou、 Tangshan、 Tianjin、 Weifang、 Wuhan、 Wuxi、 Yantai、 Yixing、 Zhuhai、 上海、 北京、广州，大厦 Zhengzhou</P>| 
-| 中国香港特别行政区 | 中国香港特别行政区 *|
-| 澳门特别行政区 | 中国澳门 *|
+| 香港特别行政区 | 香港特别行政区 *|
+| 澳门特别行政区 | 澳门特别行政区 *|
 | 印度 | Ahmedabad, Bengaluru, Delhi, Mumbai, Mysuru|
 | 印度尼西亚 | 万隆、 Banyuwangi、 巴淡岛、 哪儿、 雅加达、 Kediri、 Malang、 Palembang、 Semarang、 Surabaya、 Surakarta、 Yogyakarta |
 | 日本 | Shizuoka 辖区，东京，Wakkanai，Yamanashi 辖区 |

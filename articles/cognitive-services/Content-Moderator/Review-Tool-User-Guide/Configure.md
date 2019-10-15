@@ -132,7 +132,7 @@ ms.locfileid: "68882737"
 
 ### <a name="use-your-azure-account-with-the-review-apis"></a>将你的 Azure 帐户用于查看 Api
 
-若要将你的 Azure 密钥与审查 Api 一起使用, 你需要检索资源 ID。 在 Azure 门户中转到内容审查器资源, 然后选择 "**属性**" 边栏选项卡。 复制 "资源 ID" 值, 并将其粘贴到查看工具的 "**凭据**" 选项卡的 "**白名单资源 ID** " 字段中。
+若要将你的 Azure 密钥与审查 Api 一起使用, 你需要检索资源 ID。 在 Azure 门户中转到内容审查器资源, 然后选择 "**属性**" 边栏选项卡。 复制 "资源 ID" 值, 并将其粘贴到查看工具的 "**凭据**" 选项卡的 "**允许列表资源 ID** " 字段中。
 
 ![Azure 门户中的内容审查器资源 ID](images/credentials-azure-portal-resourceid.PNG)
 

@@ -143,6 +143,6 @@ Azure Database for PostgreSQL 超大规模 (Citus) 预览版目前支持此处�
 Pg_stat_statements 提供的查询执行信息和对服务器性能的影响, 因为它记录了每个 SQL 语句。 如果你没有主动使用 pg_stat_statements 扩展, 我们建议你将设置`pg_stat_statements.track`为。 `none` 某些第三方监视服务可能依赖于 pg_stat_statements 来提供查询性能见解, 因此请确认这是否适用于这种情况。
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
-可以使用 dblink 和 postgres_fdw 从一台 PostgreSQL 服务器连接到另一台服务器, 或连接到同一服务器上的其他数据库。 接收服务器需要允许来自发送服务器的连接通过其防火墙。 若要使用这些扩展在 Azure Database for PostgreSQL 服务器之间进行连接, 请将 "**允许访问 Azure 服务**" 设置为 "开"。 如果要使用这些扩展来循环回到同一服务器, 还需要启用此设置。 "**允许访问 Azure 服务**" 设置可在 Postgres 服务器的 "Azure 门户" 页中的 "**连接安全性**" 下找到。 启用 "允许对所有 Azure Ip 使用白名单**访问 azure 服务**"。
+可以使用 dblink 和 postgres_fdw 从一台 PostgreSQL 服务器连接到另一台服务器, 或连接到同一服务器上的其他数据库。 接收服务器需要允许来自发送服务器的连接通过其防火墙。 若要使用这些扩展在 Azure Database for PostgreSQL 服务器之间进行连接, 请将 "**允许访问 Azure 服务**" 设置为 "开"。 如果要使用这些扩展来循环回到同一服务器, 还需要启用此设置。 "**允许访问 Azure 服务**" 设置可在 Postgres 服务器的 "Azure 门户" 页中的 "**连接安全性**" 下找到。 启用 "允许对所有 Azure Ip 使用允许列表**访问 azure 服务**"。
 
 目前, 不支持来自 Azure Database for PostgreSQL 的出站连接, 与其他 Azure Database for PostgreSQL 服务器的连接除外。

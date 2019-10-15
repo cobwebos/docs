@@ -21,7 +21,7 @@ ms.locfileid: "68564403"
 
 Azure 内容审查器中的默认全局术语列表足以满足大多数内容审查需求。 但是，可能需要屏蔽特定于组织的术语。 例如，可能需要标记竞争对手的名称作进一步审查。 
 
-使用[列表管理 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)来创建要供文本审查 API 使用的自定义术语列表。 “文本 - 筛选”操作扫描文本中是否存在侮辱性内容，并将文本与自定义黑名单和共享黑名单进行对比。
+使用[列表管理 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)来创建要供文本审查 API 使用的自定义术语列表。 “文本 - 筛选”操作扫描文本中是否存在侮辱性内容，并将文本与自定义禁止列表和共享禁止列表进行对比。
 
 > [!NOTE]
 > 最多只能使用 5 个术语列表，每个列表不超过 10,000 条术语。

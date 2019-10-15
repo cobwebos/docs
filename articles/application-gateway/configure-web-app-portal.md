@@ -58,7 +58,7 @@ ms.locfileid: "68370429"
 3. 根据用例选择“HTTP”或“HTTPS”作为协议。 
 
    > [!NOTE]
-   > 如果你选择 HTTPS，则无需将任何身份验证证书或受信任的根证书上传到应用服务后端的白名单，因为应用服务是受信任的 Azure 服务。
+   > 如果你选择 HTTPS，则无需将任何身份验证证书或受信任的根证书上传到应用服务后端的允许列表，因为应用服务是受信任的 Azure 服务。
 
 4. 选中 "用于**应用服务**的" 框。 请注意，会`Create a probe with pick host name from backend address`自动`Pick host name from backend address`启用交换机和。`Pick host name from backend address` 当请求从应用程序网关路由到后端时，将用后端的主机名替代请求中的主机标头。  
 

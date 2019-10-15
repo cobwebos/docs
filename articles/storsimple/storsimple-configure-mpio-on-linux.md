@@ -57,7 +57,7 @@ Linux 中的多路径由内核组件和以下用户空间组件构成。
 multipath.conf 包括五个节：
 
 - **系统级默认值** *（默认值）* :您可以覆盖系统级默认值。
-- **设备已列入黑名单** *(blacklist)* :可以指定不应由设备映射程序控制的设备的列表。
+- **设备已列入禁止列表** *(blacklist)* :可以指定不应由设备映射程序控制的设备的列表。
 - **方块列表异常** *(blacklist_exceptions)* :您可以标识特定的设备被视为多路径设备，即使列入方块列表。
 - **存储控制器特定的设置** *（设备）* :您可以指定将应用于具有供应商和产品信息的设备的配置设置。
 - **设备特定的设置** *(multipaths)* :此部分用于微调单个 Lun 的配置设置。
@@ -142,15 +142,15 @@ StorSimple 设备应该：
 * 至少有两个接口已启用 iSCSI。 若要验证 StorSimple 设备上是否有两个接口已启用 iSCSI，请在 StorSimple 设备的 Azure 经典门户中执行以下步骤：
   
   1. 登录 StorSimple 设备的经典门户。
-  1. 选择 StorSimple Manager 服务，单击“设备”，然后选择特定的 StorSimple 设备。  单击“配置”并验证网络接口设置。  以下屏幕截图显示两个已启用 iSCSI 的网络接口。 下面 DATA 2 和 DATA 3 两个 10 GbE 接口都已启用 iSCSI。
+  1. 选择 StorSimple Manager 服务，单击“设备”，然后选择特定的 StorSimple 设备。 单击“配置”并验证网络接口设置。 以下屏幕截图显示两个已启用 iSCSI 的网络接口。 下面 DATA 2 和 DATA 3 两个 10 GbE 接口都已启用 iSCSI。
      
       ![MPIO StorSimple DATA 2 配置](./media/storsimple-configure-mpio-on-linux/IC761347.png)
      
       ![MPIO StorSimple DATA 3 配置](./media/storsimple-configure-mpio-on-linux/IC761348.png)
      
-      在“配置”页中 
+      在“配置”页中
      
-     1. 确定这两个网络接口都已启用 iSCSI。 “已启用 iSCSI”字段应设置为“是”。  
+     1. 确定这两个网络接口都已启用 iSCSI。 “已启用 iSCSI”字段应设置为“是”。
      1. 确保网络接口的速度相同，两者都应是 1 GbE 或 10 GbE。
      1. 请记下已启用 iSCSI 的接口的 IPv4 地址，并保存供稍后在主机上使用。
 * 应该可以从 CentOS 服务器访问 StorSimple 设备上的 iSCSI 接口。

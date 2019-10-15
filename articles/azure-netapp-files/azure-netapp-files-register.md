@@ -28,9 +28,9 @@ ms.locfileid: "66299213"
 
 在本文中，了解如何注册 Azure NetApp 文件，以便你可以开始使用该服务。
 
-## <a name="waitlist"></a>提交被插入等待队列请求用于访问服务
+## <a name="waitlist"></a>提交已插入等待队列请求用于访问服务
 
-1. 提交被插入等待队列的访问通过 Azure NetApp 文件服务请求[Azure NetApp 文件被插入等待队列提交页面](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)。 
+1. 提交已插入等待队列的访问通过 Azure NetApp 文件服务请求[Azure NetApp 文件已插入等待队列提交页面](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)。 
 
     候补名单注册不保证我们的服务立即访问。 
 
@@ -65,7 +65,7 @@ ms.locfileid: "66299213"
        
    `<SubID>` 是你的订阅 ID。
 
-    如果您看不到功能名称`Microsoft.NetApp/ANFGA`，没有对服务的访问。 在此步骤处停止。 按照中的说明进行操作[提交用于访问服务被插入等待队列请求](#waitlist)才能继续操作之前的请求服务访问权限。 
+    如果您看不到功能名称`Microsoft.NetApp/ANFGA`，没有对服务的访问。 在此步骤处停止。 按照中的说明进行操作[提交用于访问服务已插入等待队列请求](#waitlist)才能继续操作之前的请求服务访问权限。 
 
 4. 在 Azure Cloud Shell 控制台中，输入以下命令来注册 Azure 资源提供程序： 
     
@@ -87,9 +87,9 @@ ms.locfileid: "66299213"
 
    `<SubID>` 是你的订阅 ID。  `state` 参数值表示 `Registered`。
 
-6. 从 Azure 门户中，单击“订阅”边栏选项卡。 
+6. 从 Azure 门户中，单击“订阅”边栏选项卡。
 7. 在“订阅”边栏选项卡中，单击你的订阅 ID。 
-8. 在订阅设置中，单击“资源提供程序”  来验证 Microsoft.NetApp 提供程序是否指示了“已注册”状态： 
+8. 在订阅设置中，单击“资源提供程序”来验证 Microsoft.NetApp 提供程序是否指示了“已注册”状态： 
 
       ![已注册的 Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 
