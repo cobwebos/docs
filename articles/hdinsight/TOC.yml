@@ -580,7 +580,7 @@
     - name: 快速入门
       items:
         - name: 查询 Apache HBase - Apache Phoenix
-          href: ./hbase/apache-hbase-phoenix-squirrel-linux.md
+          href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: 查询 Apache HBase - HBase Shell
           href: ./hbase/query-hbase-with-hbase-shell.md
     - name: 教程

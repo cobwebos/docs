@@ -299,8 +299,6 @@
           href: search-manage-powershell.md
         - name: 监视活动和日志记录
           href: search-monitor-usage.md
-        - name: 搜索流量分析
-          href: search-traffic-analytics.md
 - name: 引用
   items:
     - name: Azure CLI

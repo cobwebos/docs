@@ -9,7 +9,7 @@
         - name: 混合标识
           tocHref: /azure/active-directory/hybrid/
           topicHref: /azure/active-directory/hybrid/
-        - name: 基本yjtyurt
+        - name: 基本
           tocHref: /azure/active-directory/fundamentals/
           topicHref: /azure/active-directory/fundamentals/
         - name: 标识保护
@@ -340,9 +340,6 @@
         - name: 文本翻译
           tocHref: /azure/cognitive-services/translator/
           topicHref: /azure/cognitive-services/translator/
-        - name: Translator 语音
-          tocHref: /azure/cognitive-services/translator-speech/
-          topicHref: /azure/cognitive-services/translator-speech/
         - name: 视频索引器
           tocHref: /azure/cognitive-services/video-indexer/
           topicHref: /azure/cognitive-services/video-indexer/video-indexer-overview

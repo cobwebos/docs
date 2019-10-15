@@ -149,6 +149,8 @@
               href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-index-transact-sql?view=sql-server-2017#examples--and-'
         - name: 结果集缓存
           items:
+            - name: 概述
+              href: sql-data-warehouse-result-set-caching-overview.md
             - name: 为数据库设置
               href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
             - name: 为会话设置

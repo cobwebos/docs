@@ -553,7 +553,7 @@
         - name: Authentication
           items:
             - name: 身份验证基础知识
-              href: authentication-scenarios.md
+              href: v1-authentication-scenarios.md
             - name: OAuth 2.0 和 OpenID Connect 协议
               items:
                 - name: OpenID Connect
