@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 84707c72e62bed7621d94dbd1ec65607cfcfd2d6
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 56bb5a1ac3c4003eca6ebe8392fc5b97f36a3317
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303036"
+ms.locfileid: "72311131"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 存储的性能和可伸缩性清单
 
@@ -45,6 +45,9 @@ Azure 存储空间的可伸缩性和性能目标为容量、事务速率和带�
 | &nbsp; |工具 |[你是否正在使用最新版本的 Microsoft 提供的客户端库和工具？](#client-libraries-and-tools) |
 | &nbsp; |重试 |[是否对限制错误和超时使用具有指数回退的重试策略？](#timeout-and-server-busy-errors) |
 | &nbsp; |重试 |[对于不可重试的错误，应用程序是否会避免重试？](#non-retryable-errors) |
+| &nbsp; |复制 blob |[是否以最有效的方式复制 blob？](#blob-copy-apis) |
+| &nbsp; |复制 blob |[是否对大容量复制操作使用最新版本的 AzCopy？](#use-azcopy) |
+| &nbsp; |复制 blob |[是否在使用 Azure Data Box 系列来导入大量数据？](#use-azure-data-box) |
 | &nbsp; |内容分发 |[是否要使用 CDN 进行内容分发？](#content-distribution) |
 | &nbsp; |使用元数据 |[是否会将频繁使用的有关 Blob 的元数据存储在其元数据中？](#use-metadata) |
 | &nbsp; |快速上传 |[尝试快速上传一个 Blob 时，是否会以并行方式上传块？](#upload-one-large-blob-quickly) |
@@ -110,7 +113,7 @@ Blob 存储使用基于范围的分区方案进行缩放和负载均衡。 每�
 
     例如，如果你的日常操作使用带有时间戳的 blob，如*yyyymmdd*，则该日常操作的所有流量将定向到单个分区服务器提供的单个 blob。 考虑每个 blob 的限制和每个分区的限制是否符合您的需要，如果需要，请考虑将此操作分解为多个 blob。 同样，如果在表中存储时序数据，则所有流量都可能定向到键命名空间的最后一部分。 如果使用的是数字 Id，请在 ID 前面加上三位数哈希。 如果使用时间戳，请在时间戳前面加上秒的值，例如*ssyyyymmdd*。 如果你的应用程序定期执行列出和查询操作，请选择将限制查询数量的哈希函数。 在某些情况下，随机前缀可能就已足够。
   
-- 有关 Azure 存储中使用的分区方案的详细信息，@no__t 请参阅 0Azure Storage：具有高度一致性的高可用云存储服务](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)。
+- 有关 Azure 存储中使用的分区方案的详细信息，@no__t 请参阅 0Azure Storage：具有非常一致性的高可用云存储服务](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)。
 
 ## <a name="networking"></a>网络
 
@@ -134,7 +137,7 @@ Blob 存储使用基于范围的分区方案进行缩放和负载均衡。 每�
 
 如果客户端应用程序将访问 Azure 存储，而不是托管在 Azure 中（例如移动设备应用或本地企业服务），那么，在附近的区域中查找存储帐户可能会降低延迟。 如果客户端分布广泛（例如，某些客户端在北美中，一些在欧洲），请考虑对每个区域使用一个存储帐户。 如果应用程序存储的数据是特定于各个用户的，不需要在存储帐户之间复制数据，则此方法更容易实施。
 
-若要广泛地分发 blob 内容，请使用内容交付网络，如 Azure CDN。 有关 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。  
+若要广泛地分发 blob 内容，请使用内容交付网络，如 Azure CDN。 关于 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。  
 
 ## <a name="sas-and-cors"></a>SAS 和 CORS
 
@@ -183,7 +186,7 @@ SAS 和 CORS 都有助于避免 web 应用程序上出现不必要的负载。
 
 ### <a name="increase-default-connection-limit"></a>提高默认连接限制
 
-在 .NET 中，以下代码可将默认的连接限制（通常在客户端环境中为 2，在服务器环境中为 10）提高到 100。 通常情况下，应将值大致设置为应用程序使用的线程数。 在打开任何连接前设置连接限制。
+在 .NET 中，以下代码将默认连接限制（通常在客户端环境中为2，在服务器环境中为10）增加到100。 通常情况下，应将值大致设置为应用程序使用的线程数。 在打开任何连接前设置连接限制。
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
@@ -191,7 +194,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 对于其他编程语言，请参阅文档以确定如何设置连接限制。  
 
-有关详细信息，请参阅博客文章 [Web 服务：Concurrent Connections](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)（Web 服务：并发连接）。  
+有关详细信息，请参阅博客文章 [Web 服务：并发连接](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)。  
 
 ### <a name="increase-minimum-number-of-threads"></a>增加最小线程数
 
@@ -227,19 +230,33 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 有关 Azure 存储错误代码的详细信息，请参阅[状态和错误代码](/rest/api/storageservices/status-and-error-codes2)。
 
-## <a name="transfer-data"></a>传输数据
+## <a name="copying-and-moving-blobs"></a>复制和移动 Blob
 
-有关将数据从 Blob 存储或存储帐户之间有效传输的信息，请参阅[选择用于数据传输的 Azure 解决方案](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+Azure 存储提供多种解决方案，用于在存储帐户中、在存储帐户之间以及在本地系统和云之间复制和移动 blob。 本部分介绍这些选项对性能的影响。 有关有效地将数据传输到 Blob 存储或从 Blob 存储传输数据的信息，请参阅[选择用于数据传输的 Azure 解决方案](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+
+### <a name="blob-copy-apis"></a>Blob 复制 Api
+
+若要跨存储帐户复制 blob，请使用 URL 操作的[Put 块](/rest/api/storageservices/put-block-from-url)。 此操作将数据从任何 URL 源同步复制到块 blob。 如果要跨存储帐户迁移数据，使用 @no__t 操作可以显著减少所需的带宽。 由于复制操作发生在服务端，因此无需下载并重新上传数据。
+
+若要复制同一存储帐户中的数据，请使用[复制 Blob](/rest/api/storageservices/Copy-Blob)操作。 复制同一存储帐户中的数据通常会快速完成。  
+
+### <a name="use-azcopy"></a>使用 AzCopy
+
+AzCopy 命令行实用程序是一种简单且高效的选项，可用于大容量地将 blob 从存储帐户复制到、从存储帐户和跨存储帐户。 AzCopy 针对此方案进行了优化，并可实现高传输速率。 AzCopy 版本10使用 `Put Block From URL` 操作来跨存储帐户复制 blob 数据。 有关详细信息，请参阅[使用 AzCopy V10 将数据复制或移动到 Azure 存储](/azure/storage/common/storage-use-azcopy-v10)。  
+
+### <a name="use-azure-data-box"></a>使用 Azure Data Box
+
+若要在 Blob 存储中导入大量数据，请考虑使用 Azure Data Box 系列进行脱机传输。 当你按时间、网络可用性或成本进行限制时，Microsoft 提供的 Data Box 设备可用于将大量数据移到 Azure。 有关详细信息，请参阅[Azure DataBox 文档](/azure/databox/)。
 
 ## <a name="content-distribution"></a>内容分发
 
 有时，应用程序需要向位于同一区域或多个区域的许多用户提供相同的内容（例如网站主页中使用的产品演示视频）。 在这种情况下，请使用内容交付网络（CDN）（如 Azure CDN）在地理上分发 blob 内容。 与存在于一个区域且无法以低延迟向其他区域交付内容的 Azure 存储帐户不同，Azure CDN 使用位于全世界多个数据中心的服务器。 此外，与单个存储帐户相比，CDN 通常可以支持更高的出口限制。  
 
-有关 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。
+关于 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。
 
 ## <a name="use-metadata"></a>使用元数据
 
-Blob 服务支持 HEAD 请求，这些请求可以包含 Blob 属性或元数据。 例如，如果应用程序需要照片中的 Exif （exchangable 图像格式）数据，则可以检索照片并将其解压缩。 为了节省带宽并改进性能，应用程序可以在应用程序上传照片时将 Exif 数据存储在 blob 的元数据中。 然后，只使用 HEAD 请求便可检索元数据中的 Exif 数据。 仅检索元数据，而不检索 blob 的全部内容可节省大量带宽，并减少提取 Exif 数据所需的处理时间。 请记住，每个 blob 只能存储 8 KB 的元数据。  
+Blob 服务支持 HEAD 请求，这些请求可以包含 Blob 属性或元数据。 例如，如果应用程序需要照片中的 Exif （exchangable 图像格式）数据，则可以检索照片并将其解压缩。 为了节省带宽并改进性能，应用程序可以在应用程序上传照片时将 Exif 数据存储在 blob 的元数据中。 然后，只使用 HEAD 请求便可检索元数据中的 Exif 数据。 仅检索元数据，而不检索 blob 的全部内容可节省大量带宽，并减少提取 Exif 数据所需的处理时间。 请记住，每个 blob 可以存储 8 KiB 元数据。  
 
 ## <a name="upload-blobs-quickly"></a>快速上传 blob
 

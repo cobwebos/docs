@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 839faa4cf2455ee2b0de38046a464ce824f007cd
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f51263a91ca174a6c8108ed4414ff0f8b9745aff
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301862"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311874"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置具有高级文件共享的 SQL Server 故障转移群集实例
 
@@ -37,7 +37,7 @@ ms.locfileid: "72301862"
 - [Windows 群集技术](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server 故障转移群集实例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 
-一个重要区别是，在 Azure IaaS VM 故障转移群集上，建议每个服务器使用单个 NIC （群集节点）和一个子网。 Azure 网络具有物理冗余，这使得在 Azure IaaS VM 来宾群集上不需要额外的 NIC 和子网。 尽管群集验证报告将发出一条警告，指出节点只能在单个网络上访问，但可以在 Azure IaaS VM 故障转移群集上放心地忽略此警告。 
+一个重要区别是，在 Azure IaaS VM 故障转移群集上，建议每个服务器使用单个 NIC （群集节点）和一个子网。 Azure 网络具有物理冗余，在 Azure IaaS VM 来宾群集上无需额外的 Nic 和子网。 尽管群集验证报告将发出一条警告，指出节点只能在单个网络上访问，但可以在 Azure IaaS VM 故障转移群集上放心地忽略此警告。 
 
 另外，应该对以下技术有大致的了解：
 
@@ -165,34 +165,20 @@ ms.locfileid: "72301862"
 1. 登录到[Azure 门户](https://portal.azure.com)并中转到你的存储帐户。
 1. 在 "**文件服务**" 下，单击 "**文件共享**"，然后选择要用于 SQL 存储的高级文件共享。 
 1. 选择 "**连接**" 以打开文件共享的连接字符串。 
-1. 从下拉端中选择要使用的驱动器号，然后从两个 PowerShell 命令块复制两个 PowerShell 命令。  将它们粘贴到文本编辑器（如记事本）中。 
+1. 从下拉端中选择要使用的驱动器号，然后将这两个代码块复制到记事本中。
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/premium-file-storage-commands.png" alt-text="从文件共享 connect 门户复制这两个 PowerShell 命令":::
 
 1. 使用 SQL Server FCI 将用于服务帐户的帐户登录到 SQL Server VM。 
 1. 启动管理 PowerShell 命令控制台。 
-1. 运行 `Test-NetConnection` 命令，测试到存储帐户的连接。 不要从第一个代码块运行 `cmdkey` 命令。 
+1. 运行之前保存的门户中的命令。 
+1. 使用 "文件资源管理器" 或 "**运行**" 对话框（Windows 键 + r）通过网络路径 `\\storageaccountname.file.core.windows.net\filesharename` 导航到该共享。 示例： `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
 
-   ```console
-   example: Test-NetConnection -ComputerName  sqlvmstorageaccount.file.core.windows.net -Port 445
-   ```
-
-1. 在*第二个*代码块中运行 `cmdkey` 命令，将文件共享作为驱动器进行装载，并将其保留。 
-
-   ```console
-   example: cmdkey /add:sqlvmstorageaccount.file.core.windows.net /user:Azure\sqlvmstorageaccount /pass:+Kal01QAPK79I7fY/E2Umw==
-   net use M: \\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare /persistent:Yes
-   ```
-
-1. 打开**文件资源管理器**并导航到**这台电脑**。 文件共享在 "网络位置" 下可见： 
-
-   :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/file-share-as-storage.png" alt-text="文件共享在文件资源管理器中显示为存储":::
-
-1. 打开新映射的驱动器，并在此处至少创建一个文件夹，将 SQL 数据文件放置到其中。 
+1. 至少在新连接的文件共享上创建一个文件夹，将 SQL 数据文件放置到其中。 
 1. 在将参与群集的每个 SQL Server VM 上重复这些步骤。 
 
   > [!IMPORTANT]
-  > 不要对数据文件和备份使用相同的文件共享。 如果要将数据库备份到文件共享，请使用相同的步骤为备份配置辅助文件共享。 
+  > 请考虑对备份文件使用单独的文件共享，以便为数据和日志文件保存此共享的 IOPS 和大小。 你可以为备份文件使用高级或标准文件共享
 
 ## <a name="step-3-configure-failover-cluster-with-file-share"></a>步骤 3：配置具有文件共享的故障转移群集 
 

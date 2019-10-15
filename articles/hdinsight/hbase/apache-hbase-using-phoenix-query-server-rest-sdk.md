@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.openlocfilehash: 1f468cac29579d8748f61a47b548a67d36ff8279
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9e9258fb7ace93d0866463563d328456cbd1daa
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695956"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311673"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix 查询服务器 REST SDK
 
-[Apache Phoenix](https://phoenix.apache.org/) 是一个以 [Apache HBase](apache-hbase-overview.md) 为基础的开源大规模并行关系数据库层。 Phoenix 允许通过 [SQLLine](apache-hbase-phoenix-squirrel-linux.md) 之类的 SSH 工具将类 SQL 查询与 HBase 配合使用。 Phoenix 也提供名为“Phoenix 查询服务器 (PQS)”的 HTTP 服务器，这是一个瘦客户端，支持两种用于客户端通信的传输机制：JSON 和协议缓冲区。 协议缓冲区是默认的机制，提供的通信比 JSON 更高效。
+[Apache Phoenix](https://phoenix.apache.org/) 是一个以 [Apache HBase](apache-hbase-overview.md) 为基础的开源大规模并行关系数据库层。 Phoenix 允许通过 [SQLLine](apache-hbase-query-with-phoenix.md) 之类的 SSH 工具将类 SQL 查询与 HBase 配合使用。 Phoenix 也提供名为“Phoenix 查询服务器 (PQS)”的 HTTP 服务器，这是一个瘦客户端，支持两种用于客户端通信的传输机制：JSON 和协议缓冲区。 协议缓冲区是默认的机制，提供的通信比 JSON 更高效。
 
 本文介绍如何使用 PQS REST SDK 创建表、逐个或成批 upsert 行，以及使用 SQL 语句选择数据。 示例使用[适用于 Apache Phoenix 查询服务器的 Microsoft .NET 驱动程序](https://www.nuget.org/packages/Microsoft.Phoenix.Client)。 此 SDK 在 [Apache Calcite 的 Avatica](https://calcite.apache.org/avatica/) API 基础上构建，该 API 将协议缓冲区专用于序列化格式。
 

@@ -7,16 +7,19 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 5e52275cc7215f6c54c2ff6a11faf82114c414b4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e651695055b9bfdbfbb5b6281af8c1d21235009b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676599"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311794"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
 Windows 虚拟桌面服务建议将 FSLogix 配置文件容器作为用户配置文件解决方案。 FSLogix 设计用于在远程计算环境（如 Windows 虚拟桌面）中漫游配置文件。 它将完整的用户配置文件存储在单个容器中。 登录时，将使用本机支持的虚拟硬盘（VHD）和 Hyper-v 虚拟硬盘（VHDX）将此容器动态连接到计算环境。 用户配置文件立即可用，并与本机用户配置文件完全相同。 本文介绍如何在 Windows 虚拟桌面中使用 FSLogix 配置文件容器与 Azure 文件一起工作。
+
+>[!NOTE]
+>如果正在查找有关 Azure 上不同 FSLogix 配置文件容器存储选项的比较资料，请参阅[FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
 
 ## <a name="user-profiles"></a>用户配置文件
 
@@ -55,7 +58,7 @@ UPD 和 RUP 是远程桌面会话主机（RDSH）和虚拟硬盘（VHD）环境�
 
 UPD 需要[存储空间直通（S2D）](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment)来满足性能要求。 UPD 使用服务器消息块（SMB）协议。 它将配置文件复制到记录用户的 VM。 UPD with S2D 是我们建议用于 Windows 虚拟桌面的解决方案。  
 
-#### <a name="cost"></a>开销
+#### <a name="cost"></a>成本
 
 虽然 S2D 群集实现了所需的性能，但企业客户的成本成本高昂，但对于中小型企业（SMB）客户，开销特别高。 对于此解决方案，企业需要支付存储空间，以及使用磁盘作为共享的 Vm 的成本。
 

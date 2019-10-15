@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.openlocfilehash: 2f46f90edcdd1c4cdf7583c7e628aee205b312e1
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 10/11/2019
+ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098662"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311654"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
 
@@ -27,29 +27,29 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 [Apache Ambari](https://ambari.apache.org) 通过提供易于使用的 Web UI 简化了 Hadoop 管理。 可以使用 Ambari 来管理和监视 Hadoop 群集。 开发人员可以使用 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) 在其应用程序中集成这些功能。
 
-## <a name="connectivity"></a>连接性
+## <a name="connectivity"></a>连接
 
-你的 HDInsight 群集`https://CLUSTERNAME.azurehdinsight.net`上提供了 Ambari Web UI，其中`CLUSTERNAME`是你的群集的名称。
+你的 HDInsight 群集上提供了 Ambari Web UI `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。
 
 > [!IMPORTANT]  
 > 连接到 HDInsight 上的 Ambari 需要 HTTPS。 当提示进行身份验证时，请使用在创建群集时提供的管理员帐户名称和密码。
 
 ## <a name="ssh-tunnel-proxy"></a>SSH 隧道（代理）
 
-尽管可以直接通过 Internet 访问群集的 Ambari，但 Ambari Web UI 中的某些链接（例如 JobTracker 的链接）并未在 Internet 上公开。 若要访问这些服务，必须创建一个 SSH 隧道。 有关详细信息，请参阅[将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)。
+尽管可以直接通过 Internet 访问群集的 Ambari，但 Ambari Web UI 中的某些链接（例如 JobTracker）未在 internet 上公开。 若要访问这些服务，必须创建一个 SSH 隧道。 有关详细信息，请参阅[将 SSH 隧道与 HDInsight 配合使用](hdinsight-linux-ambari-ssh-tunnel.md)。
 
 ## <a name="ambari-web-ui"></a>Ambari Web UI
 
 > [!WARNING]  
 > 并非 Ambari Web UI 的所有功能都受 HDInsight 支持。 有关详细信息，请参阅本文档的[不受支持操作](#unsupported-operations)部分。
 
-连接到 Ambari Web UI 时，系统会提示进行页面验证。 请使用在创建群集过程中你使用的群集管理员用户（默认 Admin）和密码。
+连接到 Ambari Web UI 时，系统将提示你向页面进行身份验证。 请使用在创建群集过程中使用的群集管理员用户（默认 Admin）和密码。
 
 当该页打开时，请注意顶栏。 此栏中包含以下信息和控件：
 
 ![Apache Ambari 仪表板概述](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|项 |描述 |
+|Item |描述 |
 |---|---|
 |Ambari 徽标|打开仪表板，以便可以监视群集。|
 |群集名称 # 项操作|显示进行中的 Ambari 操作数目。 选择群集名称或“# 项操作”会显示后台操作列表。|
@@ -58,7 +58,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 |Services|群集中服务的信息和配置设置。|
 |主机|群集中节点的信息和配置设置。|
 |警报|包含信息、警告和严重警报的日志。|
-|行政区划|已安装在群集上的软件堆栈/服务、服务帐户信息和 Kerberos 安全性。|
+|管理员|已安装在群集上的软件堆栈/服务、服务帐户信息和 Kerberos 安全性。|
 |“管理”按钮|Ambari 管理、用户设置和注销。|
 
 ## <a name="monitoring"></a>监视
@@ -82,7 +82,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 ![Apache Ambari 管理警报组](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-还可管理警报方式，并通过在“操作”菜单中选择“管理警报通知”创建警报通知。 所有当前通知都会显示。 还可以从此处创建通知。 出现特定的警报/严重性组合时，可通过**电子邮件**或 **SNMP** 发送通知。 例如，可在“YARN 默认设置”组中的任何警报设为“严重”时发送电子邮件消息。
+你还可以管理警报方法，并通过选择 "__管理通知__"，从 "**操作**" 菜单创建警报通知。 所有当前通知都会显示。 还可以从此处创建通知。 出现特定的警报/严重性组合时，可通过**电子邮件**或 **SNMP** 发送通知。 例如，可在“YARN 默认设置”组中的任何警报设为“严重”时发送电子邮件消息。
 
 ![Apache Ambari 创建警报通知](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
@@ -98,7 +98,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 ![带有热图的 Apache Ambari 仪表板](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
-若要了解群集内节点的详细信息，请选择“主机”。 然后选择感兴趣的具体节点。
+若要了解群集内节点的详细信息，请选择“主机”。 然后选择你感兴趣的特定节点。
 
 ![Apache Ambari 主机摘要详细信息](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
@@ -151,7 +151,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 2. 使用“操作”菜单选择要执行的操作：
 
-    |项 |描述 |
+    |Item |描述 |
     |---|---|
     |启动所有组件|启动主机上的所有组件。|
     |停止所有组件|停止主机上的所有组件。|

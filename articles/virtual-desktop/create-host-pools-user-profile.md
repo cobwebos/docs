@@ -7,18 +7,21 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 9b187696524e96bc13254a24fd8f39d5aeb89e7d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 0e7516fc4874e4cbc387f2f494efc6ef745d64f7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676685"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311587"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>使用文件共享为主机池创建配置文件容器
 
 Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户配置文件解决方案。 我们不建议使用用户配置文件磁盘（UPD）解决方案，该解决方案将在未来版本的 Windows 虚拟桌面中弃用。
 
 本文将介绍如何使用基于虚拟机的文件共享为主机池设置 FSLogix 配置文件容器共享。 有关更多 FSLogix 文档，请参阅[FSLogix 站点](https://docs.fslogix.com/)。
+
+>[!NOTE]
+>如果正在查找有关 Azure 上不同 FSLogix 配置文件容器存储选项的比较资料，请参阅[FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>创建将用作文件共享的新虚拟机
 
@@ -62,10 +65,10 @@ Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户
 6. 创建名为 "**配置文件**" 的密钥。
 7. 为配置文件密钥创建以下值：
 
-| 姓名                | 类型               | 数据/值                        |
+| 名称                | type               | 数据/值                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled             | DWORD              | 1                                 |
+| Enabled             | DWORD              | 第                                 |
 | VHDLocations        | 多字符串值 | "文件共享的网络路径"     |
 
 >[!IMPORTANT]
->为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在 VM 上打开入站端口 3389。 Windows 虚拟机不需要打开入站端口 3389，用户就可以访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)。
+>为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在 VM 上打开入站端口 3389。 Windows 虚拟机不需要打开入站端口 3389，用户就可以访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](../security-center/security-center-just-in-time.md)。

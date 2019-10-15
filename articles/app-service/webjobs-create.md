@@ -1,8 +1,8 @@
 ---
-title: 使用 WebJobs 运行后台任务 - Azure 应用服务
+title: 通过 Web 作业运行后台任务-Azure App Service
 description: 了解如何使用 WebJobs 在 Azure 应用服务 Web 应用、API 应用或移动应用中运行后台任务。
 author: ggailey777
-manager: wgallace
+manager: gwallace
 s.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
 ms.topic: conceptual
@@ -10,14 +10,14 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 2d97f826f4288d13589a2fb9da8148d58a2c5e1e
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: 293227352f27a724228136532c88e35fe877feb2
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303579"
+ms.locfileid: "72312169"
 ---
-# <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
+# <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure App Service 中通过 Web 作业运行后台任务
 
 本文介绍如何使用 [Azure 门户](https://portal.azure.com)部署 WebJobs，以便上传可执行文件或脚本。 有关如何使用 Visual Studio 开发和部署 WebJobs 的信息，请参阅[使用 Visual Studio 部署 WebJobs](webjobs-dotnet-deploy-vs.md)。
 
@@ -128,7 +128,7 @@ when making changes in one don't forget the other two.
 
    ![Web 作业列表](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-7. 如果要运行 Web 作业，请在列表中右键单击其名称，并单击“运行”。
+7. 要运行 WebJob，请在列表中右键单击其名称，并单击“运行”。
    
     ![运行 Web 作业](./media/web-sites-create-web-jobs/runondemand.png)
 
@@ -203,6 +203,6 @@ when making changes in one don't forget the other two.
    
     ![历史记录仪表板中的 Web 作业列表](./media/web-sites-create-web-jobs/webjobslist.png)
    
-## <a name="NextSteps"></a> 后续步骤
+## <a name="NextSteps"></a>后续步骤
 
 可以结合 WebJobs 使用 Azure WebJobs SDK 来简化许多编程任务。 有关详细信息，请参阅[什么是 WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)。

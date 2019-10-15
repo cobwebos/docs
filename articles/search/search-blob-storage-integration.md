@@ -8,36 +8,29 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 7e5eb73cc6abc72689bbc674b29f4d288dd66b6f
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 1aec65ab08cd1c0711e51a222a8e674ef56ef508
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302892"
+ms.locfileid: "72312186"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>使用 Azure 搜索将全文搜索添加到 Azure blob 数据
 
-在 Azure Blob 存储中存储的各种内容类型之间进行搜索可能是一个很难解决的问题。 但是，使用 Azure 搜索，只需单击几下，便可以为 Blob 中的内容编制索引以及对其进行搜索。 在 Blob 存储中进行搜索需要预配 Azure 搜索服务。 可以在[定价页](https://aka.ms/azspricing)上找到 Azure 搜索的各种服务限制和定价层。
+在 Azure Blob 存储中存储的各种内容类型之间进行搜索可能是一个很难解决的问题。 但是，只需单击几下鼠标，即可使用[Azure 搜索](search-what-is-azure-search.md)来索引和搜索 blob 的内容。 Azure 搜索提供内置集成，可通过将数据源感知功能添加到索引的[*blob 索引器*](search-howto-indexing-azure-blob-storage.md)来从 blob 存储中进行索引。
 
-## <a name="what-is-azure-search"></a>什么是 Azure 搜索？
-[Azure 搜索](https://aka.ms/whatisazsearch)是一种搜索服务，通过它开发人员可以轻松地在 Web 和移动应用程序中添加可靠的全文搜索体验。 作为一项服务，Azure 搜索不需要管理任何搜索基础结构，同时提供了 [99.9% 运行时间 SLA](https://aka.ms/azuresearchsla)。
+## <a name="supported-content-types"></a>支持的内容类型
 
-## <a name="index-and-search-enterprise-document-formats"></a>索引和搜索企业文档格式
-通过对 Azure Blob 存储中的[文档提取](https://aka.ms/azsblobindexer)的支持，可以索引以下内容：
+通过在容器上运行 Blob 索引器，你可以使用单个查询从以下内容类型中提取文本和元数据：
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-通过从这些文件类型中提取文本和元数据，可以使用单个查询跨多个文件格式进行搜索。 
+（可选）可以附加*技能组合*形式的[AI 扩充](search-blob-ai-integration.md)，以从 blob 创建新的信息和结构，包括图像文件的文本表示形式。 添加 AI 扩充将内容类型列表扩展为包含 JPEG 和 PNG。 它添加了图像处理技能，如[光学字符识别（OCR）](cognitive-search-skill-ocr.md)和[可视功能](cognitive-search-skill-image-analysis.md)的识别，这些功能使你可以为每个图像中的视觉对象建立索引。
 
 ## <a name="search-through-your-blob-metadata"></a>在 blob 元数据中进行搜索
 用于实现在任何内容类型的 blob 中轻松进行排序的一个常用方案是为自定义元数据和每个 blob 的系统属性编制索引。 通过这种方式，系统会对所有 blob 的信息编制索引，无论文档类型是什么，都是如此。 然后可以在所有 Blob 存储内容中继续执行排序、筛选和 facet 操作。
 
 [了解有关为 blob 元数据编制索引的详细信息。](https://aka.ms/azsblobmetadataindexing)
-
-## <a name="image-search"></a>图像搜索
-Azure 搜索的全文搜索、分面导航和排序功能现在可以应用于 blob 中存储的图像的元数据了。
-
-认知搜索包括图像处理技能，例如[光学字符识别 (OCR)](cognitive-search-skill-ocr.md) 和[可视特征](cognitive-search-skill-image-analysis.md)的标识，这些技能可以用于为每个图像中发现的可视内容编制索引。
 
 ## <a name="index-and-search-through-json-blobs"></a>在 JSON blob 中编制索引和执行搜索
 可以将 Azure 搜索配置为提取在包含 JSON 的 blob 中找到的结构化内容。 Azure 搜索可以读取 JSON blob 并将结构化内容解析为 Azure 搜索文档的合适字段。 Azure 搜索还可以获取包含 JSON 对象数组的 blob 并将每个元素映射到单独的 Azure 搜索文档。

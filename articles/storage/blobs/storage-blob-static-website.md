@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 85f7ea11638278a010b2a94d9c6472857f51b687
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 8de36ea9f7bb77443b22e038172ee69bb8435b29
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710178"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311216"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
@@ -58,7 +58,7 @@ ms.locfileid: "71710178"
 
 网站的 URL 包含区域代码。 例如，URL `https://contosoblobaccount.z22.web.core.windows.net/` 包含区域代码 `z22`。
 
-尽管该代码必须保留 URL，但它仅供内部使用，无需以其他任何方式使用这些代码。
+尽管该代码必须保留在 URL 中，但它仅供内部使用，无需以其他任何方式使用这些代码。
 
 当你启用静态网站宿主时指定的索引文档将在用户打开网站但未指定特定文件时显示（例如： `https://contosoblobaccount.z22.web.core.windows.net`）。  
 
@@ -99,7 +99,7 @@ ms.locfileid: "71710178"
 
 可以免费启用静态网站托管。 仅对你的站点利用的 blob 存储和运营成本计费。 如需详细了解 Azure Blob 存储价格，请参阅 [Azure Blob 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="metrics"></a>指标
+## <a name="metrics"></a>度量值
 
 可以在静态网站页面上启用指标。 一旦启用了指标，就会在 "指标" 仪表板中报告 **$web**容器中的文件的流量统计信息。
 
