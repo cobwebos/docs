@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d4a3eae9ea3931ceb720785bbf458f54689be6e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 5a0f2922763f8fccb9f3eec8bab4d6eddee7e446
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213519"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350590"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
 
@@ -69,8 +69,10 @@ automl_config = AutoMLConfig(task="classification")
 ```
 
 ## <a name="data-source-and-format"></a>数据源和格式
+
 自动化机器学习支持驻留在本地桌面上或云中（例如 Azure Blob 存储）的数据。 可将数据读取成 scikit-learn 支持的数据格式。 可将数据读取成：
-* Numpy 数组 X（特征）和 y（目标变量，也称为标签）
+
+* Numpy 数组 X （功能）和 y （目标变量，也称为标签）
 * Pandas 数据帧
 
 >[!Important]
@@ -93,55 +95,25 @@ automl_config = AutoMLConfig(task="classification")
     ```python
     import pandas as pd
     from sklearn.model_selection import train_test_split
+
     df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
-    # get integer labels
-    y = df["Label"]
-    df = df.drop(["Label"], axis=1)
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
+    y_df = df["Label"]
+    x_df = df.drop(["Label"], axis=1)
+    x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.1, random_state=42)
     ```
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>在远程计算中提取用于运行试验的数据
 
-对于远程执行，需要使数据可从远程计算访问。 可以通过将数据上传到数据存储来完成此操作。
+对于远程执行，必须可从远程计算访问定型数据。 SDK 中[`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)的类公开功能：
 
-下面是使用`datastore`的示例：
+* 轻松地将数据从静态文件或 URL 源传输到工作区
+* 在云计算资源上运行时，使数据可用于训练脚本
 
-```python
-    import pandas as pd
-    from sklearn import datasets
-
-    data_train = datasets.load_digits()
-
-    pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
-    pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
-
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
-```
-
-### <a name="define-dprep-references"></a>定义 iris.dprep 引用
-
-将 X 和 y 定义为 iris.dprep 引用，该引用将传递给自动机器`AutoMLConfig`学习对象，如下所示：
-
-```python
-
-    X = dprep.auto_read_file(path=ds.path('digitsdata/X_train.csv'))
-    y = dprep.auto_read_file(path=ds.path('digitsdata/y_train.csv'))
-
-
-    automl_config = AutoMLConfig(task = 'classification',
-                                 debug_log = 'automl_errors.log',
-                                 path = project_folder,
-                                 run_configuration=conda_run_config,
-                                 X = X,
-                                 y = y,
-                                 **automl_settings
-                                )
-```
+有关使用 `Dataset` 类将数据装载到计算目标的示例，请参阅[操作方法](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)。
 
 ## <a name="train-and-validation-data"></a>训练和验证数据
 
-您可以直接在`AutoMLConfig`方法中指定单独的定型和验证集。
+您可以直接在`AutoMLConfig`构造函数中指定单独的定型集和验证集。
 
 ### <a name="k-folds-cross-validation"></a>K 折交叉验证
 
@@ -175,7 +147,7 @@ automl_config = AutoMLConfig(task="classification")
 
 示例包括：
 
-1.  分类试验使用加权 AUC 作为主要指标，每次迭代的最大时间为 12,000 秒，试验在完成 50 次迭代和 2 个交叉验证折后结束。
+1.  使用 AUC 加权作为主要指标的分类试验，每次迭代的最大时间为12000秒，试验在50次迭代之后结束，2次交叉验证折叠。
 
     ```python
     automl_classifier = AutoMLConfig(
@@ -202,12 +174,10 @@ automl_config = AutoMLConfig(task="classification")
         n_cross_validations=5)
     ```
 
-这三个`task`不同的参数值决定了要应用的模型的列表。  `whitelist`使用或`blacklist`参数进一步修改包含或排除的可用模型的迭代。 支持的模型的列表可以在[SupportedModels 类](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)中找到。
+三个不同`task`的参数值（第三个任务类型`forecasting`为，并使用与`regression`任务相同的算法池）确定要应用的模型的列表。 `whitelist`使用或`blacklist`参数进一步修改包含或排除的可用模型的迭代。 支持的模型的列表可以在[SupportedModels 类](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)中找到。
 
 ### <a name="primary-metric"></a>主要指标
-主要指标;如以上示例中所示，确定要在模型定型期间用于优化的指标。 你可以选择的主要指标取决于你选择的任务类型。 下面是可用指标的列表。
-
-在[了解自动化机器学习结果](how-to-understand-automated-ml.md)中了解这些信息的具体定义。
+主要指标用于确定要在模型定型期间用于优化的指标。 您可以选择的可用指标由您选择的任务类型决定，下表显示了每种任务类型的有效主要指标。
 
 |分类 | 回归 | 时序预测
 |-- |-- |--
@@ -217,9 +187,11 @@ automl_config = AutoMLConfig(task="classification")
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
+在[了解自动化机器学习结果](how-to-understand-automated-ml.md)中了解这些信息的具体定义。
+
 ### <a name="data-preprocessing--featurization"></a>数据预处理 & 特征化
 
-在每个自动机器学习试验中，你的数据将[自动缩放并规范化](concept-automated-ml.md#preprocess)，以帮助算法正常执行。  但是，还可以启用其他预处理/特征化，例如缺失值插补法、编码和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#preprocess)。
+在每个自动机器学习试验中，你的数据将[自动进行缩放和规范化](concept-automated-ml.md#preprocess)，以帮助*特定*的算法对不同规模的功能敏感。  但是，还可以启用其他预处理/特征化，例如缺失值插补法、编码和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#preprocess)。
 
 若要启用此特征化， `"preprocess": True`请[ `AutoMLConfig`为类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)指定。
 
@@ -227,12 +199,13 @@ automl_config = AutoMLConfig(task="classification")
 > 自动机器学习预处理步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，训练期间应用的相同预处理步骤将自动应用于输入数据。
 
 ### <a name="time-series-forecasting"></a>时序预测
-对于时序预测任务类型，你有其他要定义的参数。
-1. time_column_name-这是一个必需参数，它定义包含日期/时间序列的定型数据中的列的名称。
-1. max_horizon-定义要根据定型数据的周期进行预测的时间长度。 例如，如果您有使用每日时间粒度的定型数据，则可以定义要在多长时间内为模型定型。
-1. grain_column_names-定义在定型数据中包含单个时序数据的列的名称。 例如，如果要按商店预测特定品牌的销售额，则可以将商店和品牌列定义为粒度列。
+时序`forecasting`任务需要配置对象中的其他参数：
 
-请参阅下面使用的这些设置的示例，[此处](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)提供了笔记本示例。
+1. `time_column_name`：必需的参数，用于定义定型数据中包含有效时序的列的名称。
+1. `max_horizon`：根据定型数据的周期定义要预测的时间长度。 例如，如果您有使用每日时间粒度的定型数据，则可以定义要在多长时间内为模型定型。
+1. `grain_column_names`：定义包含定型数据中的单个时序数据的列的名称。 例如，如果要按商店预测特定品牌的销售额，则可以将商店和品牌列定义为粒度列。 将为每个颗粒/分组创建单独的时间系列和预测。 
+
+有关下面使用的设置的示例，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)。
 
 ```python
 # Setting Store and Brand as grains for training.
@@ -341,11 +314,11 @@ run = experiment.submit(automl_config, show_output=True)
 >将 `show_output` 设置为 `True` 可在控制台上显示输出。
 
 ### <a name="exit-criteria"></a>退出条件
-可以定义几个选项来完成试验。
-1. 无标准-如果不定义任何退出参数，则试验将继续，直到你的主要指标没有进一步的进度。
-1. 迭代数-定义要运行的实验的迭代次数。 您可以选择添加 iteration_timeout_minutes 以定义每个迭代的时间限制（以分钟为单位）。
-1. 在你的设置中使用 experiment_timeout_minutes 后退出，你可以定义一个试验在多长时间内会继续运行。
-1. 达到分数后退出-使用 experiment_exit_score，可以选择在达到主要指标的分数后完成试验。
+可以定义几个选项来结束实验。
+1. 无标准：如果未定义任何退出参数，则试验将继续，直到主要指标没有进一步的进度。
+1. 迭代数：定义要运行的实验的迭代次数。 您可以选择性地`iteration_timeout_minutes`添加来定义每个迭代的时间限制（以分钟为单位）。
+1. 在一段时间后退出：如果`experiment_timeout_minutes`在设置中使用，则可以定义试验在多长时间内会继续运行。
+1. 达到分数后退出：在`experiment_exit_score`达到主要指标分数后，使用将完成试验。
 
 ### <a name="explore-model-metrics"></a>探索模型指标
 
@@ -355,7 +328,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 使用自动 ML 生成的任何模型都包括以下步骤：
 + 自动功能设计（如果预处理 = True）
-+ 缩放/规范化和具有 hypermeter 值的算法
++ 缩放/规范化和具有超参数值的算法
 
 我们使它从自动 ML 的 fitted_model 输出中获取此信息是透明的。
 
@@ -437,7 +410,7 @@ best_run, fitted_model = automl_run.get_output()
    |EngineeringFeatureCount|通过自动功能工程转换生成的功能的数量。|
    |转换|应用于输入功能以生成工程功能的转换的列表。|
 
-### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>缩放/规范化和具有 hypermeter 值的算法：
+### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>缩放/规范化和具有超参数值的算法：
 
 若要了解管道的缩放/规范化和算法/超参数值，请使用 fitted_model。 [详细了解缩放/规范化](concept-automated-ml.md#preprocess)。 下面是示例输出：
 
