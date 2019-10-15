@@ -19,7 +19,7 @@ ms.locfileid: "68561247"
 ---
 # <a name="moderate-images-from-the-api-console"></a>在 API 控制台中审查图像
 
-使用 Azure 内容审查器中的[图像审查 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)，可以启动图像内容的扫描和审阅式审查工作流。 此审查作业会扫描你的内容是否有猥亵内容，并将它与自定义和共享禁止列表进行比较。
+使用 Azure 内容审查器中的[图像审查 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)，可以启动图像内容的扫描和审阅式审查工作流。 此审查作业会扫描你的内容是否有猥亵内容，并将它与自定义和共享阻止列表进行比较。
 
 ## <a name="use-the-api-console"></a>使用 API 控制台
 必须有订阅密钥，才能在联机控制台中试用 API。 订阅密钥位于“设置”选项卡上的“Ocp-Apim-Subscription-Key”框中。 有关详细信息，请参阅[概述](overview.md)。
