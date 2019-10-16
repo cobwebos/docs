@@ -111,7 +111,9 @@
   items:
     - name: 时序见解
       items:
-        - name: Azure 时序见解 GA
+        - name: Azure Time Series Insights
+          href: /rest/api/time-series-insights/index
+        - name: 数据访问正式发行版
           href: /rest/api/time-series-insights/ga
           items:
             - name: 查询
@@ -123,17 +125,8 @@
                   href: /rest/api/time-series-insights/ga-query-syntax
             - name: 参考数据 API
               href: /rest/api/time-series-insights/ga-reference-data-api
-        - name: Azure 时序见解预览版
+        - name: 数据访问概念预览版
           href: /rest/api/time-series-insights/preview
-          items:
-            - name: 时序查询
-              href: /rest/api/time-series-insights/preview-query
-            - name: 时序模型
-              href: /rest/api/time-series-insights/preview-model
-            - name: 时序环境 API
-              href: /rest/api/time-series-insights/preview-env
-            - name: 时序表达式和语法
-              href: /rest/api/time-series-insights/preview-tsx
     - name: 客户端 SDK
       items:
         - name: JavaScript 客户端 SDK

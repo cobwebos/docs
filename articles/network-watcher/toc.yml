@@ -172,6 +172,8 @@
       href: /rest/api/network-watcher/
 - name: 资源
   items:
+    - name: 网络观察程序常见问题解答
+      href: frequently-asked-questions.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN 论坛
