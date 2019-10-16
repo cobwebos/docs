@@ -22,14 +22,13 @@
               href: sql-database-purchase-models.md
             - name: 基于 vCore 的模型
               href: sql-database-service-tiers-vcore.md
+              items:
+                - name: 无服务器计算层
+                  href: sql-database-serverless.md
+                - name: 为预留容量预付费
+                  href: sql-database-reserved-capacity.md
             - name: DTU 服务层级
               href: sql-database-service-tiers-dtu.md
-            - name: 无服务器计算层
-              href: sql-database-serverless.md
-            - name: 为预留容量预付费
-              href: sql-database-reserved-capacity.md
-            - name: 从“高级 RS”服务层级迁移
-              href: sql-database-service-tiers-prs.md
         - name: 计算和存储
           items:
             - name: 概述
@@ -43,6 +42,8 @@
               href: sql-database-service-tier-hyperscale.md
             - name: “超大规模”常见问题解答
               href: sql-database-service-tier-hyperscale-faq.md
+            - name: 从“高级 RS”服务层级迁移
+              href: sql-database-service-tiers-prs.md
 - name: 快速入门
   expanded: true
   items:
@@ -224,6 +225,8 @@
               href: sql-database-disaster-recovery.md
             - name: 恢复练习
               href: sql-database-disaster-recovery-drills.md
+            - name: 配置故障转移组
+              href: sql-database-configure-failover-group.md
     - name: 监视和优化
       items:
         - name: “监视和优化”文档
@@ -604,8 +607,6 @@
           href: sql-database-geo-replication-portal.md
         - name: 为异地副本配置安全性
           href: sql-database-geo-replication-security-config.md
-        - name: 配置故障转移组
-          href: sql-database-configure-failover-group.md
         - name: 尝试内存中功能
           href: sql-database-in-memory-sample.md
         - name: 启用自动优化
@@ -714,6 +715,8 @@
           href: replication-with-sql-database-managed-instance.md
         - name: 配置安全性
           href: sql-database-managed-instance-aad-security-tutorial.md
+        - name: 将托管实例添加到故障转移组
+          href: sql-database-managed-instance-failover-group-tutorial.md
     - name: 概念
       items:
         - name: 管理 API 参考

@@ -148,6 +148,8 @@
           href: automation-onboard-solutions-from-automation-account.md
     - name: 操作方法指南
       items:
+        - name: 管理 Azure 虚拟机的更新和修补程序
+          href: automation-tutorial-update-management.md
         - name: 管理多个 VM 的更新
           href: manage-update-multi.md
         - name: 前脚本和后脚本
@@ -157,6 +159,14 @@
         - name: 将 SCCM 与更新管理集成
           href: oms-solution-updatemgmt-sccmintegration.md
           displayName: Configuration Manager
+        - name: 为更新管理配置 Windows 更新
+          href: automation-configure-windows-update.md
+        - name: 将动态组与更新管理配合使用
+          href: automation-update-management-groups.md
+        - name: 查询更新管理日志
+          href: automation-update-management-query-logs.md
+        - name: 查看更新评估
+          href: automation-view-update-assessments.md
     - name: 故障排除
       items:
         - name: 登记
@@ -300,14 +310,18 @@
       href: automation-connections.md
     - name: 凭据
       href: automation-credentials.md
-    - name: 模块
-      href: automation-integration-modules.md
+    - name: PowerShell 模块
+      items:
+        - name: 模块
+          href: automation-integration-modules.md
+        - name: 在 Azure 自动化中使用 Az 模块
+          href: az-modules.md
+        - name: 更新 Azure PowerShell 模块
+          href: automation-update-azure-modules.md
     - name: 计划
       href: automation-schedules.md
     - name: 变量
       href: automation-variables.md
-    - name: 更新 Azure PowerShell 模块
-      href: automation-update-azure-modules.md
     - name: 管理 Python 2 程序包
       href: python-packages.md
     - name: 排查共享资源问题

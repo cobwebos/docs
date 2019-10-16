@@ -15,7 +15,7 @@
   items:
     - name: '创建函数 - C#'
       href: functions-create-your-first-function-visual-studio.md
-    - name: 创建函数 - Java/Maven
+    - name: 创建函数 - Java
       href: functions-create-first-java-maven.md
     - name: 创建函数 - JavaScript
       href: functions-create-first-function-vs-code.md
@@ -27,6 +27,8 @@
       items:
         - name: '存储 - C#'
           href: functions-add-output-binding-storage-queue-vs.md
+        - name: 存储 - Java
+          href: functions-add-output-binding-storage-queue-java.md
         - name: 存储 - JavaScript
           href: functions-add-output-binding-storage-queue-vs-code.md
         - name: 存储 - Python

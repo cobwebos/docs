@@ -102,7 +102,7 @@
           items:
             - name: 使用存储空间直通
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
-            - name: 使用高级文件存储
+            - name: 使用高级文件共享
               href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: 引用
   items:

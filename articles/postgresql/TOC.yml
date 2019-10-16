@@ -103,7 +103,7 @@
           items:
             - name: 监视和优化
               href: concepts-monitoring.md
-            - name: 服务器日志
+            - name: 日志
               href: concepts-server-logs.md
             - name: 审核日志
               href: concepts-audit.md
@@ -207,7 +207,7 @@
               href: howto-auto-grow-storage-portal.md
             - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
-        - name: 访问服务器日志
+        - name: 访问日志
           items:
             - name: Azure 门户
               href: howto-configure-server-logs-in-portal.md

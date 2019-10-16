@@ -38,6 +38,10 @@
           href: aws-integration-set-up-configure.md
         - name: 管理 AWS 成本和使用情况
           href: aws-integration-manage.md
+        - name: 面向合作伙伴的成本管理
+          href: get-started-partners.md
+        - name: 使用 Power BI Desktop 进行连接
+          href: /power-bi/desktop-connect-azure-cost-management
     - name: 引用
       items:
         - name: Azure 成本管理 REST API
