@@ -7,17 +7,17 @@ metadata:
   manager: daveba
   ms.author: ajburnle
   ms.collection: na
-  ms.date: 08/15/2019
+  ms.date: 09/14/2019
   ms.service: active-directory
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: cb3a19a372e81f7efe816d9f08831045b5f3332b
-  ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+  ms.openlocfilehash: 0abe0599bcaf88c2a925cb580bea601b827daba2
+  ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/16/2019
-  ms.locfileid: "69542429"
+  ms.lasthandoff: 10/16/2019
+  ms.locfileid: "72430258"
 landingContent:
 - title: 关于 Identity Governance
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
     links:
     - text: 什么是 Azure AD Identity Governance？
       url: identity-governance-overview.md
-  - linkListType: learn
+  - linkListType: video
     links:
     - text: 监管对资源的访问
       url: https://www.youtube.com/watch?v=bFfowdpApu4&list=PLQXpv_NQsPIBg3op2xONM9KgwlayFDue6
@@ -39,10 +39,10 @@ landingContent:
     links:
     - text: 创建你的首个访问包，以帮助用户请求他们所需的访问权限
       url: entitlement-management-access-package-first.md
-  - linkListType: how-to-guide
+  - linkListType: concept
     links:
-    - text: 编辑和管理现有访问包
-      url: entitlement-management-access-package-edit.md
+    - text: 委托和角色
+      url: entitlement-management-delegate.md
 - title: 再次验证对组、应用和特权角色的访问权限
   linkLists:
   - linkListType: overview

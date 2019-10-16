@@ -9,17 +9,18 @@ ms.service: app-service-mobile
 ms.topic: landing-page
 ms.date: 05/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 38b1acad5e8eb869d1ed2a8d218a2416bd3b8098
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a43ef0a527b8533940023b6457f9b0a5a4b22e79
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024753"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388328"
 ---
 # <a name="mobile-apps-documentation"></a>移动应用文档
 
 > [!NOTE]
 > Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”  和“诊断”  服务监视其应用的状态和使用情况，并使用“推送”  服务吸引用户。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
+>
 > 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 了解如何使用 Azure 应用服务中的移动应用，通过 Xamarin 或 Cordova 构建本机 iOS、Android 或 Windows 应用，或者跨平台应用。 教程、视频、客户端 SDK 文档和其他资源介绍了如何构建与托管任何移动应用的后端。

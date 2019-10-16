@@ -3,6 +3,10 @@
 - name: 体系结构和设计
   href: overview.md
   expanded: false
+  items: null
+- name: 体系结构和设计
+  href: overview.md
+  expanded: false
   items:
     - name: 高级威胁检测
       displayName: 'vulnerability, virus, IDs, incident'
@@ -12,14 +16,7 @@
       href: log-audit.md
     - name: Azure 网络安全
       displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
-      href: abstract-network-security.md
-    - name: Azure 无服务器平台安全
-      href: abstract-serverless-platform-security.md
-    - name: Azure 中的容器安全性
-      href: abstract-container-security.md
-    - name: 实现运营安全
-      displayName: 'policy, policies, azure monitor, soc'
-      href: abstract-operational-security.md
+      href: 'https://azure.microsoft.com/resources/azure-network-security/'
     - name: Azure 云中的隔离
       displayName: trust boundary
       href: isolation-choices.md
@@ -28,8 +25,6 @@
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: 安全技术功能
       href: technical-capabilities.md
-    - name: 开发 Azure 上的安全应用
-      href: abstract-develop-secure-apps.md
 - name: 数据安全与加密
   href: encryption-overview.md
   items:
@@ -90,8 +85,6 @@
                     - name: 使用 Azure AD 应用的磁盘加密（用于 Linux VM）
                       displayName: active directory
                       href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux-aad'
-    - name: Azure 存储安全
-      href: storage-overview.md
     - name: 存储安全指南
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: 客户密码箱

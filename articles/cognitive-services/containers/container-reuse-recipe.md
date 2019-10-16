@@ -1,7 +1,7 @@
 ---
-title: Docker 容器的食谱
+title: Docker 容器的脚本
 titleSuffix: Azure Cognitive Services
-description: 使用这些容器食谱来创建可重复使用的认知服务容器。 可以用部分或全部配置设置来构建容器, 以便在容器启动时不需要它们。 使用此新的容器层 (包括设置), 并在本地对其进行测试后, 可以将容器存储在容器注册表中。 当容器启动时, 它将只需要当前未存储在容器中的设置。
+description: 使用这些容器脚本来创建可重复使用的认知服务容器。 可以用部分或全部配置设置来构建容器, 以便在容器启动时不需要它们。 使用此新的容器层 (包括设置), 并在本地对其进行测试后, 可以将容器存储在容器注册表中。 当容器启动时, 它将只需要当前未存储在容器中的设置。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -19,7 +19,7 @@ ms.locfileid: "70068825"
 ---
 # <a name="create-containers-for-reuse"></a>创建用于重用的容器
 
-使用这些容器食谱来创建可重复使用的认知服务容器。 可以用部分或全部配置设置来构建容器, 以便在容器启动时_不_需要它们。
+使用这些容器脚本来创建可重复使用的认知服务容器。 可以用部分或全部配置设置来构建容器, 以便在容器启动时_不_需要它们。
 
 使用此新的容器层 (包括设置), 并在本地对其进行测试后, 可以将容器存储在容器注册表中。 当容器启动时, 它将只需要当前未存储在容器中的设置。 专用注册表容器提供配置空间以便您在中传递这些设置。
 
@@ -35,7 +35,7 @@ ms.locfileid: "70068825"
 
 每个`docker run`服务的示例命令不会将任何配置设置存储在容器中。 从控制台或注册表服务启动容器时, 需要传入这些配置设置。 专用注册表容器提供配置空间以便您在中传递这些设置。
 
-## <a name="reuse-recipe-store-all-configuration-settings-with-container"></a>重用食谱: 将所有配置设置存储到容器
+## <a name="reuse-recipe-store-all-configuration-settings-with-container"></a>重用脚本: 将所有配置设置存储到容器
 
 为了存储所有配置设置, 请使用这些设置`Dockerfile`创建一个。
 
@@ -53,7 +53,7 @@ ms.locfileid: "70068825"
 * `{BILLING_ENDPOINT}` 使用`ENV`从主机的环境密钥设置计费终结点。
 * 使用 "ENV" `{ENDPOINT_KEY}`从主机的环境密钥设置计费 API 密钥。
 
-### <a name="reuse-recipe-store-billing-settings-with-container"></a>重用食谱: 使用容器存储计费设置
+### <a name="reuse-recipe-store-billing-settings-with-container"></a>重用脚本: 使用容器存储计费设置
 
 此示例演示如何从 Dockerfile 生成文本分析的情绪容器。
 
@@ -66,7 +66,7 @@ ENV EULA=accept
 
 根据需要在[本地](#how-to-use-container-on-your-local-host)或从[专用注册表容器](#how-to-add-container-to-private-registry)中生成并运行容器。
 
-### <a name="reuse-recipe-store-billing-and-mount-settings-with-container"></a>重用食谱: 使用容器存储计费和装载设置
+### <a name="reuse-recipe-store-billing-and-mount-settings-with-container"></a>重用脚本: 使用容器存储计费和装载设置
 
 此示例演示如何使用语言理解, 以及如何保存 Dockerfile 中的计费和模型。
 
@@ -102,7 +102,7 @@ docker run --rm <your-image-name>
 
 请按照以下步骤使用 Dockerfile, 并将新映像放置在专用容器注册表中。  
 
-1. `Dockerfile`使用文本 "重用食谱" 创建。 `Dockerfile`没有扩展。
+1. `Dockerfile`使用文本 "重用脚本" 创建。 `Dockerfile`没有扩展。
 
 1. 将尖括号中的所有值替换为自己的值。
 

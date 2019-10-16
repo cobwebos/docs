@@ -19,11 +19,11 @@
       href: billing-mca-download-tax-document.md
     - name: 第三方服务费用
       href: billing-understand-your-azure-marketplace-charges.md
-    - name: 使用情况术语介绍
+    - name: 使用条款介绍
       href: billing-understand-your-usage.md
     - name: 使用情况术语介绍 - Microsoft 客户协议
       href: billing-mca-understand-your-usage.md
-    - name: 发票术语介绍
+    - name: 发票条款介绍
       href: billing-understand-your-invoice.md
     - name: 发票术语介绍 - Microsoft 客户协议
       href: billing-mca-understand-your-invoice.md
@@ -195,8 +195,6 @@
       href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
     - name: 创建更多订阅
       href: billing-create-subscription.md
-    - name: 创建更多订阅 - Microsoft 客户协议
-      href: billing-mca-create-subscription.md
     - name: 以编程方式创建 Enterprise 订阅
       href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
     - name: 导出订阅信息
