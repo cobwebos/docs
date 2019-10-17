@@ -1,5 +1,5 @@
 ---
-title: 主动学习 - 个性化体验创建服务
+title: 活动和非活动事件-Personalizer
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -10,47 +10,36 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 8c1579be3d11ae14ca45ee861de2d4f705e5d62c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: aa6f53901f21dcb0726454d641a4a2a66007f9e0
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663714"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429048"
 ---
-# <a name="active-learning-and-learning-policies"></a>主动学习和学习策略 
+# <a name="active-and-inactive-events"></a>活动和非活动事件
 
-当应用程序调用排名 API 时，你会收到内容的排名。 业务逻辑可以使用此排名来确定是否要向用户显示该内容。 显示排名的内容时，即表示发生了活动的排名事件。  如果应用程序未显示该排名的内容，即表示发生了非活动的排名事件。  
+当应用程序调用排名 API 时，会收到应用程序应在 rewardActionId 字段中显示的操作。  从那时起，Personalizer 将需要具有相同 eventId 的奖励。 奖励分数将用于为将来的排名调用定型模型。 如果没有收到对 eventId 的奖励调用，将应用默认的奖励。 在 Azure 门户中建立默认回报。
 
-活动的排名事件信息将返回到个性化体验创建服务。 使用此信息可通过当前学习策略继续训练模型。
-
-## <a name="active-events"></a>活动的事件
-
-活动的事件应始终显示给用户，应该返回奖励调用来关闭学习循环。 
-
-### <a name="inactive-events"></a>非活动事件 
-
-非活动状态事件不应更改基础模型，因为用户没有任何机会从排名的内容中进行选择。
-
-## <a name="dont-train-with-inactive-rank-events"></a>不要使用非活动排名事件进行训练 
-
-对于某些应用程序，可能需要在尚不知道应用程序是否要向用户显示结果的情况下调用排名 API。 
-
-在以下情况下会发生这种情况：
+在某些情况下，应用程序可能需要调用排名孔，甚至知道是否会对用户使用或 displayedn 结果。 例如，在某些情况下可能会发生这种情况，例如，使用市场营销活动覆盖升级内容的页面呈现方式。 如果未使用排名调用的结果，并且用户看不到该结果，则不能对其进行任何奖励（零或其他）训练。
+通常情况下，出现这种情况：
 
 * 你可能正在预先呈现不一定可让用户看到的某个 UI。 
 * 应用程序可能正在执行预测个性化，其中的“排名”调用是使用实时性不够高的上下文发出的，其输出不一定会由应用程序使用。 
 
-### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>在排名调用期间禁用非活动排名事件的主动学习
+在这些情况下，使用 Personalizer 的正确方法是调用请求事件处于_非活动状态_的级别。 Personalizer 不会对此事件提供奖励，也不会应用默认奖励。 Letr 在业务逻辑中，如果应用程序使用排名调用中的信息，只需_激活_事件。 在事件处于活动状态时，Personalizer 将需要对该事件的奖励，或在没有对奖励 API 作出显式调用的情况下应用默认奖励。
 
-若要禁用自动学习，请结合 `learningEnabled = False` 调用“排名”。
+## <a name="get-inactive-events"></a>获取非活动事件
 
-如果发送排名的奖励，则会隐式激活非活动事件的学习。
+若要禁用事件培训，请调用排名 `learningEnabled = False`。
 
-## <a name="learning-policies"></a>学习策略
+如果为 eventId 发送奖励，或为该 eventId 调用 `activate` API，则会隐式激活对非活动事件的学习。
 
-学习策略确定模型训练的特定超参数。  基于不同的学习策略训练的两个相同数据模型会有不同的行为。
+## <a name="learning-settings"></a>学习设置
 
-### <a name="importing-and-exporting-learning-policies"></a>导入和导出学习策略
+学习设置确定模型定型的特定*超参数*。 同一数据的两个模型在不同的学习设置上定型，最终会有所不同。
+
+### <a name="import-and-export-learning-policies"></a>导入和导出学习策略
 
 可以通过 Azure 门户导入和导出学习策略文件。 在门户中可以保存、测试、替换现有策略，并在源代码管理中将其存档为项目，以供将来参考和审核。
 

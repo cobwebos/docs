@@ -9,14 +9,14 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 25b7e7015b32609356eb138c86fbe537a87a7a22
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 3dacfc0d8371ad9e8fa66d8bb1c5fafa59271ce0
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595822"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388166"
 ---
-# <a name="frequently-asked-questions"></a>常见问题
+# <a name="custom-translator-frequently-asked-questions"></a>自定义翻译人员常见问题
 
 本文包含有关[自定义翻译](https://portal.customtranslator.azure.ai)的常见问题解答。
 
