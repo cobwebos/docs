@@ -11,22 +11,22 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c747f25b92d9f165bfeb4468a0e263f102976f9
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 109db23976f6332b24bcfa565812bd9491062691
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350572"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330733"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
 
 >[!IMPORTANT]
-> 此 SDK 即将停用，并将用 Application Insights 简化[数据监视](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)。 
+> 此 SDK 即将停用。 此 SDK 仍适用于监视模型中数据偏移的开发人员，但大多数开发人员应将简化的[数据监视与 Application Insights 一起](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)使用。 
 
 在本文中，可以了解如何从已部署到 azure Kubernetes 群集（AKS）的 Azure 机器学习收集输入模型数据到 Azure Blob 存储。 
 
 启用后，收集的这些数据可帮助你：
-* [监视数据偏离](how-to-monitor-data-drift.md), 因为生产数据进入你的模型
+* [监视数据偏离](how-to-monitor-data-drift.md)，因为生产数据进入你的模型
 
 * 更好地决定何时重新训练或优化模型
 
@@ -51,11 +51,11 @@ Blob 中输出数据的路径遵循以下语法：
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-- 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+- 如果还没有 Azure 订阅，可以在开始前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
-- 已安装 Azure 机器学习工作区、一个包含脚本的本地目录以及用于 Python 的 Azure 机器学习 SDK。 了解如何使用[如何配置开发环境](how-to-configure-environment.md)文档来获得这些先决条件。
+- 已安装 Azure 机器学习工作区、一个包含脚本的本地目录以及用于 Python 的 Azure 机器学习 SDK。 了解如何通过[如何配置开发环境](how-to-configure-environment.md)一文满足这些先决条件。
 
 - 要部署到 Azure Kubernetes 服务 (AKS) 的经过训练的机器学习模型。 如果没有模型，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程。
 
@@ -192,7 +192,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 在查询编辑器中，单击“名称”列的下面，并添加存储帐户 1。 在筛选器中为路径建模。 注意：如果只想查看特定年份或月份的文件，则只需展开筛选器路径即可。 例如，只查看 3 月份的数据：/modeldata/subscriptionid>/resourcegroupname>/workspacename>/webservicename>/modelname>/modelversion>/identifier>/year>/3
 
-1. 基于“名称”筛选相关的数据。 如果存储了**预测**和**输入**，则需要针对每个文件创建一个查询。
+1. 基于“名称”筛选相关的数据。 如果存储了**预测**和**输入**，则需要为每个都创建一个查询。
 
 1. 单击“内容”列旁边的双箭头合并文件。 
 
@@ -204,7 +204,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 现在，可以单击“关闭并应用”。
 
-1.  如果添加了输入和预测，则表会自动按 **RequestId** 进行关联。
+1.  如果添加了输入和预测，则表会自动与**RequestId**关联。
 
 1. 开始基于模型数据生成自定义报表。
 
@@ -215,7 +215,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 转到该 Databricks 工作区。 
 
-1. 在 Databricks 工作区中，选择“上传数据”。
+1. 在 databricks 工作区中，选择 "**上传数据**"。
 
     [![DB 上传](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 

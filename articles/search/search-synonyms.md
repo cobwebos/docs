@@ -10,12 +10,12 @@ ms.date: 05/02/2019
 manager: nitinme
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: d9ddb5af42c538558a69ce68e7ea90161c947b12
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: a17e2ae5313f9d0b662d343230a04dd3e726c16d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186461"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331182"
 ---
 # <a name="synonyms-in-azure-search"></a>Azure 搜索中的同义词功能
 
@@ -25,9 +25,9 @@ ms.locfileid: "70186461"
 
 ## <a name="create-synonyms"></a>创建同义词
 
-我们不提供创建同义词的门户支持，但你可以使用 REST API 或 .NET SDK。 若要开始使用 REST，建议[使用 Postman](search-get-started-postman.md)，并使用此 API 来表述请求：[创建同义词映射](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 如果是 C# 开发人员，一开始可以[使用 C# 在 Azure 搜索中添加同义词](search-synonyms-tutorial-sdk.md)。
+无门户支持来创建同义词，但你可以使用 REST API 或 .NET SDK。 若要开始使用 REST，建议使用以下 API 的[Postman](search-get-started-postman.md)和表述请求： [Create 同义词 Maps](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 对于C#开发人员，你可以[使用C#在 Azure 搜索中开始添加同义词](search-synonyms-tutorial-sdk.md)。
 
-另外，如果使用[客户托管密钥](search-security-manage-encryption-keys.md)进行服务端静态加密，则可对同义词映射的内容应用该保护。
+（可选）如果使用[客户托管的密钥](search-security-manage-encryption-keys.md)进行服务端加密，则可以将该保护应用于同义词映射的内容。
 
 ## <a name="use-synonyms"></a>使用同义词
 
@@ -40,6 +40,8 @@ ms.locfileid: "70186461"
 1.  通过以下 API 将同义词映射添加到搜索服务。  
 
 2.  配置可搜索字段以在索引定义中使用同义词映射。
+
+可为搜索应用程序创建多个同义词映射（例如，如果应用程序支持多语言客户群，则可按语言创建同义词映射）。 目前，一个字段仅可使用其中一种。 可随时更新字段的 synonymMaps 属性。
 
 ### <a name="synonymmaps-resource-apis"></a>SynonymMaps 资源 API
 
@@ -76,14 +78,14 @@ ms.locfileid: "70186461"
 
 ##### <a name="apache-solr-synonym-format"></a>Apache Solr 同义词格式
 
-Solr 格式支持等效和显式同义词映射。 映射规则遵循 Apache Solr 的开源同义词筛选器规范，详情请参阅此文档：[SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter)。 下面是等效同义词的示例规则。
+Solr 格式支持等效和显式同义词映射。 映射规则遵循 Apache Solr 的开源同义词筛选器规范，如本文档中所述： [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter)。 下面是等效同义词的示例规则。
 ```
 USA, United States, United States of America
 ```
 
 使用以上规则，搜索查询“USA”会扩展为“USA”、“United States”或“United States of America”。
 
-箭头“=>”表示显式映射。 如果指定，与“=>”左侧内容匹配的一系列搜索查询词会被替换为“=>”右侧的替代项。 给定以下规则，搜索查询“Washington”、“Wash”。 或“WA”全都会重写为“WA”。 显式映射只会按指定方向应用，在此示例中，不会将查询“WA”重写为“Washington”。
+箭头“=>”表示显式映射。 指定时，与 "= >" 左侧匹配的搜索查询的字词序列将替换为右侧的替代项。 给定以下规则，搜索查询“Washington”、“Wash”。 或“WA”全都会重写为“WA”。 显式映射只会按指定方向应用，在此示例中，不会将查询“WA”重写为“Washington”。
 ```
 Washington, Wash., WA => WA
 ```
@@ -154,16 +156,9 @@ Washington, Wash., WA => WA
 
 如果需要执行应用同义词扩展和通配符、正则表达式或模糊搜索的单个查询，则可以使用 OR 语法组合查询。 例如，若要将同义词与通配符组合用于简单查询语法，则术语将为 `<query> | <query>*`。
 
-## <a name="tips-for-building-a-synonym-map"></a>构建同义词映射的提示
-
-- 相比穷举可能的匹配，简明清晰、精心设计的同义词映射更高效。 如果查询扩展到多个同义词，由于字典过大或太复杂，分析时间将延长，导致查询延迟。 可通过[搜索流量分析报告](search-traffic-analytics.md)获取实际术语，而无需猜测可能使用的术语。
-
-- 作为一个初步和验证练习，请启用并使用该报告精确确定哪些术语将受益于同义词匹配，然后继续使用它验证同义词映射是否产生更好的结果。 在预定义的报告中，磁贴“最常用的搜索查询”和“零结果的搜索查询”将提供必要信息。
-
-- 可为搜索应用程序创建多个同义词映射（例如，如果应用程序支持多语言客户群，则可按语言创建同义词映射）。 目前，一个字段仅可使用其中一种。 可随时更新字段的 synonymMaps 属性。
+如果开发（非生产）环境中具有现有索引，请使用一个小字典进行试验，了解添加同义词如何更改搜索体验，包括对计分配置文件、突出显示和建议造成的影响。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果开发（非生产）环境中具有现有索引，请使用一个小字典进行试验，了解添加同义词如何更改搜索体验，包括对计分配置文件、突出显示和建议造成的影响。
-
-- [启用搜索流量分析](search-traffic-analytics.md)并使用预定义的 Power BI 报告可了解最常使用的术语及将返回零个文档的术语。 使用这些见解，修改字典以包括应解析至索引中的文档的非生产性查询的同义词。
+> [!div class="nextstepaction"]
+> [创建同义词映射](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)

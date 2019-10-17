@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 30994133b19c4f59ae9e8be26caffe14348638f6
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 30394ba7b71d7dcb4233e5dca341dda47fd9ffa7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219365"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376316"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>使用 Azure CLI 创建专用终结点
 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Azure 资源（例如虚拟机）能够与专用链接资源进行私下通信。 在本快速入门中，你将了解如何在虚拟网络上创建虚拟机，以及如何在 SQL 数据库服务器上创建使用 Azure CLI 的专用终结点。 然后，你可以访问 VM，并安全地访问专用链接资源（本示例中为 Azure SQL 数据库的私有服务器）。 
@@ -39,7 +39,7 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 ## <a name="disable-subnet-private-endpoint-policies"></a>禁用子网专用终结点策略 
-Azure 会将资源部署到虚拟网络中的子网，因此，需要创建或更新子网，以禁用专用终结点网络策略。 使用[az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)更新名为 * mySubnet * * 的子网配置：
+Azure 会将资源部署到虚拟网络中的子网，因此，需要创建或更新子网，以禁用专用终结点网络策略。 将名为 *mySubnet*的子网配置更新  with [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -81,7 +81,7 @@ az sql db create \
     --capacity 1 
 ```
 
-请注意，SQL Server id 类似 ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.```于你将在下一步中使用 SQL Server id。 
+请注意，SQL Server ID 类似于 @ no__t-0，你将在下一步中使用 SQL Server ID。 
 
 ## <a name="create-the-private-endpoint"></a>创建专用终结点 
 为虚拟网络中的 SQL 数据库服务器创建专用终结点： 
@@ -127,7 +127,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开。
 
-1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
+1. 选择“下载 RDP 文件”。 Azure 创建远程桌面协议 (.rdp) 文件，并下载到计算机。
 
 1. 打开下载的 .rdp* 文件。
 
@@ -149,7 +149,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 在本部分中，将使用专用终结点从 VM 连接到 SQL 数据库服务器。
 
  1. 在  *myVM* 的远程桌面中打开 PowerShell。
- 2. 输入 nslookup myserver.database.windows.net  ，你会收到类似于下面的消息： 
+ 2. 输入 nslookup myserver. .net @ no__t-0 你会收到类似于下面的消息： 
 
 ```
       Server:  UnKnown 
@@ -161,11 +161,11 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
  3. 安装 SQL Server Management Studio 
  4. 在 "连接到服务器" 中，输入或选择以下信息：服务器类型：选择数据库引擎。
- 服务器名称：选择 myserver.database.windows.net 用户名：输入在创建过程中提供的用户名。
- 密码：输入在创建过程中提供的密码。
+ 服务器名称：选择 myserver.database.windows.net Username：输入创建过程中提供的用户名。
+ 密码：输入创建过程中提供的密码。
  记住密码：选择 "是"。
  
- 5. 选择 " **连接**"。
+ 5. 选择“连接”。 ****
  6. 浏览左侧菜单中的**数据库**。
  7. 同时创建或查询来自*mydatabase*的信息
  8. 关闭与*myVm*的远程桌面连接。

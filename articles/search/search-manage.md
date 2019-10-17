@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 31b005bd76591d8098f119c7aa9b87a68841658c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719868"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331257"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure 门户中 Azure 搜索服务管理
 > [!div class="op_single_selector"]
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
-> * [门户](search-manage.md)
+> * [Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
 Azure 搜索是一种完全托管的、基于云的搜索服务，用于在自定义应用中生成丰富的搜索体验。 本文介绍可在 [Azure 门户](https://portal.azure.com)中对已预配的搜索服务执行的服务管理任务。 服务管理设计成轻型，它限于以下任务：
@@ -34,8 +34,7 @@ Azure 搜索是一种完全托管的、基于云的搜索服务，用于在自�
 
 请注意，“升级”未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 搜索服务](search-create-service-portal.md)。
 
-> [!Tip]
-> 查找有关如何分析搜索流量或查询性能的帮助？ 可以监视查询卷、用户搜索哪些术语，以及搜索结果在指引客户使用索引中特定文档方面的成功率如何。 有关更多信息，请参阅 [Azure 搜索的搜索流量分析](search-traffic-analytics.md)、[监视使用情况和查询指标](search-monitor-usage.md)以及[性能和优化](search-performance-optimization.md)。
+你可以监视查询量和其他指标，并使用这些见解调整你的服务以获得更快的响应时间。 有关详细信息，请参阅[监视使用情况和查询度量值](search-monitor-usage.md)以及[性能和优化](search-performance-optimization.md)。
 
 <a id="admin-rights"></a>
 
@@ -55,12 +54,12 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 
 * 在门户中、在服务仪表板上、通过通知、属性和状态消息。
 * 使用 [PowerShell](search-manage-powershell.md) 或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) 来[获取服务属性](https://docs.microsoft.com/rest/api/searchmanagement/services)，或索引资源使用状况的状态。
-* 如前面所述，通过[搜索流量分析](search-traffic-analytics.md)。
+
 
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>监视资源使用情况
-在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果你希望捕获并持久保存所记录的事件，可以预配外部资源，例如 Azure 监视。 有关详细信息，请参阅[监视 Azure 搜索](search-monitor-usage.md)。
+在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果要捕获并保存记录的事件，可以预配 Azure 监视等外部资源。 有关详细信息，请参阅[监视 Azure 搜索](search-monitor-usage.md)。
 
 使用搜索服务 REST API，可以通过编程方式获取文档和索引的计数： 
 

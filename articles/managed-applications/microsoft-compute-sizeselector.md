@@ -1,6 +1,6 @@
 ---
 title: Azure SizeSelector UI 元素 | Microsoft Docs
-description: 介绍了 Azure 门户的 Microsoft.Compute.SizeSelector UI 元素。
+description: 介绍了 Azure 门户的 Microsoft.Compute.SizeSelector UI 元素。 用于选择虚拟机的大小。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e5be5635964ebeedc7be4d1d1f5403e4d281b55c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 288ea7e887a170c8560b0126fa53c9132da35db6
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64722345"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332673"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI 元素
 一个用于为一个或多个虚拟机实例选择大小的控件。

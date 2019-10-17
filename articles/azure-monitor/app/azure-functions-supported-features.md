@@ -12,22 +12,22 @@ ms.topic: reference
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: cf39c8b5e204493380c095519e0ff25c3ce19f68
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 46e7f5b5376622be9a05265942b6aceb38feebac
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959912"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372438"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能
 
-Azure Functions 提供与 Application Insights 的[内置集成](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)功能（通过 ILogger Interface 可用）。 以下是当前受支持的功能列表。 有关[入门](https://github.com/Azure/Azure-Functions/wiki/App-Insights)信息，请参阅 Azure Functions 指南。
+Azure Functions 提供与 Application Insights 的[内置集成](../../azure-functions/functions-monitoring.md)功能（通过 ILogger Interface 可用）。 以下是当前受支持的功能列表。 有关[入门](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)信息，请参阅 Azure Functions 指南。
 
 ## <a name="supported-features"></a>受支持的功能
 
 | Azure Functions                       | V1                | V2 (Ignite 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
+| **Application Insights .NET SDK**   | 2\.5.0       | **2.9.1**         |
 | | | | 
 | **自动集合**        |                 |                   |               
 | &bull; 请求                     | 是             | 是               | 
@@ -66,9 +66,9 @@ Azure Functions 提供与 Application Insights 的[内置集成](https://docs.mi
 
 Azure Functions 默认在其配置中启用采样功能。 有关详细信息，请参阅[配置采样](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)。
 
-如果你的项目依赖 Application Insights SDK 进行手动遥测跟踪，则当采样配置与 Functions 的采样配置不同时，可能会遇到奇怪的行为。 
+如果你的项目依赖于 Application Insights SDK 执行手动遥测跟踪，则如果你的采样配置不同于函数的采样配置，则可能会遇到奇怪的行为。 
 
-我们建议使用与 Functions 相同的配置。 使用 **Functions v2**，可以在构造函数中使用依赖注入获得相同的配置：
+建议使用与函数相同的配置。 使用**函数 v2**，你可以在构造函数中使用依赖关系注入来获取相同的配置：
 
 ```csharp
 using Microsoft.ApplicationInsights;

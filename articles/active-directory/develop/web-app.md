@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d15d76f4c16fa89b41ebfc10c9617c4709203d38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d41cd23d551e4834bf6b94f513e36ff46c1cd45
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544722"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373643"
 ---
 # <a name="web-apps"></a>Web 应用
 
@@ -45,7 +45,7 @@ Web 应用是在 Web 浏览器到 Web 应用方案中对用户进行身份验证
 
 ## <a name="app-registration"></a>应用注册
 
-若要注册 Web 应用，请参阅[注册应用](quickstart-register-app.md)。
+若要注册 web 应用，请参阅[注册应用](quickstart-register-app.md)。
 
 * 单租户 - 如果在构建仅供组织使用的应用程序，则必须使用 Azure 门户在公司的目录中注册该应用程序。
 * 多租户 - 如果在构建可以由组织外部用户使用的应用程序，则必须在公司的目录中注册该应用程序，并且还必须在将使用该应用程序的每个组织的目录中注册该应用程序。 要使应用程序在客户的目录中可用，可以提供一个供客户使用的注册流程，让客户许可应用程序的要求。 当他们针对应用程序进行注册时，系统会向他们显示一个对话框，其中显示了应用程序要求的权限，之后是表示许可的选项。 可能会要求其他组织中的管理员表示许可，具体取决于所需的权限。 当用户或管理员表示许可后，会在其目录中注册该应用程序。
@@ -57,4 +57,4 @@ Web 应用是在 Web 浏览器到 Web 应用方案中对用户进行身份验证
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解其他[应用程序类型和方案](app-types.md)
-* 了解 Azure AD [身份验证基础知识](authentication-scenarios.md)
+* 了解 Azure AD [身份验证基础知识](v1-authentication-scenarios.md)

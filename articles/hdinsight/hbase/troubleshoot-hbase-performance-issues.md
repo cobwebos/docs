@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: c67f21a6ed8a7697977bb7737f0e46348efb2530
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
-ms.translationtype: MT
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71266648"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>排查 Azure HDInsight 上的 Apache HBase 性能问题
@@ -22,7 +22,7 @@ ms.locfileid: "71266648"
 
 大多数 HBase 工作负载中的最大瓶颈是 "预写日志（WAL）"。 这会对写入性能产生严重影响。 HDInsight HBase 有一个单独的存储计算模型，即数据以远程方式存储在 Azure 存储中，而区域服务器托管在 Vm 上。 到目前为止，预写日志还写入到 Azure 存储中，因此在 HDInsight 中放大这种瓶颈。 [加速写入](./apache-hbase-accelerated-writes.md)功能旨在解决此问题，方法是将 "提前写入" 日志写入 AZURE 高级 SSD 托管磁盘。 这种优势极大地提高了写入性能，并有助于一些写入密集型工作负荷面临许多问题。
 
-使用[高级块 Blob 存储帐户](https://azure.microsoft.com/blog/azure-premium-block-blob-storage-is-now-generally-available/)作为远程存储，以显著提高读取操作的性能。 仅当启用了 "提前写入日志" 功能时，此选项才可用。
+使用[高级块 Blob 存储帐户](https://azure.microsoft.com/blog/azure-premium-block-blob-storage-is-now-generally-available/)作为远程存储，可以显著改善读取操作的性能 只有在“预写日志”功能已启用的情况下，才可以使用此选项。
 
 ## <a name="compaction"></a>压缩
 
@@ -39,7 +39,7 @@ ms.locfileid: "71266648"
 * 您是否要将 "读取" 转换为扫描？
     * 如果是这样，这些扫描的特征是什么？
     * 是否为这些扫描（包括适当的索引）优化了 phoenix 表架构？
-* 你使用了`EXPLAIN`语句来了解你的 "读取" 生成的查询计划。
+* 你使用了 `EXPLAIN` 语句来了解你的 "读取" 生成的查询计划。
 * 你的写入是 "upsert" 吗？
     * 如果是这样，则它们也会进行扫描。 预计的扫描延迟时间平均为100毫秒，而 HBase 中点获取的时间是10毫秒。  
 
@@ -57,7 +57,7 @@ ms.locfileid: "71266648"
 
 ## <a name="migration-issues"></a>迁移问题
 
-如果迁移到 Azure HDInsight，请确保迁移是系统系统完成的，并且最好通过自动化进行。 避免手动迁移。 请确保以下各项:
+如果迁移到 Azure HDInsight，请确保迁移是系统系统完成的，并且最好通过自动化进行。 避免手动迁移。 请确保以下各项：
 
 1. 应准确迁移表属性（如压缩、布隆筛选器等）。
 
@@ -65,49 +65,49 @@ ms.locfileid: "71266648"
 
 ## <a name="server-side-config-tunings"></a>服务器端配置 Tunings
 
-在 HDInsight HBase 中，Hfile 存储在远程存储上，因此，如果缓存未命中，则读取的开销肯定比本地系统更高，因为这会导致网络延迟。 在大多数情况下，可智能地使用 HBase 缓存（块缓存和 bucket 缓存）来避免此问题。 但是，在某些情况下，这可能是客户的问题。 使用高级块 blob 帐户对此进行了进一步的帮助。 但是，在 WASB （Windows Azure 存储驱动程序） blob 依赖`fs.azure.read.request.size`于某些属性（例如）时，根据它确定为读取模式的数据块（顺序与随机）来提取数据，我们可能会继续查看具有读取操作的较高延迟的实例。 我们已通过实践试验，将读取请求块大小（`fs.azure.read.request.size`）设置为 512 KB，并使 HBase 表的块大小与相同。
+在 HDInsight HBase 中，Hfile 存储在远程存储上，因此，如果缓存未命中，则读取的开销肯定比本地系统更高，因为这会导致网络延迟。 在大多数情况下，可智能地使用 HBase 缓存（块缓存和 bucket 缓存）来避免此问题。 但是，在某些情况下，这可能是客户的问题。 使用高级块 blob 帐户对此进行了进一步的帮助。 但是，如果 WASB （Windows Azure 存储驱动程序） blob 依赖于某些属性（例如 `fs.azure.read.request.size`），则基于它确定为读取模式的数据块（顺序与随机）获取数据 我们已通过实践试验，将读取请求块大小（`fs.azure.read.request.size`）设置为 512 KB，并使 HBase 表的块大小与相同，因此可以获得最佳结果。
 
-HDInsight HBase，适用于大多数大型节点群集，在`bucketcache`附加到 VM 的本地 SSD 上提供文件，该文件`regionservers`运行。 有时，使用 off 堆缓存可以提高性能。 这就限制了使用可用内存，并且可能会有较小的大小，而不是基于文件的缓存，因此这并非总是最佳选择。
+HDInsight HBase 对于大多数大型节点群集，提供 `bucketcache` 作为附加到 VM 的本地 SSD 上的文件，该文件运行 @no__t 1。 有时，使用 off 堆缓存可以提高性能。 这就限制了使用可用内存，并且可能会有较小的大小，而不是基于文件的缓存，因此这并非总是最佳选择。
 
 我们已经优化了一些其他特定参数，这些参数似乎已帮助您以如下方式区分度数：
 
-1. 从`memstore`默认大小 128 mb 增加到 256 MB –此设置通常建议用于高写入方案。
+1. 将 `memstore` 大小从默认 128 MB 增加到 256 MB –此设置通常建议用于高写入方案。
 
 1. 增加专用于压缩的线程数–从默认值1到4。 如果我们观察到频繁的次要 compactions，则此设置是相关的。
 
-1. 由于存储`memstore`限制，请避免阻止刷新。 `Hbase.hstore.blockingStoreFiles`可以增加到100以提供此缓冲区。
+1. 避免因存储限制而阻止 `memstore` flush。 `Hbase.hstore.blockingStoreFiles` 可以提高到100以提供此缓冲区。
 
 1. 对于控制刷新，可以按如下所示对默认值进行寻址：
 
-    1. `Hbase.regionserver.maxlogs`可以从 32 upped 到140（避免由于 WAL 限制而刷新）。
+    1. `Hbase.regionserver.maxlogs` 可从 32 upped 到140（避免因 WAL 限制而刷新）。
 
-    1. `Hbase.regionserver.global.memstore.lowerLimit`= 0.55。
+    1. `Hbase.regionserver.global.memstore.lowerLimit` = 0.55。
 
-    1. `Hbase.regionserver.global.memstore.upperLimit`= 0.60。
+    1. `Hbase.regionserver.global.memstore.upperLimit` = 0.60。
 
 1. 用于线程池优化的 Phoenix 特定配置：
 
-    1. `Phoenix.query.queuesize`可以增加到10000。
+    1. `Phoenix.query.queuesize` 可以增加到10000。
 
-    1. `Phoenix.query.threadpoolsize`可以增加到512。
+    1. `Phoenix.query.threadpoolsize` 可以增加到512。
 
 1. 其他 phoenix 特定配置：
 
-    1. `Phoenix.rpc.index.handler.count`如果有大型索引查找或多个索引查找，则可以设置为50。
+    1. 如果有大型索引查找或多个索引查找，则可以将 @no__t 设置为50。
 
-    1. `Phoenix.stats.updateFrequency`–可以从默认15分钟 upped 到1小时。
+    1. `Phoenix.stats.updateFrequency` –从默认值15分钟 upped 到1小时。
 
-    1. `Phoenix.coprocessor.maxmetadatacachetimetolivems`–可以从30分钟 upped 到1小时。
+    1. `Phoenix.coprocessor.maxmetadatacachetimetolivems` –可以从30分钟 upped 到1小时。
 
-    1. `Phoenix.coprocessor.maxmetadatacachesize`–可以从 20 MB upped 到 50 MB。
+    1. `Phoenix.coprocessor.maxmetadatacachesize` –可以从 20 MB upped 到 50 MB。
 
-1. RPC 超时– HBase rpc timeout、HBase 客户端扫描程序超时和 Phoenix 查询超时值可增加到3分钟。 请注意，此处的`hbase.client.scanner.caching`参数设置为与服务器端和客户端端匹配的值。 否则，此设置将导致客户端`OutOfOrderScannerException`的相关错误。 对于大型扫描，此设置应设置为低值。 我们将此值设置为100。
+1. RPC 超时– HBase rpc timeout、HBase 客户端扫描程序超时和 Phoenix 查询超时值可增加到3分钟。 请注意，此处的 `hbase.client.scanner.caching` 参数设置为与服务器端和客户端匹配的值。 否则，此设置将导致在客户端 @no__t 的相关错误。 对于大型扫描，此设置应设置为低值。 我们将此值设置为100。
 
 ## <a name="other-considerations"></a>其他注意事项
 
 要考虑优化的其他一些参数：
 
-1. `Hbase.rs.cacheblocksonwrite`–默认情况下，此设置在 HDI 上设置为 true。
+1. `Hbase.rs.cacheblocksonwrite` –默认情况下，此设置在 HDI 上设置为 true。
 
 1. 允许稍后将次压缩延迟的设置。
 
@@ -117,8 +117,8 @@ HDInsight HBase，适用于大多数大型节点群集，在`bucketcache`附加�
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-- 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
+- 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-- [@AzureSupport](https://twitter.com/azuresupport)连接-官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+- 与[@no__t-Microsoft Azure 1](https://twitter.com/azuresupport)建立连接，以改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
-- 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+- 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。

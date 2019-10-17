@@ -1,21 +1,21 @@
 ---
-title: 了解和使用 Azure 成本管理范围 |Microsoft Docs
+title: 了解和使用 Azure 成本管理范围
 description: 本文将帮助你了解 Azure 中提供的计费和资源管理范围，以及如何在成本管理和 Api 中使用范围。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338641"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374485"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -39,15 +39,15 @@ Azure 支持三个作用域进行资源管理。 每个作用域都支持管理�
 
 - [**管理组**](../governance/management-groups/overview.md)-分层容器，最多8个级别，用于组织 Azure 订阅。
 
-    资源类型：[Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
+    资源类型： [managementGroups/](/rest/api/resources/managementgroups)
 
 - **订阅**-Azure 资源的主要容器。
 
-    资源类型：[Microsoft.Resources/subscriptions](/rest/api/resources/subscriptions)
+    资源类型： [Microsoft. 资源/订阅](/rest/api/resources/subscriptions)
 
 - [**资源组**](../azure-resource-manager/resource-group-overview.md#resource-groups)-共享相同生命周期的 Azure 解决方案的相关资源的逻辑分组。 例如，同时部署和删除的资源。
 
-    资源类型：[Microsoft.Resources/subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
+    资源类型： [Microsoft .resources/订阅/resourceGroups](/rest/api/resources/resourcegroups)
 
 管理组允许您将订阅组织到层次结构中。 例如，你可以使用管理组创建逻辑组织层次结构。 然后，为团队订阅生产和开发/测试工作负荷。 然后，在订阅中创建资源组以管理每个子系统或组件。
 
@@ -128,7 +128,10 @@ Microsoft 客户协议计费帐户具有以下作用域：
 
     资源类型： `Microsoft.Billing/billingAccounts/invoiceSections`
 
+- **Customer** -表示一组订阅，这些订阅与通过合作伙伴载入到 Microsoft 客户协议的特定客户关联。 此作用域特定于 CSP。
+
 与 EA 计费范围不同，客户协议计费_帐户绑定_到单个目录，并且不能跨多个 Azure AD 目录拥有订阅。
+
 
 客户协议计费范围支持下列角色：
 
@@ -149,7 +152,7 @@ Azure 订阅嵌套在 "发票" 部分下，例如它们在 "EA 注册帐户" 下
 - **外部计费帐户**-表示与第三方供应商签订的客户协议。 这类似于 EA 计费帐户。
 
     资源类型： `Microsoft.CostManagement/externalBillingAccounts`
-    
+
 - **外部订阅**-表示包含第三方供应商的客户操作帐户。 这类似于 Azure 订阅。
 
     资源类型： `Microsoft.CostManagement/externalSubscriptions`
@@ -166,7 +169,7 @@ Azure 门户中的所有成本管理视图都包含视图左上角的 "**范围*
 
 使用成本管理 Api 时，知道范围是至关重要的。 使用以下信息为成本管理 Api 生成正确的范围 URI。
 
-### <a name="billing-accounts"></a>结算帐户
+### <a name="billing-accounts"></a>计费帐户
 
 1. 打开 Azure 门户，然后在服务列表中导航到 "**成本管理 + 计费**"。
 2. 在 "计费帐户" 菜单中选择 "**属性**"。
@@ -216,7 +219,7 @@ Azure 门户中的所有成本管理视图都包含视图左上角的 "**范围*
 3. 从表中复制管理组 ID。
 4. 作用域为： `"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>订阅
+### <a name="subscription"></a>Subscription
 
 1. 打开 Azure 门户并导航到服务列表中的 "**订阅**"。
 2. 从表中复制订阅 ID。

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: db0921d709f842b004ec4c23d15a986f2e59ec23
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 43b8dfd571537aaaf6753d6b762ab84cfe4cfd0d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687078"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376169"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 创建专用终结点
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>添加子网
 
-Azure 会将资源部署到虚拟网络中的子网，因此需要创建一个子网。 使用 [AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)创建名为 *mySubnet* 的子网配置。 以下示例创建名为*mySubnet*的子网，并将 "专用终结点网络策略" 标志设置为 "**已禁用**"。
+Azure 会将资源部署到虚拟网络中的子网，因此需要创建一个子网。 使用 [AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)创建名为*mySubnet*的子网配置。 以下示例创建名为*mySubnet*的子网，并将 "专用终结点网络策略" 标志设置为 "**已禁用**"。
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -167,7 +167,7 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-使用 [AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) 返回 VM 的公共 IP 地址。 此示例返回 *myVM* VM 的公共 IP 地址：
+使用 [AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) TO 返回 VM 的公共 IP 地址。 此示例返回*myVM* VM 的公共 IP 地址：
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -175,7 +175,7 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress 
 ```  
-在本地计算机上打开命令提示符。 运行 mstsc 命令。 将 <publicIpAddress>替换 为上一步返回的公共 IP 地址： 
+在本地计算机上打开命令提示符。 运行 mstsc 命令。 将 @ no__t-0 @ no__t-1with 替换为上一步返回的公共 IP 地址： 
 
 
 > [!NOTE]
@@ -184,13 +184,13 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-1. 如果系统提示，请选择 " **连接**"。 
+1. 出现提示时，选择“连接”。 
 2. 输入在创建 VM 时指定的用户名和密码。
   > [!NOTE]
   > 你可能需要选择 "更多选项" > "使用其他帐户"，以便指定在创建 VM 时输入的凭据。 
   
-3. 选择“确定”。 **** 
-4. 可能会收到证书警告。 如果这样做，请选择 **"是" 或 "**   **继续**"。 
+3. 选择“确定”。 
+4. 可能会收到证书警告。 如果收到证书警告，选择“确定”或“继续”。 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>从 VM 中私下访问 SQL 数据库服务器
 
@@ -214,7 +214,7 @@ mstsc /v:<publicIpAddress>
 5. 选择 "连接"。
 6. 浏览左侧菜单中的数据库。 
 7. 同时创建或查询来自 mydatabase 的信息
-8. 关闭与 *myVM*的远程桌面连接。 
+8. 关闭与*myVM*的远程桌面连接。 
 
 ## <a name="clean-up-resources"></a>清理资源 
 使用完专用终结点、SQL 数据库服务器和 VM 后，请使用[AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)删除该资源组及其包含的所有资源：

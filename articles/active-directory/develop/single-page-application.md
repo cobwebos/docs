@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f6f66779bec9ed4e38e5a662c2d3728ba2034b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8afb226406c02f395c7112d485d4616bfbec140e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545302"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373859"
 ---
 # <a name="single-page-applications"></a>单页应用程序
 
@@ -68,4 +68,4 @@ ms.locfileid: "65545302"
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解其他[应用程序类型和方案](app-types.md)
-* 了解 Azure AD [身份验证基础知识](authentication-scenarios.md)
+* 了解 Azure AD [身份验证基础知识](v1-authentication-scenarios.md)

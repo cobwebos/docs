@@ -1,6 +1,6 @@
 ---
 title: Azure UserNameTextBox UI 元素 | Microsoft Docs
-description: 介绍了 Azure 门户的 Microsoft.Compute.UserNameTextBox UI 元素。
+description: 介绍了 Azure 门户的 Microsoft.Compute.UserNameTextBox UI 元素。 允许用户提供 Windows 或 Linux 用户名。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 88ab13329a719ba1e1b8a7b5fba2f7a2d381eca2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 875c73c546fa52642959e2593d41f9af82c13797
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64700843"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331578"
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox UI 元素
 一个具有针对 Windows 和 Linux 用户名的内置验证的文本框控件。
@@ -44,7 +44,7 @@ ms.locfileid: "64700843"
 ```
 
 ## <a name="remarks"></a>备注
-- 如果 `constraints.required` 设置为 true，则文本框必须包含值才能成功通过验证  。 默认值为 **true**。
+- 如果 `constraints.required` 设置为 true，则文本框必须包含值才能成功通过验证。 默认值为 **true**。
 - 必须指定 `osPlatform`，它可以是 **Windows** 或 **Linux**。
 - `constraints.regex` 是一个 JavaScript 正则表达式模式。 如果指定，则文本框的值必须与模式完全匹配才能成功通过验证。 默认值为 **null**。
 - `constraints.validationMessage` 是当文本框的值未通过 `constraints.regex` 指定的验证时会显示的一个字符串。 如果未指定，则会使用文本框的内置验证消息。 默认值为 **null**。

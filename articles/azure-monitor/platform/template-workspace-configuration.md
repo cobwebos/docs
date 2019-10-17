@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 810ecbd4421eec8e8e809b429270601a0c94d623
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 9c5fb38e66cb783b02d314d55cf0d0510523b6a7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840899"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375985"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可以使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)在 Azure Monitor 中创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
+可以使用[Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)在 Azure Monitor 中创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
 
 * 创建工作区，包括设置定价层 
 * 添加解决方案
@@ -44,16 +44,16 @@ ms.locfileid: "71840899"
 
 下表列出了此示例中使用的资源的 API 版本。
 
-| Resource | 资源类型 | API 版本 |
+| 资源 | 资源类型 | API 版本 |
 |:---|:---|:---|
-| 工作区   | 工作区    | 2017-03-15-preview |
+| 工作区   | workspaces    | 2017-03-15-预览版 |
 | 搜索      | savedSearches | 2015-03-20 |
-| 数据源 | datasources   | 2015-11-01-preview |
-| 解决方案    | 解决方案     | 2015-11-01-preview |
+| 数据源 | datasources   | 2015-11-01-预览版 |
+| 解决方案    | solutions     | 2015-11-01-预览版 |
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
-以下示例将使用本地计算机的模板创建一个工作区。 JSON 模板配置为仅需要新工作区的名称和位置（使用其他工作区参数的默认值，例如定价层和保留期）。  
+以下示例将使用本地计算机的模板创建一个工作区。 JSON 模板配置为仅要求新工作区的名称和位置（使用其他工作区参数的默认值，如定价层和保留期）。  
 
 ### <a name="create-and-deploy-template"></a>创建和部署模板
 
@@ -121,7 +121,7 @@ ms.locfileid: "71840899"
 
 2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。 
 3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。
-4. 已做好部署此模板的准备。 使用 PowerShell 或命令行创建工作区，并在命令中指定工作区名称和位置。 工作区名称必须在所有 Azure 订阅中全局唯一。
+4. 已做好部署此模板的准备。 使用 PowerShell 或命令行来创建工作区，并将工作区名称和位置指定为命令的一部分。 工作区名称必须在所有 Azure 订阅中全局唯一。
 
    * 对于 PowerShell，请在包含模板的文件夹中使用以下命令：
    
@@ -243,7 +243,7 @@ ms.locfileid: "71840899"
     "customlogName": {
     "type": "string",
     "metadata": {
-      "description": "custom log name"
+      "description": "The custom log name"
       }
     },
     "variables": {
@@ -419,7 +419,7 @@ ms.locfileid: "71840899"
           "type": "dataSources",
           "name": "[concat(parameters('workspaceName'), parameters('customlogName'))]",
           "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            "[concat('Microsoft.OperationalInsights/workspaces/', '/', parameters('workspaceName'))]"
           ],
           "kind": "CustomLog",
           "properties": {
@@ -462,7 +462,7 @@ ms.locfileid: "71840899"
               }
             ]
           }
-        }
+        },
         {
           "apiVersion": "2015-11-01-preview",
           "type": "datasources",
@@ -592,6 +592,7 @@ ms.locfileid: "71840899"
 }
 
 ```
+
 ### <a name="deploying-the-sample-template"></a>部署示例模板
 
 若要部署示例模板，请执行以下操作：

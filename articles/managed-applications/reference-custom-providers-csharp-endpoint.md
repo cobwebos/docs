@@ -1,22 +1,22 @@
 ---
 title: 自定义C#提供程序 RESTful 终结点引用-Azure
-description: 本文是对自定义提供程序C# RESTful 终结点的基本参考。
+description: 提供 Azure 自定义提供程序C# RESTful 终结点的基本参考。 终结点是通过 Azure function app 提供的。
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 8007c92c832ab7621d0192f924b15abf8bda9262
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 37b7997bc029942a84c9be5743f6ef3c6195fd27
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172921"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332644"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>自定义C#提供程序 RESTful 终结点引用
 
-本文是对自定义提供程序C# RESTful 终结点的基本参考。 如果你不熟悉 Azure 自定义提供程序，请参阅[自定义资源提供程序概述](./custom-providers-overview.md)。
+本文是对自定义提供程序C# RESTful 终结点的基本参考。 如果不熟悉 Azure 自定义提供程序，请参阅[自定义资源提供程序概述](./custom-providers-overview.md)。
 
 ## <a name="azure-function-app-restful-endpoint"></a>Azure function app RESTful 终结点
 
@@ -258,6 +258,6 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 自定义资源提供程序概述](./custom-providers-overview.md)
-- [教程：创建 Azure 自定义资源提供程序并部署自定义资源](./create-custom-provider.md)
-- [如何：向 Azure REST API 添加自定义操作](./custom-providers-action-endpoint-how-to.md)
+- [教程：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
+- [如何：将自定义操作添加到 Azure REST API](./custom-providers-action-endpoint-how-to.md)
 - [参考：自定义资源缓存引用](./custom-providers-proxy-cache-resource-endpoint-reference.md)

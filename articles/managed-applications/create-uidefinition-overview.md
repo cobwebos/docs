@@ -1,6 +1,6 @@
 ---
 title: CreateUiDefinition Azure 托管应用程序的创建体验 |Microsoft Docs
-description: 介绍了如何为 Azure 托管应用程序创建 UI 定义
+description: 描述如何为 Azure 门户创建用户界面定义。 定义 Azure 托管应用程序时使用。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 013e861bb93d76454f2f0fd9c36259197dd671b9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
-ms.translationtype: MT
+ms.openlocfilehash: 7177b9513a1e51bc24672a69935a0e9430292537
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308663"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332707"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition Azure 托管应用程序的创建体验
 
@@ -43,10 +43,10 @@ ms.locfileid: "70308663"
 CreateUiDefinition 始终包含三个属性： 
 
 * handler
-* version
+* 版本
 * 参数
 
-处理程序应始终为`Microsoft.Azure.CreateUIDef`，最新支持的版本为`0.1.2-preview`。
+处理程序应始终 `Microsoft.Azure.CreateUIDef`，并且最新支持的版本 @no__t 为-1。
 
 parameters 属性的架构取决于所指定的 handler 和 version 的组合。 对于托管应用程序，支持的属性为 `basics`、`steps` 和 `outputs`。 basics 和 steps 属性包含要在 Azure 门户中显示的[元素](create-uidefinition-elements.md)，例如文本框和下拉列表。 outputs 属性用来将指定元素的输出值映射到 Azure 资源管理器部署模板的参数。
 
@@ -54,15 +54,15 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 
 可以使用 JSON 编辑器创建 createUiDefinition，然后在[CreateUiDefinition 沙盒](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)中对其进行测试以进行预览。 有关沙盒的详细信息，请参阅[为 Azure 托管应用程序测试门户接口](test-createuidefinition.md)。
 
-## <a name="basics"></a>基本
+## <a name="basics"></a>基础
 
 基础知识是 Azure 门户分析文件时生成的第一步。 除了会显示 `basics` 中指定的元素外，该门户还会为用户注入其他元素以用于为部署选择订阅、资源组和位置。 如果可能，查询部署范围内参数的元素（如群集或管理员凭据的名称）应在此步骤中进行。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 
 steps 属性可以包含要在 basics 后显示的零个或多个其他步骤，每个步骤都包含一个或多个元素。 请考虑按所部署的应用程序的角色或层添加步骤。 例如，为主节点输入添加一个步骤，并为群集中的辅助角色节点添加一个步骤。
 
-## <a name="outputs"></a>outputs
+## <a name="outputs"></a>Outputs
 
 Azure 门户使用 `outputs` 属性来将 `basics` 和 `steps` 中的元素映射到 Azure 资源管理器部署模板的参数。 此字典中的键是模板参数的名称，值是所引用元素中的输出对象的属性。
 
@@ -93,7 +93,7 @@ Azure 门户使用 `outputs` 属性来将 `basics` 和 `steps` 中的元素映�
         ...
 ```  
 
-## <a name="functions"></a>函数
+## <a name="functions"></a>Functions
 
 CreateUiDefinition 提供了用于处理元素的输入和输出的[函数](create-uidefinition-functions.md)，以及条件等功能。 这些函数在语法和功能上类似于 Azure 资源管理器模板函数。
 

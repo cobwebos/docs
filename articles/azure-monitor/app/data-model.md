@@ -5,19 +5,20 @@ services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
 manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 50109d7ba4688606a5a4f1b813d15d78636b7817
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: b14ce5cc83dcbbeef2379d21027d4bca337fd9fd
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311784"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376025"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights 遥测数据模型
 
@@ -41,7 +42,7 @@ Application Insights 为自定义遥测提供了三种额外的数据类型：
 * [事件](data-model-event-telemetry.md) - 通常用于捕获用户与服务的交互，以分析使用模式。
 * [指标](data-model-metric-telemetry.md) - 用于报告定期标量度量。
 
-每个遥测项目均可定义[上下文信息](data-model-context.md)，如应用程序版本或用户会话 ID。上下文是一组强类型化字段，可解锁某些方案。 正确初始化应用程序版本后，Application Insights 可检测应用程序行为中与重新部署相关的新模式。 会话 ID 可用于计算出现中断或问题对用户造成的影响。 错误跟踪或关键异常可计算某些失败依赖项的不同会话 ID 值计数，较好地反映影响。
+每个遥测项都可以定义[上下文信息](data-model-context.md)，如应用程序版本或用户会话 id。Context 是一组强类型字段，可取消阻止某些情况。 正确初始化应用程序版本后，Application Insights 可检测应用程序行为中与重新部署相关的新模式。 会话 ID 可用于计算出现中断或问题对用户造成的影响。 错误跟踪或关键异常可计算某些失败依赖项的不同会话 ID 值计数，较好地反映影响。
 
 Application Insights 遥测模型定义了将遥测与它所属的操作进行[关联](../../azure-monitor/app/correlation.md)的方式。 例如，请求可以发出 SQL 数据库调用并记录诊断信息。 可为那些要绑回请求遥测的遥测项设置关联上下文。
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 334ccbf64e32655b5e78ac6564abb65996ac53da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1cbbc1fde22262d5841766978d40487f812e0963
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167408"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333106"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 对于任何生产部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
 
 * 群集一开始需要的节点类型数目
-* 每个节点类型的属性（大小、是否为主节点、是否面向 Internet、VM 数目，等等）
+* 每个节点类型的属性（大小、主节点、面向 internet、Vm 数量等）
 * 群集的可靠性和耐久性特征
 
 > [!NOTE]
@@ -77,11 +77,11 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 | 持续性层  | 所需 VM 数量下限 | 受支持的 VM SKU                                                                  | 你对虚拟机规模集所做的更新                               | Azure 启动的更新和维护                                                              | 
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | 金牌服务             | 5                              | 专用于单个客户的完整节点 SKU（例如 L32s、GS5、G5、DS15_v2、D15_v2） | 可延迟到 Service Fabric 群集批准 | 每个 UD 可以暂停 2 小时，提供额外的时间让副本从之前的故障中恢复 |
-| 银牌服务           | 5                              | 单核或更多核心的 VM，至少 50 GB 的本地 SSD                      | 可延迟到 Service Fabric 群集批准 | 任何时候都无法延迟                                                    |
-| Bronze           | 第                              | VM，至少 50 GB 的本地 SSD                                              | 不会因为 Service Fabric 群集延迟           | 任何时候都无法延迟                                                    |
+| 银牌服务           | 5                              | 具有至少 50 GB 本地 SSD 的单核或更高的 Vm                      | 可延迟到 Service Fabric 群集批准 | 任何时候都无法延迟                                                    |
+| Bronze           | 第                              | 至少具有 50 GB 本地 SSD 的 Vm                                              | 不会因为 Service Fabric 群集延迟           | 任何时候都无法延迟                                                    |
 
 > [!WARNING]
-> 以青铜级持续性运行的节点类型不具有任何特权。 这意味着，不会停止或延迟对无状态工作负荷产生影响的基础结构作业，这可能影响工作负荷。 对仅运行无状态工作负荷的节点类型仅使用“青铜”。 对于生产工作负荷，建议运行“白银”或以上级别。 
+> 以青铜级持续性运行的节点类型不具有任何特权。 这意味着，影响状态工作负荷的基础结构作业不会停止或延迟，这可能会影响工作负荷。 对仅运行无状态工作负荷的节点类型仅使用“青铜”。 对于生产工作负荷，建议运行“白银”或以上级别。 
 > 
 > 无论任何持续性级别，VM 规模集上的[释放](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate)操作都将破坏群集
 
@@ -108,9 +108,9 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>适用于已设置为“白银”或“黄金”耐久性级别的节点类型的操作建议。
 
 - 使群集和应用程序在任何时间都正常工作，并确保应用程序及时响应所有[服务副本生命周期事件](service-fabric-reliable-services-lifecycle.md)（例如，生成副本时出现停滞）。
-- 采用更安全的方式进行 VM SKU 更改（增大/减小）：更改虚拟机规模集的 VM SKU 需要执行多个步骤并进行多项考虑。 可以遵循以下过程来避免常见问题。
+- 采用更安全的方式进行 VM SKU 更改（增加/减少）：更改虚拟机规模集的 VM SKU 需要执行许多步骤和注意事项。 可以遵循以下过程来避免常见问题。
     - **对于非主节点类型：** 建议创建新的虚拟机规模集，修改服务放置约束以包括新的虚拟机规模集/节点类型，然后将旧的虚拟机规模集实例计数降低到零，一次一个节点（这是为了确保删除节点不会影响群集的可靠性）。
-    - **对于主节点类型：** 如果所选 VM SKU 达到容量限制，而你希望增大其容量，请按[主节点类型垂直缩放](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type)指南操作。 
+    - **对于主节点类型：** 如果你选择的 VM SKU 处于容量范围内，并且你想要更改为更大的 VM SKU，请遵循我们对[主节点类型的垂直缩放的](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type)指导。 
 
 - 为任何已启用“黄金”或“白银”持续性级别的虚拟机规模集至少保留五个节点。
 - 持续性级别为“白银”或“黄金”的每个虚拟机规模集，在 Service Fabric 群集中都必须映射到其自己的节点类型。 将多个虚拟机规模集映射到单个节点类型，将阻碍 Service Fabric 群集和 Azure 基础结构间的协调正常工作。
@@ -123,7 +123,7 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 
 可靠性层可以采用以下值：
 
-* 白金 - 运行包含 7 个目标副本集的系统服务
+* 白金 - 运行包含 9 个目标副本集的系统服务
 * 黄金 - 运行包含 7 个目标副本集的系统服务
 * 白银 - 运行包含 5 个目标副本集的系统服务 
 * 青铜 - 运行包含 3 个目标副本集的系统服务
@@ -135,7 +135,7 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 
 ### <a name="recommendations-for-the-reliability-tier"></a>针对可靠性层的建议
 
-扩大或减小群集规模（所有节点类型中的 VM 实例总和）时，必须将群集的可靠性从一个层更新到另一层。 这样做会触发更改系统服务副本集计数所需的群集升级。 等待升级完成，然后对群集做出其他任何更改，例如添加节点。  可以在 Service Fabric Explorer 中运行 [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) 来监视升级进度
+扩大或减小群集规模（所有节点类型中的 VM 实例总和）时，必须将群集的可靠性从一个层更新到另一层。 这样做会触发更改系统服务副本集计数所需的群集升级。 等待升级完成，并对群集做出其他任何更改，例如添加节点。  可以在 Service Fabric Explorer 中运行 [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) 来监视升级进度
 
 下面是有关选择可靠性层的建议。  种子节点数也设置为可靠性层的最小节点数。  例如，具有黄金级可靠性的群集有 7 个种子节点。
 
@@ -143,28 +143,28 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 | --- | --- |
 | 第 |不要指定“可靠性层”参数，系统会计算该参数 |
 | 3 |Bronze |
-| 5 或 6|Silver |
-| 7 或 8 |Gold |
+| 5 或 6|银牌服务 |
+| 7 或 8 |金牌服务 |
 | 9 及以上 |白金 |
 
 ## <a name="primary-node-type---capacity-guidance"></a>主节点类型 - 容量指导
 
 下面是用于规划主节点类型容量的指导：
 
-- **要在 Azure 中运行任何生产工作负荷的 VM 实例数：** 必须将最小主节点类型大小指定为 5，将可靠性层指定为“银级”。  
+- **要在 Azure 中运行任何生产工作负荷的 VM 实例数：** 必须将最小主节点类型大小指定为 5，将可靠性层指定为“白银”。  
 - 要在 Azure 中运行测试工作负荷的 VM 实例数：可以将最小主节点类型大小指定为 1 或 3。 单节点群集，采用特殊配置来运行，因此不支持对该群集进行扩展。 单节点群集，不具备可靠性，因此，必须在 Resource Manager 模板中删除/不指定该配置（单纯不设置配置值还不够）。 如果设置通过门户设置的单节点群集，则会自动处理该配置。 不支持使用单节点群集和三节点群集运行生产工作负荷。 
-- **VM SKU：** 主节点类型是运行系统服务的位置，因此，在为它选择 VM SKU 时，必须考虑到你要在群集中放置的总峰值负载。 下面这个类比用来说明此处我要表达的意思 - 将主节点类型想象成“肺”，它向大脑提供氧气，如果大脑不能获得足够的氧气，身体会痛苦。 
+- **VM SKU：** 主节点类型是运行系统服务的位置，因此，为其选择的 VM SKU 必须将你计划在群集中放置的总体峰值负荷考虑在内。 下面这个类比用来说明此处我要表达的意思 - 将主节点类型想象成“肺”，它向大脑提供氧气，如果大脑不能获得足够的氧气，身体会痛苦。 
 
 由于群集的容量需求是由你计划在群集中运行的工作负荷决定的，因此，我们无法针对具体工作负荷提供定性指导，但是下面的宽泛指导可帮助你入门
 
 对于生产工作负荷： 
 
 - 建议将群集的主要节点类型提供给系统服务，使用位置约束将应用程序部署到辅助节点类型。
-- 建议的 VM SKU 为标准 D2_V2 或与之相当的类型，使用至少 50 GB 的本地 SSD。
-- 支持使用的最小 VM SKU 为 Standard_D2_V3 或 Standard D1_V2 或与之相当的类型，使用至少 50 GB 的本地 SSD。 
+- 建议的 VM SKU 为标准 D2_V2 或等效项，最少 50 GB 的本地 SSD。
+- 支持的最低使用 VM SKU 为 Standard_D2_V3 或 Standard D1_V2 或等效，最少为 50 GB 的本地 SSD。 
 - 建议至少为 50 GB。 对于你的工作负荷，尤其是在运行 Windows 容器时，需要更大的磁盘。 
 - 部分核心 VM SKU（例如标准 A0）不支持用于生产工作负荷。
-- 由于性能原因，不支持将一系列 VM SKU 用于生产工作负荷。
+- 出于性能方面的考虑，生产工作负荷不支持系列 VM Sku。
 - 不支持低优先级 VM。
 
 > [!WARNING]
@@ -182,10 +182,10 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 
 对于生产工作负荷 
 
-- 建议的 VM SKU 为标准 D2_V2 或与之相当的类型，使用至少 50 GB 的本地 SSD。
-- 支持使用的最小 VM SKU 为 Standard_D2_V3 或 Standard D1_V2 或与之相当的类型，使用至少 50 GB 的本地 SSD。 
+- 建议的 VM SKU 为标准 D2_V2 或等效项，最少 50 GB 的本地 SSD。
+- 支持的最低使用 VM SKU 为 Standard_D2_V3 或 Standard D1_V2 或等效，最少为 50 GB 的本地 SSD。 
 - 部分核心 VM SKU（例如标准 A0）不支持用于生产工作负荷。
-- 由于性能原因，不支持将一系列 VM SKU 用于生产工作负荷。
+- 出于性能方面的考虑，生产工作负荷不支持系列 VM Sku。
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>非主节点类型 - 针对无状态工作负荷的容量指导
 
@@ -197,10 +197,10 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 
 对于生产工作负荷 
 
-- 建议的 VM SKU 为Standard D2_V2 或相当的容量。 
+- 建议的 VM SKU 为标准 D2_V2 或等效项。 
 - 建议使用的 VM SKU 是标准 D1 或标准 D1_V2 或等效项。 
 - 部分核心 VM SKU（例如标准 A0）不支持用于生产工作负荷。
-- 由于性能原因，不支持将一系列 VM SKU 用于生产工作负荷。
+- 出于性能方面的考虑，生产工作负荷不支持系列 VM Sku。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 

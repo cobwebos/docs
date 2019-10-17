@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: df24f846f1600685803fdd485f1810d66e32ae37
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028672"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330669"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>设置实验室来讲授道德攻击类 
-本文介绍如何设置一个侧重于道德攻击辩论方的类。 渗透测试是一种由道德黑客团体使用的惯例，当有人尝试获取对系统或网络的访问权限来演示恶意攻击者可能会利用的漏洞时，就会发生这种情况。 
+本文介绍如何设置一个侧重于道德攻击辩论方的类。 渗透测试是道德黑客社区使用的一种做法，当某人试图获得对系统或网络的访问权限以证明恶意攻击者可能利用的漏洞时，就会进行渗透测试。 
 
-在有道德攻击的类中，学生可以了解防御漏洞的新式技术。 每个学生获取一个 Windows Server 主机虚拟机，该虚拟机具有两个嵌套虚拟机–一台虚拟机具有**Metaspoiltable**映像，另一台计算机具有[Kali Linux](https://www.kali.org/)映像。 Metasploitable 虚拟机用于利用目的，Kali 虚拟机可让你访问执行鉴证任务所需的工具。
+在道德黑客课程中，学生可以学习抵御漏洞的新式技术。 每个学生都获得一个 Windows Server 主机虚拟机，它包含两个嵌套虚拟机 - 一个是带有 **Metaspoiltable** 映像的虚拟机，另一个是带有 [Kali Linux](https://www.kali.org/) 映像的虚拟机。 Metasploitable 虚拟机用于开发目的，Kali 虚拟机提供对执行取证任务所需的工具的访问。
 
 本文包含两个主要部分。 第一部分介绍如何创建教室实验室。 第二部分介绍如何创建启用了嵌套虚拟化的模板计算机以及所需的工具和映像。 在这种情况下，计算机上的 Metasploitable 映像和 Kali Linux 映像已启用 Hyper-v 以承载映像。
 
 ## <a name="lab-configuration"></a>实验室配置
-若要设置此实验室，需要一个 Azure 订阅才能开始使用。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户或使用现有帐户。 请参阅以下教程，了解如何创建新的实验室帐户：[设置实验室帐户的教程](tutorial-setup-lab-account.md)。
+若要设置此实验室，需要一个 Azure 订阅才能开始使用。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户或使用现有帐户。 请参阅以下教程，了解如何创建新的实验室帐户：[设置实验室帐户教程](tutorial-setup-lab-account.md)。
 
 按照[本教程](tutorial-setup-classroom-lab.md)创建新的实验室，然后应用以下设置：
 
-| 虚拟机大小 | 图像 |
+| 虚拟机大小 | 映像 |
 | -------------------- | ----- | 
 | 中（嵌套虚拟化） | Windows Server 2019 Datacenter |
 
@@ -88,7 +88,7 @@ Rapid7 Metasploitable 映像是特意配置了安全漏洞的映像。 将使用
         ```powershell
         Import-Module 'C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1'
         ```
-    1. 将 vmdk 转换为可由 Hyper-v 使用的 vhd 文件。 此操作可能需要几分钟。
+    1. 将 vmdk 转换为可由 Hyper-v 使用的 vhd 文件。 此操作可能需要几分钟的时间。
     
         ```powershell
         ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath .\Metasploitable.vmdk -DestinationLiteralPath .\Metasploitable.vhdx -VhdType DynamicHardDisk -VhdFormat vhdx
@@ -125,7 +125,7 @@ Rapid7 Metasploitable 映像是特意配置了安全漏洞的映像。 将使用
 该模板现已更新，并具有符合道德的黑客渗透测试类所需的图像、包含用于执行渗透测试的工具的映像，以及另一个包含安全漏洞的映像。 现在可以将模板映像发布到类。 选择 "模板" 页上的 "**发布**" 按钮，将模板发布到实验室。
   
 
-## <a name="cost"></a>成本  
+## <a name="cost"></a>费用  
 如果要估计此实验室的成本，可以使用以下示例： 
  
 对于具有20个小时的计划类时间和10小时配额（适用于家庭或分配）的25名学生，实验室的价格为： 
@@ -141,7 +141,7 @@ Rapid7 Metasploitable 映像是特意配置了安全漏洞的映像。 将使用
 下一步是设置任何实验室的常见步骤：
 
 - [添加用户](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [设置配额](tutorial-setup-classroom-lab.md#set-quotas-for-users)
+- [设置配额](how-to-configure-student-usage.md#set-quotas-for-users)
 - [设置计划](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [向学生发送电子邮件注册链接](tutorial-setup-classroom-lab.md#send-an-email-with-the-registration-link)。 
+- [向学生发送电子邮件注册链接](how-to-configure-student-usage.md#send-invitations-to-users)。 
 

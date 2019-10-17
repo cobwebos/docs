@@ -1,6 +1,6 @@
 ---
 title: 使用 Java 在 Azure 事件中心之间发送数据
-description: 本文提供了创建 Java 应用程序的演练，该应用程序用于将事件发送到 Azure 事件中心。
+description: 本文提供了有关创建将事件发送到 Azure 事件中心的 Java 应用程序的演练。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 054289de296488036dd0855d228d272fdea18baf
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: be9919950f24dbee7fb8a3f901767c298105bf53
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219423"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72325471"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>使用 Java 将事件发送到 Azure 事件中心或从 Azure 事件中心接收事件
 
@@ -26,16 +26,16 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 > [!NOTE]
 > 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本教程，需要具备以下先决条件：
 
 - 有效的 Azure 帐户。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Java 开发环境。 本教程使用 [Eclipse](https://www.eclipse.org/)。
-- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照文章中的以下说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 可在本教程后面编写的代码中使用该访问密钥。 默认密钥名称为：RootManageSharedAccessKey。
+- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照 "[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)" 一文中的说明，获取事件中心的访问密钥值。 可在本教程后面编写的代码中使用该访问密钥。 默认密钥名称为： **RootManageSharedAccessKey**。
 
 ## <a name="send-events"></a>发送事件 
-本部分展示了如何创建 Java 应用程序来将事件发送到事件中心。 
+本部分介绍如何创建一个 Java 应用程序，用于将事件发送到事件中心。 
 
 ### <a name="add-reference-to-azure-event-hubs-library"></a>将引用添加到 Azure 事件中心库
 
@@ -94,7 +94,7 @@ public class SimpleSend {
                 .setSasKey("SHARED ACCESS KEY");
 ```
 
-### <a name="write-code-to-send-events"></a>编写代码来发送事件
+### <a name="write-code-to-send-events"></a>编写代码以发送事件
 
 通过将字符串转换为其 UTF-8 字节编码创建单一事件。 然后，使用连接字符串创建一个新的事件中心客户端实例并发送该消息：   
 
@@ -176,7 +176,7 @@ EventProcessorHost 是一个 Java 类，通过在这些事件中心管理持久�
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-若要使用 EventProcessorHost，必须拥有 [Azure 存储帐户][Azure 存储帐户]：
+若要使用 EventProcessorHost，必须具有 [Azure 存储帐户] [Azure 存储帐户]：
 
 1. 登录[Azure 门户](https://portal.azure.com)，并在屏幕左侧选择 "**创建资源**"。
 2. 选择 "**存储**"，然后选择 "**存储帐户**"。 在“创建存储帐户”窗口中，键入存储帐户的名称。 填写其余字段，选择所需的区域，然后选择 "**创建**"。
@@ -206,7 +206,7 @@ EventProcessorHost 是一个 Java 类，通过在这些事件中心管理持久�
 </dependency>
 ```
 
-对于不同类型的生成环境，可以从 Maven 中央存储库 [https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22 ] 显式获取最新发布的 JAR 文件。  
+对于不同类型的生成环境，可以从 [Maven 中央存储库](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)显式获取最新发布的 JAR 文件。
 
 1. 对于以下示例，请首先在你最喜欢的 Java 开发环境中为控制台/shell 应用程序创建一个新的 Maven 项目。 此类名为 `ErrorNotificationHandler`。     
    
@@ -414,7 +414,7 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 
 使用检查点管理器的自定义实现 (com.microsoft.azure.eventprocessorhost.ICheckpointManager)
 
-在你的实现中，你可以替代默认检查点机制并根据你自己的数据存储（例如 SQL Server、CosmosDB 和 Azure Redis 缓存）实现我们自己的检查点。 对于用于为检查点管理器实现提供支持的存储，建议使其可供为使用者组处理事件的所有 EPH 实例访问。
+在实现中，可以覆盖默认检查点机制，并根据自己的数据存储（例如 SQL Server、CosmosDB 和用于 Redis 的 Azure 缓存）实现自己的检查点。 对于用于为检查点管理器实现提供支持的存储，建议使其可供为使用者组处理事件的所有 EPH 实例访问。
 
 你可以使用你的环境中提供的任何数据存储。
 

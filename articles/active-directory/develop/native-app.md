@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6bf24124c4b072a64ef59500b2f723ff6abbb0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0034668231d97e64602bdbdd0836bded97bb733d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545844"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373875"
 ---
 # <a name="native-apps"></a>本机应用
 
@@ -52,16 +52,16 @@ ms.locfileid: "65545844"
 
 ## <a name="app-registration"></a>应用注册
 
-若要向 Azure AD v1.0 终结点注册应用程序，请参阅[注册应用](quickstart-register-app.md)。
+若要将应用程序注册到 Azure AD 1.0 版终结点，请参阅[注册应用](quickstart-register-app.md)。
 
 * 单租户 - 本机应用程序和 Web API 必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制本机应用程序对其资源的访问。 然后，客户端应用程序从 Azure 门户的“对其他应用程序的权限”下拉菜单中选择所需的权限。
 * 多租户 - 首先，本机应用程序只在开发人员或发布者的目录中进行注册。 其次，本机应用程序在配置后会指示它在正常运行时所需的权限。 当目标目录中的用户或管理员表示许可应用程序的要求时（这会使应用程序可供其组织使用），此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法表示许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员表示许可后，才会在其目录中注册该 Web API。 
 
 ## <a name="token-expiration"></a>令牌过期
 
-当本机应用程序使用其授权代码来获取 JWT 访问令牌时，它还会收到一个 JWT 刷新令牌。 访问令牌过期时，可以使用刷新令牌来重新对用户进行身份验证，不需要他们重新登录。 然后将使用此刷新令牌对用户进行身份验证，这会生成新的访问令牌和刷新令牌。
+当本机应用程序使用其授权代码来获取 JWT 访问令牌时，它还会收到一个 JWT 刷新令牌。 当访问令牌过期时，可以使用刷新令牌来重新对用户进行身份验证，不需要他们重新登录。 然后将使用此刷新令牌对用户进行身份验证，这会生成新的访问令牌和刷新令牌。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解其他[应用程序类型和方案](app-types.md)
-- 了解 Azure AD [身份验证基础知识](authentication-scenarios.md)
+- 了解 Azure AD [身份验证基础知识](v1-authentication-scenarios.md)

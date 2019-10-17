@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: e605f2ab0e79fa3d7d3ee3735f47776654566cb6
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 83d60487922e3355aab8e34f6a8409c529901d14
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802335"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328038"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用主动学习改进知识库
 
@@ -71,7 +71,7 @@ QnA Maker 获取有关哪种答案是最佳答案的明确反馈，这一点很�
 
 1. 找到 QnA Maker 服务，然后切换到“主动学习”。 
 
-    [![在 "服务设置" 页上，切换活动学习功能。如果无法切换该功能，则可能需要升级您的服务。](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    [@no__t "服务设置" 页上，切换活动学习功能。如果无法切换该功能，则可能需要升级您的服务。](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     > [!Note]
     > 上图中的确切版本仅显示为示例。 你的版本可能不同。 
@@ -84,15 +84,15 @@ QnA Maker 获取有关哪种答案是最佳答案的明确反馈，这一点很�
 
 1. 若要查看建议的问题，请在 "**编辑**知识库" 页上选择 "**查看选项**"，然后选择 "**显示活动的学习建议**"。 
 
-    [![在门户的 "编辑" 部分中，选择 "显示建议"，以查看活动学习的新问题备选方案。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [@no__t 1On 在门户的 "编辑" 部分中，选择 "显示建议"，以查看活动学习的新问题替代项。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
 1. 通过选择 "**按建议筛选**" 来使用问题和答案对筛选知识库，以便仅显示建议。
 
-    [![使用 "按建议筛选" 切换来仅查看活动学习的建议问题备选方案。](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [@no__t 1Use "按建议筛选" 切换到仅查看活动学习的建议问题替代方法。](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. 每个 QnA 对用复选标记`✔`建议新的问题替代项，以接受问题`x`或拒绝建议。 选中复选标记可以添加问题。 
+1. 每个 QnA 对使用一个复选标记（`✔`）建议新的问题替代项，以接受此问题或 `x` 以拒绝建议。 选中复选标记可以添加问题。 
 
-    [![选择或拒绝活动学习的建议问题，方法是选择绿色复选标记或红色删除标记。](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [通过选择绿色复选标记或红色删除标记，@no__t 1Select 或拒绝活动学习的建议问题替代项。](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     您可以通过在上下文工具栏中选择 "**全部添加**" 或 "**全部拒绝**" 来添加或删除_所有建议_。
 
@@ -109,7 +109,7 @@ QnA Maker 获取有关哪种答案是最佳答案的明确反馈，这一点很�
 
 机器人或其他客户端应用程序应使用以下体系结构流来使用活动学习：
 
-* 机器人使用 GenerateAnswer API[从知识库获取答案](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)，并使用`top`属性获取多个答案。
+* 机器人使用 GenerateAnswer API[从知识库获取答案](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)，并使用 `top` 属性获取多个答案。
 * 机器人确定显式反馈：
     * 使用您自己的[自定义业务逻辑](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)，筛选出低分数。
     * 在机器人或客户端应用程序中，显示用户的可能答案列表，并获得用户选定的答案。
@@ -118,7 +118,7 @@ QnA Maker 获取有关哪种答案是最佳答案的明确反馈，这一点很�
 
 ### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>使用 GenerateAnswer 请求中的 top 属性获取几个匹配的答案
 
-提交问题以 QnA Maker 获取答案时， `top` JSON 正文的属性将设置要返回的应答的数目。 
+提交问题以 QnA Maker 获取答案时，JSON 正文的 @no__t 的属性将设置要返回的答案的数目。 
 
 ```json
 {
@@ -130,7 +130,7 @@ QnA Maker 获取有关哪种答案是最佳答案的明确反馈，这一点很�
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>使用评分属性以及业务逻辑获取显示用户的答案列表
 
-当客户端应用程序（如聊天机器人）收到响应时，将返回前3个问题。 `score`使用属性可分析分数之间的邻近性。 此邻近范围取决于你自己的业务逻辑。 
+当客户端应用程序（如聊天机器人）收到响应时，将返回前3个问题。 使用 `score` 属性分析分数之间的邻近性。 此邻近范围取决于你自己的业务逻辑。 
 
 ```json
 {
@@ -186,22 +186,22 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP 请求属性|姓名|类型|用途|
+|HTTP 请求属性|名称|Type|用途|
 |--|--|--|--|
-|URL 路由参数|知识库 ID|string|知识库的 GUID。|
-|自定义子域|QnAMaker 资源名称|string|资源名称用作 QnA Maker 的自定义子域。 发布知识库后，可以在 "设置" 页上找到此功能。 它作为 @no__t 列出。|
-|Header|Content-Type|string|发送到 API 的正文的媒体类型。 默认值为：`application/json`|
-|Header|Authorization|string|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
-|POST 正文|JSON 对象|JSON|培训反馈|
+|URL 路由参数|知识库 ID|字符串|知识库的 GUID。|
+|自定义子域|QnAMaker 资源名称|字符串|资源名称用作 QnA Maker 的自定义子域。 发布知识库后，可以在 "设置" 页上找到此功能。 它作为 @no__t 列出。|
+|标头|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值为： `application/json`|
+|标头|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|文章正文|JSON 对象|JSON|培训反馈|
 
 JSON 正文具有几个设置：
 
-|JSON 正文属性|类型|用途|
+|JSON 正文属性|Type|用途|
 |--|--|--|--|
-|`feedbackRecords`|array|反馈列表。|
-|`userId`|string|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
-|`userQuestion`|string|用户查询的确切文本。 必需。|
-|`qnaID`|number|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
+|`feedbackRecords`|数组|反馈列表。|
+|`userId`|字符串|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
+|`userQuestion`|字符串|用户查询的确切文本。 必需。|
+|`qnaID`|数字|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
 
 示例 JSON 正文如下所示：
 
@@ -221,7 +221,7 @@ JSON 正文具有几个设置：
 
 ### <a name="batch-many-feedback-records-into-a-single-call"></a>成批发送多条反馈记录到一个调用中
 
-在客户端应用程序（如机器人）中，可以存储数据，然后在`feedbackRecords`数组中的一个 JSON 正文中发送多个记录。 
+在客户端应用程序（如机器人）中，可以存储数据，然后在 `feedbackRecords` 数组的单个 JSON 正文中发送多条记录。 
 
 示例 JSON 正文如下所示：
 
@@ -368,9 +368,9 @@ async callTrain(stepContext){
 
 ## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>活动学习保存在导出的知识库中
 
-当你的应用启用了活动学习并导出应用后，tsv 文件`SuggestedQuestions`中的列将保留活动的学习数据。 
+当你的应用启用了活动学习并导出应用后，tsv 文件中的 @no__t 0 列将保留活动的学习数据。 
 
-此`SuggestedQuestions`列是隐式、 `autosuggested`和显式`usersuggested`反馈信息的 JSON 对象。 此 JSON 对象的一个示例`help`是，针对的单个用户提交的问题是：
+@No__t-0 列是隐式、`autosuggested` 和显式 `usersuggested` 反馈信息的 JSON 对象。 @No__t-0 的单个用户提交问题的此 JSON 对象的示例如下：
 
 ```JSON
 [
@@ -398,7 +398,7 @@ async callTrain(stepContext){
 
 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 有关使用主动学习的最佳做法，请参阅[最佳做法](../Concepts/best-practices.md#active-learning)。
 

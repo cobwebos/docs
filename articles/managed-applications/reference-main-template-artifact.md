@@ -1,26 +1,26 @@
 ---
 title: Azure 托管应用程序部署模板项目引用
-description: 本文是对部署模板项目的引用。
+description: 提供 Azure 托管应用程序的部署模板项目的示例。
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: fe2517a8cc2ddee6623f88b2ae5e46c9e5319567
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
-ms.translationtype: MT
+ms.openlocfilehash: ec59c9cde4f23b4a9d641d286e152ea737576534
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336486"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330174"
 ---
 # <a name="reference-deployment-template-artifact"></a>参考：部署模板项目
 
-本文是 Azure 托管应用程序中*maintemplate.json*项目的参考。 有关创作部署模板的详细信息, 请参阅[Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+本文是 Azure 托管应用程序中*maintemplate.json*项目的参考。 有关创作部署模板的详细信息，请参阅[Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 ## <a name="deployment-template"></a>部署模板
 
-以下 JSON 显示了 Azure 托管应用程序的*maintemplate.json*文件示例:
+以下 JSON 显示了 Azure 托管应用程序的*maintemplate.json*文件示例：
 
 ```json
 {

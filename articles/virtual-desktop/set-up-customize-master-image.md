@@ -5,18 +5,18 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 57070b297446badb92ae1df4c435dd54cfe26823
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710180"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330831"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
-本文介绍如何准备要上传到 Azure 的主虚拟硬盘（VHD）映像，包括如何创建虚拟机（Vm）并在其上安装软件。 这些说明适用于 Windows 虚拟桌面特定的配置，可与组织的现有流程一起使用。
+本文介绍如何准备要上传到 Azure 的主虚拟硬盘（VHD）映像，包括如何创建虚拟机（Vm）并在其上安装软件。 这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面的配置。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -62,11 +62,25 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 ## <a name="software-preparation-and-installation"></a>软件准备和安装
 
-本部分介绍如何准备并安装 FSLogix、Windows Defender 和其他常见的应用程序。 
+本部分介绍如何准备和安装 FSLogix 和 Windows Defender 以及一些用于应用和映像注册表的基本配置选项。 
 
-如果正在 VM 上安装 Office 365 ProPlus 和 OneDrive，请参阅[在主 VHD 映像上安装 office](install-office-on-wvd-master-image.md)。 请按照本文后续步骤中的链接，返回到本文，并完成主要 VHD 进程。
+如果要在 VM 上安装 Office 365 ProPlus 和 OneDrive，请参阅[在主 VHD 映像上安装 office](install-office-on-wvd-master-image.md) ，并按照此处的说明安装应用。 完成后，请返回到本文。
 
 如果用户需要访问某些 LOB 应用程序，我们建议在完成本部分说明后安装这些应用程序。
+
+### <a name="set-up-user-profile-container-fslogix"></a>设置用户配置文件容器（FSLogix）
+
+若要将 FSLogix 容器包括为映像的一部分，请按照[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)中的说明进行操作。 可以通过[本快速入门](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)测试 FSLogix 容器的功能。
+
+### <a name="configure-windows-defender"></a>配置 Windows Defender
+
+如果在 VM 中配置了 Windows Defender，请确保将其配置为在附件期间不扫描 VHD 和 VHDX 文件的全部内容。
+
+此配置仅在附件期间删除 VHD 和 VHDX 文件的扫描，但不会影响实时扫描。
+
+有关如何在 Windows Server 上配置 Windows Defender 的更详细说明，请参阅[在 Windows server 上配置 Windows Defender 防病毒排除项](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus)。
+
+若要详细了解如何将 Windows Defender 配置为排除某些文件的扫描，请参阅[基于文件扩展名和文件夹位置配置和验证排除项](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)。
 
 ### <a name="disable-automatic-updates"></a>禁用自动更新
 
@@ -88,20 +102,6 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpd
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
-
-### <a name="set-up-user-profile-container-fslogix"></a>设置用户配置文件容器（FSLogix）
-
-若要将 FSLogix 容器包括为映像的一部分，请按照[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)中的说明进行操作。 可以通过[本快速入门](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)测试 FSLogix 容器的功能。
-
-### <a name="configure-windows-defender"></a>配置 Windows Defender
-
-如果在 VM 中配置了 Windows Defender，请确保将其配置为在附件期间不扫描 VHD 和 VHDX 文件的全部内容。
-
-此配置仅在附件期间删除 VHD 和 VHDX 文件的扫描，但不会影响实时扫描。
-
-有关如何在 Windows Server 上配置 Windows Defender 的更详细说明，请参阅[在 Windows server 上配置 Windows Defender 防病毒排除项](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus)。
-
-若要详细了解如何将 Windows Defender 配置为排除某些文件的扫描，请参阅[基于文件扩展名和文件夹位置配置和验证排除项](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)。
 
 ### <a name="configure-session-timeout-policies"></a>配置会话超时策略
 
@@ -225,7 +225,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 现在，你已有了一个映像，可以创建或更新主机池。 若要了解有关如何创建和更新主机池的详细信息，请参阅以下文章：
 
 - [使用 Azure 资源管理器模板创建主机池](create-host-pools-arm-template.md)
-- [教程：通过 Azure 市场创建主机池](create-host-pools-azure-marketplace.md)
+- [教程：使用 Azure Marketplace 创建主机池](create-host-pools-azure-marketplace.md)
 - [使用 PowerShell 创建主机池](create-host-pools-powershell.md)
 - [使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)
 - [配置 Windows 虚拟桌面负载平衡方法](configure-host-pool-load-balancing.md)

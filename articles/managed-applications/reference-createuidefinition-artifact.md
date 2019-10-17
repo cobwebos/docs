@@ -1,26 +1,26 @@
 ---
 title: Azure 托管应用程序 createUiDefinition 项目引用
-description: 本文是对 createUiDefinition 项目的引用。
+description: 说明如何为 Azure 托管应用程序创建 createUiDefinition 项目。 文件名为 createUiDefinition。
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: 5168e977a7bc289ec8981ef1df8cddd5cc6df678
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
-ms.translationtype: MT
+ms.openlocfilehash: 09364a849926fc829a890bfcdc8b760c7c7e189c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336473"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330195"
 ---
 # <a name="reference-user-interface-elements-artifact"></a>参考：用户界面元素项目
 
-本文是 Azure 托管应用程序中*createUiDefinition*项目的参考。 有关创作用户界面元素的详细信息, 请参阅[创建用户界面元素](create-uidefinition-elements.md)。
+本文是 Azure 托管应用程序中*createUiDefinition*项目的参考。 有关创作用户界面元素的详细信息，请参阅[创建用户界面元素](create-uidefinition-elements.md)。
 
 ## <a name="user-interface-elements"></a>用户界面元素
 
-以下 JSON 显示了 Azure 托管应用程序的*createUiDefinition*文件示例:
+以下 JSON 显示了 Azure 托管应用程序的*createUiDefinition*文件示例：
 
 ```json
 {

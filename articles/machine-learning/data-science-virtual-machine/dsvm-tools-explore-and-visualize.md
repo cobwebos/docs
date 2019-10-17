@@ -6,20 +6,20 @@ keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 03/16/2018
-ms.openlocfilehash: 14c34a13440d50fcf42c2207f9933dc1de014a14
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 10/11/2019
+ms.openlocfilehash: a18c374df0cad7994af855089f1096d52fe30ce2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191961"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330704"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine 中的数据浏览和可视化工具
 
-在数据科学中, 关键是要理解数据。 可视化和数据浏览工具可帮助加速数据理解。 Data Science Virtual Machine (DSVM) 上提供了以下工具, 使此密钥步骤更容易。
+在数据科学中，关键是要理解数据。 可视化和数据浏览工具可帮助加速数据理解。 Data Science Virtual Machine （DSVM）上提供了以下工具，使此密钥步骤更容易。
 
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |
@@ -27,29 +27,9 @@ ms.locfileid: "70191961"
 | 它是什么？   | 大数据上的开源 SQL 查询引擎    |
 | 支持的 DSVM 版本      | Windows、Linux  |
 | 如何在 DSVM 上配置并安装它？      |  仅以嵌入模式安装在 `/dsvm/tools/drill*` 中   |
-| 典型用途      |  用于就地数据探索, 无需提取、转换、加载 (ETL)。 查询不同的数据源和格式, 其中包括 CSV、JSON、关系表和 Hadoop。     |
+| 典型用途      |  用于就地数据探索，无需提取、转换、加载（ETL）。 查询不同的数据源和格式，其中包括 CSV、JSON、关系表和 Hadoop。     |
 | 如何使用和运行它      | 桌面快捷方式  <br/> [10 分钟后即可开始钻取](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | DSVM 上的相关工具      |   Rattle、Weka、SQL Server Management Studio      |
-
-## <a name="weka"></a>Weka
-|    |           |
-| ------------- | ------------- |
-| 它是什么？   |  用于数据挖掘任务的机器学习算法的集合。 这些算法可以直接应用于数据集, 也可以从自己的 Java 代码中调用。 Weka 包含用于数据预处理、分类、回归、群集、关联规则和可视化的工具。 |
-| 支持的 DSVM 版本     | Windows、Linux     |
-| 典型用途      | 一般计算机学习工具     |
-| 如何使用和运行它      | 在 Windows 上，在“开始”菜单中搜索 Weka。 在 Linux 上, 用 X2Go 登录, 然后 > 开发 > Weka 中的应用程序。 |
-| 示例链接      | [Weka 示例](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| DSVM 上的相关工具      |LightGBM、Rattle、Xgboost   |
-
-## <a name="rattle"></a>Rattle
-|    |           |
-| ------------- | ------------- |
-| 它是什么？   |   使用 R 进行数据挖掘的图形用户界面 (GUI)   |
-| 支持的 DSVM 版本     | Windows、Linux     |
-| 典型用途      | R 适用的常规 UI 数据挖掘工具    |
-| 如何使用和运行它      | UI 工具。 在 Windows 上, 打开命令提示符, 运行 R, 然后在 R 中运行`rattle()`。 在 Linux 上, 使用 X2Go 进行连接, 启动终端, 运行 R, 然后在 R 中运行`rattle()`。 |
-| 指向示例的链接      | [Rattle](https://togaware.com/onepager/) |
-| DSVM 上的相关工具      |LightGBM、Weka、Xgboost   |
 
 ## <a name="power-bi-desktop"></a>Power BI Desktop 
 |    |           |
@@ -57,6 +37,34 @@ ms.locfileid: "70191961"
 | 它是什么？   | 交互式数据可视化和 BI 工具    |
 | 支持的 DSVM 版本      | Windows  |
 | 典型用途      |  数据可视化和构建仪表板   |
-| 如何使用和运行它      | 桌面快捷方式`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`()      |
-| DSVM 上的相关工具      |   Visual Studio 2019, Visual Studio Code, Juno      |
+| 如何使用和运行它      | 桌面快捷方式（`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`），或直接从 "**开始**" 菜单运行。      |
+| DSVM 上的相关工具      |   Visual Studio 2019，Visual Studio Code，Juno      |
+
+> [!NOTE]
+> 需有 Microsoft Office 365 帐户才能访问 Power BI。
+
+
+## <a name="rattle"></a>Rattle
+|    |           |
+| ------------- | ------------- |
+| 它是什么？   |   使用 R 进行数据挖掘的图形用户界面（GUI）   |
+| 支持的 DSVM 版本     | Windows、Linux     |
+| 典型用途      | R 适用的常规 UI 数据挖掘工具    |
+| 如何使用和运行它      | UI 工具。 在 Windows 上，打开命令提示符，运行 R，然后在 R 中运行 `rattle()`。 在 Linux 上，使用 X2Go 进行连接，启动终端，运行 R，然后在 R 中运行 `rattle()`。 |
+| 指向示例的链接      | [Rattle](https://togaware.com/onepager/) |
+| DSVM 上的相关工具      |LightGBM、Weka、Xgboost   |
+
+
+## <a name="weka"></a>Weka
+|    |           |
+| ------------- | ------------- |
+| 它是什么？   |  用于数据挖掘任务的机器学习算法的集合。 这些算法可以直接应用于数据集，也可以从自己的 Java 代码中调用。 Weka 包含用于数据预处理、分类、回归、群集、关联规则和可视化的工具。 |
+| 支持的 DSVM 版本     | Windows、Linux     |
+| 典型用途      | 一般计算机学习工具     |
+| 如何使用和运行它      | 在 Windows 上，在“开始”菜单中搜索 Weka。 在 Linux 上，用 X2Go 登录，然后 > 开发 > Weka 中的应用程序。 |
+| 到示例的链接      | [Weka 示例](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| DSVM 上的相关工具      |LightGBM、Rattle、Xgboost   |
+
+
+
 

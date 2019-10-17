@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c1c374977460de04d2339ba8c93019cf9152dbe3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 44b3830465bf2b5aa06612aa868b086b120f1ece
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262718"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372282"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>连接威胁情报提供商提供的数据
 
@@ -50,7 +50,7 @@ Azure Sentinel 使你可以导入组织使用的威胁指标，这可以提高�
 - [ThreatConnect 平台](https://threatconnect.com/solution/)
 
 
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>必备组件  
 
 - Azure AD "全局管理员" 或 "安全管理员" 的角色，以向提示产品或自定义应用程序授予使用与 Microsoft Graph Security tiIndicators API 的直接集成的权限。
 
@@ -62,11 +62,11 @@ Azure Sentinel 使你可以导入组织使用的威胁指标，这可以提高�
 
 2. 为已注册的应用程序[配置 API 权限](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph)：向已注册的应用程序添加 Microsoft Graph 应用程序权限**ThreatIndicators. OwnedBy** 。
 
-3. 请求你的 Azure Active Directory 租户管理员向你的组织的注册应用程序授予管理员许可。 通过 Azure 门户：**Azure Active Directory** > **应用注册** ***应用*名称ViewAPI>权限授予管理员许可\<**  >  >  >  ***租户名称*。> \<**
+3. 请求你的 Azure Active Directory 租户管理员向你的组织的注册应用程序授予管理员许可。 从 Azure 门户： **Azure Active Directory** > **应用注册** >  @no__t-**5_应用名称_>**  > **View API 权限**@no__t**4**。
 
 4. 通过指定以下内容来配置提示产品或使用与 Microsoft Graph Security tiIndicators API 的直接集成的应用，将指示器发送到 Azure Sentinel：
     
-    a. 已注册应用程序的 ID、机密和租户 ID 的值。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 已注册应用程序的 ID、机密和租户 ID 的值。
     
     b. 对于目标产品，请指定 Azure Sentinel。
     
@@ -76,7 +76,7 @@ Azure Sentinel 使你可以导入组织使用的威胁指标，这可以提高�
 
 6. 选择 "**打开连接器" 页面**，然后单击 "**连接**"。
 
-7. 若要查看导入到 azure sentinel 的威胁指标，请导航到**azure sentinel-Logs** > **SecurityInsights**，然后展开**ThreatIntelligenceIndicator**。
+7. 若要查看导入到 Azure Sentinel 的威胁指标，请导航到**Azure sentinel-Logs** > **SecurityInsights**，然后展开**ThreatIntelligenceIndicator**。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ce0ac4f40f3dd1bd7252689618459769d0aeb56
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: fcc704e7027903a1ede14c787a64c35d6b5fd9c0
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203064"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373462"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -93,7 +93,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 如果有同步用户仅与 Azure AD 集成服务交互，并且还必须符合密码过期策略，则可以通过启用此*策略来强制他们遵守 Azure AD 密码过期策略EnforceCloudPasswordPolicyForPasswordSyncedUsers*功能。
 
-禁用 *EnforceCloudPasswordPolicyForPasswordSyncedUsers* 时（这是默认设置），Azure AD Connect 将同步用户的 PasswordPolicies 属性设置为 "DisablePasswordExpiration"。 这是在每次同步用户密码时执行的，并指示 Azure AD 忽略该用户的云密码过期策略。 可以通过以下命令使用 Azure AD PowerShell 模块检查属性的值：
+禁用*EnforceCloudPasswordPolicyForPasswordSyncedUsers*时（这是默认设置），Azure AD Connect 将同步用户的 PasswordPolicies 属性设置为 "DisablePasswordExpiration"。 这是在每次同步用户密码时执行的，并指示 Azure AD 忽略该用户的云密码过期策略。 可以通过以下命令使用 Azure AD PowerShell 模块检查属性的值：
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
 
@@ -102,15 +102,15 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 `Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
 
-启用后，Azure AD 不会进入每个同步用户，从 PasswordPolicies `DisablePasswordExpiration`属性中删除该值。 相反，当用户下次在本地`None` AD 中更改其密码时，将在下一次密码同步期间将值设置为。  
+启用后，Azure AD 不会进入每个同步用户，从 PasswordPolicies 属性中删除 @no__t 值。 相反，当用户下次在本地 AD 中更改密码时，此值将设置为每个用户在下一次密码同步期间 `None`。  
 
-建议在启用密码哈希同步之前启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，以便初始同步密码哈希不会将`DisablePasswordExpiration`该值添加到用户的 PasswordPolicies 属性。
+建议在启用密码哈希同步之前启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，以便初始同步密码哈希不会将 `DisablePasswordExpiration` 值添加到用户的 PasswordPolicies 属性。
 
 默认 Azure AD 密码策略要求用户每隔90天更改其密码。 如果 AD 中的策略也是90天，则这两个策略应该匹配。 但是，如果 AD 策略不是90天，则可以使用 Set-msolpasswordpolicy PowerShell 命令更新要匹配的 Azure AD 密码策略。
 
 Azure AD 支持每个注册域单独的密码过期策略。
 
-地方如果在 Azure AD 中有需要使用不过期密码的同步帐户，则必须将`DisablePasswordExpiration`值显式添加到 Azure AD 中用户对象的 PasswordPolicies 属性。  可以通过运行以下命令来执行此操作。
+警告：如果在 Azure AD 中有需要使用不过期密码的同步帐户，则必须将 @no__t 值显式添加到 Azure AD 中的用户对象的 PasswordPolicies 属性。  可以通过运行以下命令来执行此操作。
 
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
@@ -123,7 +123,7 @@ Azure AD 支持每个注册域单独的密码过期策略。
   
 临时密码功能有助于确保在第一次使用时完成凭据的所有权转移，以最大程度地减少多个人员有权了解该凭据的时间。
 
-若要在 Azure AD 中支持为同步用户提供临时密码，可以通过在 Azure AD Connect 服务器上运行以下命令来启用*ForcePasswordResetOnLogonFeature*功能，并<AAD Connector Name>将替换为连接器名称特定于你的环境：
+若要在 Azure AD 中支持为同步用户提供临时密码，可以通过在 Azure AD Connect 服务器上运行以下命令来启用*ForcePasswordResetOnLogonFeature*功能，并将 <AAD Connector Name> 替换为特定于的连接器名称你的环境：
 
 `Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
 
@@ -131,7 +131,7 @@ Azure AD 支持每个注册域单独的密码过期策略。
 
 `(Get-ADSyncConnector | where{$_.ListName -eq "Windows Azure Active Directory (Microsoft)"}).Name`
 
-地方强制用户在下次登录时更改其密码需要同时更改密码。  AD Connect 不会自行选取强制密码更改标志，它是在密码哈希同步过程中检测到的密码更改的补充。
+注意事项：强制用户在下次登录时更改其密码需要同时更改密码。  AD Connect 不会自行选取强制密码更改标志，它是在密码哈希同步过程中检测到的密码更改的补充。
 
 > [!CAUTION]
 > 如果未 Azure AD 在中启用自助服务密码重置（SSPR），则当用户在 Azure AD 中重置其密码时，将有一个令人困惑的体验，然后尝试使用新密码登录 Active Directory，因为新密码在 Active Directory 中无效. 仅当对租户启用了 SSPR 和密码写回时，才应使用此功能。
@@ -210,8 +210,8 @@ Azure AD 支持每个注册域单独的密码过期策略。
 1. 转到 %programfiles%\Azure AD Sync\Bin。
 2. 打开 miiserver.exe.config。
 3. 转到文件末尾的 configuration/runtime 节点。
-4. 添加以下节点： `<enforceFIPSPolicy enabled="false"/>`
-5. 保存更改。
+4. 添加以下节点：`<enforceFIPSPolicy enabled="false"/>`
+5. 保存所做更改。
 
 下面显示了此代码片段的大致情况，供参考：
 

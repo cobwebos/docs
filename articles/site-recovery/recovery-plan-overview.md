@@ -6,20 +6,20 @@ manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8502e08db48700aefe51a6e4f0e79d1b08f6ca79
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9e45787e7ae39b62605f5d8a54afd4ad95c9cca7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814440"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331911"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
 
 本文介绍了 [Azure Site Recovery](site-recovery-overview.md) 中的恢复计划。
 
-恢复计划将计算机汇集到恢复组中。 可以通过向计划中添加顺序、说明和任务来自定义计划。 在定义计划后，可以根据它运行故障转移。  可以在多个恢复计划中引用计算机，如果先前已通过其他恢复计划部署了计划，则后续计划将跳过计算机的部署/启动。
+恢复计划将计算机汇集到恢复组中。 可以通过向计划中添加顺序、说明和任务来自定义计划。 在定义计划后，可以根据它运行故障转移。  在多个恢复计划中可以引用计算机，在此计划中，如果之前的计划是通过另一个恢复计划部署的，则后续计划将跳过计算机的部署/启动。
 
 
 ## <a name="why-use-a-recovery-plan"></a>为何使用恢复计划？
@@ -33,6 +33,9 @@ ms.locfileid: "70814440"
 
 
 ## <a name="model-apps"></a>对应用进行建模
+
+> [!NOTE]
+> 最多可以向一个恢复计划中添加100个受保护的实例。
 
 可以规划并创建一个恢复组来捕获特定于应用的属性。 例如，让我们考虑一个典型的三层应用程序，该应用程序具有 SQL Server 后端、中间件和 Web 前端。 通常，你将自定义恢复计划，以便使每层中的计算机在故障转移后按正确顺序启动。
 

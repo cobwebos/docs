@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 275eff59c56229f45a131e107668b8fefab24536
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 389e1472e1e1fcbed6dd3b6c1d155199246d877f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123774"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332975"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
 
@@ -34,7 +34,7 @@ ms.locfileid: "70123774"
 
 ## <a name="video"></a>视频
 
-### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>了解时序见解数据引入行为, 以及如何对其进行规划。</br>
+### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>了解时序见解数据引入行为，以及如何对其进行规划。</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
@@ -42,19 +42,19 @@ ms.locfileid: "70123774"
 
 警报有助于诊断并缓解环境导致的延迟问题。
 
-1. 在 Azure 门户中, 选择 "**警报**"。
+1. 在 Azure 门户中，选择 "**警报**"。
 
-   [![提醒](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [![Alerts](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
 1. 随后将显示 "**创建规则**" 面板。 在 "**条件**" 下选择 "**添加**"。
 
-   [![添加警报](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [![Add 警报](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
-1. 接下来, 配置信号逻辑的确切条件。
+1. 接下来，配置信号逻辑的确切条件。
 
-   [![配置信号逻辑](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [@no__t 1Configure 信号逻辑](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
-   在这里, 你可以使用以下某些条件来配置警报:
+   在这里，你可以使用以下某些条件来配置警报：
 
    |指标  |描述  |
    |---------|---------|
@@ -68,23 +68,23 @@ ms.locfileid: "70123774"
 
    选择“完成”。
 
-1. 配置所需的信号逻辑后, 请查看所选的警报规则。
+1. 配置所需的信号逻辑后，请查看所选的警报规则。
 
-   [![入口](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [![Ingress](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>限制和入口管理
 
-* 如果受到限制，则会看到“入口收到消息时间延迟”的值，该值告知你 TSI 落后于消息命中事件源时的实际时间多少秒（不计索引时间，该时间大约为 30-60 秒）。  
+* 如果受到限制，您将看到 "*入口接收的消息时间延迟*" 值，通知您时序见解环境后的秒数从消息到达事件源的实际时间（不包括索引时间）appx。 30-60 秒）。  
 
   入口收到消息计数延迟也应该有一个值，用于确定你在消息数方面落后多少。  若要赶上来，最容易的方式是增加环境的容量，使之达到能够克服此差异的规模。  
 
-  例如，如果你的 S1 环境是一个单元的，在计数方面滞后 5,000,000 条消息，则可增加环境的大小，使之达到六个单元，则大约一天就可以赶上来。  甚至可以增加更多，这样追赶速度会更快。 在一开始预配某个环境时，尤其是在将其连接到某个事件源，而该事件源中已经有事件时，或者在批量上传大量历史数据时，追赶期是常见的现象。
+  例如，如果您看到 S1 环境显示了5000000消息的滞后时间，则可能会将您的环境的大小增加到六个单位，大约一整天就会开始。  甚至可以增加更多，这样追赶速度会更快。 在一开始预配某个环境时，尤其是在将其连接到某个事件源，而该事件源中已经有事件时，或者在批量上传大量历史数据时，追赶期是常见的现象。
 
 * 另一种方法是将“入口已存储事件”警报设置为在 2 小时的时间内 >= 略低于总环境容量的阈值。  此警报有助于了解是否持续达到容量要求，指示很可能存在延迟。 
 
   例如，如果预配了三个 S1 单位（或每分钟入口容量为 2100 个事件），则可以将“入口存储的事件数”警报设置为 2 小时 >= 1900 个事件。 如果因不断超过该阈值而触发警报，很可能是由于预配不足。  
 
-* 如果怀疑受到限制，可以将“入口收到的消息数”和事件源的出口消息数相比较。  如果传入事件中心的消息数大于“入口收到的消息数”，时序见解很可能受到了限制。
+* 如果怀疑正在受到限制，可将入**站收到的消息**与事件源的出口消息进行比较。  如果传入事件中心的消息数大于“入口收到的消息数”，时序见解很可能受到了限制。
 
 ## <a name="improving-performance"></a>改善性能
 
@@ -94,6 +94,6 @@ ms.locfileid: "70123774"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关其他疑难解答步骤，请参阅[在时序见解环境中诊断并解决问题](time-series-insights-diagnose-and-solve-problems.md)。
+- 阅读有关[在时序见解环境中诊断并解决问题的](time-series-insights-diagnose-and-solve-problems.md)信息。
 
-- 有关其他帮助，请在 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights) 中展开交流。 也可以联系 [Azure 支持](https://azure.microsoft.com/support/options/)，获取辅助支持选项。
+- 了解[如何扩展时序见解环境](time-series-insights-how-to-scale-your-environment.md)。

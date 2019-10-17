@@ -1,21 +1,21 @@
 ---
-title: Azure 区块链 Service 支持的分类帐版本、修补和升级
+title: Azure 区块链服务分类帐版本、修补和升级
 description: Azure 区块链服务中支持的分类帐版本的概述，包括有关系统修补和系统管理的和用户管理的升级的策略。
 services: azure-blockchain
 keywords: 区块链
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/10/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 07ca22ee84dc7579d59d95b1c303476f44f8f043
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 40719f1c353b8961e14815cb61e7a862b47fc6f5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286525"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329123"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>支持的 Azure 区块链服务分类帐版本
 

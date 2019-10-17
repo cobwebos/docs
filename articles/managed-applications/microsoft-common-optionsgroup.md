@@ -1,6 +1,6 @@
 ---
 title: Azure OptionsGroup UI 元素 | Microsoft Docs
-description: 介绍了 Azure 门户的 Microsoft.Common.OptionsGroup UI 元素。
+description: 介绍了 Azure 门户的 Microsoft.Common.OptionsGroup UI 元素。 允许用户在部署托管应用程序时从可用选项中进行选择。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9aee881844e9338cc1da2484a94c8355f2516c82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bec506575f1c526e59487edb67349cdf862f1a7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720760"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331670"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI 元素
 一个具有一行可用选项的选择控件。
@@ -54,7 +54,7 @@ ms.locfileid: "64720760"
 ## <a name="remarks"></a>备注
 - `constraints.allowedValues` 的标签是项的显示文本，并且当选中时，其值是元素的输出值。
 - 如果已指定，则默认值必须是 `constraints.allowedValues` 中存在的一个标签。 如果未指定，则默认情况下将选择 `constraints.allowedValues` 中的第一个项。 默认值为 **null**。
-- `constraints.allowedValues` 必须至少有一项。
+- `constraints.allowedValues` 至少有一项。
 
 ## <a name="sample-output"></a>示例输出
 ```json

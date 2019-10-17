@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的更新管理部署上配置 pre 和 post 脚本
+title: 在 Azure 中配置更新管理部署的前脚本和后脚本
 description: 本文介绍如何配置和管理更新部署的前脚本和后脚本
 services: automation
 ms.service: automation
@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f13851dd43c80a63ec628e04b98271894c15afc0
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 84cd5db812d995f1160a02917eac5857ee076c7f
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542858"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374444"
 ---
-# <a name="manage-pre-and-post-scripts"></a>管理 pre 和 post 脚本
+# <a name="manage-pre-and-post-scripts"></a>管理预处理脚本和后脚本
 
-在执行更新部署之前（前任务）和之后（后任务），可以使用前脚本和后脚本在自动化帐户中运行 PowerShell Runbook。 前脚本和后脚本在 Azure 上下文中运行，而不是在本地运行。 预脚本在更新部署开始时运行。 后脚本在部署结束时以及在配置的任何重新启动之后运行。
+使用 pre 和后脚本，你可以在自动化帐户中（任务前）和之后（在任务后）更新部署之前运行 PowerShell runbook。 Pre 和后脚本在 Azure 上下文中运行，而不是在本地运行。 预脚本在更新部署开始时运行。 后脚本在部署结束时以及在配置的任何重新启动之后运行。
 
 ## <a name="runbook-requirements"></a>Runbook 要求
 
@@ -26,11 +26,11 @@ ms.locfileid: "69542858"
 
 ## <a name="using-a-prepost-script"></a>使用前脚本/后脚本
 
-若要在更新部署中使用前脚本或后脚本，请先创建一个更新部署。 选择 "**前脚本 + 后脚本**"。 此操作会打开“选择前脚本 + 后脚本”页面。  
+若要在更新部署中使用前脚本或后脚本，请先创建一个更新部署。 选择 "**前脚本 + 后脚本**"。 此操作会打开“选择前脚本 + 后脚本”页面。
 
 ![选择脚本](./media/pre-post-scripts/select-scripts.png)
 
-选择要使用的脚本，本示例使用了 **UpdateManagement-TurnOnVms** Runbook。 选择 runbook 时, 会打开 "**配置脚本**" 页, 然后选择 "**预处理脚本**"。 完成后单击“确定”。
+选择要使用的脚本，本示例使用了 **UpdateManagement-TurnOnVms** Runbook。 选择 runbook 时，会打开 "**配置脚本**" 页，然后选择 "**预处理脚本**"。 完成后单击“确定”。
 
 针对 **UpdateManagement-TurnOffVms** 脚本重复此过程。 但是，在选择“脚本类型”时，请选择“后脚本”。
 
@@ -44,13 +44,13 @@ ms.locfileid: "69542858"
 
 ![更新结果](./media/pre-post-scripts/update-results.png)
 
-单击进入更新部署的运行后，可以看到前脚本和后脚本的其他详细信息。 此时会提供运行时的脚本源的链接。
+单击 "更新部署" "运行" 后，将向你提供有关前脚本和后脚本的其他详细信息。 此时会提供运行时的脚本源的链接。
 
 ![部署运行结果](./media/pre-post-scripts/deployment-run.png)
 
 ## <a name="passing-parameters"></a>传递参数
 
-配置前脚本和后脚本时，可以像计划 Runbook 时一样传入参数。 参数是在创建更新部署时定义的。 前脚本和后脚本支持以下类型：
+在配置前脚本和后脚本时，可以像计划 runbook 一样传入参数。 参数是在创建更新部署时定义的。 Pre 和后脚本支持以下类型：
 
 * [char]
 * [byte]
@@ -64,12 +64,12 @@ ms.locfileid: "69542858"
 
 如果需要其他对象类型，可以在 runbook 中使用自己的逻辑将它强制转换为其他类型。
 
-除了标准的 Runbook 参数以外，还提供了一个附加参数。 此参数是 **SoftwareUpdateConfigurationRunContext**。 此参数是一个 JSON 字符串, 如果您在前脚本或后脚本中定义参数, 则更新部署会自动传入此参数。 该参数包含有关更新部署的信息（[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) 返回的信息的子集）。下表显示了变量中提供的属性：
+除了标准的 Runbook 参数以外，还提供了一个附加参数。 此参数是 **SoftwareUpdateConfigurationRunContext**。 此参数是一个 JSON 字符串，如果您在前脚本或后脚本中定义参数，则更新部署会自动传入此参数。 该参数包含有关更新部署的信息（[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) 返回的信息的子集）。下表显示了变量中提供的属性：
 
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext 属性
 
-|属性  |描述  |
+|properties  |描述  |
 |---------|---------|
 |SoftwareUpdateConfigurationName     | 软件更新配置的名称        |
 |SoftwareUpdateConfigurationRunId     | 运行的唯一 ID。        |
@@ -104,7 +104,7 @@ ms.locfileid: "69542858"
             "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-01",
             "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-02",
             "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-03"
-         ], 
+         ],
          "nonAzureComputerNames":[
             "box1.contoso.com",
             "box2.contoso.com"
@@ -113,15 +113,15 @@ ms.locfileid: "69542858"
    }
 ```
 
-可以在以下位置找到包含所有属性的完整示例：[软件更新配置 - 按名称获取](/rest/api/automation/softwareupdateconfigurations/getbyname#examples)
+在[软件更新配置 - 按名称获取](/rest/api/automation/softwareupdateconfigurations/getbyname#examples)中可以找到所有属性的完整示例
 
 > [!NOTE]
-> `SoftwareUpdateConfigurationRunContext`对象可以包含计算机的重复项。 这可能导致在同一台计算机上多次运行 Pre 和 Post 脚本。 若要解决此行为, `Sort-Object -Unique`请使用仅选择脚本中的唯一 VM 名称。
+> @No__t 0 对象可以包含计算机的重复项。 这可能导致在同一台计算机上多次运行 Pre 和 Post 脚本。 若要解决此行为，请使用 `Sort-Object -Unique` 来仅选择脚本中的唯一 VM 名称。
 
 
 ## <a name="stopping-a-deployment"></a>停止部署
 
-如果要基于预先脚本停止部署, 则必须[引发](automation-runbook-execution.md#throw)异常。 如果不引发异常, 部署和后脚本仍将运行。 库中的[示例 runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0)显示了如何执行此操作。 下面是该 runbook 中的代码片段。
+如果要基于预脚本停止部署，则必须[引发](automation-runbook-execution.md#throw)异常。 如果不引发异常，部署和后脚本仍将运行。 下面的代码段演示如何引发异常。
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -130,16 +130,15 @@ foreach($summary in $finalStatus)
 {
     if ($summary.Type -eq "Error")
     {
-        #We must throw in order to fail the patch deployment.  
+        #We must throw in order to fail the patch deployment.
         throw $summary.Summary
     }
 }
 ```
 
-
 ## <a name="samples"></a>示例
 
-可以在[脚本中心库](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell)中找到前脚本和后脚本的示例，或者可以通过 Azure 门户导入这些示例。 若要通过门户导入这些示例，请在自动化帐户中的“过程自动化”下，选择“Runbook 库”。 使用“更新管理”作为筛选器。
+可以在[脚本中心库](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell)中、 [PowerShell 库](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)或通过 Azure 门户导入脚本中心库中的前脚本和后脚本的示例。 若要通过门户导入这些示例，请在自动化帐户中的“过程自动化”下，选择“Runbook 库”。 使用“更新管理”作为筛选器。
 
 ![库列表](./media/pre-post-scripts/runbook-gallery.png)
 
@@ -154,98 +153,98 @@ foreach($summary in $finalStatus)
 > [!IMPORTANT]
 > 导入 Runbook 后，必须先**发布**，然后才可以使用它们。 为此，请在自动化帐户中找到该 Runbook，选择“编辑”，然后单击“发布”。
 
-所有这些示例基于以下示例中定义的基本模板。 使用此模板可以创建自己的 Runbook 来配合前脚本和后脚本。 此模板还包含了用于在 Azure 中进行身份验证以及处理 `SoftwareUpdateConfigurationRunContext` 参数的逻辑。
+所有这些示例基于以下示例中定义的基本模板。 此模板可用于创建自己的 runbook，以便与前脚本和后脚本一起使用。 此模板还包含了用于在 Azure 中进行身份验证以及处理 `SoftwareUpdateConfigurationRunContext` 参数的逻辑。
 
 ```powershell
-<# 
-.SYNOPSIS 
- Barebones script for Update Management Pre/Post 
- 
-.DESCRIPTION 
-  This script is intended to be run as a part of Update Management Pre/Post scripts.  
-  It requires a RunAs account. 
- 
-.PARAMETER SoftwareUpdateConfigurationRunContext 
-  This is a system variable which is automatically passed in by Update Management during a deployment. 
-#> 
- 
-param( 
-    [string]$SoftwareUpdateConfigurationRunContext 
-) 
-#region BoilerplateAuthentication 
-#This requires a RunAs account 
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection' 
- 
-Add-AzureRmAccount ` 
-    -ServicePrincipal ` 
-    -TenantId $ServicePrincipalConnection.TenantId ` 
-    -ApplicationId $ServicePrincipalConnection.ApplicationId ` 
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint 
- 
-$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID 
-#endregion BoilerplateAuthentication 
- 
-#If you wish to use the run context, it must be converted from JSON 
-$context = ConvertFrom-Json  $SoftwareUpdateConfigurationRunContext 
-#Access the properties of the SoftwareUpdateConfigurationRunContext 
+<#
+.SYNOPSIS
+ Barebones script for Update Management Pre/Post
+
+.DESCRIPTION
+  This script is intended to be run as a part of Update Management Pre/Post scripts.
+  It requires a RunAs account.
+
+.PARAMETER SoftwareUpdateConfigurationRunContext
+  This is a system variable which is automatically passed in by Update Management during a deployment.
+#>
+
+param(
+    [string]$SoftwareUpdateConfigurationRunContext
+)
+#region BoilerplateAuthentication
+#This requires a RunAs account
+$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+
+Add-AzureRmAccount `
+    -ServicePrincipal `
+    -TenantId $ServicePrincipalConnection.TenantId `
+    -ApplicationId $ServicePrincipalConnection.ApplicationId `
+    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+#endregion BoilerplateAuthentication
+
+#If you wish to use the run context, it must be converted from JSON
+$context = ConvertFrom-Json  $SoftwareUpdateConfigurationRunContext
+#Access the properties of the SoftwareUpdateConfigurationRunContext
 $vmIds = $context.SoftwareUpdateConfigurationSettings.AzureVirtualMachines | Sort-Object -Unique
-$runId = $context.SoftwareUpdateConfigurationRunId 
- 
-Write-Output $context 
- 
-#Example: How to create and write to a variable using the pre-script: 
-<# 
-#Create variable named after this run so it can be retrieved 
-New-AzureRmAutomationVariable -ResourceGroupName $ResourceGroup –AutomationAccountName $AutomationAccount –Name $runId -Value "" –Encrypted $false 
-#Set value of variable  
-Set-AutomationVariable –Name $runId -Value $vmIds 
-#> 
- 
-#Example: How to retrieve information from a variable set during the pre-script 
-<# 
-$variable = Get-AutomationVariable -Name $runId 
-#>      
+$runId = $context.SoftwareUpdateConfigurationRunId
+
+Write-Output $context
+
+#Example: How to create and write to a variable using the pre-script:
+<#
+#Create variable named after this run so it can be retrieved
+New-AzureRmAutomationVariable -ResourceGroupName $ResourceGroup –AutomationAccountName $AutomationAccount –Name $runId -Value "" –Encrypted $false
+#Set value of variable
+Set-AutomationVariable –Name $runId -Value $vmIds
+#>
+
+#Example: How to retrieve information from a variable set during the pre-script
+<#
+$variable = Get-AutomationVariable -Name $runId
+#>
 ```
 
 ## <a name="interacting-with-machines"></a>与计算机交互
 
-Pre 和 post 任务作为 runbook 运行在自动化帐户中, 而不是直接在部署中的计算机上运行。 Pre 和 post 任务也在 Azure 上下文中运行, 并且没有访问非 Azure 计算机的权限。 以下部分介绍了如何直接与计算机进行交互, 无论它们是 Azure VM 还是非 Azure 计算机:
+Pre 和后期任务作为 runbook 在自动化帐户中运行，而不是直接在部署中的计算机上运行。 之前和之后的任务也在 Azure 上下文中运行，不能访问非 Azure 计算机。 以下部分介绍了如何直接与计算机进行交互，无论它们是 Azure VM 还是非 Azure 计算机：
 
 ### <a name="interacting-with-azure-machines"></a>与 Azure 计算机交互
 
-Pre 和 post 任务作为 runbook 运行, 而不在部署中的 Azure Vm 上本机运行。 要与 Azure Vm 交互, 你必须具有以下各项:
+Pre 和 post 任务作为 runbook 运行，不在部署中的 Azure Vm 上本地运行。 要与 Azure Vm 交互，你必须具有以下各项：
 
 * 一个运行方式帐户
 * 要运行的 runbook
 
-要与 Azure 计算机交互, 你应使用[AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) Cmdlet 与 azure vm 进行交互。 有关如何执行此操作的示例, 请参阅 runbook 示例[更新管理使用 Run 命令运行脚本](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)。
+要与 Azure 计算机交互，你应使用[AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) Cmdlet 与 azure vm 进行交互。 有关如何执行此操作的示例，请参阅 runbook 示例[更新管理使用 Run 命令运行脚本](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)。
 
 ### <a name="interacting-with-non-azure-machines"></a>与非 Azure 计算机交互
 
-前任务和后任务在 Azure 上下文中运行，无法访问非 Azure 计算机。 若要与非 Azure 计算机进行交互，必须具有以下项：
+Pre 和后任务在 Azure 上下文中运行，并且没有访问非 Azure 计算机的权限。 若要与非 Azure 计算机进行交互，必须具有以下项：
 
 * 一个运行方式帐户
 * 在计算机上安装的混合 Runbook 辅助角色
 * 要在本地运行的 Runbook
 * 父 Runbook
 
-若要与非 Azure 计算机交互，需在 Azure 上下文中运行一个父 Runbook。 此 Runbook 使用 [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) cmdlet 调用子 Runbook。 必须指定 `-RunOn` 参数，并提供运行脚本的混合 Runbook 辅助角色的名称。 有关如何执行此操作的示例, 请参阅 runbook 示例[更新管理在本地运行脚本](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)。
+若要与非 Azure 计算机交互，需在 Azure 上下文中运行一个父 Runbook。 此 Runbook 使用 [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) cmdlet 调用子 Runbook。 必须指定 `-RunOn` 参数，并提供运行脚本的混合 Runbook 辅助角色的名称。 有关示例，请参阅 runbook 示例[更新管理-本地运行脚本](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)。
 
 ## <a name="abort-patch-deployment"></a>中止修补程序部署
 
-如果你的前脚本返回错误, 你可能想要中止你的部署。 若要执行此操作, 必须在脚本中为导致失败的任何逻辑[引发](/powershell/module/microsoft.powershell.core/about/about_throw)错误。
+如果你的前脚本返回错误，你可能想要中止你的部署。 若要执行此操作，必须在脚本中为导致失败的任何逻辑[引发](/powershell/module/microsoft.powershell.core/about/about_throw)错误。
 
 ```powershell
 if (<My custom error logic>)
 {
-    #Throw an error to fail the patch deployment.  
+    #Throw an error to fail the patch deployment.
     throw "There was an error, abort deployment"
 }
 ```
 
 ## <a name="known-issues"></a>已知问题
 
-* 使用 pre 和 post 脚本时, 不能向参数传递布尔值、对象或数组。 Runbook 将会失败。 有关支持的类型的完整列表, 请参阅[参数](#passing-parameters)。
+* 使用 pre 和后脚本时，不能向参数传递布尔值、对象或数组。 Runbook 将会失败。 有关支持的类型的完整列表，请参阅[参数](#passing-parameters)。
 
 ## <a name="next-steps"></a>后续步骤
 

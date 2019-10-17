@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd20928816a30ad2843ce6c876bd77152dcd69e1
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001736"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374073"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 应用程序库中列出你的应用程序
 
@@ -38,7 +38,7 @@ ms.locfileid: "72001736"
 - 共同客户可以获得分步配置教程。
 - 使用系统进行跨域标识管理（[SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)）的客户可以使用同一应用的预配。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 对于联合应用程序（开放 ID 和 SAML/WS 进纸），应用程序必须支持 "软件即服务" （SaaS）模型，才能在 Azure AD 应用库中列出。 企业库应用程序必须支持多个客户配置，而不是任何特定客户。
 - 对于 Open ID Connect，应用程序必须是 multitenanted 的，并且必须正确地为应用程序实现[Azure AD 许可框架](consent-framework.md)。 用户可以将登录请求发送到公共终结点，以便任何客户都可以向应用程序提供许可。 你可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户访问。
@@ -71,14 +71,14 @@ ms.locfileid: "72001736"
 
 若要将某个应用程序列在 Azure AD 应用库中，首先需要实现 Azure AD 支持的以下联合身份验证协议之一。 还需要同意 Azure AD 应用程序库的条款和条件。 阅读[本网站](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)上 Azure AD 应用程序库的条款和条件。
 
-- **OpenID Connect**：若要使用 Open ID Connect 协议将应用程序与 Azure AD 集成，请遵循[开发人员说明](authentication-scenarios.md)。
+- **OpenID connect**：若要通过使用 Open ID Connect 协议将应用程序与 Azure AD 进行集成，请按照[开发人员的说明](v1-authentication-scenarios.md)进行操作。
 
     ![在库中列出 OpenID Connect 应用程序](./media/howto-app-gallery-listing/openid.png)
 
     * 如果要使用 OpenID Connect 将应用程序添加到库中，请选择 " **Openid connect & OAuth 2.0** "，如下所示。
     * 如果访问有任何问题，请联系[AZURE AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
-- **SAML 2.0** 或 **WS 联合身份验证**：如果你的应用支持 SAML 2.0，你可以按照[说明添加自定义应用程序](../active-directory-saas-custom-apps.md)，将它与 Azure AD 租户直接集成。
+- **SAML 2.0**或**ws-addressing**：如果应用支持 SAML 2.0，则可以按照[说明添加自定义应用程序](../active-directory-saas-custom-apps.md)，将其与 Azure AD 租户直接集成。
 
   ![在库中列出 SAML 2.0 或 WS 进纸应用程序](./media/howto-app-gallery-listing/saml.png)
 

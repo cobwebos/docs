@@ -1,5 +1,5 @@
 ---
-title: 监视 Azure Monitor 的 Python 应用程序 |Microsoft Docs
+title: 监视具有 Azure Monitor 的 Python 应用程序（预览） |Microsoft Docs
 description: 提供有关将 OpenCensus Python 与 Azure Monitor 连接的说明
 services: application-insights
 keywords: ''
@@ -10,18 +10,18 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.reviewer: mbullwin
 manager: carmonm
-ms.openlocfilehash: 1316cf6808f6ccfc4165ad162c51421638b130be
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ed61cb1bc88c48fe89c4a9390f04747749bd48c5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294000"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329482"
 ---
-# <a name="set-up-azure-monitor-for-your-python-application"></a>设置 Python 应用程序的 Azure Monitor
+# <a name="set-up-azure-monitor-for-your-python-application-preview"></a>设置 Python 应用程序的 Azure Monitor （预览）
 
 Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python 应用程序的分布式跟踪、指标收集和日志记录。 本文将逐步指导你逐步完成为 Python 设置 OpenCensus 并使监视数据 Azure Monitor 的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 需要一个 Azure 订阅。
 - 如果已安装 python，则本文将使用[python 3.7.0](https://www.python.org/downloads/)，但较早的版本可能会进行次要调整。
@@ -42,11 +42,11 @@ Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python
 
    此时会显示配置对话框，请使用下表填写输入字段。
 
-    | 设置        | ReplTest1           | 说明  |
+    | 设置        | Value           | 描述  |
    | ------------- |:-------------|:-----|
-   | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
+   | 名称      | 全局唯一值 | 标识所监视的应用的名称 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
-   | **Location** | East US | 选择离你近的位置或离托管应用的位置近的位置 |
+   | 位置 | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
 2. 单击“创建”。
 
@@ -100,7 +100,7 @@ Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. 虽然对于演示非常有用，但最终我们需要发出 `SpanData` 到 Azure Monitor。 根据以下代码示例修改上一步中的代码：
+3. 虽然对于演示非常有用，但最终我们需要发出 `SpanData` 到 Azure Monitor。 根据下面的代码示例，从上一步中修改代码：
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -128,9 +128,9 @@ Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python
         main()
     ```
 
-4. 现在当你运行 Python 脚本时，系统仍会提示你输入值，但现在只有此值输出到 shell 中。 创建的 @no__t 0 将发送到 Azure Monitor。 可以在 `dependencies` 下找到发出的范围数据。
+4. 现在，运行 Python 脚本时，系统仍会提示输入值，但现在只能在 shell 中打印值。 创建的 @no__t 0 将发送到 Azure Monitor。 可以在 `dependencies` 下找到发出的范围数据。
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 
 1. 首先，让我们生成一些本地指标数据。 我们将创建一个简单的度量值，用于跟踪用户按 enter 的次数。
 
@@ -183,7 +183,7 @@ Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. 虽然对于演示非常有用，但最终我们希望将指标数据发送到 Azure Monitor。 根据以下代码示例修改上一步中的代码：
+3. 虽然对于演示非常有用，但最终我们希望将指标数据发送到 Azure Monitor。 根据下面的代码示例，从上一步中修改代码：
 
     ```python
     from datetime import datetime
@@ -267,7 +267,7 @@ Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python
     90
     ```
 
-3. 虽然对于演示非常有用，但最终我们希望将指标数据发送到 Azure Monitor。 根据以下代码示例修改上一步中的代码：
+3. 虽然对于演示非常有用，但最终我们希望将指标数据发送到 Azure Monitor。 根据下面的代码示例，从上一步中修改代码：
 
     ```python
     import logging
@@ -330,7 +330,7 @@ Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python
 
 5. 有关如何使用查询和日志的详细信息，请查看[Azure Monitor 中的日志](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)。
 
-## <a name="opencensus-for-python"></a>适用于 Python 的 OpenCensus
+## <a name="opencensus-for-python"></a>用于 Python 的 OpenCensus
 
 * [GitHub 上的 OpenCensus Python](https://github.com/census-instrumentation/opencensus-python)
 * [自定义](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
@@ -349,4 +349,4 @@ Azure Monitor 通过与[OpenCensus](https://opencensus.io)集成，支持 Python
 
 * [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)：创建测试来确保站点在 Web 上可见。
 * [智能诊断](../../azure-monitor/app/proactive-diagnostics.md)：这些测试可自动运行，因此不需要进行任何设置。 它们会告诉你应用是否具有异常的失败请求速率。
-* [指标警报](../../azure-monitor/app/alerts.md)：设置警报可在某个指标超过阈值时发出警告。 可以在编码到应用中的自定义指标中设置它们。
+* [指标警报](../../azure-monitor/app/alerts.md)：设置警报，以便在指标超过阈值时发出警告。 可以在编码到应用中的自定义指标中设置它们。

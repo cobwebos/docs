@@ -8,24 +8,24 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 395e8b1bc92ea64c8a5cea114be443d6411c7412
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: c8fc6c552920cf7790bf5c89531fc04ad4c57d36
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170332"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333215"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>使用地理区域冗余存储（GZRS）构建高度可用的 Azure 存储应用程序（预览版）
 
 区域冗余存储（GZRS）（预览版）结婚时会[区域冗余存储（ZRS）](storage-redundancy-zrs.md)的高可用性，通过[异地冗余存储（GRS）](storage-redundancy-grs.md)提供的区域中断保护。 将 GZRS 存储帐户中的数据复制到主要区域中的三个[Azure 可用性区域](../../availability-zones/az-overview.md)，并将其复制到辅助地理区域，以防止区域灾难。 每个 Azure 区域与同一地理位置中另一个区域配对。 有关更多详细信息和异常，请参阅[文档](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
-使用 GZRS 存储帐户，可以在可用性区域变得不可用或无法恢复时继续读取和写入数据。 此外，在发生整个区域中断或发生主要区域无法恢复的灾难时，数据也是持久的。 GZRS 设计为在给定的一年内提供至少 99.99999999999999% （16个9）的对象持久性。 GZRS 还提供与 LRS、ZRS、GRS 或 RA-GRS 相同的[可伸缩性目标](storage-scalability-targets.md)。 如果你的应用程序需要能够在主要区域发生灾难时读取数据，则可以选择启用对辅助区域中的数据的读取访问（使用读取访问权限异地冗余存储（GZRS））。
+使用 GZRS 存储帐户，可以在可用性区域变得不可用或无法恢复时继续读取和写入数据。 此外，在发生整个区域中断或发生主要区域无法恢复的灾难时，数据也是持久的。 GZRS 设计为在给定的一年内提供至少99.99999999999999% （16个9）的对象持久性。 GZRS 还提供与 LRS、ZRS、GRS 或 RA-GRS 相同的[可伸缩性目标](storage-scalability-targets.md)。 如果你的应用程序需要能够在主要区域发生灾难时读取数据，则可以选择启用对辅助区域中的数据的读取访问（使用读取访问权限异地冗余存储（GZRS））。
 
 Microsoft 建议为需要一致性、持续性、高可用性、优秀性能和恢复能力的应用程序使用 GZRS。 对于发生区域性灾难时对辅助区域的 "读取" 访问权限的其他安全，请为你的存储帐户启用 GZRS。
 
 ## <a name="about-the-preview"></a>关于此预览版
 
-仅常规用途 v2 存储帐户支持 GZRS 和 GZRS。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 GZRS 和 GZRS 支持块 blob，不是 VHD 磁盘、文件、表和队列的页 blob。
+仅常规用途 v2 存储帐户支持 GZRS 和 GZRS。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 GZRS 和 GZRS 支持块 blob、页 blob （不是 VHD 磁盘）、文件、表和队列。
 
 GZRS 和 RA-GZRS 目前可用于以下区域：
 
@@ -49,7 +49,7 @@ Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看[Az
 > [!IMPORTANT]
 > 异步复制涉及到将数据写入主要区域和将数据复制到次要区域之间的延迟时间。 发生区域性灾难时，如果无法从主要区域中恢复数据，则尚未复制到次要区域的更改可能会丢失。
 
-创建存储帐户时，可以指定如何复制该帐户中的数据，还可以指定该帐户的主要区域。 异地复制帐户的成对次要区域是根据主要区域确定的，不能更改。 有关 Azure 支持区域的最新信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 有关使用 GZRS 或 GZRS 创建存储帐户的信息，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
+创建存储帐户时，可以指定如何复制该帐户中的数据，还可以指定该帐户的主要区域。 异地复制帐户的成对次要区域是根据主要区域确定的，不能更改。 有关 Azure 支持的区域的最新信息，请参阅[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 有关使用 GZRS 或 GZRS 创建存储帐户的信息，请参阅[创建存储帐户](storage-quickstart-create-account.md)。
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>使用 GZRS 实现高可用性
 
@@ -86,7 +86,7 @@ Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看[Az
 
 ### <a name="migrating-from-a-zrs-account"></a>从 ZRS 帐户迁移
 
-若要将现有 ZRS 帐户转换为 GZRS，请使用[AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) cmdlet 更改帐户的 SKU。 请务必将占位符值替换为你自己的值：
+若要将现有 ZRS 帐户转换为 GZRS，请使用[AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) cmdlet 更改帐户的 SKU。 请记住将占位符值替换为自己的值：
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -SkuName "Standard_RAGZRS"
@@ -140,16 +140,16 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
     - **严重性**：保留默认值。
     - **问题类型**：选择“数据迁移”。
     - **类别**：选择 "**迁移到区域内的（RA-） GZRS**"。
-    - **标题**：键入描述性标题，例如 " **（RA-） GZRS 帐户迁移**"。
-    - **详细信息**：在 "**详细信息**" 框中键入其他详细信息，例如，"我想要迁移到 \_ @ no__t-2 区域中的 [LRS，GRS] 中的 GZRS。" 或 "我想要从 \_ @ no__t-1 区域中的 [LRS，RA-GRS] 迁移到" RA-GZRS "。
+    - **标题**：键入描述性标题，例如 **（RA-） GZRS 帐户迁移**。
+    - **详细信息**：在 "**详细**信息" 框中键入其他详细信息，例如，"我想要从 \_ @ no__t-3" 区域中的 [LRS，GRS] 迁移到 GZRS。 " 或 "我想要从 \_ @ no__t-1 区域中的 [LRS，RA-GRS] 迁移到" RA-GZRS "。
 5. 选择“**下一步**”。
 6. 检查“联系信息”边栏选项卡中的联系信息是否正确。
-7. 选择“创建”。
+7. 选择**创建**。
 
 支持代表将与你联系以提供帮助。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [Azure 存储复制](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
-- [区域冗余存储 (ZRS)：高度可用的 Azure 存储应用程序](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 
+- [区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 

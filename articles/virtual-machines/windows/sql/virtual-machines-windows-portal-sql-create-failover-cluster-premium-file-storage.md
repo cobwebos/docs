@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: f51263a91ca174a6c8108ed4414ff0f8b9745aff
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
-ms.translationtype: MT
+ms.openlocfilehash: 39f04005776f3b451ad7c64c76f9aa5d8c4a7768
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311874"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330086"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置具有高级文件共享的 SQL Server 故障转移群集实例
 
@@ -53,6 +53,8 @@ ms.locfileid: "72311874"
 
 检查当前环境的 IOPS 活动，并验证高级文件在开始部署或迁移之前是否会提供所需的 IOPS。 使用 Windows 性能监视器磁盘计数器和监视 SQL Server 数据、日志和临时数据库文件所需的总 IOPS （每秒磁盘传输数）和吞吐量（磁盘字节数/秒）。 许多工作负荷都有突发 IO，因此最好在繁重的使用时间段内检查，并记下最大 IOPS 和平均 IOPS。 高级文件共享提供基于共享大小的 IOPS。 高级文件还提供了可免费突发的突发，在这种情况下，你可以将 IO 突发为三倍于基准量最多一小时。 
 
+有关高级文件共享性能的详细信息，请参阅[文件共享性能层](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-planning#file-share-performance-tiers)。 
+
 ### <a name="licensing-and-pricing"></a>许可与定价
 
 在 Azure 虚拟机上，你可以使用即用即付（PAYG）或自带许可证（BYOL） VM 映像 SQL Server 许可证。 选择的映像类型会影响收费方式。
@@ -69,7 +71,7 @@ ms.locfileid: "72311874"
 
 - 具有高级文件共享的故障转移群集不支持 Filestream。 若要使用 filestream，请使用[存储空间直通](virtual-machines-windows-portal-sql-create-failover-cluster.md)部署群集。 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 在遵循本文中的说明之前，应事先做好以下准备：
 
@@ -160,7 +162,7 @@ ms.locfileid: "72311874"
 
 创建并配置虚拟机后，可以配置高级文件共享。
 
-## <a name="step-2-mount-premium-file-share"></a>步骤 2：装载高级文件共享
+## <a name="step-2-mount-premium-file-share"></a>步骤2：装载高级文件共享
 
 1. 登录到[Azure 门户](https://portal.azure.com)并中转到你的存储帐户。
 1. 在 "**文件服务**" 下，单击 "**文件共享**"，然后选择要用于 SQL 存储的高级文件共享。 
@@ -180,7 +182,7 @@ ms.locfileid: "72311874"
   > [!IMPORTANT]
   > 请考虑对备份文件使用单独的文件共享，以便为数据和日志文件保存此共享的 IOPS 和大小。 你可以为备份文件使用高级或标准文件共享
 
-## <a name="step-3-configure-failover-cluster-with-file-share"></a>步骤 3：配置具有文件共享的故障转移群集 
+## <a name="step-3-configure-failover-cluster-with-file-share"></a>步骤3：配置具有文件共享的故障转移群集 
 
 下一步是配置故障转移群集。 此步骤包括以下子步骤：
 
@@ -219,7 +221,7 @@ ms.locfileid: "72311874"
 
 1. 在“服务器管理器”中单击“工具”，并单击“故障转移群集管理器”。
 1. 在“故障转移群集管理器”中单击“操作”，并单击“验证配置...”。
-1. 单击“资源组名称”的 Azure 数据工厂。
+1. 单击“下一步”。
 1. 在“选择服务器或群集”中，键入两个虚拟机的名称。
 1. 在“测试选项”中，选择“仅运行选择的测试”。 单击“下一步”。
 1. 在**测试选择**时，包含除**存储**和**存储空间直通**以外的所有测试。 参阅下图：
@@ -257,7 +259,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 #### <a name="windows-server-2019"></a>Windows Server 2019
 
-以下 PowerShell 为 Windows Server 2019 创建一个故障转移群集。  有关详细信息，请查看博客 @no__t 0Failover 群集：群集网络对象 @ no__t-0。  使用节点的名称（虚拟机名称）以及 Azure VNET 中可用的 IP 地址更新脚本：
+以下 PowerShell 为 Windows Server 2019 创建一个故障转移群集。  有关详细信息，请参阅博客[故障转移群集：群集网络对象](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)。  使用节点的名称（虚拟机名称）以及 Azure VNET 中可用的 IP 地址更新脚本：
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
@@ -277,13 +279,13 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 1. 配置故障转移群集仲裁见证。 请参阅[在用户界面中配置仲裁见证](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)。
 
 
-## <a name="step-4-test-cluster-failover"></a>步骤 4：测试群集故障转移
+## <a name="step-4-test-cluster-failover"></a>步骤4：测试群集故障转移
 
 测试群集的故障转移。 在故障转移群集管理器中，右键单击群集 > "**更多操作**"  >  "**移动核心群集资源**"  > **选择节点**，然后选择群集的其他节点。 将核心群集资源移到群集的每个节点，然后将其移回主节点。 如果能够成功地将群集移到每个节点，则可以安装 SQL Server。  
 
 :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/test-cluster-failover.png" alt-text="通过将核心资源移到其他节点来测试群集故障转移":::
 
-## <a name="step-5-create-sql-server-fci"></a>步骤 5：创建 SQL Server FCI
+## <a name="step-5-create-sql-server-fci"></a>步骤5：创建 SQL Server FCI
 
 配置故障转移群集后，可以创建 SQL Server FCI。
 
@@ -312,7 +314,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
    >[!NOTE]
    >如果使用了包含 SQL Server 的 Azure 市场库映像，该映像已随附 SQL Server 工具。 如果未使用此映像，需单独安装 SQL Server 工具。 请参阅 [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)（下载 SQL Server Management Studio (SSMS)）。
 
-## <a name="step-6-create-azure-load-balancer"></a>步骤 6：创建 Azure 负载均衡器
+## <a name="step-6-create-azure-load-balancer"></a>步骤6：创建 Azure 负载均衡器
 
 在 Azure 虚拟机上，群集使用负载均衡器来保存每次都需要位于一个群集节点上的 IP 地址。 在此解决方案中，负载均衡器保存 SQL Server FCI 的 IP 地址。
 
@@ -333,11 +335,11 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
    - **订阅**：Azure 订阅。
    - **资源组**：使用虚拟机所在的同一资源组。
    - **名称**：标识负载均衡器的名称。
-   - **区域**：使用虚拟机所在的同一 Azure 位置。
+   - **区域**：使用与虚拟机相同的 Azure 位置。
    - **类型**：负载均衡器可以是公共或专用的。 专用负载均衡器可从同一 VNET 内部访问。 大多数 Azure 应用程序可以使用专用负载均衡器。 如果应用程序需要通过 Internet 直接访问 SQL Server，请使用公共负载均衡器。
-   - **SKU**：负载均衡器的 SKU 应该是标准的。 
+   - **Sku**：负载均衡器的 sku 应该是标准的。 
    - **虚拟网络**：虚拟机所在的同一网络。
-   - **IP 地址分配**：IP 地址分配应为静态。 
+   - **Ip 地址分配**： ip 地址分配应为静态。 
    - **专用 IP 地址**：分配给 SQL Server FCI 群集网络资源的同一 IP 地址。
    参阅下图：
 
@@ -351,7 +353,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 单击“后端池”并单击“+ 添加”来添加后端池。
 
-1. 将该后端池与包含 VM 的可用性集进行关联。
+1. 将后端池与包含 VM 的可用性集相关联。
 
 1. 在“目标网络 IP 配置”下，选中“虚拟机”并选择将作为群集节点参与操作的虚拟机。 请务必包括将承载 FCI 的所有虚拟机。 
 
@@ -367,8 +369,8 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
    - **名称**：运行状况探测的名称。
    - **协议**：TCP。
-   - **端口**：设置为你在[此步骤](#ports)中在防火墙中为运行状况探测创建的端口。 在本文中，示例使用了 TCP 端口 `59999`。
-   - **时间间隔**：5 秒。
+   - **端口**：在[此步骤](#ports)中，将设置为在防火墙中为运行状况探测创建的端口。 在本文中，此示例使用 TCP 端口 `59999`。
+   - **间隔**：5 秒。
    - **不正常阈值**：2 次连续失败。
 
 1. 单击“确定”。
@@ -388,12 +390,12 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
    - **后端池**：使用前面配置的后端池名称。
    - **运行状况探测**：使用前面配置的运行状况探测。
    - **会话持久性**：无。
-   - **空闲超时(分钟)** ：4.
-   - **浮动 IP (直接服务器返回)** ：Enabled
+   - **空闲超时(分钟)** ：4。
+   - **浮动 IP (直接服务器返回)** ：已启用
 
 1. 单击 **“确定”** 。
 
-## <a name="step-7-configure-cluster-for-probe"></a>步骤 7：为探测配置群集
+## <a name="step-7-configure-cluster-for-probe"></a>步骤7：为探测配置群集
 
 在 PowerShell 中设置群集探测端口参数。
 
@@ -429,7 +431,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
    Get-ClusterResource $IPResourceName | Get-ClusterParameter 
   ```
 
-## <a name="step-8-test-fci-failover"></a>步骤 8：测试 FCI 故障转移
+## <a name="step-8-test-fci-failover"></a>步骤8：测试 FCI 故障转移
 
 测试 FCI 的故障转移以验证群集功能。 请执行以下步骤：
 
@@ -459,7 +461,7 @@ Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理
 - 无法将群集 MSDTC 资源配置为使用共享存储。 对于 Windows Server 2016，如果创建 MSDTC 资源，即使存储存在，也不会显示任何可用的共享存储。 Windows Server 2019 中已修复此问题。
 - 基本负载均衡器不处理 RPC 端口。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [Windows 群集技术](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server 故障转移群集实例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

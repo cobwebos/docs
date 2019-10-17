@@ -1,6 +1,6 @@
 ---
-title: 使用托管标识的 azure 托管应用程序
-description: 了解如何配置托管应用程序使用托管标识。 托管标识可用于部署托管应用程序链接到现有资源授予托管应用程序管理 Azure 资源组外的托管的资源，并为活动日志提供操作的托管应用程序标识和在 Azure 中的其他服务。
+title: 具有托管标识的 Azure 托管应用程序
+description: 用托管标识配置托管应用程序，以便链接到现有资源，管理 Azure 资源，以及为活动日志提供操作标识。
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
@@ -8,36 +8,36 @@ ms.reviewer: ''
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: 9fb5f7a4a62c2d323059f7c0b879482e93feef2f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9e1f5072921104c749a0acef95b7da09f1cbb662
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434866"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330226"
 ---
-# <a name="azure-managed-application-with-managed-identity"></a>使用托管标识的 azure 托管应用程序
+# <a name="azure-managed-application-with-managed-identity"></a>具有托管标识的 Azure 托管应用程序
 
 > [!NOTE]
-> 为托管应用程序托管身份验证支持当前处于预览状态。 请使用 2018年-09-01-preview api 版本使用托管标识。
+> 托管应用程序的托管标识支持目前处于预览阶段。 请使用 2018-09-01-preview api 版本来利用托管标识。
 
-了解如何配置托管应用程序以包含托管标识。 托管标识可用于使客户可授予托管应用程序访问其他现有资源的权限。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关管理的标识在 Azure Active Directory (AAD) 的详细信息，请参阅[托管于 Azure 资源的标识](../active-directory/managed-identities-azure-resources/overview.md)。
+了解如何将托管应用程序配置为包含托管标识。 托管标识可用于允许客户向托管应用程序授予对其他现有资源的访问权限。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关 Azure Active Directory （AAD）中的托管标识的详细信息，请参阅[Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 你的应用程序可以被授予两种类型的标识：
 
-- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除  。 一个应用只能具有一个系统分配的标识。
-- 一个**用户分配的标识**是独立的可分配给您的应用程序的 Azure 资源。 一个应用可以具有多个用户分配的标识。
+- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除。 一个应用只能具有一个系统分配的标识。
+- **用户分配的标识**是可以分配给你的应用程序的独立 Azure 资源。 一个应用可以具有多个用户分配的标识。
 
 ## <a name="how-to-use-managed-identity"></a>如何使用托管标识
 
-托管标识为托管应用程序可实现许多方案。 可以解决一些常见方案是：
+托管标识可实现托管应用程序的多种方案。 可以解决的常见方案包括：
 
-- 部署托管应用程序链接到现有 Azure 资源。 一个示例在附加到托管应用程序中部署 Azure 虚拟机 (VM)[现有的网络接口](../virtual-network/virtual-network-network-interface-vm.md)。
-- 授予对外部的 Azure 资源的托管应用程序和发布服务器访问权限**托管的资源组**。
-- 活动日志和其他服务在 Azure 中的提供操作的托管应用程序标识。
+- 部署链接到现有 Azure 资源的托管应用程序。 例如，在已连接到[现有网络接口](../virtual-network/virtual-network-network-interface-vm.md)的托管应用程序中部署 Azure 虚拟机（VM）。
+- 向托管的应用程序和发布者授予对**托管资源组**之外的 Azure 资源的访问权限。
+- 为活动日志和 Azure 中的其他服务提供托管应用程序的操作标识。
 
-## <a name="adding-managed-identity"></a>添加托管的标识
+## <a name="adding-managed-identity"></a>添加托管标识
 
-使用托管标识创建托管应用程序需要在 Azure 资源上设置其他属性。 下面的示例演示一个示例**标识**属性：
+使用托管标识创建托管应用程序需要在 Azure 资源上设置其他属性。 下面的示例显示了一个示例**标识**属性：
 
 ```json
 {
@@ -49,11 +49,11 @@ ms.locfileid: "67434866"
 }
 ```
 
-有两种常见方式创建托管应用程序与**标识**:[CreateUIDefinition.json](./create-uidefinition-overview.md)并[Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。 对于简单的单创建方案，CreateUIDefinition 应该用于启用托管标识，因为它提供了更丰富的体验。 但是，处理高级或复杂时需要的系统自动或多个托管应用程序部署，模板可用。
+可以通过两种常见方法创建具有**标识**： [CreateUIDefinition](./create-uidefinition-overview.md)和[Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)的托管应用程序。 对于简单的单个 create 方案，CreateUIDefinition 应该用于启用托管标识，因为它提供了更丰富的体验。 但是，在处理需要自动或多个托管应用程序部署的高级或复杂系统时，可以使用模板。
 
 ### <a name="using-createuidefinition"></a>使用 CreateUIDefinition
 
-托管应用程序可以使用通过托管的标识来配置[CreateUIDefinition.json](./create-uidefinition-overview.md)。 在中[输出部分](./create-uidefinition-overview.md#outputs)，密钥`managedIdentity`可用于重写的托管应用程序模板的标识属性。 将启用示例下面**系统分配**上托管应用程序的标识。 使用 CreateUIDefinition 元素要求输入使用者来形成更复杂的标识对象。 这些输入可用于构造与托管应用程序**用户分配的标识**。
+托管的应用程序可以通过[CreateUIDefinition](./create-uidefinition-overview.md)配置托管标识。 在 "[输出" 部分](./create-uidefinition-overview.md#outputs)中，可以使用键 `managedIdentity` 来替代托管应用程序模板的标识属性。 示例下面将在托管应用程序上启用**系统分配**的标识。 通过使用 CreateUIDefinition 元素向使用者请求输入，可以形成更复杂的标识对象。 这些输入可用于使用**用户分配的标识**构造托管应用程序。
 
 ```json
 "outputs": {
@@ -61,17 +61,17 @@ ms.locfileid: "67434866"
 }
 ```
 
-#### <a name="when-to-use-createuidefinition-for-managed-identity"></a>何时使用托管标识 CreateUIDefinition
+#### <a name="when-to-use-createuidefinition-for-managed-identity"></a>何时使用 CreateUIDefinition 作为托管标识
 
-下面是有关何时使用 CreateUIDefinition 启用托管标识托管应用程序上的一些建议。
+下面是有关何时使用 CreateUIDefinition 在托管应用程序上启用托管标识的一些建议。
 
-- 创建托管应用程序内通过 Azure 门户或 marketplace。
+- 托管应用程序的创建过程通过 Azure 门户或 marketplace。
 - 托管标识需要复杂的使用者输入。
-- 在创建托管应用程序需要托管标识。
+- 在创建托管应用程序时需要托管标识。
 
 #### <a name="systemassigned-createuidefinition"></a>SystemAssigned CreateUIDefinition
 
-为托管应用程序启用 SystemAssigned 标识基本 CreateUIDefinition。
+为托管应用程序启用 SystemAssigned 标识的基本 CreateUIDefinition。
 
 ```json
 {
@@ -93,7 +93,7 @@ ms.locfileid: "67434866"
 
 #### <a name="userassigned-createuidefinition"></a>UserAssigned CreateUIDefinition
 
-采用基本 CreateUIDefinition**用户分配的标识**作为输入，并为托管应用程序启用 UserAssigned 标识的资源。
+基本 CreateUIDefinition，它使用**用户分配的标识**资源作为输入，并为托管应用程序启用 UserAssigned 标识。
 
 ```json
 {
@@ -131,29 +131,29 @@ ms.locfileid: "67434866"
 }
 ```
 
-上述 CreateUIDefinition.json 生成具有使用者，以输入一个文本框创建用户体验**用户分配的标识**Azure 资源 id。 生成的体验如下所示：
+上面的 CreateUIDefinition 生成了一个创建用户体验，它具有用于使用者的文本框，以输入**用户分配的标识**AZURE 资源 ID。 生成的体验如下所示：
 
-![示例用户分配标识 CreateUIDefinition](./media/publish-managed-identity/user-assigned-identity.png)
+![示例用户分配的标识 CreateUIDefinition](./media/publish-managed-identity/user-assigned-identity.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
 > [!NOTE]
-> 应用商店的托管应用程序模板会自动生成的客户通过 Azure 门户创建体验。
-> 对于这些方案， `managedIdentity` CreateUIDefinition 上的输出密钥必须用于启用标识。
+> 将为客户提供 Azure 门户创建体验的 Marketplace 托管应用程序模板。
+> 在这些情况下，必须使用 CreateUIDefinition 上的 `managedIdentity` 输出密钥来启用标识。
 
-此外可以通过 Azure 资源管理器模板启用托管标识。 将启用示例下面**系统分配**上托管应用程序的标识。 使用 Azure 资源管理器模板的参数提供的输入来形成更复杂的标识对象。 这些输入可用于构造与托管应用程序**用户分配的标识**。
+还可以通过 Azure 资源管理器模板启用托管标识。 示例下面将在托管应用程序上启用**系统分配**的标识。 可以使用 Azure 资源管理器模板参数提供更复杂的标识对象，以提供输入。 这些输入可用于使用**用户分配的标识**构造托管应用程序。
 
-#### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>何时使用托管标识的 Azure 资源管理器模板
+#### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>何时将 Azure 资源管理器模板用于托管标识
 
-下面是有关何时使用 Azure 资源管理器模板启用托管标识托管应用程序上的一些建议。
+下面是有关何时使用 Azure 资源管理器模板在托管应用程序上启用托管标识的一些建议。
 
 - 可以基于模板以编程方式部署托管应用程序。
-- 托管标识的自定义角色分配所需预配托管应用程序。
-- 托管应用程序不需要 Azure 门户和 marketplace 创建流程。
+- 预配托管的应用程序需要托管标识的自定义角色分配。
+- 托管应用程序不需要 Azure 门户和 marketplace 创建流。
 
 #### <a name="systemassigned-template"></a>SystemAssigned 模板
 
-部署托管应用程序使用的基本 Azure 资源管理器模板**系统分配**标识。
+使用**系统分配**的标识部署托管应用程序的基本 Azure 资源管理器模板。
 
 ```json
 "resources": [
@@ -175,7 +175,7 @@ ms.locfileid: "67434866"
 
 ### <a name="userassigned-template"></a>UserAssigned 模板
 
-部署托管应用程序使用的基本 Azure 资源管理器模板**用户分配的标识**。
+使用**用户分配的标识**部署托管应用程序的基本 Azure 资源管理器模板。
 
 ```json
 "resources": [
@@ -206,22 +206,22 @@ ms.locfileid: "67434866"
 
 ## <a name="granting-access-to-azure-resources"></a>授予对 Azure 资源的访问权限
 
-一旦托管应用程序授予了标识，它可以授予对现有 azure 资源的访问。 此过程可通过 Azure 门户中的访问控制 (IAM) 界面。 托管应用程序的名称或**用户分配的标识**可搜索要添加的角色分配。
+向托管应用程序授予标识后，便可以获得对现有 azure 资源的访问权限。 可以通过 Azure 门户中的访问控制（IAM）接口完成此过程。 可以搜索托管应用程序的名称或**用户分配的标识**，以添加角色分配。
 
-![添加托管应用程序的角色分配](./media/publish-managed-identity/identity-role-assignment.png)
+![为托管应用程序添加角色分配](./media/publish-managed-identity/identity-role-assignment.png)
 
 ## <a name="linking-existing-azure-resources"></a>链接现有的 Azure 资源
 
 > [!NOTE]
-> 一个**用户分配的标识**必须是[配置](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)部署托管应用程序之前。 此外，对于仅支持托管应用程序的链接的资源部署**marketplace**类型。
+> 必须先[配置](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)**用户分配的标识**，然后才能部署托管应用程序。 此外，仅**marketplace**类型支持托管应用程序的链接资源部署。
 
-此外可以使用托管标识在其部署过程中需要对现有资源的访问的托管应用程序部署。 设置托管应用程序时由客户**用户分配的标识**可以添加以提供对其他授权**mainTemplate**部署。
+托管标识还可用于部署需要在部署过程中访问现有资源的托管应用程序。 如果客户预配了托管应用程序，则可以添加**用户分配的标识**，以便向**maintemplate.json**部署提供额外的授权。
 
-### <a name="authoring-the-createuidefinition-with-a-linked-resource"></a>创作 CreateUIDefinition 与链接的资源
+### <a name="authoring-the-createuidefinition-with-a-linked-resource"></a>使用链接资源创作 CreateUIDefinition
 
-链接现有资源，这两个现有的 Azure 资源的托管应用程序部署时和一个**用户分配的标识**必须使用适用角色提供对该资源分配。
+将托管应用程序的部署链接到现有资源时，必须提供现有的 Azure 资源和具有该资源上适用的角色分配的**用户分配的标识**。
 
- 示例需要两个输入的 CreateUIDefinition： 网络接口资源 ID 和用户分配的标识资源 id。
+ 需要两个输入的示例 CreateUIDefinition：网络接口资源 ID 和用户分配的标识资源 id。
 
 ```json
 {
@@ -269,15 +269,15 @@ ms.locfileid: "67434866"
 }
 ```
 
-此 CreateUIDefinition.json 生成有两个字段创建用户体验。 第一个字段允许用户在 Azure 资源 ID 中输入要链接到托管应用程序部署的资源。 第二个是使用者输入**用户分配的标识**有权访问的链接的 Azure 资源的 Azure 资源 ID。 生成的体验如下所示：
+此 CreateUIDefinition 生成包含两个字段的创建用户体验。 第一个字段允许用户在 Azure 资源 ID 中输入链接到托管应用程序部署的资源。 第二种情况是，使用者输入**用户分配的标识**azure 资源 ID，该 ID 有权访问链接的 azure 资源。 生成的体验如下所示：
 
-![CreateUIDefinition 示例使用两个输入： 网络接口资源 ID 和用户分配的标识资源 ID](./media/publish-managed-identity/network-interface-cuid.png)
+![示例 CreateUIDefinition，其中包含两个输入：网络接口资源 ID 和用户分配的标识资源 ID](./media/publish-managed-identity/network-interface-cuid.png)
 
-### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>创作 mainTemplate 与链接的资源
+### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>使用链接资源创作 Maintemplate.json
 
-除了更新 CreateUIDefinition，主模板也需要更新，以接受传入的链接的资源 id。 可以更新主模板，以通过添加一个新的参数来接受新的输出。 由于`managedIdentity`输出重写上生成的托管应用程序模板的值，它不会传递到主模板并不应包含在参数部分中。
+除了更新 CreateUIDefinition，主模板还需要更新，以接受传入链接的资源 ID。 可以通过添加新的参数更新主模板以接受新的输出。 由于 @no__t 0 的输出将覆盖生成的托管应用程序模板上的值，因此不会将其传递到主模板，且不应包含在 parameters 节中。
 
-将网络配置文件设置为现有的网络接口提供的 CreateUIDefinition 示例主模板。
+将网络配置文件设置为 CreateUIDefinition 提供的现有网络接口的示例主模板。
 
 ```json
 {
@@ -309,17 +309,17 @@ ms.locfileid: "67434866"
 }
 ```
 
-### <a name="consuming-the-managed-application-with-a-linked-resource"></a>使用带有链接的资源的管理应用程序
+### <a name="consuming-the-managed-application-with-a-linked-resource"></a>将托管应用程序用于链接资源
 
-创建托管应用程序包后，可以通过 Azure 门户来使用托管应用程序。 可以使用它之前，有几个先决条件步骤。
+创建托管应用程序包后，可通过 Azure 门户使用托管应用程序。 在可以使用之前，有几个先决条件步骤。
 
 - 必须创建所需链接的 Azure 资源的实例。
-- **用户分配的标识**必须是[创建和给定角色分配](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)到链接的资源。
-- 现有链接的资源 ID 和**用户分配的标识**ID 提供给 CreateUIDefinition。
+- 必须创建**用户分配的标识** [，并将角色分配](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)给链接的资源。
+- 将为 CreateUIDefinition 提供现有链接的资源 ID 和**用户分配的标识**id。
 
 ## <a name="accessing-the-managed-identity-token"></a>访问托管标识令牌
 
-现在可以通过访问托管应用程序的令牌`listTokens`发布者租户中的 api。 示例请求可能如下所示：
+现在可以通过发布者租户中的 `listTokens` api 访问托管应用程序的令牌。 示例请求可能如下所示：
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
@@ -336,8 +336,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 参数 | 需要 | 描述
 ---|---|---
-authorizationAudience | *no* | 目标资源应用 ID URI。 它也是`aud`（受众） 声明的颁发的令牌。 默认值是"https://management.azure.com/"
-userAssignedIdentities | *no* | 用户分配管理的标识要检索的令牌的列表。 如果未指定，`listTokens`将返回系统分配的托管标识的令牌。
+authorizationAudience | 否 | 目标资源的应用 ID URI。 它还是已颁发令牌的 @no__t 0 （受众）声明。 默认值为 "https://management.azure.com/"
+userAssignedIdentities | 否 | 要为其检索令牌的用户分配的托管标识的列表。 如果未指定，则 @no__t 为系统分配的托管标识返回标记。
 
 
 示例响应可能如下所示：
@@ -361,19 +361,19 @@ Content-Type: application/json
 }
 ```
 
-响应将包含在令牌的一组`value`属性：
+响应将包含 `value` 属性下的标记数组：
 
 参数 | 描述
 ---|---
 access_token | 请求的访问令牌。
-expires_in | 访问令牌将被有效的秒数。
-expires_on | 访问令牌过期的时间范围。 这是从 epoch 表示为秒数。
-not_before | 访问令牌生效时间范围。 这是从 epoch 表示为秒数。
-authorizationAudience | `aud` （受众） 的访问令牌已请求。 这是与中提供相同`listTokens`请求。
-resourceId | 已颁发令牌的 Azure 资源 ID。 这是托管应用程序 ID 或用户分配的标识 id。
+expires_in | 访问令牌有效的秒数。
+expires_on | 访问令牌过期的时间范围。 这表示为 epoch 中的秒数。
+not_before | 访问令牌生效时的时间跨度。 这表示为 epoch 中的秒数。
+authorizationAudience | 访问令牌请求的 @no__t 0 （受众）。 这与 `listTokens` 请求中提供的内容相同。
+resourceId | 已颁发令牌的 Azure 资源 ID。 这是托管应用程序 ID 或用户分配的标识 ID。
 token_type | 令牌的类型。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何使用自定义提供程序中配置托管应用程序](./custom-providers-overview.md)
+> [如何使用自定义提供程序配置托管应用程序](./custom-providers-overview.md)

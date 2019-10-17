@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f3cbf740016a4c162c63343be4cb9cd577f85935
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c05b79d2f1da8076b507ca9ee7a06504de21d5ea
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699349"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333183"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 文件的共享快照概述 
 Azure 文件提供了获取文件共享的共享快照的功能。 共享快照可以捕获在某个时间点的共享状态。 本文介绍共享快照提供的功能，以及如何在自定义用例中加以利用。
@@ -57,7 +57,7 @@ http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.
 
 快照不计入 5-TB 共享限制。 共享快照占用的总空间没有限制。 存储帐户限制仍然适用。
 
-## <a name="limits"></a>限制
+## <a name="limits"></a>Limits
 Azure 文件目前允许的共享快照的上限是 200 个。 在 200 个共享快照之后，必须删除旧的共享快照，以便创建新的共享快照。 
 
 对创建共享快照的同时调用没有限制。 特定文件共享所能占用的共享快照空间没有限制。 
@@ -71,7 +71,7 @@ Azure 文件目前允许的共享快照的上限是 200 个。 在 200 个共享
 
 复制后共享快照保持不变，但基本文件共享将被共享快照中可用的数据副本覆盖。 所有还原后的文件会计入“已更改内容”。
 
-可将共享快照中的文件复制到具有不同名称的目标。 生成的目标文件是可写文件，而不是共享快照。
+可以将共享快照中的文件复制到另一个具有不同名称的目标。 生成的目标文件是可写文件，而不是共享快照。 在这种情况下，基本文件共享将保持不变。
 
 使用副本覆盖目标文件时，与原始目标文件关联的所有共享快照均将保持不变。
 

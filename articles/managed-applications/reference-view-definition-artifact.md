@@ -1,26 +1,26 @@
 ---
 title: Azure 托管应用程序视图定义项目引用
-description: 本文是对视图定义项目的引用。
+description: 提供 Azure 托管应用程序的视图定义项目的示例。 文件名为 viewDefinition。
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: e60f26fe0a7144d768bac020d62c61cb92594914
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 1f56f6c9c519bd29423d92a8dc8b8ce5904b523c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336538"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332637"
 ---
-# <a name="reference-view-definition-artifact"></a>参考：视图定义项目
+# <a name="reference-view-definition-artifact"></a>参考：查看定义项目
 
-本文是 Azure 托管应用程序中*viewDefinition*项目的参考。 有关创作视图配置的详细信息, 请参阅[查看定义项目](concepts-view-definition.md)。
+本文是 Azure 托管应用程序中*viewDefinition*项目的参考。 有关创作视图配置的详细信息，请参阅[查看定义项目](concepts-view-definition.md)。
 
 ## <a name="view-definition"></a>查看定义
 
-以下 JSON 显示了 Azure 托管应用程序的*viewDefinition*文件示例:
+以下 JSON 显示了 Azure 托管应用程序的*viewDefinition*文件示例：
 
 ```json
 {

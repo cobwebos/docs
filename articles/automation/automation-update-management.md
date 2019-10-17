@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3e2781229974ed872d477579d6c738822f910df6
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 1751e8d67f59285d011df33a2d4d1d6d8abcec6a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243520"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376058"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -57,7 +57,7 @@ ms.locfileid: "72243520"
 
 可以通过创建计划的部署，在需要更新的计算机上部署和安装软件更新。 归类为“可选”的更新不包括在 Windows 计算机的部署范围内。 只有必需的更新会包括在部署范围内。
 
-计划的部署通过以下方式定义目标计算机接收适用更新的目标计算机：显式指定计算机，或选择基于特定计算机集的日志搜索的[计算机组](../azure-monitor/platform/computer-groups.md)或[Azure 查询](#azure-machines)基于指定的条件动态选择 Azure Vm。 这些组与[范围配置](../azure-monitor/insights/solution-targeting.md)不同，后者仅用于确定哪些计算机获得启用该解决方案的管理包。
+计划的部署通过以下方式定义目标计算机接收适用更新的目标计算机：显式指定计算机，或选择基于特定计算机集的日志搜索的[计算机组](../azure-monitor/platform/computer-groups.md)或[Azure 查询](automation-update-management-query-logs.md)基于指定的条件动态选择 Azure Vm。 这些组与[范围配置](../azure-monitor/insights/solution-targeting.md)不同，后者仅用于确定哪些计算机获得启用该解决方案的管理包。
 
 也可以指定一个计划来批准并设置可以安装更新的一个时段。 这段时间称为维护时段。 如果需要重新启动并且选择了适当的重新启动选项，则维护时段的20分钟将保留用于重新启动。 如果修补时间比预期时间长且维护时段少于20分钟，则不会重新启动。
 
@@ -92,14 +92,20 @@ ms.locfileid: "72243520"
 |操作系统  |说明  |
 |---------|---------|
 |Windows 客户端     | 不支持客户端操作系统（例如 Windows 7 和 Windows 10）。        |
-|Windows Server 2016 Nano Server     | 不受支持。       |
-|Azure Kubernetes 服务节点 | 不受支持。 使用[Azure Kubernetes Service （AKS）中的将安全和内核更新应用到 Linux 节点](../aks/node-updates-kured.md)中详细的修补过程|
+|Windows Server 2016 Nano Server     | 不支持。       |
+|Azure Kubernetes 服务节点 | 不支持。 使用[Azure Kubernetes Service （AKS）中的将安全和内核更新应用到 Linux 节点](../aks/node-updates-kured.md)中详细的修补过程|
 
 ### <a name="client-requirements"></a>客户端要求
 
+以下信息描述了特定于操作系统的客户端要求。  还应查看[网络规划](#ports)以获取进一步指导。
+
 #### <a name="windows"></a>Windows
 
-Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Microsoft 更新。 可以将更新管理与 System Center Configuration Manager 配合使用。 若要了解有关集成方案的详细信息，请参阅[将 System Center Configuration Manager 与更新管理集成](oms-solution-updatemgmt-sccmintegration.md#configuration)。 需要 [Windows 代理](../azure-monitor/platform/agent-windows.md)。 如果加入 Azure 虚拟机，则会自动安装此代理。
+Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Microsoft 更新。
+
+可以将更新管理与 System Center Configuration Manager 配合使用。 若要了解有关集成方案的详细信息，请参阅[将 System Center Configuration Manager 与更新管理集成](oms-solution-updatemgmt-sccmintegration.md#configuration)。 需要 [Windows 代理](../azure-monitor/platform/agent-windows.md)。 如果加入 Azure 虚拟机，则会自动安装此代理。
+
+默认情况下，从 Azure 市场部署的 Windows 虚拟机设置为从 Windows 更新服务接收自动更新。 添加此解决方案或者将 Windows 虚拟机添加到工作区时，此行为不会更改。 如果不主动通过此解决方案管理更新，则会应用默认行为（即自动应用更新）。
 
 > [!NOTE]
 > 用户可以修改组策略以便计算机重启只能由用户执行，而不能由系统执行。 如果更新管理无权重新启动计算机而无需手动交互用户，托管计算机可能会停滞。
@@ -111,6 +117,8 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 对于 Linux，计算机必须能够访问更新存储库。 更新存储库可以是专用的，也可以是公共的。 需要 TLS 1.1 或 TLS 1.2 才能与更新管理进行交互。 此解决方案不支持配置为向多个 Azure Log Analytics 工作区报告的 Log Analytics Linux 代理。  计算机还必须安装 Python 2.x。
 
 有关如何安装适用于 Linux 的 Log Analytics 代理并下载最新版本的信息，请参阅[适用于 linux 的 Log Analytics 代理](https://github.com/microsoft/oms-agent-for-linux)。 有关如何安装适用于 Windows 的 Log Analytics 代理的信息，请参阅[windows Microsoft Monitoring Agent](../log-analytics/log-analytics-windows-agent.md)。
+
+基于 Azure 市场中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机注册为访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。 对于任何其他 Linux 发行版，必须按照其支持的方法从发行版联机文件存储库对其进行更新。
 
 ## <a name="permissions"></a>权限
 
@@ -144,57 +152,13 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 > [!NOTE]
 > 对于使用 Operations Manger 代理的系统，若要能够由更新管理完全托管，需要将代理更新为 Microsoft Monitoring Agent。 若要了解如何更新代理，请参阅[如何升级 Operations Manager 代理](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents)。 对于使用 Operations Manager 的环境，必须运行 System Center Operations Manager 2012 R2 UR 14 或更高版本。
 
-## <a name="onboard"></a>启用更新管理
-
-要开始修补系统，需要启用更新管理解决方案。 可使用多种方法将计算机加入到更新管理。 以下是推荐和支持的方法，可用于加入此解决方案：
-
-* [通过虚拟机](automation-onboard-solutions-from-vm.md)
-* [通过浏览多个计算机](automation-onboard-solutions-from-browse.md)
-* [通过自动化帐户](automation-onboard-solutions-from-automation-account.md)
-* [使用 Azure 自动化 runbook](automation-onboard-solutions.md)
-
-### <a name="confirm-that-non-azure-machines-are-onboarded"></a>确认非 Azure 计算机已加入
-
-若要确认直接连接的计算机是否正在与 Azure Monitor 日志通信，请在几分钟后运行以下日志搜索之一。
-
-#### <a name="linux"></a>Linux
-
-```loganalytics
-Heartbeat
-| where OSType == "Linux" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
-```
-
-#### <a name="windows"></a>Windows
-
-```loganalytics
-Heartbeat
-| where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
-```
-
-在 Windows 计算机上，你可以查看以下信息以验证代理与 Azure Monitor 日志的连接：
-
-1. 在控制面板中，打开 **Microsoft Monitoring Agent**。 在“Azure Log Analytics”选项卡上，代理会显示以下消息：“Microsoft Monitoring Agent 已成功连接到 Log Analytics。”
-2. 打开“Windows 事件日志”。 转到“应用程序和服务日志\Operations Manager”，搜索来自“服务连接器”源的事件 ID 3000 和事件 ID 5002。 这些事件指示计算机已注册到 Log Analytics 工作区并且正在接收配置。
-
-如果代理无法与 Azure Monitor 日志通信，并且该代理已配置为通过防火墙或代理服务器与 internet 通信，请确认正确配置了防火墙或代理服务器。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../azure-monitor/platform/agent-windows.md)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md)。
-
-> [!NOTE]
-> 如果 Linux 系统配置为与代理或 Log Analytics 网关通信，并且你将载入此解决方案，请使用以下命令更新 proxy.conf 权限来向 omiuser 组授予对文件的读取权限：
->
-> `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
-> `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
-
-执行评估后，新添加的 Linux 代理会显示状态“已更新”。 此过程可能需要长达 6 小时的时间。
-
-若要确认 Operations Manager 管理组是否正在与 Azure Monitor 日志通信，请参阅[验证 Operations Manager 与 Azure Monitor 日志的集成](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)。
-
 ## <a name="data-collection"></a>数据收集
 
 ### <a name="supported-agents"></a>支持的代理
 
 下表介绍了该解决方案支持的连接的源：
 
-| 连接的源 | 支持 | 描述 |
+| 连接的源 | 受支持 | 描述 |
 | --- | --- | --- |
 | Windows 代理 |是 |该解决方案从 Windows 代理收集有关系统更新的信息，然后开始安装必需的更新。 |
 | Linux 代理 |是 |该解决方案从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -210,7 +174,28 @@ Heartbeat
 
 平均 Azure Monitor 使用更新管理记录计算机的数据使用情况大约每月25MB。 此值仅为近似值，且随时可能基于环境而更改。 建议监视环境以查看具体使用情况。
 
-## <a name="viewing-update-assessments"></a>查看更新评估
+## <a name="ports"></a>网络规划
+
+更新管理特别需要以下地址。 与以下地址的通信通过端口 443 进行。
+
+|Azure Public  |Azure Government  |
+|---------|---------|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|\* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.azure-automation.us|
+
+对于 Windows 计算机，还必须允许流量发送到 Windows 更新所需的任何终结点。  可以在[与 HTTP/Proxy 相关的问题](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中找到所需终结点的更新列表。 如果你有本地[Windows 更新服务器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，则还必须允许流量流向[WSUS 密钥](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的服务器。
+
+对于 Red Hat Linux 计算机，请参阅[RHUI 内容传送服务器的 ip](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers)以获取所需的终结点。 对于其他 Linux 发行版，请参阅提供程序文档。
+
+有关混合 Runbook 辅助角色所需端口的详细信息，请参阅[混合辅助角色端口](automation-hybrid-runbook-worker.md#hybrid-worker-role)。
+
+建议在定义异常时使用列出的地址。 对于 IP 地址，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新一次，反映当前已部署的范围和任何即将对 IP 范围进行的更改。
+
+按照[连接无 internet 访问的计算机](../azure-monitor/platform/gateway.md)中的说明配置无法访问 internet 的计算机。
+
+## <a name="view-update-assessments"></a>查看更新评估
 
 在自动化帐户中，选择“更新管理”来查看计算机的状态。
 
@@ -220,74 +205,11 @@ Heartbeat
 
 ![更新管理默认视图](media/automation-update-management/update-management-view.png)
 
-## <a name="install-updates"></a>安装更新
-
-对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”安装必需的更新。 若要创建更新部署，你必须拥有对自动化帐户的写入权限，并对部署中的任何 Azure Vm 具有写入访问权限。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要详细了解计算机组，请参阅[Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)。
-
-在更新部署中包括计算机组时，只会在创建计划时对组成员身份评估一次。 不会反映对组所做的后续更改。 若要绕过此类[动态组](#using-dynamic-groups)，请在部署时解析这些组，并使用 Azure vm 的查询或非 Azure vm 的已保存搜索来定义这些组。
-
-> [!NOTE]
-> 默认情况下，从 Azure 市场部署的 Windows 虚拟机设置为从 Windows 更新服务接收自动更新。 添加此解决方案或者将 Windows 虚拟机添加到工作区时，此行为不会更改。 如果不主动通过此解决方案管理更新，则会应用默认行为（即自动应用更新）。
-
-若要避免在 Ubuntu 上的维护时段外应用更新，请重新配置无人参与升级包，禁用自动更新。 有关如何配置此包的信息，请参阅 [Ubuntu Server 指南中的自动更新主题](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)。
-
-基于 Azure 市场中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机注册为访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。 对于任何其他 Linux 发行版，必须按照其支持的方法从发行版联机文件存储库对其进行更新。
-
-若要创建新的更新部署，请选择“计划更新部署”。 此时将打开 "**新建更新部署**" 页。 为下表中介绍的属性输入值，然后单击“创建”：
-
-| 属性 | Description |
-| --- | --- |
-| 姓名 |用于标识更新部署的唯一名称。 |
-|操作系统| Linux 或 Windows|
-| 要更新的组 |对于 Azure 计算机，请定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 </br></br>对于非 Azure 计算机，请选择现有的已保存搜索，以选择要包含在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)|
-| 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |
-|更新分类|选择所需的所有更新分类|
-|包括/排除更新|这将打开“包括/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[包含行为](automation-update-management.md#inclusion-behavior) |
-|计划设置|选择启动时间，然后选择任“一次”或“重复”|
-| 前脚本 + 后脚本|选择要在部署前和部署后运行的脚本|
-| 维护时段 |为更新设置的分钟数。 该值不能小于 30 分钟，且不能大于 6 小时 |
-| 重新启动控制| 确定应如何处理重新启动。 可用选项包括：</br>需要时重新启动(默认)</br>始终重新启动</br>从不重新启动</br>仅重启 - 不安装更新|
-
-此外，能够以编程方式创建更新部署。 若要了解如何使用 REST API 创建更新部署，请参阅[软件更新配置 - 创建](/rest/api/automation/softwareupdateconfigurations/create)。 此外，还有一个示例 Runbook，可用于创建每周更新部署。 若要了解有关此 Runbook 的详细信息，请参阅[为资源组中的一个或多个 VM 创建每周更新部署](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)。
-
-> [!NOTE]
-> 如果**重新启动控制**设置为 "**从不重新**启动"，则[用于管理重启的注册表项](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)下列出的注册表项可能会导致重新启动事件。
-
-### <a name="maintenance-windows"></a>维护时段
-
-维护时段控制允许安装更新的时间。 指定维护时段时，请考虑以下详细信息。
-
-* 维护时段控制尝试安装的更新的数量。
-* 如果维护时段结束时，更新管理不会停止安装新的更新。
-* 如果超出了维护时段，更新管理不会终止正在进行的更新。
-* 如果在 Windows 上超过维护时段，通常是因为 Service Pack 更新需要很长时间才能安装。
-
-### <a name="multi-tenant"></a>跨租户更新部署
-
-如果你在向“更新管理”进行报告的另一个 Azure 租户中存在需要修补的计算机，则需要使用以下解决方法来计划它们。 你可以使用 [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 和开关 `-ForUpdate` 来创建计划，然后使用 [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-) cmdlet 并将另一个租户中的计算机传递给 `-NonAzureComputer` 参数。 以下示例展示了如何执行此操作：
-
-```azurepowershell-interactive
-$nonAzurecomputers = @("server-01", "server-02")
-
-$startTime = ([DateTime]::Now).AddMinutes(10)
-
-$sched = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
-
-New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName <automationAccountName> -Schedule $sched -Windows -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
-```
-
 ## <a name="view-missing-updates"></a>查看缺少的更新
 
 选择“缺少的更新”可查看计算机中缺少的更新列表。 每个更新都会列出，并且可供选择。 将显示有关需要更新的计算机数和操作系统的信息，以及指向更多信息的链接。 “日志搜索”窗格显示有关更新的更多详细信息。
 
-## <a name="view-update-deployments"></a>查看更新部署
-
-选择“更新部署”选项卡可查看现有更新部署的列表。 选择表中的任一更新部署会打开该更新部署的“更新部署运行”窗格。 作业日志最长可存储 30 天。
-
-![更新部署结果的概述](./media/automation-update-management/update-deployment-run.png)
-
-若要从 REST API 查看更新部署，请参阅[软件更新配置运行](/rest/api/automation/softwareupdateconfigurationruns)。
+![缺少更新](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
 
 ## <a name="update-classifications"></a>更新分类
 
@@ -301,7 +223,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 |安全更新     | 产品特定、安全相关问题的更新。        |
 |更新汇总     | 一起打包以便于部署的一组累积修补程序。        |
 |功能包     | 在产品版本以外发布的新产品功能。        |
-|Service Pack     | 应用于应用程序的一组累积修补程序。        |
+|服务包     | 应用于应用程序的一组累积修补程序。        |
 |定义更新     | 对病毒或其他定义文件的更新。        |
 |工具     | 可帮助完成一个或多个任务的实用工具或功能。        |
 |更新     | 对当前已安装的应用程序或文件的更新。        |
@@ -321,321 +243,15 @@ sudo yum -q --security check-update
 
 当前没有受支持的方法可用来在 CentOS 上提供原生分类数据。 目前，只能尽力为可能自己实现了此功能的客户提供支持。
 
-## <a name="firstparty-predownload"></a>高级设置
-
-更新管理依赖于 Windows 更新来下载和安装 Windows 更新。 因此，我们会遵循 Windows 更新使用的许多设置。 如果使用设置来启用非 Windows 更新，更新管理也将管理这些更新。 如果你想要在更新部署发生之前启用下载更新，更新部署会更快且不太可能会超过维护时段。
-
-### <a name="pre-download-updates"></a>预下载更新
-
-若要在组策略中自动配置下载更新，可以将“[配置自动更新设置](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates)”设置为 **3**。 将在后台下载所需的更新，但不会安装它们。 这让更新管理可以始终控制计划，但允许在更新管理维护时段外下载更新。 这可阻止更新管理中出现“已超过维护时段”错误。
-
-此外，还可以使用 PowerShell 进行相关设置，在要自动下载更新的系统上运行 PowerShell。
-
-```powershell
-$WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
-$WUSettings.NotificationLevel = 3
-$WUSettings.Save()
-```
-
-### <a name="disable-automatic-installation"></a>禁用自动安装
-
-默认情况下，Azure Vm 已启用自动安装的更新。 这可能会导致在计划更新更新管理之前安装更新。 您可以通过将 `NoAutoUpdate` 注册表项设置为 @no__t 来禁用此行为。 以下 PowerShell 代码片段显示了执行此操作的一种方法。
-
-```powershell
-$AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
-Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
-```
-
-### <a name="enable-updates-for-other-microsoft-products"></a>启用其他 Microsoft 产品的更新
-
-默认情况下，Windows 更新仅为 Windows 提供更新。 如果在**更新 Windows 时为其他 Microsoft 产品启用了 "向我提供更新**"，则会向你提供其他产品的更新，包括 SQL Server 或其他第一方软件的安全修补程序。 不能通过组策略配置此选项。 在你想要启用其他第一方修补程序的系统上运行以下 PowerShell，更新管理将支持此设置。
-
-```powershell
-$ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
-$ServiceManager.Services
-$ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
-$ServiceManager.AddService2($ServiceId,7,"")
-```
-
-## <a name="third-party"></a> Windows 上的第三方修补程序
-
-更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 这是 WSUS 或 Windows 更新。 可以使用 [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
-) (Updates Publisher) 之类的工具将自定义更新发布到 WSUS 中。 此方案允许更新管理将使用 System Center Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。 若要了解如何配置 Updates Publisher，请参阅[安装 Updates Publisher](/sccm/sum/tools/install-updates-publisher)。
-
-## <a name="ports"></a>网络规划
-
-更新管理特别需要以下地址。 与以下地址的通信通过端口 443 进行。
-
-|Azure Public  |Azure 政府  |
-|---------|---------|
-|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|\* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|\* .azure-automation.net|*.azure-automation.us|
-
-对于 Windows 计算机，还必须允许流量发送到 Windows 更新所需的任何终结点。  可以在[与 HTTP/Proxy 相关的问题](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中找到所需终结点的更新列表。 如果你有本地[Windows 更新服务器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，则还必须允许流量流向[WSUS 密钥](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的服务器。
-
-对于 Red Hat Linux 计算机，请参阅[RHUI 内容传送服务器的 ip](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers)以获取所需的终结点。 对于其他 Linux 发行版，请参阅提供程序文档。
-
-有关混合 Runbook 辅助角色所需端口的详细信息，请参阅[混合辅助角色端口](automation-hybrid-runbook-worker.md#hybrid-worker-role)。
-
-建议在定义异常时使用列出的地址。 对于 IP 地址，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新一次，反映当前已部署的范围和任何即将对 IP 范围进行的更改。
-
-按照[连接无 internet 访问的计算机](../azure-monitor/platform/gateway.md)中的说明配置无法访问 internet 的计算机。
-
-## <a name="search-logs"></a>搜索日志
-
-除了 Azure 门户中提供的详细信息以外，还可以针对日志执行搜索。 在解决方案页上，选择**Log Analytics**。 此时将打开**日志搜索**窗格。
-
-还可访问 Log Analytics 搜索 API 文档，[了解如何自定义查询或从不同客户端使用查询等。](
-https://dev.loganalytics.io/).
-
-### <a name="sample-queries"></a>示例查询
-
-以下各部分提供了此解决方案收集的更新记录的示例日志查询：
-
-#### <a name="single-azure-vm-assessment-queries-windows"></a>单个 Azure VM 评估查询 (Windows)
-
-将 VMUUID 值替换为要查询的虚拟机的 VM GUID。 可以通过在 Azure Monitor 日志中运行以下查询来找到应使用的 VMUUID： `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
-
-##### <a name="missing-updates-summary"></a>缺少更新摘要
-
-```loganalytics
-Update
-| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and VMUUID=~"b08d5afa-1471-4b52-bd95-a44fea6e4ca8"
-| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Approved) by Computer, SourceComputerId, UpdateID
-| where UpdateState=~"Needed" and Approved!=false
-| summarize by UpdateID, Classification
-| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security")
-```
-
-##### <a name="missing-updates-list"></a>缺少更新列表
-
-```loganalytics
-Update
-| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and VMUUID=~"8bf1ccc6-b6d3-4a0b-a643-23f346dfdf82"
-| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Title, KBID, PublishedDate, Approved) by Computer, SourceComputerId, UpdateID
-| where UpdateState=~"Needed" and Approved!=false
-| project-away UpdateState, Approved, TimeGenerated
-| summarize computersCount=dcount(SourceComputerId, 2), displayName=any(Title), publishedDate=min(PublishedDate), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(UpdateID, "_", KBID), classification=Classification, InformationId=strcat("KB", KBID), InformationUrl=iff(isnotempty(KBID), strcat("https://support.microsoft.com/kb/", KBID), ""), osType=2
-| sort by ClassificationWeight desc, computersCount desc, displayName asc
-| extend informationLink=(iff(isnotempty(InformationId) and isnotempty(InformationUrl), toobject(strcat('{ "uri": "', InformationUrl, '", "text": "', InformationId, '", "target": "blank" }')), toobject('')))
-| project-away ClassificationWeight, InformationId, InformationUrl
-```
-
-#### <a name="single-azure-vm-assessment-queries-linux"></a>单个 Azure VM 评估查询 (Linux)
-
-对于某些 Linux 发行版, 与来自 Azure 资源管理器的 VMUUID 值和存储在 Azure Monitor 日志中的[字节序](https://en.wikipedia.org/wiki/Endianness)不匹配。 以下查询可检查任一字节序的匹配情况。 使用 GUID 的 big-endian 和 little-endian 格式替换 VMUUID 值可正常地返回结果。 可以通过在 Azure Monitor 日志中运行以下查询来找到应使用的 VMUUID： `Update | where Computer == "<machine name>"
-| summarize by Computer, VMUUID`
-
-##### <a name="missing-updates-summary"></a>缺少更新摘要
-
-```loganalytics
-Update
-| where TimeGenerated>ago(5h) and OSType=="Linux" and (VMUUID=~"625686a0-6d08-4810-aae9-a089e68d4911" or VMUUID=~"a0865662-086d-1048-aae9-a089e68d4911")
-| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification) by Computer, SourceComputerId, Product, ProductArch
-| where UpdateState=~"Needed"
-| summarize by Product, ProductArch, Classification
-| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security")
-```
-
-##### <a name="missing-updates-list"></a>缺少更新列表
-
-```loganalytics
-Update
-| where TimeGenerated>ago(5h) and OSType=="Linux" and (VMUUID=~"625686a0-6d08-4810-aae9-a089e68d4911" or VMUUID=~"a0865662-086d-1048-aae9-a089e68d4911")
-| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, BulletinUrl, BulletinID) by Computer, SourceComputerId, Product, ProductArch
-| where UpdateState=~"Needed"
-| project-away UpdateState, TimeGenerated
-| summarize computersCount=dcount(SourceComputerId, 2), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(Product, "_", ProductArch), displayName=Product, productArch=ProductArch, classification=Classification, InformationId=BulletinID, InformationUrl=tostring(split(BulletinUrl, ";", 0)[0]), osType=1
-| sort by ClassificationWeight desc, computersCount desc, displayName asc
-| extend informationLink=(iff(isnotempty(InformationId) and isnotempty(InformationUrl), toobject(strcat('{ "uri": "', InformationUrl, '", "text": "', InformationId, '", "target": "blank" }')), toobject('')))
-| project-away ClassificationWeight, InformationId, InformationUrl
-
-```
-
-#### <a name="multi-vm-assessment-queries"></a>多 VM 评估查询
-
-##### <a name="computers-summary"></a>计算机摘要
-
-```loganalytics
-Heartbeat
-| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
-| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
-| where Solutions has "updates"
-| distinct SourceComputerId
-| join kind=leftouter
-(
-    Update
-    | where TimeGenerated>ago(14h) and OSType!="Linux"
-    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Approved, Optional, Classification) by SourceComputerId, UpdateID
-    | distinct SourceComputerId, Classification, UpdateState, Approved, Optional
-    | summarize WorstMissingUpdateSeverity=max(iff(UpdateState=~"Needed" and (Optional==false or Classification has "Critical" or Classification has "Security") and Approved!=false, iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1)), 0)) by SourceComputerId
-)
-on SourceComputerId
-| extend WorstMissingUpdateSeverity=coalesce(WorstMissingUpdateSeverity, -1)
-| summarize computersBySeverity=count() by WorstMissingUpdateSeverity
-| union (Heartbeat
-| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
-| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
-| where Solutions has "updates"
-| distinct SourceComputerId
-| join kind=leftouter
-(
-    Update
-    | where TimeGenerated>ago(5h) and OSType=="Linux"
-    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification) by SourceComputerId, Product, ProductArch
-    | distinct SourceComputerId, Classification, UpdateState
-    | summarize WorstMissingUpdateSeverity=max(iff(UpdateState=~"Needed", iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1)), 0)) by SourceComputerId
-)
-on SourceComputerId
-| extend WorstMissingUpdateSeverity=coalesce(WorstMissingUpdateSeverity, -1)
-| summarize computersBySeverity=count() by WorstMissingUpdateSeverity)
-| summarize assessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity>-1), notAssessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==-1), computersNeedCriticalUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==4), computersNeedSecurityUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==2), computersNeedOtherUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==1), upToDateComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==0)
-| summarize assessedComputersCount=sum(assessedComputersCount), computersNeedCriticalUpdatesCount=sum(computersNeedCriticalUpdatesCount),  computersNeedSecurityUpdatesCount=sum(computersNeedSecurityUpdatesCount), computersNeedOtherUpdatesCount=sum(computersNeedOtherUpdatesCount), upToDateComputersCount=sum(upToDateComputersCount), notAssessedComputersCount=sum(notAssessedComputersCount)
-| extend allComputersCount=assessedComputersCount+notAssessedComputersCount
-
-
-```
-
-##### <a name="missing-updates-summary"></a>缺少更新摘要
-
-```loganalytics
-Update
-| where TimeGenerated>ago(5h) and OSType=="Linux" and SourceComputerId in ((Heartbeat
-| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
-| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
-| where Solutions has "updates"
-| distinct SourceComputerId))
-| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification) by Computer, SourceComputerId, Product, ProductArch
-| where UpdateState=~"Needed"
-| summarize by Product, ProductArch, Classification
-| union (Update
-| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and SourceComputerId in ((Heartbeat
-| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
-| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
-| where Solutions has "updates"
-| distinct SourceComputerId))
-| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Approved) by Computer, SourceComputerId, UpdateID
-| where UpdateState=~"Needed" and Approved!=false
-| summarize by UpdateID, Classification )
-| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security")
-```
-
-##### <a name="computers-list"></a>计算机列表
-
-```loganalytics
-Heartbeat
-| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
-| summarize arg_max(TimeGenerated, Solutions, Computer, ResourceId, ComputerEnvironment, VMUUID) by SourceComputerId
-| where Solutions has "updates"
-| extend vmuuId=VMUUID, azureResourceId=ResourceId, osType=1, environment=iff(ComputerEnvironment=~"Azure", 1, 2), scopedToUpdatesSolution=true, lastUpdateAgentSeenTime=""
-| join kind=leftouter
-(
-    Update
-    | where TimeGenerated>ago(5h) and OSType=="Linux" and SourceComputerId in ((Heartbeat
-    | where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
-    | summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
-    | where Solutions has "updates"
-    | distinct SourceComputerId))
-    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Product, Computer, ComputerEnvironment) by SourceComputerId, Product, ProductArch
-    | summarize Computer=any(Computer), ComputerEnvironment=any(ComputerEnvironment), missingCriticalUpdatesCount=countif(Classification has "Critical" and UpdateState=~"Needed"), missingSecurityUpdatesCount=countif(Classification has "Security" and UpdateState=~"Needed"), missingOtherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security" and UpdateState=~"Needed"), lastAssessedTime=max(TimeGenerated), lastUpdateAgentSeenTime="" by SourceComputerId
-    | extend compliance=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0, 2, 1)
-    | extend ComplianceOrder=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0 or missingOtherUpdatesCount > 0, 1, 3)
-)
-on SourceComputerId
-| project id=SourceComputerId, displayName=Computer, sourceComputerId=SourceComputerId, scopedToUpdatesSolution=true, missingCriticalUpdatesCount=coalesce(missingCriticalUpdatesCount, -1), missingSecurityUpdatesCount=coalesce(missingSecurityUpdatesCount, -1), missingOtherUpdatesCount=coalesce(missingOtherUpdatesCount, -1), compliance=coalesce(compliance, 4), lastAssessedTime, lastUpdateAgentSeenTime, osType=1, environment=iff(ComputerEnvironment=~"Azure", 1, 2), ComplianceOrder=coalesce(ComplianceOrder, 2)
-| union(Heartbeat
-| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
-| summarize arg_max(TimeGenerated, Solutions, Computer, ResourceId, ComputerEnvironment, VMUUID) by SourceComputerId
-| where Solutions has "updates"
-| extend vmuuId=VMUUID, azureResourceId=ResourceId, osType=2, environment=iff(ComputerEnvironment=~"Azure", 1, 2), scopedToUpdatesSolution=true, lastUpdateAgentSeenTime=""
-| join kind=leftouter
-(
-    Update
-    | where TimeGenerated>ago(14h) and OSType!="Linux" and SourceComputerId in ((Heartbeat
-    | where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
-    | summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
-    | where Solutions has "updates"
-    | distinct SourceComputerId))
-    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Title, Optional, Approved, Computer, ComputerEnvironment) by Computer, SourceComputerId, UpdateID
-    | summarize Computer=any(Computer), ComputerEnvironment=any(ComputerEnvironment), missingCriticalUpdatesCount=countif(Classification has "Critical" and UpdateState=~"Needed" and Approved!=false), missingSecurityUpdatesCount=countif(Classification has "Security" and UpdateState=~"Needed" and Approved!=false), missingOtherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security" and UpdateState=~"Needed" and Optional==false and Approved!=false), lastAssessedTime=max(TimeGenerated), lastUpdateAgentSeenTime="" by SourceComputerId
-    | extend compliance=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0, 2, 1)
-    | extend ComplianceOrder=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0 or missingOtherUpdatesCount > 0, 1, 3)
-)
-on SourceComputerId
-| project id=SourceComputerId, displayName=Computer, sourceComputerId=SourceComputerId, scopedToUpdatesSolution=true, missingCriticalUpdatesCount=coalesce(missingCriticalUpdatesCount, -1), missingSecurityUpdatesCount=coalesce(missingSecurityUpdatesCount, -1), missingOtherUpdatesCount=coalesce(missingOtherUpdatesCount, -1), compliance=coalesce(compliance, 4), lastAssessedTime, lastUpdateAgentSeenTime, osType=2, environment=iff(ComputerEnvironment=~"Azure", 1, 2), ComplianceOrder=coalesce(ComplianceOrder, 2) )
-| order by ComplianceOrder asc, missingCriticalUpdatesCount desc, missingSecurityUpdatesCount desc, missingOtherUpdatesCount desc, displayName asc
-| project-away ComplianceOrder
-```
-
-##### <a name="missing-updates-list"></a>缺少更新列表
-
-```loganalytics
-Update
-| where TimeGenerated>ago(5h) and OSType=="Linux" and SourceComputerId in ((Heartbeat
-| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
-| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
-| where Solutions has "updates"
-| distinct SourceComputerId))
-| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, BulletinUrl, BulletinID) by SourceComputerId, Product, ProductArch
-| where UpdateState=~"Needed"
-| project-away UpdateState, TimeGenerated
-| summarize computersCount=dcount(SourceComputerId, 2), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(Product, "_", ProductArch), displayName=Product, productArch=ProductArch, classification=Classification, InformationId=BulletinID, InformationUrl=tostring(split(BulletinUrl, ";", 0)[0]), osType=1
-| union(Update
-| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and SourceComputerId in ((Heartbeat
-| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
-| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
-| where Solutions has "updates"
-| distinct SourceComputerId))
-| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Title, KBID, PublishedDate, Approved) by Computer, SourceComputerId, UpdateID
-| where UpdateState=~"Needed" and Approved!=false
-| project-away UpdateState, Approved, TimeGenerated
-| summarize computersCount=dcount(SourceComputerId, 2), displayName=any(Title), publishedDate=min(PublishedDate), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(UpdateID, "_", KBID), classification=Classification, InformationId=strcat("KB", KBID), InformationUrl=iff(isnotempty(KBID), strcat("https://support.microsoft.com/kb/", KBID), ""), osType=2)
-| sort by ClassificationWeight desc, computersCount desc, displayName asc
-| extend informationLink=(iff(isnotempty(InformationId) and isnotempty(InformationUrl), toobject(strcat('{ "uri": "', InformationUrl, '", "text": "', InformationId, '", "target": "blank" }')), toobject('')))
-| project-away ClassificationWeight, InformationId, InformationUrl
-```
-
-## <a name="using-dynamic-groups"></a>使用动态组
-
-更新管理提供了面向动态组 Azure 或非 Azure Vm 以实现更新部署的能力。 这些组在部署时评估，因此你无需编辑你的部署即可添加计算机。
-
-> [!NOTE]
-> 创建更新部署时，必须具有适当的权限。 若要了解详细信息，请参阅[安装更新](#install-updates)。
-
-### <a name="azure-machines"></a>Azure 计算机
-
-这些组由查询进行定义，当更新部署开始时，将评估该组的成员。 动态组不适用于经典 Vm。 定义查询时，结合使用以下各项填充动态组
-
-* 订阅
-* 资源组
-* 位置
-* Tags
-
-![选择组](./media/automation-update-management/select-groups.png)
-
-若要预览动态组的结果，请单击“预览”按钮。 那时此预览将显示组成员身份，在此示例中，我们要搜索标记“Role”等于“BackendServer”的计算机。 如果多台计算机已添加此标记，会针对该组将它们添加到任何未来部署中。
-
-![预览组](./media/automation-update-management/preview-groups.png)
-
-### <a name="non-azure-machines"></a>非 Azure 计算机
-
-对于非 Azure 计算机，保存的搜索也称为 "计算机组" 用于创建动态组。 若要了解如何创建保存的搜索，请参阅[创建计算机组](../azure-monitor/platform/computer-groups.md#creating-a-computer-group)。 创建组后，可以从已保存的搜索列表中选择它。 单击 "**预览**" 以在该时间预览已保存搜索中的计算机。
-
-![选择组](./media/automation-update-management/select-groups-2.png)
-
 ## <a name="integrate-with-system-center-configuration-manager"></a>集成 System Center Configuration Manager
 
 已经投资购买了 System Center Configuration Manager 来管理电脑、服务器和移动设备的客户还依赖 Configuration Manager 的优势和成熟度来帮助他们管理软件更新。 Configuration Manager 是其软件更新管理 (SUM) 周期的一部分。
 
 若要了解如何将管理解决方案与 System Center Configuration Manager 集成，请参阅[将 System Center Configuration Manager 与更新管理集成](oms-solution-updatemgmt-sccmintegration.md)。
 
-## <a name="inclusion-behavior"></a>包含行为
+### <a name="third-party-patches-on-windows"></a>Windows 上的第三方修补程序
 
-更新包含可用于指定要应用的特定更新。 安装已包含的修补程序或包。 如果包含修补程序或包且选中了一个分类，将同时安装包含的项和满足分类的项。
-
-请务必注意，排除项会替代包含项。 例如，如果定义 `*` 的排除规则，全部排除后将不会安装任何修补程序或包。 已排除的修补程序仍显示为在计算机中缺少。 对于 Linux 计算机，如果包含包且已排除相关包，将不会安装此包。
+更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 这是 WSUS 或 Windows 更新。 可以使用 [System Center Updates Publisher](/sccm/sum/tools/updates-publisher) (Updates Publisher) 之类的工具将自定义更新发布到 WSUS 中。 此方案允许更新管理将使用 System Center Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。 若要了解如何配置 Updates Publisher，请参阅[安装 Updates Publisher](/sccm/sum/tools/install-updates-publisher)。
 
 ## <a name="patch-linux-machines"></a>修补 Linux 计算机
 
@@ -661,12 +277,29 @@ Update
 
 按更新分类部署更新在 CentOS 上无法现成地运行。 若要为 CentOS 正确部署更新，请选择所有分类以确保应用更新。 对于 SUSE，如果首先需要与 zypper（包管理器）或其依赖项相关的安全更新，则仅选择“其他更新”作为分类可能会导致同时安装某些安全更新。 此行为是 zypper 的一项限制。 某些情况下，可能需要重新运行更新部署。 若要验证，请检查更新日志。
 
-## <a name="remove-a-vm-from-update-management"></a>从更新管理删除 VM
+### <a name="multi-tenant"></a>跨租户更新部署
 
-从更新管理中删除 VM：
+如果你在向“更新管理”进行报告的另一个 Azure 租户中存在需要修补的计算机，则需要使用以下解决方法来计划它们。 你可以使用 [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 和开关 `-ForUpdate` 来创建计划，然后使用 [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
+) cmdlet 并将另一个租户中的计算机传递给 `-NonAzureComputer` 参数。 以下示例展示了如何执行此操作：
 
-* 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下。
-* 删除 [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 或 [适用于 Linux 的 Log Analytics 代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$sched = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName <automationAccountName> -Schedule $sched -Windows -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
+
+## <a name="onboard"></a>启用更新管理
+
+要开始修补系统，需要启用更新管理解决方案。 可使用多种方法将计算机加入到更新管理。 以下是推荐和支持的方法，可用于加入此解决方案：
+
+* [通过虚拟机](automation-onboard-solutions-from-vm.md)
+* [通过浏览多个计算机](automation-onboard-solutions-from-browse.md)
+* [通过自动化帐户](automation-onboard-solutions-from-automation-account.md)
+* [使用 Azure 自动化 runbook](automation-onboard-solutions.md)
 
 ## <a name="next-steps"></a>后续步骤
 

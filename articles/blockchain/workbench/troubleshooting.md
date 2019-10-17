@@ -1,21 +1,21 @@
 ---
-title: Azure 区块链工作台预览疑难解答
+title: Azure Blockchain Workbench 故障排除
 description: 如何对 Azure 区块链工作台预览应用程序进行故障排除。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 8fec065b629f2f2b93e78a63521ea0ce4669dd4e
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3032a81a4411cb162a335189ca65b845f8d6305f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844042"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329082"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure 区块链工作台预览疑难解答
 
@@ -48,15 +48,15 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 ```
 此脚本接受以下参数：
 
-| 参数  | 描述 | 必填 |
+| 参数  | 描述 | 需要 |
 |---------|---------|----|
 | 订阅 ID | SubscriptionID，用于创建或定位所有资源。 | 是 |
 | ResourceGroupName | Blockchain Workbench 部署时所在的 Azure 资源组的名称。 | 是 |
-| OutputDirectory | 用于创建输出 .ZIP 文件的路径。 如果未指定，则默认为当前目录。 | 否 |
-| LookbackHours | 拉取遥测数据时要使用的小时数。 默认值为 24 小时。 最大值为 90 小时 | 否 |
-| OmsSubscriptionId | 部署 Azure Monitor 日志的订阅 ID。 仅当区块链网络的 Azure Monitor 日志部署在区块链工作台的资源组之外时才传递此参数。| 否 |
-| OmsResourceGroup |部署 Azure Monitor 日志的资源组。 仅当区块链网络的 Azure Monitor 日志部署在区块链工作台的资源组之外时才传递此参数。| 否 |
-| OmsWorkspaceName | Log Analytics 工作区名称。 仅当区块链网络的 Azure Monitor 日志部署在区块链工作台的资源组外时传递此参数 | 否 |
+| OutputDirectory | 用于创建输出 .ZIP 文件的路径。 如果未指定，则默认为当前目录。 | No |
+| LookbackHours | 拉取遥测数据时要使用的小时数。 默认值为 24 小时。 最大值为 90 小时 | No |
+| OmsSubscriptionId | 部署 Azure Monitor 日志的订阅 ID。 仅当区块链网络的 Azure Monitor 日志部署在区块链工作台的资源组之外时才传递此参数。| No |
+| OmsResourceGroup |部署 Azure Monitor 日志的资源组。 仅当区块链网络的 Azure Monitor 日志部署在区块链工作台的资源组之外时才传递此参数。| No |
+| OmsWorkspaceName | Log Analytics 工作区名称。 仅当区块链网络的 Azure Monitor 日志部署在区块链工作台的资源组外时传递此参数 | No |
 
 ## <a name="what-is-collected"></a>收集什么内容？
 

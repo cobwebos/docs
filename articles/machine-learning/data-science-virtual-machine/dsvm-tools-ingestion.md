@@ -9,13 +9,13 @@ ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: conceptual
-ms.date: 10/3/2019
-ms.openlocfilehash: 47a701cce348e86359947376b3d6a9915dfb2264
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 10/11/2019
+ms.openlocfilehash: 72a881a2ab508caa2274f3b9299157921cb8ceff
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950156"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330678"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>数据科学虚拟机数据引入工具
 
@@ -62,12 +62,22 @@ ms.locfileid: "71950156"
 
 |    |           |
 | ------------- | ------------- |
-| 它是什么？   | 用于将数据从各种源导入 Azure Cosmos DB 的工具。 这些源包括 JSON 文件、CSV 文件、SQL、MongoDB、Azure 表存储、Amazon DynamoDB 和 Azure Cosmos DB SQL API 集合。      |
+| 它是什么？   | 用于将不同源中的数据导入到云中的 NoSQL 数据库 Azure Cosmos DB 的工具。 这些源包括 JSON 文件、CSV 文件、SQL、MongoDB、Azure 表存储、Amazon DynamoDB 和 Azure Cosmos DB SQL API 集合。      |
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 将文件从 VM 导入到 CosmosDB，将数据从 Azure 表存储导入到 CosmosDB，并将数据从 Microsoft SQL Server 数据库导入到 CosmosDB。     |
 |  如何使用/运行它？    |   若要使用命令行版本，请打开命令提示符并键入 `dt`。 若要使用 GUI 工具，请打开命令提示符并键入 `dtui`。    |
 | 指向示例的链接      | [CosmosDB 导入数据](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | DSVM 上的相关工具      | AzCopy、AdlCopy      |
+
+## <a name="azure-storage-explorer"></a>Azure 存储资源管理器
+
+|    |           |
+| ------------- | ------------- |
+| 它是什么？   | 用于与 Azure 云中存储的文件进行交互的图形用户界面。 |
+| 支持的 DSVM 版本      | Windows      |
+| 典型用途      | 从 DSVM 导入和导出数据。    |
+|  如何使用/运行它？    | 在 "开始" 菜单中搜索 "Azure 存储资源管理器"。 |
+| 指向示例的链接      | [Azure 存储空间资源管理器](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp

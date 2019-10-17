@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128202"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372379"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -23,22 +23,23 @@ ms.locfileid: "70128202"
 
 * 从 URL 上传视频（首选），
 * 作为请求正文中的字节数组发送视频文件。
-* 通过提供[资产 ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (仅在付费帐户中支持) 来使用现有的 Azure 媒体服务资产。
+* 通过提供[资产 ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) （仅在付费帐户中支持）来使用现有的 Azure 媒体服务资产。
 
 本文介绍如何基于 URL 使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 来上传视频和编制视频索引。 本文中的代码示例包括注释掉的代码，该代码显示了如何上传字节数组。 <br/>本文还介绍可以在 API 上设置的用于更改 API 过程和输出的某些参数。
 
 视频上传以后，视频索引器会选择性地对视频进行编码（在本文中介绍）。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以[创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
 
-## <a name="uploading-considerations"></a>上传注意事项
+## <a name="uploading-considerations-and-limitations"></a>上传注意事项和限制
  
-- 基于 URL 上传视频时 (首选), 终结点必须通过 TLS 1.2 (或更高版本) 进行保护。
+- 视频的名称长度不得超过80个字符。
+- 基于 URL 上传视频时（首选），终结点必须通过 TLS 1.2 （或更高版本）进行保护。
 - 带有 URL 选项的上传大小限制为30GB。
-- 请求 URL 长度限制为6144个字符, 其中查询字符串 URL 长度限制为4096个字符。
+- 请求 URL 长度限制为6144个字符，其中查询字符串 URL 长度限制为4096个字符。
 - 具有字节数组选项的上传大小限制为2GB。
 - 字节数组选项在30分钟后超时。
-- `videoURL`参数中提供的 URL 需要进行编码。
+- @No__t 参数中提供的 URL 需要进行编码。
 - 为媒体服务资产编制索引与从 URL 进行索引的限制相同。
-- 对于单个文件, 视频索引器的最大持续时间限制为4小时。
+- 对于单个文件，视频索引器的最大持续时间限制为4小时。
 
 > [!Tip]
 > 建议使用 .NET framework 版本 4.6.2. 或更高版本，因为较旧的 .NET framework 不会默认为 TLS 1.2。
@@ -60,22 +61,22 @@ ms.locfileid: "70128202"
 - 索引状态更改： 
     - 属性：    
     
-        |姓名|描述|
+        |名称|描述|
         |---|---|
         |id|视频 ID|
-        |省/自治区/直辖市|视频状态|  
-    - 示例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+        |state|视频状态|  
+    - 示例： https： \//notifyme？项目名称 = MyProject & id = 1234abcd & 状态 = 已处理
 - 在视频中标识的人：
   - 属性
     
-      |姓名|描述|
+      |名称|描述|
       |---|---|
       |id| 视频 ID|
       |faceId|出现在视频索引中的人脸 ID|
       |knownPersonId|在人脸模型中唯一的个人 ID|
       |personName|人名|
         
-    - 示例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - 示例： https： \//notifyme/？项目名称 = MyProject & id = 1234abcd & faceid = 12 & knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5 & personName = Inigo_Montoya 
 
 #### <a name="notes"></a>说明
 
@@ -92,9 +93,9 @@ ms.locfileid: "70128202"
 
 价格取决于所选索引编制选项。  
 
-### <a name="priority"></a>优先级
+### <a name="priority"></a>priority
 
-视频由视频索引器根据优先级进行索引。 使用 **priority** 参数指定索引优先级。 以下为有效值：低、正常（默认值）和高。
+视频由视频索引器根据优先级进行索引。 使用 **priority** 参数指定索引优先级。 以下值有效：**Low**（低）、**Normal**（正常，默认值）、**High**（高）。
 
 仅付费帐户支持 **Priority** 参数。
 

@@ -11,39 +11,37 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 1f9cb82abd5bc0823f5e7bc23fe437007bccc8e0
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 85a3a9f7afac8250b225d42462f6b29042e34a2a
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873573"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330327"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和删除教室实验室。 它还说明如何查看实验室帐户中的所有教室实验室。 
 
-## <a name="prerequisites"></a>先决条件
-若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 实验室所有者可以按照以下文章中的步骤将其他用户添加到“实验室创建者”角色：[将用户添加到“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)。
+## <a name="prerequisites"></a>必备组件
+若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 实验室所有者可以根据[将用户添加为“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)一文中的步骤将其他用户添加为“实验室创建者”角色。
 
 ## <a name="create-a-classroom-lab"></a>创建课堂实验室
 
 1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 请注意，尚不支持 Internet Explorer 11。 
-2. 选择“登录”。 选择或输入属于实验室帐户中“实验室创建者”角色成员的“用户 ID”，然后输入密码。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
+2. 选择“登录”并输入凭据。 选择或输入属于实验室帐户中“实验室创建者”角色成员的“用户 ID”，然后输入密码。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
+3. 选择 "**新建实验室**"。 
+    
+    ![创建课堂实验室](../media/tutorial-setup-classroom-lab/new-lab-button.png)
 3. 在“新建实验室”窗口中，执行以下操作：： 
     1. 指定实验室的**名称**。 
-    2. 在实验室中指定最大**虚拟机数**。 以后可以增加或减少实验室中的虚拟机数。 
-    6. 选择**保存**。
+    2. 选择类所需的**虚拟机大小**。 有关可用大小列表，请参阅[VM 大小](#vm-sizes)部分。 
+    3. 选择要用于教室实验室的**虚拟机映像**。 如果选择 Linux 映像，可以看到一个用来为该映像启用远程桌面连接的选项。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
+    4. 查看页面上显示的**每小时总价格**。 
+    6. 选择“保存”。
 
-        ![创建课堂实验室](../media/tutorial-setup-classroom-lab/new-lab-window.png)
-4. 在“选择虚拟机规范”页上执行以下步骤：
-    1. 选择在实验室中创建的虚拟机 (VM) 的**大小**。 目前，允许**小型**、**中型**、**中型(虚拟化)** 、**大型**和 **GPU** 大小。 有关详细信息，请参阅[VM 大小](#vm-sizes)部分。
-    1. 选择要在其中创建 VM 的**区域**。 
-    1. 选择用于在实验室中创建 VM 的 **VM 映像**。 如果选择 Linux 映像，可以看到一个用来为该映像启用远程桌面连接的选项。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
-    1. 选择“**下一步**”。
-
-        ![指定 VM 规范](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
-5. 在“设置凭据”页上，指定实验室中所有 VM 的默认凭据。 
+        ![新建实验室窗口](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+4. 在 "**虚拟机凭据**" 页上，为实验室中的所有 vm 指定默认凭据。
     1. 指定实验室中所有 VM 的**用户名**。
     2. 指定用户的**密码**。 
 
@@ -51,52 +49,55 @@ ms.locfileid: "70873573"
         > 记下用户名和密码。 这些信息不会再次显示。
     3. 如果你希望学生设置自己的密码，则禁用 "**为所有虚拟机使用相同的密码**" 选项。 此步骤是**可选的**。 
 
-        教师可以选择对实验室中的所有 Vm 使用相同的密码，或允许学生为其 Vm 设置密码。 默认情况下，所有 Windows 和 Linux 映像（Ubuntu 除外）都启用此设置。 选择**Ubuntu** VM 时，此设置会被禁用，因此在首次登录时，会提示学生设置密码。
-    1. 选择“创建”。 
+        教师可以选择对实验室中的所有 Vm 使用相同的密码，或允许学生为其 Vm 设置密码。 默认情况下，所有 Windows 和 Linux 映像（Ubuntu 除外）都启用此设置。 选择**Ubuntu** VM 时，此设置会被禁用，因此在首次登录时，会提示学生设置密码。  
 
-        ![设置凭据](../media/tutorial-setup-classroom-lab/set-credentials.png)
-6. 在“配置模板”页上，查看实验室创建过程的状态。 在实验室中创建模板最长需要 20 分钟时间。 实验室中的模板是基础虚拟机映像，用户的所有虚拟机均依据其创建。 设置模板虚拟机，为其准确配置需要提供给实验室用户的内容。  
+        ![新建实验室窗口](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
+        > [!IMPORTANT]
+        > 记下用户名和密码。 这些信息不会再次显示。    
+    4. 然后，在 "**虚拟机凭据**" 页上选择 "**下一步**"。 
+5. 在 "**实验室策略**" 页上，输入在实验室的计划时间之外为每个用户分配的小时数（**每个用户的配额**），然后选择 "**完成**"。 
 
-    ![配置模板](../media/tutorial-setup-classroom-lab/configure-template.png)
-7. 配置完模板后，会看到以下页： 
+    ![每个用户的配额](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+5. 应会看到以下屏幕，其中显示了模板 VM 创建的状态。 在实验室中创建模板最长需要 20 分钟时间。 
 
-    ![完成配置后的“配置模板”页](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. 在本教程中，以下步骤是可选步骤： 
+    ![模板 VM 创建状态](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
+8. 在 "**模板**" 页上，执行以下步骤：对于本教程，这些步骤是**可选**的。
+
     2. 选择“连接”以连接到模板 VM。 如果它是 Linux 模板 VM，请选择是要使用 SSH 还是 RDP（如果已启用 RDP）来建立连接。
     1. 选择“重置密码”以重置 VM 的密码。 
     1. 在模板 VM 上安装并配置软件。 
     1. **停止** VM。  
     1. 输入模板的**说明**
-9. 在模板页上选择“下一步”。 
-10. 在“发布模板”页上执行以下操作。 
-    1. 若要立即发布模板，请选中“我了解发布后无法修改模板。此过程只能执行一次，最长可能需要一小时”对应的复选框，然后选择“发布”。  发布此模板，让模板 VM 的实例可供实验室用户使用。
+10. 在 "**模板**" 页上，选择工具栏上的 "**发布**"。 
 
-        > [!WARNING]
-        > 发布后无法取消发布。 
-    2. 若要在以后发布，请选择“保存供以后发布”。 可以在完成向导后发布模板 VM。 有关如何在完成向导后进行配置和发布的详细信息，请参阅[如何管理课堂实验室](how-to-manage-classroom-labs.md)一文中的“发布模板”部分。
+    ![发布模板按钮](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
-        ![发布模板](../media/tutorial-setup-classroom-lab/publish-template.png)
-11. 可以查看**发布模板的进度**。 此过程最长可能需要花费一小时。 
+    > [!WARNING]
+    > 发布后无法取消发布。 
+8. 在 "**发布模板**" 页上，输入要在实验室中创建的虚拟机的数量，然后选择 "**发布**"。 
+
+    ![发布模板-Vm 数](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
+11. 你将在页面上看到 "发布模板" 的**状态**。 此过程最长可能需要花费一小时。 
 
     ![发布模板 - 进度](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-12. 成功发布模板后，会看到以下页。 选择“完成”。
-
-    ![发布模板 - 成功](../media/tutorial-setup-classroom-lab/publish-success.png)
-1. 实验室的**仪表板**随即显示。 
-    
-    ![课堂实验室仪表板](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
-4. 切换到“虚拟机”页，确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 它们应该处于“已停止”状态。 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 
+4. 通过在左侧菜单中选择 "虚拟机" 或选择 "虚拟机" 磁贴，切换到 "**虚拟机池**" 页。 确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 它们应该处于“已停止”状态。 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 
 
     ![处于已停止状态的虚拟机](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
+    您可以在此页上执行以下任务（对于本教程，请不要执行这些步骤。 这些步骤仅适用于您的信息。）： 
+    
+    1. 若要更改实验室容量（实验室中的 Vm 数量），请在工具栏上选择 "**实验室容量**"。
+    2. 要一次启动所有 Vm，请在工具栏上选择 "**全部启动**"。 
+    3. 若要启动特定 VM，请选择**状态**中的向下箭头，然后选择 "**启动**"。 还可以通过在第一列中选择一个 VM，然后在工具栏上选择 "**启动**" 来启动 vm。                
+
 ### <a name="vm-sizes"></a>VM 大小  
 
-| Size | 内核 | RAM | 描述 | 
+| 大小 | 内核数 | RAM | 描述 | 
 | ---- | ----- | --- | ----------- | 
-| 小 | 2 | 3.5 GB | 此大小最适用于命令行、打开 web 浏览器、低流量 web 服务器、小到中型数据库。 |
+| 小型 | 2 | 3.5 GB | 此大小最适用于命令行、打开 web 浏览器、低流量 web 服务器、小到中型数据库。 |
 | 中型 | 4 | 7 GB | 此大小最适合用于关系数据库、内存中缓存和分析 | 
 | 中（嵌套虚拟化） | 4 | 16 GB | 此大小最适合用于关系数据库、内存中缓存和分析。 此大小还支持嵌套虚拟化。 <p>如果每个学生都需要多个 Vm，则可以使用此大小。 教师可以使用嵌套虚拟化在虚拟机中设置几个小大小的嵌套虚拟机。 </p> |
-| 大型 | 8 | 32 GB | 此大小最适用于需要更快的 Cpu、更好的本地磁盘性能、大型数据库、大内存缓存的应用程序。 此大小还支持嵌套虚拟化 |  
+| 大 | 8 | 32 GB | 此大小最适用于需要更快的 Cpu、更好的本地磁盘性能、大型数据库、大内存缓存的应用程序。 此大小还支持嵌套虚拟化 |  
 | 小型 GPU （可视化效果） | 6 | 56 GB | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏、编码。 | 
 | 小型 GPU （计算） | 6 | 56 GB | 此大小最适用于计算密集型和网络密集型应用程序，如人工智能和深度学习应用程序。 | 
 | 中等 GPU （可视化效果） | 12 | 112 GB | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏、编码。 | 
@@ -104,26 +105,23 @@ ms.locfileid: "70873573"
 ## <a name="view-all-classroom-labs"></a>查看所有教室实验室
 1. 导航到 [Azure 实验室服务门户](https://labs.azure.com)。
 2. 选择“登录”。 选择或输入属于实验室帐户中“实验室创建者”角色成员的“用户 ID”，然后输入密码。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
-3. 确认在所选实验室帐户中看到所有实验室。 
+3. 确认在所选实验室帐户中看到所有实验室。 在实验室的磁贴上，你会看到实验室中的虚拟机数和每个用户的配额（在计划时间之外）。
 
     ![所有实验室](../media/how-to-manage-classroom-labs/all-labs.png)
 3. 使用顶部的下拉列表选择另一实验室帐户。 此时会在所选实验室帐户中看到实验室。 
 
 ## <a name="delete-a-classroom-lab"></a>删除教室实验室
-1. 在实验室对应的磁贴中，选择角落里的三个点 (...)。 
-
-    ![选择实验室](../media/how-to-manage-classroom-labs/select-three-dots.png)
-2. 选择“删除”。 
+1. 在实验室的磁贴上，选择角中的三个点（...），然后选择 "**删除**"。 
 
     ![“删除”按钮](../media/how-to-manage-classroom-labs/delete-button.png)
-3. 在“删除实验室”对话框中，选择“删除”。 
-
-    ![“删除”对话框](../media/how-to-manage-classroom-labs/delete-lab-dialog-box.png)
+3. 在 "**删除实验室**" 对话框中，选择 "**删除**" 以继续删除操作。 
 
 ## <a name="switch-to-another-classroom-lab"></a>切换到另一教室实验室
 若要从当前教室实验室切换到另一教室实验室，请在顶部的实验室帐户中选择实验室下拉列表。
 
 ![从顶部的下拉列表中选择实验室](../media/how-to-manage-classroom-labs/switch-lab.png)
+
+你还可以使用此下拉列表中的**新实验室**创建新的实验室。 
 
 
 ## <a name="next-steps"></a>后续步骤

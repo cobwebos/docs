@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/08/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 433bcd31399d8443355edcb2e8586993644174ca
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6870297eea194b89a84a89e1e8ef8decf5c1788e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242363"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374526"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -30,10 +30,11 @@ ms.locfileid: "72242363"
 | **类别**  | **产品/服务名称** | **配额 ID** | **套餐编号** | **可用数据** |
 | --- | --- | --- | --- | --- |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 5月 2014<sup>1</sup> |
-| **企业协议 (EA)** | Enterprise 开发/测试                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 5月 2014<sup>1</sup> |
+| **企业协议 (EA)** | 企业开发/测试                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 5月 2014<sup>1</sup> |
 | **企业协议 (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 5月 2014<sup>1</sup> |
-| **Microsoft 客户协议** | [Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | 不可用 | 2019年3月<sup>3</sup>日 |
-| **Microsoft 客户协议** | [用于开发/测试的 Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | 不可用 | 2019年3月<sup>3</sup>日 |
+| **Microsoft 客户协议** | [Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | N/A | 2019年3月<sup>3</sup>日 |
+| **Microsoft 客户协议** | [用于开发/测试的 Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0148g) | MSDNDevTest_2014-09-01 | N/A | 2019年3月<sup>3</sup>日 |
+| **Microsoft 合作伙伴协议** | Microsoft Azure 计划 | CSP_2015-05-01、CSP_MG_2017、CSPDEVTEST_2018-05-01 | N/A | 2019年10月 |
 | **Microsoft 开发人员网络 (MSDN)** | [MSDN 平台](https://azure.microsoft.com/offers/ms-azr-0062p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0062P | 10月2日，2018<sup>2</sup> |
 | **即用即付** | [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p)                  | PayAsYouGo_2014-09-01 | MS-AZR-0003P | 10月2日，2018<sup>2</sup> |
 | **即用即付** | [即用即付开发/测试](https://azure.microsoft.com/offers/ms-azr-0023p)         | MSDNDevTest_2014-09-01 | MS-AZR-0023P | 10月2日，2018<sup>2</sup> |
@@ -45,7 +46,7 @@ ms.locfileid: "72242363"
 | **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)<sup>4</sup>         | MSDN_2014-09-01 | MS-AZR-0059P | 10月2日，2018<sup>2</sup> |
 | **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)<sup>4</sup>    | MSDNDevTest_2014-09-01 | MS-AZR-0060P | 10月2日，2018<sup>2</sup> |
 | **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 10月2日，2018<sup>2</sup> |
-| **Visual Studio** | [Visual Studio Enterprise：BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 10月2日，2018<sup>2</sup> |
+| **Visual Studio** | [Visual Studio Enterprise： BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 10月2日，2018<sup>2</sup> |
 
 _<sup>**1**</sup>对于5月2014之前的数据，请访问[Azure 企业门户](https://ea.azure.com)。_
 
@@ -53,7 +54,7 @@ _<sup>**2**</sup>对于10月 2 2018 日之前的数据，请访问[Azure 帐户�
 
 _<sup>**3**</sup> 2019 年3月开始使用 Microsoft 客户协议，此点之前没有任何历史数据。_
 
-_<sup>**4**</sup>个基于信用额度和向外付费订阅的历史数据可能与你的发票不匹配。请参阅下面的[历史数据可能与发票不匹配](#historical-data-might-not-match-invoice)。_
+_<sup>**4**</sup>基于信用额度和向外付费订阅的历史数据可能与发票不匹配。请参阅下面的[历史数据可能与发票不匹配](#historical-data-might-not-match-invoice)。_
 
 尚不支持以下产品/服务：
 
@@ -62,8 +63,8 @@ _<sup>**4**</sup>个基于信用额度和向外付费订阅的历史数据可能
 | **Azure 德国** | [Azure 德国即用即付](https://azure.microsoft.com/offers/ms-azr-de-0003p) | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
 | **云解决方案提供商 (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **云解决方案提供商 (CSP)** | Azure 政府版 CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
-| **云解决方案提供商 (CSP)** | Microsoft 德国云 CSP 中的 Azure 德国版   | CSP_2015-05-01 | MS-AZR-DE-0145P |
-| **即用即付**                 | 面向学生的 Azure 入门版 | DreamSpark_2015-02-01 | MS-AZR-0144P |
+| **云解决方案提供商 (CSP)** | Microsoft 云德国 CSP 中的 Azure Germany   | CSP_2015-05-01 | MS-AZR-DE-0145P |
+| **即用即付**                 | Azure for Students Starter | DreamSpark_2015-02-01 | MS-AZR-0144P |
 | **即用即付** | [面向学生的 Azure](https://azure.microsoft.com/offers/ms-azr-0170p)<sup>4</sup> | AzureForStudents_2018-01-01 | MS-AZR-0170P |
 | **即用即付**                 | [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/) | Sponsored_2016-01-01 | MS-AZR-0036P |
 | **支持计划** | 标准支持                    | Default_2014-09-01 | MS-AZR-0041P |
@@ -143,9 +144,9 @@ _<sup>**8**</sup>个资源标记应用于从每个服务发出的使用情况，
 - Azure 开放许可（BC-OP-NT-AZR-0111P）
 - Azure Pass （BC-OP-NT-AZR-0120P，BC-OP-NT-AZR-0123P，MS-BC-OP-NT-AZR-0125P，MS-BC-OP-NT-AZR-0128P，MS-bc-op-nt-azr-0129P）
 - 免费试用（BC-OP-NT-AZR-0044P）
-- MSDN (MS-AZR-0062P)
+- MSDN （BC-OP-NT-AZR-0062P）
 - Visual Studio （BC-OP-NT-AZR-0029P，BC-OP-NT-AZR-0059P，MS-BC-OP-NT-AZR-0060P，MS-BC-OP-NT-AZR-0063P，MS-bc-op-nt-azr-0064P）
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - 如果尚未完成有关成本管理的第一个快速入门，请阅读[开始分析成本](quick-acm-cost-analysis.md)。

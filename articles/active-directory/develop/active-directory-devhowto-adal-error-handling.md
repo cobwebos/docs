@@ -1,5 +1,5 @@
 ---
-title: 处理 Azure AD 身份验证库 (ADAL) 客户端的最佳实践时出错
+title: 处理 Azure AD 身份验证库（ADAL）客户端的最佳实践时出错
 description: 提供适用于 ADAL 客户端应用程序的错误处理指南和最佳做法。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0c1bbbdf9b42dfe2b507f533ad1806e06991f33
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e7008a5909d8f530920628125fec1b826be3f984
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835411"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374191"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
 
@@ -28,8 +28,8 @@ ms.locfileid: "68835411"
 
 本文将探讨 ADAL 支持的每个平台的具体情况，以及应用程序应如何正确处理每种情况。 根据 ADAL API 提供的令牌获取模式，错误指南可分为两大类：
 
-- **AcquireTokenSilent**：客户端尝试以无提示方式获取令牌（无 UI），如果 ADAL 不成功，则可能会失败。 
-- **AcquireToken**：客户端可以尝试以无提示方式获取，但也可以执行交互式请求（需要登录）。
+- **AcquireTokenSilent**：客户端尝试自动获取令牌（无 UI），如果 ADAL 不成功，则可能获取失败。 
+- **AcquireToken**：客户端可以尝试自动获取，但也可以执行交互式请求（需要登录）。
 
 > [!TIP]
 > 最好在使用 ADAL 和 Azure AD 时记录所有错误和异常。 日志不仅有助于了解应用程序的整体运行状况，而且在调试更广泛的问题时也可发挥重要作用。 虽然应用程序可以从某些错误中恢复，但它们可能会提示存在其他设计问题，需要更改代码才能解决。 
@@ -52,10 +52,10 @@ AcquireTokenSilent 在保证最终用户不会看到用户界面 (UI) 的情况�
 
 从根本上说，存在两种 AcquireTokenSilent 错误情况：
 
-| 大小写 | 描述 |
+| 案例 | 描述 |
 |------|-------------|
 | **情况 1**：通过交互式登录可解决错误 | 对于因缺少有效令牌而导致的错误，执行交互式请求是必要的。 具体而言，缓存查找和无效/过期的刷新令牌必须通过 AcquireToken 调用才能解决。<br><br>在这些情况下，需提示最终用户进行登录。 应用程序可以选择是在最终用户交互（如点击登录按钮）后立即执行交互式请求，还是稍后执行。 这一选择取决于应用程序所需的行为。<br><br>请参阅下一节中的代码，了解此特定情况及其诊断错误。|
-| **情况 2**：通过交互式登录无法解决错误 | 对于网络和瞬间/临时错误或其他故障，执行交互式 AcquireToken 请求不能解决问题。 不必要的交互式登录提示也会使最终用户受挫。 对于大多数 AcquireTokenSilent 失败错误，ADAL 会自动尝试重试一次。<br><br>客户端应用程序也可稍后尝试重试，但执行此操作的时间和方式取决于应用程序的行为和所需的最终用户体验。 例如，应用程序可以在几分钟后执行 AcquireTokenSilent 重试，或者在响应某一最终用户操作时执行。 立即重试会导致应用程序中止，不应尝试这种方式。<br><br>后续重试失败并出现相同的错误，这并不意味着客户端应使用 AcquireToken 进行交互式请求，因为该方法不能解决错误。<br><br>请参阅下一节中的代码，了解此特定情况及其诊断错误。 |
+| **情况 2**：通过交互式登录无法解决错误 | 对于网络和瞬间/临时错误或其他故障，执行交互式 AcquireToken 请求不能解决问题。 不必要的交互式登录提示也会使最终用户受挫。 对于大多数 AcquireTokenSilent 失败错误，ADAL 会自动尝试重试一次。<br><br>客户端应用程序还可以在稍后的某个时间点重试，但当和如何依赖于应用程序行为和所需的最终用户体验时。 例如，应用程序可以在几分钟后执行 AcquireTokenSilent 重试，或者在响应某一最终用户操作时执行。 立即重试会导致应用程序中止，不应尝试这种方式。<br><br>后续重试失败并出现相同的错误，这并不意味着客户端应使用 AcquireToken 进行交互式请求，因为该方法不能解决错误。<br><br>请参阅下一节中的代码，了解此特定情况及其诊断错误。 |
 
 ### <a name="net"></a>.NET
 
@@ -200,8 +200,8 @@ AcquireToken 是用于获取令牌的默认 ADAL 方法。 在需要用户标识
 
 |  |  |
 |------|-------------|
-| **情况 1**：<br>不可重试错误（大多数情况下） | 1.不要尝试立即重试。 根据调用重试的特定错误显示最终用户 UI（“尝试再次登录”、“下载 Azure AD 中转站应用程序”等）。 |
-| **情况 2**：<br>可重试错误 | 1.执行一次重试，因为最终用户可能已进入某种会带来成功的状态。<br><br>2.如果重试失败，请根据调用重试的特定错误显示最终用户 UI（“尝试再次登录”、“下载 Azure AD 中转站应用”等）。 |
+| **情况 1**：<br>不可重试错误（大多数情况下） | 1. 不要尝试立即重试。 根据调用重试的特定错误显示最终用户 UI （例如，"尝试再次登录" 或 "下载 Azure AD 代理应用程序"）。 |
+| **情况 2**：<br>可重试错误 | 1. 执行一次重试，因为最终用户可能已进入成功状态。<br><br>2. 如果重试失败，请根据调用重试的特定错误显示最终用户 UI （"尝试再次登录"、"下载 Azure AD 代理应用" 等）。 |
 
 > [!IMPORTANT]
 > 如果通过自动调用向 ADAL 传递了一个用户帐户但失败，则后续的交互式请求允许最终用户使用其他帐户登录。 通过用户帐户成功执行 AcquireToken 操作后，应用程序必须验证登录的用户是否与应用程序的本地用户对象匹配。 不匹配并不会产生异常（目标 C 除外），但如果在身份验证请求之前本地已知该用户（如失败的自动调用），则需考虑异常情况。
@@ -212,9 +212,9 @@ AcquireToken 是用于获取令牌的默认 ADAL 方法。 在需要用户标识
 以下指南提供了与所有非自动 AcquireToken(…) ADAL 方法相关的错误处理示例，但以下方法除外： 
 
 - AcquireTokenAsync(…, IClientAssertionCertification, …)
-- AcquireTokenAsync(…,ClientCredential, …)
-- AcquireTokenAsync(…,ClientAssertion, …)
-- AcquireTokenAsync(…,UserAssertion,…)   
+- AcquireTokenAsync （...，ClientCredential，...）
+- AcquireTokenAsync （...，ClientAssertion，...）
+- AcquireTokenAsync （...，UserAssertion,...）   
 
 代码按如下所示进行实现：
 
@@ -374,9 +374,9 @@ AcquireToken 失败存在以下情况：
 
 |  |  |
 |------|-------------|
-| **情况 1**：<br>可通过交互式式请求解决 | 1.如果 login() 失败，请勿立即执行重试。 仅在用户执行某一操作，提示重试后才重试。|
-| **情况 2**：<br>不可通过交互式请求解决。 错误可重试。 | 1.执行一次重试，因为最终用户可能已进入某种会带来成功的状态。<br><br>2.如果重试失败，请根据调用重试的特定错误向最终用户显示操作（“尝试再次登录”）。 |
-| 情况 3：<br>不可通过交互式请求解决。 错误不可重试。 | 1.不要尝试立即重试。 根据调用重试的特定错误向最终用户显示操作（“尝试再次登录”）。 |
+| **情况 1**：<br>可通过交互式式请求解决 | 1. 如果登录（）失败，请不要立即执行重试。 仅在用户执行某一操作，提示重试后才重试。|
+| **情况 2**：<br>不可通过交互式请求解决。 错误可重试。 | 1. 执行单次重试，因为最终用户的主要用户进入了成功的状态。<br><br>2. 如果重试失败，请根据可调用重试的特定错误向最终用户显示操作（"尝试再次登录"）。 |
+| 情况 3：<br>不可通过交互式请求解决。 错误不可重试。 | 1. 不要尝试立即重试。 根据调用重试的特定错误向最终用户显示操作（“尝试再次登录”）。 |
 
 代码按如下所示进行实现：
 
@@ -482,8 +482,8 @@ catch (AdalException e) {
 
 ## <a name="error-and-logging-reference"></a>错误和日志记录引用
 
-### <a name="logging-personal-identifiable-information-pii--organizational-identifiable-information-oii"></a>记录个人身份信息 (PII) 和组织身份信息 (OII)
-默认情况下，ADAL 日志记录不会捕获或记录任何 PII 或 OII。 库允许应用开发人员通过 Logger 类中的资源库启用该功能。 启用 PII 或 OII 后，应用负责安全地处理高度敏感的数据并遵守任何法规要求。
+### <a name="logging-personal-identifiable-information--organizational-identifiable-information"></a>记录个人身份信息 & 组织身份信息 
+默认情况下，ADAL 日志记录不会捕获或记录任何个人身份信息或组织身份信息。 库允许应用开发人员通过 Logger 类中的资源库启用该功能。 通过记录个人身份信息或组织身份信息，应用程序负责安全地处理高度敏感的数据，并遵守任何法规要求。
 
 ### <a name="net"></a>.NET
 
@@ -579,18 +579,18 @@ window.Logging = {
 ```
 ## <a name="related-content"></a>相关内容
 
-* [Azure AD Developer's Guide][AAD-Dev-Guide]（Azure AD 开发人员指南）
+* [Azure AD 开发人员指南][AAD-Dev-Guide]
 * [Azure AD 身份验证库][AAD-Auth-Libraries]
 * [Azure AD 身份验证方案][AAD-Auth-Scenarios]
 * [将应用程序与 Azure Active Directory 集成][AAD-Integrating-Apps]
 
 欢迎通过下方的“评论”部分提供反馈，帮助我们改进内容。
 
-[![显示 "Microsoft 登录" 按钮][AAD-Sign-In]][AAD-Sign-In]
+[@no__t "Microsoft 登录" 按钮的1Shows][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md
-[AAD-Auth-Scenarios]:authentication-scenarios.md
+[AAD-Auth-Scenarios]:v1-authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AZURE-portal]: https://portal.azure.com

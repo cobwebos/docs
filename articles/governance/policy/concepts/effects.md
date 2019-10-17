@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: eb15aa3c6dbe0f4db62a2029a3c97b4475ab53a2
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 78a5b180d6e1531ca3ea15fbd6ec040a90d75e5c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255880"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330772"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -19,10 +19,10 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 
 策略定义目前支持以下效果：
 
-- [Append](#append)
+- [附加](#append)
 - [审核](#audit)
 - [AuditIfNotExists](#auditifnotexists)
-- [Deny](#deny)
+- [注销](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [已禁用](#disabled)
 - [EnforceRegoPolicy](#enforceregopolicy) （预览版）
@@ -30,7 +30,7 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
-Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。 Azure Policy 创建应用于资源的所有分配列表，然后根据每个定义评估资源。 Azure Policy 在将请求转交给相应的资源提供程序之前处理多个效果。 这样做可以防止资源提供程序在资源不符合 Azure Policy 的设计治理控制时进行不必要的处理。
+通过 Azure 资源管理器创建或更新资源的请求优先于 Azure 策略进行评估。 Azure 策略将创建应用于该资源的所有分配的列表，并根据每个定义计算资源。 在将请求提交到相应的资源提供程序之前，Azure 策略将处理多个影响。 这样做可以防止资源提供程序在资源不符合 Azure 策略的设计调控控制时不必要地处理。
 
 - 首先检查**已禁用**以确定是否应评估策略规则。
 - 然后计算**追加**和**修改**。 由于可能会改变请求，所做的更改可能会阻止审核或拒绝的影响。
@@ -41,7 +41,7 @@ Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请
 
 目前没有任何**EnforceRegoPolicy**效果的评估顺序。
 
-## <a name="disabled"></a>已禁用
+## <a name="disabled"></a>Disabled
 
 对于测试情况以及在策略定义已参数化效果时，此效果很有用。 借助这种灵活性可以禁用单个分配，而无需禁用该策略的所有分配。
 
@@ -67,7 +67,7 @@ Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请
 
 ### <a name="append-examples"></a>“附加”示例
 
-示例 1：单个**字段/值**对，使用非 **[\*]** [别名](definition-structure.md#aliases)和一个数组**值**设置存储帐户上的 IP 规则。 如果非 **[\*]** 别名是数组，该效果将以整个数组的形式附加**值**。 如果数组已存在，该冲突会导致拒绝事件发生。
+示例1：使用包含数组**值**的非 **[\*]** [别名](definition-structure.md#aliases)的单个**字段/值**对来设置存储帐户上的 IP 规则。 如果非 **[\*]** 别名是数组，该效果将以整个数组的形式附加**值**。 如果数组已存在，该冲突会导致拒绝事件发生。
 
 ```json
 "then": {
@@ -82,7 +82,7 @@ Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请
 }
 ```
 
-示例 2：使用具有数组**值**的 **[\*]** [别名](definition-structure.md#aliases)的单个**字段/值**对，可在存储帐户上设置 IP 规则。 通过使用 **[\*]** 别名，该效果会将**值**附加到可能预先存在的数组。 如果数组尚不存在，则将创建它。
+示例2：使用带有数组**值**的 **[@no__t** ）[别名](definition-structure.md#aliases)的单个**字段/值**对来设置存储帐户上的 IP 规则。 通过使用 **[\*]** 别名，该效果会将**值**附加到可能预先存在的数组。 如果数组尚不存在，则将创建它。
 
 ```json
 "then": {
@@ -99,8 +99,7 @@ Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请
 
 ## <a name="modify"></a>修改
 
-Modify 用于在创建或更新时在资源上添加、更新或删除标记。 常见的示例是在 costCenter 等资源上更新标记。 修改策略应始终将 @no__t 设置为 "_索引_"。 可以使用[修正任务](../how-to/remediate-resources.md)来修正现有的不合规资源。
-单个修改规则可以有任意数量的操作。
+Modify 用于在创建或更新时在资源上添加、更新或删除标记。 常见的示例是在 costCenter 等资源上更新标记。 除非目标资源为资源组，否则修改策略应始终将 @no__t 设置为_索引_。 可以使用[修正任务](../how-to/remediate-resources.md)来修正现有的不合规资源。 单个修改规则可以有任意数量的操作。
 
 > [!IMPORTANT]
 > Modify 当前仅用于标记。 如果你正在管理标记，则建议使用修改，而不是将追加作为修改提供其他操作类型和修正现有资源的能力。 但是，如果无法创建托管标识，则建议使用 Append。
@@ -161,15 +160,15 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 
 **操作**属性具有以下选项：
 
-|操作 |描述 |
+|Operation |描述 |
 |-|-|
 |addOrReplace |将已定义的标记和值添加到资源，即使已存在具有不同值的标记也是如此。 |
 |添加 |将已定义的标记和值添加到资源。 |
-|删除 |从资源中删除定义的标记。 |
+|移除 |从资源中删除定义的标记。 |
 
 ### <a name="modify-examples"></a>修改示例
 
-示例 1：添加 @no__t 的标记，并将现有的 @no__t 标记替换为 "Test"：
+示例1：添加 @no__t 的标记，并将现有 @no__t 1 标记替换为 "Test"：
 
 ```json
 "then": {
@@ -189,7 +188,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 }
 ```
 
-示例 2：删除 @no__t 标记并添加 @no__t 标记，或将现有 @no__t 2 标记替换为参数化值：
+示例2：删除 @no__t 的标记并添加 @no__t 标记，或将现有的 `environment` 标记替换为参数化值：
 
 ```json
 "then": {
@@ -229,7 +228,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 
 ### <a name="deny-example"></a>“拒绝”示例
 
-例如：使用“拒绝”效果。
+示例：使用“拒绝”效果。
 
 ```json
 "then": {
@@ -243,7 +242,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 
 ### <a name="audit-evaluation"></a>“审核”评估
 
-“审核”是创建或更新资源期间由 Azure Policy 检查的最后一个效果。 然后，Azure Policy 将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 Azure Policy 将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不合规。
+Audit 是在创建或更新资源的过程中由 Azure 策略检查的最后一个影响。 然后，Azure 策略将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 Azure 策略将 @no__t 0 操作添加到活动日志，并将资源标记为不合规。
 
 ### <a name="audit-properties"></a>“审核”属性
 
@@ -265,7 +264,7 @@ AuditIfNotExists 对匹配 **if** 条件的资源启用审核，但没有在 **t
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists 评估
 
-AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生审核。 与使用“审核”效果时一样，Azure Policy 会将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志。 触发后，满足 if 条件的资源是标记为不符合的资源。
+AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生审核。 Azure 策略将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，其方式与审核效果相同。 触发后，满足 if 条件的资源是标记为不符合的资源。
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists 属性
 
@@ -273,10 +272,10 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 - **Type** [必选]
   - 指定要匹配的相关资源的类型。
-  - 如果 **details.type** 是 **If** 条件资源下的资源类型，则策略将在已评估资源的范围内查询此**类型**的资源。 否则，策略将在与已评估资源相同的资源组内进行查询。
+  - 如果**详细信息**为，则 type 是**if**条件资源下面的资源类型，策略在计算资源的作用域内查询此**类型**的资源。 否则，策略查询将与计算资源位于同一资源组中。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
-  - 当 **if.field.type** 和 **then.details.type** 的条件值匹配时，**Name** 将变为_必需_且必须为 `[field('name')]`。 但是，应改为考虑 [audit](#audit) 效果。
+  - **如果**When 的条件值为，则键入，然后按_要求_**键入** **Name** ，并且必须 `[field('name')]`。 但是，应考虑使用[审核](#audit)效果。
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
@@ -297,7 +296,7 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 ### <a name="auditifnotexists-example"></a>AuditIfNotExists 示例
 
-例如：评估虚拟机以确定是否存在反恶意软件扩展，然后在缺失时进行审核。
+示例：评估虚拟机以确定是否存在反恶意软件扩展，然后在缺失时进行审核。
 
 ```json
 {
@@ -347,7 +346,7 @@ DeployIfNotExists 效果的 "**详细信息**" 属性包含定义要匹配的相
   - 首先尝试提取 if条件资源下的资源，然后在与 if 条件资源相同的资源组中进行查询。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
-  - 当 **if.field.type** 和 **then.details.type** 的条件值匹配时，**Name** 将变为_必需_且必须为 `[field('name')]`。
+  - **如果**When 的条件值为，则键入，然后按_要求_**键入** **Name** ，并且必须 `[field('name')]`。
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
@@ -381,7 +380,7 @@ DeployIfNotExists 效果的 "**详细信息**" 属性包含定义要匹配的相
 
 ### <a name="deployifnotexists-example"></a>DeployIfNotExists 示例
 
-例如：评估 SQL Server 数据库以确定是否启用 transparentDataEncryption。 如果未启用，则执行启用它的部署。
+示例：评估 SQL Server 数据库以确定是否启用 transparentDataEncryption。 如果未启用，则执行启用它的部署。
 
 ```json
 "if": {
@@ -457,7 +456,7 @@ EnforceRegoPolicy 效果的**详细信息**属性具有描述 Rego 许可控制�
 
 ### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy 示例
 
-例如：Rego 许可控制规则，只允许在 AKS 中指定容器映像。
+示例： Rego 许可控制规则，只允许在 AKS 中指定容器映像。
 
 ```json
 "if": {

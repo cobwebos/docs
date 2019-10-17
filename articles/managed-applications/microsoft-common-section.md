@@ -1,6 +1,6 @@
 ---
 title: Azure Section UI 元素 | Microsoft Docs
-description: 介绍了 Azure 门户的 Microsoft.Common.Section UI 元素。
+description: 介绍了 Azure 门户的 Microsoft.Common.Section UI 元素。 用于对部署托管应用程序的门户中的元素进行分组。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: c89b45dd4d8e6c2964f3d2bcbb6c3cef445c79e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a48c89785e0a448609026aab53364f6cf704e948
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698895"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331656"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 元素
 一个将一个或多个元素分组到同一标题下的控件。

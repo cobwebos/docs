@@ -15,12 +15,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef652b05f62218ee1d0e72543bfa546f0c14abe
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001713"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330029"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 
@@ -56,11 +56,11 @@ Azure Active Directory （Azure AD）可让你自动创建、维护和删除云�
 
 **Azure AD 预配服务**通过连接到每个应用程序供应商提供的用户管理 API 终结点，将用户预配到 SaaS 应用和其他系统。 这些用户管理 API 终结点允许 Azure AD 以编程方式创建、更新和删除用户。 对于所选的应用程序，预配服务还可以创建、更新和删除其他标识相关对象，如组和角色。
 
-@no__t 0Azure AD 预配服务 @ no__t-1 @ no__t-2Figure 1：Azure AD 预配服务*
+@no__t 0Azure AD 预配服务 @ no__t] *： Azure AD 预配服务*
 
-@no__t 0Outbound user 预配 workflow @ no__t-1 @ no__t-2Figure 2：从 Azure AD 到常见 SaaS 应用程序的“出站”用户预配工作流*
+@no__t 0Outbound 用户预配 workflow @ no__t-1*图2： "出站" 用户预配工作流从 Azure AD 到热门 SaaS 应用程序*
 
-@no__t 0Inbound user 预配 workflow @ no__t-1 @ no__t-2Figure 3：从常见人力资本管理 (HCM) 应用程序到 Azure Active Directory 和 Windows Server Active Directory 的“入站”用户预配工作流*
+@no__t 0Inbound 用户预配 workflow @ no__t-1*图3： "入站" 用户预配工作流从常用的人力资本管理（HCM）应用程序到 Azure Active Directory 和 Windows Server Active Directory*
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>可在哪些应用程序和系统中使用 Azure AD 自动用户预配？
 
@@ -99,7 +99,7 @@ Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支�
 
 1. 为设置**模式**选择 "自动" 选项，以指定管理凭据、映射、启动和停止以及同步的设置。
 
-   - 展开 "**管理员凭据**" 以输入 Azure AD 连接到应用程序的用户管理 API 所需的凭据。 此部分还使你可以在凭据失败或预配作业进入[隔离](#quarantine)时启用电子邮件通知。
+   - 展开 "**管理员凭据**" 以输入 Azure AD 连接到应用程序的用户管理 API 所需的凭据。 此部分还使你可以在凭据失败或预配作业进入[隔离](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)时启用电子邮件通知。
    - 展开 "**映射**" 可查看和编辑设置或更新用户帐户时在 Azure AD 和目标应用程序之间流动的用户属性。 如果目标应用程序支持它，则可以选择配置组和用户帐户的预配。 在表中选择一个映射，以打开右侧的映射编辑器，您可以在其中查看和自定义用户属性。
 
      **范围筛选器**告知预配服务应将源系统中的哪些用户和组设置为或取消预配到目标系统。 在 "**属性映射**" 窗格中，选择 "**源对象范围**" 以根据特定属性值进行筛选。 例如，可以指定只能将“Department”属性为“Sales”的用户列入预配范围。 有关详细信息，请参阅[使用范围筛选器](define-conditional-rules-for-provisioning-user-accounts.md)。
@@ -173,7 +173,7 @@ Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支�
 
 在隔离时，增量循环的频率会逐渐减少到每天一次。
 
-在修复了所有冲突的错误并启动下一个同步周期后，将从隔离区中删除该设置作业。 如果预配作业在隔离区中保留四周以上，则会禁用预配作业。
+在修复了所有冲突的错误并启动下一个同步周期后，将从隔离区中删除该设置作业。 如果预配作业在隔离区中保留四周以上，则会禁用预配作业。 在此处了解有关[隔离状态的](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)详细信息。
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>预配用户需要多长时间？
 
@@ -205,7 +205,7 @@ Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支�
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>SaaS 应用的自动用户预配是否适用于 Azure AD 中的动态组？
 
-是。 如果配置为 "仅同步分配的用户和组"，则 Azure AD 用户预配服务可根据用户是否为[动态组](../users-groups-roles/groups-create-rule.md)的成员，在 SaaS 应用程序中预配或取消预配用户。 动态组也适用于“同步所有用户和组”选项。
+可以。 如果配置为 "仅同步分配的用户和组"，则 Azure AD 用户预配服务可根据用户是否为[动态组](../users-groups-roles/groups-create-rule.md)的成员，在 SaaS 应用程序中预配或取消预配用户。 动态组也适用于“同步所有用户和组”选项。
 
 但是，动态组的使用可能会影响从 Azure AD 到 SaaS 应用程序的端到端用户预配的整体性能。 使用动态组时，请牢记以下注意事项和建议：
 
@@ -215,7 +215,7 @@ Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支�
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-nested-groups-in-azure-ad"></a>SaaS 应用的自动用户预配是否适用于 Azure AD 中的嵌套组？
 
-否。 如果配置为 "仅同步分配的用户和组"，则 Azure AD 用户预配服务无法读取或设置嵌套组中的用户。 它只能读取和预配作为显式分配组的直接成员的用户。
+不。 如果配置为 "仅同步分配的用户和组"，则 Azure AD 用户预配服务无法读取或设置嵌套组中的用户。 它只能读取和预配作为显式分配组的直接成员的用户。
 
 这是“应用程序基于组的分配”的限制，该限制还会影响单一登录，请参阅[使用组管理对 SaaS 应用程序的访问](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps )进行了解。
 
@@ -223,7 +223,7 @@ Azure AD 功能为许多常用 SaaS 应用和人力资源系统预集成的支�
 
 ### <a name="is-provisioning-between-azure-ad-and-a-target-application-using-an-encrypted-channel"></a>使用加密通道在 Azure AD 和目标应用程序之间进行预配？
 
-是。 我们对服务器目标使用 HTTPS SSL 加密。
+可以。 我们对服务器目标使用 HTTPS SSL 加密。
 
 ## <a name="related-articles"></a>相关文章
 

@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 182c93ea0b887242d142eda5aeb44b2749c7ac66
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f535a681ac3508aafc2823bcc9b9ae7f22cc2d8e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937555"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333045"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>在从本地故障转移后连接到 Azure Vm 
 
@@ -35,24 +35,24 @@ ms.locfileid: "71937555"
 
 ### <a name="prepare-windows-machines"></a>准备 Windows 计算机
 
-在本地 Windows 计算机上，执行以下操作：
+在本地 Windows 计算机上执行以下操作：
 
 1. 配置 Windows 设置。 这包括删除任何静态持久路由或 WinHTTP 代理，并将磁盘 SAN 策略设置为**OnlineAll**。 [按照](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure)这些说明进行操作。
 
-2. 请确保[这些服务](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services)正在运行。
+2. 确保[这些服务](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services)正在运行。
 
-3. 启用远程桌面（RDP）以允许远程连接到本地计算机。 [了解如何](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings)使用 POWERSHELL 启用 RDP。
+3. 启用远程桌面 (RDP)，以便能够远程连接到本地计算机。 [了解如何](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings)使用 PowerShell 启用 RDP。
 
 4. 若要在故障转移后通过 internet 访问 Azure VM，请在本地计算机上的 Windows 防火墙中，在公用配置文件中允许 TCP 和 UDP，并将 RDP 设置为适用于所有配置文件的允许的应用。
 
-5. 如果要在故障转移后通过站点到站点 VPN 访问 Azure VM，请在本地计算机上的 Windows 防火墙中，为域和专用配置文件允许 RDP。 [了解](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)如何允许 RDP 通信。
+5. 如果要在故障转移后通过站点到站点 VPN 访问 Azure VM，请在本地计算机上的 Windows 防火墙中，为域和专用配置文件允许 RDP。 [了解](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)如何允许 RDP 流量。
 6. 在触发故障转移时，请确保在本地 VM 上没有任何 Windows 更新处于挂起状态。 如果有，则在故障转移后，更新可能会在 Azure VM 上开始安装，并且在更新完成之前，你将无法登录到 VM。
 
 ### <a name="prepare-linux-machines"></a>准备 Linux 计算机
 
-在本地 Linux 计算机上，执行以下操作：
+在本地 Linux 计算机上执行以下操作：
 
-1. 检查安全外壳服务是否设置为在系统启动时自动启动。
+1. 检查安全外壳服务是否设置为在系统引导时自动启动。
 2. 确保防火墙规则允许 SSH 连接。
 
 
@@ -60,13 +60,13 @@ ms.locfileid: "71937555"
 
 故障转移后，请在创建的 Azure Vm 上执行以下操作。
 
-1. 若要通过 internet 连接到 VM，请将公共 IP 地址分配给 VM。 对于用于本地计算机的 Azure VM，不能使用相同的公共 IP 地址。 [了解详细信息](../virtual-network/virtual-network-public-ip-address.md)
-2. 检查 VM 上的网络安全组（NSG）规则是否允许与 RDP 或 SSH 端口建立传入连接。
-3. 检查[启动诊断](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine)以查看 VM。
+1. 若要通过 Internet 连接到 VM，请将公共 IP 地址分配到该 VM。 不能将本地计算机所用的同一个公共 IP 地址用于 Azure VM。 [了解详细信息](../virtual-network/virtual-network-public-ip-address.md)
+2. 检查 VM 上的网络安全组 (NSG) 规则是否允许与 RDP 或 SSH 端口建立传入连接。
+3. 在[启动诊断](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine)中查看 VM。
 
 
 > [!NOTE]
-> Azure 堡垒服务提供对 Azure Vm 的私有 RDP 和 SSH 访问。 [了解](../bastion/bastion-overview.md)有关此服务的详细信息。
+> Azure Bastion 服务提供对 Azure VM 的 RDP 和 SSH 私密访问。 [详细了解](../bastion/bastion-overview.md)此服务。
 
 ## <a name="set-a-public-ip-address"></a>设置公共 IP 地址
 
@@ -77,8 +77,8 @@ ms.locfileid: "71937555"
 
 若要在故障转移后设置 Azure VM 的内部 IP 地址，可以使用以下几个选项：
 
-- **保留相同的 IP 地址**：可以在 Azure VM 上使用与分配给本地计算机的 IP 地址相同的 IP 地址。
-- **使用不同 IP 地址**：可以为 Azure VM 使用不同的 IP 地址。
+- **保留相同的 ip 地址**：你可以在 Azure VM 上使用与分配给本地计算机的 ip 地址相同的 ip 地址。
+- **使用不同的 ip 地址**：可以为 Azure VM 使用不同的 ip 地址。
 
 
 ## <a name="retain-ip-addresses"></a>保留 IP 地址
@@ -91,7 +91,7 @@ Site Recovery 使你可以在故障转移到 Azure 时保留相同的 IP 地址�
 
 保留 IP 地址需要执行以下步骤：
 
-- 在本地计算机属性中，为目标 Azure VM 设置网络和 IP 寻址以镜像本地设置。
+- 在 "计算" & 复制项的网络属性中，为目标 Azure VM 设置网络和 IP 寻址以镜像本地设置。
 - 在灾难恢复过程中，必须管理子网。 需要 Azure VNet 才能匹配本地网络，并且在故障转移后，必须修改故障转移网络路由，以反映子网已移动到 Azure 和新的 IP 地址位置。  
 
 ### <a name="failover-example"></a>故障转移示例
@@ -120,7 +120,7 @@ Site Recovery 使你可以在故障转移到 Azure 时保留相同的 IP 地址�
     > 根据应用程序的要求，可以在故障转移之前设置 VNet 到 VNet 连接，作为 Site Recovery[恢复计划](site-recovery-create-recovery-plans.md)中的手动步骤/脚本步骤/Azure 自动化 runbook，或在故障转移完成后。
 
 4. 在故障转移之前，在 Site Recovery 中的计算机属性上，它们将目标 IP 地址设置为本地计算机的地址，如以下过程中所述。
-5. 故障转移后，将创建具有相同 IP 地址的 Azure Vm。 Woodgrove 使用从**Azure 网络**连接到**恢复网络**VNet 
+5. 故障转移后，将创建具有相同 IP 地址的 Azure Vm。 Woodgrove 使用 VNet 对等互连（启用了传输连接）从**Azure 网络**连接到**恢复网络**VNet。
 6. 在本地，Woodgrove 需要进行网络更改，包括修改路由，以反映 192.168.1.0/24 已移到 Azure。  
 
 **故障转移前的基础结构**

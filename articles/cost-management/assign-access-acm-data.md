@@ -1,21 +1,21 @@
 ---
-title: 分配对 Azure 成本管理数据的访问权限 | Microsoft Docs
+title: 分配对 Azure 成本管理数据的访问权限
 description: 本文介绍如何分配不同访问范围的 Azure 成本管理数据访问权限。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/30/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: f9db07f648956130bb5bdebb23321b0eb14679c7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: ebc56d27b7adc8f1fea9eafabe1b211f3f0ad560
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695392"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375130"
 ---
 # <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
 
@@ -37,12 +37,12 @@ ms.locfileid: "71695392"
 
 | **范围** | **定义位置** | **查看数据所需的访问权限** | **先决条件 EA 设置** | **将数据合并到** |
 | --- | --- | --- | --- | --- |
-| 计费帐户<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | 企业管理员 | 无 | 企业协议中的所有订阅 |
+| 计费帐户<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | 企业管理员 | None | 企业协议中的所有订阅 |
 | 部门 | [https://ea.azure.com](https://ea.azure.com/) | 部门管理员 | **DA 视图费用**已启用 | 属于一个合约帐户的所有订阅，该帐户已关联到部门 |
 | 合约帐户<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | 帐户所有者 | **AO 视图费用**已启用 | 注册帐户的所有订阅 |
 | 管理组 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用**已启用 | 管理组下的所有订阅 |
-| 订阅 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用**已启用 | 订阅中的所有资源/资源组 |
-| 资源组 | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用**已启用 | 资源组中的所有资源 |
+| Subscription | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用**已启用 | 订阅中的所有资源/资源组 |
+| Resource group | [https://portal.azure.com](https://portal.azure.com/) | 成本管理读者（或读者） | **AO 视图费用**已启用 | 资源组中的所有资源 |
 
 <sup>1</sup> 计费帐户还称为“企业协议”或“合约”。
 
@@ -62,7 +62,9 @@ ms.locfileid: "71695392"
 
 - Azure 帐户
 - 管理组
-- 资源组
+- Resource group
+
+将客户加入 Microsoft 客户协议后，将提供各种范围。 然后，如果客户的 CSP 合作伙伴启用了成本管理功能，则他们可以使用这些功能。 有关详细信息，请参阅[合作伙伴的 Azure 成本管理入门](get-started-partners.md)。
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>启动对 EA 门户中的成本的访问
 
@@ -175,7 +177,7 @@ ms.locfileid: "71695392"
 
 目前，Azure 成本管理对跨租户身份验证的支持有限。 在某些情况下，尝试跨租户进行身份验证时，可能会在成本分析中收到 "**拒绝访问**" 错误。 如果将基于角色的访问控制（RBAC）配置到其他租户的订阅，然后尝试查看成本数据，则可能出现此问题。
 
-*若要解决此问题*：配置跨租户 RBAC 后，请等待一小时。 然后，尝试查看成本分析中的成本或授予对这两个租户中用户的成本管理访问权限。  
+*若要解决此问题*：在配置跨租户 RBAC 后，请等待一小时。 然后，尝试查看成本分析中的成本或授予对这两个租户中用户的成本管理访问权限。  
 
 
 ## <a name="next-steps"></a>后续步骤

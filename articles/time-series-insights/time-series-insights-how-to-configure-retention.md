@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9986f57b05032c1e12769d59781e8b7aca443abb
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: bf6788bac7003bec0ccfc171d622cd9b28bf43e0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298992"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330884"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>在时序见解中配置保留期
 
@@ -26,10 +26,10 @@ ms.locfileid: "72298992"
 
 每个 Azure 时序见解环境都有一个设置来配置**数据保留时间**。 该值的范围为 1 到 400 天。 将根据环境存储容量或保留期限 (1-400) 删除数据，以先达到的条件为准。
 
-每个 TSI 环境都有一项附加设置：“超出存储限制时的行为”。 此设置控制达到环境最大容量时的传入和清除行为。 可以从两种行为中进行选择：
+每个时序见解环境都有一个额外的 "**存储限制超出" 行为**。 此设置控制达到环境最大容量时的传入和清除行为。 可以从两种行为中进行选择：
 
 - 清除旧数据（默认行为）
-- **暂停传入**
+- 暂停传入
 
 有关有助于更好地了解这些设置的详细信息，请参阅[了解时序见解中的保留期](time-series-insights-concepts-retention.md)。  
 
@@ -49,10 +49,14 @@ ms.locfileid: "72298992"
 
 1. 切换“超出存储限制时的行为”设置。 选择“清除旧数据”或“暂停传入”行为。
 
-    [![Data 保留接受并保存。](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [![Data 保留-接受并保存。](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
 1. 接受此复选框，指出您已经查看了文档并了解丢失数据的潜在风险。 选择“保存”以配置更改。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关详细信息，请参阅[了解时序见解中的保留期](time-series-insights-concepts-retention.md)。
+
+- 了解[如何扩展时序见解环境](time-series-insights-how-to-scale-your-environment.md)。
+
+- 了解如何[规划您的环境](time-series-insights-environment-planning.md)。

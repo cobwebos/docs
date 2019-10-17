@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 362024868de269ed64a440a25e8c19c5b68bef80
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: cd5643d8be06afcd43c5bfe38d6f5e9caa6f906e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003474"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326646"
 ---
-# <a name="where-clause"></a>WHERE 子句
+# <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
 
-可选的 WHERE 子句 (`WHERE <filter_condition>`) 指定条件，查询只会将满足这些条件的源 JSON 项包含在结果中。 JSON 项必须将指定的条件评估为 `true` 才被视作结果。 索引层使用 WHERE 子句来确定可以作为结果的一部分的源项的最小子集。
+可选 WHERE 子句（`WHERE <filter_condition>`）指定源 JSON 项必须满足的条件，以便查询将它们包含在结果中。 JSON 项必须将指定的条件评估为 `true` 才能视为结果。 索引层使用 WHERE 子句来确定可以作为结果的一部分的源项的最小子集。
   
 ## <a name="syntax"></a>语法
   
@@ -42,7 +42,7 @@ WHERE <filter_condition>
 
 ## <a name="examples"></a>示例
 
-以下查询请求包含值为 `AndersenFamily` 的 `id` 属性的项。 它会排除任何不带 `id` 属性或值与 `AndersenFamily` 不匹配的项。
+以下查询请求包含值为 @no__t 的 @no__t 0 属性的项。 它排除没有 @no__t 值属性或值与 `AndersenFamily` 不匹配的任何项。
 
 ```sql
     SELECT f.address
@@ -66,7 +66,7 @@ WHERE <filter_condition>
 
 上面的示例演示了一个简单的等式查询。 SQL API 还支持各种[标量表达式](sql-query-scalar-expressions.md)。 最常使用的是二进制和一元表达式。 来自源 JSON 对象的属性引用也是有效的表达式。
 
-可以使用以下受支持的二元运算符：  
+您可以使用以下受支持的二进制运算符：  
 
 |**运算符类型**  | **值** |
 |---------|---------|
@@ -74,7 +74,7 @@ WHERE <filter_condition>
 |位    | \|、&、^、<<、>>、>>>（补零右移） |
 |逻辑    | AND、OR、NOT      |
 |比较 | =、!=、&lt;、&gt;、&lt;=、&gt;=、<> |
-|String     |  \|\|（连接） |
+|字符串     |  \|\|（连接） |
 
 以下查询使用二元运算符：
 
@@ -92,7 +92,7 @@ WHERE <filter_condition>
     WHERE c.grade >= 5    -- matching grades == 5
 ```
 
-还可以在查询中使用一元运算符 +、-、~ 和 NOT，如以下示例所示：
+你还可以使用一元运算符 +,-, ~，而不能在查询中使用，如以下示例中所示：
 
 ```sql
     SELECT *
@@ -104,7 +104,7 @@ WHERE <filter_condition>
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-还可以在查询中使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 返回包含值等于 `true` 的 `isRegistered` 属性的 JSON 项。 任何其他值（例如`false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>` 或 `<array>`）会从结果中排除该项。 
+您还可以在查询中使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 返回的 JSON 项包含属性 `isRegistered`，其值等于 `true`。 任何其他值（例如 `false`、`null`、`Undefined`、`<number>`、@no__t、@no__t 或 @no__t）都将从结果中排除项。 
 
 ## <a name="next-steps"></a>后续步骤
 

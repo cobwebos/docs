@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB 中的 SELECT 子句
-description: 了解 Azure Cosmos DB 的 SQL SELECT 子句。 将 SQL 用作 Azure Cosmos DB JSON 查询语言。
+description: 了解 Azure Cosmos DB 的 SQL SELECT 子句。 使用 SQL 作为 Azure Cosmos DB JSON 查询语言。
 author: ginarobinson
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: d34b1c39d9789409dc365cd4cf07fdc3d5a780fd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003514"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326789"
 ---
-# <a name="select-clause"></a>SELECT 子句
+# <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 SELECT 子句
 
-每个查询按 ANSI SQL 标准由 SELECT 子句和可选的 [FROM](sql-query-from.md) 和 [WHERE](sql-query-where.md) 子句组成。 通常，将会枚举 FROM 子句中的源，WHERE 子句对该源应用一个筛选器，以检索 JSON 项的子集。 然后，SELECT 子句在 select 列表中投影请求的 JSON 值。
+每个查询都由 SELECT 子句和可选的[from](sql-query-from.md)和[WHERE](sql-query-where.md)子句（每个 ANSI SQL 标准）组成。 通常，枚举 FROM 子句中的源，WHERE 子句对源应用筛选器以检索 JSON 项的子集。 然后，SELECT 子句会在选择列表中投影请求的 JSON 值。
 
 ## <a name="syntax"></a>语法
 
@@ -78,7 +78,7 @@ SELECT <select_specification>
   
 ## <a name="examples"></a>示例
 
-以下 SELECT 查询示例从 `id` 匹配 `AndersenFamily` 的 `Families` 中返回 `address`：
+以下 SELECT 查询示例从 `Families` 中返回 `address`，其中 `id` 匹配 `AndersenFamily`：
 
 ```sql
     SELECT f.address
@@ -99,7 +99,7 @@ SELECT <select_specification>
 ```
 
 ### <a name="quoted-property-accessor"></a>带引号的属性访问器
-可以使用带引号的属性运算符 [] 访问属性。 例如，`SELECT c.grade` 和 `SELECT c["grade"]` 是等效的。 此语法很适合用于转义包含空格和特殊字符的属性，或者其名称与 SQL 关键字或保留字相同的属性。
+您可以使用带引号的属性运算符 [] 访问属性。 例如，`SELECT c.grade` 和 `SELECT c["grade"]` 是等效的。 此语法可用于对包含空格、特殊字符或与 SQL 关键字或保留字同名的属性进行转义。
 
 ```sql
     SELECT f["lastName"]
@@ -109,7 +109,7 @@ SELECT <select_specification>
 
 ### <a name="nested-properties"></a>嵌套属性
 
-以下示例投影两个嵌套属性：`f.address.state` 和 `f.address.city`。
+下面的示例投影两个嵌套的属性 `f.address.state` 和 `f.address.city`。
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -127,7 +127,7 @@ SELECT <select_specification>
 ```
 ### <a name="json-expressions"></a>JSON 表达式
 
-投影也支持 JSON 表达式，如以下示例所示：
+投影也支持 JSON 表达式，如下面的示例中所示：
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
@@ -147,7 +147,7 @@ SELECT <select_specification>
     }]
 ```
 
-在上述示例中，SELECT 子句需要创建一个 JSON 对象；由于该示例未提供键，因此子句使用了隐式参数变量名称 `$1`。 以下查询返回两个隐式参数变量：`$1` 和 `$2`。
+在前面的示例中，SELECT 子句需要创建 JSON 对象，并且由于该示例未提供任何键，因此子句使用隐式参数变量名 `$1`。 下面的查询返回两个隐式参数变量： `$1` 和 `$2`。
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },

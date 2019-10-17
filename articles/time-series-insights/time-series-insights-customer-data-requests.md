@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 3437634ff70371f9679423149b6996a099c044b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: fb464d2c75e271bf2f7f1684ed991d01691d70e4
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950735"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330943"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 
@@ -68,8 +68,8 @@ Azure 时序见解将个人数据视为与时序见解的管理员和用户相�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何[授予对 TSI 环境的数据访问权限](./time-series-insights-data-access.md)。
+* 详细了解[如何授予对 Azure 时序见解环境的数据访问权限](./time-series-insights-data-access.md)。
 
-* 查看 [Azure 时序见解资源管理器](time-series-insights-explorer.md)。
+* 查看[Azure 时序见解资源管理器](time-series-insights-explorer.md)。
 
 * 了解如何[在时序见解中配置保留期](time-series-insights-how-to-configure-retention.md)。

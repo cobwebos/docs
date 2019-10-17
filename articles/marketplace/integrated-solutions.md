@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
 ms.openlocfilehash: b6015ce2d52c140a966636b887d021e76e92990d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "70993629"
 ---
 # <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Azure Marketplace 和 AppSource 中的集成解决方案
@@ -25,7 +25,7 @@ ms.locfileid: "70993629"
 集成方法的优点是：
 
 * *行业专业知识*：提供特定于行业的解决方案和知识的系统集成商
-* *时间到值*：集成的部署方法，可帮助你实现直接权益
+* 实现*价值*：集成部署方法以帮助你实现直接的优势
 * *同类最佳的解决方案*：发现易于集成的购买和实现体验
 
 ## <a name="next-steps"></a>后续步骤

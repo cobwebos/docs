@@ -1,5 +1,5 @@
 ---
-title: 用于 Microsoft 基于 Azure 的 VM 映像获取共享的访问签名 URI |Azure Marketplace
+title: 获取基于 Microsoft Azure 的 VM 映像的共享访问签名 URI |Azure Marketplace
 description: 介绍如何获取 VM 映像的共享访问签名 (SAS) URI。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
@@ -7,22 +7,22 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 4da82b2f6aaa3fc664d2e91b80722329533b0cd0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c242fbcd19187abb608ca80a49d04dae195bd7c6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938665"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374370"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>获取 VM 映像的共享访问签名 URI
 
-在发布过程中，必须为 SKU 关联的每个虚拟硬盘 (VHD) 提供统一资源标识符 (URI)。 Microsoft 需要在认证过程中访问这些 VHD。 本文介绍如何生成每个 VHD 的共享访问签名 (SAS) URI。 将在云合作伙伴门户上的“SKU”选项卡中输入此 URI。  
+在发布过程中，必须为 SKU 关联的每个虚拟硬盘 (VHD) 提供统一资源标识符 (URI)。 Microsoft 需要在认证过程中访问这些 VHD。 本文介绍如何生成每个 VHD 的共享访问签名 (SAS) URI。 将在云合作伙伴门户上的“SKU”选项卡中输入此 URI。 
 
 生成 VHD 的 SAS URI 时，请遵循以下要求：
 
 - 仅支持非托管的 VHD。
-- `List` 和 `Read` 权限足够。 不要提供 `Write` 或 `Delete` 访问权限。 
-- 访问权限持续时间（过期日期）应至少是从 SAS URI 创建时间开始算起的 3 周。 
+- `List` 和 `Read` 权限足够。 不要提供 `Write` 或 `Delete` 访问权限。
+- 访问权限持续时间（过期日期）应至少是从 SAS URI 创建时间开始算起的 3 周。
 - 为了防范出现 UTC 时间偏差，请将开始日期设置为当前日期的前一天。 例如，如果当前时间是 2014 年 10 月 6 日，则选择 10/5/2014。
 
 ## <a name="generate-the-sas-url"></a>生成 SAS URL
@@ -44,7 +44,7 @@ ms.locfileid: "64938665"
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
    ```
     
-3. 编辑该文件以提供以下参数值。  应以 UTC 日期时间格式提供日期，例如 `10-25-2016T00:00:00Z`。
+3. 编辑该文件以提供以下参数值。  应以 UTC 日期时间格式提供日期，例如 `2016-10-25T00:00:00Z`。
    - `<account-name>` - Azure 存储帐户名称
    - `<account-key>` - Azure 存储帐户密钥
    - `<vhd-name>` - VHD 名称
@@ -58,8 +58,8 @@ ms.locfileid: "64938665"
    ```
  
 4. 保存对此 PowerShell 脚本所做的更改。
-5. 使用管理特权运行此脚本，以生成容器级访问权限的 SAS 连接字符串。   可以使用两种基本方法：
-   - 从控制台运行脚本。  例如，在 Windows 中，右键单击该脚本并选择“以管理员身份运行”。 
+5. 使用管理特权运行此脚本，以生成容器级访问权限的 SAS 连接字符串。  可以使用两种基本方法：
+   - 从控制台运行脚本。  例如，在 Windows 中，右键单击该脚本并选择“以管理员身份运行”。
    - 使用管理特权从某个 PowerShell 脚本编辑器（例如 [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)）运行脚本。 
      以下示例演示了在此编辑器中生成的 SAS 连接字符串。 
 
@@ -67,7 +67,7 @@ ms.locfileid: "64938665"
 
 6. 复制生成的 SAS 连接字符串，并将其保存到位于安全位置的某个文本文件。  稍后将要编辑此字符串，以便在其中添加关联的 VHD 位置信息来创建最终的 SAS URI。 
 7. 在 Azure 门户中，导航到包含与新生成 URI 关联的 VHD 的 Blob 存储。
-8. 复制“Blob 服务终结点”的 URL 值，如下所示。 
+8. 复制“Blob 服务终结点”的 URL 值，如下所示。
 
     ![Azure 门户中的 Blob 服务终结点](./media/publishvm_033.png)
 
@@ -87,22 +87,22 @@ ms.locfileid: "64938665"
 使用以下步骤在 Microsoft Azure 存储资源管理器中生成 SAS URI。
 
 1. 下载并安装 [Microsoft Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
-2. 打开资源管理器，在左侧菜单栏中单击“添加帐户”图标。   此时会显示“连接到 Azure 存储”对话框。 
-3. 选择“添加 Azure 帐户”  ，然后单击“登录”  。  继续执行所需的步骤以登录到 Azure 帐户。
-4. 在左侧的“资源管理器”窗格中，导航到“存储帐户”并展开此节点。  
-5. 右键单击你的 VHD，并从上下文菜单中选择“获取共享访问签名”。  
+2. 打开资源管理器，在左侧菜单栏中单击“添加帐户”图标。  此时会显示“连接到 Azure 存储”对话框。
+3. 选择“添加 Azure 帐户”，然后单击“登录”。  继续执行所需的步骤以登录到 Azure 帐户。
+4. 在左侧的“资源管理器”窗格中，导航到“存储帐户”并展开此节点。
+5. 右键单击你的 VHD，并从上下文菜单中选择“获取共享访问签名”。 
 
     ![在 Azure 资源管理器中获取 SAS 项](./media/publishvm_034.png)
 
-6. 此时会显示“共享访问签名”对话框。  输入以下字段的值：
+6. 此时会显示“共享访问签名”对话框。 输入以下字段的值：
    - **开始时间** - VHD 访问权限的开始日期。 请提供当前日期的前一天的日期。
    - **过期时间** - VHD 访问权限的过期日期。  请提供自当前日期开始算起的至少三周后的日期。
    - **权限** - 选择 `Read` 和 `List` 权限。 
 
      ![Azure 资源管理器中的 SAS 对话框](./media/publishvm_035.png)
 
-7. 单击“创建”以创建与此 VHD 关联的 SAS URI。   现在，该对话框会显示有关此操作的详细信息。 
-8. 复制“URL”值，并将其保存到位于安全位置的某个文本文件。  
+7. 单击“创建”以创建与此 VHD 关联的 SAS URI。  现在，该对话框会显示有关此操作的详细信息。 
+8. 复制“URL”值，并将其保存到位于安全位置的某个文本文件。 
 
     ![在 Azure 资源管理器中创建 SAS URI](./media/publishvm_036.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 18c11198f6b81e72e371b3ab06ed3a7330078c52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5d4c549eaded78c69d3e7fa7173b5ad9b1d82f2f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023789"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333147"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>教程：创建自定义分析规则以检测可疑威胁
 
@@ -34,7 +34,7 @@ ms.locfileid: "72023789"
 
 你可以创建自定义分析规则，以帮助你搜索环境中可疑的威胁类型和异常。 此规则可确保你立即收到通知，以便你可以对威胁进行会审、调查和修正。
 
-1. 在 Azure Sentinel 下的 Azure 门户中，选择 "**分析**"。
+1. 在 Azure 门户的 Azure Sentinel 下，选择“分析”。
 
 1. 在顶部菜单栏中，选择 " **+ 创建**"，并选择 "**计划的查询规则**"。 这将打开 "**自定义规则创建向导**"。
 
@@ -56,7 +56,7 @@ ms.locfileid: "72023789"
     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
    > [!NOTE]
-   > 查询长度应介于1到1、0000个字符之间，并且不能包含 "search \*" 或 "union \*"。
+   > 查询长度应介于1到1000个字符之间，并且不能包含 "search \*" 或 "union \*"。
 
     1. 在 "**查询计划**" 下，设置以下参数：
 

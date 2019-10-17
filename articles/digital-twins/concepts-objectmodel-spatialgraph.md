@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 67a4aceb157ee3fe1b1d1553efd587a0f2838d88
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 1186fec8d50d7e986d1c613cd96f741c34ca181a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950011"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372619"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>了解数字孪生对象模型和空间智能图
 
@@ -78,14 +78,14 @@ Azure 数字孪生是一种 Azure IoT 服务，可提供物理环境及相关设
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| 姓名 | 替换为 |
+| 名称 | 替换为 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | 数字孪生实例的名称 |
 | YOUR_LOCATION | 托管实例的服务器区域 |
 
  此图中显示了完整的 URL 格式。
 
-(![数字孪生门户管理 API](media/concepts/digital-twins-spatial-graph-management-api-url.png)] （media/概念/digital-twins-spatial-graph-management-api-url # lightbox）
+[@no__t 1Digital 孪生门户管理 API](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
 
 有关使用空间智能图的详细信息，请访问 Azure 数字孪生管理 API 非公开预览版。
 

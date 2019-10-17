@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177770"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332837"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -25,7 +25,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 - 向特定会话主机上的活动用户发送消息。
 - 将用户登录到会话主机。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 你需要创建 Azure Active Directory 应用注册和 Log Analytics 工作区，然后才能部署该工具的 Azure 资源管理器模板。 你或管理员需要这些权限才能执行此操作：
 
@@ -108,8 +108,8 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 3. 在 "**设置**" 部分，选择 "**高级设置**"。
 4. 然后，导航到 " **Data** > **Windows 性能计数器**"，并添加以下计数器：
 
-    -   逻辑磁盘（\*） \|% 可用空间
-    -   逻辑磁盘（C：） \\Avg。磁盘队列长度
+    -   逻辑磁盘（\*） \%Free Space
+    -   逻辑磁盘（C：） \\Avg Queue Length
     -   内存（\*） \\Available Mb
     -   处理器信息（\*） \\Processor 时间
     -   每个会话的用户输入延迟（\*） \\Max 输入延迟
@@ -142,9 +142,9 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 3. 之后，请跳到**Data** > **Windows 性能计数器**。
 4. 请确保预配置了以下计数器：
 
-   - 逻辑磁盘（\*） \|% 可用空间：显示磁盘上总可用空间的可用空间量（以百分比表示）。
-   - 逻辑磁盘（C：） \\Avg。磁盘队列长度：C 驱动器的磁盘传输请求的长度。 该值不应超过一小段时间的2。
-   - 内存（\*） \\Available Mb：系统的可用内存（mb）。
+   - 逻辑磁盘（@no__t） \%Free Space：将磁盘上总可用空间的可用空间量显示为百分比。
+   - 逻辑磁盘（C：） \\Avg 队列长度： C 驱动器的磁盘传输请求的长度。 该值不应超过一小段时间的2。
+   - 内存（\*） \\Available Mb：系统的可用内存（以 mb 为单位）。
    - 处理器信息（\*） \\Processor Time：处理器执行非空闲线程所用时间的百分比。
    - 每个会话的用户输入延迟（\*） \\Max 输入延迟
 
@@ -237,9 +237,9 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 - 逻辑磁盘（\*） \|% 可用空间：
 
     - 显示逻辑磁盘上可用的总可用空间的百分比。
-    - 阈值：小于 20% 被标记为不正常。
+    - 阈值：小于20% 被标记为不正常。
 
-- 逻辑磁盘（C：） \\Avg。磁盘队列长度：
+- 逻辑磁盘（C：） \\Avg 队列长度：
 
     - 表示存储系统条件。
     - 阈值：大于5会被标记为不正常。
@@ -247,11 +247,11 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 - 内存（\*） \\Available Mb：
 
     - 系统的可用内存。
-    - 阈值：小于 500 mb 标记为不正常。
+    - 阈值：标记为不正常的小于 500 mb。
 
 - 处理器信息（\*） \\Processor Time：
 
-    - 阈值：大于 80% 将被标记为不正常。
+    - 阈值：大于80% 将被标记为不正常。
 
 - [每个会话的用户输入延迟（\*） @no__t 2Max 输入延迟](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)：
 
