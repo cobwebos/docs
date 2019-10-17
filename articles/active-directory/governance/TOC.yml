@@ -42,6 +42,8 @@
           items:
             - name: 委托给目录创建者
               href: entitlement-management-delegate-catalog.md
+            - name: 管控外部用户的访问权限
+              href: entitlement-management-external-users.md
             - name: 查看报表和日志
               href: entitlement-management-reports.md
             - name: 故障排除
@@ -56,7 +58,19 @@
           items:
             - name: 创建新的访问包
               href: entitlement-management-access-package-create.md
-            - name: 编辑访问包
+            - name: 共享访问包链接
+              href: entitlement-management-access-package-settings.md
+            - name: 更改资源角色
+              href: entitlement-management-access-package-resources.md
+            - name: 更改请求和审批设置
+              href: entitlement-management-access-package-request-policy.md
+            - name: 更改生命周期设置
+              href: entitlement-management-access-package-lifecycle-policy.md
+            - name: 查看和管理请求
+              href: entitlement-management-access-package-requests.md
+            - name: 查看、添加和删除分配
+              href: entitlement-management-access-package-assignments.md
+            - name: 隐藏或删除
               href: entitlement-management-access-package-edit.md
         - name: 审批者
           items:

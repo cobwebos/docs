@@ -1,5 +1,5 @@
 ---
-title: 针对 Azure Lighthouse 的建议安全做法
+title: 建议的安全做法
 description: 使用 Azure 委派资源管理时，请务必考虑安全性和访问控制。
 author: JnHs
 ms.service: lighthouse
@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 843b965e6ea74a7c11dc11459ff5d30ddbe5c987
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 08a54313885c7d38117c242f01c2780796f38a08
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810861"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286194"
 ---
 # <a name="recommended-security-practices"></a>建议的安全做法
 
@@ -32,7 +32,7 @@ ms.locfileid: "67810861"
 
 例如，建议使用如下结构：
 
-|组名称  |Type  |principalId  |角色定义  |角色定义 ID  |
+|组名称  |类型  |principalId  |角色定义  |角色定义 ID  |
 |---------|---------|---------|---------|---------|
 |架构师     |用户组         |\<principalId\>         |参与者         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |评估     |用户组         |\<principalId\>         |读取器         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |

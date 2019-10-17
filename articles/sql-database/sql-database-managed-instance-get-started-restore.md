@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 2aae0ce7bbf5c8804dcaab90fcb60a66dfe59cf0
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: ca0dcc850b2db513c8d85d43ad76bc75053c0d04
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744409"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514018"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>快速入门：将数据库还原到托管实例
 
@@ -40,7 +40,7 @@ ms.locfileid: "70744409"
 - 要求使用具有 `rw` 权限的 SAS 凭据保护的公共 IP 上具有 Azure Blob 存储帐户（例如 Standard_LRS V2）   。 当前不支持[通过防火墙保护的 Blob 存储的专用 IP](https://docs.microsoft.com/azure/storage/common/storage-network-security) 和 Azure Blob 存储服务终结点。
 
 > [!NOTE]
-> 有关使用 Azure Blob 存储与[共享访问签名 (SAS) 密钥](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)备份和还原 SQL Server 数据库的详细信息，请参阅[将 SQL Server 备份到 URL](sql-database-managed-instance-get-started-restore.md)。
+> 有关使用 Azure Blob 存储与[共享访问签名 (SAS) 密钥](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)备份和还原 SQL Server 数据库的详细信息，请参阅[将 SQL Server 备份到 URL](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017)。
 
 ## <a name="restore-the-database-from-a-backup-file"></a>从备份文件还原数据库
 

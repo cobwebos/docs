@@ -21,6 +21,8 @@
   items:
     - name: 常用条件访问策略
       href: concept-conditional-access-policy-common.md
+    - name: 安全默认值
+      href: concept-conditional-access-security-defaults.md
     - name: 条件访问策略组件
       href: concept-conditional-access-policies.md
     - name: 条件
@@ -76,16 +78,6 @@
       href: howto-conditional-access-session-lifetime.md
     - name: 迁移经典策略
       href: policy-migration.md
-    - name: 基线策略
-      items:
-        - name: 要求管理员进行 MFA
-          href: howto-baseline-protect-administrators.md
-        - name: 最终用户保护
-          href: howto-baseline-protect-end-users.md
-        - name: 阻止传统身份验证
-          href: howto-baseline-protect-legacy-auth.md
-        - name: 要求将 MFA 用于服务管理
-          href: howto-baseline-protect-azure.md
     - name: 采用条件访问
       href: howto-conditional-access-adoption-kit.md
     - name: 故障排除

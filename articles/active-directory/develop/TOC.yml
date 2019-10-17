@@ -345,6 +345,8 @@
               href: active-directory-how-applications-are-added.md
             - name: 重定向 URI/答复 URL 限制和局限
               href: reply-url.md
+            - name: 按支持的帐户类型列出的验证差异
+              href: supported-accounts-validation.md
             - name: 单租户和多租户应用
               href: single-and-multi-tenant-apps.md
         - name: 权限和许可

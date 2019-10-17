@@ -63,7 +63,7 @@
       href: concept-resilient-controls.md
 - name: 操作指南
   items:
-    - name: 自助密码重置
+    - name: 自助式密码重置
       items:
         - name: 部署自助密码重置
           href: howto-sspr-deployment.md
@@ -131,6 +131,8 @@
       href: howto-password-smart-lockout.md
     - name: 无密码
       items:
+        - name: 部署无密码
+          href: howto-authentication-passwordless-deployment.md
         - name: 无密码安全密钥
           href: howto-authentication-passwordless-security-key.md
         - name: 无密码的手机登录

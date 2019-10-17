@@ -217,7 +217,7 @@
                   href: app/asp-net-troubleshoot-no-data.md
             - name: 无代码监视
               items:
-                - name: Azure VM 和 Azure 虚拟机规模集
+                - name: Azure VM 和规模集
                   href: app/azure-vm-vmss-apps.md
                 - name: Azure 应用服务
                   displayname: 'App Service, web app, PaaS, Azure web app'
@@ -231,10 +231,10 @@
                 - name: Kubernetes 应用程序
                   displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
                   href: app/kubernetes.md
-                - name: 状态监视器
+                - name: 状态监视器（旧版）
                   displayname: 'IIS monitoring, on premises monitoring, on prem,'
                   href: app/monitor-performance-live-website-now.md
-                - name: 状态监视器 v2
+                - name: 本地服务器
                   items:
                     - name: 概述
                       displayname: 'IIS monitoring, on premises monitoring, on prem,'

@@ -3,15 +3,15 @@ title: 使用 Azure Resource Graph Explorer 运行第一个查询
 description: 本文逐步引导你在 Azure 门户中使用 Azure Resource Graph Explorer 运行第一个查询。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/29/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: d533d24f9bfe133955c0f503e2458c8fcb0bf1de
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981248"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387606"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入门：使用 Azure Resource Graph Explorer 运行第一个 Resource Graph 查询
 
@@ -27,19 +27,19 @@ ms.locfileid: "71981248"
 
 1. 在左侧窗格中，选择“所有服务”  。 搜索并选择 **Resource Graph Explorer**。
 
-1. 在窗口中的“查询 1”部分输入查询 `project name, type | limit 5`，然后选择“运行查询”。  
+1. 在窗口中的“查询 1”部分输入查询 `Resources | project name, type | limit 5`，然后选择“运行查询”。  
 
    > [!NOTE]
    > 由于此查询示例未提供排序修饰符（例如 `order by`），因此多次运行此查询可能会为每个请求生成一组不同的资源。
 
 1. 在“结果”选项卡中查看查询响应。  选择“消息”选项卡，以查看有关查询的详细信息，包括结果计数和查询持续时间。  出现的任何错误将显示在此选项卡下。
 
-1. 更新查询，以将 `order by` 条件指定为 **Name** 属性：`project name, type | limit 5 | order by name asc`。 然后选择“运行查询”。 
+1. 更新查询，以将 `order by` 条件指定为 **Name** 属性：`Resources | project name, type | limit 5 | order by name asc`。 然后选择“运行查询”。 
 
    > [!NOTE]
    > 与第一个查询一样，多次运行此查询可能会为每个请求生成一组不同的资源。 查询命令的顺序非常重要。 在本例中，`order by` 位于 `limit` 之后。 这将首先限制查询结果，然后对其进行排序。
 
-1. 将查询更新为先按 **Name** 属性应用 `order by`，然后对前五个结果应用 `limit`：`project name, type | order by name asc | limit 5`。 然后选择“运行查询”。 
+1. 将查询更新为先按 **Name** 属性应用 `order by`，然后对前五个结果应用 `limit`：`Resources | project name, type | order by name asc | limit 5`。 然后选择“运行查询”。 
 
 假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且符合预期的 -- 按 **Name** 属性排序，但仍限制为前五个结果。
 
@@ -54,7 +54,8 @@ ms.locfileid: "71981248"
 1. 在窗口中的“查询 1”部分输入以下查询，然后选择“运行查询”。  
 
    ```kusto
-   where type =~ 'Microsoft.Compute/virtualMachines'
+   Resources
+   | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 

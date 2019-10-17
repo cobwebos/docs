@@ -2,18 +2,17 @@
 title: 快速入门 - 使用 Azure 门户创建 Analysis Services 服务器 | Microsoft Docs
 description: 了解如何在 Azure 中创建 Analysis Services 服务器实例。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aae5b87e49b6d64e4c9ee854b65821d65969e66b
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: e6973ee311f1d3f5ba19714695f67bd321d953b7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536813"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295036"
 ---
 # <a name="quickstart-create-a-server---portal"></a>快速入门：创建服务器 - 门户
 

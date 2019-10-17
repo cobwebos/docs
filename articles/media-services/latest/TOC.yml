@@ -285,6 +285,8 @@
       items:
         - name: 发布资产 - CLI
           href: cli-publish-asset.md
+        - name: 表示描述性音频
+          href: signal-descriptive-audio-howto.md
 - name: 引用
   items:
     - name: OpenAPI 规范 (Swagger)

@@ -445,18 +445,20 @@
           items:
             - name: OpenShift 概述
               href: openshift-get-started.md
-            - name: OpenShift 先决条件
-              href: openshift-prerequisites.md
-            - name: OpenShift 容器平台
-              href: openshift-container-platform.md
-            - name: OpenShift 市场自托管
-              href: openshift-marketplace-self-managed.md
+            - name: OpenShift 容器平台 4.x
+              href: openshift-container-platform-4x.md
+            - name: OpenShift 容器平台 3.11 先决条件
+              href: openshift-container-platform-3x-prerequisites.md
+            - name: OpenShift 容器平台 3.11
+              href: openshift-container-platform-3x.md
+            - name: OpenShift 容器平台 3.11 市场自托管
+              href: openshift-container-platform-3x-marketplace-self-managed.md
             - name: Azure Stack
               href: openshift-azure-stack.md
-            - name: OpenShift 部署后任务
-              href: openshift-post-deployment.md
-            - name: 对部署进行故障排除
-              href: openshift-troubleshooting.md
+            - name: OpenShift 容器平台 3.11 部署后任务
+              href: openshift-container-platform-3x-post-deployment.md
+            - name: 排查 OpenShift 容器平台 3.11 部署问题
+              href: openshift-container-platform-3x-troubleshooting.md
         - name: Azure 上的 SAP
           href: ../workloads/sap/get-started.md
         - name: Oracle

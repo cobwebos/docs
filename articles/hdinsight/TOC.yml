@@ -595,6 +595,8 @@
               href: ./hbase/apache-hbase-rest-sdk.md
             - name: 开发 Java 应用程序
               href: ./hbase/apache-hbase-build-java-maven-linux.md
+            - name: 将 Apache Phoenix 与 Apache Zeppelin 配合使用
+              href: ./hbase/apache-hbase-phoenix-zeppelin.md
             - name: HDInsight 中的 Apache Phoenix
               href: ./hdinsight-phoenix-in-hdinsight.md
             - name: 使用 Apache Phoenix Query Server REST SDK
