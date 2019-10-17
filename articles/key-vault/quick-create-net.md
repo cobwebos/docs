@@ -132,7 +132,7 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 使用适用于 .NET 的 Azure Key Vault 客户端库可以管理密钥和相关的资产（例如证书和机密）。 以下代码示例演示如何设置机密和检索机密。
 
-https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet 中提供了整个控制台应用。
+[https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet ) 中提供了整个控制台应用。
 
 ## <a name="code-examples"></a>代码示例
 
