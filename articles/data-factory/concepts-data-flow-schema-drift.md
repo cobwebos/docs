@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 5eff92352251febca1d4e7033618372dc929d987
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1d6560613294584c77f002e2380065d64ea143f7
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029411"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387973"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>映射数据流中的架构偏差
 
@@ -62,11 +62,11 @@ Azure 数据工厂以本机方式支持灵活的架构，这些架构从执行�
 
 若要显式引用偏移列，可以通过数据预览快速操作快速生成这些列的映射。 启用[调试模式](concepts-data-flow-debug-mode.md)后，请进入 "数据预览" 选项卡，然后单击 "**刷新**" 以获取数据预览。 如果数据工厂检测到偏移列存在，则可以单击**Map 偏移**并生成一个派生列，使您可以在下游的架构视图中引用所有偏移列。
 
-![Map 偏移](media/data-flow/mapdrifted1.png "map 偏移")
+![地图偏移](media/data-flow/mapdrifted1.png "地图偏移")
 
 在生成的派生列转换中，每个偏移列都映射到其检测到的名称和数据类型。 在上面的数据预览中，将 "movieId" 列检测为一个整数。 单击**Map 偏移**后，将在派生列中将 movieId 定义为 `toInteger(byName('movieId'))`，并将其包含在下游转换的架构视图中。
 
-![Map 偏移](media/data-flow/mapdrifted2.png "map 偏移")
+![地图偏移](media/data-flow/mapdrifted2.png "地图偏移")
 
 ## <a name="next-steps"></a>后续步骤
 在[数据流表达式语言](data-flow-expression-functions.md)中，你将找到用于列模式和架构偏移的其他功能，包括 "byName" 和 "byPosition"。

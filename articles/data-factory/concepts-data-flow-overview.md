@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 8d0ad794caee8a06c8d403a981037d6560fb3f43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 37fec388acda78f3d13c8e85ddddf780ad099d69
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030123"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387999"
 ---
-# <a name="what-are-mapping-data-flows"></a>映射数据流是什么？
+# <a name="what-are-mapping-data-flows"></a>什么是映射数据流？
 
 映射数据流是在 Azure 数据工厂中以可视方式设计的数据转换。 数据流允许数据工程师开发图形数据转换逻辑，而无需编写代码。 生成的数据流在 Azure 数据工厂管道中使用扩展的 Spark 群集作为活动执行。 数据流活动可以通过现有的数据工厂计划、控制、流和监视功能来操作化。
 
@@ -24,7 +24,7 @@ ms.locfileid: "72030123"
 
 若要创建数据流，请单击 "工厂资源" 下的加号。 
 
-![新建 数据流](media/data-flow/newdataflow2.png "新建")数据流
+![新建数据流](media/data-flow/newdataflow2.png "新建数据流")
 
 这会将你转到可在其中创建转换逻辑的数据流画布。 单击 "添加源" 框，开始配置源转换。 有关详细信息，请参阅[源转换](data-flow-source.md)。
 
@@ -32,13 +32,13 @@ ms.locfileid: "72030123"
 
 数据流画布分为三部分：顶栏、图形和配置面板。 
 
-![Canvas](media/data-flow/canvas1.png "Canvas")
+![画布](media/data-flow/canvas1.png "画布")
 
 ### <a name="graph"></a>图形
 
 关系图显示转换流。 它显示源数据流入一个或多个接收器时的沿袭。 若要添加新源，请单击 "添加源" 框。 若要添加新的转换，请单击现有转换右下方的加号。
 
-![Canvas](media/data-flow/canvas2.png "Canvas")
+![画布](media/data-flow/canvas2.png "画布")
 
 ### <a name="configuration-panel"></a>配置面板
 
@@ -84,7 +84,7 @@ Azure 数据工厂将生成列的哈希来生成统一的分区，使包含类�
 
 生成一个表达式，该表达式为分区数据列中的值提供固定范围。 在使用此选项之前，应充分了解数据，以避免分区歪斜。 为表达式输入的值将用作分区函数的一部分。 可以设置物理分区数目。
 
-##### <a name="key"></a>Key
+##### <a name="key"></a>密钥
 
 如果你已充分了解数据的基数，则键分区可能是不错的分区策略。 键分区将为列中的每个唯一值创建分区。 不能设置分区数，因为数字将基于数据中的唯一值。
 
@@ -92,7 +92,7 @@ Azure 数据工厂将生成列的哈希来生成统一的分区，使包含类�
 
 "_检查_" 选项卡可用于查看要转换的数据流的元数据。 您可以查看列计数、更改的列、添加的列、数据类型、列排序和列引用。 检查是元数据的只读视图。 不需要启用调试模式即可在 "检查" 窗格中查看元数据。
 
-![检查](media/data-flow/inspect1.png "检查")
+![一下](media/data-flow/inspect1.png "一下")
 
 通过转换更改数据的形状时，会看到元数据更改通过 "检查" 窗格流动。 如果源转换中没有定义的架构，则元数据将不会显示在 "检查" 窗格中。 在“架构偏差”方案中，缺少元数据是很常见的。
 
@@ -108,7 +108,7 @@ Azure 数据工厂将生成列的哈希来生成统一的分区，使包含类�
 
 如果隐藏了图形，可以通过 "**上一**步" 和 "**下一步**" 按钮在转换节点中导航。
 
-![导航](media/data-flow/showhide.png "导航")
+![引导](media/data-flow/showhide.png "引导")
 
 ## <a name="next-steps"></a>后续步骤
 

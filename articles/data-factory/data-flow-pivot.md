@@ -1,48 +1,48 @@
 ---
-title: Azure 数据工厂映射数据流“透视”转换
+title: Azure 数据工厂映射数据流透视转换
 description: 使用 Azure 数据工厂映射数据流透视转换从行向列透视数据
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 1412f7d822d83a8712d27dd4e86311567d6ac714
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: e59f0623b898fedada63e51fabbaf88d8b17f59d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029310"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387799"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Azure 数据工厂透视转换
 
 
 在 ADF 数据流中使用“透视”作为聚合，其中一个或多个分组列将其不同的行值转换到各个列中。 实际上，你可以将行值透视到新列中（将数据转换为元数据）。
 
-![透视选项](media/data-flow/pivot1.png "透视 1")
+![透视选项](media/data-flow/pivot1.png "数据透视1")
 
 ## <a name="group-by"></a>分组依据
 
-![透视选项](media/data-flow/pivot2.png "透视 2")
+![透视选项](media/data-flow/pivot2.png "数据透视2")
 
 首先，为你的透视聚合设置要用作分组依据的列。 此处，你可以设置 1 个以上的列，列的列表旁边会显示一个 + 号。
 
 ## <a name="pivot-key"></a>透视键
 
-![透视选项](media/data-flow/pivot3.png "透视 3")
+![透视选项](media/data-flow/pivot3.png "数据透视3")
 
 透视键是 ADF 从行透视到列的列。 默认情况下，此字段的数据集中的每个唯一值都将透视到列。 但是，你也可以选择输入此数据集中要透视到列值的值。 此列将确定将创建的新列。
 
 ## <a name="pivoted-columns"></a>透视列
 
-![透视选项](media/data-flow/pivot4.png "透视 4")
+![透视选项](media/data-flow/pivot4.png "数据透视4")
 
 最后，你将选择要用于透视的值的聚合以及如何在转换的新输出投影中显示列。
 
 （可选）你可以设置一个命名模式，在其中包含要在行值中的每个新列名称中添加的前缀、中间名和后缀。
 
-例如，按“区域”透视“销售”将会得到每个销售值的新列值，例如“25”、“50”、“1000”，等等。但是，如果将前缀值设置为 "Sales-"，则每个列值会将 "Sales-" 添加到值的开头。
+例如，按 "区域" 透视 "销售额" 将导致每个销售值的新列值，即 "25"、"50"、"1000" 等。但是，如果将前缀值设置为 "Sales-"，则每个列值会将 "Sales-" 添加到值的开头。
 
-![透视选项](media/data-flow/pivot5.png "透视 5")
+![透视选项](media/data-flow/pivot5.png "数据透视5")
 
 将列排列设置为“正常”，将所有透视列与其聚合值组合在一起。 将列排列设置为“横向”将在列和值之间交替。
 

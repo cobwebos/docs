@@ -1,6 +1,6 @@
 ---
-title: Azure 状态监视器 v2 API 参考：获取配置 |Microsoft Docs
-description: 状态监视器 v2 API 参考。 Get-ApplicationInsightsMonitoringConfig. 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
+title: Azure 应用程序 Insights 代理 API 参考：获取配置 |Microsoft Docs
+description: Application Insights 代理 API 参考。 ApplicationInsightsMonitoringConfig。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 1da24a93a671b388c44d96711bc2fe007f33d197
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: e0b389dfb27443b9b26b8ed650399c641c55eb86
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033141"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388270"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringconfig"></a>状态监视器 v2 API：ApplicationInsightsMonitoringConfig
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringconfig"></a>Application Insights 代理 API： ApplicationInsightsMonitoringConfig
 
-本文介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
+本文介绍了一个 cmdlet，它是[ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成员。
 
 ## <a name="description"></a>描述
 
@@ -36,11 +36,11 @@ ms.locfileid: "71033141"
 PS C:\> Get-ApplicationInsightsMonitoringConfig
 ```
 
-## <a name="parameters"></a>Parameters
+## <a name="parameters"></a>parameters
 
 不需要参数。
 
-## <a name="output"></a>Output
+## <a name="output"></a>输出
 
 
 #### <a name="example-output-from-reading-the-config-file"></a>读取配置文件的示例输出
@@ -56,16 +56,16 @@ Filters:
 ## <a name="next-steps"></a>后续步骤
 
   查看遥测：
- - [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况。
+ - [探索指标](../../azure-monitor/app/metrics-explorer.md)来监视性能和使用情况。
 - [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
-- 使用[分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询。
+- 将[分析](../../azure-monitor/app/analytics.md)用于更高级的查询。
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
  
  添加更多遥测：
- - [创建 Web 测试](monitor-web-app-availability.md)，以确保站点保持活动状态。
-- [添加 Web 客户端遥测](../../azure-monitor/app/javascript.md)，以查看网页代码中的异常并启用跟踪调用。
-- [将 Application Insights SDK 添加到代码](../../azure-monitor/app/asp-net.md)，以便插入跟踪和日志调用。
+ - [创建 web 测试](monitor-web-app-availability.md)，确保网站保持活动。
+- [添加 web 客户端遥测](../../azure-monitor/app/javascript.md)，查看网页代码中的异常并启用跟踪调用。
+- [将 APPLICATION INSIGHTS SDK 添加到你的代码](../../azure-monitor/app/asp-net.md)中，以便可以插入跟踪和日志调用。
  
- 使用状态监视器 v2 执行更多操作：
- - 使用我们的指南对状态监视器 v2 进行[故障排除](status-monitor-v2-troubleshoot.md)。
- - 使用 [Set config](status-monitor-v2-api-set-config.md) cmdlet 更改此配置。
+ Application Insights 代理中执行更多操作：
+ - 使用本指南来对 Application Insights 代理[进行故障排除](status-monitor-v2-troubleshoot.md)。
+ - 使用[Set config](status-monitor-v2-api-set-config.md) cmdlet 对配置进行更改。

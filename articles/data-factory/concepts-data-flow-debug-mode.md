@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 925e52f9f62860d8cd0951b9e72af09cbb7800fc
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c65ed14abb86b3b434e46fbe857487b06e217aad
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027816"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387369"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>映射数据流调试模式
 
@@ -26,7 +26,7 @@ Azure 数据工厂映射数据流的调试模式允许您在生成和调试数�
 
 打开滑块后，系统将提示您选择要使用的集成运行时配置。 如果选择了 "AutoResolveIntegrationRuntime"，则将启动具有8个常规计算的群集，其生存时间为60分钟。 有关数据流集成运行时的详细信息，请参阅数据流[性能](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime)。
 
-![调试 ir 选择](media/data-flow/debugbutton2.png "调试 ir 选择")
+![调试 IR 选择](media/data-flow/debugbutton2.png "调试 IR 选择")
 
 当调试模式为 on 时，将使用活动的 Spark 群集以交互方式生成数据流。 在 Azure 数据工厂中关闭调试后，会话将关闭。 你应该了解 Azure Databricks 在打开调试会话期间产生的每小时费用。
 
@@ -50,7 +50,7 @@ Azure 数据工厂映射数据流的调试模式允许您在生成和调试数�
 
 ## <a name="data-preview"></a>数据预览
 
-打开调试后，“数据预览”选项卡将在底部面板上亮起。 如果未打开调试模式，数据流将仅在“检查”选项卡中显示传入和传出每个转换的当前元数据。数据预览只会查询您在调试设置中设置为限制的行数。 单击 "**刷新**" 提取数据预览。
+打开调试后，“数据预览”选项卡将在底部面板上亮起。 如果在上没有调试模式，数据流将仅在 "检查" 选项卡中显示和转换每个转换的当前元数据。数据预览只会查询您在调试设置中设置为限制的行数。 单击 "**刷新**" 提取数据预览。
 
 ![数据预览](media/data-flow/datapreview.png "数据预览")
 
@@ -84,7 +84,7 @@ Azure 数据工厂映射数据流的调试模式允许您在生成和调试数�
 
 在 "数据预览" 选项卡中选择一个列，然后在 "数据预览" 工具栏中单击 "**统计信息**"，将在数据网格最右侧弹出一个图表，其中包含有关每个字段的详细统计信息。 Azure 数据工厂将根据要显示的图表类型的数据采样做出决定。 高基数字段将默认为 NULL/NOT NULL 图表，而具有较低基数的分类和数值数据将显示显示数据值频率的条形图。 你还将看到字符串字段的 max/len 长度、数字字段中的最小/最大值、标准 dev、百分位数、计数和平均值。
 
-![列统计]信息(media/data-flow/stats.png "列统计信息")
+![列统计信息](media/data-flow/stats.png "列统计信息")
 
 ## <a name="next-steps"></a>后续步骤
 

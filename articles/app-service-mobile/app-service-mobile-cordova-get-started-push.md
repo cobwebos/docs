@@ -14,20 +14,21 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 8fe8485926e2c10b7fe58836196132f2881699a4
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7a7e64b32a084075fe96cbd4ab7a0d28fc0f8e19
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025715"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388869"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>将推送通知添加到 Apache Cordova 应用
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
-> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况，并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务，以便在云中持久保存和同步应用程序数据。
+>
+> 如果希望将云服务集成到移动应用程序中，请立即注册[App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 
@@ -42,7 +43,7 @@ ms.locfileid: "72025715"
 要完成本教程，需要：
 
 * 使用[Visual Studio 社区 2015][2]或更高版本的电脑
-* [用于 Apache Cordova 的 Visual Studio 工具][4]
+* [Visual Studio Tools for Apache Cordova][4]
 * [有效的 Azure 帐户][3]
 * 已完成的[Apache Cordova 快速入门][5]项目
 * Android包含已验证电子邮件地址的[Google 帐户][6]
@@ -80,7 +81,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 
 **从命令提示符：**
 
-运行下面的命令：
+运行以下命令：
 
     cordova plugin add phonegap-plugin-push
 
@@ -105,7 +106,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 
 #### <a name="install-the-device-plugin"></a>安装设备插件
 
-按照用于安装推送插件的相同步骤进行操作。 从“核心插件”列表添加“设备”插件。 （选择“插件” > “核心”可找到它。）需使用此插件获取平台名称。
+按照用于安装推送插件的相同步骤进行操作。 从“核心插件”列表添加“设备”插件。 （若要找到它，请选择**插件** > **核心**。）需要用此插件获取平台名称。
 
 #### <a name="register-your-device-when-the-application-starts"></a>在应用程序启动时注册设备 
 
@@ -240,7 +241,7 @@ pushRegistration = PushNotification.init({
 
 [phonegap-plugin-push 安装文档][19]中列出了当前需要的库。
 
-#### <a name="test-push-notifications-in-the-app-on-android"></a>在 Android 上测试应用中的推送通知
+#### <a name="test-push-notifications-in-the-app-on-android"></a>在 Android 应用中测试推送通知
 
 现在，可以通过运行该应用并将项插入 TodoItem 表中测试推送通知。 只要使用同一后端，就可以在同一设备或另一台设备中进行测试。 通过下面其中一种方式在 Android 平台上测试 Cordova 应用：
 
@@ -379,7 +380,7 @@ pushRegistration = PushNotification.init({
 
 2. 在应用中，为新 todoitem 键入一个名称，并选择加号 **(+)** 图标添加该项。
 
-确认在添加该项目时收到了通知。
+确认在添加项时收到了通知。
 
 ## <a name="next-steps"></a>后续步骤
 

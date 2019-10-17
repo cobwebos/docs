@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a160f78f69ed559c576147e9758c837d5ae9b77e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235337"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429978"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
@@ -51,7 +51,7 @@ ms.locfileid: "66235337"
 
 ## <a name="use-the-development-support-tools"></a>使用开发支持工具
 
-| Tool  | 描述  |
+| 工具  | 描述  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | 粘贴 ID 或访问令牌来解码声明名称和值。 |
 | [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)| 用于针对 Microsoft Graph API 发出请求和查看响应的工具。 |
@@ -62,7 +62,7 @@ Stack Overflow 是开发相关问题的首选渠道。 在这里，开发人员�
 
 如果通过搜索未找到你的问题的解答，请在 Stack Overflow 中提交新问题。 在提问时请使用以下标记之一，以便社区更快速地识别问题和解答问题：
 
-|组件/区域  | 标记 |
+|组件/区域  | Tags |
 |---------|---------|
 | ADAL 库 | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL 库     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
@@ -81,10 +81,10 @@ Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代�
 
 如果发现了与库相关的 Bug 或问题，请在 GitHub 存储库中提出问题。 由于我们的库是开源的，因此也可提交拉取请求。
 
-库和其 GitHub 存储库的列表，请参阅：
+有关库及其 GitHub 存储库的列表，请参阅以下内容：
 
 * [ADAL](active-directory-authentication-libraries.md) 库和 GitHub 存储库
-* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md)， [MSAL。Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)，并[MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc)库和 GitHub 存储库
+* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md)， [MSAL。Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)和[MSAL _c](https://github.com/AzureAD/microsoft-authentication-library-for-objc)库和 GitHub 存储库
 
 ## <a name="open-a-support-request"></a>提出支持请求
 
@@ -95,9 +95,3 @@ Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代�
 * 如果你不是 Azure 客户，也可以通过[我们的商业支持](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial)向 Microsoft 提出支持请求。
 
 还可以尝试通过[虚拟代理](https://support.microsoft.com/contactus/?ws=support)获取支持或提出问题。
-
-### <a name="free-chat-support-for-a-limited-time"></a>获取限时免费聊天支持
-
-Microsoft 合作伙伴还可以使用限时免费聊天支持。 如果你的公司不是 Microsoft 合作伙伴，可在[此处](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx)免费将其登记并获取其他权益。
-
-登记公司后，可在[此处](https://aka.ms/devchat)发起聊天请求。

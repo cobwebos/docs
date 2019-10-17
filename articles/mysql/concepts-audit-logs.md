@@ -1,53 +1,59 @@
 ---
-title: 审核日志的 Azure Database for MySQL
-description: 介绍 for MySQL，并启用日志记录级别的可用参数的 Azure 数据库中可用的审核日志。
+title: Azure Database for MySQL 的审核日志
+description: 介绍 Azure Database for MySQL 中可用的审核日志，以及用于启用日志记录级别的可用参数。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/26/2019
-ms.openlocfilehash: 86750cea5e7f0d4726f3e0e9a03795ef2a602d8b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 42881fcb12f29ec14bbdc0ec4942b2eef17c7312
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443845"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434401"
 ---
-# <a name="audit-logs-in-azure-database-for-mysql"></a>中的审核日志 Azure Database for MySQL
+# <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的审核日志
 
-在 Azure Database for MySQL，审核日志可供用户。 审核日志可用于跟踪数据库级别的活动，通常用于符合性。
+在 Azure Database for MySQL 中，审核日志可供用户使用。 审核日志可用于跟踪数据库级活动，通常用于相容性。
 
 > [!IMPORTANT]
-> 审核日志功能当前处于预览状态。
+> 审核日志功能目前处于预览阶段。
 
 ## <a name="configure-audit-logging"></a>配置审核日志记录
 
-默认情况下禁用审核日志。 若要启用它，请设置`audit_log_enabled`为 ON。
+默认情况下，审核日志处于禁用状态。 若要启用它，请将 `audit_log_enabled` 设置为 ON。
 
 可以调整的其他参数包括：
 
-- `audit_log_events`： 控制要记录的事件。 请参阅下表了解特定的审核事件。
-- `audit_log_exclude_users`：要从日志记录中排除的 MySQL 用户。 允许最多四个用户。 参数的最大长度为 256 个字符。
+- @no__t：控制要记录的事件。 有关特定审核事件，请参阅下表。
+- `audit_log_include_users`：要包含在日志记录中的 MySQL 用户。 此参数的默认值为空，这将包括所有用户进行日志记录。 此优先级高于 `audit_log_exclude_users`。 参数的最大长度为512个字符。
+> [!Note]
+> `audit_log_include_users` 的优先级高于 `audit_log_exclude_users` （例如，如果 audit_log_include_users = `demouser` 和 audit_log_exclude_users = `demouser`），则它将审核日志，因为 @no__t 的优先级较高。
+- `audit_log_exclude_users`：要从日志记录中排除的 MySQL 用户。 参数的最大长度为512个字符。
+
+> [!Note]
+> 对于 `sql_text`，如果日志超过2048个字符，则会截断日志。
 
 | **事件** | **说明** |
 |---|---|
-| `CONNECTION` | -连接启动 （成功或失败） <br> 用户重新进行身份验证使用不同的用户密码在会话过程中 <br> 的终止连接 |
-| `DML_SELECT`| SELECT 查询 |
+| `CONNECTION` | -连接启动（成功或不成功） <br> -会话过程中用不同用户/密码进行的用户重新进行身份验证 <br> -连接终止 |
+| `DML_SELECT`| 选择查询 |
 | `DML_NONSELECT` | 插入/删除/更新查询 |
 | `DML` | DML = DML_SELECT + DML_NONSELECT |
-| `DDL` | 与"删除数据库"类似的查询 |
-| `DCL` | 与类似的查询"授予权限" |
-| `ADMIN` | 查询，例如"显示状态"等 |
-| `GENERAL` | 所有在 DML_SELECT、 DML_NONSELECT、 DML、 DDL、 DCL 和管理员 |
-| `TABLE_ACCESS` | -仅适用于 MySQL 5.7 <br> -表读取语句，如 SELECT 或 INSERT INTO...SELECT <br> 表的 delete 语句，如 DELETE 或 TRUNCATE TABLE <br> 表的 insert 语句，如插入或替换 <br> 表的 update 语句，如更新 |
+| `DDL` | 类似于 "删除数据库" 的查询 |
+| `DCL` | 类似于 "授予权限" 的查询 |
+| `ADMIN` | 查询，如 "显示状态" |
+| `GENERAL` | 全部在 DML_SELECT、DML_NONSELECT、DML、DDL、DCL 和 ADMIN 中 |
+| `TABLE_ACCESS` | -仅适用于 MySQL 5。7 <br> -表读取语句，如 SELECT 或 INSERT INTO .。。单击 <br> -Table delete 语句，如 DELETE 或 TRUNCATE TABLE <br> -表 insert 语句，如 INSERT 或 REPLACE <br> -Table update 语句，如 UPDATE |
 
 ## <a name="access-audit-logs"></a>访问审核日志
 
-与 Azure Monitor 诊断日志集成在审核日志。 在 MySQL 服务器上启用审核日志后，您可以将它们发出到 Azure Monitor 日志、 事件中心或 Azure 存储。 若要了解有关如何在 Azure 门户中启用诊断日志的详细信息，请参阅[审核日志的门户项目](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs)。
+审核日志与 Azure Monitor 诊断日志集成在一起。 在 MySQL 服务器上启用审核日志后，可以将它们发出到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解如何在 Azure 门户中启用诊断日志，请参阅[审核日志门户](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs)。
 
 ## <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
-以下各节介绍什么是通过 MySQL 审核日志的事件类型的输出。 包括的字段以及它们的出现顺序可能有所不同，具体取决于输出方法。
+以下部分介绍了基于事件类型的 MySQL 审核日志的输出内容。 包括的字段以及它们的出现顺序可能有所不同，具体取决于输出方法。
 
 ### <a name="connection"></a>连接
 
@@ -67,17 +73,17 @@ ms.locfileid: "67443845"
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | 服务器的名称 |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT``DISCONNECT`， `CHANGE USER` （仅适用于 MySQL 5.7） |
-| `connection_id_d` | MySQL 由生成的唯一连接 ID |
+| `event_subclass_s` | `CONNECT`，`DISCONNECT`，`CHANGE USER` （仅适用于 MySQL 5.7） |
+| `connection_id_d` | MySQL 生成的唯一连接 ID |
 | `host_s` | 空白 |
-| `ip_s` | 连接到 MySQL 的客户端 IP 地址 |
+| `ip_s` | 连接到 MySQL 的客户端的 IP 地址 |
 | `user_s` | 执行查询的用户的名称 |
-| `db_s` | 连接到数据库的名称 |
+| `db_s` | 连接到的数据库的名称 |
 | `\_ResourceId` | 资源 URI |
 
-### <a name="general"></a>常规
+### <a name="general"></a>一般信息
 
-下面的架构适用于常规、 DML_SELECT、 DML_NONSELECT、 DML、 DDL、 DCL 和管理事件类型。
+下面的架构适用于 GENERAL、DML_SELECT、DML_NONSELECT、DML、DDL、DCL 和 ADMIN 事件类型。
 
 | **属性** | **说明** |
 |---|---|
@@ -95,17 +101,17 @@ ms.locfileid: "67443845"
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | 服务器的名称 |
 | `event_class_s` | `general_log` |
-| `event_subclass_s` | `LOG``ERROR`， `RESULT` （仅适用于 MySQL 5.6） |
-| `event_time` | 查询中的 UNIX 时间戳开始秒 |
-| `error_code_d` | 如果查询失败，错误代码。 `0` 意味着没有错误 |
-| `thread_id_d` | 执行查询的线程 ID |
+| `event_subclass_s` | `LOG`，`ERROR`，`RESULT` （仅适用于 MySQL 5.6） |
+| `event_time` | 查询开始时间（UTC 时间戳） |
+| `error_code_d` | 如果查询失败，则为错误代码。 `0` 表示无错误 |
+| `thread_id_d` | 执行查询的线程的 ID |
 | `host_s` | 空白 |
-| `ip_s` | 连接到 MySQL 的客户端 IP 地址 |
+| `ip_s` | 连接到 MySQL 的客户端的 IP 地址 |
 | `user_s` | 执行查询的用户的名称 |
 | `sql_text_s` | 完整的查询文本 |
 | `\_ResourceId` | 资源 URI |
 
-### <a name="table-access"></a>表访问权限
+### <a name="table-access"></a>表访问
 
 | **属性** | **说明** |
 |---|---|
@@ -123,9 +129,9 @@ ms.locfileid: "67443845"
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | 服务器的名称 |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`、`INSERT`、`UPDATE` 或 `DELETE` |
-| `connection_id_d` | MySQL 由生成的唯一连接 ID |
-| `db_s` | 访问数据库的名称 |
+| `event_subclass_s` | `READ`，`INSERT`，`UPDATE` 或 `DELETE` |
+| `connection_id_d` | MySQL 生成的唯一连接 ID |
+| `db_s` | 访问的数据库的名称 |
 | `table_s` | 访问的表的名称 |
 | `sql_text_s` | 完整的查询文本 |
 | `\_ResourceId` | 资源 URI |

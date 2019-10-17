@@ -2,17 +2,17 @@
 title: include 文件
 description: include 文件
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 05/31/2018
-ms.author: wgries
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 33dff710d83bd12a8db343a89c6e4576d1397ba7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: be3ce42ccdb9bedd02b8dead2426ac629fa12ef2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173022"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391567"
 ---
-注意：删除服务器终结点不同于重启服务器！ 在绝大多数情况下，删除或重新创建服务器终结点不是适合修复同步、云分层或 Azure 文件同步其他方面问题的解决方案。删除服务器终结点是一种破坏性操作。对于存在于服务器终结点命名空间之外的分层文件（有关更多信息，请参阅[为什么分层文件存在于服务器终结点命名空间之外](../articles/storage/files/storage-files-faq.md#afs-tiered-files-out-of-endpoint)），或者对于位于服务器终结点命名空间之内的分层文件的不可访问文件，该操作可能导致数据丢失。 重新创建服务器终结点后，这些问题并不会得到解决。 即使从未启用过云分层，分层文件也可能存在于服务器终结点命名空间中。 因此，不建议删除服务器终结点，除非想对特定文件夹停用 Azure 文件同步，或者 Microsoft 工程师明确指示你采取该操作。 有关删除服务器终结点的详细信息，请参阅[删除服务器终结点](../articles/storage/files/storage-sync-files-server-endpoint.md#remove-a-server-endpoint)。    
+否：删除服务器终结点与重新启动服务器不一样！ 删除和重新创建服务器终结点几乎不是解决同步、云分层或 Azure 文件同步的其他方面问题的合适解决方案。删除服务器终结点是一个破坏性操作。 当分层文件存在于服务器终结点命名空间之外时，它可能会导致数据丢失。 有关详细信息，请参阅[为什么在服务器终结点命名空间之外存在分层文件](../articles/storage/files/storage-files-faq.md#afs-tiered-files-out-of-endpoint)。 或者，它可能会导致服务器终结点命名空间中存在分层文件的无法访问的文件。 重新创建服务器终结点时，不会解决这些问题。 即使从未启用过云分层，分层文件也可能存在于服务器终结点命名空间中。 这就是为什么建议你不要删除服务器终结点，除非你想要停止将 Azure 文件同步与此特定文件夹一起使用，或由 Microsoft 工程师明确指示您这样做。 有关删除服务器终结点的详细信息，请参阅[删除服务器终结点](../articles/storage/files/storage-sync-files-server-endpoint.md#remove-a-server-endpoint)。    

@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ac210a03f8b1a0a5f7fff07cbc68b4cd6bc98632
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 40fb44857126c3562e01585c3131afec87f01e42
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016348"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430059"
 ---
-# <a name="using-azure-powershell-with-azure-storage"></a>对 Azure 存储 使用 Azure PowerShell
+# <a name="using-azure-powershell-with-azure-storage"></a>将 Azure PowerShell 与 Azure 存储器一起使用
 
 Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 针对 Azure 存储，将这些 cmdlet 划分为两个类别 -- 控制平面和数据平面。 控制平面 cmdlet 用于管理存储帐户，即创建存储帐户、设置属性、删除存储帐户、轮换访问密钥等。 数据平面 cmdlet 用于管理存储帐户中存储的数据。 例如，上传 blob、创建文件共享以及将消息添加到队列。
 
-本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 学习如何：
+本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 你将学习如何：
 
 > [!div class="checklist"]
 > * 列出存储器帐户
@@ -36,13 +36,13 @@ Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure �
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本演练需要 Azure PowerShell 模块 Az 版本 0.7 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
+本演练需要 Azure PowerShell 模块 Az 版本 0.7 或更高版本。 可以运行 `Get-Module -ListAvailable Az` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
 对于本演练，可以将命令键入到一个常规的 PowerShell 窗口中，也可以使用 [Windows PowerShell 集成脚本环境 (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) 并将命令键入到编辑器中，然后在浏览示例时测试一个或多个命令。 可以突出显示想要执行的行，并单击“运行所选项”来仅运行这些命令。
 
 有关存储帐户的详细信息，请参阅[存储简介](storage-introduction.md)和[关于 Azure 存储帐户](storage-create-storage-account.md)。
 
-## <a name="sign-in-to-azure"></a>登录  Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 运行 `Connect-AzAccount` 命令以登录 Azure 订阅，并按照屏幕上的说明操作。
 
@@ -131,7 +131,7 @@ SKU 名称指示用于存储帐户的复制类型，如 LRS（本地冗余存储
 
 * 分配给存储帐户的标记。 标记通常用于分类资源以进行计费。
 
-* SKU 是存储帐户的复制设置，例如 LRS（对于本地冗余存储）。 例如，可能会从标准\_LRS 更改为标准\_GRS 或标准\_RAGRS。 请注意, 不能将\_标准的 ZRS\_、standard GZRS\_、standard RAGZRS 或\_Premium LRS 更改为其他 sku, 或将其他 sku 更改为这些 sku。
+* SKU 是存储帐户的复制设置，例如 LRS（对于本地冗余存储）。 例如，可能会从标准\_LRS 更改为标准\_GRS 或标准\_RAGRS。 请注意，不能将标准 @ no__t-0ZRS、Standard @ no__t-1GZRS、Standard @ no__t-2RAGZRS 或 Premium @ no__t-3LRS 更改为其他 Sku，或将其他 Sku 更改为这些 Sku。
 
 * Blob 存储帐户的访问层。 将访问层的值设置为“热”或“冷”，并允许用户通过选择符合存储帐户使用方式的访问层来最大限度地降低成本。 有关详细信息，请参阅[热、冷存储层和存档存储层](../blobs/storage-blob-storage-tiers.md)。
 
@@ -199,7 +199,7 @@ Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccou
 > 可以使用 PowerShell 启用分钟分析。 此功能在门户中不可用。
 >
 
-* 若要了解如何使用 PowerShell 启用和查看存储指标数据，请参阅[存储分析指标](storage-analytics-metrics.md)。
+* 若要了解如何使用 PowerShell 启用和查看存储度量值数据，请参阅[存储分析度量值](storage-analytics-metrics.md)。
 
 * 若要了解如何使用 PowerShell 启用和检索存储日志记录数据，请参阅[如何使用 PowerShell 启用存储日志记录](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)和[查找存储日志记录的日志数据](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)。
 
@@ -252,4 +252,4 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 * [Azure 存储控制平面 PowerShell cmdlet](/powershell/module/az.storage/)
 * [Azure 存储数据平面 PowerShell cmdlet](/powershell/module/azure.storage/)
-* [Windows PowerShell Reference](https://msdn.microsoft.com/library/ms714469.aspx)（Windows PowerShell 参考）
+* [Windows PowerShell Reference](/powershell/scripting/developer/windows-powershell)（Windows PowerShell 参考）

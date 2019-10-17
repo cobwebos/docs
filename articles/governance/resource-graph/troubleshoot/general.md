@@ -1,29 +1,29 @@
 ---
 title: 排查常见错误
-description: 了解如何排查使用 Azure Resource Graph 查询 Azure 资源时出现的问题
+description: 了解如何通过 Azure 资源关系图对 Azure 资源进行查询进行故障排除。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/21/2019
+ms.date: 10/18/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
-ms.openlocfilehash: abf6d22f2010db9bff97c7a93354c1cf8e1e1644
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 030fe26a0aa8fc4ed855fb7744e576366f4fd2e2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976610"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389707"
 ---
-# <a name="troubleshoot-errors-using-azure-resource-graph"></a>排查使用 Azure Resource Graph 时出现的错误
+# <a name="troubleshoot-errors-using-azure-resource-graph"></a>使用 Azure 资源图排查错误
 
-在使用 Azure Resource Graph 查询 Azure 资源时，你可能会遇到错误。 本文描述可能会发生的各种错误及其解决方法。
+在通过 Azure 资源关系图查询 Azure 资源时，可能会遇到错误。 本文描述可能会发生的各种错误及其解决方法。
 
 ## <a name="finding-error-details"></a>查找错误详细信息
 
-大多数错误的原因是使用 Azure Resource Graph 运行查询时出现了问题。 如果某个查询失败，SDK 将提供有关失败的查询的详细信息。 此信息会指出存在的问题，以便可以修复问题并使后续查询成功。
+大多数错误是在使用 Azure 资源关系图运行查询时出现问题的结果。 当查询失败时，SDK 会提供有关失败查询的详细信息。 此信息指明了问题，以便修复该问题，并使之后的查询成功。
 
 ## <a name="general-errors"></a>常规错误
 
-### <a name="toomanysubscription"></a>场景：订阅过多
+### <a name="toomanysubscription"></a>方案：订阅过多
 
 #### <a name="issue"></a>问题
 
@@ -31,15 +31,15 @@ ms.locfileid: "71976610"
 
 #### <a name="cause"></a>原因
 
-Azure CLI 和 PowerShell 只会将前 1000 个订阅转发到 Azure Resource Graph。 Azure Resource Graph 的 REST API 接受对最大数目的订阅执行查询。
+Azure CLI 和 PowerShell 仅转发 Azure 资源关系图的前1000订阅。 Azure 资源关系图的 REST API 接受对执行查询的最大订阅数。
 
 #### <a name="resolution"></a>分辨率
 
-对一部分订阅批处理查询请求，以保持在 1000 个订阅的限制范围内。 解决方法是在 PowerShell 中使用 **Subscription** 参数。
+具有订阅子集的查询的批处理请求保持在1000订阅限制的范围之外。 解决方案在 PowerShell 中使用**订阅**参数。
 
 ```azurepowershell-interactive
 # Replace this query with your own
-$query = 'project type'
+$query = 'Resources | project type'
 
 # Fetch the full array of subscription IDs
 $subscriptions = Get-AzSubscription
@@ -60,7 +60,7 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="rest-contenttype"></a>场景：不支持的 Content-type REST 标头
+### <a name="rest-contenttype"></a>方案：不受支持的内容类型 REST 标头
 
 #### <a name="issue"></a>问题
 
@@ -73,7 +73,8 @@ Azure 资源 Graph REST API 仅支持**应用程序/json**@no__t 的0。 某些 
 #### <a name="resolution"></a>分辨率
 
 验证用于查询 Azure 资源关系图的工具或代理是否具有为**application/json**配置的 REST API 标头 `Content-Type`。
-### <a name="rest-403"></a>场景：列表中没有对所有订阅的读取权限
+
+### <a name="rest-403"></a>方案：列表中没有对所有订阅的读取权限
 
 #### <a name="issue"></a>问题
 
@@ -91,6 +92,6 @@ Azure 资源 Graph REST API 仅支持**应用程序/json**@no__t 的0。 某些 
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-- 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
+- 通过[Azure 论坛](https://azure.microsoft.com/support/forums/)获取 azure 专家的解答。
 - 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
 - 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

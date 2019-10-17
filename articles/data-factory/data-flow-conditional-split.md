@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: fec2b09b9dc471135d9cdd00ac2465728a47bdbf
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d06b5b86737d0940930a3ccea3b6d65be0a802f9
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026933"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387892"
 ---
 # <a name="mapping-data-flow-conditional-split-transformation"></a>映射数据流有条件拆分转换
 
@@ -27,8 +27,8 @@ ms.locfileid: "72026933"
 
 若要添加附加条件，请在底部配置窗格中选择“添加流”，并单击“表达式生成器”文本框来生成表达式。
 
-![有条件拆分（多个）](media/data-flow/conditionalsplit3.png "有条件拆分（多个）")
+![有条件拆分多](media/data-flow/conditionalsplit3.png "有条件拆分多")
 
 ## <a name="next-steps"></a>后续步骤
 
-用于有条件拆分的常见数据流转换：[联接转换](data-flow-join.md)，[查找转换](data-flow-lookup.md)，[选择转换](data-flow-select.md)
+用于有条件拆分的常见数据流转换：[联接转换](data-flow-join.md)、[查找转换](data-flow-lookup.md)、[选择转换](data-flow-select.md)

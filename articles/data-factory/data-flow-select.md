@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 289f98fdc2f39449cdeede9ee46fb39847ae2cb5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6ef9712dd2fd6b8d53fd4ad2c3e07e1d6c8f1aec
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029269"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387199"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>映射数据流选择转换
 
@@ -36,7 +36,7 @@ ms.locfileid: "72029269"
 
 ![跳过重复项](media/data-flow/select-skip-dup.png "跳过重复项")
 
-* 选择跳过重复项时，结果将显示在 "检查" 选项卡中。ADF 将保留列的第一次出现，您将看到此同一列的每个后续匹配项已从您的流中删除。
+* 选择跳过重复项时，结果将显示在 "检查" 选项卡中。 ADF 将保留列的第一次出现，你会看到此同一列的每个后续匹配项已从流中删除。
 
 > [!NOTE]
 > 若要清除映射规则，请按 "**重置**" 按钮。
@@ -44,7 +44,7 @@ ms.locfileid: "72029269"
 ## <a name="mapping"></a>映射
 默认情况下，Select 转换将自动映射所有列，这将在输出中将所有传入列传递到相同的名称。 在 "选择设置" 中设置的输出流名称将为流定义新的别名。 如果保留选择 "自动映射集"，则可以为整个流提供相同的所有列的别名。
 
-![选择](media/data-flow/rule2.png "基于规则的")转换规则映射
+![选择转换规则](media/data-flow/rule2.png "基于规则的映射")
 
 如果要对列进行别名、删除、重命名或重新排序，必须先关闭 "自动映射"。 默认情况下，你将看到为你输入的默认规则 "所有输入列"。 如果希望始终允许所有传入列在其输出中映射到相同的名称，可以将此规则保留原样。
 

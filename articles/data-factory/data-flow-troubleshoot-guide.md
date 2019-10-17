@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: b5895b061426066d265d3ff68dc948014e641322
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 5cf4773ac781ae51a60ef7d987c3dc324c125d95
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242270"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387730"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>排查 Azure 数据工厂数据流问题
 
@@ -20,39 +20,39 @@ ms.locfileid: "72242270"
 
 ## <a name="common-errors-and-messages"></a>常见错误和消息
 
-### <a name="error-message-df-sys-01-shadeddatabricksorgapachehadoopfsazureazureexception-commicrosoftazurestoragestorageexception-the-specified-container-does-not-exist"></a>错误消息：DF-SYS-01： AzureException： StorageException：： databricks：，：，：：指定的容器不存在。
+### <a name="error-message-df-sys-01-shadeddatabricksorgapachehadoopfsazureazureexception-commicrosoftazurestoragestorageexception-the-specified-container-does-not-exist"></a>错误消息： DF-SYS-01： databricks. AzureException： StorageException：指定的容器不存在。 "%1"，指定的容器不存在。
 
 - **症状**：由于容器不存在，数据预览、调试和管道数据流执行失败
 
-- **原因**：数据集包含存储中不存在的容器时
+- **原因**：数据集包含存储中不存在的容器
 
-- **解决方法**：请确保在数据集中引用的容器存在
+- **解决方法**：确保在数据集中引用的容器存在
 
-### <a name="error-message-df-sys-01-javalangassertionerror-assertion-failed-conflicting-directory-structures-detected-suspicious-paths"></a>错误消息：DF-SYS-01： AssertionError：断言失败：检测到冲突的目录结构。 可疑路径
+### <a name="error-message-df-sys-01-javalangassertionerror-assertion-failed-conflicting-directory-structures-detected-suspicious-paths"></a>错误消息： DF-SYS-01： AssertionError： assertion 失败：检测到冲突的目录结构。 可疑路径
 
-- **症状**：在带有 Parquet 文件的源转换中使用通配符时
+- **症状**：在使用 Parquet 文件的源转换中使用通配符时
 
 - **原因**：通配符语法不正确或无效
 
 - **解决方法**：检查在源转换选项中使用的通配符语法
 
-### <a name="error-message-df-src-002-container-container-name-is-required"></a>错误消息：DF-SRC-002：需要 "container" （容器名称）
+### <a name="error-message-df-src-002-container-container-name-is-required"></a>错误消息： DF-SRC-002： "container" （容器名称）是必需的
 
 - **症状**：由于容器不存在，数据预览、调试和管道数据流执行失败
 
-- **原因**：数据集包含存储中不存在的容器时
+- **原因**：数据集包含存储中不存在的容器
 
-- **解决方法**：请确保在数据集中引用的容器存在
+- **解决方法**：确保在数据集中引用的容器存在
 
-### <a name="error-message-df-uni-001-primarykeyvalue-has-incompatible-types-integertype-and-stringtype"></a>错误消息：DF--001：PrimaryKeyValue 具有不兼容的类型 IntegerType 和 StringType
+### <a name="error-message-df-uni-001-primarykeyvalue-has-incompatible-types-integertype-and-stringtype"></a>错误消息： DF-a-001： PrimaryKeyValue 具有不兼容的类型 IntegerType 和 StringType
 
 - **症状**：由于容器不存在，数据预览、调试和管道数据流执行失败
 
 - **原因**：尝试在数据库接收器中插入错误的主键类型时发生
 
-- **解决方法**：使用派生列转换您用于数据流中的主键的列，以便与目标数据库的数据类型相匹配
+- **解决方法**：使用派生列转换用于数据流中的主键的列，使其与目标数据库的数据类型相匹配
 
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-the-tcpip-connection-to-the-host-xxxxxdatabasewindowsnet-port-1433-has-failed-error-xxxxdatabasewindowsnet-verify-the-connection-properties-make-sure-that-an-instance-of-sql-server-is-running-on-the-host-and-accepting-tcpip-connections-at-the-port-make-sure-that-tcp-connections-to-the-port-are-not-blocked-by-a-firewall"></a>错误消息：DF-SYS-01： SQLServerException：：与主机 xxxxx.database.windows.net 端口1433的 TCP/IP 连接已失败。 错误： "xxxx.database.windows.net"。 验证连接属性。 请确保在主机上运行 SQL Server 实例，并在端口上接受 TCP/IP 连接。 请确保防火墙未阻止到端口的 TCP 连接。
+### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-the-tcpip-connection-to-the-host-xxxxxdatabasewindowsnet-port-1433-has-failed-error-xxxxdatabasewindowsnet-verify-the-connection-properties-make-sure-that-an-instance-of-sql-server-is-running-on-the-host-and-accepting-tcpip-connections-at-the-port-make-sure-that-tcp-connections-to-the-port-are-not-blocked-by-a-firewall"></a>错误消息： DF-SYS-01： SQLServerException：到主机 xxxxx.database.windows.net 端口1433的 TCP/IP 连接已失败。 错误： "xxxx.database.windows.net"。 验证连接属性。 请确保在主机上运行 SQL Server 实例，并在端口上接受 TCP/IP 连接。 请确保防火墙未阻止到端口的 TCP 连接。
 
 - **症状**：无法通过数据库源或接收器预览数据或执行管道
 
@@ -60,7 +60,7 @@ ms.locfileid: "72242270"
 
 - **解决方法**：打开对数据库的防火墙访问权限
 
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-there-is-already-an-object-named-xxxxxx-in-the-database"></a>错误消息：DF-SYS-01： SQLServerException：：数据库中已存在名为 "xxxxxx" 的对象。
+### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-there-is-already-an-object-named-xxxxxx-in-the-database"></a>错误消息： DF-SYS-01： SQLServerException：数据库中已存在一个名为 "xxxxxx" 的对象。
 
 - **症状**：接收器无法创建表
 

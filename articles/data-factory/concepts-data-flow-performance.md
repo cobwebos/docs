@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 9db1b96cb495fd0de452091da79ab61f7ae59118
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 24b0deb60f1047228dc3ff6000d423e7cb6939ca
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030696"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387323"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -23,11 +23,11 @@ ms.locfileid: "72030696"
 
 设计映射数据流时，可以通过单击 "配置" 面板中的 "数据预览" 选项卡对每个转换进行单元测试。 验证逻辑后，在管道中将数据流作为活动的端到端进行测试。 添加 "执行数据流" 活动，并使用 "调试" 按钮测试数据流的性能。 若要打开数据流的执行计划和性能配置文件，请在管道的 "输出" 选项卡中单击 "操作" 下的眼镜图标。
 
-数据流![监视器](media/data-flow/mon002.png "数据流 监视器 2")
+![数据流监视器](media/data-flow/mon002.png "数据流监视器2")
 
  您可以使用此信息来估算针对不同大小的数据源的数据流的性能。 有关详细信息，请参阅[监视映射数据流](concepts-data-flow-monitoring.md)。
 
-数据流![监视](media/data-flow/mon003.png "数据流 监视器 3")
+![数据流监视](media/data-flow/mon003.png "数据流监视器3")
 
  对于 "管道调试" 运行，在整体性能计算中大约一分钟的群集设置时间是热群集所必需的。 如果正在初始化默认 Azure Integration Runtime，则加速启动时间可能需要大约5分钟。
 
@@ -37,7 +37,7 @@ ms.locfileid: "72030696"
 * 如果希望处理速率高于输入速率，请尝试使用**计算优化**群集
 * 如果要将更多数据缓存在内存中，请尝试使用**内存优化**群集。
 
-![新 ir](media/data-flow/ir-new.png "新 ir")
+![新 IR](media/data-flow/ir-new.png "新 IR")
 
 有关如何创建 Integration Runtime 的详细信息，请参阅[Azure 数据工厂中的 Integration Runtime](concepts-integration-runtime.md)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "72030696"
 * 通过设置查询，可以在源中的行到达数据流进行处理之前对其进行筛选。 这可以使初始数据采集更快。 如果使用查询，可以为 Azure SQL DB 添加可选的查询提示，如 "未提交读"。
 * 未提交读将提供更快的源转换查询结果
 
-![源](media/data-flow/source4.png "源")
+![源](media/data-flow/source4.png "Source")
 
 ### <a name="sink-batch-size"></a>接收器批大小
 

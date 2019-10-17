@@ -14,24 +14,25 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 3cf18e6da56b25e453d52dc58020961f672da27d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 25bff77da6c2bd89916fe40ebb153ff9631e62eb
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027431"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388794"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 Apache Cordova 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
-> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况，并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务，以便在云中持久保存和同步应用程序数据。
+>
+> 如果希望将云服务集成到移动应用程序中，请立即注册[App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 本指南介绍了如何使用最新的[适用于 Azure 移动应用的 Apache Cordova 插件]执行常见任务。 对于 Azure 移动应用的新手，请先完成 [Azure 移动应用快速入门]，创建后端、创建表并下载预先生成的 Apache Cordova 项目。 本指南侧重于客户端 Apache Cordova 插件。
 
-## <a name="supported-platforms"></a>受支持的平台
+## <a name="supported-platforms"></a>支持的平台
 此 SDK 在 iOS、Android 和 Windows 设备上支持 Apache Cordova v6.0.0 及更高版本。  支持的平台如下：
 
 * Android API 19-24（KitKat 到 Nougat）。
@@ -46,11 +47,11 @@ ms.locfileid: "72027431"
 cordova plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-有关创建 [第一个 Apache Cordova 应用]的详细信息，请参阅相关文档。
+有关创建[第一个 Apache Cordova 应用]的详细信息，请参阅相关文档。
 
 ## <a name="ionic"></a>设置 Ionic v2 应用
 
-若要正确配置 Ionic v2 项目，首先需创建一个基本应用，并添加 Cordova 插件：
+要正确配置 Ionic v2 项目，请先创建基本应用，然后添加 Cordova 插件：
 
 ```
 ionic start projectName --v2
@@ -58,7 +59,7 @@ cd projectName
 ionic plugin add cordova-plugin-ms-azure-mobile-apps
 ```
 
-向 `app.component.ts` 中添加以下行以创建客户端对象：
+将以下行添加到 `app.component.ts` 以创建客户端对象：
 
 ```typescript
 declare var WindowsAzure: any;
@@ -76,8 +77,8 @@ Azure 移动应用 Cordova 插件同时支持 Ionic v1 和 Ionic v2 应用。  �
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>如何：对用户进行身份验证
-Azure 应用服务支持使用各种外部标识提供者对应用用户进行身份验证和授权：Facebook、Google、Microsoft 帐户和 Twitter。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。 有关详细信息，请参阅[身份验证入门]教程。
+## <a name="auth"></a>如何对用户进行身份验证
+Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Google、Microsoft 帐户和 Twitter）对应用的用户进行身份验证和授权。 你可以对表设置权限，以限制只有通过了身份验证的用户才能执行特定操作。 还可以使用经过身份验证的用户的标识在服务器脚本中实现授权规则。 有关详细信息，请参阅[身份验证入门]教程。
 
 在 Apache Cordova 应用中使用身份验证时，以下 Cordova 插件必须可用：
 
@@ -88,7 +89,7 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>如何：为外部重定向 URL 配置移动应用服务。
+### <a name="configure-external-redirect-urls"></a>如何为外部重定向 URL 配置移动应用服务。
 有多种类型的 Apache Cordova 应用程序使用环回功能来处理 OAuth UI 流。  localhost 上的 OAuth UI 流会造成问题，因为身份验证服务默认只知道如何利用服务。  有问题的 OAuth UI 流示例包括：
 
 * Ripple 模拟器。
@@ -101,7 +102,7 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 1. 登录到 [Azure 门户]
 2. 选择“所有资源”或“应用服务”，并单击移动应用的名称。
 3. 单击“工具”
-4. 在“观察”菜单中单击“资源浏览器”，并单击“转到”。  会打开新窗口或选项卡。
+4. 在“观察”菜单中单击“资源浏览器”，并单击“转到”。  此时会打开一个新窗口或选项卡。
 5. 在左侧导航栏中，展开站点的“config”、“authsettings”节点。
 6. 单击“编辑”
 7. 查找“allowedExternalRedirectUrls”元素。  该元素可能已设置为 null 或值数组。  将该值更改为以下值：
@@ -111,7 +112,7 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
              "https://localhost:3000"
          ],
 
-    将 URL 替换为自己服务的 URL。  示例包括 `http://localhost:3000`（适用于 Node.js 示例服务）或 `http://localhost:4400`（适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
+    将 URL 替换为自己服务的 URL。  示例包括 `http://localhost:3000` （适用于 node.js 示例服务）或 `http://localhost:4400` （适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
 8. 单击屏幕右上角的“读/写”按钮。
 9. 单击绿色的“PUT”按钮。
 
@@ -129,7 +130,7 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 大约需要 10-15 秒时间才能使新设置生效。
 
 ## <a name="register-for-push"></a>如何：注册推送通知
-安装 [phonegap-plugin-push] 即可处理推送通知。  在命令行中使用 `cordova plugin add` 命令，或者在 Visual Studio 内通过 Git 插件安装程序，即可轻松添加此插件。  Apache Cordova 应用中的以下代码为设备注册推送通知：
+安装 [phonegap-plugin-push] 即可处理推送通知。  在命令行中使用 `cordova plugin add` 命令，或者在 Visual Studio 内通过 Git 插件安装程序，即可轻松添加此插件。  Apache Cordova 应用中的以下代码将为设备注册推送通知：
 
 ```javascript
 var pushOptions = {
@@ -168,7 +169,7 @@ pushHandler.on('error', function (error) {
 });
 ```
 
-使用通知中心 SDK 从服务器发送推送通知。  请勿直接从客户端发送推送通知。 否则可能会触发拒绝对通知中心或 PNS 的服务攻击。  PNS 可能会因此类攻击而禁止相关流量。
+使用通知中心 SDK 从服务器发送推送通知。  请勿直接从客户端发送推送通知。 否则可能会触发拒绝对通知中心或 PNS 的服务攻击。  遇到此类攻击时，PNS 会禁止流量。
 
 ## <a name="more-information"></a>详细信息
 

@@ -1,18 +1,18 @@
 ---
-title: Azure 数据工厂映射数据流“新建分支”转换
-description: Azure 数据工厂映射数据流“新建分支”转换
+title: Azure 数据工厂映射数据流新建分支转换
+description: Azure 数据工厂映射数据流新建分支转换
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 35d5b2250cb5f2f5bd5b3a0073dc2e3c655ceccb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 4832cd2036f615d1e90d5e7a21c1a9832c2fa837
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029916"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387131"
 ---
 # <a name="mapping-data-flow-union-transformation"></a>映射数据流联合转换
 
@@ -26,7 +26,7 @@ Union 会将多个数据流组合成一个数据流，而这些流的 SQL Union 
 
 在这种情况下，可以将来自多个源（在本例中为三个不同的源文件）中的不同元数据组合在一起，并将它们合并到一个流中：
 
-![联合转换概述](media/data-flow/union111.png "联合 1")
+![联合转换概述](media/data-flow/union111.png "联合1")
 
 若要实现此目的，请通过包含要添加的所有源在联合设置中添加其他行。 无需使用常见的查找或联接键：
 
@@ -34,7 +34,7 @@ Union 会将多个数据流组合成一个数据流，而这些流的 SQL Union 
 
 如果在联合后设置了 Select 转换，则可以重命名不是从 headerless 源命名的重叠字段或字段。 单击 "检查" 以查看在此示例中的三个不同源合并元数据和132总计列：
 
-![联合转换最终](media/data-flow/union333.png "联合 3")
+![联合转换最终](media/data-flow/union333.png "Union 3")
 
 ## <a name="name-and-position"></a>名称和位置
 

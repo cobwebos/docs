@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: deefbf049d5f8daa004db942f60ff5e31bda0fe8
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 09ccfd6e344f2776cfedfc56976f2a5c34f79d5c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695414"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428178"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault 的安全性建议
 
-本文包含有关 Azure Key Vault 的安全建议。 实施这些建议可帮助你满足我们的共享责任模型中所述的安全要求。 若要详细了解 Microsoft 如何满足服务提供商的责任，请阅读[云计算的共享责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)。
+本文包含有关 Azure Key Vault 的安全建议。 实施这些建议可帮助你满足我们的共享责任模型中所述的安全要求。 若要详细了解 Microsoft 如何满足服务提供商的责任，请阅读[云计算的共享责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225237/1/Shared%20Responsibilities%20for%20Cloud%20Computing%20(2017-04-03).pdf)。
 
 Azure 安全中心会自动监视本文中包含的一些建议。 Azure 安全中心是保护 Azure 中资源的第一道防线。 它会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后向您提供有关如何解决这些问题的建议。
 
@@ -32,7 +32,7 @@ Azure 安全中心会自动监视本文中包含的一些建议。 Azure 安全�
 |启用软删除 | [软删除](key-vault-ovw-soft-delete.md)使你可以恢复已删除的保管库和保管库对象 |  - |
 | 限制对保管库数据的访问  | 遵循最低权限原则，并限制组织的哪些成员有权访问保管库数据 |  - |
 
-## <a name="identity-and-access-management"></a>标识和访问管理
+## <a name="identity-and-access-management"></a>身份和访问管理
 
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
@@ -53,4 +53,4 @@ Azure 安全中心会自动监视本文中包含的一些建议。 Azure 安全�
 
 ## <a name="next-steps"></a>后续步骤
 
-请咨询应用程序提供商，看是否有其他安全要求。 有关开发安全应用程序的详细信息，请参阅[安全开发文档](../security/fundamentals/abstract-develop-secure-apps.md)。
+请与应用程序提供商联系，查看是否存在其他安全要求。 有关开发安全应用程序的详细信息，请参阅[安全开发文档](../security/fundamentals/abstract-develop-secure-apps.md)。

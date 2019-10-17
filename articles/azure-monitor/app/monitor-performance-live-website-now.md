@@ -10,36 +10,39 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 08/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e7d69e2258036318b736f245f9e3aec3cf5f54de
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67876426"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389942"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时通过 Application Insights 无代码置备附加来检测 web 应用
+
+> [!IMPORTANT]
+> 不再建议使用状态监视器。 它已替换为 Azure Monitor Application Insights 代理（以前称为状态监视器 v2）。 请参阅有关[本地服务器部署](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)或[Azure 虚拟机和虚拟机规模集部署](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)的文档。
 
 无需修改或重新部署代码，即可使用 Azure Application Insights 检测实时 Web 应用。 需要 [Microsoft Azure](https://azure.com) 订阅。
 
 状态监视器可用于检测托管在 IIS、本地或 VM 中的 .NET 应用程序。
 
-- 如果你的应用部署到 Azure VM 或 Azure 虚拟机规模集, 请遵循[这些说明](azure-vm-vmss-apps.md)。
+- 如果你的应用部署到 Azure VM 或 Azure 虚拟机规模集，请遵循[这些说明](azure-vm-vmss-apps.md)。
 - 如果应用部署在 Azure 应用服务中，请遵循[这些说明](azure-web-apps.md)。
 - 如果应用部署在 Azure VM 中，则可通过 Azure 控制面板启用 Application Insights 监视。
-- （我们还单独提供了有关检测 [Azure 云服务](../../azure-monitor/app/cloudservices.md)的文章。）
+- （还介绍了有关检测[Azure 云服务](../../azure-monitor/app/cloudservices.md)的单独文章。）
 
 
 ![包含失败请求、服务器响应时间和服务器请求信息的 App Insights 概览图屏幕截图](./media/monitor-performance-live-website-now/overview-graphs.png)
 
 可以选择两种途径将 Application Insights 应用到 .NET Web 应用程序：
 
-* **生成时：** [将 Application Insights SDK 添加][greenbrown]到 Web 应用代码。
+* **生成时间：** [将 Application Insights SDK 添加][greenbrown]到 web 应用代码。
 * **运行时：** 如下所述检测服务器上的 Web 应用，无需重建并重新部署代码。
 
 > [!NOTE]
-> 如果使用生成时检测，那么即使启用了运行时检测，它也无法正常工作。
+> 如果使用生成时间检测，运行时检测将不起作用，即使它处于打开状态也是如此。
 
 下面是每种途径的优势摘要：
 
@@ -49,10 +52,10 @@ ms.locfileid: "67876426"
 | [更详细异常](../../azure-monitor/app/asp-net-exceptions.md) | |是 |
 | [依赖项诊断](../../azure-monitor/app/asp-net-dependencies.md) |在 NET 4.6+ 上，但更少详细信息 |是，完整的详细信息：结果代码、SQL 命令文本、HTTP 谓词|
 | [系统性能计数器](../../azure-monitor/app/performance-counters.md) |是 |是 |
-| [自定义遥测 API][api] |是 |否 |
-| [跟踪日志集成](../../azure-monitor/app/asp-net-trace-logs.md) |是 |否 |
-| [页面视图和用户数据](../../azure-monitor/app/javascript.md) |是 |否 |
-| 需要重新生成代码 |是 | 否 |
+| [自定义遥测的 API][api] |是 |No |
+| [跟踪日志集成](../../azure-monitor/app/asp-net-trace-logs.md) |是 |No |
+| [页面视图和用户数据](../../azure-monitor/app/javascript.md) |是 |No |
+| 需要重新生成代码 |是 | No |
 
 
 
@@ -64,7 +67,7 @@ ms.locfileid: "67876426"
 2. 如果尚未安装 Application Insights 状态监视器，请[下载并运行安装程序](#download)
 3. 在状态监视器中，选择已安装的 Web 应用程序或者要监视的网站。 使用 Azure 凭据登录。
 
-    配置资源，以便在其中通过 Application Insights 门户查看结果。 （通常情况下，最好是创建新的资源。 如果已为此应用程序设置了[web 测试][availability]或[客户端监视][client], 请选择现有资源。) 
+    配置资源，以便在其中通过 Application Insights 门户查看结果。 （通常情况下，最好是创建新的资源。 如果已为此应用程序设置了[web 测试][availability]或[客户端监视][client]，请选择现有资源。） 
 
     ![选择应用和资源。](./media/monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
@@ -80,7 +83,7 @@ ms.locfileid: "67876426"
 
 ## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>重新发布应用时，请重新启用 Application Insights
 
-重新发布应用之前，可考虑[在 Visual Studio 中将 Application Insights 添加到代码][greenbrown]。 用户会获得更详细的遥测，并可编写自定义遥测。
+重新发布应用之前，请考虑[将 Application Insights 添加到 Visual Studio 中的代码][greenbrown]。 用户会获得更详细的遥测，并可编写自定义遥测。
 
 如果需要重新发布，但又不希望将 Application Insights 添加到代码中，则请注意，部署过程可能会从已发布网站中删除 DLL 和 ApplicationInsights.config。 因此：
 
@@ -150,7 +153,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 * 若要输出详细日志，请修改配置文件：`C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` 并将 `<add key="TraceLevel" value="All" />` 添加到 `appsettings`。
 然后重启状态监视器。
 
-* 由于状态监视器是 .NET 应用程序, 因此还可以[通过将相应的诊断添加到配置文件来启用 .net 跟踪](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)。 例如, 在某些情况下, 通过[配置网络跟踪](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)来查看网络级别发生的情况会很有用。
+* 由于状态监视器是 .NET 应用程序，因此还可以[通过将相应的诊断添加到配置文件来启用 .net 跟踪](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)。 例如，在某些情况下，通过[配置网络跟踪](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)来查看网络级别发生的情况会很有用。
 
 ### <a name="insufficient-permissions"></a>权限不足
   
@@ -176,7 +179,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 
 ### <a name="additional-troubleshooting"></a>更多故障排除方法
 
-* 请参阅更多[故障排除方法][qna]。
+* 请参阅其他[故障排除][qna]。
 
 ## <a name="system-requirements"></a>系统要求
 支持服务器上 Application Insights 状态监视器的 OS：
@@ -187,11 +190,11 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 * Windows server 2012 R2
 * Windows Server 2016
 
-具有最新 SP 和 .NET Framework 4.5 (状态监视器是基于此版本的 Framework 构建的)
+具有最新 SP 和 .NET Framework 4.5 （状态监视器是基于此版本的 Framework 构建的）
 
-在客户端：对于 Windows 7、8、8.1 和 10，同样需要安装 .NET Framework 4.5
+在客户端：Windows 7、8、8.1 和 10 上，同样需要安装 .NET Framework 4.5
 
-IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
+IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 
 ## <a name="automation-with-powershell"></a>使用 PowerShell 自动化
 可以在 IIS 服务器上使用 PowerShell 启动和停止监视。
@@ -244,7 +247,7 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
 * `-Name`：Web 应用在 IIS 中的名称。
-* `-InstrumentationKey`（可选。）使用此项可更改应用的遥测数据所要发送到的资源。
+* `-InstrumentationKey` （可选。）使用此更改将应用的遥测数据发送到的资源。
 * 此 cmdlet：
   * 将命名应用升级到最近下载到此计算机的 SDK 版本。 （仅当 `SdkState==EnabledAfterDeployment`时才适用）
   * 如果提供检测键，命名应用会重新配置为将遥测数据发送到具有该键的资源。 （仅当 `SdkState != Disabled`时才适用）
@@ -266,7 +269,7 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 
 ### <a name="can-i-close-it-after-it-runs"></a>可以在它运行后关闭它吗？
 
-是的。 在它检测所选网站后，即可将其关闭。
+可以。 在它检测所选网站后，即可将其关闭。
 
 它不会自行收集遥测。 它只配置 Web 应用并设置某些权限。
 
@@ -281,7 +284,7 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
 
 目前，状态监视器仅可安装 Application Insights SDK 版本 2.3 或 2.4。 
 
-Application Insights SDK 版本2.4 是支持 .NET 4.0 ([年1月 1 2016 日](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/)) 的[最新版本](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1)。 因此, 目前可以使用状态监视器来检测 .NET 4.0 应用程序。 
+Application Insights SDK 版本2.4 是支持 .NET 4.0 （[年1月 1 2016 日](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/)）的[最新版本](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1)。 因此，目前可以使用状态监视器来检测 .NET 4.0 应用程序。 
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>是否每次更新应用都需要运行状态监视器？
 
@@ -295,7 +298,7 @@ Application Insights SDK 版本2.4 是支持 .NET 4.0 ([年1月 1 2016 日](http
 
 * HTTP 请求
 * 对依赖项的调用
-* Exceptions
+* 例外
 * 性能计数器
 
 对于已在编译时进行检测的应用程序：
@@ -326,9 +329,9 @@ Application Insights SDK 版本2.4 是支持 .NET 4.0 ([年1月 1 2016 日](http
 
 添加更多遥测：
 
-* [创建 Web 测试][availability]，以确保站点保持活动状态。
-* [添加 Web 客户端遥测][usage]，以查看网页代码中的异常并将其插入跟踪调用。
-* [将 Application Insights SDK 添加到代码][greenbrown]，以便插入跟踪和日志调用
+* [创建 web 测试][availability]，确保网站保持活动。
+* [添加 web 客户端遥测][usage]，查看网页代码中的异常，并允许插入跟踪调用。
+* [将 APPLICATION INSIGHTS SDK 添加到你的代码][greenbrown]中，以便你可以插入跟踪和日志调用
 
 <!--Link references-->
 

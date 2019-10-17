@@ -7,22 +7,22 @@ ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 575f23aef9534696566080257e61b2fa84de5d0f
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1f13efeb5c2ebcb8b23dea6f9ae997039972f089
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013543"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428315"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
-Microsoft Azure 存储模拟器是一种用于模拟 Azure Blob、队列和表服务以进行本地开发的工具。 你可以在本地针对存储服务测试应用程序, 而无需创建 Azure 订阅, 也不会产生任何费用。 如果对应用程序在模拟器中的工作情况感到满意, 请切换到在云中使用 Azure 存储帐户。
+Microsoft Azure 存储模拟器是一种用于模拟 Azure Blob、队列和表服务以进行本地开发的工具。 你可以在本地针对存储服务测试应用程序，而无需创建 Azure 订阅，也不会产生任何费用。 如果对应用程序在模拟器中的工作情况感到满意，请切换到在云中使用 Azure 存储帐户。
 
 ## <a name="get-the-storage-emulator"></a>获取存储模拟器
 
 存储模拟器作为 [Microsoft Azure SDK](https://azure.microsoft.com/downloads/) 的一部分提供。 此外，还可使用[独立安装程序](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)（直接下载）来安装存储模拟器。 若要安装存储模拟器，必须在计算机上具有管理权限。
 
-存储模拟器目前仅在 Windows 上运行。 如果需要适用于 Linux 的存储模拟器, 一个选项是社区维护的开源存储模拟器[Azurite](https://github.com/azure/azurite)。
+存储模拟器目前仅在 Windows 上运行。 如果需要适用于 Linux 的存储模拟器，一个选项是社区维护的开源存储模拟器[Azurite](https://github.com/azure/azurite)。
 
 > [!NOTE]
 > 在一个版本的存储模拟器中创建的数据不保证在使用不同版本时可以访问。 如果需要长期保存数据，建议将该数据存储在 Azure 存储帐户中，而不是在存储模拟器中。
@@ -31,7 +31,7 @@ Microsoft Azure 存储模拟器是一种用于模拟 Azure Blob、队列和表�
 
 ## <a name="how-the-storage-emulator-works"></a>存储模拟器的工作原理
 
-存储模拟器使用本地 Microsoft SQL Server 2012 Express LocalDB 实例来模拟 Azure 存储服务。 可以选择将存储模拟器配置为访问 SQL Server 的本地实例而不是 LocalDB 实例。 有关详细信息, 请参阅本文后面的[启动和初始化存储模拟器](#start-and-initialize-the-storage-emulator)部分。
+存储模拟器使用本地 Microsoft SQL Server 2012 Express LocalDB 实例来模拟 Azure 存储服务。 可以选择将存储模拟器配置为访问 SQL Server 的本地实例而不是 LocalDB 实例。 有关详细信息，请参阅本文后面的[启动和初始化存储模拟器](#start-and-initialize-the-storage-emulator)部分。
 
 存储模拟器使用 Windows 身份验证连接到 SQL Server 或 LocalDB。
 
@@ -48,7 +48,7 @@ Microsoft Azure 存储模拟器是一种用于模拟 Azure Blob、队列和表�
 存储模拟器启动时，会显示“命令提示符”窗口。 可以使用此控制台窗口启动和停止存储模拟器。 还可以从命令提示符中清除数据、获取状态和初始化模拟器。 有关详细信息，请参阅本文后面的[存储模拟器命令行工具参考](#storage-emulator-command-line-tool-reference)部分。
 
 > [!NOTE]
-> 如果在系统上运行其他存储模拟器 (如 Azurite), 则 Azure 存储模拟器可能无法正常启动。
+> 如果在系统上运行其他存储模拟器（如 Azurite），则 Azure 存储模拟器可能无法正常启动。
 
 运行模拟器时，在 Windows 任务栏通知区域中会显示一个图标。
 
@@ -59,7 +59,7 @@ Microsoft Azure 存储模拟器是一种用于模拟 Azure Blob、队列和表�
 存储模拟器默认安装到 `C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator`。
 
 > [!TIP]
-> 可使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com)处理本地存储模拟器资源。 安装并启动存储模拟器后，在存储资源管理器资源树中的“存储帐户”下查找“(开发)”。
+> 可使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com)处理本地存储模拟器资源。 安装并启动存储模拟器后，在存储资源管理器资源树中的 "本地连接 &" 下查找 "（模拟器-默认端口）（Key）"。
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>初始化存储模拟器以使用其他的 SQL 数据库
@@ -86,7 +86,7 @@ Microsoft Azure 存储模拟器是一种用于模拟 Azure Blob、队列和表�
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>针对存储模拟器的请求进行身份验证
 
-安装并启动存储模拟器后，可针对此模拟器测试代码。 针对存储模拟器进行的每个请求都必须经过授权, 除非它是匿名请求。 可以使用共享密钥身份验证或使用共享访问签名 (SAS) 针对存储模拟器的请求进行授权。
+安装并启动存储模拟器后，可针对此模拟器测试代码。 针对存储模拟器进行的每个请求都必须经过授权，除非它是匿名请求。 可以使用共享密钥身份验证或使用共享访问签名 (SAS) 针对存储模拟器的请求进行授权。
 
 ### <a name="authorize-with-shared-key-credentials"></a>使用共享密钥凭据进行授权
 
@@ -123,11 +123,11 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 此示例中创建的共享访问签名的有效期为一天。 该签名将授予对容器内 Blob 的完整访问权限（读取、写入、删除和列出）。
 
-有关共享访问签名的详细信息, 请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)。
+有关共享访问签名的详细信息，请参阅[使用共享访问签名（SAS）授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)。
 
 ## <a name="addressing-resources-in-the-storage-emulator"></a>对存储模拟器中的资源进行寻址
 
-存储模拟器的服务终结点不同于 Azure 存储帐户的终结点。 本地计算机不执行域名解析, 要求存储模拟器终结点是本地地址。
+存储模拟器的服务终结点不同于 Azure 存储帐户的终结点。 本地计算机不执行域名解析，要求存储模拟器终结点是本地地址。
 
 对 Azure 存储帐户中的资源进行寻址时，请使用以下方案。 帐户名称是 URI 主机名的一部分，要寻址的资源是 URI 路径的一部分：
 
@@ -137,7 +137,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 `https://myaccount.blob.core.windows.net/mycontainer/myblob.txt`
 
-因为本地计算机不执行域名解析, 帐户名称是 URI 路径的一部分, 而不是主机名。 可对存储模拟器中的资源使用以下 URI 格式：
+因为本地计算机不执行域名解析，帐户名称是 URI 路径的一部分，而不是主机名。 可对存储模拟器中的资源使用以下 URI 格式：
 
 `http://<local-machine-address>:<port>/<account-name>/<resource-path>`
 
@@ -179,9 +179,9 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 若要查看选项列表，请在命令提示符下键入 `/help`。
 
-| 选项 | 描述 | Command | 参数 |
+| 选项 | 描述 | 命令 | 参数 |
 | --- | --- | --- | --- |
-| **启动** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-* 重新处理:在当前进程中启动仿真器，而不是创建新的进程。 |
+| **启动** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-* 重新处理：在当前进程中启动模拟器，而不是创建新进程。 |
 | **Stop** |停止存储模拟器。 |`AzureStorageEmulator.exe stop` | |
 | **Status** |打印存储模拟器的状态。 |`AzureStorageEmulator.exe status` | |
 | **Clear** |清除命令行上指定的所有服务中的数据。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*：清除 blob 数据。 <br/>*queue*：清除队列数据。 <br/>*table*：清除表数据。 <br/>*all*：清除所有服务中的所有数据。 |
@@ -189,14 +189,14 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>存储模拟器与 Azure 存储之间的差异
 
-由于存储模拟器是本地模拟环境, 因此在云中使用模拟器和 Azure 存储帐户之间存在差异:
+由于存储模拟器是本地模拟环境，因此在云中使用模拟器和 Azure 存储帐户之间存在差异：
 
 * 存储模拟器只支持单一固定的帐户和众所周知的身份验证密钥。
-* 存储模拟器不是可扩展的存储服务, 并且不支持大量并发客户端。
-* 如[对存储模拟器中的资源进行寻址](#addressing-resources-in-the-storage-emulator)中所述，存储模拟器与 Azure 存储帐户中的资源以不同方式寻址。 不同之处在于, 域名解析在云中可用, 但在本地计算机上不可用。
-* 存储模拟器从 3.1 版开始，支持读取访问地域冗余复制 (RA-GRS)。 在模拟器中, 所有帐户都已启用 GRS, 并且在主副本和辅助副本之间绝不会有任何滞后。 获取 Blob 服务统计信息、获取队列服务统计信息和获取表服务统计信息操作在帐户辅助上受支持，并且将始终根据基础 SQL 数据库返回 `LastSyncTime` 响应元素的值作为当前时间。
+* 存储模拟器不是可扩展的存储服务，并且不支持大量并发客户端。
+* 如[对存储模拟器中的资源进行寻址](#addressing-resources-in-the-storage-emulator)中所述，存储模拟器与 Azure 存储帐户中的资源以不同方式寻址。 不同之处在于，域名解析在云中可用，但在本地计算机上不可用。
+* 存储模拟器从 3.1 版开始，支持读取访问地域冗余复制 (RA-GRS)。 在模拟器中，所有帐户都已启用 GRS，并且在主副本和辅助副本之间绝不会有任何滞后。 获取 Blob 服务统计信息、获取队列服务统计信息和获取表服务统计信息操作在帐户辅助上受支持，并且将始终根据基础 SQL 数据库返回 `LastSyncTime` 响应元素的值作为当前时间。
 * 文件服务和 SMB 协议服务终结点当前在存储模拟器中不受支持。
-* 如果你使用的是不受模拟器支持的存储服务版本, 则模拟器将返回 VersionNotSupportedByEmulator 错误 (HTTP 状态代码 400-错误请求)。
+* 如果你使用的是不受模拟器支持的存储服务版本，则模拟器将返回 VersionNotSupportedByEmulator 错误（HTTP 状态代码 400-错误请求）。
 
 ### <a name="differences-for-blob-storage"></a>Blob 存储的差异
 
@@ -205,15 +205,15 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 * 存储模拟器仅支持最大为 2 GB 的 Blob。
 * 存储模拟器中 blob 名称的最大长度为 256 个字符，而 Azure 存储中 blob 名称的最大长度为 1024 个字符。
 * 增量复制允许复制被覆盖的 blob 中的快照，这会在服务上返回失败消息。
-* 在使用增量复制 Blob 复制的快照之间, 获取页面范围差异不起作用。
-* 即使未在请求中指定租约 ID, Put Blob 操作也可能会对存储模拟器中存在且具有活动租约的 blob 成功。
+* 在使用增量复制 Blob 复制的快照之间，获取页面范围差异不起作用。
+* 即使未在请求中指定租约 ID，Put Blob 操作也可能会对存储模拟器中存在且具有活动租约的 blob 成功。
 * 追加 Blob 操作不受模拟器支持。 尝试对追加 Blob 执行的操作将返回 FeatureNotSupportedByEmulator 错误（HTTP 状态代码 400 - 错误请求）。
 
 ### <a name="differences-for-table-storage"></a>表存储的差异
 
 以下差异适用于模拟器中的表存储：
 
-* 存储模拟器中表服务的日期属性仅支持 SQL Server 2005 支持的范围 (需要晚于年1月 1753 1 日)。 1753 年 1 月 1 日之前的所有日期都会更改为此值。 日期的精度仅限于 SQL Server 2005 的精度，这意味着日期将精确到 1/300 秒。
+* 存储模拟器中表服务的日期属性仅支持 SQL Server 2005 支持的范围（需要晚于年1月 1753 1 日）。 1753 年 1 月 1 日之前的所有日期都会更改为此值。 日期的精度仅限于 SQL Server 2005 的精度，这意味着日期将精确到 1/300 秒。
 * 存储模拟器支持小于 512 个字节的分区键和行键属性值（每个）。 帐户名称、表名和键属性名称的总大小不能超过900个字节。
 * 存储模拟器中的表中的某行的总大小被限制为小于 1 MB。
 * 在存储模拟器中，数据类型 `Edm.Guid` 或 `Edm.Binary` 的属性仅支持查询筛选器字符串中的 `Equal (eq)` 和 `NotEqual (ne)` 比较运算符。
@@ -251,7 +251,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 ### <a name="version-54"></a>版本 5.4
 
-* 为了提高安装稳定性，模拟器在安装时不再尝试预留端口。 如果需要端口保留, 请使用**init**命令的 *-reserveports*选项来指定它们。
+* 为了提高安装稳定性，模拟器在安装时不再尝试预留端口。 如果需要端口保留，请使用**init**命令的 *-reserveports*选项来指定它们。
 
 ### <a name="version-53"></a>版本 5.3
 
@@ -302,7 +302,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 ### <a name="version-41"></a>4\.1 版
 
 * 存储模拟器现在支持 Blob、队列和表服务终结点上的2015-02-21 版本的存储服务。 它不支持新的追加 Blob 功能。
-* 模拟器现在为不受支持的存储服务版本返回有意义的错误消息。 建议使用最新版本的模拟器。 如果遇到 VersionNotSupportedByEmulator 错误 (HTTP 状态代码 400-错误请求), 请下载最新版本的模拟器。
+* 模拟器现在为不受支持的存储服务版本返回有意义的错误消息。 建议使用最新版本的模拟器。 如果遇到 VersionNotSupportedByEmulator 错误（HTTP 状态代码 400-错误请求），请下载最新版本的模拟器。
 * 修复了在并发合并操作期间发生争用情况下导致表实体数据不正确的错误。
 
 ### <a name="version-40"></a>4\.0 版
@@ -315,7 +315,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 ### <a name="version-31"></a>版本 3.1
 
-* 在存储模拟器中现在支持读取访问异地冗余存储 (RA-GRS)。 `Get Blob Service Stats`、和api`Get Table Service Stats`受辅助帐户支持, 并将始终根据基础 SQL 数据库返回 LastSyncTime 响应元素的值作为当前时间。 `Get Queue Service Stats` 若要使用存储模拟器以编程方式访问次要副本，请使用 Storage Client Library for .NET 3.2 版或更高版本。 请参阅适用于 .NET 的 Microsoft Azure 存储客户端库参考获取详细信息。
+* 在存储模拟器中现在支持读取访问异地冗余存储 (RA-GRS)。 帐户辅助副本支持 `Get Blob Service Stats`、`Get Queue Service Stats` 和 `Get Table Service Stats` Api，并将根据基础 SQL 数据库返回 LastSyncTime 响应元素的值作为当前时间。 若要使用存储模拟器以编程方式访问次要副本，请使用 Storage Client Library for .NET 3.2 版或更高版本。 请参阅适用于 .NET 的 Microsoft Azure 存储客户端库参考获取详细信息。
 
 ### <a name="version-30"></a>版本 3.0
 

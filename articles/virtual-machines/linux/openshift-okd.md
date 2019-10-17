@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: fccb77110eafa131733ecea70fb209b2a168436c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 66d17fb2a96bbb5b1dcb51151242f014b4116b86
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082502"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390531"
 ---
 # <a name="deploy-okd-in-azure"></a>在 Azure 中部署 OKD
 
@@ -143,7 +143,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
 }
 ```
 
-如果不想在命令行上呆着等待部署完成，请将 `--no-wait` 添加为组部署的选项之一。 可以在 Azure 门户中资源组的部署部分检索部署的输出。
+如果不想在命令行上呆着等待部署完成，请将 `--no-wait` 添加为组部署的选项之一。 可以从 Azure 门户中在资源组的部署部分中检索部署的输出。
 
 ## <a name="connect-to-the-okd-cluster"></a>连接至 OKD 群集
 
@@ -163,6 +163,6 @@ az group delete --name openshiftrg
 
 ## <a name="next-steps"></a>后续步骤
 
-- [部署后任务](./openshift-post-deployment.md)
-- [OpenShift 部署故障排除](./openshift-troubleshooting.md)
+- [部署后任务](./openshift-container-platform-3x-post-deployment.md)
+- [OpenShift 部署故障排除](./openshift-container-platform-3x-troubleshooting.md)
 - [OKD 入门](https://docs.okd.io)

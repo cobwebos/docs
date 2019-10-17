@@ -1,17 +1,17 @@
 ---
-title: Azure 数据工厂映射数据流列模式
+title: Azure 数据工厂中的列模式映射数据流
 description: 使用 Azure 数据工厂列模式在映射数据流中创建通用数据转换模式
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 535656f315f65ffb7aa241618fe9e73b8246b71f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a95bbb726f8c391270d3f60ed769d9475004b1e4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027862"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388021"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>映射数据流列模式
 
@@ -44,7 +44,7 @@ ms.locfileid: "72027862"
 ## <a name="rule-based-mapping"></a>基于规则的映射
 映射源中的列并选择转换时，可以选择 "固定映射" 或 "基于规则的映射"。 如果你知道数据的架构，并且期望源数据集中始终匹配特定静态名称的特定列，则可以使用固定映射。 但在使用灵活的架构时，请使用基于规则的映射。 你将能够使用上述规则构建模式匹配。
 
-基于![规则的映射](media/data-flow/rule2.png "基于")规则的映射
+![基于规则的映射](media/data-flow/rule2.png "基于规则的映射")
 
 使用 "表达式生成器" 生成规则。 表达式将返回一个布尔值，以匹配列（true）或排除列（false）。
 

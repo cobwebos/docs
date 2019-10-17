@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e0d6c8b4dc94728e3b4943b6ed411ef3b47bb7a0
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 99e3cbc157817321e41a273b2bcf31128d71db18
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300574"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431029"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -37,7 +37,7 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 本文末尾列出了 "Azure 上的 SAP 工作负荷" 部分中文档的更改。
 
 
-## <a name="sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）
+## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA on Azure（大型实例）
 
 一系列文档将引导你完成 Azure （大型实例）上的 SAP HANA，或用于简短的 HANA 大型实例。 有关 HANA 大型实例的以下区域的信息，请参阅：
 
@@ -109,7 +109,7 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 - [教程：将 Azure Active Directory 与 SAP NetWeaver 集成](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-netweaver-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [教程：将 Azure Active Directory 与 SAP Business ByDesign 集成](https://docs.microsoft.com/azure/active-directory/saas-apps/sapbusinessbydesign-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [教程：将 Azure Active Directory 与 SAP HANA 集成](https://docs.microsoft.com/azure/active-directory/saas-apps/saphana-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- @no__t 0Your S/4HANA 环境：Fiori 启动板 SAML 单一登录 Azure AD @ no__t-0
+- [S/4HANA 环境： Fiori 启动板 SAML 单一登录 Azure AD](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/)
 
 有关将 Azure 服务集成到 SAP 组件的信息，请参阅：
 
@@ -120,18 +120,20 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 
 
 ## <a name="change-log"></a>更改日志
-- 10/11/2019：更改和[Azure 虚拟机存储配置 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中的 Ultra 磁盘存储配置和简介
-- 10/01/2019：更改 Azure 邻近位置组的图形，以获得更清晰的[SAP 应用程序网络延迟](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)
-- 10/01/2019：更改[Azure 上的 SAP HANA 基础结构配置和操作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)，以便更正适用于/hana/shared. 的高可用 NFS 共享的语句 
-- 09/28/2019：更改在[Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) ，以将 SBD 阐明为在 RHEL 群集上不受支持的防护机制  
-- 09/17/2019：更改 NetWeaver 规划和部署指南，以统一围绕适用于 SAP 的 VM 扩展的术语  
-- 08/22/2019：在[Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)以更新自定义角色创建的 url 的更改  
+- 10/16/2019：修复[备份和还原](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-backup-restore)中的损坏链接
+- 10/16/2019：[通过 Pacemaker SUSE Linux Enterprise Server 上的 Azure vm 上的 Azure vm 中的 Azure vm 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)，将建议的最低操作系统版本更改为 SLES 12 SP4
+- 10/11/2019：对和[Azure 虚拟机存储配置 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中的 Ultra 磁盘存储配置和引入的更改
+- 10/01/2019：更改[Azure 邻近位置组的图形，以实现与 SAP 应用程序的最佳网络延迟](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)，使其更清晰
+- 10/01/2019：更改[Azure 上 SAP HANA 基础结构配置和操作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)，以便更正适用于/hana/shared. 的高度可用 NFS 共享的声明 
+- 09/28/2019：在[Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)以将 SBD 阐明为在 RHEL 群集上不支持防护机制  
+- 09/17/2019：在 NetWeaver 规划和部署指南中进行更改，以统一围绕适用于 SAP 的 VM 扩展术语  
+- 08/22/2019：在[Azure 中 SUSE Linux Enterprise Server 设置 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)以更新自定义角色创建的 url  
 - 08/16/2019：在[azure 中设置 Pacemaker Red Hat Enterprise Linux 的](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)更改，以提醒客户更新自定义角色中的操作（如果更新到新版本的 azure 隔离代理）  
-- 08/15/2019：[SAP HANA Azure 虚拟机存储配置](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中的更改，以反映超级磁盘（以前称为超级 SSD）的公开上市
-- 08/01/2019：更改了[在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)以将更改专门用于 SLES 15 的更改 
-- 07/23/2019：通过[使用 Azure 中的文件共享在 Windows 故障转移群集上对 SAP ASCS/SCS 实例进行群集](sap-high-availability-guide-wsfc-file-share.md)更改，以反映 Azure Site Recovery 服务对存储空间直通的支持
+- 08/15/2019： [SAP HANA Azure 虚拟机存储配置](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中的更改，以反映超磁盘（以前称为超级 SSD）的公开上市
+- 08/01/2019：在[Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)以将更改专用于 SLES 15 的更改 
+- 07/23/2019：[通过在 Azure 中使用文件共享在 Windows 故障转移群集上对 SAP ASCS/SCS 实例进行群集](sap-high-availability-guide-wsfc-file-share.md)更改，以反映 Azure Site Recovery 服务对存储空间直通的支持
 - 07/14/2019：发布[Azure 邻近组，以实现 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)
-- 07/11/2019：涵盖 HANA 大型实例的各种文档中的更改，涵盖 HANA 大型实例的修订版4
+- 07/11/2019：涵盖 HANA 大型实例的各种文档中的更改包含 HANA 大型实例的修订版4
 - 07/09/2019：[在 Red Hat Enterprise Server 中发布 IBM DB2 HADR](high-availability-guide-rhel-ibm-db2-luw.md)的新指南
 - 06/13/2019：[与 sap 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux 上的 Sap NetWeaver 的高可用性](high-availability-guide-rhel-netapp-files.md)版本
 

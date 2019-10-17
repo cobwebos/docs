@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.openlocfilehash: f08dea90e7700082b6eeb708b576451060f81255
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 168d977b9dc0ea6117796cf98a8562f168258d28
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140945"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387455"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
 
 本文使用详细的示例介绍并演示 Azure 数据工厂定价模型。
 
 > [!NOTE]
-> 以下这些示例中使用的价格是假设的，并不意味着实际定价。
+> 以下示例中使用的价格是假设的，并不是指实际定价。
 
 ## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>将数据每隔一小时从 AWS S3 复制到 Azure Blob 存储
 
@@ -126,15 +126,15 @@ ms.locfileid: "70140945"
   - 管道活动 = $0.00003（以 1 分钟的执行时间按比例计算。 Azure Integration Runtime 上的定价为 $0.002/小时）
   - 外部管道活动 = $0.000041（以 10 分钟的执行时间按比例计算。 Azure Integration Runtime 上的定价为 $0.00025/小时）
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>对普通 workday 使用映射数据流调试 (预览版定价)
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>对普通 workday 使用映射数据流调试（预览版定价）
 
-作为一位数据工程人员, 你负责设计、构建和测试每天映射数据流。 你将在早上登录 ADF UI, 并为数据流启用调试模式。 调试会话的默认 TTL 为60分钟。 你一整天就会工作10小时, 因此调试会话永远不会过期。 因此, 一天的费用将为:
+作为一位数据工程人员，你负责设计、构建和测试每天映射数据流。 你将在早上登录 ADF UI，并为数据流启用调试模式。 调试会话的默认 TTL 为60分钟。 你一整天就会工作10小时，因此调试会话永远不会过期。 因此，一天的费用将为：
 
-**10 (小时) x 8 (内核) x $0.112 = $8.96**
+**10（小时） x 8 （内核） x $0.112 = $8.96**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>在 blob 存储区中转换数据和映射数据流 (预览版定价)
+## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>在 blob 存储区中转换数据和映射数据流（预览版定价）
 
-在这种情况下, 你想要在 ADF 中直观地转换 Blob 存储中的数据, 按小时计划。
+在这种情况下，你想要在 ADF 中直观地转换 Blob 存储中的数据，按小时计划。
 
 若要完成此方案，需使用以下项创建一个管道：
 
@@ -153,17 +153,17 @@ ms.locfileid: "70140945"
 | 创建管道 | 3 个读/写实体（1 个用于创建管道，2 个用于数据集引用） |
 | 获取管道 | 1 个读/写实体 |
 | 运行管道 | 2 个活动运行（1 个用于触发器运行，1 个用于活动运行） |
-| 数据流假设: 执行时间 = 10 分钟 + 10 分钟 TTL | 带有\* TTL 10 的一般计算的 10 8 核 |
+| 数据流假设：执行时间 = 10 分钟 + 10 分钟 TTL | 10 \* 8 的一般计算核心，TTL 为10 |
 | 监视管道假设：仅发生 1 次运行 | 重试了 2 个监视运行记录（1 个用于管道运行，1 个用于活动运行） |
 
-**方案总定价: $0.3011**
+**方案总定价： $0.3011**
 
 - 数据工厂操作 = **$0.0001**
   - 读取/写入 = 10\*00001 = $0.0001 [1 读/写 = $0.50/50000 = 0.00001]
   - 监视  = 2\*000005 = $0.00001 [1 监视 = $0.25/50000 = 0.000005]
-- 管道业务&amp;流程执行 = **$0.301**
+- 管道业务流程 &amp; 执行 = **$0.301**
   - 活动运行 = 001\*2 = 0.002 [1 运行 = $1/1000 = 0.001]
-  - 数据流活动 = $0.299 按比例20分钟 (执行时间为10分钟 + 10 分钟 TTL)。 Azure Integration Runtime 上的 $ 0.112/小时, 具有8个核心一般计算
+  - 数据流活动 = $0.299 按比例20分钟（执行时间为10分钟 + 10 分钟 TTL）。 Azure Integration Runtime 上的 $ 0.112/小时，具有8个核心一般计算
 
 ## <a name="next-steps"></a>后续步骤
 

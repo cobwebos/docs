@@ -7,12 +7,12 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 8c9043db8159e2b7ff6520e9525472048cf73ae1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5b618798c74393f3e7d89cfc69c67ba831356ce4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031274"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385554"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>使用映射数据流转换数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "72031274"
 > * 测试性运行管道。
 > * 监视数据流活动
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**。 使用 ADLS 存储作为*源*和*接收器*数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)以获取创建步骤。
 
@@ -52,14 +52,14 @@ ms.locfileid: "72031274"
 4. 选择要在其中创建数据工厂的 Azure **订阅**。 
 5. 对于“资源组”，请执行以下步骤之一：
      
-    a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
 
     b. 选择“新建”，并输入资源组的名称。 
          
     若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。 
 6. 在“版本”下选择“V2”。
 7. 在“位置”下选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算（例如，Azure HDInsight）可以位于其他区域。
-8. 选择“创建”。 
+8. 选择**创建**。 
 9. 创建完成后，通知中心内会显示通知。 选择“转到资源”导航到“数据工厂”页。
 10. 选择“创作和监视”，在单独的选项卡中启动数据工厂 UI。
 
@@ -115,7 +115,7 @@ ms.locfileid: "72031274"
     ![数据流画布](media/tutorial-data-flow/dataflow5.png)
 1. 将筛选器转换命名为**FilterYears**。 单击 "**筛选"** 旁边的 "表达式" 框以打开 "表达式生成器"。 在此处指定筛选条件。 
     
-    ![筛选器](media/tutorial-data-flow/filter1.png)
+    ![筛选](media/tutorial-data-flow/filter1.png)
 1. 数据流表达式生成器允许以交互方式生成要在各种转换中使用的表达式。 表达式可以包含内置函数、输入架构中的列和用户定义的参数。 有关如何生成表达式的详细信息，请参阅[Data Flow expression builder](concepts-data-flow-expression-builder.md)。
     
     在本教程中，你要筛选在1910年到2000年之间出现的流派喜剧的电影。 由于 year 目前是一个字符串，因此需要使用 ```toInteger()``` 函数将其转换为整数。 使用大于或等于（> =）和小于或等于（< =）运算符来与文本年份值1910和200进行比较。 将这些表达式与 and （& &）运算符结合在一起。 表达式如下所示：
@@ -128,13 +128,13 @@ ms.locfileid: "72031274"
 
     如果调试群集处于活动状态，则可以通过单击 "**刷新**" 来验证逻辑，以查看表达式输出与使用的输入进行比较。 有多个正确答案可以帮助你如何使用数据流表达式语言来完成此逻辑。
     
-    ![筛选器](media/tutorial-data-flow/filter2.png)
+    ![筛选](media/tutorial-data-flow/filter2.png)
 
     完成表达式后，单击 "**保存并完成**"。
 
 1. 提取**数据预览**，验证筛选器是否正常工作。
     
-    ![筛选器](media/tutorial-data-flow/filter3.png)
+    ![筛选](media/tutorial-data-flow/filter3.png)
 1. 要添加的下一个转换是**架构修饰符**下的**聚合**转换。
     
     ![聚合](media/tutorial-data-flow/agg1.png)

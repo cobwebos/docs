@@ -1,6 +1,6 @@
 ---
-title: Azure 状态监视器 v2 API 参考：禁用监视 |Microsoft Docs
-description: 状态监视器 v2 API 参考。 ApplicationInsightsMonitoring。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
+title: Azure 应用程序 Insights 代理 API 参考：禁用监视 |Microsoft Docs
+description: Application Insights 代理 API 参考。 ApplicationInsightsMonitoring。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,21 +12,21 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: af105a6a819ced475f490d3c99fc1e63d8eee5c8
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d305e664c68af34027510a4e27d293bb24abc021
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203430"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389903"
 ---
-# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>状态监视器 v2 API：Disable-ApplicationInsightsMonitoring
+# <a name="application-insights-agent-api-disable-applicationinsightsmonitoring"></a>Application Insights 代理 API： ApplicationInsightsMonitoring
 
-本文介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
+本文介绍了一个 cmdlet，它是[ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成员。
 
 ## <a name="description"></a>描述
 
-在目标计算机上禁用监视。
-此 cmdlet 将删除对 IIS applicationHost.config 的编辑并删除注册表项。
+禁用目标计算机上的监视。
+此 cmdlet 将删除对 IIS Applicationhost.config 的编辑并删除注册表项。
 
 > [!IMPORTANT] 
 > 此 cmdlet 需要具有管理员权限的 PowerShell 会话。
@@ -37,12 +37,12 @@ ms.locfileid: "71203430"
 PS C:\> Disable-ApplicationInsightsMonitoring
 ```
 
-## <a name="parameters"></a>Parameters 
+## <a name="parameters"></a>parameters 
 
 ### <a name="-verbose"></a>-Verbose
-**通用参数。** 使用此开关可显示详细日志。
+**通用参数。** 使用此开关显示详细日志。
 
-## <a name="output"></a>Output
+## <a name="output"></a>输出
 
 
 #### <a name="example-output-from-successfully-disabling-monitoring"></a>成功禁用监视的示例输出
@@ -71,5 +71,5 @@ Successfully disabled Application Insights Status Monitor
 
 ## <a name="next-steps"></a>后续步骤
 
- 使用状态监视器 v2 执行更多操作：
- - 使用我们的指南对状态监视器 v2 进行[故障排除](status-monitor-v2-troubleshoot.md)。
+ Application Insights 代理中执行更多操作：
+ - 使用本指南来对 Application Insights 代理[进行故障排除](status-monitor-v2-troubleshoot.md)。

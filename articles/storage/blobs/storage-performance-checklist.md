@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 56bb5a1ac3c4003eca6ebe8392fc5b97f36a3317
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 24d601dc2116b7daf315bb3c6f20c4dc0b6f6ce5
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311131"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382038"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 存储的性能和可伸缩性清单
 
@@ -66,7 +66,7 @@ Azure 存储空间的可伸缩性和性能目标为容量、事务速率和带�
 
 - 使用存储帐户来存储非托管磁盘，并将这些磁盘添加到虚拟机（Vm）吗？ 对于此方案，Microsoft 建议使用托管磁盘。 托管磁盘会自动缩放，无需创建和管理单独的存储帐户。 有关详细信息，请参阅[Azure 托管磁盘简介](../../virtual-machines/windows/managed-disks-overview.md)
 - 是否为每个客户使用一个存储帐户，以便进行数据隔离？ 对于此方案，Microsoft 建议为每个客户使用 blob 容器，而不是使用整个存储帐户。 Azure 存储现在允许基于每个容器分配基于角色的访问控制（RBAC）角色。 有关详细信息，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure blob 和队列数据的访问权限](../common/storage-auth-aad-rbac-portal.md)。
-- 是否在使用多个存储帐户来分片增加入口、出口、每秒 i/o 操作数（IOPS）或容量？ 在这种情况下，Microsoft 建议你充分利用标准存储帐户的限制，以减少工作负载所需的存储帐户数（如果可能）。 联系[Azure 支持](https://azure.microsoft.com/support/options/)人员，请求增加存储帐户的限制。 有关详细信息，请参阅[宣布更大、更大规模的存储帐户](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。
+- 是否在使用多个存储帐户来分片增加入口、出口、每秒 i/o 操作数（IOPS）或容量？ 在这种情况下，Microsoft 建议你利用更多的存储帐户限制，以减少工作负载所需的存储帐户数（如果可能）。 联系[Azure 支持](https://azure.microsoft.com/support/options/)人员，请求增加存储帐户的限制。 有关详细信息，请参阅[宣布更大、更大规模的存储帐户](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。
 
 ### <a name="capacity-and-transaction-targets"></a>容量和事务目标
 
@@ -113,7 +113,7 @@ Blob 存储使用基于范围的分区方案进行缩放和负载均衡。 每�
 
     例如，如果你的日常操作使用带有时间戳的 blob，如*yyyymmdd*，则该日常操作的所有流量将定向到单个分区服务器提供的单个 blob。 考虑每个 blob 的限制和每个分区的限制是否符合您的需要，如果需要，请考虑将此操作分解为多个 blob。 同样，如果在表中存储时序数据，则所有流量都可能定向到键命名空间的最后一部分。 如果使用的是数字 Id，请在 ID 前面加上三位数哈希。 如果使用时间戳，请在时间戳前面加上秒的值，例如*ssyyyymmdd*。 如果你的应用程序定期执行列出和查询操作，请选择将限制查询数量的哈希函数。 在某些情况下，随机前缀可能就已足够。
   
-- 有关 Azure 存储中使用的分区方案的详细信息，@no__t 请参阅 0Azure Storage：具有非常一致性的高可用云存储服务](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)。
+- 有关 Azure 存储中使用的分区方案的详细信息，请参阅[Azure 存储：具有高度一致性的高可用性云存储服务](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)。
 
 ## <a name="networking"></a>网络
 
@@ -194,7 +194,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 对于其他编程语言，请参阅文档以确定如何设置连接限制。  
 
-有关详细信息，请参阅博客文章 [Web 服务：并发连接](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)。  
+有关详细信息，请参阅博客文章[Web 服务：并发连接](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)。  
 
 ### <a name="increase-minimum-number-of-threads"></a>增加最小线程数
 
@@ -230,7 +230,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 有关 Azure 存储错误代码的详细信息，请参阅[状态和错误代码](/rest/api/storageservices/status-and-error-codes2)。
 
-## <a name="copying-and-moving-blobs"></a>复制和移动 Blob
+## <a name="copying-and-moving-blobs"></a>复制和移动 blob
 
 Azure 存储提供多种解决方案，用于在存储帐户中、在存储帐户之间以及在本地系统和云之间复制和移动 blob。 本部分介绍这些选项对性能的影响。 有关有效地将数据传输到 Blob 存储或从 Blob 存储传输数据的信息，请参阅[选择用于数据传输的 Azure 解决方案](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
@@ -286,6 +286,4 @@ Azure 存储支持块 blob、追加 blob 和页 blob。 在给定的使用方案
 ## <a name="next-steps"></a>后续步骤
 
 - [存储帐户的 Azure 存储可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [队列存储的性能和可伸缩性清单](../queues/storage-performance-checklist.md)
-- [表存储的性能和可伸缩性清单](../tables/storage-performance-checklist.md)
 - [状态和错误代码](/rest/api/storageservices/Status-and-Error-Codes2)

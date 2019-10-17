@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 5aac941133296d2040d5dd670155b80f5807e1e9
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bda0ab50b829fa2e6d58e73b51e3a0a0f6c9e2af
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614129"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432916"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的服务主体更新或轮换凭据
 
@@ -20,7 +20,7 @@ ms.locfileid: "67614129"
 
 ## <a name="before-you-begin"></a>开始之前
 
-你需要 Azure CLI 版本 2.0.65 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+需要安装并配置 Azure CLI 版本2.0.65 或更高版本。 运行  `az --version` 即可查找版本。 如果需要安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="choose-to-update-or-create-a-service-principal"></a>选择要更新或创建服务主体
 
@@ -29,32 +29,28 @@ ms.locfileid: "67614129"
 * 为群集使用的现有服务主体更新凭据，或
 * 创建服务主体并更新群集以使用这些新凭据。
 
-如果要创建服务主体，然后更新 AKS 群集，请跳过此部分中的其余步骤并继续浏览[创建服务主体](#create-a-service-principal)。 如果要为 AKS 群集使用的现有服务主体更新凭据，请继续执行此部分中的步骤。
+### <a name="update-existing-service-principal-expiration"></a>更新现有的服务主体过期时间
 
-### <a name="get-the-service-principal-id"></a>获取服务主体 ID
-
-若要更新现有服务主体的凭据，获取群集使用的服务主体 ID [az aks 显示][az-aks-show]命令。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的 ID   。 服务主体 ID 设置为一个名为变量*SP_ID*以便在其他命令中使用。
+若要更新现有服务主体的凭据，请使用[az aks show][az-aks-show]命令获取群集的服务主体 ID。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的 ID。 服务主体 ID 设置为一个名为*SP_ID*的变量，以便在其他命令中使用。
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
     --query servicePrincipalProfile.clientId -o tsv)
 ```
 
-### <a name="update-the-service-principal-credentials"></a>更新服务主体凭据
-
-使用包含服务主体 ID 的变量集，现在重置使用的凭据[az ad sp 凭据重置][az-ad-sp-credential-reset]。 下面的示例可让 Azure 平台为服务主体生成新安全密码。 此新安全密码也存储为变量。
+使用包含服务主体 ID 的变量集，现在使用[az ad sp credential reset][az-ad-sp-credential-reset]重置凭据。 下面的示例可让 Azure 平台为服务主体生成新安全密码。 此新安全密码也存储为变量。
 
 ```azurecli-interactive
 SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
 ```
 
-现在继续浏览[使用新凭据更新 AKS 群集](#update-aks-cluster-with-new-credentials)。
+现在继续浏览[使用新凭据更新 AKS 群集](#update-aks-cluster-with-new-credentials)。 若要在 AKS 群集上反映服务主体更改，必须执行此步骤。
 
-## <a name="create-a-service-principal"></a>创建服务主体
+### <a name="create-a-new-service-principal"></a>创建新的服务主体
 
 如果在上一部分中选择更新现有服务主体凭据，请跳过此步骤。 继续浏览[使用新凭据更新 AKS 群集](#update-aks-cluster-with-new-credentials)。
 
-若要创建服务主体，然后更新在 AKS 群集中使用这些新凭据，请使用[az ad sp 创建-对于-rbac][az-ad-sp-create]命令。 在以下示例中，`--skip-assignment` 参数阻止系统分配更多的默认分配。
+若要创建服务主体，然后更新 AKS 群集以使用这些新凭据，请使用[az ad sp 创建-rbac][az-ad-sp-create]命令。 在以下示例中，`--skip-assignment` 参数阻止系统分配更多的默认分配。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -71,16 +67,18 @@ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-现在定义的服务主体 ID 和客户端使用的机密从你自己的输出变量[az ad sp 创建-对于-rbac][az-ad-sp-create]命令，如下面的示例中所示。 SP_ID  是 appId  ，SP_SECRET  是 password  ：
+现在，使用你自己的[az ad sp create for rbac][az-ad-sp-create]命令中的输出定义服务主体 ID 和客户端密钥的变量，如以下示例中所示。 SP_ID 是 appId，SP_SECRET 是 password：
 
 ```azurecli-interactive
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
 SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ```
 
+现在继续浏览[使用新凭据更新 AKS 群集](#update-aks-cluster-with-new-credentials)。 若要在 AKS 群集上反映服务主体更改，必须执行此步骤。
+
 ## <a name="update-aks-cluster-with-new-credentials"></a>使用新凭据更新 AKS 群集
 
-无论是否选择了更新的现有服务主体的凭据或创建服务主体，您现在更新 AKS 群集与你使用的新凭据[az aks 更新凭据][az-aks-update-credentials]命令。 会使用 --service-principal  和 --client-secret  的变量：
+无论你是选择更新现有服务主体的凭据，还是要创建服务主体，现在都可以使用[az AKS update-凭据][az-aks-update-credentials]命令更新 AKS 群集和新的凭据。 会使用 --service-principal 和 --client-secret 的变量：
 
 ```azurecli-interactive
 az aks update-credentials \
@@ -95,7 +93,7 @@ az aks update-credentials \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，更新了 AKS 群集本身的服务主体。 有关如何管理标识为群集内的工作负荷的详细信息，请参阅[身份验证和授权在 AKS 中的最佳做法][best-practices-identity]。
+在本文中，更新了 AKS 群集本身的服务主体。 有关如何在群集中管理工作负荷标识的详细信息，请参阅[AKS 中的身份验证和授权的最佳实践][best-practices-identity]。
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

@@ -2,28 +2,25 @@
 title: 使用 Azure 自动化管理 Azure 云服务 | Microsoft Docs
 description: 了解如何使用 Azure 自动化服务管理大规模 Azure 云服务。
 services: cloud-services, automation
-documentationcenter: ''
 author: jodoglevy
 manager: timlt
 editor: ''
 ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 1fc1ac9668454578ee137a2ddd1b85319fea0a28
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 482fcf7d100a90d9527f510382c5dafb4f67adfa
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945501"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439072"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>使用 Azure 自动化管理 Azure 云服务
 本指南介绍 Azure 自动化服务，以及如何使用它来简化 Azure 云服务的管理。
 
-## <a name="what-is-azure-automation"></a>什么是 Azure 自动化？
+## <a name="what-is-azure-automation"></a>Azure 自动化是什么？
 [Azure 自动化](https://azure.microsoft.com/services/automation/)是用于通过流程自动化简化云管理的一项 Azure 服务。 使用 Azure 自动化可以自动完成需要长时间运行、人工操作、易出错且经常重复的任务，从而改善组织的可靠性、效率和价值生成时间。
 
 Azure 自动化能够提供高度可靠且长期可用的工作流执行引擎，它可以在组织的发展过程中根据需求进行扩展。 利用 Azure 自动化，流程可以手动、通过第三方系统或按计划时间间隔启动，从而使任务完全根据需求进行。
@@ -43,4 +40,3 @@ Azure 自动化能够提供高度可靠且长期可用的工作流执行引擎�
 
 * [Azure 自动化概述](../automation/automation-intro.md)
 * [第一个 Runbook](../automation/automation-first-runbook-graphical.md)
-* [Azure 自动化学习路线图](https://azure.microsoft.com/documentation/learning-paths/automation/)

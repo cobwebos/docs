@@ -14,20 +14,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 8ce307df954575b3204f7a4b3f46af1f4a9c3089
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: ce5750a5071ee0dfc257498f83f41b6d59c99a8b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027456"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388522"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>向 Xamarin.Forms 应用添加推送通知
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
-> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况，并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务，以便在云中持久保存和同步应用程序数据。
+>
+> 如果希望将云服务集成到移动应用程序中，请立即注册[App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
 
@@ -35,7 +36,7 @@ ms.locfileid: "72027456"
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 对于 iOS，用户需要 [Apple 开发人员计划成员身份](https://developer.apple.com/programs/ios/)和物理 iOS 设备。 [iOS 模拟器不支持推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
 
@@ -122,9 +123,9 @@ ms.locfileid: "72027456"
     }
     ```
 
-    `FirebaseRegistrationService` 类负责生成用于授权应用程序访问 FCM 的安全令牌。 当应用程序收到来自 FCM 的注册令牌时，会调用 `OnTokenRefresh` 方法。 方法检索颁发的令牌`FirebaseInstanceId.Instance.Token`属性通过 FCM 以异步方式更新。 `OnTokenRefresh`不经常调用方法，因为安装或卸载，当用户删除应用程序数据，应用程序清除实例 ID，该应用程序时，才会更新令牌或令牌的安全后受到影响。 此外，FCM 实例 ID 服务将请求的应用程序定期刷新其令牌，通常每隔 6 个月。
+    `FirebaseRegistrationService` 类负责生成用于授权应用程序访问 FCM 的安全令牌。 当应用程序收到来自 FCM 的注册令牌时，会调用 `OnTokenRefresh` 方法。 此方法从 `FirebaseInstanceId.Instance.Token` 属性检索令牌，该属性通过 FCM 以异步方式更新。 很少调用 `OnTokenRefresh` 方法，因为仅当以下情况下才会更新令牌：安装或卸载应用程序、用户删除应用程序数据、应用程序清除实例 ID、令牌的安全性已受到威胁。 此外，FCM 实例 ID 服务将请求应用程序定期刷新其令牌，通常为每 6 个月一次。
 
-    `OnTokenRefresh`方法还会调用`SendRegistrationTokenToAzureNotificationHub`方法，用于将用户的注册令牌与 Azure 通知中心相关联。
+    `OnTokenRefresh` 方法还会调用 `SendRegistrationTokenToAzureNotificationHub` 方法，该方法用于将用户的注册令牌与 Azure 通知中心相关联。
 
 #### <a name="registering-with-the-azure-notification-hub"></a>注册到 Azure 通知中心
 
@@ -224,7 +225,7 @@ ms.locfileid: "72027456"
     }
     ```
 
-    `OnMessageReceived` 方法（应用程序接收来自 FCM 的通知时调用）提取消息内容并调用 `SendNotification` 方法。 此方法转换为本地运行应用程序时，并将通知显示在通知区域启动的通知消息内容。
+    `OnMessageReceived` 方法（应用程序接收来自 FCM 的通知时调用）提取消息内容并调用 `SendNotification` 方法。 此方法将消息内容转换为运行应用程序时启动的本地通知，并将通知显示在通知区域中。
 
 现在，已准备好在 Android 设备或模拟器上运行的应用中测试推送通知。
 
@@ -320,7 +321,7 @@ ms.locfileid: "72027456"
 
     这会启用对远程通知的支持并请求推送注册。
 
-应用现已更新，可支持推送通知。
+现在，你的应用程序已更新为支持推送通知。
 
 #### <a name="test-push-notifications-in-your-ios-app"></a>在 iOS 应用中测试推送通知
 
@@ -418,9 +419,9 @@ ms.locfileid: "72027456"
 也可继续学习以下教程之一：
 
 * [向应用添加身份验证](app-service-mobile-xamarin-forms-get-started-users.md)  
-  了解如何使用标识提供者对应用程序的用户进行身份验证。
+  了解如何使用标识提供者对应用的用户进行身份验证。
 * [为应用启用脱机同步](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  了解如何使用移动应用后端向应用添加脱机支持。 使用脱机同步，用户可以与移动应用进行交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
+  了解如何使用移动应用后端向应用添加脱机支持。 使用脱机同步，用户可以与移动应用进行交互&mdash;查看、添加或修改数据&mdash;，即使在没有网络连接时也是如此。
 
 <!-- Images. -->
 

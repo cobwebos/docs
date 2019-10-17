@@ -1,6 +1,6 @@
 ---
 title: Azure 配额错误 | Microsoft Docs
-description: 介绍如何解决资源配额错误。
+description: 介绍如何在 Azure 资源管理器中部署资源时解决资源配额错误。
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7938f2c47e4af8d8804191fbb9e55b379f9554ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 201ddf69f9c28b5b3a4197f91768f749152094de
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60390141"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390313"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
 
@@ -78,7 +78,7 @@ az vm list-usage --location "South Central US"
 
 ### <a name="powershell"></a>PowerShell
 
-对于 PowerShell，可使用 Get-AzVMUsage 命令查找虚拟机配额  。
+对于 PowerShell，可使用 Get-AzVMUsage 命令查找虚拟机配额。
 
 ```powershell
 Get-AzVMUsage -Location "South Central US"
@@ -105,17 +105,17 @@ Virtual Machines                             0 10000 Count
 
 1. 选择 **订阅**。
 
-   ![订阅](./media/resource-manager-quota-errors/subscriptions.png)
+   ![Subscriptions](./media/resource-manager-quota-errors/subscriptions.png)
 
 2. 选择需要增加配额的订阅。
 
    ![选择订阅](./media/resource-manager-quota-errors/select-subscription.png)
 
-3. 选择“使用情况 + 配额” 
+3. 选择“使用情况 + 配额”
 
    ![选择使用情况和配额](./media/resource-manager-quota-errors/select-usage-quotas.png)
 
-4. 在右上角选择“请求增加”  。
+4. 在右上角选择“请求增加”。
 
    ![请求增加](./media/resource-manager-quota-errors/request-increase.png)
 

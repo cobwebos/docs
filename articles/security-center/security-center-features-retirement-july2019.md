@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c4fe185f5d203b1b0eba306c80cded14ad82bc98
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202209"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438634"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>停用安全中心功能（2019年7月）
 
@@ -115,7 +115,7 @@ Log Analytics 仪表板在单个工作区中显示了见解。 但是，本机�
 
 ### <a name="security-events-map---the-new-experience"></a>安全事件映射-新体验
 
-我们鼓励你使用安全中心内置的警报映射功能：**安全警报映射（预览版）** 。 此功能提供优化的体验，并在所有订阅和关联的工作区中工作。 它为你提供了跨环境的高级视图，并不侧重于单个工作区。
+我们鼓励你使用安全中心内内置的警报映射功能：**安全警报映射（预览版）** 。 此功能提供优化的体验，并在所有订阅和关联的工作区中工作。 它为你提供了跨环境的高级视图，并不侧重于单个工作区。
 
 ## 自定义警报规则（预览）<a name="menu_customalerts"></a>
 
@@ -169,7 +169,7 @@ Log Analytics 仪表板在单个工作区中显示了见解。 但是，本机�
 
 Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)来监视安全配置，以便强化 OS。 这些规则适用于防火墙、审核、密码策略等。 如果发现计算机中的某项配置有漏洞，则安全中心会生成安全建议。 "[编辑安全配置" 屏幕](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config)允许客户在安全中心自定义默认 OS 安全配置。
 
-我们已停用此预览版功能。 若要在停用日期之后将安全配置重置为其默认值，请按照[以下说明](https://aka.ms/ascresetsecurityconfigurations)通过 API 或 Powershell 执行此操作
+我们已停用此预览版功能。 若要在停用日期之后将安全配置重置为其默认值，请按照[以下说明](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)通过 API 或 Powershell 执行此操作
 
 ![编辑安全配置][17]
 

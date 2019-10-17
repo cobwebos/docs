@@ -1,17 +1,17 @@
 ---
 title: Azure 父资源错误 | Microsoft Docs
-description: 说明如何在使用父资源时解决错误。
+description: 介绍如何在 Azure 资源管理器模板中使用父资源时解决错误。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6111f9128c56fed97414734275a21612544cccb8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 197554e16e28b4928cab351838f00e1631c269fd
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205394"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390239"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>解决父资源的错误
 

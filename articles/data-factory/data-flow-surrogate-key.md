@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 45e2d35a3b0a3f3c89913bbe70d7c43c17cbcee0
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 144d6298a13d35d94a68b35c443a3a47cefcfc2a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029189"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387164"
 ---
 # <a name="mapping-data-flow-surrogate-key-transformation"></a>映射数据流代理键转换
 
@@ -20,7 +20,7 @@ ms.locfileid: "72029189"
 
 使用代理键转换将递增的非业务任意键值添加到数据流行集。 这对于在星型架构分析数据模型中设计维度表非常有用，在该模型中维度表中的每个成员都需要拥有一个非业务的唯一键（这是 Kimball DW 方法的一部分）。
 
-![代理键转换](media/data-flow/surrogate.png "Surrogate Key Transformation")
+![代理键转换](media/data-flow/surrogate.png "代理键转换")
 
 “键列”是将赋予新代理键列的名称。
 
@@ -30,7 +30,7 @@ ms.locfileid: "72029189"
 
 如果要从源中存在的值开始序列，可以在代理键转换后立即使用派生列转换，并将两个值相加：
 
-![SK 添加最大](media/data-flow/sk006.png "代理键转换添加最大值")
+![SK 添加 Max](media/data-flow/sk006.png "代理键转换添加 Max")
 
 若要使用以前的最大值播种密钥值，可使用以下两种方法：
 

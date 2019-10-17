@@ -14,18 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 48f7066f2db96165daa104dcf32fe8e2e2cd55cf
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 89e3fb57f29a6c24b64082db06678b3965ad8517
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025225"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388606"
 ---
 # <a name="getting-started"> </a>关于 Azure 应用服务中的移动应用
 
 > [!NOTE]
-> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
-> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况，并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务，以便在云中持久保存和同步应用程序数据。
+>
+> 如果希望将云服务集成到移动应用程序中，请立即注册[App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 Azure 应用服务是完全托管的[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 产品，适用于专业开发人员。 该服务为 Web、移动和集成方案提供丰富的功能集。 
 
@@ -36,9 +37,9 @@ Azure 应用服务中的移动应用功能为企业开发人员和系统集成�
 ## <a name="why-mobile-apps"></a>为何使用移动应用？
 移动应用功能用于：
 
-* **生成本机和跨平台应用**：无论是要生成本机 iOS、Android、Windows 应用还是跨平台 Xamarin 或 Cordova (PhoneGap) 应用，都可以通过本机 SDK 利用应用服务。
-* **连接到企业系统**：使用移动应用功能，可以在短时间内添加企业登录，连接到企业本地资源或云资源。
-* **生成具有数据同步功能的可脱机应用**：生成可脱机运行的应用，在与任何企业数据源或软件即服务 (SaaS) API 建立连接时，使用移动应用在后台同步数据，提高移动工作者的生产力。
+* 生成本机和跨平台应用：无论是要生成本机 iOS、Android、Windows 应用还是跨平台 Xamarin 或 Cordova (PhoneGap) 应用，都可以通过本机 SDK 利用应用服务。
+* 连接到企业系统：使用移动应用功能，可以在短时间内添加企业登录，连接到企业本地资源或云资源。
+* 生成具有数据同步功能的可脱机应用：生成可脱机运行的应用，在与任何企业数据源或软件即服务 (SaaS) API 建立连接时，使用移动应用在后台同步数据，提高移动工作者的生产力。
 * **在几秒内向数百万用户推送通知**：在任何设备上使用实时推送通知与客户联系，根据客户需求个性化推送通知并适时发送。
 
 ## <a name="mobile-apps-features"></a>移动应用功能
@@ -48,7 +49,7 @@ Azure 应用服务中的移动应用功能为企业开发人员和系统集成�
 
     深入了解[身份验证功能]。
 
-* **数据访问**：移动应用提供已链接到 Azure SQL 数据库或本地 SQL Server 且适合移动用途的 OData v3 数据源。 该服务可基于实体框架，因此可轻松地与其他 NoSQL 和 SQL 数据提供程序集成，包括 [Azure 表存储]、MongoDB、[Azure Cosmos DB] 和 SaaS API 提供程序（如 Office 365 和 Salesforce.com）。
+* 数据访问：移动应用提供已链接到 Azure SQL 数据库或本地 SQL Server 且适合移动用途的 OData v3 数据源。 该服务可基于实体框架，因此可轻松地与其他 NoSQL 和 SQL 数据提供程序集成，包括 [Azure 表存储]、MongoDB、[Azure Cosmos DB] 和 SaaS API 提供程序（如 Office 365 和 Salesforce.com）。
 
 * **脱机同步**：可以通过客户端 SDK 轻松地生成可靠、响应能力强且可与脱机数据集一起运行的移动应用程序。 可以让此数据集自动与后端数据（包括冲突解决方案支持）同步。
 
@@ -67,7 +68,7 @@ Azure 应用服务中的移动应用功能为企业开发人员和系统集成�
 
   深入了解[自动缩放]。
 
-* **过渡环境**：应用服务可以运行多个版本的站点，用于执行 A/B 测试，在较大型 DevOps 计划中进行生产测试，以及对新后端执行现场过渡。
+* 过渡环境：应用服务可以运行多个版本的站点，用于执行 A/B 测试，在较大型 DevOps 计划中进行生产测试，以及对新后端执行现场过渡。
 
   深入了解 [过渡环境]。
 
@@ -75,7 +76,7 @@ Azure 应用服务中的移动应用功能为企业开发人员和系统集成�
 
   深入了解 [部署选项](../app-service/deploy-local-git.md)。
 
-* **虚拟网络**：应用服务可以使用虚拟网络、Azure ExpressRoute 或混合连接与本地资源建立连接。
+* 虚拟网络：应用服务可以使用虚拟网络、Azure ExpressRoute 或混合连接与本地资源建立连接。
 
   深入了解[混合连接]、[虚拟网络]和 [ExpressRoute]。
 

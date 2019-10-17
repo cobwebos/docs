@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266851"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390549"
 ---
-## <a name="benefits"></a>优点 
+## <a name="benefits"></a>优势 
 
 保留整个主机具有以下优势：
 
@@ -83,7 +83,9 @@ ms.locfileid: "71266851"
 
 有关详细信息，请参阅[Virtual Machine vCPU 配额](/azure/virtual-machines/windows/quotas)。
 
-## <a name="pricing"></a>定价
+免费试用版和 MSDN 订阅没有 Azure 专用主机的配额。
+
+## <a name="pricing"></a>价格
 
 无论部署多少个 Vm，都按专用主机对用户收费。 在你的月度语句中，你将看到新的可计费资源类型。 专用主机上的 Vm 仍会显示在你的声明中，但将具有0价格。
 
@@ -97,11 +99,11 @@ ms.locfileid: "71266851"
 
 SKU 是为主机定义的，它表示 VM 大小系列和类型。 可以在单个主机内混合使用不同大小的多个 Vm，只要它们属于相同的大小系列。 该类型是当前在该区域中可用的硬件生成。
 
-同一`types` VM 系列的不同之处是来自不同的 cpu 供应商，并且具有不同的 cpu 生成和核心数。
+同一 VM 系列的不同 `types` 将来自不同的 CPU 供应商，并且具有不同的 CPU 生成和核心数。
 
 若要了解详细信息，请参阅 "主机[定价" 页](https://aka.ms/ADHPricing)。
 
-在预览期间，我们将支持以下主机 SKU\types：DSv3_Type1 和 ESv3_Type1
+在预览期间，我们将支持以下主机 SKU\types： DSv3_Type1 和 ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>主机生命周期
@@ -109,10 +111,10 @@ SKU 是为主机定义的，它表示 VM 大小系列和类型。 可以在单�
 
 Azure 监视和管理主机的运行状况状态。 查询主机时，将返回以下状态：
 
-| 正常运行状态   | 描述       |
+| 运行状况状态   | 描述       |
 |----------|----------------|
 | 主机可用     | 主机没有已知问题。   |
 | 正在调查的主机  | 我们正在寻找的主机遇到一些问题。 这是 Azure 尝试并确定确定的问题的范围和根本原因所需的过渡状态。 主机上运行的虚拟机可能会受到影响。 |
-| 主机挂起解除分配   | Azure 无法将主机恢复回正常状态，要求你将虚拟机从此主机中重新部署。 如果`autoReplaceOnFailure`启用，则虚拟机将*服务修复*到正常运行的硬件。 否则，虚拟机可能在即将失败的主机上运行。|
-| 已解除分配主机  | 所有虚拟机都已从主机中删除。 由于硬件是从轮换中取出的，因此不再向此主机收费。   |
+| 主机挂起解除分配   | Azure 无法将主机恢复回正常状态，要求你将虚拟机从此主机中重新部署。 如果 @no__t 为 "启用"，则虚拟机将从*服务修复*到正常运行的硬件。 否则，虚拟机可能在即将失败的主机上运行。|
+| 主机解除分配  | 所有虚拟机都已从主机中删除。 由于硬件是从轮换中取出的，因此不再向此主机收费。   |
 

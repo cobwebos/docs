@@ -12,20 +12,20 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/23/2018
+ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: f9f1072954e01f718fd3d9f03430b6ed6666bb62
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97529118d420813cf638f211bdd5559068802c95
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082600"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390651"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>在 Azure Stack 中部署 OpenShift 容器平台或 OKD。
 
 可在 Azure Stack 中部署 OpenShift。 Azure 与 Azure Stack 之间存在一些重要的差异，因此，部署方法和功能会略有不同。
 
-目前，Azure 云提供程序无法在 Azure Stack 中运行。 出于此原因，无法使用附加的磁盘作为 Azure Stack 中的永久存储。 可以改为配置其他存储选项，例如 NFS、iSCSI、GlusterFS，等等。或者，可以启用 CNS 并使用 GlusterFS 作为永久存储。 如果启用了 CNS，将部署额外的三个节点和附加的存储供 GlusterFS 使用。
+目前，Azure 云提供程序无法在 Azure Stack 中运行。 出于此原因，无法使用附加的磁盘作为 Azure Stack 中的永久存储。 相反，你可以配置其他存储选项，例如 NFS、iSCSI、GlusterFS 等。作为替代方法，你可以启用 CN，并使用 GlusterFS 来实现持久存储。 如果启用了 CNS，将部署额外的三个节点和附加的存储供 GlusterFS 使用。
 
 可以使用多种方法之一在 Azure Stack 中部署 OpenShift 容器平台或 OKD：
 
@@ -66,9 +66,9 @@ ms.locfileid: "70082600"
 - OpenShift 群集详细信息，通过主机文件修改 (deployOpenShift.sh)
 - RHEL 映像引用（azuredeploy.json 中的变量）
 
-对于使用 Azure CLI 进行部署的步骤，请遵循 [OpenShift 容器平台](./openshift-container-platform.md)部分或 [OKD](./openshift-okd.md) 部分中的相应内容。
+对于使用 Azure CLI 进行部署的步骤，请遵循 [OpenShift 容器平台](./openshift-container-platform-3x.md)部分或 [OKD](./openshift-okd.md) 部分中的相应内容。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [部署后任务](./openshift-post-deployment.md)
-- [在 Azure 中排查 OpenShift 部署问题](./openshift-troubleshooting.md)
+- [部署后任务](./openshift-container-platform-3x-post-deployment.md)
+- [在 Azure 中排查 OpenShift 部署问题](./openshift-container-platform-3x-troubleshooting.md)

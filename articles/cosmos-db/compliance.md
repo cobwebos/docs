@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 35c8841220c116cc34ba670eaa9ac7b36dc4cd7a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3c77cc1baa07b0ee0e9f0141d81c623259ea57c4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615519"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387529"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB 符合性 
 
@@ -20,7 +20,7 @@ Azure Cosmos DB 面向所有 Azure 区域提供。 Microsoft 为客户提供了�
 
 * Azure 公有云，全球通用。
 
-* **Azure 中国世纪互联**是通过 Microsoft 和世纪互联, 这是一个国家最大的 internet 提供商提供的独特合作。
+* **Azure 中国世纪互联**是通过 Microsoft 和世纪互联，这是一个国家最大的 internet 提供商提供的独特合作。
 
 * Azure 德国以数据受托人模式提供服务，这可确保客户数据仍保留在德国，由 Deutsche Telecom 的子公司 T-Systems International GmbH 充当德国数据受托人，对这些数据进行管控。
 
@@ -28,7 +28,7 @@ Azure Cosmos DB 面向所有 Azure 区域提供。 Microsoft 为客户提供了�
 
 * 面向国防部 (DoD) 的 Azure 政府在美国的两个区域向美国国防部提供服务。
 
-为帮助客户在全球受监管行业和市场中履行自己的合规义务，Azure 在广度（产品总数）和深度（评估范围内面向客户的服务数量）方面提供了业内最大的符合性产品组合。  Azure 符合性产品/服务分为四个部分: 全局适用的、美国政府、特定于行业的以及区域或国家/地区。  符合性产品/服务基于各种类型的保证，包括独立的第三方审核企业生成的正式认证、证明、验证、授权和评估，以及 Microsoft 生成的合同修正、自我评估和客户指南文档。
+为帮助客户在全球受监管行业和市场中履行自己的合规义务，Azure 在广度（产品总数）和深度（评估范围内面向客户的服务数量）方面提供了业内最大的符合性产品组合。  Azure 符合性产品/服务分为四个部分：全局适用的、美国政府、特定于行业的以及区域或国家/地区。  符合性产品/服务基于各种类型的保证，包括独立的第三方审核企业生成的正式认证、证明、验证、授权和评估，以及 Microsoft 生成的合同修正、自我评估和客户指南文档。
 
 ## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB 认证  
 
@@ -36,8 +36,8 @@ Azure Cosmos DB 将不断扩展认证覆盖范围。 目前，Azure Cosmos DB �
 
 | **全球适用** | **美国政府** | **行业特定** | **区域或国家/地区特定** |
 | --- | --- | --- | --- |
-| CSA STAR 认证 | DoD SRG 级别 2 | HIPAA BAA | 澳大利亚 IRAP 未分类 |
-| CSA STAR 证明 | FedRAMP 中等 | HITRUST | 德国 C5|
+| CSA STAR 认证 | DoD SRG 级别 2 | HIPAA BAA | 澳大利亚 IRAP |
+| CSA STAR 证明 | FedRAMP 中 | HITRUST | 德国 C5|
 | ISO 20000-1:2011 | GxP（FDA 21 CFR 第 11 部分） | PCI DSS | 新加坡 MTCS 级别 3 |
 | ISO 22301:2012 | | | 西班牙 ENS 高|
 | ISO 27001:2013| | | |
@@ -69,6 +69,6 @@ Azure Cosmos DB 将不断扩展认证覆盖范围。 目前，Azure Cosmos DB �
 
 * 若要了解 Azure Cosmos DB 的最新符合性认证，请参阅[Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。  
 
-* 有关 Azure Cosmos DB 安全性和最新改进的概述, 请参阅[Azure Cosmos 数据库安全性](database-security.md)一文。
+* 有关 Azure Cosmos DB 安全性和最新改进的概述，请参阅[Azure Cosmos 数据库安全性](database-security.md)一文。
 
 * 有关 Microsoft 认证的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。

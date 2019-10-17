@@ -7,19 +7,19 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 36c0f02202c738ac96d26b748b741cd8eee27380
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: dcffc1ba783b49343bf3380b62c3d4085f5aa347
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241828"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390092"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>什么是 Service Fabric 应用程序资源模型？
 建议通过 Azure 资源管理器将 Service Fabric 应用程序部署到 Service Fabric 群集。 此方法可以在 JSON 中描述应用程序和服务，并将其部署在与群集相同的资源管理器模板中。 与通过 PowerShell 或 Azure CLI 部署和管理应用程序相反，无需等待群集准备就绪。 只需执行一步操作，即可完成注册、预配和部署应用程序的整个过程。 这是在群集中管理应用程序生命周期的最佳做法。 有关详细信息，请查看[最佳实践](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)。
 
 在适当情况下，将应用程序作为资源管理器资源进行管理可改进：
 * 审核线索：资源管理器审核所有操作，并记录详细的活动日志，有助于跟踪对这些应用程序和群集做出的任何更改。
-* 基于角色的访问控制：可通过同一个资源管理器模板，管理对群集及其上部署的应用程序的访问。
+* 基于角色的访问控制：管理群集的访问权限以及部署在群集上的应用程序可以通过相同的资源管理器模板来完成。
 * Azure 资源管理器（通过 Azure 门户）成为管理群集和关键应用程序部署的一站式管理。
 
 ## <a name="service-fabric-application-life-cycle-with-azure-resource-manager"></a>通过 Azure 资源管理器 Service Fabric 应用程序生命周期 
@@ -51,10 +51,10 @@ ms.locfileid: "70241828"
 1. 在 Visual Studio 中，右键单击投票项目，然后选择 "包"。   
 ![包应用程序][PackageApplication]  
 2. 打开刚刚创建的 **.\service-fabric-dotnet-quickstart\Voting\pkg\Debug**目录，并将内容压缩到名为 "**投票**" 的文件中，以便 applicationmanifest.xml 位于 zip 文件的根目录下。  
-![Zip 应用程序][ZipApplication]  
+@no__t 0Zip 应用程序 @ no__t-1  
 3. 将该文件的扩展名从 .zip 重命名为 **.sfpkg**。
 4. 在 Azure 门户的存储帐户的 "**应用**" 容器中，单击 "**上传**" 并上传 **.sfpkg**。  
-![上载应用程序包][UploadAppPkg]
+@no__t 0Upload 应用程序包 @ no__t-1
 
 应用程序现已暂存。 现在，我们已准备好创建 Azure 资源管理器模板来部署应用程序。      
    
@@ -71,7 +71,7 @@ ms.locfileid: "70241828"
 | clusterName            | 要部署到的群集的名称 | sf-cluster123                                                |                                                              |
 | application            | 应用程序的名称                 | 否决                                                       |
 | applicationTypeName    | 应用程序的类型名称           | VotingType                                                   | 必须匹配 Applicationmanifest.xml 中的内容                 |
-| applicationTypeVersion | 应用程序类型的版本         | 1.0.0                                                        | 必须匹配 Applicationmanifest.xml 中的内容                 |
+| ApplicationTypeVersion | 应用程序类型的版本         | 1.0.0                                                        | 必须匹配 Applicationmanifest.xml 中的内容                 |
 | serviceName            | 服务的服务名称。         | 投票 ~ VotingWeb                                             | 必须采用 ApplicationName ~ ServiceType 格式            |
 | serviceTypeName        | 服务的类型名称                | VotingWeb                                                    | 必须与 Servicemanifest.xml 中的内容匹配                 |
 | appPackageUrl          | 应用程序的 blob 存储 URL     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob 存储中应用程序包的 URL （如下所述的过程） |
@@ -155,9 +155,9 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 * [在 Service Fabric 中对应用程序建模](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)
 * [Service Fabric 应用程序和服务清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
 
-## <a name="see-also"></a>请参阅
-* [最佳实践](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
-* [将应用程序和服务作为 Azure 资源进行管理](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
+## <a name="see-also"></a>另请参阅
+* [最佳实践](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
+* [将应用程序和服务作为 Azure 资源进行管理](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png

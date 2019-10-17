@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 298fd336e87d07f9e65221d5e5f539e255c94993
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245326"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432308"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>排查由于文件系统错误导致的 Linux VM 启动问题
 
@@ -71,7 +71,7 @@ Checking all file systems.
 
 如果文件系统未完全关闭或与存储相关的问题，则可能出现此问题。 这些问题包括硬件或软件错误、驱动程序或程序的问题、写错误，等等。对关键数据进行备份始终很重要。 本文中描述的工具可以帮助恢复文件系统，但仍可能会丢失数据。
 
-Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是：[FSCK](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific)、 [E2FSCK](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)和[Xfs_repair](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair)。
+Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是： [FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific)、 [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)和[Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair)。
 
 ## <a name="resolution"></a>分辨率
 
@@ -88,7 +88,7 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是�
 
 2. 选择电源图标按钮，然后选择 "重新启动 VM"。 （如果串行控制台未启用或未成功连接，你将看不到此按钮。）
 
-   ![图像](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
+   ![影像](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
 
 3. 在紧急模式下启动 VM。
 
@@ -106,7 +106,7 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是�
    xfs_repair /dev/sda1
    ```
 
-7. 如果收到错误消息 "错误：文件系统在需要重播的日志中具有重要的元数据更改，请创建一个临时目录并装载 filesystem：
+7. 如果收到错误消息 "错误：文件系统在需要重播的日志中有重要的元数据更改"，请创建一个临时目录并装载 filesystem：
 
    ```
    mkdir /temp
@@ -150,7 +150,7 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是�
    xfs_repair /dev/sdc1
    ```
 
-5. 如果收到错误消息 "错误：文件系统在需要重播的日志中具有重要的元数据更改，请创建一个临时目录并装载 filesystem：
+5. 如果收到错误消息 "错误：文件系统在需要重播的日志中有重要的元数据更改"，请创建一个临时目录并装载 filesystem：
 
    ```
    mkdir /temp

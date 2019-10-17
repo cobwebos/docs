@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: ab5af0e5971b91f45cbb12b4d0583caafa5ad504
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d79cefa9adec403ebbb5105351d2909eac9d02a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079645"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390502"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>使用 Azure 门户在 VHD 中创建 VM
 
@@ -34,6 +34,7 @@ ms.locfileid: "70079645"
 
 如果想创建多个 VM，请勿使用专用磁盘。 对于较大的部署，应先[创建映像](capture-image-resource.md)，然后[使用该映像创建多个 VM](create-vm-generalized-managed.md)。
 
+建议从单个快照或 VHD 将并发部署数限制为20个 Vm。 
 
 ## <a name="copy-a-disk"></a>复制磁盘
 
@@ -74,6 +75,7 @@ ms.locfileid: "70079645"
 10. 在“来宾配置”页上，根据需要添加任何扩展。
 11. 完成操作后，选择“查看 + 创建”。 
 12. 如果 VM 配置通过验证，则选择“创建”以启动部署。
+
 
 ## <a name="next-steps"></a>后续步骤
 

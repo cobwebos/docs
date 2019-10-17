@@ -1,6 +1,6 @@
 ---
 title: Azure 资源策略的 RequestDisallowedByPolicy 错误 | Microsoft Docs
-description: 说明 RequestDisallowedByPolicy 错误的原因。
+description: 描述在通过 Azure 资源管理器部署资源时出现 RequestDisallowedByPolicy 错误的原因。
 services: azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e862637c688fd473b112fdfc0ee197da0444d02f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c791342bf68f84f6893e549d8528d1a861aa9040
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121235"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390297"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure 资源策略的 RequestDisallowedByPolicy 错误
 
@@ -37,7 +37,7 @@ ms.locfileid: "71121235"
 }
 ```
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 若要检索有关阻止部署的策略的详细信息，请使用以下方法之一：
 

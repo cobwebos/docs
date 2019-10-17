@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: da6c3c90ebbeffcf468aad3809da097976d8ef0d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029319"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387237"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>映射数据流联接转换
 
@@ -20,7 +20,7 @@ ms.locfileid: "72029319"
 
 在数据流中使用联接来组合两个表中的数据。 单击将成为左侧关系的转换，并从工具箱中添加一个“联接”转换。 在“联接”转换内，你将从数据流中选择要成为右侧关系的另一个数据流。
 
-![“联接”转换](media/data-flow/join.png "联接")
+![联接转换](media/data-flow/join.png "Join")
 
 ## <a name="join-types"></a>联接类型
 
@@ -54,9 +54,9 @@ ms.locfileid: "72029319"
 
 ## <a name="join-performance-optimizations"></a>联接性能优化
 
-与 SSIS 等工具中的“合并联接”不同，ADF 数据流中的联接不是必需的合并联接操作。 因此，不需要首先对联接键进行排序。 联接操作将基于 Spark 中的最佳联接操作进行：广播 / 端映射联接：
+与 SSIS 等工具中的“合并联接”不同，ADF 数据流中的联接不是必需的合并联接操作。 因此，不需要首先对联接键进行排序。 将基于 Spark 中的最佳联接操作执行联接操作：广播/映射端联接：
 
-![“联接”转换优化](media/data-flow/joinoptimize.png "联接优化")
+![联接转换优化](media/data-flow/joinoptimize.png "联接优化")
 
 如果可以将数据集装入工作节点内存，则可以优化联接性能。 你还可以在联接操作中指定数据分区，以创建能够更好地容纳到每个辅助角色的内存中的数据集。
 
@@ -66,7 +66,7 @@ ms.locfileid: "72029319"
 
 ![自联接](media/data-flow/selfjoin.png "自联接")
 
-在上面的关系图中，“选择”转换位于顶部。 它所做的所有工作就是将原始流的别名指定为“OrigSourceBatting”。 在它下方突出显示的“联接”转换中，你可以看到我们将此“选择别名”流用作右侧联接，以便可以在内部联接的左侧和右侧引用同一个键。
+在上面的关系图中，选择转换位于顶部。 它所做的所有工作就是将原始流的别名指定为“OrigSourceBatting”。 在它下方突出显示的“联接”转换中，你可以看到我们将此“选择别名”流用作右侧联接，以便可以在内部联接的左侧和右侧引用同一个键。
 
 ## <a name="composite-and-custom-keys"></a>复合和自定义键
 

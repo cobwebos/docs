@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 733d3f9c4079193107f22178bdbde3a3ecf0e7ca
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0a1051d67bf45e96f82833ef8190008204cdc90b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028222"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387532"
 ---
 # <a name="mapping-data-flow-parameters"></a>映射数据流参数
 
@@ -32,23 +32,23 @@ ms.locfileid: "72028222"
 
 若要将参数添加到数据流，请单击 "数据流" 画布的空白部分以查看 "常规" 属性。 在 "设置" 窗格中，您将看到一个名为 "参数" 的选项卡。 单击 "新建" 按钮以生成新参数。 对于每个参数，您必须分配一个名称，选择一个类型，并根据需要设置默认值。
 
-![Create Data flow 参数](media/data-flow/create-params.png "create data flow 参数")
+![创建数据流参数](media/data-flow/create-params.png "创建数据流参数")
 
 可以在任何数据流表达式中使用参数。 参数以 $ 开头并且是不可变的。 您将在 "参数" 选项卡下的 "表达式生成器" 中找到可用参数的列表。
 
-数据流![参数表达式](media/data-flow/parameter-expression.png "数据流 参数表达式")
+![数据流参数表达式](media/data-flow/parameter-expression.png "数据流参数表达式")
 
 ## <a name="use-parameters-in-your-data-flow"></a>在数据流中使用参数
 
-* 您可以使用转换表达式中的参数值。 您可以在 "表达式生成器" 的 "参数" 选项卡下找到参数列表。 ![使用]数据流参数(media/data-flow/params9.png "使用数据流参数")
+* 您可以使用转换表达式中的参数值。 您可以在 "表达式生成器" 的 "参数" 选项卡下找到参数列表。 ![使用数据流参数](media/data-flow/params9.png "Use 数据流参数 ")
 
-* 参数还用于为源和接收器转换设置配置动态值。 单击 "可配置" 字段内部时，将显示 "添加动态上下文" 链接。 单击此处将转到表达式生成器，可在其中使用参数来使用动态值。 数据流![动态内容](media/data-flow/params6.png "数据流 动态内容")
+* 参数还用于为源和接收器转换设置配置动态值。 单击 "可配置" 字段内部时，将显示 "添加动态上下文" 链接。 单击此处将转到表达式生成器，可在其中使用参数来使用动态值。 ![数据流动态内容](media/data-flow/params6.png "Data flow 动态内容 ")
 
 ## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>设置管道中的映射数据流参数
 
 创建带参数的数据流后，可以使用 "执行数据流" 活动从管道中执行它。 将活动添加到管道画布后，会在活动的 "参数" 选项卡中显示可用的数据流参数。
 
-![设置]数据流参数(media/data-flow/parameter-assign.png "设置数据流参数")
+![设置数据流参数](media/data-flow/parameter-assign.png "设置数据流参数")
 
 如果您的参数数据类型为 string，则当您单击该文本框来设置参数值时，您可以选择输入管道或数据流表达式。 如果选择 "管道表达式"，将会显示 "管道表达式" 面板。 请确保将管道函数包含在使用 @no__t 0 的字符串内插语法中，例如：
 
@@ -61,7 +61,7 @@ ms.locfileid: "72028222"
 
 每个映射数据流可以包含管道和数据流表达式参数的任意组合。 
 
-数据流![参数示例](media/data-flow/parameter-example.png "数据流 参数示例")
+![数据流参数示例](media/data-flow/parameter-example.png "数据流参数示例")
 
 
 

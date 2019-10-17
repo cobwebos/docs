@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5d89c0784c2125f5a7810ff134686645e8314a6
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3e1024b529bd099c70b870fe8b059d4982f04e40
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960211"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389560"
 ---
-# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入实现
+# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 联接实现
 
 与用户类似，设备是要保护的，并且随时随时要用来保护资源的另一个核心标识。 若要实现此目的，可以使用下述某种方法将设备标识引入 Azure AD 并对其进行管理：
 
@@ -30,24 +30,24 @@ ms.locfileid: "71960211"
 
 如果你有本地 Active Directory （AD）环境，并且想要将已加入 AD 域的计算机加入到 Azure AD，则可以通过混合 Azure AD 加入来实现此目的。 本文提供了在环境中实现混合 Azure AD 加入的相关步骤。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 本文假设你熟悉[Azure Active Directory 中设备标识管理的简介](../device-management-introduction.md)。
 
 > [!NOTE]
 > Windows 10 混合 Azure AD 联接所需的最少域控制器版本为 Windows Server 2008 R2。
 
-## <a name="plan-your-implementation"></a>规划实施
+## <a name="plan-your-implementation"></a>计划实施
 
 若要规划混合 Azure AD 实现，应做好以下准备：
 
 |   |   |
 | --- | --- |
-| ![检查][1] | 查看支持的设备 |
-| ![检查][1] | 查看应该知道的事项 |
-| ![检查][1] | 查看混合 Azure AD 联接的受控验证 |
-| ![检查][1] | 基于标识基础结构选择方案 |
-| ![检查][1] | 查看本地 AD UPN 支持混合 Azure AD 联接 |
+| ![勾选标记][1] | 查看支持的设备 |
+| ![勾选标记][1] | 查看应该知道的事项 |
+| ![勾选标记][1] | 查看混合 Azure AD 联接的受控验证 |
+| ![勾选标记][1] | 基于标识基础结构选择方案 |
+| ![勾选标记][1] | 查看本地 AD UPN 支持混合 Azure AD 联接 |
 
 ## <a name="review-supported-devices"></a>查看支持的设备
 
@@ -97,7 +97,7 @@ ms.locfileid: "71960211"
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>查看混合 Azure AD 联接的受控验证
 
-当所有先决条件都准备就绪后，Windows 设备将自动作为 Azure AD 租户中的设备进行注册。 Azure AD 中这些设备标识的状态称为 "混合 Azure AD 联接"。 有关本文中所述概念的详细信息，请参阅文章[Azure Active Directory 中的设备标识管理](overview.md)和[规划混合 Azure Active Directory 加入实现](hybrid-azuread-join-plan.md)。
+当所有先决条件都准备就绪后，Windows 设备将自动作为 Azure AD 租户中的设备进行注册。 Azure AD 中这些设备标识的状态称为 "混合 Azure AD 联接"。 有关本文中所述概念的详细信息，请参阅[Azure Active Directory 中的设备标识管理简介](overview.md)。
 
 在整个组织中同时启用混合 Azure AD 联接之前，组织可能需要对其进行控制验证。 查看对[混合 Azure AD 联接的受控验证一](hybrid-azuread-join-control.md)文，了解如何实现它。
 
@@ -115,8 +115,8 @@ ms.locfileid: "71960211"
 
 联合环境应具有支持以下要求的标识提供者。 如果已有使用 Active Directory 联合身份验证服务 (AD FS) 的联合环境，则已经支持以下要求。
 
-- **WIAORMULTIAUTHN 声明：** 此声明是为 Windows 下层设备执行混合Azure AD 加入所必需的。
-- **WS-Trust 协议：** 使用 Azure AD 对当前已加入混合 Azure AD 的 Windows 设备进行身份验证时需要此协议。 使用 AD FS 时，需要启用以下 WS-Trust 终结点：`/adfs/services/trust/2005/windowstransport`  
+- **WIAORMULTIAUTHN 声明：** 为 Windows 下层设备执行混合 Azure AD 联接需要此声明。
+- **WS 信任协议：** 需要此协议来对 Windows 当前混合 Azure AD 与 Azure AD 进行联接的设备进行身份验证。 使用 AD FS 时，需要启用以下 WS-Trust 终结点：`/adfs/services/trust/2005/windowstransport`  
 `/adfs/services/trust/13/windowstransport`  
   `/adfs/services/trust/2005/usernamemixed` 
   `/adfs/services/trust/13/usernamemixed`
@@ -129,7 +129,7 @@ ms.locfileid: "71960211"
 > [!NOTE]
 > Azure AD 不支持托管域中的智能卡或证书。
 
-自版本 1.1.819.0 起，Azure AD Connect 提供了混合 Azure AD 联接的配置向导。 使用该向导能够大幅简化配置过程。 如果无法安装所需版本的 Azure AD Connect，请参阅[如何手动配置设备注册](hybrid-azuread-join-manual.md)。 
+自版本 1.1.819.0 起，Azure AD Connect 提供了混合 Azure AD 联接的配置向导。 该向导可让你显著简化配置过程。 如果无法安装所需版本的 Azure AD Connect，请参阅[如何手动配置设备注册](hybrid-azuread-join-manual.md)。 
 
 根据与标识基础结构匹配的方案，请参阅：
 
@@ -140,8 +140,8 @@ ms.locfileid: "71960211"
 
 有时，本地 AD UPN 可能不同于 Azure AD UPN。 在此类情况下，Windows 10 混合 Azure AD 加入根据[身份验证方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)、域类型和 Windows 10 版本对本地 AD UPN 提供有限支持。 环境中可以存在两种类型的本地 AD UPN：
 
-- 可路由的 UPN：可路由的 UPN 具有已向域注册机构注册的有效的已验证域。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.org 是 Contoso 拥有的且[已在 Azure AD 中验证](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)的本地 AD 中的主域
-- 非可路由的 UPN：非可路由的 UPN 没有已验证域。 它仅在组织的专用网络内适用。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.local 是本地 AD 中的主域，但在 Internet 中不是可验证的域，且仅可在 Contoso 的网络内使用。
+- 可路由 UPN：可路由的 UPN 具有有效的验证域，该域已注册到域注册机构。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.org 是 Contoso 拥有的且[已在 Azure AD 中验证](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)的本地 AD 中的主域
+- 不可路由的 UPN：不可路由的 UPN 没有经过验证的域。 它仅在组织的专用网络内适用。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.local 是本地 AD 中的主域，但在 Internet 中不是可验证的域，且仅可在 Contoso 的网络内使用。
 
 下表提供了 Windows 10 混合 Azure AD 加入中对这些本地 AD UPN 的支持情况的详细信息
 

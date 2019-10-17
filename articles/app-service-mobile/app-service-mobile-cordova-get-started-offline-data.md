@@ -14,24 +14,25 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: dc1183e1557d634ab1880376a1347f43f33b329f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c5fcc98bf3da79d1978da6e67535a5a93a8fe321
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027502"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388856"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>为 Cordova 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用 **Auth** 对用户进行身份验证，利用**数据**服务在云中持久保存和同步应用数据。
-> 如果希望将云服务集成到移动应用程序中，请立即注册 App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
+> Visual Studio App Center 支持端到端和集成的服务中心到移动应用开发。 开发人员可以使用**生成**、**测试**和**分发**服务来设置持续集成和交付管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视应用的状态和使用情况，并使用**推送**服务与用户联系。 开发人员还可以利用**Auth**来验证其用户和**数据**服务，以便在云中持久保存和同步应用程序数据。
+>
+> 如果希望将云服务集成到移动应用程序中，请立即注册[App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 。
 
 ## <a name="overview"></a>概述
-本教程介绍适用于 Cordova 的 Azure 移动应用的脱机同步功能。 借助脱机同步，最终用户即使在没有网络连接时也能够与移动应用进行交互（查看、添加或修改数据）。 更改存储在本地数据库中。  设备重新联机后，这些更改会与远程服务同步。
+本教程介绍适用于 Cordova 的 Azure 移动应用的脱机同步功能。 脱机同步允许最终用户与移动应用进行交互&mdash;查看、添加或修改数据&mdash;，即使在没有网络连接时也是如此。 更改存储在本地数据库中。  设备重新联机后，这些更改会与远程服务同步。
 
-本教程基于完成教程 [Apache Cordova 快速入门]时创建的移动应用的 Cordova 快速入门解决方案。 在本教程中，需更新快速入门解决方案，以便添加 Azure 移动应用的脱机功能。  我们还重点介绍了该应用中的特定于脱机的代码。
+本教程基于完成教程 [Apache Cordova 快速入门]时创建的移动应用的 Cordova 快速入门解决方案。 在本教程中，需更新快速入门解决方案，以便添加 Azure 移动应用的脱机功能。  还将重点介绍该应用中的脱机特定代码。
 
 若要了解有关脱机同步功能的详细信息，请参阅主题 [Azure 移动应用中的脱机数据同步]。 有关 API 使用情况的详细信息，请参阅 [API 文档](https://azure.github.io/azure-mobile-apps-js-client)。
 
@@ -71,9 +72,9 @@ ms.locfileid: "72027502"
         // Get the sync context from the client
         syncContext = client.getSyncContext();
 
-    前面增加的代码会初始化本地存储，并定义与 Azure 后端中使用的列值匹配的本地表。 （无需在此代码中包含所有列值。）`version` 字段由移动后端维护，并且用于解决冲突。
+    前面增加的代码会初始化本地存储，并定义与 Azure 后端中使用的列值匹配的本地表。 （无需在此代码中包含所有列值。） @No__t-0 字段由移动后端维护并且用于冲突解决。
 
-    调用 **getSyncContext**可获取对同步上下文的引用。 对于调用 `.push()` 时客户端应用修改的所有表，此同步上下文通过跟踪和推送这些表中的更改来帮助保持表关系。
+    调用 **getSyncContext** 可获取对同步上下文的引用。 对于调用 `.push()` 时客户端应用修改的所有表，此同步上下文通过跟踪和推送这些表中的更改来帮助保持表关系。
 
 3. 将应用程序 URL 更新为移动应用的应用程序 URL。
 
@@ -133,7 +134,7 @@ ms.locfileid: "72027502"
           syncContext.pull(new WindowsAzure.Query('todoitem'));
         }
 
-    调用 syncContext.push() 可决定何时将更改推送到移动应用后端。 例如，可以在与同步按钮关联的按钮事件处理程序中调用 **syncBackend**。
+    通过调用 **syncContext.push()** 决定何时会更改推送到移动应用后端。 例如，可以在与同步按钮关联的按钮事件处理程序中调用 **syncBackend**。
 
 ## <a name="offline-sync-considerations"></a>脱机同步注意事项
 
@@ -141,7 +142,7 @@ ms.locfileid: "72027502"
 
 对具有由上下文跟踪的未完成本地更新的表执行拉取操作时，该拉取操作会自动触发推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **push** 调用，因为它可能是冗余的。
 
-在所提供的代码中，会查询远程 todoItem 表中的所有记录，也可以筛选记录，只需将查询 ID 和查询传递给 **push** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分。
+在所提供的代码中，查询远程 todoItem 表中的所有记录，也可以筛选记录，只需将查询 ID 和查询传递给 **push** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分。
 
 ## <a name="optional-disable-authentication"></a>（可选）禁用身份验证
 
@@ -159,7 +160,7 @@ ms.locfileid: "72027502"
 现在运行应用时，该应用将与 Azure 后端同步。
 
 ## <a name="run-the-client-app"></a>运行客户端应用
-启用脱机同步后，可在每个平台上至少运行一次客户端应用程序来填充本地存储数据库。 稍后，模拟脱机场景，并在应用处于脱机状态时修改本地存储中的数据。
+启用脱机同步后，可在每个平台上至少运行一次客户端应用程序来填充本地存储数据库。 然后模拟脱机情况，并在应用处于脱机状态时修改本地存储中的数据。
 
 ## <a name="optional-test-the-sync-behavior"></a>（可选）测试同步行为
 在本部分中，修改客户端项目，通过对后端使用无效的应用程序 URL 来模拟脱机方案。 添加或更改数据项时，这些更改将保存在本地存储中，但在重新建立连接之前，不会同步到后端数据存储中。
@@ -193,7 +194,7 @@ ms.locfileid: "72027502"
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure 移动应用中的脱机数据同步]
-* [用于 Apache Cordova 的 Visual Studio 工具]
+* [Visual Studio Tools for Apache Cordova]
 
 ## <a name="next-steps"></a>后续步骤
 * 查看[脱机同步示例]中更高级的脱机同步功能，例如冲突解决
@@ -212,7 +213,7 @@ ms.locfileid: "72027502"
 [authentication]: app-service-mobile-cordova-get-started-users.md
 [Work with the .NET backend server SDK for Azure Mobile Apps]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Visual Studio Community 2015]: https://www.visualstudio.com/
-[用于 Apache Cordova 的 Visual Studio 工具]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
+[Visual Studio Tools for Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md

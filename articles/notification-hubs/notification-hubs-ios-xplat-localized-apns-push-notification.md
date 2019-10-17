@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心向 iOS 设备推送本地化通知 | Microsoft Docs
+title: 使用 Azure 通知中心向 iOS 发送本地化推送通知 |Microsoft Docs
 description: 了解如何使用 Azure 通知中心向 iOS 设备推送本地化通知。
 services: notification-hubs
 documentationcenter: ios
@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8eb4cf5e12c16c3c164ecce41a84a9cd32fd85ee
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211887"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385655"
 ---
-# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 设备推送本地化通知
+# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心将本地化推送通知发送到 iOS
 
 > [!div class="op_single_selector"]
 > * [Windows 应用商店 C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
@@ -36,7 +36,7 @@ ms.locfileid: "71211887"
 * iOS 应用程序允许客户端设备指定一种语言并订阅不同的突发新闻类别；
 * 后端使用 Azure 通知中心的“标记”和“模板”功能广播通知。
 
-在本教程中，会执行以下步骤：
+在本教程中，我们将执行以下步骤：
 
 > [!div class="checklist"]
 > * 更新应用用户界面
@@ -73,7 +73,7 @@ ms.locfileid: "71211887"
 
 有关模板的详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)一文。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 完成[向特定 iOS 设备推送通知](notification-hubs-ios-xplat-segmented-apns-push-notification.md)教程，并具有可用代码，因为本教程直接基于该代码。
 * Visual Studio 2019 是可选的。
@@ -82,7 +82,7 @@ ms.locfileid: "71211887"
 
 本部分会修改在[使用通知中心发送突发新闻]主题中创建的“突发新闻”应用，以便使用模板发送本地化突发新闻。
 
-在 `MainStoryboard_iPhone.storyboard` 中，使用以下三种语言添加分段控件：英语、法语和国语。
+在 `MainStoryboard_iPhone.storyboard` 中，使用以下三种语言添加分段控件：英语、法语和普通话。
 
 ![创建 iOS UI 情节提要][13]
 
@@ -92,7 +92,7 @@ ms.locfileid: "71211887"
 
 ## <a name="build-the-ios-app"></a>生成 iOS 应用
 
-1. 在 `Notification.h` 中，添加 `retrieveLocale` 方法，并修改 store 和 subscribe 方法，如以下代码中所示：
+1. 在 `Notification.h` 中，添加 @no__t 方法，并修改存储和订阅方法，如以下代码所示：
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;

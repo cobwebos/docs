@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 2513825fcb275aeb3c4f0ca49ff5f2a6bd9441f0
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 192d1a7b3bb10395aa662a4b915fe0189b1306b5
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303010"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434034"
 ---
 # <a name="use-ai-to-understand-blob-data"></a>使用 AI 了解 Blob 数据
 
@@ -30,7 +30,7 @@ AI 扩充创建作为文本捕获的新信息，并将其存储在字段中。 �
 
 在本文中，我们将通过宽镜头查看 AI 扩充，使你可以快速了解整个过程，即从将 blob 中的原始数据转换为搜索索引或知识存储中的可查询信息。
 
-## <a name="what-it-means-to-enrich-blob-data"></a>"充实" blob 数据的意义
+## <a name="what-it-means-to-enrich-blob-data-with-ai"></a>用 AI "充实" blob 数据意味着什么？
 
 *AI 扩充*是 Azure 搜索的索引体系结构的一部分，它将内置 ai 与你提供的 Microsoft 或自定义 ai 相集成。 它可帮助实现端到端方案，在这些方案中，你需要处理 blob （现有的 blob 和新的 blob，因为它们是在更新时）、使用各种 AI 功能提取所需的信息，以及在 Azure 搜索索引中编制索引，以便快速搜索、检索和浏览。 
 
@@ -40,33 +40,37 @@ AI 扩充创建作为文本捕获的新信息，并将其存储在字段中。 �
 
 介于之间为管道体系结构本身。 管道基于*索引器*功能，可以为其分配*技能组合*，该功能由提供 AI 的一项或多项*技能*组成。 管道的用途是生成*丰富的文档*，这些文档输入作为原始内容，但通过管道移动时选取其他结构、上下文和信息。 在编制索引期间，会使用已扩充的文档，以创建要在全文搜索或探索和分析中使用的反转索引和其他结构。
 
-## <a name="how-to-get-started"></a>如何开始
+## <a name="start-with-services-and-data"></a>从服务和数据开始
 
-你可以直接在存储帐户门户页中开始。 单击 "**添加 Azure 搜索**" 并创建新的 azure 搜索服务或选择现有服务。 如果在同一订阅中已经有一个现有搜索服务，则单击 "**添加 Azure 搜索**" 将打开 "导入数据" 向导，以便可以立即逐步完成索引、扩充和索引定义。
+需要 Azure 搜索和 Azure Blob 存储。 在 Blob 存储中，需要一个提供源内容的容器。
 
-将 Azure 搜索添加到你的存储帐户后，你可以遵循标准过程来丰富任何 Azure 数据源中的数据。 假设已有 blob 内容，可以使用 Azure 搜索中的 "导入数据" 向导，简单了解 AI 扩充。 本快速入门介绍了这些步骤：[在门户中创建 AI 扩充管道](cognitive-search-quickstart-blob.md)。 
+你可以直接在存储帐户门户页中开始。 在左侧导航页的 " **Blob 服务**" 下，单击 "**添加 Azure 搜索**" 以创建新服务或选择现有服务。 
+
+将 Azure 搜索添加到你的存储帐户后，你可以遵循标准过程来丰富任何 Azure 数据源中的数据。 建议在 Azure 搜索中使用 "**导入数据**" 向导，简单了解 AI 扩充。 本快速入门介绍了[在门户中创建 AI 扩充管道](cognitive-search-quickstart-blob.md)的步骤： 
 
 在以下部分中，我们将探讨更多组件和概念。
 
-## <a name="use-blob-indexers"></a>使用 Blob 索引器
+## <a name="use-a-blob-indexer"></a>使用 Blob 索引器
 
-AI 扩充是索引管道的外接程序，在 Azure 搜索中，这些管道建立在*索引器*之上。 索引器是一个数据源感知子查询，它具有用于采样数据、读取元数据、检索数据和将本机格式的数据序列化为 JSON 文档以供后续导入的内部逻辑。 索引器通常单独使用索引器进行导入，与 AI 分离，但如果想要生成 AI 扩充管道，则需要使用索引器和技能组合。 在本部分中，我们将重点介绍索引器本身。
+AI 扩充是索引管道的外接程序，在 Azure 搜索中，这些管道建立在*索引器*之上。 索引器是一个数据源感知子查询，它具有用于采样数据、读取元数据、检索数据和将本机格式的数据序列化为 JSON 文档以供后续导入的内部逻辑。 索引器通常单独使用索引器进行导入，与 AI 分离，但如果想要生成 AI 扩充管道，则需要使用索引器和技能组合。 本部分重点介绍索引器;下一节重点介绍技能集。
 
-Azure 存储中的 blob 使用[Azure 搜索 Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)进行索引。 可以通过设置类型来调用此索引器，并提供连接信息，其中包括 Azure 存储帐户和 blob 容器。 除非你之前已将 blob 组织到一个虚拟目录中，然后可以将其作为参数传递，否则 Blob 索引器将从整个容器提取。
+Azure 存储中的 blob 使用[Azure 搜索 Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)进行索引。 您可以使用**导入数据**向导、REST API 或 .net SDK 来调用此索引器。 在代码中，可以通过设置类型来使用此索引器，还可以提供包含 Azure 存储帐户和 blob 容器的连接信息。 您可以通过创建虚拟目录子集化 blob，然后可以将该虚拟目录作为参数传递，也可以通过筛选文件类型扩展。
 
-索引器执行 "文档破解"，连接到数据源后，它是管道中的第一步。 对于 blob 数据，将在其中检测到 PDF、office 文档、图像和其他内容类型。 带有文本提取的文档破解是免费的。 采用图像提取的文档破解按照您可以在 Azure 搜索[定价页](https://azure.microsoft.com/pricing/details/search/)中找到的费率收费。
+索引器执行 "文档破解"，打开一个 blob 来检查内容。 连接到数据源后，它是管道中的第一步。 对于 blob 数据，将在其中检测到 PDF、office 文档、图像和其他内容类型。 带有文本提取的文档破解是免费的。 采用图像提取的文档破解按照您可以在 Azure 搜索[定价页](https://azure.microsoft.com/pricing/details/search/)中找到的费率收费。
 
-尽管所有文档都将被破译，但仅当您显式提供了执行此操作的技巧时才会发生扩充。 例如，如果管道仅包含文本分析，则容器或文档中的任何图像都将被忽略。
+尽管所有文档都将被破译，但仅当您显式提供了执行此操作的技巧时才会发生扩充。 例如，如果管道只包含图像分析，则容器或文档中的文本将被忽略。
 
 Blob 索引器附带了配置参数，并且如果基础数据提供了足够的信息，则支持更改跟踪。 可以在[Azure 搜索 Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)中了解有关核心功能的详细信息。
 
-## <a name="add-ai"></a>添加 AI
+## <a name="add-ai-components"></a>添加 AI 组件
 
-*技能*是 AI 处理的各个组件，可以将其与其他技能结合使用，也可以与顺序处理的其他技能结合使用。 
+AI 扩充是指查找模式或特征的模块，然后相应地执行操作。 照片中的面部识别，照片的文本说明，检测文档中的关键短语，OCR （或在二进制文件中识别打印文本或手写文本）是演示示例。
 
-+ 内置技能由认知服务提供支持，并基于基于计算机视觉的图像分析和基于文本分析的自然语言处理。 一些示例包括[OCR](cognitive-search-skill-ocr.md)、[实体识别](cognitive-search-skill-entity-recognition.md)和[图像分析](cognitive-search-skill-image-analysis.md)。 可在[内容扩充的预定义技能](cognitive-search-predefined-skills.md)中查看内置技能的完整列表。
+在 Azure 搜索中，*技能*是 AI 处理的单个组件，可以单独使用，也可以与其他技能结合使用。 
 
-+ 自定义技能是在允许集成到管道的接口定义中的自定义代码。 在客户解决方案中，通常同时使用这两种方法，同时提供自定义技能，提供开源、第三方或第一方 AI 模块。
++ 内置技能由认知服务提供支持，并基于基于计算机视觉的图像分析和基于文本分析的自然语言处理。 可在[内容扩充的预定义技能](cognitive-search-predefined-skills.md)中查看内置技能的完整列表。
+
++ 自定义技能是在允许集成到管道的[接口定义](cognitive-search-custom-skill-interface.md)中的自定义代码。 在客户解决方案中，通常同时使用这两种方法，同时提供自定义技能，提供开源、第三方或第一方 AI 模块。
 
 *技能组合*是管道中使用的技能的集合，在 "文档破解" 阶段提供内容后调用。 索引器可以仅使用一个技能组合，但该技能组合独立于索引器存在，因此你可以在其他情况下重复使用它。
 
@@ -76,30 +80,33 @@ Blob 索引器附带了配置参数，并且如果基础数据提供了足够的
 
 如果仅使用自定义技能和内置实用工具技能，则没有与认知服务相关的依赖关系或成本。
 
-## <a name="order-of-operations"></a>操作顺序
+<!-- ## Order of operations
 
-现在我们已介绍索引器、内容提取和技能，我们可以更深入地了解管道机制和操作顺序。
+Now we've covered indexers, content extraction, and skills, we can take a closer look at pipeline mechanisms and order of operations.
 
-技能组合是一项或多项技能的组合。 当涉及多项技能时，技能组合以顺序管道的方式运行，生成依赖项关系图，其中一种技能的输出将输入到另一个技能。 
+A skillset is a composition of one or more skills. When multiple skills are involved, the skillset operates as sequential pipeline, producing dependency graphs, where output from one skill becomes input to another. 
 
-例如，如果有大量非结构化文本，则文本分析的操作的示例顺序可能如下所示：
+For example, given a large blob of unstructured text, a sample order of operations for text analytics might be as follows:
 
-1. 使用文本拆分器将 blob 分解为更小的部分。
-1. 使用语言检测确定内容是否为英语或其他语言。
-1. 使用文本转换器将所有文本都转换为公共语言。
-1. 在文本块上运行实体识别、关键短语提取或情绪分析。 在此步骤中，将创建并填充新的字段。 实体可能是位置、人员、组织、日期。 关键短语是看似组合在一起的单词的简短组合。 情绪评分是对负（0）到正（1）情绪的连续值的评级。
-1. 使用文本合并来重建较小块区中的文档。
+1. Use Text Splitter to break the blob into smaller parts.
+1. Use Language Detection to determine if content is English or another language.
+1. Use Text Translator to get all text into a common language.
+1. Run Entity Recognition, Key Phrase Extraction, or Sentiment Analysis on chunks of text. In this step, new fields are created and populated. Entities might be location, people, organization, dates. Key phrases are short combinations of words that appear to belong together. Sentiment score is a rating on continuum of negative (0) to positive (1) sentiment.
+1. Use Text Merger to reconstitute the document from the smaller chunks. -->
 
+## <a name="consume-ai-enriched-output-in-downstream-solutions"></a>在下游解决方案中使用 AI 丰富的输出
 
-## <a name="outputs-and-use-cases"></a>输出和用例
+AI 扩充的输出是 Azure 搜索上的搜索索引，或 Azure 存储中的[知识存储](knowledge-store-concept-intro.md)。
 
-管道末尾的扩充文档与其原始输入版本不同，因为存在包含在扩充过程中提取或生成的新信息的附加字段。 因此，您可以通过多种方式使用原始值和创建的值的组合。
+在 Azure 搜索中，搜索索引用于在客户端应用中使用自由文本和筛选查询进行交互式浏览。 通过 AI 创建的已扩充文档采用 JSON 格式，并以在 Azure 搜索中编制索引的相同方式编制索引，利用索引器提供的所有权益。 例如，在索引过程中，blob 索引器将引用配置参数和设置以利用任何字段映射或更改检测逻辑。 此类设置完全可用于常规索引和 AI 负载更丰富的工作负载。 索引后，当内容存储在 Azure 搜索中时，可以生成丰富的查询和筛选表达式来了解内容。
 
-Output 构成物是 Azure 搜索或 Azure 存储中的知识存储的搜索索引。
+在 Azure 存储中，知识存储有两个表现形式：一个 blob 容器或表存储中的表。 
 
-在 Azure 搜索中，已扩充的文档采用 JSON 格式，可以用相同的方式对所有文档进行索引，并具有索引器提供的好处。 来自已丰富的文档的字段将映射到索引架构。 在索引过程中，blob 索引器将引用配置参数和设置，以利用任何字段映射或指定的更改检测逻辑。 索引后，当内容存储在 Azure 搜索中时，可以生成丰富的查询和筛选表达式来了解内容。
++ Blob 容器完整地捕获已扩充的文档，这在要送入其他进程时非常有用。 
 
-在 Azure 存储中，知识存储有两个表现形式：一个 blob 容器或表存储中的表。 Blob 容器完整地捕获已扩充的文档，这在要送入其他进程时非常有用。 与此相反，表存储可以容纳大量文档的物理投影。 你可以创建包含或排除特定部分的丰富文档的切片或层。 为了在 Power BI 中进行分析，Azure 表存储中的表将成为数据源，以便进行进一步的可视化和探索。
++ 与此相反，表存储可以容纳大量文档的物理投影。 你可以创建包含或排除特定部分的丰富文档的切片或层。 为了在 Power BI 中进行分析，Azure 表存储中的表将成为数据源，以便进行进一步的可视化和探索。
+
+管道末尾的扩充文档与其原始输入版本不同，因为存在包含在扩充过程中提取或生成的新信息的附加字段。 因此，无论使用哪种输出结构，都可以结合使用原始内容和创建的内容。
 
 ## <a name="next-steps"></a>后续步骤
 

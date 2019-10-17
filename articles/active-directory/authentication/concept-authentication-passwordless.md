@@ -5,28 +5,40 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/08/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfcd46f06035e356f6528a79b749350627541121
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: 89b52f356b112cff51105ed44c79788ee4542c6e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303522"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430522"
 ---
-# <a name="what-is-passwordless"></a>什么是无密码？
+# <a name="passwordless-authentication-options"></a>无密码身份验证选项
 
 多重身份验证（MFA）是保护组织安全的一种好方法，但用户在必须记住其密码的情况下就会遇到其他层的失望。 无密码身份验证方法更为方便，因为密码会被删除，并将其替换为你具有的内容以及你知道的内容。
 
 |   | 你拥有的东西 | 你或知道的内容 |
 | --- | --- | --- |
-| 无密码 | 电话号码或安全密钥 | 生物识别或 PIN |
+| 无密码 | Windows 10 设备、电话号码或安全密钥 | 生物识别或 PIN |
 
-当涉及身份验证时，每个组织都有不同的需求。 Microsoft 目前为 windows 电脑提供 Windows Hello。 我们正在将 Microsoft Authenticator 应用和 FIDO2 安全密钥添加到无密码系列。
+当涉及身份验证时，每个组织都有不同的需求。 Microsoft 提供三个无密码 authentication 选项：
+
+- Windows Hello for Business 
+- Microsoft Authenticator 应用 
+- FIDO2 安全密钥
+
+![身份验证：安全性和便利性](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
+
+## <a name="windows-hello-for-business"></a>Windows Hello for Business 
+
+Windows Hello 企业版非常适合拥有自己的指定 Windows PC 的信息工作者。 生物识别和 PIN 直接绑定到用户的 PC，这会阻止除所有者之外的任何人访问。 借助 PKI 集成和对单一登录（SSO）的内置支持，Windows Hello 企业版提供了一种简单而方便的方法，可无缝访问本地和云中的公司资源。
+
+Windows Hello 企业版[规划指南](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide)可用于帮助您决定 Windows Hello 企业版部署的类型以及需要考虑的选项。
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator 应用
 
@@ -44,7 +56,7 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 
 ![使用安全密钥登录 Microsoft Edge](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
-尽管有很多密钥是通过 FIDO 联盟 FIDO2 认证的，但 Microsoft 需要由供应商实现的 FIDO2 CTAP 规范的一些可选扩展，以确保最高的安全性和最佳体验。
+尽管有很多密钥是通过 FIDO 联盟 FIDO2 认证的，但 Microsoft 需要由供应商实现的 FIDO2 客户端到验证器协议（CTAP）规范的一些可选扩展，以确保最高的安全性和最佳接触.
 
 安全密钥**必须**实现 FIDO2 CTAP 协议中的以下功能和扩展，才能与 Microsoft 兼容：
 
@@ -52,7 +64,7 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 | --- | --- | --- |
 | 第 | 居民密钥 | 此功能使安全密钥可移植，其中的凭据存储在安全密钥上。 |
 | 2 | 客户端 pin | 利用此功能，你可以使用另一个因素来保护凭据，并将其应用于没有用户界面的安全密钥。 |
-| 3 | hmac-secret | 此扩展可确保你可以在设备处于脱机状态或处于飞行模式时登录到你的设备。 |
+| 3 | hmac 密钥 | 此扩展可确保你可以在设备处于脱机状态或处于飞行模式时登录到你的设备。 |
 | 4 | 每个 RP 多个帐户 | 此功能可确保你可以在多个服务（如 Microsoft 帐户和 Azure Active Directory）上使用相同的安全密钥。 |
 
 以下提供商提供了 FIDO2 安全密钥，它们具有已知兼容无密码体验的不同形式因素。 Microsoft 鼓励客户通过联系供应商和 FIDO 联盟来评估这些密钥的安全属性。
@@ -75,8 +87,8 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 - 对于每个方法，管理员可面向所有用户或选择其租户中的用户/组
 - 最终用户可以在其帐户门户中注册和管理这些无密码 authentication 方法
 - 最终用户可以用这些无密码身份验证方法登录
-   - Microsoft Authenticator 应用：在使用 Azure AD 身份验证的情况下（包括所有浏览器、在 Windows 10 开箱（OOBE）安装过程中，以及在任何操作系统上集成的移动应用），都适用。
-   - 安全密钥：适用于 Windows 10 版本1809或更高版本的锁屏界面，以及受支持的浏览器（如 Microsoft Edge）中的网页。
+   - Microsoft Authenticator 应用：适用于使用 Azure AD 身份验证的情况，包括跨所有浏览器、在 Windows 10 开箱（OOBE）安装期间以及在任何操作系统上集成的移动应用。
+   - 安全密钥：适用于 Windows 10 版本1809或更高版本的锁屏界面，以及受支持的浏览器（如 Microsoft Edge）中的 web。
 
 ## <a name="next-steps"></a>后续步骤
 

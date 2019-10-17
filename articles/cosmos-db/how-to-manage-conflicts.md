@@ -4,14 +4,14 @@ description: 了解如何管理 Azure Cosmos DB 中的冲突
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/15/2019
 ms.author: mjbrown
-ms.openlocfilehash: c58828fd8ed0de73c03e9e741d14705ad88b1333
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4c62fcc81eb3b045d3b4233e1bb3770ecb9865b3
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093218"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388086"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的冲突解决策略
 
@@ -107,10 +107,10 @@ udp_collection = self.try_create_document_collection(
 
 必须使用下面显示的函数签名实现自定义冲突解决存储过程。 函数名称不需要与使用容器注册存储过程时使用的名称匹配，但它确实可以简化命名。 下面介绍了此存储过程必须实现的参数。
 
-- **incomingItem**：在生成冲突的提交中插入或更新的项。 对于删除操作为 null。
+- **incomingItem**：正在生成冲突的提交中要插入或更新的项。 对于删除操作为 null。
 - **existingItem**：当前已提交的项。 此值在更新中为非 null，对于插入或删除是 null。
-- **isTombstone**：指示 incomingItem 是否与以前删除的项冲突的布尔值。 如果为 true，existingItem 也为 null。
-- **conflictingItems**：容器中所有项目的已提交版本的数组，与 ID 上的 incomingItem 或唯一索引属性冲突。
+- **isTombstone**：布尔值，指示 incomingItem 是否与先前删除的项冲突。 如果为 true，existingItem 也为 null。
+- **conflictingItems**：容器中所有项的已提交版本的数组，这些项与 ID 或任何其他唯一索引属性上的 incomingItem 冲突。
 
 > [!IMPORTANT]
 > 与任何存储过程一样，自定义冲突解决过程可以访问具有相同分区键的任何数据，并可以执行任何插入、更新或删除操作来解决冲突。
@@ -363,7 +363,7 @@ FeedResponse<Conflict> conflicts = await delClient.ReadConflictFeedAsync(this.co
 ### <a id="read-from-conflict-feed-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
-FeedIterator<ConflictProperties> conflictFeed = container.Conflicts.GetConflictIterator();
+FeedIterator<ConflictProperties> conflictFeed = container.Conflicts.GetConflictQueryIterator();
 while (conflictFeed.HasMoreResults)
 {
     FeedResponse<ConflictProperties> conflicts = await conflictFeed.ReadNextAsync();
@@ -427,7 +427,7 @@ while conflict:
 了解以下 Azure Cosmos DB 概念：
 
 - [全球分布 - 揭秘](global-dist-under-the-hood.md)
-- [如何配置应用程序中的多主数据库](how-to-multi-master.md)
+- [如何在应用程序中配置多主数据库](how-to-multi-master.md)
 - [配置多宿主客户端](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [在 Azure Cosmos DB 帐户中添加或删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 - [如何配置应用程序中的多主数据库](how-to-multi-master.md)。

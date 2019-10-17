@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 1b8297a797f83935f16365a15d100ce88cadca30
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6521c139463bb0de1e24783bbbdd6a2d3996be6f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099544"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430105"
 ---
 # <a name="sap-lama-connector-for-azure"></a>适用于 Azure 的 SAP LaMa 连接器
 
@@ -66,8 +66,8 @@ ms.locfileid: "70099544"
 * 使用单独的子网而不要使用动态 IP 地址，以防止在部署新 VM 并且未准备好 SAP 实例时发生 IP 地址“窃用”  
   如果在子网中使用动态 IP 地址分配（SAP LaMa 也使用这种分配），则使用 SAP LaMa 准备 SAP 系统可能会失败。 如果未准备好 SAP 系统，IP 地址将不会保留，可能会分配到其他虚拟机。
 
-* 如果登录到托管主机, 请确保未卸载文件系统  
-  如果登录到 Linux 虚拟机, 并将工作目录更改为装入点中的某个目录 (例如/usr/sap/AH1/ASCS00/exe), 则无法卸载该卷, 并且重定位或 unprepare 失败。
+* 如果登录到托管主机，请确保未卸载文件系统  
+  如果登录到 Linux 虚拟机，并将工作目录更改为装入点中的某个目录（例如/usr/sap/AH1/ASCS00/exe），则无法卸载该卷，并且重定位或 unprepare 失败。
 
 ## <a name="set-up-azure-connector-for-sap-lama"></a>为 SAP LaMa 设置 Azure 连接器
 
@@ -77,7 +77,7 @@ ms.locfileid: "70099544"
 1. 打开“Azure Active Directory”边栏选项卡
 1. 单击“应用注册”
 1. 单击“添加”
-1. 输入名称, 选择 "应用程序类型" "Web 应用/API", 输入登录 URL (例如 http:\//localhost), 然后单击 "创建"
+1. 输入名称，选择 "应用程序类型" "Web 应用/API"，输入登录 URL （例如 http： \//localhost），然后单击 "创建"
 1. 不会使用登录 URL，可为它输入任何有效的 URL
 1. 选择新应用，并在“设置”选项卡中单击“密钥”
 1. 输入新密钥的说明，选择“永不过期”，并单击“保存”
@@ -104,7 +104,7 @@ ms.locfileid: "70099544"
 * URL：保留默认值 https://management.azure.com/
 * 监视间隔(秒)：应至少为 300
 * 订阅 ID：Azure 订阅 ID
-* Azure Active Directory 租户 ID：Azure Active Directory 租户的 ID
+* Azure Active Directory 租户 ID：Active Directory 租户的 ID
 * 代理主机：如果 SAP LaMa 需要使用代理连接到 Internet，则为代理的主机名
 * 代理端口：代理的 TCP 端口
 
@@ -252,22 +252,22 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 ```
 
-#### <a name="install-sap-netweaver-ascs-for-sap-hana-on-azure-netappfiles-anf-beta"></a>在 Azure NetAppFiles (和) BETA 上安装 SAP NetWeaver ASCS for SAP HANA
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-on-azure-netappfiles-anf-beta"></a>在 Azure NetAppFiles （和） BETA 上安装 SAP NetWeaver ASCS for SAP HANA
 
 > [!NOTE]
-> 此功能尚不公开。 有关详细信息, 请参阅 SAP 说明[2815988] (仅对预览版客户可见)。
-打开组件 BC 上的 SAP 事件-VCM-HYPERV, 并请求加入 Azure NetApp 文件预览版的 LaMa 存储适配器
+> 此功能尚不公开。 有关详细信息，请参阅 SAP 说明[2815988] （仅对预览版客户可见）。
+打开组件 BC 上的 SAP 事件-VCM-HYPERV，并请求加入 Azure NetApp 文件预览版的 LaMa 存储适配器
 
-和为 Azure 提供 NFS。 在 SAP LaMa 的上下文中, 这简化了 ABAP Central Services (ASCS) 实例和应用程序服务器的后续安装。 以前, ASCS 实例还必须充当 NFS 服务器, 并且必须将参数 acosprep/nfs_paths 添加到 SAP Hostagent 的 host_profile 中。
+和为 Azure 提供 NFS。 在 SAP LaMa 的上下文中，这简化了 ABAP Central Services （ASCS）实例和应用程序服务器的后续安装。 以前，ASCS 实例还必须充当 NFS 服务器，并且必须将参数 acosprep/nfs_paths 添加到 SAP Hostagent 的 host_profile 中。
 
-#### <a name="anf-is-currently-available-in-these-regions"></a>和目前在以下区域中提供:
+#### <a name="anf-is-currently-available-in-these-regions"></a>和目前在以下区域中提供：
 
 澳大利亚东部、美国中部、美国东部、美国东部2、北欧、美国中南部、西欧和美国西部2。
 
 #### <a name="network-requirements"></a>网络要求
 
-和需要委派的子网, 该子网必须与 SAP 服务器属于同一 VNET。 下面是此类配置的示例。
-此屏幕显示 VNET 和第一个子网的创建:
+和需要委派的子网，该子网必须与 SAP 服务器属于同一 VNET。 下面是此类配置的示例。
+此屏幕显示 VNET 和第一个子网的创建：
 
 ![SAP LaMa 为 Azure 和创建虚拟网络 ](media/lama/sap-lama-createvn-50.png)
 
@@ -277,22 +277,22 @@ acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 
 ![SAP LaMa 子网列表 ](media/lama/sap-lama-subnets.png)
 
-现在, 需要在 Azure 门户中创建一个 NetApp 帐户:
+现在，需要在 Azure 门户中创建一个 NetApp 帐户：
 
 ![SAP LaMa 创建 NetApp 帐户 ](media/lama/sap-lama-create-netappaccount-50.png)
 
 ![已创建 SAP LaMa NetApp 帐户 ](media/lama/sap-lama-netappaccount.png)
 
-在 NetApp 帐户内, 容量池为每个池指定磁盘的大小和类型:
+在 NetApp 帐户内，容量池为每个池指定磁盘的大小和类型：
 
 ![SAP LaMa 创建 NetApp 容量池 ](media/lama/sap-lama-capacitypool-50.png)
 
 ![已创建 SAP LaMa NetApp 容量池 ](media/lama/sap-lama-capacitypool-list.png)
 
-现在可以定义 NFS 卷。 由于一个池中的多个系统都有卷, 因此应选择一个自解释的命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例, 需要以下装载:/sapmnt/\<sid\>、/usr/sap/\<sid\>和/home/\<SID\>adm。 中央传输目录的可选/usr/sap/trans, 它至少适用于一台横向的所有系统。
+现在可以定义 NFS 卷。 由于一个池中的多个系统都有卷，因此应选择一个自解释的命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例，需要以下装载： */sapmnt/\<SID @ no__t-2*、 */USR/SAP/\<SID @ no__t-5*和 */home/\<sid @ no__t-8adm*。 （可选） */usr/sap/trans*是中心传输目录所必需的，其中至少有一个横向的系统使用。
 
 > [!NOTE]
-> 在测试阶段, 卷的名称在订阅中必须是唯一的。
+> 在测试阶段，卷的名称在订阅中必须是唯一的。
 
 ![SAP LaMa 创建卷1 ](media/lama/sap-lama-createvolume-80.png)
 
@@ -300,13 +300,13 @@ acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 
 ![SAP LaMa 创建卷3 ](media/lama/sap-lama-createvolume3-80.png)
 
-对于其他卷, 还需要重复这些步骤。
+对于其他卷，还需要重复这些步骤。
 
 ![SAP LaMa 创建的卷列表 ](media/lama/sap-lama-volumes.png)
 
-现在, 需要将这些卷装载到将执行具有 SAP SWPM 的初始安装的系统。
+现在，需要将这些卷装载到将执行具有 SAP SWPM 的初始安装的系统。
 
-首先需要创建装入点。 在这种情况下, SID 是 AN1 的, 因此需要执行以下命令:
+首先需要创建装入点。 在这种情况下，SID 是 AN1 的，因此需要执行以下命令：
 
 ```bash
 mkdir -p /home/an1adm
@@ -314,7 +314,7 @@ mkdir -p /sapmnt/AN1
 mkdir -p /usr/sap/AN1
 mkdir -p /usr/sap/trans
 ```
-接下来, 将通过以下命令装载和卷:
+接下来，将通过以下命令装载和卷：
 
 ```bash
 # sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-home-sidadm /home/an1adm
@@ -330,13 +330,13 @@ mkdir -p /usr/sap/trans
 
 现在必须执行具有 SWPM 的安装。
 
-对于至少一个实例, 必须执行相同的步骤。
+对于至少一个实例，必须执行相同的步骤。
 
-成功安装后, 必须在 SAP LaMa 内发现系统。
+成功安装后，必须在 SAP LaMa 内发现系统。
 
-对于 ASCS 和 AS 实例, 装载点应如下所示:
+对于 ASCS 和 AS 实例，装载点应如下所示：
 
-![LaMa ](media/lama/sap-lama-ascs.png)中的 SAP LaMa 装入点 (这是一个示例。 IP 地址和导出路径与之前使用的路径不同)
+LaMa 中的 0SAP LaMa 装入点 ](media/lama/sap-lama-ascs.png) （这是一个示例。 @no__t IP 地址和导出路径与之前使用的路径不同）
 
 
 #### <a name="install-sap-hana"></a>安装 SAP HANA
@@ -432,7 +432,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 
 在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *as1-di-0*。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="errors-and-warnings-during-discover"></a>发现期间的错误和警告
 
@@ -447,7 +447,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 
 * 验证 HDB 用户存储时引发了异常  
   * 查看日志查看器  
-    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException:ID 为 'RuntimeHDBConnectionValidator' 的验证程序发生异常(验证:'VALIDATION_HDB_USERSTORE'):无法检索 hdbuserstore  
+    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: ID 为 'RuntimeHDBConnectionValidator' 的验证程序发生异常(验证: 'VALIDATION_HDB_USERSTORE'): 无法检索 hdbuserstore  
     HANA 用户存储的位置不正确
   * 解决方案  
     确保 /usr/sap/AH1/hdbclient/install/installation.ini 正确
@@ -460,19 +460,19 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
     为源 HANA 系统中的所有数据库创建备份
 
 * 数据库实例的系统复制步骤开始
-  * 主机代理操作 '000D3A282BC91EE8A1D76CF1F92E2944' 失败(OperationException。 FaultCode:'127'，消息:“命令执行失败。 : [Microsoft][SQL Server Driver][SQL Server] 用户无权更改数据库 'AS2'、该数据库不存在，或者该数据库不处于允许访问检查的状态。)
+  * 主机代理操作 '000D3A282BC91EE8A1D76CF1F92E2944' 失败(OperationException。 FaultCode: '127'，消息:“命令执行失败。 : [Microsoft][SQL Server Driver][SQL Server] 用户无权更改数据库 'AS2'、该数据库不存在，或者该数据库不处于允许访问检查的状态。)
   * 解决方案  
     确保 *NT AUTHORITY\SYSTEM* 可以访问 SQL Server。 参阅 SAP 说明 [2562184]
 
 ### <a name="errors-and-warnings-during-a-system-clone"></a>系统克隆期间的错误和警告
 
 * 尝试在应用程序服务器或 ASCS 的“强制注册并启动实例代理”步骤中注册实例代理时出错
-  * 尝试注册实例代理时出错。 (RemoteException:“无法从配置文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' 加载实例数据:无法访问配置文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0':没有此类文件或目录。”)
+  * 尝试注册实例代理时出错。 (RemoteException:“无法从配置文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' 加载实例数据: 无法访问配置文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0': 没有此类文件或目录。”)
   * 解决方案  
    确保 ASCS/SCS 上的 sapmnt 共享对 SAP_AS1_GlobalAdmin 拥有完全访问权限
 
 * “为克隆启用启动保护”步骤出错
-  * 无法打开文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0'。原因:没有此类文件或目录
+  * 无法打开文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0'。原因: 没有此类文件或目录
   * 解决方案  
     应用程序服务器的计算机帐户需要拥有配置文件的写访问权限
 
@@ -496,68 +496,68 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
     将 ASCS 导出内容添加到 ASCS HostAgent 配置文件。 参阅 SAP 说明 [2628497]
 
 * 重定位 ASCS 时函数未实现
-  * 命令输出: exportfs: host:/usr/sap/AX1:函数未实现
+  * 命令输出: exportfs: host:/usr/sap/AX1: 函数未实现
   * 解决方案  
     确保在重定位目标虚拟机上启用 NFS 服务器服务
 
 ### <a name="errors-and-warnings-during-application-server-installation"></a>应用程序服务器安装期间的错误和警告
 
 * 执行 SAPinst 步骤时出错: getProfileDir
-  * 错误:(步骤报告的最后一个错误:在模块调用中捕获到 ESAPinstException:步骤 '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' 的验证程序报告了错误:节点 \\\as1-ascs\sapmnt\AS1\SYS\profile 不存在。 在交互模式下启动 SAPinst 即可解决此问题)
+  * 错误: (步骤报告的最后一个错误: 在模块调用中捕获到 ESAPinstException: 步骤 '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' 的验证程序报告了错误: 节点 \\\as1-ascs\sapmnt\AS1\SYS\profile 不存在。 在交互模式下启动 SAPinst 即可解决此问题)
   * 解决方案  
     确保以有权访问该配置文件的用户身份运行 SWPM。 可在应用程序服务器安装向导中配置此用户
 
 * 执行 SAPinst 步骤时出错: askUnicode
-  * 错误:(步骤报告的最后一个错误:在模块调用中捕获到 ESAPinstException:步骤 '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' 的验证程序报告了错误:在交互模式下启动 SAPinst 即可解决此问题)
+  * 错误: (步骤报告的最后一个错误: 在模块调用中捕获到 ESAPinstException: 步骤 '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' 的验证程序报告了错误: 在交互模式下启动 SAPinst 即可解决此问题)
   * 解决方案  
     如果使用最新的 SAP 内核，SWPM 无法使用 ASCS 的消息服务器来确定系统是否仍是 unicode 系统。 请参阅 SAP 说明 [2445033] 了解更多详细信息。  
     SAP LaMa 的新支持包/修补程序中会修复此问题。  
     在 SAP 系统的默认配置文件中设置配置文件参数 OS_UNICODE=uc 即可解决此问题。
 
 * 执行 SAPinst 步骤时出错: dCheckGivenServer
-  * 执行 SAPinst 步骤时出错: dCheckGivenServer" version="1.0" 错误:(步骤报告的最后一个错误: \<p> 用户已取消安装。 \</p>
+  * 执行 SAPinst 步骤时出错: dCheckGivenServer" version="1.0" 错误: (步骤报告的最后一个错误: \<p> 用户已取消安装。 \</p>
   * 解决方案  
     确保以有权访问该配置文件的用户身份运行 SWPM。 可在应用程序服务器安装向导中配置此用户
 
 * 执行 SAPinst 步骤时出错: checkClient
-  * 执行 SAPinst 步骤时出错: checkClient" version="1.0" 错误:(步骤报告的最后一个错误: \<p> 用户已取消安装。 \</p>)
+  * 执行 SAPinst 步骤时出错: checkClient" version="1.0" 错误: (步骤报告的最后一个错误: \<p> 用户已取消安装。 \</p>)
   * 解决方案  
     确保要安装应用程序服务器的虚拟机上已安装了 Microsoft ODBC Driver for SQL Server
 
 * 执行 SAPinst 步骤时出错: copyScripts
-  * 步骤报告的最后一个错误:系统调用失败。 详细信息:结合参数(\\\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w)执行系统调用 'fopenU' 时发生错误 13 (0x0000000d) (权限被拒绝)，文件(\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/filesystem/syxxcfstrm2.cpp)中的行(494)，堆栈跟踪:  
-  CThrThread.cpp:85:CThrThread::threadFunction()  
-  CSiServiceSet.cpp:63:CSiServiceSet::executeService()  
-  CSiStepExecute.cpp:913:CSiStepExecute::execute()  
-  EJSController.cpp:179:EJSControllerImpl::executeScript()  
-  JSExtension.hpp:1136:CallFunctionBase::call()  
-  iaxxcfile.cpp:183: iastring CIaOsFileConnect::callMemberFunction(iastring const& name, args_t const& args)  
-  iaxxcfile.cpp:1849: iastring CIaOsFileConnect::newFileStream(args_t const& _args)  
-  iaxxbfile.cpp:773:CIaOsFile::newFileStream_impl(4)  
-  syxxcfile.cpp:233:CSyFileImpl::openStream(ISyFile::eFileOpenMode)  
-  syxxcfstrm.cpp:29:CSyFileStreamImpl::CSyFileStreamImpl(CSyFileStream*,iastring,ISyFile::eFileOpenMode)  
-  syxxcfstrm.cpp:265:CSyFileStreamImpl::open()  
-  syxxcfstrm2.cpp:58:CSyFileStream2Impl::CSyFileStream2Impl(const CSyPath & \\\aw1-ascs/sapmnt/AW1/SYS/exe/uc/NTAMD64/strdbs.cmd, 0x4)  
-  syxxcfstrm2.cpp:456:CSyFileStream2Impl::open()
+  * 步骤报告的最后一个错误: 系统调用失败。 详细信息: 结合参数(\\\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w)执行系统调用 'fopenU' 时发生错误 13 (0x0000000d) (权限被拒绝)，文件(\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/filesystem/syxxcfstrm2.cpp)中的行(494)，堆栈跟踪:  
+  CThrThread.cpp: 85: CThrThread::threadFunction()  
+  CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
+  CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
+  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
+  JSExtension.hpp: 1136: CallFunctionBase::call()  
+  iaxxcfile.cpp: 183: iastring CIaOsFileConnect::callMemberFunction(iastring const& name, args_t const& args)  
+  iaxxcfile.cpp: 1849: iastring CIaOsFileConnect::newFileStream(args_t const& _args)  
+  iaxxbfile.cpp: 773: CIaOsFile::newFileStream_impl(4)  
+  syxxcfile.cpp: 233: CSyFileImpl::openStream(ISyFile::eFileOpenMode)  
+  syxxcfstrm.cpp: 29: CSyFileStreamImpl::CSyFileStreamImpl(CSyFileStream*,iastring,ISyFile::eFileOpenMode)  
+  syxxcfstrm.cpp: 265: CSyFileStreamImpl::open()  
+  syxxcfstrm2.cpp: 58: CSyFileStream2Impl::CSyFileStream2Impl(const CSyPath & \\\aw1-ascs/sapmnt/AW1/SYS/exe/uc/NTAMD64/strdbs.cmd, 0x4)  
+  syxxcfstrm2.cpp: 456: CSyFileStream2Impl::open()
   * 解决方案  
     确保以有权访问该配置文件的用户身份运行 SWPM。 可在应用程序服务器安装向导中配置此用户
 
 * 执行 SAPinst 步骤时出错: askPasswords
-  * 步骤报告的最后一个错误:系统调用失败。 详细信息:结合参数(...)执行系统调用 'NetValidatePasswordPolicy' 时发生错误 5 (0x00000005) (权限被拒绝)，文件(\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp)中的行(359)，堆栈跟踪:  
-  CThrThread.cpp:85:CThrThread::threadFunction()  
-  CSiServiceSet.cpp:63:CSiServiceSet::executeService()  
-  CSiStepExecute.cpp:913:CSiStepExecute::execute()  
-  EJSController.cpp:179:EJSControllerImpl::executeScript()  
-  JSExtension.hpp:1136:CallFunctionBase::call()  
-  CSiStepExecute.cpp:764:CSiStepExecute::invokeDialog()  
-  DarkModeGuiEngine.cpp:56:DarkModeGuiEngine::showDialogCalledByJs()  
-  DarkModeDialog.cpp:85:DarkModeDialog::submit()  
-  EJSController.cpp:179:EJSControllerImpl::executeScript()  
-  JSExtension.hpp:1136:CallFunctionBase::call()  
-  iaxxcaccount.cpp:107: iastring CIaOsAccountConnect::callMemberFunction(iastring const& name, args_t const& args)  
-  iaxxcaccount.cpp:1186: iastring CIaOsAccountConnect::validatePasswordPolicy(args_t const& _args)  
-  iaxxbaccount.cpp:430:CIaOsAccount::validatePasswordPolicy_impl()  
-  synxcaccmg.cpp:297:ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,*****) const )
+  * 步骤报告的最后一个错误: 系统调用失败。 详细信息: 结合参数(...)执行系统调用 'NetValidatePasswordPolicy' 时发生错误 5 (0x00000005) (权限被拒绝)，文件(\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp)中的行(359)，堆栈跟踪:  
+  CThrThread.cpp: 85: CThrThread::threadFunction()  
+  CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
+  CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
+  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
+  JSExtension.hpp: 1136: CallFunctionBase::call()  
+  CSiStepExecute.cpp: 764: CSiStepExecute::invokeDialog()  
+  DarkModeGuiEngine.cpp: 56: DarkModeGuiEngine::showDialogCalledByJs()  
+  DarkModeDialog.cpp: 85: DarkModeDialog::submit()  
+  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
+  JSExtension.hpp: 1136: CallFunctionBase::call()  
+  iaxxcaccount.cpp: 107: iastring CIaOsAccountConnect::callMemberFunction(iastring const& name, args_t const& args)  
+  iaxxcaccount.cpp: 1186: iastring CIaOsAccountConnect::validatePasswordPolicy(args_t const& _args)  
+  iaxxbaccount.cpp: 430: CIaOsAccount::validatePasswordPolicy_impl()  
+  synxcaccmg.cpp: 297: ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,*****) const )
   * 解决方案  
     确保在步骤 *Isolation* 中添加一个 Host 规则，以便能够在 VM 与域控制器之间通信
 
