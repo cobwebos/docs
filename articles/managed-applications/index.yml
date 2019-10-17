@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Azure 托管应用程序文档
 metadata:
-  title: Azure 托管应用程序文档 - 教程和 API 参考
+  title: Azure 托管应用程序文档
   description: 使用 Azure 托管应用程序发布易于客户维护的云解决方案。
   services: managed-applications
   author: tfitzmac
