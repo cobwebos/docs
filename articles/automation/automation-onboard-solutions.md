@@ -9,12 +9,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: d247369647106cf1671a8770a6dce21f1a34a4b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082188"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372819"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>将更新和更改跟踪解决方案加入 Azure 自动化
 
@@ -43,40 +43,40 @@ ms.locfileid: "58082188"
 
 更改跟踪和清单解决方案提供针对虚拟机的[跟踪更改](automation-vm-change-tracking.md)和[清单](automation-vm-inventory.md)功能。 在此步骤中，在虚拟机上启用解决方案。
 
-1. 从左侧菜单中，选择“自动化帐户”，然后在列表中选择自动化帐户。
-1. 选择“配置管理”下的“清单”。
-1. 选择现有的或创建新的 Log Analytics 工作区。 单击“启用”按钮。
+1. 从左侧菜单中，选择“自动化帐户”  ，然后在列表中选择自动化帐户。
+1. 选择“配置管理”  下的“清单”  。
+1. 选择现有的或创建新的 Log Analytics 工作区。 单击“启用”按钮  。
 
 ![载入更新解决方案](media/automation-onboard-solutions/inventory-onboard.png)
 
-更改跟踪和清单解决方案载入通知完成后，请单击“配置管理”下的“更新管理”。
+更改跟踪和清单解决方案载入通知完成后，请单击“配置管理”  下的“更新管理”  。
 
 ### <a name="enable-update-management"></a>启用更新管理
 
 使用更新管理解决方案可以管理 Azure Windows VM 的更新和修补程序。 可评估可用更新的状态、计划所需更新的安装以及查看部署结果，验证更新是否已成功应用到 VM。 在此步骤中，为 VM 启用解决方案。
 
-1. 从自动化帐户，选择“更新管理”下的“更新管理”。
-1. 选定的 Log Analytics 工作区即为上一步骤中使用的工作区。 单击“启用”以载入更新管理解决方案。
+1. 从自动化帐户，选择“更新管理”  下的“更新管理”  。
+1. 选定的 Log Analytics 工作区即为上一步骤中使用的工作区。 单击“启用”  以载入更新管理解决方案。
 
 ![载入更新解决方案](media/automation-onboard-solutions/update-onboard.png)
 
-更新管理解决方案安装期间会显示一个蓝色横幅。 启用解决方案后，选择“配置管理”下的“更改跟踪”以转到下一步。
+更新管理解决方案安装期间会显示一个蓝色横幅。 启用解决方案后，选择“配置管理”  下的“更改跟踪”  以转到下一步。
 
 ### <a name="select-azure-vm-to-be-managed"></a>选择要管理的 Azure VM
 
 现已启用解决方案，可添加 Azure VM 以载入到这些解决方案中。
 
-1. 从自动化帐户中，在“更改跟踪”页上，选择“+ 添加 Azure VM”以添加虚拟机。
+1. 从自动化帐户中，在“更改跟踪”  页上，选择“+ 添加 Azure VM”  以添加虚拟机。
 
-1. 从列表中选择 VM，然后选择“启用”。 此操作为虚拟机启用更改跟踪和清单解决方案。
+1. 从列表中选择 VM，然后选择“启用”  。 此操作为虚拟机启用更改跟踪和清单解决方案。
 
    ![为虚拟机启用更新解决方案](media/automation-onboard-solutions/enable-change-tracking.png)
 
-1. VM 载入通知完成后，从自动化帐户，选择“更新管理”下的“更新管理”。
+1. VM 载入通知完成后，从自动化帐户，选择“更新管理”  下的“更新管理”  。
 
-1. 选择“+ 添加 Azure VM”以添加虚拟机。
+1. 选择“+ 添加 Azure VM”  以添加虚拟机。
 
-1. 从列表中选择 VM，然后选择“启用”。 此操作为虚拟机启用更新管理解决方案。
+1. 从列表中选择 VM，然后选择“启用”  。 此操作为虚拟机启用更新管理解决方案。
 
    ![为虚拟机启用更新解决方案](media/automation-onboard-solutions/enable-update.png)
 
@@ -89,25 +89,25 @@ ms.locfileid: "58082188"
 
 ## <a name="update-azure-modules"></a>更新 Azure 模块
 
-从自动化帐户中，选择“共享资源”下的“模块”。 选择“更新 Azure 模块”以更新到最新版本的 Azure 模块。 在出现的提示上选择“是”，将所有现有 Azure 模块更新到最新版本。
+从自动化帐户中，选择“共享资源”  下的“模块”  。 选择“更新 Azure 模块”  以更新到最新版本的 Azure 模块。 在出现的提示上选择“是”  ，将所有现有 Azure 模块更新到最新版本。
 
 ![更新模块](media/automation-onboard-solutions/update-modules.png)
 
 ### <a name="install-azurermoperationalinsights-module"></a>安装 AzureRM.OperationalInsights 模块
 
-从“模块”页上，选择“浏览库”以打开模块库。 搜索 AzureRM.OperationalInsights 并将此模块导入到自动化帐户。
+从“模块”  页上，选择“浏览库”  以打开模块库。 搜索 AzureRM.OperationalInsights 并将此模块导入到自动化帐户。
 
 ![导入 OperationalInsights 模块](media/automation-onboard-solutions/import-operational-insights-module.png)
 
 ## <a name="import-the-onboarding-runbook"></a>导入载入 Runbook
 
-1. 从自动化帐户，选择“流程自动化”下的“Runbook”。
-1. 选择“浏览库”。
-1. 搜索“更新和更改跟踪”，单击 runbook，然后选择“查看源”页上的“导入”。 选择“确定”，将 runbook 导入自动化帐户。
+1. 从自动化帐户，选择“流程自动化”  下的“Runbook”  。
+1. 选择“浏览库”  。
+1. 搜索“更新和更改跟踪”  ，单击 runbook，然后选择“查看源”  页上的“导入”  。 选择“确定”  ，将 runbook 导入自动化帐户。
 
    ![导入载入 Runbook](media/automation-onboard-solutions/import-from-gallery.png)
 
-1. 在“Runbook”页上，选择“编辑”，然后选择“发布”。 在“发布 Runbook”对话框中，选择“是”以发布 runbook。
+1. 在“Runbook”  页上，选择“编辑”  ，然后选择“发布”  。 在“发布 Runbook”  对话框中，选择“是”  以发布 runbook。
 
 ## <a name="start-the-runbook"></a>启动 Runbook
 
@@ -124,12 +124,19 @@ ms.locfileid: "58082188"
    * **SUBSCRIPTIONID** -保留为空。 要加入的新 VM 的订阅 ID。 如果留空，将使用工作区的订阅。 如果指定不同的订阅 ID，则还应该添加此自动化帐户的运行方式帐户作为此订阅的参与者。
    * **ALREADYONBOARDEDVM** - 已手动加入更新或更改跟踪解决方案的 VM 的名称。
    * **ALREADYONBOARDEDVMRESOURCEGROUP** - VM 所属的资源组的名称。
-   * **SOLUTIONTYPE** - 输入“更新”或“更改跟踪”
+   * **SOLUTIONTYPE** - 输入“更新”  或“更改跟踪” 
 
    ![Enable-MultipleSolution Runbook 参数](media/automation-onboard-solutions/runbook-parameters.png)
 
-1. 选择“确定”启动 Runbook 作业。
+1. 选择“确定”  启动 Runbook 作业。
 1. 在 Runbook 的“作业”页上监视进度和任何错误。
+
+## <a name="clean-up-resources"></a>清理资源
+
+从更新管理中删除 VM：
+
+* 在 Log Analytics 工作区中，从范围配置 `MicrosoftDefaultScopeConfig-Updates` 的已保存的搜索中删除 VM。 已保存的搜索位于工作区的“常规”下  。
+* 删除 [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 或 [适用于 Linux 的 Log Analytics 代理](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)。
 
 ## <a name="next-steps"></a>后续步骤
 

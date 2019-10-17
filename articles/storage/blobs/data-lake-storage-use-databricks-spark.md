@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 0607c2b848a486e24654081bd7937cb734394e58
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992267"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331840"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>教程：使用 Spark 通过 Azure Databricks 访问 Data Lake Storage Gen2 数据
 
@@ -97,15 +97,13 @@ ms.locfileid: "69992267"
 
     ![在 Azure 上创建 Databricks Spark 群集](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
 
-4. 填写以下字段的值，对于其他字段接受默认值：
+    填写以下字段的值，对于其他字段接受默认值：
 
-    * 输入群集的名称。
+    - 输入群集的名称。
+     
+    - 请务必选中“在不活动超过 120 分钟后终止”  复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
 
-    * 在本文中，请创建运行时为 **5.1** 的群集。
-
-    * 请务必选中“在不活动超过 \_\_ 分钟后终止”  复选框。 如果未使用群集，则请提供一个持续时间（以分钟为单位），超过该时间后群集会被终止。
-
-    * 选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
+4. 选择“创建群集”。  群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
 ## <a name="ingest-data"></a>引入数据
 
